@@ -702,7 +702,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 <td>'._('Coordinates').':</td>
 <td>
 <input type="text" id="latlon" name="latlon" value="'.$edit_lat_lon.'" size="25" '.$disabled_coords.' /></span>
-<br /> '._('<a href="%s" target="_blank">Acceptable geographic coordinate formats</a>', $config['adres'].'help.php#acceptableformats').'
+<br /> '.sprintf(_('<a href="%s" target="_blank">Acceptable geographic coordinate formats</a>'), $config['adres'].'help.php#acceptableformats').'
 <table cellpadding="0px" cellspacing="0px"><tr><td><span class="szare">'._('eg.').'</span></td><td><span class="szare">52.1534 21.0539<br />N 52° 09.204 E 021° 03.234<br />N 52° 9\' 12.2400" E 21° 3\' 14.0400"</span></td></tr></table>
 </td>
 <td>'.$pole_logAtHome.'<br />
