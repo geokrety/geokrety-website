@@ -84,7 +84,7 @@ if ($_REQUEST['skad'] == 'ajax') {
         } else {
             $link_wpt = '<a href="'.$cache_link.'">'.$_REQUEST['wpt'].'</a>';
             $return['tresc'] = '<img src="'.CONFIG_CDN_IMAGES.'/icons/info3.png" alt="info" width="16" height="16" /> '.sprintf(_('Please provide the coordinates (lat/lon) of the cache %s in the input box on left.'), $link_wpt).'<br />'.
-             _('<a href="'.$config['adres'].'help.php#locationdlagc">Learn more about hiding geokrets in GC caches</a>');
+             _('<a href="%s">Learn more about hiding geokrets in GC caches</a>', $config['adres'].'help.php#locationdlagc');
             $return['lat'] = '';
             $return['lon'] = '';
             echo json_encode($return);

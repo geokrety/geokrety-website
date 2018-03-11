@@ -327,7 +327,7 @@ var initial_zoom = $map_zoom;
 <td>'._('Home coordinates').':</td>
 <td width="350px">
 <input type="text" id="latlon" name="latlon" value="'.$edit_lat_lon.'" size="35" onkeyup="latlon_keyup(event);"/><br />
-<span class="szare">'._('Use the map to select a location or enter coordinates manually.').'<br/>'._('eg.').' 52.1534 21.0539<br />N 52° 09.204 E 021° 03.234<br />N 52° 9\' 12.2400" E 21° 3\' 14.0400<br />'._('<a href="'.$config['adres'].'help.php#acceptableformats" target="_blank">Other acceptable lat/lon formats</a>').'</span>
+<span class="szare">'._('Use the map to select a location or enter coordinates manually.').'<br/>'._('eg.').' 52.1534 21.0539<br />N 52° 09.204 E 021° 03.234<br />N 52° 9\' 12.2400" E 21° 3\' 14.0400<br />'._('<a href="%s" target="_blank">Other acceptable lat/lon formats</a>', $config['adres'].'help.php#acceptableformats').'</span>
 </td>
 <td rowspan="2">
 <div id="container">
