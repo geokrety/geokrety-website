@@ -45,7 +45,7 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
         $edit_statpic = '<a href="edit.php?co=statpic" title="Edit statpic"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/> '._('Choose statpic').'</a>';
         $edit_latlon = '<a href="edit.php?co=latlon" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a>';
         $dodaj_obrazek = '<a href="imgup.php?typ=2&amp;id='.$longin_status['userid'].'"><img src="'.CONFIG_CDN_IMAGES.'/icons/image.png" alt="add photo" title="add photo" width="16" height="16" border="0" /></a>';
-        $logout = '<img src="'.CONFIG_CDN_IMAGES.'/icons/exit.png" alt="logout" title="logout" width="16" height="16" /> <a href="longin.php?logout=1">Logout</a>';
+        $logout = '<img src="'.CONFIG_CDN_IMAGES.'/icons/exit.png" alt="logout" title="logout" width="16" height="16" /> <a href="longin.php?logout=1">'._(Logout).'</a>';
     }
 
     // info o userze
