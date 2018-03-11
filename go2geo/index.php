@@ -32,8 +32,8 @@ if (isset($_GET['wpt'])) {
     <h1>go2geo β (beta) :: resolve geocaching waypoints</h1>
     <form name="formularz" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
     Waypoint:
-    <input type="text" name="wpt" size="10" maxlength="10" value="<?php echo $wpt ?>" /> <input type="submit" value=" go! " />
-    <p><span class="error"><?php echo $error ?></span></p>
+    <input type="text" name="wpt" size="10" maxlength="10" value="<?php echo $wpt; ?>" /> <input type="submit" value=" go! " />
+    <p><span class="error"><?php echo $error; ?></span></p>
     <hr />
     <span class="szare"><a href="help.php">info & supported waypoints</a> | by: filips</span>
     </form>

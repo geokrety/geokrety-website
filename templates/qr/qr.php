@@ -599,14 +599,14 @@ $qrcode_image_size = $mib * $qrcode_module_size;
 if ($qrcode_image_size > 1480) {
     trigger_error('QRcode : Too large image size', E_USER_ERROR);
 }
-$output_image = ImageCreate($qrcode_image_size, $qrcode_image_size);
+$output_image = imagecreate($qrcode_image_size, $qrcode_image_size);
 
 $image_path = $image_path.'/qrv'.$qrcode_version.'.png';
 
-$base_image = ImageCreateFromPNG($image_path);
+$base_image = imagecreatefrompng($image_path);
 
-$col[1] = ImageColorAllocate($base_image, 0, 0, 0);
-$col[0] = ImageColorAllocate($base_image, 255, 255, 255);
+$col[1] = imagecolorallocate($base_image, 0, 0, 0);
+$col[0] = imagecolorallocate($base_image, 255, 255, 255);
 
 $i = 4;
 $mxe = 4 + $max_modules_1side;
@@ -616,7 +616,7 @@ while ($i < $mxe) {
     $jj = 0;
     while ($j < $mxe) {
         if ($matrix_content[$ii][$jj] & $mask_content) {
-            ImageSetPixel($base_image, $i, $j, $col[1]);
+            imagesetpixel($base_image, $i, $j, $col[1]);
         }
         ++$j;
         ++$jj;
@@ -629,9 +629,9 @@ while ($i < $mxe) {
 //
 */
 header('Content-type: image/'.$qrcode_image_type);
-ImageCopyResized($output_image, $base_image, 0, 0, 0, 0, $qrcode_image_size, $qrcode_image_size, $mib, $mib);
+imagecopyresized($output_image, $base_image, 0, 0, 0, 0, $qrcode_image_size, $qrcode_image_size, $mib, $mib);
 if ($qrcode_image_type == 'jpeg') {
-    ImageJpeg($output_image);
+    imagejpeg($output_image);
 } else {
-    ImagePng($output_image);
+    imagepng($output_image);
 }

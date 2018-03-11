@@ -478,8 +478,6 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
         return $return;
         exit();
-
-        //header("Location: export2.php?gkid=$kretid");
     } else {
         header("Location: konkret.php?id=$kretid#map");
     }
@@ -541,12 +539,8 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         $TYTUL = _('Add a comment');
         $show_location_step = false;
 
-        //if ($longin_status['plain'] == NULL)
-        {
-            $show_captcha_step = true;
-            include_once 'obrazek.php';
-        }
-        //else $show_captcha_step=false;
+        $show_captcha_step = true;
+        include_once 'obrazek.php';
 
         $disabled_action = $disabled;
         $extra_hidden_fields = '<input type="hidden" name="logtype" value="2" />';

@@ -58,9 +58,6 @@ function recent_newscomments($where = '', $title = '', $zapytanie = '', $shownew
             $TRESC .= $newstitle;
             $TRESC .= "\n<div class='comment_title'><div class='alignleft50'>$imgicon <a $link_class href='$prefix_adresu/mypage.php?userid=$f_user_id'>$f_username</a></div><div class='alignright50 xs szare'>$datetime $delete_link</div><div style='clear:both';></div></div>";
             $TRESC .= "\n<div class='comment_body'>$comment</div>";
-
-            // $TRESC .= "\n<div style='clear:both;' class='xs'>$imgicon <i>Comment by: <a $link_class href='$prefix_adresu/mypage.php?userid=$f_user_id'>$f_username</a> - $f_date</i></div>";
-            // $TRESC .= "\n<div class='news_body'>$comment</div>";
         } else {
             if (in_array($userid, $config['superusers']) || $userid == $f_user_id) {
                 $delete_link = "&nbsp;<a href='$prefix_adresu/newscomments.php?delete=$f_comment_id' onclick='return CzySkasowac(this, \"this comment?\")'><img src='".CONFIG_CDN_IMAGES."/delete10.png' class='textalign10' alt='delete' width='10' height='10' border='0' /></a>";

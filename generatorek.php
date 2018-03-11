@@ -183,8 +183,6 @@ else {
             // ($ac=="") -> jezeli podalismy nasz ac to wtedy wylaczamy sprawdzanie duplikatow bo mozemy ustalic jeden ac dla wszystkich nowych kretow.
             // ale jezeli podany jest alfabet to $ac jest puste i nie chcemy duplikatow.
             $ac = createNewOwnerCode($kret_id, ($ac == ''), $ac, $kret_oc_prefix, $kret_oc_random_length, $kret_oc_suffix, $kret_oc_alphabet);
-
-            //claimGeoKret($kret_id, $ac, $tc, 6262);
         } else {
             $kret_id = registerNewGeoKret($nazwa, $kret_opis, $kret_owner, $kret_typ, true, $tc, $kret_tc_prefix, $kret_tc_random_length, $kret_tc_suffix, $kret_tc_alphabet);
         }

@@ -86,53 +86,50 @@ function errory_add($details, $severity = 0, $error_uid = '')
     include 'templates/konfig.php';    // config
     $link = DBConnect();
 
-    //if (table_exists('gk-errory')) ..wyremowalem bo teraz juz tabela jest w bazie
-    {
-        include_once 'longin_chceck.php';
-        $longin_status = longin_chceck();
-        $userid = $longin_status['userid'];
+    include_once 'longin_chceck.php';
+    $longin_status = longin_chceck();
+    $userid = $longin_status['userid'];
 
-        // $file = $_SERVER["SCRIPT_NAME"];
-        // $break = Explode('/', $file);
-        // $pfile = $break[count($break) - 1];
+    // $file = $_SERVER["SCRIPT_NAME"];
+    // $break = Explode('/', $file);
+    // $pfile = $break[count($break) - 1];
 
-        $pfile = $_SERVER['REQUEST_URI'];
-        if ($_POST['formname'] == '-') {
-            return;
-        }//niepotrzebne - wychodzimy
-        $posty = '';
-        foreach ($_GET as $var => $value) {
-            $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-            if ($var == 'gk_id' && ctype_digit($value)) {
-                $posty .= "G|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
-            } else {
-                $posty .= "G|$var| = |$value|<br/>";
-            }
-        }
-        foreach ($_POST as $var => $value) {
-            $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-            if ($var == 'gk_id' && ctype_digit($value)) {
-                $posty .= "P|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
-            } elseif (($var != 'haslo1') && ($var != 'haslo2')) {
-                $posty .= "P|$var| = |$value|<br/>";
-            }
-        }
-
-        if ($details != '') {
-            $details = mysqli_real_escape_string($link, $details);
-        }
-        if ($posty != '') {
-            $posty = mysqli_real_escape_string($link, "<hr>$posty");
-        }
-        if (!empty($_SERVER['HTTP_REFERER'])) {
-            $referer = '<br/>REF:'.$_SERVER['HTTP_REFERER'];
+    $pfile = $_SERVER['REQUEST_URI'];
+    if ($_POST['formname'] == '-') {
+        return;
+    }//niepotrzebne - wychodzimy
+    $posty = '';
+    foreach ($_GET as $var => $value) {
+        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+        if ($var == 'gk_id' && ctype_digit($value)) {
+            $posty .= "G|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
         } else {
-            $referer = '<br/>REF: --MISSING--';
+            $posty .= "G|$var| = |$value|<br/>";
         }
-
-        $sql = "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`)
-				VALUES ('$error_uid', '$userid', '".$_SERVER['REMOTE_ADDR']."', '".date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])."', '$pfile$referer', '$details$posty', '$severity')";
-
-        $result = mysqli_query($link, $sql);
     }
+    foreach ($_POST as $var => $value) {
+        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+        if ($var == 'gk_id' && ctype_digit($value)) {
+            $posty .= "P|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
+        } elseif (($var != 'haslo1') && ($var != 'haslo2')) {
+            $posty .= "P|$var| = |$value|<br/>";
+        }
+    }
+
+    if ($details != '') {
+        $details = mysqli_real_escape_string($link, $details);
+    }
+    if ($posty != '') {
+        $posty = mysqli_real_escape_string($link, "<hr>$posty");
+    }
+    if (!empty($_SERVER['HTTP_REFERER'])) {
+        $referer = '<br/>REF:'.$_SERVER['HTTP_REFERER'];
+    } else {
+        $referer = '<br/>REF: --MISSING--';
+    }
+
+    $sql = "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`)
+		VALUES ('$error_uid', '$userid', '".$_SERVER['REMOTE_ADDR']."', '".date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])."', '$pfile$referer', '$details$posty', '$severity')";
+
+    $result = mysqli_query($link, $sql);
 }

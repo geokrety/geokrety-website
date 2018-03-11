@@ -269,14 +269,6 @@ if (ctype_digit($g_newsid)) {
     $TRESC .= $tmp;
 
     $TRESC .= file_get_contents('ribbon_beta.html');
-
-    // pobieramy komentarze do wyswietlenia
-    // $sql = "SELECT co.comment_id, co.user_id, us.user, co.date, co.comment, co.icon
-            // FROM `gk-news-comments` co
-            // LEFT JOIN `gk-users` us ON (us.userid=co.user_id)
-            // WHERE co.news_id='$g_newsid'
-            // ORDER BY co.comment_id DESC";
-    // $result = $sqlproc->exec($sql,$num_rows);
 } elseif (ctype_digit($g_delete)) {
     if (!$loggedin) {
         include_once 'defektoskop.php';

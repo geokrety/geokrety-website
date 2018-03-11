@@ -48,7 +48,6 @@ if ($_REQUEST['skad'] == 'ajax') {
                 exit;
             } else {
                 while ($row = mysqli_fetch_array($result)) {
-                    {
                     list($id, $typ, $nazwa, $userid, $username, $data, $waypoint, $logtype, $name, $lat, $lon) = $row;
 
                     if ($waypoint == '') {
@@ -67,7 +66,6 @@ if ($_REQUEST['skad'] == 'ajax') {
                         $ret .= '<br />';
                     }
                     $ret .= "<img src='".CONFIG_CDN_IMAGES."/icons/ok.png' alt='OK' width='16' height='16' /> <a href='konkret.php?id=$id'>$nazwa</a> by <a href='mypage.php?userid=$userid'>$username</a>. $lastlog";
-                }
                 }
             }
             echo $ret;
