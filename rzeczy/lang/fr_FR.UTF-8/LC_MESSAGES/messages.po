@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-11 19:55+0100\n"
-"PO-Revision-Date: 2018-03-11 14:57-0400\n"
+"POT-Creation-Date: 2018-03-11 20:15+0100\n"
+"PO-Revision-Date: 2018-03-11 15:17-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -17,6 +17,7 @@ msgstr ""
 "X-Crowdin-File: messages.po\n"
 
 #: adduser.php:8 adduser.php:105 templates/plugins/function.login_check.php:37
+#: templates.php:186
 msgid "Register a new user"
 msgstr "Créer un compte"
 
@@ -52,7 +53,7 @@ msgstr "Anti-spam"
 msgid "Language"
 msgstr "Langue"
 
-#: adduser.php:101 termsofuse.php:11
+#: adduser.php:101 termsofuse.php:11 templates.php:117 templates.php:141
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -104,10 +105,12 @@ msgid "An email to confirm your email address was sent to you. When you confirm,
 msgstr "Un e-mail de confirmation de votre adresse e-mail vient de vous être envoyé. Ce mail contient un lien valide pendant 5 jours. Vous pouvez immédiatement vous connecter et utiliser GeoKrety.org mais pour recevoir les alertes que vous avez paramétrées (par exemple: alerte sur les signalements de vos GeoKrets) vous devez cliquer sur le lien du mail."
 
 #: adduser.php:167 longin.php:9 templates/plugins/function.login_check.php:37
+#: templates.php:189
 msgid "Login"
 msgstr "Connexion"
 
 #: adduser.php:167 templates/plugins/function.login_check.php:37
+#: templates.php:192
 msgid "Forgot password?"
 msgstr "Mot de passe oublié ?"
 
@@ -272,7 +275,8 @@ msgstr "Une personne"
 msgid "A coin"
 msgstr "Une pièce"
 
-#: country_stat.php:28
+#: country_stat.php:28 templates.php:30 templates.php:93 templates.php:219
+#: templates.php:282
 msgid "Stats by country"
 msgstr "Statistiques par pays"
 
@@ -308,7 +312,8 @@ msgstr "Hier"
 msgid "Today"
 msgstr "Aujourd'hui"
 
-#: download.php:9
+#: download.php:9 krety.html.php:15 templates.php:36 templates.php:99
+#: templates.php:225 templates.php:288
 msgid "Download"
 msgstr "Téléchargements"
 
@@ -324,7 +329,8 @@ msgstr "Nos fichiers de traduction sont hébergés sur crowdin."
 msgid "Suggest a better translation"
 msgstr "Améliorer la traduction"
 
-#: download.php:19
+#: download.php:19 templates.php:51 templates.php:123 templates.php:240
+#: templates.php:306
 msgid "Map of caches"
 msgstr "Carte des caches"
 
@@ -478,7 +484,8 @@ msgstr "Email2GK :: (bêta)"
 msgid "errors"
 msgstr "erreurs"
 
-#: galeria.php:10 geokret_gallery.php:73 index.php:172
+#: galeria.php:10 geokret_gallery.php:73 index.php:172 templates.php:21
+#: templates.php:84 templates.php:210 templates.php:273
 msgid "Photo gallery"
 msgstr "Galerie de photos"
 
@@ -574,11 +581,14 @@ msgstr "Description"
 msgid "Show group"
 msgstr "Afficher le groupe"
 
-#: halloffame.php:11
+#: halloffame.php:11 templates.php:60 templates.php:132 templates.php:249
+#: templates.php:315
 msgid "Hall of fame"
 msgstr "Contributeurs"
 
-#: help_generate.php:10 help.php:9
+#: help_generate.php:10 help.php:9 krety.html.php:24 templates.php:42
+#: templates.php:48 templates.php:105 templates.php:111 templates.php:231
+#: templates.php:237 templates.php:294 templates.php:300
 msgid "Help"
 msgstr "Aide"
 
@@ -655,7 +665,8 @@ msgstr "Mémoriser"
 msgid "Remember the description for the next %d minutes"
 msgstr "Mémoriser la description pendant les %d prochaines minutes"
 
-#: index.php:37
+#: index.php:37 krety.html.php:6 templates.php:6 templates.php:69
+#: templates.php:195 templates.php:258
 msgid "Home"
 msgstr "Accueil"
 
@@ -667,7 +678,8 @@ msgstr "Bienvenue sur GeoKrety.org ! Ce service gratuit similaire aux TravelBug�
 msgid "If you found a GeoKret, enter the tracking code here"
 msgstr "Vous avez trouvé un GeoKret ? Entrez son code de suivi"
 
-#: index.php:74
+#: index.php:74 templates.php:12 templates.php:75 templates.php:201
+#: templates.php:264
 msgid "no need to register!"
 msgstr "Inscription facultative !"
 
@@ -688,7 +700,8 @@ msgstr "utilisateurs"
 msgid "<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun)."
 msgstr "<strong>%d km</strong> parcourus par tous les GeoKrety (soit l’équivalent de %.2f fois la distance de la Terre à la Lune, ou %.2f fois la circonférence de la Terre à l'équateur et %.5f fois la distance de la Terre au Soleil)."
 
-#: index.php:113 niusy.php:9
+#: index.php:113 niusy.php:9 krety.html.php:18 templates.php:39
+#: templates.php:102 templates.php:228 templates.php:291
 msgid "News"
 msgstr "Actualités"
 
@@ -746,7 +759,9 @@ msgstr "Ajouter une note"
 
 #: konkret.php:93 mypage.php:334 statystyczka2.php:11 statystyczka3.php:11
 #: statystyczka-hubs.php:11 statystyczka-lata.php:11 statystyczka.php:11
-#: user_stat.php:196
+#: user_stat.php:196 templates.php:24 templates.php:27 templates.php:87
+#: templates.php:90 templates.php:213 templates.php:216 templates.php:276
+#: templates.php:279
 msgid "Statistics"
 msgstr "Statistiques"
 
@@ -986,7 +1001,8 @@ msgstr "Carte des GeoKrety"
 msgid "Map centers at your home coordinates (you can edit it in your profile). If you hadn't defined it, the map  centers on the Most Przyjaźni in Zgorzelec/Gorlitz."
 msgstr "Carte est centrée sur les coordonnées de votre maison (vous pouvez les modifier dans votre profil). Si vous n’en n'avez pas défini, le plan se concentre sur Zgorzelec en Pologne."
 
-#: lost.php:9
+#: lost.php:9 templates.php:33 templates.php:96 templates.php:222
+#: templates.php:285
 msgid "Probably lost geokrets"
 msgstr "GeoKrety probablement perdus"
 
@@ -1071,10 +1087,12 @@ msgid "Generate new secid"
 msgstr "Générer un nouveau secid"
 
 #: mypage.php:109 mypage.php:375 templates/plugins/function.login_check.php:48
+#: templates.php:162
 msgid "My recent logs"
 msgstr "Mes signalements"
 
 #: mypage.php:120 mypage.php:376 templates/plugins/function.login_check.php:49
+#: templates.php:165
 msgid "Recent moves of my geokrets"
 msgstr "Signalements récents pour mes GeoKrety"
 
@@ -1122,26 +1140,29 @@ msgid "Links"
 msgstr "Liens"
 
 #: mypage.php:372 templates/plugins/function.login_check.php:45
+#: templates.php:153
 msgid "Geokrets in my inventory"
 msgstr "GeoKrety dans vos mains"
 
 #: mypage.php:373 templates/plugins/function.login_check.php:46
+#: templates.php:156
 msgid "My geokrets"
 msgstr "Mes GeoKrety"
 
-#: mypage.php:374
+#: mypage.php:374 templates.php:159
 msgid "Watched geokrets"
 msgstr "GeoKrety favoris"
 
-#: mypage.php:377
+#: mypage.php:377 templates.php:168
 msgid "My photos"
 msgstr "Mes photos"
 
-#: mypage.php:378
+#: mypage.php:378 templates.php:171
 msgid "Photos of my geokrets"
 msgstr "Photos de mes GeoKrety"
 
 #: mypage.php:379 templates/plugins/function.login_check.php:50
+#: templates.php:174
 msgid "Where are my geokrets?"
 msgstr "Où sont mes GeoKrety ?"
 
@@ -1197,7 +1218,7 @@ msgstr "Voir les commentaires"
 msgid "Users watching this GeoKret:"
 msgstr "Utilisateurs suivant ce GeoKret :"
 
-#: presscorner.php:10
+#: presscorner.php:10 templates.php:114
 msgid "Press corner"
 msgstr "Revue de presse"
 
@@ -1489,7 +1510,8 @@ msgstr "Utilisateur"
 msgid "Recent Log Comments"
 msgstr "Commentaires récents"
 
-#: recentlogs.php:9 recent_moves.php:14
+#: recentlogs.php:9 recent_moves.php:14 templates.php:18 templates.php:81
+#: templates.php:207 templates.php:270
 msgid "Recent logs"
 msgstr "Signalements récents"
 
@@ -1506,6 +1528,7 @@ msgid "Go to geokret's page"
 msgstr "Aller à la page du GeoKret"
 
 #: register.php:11 templates/plugins/function.login_check.php:41
+#: templates.php:144
 msgid "Register a new GeoKret"
 msgstr "Créer un nouveau GeoKret"
 
@@ -1589,7 +1612,7 @@ msgstr "Archives"
 msgid "6 characters from GeoKret label, eg."
 msgstr "6 caractères sur l'étiquette du GeoKret, par exemple"
 
-#: ruchy.php:615
+#: ruchy.php:615 krety.html.php:9
 msgid "Operations on GeoKrety"
 msgstr "Signaler un GeoKret"
 
@@ -1756,7 +1779,8 @@ msgstr "Aucune cache trouvée"
 msgid "Operations on this GeoKret"
 msgstr "Opérations sur ce GeoKret"
 
-#: szukaj.php:9
+#: szukaj.php:9 krety.html.php:12 templates.php:15 templates.php:78
+#: templates.php:204 templates.php:267
 msgid "Search"
 msgstr "Recherche"
 
@@ -1869,4 +1893,57 @@ msgstr "Un compte associé à cette adresse e-mail a été créé sur le site Ge
 #: verify_mail.php:121
 msgid "[GeoKrety] Activate your account"
 msgstr "[GeoKrety] Activez votre compte"
+
+#: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
+#: templates.php:297
+msgid "help.php"
+msgstr "help_generate.php?help=fr"
+
+#: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
+#: templates.php:309
+msgid "help.php#about"
+msgstr "help_generate.php?help=fr#about"
+
+#: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
+#: templates.php:312
+msgid "About"
+msgstr "À propos"
+
+#: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
+#: templates.php:252 templates.php:318 templates.php:324
+msgid "contact"
+msgstr "contact"
+
+#: templates/labels/index.php:42
+msgid "<strong>User's manual:</strong> <strong>1.</strong> Take this GeoKret. Note down his Tracking Code. <strong>2.</strong> Hide in another cache. <strong>3.</strong> Register the trip at https://geokrety.org/"
+msgstr "<strong>Mode d'emploi : </strong> <strong>1.</strong> Prenez ce GeoKret et notez son code de suivi (tracking code).<strong>2.</strong> Déposez-le dans une autre cache.<strong>3.</strong> Signalez son déplacement sur https://geokrety.org. Merci !"
+
+#: templates/labels/index.php:45
+msgid "You can also go to the apppropriate page by decoding the QR-code."
+msgstr "Vous pouvez aussi aller à la page appropriée en décodant le QR-code."
+
+#: templates.php:9 templates.php:72 templates.php:198 templates.php:261
+msgid "Log a GeoKret"
+msgstr "Signaler un GeoKret"
+
+#: templates.php:66 templates.php:138 templates.php:183 templates.php:255
+#: templates.php:321 templates.php:327
+msgid "Report abuse"
+msgstr "Signaler un abus"
+
+#: templates.php:120 templates.php:303
+msgid "Side products"
+msgstr "Fonctions complémentaires"
+
+#: templates.php:147
+msgid "My account"
+msgstr "Mon compte"
+
+#: templates.php:150
+msgid "Account details"
+msgstr "Détails du compte"
+
+#: templates.php:177
+msgid "Logout"
+msgstr "Déconnexion"
 
