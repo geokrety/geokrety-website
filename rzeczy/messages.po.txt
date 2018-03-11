@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-11 19:52+0100\n"
+"POT-Creation-Date: 2018-03-11 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1743,8 +1743,10 @@ msgstr ""
 msgid "Coordinates"
 msgstr ""
 
-#: ruchy.php:705 szukaj-ajax.php:87
-msgid "<a href=\""
+#: ruchy.php:705
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr ""
 
 #: ruchy.php:709
@@ -1816,6 +1818,11 @@ msgstr ""
 msgid ""
 "Please provide the coordinates (lat/lon) of the cache %s in the input box on "
 "left."
+msgstr ""
+
+#: szukaj-ajax.php:87
+#, php-format
+msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr ""
 
 #: szukaj-ajax.php:99

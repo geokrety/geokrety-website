@@ -1,0 +1,8 @@
+Extract gettext string using:
+
+  xgettext --from-code=UTF-8 -o rzeczy/messages.po.txt --language=PHP -f rzeczy/lang/input-files-for-xgettext
+
+
+Compile translation:
+
+  msgfmt rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.po -o rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.mo
