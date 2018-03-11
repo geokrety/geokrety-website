@@ -11,6 +11,10 @@ require_once 'smarty_start.php';
 $TYTUL = _('Statistics');
 
 $TRESC = '
+<h1>Havy users</h1>
+
+<p><img src="'.CONFIG_CDN_IMAGES.'/wykresy/aktywni_userzy.png" alt="Heavy users" /></p>
+
 <h1>Month</h1>
 
 <p><img src="'.CONFIG_CDN_IMAGES.'/wykresy/new/m_gk.png" alt="wykres" /></p>
