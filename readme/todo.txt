@@ -1,0 +1,98 @@
+***DONT USE POLISH LETTERS***
+
+TODO
+====================
+
+Big things:
+--------------------------------
+- OpenID implementation
+- Groups + group managing - filips
+
+- all kinds of maps -- moose
+
+
+Other things:
+--------------------------------
+- add distance to the recent moves
+- waypoint info - make it to use go2geo
+
+
+
+IDEAS
+====================
+* = added to bugs.opencaching.pl
+
+- email reminder sent to users who have geokrets in inventory for certain period of time - szymon (?)
+
+- bulk printink of GK labels. Like in OC - the button "add to printing cart". But not GeoKrets, but ready to print - formatted labels - filips
+
+- use GeoIP to locate anonymous visitor and adjust language, GK listings etc to it (actually I have no idea how to use it, but it may be cool) - filips
+
+- adding comments to all geokrets without knowing the tracking code - too many users :P - should be done smartly - this comment will be added to the "move" or to the "geokret"? This will be keeped in the "ruchy" table or in the other table and JOIN LEFT with ruchy table (this is a better idea I think - it allows a few comments to one log) - filips (?)
+
+*- add a log type "missing/gone/left" (?) - this means geokret was not where he was supposed to be. this can be later repalced by the next person who performs a grab, but maybe its a bad idea... - szymon + on the OC (or other geocaching service) side: when logging a cache, where such kret should be, add a link like "There was no kret? Log it".
+
+- clicking geokret image on front page shows the full size instead of linking to gk page. add a link to the gk somewhere around the picture - Beauty
+
+- przy kaﻱdym wpisie do logu o typie "zabraﻵem geokreta", automatycznie pokazywaﻛ z jakiej skrytki OC geokret zostaﻵ wyjﻧty? Obecnie taka informacja jest prezentowania jedynie dla operacji "wrzuciﻵem geokreta". Chodzi o strony "konkret.php", "Moje najnowsze logi", "Ostatnie ruchy moich geokretﻩw" a takﻱe o tabelkﻧ "Geokrety watchlist" wysyﻵanـ mailem. - http://forum.opencaching.pl/viewtopic.php?p=64762#64762
+
+*- lista najdﻵuﻱej zasiedziaﻵych, zapomnianych kretﻩw. - wallson
+
+*- extra checks to find the correct country flag when first check returns unknown - szymon - I execute the script manually from time to time, but if you have other idea how to check it - feel free.
+
+- inventory missing "Showing items ..." line
+
+- email messages sent from GK email address, not sender's email add. maybe option "show your email" like on gc.com - szymon
+
+- some way of displaying the location where new geokrets were born (country flag / city name etc / location given by owner) - needs more thinking - szymon
+
+- add geokrety toolbox info to download page, perhaps reformat the menu slightly (needs thinking) - szymon
+
+- a propos inventory - kojarzysz zapewne osoby ktore zakladaja sobie skrzynki w domach/plecakach/brzuchach zon itp :P myslisz, ze te osoby nie chcialyby aby krety w tych domowych skrzyunkach byly widoczne rowniez w inventory? .. w sumie to ja jak wrzucam kreta to ide do inventory i potem robie operacje. inni pewnie ida na strone moje krety i stamtad wykonuja operacje.. wiec nie ma roznicy chyba... tylko to, ze szybko widac jakie krety sie ma ze soba nawet jezeli sa w brzuchu zony :p    ::: rozumiem, że można by określić waypoint, w którym przebywające krety wyśiwtlały by się w my inventory?
+
+- check if possible to swap current JS library prototype with jquery one. smaller and also has ajax and we need it for cool tooltips.
+
+- check if there is any solution for IE6 users - they dont see extended menu.
+
+TU idą gorsze (wg mnie - filips) pomysły:
+
+- Moje najdzielniejsze krety"? Jak to widzﻧ? Ano jako prywatny ranking 10 najlepszych, najdzielniejszych kretﻩw, gdzie wyznacznikiem bﻧdzie iloﻶﻛ przebytych kilometrﻩw. Strona w formie tabeli kolejno zawieraﻵaby informacje:
+1. Kwadratowa miniaturka (ta ktﻩra siﻧ wyﻶwietla w chmurkach na mapie geokretﻩw).
+2. Nazwa kreta
+3. Iloﻶﻛ przebytych kilometrﻩw.
+4. Iloﻶﻛ przenosin
+5. Odwiedzone kraje (w formie tych maﻵych flag)
+6. Ostatnio widziany (waypoint).
+http://forum.opencaching.pl/viewtopic.php?p=67961#67961 - wallson
+
+- zliczanie trasy kreta, jeﻶli siedzi w mobilnej skrzynce a skrzynka, 	- mider - http://forum.opencaching.pl/viewtopic.php?p=65416#65416
+
+
+BUGS
+====================
+- after adding comment, geokret is said to be gone from a cache (or is it opencaching bug?) - http://forum.opencaching.pl/viewtopic.php?p=67469#67469 & http://forum.opencaching.pl/viewtopic.php?p=64001#64001
+
+
+IDEAS SUSPENDED
+====================
+- allow an anonymous user post a picture, perhaps force him to solve a captcha too - szymon
+f: I don't think it is a good idea - If ypu want to send photo - just register.
+
+
+DONE
+====================
+- my geokrets table: Reference Number + nazwa GK - ikonka ostatniej operacji + nazwa skrzynki - uzytkownik i data (ostatniej operacji)/lub ilosc dni od ostatniej operacji - calkowity dystans podrozy - data utworzenia - edycja + operacje na GK  http://forum.opencaching.pl/viewtopic.php?p=53770#53770 - /also: "show all" option on those pages /szymon
+
+- https://geokrety.org/export_mapka_kretow.php?latNE=50&latSW=50&lonNE=50&lonSW=50 should use >= <= instead of > < comparison - szymon /that was eeaassyy :) szymon
+
+- geokret's name is displayed on image upload page -  /szymon
+
+- wyszukiwarka zoptymalizowana pod GeoKrety Toolbox - filips :P /szymon
+
+- large number of photos should be displayed in a proper table (fix the table) - szymon /no table used but fixed the divs and it worked - szymon
+
+- rename of posted photos - szymon
+
+- photo gallery for each kret / szymon
+
+- option to pick which image is used as gk's avatar (probably on image upload page), also on photo gallery /szymon

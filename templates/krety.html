@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+{assign var="smartyDataMiesiac" value=$smarty.now|date_format:"%m%d"}
+{assign var="smartyDataRok" value=$smarty.now|date_format:"%Y%m%d"}
+{assign var="baseUrl" value="https://cdn.geokrety.org"}
+{assign var="cssUrl" value="https://cdn.geokrety.org/css"}
+{assign var="bannerUrl" value="https://cdn.geokrety.org/images/banners"}
+{assign var="iconsUrl" value="https://cdn.geokrety.org/images/icons"}
+<head>
+  <meta http-equiv="Content-Type" content="text/xml; charset=UTF-8" />
+  <title>GeoKrety: {$tytul}</title>
+  <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety-handheld.css" media="handheld" />
+  <link href='https://fonts.googleapis.com/css?family=Oxygen&amp;subset=latin,latin-ext,cyrillic-ext,greek-ext,vietnamese,cyrillic' rel='stylesheet' type='text/css' />
+  <link rel="author" href="https://plus.google.com/100314116846204554033/"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.geokrety.org/images/favicon/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.geokrety.org/images/favicon/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.geokrety.org/images/favicon/favicon-16x16.png"/>
+  <link rel="manifest" href="https://cdn.geokrety.org/images/favicon/manifest.json"/>
+  <link rel="mask-icon" href="https://cdn.geokrety.org/images/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
+  <link rel="shortcut icon" href="https://cdn.geokrety.org/images/favicon/favicon.ico"/>
+  <meta name="msapplication-config" content="https://cdn.geokrety.org/images/favicon/browserconfig.xml"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{$head}
+{if $smartyDataMiesiac eq '401'}	{* prima aprilis *}
+  <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety-1kwietnia.css" media="screen" />
+{else}
+  <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety.css?ver=19.6" media="screen" />
+{/if}
+  <link rel="stylesheet" type="text/css" href="{$cssUrl}/flag-icon.min.css" media="screen" />
+</head>
+<body {$body}>
+
+{assign var="specialmsg" value="/home/geokrety/wiadomosc_specjalna.tpl"}
+{ if file_exists($specialmsg) }
+<div id="banner" style="position: absolute; top: 0; right: 0;background-color: green;width: 60%;">
+<div id="banner-content" style="margin: 0 auto;margin-left: 5px; padding: 9px; color: white; font-weight: bold;">
+{include file=$specialmsg}
+</div></div>
+{/if}
+
+<div id="top"><a href="https://geokrety.org/">
+
+{if $smartyDataMiesiac eq '1206'}	{* mikołajki *}
+	<img src="{$bannerUrl}/logo-mikolajki.png" border="0" alt="logo" title="mikołajki" />
+{elseif $smartyDataMiesiac >= 1224 and $smartyDataMiesiac <=  1228 } {* Święta *}
+	<img src="{$bannerUrl}/logo-swieta2.png" border="0" alt="logo" title="Merry Christmas!" />
+{elseif $smartyDataMiesiac == 1231 or ($smartyDataMiesiac >=  101 and $smartyDataMiesiac <= 104 )} {* Sylwester Nowy rok *}
+	<img src="{$bannerUrl}/logo-sylwestra.png" border="0" alt="logo" title="Happy New Year!!!" />
+{elseif $smartyDataMiesiac == 214} {* Walentynki *}
+	<img src="{$bannerUrl}/logo-walentynki.png" border="0" alt="logo" title="Walentynki, Valentine s Day" />
+{elseif $smartyDataMiesiac == 401} {* Prima Aprilis *}
+	<img src="{$bannerUrl}/geozyrafy.png" border="0" alt="logo" title="Prima Aprilis!!!" />
+{elseif $smartyDataMiesiac == '1031'} {* Hallowen *}
+	<img src="{$bannerUrl}/geokrety+pumpkin.png" border="0" alt="logo" title="Haloooooooooowen / Dziady" />
+
+{elseif ($smartyDataMiesiac == 327 )} {* Wielkanoc! *}
+	<img src="{$bannerUrl}/logo-wielkanoc2.png" border="0" alt="logo" title="Wielkanoc! Easter! Ostern!" />
+
+{elseif ($smartyDataMiesiac >= 321 and $smartyDataMiesiac <= 329 )} {* Wiosna! *}
+	<img src="{$bannerUrl}/logo-wiosna.png" border="0" alt="logo" title="Wiosna! Spring!" />
+{elseif $smartyDataRok >= 20171026 and $smartyDataRok <= 20181026 } {* urodziny GK *}
+	<img src="{$bannerUrl}/10years-banner-top.png" border="0" alt="logo" title="GeoKrety 10 years Birthday!!!" />
+{elseif $smartyDataMiesiac eq '1026'} {* urodziny GK *}
+	<img src="{$bannerUrl}/logo-urodziny.png" border="0" alt="logo" title="GeoKrety Birthday!!!" />
+
+{* święta ruchome - odkomentować w miarę potrzeby *}
+{elseif ($smartyDataMiesiac == 110 )} {* WOŚP - skasować albo zmienić na datę z następnego roku! *}
+	<img src="{$bannerUrl}/geokrety+wosp.png" border="0" alt="logo" title="23 Finał Wielkiej Orkiestry Świątecznej Pomocy!" />
+{else}
+	<img src="{$bannerUrl}/logo-puste.png" border="0" alt="logo aa:  { $smartyDataMiesiac }" />
+{/if}
+</a> {$tytul}
+</div>
+<div id="lewo">
+
+<ul class="dropdown spritemenu greenmenu">
+<li><img class="menu-home" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/index.php">{t}Home{/t}</a></li>
+<li><img class="menu-flag_add" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/ruchy.php"><strong>{t}Log a GeoKret{/t}</strong></a><br/>
+	<span class="bardzomale" style="padding-left:21px">{t}no need to register!{/t}</span></li>
+	{include file="$template_login"}
+</ul>
+<ul class="dropdown spritemenu innemenu">
+<li><img class="menu-search" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/szukaj.php">{t}Search{/t}</a></li>
+<li><img class="menu-photos" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/galeria.php">{t}Photo gallery{/t}</a></li>
+<li class="dir"><img class="menu-stat" src="{$iconsUrl}/_.gif" alt="*" /> {t}Statistics{/t}
+ <ul>
+ <li><img class="menu-stat" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/statystyczka.php">{t}Statistics{/t}</a></li>
+ <li><img class="menu-stat" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/country_stat.php">{t}Stats by country{/t}</a></li>
+ <li><img class="menu-lost" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/lost.php">{t}Probably lost geokrets{/t}</a></li>
+ </ul>
+</li>
+<li><img class="menu-down" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/download.php">{t}Download{/t}</a></li>
+<li><img class="menu-newspaper" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/niusy.php">{t}News{/t}</a></li>
+<li class="dir"><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> {t}Help{/t} / Docs
+ <ul>
+ <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a href="{t}help.php{/t}">{t}Help{/t}</a></li>
+ <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/help.php">Help in english</a></li>
+ <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/molehole.php">Moleholes and GK hotels</a></li>
+ <li><img class="menu-newspaper" src="{$iconsUrl}/_.gif" alt="*" /> <a href="presscorner.php">{t}Press corner{/t}</a></li>
+ <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a href="termsofuse.php">{t}Terms of use{/t}</a></li>
+ <li><img class="menu-code" src="{$iconsUrl}/_.gif" alt="*" /> <a href="api.php">GK interface / api</a></li>
+ </ul>
+</li>
+<li class="dir"><img class="menu-lab16" src="{$iconsUrl}/_.gif" alt="*" /> {t}Side products{/t}
+ <ul>
+ <li><img class="menu-mapka" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/geomapa.php">{t}Map of caches{/t}</a></li>
+ <li><img class="menu-mapka" src="{$iconsUrl}/_.gif" alt="*" /> <a href="https://GeokretyMap.org/">GeokretyMap.org</a></li>
+ <li><img class="menu-lab16" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/toolbox.php">GeoKrety Toolbox</a></li>
+ <li><img class="menu-lab16" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/go2geo/">Waypoint resolver</a></li>
+ </ul>
+</li>
+
+</ul>
+<ul class="dropdown flagi innemenu">
+<li>
+<a href="lang.php?lang=en_US.UTF-8" title="English"><span class="flag-icon flag-icon-gb"></a>
+<a href="lang.php?lang=pl_PL.UTF-8" title="Polski"><span class="flag-icon flag-icon-pl"></a>
+<a href="lang.php?lang=de_DE.UTF-8" title="Deutsch"><span class="flag-icon flag-icon-de"></a>
+<a href="lang.php?lang=fr_FR.UTF-8" title="Français"><span class="flag-icon flag-icon-fr"></a>
+<a href="lang.php?lang=es_ES.UTF-8" title="Español"><span class="flag-icon flag-icon-es"></a>
+<a href="lang.php?lang=cs_CZ.UTF-8" title="Česky"><span class="flag-icon flag-icon-cz"></a>
+<a href="lang.php?lang=sk_SK.UTF-8" title="Slovenčina"><span class="flag-icon flag-icon-sk"></a>
+<a href="lang.php?lang=it_IT.UTF-8" title="Italiano"><span class="flag-icon flag-icon-it"></a>
+<a href="lang.php?lang=ro_RO.UTF-8" title="Română"><span class="flag-icon flag-icon-ro"></a>
+<a href="lang.php?lang=da_DK.UTF-8" title="Dansk"><span class="flag-icon flag-icon-dk"></a>
+<a href="lang.php?lang=pt_PT.UTF-8" title="Português"><span class="flag-icon flag-icon-pt"></a>
+<a href="lang.php?lang=nl_NL.UTF-8" title="Nederlands"><span class="flag-icon flag-icon-nl"></a>
+<a href="lang.php?lang=sv_SE.UTF-8" title="Svenska"><span class="flag-icon flag-icon-se"></a>
+<a href="lang.php?lang=fi_FI.UTF-8" title="Suomi"><span class="flag-icon flag-icon-fi"></a>
+<a href="lang.php?lang=et_EE.UTF-8" title="Eesti"><span class="flag-icon flag-icon-ee"></a>
+<a href="lang.php?lang=hu_HU.UTF-8" title="Magyar"><span class="flag-icon flag-icon-hu"></a>
+<a href="lang.php?lang=lt_LT.UTF-8" title="Lietuvių"><span class="flag-icon flag-icon-lt"></a>
+<a href="lang.php?lang=lv_LV.UTF-8" title="Latviešu"><span class="flag-icon flag-icon-lv"></a>
+<a href="lang.php?lang=uk_UA.UTF-8" title="Українська"><span class="flag-icon flag-icon-ua"></a>
+<a href="lang.php?lang=bg_BG.UTF-8" title="Български"><span class="flag-icon flag-icon-bg"></a>
+<a href="lang.php?lang=sq_AL.UTF-8" title="Shqip"><span class="flag-icon flag-icon-al"></a>
+<a href="lang.php?lang=el_GR.UTF-8" title="Ελληνικά"><span class="flag-icon flag-icon-gr"></a>
+<a href="lang.php?lang=th_TH.UTF-8" title="ไทย"><span class="flag-icon flag-icon-th"></a>
+<a href="lang.php?lang=tl_PH.UTF-8" title="Pilipinas"><span class="flag-icon flag-icon-ph"></a>
+<a href="lang.php?lang=ca_ES.UTF-8" title="Català"><span class="flag-icon flag-icon-es-ct"></a>
+<a href="lang.php?lang=zh_CN.UTF-8" title="Chinese"><span class="flag-icon flag-icon-cn"></a>
+<a href="lang.php?lang=ru_RU.UTF-8" title="Русский"><span class="flag-icon flag-icon-ru"></a>
+<a href="lang.php?lang=tr_TR.UTF-8" title="Türk"><span class="flag-icon flag-icon-tr"></span></a>
+</li>
+</ul>
+
+<ul class="dropdown innemenu">
+<li><a href="{t}help.php#about{/t}">{t}About{/t}</a></li>
+<li><a href="halloffame.php">{t}Hall of fame{/t}</a></li>
+</ul>
+
+</div>
+
+<div id="prawo">
+
+{if count($alert_msgs)}
+{foreach from=$alert_msgs item=alert_msg}
+<div class="alert alert-{$alert_msg.level}" role="alert">
+{$alert_msg.message}
+</div>
+{/foreach}
+{/if}
+
+<!-- tresc -->
+{$tresc}
+<!-- tresc -->
+</div>
+
+<div id="footnote">Made in Poland | by filips | <a href="http://validator.w3.org/check?uri=referer" class="male">xhtml</a> + <a class="male" href="http://jigsaw.w3.org/css-validator/check/referer">css</a> | <a class="male" href="https://geokrety.org/">geokrety.org</a> | <a class="male" href="/kontakt.php">{t}contact{/t}</a> | <a class="male" href="https://plus.google.com/100314116846204554033?rel=author">g+</a> | <a class="male" href="abuse.php">{t}Report abuse{/t}</a> | <a class="male" href="termsofuse.php">{t}Terms of use{/t}</a> | <a href="/set_ssl.php"><img src="{$iconsUrl}/ssl.png" alt="ssl" border="0" /></a> </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+{$ogon}
+{literal}
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.kumy.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '51']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//piwik.kumy.net/piwik.php?idsite=51&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+{/literal}
+
+</body>
+</html>

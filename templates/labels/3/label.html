@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/xml; charset=UTF-8" />
+	<title>GeoKrety: {$nazwa}</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="{$szablon_css}" />
+</head>
+
+<body>
+
+
+<div class="ramka_glowna">
+
+<div class="ramka_logo">
+   <object type="image/svg+xml" data="{$szablon}/logo.svg" width="199" height="37">
+    <img src="{$szablon}/logo.png" alt="logo alternatywne" width="197" height="34" />
+   </object>
+
+</div>
+
+
+<div class="ramka_mniejsza">
+<span class="infotext">My name is:</span><br />
+<span class="zawartosc">{$nazwa}</span>
+</div>
+
+
+<div class="ramka_najmniejsza">
+<span class="infotext">Reference number:</span><br />
+<span class="zawartosc">{$id}</span>
+</div>
+
+<div class="ramka_mniejsza">
+<span class="infotext">My owner is:</span><br />
+<span class="zawartosc">{$owner}</span>
+</div>
+
+
+<div class="ramka_tracking">
+<span class="infotext">Tracking code:</span><br />
+<span class="zawartosc">{$tracking}</span>
+</div>
+
+
+<div class="ramka_opis">
+<span class="infotext">Information:</span><br />
+<span class="zawartosc_opis">{$opis}</span>
+</div>
+
+
+
+
+<div class="ramka_footnote">
+<span class="infotext">visit <strong>geokrety.org</strong> to log grabbing/dropping | no need to register</span>
+</div>
+
+
+</div>
+
+
+<div class="ramka_glowna_instrukcja">
+
+<div class="ramka_qr">
+<img src="../qr2/qr.php?d=https://geokrety.org/m/qr.php?nr={$tracking}" alt="QR CODE" />
+</div>
+
+
+{$help}
+
+</div>
+
+</body>
+</html>

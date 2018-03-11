@@ -1,0 +1,35 @@
+# Context
+
+In order to simplify the chain to say if a GeoKret is in the hands of a user. It would be convenient to ad a new field into the gk-geokrety table. Let's call it "hands_of".
+
+
+# Create the new field using:
+
+ALTER TABLE `gk-geokrety`
+ADD `hands_of` INT(10) NULL COMMENT 'In the hands of user' AFTER `ost_log_id`,
+ADD INDEX `hands_of_index` (`hands_of`);
+
+
+# Fill initial data
+
+This queries will update all GeoKrety.
+
+CREATE TABLE tmp AS  (
+SELECT gk1.id, (
+    SELECT if(gk.ost_pozycja_id <> 0, ru.user, gk.owner) AS userid
+    FROM `gk-geokrety` AS gk
+        LEFT JOIN `gk-ruchy` ru ON ( gk.ost_pozycja_id = ru.ruch_id )
+    WHERE (ru.logtype IN ('1', '5') OR gk.ost_pozycja_id = '0')
+    AND gk1.id = gk.id
+    ) AS userid
+FROM `gk-geokrety` AS gk1
+);
+
+ALTER TABLE tmp
+ADD INDEX index_id (id);
+
+UPDATE `gk-geokrety`
+LEFT JOIN tmp ON (`gk-geokrety`.id = tmp.id)
+SET hands_of = tmp.userid;
+
+DROP TABLE tmp;

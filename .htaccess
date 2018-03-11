@@ -1,0 +1,21 @@
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag html_errors on
+php_flag  log_errors on
+php_value error_log  /tmp/PHP_errors.log
+
+ErrorDocument 403 /templates/errors/error403.html
+ErrorDocument 404 /templates/errors/error404.html
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/statpics/.*\.png
+RewriteRule ^statpics/(.*)$ https://cdn.geokrety.org/images/statpics/$1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/obrazki/.*\.(png|gif|svg|jpg|jpeg)
+RewriteRule ^obrazki/(.*)$ https://cdn.geokrety.org/images/obrazki/$1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/obrazki-male/.*\.(png|gif|svg|jpg|jpeg)
+RewriteRule ^obrazki-male/(.*)$ https://cdn.geokrety.org/images/obrazki-male/$1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/templates/medal-.*\.png
+RewriteRule ^templates/(medal-.*\.png)$ https://cdn.geokrety.org/images/medals/$1 [R=301,L]
