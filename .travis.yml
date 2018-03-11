@@ -1,0 +1,30 @@
+language: php
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+        - $HOME/.php-cs-fixer
+
+matrix:
+    fast_finish: true
+    include:
+          # Test the latest stable release
+        - php:   5.6
+        - php:   7.1
+        - php:   7.2
+
+addons:
+    apt:
+        packages:
+            - moreutils
+
+install:
+    - composer require --dev friendsofphp/php-cs-fixer
+
+script:
+    - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
+    # Check against CRLF
+    - scripts/check-crlf.sh
+    # Check against trailing whitespaces on php files
+    - scripts/check-trailling-spaces.sh .
+    # Check against non utf-8 files
+    - scripts/check-utf8.sh .

@@ -21,6 +21,7 @@ if (class_exists('PhpCsFixer\Finder')) {    // PHP-CS-Fixer 2.x
         ->setRules(array(
             '@Symfony' => true,
             'no_closing_tag' => true,
+            'yoda_style' => false,
         ))
         ->setFinder($finder)
     ;
