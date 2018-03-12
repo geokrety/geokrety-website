@@ -25,6 +25,9 @@ $config['md5_string2'] = 'xxx';
 // dodajniusa access
 $config['news_password'] = 'xxx';
 
+// export bypass
+$kocham_kaczynskiego = "xxx";
+
 // jRating access token
 $config['jrating_token'] = 'xxx';
 

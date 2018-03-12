@@ -46,8 +46,7 @@ $limit_czasu_d = 10;    // in days; limits the amount of data to download //
 $limit_czasu_s = 86400 * $limit_czasu_d;
 $jak_stare_dane = time() - strtotime("$od");
 
-// jeśli kocham_kaczynskiego='yesyesyes' -- można pobrać pełne dane. uwaga - to tajne hasło!;) //
-if (($jak_stare_dane > $limit_czasu_s) and ($g_kocham_kaczynskiego != 'yesyesyes')) {
+if (($jak_stare_dane > $limit_czasu_s) and ($g_kocham_kaczynskiego != $kocham_kaczynskiego)) {
     $warning = "The requested period exceeds the $limit_czasu_d days limit (you requested data for the past ".round($jak_stare_dane / 86400, 2).' days) -- please download a static version of the XML. For more information, see '.$config['adres'].'api.php';
     errory_add($warning, 6, 'export_oc');
     echo $warning;
