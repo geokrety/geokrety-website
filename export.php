@@ -70,6 +70,18 @@ $MAPA = $_GET['mapa']; // ???
 
 $now = date('Y-m-d H:i:s');
 
+header('Content-Type: application/xml');
+printf(
+  '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<gkxml version="1.0" date="%s">',
+  $now
+);
+
+// dla mapki kretów
+if ($MAPA == 1) {
+    echo '<geokrety>';
+}
+
 // ----------------------------- KRETY ------------------------------//
 
 $sql = "SELECT a.id, a.nazwa, a.opis, a.owner as id_owner, b.user as owner, a.data as data_utw, a.droga, c.logtype as stan, a.missing, c.lat, c.lon, c.waypoint, a.typ
@@ -89,7 +101,6 @@ WHERE a.timestamp > '$od'";
 $result = $db->exec($sql, $num_rows, 1);
 errory_add("export records:$num_rows", $severity, 'export');
 
-$OUTPUT = '';
 if ($result) {
     while ($row = mysqli_fetch_array($result)) {
         //print_r($row);
@@ -101,9 +112,9 @@ if ($result) {
 
         if ($MAPA == '1') { // ???
             //<geokret id="1" name="Pierwszy GeoKret" dist="0" lat="" lng="" waypoint="" owner_id="1" owner="filips" state="" type="0"/>
-            $OUTPUT .= '<geokret id="'.$row['id'].'" dist="'.$row['droga'].'" lat="'.$row['lat'].'" lng="'.$row['lon'].'" waypoint="'.$row['waypoint'].'" owner_id="'.$row['id_owner'].'" state="'.$row['stan'].'" type="'.$row['typ'].'"><![CDATA['.$row['nazwa'].']]></geokret>'."\n";
+            echo '<geokret id="'.$row['id'].'" dist="'.$row['droga'].'" lat="'.$row['lat'].'" lng="'.$row['lon'].'" waypoint="'.$row['waypoint'].'" owner_id="'.$row['id_owner'].'" state="'.$row['stan'].'" type="'.$row['typ'].'"><![CDATA['.$row['nazwa'].']]></geokret>'."\n";
         } else {
-            $OUTPUT .= '
+            echo '
  <geokret id="'.$row['id'].'">
    <name><![CDATA['.$row['nazwa'].']]></name>
    <description><![CDATA['.$row['opis'].']]></description>
@@ -144,7 +155,7 @@ if ($MAPA != '1') { // ??? // bo dla mapki nie potrzeba
             $row['koment'] = ikonw($row['koment'], 'UTF-8');
             $row['user'] = ikonw($row['user'], 'UTF-8');
 
-            $OUTPUT .= '
+            echo '
  <moves id="'.$row['ruch_id'].'">
    <geokret id="'.$row['id'].'"><![CDATA['.$row['nazwa'].']]></geokret>
    <position latitude="'.$row['lat'].'" longitude="'.$row['lon'].'" />
@@ -167,14 +178,7 @@ if ($MAPA != '1') { // ??? // bo dla mapki nie potrzeba
 
 // dla mapki kretów
 if ($MAPA == 1) {
-    $OUTPUT = "<geokrety>$OUTPUT</geokrety>";
+    echo '</geokrety>';
 }
 
-// nagłówek i stopka
-$OUTPUT = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>
-<gkxml version=\"1.0\" date=\"$now\">
-$OUTPUT
-</gkxml>";
-
-header('Content-Type: application/xml');
-echo $OUTPUT;
+echo '</gkxml>';
