@@ -146,7 +146,7 @@ if ($MAPA != '1') { // ??? // bo dla mapki nie potrzeba
 	ON a.user = c.userid
 	WHERE a.timestamp > '$od'";
 
-    $result = $db->exec($sql, $num_rows, 1);
+    $result = $db->get_db_link()->query($sql, MYSQLI_USE_RESULT);
 
     if ($result) {
         while ($row = mysqli_fetch_array($result)) {
