@@ -1,6 +1,5 @@
 <?php
 
-// śćńółżść
 require_once '../wybierz_jezyk.php'; // choose the user's language
 
 $TYTUL = 'GK info';
@@ -22,21 +21,19 @@ WHERE `gk-geokrety`.`nr`='$nr' LIMIT 1"
 list($id, $nr, $nazwa, $opis, $userid, $user, $data, $krettyp, $droga_total) = mysqli_fetch_array($result);
 mysqli_free_result($result);
 
-$TRESC = "<strong>$nazwa</strong> by $user<br />
-travelled $droga_total km
+$TRESC = '<h1>'.sprintf(_('<strong>%s</strong> by %s</h1>'), $nazwa, $user).
+'<h2>'.sprintf(_('Travelled %s km'), $droga_total).'</h2>
 
-<p><a href=\"../ruchy.php?nr=$nr\">Log grabbing or dropping</a><br />
-<a href=\"../konkret.php?id=$id\">View the GK details</a><br />
-</p>
+<div class="btn-group btn-group-vertical btn-group-lg" role="group" style="width: 100%;">
+  <a class="btn btn-default" href="../ruchy.php?nr=$nr">'._('Log grabbing or dropping').'</a>
+  <a class="btn btn-default" href="../konkret.php?id=$id">'._('View the GK details').'</a>
+</div>
+
+<h3>'._('Description:').'</h3>'.$opis.'
 
 <hr></hr>
 
-<strong>Description</strong>: $opis
-
-<hr></hr>
-
-<p><a href=\"https://geokrety.org/\">geokrety.org, the home of free, trackable moles</a></p>
-";
+<p>'.sprintf(_('<a href="%s">%s</a>, the home of free, trackable moles.'), 'https://geokrety.org/', 'geokrety.org').'</p>';
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //
 require_once 'smarty.php';
