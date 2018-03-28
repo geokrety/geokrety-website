@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-11 20:15+0100\n"
+"POT-Creation-Date: 2018-03-28 22:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: adduser.php:8 adduser.php:105 templates/plugins/function.login_check.php:37
-#: templates.php:186
+#: adduser.php:8 adduser.php:105 templates.php:186
+#: templates/plugins/function.login_check.php:37
 msgid "Register a new user"
 msgstr ""
 
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: adduser.php:101 termsofuse.php:11 templates.php:117 templates.php:141
+#: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
 msgid "Terms of use"
 msgstr ""
 
@@ -113,13 +113,13 @@ msgid ""
 "log in and enjoy GeoKrety.org! :)"
 msgstr ""
 
-#: adduser.php:167 longin.php:9 templates/plugins/function.login_check.php:37
-#: templates.php:189
+#: adduser.php:167 longin.php:9 templates.php:189
+#: templates/plugins/function.login_check.php:37
 msgid "Login"
 msgstr ""
 
-#: adduser.php:167 templates/plugins/function.login_check.php:37
-#: templates.php:192
+#: adduser.php:167 templates.php:192
+#: templates/plugins/function.login_check.php:37
 msgid "Forgot password?"
 msgstr ""
 
@@ -228,27 +228,27 @@ msgstr ""
 msgid "Missing or invalid coordinates."
 msgstr ""
 
-#: cotozalog.php:8 templates/konfig.php:127
+#: cotozalog.php:8 templates/konfig.php:130
 msgid "Dropped to"
 msgstr ""
 
-#: cotozalog.php:9 templates/konfig.php:128
+#: cotozalog.php:9 templates/konfig.php:131
 msgid "Grabbed from"
 msgstr ""
 
-#: cotozalog.php:10 templates/konfig.php:129
+#: cotozalog.php:10 templates/konfig.php:132
 msgid "A comment"
 msgstr ""
 
-#: cotozalog.php:11 templates/konfig.php:130
+#: cotozalog.php:11 templates/konfig.php:133
 msgid "Seen in"
 msgstr ""
 
-#: cotozalog.php:12 templates/konfig.php:131
+#: cotozalog.php:12 templates/konfig.php:134
 msgid "Archived"
 msgstr ""
 
-#: cotozalog.php:13 templates/konfig.php:132
+#: cotozalog.php:13 templates/konfig.php:135
 msgid "Dipped in"
 msgstr ""
 
@@ -276,19 +276,19 @@ msgstr ""
 msgid "Freshman mole"
 msgstr ""
 
-#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:134
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:137
 msgid "Traditional"
 msgstr ""
 
-#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:135
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:138
 msgid "A book/CD/DVD..."
 msgstr ""
 
-#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:136
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:139
 msgid "A human"
 msgstr ""
 
-#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:137
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:140
 msgid "A coin"
 msgstr ""
 
@@ -625,7 +625,7 @@ msgstr ""
 msgid "Hall of fame"
 msgstr ""
 
-#: help_generate.php:10 help.php:9 krety.html.php:24 templates.php:42
+#: help.php:9 help_generate.php:10 krety.html.php:24 templates.php:42
 #: templates.php:48 templates.php:105 templates.php:111 templates.php:231
 #: templates.php:237 templates.php:294 templates.php:300
 msgid "Help"
@@ -745,7 +745,7 @@ msgid ""
 "distance from the Earth to the Sun)."
 msgstr ""
 
-#: index.php:113 niusy.php:9 krety.html.php:18 templates.php:39
+#: index.php:113 krety.html.php:18 niusy.php:9 templates.php:39
 #: templates.php:102 templates.php:228 templates.php:291
 msgid "News"
 msgstr ""
@@ -782,12 +782,50 @@ msgstr ""
 msgid "in"
 msgstr ""
 
-#: konkret.php:81
-msgid "Edit description"
+#: konkret-tabelka.php:182
+msgid "Report as missing"
 msgstr ""
 
-#: konkret.php:82 konkret-tabelka.php:233 recent_moves.php:216
+#: konkret-tabelka.php:216 lingering.php:116 mygeokrets.php:185
+#: recent_moves.php:171
+msgid "Search for caches in this area on geocaching.com"
+msgstr ""
+
+#: konkret-tabelka.php:216 lingering.php:116 mygeokrets.php:185
+#: recent_moves.php:171
+msgid "Search geocaching.com"
+msgstr ""
+
+#: konkret-tabelka.php:227
+msgid "Write comment"
+msgstr ""
+
+#: konkret-tabelka.php:233 konkret.php:82 recent_moves.php:216
 msgid "Add photo"
+msgstr ""
+
+#: konkret-tabelka.php:233 recent_moves.php:216
+msgid "Edit log"
+msgstr ""
+
+#: konkret-tabelka.php:239
+msgid "Delete log"
+msgstr ""
+
+#: konkret-tabelka.php:268 konkret.php:135
+msgid "Rename"
+msgstr ""
+
+#: konkret-tabelka.php:269 konkret.php:136
+msgid "Delete photo"
+msgstr ""
+
+#: konkret-tabelka.php:354
+msgid "Delete comment"
+msgstr ""
+
+#: konkret.php:81
+msgid "Edit description"
 msgstr ""
 
 #: konkret.php:85
@@ -802,11 +840,11 @@ msgstr ""
 msgid "Write a note"
 msgstr ""
 
-#: konkret.php:93 mypage.php:334 statystyczka2.php:11 statystyczka3.php:11
-#: statystyczka-hubs.php:11 statystyczka-lata.php:11 statystyczka.php:11
-#: user_stat.php:196 templates.php:24 templates.php:27 templates.php:87
+#: konkret.php:93 mypage.php:334 statystyczka-hubs.php:11
+#: statystyczka-lata.php:11 statystyczka.php:11 statystyczka2.php:11
+#: statystyczka3.php:11 templates.php:24 templates.php:27 templates.php:87
 #: templates.php:90 templates.php:213 templates.php:216 templates.php:276
-#: templates.php:279
+#: templates.php:279 user_stat.php:196
 msgid "Statistics"
 msgstr ""
 
@@ -824,14 +862,6 @@ msgstr ""
 
 #: konkret.php:113
 msgid "Recreate a label for this geokret"
-msgstr ""
-
-#: konkret.php:135 konkret-tabelka.php:268
-msgid "Rename"
-msgstr ""
-
-#: konkret.php:136 konkret-tabelka.php:269
-msgid "Delete photo"
 msgstr ""
 
 #: konkret.php:144
@@ -926,36 +956,6 @@ msgstr ""
 msgid "Download the track as:"
 msgstr ""
 
-#: konkret-tabelka.php:182
-msgid "Report as missing"
-msgstr ""
-
-#: konkret-tabelka.php:216 lingering.php:116 mygeokrets.php:185
-#: recent_moves.php:171
-msgid "Search for caches in this area on geocaching.com"
-msgstr ""
-
-#: konkret-tabelka.php:216 lingering.php:116 mygeokrets.php:185
-#: recent_moves.php:171
-msgid "Search geocaching.com"
-msgstr ""
-
-#: konkret-tabelka.php:227
-msgid "Write comment"
-msgstr ""
-
-#: konkret-tabelka.php:233 recent_moves.php:216
-msgid "Edit log"
-msgstr ""
-
-#: konkret-tabelka.php:239
-msgid "Delete log"
-msgstr ""
-
-#: konkret-tabelka.php:354
-msgid "Delete comment"
-msgstr ""
-
 #: kontakt.php:10
 msgid "Contact"
 msgstr ""
@@ -964,12 +964,41 @@ msgstr ""
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr ""
 
+#: krety.html.php:9 ruchy.php:615
+msgid "Operations on GeoKrety"
+msgstr ""
+
+#: krety.html.php:12 szukaj.php:9 templates.php:15 templates.php:78
+#: templates.php:204 templates.php:267
+msgid "Search"
+msgstr ""
+
+#: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
+#: templates.php:297
+msgid "help.php"
+msgstr ""
+
+#: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
+#: templates.php:309
+msgid "help.php#about"
+msgstr ""
+
+#: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
+#: templates.php:312
+msgid "About"
+msgstr ""
+
+#: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
+#: templates.php:252 templates.php:318 templates.php:324
+msgid "contact"
+msgstr ""
+
 #: labels.php:11
 msgid "Print label"
 msgstr ""
 
 #: labels.php:58 lingering.php:201 mygeokrets.php:288 mygeokrets.php:293
-#: race_list.php:183 race_list.php:270 race.php:285 race.php:408
+#: race.php:285 race.php:408 race_list.php:183 race_list.php:270
 msgid "Owner"
 msgstr ""
 
@@ -1004,16 +1033,12 @@ msgid "Last action"
 msgstr ""
 
 #: lingering.php:232 lost_mapka.php:52 mapka_kretow.php:69 mygeokrets.php:334
-#: race_list.php:101 race.php:107 recent_moves.php:96
+#: race.php:107 race_list.php:101 recent_moves.php:96
 msgid "Distance travelled"
 msgstr ""
 
-#: lingering.php:233 mygeokrets.php:335 race_list.php:102 race.php:108
+#: lingering.php:233 mygeokrets.php:335 race.php:108 race_list.php:102
 msgid "Number of visited caches"
-msgstr ""
-
-#: longin_chceck.php:27
-msgid "Wrong secid identifier"
 msgstr ""
 
 #: longin.php:43
@@ -1043,15 +1068,8 @@ msgid ""
 "policy</a>"
 msgstr ""
 
-#: lost_mapka.php:10 mapa.php:9 mapka_kretow.php:9 race.php:334
-msgid "Geokrets on the map"
-msgstr ""
-
-#: lost_mapka.php:48 mapka_kretow.php:65
-msgid ""
-"Map centers at your home coordinates (you can edit it in your profile). If "
-"you hadn't defined it, the map  centers on the Most Przyjaźni in Zgorzelec/"
-"Gorlitz."
+#: longin_chceck.php:27
+msgid "Wrong secid identifier"
 msgstr ""
 
 #: lost.php:9 templates.php:33 templates.php:96 templates.php:222
@@ -1073,6 +1091,44 @@ msgstr ""
 
 #: lost.php:14
 msgid "The list is generated daily."
+msgstr ""
+
+#: lost_mapka.php:10 mapa.php:9 mapka_kretow.php:9 race.php:334
+msgid "Geokrets on the map"
+msgstr ""
+
+#: lost_mapka.php:48 mapka_kretow.php:65
+msgid ""
+"Map centers at your home coordinates (you can edit it in your profile). If "
+"you hadn't defined it, the map  centers on the Most Przyjaźni in Zgorzelec/"
+"Gorlitz."
+msgstr ""
+
+#: m/qr.php:24
+#, php-format
+msgid "<strong>%s</strong> by %s</h1>"
+msgstr ""
+
+#: m/qr.php:25
+#, php-format
+msgid "Travelled %s km"
+msgstr ""
+
+#: m/qr.php:28
+msgid "Log grabbing or dropping"
+msgstr ""
+
+#: m/qr.php:29
+msgid "View the GK details"
+msgstr ""
+
+#: m/qr.php:32
+msgid "Description:"
+msgstr ""
+
+#: m/qr.php:36
+#, php-format
+msgid "<a href=\"%s\">%s</a>, the home of free, trackable moles."
 msgstr ""
 
 #: majluj.php:8
@@ -1149,13 +1205,13 @@ msgstr ""
 msgid "Generate new secid"
 msgstr ""
 
-#: mypage.php:109 mypage.php:375 templates/plugins/function.login_check.php:48
-#: templates.php:162
+#: mypage.php:109 mypage.php:375 templates.php:162
+#: templates/plugins/function.login_check.php:48
 msgid "My recent logs"
 msgstr ""
 
-#: mypage.php:120 mypage.php:376 templates/plugins/function.login_check.php:49
-#: templates.php:165
+#: mypage.php:120 mypage.php:376 templates.php:165
+#: templates/plugins/function.login_check.php:49
 msgid "Recent moves of my geokrets"
 msgstr ""
 
@@ -1202,13 +1258,13 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-#: mypage.php:372 templates/plugins/function.login_check.php:45
-#: templates.php:153
+#: mypage.php:372 templates.php:153
+#: templates/plugins/function.login_check.php:45
 msgid "Geokrets in my inventory"
 msgstr ""
 
-#: mypage.php:373 templates/plugins/function.login_check.php:46
-#: templates.php:156
+#: mypage.php:373 templates.php:156
+#: templates/plugins/function.login_check.php:46
 msgid "My geokrets"
 msgstr ""
 
@@ -1224,8 +1280,8 @@ msgstr ""
 msgid "Photos of my geokrets"
 msgstr ""
 
-#: mypage.php:379 templates/plugins/function.login_check.php:50
-#: templates.php:174
+#: mypage.php:379 templates.php:174
+#: templates/plugins/function.login_check.php:50
 msgid "Where are my geokrets?"
 msgstr ""
 
@@ -1287,8 +1343,129 @@ msgstr ""
 msgid "Press corner"
 msgstr ""
 
-#: race_add.php:8 race.php:382
+#: race.php:43 race.php:46 race.php:47 race.php:442 race_list.php:34
+#: race_list.php:37 race_list.php:38 race_list.php:302
+msgid "days"
+msgstr ""
+
+#: race.php:54 race_list.php:47
+msgid "yes"
+msgstr ""
+
+#: race.php:56 race_list.php:49
+msgid "password"
+msgstr ""
+
+#: race.php:57 race.php:59 race.php:64 race.php:386 race_join.php:8
+#: race_list.php:50 race_list.php:52 race_list.php:57
+msgid "Join the Race"
+msgstr ""
+
+#: race.php:62 race_list.php:55
+msgid "no"
+msgstr ""
+
+#: race.php:71
+msgid "Edit this race"
+msgstr ""
+
+#: race.php:84 race_list.php:71
+msgid "Distance to destination"
+msgstr ""
+
+#: race.php:89 race_list.php:75
+#, php-format
+msgid "% of target distance done"
+msgstr ""
+
+#: race.php:93 race_list.php:79
+#, php-format
+msgid "% of target caches visited"
+msgstr ""
+
+#: race.php:102 race_list.php:98
+msgid "Rank"
+msgstr ""
+
+#: race.php:106
+msgid "Last log"
+msgstr ""
+
+#: race.php:109 race_list.php:103
+msgid "Average speed"
+msgstr ""
+
+#: race.php:216 race_list.php:128 race_list.php:130 race_list.php:132
+msgid "km/day"
+msgstr ""
+
+#: race.php:273 race_list.php:171
+msgid "Race information"
+msgstr ""
+
+#: race.php:278 race.php:411 race_list.php:176 race_list.php:273
+msgid "Race status"
+msgstr ""
+
+#: race.php:290 race.php:410 race_add.php:147 race_list.php:188
+#: race_list.php:272
+msgid "Race type"
+msgstr ""
+
+#: race.php:296 race_add.php:127 race_list.php:194
+msgid "Start date"
+msgstr ""
+
+#: race.php:303 race_add.php:134 race_list.php:201
+msgid "End date"
+msgstr ""
+
+#: race.php:310 race_add.php:120 race_list.php:208
+msgid "Private race"
+msgstr ""
+
+#: race.php:318 race_add.php:141 race_list.php:216
+msgid "Race description"
+msgstr ""
+
+#: race.php:324 race.php:354
+msgid "Geokrety races"
+msgstr ""
+
+#: race.php:338 race_list.php:227
+msgid "Race participants"
+msgstr ""
+
+#: race.php:343
+msgid "No participants. Yet..."
+msgstr ""
+
+#: race.php:346 race_list.php:232
+msgid "Race"
+msgstr ""
+
+#: race.php:382 race_add.php:8
 msgid "Register a new Race"
+msgstr ""
+
+#: race.php:390
+msgid "My races"
+msgstr ""
+
+#: race.php:396
+msgid "Races"
+msgstr ""
+
+#: race.php:397 race_list.php:259
+msgid "Filter races by status"
+msgstr ""
+
+#: race.php:399 race_list.php:260
+msgid "All races"
+msgstr ""
+
+#: race.php:407 race_add.php:115 race_list.php:269
+msgid "Race title"
 msgstr ""
 
 #: race_add.php:16
@@ -1309,31 +1486,6 @@ msgstr ""
 
 #: race_add.php:112
 msgid "Race info"
-msgstr ""
-
-#: race_add.php:115 race_list.php:269 race.php:407
-msgid "Race title"
-msgstr ""
-
-#: race_add.php:120 race_list.php:208 race.php:310
-msgid "Private race"
-msgstr ""
-
-#: race_add.php:127 race_list.php:194 race.php:296
-msgid "Start date"
-msgstr ""
-
-#: race_add.php:134 race_list.php:201 race.php:303
-msgid "End date"
-msgstr ""
-
-#: race_add.php:141 race_list.php:216 race.php:318
-msgid "Race description"
-msgstr ""
-
-#: race_add.php:147 race_list.php:188 race_list.php:272 race.php:290
-#: race.php:410
-msgid "Race type"
 msgstr ""
 
 #: race_add.php:148
@@ -1431,11 +1583,6 @@ msgstr ""
 msgid "The race has ended"
 msgstr ""
 
-#: race_join.php:8 race_list.php:50 race_list.php:52 race_list.php:57
-#: race.php:57 race.php:59 race.php:64 race.php:386
-msgid "Join the Race"
-msgstr ""
-
 #: race_join.php:45
 msgid "The race to join"
 msgstr ""
@@ -1472,99 +1619,12 @@ msgstr ""
 msgid "Wrong password"
 msgstr ""
 
-#: race_list.php:34 race_list.php:37 race_list.php:38 race_list.php:302
-#: race.php:43 race.php:46 race.php:47 race.php:442
-msgid "days"
-msgstr ""
-
-#: race_list.php:47 race.php:54
-msgid "yes"
-msgstr ""
-
-#: race_list.php:49 race.php:56
-msgid "password"
-msgstr ""
-
-#: race_list.php:55 race.php:62
-msgid "no"
-msgstr ""
-
-#: race_list.php:71 race.php:84
-msgid "Distance to destination"
-msgstr ""
-
-#: race_list.php:75 race.php:89
-#, php-format
-msgid "% of target distance done"
-msgstr ""
-
-#: race_list.php:79 race.php:93
-#, php-format
-msgid "% of target caches visited"
-msgstr ""
-
-#: race_list.php:98 race.php:102
-msgid "Rank"
-msgstr ""
-
-#: race_list.php:103 race.php:109
-msgid "Average speed"
-msgstr ""
-
-#: race_list.php:128 race_list.php:130 race_list.php:132 race.php:216
-msgid "km/day"
-msgstr ""
-
-#: race_list.php:171 race.php:273
-msgid "Race information"
-msgstr ""
-
-#: race_list.php:176 race_list.php:273 race.php:278 race.php:411
-msgid "Race status"
-msgstr ""
-
-#: race_list.php:227 race.php:338
-msgid "Race participants"
-msgstr ""
-
-#: race_list.php:232 race.php:346
-msgid "Race"
-msgstr ""
-
 #: race_list.php:240
 msgid "Race list"
 msgstr ""
 
-#: race_list.php:259 race.php:397
-msgid "Filter races by status"
-msgstr ""
-
-#: race_list.php:260 race.php:399
-msgid "All races"
-msgstr ""
-
-#: race.php:71
-msgid "Edit this race"
-msgstr ""
-
-#: race.php:106
-msgid "Last log"
-msgstr ""
-
-#: race.php:324 race.php:354
-msgid "Geokrety races"
-msgstr ""
-
-#: race.php:343
-msgid "No participants. Yet..."
-msgstr ""
-
-#: race.php:390
-msgid "My races"
-msgstr ""
-
-#: race.php:396
-msgid "Races"
+#: recent_comments.php:18
+msgid "Recent Log Comments"
 msgstr ""
 
 #: recent_comments_fn.php:14
@@ -1575,29 +1635,25 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: recent_comments.php:18
-msgid "Recent Log Comments"
-msgstr ""
-
-#: recentlogs.php:9 recent_moves.php:14 templates.php:18 templates.php:81
+#: recent_moves.php:14 recentlogs.php:9 templates.php:18 templates.php:81
 #: templates.php:207 templates.php:270
 msgid "Recent logs"
-msgstr ""
-
-#: recent_newscomments_fn.php:9
-msgid "View all comments"
 msgstr ""
 
 #: recent_newscomments.php:17
 msgid "Recent news comments"
 msgstr ""
 
+#: recent_newscomments_fn.php:9
+msgid "View all comments"
+msgstr ""
+
 #: recent_pictures.php:44 recent_pictures.php:46
 msgid "Go to geokret's page"
 msgstr ""
 
-#: register.php:11 templates/plugins/function.login_check.php:41
-#: templates.php:144
+#: register.php:11 templates.php:144
+#: templates/plugins/function.login_check.php:41
 msgid "Register a new GeoKret"
 msgstr ""
 
@@ -1681,10 +1737,6 @@ msgstr ""
 
 #: ruchy.php:609
 msgid "6 characters from GeoKret label, eg."
-msgstr ""
-
-#: ruchy.php:615 krety.html.php:9
-msgid "Operations on GeoKrety"
 msgstr ""
 
 #: ruchy.php:621
@@ -1856,15 +1908,6 @@ msgstr ""
 msgid "No cache found"
 msgstr ""
 
-#: szukaj_kreta.php:44
-msgid "Operations on this GeoKret"
-msgstr ""
-
-#: szukaj.php:9 krety.html.php:12 templates.php:15 templates.php:78
-#: templates.php:204 templates.php:267
-msgid "Search"
-msgstr ""
-
 #: szukaj.php:45
 msgid "Found users"
 msgstr ""
@@ -1881,8 +1924,48 @@ msgstr ""
 msgid "GeoKret owner"
 msgstr ""
 
-#: templates/konfig.php:138
+#: szukaj_kreta.php:44
+msgid "Operations on this GeoKret"
+msgstr ""
+
+#: templates.php:9 templates.php:72 templates.php:198 templates.php:261
+msgid "Log a GeoKret"
+msgstr ""
+
+#: templates.php:66 templates.php:138 templates.php:183 templates.php:255
+#: templates.php:321 templates.php:327
+msgid "Report abuse"
+msgstr ""
+
+#: templates.php:120 templates.php:303
+msgid "Side products"
+msgstr ""
+
+#: templates.php:147
+msgid "My account"
+msgstr ""
+
+#: templates.php:150
+msgid "Account details"
+msgstr ""
+
+#: templates.php:177
+msgid "Logout"
+msgstr ""
+
+#: templates/konfig.php:141
 msgid "KretyPost"
+msgstr ""
+
+#: templates/labels/index.php:42
+msgid ""
+"<strong>User's manual:</strong> <strong>1.</strong> Take this GeoKret. Note "
+"down his Tracking Code. <strong>2.</strong> Hide in another cache. <strong>3."
+"</strong> Register the trip at https://geokrety.org/"
+msgstr ""
+
+#: templates/labels/index.php:45
+msgid "You can also go to the apppropriate page by decoding the QR-code."
 msgstr ""
 
 #: templates/nawigacja_tablicy.php:99 templates/nawigacja_tablicy.php:112
@@ -2001,60 +2084,4 @@ msgstr ""
 
 #: verify_mail.php:121
 msgid "[GeoKrety] Activate your account"
-msgstr ""
-
-#: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
-#: templates.php:297
-msgid "help.php"
-msgstr ""
-
-#: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
-#: templates.php:309
-msgid "help.php#about"
-msgstr ""
-
-#: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
-#: templates.php:312
-msgid "About"
-msgstr ""
-
-#: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
-#: templates.php:252 templates.php:318 templates.php:324
-msgid "contact"
-msgstr ""
-
-#: templates/labels/index.php:42
-msgid ""
-"<strong>User's manual:</strong> <strong>1.</strong> Take this GeoKret. Note "
-"down his Tracking Code. <strong>2.</strong> Hide in another cache. <strong>3."
-"</strong> Register the trip at https://geokrety.org/"
-msgstr ""
-
-#: templates/labels/index.php:45
-msgid "You can also go to the apppropriate page by decoding the QR-code."
-msgstr ""
-
-#: templates.php:9 templates.php:72 templates.php:198 templates.php:261
-msgid "Log a GeoKret"
-msgstr ""
-
-#: templates.php:66 templates.php:138 templates.php:183 templates.php:255
-#: templates.php:321 templates.php:327
-msgid "Report abuse"
-msgstr ""
-
-#: templates.php:120 templates.php:303
-msgid "Side products"
-msgstr ""
-
-#: templates.php:147
-msgid "My account"
-msgstr ""
-
-#: templates.php:150
-msgid "Account details"
-msgstr ""
-
-#: templates.php:177
-msgid "Logout"
 msgstr ""
