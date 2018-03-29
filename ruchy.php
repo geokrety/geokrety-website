@@ -7,11 +7,15 @@ $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
 $TYTUL = ''; $HEAD = ''; $OGON = '';
-$OGON .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>'."\n";
 $OGON .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>'."\n";   // character counters
 $OGON .= '<script type="text/javascript" src="/ruchy.js?ver=3.50"></script>';    // form validation
 $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/json2-100320.min.js"></script>'."\n";
 $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>'."\n";
+$OGON .= '<script>
+$(function () {
+  $(\'[data-toggle="tooltip"]\').tooltip();
+})
+</script>'."\n";
 
 $kret_antyspamer = $_POST['antyspamer'];
 // autopoprawione...
@@ -547,7 +551,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         $extra_option = '<option value="2" selected="selected">'._('Comment').'</option>';
         //$BODY = 'onLoad="sprawdzGK();"';
 
-        $tracking_code_description = 'Reference number: <input type="text" name="id" id="id" size="8" maxlength="6" disabled="disabled" value="'.sprintf('GK%05X', $g_id).'" />';
+        $tracking_code_description = 'Reference number: <input type="text" name="id" id="id" size="8" maxlength="6" disabled="disabled" value="'.sprintf('GK%05X', $g_id).'" class="form-control">';
     }
 
     // zaginiony kret
@@ -600,13 +604,16 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
     // pozostale zmienne
     if (!isset($tracking_code_description)) {
-        $tracking_code_description = '<table>
-<tr>
-<td class="kol1">Tracking Code:</td>
-<td class="kol2"><input type="text" name="nr" id="nr" size="11" maxlength="6" '.$disabled_nr.' onkeyup="sprawdzGK(event); validateTC(event);" value="'.$edit_nr.'" onblur="validateTC();" /><span id="nr_img"></span><br />
-<span class="szare">'._('6 characters from GeoKret label, eg.').' XF3ACS. <u>Do not use code starting with \'GK\' here</u></span></td>
-<td><div id="wynikNr"></div></td></tr>
-</table>';
+        $tracking_code_description = '
+    <label class="col-sm-2 control-label">'._('Tracking Code').'</label>
+    <div class="col-sm-6">
+      <input type="text" name="nr" id="nr" size="11" maxlength="6" '.$disabled_nr.' onkeyup="sprawdzGK(event); validateTC(event);" value="'.$edit_nr.'" onblur="validateTC();" class="form-control" aria-describedby="helpBlockTrackingCode"><span id="nr_img"></span>
+      <span id="username_img"></span>
+      <span id="helpBlockTrackingCode" class="help-block">'._('6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with \'GK\' here</u>.').'</span>
+    </div>
+    <div class="col-sm-4">
+      <div id="wynikNr"></div>
+    </div>';
     }
 
     if ($TYTUL == '') {
@@ -616,7 +623,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     }
 
     if ($longin_status['plain'] == null) {
-        $TRESC = '<p class="warning"><img src="templates/warn.png" alt="POZOR!" title="POZOR!" width="32" height="32" /> '._('However it is possible to perform operations on GeoKrety without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)').'.</p>';
+        $TRESC = '<div class="alert alert-info" role="alert"><img src="'.CONFIG_CDN_IMAGES.'/icons/warn.png" alt="POZOR!" title="POZOR!" width="32" height="32" /> '._('Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)').'.</div>';
     } else {
         $disabled_for_logged = $disabled;
     }
@@ -642,120 +649,188 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     mysqli_free_result($result);
     if (!empty($row)) {
         list($lat, $lon) = $row;
-        $pole_logAtHome = '<button name="logAtHome" value="1" type="button" onclick="logAtHomeFn(\''.$lat.'\', \''.$lon.'\', \''._('Logged at my home coordinates').'\');">'._('Log geokret at my home coordinates').'</button>';
+        $pole_logAtHome = '<button name="logAtHome" value="1" type="button" onclick="logAtHomeFn(\''.$lat.'\', \''.$lon.'\', \''._('Logged at my home coordinates').'\');" class="btn btn-default">'._('Log GeoKret at my home coordinates').'</button>';
     }
     // ------------ home coordinates? -------------- //
 
-    $TRESC .= '<form name="formularz" action="'.$_SERVER['PHP_SELF'].$get_czy_edycja.'" onsubmit="this.js.value=1; return validateAddRuchy(this);" method="post" ><input type="hidden" name="formname" value="ruchy" />';
+    $TRESC .= '<form name="formularz" action="'.$_SERVER['PHP_SELF'].$get_czy_edycja.'" onsubmit="this.js.value=1; return validateAddRuchy(this);" method="post" class="form-horizontal"><input type="hidden" name="formname" value="ruchy" />';
 
     $step_number = 1;
 
     // -------------------- 1 (logtype)
     $TRESC .= '
-<h3><span class="cyferki">'.$step_number++.'.</span> '._('Choose log type').'</h3>
-<select '.$select_onchange.$disabled_action.'name="logtype">
-	<option value="0" '.$logtype_selected[0].' >'._("I've dropped GeoKret").'</option>
-	<option value="1" '.$logtype_selected[1].' >'._("I've grabbed GeoKret").'</option>
-	<option value="3" '.$logtype_selected[3].' >'._("I've met GeoKret").'</option>
-	<option value="5" '.$logtype_selected[5].' >'._("I've dipped a GeoKret").'</option>
-	<option value="2" '.$logtype_selected[2].' >'._('Comment').'</option>
-	'.$extra_option.'
-</select> <a href="'._('help.php#Chooselogtype').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>';
+
+  <h3><span class="cyferki">'.$step_number++.'.</span> '._('Choose log type').'</h3>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'._('Log type').'</label>
+    <div class="col-sm-6">
+      <select '.$select_onchange.$disabled_action.'name="logtype" class="form-control" aria-describedby="helpBlockLogtype">
+        <option value="0" '.$logtype_selected[0].' >'._("I've dropped GeoKret").'</option>
+        <option value="1" '.$logtype_selected[1].' >'._("I've grabbed GeoKret").'</option>
+        <option value="3" '.$logtype_selected[3].' >'._("I've met GeoKret").'</option>
+        <option value="5" '.$logtype_selected[5].' >'._("I've dipped a GeoKret").'</option>
+        <option value="2" '.$logtype_selected[2].' >'._('Comment').'</option>
+        '.$extra_option.'
+      </select>
+      <span id="helpBlockLogtype" class="help-block">
+        <a href="'._('help.php#Chooselogtype').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>
+      </span>
+    </div>
+  </div>';
 
     // -------------------- 2 (identify kret)
     $TRESC .= '
-<h3><span class="cyferki">'.$step_number++.'.</span>  '._('Identify GeoKret').'</h3>
-'.$tracking_code_description.'';
+  <h3><span class="cyferki">'.$step_number++.'.</span>  '._('Identify GeoKret').'</h3>
+  <div class="form-group">
+    '.$tracking_code_description.'
+  </div>';
 
     // -------------------- 3 (new location)
     if ($show_location_step) {
         $TRESC .= '
 <h3><span class="cyferki">'.$step_number++.'.</span>  '._('New location').'</h3>
-<p><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="?" width="11" height="11" /> '._('<a href="help.php#locationdlagc">Learn more about hiding geokrets in GC caches</a>').'...</p>
+<p><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="?" width="11" height="11" /> '._('<a href="help.php#locationdlagc">Learn more about hiding GeoKrety in GC caches</a>').'...</p>
 
-<table class="tabFull">
-<tr>
-<td class="kol1">Waypoint</td>
-<td class="kol2"><input type="text" name="wpt" value="'.$edit_waypoint.'" id="wpt" size="9" '.$disabled_wpt.' onchange="sprawdzWpt();" onkeyup="sprawdzWpt(event);" /><br />
- <span class="szare">'._('eg.').': GC1AQ2N, OP069B, OC033A...</span>
- <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a></td>
-<td><span id="ajax_status"></span>&nbsp;<span id="wynikWpt"></span>
-</td>
-</tr>
 
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;'._('or').' '._('name of cache').':</td>
-<td> <input type="text" name="NazwaSkrzynki" value="" id="NazwaSkrzynki" '.$disabled_cachename.'size="20" />
-<input type="button" id="btn_sprawdzskrzynke" name="sprawdzskrzynke" value="'._('Check').'" style="font-size:9pt" '.$disabled_cachename.'onclick="sprawdzNazwe();" />
-<a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>
-</td>
-</tr>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'._('Waypoint').'</label>
+    <div class="col-sm-2">
+      <input type="text" name="wpt" value="'.$edit_waypoint.'" id="wpt" size="9" '.$disabled_wpt.' onchange="sprawdzWpt();" onkeyup="sprawdzWpt(event);" class="form-control" aria-describedby="helpBlockWaypoint">
+      <span id="helpBlockWaypoint" class="help-block">'.
+        _('eg.: GC1AQ2N, OP069B, OC033A…')
+      .' <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>
+      </span>
+    </div>
+    <label class="col-sm-1 control-label">'._('or name of cache').'</label>
+    <div class="col-sm-3">
+      <div class="input-group">
+        <input type="text" name="NazwaSkrzynki" value="" id="NazwaSkrzynki" '.$disabled_cachename.'size="20" class="form-control" aria-describedby="helpBlockCacheName">
+        <span class="input-group-btn">
+          <input type="button" id="btn_sprawdzskrzynke" name="sprawdzskrzynke" value="'._('Check').'" '.$disabled_cachename.'onclick="sprawdzNazwe();" class="btn btn-default">
+        </span>
+      </div>
+      <span id="helpBlockCacheName" class="help-block">'.
+        _('Enter cache name. Works only with opencaching networks.')
+      .' <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0"></a>
+      <br /><span id="ajax_status"></span>
+      </span>
+    </div>
+    <div class="col-sm-4">
+      <span id="wynikWpt"></span>
+      <div id="linkDoMapy"></div>
+    </div>
+  </div>
 
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-
-<tr>
-<td>'._('Coordinates').':</td>
-<td>
-<input type="text" id="latlon" name="latlon" value="'.$edit_lat_lon.'" size="25" '.$disabled_coords.' /></span>
-<br /> '.sprintf(_('<a href="%s" target="_blank">Acceptable geographic coordinate formats</a>'), $config['adres'].'help.php#acceptableformats').'
-<table cellpadding="0px" cellspacing="0px"><tr><td><span class="szare">'._('eg.').'</span></td><td><span class="szare">52.1534 21.0539<br />N 52° 09.204 E 021° 03.234<br />N 52° 9\' 12.2400" E 21° 3\' 14.0400"</span></td></tr></table>
-</td>
-<td>'.$pole_logAtHome.'<br />
-<button type="button" name="getGeoLocation" onclick="getLocation(\''._('Logged using geolocation').'\');" >'._('Use geolocation').'</button><br />
-<div id="linkDoMapy"></div>
-</td>
-</tr>
-</table>';
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'._('Coordinates').'</label>
+    <div class="col-sm-6">
+      <input type="text" id="latlon" name="latlon" value="'.$edit_lat_lon.'" size="25" '.$disabled_coords.' class="form-control" aria-describedby="helpBlockCoordinates">
+      <span id="helpBlockCoordinates" class="help-block">'.
+        sprintf(_('<a href="%s" target="_blank">Acceptable geographic coordinate formats</a>'), $config['adres'].'help.php#acceptableformats').'<br />
+        <span class="szare">
+        eg.
+          52.1534 21.0539<br />
+          N 52° 09.204 E 021° 03.234<br />
+          N 52° 9\' 12.2400" E 21° 3\' 14.0400"
+        </span>
+      </span>
+    </div>
+    <div class="col-sm-4">
+      <div class="btn-group btn-group-vertical btn-block" role="group">
+        '.$pole_logAtHome.'
+        <button type="button" name="getGeoLocation" onclick="getLocation(\''._('Logged using geolocation').'\');" class="btn btn-default">'._('Use geolocation').'</button>
+      </div>
+    </div>
+  </div>
+';
     }
 
     // -------------------- 3 (captcha)
     if ($show_captcha_step) {
         $TRESC .= '
 <h3><span class="cyferki">'.$step_number++.'.</span>  '._('Captcha verification').'</h3>
-<table class="tabFull">
-<tr>
-<td width="50%">'._('Enter code').': <img style="vertical-align : middle;" src="'.$config['generated'].'obrazek.png" alt="captcha" />'.obrazek().' <input type="text" name="antyspamer3" value="" />
-</td>
-</tr>
-</table>';
+
+<div class="form-group">
+  <label class="col-sm-2 control-label">'._('Enter code').'</label>
+  <div class="col-sm-6">
+    <img style="vertical-align : middle;" src="'.$config['generated'].'obrazek.png" alt="captcha" />'.obrazek().' <input type="text" name="antyspamer3" value="" />
+  </div>
+</div>';
     }
 
     // -------------------- 4 (additional data)
     $TRESC .= '
 <h3><span class="cyferki">'.$step_number++.'.</span>  '._('Additional data').'</h3>
-<table class="tabFull">
-<tr>
-<td class="kol1">'.$username_text.':</td>
-<td class="kol2"><input type="text" name="username" id="username" value="'.$longin_status['plain'].'" '.$disabled_for_logged.' class="att_js" title="'.$username_hint.'" maxlength="20" onblur="validateUsername();" onkeyup="validateUsername(event);" /><span id="username_img"></span></td>
-<td></td>
-</tr>
-<tr>
-<td>'._('Date').':</td>
-<td><input type="text" name="data" id="data" value="'.$edit_data.'" /> <img style="vertical-align : middle;" src="'.CONFIG_CDN_IMAGES.'/icons/kalendarz.png" alt="calendar" onclick="GetDate(formularz.data);" style="cursor:pointer" /><br /><span class="szare">YYYY-MM-DD</span></td>
-<td>
-<button type="button" onClick="dzis();">'._('Today').'</button> <button type="button" onClick="wczoraj();">'._('Yesterday').'</button> <button type="button" onClick="przedwczoraj();">'._('Two days ago').'</button>
-</td>
-</tr>
-<tr><td>'._('Time').':</td>
-<td><input id="godzina" name="godzina" size="2" maxlength="2" value="'.$edit_godzina.'" /> <span class="szare">HH (0-23)</span>
-<input id="minuta" name="minuta" size="2" maxlength="2" value="'.$edit_minuta.'" /><span class="szare">MM</span>
-<br />
-<span class="szare">'._('Enter exact time when You think it may be important').'.</span></td>
-<td><button type="button" onClick="teraz();">'._('now').'</button></td>
-</tr>
-<tr>
-<td>'._('Comment').':</td>
-<td colspan="2"><textarea style="width: 80%;" id="poledoliczenia" name="comment" rows="6" onkeyup="zliczaj(5120)">'.strip_tags($edit_koment).'</textarea><br />
-<span class="szare">'._('Optional').'. <input id="licznik" disabled="disabled" type="text" size="3" name="licznik" /> '._('characters left').'.</span></td>
-</tr>
-<tr>
-<td></td>
-<td><input type="submit" value=" Go! " />'.$extra_hidden_fields.'<input type="hidden" id="js" name="js" value="----" /></td>
-</tr>
-</table></form>';
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'.$username_text.'</label>
+    <div class="col-sm-6">
+      <input type="text" name="username" id="username" value="'.$longin_status['plain'].'" '.$disabled_for_logged.' data-toggle="tooltip" data-html="true" class="form-control"" title="'.$username_hint.'" maxlength="20" onblur="validateUsername();" onkeyup="validateUsername(event);" /><span id="username_img"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'._('Date').'</label>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <input type="text" name="data" id="data" value="'.$edit_data.'" class="form-control" aria-describedby="helpBlockDate">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" onclick="GetDate(formularz.data);">
+            <img src="'.CONFIG_CDN_IMAGES.'/icons/calendar.min.svg" alt="calendar">
+          </button>
+        </span>
+      </div>
+      <span id="helpBlockDate" class="help-block">YYYY-MM-DD</span>
+    </div>
+    <div class="col-sm-4">
+      <div class="btn-group btn-group-vertical btn-block" role="group">
+        <button type="button" onClick="dzis();" class="btn btn-default">'._('Today').'</button>
+        <button type="button" onClick="wczoraj();" class="btn btn-default">'._('Yesterday').'</button>
+        <button type="button" onClick="przedwczoraj();" class="btn btn-default">'._('Two days ago').'</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'._('Time').'</label>
+    <div class="col-sm-3">
+      <input id="godzina" name="godzina" size="2" maxlength="2" value="'.$edit_godzina.'" class="form-control" aria-describedby="helpBlockHour">
+      <span id="helpBlockHour" class="help-block">HH (0-23)</span>
+    </div>
+
+    <div class="col-sm-3">
+      <input id="minuta" name="minuta" size="2" maxlength="2" value="'.$edit_minuta.'" class="form-control" aria-describedby="helpBlockMinutes">
+      <span id="helpBlockMinutes" class="help-block">MM (0-59)</span>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="btn-group btn-group-vertical" role="group" style="width: 100%;">
+        <button type="button" onClick="teraz();" class="btn btn-default" aria-describedby="helpBlockNow">'._('now').'</button>
+        <span id="helpBlockNow" class="help-block">'._('Enter exact time when You think it may be important').'</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'._('Comment').'</label>
+    <div class="col-sm-6">
+      <textarea id="poledoliczenia" name="comment" rows="6" onkeyup="zliczaj(5120)" class="form-control" aria-describedby="helpBlockComment">'.
+      strip_tags($edit_koment)
+      .'</textarea>
+      <span id="helpBlockComment" class="help-block">'.
+        _('Optional').'. <input id="licznik" disabled="disabled" type="text" size="3" name="licznik" /> '._('characters left').'.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-6">
+      <input type="submit" value=" Go! " class="btn btn-default" />'.$extra_hidden_fields.'<input type="hidden" id="js" name="js" value="----" />
+    </div>
+  </div>
+</form>';
 
     mysqli_close($link);
     $link = null; // prevent warning, as smarty.php will close it again
