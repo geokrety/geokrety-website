@@ -29,7 +29,7 @@ $g_userid = $_GET['userid'];
 
 require_once '_recent_newscomments.php';
 
-    $HEAD .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>'."\n";   // character counters
+    $OGON .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>'."\n";   // character counters
 
 if (ctype_digit($g_userid) && ctype_digit($g_lasthours)) {
     $where = "WHERE ((co.news_id IN (SELECT co2.news_id FROM `gk-news-comments-access` co2

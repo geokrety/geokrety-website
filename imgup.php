@@ -334,7 +334,7 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
     // generujemy forme
     if ($errors == '') {
         $BODY .= 'onload="count_remaining(\'opis\', \'licznik\', 50)" ';
-        $HEAD .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';    // character counters
+        $OGON .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';    // character counters
         $HEAD .=
         '<style type="text/css">
 table.imgup1{

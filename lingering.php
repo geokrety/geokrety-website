@@ -15,9 +15,8 @@ require_once 'waypoint_info.php';
 $link = DBConnect();
 
     $HEAD = '';
-    $HEAD .= '<script type="text/javascript" src="sorttable.min.js"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+    $OGON .= '<script type="text/javascript" src="sorttable.min.js"></script>';
+    $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 
     $title = ('Lingering GeoKrets');
 

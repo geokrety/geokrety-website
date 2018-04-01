@@ -17,9 +17,8 @@ $g_photosby = $_GET['photosby'];
 $g_userid = $_GET['userid'];
 // autopoprawione...import_request_variables('g', 'g_');
 
-$HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-$HEAD .= '<script type="text/javascript" language="javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
-$HEAD .= '<script type="text/javascript" language="javascript" src="'.CONFIG_CDN_LIBRARIES.'/lytebox/lytebox.min.js"></script>';
+$OGON .= '<script type="text/javascript" language="javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+$OGON .= '<script type="text/javascript" language="javascript" src="'.CONFIG_CDN_LIBRARIES.'/lytebox/lytebox.min.js"></script>';
 $HEAD .= '<link rel="stylesheet" href="'.CONFIG_CDN_LIBRARIES.'/lytebox/lytebox.css" type="text/css" media="screen" />';
 $HEAD .= '<style type="text/css">.temptip TD{font-size: 8pt; padding:0px 2px 0px 2px; background: lightyellow;}</style>';
 

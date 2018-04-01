@@ -52,9 +52,8 @@ if (!empty($g_gk)) {
 } elseif (!empty($g_wpt)) {
     $g_owner = mysqli_real_escape_string($link, $g_wpt);
     include_once 'recent_moves.php';
-    $HEAD .= '<script type="text/javascript" src="sorttable.min.js"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+    $OGON .= '<script type="text/javascript" src="sorttable.min.js"></script>';
+    $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
     $TRESC .= recent_moves("WHERE `waypoint` = '$g_wpt'", 1170, _('Geokrety visiting the cache')." $g_wpt", '', 1);
 } elseif (!empty($g_country)) {
     $g_country = mysqli_real_escape_string($link, $g_country);

@@ -15,7 +15,7 @@ require_once 'smarty_start.php';
 require 'templates/konfig.php';
 $link = DBConnect();
 
-$HEAD = "<script type='text/javascript' src='https://www.google.com/jsapi'></script>";
+$OGON = "<script type='text/javascript' src='https://www.google.com/jsapi'></script>";
 
 // ------------------------------------------- statystyki różne ------------------------------ //
 
@@ -61,7 +61,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 // $KRAJE_HTML .= "</table>";
 
-$HEAD .= "<script type='text/javascript'>
+$OGON .= "<script type='text/javascript'>
      google.load('visualization', '1', {'packages': ['geochart']});
      google.setOnLoadCallback(drawRegionsMap);
 
@@ -94,7 +94,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 // $HTML1 .= "</table>";
 
-$HEAD .= '   <script type="text/javascript">
+$OGON .= '   <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -122,7 +122,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 // $HTML2 .= "</table>";
 
-$HEAD .= '   <script type="text/javascript">
+$OGON .= '   <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -150,7 +150,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 // $HTML3 .= "</table>";
 
-$HEAD .= '   <script type="text/javascript">
+$OGON .= '   <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -176,7 +176,7 @@ while ($row = mysqli_fetch_array($result)) {
     $WYKRES4 .= "['".$typ."',".$row[1]."],\n";
 }
 
-$HEAD .= '   <script type="text/javascript">
+$OGON .= '   <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {

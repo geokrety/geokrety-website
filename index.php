@@ -60,7 +60,6 @@ $link = DBConnect();
 
 $ulicznik = ulicznik('index');
 
-$OGON .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
 $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_LIBRARIES.'/lytebox/lytebox.min.js"></script>';
 $HEAD .= '<link rel="stylesheet" href="'.CONFIG_CDN_LIBRARIES.'/lytebox/lytebox.css" type="text/css" media="screen" />';

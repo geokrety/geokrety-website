@@ -32,7 +32,6 @@ $g_userid = $_GET['userid'];
 require_once 'recent_comments_fn.php';
 
     $OGON .= '<script type="text/javascript" src="sorttable-1.min.js"></script>';
-    $OGON .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
     $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 
     $zapytanie = '';

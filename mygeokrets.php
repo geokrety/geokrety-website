@@ -12,9 +12,8 @@ function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin)
 
     /*
     This page requires the following inserted in the HEAD tag:
-    $HEAD .= '<script type="text/javascript" src="sorttable.min.js"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+    $OGON .= '<script type="text/javascript" src="sorttable.min.js"></script>';
+    $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
     */
 
     // te 20 to pozostalosc po starej funkcji szukaj kreta, tam czasami byly wywolania z wartoscia 1 lub 7

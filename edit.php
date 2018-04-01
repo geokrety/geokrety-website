@@ -190,8 +190,8 @@ elseif (ctype_digit($g_delete_obrazek) and ($g_confirmed == '1')) {
 // ------------------------------ edit password
 
 elseif ($g_co == 'haslo') {
-    $HEAD = '<script type="text/javascript" src="adduser-2.min.js"></script>';     // character counters
-    $HEAD .= '<style type="text/css">
+    $OGON = '<script type="text/javascript" src="adduser-2.min.js"></script>';     // character counters
+    $OGON .= '<style type="text/css">
 .atable { width:auto; }
 .atable td { padding:0 15px 15px 0 }
 </style>';
@@ -308,7 +308,7 @@ elseif ($g_co == 'latlon') {
     $lon1 = round($map_lon - $dlon, 6);
     $lon2 = round($map_lon + $dlon, 6);
 
-    $HEAD .= "
+    $OGON .= "
 <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=$GOOGLE_MAP_KEY&sensor=false'></script>
 <script type='text/javascript'>
 var initial_lat1 = $lat1;
@@ -532,7 +532,7 @@ elseif ($g_co == 'statpic') {
 // -----------------------------  edit geokret
 
 elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
-    $HEAD = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
+    $OGON = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
 
     $sql = "SELECT `nazwa`, `opis`, `typ` FROM `gk-geokrety` WHERE `owner`='$userid' AND `id`='$g_id' LIMIT 1";
     list($nazwa, $opis, $typ) = $db->exec_fetch_row($sql, $num_rows, 0, 'Proba edycji nieistniejacego geokreta', 7, 'WRONG_DATA');

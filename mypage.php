@@ -7,7 +7,7 @@ $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
 $TYTUL = _('My Page');
-$HEAD = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
+$OGON = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
 
 $kret_co = $_GET['co'];
 // autopoprawione...
@@ -79,9 +79,8 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
     mysqli_free_result($result);
 
     if ($kret_co == '1') {
-        $HEAD .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+        $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
+        $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 
         include_once 'mygeokrets.php';
         $TRESC .= mygeokrets($kret_co, $kret_userid, 100, "$user's geokrets", $longin_status['userid']);
@@ -90,9 +89,8 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
     // ------------------------------------------------------------------- observed geokrets
 
     elseif ($kret_co == '2') {
-        $HEAD .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+        $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
+        $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 
         include_once 'mygeokrets.php';
         $TRESC .= mygeokrets($kret_co, $kret_userid, 100, "$user's watched geokrets", $longin_status['userid']);
@@ -101,9 +99,8 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
     // --------------------------------------------------------------------- my recent moves
 
     elseif ($kret_co == '3') {
-        $HEAD .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+        $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
+        $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 
         include_once 'recent_moves.php';
         $TRESC .= recent_moves("WHERE ru.user='$kret_userid'", 50, _('My recent logs'), '', true, false);
@@ -112,9 +109,8 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
     // --------------------------------------------------------------------- recent moves of MY geokrets
 
     elseif ($kret_co == '4') {
-        $HEAD .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+        $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
+        $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 
         include_once 'recent_moves.php';
         $TRESC .= recent_moves("WHERE gk.owner='$kret_userid'", 50, _('Recent moves of my geokrets'), '', true);
@@ -136,9 +132,8 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
 
         //$TRESC .= szukaj_kreta("", 100, _("Geokrets in my inventory"), $longin_status['userid'], $przetrzymywane_krety_sql);
 
-        $HEAD .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-        $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+        $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/sorttable.min.js"></script>';
+        $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
 
         include_once 'mygeokrets.php';
         $TYTUL = sprintf(_("%s's Inventory"), $user);

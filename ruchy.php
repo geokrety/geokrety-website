@@ -7,13 +7,11 @@ $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
 $TYTUL = ''; $HEAD = ''; $OGON = '';
-$HEAD .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>'."\n";   // character counters
-$HEAD .= '<link href="'.CONFIG_CDN_CSS.'/kalendarz-1.css" rel="stylesheet" />'; // do kalendarza
-$HEAD .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/ruchy.js?ver=3.49"></script>';    // form validation
 $OGON .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>'."\n";
+$OGON .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>'."\n";   // character counters
+$OGON .= '<script type="text/javascript" src="/ruchy.js?ver=3.50"></script>';    // form validation
 $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/json2-100320.min.js"></script>'."\n";
 $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>'."\n";
-$OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/kalendarz-1.min.js"></script>'."\n"; // do kalendarza
 
 $kret_antyspamer = $_POST['antyspamer'];
 // autopoprawione...

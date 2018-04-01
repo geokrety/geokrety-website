@@ -60,10 +60,9 @@ if (($p_formname == 'newavatar') and $allowed_to_modify and ctype_digit($p_avata
     }
 } elseif ($errors == '') {
     //standard gallery
-    $HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
-    $HEAD .= '<script type="text/javascript" src="'.$config['colorbox.js'].'"></script><link rel="stylesheet" type="text/css" href="'.$config['colorbox.css'].'" media="screen"/>';
-    $HEAD .= '
+    $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
+    $OGON .= '<script type="text/javascript" src="'.$config['colorbox.js'].'"></script><link rel="stylesheet" type="text/css" href="'.$config['colorbox.css'].'" media="screen"/>';
+    $OGON .= '
 			<script>
 				$(document).ready(function(){
 					$("a[rel=\'cb\']").colorbox();

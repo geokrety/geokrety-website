@@ -295,7 +295,7 @@ $TRESC = '<div itemscope itemtype="http://schema.org/Sculpture">
 
 // display the map
 if (($skrzynki <= 250 and $skrzynki > 0) and $droga_total < 100000) {
-    $HEAD .= '<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key='.$GOOGLE_MAP_KEY.'" type="text/javascript"></script>';
+    $OGON .= '<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key='.$GOOGLE_MAP_KEY.'" type="text/javascript"></script>';
     if (!file_exists($config['mapki']."/map/GK-$id.map")) {
         include 'konkret-mapka.php';
         konkret_mapka($id);
@@ -337,9 +337,7 @@ $TRESC .= '<span itemprop="aggregateRating" itemscope itemtype="http://schema.or
 ';
 
 $TYTUL = $nazwa;
-
-$HEAD .= '<script type="text/javascript" src="'.$config['jquery.js'].'"></script>
-<script type="text/javascript" src="'.$config['colorbox.js'].'?ver=1.1"></script>
+$OGON .= '<script type="text/javascript" src="'.$config['colorbox.js'].'?ver=1.1"></script>
 <script type="text/javascript" src="'.$config['funkcje.js'].'"></script>
 <script type="text/javascript" src="/templates/rating/jquery/jRating.jquery.js"></script>
 <script type="text/javascript">
@@ -362,7 +360,7 @@ $(document).ready(function(){
 <link rel="stylesheet" type="text/css" href="'.$config['colorbox.css'].'?ver=1.2" media="screen"/>
 ';
 
-$HEAD .= '
+$OGON .= '
 <script>
 	$(document).ready(function(){
 	$("a[rel=\'cb\']").colorbox();

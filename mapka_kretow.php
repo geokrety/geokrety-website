@@ -58,7 +58,7 @@ td.gk_map_right {text-align:right; background:#fff; width:100px}
 </style>
 ';
 
-$HEAD .= '<script src="https://maps.google.com/maps?file=api&amp;v=2.x&amp;key='.$GOOGLE_MAP_KEY.'"  type="text/javascript"></script>
+$OGON .= '<script src="https://maps.google.com/maps?file=api&amp;v=2.x&amp;key='.$GOOGLE_MAP_KEY.'"  type="text/javascript"></script>
 <script type="text/javascript" src="mapka_kretow.js"></script>';
 $BODY = 'onload="load()" onunload="GUnload()"';
 

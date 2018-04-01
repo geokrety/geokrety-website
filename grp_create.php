@@ -44,7 +44,7 @@ VALUES ('$userid_longin', NOW(), '$private', '$desc', '$name')";
 
 // ---------------------------------------------------------------------------- formularz
 else {
-    $HEAD = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
+    $OGON = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
 
     $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'" method="post" />
 <table>

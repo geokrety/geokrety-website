@@ -41,7 +41,7 @@ if ($lat == 0 and $lon == 0) {
 $HEAD .= '<script>var center_lat='.$lat.'; var center_lon='.$lon.';</script>';
 
 include 'templates/konfig.php';
-$HEAD .= '<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key='.$GOOGLE_MAP_KEY.'" type="text/javascript"></script>
+$OGON .= '<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key='.$GOOGLE_MAP_KEY.'" type="text/javascript"></script>
 <script type="text/javascript" src="mapka_kretow.js"></script>';
 $BODY = 'onload="load()" onunload="GUnload()"';
 

@@ -57,7 +57,6 @@ date_default_timezone_set('Europe/Warsaw');
 //js
 $config['funkcje.js'] = CONFIG_CDN_JS.'/funkcje-3.min.js';
 $config['ajaxtooltip.js'] = CONFIG_CDN_LIBRARIES.'/ajaxtooltip/ajaxtooltip-1.min.js';
-$config['jquery.js'] = 'https://code.jquery.com/jquery-3.2.1.min.js';
 $config['colorbox.js'] = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
 $config['colorbox.css'] = CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css';
 

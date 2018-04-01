@@ -9,7 +9,7 @@ $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
 $TYTUL = _('Register a new GeoKret');
-$HEAD = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
+$OGON = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
 
 $kret_id = $_POST['id'];
 // autopoprawione...

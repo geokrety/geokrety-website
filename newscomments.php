@@ -47,7 +47,7 @@ require_once 'db.php';
 $db = new db();
 
 $TYTUL = _('Comments');
-$HEAD = '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+$OGON = '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript" src="'.$config['funkcje.js'].'"></script>'."\n";     // character counters
 
 // niezalogowani out?

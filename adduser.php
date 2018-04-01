@@ -6,7 +6,7 @@ $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
 $TYTUL = _('Register a new user');
-$HEAD .= '<script type="text/javascript" src="adduser-2.min.js"></script>';     // form validation
+$OGON .= '<script type="text/javascript" src="adduser-2.min.js"></script>';     // form validation
 $HEAD .= '<style type="text/css">
 td.tmpcol {width:20%;padding-top:7px;font-weight:bold;}
 .tmpbox {width:230px;height:1.5em;font-size:10pt;border: 1px solid #666666;}
