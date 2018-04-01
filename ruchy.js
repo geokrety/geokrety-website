@@ -1,3 +1,6 @@
+
+/* global moment */
+
 var img_exclamation = '<img src="templates/exclamation.gif" border="0" />';
 //var img_accept = '<img src="templates/accept.gif" border="0" />';
 var img_accept = '';
@@ -86,6 +89,28 @@ function showPosition(position) {
 }
 // ----------------------------------------------------- geolocation end -------------------------------------
 
+function teraz() {
+  var d = new Date();
+  document.getElementById('minuta').value = d.getMinutes();
+  document.getElementById('godzina').value = d.getHours();
+
+  var day = moment();
+  document.getElementById("data").value = day.format('YYYY-MM-DD');
+}
+
+function dzis() {
+  var day = moment();
+  document.getElementById("data").value = day.format('YYYY-MM-DD');
+}
+function wczoraj() {
+  var day = moment().add(-1, 'day');
+  document.getElementById("data").value = day.format('YYYY-MM-DD');
+}
+function przedwczoraj() {
+  var day = moment().add(-2, 'day');
+  document.getElementById("data").value = day.format('YYYY-MM-DD');
+}
+
 function logAtHomeFn(lat, lon, trescLogu) {
   document.getElementById('latlon').value = lat + ' ' + lon;
   document.getElementById('wpt').disabled = true;
@@ -95,41 +120,5 @@ function logAtHomeFn(lat, lon, trescLogu) {
   document.getElementById('poledoliczenia').value = trescLogu;
   document.getElementById("wynikWpt").innerHTML = "<img src='templates/ok.png' alt='OK' width='16' height='16' /> " + '<a href="https://maps.google.pl/maps?q=' + lat + "+" + lon + '">' + lat + " " + lon + '</a>';
 
-  var d = new Date();
-  document.getElementById('minuta').value = d.getMinutes();
-  document.getElementById('godzina').value = d.getHours();
-  var miesiac = d.getMonth();
-  miesiac++;
-  document.getElementById('data').value = d.getFullYear() + "-" + miesiac + "-" + d.getDate();
-}
-
-function teraz() {
-  var d = new Date();
-  document.getElementById('minuta').value = d.getMinutes();
-  document.getElementById('godzina').value = d.getHours();
-
-  var miesiac = d.getMonth();
-  miesiac++;
-  document.getElementById('data').value = d.getFullYear() + "-" + miesiac + "-" + d.getDate();
-}
-
-function dzis() {
-  var d = new Date();
-  var miesiac = d.getMonth();
-  miesiac++;
-  document.getElementById('data').value = d.getFullYear() + "-" + miesiac + "-" + d.getDate();
-}
-function wczoraj() {
-  var d = new Date();
-  d.setDate(d.getDate() - 1);
-  var miesiac = d.getMonth();
-  miesiac++;
-  document.getElementById('data').value = d.getFullYear() + "-" + miesiac + "-" + d.getDate();
-}
-function przedwczoraj() {
-  var d = new Date();
-  d.setDate(d.getDate() - 2);
-  var miesiac = d.getMonth();
-  miesiac++;
-  document.getElementById('data').value = d.getFullYear() + "-" + miesiac + "-" + d.getDate();
+  teraz();
 }
