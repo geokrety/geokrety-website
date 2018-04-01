@@ -774,14 +774,11 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     <label class="col-sm-2 control-label">'._('Date').'</label>
     <div class="col-sm-6">
       <div class="input-group">
-        <input type="text" name="data" id="data" value="'.$edit_data.'" class="form-control" aria-describedby="helpBlockDate">
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default" onclick="GetDate(formularz.data);">
+        <input type="date" name="data" id="data" value="'.$edit_data.'" class="form-control" min="2007-10-26" max="'.date('Y-m-d').'">
+        <span class="input-group-addon">
             <img src="'.CONFIG_CDN_IMAGES.'/icons/calendar.min.svg" alt="calendar">
-          </button>
         </span>
       </div>
-      <span id="helpBlockDate" class="help-block">YYYY-MM-DD</span>
     </div>
     <div class="col-sm-4">
       <div class="btn-group btn-group-vertical btn-block" role="group">
@@ -795,12 +792,12 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
   <div class="form-group">
     <label class="col-sm-2 control-label">'._('Time').'</label>
     <div class="col-sm-3">
-      <input id="godzina" name="godzina" size="2" maxlength="2" value="'.$edit_godzina.'" class="form-control" aria-describedby="helpBlockHour">
+      <input type="number" id="godzina" name="godzina" size="2" maxlength="2" min="0" max="23" value="'.$edit_godzina.'" class="form-control" aria-describedby="helpBlockHour">
       <span id="helpBlockHour" class="help-block">HH (0-23)</span>
     </div>
 
     <div class="col-sm-3">
-      <input id="minuta" name="minuta" size="2" maxlength="2" value="'.$edit_minuta.'" class="form-control" aria-describedby="helpBlockMinutes">
+      <input type="number" id="minuta" name="minuta" size="2" maxlength="2" min="0" max="59" value="'.$edit_minuta.'" class="form-control" aria-describedby="helpBlockMinutes">
       <span id="helpBlockMinutes" class="help-block">MM (0-59)</span>
     </div>
 
