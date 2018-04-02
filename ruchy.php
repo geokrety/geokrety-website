@@ -117,7 +117,7 @@ if (isset($g_edit, $g_ruchid) and ($longin_status['plain'] != null) and ctype_di
         );
         list($edit_lat, $edit_lon, $edit_waypoint, $edit_data, $edit_godzina, $edit_minuta, $edit_koment, $edit_logtype, $edit_nr) = mysqli_fetch_row($result);
 
-        $logtype_selected[$edit_logtype] = 'selected="selected"';
+        $logtype_selected[$edit_logtype] = 'checked="checked"';
         if ($edit_logtype == '4') {
             //lg = logtype
             $g_type = 'archive';
@@ -497,7 +497,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     $show_location_step = true;
     $show_capcha_step = false;
     $disabled = ' disabled="disabled" ';
-    $select_onchange = ' onchange="RuchyPola(this[selectedIndex].value);" ';
+    $select_onchange = ' onchange="RuchyPola(this.value);" ';
 
     //dla kompatybilnosci z aktualna wersja parametrow: (potem mozna to wywalic)
     if ($g_archiwizuj == '1') {
@@ -548,7 +548,13 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         $extra_hidden_fields = '<input type="hidden" name="logtype" value="2" />';
         $extra_hidden_fields .= '<input type="hidden" name="id" value="'.$g_id.'" />';
 
-        $extra_option = '<option value="2" selected="selected">'._('Comment').'</option>';
+        $extra_option = '<label>
+          <input type="radio" name="logtype" id="logType2" value="2" '.$logtype_selected[2].'>
+          <div class="comment box" data-toggle="tooltip" title="'._('When you want to write a comment :)').'">
+            <span>'._('Comment').'</span>
+          </div>
+        </label>';
+
         //$BODY = 'onLoad="sprawdzGK();"';
 
         $tracking_code_description = 'Reference number: <input type="text" name="id" id="id" size="8" maxlength="6" disabled="disabled" value="'.sprintf('GK%05X', $g_id).'" class="form-control">';
@@ -582,7 +588,12 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         $extra_hidden_fields = '<input type="hidden" name="nr" value="'.$edit_nr.'" />';
         $extra_hidden_fields .= '<input type="hidden" name="logtype" value="4" />';
 
-        $extra_option = '<option value="4" selected="selected" onclick="RuchyPola(4);">'._('Archive').'</option>';
+        $extra_option = '<label>
+          <input type="radio" name="logtype" id="logType4" value="4" checked="checked" onclick="RuchyPola(4);">
+          <div class="archive box" data-toggle="tooltip" title="'._('When a GeoKret has been missing for a long time').'">
+            <span>'._('Archive').'</span>
+          </div>
+        </label>';
         $BODY = 'onLoad="sprawdzGK(); "'; //RuchyPola(2);"';
     } elseif ($kret_formname == 'multilog') {
         $edit_nr .= $kret_multilog_nr[0];
@@ -606,8 +617,8 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     if (!isset($tracking_code_description)) {
         $tracking_code_description = '
     <label class="col-sm-2 control-label">'._('Tracking Code').'</label>
-    <div class="col-sm-6">
-      <input type="text" name="nr" id="nr" size="11" maxlength="6" '.$disabled_nr.' onkeyup="sprawdzGK(event); validateTC(event);" value="'.$edit_nr.'" onblur="validateTC();" class="form-control" aria-describedby="helpBlockTrackingCode"><span id="nr_img"></span>
+    <div class="col-sm-6 nr">
+      <input type="text" name="nr" id="nr" size="11" maxlength="6" '.$disabled_nr.' onkeyup="sprawdzGK(event); validateTC(event);" value="'.$edit_nr.'" onblur="validateTC();" class="form-control" aria-describedby="helpBlockTrackingCode" data-toggle="tooltip" title="<img src=\'https://cdn.geokrety.org/images/labels/screenshots/label-screenshot.svg\' style=\'width:100%\' />" data-html="true"><span id="nr_img"></span>
       <span id="username_img"></span>
       <span id="helpBlockTrackingCode" class="help-block">'._('6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with \'GK\' here</u>.').'</span>
     </div>
@@ -662,20 +673,154 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
   <h3><span class="cyferki">'.$step_number++.'.</span> '._('Choose log type').'</h3>
 
+<style>
+  @import url(\'https://fonts.googleapis.com/css?family=Dax:400,900\');
+
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"]:checked + .box {
+    background-color: #8bb92d;
+  }
+  input[type="radio"]:checked + .box span {
+    color: white;
+  }
+  input[type="radio"]:checked + .box span:before {
+    opacity: 1;
+  }
+
+  .box {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    /* transition: all 250ms ease; */
+    will-change: transition;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    /*font-family: "Dax", sans-serif;
+    font-weight: 900;*/
+    display: flex;
+    align-items: center;
+    border-radius: 1em 1em 1em 1em;
+  }
+  input[type="radio"]:disabled + .box {
+    color: grey;
+    background-color: lightgrey;
+  }
+  input[type="radio"]:disabled + .box span:before {
+    -webkit-filter: grayscale(100%);
+       -moz-filter: grayscale(100%);
+         -o-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+            filter: grayscale(100%);
+  }
+  .box span {
+    position: absolute;
+    padding: 12px;
+    left: 0;
+    right: 0;
+    /*bottom: 12px;*/
+    /* transition: all 300ms ease; */
+    /*font-size: 1.5em;*/
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    /* color: #8bb92d; */
+    /*background-color: grey;*/
+  }
+  .box:active {
+    transform: translateY(10px);
+  }
+  .box span:before {
+    font-size: 1.2em;
+    display: block;
+    top: 15px;
+    /*transform: translateY(-80px);*/
+    /*opacity: 0;*/
+    transition: all 300ms ease-in-out;
+    font-weight: normal;
+    color: white;
+  }
+
+  .logtypes span:before {
+    content:"";
+    min-height: 37px;
+    padding-right: 37px;
+    background-position: center;
+    background-size: 37px 37px;
+    background-repeat: no-repeat;
+  }
+  .logtypes span:hover {
+    transform: scale(1.1);
+  }
+  .dopped span:before {
+    background-image:url(\'https://cdn.geokrety.org/images/log-icons/0/0.svg\');
+  }
+  .dipped span:before {
+    background-image: url(\'https://cdn.geokrety.org/images/log-icons/0/5.svg\');
+  }
+  .met span:before {
+    background-image:url(\'https://cdn.geokrety.org/images/log-icons/0/3.svg\');
+  }
+  .grabbed span:before {
+    background-image:url(\'https://cdn.geokrety.org/images/log-icons/0/1.svg\');
+  }
+  .comment span:before {
+    background-image:url(\'https://cdn.geokrety.org/images/log-icons/0/2.svg\');
+  }
+  .archive span:before {
+    background-image:url(\'https://cdn.geokrety.org/images/log-icons/0/4.svg\');
+  }
+
+  div.nr div.tooltip {
+    min-width: 240px;
+  }
+</style>
+
+
   <div class="form-group">
-    <label class="col-sm-2 control-label">'._('Log type').'</label>
-    <div class="col-sm-6">
-      <select '.$select_onchange.$disabled_action.'name="logtype" class="form-control" aria-describedby="helpBlockLogtype">
-        <option value="0" '.$logtype_selected[0].' >'._("I've dropped GeoKret").'</option>
-        <option value="1" '.$logtype_selected[1].' >'._("I've grabbed GeoKret").'</option>
-        <option value="3" '.$logtype_selected[3].' >'._("I've met GeoKret").'</option>
-        <option value="5" '.$logtype_selected[5].' >'._("I've dipped a GeoKret").'</option>
-        <option value="2" '.$logtype_selected[2].' >'._('Comment').'</option>
+    <label class="col-sm-2 control-label">'._('Log type').' <a href="'._('help.php#Chooselogtype').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a></label>
+    <div class="col-sm-10 logtypes">
+
+        <label>
+          <input type="radio" name="logtype" id="logType0" value="0" '.$logtype_selected[0].''.$select_onchange.$disabled_action.'>
+          <div class="dopped box" data-toggle="tooltip" title="'._('When you\'ve left a GeoKret in a cache').'">
+            <span>'._("I've dropped GeoKret").'</span>
+          </div>
+        </label>
+
+        <label>
+          <input type="radio" name="logtype" id="logType1" value="1" '.$logtype_selected[1].$select_onchange.$disabled_action.'>
+          <div class="grabbed box" data-toggle="tooltip" title="'._('When you\'ve taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>').'" data-html="true">
+            <span>'._("I've grabbed GeoKret").'</span>
+          </div>
+        </label>
+
+        <label>
+          <input type="radio" name="logtype" id="logType3" value="3" '.$logtype_selected[3].$select_onchange.$disabled_action.'>
+          <div class="met box" data-toggle="tooltip" title="'._('When you\'ve met a GeoKret in a cache but haven\'t taken it with you').'">
+            <span>'._("I've met GeoKret").'</span>
+          </div>
+        </label>
+
+        <label>
+          <input type="radio" name="logtype" id="logType5" value="5" '.$logtype_selected[5].$select_onchange.$disabled_action.'>
+          <div class="dipped box" data-toggle="tooltip" title="'._('When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory').'">
+            <span>'._("I've dipped a GeoKret").'</span>
+          </div>
+        </label>
+
+        <label>
+          <input type="radio" name="logtype" id="logType2" value="2" '.$logtype_selected[2].$select_onchange.$disabled_action.'>
+          <div class="comment box" data-toggle="tooltip" title="'._('When you want to write a comment :)').'">
+            <span>'._('Comment').'</span>
+          </div>
+        </label>
         '.$extra_option.'
-      </select>
-      <span id="helpBlockLogtype" class="help-block">
-        <a href="'._('help.php#Chooselogtype').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>
-      </span>
+
     </div>
   </div>';
 
