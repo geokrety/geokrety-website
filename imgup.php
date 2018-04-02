@@ -389,13 +389,13 @@ table.imgup2{
             '<table class="imgup2">'.
             ($editing_mode ? '' : ' <tr><td><input type="hidden" name="MAX_FILE_SIZE" value="'.$max_file_size.'" /><div style="text-align:right">'._('File:').' </div></td><td><input type="file" name="obrazek" size="50"/></td></tr>').
             ' <tr><td><div style="text-align:right">'._('Description').': </div></td><td>'.$tmp_js.'</td></tr>'.
-            (($can_set_avatar and $allowed_to_upload and !$editing_mode) ? ' <tr><td><div style="text-align:right">'._('Use as avatar').': </div></td><td><input id="avatar" type="checkbox" name="avatar" value="true" /><span class="bardzomale"> (Geokret\'s main picture, displayed under this icon: <img src="'.CONFIG_CDN_IMAGES.'/idcard.png" alt="avatar"/> )</span></td></tr>' : '').
+            (($can_set_avatar and $allowed_to_upload and !$editing_mode) ? ' <tr><td><div style="text-align:right">'._('Use as avatar').': </div></td><td><input id="avatar" type="checkbox" name="avatar" value="true" /><span class="bardzomale"> ('.sprintf(_('Geokret\'s main picture, displayed under this icon: %s'), '<img src="'.CONFIG_CDN_ICONS.'/idcard.png" alt="avatar"/>').')</span></td></tr>' : '').
             ((($g_typ == '1') and !$editing_mode) ? ' <tr><td><div style="text-align:right">'._('Remember').': </div></td><td><input id="save_desc" type="checkbox" name="save_desc" value="true" '.(empty($_COOKIE[$save_desc_cookie_name]) ? '' : 'checked').'/> <img src="'.CONFIG_CDN_ICONS.'/help.png" alt="HELP" border="0" height="11" width="11" title="'.sprintf(_('Remember the description for the next %d minutes'), $save_desc_cookie_period).'"></td></tr>' : '').
             ' <tr><td></td><td><input type="submit" name="submit" value="Go!" /></td></tr>'.
             '</table>'.
             '</form>';
 
-        ($f_obrazki_plik == '') ? $tmpphoto = 'templates/empty_obrazek.png' : $tmpphoto = CONFIG_CDN_IMAGES."/obrazki-male/$f_obrazki_plik";
+        ($f_obrazki_plik == '') ? $tmpphoto = CONFIG_CDN_ICONS.'/empty_obrazek.png' : $tmpphoto = CONFIG_CDN_IMAGES."/obrazki-male/$f_obrazki_plik";
         $TRESC .= "<div class='imgup3'><span class=\"obrazek\"><img src=\"$tmpphoto\" border=\"0\" alt=\"$f_opis\" title=\"$f_opis\" width=\"100\" height=\"100\"/><br /><span id=\"pic\">$f_opis</span></span></div>";
     } else {   // errory
         include_once 'defektoskop.php';

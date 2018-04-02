@@ -163,7 +163,7 @@ function passwordChanged() {
   var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
   var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
   var enoughRegex = new RegExp("(?=.{5,}).*", "g");
-  var klucz = ' <img src="templates/key.png" alt="key"/> ';
+  var klucz = ' <img src="https://cdn.geokrety.org/images/icons/key.png" alt="key"/> ';
   var pwd = document.getElementById("haslo1");
   if (pwd.value.length == 0) {
     strength.innerHTML = '';

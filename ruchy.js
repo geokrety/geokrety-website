@@ -1,8 +1,8 @@
 
 /* global moment */
 
-var img_exclamation = '<img src="templates/exclamation.gif" border="0" />';
-//var img_accept = '<img src="templates/accept.gif" border="0" />';
+var img_exclamation = '<img src="https://cdn.geokrety.org/images/icons/exclamation.gif" border="0" />';
+//var img_accept = '<img src="https://cdn.geokrety.org/images/icons/accept.gif" border="0" />';
 var img_accept = '';
 
 function validateUsername(e) {
@@ -74,13 +74,13 @@ function getLocation(trescLogu) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    document.getElementById("wynikWpt").innerHTML = "<img src='templates/error.png' alt='error' width='16' height='16' />  Geolocation is not supported by this browser.";
+    document.getElementById("wynikWpt").innerHTML = "<img src='https://cdn.geokrety.org/images/icons/error.png' alt='error' width='16' height='16' />  Geolocation is not supported by this browser.";
   }
 }
 
 function showPosition(position) {
   document.getElementById("latlon").value = position.coords.latitude + " " + position.coords.longitude;
-  document.getElementById("wynikWpt").innerHTML = "<img src='templates/ok.png' alt='OK' width='16' height='16' /> " + '<a href="https://maps.google.pl/maps?q=' + position.coords.latitude + "+" + position.coords.longitude + '">' + position.coords.latitude + " " + position.coords.longitude + '</a>';
+  document.getElementById("wynikWpt").innerHTML = "<img src='https://cdn.geokrety.org/images/icons/ok.png' alt='OK' width='16' height='16' /> " + '<a href="https://maps.google.pl/maps?q=' + position.coords.latitude + "+" + position.coords.longitude + '">' + position.coords.latitude + " " + position.coords.longitude + '</a>';
   document.getElementById('wpt').disabled = true;
   document.getElementById('wpt').value = '';
   document.getElementById('btn_sprawdzskrzynke').disabled = true;
@@ -118,7 +118,7 @@ function logAtHomeFn(lat, lon, trescLogu) {
   document.getElementById('btn_sprawdzskrzynke').disabled = true;
   document.getElementById('NazwaSkrzynki').disabled = true;
   document.getElementById('poledoliczenia').value = trescLogu;
-  document.getElementById("wynikWpt").innerHTML = "<img src='templates/ok.png' alt='OK' width='16' height='16' /> " + '<a href="https://maps.google.pl/maps?q=' + lat + "+" + lon + '">' + lat + " " + lon + '</a>';
+  document.getElementById("wynikWpt").innerHTML = "<img src='https://cdn.geokrety.org/images/icons/ok.png' alt='OK' width='16' height='16' /> " + '<a href="https://maps.google.pl/maps?q=' + lat + "+" + lon + '">' + lat + " " + lon + '</a>';
 
   teraz();
 }
