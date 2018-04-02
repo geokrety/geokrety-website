@@ -1,9 +1,9 @@
 
 /* global moment */
 
-var img_exclamation = '<img src="https://cdn.geokrety.org/images/icons/exclamation.gif" border="0" />';
-//var img_accept = '<img src="https://cdn.geokrety.org/images/icons/accept.gif" border="0" />';
-var img_accept = '';
+var imgExclamation = '<img src="https://cdn.geokrety.org/images/icons/exclamation.gif" border="0" />';
+//var imgAccept = '<img src="https://cdn.geokrety.org/images/icons/accept.gif" border="0" />';
+var imgAccept = '';
 
 function validateUsername(e) {
   if (e) {
@@ -17,11 +17,11 @@ function validateUsername(e) {
   var obj = document.getElementById('username');
   var img = document.getElementById('username_img');
   if (obj.value == "") {
-    img.innerHTML = img_exclamation;
+    img.innerHTML = imgExclamation;
     setBorderColorRed(obj);
     return false;
   }
-  img.innerHTML = img_accept;
+  img.innerHTML = imgAccept;
   setBorderColorGreen(obj);
   return true;
 }
@@ -39,11 +39,11 @@ function validateTC(e) {
   var obj = document.getElementById('nr');
   var img = document.getElementById('nr_img');
   if (obj.value == "") {
-    img.innerHTML = img_exclamation;
+    img.innerHTML = imgExclamation;
     setBorderColorRed(obj);
     return false;
   }
-  img.innerHTML = img_accept;
+  img.innerHTML = imgAccept;
   setBorderColorGreen(obj);
   return true;
 }
