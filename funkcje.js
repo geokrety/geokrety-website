@@ -48,16 +48,16 @@ function copy_value_to_innerHTML(in_id, out_id) {
 function RuchyPola(typ){
 var doc = document;
 if(typ==0 || typ==3 || typ==5){
-		doc.getElementById('latlon').disabled = false;
-		doc.getElementById('wpt').disabled = false;
-		doc.getElementById('btn_sprawdzskrzynke').disabled = false;
-		doc.getElementById('NazwaSkrzynki').disabled = false;
+		$('#latlon').prop('disabled', false);
+		$('#wpt').prop('disabled', false);
+		$('#btn_sprawdzskrzynke').prop('disabled', false);
+		$('#NazwaSkrzynki').prop('disabled', false);
 		}
 else if(typ==1 || typ==2 || typ==4 || typ==6) {
-		doc.getElementById('latlon').disabled = true;
-		doc.getElementById('wpt').disabled = true;
-		doc.getElementById('btn_sprawdzskrzynke').disabled = true;
-		doc.getElementById('NazwaSkrzynki').disabled = true;
+		$('#latlon').prop('disabled', true);
+		$('#wpt').prop('disabled', true);
+		$('#btn_sprawdzskrzynke').prop('disabled', true);
+		$('#NazwaSkrzynki').prop('disabled', true);
 	}
 }
 
