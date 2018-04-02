@@ -65,7 +65,7 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
         $secid_pole = 'Secid: <input type="text" name="secid" value="'.$secid.'"/> ('._('keep secret!').')';
         $secid_change_desc = _('The old secid will be deleted and the new one will be generated. You will have to update the secid in all applications which are using the code.').' '._('Are you sure?');
         $secid_change_button_desc = _('Generate new secid');
-        $secid_pole .= " <a href='/api-secid-change.php' onClick=\"return Potwierdz(this, '$secid_change_desc')\"><img src='".CONFIG_CDN_IMAGES."/icons/refresh.png' alt='regenerate' width='16' height='16' border='0' title='$secid_change_button_desc'/></a>";
+        $secid_pole .= " <a href='/api-secid-change.php' onClick=\"return Potwierdz(this, '".addslashes($secid_change_desc)."')\"><img src='".CONFIG_CDN_IMAGES."/icons/refresh.png' alt='regenerate' width='16' height='16' border='0' title='$secid_change_button_desc'/></a>";
     }
 
     // user's badges
