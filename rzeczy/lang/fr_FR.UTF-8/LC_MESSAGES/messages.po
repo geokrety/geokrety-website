@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-02 01:25+0200\n"
-"PO-Revision-Date: 2018-04-01 19:30-0400\n"
+"POT-Creation-Date: 2018-04-02 20:22+0200\n"
+"PO-Revision-Date: 2018-04-02 14:23-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -25,7 +25,7 @@ msgstr "Créer un compte"
 msgid "Required fields"
 msgstr "Champs obligatoires"
 
-#: adduser.php:59 ruchy.php:639
+#: adduser.php:59 ruchy.php:650
 msgid "Username"
 msgstr "Utilisateur"
 
@@ -45,7 +45,7 @@ msgstr "E-mail"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Oui, je souhaite être informé par e-mail (chaque jour à minuit CET/CESC) lorsque l'un de mes GeoKrety ou un GeoKret favori est déplacé."
 
-#: adduser.php:81 majluj.php:103 ruchy.php:757
+#: adduser.php:81 majluj.php:103 ruchy.php:902
 msgid "Enter code"
 msgstr "Anti-spam"
 
@@ -304,11 +304,11 @@ msgstr "Utilisateurs suivant ce GeoKret"
 msgid "days ago"
 msgstr "jours"
 
-#: days_ago.php:16 ruchy.php:788
+#: days_ago.php:16 ruchy.php:933
 msgid "Yesterday"
 msgstr "Hier"
 
-#: days_ago.php:18 ruchy.php:787
+#: days_ago.php:18 ruchy.php:932
 msgid "Today"
 msgstr "Aujourd'hui"
 
@@ -355,7 +355,7 @@ msgstr "Modèles d'étiquette pour vos GeoKrets"
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
 msgstr "Vous pouvez créer une étiquette pour votre GeoKret directement depuis la page de celui-ci."
 
-#: edit.php:12 ruchy.php:624
+#: edit.php:12 ruchy.php:635
 msgid "Edit"
 msgstr "Modification"
 
@@ -466,13 +466,13 @@ msgid "help.php#geokretytypes"
 msgstr "help_generate.php?help=fr#geokretytypes"
 
 #: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
-#: recent_moves.php:94 register.php:61 ruchy.php:553 ruchy.php:675
-#: ruchy.php:815
+#: recent_moves.php:94 register.php:61 ruchy.php:556 ruchy.php:821
+#: ruchy.php:960
 msgid "Comment"
 msgstr "Commentaire"
 
 #: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
-#: newscomments.php:253 race_add.php:143 register.php:63 ruchy.php:821
+#: newscomments.php:253 race_add.php:143 register.php:63 ruchy.php:966
 msgid "characters left"
 msgstr "caractères restants"
 
@@ -508,7 +508,7 @@ msgid "Photo by"
 msgstr "Photographié par"
 
 #: geokret_gallery.php:124 recent_moves.php:95 recent_pictures.php:60
-#: ruchy.php:776
+#: ruchy.php:921
 msgid "Date"
 msgstr "Date"
 
@@ -655,6 +655,11 @@ msgstr "Fichier :"
 #: imgup.php:392
 msgid "Use as avatar"
 msgstr "Utiliser comme avatar"
+
+#: imgup.php:392
+#, php-format
+msgid "Geokret's main picture, displayed under this icon: %s"
+msgstr "Image principale du GeoKret, affichée en survolant cette icône : %s"
 
 #: imgup.php:393
 msgid "Remember"
@@ -919,7 +924,7 @@ msgstr "Contact"
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "N'hésitez pas à nous contacter, pour nous faire part de vos suggestions comme pour nous signaler des erreurs :"
 
-#: krety.html.php:9 ruchy.php:622
+#: krety.html.php:9 ruchy.php:633
 msgid "Operations on GeoKrety"
 msgstr "Signaler un GeoKret"
 
@@ -977,7 +982,7 @@ msgstr "Note : selon langue, la traduction peut être : indisponible, partielle 
 msgid "Edit this GeoKret"
 msgstr "Modifier ce GeoKret"
 
-#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:635
+#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:646
 msgid "Name"
 msgstr "Nom"
 
@@ -1656,144 +1661,168 @@ msgstr "Vous ne pouvez archiver que vos propres GeoKrety"
 msgid "Add a comment"
 msgstr "Ajouter un commentaire"
 
-#: ruchy.php:579
+#: ruchy.php:555 ruchy.php:820
+msgid "When you want to write a comment :)"
+msgstr "Lorsque vous souhaitez laisser un commentaire sur un GeoKret :)"
+
+#: ruchy.php:585
 msgid "Archive a GeoKret"
 msgstr "Archiver un GeoKret"
 
-#: ruchy.php:587
-msgid "Archive"
-msgstr "Archives"
+#: ruchy.php:595
+msgid "When a GeoKret has been missing for a long time"
+msgstr "Quand un GeoKret est porté disparu depuis longtemps"
 
-#: ruchy.php:610
+#: ruchy.php:596
+msgid "Archive"
+msgstr "Archiver"
+
+#: ruchy.php:621
 msgid "Tracking Code"
 msgstr "Code de suivi"
 
-#: ruchy.php:614
+#: ruchy.php:625
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
-msgstr "Les 6 caracteres de l'etiquette du GeoKret. ex: XF3ACS. <u>N'utilisez pas le code qui commence par 'GK' ici</u>."
+msgstr "Les 6 caractères de l’étiquette du GeoKret. ex: XF3ACS. <u>N'utilisez pas le code qui commence par 'GK' ici</u>."
 
-#: ruchy.php:628
+#: ruchy.php:639
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
 msgstr "Bien qu'il soit possible d'effectuer des opérations sur GeoKrety.org sans vous connecter, nous vous encourageons à créer un compte. Cela ne vous prendra que quelques secondes…"
 
-#: ruchy.php:636
+#: ruchy.php:647
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "Cela peut être : <br />- votre nom d'utilisateur sur les sites Geocaching/Opencaching<br />- un pseudo <br />- votre nom, etc."
 
-#: ruchy.php:654
+#: ruchy.php:665
 msgid "Logged at my home coordinates"
 msgstr "Signalé à mon domicile"
 
-#: ruchy.php:654
+#: ruchy.php:665
 msgid "Log GeoKret at my home coordinates"
 msgstr "Utiliser les coordonnées de mon domicile"
 
-#: ruchy.php:665
+#: ruchy.php:676
 msgid "Choose log type"
 msgstr "Type de signalement"
 
-#: ruchy.php:668
+#: ruchy.php:787
 msgid "Log type"
 msgstr "Type de signalement"
 
-#: ruchy.php:671
-msgid "I've dropped GeoKret"
-msgstr "J'ai déposé un GeoKret"
-
-#: ruchy.php:672
-msgid "I've grabbed GeoKret"
-msgstr "J'ai pris un GeoKret"
-
-#: ruchy.php:673
-msgid "I've met GeoKret"
-msgstr "J'ai vu un GeoKret"
-
-#: ruchy.php:674
-msgid "I've dipped a GeoKret"
-msgstr "Un GeoKret a visité la cache"
-
-#: ruchy.php:679
+#: ruchy.php:787
 msgid "help.php#Chooselogtype"
 msgstr "help_generate.php?help=fr#Chooselogtype"
 
-#: ruchy.php:686
+#: ruchy.php:792
+msgid "When you've left a GeoKret in a cache"
+msgstr "Quand vous avez déposé un GeoKret dans une cache"
+
+#: ruchy.php:793
+msgid "I've dropped GeoKret"
+msgstr "J'ai déposé un GeoKret"
+
+#: ruchy.php:799
+msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
+msgstr "Lorsque vous avez pris un GeoKret dans une cache et que vous le déposerez <i>bientôt</i> dans une autre cache"
+
+#: ruchy.php:800
+msgid "I've grabbed GeoKret"
+msgstr "J'ai pris un GeoKret"
+
+#: ruchy.php:806
+msgid "When you've met a GeoKret in a cache but haven't taken it with you"
+msgstr "Lorsque vous découvrez un GeoKret et que vous le laissez dans la cache"
+
+#: ruchy.php:807
+msgid "I've met GeoKret"
+msgstr "J'ai vu un GeoKret"
+
+#: ruchy.php:813
+msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
+msgstr "Lorsqu'un GeoKret est en votre possession ; que vous trouvez une cache mais que vous n'y déposez pas le GeoKret. Ce type de signalement permet de faire voyager un GeoKret sans s'en séparer"
+
+#: ruchy.php:814
+msgid "I've dipped a GeoKret"
+msgstr "Un GeoKret a visité la cache"
+
+#: ruchy.php:831
 msgid "Identify GeoKret"
 msgstr "Objet voyageur (GeoKret)"
 
-#: ruchy.php:694
+#: ruchy.php:839
 msgid "New location"
 msgstr "Nouvel emplacement"
 
-#: ruchy.php:695
+#: ruchy.php:840
 msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
 msgstr "<a href=\"help_generate.php?help=fr#locationdlagc\">En savoir plus sur le dépôt de GeoKrety dans les caches de geocaching.com</a>"
 
-#: ruchy.php:699
+#: ruchy.php:844
 msgid "Waypoint"
 msgstr "Waypoint"
 
-#: ruchy.php:703
+#: ruchy.php:848
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "ex : GC1AQ2N, OP069B, OC033A…"
 
-#: ruchy.php:704 ruchy.php:717
+#: ruchy.php:849 ruchy.php:862
 msgid "help.php#fullysupportedwaypoints"
 msgstr "help_generate.php?help=fr#fullysupportedwaypoints"
 
-#: ruchy.php:707
+#: ruchy.php:852
 msgid "or name of cache"
 msgstr "ou nom d'une cache"
 
-#: ruchy.php:712
+#: ruchy.php:857
 msgid "Check"
 msgstr "Vérifier"
 
-#: ruchy.php:716
+#: ruchy.php:861
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr "Entrez le nom d'une cache. Ne fonctionne qu’avec les réseaux OpenCaching."
 
-#: ruchy.php:728
+#: ruchy.php:873
 msgid "Coordinates"
 msgstr "Coordonnées"
 
-#: ruchy.php:732
+#: ruchy.php:877
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr "<a href=\"%s\" target=\"_blank\">Formats de coordonnées acceptés.</a>"
 
-#: ruchy.php:744
+#: ruchy.php:889
 msgid "Logged using geolocation"
 msgstr "Signalé en utilisant la géolocalisation par Internet"
 
-#: ruchy.php:744
+#: ruchy.php:889
 msgid "Use geolocation"
 msgstr "Utiliser la géolocalisation Internet"
 
-#: ruchy.php:754
+#: ruchy.php:899
 msgid "Captcha verification"
 msgstr "Captcha de vérification"
 
-#: ruchy.php:766
+#: ruchy.php:911
 msgid "Additional data"
 msgstr "Données supplémentaires"
 
-#: ruchy.php:789
+#: ruchy.php:934
 msgid "Two days ago"
 msgstr "Il y a 2 jours"
 
-#: ruchy.php:795
+#: ruchy.php:940
 msgid "Time"
 msgstr "Heure"
 
-#: ruchy.php:808
+#: ruchy.php:953
 msgid "now"
 msgstr "Maintenant"
 
-#: ruchy.php:809
+#: ruchy.php:954
 msgid "Enter exact time when You think it may be important"
 msgstr "Saisissez l'heure exacte si vous l'estimez nécessaire"
 
-#: ruchy.php:821
+#: ruchy.php:966
 msgid "Optional"
 msgstr "Facultatif"
 
