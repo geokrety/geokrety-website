@@ -332,7 +332,7 @@ var initial_zoom = $map_zoom;
 <td rowspan="2">
 <div id="container">
 	<div id="map_canvas"></div>
-	<div id="reticule"><img src="templates/crosshair.png" /></div>
+	<div id="reticule"><img src="'.CONFIG_CDN_ICONS.'/crosshair.png" /></div>
 </div>
 </td>
 
