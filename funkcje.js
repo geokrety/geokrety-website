@@ -51,16 +51,24 @@ function copy_value_to_innerHTML(in_id, out_id) {
 // aktywuje odpowiednie pola raksa ;)
 
 function RuchyPola(typ) {
-  if (typ === 0 || typ === 3 || typ === 5) {
+  if (typ == 0 || typ == 3 || typ == 5) {
+    $('#locationToggle').show();
+    $('#step4').html('4.');
     $('#latlon').prop('disabled', false);
     $('#wpt').prop('disabled', false);
     $('#btn_sprawdzskrzynke').prop('disabled', false);
     $('#NazwaSkrzynki').prop('disabled', false);
-  } else if (typ === 1 || typ === 2 || typ === 4 || typ === 6) {
+    $('#getGeoLocation').prop('disabled', false);
+    $('#logAtHome').prop('disabled', false);
+  } else if (typ == 1 || typ == 2 || typ == 4 || typ == 6) {
+    $('#locationToggle').hide();
+    $('#step4').html('3.');
     $('#latlon').prop('disabled', true);
     $('#wpt').prop('disabled', true);
     $('#btn_sprawdzskrzynke').prop('disabled', true);
     $('#NazwaSkrzynki').prop('disabled', true);
+    $('#getGeoLocation').prop('disabled', true);
+    $('#logAtHome').prop('disabled', true);
   }
 }
 
@@ -179,7 +187,7 @@ function sprawdzGK(e) {
     var KeyID = (window.event)
       ? event.keyCode
       : e.keyCode;
-    if (KeyID === 9 || (KeyID >= 16 && KeyID <= 20) || (KeyID >= 33 && KeyID <= 40)) {
+    if (KeyID == 9 || (KeyID >= 16 && KeyID <= 20) || (KeyID >= 33 && KeyID <= 40)) {
       return;
     }
 

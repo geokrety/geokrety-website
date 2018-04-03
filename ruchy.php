@@ -8,7 +8,7 @@ require_once 'smarty_start.php';
 
 $TYTUL = ''; $HEAD = ''; $OGON = '';
 $OGON .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>'."\n";   // character counters
-$OGON .= '<script type="text/javascript" src="/ruchy.js?ver=3.50"></script>';    // form validation
+$OGON .= '<script type="text/javascript" src="/ruchy.js?ver=3.51"></script>';    // form validation
 $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/json2-100320.min.js"></script>'."\n";
 $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>'."\n";
 $OGON .= '<script type="text/javascript" src="'.CDN_BOOTSTRAP_DATEPICKER_JS.'"></script>'."\n";
@@ -153,7 +153,12 @@ if (isset($g_edit, $g_ruchid) and ($longin_status['plain'] != null) and ctype_di
         // $edit_lon = (abs($edit_lon)/$edit_lon)*floor(abs($edit_lon)) . " " . (60*(abs($edit_lon) - floor(abs($edit_lon))));
 
         //echo "$edit_lat, $edit_lon, $edit_waypoint, $edit_data, $edit_godzina, $edit_minuta, $edit_koment, $edit_nr";
-        $BODY = 'onLoad="sprawdzGK(); RuchyPola('.$edit_logtype.')"';
+        $BODY = 'onLoad="sprawdzGK();"';
+        $OGON .= '<script>
+        $(function () {
+          RuchyPola("'.$edit_logtype.'");
+        })
+        </script>'."\n";
 
         $get_czy_edycja = "?edit=1&ruchid=$g_ruchid";
     } else { // jezeli bysmy chcieli edytowac nie swoj log no to error:
@@ -674,7 +679,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     mysqli_free_result($result);
     if (!empty($row)) {
         list($lat, $lon) = $row;
-        $pole_logAtHome = '<button name="logAtHome" value="1" type="button" onclick="logAtHomeFn(\''.$lat.'\', \''.$lon.'\', \''._('Logged at my home coordinates').'\');" class="btn btn-default">'._('Log GeoKret at my home coordinates').'</button>';
+        $pole_logAtHome = '<button name="logAtHome" id="logAtHome" value="1" type="button" onclick="logAtHomeFn(\''.$lat.'\', \''.$lon.'\', \''._('Logged at my home coordinates').'\');" class="btn btn-default">'._('Log GeoKret at my home coordinates').'</button>';
     }
     // ------------ home coordinates? -------------- //
 
@@ -848,6 +853,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     // -------------------- 3 (new location)
     if ($show_location_step) {
         $TRESC .= '
+<div id="locationToggle">
 <h3><span class="cyferki">'.$step_number++.'.</span>  '._('New location').'</h3>
 <p><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="?" width="11" height="11" /> '._('<a href="help.php#locationdlagc">Learn more about hiding GeoKrety in GC caches</a>').'...</p>
 
@@ -898,10 +904,11 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     <div class="col-sm-4">
       <div class="btn-group btn-group-vertical btn-block" role="group">
         '.$pole_logAtHome.'
-        <button type="button" name="getGeoLocation" onclick="getLocation(\''._('Logged using geolocation').'\');" class="btn btn-default">'._('Use geolocation').'</button>
+        <button type="button" name="getGeoLocation" id="getGeoLocation" onclick="getLocation(\''._('Logged using geolocation').'\');" class="btn btn-default">'._('Use geolocation').'</button>
       </div>
     </div>
   </div>
+</div>
 ';
     }
 
@@ -920,7 +927,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
     // -------------------- 4 (additional data)
     $TRESC .= '
-<h3><span class="cyferki">'.$step_number++.'.</span>  '._('Additional data').'</h3>
+<h3><span class="cyferki" id="step4">'.$step_number++.'.</span>  '._('Additional data').'</h3>
 
   <div class="form-group">
     <label class="col-sm-2 control-label">'.$username_text.'</label>
