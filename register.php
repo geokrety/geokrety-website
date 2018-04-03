@@ -22,13 +22,13 @@ $kret_typ = $_POST['typ'];
 $logAtHome = $_POST['logAtHome'];
 
 //----------- FORM -------------- //
+$link = DBConnect();
 
 if ($longin_status['plain'] == null) {
     $TRESC = _('Please login.');
 } elseif ((!isset($kret_nazwa))) { //--------------------  if NOT all required variables are set
     // ------------ home coordinates? -------------- //
     $owner = $longin_status['userid'];
-    $link = DBConnect();
     $sql = "SELECT  `lat`, `lon` FROM `gk-users` WHERE `userid` = '$owner' and `lat` != '' and `lon` != ''";
     $result = mysqli_query($link, $sql);
     $row = mysqli_fetch_row($result);
