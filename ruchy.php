@@ -11,14 +11,26 @@ $OGON .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></scrip
 $OGON .= '<script type="text/javascript" src="/ruchy.js?ver=3.50"></script>';    // form validation
 $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_JS.'/json2-100320.min.js"></script>'."\n";
 $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>'."\n";
+$OGON .= '<script type="text/javascript" src="'.CDN_BOOTSTRAP_DATEPICKER_JS.'"></script>'."\n";
 $OGON .= '<script>
 $(function () {
   $(\'[data-toggle="tooltip"]:not(.tt_large)\').tooltip();
   $(\'.tt_large\').tooltip({
     template: \'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner large"></div></div>\'
   });
+
+  $(\'#data\').datepicker({
+    format: "yyyy-mm-dd",
+    startDate: "2007-10-26",
+    endDate: "'.date('Y-m-d').'",
+    todayBtn: "linked",
+    autoclose: true,
+    todayHighlight: true
+  });
 })
 </script>'."\n";
+
+$HEAD .= '<link rel="stylesheet" href="'.CDN_BOOTSTRAP_DATEPICKER_CSS.'">';
 
 $kret_antyspamer = $_POST['antyspamer'];
 // autopoprawione...
@@ -921,11 +933,11 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
   <div class="form-group">
     <label class="col-sm-2 control-label">'._('Date').'</label>
     <div class="col-sm-6">
-      <div class="input-group">
-        <input type="date" name="data" id="data" value="'.$edit_data.'" class="form-control" min="2007-10-26" max="'.date('Y-m-d').'">
-        <span class="input-group-addon">
-            <img src="'.CONFIG_CDN_IMAGES.'/icons/calendar.min.svg" alt="calendar">
-        </span>
+      <div class="input-group date">
+        <input type="text" class="form-control" name="data" id="data" value="'.$edit_data.'">
+        <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+        </div>
       </div>
     </div>
     <div class="col-sm-4">

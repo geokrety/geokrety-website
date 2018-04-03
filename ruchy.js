@@ -95,20 +95,20 @@ function teraz() {
   document.getElementById('godzina').value = d.getHours();
 
   var day = moment();
-  document.getElementById("data").value = day.format('YYYY-MM-DD');
+  $('#data').datepicker('update', day.format('YYYY-MM-DD'));
 }
 
 function dzis() {
   var day = moment();
-  document.getElementById("data").value = day.format('YYYY-MM-DD');
+  $('#data').datepicker('update', day.format('YYYY-MM-DD'));
 }
 function wczoraj() {
   var day = moment().add(-1, 'day');
-  document.getElementById("data").value = day.format('YYYY-MM-DD');
+  $('#data').datepicker('update', day.format('YYYY-MM-DD'));
 }
 function przedwczoraj() {
   var day = moment().add(-2, 'day');
-  document.getElementById("data").value = day.format('YYYY-MM-DD');
+  $('#data').datepicker('update', day.format('YYYY-MM-DD'));
 }
 
 function logAtHomeFn(lat, lon, trescLogu) {
