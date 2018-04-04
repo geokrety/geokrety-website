@@ -653,7 +653,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     }
 
     if ($longin_status['plain'] == null) {
-        $TRESC = '<div class="alert alert-info" role="alert"><img src="'.CONFIG_CDN_IMAGES.'/icons/warn.png" alt="POZOR!" title="POZOR!" width="32" height="32" /> '._('Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)').'.</div>';
+        $TRESC = '<div class="alert alert-danger" role="alert"><img src="'.CONFIG_CDN_IMAGES.'/icons/warn.png" alt="POZOR!" title="POZOR!" width="32" height="32" /> '._('Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)').'.</div>';
     } else {
         $disabled_for_logged = $disabled;
     }
