@@ -1,1812 +1,2011 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same rmslicense as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-14 13:41+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: filips\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: Polskij\n"
+"POT-Creation-Date: 2018-04-02 20:22+0200\n"
+"PO-Revision-Date: 2018-04-04 15:53-0400\n"
+"Last-Translator: geokrety <geokrety@gmail.com>\n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-""
+"Plural-Forms: nplurals=4; plural=((n == 1) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || n%10 == 1 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 12 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: geokrety\n"
+"X-Crowdin-Language: pl\n"
+"X-Crowdin-File: /rzeczy/messages.po.txt.po\n"
 
+#: adduser.php:8 adduser.php:105 templates.php:186
+#: templates/plugins/function.login_check.php:37
 msgid "Register a new user"
 msgstr "Zarejestruj nowego użytkownika"
 
+#: adduser.php:55
 msgid "Required fields"
 msgstr "Pola obowiązkowe"
 
+#: adduser.php:59 ruchy.php:650
 msgid "Username"
 msgstr "Użytkownik"
 
+#: adduser.php:64 api-login2secid.php:64 longin.php:142 mypage.php:43
 msgid "Password"
 msgstr "Hasło"
 
+#: adduser.php:69
 msgid "Verify Password"
 msgstr "Potwierdź hasło"
 
+#: adduser.php:74 edit.php:402 new_password.php:36
 msgid "Email"
 msgstr "e-mail"
 
-msgid ""
-"Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when "
-"my or watched GeoKret changes its location."
-msgstr ""
-"Tak, chcę otrzymywać mailem zawiadomienia (wysyłane codziennie o północy "
-"CET/CEST) kiedy moje lub obserwowane GeoKrety zmienią status."
+#: adduser.php:76
+msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
+msgstr "Tak, chcę otrzymywać mailem zawiadomienia (wysyłane codziennie o północy CET/CEST) kiedy moje lub obserwowane GeoKrety zmienią status."
 
+#: adduser.php:81 majluj.php:103 ruchy.php:902
 msgid "Enter code"
 msgstr "Wpisz kod"
 
-msgid "Terms of use"
-msgstr "Zasady użytkowania"
-
-msgid "Optional fields"
-msgstr "Pola nieobowiązkowe"
-
+#: adduser.php:86 edit.php:489 mypage.php:308
 msgid "Language"
 msgstr "Język"
 
+#: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
+msgid "Terms of use"
+msgstr "Zasady użytkowania"
+
+#: adduser.php:108
 msgid "Tips"
 msgstr "Podpowiedzi"
 
-msgid ""
-"Read more about choosing good passwords:\n"
+#: adduser.php:111 edit.php:206
+msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
-"<li><a "
-"href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing "
-"Good Passwords -- A User Guide</a></li>\n"
-"<li><a "
-"href=\"http://www.csoonline.com/article/220721/how-to-write-good-passwords\">How "
-"to Write Good Passwords</a></li>\n"
-"<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Password "
-"strength</a></li>\n"
+"<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
+"<li><a href=\"http://www.csoonline.com/article/220721/how-to-write-good-passwords\">How to Write Good Passwords</a></li>\n"
+"<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Password strength</a></li>\n"
 "</ul>"
-msgstr ""
-"Dowiedz się więcej o wybieraniu dobrych i silnych haseł, np <a "
-"href=\"http://bezpiecznyinternet.org/2012/09/dobre-haslo/\">tutaj</a>."
+msgstr "Dowiedz się więcej o wybieraniu dobrych i silnych haseł, np <a href=\"http://bezpiecznyinternet.org/2012/09/dobre-haslo/\">tutaj</a>."
 
+#: adduser.php:127 majluj.php:125 new_password.php:44
 msgid "Wrong antispam phrase!"
 msgstr "Zły kod antyspamowy!"
 
+#: adduser.php:130 adduser.php:133
 msgid "No password"
 msgstr "Brak hasła"
 
+#: adduser.php:136 majluj.php:123
 msgid "No antyspam phase!"
 msgstr "Brak kodu antyspamowego!"
 
+#: adduser.php:139
 msgid "Passwords are different or empty!"
 msgstr "Hasła są róźne lub puste!"
 
+#: adduser.php:142
 msgid "Password to short (should be >= 5 characters)!"
 msgstr "Za krótkie hasło (powinno być >= 5 znaków)!"
 
+#: adduser.php:165
 #, php-format
-msgid ""
-"It seems that <a href='mypage.php?userid=%s'>your account</a> has already "
-"been created."
-msgstr ""
-"Wygląda na to, że <a href='mypage.php?userid=%s'>Twoje konto</a> zostało już "
-"utworzone."
+msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
+msgstr "Wygląda na to, że <a href='mypage.php?userid=%s'>Twoje konto</a> zostało już utworzone."
 
-msgid ""
-"An email to confirm your email address was sent to you. When you confirm, "
-"your account will be fully operational. Until then, you will not be able to "
-"receive emails with daily summaries of moves of your GeoKrety. The link is "
-"valid for 5 days. Now you can perform operations on GeoKrety. Feel free to "
-"log in and enjoy GeoKrety.org! :)"
-msgstr ""
-"Został wysłany do Ciebie email z prośbą o potwierdzenie adresu. Kiedy "
-"klikniesz na link tam zawarty Twoje konto będzie w pełni aktywne. Do tej "
-"pory nie będziesz mógł dostawać emaili z podsumowaniem ruchów Twoich i "
-"obserwowanych przez Ciebie GeoKretów. Link zawarty w mailu jest ważny przez "
-"5 dni. Już teraz możesz się zalogować i dokonywać operacji na GeoKretach. "
-"Miłej zabawy!"
+#: adduser.php:166 adduser.php:248
+msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr "Został wysłany do Ciebie email z prośbą o potwierdzenie adresu. Kiedy klikniesz na link tam zawarty Twoje konto będzie w pełni aktywne. Do tej pory nie będziesz mógł dostawać emaili z podsumowaniem ruchów Twoich i obserwowanych przez Ciebie GeoKretów. Link zawarty w mailu jest ważny przez 5 dni. Już teraz możesz się zalogować i dokonywać operacji na GeoKretach. Miłej zabawy!"
 
+#: adduser.php:167 longin.php:9 templates.php:189
+#: templates/plugins/function.login_check.php:37
 msgid "Login"
-msgstr "Login"
+msgstr ""
 
+#: adduser.php:167 templates.php:192
+#: templates/plugins/function.login_check.php:37
 msgid "Forgot password?"
 msgstr "Zapomniałeś hasła?"
 
+#: adduser.php:174
 msgid "The username you entered is already in use."
 msgstr "Taka nazwa użytkownika już jest w użyciu."
 
+#: adduser.php:181
 msgid "The email you entered is already in use."
 msgstr "Oj, taki adres email jest już w użyciu."
 
+#: adduser.php:197
 msgid "Wrong email address?"
 msgstr "Zły adres emailowy"
 
+#: adduser.php:200 majluj.php:127 new_password.php:51
 msgid "Antispam token error! Reload the previous page."
 msgstr "Błąd tokenu antyspamowego. Przeładuj poprzednią stronę."
 
+#: adduser.php:247
 msgid "An account created successfully. "
 msgstr "Konto założone pomyślnie :) "
 
+#: aktywuj_maila.php:41 confirm.php:83
 msgid "Your email address has been updated successfully."
 msgstr "Twój adres emailowy został zaktualizowany."
 
+#: aktywuj_maila.php:55
 msgid "Bad confirmation code or other error."
 msgstr "Zły kod potwierdzający albo jakiś inny błąd."
 
+#: api.php:8
 msgid "GK XML interface"
 msgstr "Kreci interfejs XMLowy ;)"
 
+#: check_email_validity.php:12
+#, php-format
+msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
+msgstr ""
+
+#: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:34
+#: newscomments.php:275 please_login.php:11 race_join.php:12 register.php:27
 msgid "Please login."
 msgstr "Zaloguj się."
 
+#: comment.php:21
+msgid "Unknown error."
+msgstr "Nieznany błąd."
+
+#: comment.php:48
 msgid "Oops! Something went wrong."
 msgstr "Oj, coś poszło źle..."
 
+#: comment.php:126
 #, php-format
 msgid "Reporting GeoKret %s as missing"
 msgstr "Zgłoszenie zaginięcia %s"
 
+#: comment.php:148
 #, php-format
 msgid "Commenting GeoKret: %s"
 msgstr "Komentujemy GeoKreta %s"
 
-msgid ""
-"Please provide any information that may help the owner to find out the "
-"whereabouts of this GeoKret."
+#: comment.php:157
+msgid "Please provide any information that may help the owner to find out the whereabouts of this GeoKret."
 msgstr "Podaj proszę informacje mogące być przydate przy odnalezieniu tego kreta"
 
+#: comment.php:179
 msgid "Your comment"
 msgstr "Komentarz"
 
-msgid ""
-"It seems that your link has been malformed, possibly by your email software. "
-"If clicking on the link directly from within the email does not work, try to "
-"copy and paste it into your browser's address field making sure to copy and "
-"paste the whole url."
-msgstr ""
-"Oj, wygląda mi na to, że Twój link został zdeformowany - najprawdopodobniej "
-"przez Twojego klienta email.Jeśli bezpośrednie kliknięcie na link nie "
-"działa, spróbuj skopiować ten link i wkleić w okno adresu "
-"przeglądarki.Pamiętaj, aby skopiować cały adres url."
+#: confirm.php:31
+msgid "It seems that your link has been malformed, possibly by your email software. If clicking on the link directly from within the email does not work, try to copy and paste it into your browser's address field making sure to copy and paste the whole url."
+msgstr "Oj, wygląda mi na to, że Twój link został zdeformowany - najprawdopodobniej przez Twojego klienta email.Jeśli bezpośrednie kliknięcie na link nie działa, spróbuj skopiować ten link i wkleić w okno adresu przeglądarki.Pamiętaj, aby skopiować cały adres url."
 
+#: confirm.php:32 confirm.php:40
 msgid "Bad confirmation code."
 msgstr "Błędny kod potwierdzający."
 
+#: confirm.php:49
 msgid "This confirmation code has expired."
 msgstr "Ten kod potwierdzający wygasł :(."
 
+#: confirm.php:49
 #, php-format
 msgid "To change your email %sclick here%s."
 msgstr "Aby zmienić adres email %skliknij tutaj%s."
 
+#: confirm.php:66
 msgid "This confirmation code has already been processed."
 msgstr "Ten kod potwierdzający już został przetworzony."
 
+#: cords_parse.php:237
 msgid "Bad coordinates or unknown format."
 msgstr "Złe współrzędne lub nieznany format"
 
+#: cords_parse.php:245
 msgid "Missing or invalid coordinates."
 msgstr "Brak lub błędne współrzędne"
 
+#: cotozalog.php:8 templates/konfig.php:129
 msgid "Dropped to"
 msgstr "Wrzucony do"
 
+#: cotozalog.php:9 templates/konfig.php:130
 msgid "Grabbed from"
 msgstr "Zabrany z"
 
+#: cotozalog.php:10 templates/konfig.php:131
 msgid "A comment"
 msgstr "Komentarz"
 
+#: cotozalog.php:11 templates/konfig.php:132
 msgid "Seen in"
 msgstr "Widziany w"
 
+#: cotozalog.php:12 templates/konfig.php:133
 msgid "Archived"
 msgstr "Zarchiwizowany"
 
+#: cotozalog.php:13 templates/konfig.php:134
 msgid "Dipped in"
 msgstr "Odwiedził"
 
+#: cotozalog.php:15 cotozalog.php:24
 msgid "Inside a cache"
 msgstr "W keszu"
 
+#: cotozalog.php:16 cotozalog.php:25
 msgid "Travelling"
 msgstr "Podróżuje"
 
+#: cotozalog.php:18 cotozalog.php:27
 msgid "Still in a cache"
 msgstr "Ciągle w keszu"
 
+#: cotozalog.php:19 cotozalog.php:28
 msgid "Probably lost"
 msgstr "Prawdopodobnie zaginiony"
 
+#: cotozalog.php:20 cotozalog.php:29
 msgid "Visiting"
 msgstr "Odwiedza"
 
+#: cotozalog.php:22 cotozalog.php:31
 msgid "Freshman mole"
 msgstr "Kret-żółtodziób ;)"
 
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:136
 msgid "Traditional"
 msgstr "Tradycyjny"
 
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:137
 msgid "A book/CD/DVD..."
 msgstr "Książka/CD/DVD"
 
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:138
 msgid "A human"
 msgstr "Człowiek"
 
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:139
 msgid "A coin"
 msgstr "Toczygrosz"
 
+#: country_stat.php:28 templates.php:30 templates.php:93 templates.php:219
+#: templates.php:282
 msgid "Stats by country"
 msgstr "Statystyka wg. krajów"
 
+#: czy_obserwowany.php:45
 msgid "Number of users who are watching this geokret"
 msgstr "Ile osób obserwuje tego kreta"
 
+#: czy_obserwowany.php:49
 msgid "Watch this GeoKret"
 msgstr "Obserwuj tego kreta"
 
+#: czy_obserwowany.php:53 mygeokrets.php:280
 msgid "Stop watching this GeoKret"
 msgstr "Zaprzestań obserwacji tego kreta"
 
+#: czy_obserwowany.php:58
 msgid "Users watching it"
 msgstr "Kto obserwuje"
 
+#: czy_obserwowany.php:60
 msgid "Users watching this GeoKret"
 msgstr "Kto obserwuje tego kreta"
 
+#: days_ago.php:14
 msgid "days ago"
 msgstr "dni temu"
 
+#: days_ago.php:16 ruchy.php:933
 msgid "Yesterday"
 msgstr "Wczoraj"
 
+#: days_ago.php:18 ruchy.php:932
 msgid "Today"
 msgstr "Dziś"
 
+#: download.php:9 krety.html.php:15 templates.php:36 templates.php:99
+#: templates.php:225 templates.php:288
 msgid "Download"
 msgstr "Pobierz"
 
+#: download.php:12
 msgid "Translation file"
 msgstr "Plik tłumaczeń"
 
+#: download.php:15
+msgid "Our translation files are now hosted on crowdin."
+msgstr ""
+
+#: download.php:16 index.php:216
 msgid "Suggest a better translation"
 msgstr "Zaproponuj lepsze tłumaczenie"
 
+#: download.php:19 templates.php:51 templates.php:123 templates.php:240
+#: templates.php:306
 msgid "Map of caches"
 msgstr "Mapka keszy"
 
+#: download.php:22 geomapa.php:26
 #, php-format
-msgid ""
-"As we have been collecting waypoints of significant number of caches (%s) "
-"caches around the world - <a href=\"help.php#fullysupportedwaypoints\">click "
-"here</a> for a list of supported services) we decided to generate a "
-"transparent map of those caches for garmin units (img format). Now you can "
-"have all those caches on one map (actually: mapset)."
-msgstr ""
-"Jako, że nasz serwis zbiera informacje o znacznej liczbie waypointów z "
-"różnych serwisów (%s) - <a "
-"href=\"help_generate.php?help=pl#fullysupportedwaypoints\">sam zobacz</a> - "
-"wpadliśmy na pomysł, aby z tych waypointów generować mapkę keszy dla "
-"odbiorników GPS garmina. Mapka jest transparentna, w formacie img, "
-"dostarczana wraz z windowsowym instalatorem (działa również pod linuxem + "
-"wine :)."
+msgid "As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href=\"help.php#fullysupportedwaypoints\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
+msgstr "Jako, że nasz serwis zbiera informacje o znacznej liczbie waypointów z różnych serwisów (%s) - <a href=\"help_generate.php?help=pl#fullysupportedwaypoints\">sam zobacz</a> - wpadliśmy na pomysł, aby z tych waypointów generować mapkę keszy dla odbiorników GPS garmina. Mapka jest transparentna, w formacie img, dostarczana wraz z windowsowym instalatorem (działa również pod linuxem + wine :)."
 
+#: download.php:25
 msgid "Read more and get the map"
 msgstr "Przeczytaj więcej i pobierz mapkę"
 
+#: download.php:28
+msgid "GeoKrety logo"
+msgstr "Logo GeoKretów"
+
+#: download.php:35
 msgid "Sample geokret label"
 msgstr "Przykładowe etykietki GeoKretów"
 
-msgid ""
-"Please note, that you can create a label for your geokret automatically, by "
-"clicking on the appropriate link on the GK's page."
-msgstr ""
-"Zważ proszę, że etykietę do swojego kreta możesz wygenerować automatycznie z "
-"poziomu strony danego kreta."
+#: download.php:36
+msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
+msgstr "Zważ proszę, że etykietę do swojego kreta możesz wygenerować automatycznie z poziomu strony danego kreta."
 
+#: edit.php:12 ruchy.php:635
 msgid "Edit"
 msgstr "Edycja"
 
+#: edit.php:58
 msgid "You must be logged in to continue."
 msgstr "Musisz być zalogowany aby kontynuować"
 
+#: edit.php:199
 msgid "Old password"
 msgstr "Stare hasło"
 
+#: edit.php:201
 msgid "New password"
 msgstr "Nowe hasło"
 
+#: edit.php:203
 msgid "Retype"
 msgstr "Powtórz, proszę"
 
+#: edit.php:204
 msgid "characters"
 msgstr "znaków"
 
+#: edit.php:228
 msgid "Passwords different or empty or too short"
 msgstr "Hasła różne, puste albo za krótkie"
 
+#: edit.php:230
 msgid "Wrong current password"
 msgstr "Złe bieżące hasło"
 
+#: edit.php:327 mypage.php:156
 msgid "Home coordinates"
 msgstr "Koordynaty domowe"
 
+#: edit.php:330
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Aby określić położenie, użyj mapki lub wprowadź współrzędne ręcznie."
 
+#: edit.php:330 race_join.php:41 szukaj-ajax.php:99 szukaj.php:86 szukaj.php:94
+#: szukaj.php:117
 msgid "eg."
 msgstr "np."
 
-msgid ""
-"<a href=\"http://geokrety.org/help.php#acceptableformats\" "
-"target=\"_blank\">Other acceptable lat/lon formats</a>"
+#: edit.php:330
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
 msgstr ""
-"<a href=\"http://geokrety.org/help_generate.php?help=pl#acceptableformats\" "
-"target=\"_blank\">Inne akceptowane formaty współrzędnych</a>"
 
+#: edit.php:341 mypage.php:156
 msgid "Observation area"
 msgstr "Obszar obserwacji"
 
-msgid ""
-"You can receive notification if any geokret is logged within the specified "
-"distance of your home coordinates. To disable enter 0."
-msgstr ""
-"Aby otrzymać powiadomienia o kretach pojawiających się w okolicy Twoich "
-"współrzędnych domowych, określ obszar obserwacji. Aby wyłączyć wpisz 0 "
-"(zero)"
+#: edit.php:343
+msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
+msgstr "Aby otrzymać powiadomienia o kretach pojawiających się w okolicy Twoich współrzędnych domowych, określ obszar obserwacji. Aby wyłączyć wpisz 0 (zero)"
 
+#: edit.php:362
 msgid "Observation radius is invalid or outside the min/max range"
 msgstr "Niewłaściwy promień obserwacji / powyżej granicy min/max"
 
-msgid ""
-"Recent logs of:*your own geokrets*geokrets that you watch*any geokrets "
-"logged near your home location"
-msgstr ""
-"Ostatnie logi Twoich geokretów * obserwowanych geokretów * geokretów w "
-"pobliżu Twoich współrzędnych domowych"
+#: edit.php:397
+msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
+msgstr "Ostatnie logi Twoich geokretów * obserwowanych geokretów * geokretów w pobliżu Twoich współrzędnych domowych"
 
-msgid ""
-"Comments posted to any of the following:*your own geokrets*geokrets that you "
-"watch*your logs*your comments*news posts you have are subscribed to"
-msgstr ""
-"Komentarze do: Twoich geokretów * obserwowanych geokretów * Twoich logów * "
-"Twoich komentarzy * zasubskrybowanych postów"
+#: edit.php:398
+msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
+msgstr "Komentarze do: Twoich geokretów * obserwowanych geokretów * Twoich logów * Twoich komentarzy * zasubskrybowanych postów"
 
-msgid ""
-"Yes, I want to receive email alerts (sent once a day). Email alerts may "
-"contain any of the following:"
+#: edit.php:404
+msgid "Yes, I want to receive email alerts (sent once a day). Email alerts may contain any of the following:"
 msgstr "Tak, przysyłajcie mi alerty (raz dziennie). Emaile zawierać będą poniższe:"
 
+#: edit.php:407
+msgid "GeoKrety.org news"
+msgstr "Nowości na Geokrety.org"
+
+#: edit.php:453 edit.php:456
 msgid "[GeoKrety] Email address change request at geokrety.org"
 msgstr "[GeoKrety] Potwierdzenie prośby o zmianę adresu email na geokrety.org"
 
-msgid ""
-"A confirmation email was sent to your new address. You must click on the "
-"link provided in the email to confirm the change to your email address. The "
-"confirmation link is valid for 5 days."
-msgstr ""
-"Email potwierdzający został wysłany na Twój nowy adres. Aby potwierdzić "
-"zmianę adresu kliknij na link zawarty w tymże mailu. Link jest ważny przez 5 "
-"(słownie: pięć) dni."
+#: edit.php:459
+msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days."
+msgstr "Email potwierdzający został wysłany na Twój nowy adres. Aby potwierdzić zmianę adresu kliknij na link zawarty w tymże mailu. Link jest ważny przez 5 (słownie: pięć) dni."
 
+#: edit.php:462
 msgid "Error, please try again later..."
 msgstr "Error = błąd. Proszę spróbować później..."
 
+#: edit.php:469
 msgid "Wrong email or subscribtion option"
 msgstr "Zły adres email lub obcje subskrybcji"
 
+#: edit.php:518 mypage.php:45
 msgid "Choose statpic"
 msgstr "Wybierz obrazek statystyk"
 
+#: edit.php:552 labels.php:55 register.php:45 szukaj.php:100
 msgid "GeoKret name"
 msgstr "Nazwa GeoKreta"
 
+#: edit.php:556 register.php:49
 msgid "Geokret type"
 msgstr "Typ GeoKreta"
 
+#: edit.php:564 register.php:57
 msgid "help.php#geokretytypes"
 msgstr "help_generate.php?help=pl#geokretytypes"
 
+#: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
+#: recent_moves.php:94 register.php:61 ruchy.php:556 ruchy.php:821
+#: ruchy.php:960
 msgid "Comment"
 msgstr "Komentarz"
 
+#: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
+#: newscomments.php:253 race_add.php:143 register.php:63 ruchy.php:966
 msgid "characters left"
 msgstr "znaków pozostało"
 
+#: email2gk.php:10
+msgid "Email2GK :: β (beta)"
+msgstr ""
+
+#: errory.php:9
 msgid "errors"
 msgstr "błędy"
 
+#: galeria.php:10 geokret_gallery.php:72 index.php:171 templates.php:21
+#: templates.php:84 templates.php:210 templates.php:273
 msgid "Photo gallery"
 msgstr "Fotki"
 
+#: geokret_gallery.php:35 konkret.php:35 konkret.php:45 konkret.php:62
+#: ruchy.php:249
 msgid "No such GeoKret!"
 msgstr "Brak takiego GeoKreta!"
 
+#: geokret_gallery.php:85
 msgid "Return to GeoKret's page"
 msgstr "Powróć do strony geokreta"
 
+#: geokret_gallery.php:93
 msgid "Photo gallery of"
 msgstr "fotogaleria"
 
+#: geokret_gallery.php:121 geokret_gallery.php:131 recent_pictures.php:56
+#: recent_pictures.php:64
 msgid "Photo by"
 msgstr "Zdjęcie by"
 
+#: geokret_gallery.php:124 recent_moves.php:95 recent_pictures.php:60
+#: ruchy.php:921
 msgid "Date"
 msgstr "Data operacji"
 
+#: geokret_gallery.php:126 lingering.php:202 mygeokrets.php:276
+#: mygeokrets.php:289 recent_moves.php:93
 msgid "Cache"
 msgstr "Kesz"
 
+#: geokret_gallery.php:129 recent_pictures.php:62
 msgid "Country"
 msgstr "Kraj"
 
-msgid ""
-"To set this GeoKret's avatar, select one of the pictures and click the Save "
-"button below."
+#: geokret_gallery.php:171
+msgid "To set this GeoKret's avatar, select one of the pictures and click the Save button below."
 msgstr "Aby ustawić avatar Geokreta, wybierz jedno ze zdjęć i kliknij Zapisz/Save"
 
+#: geokret_gallery.php:173
 msgid "Save new avatar"
 msgstr "Zapisz nowy avatar"
 
-msgid ""
-"Your GeoKret doesn't have any pictures. You can add them by clicking on this "
-"icon on the GeoKret's page: "
-msgstr ""
-"Twój GeoKret nie ma żadnych zdjęć. Możesz dodać takowe przez klik na ikonce "
-"na stronie Kreta: "
+#: geokret_gallery.php:175
+msgid "Your GeoKret doesn't have any pictures. You can add them by clicking on this icon on the GeoKret's page: "
+msgstr "Twój GeoKret nie ma żadnych zdjęć. Możesz dodać takowe przez klik na ikonce na stronie Kreta: "
 
+#: geomapa.php:11
 msgid "GeoMap"
 msgstr "GeoMapka"
 
+#: grp_add.php:15
 msgid "Add to group"
 msgstr "Dodaj do grupy"
 
+#: grp_add.php:69
 msgid "Private groups"
 msgstr "Grupy prywatne"
 
+#: grp_add.php:70
 msgid "Public groups"
 msgstr "Grupy publiczne"
 
+#: grp_create.php:15
 msgid "Create group"
 msgstr "Stwórz grupę"
 
+#: grp_create.php:40
 msgid "The group has been created succesfully"
 msgstr "Grupa utworzona z powodzeniem"
 
+#: grp_create.php:41
 msgid "Go back to the geokret page"
 msgstr "Powróć do strony geokreta"
 
+#: grp_create.php:42
 msgid "Add the geokret to a group"
 msgstr "Dodaj geokreta do grupy"
 
+#: grp_create.php:52
 msgid "Group name"
 msgstr "Nazwa grupy"
 
+#: grp_create.php:58
 msgid "Private"
 msgstr "Prywatna"
 
+#: grp_create.php:64 imgup.php:391
 msgid "Description"
 msgstr "Opis"
 
+#: grp_show.php:13
 msgid "Show group"
 msgstr "Pokaż grupę"
 
+#: halloffame.php:11 templates.php:60 templates.php:132 templates.php:249
+#: templates.php:315
 msgid "Hall of fame"
 msgstr "Aleja zasłużonych"
 
+#: help.php:9 help_generate.php:10 krety.html.php:24 templates.php:42
+#: templates.php:48 templates.php:105 templates.php:111 templates.php:231
+#: templates.php:237 templates.php:294 templates.php:300
 msgid "Help"
 msgstr "Pomoc"
 
+#: imgup.php:72
 msgid "Invalid input"
 msgstr "Niepoprawne dane"
 
+#: imgup.php:91
 msgid "Rename image"
 msgstr "Zmień nazwę obazka"
 
+#: imgup.php:93 imgup.php:95
 msgid "Image upload"
 msgstr "Wgranie obrazka"
 
+#: imgup.php:129 imgup.php:153
 msgid "Rename image of"
 msgstr "Zmień obrazek"
 
+#: imgup.php:131 imgup.php:155
 msgid "Upload image for"
 msgstr "Dodaj obrazek dla"
 
+#: imgup.php:194 imgup.php:196
 msgid "Uploaded file too large"
 msgstr "Plik obrazka jest za duży"
 
+#: imgup.php:198
 msgid "Uploaded image format not supported"
 msgstr "Tych formatów nie obsługujemy"
 
+#: imgup.php:202
 msgid "Other error"
 msgstr "Jakiś inny (wiel)błąd"
 
+#: imgup.php:212
 msgid "Image dimension(s) too large (width and/or height)"
 msgstr "Rozmiary obrazka za duże (wysokość lub szerokość)"
 
+#: imgup.php:366
 msgid "Supported image types"
 msgstr "Obsługiwane formaty obrazków"
 
+#: imgup.php:367
 msgid "Maximum width"
 msgstr "Maksymalna szerokość"
 
+#: imgup.php:368
 msgid "Maximum height"
 msgstr "Maksymalna wysokość"
 
+#: imgup.php:369
 msgid "Maximum file size"
 msgstr "Maksymalny rozmiar pliku"
 
+#: imgup.php:383
 msgid "Characters left:"
 msgstr "Zostało znaków"
 
+#: imgup.php:390
 msgid "File:"
 msgstr "Plik:"
 
+#: imgup.php:392
 msgid "Use as avatar"
 msgstr "Użyj jako avatar"
 
+#: imgup.php:392
+#, php-format
+msgid "Geokret's main picture, displayed under this icon: %s"
+msgstr ""
+
+#: imgup.php:393
 msgid "Remember"
 msgstr "Zapamiętaj"
 
+#: imgup.php:393
 #, php-format
 msgid "Remember the description for the next %d minutes"
 msgstr "Pamiętaj ten opis przez następne %d minut"
 
-msgid "Choose uploaded photo"
-msgstr "Wybierz wgrane zdjęcie"
-
-msgid "Reload photos"
-msgstr "Odśwież zdjęcia"
-
+#: index.php:37 krety.html.php:6 templates.php:6 templates.php:69
+#: templates.php:195 templates.php:258
 msgid "Home"
 msgstr "Kopiec"
 
-msgid ""
-"Welcome to GeoKrety.org! This service is similar to TravelBug(TM) or "
-"GeoLutins and aims at tracking things you put to geocache containers... <a "
-"href=\"help.php#about\">read more...</a>"
-msgstr ""
-"Witaj na stronie GeoKretów! Jest to serwis podobny do TravelBugów lub "
-"GeoLutynek i ma na celu umożliwienie śledzenia rzeczy, które wkładasz do "
-"pojemików geocache (ale nie tylko!) <a "
-"href=\"help_generate.php?help=pl#about\">czytaj więcej...</a>"
+#: index.php:69
+msgid "Welcome to GeoKrety.org! This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
+msgstr "Witaj na stronie GeoKretów! Jest to serwis podobny do TravelBugów lub GeoLutynek i ma na celu umożliwienie śledzenia rzeczy, które wkładasz do pojemików geocache (ale nie tylko!) <a href=\"help_generate.php?help=pl#about\">czytaj więcej...</a>"
 
-msgid "If you find a GeoKret, you can log it here"
-msgstr "Jeśli znalazłeś kreta, możesz go zalogować o tutaj :)"
+#: index.php:71
+msgid "If you found a GeoKret, enter the tracking code here"
+msgstr "Jeśli znalazłeś GeoKreta, wpisz tutaj jego tracking code"
 
+#: index.php:73 templates.php:12 templates.php:75 templates.php:201
+#: templates.php:264
 msgid "no need to register!"
 msgstr "nie trzeba się rejestrować"
 
+#: index.php:86
 msgid "registered GeoKrets"
 msgstr "zarejestrowanych GeoKretów"
 
+#: index.php:86
 msgid "GeoKrets hidden"
 msgstr "schowanych GeoKretów"
 
+#: index.php:86
 msgid "users"
 msgstr "użytkowników"
 
+#: index.php:87
 #, php-format
-msgid ""
-"<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the "
-"Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the "
-"distance from the Earth to the Sun)."
-msgstr ""
-"<strong>%d km</strong> przemierzyły wszystkie GeoKrety (to jest %.2f x "
-"odległość z Ziemi na Księżyc, %.2f x obwód ziemi i %.5f x odległość z Ziemi "
-"na Słońce)."
+msgid "<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun)."
+msgstr "<strong>%d km</strong> przemierzyły wszystkie GeoKrety (to jest %.2f x odległość z Ziemi na Księżyc, %.2f x obwód ziemi i %.5f x odległość z Ziemi na Słońce)."
 
+#: index.php:112 krety.html.php:18 niusy.php:9 templates.php:39
+#: templates.php:102 templates.php:228 templates.php:291
 msgid "News"
 msgstr "Nowości"
 
-msgid "Recent logs"
-msgstr "Najnowsze logi"
+#: index.php:119 newscomments.php:49
+msgid "Comments"
+msgstr "Komentarze"
 
+#: index.php:152
+msgid "Recent logs on the map"
+msgstr "Ostatnie logi na mapie"
+
+#: index.php:169
 msgid "Recently uploaded images"
 msgstr "Najnowsze fotki"
 
+#: index.php:188
 msgid "Recently registered GeoKrets"
 msgstr "Ostatnio zarejestrowane GeoKrety"
 
+#: index.php:205
 msgid "Online users"
 msgstr "Użytkownicy online"
 
+#: index.php:216
 msgid "visits/day"
 msgstr "wizyt/dzień"
 
+#: konkret-mapka.php:69
 msgid "Hidden"
 msgstr "Ukryty"
 
+#: konkret-mapka.php:69
 msgid "in"
 msgstr "w"
 
-msgid "Edit description"
-msgstr "Edytuj opis"
-
-msgid "Add photo"
-msgstr "Dodaj fotkę"
-
-msgid "Print a label for this geokret"
-msgstr "Wydrukuj etykietkę dla tego geokreta"
-
-msgid "Archive this geokret"
-msgstr "Archiwizuj tego GeoKreta"
-
-msgid "Write a note"
-msgstr "Napisz notkę"
-
-msgid "Statistics"
-msgstr "Statystyczki"
-
-msgid "View photo gallery"
-msgstr "Obejrzyj galerię"
-
-msgid "Number of photos in the gallery"
-msgstr "W galeri zdjęć"
-
-msgid "Log this GeoKret"
-msgstr "Zaloguj tego geokreta"
-
-msgid "Recreate a label for this geokret"
-msgstr "Odtwórz etykietkę tego geokreta"
-
-msgid "Rename"
-msgstr "Zmień nazwę"
-
-msgid "Delete photo"
-msgstr "Usuń obrazek"
-
-msgid "Altitude profile"
-msgstr "Profil wysokości"
-
-msgid "Email the owner"
-msgstr "Pisz do właściciela"
-
-msgid "Login to claim this GeoKret"
-msgstr "Zaloguj się aby przywłaszczyć tego GeoKreta"
-
-msgid "Claim this GeoKret"
-msgstr "Przywłaszcz tego GeoKreta"
-
-msgid "Total distance"
-msgstr "Dystans całkowity"
-
-msgid "Places visited"
-msgstr "Odwiedzone miejsca"
-
-msgid "Forum links"
-msgstr "Link forumowy"
-
-msgid "Country track"
-msgstr "Odwiedzone kraje"
-
-msgid "Short description"
-msgstr "Krótki opis"
-
-msgid "start"
-msgstr "początek podróży"
-
-msgid "trip points"
-msgstr "punkty trasy"
-
-msgid "recently seen"
-msgstr "ostatnio widziany"
-
-msgid "The google map is not avaliable due to large numer of points."
-msgstr "Mapa google jest niedostępna z powodu zbyt dużej liczby punktów."
-
-msgid "Download the track as:"
-msgstr "Pobierz ślad jako:"
-
+#: konkret-tabelka.php:182
 msgid "Report as missing"
 msgstr "Zgłoś zaginięcie"
 
+#: konkret-tabelka.php:216 lingering.php:115 mygeokrets.php:184
+#: recent_moves.php:171
 msgid "Search for caches in this area on geocaching.com"
 msgstr "Poszukaj keszy w tym rejonie na geocaching.com"
 
+#: konkret-tabelka.php:216 lingering.php:115 mygeokrets.php:184
+#: recent_moves.php:171
 msgid "Search geocaching.com"
 msgstr "Przeszukaj geocaching.com"
 
+#: konkret-tabelka.php:227
 msgid "Write comment"
 msgstr "Skomentuj"
 
+#: konkret-tabelka.php:233 konkret.php:82 recent_moves.php:216
+msgid "Add photo"
+msgstr "Dodaj fotkę"
+
+#: konkret-tabelka.php:233 recent_moves.php:216
 msgid "Edit log"
 msgstr "Edytuj log"
 
+#: konkret-tabelka.php:239
 msgid "Delete log"
 msgstr "Usuń log"
 
+#: konkret-tabelka.php:268 konkret.php:135
+msgid "Rename"
+msgstr "Zmień nazwę"
+
+#: konkret-tabelka.php:269 konkret.php:136
+msgid "Delete photo"
+msgstr "Usuń obrazek"
+
+#: konkret-tabelka.php:354
 msgid "Delete comment"
 msgstr "Usuń komentarz"
 
+#: konkret.php:81
+msgid "Edit description"
+msgstr "Edytuj opis"
+
+#: konkret.php:85
+msgid "Print a label for this geokret"
+msgstr "Wydrukuj etykietkę dla tego geokreta"
+
+#: konkret.php:86
+msgid "Archive this geokret"
+msgstr "Archiwizuj tego GeoKreta"
+
+#: konkret.php:92
+msgid "Write a note"
+msgstr "Napisz notkę"
+
+#: konkret.php:93 mypage.php:329 statystyczka-hubs.php:11
+#: statystyczka-lata.php:11 statystyczka.php:11 statystyczka2.php:11
+#: statystyczka3.php:11 templates.php:24 templates.php:27 templates.php:87
+#: templates.php:90 templates.php:213 templates.php:216 templates.php:276
+#: templates.php:279 user_stat.php:196
+msgid "Statistics"
+msgstr "Statystyczki"
+
+#: konkret.php:94
+msgid "View photo gallery"
+msgstr "Obejrzyj galerię"
+
+#: konkret.php:94
+msgid "Number of photos in the gallery"
+msgstr "W galeri zdjęć"
+
+#: konkret.php:112 lingering.php:184 mygeokrets.php:255
+msgid "Log this GeoKret"
+msgstr "Zaloguj tego geokreta"
+
+#: konkret.php:113
+msgid "Recreate a label for this geokret"
+msgstr "Odtwórz etykietkę tego geokreta"
+
+#: konkret.php:144
+msgid "Altitude profile"
+msgstr "Profil wysokości"
+
+#: konkret.php:170
+msgid "Email the owner"
+msgstr "Pisz do właściciela"
+
+#: konkret.php:176
+msgid "Login to claim this GeoKret"
+msgstr "Zaloguj się aby przywłaszczyć tego GeoKreta"
+
+#: konkret.php:178
+msgid "Claim this GeoKret"
+msgstr "Przywłaszcz tego GeoKreta"
+
+#: konkret.php:233
+msgid "You can rate this GeoKret"
+msgstr "Możesz ocenić kreta"
+
+#: konkret.php:236
+msgid "You have already rated this GeoKret"
+msgstr "Już oceniłeś tego kreta"
+
+#: konkret.php:238
+msgid "You can't rate your own GeoKret"
+msgstr "Nie możesz oceniać własnych kretów"
+
+#: konkret.php:240
+msgid "You can't rate this geokret"
+msgstr "Nie możesz ocenić tego kreta"
+
+#: konkret.php:257
+msgid "Total distance"
+msgstr "Dystans całkowity"
+
+#: konkret.php:258
+msgid "Places visited"
+msgstr "Odwiedzone miejsca"
+
+#: konkret.php:259
+msgid "Forum links"
+msgstr "Link forumowy"
+
+#: konkret.php:260
+msgid "Country track"
+msgstr "Odwiedzone kraje"
+
+#: konkret.php:261
+msgid "Rating"
+msgstr "Ocena"
+
+#: konkret.php:263
+msgid "votes"
+msgstr "głosów"
+
+#: konkret.php:263
+msgid "average rating"
+msgstr "średnia ocena"
+
+#: konkret.php:267
+msgid "Share on"
+msgstr "Podziel się na"
+
+#: konkret.php:278
+msgid "Short description"
+msgstr "Krótki opis"
+
+#: konkret.php:309
+msgid "start"
+msgstr "początek podróży"
+
+#: konkret.php:310
+msgid "trip points"
+msgstr "punkty trasy"
+
+#: konkret.php:311
+msgid "recently seen"
+msgstr "ostatnio widziany"
+
+#: konkret.php:320
+msgid "The google map is not avaliable due to large numer of points."
+msgstr "Mapa google jest niedostępna z powodu zbyt dużej liczby punktów."
+
+#: konkret.php:322
+msgid "This geokret has not started yet"
+msgstr "Ten geokret jeszcze nie wystartował."
+
+#: konkret.php:327
+msgid "Download the track as:"
+msgstr "Pobierz ślad jako:"
+
+#: kontakt.php:10
 msgid "Contact"
 msgstr "Kontakt"
 
+#: kontakt.php:12
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "Jeśli masz sugestie, pomysły lub dostrzegłeś błędy, pisz do nas śmiało!"
 
+#: krety.html.php:9 ruchy.php:633
 msgid "Operations on GeoKrety"
 msgstr "Operacje na GeoKretach"
 
+#: krety.html.php:12 szukaj.php:9 templates.php:15 templates.php:78
+#: templates.php:204 templates.php:267
 msgid "Search"
 msgstr "Szukaj"
 
+#: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
+#: templates.php:297
 msgid "help.php"
-msgstr "help_generate.php?help=pl"
+msgstr ""
 
+#: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
+#: templates.php:309
 msgid "help.php#about"
-msgstr "help_generate.php?help=pl#about"
+msgstr ""
 
+#: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
+#: templates.php:312
 msgid "About"
-msgstr "O GeoKretach"
+msgstr ""
 
+#: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
+#: templates.php:252 templates.php:318 templates.php:324
 msgid "contact"
-msgstr "kontakt"
+msgstr ""
 
+#: labels.php:11
 msgid "Print label"
 msgstr "Drukuj etykietkę"
 
+#: labels.php:58 lingering.php:200 mygeokrets.php:287 mygeokrets.php:292
+#: race.php:285 race.php:408 race_list.php:183 race_list.php:270
 msgid "Owner"
 msgstr "Właściciel"
 
+#: labels.php:68
 msgid "Edit this text to fit your needs as well as the label size"
-msgstr ""
-"Zmień tekst tak, aby był dopasowany do Twoich potrzeb oraz mieścił się w "
-"wybranym polu etykietki"
+msgstr "Zmień tekst tak, aby był dopasowany do Twoich potrzeb oraz mieścił się w wybranym polu etykietki"
 
+#: labels.php:72
 msgid "Label template"
 msgstr "Wzór etykietki"
 
+#: labels.php:88
 msgid "Help languages"
 msgstr "Pomoc w językach"
 
-msgid ""
-"Please note: not all translations are avaliable. Translations may not work "
-"with some templates. English is added by default, so you may not select it."
-msgstr ""
-"Zważ proszę, że nie wszystkie tłumaczenia są kompletne. Nie wszystkie "
-"templejty współpracują z tłumaczeniami. Język angielski jest domyślny, więc "
-"nie trzeba go zaznaczać."
+#: labels.php:89
+msgid "Please note: not all translations are avaliable. Translations may not work with some templates. English is added by default, so you may not select it."
+msgstr "Zważ proszę, że nie wszystkie tłumaczenia są kompletne. Nie wszystkie templejty współpracują z tłumaczeniami. Język angielski jest domyślny, więc nie trzeba go zaznaczać."
 
+#: lingering.php:189 mygeokrets.php:236
 msgid "Edit this GeoKret"
 msgstr "Edytuj tego GeoKreta"
 
+#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:646
 msgid "Name"
 msgstr "Nazwa"
 
+#: lingering.php:230 mygeokrets.php:332
 msgid "Last action"
 msgstr "Ostatni log"
 
+#: lingering.php:231 lost_mapka.php:52 mapka_kretow.php:69 mygeokrets.php:333
+#: race.php:107 race_list.php:101 recent_moves.php:96
 msgid "Distance travelled"
 msgstr "Przebyty dystans"
 
+#: lingering.php:232 mygeokrets.php:334 race.php:108 race_list.php:102
 msgid "Number of visited caches"
 msgstr "Liczba odwiedzonych keszy"
 
+#: longin.php:43
 msgid "You have successfully logged out of GeoKrety website."
 msgstr "Zostałeś wylogowany pomyślnie."
 
+#: longin.php:45
 msgid "You are probably logged in."
 msgstr "Oj chyba jesteś zalogowany."
 
+#: longin.php:88
 msgid "User doesn't exist/wrong password."
 msgstr "Użytkownik nie istnieje/złe hasło."
 
+#: longin.php:107
 msgid "Error setting sessid."
 msgstr "Błąd siania sessid."
 
+#: longin.php:146
 msgid "Remember me"
 msgstr "Pamiętaj mnie"
 
-msgid "Geokrets on the map"
-msgstr "Geokrety na mapie"
+#: longin.php:147
+msgid "We are using cookies only for storing login information and language preferences. Read more <a href=\"/help.php#cookies\">about our cookies policy</a>"
+msgstr "Używamy ciasteczek (ang: cookies) jedynie do przechowywania informacji o zalogowaniu oraz informacji o wybranym języku. Dowiedz się więcej o naszej <a href=\"/help_generate.php?help=pl#cookies\">polityce ciasteczkowej</a>"
 
-msgid ""
-"Map centers at your home coordinates (you can edit it in your profile). If "
-"you hadn't defined it, the map  centers on the Most Przyjaźni in "
-"Zgorzelec/Gorlitz."
-msgstr ""
-"Mapka centruje sie na koordynatach domowych (zadeklarowanych w Twoim "
-"profilu). Gdy ich nie zadeklarowałeś, mapka centruje się na Moście Przyjaźni "
-"w Zgorzelcu/Gorlitz. "
+#: longin_chceck.php:27
+msgid "Wrong secid identifier"
+msgstr "zły secid"
 
+#: lost.php:9 templates.php:33 templates.php:96 templates.php:222
+#: templates.php:285
 msgid "Probably lost geokrets"
 msgstr "Prawdopodobnie zaginione krety"
 
-msgid ""
-"<p>Here is a list of geokrets, for which the last log is 'drop' to the "
-"cache, which then was made archived or temporary unavaliable. Those data are "
-"mainly avaliable for OpenCaching caches. The list may not be full or may be "
-"inacurate in other ways.</p>"
-msgstr ""
-"<p>Poniżej lista geokretów, dla których ostatnim logiem było 'wrzucenie' do "
-"kesza, który następnie zarchiwizowano lub zawieszono (ergo: można "
-"domniemywać, iż kret zniknął wraz z keszem). Lista wygenerowana przede "
-"wszystkim na podstawie danych z węzłów OpenCaching. Lista może być pełna ani "
-"akuratnia, jednakże może pomóc w podjęciu misji ratunkowej :)</p>"
+#: lost.php:11
+msgid "<p>Here is a list of geokrets, for which the last log is 'drop' to the cache, which then was made archived or temporary unavaliable. Those data are mainly avaliable for OpenCaching caches. The list may not be full or may be inacurate in other ways.</p>"
+msgstr "<p>Poniżej lista geokretów, dla których ostatnim logiem było 'wrzucenie' do kesza, który następnie zarchiwizowano lub zawieszono (ergo: można domniemywać, iż kret zniknął wraz z keszem). Lista wygenerowana przede wszystkim na podstawie danych z węzłów OpenCaching. Lista może być pełna ani akuratnia, jednakże może pomóc w podjęciu misji ratunkowej :)</p>"
 
+#: lost.php:13
 msgid "The map of lost geokrets to organize the rescue mission"
 msgstr "Mapka zaginionych kretów - pomocna w organizacji misji ratunkowej"
 
+#: lost.php:14
 msgid "The list is generated daily."
 msgstr "Lista generowana codziennie"
 
+#: lost_mapka.php:10 mapa.php:9 mapka_kretow.php:9 race.php:334
+msgid "Geokrets on the map"
+msgstr "Geokrety na mapie"
+
+#: lost_mapka.php:48 mapka_kretow.php:65
+msgid "Map centers at your home coordinates (you can edit it in your profile). If you hadn't defined it, the map  centers on the Most Przyjaźni in Zgorzelec/Gorlitz."
+msgstr ""
+
+#: m/qr.php:24
+#, php-format
+msgid "<strong>%s</strong> by %s</h1>"
+msgstr ""
+
+#: m/qr.php:25
+#, php-format
+msgid "Travelled %s km"
+msgstr ""
+
+#: m/qr.php:28
+msgid "Log grabbing or dropping"
+msgstr ""
+
+#: m/qr.php:29
+msgid "View the GK details"
+msgstr ""
+
+#: m/qr.php:32
+msgid "Description:"
+msgstr ""
+
+#: m/qr.php:36
+#, php-format
+msgid "<a href=\"%s\">%s</a>, the home of free, trackable moles."
+msgstr ""
+
+#: majluj.php:8
 msgid "Contact with user"
 msgstr "Kontakt z użytkownikiem"
 
+#: majluj.php:53 majluj.php:176
 msgid "This user haven't defined an email address."
 msgstr "Ten użytkownik nie podał swojego adresu email."
 
+#: majluj.php:55
 msgid "You haven't defined an email address."
 msgstr "Nie zdefiniowałeś swojego adresu email."
 
+#: majluj.php:81
 msgid "From"
 msgstr "Od"
 
+#: majluj.php:86
 msgid "To"
 msgstr "Do"
 
+#: majluj.php:92
 msgid "Subject"
 msgstr "Temat"
 
+#: majluj.php:97
 msgid "Message"
 msgstr "Wiadomość"
 
+#: majluj.php:114
 msgid "Send message"
 msgstr "Wyślij wiadomość"
 
-msgid ""
-"a GK hotel/motel is an easy-to-reach cache, close to an "
-"airport/motorway/railroad station, big enough to host some GK. Cachers may "
-"grab or drop GK"
-msgstr ""
-"GK hotel/motel to łatwoosiągalny kesz, znajdujący się niedaleko lotniska, "
-"stacji kolejowej, autostrady itp, na tyle duży, aby mógł pomieścić "
-"kilka(naście) geokretów. Geokeszerzy mogą zabierać lub zostawiać krety."
+#: molehole.php:71
+msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
+msgstr "GK hotel/motel to łatwoosiągalny kesz, znajdujący się niedaleko lotniska, stacji kolejowej, autostrady itp, na tyle duży, aby mógł pomieścić kilka(naście) geokretów. Geokeszerzy mogą zabierać lub zostawiać krety."
 
-msgid ""
-"By now, on the OC system, we have registered following GK (or GK/TB) "
-"hotels/motels:"
+#: molehole.php:73
+msgid "By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
 msgstr "Na OC mamy zarejestrowane następujące GK (lub GK+TB) hotele/motele:"
 
+#: mypage.php:9 mypage.php:56
 msgid "My Page"
 msgstr "Moja Strona"
 
+#: mypage.php:23
 msgid "seems to be not a valid user id."
 msgstr "nie wygląda na prawidłowy user id."
 
+#: mypage.php:25
 msgid "This user was not logged in"
 msgstr "Ten użytkownik nie był zalogowany."
 
+#: mypage.php:65
 msgid "keep secret!"
 msgstr "nie pokazuj nikomu!"
 
+#: mypage.php:66
+msgid "The old secid will be deleted and the new one will be generated. You will have to update the secid in all applications which are using the code."
+msgstr "Stary kod secid będzie skasowany a na jego miejsce zostanie wygenerowany nowy. Będziesz musiał uaktualnić kod we wszystkich aplikacjach, które go używają (np na stronie opencaching.pl)."
+
+#: mypage.php:66
+msgid "Are you sure?"
+msgstr "Jesteś pewien?"
+
+#: mypage.php:67
+msgid "Generate new secid"
+msgstr "Wygeneruj nowy secid"
+
+#: mypage.php:106 mypage.php:370 templates.php:162
+#: templates/plugins/function.login_check.php:48
 msgid "My recent logs"
 msgstr "Moje najnowsze logi"
 
+#: mypage.php:116 mypage.php:371 templates.php:165
+#: templates/plugins/function.login_check.php:49
 msgid "Recent moves of my geokrets"
 msgstr "Ostatnie ruchy moich geokretów"
 
+#: mypage.php:139
 #, php-format
 msgid "%s's Inventory"
 msgstr "Inwentarz %s"
 
+#: mypage.php:230
 #, php-format
 msgid "%s has created <b>%s</b> GeoKrets, which travelled <b>%s</b> km."
 msgstr "%s stworzył <b>%s</b> geokretów, które łącznie przebyły <b>%s</b> km."
 
+#: mypage.php:252
 #, php-format
 msgid "%s has moved <b>%s</b> GeoKrets on a total distance of <b>%s</b> km."
 msgstr "%s przeniósł <b>%s</b> geokretów, na odległość <b>%s</b> km."
 
+#: mypage.php:274
 msgid "Send a message to the user"
 msgstr "Wyślij wiadomość do użytkownika"
 
+#: mypage.php:307
 msgid "Joined us"
 msgstr "Dołączył"
 
+#: mypage.php:321
 msgid "Subscribe to RSS channel"
 msgstr "Zasubskrybuj kanał RSS"
 
+#: mypage.php:321
 msgid "Be up to date with your and watched GeoKrets!"
 msgstr "Bądź na bieżąco z Twoimi i obserwowanymi kretami"
 
+#: mypage.php:336 mypage.php:375 user_stat.php:194
+msgid "User stats"
+msgstr "Statystyki użytkownika"
+
+#: mypage.php:341
 msgid "Badges"
 msgstr "Odznaki"
 
+#: mypage.php:364
 msgid "Links"
 msgstr "Linki"
 
+#: mypage.php:367 templates.php:153
+#: templates/plugins/function.login_check.php:45
 msgid "Geokrets in my inventory"
 msgstr "Geokrety, które mam u siebie"
 
+#: mypage.php:368 templates.php:156
+#: templates/plugins/function.login_check.php:46
 msgid "My geokrets"
 msgstr "Moje geokrety"
 
+#: mypage.php:369 templates.php:159
 msgid "Watched geokrets"
 msgstr "Obserwowane geokrety"
 
+#: mypage.php:372 templates.php:168
 msgid "My photos"
 msgstr "Moje fotki"
 
+#: mypage.php:373 templates.php:171
 msgid "Photos of my geokrets"
 msgstr "Fotki moich geokretów"
 
+#: mypage.php:374 templates.php:174
+#: templates/plugins/function.login_check.php:50
 msgid "Where are my geokrets?"
 msgstr "Gdzie są moje geokrety?"
 
-msgid ""
-"To obtain a new password, please enter your e-mail address. A new password "
-"will be e-mailed."
-msgstr ""
-"Aby uzyskać nowe hasło, wpisz adres e-mail. Nowe hasło zostanie przesłane na "
-"ten adres."
+#: new_password.php:26
+msgid "To obtain a new password, please enter your e-mail address. A new password will be e-mailed."
+msgstr "Aby uzyskać nowe hasło, wpisz adres e-mail. Nowe hasło zostanie przesłane na ten adres."
 
+#: new_password.php:31
 msgid "Antispam"
 msgstr "Antyspam"
 
+#: new_password.php:68
 msgid "Your new password in GeoKrety service is"
 msgstr "Twoje nowe hasło w GeoKretach: "
 
+#: new_password.php:72
 msgid "New password sent to"
 msgstr "Nowe hasło wysłane na adres"
 
+#: new_password.php:76
 msgid "No such email"
 msgstr "Oj, nie ma takiego emaila"
 
-msgid "Comments"
-msgstr "Komentarze"
-
+#: newscomments.php:120
 msgid "News post not found."
 msgstr "Nie znaleziono takiego niuso-posta"
 
+#: newscomments.php:232
 msgid "Unsubscribe from this news post"
 msgstr "Zaprzestań subskrybcji tego posta"
 
+#: newscomments.php:235 newscomments.php:254
 msgid "Subscribe to this news post"
 msgstr "Zasubskrybuj tego posta"
 
+#: newscomments.php:250
 msgid "Write new comment"
 msgstr "Skomentuj"
 
+#: newscomments.php:255
 msgid "Post comment"
 msgstr "Wyślij komentarz"
 
+#: newscomments.php:267
 msgid "There are no comments for this post."
 msgstr "Nikt jeszcze nie skomentował..."
 
+#: niusy.php:13
 msgid "View comments"
 msgstr "Wyświetl komentarze"
 
+#: obserwuj.php:66
 msgid "Users watching this GeoKret:"
 msgstr "Użytkownicy obserwujący tego geokreta"
 
+#: presscorner.php:10 templates.php:114
 msgid "Press corner"
 msgstr "Kącik prasowy"
 
-msgid "Recent log comments"
-msgstr "Ostatnie komentarze w logach"
+#: race.php:43 race.php:46 race.php:47 race.php:442 race_list.php:34
+#: race_list.php:37 race_list.php:38 race_list.php:302
+msgid "days"
+msgstr "dni"
 
-msgid "User"
-msgstr "Użytkownik"
+#: race.php:54 race_list.php:47
+msgid "yes"
+msgstr "tak"
 
+#: race.php:56 race_list.php:49
+msgid "password"
+msgstr "hasło"
+
+#: race.php:57 race.php:59 race.php:64 race.php:386 race_join.php:8
+#: race_list.php:50 race_list.php:52 race_list.php:57
+msgid "Join the Race"
+msgstr "Dołącz do rajdu"
+
+#: race.php:62 race_list.php:55
+msgid "no"
+msgstr "nie"
+
+#: race.php:71
+msgid "Edit this race"
+msgstr "Edytuj rajd"
+
+#: race.php:84 race_list.php:71
+msgid "Distance to destination"
+msgstr "Odległość od celu"
+
+#: race.php:89 race_list.php:75
+#, php-format
+msgid "% of target distance done"
+msgstr "% założonego dystansu"
+
+#: race.php:93 race_list.php:79
+#, php-format
+msgid "% of target caches visited"
+msgstr "% założonych keszy"
+
+#: race.php:102 race_list.php:98
+msgid "Rank"
+msgstr "Miejsce"
+
+#: race.php:106
+msgid "Last log"
+msgstr "Ostatni log"
+
+#: race.php:109 race_list.php:103
+msgid "Average speed"
+msgstr "Prędkość średnia"
+
+#: race.php:216 race_list.php:128 race_list.php:130 race_list.php:132
+msgid "km/day"
+msgstr "km/dzień"
+
+#: race.php:273 race_list.php:171
+msgid "Race information"
+msgstr "Informacje o rajdzie"
+
+#: race.php:278 race.php:411 race_list.php:176 race_list.php:273
+msgid "Race status"
+msgstr "Status rajdu"
+
+#: race.php:290 race.php:410 race_add.php:147 race_list.php:188
+#: race_list.php:272
+msgid "Race type"
+msgstr "Typ rajdu"
+
+#: race.php:296 race_add.php:127 race_list.php:194
+msgid "Start date"
+msgstr "Data startu"
+
+#: race.php:303 race_add.php:134 race_list.php:201
+msgid "End date"
+msgstr "Data zakończenia"
+
+#: race.php:310 race_add.php:120 race_list.php:208
+msgid "Private race"
+msgstr "Rajd prywatny"
+
+#: race.php:318 race_add.php:141 race_list.php:216
+msgid "Race description"
+msgstr "Opis rajdu"
+
+#: race.php:324 race.php:354
+msgid "Geokrety races"
+msgstr "Krecie wyścigi"
+
+#: race.php:338 race_list.php:227
+msgid "Race participants"
+msgstr "Uczestnicy"
+
+#: race.php:343
+msgid "No participants. Yet..."
+msgstr "Brak uczestników. Jeszcze..."
+
+#: race.php:346 race_list.php:232
+msgid "Race"
+msgstr "Rajd"
+
+#: race.php:382 race_add.php:8
+msgid "Register a new Race"
+msgstr "Zarejestruj nowy rajd"
+
+#: race.php:390
+msgid "My races"
+msgstr "Moje wyścigi"
+
+#: race.php:396
+msgid "Races"
+msgstr "Wyścigi"
+
+#: race.php:397 race_list.php:259
+msgid "Filter races by status"
+msgstr "Pokaż wyścigi o statusie"
+
+#: race.php:399 race_list.php:260
+msgid "All races"
+msgstr "Wszystkie wyścigi"
+
+#: race.php:407 race_add.php:115 race_list.php:269
+msgid "Race title"
+msgstr "Tytuł rajdu"
+
+#: race_add.php:16
+msgid "Please login"
+msgstr "Zaloguj się."
+
+#: race_add.php:42 race_add.php:330
+msgid "This is not your race"
+msgstr "Oj, to nie jest Twój rajd"
+
+#: race_add.php:44
+msgid "You can't edit the race which has started"
+msgstr "Nie można edytować rajdu, ktory się już rozpoczął"
+
+#: race_add.php:106
+msgid "Save changes"
+msgstr "Zapisz zmiany"
+
+#: race_add.php:112
+msgid "Race info"
+msgstr "Informacje o rajdzie"
+
+#: race_add.php:148
+msgid "Please choose race type. The default is race to destination cache (waypoint)"
+msgstr "Wybierz typ rajdu. Domyślnym typem jest wyścig do celu."
+
+#: race_add.php:153
+msgid "Please choose the destination cache (waypoint)"
+msgstr "Wprowadź cel rajdu (waypoint)"
+
+#: race_add.php:164
+msgid "Distance"
+msgstr "Dystans"
+
+#: race_add.php:171
+msgid "Visited caches"
+msgstr "Odwiedzone keszy"
+
+#: race_add.php:210
+msgid "Wrong start date"
+msgstr "Zła data startu"
+
+#: race_add.php:213
+msgid "Wrong end date"
+msgstr "Zła data zakończenia"
+
+#: race_add.php:216
+msgid "End date <= start date"
+msgstr "Data zakończenia <= data startu"
+
+#: race_add.php:220
+msgid "Wrong target waypoint"
+msgstr "Zły waypoinf docelowy"
+
+#: race_add.php:222
+msgid "Wrong target distance"
+msgstr "Zła odległość docelowa"
+
+#: race_add.php:224
+msgid "Wrong caches number"
+msgstr "Zła liczba keszy"
+
+#: race_add.php:245
+msgid "Unable to resolve waypoint "
+msgstr "Nie mogę rozwikłać waypointa"
+
+#: race_add.php:311
+#, php-format
+msgid "Race %s created successfully"
+msgstr "Rajd %s założony pomyślnie"
+
+#: race_add.php:314
+#, php-format
+msgid "The password for join this private race is %s. Share it with everyone interested in joining this race. You can also use direct link for joining this race: %s or here: %s"
+msgstr "Hasło do tego prywatnego rajdu brzmi %s. Przekaż je osobom które chcą wziąć udział w tym rajdzie. Możesz użyć również bezpośredniego linku: %s lub %s"
+
+#: race_add.php:316
+#, php-format
+msgid "You can use this link for joining this race: %s or here: %s"
+msgstr "Aby dołączyć do rajdu użyj linku: %s lub %s"
+
+#: race_conf.php:5
+msgid "Race to destination"
+msgstr "Wyścig do celu"
+
+#: race_conf.php:6
+msgid "Maximize distance"
+msgstr "Maksymalizuj dystans"
+
+#: race_conf.php:7
+msgid "Reach target distance"
+msgstr "Do osiągnięcia założonego dystansu"
+
+#: race_conf.php:8
+msgid "Maximize number of visited caches"
+msgstr "Maksymalizuj liczbę odwiedzonych keszy"
+
+#: race_conf.php:9
+msgid "Reach target number of caches"
+msgstr "Do osiągnięcia założonej liczby keszy"
+
+#: race_conf.php:11
+msgid "This race hasn't started yet"
+msgstr "Ten rajd jeszcze nie wystartował"
+
+#: race_conf.php:12
+msgid "The race is running"
+msgstr "Rajd trwa"
+
+#: race_conf.php:13
+msgid "The race has ended"
+msgstr "Rajd się zakończył"
+
+#: race_join.php:45
+msgid "The race to join"
+msgstr "Do którego rajdu chcesz dołączyć"
+
+#: race_join.php:50
+msgid "Password for private races"
+msgstr "Hasło do rajdów prywatnych"
+
+#: race_join.php:52
+msgid "If you are the race owner, you don't need to enter password"
+msgstr "Jeśli jesteś założycielem tego rajdu, nie musisz wprowadzać hasła"
+
+#: race_join.php:58
+msgid "Please read this race rules before joining!"
+msgstr "Nim dołączysz do tego rajdu, zapoznaj się z jego zasadami"
+
+#: race_join.php:78
+msgid "No race selected"
+msgstr "Nie wybrano rajdu"
+
+#: race_join.php:80
+msgid "No reference number"
+msgstr "Brak reference number"
+
+#: race_join.php:102
+msgid "This is not your geokret"
+msgstr "To nie twój geokret"
+
+#: race_join.php:115
+msgid "This race is private. Please provide the password"
+msgstr "Ten rajd jest prywatny i wymaga podania hasła"
+
+#: race_join.php:117
+msgid "Wrong password"
+msgstr "Złe hasło"
+
+#: race_list.php:240
+msgid "Race list"
+msgstr "Lista wyścigów"
+
+#: recent_comments.php:18
 msgid "Recent Log Comments"
 msgstr "Ostatnie komentarze do logów"
 
-msgid "View all comments"
-msgstr "Wyświetl wszystkie komentarze"
+#: recent_comments_fn.php:14
+msgid "Recent log comments"
+msgstr "Ostatnie komentarze w logach"
 
+#: recent_comments_fn.php:104
+msgid "User"
+msgstr "Użytkownik"
+
+#: recent_moves.php:14 recentlogs.php:9 templates.php:18 templates.php:81
+#: templates.php:207 templates.php:270
+msgid "Recent logs"
+msgstr "Najnowsze logi"
+
+#: recent_newscomments.php:17
 msgid "Recent news comments"
 msgstr "Ostatnie komentarze do niusów"
 
+#: recent_newscomments_fn.php:9
+msgid "View all comments"
+msgstr "Wyświetl wszystkie komentarze"
+
+#: recent_pictures.php:44 recent_pictures.php:46
 msgid "Go to geokret's page"
 msgstr "Idź do strony geokreta"
 
+#: register.php:11 templates.php:144
+#: templates/plugins/function.login_check.php:41
 msgid "Register a new GeoKret"
 msgstr "Zarejestruj nowego GeoKreta"
 
+#: register.php:38
+msgid "Set my home coordinates as a starting point"
+msgstr "Ustaw moje współrzędne domowe jako punkt startowy kreta"
+
+#: register.php:82
 msgid "No GeoKret's name!"
 msgstr "Brak nazwy GeoKreta!"
 
+#: register.php:95
+msgid "Born here :)"
+msgstr "Tu urodzony :)"
+
+#: ruchy.php:147
 msgid "Cannot edit this log"
 msgstr "Oj nie mogę edytować tego logu"
 
+#: ruchy.php:185
 msgid "Missing or invalid Tracking Code"
 msgstr "Brak lub błędny TrackingCode"
 
+#: ruchy.php:189
 msgid "Missing or invalid Reference Number"
 msgstr "Brak lub błędny Reference Number"
 
+#: ruchy.php:197
 msgid "Invalid log type"
 msgstr "Zły typ logu"
 
+#: ruchy.php:202
 msgid "No lat/lon OR waypoint name!"
 msgstr "Brak lat/lon lub waypointa"
 
+#: ruchy.php:207
 msgid "No username supplied"
 msgstr "Brak nazwy użytkownika"
 
+#: ruchy.php:210
 msgid "Wrong time (minutes)"
 msgstr "Niepoprawny czas (minuty)"
 
+#: ruchy.php:213
 msgid "Wrong time (hours)"
 msgstr "Niepoprawny czas (godziny)"
 
+#: ruchy.php:282
+msgid "Identical log has been submited."
+msgstr ""
+
+#: ruchy.php:294
 msgid "There is an entry with this date. Correct the date or the hour."
 msgstr "Oj, już istnieje log z taką datą. Skoryguj datę lub godzinę."
 
+#: ruchy.php:300
 msgid "The date is from the past, BEFORE the GeoKret was created."
 msgstr "Oj, data z przeszłości - przed rejestracją GeoKreta."
 
-msgid ""
-"The date is from the future (if you are an inventor of a time travelling "
-"machine, contact with us, please)"
-msgstr ""
-"Oj, data z przyszłości (jesli jesteś wynalazcą maszyny do podróży w czasie, "
-"daj znać)"
+#: ruchy.php:302
+msgid "The date is from the future (if you are an inventor of a time travelling machine, contact with us, please)"
+msgstr "Oj, data z przyszłości (jesli jesteś wynalazcą maszyny do podróży w czasie, daj znać)"
 
+#: ruchy.php:330
 msgid "You can not archive not your own GeoKret"
 msgstr "Nie możesz zarchiwizować nie swojego GeoKreta!"
 
+#: ruchy.php:543
 msgid "Add a comment"
 msgstr "Dodaj komentarz"
 
+#: ruchy.php:555 ruchy.php:820
+msgid "When you want to write a comment :)"
+msgstr ""
+
+#: ruchy.php:585
 msgid "Archive a GeoKret"
 msgstr "Zarchiwizuj geokreta"
 
+#: ruchy.php:595
+msgid "When a GeoKret has been missing for a long time"
+msgstr ""
+
+#: ruchy.php:596
 msgid "Archive"
 msgstr "Zarchiwizuj"
 
-msgid "6 characters from GeoKret label, eg."
-msgstr "6 znaków z etykietki GeoKreta, np."
-
-msgid ""
-"However it is possible to perform operations on GeoKrety without logging in, "
-"we encourage you to create an account and log in. It will take you about 15 "
-"seconds :)"
+#: ruchy.php:621
+msgid "Tracking Code"
 msgstr ""
-"Mimo, iż jest możliwe wykonywanie operacji na GeoKretach bez zalogowania, "
-"zachęcamy Cię abyś założył konto i zalogował się. To zajmie około 15 sekund "
 
-msgid ""
-"This may be your:<br />- geocaching/opencaching username<br />- nickname<br "
-"/>- name, etc."
+#: ruchy.php:625
+msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
+msgstr "6-cio znakowy kod z etykiety GeoKreta, np. XF3ACS. <u>Nie używaj tutaj identyfikatora geokreta zaczynającego się od 'GK'</u>."
+
+#: ruchy.php:639
+msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
+msgstr "Chociaż możliwe jest wykonywanie operacji na GeoKretach bez logowania, zachęcamy do utworzenia konta i zalogowania się. Zajmie to około 15 sekund :)"
+
+#: ruchy.php:647
+msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
+msgstr "To może być Twój:<br />- login geocaching/opencaching<br />- imię<br />- ksywka, etc."
+
+#: ruchy.php:665
+msgid "Logged at my home coordinates"
+msgstr "Zalogowany u mnie w domu :)"
+
+#: ruchy.php:665
+msgid "Log GeoKret at my home coordinates"
 msgstr ""
-"To może być Twój:<br />- login geocaching/opencaching<br />- imię<br />- "
-"ksywka, etc."
 
+#: ruchy.php:676
 msgid "Choose log type"
 msgstr "Typ logu"
 
-msgid "I've dropped GeoKret"
-msgstr "Wrzuciłem GeoKreta"
+#: ruchy.php:787
+msgid "Log type"
+msgstr "Typ logu"
 
-msgid "I've grabbed GeoKret"
-msgstr "Zabrałem GeoKreta"
-
-msgid "I've met GeoKret"
-msgstr "Spotkałem GeoKreta"
-
-msgid "I've dipped a GeoKret"
-msgstr "Kret odwiedził"
-
+#: ruchy.php:787
 msgid "help.php#Chooselogtype"
 msgstr "help_generate.php?help=pl#Chooselogtype"
 
+#: ruchy.php:792
+msgid "When you've left a GeoKret in a cache"
+msgstr ""
+
+#: ruchy.php:793
+msgid "I've dropped GeoKret"
+msgstr "Wrzuciłem GeoKreta"
+
+#: ruchy.php:799
+msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
+msgstr ""
+
+#: ruchy.php:800
+msgid "I've grabbed GeoKret"
+msgstr "Zabrałem GeoKreta"
+
+#: ruchy.php:806
+msgid "When you've met a GeoKret in a cache but haven't taken it with you"
+msgstr ""
+
+#: ruchy.php:807
+msgid "I've met GeoKret"
+msgstr "Spotkałem GeoKreta"
+
+#: ruchy.php:813
+msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
+msgstr ""
+
+#: ruchy.php:814
+msgid "I've dipped a GeoKret"
+msgstr "Kret odwiedził"
+
+#: ruchy.php:831
 msgid "Identify GeoKret"
 msgstr "Identyfikacja GeoKreta"
 
+#: ruchy.php:839
 msgid "New location"
 msgstr "Nowa lokalizacja"
 
-msgid ""
-"<a href=\"help.php#locationdlagc\">Learn more about hiding geokrets in GC "
-"caches</a>"
-msgstr ""
-"<a href=\"help_generate.php?help=pl#locationdlagc\">Dowiedz się więcej w "
-"temacie ukrywania kretów w keszach GC</a>"
+#: ruchy.php:840
+msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
+msgstr "<a href=\"help_generate.php?help=pl#locationdlagc\">Więcej o logowaniu kreta w keszu zarejestrowanego w GC</a>"
 
+#: ruchy.php:844
+msgid "Waypoint"
+msgstr ""
+
+#: ruchy.php:848
+msgid "eg.: GC1AQ2N, OP069B, OC033A…"
+msgstr ""
+
+#: ruchy.php:849 ruchy.php:862
 msgid "help.php#fullysupportedwaypoints"
 msgstr "help_generate.php?help=pl#fullysupportedwaypoints"
 
-msgid "or"
-msgstr "lub"
+#: ruchy.php:852
+msgid "or name of cache"
+msgstr "lub nazwa kesza"
 
-msgid "name of cache"
-msgstr "nazwa kesza"
-
+#: ruchy.php:857
 msgid "Check"
 msgstr "Sprawdź"
 
+#: ruchy.php:861
+msgid "Enter cache name. Works only with opencaching networks."
+msgstr "Wpisz nazwę kesza. Działa tylko z opencaching."
+
+#: ruchy.php:873
 msgid "Coordinates"
 msgstr "Współrzędne"
 
-msgid ""
-"<a href=\"http://geokrety.org/help.php#acceptableformats\" "
-"target=\"_blank\">Acceptable geographic coordinate formats</a>"
-msgstr ""
-"<a href=\"http://geokrety.org/help_generate.php?help=pl#acceptableformats\" "
-"target=\"_blank\">Możliwe formaty współrzędnych...</a>"
+#: ruchy.php:877
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
+msgstr "<a href=\"help_generate.php?help=pl#acceptableformats\" target=\"_blank\">Obsługiwane formaty współrzędnych</a>"
 
+#: ruchy.php:889
+msgid "Logged using geolocation"
+msgstr "Zalogowany przy użyciu geolokalizacji"
+
+#: ruchy.php:889
+msgid "Use geolocation"
+msgstr "Użyj geolokalizacji"
+
+#: ruchy.php:899
 msgid "Captcha verification"
 msgstr "Weryfikacja kapciowa"
 
+#: ruchy.php:911
 msgid "Additional data"
 msgstr "Informacje dodatkowe"
 
+#: ruchy.php:934
+msgid "Two days ago"
+msgstr "Przedwczoraj"
+
+#: ruchy.php:940
 msgid "Time"
 msgstr "Czas"
 
+#: ruchy.php:953
+msgid "now"
+msgstr "teraz"
+
+#: ruchy.php:954
 msgid "Enter exact time when You think it may be important"
 msgstr "Wprowadź dokładny czas gdy uważasz, że może być to istotne"
 
+#: ruchy.php:966
 msgid "Optional"
 msgstr "Opcjonalne"
 
+#: statystyczka.php:46
 msgid "Top ten total distance: traditional and books"
 msgstr "Top ten - całkowity dystans (zwykłe i książki)"
 
+#: statystyczka.php:66
 msgid "Top longest moves"
 msgstr "Najdłuższe przenosiny"
 
+#: statystyczka.php:100
 msgid "Top ten droppers"
 msgstr "Top ten - wrzucaczy ;)"
 
+#: statystyczka.php:121
 msgid "Not logged in."
 msgstr "Nie zalogowany."
 
+#: statystyczka.php:129
 msgid "Top ten owners"
 msgstr "Top ten - właścicieli"
 
+#: szukaj-ajax.php:47
 msgid "GeoKret not found"
 msgstr "GeoKret nie znaleziony."
 
+#: szukaj-ajax.php:73
 msgid "Invalid tracking code"
 msgstr "Nieprawidłowy tracking code"
 
+#: szukaj-ajax.php:86
 #, php-format
-msgid ""
-"Please provide the coordinates (lat/lon) of the cache %s in the input box on "
-"left."
-msgstr "Proszę podaj współrzędne (lat/lon) kesza %s w okienku po lewej"
-
-msgid ""
-"<a href=\"http://geokrety.org/help.php#locationdlagc\">Learn more about "
-"hiding geokrets in GC caches</a>"
+msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr ""
-"<a href=\"help_generate.php?help=pl#locationdlagc\">Dowiedz się więcej w "
-"temacie ukrywania kretów w keszach GC</a>"
 
+#: szukaj-ajax.php:87
+#, php-format
+msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
+msgstr ""
+
+#: szukaj-ajax.php:99
 msgid "caches match"
 msgstr "keszy pasuje"
 
+#: szukaj-ajax.php:109
 msgid "No cache found"
 msgstr "Nie znaleziono kesza"
 
-msgid "Operations on this GeoKret"
-msgstr "Operacje na tym GeoKrecie"
-
+#: szukaj.php:45
 msgid "Found users"
 msgstr "Znalezieni uzytkownicy"
 
+#: szukaj.php:57 szukaj.php:116
 msgid "Geokrety visiting the cache"
 msgstr "Geokrety które odwiedziły"
 
+#: szukaj.php:60
 msgid "Geokrets in"
 msgstr "Geokrety w"
 
+#: szukaj.php:108
 msgid "GeoKret owner"
 msgstr "Właściciel GeoKreta"
 
+#: szukaj_kreta.php:44
+msgid "Operations on this GeoKret"
+msgstr "Operacje na tym GeoKrecie"
+
+#: templates.php:9 templates.php:72 templates.php:198 templates.php:261
 msgid "Log a GeoKret"
 msgstr "Zaloguj GeoKreta"
 
+#: templates.php:66 templates.php:138 templates.php:183 templates.php:255
+#: templates.php:321 templates.php:327
 msgid "Report abuse"
 msgstr "Zgłoś nadużycie"
 
+#: templates.php:120 templates.php:303
 msgid "Side products"
 msgstr "Produkty uboczne"
 
+#: templates.php:147
 msgid "My account"
 msgstr "Moje konto"
 
+#: templates.php:150
 msgid "Account details"
 msgstr "Szczegóły konta"
 
+#: templates.php:177
 msgid "Logout"
-msgstr "Wyloguj"
-
-#, php-format
-msgid ""
-"An account in GeoKrety.org associated with this email was created. To "
-"activate this email please click on the link below. If you don't know why is "
-"that mail and what is GeoKrety.org, just delete this email and forget about "
-"it :)\n"
-"\n"
-"%s"
 msgstr ""
-"Konto w serwisie Geokrety.org,  powiązane z tym adresem mailowym, założono "
-"pomyślnie :) Aby je aktywować, kilknij proszę na poniższy odnośnik. Jeśli "
-"nie masz pojęcia, o co chodzi, po prostu skasuj tego maila i zapomnij. "
-"Miłego dnia!\n"
-"%s"
 
-msgid "[GeoKrety] Activate your account"
-msgstr "[GeoKrety] Uaktywnij swoje konto"
+#: templates/konfig.php:140
+msgid "KretyPost"
+msgstr "Krecia Poczta"
 
+#: templates/labels/index.php:42
+msgid "<strong>User's manual:</strong> <strong>1.</strong> Take this GeoKret. Note down his Tracking Code. <strong>2.</strong> Hide in another cache. <strong>3.</strong> Register the trip at https://geokrety.org/"
+msgstr ""
+
+#: templates/labels/index.php:45
+msgid "You can also go to the apppropriate page by decoding the QR-code."
+msgstr ""
+
+#: templates/nawigacja_tablicy.php:99 templates/nawigacja_tablicy.php:112
 msgid "Show all"
 msgstr "Pokaż wszystkie"
 
+#: templates/nawigacja_tablicy.php:124
 #, php-format
 msgid "Showing items %s - %s (of %s) :: %s"
 msgstr "Wyświetlone pozycje od %s do %s (z %s) :: %s"
 
+#: templates/nawigacja_tablicy.php:125
 #, php-format
 msgid "Showing items %s - %s (of %s)"
 msgstr "Pokazano %s - %s (z %s)"
 
-msgid ""
-"<strong>User's manual:</strong> <strong>1.</strong> Take this GeoKret. Note "
-"down his Tracking Code. <strong>2.</strong> Hide in another cache. "
-"<strong>3.</strong> Register the trip at http://geokrety.org/"
-msgstr ""
-"<strong>Instrukcja obsługi:</strong> <strong>1.</strong> Zabierz geokreta. "
-"Zanotuj jego tracking code.<strong>2.</strong> Ukryj kreta w innym keszu. "
-"<strong>3.</strong> Zarejestruj jego podróż na http://geokrety.org"
-
-msgid "You can also go to the apppropriate page by decoding the QR-code."
-msgstr "Odpowiednia strona zakodowana jest również w QR-code."
-
-msgid "Recent logs near my home location"
-msgstr "Ostatnie logi w pobliżu moich współrzędnych domowych"
-
-msgid ""
-"<a href=\"http://geokrety.org/help.php#acceptableformats\">Other acceptable "
-"lat/lon formats</a>"
-msgstr ""
-"<a "
-"href=\"http://geokrety.org/help_generate.php?help=pl#acceptableformats\">Inne "
-"akceptowane formaty dł/szer</a>"
-
-msgid "Always enter minutes, eg."
-msgstr "Zawsze wprowadzaj minuty, np."
-
-msgid "coordinates"
-msgstr "współrzędne"
-
-msgid ""
-"An account in GeoKrety.org associated with this email was created. To "
-"activate this email please click on the link below. If you don't know why is "
-"that mail and what is GeoKrety.org, just delete this email and forget about "
-"it :)"
-msgstr ""
-"W serwisie GeoKrety.org utworzono konto z przypisanym tym adresem "
-"pocztowym.Jeśli nie wiesz, co to jest, skasuj i zapomnij.An account in "
-"GeoKrety.org associated with this email was created. To activate this email "
-"please click on the link below. If you don't know why is that mail and what "
-"is GeoKrety.org, just delete this email and forget about it :)"
-
-msgid "Lat/lon in format: dd mm.mmm"
-msgstr "Szer/dł w formacie: dd mm.mmm "
-
-msgid "User exists!"
-msgstr "Użytkownik istnieje!"
-
-msgid "just a test"
-msgstr "toż to tylko test"
-
-msgid "Wrong lat/lon! Not a numbers? Lat>90 or Lon > 180?"
-msgstr "Błędna szer/dł.! Czy to liczby aby? Czy może Szer>90 lub Dł>180?"
-
-msgid "Supporting materials"
-msgstr "Materiały pomocnicze"
-
-msgid "where are geokrety now?"
-msgstr "zobacz na mapce, gdzie się podziewają!"
-
-msgid "\\t coordinates"
-msgstr "\\t koodrynaty"
-
-msgid ""
-"This GeoKret was already logged after the date you entered. A valid report "
-"must refer to the last visited cache and thus its date must not precede the "
-"date of the last log."
-msgstr ""
-"Ten geokrety został już zalogowany z datą późniejszą. Poprawny raport musi "
-"odnosić się do ostatnio odwiedzanego kesza i nie wyprzedzać aty ostatniego "
-"logu"
-
-msgid "Solve captcha"
-msgstr "Rozkmiń captcha"
-
-msgid "GeoKret visited this place"
-msgstr "Geokrety które odwiedziły to miejsce"
-
-msgid "Hint: use negative values for S/W lat/lon, eg."
-msgstr "Hint: dla szer/dł S/W używaj wartości ujemnych, np."
-
-msgid "Wrong date?"
-msgstr "Błędna data?"
-
-msgid "Go to GeoKret page"
-msgstr "Idź do strony GeoKreta"
-
-msgid "Watch this geokret"
-msgstr "Obserwuj tego kreta"
-
-msgid "Stop watching this geokret"
-msgstr "Zaprzestań obserwacji tego kreta"
-
-msgid "My GeoKret :)"
-msgstr "Mój GeoKret :)"
-
-msgid "Please login"
-msgstr "Zaloguj się."
-
-msgid "View photo gallery and set avatar"
-msgstr "Obejrzyj galerię i wybierz avatar"
-
-msgid "Home coortinates"
-msgstr "Współrzędne domowe"
-
-msgid "done by all GeoKrets"
-msgstr "przemierzyły wszystkie GeoKrety"
-
-msgid "Groups"
-msgstr "Grupy"
-
+#: templates/plugins/function.login_check.php:47
 msgid "Observed geokrets"
-msgstr "Obserwowane GeoKrety"
-
-msgid "Cancel observation"
-msgstr "Nie obserwuj tego GeoKreta"
-
-msgid "Be up to date with your and observed GeoKrets!"
-msgstr "Bądź na czasie z ruchami swoich GeoKretów!"
-
-msgid ""
-"<a href=\"help.php#locationdlagc\">How to log dropping to geocaching.com "
-"cache?</a>"
 msgstr ""
-"<a href=\"help.php#locationdlagc\">Jak zalogować wrzucenie do skrzynki "
-"geocaching.com (ENG) cache?</a>"
 
-msgid ""
-"<strong>User's manual:</strong> <strong>1.</strong> Take this GeoKret. Note "
-"down his Tracking Code. <strong>2.</strong> Hide in another cache. "
-"<strong>3.</strong> Register the trip at http://geokrety.org/<br />You can "
-"also go to the apppropriate page by the decoding the QR-code."
+#: termsofuse.php:14
+msgid "<p>This document sets the conditions of use of \"geokrety.org\" - a voluntarily operated Internet geocaching service available at https://geokrety.org (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure.</p>\n\n"
+"<p>The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service.</p>\n\n"
+"<p>You must ensure that information published by the user in the Site <strong>content must not affect the existing law</strong>. In particular, the content published by the user may not violate the copyright of third parties. All content (including descriptions of the Geokrety, illustrations and all their entries in the logs) made available by publishing them on our site users <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The user is responsible directly to the copyright holder for any violations in this area associated with him published by the content on our site.</p>\n\n"
+"<p>We don`t provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</p>\n\n"
+"<p>Content published by you on the site may not contain vulgar expressions , abusive, or illegal content. </p>"
 msgstr ""
-"<strong>Instrukcja obsługi:</strong> <strong>1.</strong> Zabierz geokreta. "
-"Zanotuj jego tracking code.<strong>2.</strong> Ukryj kreta w innym keszu. "
-"<strong>3.</strong> Zarejestruj jego podróż na http://geokrety.org/<br "
-"/>Odpowiednia strona zakodowana jest również w QR-code."
 
-msgid "Country stats"
-msgstr "Statystyka wg krajów"
-
-msgid "Cannot rename this photo because you are not it's author!"
-msgstr "Nie mogę zmienić nazwy tego zdjęcia, bo nie jesteś jego autorem, złociutki:)"
-
-msgid "Image upload for"
-msgstr "Dodaj obrazek"
-
-msgid "Cannot add this type of photo because you are not the owner of this geokret!"
-msgstr "Nie mogę dodać tego zdjęcia, gdyż niejesteś właścicielem tego kreta!"
-
-msgid "Cannot add this type of photo because you haven't moved this geokret!"
-msgstr "Nie mogę dodać tego zdjęcia, gdyż to nie jest Twój ruch!"
-
-msgid "Cannot add a photo to somebody else's profile!"
-msgstr "Nie mogę dodać tego zdjęcia, gdyż to nie Twój profil!"
-
-msgid ""
-"The waypoint was not found in the database. Some waypoints (e.g. those from "
-"geocaching.com) are not fully supported and they additionally require the "
-"location to be entered manually. Please check the coordinates of the cache "
-"and provide them in the appropriate input box."
+#: toolbox.php:11
+msgid "Geokrety Toolbox"
 msgstr ""
-"Nie ma takiego waypointa w bazie. Niektóre waypointy (np te z "
-"geocaching.com) nie są w pełni obsługiwane i wymagają wpisania współrzędnych "
-"w odpowiednie pola."
 
-msgid ""
-"<a href=\"http://geokrety.org/help.php#locationdlagc\">Learn more about "
-"hiding in GC caches</a>"
-msgstr ""
-"<a href=\"http://geokrety.org/help.php#locationdlagc\">Poczytaj więcej nt "
-"chowania kretów w keszach GC</a>"
-
-msgid "Observe this geokret"
-msgstr "Obserwuj tego GeoKreta"
-
-msgid "Help languageges"
-msgstr "Języki pomocy"
-
-msgid "GeoKrety.org news"
-msgstr "GeoKrety.org news"
-
-msgid "Email2GK :: β (beta)"
-msgstr "bramka e-mail2GK :: β (beta)"
-
-msgid "GeoKrety logo"
-msgstr "Logo GeoKretów"
-
-msgid "This geokret has not started yet"
-msgstr "Ten geokret jeszcze nie wystartował."
-
-msgid ""
-"The old secid will be deleted and the new one will be generated. You will "
-"have to update the secid in all applications which are using the code."
-msgstr ""
-"Stary kod secid będzie skasowany a na jego miejsce zostanie wygenerowany "
-"nowy. Będziesz musiał uaktualnić kod we wszystkich aplikacjach, które go "
-"używają (np na stronie opencaching.pl)."
-
-msgid "Are you sure?"
-msgstr "Jesteś pewien?"
-
-msgid "Generate new secid"
-msgstr "Wygeneruj nowy secid"
-
-msgid "KretyPost"
-msgstr "Krecia Poczta"
-
-msgid "If you found a GeoKret, enter the tracking code here"
-msgstr "Jeśli znalazłeś GeoKreta, wpisz tutaj jego tracking code"
-
-msgid "You can rate this GeoKret"
-msgstr "Możesz ocenić kreta"
-
-msgid "You have aleready rated this GeoKret"
-msgstr "Już oceniłeś tego kreta"
-
-msgid "You can't rate your own GeoKret"
-msgstr "Nie możesz oceniać własnych kretów"
-
-msgid "You can't rate this geokret"
-msgstr "Nie możesz ocenić tego kreta"
-
-msgid "Rating"
-msgstr "Ocena"
-
-msgid "votes"
-msgstr "głosów"
-
-msgid "average rating"
-msgstr "średnia ocena"
-
-msgid "Wrong secid identifier"
-msgstr "zły secid"
-
-msgid "You have already rated this GeoKret"
-msgstr "Już oceniłeś tego kreta"
-
-msgid "GeoKret successfully rated :)"
-msgstr "GeoKret oceniony :)"
-
-msgid "Set my home coordinates as a starting point"
-msgstr "Ustaw moje współrzędne domowe jako punkt startowy kreta"
-
-msgid "Born here :)"
-msgstr "Tu urodzony :)"
-
-msgid "Logged at my home coordinates"
-msgstr "Zalogowany u mnie w domu :)"
-
-msgid "Log geokret at my home coordinates"
-msgstr "Zaloguj kreta u mnie w domu"
-
-msgid "Logged using geolocation"
-msgstr "Zalogowany przy użyciu geolokalizacji"
-
-msgid "Use geolocation"
-msgstr "Użyj geolokalizacji"
-
-msgid "now"
-msgstr "teraz"
-
-msgid "Two days ago"
-msgstr "Przedwczoraj"
-
-msgid "User stats"
-msgstr "Statystyki użytkownika"
-
-msgid "Logs"
-msgstr "Logi"
-
-msgid "Logtypes"
-msgstr "Typy logów"
-
-msgid "Year stats"
-msgstr "Statystyki roczne"
-
-msgid "Moves"
-msgstr "Ruchy"
-
-msgid "Geokrety created"
-msgstr "Zarejestrowane geokrety"
-
-msgid "Portfolio"
-msgstr "Portfolio"
-
+#: user_stat.php:200
 msgid "Me"
 msgstr "Ja"
 
+#: user_stat.php:201
 msgid "All users"
 msgstr "Wszyscy użytkownicy"
 
+#: user_stat.php:204
 msgid "Average move distance"
 msgstr "Średni dystans przenosin"
 
+#: user_stat.php:209
 msgid "Median move distance"
 msgstr "Mediana dystansu przenosin"
 
-msgid "Register a new Race"
-msgstr "Zarejestruj nowy rajd"
+#: user_stat.php:215
+msgid "Country stats"
+msgstr "Statystyka wg krajów"
 
-msgid "Race info"
-msgstr "Informacje o rajdzie"
+#: user_stat.php:216
+msgid "Logs"
+msgstr "Logi"
 
-msgid "Race title"
-msgstr "Tytuł rajdu"
+#: user_stat.php:219
+msgid "Logtypes"
+msgstr "Typy logów"
 
-msgid "Start date"
-msgstr "Data startu"
+#: user_stat.php:222
+msgid "Year stats"
+msgstr "Statystyki roczne"
 
-msgid "End date"
-msgstr "Data zakończenia"
+#: user_stat.php:223
+msgid "Moves"
+msgstr "Ruchy"
 
-msgid "Race description"
-msgstr "Opis rajdu"
+#: user_stat.php:225
+msgid "Geokrety created"
+msgstr "Zarejestrowane geokrety"
 
-msgid "Race type"
-msgstr "Typ rajdu"
-
-msgid "Please choose race type. The default is race to destination cache (waypoint)"
-msgstr "Wybierz typ rajdu. Domyślnym typem jest wyścig do celu."
-
-msgid "Race to destination"
-msgstr "Wyścig do celu"
-
-msgid "Please choose the destination cache (waypoint)"
-msgstr "Wprowadź cel rajdu (waypoint)"
-
-msgid "Distance"
-msgstr "Dystans"
-
-msgid "Maximize distance"
-msgstr "Maksymalizuj dystans"
-
-msgid "Visited caches"
-msgstr "Odwiedzone keszy"
-
-msgid "Maximize number of visited caches"
-msgstr "Maksymalizuj liczbę odwiedzonych keszy"
-
-msgid "Wrong start date"
-msgstr "Zła data startu"
-
-msgid "Wrong end date"
-msgstr "Zła data zakończenia"
-
-msgid "End date <= start date"
-msgstr "Data zakończenia <= data startu"
-
-msgid "Wrong target waypoint"
-msgstr "Zły waypoinf docelowy"
-
-msgid "Wrong target distance"
-msgstr "Zła odległość docelowa"
-
-msgid "Wrong caches number"
-msgstr "Zła liczba keszy"
-
-msgid "Unable to resolve waypoint "
-msgstr "Nie mogę rozwikłać waypointa"
-
-msgid "Race %s created successfully"
-msgstr "Rajd %s założony pomyślnie"
-
-msgid ""
-"The password for join this private race is %s. Share it with everyone "
-"interested in joining this race. You can also use direct link for joining "
-"this race: %s or here: %s"
+#: user_stat.php:228
+msgid "Portfolio"
 msgstr ""
-"Hasło do tego prywatnego rajdu brzmi %s. Przekaż je osobom które chcą wziąć "
-"udział w tym rajdzie. Możesz użyć również bezpośredniego linku: %s lub %s"
 
-msgid "You can use this link for joining this race: %s or here: %s"
-msgstr "Aby dołączyć do rajdu użyj linku: %s lub %s"
+#: verify_mail.php:117
+#, php-format
+msgid "An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it :)\n\n"
+"%s"
+msgstr "Konto w serwisie Geokrety.org,  powiązane z tym adresem mailowym, założono pomyślnie :) Aby je aktywować, kilknij proszę na poniższy odnośnik. Jeśli nie masz pojęcia, o co chodzi, po prostu skasuj tego maila i zapomnij. Miłego dnia!\n"
+"%s"
 
-msgid "Join the Race"
-msgstr "Dołącz do rajdu"
-
-msgid "The race to join"
-msgstr "Do którego rajdu chcesz dołączyć"
-
-msgid "Password for private races"
-msgstr "Hasło do rajdów prywatnych"
-
-msgid "If you are the race owner, you don't need to enter password"
-msgstr "Jeśli jesteś założycielem tego rajdu, nie musisz wprowadzać hasła"
-
-msgid "No race selected"
-msgstr "Nie wybrano rajdu"
-
-msgid "No reference number"
-msgstr "Brak reference number"
-
-msgid "This is not your geokret"
-msgstr "To nie twój geokret"
-
-msgid "This race is private. Please provide the password"
-msgstr "Ten rajd jest prywatny i wymaga podania hasła"
-
-msgid "Wrong password"
-msgstr "Złe hasło"
-
-msgid "Race"
-msgstr "Rajd"
-
-msgid "Avatar"
-msgstr "Avatar"
-
-msgid "Average speed, km/day"
-msgstr "Prędkość średnia, km/dzień"
-
-msgid ""
-"<p>This document sets the conditions of use of \"geokrety.org\" - a "
-"voluntarily operated Internet geocaching service available at "
-"http://geokrety.org (hereinafter referred to as the \"Service\"). Each "
-"person registering an account (hereinafter called a \"User\") agrees to "
-"observe the rules of these terms and conditions, starting from the beginning "
-"of the registration procedure.</p>\n"
-"\n"
-"<p>The service is monitored and supervised by a group of volunteer "
-"supporters, hereinafter referred to as GK Team. GK Team is not responsible "
-"for the content posted by users on the Site or for damages resulting from "
-"the use of information from the Service.</p>\n"
-"\n"
-"<p>You must ensure that information published by the user in the Site "
-"<strong>content must not affect the existing law</strong>. In particular, "
-"the content published by the user may not violate the copyright of third "
-"parties. All content (including descriptions of the Geokrety, illustrations "
-"and all their entries in the logs) made available by publishing them on our "
-"site users <strong>are licensed under Creative Commons</strong> BY-NC-SA "
-"version 2.5, whose complete content is available online at <a "
-"href=\"http://creativecommons.org/licenses/by-nc-sa/2.5/\">http://creativecommons.org/licenses/by-nc-sa/2.5/</a>. "
-"Public domain content is also admitted. The user is responsible directly to "
-"the copyright holder for any violations in this area associated with him "
-"published by the content on our site.</p> \n"
-"\n"
-"<p>We don`t provide any warranty or guarantee as to the accuracy, "
-"timeliness, performance, completeness or suitability of the information and "
-"materials found or offered on this website for any particular purpose. You "
-"acknowledge that such information and materials may contain inaccuracies or "
-"errors and we expressly exclude liability for any such inaccuracies or "
-"errors to the fullest extent permitted by law.</p>\n"
-"\n"
-"<p>Content published by you on the site may not contain vulgar expressions , "
-"abusive, or illegal content. </p>"
-msgstr "Dodaj nowy wyścig"
-
-msgid "Private race"
-msgstr "Rajd prywatny"
-
-msgid "Reach target distance"
-msgstr "Do osiągnięcia założonego dystansu"
-
-msgid "Reach target number of caches"
-msgstr "Do osiągnięcia założonej liczby keszy"
-
-msgid "This race hasn't started yet"
-msgstr "Ten rajd jeszcze nie wystartował"
-
-msgid "days"
-msgstr "dni"
-
-msgid "The race is running"
-msgstr "Rajd trwa"
-
-msgid "The race has ended"
-msgstr "Rajd się zakończył"
-
-msgid "Waiting for pending logs"
-msgstr "Czekamy na zaległe logi"
-
-msgid "yes"
-msgstr "tak"
-
-msgid "password"
-msgstr "hasło"
-
-msgid "no"
-msgstr "nie"
-
-msgid "Distance to destination"
-msgstr "Odległość od celu"
-
-msgid "% of target distance done"
-msgstr "% założonego dystansu"
-
-msgid "% of target caches visited"
-msgstr "% założonych keszy"
-
-msgid "Rank"
-msgstr "Miejsce"
-
-msgid "Average speed"
-msgstr "Prędkość średnia"
-
-msgid "km/day"
-msgstr "km/dzień"
-
-msgid "Race information"
-msgstr "Informacje o rajdzie"
-
-msgid "Race status"
-msgstr "Status rajdu"
-
-msgid "Race participants"
-msgstr "Uczestnicy"
-
-msgid "Race list"
-msgstr "Lista wyścigów"
-
-msgid "Filter races by status"
-msgstr "Pokaż wyścigi o statusie"
-
-msgid "All races"
-msgstr "Wszystkie wyścigi"
-
-msgid "Geokrety races"
-msgstr "Krecie wyścigi"
-
-msgid "My races"
-msgstr "Moje wyścigi"
-
-msgid "Races"
-msgstr "Wyścigi"
-
-msgid "Recent logs on the map"
-msgstr "Ostatnie logi na mapie"
-
-msgid "This is not your race"
-msgstr "Oj, to nie jest Twój rajd"
-
-msgid "You can't edit the race which has started"
-msgstr "Nie można edytować rajdu, ktory się już rozpoczął"
-
-msgid "Please read this race rules before joining!"
-msgstr "Nim dołączysz do tego rajdu, zapoznaj się z jego zasadami"
-
-msgid "Edit this race"
-msgstr "Edytuj rajd"
-
-msgid "Last log"
-msgstr "Ostatni log"
-
-msgid "No participants. Yet..."
-msgstr "Brak uczestników. Jeszcze..."
-
-msgid ""
-"We are using cookies only for storing login information and language "
-"preferences. Read more <a href=\"/help.php#cookies\">about our cookies "
-"policy</a>"
-msgstr ""
-"Używamy ciasteczek (ang: cookies) jedynie do przechowywania informacji o "
-"zalogowaniu oraz informacji o wybranym języku. Dowiedz się więcej o naszej "
-"<a href=\"/help_generate.php?help=pl#cookies\">polityce ciasteczkowej</a>"
-
-msgid "Save changes"
-msgstr "Zapisz zmiany"
-
-msgid "Share on"
-msgstr "Podziel się na"
+#: verify_mail.php:121
+msgid "[GeoKrety] Activate your account"
+msgstr "[GeoKrety] Uaktywnij swoje konto"
 
