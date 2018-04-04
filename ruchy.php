@@ -892,7 +892,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     <div class="col-sm-6">
       <input type="text" id="latlon" name="latlon" value="'.$edit_lat_lon.'" size="25" '.$disabled_coords.' class="form-control" aria-describedby="helpBlockCoordinates">
       <span id="helpBlockCoordinates" class="help-block">'.
-        sprintf(_('<a href="%s" target="_blank">Acceptable geographic coordinate formats</a>'), $config['adres'].'help.php#acceptableformats').'<br />
+        _('<a href="help.php#acceptableformats" target="_blank">Acceptable geographic coordinate formats</a>').'<br />
         <span class="szare">
         eg.
           52.1534 21.0539<br />
