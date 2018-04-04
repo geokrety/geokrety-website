@@ -20,6 +20,13 @@
   <link rel="shortcut icon" href="https://cdn.geokrety.org/images/favicon/favicon.ico"/>
   <meta name="msapplication-config" content="https://cdn.geokrety.org/images/favicon/browserconfig.xml"/>
   <meta name="theme-color" content="#ffffff"/>
+{if $lang eq 'zu_ZA.UTF-8'}
+  <script type="text/javascript">
+    var _jipt = [];
+    _jipt.push(['project', 'geokrety']);
+  </script>
+  <script type="text/javascript" src="//cdn.crowdin.com/jipt/jipt.js"></script>
+{/if}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 {$head}
 {if $smartyDataMiesiac eq '401'}	{* prima aprilis *}
@@ -30,7 +37,6 @@
   <link rel="stylesheet" type="text/css" href="{$cssUrl}/flag-icon.min.css" media="screen" />
 </head>
 <body {$body}>
-
 {assign var="specialmsg" value="/home/geokrety/wiadomosc_specjalna.tpl"}
 { if file_exists($specialmsg) }
 <div id="banner" style="position: absolute; top: 0; right: 0;background-color: green;width: 60%;">
@@ -148,6 +154,7 @@
 <ul class="dropdown innemenu">
 <li><a href="{t}help.php#about{/t}">{t}About{/t}</a></li>
 <li><a href="halloffame.php">{t}Hall of fame{/t}</a></li>
+<li><a href="lang.php?lang=zu_ZA.UTF-8" title="{t}Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode.{/t}"><i class="glyphicon glyphicon-wrench"></i> {t}Fix translation{/t}</a></li>
 </ul>
 
 </div>

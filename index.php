@@ -213,7 +213,9 @@ while ($row = mysqli_fetch_array($result)) {
     $TRESC .= "<a href=\"/mypage.php?userid=$userid\">$user</a> ";
 }
 
-$TRESC .= '<p><img src="'.CONFIG_CDN_IMAGES.'/icons/question.png" alt="down" width="16" height="16" /> <a href="https://crwd.in/geokrety">'._('Suggest a better translation')." | Suggest a better translation</a> ($lang)</p><p class='male' align='right'>[$ulicznik[0]] [$ulicznik[1] "._('visits/day').']</p>';
+$TRESC .= '<p>
+<img src="'.CONFIG_CDN_IMAGES.'/icons/question.png" alt="down" width="16" height="16" />
+<a href="https://crwd.in/geokrety">'._('Join our translation team').'</a> | <a href="lang.php?lang=zu_ZA.UTF-8">'._('Suggest a better translation - inline')."</a> ($lang)</p><p class='male' align='right'>[$ulicznik[0]] [$ulicznik[1] "._('visits/day').']</p>';
 $TRESC .= '</div>';
 // ***************
 if ($speedtest_index) {

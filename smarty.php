@@ -30,6 +30,8 @@ $smarty->assign('tytul', $TYTUL);
 $smarty->assign('tresc', $TRESC);
 $smarty->assign('ogon', $OGON);
 
+$smarty->assign('lang', $_COOKIE['geokret1']);
+
 $smarty->assign('template_login', $template_login);
 $smarty->assign('alert_msgs', $alert_msgs);
 

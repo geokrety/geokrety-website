@@ -96,6 +96,7 @@ $config_jezyk_encoding['th'] = 'th_TH.UTF-8';
 $config_jezyk_encoding['tr'] = 'tr_TR.UTF-8';
 $config_jezyk_encoding['uk'] = 'uk_UA.UTF-8';
 $config_jezyk_encoding['tl'] = 'tl_PH.UTF-8';
+$config_jezyk_encoding['zu'] = 'zu_ZA.UTF-8';
 //$config_jezyk_encoding[''] = '.UTF-8';
 
 $config_jezyk_nazwa['en'] = 'English';

@@ -1,6 +1,12 @@
+To extract strings from templates:
+
+  sudo apt install tsmarty2c
+
 Extract gettext string using:
 
-  xgettext --from-code=UTF-8 -o rzeczy/messages.po.txt --language=PHP -f rzeczy/lang/input-files-for-xgettext
+  xgettext --from-code=UTF-8 -o /tmp/messages.pot --language=PHP -f rzeczy/lang/input-files-for-xgettext
+  tsmarty2c -o /tmp/smarty.pot ./templates/index.html ./templates/krety-m.html  ./templates/krety.html ./templates/krety_not_logged_in.html ./templates/krety_logged_in.html
+  msgcat -o rzeczy/messages.po.txt /tmp/messages.pot /tmp/smarty.pot
 
 
 Compile translation:
