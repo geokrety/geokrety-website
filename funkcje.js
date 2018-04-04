@@ -190,22 +190,22 @@ function sprawdzGK(e) {
     if (KeyID == 9 || (KeyID >= 16 && KeyID <= 20) || (KeyID >= 33 && KeyID <= 40)) {
       return;
     }
+  }
 
-    var poleInValue = (document.getElementById('nr').value).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-    var poleOut = document.getElementById('wynikNr');
+  var poleInValue = (document.getElementById('nr').value).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+  var poleOut = document.getElementById('wynikNr');
 
-    //if(poleInValue.length == 6)
-    if (/^[a-zA-Z0-9]{6}(\.[a-zA-Z0-9]{6})*$/.test(poleInValue)) {
-      poleOut.innerHTML = 'Retrieving...';
-      $.get('szukaj-ajax.php', {
-        'skad': 'ajax',
-        'nr': poleInValue
-      }, function(data) {
-        poleOut.innerHTML = data;
-      });
-    } else {
-      poleOut.innerHTML = '';
-    }
+  //if(poleInValue.length == 6)
+  if (/^[a-zA-Z0-9]{6}(\.[a-zA-Z0-9]{6})*$/.test(poleInValue)) {
+    poleOut.innerHTML = 'Retrieving...';
+    $.get('szukaj-ajax.php', {
+      'skad': 'ajax',
+      'nr': poleInValue
+    }, function(data) {
+      poleOut.innerHTML = data;
+    });
+  } else {
+    poleOut.innerHTML = '';
   }
 }
 
