@@ -990,7 +990,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
   <div class="form-group">
     <label class="col-sm-2 control-label"></label>
     <div class="col-sm-6">
-      <input type="submit" value=" Go! " class="btn btn-default" />'.$extra_hidden_fields.'<input type="hidden" id="js" name="js" value="----" />
+      <input type="submit" value="'._('Go!').'" class="btn btn-default" />'.$extra_hidden_fields.'<input type="hidden" id="js" name="js" value="----" />
     </div>
   </div>
 </form>';
