@@ -18,15 +18,6 @@ $(function () {
   $(\'.tt_large\').tooltip({
     template: \'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner large"></div></div>\'
   });
-
-  $(\'#data\').datepicker({
-    format: "yyyy-mm-dd",
-    startDate: "2007-10-26",
-    endDate: "'.date('Y-m-d').'",
-    todayBtn: "linked",
-    autoclose: true,
-    todayHighlight: true
-  });
 })
 </script>'."\n";
 
@@ -926,6 +917,18 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     }
 
     // -------------------- 4 (additional data)
+    $OGON .= '<script>
+    $(function () {
+      $(\'.input-group.date\').datepicker({
+        format: "yyyy-mm-dd",
+        startDate: "2007-10-26",
+        endDate: "'.date('Y-m-d').'",
+        todayBtn: "linked",
+        autoclose: true,
+        todayHighlight: true
+      });
+    })
+    </script>'."\n";
     $TRESC .= '
 <h3><span class="cyferki" id="step4">'.$step_number++.'.</span>  '._('Additional data').'</h3>
 
@@ -941,9 +944,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     <div class="col-sm-6">
       <div class="input-group date">
         <input type="text" class="form-control" name="data" id="data" value="'.$edit_data.'">
-        <div class="input-group-addon">
-            <span class="glyphicon glyphicon-th"></span>
-        </div>
+          <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
       </div>
     </div>
     <div class="col-sm-4">
