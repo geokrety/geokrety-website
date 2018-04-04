@@ -885,7 +885,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
       <span id="helpBlockCoordinates" class="help-block">'.
         _('<a href="help.php#acceptableformats" target="_blank">Acceptable geographic coordinate formats</a>').'<br />
         <span class="szare">
-        eg.
+        '._('eg.').'
           52.1534 21.0539<br />
           N 52° 09.204 E 021° 03.234<br />
           N 52° 9\' 12.2400" E 21° 3\' 14.0400"
