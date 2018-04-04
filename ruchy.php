@@ -869,12 +869,12 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
       <span id="helpBlockCacheName" class="help-block">'.
         _('Enter cache name. Works only with opencaching networks.')
       .' <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0"></a>
-      <br /><span id="ajax_status"></span>
       </span>
     </div>
     <div class="col-sm-4">
       <span id="wynikWpt"></span>
       <div id="linkDoMapy"></div>
+      <span id="ajax_status"></span>
     </div>
   </div>
 

@@ -10,7 +10,7 @@ function zliczaj(maxlen) {
     if (tekst.charAt(i) == "\n") {
       prawdziwa++;
       entery++;
-      if (navigator.appName !== "Netscape") {
+      if (navigator.appName != "Netscape") {
         i++;
       }
     }
@@ -19,7 +19,7 @@ function zliczaj(maxlen) {
 
   licznik.value = maxlen - prawdziwa; // display message on the number of characters
   if (prawdziwa > maxlen) {
-    if (navigator.appName !== "Netscape") {
+    if (navigator.appName != "Netscape") {
       pole.value = pole.substring(0, maxlen);
     } else {
       pole.value = pole.value.substring(0, maxlen - entery);
@@ -78,7 +78,7 @@ function sprawdzWpt(e) {
     var KeyID = (window.event)
       ? event.keyCode
       : e.keyCode;
-    if (KeyID === 9 || (KeyID >= 16 && KeyID <= 20) || (KeyID >= 33 && KeyID <= 40)) {
+    if (KeyID == 9 || (KeyID >= 16 && KeyID <= 20) || (KeyID >= 33 && KeyID <= 40)) {
       return;
     }
   }
@@ -95,7 +95,7 @@ function sprawdzWpt(e) {
   var poleOut = doc.getElementById(poleOutId);
 
   if (poleInValue.length >= 6) {
-    if (e || (poleAjaxStatus.title !== poleInValue)) {
+    if (e || (poleAjaxStatus.title != poleInValue)) {
       poleAjaxStatus.innerHTML = 'Retrieving...';
       poleAjaxStatus.title = poleInValue;
       $.get('szukaj-ajax.php', {
@@ -104,7 +104,7 @@ function sprawdzWpt(e) {
       }, function(data) {
         poleAjaxStatus.innerHTML = '';
         var json = JSON.parse(data);
-        if (json.lat !== '') {
+        if (json.lat != '') {
           poleLatlon.value = json.lat + " " + json.lon;
           poleLatlon.disabled = false;
           //poleLatlon.disabled=true;
@@ -138,8 +138,8 @@ function sprawdzNazwe() {
 
   var poleInValue = (doc.getElementById(poleInId).value).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 
-  var poleWpt = doc.getElementById('wpt');
-  var poleLatlon = doc.getElementById('latlon');
+  var poleWpt = $('#wpt');
+  var poleLatlon = $('#latlon');
   var poleAjaxStatus = doc.getElementById('ajax_status');
 
   var poleOut = doc.getElementById(poleOutId);
@@ -154,25 +154,26 @@ function sprawdzNazwe() {
     }, function(data) {
       poleAjaxStatus.innerHTML = '';
       var json = JSON.parse(data);
-      if (json.IleSkrzynek === 1) {
-        poleLatlon.disabled = true;
-        poleLatlon.value = json.lat + ' ' + json.lon;
-        poleWpt.value = json.wpt;
+      if (json.IleSkrzynek == 1) {
+        poleLatlon.prop('disabled', true);
+        poleLatlon.val(json.lat + ' ' + json.lon);
+        poleWpt.prop('disabled', true);
+        poleWpt.val(json.wpt);
         poleOut.innerHTML = json.tresc;
       } else {
-        poleLatlon.disabled = false;
-        poleLatlon.value = '';
-        poleWpt.disabled = false;
-        poleWpt.value = '';
+        poleLatlon.prop('disabled', false);
+        poleLatlon.val('');
+        poleWpt.prop('disabled', false);
+        poleWpt.val('');
         poleOut.innerHTML = json.tresc;
       }
     });
   } else {
-    poleWpt.disabled = false;
-    poleWpt.value = '';
+    poleWpt.prop('disabled', false);
+    poleWpt.val('');
 
-    poleLatlon.disabled = false;
-    poleLatlon.value = '';
+    poleLatlon.prop('disabled', false);
+    poleLatlon.val('');
 
     poleOut.innerHTML = '';
     poleAjaxStatus.title = '';
