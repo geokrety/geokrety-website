@@ -6,7 +6,7 @@ function zliczaj(maxlen) {
   var prawdziwa = 0; // character count
   var entery = 0;
 
-  for (i = 0; i < dlTresc; i++) {
+  for (var i = 0; i < dlTresc; i++) {
     if (tekst.charAt(i) == "\n") {
       prawdziwa++;
       entery++;
