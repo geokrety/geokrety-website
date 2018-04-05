@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -x
 
 set -e
 
@@ -11,7 +11,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
   CROWDIN_CLI_VERSION=2.0.22
 
   TMP=$(mktemp -d)
-  trap "{ rm -fr $TMP; }" EXIT
 
   #go to home and setup git
   cd $TMP
@@ -30,11 +29,13 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
   for file in $(ls -d rzeczy/lang/*.UTF-8); do msgfmt ${file}/LC_MESSAGES/messages.po -o ${file}/LC_MESSAGES/messages.mo; done
 
   #add, commit and push files
-  git add -f rzeczy/lang/
-  git commit -m "Automatic translation import (build $TRAVIS_BUILD_NUMBER) [ci skip]"
-  git push origin $GIT_BRANCH || true
-
-  cd /tmp/
-  rm -fr $TMP
-  echo -e "Done importing new transaltions\n"
+  read -r plus minus filename <<< $( git diff --numstat rzeczy/lang/*.UTF-8 )
+  if [ -z "$plus" -a -z "$minus" ]; then
+    echo "No new strings found."
+  else
+    git add -f rzeczy/lang/*.UTF-8
+    git commit -m "Automatic translation import (build $TRAVIS_BUILD_NUMBER) [ci skip]"
+    git push origin $GIT_BRANCH
+    echo -e "Done importing new transaltions\n"
+  fi
 fi

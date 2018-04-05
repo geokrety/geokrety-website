@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -x
 
 set -e
 
@@ -11,7 +11,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
   CROWDIN_CLI_VERSION=2.0.22
 
   TMP=$(mktemp -d)
-  trap "{ rm -fr $TMP; }" EXIT
 
   #go to home and setup git
   cd $TMP
@@ -33,11 +32,13 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
   java -jar $CROWDIN_CLI_VERSION/crowdin-cli.jar upload
 
   #add, commit and push files
-  git add -f rzeczy/messages.po.txt
-  git commit -m "Automatic in-context translation import (build $TRAVIS_BUILD_NUMBER) [ci skip]"
-  git push origin $GIT_BRANCH || true
-
-  cd /tmp/
-  rm -fr $TMP
-  echo -e "Done uploading new strings\n"
+  read -r plus minus filename <<< $( git diff --numstat rzeczy/messages.po.txt )
+  if [ "$plus" = "$minus" -a "$plus" = "1" ]; then
+    echo "No new strings found."
+  else
+    git add -f rzeczy/messages.po.txt
+    git commit -m "Automatic in-context translation import (build $TRAVIS_BUILD_NUMBER) [ci skip]"
+    git push origin $GIT_BRANCH || true
+    echo -e "Done uploading new strings\n"
+  fi
 fi
