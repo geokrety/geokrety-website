@@ -66,41 +66,41 @@
 </div></div>
 {/if}
 
-<div id="top"><a href="https://geokrety.org/">
+<div id="top">
+  <a href="https://geokrety.org/">
+{if $smartyDataMiesiac eq '1206'}
+	<img src="{$bannerUrl}/logo-mikolajki.png" border="0" alt="logo" title="{t}Saint Nicholas Day{/t}" />
+{elseif $smartyDataMiesiac >= 1224 and $smartyDataMiesiac <=  1228 }
+	<img src="{$bannerUrl}/logo-swieta2.png" border="0" alt="logo" title="{t}Merry Christmas!{/t}" />
+{elseif $smartyDataMiesiac == 1231 or ($smartyDataMiesiac >=  101 and $smartyDataMiesiac <= 104 )}
+	<img src="{$bannerUrl}/logo-sylwestra.png" border="0" alt="logo" title="{t}Happy New Year!!!{/t}" />
+{elseif $smartyDataMiesiac == 214}
+	<img src="{$bannerUrl}/logo-walentynki.png" border="0" alt="logo" title="{t}Valentine's Day{/t}" />
+{elseif $smartyDataMiesiac == 401}
+	<img src="{$bannerUrl}/geozyrafy.png" border="0" alt="logo" title="{t}First April!!!{/t}" />
+{elseif $smartyDataMiesiac == '1031'}
+	<img src="{$bannerUrl}/geokrety+pumpkin.png" border="0" alt="logo" title="{t}Hallowen{/t}" />
 
-{if $smartyDataMiesiac eq '1206'}	{* mikołajki *}
-	<img src="{$bannerUrl}/logo-mikolajki.png" border="0" alt="logo" title="mikołajki" />
-{elseif $smartyDataMiesiac >= 1224 and $smartyDataMiesiac <=  1228 } {* Święta *}
-	<img src="{$bannerUrl}/logo-swieta2.png" border="0" alt="logo" title="Merry Christmas!" />
-{elseif $smartyDataMiesiac == 1231 or ($smartyDataMiesiac >=  101 and $smartyDataMiesiac <= 104 )} {* Sylwester Nowy rok *}
-	<img src="{$bannerUrl}/logo-sylwestra.png" border="0" alt="logo" title="Happy New Year!!!" />
-{elseif $smartyDataMiesiac == 214} {* Walentynki *}
-	<img src="{$bannerUrl}/logo-walentynki.png" border="0" alt="logo" title="Walentynki, Valentine s Day" />
-{elseif $smartyDataMiesiac == 401} {* Prima Aprilis *}
-	<img src="{$bannerUrl}/geozyrafy.png" border="0" alt="logo" title="Prima Aprilis!!!" />
-{elseif $smartyDataMiesiac == '1031'} {* Hallowen *}
-	<img src="{$bannerUrl}/geokrety+pumpkin.png" border="0" alt="logo" title="Haloooooooooowen / Dziady" />
+{elseif ($smartyDataMiesiac == 327 )}
+	<img src="{$bannerUrl}/logo-wielkanoc2.png" border="0" alt="logo" title="{t}Easter!{/t}" />
 
-{elseif ($smartyDataMiesiac == 327 )} {* Wielkanoc! *}
-	<img src="{$bannerUrl}/logo-wielkanoc2.png" border="0" alt="logo" title="Wielkanoc! Easter! Ostern!" />
-
-{elseif ($smartyDataMiesiac >= 321 and $smartyDataMiesiac <= 329 )} {* Wiosna! *}
-	<img src="{$bannerUrl}/logo-wiosna.png" border="0" alt="logo" title="Wiosna! Spring!" />
-{elseif $smartyDataRok >= 20171026 and $smartyDataRok <= 20181026 } {* urodziny GK *}
-	<img src="{$bannerUrl}/10years-banner-top.png" border="0" alt="logo" title="GeoKrety 10 years Birthday!!!" />
-{elseif $smartyDataMiesiac eq '1026'} {* urodziny GK *}
-	<img src="{$bannerUrl}/logo-urodziny.png" border="0" alt="logo" title="GeoKrety Birthday!!!" />
+{elseif ($smartyDataMiesiac >= 321 and $smartyDataMiesiac <= 329 )}
+	<img src="{$bannerUrl}/logo-wiosna.png" border="0" alt="logo" title="{t}Spring!{/t}" />
+{elseif $smartyDataRok >= 20171026 and $smartyDataRok <= 20181026 }
+	<img src="{$bannerUrl}/10years-banner-top.png" border="0" alt="logo" title="{t}GeoKrety 10 years Birthday!!!{/t}" />
+{elseif $smartyDataMiesiac eq '1026'}
+	<img src="{$bannerUrl}/logo-urodziny.png" border="0" alt="logo" title="{t}GeoKrety Birthday!!!{/t}" />
 
 {* święta ruchome - odkomentować w miarę potrzeby *}
-{elseif ($smartyDataMiesiac == 110 )} {* WOŚP - skasować albo zmienić na datę z następnego roku! *}
-	<img src="{$bannerUrl}/geokrety+wosp.png" border="0" alt="logo" title="23 Finał Wielkiej Orkiestry Świątecznej Pomocy!" />
+{elseif ($smartyDataMiesiac == 110 )}
+	<img src="{$bannerUrl}/geokrety+wosp.png" border="0" alt="logo" title="{t}The Grand Finale - Great Orchestra of Christmas Charity.{/t}" />
 {else}
-	<img src="{$bannerUrl}/logo-puste.png" border="0" alt="logo aa:  { $smartyDataMiesiac }" />
+	<img src="{$bannerUrl}/logo-puste.png" border="0" alt="{t}Normal day{/t}" />
 {/if}
-</a> {$tytul}
+  </a> {$tytul}
 </div>
-<div id="lewo">
 
+<div id="lewo">
 <ul class="dropdown spritemenu greenmenu">
 <li><img class="menu-home" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/index.php">{t}Home{/t}</a></li>
 <li><img class="menu-flag_add" src="{$iconsUrl}/_.gif" alt="*" /> <a href="/ruchy.php"><strong>{t}Log a GeoKret{/t}</strong></a><br/>
