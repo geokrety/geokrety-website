@@ -4,13 +4,10 @@ cache:
         - $HOME/.composer/cache/files
         - $HOME/.php-cs-fixer
 
-matrix:
-    fast_finish: true
-    include:
-          # Test the latest stable release
-        - php:   5.6
-        - php:   7.1
-        - php:   7.2
+php:
+  - 5.6
+  - 7.1
+  - 7.2
 
 addons:
     apt:
@@ -28,3 +25,9 @@ script:
     - scripts/check-trailling-spaces.sh .
     # Check against non utf-8 files
     - scripts/check-utf8.sh .
+
+jobs:
+  include:
+    - stage: deploy
+      php: 5.6
+      script: scripts/import-translations-github.sh
