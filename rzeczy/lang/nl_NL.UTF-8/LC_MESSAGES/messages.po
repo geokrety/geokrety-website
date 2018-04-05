@@ -1,23 +1,27 @@
 msgid ""
 msgstr ""
+"#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-02 20:22+0200\n"
-"PO-Revision-Date: 2018-04-04 15:52-0400\n"
+"POT-Creation-Date: 2018-04-05 21:46+0200\n"
+"PO-Revision-Date: 2018-04-05 17:06-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  smarty.pot  #-#-#-#-#\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: geokrety\n"
 "X-Crowdin-Language: nl\n"
-"X-Crowdin-File: /rzeczy/messages.po.txt.po\n"
+"X-Crowdin-File: messages.po\n"
 
 #: adduser.php:8 adduser.php:105 templates.php:186
 #: templates/plugins/function.login_check.php:37
+#: templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Registreer als nieuwe gebruiker"
 
@@ -25,7 +29,7 @@ msgstr "Registreer als nieuwe gebruiker"
 msgid "Required fields"
 msgstr "Verplichte velden"
 
-#: adduser.php:59 ruchy.php:650
+#: adduser.php:59 ruchy.php:658
 msgid "Username"
 msgstr "Gebruikersnaam"
 
@@ -45,7 +49,7 @@ msgstr "E-mail"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Ja, Ik wil e-mails ontvangen (verzending dagelijks om middernacht CET/CESC) wanneer mijn eigen of door mij gevolgde GeoKrets van locatie veranderen."
 
-#: adduser.php:81 majluj.php:103 ruchy.php:902
+#: adduser.php:81 majluj.php:103 ruchy.php:912
 msgid "Enter code"
 msgstr "Voer code in"
 
@@ -54,6 +58,7 @@ msgid "Language"
 msgstr "Taal"
 
 #: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
+#: templates/krety.html:128 templates/krety.html:198
 msgid "Terms of use"
 msgstr "Gebruikers overeenkomst"
 
@@ -69,7 +74,11 @@ msgid "Read more about choosing good passwords:\n"
 "<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Password strength</a></li>\n"
 "</ul>"
 msgstr "Lees meer over goede wachtwoorden:\n"
-"<ul> <li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Kiezen van goede wachtwoorden -- Een gebruikershandleiding</a></li> <li><a href=\"http://www.csoonline.com/article/220721/how-to-write-good-passwords\">"
+"<ul>\n"
+"<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Kiezen van goede wachtwoorden -- Een gebruikershandleiding</a></li>\n"
+"<li><a href=\"http://www.csoonline.com/article/220721/how-to-write-good-passwords\">Hoe goede wachtwoorden te maken</a></li>\n"
+"<li><a href=\"https://nl.wikipedia.org/wiki/Wachtwoord\">Wachtwoord sterkte</a></li>\n"
+"</ul>"
 
 #: adduser.php:127 majluj.php:125 new_password.php:44
 msgid "Wrong antispam phrase!"
@@ -102,11 +111,13 @@ msgstr "Een e-mail om je e-mailadres te bevestigien is naar je onderweg. Als je 
 
 #: adduser.php:167 longin.php:9 templates.php:189
 #: templates/plugins/function.login_check.php:37
+#: templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Inloggen"
 
 #: adduser.php:167 templates.php:192
 #: templates/plugins/function.login_check.php:37
+#: templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Wachtwoord vergeten?"
 
@@ -148,7 +159,7 @@ msgid "Your currently configured email address (%s) seems to be invalid. Please 
 msgstr ""
 
 #: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:34
-#: newscomments.php:275 please_login.php:11 race_join.php:12 register.php:27
+#: newscomments.php:275 please_login.php:11 race_join.php:12 register.php:28
 msgid "Please login."
 msgstr "Inloggen a.u.b."
 
@@ -163,7 +174,7 @@ msgstr "Oeps, er is iets fout gegaan."
 #: comment.php:126
 #, php-format
 msgid "Reporting GeoKret %s as missing"
-msgstr "Rapporteren dat GeoKret %s vermist wordt."
+msgstr "Melden dat GeoKret %s vermist wordt"
 
 #: comment.php:148
 #, php-format
@@ -180,7 +191,7 @@ msgstr "Jouw commentaar"
 
 #: confirm.php:31
 msgid "It seems that your link has been malformed, possibly by your email software. If clicking on the link directly from within the email does not work, try to copy and paste it into your browser's address field making sure to copy and paste the whole url."
-msgstr "Het ziet er naar uit dat de link misvormd is, misschien door je e-mail software. Als de link in de e-mail niet werkt door er op te klikken, probeer dan de link direct in de adresbalk van je browser te plakken. Zorg ervoor dat je de gehele URL kopieert."
+msgstr "Het ziet er naar uit dat de link ongeldig is, misschien door de e-mail software. Als de link in de e-mail niet werkt door er op te klikken, probeer dan de link direct in de adresbalk van je browser te plakken. Zorg ervoor dat je de hele link kopieert."
 
 #: confirm.php:32 confirm.php:40
 msgid "Bad confirmation code."
@@ -205,29 +216,29 @@ msgstr "Verkeerde coördinaten, of onbekend formaat."
 
 #: cords_parse.php:245
 msgid "Missing or invalid coordinates."
-msgstr "Verkeerde of missende coördinaten."
+msgstr "Ontbrekende of ongeldige coördinaten."
 
-#: cotozalog.php:8 templates/konfig.php:129
+#: cotozalog.php:8 templates/konfig.php:132
 msgid "Dropped to"
 msgstr "Achtergelaten in"
 
-#: cotozalog.php:9 templates/konfig.php:130
+#: cotozalog.php:9 templates/konfig.php:133
 msgid "Grabbed from"
 msgstr "Gepakt uit"
 
-#: cotozalog.php:10 templates/konfig.php:131
+#: cotozalog.php:10 templates/konfig.php:134
 msgid "A comment"
 msgstr "Een opmerking"
 
-#: cotozalog.php:11 templates/konfig.php:132
+#: cotozalog.php:11 templates/konfig.php:135
 msgid "Seen in"
 msgstr "Gezien in"
 
-#: cotozalog.php:12 templates/konfig.php:133
+#: cotozalog.php:12 templates/konfig.php:136
 msgid "Archived"
 msgstr "Gearchiveerd"
 
-#: cotozalog.php:13 templates/konfig.php:134
+#: cotozalog.php:13 templates/konfig.php:137
 msgid "Dipped in"
 msgstr "Is aanwezig geweest in"
 
@@ -255,24 +266,24 @@ msgstr "Op bezoek geweest"
 msgid "Freshman mole"
 msgstr "Nieuw molshol"
 
-#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:136
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:139
 msgid "Traditional"
 msgstr "Traditioneel"
 
-#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:137
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:140
 msgid "A book/CD/DVD..."
 msgstr "Een boek/CD/DVD..."
 
-#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:138
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:141
 msgid "A human"
 msgstr "Een persoon"
 
-#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:139
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:142
 msgid "A coin"
 msgstr "Een munt"
 
 #: country_stat.php:28 templates.php:30 templates.php:93 templates.php:219
-#: templates.php:282
+#: templates.php:282 templates/krety.html:116
 msgid "Stats by country"
 msgstr "Statistieken per land"
 
@@ -300,16 +311,16 @@ msgstr "Gebruikers die deze GeoKret volgen"
 msgid "days ago"
 msgstr "dagen geleden"
 
-#: days_ago.php:16 ruchy.php:933
+#: days_ago.php:16 ruchy.php:953
 msgid "Yesterday"
 msgstr "Gisteren"
 
-#: days_ago.php:18 ruchy.php:932
+#: days_ago.php:18 ruchy.php:952
 msgid "Today"
 msgstr "Vandaag"
 
 #: download.php:9 krety.html.php:15 templates.php:36 templates.php:99
-#: templates.php:225 templates.php:288
+#: templates.php:225 templates.php:288 templates/krety.html:120
 msgid "Download"
 msgstr "Download"
 
@@ -321,12 +332,12 @@ msgstr "Vertaal bestand"
 msgid "Our translation files are now hosted on crowdin."
 msgstr "Onze vertaalbestanden zijn nu gehost op crowdin."
 
-#: download.php:16 index.php:216
+#: download.php:16
 msgid "Suggest a better translation"
 msgstr "Stel een betere vertaling voor"
 
 #: download.php:19 templates.php:51 templates.php:123 templates.php:240
-#: templates.php:306
+#: templates.php:306 templates/krety.html:134
 msgid "Map of caches"
 msgstr "Kaart met caches"
 
@@ -351,7 +362,7 @@ msgstr "Voorbeeld GeoKret label"
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
 msgstr "Denk eraan, je kunt een label voor je GeoKret automatisch genereren door op de daarvoor bestemde link te klikken op de eigen GK’s pagina."
 
-#: edit.php:12 ruchy.php:635
+#: edit.php:12 ruchy.php:643
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -391,8 +402,8 @@ msgstr "Thuis coördinaten"
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Gebruik de kaart of vul de coördinaten handmatig in."
 
-#: edit.php:330 race_join.php:41 szukaj-ajax.php:99 szukaj.php:86 szukaj.php:94
-#: szukaj.php:117
+#: edit.php:330 race_join.php:41 ruchy.php:888 szukaj-ajax.php:99 szukaj.php:86
+#: szukaj.php:94 szukaj.php:117
 msgid "eg."
 msgstr "bijv."
 
@@ -459,16 +470,16 @@ msgstr "Geokret soort"
 
 #: edit.php:564 register.php:57
 msgid "help.php#geokretytypes"
-msgstr "help/.php#geokretytypes"
+msgstr "help_generate.php?help=fr#geokretysoorten"
 
 #: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
-#: recent_moves.php:94 register.php:61 ruchy.php:556 ruchy.php:821
-#: ruchy.php:960
+#: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:829
+#: ruchy.php:980
 msgid "Comment"
 msgstr "Notitie"
 
 #: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
-#: newscomments.php:253 race_add.php:143 register.php:63 ruchy.php:966
+#: newscomments.php:253 race_add.php:143 register.php:63 ruchy.php:986
 msgid "characters left"
 msgstr "karakters over"
 
@@ -482,11 +493,12 @@ msgstr "fouten"
 
 #: galeria.php:10 geokret_gallery.php:72 index.php:171 templates.php:21
 #: templates.php:84 templates.php:210 templates.php:273
+#: templates/krety.html:112
 msgid "Photo gallery"
 msgstr "Fotogalerij"
 
 #: geokret_gallery.php:35 konkret.php:35 konkret.php:45 konkret.php:62
-#: ruchy.php:249
+#: ruchy.php:258
 msgid "No such GeoKret!"
 msgstr "Deze GeoKret bestaat niet!"
 
@@ -504,7 +516,7 @@ msgid "Photo by"
 msgstr "Foto gemaakt door"
 
 #: geokret_gallery.php:124 recent_moves.php:95 recent_pictures.php:60
-#: ruchy.php:921
+#: ruchy.php:943
 msgid "Date"
 msgstr "Datum"
 
@@ -578,13 +590,14 @@ msgid "Show group"
 msgstr "Groep weergeven"
 
 #: halloffame.php:11 templates.php:60 templates.php:132 templates.php:249
-#: templates.php:315
+#: templates.php:315 templates/krety.html:177
 msgid "Hall of fame"
 msgstr "Hall of fame"
 
 #: help.php:9 help_generate.php:10 krety.html.php:24 templates.php:42
 #: templates.php:48 templates.php:105 templates.php:111 templates.php:231
 #: templates.php:237 templates.php:294 templates.php:300
+#: templates/krety.html:122 templates/krety.html:124
 msgid "Help"
 msgstr "Help"
 
@@ -667,7 +680,7 @@ msgid "Remember the description for the next %d minutes"
 msgstr "Onthoudt de beschrijving voor de komende %d minuten "
 
 #: index.php:37 krety.html.php:6 templates.php:6 templates.php:69
-#: templates.php:195 templates.php:258
+#: templates.php:195 templates.php:258 templates/krety.html:105
 msgid "Home"
 msgstr "Startpagina"
 
@@ -680,7 +693,7 @@ msgid "If you found a GeoKret, enter the tracking code here"
 msgstr "GeoKret gevonden? Vul dan hier de tracking code in"
 
 #: index.php:73 templates.php:12 templates.php:75 templates.php:201
-#: templates.php:264
+#: templates.php:264 templates/krety.html:107
 msgid "no need to register!"
 msgstr "Geen registratieverplichting!"
 
@@ -703,6 +716,7 @@ msgstr "<strong>%d km</strong> afgelegt door alle GeoKrets (dit is %.2f x de afs
 
 #: index.php:112 krety.html.php:18 niusy.php:9 templates.php:39
 #: templates.php:102 templates.php:228 templates.php:291
+#: templates/krety.html:121
 msgid "News"
 msgstr "Nieuws"
 
@@ -726,7 +740,15 @@ msgstr "Recentelijk geregistreerde GeoKrets"
 msgid "Online users"
 msgstr "Online gebruikers"
 
-#: index.php:216
+#: index.php:218
+msgid "Join our translation team"
+msgstr "Versterk onze vertaalteam"
+
+#: index.php:218
+msgid "Suggest a better translation - inline"
+msgstr "Stel online een betere vertaling voor"
+
+#: index.php:218
 msgid "visits/day"
 msgstr "bezoekers/dag"
 
@@ -800,7 +822,8 @@ msgstr "Laat een notitie achter"
 #: statystyczka-lata.php:11 statystyczka.php:11 statystyczka2.php:11
 #: statystyczka3.php:11 templates.php:24 templates.php:27 templates.php:87
 #: templates.php:90 templates.php:213 templates.php:216 templates.php:276
-#: templates.php:279 user_stat.php:196
+#: templates.php:279 user_stat.php:196 templates/krety.html:113
+#: templates/krety.html:115
 msgid "Statistics"
 msgstr "Statistieken"
 
@@ -920,32 +943,33 @@ msgstr "Contact"
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "Als je een suggestie hebt of als je hebt een foutje hebt gevonden kun je ons schrijven"
 
-#: krety.html.php:9 ruchy.php:633
+#: krety.html.php:9 ruchy.php:641
 msgid "Operations on GeoKrety"
 msgstr "Werk in uitvoering op GeoKrety"
 
 #: krety.html.php:12 szukaj.php:9 templates.php:15 templates.php:78
-#: templates.php:204 templates.php:267
+#: templates.php:204 templates.php:267 templates/krety.html:111
 msgid "Search"
 msgstr "Zoeken"
 
 #: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
-#: templates.php:297
+#: templates.php:297 templates/krety.html:124
 msgid "help.php"
 msgstr "help.php"
 
 #: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
-#: templates.php:309
+#: templates.php:309 templates/krety.html:176
 msgid "help.php#about"
 msgstr "help.php#over"
 
 #: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
-#: templates.php:312
+#: templates.php:312 templates/krety.html:176
 msgid "About"
 msgstr "Over"
 
 #: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
 #: templates.php:252 templates.php:318 templates.php:324
+#: templates/krety-m.html:46 templates/krety.html:198
 msgid "contact"
 msgstr "contact"
 
@@ -978,7 +1002,7 @@ msgstr "Let op: niet alle vertalingen zijn beschikbaar. In sommige talen werken 
 msgid "Edit this GeoKret"
 msgstr "Bewerk deze GeoKret"
 
-#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:646
+#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:654
 msgid "Name"
 msgstr "Naam"
 
@@ -1024,7 +1048,7 @@ msgid "Wrong secid identifier"
 msgstr "Verkeerde Secid"
 
 #: lost.php:9 templates.php:33 templates.php:96 templates.php:222
-#: templates.php:285
+#: templates.php:285 templates/krety.html:117
 msgid "Probably lost geokrets"
 msgstr "Waarschijnlijk verdwenen GeoKrets"
 
@@ -1034,7 +1058,7 @@ msgstr "<p>Dit is een lijst van GeoKrets, waarvan de laatste log een “drop” 
 
 #: lost.php:13
 msgid "The map of lost geokrets to organize the rescue mission"
-msgstr "De kaart van verloren GeoKrets, zet een reddings missie op!"
+msgstr "De kaart van verloren GeoKrets, organiseer een reddingsoperatie"
 
 #: lost.php:14
 msgid "The list is generated daily."
@@ -1145,11 +1169,13 @@ msgstr "Genereer nieuwe Secid"
 
 #: mypage.php:106 mypage.php:370 templates.php:162
 #: templates/plugins/function.login_check.php:48
+#: templates/krety_logged_in.html:8
 msgid "My recent logs"
 msgstr "Mijn recente logs"
 
 #: mypage.php:116 mypage.php:371 templates.php:165
 #: templates/plugins/function.login_check.php:49
+#: templates/krety_logged_in.html:9
 msgid "Recent moves of my geokrets"
 msgstr "Recente verplaatsingen van mijn GeoKret’s"
 
@@ -1178,11 +1204,11 @@ msgstr "Geregistreerd sinds"
 
 #: mypage.php:321
 msgid "Subscribe to RSS channel"
-msgstr "Aanmelden bij het RSS channel"
+msgstr "Aanmelden bij het RSS kanaal"
 
 #: mypage.php:321
 msgid "Be up to date with your and watched GeoKrets!"
-msgstr "Blijf up-to-date met je eigen, en de door jou gevolgde GeoKrets!"
+msgstr "Blijf op de hoogte van je eigen, en de door jou gevolgde GeoKrets!"
 
 #: mypage.php:336 mypage.php:375 user_stat.php:194
 msgid "User stats"
@@ -1198,28 +1224,31 @@ msgstr "Links"
 
 #: mypage.php:367 templates.php:153
 #: templates/plugins/function.login_check.php:45
+#: templates/krety_logged_in.html:5
 msgid "Geokrets in my inventory"
 msgstr "GeoKrets in mijn inventaris"
 
 #: mypage.php:368 templates.php:156
 #: templates/plugins/function.login_check.php:46
+#: templates/krety_logged_in.html:6
 msgid "My geokrets"
 msgstr "Mijn GeoKrets"
 
-#: mypage.php:369 templates.php:159
+#: mypage.php:369 templates.php:159 templates/krety_logged_in.html:7
 msgid "Watched geokrets"
 msgstr "Gevolgde GeoKrets"
 
-#: mypage.php:372 templates.php:168
+#: mypage.php:372 templates.php:168 templates/krety_logged_in.html:10
 msgid "My photos"
 msgstr "Mijn foto’s"
 
-#: mypage.php:373 templates.php:171
+#: mypage.php:373 templates.php:171 templates/krety_logged_in.html:11
 msgid "Photos of my geokrets"
 msgstr "Foto’s van mijn GeoKret’s"
 
 #: mypage.php:374 templates.php:174
 #: templates/plugins/function.login_check.php:50
+#: templates/krety_logged_in.html:12
 msgid "Where are my geokrets?"
 msgstr "Waar zijn mijn geokrets?"
 
@@ -1257,11 +1286,11 @@ msgstr "Inschrijven voor nieuwsberichten"
 
 #: newscomments.php:250
 msgid "Write new comment"
-msgstr "Schrijf een bericht"
+msgstr "Schrijf een reactie"
 
 #: newscomments.php:255
 msgid "Post comment"
-msgstr "Verzend bericht"
+msgstr "Reactie verzenden"
 
 #: newscomments.php:267
 msgid "There are no comments for this post."
@@ -1275,7 +1304,7 @@ msgstr "Bekijk berichten"
 msgid "Users watching this GeoKret:"
 msgstr "Gebruikers die deze GeoKret volgen"
 
-#: presscorner.php:10 templates.php:114
+#: presscorner.php:10 templates.php:114 templates/krety.html:127
 msgid "Press corner"
 msgstr "Pershoekje"
 
@@ -1586,6 +1615,7 @@ msgstr "Ga naar de GeoKret’s pagina"
 
 #: register.php:11 templates.php:144
 #: templates/plugins/function.login_check.php:41
+#: templates/krety_logged_in.html:1
 msgid "Register a new GeoKret"
 msgstr "Registreer een nieuwe GeoKret"
 
@@ -1601,226 +1631,229 @@ msgstr "Deze GeoKret heeft nog geen naam!"
 msgid "Born here :)"
 msgstr "Hier geboren :)"
 
-#: ruchy.php:147
+#: ruchy.php:156
 msgid "Cannot edit this log"
 msgstr "Kan dit bericht niet aanpassen"
 
-#: ruchy.php:185
+#: ruchy.php:194
 msgid "Missing or invalid Tracking Code"
 msgstr "De tracking code mist, of is niet juist"
 
-#: ruchy.php:189
+#: ruchy.php:198
 msgid "Missing or invalid Reference Number"
 msgstr "Het referentie nummer mist, of is niet juist"
 
-#: ruchy.php:197
+#: ruchy.php:206
 msgid "Invalid log type"
 msgstr "Verkeerde logsoort"
 
-#: ruchy.php:202
+#: ruchy.php:211
 msgid "No lat/lon OR waypoint name!"
 msgstr "Geen lat/lon of waypoint naam!"
 
-#: ruchy.php:207
+#: ruchy.php:216
 msgid "No username supplied"
 msgstr "Geen gebruikersnaam opgegeven"
 
-#: ruchy.php:210
+#: ruchy.php:219
 msgid "Wrong time (minutes)"
 msgstr "Verkeerde tijd (minuten)"
 
-#: ruchy.php:213
+#: ruchy.php:222
 msgid "Wrong time (hours)"
 msgstr "Verkeerde tijd (uren)"
 
-#: ruchy.php:282
+#: ruchy.php:291
 msgid "Identical log has been submited."
 msgstr ""
 
-#: ruchy.php:294
+#: ruchy.php:303
 msgid "There is an entry with this date. Correct the date or the hour."
 msgstr "Er is al een log met deze datum, corrigeer de datum of de tijd."
 
-#: ruchy.php:300
+#: ruchy.php:309
 msgid "The date is from the past, BEFORE the GeoKret was created."
 msgstr "De datum ligt te ver in het verleden, van VOOR de tijd dat de GeoKret was aangemaakt."
 
-#: ruchy.php:302
+#: ruchy.php:311
 msgid "The date is from the future (if you are an inventor of a time travelling machine, contact with us, please)"
 msgstr "De datum is in de toekomst. (als je een uitvinder bent van een tijdreis machine, neem a.u.b. contact met ons op) "
 
-#: ruchy.php:330
+#: ruchy.php:339
 msgid "You can not archive not your own GeoKret"
 msgstr "Je kunt alleen eigen GeoKrets archiveren"
 
-#: ruchy.php:543
+#: ruchy.php:552
 msgid "Add a comment"
 msgstr "Plaats een bericht"
 
-#: ruchy.php:555 ruchy.php:820
+#: ruchy.php:564 ruchy.php:828
 msgid "When you want to write a comment :)"
 msgstr "Wanneer je een notitie wilt schrijven :)"
 
-#: ruchy.php:585
+#: ruchy.php:594
 msgid "Archive a GeoKret"
 msgstr "Archiveer een GeoKret"
 
-#: ruchy.php:595
+#: ruchy.php:604
 msgid "When a GeoKret has been missing for a long time"
 msgstr ""
 
-#: ruchy.php:596
+#: ruchy.php:605
 msgid "Archive"
 msgstr "Archiveer"
 
-#: ruchy.php:621
+#: ruchy.php:630
 msgid "Tracking Code"
-msgstr ""
+msgstr "Tracking Code"
 
-#: ruchy.php:625
+#: ruchy.php:633
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
 msgstr "6 tekens van de GeoKret label, bv. XF3ACS. <u>gebruik hier niet de code die begint met 'GK'</u>."
 
-#: ruchy.php:639
+#: ruchy.php:647
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
 msgstr ""
 
-#: ruchy.php:647
+#: ruchy.php:655
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "Dit zal waarschijnlijk jouw:<br />- geocaching/opencaching gebruikersnaam<br />- nickname<br />- naam, etc. zijn."
 
-#: ruchy.php:665
+#: ruchy.php:673
 msgid "Logged at my home coordinates"
 msgstr "Gelogd op mijn thuiscoördinaten"
 
-#: ruchy.php:665
+#: ruchy.php:673
 msgid "Log GeoKret at my home coordinates"
 msgstr "Log GeoKret op mijn thuiscoördinaten"
 
-#: ruchy.php:676
+#: ruchy.php:684
 msgid "Choose log type"
 msgstr "Kies log soort"
 
-#: ruchy.php:787
+#: ruchy.php:795
 msgid "Log type"
 msgstr "Logsoort"
 
-#: ruchy.php:787
+#: ruchy.php:795
 msgid "help.php#Chooselogtype"
 msgstr ""
 
-#: ruchy.php:792
+#: ruchy.php:800
 msgid "When you've left a GeoKret in a cache"
 msgstr "Wanneer je een GeoKret hebt achtergelaten in een cache"
 
-#: ruchy.php:793
+#: ruchy.php:801
 msgid "I've dropped GeoKret"
 msgstr "Ik heb een GeoKret achtergelaten"
 
-#: ruchy.php:799
+#: ruchy.php:807
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr "Wanneer je een GeoKret uit een cache heb genomen en niet <i>direct</i> in een andere cache achterlaat"
 
-#: ruchy.php:800
+#: ruchy.php:808
 msgid "I've grabbed GeoKret"
 msgstr "Ik heb een GeoKret meegenomen"
 
-#: ruchy.php:806
+#: ruchy.php:814
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr "Wanneer je een GeoKret gezien hebt maar niet meegenomen hebt"
 
-#: ruchy.php:807
+#: ruchy.php:815
 msgid "I've met GeoKret"
 msgstr "Ik heb een GeoKret ontmoet"
 
-#: ruchy.php:813
+#: ruchy.php:821
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr "Wanneer je een GeoKret meeneemt op een cache tour: Dit is hetzelfde als achterlaten en weer meenemen. De bezochte locatie is wel gelogd maar nog steeds in je inventaris"
 
-#: ruchy.php:814
+#: ruchy.php:822
 msgid "I've dipped a GeoKret"
 msgstr "Ik heb een GeoKret even laten zakken in deze cache, maar weer meegenomen"
 
-#: ruchy.php:831
+#: ruchy.php:839
 msgid "Identify GeoKret"
 msgstr "Identificeer GeoKret"
 
-#: ruchy.php:839
+#: ruchy.php:848
 msgid "New location"
 msgstr "Nieuwe locatie"
 
-#: ruchy.php:840
+#: ruchy.php:849
 msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
 msgstr "<a href=\"help.php#locationdlagc\">Lees meer over het plaatsen van GeoKrets in GC caches</a>"
 
-#: ruchy.php:844
+#: ruchy.php:853
 msgid "Waypoint"
-msgstr ""
+msgstr "Waypoint"
 
-#: ruchy.php:848
+#: ruchy.php:857
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "bijv.: GC1AQ2N, OP069B, OC033A…"
 
-#: ruchy.php:849 ruchy.php:862
+#: ruchy.php:858 ruchy.php:871
 msgid "help.php#fullysupportedwaypoints"
 msgstr " help.php#fullysupportedwaypoints "
 
-#: ruchy.php:852
+#: ruchy.php:861
 msgid "or name of cache"
 msgstr "of cachenaam"
 
-#: ruchy.php:857
+#: ruchy.php:866
 msgid "Check"
 msgstr "Controleer"
 
-#: ruchy.php:861
+#: ruchy.php:870
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr "Vul cachenaam in. Dit werkt alleen bij Opencaching sites."
 
-#: ruchy.php:873
+#: ruchy.php:882
 msgid "Coordinates"
 msgstr "Coördinaten"
 
-#: ruchy.php:877
-#, php-format
-msgid "<a href=\"%s\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
+#: ruchy.php:886
+msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr "<a href=\"help.php#acceptableformats\" target=\"_blank\">Toegestane geografische coördinaat formaten</a>"
 
-#: ruchy.php:889
+#: ruchy.php:898
 msgid "Logged using geolocation"
 msgstr "Gelogd via Geolocator"
 
-#: ruchy.php:889
+#: ruchy.php:898
 msgid "Use geolocation"
 msgstr "Gebruik Geolocator"
 
-#: ruchy.php:899
+#: ruchy.php:909
 msgid "Captcha verification"
 msgstr "Captcha bevestiging"
 
-#: ruchy.php:911
+#: ruchy.php:933
 msgid "Additional data"
 msgstr "Aanvullende gegevens"
 
-#: ruchy.php:934
+#: ruchy.php:954
 msgid "Two days ago"
 msgstr "Eergisteren"
 
-#: ruchy.php:940
+#: ruchy.php:960
 msgid "Time"
 msgstr "Tijd"
 
-#: ruchy.php:953
+#: ruchy.php:973
 msgid "now"
 msgstr "nu"
 
-#: ruchy.php:954
+#: ruchy.php:974
 msgid "Enter exact time when You think it may be important"
 msgstr "Vul de exacte tijd in, als je denkt dat dit belangrijk is"
 
-#: ruchy.php:966
+#: ruchy.php:986
 msgid "Optional"
 msgstr "Optioneel"
+
+#: ruchy.php:994
+msgid "Go!"
+msgstr "Ga!"
 
 #: statystyczka.php:46
 msgid "Top ten total distance: traditional and books"
@@ -1889,31 +1922,33 @@ msgid "Operations on this GeoKret"
 msgstr "Werk in uitvoering aan deze GeoKret"
 
 #: templates.php:9 templates.php:72 templates.php:198 templates.php:261
+#: templates/krety.html:106
 msgid "Log a GeoKret"
 msgstr "Log een GeoKret"
 
 #: templates.php:66 templates.php:138 templates.php:183 templates.php:255
-#: templates.php:321 templates.php:327
+#: templates.php:321 templates.php:327 templates/krety-m.html:46
+#: templates/krety.html:198
 msgid "Report abuse"
 msgstr "Rapporteer misbruik"
 
-#: templates.php:120 templates.php:303
+#: templates.php:120 templates.php:303 templates/krety.html:132
 msgid "Side products"
 msgstr "Extra producten"
 
-#: templates.php:147
+#: templates.php:147 templates/krety_logged_in.html:2
 msgid "My account"
 msgstr "Mijn account"
 
-#: templates.php:150
+#: templates.php:150 templates/krety_logged_in.html:4
 msgid "Account details"
 msgstr "Account gegevens"
 
-#: templates.php:177
+#: templates.php:177 templates/krety_logged_in.html:15
 msgid "Logout"
 msgstr "Uitloggen"
 
-#: templates/konfig.php:140
+#: templates/konfig.php:143
 msgid "KretyPost"
 msgstr "KretyPost"
 
@@ -2008,4 +2043,64 @@ msgstr "Er is een account gemaakt op GeoKrety.org met dit e-mailadres. Om te act
 #: verify_mail.php:121
 msgid "[GeoKrety] Activate your account"
 msgstr "[GeoKrety] account activeren "
+
+#: templates/krety.html:59
+msgid "Exit translation mode"
+msgstr ""
+
+#: templates/krety.html:72
+msgid "Saint Nicholas Day"
+msgstr ""
+
+#: templates/krety.html:74
+msgid "Merry Christmas!"
+msgstr ""
+
+#: templates/krety.html:76
+msgid "Happy New Year!!!"
+msgstr ""
+
+#: templates/krety.html:78
+msgid "Valentine's Day"
+msgstr ""
+
+#: templates/krety.html:80
+msgid "First April!!!"
+msgstr ""
+
+#: templates/krety.html:82
+msgid "Hallowen"
+msgstr ""
+
+#: templates/krety.html:85
+msgid "Easter!"
+msgstr ""
+
+#: templates/krety.html:88
+msgid "Spring!"
+msgstr ""
+
+#: templates/krety.html:90
+msgid "GeoKrety 10 years Birthday!!!"
+msgstr ""
+
+#: templates/krety.html:92
+msgid "GeoKrety Birthday!!!"
+msgstr ""
+
+#: templates/krety.html:96
+msgid "The Grand Finale - Great Orchestra of Christmas Charity."
+msgstr ""
+
+#: templates/krety.html:98
+msgid "Normal day"
+msgstr ""
+
+#: templates/krety.html:178
+msgid "Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode."
+msgstr "Help met het vertalen van GeoKrety.org in jouw taal. Selecteer een taal met de vlaggen om het vertalen te verlaten."
+
+#: templates/krety.html:178
+msgid "Fix translation"
+msgstr "Online vertalen"
 
