@@ -202,6 +202,12 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
   </div>
   </form>';
 
+    $TRESC .= "<script type=\"text/javascript\">
+    $(function () {
+      $('#text_field[maxlength]').maxlength({threshold: 100});
+    })
+    </script>\n";
+
     // $TRESC = "";
 
     echo $TRESC;
