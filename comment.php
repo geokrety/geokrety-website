@@ -127,7 +127,7 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
         $separator_color = '#ff7777';
     } else { //jezeli zwykly komentarz
         //najpierw pobieramy nazwe kreta itp sprawdzajac tez czy pasuja dane ruch_id i gk_id
-        $sql = "SELECT gk.nazwa, ru.koment, ru.komentarze, us.user, ru.username
+        $sql = "SELECT gk.nazwa, ru.koment, ru.komentarze, us.user, ru.username, ru.data_dodania
 		FROM `gk-ruchy` ru
 		LEFT JOIN `gk-geokrety` gk ON ( ru.id = gk.id )
 		LEFT JOIN `gk-users` us ON ( ru.user = us.userid )
@@ -143,7 +143,7 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
             exit;
         }
 
-        list($geokret_name, $ruchy_text, $komentarze, $user, $username) = $row;
+        list($geokret_name, $ruchy_text, $komentarze, $user, $username, $date) = $row;
         $username = $username ?: $user;
 
         $title_text = sprintf(_('Commenting GeoKret: %s'), $geokret_name);
@@ -163,22 +163,22 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
         $TRESC .= '<p>'._('Please provide any information that may help the owner to find out the whereabouts of this GeoKret.').'</p><hr>';
     } else {
         if (!empty($ruchy_text)) {
-            $TRESC .= '<h5>'._('Log:').'</h5><blockquote><p>'.$ruchy_text.'<footer>'.$username.'</footer></p></blockquote><hr>';
+            $TRESC .= '<h5>'._('Log:').'</h5><blockquote><p>'.$ruchy_text.'<footer>'.sprintf(_('By %s, on %s'), $username, $date).'</footer></p></blockquote><hr>';
         }
     }
 
     //jezeli do ruchu jest juz jakis komentarz to go wyswietlimy (zawsze tylko ostatni)
     if (!$missing_report && $komentarze > 0) {
-        $sql = "SELECT co.user_id, co.comment, us.user, co.type
+        $sql = "SELECT co.user_id, co.comment, us.user, co.type, co.data_dodania
 		FROM `gk-ruchy-comments` co
 		LEFT JOIN `gk-users` us ON ( co.user_id = us.userid )
 		WHERE co.kret_id=$g_gkid AND co.ruch_id=$g_ruchid
 		ORDER BY co.comment_id DESC LIMIT 1";
         $row = $db->exec_fetch_row($sql, $num_rows, 1);
         if ($num_rows == 1) {
-            list($last_userid, $last_comment, $last_username, $last_type) = $row;
+            list($last_userid, $last_comment, $last_username, $last_type, $last_date) = $row;
             if (!empty($last_comment)) {
-                $TRESC .= '<h5>'._('Last comment:').'</h5><blockquote class="'.($last_type ? 'bg-danger' : '').'"><p>'.$last_comment.'<footer>'.$last_username.'</footer></p></blockquote><hr>';
+                $TRESC .= '<h5>'._('Last comment:').'</h5><blockquote class="'.($last_type ? 'bg-danger' : '').'"><p>'.$last_comment.'<footer>'.sprintf(_('By %s, on %s'), $last_username, $last_date).'</footer></p></blockquote><hr>';
             }
         }
     }
