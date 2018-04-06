@@ -169,16 +169,16 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
 
     //jezeli do ruchu jest juz jakis komentarz to go wyswietlimy (zawsze tylko ostatni)
     if (!$missing_report && $komentarze > 0) {
-        $sql = "SELECT co.user_id, co.comment, us.user
+        $sql = "SELECT co.user_id, co.comment, us.user, co.type
 		FROM `gk-ruchy-comments` co
 		LEFT JOIN `gk-users` us ON ( co.user_id = us.userid )
 		WHERE co.kret_id=$g_gkid AND co.ruch_id=$g_ruchid
 		ORDER BY co.comment_id DESC LIMIT 1";
         $row = $db->exec_fetch_row($sql, $num_rows, 1);
         if ($num_rows == 1) {
-            list($last_userid, $last_comment, $last_username) = $row;
+            list($last_userid, $last_comment, $last_username, $last_type) = $row;
             if (!empty($last_comment)) {
-                $TRESC .= '<h5>'._('Last comment:').'</h5><blockquote><p>'.$last_comment.'<footer>'.$last_username.'</footer></p></blockquote><hr>';
+                $TRESC .= '<h5>'._('Last comment:').'</h5><blockquote class="'.($last_type ? 'bg-danger' : '').'"><p>'.$last_comment.'<footer>'.$last_username.'</footer></p></blockquote><hr>';
             }
         }
     }
