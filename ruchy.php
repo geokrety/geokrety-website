@@ -917,19 +917,28 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     }
 
     // -------------------- 4 (additional data)
-    $OGON .= '<script>
+    $OGON .= "<script>
     $(function () {
-      $(\'.input-group.date\').datepicker({
-        format: "yyyy-mm-dd",
-        startDate: "2007-10-26",
-        endDate: "'.date('Y-m-d').'",
-        todayBtn: "linked",
+      $('.input-group.date').datepicker({
+        format: \"yyyy-mm-dd\",
+        startDate: \"2007-10-26\",
+        endDate: \"".date('Y-m-d')."\",
+        todayBtn: \"linked\",
         autoclose: true,
         todayHighlight: true
       });
+
+      $('#nr[maxlength]').maxlength({
+        warningClass: \"label label-danger\",
+        limitReachedClass: \"label label-success\",
+      });
+      $('#poledoliczenia').maxlength({
+        alwaysShow: true
+      });
     })
-    </script>'."\n";
+    </script>\n";
     $TRESC .= '
+
 <h3><span class="cyferki" id="step4">'.$step_number++.'.</span>  '._('Additional data').'</h3>
 
   <div class="form-group">
@@ -979,11 +988,11 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
   <div class="form-group">
     <label class="col-sm-2 control-label">'._('Comment').'</label>
     <div class="col-sm-6">
-      <textarea id="poledoliczenia" name="comment" rows="6" onkeyup="zliczaj(5120)" class="form-control" aria-describedby="helpBlockComment">'.
+      <textarea id="poledoliczenia" name="comment" rows="6" maxlength="5120" class="form-control" aria-describedby="helpBlockComment">'.
       strip_tags($edit_koment)
       .'</textarea>
       <span id="helpBlockComment" class="help-block">'.
-        _('Optional').'. <input id="licznik" disabled="disabled" type="text" size="3" name="licznik" /> '._('characters left').'.
+        _('It is always nice to receive a little message ;)').'
       </span>
     </div>
   </div>
