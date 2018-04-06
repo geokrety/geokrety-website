@@ -122,16 +122,16 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
         }
         list($geokret_name, $ruchy_text, $komentarze) = $row;
 
-        $missing_pic = "<img class='textalign10' src='templates/missing10.png' alt='*' width='10' height='10' border='0' />";
-        $title_text = "$missing_pic ".sprintf(_('Reporting GeoKret %s as missing'), $geokret_name)." $missing_pic";
+        $title_text = sprintf(_('Reporting GeoKret %s as missing'), $geokret_name);
         $background = '#ececec';
         $separator_color = '#ff7777';
     } else { //jezeli zwykly komentarz
         //najpierw pobieramy nazwe kreta itp sprawdzajac tez czy pasuja dane ruch_id i gk_id
-        $sql = "SELECT gk.nazwa, ru.koment, ru.komentarze
+        $sql = "SELECT gk.nazwa, ru.koment, ru.komentarze, us.user, ru.username
 		FROM `gk-ruchy` ru
 		LEFT JOIN `gk-geokrety` gk ON ( ru.id = gk.id )
-		WHERE ru.ruch_id='$g_ruchid' AND ru.id='$g_gkid'
+		LEFT JOIN `gk-users` us ON ( ru.user = us.userid )
+		WHERE ru.ruch_id=$g_ruchid AND ru.id=$g_gkid
 		LIMIT 1";
 
         $row = $db->exec_fetch_row($sql, $num_rows, 0, 'Dla tych danych wejsciowych (gk_id i ruch_id) nie mozna dodac komentarza!'.' [#'.__LINE__.']', 7);
@@ -143,51 +143,66 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
             exit;
         }
 
-        list($geokret_name, $ruchy_text, $komentarze) = $row;
+        list($geokret_name, $ruchy_text, $komentarze, $user, $username) = $row;
+        $username = $username ?: $user;
 
         $title_text = sprintf(_('Commenting GeoKret: %s'), $geokret_name);
         $background = '#ececec';
         $separator_color = 'silver';
     }
 
-    $TRESC = "<div style='background:$background; width:600px; padding:20px 20px;'>
-	<div style='padding-bottom:0.5em'><strong>$title_text</strong></div>";
+    $TRESC = '
+  <div class="modal-header'.($missing_report ? ' alert-danger' : '').'">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="infoModalLabel">'.$title_text.'</h4>
+  </div>
+  <form name="comment" action="'.$_SERVER['PHP_SELF'].'" method="post" >
+    <div class="modal-body">';
 
     if ($missing_report) {
-        $TRESC .= "<div style='padding-top:0.5em;' class='xs'>"._('Please provide any information that may help the owner to find out the whereabouts of this GeoKret.').'</div>';
+        $TRESC .= '<p>'._('Please provide any information that may help the owner to find out the whereabouts of this GeoKret.').'</p><hr>';
     } else {
         if (!empty($ruchy_text)) {
-            $TRESC .= "<div style='padding-top:0.5em;' class='xs'>Log: <i>\"$ruchy_text\"</i></div>";
+            $TRESC .= '<h5>'._('Log:').'</h5><blockquote><p>'.$ruchy_text.'<footer>'.$username.'</footer></p></blockquote><hr>';
         }
     }
 
     //jezeli do ruchu jest juz jakis komentarz to go wyswietlimy (zawsze tylko ostatni)
     if (!$missing_report && $komentarze > 0) {
-        $sql = "SELECT co.user_id, co.comment
+        $sql = "SELECT co.user_id, co.comment, us.user
 		FROM `gk-ruchy-comments` co
-		WHERE co.kret_id='$g_gkid' AND co.ruch_id='$g_ruchid'
+		LEFT JOIN `gk-users` us ON ( co.user_id = us.userid )
+		WHERE co.kret_id=$g_gkid AND co.ruch_id=$g_ruchid
 		ORDER BY co.comment_id DESC LIMIT 1";
         $row = $db->exec_fetch_row($sql, $num_rows, 1);
         if ($num_rows == 1) {
-            list($last_userid, $last_comment) = $row;
+            list($last_userid, $last_comment, $last_username) = $row;
             if (!empty($last_comment)) {
-                $TRESC .= "<div style='padding-top:0.5em;' class='xs'>Last comment: <i>\"$last_comment\"</i></div>";
+                $TRESC .= '<h5>'._('Last comment:').'</h5><blockquote><p>'.$last_comment.'<footer>'.$last_username.'</footer></p></blockquote><hr>';
             }
         }
     }
-
-    $opis_pola = _('Your comment').':';
 
     if ($missing_report) {
         $missing_hidden_input = "<input type='hidden' name='type' value='missing' />";
     }
 
-    $TRESC .= "<br/><div style='border-top:2px solid $separator_color; padding-top:1em;'>$opis_pola<form name='comment' action='".$_SERVER['PHP_SELF']."' method='post' >
-	<input type='text' name='comment' id='text_field' style='width:520px' />
-	<input type='hidden' name='gk_id' value='$g_gkid' /><input type='hidden' name='ruch_id' value='$g_ruchid' />$missing_hidden_input
-	<input type='submit' name='submit' value='Submit' />
-	</div>
-</div>";
+    $TRESC .= '
+    <div class="form-group">
+      <label class="control-label">'._('Your comment').'</label>
+      <input type="text" class="form-control" name="comment" id="text_field" maxlength="500" autofocus>
+    </div>
+    <input type="hidden" name="gk_id" value="'.$g_gkid.'">
+    <input type="hidden" name="ruch_id" value="'.$g_ruchid.'">
+    '.$missing_hidden_input.'
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">'._('Send message').'</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+  </form>';
+
+    // $TRESC = "";
 
     echo $TRESC;
     exit;

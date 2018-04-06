@@ -179,7 +179,7 @@ if ($result) {
         //jezeli kret siedzi w skrzynce to dodaj opcje zgloszenia zaginiecia
         $missing_pic = "<img class='textalign10' src='".CONFIG_CDN_ICONS."/missing10.png' alt='!!' width='10' height='10' border='0' />";
         if ($userid_longin != null and $i == 0 and ($logtype == '0' or $logtype == '3') and $krettyp != '2') {
-            $missing = "<span class='xs' style='padding-left:1em;white-space:nowrap;'>$missing_pic <a class='cb' href='comment.php?gkid=$id&amp;ruchid=$ruch_id&amp;type=missing'>"._('Report as missing')."</a> $missing_pic</span>";
+            $missing = "<span class='xs' style='padding-left:1em;white-space:nowrap;'>".$missing_pic.' <a  data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'" data-type="missing">'._('Report as missing')."</a> $missing_pic</span>";
         }
         // -----------------------------------------------------------------------------------------------------------
 
@@ -224,7 +224,7 @@ if ($result) {
         // jeśli owner albo wlaściciel ruchu
 
         if ($userid_longin > 0) {
-            $new_comment_link = '<a class="cb" href="comment.php?gkid='.$id.'&amp;ruchid='.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/comment_new16.png" alt="[Add_comment]" title="'._('Write comment').'" width="16" height="16" border="0" /></a>';
+            $new_comment_link = '<a data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'" href="#"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/comment_new16.png" alt="[Add_comment]" title="'._('Write comment').'" width="16" height="16" border="0" /></a>';
         } else {
             $new_comment_link = '';
         }

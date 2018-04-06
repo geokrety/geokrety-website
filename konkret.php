@@ -245,7 +245,8 @@ if ($userRated == 0 and $currentUserKnowsTC == 1 and $ownerIsLogged != 1) {
         $ratingSha = sha1(date('ynj').$userid_longin.$config['jrating_token']);   // for proofing voting userid
 // ------------------------- rating end ------------------ //
 
-$TRESC = '<div itemscope itemtype="http://schema.org/Sculpture">
+$TRESC = '
+<div itemscope itemtype="http://schema.org/Sculpture">
 <table width="100%">
 <tr><td class="heading1" colspan="2"><img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$krettyp.'/icon_25.jpg" alt="Info:" width="25" height="25" /> GeoKret <strong>'.$nazwa.'</strong> ('.$cotozakret[$krettyp].') '.
 (($userid > 0) ? ('by <a href="mypage.php?userid='.$userid.'">'.$user.'</a>'.' '.$wyslij_wiadomosc) : ' - unclaimed').
@@ -354,7 +355,17 @@ $(document).ready(function(){
          ;
       }
    });
-});
+'."
+   $('#infoModal').on('show.bs.modal', function (event) {
+     var button = $(event.relatedTarget) // Button that triggered the modal
+     var gkid = button.data('gkid') // Extract gkid from data-* attributes
+     var ruchid = button.data('ruchid') // Extract ruchid from data-* attributes
+     var typeName = button.data('type') // Extract action from data-* attributes
+
+     var modal = $(this)
+     modal.find('.modal-content').load( 'comment.php?gkid='+gkid+'&ruchid='+ruchid+'&type='+typeName );
+   })
+});".'
 </script>
 <link rel="stylesheet" type="text/css" href="/templates/rating/jquery/jRating.jquery.css?ver=1.2" media="screen" />
 <link rel="stylesheet" type="text/css" href="'.$config['colorbox.css'].'?ver=1.2" media="screen"/>

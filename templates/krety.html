@@ -58,6 +58,25 @@
 </style>
   <a id="jipt-close-btn" href="/lang.php?lang=en_US.UTF-8" title="{/literal}{t}Exit translation mode{/t}{literal}">×</a>
 {/literal}{/if}
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="infoModalLabel">Info Title</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 {assign var="specialmsg" value="/home/geokrety/wiadomosc_specjalna.tpl"}
 { if file_exists($specialmsg) }
 <div id="banner" style="position: absolute; top: 0; right: 0;background-color: green;width: 60%;">
@@ -201,6 +220,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js" integrity="sha256-DELCOgoVsZqjT78lDC7zcX+YFp+PEjh1k23mBMoDBwo=" crossorigin="anonymous"></script>
 {$ogon}
 {literal}
+<script type="text/javascript">
+$(document).ready(function(){
+  // https://stackoverflow.com/a/23921617/944936
+  // Every time a modal is shown, if it has an autofocus element, focus on it.
+  $('.modal').on('shown.bs.modal', function() {
+    $(this).find('[autofocus]').focus();
+  });
+});
+</script>
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
