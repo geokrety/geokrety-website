@@ -103,7 +103,7 @@ if ($_REQUEST['skad'] == 'ajax') {
             $result = mysqli_query($link, $sql);
             while ($row = mysqli_fetch_array($result)) {
                 list($waypoint, $name, $owner, $typ, $kraj, $cache_link, $lat, $lon) = $row;
-                $return['tresc'] .= "<span class='bardzomale'><a href='$cache_link'>$name</a> ($owner)</span><br />";
+                $return['tresc'] .= "<span class='bardzomale'><a href='$cache_link'>$name</a> ($owner) - <a href=\"#\" onclick=\"document.getElementById('wpt').value = '$waypoint'; sprawdzWpt(); return false;\">$waypoint</a></span><br />";
             }
         } elseif ($IleSkrzynek[0] == 0) {
             $return['tresc'] = '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('No cache found');
