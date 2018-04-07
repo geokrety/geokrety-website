@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-07 00:17+0000\n"
+"POT-Creation-Date: 2018-04-07 11:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgid "Language"
 msgstr ""
 
 #: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
-#: templates/krety.html:128 templates/krety.html:198
+#: templates/krety.html:147 templates/krety.html:217
 msgid "Terms of use"
 msgstr ""
 
@@ -183,24 +183,41 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr ""
 
-#: comment.php:126
+#: comment.php:125
 #, php-format
 msgid "Reporting GeoKret %s as missing"
 msgstr ""
 
-#: comment.php:148
+#: comment.php:149
 #, php-format
 msgid "Commenting GeoKret: %s"
 msgstr ""
 
-#: comment.php:157
+#: comment.php:163
 msgid ""
 "Please provide any information that may help the owner to find out the "
 "whereabouts of this GeoKret."
 msgstr ""
 
-#: comment.php:179
+#: comment.php:166
+msgid "Log:"
+msgstr ""
+
+#: comment.php:166 comment.php:181
+#, php-format
+msgid "By %s, on %s"
+msgstr ""
+
+#: comment.php:181
+msgid "Last comment:"
+msgstr ""
+
+#: comment.php:192
 msgid "Your comment"
+msgstr ""
+
+#: comment.php:200 majluj.php:114
+msgid "Send message"
 msgstr ""
 
 #: confirm.php:31
@@ -301,7 +318,7 @@ msgid "A coin"
 msgstr ""
 
 #: country_stat.php:28 templates.php:30 templates.php:93 templates.php:219
-#: templates.php:282 templates/krety.html:116
+#: templates.php:282 templates/krety.html:135
 msgid "Stats by country"
 msgstr ""
 
@@ -329,16 +346,16 @@ msgstr ""
 msgid "days ago"
 msgstr ""
 
-#: days_ago.php:16 ruchy.php:953
+#: days_ago.php:16 ruchy.php:962
 msgid "Yesterday"
 msgstr ""
 
-#: days_ago.php:18 ruchy.php:952
+#: days_ago.php:18 ruchy.php:961
 msgid "Today"
 msgstr ""
 
 #: download.php:9 krety.html.php:15 templates.php:36 templates.php:99
-#: templates.php:225 templates.php:288 templates/krety.html:120
+#: templates.php:225 templates.php:288 templates/krety.html:139
 msgid "Download"
 msgstr ""
 
@@ -355,7 +372,7 @@ msgid "Suggest a better translation"
 msgstr ""
 
 #: download.php:19 templates.php:51 templates.php:123 templates.php:240
-#: templates.php:306 templates/krety.html:134
+#: templates.php:306 templates/krety.html:153
 msgid "Map of caches"
 msgstr ""
 
@@ -510,12 +527,12 @@ msgstr ""
 
 #: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
 #: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:829
-#: ruchy.php:980
+#: ruchy.php:989
 msgid "Comment"
 msgstr ""
 
 #: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
-#: newscomments.php:253 race_add.php:143 register.php:63 ruchy.php:986
+#: newscomments.php:253 race_add.php:143 register.php:63
 msgid "characters left"
 msgstr ""
 
@@ -529,7 +546,7 @@ msgstr ""
 
 #: galeria.php:10 geokret_gallery.php:72 index.php:171 templates.php:21
 #: templates.php:84 templates.php:210 templates.php:273
-#: templates/krety.html:112
+#: templates/krety.html:131
 msgid "Photo gallery"
 msgstr ""
 
@@ -552,7 +569,7 @@ msgid "Photo by"
 msgstr ""
 
 #: geokret_gallery.php:124 recent_moves.php:95 recent_pictures.php:60
-#: ruchy.php:943
+#: ruchy.php:952
 msgid "Date"
 msgstr ""
 
@@ -630,14 +647,14 @@ msgid "Show group"
 msgstr ""
 
 #: halloffame.php:11 templates.php:60 templates.php:132 templates.php:249
-#: templates.php:315 templates/krety.html:177
+#: templates.php:315 templates/krety.html:196
 msgid "Hall of fame"
 msgstr ""
 
 #: help.php:9 help_generate.php:10 krety.html.php:24 templates.php:42
 #: templates.php:48 templates.php:105 templates.php:111 templates.php:231
 #: templates.php:237 templates.php:294 templates.php:300
-#: templates/krety.html:122 templates/krety.html:124
+#: templates/krety.html:141 templates/krety.html:143
 msgid "Help"
 msgstr ""
 
@@ -720,7 +737,7 @@ msgid "Remember the description for the next %d minutes"
 msgstr ""
 
 #: index.php:37 krety.html.php:6 templates.php:6 templates.php:69
-#: templates.php:195 templates.php:258 templates/krety.html:105
+#: templates.php:195 templates.php:258 templates/krety.html:124
 msgid "Home"
 msgstr ""
 
@@ -736,7 +753,7 @@ msgid "If you found a GeoKret, enter the tracking code here"
 msgstr ""
 
 #: index.php:73 templates.php:12 templates.php:75 templates.php:201
-#: templates.php:264 templates/krety.html:107
+#: templates.php:264 templates/krety.html:126
 msgid "no need to register!"
 msgstr ""
 
@@ -762,7 +779,7 @@ msgstr ""
 
 #: index.php:112 krety.html.php:18 niusy.php:9 templates.php:39
 #: templates.php:102 templates.php:228 templates.php:291
-#: templates/krety.html:121
+#: templates/krety.html:140
 msgid "News"
 msgstr ""
 
@@ -868,8 +885,8 @@ msgstr ""
 #: statystyczka-lata.php:11 statystyczka.php:11 statystyczka2.php:11
 #: statystyczka3.php:11 templates.php:24 templates.php:27 templates.php:87
 #: templates.php:90 templates.php:213 templates.php:216 templates.php:276
-#: templates.php:279 user_stat.php:196 templates/krety.html:113
-#: templates/krety.html:115
+#: templates.php:279 user_stat.php:196 templates/krety.html:132
+#: templates/krety.html:134
 msgid "Statistics"
 msgstr ""
 
@@ -921,63 +938,63 @@ msgstr ""
 msgid "You can't rate this geokret"
 msgstr ""
 
-#: konkret.php:257
+#: konkret.php:258
 msgid "Total distance"
 msgstr ""
 
-#: konkret.php:258
+#: konkret.php:259
 msgid "Places visited"
 msgstr ""
 
-#: konkret.php:259
+#: konkret.php:260
 msgid "Forum links"
 msgstr ""
 
-#: konkret.php:260
+#: konkret.php:261
 msgid "Country track"
 msgstr ""
 
-#: konkret.php:261
+#: konkret.php:262
 msgid "Rating"
 msgstr ""
 
-#: konkret.php:263
+#: konkret.php:264
 msgid "votes"
 msgstr ""
 
-#: konkret.php:263
+#: konkret.php:264
 msgid "average rating"
 msgstr ""
 
-#: konkret.php:267
+#: konkret.php:268
 msgid "Share on"
 msgstr ""
 
-#: konkret.php:278
+#: konkret.php:279
 msgid "Short description"
 msgstr ""
 
-#: konkret.php:309
+#: konkret.php:310
 msgid "start"
 msgstr ""
 
-#: konkret.php:310
+#: konkret.php:311
 msgid "trip points"
 msgstr ""
 
-#: konkret.php:311
+#: konkret.php:312
 msgid "recently seen"
 msgstr ""
 
-#: konkret.php:320
+#: konkret.php:321
 msgid "The google map is not avaliable due to large numer of points."
 msgstr ""
 
-#: konkret.php:322
+#: konkret.php:323
 msgid "This geokret has not started yet"
 msgstr ""
 
-#: konkret.php:327
+#: konkret.php:328
 msgid "Download the track as:"
 msgstr ""
 
@@ -994,28 +1011,28 @@ msgid "Operations on GeoKrety"
 msgstr ""
 
 #: krety.html.php:12 szukaj.php:9 templates.php:15 templates.php:78
-#: templates.php:204 templates.php:267 templates/krety.html:111
+#: templates.php:204 templates.php:267 templates/krety.html:130
 msgid "Search"
 msgstr ""
 
 #: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
-#: templates.php:297 templates/krety.html:124
+#: templates.php:297 templates/krety.html:143
 msgid "help.php"
 msgstr ""
 
 #: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
-#: templates.php:309 templates/krety.html:176
+#: templates.php:309 templates/krety.html:195
 msgid "help.php#about"
 msgstr ""
 
 #: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
-#: templates.php:312 templates/krety.html:176
+#: templates.php:312 templates/krety.html:195
 msgid "About"
 msgstr ""
 
 #: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
 #: templates.php:252 templates.php:318 templates.php:324
-#: templates/krety-m.html:46 templates/krety.html:198
+#: templates/krety-m.html:46 templates/krety.html:217
 msgid "contact"
 msgstr ""
 
@@ -1099,7 +1116,7 @@ msgid "Wrong secid identifier"
 msgstr ""
 
 #: lost.php:9 templates.php:33 templates.php:96 templates.php:222
-#: templates.php:285 templates/krety.html:117
+#: templates.php:285 templates/krety.html:136
 msgid "Probably lost geokrets"
 msgstr ""
 
@@ -1183,10 +1200,6 @@ msgstr ""
 
 #: majluj.php:97
 msgid "Message"
-msgstr ""
-
-#: majluj.php:114
-msgid "Send message"
 msgstr ""
 
 #: molehole.php:71
@@ -1370,7 +1383,7 @@ msgstr ""
 msgid "Users watching this GeoKret:"
 msgstr ""
 
-#: presscorner.php:10 templates.php:114 templates/krety.html:127
+#: presscorner.php:10 templates.php:114 templates/krety.html:146
 msgid "Press corner"
 msgstr ""
 
@@ -1915,31 +1928,31 @@ msgstr ""
 msgid "Captcha verification"
 msgstr ""
 
-#: ruchy.php:933
+#: ruchy.php:942
 msgid "Additional data"
 msgstr ""
 
-#: ruchy.php:954
+#: ruchy.php:963
 msgid "Two days ago"
 msgstr ""
 
-#: ruchy.php:960
+#: ruchy.php:969
 msgid "Time"
 msgstr ""
 
-#: ruchy.php:973
+#: ruchy.php:982
 msgid "now"
 msgstr ""
 
-#: ruchy.php:974
+#: ruchy.php:983
 msgid "Enter exact time when You think it may be important"
 msgstr ""
 
-#: ruchy.php:986
-msgid "Optional"
+#: ruchy.php:995
+msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
-#: ruchy.php:994
+#: ruchy.php:1003
 msgid "Go!"
 msgstr ""
 
@@ -2021,17 +2034,17 @@ msgid "Operations on this GeoKret"
 msgstr ""
 
 #: templates.php:9 templates.php:72 templates.php:198 templates.php:261
-#: templates/krety.html:106
+#: templates/krety.html:125
 msgid "Log a GeoKret"
 msgstr ""
 
 #: templates.php:66 templates.php:138 templates.php:183 templates.php:255
 #: templates.php:321 templates.php:327 templates/krety-m.html:46
-#: templates/krety.html:198
+#: templates/krety.html:217
 msgid "Report abuse"
 msgstr ""
 
-#: templates.php:120 templates.php:303 templates/krety.html:132
+#: templates.php:120 templates.php:303 templates/krety.html:151
 msgid "Side products"
 msgstr ""
 
@@ -2184,60 +2197,60 @@ msgstr ""
 msgid "Exit translation mode"
 msgstr ""
 
-#: templates/krety.html:72
+#: templates/krety.html:91
 msgid "Saint Nicholas Day"
 msgstr ""
 
-#: templates/krety.html:74
+#: templates/krety.html:93
 msgid "Merry Christmas!"
 msgstr ""
 
-#: templates/krety.html:76
+#: templates/krety.html:95
 msgid "Happy New Year!!!"
 msgstr ""
 
-#: templates/krety.html:78
+#: templates/krety.html:97
 msgid "Valentine's Day"
 msgstr ""
 
-#: templates/krety.html:80
+#: templates/krety.html:99
 msgid "First April!!!"
 msgstr ""
 
-#: templates/krety.html:82
+#: templates/krety.html:101
 msgid "Hallowen"
 msgstr ""
 
-#: templates/krety.html:85
+#: templates/krety.html:104
 msgid "Easter!"
 msgstr ""
 
-#: templates/krety.html:88
+#: templates/krety.html:107
 msgid "Spring!"
 msgstr ""
 
-#: templates/krety.html:90
+#: templates/krety.html:109
 msgid "GeoKrety 10 years Birthday!!!"
 msgstr ""
 
-#: templates/krety.html:92
+#: templates/krety.html:111
 msgid "GeoKrety Birthday!!!"
 msgstr ""
 
-#: templates/krety.html:96
+#: templates/krety.html:115
 msgid "The Grand Finale - Great Orchestra of Christmas Charity."
 msgstr ""
 
-#: templates/krety.html:98
+#: templates/krety.html:117
 msgid "Normal day"
 msgstr ""
 
-#: templates/krety.html:178
+#: templates/krety.html:197
 msgid ""
 "Help translate GeoKrety.org in your language. Select another language in the "
 "selector to exit translation mode."
 msgstr ""
 
-#: templates/krety.html:178
+#: templates/krety.html:197
 msgid "Fix translation"
 msgstr ""
