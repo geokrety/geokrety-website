@@ -34,7 +34,21 @@ if ($longin_status['plain'] != null) {
         } else {
             $author = "<a href='kontakt.php'>$who</a>";
         }
-        $TRESC .= "<div class='alignleft50'><span class='news_title'>$tytul</span></div><div class='alignright50 xs'><a href='newscomments.php?newsid=$newsid' $styl>$txt_view_comments ($komentarze)</a> - <i>$date ($author)</i></div><div class='news_body'>$tresc</div>";
+        $TRESC .= '<div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="panel-title pull-left">
+              <h3 class="panel-title">'.$tytul.'</h3>
+            </div>
+            <div class="panel-title pull-right">
+              <a href="newscomments.php?newsid='.$newsid.'" '.$styl.'>'.$txt_view_comments.' <span class="badge">'.$komentarze.'</span></a>
+              <i>
+                '.$date.' ('.$author.')
+              </i>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="panel-body">'.$tresc.'</div>
+        </div>';
     }
 } else {
     $sql = 'SELECT n.news_id, DATE(n.date), n.tresc, n.tytul, n.who, n.userid, n.komentarze
@@ -45,7 +59,21 @@ if ($longin_status['plain'] != null) {
 
     while ($row = mysqli_fetch_array($result)) {
         list($newsid, $date, $tresc, $tytul, $who, $userid, $komentarze) = $row;
-        $TRESC .= "<div class='alignleft50'><span class='news_title'>$tytul</span></div><div class='alignright50 xs'><a href='newscomments.php?newsid=$newsid'>$txt_view_comments ($komentarze)</a> - <i>$date (<a href='mypage.php?userid=$userid'>$who</a>)</i></div><div class='news_body'>$tresc</div>";
+        $TRESC .= '<div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="panel-title pull-left">
+              <h3 class="panel-title">'.$tytul.'</h3>
+            </div>
+            <div class="panel-title pull-right">
+              <a href="newscomments.php?newsid='.$newsid.'">'.$txt_view_comments.' <span class="badge">'.$komentarze.'</span></a>
+              <i>
+                '.$date.' (<a href="mypage.php?userid='.$userid.'">'.$who.'</a>)
+              </i>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="panel-body">'.$tresc.'</div>
+        </div>';
     }
 }
 

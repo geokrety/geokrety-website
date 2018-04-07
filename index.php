@@ -65,33 +65,70 @@ $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_LIBRARIES.'/lytebox/l
 $HEAD .= '<link rel="stylesheet" href="'.CONFIG_CDN_LIBRARIES.'/lytebox/lytebox.css" type="text/css" media="screen" />';
 $HEAD .= '<style type="text/css">.temptip TD{font-size: 8pt; padding:0px 2px 0px 2px; background: lightyellow;}</style>';
 
-$TRESC .= '
-<table width="100%" style="border-collapse: inherit;"><tr><td style="padding: 10px;">'._('Welcome to GeoKrety.org! This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="help.php#about">read more...</a>').'</td>
-<td style="width: 300px; border: 1px solid silver; background-color: white; padding: 10px; -moz-border-radius: 1em 1em 1em 1em; border-radius: 1em 1em 1em 1em;">
-<span style="font-weight: bold;">'._('If you found a GeoKret, enter the tracking code here').':</span>
-<form name="formularz" action="ruchy.php" method="get"><input type="text" name="nr" size="6" maxlength="6" /><input type="submit" value=" Go! " /></form><span class="male">
-('._('no need to register!').')</span></td>
-</tr></table>';
-
 // -------------------------------------- statystyki podstawowe ------------------------------- //
 
 $result = mysqli_query($link, "SELECT * FROM `gk-wartosci` WHERE `name` LIKE 'stat_%'");
-
 while ($row = mysqli_fetch_assoc($result)) {
     $statystyka[$row['name']] = $row['value'];
 }
-
 mysqli_free_result($result);
 
-$TRESC .= '<strong>'.$statystyka['stat_geokretow'].'</strong> '._('registered GeoKrets').', <strong>'.$statystyka['stat_geokretow_zakopanych'].'</strong> '._('GeoKrets hidden').' <strong>'.$statystyka['stat_userow'].'</strong> '._('users').
-'<br />'.sprintf(_('<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun).'), $statystyka['stat_droga'], $statystyka['stat_droga_ksiezyc'], $statystyka['stat_droga_obwod'], $statystyka['stat_droga_slonce']);
+$OGON .= "<script>
+$(function () {
+  $('#nr[maxlength]').maxlength({
+    warningClass: \"label label-danger\",
+    limitReachedClass: \"label label-success\",
+  });
+})
+</script>\n";
 
-$TRESC .= '<div align="right">
-<a href="https://sharetodiaspora.github.io/?title=Geokrety&amp;url='.$config['adres'].'" target="_blank" title="Share with Diaspora*"><img src="'.CONFIG_CDN_IMAGES.'/icons/diaspora.png" style="border: 0px solid;" alt="diaspora" /></a>
-<a href="https://plus.google.com/share?url='.$config['adres'].'" target="_blank" title="Share on Google+"><img src="'.CONFIG_CDN_IMAGES.'/icons/gplus-16.png" alt="Share on Google+"/></a>
-<a href="https://pinterest.com/pin/create/button/?url='.$config['adres'].'&amp;description=Geokrety" target="_blank" title="Share on Pinterest"><img src="'.CONFIG_CDN_IMAGES.'/icons/pinterest16.png" alt="Share on Pinterest"/></a>
-<a href="https://www.facebook.com/sharer/sharer.php?u='.$config['adres'].'&amp;title=Geokrety" target="_blank" title="Share with Facebook - not sure if this works"><img src="'.CONFIG_CDN_IMAGES.'/icons/facebook16.png" style="border: 0px solid;" alt="fb" /></a>
-</div>';
+$TRESC .= '
+<h2>'._('Welcome to GeoKrety.org!').'</h2>
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        '._('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="help.php#about">read more...</a>').'
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <strong>'.$statystyka['stat_geokretow'].'</strong>'.
+        _('registered GeoKrets').', <strong>'.$statystyka['stat_geokretow_zakopanych'].'</strong> '._('GeoKrets hidden').' <strong>'.$statystyka['stat_userow'].'</strong> '._('users').
+        '<br />'.sprintf(_('<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun).'), $statystyka['stat_droga'], $statystyka['stat_droga_ksiezyc'], $statystyka['stat_droga_obwod'], $statystyka['stat_droga_slonce']).'
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <strong>'._('If you found a GeoKret, enter the tracking code here:').'</strong>
+        <form name="formularz" action="ruchy.php" method="get">
+          <input type="text" name="nr" id="nr" size="6" maxlength="6">
+          <input type="submit" value="'._('Go!').'">
+        </form>
+        <span class="male">('._('no need to register!').')</span>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a href="https://sharetodiaspora.github.io/?title=Geokrety&amp;url='.$config['adres'].'" target="_blank" title="Share with Diaspora*" class="btn">
+          <img src="'.CONFIG_CDN_IMAGES.'/icons/diaspora.png" style="border: 0px solid;" alt="diaspora" />
+        </a>
+        <a href="https://plus.google.com/share?url='.$config['adres'].'" target="_blank" title="Share on Google+" class="btn">
+          <img src="'.CONFIG_CDN_IMAGES.'/icons/gplus-16.png" alt="Share on Google+"/>
+        </a>
+        <a href="https://pinterest.com/pin/create/button/?url='.$config['adres'].'&amp;description=Geokrety" target="_blank" title="Share on Pinterest" class="btn">
+          <img src="'.CONFIG_CDN_IMAGES.'/icons/pinterest16.png" alt="Share on Pinterest"/>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u='.$config['adres'].'&amp;title=Geokrety" target="_blank" title="Share with Facebook - not sure if this works" class="btn">
+          <img src="'.CONFIG_CDN_IMAGES.'/icons/facebook16.png" style="border: 0px solid;" alt="fb" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+';
 
 // ***************
 if ($speedtest_index) {
@@ -116,7 +153,21 @@ $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_array($result)) {
     list($date, $tresc, $tytul, $who, $userid, $komentarze, $newsid) = $row;
-    $TRESC .= "<div class='alignleft50'><span class='news_title'>$tytul</span></div><div class='alignright50 xs'><a href='newscomments.php?newsid=$newsid'>"._('Comments')." ($komentarze)</a> - <i>$date (".($userid == 0 ? "$who" : "<a href='mypage.php?userid=$userid'>$who</a>").")</i></div><div class='news_body'>$tresc</div>";
+    $TRESC .= '<div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title pull-left">
+          <h3 class="panel-title">'.$tytul.'</h3>
+        </div>
+        <div class="panel-title pull-right">
+          <a href="newscomments.php?newsid='.$newsid.'">'._('Comments').' <span class="badge">'.$komentarze.'</span></a>
+          <i>
+            '.$date.' ('.($userid == 0 ? $who : '<a href="mypage.php?userid='.$userid.'">'.$who.'</a>').')
+          </i>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">'.$tresc.'</div>
+    </div>';
 }
 unset($date, $tresc, $tytul, $who, $userid, $row);
 // ***************
