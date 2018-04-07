@@ -57,7 +57,7 @@ if ($_REQUEST['skad'] == 'ajax') {
                     }
 
                     if ($logtype != '') {
-                        $lastlog = "Last log: <img src='".CONFIG_CDN_IMAGES."/log-icons/$typ/2$logtype.png' alt='logtype' title='log' /> $opis";
+                        $lastlog = _('Last log:')." <img src='".CONFIG_CDN_IMAGES."/log-icons/$typ/2$logtype.png' alt='logtype' title='log' /> $opis";
                     } else {
                         $lastlog = '';
                     }
@@ -65,7 +65,7 @@ if ($_REQUEST['skad'] == 'ajax') {
                     if ($ret != '') {
                         $ret .= '<br />';
                     }
-                    $ret .= "<img src='".CONFIG_CDN_IMAGES."/icons/ok.png' alt='OK' width='16' height='16' /> <a href='konkret.php?id=$id'>$nazwa</a> by <a href='mypage.php?userid=$userid'>$username</a>. $lastlog";
+                    $ret .= "<img src='".CONFIG_CDN_IMAGES."/icons/ok.png' alt='OK' width='16' height='16' /> ".sprintf(_('%s by %s.'), "<a href='konkret.php?id=$id'>$nazwa</a>", "<a href='mypage.php?userid=$userid'>$username</a>")." $lastlog";
                 }
             }
             echo $ret;
