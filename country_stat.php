@@ -27,7 +27,7 @@ $OGON = "<script type='text/javascript' src='https://www.google.com/jsapi'></scr
 
 $TYTUL = _('Stats by country');
 
-$TRESC = '<p>Where are geokrety now?</p>
+$TRESC = '<p>'._('Where are geokrety now?').'</p>
 <p><div id="chart_div" style="width: 700px; height: 500px;"></div></p>
 <p><img src="'.CONFIG_CDN_IMAGES.'/wykresy/country.png" width="450" height="350" alt="stat by country" longdesc="stat by country" /></p>
 ';
