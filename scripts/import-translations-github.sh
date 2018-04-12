@@ -21,12 +21,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
 
   git clone --branch=${GIT_BRANCH} https://$GITHUB_API_KEY@github.com/geokrety/geokrety-website.git geokrety-crowdin
 
-  # Get latest strings
-  cd geokrety-crowdin
-  wget ${CROWDIN_CLI_URL} -O crowdin-cli.zip; unzip crowdin-cli.zip; rm crowdin-cli.zip
-  java -jar $CROWDIN_CLI_VERSION/crowdin-cli.jar download --ignore-match
-  rm -fr $CROWDIN_CLI_VERSION
-
   # Build mo files
   for file in $(ls -d rzeczy/lang/*.UTF-8); do
     msgfmt -v ${file}/LC_MESSAGES/messages.po -o ${file}/LC_MESSAGES/messages.mo;
