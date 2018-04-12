@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-07 12:39+0000\n"
+"POT-Creation-Date: 2018-04-12 20:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -548,7 +548,7 @@ msgstr ""
 msgid "errors"
 msgstr ""
 
-#: galeria.php:10 geokret_gallery.php:72 index.php:171 templates.php:21
+#: galeria.php:10 geokret_gallery.php:72 index.php:222 templates.php:21
 #: templates.php:84 templates.php:210 templates.php:273
 #: templates/krety.html:131
 msgid "Photo gallery"
@@ -745,35 +745,30 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: index.php:69
-msgid ""
-"Welcome to GeoKrety.org! This service is similar to TravelBug(TM) or "
-"GeoLutins and aims at tracking things you put to geocache containers... <a "
-"href=\"help.php#about\">read more...</a>"
-msgstr ""
-
-#: index.php:71
-msgid "If you found a GeoKret, enter the tracking code here"
-msgstr ""
-
-#: index.php:73 templates.php:12 templates.php:75 templates.php:201
-#: templates.php:264 templates/krety.html:126
-msgid "no need to register!"
-msgstr ""
-
 #: index.php:86
+msgid "Welcome to GeoKrety.org!"
+msgstr ""
+
+#: index.php:91
+msgid ""
+"This service is similar to TravelBug(TM) or GeoLutins and aims at tracking "
+"things you put to geocache containers... <a href=\"help.php#about\">read "
+"more...</a>"
+msgstr ""
+
+#: index.php:97
 msgid "registered GeoKrets"
 msgstr ""
 
-#: index.php:86
+#: index.php:97
 msgid "GeoKrets hidden"
 msgstr ""
 
-#: index.php:86
+#: index.php:97
 msgid "users"
 msgstr ""
 
-#: index.php:87
+#: index.php:98
 #, php-format
 msgid ""
 "<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the "
@@ -781,41 +776,54 @@ msgid ""
 "distance from the Earth to the Sun)."
 msgstr ""
 
-#: index.php:112 krety.html.php:18 niusy.php:9 templates.php:39
+#: index.php:105
+msgid "If you found a GeoKret, enter the tracking code here:"
+msgstr ""
+
+#: index.php:108 ruchy.php:1003
+msgid "Go!"
+msgstr ""
+
+#: index.php:110 templates.php:12 templates.php:75 templates.php:201
+#: templates.php:264 templates/krety.html:126
+msgid "no need to register!"
+msgstr ""
+
+#: index.php:149 krety.html.php:18 niusy.php:9 templates.php:39
 #: templates.php:102 templates.php:228 templates.php:291
 #: templates/krety.html:140
 msgid "News"
 msgstr ""
 
-#: index.php:119 newscomments.php:49
+#: index.php:162 newscomments.php:49
 msgid "Comments"
 msgstr ""
 
-#: index.php:152
+#: index.php:203
 msgid "Recent logs on the map"
 msgstr ""
 
-#: index.php:169
+#: index.php:220
 msgid "Recently uploaded images"
 msgstr ""
 
-#: index.php:188
+#: index.php:239
 msgid "Recently registered GeoKrets"
 msgstr ""
 
-#: index.php:205
+#: index.php:256
 msgid "Online users"
 msgstr ""
 
-#: index.php:218
+#: index.php:269
 msgid "Join our translation team"
 msgstr ""
 
-#: index.php:218
+#: index.php:269
 msgid "Suggest a better translation - inline"
 msgstr ""
 
-#: index.php:218
+#: index.php:269
 msgid "visits/day"
 msgstr ""
 
@@ -1954,10 +1962,6 @@ msgstr ""
 
 #: ruchy.php:995
 msgid "It is always nice to receive a little message ;)"
-msgstr ""
-
-#: ruchy.php:1003
-msgid "Go!"
 msgstr ""
 
 #: statystyczka.php:46
