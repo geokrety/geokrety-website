@@ -568,7 +568,11 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
         //$BODY = 'onLoad="sprawdzGK();"';
 
-        $tracking_code_description = 'Reference number: <input type="text" name="id" id="id" size="8" maxlength="6" disabled="disabled" value="'.sprintf('GK%05X', $g_id).'" class="form-control">';
+        $tracking_code_description = '
+        <label class="col-sm-2 control-label">'._('Reference number').'</label>
+        <div class="col-sm-6 nr">
+          <input type="text" name="id" id="id" size="8" maxlength="6" disabled="disabled" value="'.sprintf('GK%05X', $g_id).'" class="form-control">
+        </div>';
     }
 
     // zaginiony kret
