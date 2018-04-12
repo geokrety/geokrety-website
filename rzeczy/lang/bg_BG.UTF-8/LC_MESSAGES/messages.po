@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-07 12:39+0000\n"
-"PO-Revision-Date: 2018-04-07 12:48-0400\n"
+"POT-Creation-Date: 2018-04-12 22:10+0000\n"
+"PO-Revision-Date: 2018-04-12 18:10-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
@@ -29,7 +29,7 @@ msgstr "Регистрация на нов потребител"
 msgid "Required fields"
 msgstr "Задължителни полета"
 
-#: adduser.php:59 ruchy.php:658
+#: adduser.php:59 ruchy.php:662
 msgid "Username"
 msgstr "Потребител"
 
@@ -49,7 +49,7 @@ msgstr "Имейл"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Да, аз искам да получава сигнали по електронна поща (изпращат ежедневно в полунощ CET / CESC), когато ми или гледания GeoKret промени местоположението му."
 
-#: adduser.php:81 majluj.php:103 ruchy.php:912
+#: adduser.php:81 majluj.php:103 ruchy.php:916
 msgid "Enter code"
 msgstr "Въведете код"
 
@@ -327,11 +327,11 @@ msgstr "Потребителите гледат този GeoKret"
 msgid "days ago"
 msgstr "дни назад"
 
-#: days_ago.php:16 ruchy.php:962
+#: days_ago.php:16 ruchy.php:966
 msgid "Yesterday"
 msgstr "Вчера"
 
-#: days_ago.php:18 ruchy.php:961
+#: days_ago.php:18 ruchy.php:965
 msgid "Today"
 msgstr "Днес"
 
@@ -378,7 +378,7 @@ msgstr "Примерен geokret етикет"
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
 msgstr "Моля, обърнете внимание, че можете да създадете етикет за вашия GeoKret автоматично, като кликнете върху съответната връзка на страницата на GK."
 
-#: edit.php:12 ruchy.php:643
+#: edit.php:12 ruchy.php:647
 msgid "Edit"
 msgstr "Редактиране"
 
@@ -418,7 +418,7 @@ msgstr "Начало координати"
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Използвайте картата, за да изберете местоположение или въведете координатите ръчно."
 
-#: edit.php:330 race_join.php:41 ruchy.php:888 szukaj-ajax.php:99
+#: edit.php:330 race_join.php:41 ruchy.php:892 szukaj-ajax.php:99
 #: szukaj.php:86 szukaj.php:94 szukaj.php:117
 msgid "eg."
 msgstr "напр."
@@ -489,8 +489,8 @@ msgid "help.php#geokretytypes"
 msgstr ""
 
 #: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
-#: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:829
-#: ruchy.php:989
+#: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:833
+#: ruchy.php:993
 msgid "Comment"
 msgstr "Коментар"
 
@@ -507,7 +507,7 @@ msgstr ""
 msgid "errors"
 msgstr "# Errors"
 
-#: galeria.php:10 geokret_gallery.php:72 index.php:171 templates.php:21
+#: galeria.php:10 geokret_gallery.php:72 index.php:222 templates.php:21
 #: templates.php:84 templates.php:210 templates.php:273
 #: templates/krety.html:131
 msgid "Photo gallery"
@@ -532,7 +532,7 @@ msgid "Photo by"
 msgstr "Снимка:"
 
 #: geokret_gallery.php:124 recent_moves.php:95 recent_pictures.php:60
-#: ruchy.php:952
+#: ruchy.php:956
 msgid "Date"
 msgstr "Дата"
 
@@ -700,71 +700,79 @@ msgstr ""
 msgid "Home"
 msgstr "Дом"
 
-#: index.php:69
-msgid "Welcome to GeoKrety.org! This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
-msgstr "Добре дошли в GeoKrety.org! Тази услуга е подобна на TravelBug (TM) или GeoLutins и има за цел проследяване неща, които поставят geocache контейнери ... <a href=\"help.php#about\"> прочети повече ...</a>"
-
-#: index.php:71
-msgid "If you found a GeoKret, enter the tracking code here"
-msgstr "Ако сте намерили GeoKret, въведете кода за проследяване тук"
-
-#: index.php:73 templates.php:12 templates.php:75 templates.php:201
-#: templates.php:264 templates/krety.html:126
-msgid "no need to register!"
-msgstr "не е необходимо да се регистрирате!"
-
 #: index.php:86
+msgid "Welcome to GeoKrety.org!"
+msgstr ""
+
+#: index.php:91
+msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
+msgstr ""
+
+#: index.php:97
 msgid "registered GeoKrets"
 msgstr "регистрирани GeoKrets"
 
-#: index.php:86
+#: index.php:97
 msgid "GeoKrets hidden"
 msgstr "GeoKrets скрити"
 
-#: index.php:86
+#: index.php:97
 msgid "users"
 msgstr "потребители"
 
-#: index.php:87
+#: index.php:98
 #, php-format
 msgid "<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun)."
 msgstr ""
 
-#: index.php:112 krety.html.php:18 niusy.php:9 templates.php:39
+#: index.php:105
+msgid "If you found a GeoKret, enter the tracking code here:"
+msgstr ""
+
+#: index.php:108 ruchy.php:1007
+msgid "Go!"
+msgstr ""
+
+#: index.php:110 templates.php:12 templates.php:75 templates.php:201
+#: templates.php:264 templates/krety.html:126
+msgid "no need to register!"
+msgstr "не е необходимо да се регистрирате!"
+
+#: index.php:149 krety.html.php:18 niusy.php:9 templates.php:39
 #: templates.php:102 templates.php:228 templates.php:291
 #: templates/krety.html:140
 msgid "News"
 msgstr "Новини"
 
-#: index.php:119 newscomments.php:49
+#: index.php:162 newscomments.php:49
 msgid "Comments"
 msgstr "Коментари"
 
-#: index.php:152
+#: index.php:203
 msgid "Recent logs on the map"
 msgstr ""
 
-#: index.php:169
+#: index.php:220
 msgid "Recently uploaded images"
 msgstr "Наскоро качените изображения"
 
-#: index.php:188
+#: index.php:239
 msgid "Recently registered GeoKrets"
 msgstr "Наскоро регистрирани GeoKrets"
 
-#: index.php:205
+#: index.php:256
 msgid "Online users"
 msgstr "Онлайн потребители"
 
-#: index.php:218
+#: index.php:269
 msgid "Join our translation team"
 msgstr ""
 
-#: index.php:218
+#: index.php:269
 msgid "Suggest a better translation - inline"
 msgstr ""
 
-#: index.php:218
+#: index.php:269
 msgid "visits/day"
 msgstr "посещения на ден"
 
@@ -959,7 +967,7 @@ msgstr "Контакт"
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "Ако имате някакви предложения и доклади за грешки не се колебайте да ни пишете"
 
-#: krety.html.php:9 ruchy.php:641
+#: krety.html.php:9 ruchy.php:645
 msgid "Operations on GeoKrety"
 msgstr "Операциите по GeoKrety"
 
@@ -1018,7 +1026,7 @@ msgstr "Моля, имайте предвид: не всички преводи 
 msgid "Edit this GeoKret"
 msgstr "Редактиране на GeoKret"
 
-#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:654
+#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:658
 msgid "Name"
 msgstr "Име"
 
@@ -1699,172 +1707,172 @@ msgstr "Вие не можете да архивирате не си GeoKret"
 msgid "Add a comment"
 msgstr "Добавяне на коментар"
 
-#: ruchy.php:564 ruchy.php:828
+#: ruchy.php:564 ruchy.php:832
 msgid "When you want to write a comment :)"
 msgstr ""
 
-#: ruchy.php:594
+#: ruchy.php:572
+msgid "Reference number"
+msgstr ""
+
+#: ruchy.php:598
 msgid "Archive a GeoKret"
 msgstr "Архивиране на GeoKret"
 
-#: ruchy.php:604
+#: ruchy.php:608
 msgid "When a GeoKret has been missing for a long time"
 msgstr ""
 
-#: ruchy.php:605
+#: ruchy.php:609
 msgid "Archive"
 msgstr "Архив"
 
-#: ruchy.php:630
+#: ruchy.php:634
 msgid "Tracking Code"
 msgstr ""
 
-#: ruchy.php:633
+#: ruchy.php:637
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
 msgstr ""
 
-#: ruchy.php:647
+#: ruchy.php:651
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
 msgstr ""
 
-#: ruchy.php:655
+#: ruchy.php:659
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "&quot;&quot; Това може да ви бъде: <br /> - Геокешинг / opencaching потребителско име <br /> - Псевдоним <br /> - Име и т.н."
 
-#: ruchy.php:673
+#: ruchy.php:677
 msgid "Logged at my home coordinates"
 msgstr ""
 
-#: ruchy.php:673
+#: ruchy.php:677
 msgid "Log GeoKret at my home coordinates"
 msgstr ""
 
-#: ruchy.php:684
+#: ruchy.php:688
 msgid "Choose log type"
 msgstr "Изберете тип Дневник"
 
-#: ruchy.php:795
+#: ruchy.php:799
 msgid "Log type"
 msgstr ""
 
-#: ruchy.php:795
+#: ruchy.php:799
 msgid "help.php#Chooselogtype"
 msgstr ""
 
-#: ruchy.php:800
+#: ruchy.php:804
 msgid "When you've left a GeoKret in a cache"
 msgstr ""
 
-#: ruchy.php:801
+#: ruchy.php:805
 msgid "I've dropped GeoKret"
 msgstr "Аз бях спаднал GeoKret"
 
-#: ruchy.php:807
+#: ruchy.php:811
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr ""
 
-#: ruchy.php:808
+#: ruchy.php:812
 msgid "I've grabbed GeoKret"
 msgstr "Аз бях сграбчи GeoKret"
 
-#: ruchy.php:814
+#: ruchy.php:818
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr ""
 
-#: ruchy.php:815
+#: ruchy.php:819
 msgid "I've met GeoKret"
 msgstr "Аз сте удовлетворени GeoKret"
 
-#: ruchy.php:821
+#: ruchy.php:825
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr ""
 
-#: ruchy.php:822
+#: ruchy.php:826
 msgid "I've dipped a GeoKret"
 msgstr "Аз бях един къси GeoKret"
 
-#: ruchy.php:839
+#: ruchy.php:843
 msgid "Identify GeoKret"
 msgstr "Идентифицира GeoKret"
 
-#: ruchy.php:848
+#: ruchy.php:852
 msgid "New location"
 msgstr "Ново местоположение"
 
-#: ruchy.php:849
+#: ruchy.php:853
 msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
 msgstr ""
 
-#: ruchy.php:853
+#: ruchy.php:857
 msgid "Waypoint"
 msgstr ""
 
-#: ruchy.php:857
+#: ruchy.php:861
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr ""
 
-#: ruchy.php:858 ruchy.php:871
+#: ruchy.php:862 ruchy.php:875
 msgid "help.php#fullysupportedwaypoints"
 msgstr ""
 
-#: ruchy.php:861
+#: ruchy.php:865
 msgid "or name of cache"
 msgstr ""
 
-#: ruchy.php:866
+#: ruchy.php:870
 msgid "Check"
 msgstr "Проверявам"
 
-#: ruchy.php:870
+#: ruchy.php:874
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr ""
 
-#: ruchy.php:882
+#: ruchy.php:886
 msgid "Coordinates"
 msgstr "Координати:"
 
-#: ruchy.php:886
+#: ruchy.php:890
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr ""
 
-#: ruchy.php:898
+#: ruchy.php:902
 msgid "Logged using geolocation"
 msgstr ""
 
-#: ruchy.php:898
+#: ruchy.php:902
 msgid "Use geolocation"
 msgstr ""
 
-#: ruchy.php:909
+#: ruchy.php:913
 msgid "Captcha verification"
 msgstr "Captcha проверка"
 
-#: ruchy.php:942
+#: ruchy.php:946
 msgid "Additional data"
 msgstr "Допълнителни данни"
 
-#: ruchy.php:963
+#: ruchy.php:967
 msgid "Two days ago"
 msgstr ""
 
-#: ruchy.php:969
+#: ruchy.php:973
 msgid "Time"
 msgstr "Време"
 
-#: ruchy.php:982
+#: ruchy.php:986
 msgid "now"
 msgstr ""
 
-#: ruchy.php:983
+#: ruchy.php:987
 msgid "Enter exact time when You think it may be important"
 msgstr "Въведете точния момент, когато Мислиш ли, че тя може да бъде важен"
 
-#: ruchy.php:995
+#: ruchy.php:999
 msgid "It is always nice to receive a little message ;)"
-msgstr ""
-
-#: ruchy.php:1003
-msgid "Go!"
 msgstr ""
 
 #: statystyczka.php:46
