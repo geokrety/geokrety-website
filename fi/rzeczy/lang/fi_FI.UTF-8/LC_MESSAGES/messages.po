@@ -1,0 +1,2131 @@
+msgid ""
+msgstr ""
+"#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: geokrety\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-12 20:31+0000\n"
+"PO-Revision-Date: 2018-04-12 17:39-0400\n"
+"Last-Translator: geokrety <geokrety@gmail.com>\n"
+"Language-Team: Finnish\n"
+"Language: fi_FI\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  smarty.pot  #-#-#-#-#\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: geokrety\n"
+"X-Crowdin-Language: fi\n"
+"X-Crowdin-File: /master/messages.po\n"
+
+#: adduser.php:8 adduser.php:105 templates.php:186
+#: templates/plugins/function.login_check.php:37
+#: templates/krety_not_logged_in.html:1
+msgid "Register a new user"
+msgstr "Rekisteröi uusi käyttäjä"
+
+#: adduser.php:55
+msgid "Required fields"
+msgstr "Pakolliset kentät"
+
+#: adduser.php:59 ruchy.php:658
+msgid "Username"
+msgstr ""
+
+#: adduser.php:64 api-login2secid.php:64 longin.php:142 mypage.php:43
+msgid "Password"
+msgstr "Salasana"
+
+#: adduser.php:69
+msgid "Verify Password"
+msgstr ""
+
+#: adduser.php:74 edit.php:402 new_password.php:36
+msgid "Email"
+msgstr "Sähköposti"
+
+#: adduser.php:76
+msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
+msgstr "Kyllä, haluan saada sähköposti-ilmoituksia (lähetetään päivittäin keskiyöllä CET / CESC), kun minun tai valvomani GeoKrety muuttaa sijaintiaan."
+
+#: adduser.php:81 majluj.php:103 ruchy.php:912
+msgid "Enter code"
+msgstr ""
+
+#: adduser.php:86 edit.php:489 mypage.php:308
+msgid "Language"
+msgstr "Kieli"
+
+#: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
+#: templates/krety.html:147 templates/krety.html:217
+msgid "Terms of use"
+msgstr ""
+
+#: adduser.php:108
+msgid "Tips"
+msgstr ""
+
+#: adduser.php:111 edit.php:206
+msgid "Read more about choosing good passwords:\n"
+"<ul>\n"
+"<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
+"<li><a href=\"http://www.csoonline.com/article/220721/how-to-write-good-passwords\">How to Write Good Passwords</a></li>\n"
+"<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Password strength</a></li>\n"
+"</ul>"
+msgstr ""
+
+#: adduser.php:127 majluj.php:125 new_password.php:44
+msgid "Wrong antispam phrase!"
+msgstr "Väärä antispam-fraasi!"
+
+#: adduser.php:130 adduser.php:133
+msgid "No password"
+msgstr "Ei salasanaa"
+
+#: adduser.php:136 majluj.php:123
+msgid "No antyspam phase!"
+msgstr "Ei antispam-fraasia!"
+
+#: adduser.php:139
+msgid "Passwords are different or empty!"
+msgstr "Salasanat ovat erilaiset tai tyhjiä!"
+
+#: adduser.php:142
+msgid "Password to short (should be >= 5 characters)!"
+msgstr "Salasana liian lyhyt (on oltava yli 5 merkkiä pitkä)!"
+
+#: adduser.php:165
+#, php-format
+msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
+msgstr ""
+
+#: adduser.php:166 adduser.php:248
+msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr "Sinulle on lähetetty varmistussähköposti. Kun olet vahvistanut tunnuksesi saa täydet oikeudet. Siihen asti et saa yhteenvetoja GeoKretyjesi liikkeistä päivittäisinä yhteenvetoina. Ole hyvä ja kirjaudu sisään ja nauti GeoKrety.org:ista! :)"
+
+#: adduser.php:167 longin.php:9 templates.php:189
+#: templates/plugins/function.login_check.php:37
+#: templates/krety_not_logged_in.html:2
+msgid "Login"
+msgstr "Kirjaudu"
+
+#: adduser.php:167 templates.php:192
+#: templates/plugins/function.login_check.php:37
+#: templates/krety_not_logged_in.html:3
+msgid "Forgot password?"
+msgstr "Unohtuiko salasana?"
+
+#: adduser.php:174
+msgid "The username you entered is already in use."
+msgstr ""
+
+#: adduser.php:181
+msgid "The email you entered is already in use."
+msgstr ""
+
+#: adduser.php:197
+msgid "Wrong email address?"
+msgstr "Virheellinen sähköpostiosoite?"
+
+#: adduser.php:200 majluj.php:127 new_password.php:51
+msgid "Antispam token error! Reload the previous page."
+msgstr "Antispam-virhe! Lataa edellinen sivu uudelleen."
+
+#: adduser.php:247
+msgid "An account created successfully. "
+msgstr "Tilin luominen onnistui."
+
+#: aktywuj_maila.php:41 confirm.php:83
+msgid "Your email address has been updated successfully."
+msgstr ""
+
+#: aktywuj_maila.php:55
+msgid "Bad confirmation code or other error."
+msgstr ""
+
+#: api.php:8
+msgid "GK XML interface"
+msgstr ""
+
+#: check_email_validity.php:12
+#, php-format
+msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
+msgstr ""
+
+#: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:34
+#: newscomments.php:275 please_login.php:11 race_join.php:12 register.php:28
+msgid "Please login."
+msgstr "Kirjaudu sisään."
+
+#: comment.php:21
+msgid "Unknown error."
+msgstr ""
+
+#: comment.php:48
+msgid "Oops! Something went wrong."
+msgstr ""
+
+#: comment.php:125
+#, php-format
+msgid "Reporting GeoKret %s as missing"
+msgstr ""
+
+#: comment.php:149
+#, php-format
+msgid "Commenting GeoKret: %s"
+msgstr ""
+
+#: comment.php:163
+msgid "Please provide any information that may help the owner to find out the whereabouts of this GeoKret."
+msgstr ""
+
+#: comment.php:166
+msgid "Log:"
+msgstr ""
+
+#: comment.php:166 comment.php:181
+#, php-format
+msgid "By %s, on %s"
+msgstr ""
+
+#: comment.php:181
+msgid "Last comment:"
+msgstr ""
+
+#: comment.php:192
+msgid "Your comment"
+msgstr ""
+
+#: comment.php:200 majluj.php:114
+msgid "Send message"
+msgstr ""
+
+#: confirm.php:31
+msgid "It seems that your link has been malformed, possibly by your email software. If clicking on the link directly from within the email does not work, try to copy and paste it into your browser's address field making sure to copy and paste the whole url."
+msgstr ""
+
+#: confirm.php:32 confirm.php:40
+msgid "Bad confirmation code."
+msgstr ""
+
+#: confirm.php:49
+msgid "This confirmation code has expired."
+msgstr ""
+
+#: confirm.php:49
+#, php-format
+msgid "To change your email %sclick here%s."
+msgstr ""
+
+#: confirm.php:66
+msgid "This confirmation code has already been processed."
+msgstr ""
+
+#: cords_parse.php:237
+msgid "Bad coordinates or unknown format."
+msgstr ""
+
+#: cords_parse.php:245
+msgid "Missing or invalid coordinates."
+msgstr ""
+
+#: cotozalog.php:8 templates/konfig.php:132
+msgid "Dropped to"
+msgstr "Pudotettu kätköön"
+
+#: cotozalog.php:9 templates/konfig.php:133
+msgid "Grabbed from"
+msgstr "Haettu kätköstä"
+
+#: cotozalog.php:10 templates/konfig.php:134
+msgid "A comment"
+msgstr "Kommentti"
+
+#: cotozalog.php:11 templates/konfig.php:135
+msgid "Seen in"
+msgstr "Nähty kätkössä"
+
+#: cotozalog.php:12 templates/konfig.php:136
+msgid "Archived"
+msgstr "Arkistoidut"
+
+#: cotozalog.php:13 templates/konfig.php:137
+msgid "Dipped in"
+msgstr ""
+
+#: cotozalog.php:15 cotozalog.php:24
+msgid "Inside a cache"
+msgstr ""
+
+#: cotozalog.php:16 cotozalog.php:25
+msgid "Travelling"
+msgstr ""
+
+#: cotozalog.php:18 cotozalog.php:27
+msgid "Still in a cache"
+msgstr ""
+
+#: cotozalog.php:19 cotozalog.php:28
+msgid "Probably lost"
+msgstr ""
+
+#: cotozalog.php:20 cotozalog.php:29
+msgid "Visiting"
+msgstr ""
+
+#: cotozalog.php:22 cotozalog.php:31
+msgid "Freshman mole"
+msgstr ""
+
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:139
+msgid "Traditional"
+msgstr "Traditionaaliset"
+
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:140
+msgid "A book/CD/DVD..."
+msgstr "Kirja / CD / DVD ..."
+
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:141
+msgid "A human"
+msgstr "Ihminen"
+
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:142
+msgid "A coin"
+msgstr ""
+
+#: country_stat.php:28 templates.php:30 templates.php:93 templates.php:219
+#: templates.php:282 templates/krety.html:135
+msgid "Stats by country"
+msgstr ""
+
+#: country_stat.php:30
+msgid "Where are GeoKrety now?"
+msgstr ""
+
+#: czy_obserwowany.php:45
+msgid "Number of users who are watching this geokret"
+msgstr ""
+
+#: czy_obserwowany.php:49
+msgid "Watch this GeoKret"
+msgstr ""
+
+#: czy_obserwowany.php:53 mygeokrets.php:280
+msgid "Stop watching this GeoKret"
+msgstr ""
+
+#: czy_obserwowany.php:58
+msgid "Users watching it"
+msgstr ""
+
+#: czy_obserwowany.php:60
+msgid "Users watching this GeoKret"
+msgstr ""
+
+#: days_ago.php:14
+msgid "days ago"
+msgstr ""
+
+#: days_ago.php:16 ruchy.php:962
+msgid "Yesterday"
+msgstr ""
+
+#: days_ago.php:18 ruchy.php:961
+msgid "Today"
+msgstr ""
+
+#: download.php:9 krety.html.php:15 templates.php:36 templates.php:99
+#: templates.php:225 templates.php:288 templates/krety.html:139
+msgid "Download"
+msgstr "Lataukset"
+
+#: download.php:12
+msgid "Translation file"
+msgstr "Käännöstiedosto"
+
+#: download.php:15
+msgid "Our translation files are now hosted on crowdin."
+msgstr ""
+
+#: download.php:16
+msgid "Suggest a better translation"
+msgstr "Ehdota parempaa käännöstä"
+
+#: download.php:19 templates.php:51 templates.php:123 templates.php:240
+#: templates.php:306 templates/krety.html:153
+msgid "Map of caches"
+msgstr ""
+
+#: download.php:22 geomapa.php:26
+#, php-format
+msgid "As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href=\"help.php#fullysupportedwaypoints\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
+msgstr ""
+
+#: download.php:25
+msgid "Read more and get the map"
+msgstr ""
+
+#: download.php:28
+msgid "GeoKrety logo"
+msgstr ""
+
+#: download.php:35
+msgid "Sample geokret label"
+msgstr "Esimerkki GeoKrety-lapusta"
+
+#: download.php:36
+msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
+msgstr ""
+
+#: edit.php:12 ruchy.php:643
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: edit.php:58
+msgid "You must be logged in to continue."
+msgstr ""
+
+#: edit.php:199
+msgid "Old password"
+msgstr "Vanha salasana"
+
+#: edit.php:201
+msgid "New password"
+msgstr "Uusi salasana"
+
+#: edit.php:203
+msgid "Retype"
+msgstr ""
+
+#: edit.php:204
+msgid "characters"
+msgstr "merkkiä"
+
+#: edit.php:228
+msgid "Passwords different or empty or too short"
+msgstr "Salasanat erilaisia tai tyhjiä tai liian lyhyitä"
+
+#: edit.php:230
+msgid "Wrong current password"
+msgstr "Väärä nykyinen salasana"
+
+#: edit.php:327 mypage.php:156
+msgid "Home coordinates"
+msgstr "Kotikoordinaatit"
+
+#: edit.php:330
+msgid "Use the map to select a location or enter coordinates manually."
+msgstr ""
+
+#: edit.php:330 race_join.php:41 ruchy.php:888 szukaj-ajax.php:99
+#: szukaj.php:86 szukaj.php:94 szukaj.php:117
+msgid "eg."
+msgstr "esim."
+
+#: edit.php:330
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
+msgstr ""
+
+#: edit.php:341 mypage.php:156
+msgid "Observation area"
+msgstr ""
+
+#: edit.php:343
+msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
+msgstr ""
+
+#: edit.php:362
+msgid "Observation radius is invalid or outside the min/max range"
+msgstr ""
+
+#: edit.php:397
+msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
+msgstr ""
+
+#: edit.php:398
+msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
+msgstr ""
+
+#: edit.php:404
+msgid "Yes, I want to receive email alerts (sent once a day). Email alerts may contain any of the following:"
+msgstr ""
+
+#: edit.php:407
+msgid "GeoKrety.org news"
+msgstr ""
+
+#: edit.php:453 edit.php:456
+msgid "[GeoKrety] Email address change request at geokrety.org"
+msgstr ""
+
+#: edit.php:459
+msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days."
+msgstr ""
+
+#: edit.php:462
+msgid "Error, please try again later..."
+msgstr ""
+
+#: edit.php:469
+msgid "Wrong email or subscribtion option"
+msgstr "Virheellinen sähköpostiosoite tai liittymisvaihtoehto"
+
+#: edit.php:518 mypage.php:45
+msgid "Choose statpic"
+msgstr "Valitse tilastokaavio"
+
+#: edit.php:552 labels.php:55 register.php:45 szukaj.php:100
+msgid "GeoKret name"
+msgstr "GeoKretyn nimi"
+
+#: edit.php:556 register.php:49
+msgid "Geokret type"
+msgstr "GeoKrety-tyyppi"
+
+#: edit.php:564 register.php:57
+msgid "help.php#geokretytypes"
+msgstr ""
+
+#: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
+#: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:829
+#: ruchy.php:989
+msgid "Comment"
+msgstr "Kommentti"
+
+#: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
+#: newscomments.php:253 race_add.php:143 register.php:63
+msgid "characters left"
+msgstr "merkkiä jäljellä"
+
+#: email2gk.php:10
+msgid "Email2GK :: β (beta)"
+msgstr ""
+
+#: errory.php:9
+msgid "errors"
+msgstr ""
+
+#: galeria.php:10 geokret_gallery.php:72 index.php:222 templates.php:21
+#: templates.php:84 templates.php:210 templates.php:273
+#: templates/krety.html:131
+msgid "Photo gallery"
+msgstr "Kuvagalleria"
+
+#: geokret_gallery.php:35 konkret.php:35 konkret.php:45 konkret.php:62
+#: ruchy.php:258
+msgid "No such GeoKret!"
+msgstr "Tällaista GeoKretyä ei ole olemassa!"
+
+#: geokret_gallery.php:85
+msgid "Return to GeoKret's page"
+msgstr ""
+
+#: geokret_gallery.php:93
+msgid "Photo gallery of"
+msgstr ""
+
+#: geokret_gallery.php:121 geokret_gallery.php:131 recent_pictures.php:56
+#: recent_pictures.php:64
+msgid "Photo by"
+msgstr ""
+
+#: geokret_gallery.php:124 recent_moves.php:95 recent_pictures.php:60
+#: ruchy.php:952
+msgid "Date"
+msgstr "Päiväys"
+
+#: geokret_gallery.php:126 lingering.php:202 mygeokrets.php:276
+#: mygeokrets.php:289 recent_moves.php:93
+msgid "Cache"
+msgstr ""
+
+#: geokret_gallery.php:129 recent_pictures.php:62
+msgid "Country"
+msgstr ""
+
+#: geokret_gallery.php:171
+msgid "To set this GeoKret's avatar, select one of the pictures and click the Save button below."
+msgstr ""
+
+#: geokret_gallery.php:173
+msgid "Save new avatar"
+msgstr ""
+
+#: geokret_gallery.php:175
+msgid "Your GeoKret doesn't have any pictures. You can add them by clicking on this icon on the GeoKret's page: "
+msgstr ""
+
+#: geomapa.php:11
+msgid "GeoMap"
+msgstr ""
+
+#: grp_add.php:15
+msgid "Add to group"
+msgstr ""
+
+#: grp_add.php:69
+msgid "Private groups"
+msgstr ""
+
+#: grp_add.php:70
+msgid "Public groups"
+msgstr ""
+
+#: grp_create.php:15
+msgid "Create group"
+msgstr ""
+
+#: grp_create.php:40
+msgid "The group has been created succesfully"
+msgstr ""
+
+#: grp_create.php:41
+msgid "Go back to the geokret page"
+msgstr ""
+
+#: grp_create.php:42
+msgid "Add the geokret to a group"
+msgstr ""
+
+#: grp_create.php:52
+msgid "Group name"
+msgstr ""
+
+#: grp_create.php:58
+msgid "Private"
+msgstr ""
+
+#: grp_create.php:64 imgup.php:391
+msgid "Description"
+msgstr ""
+
+#: grp_show.php:13
+msgid "Show group"
+msgstr ""
+
+#: halloffame.php:11 templates.php:60 templates.php:132 templates.php:249
+#: templates.php:315 templates/krety.html:196
+msgid "Hall of fame"
+msgstr ""
+
+#: help.php:9 help_generate.php:10 krety.html.php:24 templates.php:42
+#: templates.php:48 templates.php:105 templates.php:111 templates.php:231
+#: templates.php:237 templates.php:294 templates.php:300
+#: templates/krety.html:141 templates/krety.html:143
+msgid "Help"
+msgstr "Apua"
+
+#: imgup.php:72
+msgid "Invalid input"
+msgstr ""
+
+#: imgup.php:91
+msgid "Rename image"
+msgstr ""
+
+#: imgup.php:93 imgup.php:95
+msgid "Image upload"
+msgstr "Kuvan tuonti"
+
+#: imgup.php:129 imgup.php:153
+msgid "Rename image of"
+msgstr ""
+
+#: imgup.php:131 imgup.php:155
+msgid "Upload image for"
+msgstr ""
+
+#: imgup.php:194 imgup.php:196
+msgid "Uploaded file too large"
+msgstr ""
+
+#: imgup.php:198
+msgid "Uploaded image format not supported"
+msgstr ""
+
+#: imgup.php:202
+msgid "Other error"
+msgstr ""
+
+#: imgup.php:212
+msgid "Image dimension(s) too large (width and/or height)"
+msgstr ""
+
+#: imgup.php:366
+msgid "Supported image types"
+msgstr "Tuetut kuvatyypit"
+
+#: imgup.php:367
+msgid "Maximum width"
+msgstr "Suurin leveys"
+
+#: imgup.php:368
+msgid "Maximum height"
+msgstr "Enimmäiskorkeus"
+
+#: imgup.php:369
+msgid "Maximum file size"
+msgstr "Tiedoston enimmäiskoko"
+
+#: imgup.php:383
+msgid "Characters left:"
+msgstr ""
+
+#: imgup.php:390
+msgid "File:"
+msgstr ""
+
+#: imgup.php:392
+msgid "Use as avatar"
+msgstr ""
+
+#: imgup.php:392
+#, php-format
+msgid "Geokret's main picture, displayed under this icon: %s"
+msgstr ""
+
+#: imgup.php:393
+msgid "Remember"
+msgstr ""
+
+#: imgup.php:393
+#, php-format
+msgid "Remember the description for the next %d minutes"
+msgstr ""
+
+#: index.php:37 krety.html.php:6 templates.php:6 templates.php:69
+#: templates.php:195 templates.php:258 templates/krety.html:124
+msgid "Home"
+msgstr "Pääsivu"
+
+#: index.php:86
+msgid "Welcome to GeoKrety.org!"
+msgstr ""
+
+#: index.php:91
+msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
+msgstr ""
+
+#: index.php:97
+msgid "registered GeoKrets"
+msgstr "rekisteröidyt GeoKretyt"
+
+#: index.php:97
+msgid "GeoKrets hidden"
+msgstr "piilotetut GeoKretyt"
+
+#: index.php:97
+msgid "users"
+msgstr "käyttäjät"
+
+#: index.php:98
+#, php-format
+msgid "<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun)."
+msgstr "<strong>%d km</strong> tehty kaikille GeoKretyille (se on %.2fx maan ja kuun välinen etäisyys, %.2f x maapallon ekvaattorikehän pituus ja %.5f x maan ja auringon välinen etäisyys)."
+
+#: index.php:105
+msgid "If you found a GeoKret, enter the tracking code here:"
+msgstr ""
+
+#: index.php:108 ruchy.php:1003
+msgid "Go!"
+msgstr ""
+
+#: index.php:110 templates.php:12 templates.php:75 templates.php:201
+#: templates.php:264 templates/krety.html:126
+msgid "no need to register!"
+msgstr ""
+
+#: index.php:149 krety.html.php:18 niusy.php:9 templates.php:39
+#: templates.php:102 templates.php:228 templates.php:291
+#: templates/krety.html:140
+msgid "News"
+msgstr "Uutisia"
+
+#: index.php:162 newscomments.php:49
+msgid "Comments"
+msgstr ""
+
+#: index.php:203
+msgid "Recent logs on the map"
+msgstr ""
+
+#: index.php:220
+msgid "Recently uploaded images"
+msgstr "Äskettäin tuodut kuvat"
+
+#: index.php:239
+msgid "Recently registered GeoKrets"
+msgstr "Äskettäin rekisteröidyt GeoKretyt"
+
+#: index.php:256
+msgid "Online users"
+msgstr ""
+
+#: index.php:269
+msgid "Join our translation team"
+msgstr ""
+
+#: index.php:269
+msgid "Suggest a better translation - inline"
+msgstr ""
+
+#: index.php:269
+msgid "visits/day"
+msgstr "käyntiä / vrk"
+
+#: konkret-mapka.php:69
+msgid "Hidden"
+msgstr "Piilotettu"
+
+#: konkret-mapka.php:69
+msgid "in"
+msgstr "sisällä"
+
+#: konkret-tabelka.php:182
+msgid "Report as missing"
+msgstr ""
+
+#: konkret-tabelka.php:216 lingering.php:115 mygeokrets.php:184
+#: recent_moves.php:171
+msgid "Search for caches in this area on geocaching.com"
+msgstr ""
+
+#: konkret-tabelka.php:216 lingering.php:115 mygeokrets.php:184
+#: recent_moves.php:171
+msgid "Search geocaching.com"
+msgstr ""
+
+#: konkret-tabelka.php:227
+msgid "Write comment"
+msgstr ""
+
+#: konkret-tabelka.php:233 konkret.php:82 recent_moves.php:216
+msgid "Add photo"
+msgstr ""
+
+#: konkret-tabelka.php:233 recent_moves.php:216
+msgid "Edit log"
+msgstr ""
+
+#: konkret-tabelka.php:239
+msgid "Delete log"
+msgstr ""
+
+#: konkret-tabelka.php:268 konkret.php:135
+msgid "Rename"
+msgstr ""
+
+#: konkret-tabelka.php:269 konkret.php:136
+msgid "Delete photo"
+msgstr ""
+
+#: konkret-tabelka.php:354
+msgid "Delete comment"
+msgstr ""
+
+#: konkret.php:81
+msgid "Edit description"
+msgstr ""
+
+#: konkret.php:85
+msgid "Print a label for this geokret"
+msgstr "Tulosta lappu tälle GeoKretille"
+
+#: konkret.php:86
+msgid "Archive this geokret"
+msgstr "Arkistoi tämä GeoKrety"
+
+#: konkret.php:92
+msgid "Write a note"
+msgstr ""
+
+#: konkret.php:93 mypage.php:329 statystyczka-hubs.php:11
+#: statystyczka-lata.php:11 statystyczka.php:11 statystyczka2.php:11
+#: statystyczka3.php:11 templates.php:24 templates.php:27 templates.php:87
+#: templates.php:90 templates.php:213 templates.php:216 templates.php:276
+#: templates.php:279 user_stat.php:196 templates/krety.html:132
+#: templates/krety.html:134
+msgid "Statistics"
+msgstr "Tilastot"
+
+#: konkret.php:94
+msgid "View photo gallery"
+msgstr ""
+
+#: konkret.php:94
+msgid "Number of photos in the gallery"
+msgstr ""
+
+#: konkret.php:112 lingering.php:184 mygeokrets.php:255
+msgid "Log this GeoKret"
+msgstr ""
+
+#: konkret.php:113
+msgid "Recreate a label for this geokret"
+msgstr ""
+
+#: konkret.php:144
+msgid "Altitude profile"
+msgstr "Korkeusprofiili"
+
+#: konkret.php:170
+msgid "Email the owner"
+msgstr ""
+
+#: konkret.php:176
+msgid "Login to claim this GeoKret"
+msgstr ""
+
+#: konkret.php:178
+msgid "Claim this GeoKret"
+msgstr ""
+
+#: konkret.php:233
+msgid "You can rate this GeoKret"
+msgstr ""
+
+#: konkret.php:236
+msgid "You have already rated this GeoKret"
+msgstr ""
+
+#: konkret.php:238
+msgid "You can't rate your own GeoKret"
+msgstr ""
+
+#: konkret.php:240
+msgid "You can't rate this geokret"
+msgstr ""
+
+#: konkret.php:258
+msgid "Total distance"
+msgstr "Kokonaisetäisyys"
+
+#: konkret.php:259
+msgid "Places visited"
+msgstr ""
+
+#: konkret.php:260
+msgid "Forum links"
+msgstr ""
+
+#: konkret.php:261
+msgid "Country track"
+msgstr "Seurattava maa"
+
+#: konkret.php:262
+msgid "Rating"
+msgstr ""
+
+#: konkret.php:264
+msgid "votes"
+msgstr ""
+
+#: konkret.php:264
+msgid "average rating"
+msgstr ""
+
+#: konkret.php:268
+msgid "Share on"
+msgstr ""
+
+#: konkret.php:279
+msgid "Short description"
+msgstr "Lyhyt kuvaus"
+
+#: konkret.php:310
+msgid "start"
+msgstr "alku"
+
+#: konkret.php:311
+msgid "trip points"
+msgstr "reittipisteet"
+
+#: konkret.php:312
+msgid "recently seen"
+msgstr "nähty viimeaikoina"
+
+#: konkret.php:321
+msgid "The google map is not avaliable due to large numer of points."
+msgstr ""
+
+#: konkret.php:323
+msgid "This geokret has not started yet"
+msgstr ""
+
+#: konkret.php:328
+msgid "Download the track as:"
+msgstr ""
+
+#: kontakt.php:10
+msgid "Contact"
+msgstr "Yhteydenotto"
+
+#: kontakt.php:12
+msgid "If you have any suggestion or bug reports feel free to write us"
+msgstr "Jos sinulla on ehdotuksia tai vikailmoituksia voit kirjoittaa meille"
+
+#: krety.html.php:9 ruchy.php:641
+msgid "Operations on GeoKrety"
+msgstr "GeoKrety-toiminnot"
+
+#: krety.html.php:12 szukaj.php:9 templates.php:15 templates.php:78
+#: templates.php:204 templates.php:267 templates/krety.html:130
+msgid "Search"
+msgstr "Haku"
+
+#: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
+#: templates.php:297 templates/krety.html:143
+msgid "help.php"
+msgstr ""
+
+#: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
+#: templates.php:309 templates/krety.html:195
+msgid "help.php#about"
+msgstr ""
+
+#: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
+#: templates.php:312 templates/krety.html:195
+msgid "About"
+msgstr ""
+
+#: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
+#: templates.php:252 templates.php:318 templates.php:324
+#: templates/krety-m.html:46 templates/krety.html:217
+msgid "contact"
+msgstr ""
+
+#: labels.php:11
+msgid "Print label"
+msgstr "Tulosta lappu"
+
+#: labels.php:58 lingering.php:200 mygeokrets.php:287 mygeokrets.php:292
+#: race.php:285 race.php:408 race_list.php:183 race_list.php:270
+msgid "Owner"
+msgstr "Omistaja"
+
+#: labels.php:68
+msgid "Edit this text to fit your needs as well as the label size"
+msgstr "Muokkaa tätä tekstiä hauamaksesi kuten myös lapun kokoa"
+
+#: labels.php:72
+msgid "Label template"
+msgstr "Lappumalli"
+
+#: labels.php:88
+msgid "Help languages"
+msgstr "Ohje kielillä"
+
+#: labels.php:89
+msgid "Please note: not all translations are avaliable. Translations may not work with some templates. English is added by default, so you may not select it."
+msgstr "Huomaa, että kaikkia kieliä/käännöksiä ei ole saatavilla. Käännökset eivät toimi joillakin mallipohjilla. Englanti on lisätty oletuksena, älä valitse sitä."
+
+#: lingering.php:189 mygeokrets.php:236
+msgid "Edit this GeoKret"
+msgstr ""
+
+#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:654
+msgid "Name"
+msgstr ""
+
+#: lingering.php:230 mygeokrets.php:332
+msgid "Last action"
+msgstr ""
+
+#: lingering.php:231 lost_mapka.php:52 mapka_kretow.php:69 mygeokrets.php:333
+#: race.php:107 race_list.php:101 recent_moves.php:96
+msgid "Distance travelled"
+msgstr "Kuljettu matka"
+
+#: lingering.php:232 mygeokrets.php:334 race.php:108 race_list.php:102
+msgid "Number of visited caches"
+msgstr ""
+
+#: longin.php:43
+msgid "You have successfully logged out of GeoKrety website."
+msgstr ""
+
+#: longin.php:45
+msgid "You are probably logged in."
+msgstr "Olet luultavasti kirjautunut sisään"
+
+#: longin.php:88
+msgid "User doesn't exist/wrong password."
+msgstr "Käyttäjää ei ole olemassa / väärä salasana."
+
+#: longin.php:107
+msgid "Error setting sessid."
+msgstr "Virhe istunnon asetuksissa."
+
+#: longin.php:146
+msgid "Remember me"
+msgstr "Muista minut"
+
+#: longin.php:147
+msgid "We are using cookies only for storing login information and language preferences. Read more <a href=\"/help.php#cookies\">about our cookies policy</a>"
+msgstr ""
+
+#: longin_chceck.php:27
+msgid "Wrong secid identifier"
+msgstr ""
+
+#: lost.php:9 templates.php:33 templates.php:96 templates.php:222
+#: templates.php:285 templates/krety.html:136
+msgid "Probably lost geokrets"
+msgstr ""
+
+#: lost.php:11
+msgid "<p>Here is a list of geokrets, for which the last log is 'drop' to the cache, which then was made archived or temporary unavaliable. Those data are mainly avaliable for OpenCaching caches. The list may not be full or may be inacurate in other ways.</p>"
+msgstr ""
+
+#: lost.php:13
+msgid "The map of lost geokrets to organize the rescue mission"
+msgstr ""
+
+#: lost.php:14
+msgid "The list is generated daily."
+msgstr ""
+
+#: lost_mapka.php:10 mapa.php:9 mapka_kretow.php:9 race.php:334
+msgid "Geokrets on the map"
+msgstr "GeoKretyjen paikat kartalla"
+
+#: lost_mapka.php:48 mapka_kretow.php:65
+msgid "Map centers at your home coordinates (you can edit it in your profile). If you hadn't defined it, the map  centers on the Most Przyjaźni in Zgorzelec/Gorlitz."
+msgstr ""
+
+#: m/qr.php:24
+#, php-format
+msgid "<strong>%s</strong> by %s</h1>"
+msgstr ""
+
+#: m/qr.php:25
+#, php-format
+msgid "Travelled %s km"
+msgstr ""
+
+#: m/qr.php:28
+msgid "Log grabbing or dropping"
+msgstr ""
+
+#: m/qr.php:29
+msgid "View the GK details"
+msgstr ""
+
+#: m/qr.php:32
+msgid "Description:"
+msgstr ""
+
+#: m/qr.php:36
+#, php-format
+msgid "<a href=\"%s\">%s</a>, the home of free, trackable moles."
+msgstr ""
+
+#: majluj.php:8
+msgid "Contact with user"
+msgstr "Ota yhteyttä käyttäjään"
+
+#: majluj.php:53 majluj.php:176
+msgid "This user haven't defined an email address."
+msgstr "Tämä käyttäjä ei ole määritellyt sähköpostiosoitettaan."
+
+#: majluj.php:55
+msgid "You haven't defined an email address."
+msgstr "Et ole määritelty sähköpostiosoitettasi."
+
+#: majluj.php:81
+msgid "From"
+msgstr "Keneltä"
+
+#: majluj.php:86
+msgid "To"
+msgstr "Kenelle"
+
+#: majluj.php:92
+msgid "Subject"
+msgstr "Aihe"
+
+#: majluj.php:97
+msgid "Message"
+msgstr ""
+
+#: molehole.php:71
+msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
+msgstr ""
+
+#: molehole.php:73
+msgid "By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
+msgstr ""
+
+#: mypage.php:9 mypage.php:56
+msgid "My Page"
+msgstr "Oma sivuni"
+
+#: mypage.php:23
+msgid "seems to be not a valid user id."
+msgstr "näyttää olevan kelvoton käyttäjänimi."
+
+#: mypage.php:25
+msgid "This user was not logged in"
+msgstr "Tämä käyttäjä ei ole kirjautunut sisään"
+
+#: mypage.php:65
+msgid "keep secret!"
+msgstr ""
+
+#: mypage.php:66
+msgid "The old secid will be deleted and the new one will be generated. You will have to update the secid in all applications which are using the code."
+msgstr ""
+
+#: mypage.php:66
+msgid "Are you sure?"
+msgstr ""
+
+#: mypage.php:67
+msgid "Generate new secid"
+msgstr ""
+
+#: mypage.php:106 mypage.php:370 templates.php:162
+#: templates/plugins/function.login_check.php:48
+#: templates/krety_logged_in.html:8
+msgid "My recent logs"
+msgstr "Viimeisimmät lokini"
+
+#: mypage.php:116 mypage.php:371 templates.php:165
+#: templates/plugins/function.login_check.php:49
+#: templates/krety_logged_in.html:9
+msgid "Recent moves of my geokrets"
+msgstr "GeoKretyjeni viimeaikaiset liikkumiset"
+
+#: mypage.php:139
+#, php-format
+msgid "%s's Inventory"
+msgstr ""
+
+#: mypage.php:230
+#, php-format
+msgid "%s has created <b>%s</b> GeoKrets, which travelled <b>%s</b> km."
+msgstr ""
+
+#: mypage.php:252
+#, php-format
+msgid "%s has moved <b>%s</b> GeoKrets on a total distance of <b>%s</b> km."
+msgstr ""
+
+#: mypage.php:274
+msgid "Send a message to the user"
+msgstr "Lähetä viesti käyttäjälle"
+
+#: mypage.php:307
+msgid "Joined us"
+msgstr "Meihin liittyneet"
+
+#: mypage.php:321
+msgid "Subscribe to RSS channel"
+msgstr "Tilaa RSS-syöte"
+
+#: mypage.php:321
+msgid "Be up to date with your and watched GeoKrets!"
+msgstr ""
+
+#: mypage.php:336 mypage.php:375 user_stat.php:194
+msgid "User stats"
+msgstr ""
+
+#: mypage.php:341
+msgid "Badges"
+msgstr ""
+
+#: mypage.php:364
+msgid "Links"
+msgstr ""
+
+#: mypage.php:367 templates.php:153
+#: templates/plugins/function.login_check.php:45
+#: templates/krety_logged_in.html:5
+msgid "Geokrets in my inventory"
+msgstr "GeoKretyt inventaariossani"
+
+#: mypage.php:368 templates.php:156
+#: templates/plugins/function.login_check.php:46
+#: templates/krety_logged_in.html:6
+msgid "My geokrets"
+msgstr "Omat GeoKretyt"
+
+#: mypage.php:369 templates.php:159 templates/krety_logged_in.html:7
+msgid "Watched geokrets"
+msgstr ""
+
+#: mypage.php:372 templates.php:168 templates/krety_logged_in.html:10
+msgid "My photos"
+msgstr ""
+
+#: mypage.php:373 templates.php:171 templates/krety_logged_in.html:11
+msgid "Photos of my geokrets"
+msgstr ""
+
+#: mypage.php:374 templates.php:174
+#: templates/plugins/function.login_check.php:50
+#: templates/krety_logged_in.html:12
+msgid "Where are my geokrets?"
+msgstr "Missä ovat GeoKretyni?"
+
+#: new_password.php:26
+msgid "To obtain a new password, please enter your e-mail address. A new password will be e-mailed."
+msgstr "Saadaksesi uuden salasanan, anna sähköpostiosoitteesi. Uusi salasana lähetetään siihen osoitteeseen."
+
+#: new_password.php:31
+msgid "Antispam"
+msgstr ""
+
+#: new_password.php:68
+msgid "Your new password in GeoKrety service is"
+msgstr "Uusi salasana GeoKrety-palvelussa on"
+
+#: new_password.php:72
+msgid "New password sent to"
+msgstr "Uusi salasana lähetetty osoitteeseen"
+
+#: new_password.php:76
+msgid "No such email"
+msgstr "Tällaista sähköpostiosoitetta ei ole olemassa"
+
+#: newscomments.php:120
+msgid "News post not found."
+msgstr ""
+
+#: newscomments.php:232
+msgid "Unsubscribe from this news post"
+msgstr ""
+
+#: newscomments.php:235 newscomments.php:254
+msgid "Subscribe to this news post"
+msgstr ""
+
+#: newscomments.php:250
+msgid "Write new comment"
+msgstr ""
+
+#: newscomments.php:255
+msgid "Post comment"
+msgstr ""
+
+#: newscomments.php:267
+msgid "There are no comments for this post."
+msgstr ""
+
+#: niusy.php:13
+msgid "View comments"
+msgstr ""
+
+#: obserwuj.php:66
+msgid "Users watching this GeoKret:"
+msgstr ""
+
+#: presscorner.php:10 templates.php:114 templates/krety.html:146
+msgid "Press corner"
+msgstr ""
+
+#: race.php:43 race.php:46 race.php:47 race.php:442 race_list.php:34
+#: race_list.php:37 race_list.php:38 race_list.php:302
+msgid "days"
+msgstr ""
+
+#: race.php:54 race_list.php:47
+msgid "yes"
+msgstr ""
+
+#: race.php:56 race_list.php:49
+msgid "password"
+msgstr ""
+
+#: race.php:57 race.php:59 race.php:64 race.php:386 race_join.php:8
+#: race_list.php:50 race_list.php:52 race_list.php:57
+msgid "Join the Race"
+msgstr ""
+
+#: race.php:62 race_list.php:55
+msgid "no"
+msgstr ""
+
+#: race.php:71
+msgid "Edit this race"
+msgstr ""
+
+#: race.php:84 race_list.php:71
+msgid "Distance to destination"
+msgstr ""
+
+#: race.php:89 race_list.php:75
+#, php-format
+msgid "% of target distance done"
+msgstr ""
+
+#: race.php:93 race_list.php:79
+#, php-format
+msgid "% of target caches visited"
+msgstr ""
+
+#: race.php:102 race_list.php:98
+msgid "Rank"
+msgstr ""
+
+#: race.php:106
+msgid "Last log"
+msgstr ""
+
+#: race.php:109 race_list.php:103
+msgid "Average speed"
+msgstr ""
+
+#: race.php:216 race_list.php:128 race_list.php:130 race_list.php:132
+msgid "km/day"
+msgstr ""
+
+#: race.php:273 race_list.php:171
+msgid "Race information"
+msgstr ""
+
+#: race.php:278 race.php:411 race_list.php:176 race_list.php:273
+msgid "Race status"
+msgstr ""
+
+#: race.php:290 race.php:410 race_add.php:147 race_list.php:188
+#: race_list.php:272
+msgid "Race type"
+msgstr ""
+
+#: race.php:296 race_add.php:127 race_list.php:194
+msgid "Start date"
+msgstr ""
+
+#: race.php:303 race_add.php:134 race_list.php:201
+msgid "End date"
+msgstr ""
+
+#: race.php:310 race_add.php:120 race_list.php:208
+msgid "Private race"
+msgstr ""
+
+#: race.php:318 race_add.php:141 race_list.php:216
+msgid "Race description"
+msgstr ""
+
+#: race.php:324 race.php:354
+msgid "Geokrety races"
+msgstr ""
+
+#: race.php:338 race_list.php:227
+msgid "Race participants"
+msgstr ""
+
+#: race.php:343
+msgid "No participants. Yet..."
+msgstr ""
+
+#: race.php:346 race_list.php:232
+msgid "Race"
+msgstr ""
+
+#: race.php:382 race_add.php:8
+msgid "Register a new Race"
+msgstr ""
+
+#: race.php:390
+msgid "My races"
+msgstr ""
+
+#: race.php:396
+msgid "Races"
+msgstr ""
+
+#: race.php:397 race_list.php:259
+msgid "Filter races by status"
+msgstr ""
+
+#: race.php:399 race_list.php:260
+msgid "All races"
+msgstr ""
+
+#: race.php:407 race_add.php:115 race_list.php:269
+msgid "Race title"
+msgstr ""
+
+#: race_add.php:16
+msgid "Please login"
+msgstr "Kirjaudu sisään"
+
+#: race_add.php:42 race_add.php:330
+msgid "This is not your race"
+msgstr ""
+
+#: race_add.php:44
+msgid "You can't edit the race which has started"
+msgstr ""
+
+#: race_add.php:106
+msgid "Save changes"
+msgstr ""
+
+#: race_add.php:112
+msgid "Race info"
+msgstr ""
+
+#: race_add.php:148
+msgid "Please choose race type. The default is race to destination cache (waypoint)"
+msgstr ""
+
+#: race_add.php:153
+msgid "Please choose the destination cache (waypoint)"
+msgstr ""
+
+#: race_add.php:164
+msgid "Distance"
+msgstr ""
+
+#: race_add.php:171
+msgid "Visited caches"
+msgstr ""
+
+#: race_add.php:210
+msgid "Wrong start date"
+msgstr ""
+
+#: race_add.php:213
+msgid "Wrong end date"
+msgstr ""
+
+#: race_add.php:216
+msgid "End date <= start date"
+msgstr ""
+
+#: race_add.php:220
+msgid "Wrong target waypoint"
+msgstr ""
+
+#: race_add.php:222
+msgid "Wrong target distance"
+msgstr ""
+
+#: race_add.php:224
+msgid "Wrong caches number"
+msgstr ""
+
+#: race_add.php:245
+msgid "Unable to resolve waypoint "
+msgstr ""
+
+#: race_add.php:311
+#, php-format
+msgid "Race %s created successfully"
+msgstr ""
+
+#: race_add.php:314
+#, php-format
+msgid "The password for join this private race is %s. Share it with everyone interested in joining this race. You can also use direct link for joining this race: %s or here: %s"
+msgstr ""
+
+#: race_add.php:316
+#, php-format
+msgid "You can use this link for joining this race: %s or here: %s"
+msgstr ""
+
+#: race_conf.php:5
+msgid "Race to destination"
+msgstr ""
+
+#: race_conf.php:6
+msgid "Maximize distance"
+msgstr ""
+
+#: race_conf.php:7
+msgid "Reach target distance"
+msgstr ""
+
+#: race_conf.php:8
+msgid "Maximize number of visited caches"
+msgstr ""
+
+#: race_conf.php:9
+msgid "Reach target number of caches"
+msgstr ""
+
+#: race_conf.php:11
+msgid "This race hasn't started yet"
+msgstr ""
+
+#: race_conf.php:12
+msgid "The race is running"
+msgstr ""
+
+#: race_conf.php:13
+msgid "The race has ended"
+msgstr ""
+
+#: race_join.php:45
+msgid "The race to join"
+msgstr ""
+
+#: race_join.php:50
+msgid "Password for private races"
+msgstr ""
+
+#: race_join.php:52
+msgid "If you are the race owner, you don't need to enter password"
+msgstr ""
+
+#: race_join.php:58
+msgid "Please read this race rules before joining!"
+msgstr ""
+
+#: race_join.php:78
+msgid "No race selected"
+msgstr ""
+
+#: race_join.php:80
+msgid "No reference number"
+msgstr ""
+
+#: race_join.php:102
+msgid "This is not your geokret"
+msgstr ""
+
+#: race_join.php:115
+msgid "This race is private. Please provide the password"
+msgstr ""
+
+#: race_join.php:117
+msgid "Wrong password"
+msgstr ""
+
+#: race_list.php:240
+msgid "Race list"
+msgstr ""
+
+#: recent_comments.php:18
+msgid "Recent Log Comments"
+msgstr ""
+
+#: recent_comments_fn.php:14
+msgid "Recent log comments"
+msgstr ""
+
+#: recent_comments_fn.php:104
+msgid "User"
+msgstr ""
+
+#: recent_moves.php:14 recentlogs.php:9 templates.php:18 templates.php:81
+#: templates.php:207 templates.php:270
+msgid "Recent logs"
+msgstr "Viimeaikaiset lokit"
+
+#: recent_newscomments.php:17
+msgid "Recent news comments"
+msgstr ""
+
+#: recent_newscomments_fn.php:9
+msgid "View all comments"
+msgstr ""
+
+#: recent_pictures.php:44 recent_pictures.php:46
+msgid "Go to geokret's page"
+msgstr ""
+
+#: register.php:11 templates.php:144
+#: templates/plugins/function.login_check.php:41
+#: templates/krety_logged_in.html:1
+msgid "Register a new GeoKret"
+msgstr "Rekisteröi uusi GeoKrety"
+
+#: register.php:38
+msgid "Set my home coordinates as a starting point"
+msgstr ""
+
+#: register.php:82
+msgid "No GeoKret's name!"
+msgstr "Ei GeoKretyn nimeä!"
+
+#: register.php:95
+msgid "Born here :)"
+msgstr ""
+
+#: ruchy.php:156
+msgid "Cannot edit this log"
+msgstr ""
+
+#: ruchy.php:194
+msgid "Missing or invalid Tracking Code"
+msgstr ""
+
+#: ruchy.php:198
+msgid "Missing or invalid Reference Number"
+msgstr ""
+
+#: ruchy.php:206
+msgid "Invalid log type"
+msgstr ""
+
+#: ruchy.php:211
+msgid "No lat/lon OR waypoint name!"
+msgstr "Ei lat/lon:ia TAI reittipisteen nimeä!"
+
+#: ruchy.php:216
+msgid "No username supplied"
+msgstr "Käyttäjätunnusta ei ole annettu"
+
+#: ruchy.php:219
+msgid "Wrong time (minutes)"
+msgstr "Virheellinen aika (minuuttia)"
+
+#: ruchy.php:222
+msgid "Wrong time (hours)"
+msgstr "Virheellinen aika (tuntia)"
+
+#: ruchy.php:291
+msgid "Identical log has been submited."
+msgstr ""
+
+#: ruchy.php:303
+msgid "There is an entry with this date. Correct the date or the hour."
+msgstr "Tälle päivälle on olemassa jo merkintä. Korjaa päväys tai aika."
+
+#: ruchy.php:309
+msgid "The date is from the past, BEFORE the GeoKret was created."
+msgstr "Päivämäärä on jo vanhentunut ennenkuin GeoKrety luotiin."
+
+#: ruchy.php:311
+msgid "The date is from the future (if you are an inventor of a time travelling machine, contact with us, please)"
+msgstr "Päivämäärä on tulevaisuudessa (jos olet aikakoneen keksijä, ota yhteyttä meihin, kiitos)"
+
+#: ruchy.php:339
+msgid "You can not archive not your own GeoKret"
+msgstr "Et voi arkistoida toisten GeoKretyjä"
+
+#: ruchy.php:552
+msgid "Add a comment"
+msgstr ""
+
+#: ruchy.php:564 ruchy.php:828
+msgid "When you want to write a comment :)"
+msgstr ""
+
+#: ruchy.php:594
+msgid "Archive a GeoKret"
+msgstr ""
+
+#: ruchy.php:604
+msgid "When a GeoKret has been missing for a long time"
+msgstr ""
+
+#: ruchy.php:605
+msgid "Archive"
+msgstr "Arkisto"
+
+#: ruchy.php:630
+msgid "Tracking Code"
+msgstr ""
+
+#: ruchy.php:633
+msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
+msgstr ""
+
+#: ruchy.php:647
+msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
+msgstr ""
+
+#: ruchy.php:655
+msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
+msgstr ""
+
+#: ruchy.php:673
+msgid "Logged at my home coordinates"
+msgstr ""
+
+#: ruchy.php:673
+msgid "Log GeoKret at my home coordinates"
+msgstr ""
+
+#: ruchy.php:684
+msgid "Choose log type"
+msgstr "Valitse lokin tyyppi"
+
+#: ruchy.php:795
+msgid "Log type"
+msgstr ""
+
+#: ruchy.php:795
+msgid "help.php#Chooselogtype"
+msgstr ""
+
+#: ruchy.php:800
+msgid "When you've left a GeoKret in a cache"
+msgstr ""
+
+#: ruchy.php:801
+msgid "I've dropped GeoKret"
+msgstr "Olen pudottanut GeoKretyn"
+
+#: ruchy.php:807
+msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
+msgstr ""
+
+#: ruchy.php:808
+msgid "I've grabbed GeoKret"
+msgstr "Olen noutanut GeoKretyn"
+
+#: ruchy.php:814
+msgid "When you've met a GeoKret in a cache but haven't taken it with you"
+msgstr ""
+
+#: ruchy.php:815
+msgid "I've met GeoKret"
+msgstr "Olen nähnyt GeoKretyn"
+
+#: ruchy.php:821
+msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
+msgstr ""
+
+#: ruchy.php:822
+msgid "I've dipped a GeoKret"
+msgstr ""
+
+#: ruchy.php:839
+msgid "Identify GeoKret"
+msgstr "Tunnista GeoKrety"
+
+#: ruchy.php:848
+msgid "New location"
+msgstr "Uusi sijainti"
+
+#: ruchy.php:849
+msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
+msgstr ""
+
+#: ruchy.php:853
+msgid "Waypoint"
+msgstr ""
+
+#: ruchy.php:857
+msgid "eg.: GC1AQ2N, OP069B, OC033A…"
+msgstr ""
+
+#: ruchy.php:858 ruchy.php:871
+msgid "help.php#fullysupportedwaypoints"
+msgstr ""
+
+#: ruchy.php:861
+msgid "or name of cache"
+msgstr ""
+
+#: ruchy.php:866
+msgid "Check"
+msgstr "Tarkista"
+
+#: ruchy.php:870
+msgid "Enter cache name. Works only with opencaching networks."
+msgstr ""
+
+#: ruchy.php:882
+msgid "Coordinates"
+msgstr ""
+
+#: ruchy.php:886
+msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
+msgstr ""
+
+#: ruchy.php:898
+msgid "Logged using geolocation"
+msgstr ""
+
+#: ruchy.php:898
+msgid "Use geolocation"
+msgstr ""
+
+#: ruchy.php:909
+msgid "Captcha verification"
+msgstr ""
+
+#: ruchy.php:942
+msgid "Additional data"
+msgstr "Lisätiedot"
+
+#: ruchy.php:963
+msgid "Two days ago"
+msgstr ""
+
+#: ruchy.php:969
+msgid "Time"
+msgstr "Aika"
+
+#: ruchy.php:982
+msgid "now"
+msgstr ""
+
+#: ruchy.php:983
+msgid "Enter exact time when You think it may be important"
+msgstr "Anna tarkka aika kun ajattelet sen olevan tärkeää"
+
+#: ruchy.php:995
+msgid "It is always nice to receive a little message ;)"
+msgstr ""
+
+#: statystyczka.php:46
+msgid "Top ten total distance: traditional and books"
+msgstr "Kymmenen parasta etäisyyttä traditionaaleissa tai kirjoissa"
+
+#: statystyczka.php:66
+msgid "Top longest moves"
+msgstr "Kymmenen pisintä siirtymää"
+
+#: statystyczka.php:100
+msgid "Top ten droppers"
+msgstr "Kymmenen parasta pudottajaa"
+
+#: statystyczka.php:121
+msgid "Not logged in."
+msgstr "Et ole kirjautunut sisään."
+
+#: statystyczka.php:129
+msgid "Top ten owners"
+msgstr "Kymmenen parasta omistajaa"
+
+#: szukaj-ajax.php:47
+msgid "GeoKret not found"
+msgstr "GeoKretyä ei löydy"
+
+#: szukaj-ajax.php:60
+msgid "Last log:"
+msgstr ""
+
+#: szukaj-ajax.php:68
+#, php-format
+msgid "%s by %s."
+msgstr ""
+
+#: szukaj-ajax.php:73
+msgid "Invalid tracking code"
+msgstr ""
+
+#: szukaj-ajax.php:86
+#, php-format
+msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
+msgstr ""
+
+#: szukaj-ajax.php:87
+#, php-format
+msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
+msgstr ""
+
+#: szukaj-ajax.php:99
+msgid "caches match"
+msgstr "täsmäävät kätköt"
+
+#: szukaj-ajax.php:109
+msgid "No cache found"
+msgstr "Yhtään kätköä ei löytynyt"
+
+#: szukaj.php:45
+msgid "Found users"
+msgstr "Löydetyt käyttäjät"
+
+#: szukaj.php:57 szukaj.php:116
+msgid "Geokrety visiting the cache"
+msgstr ""
+
+#: szukaj.php:60
+msgid "Geokrets in"
+msgstr ""
+
+#: szukaj.php:108
+msgid "GeoKret owner"
+msgstr "GeoKretyn omistaja"
+
+#: szukaj_kreta.php:44
+msgid "Operations on this GeoKret"
+msgstr "Tälle GeoKretylle tehdyt toimet"
+
+#: templates.php:9 templates.php:72 templates.php:198 templates.php:261
+#: templates/krety.html:125
+msgid "Log a GeoKret"
+msgstr ""
+
+#: templates.php:66 templates.php:138 templates.php:183 templates.php:255
+#: templates.php:321 templates.php:327 templates/krety-m.html:46
+#: templates/krety.html:217
+msgid "Report abuse"
+msgstr ""
+
+#: templates.php:120 templates.php:303 templates/krety.html:151
+msgid "Side products"
+msgstr ""
+
+#: templates.php:147 templates/krety_logged_in.html:2
+msgid "My account"
+msgstr ""
+
+#: templates.php:150 templates/krety_logged_in.html:4
+msgid "Account details"
+msgstr ""
+
+#: templates.php:177 templates/krety_logged_in.html:15
+msgid "Logout"
+msgstr ""
+
+#: templates/konfig.php:143
+msgid "KretyPost"
+msgstr ""
+
+#: templates/labels/index.php:42
+msgid "<strong>User's manual:</strong> <strong>1.</strong> Take this GeoKret. Note down his Tracking Code. <strong>2.</strong> Hide in another cache. <strong>3.</strong> Register the trip at https://geokrety.org/"
+msgstr ""
+
+#: templates/labels/index.php:45
+msgid "You can also go to the apppropriate page by decoding the QR-code."
+msgstr ""
+
+#: templates/nawigacja_tablicy.php:99 templates/nawigacja_tablicy.php:112
+msgid "Show all"
+msgstr ""
+
+#: templates/nawigacja_tablicy.php:124
+#, php-format
+msgid "Showing items %s - %s (of %s) :: %s"
+msgstr "Näytetään kohteet %s - %s (%s): %s"
+
+#: templates/nawigacja_tablicy.php:125
+#, php-format
+msgid "Showing items %s - %s (of %s)"
+msgstr ""
+
+#: templates/plugins/function.login_check.php:47
+msgid "Observed geokrets"
+msgstr ""
+
+#: termsofuse.php:14
+msgid "<p>This document sets the conditions of use of \"geokrety.org\" - a voluntarily operated Internet geocaching service available at https://geokrety.org (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure.</p>\n\n"
+"<p>The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service.</p>\n\n"
+"<p>You must ensure that information published by the user in the Site <strong>content must not affect the existing law</strong>. In particular, the content published by the user may not violate the copyright of third parties. All content (including descriptions of the Geokrety, illustrations and all their entries in the logs) made available by publishing them on our site users <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The user is responsible directly to the copyright holder for any violations in this area associated with him published by the content on our site.</p>\n\n"
+"<p>We don`t provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</p>\n\n"
+"<p>Content published by you on the site may not contain vulgar expressions , abusive, or illegal content. </p>"
+msgstr ""
+
+#: toolbox.php:11
+msgid "Geokrety Toolbox"
+msgstr ""
+
+#: user_stat.php:200
+msgid "Me"
+msgstr ""
+
+#: user_stat.php:201
+msgid "All users"
+msgstr ""
+
+#: user_stat.php:204
+msgid "Average move distance"
+msgstr ""
+
+#: user_stat.php:209
+msgid "Median move distance"
+msgstr ""
+
+#: user_stat.php:215
+msgid "Country stats"
+msgstr ""
+
+#: user_stat.php:216
+msgid "Logs"
+msgstr ""
+
+#: user_stat.php:219
+msgid "Logtypes"
+msgstr ""
+
+#: user_stat.php:222
+msgid "Year stats"
+msgstr ""
+
+#: user_stat.php:223
+msgid "Moves"
+msgstr ""
+
+#: user_stat.php:225
+msgid "Geokrety created"
+msgstr ""
+
+#: user_stat.php:228
+msgid "Portfolio"
+msgstr ""
+
+#: verify_mail.php:117
+#, php-format
+msgid "An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it :)\n\n"
+"%s"
+msgstr ""
+
+#: verify_mail.php:121
+msgid "[GeoKrety] Activate your account"
+msgstr ""
+
+#: templates/krety.html:59
+msgid "Exit translation mode"
+msgstr ""
+
+#: templates/krety.html:91
+msgid "Saint Nicholas Day"
+msgstr ""
+
+#: templates/krety.html:93
+msgid "Merry Christmas!"
+msgstr ""
+
+#: templates/krety.html:95
+msgid "Happy New Year!!!"
+msgstr ""
+
+#: templates/krety.html:97
+msgid "Valentine's Day"
+msgstr ""
+
+#: templates/krety.html:99
+msgid "First April!!!"
+msgstr ""
+
+#: templates/krety.html:101
+msgid "Hallowen"
+msgstr ""
+
+#: templates/krety.html:104
+msgid "Easter!"
+msgstr ""
+
+#: templates/krety.html:107
+msgid "Spring!"
+msgstr ""
+
+#: templates/krety.html:109
+msgid "GeoKrety 10 years Birthday!!!"
+msgstr ""
+
+#: templates/krety.html:111
+msgid "GeoKrety Birthday!!!"
+msgstr ""
+
+#: templates/krety.html:115
+msgid "The Grand Finale - Great Orchestra of Christmas Charity."
+msgstr ""
+
+#: templates/krety.html:117
+msgid "Normal day"
+msgstr ""
+
+#: templates/krety.html:197
+msgid "Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode."
+msgstr ""
+
+#: templates/krety.html:197
+msgid "Fix translation"
+msgstr ""
+
