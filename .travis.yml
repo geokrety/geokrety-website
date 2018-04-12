@@ -4,6 +4,10 @@ cache:
         - $HOME/.composer/cache/files
         - $HOME/.php-cs-fixer
 
+branches:
+    except:
+    - /\+travis\d+$/
+
 php:
   - 5.6
   - 7.1

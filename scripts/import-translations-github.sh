@@ -1,38 +1,24 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # disabling set -e and relying on explicitly defined exit codes due to expected
 # failures as negative tests
 #set -e
 
-# https://gist.github.com/paolorotolo/404110603ba22ff0728b#file-import-translations-github-sh
+# https://gist.github.com/ddgenome/f3a60fe4c2af0cbe758556d982fbeea9
+source scripts/travis-ci-git-commit.bash
 
-GIT_BRANCH=master
-if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; then
-  echo -e "Starting translation import\n"
-  CROWDIN_CLI_URL=https://downloads.crowdin.com/cli/v2/crowdin-cli.zip
-  CROWDIN_CLI_VERSION=2.0.22
+echo "Starting translation import"
 
-  TMP=$(mktemp -d)
+#setup git
+git config --global user.email "geokrety@gmail.com"
+git config --global user.name "GeoKrety Bot"
 
-  #go to home and setup git
-  cd $TMP
-  git config --global user.email "geokrety@gmail.com"
-  git config --global user.name "GeoKrety Bot"
+# Build mo files
+for file in $(ls -d rzeczy/lang/*.UTF-8); do
+  msgfmt -v ${file}/LC_MESSAGES/messages.po -o ${file}/LC_MESSAGES/messages.mo
+  git add -f ${file}/LC_MESSAGES/messages.mo
+done
 
-  git clone --branch=${GIT_BRANCH} https://$GITHUB_API_KEY@github.com/geokrety/geokrety-website.git geokrety-crowdin
+travis-branch-commit
 
-  # Build mo files
-  for file in $(ls -d rzeczy/lang/*.UTF-8); do
-    msgfmt -v ${file}/LC_MESSAGES/messages.po -o ${file}/LC_MESSAGES/messages.mo;
-  done
-
-  #add, commit and push files
-  git add rzeczy/lang/*.UTF-8
-  if ! git diff --cached --exit-code; then
-    git commit -m "Automatic translation import (build $TRAVIS_BUILD_NUMBER) [ci skip]"
-    git push origin $GIT_BRANCH
-    echo -e "Done importing new transaltions\n"
-  else
-    echo "No new strings found."
-  fi
-fi
+echo "Done importing new translations"

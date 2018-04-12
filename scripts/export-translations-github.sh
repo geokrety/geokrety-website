@@ -29,7 +29,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
   msgcat -o rzeczy/messages.po.txt $TMP/messages.pot $TMP/smarty.pot
 
   # Upload new strings
-  java -jar $CROWDIN_CLI_VERSION/crowdin-cli.jar upload
+  java -jar $CROWDIN_CLI_VERSION/crowdin-cli.jar upload --branch $GIT_BRANCH
 
   #add, commit and push files
   read -r plus minus filename <<< $( git diff --numstat rzeczy/messages.po.txt )
