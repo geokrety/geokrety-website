@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-05 21:46+0200\n"
-"PO-Revision-Date: 2018-04-05 17:06-0400\n"
+"POT-Creation-Date: 2018-04-12 22:10+0000\n"
+"PO-Revision-Date: 2018-04-12 18:20-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: geokrety\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: messages.po\n"
+"X-Crowdin-File: /master/messages.po\n"
 
 #: adduser.php:8 adduser.php:105 templates.php:186
 #: templates/plugins/function.login_check.php:37
@@ -29,9 +29,9 @@ msgstr "注册"
 msgid "Required fields"
 msgstr "必填字段"
 
-#: adduser.php:59 ruchy.php:658
+#: adduser.php:59 ruchy.php:662
 msgid "Username"
-msgstr "用户名"
+msgstr ""
 
 #: adduser.php:64 api-login2secid.php:64 longin.php:142 mypage.php:43
 msgid "Password"
@@ -49,7 +49,7 @@ msgstr "邮箱"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "是，我要接收有关我的或我关注的GeoKret位置改变的邮件提醒(每天一次)"
 
-#: adduser.php:81 majluj.php:103 ruchy.php:912
+#: adduser.php:81 majluj.php:103 ruchy.php:916
 msgid "Enter code"
 msgstr "输入代码..."
 
@@ -58,7 +58,7 @@ msgid "Language"
 msgstr "语言"
 
 #: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
-#: templates/krety.html:128 templates/krety.html:198
+#: templates/krety.html:147 templates/krety.html:217
 msgid "Terms of use"
 msgstr "使用条款"
 
@@ -166,23 +166,40 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr "哎呀！出了错。"
 
-#: comment.php:126
+#: comment.php:125
 #, php-format
 msgid "Reporting GeoKret %s as missing"
 msgstr ""
 
-#: comment.php:148
+#: comment.php:149
 #, php-format
 msgid "Commenting GeoKret: %s"
 msgstr ""
 
-#: comment.php:157
+#: comment.php:163
 msgid "Please provide any information that may help the owner to find out the whereabouts of this GeoKret."
 msgstr "请提供任何信息可以帮助主人发现这GeoKret的下落。"
 
-#: comment.php:179
+#: comment.php:166
+msgid "Log:"
+msgstr ""
+
+#: comment.php:166 comment.php:181
+#, php-format
+msgid "By %s, on %s"
+msgstr ""
+
+#: comment.php:181
+msgid "Last comment:"
+msgstr ""
+
+#: comment.php:192
 msgid "Your comment"
 msgstr "您的评论"
+
+#: comment.php:200 majluj.php:114
+msgid "Send message"
+msgstr ""
 
 #: confirm.php:31
 msgid "It seems that your link has been malformed, possibly by your email software. If clicking on the link directly from within the email does not work, try to copy and paste it into your browser's address field making sure to copy and paste the whole url."
@@ -278,9 +295,13 @@ msgid "A coin"
 msgstr "一个硬币"
 
 #: country_stat.php:28 templates.php:30 templates.php:93 templates.php:219
-#: templates.php:282 templates/krety.html:116
+#: templates.php:282 templates/krety.html:135
 msgid "Stats by country"
 msgstr "按国家统计"
+
+#: country_stat.php:30
+msgid "Where are GeoKrety now?"
+msgstr ""
 
 #: czy_obserwowany.php:45
 msgid "Number of users who are watching this geokret"
@@ -306,16 +327,16 @@ msgstr "用户在观看这GeoKret"
 msgid "days ago"
 msgstr "天前"
 
-#: days_ago.php:16 ruchy.php:953
+#: days_ago.php:16 ruchy.php:966
 msgid "Yesterday"
 msgstr "昨天"
 
-#: days_ago.php:18 ruchy.php:952
+#: days_ago.php:18 ruchy.php:965
 msgid "Today"
 msgstr "今天"
 
 #: download.php:9 krety.html.php:15 templates.php:36 templates.php:99
-#: templates.php:225 templates.php:288 templates/krety.html:120
+#: templates.php:225 templates.php:288 templates/krety.html:139
 msgid "Download"
 msgstr "下载"
 
@@ -332,7 +353,7 @@ msgid "Suggest a better translation"
 msgstr "更好的翻译建议"
 
 #: download.php:19 templates.php:51 templates.php:123 templates.php:240
-#: templates.php:306 templates/krety.html:134
+#: templates.php:306 templates/krety.html:153
 msgid "Map of caches"
 msgstr "地图缓存"
 
@@ -357,7 +378,7 @@ msgstr "GeoKret标签的样本"
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
 msgstr "请注意，您的geokret，你可以创建一个标签，自动，GK的页面上通过点击相应的链接。"
 
-#: edit.php:12 ruchy.php:643
+#: edit.php:12 ruchy.php:647
 msgid "Edit"
 msgstr "编辑"
 
@@ -397,8 +418,8 @@ msgstr "首页坐标"
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "在地图上选择一个位置，或手动输入坐标。"
 
-#: edit.php:330 race_join.php:41 ruchy.php:888 szukaj-ajax.php:99 szukaj.php:86
-#: szukaj.php:94 szukaj.php:117
+#: edit.php:330 race_join.php:41 ruchy.php:892 szukaj-ajax.php:99
+#: szukaj.php:86 szukaj.php:94 szukaj.php:117
 msgid "eg."
 msgstr "例如"
 
@@ -468,13 +489,13 @@ msgid "help.php#geokretytypes"
 msgstr "help.php＃geokretytypes"
 
 #: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
-#: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:829
-#: ruchy.php:980
+#: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:833
+#: ruchy.php:993
 msgid "Comment"
 msgstr "评论"
 
 #: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
-#: newscomments.php:253 race_add.php:143 register.php:63 ruchy.php:986
+#: newscomments.php:253 race_add.php:143 register.php:63
 msgid "characters left"
 msgstr "个字符可用"
 
@@ -486,9 +507,9 @@ msgstr ""
 msgid "errors"
 msgstr "。"
 
-#: galeria.php:10 geokret_gallery.php:72 index.php:171 templates.php:21
+#: galeria.php:10 geokret_gallery.php:72 index.php:222 templates.php:21
 #: templates.php:84 templates.php:210 templates.php:273
-#: templates/krety.html:112
+#: templates/krety.html:131
 msgid "Photo gallery"
 msgstr "照片廊"
 
@@ -511,7 +532,7 @@ msgid "Photo by"
 msgstr "摄影："
 
 #: geokret_gallery.php:124 recent_moves.php:95 recent_pictures.php:60
-#: ruchy.php:943
+#: ruchy.php:956
 msgid "Date"
 msgstr "日期"
 
@@ -585,14 +606,14 @@ msgid "Show group"
 msgstr "显示组"
 
 #: halloffame.php:11 templates.php:60 templates.php:132 templates.php:249
-#: templates.php:315 templates/krety.html:177
+#: templates.php:315 templates/krety.html:196
 msgid "Hall of fame"
 msgstr "名人堂"
 
 #: help.php:9 help_generate.php:10 krety.html.php:24 templates.php:42
 #: templates.php:48 templates.php:105 templates.php:111 templates.php:231
 #: templates.php:237 templates.php:294 templates.php:300
-#: templates/krety.html:122 templates/krety.html:124
+#: templates/krety.html:141 templates/krety.html:143
 msgid "Help"
 msgstr "帮助"
 
@@ -675,75 +696,83 @@ msgid "Remember the description for the next %d minutes"
 msgstr ""
 
 #: index.php:37 krety.html.php:6 templates.php:6 templates.php:69
-#: templates.php:195 templates.php:258 templates/krety.html:105
+#: templates.php:195 templates.php:258 templates/krety.html:124
 msgid "Home"
 msgstr "首页"
 
-#: index.php:69
-msgid "Welcome to GeoKrety.org! This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
-msgstr "欢迎来到GeoKrety.org! 这是一个类似于TravelBug(TM)或GeoLutins的服务，用于跟踪你放到geocache容器中的物品...<a href=\"help.php#about\">了解更多...</a>"
-
-#: index.php:71
-msgid "If you found a GeoKret, enter the tracking code here"
-msgstr "如果您发现一个GeoKret，在这里输入的跟踪代码"
-
-#: index.php:73 templates.php:12 templates.php:75 templates.php:201
-#: templates.php:264 templates/krety.html:107
-msgid "no need to register!"
-msgstr "无需注册！"
-
 #: index.php:86
+msgid "Welcome to GeoKrety.org!"
+msgstr ""
+
+#: index.php:91
+msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
+msgstr ""
+
+#: index.php:97
 msgid "registered GeoKrets"
 msgstr "个登记了的GeoKret"
 
-#: index.php:86
+#: index.php:97
 msgid "GeoKrets hidden"
 msgstr "GeoKret名称"
 
-#: index.php:86
+#: index.php:97
 msgid "users"
 msgstr "个用户"
 
-#: index.php:87
+#: index.php:98
 #, php-format
 msgid "<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun)."
 msgstr ""
 
-#: index.php:112 krety.html.php:18 niusy.php:9 templates.php:39
+#: index.php:105
+msgid "If you found a GeoKret, enter the tracking code here:"
+msgstr ""
+
+#: index.php:108 ruchy.php:1007
+msgid "Go!"
+msgstr ""
+
+#: index.php:110 templates.php:12 templates.php:75 templates.php:201
+#: templates.php:264 templates/krety.html:126
+msgid "no need to register!"
+msgstr "无需注册！"
+
+#: index.php:149 krety.html.php:18 niusy.php:9 templates.php:39
 #: templates.php:102 templates.php:228 templates.php:291
-#: templates/krety.html:121
+#: templates/krety.html:140
 msgid "News"
 msgstr "新闻"
 
-#: index.php:119 newscomments.php:49
+#: index.php:162 newscomments.php:49
 msgid "Comments"
 msgstr "备注"
 
-#: index.php:152
+#: index.php:203
 msgid "Recent logs on the map"
 msgstr ""
 
-#: index.php:169
+#: index.php:220
 msgid "Recently uploaded images"
 msgstr "最近的记录"
 
-#: index.php:188
+#: index.php:239
 msgid "Recently registered GeoKrets"
 msgstr "最近登记的GeoKret"
 
-#: index.php:205
+#: index.php:256
 msgid "Online users"
 msgstr "在线用户"
 
-#: index.php:218
+#: index.php:269
 msgid "Join our translation team"
 msgstr ""
 
-#: index.php:218
+#: index.php:269
 msgid "Suggest a better translation - inline"
 msgstr ""
 
-#: index.php:218
+#: index.php:269
 msgid "visits/day"
 msgstr "次访问/每天"
 
@@ -817,8 +846,8 @@ msgstr "写个纸条"
 #: statystyczka-lata.php:11 statystyczka.php:11 statystyczka2.php:11
 #: statystyczka3.php:11 templates.php:24 templates.php:27 templates.php:87
 #: templates.php:90 templates.php:213 templates.php:216 templates.php:276
-#: templates.php:279 user_stat.php:196 templates/krety.html:113
-#: templates/krety.html:115
+#: templates.php:279 user_stat.php:196 templates/krety.html:132
+#: templates/krety.html:134
 msgid "Statistics"
 msgstr "状态"
 
@@ -870,63 +899,63 @@ msgstr "你不能评价自己的GeoKret"
 msgid "You can't rate this geokret"
 msgstr "你不能对这个geokret"
 
-#: konkret.php:257
+#: konkret.php:258
 msgid "Total distance"
 msgstr "总里程"
 
-#: konkret.php:258
+#: konkret.php:259
 msgid "Places visited"
 msgstr "曾到过的地方"
 
-#: konkret.php:259
+#: konkret.php:260
 msgid "Forum links"
 msgstr "论坛链接"
 
-#: konkret.php:260
+#: konkret.php:261
 msgid "Country track"
 msgstr "国家轨道"
 
-#: konkret.php:261
+#: konkret.php:262
 msgid "Rating"
 msgstr "{0}{/0}{1}'rating',{/1}"
 
-#: konkret.php:263
+#: konkret.php:264
 msgid "votes"
 msgstr "投票"
 
-#: konkret.php:263
+#: konkret.php:264
 msgid "average rating"
 msgstr "平均评价"
 
-#: konkret.php:267
+#: konkret.php:268
 msgid "Share on"
 msgstr ""
 
-#: konkret.php:278
+#: konkret.php:279
 msgid "Short description"
 msgstr "描述"
 
-#: konkret.php:309
+#: konkret.php:310
 msgid "start"
 msgstr "起点"
 
-#: konkret.php:310
+#: konkret.php:311
 msgid "trip points"
 msgstr "旅程"
 
-#: konkret.php:311
+#: konkret.php:312
 msgid "recently seen"
 msgstr "最近被发现"
 
-#: konkret.php:320
+#: konkret.php:321
 msgid "The google map is not avaliable due to large numer of points."
 msgstr "谷歌地图是不avaliable由于大numer点。"
 
-#: konkret.php:322
+#: konkret.php:323
 msgid "This geokret has not started yet"
 msgstr "这geokret尚未开始"
 
-#: konkret.php:327
+#: konkret.php:328
 msgid "Download the track as:"
 msgstr "下载曲目为："
 
@@ -938,33 +967,33 @@ msgstr "联系人"
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "如果你有任何建议，或者发现什么问题，请告诉我们"
 
-#: krety.html.php:9 ruchy.php:641
+#: krety.html.php:9 ruchy.php:645
 msgid "Operations on GeoKrety"
 msgstr "对GeoKrety的操作"
 
 #: krety.html.php:12 szukaj.php:9 templates.php:15 templates.php:78
-#: templates.php:204 templates.php:267 templates/krety.html:111
+#: templates.php:204 templates.php:267 templates/krety.html:130
 msgid "Search"
 msgstr "搜索"
 
 #: krety.html.php:21 templates.php:45 templates.php:108 templates.php:234
-#: templates.php:297 templates/krety.html:124
+#: templates.php:297 templates/krety.html:143
 msgid "help.php"
 msgstr ""
 
 #: krety.html.php:27 templates.php:54 templates.php:126 templates.php:243
-#: templates.php:309 templates/krety.html:176
+#: templates.php:309 templates/krety.html:195
 msgid "help.php#about"
 msgstr ""
 
 #: krety.html.php:30 templates.php:57 templates.php:129 templates.php:246
-#: templates.php:312 templates/krety.html:176
+#: templates.php:312 templates/krety.html:195
 msgid "About"
 msgstr ""
 
 #: krety.html.php:33 templates.php:63 templates.php:135 templates.php:180
 #: templates.php:252 templates.php:318 templates.php:324
-#: templates/krety-m.html:46 templates/krety.html:198
+#: templates/krety-m.html:46 templates/krety.html:217
 msgid "contact"
 msgstr ""
 
@@ -997,7 +1026,7 @@ msgstr "“ <br> “请注意：不是所有可用的翻译。翻译可能无法
 msgid "Edit this GeoKret"
 msgstr "编辑此GeoKret"
 
-#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:654
+#: lingering.php:227 mygeokrets.php:329 recent_moves.php:92 ruchy.php:658
 msgid "Name"
 msgstr "名称"
 
@@ -1043,7 +1072,7 @@ msgid "Wrong secid identifier"
 msgstr "错误的secid标识符"
 
 #: lost.php:9 templates.php:33 templates.php:96 templates.php:222
-#: templates.php:285 templates/krety.html:117
+#: templates.php:285 templates/krety.html:136
 msgid "Probably lost geokrets"
 msgstr "也许失去了geokrets"
 
@@ -1122,10 +1151,6 @@ msgstr "题目"
 msgid "Message"
 msgstr "message"
 
-#: majluj.php:114
-msgid "Send message"
-msgstr ""
-
 #: molehole.php:71
 msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
 msgstr "一个GK旅馆/汽车旅馆是容易达到高速缓存，接近机场/高速公路/铁路站，大到足以举办一些GK。 Cachers可以抓取或删除GK"
@@ -1187,7 +1212,7 @@ msgstr "%s创建<B> %s </ B> GeoKrets，移动<B> %s </ B>公里。"
 #: mypage.php:252
 #, php-format
 msgid "%s has moved <b>%s</b> GeoKrets on a total distance of <b>%s</b> km."
-msgstr "%s移动<B> %s </ B> GeoKrets，总的<b> %s </ B>公里的距离。"
+msgstr "%s 移动 <b>%s</b> GeoKrets，总的 <b>%s</b> 公里的距离。"
 
 #: mypage.php:274
 msgid "Send a message to the user"
@@ -1299,7 +1324,7 @@ msgstr "查看评论"
 msgid "Users watching this GeoKret:"
 msgstr "用户看这GeoKret："
 
-#: presscorner.php:10 templates.php:114 templates/krety.html:127
+#: presscorner.php:10 templates.php:114 templates/krety.html:146
 msgid "Press corner"
 msgstr "新闻专栏"
 
@@ -1682,172 +1707,172 @@ msgstr "你不能存档不是你自己的GeoKret"
 msgid "Add a comment"
 msgstr "添加评论"
 
-#: ruchy.php:564 ruchy.php:828
+#: ruchy.php:564 ruchy.php:832
 msgid "When you want to write a comment :)"
 msgstr ""
 
-#: ruchy.php:594
+#: ruchy.php:572
+msgid "Reference number"
+msgstr ""
+
+#: ruchy.php:598
 msgid "Archive a GeoKret"
 msgstr "存档GeoKret"
 
-#: ruchy.php:604
+#: ruchy.php:608
 msgid "When a GeoKret has been missing for a long time"
 msgstr ""
 
-#: ruchy.php:605
+#: ruchy.php:609
 msgid "Archive"
 msgstr "档案"
 
-#: ruchy.php:630
+#: ruchy.php:634
 msgid "Tracking Code"
 msgstr ""
 
-#: ruchy.php:633
+#: ruchy.php:637
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
 msgstr ""
 
-#: ruchy.php:647
+#: ruchy.php:651
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
 msgstr ""
 
-#: ruchy.php:655
+#: ruchy.php:659
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "“”这可能是你的： <br /> - 寻宝/ opencaching用户名<br /> - 昵称<br /> - 姓名等"
 
-#: ruchy.php:673
+#: ruchy.php:677
 msgid "Logged at my home coordinates"
 msgstr ""
 
-#: ruchy.php:673
+#: ruchy.php:677
 msgid "Log GeoKret at my home coordinates"
 msgstr ""
 
-#: ruchy.php:684
+#: ruchy.php:688
 msgid "Choose log type"
 msgstr "请选择记录类型"
 
-#: ruchy.php:795
+#: ruchy.php:799
 msgid "Log type"
 msgstr ""
 
-#: ruchy.php:795
+#: ruchy.php:799
 msgid "help.php#Chooselogtype"
 msgstr "help.php＃Chooselogtype"
 
-#: ruchy.php:800
+#: ruchy.php:804
 msgid "When you've left a GeoKret in a cache"
 msgstr ""
 
-#: ruchy.php:801
+#: ruchy.php:805
 msgid "I've dropped GeoKret"
 msgstr "我放下了GeoKret"
 
-#: ruchy.php:807
+#: ruchy.php:811
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr ""
 
-#: ruchy.php:808
+#: ruchy.php:812
 msgid "I've grabbed GeoKret"
 msgstr "我拿到了GeoKret"
 
-#: ruchy.php:814
+#: ruchy.php:818
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr ""
 
-#: ruchy.php:815
+#: ruchy.php:819
 msgid "I've met GeoKret"
 msgstr "我见到了GeoKret"
 
-#: ruchy.php:821
+#: ruchy.php:825
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr ""
 
-#: ruchy.php:822
+#: ruchy.php:826
 msgid "I've dipped a GeoKret"
 msgstr "我蘸GeoKret"
 
-#: ruchy.php:839
+#: ruchy.php:843
 msgid "Identify GeoKret"
 msgstr "确定GeoKret"
 
-#: ruchy.php:848
+#: ruchy.php:852
 msgid "New location"
 msgstr "新的地点"
 
-#: ruchy.php:849
+#: ruchy.php:853
 msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
 msgstr ""
 
-#: ruchy.php:853
+#: ruchy.php:857
 msgid "Waypoint"
 msgstr ""
 
-#: ruchy.php:857
+#: ruchy.php:861
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr ""
 
-#: ruchy.php:858 ruchy.php:871
+#: ruchy.php:862 ruchy.php:875
 msgid "help.php#fullysupportedwaypoints"
 msgstr "help.php＃fullysupportedwaypoints"
 
-#: ruchy.php:861
+#: ruchy.php:865
 msgid "or name of cache"
 msgstr ""
 
-#: ruchy.php:866
+#: ruchy.php:870
 msgid "Check"
 msgstr "检查"
 
-#: ruchy.php:870
+#: ruchy.php:874
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr ""
 
-#: ruchy.php:882
+#: ruchy.php:886
 msgid "Coordinates"
 msgstr "坐标系"
 
-#: ruchy.php:886
+#: ruchy.php:890
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr ""
 
-#: ruchy.php:898
+#: ruchy.php:902
 msgid "Logged using geolocation"
 msgstr ""
 
-#: ruchy.php:898
+#: ruchy.php:902
 msgid "Use geolocation"
 msgstr ""
 
-#: ruchy.php:909
+#: ruchy.php:913
 msgid "Captcha verification"
 msgstr "验证码验证"
 
-#: ruchy.php:933
+#: ruchy.php:946
 msgid "Additional data"
 msgstr "附加数据"
 
-#: ruchy.php:954
+#: ruchy.php:967
 msgid "Two days ago"
 msgstr ""
 
-#: ruchy.php:960
+#: ruchy.php:973
 msgid "Time"
 msgstr "时间"
 
-#: ruchy.php:973
+#: ruchy.php:986
 msgid "now"
 msgstr ""
 
-#: ruchy.php:974
+#: ruchy.php:987
 msgid "Enter exact time when You think it may be important"
 msgstr "如果你认为非常重要的话，请输入确切的时间"
 
-#: ruchy.php:986
-msgid "Optional"
-msgstr "可选"
-
-#: ruchy.php:994
-msgid "Go!"
+#: ruchy.php:999
+msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
 #: statystyczka.php:46
@@ -1873,6 +1898,15 @@ msgstr "十大业主"
 #: szukaj-ajax.php:47
 msgid "GeoKret not found"
 msgstr "找不到GeoKret"
+
+#: szukaj-ajax.php:60
+msgid "Last log:"
+msgstr ""
+
+#: szukaj-ajax.php:68
+#, php-format
+msgid "%s by %s."
+msgstr ""
 
 #: szukaj-ajax.php:73
 msgid "Invalid tracking code"
@@ -1917,17 +1951,17 @@ msgid "Operations on this GeoKret"
 msgstr "对GeoKrety的操作"
 
 #: templates.php:9 templates.php:72 templates.php:198 templates.php:261
-#: templates/krety.html:106
+#: templates/krety.html:125
 msgid "Log a GeoKret"
 msgstr ""
 
 #: templates.php:66 templates.php:138 templates.php:183 templates.php:255
 #: templates.php:321 templates.php:327 templates/krety-m.html:46
-#: templates/krety.html:198
+#: templates/krety.html:217
 msgid "Report abuse"
 msgstr ""
 
-#: templates.php:120 templates.php:303 templates/krety.html:132
+#: templates.php:120 templates.php:303 templates/krety.html:151
 msgid "Side products"
 msgstr ""
 
@@ -2043,59 +2077,59 @@ msgstr "[GeoKrety] 激活您的帐户"
 msgid "Exit translation mode"
 msgstr ""
 
-#: templates/krety.html:72
+#: templates/krety.html:91
 msgid "Saint Nicholas Day"
 msgstr ""
 
-#: templates/krety.html:74
+#: templates/krety.html:93
 msgid "Merry Christmas!"
 msgstr ""
 
-#: templates/krety.html:76
+#: templates/krety.html:95
 msgid "Happy New Year!!!"
 msgstr ""
 
-#: templates/krety.html:78
+#: templates/krety.html:97
 msgid "Valentine's Day"
 msgstr ""
 
-#: templates/krety.html:80
+#: templates/krety.html:99
 msgid "First April!!!"
 msgstr ""
 
-#: templates/krety.html:82
+#: templates/krety.html:101
 msgid "Hallowen"
 msgstr ""
 
-#: templates/krety.html:85
+#: templates/krety.html:104
 msgid "Easter!"
 msgstr ""
 
-#: templates/krety.html:88
+#: templates/krety.html:107
 msgid "Spring!"
 msgstr ""
 
-#: templates/krety.html:90
+#: templates/krety.html:109
 msgid "GeoKrety 10 years Birthday!!!"
 msgstr ""
 
-#: templates/krety.html:92
+#: templates/krety.html:111
 msgid "GeoKrety Birthday!!!"
 msgstr ""
 
-#: templates/krety.html:96
+#: templates/krety.html:115
 msgid "The Grand Finale - Great Orchestra of Christmas Charity."
 msgstr ""
 
-#: templates/krety.html:98
+#: templates/krety.html:117
 msgid "Normal day"
 msgstr ""
 
-#: templates/krety.html:178
+#: templates/krety.html:197
 msgid "Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode."
 msgstr ""
 
-#: templates/krety.html:178
+#: templates/krety.html:197
 msgid "Fix translation"
 msgstr ""
 
