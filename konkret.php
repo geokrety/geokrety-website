@@ -174,8 +174,14 @@ $claim_geokret = '';
 if ($userid == 0) { // if we have an unclaimed geokret then prepare "claim it" text
     if ($userid_longin === null) { // anonim
         $claim_geokret = '<a href="longin.php">'._('Login to claim this GeoKret').'</a>';
+        $claim_alert = '<div class="alert alert-info" role="alert">'
+        .sprintf(_('This GeoKret is available for adoption. Please <a href="%s">login</a> first.'), 'longin.php').
+        '</div>';
     } else {
         $claim_geokret = "<a href='claim.php'>"._('Claim this GeoKret').'</a>';
+        $claim_alert = '<div class="alert alert-info" role="alert">'
+        .sprintf(_('This GeoKret is available for adoption. You can <a href="%s">claim</a> this GeoKret.'), 'claim.php').
+        '</div>';
     }
 }
 
@@ -245,7 +251,7 @@ if ($userRated == 0 and $currentUserKnowsTC == 1 and $ownerIsLogged != 1) {
         $ratingSha = sha1(date('ynj').$userid_longin.$config['jrating_token']);   // for proofing voting userid
 // ------------------------- rating end ------------------ //
 
-$TRESC = '
+$TRESC = $claim_alert.'
 <div itemscope itemtype="http://schema.org/Sculpture">
 <table width="100%">
 <tr><td class="heading1" colspan="2"><img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$krettyp.'/icon_25.jpg" alt="Info:" width="25" height="25" /> GeoKret <strong>'.$nazwa.'</strong> ('.$cotozakret[$krettyp].') '.
