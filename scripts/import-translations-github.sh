@@ -5,7 +5,7 @@
 #set -e
 
 # https://gist.github.com/ddgenome/f3a60fe4c2af0cbe758556d982fbeea9
-source scripts/travis-ci-git-commit.bash
+source scripts/include/travis-ci-git-commit.bash
 
 echo "Starting translation import"
 

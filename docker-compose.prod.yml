@@ -1,0 +1,47 @@
+version: '3'
+services:
+
+## geokrety service
+    geokrety:
+        # following line causes docker-compose to build image using ./Dockerfile
+        build: .
+        container_name: geokrety-prod
+        volumes:
+            - ../configs/konfig-mysql.php:/var/www/html/templates/konfig-mysql.php:ro
+            - ../configs/konfig-local.php:/var/www/html/templates/konfig-local.php:ro
+            - ../configs/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro
+            # persistent vars
+            - ../vars/obrazki/:/var/www/html/obrazki/
+            - ../vars/obrazki-dowonu/:/var/www/html/obrazki-dowonu/
+            - ../vars/obrazki-male/:/var/www/html/obrazki-male/
+            - ../vars/statpics/:/var/www/html/statpics/
+            - ../vars/mapki/:/var/www/html/mapki/
+            # generated vars
+            - ../vars/files/:/var/www/html/files/
+            - ../vars/templates/wykresy/:/var/www/html/templates/wykresy/
+            - ../vars/rzeczy/xml/:/var/www/html/rzeczy/xml/
+            - ../vars/mapa-f/:/var/www/html/rzeczy/mapa-f/out/
+            - ../vars/year-stats/:/var/www/html/templates/stats/year/
+            # temporary vars
+            - ../vars/templates/cache/:/var/www/html/templates/cache/
+            - ../vars/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/:/var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/
+            - ../vars/templates/compile/:/var/www/html/templates/compile/
+        labels:
+            - "traefik.enable=true"
+            - "traefik.backend=geokrety-legacy-prod"
+            - "traefik.frontend.rule=Host:geokrety.org,www.geokrety.org"
+            - "traefik.backend.loadbalancer.method=drr"
+            - "traefik.docker.network=srv_geokrety-front"
+        networks:
+            - front
+            - database
+        restart: unless-stopped
+
+networks:
+    front:
+        external:
+            name: srv_geokrety-front
+    database:
+        external:
+            name: srv_geokrety-db
+

@@ -1,0 +1,51 @@
+version: '3'
+services:
+## database service
+    # keep 'db' as service name to match adminer default hostname
+    db:
+        image: mariadb:10.3
+        container_name: db
+        volumes:
+            - ./mariadb/:/docker-entrypoint-initdb.d:ro
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - TIME_ZONE=UTC
+
+## database administration service
+    adminer:
+        image: adminer:4.6.2
+        container_name: adminer
+        restart: unless-stopped
+        depends_on:
+            - db
+        ports:
+            - 8880:8080
+
+## geokrety service
+    geokrety:
+        # following line causes docker-compose to build image using ./Dockerfile
+        build: .
+        container_name: geokrety
+        volumes:
+            - ./configs/konfig-mysql.php:/var/www/html/templates/konfig-mysql.php:ro
+            - ./configs/konfig-local.php:/var/www/html/templates/konfig-local.php:ro
+            - ./configs/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro
+        # vars
+            - ./vars/files/:/var/www/html/files/
+            - ./vars/statpics/:/var/www/html/statpics/
+            - ./vars/mapki/:/var/www/html/mapki/
+            - ./vars/obrazki/:/var/www/html/obrazki/
+            - ./vars/obrazki-dowonu/:/var/www/html/obrazki-dowonu/
+            - ./vars/obrazki-male/:/var/www/html/obrazki-male/
+            - ./vars/templates/wykresy/:/var/www/html/templates/wykresy/
+            - ./vars/rzeczy/xml/:/var/www/html/rzeczy/xml/
+            - ./vars/templates/cache/:/var/www/html/templates/cache/
+            - ./vars/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/:/var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/
+            - ./vars/templates/compile/:/var/www/html/templates/compile/
+# tbd
+#            - ./vars/mapa-f/:/var/www/html/rzeczy/mapa-f/out/
+#            - ./vars/year-stats/:/var/www/html/templates/stats/year/
+        depends_on:
+            - db
+        ports:
+            - 80:80

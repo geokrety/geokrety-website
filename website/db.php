@@ -228,6 +228,7 @@ class db
                 }
                 $error .= $this->info.'<br />Error No '.$this->mysqli->errno.': '.$this->mysqli->error;
                 $error .= "<br />SQL FAILED: [$sql]";
+                error_log('db error sql:'.$error);
                 $this->send_error_to_db($error, $this->failed_result_sev, $this->failed_result_code);
             } elseif (!$this->empty_result_accept) {
                 $error = $this->empty_result_error;
