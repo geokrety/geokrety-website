@@ -11,7 +11,6 @@ function go2geo($waypoint)
     $prefiksy['2']['OB'] = 'http://www.opencaching.nl/searchplugin.php?userinput=';
     $prefiksy['2']['OR'] = 'http://www.opencaching.ro/searchplugin.php?userinput=';
     $prefiksy['2']['OZ'] = 'https://opencaching.cz/searchplugin.php?userinput=';
-    $prefiksy['2']['ON'] = 'http://www.opencaching.no/searchplugin.php?userinput=';
     $prefiksy['2']['OU'] = 'http://www.opencaching.us/searchplugin.php?userinput=';
 
     // australia
