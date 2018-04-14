@@ -378,25 +378,25 @@ class Securimage
      * The background color of the captcha
      * @var Securimage_Color|string
      */
-    public $image_bg_color = '#ffffff';
+    public $image_bg_color = '#000';
 
     /**
      * The color of the captcha text
      * @var Securimage_Color|string
      */
-    public $text_color     = '#707070';
+    public $text_color     = '#E9865B';
 
     /**
      * The color of the lines over the captcha
      * @var Securimage_Color|string
      */
-    public $line_color     = '#707070';
+    public $line_color     = '#E9865B';
 
     /**
      * The color of the noise that is drawn
      * @var Securimage_Color|string
      */
-    public $noise_color    = '#707070';
+    public $noise_color    = '#E9865B';
 
     /**
      * How transparent to make the text.
@@ -427,7 +427,7 @@ class Securimage
      *
      * @var bool true to insert random spacing between groups of letters
      */
-    public $use_random_spaces  = false;
+    public $use_random_spaces  = true;
 
     /**
      * Draw each character at an angle with random starting angle and increase/decrease per character
@@ -465,7 +465,7 @@ class Securimage
      * The character set to use for generating the captcha code
      * @var string
      */
-    public $charset        = 'abcdefghijkmnopqrstuvwxzyABCDEFGHJKLMNPQRSTUVWXZY0123456789';
+    public $charset        = 'acdefhikmnpstwxyzACDEFHIKLMNPQRSTUVWXZY0123456789';
 
     /**
      * How long in seconds a captcha remains valid, after this time it will be
@@ -517,13 +517,13 @@ class Securimage
      * The signature text to draw on the bottom corner of the image
      * @var string
      */
-    public $image_signature = '';
+    public $image_signature = 'GeoKrety.org';
 
     /**
      * The color of the signature text
      * @var Securimage_Color|string
      */
-    public $signature_color = '#707070';
+    public $signature_color = '#E9865B';
 
     /**
      * The path to the ttf font file to use for the signature text.
@@ -553,7 +553,7 @@ class Securimage
      * @see Securimage::$database_driver
      * @var bool
      */
-    public $use_database = false;
+    public $use_database = true;
 
     /**
      * Whether or not to skip checking if Securimage tables exist when using a
@@ -574,7 +574,7 @@ class Securimage
      *
      * @var string
      */
-    public $database_driver = self::SI_DRIVER_SQLITE3;
+    public $database_driver = self::SI_DRIVER_MYSQL;
 
     /**
      * Database host to connect to when using mysql or postgres
@@ -585,7 +585,7 @@ class Securimage
      *
      * @var string
      */
-    public $database_host   = 'localhost';
+    public $database_host   = CONFIG_HOST;
 
     /**
      * Database username for connection (mysql, postgres only)
@@ -593,7 +593,7 @@ class Securimage
      *
      * @var string
      */
-    public $database_user   = '';
+    public $database_user   = CONFIG_USERNAME;
 
     /**
      * Database password for connection (mysql, postgres only)
@@ -601,7 +601,7 @@ class Securimage
      *
      * @var string
      */
-    public $database_pass   = '';
+    public $database_pass   = CONFIG_PASS;
 
     /**
      * Name of the database to select (mysql, postgres only)
@@ -609,7 +609,7 @@ class Securimage
      * @see Securimage::$database_file for SQLite
      * @var string
      */
-    public $database_name   = '';
+    public $database_name   = CONFIG_DB;
 
     /**
      * Database table where captcha codes are stored
@@ -963,7 +963,7 @@ class Securimage
      *
      * @var bool If true, no session will be started; if false, session will be started and used to store data (default)
      */
-    protected $no_session;
+    protected $no_session = true;
 
     /**
      * Flag indicating whether or not HTTP headers will be sent when outputting
