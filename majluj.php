@@ -8,9 +8,8 @@ require_once 'smarty_start.php';
 $TYTUL = _('Contact with user').'';
 $OGON = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
 
-$kret_antyspamer = $_POST['antyspamer'];
-// autopoprawione...
-$kret_antyspamer2 = $_POST['antyspamer2'];
+$captcha_id = $_POST['captcha_id'];
+$captcha_code = $_POST['captcha_code'];
 // autopoprawione...
 $kret_temat = $_POST['temat'];
 // autopoprawione...
@@ -26,7 +25,15 @@ $g_to = $_GET['to'];
 $g_tresc_maila = $_GET['tresc_maila'];
 // autopoprawione...import_request_variables('g', 'g_');
 
-require_once 'chcek_antispam.php';
+require_once 'templates/konfig.php';
+require_once $config['securimage'].'securimage.php';
+
+$captcha_options = array('database_driver' => Securimage::SI_DRIVER_MYSQL,
+                 'database_host' => CONFIG_HOST,
+                 'database_user' => CONFIG_USERNAME,
+                 'database_pass' => CONFIG_PASS,
+                 'database_name' => CONFIG_DB,
+                 'no_session' => true, );
 
 //----------- FORM -------------- //
 
@@ -66,8 +73,8 @@ if ($longin_status['plain'] == null) {
             }
         }
 
-        $data = date('YmdHis');
-        include_once './obrazek.php';
+        // generate a new captcha ID and challenge
+        $captchaId = Securimage::getCaptchaId(true);
 
         //$BODY = "onload='var x = document.getElementById(\"auto_focus\"); if (x!=null) {x.focus();} '";
         $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'?to='.$g_to.'" method="post" />
@@ -101,7 +108,11 @@ if ($longin_status['plain'] == null) {
 
 <tr>
 <td class="right" style="width:18%;padding-top:8px;"><b>'._('Enter code').':</b></td>
-<td><img class="textalign" src="'.$config['generated'].'obrazek.png?a='.rand(3000, 3999).'" alt="captcha" />'.obrazek().' <input type="text" name="antyspamer2" value="" size="10" />
+<td>
+<input id="captcha_id" type="hidden" name="captcha_id" value="'.$captchaId.'" />
+<input type="text" name="captcha_code" size="10" maxlength="6" value="" autocomplete="off" />
+<img id="siimage" src="'.$config['securimage'].'securimage_show.php?id='.$captchaId.'" alt="Captcha Image" />
+<img src="'.CONFIG_CDN_ICONS.'/refresh.png" onclick="refreshCaptcha(); return false">
 </td>
 </tr>
 
@@ -119,12 +130,10 @@ if ($longin_status['plain'] == null) {
     }
 }
 //=============================  if NOT all required variables are set ====================
-elseif ((empty($kret_antyspamer2))) {
-    $TRESC = _('No antyspam phase!');
-} elseif (crypt($kret_antyspamer2, $config['sol']) != $config['sol'].$kret_antyspamer) {
+elseif ((empty($captcha_code))) {
+    $TRESC = _('No antispam phase!');
+} elseif (Securimage::checkByCaptchaId($captcha_id, $captcha_code, $captcha_options) == false) {
     $TRESC = _('Wrong antispam phrase!');
-} elseif (chcek_antispam_token($config['sol'].$kret_antyspamer) == 0) {
-    $TRESC = _('Antispam token error! Reload the previous page.');
 } else {
     $link = DBConnect();
 

@@ -21,9 +21,8 @@ if ($longin_status['plain'] != null) {
     exit;
 }
 
-$kret_antyspamer = $_POST['antyspamer'];
-// autopoprawione...
-$kret_antyspamer2 = $_POST['antyspamer2'];
+$captcha_id = $_POST['captcha_id'];
+$captcha_code = $_POST['captcha_code'];
 // autopoprawione...
 $kret_email = $_POST['email'];
 // autopoprawione...
@@ -40,6 +39,16 @@ $kret_login = $_POST['login'];
 $kret_wysylacmaile = $_POST['wysylacmaile'];
 // autopoprawione...import_request_variables('p', 'kret_');
 
+require_once 'templates/konfig.php';
+require_once $config['securimage'].'securimage.php';
+
+$captcha_options = array('database_driver' => Securimage::SI_DRIVER_MYSQL,
+                 'database_host' => CONFIG_HOST,
+                 'database_user' => CONFIG_USERNAME,
+                 'database_pass' => CONFIG_PASS,
+                 'database_name' => CONFIG_DB,
+                 'no_session' => true, );
+
 // języki do wyboru //
 
 foreach ($config_jezyk_nazwa as $jezyk_skrot => $jezyk) {
@@ -50,6 +59,9 @@ foreach ($config_jezyk_nazwa as $jezyk_skrot => $jezyk) {
 
 if ((empty($kret_login))) { //--------------------  if login is not set
     include_once './obrazek.php';
+
+    // generate a new captcha ID and challenge
+    $captchaId = Securimage::getCaptchaId(true);
 
     $TRESC = '<form name="adduser" action="'.$_SERVER['PHP_SELF'].'" onsubmit="this.js.value=1; return validateAddUser(this);" method="post" >
 <h2>'._('Required fields').'</h2>
@@ -79,7 +91,12 @@ if ((empty($kret_login))) { //--------------------  if login is not set
 
 <tr>
 <td class="right tmpcol1" style="padding-top:9px;"><b>'._('Enter code').':</b></td>
-<td><img style="padding-bottom:4px;vertical-align:middle;" src="'.$config['generated'].'obrazek.png?a='.rand(1000, 1999).'" alt="captcha" />'.obrazek().' <input class="tmpbox2" type="text" name="antyspamer2" id="captcha" value="" onblur="validateCaptcha();" onkeyup="validateCaptcha(event);"/><span id="captcha_img"></span></td>
+<td>
+<input id="captcha_id" type="hidden" name="captcha_id" value="'.$captchaId.'" />
+<input type="text" name="captcha_code" size="10" maxlength="6" value="" autocomplete="off" />
+<img id="siimage" src="'.$config['securimage'].'securimage_show.php?id='.$captchaId.'" alt="Captcha Image" />
+<img src="'.CONFIG_CDN_ICONS.'/refresh.png" onclick="refreshCaptcha(); return false">
+</td>
 </tr>
 
 <tr>
@@ -116,24 +133,19 @@ if ((empty($kret_login))) { //--------------------  if login is not set
 </ul>'
     );
 } else {
-    $db = new db();
-
-    if (!isset($kret_antyspamer2)) {
-        errory_add('bot', 0, 'adduser');
-        exit;
-    }
-
-    if (crypt($kret_antyspamer2, $config['sol']) != $config['sol'].$kret_antyspamer) {
+    if ((empty($captcha_code))) {
+        $error[] = _('No antispam phase!');
+    } elseif (Securimage::checkByCaptchaId($captcha_id, $captcha_code, $captcha_options) == false) {
         $error[] = _('Wrong antispam phrase!');
     }
+
+    $db = new db();
+
     if ((empty($kret_haslo1))) {
         $error[] = _('No password').' 1';
     }
     if ((empty($kret_haslo2))) {
         $error[] = _('No password').' 2';
-    }
-    if ((empty($kret_antyspamer2))) {
-        $error[] = _('No antyspam phase!');
     }
     if (($kret_haslo1 != $kret_haslo2) or (empty($kret_haslo1))) {
         $error[] = _('Passwords are different or empty!');
@@ -142,8 +154,6 @@ if ((empty($kret_login))) { //--------------------  if login is not set
         $error[] = _('Password to short (should be >= 5 characters)!');
     }
 
-    // chcek active antispam token
-    include_once 'chcek_antispam.php';
     include_once 'czysc.php';
     include_once 'fn_haslo.php';
 
@@ -196,9 +206,6 @@ if ((empty($kret_login))) { //--------------------  if login is not set
     if (!verify_email_address($kret_email)) {
         $error[] = _('Wrong email address?');
     }
-    if (chcek_antispam_token($config['sol'].$kret_antyspamer) == 0) {
-        $error[] = _('Antispam token error! Reload the previous page.');
-    } //tu by sie przydal lepszy tekst...
 
     // ------------------------ jeśli są jakieś BŁĘDY ----------------
     if (!empty($error)) {
@@ -244,8 +251,14 @@ if ((empty($kret_login))) { //--------------------  if login is not set
 
         verify_mail_send($kret_email, $userid);         // send email with a verification code
 
-        $TRESC .= _('An account created successfully. ');
-        $TRESC .= _('An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)');
+        $TRESC .= '<div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">'._('Account successfully created').'</h3>
+          </div>
+          <div class="panel-body">
+            '._('An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)').'
+          </div>
+        </div>';
 
         //TODO trzeba dodac ostrzezenie ze bez emaila nie mozna odzyskac hasla!!!
 

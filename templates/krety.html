@@ -248,6 +248,18 @@ $(document).ready(function(){
   $('.donate[data-toggle="tooltip"]').tooltip();
 });
 </script>
+<script type="text/javascript">
+/* jQuery ajax example of refreshing a static captcha */
+function refreshCaptcha() {
+    $.ajax({ url: 'templates/libraries/securimage-3.6.7/securimage_refresh.php',
+        dataType: 'json',
+    }).done(function(data) {
+        var src = 'templates/libraries/securimage-3.6.7/securimage_show.php?id=' + data.captchaId + '&rand=' + Math.random();
+        $('#siimage').attr('src', src); // replace image with new captcha
+        $('#captcha_id').attr('value', data.captchaId); // update hidden form field
+    });
+}
+</script>
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];

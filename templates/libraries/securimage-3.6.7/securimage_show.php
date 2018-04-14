@@ -47,9 +47,16 @@
 // Remove the "//" from the following line for debugging problems
 // error_reporting(E_ALL); ini_set('display_errors', 1);
 
+require_once '../../konfig.php';
 require_once dirname(__FILE__) . '/securimage.php';
 
-$img = new Securimage();
+$captchaId = (isset($_GET['id'])) ? $_GET['id'] : '';
+// construct options specifying the existing captcha ID
+// also tell securimage not to start a session
+$options = array(
+  'captchaId' => $captchaId
+);
+$img = new Securimage($options);
 
 // You can customize the image by making changes below, some examples are included - remove the "//" to uncomment
 

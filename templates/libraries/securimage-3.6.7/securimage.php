@@ -948,7 +948,7 @@ class Securimage
      *
      * @var int
      */
-    protected $_timeToSolve = 0;
+    protected $_timeToSolve = 600;
 
     /**
      * Flag that can be specified telling securimage not to call exit after
@@ -1205,7 +1205,6 @@ class Securimage
         $opts = array('captchaId'    => $id,
                       'no_session'   => true,
                       'use_database' => true);
-
         if (sizeof($options) > 0) $opts = array_merge($options, $opts);
 
         $si = new self($opts);
@@ -1220,7 +1219,6 @@ class Securimage
 
             if ($si->check($value)) {
                 $si->clearCodeFromDatabase();
-
                 return true;
             } else {
                 return false;
