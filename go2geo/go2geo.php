@@ -5,14 +5,12 @@ function go2geo($waypoint)
     // ------------------------------------------------------------------------ 2 characters
 
     // opencaching
-    $prefiksy['2']['OP'] = 'http://www.opencaching.pl/searchplugin.php?userinput=';
-    $prefiksy['2']['OC'] = 'http://www.opencaching.de/searchplugin.php?userinput=';
-    $prefiksy['2']['OK'] = 'http://www.opencaching.org.uk/searchplugin.php?userinput=';
-    $prefiksy['2']['OZ'] = 'http://www.opencaching.cz/searchplugin.php?userinput=';
-    $prefiksy['2']['OS'] = 'http://www.opencaching.se/searchplugin.php?userinput=';
-    $prefiksy['2']['ON'] = 'http://www.opencaching.no/searchplugin.php?userinput=';
-    $prefiksy['2']['OJ'] = 'http://www.opencaching.jp/searchplugin.php?userinput=';
-    $prefiksy['2']['OL'] = 'http://www.opencaching.lv/searchplugin.php?userinput=';
+    $prefiksy['2']['OP'] = 'https://opencaching.pl/searchplugin.php?userinput=';
+    $prefiksy['2']['OC'] = 'https://www.opencaching.de/searchplugin.php?userinput=';
+    $prefiksy['2']['OK'] = 'https://opencache.uk/searchplugin.php?userinput=';
+    $prefiksy['2']['OB'] = 'http://www.opencaching.nl/searchplugin.php?userinput=';
+    $prefiksy['2']['OR'] = 'http://www.opencaching.ro/searchplugin.php?userinput=';
+    $prefiksy['2']['OZ'] = 'https://opencaching.cz/searchplugin.php?userinput=';
     $prefiksy['2']['OU'] = 'http://www.opencaching.us/searchplugin.php?userinput=';
 
     // australia
