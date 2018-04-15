@@ -167,7 +167,7 @@ if ((empty($kret_login))) { //--------------------  if login is not set
     $db->exec_num_rows($sql, $num_rows, 1);
     if ($num_rows > 0) {
         // if this user registered here recently
-        $sql = "SELECT `userid` FROM `gk-users` WHERE `user`='$login' AND `email`='' AND (NOW()-`joined` < 3600) AND `ostatni_login`=0 AND `ip`='".getenv('REMOTE_ADDR')."' LIMIT 1";
+        $sql = "SELECT `userid` FROM `gk-users` WHERE `user`='$login' AND `email`='' AND (NOW()-`joined` < 3600) AND `ostatni_login`=0 AND `ip`='".getenv('HTTP_X_FORWARDED_FOR')."' LIMIT 1";
         $row = $db->exec_fetch_row($sql, $num_rows, 1);
         if ($num_rows > 0) {
             list($existing_userid) = $row;
@@ -217,7 +217,7 @@ if ((empty($kret_login))) { //--------------------  if login is not set
             $kret_wysylacmaile = 0;
         }
 
-        $ip = getenv('REMOTE_ADDR');
+        $ip = getenv('HTTP_X_FORWARDED_FOR');
         $jezyk = (substr($kret_jezyk, 0, 2));
         $godzina_wysylki = rand(0, 23);
 

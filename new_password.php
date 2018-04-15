@@ -76,7 +76,7 @@ if ((empty($kret_email))) { //--------------------  if login is not set
         $haslo2 = haslo_koduj($haslo_new);
         $result = mysqli_query($link, "UPDATE `gk-users` SET `haslo` = '', `haslo2` = '$haslo2' WHERE `userid` = '$userid' LIMIT 1");
 
-        $ip = getenv('REMOTE_ADDR');
+        $ip = getenv('HTTP_X_FORWARDED_FOR');
         $ip_addr = gethostbyaddr($ip);
         $wiadomosc = _('Your new password in GeoKrety service is').": $haslo_new\n\nRequest from: $ip :: $ip_addr\nIf this mail is unwanted, contact us by replying to this mail.";
 

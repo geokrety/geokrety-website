@@ -129,7 +129,7 @@ function errory_add($details, $severity = 0, $error_uid = '')
     }
 
     $sql = "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`)
-		VALUES ('$error_uid', '$userid', '".$_SERVER['REMOTE_ADDR']."', '".date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])."', '$pfile$referer', '$details$posty', '$severity')";
+		VALUES ('$error_uid', '$userid', '".$_SERVER['HTTP_X_FORWARDED_FOR']."', '".date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])."', '$pfile$referer', '$details$posty', '$severity')";
 
     $result = mysqli_query($link, $sql);
 }

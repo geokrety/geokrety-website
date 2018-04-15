@@ -12,7 +12,7 @@ $db = new db();
 require_once 'defektoskop.php';
 //errory_add('export',0,'export');
 
-$ip = $_SERVER['REMOTE_ADDR'];
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 if ($ip == '62.121.108.70'  /*geokrety.org*/
     || $ip == '86.111.244.117'  /*opencaching.PL*/
     || $ip == '212.2.32.87'  /*opencaching.DE*/

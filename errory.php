@@ -44,7 +44,7 @@ require_once 'longin_chceck.php';
 $longin_status = longin_chceck();
 $userid = $longin_status['userid'];
 //$userid='6262';
-$autoryzowany_uzytkownik = (in_array($userid, $config['superusers']) or ($_SERVER['REMOTE_ADDR'] == '127.0.0.1'));
+$autoryzowany_uzytkownik = (in_array($userid, $config['superusers']) or ($_SERVER['HTTP_X_FORWARDED_FOR'] == '127.0.0.1'));
 
 if (!$autoryzowany_uzytkownik) {
     exit;

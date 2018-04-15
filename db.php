@@ -198,7 +198,7 @@ class db
         // if ( (!$this->overloaded) && ($this->czas >= 2) )
         // {
         // $sql2="INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`)
-        // VALUES ('DB-TIMEOUT', '?', '" .$_SERVER['REMOTE_ADDR']. "', '" . date("Y-m-d H:i:s", $_SERVER['REQUEST_TIME']) . "', '?', '<b>TIME=$czas_tmp</b> [".mysqli_real_escape_string($sql)."]', '2')";
+        // VALUES ('DB-TIMEOUT', '?', '" .$_SERVER['HTTP_X_FORWARDED_FOR']. "', '" . date("Y-m-d H:i:s", $_SERVER['REQUEST_TIME']) . "', '?', '<b>TIME=$czas_tmp</b> [".mysqli_real_escape_string($sql)."]', '2')";
         // $this->execute_raw($sql2);
         // $this->overloaded = true;
         // }

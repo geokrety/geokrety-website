@@ -142,7 +142,7 @@ elseif ((empty($captcha_code))) {
     $temat = trim($kret_temat);
     $tresc = trim($kret_tresc);
     $from = $longin_status['userid'];
-    $ip = getenv('REMOTE_ADDR');
+    $ip = getenv('HTTP_X_FORWARDED_FOR');
     $random_string = random_string(10);
 
     $sql = "INSERT INTO `gk-maile` (`random_string`, `from`,`to`,`temat`, `tresc`,`ip`) VALUES ('$random_string', '$from', '$g_to', '".mysqli_real_escape_string($link, $temat)."', '".mysqli_real_escape_string($link, $tresc)."', '$ip')";
