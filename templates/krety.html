@@ -197,6 +197,22 @@
 <li><a href="lang.php?lang=zu_ZA.UTF-8" title="{t}Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode.{/t}"><i class="glyphicon glyphicon-wrench"></i> {t}Fix translation{/t}</a></li>
 </ul>
 
+<ul class="dropdown ">
+  <li>
+    <div class="panel panel-success donate" data-toggle="tooltip" title="{t}The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is, and always will be free & open-source. Thank you for your support{/t}.">
+      <div class="panel-body text-center">
+        <p><b>{t}Enjoying GeoKrety.org?{/t}</b></p>
+        <p>{t}If you use GeoKrety.org and have found it helpful, please consider donating{/t}.</p>
+      </div>
+      <div class="panel-body text-center">
+        <a class="btn btn-success btn-lg btn-block" href="https://www.paypal.fr/cgi-bin/webscr?cmd=_donations&business=geokrety@gmail.com&lc=EN&item_name=Donation+to+support+the+GeoKrety.org+service&no_note=0&cn=&currency_code=EUR&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
+          {t}Contribute{/t}
+        </a>
+      </div>
+    </div>
+  </li>
+</ul>
+
 </div>
 
 <div id="prawo">
@@ -228,6 +244,8 @@ $(document).ready(function(){
   $('.modal').on('shown.bs.modal', function() {
     $(this).find('[autofocus]').focus();
   });
+
+  $('.donate[data-toggle="tooltip"]').tooltip();
 });
 </script>
 <!-- Piwik -->
