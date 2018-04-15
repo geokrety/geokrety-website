@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 18:19+0000\n"
-"PO-Revision-Date: 2018-04-15 14:21-0400\n"
+"POT-Creation-Date: 2018-04-15 19:00+0000\n"
+"PO-Revision-Date: 2018-04-15 15:01-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
@@ -19,54 +19,54 @@ msgstr ""
 "X-Crowdin-Language: no\n"
 "X-Crowdin-File: /master/messages.po\n"
 
-#: adduser.php:8 adduser.php:105 templates.php:186
+#: adduser.php:8 adduser.php:122 templates.php:186
 #: templates/plugins/function.login_check.php:37
 #: templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr ""
 
-#: adduser.php:55
+#: adduser.php:67
 msgid "Required fields"
 msgstr ""
 
-#: adduser.php:59 ruchy.php:662
+#: adduser.php:71 ruchy.php:662
 msgid "Username"
 msgstr "Brukernavn"
 
-#: adduser.php:64 api-login2secid.php:64 longin.php:142 mypage.php:43
+#: adduser.php:76 api-login2secid.php:64 longin.php:142 mypage.php:43
 msgid "Password"
 msgstr ""
 
-#: adduser.php:69
+#: adduser.php:81
 msgid "Verify Password"
 msgstr ""
 
-#: adduser.php:74 edit.php:402 new_password.php:36
+#: adduser.php:86 edit.php:402 new_password.php:52
 msgid "Email"
 msgstr ""
 
-#: adduser.php:76
+#: adduser.php:88
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr ""
 
-#: adduser.php:81 majluj.php:103 ruchy.php:916
+#: adduser.php:93 majluj.php:110 ruchy.php:916
 msgid "Enter code"
 msgstr ""
 
-#: adduser.php:86 edit.php:489 mypage.php:308
+#: adduser.php:103 edit.php:489 mypage.php:308
 msgid "Language"
 msgstr ""
 
-#: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
+#: adduser.php:118 templates.php:117 templates.php:141 termsofuse.php:11
 #: templates/krety.html:147 templates/krety.html:233
 msgid "Terms of use"
 msgstr ""
 
-#: adduser.php:108
+#: adduser.php:125
 msgid "Tips"
 msgstr ""
 
-#: adduser.php:111 edit.php:206
+#: adduser.php:128 edit.php:206
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -75,65 +75,61 @@ msgid "Read more about choosing good passwords:\n"
 "</ul>"
 msgstr ""
 
-#: adduser.php:127 majluj.php:125 new_password.php:44
+#: adduser.php:137 majluj.php:134 new_password.php:60
+msgid "No antispam phase!"
+msgstr ""
+
+#: adduser.php:139 majluj.php:136 new_password.php:62
 msgid "Wrong antispam phrase!"
 msgstr ""
 
-#: adduser.php:130 adduser.php:133
+#: adduser.php:145 adduser.php:148
 msgid "No password"
 msgstr ""
 
-#: adduser.php:136 majluj.php:123
-msgid "No antyspam phase!"
-msgstr ""
-
-#: adduser.php:139
+#: adduser.php:151
 msgid "Passwords are different or empty!"
 msgstr ""
 
-#: adduser.php:142
+#: adduser.php:154
 msgid "Password to short (should be >= 5 characters)!"
 msgstr ""
 
-#: adduser.php:165
+#: adduser.php:175
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
 msgstr ""
 
-#: adduser.php:166 adduser.php:248
+#: adduser.php:176 adduser.php:259
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr ""
 
-#: adduser.php:167 longin.php:9 templates.php:189
+#: adduser.php:177 longin.php:9 templates.php:189
 #: templates/plugins/function.login_check.php:37
 #: templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr ""
 
-#: adduser.php:167 templates.php:192
+#: adduser.php:177 templates.php:192
 #: templates/plugins/function.login_check.php:37
 #: templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr ""
 
-#: adduser.php:174
+#: adduser.php:184
 msgid "The username you entered is already in use."
 msgstr ""
 
-#: adduser.php:181
+#: adduser.php:191
 msgid "The email you entered is already in use."
 msgstr ""
 
-#: adduser.php:197
+#: adduser.php:207
 msgid "Wrong email address?"
 msgstr ""
 
-#: adduser.php:200 majluj.php:127 new_password.php:51
-msgid "Antispam token error! Reload the previous page."
-msgstr ""
-
-#: adduser.php:247
-msgid "An account created successfully. "
+#: adduser.php:256
+msgid "Account successfully created"
 msgstr ""
 
 #: aktywuj_maila.php:41 confirm.php:83
@@ -153,7 +149,7 @@ msgstr ""
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
 msgstr ""
 
-#: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:34
+#: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:41
 #: newscomments.php:275 please_login.php:11 race_join.php:12 register.php:28
 msgid "Please login."
 msgstr ""
@@ -197,7 +193,7 @@ msgstr ""
 msgid "Your comment"
 msgstr ""
 
-#: comment.php:200 majluj.php:114
+#: comment.php:200 majluj.php:125
 msgid "Send message"
 msgstr ""
 
@@ -230,27 +226,27 @@ msgstr ""
 msgid "Missing or invalid coordinates."
 msgstr ""
 
-#: cotozalog.php:8 templates/konfig.php:132
+#: cotozalog.php:8 templates/konfig.php:133
 msgid "Dropped to"
 msgstr ""
 
-#: cotozalog.php:9 templates/konfig.php:133
+#: cotozalog.php:9 templates/konfig.php:134
 msgid "Grabbed from"
 msgstr ""
 
-#: cotozalog.php:10 templates/konfig.php:134
+#: cotozalog.php:10 templates/konfig.php:135
 msgid "A comment"
 msgstr ""
 
-#: cotozalog.php:11 templates/konfig.php:135
+#: cotozalog.php:11 templates/konfig.php:136
 msgid "Seen in"
 msgstr ""
 
-#: cotozalog.php:12 templates/konfig.php:136
+#: cotozalog.php:12 templates/konfig.php:137
 msgid "Archived"
 msgstr ""
 
-#: cotozalog.php:13 templates/konfig.php:137
+#: cotozalog.php:13 templates/konfig.php:138
 msgid "Dipped in"
 msgstr ""
 
@@ -278,19 +274,19 @@ msgstr ""
 msgid "Freshman mole"
 msgstr ""
 
-#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:139
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:140
 msgid "Traditional"
 msgstr ""
 
-#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:140
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:141
 msgid "A book/CD/DVD..."
 msgstr ""
 
-#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:141
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:142
 msgid "A human"
 msgstr ""
 
-#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:142
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:143
 msgid "A coin"
 msgstr ""
 
@@ -494,7 +490,7 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
+#: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:106
 #: newscomments.php:253 race_add.php:143 register.php:63
 msgid "characters left"
 msgstr ""
@@ -880,82 +876,92 @@ msgid "Login to claim this GeoKret"
 msgstr ""
 
 #: konkret.php:178
+#, php-format
+msgid "This GeoKret is available for adoption. Please <a href=\"%s\">login</a> first."
+msgstr ""
+
+#: konkret.php:181
 msgid "Claim this GeoKret"
 msgstr ""
 
-#: konkret.php:233
+#: konkret.php:183
+#, php-format
+msgid "This GeoKret is available for adoption. You can <a href=\"%s\">claim</a> this GeoKret."
+msgstr ""
+
+#: konkret.php:239
 msgid "You can rate this GeoKret"
 msgstr ""
 
-#: konkret.php:236
+#: konkret.php:242
 msgid "You have already rated this GeoKret"
 msgstr ""
 
-#: konkret.php:238
+#: konkret.php:244
 msgid "You can't rate your own GeoKret"
 msgstr ""
 
-#: konkret.php:240
+#: konkret.php:246
 msgid "You can't rate this geokret"
 msgstr ""
 
-#: konkret.php:258
+#: konkret.php:264
 msgid "Total distance"
 msgstr ""
 
-#: konkret.php:259
+#: konkret.php:265
 msgid "Places visited"
 msgstr ""
 
-#: konkret.php:260
+#: konkret.php:266
 msgid "Forum links"
 msgstr ""
 
-#: konkret.php:261
+#: konkret.php:267
 msgid "Country track"
 msgstr ""
 
-#: konkret.php:262
+#: konkret.php:268
 msgid "Rating"
 msgstr ""
 
-#: konkret.php:264
+#: konkret.php:270
 msgid "votes"
 msgstr ""
 
-#: konkret.php:264
+#: konkret.php:270
 msgid "average rating"
 msgstr ""
 
-#: konkret.php:268
+#: konkret.php:274
 msgid "Share on"
 msgstr ""
 
-#: konkret.php:279
+#: konkret.php:285
 msgid "Short description"
 msgstr ""
 
-#: konkret.php:310
+#: konkret.php:316
 msgid "start"
 msgstr ""
 
-#: konkret.php:311
+#: konkret.php:317
 msgid "trip points"
 msgstr ""
 
-#: konkret.php:312
+#: konkret.php:318
 msgid "recently seen"
 msgstr ""
 
-#: konkret.php:321
+#: konkret.php:327
 msgid "The google map is not avaliable due to large numer of points."
 msgstr ""
 
-#: konkret.php:323
+#: konkret.php:329
 msgid "This geokret has not started yet"
 msgstr ""
 
-#: konkret.php:328
+#: konkret.php:334
 msgid "Download the track as:"
 msgstr ""
 
@@ -1127,27 +1133,27 @@ msgstr ""
 msgid "Contact with user"
 msgstr ""
 
-#: majluj.php:53 majluj.php:176
+#: majluj.php:60 majluj.php:185
 msgid "This user haven't defined an email address."
 msgstr ""
 
-#: majluj.php:55
+#: majluj.php:62
 msgid "You haven't defined an email address."
 msgstr ""
 
-#: majluj.php:81
+#: majluj.php:88
 msgid "From"
 msgstr ""
 
-#: majluj.php:86
+#: majluj.php:93
 msgid "To"
 msgstr ""
 
-#: majluj.php:92
+#: majluj.php:99
 msgid "Subject"
 msgstr ""
 
-#: majluj.php:97
+#: majluj.php:104
 msgid "Message"
 msgstr ""
 
@@ -1189,13 +1195,13 @@ msgstr ""
 
 #: mypage.php:106 mypage.php:370 templates.php:162
 #: templates/plugins/function.login_check.php:48
-#: templates/krety_logged_in.html:8
+#: templates/krety_logged_in.html:9
 msgid "My recent logs"
 msgstr ""
 
 #: mypage.php:116 mypage.php:371 templates.php:165
 #: templates/plugins/function.login_check.php:49
-#: templates/krety_logged_in.html:9
+#: templates/krety_logged_in.html:10
 msgid "Recent moves of my geokrets"
 msgstr ""
 
@@ -1244,51 +1250,51 @@ msgstr ""
 
 #: mypage.php:367 templates.php:153
 #: templates/plugins/function.login_check.php:45
-#: templates/krety_logged_in.html:5
+#: templates/krety_logged_in.html:6
 msgid "Geokrets in my inventory"
 msgstr ""
 
 #: mypage.php:368 templates.php:156
 #: templates/plugins/function.login_check.php:46
-#: templates/krety_logged_in.html:6
+#: templates/krety_logged_in.html:7
 msgid "My geokrets"
 msgstr ""
 
-#: mypage.php:369 templates.php:159 templates/krety_logged_in.html:7
+#: mypage.php:369 templates.php:159 templates/krety_logged_in.html:8
 msgid "Watched geokrets"
 msgstr ""
 
-#: mypage.php:372 templates.php:168 templates/krety_logged_in.html:10
+#: mypage.php:372 templates.php:168 templates/krety_logged_in.html:11
 msgid "My photos"
 msgstr ""
 
-#: mypage.php:373 templates.php:171 templates/krety_logged_in.html:11
+#: mypage.php:373 templates.php:171 templates/krety_logged_in.html:12
 msgid "Photos of my geokrets"
 msgstr ""
 
 #: mypage.php:374 templates.php:174
 #: templates/plugins/function.login_check.php:50
-#: templates/krety_logged_in.html:12
+#: templates/krety_logged_in.html:13
 msgid "Where are my geokrets?"
 msgstr ""
 
-#: new_password.php:26
+#: new_password.php:38
 msgid "To obtain a new password, please enter your e-mail address. A new password will be e-mailed."
 msgstr ""
 
-#: new_password.php:31
+#: new_password.php:43
 msgid "Antispam"
 msgstr ""
 
-#: new_password.php:68
+#: new_password.php:81
 msgid "Your new password in GeoKrety service is"
 msgstr ""
 
-#: new_password.php:72
+#: new_password.php:85
 msgid "New password sent to"
 msgstr ""
 
-#: new_password.php:76
+#: new_password.php:89
 msgid "No such email"
 msgstr ""
 
@@ -1965,19 +1971,19 @@ msgstr ""
 msgid "Side products"
 msgstr ""
 
-#: templates.php:147 templates/krety_logged_in.html:2
+#: templates.php:147 templates/krety_logged_in.html:3
 msgid "My account"
 msgstr ""
 
-#: templates.php:150 templates/krety_logged_in.html:4
+#: templates.php:150 templates/krety_logged_in.html:5
 msgid "Account details"
 msgstr ""
 
-#: templates.php:177 templates/krety_logged_in.html:15
+#: templates.php:177 templates/krety_logged_in.html:16
 msgid "Logout"
 msgstr ""
 
-#: templates/konfig.php:143
+#: templates/konfig.php:144
 msgid "KretyPost"
 msgstr ""
 
@@ -2134,7 +2140,7 @@ msgid "Fix translation"
 msgstr ""
 
 #: templates/krety.html:202
-msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is, and always will be free & open-source. Thank you for your support"
+msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
 msgstr ""
 
 #: templates/krety.html:204
@@ -2147,5 +2153,9 @@ msgstr ""
 
 #: templates/krety.html:209
 msgid "Contribute"
+msgstr ""
+
+#: templates/krety_logged_in.html:2
+msgid "Claim a GeoKret"
 msgstr ""
 
