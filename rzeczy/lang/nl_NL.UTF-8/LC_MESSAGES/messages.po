@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 18:19+0000\n"
-"PO-Revision-Date: 2018-04-15 14:20-0400\n"
+"POT-Creation-Date: 2018-04-15 18:50+0000\n"
+"PO-Revision-Date: 2018-04-15 15:00-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -19,54 +19,54 @@ msgstr ""
 "X-Crowdin-Language: nl\n"
 "X-Crowdin-File: /master/messages.po\n"
 
-#: adduser.php:8 adduser.php:105 templates.php:186
+#: adduser.php:8 adduser.php:122 templates.php:186
 #: templates/plugins/function.login_check.php:37
 #: templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Registreer als nieuwe gebruiker"
 
-#: adduser.php:55
+#: adduser.php:67
 msgid "Required fields"
 msgstr "Verplichte velden"
 
-#: adduser.php:59 ruchy.php:662
+#: adduser.php:71 ruchy.php:662
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: adduser.php:64 api-login2secid.php:64 longin.php:142 mypage.php:43
+#: adduser.php:76 api-login2secid.php:64 longin.php:142 mypage.php:43
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: adduser.php:69
+#: adduser.php:81
 msgid "Verify Password"
 msgstr "Bevestig wachtwoord"
 
-#: adduser.php:74 edit.php:402 new_password.php:36
+#: adduser.php:86 edit.php:402 new_password.php:52
 msgid "Email"
 msgstr "E-mail"
 
-#: adduser.php:76
+#: adduser.php:88
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Ja, Ik wil e-mails ontvangen (verzending dagelijks om middernacht CET/CESC) wanneer mijn eigen of door mij gevolgde GeoKrets van locatie veranderen."
 
-#: adduser.php:81 majluj.php:103 ruchy.php:916
+#: adduser.php:93 majluj.php:110 ruchy.php:916
 msgid "Enter code"
 msgstr "Voer code in"
 
-#: adduser.php:86 edit.php:489 mypage.php:308
+#: adduser.php:103 edit.php:489 mypage.php:308
 msgid "Language"
 msgstr "Taal"
 
-#: adduser.php:101 templates.php:117 templates.php:141 termsofuse.php:11
+#: adduser.php:118 templates.php:117 templates.php:141 termsofuse.php:11
 #: templates/krety.html:147 templates/krety.html:233
 msgid "Terms of use"
 msgstr "Gebruikers overeenkomst"
 
-#: adduser.php:108
+#: adduser.php:125
 msgid "Tips"
 msgstr "Tips"
 
-#: adduser.php:111 edit.php:206
+#: adduser.php:128 edit.php:206
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -80,66 +80,62 @@ msgstr "Lees meer over goede wachtwoorden:\n"
 "<li><a href=\"https://nl.wikipedia.org/wiki/Wachtwoord\">Wachtwoord sterkte</a></li>\n"
 "</ul>"
 
-#: adduser.php:127 majluj.php:125 new_password.php:44
+#: adduser.php:137 majluj.php:134 new_password.php:60
+msgid "No antispam phase!"
+msgstr ""
+
+#: adduser.php:139 majluj.php:136 new_password.php:62
 msgid "Wrong antispam phrase!"
 msgstr "Verkeerde anti-spam ingevuld!"
 
-#: adduser.php:130 adduser.php:133
+#: adduser.php:145 adduser.php:148
 msgid "No password"
 msgstr "Geen wachtwoord"
 
-#: adduser.php:136 majluj.php:123
-msgid "No antyspam phase!"
-msgstr "Geen anti-spam ingevuld!"
-
-#: adduser.php:139
+#: adduser.php:151
 msgid "Passwords are different or empty!"
 msgstr "Wachtwoorden zijn verschillend of leeg!"
 
-#: adduser.php:142
+#: adduser.php:154
 msgid "Password to short (should be >= 5 characters)!"
 msgstr "Wachtwoord te kort (moet meer dan 5 karakters zijn)!"
 
-#: adduser.php:165
+#: adduser.php:175
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
 msgstr "Het lijkt dat <a href='mypage.php?userid=%s'>mijn account</a> al eens eerder is aangemaakt."
 
-#: adduser.php:166 adduser.php:248
+#: adduser.php:176 adduser.php:259
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr "Een e-mail om je e-mailadres te bevestigien is naar je onderweg. Als je dit bevestigd, wordt je account volledig beschikbaar voor je. Tot dan zal het niet mogelijk zijn e-mails te ontvangen over de verplaatsingen van je GeoKrety. De link is 5 dagen geldig. Hierna kun je alles doen op GeoKrety. Voel je vrij om in te loggen op GeoKrety.org en alle mogelijkheden te benutten! :)"
 
-#: adduser.php:167 longin.php:9 templates.php:189
+#: adduser.php:177 longin.php:9 templates.php:189
 #: templates/plugins/function.login_check.php:37
 #: templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Inloggen"
 
-#: adduser.php:167 templates.php:192
+#: adduser.php:177 templates.php:192
 #: templates/plugins/function.login_check.php:37
 #: templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Wachtwoord vergeten?"
 
-#: adduser.php:174
+#: adduser.php:184
 msgid "The username you entered is already in use."
 msgstr "De door jou gekozen gebruikersnaam is al in gebruik."
 
-#: adduser.php:181
+#: adduser.php:191
 msgid "The email you entered is already in use."
 msgstr "Het opgegeven e-mail adres is al in gebruik."
 
-#: adduser.php:197
+#: adduser.php:207
 msgid "Wrong email address?"
 msgstr "Verkeerd e-mail adres?"
 
-#: adduser.php:200 majluj.php:127 new_password.php:51
-msgid "Antispam token error! Reload the previous page."
-msgstr "Antispam fout! Herlaad de vorige pagina."
-
-#: adduser.php:247
-msgid "An account created successfully. "
-msgstr "Account succesvol aangemaakt."
+#: adduser.php:256
+msgid "Account successfully created"
+msgstr ""
 
 #: aktywuj_maila.php:41 confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -158,7 +154,7 @@ msgstr "GK XML interface"
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
 msgstr "Het momenteel opgegeven e-mailadres (%s) lijkt ongeldig te zijn. Verander alsjeblieft <a href=\"/edit.php?co=email\">het e-mailadres</a> in de instellingen."
 
-#: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:34
+#: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:41
 #: newscomments.php:275 please_login.php:11 race_join.php:12 register.php:28
 msgid "Please login."
 msgstr "Inloggen a.u.b."
@@ -202,7 +198,7 @@ msgstr "Laatste commentaar:"
 msgid "Your comment"
 msgstr "Jouw commentaar"
 
-#: comment.php:200 majluj.php:114
+#: comment.php:200 majluj.php:125
 msgid "Send message"
 msgstr "Verstuur bericht"
 
@@ -235,27 +231,27 @@ msgstr "Verkeerde coördinaten, of onbekend formaat."
 msgid "Missing or invalid coordinates."
 msgstr "Ontbrekende of ongeldige coördinaten."
 
-#: cotozalog.php:8 templates/konfig.php:132
+#: cotozalog.php:8 templates/konfig.php:133
 msgid "Dropped to"
 msgstr "Achtergelaten in"
 
-#: cotozalog.php:9 templates/konfig.php:133
+#: cotozalog.php:9 templates/konfig.php:134
 msgid "Grabbed from"
 msgstr "Gepakt uit"
 
-#: cotozalog.php:10 templates/konfig.php:134
+#: cotozalog.php:10 templates/konfig.php:135
 msgid "A comment"
 msgstr "Een opmerking"
 
-#: cotozalog.php:11 templates/konfig.php:135
+#: cotozalog.php:11 templates/konfig.php:136
 msgid "Seen in"
 msgstr "Gezien in"
 
-#: cotozalog.php:12 templates/konfig.php:136
+#: cotozalog.php:12 templates/konfig.php:137
 msgid "Archived"
 msgstr "Gearchiveerd"
 
-#: cotozalog.php:13 templates/konfig.php:137
+#: cotozalog.php:13 templates/konfig.php:138
 msgid "Dipped in"
 msgstr "Is aanwezig geweest in"
 
@@ -283,19 +279,19 @@ msgstr "Op bezoek geweest"
 msgid "Freshman mole"
 msgstr "Nieuw molshol"
 
-#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:139
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:140
 msgid "Traditional"
 msgstr "Traditioneel"
 
-#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:140
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:141
 msgid "A book/CD/DVD..."
 msgstr "Een boek/CD/DVD..."
 
-#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:141
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:142
 msgid "A human"
 msgstr "Een persoon"
 
-#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:142
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:143
 msgid "A coin"
 msgstr "Een munt"
 
@@ -499,7 +495,7 @@ msgstr "help_generate.php?help=fr#geokretysoorten"
 msgid "Comment"
 msgstr "Notitie"
 
-#: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:99
+#: edit.php:570 generatorek.php:142 grp_create.php:66 majluj.php:106
 #: newscomments.php:253 race_add.php:143 register.php:63
 msgid "characters left"
 msgstr "karakters over"
@@ -1132,27 +1128,27 @@ msgstr "<a href=\"%s\">%s</a>, de thuisbasis van de gratis, trackbare mollen."
 msgid "Contact with user"
 msgstr "Neem contact op met gebruiker"
 
-#: majluj.php:53 majluj.php:176
+#: majluj.php:60 majluj.php:185
 msgid "This user haven't defined an email address."
 msgstr "Deze gebruiker heeft geen e-mail adres opgegeven."
 
-#: majluj.php:55
+#: majluj.php:62
 msgid "You haven't defined an email address."
 msgstr "Je hebt geen email adres opgegeven."
 
-#: majluj.php:81
+#: majluj.php:88
 msgid "From"
 msgstr "Van"
 
-#: majluj.php:86
+#: majluj.php:93
 msgid "To"
 msgstr "Naar"
 
-#: majluj.php:92
+#: majluj.php:99
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: majluj.php:97
+#: majluj.php:104
 msgid "Message"
 msgstr "Bericht"
 
@@ -1277,23 +1273,23 @@ msgstr "Foto’s van mijn GeoKret’s"
 msgid "Where are my geokrets?"
 msgstr "Waar zijn mijn geokrets?"
 
-#: new_password.php:26
+#: new_password.php:38
 msgid "To obtain a new password, please enter your e-mail address. A new password will be e-mailed."
 msgstr "Om een nieuw wachtwoord te krijgen, vul je e-mail adres in. Een nieuw wachtwoord zal verstuurd worden."
 
-#: new_password.php:31
+#: new_password.php:43
 msgid "Antispam"
 msgstr "AntiSpam"
 
-#: new_password.php:68
+#: new_password.php:81
 msgid "Your new password in GeoKrety service is"
 msgstr "Jouw nieuwe wachtwoord voor de GeoKrety service is"
 
-#: new_password.php:72
+#: new_password.php:85
 msgid "New password sent to"
 msgstr "Nieuw wachtwoord verzonden naar"
 
-#: new_password.php:76
+#: new_password.php:89
 msgid "No such email"
 msgstr "E-mail adres bestaat niet"
 
@@ -1982,7 +1978,7 @@ msgstr "Account gegevens"
 msgid "Logout"
 msgstr "Uitloggen"
 
-#: templates/konfig.php:143
+#: templates/konfig.php:144
 msgid "KretyPost"
 msgstr "KretyPost"
 
