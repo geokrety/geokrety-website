@@ -25,24 +25,20 @@ $services['geocache'] = 'geocaching databases';
 $services['games'] = 'other GPS games';
 $services['trackable'] = 'trackable items';
 
-$supported['geocache'][] = array('http://opencaching.de/', 'Opencaching DE', 'OC', 'OC0531');
-$supported['geocache'][] = array('http://opencaching.pl/', 'Opencaching PL', 'OP', 'OP05E5');
+$supported['geocache'][] = array('https://opencaching.pl/', 'Opencaching PL', 'OP', 'OP05E5');
+$supported['geocache'][] = array('https://www.opencaching.de/', 'Opencaching DE', 'OC', 'OC0531');
+$supported['geocache'][] = array('https://opencache.uk/', 'Opencaching UK', 'OK', 'OK0014');
+$supported['geocache'][] = array('http://www.opencaching.nl/', 'Opencaching NL', 'OB', 'OB1A8D');
+$supported['geocache'][] = array('http://www.opencaching.ro/', 'Opencaching RO', 'OR', 'OR00BD');
 $supported['geocache'][] = array('http://opencaching.cz/', 'Opencaching CZ', 'OZ', 'OZ0064');
-$supported['geocache'][] = array('http://opencaching.org.uk/', 'Opencaching UK', 'OK', 'OK0014');
-$supported['geocache'][] = array('http://opencaching.us/', 'Opencaching USA', 'OU', 'OU0004');
-$supported['geocache'][] = array('http://opencaching.se/', 'Opencaching SE', 'OS', 'OS0064');
-$supported['geocache'][] = array('http://opencaching.no/', 'Opencaching NO', 'ON', 'ON0064');
-$supported['geocache'][] = array('http://opencaching.lv/', 'Opencaching LV', 'OL', 'OL0064');
-$supported['geocache'][] = array('http://opencaching.jp/', 'Opencaching JP', 'OJ', 'OJ0004');
-$supported['geocache'][] = array('http://opencaching.com/', 'Opencaching.COM', 'OX', 'OX13MC9');
+$supported['geocache'][] = array('http://www.opencaching.us/', 'Opencaching USA', 'OU', 'OU0004');
 
-$supported['geocache'][] = array('http://www.geocaching.com/', 'geocaching.com', 'GC', 'GC1X3Z0');
+$supported['geocache'][] = array('https://www.geocaching.com/', 'geocaching.com', 'GC', 'GC1X3Z0');
 $supported['geocache'][] = array('http://www.terracaching.com/', 'terracaching', 'TC', 'TCCWU');
 $supported['geocache'][] = array('http://navicache.com/', 'navicache', 'N', 'N00AB3');
 $supported['geocache'][] = array('http://www.gpsgames.org/index.php?option=com_wrapper&wrap=Geocaching', 'Geocaching @gpsgames.org', 'GE', 'GE0174');
 $supported['geocache'][] = array('http://geocaching.com.au/', 'Geocaching Australia', 'GA', 'GA0141');
 $supported['geocache'][] = array('http://www.geocaching.su/', 'GeoCaching Russia', 'GE/ VI/ MS/ TR/ EX/', 'TR/1470');
-$supported['geocache'][] = array('http://geocaching.plus.ro/', 'Geocaching Romania', 'GR', 'GR0041');
 $supported['geocache'][] = array('http://www.rejtekhely.ro/', 'Geocaching Transsylvania', 'RH', 'RH0004');
 
 //$supported['games'][] = Array('http://wpg.alleycat.pl/', 'WaypointGame', 'WPG', 'WPG1180');
@@ -53,7 +49,6 @@ $supported['games'][] = array('http://trigpointinguk.com/', 'TrigpointingUK', 'T
 
 $supported['trackable'][] = array('https://geokrety.org/', 'geokrety.org', 'GK', 'GK05E5');
 $supported['trackable'][] = array('http://www.geocaching.com/track/travelbugs.aspx', 'travelbugs', 'TB', 'TB2771P');
-$supported['trackable'][] = array('http://www.travelertags.com/', 'traveler tags', 'T', 'TF4C2');
 
 //$supported[''][] = Array('', '', '', '');
 //$supported[''][] = Array('', '', '', '');
