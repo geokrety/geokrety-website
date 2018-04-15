@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 18:50+0000\n"
-"PO-Revision-Date: 2018-04-15 15:00-0400\n"
+"POT-Creation-Date: 2018-04-15 19:00+0000\n"
+"PO-Revision-Date: 2018-04-15 15:13-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -82,7 +82,7 @@ msgstr "En savoir plus sur le choix d'un bon mot de passe:\n"
 
 #: adduser.php:137 majluj.php:134 new_password.php:60
 msgid "No antispam phase!"
-msgstr ""
+msgstr "Phrase anti-spam obligatoire !"
 
 #: adduser.php:139 majluj.php:136 new_password.php:62
 msgid "Wrong antispam phrase!"
@@ -135,7 +135,7 @@ msgstr "Mauvaise adresse e-mail ?"
 
 #: adduser.php:256
 msgid "Account successfully created"
-msgstr ""
+msgstr "Compte créé avec succès"
 
 #: aktywuj_maila.php:41 confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -881,82 +881,92 @@ msgid "Login to claim this GeoKret"
 msgstr "Connectez-vous pour adopter ce GeoKret"
 
 #: konkret.php:178
+#, php-format
+msgid "This GeoKret is available for adoption. Please <a href=\"%s\">login</a> first."
+msgstr "Ce GeoKret est disponible pour l'adoption. Veuillez tout d'abord vous <a href=\"%s\">connecter</a>."
+
+#: konkret.php:181
 msgid "Claim this GeoKret"
 msgstr "Adopter ce GeoKret"
 
-#: konkret.php:233
+#: konkret.php:183
+#, php-format
+msgid "This GeoKret is available for adoption. You can <a href=\"%s\">claim</a> this GeoKret."
+msgstr "Ce GeoKret est disponible pour l'adoption. Vous pouvez l'<a href=\"%s\">adopter</a>."
+
+#: konkret.php:239
 msgid "You can rate this GeoKret"
 msgstr "Vous pouvez noter ce GeoKret"
 
-#: konkret.php:236
+#: konkret.php:242
 msgid "You have already rated this GeoKret"
 msgstr "Vous avez déjà noté ce GeoKret"
 
-#: konkret.php:238
+#: konkret.php:244
 msgid "You can't rate your own GeoKret"
 msgstr "Vous n'êtes pas autorisé à noter un GeoKret qui vous appartient"
 
-#: konkret.php:240
+#: konkret.php:246
 msgid "You can't rate this geokret"
 msgstr "Vous ne pouvez pas noter ce GeoKret"
 
-#: konkret.php:258
+#: konkret.php:264
 msgid "Total distance"
 msgstr "Distance totale"
 
-#: konkret.php:259
+#: konkret.php:265
 msgid "Places visited"
 msgstr "Lieux visités"
 
-#: konkret.php:260
+#: konkret.php:266
 msgid "Forum links"
 msgstr "Liens forum et HTML"
 
-#: konkret.php:261
+#: konkret.php:267
 msgid "Country track"
 msgstr "Parcours"
 
-#: konkret.php:262
+#: konkret.php:268
 msgid "Rating"
 msgstr "Note"
 
-#: konkret.php:264
+#: konkret.php:270
 msgid "votes"
 msgstr "Votes"
 
-#: konkret.php:264
+#: konkret.php:270
 msgid "average rating"
 msgstr "note moyenne"
 
-#: konkret.php:268
+#: konkret.php:274
 msgid "Share on"
 msgstr "Partager"
 
-#: konkret.php:279
+#: konkret.php:285
 msgid "Short description"
 msgstr "Description courte"
 
-#: konkret.php:310
+#: konkret.php:316
 msgid "start"
 msgstr "départ"
 
-#: konkret.php:311
+#: konkret.php:317
 msgid "trip points"
 msgstr "étapes"
 
-#: konkret.php:312
+#: konkret.php:318
 msgid "recently seen"
 msgstr "position récente"
 
-#: konkret.php:321
+#: konkret.php:327
 msgid "The google map is not avaliable due to large numer of points."
 msgstr "La carte Google n'est pas disponible en raison d'un trop grand nombre de points."
 
-#: konkret.php:323
+#: konkret.php:329
 msgid "This geokret has not started yet"
 msgstr "Ce GeoKret n'a pas encore voyagé."
 
-#: konkret.php:328
+#: konkret.php:334
 msgid "Download the track as:"
 msgstr "Télécharger ce parcours comme :"
 
@@ -1190,13 +1200,13 @@ msgstr "Générer un nouveau secid"
 
 #: mypage.php:106 mypage.php:370 templates.php:162
 #: templates/plugins/function.login_check.php:48
-#: templates/krety_logged_in.html:8
+#: templates/krety_logged_in.html:9
 msgid "My recent logs"
 msgstr "Mes signalements"
 
 #: mypage.php:116 mypage.php:371 templates.php:165
 #: templates/plugins/function.login_check.php:49
-#: templates/krety_logged_in.html:9
+#: templates/krety_logged_in.html:10
 msgid "Recent moves of my geokrets"
 msgstr "Signalements récents pour mes GeoKrety"
 
@@ -1245,31 +1255,31 @@ msgstr "Liens"
 
 #: mypage.php:367 templates.php:153
 #: templates/plugins/function.login_check.php:45
-#: templates/krety_logged_in.html:5
+#: templates/krety_logged_in.html:6
 msgid "Geokrets in my inventory"
 msgstr "GeoKrety dans vos mains"
 
 #: mypage.php:368 templates.php:156
 #: templates/plugins/function.login_check.php:46
-#: templates/krety_logged_in.html:6
+#: templates/krety_logged_in.html:7
 msgid "My geokrets"
 msgstr "Mes GeoKrety"
 
-#: mypage.php:369 templates.php:159 templates/krety_logged_in.html:7
+#: mypage.php:369 templates.php:159 templates/krety_logged_in.html:8
 msgid "Watched geokrets"
 msgstr "GeoKrety favoris"
 
-#: mypage.php:372 templates.php:168 templates/krety_logged_in.html:10
+#: mypage.php:372 templates.php:168 templates/krety_logged_in.html:11
 msgid "My photos"
 msgstr "Mes photos"
 
-#: mypage.php:373 templates.php:171 templates/krety_logged_in.html:11
+#: mypage.php:373 templates.php:171 templates/krety_logged_in.html:12
 msgid "Photos of my geokrets"
 msgstr "Photos de mes GeoKrety"
 
 #: mypage.php:374 templates.php:174
 #: templates/plugins/function.login_check.php:50
-#: templates/krety_logged_in.html:12
+#: templates/krety_logged_in.html:13
 msgid "Where are my geokrets?"
 msgstr "Où sont mes GeoKrety ?"
 
@@ -1966,15 +1976,15 @@ msgstr "Signaler un abus"
 msgid "Side products"
 msgstr "Fonctions complémentaires"
 
-#: templates.php:147 templates/krety_logged_in.html:2
+#: templates.php:147 templates/krety_logged_in.html:3
 msgid "My account"
 msgstr "Mon compte"
 
-#: templates.php:150 templates/krety_logged_in.html:4
+#: templates.php:150 templates/krety_logged_in.html:5
 msgid "Account details"
 msgstr "Détails du compte"
 
-#: templates.php:177 templates/krety_logged_in.html:15
+#: templates.php:177 templates/krety_logged_in.html:16
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -2141,8 +2151,8 @@ msgid "Fix translation"
 msgstr "Corriger la traduction"
 
 #: templates/krety.html:202
-msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is, and always will be free & open-source. Thank you for your support"
-msgstr "La contribution suggérée est de 3 € mais tout autre montant sera apprécié. Le don n'est pas obligatoire car GeoKrety.org est, et sera toujours gratuit & open-source. Merci pour votre soutien"
+msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
+msgstr "La contribution suggérée est de 3 € mais tout autre montant sera apprécié. Le don n'est pas obligatoire car GeoKrety.org est, et restera toujours gratuit & open-source. Merci pour votre soutien"
 
 #: templates/krety.html:204
 msgid "Enjoying GeoKrety.org?"
@@ -2155,4 +2165,8 @@ msgstr "Si vous utilisez GeoKrety.org et que vous trouvez le site utile, alors e
 #: templates/krety.html:209
 msgid "Contribute"
 msgstr "Participer"
+
+#: templates/krety_logged_in.html:2
+msgid "Claim a GeoKret"
+msgstr "Adopter un GeoKret"
 
