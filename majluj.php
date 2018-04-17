@@ -137,36 +137,44 @@ elseif ((empty($captcha_code))) {
 } else {
     $link = DBConnect();
 
-    include_once 'random_string.php';
-
-    $temat = trim($kret_temat);
-    $tresc = trim($kret_tresc);
-    $from = $longin_status['userid'];
-    $ip = getenv('HTTP_X_FORWARDED_FOR');
-    $random_string = random_string(10);
-
-    $sql = "INSERT INTO `gk-maile` (`random_string`, `from`,`to`,`temat`, `tresc`,`ip`) VALUES ('$random_string', '$from', '$g_to', '".mysqli_real_escape_string($link, $temat)."', '".mysqli_real_escape_string($link, $tresc)."', '$ip')";
-    $result = mysqli_query($link, $sql) or $TRESC = 'Error #7761293312 ;)';
-
-    // ----------- sending mail ------------- //
-
-    // email from
-    $result = mysqli_query($link, "SELECT `user`, `email` FROM `gk-users` WHERE `userid`='$from' AND `email` != '' LIMIT 1");
+    // rate limit
+    // SELECT count(*) FROM `gk-maile` WHERE `from`=26422 AND TIMESTAMPDIFF(MINUTE, timestamp, NOW()) < 5
+    $result = mysqli_query($link, 'SELECT count(*) FROM `gk-maile` WHERE `from`='.$longin_status['userid'].' AND TIMESTAMPDIFF(MINUTE, timestamp, NOW()) < '.$config['mail_rate_limit']);
     $row = mysqli_fetch_row($result);
     mysqli_free_result($result);
-    list($from_user, $from_user_email) = $row;
+    list($count_rate_limit) = $row;
 
-    $result = mysqli_query($link, "SELECT `user`, `email` FROM `gk-users` WHERE `userid`='$g_to' AND `email` != '' LIMIT 1");
-    $row = mysqli_fetch_row($result);
-    mysqli_free_result($result);
-    list($to_user, $to_user_email) = $row;
+    if ($count_rate_limit == 0) {
+        include_once 'random_string.php';
 
-    $headers = 'MIME-Version: 1.0'."\r\n";
-    $headers .= 'Content-Type: text/plain; charset=UTF-8'."\r\n";
-    $headers .= 'From: Geokrety.org <geokrety@gmail.com>'."\r\n";
-    $headers .= "Reply-To: $from_user <$from_user_email>"."\r\n";
+        $temat = trim($kret_temat);
+        $tresc = trim($kret_tresc);
+        $from = $longin_status['userid'];
+        $ip = getenv('HTTP_X_FORWARDED_FOR');
+        $random_string = random_string(10);
 
-    $tresc = "This email was sent by user $from_user (".$config['adres']."mypage.php?userid=$from)
+        $sql = "INSERT INTO `gk-maile` (`random_string`, `from`,`to`,`temat`, `tresc`,`ip`) VALUES ('$random_string', '$from', '$g_to', '".mysqli_real_escape_string($link, $temat)."', '".mysqli_real_escape_string($link, $tresc)."', '$ip')";
+        $result = mysqli_query($link, $sql) or $TRESC = 'Error #7761293312 ;)';
+
+        // ----------- sending mail ------------- //
+
+        // email from
+        $result = mysqli_query($link, "SELECT `user`, `email` FROM `gk-users` WHERE `userid`='$from' AND `email` != '' LIMIT 1");
+        $row = mysqli_fetch_row($result);
+        mysqli_free_result($result);
+        list($from_user, $from_user_email) = $row;
+
+        $result = mysqli_query($link, "SELECT `user`, `email` FROM `gk-users` WHERE `userid`='$g_to' AND `email` != '' LIMIT 1");
+        $row = mysqli_fetch_row($result);
+        mysqli_free_result($result);
+        list($to_user, $to_user_email) = $row;
+
+        $headers = 'MIME-Version: 1.0'."\r\n";
+        $headers .= 'Content-Type: text/plain; charset=UTF-8'."\r\n";
+        $headers .= 'From: Geokrety.org <geokrety@gmail.com>'."\r\n";
+        $headers .= "Reply-To: $from_user <$from_user_email>"."\r\n";
+
+        $tresc = "This email was sent by user $from_user (".$config['adres']."mypage.php?userid=$from)
 If you suspect an abuse, please let us know: geokrety@gmail.com
 Referer: $random_string
 
@@ -176,13 +184,16 @@ Referer: $random_string
 
 --------------------------------------------------------------------------';
 
-    // czy aby na pewno jest emailowy aders
-    if ($to_user_email != '') {
-        mail($to_user_email, "[GeoKrety] [Contact] ($from_user) $temat", $tresc, $headers);
-        sleep(5);
-        $TRESC = _('Ok');
+        // czy aby na pewno jest emailowy aders
+        if ($to_user_email != '') {
+            mail($to_user_email, "[GeoKrety] [Contact] ($from_user) $temat", $tresc, $headers);
+            sleep(5);
+            $TRESC = _('Ok');
+        } else {
+            $TRESC = _('This user haven\'t defined an email address.');
+        }
     } else {
-        $TRESC = _('This user haven\'t defined an email address.');
+        $TRESC = sprintf(_('Sorry, but you have to wait %d minutes before you can send another message.'), $config['mail_rate_limit']);
     }
 } //if all required variables are set
 

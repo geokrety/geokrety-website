@@ -31,6 +31,9 @@ $kocham_kaczynskiego = 'xxx';
 // jRating access token
 $config['jrating_token'] = 'xxx';
 
+// Delay between each message (rate limit inter-users messages)
+$config['mail_rate_limit'] = 15;
+
 $config['superusers'] = array('1', '6262', '26422');     // admin users
 
 $config['obrazki'] = 'obrazki/';
