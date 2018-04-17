@@ -40,7 +40,7 @@ $captcha_options = array('database_driver' => Securimage::SI_DRIVER_MYSQL,
 if ($longin_status['plain'] == null) {
     $TRESC = "<a href='/longin.php'>"._('Please login.').'</a>';
 } elseif (!ctype_digit($g_to)) {
-    $TRESC = 'Wrong recipient';
+    $TRESC = _('Wrong recipient');
 } elseif ((empty($kret_tresc))) { //--------------------  if NOT all required variables are set
     // to: ....
 
@@ -180,9 +180,9 @@ Referer: $random_string
     if ($to_user_email != '') {
         mail($to_user_email, "[GeoKrety] [Contact] ($from_user) $temat", $tresc, $headers);
         sleep(5);
-        $TRESC = 'Ok.';
+        $TRESC = _('Ok');
     } else {
-        $TRESC = _("This user haven't defined an email address.");
+        $TRESC = _('This user haven\'t defined an email address.');
     }
 } //if all required variables are set
 
