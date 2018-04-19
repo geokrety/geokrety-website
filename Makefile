@@ -1,6 +1,22 @@
 
 GIT_COMMIT := $(shell git rev-parse --short HEAD)
 
+
+builddev:
+	docker-compose -f docker-compose.dev.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT) geokrety-dev
+
+startdev: builddev
+	docker-compose -f docker-compose.dev.yml --project-name=gk-dev up -d geokrety-dev
+
+stopdev:
+	docker-compose -f docker-compose.dev.yml --project-name=gk-dev down
+
+updatedev: builddev
+	docker-compose -f docker-compose.dev.yml --project-name=gk-dev2 up -d geokrety-dev
+	docker-compose -f docker-compose.dev.yml --project-name=gk-dev up -d geokrety-dev
+	docker-compose -f docker-compose.dev.yml --project-name=gk-dev2 down
+
+
 buildrec:
 	docker-compose -f docker-compose.rec.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT) geokrety-rec
 
