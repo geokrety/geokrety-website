@@ -134,7 +134,7 @@ if ((empty($kret_login))) { //--------------------  if login is not set
     );
 } else {
     if ((empty($captcha_code))) {
-        $error[] = _('No antispam phase!');
+        $error[] = _('No antispam phrase!');
     } elseif (Securimage::checkByCaptchaId($captcha_id, $captcha_code, $captcha_options) == false) {
         $error[] = _('Wrong antispam phrase!');
     }
