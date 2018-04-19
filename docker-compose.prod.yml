@@ -2,7 +2,7 @@ version: '3'
 services:
 
 ## geokrety service
-    geokrety:
+    geokrety-prod:
         # following line causes docker-compose to build image using ./Dockerfile
         build: .
         image: geokrety:prod
