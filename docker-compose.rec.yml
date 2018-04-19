@@ -5,7 +5,8 @@ services:
     geokrety:
         # following line causes docker-compose to build image using ./Dockerfile
         build: .
-        container_name: geokrety
+        image: geokrety:rec
+        container_name: geokrety-rec
         volumes:
             - ../configs/konfig-mysql.php:/var/www/html/templates/konfig-mysql.php:ro
             - ../configs/konfig-local.php:/var/www/html/templates/konfig-local.php:ro
