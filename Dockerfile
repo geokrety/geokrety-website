@@ -51,6 +51,11 @@ RUN chmod a+r /usr/share/php/smarty/libs/plugins/block.t.php /usr/share/php/smar
 # Install site
 COPY website/ /var/www/html/
 
-RUN chown www-data /var/www/html/templates/compile/ /var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/ /var/www/html/templates/cache
+ARG GIT_COMMIT='unspecified'
+RUN chown www-data \
+      /var/www/html/templates/compile/ \
+      /var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/ \
+      /var/www/html/templates/cache \
+    && echo $GIT_COMMIT > /var/www/html/git-version
 
 # to use it without docker-compose : docker run -it --rm --name geokrety -p 80:80 -v $(pwd)/website:/var/www/html/ geokrety
