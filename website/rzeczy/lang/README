@@ -4,11 +4,11 @@ To extract strings from templates:
 
 Extract gettext string using:
 
-  xgettext --from-code=UTF-8 -o /tmp/messages.pot --language=PHP -f rzeczy/lang/input-files-for-xgettext
-  tsmarty2c -o /tmp/smarty.pot ./templates/index.html ./templates/krety-m.html  ./templates/krety.html ./templates/krety_not_logged_in.html ./templates/krety_logged_in.html
-  msgcat -o rzeczy/messages.po.txt /tmp/messages.pot /tmp/smarty.pot
+  xgettext --from-code=UTF-8 -o /tmp/messages.pot --language=PHP -f website/rzeczy/lang/input-files-for-xgettext
+  tsmarty2c -o /tmp/smarty.pot ./website/templates/index.html ./website/templates/krety-m.html ./website/templates/krety.html ./website/templates/krety_not_logged_in.html ./website/templates/krety_logged_in.html
+  msgcat -o website/rzeczy/messages.po.txt /tmp/messages.pot /tmp/smarty.pot
 
 
 Compile translation:
 
-  msgfmt rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.po -o rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.mo
+  msgfmt website/rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.po -o website/rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.mo
