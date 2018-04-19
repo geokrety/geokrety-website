@@ -132,7 +132,7 @@ function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders
 
         //has avatar?
         if ($f_picfilename != '' and !$emailversion) {
-            $pic = "<div style='position:absolute;left:70px;top:3px;'><img src='".CONFIG_CDN_ICONS."/idcard.png' width='14' height='10' alt='#' class='att_js' title='ajax|2|".CONFIG_CDN_IMAGES."/obrazki-male/$f_picfilename|".CONFIG_CDN_IMAGES."/obrazki/$f_picfilename'/></div>";
+            $pic = "<div style='position:absolute;left:70px;top:3px;'><img src='".CONFIG_CDN_ICONS."/idcard.png' width='14' height='10' alt='#' class='att_js' title='ajax|2|".CONFIG_CDN_OBRAZKI_MALE."/$f_picfilename|".CONFIG_CDN_OBRAZKI."/$f_picfilename'/></div>";
         } else {
             $pic = '';
         }

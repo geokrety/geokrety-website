@@ -216,7 +216,7 @@ function recent_comments($where, $limit, $title = '', $zapytanie = '', $showhead
         } else {
             //has avatar?
             if ($f_picfilename != '') {
-                $pic = "<img src='".CONFIG_CDN_ICONS."/idcard.png' alt='#' class='att_js idcard' title='ajax|2|".CONFIG_CDN_IMAGES."/obrazki-male/$f_picfilename|".CONFIG_CDN_IMAGES."/obrazki/$f_picfilename'/>";
+                $pic = "<img src='".CONFIG_CDN_ICONS."/idcard.png' alt='#' class='att_js idcard' title='ajax|2|".CONFIG_CDN_OBRAZKI_MALE."/$f_picfilename|".CONFIG_CDN_OBRAZKI."/$f_picfilename'/>";
             } else {
                 $pic = '';
             }

@@ -107,7 +107,7 @@ ORDER BY finishedIsnull ASC, rgk.finished ASC $ORDERBY";
     while ($row = mysqli_fetch_array($result)) {
         $droga = $row['distRace'];
         $kesze = $row['cachesRace'];
-        $avatar = (($row['plik'] != '') ? "<img src='".CONFIG_CDN_IMAGES.'/obrazki-male/'.$row['plik']."' alt='avatar' />" : '---');
+        $avatar = (($row['plik'] != '') ? "<img src='".CONFIG_CDN_OBRAZKI_MALE.'/'.$row['plik']."' alt='avatar' />" : '---');
         $typ = "<img src='".CONFIG_CDN_IMAGES."log-icons/$row[8]/icon_25.jpg' alt='icon' />";
 
         ++$rank;

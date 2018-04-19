@@ -72,7 +72,7 @@ function recent_pictures($sql_limit = '', $sql_where = '')
         $tip = '<table class="temptip" border="0" cellspacing="0" cellpadding="0">'.$tip.'</table>';
         $tip = htmlspecialchars($tip, ENT_QUOTES);
 
-        $return .= "<span class='obrazek'>$flaga<a href='".CONFIG_CDN_IMAGES."/obrazki/$f_plik' rel='lytebox[gk]'><img src='".CONFIG_CDN_IMAGES."/obrazki-male/$f_plik'  width='100' height='100' border='0' alt='photo' class='att_js' title='$tip'/></a><br />$f_opis</span>\n";
+        $return .= "<span class='obrazek'>$flaga<a href='".CONFIG_CDN_OBRAZKI."/$f_plik' rel='lytebox[gk]'><img src='".CONFIG_CDN_OBRAZKI_MALE."/$f_plik'  width='100' height='100' border='0' alt='photo' class='att_js' title='$tip'/></a><br />$f_opis</span>\n";
     }
 
     return $return;

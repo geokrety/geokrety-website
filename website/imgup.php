@@ -256,7 +256,7 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
             //simor - jezeli userowi powiodlo sie zmniejszenie pliku do wymaganych rozmiarow to nie edytujmy juz jego pliku
             // w przyszlosci, mozna tutaj napisac f-cje ktora po wgraniu oryginalnej fotki, sama je obetnie do tych ~100kb
 
-            exec("convert -size 300x300 $uploadfile -thumbnail x200   -resize '200x<'   -resize 50% -gravity center -crop 100x100+0+0  +repage ".$config['obrazki-male']."$filename.$extension");
+            exec("convert -size 300x300 $uploadfile -thumbnail x200   -resize '200x<'   -resize 50% -gravity center -crop 100x100+0+0  +repage ".CONFIG_CDN_OBRAZKI_MALE."$filename.$extension");
 
             chmod($uploadfile, 0666);
             chmod($config['obrazki-male']."$filename.$extension", 0666);
@@ -286,7 +286,7 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
                 $TRESC = 'Error #2314';
             }
 
-            //$TRESC = "<p>Ok.</p><img src=\"".CONFIG_CDN_IMAGES."/obrazki-male/$filename.$extension\" /><p>$p_opis</p>";
+            //$TRESC = "<p>Ok.</p><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$filename.$extension\" /><p>$p_opis</p>";
         } else {
             $TRESC = 'Error #20100111';
             include_once 'smarty.php';
@@ -395,7 +395,7 @@ table.imgup2{
             '</table>'.
             '</form>';
 
-        ($f_obrazki_plik == '') ? $tmpphoto = CONFIG_CDN_ICONS.'/empty_obrazek.png' : $tmpphoto = CONFIG_CDN_IMAGES."/obrazki-male/$f_obrazki_plik";
+        ($f_obrazki_plik == '') ? $tmpphoto = CONFIG_CDN_ICONS.'/empty_obrazek.png' : $tmpphoto = CONFIG_CDN_OBRAZKI_MALE."/$f_obrazki_plik";
         $TRESC .= "<div class='imgup3'><span class=\"obrazek\"><img src=\"$tmpphoto\" border=\"0\" alt=\"$f_opis\" title=\"$f_opis\" width=\"100\" height=\"100\"/><br /><span id=\"pic\">$f_opis</span></span></div>";
     } else {   // errory
         include_once 'defektoskop.php';

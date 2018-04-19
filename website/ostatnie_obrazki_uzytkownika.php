@@ -17,7 +17,7 @@ if (isset($userid) && is_numeric($userid)) {
 
     while ($row = mysqli_fetch_array($result)) {
         list($plik, $opis) = $row;
-        echo "<span class='obrazek'><img onClick='javascript:getsrc(this)' src='".CONFIG_CDN_IMAGES."/obrazki-male/$plik'  width='100' height='100' border='0' alt='$opis' /></span>";
+        echo "<span class='obrazek'><img onClick='javascript:getsrc(this)' src='".CONFIG_CDN_OBRAZKI_MALE."/$plik'  width='100' height='100' border='0' alt='$opis' /></span>";
     }
 } else {
     include_once 'defektoskop.php';

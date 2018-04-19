@@ -282,7 +282,7 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
         while ($row = mysqli_fetch_row($result)) {
             list($obrazki_id, $obrazki_plik, $obrazki_opis) = $row;
 
-            $OBRAZKI .= "<span class=\"obrazek\"><a href=\"obrazki/$obrazki_plik\" target=\"_blank\"><img src=\"".CONFIG_CDN_IMAGES."/obrazki-male/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
+            $OBRAZKI .= "<span class=\"obrazek\"><a href=\"obrazki/$obrazki_plik\" target=\"_blank\"><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
 
             if ($longin_status['userid'] == $kret_userid) {
                 $OBRAZKI .= ' <a href="edit.php?delete_obrazek='.$obrazki_id.'" onClick="return CzySkasowac(this, \'this entry???\')"><img src="'.CONFIG_CDN_IMAGES.'/icons/delete.png" alt="delete" width="11" height="11" border="0" /></a>';

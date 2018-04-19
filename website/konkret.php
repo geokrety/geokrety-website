@@ -129,7 +129,7 @@ while ($row = mysqli_fetch_row($result)) {
     $obrazki_opis = preg_replace("/(([^\s\&]|(\&[\S]+\;)){10})/u", '$1&shy;', $obrazki_opis);
 
     ($obrazki_id == $avatar_id) ? $tmpclass = 'obrazek_hi' : $tmpclass = 'obrazek';
-    $OBRAZKI_MAIN .= "<span class=\"$tmpclass\"><a href=\"".CONFIG_CDN_IMAGES."/obrazki/$obrazki_plik\" rel=\"cb\" title=\"$obrazki_opis\" ><img src=\"".CONFIG_CDN_IMAGES."/obrazki-male/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
+    $OBRAZKI_MAIN .= "<span class=\"$tmpclass\"><a href=\"".CONFIG_CDN_OBRAZKI."/$obrazki_plik\" rel=\"cb\" title=\"$obrazki_opis\" ><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
 
     if ($userid == $userid_longin) {
         $OBRAZKI_MAIN .= ' <a href="imgup.php?typ='.$obrazki_typ.'&amp;id='.$id.'&amp;rename='.$obrazki_id.'" title="'._('Rename').'"><img src="'.CONFIG_CDN_ICONS.'/edit10.png" alt="rename" width="10" height="10" border="0" /></a> ';

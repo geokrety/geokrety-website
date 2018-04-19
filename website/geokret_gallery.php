@@ -159,7 +159,7 @@ if (($p_formname == 'newavatar') and $allowed_to_modify and ctype_digit($p_avata
                 $avatar = '';
             }
 
-            $TRESC .= "<span class='$tmpclass'>$avatar$flaga<a href='".CONFIG_CDN_IMAGES."/obrazki/$f_plik' rel='cb' ><img src='".CONFIG_CDN_IMAGES."/obrazki-male/$f_plik' class='att_js' title='$tip' width='100' height='100' border='0' alt='click' /></a><br />$f_opis</span>\n";
+            $TRESC .= "<span class='$tmpclass'>$avatar$flaga<a href='".CONFIG_CDN_OBRAZKI."/$f_plik' rel='cb' ><img src='".CONFIG_CDN_OBRAZKI_MALE."/$f_plik' class='att_js' title='$tip' width='100' height='100' border='0' alt='click' /></a><br />$f_opis</span>\n";
             ++$i;
         }
     } // while mysqli_fetch_array

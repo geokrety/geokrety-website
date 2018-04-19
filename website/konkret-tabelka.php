@@ -262,7 +262,7 @@ if ($result) {
                     $ph_opis = preg_replace("/(([^\s\&]|(\&[\S]+\;)){10})/u", '$1&shy;', $ph_opis);
 
                     ($ph_obrazek_id == $avatar_id) ? $tmpclass = 'obrazek_hi' : $tmpclass = 'obrazek';
-                    $tmp = "<div class='$tmpclass'><a href='obrazki/$ph_plik' rel='cb' title='$ph_opis'><img src='".CONFIG_CDN_IMAGES."/obrazki-male/$ph_plik' border='0' alt='Photo: $ph_opis' width='100' height='100'/></a><br />$ph_opis";
+                    $tmp = "<div class='$tmpclass'><a href='obrazki/$ph_plik' rel='cb' title='$ph_opis'><img src='".CONFIG_CDN_OBRAZKI_MALE."/$ph_plik' border='0' alt='Photo: $ph_opis' width='100' height='100'/></a><br />$ph_opis";
 
                     if ($ruch_userid == $userid_longin) {
                         $tmp .= " <a href='imgup.php?typ=1&amp;id=$ruch_id&amp;rename=$ph_obrazek_id' title='"._('Rename')."'><img src='".CONFIG_CDN_ICONS."/edit10.png' alt='[Rename]' width='10' height='10' border='0' /></a> ";
