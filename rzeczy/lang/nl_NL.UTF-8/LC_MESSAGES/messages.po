@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 19:00+0000\n"
-"PO-Revision-Date: 2018-04-15 15:12-0400\n"
+"POT-Creation-Date: 2018-04-17 21:55+0000\n"
+"PO-Revision-Date: 2018-04-19 08:01-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -82,7 +82,7 @@ msgstr "Lees meer over goede wachtwoorden:\n"
 
 #: adduser.php:137 majluj.php:134 new_password.php:60
 msgid "No antispam phase!"
-msgstr ""
+msgstr "Geen anti-spam ingevuld!"
 
 #: adduser.php:139 majluj.php:136 new_password.php:62
 msgid "Wrong antispam phrase!"
@@ -135,7 +135,7 @@ msgstr "Verkeerd e-mail adres?"
 
 #: adduser.php:256
 msgid "Account successfully created"
-msgstr ""
+msgstr "Account is met succes aangemaakt"
 
 #: aktywuj_maila.php:41 confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -231,27 +231,27 @@ msgstr "Verkeerde coördinaten, of onbekend formaat."
 msgid "Missing or invalid coordinates."
 msgstr "Ontbrekende of ongeldige coördinaten."
 
-#: cotozalog.php:8 templates/konfig.php:133
+#: cotozalog.php:8 templates/konfig.php:136
 msgid "Dropped to"
 msgstr "Achtergelaten in"
 
-#: cotozalog.php:9 templates/konfig.php:134
+#: cotozalog.php:9 templates/konfig.php:137
 msgid "Grabbed from"
 msgstr "Gepakt uit"
 
-#: cotozalog.php:10 templates/konfig.php:135
+#: cotozalog.php:10 templates/konfig.php:138
 msgid "A comment"
 msgstr "Een opmerking"
 
-#: cotozalog.php:11 templates/konfig.php:136
+#: cotozalog.php:11 templates/konfig.php:139
 msgid "Seen in"
 msgstr "Gezien in"
 
-#: cotozalog.php:12 templates/konfig.php:137
+#: cotozalog.php:12 templates/konfig.php:140
 msgid "Archived"
 msgstr "Gearchiveerd"
 
-#: cotozalog.php:13 templates/konfig.php:138
+#: cotozalog.php:13 templates/konfig.php:141
 msgid "Dipped in"
 msgstr "Is aanwezig geweest in"
 
@@ -279,19 +279,19 @@ msgstr "Op bezoek geweest"
 msgid "Freshman mole"
 msgstr "Nieuw molshol"
 
-#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:140
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:143
 msgid "Traditional"
 msgstr "Traditioneel"
 
-#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:141
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:144
 msgid "A book/CD/DVD..."
 msgstr "Een boek/CD/DVD..."
 
-#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:142
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:145
 msgid "A human"
 msgstr "Een persoon"
 
-#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:143
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:146
 msgid "A coin"
 msgstr "Een munt"
 
@@ -487,7 +487,7 @@ msgstr "Geokret soort"
 
 #: edit.php:564 register.php:57
 msgid "help.php#geokretytypes"
-msgstr "help_generate.php?help=fr#geokretysoorten"
+msgstr "help_generate.php?help=nl#geokretytypes"
 
 #: edit.php:568 generatorek.php:140 labels.php:67 recent_comments_fn.php:103
 #: recent_moves.php:94 register.php:61 ruchy.php:565 ruchy.php:833
@@ -883,7 +883,7 @@ msgstr "Login om deze GeoKret te claimen"
 #: konkret.php:178
 #, php-format
 msgid "This GeoKret is available for adoption. Please <a href=\"%s\">login</a> first."
-msgstr ""
+msgstr "Deze GeoKret is beschikbaar voor adoptie. Gelieve eerst <a href=\"%s\">inloggen</a>."
 
 #: konkret.php:181
 msgid "Claim this GeoKret"
@@ -892,7 +892,7 @@ msgstr "claim deze GeoKret"
 #: konkret.php:183
 #, php-format
 msgid "This GeoKret is available for adoption. You can <a href=\"%s\">claim</a> this GeoKret."
-msgstr ""
+msgstr "Deze GeoKret is beschikbaar voor adoptie. Gelieve eerst <a href=\"%s\">inloggen</a>."
 
 #: konkret.php:239
 msgid "You can rate this GeoKret"
@@ -1138,7 +1138,11 @@ msgstr "<a href=\"%s\">%s</a>, de thuisbasis van de gratis, trackbare mollen."
 msgid "Contact with user"
 msgstr "Neem contact op met gebruiker"
 
-#: majluj.php:60 majluj.php:185
+#: majluj.php:43
+msgid "Wrong recipient"
+msgstr "Verkeerd geadresseerde"
+
+#: majluj.php:60 majluj.php:193
 msgid "This user haven't defined an email address."
 msgstr "Deze gebruiker heeft geen e-mail adres opgegeven."
 
@@ -1161,6 +1165,15 @@ msgstr "Onderwerp"
 #: majluj.php:104
 msgid "Message"
 msgstr "Bericht"
+
+#: majluj.php:191
+msgid "Ok"
+msgstr "Oké"
+
+#: majluj.php:196
+#, php-format
+msgid "Sorry, but you have to wait %d minutes before you can send another message."
+msgstr "Sorry, maar je moet %d minuten wachten voordat je een ander bericht kunt verzenden."
 
 #: molehole.php:71
 msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
@@ -1772,7 +1785,7 @@ msgstr "Logsoort"
 
 #: ruchy.php:799
 msgid "help.php#Chooselogtype"
-msgstr "help_generate.php?help=nl#kies log soort"
+msgstr "help_generate.php?help=nl#Chooselogtype"
 
 #: ruchy.php:804
 msgid "When you've left a GeoKret in a cache"
@@ -1828,7 +1841,7 @@ msgstr "bijv.: GC1AQ2N, OP069B, OC033A…"
 
 #: ruchy.php:862 ruchy.php:875
 msgid "help.php#fullysupportedwaypoints"
-msgstr " help.php#fullysupportedwaypoints "
+msgstr "help_generate.php?help=nl#fullysupportedwaypoints"
 
 #: ruchy.php:865
 msgid "or name of cache"
@@ -1988,7 +2001,7 @@ msgstr "Account gegevens"
 msgid "Logout"
 msgstr "Uitloggen"
 
-#: templates/konfig.php:144
+#: templates/konfig.php:147
 msgid "KretyPost"
 msgstr "KretyPost"
 
@@ -2024,7 +2037,11 @@ msgid "<p>This document sets the conditions of use of \"geokrety.org\" - a volun
 "<p>You must ensure that information published by the user in the Site <strong>content must not affect the existing law</strong>. In particular, the content published by the user may not violate the copyright of third parties. All content (including descriptions of the Geokrety, illustrations and all their entries in the logs) made available by publishing them on our site users <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The user is responsible directly to the copyright holder for any violations in this area associated with him published by the content on our site.</p>\n\n"
 "<p>We don`t provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</p>\n\n"
 "<p>Content published by you on the site may not contain vulgar expressions , abusive, or illegal content. </p>"
-msgstr ""
+msgstr "<p>Dit document beschrijf de voorwaarden voor het gebruik van \"geokrety.org\" - a voluntarily operated Internet geocaching service available at https://geokrety.org (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure.</p>\n\n"
+"<p>The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service.</p>\n\n"
+"<p>You must ensure that information published by the user in the Site <strong>content must not affect the existing law</strong>. In particular, the content published by the user may not violate the copyright of third parties. All content (including descriptions of the Geokrety, illustrations and all their entries in the logs) made available by publishing them on our site users <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The user is responsible directly to the copyright holder for any violations in this area associated with him published by the content on our site.</p>\n\n"
+"<p>We don`t provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</p>\n\n"
+"<p>Content published by you on the site may not contain vulgar expressions , abusive, or illegal content. </p>"
 
 #: toolbox.php:11
 msgid "Geokrety Toolbox"
@@ -2146,21 +2163,21 @@ msgstr "Online vertalen"
 
 #: templates/krety.html:202
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
-msgstr ""
+msgstr "De voorgestelde bijdrage is 3€ maar elk bedrag wordt gewaardeerd. Donatie is niet vereist omdat GeoKrety.org gratis en open source blijft. Dank voor je steun"
 
 #: templates/krety.html:204
 msgid "Enjoying GeoKrety.org?"
-msgstr ""
+msgstr "Vind je GeoKrety.org leuk?"
 
 #: templates/krety.html:205
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
-msgstr ""
+msgstr "Wanneer je GeoKrety.org waardeert zou je een donatie kunnen doen"
 
 #: templates/krety.html:209
 msgid "Contribute"
-msgstr ""
+msgstr "Doneren"
 
 #: templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
-msgstr ""
+msgstr "Adopteer een GeoKret"
 

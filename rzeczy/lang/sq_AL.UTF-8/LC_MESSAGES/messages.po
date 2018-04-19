@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 19:00+0000\n"
-"PO-Revision-Date: 2018-04-15 15:12-0400\n"
+"POT-Creation-Date: 2018-04-17 21:55+0000\n"
+"PO-Revision-Date: 2018-04-17 18:00-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Albanian\n"
 "Language: sq_AL\n"
@@ -234,27 +234,27 @@ msgstr "Koordinatat e këqija ose formati i panjohur."
 msgid "Missing or invalid coordinates."
 msgstr "Koordinatat e zhdukura ose të pavlefshme."
 
-#: cotozalog.php:8 templates/konfig.php:133
+#: cotozalog.php:8 templates/konfig.php:136
 msgid "Dropped to"
 msgstr "Për të rënë"
 
-#: cotozalog.php:9 templates/konfig.php:134
+#: cotozalog.php:9 templates/konfig.php:137
 msgid "Grabbed from"
 msgstr "Grabbed nga"
 
-#: cotozalog.php:10 templates/konfig.php:135
+#: cotozalog.php:10 templates/konfig.php:138
 msgid "A comment"
 msgstr "Një koment"
 
-#: cotozalog.php:11 templates/konfig.php:136
+#: cotozalog.php:11 templates/konfig.php:139
 msgid "Seen in"
 msgstr "Parë në"
 
-#: cotozalog.php:12 templates/konfig.php:137
+#: cotozalog.php:12 templates/konfig.php:140
 msgid "Archived"
 msgstr "Arkiv"
 
-#: cotozalog.php:13 templates/konfig.php:138
+#: cotozalog.php:13 templates/konfig.php:141
 msgid "Dipped in"
 msgstr "Zhytur në"
 
@@ -282,19 +282,19 @@ msgstr "Vizita"
 msgid "Freshman mole"
 msgstr "nishan Freshman"
 
-#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:140
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:143
 msgid "Traditional"
 msgstr "Tradicionale"
 
-#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:141
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:144
 msgid "A book/CD/DVD..."
 msgstr "A book / CD / DVD ..."
 
-#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:142
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:145
 msgid "A human"
 msgstr "Një njeriut"
 
-#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:143
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:146
 msgid "A coin"
 msgstr "Nje monedhe"
 
@@ -1141,7 +1141,11 @@ msgstr ""
 msgid "Contact with user"
 msgstr "Kontaktoni me përdorues"
 
-#: majluj.php:60 majluj.php:185
+#: majluj.php:43
+msgid "Wrong recipient"
+msgstr ""
+
+#: majluj.php:60 majluj.php:193
 msgid "This user haven't defined an email address."
 msgstr "Ky përdorues nuk kanë përcaktuar një adresë email-i."
 
@@ -1164,6 +1168,15 @@ msgstr "Subjekti"
 #: majluj.php:104
 msgid "Message"
 msgstr "Mesazh"
+
+#: majluj.php:191
+msgid "Ok"
+msgstr ""
+
+#: majluj.php:196
+#, php-format
+msgid "Sorry, but you have to wait %d minutes before you can send another message."
+msgstr ""
 
 #: molehole.php:71
 msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
@@ -1991,7 +2004,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: templates/konfig.php:144
+#: templates/konfig.php:147
 msgid "KretyPost"
 msgstr ""
 

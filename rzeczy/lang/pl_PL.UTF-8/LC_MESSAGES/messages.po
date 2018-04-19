@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 19:00+0000\n"
-"PO-Revision-Date: 2018-04-15 15:01-0400\n"
+"POT-Creation-Date: 2018-04-17 21:55+0000\n"
+"PO-Revision-Date: 2018-04-17 18:01-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -77,7 +77,7 @@ msgstr "Dowiedz się więcej o wybieraniu dobrych i silnych haseł, np <a href=\
 
 #: adduser.php:137 majluj.php:134 new_password.php:60
 msgid "No antispam phase!"
-msgstr ""
+msgstr "Brak kodu antyspamowego!"
 
 #: adduser.php:139 majluj.php:136 new_password.php:62
 msgid "Wrong antispam phrase!"
@@ -130,7 +130,7 @@ msgstr "Zły adres emailowy"
 
 #: adduser.php:256
 msgid "Account successfully created"
-msgstr ""
+msgstr "Konto zostało utworzone pomyślnie"
 
 #: aktywuj_maila.php:41 confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -147,7 +147,7 @@ msgstr "Kreci interfejs XMLowy ;)"
 #: check_email_validity.php:12
 #, php-format
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
-msgstr ""
+msgstr "Aktualnie skonfigurowany adres e-mail (%s) wydaje się być nieprawidłowy. <a href=\"/edit.php?co=email\">Zaktualizuj swój adres teraz</a>."
 
 #: claim.php:22 comment.php:77 generatorek.php:57 imgup.php:69 majluj.php:41
 #: newscomments.php:275 please_login.php:11 race_join.php:12 register.php:28
@@ -178,16 +178,16 @@ msgstr "Podaj proszę informacje mogące być przydate przy odnalezieniu tego kr
 
 #: comment.php:166
 msgid "Log:"
-msgstr ""
+msgstr "Logi:"
 
 #: comment.php:166 comment.php:181
 #, php-format
 msgid "By %s, on %s"
-msgstr ""
+msgstr "Przez %s, na %s"
 
 #: comment.php:181
 msgid "Last comment:"
-msgstr ""
+msgstr "Ostatni komentarz:"
 
 #: comment.php:192
 msgid "Your comment"
@@ -226,27 +226,27 @@ msgstr "Złe współrzędne lub nieznany format"
 msgid "Missing or invalid coordinates."
 msgstr "Brak lub błędne współrzędne"
 
-#: cotozalog.php:8 templates/konfig.php:133
+#: cotozalog.php:8 templates/konfig.php:136
 msgid "Dropped to"
 msgstr "Wrzucony do"
 
-#: cotozalog.php:9 templates/konfig.php:134
+#: cotozalog.php:9 templates/konfig.php:137
 msgid "Grabbed from"
 msgstr "Zabrany z"
 
-#: cotozalog.php:10 templates/konfig.php:135
+#: cotozalog.php:10 templates/konfig.php:138
 msgid "A comment"
 msgstr "Komentarz"
 
-#: cotozalog.php:11 templates/konfig.php:136
+#: cotozalog.php:11 templates/konfig.php:139
 msgid "Seen in"
 msgstr "Widziany w"
 
-#: cotozalog.php:12 templates/konfig.php:137
+#: cotozalog.php:12 templates/konfig.php:140
 msgid "Archived"
 msgstr "Zarchiwizowany"
 
-#: cotozalog.php:13 templates/konfig.php:138
+#: cotozalog.php:13 templates/konfig.php:141
 msgid "Dipped in"
 msgstr "Odwiedził"
 
@@ -274,19 +274,19 @@ msgstr "Odwiedza"
 msgid "Freshman mole"
 msgstr "Kret-żółtodziób ;)"
 
-#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:140
+#: cotozalog.php:40 generatorek.php:132 templates/konfig.php:143
 msgid "Traditional"
 msgstr "Tradycyjny"
 
-#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:141
+#: cotozalog.php:41 generatorek.php:133 templates/konfig.php:144
 msgid "A book/CD/DVD..."
 msgstr "Książka/CD/DVD"
 
-#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:142
+#: cotozalog.php:42 generatorek.php:134 templates/konfig.php:145
 msgid "A human"
 msgstr "Człowiek"
 
-#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:143
+#: cotozalog.php:43 generatorek.php:135 templates/konfig.php:146
 msgid "A coin"
 msgstr "Toczygrosz"
 
@@ -297,7 +297,7 @@ msgstr "Statystyka wg. krajów"
 
 #: country_stat.php:30
 msgid "Where are GeoKrety now?"
-msgstr ""
+msgstr "Gdzie są teraz GeoKrety?"
 
 #: czy_obserwowany.php:45
 msgid "Number of users who are watching this geokret"
@@ -342,7 +342,7 @@ msgstr "Plik tłumaczeń"
 
 #: download.php:15
 msgid "Our translation files are now hosted on crowdin."
-msgstr ""
+msgstr "Nasze tłumaczenia plików są teraz obsługiwane przez crowdin."
 
 #: download.php:16
 msgid "Suggest a better translation"
@@ -422,7 +422,7 @@ msgstr "np."
 #: edit.php:330
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
-msgstr ""
+msgstr "<a href=\"%s\" target=\"_blank\">inne dopuszczalne formaty szerokości/długości geograficznej</a>"
 
 #: edit.php:341 mypage.php:156
 msgid "Observation area"
@@ -1133,7 +1133,11 @@ msgstr ""
 msgid "Contact with user"
 msgstr "Kontakt z użytkownikiem"
 
-#: majluj.php:60 majluj.php:185
+#: majluj.php:43
+msgid "Wrong recipient"
+msgstr ""
+
+#: majluj.php:60 majluj.php:193
 msgid "This user haven't defined an email address."
 msgstr "Ten użytkownik nie podał swojego adresu email."
 
@@ -1156,6 +1160,15 @@ msgstr "Temat"
 #: majluj.php:104
 msgid "Message"
 msgstr "Wiadomość"
+
+#: majluj.php:191
+msgid "Ok"
+msgstr ""
+
+#: majluj.php:196
+#, php-format
+msgid "Sorry, but you have to wait %d minutes before you can send another message."
+msgstr ""
 
 #: molehole.php:71
 msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
@@ -1984,7 +1997,7 @@ msgstr "Szczegóły konta"
 msgid "Logout"
 msgstr ""
 
-#: templates/konfig.php:144
+#: templates/konfig.php:147
 msgid "KretyPost"
 msgstr "Krecia Poczta"
 
@@ -2083,7 +2096,7 @@ msgstr "[GeoKrety] Uaktywnij swoje konto"
 
 #: templates/krety.html:59
 msgid "Exit translation mode"
-msgstr ""
+msgstr "Wyjdź z trybu tłumaczenia"
 
 #: templates/krety.html:91
 msgid "Saint Nicholas Day"
@@ -2119,7 +2132,7 @@ msgstr ""
 
 #: templates/krety.html:109
 msgid "GeoKrety 10 years Birthday!!!"
-msgstr ""
+msgstr "Dziesiąte Urodziny Geokretów!!!"
 
 #: templates/krety.html:111
 msgid "GeoKrety Birthday!!!"
@@ -2147,15 +2160,15 @@ msgstr ""
 
 #: templates/krety.html:204
 msgid "Enjoying GeoKrety.org?"
-msgstr ""
+msgstr "Lubisz GeoKrety?"
 
 #: templates/krety.html:205
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
-msgstr ""
+msgstr "Jeśli podoba Ci się ta strona i idea geokretów, rozważ proszę małą darowiznę"
 
 #: templates/krety.html:209
 msgid "Contribute"
-msgstr ""
+msgstr "Wesprzyj"
 
 #: templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
