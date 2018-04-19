@@ -23,10 +23,6 @@ services:
             - ../vars/rzeczy/xml/:/var/www/html/rzeczy/xml/
             - ../vars/mapa-f/:/var/www/html/rzeczy/mapa-f/out/
             - ../vars/year-stats/:/var/www/html/templates/stats/year/
-            # temporary vars
-            - ../vars/templates/cache/:/var/www/html/templates/cache/
-            - ../vars/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/:/var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/
-            - ../vars/templates/compile/:/var/www/html/templates/compile/
         labels:
             - "traefik.enable=true"
             - "traefik.backend=geokrety-legacy-rec"
