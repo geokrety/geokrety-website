@@ -131,7 +131,7 @@ if ($longin_status['plain'] == null) {
 }
 //=============================  if NOT all required variables are set ====================
 elseif ((empty($captcha_code))) {
-    $TRESC = _('No antispam phase!');
+    $TRESC = _('No antispam phrase!');
 } elseif (Securimage::checkByCaptchaId($captcha_id, $captcha_code, $captcha_options) == false) {
     $TRESC = _('Wrong antispam phrase!');
 } else {

@@ -57,7 +57,7 @@ if ((empty($kret_email))) { //--------------------  if login is not set
 <input type="submit" value=" go! " /></form>
 ';
 } elseif ((empty($captcha_code))) {
-    $TRESC = _('No antispam phase!');
+    $TRESC = _('No antispam phrase!');
 } elseif (Securimage::checkByCaptchaId($captcha_id, $captcha_code, $captcha_options) == false) {
     $TRESC = _('Wrong antispam phrase!');
 } else {
