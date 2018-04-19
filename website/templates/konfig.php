@@ -5,7 +5,7 @@ $config['adres'] = 'https://geokrety.org/';
 
 // CDN url
 
-$config['cdn_url'] = 'http://cdn.geokrety.org';
+$config['cdn_url'] = 'https://cdn.geokrety.org';
 
 // Google map Api key
 $GOOGLE_MAP_KEY = 'xxx';

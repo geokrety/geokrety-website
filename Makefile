@@ -42,6 +42,6 @@ stopprod:
 	docker-compose -f docker-compose.prod.yml --project-name=gk down
 
 updateprod: buildprod
-	docker-compose -f docker-compose.prod.yml --project-name=gk-tmp up -d geokrety-rec
-	docker-compose -f docker-compose.prod.yml --project-name=gk up -d geokrety-rec
+	docker-compose -f docker-compose.prod.yml --project-name=gk-tmp up -d geokrety-prod
+	docker-compose -f docker-compose.prod.yml --project-name=gk up -d geokrety-prod
 	docker-compose -f docker-compose.prod.yml --project-name=gk-tmp down
