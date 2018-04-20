@@ -256,7 +256,7 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
             //simor - jezeli userowi powiodlo sie zmniejszenie pliku do wymaganych rozmiarow to nie edytujmy juz jego pliku
             // w przyszlosci, mozna tutaj napisac f-cje ktora po wgraniu oryginalnej fotki, sama je obetnie do tych ~100kb
 
-            exec("convert -size 300x300 $uploadfile -thumbnail x200   -resize '200x<'   -resize 50% -gravity center -crop 100x100+0+0  +repage ".CONFIG_CDN_OBRAZKI_MALE."$filename.$extension");
+            exec("convert -size 300x300 $uploadfile -thumbnail x200   -resize '200x<'   -resize 50% -gravity center -crop 100x100+0+0  +repage ".$config['obrazki-male']."$filename.$extension");
 
             chmod($uploadfile, 0666);
             chmod($config['obrazki-male']."$filename.$extension", 0666);
