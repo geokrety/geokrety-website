@@ -53,6 +53,13 @@ fi
 echo " * Load env for $MACHINE docker machine"
 eval $(docker-machine env $MACHINE) || die "Unable to set machine $MACHINE env"
 
+SCPQUIET=-q
+docker-machine scp --help|grep quiet >/dev/null
+if [ $? -ne 0 ]; then
+ echo "Warning: docker-machine outdated version detected($DOCKERMACHINE_VERSION): will not use scp --quiet option. Update Toolbox to remove this warning."
+ SCPQUIET=
+fi
+
 function alternate_scp {
 	# echo " o Hum... seems 'docker-machine scp' doesn't work ($DOCKERMACHINE_VERSION), try alternate way.."
 	# retrieve docker default machine SSH PORT
@@ -64,15 +71,16 @@ function alternate_scp {
 	SSHIDFILE="~/.docker/machine/machines/$MACHINE/id_rsa"
 	# echo "   using identity: $SSHIDFILE"
 	SSHOPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet -3 -o IdentitiesOnly=yes "
-	# echo " * Copy resources (alternate way)"
+	# echo " * Copy resources (alternate way from $1 to $2)"
 	scp.exe $SSHOPTS -o Port=$SSHPORT -o IdentityFile="$SSHIDFILE" -q -r $1 docker@127.0.0.1:$2|| die "Unable to scp $1 (to machine $MACHINE:$2)"
 }
 
 echo " * Copy docker resources"
-docker-machine scp -q -r docker/apache2 $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp docker/apache2 ./
-docker-machine scp -q -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp docker/configs ./
-docker-machine scp -q -r docker/mariadb $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp docker/mariadb ./
-docker-machine scp -q -r docker/vars    $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp docker/vars ./
+docker-machine ssh $MACHINE 'sudo chown -R docker vars 2>/dev/null'
+docker-machine scp $SCPQUIET -r docker/apache2 $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/apache2" "."
+docker-machine scp $SCPQUIET -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/configs" "."
+docker-machine scp $SCPQUIET -r docker/mariadb $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/mariadb" "."
+docker-machine scp $SCPQUIET -r docker/vars    $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/vars" "."
 
 echo " * Convert machine resources (using dos2unix)"
 docker-machine ssh $MACHINE 'find . -type f -exec dos2unix {} \;'  || die "Unable to convert resources"
@@ -95,3 +103,5 @@ echo " geokrety | http://${GK_IP}/"
 echo " adminer  | http://${GK_IP}:8880/"
 # start "" "http://${GK_IP}:8880/?server=db&username=root&db=geokrety-db&password=password"
 # echo "(in case of connect error, wait a min and refresh the page)"
+
+alias gklogs="docker-machine ssh $MACHINE 'docker logs geokrety'"
