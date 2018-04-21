@@ -4,6 +4,7 @@
 # Goal: refresh geokrety docker-machine website and configs
 #
 MACHINE=geokrety
+WIN_COMPOSE_FILE="docker-compose-windows.yml"
 
 function dockerNeeded {
 	echo "requirements: docker-toolbox (version 18 or sup)"
@@ -34,6 +35,13 @@ echo " * Load env for $MACHINE docker machine"
 eval $(docker-machine env $MACHINE) || die "Unable to set machine $MACHINE env"
 export GK_IP=$(docker-machine ip $MACHINE)
 
+SCPQUIET=-q
+docker-machine scp --help|grep quiet >/dev/null
+if [ $? -ne 0 ]; then
+ echo "Warning: docker-machine outdated version detected($DOCKERMACHINE_VERSION): will not use scp --quiet option. Update Toolbox to remove this warning."
+ SCPQUIET=
+fi
+
 function alternate_scp {
 	# echo " o Hum... seems 'docker-machine scp' doesn't work ($DOCKERMACHINE_VERSION), try alternate way.."
 	# retrieve docker default machine SSH PORT
@@ -50,14 +58,21 @@ function alternate_scp {
 }
 
 echo " * Copy docker resources (config and website)"
-docker-machine scp -q -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/configs" "./"
-docker-machine scp -q -r website $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "website" "./"
+docker-machine scp $SCPQUIET -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/configs" "./"
+docker-machine scp $SCPQUIET -r website $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "website" "./"
 
 echo " * Convert machine resources (using dos2unix)"
-docker-machine ssh $MACHINE 'find . -type f -exec dos2unix {} \;'  || die "Unable to convert resources"
+docker-machine ssh $MACHINE 'find website/ -type f -exec dos2unix {} \;'  || die "Unable to convert resources"
 
 echo " * Copy website to geokrety container"
-docker-machine ssh $MACHINE 'docker cp website/. geokrety:/var/www/html'
+docker-machine ssh $MACHINE 'docker cp website geokrety:/var/www/html 1>&2 2>/dev/null'
+docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/website 1>&2 2>/dev/null'
+
+export GK_IP=$(docker-machine ip $MACHINE)
+export COMPOSE_CONVERT_WINDOWS_PATHS=1
+
+echo " * Docker compose ($WIN_COMPOSE_FILE)"
+docker-compose -f $WIN_COMPOSE_FILE up -d --force-recreate || die "compose error"
 
 echo " * machine $MACHINE updated:"
 echo " geokrety | http://${GK_IP}/"
