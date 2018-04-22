@@ -1,8 +1,7 @@
 <?php
 
 if (!function_exists('nawiguj_tablice')) {
-    function nawiguj_tablice($rozmiar_tablicy, $po_ile, $show_all = true)
-    {
+    function nawiguj_tablice($rozmiar_tablicy, $po_ile, $show_all = true) {
         $adres = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
         $adres = preg_replace('/page=[0-9]*&?/', '', $adres);
 

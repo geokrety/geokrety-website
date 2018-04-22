@@ -1,7 +1,6 @@
 <?php
 
-function go2geo($waypoint)
-{
+function go2geo($waypoint) {
     // ------------------------------------------------------------------------ 2 characters
 
     // opencaching

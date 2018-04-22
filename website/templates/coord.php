@@ -1,7 +1,6 @@
 <?php
 
-function cords_parse($cords)
-{
+function cords_parse($cords) {
     $value = false;
     if (!empty($cords)) {
         if (get_magic_quotes_gpc()) {
@@ -80,10 +79,8 @@ function cords_parse($cords)
 }
 
 // ???
-function latlon($lat, $lon)
-{
-    function znak($x)
-    {
+function latlon($lat, $lon) {
+    function znak($x) {
         return $x ? ($x > 0 ? 1 : -1) : 0;
     }
 

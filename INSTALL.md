@@ -47,7 +47,7 @@ Create your own PHP configuration:
 * create a local geokrety server ([custom](Dockerfile) [apache+php5](https://hub.docker.com/_/php/), [mariadb](https://hub.docker.com/_/mariadb/), [adminer](https://hub.docker.com/_/adminer/))
 
 ````
-     ./install.sh
+    ./install.sh
 ````
 
 * the script will output you server ip and how to connect to your geokrety instance.
@@ -56,11 +56,52 @@ Create your own PHP configuration:
 ### Update GeoKrety docker-machine content (website and configs)
 
 ````
-     ./update.sh
+    ./update.sh
+````
+
+### Update GeoKrety docker-machine one file
+
+````
+    ./update.sh onefile ruchy.php
+````
+
+### Update GeoKrety docker-machine content (scripts)
+
+Requirements: having done  git clone of [geokrety-scripts repository](https://github.com/geokrety/geokrety-scripts) into `../geokrety-scripts/`
+
+````
+    ./update.sh scripts
 ````
 
 ### Uninstall GeoKrety docker-machine
 
 ````
      ./install.sh revert
+````
+
+### Use Php Coding Standard Fixer
+
+As php is for now only installed onto docker container, you will need to install it on windows too:
+
+* download and install PHP7 from [windows.php.net](https://windows.php.net/download/)
+* add php 7.2 installation directory to you path, example:
+
+````
+    export PATH=$PATH:/C/tools/php7
+    php --version
+````
+
+* download [php-cs-fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) into php 7 installation directory
+
+````
+    cd /C/tools/php7
+    curl -L https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -o php-cs-fixer
+    cd -
+    php-cs-fixer --version
+````
+
+* launch code standard fixer
+
+````
+    php-cs-fixer fix --diff -v
 ````

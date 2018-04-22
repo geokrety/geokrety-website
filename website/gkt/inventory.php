@@ -13,8 +13,7 @@ $userid = $longin_status['userid'];
 
 //import_request_variables('g', 'g_');
 
-function czysc_dane($link, $in)
-{
+function czysc_dane($link, $in) {
     return mysqli_real_escape_string($link, strip_tags($in));
 }
 

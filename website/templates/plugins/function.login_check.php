@@ -2,8 +2,7 @@
 
 // śćńółżć
 
-function login_check()
-{
+function login_check() {
     $ERR = '';
 
     if (!empty($_COOKIE['geokret0'])) {
@@ -57,8 +56,7 @@ function login_check()
     return $return;
 }
 
-function smarty_function_login_check($params, &$smarty)
-{
+function smarty_function_login_check($params, &$smarty) {
     $login_status = login_check();
 
     return $login_status['html'];

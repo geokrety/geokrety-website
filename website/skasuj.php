@@ -1,7 +1,6 @@
 <?php
 
-function aktualizuj_race($gk_id, $lat1, $lon1)
-{
+function aktualizuj_race($gk_id, $lat1, $lon1) {
     require 'templates/konfig.php';
 
     $sql = "SELECT rg.raceGkId, r.raceid, r.raceOpts, r.targetlat, r.targetlon, rg.finished, r.raceend, r.targetDist, r.targetCaches, rg.initDist, rg.initCaches, gk.skrzynki, gk.droga

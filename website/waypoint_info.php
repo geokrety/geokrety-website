@@ -1,9 +1,11 @@
 <?php
 
+//
+// @deprecated : please use lib/Waypointy.class.php instead, cf. szukaj-ajax.php for usage example
+//
 // seeks waypoint in the database and returns details
 
-function waypoint_info($waypoint)
-{
+function waypoint_info($waypoint) {
     if ($waypoint != '' and !empty($waypoint) and strlen($waypoint) > 4) {
         $waypoint = strtoupper($waypoint);
         $prefiks = substr($waypoint, 0, 2);

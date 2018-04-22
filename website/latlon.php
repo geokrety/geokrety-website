@@ -2,13 +2,11 @@
 
 //śćńółśżźć
 
-function znak($x)
-{
+function znak($x) {
     return $x ? ($x > 0 ? 1 : -1) : 0;
 }
 
-function latlon($lat, $lon)
-{
+function latlon($lat, $lon) {
     // podmianki w lat-lon
     $conaco_latlon = array('°' => '', "\'" => '', ',' => '.', 'S' => '-', 'W' => '-', 'S ' => '-', 'W ' => '-', 'N' => '', 'E' => '');
 

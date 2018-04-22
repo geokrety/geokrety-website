@@ -55,8 +55,7 @@ if (($jak_stare_dane > $limit_czasu_s) and ($g_kocham_kaczynskiego != $kocham_ka
     exit;
 }
 
-function ikonw($zmienna, $encoding)
-{
+function ikonw($zmienna, $encoding) {
     $zmienna = iconv('UTF-8', "$encoding//IGNORE//TRANSLIT", html_entity_decode($zmienna, ENT_NOQUOTES, 'UTF-8'));
 
     return $zmienna;

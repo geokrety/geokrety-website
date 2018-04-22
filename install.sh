@@ -76,7 +76,7 @@ function alternate_scp {
 }
 
 echo " * Copy docker resources"
-docker-machine ssh $MACHINE 'sudo chown -R docker vars 2>/dev/null'
+docker-machine ssh $MACHINE 'sudo chown -R docker vars 2>/dev/null' || true
 docker-machine scp $SCPQUIET -r docker/apache2 $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/apache2" "."
 docker-machine scp $SCPQUIET -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/configs" "."
 docker-machine scp $SCPQUIET -r docker/mariadb $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/mariadb" "."

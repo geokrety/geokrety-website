@@ -1,7 +1,6 @@
 <?php
 
-function createNewOwnerCode($kret_id, $check_duplicates = true, $ac = '', $ac_prefix = '', $ac_randomcount = 6, $ac_suffix = '', $ac_alphabet = '1 2 3 4 5 6 7 8 9 0')
-{
+function createNewOwnerCode($kret_id, $check_duplicates = true, $ac = '', $ac_prefix = '', $ac_randomcount = 6, $ac_suffix = '', $ac_alphabet = '1 2 3 4 5 6 7 8 9 0') {
     $MAX_TRIES = 100;
 
     // ----- Check if db object is present, if not create one -----
@@ -48,8 +47,7 @@ function createNewOwnerCode($kret_id, $check_duplicates = true, $ac = '', $ac_pr
     return $ac;
 }
 
-function claimGeoKret($kret_id, $ac, $tc, $user_id)
-{
+function claimGeoKret($kret_id, $ac, $tc, $user_id) {
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];

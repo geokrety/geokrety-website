@@ -66,8 +66,7 @@ if ($userid == null || !ctype_digit($userid)) {
     }
 }
 
-function edit_put($sql)
-{
+function edit_put($sql) {
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];

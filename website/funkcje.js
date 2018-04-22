@@ -177,7 +177,7 @@ function sprawdzNazwe() {
 
     poleOut.innerHTML = '';
     poleAjaxStatus.title = '';
-    poleAjaxStatus.innerHTML = 'Enter at least 5 characters';
+    poleAjaxStatus.innerHTML = $('#errorAtLeast').html();
   }
   $('#NazwaSkrzynki').prop('disabled', false);
 }

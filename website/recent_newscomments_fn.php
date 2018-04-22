@@ -2,8 +2,7 @@
 
 // display recent news comments
 
-function recent_newscomments($where = '', $title = '', $zapytanie = '', $shownewstitles = 0, $emailversion = 0)
-{
+function recent_newscomments($where = '', $title = '', $zapytanie = '', $shownewstitles = 0, $emailversion = 0) {
     include 'templates/konfig.php';    // config
 
     $word_comments = _('View all comments');

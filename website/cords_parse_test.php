@@ -4,8 +4,7 @@ require_once '__sentry.php';
 
 header('Content-Type: text/html; charset=utf-8');
 
-function testcoords($coords)
-{
+function testcoords($coords) {
     $y = cords_parse($coords[1]);
     $format = $y['format'];
     $x = 12;

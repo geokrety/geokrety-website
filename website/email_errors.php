@@ -1,10 +1,8 @@
 <?php
 
-function email_errors($from_date, $from_sev = 7)
-{
+function email_errors($from_date, $from_sev = 7) {
     if (!function_exists('my_br2nl')) {
-        function my_br2nl($str)
-        {
+        function my_br2nl($str) {
             $str = preg_replace("/(\r\n|\n|\r)/", '', $str);
             $str = preg_replace('=<(br|hr) */?>=i', "\n", $str);
 
