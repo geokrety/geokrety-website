@@ -9,8 +9,7 @@ if (!function_exists('getLatLonBox')) {
     W celu przyspieszenia dzialania, uzywamy tablicy z policzonymi wartosciami - dlugosc w metrach odpowiadajaca 1 deg.
     Wartosci zostaly policzone co 1 deg, od rownika po 89 stopien szerokosci geograficznej.
     */
-    function getLatLonBox($lat, $lon, $meters, &$d_lat, &$d_lon)
-    {
+    function getLatLonBox($lat, $lon, $meters, &$d_lat, &$d_lon) {
         //6371 * ACos(Cos(us.lat) * Cos(ru.lat) * Cos(ru.lon - us.lon) + Sin(us.lat) * Sin(ru.lat))
 
         // 1 stopien szereokosci (lat) -> metry

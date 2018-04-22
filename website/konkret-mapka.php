@@ -3,8 +3,7 @@
 //--------------------------------------- google map  ----------------------------- //
 
 // generates map points
-function dodaj_punkt($punkt, $opis, $ikonka, $licznik)
-{
+function dodaj_punkt($punkt, $opis, $ikonka, $licznik) {
     $return = "\n\t\t".'var punkt = new GLatLng('.$punkt.');'.
         "\n\t\t".'var marker'.$licznik.' = new GMarker(punkt, '.$ikonka.');'.
         "\n\t\t".'map0.addOverlay(marker'.$licznik.');'.
@@ -14,8 +13,7 @@ function dodaj_punkt($punkt, $opis, $ikonka, $licznik)
     return $return;
 }
 
-function konkret_mapka($id)
-{
+function konkret_mapka($id) {
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];

@@ -1,7 +1,6 @@
 <?php
 
-function szukaj_kreta($where, $limit, $title = 'GeoKrety', $longin = '', $sql = '')
-{
+function szukaj_kreta($where, $limit, $title = 'GeoKrety', $longin = '', $sql = '') {
     require 'templates/konfig.php';
     $link = DBConnect();
 

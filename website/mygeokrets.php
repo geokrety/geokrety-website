@@ -1,7 +1,6 @@
 <?php
 
-function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin)
-{
+function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin) {
     include 'cotozalog.php';
     include_once 'gc_search_link.php';
     include_once 'days_ago.php';

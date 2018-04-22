@@ -2,8 +2,7 @@
 
 // identify the user śćńółż
 
-function whoiswho($id)
-{
+function whoiswho($id) {
     include 'templates/konfig.php';
 
     if ($id == 0) {

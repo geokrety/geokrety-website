@@ -2,8 +2,7 @@
 
 
 if (!function_exists(licznikejro)) {
-    function ulicznik($witryna)
-    {
+    function ulicznik($witryna) {
         // licznik mySQL
         // argument:    nazwa dla licznika
         // zwraca:  ile, srednio, od kiedy

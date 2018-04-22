@@ -5,16 +5,16 @@ $config['adres'] = 'http://localhost/';
 
 // Password hashing
 // Crypt alorythms https://en.wikipedia.org/wiki/Crypt_(C)#Key_derivation_functions_supported_by_crypt
-$config['sol'] = '$5$xxx'; # crypt() hash
-$config['sol2'] = 'xxx'; # some random string
+$config['sol'] = '$5$xxx'; // crypt() hash
+$config['sol2'] = 'xxx'; // some random string
 
 // Api2login hashes
-$config['md5_string1'] = 'xxx'; # hex chars
-$config['md5_string2'] = 'xxx'; # hex chars
+$config['md5_string1'] = 'xxx'; // hex chars
+$config['md5_string2'] = 'xxx'; // hex chars
 
 // Cryptographic vectors
-define('SWISTAK_KEY', 'xxx'); # some random string
-define('SWISTAK_IV32', 'xxx'); # 32 hex chars
+define('SWISTAK_KEY', 'xxx'); // some random string
+define('SWISTAK_IV32', 'xxx'); // 32 hex chars
 
 // Create news password
 $config['news_password'] = 'xxx';
@@ -34,7 +34,7 @@ $GOOGLE_MAP_KEY = '';
 // Email gateway
 $config['pop_hostname'] = 'pop.gmail.com';
 $config['pop_port'] = 995;
-$config['pop_tls'] = True;
+$config['pop_tls'] = true;
 $config['pop_username'] = 'xxx';
 $config['pop_password'] = 'xxx';
 
@@ -45,4 +45,4 @@ $config['sentry_env'] = 'development';
 // Piwik conf
 $config['piwik_url'] = '';
 $config['piwik_site_id'] = '';
-$config['piwik_token'] ='';
+$config['piwik_token'] = '';

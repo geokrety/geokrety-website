@@ -1,8 +1,7 @@
 <?php
 
 
-class sqlproc
-{
+class sqlproc {
     public $sql;
     public $use_errory = true;
     public $defektoskop_path = 'defektoskop.php';
@@ -14,13 +13,11 @@ class sqlproc
 
     private $clear_errors_after_exec = false;
 
-    public function exec($newsql, &$num_rows = null)
-    {
+    public function exec($newsql, &$num_rows = null) {
         return $this->execute($newsql, $num_rows);
     }
 
-    public function exec_ignore0($newsql, &$num_rows = null)
-    {
+    public function exec_ignore0($newsql, &$num_rows = null) {
         $old = $this->ret0rows_enabled;
         $this->ret0rows_enabled = 0;
 
@@ -28,8 +25,7 @@ class sqlproc
         $this->ret0rows_enabled = $old;
     }
 
-    public function exec_fetch_array($newsql, &$num_rows = null)
-    {
+    public function exec_fetch_array($newsql, &$num_rows = null) {
         $result = $this->execute($newsql, $num_rows);
         if ($num_rows > 0) {
             $row = mysql_fetch_array($result);
@@ -41,15 +37,13 @@ class sqlproc
         }
     }
 
-    public function exec_num_rows($newsql)
-    {
+    public function exec_num_rows($newsql) {
         $this->execute($newsql, $num_rows);
 
         return $num_rows;
     }
 
-    public function set_errors($errormsg, $newseverity = 100)
-    {
+    public function set_errors($errormsg, $newseverity = 100) {
         $errormsg = "<b>$errormsg</b>";
         $this->failed_error = $errormsg;
         $this->ret0rows_error = $errormsg;
@@ -58,8 +52,7 @@ class sqlproc
         $this->clear_errors_after_exec = true;
     }
 
-    public function clear_errors()
-    {
+    public function clear_errors() {
         $this->failed_error = '';
         $this->ret0rows_error = '';
         $this->failed_sev = 100;
@@ -67,8 +60,7 @@ class sqlproc
         $this->clear_errors_after_exec = false;
     }
 
-    private function execute($newsql, &$num_rows)
-    {
+    private function execute($newsql, &$num_rows) {
         $sql = trim($newsql);
         $sql6 = strtoupper(substr($sql, 0, 6));
         if ($sql6 == 'SELECT') {

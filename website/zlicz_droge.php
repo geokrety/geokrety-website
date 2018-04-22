@@ -1,7 +1,6 @@
 <?php
 
-function zlicz_droge($ruch_id)
-{
+function zlicz_droge($ruch_id) {
     // calculate distance between this and previous location
 
     $link = DBConnect();

@@ -15,8 +15,7 @@
 //50°54′N 15°44′E
 //56.326N 54.235O
 
-function cords_parse($cords)
-{
+function cords_parse($cords) {
     $ret[0] = '';
     $ret[1] = '';
     $ret['format'] = '';

@@ -191,8 +191,7 @@ define('CONFIG_DB', $config['db']);
 define('CONFIG_CHARSET', $config['charset']);
 
 if (!function_exists('DBPConnect')) {
-    function DBPConnect()
-    {
+    function DBPConnect() {
         $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'));
         if (!$link) {
             $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'));
@@ -209,8 +208,7 @@ if (!function_exists('DBPConnect')) {
 }
 
 if (!function_exists('DBConnect')) {
-    function DBConnect()
-    {
+    function DBConnect() {
         $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));
         if (!$link) {
             $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));

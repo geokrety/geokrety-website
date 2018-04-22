@@ -23,8 +23,7 @@ $y = ($g_id != '' && $g_wp != '');
 
 //echo "$x,$y,$z";
 
-function a($result)
-{
+function a($result) {
     while ($row = mysqli_fetch_array($result)) {
         list($id, $kretid, $koment, $waypoint, $lat, $lon) = $row;
 
@@ -41,8 +40,7 @@ function a($result)
     return $TRESC;
 }
 
-function b($link, $result)
-{
+function b($link, $result) {
     $rowCount = mysqli_num_rows($result);
     $TRESC .= "$rowCount records found:<br/>";
     include_once 'get_country_from_coords.php';
@@ -67,8 +65,7 @@ function b($link, $result)
     return $TRESC;
 }
 
-function c($link, $result)
-{
+function c($link, $result) {
     $rowCount = mysqli_num_rows($result);
     $TRESC .= "$rowCount records found:<br/>";
     include_once 'get_country_from_coords.php';
