@@ -37,7 +37,7 @@ if ($longin_status['plain'] == null) {
 
 <tr>
 <td>Geokret Reference number:</td>
-<td><input type="text" name="gk" size="6" maxlength="6" value="'.$rn.'" /><br />
+<td><input type="text" name="gk" size="7" maxlength="7" value="'.$rn.'" /><br />
 <span class="szare">'._('eg.').' GK020A</span></td>
 </tr>
 
@@ -64,81 +64,91 @@ if ($longin_status['plain'] == null) {
 } // FORMA koniec
 
 else { // dane z FORMY
-    $link = DBConnect();
-    foreach ($_POST as $key => $value) {
-        $_POST[$key] = mysqli_real_escape_string($link, $value);
+    try {
+        $link = DBConnect();
+        foreach ($_POST as $key => $value) {
+            $_POST[$key] = mysqli_real_escape_string($link, $value);
+        }
+
+        $kret_raceid = intval($_POST['raceid']);
+        $kret_gk = strval($_POST['gk']);
+        $kret_haslo = intval($_POST['haslo']);
+
+        //print_r($_POST); die();
+        if ($kret_raceid == '') {
+            $errors[] = _('No race selected');
+            throw new Exception();
+        } elseif ($kret_gk == '') {
+            $errors[] = _('No reference number');
+            throw new Exception();
+        }
+
+        $id = hexdec(substr($kret_gk, 2));
+
+        $userid = $longin_status['userid'];
+
+        // weryfikacja ownera
+        $sql = "SELECT `owner`, `nazwa`, `droga`, `skrzynki` FROM `gk-geokrety` WHERE `id` = '$id' LIMIT 1";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_row($result);
+
+        if (!$row) {
+            $errors[] = _('Unknown geokret');
+            throw new Exception();
+        }
+
+        list($gkowner, $gknazwa, $gkdroga, $gkskrzynki) = $row;
+        mysqli_free_result($result);
+        if ($gkowner != $userid) {
+            $errors[] = _('This is not your geokret');
+            throw new Exception();
+        }
+
+        // weryfikacja rajdu
+
+        $sql = "SELECT `raceOwner`, `private`, `haslo`, `raceTitle`, `raceend`, `opis` FROM `gk-races` WHERE `status` = '0' and `raceid` = '$kret_raceid' LIMIT 1";
+
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_row($result);
+        mysqli_free_result($result);
+        list($raceOwner, $private, $haslo, $raceTitle, $raceend, $opis) = $row;
+
+        if ($private == 1 and $kret_haslo == '' and ($raceOwner != $userid)) {
+            $errors[] = _('This race is private. Please provide the password');
+            throw new Exception();
+        } elseif ($private == 1 and $kret_haslo != $haslo) {
+            $errors[] = _('Wrong password');
+            throw new Exception();
+        }
+
+        // no dobra, wszystko w porządalu chyba, lecimy dalej!
+
+        $sql = "INSERT INTO `gk-races-krety` (
+    `raceid` ,
+    `geokretid` ,
+    `joined`
+    )
+    VALUES (
+    '$kret_raceid', '$id', NOW( )
+    );
+    ";
+
+        $result = mysqli_query($link, $sql);
+        if (!$result) {
+            $errors[] = _('Internal error, please report');
+            error_log('race_join sql:'.$sql.' error:'.mysqli_error($link), 0);
+            throw new Exception();
+        }
+
+        header("Location: /race.php?raceid=$kret_raceid");
+        exit();
+    } catch (Exception $e) {
+        if (isset($errors) && (count($errors) > 0)) {
+            include_once 'defektoskop.php';
+            $TRESC = defektoskop($errors, true, '', 3, 'race join');
+            include_once 'smarty.php';
+        }
     }
-
-    $kret_raceid = intval($_POST['raceid']);
-    $kret_gk = strval($_POST['gk']);
-    $kret_haslo = intval($_POST['haslo']);
-
-    //print_r($_POST); die();
-    if ($kret_raceid == '') {
-        $errors[] = _('No race selected');
-    } elseif ($kret_gk == '') {
-        $errors[] = _('No reference number');
-    }
-
-    if (isset($errors)) {
-        include_once 'defektoskop.php';
-        $TRESC = defektoskop($errors, true, '', 3, 'race join');
-        include_once 'smarty.php';
-        exit;
-    }
-
-    $id = hexdec(substr($kret_gk, 2, 4));
-
-    $userid = $longin_status['userid'];
-
-    // weryfikacja ownera
-    $sql = "SELECT `owner`, `nazwa`, `droga`, `skrzynki` FROM `gk-geokrety` WHERE `id` = '$id' LIMIT 1";
-    $result = mysqli_query($link, $sql);
-    $row = mysqli_fetch_row($result);
-
-    list($gkowner, $gknazwa, $gkdroga, $gkskrzynki) = $row;
-    mysqli_free_result($result);
-    if ($gkowner != $userid) {
-        $errors[] = _('This is not your geokret');
-    }
-
-    // weryfikacja rajdu
-
-    $sql = "SELECT `raceOwner`, `private`, `haslo`, `raceTitle`, `raceend`, `opis` FROM `gk-races` WHERE `status` = '0' and `raceid` = '$kret_raceid' LIMIT 1";
-
-    $result = mysqli_query($link, $sql);
-    $row = mysqli_fetch_row($result);
-    mysqli_free_result($result);
-    list($raceOwner, $private, $haslo, $raceTitle, $raceend, $opis) = $row;
-
-    if ($private == 1 and $kret_haslo == '' and ($raceOwner != $userid)) {
-        $errors[] = _('This race is private. Please provide the password');
-    } elseif ($private == 1 and $kret_haslo != $haslo) {
-        $errors[] = _('Wrong password');
-    }
-
-    if (isset($errors)) {
-        include_once 'defektoskop.php';
-        $TRESC = defektoskop($errors, true, '', 3, 'race join');
-        include_once 'smarty.php';
-        exit;
-    }
-
-    // no dobra, wszystko w porządalu chyba, lecimy dalej!
-
-    $sql = "INSERT INTO `gk-races-krety` (
-`raceid` ,
-`geokretid` ,
-`joined`
-)
-VALUES (
-'$kret_raceid', '$id', NOW( )
-);
-";
-
-    mysqli_query($link, $sql);
-    header("Location: /race.php?raceid=$kret_raceid");
-    exit();
 } // parsowanie danych z formy
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //
