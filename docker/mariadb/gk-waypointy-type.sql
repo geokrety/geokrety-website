@@ -19,7 +19,7 @@ INSERT INTO `gk-waypointy-type` (`typ`, `cache_type`) VALUES
 ('Own cache',	'Own cache'),
 ('Podcast cache',	'Podcast cache'),
 ('Quiz',	'Quiz'),
-('Rätselcache',	'Mystery'),
+('RÃ¤tselcache',	'Mystery'),
 ('Skrzynka nietypowa',	'Unusual box'),
 ('Tradycyjna',	'Traditional'),
 ('unbekannter Cachetyp',	'Unknown cache'),
