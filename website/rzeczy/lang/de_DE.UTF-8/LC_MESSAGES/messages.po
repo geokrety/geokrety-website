@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 23:33+0000\n"
-"PO-Revision-Date: 2018-04-23 18:40-0400\n"
+"POT-Creation-Date: 2018-05-01 10:57+0000\n"
+"PO-Revision-Date: 2018-05-14 05:30-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -1651,25 +1651,33 @@ msgstr "Als Rennleiter benötigst Du kein Passwort"
 msgid "Please read this race rules before joining!"
 msgstr "Bitte lies vor der Teilnahme die Rennregeln!"
 
-#: website/race_join.php:78
+#: website/race_join.php:79
 msgid "No race selected"
 msgstr "Kein Rennen ausgewählt"
 
-#: website/race_join.php:80
+#: website/race_join.php:82
 msgid "No reference number"
 msgstr "Keine Referenznummer"
 
-#: website/race_join.php:102
+#: website/race_join.php:96
+msgid "Unknown geokret"
+msgstr "Unbekannter Geokret"
+
+#: website/race_join.php:103
 msgid "This is not your geokret"
 msgstr "Dies ist nicht Dein Geokret"
 
-#: website/race_join.php:115
+#: website/race_join.php:117
 msgid "This race is private. Please provide the password"
 msgstr "Dieses Rennen ist privat. Bitte gib das Passwort ein"
 
-#: website/race_join.php:117
+#: website/race_join.php:120
 msgid "Wrong password"
 msgstr "Falsches Passwort"
+
+#: website/race_join.php:138
+msgid "Internal error, please report"
+msgstr "Interner Fehler, bitte melden"
 
 #: website/race_list.php:240
 msgid "Race list"
@@ -2025,7 +2033,7 @@ msgstr "Aktionen für diesen GeoKret"
 #: website/templates.php:9 website/templates.php:72 website/templates.php:198
 #: website/templates.php:261 website/templates/krety.html:125
 msgid "Log a GeoKret"
-msgstr "Diesen GeoKret loggen"
+msgstr "Einen GeoKret loggen"
 
 #: website/templates.php:66 website/templates.php:138
 #: website/templates.php:183 website/templates.php:255
@@ -2088,7 +2096,11 @@ msgid "<p>This document sets the conditions of use of \"geokrety.org\" - a volun
 "<p>You must ensure that information published by the user in the Site <strong>content must not affect the existing law</strong>. In particular, the content published by the user may not violate the copyright of third parties. All content (including descriptions of the Geokrety, illustrations and all their entries in the logs) made available by publishing them on our site users <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The user is responsible directly to the copyright holder for any violations in this area associated with him published by the content on our site.</p>\n\n"
 "<p>We don`t provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</p>\n\n"
 "<p>Content published by you on the site may not contain vulgar expressions , abusive, or illegal content. </p>"
-msgstr ""
+msgstr "<p>Dieses Dokument legt die Bedingungen für die Verwendung von \"geokrety.org\" fest - einem freiwillig betriebenen Internet Geocachingdienst auf https://geokrety.org (im folgenden als \"Dienst\" bezeichnet). Jede Person, die einen Nutzerzugang registriert (nachfolgend \"Nutzer\" genannt) verpflichtet sich, diese allgemeinen Geschäftsbedingungen ab dem Beginn des Registrierungsverfahrens zu beachten.</p>\n\n"
+"<p>Der Dienst wird von einer Gruppe von freiwilligen Unterstützern, nachstehend als GK-Team bezeichnet, betreut und überwacht. Das GK-Team ist nicht verantwortlich für die von Nutzern auf der Website eingestellten Inhalte oder für Schäden, die aus der Nutzung von Informationen aus dem Dienst resultieren.</p>\n\n"
+"<p>Der Nutzer muss sicherstellen, dass die von ihm auf der Website veröffentlichten Informationen <strong>nicht gegen bestehende Gesetze verstoßen</strong>. Insbesondere dürfen die Inhalte durch den Nutzer die Urheberrechte Dritter nicht verletzen. Alle Inhalte (einschließlich Beschreibungen der Geokrety, Illustrationen und alle Einträge in den Logs), welches durch den Nutzer auf der Webseite veröffentlicht werden, sind <strong>gemäß der Creative Commons-Lizenz</strong> BY-NC-SA Version 2.5 lizensiert, dessen kompletter Inhalt ist online verfügbar unter <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Gemeinfreie Inhalte (public domain) sind auch zugelassen. Der Nutzer haftet direkt gegenüber dem Rechteinhaber für Verstöße in diesem Bereich verbunden mit durch den Nutzer auf unserer Website veröffentlichte Inhalte.</p>\n\n"
+"<p>Wir geben keinerlei Gewährleistung oder Garantie bezüglich der Genauigkeit, Aktualität, Leistung, Vollständigkeit oder Eignung der Informationen und Materialien, die auf dieser Website angeboten oder gefunden werden. Der Nutzer erkennt an, dass solche Informationen und Materialien möglicherweise Ungenauigkeiten oder Fehler enthalten und wir ausdrücklich eine Haftung für etwaige Ungenauigkeiten oder Fehler in vollen gesetzlich zulässigen Umfang ausschließen.</p>\n\n"
+"<p>Vom Nutzer auf der Website veröffentlichte Inhalte dürfen keine vulgäre Ausdrücke, missbräuchliche oder rechtswidrige Inhalte enthalten. </p>"
 
 #: website/toolbox.php:11
 msgid "Geokrety Toolbox"
@@ -2227,7 +2239,7 @@ msgstr "Mitwirken"
 
 #: website/templates/krety.html:233
 msgid "version"
-msgstr ""
+msgstr "Version"
 
 #: website/templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
