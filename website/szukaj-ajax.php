@@ -13,16 +13,20 @@ require 'templates/konfig.php';    // config
  */
 function cacheOk($cache_link, $name, $owner, $cache_type, $cache_country, $countryCode) {
     $flagPlaceholder = '';
-    if ($countryCode !== '') {
+    if (trim($countryCode) !== '') {
         $flagPlaceholder = '<img src="'.CONFIG_CDN_IMAGES.'/country-codes/'.$countryCode.'.png" width="16" height="11" alt="'._('flag').'"/>';
     }
-    if ($owner !== '') {
+    if (trim($owner) !== '') {
         $ownerPlaceholder = '('.sprintf(_('by %s'), $owner).')';
     }
 
     $result = '<img src="'.CONFIG_CDN_IMAGES.'/icons/ok.png" alt="'._('OK').'" width="16" height="16" /> <a href="'.$cache_link.'" target="_opencaching">'.$name.'</a> '.$ownerPlaceholder.'<br />';
-    $result .= sprintf(_('cache type: %s'), _($cache_type)).'<br/>';
-    $result .= sprintf(_('country: %s %s'), $flagPlaceholder, _($cache_country));
+    if (trim($cache_type) !== '') {
+        $result .= sprintf(_('cache type: %s'), _($cache_type)).'<br/>';
+    }
+    if (trim($cache_country) !== '') {
+        $result .= sprintf(_('country: %s %s'), $flagPlaceholder, _($cache_country));
+    }
 
     return $result;
 }
@@ -124,6 +128,7 @@ if ($_REQUEST['skad'] == 'ajax') {
             $hasResult = $waypointy->getByWaypoint($wpt);
             if (!$hasResult) {
                 $return['tresc'] = cacheNotFound();
+                echo json_encode($return);
             } else {
                 $lat = $waypointy->lat;
                 $lon = $waypointy->lon;
@@ -162,17 +167,21 @@ if ($_REQUEST['skad'] == 'ajax') {
                 $return['tresc'] = cacheNotFound();
             } elseif ($byNameCount > 1) {
                 $maxCache = 4;
-                if ($IleSkrzynek[0] <= $maxCache) {
+                if ($byNameCount < $maxCache) {
                     $return['tresc'] = _('caches match').':<br />';
                 } else {
-                    $return['tresc'] = sprintf(_('%d caches match (the first %d):'), $IleSkrzynek[0], $maxCache).':<br />';
+                    $return['tresc'] = sprintf(_('%d caches match (the first %d)'), $byNameCount, $maxCache).':<br />';
                 }
                 // listing
                 $sql = "SELECT `waypoint`, `name`, `owner`, `typ`, `kraj`, `link`, `lat`, `lon` FROM `gk-waypointy` WHERE `name` LIKE '%".mysqli_real_escape_string($link, $_REQUEST['NazwaSkrzynki'])."%' LIMIT $maxCache";
                 $result = mysqli_query($link, $sql);
                 while ($row = mysqli_fetch_array($result)) {
                     list($waypoint, $name, $owner, $typ, $kraj, $cache_link, $lat, $lon) = $row;
-                    $return['tresc'] .= "<a href=\"#\" onclick=\"document.getElementById('wpt').value = '$waypoint'; sprawdzWpt(); return false;\">$waypoint</a> - <span class='bardzomale'><a href='$cache_link' target='_opencaching'>$name</a> (".sprintf(_('by %s'), $owner).')</span><br />';
+                    $ownerPlaceholder = '';
+                    if (trim($owner) !== '') {
+                        $ownerPlaceholder = ' ('.sprintf(_('by %s'), $owner).')';
+                    }
+                    $return['tresc'] .= "<a href=\"#\" onclick=\"document.getElementById('wpt').value = '$waypoint'; sprawdzWpt(); return false;\">$waypoint</a> - <span class='bardzomale'><a href='$cache_link' target='_opencaching'>$name</a>".$ownerPlaceholder.'</span><br />';
                 }
             } else { // == 1
                 $hasResult = $waypointy->getByName($_REQUEST['NazwaSkrzynki']);

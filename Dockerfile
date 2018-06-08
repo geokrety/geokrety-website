@@ -9,7 +9,7 @@ RUN apt-get update \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng-dev \
         graphicsmagick-imagemagick-compat \
         ssmtp \
         locales \
