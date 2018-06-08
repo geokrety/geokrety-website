@@ -10,8 +10,8 @@ class Waypointy {
     const SELECT_WAYPOINT = <<<EOQUERY
 SELECT wp.`waypoint`, wp.`lat`, wp.`lon`, wp.`name`, wp.`owner`, wp.`typ`, wpt.`cache_type`, wp.`link`, wp.`kraj`, wpc.`country`
  FROM `gk-waypointy` wp
- JOIN `gk-waypointy-country` wpc ON wp.`kraj` = wpc.`kraj`
- JOIN `gk-waypointy-type` wpt ON wp.`typ` = wpt.`typ`
+ LEFT OUTER JOIN `gk-waypointy-country` wpc ON wp.`kraj` = wpc.`kraj`
+ LEFT OUTER JOIN `gk-waypointy-type` wpt ON wp.`typ` = wpt.`typ`
 EOQUERY;
 
     //~ waypoint attributes
@@ -37,7 +37,7 @@ EOQUERY;
             throw new Exception($action.' waypoint expected');
         }
         if (!($stmt = $this->dblink->prepare(self::SELECT_WAYPOINT
-                       .' WHERE wp.`waypoint`=?'
+                       .' WHERE wp.`waypoint` LIKE ?'
                        .' LIMIT 1'))) {
             throw new Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         }

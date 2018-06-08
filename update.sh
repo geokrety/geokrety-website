@@ -91,6 +91,21 @@ elif [ "$1" == "onefile" ]; then
 	echo "done"
 	exit 0
 
+elif [ "$1" == "rights" ]; then
+	# avoid read-only error
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/templates/compile'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/templates/cache'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/templates/htmlpurifier'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/obrazki'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/obrazki-dowonu'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/obrazki-male'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/mapki'
+	docker-machine ssh $MACHINE 'docker exec geokrety mkdir -p /var/www/html/mapki/map /var/www/html/mapki/gpx /var/www/html/mapki/csv'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/mapki'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/statpics'
+	docker-machine ssh $MACHINE 'docker exec geokrety mkdir -p /var/www/html/statpics/wzory'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/statpics'
+
 else
 	echo " * Copy docker resources (config and website)"
 	docker-machine scp $SCPQUIET -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/configs" "."
@@ -108,6 +123,7 @@ else
 
 	echo " * Docker compose ($WIN_COMPOSE_FILE)"
 	docker-compose -f $WIN_COMPOSE_FILE up -d --force-recreate || die "compose error"
+
 fi
 
 echo " * machine $MACHINE updated:"
