@@ -173,8 +173,8 @@ $TRESC = '
 Now we support waypoints from:
 <ul>
   <li>OP.... -- OpenCaching: <a href="https://www.opencaching.pl/">Polish database</a></li>
-	<li>OC.... -- OpenCaching: <a href="https://www.opencaching.de//">German database</a></li>
-	<li>OK.... -- OpenCaching: <a href="https://opencache.uk//">UK database</a></li>
+	<li>OC.... -- OpenCaching: <a href="https://www.opencaching.de/">German database</a></li>
+	<li>OK.... -- OpenCaching: <a href="https://opencache.uk/">UK database</a></li>
 	<li>OB.... -- OpenCaching: <a href="https://www.opencaching.nl/">NL database</a></li>
 	<li>OR.... -- OpenCaching: <a href="https://www.opencaching.ro/">RO database</a></li>
 	<li>OZ.... -- OpenCaching: <a href="https://www.opencaching.cz/">Czech database</a> -- updated manually from time to time</li>
