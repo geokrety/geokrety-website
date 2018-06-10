@@ -173,11 +173,12 @@ $TRESC = '
 Now we support waypoints from:
 <ul>
   <li>OP.... -- OpenCaching: <a href="https://www.opencaching.pl/">Polish database</a></li>
-	<li>OC.... -- OpenCaching: <a href="http://www.opencaching.de/">German database</a></li>
-	<li>OK.... -- OpenCaching: <a href="http://www.opencaching.org.uk/">UK database</a></li>
-	<li>OS.... -- OpenCaching: <a href="http://www.opencaching.se/">SE/NO database</a></li>
-	<li>OB.... -- OpenCaching: <a href="http://www.opencaching.nl/">NL database</a></li>
-	<li>OZ.... -- OpenCaching: <a href="http://www.opencaching.cz/">Czech database</a> -- updated manually from time to time</li>
+	<li>OC.... -- OpenCaching: <a href="https://www.opencaching.de/">German database</a></li>
+	<li>OK.... -- OpenCaching: <a href="https://opencache.uk/">UK database</a></li>
+	<li>OB.... -- OpenCaching: <a href="https://www.opencaching.nl/">NL database</a></li>
+	<li>OR.... -- OpenCaching: <a href="https://www.opencaching.ro/">RO database</a></li>
+	<li>OZ.... -- OpenCaching: <a href="https://www.opencaching.cz/">Czech database</a> -- updated manually from time to time</li>
+	<li>OU.... -- OpenCaching: <a href="http://opencaching.us/">US database</a></li>
 	<li>GA.... -- <a href="http://geocaching.com.au/">GeoCaching Australia</a> -- updated daily (lat, lon, cache name, link)</li>
 	<li>TR/VI/MS/EX.... -- <a href="http://www.geocaching.su/">GeoCaching Russia</a> -- updated every two hours (lat, lon, cache name, link, owner)</li>
 	<li>GE.... -- <a href="http://www.gpsgames.org/">gpsgames.org database</a> -- updated daily (lat, lon, cache name, link)</li>
