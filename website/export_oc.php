@@ -17,7 +17,7 @@ if ($ip == '62.121.108.70'  /*geokrety.org*/
     || $ip == '86.111.244.117'  /*opencaching.PL*/
     || $ip == '212.2.32.87'  /*opencaching.DE*/
     || $ip == '184.106.211.113'  /*opencaching.US*/
-    || $ip == '46.4.66.184'  /*opencaching.NL*/
+    || $ip == '80.211.176.147'  /*opencaching.NL*/
     || $ip == '195.24.252.203'  /*gps-fun.info*/
     || $ip == '195.24.253.3'  /*gps-fun.info*/
     || $ip == '74.117.232.69' /*trekkingklub.com*/
