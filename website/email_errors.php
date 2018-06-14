@@ -32,7 +32,7 @@ function email_errors($from_date, $from_sev = 7)
             $f_ip = 'opencaching.DE';
         } elseif ($f_ip == '184.106.211.113') {
             $f_ip = 'opencaching.US';
-        } elseif ($f_ip == '46.4.66.184') {
+        } elseif ($f_ip == '80.211.176.147') {
             $f_ip = 'opencaching.NL';
         } elseif ($f_ip == '74.117.232.69') {
             $f_ip = 'trekkingklub.com';
