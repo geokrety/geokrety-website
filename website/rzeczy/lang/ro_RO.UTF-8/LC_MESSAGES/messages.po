@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-01 10:57+0000\n"
-"PO-Revision-Date: 2018-05-01 07:01-0400\n"
+"POT-Creation-Date: 2018-06-15 20:03+0000\n"
+"PO-Revision-Date: 2018-06-15 16:11-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Crowdin-File: /master/messages.po\n"
 
 #: website/adduser.php:8 website/adduser.php:122 website/templates.php:186
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Inregistreaza un cont"
@@ -33,8 +33,8 @@ msgstr "Campuri necesare"
 msgid "Username"
 msgstr ""
 
-#: website/adduser.php:76 website/api-login2secid.php:64
-#: website/longin.php:142 website/mypage.php:43
+#: website/adduser.php:76 website/api-login2secid.php:63
+#: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Parola"
 
@@ -42,7 +42,7 @@ msgstr "Parola"
 msgid "Verify Password"
 msgstr "Verificare parolă"
 
-#: website/adduser.php:86 website/edit.php:402 website/new_password.php:52
+#: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
 msgid "Email"
 msgstr ""
 
@@ -50,11 +50,11 @@ msgstr ""
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Da, Vreau sa primesc alerte pe email (trimise in fiecare zi la miezul noptii CET/CESC) cand GeoKret-ul meu, sau unul pe care il urmaresc, isi schimba locatia"
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:916
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:917
 msgid "Enter code"
 msgstr "Introduceti codul"
 
-#: website/adduser.php:103 website/edit.php:489 website/mypage.php:308
+#: website/adduser.php:103 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Limba"
 
@@ -68,7 +68,7 @@ msgstr "Termeni de utilizare"
 msgid "Tips"
 msgstr "Sfaturi"
 
-#: website/adduser.php:128 website/edit.php:206
+#: website/adduser.php:128 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -107,13 +107,13 @@ msgid "An email to confirm your email address was sent to you. When you confirm,
 msgstr "V-a fost trimis un email pentru a confirma adresa dvs. de email. Dupa ce confirmati, contul dvs. va fi total operational. Pana atunci nu puteti primi emailuri zilnice cu sumarul mutarilor GeoKre-urilor dvs. Linkul e valid pentru 5 zile. Acum puteti face operatiuni pe GeoKrety. Puteti sa va logati si sa va bucurati de cintul dvs. la GeoKrety.org! :)"
 
 #: website/adduser.php:177 website/longin.php:9 website/templates.php:189
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr ""
 
 #: website/adduser.php:177 website/templates.php:192
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Parola uitata?"
@@ -146,58 +146,58 @@ msgstr "Codul de confirmare rău sau alte erori."
 msgid "GK XML interface"
 msgstr ""
 
-#: website/check_email_validity.php:12
+#: website/check_email_validity.php:11
 #, php-format
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
 msgstr ""
 
-#: website/claim.php:22 website/comment.php:77 website/generatorek.php:57
-#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:275
+#: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
+#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
 msgstr "Va rog logati-va."
 
-#: website/comment.php:21
+#: website/comment.php:20
 msgid "Unknown error."
 msgstr ""
 
-#: website/comment.php:48
+#: website/comment.php:46
 msgid "Oops! Something went wrong."
 msgstr "Oops! Ceva a mers prost."
 
-#: website/comment.php:125
+#: website/comment.php:123
 #, php-format
 msgid "Reporting GeoKret %s as missing"
 msgstr "Raportarea GeoKret% s ca lipsesc"
 
-#: website/comment.php:149
+#: website/comment.php:147
 #, php-format
 msgid "Commenting GeoKret: %s"
 msgstr "GeoKret Comentând:% s"
 
-#: website/comment.php:163
+#: website/comment.php:161
 msgid "Please provide any information that may help the owner to find out the whereabouts of this GeoKret."
 msgstr "&quot;&quot; Vă rugăm să furnizaţi orice informaţie care poate ajuta la proprietarul pentru a afla &quot;&quot; locul de acest GeoKret."
 
-#: website/comment.php:166
+#: website/comment.php:164
 msgid "Log:"
 msgstr ""
 
-#: website/comment.php:166 website/comment.php:181
+#: website/comment.php:164 website/comment.php:179
 #, php-format
 msgid "By %s, on %s"
 msgstr ""
 
-#: website/comment.php:181
+#: website/comment.php:179
 msgid "Last comment:"
 msgstr ""
 
-#: website/comment.php:192
+#: website/comment.php:190
 msgid "Your comment"
 msgstr "Comentariu"
 
-#: website/comment.php:200 website/majluj.php:125
+#: website/comment.php:198 website/majluj.php:125
 msgid "Send message"
 msgstr "Trimite un mesaj"
 
@@ -222,11 +222,11 @@ msgstr "Pentru a schimba e-mail %s dați clic aici %s ."
 msgid "This confirmation code has already been processed."
 msgstr "Acest cod de confirmare a fost deja procesate."
 
-#: website/cords_parse.php:237
+#: website/cords_parse.php:236
 msgid "Bad coordinates or unknown format."
 msgstr "Coordonate rele sau format necunoscut."
 
-#: website/cords_parse.php:245
+#: website/cords_parse.php:244
 msgid "Missing or invalid coordinates."
 msgstr "Lipsa sau coordonate incorecte."
 
@@ -308,35 +308,35 @@ msgstr "Statistici de la ţară"
 msgid "Where are GeoKrety now?"
 msgstr ""
 
-#: website/czy_obserwowany.php:45
+#: website/czy_obserwowany.php:44
 msgid "Number of users who are watching this geokret"
 msgstr "Numărul de utilizatori care sunt urmăriţi acest geokret"
 
-#: website/czy_obserwowany.php:49
+#: website/czy_obserwowany.php:48
 msgid "Watch this GeoKret"
 msgstr "Uita-te la acest GeoKret"
 
-#: website/czy_obserwowany.php:53 website/mygeokrets.php:280
+#: website/czy_obserwowany.php:52 website/mygeokrets.php:279
 msgid "Stop watching this GeoKret"
 msgstr "Stop urmăriţi acest GeoKret"
 
-#: website/czy_obserwowany.php:58
+#: website/czy_obserwowany.php:57
 msgid "Users watching it"
 msgstr "Utilizatorii l uitam"
 
-#: website/czy_obserwowany.php:60
+#: website/czy_obserwowany.php:59
 msgid "Users watching this GeoKret"
 msgstr "Utilizatorii urmăriţi acest GeoKret"
 
-#: website/days_ago.php:14
+#: website/days_ago.php:13
 msgid "days ago"
 msgstr "zile în urmă"
 
-#: website/days_ago.php:16 website/ruchy.php:966
+#: website/days_ago.php:15 website/ruchy.php:967
 msgid "Yesterday"
 msgstr "Ieri"
 
-#: website/days_ago.php:18 website/ruchy.php:965
+#: website/days_ago.php:17 website/ruchy.php:966
 msgid "Today"
 msgstr "Astăzi"
 
@@ -393,119 +393,118 @@ msgstr "Editare"
 msgid "You must be logged in to continue."
 msgstr "Trebuie să fii logat pentru a continua."
 
-#: website/edit.php:199
+#: website/edit.php:198
 msgid "Old password"
 msgstr "Parola veche"
 
-#: website/edit.php:201
+#: website/edit.php:200
 msgid "New password"
 msgstr "Parola noua"
 
-#: website/edit.php:203
+#: website/edit.php:202
 msgid "Retype"
 msgstr "Scrie din nou"
 
-#: website/edit.php:204
+#: website/edit.php:203
 msgid "characters"
 msgstr "caractere"
 
-#: website/edit.php:228
+#: website/edit.php:227
 msgid "Passwords different or empty or too short"
 msgstr "Parole diferite sau prea scurte"
 
-#: website/edit.php:230
+#: website/edit.php:229
 msgid "Wrong current password"
 msgstr "Parola curenta e gresita"
 
-#: website/edit.php:327 website/mypage.php:156
+#: website/edit.php:326 website/mypage.php:156
 msgid "Home coordinates"
 msgstr ""
 
-#: website/edit.php:330
+#: website/edit.php:329
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Folosiți harta pentru a selecta o locație sau introduceți coordonatele manual."
 
-#: website/edit.php:330 website/race_join.php:41 website/ruchy.php:892
-#: website/szukaj-ajax.php:99 website/szukaj.php:86 website/szukaj.php:94
-#: website/szukaj.php:117
+#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:893
+#: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
 msgid "eg."
 msgstr "ex."
 
-#: website/edit.php:330
+#: website/edit.php:329
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
 msgstr ""
 
-#: website/edit.php:341 website/mypage.php:156
+#: website/edit.php:340 website/mypage.php:156
 msgid "Observation area"
 msgstr "Observație zonă"
 
-#: website/edit.php:343
+#: website/edit.php:342
 msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
 msgstr "Puteți primi notificări în cazul în care orice geokret este conectat la distanța specificată de coordonatele casa ta. Pentru a dezactiva introduce 0."
 
-#: website/edit.php:362
+#: website/edit.php:361
 msgid "Observation radius is invalid or outside the min/max range"
 msgstr "Raza de observare este invalid sau in afara intervalului min / max"
 
-#: website/edit.php:397
+#: website/edit.php:396
 msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
 msgstr "Ultimul busteni de: * geokrets propriile tale * geokrets pe care le vizionați * orice geokrets autentificat apropierea locației casa ta"
 
-#: website/edit.php:398
+#: website/edit.php:397
 msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
 msgstr "Comentarii postate la oricare dintre următoarele: * geokrets propriile tale * geokrets că te uiți la * jurnalele dvs. * comentariile dvs. * posturi de știri v-ați abonat la"
 
-#: website/edit.php:404
+#: website/edit.php:403
 msgid "Yes, I want to receive email alerts (sent once a day). Email alerts may contain any of the following:"
 msgstr "Da, doresc să primesc alerte pe email (trimis o dată pe zi). Alerte prin e-mail pot conține oricare dintre următoarele:"
 
-#: website/edit.php:407
+#: website/edit.php:406
 msgid "GeoKrety.org news"
 msgstr "GeoKrety.org știri"
 
-#: website/edit.php:453 website/edit.php:456
+#: website/edit.php:452 website/edit.php:455
 msgid "[GeoKrety] Email address change request at geokrety.org"
 msgstr "[GeoKrety] Trimiteți e-mail cerere de schimbare a adresei la geokrety.org"
 
-#: website/edit.php:459
+#: website/edit.php:458
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days."
 msgstr "Un e-mail de confirmare a fost trimis la adresa ta noua. Trebuie să faceți clic pe link-ul furnizat în e-mail pentru a confirma schimbarea adresa dvs. de email. Link-ul de confirmare este valabilă timp de 5 zile."
 
-#: website/edit.php:462
+#: website/edit.php:461
 msgid "Error, please try again later..."
 msgstr "Eroare, vă rugăm să încercați din nou mai târziu ..."
 
-#: website/edit.php:469
+#: website/edit.php:468
 msgid "Wrong email or subscribtion option"
 msgstr "Emailul sau optiunea de inscrere e gresita"
 
-#: website/edit.php:518 website/mypage.php:45
+#: website/edit.php:517 website/mypage.php:45
 msgid "Choose statpic"
 msgstr "Alege imagine"
 
-#: website/edit.php:552 website/labels.php:55 website/register.php:45
+#: website/edit.php:551 website/labels.php:55 website/register.php:45
 #: website/szukaj.php:100
 msgid "GeoKret name"
 msgstr "Numele GeoKret-ului"
 
-#: website/edit.php:556 website/register.php:49
+#: website/edit.php:555 website/register.php:49
 msgid "Geokret type"
 msgstr "Tip de GeoKret"
 
-#: website/edit.php:564 website/register.php:57
+#: website/edit.php:563 website/register.php:57
 msgid "help.php#geokretytypes"
 msgstr ""
 
-#: website/edit.php:568 website/generatorek.php:140 website/labels.php:67
-#: website/recent_comments_fn.php:103 website/recent_moves.php:94
+#: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
+#: website/recent_comments_fn.php:102 website/recent_moves.php:93
 #: website/register.php:61 website/ruchy.php:565 website/ruchy.php:833
-#: website/ruchy.php:993
+#: website/ruchy.php:994
 msgid "Comment"
 msgstr "Comentariu"
 
-#: website/edit.php:570 website/generatorek.php:142 website/grp_create.php:66
-#: website/majluj.php:106 website/newscomments.php:253
+#: website/edit.php:569 website/generatorek.php:142 website/grp_create.php:66
+#: website/majluj.php:106 website/newscomments.php:251
 #: website/race_add.php:143 website/register.php:63
 msgid "characters left"
 msgstr "caractere ramase"
@@ -538,22 +537,22 @@ msgid "Photo gallery of"
 msgstr "Galerie foto de"
 
 #: website/geokret_gallery.php:121 website/geokret_gallery.php:131
-#: website/recent_pictures.php:56 website/recent_pictures.php:64
+#: website/recent_pictures.php:55 website/recent_pictures.php:63
 msgid "Photo by"
 msgstr "Fotografie de"
 
-#: website/geokret_gallery.php:124 website/recent_moves.php:95
-#: website/recent_pictures.php:60 website/ruchy.php:956
+#: website/geokret_gallery.php:124 website/recent_moves.php:94
+#: website/recent_pictures.php:59 website/ruchy.php:957
 msgid "Date"
 msgstr "Data"
 
 #: website/geokret_gallery.php:126 website/lingering.php:202
-#: website/mygeokrets.php:276 website/mygeokrets.php:289
-#: website/recent_moves.php:93
+#: website/mygeokrets.php:275 website/mygeokrets.php:288
+#: website/recent_moves.php:92
 msgid "Cache"
 msgstr ""
 
-#: website/geokret_gallery.php:129 website/recent_pictures.php:62
+#: website/geokret_gallery.php:129 website/recent_pictures.php:61
 msgid "Country"
 msgstr "Ţară"
 
@@ -623,7 +622,7 @@ msgstr "Expozitia de grup"
 msgid "Hall of fame"
 msgstr "Contribuitori"
 
-#: website/help.php:9 website/help_generate.php:10 website/krety.html.php:24
+#: website/help_generate.php:10 website/krety.html.php:24
 #: website/templates.php:42 website/templates.php:48 website/templates.php:105
 #: website/templates.php:111 website/templates.php:231
 #: website/templates.php:237 website/templates.php:294
@@ -745,7 +744,7 @@ msgstr "<strong>%d km</strong> calatoriti de toate GeoKret-urile (este de %.2f o
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr ""
 
-#: website/index.php:108 website/ruchy.php:1007
+#: website/index.php:108 website/ruchy.php:1008
 msgid "Go!"
 msgstr ""
 
@@ -762,7 +761,7 @@ msgstr ""
 msgid "News"
 msgstr "Noutati"
 
-#: website/index.php:162 website/newscomments.php:49
+#: website/index.php:162 website/newscomments.php:47
 msgid "Comments"
 msgstr "Comentarii"
 
@@ -794,11 +793,11 @@ msgstr ""
 msgid "visits/day"
 msgstr "vizite pe zi"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "Hidden"
 msgstr "Ascuns"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "in"
 msgstr ""
 
@@ -807,12 +806,12 @@ msgid "Report as missing"
 msgstr "Raportați ca lipsă"
 
 #: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search for caches in this area on geocaching.com"
 msgstr "Caută cache-uri în acest domeniu pe geocaching.com"
 
 #: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search geocaching.com"
 msgstr "Căutare geocaching.com"
 
@@ -821,11 +820,11 @@ msgid "Write comment"
 msgstr "Scrie comentariu"
 
 #: website/konkret-tabelka.php:233 website/konkret.php:82
-#: website/recent_moves.php:216
+#: website/recent_moves.php:215
 msgid "Add photo"
 msgstr "Adaugă fotografie"
 
-#: website/konkret-tabelka.php:233 website/recent_moves.php:216
+#: website/konkret-tabelka.php:233 website/recent_moves.php:215
 msgid "Edit log"
 msgstr ""
 
@@ -861,7 +860,7 @@ msgstr "Arhiveaza acest geokret"
 msgid "Write a note"
 msgstr "Scrieţi o notă"
 
-#: website/konkret.php:93 website/mypage.php:329
+#: website/konkret.php:93 website/mypage.php:328
 #: website/statystyczka-hubs.php:11 website/statystyczka-lata.php:11
 #: website/statystyczka.php:11 website/statystyczka2.php:11
 #: website/statystyczka3.php:11 website/templates.php:24
@@ -882,7 +881,7 @@ msgid "Number of photos in the gallery"
 msgstr "Numărul de fotografii în galerie"
 
 #: website/konkret.php:112 website/lingering.php:184
-#: website/mygeokrets.php:255
+#: website/mygeokrets.php:254
 msgid "Log this GeoKret"
 msgstr "Log acest GeoKret"
 
@@ -1040,8 +1039,8 @@ msgstr ""
 msgid "Print label"
 msgstr "Imprima eticheta"
 
-#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:287
-#: website/mygeokrets.php:292 website/race.php:285 website/race.php:408
+#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:286
+#: website/mygeokrets.php:291 website/race.php:285 website/race.php:408
 #: website/race_list.php:183 website/race_list.php:270
 msgid "Owner"
 msgstr "Proprietar"
@@ -1062,55 +1061,55 @@ msgstr ""
 msgid "Please note: not all translations are avaliable. Translations may not work with some templates. English is added by default, so you may not select it."
 msgstr "Nota: nu toate traducerile functioneaza. Traducerile ar putea sa nu functioneze cu unele sabloane. Engleza este adaugata din oficiu, deci nu poate fi selectata."
 
-#: website/lingering.php:189 website/mygeokrets.php:236
+#: website/lingering.php:189 website/mygeokrets.php:235
 msgid "Edit this GeoKret"
 msgstr "Edita acest GeoKret"
 
-#: website/lingering.php:227 website/mygeokrets.php:329
-#: website/recent_moves.php:92 website/ruchy.php:658
+#: website/lingering.php:227 website/mygeokrets.php:328
+#: website/recent_moves.php:91 website/ruchy.php:658
 msgid "Name"
 msgstr "Numele"
 
-#: website/lingering.php:230 website/mygeokrets.php:332
+#: website/lingering.php:230 website/mygeokrets.php:331
 msgid "Last action"
 msgstr "Ultima acţiune"
 
 #: website/lingering.php:231 website/lost_mapka.php:52
-#: website/mapka_kretow.php:69 website/mygeokrets.php:333 website/race.php:107
-#: website/race_list.php:101 website/recent_moves.php:96
+#: website/mapka_kretow.php:69 website/mygeokrets.php:332 website/race.php:107
+#: website/race_list.php:101 website/recent_moves.php:95
 msgid "Distance travelled"
 msgstr "Distanta calatoriei"
 
-#: website/lingering.php:232 website/mygeokrets.php:334 website/race.php:108
+#: website/lingering.php:232 website/mygeokrets.php:333 website/race.php:108
 #: website/race_list.php:102
 msgid "Number of visited caches"
 msgstr "Numărul de cache vizitate"
 
-#: website/longin.php:43
+#: website/longin.php:42
 msgid "You have successfully logged out of GeoKrety website."
 msgstr "V-ați conectat cu succes din site-ul GeoKrety."
 
-#: website/longin.php:45
+#: website/longin.php:44
 msgid "You are probably logged in."
 msgstr "Probabil ca sunteti logat."
 
-#: website/longin.php:88
+#: website/longin.php:87
 msgid "User doesn't exist/wrong password."
 msgstr "Utilizatorul nu exista sau parola e gresita."
 
-#: website/longin.php:107
+#: website/longin.php:106
 msgid "Error setting sessid."
 msgstr "Eroare la inregistrarea sesiunii."
 
-#: website/longin.php:146
+#: website/longin.php:145
 msgid "Remember me"
 msgstr "Retine-ma"
 
-#: website/longin.php:147
+#: website/longin.php:146
 msgid "We are using cookies only for storing login information and language preferences. Read more <a href=\"/help.php#cookies\">about our cookies policy</a>"
 msgstr ""
 
-#: website/longin_chceck.php:27
+#: website/longin_chceck.php:26
 msgid "Wrong secid identifier"
 msgstr "Greșită secid identificator"
 
@@ -1245,14 +1244,14 @@ msgstr "Sunteți sigur?"
 msgid "Generate new secid"
 msgstr "Genera noi secid"
 
-#: website/mypage.php:106 website/mypage.php:370 website/templates.php:162
-#: website/templates/plugins/function.login_check.php:48
+#: website/mypage.php:106 website/mypage.php:369 website/templates.php:162
+#: website/templates/plugins/function.login_check.php:47
 #: website/templates/krety_logged_in.html:9
 msgid "My recent logs"
 msgstr "Inregistrarile mele recente"
 
-#: website/mypage.php:116 website/mypage.php:371 website/templates.php:165
-#: website/templates/plugins/function.login_check.php:49
+#: website/mypage.php:116 website/mypage.php:370 website/templates.php:165
+#: website/templates/plugins/function.login_check.php:48
 #: website/templates/krety_logged_in.html:10
 msgid "Recent moves of my geokrets"
 msgstr "Mutari recente ale GeoKret-urilor mele"
@@ -1262,73 +1261,73 @@ msgstr "Mutari recente ale GeoKret-urilor mele"
 msgid "%s's Inventory"
 msgstr "% s de inventariere"
 
-#: website/mypage.php:230
+#: website/mypage.php:229
 #, php-format
 msgid "%s has created <b>%s</b> GeoKrets, which travelled <b>%s</b> km."
 msgstr "%s -a creat <b> %s </ b>, care a călătorit GeoKrets <b> %s </ b> km."
 
-#: website/mypage.php:252
+#: website/mypage.php:251
 #, php-format
 msgid "%s has moved <b>%s</b> GeoKrets on a total distance of <b>%s</b> km."
 msgstr "%s -a mutat <b>%s</b> GeoKrets pe o distanta totala de <b>%s</b> km."
 
-#: website/mypage.php:274
+#: website/mypage.php:273
 msgid "Send a message to the user"
 msgstr "Trimite-i un mesaj acestui utilizator"
 
-#: website/mypage.php:307
+#: website/mypage.php:306
 msgid "Joined us"
 msgstr "Cont creeat"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Subscribe to RSS channel"
 msgstr "Inscrieti-va la canalul RSS"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Be up to date with your and watched GeoKrets!"
 msgstr "Fii la curent cu GeoKrets si urmarit!"
 
-#: website/mypage.php:336 website/mypage.php:375 website/user_stat.php:194
+#: website/mypage.php:335 website/mypage.php:374 website/user_stat.php:194
 msgid "User stats"
 msgstr ""
 
-#: website/mypage.php:341
+#: website/mypage.php:340
 msgid "Badges"
 msgstr "Insigne"
 
-#: website/mypage.php:364
+#: website/mypage.php:363
 msgid "Links"
 msgstr "Legătur"
 
-#: website/mypage.php:367 website/templates.php:153
-#: website/templates/plugins/function.login_check.php:45
+#: website/mypage.php:366 website/templates.php:153
+#: website/templates/plugins/function.login_check.php:44
 #: website/templates/krety_logged_in.html:6
 msgid "Geokrets in my inventory"
 msgstr "GeoKret-uri in inventarul meu"
 
-#: website/mypage.php:368 website/templates.php:156
-#: website/templates/plugins/function.login_check.php:46
+#: website/mypage.php:367 website/templates.php:156
+#: website/templates/plugins/function.login_check.php:45
 #: website/templates/krety_logged_in.html:7
 msgid "My geokrets"
 msgstr "GeoKret-urile mele"
 
-#: website/mypage.php:369 website/templates.php:159
+#: website/mypage.php:368 website/templates.php:159
 #: website/templates/krety_logged_in.html:8
 msgid "Watched geokrets"
 msgstr ""
 
-#: website/mypage.php:372 website/templates.php:168
+#: website/mypage.php:371 website/templates.php:168
 #: website/templates/krety_logged_in.html:11
 msgid "My photos"
 msgstr "Fotografiile mele"
 
-#: website/mypage.php:373 website/templates.php:171
+#: website/mypage.php:372 website/templates.php:171
 #: website/templates/krety_logged_in.html:12
 msgid "Photos of my geokrets"
 msgstr "Fotografii de geokrets mele"
 
-#: website/mypage.php:374 website/templates.php:174
-#: website/templates/plugins/function.login_check.php:50
+#: website/mypage.php:373 website/templates.php:174
+#: website/templates/plugins/function.login_check.php:49
 #: website/templates/krety_logged_in.html:13
 msgid "Where are my geokrets?"
 msgstr "Unde-mi sunt geokret-urile?"
@@ -1353,27 +1352,27 @@ msgstr "Parola noua a fost trimisa la"
 msgid "No such email"
 msgstr "Nu exista astfel de email"
 
-#: website/newscomments.php:120
+#: website/newscomments.php:118
 msgid "News post not found."
 msgstr "Post de știri nu a fost găsit."
 
-#: website/newscomments.php:232
+#: website/newscomments.php:230
 msgid "Unsubscribe from this news post"
 msgstr "Dezabona de la acest post de ştiri"
 
-#: website/newscomments.php:235 website/newscomments.php:254
+#: website/newscomments.php:233 website/newscomments.php:252
 msgid "Subscribe to this news post"
 msgstr "Aboneaza-te la acest post de ştiri"
 
-#: website/newscomments.php:250
+#: website/newscomments.php:248
 msgid "Write new comment"
 msgstr "Scrie un comentariu nou"
 
-#: website/newscomments.php:255
+#: website/newscomments.php:253
 msgid "Post comment"
 msgstr "Post comentariu"
 
-#: website/newscomments.php:267
+#: website/newscomments.php:265
 msgid "There are no comments for this post."
 msgstr "Nu sunt comentarii pentru acest post."
 
@@ -1682,15 +1681,15 @@ msgstr ""
 msgid "Recent Log Comments"
 msgstr "Comentarii recente Autentificare"
 
-#: website/recent_comments_fn.php:14
+#: website/recent_comments_fn.php:13
 msgid "Recent log comments"
 msgstr "Comentarii recente jurnal"
 
-#: website/recent_comments_fn.php:104
+#: website/recent_comments_fn.php:103
 msgid "User"
 msgstr "Utilizator"
 
-#: website/recent_moves.php:14 website/recentlogs.php:9
+#: website/recent_moves.php:13 website/recentlogs.php:9
 #: website/templates.php:18 website/templates.php:81 website/templates.php:207
 #: website/templates.php:270
 msgid "Recent logs"
@@ -1700,16 +1699,16 @@ msgstr "Inregistrari recente"
 msgid "Recent news comments"
 msgstr "Comentarii recente ştiri"
 
-#: website/recent_newscomments_fn.php:9
+#: website/recent_newscomments_fn.php:8
 msgid "View all comments"
 msgstr "Vezi toate comentariile"
 
-#: website/recent_pictures.php:44 website/recent_pictures.php:46
+#: website/recent_pictures.php:43 website/recent_pictures.php:45
 msgid "Go to geokret's page"
 msgstr "Du-te la pagina geokret lui"
 
 #: website/register.php:11 website/templates.php:144
-#: website/templates/plugins/function.login_check.php:41
+#: website/templates/plugins/function.login_check.php:40
 #: website/templates/krety_logged_in.html:1
 msgid "Register a new GeoKret"
 msgstr "Inregistreaza un GeoKret nou"
@@ -1890,7 +1889,7 @@ msgstr ""
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr ""
 
-#: website/ruchy.php:862 website/ruchy.php:875
+#: website/ruchy.php:862 website/ruchy.php:876
 msgid "help.php#fullysupportedwaypoints"
 msgstr ""
 
@@ -1902,51 +1901,55 @@ msgstr ""
 msgid "Check"
 msgstr "Verifica"
 
-#: website/ruchy.php:874
+#: website/ruchy.php:873 website/szukaj-ajax.php:157
+msgid "Enter at least 5 characters"
+msgstr ""
+
+#: website/ruchy.php:875
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr ""
 
-#: website/ruchy.php:886
+#: website/ruchy.php:887
 msgid "Coordinates"
 msgstr "Coordonează"
 
-#: website/ruchy.php:890
+#: website/ruchy.php:891
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr ""
 
-#: website/ruchy.php:902
+#: website/ruchy.php:903
 msgid "Logged using geolocation"
 msgstr ""
 
-#: website/ruchy.php:902
+#: website/ruchy.php:903
 msgid "Use geolocation"
 msgstr ""
 
-#: website/ruchy.php:913
+#: website/ruchy.php:914
 msgid "Captcha verification"
 msgstr "Captcha verificare"
 
-#: website/ruchy.php:946
+#: website/ruchy.php:947
 msgid "Additional data"
 msgstr "Date aditionale"
 
-#: website/ruchy.php:967
+#: website/ruchy.php:968
 msgid "Two days ago"
 msgstr ""
 
-#: website/ruchy.php:973
+#: website/ruchy.php:974
 msgid "Time"
 msgstr "Timp"
 
-#: website/ruchy.php:986
+#: website/ruchy.php:987
 msgid "now"
 msgstr ""
 
-#: website/ruchy.php:987
+#: website/ruchy.php:988
 msgid "Enter exact time when You think it may be important"
 msgstr "Introduceti ora exacta cand credeti ca va fi important"
 
-#: website/ruchy.php:999
+#: website/ruchy.php:1000
 msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
@@ -1970,40 +1973,73 @@ msgstr "Nu sunteti logat."
 msgid "Top ten owners"
 msgstr "Top 10 proprietari"
 
-#: website/szukaj-ajax.php:47
-msgid "GeoKret not found"
-msgstr "GeoKret-ul nu a fost gasit"
-
-#: website/szukaj-ajax.php:60
-msgid "Last log:"
+#: website/szukaj-ajax.php:17
+msgid "flag"
 msgstr ""
 
-#: website/szukaj-ajax.php:68
+#: website/szukaj-ajax.php:20 website/szukaj-ajax.php:182
 #, php-format
-msgid "%s by %s."
+msgid "by %s"
 msgstr ""
 
-#: website/szukaj-ajax.php:73
-msgid "Invalid tracking code"
-msgstr "Nevalid cod de urmărire"
+#: website/szukaj-ajax.php:23
+msgid "OK"
+msgstr ""
 
-#: website/szukaj-ajax.php:86
+#: website/szukaj-ajax.php:25
+#, php-format
+msgid "cache type: %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:28
+#, php-format
+msgid "country: %s %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:38
+msgid "No cache found"
+msgstr "Nu a fost gasita nici o geocutie"
+
+#: website/szukaj-ajax.php:47
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr ""
 
-#: website/szukaj-ajax.php:87
+#: website/szukaj-ajax.php:48
 #, php-format
 msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr ""
 
-#: website/szukaj-ajax.php:99
+#: website/szukaj-ajax.php:56
+#, php-format
+msgid "Unexpected error (id:%s), please report."
+msgstr ""
+
+#: website/szukaj-ajax.php:95
+msgid "GeoKret not found"
+msgstr "GeoKret-ul nu a fost gasit"
+
+#: website/szukaj-ajax.php:108
+msgid "Last log:"
+msgstr ""
+
+#: website/szukaj-ajax.php:116
+#, php-format
+msgid "%s by %s."
+msgstr ""
+
+#: website/szukaj-ajax.php:121
+msgid "Invalid tracking code"
+msgstr "Nevalid cod de urmărire"
+
+#: website/szukaj-ajax.php:171
 msgid "caches match"
 msgstr "geocutii gasite"
 
-#: website/szukaj-ajax.php:109
-msgid "No cache found"
-msgstr "Nu a fost gasita nici o geocutie"
+#: website/szukaj-ajax.php:173
+#, php-format
+msgid "%d caches match (the first %d)"
+msgstr ""
 
 #: website/szukaj.php:45
 msgid "Found users"
@@ -2021,7 +2057,7 @@ msgstr "Geokrets în"
 msgid "GeoKret owner"
 msgstr "Proprietarul GeoKret-ului"
 
-#: website/szukaj_kreta.php:44
+#: website/szukaj_kreta.php:43
 msgid "Operations on this GeoKret"
 msgstr "Operatiuni pe acest GeoKret"
 
@@ -2066,22 +2102,22 @@ msgstr ""
 msgid "You can also go to the apppropriate page by decoding the QR-code."
 msgstr ""
 
-#: website/templates/nawigacja_tablicy.php:99
-#: website/templates/nawigacja_tablicy.php:112
+#: website/templates/nawigacja_tablicy.php:98
+#: website/templates/nawigacja_tablicy.php:111
 msgid "Show all"
 msgstr "Arată tot"
 
-#: website/templates/nawigacja_tablicy.php:124
+#: website/templates/nawigacja_tablicy.php:123
 #, php-format
 msgid "Showing items %s - %s (of %s) :: %s"
 msgstr "Listare %s - %s (din %s) :: %s"
 
-#: website/templates/nawigacja_tablicy.php:125
+#: website/templates/nawigacja_tablicy.php:124
 #, php-format
 msgid "Showing items %s - %s (of %s)"
 msgstr ""
 
-#: website/templates/plugins/function.login_check.php:47
+#: website/templates/plugins/function.login_check.php:46
 msgid "Observed geokrets"
 msgstr ""
 
@@ -2141,13 +2177,13 @@ msgstr ""
 msgid "Portfolio"
 msgstr ""
 
-#: website/verify_mail.php:117
+#: website/verify_mail.php:113
 #, php-format
 msgid "An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it :)\n\n"
 "%s"
 msgstr ""
 
-#: website/verify_mail.php:121
+#: website/verify_mail.php:117
 msgid "[GeoKrety] Activate your account"
 msgstr "[GeoKrety] Activați-vă contul"
 

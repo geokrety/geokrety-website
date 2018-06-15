@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-01 10:57+0000\n"
-"PO-Revision-Date: 2018-05-01 07:00-0400\n"
+"POT-Creation-Date: 2018-06-15 20:03+0000\n"
+"PO-Revision-Date: 2018-06-15 16:11-0400\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Crowdin-File: /master/messages.po\n"
 
 #: website/adduser.php:8 website/adduser.php:122 website/templates.php:186
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Реєстрація нового користувача"
@@ -33,8 +33,8 @@ msgstr "Обов'язкові для заповнення поля"
 msgid "Username"
 msgstr ""
 
-#: website/adduser.php:76 website/api-login2secid.php:64
-#: website/longin.php:142 website/mypage.php:43
+#: website/adduser.php:76 website/api-login2secid.php:63
+#: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Пароль"
 
@@ -42,7 +42,7 @@ msgstr "Пароль"
 msgid "Verify Password"
 msgstr "Підтвердження пароля"
 
-#: website/adduser.php:86 website/edit.php:402 website/new_password.php:52
+#: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
 msgid "Email"
 msgstr "Електронна пошта"
 
@@ -50,11 +50,11 @@ msgstr "Електронна пошта"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Так, я хочу отримувати оповіщення по електронній пошті (відправляється щодня в опівночі CET / Cesc), коли мої дивилися GeoKret або зміни його місцезнаходження."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:916
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:917
 msgid "Enter code"
 msgstr "Введіть код"
 
-#: website/adduser.php:103 website/edit.php:489 website/mypage.php:308
+#: website/adduser.php:103 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Мова"
 
@@ -68,7 +68,7 @@ msgstr "Умови використання"
 msgid "Tips"
 msgstr "Чайові"
 
-#: website/adduser.php:128 website/edit.php:206
+#: website/adduser.php:128 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -107,13 +107,13 @@ msgid "An email to confirm your email address was sent to you. When you confirm,
 msgstr "Електронної пошти, щоб підтвердити свою адресу електронної пошти було відправлено до вас. Коли ви підтвердите, ваша обліковий запис буде функціонувати в повному обсязі. До тих пір, ви не зможете отримати за електронною поштою щоденних зведень про хід вашого GeoKrety. Посилання дійсна протягом 5 днів. Тепер ви можете виконувати операції по GeoKrety. Ви можете увійти в систему і користуватися GeoKrety.org! :)"
 
 #: website/adduser.php:177 website/longin.php:9 website/templates.php:189
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Увійти"
 
 #: website/adduser.php:177 website/templates.php:192
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Забули пароль?"
@@ -146,58 +146,58 @@ msgstr "Bad код підтвердження або іншу помилку."
 msgid "GK XML interface"
 msgstr "К. XML інтерфейсу"
 
-#: website/check_email_validity.php:12
+#: website/check_email_validity.php:11
 #, php-format
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
 msgstr ""
 
-#: website/claim.php:22 website/comment.php:77 website/generatorek.php:57
-#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:275
+#: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
+#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
 msgstr "Будь ласка, зареєструйтесь."
 
-#: website/comment.php:21
+#: website/comment.php:20
 msgid "Unknown error."
 msgstr ""
 
-#: website/comment.php:48
+#: website/comment.php:46
 msgid "Oops! Something went wrong."
 msgstr "Ой! Щось пішло не так."
 
-#: website/comment.php:125
+#: website/comment.php:123
 #, php-format
 msgid "Reporting GeoKret %s as missing"
 msgstr ""
 
-#: website/comment.php:149
+#: website/comment.php:147
 #, php-format
 msgid "Commenting GeoKret: %s"
 msgstr ""
 
-#: website/comment.php:163
+#: website/comment.php:161
 msgid "Please provide any information that may help the owner to find out the whereabouts of this GeoKret."
 msgstr "&quot;&quot; Прохання надати будь-яку інформацію, яка може допомогти власникові, щоб дізнатися &quot;&quot; місцезнаходження цього GeoKret."
 
-#: website/comment.php:166
+#: website/comment.php:164
 msgid "Log:"
 msgstr ""
 
-#: website/comment.php:166 website/comment.php:181
+#: website/comment.php:164 website/comment.php:179
 #, php-format
 msgid "By %s, on %s"
 msgstr ""
 
-#: website/comment.php:181
+#: website/comment.php:179
 msgid "Last comment:"
 msgstr ""
 
-#: website/comment.php:192
+#: website/comment.php:190
 msgid "Your comment"
 msgstr "Ваш коментар"
 
-#: website/comment.php:200 website/majluj.php:125
+#: website/comment.php:198 website/majluj.php:125
 msgid "Send message"
 msgstr "Надіслати повідомлення"
 
@@ -222,11 +222,11 @@ msgstr "Щоб змінити адресу електронної %s Натис�
 msgid "This confirmation code has already been processed."
 msgstr "Цей код підтвердження вже були оброблені."
 
-#: website/cords_parse.php:237
+#: website/cords_parse.php:236
 msgid "Bad coordinates or unknown format."
 msgstr "Bad координати або невідомий формат."
 
-#: website/cords_parse.php:245
+#: website/cords_parse.php:244
 msgid "Missing or invalid coordinates."
 msgstr "Відсутній або неправильний координат."
 
@@ -308,35 +308,35 @@ msgstr "Статистика по країнам"
 msgid "Where are GeoKrety now?"
 msgstr ""
 
-#: website/czy_obserwowany.php:45
+#: website/czy_obserwowany.php:44
 msgid "Number of users who are watching this geokret"
 msgstr "Кількість користувачів, які дивляться на цю geokret"
 
-#: website/czy_obserwowany.php:49
+#: website/czy_obserwowany.php:48
 msgid "Watch this GeoKret"
 msgstr "Дивитися це GeoKret"
 
-#: website/czy_obserwowany.php:53 website/mygeokrets.php:280
+#: website/czy_obserwowany.php:52 website/mygeokrets.php:279
 msgid "Stop watching this GeoKret"
 msgstr "Зупинити перегляду цього GeoKret"
 
-#: website/czy_obserwowany.php:58
+#: website/czy_obserwowany.php:57
 msgid "Users watching it"
 msgstr "Користувач спостерігає його"
 
-#: website/czy_obserwowany.php:60
+#: website/czy_obserwowany.php:59
 msgid "Users watching this GeoKret"
 msgstr "Користувач спостерігає цю GeoKret"
 
-#: website/days_ago.php:14
+#: website/days_ago.php:13
 msgid "days ago"
 msgstr "минулого тижня"
 
-#: website/days_ago.php:16 website/ruchy.php:966
+#: website/days_ago.php:15 website/ruchy.php:967
 msgid "Yesterday"
 msgstr "Вчора"
 
-#: website/days_ago.php:18 website/ruchy.php:965
+#: website/days_ago.php:17 website/ruchy.php:966
 msgid "Today"
 msgstr "Сьогодні"
 
@@ -393,119 +393,118 @@ msgstr "Змінити"
 msgid "You must be logged in to continue."
 msgstr "Ви повинні увійти в систему, щоб продовжити."
 
-#: website/edit.php:199
+#: website/edit.php:198
 msgid "Old password"
 msgstr "Старий пароль"
 
-#: website/edit.php:201
+#: website/edit.php:200
 msgid "New password"
 msgstr "Новий пароль"
 
-#: website/edit.php:203
+#: website/edit.php:202
 msgid "Retype"
 msgstr "Повторіть"
 
-#: website/edit.php:204
+#: website/edit.php:203
 msgid "characters"
 msgstr "символи"
 
-#: website/edit.php:228
+#: website/edit.php:227
 msgid "Passwords different or empty or too short"
 msgstr "Паролі різні або порожній або занадто короткий"
 
-#: website/edit.php:230
+#: website/edit.php:229
 msgid "Wrong current password"
 msgstr "Невірний поточний пароль"
 
-#: website/edit.php:327 website/mypage.php:156
+#: website/edit.php:326 website/mypage.php:156
 msgid "Home coordinates"
 msgstr "Головна Координати"
 
-#: website/edit.php:330
+#: website/edit.php:329
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Використовуйте карту, щоб вибрати розташування або введіть координати вручну."
 
-#: website/edit.php:330 website/race_join.php:41 website/ruchy.php:892
-#: website/szukaj-ajax.php:99 website/szukaj.php:86 website/szukaj.php:94
-#: website/szukaj.php:117
+#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:893
+#: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
 msgid "eg."
 msgstr "напр."
 
-#: website/edit.php:330
+#: website/edit.php:329
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
 msgstr ""
 
-#: website/edit.php:341 website/mypage.php:156
+#: website/edit.php:340 website/mypage.php:156
 msgid "Observation area"
 msgstr "Спостереження області"
 
-#: website/edit.php:343
+#: website/edit.php:342
 msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
 msgstr "Ви можете отримувати повідомлення, якщо будь geokret увійшов в межах заданої відстані від вашого будинку координат. Щоб відключити введіть 0."
 
-#: website/edit.php:362
+#: website/edit.php:361
 msgid "Observation radius is invalid or outside the min/max range"
 msgstr "Спостереження радіус є недійсним або за межами мінімального / максимального діапазону"
 
-#: website/edit.php:397
+#: website/edit.php:396
 msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
 msgstr "Останні журналів: * власні geokrets * geokrets, що ви дивитеся * будь geokrets увійшли близько вашого будинку розташування"
 
-#: website/edit.php:398
+#: website/edit.php:397
 msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
 msgstr "Коментар розміщений на будь-який з наступних: * власні geokrets * geokrets, що ви Watch * журнали * Ваш коментар * Повідомлень новини ви підписались на"
 
-#: website/edit.php:404
+#: website/edit.php:403
 msgid "Yes, I want to receive email alerts (sent once a day). Email alerts may contain any of the following:"
 msgstr "Так, я хочу отримувати сповіщення (відправляється раз на день). E-mail сповіщень може містити одну з наступних дій:"
 
-#: website/edit.php:407
+#: website/edit.php:406
 msgid "GeoKrety.org news"
 msgstr "GeoKrety.org новини"
 
-#: website/edit.php:453 website/edit.php:456
+#: website/edit.php:452 website/edit.php:455
 msgid "[GeoKrety] Email address change request at geokrety.org"
 msgstr "[GeoKrety] Email запит на зміну адреси в geokrety.org"
 
-#: website/edit.php:459
+#: website/edit.php:458
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days."
 msgstr "Лист з підтвердженням було надіслано на ваш новий адреса. Ви повинні натиснути на посилання в листі, щоб підтвердити зміну адреси електронної пошти. Підтвердження посилання дійсна протягом 5 днів."
 
-#: website/edit.php:462
+#: website/edit.php:461
 msgid "Error, please try again later..."
 msgstr "Помилка, спробуйте ще раз пізніше ..."
 
-#: website/edit.php:469
+#: website/edit.php:468
 msgid "Wrong email or subscribtion option"
 msgstr "Неправильний електронний варіант або підписка"
 
-#: website/edit.php:518 website/mypage.php:45
+#: website/edit.php:517 website/mypage.php:45
 msgid "Choose statpic"
 msgstr "Вибрати statpic"
 
-#: website/edit.php:552 website/labels.php:55 website/register.php:45
+#: website/edit.php:551 website/labels.php:55 website/register.php:45
 #: website/szukaj.php:100
 msgid "GeoKret name"
 msgstr "GeoKret ім'я"
 
-#: website/edit.php:556 website/register.php:49
+#: website/edit.php:555 website/register.php:49
 msgid "Geokret type"
 msgstr "Geokret типу"
 
-#: website/edit.php:564 website/register.php:57
+#: website/edit.php:563 website/register.php:57
 msgid "help.php#geokretytypes"
 msgstr ""
 
-#: website/edit.php:568 website/generatorek.php:140 website/labels.php:67
-#: website/recent_comments_fn.php:103 website/recent_moves.php:94
+#: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
+#: website/recent_comments_fn.php:102 website/recent_moves.php:93
 #: website/register.php:61 website/ruchy.php:565 website/ruchy.php:833
-#: website/ruchy.php:993
+#: website/ruchy.php:994
 msgid "Comment"
 msgstr "Комментировать"
 
-#: website/edit.php:570 website/generatorek.php:142 website/grp_create.php:66
-#: website/majluj.php:106 website/newscomments.php:253
+#: website/edit.php:569 website/generatorek.php:142 website/grp_create.php:66
+#: website/majluj.php:106 website/newscomments.php:251
 #: website/race_add.php:143 website/register.php:63
 msgid "characters left"
 msgstr "залишилось символів"
@@ -538,22 +537,22 @@ msgid "Photo gallery of"
 msgstr "Фотогалерея"
 
 #: website/geokret_gallery.php:121 website/geokret_gallery.php:131
-#: website/recent_pictures.php:56 website/recent_pictures.php:64
+#: website/recent_pictures.php:55 website/recent_pictures.php:63
 msgid "Photo by"
 msgstr "Фото"
 
-#: website/geokret_gallery.php:124 website/recent_moves.php:95
-#: website/recent_pictures.php:60 website/ruchy.php:956
+#: website/geokret_gallery.php:124 website/recent_moves.php:94
+#: website/recent_pictures.php:59 website/ruchy.php:957
 msgid "Date"
 msgstr "Побачення"
 
 #: website/geokret_gallery.php:126 website/lingering.php:202
-#: website/mygeokrets.php:276 website/mygeokrets.php:289
-#: website/recent_moves.php:93
+#: website/mygeokrets.php:275 website/mygeokrets.php:288
+#: website/recent_moves.php:92
 msgid "Cache"
 msgstr "Кеш"
 
-#: website/geokret_gallery.php:129 website/recent_pictures.php:62
+#: website/geokret_gallery.php:129 website/recent_pictures.php:61
 msgid "Country"
 msgstr "Країна"
 
@@ -623,7 +622,7 @@ msgstr "Показати групу"
 msgid "Hall of fame"
 msgstr "Зал слави"
 
-#: website/help.php:9 website/help_generate.php:10 website/krety.html.php:24
+#: website/help_generate.php:10 website/krety.html.php:24
 #: website/templates.php:42 website/templates.php:48 website/templates.php:105
 #: website/templates.php:111 website/templates.php:231
 #: website/templates.php:237 website/templates.php:294
@@ -745,7 +744,7 @@ msgstr "<strong>%d км </STRONG> зробили все GeoKrets (це %.2f X в
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr ""
 
-#: website/index.php:108 website/ruchy.php:1007
+#: website/index.php:108 website/ruchy.php:1008
 msgid "Go!"
 msgstr ""
 
@@ -762,7 +761,7 @@ msgstr "не потрібно реєструватися!"
 msgid "News"
 msgstr "Новини"
 
-#: website/index.php:162 website/newscomments.php:49
+#: website/index.php:162 website/newscomments.php:47
 msgid "Comments"
 msgstr "Коментарі"
 
@@ -794,11 +793,11 @@ msgstr ""
 msgid "visits/day"
 msgstr "посещений в день"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "Hidden"
 msgstr "Приховано"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "in"
 msgstr "в"
 
@@ -807,12 +806,12 @@ msgid "Report as missing"
 msgstr "Повідомити як зниклий безвісти"
 
 #: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search for caches in this area on geocaching.com"
 msgstr "Пошук кешей в цій галузі на geocaching.com"
 
 #: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search geocaching.com"
 msgstr "Пошук geocaching.com"
 
@@ -821,11 +820,11 @@ msgid "Write comment"
 msgstr "Написати коментар"
 
 #: website/konkret-tabelka.php:233 website/konkret.php:82
-#: website/recent_moves.php:216
+#: website/recent_moves.php:215
 msgid "Add photo"
 msgstr "Додати фото"
 
-#: website/konkret-tabelka.php:233 website/recent_moves.php:216
+#: website/konkret-tabelka.php:233 website/recent_moves.php:215
 msgid "Edit log"
 msgstr "Змінити журналу"
 
@@ -861,7 +860,7 @@ msgstr "Архів цей geokret"
 msgid "Write a note"
 msgstr "Напишіть записку"
 
-#: website/konkret.php:93 website/mypage.php:329
+#: website/konkret.php:93 website/mypage.php:328
 #: website/statystyczka-hubs.php:11 website/statystyczka-lata.php:11
 #: website/statystyczka.php:11 website/statystyczka2.php:11
 #: website/statystyczka3.php:11 website/templates.php:24
@@ -882,7 +881,7 @@ msgid "Number of photos in the gallery"
 msgstr "Кількість фотографій в галереї"
 
 #: website/konkret.php:112 website/lingering.php:184
-#: website/mygeokrets.php:255
+#: website/mygeokrets.php:254
 msgid "Log this GeoKret"
 msgstr "Вхід цьому GeoKret"
 
@@ -1040,8 +1039,8 @@ msgstr ""
 msgid "Print label"
 msgstr "Друк етикетки"
 
-#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:287
-#: website/mygeokrets.php:292 website/race.php:285 website/race.php:408
+#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:286
+#: website/mygeokrets.php:291 website/race.php:285 website/race.php:408
 #: website/race_list.php:183 website/race_list.php:270
 msgid "Owner"
 msgstr "Власник"
@@ -1062,55 +1061,55 @@ msgstr "Допомога мовами"
 msgid "Please note: not all translations are avaliable. Translations may not work with some templates. English is added by default, so you may not select it."
 msgstr "Зверніть увагу: не всі переклади доступні. Перекази можуть не працювати з деякими шаблонами. Англійська додається за замовчуванням, так що ви не можете вибрати її."
 
-#: website/lingering.php:189 website/mygeokrets.php:236
+#: website/lingering.php:189 website/mygeokrets.php:235
 msgid "Edit this GeoKret"
 msgstr "Редагувати GeoKret"
 
-#: website/lingering.php:227 website/mygeokrets.php:329
-#: website/recent_moves.php:92 website/ruchy.php:658
+#: website/lingering.php:227 website/mygeokrets.php:328
+#: website/recent_moves.php:91 website/ruchy.php:658
 msgid "Name"
 msgstr "Назва"
 
-#: website/lingering.php:230 website/mygeokrets.php:332
+#: website/lingering.php:230 website/mygeokrets.php:331
 msgid "Last action"
 msgstr "Останні дії"
 
 #: website/lingering.php:231 website/lost_mapka.php:52
-#: website/mapka_kretow.php:69 website/mygeokrets.php:333 website/race.php:107
-#: website/race_list.php:101 website/recent_moves.php:96
+#: website/mapka_kretow.php:69 website/mygeokrets.php:332 website/race.php:107
+#: website/race_list.php:101 website/recent_moves.php:95
 msgid "Distance travelled"
 msgstr "Відстань, пройдене"
 
-#: website/lingering.php:232 website/mygeokrets.php:334 website/race.php:108
+#: website/lingering.php:232 website/mygeokrets.php:333 website/race.php:108
 #: website/race_list.php:102
 msgid "Number of visited caches"
 msgstr "Кількість відвіданих кешей"
 
-#: website/longin.php:43
+#: website/longin.php:42
 msgid "You have successfully logged out of GeoKrety website."
 msgstr "Ви успішно вийшли з GeoKrety сайту."
 
-#: website/longin.php:45
+#: website/longin.php:44
 msgid "You are probably logged in."
 msgstr "Ви, ймовірно, увійшли дюйм"
 
-#: website/longin.php:88
+#: website/longin.php:87
 msgid "User doesn't exist/wrong password."
 msgstr "Користувач не існує / неправильний пароль."
 
-#: website/longin.php:107
+#: website/longin.php:106
 msgid "Error setting sessid."
 msgstr "Помилка при налаштуванні sessid."
 
-#: website/longin.php:146
+#: website/longin.php:145
 msgid "Remember me"
 msgstr "Запам'ятати мене"
 
-#: website/longin.php:147
+#: website/longin.php:146
 msgid "We are using cookies only for storing login information and language preferences. Read more <a href=\"/help.php#cookies\">about our cookies policy</a>"
 msgstr ""
 
-#: website/longin_chceck.php:27
+#: website/longin_chceck.php:26
 msgid "Wrong secid identifier"
 msgstr "Неправильний ідентифікатор SecID"
 
@@ -1245,14 +1244,14 @@ msgstr "Ви впевнені?"
 msgid "Generate new secid"
 msgstr "Створити новий SecID"
 
-#: website/mypage.php:106 website/mypage.php:370 website/templates.php:162
-#: website/templates/plugins/function.login_check.php:48
+#: website/mypage.php:106 website/mypage.php:369 website/templates.php:162
+#: website/templates/plugins/function.login_check.php:47
 #: website/templates/krety_logged_in.html:9
 msgid "My recent logs"
 msgstr "Мої останні логи"
 
-#: website/mypage.php:116 website/mypage.php:371 website/templates.php:165
-#: website/templates/plugins/function.login_check.php:49
+#: website/mypage.php:116 website/mypage.php:370 website/templates.php:165
+#: website/templates/plugins/function.login_check.php:48
 #: website/templates/krety_logged_in.html:10
 msgid "Recent moves of my geokrets"
 msgstr "Нещодавні кроки мої geokrets"
@@ -1262,73 +1261,73 @@ msgstr "Нещодавні кроки мої geokrets"
 msgid "%s's Inventory"
 msgstr ""
 
-#: website/mypage.php:230
+#: website/mypage.php:229
 #, php-format
 msgid "%s has created <b>%s</b> GeoKrets, which travelled <b>%s</b> km."
 msgstr "%s створив <b> %s </ b> GeoKrets, який їздив <b> %s </ b> км."
 
-#: website/mypage.php:252
+#: website/mypage.php:251
 #, php-format
 msgid "%s has moved <b>%s</b> GeoKrets on a total distance of <b>%s</b> km."
 msgstr "%s переїхав <b>%s</b> GeoKrets на загальну відстань <b>%s</b> км."
 
-#: website/mypage.php:274
+#: website/mypage.php:273
 msgid "Send a message to the user"
 msgstr "Відправити повідомлення користувачу"
 
-#: website/mypage.php:307
+#: website/mypage.php:306
 msgid "Joined us"
 msgstr "Реєстрація компанії"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Subscribe to RSS channel"
 msgstr "Підписка на RSS канал"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Be up to date with your and watched GeoKrets!"
 msgstr "Будьте в курсі ваших і дивився GeoKrets!"
 
-#: website/mypage.php:336 website/mypage.php:375 website/user_stat.php:194
+#: website/mypage.php:335 website/mypage.php:374 website/user_stat.php:194
 msgid "User stats"
 msgstr ""
 
-#: website/mypage.php:341
+#: website/mypage.php:340
 msgid "Badges"
 msgstr "Значки"
 
-#: website/mypage.php:364
+#: website/mypage.php:363
 msgid "Links"
 msgstr "Посилання"
 
-#: website/mypage.php:367 website/templates.php:153
-#: website/templates/plugins/function.login_check.php:45
+#: website/mypage.php:366 website/templates.php:153
+#: website/templates/plugins/function.login_check.php:44
 #: website/templates/krety_logged_in.html:6
 msgid "Geokrets in my inventory"
 msgstr "Geokrets в моєму інвентаризації"
 
-#: website/mypage.php:368 website/templates.php:156
-#: website/templates/plugins/function.login_check.php:46
+#: website/mypage.php:367 website/templates.php:156
+#: website/templates/plugins/function.login_check.php:45
 #: website/templates/krety_logged_in.html:7
 msgid "My geokrets"
 msgstr "Моя geokrets"
 
-#: website/mypage.php:369 website/templates.php:159
+#: website/mypage.php:368 website/templates.php:159
 #: website/templates/krety_logged_in.html:8
 msgid "Watched geokrets"
 msgstr "Див geokrets"
 
-#: website/mypage.php:372 website/templates.php:168
+#: website/mypage.php:371 website/templates.php:168
 #: website/templates/krety_logged_in.html:11
 msgid "My photos"
 msgstr "Мої фотографії"
 
-#: website/mypage.php:373 website/templates.php:171
+#: website/mypage.php:372 website/templates.php:171
 #: website/templates/krety_logged_in.html:12
 msgid "Photos of my geokrets"
 msgstr "Фотографії з моїх geokrets"
 
-#: website/mypage.php:374 website/templates.php:174
-#: website/templates/plugins/function.login_check.php:50
+#: website/mypage.php:373 website/templates.php:174
+#: website/templates/plugins/function.login_check.php:49
 #: website/templates/krety_logged_in.html:13
 msgid "Where are my geokrets?"
 msgstr "Де мої geokrets?"
@@ -1353,27 +1352,27 @@ msgstr "Новий пароль спрямований"
 msgid "No such email"
 msgstr "Немає такого пошти"
 
-#: website/newscomments.php:120
+#: website/newscomments.php:118
 msgid "News post not found."
 msgstr "Новини повідомлення не знайдено."
 
-#: website/newscomments.php:232
+#: website/newscomments.php:230
 msgid "Unsubscribe from this news post"
 msgstr "Відмовитися від цієї новини повідомленням"
 
-#: website/newscomments.php:235 website/newscomments.php:254
+#: website/newscomments.php:233 website/newscomments.php:252
 msgid "Subscribe to this news post"
 msgstr "Підписатися на цю новину повідомленням"
 
-#: website/newscomments.php:250
+#: website/newscomments.php:248
 msgid "Write new comment"
 msgstr "Створити новий коментар"
 
-#: website/newscomments.php:255
+#: website/newscomments.php:253
 msgid "Post comment"
 msgstr "Залишити коментар"
 
-#: website/newscomments.php:267
+#: website/newscomments.php:265
 msgid "There are no comments for this post."
 msgstr "Є немає коментарів на цю посаду."
 
@@ -1682,15 +1681,15 @@ msgstr ""
 msgid "Recent Log Comments"
 msgstr "Останні коментарі Вхід"
 
-#: website/recent_comments_fn.php:14
+#: website/recent_comments_fn.php:13
 msgid "Recent log comments"
 msgstr "Останні коментарі журналу"
 
-#: website/recent_comments_fn.php:104
+#: website/recent_comments_fn.php:103
 msgid "User"
 msgstr "Користувач"
 
-#: website/recent_moves.php:14 website/recentlogs.php:9
+#: website/recent_moves.php:13 website/recentlogs.php:9
 #: website/templates.php:18 website/templates.php:81 website/templates.php:207
 #: website/templates.php:270
 msgid "Recent logs"
@@ -1700,16 +1699,16 @@ msgstr "Останні журнали"
 msgid "Recent news comments"
 msgstr "Останні коментарі новини"
 
-#: website/recent_newscomments_fn.php:9
+#: website/recent_newscomments_fn.php:8
 msgid "View all comments"
 msgstr "Переглянути всі коментарі"
 
-#: website/recent_pictures.php:44 website/recent_pictures.php:46
+#: website/recent_pictures.php:43 website/recent_pictures.php:45
 msgid "Go to geokret's page"
 msgstr "Перейти на сторінку geokret&#39;s"
 
 #: website/register.php:11 website/templates.php:144
-#: website/templates/plugins/function.login_check.php:41
+#: website/templates/plugins/function.login_check.php:40
 #: website/templates/krety_logged_in.html:1
 msgid "Register a new GeoKret"
 msgstr "Реєстрація нового GeoKret"
@@ -1890,7 +1889,7 @@ msgstr ""
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr ""
 
-#: website/ruchy.php:862 website/ruchy.php:875
+#: website/ruchy.php:862 website/ruchy.php:876
 msgid "help.php#fullysupportedwaypoints"
 msgstr ""
 
@@ -1902,51 +1901,55 @@ msgstr ""
 msgid "Check"
 msgstr "Перевіряти"
 
-#: website/ruchy.php:874
+#: website/ruchy.php:873 website/szukaj-ajax.php:157
+msgid "Enter at least 5 characters"
+msgstr ""
+
+#: website/ruchy.php:875
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr ""
 
-#: website/ruchy.php:886
+#: website/ruchy.php:887
 msgid "Coordinates"
 msgstr "Координати"
 
-#: website/ruchy.php:890
+#: website/ruchy.php:891
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr ""
 
-#: website/ruchy.php:902
+#: website/ruchy.php:903
 msgid "Logged using geolocation"
 msgstr ""
 
-#: website/ruchy.php:902
+#: website/ruchy.php:903
 msgid "Use geolocation"
 msgstr ""
 
-#: website/ruchy.php:913
+#: website/ruchy.php:914
 msgid "Captcha verification"
 msgstr "Captcha перевірку"
 
-#: website/ruchy.php:946
+#: website/ruchy.php:947
 msgid "Additional data"
 msgstr "Додаткові дані"
 
-#: website/ruchy.php:967
+#: website/ruchy.php:968
 msgid "Two days ago"
 msgstr ""
 
-#: website/ruchy.php:973
+#: website/ruchy.php:974
 msgid "Time"
 msgstr "Час"
 
-#: website/ruchy.php:986
+#: website/ruchy.php:987
 msgid "now"
 msgstr ""
 
-#: website/ruchy.php:987
+#: website/ruchy.php:988
 msgid "Enter exact time when You think it may be important"
 msgstr "Введіть точний час, коли Ви вважаєте, це може мати важливе значення"
 
-#: website/ruchy.php:999
+#: website/ruchy.php:1000
 msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
@@ -1970,40 +1973,73 @@ msgstr "НЕ авторизованих дюйм"
 msgid "Top ten owners"
 msgstr "Десятку найбільших власників"
 
-#: website/szukaj-ajax.php:47
-msgid "GeoKret not found"
-msgstr "GeoKret не знайдено"
-
-#: website/szukaj-ajax.php:60
-msgid "Last log:"
+#: website/szukaj-ajax.php:17
+msgid "flag"
 msgstr ""
 
-#: website/szukaj-ajax.php:68
+#: website/szukaj-ajax.php:20 website/szukaj-ajax.php:182
 #, php-format
-msgid "%s by %s."
+msgid "by %s"
 msgstr ""
 
-#: website/szukaj-ajax.php:73
-msgid "Invalid tracking code"
-msgstr "Невірний код відстеження"
+#: website/szukaj-ajax.php:23
+msgid "OK"
+msgstr ""
 
-#: website/szukaj-ajax.php:86
+#: website/szukaj-ajax.php:25
+#, php-format
+msgid "cache type: %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:28
+#, php-format
+msgid "country: %s %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:38
+msgid "No cache found"
+msgstr "Ні Кеш знайдено"
+
+#: website/szukaj-ajax.php:47
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr ""
 
-#: website/szukaj-ajax.php:87
+#: website/szukaj-ajax.php:48
 #, php-format
 msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr ""
 
-#: website/szukaj-ajax.php:99
+#: website/szukaj-ajax.php:56
+#, php-format
+msgid "Unexpected error (id:%s), please report."
+msgstr ""
+
+#: website/szukaj-ajax.php:95
+msgid "GeoKret not found"
+msgstr "GeoKret не знайдено"
+
+#: website/szukaj-ajax.php:108
+msgid "Last log:"
+msgstr ""
+
+#: website/szukaj-ajax.php:116
+#, php-format
+msgid "%s by %s."
+msgstr ""
+
+#: website/szukaj-ajax.php:121
+msgid "Invalid tracking code"
+msgstr "Невірний код відстеження"
+
+#: website/szukaj-ajax.php:171
 msgid "caches match"
 msgstr "кешує матч"
 
-#: website/szukaj-ajax.php:109
-msgid "No cache found"
-msgstr "Ні Кеш знайдено"
+#: website/szukaj-ajax.php:173
+#, php-format
+msgid "%d caches match (the first %d)"
+msgstr ""
 
 #: website/szukaj.php:45
 msgid "Found users"
@@ -2021,7 +2057,7 @@ msgstr "Geokrets в"
 msgid "GeoKret owner"
 msgstr "GeoKret власника"
 
-#: website/szukaj_kreta.php:44
+#: website/szukaj_kreta.php:43
 msgid "Operations on this GeoKret"
 msgstr "Операції з цього GeoKret"
 
@@ -2066,22 +2102,22 @@ msgstr ""
 msgid "You can also go to the apppropriate page by decoding the QR-code."
 msgstr ""
 
-#: website/templates/nawigacja_tablicy.php:99
-#: website/templates/nawigacja_tablicy.php:112
+#: website/templates/nawigacja_tablicy.php:98
+#: website/templates/nawigacja_tablicy.php:111
 msgid "Show all"
 msgstr "Показати всі"
 
-#: website/templates/nawigacja_tablicy.php:124
+#: website/templates/nawigacja_tablicy.php:123
 #, php-format
 msgid "Showing items %s - %s (of %s) :: %s"
 msgstr "Высвечивание пунктам %s - %s (від %s):: %s"
 
-#: website/templates/nawigacja_tablicy.php:125
+#: website/templates/nawigacja_tablicy.php:124
 #, php-format
 msgid "Showing items %s - %s (of %s)"
 msgstr ""
 
-#: website/templates/plugins/function.login_check.php:47
+#: website/templates/plugins/function.login_check.php:46
 msgid "Observed geokrets"
 msgstr ""
 
@@ -2141,13 +2177,13 @@ msgstr ""
 msgid "Portfolio"
 msgstr ""
 
-#: website/verify_mail.php:117
+#: website/verify_mail.php:113
 #, php-format
 msgid "An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it :)\n\n"
 "%s"
 msgstr ""
 
-#: website/verify_mail.php:121
+#: website/verify_mail.php:117
 msgid "[GeoKrety] Activate your account"
 msgstr "[GeoKrety] Активуйте свій обліковий запис"
 
