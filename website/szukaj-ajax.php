@@ -20,7 +20,7 @@ function cacheOk($cache_link, $name, $owner, $cache_type, $cache_country, $count
         $ownerPlaceholder = '('.sprintf(_('by %s'), $owner).')';
     }
 
-    $result = '<img src="'.CONFIG_CDN_IMAGES.'/icons/ok.png" alt="'._('OK').'" width="16" height="16" /> <a href="'.$cache_link.'" target="_opencaching">'.$name.'</a> '.$ownerPlaceholder.'<br />';
+    $result = '<img src="'.CONFIG_CDN_IMAGES.'/icons/ok.png" alt="'._('OK').'" width="16" height="16" /> <a href="'.$cache_link.'" target="_opencaching">'.$name.' <i class="glyphicon glyphicon-link"></i></a> '.$ownerPlaceholder.'<br />';
     if (trim($cache_type) !== '') {
         $result .= sprintf(_('cache type: %s'), _($cache_type)).'<br/>';
     }
@@ -42,7 +42,7 @@ function cacheNotFound() {
  * json result (tresc) to send when selected cache is not associated with lat/lon.
  */
 function cacheWithoutLatLon($name, $cache_link) {
-    $link_wpt = "<a href='".$cache_link."' target='_opencaching'>$name</a>";
+    $link_wpt = '<a href="'.$cache_link.'" target="_opencaching">'.$name.' <i class="glyphicon glyphicon-link"></i></a>';
 
     return '<img src="'.CONFIG_CDN_IMAGES.'/icons/info3.png" alt="info" width="16" height="16" /> '.sprintf(_('Please provide the coordinates (lat/lon) of the cache %s in the "coordinates" input box.'), $link_wpt).'<br />'.
         sprintf(_('<a href="%s">Learn more about hiding geokrets in GC caches</a>'), $config['adres'].'help.php#locationdlagc');
@@ -181,7 +181,7 @@ if ($_REQUEST['skad'] == 'ajax') {
                     if (trim($owner) !== '') {
                         $ownerPlaceholder = ' ('.sprintf(_('by %s'), $owner).')';
                     }
-                    $return['tresc'] .= "<a href=\"#\" onclick=\"document.getElementById('wpt').value = '$waypoint'; sprawdzWpt(); return false;\">$waypoint</a> - <span class='bardzomale'><a href='$cache_link' target='_opencaching'>$name</a>".$ownerPlaceholder.'</span><br />';
+                    $return['tresc'] .= '<a href="#" onclick="document.getElementById(\'wpt\').value = \''.$waypoint.'\'; sprawdzWpt(); return false;"><i class="glyphicon glyphicon-pushpin"></i> '.$waypoint.'</a> - <span class="bardzomale"><a href="'.$cache_link.'" target="_opencaching">'.$name.' <i class="glyphicon glyphicon-link"></i></a>'.$ownerPlaceholder.'</span><br />';
                 }
             } else { // == 1
                 $hasResult = $waypointy->getByName($_REQUEST['NazwaSkrzynki']);
