@@ -122,6 +122,8 @@ if ($_REQUEST['skad'] == 'ajax') {
         }
     } elseif (!empty($_REQUEST['wpt'])) { // ****************************************  waypoint
         try {
+            $return['lat'] = '';
+            $return['lon'] = '';
             $wpt = mysqli_real_escape_string($link, $_REQUEST['wpt']);
             include_once 'lib/Waypointy.class.php';
             $waypointy = new Waypointy($link, false);
@@ -133,7 +135,7 @@ if ($_REQUEST['skad'] == 'ajax') {
                 $lat = $waypointy->lat;
                 $lon = $waypointy->lon;
 
-                if (!empty($lat) and !empty($lon)) {
+                if (!empty(trim($lat)) and !empty(trim($lon))) {
                     $country = $waypointy->country;
                     $countryCode = '';
                     $return['tresc'] = cacheOk($waypointy->cache_link, $waypointy->name, $waypointy->owner, $waypointy->cache_type, $waypointy->country, $countryCode);
@@ -142,8 +144,6 @@ if ($_REQUEST['skad'] == 'ajax') {
                     echo json_encode($return);
                 } else {
                     $return['tresc'] = cacheWithoutLatLon($waypointy->name, $waypointy->cache_link);
-                    $return['lat'] = '';
-                    $return['lon'] = '';
                     echo json_encode($return);
                 }
             }
@@ -160,6 +160,8 @@ if ($_REQUEST['skad'] == 'ajax') {
         include_once 'lib/Waypointy.class.php';
         $waypointy = new Waypointy($link, false);
         try {
+            $return['lat'] = '';
+            $return['lon'] = '';
             $byNameCount = $waypointy->countDistinctName($_REQUEST['NazwaSkrzynki']);
             $return['IleSkrzynek'] = $byNameCount;
 
@@ -187,10 +189,13 @@ if ($_REQUEST['skad'] == 'ajax') {
                 $hasResult = $waypointy->getByName($_REQUEST['NazwaSkrzynki']);
                 if (!$hasResult) {// never the case
                     $return['tresc'] = cacheNotFound();
-                } else {
+                } elseif (!empty(trim($waypointy->lat)) and !empty(trim($waypointy->lon))) {
                     $return['tresc'] = cacheOk($waypointy->cache_link, $waypointy->name, $waypointy->owner, $waypointy->cache_type, $waypointy->country, $countryCode);
                     $return['lat'] = $waypointy->lat;
                     $return['lon'] = $waypointy->lon;
+                    $return['wpt'] = $waypointy->waypoint;
+                } else {
+                    $return['tresc'] = cacheWithoutLatLon($waypointy->name, $waypointy->cache_link);
                     $return['wpt'] = $waypointy->waypoint;
                 }
             } // jeśli jest jedna skrzynka
