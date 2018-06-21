@@ -13,7 +13,7 @@ function waypointLinkLabel($waypoint, $name) {
         return trim($name);
     }
 
-    return sprintf(_('waypoint %s'), $waypoint);
+    return sprintf(_('waypoint %s'), strtoupper($waypoint));
 }
 
 /**
