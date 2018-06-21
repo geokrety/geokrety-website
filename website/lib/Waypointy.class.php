@@ -35,6 +35,7 @@ EOQUERY;
     public $cache_link;
     public $kraj;
     public $country;
+    public $country_code;
 
     public function __construct($dblink, $verbose) {
         $this->dblink = $dblink;
@@ -92,7 +93,7 @@ EOQUERY;
             $this->cache_link = 'http://www.navicache.com/cgi-bin/db/displaycache2.pl?CacheID='.hexdec(substr($waypoint, 1, 10));
         }
 
-        if (!$stmt->bind_result($this->lat, $this->lon, $this->kraj, $this->alt)) {
+        if (!$stmt->bind_result($this->lat, $this->lon, $this->country_code, $this->alt)) {
             throw new Exception($action.' binding output parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
         $stmtFetch = $stmt->fetch();

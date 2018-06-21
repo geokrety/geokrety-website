@@ -8,24 +8,35 @@ require_once '__sentry.php';
 require_once 'wybierz_jezyk.php'; // choose the user's language
 require 'templates/konfig.php';    // config
 
+function waypointLinkLabel($waypoint, $name) {
+    if (trim($name) !== '') {
+        return trim($name);
+    }
+
+    return sprintf(_('waypoint %s'), $waypoint);
+}
+
 /**
  * json result (tresc) to send when ONE cache is selected.
  */
-function cacheOk($cache_link, $name, $owner, $cache_type, $cache_country, $countryCode) {
+function cacheOk($waypoint, $cache_link, $name, $owner, $cache_type, $cache_country, $countryCode) {
     $flagPlaceholder = '';
     if (trim($countryCode) !== '') {
-        $flagPlaceholder = '<img src="'.CONFIG_CDN_IMAGES.'/country-codes/'.$countryCode.'.png" width="16" height="11" alt="'._('flag').'"/>';
+        $flagPlaceholder = '<img src="'.CONFIG_CDN_IMAGES.'/country-codes/'.$countryCode.'.png" width="16" height="11"'
+                         .' alt="'._('flag').'" title="'.$countryCode.'"/>';
     }
     if (trim($owner) !== '') {
         $ownerPlaceholder = '('.sprintf(_('by %s'), $owner).')';
     }
 
-    $result = '<img src="'.CONFIG_CDN_IMAGES.'/icons/ok.png" alt="'._('OK').'" width="16" height="16" /> <a href="'.$cache_link.'" target="_opencaching">'.$name.' <i class="glyphicon glyphicon-link"></i></a> '.$ownerPlaceholder.'<br />';
+    $result = '<img src="'.CONFIG_CDN_IMAGES.'/icons/ok.png" alt="'._('OK').'" width="16" height="16" /> <a href="'.$cache_link.'" target="_opencaching">'.waypointLinkLabel($waypoint, $name).' <i class="glyphicon glyphicon-link"></i></a> '.$ownerPlaceholder.'<br />';
     if (trim($cache_type) !== '') {
         $result .= sprintf(_('cache type: %s'), _($cache_type)).'<br/>';
     }
     if (trim($cache_country) !== '') {
         $result .= sprintf(_('country: %s %s'), $flagPlaceholder, _($cache_country));
+    } elseif (trim($countryCode) !== '') {
+        $result .= sprintf(_('country: %s'), $flagPlaceholder);
     }
 
     return $result;
@@ -41,8 +52,8 @@ function cacheNotFound() {
 /**
  * json result (tresc) to send when selected cache is not associated with lat/lon.
  */
-function cacheWithoutLatLon($name, $cache_link) {
-    $link_wpt = '<a href="'.$cache_link.'" target="_opencaching">'.$name.' <i class="glyphicon glyphicon-link"></i></a>';
+function cacheWithoutLatLon($waypoint, $name, $cache_link) {
+    $link_wpt = '<a href="'.$cache_link.'" target="_opencaching">'.waypointLinkLabel($waypoint, $name).' <i class="glyphicon glyphicon-link"></i></a>';
 
     return '<img src="'.CONFIG_CDN_IMAGES.'/icons/info3.png" alt="info" width="16" height="16" /> '.sprintf(_('Please provide the coordinates (lat/lon) of the cache %s in the "coordinates" input box.'), $link_wpt).'<br />'.
         sprintf(_('<a href="%s">Learn more about hiding geokrets in GC caches</a>'), $config['adres'].'help.php#locationdlagc');
@@ -136,14 +147,13 @@ if ($_REQUEST['skad'] == 'ajax') {
                 $lon = $waypointy->lon;
 
                 if (!empty(trim($lat)) and !empty(trim($lon))) {
-                    $country = $waypointy->country;
-                    $countryCode = '';
-                    $return['tresc'] = cacheOk($waypointy->cache_link, $waypointy->name, $waypointy->owner, $waypointy->cache_type, $waypointy->country, $countryCode);
+                    $return['tresc'] = cacheOk($waypointy->waypoint, $waypointy->cache_link, $waypointy->name,
+                      $waypointy->owner, $waypointy->cache_type, $waypointy->country, $waypointy->country_code);
                     $return['lat'] = $lat;
                     $return['lon'] = $lon;
                     echo json_encode($return);
                 } else {
-                    $return['tresc'] = cacheWithoutLatLon($waypointy->name, $waypointy->cache_link);
+                    $return['tresc'] = cacheWithoutLatLon($waypointy->waypoint, $waypointy->name, $waypointy->cache_link);
                     echo json_encode($return);
                 }
             }
@@ -190,12 +200,13 @@ if ($_REQUEST['skad'] == 'ajax') {
                 if (!$hasResult) {// never the case
                     $return['tresc'] = cacheNotFound();
                 } elseif (!empty(trim($waypointy->lat)) and !empty(trim($waypointy->lon))) {
-                    $return['tresc'] = cacheOk($waypointy->cache_link, $waypointy->name, $waypointy->owner, $waypointy->cache_type, $waypointy->country, $countryCode);
+                    $return['tresc'] = cacheOk($waypointy->waypoint, $waypointy->cache_link, $waypointy->name,
+                      $waypointy->owner, $waypointy->cache_type, $waypointy->country, $waypointy->country_code);
                     $return['lat'] = $waypointy->lat;
                     $return['lon'] = $waypointy->lon;
                     $return['wpt'] = $waypointy->waypoint;
                 } else {
-                    $return['tresc'] = cacheWithoutLatLon($waypointy->name, $waypointy->cache_link);
+                    $return['tresc'] = cacheWithoutLatLon($waypointy->waypoint, $waypointy->name, $waypointy->cache_link);
                     $return['wpt'] = $waypointy->waypoint;
                 }
             } // jeśli jest jedna skrzynka
