@@ -20,6 +20,7 @@ if ($raceid > 0) {
     include_once 'templates/GoogleMap.php';    // do mapki
     include_once 'templates/JSMin.php';            // do mapki
     $MAP_OBJECT = new GoogleMapAPI();
+    $MAP_OBJECT->api_options['key'] = $GOOGLE_MAP_KEY;
     $MAP_OBJECT->_minify_js = isset($_REQUEST['min']) ? false : true;
     $MAP_OBJECT->setMapType('ROADMAP');
     $MAP_OBJECT->setWidth('100%');
