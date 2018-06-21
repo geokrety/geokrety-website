@@ -218,7 +218,7 @@ ORDER BY finishedIsnull ASC, rgk.finished ASC $ORDERBY";
 
         // jeśli kret skończył lub skończył się wyścig
         if ($row['lat'] != '' and $row['lon'] != '') {
-            if ($status == 2 or $row['finished'] != '') {
+            if (($status == 2 or $row['finished'] != '') and $row['finishLon'] and $row['finishLat']) {
                 $MAP_OBJECT->addMarkerByCoords($row['finishLon'], $row['finishLat'], '', "<h2>$row[3]</h2>$avatar<br />$droga km<br />$kesze caches", '', $ikonka);
             } else {
                 $MAP_OBJECT->addMarkerByCoords($row['lon'], $row['lat'], '', "<h2>$row[3]</h2>$avatar<br />$droga km<br />$kesze caches", '', $ikonka);
