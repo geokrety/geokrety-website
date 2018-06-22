@@ -462,19 +462,20 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
             exit;
         }
         // -- Piwik Tracking API init --
-        require_once 'templates/piwik-php-tracker/PiwikTracker.php';
-        PiwikTracker::$URL = PIWIK_URL;
-        $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
-        // $piwikTracker->enableBulkTracking();
-        $piwikTracker->setTokenAuth(PIWIK_TOKEN);
-        $piwikTracker->setUrl($config['adres'].'ruchy.php');
-        $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
-        $piwikTracker->setUserAgent("$kret_app $kret_app_ver");
-        $piwikTracker->setBrowserLanguage($kret_mobile_lang);
-        $piwikTracker->doTrackPageView('GKMoved');
-        // $piwikTracker->doBulkTrack();
+        if (PIWIK_URL !== '') {
+            require_once 'templates/piwik-php-tracker/PiwikTracker.php';
+            PiwikTracker::$URL = PIWIK_URL;
+            $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
+            // $piwikTracker->enableBulkTracking();
+            $piwikTracker->setTokenAuth(PIWIK_TOKEN);
+            $piwikTracker->setUrl($config['adres'].'ruchy.php');
+            $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
+            $piwikTracker->setUserAgent("$kret_app $kret_app_ver");
+            $piwikTracker->setBrowserLanguage($kret_mobile_lang);
+            $piwikTracker->doTrackPageView('GKMoved');
+            // $piwikTracker->doBulkTrack();
+        }
         // -- Piwik Tracking API end --
-
         //$TRESC = "Ok! <a href=\"konkret.php?id=$kretid\">" . _("Go to GeoKret page") . "</a>";
 
         include_once 'aktualizuj.php';
