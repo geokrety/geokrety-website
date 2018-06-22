@@ -184,6 +184,14 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     $kret_godzina = trim($kret_godzina);
     $kret_minuta = trim($kret_minuta);
 
+    function unexpectedError($action, $details) {
+        $errorId = uniqid('GKIE_');
+        error_log('Unexpected error '.$errorId.' action:'.$action.' details:'.$details);
+        include_once 'defektoskop.php';
+        errory_add(sprintf('%s : %s', $action, $details), 3, $errorId);
+
+        return sprintf(_('Unexpected error (id:%s), please report.'), $errorId);
+    }
     // ----------------------------------------------------
     // simple tests
     // ----------------------------------------------------
@@ -407,7 +415,10 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
             $country = get_country_from_coords($lat, $lon);
 
             if ($country == 'xyz') {
-                mysqli_query($link, "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`) VALUES ('unknown_flag', '0', '0.0.0.0', '".date('Y-m-d H:i:s')."', 'ruchy.php', '$lat,$lon', '0')");
+                $queryResult = mysqli_query($link, "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`) VALUES ('unknown_flag', '0', '0.0.0.0', '".date('Y-m-d H:i:s')."', 'ruchy.php', '$lat,$lon', '0')");
+                if (!$queryResult) {
+                    $errors[] = unexpectedError('ruchy l419 add gk-errory unknown_flag', mysqli_error($link));
+                }
             }
         }
 
@@ -441,7 +452,15 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         // }
 
         $result = mysqli_query($link, $sql);
-
+        if (!$result) {
+            $errors[] = unexpectedError('update ruchy l455', mysqli_error($link).' sql:'.$sql);
+        }
+        if (isset($errors)) {
+            include_once 'defektoskop.php';
+            $TRESC = defektoskop($errors, true, '', 3, 'ruchy');
+            include_once 'smarty.php';
+            exit;
+        }
         // -- Piwik Tracking API init --
         require_once 'templates/piwik-php-tracker/PiwikTracker.php';
         PiwikTracker::$URL = PIWIK_URL;
@@ -477,7 +496,8 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         //include_once("timeline.php");
     } // for each numer in multilog
 
-    if ($kret_multilog == '1') {
+    if (isset($errors)) {
+    } elseif ($kret_multilog == '1') {
         header("Location: mypage.php?userid=$user&co=3&multiphoto=1");
     } elseif ($longin_status['mobile_mode'] == 1) {
         // xml with no errors
