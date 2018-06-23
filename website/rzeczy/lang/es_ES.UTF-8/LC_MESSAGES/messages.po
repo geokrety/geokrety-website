@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 18:41+0000\n"
-"PO-Revision-Date: 2018-06-21T18:51:20+0000\n"
+"POT-Creation-Date: 2018-06-22 21:18+0000\n"
+"PO-Revision-Date: 2018-06-22T21:21:14+0000\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -29,7 +29,7 @@ msgstr "Registrar un nuevo usuario"
 msgid "Required fields"
 msgstr "Campos obligatorios"
 
-#: website/adduser.php:71 website/ruchy.php:662
+#: website/adduser.php:71 website/ruchy.php:683
 msgid "Username"
 msgstr "Nombre de usuario"
 
@@ -50,7 +50,7 @@ msgstr "Correo"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Sí, quiero recibir alertas por correo electrónico (diariamente a medianoche CET/CESC) cuando mis GeoKret propios u observados cambien de localización."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:917
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:938
 msgid "Enter code"
 msgstr "Introduzca el código de"
 
@@ -335,11 +335,11 @@ msgstr "Usuarios viendo este GeoKret"
 msgid "days ago"
 msgstr "la semana pasada"
 
-#: website/days_ago.php:15 website/ruchy.php:967
+#: website/days_ago.php:15 website/ruchy.php:988
 msgid "Yesterday"
 msgstr "Ayer"
 
-#: website/days_ago.php:17 website/ruchy.php:966
+#: website/days_ago.php:17 website/ruchy.php:987
 msgid "Today"
 msgstr "Hoy en día"
 
@@ -388,7 +388,7 @@ msgstr "Etiqueta de ejemplo"
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
 msgstr "Tenga en cuenta que puede crear una etiqueta para su geokret automáticamente, haciendo clic en el enlace correspondiente en la página de la GK."
 
-#: website/edit.php:12 website/ruchy.php:647
+#: website/edit.php:12 website/ruchy.php:668
 msgid "Edit"
 msgstr "Editar"
 
@@ -428,7 +428,7 @@ msgstr "Coordenadas del domicilio"
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Utilice el mapa para elegir una ubicación o introducir coordenadas manualmente."
 
-#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:893
+#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:914
 #: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
 msgid "eg."
 msgstr "por ej."
@@ -501,8 +501,8 @@ msgstr "geokretytypes help.php #"
 
 #: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
 #: website/recent_comments_fn.php:102 website/recent_moves.php:93
-#: website/register.php:61 website/ruchy.php:565 website/ruchy.php:833
-#: website/ruchy.php:994
+#: website/register.php:61 website/ruchy.php:586 website/ruchy.php:854
+#: website/ruchy.php:1015
 msgid "Comment"
 msgstr "Comentario"
 
@@ -527,7 +527,7 @@ msgid "Photo gallery"
 msgstr "Galería de fotos"
 
 #: website/geokret_gallery.php:35 website/konkret.php:35
-#: website/konkret.php:45 website/konkret.php:62 website/ruchy.php:258
+#: website/konkret.php:45 website/konkret.php:62 website/ruchy.php:266
 msgid "No such GeoKret!"
 msgstr "¡No existe el GeoKret!"
 
@@ -545,7 +545,7 @@ msgid "Photo by"
 msgstr "Foto por"
 
 #: website/geokret_gallery.php:124 website/recent_moves.php:94
-#: website/recent_pictures.php:59 website/ruchy.php:957
+#: website/recent_pictures.php:59 website/ruchy.php:978
 msgid "Date"
 msgstr "Fecha"
 
@@ -747,7 +747,7 @@ msgstr "<strong>%d  km </strong> realizado por todos los GeoKrets (es%.2fx dista
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr ""
 
-#: website/index.php:108 website/ruchy.php:1008
+#: website/index.php:108 website/ruchy.php:1029
 msgid "Go!"
 msgstr ""
 
@@ -1002,7 +1002,7 @@ msgstr "Contactar"
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "Si tienes alguna sugerencia o informe de fallo, por favor, infórmanos"
 
-#: website/krety.html.php:9 website/ruchy.php:645
+#: website/krety.html.php:9 website/ruchy.php:666
 msgid "Operations on GeoKrety"
 msgstr "Operaciones en GeoKrety"
 
@@ -1069,7 +1069,7 @@ msgid "Edit this GeoKret"
 msgstr "Editar esta GeoKret"
 
 #: website/lingering.php:227 website/mygeokrets.php:328
-#: website/recent_moves.php:91 website/ruchy.php:658
+#: website/recent_moves.php:91 website/ruchy.php:679
 msgid "Name"
 msgstr "Nombre"
 
@@ -1732,227 +1732,232 @@ msgstr "Nació aquí :)"
 msgid "Cannot edit this log"
 msgstr "No se puede editar este registro"
 
-#: website/ruchy.php:194
+#: website/ruchy.php:193 website/szukaj-ajax.php:67
+#, php-format
+msgid "Unexpected error (id:%s), please report."
+msgstr ""
+
+#: website/ruchy.php:202
 msgid "Missing or invalid Tracking Code"
 msgstr "Falta o no válido código de seguimiento"
 
-#: website/ruchy.php:198
+#: website/ruchy.php:206
 msgid "Missing or invalid Reference Number"
 msgstr "Falta o no válido Número de referencia"
 
-#: website/ruchy.php:206
+#: website/ruchy.php:214
 msgid "Invalid log type"
 msgstr "Tipo de registro no válido"
 
-#: website/ruchy.php:211
+#: website/ruchy.php:219
 msgid "No lat/lon OR waypoint name!"
 msgstr "¡Faltan lat/lon O nombre del waypoint!"
 
-#: website/ruchy.php:216
+#: website/ruchy.php:224
 msgid "No username supplied"
 msgstr "Nombre de usuario no proporcionado"
 
-#: website/ruchy.php:219
+#: website/ruchy.php:227
 msgid "Wrong time (minutes)"
 msgstr "Hora errónea (minutos)"
 
-#: website/ruchy.php:222
+#: website/ruchy.php:230
 msgid "Wrong time (hours)"
 msgstr "Hora incorrecta (horas)"
 
-#: website/ruchy.php:291
+#: website/ruchy.php:299
 msgid "Identical log has been submited."
 msgstr ""
 
-#: website/ruchy.php:303
+#: website/ruchy.php:311
 msgid "There is an entry with this date. Correct the date or the hour."
 msgstr "Ya hay una entrada en este fecha. Corrije la fecha o la hora."
 
-#: website/ruchy.php:309
+#: website/ruchy.php:317
 msgid "The date is from the past, BEFORE the GeoKret was created."
 msgstr "La fecha es pasada, ANTES de que el GeoKret fuera creado."
 
-#: website/ruchy.php:311
+#: website/ruchy.php:319
 msgid "The date is from the future (if you are an inventor of a time travelling machine, contact with us, please)"
 msgstr "La fecha es futura (si eres el inventor de una máquina del tiempo, por favor, contacta con nosotros)"
 
-#: website/ruchy.php:339
+#: website/ruchy.php:347
 msgid "You can not archive not your own GeoKret"
 msgstr "No puedes archivar un GeoKret que no sea tuyo"
 
-#: website/ruchy.php:552
+#: website/ruchy.php:573
 msgid "Add a comment"
 msgstr "Añade un comentario"
 
-#: website/ruchy.php:564 website/ruchy.php:832
+#: website/ruchy.php:585 website/ruchy.php:853
 msgid "When you want to write a comment :)"
 msgstr ""
 
-#: website/ruchy.php:572
+#: website/ruchy.php:593
 msgid "Reference number"
 msgstr ""
 
-#: website/ruchy.php:598
+#: website/ruchy.php:619
 msgid "Archive a GeoKret"
 msgstr "Archivar una GeoKret"
 
-#: website/ruchy.php:608
+#: website/ruchy.php:629
 msgid "When a GeoKret has been missing for a long time"
 msgstr ""
 
-#: website/ruchy.php:609
+#: website/ruchy.php:630
 msgid "Archive"
 msgstr "Archivar"
 
-#: website/ruchy.php:634
+#: website/ruchy.php:655
 msgid "Tracking Code"
 msgstr ""
 
-#: website/ruchy.php:637
+#: website/ruchy.php:658
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
 msgstr ""
 
-#: website/ruchy.php:651
+#: website/ruchy.php:672
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
 msgstr ""
 
-#: website/ruchy.php:659
+#: website/ruchy.php:680
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "&quot;&quot; Esto puede ser su: <br /> - Geocaching / Opencaching nombre de usuario <br /> - Apodo <br /> - Nombre, etc"
 
-#: website/ruchy.php:677
+#: website/ruchy.php:698
 msgid "Logged at my home coordinates"
 msgstr "Iniciado sesión en mis coordenadas de inicio"
 
-#: website/ruchy.php:677
+#: website/ruchy.php:698
 msgid "Log GeoKret at my home coordinates"
 msgstr ""
 
-#: website/ruchy.php:688
+#: website/ruchy.php:709
 msgid "Choose log type"
 msgstr "Tipo de log"
 
-#: website/ruchy.php:799
+#: website/ruchy.php:820
 msgid "Log type"
 msgstr ""
 
-#: website/ruchy.php:799
+#: website/ruchy.php:820
 msgid "help.php#Chooselogtype"
 msgstr "ayuda.php#ElegirTipoIniciodeSesión"
 
-#: website/ruchy.php:804
+#: website/ruchy.php:825
 msgid "When you've left a GeoKret in a cache"
 msgstr ""
 
-#: website/ruchy.php:805
+#: website/ruchy.php:826
 msgid "I've dropped GeoKret"
 msgstr "He dejado un GeoKret"
 
-#: website/ruchy.php:811
+#: website/ruchy.php:832
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr ""
 
-#: website/ruchy.php:812
+#: website/ruchy.php:833
 msgid "I've grabbed GeoKret"
 msgstr "He cogido un GeoKret"
 
-#: website/ruchy.php:818
+#: website/ruchy.php:839
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr ""
 
-#: website/ruchy.php:819
+#: website/ruchy.php:840
 msgid "I've met GeoKret"
 msgstr "He visto un GeoKret"
 
-#: website/ruchy.php:825
+#: website/ruchy.php:846
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr ""
 
-#: website/ruchy.php:826
+#: website/ruchy.php:847
 msgid "I've dipped a GeoKret"
 msgstr "Me he sumergido un GeoKret"
 
-#: website/ruchy.php:843
+#: website/ruchy.php:864
 msgid "Identify GeoKret"
 msgstr "Identificar GeoKret"
 
-#: website/ruchy.php:852
+#: website/ruchy.php:873
 msgid "New location"
 msgstr "Nueva localización"
 
-#: website/ruchy.php:853
+#: website/ruchy.php:874
 msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
 msgstr ""
 
-#: website/ruchy.php:857
+#: website/ruchy.php:878
 msgid "Waypoint"
 msgstr ""
 
-#: website/ruchy.php:861
+#: website/ruchy.php:882
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr ""
 
-#: website/ruchy.php:862 website/ruchy.php:876
+#: website/ruchy.php:883 website/ruchy.php:897
 msgid "help.php#fullysupportedwaypoints"
 msgstr "fullysupportedwaypoints help.php #"
 
-#: website/ruchy.php:865
+#: website/ruchy.php:886
 msgid "or name of cache"
 msgstr ""
 
-#: website/ruchy.php:870
+#: website/ruchy.php:891
 msgid "Check"
 msgstr "Comprobar"
 
-#: website/ruchy.php:873 website/szukaj-ajax.php:157
+#: website/ruchy.php:894 website/szukaj-ajax.php:167
 msgid "Enter at least 5 characters"
 msgstr ""
 
-#: website/ruchy.php:875
+#: website/ruchy.php:896
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr ""
 
-#: website/ruchy.php:887
+#: website/ruchy.php:908
 msgid "Coordinates"
 msgstr "Coordenadas"
 
-#: website/ruchy.php:891
+#: website/ruchy.php:912
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr ""
 
-#: website/ruchy.php:903
+#: website/ruchy.php:924
 msgid "Logged using geolocation"
 msgstr "Iniciar sesión utilizando geolocalización"
 
-#: website/ruchy.php:903
+#: website/ruchy.php:924
 msgid "Use geolocation"
 msgstr "Usar geolocalización"
 
-#: website/ruchy.php:914
+#: website/ruchy.php:935
 msgid "Captcha verification"
 msgstr "Captcha de verificación"
 
-#: website/ruchy.php:947
+#: website/ruchy.php:968
 msgid "Additional data"
 msgstr "Datos adicionales"
 
-#: website/ruchy.php:968
+#: website/ruchy.php:989
 msgid "Two days ago"
 msgstr "Hace dos días"
 
-#: website/ruchy.php:974
+#: website/ruchy.php:995
 msgid "Time"
 msgstr "Hora"
 
-#: website/ruchy.php:987
+#: website/ruchy.php:1008
 msgid "now"
 msgstr "ahora"
 
-#: website/ruchy.php:988
+#: website/ruchy.php:1009
 msgid "Enter exact time when You think it may be important"
 msgstr "Introduce la hora exacta si es relevante"
 
-#: website/ruchy.php:1000
+#: website/ruchy.php:1021
 msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
@@ -1976,70 +1981,75 @@ msgstr "No estás validado."
 msgid "Top ten owners"
 msgstr "Los que más han creado"
 
-#: website/szukaj-ajax.php:17
+#: website/szukaj-ajax.php:16
+#, php-format
+msgid "waypoint %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:26
 msgid "flag"
 msgstr ""
 
-#: website/szukaj-ajax.php:20 website/szukaj-ajax.php:182
+#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:194
 #, php-format
 msgid "by %s"
 msgstr ""
 
-#: website/szukaj-ajax.php:23
+#: website/szukaj-ajax.php:32
 msgid "OK"
 msgstr ""
 
-#: website/szukaj-ajax.php:25
+#: website/szukaj-ajax.php:34
 #, php-format
 msgid "cache type: %s"
 msgstr ""
 
-#: website/szukaj-ajax.php:28
+#: website/szukaj-ajax.php:37
 #, php-format
 msgid "country: %s %s"
 msgstr ""
 
-#: website/szukaj-ajax.php:38
+#: website/szukaj-ajax.php:39
+#, php-format
+msgid "country: %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:49
 msgid "No cache found"
 msgstr "Cache no encontrado"
 
-#: website/szukaj-ajax.php:47
+#: website/szukaj-ajax.php:58
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr ""
 
-#: website/szukaj-ajax.php:48
+#: website/szukaj-ajax.php:59
 #, php-format
 msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr ""
 
-#: website/szukaj-ajax.php:56
-#, php-format
-msgid "Unexpected error (id:%s), please report."
-msgstr ""
-
-#: website/szukaj-ajax.php:95
+#: website/szukaj-ajax.php:106
 msgid "GeoKret not found"
 msgstr "GeoKret no encontrado"
 
-#: website/szukaj-ajax.php:108
+#: website/szukaj-ajax.php:119
 msgid "Last log:"
 msgstr ""
 
-#: website/szukaj-ajax.php:116
+#: website/szukaj-ajax.php:127
 #, php-format
 msgid "%s by %s."
 msgstr ""
 
-#: website/szukaj-ajax.php:121
+#: website/szukaj-ajax.php:132
 msgid "Invalid tracking code"
 msgstr "No válido el código de seguimiento"
 
-#: website/szukaj-ajax.php:171
+#: website/szukaj-ajax.php:183
 msgid "caches match"
 msgstr "caches coincidentes"
 
-#: website/szukaj-ajax.php:173
+#: website/szukaj-ajax.php:185
 #, php-format
 msgid "%d caches match (the first %d)"
 msgstr ""
