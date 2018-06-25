@@ -88,7 +88,7 @@ EOQUERY;
         }
         $this->waypoint = $waypoint;
         if ($this->isGCWaypoint($waypoint)) {
-            $this->cache_link = "http://www.geocaching.com/seek/cache_details.aspx?wp=$waypoint";
+            $this->cache_link = GEOCACHING_CACHE_WP.$waypoint;
         } elseif ($this->isNavicache($waypoint)) {
             $this->cache_link = 'http://www.navicache.com/cgi-bin/db/displaycache2.pl?CacheID='.hexdec(substr($waypoint, 1, 10));
         }

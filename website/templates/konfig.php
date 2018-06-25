@@ -54,7 +54,10 @@ $config['piwik_url'] = '';
 $config['piwik_site_id'] = '';
 $config['piwik_token'] = '';
 
-// generrated files
+// Partners
+$config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
+
+// generated files
 $config['obrazki'] = 'obrazki/';
 $config['obrazki-male'] = 'obrazki-male/';
 $config['obrazki-skasowane'] = 'obrazki-dowonu/';
@@ -255,5 +258,8 @@ define('SENTRY_ENV', $config['sentry_env']);
 define('PIWIK_URL', $config['piwik_url']);
 define('PIWIK_SITE_ID', $config['piwik_site_id']);
 define('PIWIK_TOKEN', $config['piwik_token']);
+
+// Partners
+define('GEOCACHING_CACHE_WP', $config['geocaching_cache_wp']);
 
 date_default_timezone_set($config['timezone']);
