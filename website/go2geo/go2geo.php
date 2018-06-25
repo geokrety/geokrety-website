@@ -1,5 +1,7 @@
 <?php
 
+require_once '../templates/konfig.php';
+
 function go2geo($waypoint) {
     // ------------------------------------------------------------------------ 2 characters
 
@@ -16,7 +18,7 @@ function go2geo($waypoint) {
     $prefiksy['2']['GA'] = 'http://geocaching.com.au/cache/';
 
     // geocaching.com
-    $prefiksy['2']['GC'] = 'http://www.geocaching.com/seek/cache_details.aspx?wp=';
+    $prefiksy['2']['GC'] = GEOCACHING_CACHE_WP;
 
     // terra http://www.terracaching.com/viewcache.cgi?C=TCCWU
     $prefiksy['2']['TC'] = 'http://www.terracaching.com/viewcache.cgi?C=';
