@@ -37,6 +37,8 @@ script:
     #- scripts/phplint.sh website/ # Disabled see issue #69
     # Check CS fixer
     - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
+    # Unit tests with PHPUnit
+    - vendor/bin/phpunit
 
 jobs:
   include:
