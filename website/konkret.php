@@ -21,7 +21,7 @@ $kret_id = $_GET['id'];
 // autopoprawione...import_request_variables('g', 'kret_');
 
 require 'templates/konfig.php';    // config
-require_once 'czy_obserwowany.php';
+require_once 'czy_obserwowany.php'; //geokret_watchers
 require_once 'waypoint_info.php';
 
 $userid_longin = $longin_status['userid'];
@@ -50,7 +50,7 @@ if (!ctype_digit($kret_id)) {
 $link = DBConnect();
 
 $result = mysqli_query($link,
-    "SELECT id, nr, nazwa, opis, owner, us.user, data, typ, droga, skrzynki, zdjecia, avatarid
+    "SELECT id, nr, nazwa, opis, owner, us.user, data, typ, droga, skrzynki, zdjecia, avatarid, timestamp_oc
 FROM `gk-geokrety` gk
 LEFT JOIN `gk-users` us ON gk.owner = us.userid
 WHERE gk.id='$kret_id' LIMIT 1"
@@ -64,10 +64,11 @@ if (mysqli_num_rows($result) == 0) {
     exit;
 }
 
-list($id, $nr, $nazwa, $opis, $userid, $user, $data, $krettyp, $droga_total, $skrzynki, $zdjecia, $avatar_id) = mysqli_fetch_array($result);
+list($id, $nr, $nazwa, $opis, $userid, $user, $data, $krettyp, $droga_total, $skrzynki, $zdjecia, $avatar_id, $gktimestamp) = mysqli_fetch_array($result);
 mysqli_free_result($result);
 
-$social_url = $config['adres']."konkret.php?id=$kret_id"; // for social networks
+$social_url = $config['adres'].'konkret.php?id='.$kret_id; // for social networks
+$user_url = $config['adres'].'mypage.php?userid='.$userid; // for JSON-LD
 $social_name = ("Geokrety: $nazwa");
 
 //policz ilosc obrazkow
@@ -78,11 +79,11 @@ $social_name = ("Geokrety: $nazwa");
 
 // if this is owner logged in
 if ($userid == $userid_longin) {
-    $edytuj_kreta = '<a href="edit.php?co=geokret&amp;id='.$id.'" title="'._('Edit description').'"><img src="'.CONFIG_CDN_ICONS.'/edit.png" alt="[Edit_comment]" width="16" height="16" border="0"/></a>';
-    $dodaj_obrazek = '<a href="imgup.php?typ=0&amp;id='.$id.'"><img src="'.CONFIG_CDN_ICONS.'/image.png" alt="[Add_photo]" title="'._('Add photo').'" width="16" height="16" border="0" /></a>';
+    $edit_kreta = '<a href="edit.php?co=geokret&amp;id='.$id.'" title="'._('Edit description').'"><img src="'.CONFIG_CDN_ICONS.'/edit.png" alt="[Edit_comment]" width="16" height="16" border="0"/></a>';
+    $add_image = '<a href="imgup.php?typ=0&amp;id='.$id.'"><img src="'.CONFIG_CDN_ICONS.'/image.png" alt="[Add_photo]" title="'._('Add photo').'" width="16" height="16" border="0" /></a>';
     $tracking_code = '<tr><td class="tresc1">Tracking Code: </td><td><strong>'.$nr.'</strong></td></tr>';
     //$view_gallery = '<img src="'.CONFIG_CDN_ICONS.'/photos.png" class="textalign16" alt="" width="16" height="16" border="0"/> <a href="geokret_gallery.php?id='.$id.'">' ._("View photo gallery and set avatar"). "</a> <span class='xs' title='". _('Number of photos in the gallery') ."'>($zdjecia)</span>";
-    $drukuj_etykiete = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="labels.php?id='.$id.'&nr='.$nr.'">'._('Print a label for this geokret').'</a>';
+    $print_a_label = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="labels.php?id='.$id.'&nr='.$nr.'">'._('Print a label for this geokret').'</a>';
     $archiwizuj_kreta = '<img src="'.CONFIG_CDN_ICONS.'/archiwizuj.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="ruchy.php?nr='.$nr.'&amp;type=archive" title="Archive">'._('Archive this geokret').'</a>';
     $ownerIsLogged = 1; // owner is logged in and browsing
 } else {
@@ -109,17 +110,17 @@ if ($userid_longin != null) {
     mysqli_free_result($result);
 
     if (!empty($row) or ($userid == $userid_longin)) {
-        $ruchy_tego_kreta = '<img src="'.CONFIG_CDN_ICONS.'/flag_add.png" class="textalign16" alt="*" width="16" height="16" /> '."<a href=\"/ruchy.php?nr=$nr\">"._('Log this GeoKret').'</a>';   // link do łatwej edycji
-        $drukuj_etykiete_recreate = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="labels.php?id='.$id.'&nr='.$nr.'">'._('Recreate a label for this geokret').'</a>';
+        $report_geokret = '<img src="'.CONFIG_CDN_ICONS.'/flag_add.png" class="textalign16" alt="*" width="16" height="16" /> '."<a href=\"/ruchy.php?nr=$nr\">"._('Log this GeoKret').'</a>';   // link do łatwej edycji
+        $print_a_label_recreate = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="labels.php?id='.$id.'&nr='.$nr.'">'._('Recreate a label for this geokret').'</a>';
         $currentUserKnowsTC = 1; // currently logged user knows TC and can perform some operations with it
     }
 }
 
-    if (!empty($ruchy_tego_kreta)) {
+    if (!empty($report_geokret)) {
         $write_note = '';
     }
 
-//-------------------------------------------- OBRAZKI ------------------------------- //
+//-------------------------------------------- OBRAZKI / PHOTOS ------------------------------- //
 $result = mysqli_query($link, "SELECT obrazekid, plik, opis, typ FROM `gk-obrazki` WHERE id='$kret_id' AND (typ='0') ORDER BY `obrazekid` DESC LIMIT 30");
 
 while ($row = mysqli_fetch_row($result)) {
@@ -129,29 +130,29 @@ while ($row = mysqli_fetch_row($result)) {
     $obrazki_opis = preg_replace("/(([^\s\&]|(\&[\S]+\;)){10})/u", '$1&shy;', $obrazki_opis);
 
     ($obrazki_id == $avatar_id) ? $tmpclass = 'obrazek_hi' : $tmpclass = 'obrazek';
-    $OBRAZKI_MAIN .= "<span class=\"$tmpclass\"><a href=\"".CONFIG_CDN_OBRAZKI."/$obrazki_plik\" rel=\"cb\" title=\"$obrazki_opis\" ><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
+    $MAIN_PHOTO .= "<span class=\"$tmpclass\"><a href=\"".CONFIG_CDN_OBRAZKI."/$obrazki_plik\" rel=\"cb\" title=\"$obrazki_opis\" ><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
 
     if ($userid == $userid_longin) {
-        $OBRAZKI_MAIN .= ' <a href="imgup.php?typ='.$obrazki_typ.'&amp;id='.$id.'&amp;rename='.$obrazki_id.'" title="'._('Rename').'"><img src="'.CONFIG_CDN_ICONS.'/edit10.png" alt="rename" width="10" height="10" border="0" /></a> ';
-        $OBRAZKI_MAIN .= ' <a href="edit.php?delete_obrazek='.$obrazki_id.'" onclick="return CzySkasowac(this, \'this photo?\')" title="'._('Delete photo').'"><img src="'.CONFIG_CDN_ICONS.'/delete10.png" alt="delete" width="10" height="10" border="0" /></a> ';
+        $MAIN_PHOTO .= ' <a href="imgup.php?typ='.$obrazki_typ.'&amp;id='.$id.'&amp;rename='.$obrazki_id.'" title="'._('Rename').'"><img src="'.CONFIG_CDN_ICONS.'/edit10.png" alt="rename" width="10" height="10" border="0" /></a> ';
+        $MAIN_PHOTO .= ' <a href="edit.php?delete_obrazek='.$obrazki_id.'" onclick="return CzySkasowac(this, \'this photo?\')" title="'._('Delete photo').'"><img src="'.CONFIG_CDN_ICONS.'/delete10.png" alt="delete" width="10" height="10" border="0" /></a> ';
     }
-    $OBRAZKI_MAIN .= '</span>';
+    $MAIN_PHOTO .= '</span>';
 }
 
 // wykres
 
 if (is_file("templates/wykresy/$kret_id-m.png") and is_file("templates/wykresy/$kret_id-m.png")) {
-    $OBRAZKI_MAIN .= '<span class="obrazek"><a href="'.CONFIG_CDN_IMAGES."/wykresy/$kret_id.png\" rel=\"cb\" title=\""._('Altitude profile').'" ><img src="'.CONFIG_CDN_IMAGES."/wykresy/$kret_id-m.png\" border=\"0\" alt=\""._('Altitude profile')."\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />"._('Altitude profile').' <a href="help.php#altitude"><img src="'.CONFIG_CDN_ICONS.'/help.png" alt="?" width="11" height="11" border="0" /></a>'.'</span>';
+    $MAIN_PHOTO .= '<span class="obrazek"><a href="'.CONFIG_CDN_IMAGES."/wykresy/$kret_id.png\" rel=\"cb\" title=\""._('Altitude profile').'" ><img src="'.CONFIG_CDN_IMAGES."/wykresy/$kret_id-m.png\" border=\"0\" alt=\""._('Altitude profile')."\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />"._('Altitude profile').' <a href="help.php#altitude"><img src="'.CONFIG_CDN_ICONS.'/help.png" alt="?" width="11" height="11" border="0" /></a>'.'</span>';
 }
 
-$OBRAZKI_MAIN = '<div id="obrazek_box">'.$OBRAZKI_MAIN.'</div>';
-//-------------------------------------------- OBRAZKI: end ------------------------------- //
+$MAIN_PHOTO = '<div id="obrazek_box">'.$MAIN_PHOTO.'</div>';
+//-------------------------------------------- OBRAZKI / PHOTOS : end ------------------------------- //
 
-$czy_obserwowany = czy_obserwowany($kret_id, $userid_longin);
-if ($czy_obserwowany['plain'] == 10) {
-    $czy_obserwowany['html'] = '';
+$geokret_watchers = czy_obserwowany($kret_id, $userid_longin);
+if ($geokret_watchers['plain'] == 10) {
+    $geokret_watchers['html'] = '';
 } else {
-    $czy_obserwowany['html'] = '<img src="'.$czy_obserwowany['icon'].'" class="textalign16" alt="" width="16" height="16" /> '.$czy_obserwowany['html'];
+    $geokret_watchers['html'] = '<img src="'.$geokret_watchers['icon'].'" class="textalign16" alt="" width="16" height="16" /> '.$geokret_watchers['html'];
 }
 
 // ile ruchów w sumie
@@ -186,7 +187,18 @@ if ($userid == 0) { // if we have an unclaimed geokret then prepare "claim it" t
 }
 
 //$write_note ---- mozliwosc dodania komentarza przez osobe bez TC
-if ($userid_longin === null) { // anonim
+//$write_note ---- translated: add comment without tracking code
+/*
+ ----------------------
+ | $t11 | $t12 | $t13 |
+ ----------------------
+ | $t21 | $t22 | $t23 |
+ ----------------------
+ | $t31 | $t32 | $t33 |
+ ----------------------
+
+*/
+if ($userid_longin === null) { // anonim // anonymous
     $t11 = $view_gallery;
     $t12 = $claim_geokret;
     $t13 = '';
@@ -196,31 +208,26 @@ if ($userid_longin === null) { // anonim
     $t31 = '';
     $t32 = '';
     $t33 = '';
-} else {
-    if ($userid_longin == $userid) { //wlasciciel
-        $t11 = $czy_obserwowany['html'];
-        $t12 = $ruchy_tego_kreta;
-        $t13 = $drukuj_etykiete;
-        $t21 = $view_gallery;
-        $t22 = '';
-        $t23 = $archiwizuj_kreta;
-        $t31 = $view_stat;
-        $t32 = '';
-        $t33 = '';
-    } else { // kazdy inny zarejestrowany user
-        $t11 = $czy_obserwowany['html'];
-        $t12 = $ruchy_tego_kreta;
-        $t13 = $email_owner;
-        $t21 = $view_gallery;
-        $t22 = $claim_geokret;
-        $t23 = $drukuj_etykiete_recreate;
-        $t31 = $view_stat;
-        $t32 = '';
-        $t33 = '';
-
-        // if (!empty($ruchy_tego_kreta)) {$t12=$ruchy_tego_kreta; $t22=$write_note;}
-    // else {$t12=$write_note;}
-    }
+} elseif ($userid_longin == $userid) { //wlasciciel // owner
+    $t11 = $geokret_watchers['html'];
+    $t12 = $report_geokret;
+    $t13 = $print_a_label;
+    $t21 = $view_gallery;
+    $t22 = '';
+    $t23 = $archiwizuj_kreta;
+    $t31 = $view_stat;
+    $t32 = '';
+    $t33 = '';
+} else { // kazdy inny zarejestrowany user // others registered users
+    $t11 = $geokret_watchers['html'];
+    $t12 = $report_geokret;
+    $t13 = $email_owner;
+    $t21 = $view_gallery;
+    $t22 = $claim_geokret;
+    $t23 = $print_a_label_recreate;
+    $t31 = $view_stat;
+    $t32 = '';
+    $t33 = '';
 }
 
 // ------------------------- rating ---------------------- //
@@ -251,21 +258,25 @@ if ($userRated == 0 and $currentUserKnowsTC == 1 and $ownerIsLogged != 1) {
         $ratingSha = sha1(date('ynj').$userid_longin.$config['jrating_token']);   // for proofing voting userid
 // ------------------------- rating end ------------------ //
 
+// <div itemscope itemtype="http://schema.org/Sculpture">
 $TRESC = $claim_alert.'
-<div itemscope itemtype="http://schema.org/Sculpture">
+<!-- css to move to CDN ? hard to maintain..-->
+<style>
+.konkretlabel {white-space: nowrap;}
+</style>
 <table width="100%">
 <tr><td class="heading1" colspan="2"><img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$krettyp.'/icon_25.jpg" alt="Info:" width="25" height="25" /> GeoKret <strong>'.$nazwa.'</strong> ('.$cotozakret[$krettyp].') '.
 (($userid > 0) ? ('by <a href="mypage.php?userid='.$userid.'">'.$user.'</a>'.' '.$wyslij_wiadomosc) : ' - unclaimed').
 '</td></tr>
 
 <tr>
-<td class="tresc1" style="width:10em">Reference Number:</td><td><strong>'.sprintf('GK%04X', $kret_id).'</strong></td></tr>
+<td class="tresc1 konkretlabel" style="width:10em">Reference Number:</td><td><strong>'.sprintf('GK%04X', $kret_id).'</strong></td></tr>
 '.$tracking_code.'
-<tr><td class="tresc1">'._('Total distance').': </td><td><strong>'.$droga_total.' km</strong></td></tr>
-<tr><td class="tresc1">'._('Places visited').': </td><td><strong>'.$skrzynki.'</strong></td></tr>
-<tr><td class="tresc1">'._('Forum links').': </td><td><form name="frm1">'.$link1.' '.$link2.'</form></td></tr>
-<tr><td class="tresc1">'._('Country track').': </td><td>'.$cykl_flag.'</td></tr>
-<tr><td class="tresc1">'._('Rating').': </td>
+<tr><td class="tresc1 konkretlabel">'._('Total distance').': </td><td><strong>'.$droga_total.' km</strong></td></tr>
+<tr><td class="tresc1 konkretlabel">'._('Places visited').': </td><td><strong>'.$skrzynki.'</strong></td></tr>
+<tr><td class="tresc1 konkretlabel">'._('Forum links').': </td><td><form name="frm1">'.$link1.' '.$link2.'</form></td></tr>
+<tr><td class="tresc1 konkretlabel">'._('Country track').': </td><td>'.$cykl_flag.'</td></tr>
+<tr><td class="tresc1 konkretlabel">'._('Rating').': </td>
 <td style="padding-top: 10px;"><div class="basic" id="'.$ratingAvg.'+'.$id.'+'.$userid_longin.'+'.$ratingSha.'+'.$lang.'"></div>
 <span class="szare">'._('votes').': '.$ratingCount.', '._('average rating').
 ': '.$ratingAvg.'. '.$userCanRateThisGK.'.</span>
@@ -283,8 +294,8 @@ $TRESC = $claim_alert.'
 <tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/info.png" alt="Comment:" width="22" height="22" /></td></tr>
 
 <tr><td class="tresc1" title="'._('Short description').'">'.$opis.'</td></tr>
-<tr><td align="right">'.$dodaj_obrazek.' '.$edytuj_kreta.'</td></tr>
-<tr><td class="tresc1">'.$OBRAZKI_MAIN.'</td></tr>
+<tr><td align="right">'.$add_image.' '.$edit_kreta.'</td></tr>
+<tr><td class="tresc1">'.$MAIN_PHOTO.'</td></tr>
 
 <tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/tool.png" alt="Links:" width="22" height="22" /></td></tr>
 
@@ -334,14 +345,74 @@ if ($skrzynki > 0) {
     $TRESC .= _('Download the track as:')." <a href='".CONFIG_CDN_MAPS."/gpx/GK-$kret_id.gpx'>GPX</a> | <a href='".CONFIG_CDN_MAPS."/csv/GK-$kret_id.csv.gz'>csv.gz</a>";
 }
 
-$TRESC .= '</div>'; // koniec początkowego wzkaźnika schema.org
-$TRESC .= '<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-<meta itemprop="worstRating" content="1">
-<meta itemprop="bestRating" content="5">
-<meta itemprop="ratingValue" content="'.$ratingAvg.'">
-<meta itemprop="reviewCount" content="'.$ratingCount.'">
-</span>
-';
+// ----------------------------------------------JSON-LD---------------------------
+// example with https://www.google.com/webmasters/markup-helper/u/0/
+// schema used: http://schema.org/Sculpture
+$gkkeywords = 'geokrety,opencaching,travelbug,'.$cotozakret[$krettyp];
+$TRESC .= '
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Sculpture",
+  "name" : '.json_encode($nazwa).',
+  "url" : '.json_encode($social_url).',
+  "author" : {
+    "@type" : "Person",
+    "name" : '.json_encode($user).',
+    "sameAs" : '.json_encode($user_url).'
+  },
+  "datePublished" : '.json_encode(date('c', strtotime($gktimestamp))).','; //  ISO 8601
+if (isset($obrazki_plik)) {
+    $TRESC .= '
+  "image" : '.json_encode(CONFIG_CDN_OBRAZKI_MALE.'/'.$obrazki_plik).',';
+}
+$TRESC .= '
+  "keywords" : '.json_encode($gkkeywords).',
+  "text" : '.json_encode($opis).',
+  "description" : '.json_encode($opis).',
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "geokrety.org"
+  }';
+if (isset($ratingCount) && $ratingCount > 0) {
+    $TRESC .= ',
+  "aggregateRating" : {
+    "@type" : "AggregateRating",
+    "worstRating" : "1",
+    "bestRating" : "5",
+    "ratingValue" : '.json_encode($ratingAvg).',
+    "ratingCount" : '.json_encode($ratingCount).'
+  }';
+}
+  $TRESC .= ',
+  "commentCount" : '.json_encode($konkretLogsCount).',';
+if ($konkretLogsCount > 0) {
+    $TRESC .= '
+  "comment" : [';
+    $firstLog = true;
+    foreach ($konkretLogs as &$konkretLog) {
+        if ($firstLog) {
+            $firstLog = false;
+        } else {
+            $TRESC .= ',';
+        }
+        $TRESC .= '{
+      "author" : {
+        "@type" : "Person",
+        "name" : '.json_encode($konkretLog['author']).',
+        "sameAs" : '.json_encode($konkretLog['authorUrl']).'
+      },
+      "text" : '.json_encode($konkretLog['text']).',
+      "dateCreated" : '.json_encode(date('c', strtotime($konkretLog['dateCreated']))).'
+}';
+    }
+    $TRESC .= ']';
+}
+$TRESC .= '
+}
+</script>';
+
+// ----------------------------------------------JSON-LD-(end)---------------------
 
 $TYTUL = $nazwa;
 $OGON .= '<script type="text/javascript" src="'.$config['colorbox.js'].'?ver=1.1"></script>
@@ -355,7 +426,7 @@ $(document).ready(function(){
          decimalLength: 1,
          rateMax: 5,
          length : 5,
-      	isDisabled: '.$ratingDisabled.',
+          isDisabled: '.$ratingDisabled.',
          onSuccess : function(){
          RatingResponse.innerHTML=json.message;
          ;
@@ -379,13 +450,13 @@ $(document).ready(function(){
 
 $OGON .= '
 <script>
-	$(document).ready(function(){
-	$("a[rel=\'cb\']").colorbox();
-	$(".cb").colorbox({
-	onComplete:function(){ var x = document.getElementById("text_field"); if (x!=null) {x.focus();} }
-	});
-	$(".cb2").colorbox();
-	});
+    $(document).ready(function(){
+    $("a[rel=\'cb\']").colorbox();
+    $(".cb").colorbox({
+    onComplete:function(){ var x = document.getElementById("text_field"); if (x!=null) {x.focus();} }
+    });
+    $(".cb2").colorbox();
+    });
 </script>';
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //
