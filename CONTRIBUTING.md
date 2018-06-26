@@ -19,3 +19,8 @@ Each time you are pushing fresh commits on https://github.com/geokrety/geokrety-
 Travis checks are defined into [.travis.yml](website/.travis.yml)
 
 If you fork the project, then you will have to activate travis-ci builds for your own clone.
+
+
+## Install
+
+please cf. [INSTALL.md](INSTALL.md)

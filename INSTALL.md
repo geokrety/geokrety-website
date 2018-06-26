@@ -67,10 +67,16 @@ Create your own PHP configuration:
 
 ### Update GeoKrety docker-machine content (scripts)
 
-Requirements: having done  git clone of [geokrety-scripts repository](https://github.com/geokrety/geokrety-scripts) into `../geokrety-scripts/`
+Requirements: having done git clone of [geokrety-scripts repository](https://github.com/geokrety/geokrety-scripts) into `../geokrety-scripts/`
 
 ````
     ./update.sh scripts
+````
+
+### Fix GeoKrety docker-machine directory/file rights (docker scp workaround)
+
+````
+    ./update.sh rights
 ````
 
 ### Uninstall GeoKrety docker-machine
@@ -79,7 +85,11 @@ Requirements: having done  git clone of [geokrety-scripts repository](https://gi
      ./install.sh revert
 ````
 
-### Use Php Coding Standard Fixer
+# How to install contributors tools on Windows host
+
+For out-of-install scope contributors details, please see also [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Php 7
 
 As php is for now only installed onto docker container, you will need to install it on windows too:
 
@@ -91,17 +101,39 @@ As php is for now only installed onto docker container, you will need to install
     php --version
 ````
 
-* download [php-cs-fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) into php 7 installation directory
+### Use Composer
+
+* download Composer-Setup.exe from [getcomposer.org](https://getcomposer.org/doc/00-intro.md)
+* installation will ask you to confirm the php7 path
+
+### Run Composer
+
+* composer is able to manage php dependencies, and dependencies are described into `composer.json`
+* go to geokrety-website root directory to run composer
 
 ````
-    cd /C/tools/php7
-    curl -L https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -o php-cs-fixer
-    cd -
-    php-cs-fixer --version
+    composer install
 ````
 
-* launch code standard fixer
+This action will install the following tools/libraries:
+* Php Coding Standard Fixer aka. [php-cs-fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
+* [PHPUnit](https://phpunit.de/manual/6.5/fr/installation.html)
+
+### Run Php Coding Standard Fixer
+
+* to launch code standard fixer
 
 ````
-    php-cs-fixer fix --diff -v
+    vendor/bin/php-cs-fixer fix --diff -v
 ````
+
+### Use PHPUnit
+
+* to launch PHP OO unit tests:
+
+````
+   vendor/bin/phpunit
+````
+
+PHPUnit configuration is located inside `phpunit.xml`.
+
