@@ -15,6 +15,7 @@ RUN apt-get update \
         locales \
         gettext \
         vim \
+        curl git zip \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/* \
     \
@@ -48,14 +49,21 @@ ADD https://github.com/smarty-gettext/smarty-gettext/raw/master/function.locale.
 # Install Smarty
 RUN chmod a+r /usr/share/php/smarty/libs/plugins/block.t.php /usr/share/php/smarty/libs/plugins/function.locale.php
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php \
+  && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer
+
 # Install site
 COPY website/ /var/www/html/
 
+WORKDIR /var/www/html
+RUN composer install --no-scripts
+
 ARG GIT_COMMIT='unspecified'
-RUN chown www-data \
-      /var/www/html/templates/compile/ \
+RUN chown -R www-data /var/www/html/templates/compile/ \
       /var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/ \
       /var/www/html/templates/cache \
+      /var/www/html/vendor \
     && echo $GIT_COMMIT > /var/www/html/git-version
 
 # to use it without docker-compose : docker run -it --rm --name geokrety -p 80:80 -v $(pwd)/website:/var/www/html/ geokrety

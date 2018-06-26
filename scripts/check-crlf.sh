@@ -1,6 +1,6 @@
 #!/bin/bash
 START_TIME=$SECONDS
-find . -type f -not \( -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' -o -path './.*' \) -exec file -m /dev/null "{}" ";" | grep CRLF
+find . -type f -not \( -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' -o -path './.git/*' -o -path './vendor/*' -o -path './website/vendor/*' \) -exec file -m /dev/null "{}" ";" | grep CRLF
 cmdresult=$?
 ELAPSED_TIME=$(($SECONDS - $START_TIME))
 

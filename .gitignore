@@ -3,6 +3,7 @@
 *.swo
 .svn
 .well-known
+*.dont-push.*
 .idea/
 .project
 .buildpath
@@ -13,5 +14,8 @@ docker-compose-windows.yml
 vars
 docker-compose.dev.yml
 git-version
+.php_cs.cache
+.project
 vars/
-*.dont-push.*
+# please use 'composer install' to generate vendor/
+vendor/
