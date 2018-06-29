@@ -293,7 +293,7 @@ $gkUrl = $config['adres'];
 $gkLogoUrl = $config['cdn_url'].'/images/banners/geokrety.png';
 $gkHeadline = _('Welcome to GeoKrety.org!');
 $gkDescription = _('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="help.php#about">read more...</a>');
-$gkKeywords = 'geokrety,travelbug,opencaching,geocaching,geocoin,geobook,krety,geokret,geokrets,geocache,gps';
+$gkKeywords = 'geokrety,opencaching,geocaching,geocoin,geobook,krety,geokret,geokrets,geocache,gps';
 
 $ldHelper = new LDHelper($gkName, $gkUrl, $gkLogoUrl);
 $ldJSONWebSite = $ldHelper->helpWebSite(

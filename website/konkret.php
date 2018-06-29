@@ -348,7 +348,7 @@ if ($skrzynki > 0) {
 // ----------------------------------------------JSON-LD---------------------------
 // example with https://www.google.com/webmasters/markup-helper/u/0/
 // schema used: http://schema.org/Sculpture
-$gkkeywords = 'geokrety,opencaching,travelbug,'.$cotozakret[$krettyp];
+$gkkeywords = 'geokrety,opencaching,'.$cotozakret[$krettyp];
 $TRESC .= '
 <script type="application/ld+json">
 {

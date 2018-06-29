@@ -30,7 +30,7 @@ $helpHeadline = 'GeoKrety '._('Help').' ('.$jezyk.')';
 $helpDescription = 'help page';
 $helpUrl = $config['adres'].'help_generate.php?help='.$jezyk;
 $helpImage = $config['cdn_url'].'/images/log-icons/0/icon.jpg';
-$helpKeywords = 'geokrety,opencaching,travelbug,help';
+$helpKeywords = 'geokrety,opencaching,help';
 $helpLang = $jezyk;
 if ($jezyk == 'cz') {
     $helpLang = 'cs'; // LD-JSON requires ISO-639 value
