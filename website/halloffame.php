@@ -40,6 +40,7 @@ $TRESC = '
 	<li><strong>ZYR, Lion &amp; Aquaria</strong> betatesting</li>
 	<li><strong>angelo</strong> programming support</li>
 	<li><strong>Yergo</strong> coordinates parser</li>
+	<li><strong><a href="mypage.php?userid=30144">YvesProvence</a></strong> public relation and advertising</li>
 </ul>
 
 <div class="rozdzial">Translations</div>
