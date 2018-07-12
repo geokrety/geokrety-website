@@ -2,8 +2,7 @@
 
 // drawing timeline
 
-function rysuj_timeline($kretid)
-{
+function rysuj_timeline($kretid) {
     include 'templates/konfig.php';
     $link = DBConnect();
 

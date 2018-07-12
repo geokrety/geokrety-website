@@ -17,7 +17,7 @@ if ($ip == '62.121.108.70'  /*geokrety.org*/
     || $ip == '86.111.244.117'  /*opencaching.PL*/
     || $ip == '212.2.32.87'  /*opencaching.DE*/
     || $ip == '184.106.211.113'  /*opencaching.US*/
-    || $ip == '46.4.66.184'  /*opencaching.NL*/
+    || $ip == '80.211.176.147'  /*opencaching.NL*/
     || $ip == '74.117.232.69' /*trekkingklub.com*/
 ) {
     $severity = 0;
@@ -53,8 +53,7 @@ if (($jak_stare_dane > $limit_czasu_s) and ($g_kocham_kaczynskiego != $kocham_ka
     exit;
 }
 
-function ikonw($zmienna, $encoding)
-{
+function ikonw($zmienna, $encoding) {
     $zmienna = iconv('UTF-8', "$encoding//IGNORE//TRANSLIT", html_entity_decode($zmienna, ENT_NOQUOTES, 'UTF-8'));
 
     return $zmienna;

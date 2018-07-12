@@ -8,6 +8,65 @@ require_once '__sentry.php';
 require_once 'wybierz_jezyk.php'; // choose the user's language
 require 'templates/konfig.php';    // config
 
+function waypointLinkLabel($waypoint, $name) {
+    if (trim($name) !== '') {
+        return trim($name);
+    }
+
+    return sprintf(_('waypoint %s'), strtoupper($waypoint));
+}
+
+/**
+ * json result (tresc) to send when ONE cache is selected.
+ */
+function cacheOk($waypoint, $cache_link, $name, $owner, $cache_type, $cache_country, $countryCode) {
+    $flagPlaceholder = '';
+    if (trim($countryCode) !== '') {
+        $flagPlaceholder = '<img src="'.CONFIG_CDN_IMAGES.'/country-codes/'.$countryCode.'.png" width="16" height="11"'
+                         .' alt="'._('flag').'" title="'.$countryCode.'"/>';
+    }
+    if (trim($owner) !== '') {
+        $ownerPlaceholder = '('.sprintf(_('by %s'), $owner).')';
+    }
+
+    $result = '<img src="'.CONFIG_CDN_IMAGES.'/icons/ok.png" alt="'._('OK').'" width="16" height="16" /> <a href="'.$cache_link.'" target="_opencaching">'.waypointLinkLabel($waypoint, $name).' <i class="glyphicon glyphicon-link"></i></a> '.$ownerPlaceholder.'<br />';
+    if (trim($cache_type) !== '') {
+        $result .= sprintf(_('cache type: %s'), _($cache_type)).'<br/>';
+    }
+    if (trim($cache_country) !== '') {
+        $result .= sprintf(_('country: %s %s'), $flagPlaceholder, _($cache_country));
+    } elseif (trim($countryCode) !== '') {
+        $result .= sprintf(_('country: %s'), $flagPlaceholder);
+    }
+
+    return $result;
+}
+
+/**
+ * json result (tresc) to send when NO cache is found.
+ */
+function cacheNotFound() {
+    return '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('No cache found');
+}
+
+/**
+ * json result (tresc) to send when selected cache is not associated with lat/lon.
+ */
+function cacheWithoutLatLon($waypoint, $name, $cache_link) {
+    $link_wpt = '<a href="'.$cache_link.'" target="_opencaching">'.waypointLinkLabel($waypoint, $name).' <i class="glyphicon glyphicon-link"></i></a>';
+
+    return '<img src="'.CONFIG_CDN_IMAGES.'/icons/info3.png" alt="info" width="16" height="16" /> '.sprintf(_('Please provide the coordinates (lat/lon) of the cache %s in the "coordinates" input box.'), $link_wpt).'<br />'.
+        sprintf(_('<a href="%s">Learn more about hiding geokrets in GC caches</a>'), $config['adres'].'help.php#locationdlagc');
+}
+
+function handleExeption($exc) {
+    $errorId = uniqid('GKIE_');
+    error_log('Unexpected error '.$errorId.' :'.$exc->getMessage());
+    error_log($exc);
+
+    return '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '.sprintf(_('Unexpected error (id:%s), please report.'), $errorId);
+}
+
 if ($_REQUEST['skad'] == 'ajax') {
     $link = DBConnect();
 
@@ -73,51 +132,89 @@ if ($_REQUEST['skad'] == 'ajax') {
             echo "<img src='".CONFIG_CDN_IMAGES."/icons/error.png' alt='error' width='16' height='16' /> "._('Invalid tracking code');
         }
     } elseif (!empty($_REQUEST['wpt'])) { // ****************************************  waypoint
-        $wpt = mysqli_real_escape_string($link, $_REQUEST['wpt']);
-        include_once 'waypoint_info.php';
-        list($lat, $lon, $name, $typ, $kraj, $cache_link, $alt, $country, $status) = waypoint_info($wpt);
-        if (!empty($lat) and !empty($lon)) {
-            $return['tresc'] = "<img src='".CONFIG_CDN_IMAGES."/icons/ok.png' alt='OK' width='16' height='16' /> <a href='$cache_link'>$name</a> $typ<br /><img src='".CONFIG_CDN_IMAGES."/country-codes/$country.png' width='16' height='11' alt='flag' /> $kraj";
-            $return['lat'] = $lat;
-            $return['lon'] = $lon;
-            echo json_encode($return);
-        } else {
-            $link_wpt = '<a href="'.$cache_link.'">'.$_REQUEST['wpt'].'</a>';
-            $return['tresc'] = '<img src="'.CONFIG_CDN_IMAGES.'/icons/info3.png" alt="info" width="16" height="16" /> '.sprintf(_('Please provide the coordinates (lat/lon) of the cache %s in the "coordinates" input box.'), $link_wpt).'<br />'.
-             sprintf(_('<a href="%s">Learn more about hiding geokrets in GC caches</a>'), $config['adres'].'help.php#locationdlagc');
+        try {
+            $return['lat'] = '';
+            $return['lon'] = '';
+            $wpt = mysqli_real_escape_string($link, $_REQUEST['wpt']);
+            include_once 'lib/Waypointy.class.php';
+            $waypointy = new Waypointy($link, false);
+            $hasResult = $waypointy->getByWaypoint($wpt);
+            if (!$hasResult) {
+                $return['tresc'] = cacheNotFound();
+                echo json_encode($return);
+            } else {
+                $lat = $waypointy->lat;
+                $lon = $waypointy->lon;
+
+                if (!empty(trim($lat)) and !empty(trim($lon))) {
+                    $return['tresc'] = cacheOk($waypointy->waypoint, $waypointy->cache_link, $waypointy->name,
+                      $waypointy->owner, $waypointy->cache_type, $waypointy->country, $waypointy->country_code);
+                    $return['lat'] = $lat;
+                    $return['lon'] = $lon;
+                    echo json_encode($return);
+                } else {
+                    $return['tresc'] = cacheWithoutLatLon($waypointy->waypoint, $waypointy->name, $waypointy->cache_link);
+                    echo json_encode($return);
+                }
+            }
+        } catch (Exception $exc) {
+            $return['tresc'] = handleExeption($exc);
             $return['lat'] = '';
             $return['lon'] = '';
             echo json_encode($return);
         }
-    } elseif (!empty($_REQUEST['NazwaSkrzynki']) and mb_strlen($_REQUEST['NazwaSkrzynki']) >= 5) {
-        $sql = "SELECT COUNT(DISTINCT `name`) FROM `gk-waypointy` WHERE `name` LIKE '%".mysqli_real_escape_string($link, $_REQUEST['NazwaSkrzynki'])."%'";
-        $result = mysqli_query($link, $sql);
-        $IleSkrzynek = mysqli_fetch_array($result);
-        $return['IleSkrzynek'] = $IleSkrzynek[0];
+    } elseif (!empty($_REQUEST['NazwaSkrzynki']) and mb_strlen($_REQUEST['NazwaSkrzynki']) < 5) {
+        $return['tresc'] = '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('Enter at least 5 characters');
+        echo json_encode($return);
+    } elseif (!empty($_REQUEST['NazwaSkrzynki'])) {
+        include_once 'lib/Waypointy.class.php';
+        $waypointy = new Waypointy($link, false);
+        try {
+            $return['lat'] = '';
+            $return['lon'] = '';
+            $byNameCount = $waypointy->countDistinctName($_REQUEST['NazwaSkrzynki']);
+            $return['IleSkrzynek'] = $byNameCount;
 
-        if ($IleSkrzynek[0] > 1) {
-            $return['tresc'] = "$IleSkrzynek[0] "._('caches match').' '._('eg.').':<br />';
-
-            // listing
-            $sql = "SELECT `waypoint`, `name`, `owner`, `typ`, `kraj`, `link`, `lat`, `lon` FROM `gk-waypointy` WHERE `name` LIKE '%".mysqli_real_escape_string($link, $_REQUEST['NazwaSkrzynki'])."%' LIMIT 4";
-            $result = mysqli_query($link, $sql);
-            while ($row = mysqli_fetch_array($result)) {
-                list($waypoint, $name, $owner, $typ, $kraj, $cache_link, $lat, $lon) = $row;
-                $return['tresc'] .= "<span class='bardzomale'><a href='$cache_link'>$name</a> ($owner) - <a href=\"#\" onclick=\"document.getElementById('wpt').value = '$waypoint'; sprawdzWpt(); return false;\">$waypoint</a></span><br />";
-            }
-        } elseif ($IleSkrzynek[0] == 0) {
-            $return['tresc'] = '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('No cache found');
-        } else {
-            $sql = "SELECT `waypoint`, `name`, `owner`, `typ`, `kraj`, `link`, `lat`, `lon` FROM `gk-waypointy` WHERE `name` LIKE '%".mysqli_real_escape_string($link, $_REQUEST['NazwaSkrzynki'])."%' LIMIT 1";
-            $result = mysqli_query($link, $sql);
-            list($waypoint, $name, $owner, $typ, $kraj, $cache_link, $lat, $lon) = mysqli_fetch_array($result);
-            $return['tresc'] = "<img src='".CONFIG_CDN_IMAGES."/icons/ok.png' alt='OK' width='16' height='16' /> <a href='$cache_link'>$name</a> ($owner)<br />$typ<br />$kraj";
-
-            $return['lat'] = $lat;
-            $return['lon'] = $lon;
-            $return['wpt'] = $waypoint;
-        } // jeśli jest jedna skrzynka
-
+            if ($byNameCount == 0) {// no result
+                $return['tresc'] = cacheNotFound();
+            } elseif ($byNameCount > 1) {
+                $maxCache = 4;
+                if ($byNameCount < $maxCache) {
+                    $return['tresc'] = _('caches match').':<br />';
+                } else {
+                    $return['tresc'] = sprintf(_('%d caches match (the first %d)'), $byNameCount, $maxCache).':<br />';
+                }
+                // listing
+                $sql = "SELECT `waypoint`, `name`, `owner`, `typ`, `kraj`, `link`, `lat`, `lon` FROM `gk-waypointy` WHERE `name` LIKE '%".mysqli_real_escape_string($link, $_REQUEST['NazwaSkrzynki'])."%' LIMIT $maxCache";
+                $result = mysqli_query($link, $sql);
+                while ($row = mysqli_fetch_array($result)) {
+                    list($waypoint, $name, $owner, $typ, $kraj, $cache_link, $lat, $lon) = $row;
+                    $ownerPlaceholder = '';
+                    if (trim($owner) !== '') {
+                        $ownerPlaceholder = ' ('.sprintf(_('by %s'), $owner).')';
+                    }
+                    $return['tresc'] .= '<a href="#" onclick="document.getElementById(\'wpt\').value = \''.$waypoint.'\'; sprawdzWpt(); return false;"><i class="glyphicon glyphicon-pushpin"></i> '.$waypoint.'</a> - <span class="bardzomale"><a href="'.$cache_link.'" target="_opencaching">'.$name.' <i class="glyphicon glyphicon-link"></i></a>'.$ownerPlaceholder.'</span><br />';
+                }
+            } else { // == 1
+                $hasResult = $waypointy->getByName($_REQUEST['NazwaSkrzynki']);
+                if (!$hasResult) {// never the case
+                    $return['tresc'] = cacheNotFound();
+                } elseif (!empty(trim($waypointy->lat)) and !empty(trim($waypointy->lon))) {
+                    $return['tresc'] = cacheOk($waypointy->waypoint, $waypointy->cache_link, $waypointy->name,
+                      $waypointy->owner, $waypointy->cache_type, $waypointy->country, $waypointy->country_code);
+                    $return['lat'] = $waypointy->lat;
+                    $return['lon'] = $waypointy->lon;
+                    $return['wpt'] = $waypointy->waypoint;
+                } else {
+                    $return['tresc'] = cacheWithoutLatLon($waypointy->waypoint, $waypointy->name, $waypointy->cache_link);
+                    $return['wpt'] = $waypointy->waypoint;
+                }
+            } // jeśli jest jedna skrzynka
+        } catch (Exception $exc) {
+            $return['tresc'] = handleExeption($exc);
+            $return['lat'] = '';
+            $return['lon'] = '';
+        }
         echo json_encode($return);
     }
     mysqli_close($link);

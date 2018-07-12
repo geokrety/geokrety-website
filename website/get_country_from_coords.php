@@ -1,7 +1,6 @@
 <?php
 
-function get_country_from_coords($lat, $lon)
-{
+function get_country_from_coords($lat, $lon) {
     if (is_null($lat) || is_null($lon)) {
         return 'xyz';
     }

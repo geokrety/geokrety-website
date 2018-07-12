@@ -1,205 +1,377 @@
-
 <!-- tresc -->
-<div class="rozdzial">Inhalt</div>
+
+<div class="rozdzial">Inhaltsverzeichnis</div>
 <ol>
-<li><a href="#about">Über GeoKrety</a></li>
-<li><a href="#geokretytypes">Art des GeoKrets</a></li>
-<li><a href="#Chooselogtype">Art des Logeintrags</a></li>
-<li><a href="#fullysupportedwaypoints">Voll unterstützte Wegpunkte</a></li>
-<li><a href="#partiallysupportedwaypoints">Teilweise unterstützte Wegpunkte</a></li>
-<li><a href="#locationdlagc">Logeintrag "GeoKret abgelegt" bei einem Cache von geocaching.com</a></li>
-<li><a href="#acceptableformats">Zulässige Koordinatenformate</a></li>
-<li><a href="#iconology">Icons und ihre Funktionen (Einträge bearbeiten oder löschen, Foto hinzufügen usw.)</a></li>
-<li><a href="#GKandCode">Reference Number und Tracking Code</a></li>
-<li><a href="#altitude">Höhenprofil und Länderkennung</a></li>
-<li><a href="#qr">QR Code</a></li>
-<li><a href="#privacy">Schutz personenbezogener Daten</a></li>
-<li><a href="#morehelp"><strong>Noch Fragen offen?</strong></a></li>
+  <li><a href="#about">Über GeoKrety</a></li>
+  <li><a href="#create">Erstelle deinen eigenen GeoKret</a></li>
+  <li><a href="#geokretytypes">Arten von GeoKrets</a></li>
+  <li><a href="#Chooselogtype">Arten von Logs</a></li>
+  <li><a href="#fullysupportedwaypoints">Voll unterstützte Wegpunkte</a></li>
+  <li><a href="#partiallysupportedwaypoints">Teilweise unterstützte Wegpunkte</a></li>
+  <li><a href="#locationdlagc">Geokrets in einem geocaching.com Cache ablegen</a></li>
+  <li><a href="#acceptableformats">Unterstützte Koordinatenformate</a></li>
+  <li><a href="#iconology">Die Symbole und ihre Funktionen (Einträge bearbeiten oder löschen, Foto hinzufügen usw.)</a></li>
+  <li><a href="#GKandCode">Referenznummer und Tracking-Code</a></li>
+  <li><a href="#altitude">Höhe und Länderkennung</a></li>
+  <li><a href="#qr">QR-Code</a></li>
+  <li><a href="email2gk.php">Email2GK Schnittstelle</a></li>
+  <li><a href="molehole.php">GK Maulwurflöcher und GK-Hotels/Motels</a></li>
+  <li><a href="#othertrackable">Datenbanken anderer trackbarer Gegenstände</a></li>
+  <li><a href="#privacy">Schutz personenbezogener Daten</a></li>
+  <li><a href="rzeczy/geokrety.org.pub">PGP/GPG public key (76B00039)</a></li>
+  <li><a href="termsofuse.php">Nutzungsbedingungen</a></li>
+  <li><a href="#cookies">GK Cookie-Richtlinien</a></li>
+  <li><a href="#https">HTTPS- und SSL-verschlüsselte Verbindungen</a></li>
+  <li><a href="#morehelp"><strong>Benötigst du weitere Hilfe?</strong></a></li>
 </ol>
 
 
-<a id="about"></a><div class="rozdzial">Über GeoKrety</div>
+<a id="about"></a>
+<div class="rozdzial">Über GeoKrety</div>
 
-<p>GeoKrety (griechisch <i>Geo</i> = "Erde", polnisch <i>Krety</i> = "<a href="http://de.wikipedia.org/wiki/Europ%C3%A4ischer_Maulwurf">Maulwurf</a>") ist ein Service, der ähnlich funktioniert wie ein Travel Bug® oder GeoLutins. Der Sinn und Zweck besteht im Wesentlichen darin, "Reisende" auf ihrem Streifzug durch die Welt der Geocaches zu begleiten: Die registrierten Objekte (die sogenannten GeoKrets) "wandern" von Cache zu Cache, d.h. andere Geocacher transportieren sie weiter und machen hier bei GeoKrety einen entsprechenden Logeintrag. Für jeden GeoKret wird dann der Reiseverlauf auf einer Landkarte dargestellt.</p>
+<p>GeoKrety (Vom griechischen Wort <i>geo</i> = „Erde“ und dem polnischen Wort <i>krety</i> = <a href="https://en.wikipedia.org/wiki/Mole_%28animal%29">„Maulwürfe“</a>) ist ein Service ähnlich wie TravelBug(TM) oder GeoLutins, der dafür da ist, Objekte, die du in Geocache-Containern hinterlässt, zu verfolgen. Die registrierten Objekte (die sogenannten GeoKrets) reisen von Cache zu Cache, d.h. andere Geocacher transportieren sie weiter und machen hier bei GeoKrety einen entsprechenden Logeintrag. Für jeden GeoKret wird dann der Reiseverlauf auf einer Karte dargestellt.</p>
 
-<p><img src="https://cdn.geokrety.org/images/help/kret-foto.jpg" alt="Foto Maulwurf" width="300" height="225" /><br /><a href="http://de.wikipedia.org/wiki/Europ%C3%A4ischer_Maulwurf">Ein Maulwurf</a></p>
+<p><img src="https://cdn.geokrety.org/images/help/kret-foto.jpg" alt="Foto eines Maulwurfs" width="300" height="225" /><br /><a href="https://en.wikipedia.org/wiki/Mole_%28animal%29">Ein Maulwurf</a></p>
 
-<p>Unser Service ist kostenlos (im Gegensatz zum Travel Bug®) und unkompliziert in der Handhabung. Ein GeoKret kann alles Mögliche sein, aber meistens ist es eine kleine Figur.</p>
-<p>Um einen neuen GeoKret zu erstellen, musst Du folgendes tun:</p>
+<p>Wie spricht man GeoKrety aus? ;)<br /><embed type="application/x-shockwave-flash" src="https://www.google.com/reader/ui/3523697345-audio-player.swf" quality="best" flashvars="audioUrl=https://cdn.geokrety.org/sounds/geokrety.mp3" width="300" height="27"></embed>
+</p>
+
+<p>GeoKrety sind kein Tauschobjekt. Es muss nicht anderes in den Cache gelegt werden, wenn man einen GK entnimmt, und du solltest im Tausch gegen einen GK auch nichts anderes aus einem Cache nehmen. Wenn du etwas aus einem Cache entnimmst, sollte auch getauscht werden und zusätzlich der GK abgelegt werden.</p>
+
+<p>Der Dienst ist absolut kostenlos (im Gegensatz zum Travel Bug) und einfach zu bedienen. Ein GeoKret kann alles Mögliche sein, aber meistens ist es eine kleine Figur.</p>
+
+<p>Schau dir den Artikel über GeoKrety <a href="https://en.wikipedia.org/wiki/GeoKrety">bei Wikipedia</a> an (und editiere ihn, wenn nötig).</p>
+
+<a id="create"></a>
+<div class="rozdzial">Erstelle deinen eigenen GeoKret</div>
+
+<p><img src="https://cdn.geokrety.org/images/icons/yt24.png" alt="YouTube" /> Schau dir ein <a href="https://www.youtube.com/watch?v=t2VsHFkUl7U">Einführungsvideo</a> über die Registrierung und Erstellung eines eigenen GeoKret an.</p>
+
 
 <ol>
-  <li>Registriere Dich als Benutzer bei GeoKrety.org.</li>
-	<li>Lege einen neuen GeoKret an und notiere den vom System erzeugten GeoKret Tracking Code (z.B. XF3ACS). Der Tracking Code ist geheim und nur Du und die Personen, die diesen GeoKret finden, sollten ihn kennen.</li>
-	<li>Drucke ein Etikett mit dem Namen des GeoKrets, seinem Tracking Code, der Reference Number (z.B. GK003F) und dem Namen des Eigentümers (also Deinem Benutzernamen). Befestige das Etikett am GeoKret (z.B. der kleinen Figur).
+  <li>Lege ein Konto auf GeoKrety.org an</li>
+  <li>Registriere den GeoKret und notiere den GeoKret-Trackingcode (z.B. XF2ACS), welcher vom System erzeugt wurde. Dieser Code ist geheim und nur du und Personen, die diesen GeoKret finden, sollten ihn kennen.</li>
+  <li>Drucke ein Etikett mit dem Namen, dem Tracking-Code, der Referenznummer (z.B. GK003F) und dem Owner des GeoKrets. Bringe dieses Etikett am GeoKret (z.B. einer Figur) an
 
-<p>Beispiele für reisefertige GeoKrets:</p>
-	<table>
-	<tr>
-	<td><img src="https://cdn.geokrety.org/images/help/geokret-przyklad-sp2ong_1.jpg" alt="Beispiel 1" width="250" height="188" /></td>
-	<td><img src="https://cdn.geokrety.org/images/help/geokret-przyklad-sp2ong_2.jpg" alt="Beispiel 2" width="250" height="148" /></td>
-
-	</tr>
-	</table>
-
-
-</li>
+    <p>Beispiel von fertigen GeoKrety</p>
+    <img src="https://cdn.geokrety.org/images/help/geokret-przyklad-sp2ong_1.jpg" alt="Beispiel" width="250" height="188" />
+    <img src="https://cdn.geokrety.org/images/help/geokret-przyklad-sp2ong_2.jpg" alt="Beispiel 2" width="250" height="148" />
+    <img src="https://cdn.geokrety.org/images/help/geokret-przyklad-dziku.jpg" alt="Beispiel" width="250" height="180" />
+  </li>
 </ol>
 
 
-<p>Und zum Schluss:</p>
+<p>Dann musst du Folgendes machen:</p>
 <ol>
-	<li>Verstaue Deinen GeoKret in einem Cache und mache einen entsprechenden ersten Logeintrag bei uns.</li>
-	<li>Viel Spaß beim Beobachten seiner Reise!</li>
-
+  <li>Lege deinen GeoKret in einen Cache und logge den Standort in diesem Dienst</li>
+  <li>Hab Spaß beim Ansehen der Reise deines GeoKret!</li>
 </ol>
 
-<a id="geokretytypes"></a><div class="rozdzial">Art des GeoKrets</div>
+<a id="geokretytypes"></a>
+<div class="rozdzial">Arten von GeoKrets</div>
 
 <ul>
-<li><strong>Traditionell</strong> - z.B. eine Figur oder ein anderer kleiner Gegenstand<br />
-<img src="https://cdn.geokrety.org/images/log-icons/0/icon.jpg" alt="Traditionell" width="100" height="100" />
-</li>
+  <li><strong>Traditionell</strong> - z.B. eine kleine Figur mit einem Etikett<br />
+    <img src="https://cdn.geokrety.org/images/log-icons/0/icon.jpg" alt="Traditionell" width="100" height="100" />
+  </li>
 
-<li><strong>Ein Buch, eine CD oder DVD...</strong> - um Bücher, CDs oder DVDs bei ihrer Reise zu verfolgen. Klebe einfach das GeoKret-Etikett und die Kurzanleitung auf die Rückseite.<br />
-<img src="https://cdn.geokrety.org/images/log-icons/1/icon.jpg" alt="Buch" width="100" height="100" />
-</li>
+  <li><strong>Ein Buch/CD/DVD/...</strong> - um Bücher, CDs oder DVDs bei ihrer Reise zu verfolgen. Klebe einfach ein GeoKret-Etikett und die Kurzanleitung auf die Rückseite des Umschlags.<br />
+    <img src="https://cdn.geokrety.org/images/log-icons/1/icon.jpg" alt="Buch" width="100" height="100" />
+  </li>
 
-<li>
-<strong>Eine Person</strong> - wenn Du Deine eigene Route verfolgen möchtest und so etwas wie einen GeoBlog schreibst.<br />
-<img src="https://cdn.geokrety.org/images/log-icons/2/icon.jpg" alt="Person" width="100" height="100" />
-</li>
+  <li>
+    <strong>Eine Person</strong> - wenn du deine eigene Route verfolgen und so etwas wie einen GeoBlog schreiben möchtest<br />
+    <img src="https://cdn.geokrety.org/images/log-icons/2/icon.jpg" alt="" width="100" height="100" />
+  </li>
+
+  <li>
+    <strong>Eine Coin</strong> (oder: Geocoin; deutsch: Münze) - ein normaler GeoKret, aber in Form einer Münze<br />
+    <img src="https://cdn.geokrety.org/images/log-icons/3/icon.jpg" alt="" width="100" height="100" />
+  </li>
+
+  <li>
+    <strong>KretyPost</strong> - normaler GeoKret, aber in Form einer Postkarte/eines Briefes<br />
+    <img src="https://cdn.geokrety.org/images/log-icons/4/icon.jpg" alt="" width="100" height="100" />
+    <p>
+      <strong>Kurzbeschreibung:</strong>
+      <ol>
+        <li>Nimm eine Karte (das kann eine Postkarte oder eine selbst gemachte Karte sein) und schreibe ein paar Zeilen für den Empfänger darauf.</li>
+        <li>Gib als Empfängeradresse den Spitznamen des Empfängers, die Region (Land, Bezirk, Stadt) und einen Zielcache (am besten mit allen verfügbaren Wegpunkten - GC-Code, OC-Code, usw.) an.</li>
+        <li>Erstelle einen GeoKret vom Typ "KretyPost", drucke einen Stempel (<a href="https://picasaweb.google.com/gc.bonnie.clyde/GeoKretyMeetsGeopost">siehe Beispiel</a>) mit dem Tracking-Code und stempele diesen Stempel auf deine Postkarte. (Einen einfachen Stempel kannst du im Etiketten-Generator auf der GeoKret-Seite erstellen)</li>
+        <li>(optional:) Laminiere die fertige Postkarte um sie auf ihrer Reise zu schützen.</li>
+        <li>Lege die Karte in einen Cache in der Nähe deiner Heimat-Koordinaten, logge den GeoKret als abgelegt und warte ... :-)</li>
+        <li>(optional:) Informiere den Empfänger, da er vermutlich den GeoKret gerne beobachten würde</li>
+      </ol>
+  </li>
+  </p>
+
 
 </ul>
 
-<a id="Chooselogtype"></a><div class="rozdzial">Art des Logeintrags</div>
+<a id="Chooselogtype"></a>
+<div class="rozdzial">Arten von Logs</div>
 
-<ul>
-  <li><strong>GeoKret abgelegt</strong> - wenn Du den GeoKret in einen Cache gelegt bzw. an einen neuen Ort gebracht hast.<br />
-	<img src="https://cdn.geokrety.org/images/log-icons/0/icon.jpg" alt="abgelegt"  /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/0.png" alt="abgelegt"  /></li>
-
-	<li><strong>GeoKret mitgenommen</strong> - wenn Du den GeoKret aus einem Cache genommen hast und ihn <i>nicht gleich wieder woanders ablegen wirst</i>.<br />
-	<img src="https://cdn.geokrety.org/images/log-icons/1/icon.jpg" alt="herausgenommen"  /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/1.png" alt="herausgenommen"  /></li>
-
-	<li><strong>GeoKret entdeckt</strong> - wenn Du den GeoKret in einem Cache gesehen, aber nicht mitgenommen hast.<br />
-	<img src="https://cdn.geokrety.org/images/log-icons/2/icon.jpg" alt="entdeckt"  /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/3.png" alt="entdeckt"  /></li>
-
-	<li><strong>Kommentar</strong> - wenn Du einen Kommentar schreiben möchtest :)<br />
-	<img src="https://cdn.geokrety.org/images/log-icons/3/icon.jpg" alt="Kommentar"  /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/2.png" alt="Kommentar"  /></li>
-
-	<li><strong>Archivieren</strong> - wenn Dein GeoKret seine Reise für immer beendet (z.B. seine Mission erfüllt hat oder gestohlen wurde).<br />
-	<img src="https://cdn.geokrety.org/images/log-icons/4/icon.jpg" alt="Archiv"  /></li>
-</ul>
-
-<a id="fullysupportedwaypoints"></a><div class="rozdzial">Voll unterstützte Wegpunkte</div>
-
-<p>Du kannst den Aufenthaltsort des GeoKrets einfach durch Eingabe des Wegpunkts oder des Cachenamens angeben. Folgende Cache-Datenbanken werden voll unterstützt:</p>
-
-<table>
-<tr>
-<td><img src="https://cdn.geokrety.org/images/help/logo-oc.png" alt="oc" width="80" height="88" /></td>
-<td><img src="https://cdn.geokrety.org/images/help/logo-au.png" alt="au" width="50" height="50" /></td>
-<td><img src="https://cdn.geokrety.org/images/help/logo-ru.png" alt="" width="200" height="63" /></td>
-<td><img src="https://cdn.geokrety.org/images/help/logo-gpsgames.jpg" alt="" width="242" height="63" /></td>
-</tr>
+<table class="logtypes" style="padding:15px;">
+  <thead>
+    <tr>
+      <th style="min-width:150px;">Symbol</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/log-icons/0/0.png" alt="Ablegen" /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/0.png" alt="Ablegen" /></td>
+    <td><strong>Ich habe einen GeoKret abgelegt</strong> - wenn du einen GeoKret in einem Cache ablegst.</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/log-icons/0/1.png" alt="Mitgenommen" /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/1.png" alt="Mitgenommen" /></td>
+    <td><strong>Ich habe einen GeoKret mitgenommen</strong> - wenn du einen GeoKret aus einem Cache entnommen hast, ihn aber noch nicht<i>bald</i> in einem anderen Cache ablegen willst.</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/log-icons/0/3.png" alt="Entdeckt" /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/3.png" alt="Entdeckt" /></td>
+    <td><strong>Ich habe einen GeoKret entdeckt</strong> - wenn du einen GeoKret in einem Cache gesehen aber nicht mitgenommen hast.</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/log-icons/0/5.png" alt="Zwischenstopp" /> oder <img src="https://cdn.geokrety.org/images/log-icons/2/5.png" alt="Zwischenstopp" /></td>
+    <td><strong>Ich habe mit dem GeoKret einen Cache besucht</strong> - wenn du einen GeoKret auf eine Caching-Tour mitnimmst; dies ist als wenn du ihn ablegst und wieder nimmst - der besuchte Ort wird geloggt aber der GeoKret bleibt in deinem Inventar</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/log-icons/0/2.png" alt="Notiz" /></td>
+    <td><strong>Kommentar</strong> - wenn du einen Kommentar verfassen willst :)</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/log-icons/0/4.png" alt="Ruhezustand" /></td>
+    <td><strong>Winterschlaf / Archivierung</strong> - wenn ein GeoKret für längere Zeit verschwunden ist</td>
+  </tr>
 </table>
 
-<p>Gegenwärtig können diese Wegpunkte verarbeitet werden:</p>
+<a id="fullysupportedwaypoints"></a>
+<div class="rozdzial">Voll unterstützte Wegpunkte</div>
+
+<p>Du kannst den Aufenthaltsort des GeoKrets einfach durch Eingabe des Wegpunkts oder des Cachenamens angeben. Folgende Cache-Datenbanken werden voll unterstützt:</p>
+<p>Die Anzahl der Wegpunkte und die letzte Aktualisierung für jede Datenbank kannst du <a href="/statystyczka2.php">hier abrufen</a>.</p>
+<table>
+  <tr>
+    <td><img src="https://cdn.geokrety.org/images/help/logo-oc.png" alt="OC" width="88" height="89" /></td>
+    <td><img src="https://cdn.geokrety.org/images/help/logo-au.png" alt="AU" width="50" height="50" /></td>
+    <td><img src="https://cdn.geokrety.org/images/help/logo-ru.png" alt="" width="200" height="63" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://cdn.geokrety.org/images/help/logo-gpsgames.jpg" alt="" width="242" height="63" /></td>
+    <td><img src="https://cdn.geokrety.org/images/help/logo-geopeitus.png" alt="EE" width="165" height="40" /></td>
+    <td><img src="https://cdn.geokrety.org/images/help/logo-hu.jpg" alt="HU" width="150" height="38" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://cdn.geokrety.org/images/help/wpg.png" width="312" height="90" border="0" alt="" /></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+Aktuell werden folgende Wegpunkte unterstützt:
 <ul>
-  <li>OP.... -- OpenCaching: <a href="http://www.opencaching.pl/">Polnische Datenbank</a></li>
-	<li>OC.... -- OpenCaching: <a href="http://www.opencaching.de/">Deutsche Datenbank</a></li>
-	<li>OZ.... -- OpenCaching: <a href="http://www.opencaching.cz/">Tschechische Datenbank</a> -- gelegentliche Aktualisierung per Hand</li>
-	<li>GA.... -- <a href="http://geocaching.com.au/">GeoCaching Australia</a> -- tägliche Aktualisierung (Koordinaten, Name des Caches, Link)</li>
-	<li>TR/VI/MS/EX.... -- <a href="http://www.geocaching.su/">GeoCaching Russia</a> -- Aktualisierung per Hand (Koordinaten, Name des Caches, Link)</li>
-	<li>GE.... -- <a href="http://www.gpsgames.org/">gpsgames.org database</a> -- tägliche Aktualisierung (Koordinaten, Name des Caches, Link)</li>
+  <li>OP.... -- OpenCaching: <a href="https://www.opencaching.pl/">Polnische Datenbank</a></li>
+  <li>OC.... -- OpenCaching: <a href="http://www.opencaching.de/">Deutsche Datenbank</a></li>
+  <li>OK.... -- OpenCaching: <a href="http://www.opencaching.org.uk/">Datenbank Vereinigtes Königreich</a></li>
+  <li>OS.... -- OpenCaching: <a href="http://www.opencaching.se/">Datenbank Schweden/Norwegen</a></li>
+  <li>OB.... -- OpenCaching: <a href="http://www.opencaching.nl/">Niederländische Datenbank</a></li>
+  <li>OZ.... -- OpenCaching: <a href="http://www.opencaching.cz/">Tschechische Datenbank</a> -- Von Zeit zu Zeit manuell aktualisiert</li>
+  <li>GA.... -- <a href="http://geocaching.com.au/">GeoCaching Australien</a> -- täglich aktualisiert (Lat, Lon, Cachename, Link)</li>
+  <li>TR/VI/MS/EX.... -- <a href="http://www.geocaching.su/">GeoCaching Russland</a> -- alle zwei Stunden aktualisiert (Lat, Lon, Cachename, Link, Owner)</li>
+  <li>GE.... -- <a href="http://www.gpsgames.org/">gpsgames.org Datenbank</a> -- täglich aktualisiert (Lat, Lon, Cachename, Link)</li>
+  <li>GD.... -- <a href="http://www.gpsgames.org/">gpsgames.org GeoDashing</a> Wegpunkte (monatlich aktualisiert)</li>
+  <li>Dedizierter Name -- <a href="http://www.geopeitus.ee/">geopeitus.ee -- Estländische Datenbank</a> -- täglich aktualisiert (Lat, Llon, Cachename, Link)</li>
+  <li>GR.... -- Geocaching Rumänien -- <a href="http://geocaching.plus.ro/">Rumänische Datenbank</a> -- täglich aktualsiert</li>
+  <li>GC.... -- Geocaching Ungarn-- <a href="http://www.geocaching.hu/">Ungarische Datenbank</a> -- täglich aktualisiert</li>
+  <li>WPG -- WaypointGame -- <a href="http://wpg.alleycat.pl/">Polnisches Wegpunkt-Spiel</a> hauptsächlich zur Kartenerstellung -- täglich aktualisiert</li>
 </ul>
 
-<a id="partiallysupportedwaypoints"></a><div class="rozdzial">Teilweise unterstützte Wegpunkte</div>
+<a id="partiallysupportedwaypoints"></a>
+<div class="rozdzial">Teilweise unterstützte Wegpunkte</div>
 
-<p>Für folgende Wegpunkte kann ein entsprechender Link zum Cache erzeugt werden:</p>
+Für die unten genannten Wegpunkte können wir einen entsprechenden Link zum Cache generieren:
 <ul>
-  <li>GC.... -- GeoCaching.com</li>
-	<li>N..... -- Navicache.com</li>
+  <li>GC.... -- geocaching.com</li>
+  <li>N.... -- Navicache.com</li>
 </ul>
-<p>Vielleicht geht ja in Zukunft mehr - also gib bitte trotzdem immer den Wegpunkt an.</p>
+Zukünftig wird es vielleicht gelingen, mehr zu unterstützen. Also gib den Wegpunkt auf jeden Fall ein.
 
-<a id="locationdlagc"></a><div class="rozdzial">Logeintrag "GeoKret abgelegt" bei einem Cache von geocaching.com</div>
+<a id="locationdlagc"></a>
+<div class="rozdzial">Geokrets in einem geocaching.com Cache ablegen</div>
 
-<p>GC-Wegpunkte werden von GeoKrety nicht voll unterstützt (aufgrund der Restriktionen von Groundspeak Inc.). Dennoch können GeoKrets auch bei GC-Caches zum Einsatz kommen. Wenn Du in einem GC-Cache den "GeoKret abgelegt" hast, gibst Du im Abschnitt <strong>Neuer Ort</strong> ein:</p>
+<p>GC-Wegpunkte werden von GeoKrety nicht vollständig unterstützt (<i>Der Lizenznehmer darf die Daten nicht weiterverwerten, weiterverkaufen und/oder die Daten oder Teile der Daten in digitaler Form an einen Dritten weitergeben... <a href="https://www.geocaching.com/waypoints/agreement.aspx">aus der Wegpunkt-Lizenzvereinbarung</a></i>). Dennoch kannst du GeoKrety mit GC-Caches einfach nutzen. Es gibt zwei Möglichkeiten:</p>
+
+<ul>
+
+  <li>Der einfachste und empfohlene Weg ist unsere GeoKrety-Toolbox (GKT) zu verwenden - ein Greasemonkey-Skript (geschrieben und gewartet von <a href="'.$config['adres'].'mypage.php?userid=6262">simor</a>). Aktuell kann es in folgenden Browsern verwendet werden:
+
+    <p>- <a href="https://www.mozilla.com/firefox/">Mozilla FireFox</a> (ab Version 3.5), du benötigst auch das <a href="https://addons.mozilla.org/firefox/addon/748">Greasemonkey Add-on</a>. Installiere GKT für Firefox <b><a href="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js">hier</a></b>.</p>
+    <p>- <a href="https://www.google.com/chrome">Google Chrome</a>. Installiere GKT für Chrome <b><a href="https://chrome.google.com/extensions/detail/ldbheajkebdflbjdckojokbfdndkahnl">hier</a></b>.</p>
+
+    Du benötigst auch ein Nutzerkonto auf geokrety.org. Nach der Installation von GKT in deinem Browser, wirst du ein zusätzliches [<strong>Geo<span style="color: white; background-color: #303030;">Krety</span>.org</strong>] -Feld auf der rechten Seite jeder GC-Cacheseite finden.
+    Wählen aus der Liste der GeoKrety denjenigen aus, den du ablegen möchtest und klicke "Drop selected GK" - du wirst dann auf die Standard-Logseite geleitet, wo bereits der GC-Code und die Koordinaten ausgefüllt sind. Prüfe das Datum, füge einen Kommentar hinzu und du bist fertig. <br
+    />
+
+    <p>So sieht GKT aus:</p>
+
+    <p><img style="border: 1px solid #ccc;" src="https://cdn.geokrety.org/images/help/gkt_screenshot030_1.png" alt="GKT Screenshot" /> <img style="border: 1px solid #ccc;" src="https://cdn.geokrety.org/images/help/gkt_screenshot030_2.png" alt="GKT Screenshot"
+      /> <img style="border: 1px solid #a7d940;" src="https://cdn.geokrety.org/images/help/gkt_screenshot030_3.png" alt="GKT Screenshot" /></p>
+  </li>
+
+  <li>Manueller Weg. Gehe zu <strong><a href="ruchy.php">Einen GeoKret loggen</a></strong> und gebe unter <strong>Neuer Ort</strong> folgendes ein:
+
+    <ol>
+      <li>Gib im Feld Wegpunkt den GC-Code des Caches ein (z.B. GC1AQ2N).</li>
+      <li>Gib im Lat/Lon-Feld die Koordinaten des Caches ein (du kannst sie Kopieren & Einfügen von der Cacheseite oder die <a href="#acceptableformats">unterstützten Koordinatenformate</a> nutzen)</li>
+    </ol>
+
+    <p>Hier ist ein Beispiel:</p>
+
+    <p><img src="https://cdn.geokrety.org/images/help/location-dla-gc3.png" alt="wie man GK für GC-Caches loggt" width="787" height="824" /></p>
+  </li>
+  <li>
+    <p><b>Hinweis:</b> <a href="'.htmlspecialchars('https://forums.groundspeak.com/GC/index.php?s=8154d8ac03f5b64142fb5d1587b53c11&showtopic=232614&view=findpost&p=4083361').'">Gemäß Groundspeak</a> dürfen geocaching.com Nutzer GeoKrety nutzen und loggen ;)<br
+      /> <i>Ich habe mit Brian gesprochen, und seine endgültige Antwort war, dass es für diese 'Schurken'TBs keine Bedenken von den US-Reviewern und GS-Angestellten gibt. Wir können ihre Nutzung nicht regulieren und Geocacher dürfen GC-Codes weitergeben.</i>
+    </p>
+  </li>
+
+</ul>
+
+<a id="acceptableformats"></a>
+<div class="rozdzial">Unterstützte Koordinatenformate</div>
+
+<p>Du kannst Lat/Lon-Koordinaten in verschiedenen Formate eingeben:</p>
+<ul>
+  <li><b>Grad (DD.dddddd°)</b></li>
+  <pre>
+	52.205205 21.190891
+	52.205205/21.190891
+	N 52.205205 E 21.190891
+	+52.205205 -21.190891
+</pre>
+  <li><b>Grad, Minuten (DD°MM.mmm')</b></li>
+  <pre>
+	52 12.3123 -21 11.45345
+	N52 12.3123 W21 11.45345
+	+52 12.3123 -21 11.45345
+	N 52° 10.369' W 021° 01.542'
+</pre>
+  <li><b>Grad, Minuten, Sekunden (DD°MM'SS.s)"</b></li>
+  <pre>
+	52 12 18.74 -21 11 27.21
+	N52° 12' 18.74", W21° 11' 27.21"
+	52° 12' 18.74", -21° 11' 27.21"
+</pre>
+</ul>
+<a id="iconology"></a>
+<div class="rozdzial">Die Symbole und ihre Funktionen (Einträge bearbeiten oder löschen, Foto hinzufügen usw.)</div>
+<table class="logtypes" style="padding:15px;">
+  <thead>
+    <tr>
+      <th style="min-width:100px;">Symbol</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/icons/edit.png" alt="" width="16" height="16" /></td>
+    <td><strong>Bearbeiten</strong> - eine Mailadresse, Beschreibung, Logeintrag</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/icons/delete.png" alt="" width="16" height="16" /></td>
+    <td><strong>Löschen</strong> - einen Logeintrag, Foto oder Kommentar</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/icons/image.png" alt="" width="16" height="16" /></td>
+    <td><strong>Foto hochladen</strong> - füge eine Foto zu einem Logeintrag oder deinem Profil hinzu</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/icons/usmiech.png" alt="" width="16" height="16" /></td>
+    <td><strong>Bekannter GeoKret</strong> - du hast diesen GeoKret schon einmal geloggt, daher kannst du ihn nun auch ohne Tracking-Code loggen (er wird automatisch ausgefüllt)</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/icons/idcard.png" alt="" width="14" height="10" /></td>
+    <td><strong>Avatar</strong> - bewege die Maus über dieses Symbol um den Avatar des GeoKrets zu sehen</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/icons/comment_new16.png" alt="" width="16" height="16" /></td>
+    <td><strong>Kommentieren</strong> - du kannst einen Logeintrag oder ein News-Posting kommentieren</td>
+  </tr>
+  <tr>
+    <td class="mid"><img src="https://cdn.geokrety.org/images/icons/missing16.png" alt="" width="16" height="16" /></td>
+    <td><strong>Als vermisst melden</strong> - du kannst einen GeoKret als vermisst melden, wenn du den Cache besucht hast, wo er sein sollte, aber er nicht dort war</td>
+  </tr>
+</table>
+
+<a id="GKandCode"></a>
+<div class="rozdzial">Referenznummer und Tracking-Code</div>
+<ul>
+  <li><strong>Referenznummer</strong> z.B. GK003F. Dies ist eine<u>öffentliche</u> Nummer, die zur Referenzierung eines GeoKret genutzt werden kann. Sie besteht aus dem Präfix 'GK' und 4 Stellen im hexadezimalen System. Du kannst sie nutzen um einen bestimmten GeoKret zu suchen oder auf ihn zu verweisen. Sie ist für jeden sichtbar.</li>
+
+  <li><strong>Tracking-Code</strong> z.B. XF3ACS. Dies ist ein <u>geheimer</u>Identifizierungs-Code, welcher benötigt wird um Logeinträge wie "Mitgenommen", "Abgelegt" und weitere für einen GeoKret zu schreiben. Nur der Besitzer und Geocacher, die diesen GeoKret gefunden haben, sollten diesen Code kennen. Es wird nicht empfohlen ihn irgendwo zu veröffentlichen. Diese Code muss natürlich auf dem GeoKret vermerkt sein, damit Finder ihn loggen können.</li>
+</ul>
+
+
+
+<a id="altitude"></a>
+<div class="rozdzial">Höhe und Länderkennung</div>
+<p>Dank der Höhendaten und der Konvertierung vom Längen-/Breitengrad zum Ländercode (<a href="http://www.geonames.org/">geographische Namen</a>) von <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> und <a href="https://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html">GTOPO30</a> hat jeder Reisepunkt einen Höhen- und Ländercode (eine Flagge) zugeordnet bekommen. Gemäß dieser Daten wird das Höhenprofil gezeichnet. Die obigen Daten und Diagramme werden alle 10-15 Minuten aktualisiert.</p>
+
+
+<a id="qr"></a>
+<div class="rozdzial">QR-Code</div>
+<p>Für eine einfaches Loggen während einer Tour habe ich die Möglichkeit hinzugefügt, einen QR-Code auf dem GK-Etikett anzubringen. Ein QR-Code ist eine Art Barcode, der mit deinem Smartphone "gescannt" werden kann und dich direkt auf die richtige Seite bei geokrety.org weiterleitet, Du musst den Tracking-Code nicht eingeben, alles ist im QR-Code enthalten. <a href="https://en.wikipedia.org/wiki/QR_Code ">Erfahre mehr über QR-Codes</a>.</p>
+
+<p><img src="https://cdn.geokrety.org/images/help/qr-geokrety.png" alt="QR-Code von geokrety.org" width="132" height="132" /></p>
+<p>Der QR-Code mit der verschlüsselten Internetadresse „geokrety.org“.</p>
+
+<p><strong>Wenn du einen GeoKret mit QR-Code auf dem Etikett findet, kannst du:</strong></p>
+<p><img src="https://cdn.geokrety.org/images/help/qr-instrukcja.png" alt="Anleitung" /></p>
 
 <ol>
-  <li>Den Wegpunkt - daraufhin erscheint der Hinweis, dass der Wegpunkt nicht gefunden wurde.</li>
-	<li>Die Koordinaten des Caches - geht am bequemsten mit Kopieren & Einfügen aus der Cachebeschreibung. (<a href="#acceptableformats">mehr über zulässige Koordinatenangaben</a>)</li>
+  <li>Mach ein Foto von dem Code mit deinem Smartphone</li>
+  <li>Lass ihn entschlüsseln und klick auf die Internetadresse</li>
+  <li>Logge das Mitnehmen oder Verstecken des GeoKret. Der Tracking-Code wird durch die URL angezeigt.</li>
 </ol>
 
-<p>Ein Beispiel zur Veranschaulichung:</p>
-
-<p><img src="https://cdn.geokrety.org/images/help/de_location-dla-gc.jpg" alt="Beispiel fuer GC User" width="700" height="200" /></p>
-
-
-<a id="acceptableformats"></a><div class="rozdzial">Zulässige Koordinatenformate</div>
-
-<p>Die Koordinaten müssen das Format <strong>dd mm.mmm</strong> haben, können aber auf verschiedene Weise angegeben werden. Hier ein paar Beispiele für N 42° 19.855  E 2° 10.531 und bei gleicher Breite für W 2° 10.531</p>
-
-<img src="https://cdn.geokrety.org/images/help/latlon1a.jpg" alt="Beispiel" /> | <img src="https://cdn.geokrety.org/images/help/latlon1b.jpg" alt="Beispiel" /><br />
-<img src="https://cdn.geokrety.org/images/help/latlon2a.jpg" alt="Beispiel" /> | <img src="https://cdn.geokrety.org/images/help/latlon2b.jpg" alt="Beispiel" /><br />
-<img src="https://cdn.geokrety.org/images/help/latlon3a.jpg" alt="Beispiel" /> | <img src="https://cdn.geokrety.org/images/help/latlon3b.jpg" alt="Beispiel" /><br />
+<p><strong>Wie man dekodiert</strong></p>
+<p>Du kannst die kostenlose Software für dein Smartphone benutzen (z.B. <a href="https://f-droid.org/repository/browse/?fdid=com.google.zxing.client.android">Barcode Scanner </a>)</p>
 
 
-<a id="iconology"></a><div class="rozdzial">Icons und ihre Funktionen (Einträge bearbeiten oder löschen, Foto hinzufügen usw.)</div>
-<p>
-<img src="https://cdn.geokrety.org/images/icons/edit.png" alt="" width="16" height="16" /> = bearbeiten (E-Mail-Adresse, Beschreibung, Logeintrag)<br />
-<img src="https://cdn.geokrety.org/images/icons/delete.png" alt="" width="16" height="16" /> = löschen (Logeintrag, Foto)<br />
-<img src="https://cdn.geokrety.org/images/icons/image.png" alt="" width="16" height="16" /> = Foto hinzufügen (zur Beschreibung eines GeoKrets, zu einem bestimmten Logeintrag oder zu Deinem Benutzerprofil)<br />
-<img src="https://cdn.geokrety.org/images/icons/usmiech.png" alt="" width="16" height="16" /> = bei diesem GeoKret kannst Du Aktionen auch ohne Tracking Code durchführen<br />
-</p>
-<a id="GKandCode"></a><div class="rozdzial">Reference Number und Tracking Code</div>
+<a id="othertrackable"></a>
+<div class="rozdzial">Datenbanken anderer trackbarer Gegenstände</div>
+
+<p>Es gibt andere System für trackbare Gegenstände:</p>
 <ul>
-<li><strong>Reference Number</strong> z.B. GK003F. Dient zur eindeutigen Identifizierung
- eines GeoKrets. Besteht aus den Buchstaben "GK", gefolgt von vier Ziffern im hexadezimalen System. Du kannst sie benutzen, um einen bestimmten GeoKret zu suchen oder um einen Link zu ihm zu erstellen. Die Reference Number darf jeder wissen.</li>
-
-<li><strong>Tracking Code</strong> z.B. XF3ACS. Ein geheimer Code, der den Finder berechtigt, Logeinträge für einen bestimmten GeoKret zu erstellen. Der Tracking Code sollte deshalb nicht in Logeinträgen oder Forumsbeiträgen genannt werden
- werden und auch nicht auf veröffentlichten Bildern erkennbar sein -  aber der Code muss natürlich auf dem GeoKret-Etikett vermerkt sein.</li>
+  <li><a href="https://www.geocaching.com/track/">TravelBugs</a></li>
+  <li><s><a href="http://www.geocachearmy.com">www.geocachearmy.com</a></s></li>
+  <li><a href="http://www.geolutins.com">www.geolutins.com</a></li>
+  <li><s><a href="http://www.travelertags.com">www.travelertags.com</a></s></li>
+  <li><a href="http://www.pathtags.com">www.pathtags.com</a></li>
 </ul>
 
+<a id="privacy"></a>
+<div class="rozdzial">Schutz personenbezogener Daten</div>
 
+<p>Deine E-Mail-Adresse wird nicht an Dritte weitergegeben. Ihr Passwort ist einseitig verschlüsselt, so dass es nicht preisgegeben werden kann.</p>
 
-<a id="altitude"></a><div class="rozdzial">Höhenprofil und Länderkennung</div>
-<p>Dank <a href="http://www2.jpl.nasa.gov/srtm/">SRTM</a> und <a href="http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html">GTOPO30</a> (Höhenangaben) sowie <a href="http://www.geonames.org/">Geonames</a> (Länderkennung), können jeder Reisestation eine Höhenangabe und eine entsprechende Nationalflagge zugeordnet werden. Aus diesen Daten wird auch ein entsprechendes Höhenprofil für die Reise der GeoKrets erzeugt. Die Daten bzw. Grafiken werden alle 10-15 Minuten aktualisiert.</p>
+<a id="cookies"></a>
+<div class="rozdzial">GK Cookie-Richtlinien</div>
 
+<p>Diese Website verwendet Cookies, um einige Informationen zu speichern, die für eine komfortable Nutzung der Website erforderlich sind. Wir verwenden Cookies für: <strong>1.</strong> Speichern der Anmeldedaten (eingeloggte Benutzer überprüfen) und <strong>2.</strong> Speichern der Spracheinstellungen. Beide sind komplett harmlos. Das war‘s! :)</p>
 
- <a id="qr"></a><div class="rozdzial">QR Code</div>
-<p>Ein QR Code erspart einem das fummelige Eintippen der Webadresse und des Tracking Codes, falls man mal einen GeoKret unterwegs per Internet-Handy loggen möchte. Mit Hilfe der Handykamera und spezieller Software wird der QR Code direkt ins Handy "gescannt" und entschlüsselt. Im Ergebnis erhälst Du einen Link, der direkt zur passenden GeoKret-Seite führt.<a href="http://de.wikipedia.org/wiki/QR_Code">Mehr über QR Codes in Wikipedia</a>.</p>
+<p>Wie auch immer, wenn du willst, kannst du deine Cookie-Einstellungen <a href="https://www.aboutcookies.org/Default.aspx?page=1">jederzeit in deinem Browser</a> ändern.</p>
 
-<p>So sieht z.B. ein QR Code mit der verschlüsselten Webadresse von geokrety.org aus:</p>
-<p><img src="https://cdn.geokrety.org/images/help/qr-geokrety.png" alt="QR Code für geokrety.org" width="132" height="132" /></p>
+<a id="https"></a>
+<div class="rozdzial">HTTPS und SSL</div>
 
-<p><strong>Also, was kannst Du jetzt machen, wenn Du einen GeoKret mit einem QR Code gefunden hast?</strong></p>
-<p><img src="https://cdn.geokrety.org/images/help/qr-instrukcja.png" alt="instrukcja"  /></p>
+<p>Du kannst eine sichere Verbindung (https) mit unserem Server verwenden: <a href="https://geokrety.org">https://geokrety.org</a> oder benutze das Vorhängeschloss-Symbol unten auf der Seite.</p>
 
-<ol>
-  <li>Starte den QR Code Reader und "scanne" den QR Code.</li>
-	<li>Starte eine Verbindung zur angezeigten Webadresse.</li>
-	<li>Du kannst nun direkt Deinen Logeintrag verfassen. Der Tracking Code wurde bereits mit dem Aufruf der Webadresse übergeben.</li>
-</ol>
+<a id="morehelp"></a>
+<div class="rozdzial">Benötigst du weitere Hilfe?</div>
 
-<p><strong>Welche Software brauche ich um QR Codes zu "scannen"?</strong></p>
-<p>Sogenannte QR Code Reader gibt es kostenlos für fast alle neueren Handymodelle, z.B. <a href="http://www.getjar.com/products/16659/inigma">i-nigma</a> oder <a href="http://www.getjar.com/products/7361/KaywaReader">Kaywa Reader</a></p>
-
-
-<a id="privacy"></a><div class="rozdzial">Schutz personenbezogener Daten</div>
-
-<p>Deine E-Mail-Afresse wird nicht an Dritte weitergegeben. Dein Passwort ist durch eine Einweg-Verschlüsselung geschützt.</p>
-<p>GeoKrets, Logeinträge und Fotos werden als nicht-personenbezogene Daten auch Dritten zugänglich gemacht.</p>
-
-
-<a id="morehelp"></a><div class="rozdzial">Noch Fragen offen?</div>
-
-<p>Weitere Hilfestellung zum Thema "GeoKrety" findest Du in folgenden Foren:</p>
+<p>Für mehr Hilfe für GeoKrety besuche die Foren:</p>
 <ul>
-	<li><a href="http://forum.opencaching.pl/viewforum.php?f=11">Forum opencaching.pl (Polnisch, Englisch)</a></li>
-  <li><a href="http://www.geoclub.de/viewforum.php?f=102">GeoClub (Deutsch)</a></li>
+  <li><a href="https://forum.opencaching.pl/viewforum.php?f=11">Forum opencaching.pl (Polnisch, Englisch)</a></li>
+  <li><a href="https://www.geoclub.de/viewforum.php?f=102">GeoClub (Deutsch)</a></li>
 </ul>
-
-
 
 <!-- tresc -->

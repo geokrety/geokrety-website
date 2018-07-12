@@ -160,6 +160,10 @@ if ($speedtest_konkret_tabelka) {
 }
 
 $i = $pokaz_od;
+
+$konkretLogsCount = 0;
+//$konkretLogs[];
+
 if ($result) {
     while ($row = mysqli_fetch_array($result)) {
         ++$lp;
@@ -170,7 +174,9 @@ if ($result) {
         if (!empty($ruch_username)) {
             $ruch_user = "<span class='userA'>$ruch_username</span>";
         } else {
+            $ruch_username = $ruch_user;
             $ruch_user = "<a href='mypage.php?userid=$ruch_userid'>$ruch_user</a>";
+            $ruch_userurl = 'mypage.php?userid='.$ruch_userid;
         }
 
         $opislogu = $cotozalog[$logtype];
@@ -304,7 +310,11 @@ if ($result) {
         // <td></td>
         // </tr>';
         // }
-
+        /*******************************************************************************************************************************************/
+        $konkretLogs[$konkretLogsCount]['author'] = $ruch_username;
+        $konkretLogs[$konkretLogsCount]['authorUrl'] = $ruch_userurl;
+        $konkretLogs[$konkretLogsCount]['dateCreated'] = $data;
+        $konkretLogs[$konkretLogsCount]['text'] = $koment;
         $TABELKA .= "<a name='log$ruch_id'></a><table class='kretlogi' style=\"border-collapse: inherit;\">
 	<tr class='spacer'><td colspan='3'></td></tr>
 	<tr class='light toprow' >
@@ -403,6 +413,7 @@ if ($result) {
         if ($logtype != '2') {
             ++$i;
         }
+        ++$konkretLogsCount;
     }
 }
 if ($speedtest_konkret_tabelka) {

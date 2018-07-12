@@ -23,15 +23,18 @@ while test $# -gt 0; do
 
     echo "$0 $current using checkCommand:${checkCommand}"
 
-    for file in `find . -type f -not \( -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' \) \( -name '*.php' -o -name '*.js' -o -name '*.html' -o -name '*.txt' -o -name '*.css' -o -name '*.xml' \)` ; do
+    for file in `find . -type f -not \( -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' -o -path './.git/*' -o -path './vars/*' -o -path './website/templates/qr2/data/*' \) -exec grep -Iq . {} \; -and -print`; do
         if [ "$checkCommand" == "isutf8" ]; then
             RESULTS=`isutf8 "$file"`
         else
-            RESULTS=`file -i "$file" |grep -i utf-8 1>/dev/null`
+            if [ "$(tr -d \\000-\\177 < $file | wc -c)" != "0" ]; then
+                RESULTS=`file -i "$file" |grep -iv utf-8`
+            fi
         fi
 
         if [ -n "$RESULTS" ] ; then
             echo $RESULTS
+            unset RESULTS
             error=true
         fi
     done

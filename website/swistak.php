@@ -2,8 +2,7 @@
 
 require 'templates/konfig.php';
 
-class swistak
-{
+class swistak {
     private static $key = SWISTAK_KEY;
     private static $iv32 = SWISTAK_IV32;
 
@@ -12,16 +11,14 @@ class swistak
 
     private static $algorithm = MCRYPT_RIJNDAEL_128;
 
-    public static function safe_b64encode($data)
-    {
+    public static function safe_b64encode($data) {
         $data = base64_encode($data);
         $data = str_replace(array('+', '/', '='), array('-', '_', ''), $data);
 
         return $data;
     }
 
-    public static function safe_b64decode($data)
-    {
+    public static function safe_b64decode($data) {
         $data = str_replace(array('-', '_'), array('+', '/'), $data);
         $mod4 = strlen($data) % 4;
         if ($mod4) {
@@ -33,8 +30,7 @@ class swistak
 
     // max_repeat_chars - ile razy moze sie powtorzyc jakis znak  (np dla wartosci 0 i alfabetu 'ABCD', nigy nie uzyskamy ciagu 'AABC' i nigdy ciag nie bedzie dluzszy od alfabetu)
 
-    public static function getRandomString($length, $max_repeat_chars = 2, $alphabet = '')
-    {
+    public static function getRandomString($length, $max_repeat_chars = 2, $alphabet = '') {
         if (empty($alphabet)) {
             $alphabet = self::$alphabet_full;
         }
@@ -45,8 +41,7 @@ class swistak
         return substr(str_shuffle($alphabet), 0, $length);
     }
 
-    private static function haszuj($data, $raw = true)
-    {
+    private static function haszuj($data, $raw = true) {
         return md5($data, $raw);
     }
 
@@ -54,8 +49,7 @@ class swistak
     // hash_length - dlugosc hasha dolaczona do wiadomosci. max to 16 bajtow bo jest to wartosc 'raw'.
     // *** nalezy pamietac ze jezeli podamy inne wartosci tych parametrow, to przy rozwijaniu musimy rowniez uzyc tych samych wartosci (!)
 
-    public static function zawin($data, $iv_length = 4, $hash_length = 4)
-    {
+    public static function zawin($data, $iv_length = 4, $hash_length = 4) {
         if (!$data) {
             return false;
         }
@@ -69,8 +63,7 @@ class swistak
         return $iv_prefix.$b64;
     }
 
-    public static function rozwin($data, $iv_length = 4, $hash_length = 4)
-    {
+    public static function rozwin($data, $iv_length = 4, $hash_length = 4) {
         if (!$data) {
             return false;
         }

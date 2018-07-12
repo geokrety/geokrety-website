@@ -1,7 +1,6 @@
 <?php
 
-function days_ago($somedate)
-{
+function days_ago($somedate) {
     //how many days since somedate, a little more complicated to be able to use words like today & yesterday correctly.
     $gd_now = getdate(strtotime(date('Y-m-d')));
     $gd_last = getdate(strtotime($somedate));

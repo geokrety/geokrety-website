@@ -28,7 +28,7 @@ docker-compose -version 2>&1 1>/dev/null || dockerNeeded
 DOCKERMACHINE_VERSION=$(docker-machine -version)
 
 if ! docker-machine ls | grep -i Running | grep --quiet $MACHINE ; then
-	die " * no docker machine $MACHINE, please install it."
+	die " X no docker machine $MACHINE, please install it."
 fi
 
 echo " * Load env for $MACHINE docker machine"
@@ -57,22 +57,77 @@ function alternate_scp {
 	scp.exe $SSHOPTS -o Port=$SSHPORT -o IdentityFile="$SSHIDFILE" -q -r $1 docker@127.0.0.1:$2|| die "Unable to scp $1 (to machine $MACHINE:$2)"
 }
 
-echo " * Copy docker resources (config and website)"
-docker-machine scp $SCPQUIET -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/configs" "./"
-docker-machine scp $SCPQUIET -r website $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "website" "./"
+if [ -d "../geokrety-scripts" ] && [ "$1" == "scripts" ]; then
+	echo " * Copy docker resources (geokrety-scripts)"
+	docker-machine ssh $MACHINE 'rm -rf geokrety-scripts'
+	docker-machine scp $SCPQUIET -r ../geokrety-scripts $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "../geokrety-scripts" "."
 
-echo " * Convert machine resources (using dos2unix)"
-docker-machine ssh $MACHINE 'find website/ -type f -exec dos2unix {} \;'  || die "Unable to convert resources"
+	echo " * Convert machine resources (using dos2unix)"
+	docker-machine ssh $MACHINE 'find geokrety-scripts/ -type f -exec dos2unix {} \;'  || die "Unable to convert resources"
 
-echo " * Copy website to geokrety container"
-docker-machine ssh $MACHINE 'docker cp website geokrety:/var/www/html 1>&2 2>/dev/null'
-docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/website 1>&2 2>/dev/null'
+	echo " * Copy geokrety-scripts to geokrety container"
+	docker-machine ssh $MACHINE 'docker exec geokrety rm -rf /opt/geokrety-scripts'
+	docker-machine ssh $MACHINE 'docker exec geokrety mkdir -p /opt/geokrety-scripts'
+	docker-machine ssh $MACHINE 'docker cp geokrety-scripts geokrety:/opt'
 
-export GK_IP=$(docker-machine ip $MACHINE)
-export COMPOSE_CONVERT_WINDOWS_PATHS=1
+	alias wpupd="dm ssh geokrety 'docker exec --workdir /opt/geokrety-scripts/waypointy/oc geokrety php xml2sql.php'"
+	alias wptrans='dm ssh geokrety '\''docker exec --workdir /opt/geokrety-scripts/waypointy/oc geokrety php waypointy-translations.php'\'''
+	alias phplogs='dm ssh geokrety '\''docker exec geokrety cat /tmp/PHP_errors.log'\'''
+	alias phplogsf='dm ssh geokrety '\''docker exec geokrety tail -f /tmp/PHP_errors.log'\'''
+	# example
+	# wptrans report
+	# wptrans generate > website/templates/waypointy-translations.html
 
-echo " * Docker compose ($WIN_COMPOSE_FILE)"
-docker-compose -f $WIN_COMPOSE_FILE up -d --force-recreate || die "compose error"
+elif [ "$1" == "onefile" ]; then
+
+	if [ ! -f "./website/$2" ]; then
+	  die "unable to locate ./website/$2"
+	fi
+	echo "update one file website/$2 ..."
+	docker-machine ssh $MACHINE "mkdir -p website/"
+	docker-machine scp ./website/$2 $MACHINE:website/$2 2>/dev/null 1>/dev/null || alternate_scp "./website/$2" "website/$2"
+	echo "... to container"
+	docker-machine ssh $MACHINE "docker cp website/$2 geokrety:/var/www/html/$2"
+	echo "done"
+	exit 0
+
+elif [ "$1" == "rights" ]; then
+	# avoid read-only error
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/templates/compile'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/templates/cache'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/templates/htmlpurifier'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/obrazki'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/obrazki-dowonu'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/obrazki-male'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/mapki'
+	docker-machine ssh $MACHINE 'docker exec geokrety mkdir -p /var/www/html/mapki/map /var/www/html/mapki/gpx /var/www/html/mapki/csv'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/mapki'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/statpics'
+	docker-machine ssh $MACHINE 'docker exec geokrety mkdir -p /var/www/html/statpics/wzory'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/html/statpics'
+
+else
+	echo " * Copy docker resources (config and website)"
+	docker-machine scp $SCPQUIET -r docker/configs $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "docker/configs" "."
+	docker-machine scp $SCPQUIET -r website $MACHINE: 2>/dev/null 1>/dev/null || alternate_scp "website" "."
+
+	echo " * Convert machine resources (using dos2unix)"
+	docker-machine ssh $MACHINE 'find website/ -type f -exec dos2unix {} \;'  || die "Unable to convert resources"
+
+	echo " * Copy website to geokrety container"
+	docker-machine ssh $MACHINE 'docker cp website geokrety:/var/www/html 1>&2 2>/dev/null'
+	docker-machine ssh $MACHINE 'docker exec geokrety chown -R www-data /var/www/website 1>&2 2>/dev/null'
+
+	export GK_IP=$(docker-machine ip $MACHINE)
+	export COMPOSE_CONVERT_WINDOWS_PATHS=1
+
+	echo " * Docker compose ($WIN_COMPOSE_FILE)"
+	docker-compose -f $WIN_COMPOSE_FILE up -d --force-recreate || die "compose error"
+
+fi
 
 echo " * machine $MACHINE updated:"
 echo " geokrety | http://${GK_IP}/"
+
+echo " geokrety project alias : "
+alias |grep geokrety

@@ -40,8 +40,7 @@ function find_match($curlscore, $curcscore, $curgtlang, $langval, $charval,
     return array($curlscore, $curcscore, $curgtlang);
 }
 
-function al2gt($gettextlangs)
-{
+function al2gt($gettextlangs) {
     /* default to "everything is acceptable", as RFC2616 specifies */
     $acceptLang = (($_SERVER['HTTP_ACCEPT_LANGUAGE'] == '') ? '*' :
     $_SERVER['HTTP_ACCEPT_LANGUAGE']);

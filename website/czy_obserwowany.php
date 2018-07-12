@@ -2,8 +2,7 @@
 
 // sprawdza obserwacje geokreta ݦⳳߟ śćńółź
 // $userid=$longin_status['userid'];
-function czy_obserwowany($id, $userid)
-{
+function czy_obserwowany($id, $userid) {
     include 'templates/konfig.php';
 
     //if(!function_exists(longin_chceck)) include("longin_chceck.php");

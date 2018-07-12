@@ -2,6 +2,21 @@
 GIT_COMMIT := $(shell git rev-parse --short HEAD)
 
 
+buildboly38:
+	docker-compose -f docker-compose.boly38.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT) geokrety-boly38
+
+startboly38: buildboly38
+	docker-compose -f docker-compose.boly38.yml --project-name=gk-boly38 up -d geokrety-boly38
+
+stopboly38:
+	docker-compose -f docker-compose.boly38.yml --project-name=gk-boly38 down
+
+updateboly38: buildboly38
+	docker-compose -f docker-compose.boly38.yml --project-name=gk-boly382 up -d geokrety-boly38
+	docker-compose -f docker-compose.boly38.yml --project-name=gk-boly38 up -d geokrety-boly38
+	docker-compose -f docker-compose.boly38.yml --project-name=gk-boly382 down
+
+
 builddev:
 	docker-compose -f docker-compose.dev.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT) geokrety-dev
 

@@ -5,8 +5,7 @@ parametr sql_limit np "LIMIT 5"
 simor
 */
 
-function recent_pictures($sql_limit = '', $sql_where = '')
-{
+function recent_pictures($sql_limit = '', $sql_where = '') {
     require 'templates/konfig.php';
     $link = DBConnect();
 

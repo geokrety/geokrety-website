@@ -1,9 +1,11 @@
 <?php
 
+//
+// @deprecated : please use lib/Waypointy.class.php instead, cf. szukaj-ajax.php for usage example
+//
 // seeks waypoint in the database and returns details
 
-function waypoint_info($waypoint)
-{
+function waypoint_info($waypoint) {
     if ($waypoint != '' and !empty($waypoint) and strlen($waypoint) > 4) {
         $waypoint = strtoupper($waypoint);
         $prefiks = substr($waypoint, 0, 2);
@@ -42,7 +44,7 @@ function waypoint_info($waypoint)
             // ---------------- dodajemy linki do innych waypointów ------------------- //
             if (in_array($prefiks, $prefiksy_inne)) {    // if cache is from other, known network
                 if ($prefiks == 'GC') {
-                    $row[5] = "http://www.geocaching.com/seek/cache_details.aspx?wp=$waypoint";
+                    $row[5] = GEOCACHING_CACHE_WP.$waypoint;
                 } elseif (in_array($prefiks_1, $prefiksy_inne_1)) {    // if cache is from Navicache (N....)()
                     if ($prefiks_1 == 'N') {
                         $row[5] = 'http://www.navicache.com/cgi-bin/db/displaycache2.pl?CacheID='.hexdec(substr($waypoint, 1, 10));

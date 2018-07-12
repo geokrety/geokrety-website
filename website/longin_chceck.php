@@ -1,7 +1,6 @@
 <?php
 
-function longin_chceck()
-{
+function longin_chceck() {
     $ERR = '';
 
     if (!empty($_COOKIE['geokret0'])) {

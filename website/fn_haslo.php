@@ -32,8 +32,7 @@ if (!function_exists(haslo_koduj)) {
 
     // tworzy hasz hasła
 
-    function haslo_koduj($haslo)
-    {
+    function haslo_koduj($haslo) {
         global $t_hasher;
         global $config;
         $t_hasher = new PasswordHash(11, false);   // 11 - wartość na tyle duża, żeby nie było za szybko
@@ -41,8 +40,7 @@ if (!function_exists(haslo_koduj)) {
     }
 
     // porownuje hasło z haszem z bazy danych i zwraca wartość logiczną TRUE jeśli ok
-    function haslo_sprawdz($haslo, $hash)
-    {
+    function haslo_sprawdz($haslo, $hash) {
         global $t_hasher;
         global $config;
         $t_hasher = new PasswordHash(11, false);   // 11 - wartość na tyle duża, żeby nie było za szybko

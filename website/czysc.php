@@ -1,7 +1,6 @@
 <?php
 
-function longlinewrap($str, $maxLength = 45, $char = ' ')
-{
+function longlinewrap($str, $maxLength = 45, $char = ' ') {
     $wordEndChars = array(' ', "\n", "\r", "\f", "\v", "\0");
     $count = 0;
     $newStr = '';
@@ -36,8 +35,7 @@ function longlinewrap($str, $maxLength = 45, $char = ' ')
     return $newStr;
 }
 
-function czysc($string)
-{
+function czysc($string) {
     include 'templates/konfig.php';
     $link = DBConnect();
 
@@ -68,8 +66,7 @@ function czysc($string)
 // return mysqli_real_escape_string($link, $string);
 // }
 
-function parse_bbcode($string)
-{
+function parse_bbcode($string) {
     include 'templates/konfig.php';
     $link = DBConnect();
 

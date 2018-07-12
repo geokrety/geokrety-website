@@ -10,8 +10,7 @@ if (count($_GET) == 0) {
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
-function aktualizuj_ilosc_komentarzy_dla_newsa($news_id)
-{
+function aktualizuj_ilosc_komentarzy_dla_newsa($news_id) {
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];
@@ -25,8 +24,7 @@ function aktualizuj_ilosc_komentarzy_dla_newsa($news_id)
 	WHERE ns.news_id='$news_id'";
     $db->exec_num_rows($sql, $num_rows, 0);
 }
-function aktualizuj_ostatni_komentarz_dla_newsa($news_id)
-{
+function aktualizuj_ostatni_komentarz_dla_newsa($news_id) {
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];

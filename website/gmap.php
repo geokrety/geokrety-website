@@ -2,15 +2,13 @@
 
 // for google maps śćńół
 
-function gmap($lat, $lon, $opisy, $rysuj_linie = 1)
-{
+function gmap($lat, $lon, $opisy, $rysuj_linie = 1) {
     require 'templates/konfig.php';
 
     // $latlon -- array of lat, lon series, $opisy -- array with descriptons
 
     $licznik = 0;
-    function dodaj_punkt($punkt, $opis, $ikonka, $licznik)
-    {
+    function dodaj_punkt($punkt, $opis, $ikonka, $licznik) {
         // generates map points
         $return = 'var punkt = new GLatLng('.$punkt.');
 
