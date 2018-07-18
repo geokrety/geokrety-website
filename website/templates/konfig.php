@@ -79,6 +79,20 @@ $config['cdn_js'] = $config['cdn_url'].'/js';
 $config['cdn_css'] = $config['cdn_url'].'/css';
 $config['cdn_maps'] = $config['cdn_url'].'/maps';
 
+define('CONFIG_CDN', $config['cdn_url']);
+define('CONFIG_CDN_IMAGES', $config['cdn_images']);
+define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
+define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
+define('CONFIG_CDN_ICONS', $config['cdn_icons']);
+define('CONFIG_CDN_LOG_ICONS', $config['cdn_log_icons']);
+define('CONFIG_CDN_PINS_ICONS', $config['cdn_pins']);
+define('CONFIG_CDN_API_ICONS', $config['cdn_api_icon_16']);
+define('CONFIG_CDN_COUNTRY_FLAGS', $config['cdn_country_codes']);
+define('CONFIG_CDN_LIBRARIES', $config['cdn_libraries']);
+define('CONFIG_CDN_JS', $config['cdn_js']);
+define('CONFIG_CDN_CSS', $config['cdn_css']);
+define('CONFIG_CDN_MAPS', $config['cdn_maps']);
+
 //js
 $config['funkcje.js'] = '/funkcje.js';
 $config['ajaxtooltip.js'] = CONFIG_CDN_LIBRARIES.'/ajaxtooltip/ajaxtooltip-1.min.js';
@@ -177,51 +191,9 @@ $cotozakret['2'] = _('A human');
 $cotozakret['3'] = _('A coin');
 $cotozakret['4'] = _('KretyPost');
 
-$config['gk_social_groups'] = array();
-$config['gk_social_groups'][0] = [
-    'link' => _('group link'),
-    'service' => _('group service'),
-    'title' => _('group name'),
-    'lang' => _('languages'),
-    'flag' => _('flag'),
-];
-$config['gk_social_groups'][1] = [
-    'link' => 'https://www.facebook.com/groups/1624761011150615/about/',
-    'service' => 'Facebook',
-    'title' => 'GeoKret en France',
-    'lang' => 'french',
-    'flag' => 'fr',
-];
-$config['gk_social_groups'][2] = [
-    'link' => 'https://www.facebook.com/groups/317897208552636/about/',
-    'service' => 'Facebook',
-    'title' => 'GeoCaching met GeoKrety.Org',
-    'lang' => 'dutch',
-    'flag' => 'de',
-];
-$config['gk_social_groups'][3] = [
-    'link' => 'https://plus.google.com/communities/100975961916549394786',
-    'service' => 'Google+',
-    'title' => 'GeoKrety Discussion',
-    'lang' => 'dutch, english',
-    'flag' => 'de',
-];
-$config['gk_social_groups'][4] = [
-    'link' => 'https://forum.opencaching.pl/viewforum.php?f=11',
-    'service' => 'Opencaching Poland',
-    'title' => 'geokrety',
-    'lang' => 'polska',
-    'flag' => 'pl',
-];
-$config['gk_social_groups'][5] = [
-    'link' => 'https://geoclub.de/forum/viewforum.php?f=102',
-    'service' => 'geoclub.de forum',
-    'title' => 'Geokrety',
-    'lang' => 'dutch',
-    'flag' => 'de',
-];
-
 $config_ile_wzorow_banerkow = 9;    // ile wzorأ³w banerkأ³w ze statystykami
+
+@require dirname(__FILE__).'/konfig-groups.php';
 
 @require dirname(__FILE__).'/konfig-local.php';
 //this is important, because we may include konfig.php from other directory like /a/b/c/test.php
@@ -269,20 +241,6 @@ if (!function_exists('DBConnect')) {
         return $link;
     }
 }
-
-define('CONFIG_CDN', $config['cdn_url']);
-define('CONFIG_CDN_IMAGES', $config['cdn_images']);
-define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
-define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
-define('CONFIG_CDN_ICONS', $config['cdn_icons']);
-define('CONFIG_CDN_LOG_ICONS', $config['cdn_log_icons']);
-define('CONFIG_CDN_PINS_ICONS', $config['cdn_pins']);
-define('CONFIG_CDN_API_ICONS', $config['cdn_api_icon_16']);
-define('CONFIG_CDN_COUNTRY_FLAGS', $config['cdn_country_codes']);
-define('CONFIG_CDN_LIBRARIES', $config['cdn_libraries']);
-define('CONFIG_CDN_JS', $config['cdn_js']);
-define('CONFIG_CDN_CSS', $config['cdn_css']);
-define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
 define('SWISTAK_IV32', $config['swistak_iv32']);

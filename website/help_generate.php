@@ -20,26 +20,9 @@ if (!in_array($jezyk, ['en', 'cz', 'de', 'fr', 'hu', 'pl', 'ru', 'sk'])) {
 
 $TRESC = file_get_contents("help/$jezyk/help.html");
 
-$socialGroups = $config['gk_social_groups'];
+$socialGroups = new \Geokrety\View\SocialGroups($config['gk_social_groups']);
 
-$groupsTable = '<table style="padding:15px;" cellpadding="10">'
-               .'<thead><tr>'
-               .'<th>'.$socialGroups[0]['lang'].'</th>'
-               .'<th>'.$socialGroups[0]['service'].'</th>'
-               .'<th>'.$socialGroups[0]['title'].'</th>'
-               .'</tr></thead>'
-               .'<tbody>';
-for ($i = 1; $i < count($socialGroups); ++$i) {
-    $groupsTable .= '<tr>'
-                   .'<td style="padding:4px;"><img src="https://cdn.geokrety.org/images/country-codes/'
-                   .$socialGroups[$i]['flag']
-                   .'.png"/>'
-                   .'&#160;'.$socialGroups[$i]['lang'].'</td>'
-                   .'<td>'.$socialGroups[$i]['service'].'</td>'
-                   .'<td><a href="'.$socialGroups[$i]['link'].'">'.$socialGroups[$i]['title'].'</td>'
-                   .'</tr>';
-}
-    $groupsTable .= '</tbody></table>';
+$groupsTable = $socialGroups->toHtmlTable();
 
 // replace #GK_SOCIAL_GROUPS# with table of social groups
 $TRESC = str_replace('#GK_SOCIAL_GROUPS#', "$groupsTable", $TRESC);
