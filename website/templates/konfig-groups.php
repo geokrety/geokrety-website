@@ -47,3 +47,10 @@ $config['gk_social_groups'][5] = [
     'lang' => 'german',
     'flag' => 'de',
 ];
+$config['gk_social_groups'][6] = [
+    'link' => 'https://forum.opencaching.nl/viewforum.php?f=33',
+    'service' => 'Opencaching Benelux',
+    'title' => 'GeoKrety',
+    'lang' => 'dutch',
+    'flag' => 'nl',
+];
