@@ -24,14 +24,14 @@ $config['gk_social_groups'][2] = [
     'service' => 'Facebook',
     'title' => 'GeoCaching met GeoKrety.Org',
     'lang' => 'dutch',
-    'flag' => 'de',
+    'flag' => 'nl',
 ];
 $config['gk_social_groups'][3] = [
     'link' => 'https://plus.google.com/communities/100975961916549394786',
     'service' => 'Google+',
     'title' => 'GeoKrety Discussion',
-    'lang' => 'dutch, english',
-    'flag' => 'de',
+    'lang' => 'dutch, english, german',
+    'flag' => 'en',
 ];
 $config['gk_social_groups'][4] = [
     'link' => 'https://forum.opencaching.pl/viewforum.php?f=11',
@@ -44,6 +44,13 @@ $config['gk_social_groups'][5] = [
     'link' => 'https://geoclub.de/forum/viewforum.php?f=102',
     'service' => 'geoclub.de forum',
     'title' => 'Geokrety',
-    'lang' => 'dutch',
+    'lang' => 'german',
     'flag' => 'de',
+];
+$config['gk_social_groups'][6] = [
+    'link' => 'https://forum.opencaching.nl/viewforum.php?f=33',
+    'service' => 'Opencaching Benelux',
+    'title' => 'GeoKrety',
+    'lang' => 'dutch',
+    'flag' => 'nl',
 ];
