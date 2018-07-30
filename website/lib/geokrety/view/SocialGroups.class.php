@@ -30,9 +30,9 @@ class SocialGroups {
                    .'<tbody>';
         for ($i = 1; $i < count($this->socialGroups); ++$i) {
             $groupsTable .= '<tr>'
-                       .'<td style="padding:4px;"><img src="https://cdn.geokrety.org/images/country-codes/'
+                       .'<td style="padding:4px;"><span class="flag-icon flag-icon-'
                        .$this->socialGroups[$i]['flag']
-                       .'.png"/>'
+                       .'"></span>'
                        .'&#160;'.$this->socialGroups[$i]['lang'].'</td>'
                        .'<td>'.$this->socialGroups[$i]['service'].'</td>'
                        .'<td><a href="'.$this->socialGroups[$i]['link'].'">'.$this->socialGroups[$i]['title'].'</td>'
