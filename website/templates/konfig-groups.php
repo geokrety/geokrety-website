@@ -31,7 +31,7 @@ $config['gk_social_groups'][3] = [
     'service' => 'Google+',
     'title' => 'GeoKrety Discussion',
     'lang' => 'dutch, english, german',
-    'flag' => 'en',
+    'flag' => 'gb',
 ];
 $config['gk_social_groups'][4] = [
     'link' => 'https://forum.opencaching.pl/viewforum.php?f=11',
