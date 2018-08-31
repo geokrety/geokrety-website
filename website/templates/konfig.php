@@ -79,6 +79,20 @@ $config['cdn_js'] = $config['cdn_url'].'/js';
 $config['cdn_css'] = $config['cdn_url'].'/css';
 $config['cdn_maps'] = $config['cdn_url'].'/maps';
 
+define('CONFIG_CDN', $config['cdn_url']);
+define('CONFIG_CDN_IMAGES', $config['cdn_images']);
+define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
+define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
+define('CONFIG_CDN_ICONS', $config['cdn_icons']);
+define('CONFIG_CDN_LOG_ICONS', $config['cdn_log_icons']);
+define('CONFIG_CDN_PINS_ICONS', $config['cdn_pins']);
+define('CONFIG_CDN_API_ICONS', $config['cdn_api_icon_16']);
+define('CONFIG_CDN_COUNTRY_FLAGS', $config['cdn_country_codes']);
+define('CONFIG_CDN_LIBRARIES', $config['cdn_libraries']);
+define('CONFIG_CDN_JS', $config['cdn_js']);
+define('CONFIG_CDN_CSS', $config['cdn_css']);
+define('CONFIG_CDN_MAPS', $config['cdn_maps']);
+
 //js
 $config['funkcje.js'] = '/funkcje.js';
 $config['ajaxtooltip.js'] = CONFIG_CDN_LIBRARIES.'/ajaxtooltip/ajaxtooltip-1.min.js';
@@ -179,6 +193,8 @@ $cotozakret['4'] = _('KretyPost');
 
 $config_ile_wzorow_banerkow = 9;    // ile wzorأ³w banerkأ³w ze statystykami
 
+@require dirname(__FILE__).'/konfig-groups.php';
+
 @require dirname(__FILE__).'/konfig-local.php';
 //this is important, because we may include konfig.php from other directory like /a/b/c/test.php
 //in that case it is safest if we point to konfig-local using full path using dirname(__FILE__).
@@ -225,20 +241,6 @@ if (!function_exists('DBConnect')) {
         return $link;
     }
 }
-
-define('CONFIG_CDN', $config['cdn_url']);
-define('CONFIG_CDN_IMAGES', $config['cdn_images']);
-define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
-define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
-define('CONFIG_CDN_ICONS', $config['cdn_icons']);
-define('CONFIG_CDN_LOG_ICONS', $config['cdn_log_icons']);
-define('CONFIG_CDN_PINS_ICONS', $config['cdn_pins']);
-define('CONFIG_CDN_API_ICONS', $config['cdn_api_icon_16']);
-define('CONFIG_CDN_COUNTRY_FLAGS', $config['cdn_country_codes']);
-define('CONFIG_CDN_LIBRARIES', $config['cdn_libraries']);
-define('CONFIG_CDN_JS', $config['cdn_js']);
-define('CONFIG_CDN_CSS', $config['cdn_css']);
-define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
 define('SWISTAK_IV32', $config['swistak_iv32']);

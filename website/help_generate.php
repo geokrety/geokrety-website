@@ -20,6 +20,13 @@ if (!in_array($jezyk, ['en', 'cz', 'de', 'fr', 'hu', 'pl', 'ru', 'sk'])) {
 
 $TRESC = file_get_contents("help/$jezyk/help.html");
 
+$socialGroups = new \Geokrety\View\SocialGroups($config['gk_social_groups']);
+
+$groupsTable = $socialGroups->toHtmlTable();
+
+// replace #GK_SOCIAL_GROUPS# with table of social groups
+$TRESC = str_replace('#GK_SOCIAL_GROUPS#', "$groupsTable", $TRESC);
+
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //
 // ----------------------------------------------JSON-LD---------------------------
 $gkName = 'geokrety.org';
