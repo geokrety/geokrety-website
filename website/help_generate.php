@@ -14,7 +14,7 @@ $HEAD .= '<style type="text/css">.logtypes TD{padding:5px; vertical-align: middl
 </style>';
 
 $jezyk = strtolower($_GET['help']); // w jamim języku ma być help?
-if (!in_array($jezyk, ['en', 'cz', 'de', 'fr', 'hu', 'pl', 'ru', 'sk'])) {
+if (!in_array($jezyk, ['en', 'cz', 'de', 'fr', 'hu', 'pl', 'ru', 'sk', 'it'])) {
     die;
 }
 
