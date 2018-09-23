@@ -234,7 +234,7 @@ CREATE TABLE `gk-news` (
   `czas_postu` datetime NOT NULL,
   `tytul` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `tresc` mediumtext COLLATE utf8_polish_ci,
-  `who` varchar(20) COLLATE utf8_polish_ci NOT NULL,
+  `who` varchar(80) COLLATE utf8_polish_ci NOT NULL,
   `userid` int(10) NOT NULL,
   `komentarze` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `ostatni_komentarz` datetime DEFAULT NULL
@@ -903,4 +903,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
