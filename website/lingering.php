@@ -118,7 +118,7 @@ $link = DBConnect();
 
             //has avatar?
             if ($f_picfilename != '') {
-                $pic = "<img src='".CONFIG_CDN_IMAGES."/idcard.png' width='14' height='10' border='0' alt='photo' style='margin-left:12px' class='att_js' title='ajax|2|".CONFIG_CDN_OBRAZKI_MALE."/$f_picfilename|".CONFIG_CDN_OBRAZKI."/$f_picfilename'/>";
+                $pic = "<img src='".CONFIG_CDN_IMAGES."/icons/idcard.png' width='14' height='10' border='0' alt='photo' style='margin-left:12px' class='att_js' title='ajax|2|".CONFIG_CDN_OBRAZKI_MALE."/$f_picfilename|".CONFIG_CDN_OBRAZKI."/$f_picfilename'/>";
             } else {
                 $pic = '';
             }

@@ -44,7 +44,7 @@ margin-right: auto;
 background:white;
 padding:10px;
 margin-top:40px;
-	'><img src='".CONFIG_CDN_IMAGES."/success.png' style='display: block; margin-left: auto; margin-right: auto; padding-bottom:10px;'>";
+	'><img src='".CONFIG_CDN_IMAGES."/icons/success.png' style='display: block; margin-left: auto; margin-right: auto; padding-bottom:10px;'>";
     if (is_array($tablica)) {
         $return .= '<ul>';
         foreach ($tablica as $linia) {
