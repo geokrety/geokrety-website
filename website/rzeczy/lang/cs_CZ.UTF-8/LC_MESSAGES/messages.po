@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-19 18:28+0000\n"
-"PO-Revision-Date: 2018-09-23 19:10\n"
+"PO-Revision-Date: 2018-09-24 19:00\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -31,7 +31,7 @@ msgstr "Povinná pole"
 
 #: website/adduser.php:71 website/ruchy.php:683
 msgid "Username"
-msgstr "Uživatel"
+msgstr "Uživatelské jméno"
 
 #: website/adduser.php:76 website/api-login2secid.php:63
 #: website/longin.php:141 website/mypage.php:43
@@ -40,7 +40,7 @@ msgstr "Heslo"
 
 #: website/adduser.php:81
 msgid "Verify Password"
-msgstr "Ověření hesla"
+msgstr "Heslo znova"
 
 #: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
 msgid "Email"
@@ -48,7 +48,7 @@ msgstr "E-mail"
 
 #: website/adduser.php:88
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
-msgstr "Ano, chci dostávat upozornění emailem (posílaný denně o půlnoci) pokud můj, nebo sledovaný Geokrtek změní pozici."
+msgstr "Ano, chci dostávat upozornění emailem (posílané denně o půlnoci) pokud můj nebo mnou sledovaný GeoKrtek změní pozici."
 
 #: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:938
 msgid "Enter code"
@@ -62,7 +62,7 @@ msgstr "Jazyk"
 #: website/termsofuse.php:11 website/templates/krety.html:147
 #: website/templates/krety.html:234
 msgid "Terms of use"
-msgstr "Podmínky použití"
+msgstr "Podmínky používání"
 
 #: website/adduser.php:125
 msgid "Tips"
@@ -84,19 +84,19 @@ msgstr "Přečti si více o výběru dobrých hesel:\n"
 
 #: website/adduser.php:137 website/majluj.php:134 website/new_password.php:60
 msgid "No antispam phrase!"
-msgstr "Chybný kontrolní klíč!"
+msgstr "Není vyplněná kontrola proti spamu!"
 
 #: website/adduser.php:139 website/majluj.php:136 website/new_password.php:62
 msgid "Wrong antispam phrase!"
-msgstr "Chybný kontrolní klíč!"
+msgstr "Špatně vyplněná kontrola proti spamu!"
 
 #: website/adduser.php:145 website/adduser.php:148
 msgid "No password"
-msgstr "Bez hesla"
+msgstr "Nevyplnili jste heslo"
 
 #: website/adduser.php:151
 msgid "Passwords are different or empty!"
-msgstr "Hesla se neshodují, nebo je heslo prázdné!"
+msgstr "Hesla se neshodují nebo nejsou vyplněna!"
 
 #: website/adduser.php:154
 msgid "Password to short (should be >= 5 characters)!"
@@ -105,11 +105,11 @@ msgstr "Heslo je příliš krátké (musí mít nejméně 5 znaků)!"
 #: website/adduser.php:175
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
-msgstr "Vypadá to, že <a href='mypage.php?userid=%s'> váš účet</a> byl již vytvořen."
+msgstr "Vypadá to, že <a href='mypage.php?userid=%s'>váš účet</a> byl již vytvořen."
 
 #: website/adduser.php:176 website/adduser.php:259
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
-msgstr "Kontrolní email byl odeslán na Vaší emailovou adresu. Pokud jej potvrdíte, bude Váš účet plně funkční. Pokud ne, nebudete dostávat emaily s denním přehledem pohybu Vašich GeoKrtků. Odkaz v emailu je platný 5 dní. Nyní můžete provádět operaci s GeoKrtky, logovat a bavit se s Geokrtkama! :) "
+msgstr "Kontrolní email byl odeslán na vaši emailovou adresu. Po potvrzení bude váš účet plně funkční. Do té doby nebudete dostávat emaily s denním přehledem pohybu vašich GeoKrtků. Kontrolní odkaz platí 5 dní. Nyní můžete provádět operace s GeoKrtky. Přihlaste se a užívejte si GeoKrety.org! :)"
 
 #: website/adduser.php:177 website/longin.php:9 website/templates.php:189
 #: website/templates/plugins/function.login_check.php:36
@@ -137,7 +137,7 @@ msgstr "Špatná emailová adresa?"
 
 #: website/adduser.php:256
 msgid "Account successfully created"
-msgstr "Účet byl úspěšně změněn"
+msgstr "Účet byl úspěšně vytvořen"
 
 #: website/aktywuj_maila.php:41 website/confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -789,7 +789,7 @@ msgstr "Online uživatelé"
 
 #: website/index.php:269
 msgid "Join our translation team"
-msgstr "Připojit se k překladatelskému týmu %s %s"
+msgstr "Připojit se k překladatelskému týmu"
 
 #: website/index.php:269
 msgid "Suggest a better translation - inline"
