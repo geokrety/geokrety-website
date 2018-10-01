@@ -6,7 +6,7 @@ This is the actual code running behind https://geokrety.org/
 
 Please contact us directly for any security issue contact@geokretymap.org
 
-# Contribute
+#Contribute
 
 cf. [INSTALL.md](INSTALL.md) and [CONTRIBUTING.md](CONTRIBUTING.md) readme files.
 
