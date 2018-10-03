@@ -13,8 +13,7 @@ require_once 'longin_chceck.php';
 $longin_status = longin_chceck();
 $userid = $longin_status['userid'];
 
-function APIerror()
-{
+function APIerror() {
     // returns error in xml
     global $longin_status;
     if ($longin_status['mobile_mode'] == 1) {
@@ -27,8 +26,7 @@ function APIerror()
     } // mobile version
 }
 
-function return_error_message($message)
-{
+function return_error_message($message) {
     if ($longin_status['mobile_mode'] == 1) {
         $errors[] = $message;
         if (!defined(a2xml)) {

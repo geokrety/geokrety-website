@@ -160,8 +160,7 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
 
         // odznaczenia - co i za ile :) --- //
 
-        function jakie_odznaczenie_przyznac($geokretow_w_puli)
-        {
+        function jakie_odznaczenie_przyznac($geokretow_w_puli) {
             if ($geokretow_w_puli >= 1) {
                 $odznaczenia_pliki['1'] = 'medal-1-1.png';
             }

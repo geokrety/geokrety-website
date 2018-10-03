@@ -184,6 +184,14 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     $kret_godzina = trim($kret_godzina);
     $kret_minuta = trim($kret_minuta);
 
+    function unexpectedError($action, $details) {
+        $errorId = uniqid('GKIE_');
+        error_log('Unexpected error '.$errorId.' action:'.$action.' details:'.$details);
+        include_once 'defektoskop.php';
+        errory_add(sprintf('%s : %s', $action, $details), 3, $errorId);
+
+        return sprintf(_('Unexpected error (id:%s), please report.'), $errorId);
+    }
     // ----------------------------------------------------
     // simple tests
     // ----------------------------------------------------
@@ -407,7 +415,10 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
             $country = get_country_from_coords($lat, $lon);
 
             if ($country == 'xyz') {
-                mysqli_query($link, "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`) VALUES ('unknown_flag', '0', '0.0.0.0', '".date('Y-m-d H:i:s')."', 'ruchy.php', '$lat,$lon', '0')");
+                $queryResult = mysqli_query($link, "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`) VALUES ('unknown_flag', '0', '0.0.0.0', '".date('Y-m-d H:i:s')."', 'ruchy.php', '$lat,$lon', '0')");
+                if (!$queryResult) {
+                    $errors[] = unexpectedError('ruchy l419 add gk-errory unknown_flag', mysqli_error($link));
+                }
             }
         }
 
@@ -441,21 +452,30 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         // }
 
         $result = mysqli_query($link, $sql);
-
+        if (!$result) {
+            $errors[] = unexpectedError('update ruchy l455', mysqli_error($link).' sql:'.$sql);
+        }
+        if (isset($errors)) {
+            include_once 'defektoskop.php';
+            $TRESC = defektoskop($errors, true, '', 3, 'ruchy');
+            include_once 'smarty.php';
+            exit;
+        }
         // -- Piwik Tracking API init --
-        require_once 'templates/piwik-php-tracker/PiwikTracker.php';
-        PiwikTracker::$URL = PIWIK_URL;
-        $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
-        // $piwikTracker->enableBulkTracking();
-        $piwikTracker->setTokenAuth(PIWIK_TOKEN);
-        $piwikTracker->setUrl($config['adres'].'ruchy.php');
-        $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
-        $piwikTracker->setUserAgent("$kret_app $kret_app_ver");
-        $piwikTracker->setBrowserLanguage($kret_mobile_lang);
-        $piwikTracker->doTrackPageView('GKMoved');
-        // $piwikTracker->doBulkTrack();
+        if (PIWIK_URL !== '') {
+            require_once 'templates/piwik-php-tracker/PiwikTracker.php';
+            PiwikTracker::$URL = PIWIK_URL;
+            $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
+            // $piwikTracker->enableBulkTracking();
+            $piwikTracker->setTokenAuth(PIWIK_TOKEN);
+            $piwikTracker->setUrl($config['adres'].'ruchy.php');
+            $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
+            $piwikTracker->setUserAgent("$kret_app $kret_app_ver");
+            $piwikTracker->setBrowserLanguage($kret_mobile_lang);
+            $piwikTracker->doTrackPageView('GKMoved');
+            // $piwikTracker->doBulkTrack();
+        }
         // -- Piwik Tracking API end --
-
         //$TRESC = "Ok! <a href=\"konkret.php?id=$kretid\">" . _("Go to GeoKret page") . "</a>";
 
         include_once 'aktualizuj.php';
@@ -477,7 +497,8 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         //include_once("timeline.php");
     } // for each numer in multilog
 
-    if ($kret_multilog == '1') {
+    if (isset($errors)) {
+    } elseif ($kret_multilog == '1') {
         header("Location: mypage.php?userid=$user&co=3&multiphoto=1");
     } elseif ($longin_status['mobile_mode'] == 1) {
         // xml with no errors
@@ -870,6 +891,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
           <input type="button" id="btn_sprawdzskrzynke" name="sprawdzskrzynke" value="'._('Check').'" '.$disabled_cachename.'onclick="sprawdzNazwe();" class="btn btn-default">
         </span>
       </div>
+      <div id="errorAtLeast" style="visibility:hidden"><img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('Enter at least 5 characters').'</div>
       <span id="helpBlockCacheName" class="help-block">'.
         _('Enter cache name. Works only with opencaching networks.')
       .' <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0"></a>

@@ -2,8 +2,7 @@
 
 // śćńółżć
 
-function smarty_function_test($params, &$smarty)
-{
+function smarty_function_test($params, &$smarty) {
     $answers = array('Yes',
                      'No',
                      'No way',

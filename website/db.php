@@ -1,7 +1,6 @@
 <?php
 
-class db
-{
+class db {
     private $mysqli = null;
 
     public $use_errory = true;
@@ -24,31 +23,26 @@ class db
 
     private $clear_errors_after_exec = false;
 
-    public function __construct()
-    {
+    public function __construct() {
         if (!defined('CONFIG_HOST')) {
             include 'templates/konfig.php';
         }
         $this->pconnect();
     }
 
-    public function __destruct()
-    {
+    public function __destruct() {
         //...
     }
 
-    public function __toString()
-    {
+    public function __toString() {
         return "I'm a db class :)";
     }
 
-    public function get_db_link()
-    {
+    public function get_db_link() {
         return $this->mysqli;
     }
 
-    private function pconnect()
-    {
+    private function pconnect() {
         $this->mysqli = new mysqli(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));
         if (!$this->mysqli) {
             die('DB ERROR: '.$this->mysqli->errno);
@@ -57,8 +51,7 @@ class db
     }
 
     // this returns a resource or false if query failed
-    public function exec($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '')
-    {
+    public function exec($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '') {
         if (!empty($error_msg)) {
             $this->set_errors($error_msg, $severity, $code);
         }
@@ -79,8 +72,7 @@ class db
     // $row = $db->exec_fetch_array($sql,$num_rows);
     // if(!$row) { exit; }  //  or if($num_rows<=0) { exit; }
     // list($a, $b, $c) = $row;
-    public function exec_fetch_array($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '')
-    {
+    public function exec_fetch_array($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '') {
         $result = $this->exec($newsql, $num_rows, $empty_result_accept, $error_msg, $severity, $code);
         if ($num_rows <= 0) {
             return null;
@@ -97,8 +89,7 @@ class db
     // $row = $db->exec_fetch_array($sql,$num_rows);
     // if(!$row) { exit; }  //  or if($num_rows<=0) { exit; }
     // list($a, $b, $c) = $row;
-    public function exec_fetch_row($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '')
-    {
+    public function exec_fetch_row($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '') {
         $result = $this->exec($newsql, $num_rows, $empty_result_accept, $error_msg, $severity, $code);
         if ($num_rows <= 0) {
             return null;
@@ -112,8 +103,7 @@ class db
     // returns the first value returned by mysqli_fetch_row or null for error
     // you can do this:
     // $value = $db->exec_scalar($sql);
-    public function exec_scalar($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '')
-    {
+    public function exec_scalar($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '') {
         $row = $this->exec_fetch_row($newsql, $num_rows, $empty_result_accept, $error_msg, $severity, $code);
 
         return is_null($row) ? null : $row[0];
@@ -121,16 +111,14 @@ class db
 
     // this returns the number of rows (selected or MATCHED*), or -1 for error
     // *) note: for example an UPDATE query may MATCH 10 records but if no values are being changed then AFFECTED rows will be 0; thats why we use matched.
-    public function exec_num_rows($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '')
-    {
+    public function exec_num_rows($newsql, &$num_rows = null, $empty_result_accept = 0, $error_msg = '', $severity = 100, $code = '') {
         $result = $this->exec($newsql, $num_rows, $empty_result_accept, $error_msg, $severity, $code);
         $this->free_result($result);
 
         return $num_rows;
     }
 
-    public function set_errors($errormsg, $severity = 100, $code = '')
-    {
+    public function set_errors($errormsg, $severity = 100, $code = '') {
         $errormsg = "<b>$errormsg</b>";
         $this->failed_result_error = $errormsg;
         $this->empty_result_error = $errormsg;
@@ -141,8 +129,7 @@ class db
         $this->clear_errors_after_exec = true;
     }
 
-    public function clear_errors()
-    {
+    public function clear_errors() {
         $this->failed_result_error = '';
         $this->empty_result_error = '';
         $this->failed_result_sev = 100;
@@ -152,16 +139,14 @@ class db
         $this->clear_errors_after_exec = false;
     }
 
-    private function clear_counters()
-    {
+    private function clear_counters() {
         $this->selected = null;
         $this->matched = null;
         $this->affected = null;
         $this->info = null;
     }
 
-    private function execute($newsql, &$num_rows)
-    {
+    private function execute($newsql, &$num_rows) {
         $this->clear_counters();
         $select = false;
         $update = false;
@@ -249,8 +234,7 @@ class db
         return $result;
     }
 
-    private function execute_raw($sql)
-    {
+    private function execute_raw($sql) {
         $mylink = new mysqli(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));
         if (!$mylink) {
             die('execute_raw DB ERROR: '.$mylink->errno);
@@ -259,14 +243,12 @@ class db
         $mylink->close();
     }
 
-    private function send_error_to_db($details, $severity = 0, $error_uid = '')
-    {
+    private function send_error_to_db($details, $severity = 0, $error_uid = '') {
         include_once $this->defektoskop_path;
         errory_add($details, $severity, $error_uid);
     }
 
-    private function free_result($result)
-    {
+    private function free_result($result) {
         if ($result instanceof mysqli_result) {
             $result->free_result();
         }

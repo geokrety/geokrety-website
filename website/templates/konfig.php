@@ -54,7 +54,10 @@ $config['piwik_url'] = '';
 $config['piwik_site_id'] = '';
 $config['piwik_token'] = '';
 
-// generrated files
+// Partners
+$config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
+
+// generated files
 $config['obrazki'] = 'obrazki/';
 $config['obrazki-male'] = 'obrazki-male/';
 $config['obrazki-skasowane'] = 'obrazki-dowonu/';
@@ -68,13 +71,27 @@ $config['cdn_obrazki'] = $config['cdn_images'].'/obrazki';
 $config['cdn_obrazki_male'] = $config['cdn_images'].'/obrazki-male';
 $config['cdn_icons'] = $config['cdn_images'].'/icons';
 $config['cdn_log_icons'] = $config['cdn_images'].'/log-icons';
-$config['cdn_pins'] = $config['cdn_images'].'/pins';
+$config['cdn_pins'] = $config['cdn_icons'].'/pins';
 $config['cdn_api_icon_16'] = $config['cdn_images'].'/api/icons/16';
 $config['cdn_country_codes'] = $config['cdn_images'].'/country-codes';
 $config['cdn_libraries'] = $config['cdn_url'].'/libraries';
 $config['cdn_js'] = $config['cdn_url'].'/js';
 $config['cdn_css'] = $config['cdn_url'].'/css';
 $config['cdn_maps'] = $config['cdn_url'].'/maps';
+
+define('CONFIG_CDN', $config['cdn_url']);
+define('CONFIG_CDN_IMAGES', $config['cdn_images']);
+define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
+define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
+define('CONFIG_CDN_ICONS', $config['cdn_icons']);
+define('CONFIG_CDN_LOG_ICONS', $config['cdn_log_icons']);
+define('CONFIG_CDN_PINS_ICONS', $config['cdn_pins']);
+define('CONFIG_CDN_API_ICONS', $config['cdn_api_icon_16']);
+define('CONFIG_CDN_COUNTRY_FLAGS', $config['cdn_country_codes']);
+define('CONFIG_CDN_LIBRARIES', $config['cdn_libraries']);
+define('CONFIG_CDN_JS', $config['cdn_js']);
+define('CONFIG_CDN_CSS', $config['cdn_css']);
+define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 
 //js
 $config['funkcje.js'] = '/funkcje.js';
@@ -176,6 +193,8 @@ $cotozakret['4'] = _('KretyPost');
 
 $config_ile_wzorow_banerkow = 9;    // ile wzorأ³w banerkأ³w ze statystykami
 
+@require dirname(__FILE__).'/konfig-groups.php';
+
 @require dirname(__FILE__).'/konfig-local.php';
 //this is important, because we may include konfig.php from other directory like /a/b/c/test.php
 //in that case it is safest if we point to konfig-local using full path using dirname(__FILE__).
@@ -191,8 +210,7 @@ define('CONFIG_DB', $config['db']);
 define('CONFIG_CHARSET', $config['charset']);
 
 if (!function_exists('DBPConnect')) {
-    function DBPConnect()
-    {
+    function DBPConnect() {
         $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'));
         if (!$link) {
             $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'));
@@ -209,8 +227,7 @@ if (!function_exists('DBPConnect')) {
 }
 
 if (!function_exists('DBConnect')) {
-    function DBConnect()
-    {
+    function DBConnect() {
         $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));
         if (!$link) {
             $link = mysqli_connect(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));
@@ -224,20 +241,6 @@ if (!function_exists('DBConnect')) {
         return $link;
     }
 }
-
-define('CONFIG_CDN', $config['cdn_url']);
-define('CONFIG_CDN_IMAGES', $config['cdn_images']);
-define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
-define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
-define('CONFIG_CDN_ICONS', $config['cdn_icons']);
-define('CONFIG_CDN_LOG_ICONS', $config['cdn_log_icons']);
-define('CONFIG_CDN_PINS_ICONS', $config['cdn_pins']);
-define('CONFIG_CDN_API_ICONS', $config['cdn_api_icon_16']);
-define('CONFIG_CDN_COUNTRY_FLAGS', $config['cdn_country_codes']);
-define('CONFIG_CDN_LIBRARIES', $config['cdn_libraries']);
-define('CONFIG_CDN_JS', $config['cdn_js']);
-define('CONFIG_CDN_CSS', $config['cdn_css']);
-define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
 define('SWISTAK_IV32', $config['swistak_iv32']);
@@ -257,5 +260,8 @@ define('SENTRY_ENV', $config['sentry_env']);
 define('PIWIK_URL', $config['piwik_url']);
 define('PIWIK_SITE_ID', $config['piwik_site_id']);
 define('PIWIK_TOKEN', $config['piwik_token']);
+
+// Partners
+define('GEOCACHING_CACHE_WP', $config['geocaching_cache_wp']);
 
 date_default_timezone_set($config['timezone']);

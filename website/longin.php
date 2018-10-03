@@ -19,8 +19,7 @@ require 'templates/konfig.php';
 require 'czysc.php';
 require_once 'fn_haslo.php';
 
-function haszuj($str)
-{
+function haszuj($str) {
     $md5_string1 = 'ac3';
     $md5_string2 = 'da';
 

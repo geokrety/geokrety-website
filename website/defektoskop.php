@@ -2,8 +2,7 @@
 
 // defektoskop - wypisuje bledy z tablicy
 
-function defektoskop($tablica, $logerrors = true, $error_msg = '', $severity = '3', $code = '')
-{
+function defektoskop($tablica, $logerrors = true, $error_msg = '', $severity = '3', $code = '') {
     $return .= "<div style='
 border:solid 2px #BC1301;
 width:75%;
@@ -36,8 +35,7 @@ margin-top:40px;
     return $return;
 }
 
-function success($tablica, $logerrors = true, $error_msg = '', $severity = '1', $code = '')
-{
+function success($tablica, $logerrors = true, $error_msg = '', $severity = '1', $code = '') {
     $return .= "<div style='
 border:solid 2px #80D07C;
 width:75%;
@@ -46,7 +44,7 @@ margin-right: auto;
 background:white;
 padding:10px;
 margin-top:40px;
-	'><img src='".CONFIG_CDN_IMAGES."/success.png' style='display: block; margin-left: auto; margin-right: auto; padding-bottom:10px;'>";
+	'><img src='".CONFIG_CDN_IMAGES."/icons/success.png' style='display: block; margin-left: auto; margin-right: auto; padding-bottom:10px;'>";
     if (is_array($tablica)) {
         $return .= '<ul>';
         foreach ($tablica as $linia) {
@@ -70,8 +68,7 @@ margin-top:40px;
     return $return;
 }
 
-function table_exists($table)
-{
+function table_exists($table) {
     $result = mysqli_query($link, "show tables like '$table'") or die('error reading database');
     if (mysqli_num_rows($result) > 0) {
         return true;
@@ -81,8 +78,7 @@ function table_exists($table)
 }
 
 // error_add dopisuje rekord do tabeli gk-errory ktora zawiera rozne dziwne zdarzenia na serwerze - np takie ktore nie powinno miec miejsca.
-function errory_add($details, $severity = 0, $error_uid = '')
-{
+function errory_add($details, $severity = 0, $error_uid = '') {
     include 'templates/konfig.php';    // config
     $link = DBConnect();
 

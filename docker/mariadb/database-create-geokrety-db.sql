@@ -2,15 +2,18 @@ CREATE DATABASE  IF NOT EXISTS `geokrety-db` /*!40100 DEFAULT CHARACTER SET utf8
 USE `geokrety-db`;
 
 -- phpMyAdmin SQL Dump
--- version 4.6.4deb1
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 20, 2016 at 09:41 PM
--- Server version: 5.6.30-1
--- PHP Version: 5.6.22-2
+-- Host: db
+-- Generation Time: Apr 30, 2018 at 09:30 PM
+-- Server version: 10.1.13-MariaDB-1~jessie
+-- PHP Version: 7.2.4
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -22,6 +25,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `geokrety`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `captcha_codes`
+--
+
+CREATE TABLE `captcha_codes` (
+  `id` varchar(40) COLLATE utf8mb4_bin NOT NULL,
+  `namespace` varchar(32) COLLATE utf8mb4_bin NOT NULL,
+  `code` varchar(32) COLLATE utf8mb4_bin NOT NULL,
+  `code_display` varchar(32) COLLATE utf8mb4_bin NOT NULL,
+  `created` int(11) NOT NULL,
+  `audio_data` mediumblob
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -69,6 +87,7 @@ CREATE TABLE `gk-aktywnesesje` (
 --
 
 CREATE TABLE `gk-badges` (
+  `id` int(11) NOT NULL,
   `userid` bigint(20) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `desc` varchar(128) COLLATE utf8_polish_ci NOT NULL,
@@ -111,6 +130,7 @@ CREATE TABLE `gk-geokrety` (
   `zdjecia` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `ost_pozycja_id` int(10) UNSIGNED NOT NULL,
   `ost_log_id` int(10) UNSIGNED NOT NULL,
+  `hands_of` int(10) DEFAULT NULL COMMENT 'In the hands of user',
   `missing` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `typ` enum('0','1','2','3','4') COLLATE utf8_polish_ci NOT NULL,
   `avatarid` int(10) UNSIGNED NOT NULL,
@@ -214,7 +234,7 @@ CREATE TABLE `gk-news` (
   `czas_postu` datetime NOT NULL,
   `tytul` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `tresc` mediumtext COLLATE utf8_polish_ci,
-  `who` varchar(20) COLLATE utf8_polish_ci NOT NULL,
+  `who` varchar(80) COLLATE utf8_polish_ci NOT NULL,
   `userid` int(10) NOT NULL,
   `komentarze` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `ostatni_komentarz` datetime DEFAULT NULL
@@ -306,21 +326,21 @@ CREATE TABLE `gk-ostatnieruchy` (
   `lat` double(8,5) DEFAULT NULL,
   `lon` double(8,5) DEFAULT NULL,
   `alt` int(5) DEFAULT '-32768',
-  `country` varchar(3) COLLATE utf8_polish_ci,
+  `country` varchar(3) CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `droga` int(10) UNSIGNED,
-  `waypoint` varchar(10) COLLATE utf8_polish_ci,
+  `waypoint` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `data` datetime DEFAULT NULL,
   `data_dodania` datetime DEFAULT NULL,
   `user` int(10) UNSIGNED DEFAULT '0',
-  `koment` varchar(5120) COLLATE utf8_polish_ci DEFAULT NULL,
+  `koment` varchar(5120) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
   `zdjecia` tinyint(3) UNSIGNED DEFAULT '0',
   `komentarze` smallint(5) UNSIGNED DEFAULT '0',
-  `logtype` enum('0','1','2','3','4','5','6') COLLATE utf8_polish_ci DEFAULT '0' COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
-  `username` varchar(20) COLLATE utf8_polish_ci,
+  `logtype` enum('0','1','2','3','4','5','6') CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT '0' COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
+  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `app` varchar(16) COLLATE utf8_polish_ci DEFAULT 'www' COMMENT 'source of the log',
-  `app_ver` varchar(16) COLLATE utf8_polish_ci COMMENT 'apploction version/codename'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+  `app` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'www' COMMENT 'source of the log',
+  `app_ver` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci COMMENT 'apploction version/codename'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -459,7 +479,8 @@ CREATE TABLE `gk-users` (
   `user` varchar(80) COLLATE utf8_polish_ci DEFAULT NULL,
   `haslo` varchar(500) COLLATE utf8_polish_ci DEFAULT NULL,
   `haslo2` varchar(120) COLLATE utf8_polish_ci NOT NULL,
-  `email` varchar(150) COLLATE utf8_polish_ci DEFAULT NULL,
+  `email` varchar(150) COLLATE utf8_polish_ci NOT NULL,
+  `email_invalid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '* 0 ok * 1 blocked * 2 autoresponder',
   `joined` datetime DEFAULT NULL,
   `wysylacmaile` binary(1) NOT NULL DEFAULT '1',
   `ip` varchar(16) COLLATE utf8_polish_ci NOT NULL,
@@ -472,7 +493,7 @@ CREATE TABLE `gk-users` (
   `godzina` int(11) NOT NULL,
   `statpic` tinyint(1) DEFAULT '1',
   `ostatni_mail` datetime DEFAULT NULL,
-  `ostatni_login` datetime DEFAULT NULL,
+  `ostatni_login` datetime NOT NULL,
   `secid` varchar(128) COLLATE utf8_polish_ci NOT NULL COMMENT 'tajny klucz usera'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -559,28 +580,48 @@ CREATE TABLE `gk_simplepo_messages` (
 --
 
 --
+-- Indexes for table `captcha_codes`
+--
+ALTER TABLE `captcha_codes`
+  ADD PRIMARY KEY (`id`,`namespace`),
+  ADD KEY `created` (`created`);
+
+--
 -- Indexes for table `gk-aktywnesesje`
 --
 ALTER TABLE `gk-aktywnesesje`
   ADD KEY `userid` (`userid`);
 
 --
+-- Indexes for table `gk-badges`
+--
+ALTER TABLE `gk-badges`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `timestamp` (`timestamp`),
+  ADD KEY `userid` (`userid`);
+
+--
 -- Indexes for table `gk-errory`
 --
 ALTER TABLE `gk-errory`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `date` (`date`),
+  ADD KEY `severity` (`severity`),
+  ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `gk-geokrety`
 --
 ALTER TABLE `gk-geokrety`
-  ADD UNIQUE KEY `id` (`id`,`nr`),
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`nr`) USING BTREE,
   ADD KEY `owner` (`owner`),
   ADD KEY `nr` (`nr`),
-  ADD KEY `id_typ` (`id`,`typ`),
   ADD KEY `ost_pozycja_id` (`ost_pozycja_id`),
   ADD KEY `avatarid` (`avatarid`),
-  ADD KEY `ost_log_id` (`ost_log_id`);
+  ADD KEY `ost_log_id` (`ost_log_id`),
+  ADD KEY `hands_of_index` (`hands_of`),
+  ADD KEY `id_typ` (`typ`) USING BTREE;
 
 --
 -- Indexes for table `gk-geokrety-rating`
@@ -617,7 +658,9 @@ ALTER TABLE `gk-miasta`
 -- Indexes for table `gk-news`
 --
 ALTER TABLE `gk-news`
-  ADD PRIMARY KEY (`news_id`);
+  ADD PRIMARY KEY (`news_id`),
+  ADD KEY `date` (`date`),
+  ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `gk-news-comments`
@@ -682,7 +725,14 @@ ALTER TABLE `gk-ruchy`
   ADD PRIMARY KEY (`ruch_id`),
   ADD KEY `id_2` (`id`),
   ADD KEY `waypoint` (`waypoint`),
-  ADD KEY `user` (`user`);
+  ADD KEY `user` (`user`),
+  ADD KEY `lat` (`lat`),
+  ADD KEY `lon` (`lon`),
+  ADD KEY `logtype` (`logtype`),
+  ADD KEY `data` (`data`),
+  ADD KEY `data_dodania` (`data_dodania`),
+  ADD KEY `timestamp` (`timestamp`),
+  ADD KEY `alt` (`alt`);
 
 --
 -- Indexes for table `gk-ruchy-comments`
@@ -705,7 +755,9 @@ ALTER TABLE `gk-statystyki-dzienne`
 ALTER TABLE `gk-users`
   ADD PRIMARY KEY (`userid`),
   ADD UNIQUE KEY `user` (`user`),
-  ADD KEY `secid` (`secid`);
+  ADD KEY `secid` (`secid`),
+  ADD KEY `ostatni_login` (`ostatni_login`),
+  ADD KEY `email_invalid` (`email_invalid`);
 
 --
 -- Indexes for table `gk-wartosci`
@@ -745,85 +797,109 @@ ALTER TABLE `gk_simplepo_messages`
 --
 
 --
+-- AUTO_INCREMENT for table `gk-badges`
+--
+ALTER TABLE `gk-badges`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=948;
+
+--
 -- AUTO_INCREMENT for table `gk-errory`
 --
 ALTER TABLE `gk-errory`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7357;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1208370;
+
 --
 -- AUTO_INCREMENT for table `gk-geokrety`
 --
 ALTER TABLE `gk-geokrety`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60505;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67914;
+
 --
 -- AUTO_INCREMENT for table `gk-grupy-desc`
 --
 ALTER TABLE `gk-grupy-desc`
   MODIFY `groupid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `gk-maile`
 --
 ALTER TABLE `gk-maile`
-  MODIFY `id_maila` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6280;
+  MODIFY `id_maila` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6835;
+
 --
 -- AUTO_INCREMENT for table `gk-news`
 --
 ALTER TABLE `gk-news`
-  MODIFY `news_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `news_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+
 --
 -- AUTO_INCREMENT for table `gk-news-comments`
 --
 ALTER TABLE `gk-news-comments`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+
 --
 -- AUTO_INCREMENT for table `gk-obrazki`
 --
 ALTER TABLE `gk-obrazki`
-  MODIFY `obrazekid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48428;
+  MODIFY `obrazekid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53679;
+
 --
 -- AUTO_INCREMENT for table `gk-obrazki-2`
 --
 ALTER TABLE `gk-obrazki-2`
   MODIFY `obrazekid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5147;
+
 --
 -- AUTO_INCREMENT for table `gk-owner-codes`
 --
 ALTER TABLE `gk-owner-codes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+
 --
 -- AUTO_INCREMENT for table `gk-races`
 --
 ALTER TABLE `gk-races`
-  MODIFY `raceid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `raceid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `gk-races-krety`
 --
 ALTER TABLE `gk-races-krety`
-  MODIFY `raceGkId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `raceGkId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
 --
 -- AUTO_INCREMENT for table `gk-ruchy`
 --
 ALTER TABLE `gk-ruchy`
-  MODIFY `ruch_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1035961;
+  MODIFY `ruch_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1349547;
+
 --
 -- AUTO_INCREMENT for table `gk-ruchy-comments`
 --
 ALTER TABLE `gk-ruchy-comments`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13576;
+  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15260;
+
 --
 -- AUTO_INCREMENT for table `gk-users`
 --
 ALTER TABLE `gk-users`
-  MODIFY `userid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35517;
+  MODIFY `userid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38785;
+
 --
 -- AUTO_INCREMENT for table `gk_simplepo_catalogues`
 --
 ALTER TABLE `gk_simplepo_catalogues`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
 --
 -- AUTO_INCREMENT for table `gk_simplepo_messages`
 --
 ALTER TABLE `gk_simplepo_messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83584;
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,15 +1,16 @@
 <?php
 
-function go2geo($waypoint)
-{
+require_once '../templates/konfig.php';
+
+function go2geo($waypoint) {
     // ------------------------------------------------------------------------ 2 characters
 
     // opencaching
     $prefiksy['2']['OP'] = 'https://opencaching.pl/searchplugin.php?userinput=';
     $prefiksy['2']['OC'] = 'https://www.opencaching.de/searchplugin.php?userinput=';
     $prefiksy['2']['OK'] = 'https://opencache.uk/searchplugin.php?userinput=';
-    $prefiksy['2']['OB'] = 'http://www.opencaching.nl/searchplugin.php?userinput=';
-    $prefiksy['2']['OR'] = 'http://www.opencaching.ro/searchplugin.php?userinput=';
+    $prefiksy['2']['OB'] = 'https://www.opencaching.nl/searchplugin.php?userinput=';
+    $prefiksy['2']['OR'] = 'https://www.opencaching.ro/searchplugin.php?userinput=';
     $prefiksy['2']['OZ'] = 'https://opencaching.cz/searchplugin.php?userinput=';
     $prefiksy['2']['OU'] = 'http://www.opencaching.us/searchplugin.php?userinput=';
 
@@ -17,7 +18,7 @@ function go2geo($waypoint)
     $prefiksy['2']['GA'] = 'http://geocaching.com.au/cache/';
 
     // geocaching.com
-    $prefiksy['2']['GC'] = 'http://www.geocaching.com/seek/cache_details.aspx?wp=';
+    $prefiksy['2']['GC'] = GEOCACHING_CACHE_WP;
 
     // terra http://www.terracaching.com/viewcache.cgi?C=TCCWU
     $prefiksy['2']['TC'] = 'http://www.terracaching.com/viewcache.cgi?C=';

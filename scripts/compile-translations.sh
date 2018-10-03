@@ -4,6 +4,12 @@
 # failures as negative tests
 #set -e
 
+GIT_BRANCH=prod
+if [ "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; then
+  echo -e "Skip translation import when merging to prod\n"
+  exit 0
+fi
+
 # https://gist.github.com/ddgenome/f3a60fe4c2af0cbe758556d982fbeea9
 source scripts/include/travis-ci-git-commit.bash
 

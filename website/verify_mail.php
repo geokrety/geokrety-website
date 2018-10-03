@@ -2,8 +2,7 @@
 
 // verify_mail address śćńółżź
 
-function verify_email_address($email)
-{
+function verify_email_address($email) {
     if (trim($email) == '') {
         return 0;
     }
@@ -73,8 +72,7 @@ function verify_email_address($email)
 // zippymail.info
 // tradermail.info
 
-function get_verification_code($userid)
-{
+function get_verification_code($userid) {
     include_once 'swistak.php';
     $random = swistak::getRandomString(4, 1, swistak::$alphabet_azAZ);
     //$tmp = (time()-7*24*3600)."$random$userid";
@@ -84,8 +82,7 @@ function get_verification_code($userid)
     //6EKlXQVsSnyDbAYQGUfBlLbL5WjnH2TI = 32bytes
 }
 
-function read_verification_code($kod)
-{
+function read_verification_code($kod) {
     include_once 'swistak.php';
     if (preg_match("#^([\d]{10})[a-zA-Z]{4}([\d]+)$#", swistak::rozwin($kod, 4, 4), $matches)) {
         return $matches;
@@ -95,8 +92,7 @@ function read_verification_code($kod)
 }
 
 /// wsysyła maila z kodem i wsadza go do bazy.
-function verify_mail_send($email, $userid, $subject = '', $msg = '')
-{
+function verify_mail_send($email, $userid, $subject = '', $msg = '') {
     include 'templates/konfig.php';
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
@@ -128,8 +124,7 @@ function verify_mail_send($email, $userid, $subject = '', $msg = '')
 }
 
 // uzywane w edit do wyslania prostego maila
-function verify_mail_send_astext($email, $subject, $msg)
-{
+function verify_mail_send_astext($email, $subject, $msg) {
     $headers = 'From: GeoKrety <geokrety@gmail.com>'."\r\n";
     $headers .= 'Return-Path: <geokrety@gmail.com>'."\r\n";
     $msg = wordwrap($msg, 70);
@@ -138,8 +133,7 @@ function verify_mail_send_astext($email, $subject, $msg)
 }
 
 // lepiej uzywac html'a bo czasami programy emailowe obcinaja linki...
-function verify_mail_send_ashtml($email, $subject, $msg)
-{
+function verify_mail_send_ashtml($email, $subject, $msg) {
     $headers = 'MIME-Version: 1.0'."\r\n";
     $headers .= 'Content-Type: text/html; charset=UTF-8'."\r\n";
     $headers .= 'From: GeoKrety <geokrety@gmail.com>'."\r\n";

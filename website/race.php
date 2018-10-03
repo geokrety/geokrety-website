@@ -20,6 +20,7 @@ if ($raceid > 0) {
     include_once 'templates/GoogleMap.php';    // do mapki
     include_once 'templates/JSMin.php';            // do mapki
     $MAP_OBJECT = new GoogleMapAPI();
+    $MAP_OBJECT->api_options['key'] = $GOOGLE_MAP_KEY;
     $MAP_OBJECT->_minify_js = isset($_REQUEST['min']) ? false : true;
     $MAP_OBJECT->setMapType('ROADMAP');
     $MAP_OBJECT->setWidth('100%');
@@ -217,7 +218,7 @@ ORDER BY finishedIsnull ASC, rgk.finished ASC $ORDERBY";
 
         // jeśli kret skończył lub skończył się wyścig
         if ($row['lat'] != '' and $row['lon'] != '') {
-            if ($status == 2 or $row['finished'] != '') {
+            if (($status == 2 or $row['finished'] != '') and $row['finishLon'] and $row['finishLat']) {
                 $MAP_OBJECT->addMarkerByCoords($row['finishLon'], $row['finishLat'], '', "<h2>$row[3]</h2>$avatar<br />$droga km<br />$kesze caches", '', $ikonka);
             } else {
                 $MAP_OBJECT->addMarkerByCoords($row['lon'], $row['lat'], '', "<h2>$row[3]</h2>$avatar<br />$droga km<br />$kesze caches", '', $ikonka);

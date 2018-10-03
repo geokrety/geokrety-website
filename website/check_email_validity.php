@@ -1,7 +1,6 @@
 <?php
 
-function check_email_validity($userid, $alert_msgs)
-{
+function check_email_validity($userid, $alert_msgs) {
     include_once 'db.php';
     $db = new db();
 

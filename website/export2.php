@@ -42,16 +42,14 @@ $link = DBConnect();
 
 $now = date('Y-m-d H:i:s');
 
-function czysc_dane($in)
-{
+function czysc_dane($in) {
     if (is_int((int) $in)) {
         return $in;
     } else {
         return null;
     }
 }
-function czysc_dane_txt($in)
-{
+function czysc_dane_txt($in) {
     if (is_string((string) $in)) {
         return $in;
     } else {

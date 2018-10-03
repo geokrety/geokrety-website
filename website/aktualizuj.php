@@ -1,8 +1,7 @@
 <?php
 
 
-function aktualizuj_obrazek_statystyki($userid)
-{
+function aktualizuj_obrazek_statystyki($userid) {
     if ($userid == 0) {
         return;
     }
@@ -92,8 +91,7 @@ function aktualizuj_obrazek_statystyki($userid)
 
 // ------------------------------------------------------ zlicz drogﻳ ---------------- //
 
-function zlicz_droge($ruch_id)
-{
+function zlicz_droge($ruch_id) {
     // calculate distance between this and previous location
 
     include 'templates/konfig.php';
@@ -127,8 +125,7 @@ function zlicz_droge($ruch_id)
     return $droga;
 }
 
-function aktualizuj_droge($id)
-{
+function aktualizuj_droge($id) {
     //    $result3 = mysql_query(
     //        "SELECT ru.ruch_id
     //							FROM `gk-ruchy` ru
@@ -177,8 +174,7 @@ AND ru1.droga <> round( 6371 * acos( cos( radians(ru1.lat) ) * cos( radians( ru2
 
 // counts number of visited caches
 // (counts distinct values of lat+lon for logstype 0 and 3 only
-function aktualizuj_skrzynki($id)
-{
+function aktualizuj_skrzynki($id) {
     include 'templates/konfig.php';
     $link = DBConnect();
 
@@ -189,8 +185,7 @@ function aktualizuj_skrzynki($id)
 }
 
 // counts number of photos
-function aktualizuj_zdjecia($id)
-{
+function aktualizuj_zdjecia($id) {
     include 'templates/konfig.php';
     $link = DBConnect();
 
@@ -202,8 +197,7 @@ function aktualizuj_zdjecia($id)
 
 // updates the ost_pozycja_id which is the ruch_id for last log of type grabbed, dropped, met or archived
 // all these log types change or may change the current location (and state) of geokret
-function aktualizuj_ost_pozycja_id($id)
-{
+function aktualizuj_ost_pozycja_id($id) {
     include 'templates/konfig.php';
     $link = DBConnect();
 
@@ -235,8 +229,7 @@ function aktualizuj_ost_pozycja_id($id)
 }
 
 // updates the ost_log_id which is the ruch_id for last log
-function aktualizuj_ost_log_id($id)
-{
+function aktualizuj_ost_log_id($id) {
     include 'templates/konfig.php';
     $link = DBConnect();
 
@@ -265,8 +258,7 @@ function aktualizuj_ost_log_id($id)
     $result2 = mysqli_query($link, $sql2);
 }
 
-function aktualizuj_komentarze_dla_ruchu($ruch_id)
-{
+function aktualizuj_komentarze_dla_ruchu($ruch_id) {
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];
@@ -282,8 +274,7 @@ function aktualizuj_komentarze_dla_ruchu($ruch_id)
     $db->exec_num_rows($sql, $num_rows, 0, 'aktualizuj_komentarze_dla_ruchu', 100);
 }
 
-function aktualizuj_missing_dla_kreta($gk_id)
-{
+function aktualizuj_missing_dla_kreta($gk_id) {
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];
@@ -299,8 +290,7 @@ function aktualizuj_missing_dla_kreta($gk_id)
     $db->exec_num_rows($sql, $num_rows, 0, 'aktualizuj_missing_dla_kreta', 100);
 }
 
-function aktualizuj_rekach($gkid)
-{
+function aktualizuj_rekach($gkid) {
     if (!ctype_digit($gkid)) {
         include_once 'defektoskop.php';
         errory_add("Why is gkid [$gkid] not digit-only??", 100, 'aktualizuj_rekach_error_1');
@@ -328,8 +318,7 @@ function aktualizuj_rekach($gkid)
 // --------------------------------------- RACES --------------------------------//
 // --------------------------------------- RACES --------------------------------//
 
-function aktualizuj_race($gk_id, $lat1, $lon1)
-{
+function aktualizuj_race($gk_id, $lat1, $lon1) {
     include 'templates/konfig.php';
     $link = DBConnect();
 

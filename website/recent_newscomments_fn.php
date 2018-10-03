@@ -2,8 +2,7 @@
 
 // display recent news comments
 
-function recent_newscomments($where = '', $title = '', $zapytanie = '', $shownewstitles = 0, $emailversion = 0)
-{
+function recent_newscomments($where = '', $title = '', $zapytanie = '', $shownewstitles = 0, $emailversion = 0) {
     include 'templates/konfig.php';    // config
 
     $word_comments = _('View all comments');
@@ -36,7 +35,7 @@ function recent_newscomments($where = '', $title = '', $zapytanie = '', $shownew
     while ($row = mysqli_fetch_array($result)) {
         list($f_comment_id, $f_news_id, $f_type, $f_comment, $f_date, $f_user_id, $f_username, $f_title, $f_news_userid, $f_who, $f_komentarze, $f_news_date) = $row;
 
-        $imgicon = "<img src='".CONFIG_CDN_IMAGES."/note10.png' alt='*'>";
+        $imgicon = "<img src='".CONFIG_CDN_IMAGES."/icons/note10.png' alt='*'>";
         $datetime = strftime('%Y-%m-%d %H:%M', strtotime($f_date));
 
         // strip long comments:
@@ -60,7 +59,7 @@ function recent_newscomments($where = '', $title = '', $zapytanie = '', $shownew
             $TRESC .= "\n<div class='comment_body'>$comment</div>";
         } else {
             if (in_array($userid, $config['superusers']) || $userid == $f_user_id) {
-                $delete_link = "&nbsp;<a href='$prefix_adresu/newscomments.php?delete=$f_comment_id' onclick='return CzySkasowac(this, \"this comment?\")'><img src='".CONFIG_CDN_IMAGES."/delete10.png' class='textalign10' alt='delete' width='10' height='10' border='0' /></a>";
+                $delete_link = "&nbsp;<a href='$prefix_adresu/newscomments.php?delete=$f_comment_id' onclick='return CzySkasowac(this, \"this comment?\")'><img src='".CONFIG_CDN_IMAGES."/icons/delete10.png' class='textalign10' alt='delete' width='10' height='10' border='0' /></a>";
             } else {
                 $delete_link = '';
             }

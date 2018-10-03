@@ -20,7 +20,8 @@ addons:
             - gettext
 
 install:
-    - composer require --dev friendsofphp/php-cs-fixer
+    - cd website && composer install && cd ..
+    - composer install
     - sudo curl -L https://raw.githubusercontent.com/smarty-gettext/smarty-gettext/master/tsmarty2c.php -o /usr/local/bin/tsmarty2c
     - sudo chmod 0755 /usr/local/bin/tsmarty2c
     - phpenv config-rm xdebug.ini || return 0
@@ -36,6 +37,8 @@ script:
     #- scripts/phplint.sh website/ # Disabled see issue #69
     # Check CS fixer
     - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
+    # Unit tests with PHPUnit
+    - vendor/bin/phpunit
 
 jobs:
   include:

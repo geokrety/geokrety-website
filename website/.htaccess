@@ -9,12 +9,15 @@ ErrorDocument 404 /templates/errors/error404.html
 
 RewriteEngine On
 RewriteCond %{REQUEST_URI} ^/statpics/.*\.png
+RewriteCond "%{HTTP_REFERER}" "^geokrety.org"
 RewriteRule ^statpics/(.*)$ https://cdn.geokrety.org/images/statpics/$1 [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/obrazki/.*\.(png|gif|svg|jpg|jpeg)
+RewriteCond "%{HTTP_REFERER}" "^geokrety.org"
 RewriteRule ^obrazki/(.*)$ https://cdn.geokrety.org/images/obrazki/$1 [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/obrazki-male/.*\.(png|gif|svg|jpg|jpeg)
+RewriteCond "%{HTTP_REFERER}" "^geokrety.org"
 RewriteRule ^obrazki-male/(.*)$ https://cdn.geokrety.org/images/obrazki-male/$1 [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/templates/medal-.*\.png

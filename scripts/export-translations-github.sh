@@ -8,7 +8,7 @@ GIT_BRANCH=master
 if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; then
   echo -e "Starting translation export\n"
   CROWDIN_CLI_URL=https://downloads.crowdin.com/cli/v2/crowdin-cli.zip
-  CROWDIN_CLI_VERSION=2.0.22
+  CROWDIN_CLI_VERSION=2.0.23
 
   TMP=$(mktemp -d)
 
@@ -25,7 +25,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
 
   # Extract new strings
   xgettext --from-code=UTF-8 -o $TMP/messages.pot --language=PHP -f website/rzeczy/lang/input-files-for-xgettext
-  tsmarty2c -o $TMP/smarty.pot ./website/templates/index.html ./website/templates/krety-m.html ./website/templates/krety.html ./website/templates/krety_not_logged_in.html ./website/templates/krety_logged_in.html
+  tsmarty2c -o $TMP/smarty.pot ./website/templates/index.html ./website/templates/krety-m.html ./website/templates/krety.html ./website/templates/krety_not_logged_in.html ./website/templates/krety_logged_in.html ./website/templates/waypointy-translations.html
   msgcat -o website/rzeczy/messages.po.txt $TMP/messages.pot $TMP/smarty.pot
 
   # Upload new strings

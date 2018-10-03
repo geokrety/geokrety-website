@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 21:29+0000\n"
-"PO-Revision-Date: 2018-04-19 17:30-0400\n"
+"POT-Creation-Date: 2018-07-19 18:28+0000\n"
+"PO-Revision-Date: 2018-09-24 19:00\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Crowdin-File: /master/messages.po\n"
 
 #: website/adduser.php:8 website/adduser.php:122 website/templates.php:186
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Registrovat nového uživatele"
@@ -29,46 +29,46 @@ msgstr "Registrovat nového uživatele"
 msgid "Required fields"
 msgstr "Povinná pole"
 
-#: website/adduser.php:71 website/ruchy.php:662
+#: website/adduser.php:71 website/ruchy.php:683
 msgid "Username"
-msgstr ""
+msgstr "Uživatelské jméno"
 
-#: website/adduser.php:76 website/api-login2secid.php:64
-#: website/longin.php:142 website/mypage.php:43
+#: website/adduser.php:76 website/api-login2secid.php:63
+#: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Heslo"
 
 #: website/adduser.php:81
 msgid "Verify Password"
-msgstr "Ověření hesla"
+msgstr "Heslo znova"
 
-#: website/adduser.php:86 website/edit.php:402 website/new_password.php:52
+#: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
 msgid "Email"
 msgstr "E-mail"
 
 #: website/adduser.php:88
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
-msgstr "Ano, chci dostávat upozornění emailem (posílaný denně o půlnoci) pokud můj, nebo sledovaný Geokrtek změní pozici."
+msgstr "Ano, chci dostávat upozornění emailem (posílané denně o půlnoci) pokud můj nebo mnou sledovaný GeoKrtek změní pozici."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:916
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:938
 msgid "Enter code"
 msgstr "Zadejte kód"
 
-#: website/adduser.php:103 website/edit.php:489 website/mypage.php:308
+#: website/adduser.php:103 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Jazyk"
 
 #: website/adduser.php:118 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:147
-#: website/templates/krety.html:233
+#: website/templates/krety.html:234
 msgid "Terms of use"
-msgstr "Podmínky použití"
+msgstr "Podmínky používání"
 
 #: website/adduser.php:125
 msgid "Tips"
 msgstr "Tipy"
 
-#: website/adduser.php:128 website/edit.php:206
+#: website/adduser.php:128 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -83,20 +83,20 @@ msgstr "Přečti si více o výběru dobrých hesel:\n"
 "</ul>"
 
 #: website/adduser.php:137 website/majluj.php:134 website/new_password.php:60
-msgid "No antispam phase!"
-msgstr ""
+msgid "No antispam phrase!"
+msgstr "Není vyplněná kontrola proti spamu!"
 
 #: website/adduser.php:139 website/majluj.php:136 website/new_password.php:62
 msgid "Wrong antispam phrase!"
-msgstr "Chybný kontrolní klíč!"
+msgstr "Špatně vyplněná kontrola proti spamu!"
 
 #: website/adduser.php:145 website/adduser.php:148
 msgid "No password"
-msgstr "Bez hesla"
+msgstr "Nevyplnili jste heslo"
 
 #: website/adduser.php:151
 msgid "Passwords are different or empty!"
-msgstr "Hesla se neshodují, nebo je heslo prázdné!"
+msgstr "Hesla se neshodují nebo nejsou vyplněna!"
 
 #: website/adduser.php:154
 msgid "Password to short (should be >= 5 characters)!"
@@ -105,20 +105,20 @@ msgstr "Heslo je příliš krátké (musí mít nejméně 5 znaků)!"
 #: website/adduser.php:175
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
-msgstr "Vypadá to, že <a href='mypage.php?userid=%s'> váš účet</a> byl již vytvořen."
+msgstr "Vypadá to, že <a href='mypage.php?userid=%s'>váš účet</a> byl již vytvořen."
 
 #: website/adduser.php:176 website/adduser.php:259
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
-msgstr "Kontrolní email byl odeslán na Vaší emailovou adresu. Pokud jej potvrdíte, bude Váš účet plně funkční. Pokud ne, nebudete dostávat emaily s denním přehledem pohybu Vašich GeoKrtků. Odkaz v emailu je platný 5 dní. Nyní můžete provádět operaci s GeoKrtky, logovat a bavit se s Geokrtkama! :) "
+msgstr "Kontrolní email byl odeslán na vaši emailovou adresu. Po potvrzení bude váš účet plně funkční. Do té doby nebudete dostávat emaily s denním přehledem pohybu vašich GeoKrtků. Kontrolní odkaz platí 5 dní. Nyní můžete provádět operace s GeoKrtky. Přihlaste se a užívejte si GeoKrety.org! :)"
 
 #: website/adduser.php:177 website/longin.php:9 website/templates.php:189
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Přihlášení"
 
 #: website/adduser.php:177 website/templates.php:192
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Zapomenuté heslo?"
@@ -137,7 +137,7 @@ msgstr "Špatná emailová adresa?"
 
 #: website/adduser.php:256
 msgid "Account successfully created"
-msgstr ""
+msgstr "Účet byl úspěšně vytvořen"
 
 #: website/aktywuj_maila.php:41 website/confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -151,58 +151,58 @@ msgstr "Bad potvrzovací kód nebo jiná chyba."
 msgid "GK XML interface"
 msgstr "GK XML rozhraní"
 
-#: website/check_email_validity.php:12
+#: website/check_email_validity.php:11
 #, php-format
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
-msgstr ""
+msgstr "Vaše aktuálně nastavená emailová adresa (%s) se zdá být neplatná. <a href=\"/edit.php?co=email\">aktualizujte vaší e-mailovou adresu</a> v předvolbách."
 
-#: website/claim.php:22 website/comment.php:77 website/generatorek.php:57
-#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:275
+#: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
+#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
 msgstr "Prosím přihlaste se."
 
-#: website/comment.php:21
+#: website/comment.php:20
 msgid "Unknown error."
-msgstr ""
+msgstr "Neznámá chyba."
 
-#: website/comment.php:48
+#: website/comment.php:46
 msgid "Oops! Something went wrong."
 msgstr "Oops! Něco se pokazilo."
 
-#: website/comment.php:125
+#: website/comment.php:123
 #, php-format
 msgid "Reporting GeoKret %s as missing"
 msgstr "Hlášení GeoKret% s jako chybějící"
 
-#: website/comment.php:149
+#: website/comment.php:147
 #, php-format
 msgid "Commenting GeoKret: %s"
 msgstr "Komentuje GeoKret:% s"
 
-#: website/comment.php:163
+#: website/comment.php:161
 msgid "Please provide any information that may help the owner to find out the whereabouts of this GeoKret."
 msgstr "&quot;&quot; Prosím, poskytovat jakékoli informace, které mohou pomoci zjistit, vlastníka &quot;,&quot; místo pobytu této GeoKret."
 
-#: website/comment.php:166
+#: website/comment.php:164
 msgid "Log:"
-msgstr ""
+msgstr "Logy:"
 
-#: website/comment.php:166 website/comment.php:181
+#: website/comment.php:164 website/comment.php:179
 #, php-format
 msgid "By %s, on %s"
-msgstr ""
+msgstr "Od %s, pro %s"
 
-#: website/comment.php:181
+#: website/comment.php:179
 msgid "Last comment:"
-msgstr ""
+msgstr "Přidat komentář:"
 
-#: website/comment.php:192
+#: website/comment.php:190
 msgid "Your comment"
 msgstr "Váš komentář"
 
-#: website/comment.php:200 website/majluj.php:125
+#: website/comment.php:198 website/majluj.php:125
 msgid "Send message"
 msgstr "Poslat zprávu"
 
@@ -227,35 +227,35 @@ msgstr "Chcete-li změnit e-mailovou adresu %sklikněte zde%s."
 msgid "This confirmation code has already been processed."
 msgstr "Tento potvrzovací kód již byl zpracován."
 
-#: website/cords_parse.php:237
+#: website/cords_parse.php:236
 msgid "Bad coordinates or unknown format."
 msgstr "Špatné souřadnice nebo neznámý formát."
 
-#: website/cords_parse.php:245
+#: website/cords_parse.php:244
 msgid "Missing or invalid coordinates."
 msgstr "Chybějící nebo neplatné souřadnice."
 
-#: website/cotozalog.php:8 website/templates/konfig.php:162
+#: website/cotozalog.php:8 website/templates/konfig.php:181
 msgid "Dropped to"
 msgstr "Necháno v"
 
-#: website/cotozalog.php:9 website/templates/konfig.php:163
+#: website/cotozalog.php:9 website/templates/konfig.php:182
 msgid "Grabbed from"
 msgstr "Vyjmuto z"
 
-#: website/cotozalog.php:10 website/templates/konfig.php:164
+#: website/cotozalog.php:10 website/templates/konfig.php:183
 msgid "A comment"
 msgstr "Komentář"
 
-#: website/cotozalog.php:11 website/templates/konfig.php:165
+#: website/cotozalog.php:11 website/templates/konfig.php:184
 msgid "Seen in"
 msgstr "Viděno v"
 
-#: website/cotozalog.php:12 website/templates/konfig.php:166
+#: website/cotozalog.php:12 website/templates/konfig.php:185
 msgid "Archived"
 msgstr "Archivováno"
 
-#: website/cotozalog.php:13 website/templates/konfig.php:167
+#: website/cotozalog.php:13 website/templates/konfig.php:186
 msgid "Dipped in"
 msgstr "Viděno"
 
@@ -284,22 +284,23 @@ msgid "Freshman mole"
 msgstr "Prvák krtek"
 
 #: website/cotozalog.php:40 website/generatorek.php:132
-#: website/templates/konfig.php:169
+#: website/templates/konfig.php:188
+#: website/templates/waypointy-translations.html:132
 msgid "Traditional"
 msgstr "Tradiční"
 
 #: website/cotozalog.php:41 website/generatorek.php:133
-#: website/templates/konfig.php:170
+#: website/templates/konfig.php:189
 msgid "A book/CD/DVD..."
 msgstr "Kniha/CD/DVD..."
 
 #: website/cotozalog.php:42 website/generatorek.php:134
-#: website/templates/konfig.php:171
+#: website/templates/konfig.php:190
 msgid "A human"
 msgstr "Člověk"
 
 #: website/cotozalog.php:43 website/generatorek.php:135
-#: website/templates/konfig.php:172
+#: website/templates/konfig.php:191
 msgid "A coin"
 msgstr "Mince"
 
@@ -311,37 +312,37 @@ msgstr "Statistiky zemí"
 
 #: website/country_stat.php:30
 msgid "Where are GeoKrety now?"
-msgstr ""
+msgstr "Kde je teď GeoKrety?"
 
-#: website/czy_obserwowany.php:45
+#: website/czy_obserwowany.php:44
 msgid "Number of users who are watching this geokret"
 msgstr "Počet uživatelů, kteří sledují tento geokret"
 
-#: website/czy_obserwowany.php:49
+#: website/czy_obserwowany.php:48
 msgid "Watch this GeoKret"
 msgstr "Sledovat toto GeoKret"
 
-#: website/czy_obserwowany.php:53 website/mygeokrets.php:280
+#: website/czy_obserwowany.php:52 website/mygeokrets.php:279
 msgid "Stop watching this GeoKret"
 msgstr "Přestat sledovat tento GeoKret"
 
-#: website/czy_obserwowany.php:58
+#: website/czy_obserwowany.php:57
 msgid "Users watching it"
 msgstr "Sledující uživatelé"
 
-#: website/czy_obserwowany.php:60
+#: website/czy_obserwowany.php:59
 msgid "Users watching this GeoKret"
 msgstr "Uživatelé, kteří sledují tento GeoKret"
 
-#: website/days_ago.php:14
+#: website/days_ago.php:13
 msgid "days ago"
 msgstr "dní zpět"
 
-#: website/days_ago.php:16 website/ruchy.php:966
+#: website/days_ago.php:15 website/ruchy.php:988
 msgid "Yesterday"
 msgstr "Včera"
 
-#: website/days_ago.php:18 website/ruchy.php:965
+#: website/days_ago.php:17 website/ruchy.php:987
 msgid "Today"
 msgstr "Dnes"
 
@@ -357,7 +358,7 @@ msgstr "Soubor překladu"
 
 #: website/download.php:15
 msgid "Our translation files are now hosted on crowdin."
-msgstr ""
+msgstr "Naše překladové soubory jsou nyní umístěny na crowdin."
 
 #: website/download.php:16
 msgid "Suggest a better translation"
@@ -390,7 +391,7 @@ msgstr "Příklad štítku Geokrtka"
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
 msgstr "Vezměte prosím na vědomí, že můžete vytvářet štítky pro vaše geokret automaticky, kliknutím na příslušný odkaz na GK stránku."
 
-#: website/edit.php:12 website/ruchy.php:647
+#: website/edit.php:12 website/ruchy.php:668
 msgid "Edit"
 msgstr "Editovat"
 
@@ -398,126 +399,125 @@ msgstr "Editovat"
 msgid "You must be logged in to continue."
 msgstr "Musíte být přihlášen, aby pokračovala."
 
-#: website/edit.php:199
+#: website/edit.php:198
 msgid "Old password"
 msgstr "Staré heslo"
 
-#: website/edit.php:201
+#: website/edit.php:200
 msgid "New password"
 msgstr "Nové heslo"
 
-#: website/edit.php:203
+#: website/edit.php:202
 msgid "Retype"
 msgstr "Opakovat"
 
-#: website/edit.php:204
+#: website/edit.php:203
 msgid "characters"
 msgstr "znaky"
 
-#: website/edit.php:228
+#: website/edit.php:227
 msgid "Passwords different or empty or too short"
 msgstr "Hesla se neshodují nebo je heslo příliš krátké"
 
-#: website/edit.php:230
+#: website/edit.php:229
 msgid "Wrong current password"
 msgstr "Chybné heslo"
 
-#: website/edit.php:327 website/mypage.php:156
+#: website/edit.php:326 website/mypage.php:156
 msgid "Home coordinates"
 msgstr "Domácí souřadnice"
 
-#: website/edit.php:330
+#: website/edit.php:329
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Pomocí mapy vyberte umístění nebo zadejte souřadnice ručně."
 
-#: website/edit.php:330 website/race_join.php:41 website/ruchy.php:892
-#: website/szukaj-ajax.php:99 website/szukaj.php:86 website/szukaj.php:94
-#: website/szukaj.php:117
+#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:914
+#: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
 msgid "eg."
 msgstr "např."
 
-#: website/edit.php:330
+#: website/edit.php:329
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
-msgstr ""
+msgstr "<a href=\"%s\" target=\"_blank\">Ostatní přijatelné lat/lon formáty</a>"
 
-#: website/edit.php:341 website/mypage.php:156
+#: website/edit.php:340 website/mypage.php:156
 msgid "Observation area"
 msgstr "Pozorování oblast"
 
-#: website/edit.php:343
+#: website/edit.php:342
 msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
 msgstr "Můžete přijímat oznámení, pokud některý geokret je zaznamenána v určené vzdálenosti od vaší domovské souřadnic. Chcete-li zakázat zadat 0."
 
-#: website/edit.php:362
+#: website/edit.php:361
 msgid "Observation radius is invalid or outside the min/max range"
 msgstr "Pozorování poloměr je neplatný nebo mimo min / max rozmezí"
 
-#: website/edit.php:397
+#: website/edit.php:396
 msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
 msgstr "Nedávné logy: * Vaše vlastní geokrets * geokrets, že se budete dívat * žádné geokrets přihlášen poblíž vašeho domova"
 
-#: website/edit.php:398
+#: website/edit.php:397
 msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
 msgstr "Komentáře zaslané na kteroukoli z následujících akcí: * Vaše vlastní geokrets * geokrets, že sledujete * logy * Vaše komentáře * Zprávy příspěvků jste již přihlášeni k"
 
-#: website/edit.php:404
+#: website/edit.php:403
 msgid "Yes, I want to receive email alerts (sent once a day). Email alerts may contain any of the following:"
 msgstr "Ano, chci dostávat e-mailem upozornění (poslal jednou denně). E-mailová upozornění může obsahovat některou z těchto vlastností:"
 
-#: website/edit.php:407
+#: website/edit.php:406
 msgid "GeoKrety.org news"
 msgstr "GeoKrety.org novinky"
 
-#: website/edit.php:453 website/edit.php:456
+#: website/edit.php:452 website/edit.php:455
 msgid "[GeoKrety] Email address change request at geokrety.org"
 msgstr "[GeoKrety] E-mailová adresa žádost o změnu v geokrety.org"
 
-#: website/edit.php:459
+#: website/edit.php:458
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days."
 msgstr "Potvrzovací e-mail byl odeslán na vaši novou adresu. Musíte kliknout na odkaz uvedený v e-mailu o potvrzení změny na vaší e-mailovou adresu. Odkaz pro potvrzení je platné po dobu 5 dnů."
 
-#: website/edit.php:462
+#: website/edit.php:461
 msgid "Error, please try again later..."
 msgstr "Chyba, zkuste to prosím později ..."
 
-#: website/edit.php:469
+#: website/edit.php:468
 msgid "Wrong email or subscribtion option"
 msgstr "Śpatná volba Přihlášení nebo e-mailu"
 
-#: website/edit.php:518 website/mypage.php:45
+#: website/edit.php:517 website/mypage.php:45
 msgid "Choose statpic"
 msgstr "vyberte obrázek do statusbaru"
 
-#: website/edit.php:552 website/labels.php:55 website/register.php:45
+#: website/edit.php:551 website/labels.php:55 website/register.php:45
 #: website/szukaj.php:100
 msgid "GeoKret name"
 msgstr "Jméno GeoKrtka"
 
-#: website/edit.php:556 website/register.php:49
+#: website/edit.php:555 website/register.php:49
 msgid "Geokret type"
 msgstr "Typ GeoKrtka"
 
-#: website/edit.php:564 website/register.php:57
+#: website/edit.php:563 website/register.php:57
 msgid "help.php#geokretytypes"
 msgstr "http://wiki.geocaching.cz/wiki/Geokrtek#Typy_GeoKrtk.C5.AF"
 
-#: website/edit.php:568 website/generatorek.php:140 website/labels.php:67
-#: website/recent_comments_fn.php:103 website/recent_moves.php:94
-#: website/register.php:61 website/ruchy.php:565 website/ruchy.php:833
-#: website/ruchy.php:993
+#: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
+#: website/recent_comments_fn.php:102 website/recent_moves.php:93
+#: website/register.php:61 website/ruchy.php:586 website/ruchy.php:854
+#: website/ruchy.php:1015
 msgid "Comment"
 msgstr "Poznámka"
 
-#: website/edit.php:570 website/generatorek.php:142 website/grp_create.php:66
-#: website/majluj.php:106 website/newscomments.php:253
+#: website/edit.php:569 website/generatorek.php:142 website/grp_create.php:66
+#: website/majluj.php:106 website/newscomments.php:251
 #: website/race_add.php:143 website/register.php:63
 msgid "characters left"
 msgstr "Zbývající znaky"
 
 #: website/email2gk.php:10
 msgid "Email2GK :: β (beta)"
-msgstr ""
+msgstr "Email2GK :: β (beta)"
 
 #: website/errory.php:9
 msgid "errors"
@@ -530,7 +530,7 @@ msgid "Photo gallery"
 msgstr "Fotogalerie"
 
 #: website/geokret_gallery.php:35 website/konkret.php:35
-#: website/konkret.php:45 website/konkret.php:62 website/ruchy.php:258
+#: website/konkret.php:45 website/konkret.php:62 website/ruchy.php:266
 msgid "No such GeoKret!"
 msgstr "Geokrtek nenalezen!"
 
@@ -543,22 +543,22 @@ msgid "Photo gallery of"
 msgstr "Autor galerie"
 
 #: website/geokret_gallery.php:121 website/geokret_gallery.php:131
-#: website/recent_pictures.php:56 website/recent_pictures.php:64
+#: website/recent_pictures.php:55 website/recent_pictures.php:63
 msgid "Photo by"
 msgstr "Autor fotky"
 
-#: website/geokret_gallery.php:124 website/recent_moves.php:95
-#: website/recent_pictures.php:60 website/ruchy.php:956
+#: website/geokret_gallery.php:124 website/recent_moves.php:94
+#: website/recent_pictures.php:59 website/ruchy.php:978
 msgid "Date"
 msgstr "Datum"
 
 #: website/geokret_gallery.php:126 website/lingering.php:202
-#: website/mygeokrets.php:276 website/mygeokrets.php:289
-#: website/recent_moves.php:93
+#: website/mygeokrets.php:275 website/mygeokrets.php:288
+#: website/recent_moves.php:92
 msgid "Cache"
 msgstr "Keš"
 
-#: website/geokret_gallery.php:129 website/recent_pictures.php:62
+#: website/geokret_gallery.php:129 website/recent_pictures.php:61
 msgid "Country"
 msgstr "Země"
 
@@ -628,12 +628,12 @@ msgstr "Zobrazit skupinu"
 msgid "Hall of fame"
 msgstr "Síň slávy"
 
-#: website/help.php:9 website/help_generate.php:10 website/krety.html.php:24
-#: website/templates.php:42 website/templates.php:48 website/templates.php:105
-#: website/templates.php:111 website/templates.php:231
-#: website/templates.php:237 website/templates.php:294
-#: website/templates.php:300 website/templates/krety.html:141
-#: website/templates/krety.html:143
+#: website/help_generate.php:10 website/help_generate.php:36
+#: website/krety.html.php:24 website/templates.php:42 website/templates.php:48
+#: website/templates.php:105 website/templates.php:111
+#: website/templates.php:231 website/templates.php:237
+#: website/templates.php:294 website/templates.php:300
+#: website/templates/krety.html:141 website/templates/krety.html:143
 msgid "Help"
 msgstr "Pomoc"
 
@@ -704,7 +704,7 @@ msgstr "Použij avatar"
 #: website/imgup.php:392
 #, php-format
 msgid "Geokret's main picture, displayed under this icon: %s"
-msgstr ""
+msgstr "Hlavní obrázek GeoKrets, zobrazený pod touto ikonou: %s"
 
 #: website/imgup.php:393
 msgid "Remember"
@@ -721,13 +721,13 @@ msgstr "Zapamatuj si popis pro další %d minuty"
 msgid "Home"
 msgstr "Domů"
 
-#: website/index.php:86
+#: website/index.php:86 website/index.php:294
 msgid "Welcome to GeoKrety.org!"
-msgstr ""
+msgstr "Vítejte na GeoKrety.org!"
 
-#: website/index.php:91
+#: website/index.php:91 website/index.php:295
 msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
-msgstr ""
+msgstr "Vítejte na GeoKrety.org! Tato služba je podobná jako TravelBug(TM) nebo GeoLutins a má za cíl sledovat Vaše věci uložené do keší...<a href=\"http://wiki.geocaching.cz/wiki/Geokrtek#Co_jsou_GeoKrety\">tady se dočtete víc...</a>"
 
 #: website/index.php:97
 msgid "registered GeoKrets"
@@ -748,11 +748,11 @@ msgstr "<strong>%d km </strong> nacestovali GeoKrtci ( to je %.2f x vzdálenost 
 
 #: website/index.php:105
 msgid "If you found a GeoKret, enter the tracking code here:"
-msgstr ""
+msgstr "Pokud jste našli GeoKret, zadejte kód sledování zde:"
 
-#: website/index.php:108 website/ruchy.php:1007
+#: website/index.php:108 website/ruchy.php:1029
 msgid "Go!"
-msgstr ""
+msgstr "Začít!"
 
 #: website/index.php:110 website/templates.php:12 website/templates.php:75
 #: website/templates.php:201 website/templates.php:264
@@ -767,7 +767,7 @@ msgstr "není se třeba registrovat!"
 msgid "News"
 msgstr "Novinky"
 
-#: website/index.php:162 website/newscomments.php:49
+#: website/index.php:162 website/newscomments.php:47
 msgid "Comments"
 msgstr "Komentáře"
 
@@ -789,84 +789,84 @@ msgstr "Online uživatelé"
 
 #: website/index.php:269
 msgid "Join our translation team"
-msgstr ""
+msgstr "Připojit se k překladatelskému týmu"
 
 #: website/index.php:269
 msgid "Suggest a better translation - inline"
-msgstr ""
+msgstr "Navrhnout lepší překlad"
 
 #: website/index.php:269
 msgid "visits/day"
 msgstr "návštěv za den"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "Hidden"
 msgstr "Ukryto"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "in"
 msgstr "v"
 
-#: website/konkret-tabelka.php:182
+#: website/konkret-tabelka.php:188
 msgid "Report as missing"
 msgstr "Nahlásit jako chybějící"
 
-#: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/konkret-tabelka.php:222 website/lingering.php:115
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search for caches in this area on geocaching.com"
 msgstr "Hledej kešky v této oblasti na geocaching.com"
 
-#: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/konkret-tabelka.php:222 website/lingering.php:115
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search geocaching.com"
 msgstr "Hledej na geocaching.com"
 
-#: website/konkret-tabelka.php:227
+#: website/konkret-tabelka.php:233
 msgid "Write comment"
 msgstr "Napsat komentář"
 
-#: website/konkret-tabelka.php:233 website/konkret.php:82
-#: website/recent_moves.php:216
+#: website/konkret-tabelka.php:239 website/konkret.php:83
+#: website/recent_moves.php:215
 msgid "Add photo"
 msgstr "Přidat fotku"
 
-#: website/konkret-tabelka.php:233 website/recent_moves.php:216
+#: website/konkret-tabelka.php:239 website/recent_moves.php:215
 msgid "Edit log"
 msgstr "Editovat zápis"
 
-#: website/konkret-tabelka.php:239
+#: website/konkret-tabelka.php:245
 msgid "Delete log"
 msgstr "Smazat zápis"
 
-#: website/konkret-tabelka.php:268 website/konkret.php:135
+#: website/konkret-tabelka.php:274 website/konkret.php:136
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: website/konkret-tabelka.php:269 website/konkret.php:136
+#: website/konkret-tabelka.php:275 website/konkret.php:137
 msgid "Delete photo"
 msgstr "Smazat fotku"
 
-#: website/konkret-tabelka.php:354
+#: website/konkret-tabelka.php:364
 msgid "Delete comment"
 msgstr "Odstranit komentář"
 
-#: website/konkret.php:81
+#: website/konkret.php:82
 msgid "Edit description"
 msgstr "Editovat popis"
 
-#: website/konkret.php:85
+#: website/konkret.php:86
 msgid "Print a label for this geokret"
 msgstr "Vytisknout štítek pro tohoto geokrtka"
 
-#: website/konkret.php:86
+#: website/konkret.php:87
 msgid "Archive this geokret"
 msgstr "Archivovat tohoto geokrtka"
 
-#: website/konkret.php:92
+#: website/konkret.php:93
 msgid "Write a note"
 msgstr "Napsat poznámku"
 
-#: website/konkret.php:93 website/mypage.php:329
+#: website/konkret.php:94 website/mypage.php:328
 #: website/statystyczka-hubs.php:11 website/statystyczka-lata.php:11
 #: website/statystyczka.php:11 website/statystyczka2.php:11
 #: website/statystyczka3.php:11 website/templates.php:24
@@ -878,122 +878,122 @@ msgstr "Napsat poznámku"
 msgid "Statistics"
 msgstr "Statistiky"
 
-#: website/konkret.php:94
+#: website/konkret.php:95
 msgid "View photo gallery"
 msgstr "Zobrazit galerii"
 
-#: website/konkret.php:94
+#: website/konkret.php:95
 msgid "Number of photos in the gallery"
 msgstr "Počet fotografií v galerii"
 
-#: website/konkret.php:112 website/lingering.php:184
-#: website/mygeokrets.php:255
+#: website/konkret.php:113 website/lingering.php:184
+#: website/mygeokrets.php:254
 msgid "Log this GeoKret"
 msgstr "Zapiš tohoto Geokrtka"
 
-#: website/konkret.php:113
+#: website/konkret.php:114
 msgid "Recreate a label for this geokret"
 msgstr "Znovu štítek pro tento geokret"
 
-#: website/konkret.php:144
+#: website/konkret.php:145
 msgid "Altitude profile"
 msgstr "Profil nadmořské výšky"
 
-#: website/konkret.php:170
+#: website/konkret.php:171
 msgid "Email the owner"
 msgstr "Email majitele"
 
-#: website/konkret.php:176
+#: website/konkret.php:177
 msgid "Login to claim this GeoKret"
 msgstr "Přihlásit se uplatněním nároku na toto GeoKret"
 
-#: website/konkret.php:178
+#: website/konkret.php:179
 #, php-format
 msgid "This GeoKret is available for adoption. Please <a href=\"%s\">login</a> first."
-msgstr ""
+msgstr "Tento GeoKret je k dispozici k adopci. Prosím nejprve se <a href=\"%s\">přihlašte</a>."
 
-#: website/konkret.php:181
+#: website/konkret.php:182
 msgid "Claim this GeoKret"
 msgstr "Prohlašují, že toto GeoKret"
 
-#: website/konkret.php:183
+#: website/konkret.php:184
 #, php-format
 msgid "This GeoKret is available for adoption. You can <a href=\"%s\">claim</a> this GeoKret."
-msgstr ""
+msgstr "Tento GeoKret je k dispozici k adopci. Můžete <a href=\"%s\">převzat</a> tento GeoKret."
 
-#: website/konkret.php:239
+#: website/konkret.php:246
 msgid "You can rate this GeoKret"
 msgstr "Zde můžete ohodnotit GeoKret"
 
-#: website/konkret.php:242
+#: website/konkret.php:249
 msgid "You have already rated this GeoKret"
 msgstr "Už jste hodnotili tento GeoKret"
 
-#: website/konkret.php:244
+#: website/konkret.php:251
 msgid "You can't rate your own GeoKret"
 msgstr "Nemůžete hodnotit svůj vlastní GeoKret"
 
-#: website/konkret.php:246
+#: website/konkret.php:253
 msgid "You can't rate this geokret"
 msgstr "Nemůžete hodnotit tento geokret"
 
-#: website/konkret.php:264
+#: website/konkret.php:275
 msgid "Total distance"
 msgstr "Celková vzdálenost"
 
-#: website/konkret.php:265
+#: website/konkret.php:276
 msgid "Places visited"
 msgstr "Místa navštívil"
 
-#: website/konkret.php:266
+#: website/konkret.php:277
 msgid "Forum links"
 msgstr "Fórum odkazy"
 
-#: website/konkret.php:267
+#: website/konkret.php:278
 msgid "Country track"
 msgstr "Cesta státy"
 
-#: website/konkret.php:268
+#: website/konkret.php:279
 msgid "Rating"
 msgstr "Hodnoceni"
 
-#: website/konkret.php:270
+#: website/konkret.php:281
 msgid "votes"
 msgstr "hlasů"
 
-#: website/konkret.php:270
+#: website/konkret.php:281
 msgid "average rating"
 msgstr "průměrné hodnocení"
 
-#: website/konkret.php:274
+#: website/konkret.php:285
 msgid "Share on"
 msgstr "Sdílet na"
 
-#: website/konkret.php:285
+#: website/konkret.php:296
 msgid "Short description"
 msgstr "Krátký popis"
 
-#: website/konkret.php:316
+#: website/konkret.php:327
 msgid "start"
 msgstr "start"
 
-#: website/konkret.php:317
+#: website/konkret.php:328
 msgid "trip points"
 msgstr "body cesty"
 
-#: website/konkret.php:318
+#: website/konkret.php:329
 msgid "recently seen"
 msgstr "naposledy viděn"
 
-#: website/konkret.php:327
+#: website/konkret.php:338
 msgid "The google map is not avaliable due to large numer of points."
 msgstr "Mapa satelitní není avaliable kvůli velkému hradišťském bodů."
 
-#: website/konkret.php:329
+#: website/konkret.php:340
 msgid "This geokret has not started yet"
 msgstr "Tento geokret ještě nezačala"
 
-#: website/konkret.php:334
+#: website/konkret.php:345
 msgid "Download the track as:"
 msgstr "Stáhněte si skladby jako:"
 
@@ -1001,11 +1001,11 @@ msgstr "Stáhněte si skladby jako:"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: website/kontakt.php:12
+#: website/kontakt.php:17
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "Pokud máte nápady, nebo jste nalezli chyby napište nám"
 
-#: website/krety.html.php:9 website/ruchy.php:645
+#: website/krety.html.php:9 website/ruchy.php:666
 msgid "Operations on GeoKrety"
 msgstr "Operace s GeoKrtkem"
 
@@ -1019,34 +1019,34 @@ msgstr "Hledat"
 #: website/templates.php:108 website/templates.php:234
 #: website/templates.php:297 website/templates/krety.html:143
 msgid "help.php"
-msgstr ""
+msgstr "help_generate.php?help=cz"
 
 #: website/krety.html.php:27 website/templates.php:54
 #: website/templates.php:126 website/templates.php:243
 #: website/templates.php:309 website/templates/krety.html:195
 msgid "help.php#about"
-msgstr ""
+msgstr "http://wiki.geocaching.cz/wiki/Geokrtek#Co_jsou_GeoKrety"
 
 #: website/krety.html.php:30 website/templates.php:57
 #: website/templates.php:129 website/templates.php:246
 #: website/templates.php:312 website/templates/krety.html:195
 msgid "About"
-msgstr ""
+msgstr "O nás"
 
 #: website/krety.html.php:33 website/templates.php:63
 #: website/templates.php:135 website/templates.php:180
 #: website/templates.php:252 website/templates.php:318
 #: website/templates.php:324 website/templates/krety-m.html:46
-#: website/templates/krety.html:233
+#: website/templates/krety.html:234
 msgid "contact"
-msgstr ""
+msgstr "kontakt"
 
 #: website/labels.php:11
 msgid "Print label"
 msgstr "Tiskonout štítek"
 
-#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:287
-#: website/mygeokrets.php:292 website/race.php:285 website/race.php:408
+#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:286
+#: website/mygeokrets.php:291 website/race.php:286 website/race.php:409
 #: website/race_list.php:183 website/race_list.php:270
 msgid "Owner"
 msgstr "Majitel"
@@ -1067,55 +1067,55 @@ msgstr "Nápověda jazyků"
 msgid "Please note: not all translations are avaliable. Translations may not work with some templates. English is added by default, so you may not select it."
 msgstr "Poznámka: ne všechny překlady jsou funkční. Překlad nemusí pracovat s některými šablonami.Angličtina je výchozí jazyk, nemusíte si ji vybírat."
 
-#: website/lingering.php:189 website/mygeokrets.php:236
+#: website/lingering.php:189 website/mygeokrets.php:235
 msgid "Edit this GeoKret"
 msgstr "Editovat Geokrtka"
 
-#: website/lingering.php:227 website/mygeokrets.php:329
-#: website/recent_moves.php:92 website/ruchy.php:658
+#: website/lingering.php:227 website/mygeokrets.php:328
+#: website/recent_moves.php:91 website/ruchy.php:679
 msgid "Name"
 msgstr "Jméno"
 
-#: website/lingering.php:230 website/mygeokrets.php:332
+#: website/lingering.php:230 website/mygeokrets.php:331
 msgid "Last action"
 msgstr "Poslední akce"
 
 #: website/lingering.php:231 website/lost_mapka.php:52
-#: website/mapka_kretow.php:69 website/mygeokrets.php:333 website/race.php:107
-#: website/race_list.php:101 website/recent_moves.php:96
+#: website/mapka_kretow.php:69 website/mygeokrets.php:332 website/race.php:108
+#: website/race_list.php:101 website/recent_moves.php:95
 msgid "Distance travelled"
 msgstr "Celková vzdálenost"
 
-#: website/lingering.php:232 website/mygeokrets.php:334 website/race.php:108
+#: website/lingering.php:232 website/mygeokrets.php:333 website/race.php:109
 #: website/race_list.php:102
 msgid "Number of visited caches"
 msgstr "Počet navštívených keší"
 
-#: website/longin.php:43
+#: website/longin.php:42
 msgid "You have successfully logged out of GeoKrety website."
 msgstr "Úspěšně jste odhlášeni z GeoKrety webové stránky."
 
-#: website/longin.php:45
+#: website/longin.php:44
 msgid "You are probably logged in."
 msgstr "Už jste přihlášen."
 
-#: website/longin.php:88
+#: website/longin.php:87
 msgid "User doesn't exist/wrong password."
 msgstr "Uživatel neexistuje/Śpatné heslo."
 
-#: website/longin.php:107
+#: website/longin.php:106
 msgid "Error setting sessid."
 msgstr "Chyba nastavení sessid."
 
-#: website/longin.php:146
+#: website/longin.php:145
 msgid "Remember me"
 msgstr "Zapamatuj si mne"
 
-#: website/longin.php:147
+#: website/longin.php:146
 msgid "We are using cookies only for storing login information and language preferences. Read more <a href=\"/help.php#cookies\">about our cookies policy</a>"
-msgstr ""
+msgstr "Používáme soubory cookie pouze pro ukládání přihlašovacích údajů a předvolby jazyka. Přečtěte si více <a href=\"/help.php#cookies\">o našech souborů cookie</a>"
 
-#: website/longin_chceck.php:27
+#: website/longin_chceck.php:26
 msgid "Wrong secid identifier"
 msgstr "Špatné secid identifikátor"
 
@@ -1138,7 +1138,7 @@ msgid "The list is generated daily."
 msgstr "Seznam je generován denně."
 
 #: website/lost_mapka.php:10 website/mapa.php:9 website/mapka_kretow.php:9
-#: website/race.php:334
+#: website/race.php:335
 msgid "Geokrets on the map"
 msgstr "Typ GeoKrtka"
 
@@ -1154,19 +1154,19 @@ msgstr ""
 #: website/m/qr.php:25
 #, php-format
 msgid "Travelled %s km"
-msgstr ""
+msgstr "Procestoval %s km"
 
 #: website/m/qr.php:28
 msgid "Log grabbing or dropping"
-msgstr ""
+msgstr "Logovat vyjmutí nebo vložení"
 
 #: website/m/qr.php:29
 msgid "View the GK details"
-msgstr ""
+msgstr "Zobrazit GK detaily"
 
 #: website/m/qr.php:32
 msgid "Description:"
-msgstr ""
+msgstr "Popis:"
 
 #: website/m/qr.php:36
 #, php-format
@@ -1179,7 +1179,7 @@ msgstr "Kontaktovat uživatele"
 
 #: website/majluj.php:43
 msgid "Wrong recipient"
-msgstr ""
+msgstr "Nesprávný příjemce"
 
 #: website/majluj.php:60 website/majluj.php:193
 msgid "This user haven't defined an email address."
@@ -1207,12 +1207,12 @@ msgstr "Zprávy"
 
 #: website/majluj.php:191
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: website/majluj.php:196
 #, php-format
 msgid "Sorry, but you have to wait %d minutes before you can send another message."
-msgstr ""
+msgstr "Omlouváme se, ale budete muset počkat %d minut předtím, než můžete odeslat další zprávu."
 
 #: website/molehole.php:71
 msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
@@ -1250,14 +1250,14 @@ msgstr "Jste si jisti?"
 msgid "Generate new secid"
 msgstr "Vygenerovat nový secid"
 
-#: website/mypage.php:106 website/mypage.php:370 website/templates.php:162
-#: website/templates/plugins/function.login_check.php:48
+#: website/mypage.php:106 website/mypage.php:369 website/templates.php:162
+#: website/templates/plugins/function.login_check.php:47
 #: website/templates/krety_logged_in.html:9
 msgid "My recent logs"
 msgstr "Poslední záznamy"
 
-#: website/mypage.php:116 website/mypage.php:371 website/templates.php:165
-#: website/templates/plugins/function.login_check.php:49
+#: website/mypage.php:116 website/mypage.php:370 website/templates.php:165
+#: website/templates/plugins/function.login_check.php:48
 #: website/templates/krety_logged_in.html:10
 msgid "Recent moves of my geokrets"
 msgstr "Poslední pohyby mých geokrtků"
@@ -1267,73 +1267,73 @@ msgstr "Poslední pohyby mých geokrtků"
 msgid "%s's Inventory"
 msgstr "%s's Inventář"
 
-#: website/mypage.php:230
+#: website/mypage.php:229
 #, php-format
 msgid "%s has created <b>%s</b> GeoKrets, which travelled <b>%s</b> km."
 msgstr "%s byl vytvořen <b> %s </ b> GeoKrets, který cestoval <b> %s </ b> km."
 
-#: website/mypage.php:252
+#: website/mypage.php:251
 #, php-format
 msgid "%s has moved <b>%s</b> GeoKrets on a total distance of <b>%s</b> km."
 msgstr "%s byl přesunut <b>%s</b> GeoKrets na celkové vzdálenosti <b>%s</b> km."
 
-#: website/mypage.php:274
+#: website/mypage.php:273
 msgid "Send a message to the user"
 msgstr "Poslat zprávu uživateli"
 
-#: website/mypage.php:307
+#: website/mypage.php:306
 msgid "Joined us"
 msgstr "Připojen jako"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Subscribe to RSS channel"
 msgstr "Odebírat RSS"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Be up to date with your and watched GeoKrets!"
 msgstr "Buď informován o dění tvých a sledovaných Geokrtků!"
 
-#: website/mypage.php:336 website/mypage.php:375 website/user_stat.php:194
+#: website/mypage.php:335 website/mypage.php:374 website/user_stat.php:194
 msgid "User stats"
-msgstr ""
+msgstr "Zobrazit statistiky"
 
-#: website/mypage.php:341
+#: website/mypage.php:340
 msgid "Badges"
 msgstr "Odznaky"
 
-#: website/mypage.php:364
+#: website/mypage.php:363
 msgid "Links"
 msgstr "Odkazy"
 
-#: website/mypage.php:367 website/templates.php:153
-#: website/templates/plugins/function.login_check.php:45
+#: website/mypage.php:366 website/templates.php:153
+#: website/templates/plugins/function.login_check.php:44
 #: website/templates/krety_logged_in.html:6
 msgid "Geokrets in my inventory"
 msgstr "Geokrtci v mém inventáři"
 
-#: website/mypage.php:368 website/templates.php:156
-#: website/templates/plugins/function.login_check.php:46
+#: website/mypage.php:367 website/templates.php:156
+#: website/templates/plugins/function.login_check.php:45
 #: website/templates/krety_logged_in.html:7
 msgid "My geokrets"
 msgstr "Můj GeoKrtek"
 
-#: website/mypage.php:369 website/templates.php:159
+#: website/mypage.php:368 website/templates.php:159
 #: website/templates/krety_logged_in.html:8
 msgid "Watched geokrets"
 msgstr "Sledovaní Geokrtci"
 
-#: website/mypage.php:372 website/templates.php:168
+#: website/mypage.php:371 website/templates.php:168
 #: website/templates/krety_logged_in.html:11
 msgid "My photos"
 msgstr "Moje fotky"
 
-#: website/mypage.php:373 website/templates.php:171
+#: website/mypage.php:372 website/templates.php:171
 #: website/templates/krety_logged_in.html:12
 msgid "Photos of my geokrets"
 msgstr "Fotky z mých geokrets"
 
-#: website/mypage.php:374 website/templates.php:174
-#: website/templates/plugins/function.login_check.php:50
+#: website/mypage.php:373 website/templates.php:174
+#: website/templates/plugins/function.login_check.php:49
 #: website/templates/krety_logged_in.html:13
 msgid "Where are my geokrets?"
 msgstr "Sledovaní GeoKrtci"
@@ -1358,27 +1358,27 @@ msgstr "Nové heslo byla zasláno na"
 msgid "No such email"
 msgstr "Není zadán email!"
 
-#: website/newscomments.php:120
+#: website/newscomments.php:118
 msgid "News post not found."
 msgstr "Novinky příspěvek nebyl nalezen."
 
-#: website/newscomments.php:232
+#: website/newscomments.php:230
 msgid "Unsubscribe from this news post"
 msgstr "Odhlásit z této novinky post"
 
-#: website/newscomments.php:235 website/newscomments.php:254
+#: website/newscomments.php:233 website/newscomments.php:252
 msgid "Subscribe to this news post"
 msgstr "Přihlásit se na tento post novinky"
 
-#: website/newscomments.php:250
+#: website/newscomments.php:248
 msgid "Write new comment"
 msgstr "Napsat nový komentář"
 
-#: website/newscomments.php:255
+#: website/newscomments.php:253
 msgid "Post comment"
 msgstr "Přidat komentář"
 
-#: website/newscomments.php:267
+#: website/newscomments.php:265
 msgid "There are no comments for this post."
 msgstr "Nejsou žádné komentáře k tomuto příspěvku."
 
@@ -1395,138 +1395,138 @@ msgstr "Uživatelé sledování tohoto GeoKret:"
 msgid "Press corner"
 msgstr "Tiskový koutek"
 
-#: website/race.php:43 website/race.php:46 website/race.php:47
-#: website/race.php:442 website/race_list.php:34 website/race_list.php:37
+#: website/race.php:44 website/race.php:47 website/race.php:48
+#: website/race.php:443 website/race_list.php:34 website/race_list.php:37
 #: website/race_list.php:38 website/race_list.php:302
 msgid "days"
 msgstr "dny"
 
-#: website/race.php:54 website/race_list.php:47
+#: website/race.php:55 website/race_list.php:47
 msgid "yes"
 msgstr "ano"
 
-#: website/race.php:56 website/race_list.php:49
+#: website/race.php:57 website/race_list.php:49
 msgid "password"
 msgstr "heslo"
 
-#: website/race.php:57 website/race.php:59 website/race.php:64
-#: website/race.php:386 website/race_join.php:8 website/race_list.php:50
+#: website/race.php:58 website/race.php:60 website/race.php:65
+#: website/race.php:387 website/race_join.php:8 website/race_list.php:50
 #: website/race_list.php:52 website/race_list.php:57
 msgid "Join the Race"
-msgstr ""
+msgstr "Připojit se ke hře"
 
-#: website/race.php:62 website/race_list.php:55
+#: website/race.php:63 website/race_list.php:55
 msgid "no"
 msgstr "ne"
 
-#: website/race.php:71
+#: website/race.php:72
 msgid "Edit this race"
 msgstr "Upravit tento závod"
 
-#: website/race.php:84 website/race_list.php:71
+#: website/race.php:85 website/race_list.php:71
 msgid "Distance to destination"
-msgstr ""
+msgstr "Jízda do destinace"
 
-#: website/race.php:89 website/race_list.php:75
+#: website/race.php:90 website/race_list.php:75
 #, php-format
 msgid "% of target distance done"
 msgstr "% z cílové vzdálenosti dosaženo"
 
-#: website/race.php:93 website/race_list.php:79
+#: website/race.php:94 website/race_list.php:79
 #, php-format
 msgid "% of target caches visited"
 msgstr "% z cílových keší navštíveno"
 
-#: website/race.php:102 website/race_list.php:98
+#: website/race.php:103 website/race_list.php:98
 msgid "Rank"
 msgstr "Hodnost"
 
-#: website/race.php:106
+#: website/race.php:107
 msgid "Last log"
 msgstr "Poslední log"
 
-#: website/race.php:109 website/race_list.php:103
+#: website/race.php:110 website/race_list.php:103
 msgid "Average speed"
 msgstr "Průměrná rychlost"
 
-#: website/race.php:216 website/race_list.php:128 website/race_list.php:130
+#: website/race.php:217 website/race_list.php:128 website/race_list.php:130
 #: website/race_list.php:132
 msgid "km/day"
 msgstr "km/den"
 
-#: website/race.php:273 website/race_list.php:171
+#: website/race.php:274 website/race_list.php:171
 msgid "Race information"
 msgstr ""
 
-#: website/race.php:278 website/race.php:411 website/race_list.php:176
+#: website/race.php:279 website/race.php:412 website/race_list.php:176
 #: website/race_list.php:273
 msgid "Race status"
 msgstr "Stav závodu"
 
-#: website/race.php:290 website/race.php:410 website/race_add.php:147
+#: website/race.php:291 website/race.php:411 website/race_add.php:147
 #: website/race_list.php:188 website/race_list.php:272
 msgid "Race type"
 msgstr ""
 
-#: website/race.php:296 website/race_add.php:127 website/race_list.php:194
+#: website/race.php:297 website/race_add.php:127 website/race_list.php:194
 msgid "Start date"
-msgstr ""
+msgstr "Datum zahájení"
 
-#: website/race.php:303 website/race_add.php:134 website/race_list.php:201
+#: website/race.php:304 website/race_add.php:134 website/race_list.php:201
 msgid "End date"
-msgstr ""
+msgstr "Datum ukončení"
 
-#: website/race.php:310 website/race_add.php:120 website/race_list.php:208
+#: website/race.php:311 website/race_add.php:120 website/race_list.php:208
 msgid "Private race"
 msgstr ""
 
-#: website/race.php:318 website/race_add.php:141 website/race_list.php:216
+#: website/race.php:319 website/race_add.php:141 website/race_list.php:216
 msgid "Race description"
 msgstr ""
 
-#: website/race.php:324 website/race.php:354
+#: website/race.php:325 website/race.php:355
 msgid "Geokrety races"
 msgstr "Závody Geokrety"
 
-#: website/race.php:338 website/race_list.php:227
+#: website/race.php:339 website/race_list.php:227
 msgid "Race participants"
 msgstr "Účastníci závodu"
 
-#: website/race.php:343
+#: website/race.php:344
 msgid "No participants. Yet..."
 msgstr "Žádní účastníci. Zatím..."
 
-#: website/race.php:346 website/race_list.php:232
+#: website/race.php:347 website/race_list.php:232
 msgid "Race"
 msgstr "Závod"
 
-#: website/race.php:382 website/race_add.php:8
+#: website/race.php:383 website/race_add.php:8
 msgid "Register a new Race"
 msgstr ""
 
-#: website/race.php:390
+#: website/race.php:391
 msgid "My races"
 msgstr "Moje závody"
 
-#: website/race.php:396
+#: website/race.php:397
 msgid "Races"
 msgstr "Závody"
 
-#: website/race.php:397 website/race_list.php:259
+#: website/race.php:398 website/race_list.php:259
 msgid "Filter races by status"
-msgstr ""
+msgstr "Filtrovat podle stavu"
 
-#: website/race.php:399 website/race_list.php:260
+#: website/race.php:400 website/race_list.php:260
 msgid "All races"
 msgstr "Všechny závody"
 
-#: website/race.php:407 website/race_add.php:115 website/race_list.php:269
+#: website/race.php:408 website/race_add.php:115 website/race_list.php:269
 msgid "Race title"
 msgstr ""
 
 #: website/race_add.php:16
 msgid "Please login"
-msgstr ""
+msgstr "Prosím přihlaste se"
 
 #: website/race_add.php:42 website/race_add.php:330
 msgid "This is not your race"
@@ -1651,24 +1651,32 @@ msgstr ""
 msgid "Please read this race rules before joining!"
 msgstr ""
 
-#: website/race_join.php:78
+#: website/race_join.php:79
 msgid "No race selected"
 msgstr ""
 
-#: website/race_join.php:80
+#: website/race_join.php:82
 msgid "No reference number"
 msgstr ""
 
-#: website/race_join.php:102
+#: website/race_join.php:96
+msgid "Unknown geokret"
+msgstr ""
+
+#: website/race_join.php:103
 msgid "This is not your geokret"
 msgstr ""
 
-#: website/race_join.php:115
+#: website/race_join.php:117
 msgid "This race is private. Please provide the password"
 msgstr ""
 
-#: website/race_join.php:117
+#: website/race_join.php:120
 msgid "Wrong password"
+msgstr ""
+
+#: website/race_join.php:138
+msgid "Internal error, please report"
 msgstr ""
 
 #: website/race_list.php:240
@@ -1679,15 +1687,15 @@ msgstr "Seznam závodu"
 msgid "Recent Log Comments"
 msgstr "Nedávné komentáře Přihlášení"
 
-#: website/recent_comments_fn.php:14
+#: website/recent_comments_fn.php:13
 msgid "Recent log comments"
 msgstr "Nedávné komentáře log"
 
-#: website/recent_comments_fn.php:104
+#: website/recent_comments_fn.php:103
 msgid "User"
 msgstr "Uživatel"
 
-#: website/recent_moves.php:14 website/recentlogs.php:9
+#: website/recent_moves.php:13 website/recentlogs.php:9
 #: website/templates.php:18 website/templates.php:81 website/templates.php:207
 #: website/templates.php:270
 msgid "Recent logs"
@@ -1697,16 +1705,16 @@ msgstr "Poslední záznamy"
 msgid "Recent news comments"
 msgstr "Poslední zprávy komentáře"
 
-#: website/recent_newscomments_fn.php:9
+#: website/recent_newscomments_fn.php:8
 msgid "View all comments"
 msgstr "Zobrazit všechny komentáře"
 
-#: website/recent_pictures.php:44 website/recent_pictures.php:46
+#: website/recent_pictures.php:43 website/recent_pictures.php:45
 msgid "Go to geokret's page"
 msgstr "Jdi na stránku Geokrtků"
 
 #: website/register.php:11 website/templates.php:144
-#: website/templates/plugins/function.login_check.php:41
+#: website/templates/plugins/function.login_check.php:40
 #: website/templates/krety_logged_in.html:1
 msgid "Register a new GeoKret"
 msgstr "Registrovat nového GeoKrtka"
@@ -1727,223 +1735,232 @@ msgstr "Narodil se zde :)"
 msgid "Cannot edit this log"
 msgstr "Nemůžete upravovat tento záznam"
 
-#: website/ruchy.php:194
+#: website/ruchy.php:193 website/szukaj-ajax.php:67
+#, php-format
+msgid "Unexpected error (id:%s), please report."
+msgstr ""
+
+#: website/ruchy.php:202
 msgid "Missing or invalid Tracking Code"
 msgstr "Chybějící nebo neplatné Trackovatelné číslo"
 
-#: website/ruchy.php:198
+#: website/ruchy.php:206
 msgid "Missing or invalid Reference Number"
 msgstr "Chybějící nebo neplatné referenční číslo"
 
-#: website/ruchy.php:206
+#: website/ruchy.php:214
 msgid "Invalid log type"
 msgstr "Neplatný typ logu"
 
-#: website/ruchy.php:211
+#: website/ruchy.php:219
 msgid "No lat/lon OR waypoint name!"
 msgstr "Śpatné souřadnice nebo název waypiontu"
 
-#: website/ruchy.php:216
+#: website/ruchy.php:224
 msgid "No username supplied"
 msgstr "Nezadáno jméno"
 
-#: website/ruchy.php:219
+#: website/ruchy.php:227
 msgid "Wrong time (minutes)"
 msgstr "Śpatný čas (minuty)"
 
-#: website/ruchy.php:222
+#: website/ruchy.php:230
 msgid "Wrong time (hours)"
 msgstr "Śpatný čas (hodiny)"
 
-#: website/ruchy.php:291
+#: website/ruchy.php:299
 msgid "Identical log has been submited."
 msgstr ""
 
-#: website/ruchy.php:303
+#: website/ruchy.php:311
 msgid "There is an entry with this date. Correct the date or the hour."
 msgstr "Takto bylo zadáno datum. Opravte datum nebo čas."
 
-#: website/ruchy.php:309
+#: website/ruchy.php:317
 msgid "The date is from the past, BEFORE the GeoKret was created."
 msgstr "Datum je mladší , než kdy byl GeoKrtek vytvořen."
 
-#: website/ruchy.php:311
+#: website/ruchy.php:319
 msgid "The date is from the future (if you are an inventor of a time travelling machine, contact with us, please)"
 msgstr "Datum je z budoucnosti (pokud jsi vynálezce stroje času, kontaktuj nás, prosím...:o)"
 
-#: website/ruchy.php:339
+#: website/ruchy.php:347
 msgid "You can not archive not your own GeoKret"
 msgstr "Nemůžeš archivovat cizího geokrtka"
 
-#: website/ruchy.php:552
+#: website/ruchy.php:573
 msgid "Add a comment"
 msgstr "Přidat komentář"
 
-#: website/ruchy.php:564 website/ruchy.php:832
+#: website/ruchy.php:585 website/ruchy.php:853
 msgid "When you want to write a comment :)"
-msgstr ""
+msgstr "Pokud chcete napsat komentář :)"
 
-#: website/ruchy.php:572
+#: website/ruchy.php:593
 msgid "Reference number"
-msgstr ""
+msgstr "Referenční číslo"
 
-#: website/ruchy.php:598
+#: website/ruchy.php:619
 msgid "Archive a GeoKret"
 msgstr "Archivovat Geokrtka"
 
-#: website/ruchy.php:608
+#: website/ruchy.php:629
 msgid "When a GeoKret has been missing for a long time"
-msgstr ""
+msgstr "Když GeoKret, pohřešován po dlouhou dobu"
 
-#: website/ruchy.php:609
+#: website/ruchy.php:630
 msgid "Archive"
 msgstr "Archivovat"
 
-#: website/ruchy.php:634
+#: website/ruchy.php:655
 msgid "Tracking Code"
-msgstr ""
+msgstr "Identifikační kód"
 
-#: website/ruchy.php:637
+#: website/ruchy.php:658
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
-msgstr ""
+msgstr "6 znaků z GeoKret označení, např. XF3ACS. <u>Nepoužívejte tady kod začínající na 'GK'</u>."
 
-#: website/ruchy.php:651
+#: website/ruchy.php:672
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
-msgstr ""
+msgstr "Přestože je možné vykonat operace s GeoKrtkem bez přihlášení, doporučujeme vytvořit účet a zalogovat. To vám zabere tak 15 sekund :)"
 
-#: website/ruchy.php:659
+#: website/ruchy.php:680
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "Tohle může být tvoje:<br />- geocaching/opencaching přezdívka<br />- nick<br />- vlastní jméno, atd."
 
-#: website/ruchy.php:677
+#: website/ruchy.php:698
 msgid "Logged at my home coordinates"
 msgstr ""
 
-#: website/ruchy.php:677
+#: website/ruchy.php:698
 msgid "Log GeoKret at my home coordinates"
 msgstr ""
 
-#: website/ruchy.php:688
+#: website/ruchy.php:709
 msgid "Choose log type"
 msgstr "Vyber typ zápisu"
 
-#: website/ruchy.php:799
+#: website/ruchy.php:820
 msgid "Log type"
-msgstr ""
+msgstr "Typy zápisů"
 
-#: website/ruchy.php:799
+#: website/ruchy.php:820
 msgid "help.php#Chooselogtype"
 msgstr "http://wiki.geocaching.cz/wiki/Geokrtek#Typy_log.C5.AF"
 
-#: website/ruchy.php:804
+#: website/ruchy.php:825
 msgid "When you've left a GeoKret in a cache"
 msgstr ""
 
-#: website/ruchy.php:805
+#: website/ruchy.php:826
 msgid "I've dropped GeoKret"
 msgstr "Vložil jsem GeoKrtka"
 
-#: website/ruchy.php:811
+#: website/ruchy.php:832
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr ""
 
-#: website/ruchy.php:812
+#: website/ruchy.php:833
 msgid "I've grabbed GeoKret"
 msgstr "Vzal jsem GeoKrtka"
 
-#: website/ruchy.php:818
+#: website/ruchy.php:839
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr ""
 
-#: website/ruchy.php:819
+#: website/ruchy.php:840
 msgid "I've met GeoKret"
 msgstr "Viděl jsem GeoKrtka"
 
-#: website/ruchy.php:825
+#: website/ruchy.php:846
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr ""
 
-#: website/ruchy.php:826
+#: website/ruchy.php:847
 msgid "I've dipped a GeoKret"
 msgstr "Protáhl jsem GeoKrtka"
 
-#: website/ruchy.php:843
+#: website/ruchy.php:864
 msgid "Identify GeoKret"
 msgstr "Identifikovat GeoKrtka"
 
-#: website/ruchy.php:852
+#: website/ruchy.php:873
 msgid "New location"
 msgstr "Nové místo"
 
-#: website/ruchy.php:853
+#: website/ruchy.php:874
 msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
 msgstr ""
 
-#: website/ruchy.php:857
+#: website/ruchy.php:878
 msgid "Waypoint"
 msgstr ""
 
-#: website/ruchy.php:861
+#: website/ruchy.php:882
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr ""
 
-#: website/ruchy.php:862 website/ruchy.php:875
+#: website/ruchy.php:883 website/ruchy.php:897
 msgid "help.php#fullysupportedwaypoints"
 msgstr "http://wiki.geocaching.cz/wiki/Geokrtek#Pln.C4.9B_podporovan.C3.A9_waypointy"
 
-#: website/ruchy.php:865
+#: website/ruchy.php:886
 msgid "or name of cache"
 msgstr ""
 
-#: website/ruchy.php:870
+#: website/ruchy.php:891
 msgid "Check"
 msgstr "Zkontrolovat"
 
-#: website/ruchy.php:874
+#: website/ruchy.php:894 website/szukaj-ajax.php:167
+msgid "Enter at least 5 characters"
+msgstr ""
+
+#: website/ruchy.php:896
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr ""
 
-#: website/ruchy.php:886
+#: website/ruchy.php:908
 msgid "Coordinates"
 msgstr "Souřadnice"
 
-#: website/ruchy.php:890
+#: website/ruchy.php:912
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr ""
 
-#: website/ruchy.php:902
+#: website/ruchy.php:924
 msgid "Logged using geolocation"
 msgstr "Zalogováno použitím geolokace"
 
-#: website/ruchy.php:902
+#: website/ruchy.php:924
 msgid "Use geolocation"
 msgstr "Použít geolokaci"
 
-#: website/ruchy.php:913
+#: website/ruchy.php:935
 msgid "Captcha verification"
 msgstr "Captcha ověření"
 
-#: website/ruchy.php:946
+#: website/ruchy.php:968
 msgid "Additional data"
 msgstr "Dodatelčné údaje"
 
-#: website/ruchy.php:967
+#: website/ruchy.php:989
 msgid "Two days ago"
 msgstr "Před dvěma dny"
 
-#: website/ruchy.php:973
+#: website/ruchy.php:995
 msgid "Time"
 msgstr "Čas"
 
-#: website/ruchy.php:986
+#: website/ruchy.php:1008
 msgid "now"
 msgstr "teď"
 
-#: website/ruchy.php:987
+#: website/ruchy.php:1009
 msgid "Enter exact time when You think it may be important"
 msgstr "Vložte přesný čas, když si myslíte, že může být důležitý. "
 
-#: website/ruchy.php:999
+#: website/ruchy.php:1021
 msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
@@ -1967,40 +1984,78 @@ msgstr "Nepřihlášen"
 msgid "Top ten owners"
 msgstr "Deset největších vlastníků"
 
-#: website/szukaj-ajax.php:47
-msgid "GeoKret not found"
-msgstr "Geokrtek nenalezen"
-
-#: website/szukaj-ajax.php:60
-msgid "Last log:"
-msgstr ""
-
-#: website/szukaj-ajax.php:68
+#: website/szukaj-ajax.php:16
 #, php-format
-msgid "%s by %s."
+msgid "waypoint %s"
 msgstr ""
 
-#: website/szukaj-ajax.php:73
-msgid "Invalid tracking code"
-msgstr "Neplatný trackovací kód - zkuste znovou (dejte pozor na 0 a na o !)"
+#: website/szukaj-ajax.php:26
+msgid "flag"
+msgstr ""
 
-#: website/szukaj-ajax.php:86
+#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:194
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:32
+msgid "OK"
+msgstr ""
+
+#: website/szukaj-ajax.php:34
+#, php-format
+msgid "cache type: %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:37
+#, php-format
+msgid "country: %s %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:39
+#, php-format
+msgid "country: %s"
+msgstr ""
+
+#: website/szukaj-ajax.php:49
+msgid "No cache found"
+msgstr "Keš nenalezena"
+
+#: website/szukaj-ajax.php:58
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr ""
 
-#: website/szukaj-ajax.php:87
+#: website/szukaj-ajax.php:59
 #, php-format
 msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr ""
 
-#: website/szukaj-ajax.php:99
+#: website/szukaj-ajax.php:106
+msgid "GeoKret not found"
+msgstr "Geokrtek nenalezen"
+
+#: website/szukaj-ajax.php:119
+msgid "Last log:"
+msgstr ""
+
+#: website/szukaj-ajax.php:127
+#, php-format
+msgid "%s by %s."
+msgstr ""
+
+#: website/szukaj-ajax.php:132
+msgid "Invalid tracking code"
+msgstr "Neplatný trackovací kód - zkuste znovou (dejte pozor na 0 a na o !)"
+
+#: website/szukaj-ajax.php:183
 msgid "caches match"
 msgstr "srovnání keší"
 
-#: website/szukaj-ajax.php:109
-msgid "No cache found"
-msgstr "Keš nenalezena"
+#: website/szukaj-ajax.php:185
+#, php-format
+msgid "%d caches match (the first %d)"
+msgstr ""
 
 #: website/szukaj.php:45
 msgid "Found users"
@@ -2018,7 +2073,7 @@ msgstr "Geokrtci v"
 msgid "GeoKret owner"
 msgstr "Majitel Geokrtka"
 
-#: website/szukaj_kreta.php:44
+#: website/szukaj_kreta.php:43
 msgid "Operations on this GeoKret"
 msgstr "Operace s GeoKrtkem"
 
@@ -2030,7 +2085,7 @@ msgstr ""
 #: website/templates.php:66 website/templates.php:138
 #: website/templates.php:183 website/templates.php:255
 #: website/templates.php:321 website/templates.php:327
-#: website/templates/krety-m.html:46 website/templates/krety.html:233
+#: website/templates/krety-m.html:46 website/templates/krety.html:234
 msgid "Report abuse"
 msgstr ""
 
@@ -2051,7 +2106,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: website/templates/konfig.php:173
+#: website/templates/konfig.php:192
 msgid "KretyPost"
 msgstr "KretyPost"
 
@@ -2063,22 +2118,22 @@ msgstr ""
 msgid "You can also go to the apppropriate page by decoding the QR-code."
 msgstr ""
 
-#: website/templates/nawigacja_tablicy.php:99
-#: website/templates/nawigacja_tablicy.php:112
+#: website/templates/nawigacja_tablicy.php:98
+#: website/templates/nawigacja_tablicy.php:111
 msgid "Show all"
 msgstr "Zobrazit vše"
 
-#: website/templates/nawigacja_tablicy.php:124
+#: website/templates/nawigacja_tablicy.php:123
 #, php-format
 msgid "Showing items %s - %s (of %s) :: %s"
 msgstr "Zobrazuje předměty %s - %s (z %s) :: %s"
 
-#: website/templates/nawigacja_tablicy.php:125
+#: website/templates/nawigacja_tablicy.php:124
 #, php-format
 msgid "Showing items %s - %s (of %s)"
 msgstr "Zobrazuje předměty %s - %s (z %s)"
 
-#: website/templates/plugins/function.login_check.php:47
+#: website/templates/plugins/function.login_check.php:46
 msgid "Observed geokrets"
 msgstr ""
 
@@ -2138,13 +2193,13 @@ msgstr ""
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: website/verify_mail.php:117
+#: website/verify_mail.php:113
 #, php-format
 msgid "An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it :)\n\n"
 "%s"
 msgstr ""
 
-#: website/verify_mail.php:121
+#: website/verify_mail.php:117
 msgid "[GeoKrety] Activate your account"
 msgstr "[GeoKrety] Aktivujte svůj účet"
 
@@ -2208,27 +2263,611 @@ msgstr ""
 msgid "Fix translation"
 msgstr ""
 
-#: website/templates/krety.html:202
+#: website/templates/krety.html:198
+msgid "Contact-us"
+msgstr ""
+
+#: website/templates/krety.html:203
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
 msgstr ""
 
-#: website/templates/krety.html:204
+#: website/templates/krety.html:205
 msgid "Enjoying GeoKrety.org?"
 msgstr ""
 
-#: website/templates/krety.html:205
+#: website/templates/krety.html:206
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
 msgstr ""
 
-#: website/templates/krety.html:209
+#: website/templates/krety.html:210
 msgid "Contribute"
 msgstr ""
 
-#: website/templates/krety.html:233
+#: website/templates/krety.html:234
 msgid "version"
 msgstr ""
 
 #: website/templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:3
+msgid "Afghanistan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:4
+msgid "Egypt"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:5
+msgid "Albania"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:6
+msgid "American Samoa"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:7
+msgid "Argentina"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:8
+msgid "Armenia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:9
+msgid "Austria"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:10
+msgid "Australia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:11
+msgid "Bahamas"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:12
+msgid "Belarus"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:13
+msgid "Belgium"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:14
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:15
+msgid "Botswana"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:16
+msgid "Brazil"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:17
+msgid "Bulgaria"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:18
+msgid "Canada"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:19
+msgid "Czech Republic"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:20
+msgid "Chile"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:21
+msgid "China"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:22
+msgid "Croatia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:23
+msgid "Costa Rica"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:24
+msgid "Cyprus"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:25
+msgid "Denmark"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:26
+msgid "Germany"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:27
+msgid "North Korea"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:28
+msgid "Dominican Republic"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:29
+msgid "Ecuador"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:30
+msgid "El Salvador"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:31
+msgid "Spain"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:32
+msgid "Estonia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:33
+msgid "Falkland Islands"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:34
+msgid "Faroe Islands"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:35
+msgid "Finland"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:36
+msgid "France"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:37
+msgid "Georgia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:38
+msgid "Gibraltar"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:39
+msgid "Granada"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:40
+msgid "Greece"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:41
+msgid "Greenland"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:42
+msgid "United Kingdom"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:43
+msgid "Guatemala"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:44
+msgid "Netherlands"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:45
+msgid "Honduras"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:46
+msgid "Indonesia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:47
+msgid "India"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:48
+msgid "Ireland"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:49
+msgid "Iceland"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:50
+msgid "Israel"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:51
+msgid "Italy"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:52
+msgid "Japan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:53
+msgid "Yemen"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:54
+msgid "Jordan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:55
+msgid "Cambodia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:56
+msgid "Cape Verde"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:57
+msgid "Kazakhstan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:58
+msgid "Kenya"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:59
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:60
+msgid "Colombia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:61
+msgid "Cuba"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:62
+msgid "Laos"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:63
+msgid "Latvia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:64
+msgid "Liechtenstein"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:65
+msgid "Lithuania"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:66
+msgid "Luxembourg"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:67
+msgid "Malaysia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:68
+msgid "Maldives"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:69
+msgid "Malta"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:70
+msgid "Morocco"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:71
+msgid "Mauritius"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:72
+msgid "Macedonia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:73
+msgid "Mexico"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:74
+msgid "Moldova"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:75
+msgid "Monaco"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:76
+msgid "Montenegro"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:77
+msgid "Namibia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:78
+msgid "Nepal"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:79
+msgid "New Zealand"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:80
+msgid "Nicaragua"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:81
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:82
+msgid "Norway"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:83
+msgid "Panama"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:84
+msgid "Papua New Guinea"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:85
+msgid "Philippines"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:86
+msgid "Poland"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:87
+msgid "Portugal"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:88
+msgid "Russia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:89
+msgid "Rwanda"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:90
+msgid "Romania"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:91
+msgid "Zambia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:92
+msgid "Saudi Arabia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:93
+msgid "Sweden"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:94
+msgid "Switzerland"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:95
+msgid "Serbia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:96
+msgid "Serbia and Montenegro"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:97
+msgid "Seychelles"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:98
+msgid "Slovenia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:99
+msgid "Zimbabwe"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:100
+msgid "Slovakia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:101
+msgid "Soviet Union"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:102
+msgid "Sri Lanka"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:103
+msgid "South Africa"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:104
+msgid "Sudan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:105
+msgid "South Georgia and the South Sandwich Islands"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:106
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:107
+msgid "Syria"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:108
+msgid "Taiwan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:109
+msgid "Thailand"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:110
+msgid "Tanzania"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:111
+msgid "Togo"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:112
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:113
+msgid "Chad"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:114
+msgid "Tunisia"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:115
+msgid "Turkey"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:116
+msgid "Ukraine"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:117
+msgid "Uganda"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:118
+msgid "Hungary"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:119
+msgid "United States"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:120
+msgid "USA"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:121
+msgid "Uzbekistan"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:122
+msgid "Holy See"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:123
+msgid "United Arab Emirates"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:124
+msgid "Vietnam"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:125
+msgid "United States Virgin Islands"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:127
+msgid "Mobile"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:128
+msgid "BIT Cache"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:129
+msgid "Cemetery"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:130
+msgid "Drive-In"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:131
+msgid "Event"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:133
+msgid "Multicache"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:134
+msgid "Mystery"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:135
+msgid "Unknown cache"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:136
+msgid "Virtual"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:137
+msgid "Webcam"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:138
+msgid "Guest Book"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:139
+msgid "Other"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:140
+msgid "Quiz"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:141
+msgid "Letterbox"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:142
+msgid "Math / physics cache"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:143
+msgid "Medical Facility"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:144
+msgid "MP3"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:145
+msgid "Unknowncache"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:146
+msgid "Own cache"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:147
+msgid "Podcast cache"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:148
+msgid "Unusual box"
+msgstr ""
+
+#: website/templates/waypointy-translations.html:149
+msgid "USB"
 msgstr ""
 

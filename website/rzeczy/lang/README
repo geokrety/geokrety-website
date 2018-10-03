@@ -5,7 +5,7 @@ To extract strings from templates:
 Extract gettext string using:
 
   xgettext --from-code=UTF-8 -o /tmp/messages.pot --language=PHP -f website/rzeczy/lang/input-files-for-xgettext
-  tsmarty2c -o /tmp/smarty.pot ./website/templates/index.html ./website/templates/krety-m.html ./website/templates/krety.html ./website/templates/krety_not_logged_in.html ./website/templates/krety_logged_in.html
+  tsmarty2c -o /tmp/smarty.pot ./website/templates/index.html ./website/templates/krety-m.html ./website/templates/krety.html ./website/templates/krety_not_logged_in.html ./website/templates/krety_logged_in.html ./website/templates/waypointy-translations.html
   msgcat -o website/rzeczy/messages.po.txt /tmp/messages.pot /tmp/smarty.pot
 
 

@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 21:29+0000\n"
-"PO-Revision-Date: 2018-04-19 17:50-0400\n"
+"POT-Creation-Date: 2018-07-19 18:28+0000\n"
+"PO-Revision-Date: 2018-07-23 12:50\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Crowdin-File: /master/messages.po\n"
 
 #: website/adduser.php:8 website/adduser.php:122 website/templates.php:186
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Registreer als nieuwe gebruiker"
@@ -29,12 +29,12 @@ msgstr "Registreer als nieuwe gebruiker"
 msgid "Required fields"
 msgstr "Verplichte velden"
 
-#: website/adduser.php:71 website/ruchy.php:662
+#: website/adduser.php:71 website/ruchy.php:683
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: website/adduser.php:76 website/api-login2secid.php:64
-#: website/longin.php:142 website/mypage.php:43
+#: website/adduser.php:76 website/api-login2secid.php:63
+#: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Wachtwoord"
 
@@ -42,7 +42,7 @@ msgstr "Wachtwoord"
 msgid "Verify Password"
 msgstr "Bevestig wachtwoord"
 
-#: website/adduser.php:86 website/edit.php:402 website/new_password.php:52
+#: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
 msgid "Email"
 msgstr "E-mail"
 
@@ -50,17 +50,17 @@ msgstr "E-mail"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Ja, Ik wil e-mails ontvangen (verzending dagelijks om middernacht CET/CESC) wanneer mijn eigen of door mij gevolgde GeoKrets van locatie veranderen."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:916
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:938
 msgid "Enter code"
 msgstr "Voer code in"
 
-#: website/adduser.php:103 website/edit.php:489 website/mypage.php:308
+#: website/adduser.php:103 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Taal"
 
 #: website/adduser.php:118 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:147
-#: website/templates/krety.html:233
+#: website/templates/krety.html:234
 msgid "Terms of use"
 msgstr "Gebruikers overeenkomst"
 
@@ -68,7 +68,7 @@ msgstr "Gebruikers overeenkomst"
 msgid "Tips"
 msgstr "Tips"
 
-#: website/adduser.php:128 website/edit.php:206
+#: website/adduser.php:128 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -83,7 +83,7 @@ msgstr "Lees meer over goede wachtwoorden:\n"
 "</ul>"
 
 #: website/adduser.php:137 website/majluj.php:134 website/new_password.php:60
-msgid "No antispam phase!"
+msgid "No antispam phrase!"
 msgstr "Geen anti-spam ingevuld!"
 
 #: website/adduser.php:139 website/majluj.php:136 website/new_password.php:62
@@ -112,13 +112,13 @@ msgid "An email to confirm your email address was sent to you. When you confirm,
 msgstr "Een e-mail om je e-mailadres te bevestigien is naar je onderweg. Als je dit bevestigd, wordt je account volledig beschikbaar voor je. Tot dan zal het niet mogelijk zijn e-mails te ontvangen over de verplaatsingen van je GeoKrety. De link is 5 dagen geldig. Hierna kun je alles doen op GeoKrety. Voel je vrij om in te loggen op GeoKrety.org en alle mogelijkheden te benutten! :)"
 
 #: website/adduser.php:177 website/longin.php:9 website/templates.php:189
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Inloggen"
 
 #: website/adduser.php:177 website/templates.php:192
-#: website/templates/plugins/function.login_check.php:37
+#: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Wachtwoord vergeten?"
@@ -151,58 +151,58 @@ msgstr "Verkeerde bevestigingscode of andere fout."
 msgid "GK XML interface"
 msgstr "GK XML interface"
 
-#: website/check_email_validity.php:12
+#: website/check_email_validity.php:11
 #, php-format
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
 msgstr "Het momenteel opgegeven e-mailadres (%s) lijkt ongeldig te zijn. Verander alsjeblieft <a href=\"/edit.php?co=email\">het e-mailadres</a> in de instellingen."
 
-#: website/claim.php:22 website/comment.php:77 website/generatorek.php:57
-#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:275
+#: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
+#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
 msgstr "Inloggen a.u.b."
 
-#: website/comment.php:21
+#: website/comment.php:20
 msgid "Unknown error."
 msgstr "Onbekende fout."
 
-#: website/comment.php:48
+#: website/comment.php:46
 msgid "Oops! Something went wrong."
 msgstr "Oeps, er is iets fout gegaan."
 
-#: website/comment.php:125
+#: website/comment.php:123
 #, php-format
 msgid "Reporting GeoKret %s as missing"
 msgstr "Melden dat GeoKret %s vermist wordt"
 
-#: website/comment.php:149
+#: website/comment.php:147
 #, php-format
 msgid "Commenting GeoKret: %s"
 msgstr "Bijgevoegd commentaar bij %s GeoKret"
 
-#: website/comment.php:163
+#: website/comment.php:161
 msgid "Please provide any information that may help the owner to find out the whereabouts of this GeoKret."
 msgstr "Hier kun je informatie opgeven, zodat de eigenaar uit kan vinden waar zijn GeoKret zich op dit moment bevindt."
 
-#: website/comment.php:166
+#: website/comment.php:164
 msgid "Log:"
 msgstr "Log:"
 
-#: website/comment.php:166 website/comment.php:181
+#: website/comment.php:164 website/comment.php:179
 #, php-format
 msgid "By %s, on %s"
 msgstr "Door %s, op %s"
 
-#: website/comment.php:181
+#: website/comment.php:179
 msgid "Last comment:"
 msgstr "Laatste commentaar:"
 
-#: website/comment.php:192
+#: website/comment.php:190
 msgid "Your comment"
 msgstr "Jouw commentaar"
 
-#: website/comment.php:200 website/majluj.php:125
+#: website/comment.php:198 website/majluj.php:125
 msgid "Send message"
 msgstr "Verstuur bericht"
 
@@ -227,35 +227,35 @@ msgstr "E-mail wijzigen? %sklik hier%s."
 msgid "This confirmation code has already been processed."
 msgstr "Deze bevestigingscode is al eens gebruikt."
 
-#: website/cords_parse.php:237
+#: website/cords_parse.php:236
 msgid "Bad coordinates or unknown format."
 msgstr "Verkeerde coördinaten, of onbekend formaat."
 
-#: website/cords_parse.php:245
+#: website/cords_parse.php:244
 msgid "Missing or invalid coordinates."
 msgstr "Ontbrekende of ongeldige coördinaten."
 
-#: website/cotozalog.php:8 website/templates/konfig.php:162
+#: website/cotozalog.php:8 website/templates/konfig.php:181
 msgid "Dropped to"
 msgstr "Achtergelaten in"
 
-#: website/cotozalog.php:9 website/templates/konfig.php:163
+#: website/cotozalog.php:9 website/templates/konfig.php:182
 msgid "Grabbed from"
 msgstr "Gepakt uit"
 
-#: website/cotozalog.php:10 website/templates/konfig.php:164
+#: website/cotozalog.php:10 website/templates/konfig.php:183
 msgid "A comment"
 msgstr "Een opmerking"
 
-#: website/cotozalog.php:11 website/templates/konfig.php:165
+#: website/cotozalog.php:11 website/templates/konfig.php:184
 msgid "Seen in"
 msgstr "Gezien in"
 
-#: website/cotozalog.php:12 website/templates/konfig.php:166
+#: website/cotozalog.php:12 website/templates/konfig.php:185
 msgid "Archived"
 msgstr "Gearchiveerd"
 
-#: website/cotozalog.php:13 website/templates/konfig.php:167
+#: website/cotozalog.php:13 website/templates/konfig.php:186
 msgid "Dipped in"
 msgstr "Is aanwezig geweest in"
 
@@ -284,22 +284,23 @@ msgid "Freshman mole"
 msgstr "Nieuw molshol"
 
 #: website/cotozalog.php:40 website/generatorek.php:132
-#: website/templates/konfig.php:169
+#: website/templates/konfig.php:188
+#: website/templates/waypointy-translations.html:132
 msgid "Traditional"
 msgstr "Traditioneel"
 
 #: website/cotozalog.php:41 website/generatorek.php:133
-#: website/templates/konfig.php:170
+#: website/templates/konfig.php:189
 msgid "A book/CD/DVD..."
 msgstr "Een boek/CD/DVD..."
 
 #: website/cotozalog.php:42 website/generatorek.php:134
-#: website/templates/konfig.php:171
+#: website/templates/konfig.php:190
 msgid "A human"
 msgstr "Een persoon"
 
 #: website/cotozalog.php:43 website/generatorek.php:135
-#: website/templates/konfig.php:172
+#: website/templates/konfig.php:191
 msgid "A coin"
 msgstr "Een munt"
 
@@ -313,35 +314,35 @@ msgstr "Statistieken per land"
 msgid "Where are GeoKrety now?"
 msgstr "Waar zijn de GeoKrety nu?"
 
-#: website/czy_obserwowany.php:45
+#: website/czy_obserwowany.php:44
 msgid "Number of users who are watching this geokret"
 msgstr "Aantal gebruikers die deze GeoKret volgen"
 
-#: website/czy_obserwowany.php:49
+#: website/czy_obserwowany.php:48
 msgid "Watch this GeoKret"
 msgstr "Volg deze GeoKret"
 
-#: website/czy_obserwowany.php:53 website/mygeokrets.php:280
+#: website/czy_obserwowany.php:52 website/mygeokrets.php:279
 msgid "Stop watching this GeoKret"
 msgstr "Deze GeoKret niet meer volgen"
 
-#: website/czy_obserwowany.php:58
+#: website/czy_obserwowany.php:57
 msgid "Users watching it"
 msgstr "Gebruikers die dit volgen"
 
-#: website/czy_obserwowany.php:60
+#: website/czy_obserwowany.php:59
 msgid "Users watching this GeoKret"
 msgstr "Gebruikers die deze GeoKret volgen"
 
-#: website/days_ago.php:14
+#: website/days_ago.php:13
 msgid "days ago"
 msgstr "dagen geleden"
 
-#: website/days_ago.php:16 website/ruchy.php:966
+#: website/days_ago.php:15 website/ruchy.php:988
 msgid "Yesterday"
 msgstr "Gisteren"
 
-#: website/days_ago.php:18 website/ruchy.php:965
+#: website/days_ago.php:17 website/ruchy.php:987
 msgid "Today"
 msgstr "Vandaag"
 
@@ -390,7 +391,7 @@ msgstr "Voorbeeld GeoKret label"
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
 msgstr "Denk eraan, je kunt een label voor je GeoKret automatisch genereren door op de daarvoor bestemde link te klikken op de eigen GK’s pagina."
 
-#: website/edit.php:12 website/ruchy.php:647
+#: website/edit.php:12 website/ruchy.php:668
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -398,119 +399,118 @@ msgstr "Bewerken"
 msgid "You must be logged in to continue."
 msgstr "Je moet ingelogd zijn om verder te gaan."
 
-#: website/edit.php:199
+#: website/edit.php:198
 msgid "Old password"
 msgstr "Oud wachtwoord"
 
-#: website/edit.php:201
+#: website/edit.php:200
 msgid "New password"
 msgstr "Nieuw wachtwoord"
 
-#: website/edit.php:203
+#: website/edit.php:202
 msgid "Retype"
 msgstr "Herhalen"
 
-#: website/edit.php:204
+#: website/edit.php:203
 msgid "characters"
 msgstr "karakters"
 
-#: website/edit.php:228
+#: website/edit.php:227
 msgid "Passwords different or empty or too short"
 msgstr "Wachtwoord verschilt, het is leeg of te kort"
 
-#: website/edit.php:230
+#: website/edit.php:229
 msgid "Wrong current password"
 msgstr "Huidig wachtwoord is verkeerd"
 
-#: website/edit.php:327 website/mypage.php:156
+#: website/edit.php:326 website/mypage.php:156
 msgid "Home coordinates"
 msgstr "Thuis coördinaten"
 
-#: website/edit.php:330
+#: website/edit.php:329
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Gebruik de kaart of vul de coördinaten handmatig in."
 
-#: website/edit.php:330 website/race_join.php:41 website/ruchy.php:892
-#: website/szukaj-ajax.php:99 website/szukaj.php:86 website/szukaj.php:94
-#: website/szukaj.php:117
+#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:914
+#: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
 msgid "eg."
 msgstr "bijv."
 
-#: website/edit.php:330
+#: website/edit.php:329
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
 msgstr "<a href=\"%s\" target=\"_blank\">Geaccepteerde geografische coördinaat formaten</a>"
 
-#: website/edit.php:341 website/mypage.php:156
+#: website/edit.php:340 website/mypage.php:156
 msgid "Observation area"
 msgstr "Mijn omgeving"
 
-#: website/edit.php:343
+#: website/edit.php:342
 msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
 msgstr "Je kunt meldingen ontvangen van geokret logs binnen de opgegeven afstand van je thuiscoördinaten. Zet op 0 voor geen meldingen."
 
-#: website/edit.php:362
+#: website/edit.php:361
 msgid "Observation radius is invalid or outside the min/max range"
 msgstr "Te volgen radius is verkeerd of buiten min/max afstand"
 
-#: website/edit.php:397
+#: website/edit.php:396
 msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
 msgstr "Recente logs van:*je eigen GeoKrets*gevolgde GeoKrets*elke Geokret gelogd rond je thuislocatie"
 
-#: website/edit.php:398
+#: website/edit.php:397
 msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
 msgstr "Kommentaar gepost op elk van het volgende:*je eigen GeoKrets*gevolgde GeoKrets*jouw logs*jouw kommentaren*nieuwsberichten waar je op hebt gereageerd"
 
-#: website/edit.php:404
+#: website/edit.php:403
 msgid "Yes, I want to receive email alerts (sent once a day). Email alerts may contain any of the following:"
 msgstr "Ja, ik wil e-mail met nieuws ontvangen (1x per dag). Deze e-mails kunnen de volgende inhoud bevatten:"
 
-#: website/edit.php:407
+#: website/edit.php:406
 msgid "GeoKrety.org news"
 msgstr "GeoKrety.org nieuws"
 
-#: website/edit.php:453 website/edit.php:456
+#: website/edit.php:452 website/edit.php:455
 msgid "[GeoKrety] Email address change request at geokrety.org"
 msgstr "[GeoKrety] Aanvraag om e-mail adres te veranderen op geokrety.org "
 
-#: website/edit.php:459
+#: website/edit.php:458
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days."
 msgstr "Een bevestigingsmail is onderweg naar je nieuw opgegeven mail adres. Klik op de link in deze mail om je verandering te bevestigen. De link is 5 dagen geldig."
 
-#: website/edit.php:462
+#: website/edit.php:461
 msgid "Error, please try again later..."
 msgstr "Serverfout, probeer het later nog eens..."
 
-#: website/edit.php:469
+#: website/edit.php:468
 msgid "Wrong email or subscribtion option"
 msgstr "Verkeerde e-mail- of inschrijf optie"
 
-#: website/edit.php:518 website/mypage.php:45
+#: website/edit.php:517 website/mypage.php:45
 msgid "Choose statpic"
 msgstr "Kies statpic"
 
-#: website/edit.php:552 website/labels.php:55 website/register.php:45
+#: website/edit.php:551 website/labels.php:55 website/register.php:45
 #: website/szukaj.php:100
 msgid "GeoKret name"
 msgstr "GeoKret naam"
 
-#: website/edit.php:556 website/register.php:49
+#: website/edit.php:555 website/register.php:49
 msgid "Geokret type"
 msgstr "Geokret soort"
 
-#: website/edit.php:564 website/register.php:57
+#: website/edit.php:563 website/register.php:57
 msgid "help.php#geokretytypes"
 msgstr "help_generate.php?help=nl#geokretytypes"
 
-#: website/edit.php:568 website/generatorek.php:140 website/labels.php:67
-#: website/recent_comments_fn.php:103 website/recent_moves.php:94
-#: website/register.php:61 website/ruchy.php:565 website/ruchy.php:833
-#: website/ruchy.php:993
+#: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
+#: website/recent_comments_fn.php:102 website/recent_moves.php:93
+#: website/register.php:61 website/ruchy.php:586 website/ruchy.php:854
+#: website/ruchy.php:1015
 msgid "Comment"
 msgstr "Notitie"
 
-#: website/edit.php:570 website/generatorek.php:142 website/grp_create.php:66
-#: website/majluj.php:106 website/newscomments.php:253
+#: website/edit.php:569 website/generatorek.php:142 website/grp_create.php:66
+#: website/majluj.php:106 website/newscomments.php:251
 #: website/race_add.php:143 website/register.php:63
 msgid "characters left"
 msgstr "karakters over"
@@ -530,7 +530,7 @@ msgid "Photo gallery"
 msgstr "Fotogalerij"
 
 #: website/geokret_gallery.php:35 website/konkret.php:35
-#: website/konkret.php:45 website/konkret.php:62 website/ruchy.php:258
+#: website/konkret.php:45 website/konkret.php:62 website/ruchy.php:266
 msgid "No such GeoKret!"
 msgstr "Deze GeoKret bestaat niet!"
 
@@ -543,22 +543,22 @@ msgid "Photo gallery of"
 msgstr "Fotogalerij van"
 
 #: website/geokret_gallery.php:121 website/geokret_gallery.php:131
-#: website/recent_pictures.php:56 website/recent_pictures.php:64
+#: website/recent_pictures.php:55 website/recent_pictures.php:63
 msgid "Photo by"
 msgstr "Foto gemaakt door"
 
-#: website/geokret_gallery.php:124 website/recent_moves.php:95
-#: website/recent_pictures.php:60 website/ruchy.php:956
+#: website/geokret_gallery.php:124 website/recent_moves.php:94
+#: website/recent_pictures.php:59 website/ruchy.php:978
 msgid "Date"
 msgstr "Datum"
 
 #: website/geokret_gallery.php:126 website/lingering.php:202
-#: website/mygeokrets.php:276 website/mygeokrets.php:289
-#: website/recent_moves.php:93
+#: website/mygeokrets.php:275 website/mygeokrets.php:288
+#: website/recent_moves.php:92
 msgid "Cache"
 msgstr "Cache"
 
-#: website/geokret_gallery.php:129 website/recent_pictures.php:62
+#: website/geokret_gallery.php:129 website/recent_pictures.php:61
 msgid "Country"
 msgstr "Land"
 
@@ -628,12 +628,12 @@ msgstr "Groep weergeven"
 msgid "Hall of fame"
 msgstr "Hall of fame"
 
-#: website/help.php:9 website/help_generate.php:10 website/krety.html.php:24
-#: website/templates.php:42 website/templates.php:48 website/templates.php:105
-#: website/templates.php:111 website/templates.php:231
-#: website/templates.php:237 website/templates.php:294
-#: website/templates.php:300 website/templates/krety.html:141
-#: website/templates/krety.html:143
+#: website/help_generate.php:10 website/help_generate.php:36
+#: website/krety.html.php:24 website/templates.php:42 website/templates.php:48
+#: website/templates.php:105 website/templates.php:111
+#: website/templates.php:231 website/templates.php:237
+#: website/templates.php:294 website/templates.php:300
+#: website/templates/krety.html:141 website/templates/krety.html:143
 msgid "Help"
 msgstr "Help"
 
@@ -721,11 +721,11 @@ msgstr "Onthoudt de beschrijving voor de komende %d minuten "
 msgid "Home"
 msgstr "Startpagina"
 
-#: website/index.php:86
+#: website/index.php:86 website/index.php:294
 msgid "Welcome to GeoKrety.org!"
 msgstr "Welkom bij GeoKrety.org!"
 
-#: website/index.php:91
+#: website/index.php:91 website/index.php:295
 msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
 msgstr "Deze service is vergelijkbaar met TravelBug(TM) of GeoLutins en heeft als doel het volgen van persoonlijke items via caches... <a href=\"help.php#about\">lees meer...</a>"
 
@@ -750,7 +750,7 @@ msgstr "<strong>%d km</strong> afgelegt door alle GeoKrets (dit is %.2f x de afs
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr "GeoKret gevonden? Vul dan hier de tracking code in:"
 
-#: website/index.php:108 website/ruchy.php:1007
+#: website/index.php:108 website/ruchy.php:1029
 msgid "Go!"
 msgstr "Ga!"
 
@@ -767,7 +767,7 @@ msgstr "Geen registratieverplichting!"
 msgid "News"
 msgstr "Nieuws"
 
-#: website/index.php:162 website/newscomments.php:49
+#: website/index.php:162 website/newscomments.php:47
 msgid "Comments"
 msgstr "Berichten"
 
@@ -799,74 +799,74 @@ msgstr "Stel online een betere vertaling voor"
 msgid "visits/day"
 msgstr "bezoekers/dag"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "Hidden"
 msgstr "Verborgen"
 
-#: website/konkret-mapka.php:69
+#: website/konkret-mapka.php:67
 msgid "in"
 msgstr "in"
 
-#: website/konkret-tabelka.php:182
+#: website/konkret-tabelka.php:188
 msgid "Report as missing"
 msgstr "Rapporteer als vermist"
 
-#: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/konkret-tabelka.php:222 website/lingering.php:115
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search for caches in this area on geocaching.com"
 msgstr "Zoek naar de dichtstbijzijnde caches via geocaching.com "
 
-#: website/konkret-tabelka.php:216 website/lingering.php:115
-#: website/mygeokrets.php:184 website/recent_moves.php:171
+#: website/konkret-tabelka.php:222 website/lingering.php:115
+#: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search geocaching.com"
 msgstr "Zoek op geocaching.com"
 
-#: website/konkret-tabelka.php:227
+#: website/konkret-tabelka.php:233
 msgid "Write comment"
 msgstr "Laat een bericht achter"
 
-#: website/konkret-tabelka.php:233 website/konkret.php:82
-#: website/recent_moves.php:216
+#: website/konkret-tabelka.php:239 website/konkret.php:83
+#: website/recent_moves.php:215
 msgid "Add photo"
 msgstr "Afbeelding toevoegen"
 
-#: website/konkret-tabelka.php:233 website/recent_moves.php:216
+#: website/konkret-tabelka.php:239 website/recent_moves.php:215
 msgid "Edit log"
 msgstr "Bewerk log"
 
-#: website/konkret-tabelka.php:239
+#: website/konkret-tabelka.php:245
 msgid "Delete log"
 msgstr "Verwijder log"
 
-#: website/konkret-tabelka.php:268 website/konkret.php:135
+#: website/konkret-tabelka.php:274 website/konkret.php:136
 msgid "Rename"
 msgstr "Hernoemen"
 
-#: website/konkret-tabelka.php:269 website/konkret.php:136
+#: website/konkret-tabelka.php:275 website/konkret.php:137
 msgid "Delete photo"
 msgstr "Verwijder foto"
 
-#: website/konkret-tabelka.php:354
+#: website/konkret-tabelka.php:364
 msgid "Delete comment"
 msgstr "Verwijder bericht"
 
-#: website/konkret.php:81
+#: website/konkret.php:82
 msgid "Edit description"
 msgstr "Beschrijving bewerken"
 
-#: website/konkret.php:85
+#: website/konkret.php:86
 msgid "Print a label for this geokret"
 msgstr "Print een label voor deze GeoKret"
 
-#: website/konkret.php:86
+#: website/konkret.php:87
 msgid "Archive this geokret"
 msgstr "Archiveer deze GeoKret"
 
-#: website/konkret.php:92
+#: website/konkret.php:93
 msgid "Write a note"
 msgstr "Laat een notitie achter"
 
-#: website/konkret.php:93 website/mypage.php:329
+#: website/konkret.php:94 website/mypage.php:328
 #: website/statystyczka-hubs.php:11 website/statystyczka-lata.php:11
 #: website/statystyczka.php:11 website/statystyczka2.php:11
 #: website/statystyczka3.php:11 website/templates.php:24
@@ -878,122 +878,122 @@ msgstr "Laat een notitie achter"
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: website/konkret.php:94
+#: website/konkret.php:95
 msgid "View photo gallery"
 msgstr "Bekijk foto galerij"
 
-#: website/konkret.php:94
+#: website/konkret.php:95
 msgid "Number of photos in the gallery"
 msgstr "Aantal foto’s in de galerij"
 
-#: website/konkret.php:112 website/lingering.php:184
-#: website/mygeokrets.php:255
+#: website/konkret.php:113 website/lingering.php:184
+#: website/mygeokrets.php:254
 msgid "Log this GeoKret"
 msgstr "Log deze GeoKret"
 
-#: website/konkret.php:113
+#: website/konkret.php:114
 msgid "Recreate a label for this geokret"
 msgstr "Maak opnieuw een label voor deze GeoKret"
 
-#: website/konkret.php:144
+#: website/konkret.php:145
 msgid "Altitude profile"
 msgstr "Hoogteprofiel"
 
-#: website/konkret.php:170
+#: website/konkret.php:171
 msgid "Email the owner"
 msgstr "Stuur een e-mail naar de eigenaar"
 
-#: website/konkret.php:176
+#: website/konkret.php:177
 msgid "Login to claim this GeoKret"
 msgstr "Login om deze GeoKret te claimen"
 
-#: website/konkret.php:178
+#: website/konkret.php:179
 #, php-format
 msgid "This GeoKret is available for adoption. Please <a href=\"%s\">login</a> first."
 msgstr "Deze GeoKret is beschikbaar voor adoptie. Gelieve eerst <a href=\"%s\">inloggen</a>."
 
-#: website/konkret.php:181
+#: website/konkret.php:182
 msgid "Claim this GeoKret"
 msgstr "claim deze GeoKret"
 
-#: website/konkret.php:183
+#: website/konkret.php:184
 #, php-format
 msgid "This GeoKret is available for adoption. You can <a href=\"%s\">claim</a> this GeoKret."
 msgstr "Deze GeoKret is beschikbaar voor adoptie. Gelieve eerst <a href=\"%s\">inloggen</a>."
 
-#: website/konkret.php:239
+#: website/konkret.php:246
 msgid "You can rate this GeoKret"
 msgstr "Je kunt deze GeoKret beoordelen "
 
-#: website/konkret.php:242
+#: website/konkret.php:249
 msgid "You have already rated this GeoKret"
 msgstr "Je hebt deze GeoKret al beoordeeld"
 
-#: website/konkret.php:244
+#: website/konkret.php:251
 msgid "You can't rate your own GeoKret"
 msgstr "Je kunt geen eigen GeoKret beoordelen"
 
-#: website/konkret.php:246
+#: website/konkret.php:253
 msgid "You can't rate this geokret"
 msgstr "Je kunt deze GeoKret niet beoordelen"
 
-#: website/konkret.php:264
+#: website/konkret.php:275
 msgid "Total distance"
 msgstr "Totale afstand"
 
-#: website/konkret.php:265
+#: website/konkret.php:276
 msgid "Places visited"
 msgstr "Bezochte plaatsen"
 
-#: website/konkret.php:266
+#: website/konkret.php:277
 msgid "Forum links"
 msgstr "Forum links"
 
-#: website/konkret.php:267
+#: website/konkret.php:278
 msgid "Country track"
 msgstr "Bezochte landen"
 
-#: website/konkret.php:268
+#: website/konkret.php:279
 msgid "Rating"
 msgstr "Beoordeling"
 
-#: website/konkret.php:270
+#: website/konkret.php:281
 msgid "votes"
 msgstr "stemmen"
 
-#: website/konkret.php:270
+#: website/konkret.php:281
 msgid "average rating"
 msgstr "Gemiddelde beoordeling"
 
-#: website/konkret.php:274
+#: website/konkret.php:285
 msgid "Share on"
 msgstr "Delen op"
 
-#: website/konkret.php:285
+#: website/konkret.php:296
 msgid "Short description"
 msgstr "Korte omschrijving"
 
-#: website/konkret.php:316
+#: website/konkret.php:327
 msgid "start"
 msgstr "start"
 
-#: website/konkret.php:317
+#: website/konkret.php:328
 msgid "trip points"
 msgstr "punten van de reis"
 
-#: website/konkret.php:318
+#: website/konkret.php:329
 msgid "recently seen"
 msgstr "recentelijk gezien"
 
-#: website/konkret.php:327
+#: website/konkret.php:338
 msgid "The google map is not avaliable due to large numer of points."
 msgstr "Googlemaps is niet beschikbaar door het hoge aantal punten."
 
-#: website/konkret.php:329
+#: website/konkret.php:340
 msgid "This geokret has not started yet"
 msgstr "Deze GeoKret is nog niet gestart"
 
-#: website/konkret.php:334
+#: website/konkret.php:345
 msgid "Download the track as:"
 msgstr "Download de reis als:"
 
@@ -1001,11 +1001,11 @@ msgstr "Download de reis als:"
 msgid "Contact"
 msgstr "Contact"
 
-#: website/kontakt.php:12
+#: website/kontakt.php:17
 msgid "If you have any suggestion or bug reports feel free to write us"
 msgstr "Als je een suggestie hebt of als je hebt een foutje hebt gevonden kun je ons schrijven"
 
-#: website/krety.html.php:9 website/ruchy.php:645
+#: website/krety.html.php:9 website/ruchy.php:666
 msgid "Operations on GeoKrety"
 msgstr "Werk in uitvoering op GeoKrety"
 
@@ -1037,7 +1037,7 @@ msgstr "Over"
 #: website/templates.php:135 website/templates.php:180
 #: website/templates.php:252 website/templates.php:318
 #: website/templates.php:324 website/templates/krety-m.html:46
-#: website/templates/krety.html:233
+#: website/templates/krety.html:234
 msgid "contact"
 msgstr "contact"
 
@@ -1045,8 +1045,8 @@ msgstr "contact"
 msgid "Print label"
 msgstr "Label afdrukken"
 
-#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:287
-#: website/mygeokrets.php:292 website/race.php:285 website/race.php:408
+#: website/labels.php:58 website/lingering.php:200 website/mygeokrets.php:286
+#: website/mygeokrets.php:291 website/race.php:286 website/race.php:409
 #: website/race_list.php:183 website/race_list.php:270
 msgid "Owner"
 msgstr "Eigenaar"
@@ -1067,55 +1067,55 @@ msgstr "Help talen"
 msgid "Please note: not all translations are avaliable. Translations may not work with some templates. English is added by default, so you may not select it."
 msgstr "Let op: niet alle vertalingen zijn beschikbaar. In sommige talen werken de templates niet. Engels is de hoofdtaal en wordt automatisch toegevoegd, die hoef je dus niet te selecteren."
 
-#: website/lingering.php:189 website/mygeokrets.php:236
+#: website/lingering.php:189 website/mygeokrets.php:235
 msgid "Edit this GeoKret"
 msgstr "Bewerk deze GeoKret"
 
-#: website/lingering.php:227 website/mygeokrets.php:329
-#: website/recent_moves.php:92 website/ruchy.php:658
+#: website/lingering.php:227 website/mygeokrets.php:328
+#: website/recent_moves.php:91 website/ruchy.php:679
 msgid "Name"
 msgstr "Naam"
 
-#: website/lingering.php:230 website/mygeokrets.php:332
+#: website/lingering.php:230 website/mygeokrets.php:331
 msgid "Last action"
 msgstr "Laatste actie"
 
 #: website/lingering.php:231 website/lost_mapka.php:52
-#: website/mapka_kretow.php:69 website/mygeokrets.php:333 website/race.php:107
-#: website/race_list.php:101 website/recent_moves.php:96
+#: website/mapka_kretow.php:69 website/mygeokrets.php:332 website/race.php:108
+#: website/race_list.php:101 website/recent_moves.php:95
 msgid "Distance travelled"
 msgstr "Afgelegde afstand"
 
-#: website/lingering.php:232 website/mygeokrets.php:334 website/race.php:108
+#: website/lingering.php:232 website/mygeokrets.php:333 website/race.php:109
 #: website/race_list.php:102
 msgid "Number of visited caches"
 msgstr "Aantal bezochte caches"
 
-#: website/longin.php:43
+#: website/longin.php:42
 msgid "You have successfully logged out of GeoKrety website."
 msgstr "Je bent succesvol uitgelogd van de GeoKrety website."
 
-#: website/longin.php:45
+#: website/longin.php:44
 msgid "You are probably logged in."
 msgstr "Je bent waarschijnlijk nog ingelogd."
 
-#: website/longin.php:88
+#: website/longin.php:87
 msgid "User doesn't exist/wrong password."
 msgstr "Gebruiker bestaat niet/verkeerd wachtwoord."
 
-#: website/longin.php:107
+#: website/longin.php:106
 msgid "Error setting sessid."
 msgstr "Error sessie nummer"
 
-#: website/longin.php:146
+#: website/longin.php:145
 msgid "Remember me"
 msgstr "Onthoudt mij"
 
-#: website/longin.php:147
+#: website/longin.php:146
 msgid "We are using cookies only for storing login information and language preferences. Read more <a href=\"/help.php#cookies\">about our cookies policy</a>"
 msgstr "We gebruiken cookies alleen voor de opslag van aanmeldingsgegevens en taalvoorkeuren. Lees meer <a href=\"/help.php#cookies\">over ons cookies beleid</a>"
 
-#: website/longin_chceck.php:27
+#: website/longin_chceck.php:26
 msgid "Wrong secid identifier"
 msgstr "Verkeerde Secid"
 
@@ -1138,7 +1138,7 @@ msgid "The list is generated daily."
 msgstr "De lijst wordt dagelijks gegenereerd."
 
 #: website/lost_mapka.php:10 website/mapa.php:9 website/mapka_kretow.php:9
-#: website/race.php:334
+#: website/race.php:335
 msgid "Geokrets on the map"
 msgstr "GeoKrets op de kaart"
 
@@ -1250,14 +1250,14 @@ msgstr "Weet je het zeker?"
 msgid "Generate new secid"
 msgstr "Genereer nieuwe Secid"
 
-#: website/mypage.php:106 website/mypage.php:370 website/templates.php:162
-#: website/templates/plugins/function.login_check.php:48
+#: website/mypage.php:106 website/mypage.php:369 website/templates.php:162
+#: website/templates/plugins/function.login_check.php:47
 #: website/templates/krety_logged_in.html:9
 msgid "My recent logs"
 msgstr "Mijn recente logs"
 
-#: website/mypage.php:116 website/mypage.php:371 website/templates.php:165
-#: website/templates/plugins/function.login_check.php:49
+#: website/mypage.php:116 website/mypage.php:370 website/templates.php:165
+#: website/templates/plugins/function.login_check.php:48
 #: website/templates/krety_logged_in.html:10
 msgid "Recent moves of my geokrets"
 msgstr "Recente verplaatsingen van mijn GeoKret’s"
@@ -1267,73 +1267,73 @@ msgstr "Recente verplaatsingen van mijn GeoKret’s"
 msgid "%s's Inventory"
 msgstr "%s's Inventaris "
 
-#: website/mypage.php:230
+#: website/mypage.php:229
 #, php-format
 msgid "%s has created <b>%s</b> GeoKrets, which travelled <b>%s</b> km."
 msgstr "%s heeft <b>%s</b> GeoKrets aangemaakt, die <b>%s</b> km hebben afgelegd."
 
-#: website/mypage.php:252
+#: website/mypage.php:251
 #, php-format
 msgid "%s has moved <b>%s</b> GeoKrets on a total distance of <b>%s</b> km."
 msgstr "%s heeft <b>%s</b> GeoKrets verplaatst met een totale afstand van <b>%s</b> km."
 
-#: website/mypage.php:274
+#: website/mypage.php:273
 msgid "Send a message to the user"
 msgstr "Stuur een bericht naar de gebruiker"
 
-#: website/mypage.php:307
+#: website/mypage.php:306
 msgid "Joined us"
 msgstr "Geregistreerd sinds"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Subscribe to RSS channel"
 msgstr "Aanmelden bij het RSS kanaal"
 
-#: website/mypage.php:321
+#: website/mypage.php:320
 msgid "Be up to date with your and watched GeoKrets!"
 msgstr "Blijf op de hoogte van je eigen, en de door jou gevolgde GeoKrets!"
 
-#: website/mypage.php:336 website/mypage.php:375 website/user_stat.php:194
+#: website/mypage.php:335 website/mypage.php:374 website/user_stat.php:194
 msgid "User stats"
 msgstr "Gebruikersstatistieken"
 
-#: website/mypage.php:341
+#: website/mypage.php:340
 msgid "Badges"
 msgstr "Badges"
 
-#: website/mypage.php:364
+#: website/mypage.php:363
 msgid "Links"
 msgstr "Links"
 
-#: website/mypage.php:367 website/templates.php:153
-#: website/templates/plugins/function.login_check.php:45
+#: website/mypage.php:366 website/templates.php:153
+#: website/templates/plugins/function.login_check.php:44
 #: website/templates/krety_logged_in.html:6
 msgid "Geokrets in my inventory"
 msgstr "GeoKrets in mijn inventaris"
 
-#: website/mypage.php:368 website/templates.php:156
-#: website/templates/plugins/function.login_check.php:46
+#: website/mypage.php:367 website/templates.php:156
+#: website/templates/plugins/function.login_check.php:45
 #: website/templates/krety_logged_in.html:7
 msgid "My geokrets"
 msgstr "Mijn GeoKrets"
 
-#: website/mypage.php:369 website/templates.php:159
+#: website/mypage.php:368 website/templates.php:159
 #: website/templates/krety_logged_in.html:8
 msgid "Watched geokrets"
 msgstr "Gevolgde GeoKrets"
 
-#: website/mypage.php:372 website/templates.php:168
+#: website/mypage.php:371 website/templates.php:168
 #: website/templates/krety_logged_in.html:11
 msgid "My photos"
 msgstr "Mijn foto’s"
 
-#: website/mypage.php:373 website/templates.php:171
+#: website/mypage.php:372 website/templates.php:171
 #: website/templates/krety_logged_in.html:12
 msgid "Photos of my geokrets"
 msgstr "Foto’s van mijn GeoKret’s"
 
-#: website/mypage.php:374 website/templates.php:174
-#: website/templates/plugins/function.login_check.php:50
+#: website/mypage.php:373 website/templates.php:174
+#: website/templates/plugins/function.login_check.php:49
 #: website/templates/krety_logged_in.html:13
 msgid "Where are my geokrets?"
 msgstr "Waar zijn mijn geokrets?"
@@ -1358,27 +1358,27 @@ msgstr "Nieuw wachtwoord verzonden naar"
 msgid "No such email"
 msgstr "E-mail adres bestaat niet"
 
-#: website/newscomments.php:120
+#: website/newscomments.php:118
 msgid "News post not found."
 msgstr "Nieuwsbericht is niet gevonden."
 
-#: website/newscomments.php:232
+#: website/newscomments.php:230
 msgid "Unsubscribe from this news post"
 msgstr "Uitschrijven van nieuwsberichten"
 
-#: website/newscomments.php:235 website/newscomments.php:254
+#: website/newscomments.php:233 website/newscomments.php:252
 msgid "Subscribe to this news post"
 msgstr "Inschrijven voor nieuwsberichten"
 
-#: website/newscomments.php:250
+#: website/newscomments.php:248
 msgid "Write new comment"
 msgstr "Schrijf een reactie"
 
-#: website/newscomments.php:255
+#: website/newscomments.php:253
 msgid "Post comment"
 msgstr "Reactie verzenden"
 
-#: website/newscomments.php:267
+#: website/newscomments.php:265
 msgid "There are no comments for this post."
 msgstr "Er zijn geen reacties op dit bericht"
 
@@ -1395,132 +1395,132 @@ msgstr "Gebruikers die deze GeoKret volgen"
 msgid "Press corner"
 msgstr "Pershoekje"
 
-#: website/race.php:43 website/race.php:46 website/race.php:47
-#: website/race.php:442 website/race_list.php:34 website/race_list.php:37
+#: website/race.php:44 website/race.php:47 website/race.php:48
+#: website/race.php:443 website/race_list.php:34 website/race_list.php:37
 #: website/race_list.php:38 website/race_list.php:302
 msgid "days"
 msgstr "dagen"
 
-#: website/race.php:54 website/race_list.php:47
+#: website/race.php:55 website/race_list.php:47
 msgid "yes"
 msgstr "ja"
 
-#: website/race.php:56 website/race_list.php:49
+#: website/race.php:57 website/race_list.php:49
 msgid "password"
 msgstr "wachtwoord"
 
-#: website/race.php:57 website/race.php:59 website/race.php:64
-#: website/race.php:386 website/race_join.php:8 website/race_list.php:50
+#: website/race.php:58 website/race.php:60 website/race.php:65
+#: website/race.php:387 website/race_join.php:8 website/race_list.php:50
 #: website/race_list.php:52 website/race_list.php:57
 msgid "Join the Race"
 msgstr "Doe met een race mee"
 
-#: website/race.php:62 website/race_list.php:55
+#: website/race.php:63 website/race_list.php:55
 msgid "no"
 msgstr "nee"
 
-#: website/race.php:71
+#: website/race.php:72
 msgid "Edit this race"
 msgstr "Bewerk deze race"
 
-#: website/race.php:84 website/race_list.php:71
+#: website/race.php:85 website/race_list.php:71
 msgid "Distance to destination"
 msgstr "Afstand naar bestemming"
 
-#: website/race.php:89 website/race_list.php:75
+#: website/race.php:90 website/race_list.php:75
 #, php-format
 msgid "% of target distance done"
 msgstr "% van verwachte afstand afgelegd"
 
-#: website/race.php:93 website/race_list.php:79
+#: website/race.php:94 website/race_list.php:79
 #, php-format
 msgid "% of target caches visited"
 msgstr "% van verwachte caches bezocht"
 
-#: website/race.php:102 website/race_list.php:98
+#: website/race.php:103 website/race_list.php:98
 msgid "Rank"
 msgstr "Rang"
 
-#: website/race.php:106
+#: website/race.php:107
 msgid "Last log"
 msgstr "Laatste log"
 
-#: website/race.php:109 website/race_list.php:103
+#: website/race.php:110 website/race_list.php:103
 msgid "Average speed"
 msgstr "Gemiddelde snelheid"
 
-#: website/race.php:216 website/race_list.php:128 website/race_list.php:130
+#: website/race.php:217 website/race_list.php:128 website/race_list.php:130
 #: website/race_list.php:132
 msgid "km/day"
 msgstr "km/dag"
 
-#: website/race.php:273 website/race_list.php:171
+#: website/race.php:274 website/race_list.php:171
 msgid "Race information"
 msgstr "Raceinformatie"
 
-#: website/race.php:278 website/race.php:411 website/race_list.php:176
+#: website/race.php:279 website/race.php:412 website/race_list.php:176
 #: website/race_list.php:273
 msgid "Race status"
 msgstr "Racestatus"
 
-#: website/race.php:290 website/race.php:410 website/race_add.php:147
+#: website/race.php:291 website/race.php:411 website/race_add.php:147
 #: website/race_list.php:188 website/race_list.php:272
 msgid "Race type"
 msgstr "Racesoort"
 
-#: website/race.php:296 website/race_add.php:127 website/race_list.php:194
+#: website/race.php:297 website/race_add.php:127 website/race_list.php:194
 msgid "Start date"
 msgstr "Startdatum"
 
-#: website/race.php:303 website/race_add.php:134 website/race_list.php:201
+#: website/race.php:304 website/race_add.php:134 website/race_list.php:201
 msgid "End date"
 msgstr "Einddatum"
 
-#: website/race.php:310 website/race_add.php:120 website/race_list.php:208
+#: website/race.php:311 website/race_add.php:120 website/race_list.php:208
 msgid "Private race"
 msgstr "Privé race"
 
-#: website/race.php:318 website/race_add.php:141 website/race_list.php:216
+#: website/race.php:319 website/race_add.php:141 website/race_list.php:216
 msgid "Race description"
 msgstr "Racebeschrijving"
 
-#: website/race.php:324 website/race.php:354
+#: website/race.php:325 website/race.php:355
 msgid "Geokrety races"
 msgstr "Geokrety wedstrijden"
 
-#: website/race.php:338 website/race_list.php:227
+#: website/race.php:339 website/race_list.php:227
 msgid "Race participants"
 msgstr "Race "
 
-#: website/race.php:343
+#: website/race.php:344
 msgid "No participants. Yet..."
 msgstr "Geen deelnemers. Tot nu..."
 
-#: website/race.php:346 website/race_list.php:232
+#: website/race.php:347 website/race_list.php:232
 msgid "Race"
 msgstr "Race"
 
-#: website/race.php:382 website/race_add.php:8
+#: website/race.php:383 website/race_add.php:8
 msgid "Register a new Race"
 msgstr "Registreer een nieuwe race"
 
-#: website/race.php:390
+#: website/race.php:391
 msgid "My races"
 msgstr "Mijn races"
 
-#: website/race.php:396
+#: website/race.php:397
 msgid "Races"
 msgstr "Races"
 
-#: website/race.php:397 website/race_list.php:259
+#: website/race.php:398 website/race_list.php:259
 msgid "Filter races by status"
 msgstr "Filter race op status"
 
-#: website/race.php:399 website/race_list.php:260
+#: website/race.php:400 website/race_list.php:260
 msgid "All races"
 msgstr "Alle races"
 
-#: website/race.php:407 website/race_add.php:115 website/race_list.php:269
+#: website/race.php:408 website/race_add.php:115 website/race_list.php:269
 msgid "Race title"
 msgstr "Race titel"
 
@@ -1651,25 +1651,33 @@ msgstr "Wanneer je de race eigenaar bent, hoef je geen wachtwoord in te vullen"
 msgid "Please read this race rules before joining!"
 msgstr "Lees eerst dit eer men aan een race mee doet!"
 
-#: website/race_join.php:78
+#: website/race_join.php:79
 msgid "No race selected"
 msgstr "Geen race geselecteerd"
 
-#: website/race_join.php:80
+#: website/race_join.php:82
 msgid "No reference number"
 msgstr "Geen referentienummer"
 
-#: website/race_join.php:102
+#: website/race_join.php:96
+msgid "Unknown geokret"
+msgstr "Onbekende geokret"
+
+#: website/race_join.php:103
 msgid "This is not your geokret"
 msgstr "Dit is geen eigen GeoKret"
 
-#: website/race_join.php:115
+#: website/race_join.php:117
 msgid "This race is private. Please provide the password"
 msgstr "Dit is een privé race. Vul een wachtwoord in"
 
-#: website/race_join.php:117
+#: website/race_join.php:120
 msgid "Wrong password"
 msgstr "Verkeerd wachtwoord"
+
+#: website/race_join.php:138
+msgid "Internal error, please report"
+msgstr "Interne fout: Alstublieft rapporteren"
 
 #: website/race_list.php:240
 msgid "Race list"
@@ -1679,15 +1687,15 @@ msgstr "Racelijst"
 msgid "Recent Log Comments"
 msgstr "Recente log berichten "
 
-#: website/recent_comments_fn.php:14
+#: website/recent_comments_fn.php:13
 msgid "Recent log comments"
 msgstr "Recente log berichten"
 
-#: website/recent_comments_fn.php:104
+#: website/recent_comments_fn.php:103
 msgid "User"
 msgstr "Gebruiker"
 
-#: website/recent_moves.php:14 website/recentlogs.php:9
+#: website/recent_moves.php:13 website/recentlogs.php:9
 #: website/templates.php:18 website/templates.php:81 website/templates.php:207
 #: website/templates.php:270
 msgid "Recent logs"
@@ -1697,16 +1705,16 @@ msgstr "Recente logs"
 msgid "Recent news comments"
 msgstr "Recente nieuws berichten"
 
-#: website/recent_newscomments_fn.php:9
+#: website/recent_newscomments_fn.php:8
 msgid "View all comments"
 msgstr "Bekijk alle berichten"
 
-#: website/recent_pictures.php:44 website/recent_pictures.php:46
+#: website/recent_pictures.php:43 website/recent_pictures.php:45
 msgid "Go to geokret's page"
 msgstr "Ga naar de GeoKret’s pagina"
 
 #: website/register.php:11 website/templates.php:144
-#: website/templates/plugins/function.login_check.php:41
+#: website/templates/plugins/function.login_check.php:40
 #: website/templates/krety_logged_in.html:1
 msgid "Register a new GeoKret"
 msgstr "Registreer een nieuwe GeoKret"
@@ -1727,223 +1735,232 @@ msgstr "Hier geboren :)"
 msgid "Cannot edit this log"
 msgstr "Kan dit bericht niet aanpassen"
 
-#: website/ruchy.php:194
+#: website/ruchy.php:193 website/szukaj-ajax.php:67
+#, php-format
+msgid "Unexpected error (id:%s), please report."
+msgstr "Onverwachte fout (id:%s), gelieve te rapporteren."
+
+#: website/ruchy.php:202
 msgid "Missing or invalid Tracking Code"
 msgstr "De tracking code mist, of is niet juist"
 
-#: website/ruchy.php:198
+#: website/ruchy.php:206
 msgid "Missing or invalid Reference Number"
 msgstr "Het referentie nummer mist, of is niet juist"
 
-#: website/ruchy.php:206
+#: website/ruchy.php:214
 msgid "Invalid log type"
 msgstr "Verkeerde logsoort"
 
-#: website/ruchy.php:211
+#: website/ruchy.php:219
 msgid "No lat/lon OR waypoint name!"
 msgstr "Geen lat/lon of waypoint naam!"
 
-#: website/ruchy.php:216
+#: website/ruchy.php:224
 msgid "No username supplied"
 msgstr "Geen gebruikersnaam opgegeven"
 
-#: website/ruchy.php:219
+#: website/ruchy.php:227
 msgid "Wrong time (minutes)"
 msgstr "Verkeerde tijd (minuten)"
 
-#: website/ruchy.php:222
+#: website/ruchy.php:230
 msgid "Wrong time (hours)"
 msgstr "Verkeerde tijd (uren)"
 
-#: website/ruchy.php:291
+#: website/ruchy.php:299
 msgid "Identical log has been submited."
 msgstr "Er is al eenzelfde log verzonden."
 
-#: website/ruchy.php:303
+#: website/ruchy.php:311
 msgid "There is an entry with this date. Correct the date or the hour."
 msgstr "Er is al een log met deze datum, corrigeer de datum of de tijd."
 
-#: website/ruchy.php:309
+#: website/ruchy.php:317
 msgid "The date is from the past, BEFORE the GeoKret was created."
 msgstr "De datum ligt te ver in het verleden, van VOOR de tijd dat de GeoKret was aangemaakt."
 
-#: website/ruchy.php:311
+#: website/ruchy.php:319
 msgid "The date is from the future (if you are an inventor of a time travelling machine, contact with us, please)"
 msgstr "De datum is in de toekomst. (als je een uitvinder bent van een tijdreis machine, neem a.u.b. contact met ons op) "
 
-#: website/ruchy.php:339
+#: website/ruchy.php:347
 msgid "You can not archive not your own GeoKret"
 msgstr "Je kunt alleen eigen GeoKrets archiveren"
 
-#: website/ruchy.php:552
+#: website/ruchy.php:573
 msgid "Add a comment"
 msgstr "Plaats een bericht"
 
-#: website/ruchy.php:564 website/ruchy.php:832
+#: website/ruchy.php:585 website/ruchy.php:853
 msgid "When you want to write a comment :)"
 msgstr "Wanneer je een notitie wilt schrijven :)"
 
-#: website/ruchy.php:572
+#: website/ruchy.php:593
 msgid "Reference number"
 msgstr "Referentienummer"
 
-#: website/ruchy.php:598
+#: website/ruchy.php:619
 msgid "Archive a GeoKret"
 msgstr "Archiveer een GeoKret"
 
-#: website/ruchy.php:608
+#: website/ruchy.php:629
 msgid "When a GeoKret has been missing for a long time"
 msgstr "Wanneer een GeoKret voor lange tijd vermist is"
 
-#: website/ruchy.php:609
+#: website/ruchy.php:630
 msgid "Archive"
 msgstr "Archiveer"
 
-#: website/ruchy.php:634
+#: website/ruchy.php:655
 msgid "Tracking Code"
 msgstr "Tracking Code"
 
-#: website/ruchy.php:637
+#: website/ruchy.php:658
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
 msgstr "6 tekens van de GeoKret label, bv. XF3ACS. <u>gebruik hier niet de code die begint met 'GK'</u>."
 
-#: website/ruchy.php:651
+#: website/ruchy.php:672
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
 msgstr "Alhoewel het mogelijk is om dingen te doen op GeoKrety zonder in te loggen, moedigen wij juist aan om toch een eigen account te maken. Het duurt maar 15 seconden :)"
 
-#: website/ruchy.php:659
+#: website/ruchy.php:680
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "Dit zal waarschijnlijk jouw:<br />- geocaching/opencaching gebruikersnaam<br />- nickname<br />- naam, etc. zijn."
 
-#: website/ruchy.php:677
+#: website/ruchy.php:698
 msgid "Logged at my home coordinates"
 msgstr "Gelogd op mijn thuiscoördinaten"
 
-#: website/ruchy.php:677
+#: website/ruchy.php:698
 msgid "Log GeoKret at my home coordinates"
 msgstr "Log GeoKret op mijn thuiscoördinaten"
 
-#: website/ruchy.php:688
+#: website/ruchy.php:709
 msgid "Choose log type"
 msgstr "Kies log soort"
 
-#: website/ruchy.php:799
+#: website/ruchy.php:820
 msgid "Log type"
 msgstr "Logsoort"
 
-#: website/ruchy.php:799
+#: website/ruchy.php:820
 msgid "help.php#Chooselogtype"
 msgstr "help_generate.php?help=nl#Chooselogtype"
 
-#: website/ruchy.php:804
+#: website/ruchy.php:825
 msgid "When you've left a GeoKret in a cache"
 msgstr "Wanneer je een GeoKret hebt achtergelaten in een cache"
 
-#: website/ruchy.php:805
+#: website/ruchy.php:826
 msgid "I've dropped GeoKret"
 msgstr "Ik heb een GeoKret achtergelaten"
 
-#: website/ruchy.php:811
+#: website/ruchy.php:832
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr "Wanneer je een GeoKret uit een cache heb genomen en niet <i>direct</i> in een andere cache achterlaat"
 
-#: website/ruchy.php:812
+#: website/ruchy.php:833
 msgid "I've grabbed GeoKret"
 msgstr "Ik heb een GeoKret meegenomen"
 
-#: website/ruchy.php:818
+#: website/ruchy.php:839
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr "Wanneer je een GeoKret gezien hebt maar niet meegenomen hebt"
 
-#: website/ruchy.php:819
+#: website/ruchy.php:840
 msgid "I've met GeoKret"
 msgstr "Ik heb een GeoKret ontmoet"
 
-#: website/ruchy.php:825
+#: website/ruchy.php:846
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr "Wanneer je een GeoKret meeneemt op een cache tour: Dit is hetzelfde als achterlaten en weer meenemen. De bezochte locatie is wel gelogd maar nog steeds in je inventaris"
 
-#: website/ruchy.php:826
+#: website/ruchy.php:847
 msgid "I've dipped a GeoKret"
 msgstr "Ik heb een GeoKret even laten zakken in deze cache, maar weer meegenomen"
 
-#: website/ruchy.php:843
+#: website/ruchy.php:864
 msgid "Identify GeoKret"
 msgstr "Identificeer GeoKret"
 
-#: website/ruchy.php:852
+#: website/ruchy.php:873
 msgid "New location"
 msgstr "Nieuwe locatie"
 
-#: website/ruchy.php:853
+#: website/ruchy.php:874
 msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
 msgstr "<a href=\"help_generate.php?help=nl#locationlagc\">Lees meer over het plaatsen van GeoKrets in GC caches</a>"
 
-#: website/ruchy.php:857
+#: website/ruchy.php:878
 msgid "Waypoint"
 msgstr "Waypoint"
 
-#: website/ruchy.php:861
+#: website/ruchy.php:882
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "bijv.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/ruchy.php:862 website/ruchy.php:875
+#: website/ruchy.php:883 website/ruchy.php:897
 msgid "help.php#fullysupportedwaypoints"
 msgstr "help_generate.php?help=nl#fullysupportedwaypoints"
 
-#: website/ruchy.php:865
+#: website/ruchy.php:886
 msgid "or name of cache"
 msgstr "of cachenaam"
 
-#: website/ruchy.php:870
+#: website/ruchy.php:891
 msgid "Check"
 msgstr "Controleer"
 
-#: website/ruchy.php:874
+#: website/ruchy.php:894 website/szukaj-ajax.php:167
+msgid "Enter at least 5 characters"
+msgstr "Vul minstens 5 tekens in"
+
+#: website/ruchy.php:896
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr "Vul cachenaam in. Dit werkt alleen bij Opencaching sites."
 
-#: website/ruchy.php:886
+#: website/ruchy.php:908
 msgid "Coordinates"
 msgstr "Coördinaten"
 
-#: website/ruchy.php:890
+#: website/ruchy.php:912
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
 msgstr "<a href=\"help.php#acceptableformats\" target=\"_blank\">Toegestane geografische coördinaat formaten</a>"
 
-#: website/ruchy.php:902
+#: website/ruchy.php:924
 msgid "Logged using geolocation"
 msgstr "Gelogd via Geolocator"
 
-#: website/ruchy.php:902
+#: website/ruchy.php:924
 msgid "Use geolocation"
 msgstr "Gebruik Geolocator"
 
-#: website/ruchy.php:913
+#: website/ruchy.php:935
 msgid "Captcha verification"
 msgstr "Captcha bevestiging"
 
-#: website/ruchy.php:946
+#: website/ruchy.php:968
 msgid "Additional data"
 msgstr "Aanvullende gegevens"
 
-#: website/ruchy.php:967
+#: website/ruchy.php:989
 msgid "Two days ago"
 msgstr "Eergisteren"
 
-#: website/ruchy.php:973
+#: website/ruchy.php:995
 msgid "Time"
 msgstr "Tijd"
 
-#: website/ruchy.php:986
+#: website/ruchy.php:1008
 msgid "now"
 msgstr "nu"
 
-#: website/ruchy.php:987
+#: website/ruchy.php:1009
 msgid "Enter exact time when You think it may be important"
 msgstr "Vul de exacte tijd in, als je denkt dat dit belangrijk is"
 
-#: website/ruchy.php:999
+#: website/ruchy.php:1021
 msgid "It is always nice to receive a little message ;)"
 msgstr "Altijd leuk om een klein bericht te ontvangen ;)"
 
@@ -1967,40 +1984,78 @@ msgstr "Niet ingelogd."
 msgid "Top ten owners"
 msgstr "Top 10 bezitters"
 
-#: website/szukaj-ajax.php:47
-msgid "GeoKret not found"
-msgstr "GeoKret niet gevonden"
-
-#: website/szukaj-ajax.php:60
-msgid "Last log:"
-msgstr "Laatste log:"
-
-#: website/szukaj-ajax.php:68
+#: website/szukaj-ajax.php:16
 #, php-format
-msgid "%s by %s."
-msgstr "%s door %s."
+msgid "waypoint %s"
+msgstr "waypoint %s"
 
-#: website/szukaj-ajax.php:73
-msgid "Invalid tracking code"
-msgstr "Foutieve tracking code"
+#: website/szukaj-ajax.php:26
+msgid "flag"
+msgstr "vlag"
 
-#: website/szukaj-ajax.php:86
+#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:194
+#, php-format
+msgid "by %s"
+msgstr "van %s"
+
+#: website/szukaj-ajax.php:32
+msgid "OK"
+msgstr "OK"
+
+#: website/szukaj-ajax.php:34
+#, php-format
+msgid "cache type: %s"
+msgstr "cache soort: %s"
+
+#: website/szukaj-ajax.php:37
+#, php-format
+msgid "country: %s %s"
+msgstr "land: %s %s"
+
+#: website/szukaj-ajax.php:39
+#, php-format
+msgid "country: %s"
+msgstr "land: %s"
+
+#: website/szukaj-ajax.php:49
+msgid "No cache found"
+msgstr "Geen cache gevonden"
+
+#: website/szukaj-ajax.php:58
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr "Geef de coördinaten (lat/lon) van cache %s in, in het invoerveld."
 
-#: website/szukaj-ajax.php:87
+#: website/szukaj-ajax.php:59
 #, php-format
 msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr "<a href=\"%s\">Leer meer over het plaatsen van GeoKrets in GC caches</a>"
 
-#: website/szukaj-ajax.php:99
+#: website/szukaj-ajax.php:106
+msgid "GeoKret not found"
+msgstr "GeoKret niet gevonden"
+
+#: website/szukaj-ajax.php:119
+msgid "Last log:"
+msgstr "Laatste log:"
+
+#: website/szukaj-ajax.php:127
+#, php-format
+msgid "%s by %s."
+msgstr "%s door %s."
+
+#: website/szukaj-ajax.php:132
+msgid "Invalid tracking code"
+msgstr "Foutieve tracking code"
+
+#: website/szukaj-ajax.php:183
 msgid "caches match"
 msgstr "cache gevonden"
 
-#: website/szukaj-ajax.php:109
-msgid "No cache found"
-msgstr "Geen cache gevonden"
+#: website/szukaj-ajax.php:185
+#, php-format
+msgid "%d caches match (the first %d)"
+msgstr "%d caches overeenkomen (de eerste %d)"
 
 #: website/szukaj.php:45
 msgid "Found users"
@@ -2018,7 +2073,7 @@ msgstr "GeoKret in"
 msgid "GeoKret owner"
 msgstr "GeoKret eigenaar"
 
-#: website/szukaj_kreta.php:44
+#: website/szukaj_kreta.php:43
 msgid "Operations on this GeoKret"
 msgstr "Werk in uitvoering aan deze GeoKret"
 
@@ -2030,7 +2085,7 @@ msgstr "Log een GeoKret"
 #: website/templates.php:66 website/templates.php:138
 #: website/templates.php:183 website/templates.php:255
 #: website/templates.php:321 website/templates.php:327
-#: website/templates/krety-m.html:46 website/templates/krety.html:233
+#: website/templates/krety-m.html:46 website/templates/krety.html:234
 msgid "Report abuse"
 msgstr "Rapporteer misbruik"
 
@@ -2051,7 +2106,7 @@ msgstr "Account gegevens"
 msgid "Logout"
 msgstr "Uitloggen"
 
-#: website/templates/konfig.php:173
+#: website/templates/konfig.php:192
 msgid "KretyPost"
 msgstr "KretyPost"
 
@@ -2063,22 +2118,22 @@ msgstr "<strong>Gebruiker instructies:</strong> <strong>1.</strong> Neem deze Ge
 msgid "You can also go to the apppropriate page by decoding the QR-code."
 msgstr "Je kunt ook naar de juiste pagina gaan door de QR-code te scannen met je smartphone."
 
-#: website/templates/nawigacja_tablicy.php:99
-#: website/templates/nawigacja_tablicy.php:112
+#: website/templates/nawigacja_tablicy.php:98
+#: website/templates/nawigacja_tablicy.php:111
 msgid "Show all"
 msgstr "Alles tonen"
 
-#: website/templates/nawigacja_tablicy.php:124
+#: website/templates/nawigacja_tablicy.php:123
 #, php-format
 msgid "Showing items %s - %s (of %s) :: %s"
 msgstr "Tonen items %s - %s (van %s) :: %s"
 
-#: website/templates/nawigacja_tablicy.php:125
+#: website/templates/nawigacja_tablicy.php:124
 #, php-format
 msgid "Showing items %s - %s (of %s)"
 msgstr "Tonen items %s - %s (van %s)"
 
-#: website/templates/plugins/function.login_check.php:47
+#: website/templates/plugins/function.login_check.php:46
 msgid "Observed geokrets"
 msgstr "Gevolgde geokrets"
 
@@ -2142,13 +2197,13 @@ msgstr "Geokret gemaakt"
 msgid "Portfolio"
 msgstr "Referenties"
 
-#: website/verify_mail.php:117
+#: website/verify_mail.php:113
 #, php-format
 msgid "An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it :)\n\n"
 "%s"
 msgstr "Er is een account gemaakt op GeoKrety.org met dit e-mailadres. Om te activeren, klik op onderstaande link. Wanneer je niet weet wat dit voor een e-mail is of zelfs nooit van GeoKrety hebt gehoord kun je deze e-mail weggooien en het vergeten :) %s"
 
-#: website/verify_mail.php:121
+#: website/verify_mail.php:117
 msgid "[GeoKrety] Activate your account"
 msgstr "[GeoKrety] account activeren "
 
@@ -2212,27 +2267,611 @@ msgstr "Help met het vertalen van GeoKrety.org in jouw taal. Selecteer een taal 
 msgid "Fix translation"
 msgstr "Online vertalen"
 
-#: website/templates/krety.html:202
+#: website/templates/krety.html:198
+msgid "Contact-us"
+msgstr "Contacteer ons"
+
+#: website/templates/krety.html:203
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
 msgstr "De voorgestelde bijdrage is 3€ maar elk bedrag wordt gewaardeerd. Donatie is niet vereist omdat GeoKrety.org gratis en open source blijft. Dank voor je steun"
 
-#: website/templates/krety.html:204
+#: website/templates/krety.html:205
 msgid "Enjoying GeoKrety.org?"
 msgstr "Vind je GeoKrety.org leuk?"
 
-#: website/templates/krety.html:205
+#: website/templates/krety.html:206
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
 msgstr "Wanneer je GeoKrety.org waardeert zou je een donatie kunnen doen"
 
-#: website/templates/krety.html:209
+#: website/templates/krety.html:210
 msgid "Contribute"
-msgstr "Doneren"
+msgstr "Bijdragen"
 
-#: website/templates/krety.html:233
+#: website/templates/krety.html:234
 msgid "version"
 msgstr "versie"
 
 #: website/templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
 msgstr "Adopteer een GeoKret"
+
+#: website/templates/waypointy-translations.html:3
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: website/templates/waypointy-translations.html:4
+msgid "Egypt"
+msgstr "Egypte"
+
+#: website/templates/waypointy-translations.html:5
+msgid "Albania"
+msgstr "Albanië"
+
+#: website/templates/waypointy-translations.html:6
+msgid "American Samoa"
+msgstr "Amerikaans-Samoa"
+
+#: website/templates/waypointy-translations.html:7
+msgid "Argentina"
+msgstr "Argentinië"
+
+#: website/templates/waypointy-translations.html:8
+msgid "Armenia"
+msgstr "Armenië"
+
+#: website/templates/waypointy-translations.html:9
+msgid "Austria"
+msgstr "Oostenrijk"
+
+#: website/templates/waypointy-translations.html:10
+msgid "Australia"
+msgstr "Australië"
+
+#: website/templates/waypointy-translations.html:11
+msgid "Bahamas"
+msgstr "Bahama's"
+
+#: website/templates/waypointy-translations.html:12
+msgid "Belarus"
+msgstr "Wit-Rusland"
+
+#: website/templates/waypointy-translations.html:13
+msgid "Belgium"
+msgstr "België"
+
+#: website/templates/waypointy-translations.html:14
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnië-Herzegovina"
+
+#: website/templates/waypointy-translations.html:15
+msgid "Botswana"
+msgstr "Botswana"
+
+#: website/templates/waypointy-translations.html:16
+msgid "Brazil"
+msgstr "Brazilië"
+
+#: website/templates/waypointy-translations.html:17
+msgid "Bulgaria"
+msgstr "Bulgarije"
+
+#: website/templates/waypointy-translations.html:18
+msgid "Canada"
+msgstr "Canada"
+
+#: website/templates/waypointy-translations.html:19
+msgid "Czech Republic"
+msgstr "Tsjechië"
+
+#: website/templates/waypointy-translations.html:20
+msgid "Chile"
+msgstr "Chili"
+
+#: website/templates/waypointy-translations.html:21
+msgid "China"
+msgstr "China"
+
+#: website/templates/waypointy-translations.html:22
+msgid "Croatia"
+msgstr "Kroatië"
+
+#: website/templates/waypointy-translations.html:23
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: website/templates/waypointy-translations.html:24
+msgid "Cyprus"
+msgstr "Cyprus"
+
+#: website/templates/waypointy-translations.html:25
+msgid "Denmark"
+msgstr "Denemarken"
+
+#: website/templates/waypointy-translations.html:26
+msgid "Germany"
+msgstr "Duitsland"
+
+#: website/templates/waypointy-translations.html:27
+msgid "North Korea"
+msgstr "Noord-Korea"
+
+#: website/templates/waypointy-translations.html:28
+msgid "Dominican Republic"
+msgstr "Dominicaanse Republiek"
+
+#: website/templates/waypointy-translations.html:29
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: website/templates/waypointy-translations.html:30
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: website/templates/waypointy-translations.html:31
+msgid "Spain"
+msgstr "Spanje"
+
+#: website/templates/waypointy-translations.html:32
+msgid "Estonia"
+msgstr "Estland"
+
+#: website/templates/waypointy-translations.html:33
+msgid "Falkland Islands"
+msgstr "Falklandeilanden"
+
+#: website/templates/waypointy-translations.html:34
+msgid "Faroe Islands"
+msgstr "Farao Eilanden"
+
+#: website/templates/waypointy-translations.html:35
+msgid "Finland"
+msgstr "Finland"
+
+#: website/templates/waypointy-translations.html:36
+msgid "France"
+msgstr "Frankrijk"
+
+#: website/templates/waypointy-translations.html:37
+msgid "Georgia"
+msgstr "Georgia"
+
+#: website/templates/waypointy-translations.html:38
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: website/templates/waypointy-translations.html:39
+msgid "Granada"
+msgstr "Granada"
+
+#: website/templates/waypointy-translations.html:40
+msgid "Greece"
+msgstr "Griekenland"
+
+#: website/templates/waypointy-translations.html:41
+msgid "Greenland"
+msgstr "Groenland"
+
+#: website/templates/waypointy-translations.html:42
+msgid "United Kingdom"
+msgstr "Verenigd Koninkrijk"
+
+#: website/templates/waypointy-translations.html:43
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: website/templates/waypointy-translations.html:44
+msgid "Netherlands"
+msgstr "Nederland"
+
+#: website/templates/waypointy-translations.html:45
+msgid "Honduras"
+msgstr "Honduras"
+
+#: website/templates/waypointy-translations.html:46
+msgid "Indonesia"
+msgstr "Indonesië"
+
+#: website/templates/waypointy-translations.html:47
+msgid "India"
+msgstr "India"
+
+#: website/templates/waypointy-translations.html:48
+msgid "Ireland"
+msgstr "Ierland"
+
+#: website/templates/waypointy-translations.html:49
+msgid "Iceland"
+msgstr "Ijsland"
+
+#: website/templates/waypointy-translations.html:50
+msgid "Israel"
+msgstr "Israël"
+
+#: website/templates/waypointy-translations.html:51
+msgid "Italy"
+msgstr "Italië"
+
+#: website/templates/waypointy-translations.html:52
+msgid "Japan"
+msgstr "Japan"
+
+#: website/templates/waypointy-translations.html:53
+msgid "Yemen"
+msgstr "Jemen"
+
+#: website/templates/waypointy-translations.html:54
+msgid "Jordan"
+msgstr "Jordanië"
+
+#: website/templates/waypointy-translations.html:55
+msgid "Cambodia"
+msgstr "Cambodja"
+
+#: website/templates/waypointy-translations.html:56
+msgid "Cape Verde"
+msgstr "Kaapverdische eilanden"
+
+#: website/templates/waypointy-translations.html:57
+msgid "Kazakhstan"
+msgstr "Kazachstan"
+
+#: website/templates/waypointy-translations.html:58
+msgid "Kenya"
+msgstr "Kenia"
+
+#: website/templates/waypointy-translations.html:59
+msgid "Kyrgyzstan"
+msgstr "Kirgizië"
+
+#: website/templates/waypointy-translations.html:60
+msgid "Colombia"
+msgstr "Colombia"
+
+#: website/templates/waypointy-translations.html:61
+msgid "Cuba"
+msgstr "Cuba"
+
+#: website/templates/waypointy-translations.html:62
+msgid "Laos"
+msgstr "Laos"
+
+#: website/templates/waypointy-translations.html:63
+msgid "Latvia"
+msgstr "Letland"
+
+#: website/templates/waypointy-translations.html:64
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: website/templates/waypointy-translations.html:65
+msgid "Lithuania"
+msgstr "Litouwen"
+
+#: website/templates/waypointy-translations.html:66
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+#: website/templates/waypointy-translations.html:67
+msgid "Malaysia"
+msgstr "Maleisië"
+
+#: website/templates/waypointy-translations.html:68
+msgid "Maldives"
+msgstr "Malediven"
+
+#: website/templates/waypointy-translations.html:69
+msgid "Malta"
+msgstr "Malta"
+
+#: website/templates/waypointy-translations.html:70
+msgid "Morocco"
+msgstr "Marokko"
+
+#: website/templates/waypointy-translations.html:71
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: website/templates/waypointy-translations.html:72
+msgid "Macedonia"
+msgstr "Macedonië"
+
+#: website/templates/waypointy-translations.html:73
+msgid "Mexico"
+msgstr "Mexico"
+
+#: website/templates/waypointy-translations.html:74
+msgid "Moldova"
+msgstr "Moldavië"
+
+#: website/templates/waypointy-translations.html:75
+msgid "Monaco"
+msgstr "Monaco"
+
+#: website/templates/waypointy-translations.html:76
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: website/templates/waypointy-translations.html:77
+msgid "Namibia"
+msgstr "Namibië"
+
+#: website/templates/waypointy-translations.html:78
+msgid "Nepal"
+msgstr "Nepal"
+
+#: website/templates/waypointy-translations.html:79
+msgid "New Zealand"
+msgstr "Nieuw Zeeland"
+
+#: website/templates/waypointy-translations.html:80
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: website/templates/waypointy-translations.html:81
+msgid "Netherlands Antilles"
+msgstr "Nederlandse Antillen"
+
+#: website/templates/waypointy-translations.html:82
+msgid "Norway"
+msgstr "Noorwegen"
+
+#: website/templates/waypointy-translations.html:83
+msgid "Panama"
+msgstr "Panama"
+
+#: website/templates/waypointy-translations.html:84
+msgid "Papua New Guinea"
+msgstr "Papua Nieuw-Guinea"
+
+#: website/templates/waypointy-translations.html:85
+msgid "Philippines"
+msgstr "Filipijnen"
+
+#: website/templates/waypointy-translations.html:86
+msgid "Poland"
+msgstr "Polen"
+
+#: website/templates/waypointy-translations.html:87
+msgid "Portugal"
+msgstr "Portugal"
+
+#: website/templates/waypointy-translations.html:88
+msgid "Russia"
+msgstr "Rusland"
+
+#: website/templates/waypointy-translations.html:89
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: website/templates/waypointy-translations.html:90
+msgid "Romania"
+msgstr "Romenië"
+
+#: website/templates/waypointy-translations.html:91
+msgid "Zambia"
+msgstr "Zambia"
+
+#: website/templates/waypointy-translations.html:92
+msgid "Saudi Arabia"
+msgstr "Saoedi-Arabië"
+
+#: website/templates/waypointy-translations.html:93
+msgid "Sweden"
+msgstr "Zweden"
+
+#: website/templates/waypointy-translations.html:94
+msgid "Switzerland"
+msgstr "Zwitserland"
+
+#: website/templates/waypointy-translations.html:95
+msgid "Serbia"
+msgstr "Servië"
+
+#: website/templates/waypointy-translations.html:96
+msgid "Serbia and Montenegro"
+msgstr "Servië en Montenegro"
+
+#: website/templates/waypointy-translations.html:97
+msgid "Seychelles"
+msgstr "Seychellen"
+
+#: website/templates/waypointy-translations.html:98
+msgid "Slovenia"
+msgstr "Slovenië"
+
+#: website/templates/waypointy-translations.html:99
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: website/templates/waypointy-translations.html:100
+msgid "Slovakia"
+msgstr "Slowakije"
+
+#: website/templates/waypointy-translations.html:101
+msgid "Soviet Union"
+msgstr "Rusland"
+
+#: website/templates/waypointy-translations.html:102
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: website/templates/waypointy-translations.html:103
+msgid "South Africa"
+msgstr "Zuid Afrika"
+
+#: website/templates/waypointy-translations.html:104
+msgid "Sudan"
+msgstr "Soedan"
+
+#: website/templates/waypointy-translations.html:105
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "Zuid-Georgië en de Zuidelijke Sandwicheilanden"
+
+#: website/templates/waypointy-translations.html:106
+msgid "Svalbard and Jan Mayen"
+msgstr "Spitsbergen en Jan Mayen"
+
+#: website/templates/waypointy-translations.html:107
+msgid "Syria"
+msgstr "Syrië"
+
+#: website/templates/waypointy-translations.html:108
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: website/templates/waypointy-translations.html:109
+msgid "Thailand"
+msgstr "Thailand"
+
+#: website/templates/waypointy-translations.html:110
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: website/templates/waypointy-translations.html:111
+msgid "Togo"
+msgstr "Togo"
+
+#: website/templates/waypointy-translations.html:112
+msgid "Trinidad and Tobago"
+msgstr "Trinidad en Tobago"
+
+#: website/templates/waypointy-translations.html:113
+msgid "Chad"
+msgstr "Tsjaad"
+
+#: website/templates/waypointy-translations.html:114
+msgid "Tunisia"
+msgstr "Tunesië"
+
+#: website/templates/waypointy-translations.html:115
+msgid "Turkey"
+msgstr "Turkije"
+
+#: website/templates/waypointy-translations.html:116
+msgid "Ukraine"
+msgstr "Oekraïne"
+
+#: website/templates/waypointy-translations.html:117
+msgid "Uganda"
+msgstr "Oeganda"
+
+#: website/templates/waypointy-translations.html:118
+msgid "Hungary"
+msgstr "Hongarije"
+
+#: website/templates/waypointy-translations.html:119
+msgid "United States"
+msgstr "Verenigde Staten"
+
+#: website/templates/waypointy-translations.html:120
+msgid "USA"
+msgstr "USA"
+
+#: website/templates/waypointy-translations.html:121
+msgid "Uzbekistan"
+msgstr "Oezbekistan"
+
+#: website/templates/waypointy-translations.html:122
+msgid "Holy See"
+msgstr "Heilige Zee"
+
+#: website/templates/waypointy-translations.html:123
+msgid "United Arab Emirates"
+msgstr "Verenigde Arabische Emiraten"
+
+#: website/templates/waypointy-translations.html:124
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: website/templates/waypointy-translations.html:125
+msgid "United States Virgin Islands"
+msgstr "Amerikaanse Maagdeneilanden"
+
+#: website/templates/waypointy-translations.html:127
+msgid "Mobile"
+msgstr "Mobiel"
+
+#: website/templates/waypointy-translations.html:128
+msgid "BIT Cache"
+msgstr "BIT Cache"
+
+#: website/templates/waypointy-translations.html:129
+msgid "Cemetery"
+msgstr "Begraafplaats"
+
+#: website/templates/waypointy-translations.html:130
+msgid "Drive-In"
+msgstr "Drive-in"
+
+#: website/templates/waypointy-translations.html:131
+msgid "Event"
+msgstr "Evenement"
+
+#: website/templates/waypointy-translations.html:133
+msgid "Multicache"
+msgstr "Multi cache"
+
+#: website/templates/waypointy-translations.html:134
+msgid "Mystery"
+msgstr "Mysterie"
+
+#: website/templates/waypointy-translations.html:135
+msgid "Unknown cache"
+msgstr "Onbekende cache"
+
+#: website/templates/waypointy-translations.html:136
+msgid "Virtual"
+msgstr "Virtueel"
+
+#: website/templates/waypointy-translations.html:137
+msgid "Webcam"
+msgstr "Webcam"
+
+#: website/templates/waypointy-translations.html:138
+msgid "Guest Book"
+msgstr "Gastenboek"
+
+#: website/templates/waypointy-translations.html:139
+msgid "Other"
+msgstr "Anders"
+
+#: website/templates/waypointy-translations.html:140
+msgid "Quiz"
+msgstr "Puzzel"
+
+#: website/templates/waypointy-translations.html:141
+msgid "Letterbox"
+msgstr "Letterbox"
+
+#: website/templates/waypointy-translations.html:142
+msgid "Math / physics cache"
+msgstr "Wiskunde/natuurkunde cache"
+
+#: website/templates/waypointy-translations.html:143
+msgid "Medical Facility"
+msgstr "Medische Voorzieningen"
+
+#: website/templates/waypointy-translations.html:144
+msgid "MP3"
+msgstr "MP3"
+
+#: website/templates/waypointy-translations.html:145
+msgid "Unknowncache"
+msgstr "Onbekende Cache"
+
+#: website/templates/waypointy-translations.html:146
+msgid "Own cache"
+msgstr "Eigen Cache"
+
+#: website/templates/waypointy-translations.html:147
+msgid "Podcast cache"
+msgstr "Podcast Cache"
+
+#: website/templates/waypointy-translations.html:148
+msgid "Unusual box"
+msgstr "Ongebruikelijke box"
+
+#: website/templates/waypointy-translations.html:149
+msgid "USB"
+msgstr "USB"
 

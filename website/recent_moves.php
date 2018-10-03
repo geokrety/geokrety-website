@@ -2,8 +2,7 @@
 
 // display table with recent moves
 
-function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders = 0, $emailversion = 0)
-{
+function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders = 0, $emailversion = 0) {
     include 'templates/konfig.php';    // config
     include 'cotozalog.php';
     include_once 'gc_search_link.php';
