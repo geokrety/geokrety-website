@@ -106,18 +106,24 @@ else { // dane z FORMY
 
         // weryfikacja rajdu
 
-        $sql = "SELECT `raceOwner`, `private`, `haslo`, `raceTitle`, `raceend`, `opis` FROM `gk-races` WHERE `status` = '0' and `raceid` = '$kret_raceid' LIMIT 1";
+        $sql = "SELECT `raceOwner`, `private`, `haslo`, `raceTitle`, `raceend`, `opis`, `status` FROM `gk-races` WHERE `raceid` = '$kret_raceid' LIMIT 1";
 
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_row($result);
         mysqli_free_result($result);
-        list($raceOwner, $private, $haslo, $raceTitle, $raceend, $opis) = $row;
+        list($raceOwner, $private, $haslo, $raceTitle, $raceend, $opis, $status) = $row;
 
-        if ($private == 1 and $kret_haslo == '' and ($raceOwner != $userid)) {
+        if (!$row) {
+            $errors[] = _('Unknown race');
+            throw new Exception();
+        } elseif ($private == 1 and $kret_haslo == '' and ($raceOwner != $userid)) {
             $errors[] = _('This race is private. Please provide the password');
             throw new Exception();
         } elseif ($private == 1 and $kret_haslo != $haslo) {
             $errors[] = _('Wrong password');
+            throw new Exception();
+        } elseif ($status != 0) {
+            $errors[] = _('This race already started. Please select another race.');
             throw new Exception();
         }
 
