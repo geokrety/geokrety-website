@@ -17,12 +17,10 @@ $g_nr = $_GET['nr'];
 $g_owner = $_GET['owner'];
 // autopoprawione...
 $g_wpt = $_GET['wpt'];
+// autopoprawione...
+$g_nazwa = $_GET['nazwa'];
 // autopoprawione...import_request_variables('g', 'g_');
 
-$p_nazwa = $_POST['nazwa'];
-// autopoprawione...
-$p_owner = $_POST['owner'];
-// autopoprawione...import_request_variables('p', 'p_');
 require_once 'szukaj_kreta.php';
 
 $link = DBConnect();
@@ -37,13 +35,13 @@ $TRESC = szukaj_kreta("WHERE `nr`='$g_nr'", 1, "GeoKrety");
 if (!empty($g_gk)) {
     $gk = hexdec(substr($g_gk, 2, 5));
     $TRESC = szukaj_kreta("WHERE `id` = '$gk'", 1, 'GeoKrety');
-} elseif (!empty($p_nazwa)) {
-    $p_nazwa = mysqli_real_escape_string($link, htmlentities(trim($p_nazwa)));
-    $TRESC = szukaj_kreta("WHERE `gk-geokrety`.`nazwa` LIKE '%$p_nazwa%'", 200, 'GeoKrety');
-} elseif (!empty($p_owner)) {
+} elseif (!empty($g_nazwa)) {
+    $g_nazwa = mysqli_real_escape_string($link, htmlentities(trim($g_nazwa)));
+    $TRESC = szukaj_kreta("WHERE `gk-geokrety`.`nazwa` LIKE '%$g_nazwa%'", 200, 'GeoKrety');
+} elseif (!empty($g_owner)) {
     $g_owner = mysqli_real_escape_string($link, htmlentities(trim($g_owner)));
     $TRESC = '<h2>'._('Found users').'</h2>';
-    $result = mysqli_query($link, "SELECT `user`, `userid` FROM `gk-users` WHERE (`user` LIKE '%$p_owner%') OR (`userid`='$p_owner') LIMIT 50");
+    $result = mysqli_query($link, "SELECT `user`, `userid` FROM `gk-users` WHERE (`user` LIKE '%$g_owner%') OR (`userid`='$g_owner') LIMIT 50");
     while ($row = mysqli_fetch_array($result)) {
         list($user, $userid) = $row;
         $TRESC .= "<a href=\"mypage.php?userid=$userid\">$user</a><br />";
@@ -95,7 +93,7 @@ else {
 <td><input type="submit" value=" go! " /></td></tr>
 </form>
 -->
-<form action="'.$_SERVER['PHP_SELF'].'" method="post">
+<form action="'.$_SERVER['PHP_SELF'].'" method="get">
 <tr>
 <td>'._('GeoKret name').':</td>
 <td><input name="nazwa" /></td>
@@ -103,7 +101,7 @@ else {
 </tr>
 </form>
 
-<form action="'.$_SERVER['PHP_SELF'].'" method="post">
+<form action="'.$_SERVER['PHP_SELF'].'" method="get">
 <tr>
 <td>'._('GeoKret owner').':</td>
 <td><input name="owner" /></td>
