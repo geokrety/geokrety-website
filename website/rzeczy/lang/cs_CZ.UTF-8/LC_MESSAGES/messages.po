@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-19 18:28+0000\n"
-"PO-Revision-Date: 2018-09-24 19:00\n"
+"POT-Creation-Date: 2018-10-04 20:54+0000\n"
+"PO-Revision-Date: 2018-10-04 21:02\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -50,7 +50,7 @@ msgstr "E-mail"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Ano, chci dostávat upozornění emailem (posílané denně o půlnoci) pokud můj nebo mnou sledovaný GeoKrtek změní pozici."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:938
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:939
 msgid "Enter code"
 msgstr "Zadejte kód"
 
@@ -338,11 +338,11 @@ msgstr "Uživatelé, kteří sledují tento GeoKret"
 msgid "days ago"
 msgstr "dní zpět"
 
-#: website/days_ago.php:15 website/ruchy.php:988
+#: website/days_ago.php:15 website/ruchy.php:989
 msgid "Yesterday"
 msgstr "Včera"
 
-#: website/days_ago.php:17 website/ruchy.php:987
+#: website/days_ago.php:17 website/ruchy.php:988
 msgid "Today"
 msgstr "Dnes"
 
@@ -432,7 +432,7 @@ msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Pomocí mapy vyberte umístění nebo zadejte souřadnice ručně."
 
 #: website/edit.php:329 website/race_join.php:41 website/ruchy.php:914
-#: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
+#: website/szukaj.php:84 website/szukaj.php:92 website/szukaj.php:115
 msgid "eg."
 msgstr "např."
 
@@ -490,7 +490,7 @@ msgid "Choose statpic"
 msgstr "vyberte obrázek do statusbaru"
 
 #: website/edit.php:551 website/labels.php:55 website/register.php:45
-#: website/szukaj.php:100
+#: website/szukaj.php:98
 msgid "GeoKret name"
 msgstr "Jméno GeoKrtka"
 
@@ -505,7 +505,7 @@ msgstr "http://wiki.geocaching.cz/wiki/Geokrtek#Typy_GeoKrtk.C5.AF"
 #: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
 #: website/recent_comments_fn.php:102 website/recent_moves.php:93
 #: website/register.php:61 website/ruchy.php:586 website/ruchy.php:854
-#: website/ruchy.php:1015
+#: website/ruchy.php:1016
 msgid "Comment"
 msgstr "Poznámka"
 
@@ -548,7 +548,7 @@ msgid "Photo by"
 msgstr "Autor fotky"
 
 #: website/geokret_gallery.php:124 website/recent_moves.php:94
-#: website/recent_pictures.php:59 website/ruchy.php:978
+#: website/recent_pictures.php:59 website/ruchy.php:979
 msgid "Date"
 msgstr "Datum"
 
@@ -750,7 +750,7 @@ msgstr "<strong>%d km </strong> nacestovali GeoKrtci ( to je %.2f x vzdálenost 
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr "Pokud jste našli GeoKret, zadejte kód sledování zde:"
 
-#: website/index.php:108 website/ruchy.php:1029
+#: website/index.php:108 website/ruchy.php:1030
 msgid "Go!"
 msgstr "Začít!"
 
@@ -1936,31 +1936,35 @@ msgstr "Zalogováno použitím geolokace"
 msgid "Use geolocation"
 msgstr "Použít geolokaci"
 
-#: website/ruchy.php:935
+#: website/ruchy.php:925
+msgid "Clear Coordinates"
+msgstr ""
+
+#: website/ruchy.php:936
 msgid "Captcha verification"
 msgstr "Captcha ověření"
 
-#: website/ruchy.php:968
+#: website/ruchy.php:969
 msgid "Additional data"
 msgstr "Dodatelčné údaje"
 
-#: website/ruchy.php:989
+#: website/ruchy.php:990
 msgid "Two days ago"
 msgstr "Před dvěma dny"
 
-#: website/ruchy.php:995
+#: website/ruchy.php:996
 msgid "Time"
 msgstr "Čas"
 
-#: website/ruchy.php:1008
+#: website/ruchy.php:1009
 msgid "now"
 msgstr "teď"
 
-#: website/ruchy.php:1009
+#: website/ruchy.php:1010
 msgid "Enter exact time when You think it may be important"
 msgstr "Vložte přesný čas, když si myslíte, že může být důležitý. "
 
-#: website/ruchy.php:1021
+#: website/ruchy.php:1022
 msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
@@ -2057,19 +2061,19 @@ msgstr "srovnání keší"
 msgid "%d caches match (the first %d)"
 msgstr ""
 
-#: website/szukaj.php:45
+#: website/szukaj.php:43
 msgid "Found users"
 msgstr "Nalezení uživatelé"
 
-#: website/szukaj.php:57 website/szukaj.php:116
+#: website/szukaj.php:55 website/szukaj.php:114
 msgid "Geokrety visiting the cache"
 msgstr "Geokrtci, kteří navštívili tuto keš"
 
-#: website/szukaj.php:60
+#: website/szukaj.php:58
 msgid "Geokrets in"
 msgstr "Geokrtci v"
 
-#: website/szukaj.php:108
+#: website/szukaj.php:106
 msgid "GeoKret owner"
 msgstr "Majitel Geokrtka"
 
