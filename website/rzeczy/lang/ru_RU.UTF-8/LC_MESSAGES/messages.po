@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-19 18:28+0000\n"
-"PO-Revision-Date: 2018-09-05 05:10\n"
+"POT-Creation-Date: 2018-10-04 20:54+0000\n"
+"PO-Revision-Date: 2018-10-04 21:01\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -50,7 +50,7 @@ msgstr "Адрес электронной почты"
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Да, я хочу получать по e-mail уведомления об изменении местоположения моих ГеоКротов или ГеоКротов, которые я отслеживаю (отсылаются в полночь по CET/CESC)."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:938
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:939
 msgid "Enter code"
 msgstr "Введите код"
 
@@ -338,11 +338,11 @@ msgstr "Наблюдающие за этим ГеоКротом"
 msgid "days ago"
 msgstr "дней тому назад"
 
-#: website/days_ago.php:15 website/ruchy.php:988
+#: website/days_ago.php:15 website/ruchy.php:989
 msgid "Yesterday"
 msgstr "Вчера"
 
-#: website/days_ago.php:17 website/ruchy.php:987
+#: website/days_ago.php:17 website/ruchy.php:988
 msgid "Today"
 msgstr "Сегодня"
 
@@ -432,7 +432,7 @@ msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Используйте карту, чтобы выбрать местоположение или введите координаты вручную."
 
 #: website/edit.php:329 website/race_join.php:41 website/ruchy.php:914
-#: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
+#: website/szukaj.php:84 website/szukaj.php:92 website/szukaj.php:115
 msgid "eg."
 msgstr ", например,"
 
@@ -490,7 +490,7 @@ msgid "Choose statpic"
 msgstr "Выбрать картинку"
 
 #: website/edit.php:551 website/labels.php:55 website/register.php:45
-#: website/szukaj.php:100
+#: website/szukaj.php:98
 msgid "GeoKret name"
 msgstr "Имя ГеоКрота"
 
@@ -505,7 +505,7 @@ msgstr "http://geokrety.org/help_generate.php?help=ru#geokretytypes"
 #: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
 #: website/recent_comments_fn.php:102 website/recent_moves.php:93
 #: website/register.php:61 website/ruchy.php:586 website/ruchy.php:854
-#: website/ruchy.php:1015
+#: website/ruchy.php:1016
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -548,7 +548,7 @@ msgid "Photo by"
 msgstr "Фото "
 
 #: website/geokret_gallery.php:124 website/recent_moves.php:94
-#: website/recent_pictures.php:59 website/ruchy.php:978
+#: website/recent_pictures.php:59 website/ruchy.php:979
 msgid "Date"
 msgstr "Дата"
 
@@ -750,7 +750,7 @@ msgstr "<strong>%d км</strong>  пройдено всеми ГеоКротам
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr "Если вы нашли геокрота, введите код для отслеживания здесь:"
 
-#: website/index.php:108 website/ruchy.php:1029
+#: website/index.php:108 website/ruchy.php:1030
 msgid "Go!"
 msgstr "Вперед!"
 
@@ -1936,31 +1936,35 @@ msgstr "Отмечен с использованием геолокации"
 msgid "Use geolocation"
 msgstr "Использовать геолокацию"
 
-#: website/ruchy.php:935
+#: website/ruchy.php:925
+msgid "Clear Coordinates"
+msgstr ""
+
+#: website/ruchy.php:936
 msgid "Captcha verification"
 msgstr "Код антиспама"
 
-#: website/ruchy.php:968
+#: website/ruchy.php:969
 msgid "Additional data"
 msgstr "Дополнительная информация"
 
-#: website/ruchy.php:989
+#: website/ruchy.php:990
 msgid "Two days ago"
 msgstr "Два дня назад"
 
-#: website/ruchy.php:995
+#: website/ruchy.php:996
 msgid "Time"
 msgstr "Время"
 
-#: website/ruchy.php:1008
+#: website/ruchy.php:1009
 msgid "now"
 msgstr "сейчас"
 
-#: website/ruchy.php:1009
+#: website/ruchy.php:1010
 msgid "Enter exact time when You think it may be important"
 msgstr "Вводите точное время если считаете, что это может быть важно"
 
-#: website/ruchy.php:1021
+#: website/ruchy.php:1022
 msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
@@ -2057,19 +2061,19 @@ msgstr "подходящих тайников"
 msgid "%d caches match (the first %d)"
 msgstr ""
 
-#: website/szukaj.php:45
+#: website/szukaj.php:43
 msgid "Found users"
 msgstr "Найденные пользователи"
 
-#: website/szukaj.php:57 website/szukaj.php:116
+#: website/szukaj.php:55 website/szukaj.php:114
 msgid "Geokrety visiting the cache"
 msgstr "ГеоКроты посещающие этот тайник"
 
-#: website/szukaj.php:60
+#: website/szukaj.php:58
 msgid "Geokrets in"
 msgstr "Геокротов в тайнике"
 
-#: website/szukaj.php:108
+#: website/szukaj.php:106
 msgid "GeoKret owner"
 msgstr "Владелец ГеоКрота"
 
