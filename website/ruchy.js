@@ -78,6 +78,14 @@ function getLocation(trescLogu) {
   }
 }
 
+function showClearCoordinatesButton() {
+  $("#clearCoordinatesBtn").removeClass("hide");
+}
+
+function hideClearCoordinatesButton() {
+  $("#clearCoordinatesBtn").addClass("hide");
+}
+
 function showPosition(position) {
   document.getElementById("latlon").value = position.coords.latitude + " " + position.coords.longitude;
   document.getElementById("wynikWpt").innerHTML = "<img src='https://cdn.geokrety.org/images/icons/ok.png' alt='OK' width='16' height='16' /> " + '<a href="https://maps.google.pl/maps?q=' + position.coords.latitude + "+" + position.coords.longitude + '">' + position.coords.latitude + " " + position.coords.longitude + '</a>';
@@ -86,7 +94,34 @@ function showPosition(position) {
   document.getElementById('btn_sprawdzskrzynke').disabled = true;
   document.getElementById('NazwaSkrzynki').disabled = true;
   document.getElementById('poledoliczenia').value = "[Geolocation] coords ±" + position.coords.accuracy + "; altitude: " + position.coords.altitude + " ±" + position.coords.altitudeAccuracy + "; timestamp: " + position.timestamp;
+
+  showClearCoordinatesButton();
 }
+
+// `clearCoordinates` function called from ruchy.php
+// eslint-disable-next-line no-unused-vars
+function clearCoordinates() {
+  document.getElementById("latlon").value = "";
+  document.getElementById("wynikWpt").innerHTML = "";
+  document.getElementById("wpt").value = "";
+  document.getElementById("wpt").disabled = false;
+  document.getElementById("btn_sprawdzskrzynke").disabled = false;
+  document.getElementById("NazwaSkrzynki").disabled = false;
+  document.getElementById("poledoliczenia").value = "";
+
+  hideClearCoordinatesButton();
+}
+
+$(function () {
+  $(document).on("keyup", "#latlon", function () {
+    if ($(this).val().length > 0) {
+      showClearCoordinatesButton();
+    } else {
+      clearCoordinates();
+    }
+  });
+});
+
 // ----------------------------------------------------- geolocation end -------------------------------------
 
 function teraz() {
@@ -121,4 +156,5 @@ function logAtHomeFn(lat, lon, trescLogu) {
   document.getElementById("wynikWpt").innerHTML = "<img src='https://cdn.geokrety.org/images/icons/ok.png' alt='OK' width='16' height='16' /> " + '<a href="https://maps.google.pl/maps?q=' + lat + "+" + lon + '">' + lat + " " + lon + '</a>';
 
   teraz();
+  showClearCoordinatesButton();
 }
