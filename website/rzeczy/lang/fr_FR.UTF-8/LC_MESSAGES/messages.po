@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-04 20:54+0000\n"
-"PO-Revision-Date: 2018-10-04 21:02\n"
+"POT-Creation-Date: 2018-10-05 09:39+0000\n"
+"PO-Revision-Date: 2018-10-05 10:30\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -1668,14 +1668,22 @@ msgid "This is not your geokret"
 msgstr "Ce n'est pas votre GeoKret"
 
 #: website/race_join.php:117
+msgid "Unknown race"
+msgstr "Course inconnue"
+
+#: website/race_join.php:120
 msgid "This race is private. Please provide the password"
 msgstr "Cette course est privée. Merci de fournir le mot de passe"
 
-#: website/race_join.php:120
+#: website/race_join.php:123
 msgid "Wrong password"
 msgstr "Erreur de mot de passe"
 
-#: website/race_join.php:138
+#: website/race_join.php:126
+msgid "This race already started. Please select another race."
+msgstr "Cette course a déjà commencée. Merci d'en choisir une autre."
+
+#: website/race_join.php:144
 msgid "Internal error, please report"
 msgstr "Erreur interne, veuillez le signaler"
 
@@ -1937,8 +1945,8 @@ msgid "Use geolocation"
 msgstr "Utiliser la géolocalisation Internet"
 
 #: website/ruchy.php:925
-msgid "Clear Coordinates"
-msgstr ""
+msgid "Clear coordinates"
+msgstr "Effacer les coordonnées"
 
 #: website/ruchy.php:936
 msgid "Captcha verification"
