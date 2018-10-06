@@ -8,7 +8,7 @@ GIT_BRANCH=master
 if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; then
   echo -e "Starting translation export\n"
   CROWDIN_CLI_URL=https://downloads.crowdin.com/cli/v2/crowdin-cli.zip
-  CROWDIN_CLI_VERSION=2.0.23
+  CROWDIN_CLI_VERSION=2.0.24
 
   TMP=$(mktemp -d)
 

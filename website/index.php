@@ -93,7 +93,7 @@ $TRESC .= '
     </div>
     <div class="panel panel-default">
       <div class="panel-body">
-        <strong>'.$statystyka['stat_geokretow'].'</strong>'.
+        <strong>'.$statystyka['stat_geokretow'].'</strong> '.
         _('registered GeoKrets').', <strong>'.$statystyka['stat_geokretow_zakopanych'].'</strong> '._('GeoKrets hidden').' <strong>'.$statystyka['stat_userow'].'</strong> '._('users').
         '<br />'.sprintf(_('<strong>%d km</strong> done by all GeoKrets (it is %.2f x distance from the Earth to the Moon, %.2f x the Earth equatorial circumference and %.5f x the distance from the Earth to the Sun).'), $statystyka['stat_droga'], $statystyka['stat_droga_ksiezyc'], $statystyka['stat_droga_obwod'], $statystyka['stat_droga_slonce']).'
       </div>

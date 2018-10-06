@@ -922,6 +922,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
       <div class="btn-group btn-group-vertical btn-block" role="group">
         '.$pole_logAtHome.'
         <button type="button" name="getGeoLocation" id="getGeoLocation" onclick="getLocation(\''._('Logged using geolocation').'\');" class="btn btn-default">'._('Use geolocation').'</button>
+        <button type="button" id="clearCoordinatesBtn" onclick="clearCoordinates()" class="btn btn-default hide">'._('Clear coordinates').'</button>
       </div>
     </div>
   </div>

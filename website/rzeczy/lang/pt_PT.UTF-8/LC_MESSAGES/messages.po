@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-19 18:28+0000\n"
-"PO-Revision-Date: 2018-07-19 18:40\n"
+"POT-Creation-Date: 2018-10-05 09:39+0000\n"
+"PO-Revision-Date: 2018-10-05 09:41\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Sim, quero receber emails de alerta (enviados diariamente à meia-noite CET/CESC) quando os meus GeoKret, ou os que sigo, mudarem de localizao."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:938
+#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:939
 msgid "Enter code"
 msgstr "Digite o código"
 
@@ -338,11 +338,11 @@ msgstr "Usuários a seguir este GeoKret"
 msgid "days ago"
 msgstr "dias atrás"
 
-#: website/days_ago.php:15 website/ruchy.php:988
+#: website/days_ago.php:15 website/ruchy.php:989
 msgid "Yesterday"
 msgstr "Ontem"
 
-#: website/days_ago.php:17 website/ruchy.php:987
+#: website/days_ago.php:17 website/ruchy.php:988
 msgid "Today"
 msgstr "Hoje"
 
@@ -432,7 +432,7 @@ msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Use o mapa para seleccionar a localização ou introduza as coordenadas manualmente."
 
 #: website/edit.php:329 website/race_join.php:41 website/ruchy.php:914
-#: website/szukaj.php:86 website/szukaj.php:94 website/szukaj.php:117
+#: website/szukaj.php:84 website/szukaj.php:92 website/szukaj.php:115
 msgid "eg."
 msgstr "por exemplo"
 
@@ -490,7 +490,7 @@ msgid "Choose statpic"
 msgstr "Escolha statpic"
 
 #: website/edit.php:551 website/labels.php:55 website/register.php:45
-#: website/szukaj.php:100
+#: website/szukaj.php:98
 msgid "GeoKret name"
 msgstr "Nome GeoKret"
 
@@ -505,7 +505,7 @@ msgstr ""
 #: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
 #: website/recent_comments_fn.php:102 website/recent_moves.php:93
 #: website/register.php:61 website/ruchy.php:586 website/ruchy.php:854
-#: website/ruchy.php:1015
+#: website/ruchy.php:1016
 msgid "Comment"
 msgstr "Comentário"
 
@@ -548,7 +548,7 @@ msgid "Photo by"
 msgstr "Foto por"
 
 #: website/geokret_gallery.php:124 website/recent_moves.php:94
-#: website/recent_pictures.php:59 website/ruchy.php:978
+#: website/recent_pictures.php:59 website/ruchy.php:979
 msgid "Date"
 msgstr "Data"
 
@@ -750,7 +750,7 @@ msgstr "<strong>%d  km </strong> feito por todos os GeoKrets (й %.2f x distвnc
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr ""
 
-#: website/index.php:108 website/ruchy.php:1029
+#: website/index.php:108 website/ruchy.php:1030
 msgid "Go!"
 msgstr ""
 
@@ -1668,14 +1668,22 @@ msgid "This is not your geokret"
 msgstr ""
 
 #: website/race_join.php:117
-msgid "This race is private. Please provide the password"
+msgid "Unknown race"
 msgstr ""
 
 #: website/race_join.php:120
+msgid "This race is private. Please provide the password"
+msgstr ""
+
+#: website/race_join.php:123
 msgid "Wrong password"
 msgstr ""
 
-#: website/race_join.php:138
+#: website/race_join.php:126
+msgid "This race already started. Please select another race."
+msgstr ""
+
+#: website/race_join.php:144
 msgid "Internal error, please report"
 msgstr ""
 
@@ -1936,31 +1944,35 @@ msgstr ""
 msgid "Use geolocation"
 msgstr ""
 
-#: website/ruchy.php:935
+#: website/ruchy.php:925
+msgid "Clear coordinates"
+msgstr ""
+
+#: website/ruchy.php:936
 msgid "Captcha verification"
 msgstr "verificação Captcha"
 
-#: website/ruchy.php:968
+#: website/ruchy.php:969
 msgid "Additional data"
 msgstr "Dados adicionais"
 
-#: website/ruchy.php:989
+#: website/ruchy.php:990
 msgid "Two days ago"
 msgstr ""
 
-#: website/ruchy.php:995
+#: website/ruchy.php:996
 msgid "Time"
 msgstr "Hora"
 
-#: website/ruchy.php:1008
+#: website/ruchy.php:1009
 msgid "now"
 msgstr ""
 
-#: website/ruchy.php:1009
+#: website/ruchy.php:1010
 msgid "Enter exact time when You think it may be important"
 msgstr "Introduza a hora exacta quando pensar que tal é importante"
 
-#: website/ruchy.php:1021
+#: website/ruchy.php:1022
 msgid "It is always nice to receive a little message ;)"
 msgstr ""
 
@@ -2057,19 +2069,19 @@ msgstr "caches encontradas"
 msgid "%d caches match (the first %d)"
 msgstr ""
 
-#: website/szukaj.php:45
+#: website/szukaj.php:43
 msgid "Found users"
 msgstr "Utilizados encontrados"
 
-#: website/szukaj.php:57 website/szukaj.php:116
+#: website/szukaj.php:55 website/szukaj.php:114
 msgid "Geokrety visiting the cache"
 msgstr "Geokrety de visita à cache"
 
-#: website/szukaj.php:60
+#: website/szukaj.php:58
 msgid "Geokrets in"
 msgstr "Geokrets em"
 
-#: website/szukaj.php:108
+#: website/szukaj.php:106
 msgid "GeoKret owner"
 msgstr "Proprietário do GeoKret"
 
