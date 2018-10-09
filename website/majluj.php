@@ -163,6 +163,7 @@ elseif ((empty($captcha_code))) {
         $row = mysqli_fetch_row($result);
         mysqli_free_result($result);
         list($from_user, $from_user_email) = $row;
+        $from_user = html_entity_decode($from_user);
 
         $result = mysqli_query($link, "SELECT `user`, `email` FROM `gk-users` WHERE `userid`='$g_to' AND `email` != '' LIMIT 1");
         $row = mysqli_fetch_row($result);
