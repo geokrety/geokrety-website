@@ -75,7 +75,7 @@ function aktualizuj_obrazek_statystyki($userid) {
         $droga = 0;
     }
 
-    imagettftext($img, $bigzise, 0, 74, 16, $czarny, $font, "$user");
+    imagettftext($img, $bigzise, 0, 74, 16, $czarny, $font, html_entity_decode("$user"));
     imagettftext($img, $smallsize, 0, 74, 31, $czarny, $font2, 'moved:');
     imagettftext($img, $smallsize, 0, 74, 46, $czarny, $font2, 'owns:');
 
