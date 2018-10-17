@@ -7,6 +7,7 @@ require_once 'smarty_start.php';
 
 $TYTUL = _('Register a new user');
 $OGON .= '<script type="text/javascript" src="adduser-2.min.js"></script>';     // form validation
+$OGON .= '<script src="https://www.google.com/recaptcha/api.js"></script>';
 $HEAD .= '<style type="text/css">
 td.tmpcol {width:20%;padding-top:7px;font-weight:bold;}
 .tmpbox {width:230px;height:1.5em;font-size:10pt;border: 1px solid #666666;}
@@ -21,8 +22,7 @@ if ($longin_status['plain'] != null) {
     exit;
 }
 
-$captcha_id = $_POST['captcha_id'];
-$captcha_code = $_POST['captcha_code'];
+$g_recaptcha = $_POST['g-recaptcha-response'];
 // autopoprawione...
 $kret_email = $_POST['email'];
 // autopoprawione...
@@ -40,15 +40,6 @@ $kret_wysylacmaile = $_POST['wysylacmaile'];
 // autopoprawione...import_request_variables('p', 'kret_');
 
 require_once 'templates/konfig.php';
-require_once $config['securimage'].'securimage.php';
-
-$captcha_options = array('database_driver' => Securimage::SI_DRIVER_MYSQL,
-                 'database_host' => CONFIG_HOST,
-                 'database_user' => CONFIG_USERNAME,
-                 'database_pass' => CONFIG_PASS,
-                 'database_name' => CONFIG_DB,
-                 'no_session' => true, );
-
 // języki do wyboru //
 
 foreach ($config_jezyk_nazwa as $jezyk_skrot => $jezyk) {
@@ -59,9 +50,6 @@ foreach ($config_jezyk_nazwa as $jezyk_skrot => $jezyk) {
 
 if ((empty($kret_login))) { //--------------------  if login is not set
     include_once './obrazek.php';
-
-    // generate a new captcha ID and challenge
-    $captchaId = Securimage::getCaptchaId(true);
 
     $TRESC = '<form name="adduser" action="'.$_SERVER['PHP_SELF'].'" onsubmit="this.js.value=1; return validateAddUser(this);" method="post" >
 <h2>'._('Required fields').'</h2>
@@ -87,19 +75,18 @@ if ((empty($kret_login))) { //--------------------  if login is not set
 <td><input class="tmpbox" type="text" maxlength="150" name="email" id="email" onblur="validateEmail();" onkeyup="validateEmail(event);" /><span id="email_img"></span><br />
 <input type="checkbox" name="wysylacmaile" value="1" checked />'._('Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location.').'
 </td>
-</tr>
+</tr>';
 
-<tr>
-<td class="right tmpcol1" style="padding-top:9px;"><b>'._('Enter code').':</b></td>
-<td>
-<input id="captcha_id" type="hidden" name="captcha_id" value="'.$captchaId.'" />
-<input type="text" name="captcha_code" size="10" maxlength="6" value="" autocomplete="off" />
-<img id="siimage" src="'.$config['securimage'].'securimage_show.php?id='.$captchaId.'" alt="Captcha Image" />
-<img src="'.CONFIG_CDN_ICONS.'/refresh.png" onclick="refreshCaptcha(); return false">
-</td>
-</tr>
+    if ($GOOGLE_RECAPTCHA_PUBLIC_KEY) {
+        $TRESC .= '<tr>
+          <td class="right tmpcol1" style="padding-top:9px;"><b>'._('Enter code').':</b></td>
+          <td>
+            <div class="g-recaptcha" data-sitekey="'.$GOOGLE_RECAPTCHA_PUBLIC_KEY.'"></div>
+          </td>
+        </tr>';
+    }
 
-<tr>
+    $TRESC .= '<tr>
 <td class="right tmpcol">'._('Language').':</td>
 <td><select id="jezyk" class="tmpbox" style="height:1.8em;" name="jezyk">'.$jezyki.'</select></td>
 </tr>
@@ -133,78 +120,83 @@ if ((empty($kret_login))) { //--------------------  if login is not set
 </ul>'
     );
 } else {
-    if ((empty($captcha_code))) {
-        $error[] = _('No antispam phrase!');
-    } elseif (Securimage::checkByCaptchaId($captcha_id, $captcha_code, $captcha_options) == false) {
-        $error[] = _('Wrong antispam phrase!');
+    $resp = null;
+    if ($GOOGLE_RECAPTCHA_PUBLIC_KEY) {
+        require_once 'vendor/autoload.php';
+        $recaptcha = new \ReCaptcha\ReCaptcha($GOOGLE_RECAPTCHA_SECRET_KEY);
+        $resp = $recaptcha->verify($g_recaptcha, getenv('HTTP_X_FORWARDED_FOR'));
     }
+    if (!$GOOGLE_RECAPTCHA_PUBLIC_KEY || $resp->isSuccess()) {
+        // Verified!
+        $db = new db();
 
-    $db = new db();
-
-    if ((empty($kret_haslo1))) {
-        $error[] = _('No password').' 1';
-    }
-    if ((empty($kret_haslo2))) {
-        $error[] = _('No password').' 2';
-    }
-    if (($kret_haslo1 != $kret_haslo2) or (empty($kret_haslo1))) {
-        $error[] = _('Passwords are different or empty!');
-    }
-    if (strlen($kret_haslo1) < 5) {
-        $error[] = _('Password to short (should be >= 5 characters)!');
-    }
-
-    include_once 'czysc.php';
-    include_once 'fn_haslo.php';
-
-    $login = czysc($kret_login);
-    //$haslo = crypt($kret_haslo1,$config['sol']);
-    $haslo2 = haslo_koduj($kret_haslo1);
-    $kret_email = mysqli_real_escape_string($db->get_db_link(), trim($kret_email));
-
-    // if such user exists
-    $sql = "SELECT `user` FROM `gk-users` WHERE `user`='$login' LIMIT 1";
-    $db->exec_num_rows($sql, $num_rows, 1);
-    if ($num_rows > 0) {
-        // if this user registered here recently
-        $sql = "SELECT `userid` FROM `gk-users` WHERE `user`='$login' AND `email`='' AND (NOW()-`joined` < 3600) AND `ostatni_login`=0 AND `ip`='".getenv('HTTP_X_FORWARDED_FOR')."' LIMIT 1";
-        $row = $db->exec_fetch_row($sql, $num_rows, 1);
-        if ($num_rows > 0) {
-            list($existing_userid) = $row;
-            unset($error);
-            $error[] = sprintf(_("It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."), $existing_userid).'<br /><br />'.
-                        _('An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)').'<br /><br />'.
-                        "[<a href='longin.php'>"._('Login')."</a>] [<a href='new_password.php'>"._('Forgot password?').'</a>]';
-            include_once 'defektoskop.php';
-            $TRESC = defektoskop($error, true, '', '', 'USER_REGISTERED_RECENTLY');
-            include_once 'smarty.php';
-            exit;
+        if ((empty($kret_haslo1))) {
+            $error[] = _('No password').' 1';
+        }
+        if ((empty($kret_haslo2))) {
+            $error[] = _('No password').' 2';
+        }
+        if (($kret_haslo1 != $kret_haslo2) or (empty($kret_haslo1))) {
+            $error[] = _('Passwords are different or empty!');
+        }
+        if (strlen($kret_haslo1) < 5) {
+            $error[] = _('Password to short (should be >= 5 characters)!');
         }
 
-        $error[] = _('The username you entered is already in use.');
-    }
+        include_once 'czysc.php';
+        include_once 'fn_haslo.php';
 
-    // if email exists
-    $sql = "SELECT `email` FROM `gk-users` WHERE `email`='$kret_email' LIMIT 1";
-    $db->exec_num_rows($sql, $num_rows, 1);
-    if ($num_rows > 0) {
-        $error[] = _('The email you entered is already in use.');
-    }
+        $login = czysc($kret_login);
+        //$haslo = crypt($kret_haslo1,$config['sol']);
+        $haslo2 = haslo_koduj($kret_haslo1);
+        $kret_email = mysqli_real_escape_string($db->get_db_link(), trim($kret_email));
 
-    // TODO: if user exists && email exists then offer to restore password or smth like that
+        // if such user exists
+        $sql = "SELECT `user` FROM `gk-users` WHERE `user`='$login' LIMIT 1";
+        $db->exec_num_rows($sql, $num_rows, 1);
+        if ($num_rows > 0) {
+            // if this user registered here recently
+            $sql = "SELECT `userid` FROM `gk-users` WHERE `user`='$login' AND `email`='' AND (NOW()-`joined` < 3600) AND `ostatni_login`=0 AND `ip`='".getenv('HTTP_X_FORWARDED_FOR')."' LIMIT 1";
+            $row = $db->exec_fetch_row($sql, $num_rows, 1);
+            if ($num_rows > 0) {
+                list($existing_userid) = $row;
+                unset($error);
+                $error[] = sprintf(_("It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."), $existing_userid).'<br /><br />'.
+                            _('An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)').'<br /><br />'.
+                            "[<a href='longin.php'>"._('Login')."</a>] [<a href='new_password.php'>"._('Forgot password?').'</a>]';
+                include_once 'defektoskop.php';
+                $TRESC = defektoskop($error, true, '', '', 'USER_REGISTERED_RECENTLY');
+                include_once 'smarty.php';
+                exit;
+            }
 
-    // lat i lon
-    // if(!empty($kret_latlon))
-    // {
-    // include_once("cords_parse.php");
-    // $cords_parse = cords_parse($kret_latlon);
-    // $lat = $cords_parse[0];
-    // $lon = $cords_parse[1];
-    // }
+            $error[] = _('The username you entered is already in use.');
+        }
 
-    include_once 'verify_mail.php';
-    if (!verify_email_address($kret_email)) {
-        $error[] = _('Wrong email address?');
+        // if email exists
+        $sql = "SELECT `email` FROM `gk-users` WHERE `email`='$kret_email' LIMIT 1";
+        $db->exec_num_rows($sql, $num_rows, 1);
+        if ($num_rows > 0) {
+            $error[] = _('The email you entered is already in use.');
+        }
+
+        // TODO: if user exists && email exists then offer to restore password or smth like that
+
+        // lat i lon
+        // if(!empty($kret_latlon))
+        // {
+        // include_once("cords_parse.php");
+        // $cords_parse = cords_parse($kret_latlon);
+        // $lat = $cords_parse[0];
+        // $lon = $cords_parse[1];
+        // }
+
+        include_once 'verify_mail.php';
+        if (!verify_email_address($kret_email)) {
+            $error[] = _('Wrong email address?');
+        }
+    } else {
+        $error[] = _('reCaptcha failed!');
     }
 
     // ------------------------ jeśli są jakieś BŁĘDY ----------------
