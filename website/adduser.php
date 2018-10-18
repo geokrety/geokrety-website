@@ -161,8 +161,9 @@ if ((empty($kret_login))) { //--------------------  if login is not set
             if ($num_rows > 0) {
                 list($existing_userid) = $row;
                 unset($error);
+
                 $error[] = sprintf(_("It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."), $existing_userid).'<br /><br />'.
-                            _('An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)').'<br /><br />'.
+                            _('In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)').'<br /><br />'.
                             "[<a href='longin.php'>"._('Login')."</a>] [<a href='new_password.php'>"._('Forgot password?').'</a>]';
                 include_once 'defektoskop.php';
                 $TRESC = defektoskop($error, true, '', '', 'USER_REGISTERED_RECENTLY');
