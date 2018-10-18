@@ -70,7 +70,7 @@ $sql = "SELECT gk.id, gk.nazwa, gk.droga, gk.missing, ru.logtype, ru.lat, ru.lon
 		WHERE gk.timestamp_oc >= '$od' AND gk.typ <> '2'";
 
 $result = $db->exec($sql, $num_rows, 1);
-errory_add("export_oc records:$num_rows", $severity, 'export_oc');
+// errory_add("export_oc records:$num_rows", $severity, 'export_oc');
 
 while ($row = mysqli_fetch_row($result)) {
     list($f_id, $f_nazwa, $f_droga, $f_missing, $f_stan, $f_lat, $f_lon, $f_waypoint) = $row;

@@ -98,7 +98,7 @@ ON a.id = c.id
 WHERE a.timestamp > '$od'";
 
 $result = $db->exec($sql, $num_rows, 1);
-errory_add("export records:$num_rows", $severity, 'export');
+// errory_add("export records:$num_rows", $severity, 'export');
 
 if ($result) {
     while ($row = mysqli_fetch_array($result)) {

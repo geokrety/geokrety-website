@@ -36,7 +36,7 @@ if (isset($g_secid) and (strlen($g_secid) < 128)) {
 require 'templates/konfig.php';    // config
 
 require_once 'defektoskop.php';
-errory_add('export2', 0, 'export2');
+//errory_add('export2', 0, 'export2');
 
 $link = DBConnect();
 
@@ -148,7 +148,7 @@ WHERE 1 $WHERE_area $WHERE_user $WHERE_since $WHERE_gkid $WHERE_wpt $LIMIT";
 
 $result = mysqli_query($link, $sql);
 $num_rows = mysqli_num_rows($result);
-errory_add("export2 records:$num_rows", 5, 'export2');
+//errory_add("export2 records:$num_rows", 5, 'export2');
 
 while ($row = mysqli_fetch_array($result)) {
     if ($row['plik'] != '') {
