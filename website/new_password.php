@@ -33,7 +33,7 @@ if (empty($kret_email)) { //--------------------  if login is not set
         $TRESC .= '<tr>
           <td class="right tmpcol1" style="padding-top:9px;"><b>'._('Enter code').':</b></td>
           <td>
-            <div class="g-recaptcha" data-sitekey="'.$GOOGLE_RECAPTCHA_PUBLIC_KEY.'"></div>
+            <div class="g-recaptcha" data-sitekey="'.$GOOGLE_RECAPTCHA_PUBLIC_KEY.'" id="recaptcha_wrapper"></div>
           </td>
         </tr>';
     }
