@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-09 20:04+0000\n"
-"PO-Revision-Date: 2018-10-09 20:13\n"
+"POT-Creation-Date: 2018-10-19 11:13+0000\n"
+"PO-Revision-Date: 2018-10-19 11:23\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Finnish\n"
 "Language: fi_FI\n"
@@ -19,56 +19,57 @@ msgstr ""
 "X-Crowdin-Language: fi\n"
 "X-Crowdin-File: /master/messages.po\n"
 
-#: website/adduser.php:8 website/adduser.php:122 website/templates.php:186
+#: website/adduser.php:8 website/adduser.php:109 website/templates.php:186
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Rekisteröi uusi käyttäjä"
 
-#: website/adduser.php:67
+#: website/adduser.php:55
 msgid "Required fields"
 msgstr "Pakolliset kentät"
 
-#: website/adduser.php:71 website/ruchy.php:683
+#: website/adduser.php:59 website/ruchy.php:683
 msgid "Username"
 msgstr ""
 
-#: website/adduser.php:76 website/api-login2secid.php:63
+#: website/adduser.php:64 website/api-login2secid.php:63
 #: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Salasana"
 
-#: website/adduser.php:81
+#: website/adduser.php:69
 msgid "Verify Password"
 msgstr ""
 
-#: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
+#: website/adduser.php:74 website/edit.php:401 website/new_password.php:42
 msgid "Email"
 msgstr "Sähköposti"
 
-#: website/adduser.php:88
+#: website/adduser.php:76
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Kyllä, haluan saada sähköposti-ilmoituksia (lähetetään päivittäin keskiyöllä CET / CESC), kun minun tai valvomani GeoKrety muuttaa sijaintiaan."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:939
+#: website/adduser.php:82 website/majluj.php:100 website/new_password.php:34
+#: website/ruchy.php:939
 msgid "Enter code"
 msgstr ""
 
-#: website/adduser.php:103 website/edit.php:488 website/mypage.php:307
+#: website/adduser.php:90 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Kieli"
 
-#: website/adduser.php:118 website/templates.php:117 website/templates.php:141
+#: website/adduser.php:105 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:147
 #: website/templates/krety.html:234
 msgid "Terms of use"
 msgstr ""
 
-#: website/adduser.php:125
+#: website/adduser.php:112
 msgid "Tips"
 msgstr ""
 
-#: website/adduser.php:128 website/edit.php:205
+#: website/adduser.php:115 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -77,62 +78,62 @@ msgid "Read more about choosing good passwords:\n"
 "</ul>"
 msgstr ""
 
-#: website/adduser.php:137 website/majluj.php:134 website/new_password.php:60
-msgid "No antispam phrase!"
-msgstr ""
-
-#: website/adduser.php:139 website/majluj.php:136 website/new_password.php:62
-msgid "Wrong antispam phrase!"
-msgstr "Väärä antispam-fraasi!"
-
-#: website/adduser.php:145 website/adduser.php:148
+#: website/adduser.php:134 website/adduser.php:137
 msgid "No password"
 msgstr "Ei salasanaa"
 
-#: website/adduser.php:151
+#: website/adduser.php:140
 msgid "Passwords are different or empty!"
 msgstr "Salasanat ovat erilaiset tai tyhjiä!"
 
-#: website/adduser.php:154
+#: website/adduser.php:143
 msgid "Password to short (should be >= 5 characters)!"
 msgstr "Salasana liian lyhyt (on oltava yli 5 merkkiä pitkä)!"
 
-#: website/adduser.php:175
+#: website/adduser.php:165
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
 msgstr ""
 
-#: website/adduser.php:176 website/adduser.php:259
-msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
-msgstr "Sinulle on lähetetty varmistussähköposti. Kun olet vahvistanut tunnuksesi saa täydet oikeudet. Siihen asti et saa yhteenvetoja GeoKretyjesi liikkeistä päivittäisinä yhteenvetoina. Ole hyvä ja kirjaudu sisään ja nauti GeoKrety.org:ista! :)"
+#: website/adduser.php:166
+msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr ""
 
-#: website/adduser.php:177 website/longin.php:9 website/templates.php:189
+#: website/adduser.php:167 website/longin.php:9 website/templates.php:189
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: website/adduser.php:177 website/templates.php:192
+#: website/adduser.php:167 website/templates.php:192
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Unohtuiko salasana?"
 
-#: website/adduser.php:184
+#: website/adduser.php:174
 msgid "The username you entered is already in use."
 msgstr ""
 
-#: website/adduser.php:191
+#: website/adduser.php:181
 msgid "The email you entered is already in use."
 msgstr ""
 
-#: website/adduser.php:207
+#: website/adduser.php:197
 msgid "Wrong email address?"
 msgstr "Virheellinen sähköpostiosoite?"
 
-#: website/adduser.php:256
+#: website/adduser.php:200 website/majluj.php:190 website/new_password.php:88
+msgid "reCaptcha failed!"
+msgstr ""
+
+#: website/adduser.php:249
 msgid "Account successfully created"
 msgstr ""
+
+#: website/adduser.php:252
+msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr "Sinulle on lähetetty varmistussähköposti. Kun olet vahvistanut tunnuksesi saa täydet oikeudet. Siihen asti et saa yhteenvetoja GeoKretyjesi liikkeistä päivittäisinä yhteenvetoina. Ole hyvä ja kirjaudu sisään ja nauti GeoKrety.org:ista! :)"
 
 #: website/aktywuj_maila.php:41 website/confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -152,7 +153,7 @@ msgid "Your currently configured email address (%s) seems to be invalid. Please 
 msgstr ""
 
 #: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
-#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:273
+#: website/imgup.php:69 website/majluj.php:33 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
@@ -197,7 +198,7 @@ msgstr ""
 msgid "Your comment"
 msgstr ""
 
-#: website/comment.php:198 website/majluj.php:125
+#: website/comment.php:198 website/majluj.php:113
 msgid "Send message"
 msgstr ""
 
@@ -230,27 +231,27 @@ msgstr ""
 msgid "Missing or invalid coordinates."
 msgstr ""
 
-#: website/cotozalog.php:8 website/templates/konfig.php:181
+#: website/cotozalog.php:8 website/templates/konfig.php:185
 msgid "Dropped to"
 msgstr "Pudotettu kätköön"
 
-#: website/cotozalog.php:9 website/templates/konfig.php:182
+#: website/cotozalog.php:9 website/templates/konfig.php:186
 msgid "Grabbed from"
 msgstr "Haettu kätköstä"
 
-#: website/cotozalog.php:10 website/templates/konfig.php:183
+#: website/cotozalog.php:10 website/templates/konfig.php:187
 msgid "A comment"
 msgstr "Kommentti"
 
-#: website/cotozalog.php:11 website/templates/konfig.php:184
+#: website/cotozalog.php:11 website/templates/konfig.php:188
 msgid "Seen in"
 msgstr "Nähty kätkössä"
 
-#: website/cotozalog.php:12 website/templates/konfig.php:185
+#: website/cotozalog.php:12 website/templates/konfig.php:189
 msgid "Archived"
 msgstr "Arkistoidut"
 
-#: website/cotozalog.php:13 website/templates/konfig.php:186
+#: website/cotozalog.php:13 website/templates/konfig.php:190
 msgid "Dipped in"
 msgstr ""
 
@@ -279,23 +280,23 @@ msgid "Freshman mole"
 msgstr ""
 
 #: website/cotozalog.php:40 website/generatorek.php:132
-#: website/templates/konfig.php:188
+#: website/templates/konfig.php:192
 #: website/templates/waypointy-translations.html:132
 msgid "Traditional"
 msgstr "Traditionaaliset"
 
 #: website/cotozalog.php:41 website/generatorek.php:133
-#: website/templates/konfig.php:189
+#: website/templates/konfig.php:193
 msgid "A book/CD/DVD..."
 msgstr "Kirja / CD / DVD ..."
 
 #: website/cotozalog.php:42 website/generatorek.php:134
-#: website/templates/konfig.php:190
+#: website/templates/konfig.php:194
 msgid "A human"
 msgstr "Ihminen"
 
 #: website/cotozalog.php:43 website/generatorek.php:135
-#: website/templates/konfig.php:191
+#: website/templates/konfig.php:195
 msgid "A coin"
 msgstr ""
 
@@ -505,8 +506,8 @@ msgid "Comment"
 msgstr "Kommentti"
 
 #: website/edit.php:569 website/generatorek.php:142 website/grp_create.php:66
-#: website/majluj.php:106 website/newscomments.php:251
-#: website/race_add.php:143 website/register.php:63
+#: website/majluj.php:95 website/newscomments.php:251 website/race_add.php:143
+#: website/register.php:63
 msgid "characters left"
 msgstr "merkkiä jäljellä"
 
@@ -1172,39 +1173,39 @@ msgstr ""
 msgid "Contact with user"
 msgstr "Ota yhteyttä käyttäjään"
 
-#: website/majluj.php:43
+#: website/majluj.php:35
 msgid "Wrong recipient"
 msgstr ""
 
-#: website/majluj.php:60 website/majluj.php:194
+#: website/majluj.php:52 website/majluj.php:184
 msgid "This user haven't defined an email address."
 msgstr "Tämä käyttäjä ei ole määritellyt sähköpostiosoitettaan."
 
-#: website/majluj.php:62
+#: website/majluj.php:54
 msgid "You haven't defined an email address."
 msgstr "Et ole määritelty sähköpostiosoitettasi."
 
-#: website/majluj.php:88
+#: website/majluj.php:77
 msgid "From"
 msgstr "Keneltä"
 
-#: website/majluj.php:93
+#: website/majluj.php:82
 msgid "To"
 msgstr "Kenelle"
 
-#: website/majluj.php:99
+#: website/majluj.php:88
 msgid "Subject"
 msgstr "Aihe"
 
-#: website/majluj.php:104
+#: website/majluj.php:93
 msgid "Message"
 msgstr ""
 
-#: website/majluj.php:192
+#: website/majluj.php:182
 msgid "Ok"
 msgstr ""
 
-#: website/majluj.php:197
+#: website/majluj.php:187
 #, php-format
 msgid "Sorry, but you have to wait %d minutes before you can send another message."
 msgstr ""
@@ -1333,23 +1334,19 @@ msgstr ""
 msgid "Where are my geokrets?"
 msgstr "Missä ovat GeoKretyni?"
 
-#: website/new_password.php:38
+#: website/new_password.php:27
 msgid "To obtain a new password, please enter your e-mail address. A new password will be e-mailed."
 msgstr "Saadaksesi uuden salasanan, anna sähköpostiosoitteesi. Uusi salasana lähetetään siihen osoitteeseen."
 
-#: website/new_password.php:43
-msgid "Antispam"
-msgstr ""
-
-#: website/new_password.php:81
+#: website/new_password.php:77
 msgid "Your new password in GeoKrety service is"
 msgstr "Uusi salasana GeoKrety-palvelussa on"
 
-#: website/new_password.php:85
+#: website/new_password.php:81
 msgid "New password sent to"
 msgstr "Uusi salasana lähetetty osoitteeseen"
 
-#: website/new_password.php:89
+#: website/new_password.php:85
 msgid "No such email"
 msgstr "Tällaista sähköpostiosoitetta ei ole olemassa"
 
@@ -2113,7 +2110,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: website/templates/konfig.php:192
+#: website/templates/konfig.php:196
 msgid "KretyPost"
 msgstr ""
 
