@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-05 09:39+0000\n"
-"PO-Revision-Date: 2018-10-05 09:41\n"
+"POT-Creation-Date: 2018-10-19 11:13+0000\n"
+"PO-Revision-Date: 2018-10-19 11:21\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
@@ -19,56 +19,57 @@ msgstr ""
 "X-Crowdin-Language: bg\n"
 "X-Crowdin-File: /master/messages.po\n"
 
-#: website/adduser.php:8 website/adduser.php:122 website/templates.php:186
+#: website/adduser.php:8 website/adduser.php:109 website/templates.php:186
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Регистрация на нов потребител"
 
-#: website/adduser.php:67
+#: website/adduser.php:55
 msgid "Required fields"
 msgstr "Задължителни полета"
 
-#: website/adduser.php:71 website/ruchy.php:683
+#: website/adduser.php:59 website/ruchy.php:683
 msgid "Username"
 msgstr ""
 
-#: website/adduser.php:76 website/api-login2secid.php:63
+#: website/adduser.php:64 website/api-login2secid.php:63
 #: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Парола"
 
-#: website/adduser.php:81
+#: website/adduser.php:69
 msgid "Verify Password"
 msgstr "Потвърждение"
 
-#: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
+#: website/adduser.php:74 website/edit.php:401 website/new_password.php:42
 msgid "Email"
 msgstr "Имейл"
 
-#: website/adduser.php:88
+#: website/adduser.php:76
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Да, аз искам да получава сигнали по електронна поща (изпращат ежедневно в полунощ CET / CESC), когато ми или гледания GeoKret промени местоположението му."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:939
+#: website/adduser.php:82 website/majluj.php:100 website/new_password.php:34
+#: website/ruchy.php:939
 msgid "Enter code"
 msgstr "Въведете код"
 
-#: website/adduser.php:103 website/edit.php:488 website/mypage.php:307
+#: website/adduser.php:90 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Език"
 
-#: website/adduser.php:118 website/templates.php:117 website/templates.php:141
+#: website/adduser.php:105 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:147
 #: website/templates/krety.html:234
 msgid "Terms of use"
 msgstr "Условия за ползване"
 
-#: website/adduser.php:125
+#: website/adduser.php:112
 msgid "Tips"
 msgstr ""
 
-#: website/adduser.php:128 website/edit.php:205
+#: website/adduser.php:115 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -77,62 +78,62 @@ msgid "Read more about choosing good passwords:\n"
 "</ul>"
 msgstr ""
 
-#: website/adduser.php:137 website/majluj.php:134 website/new_password.php:60
-msgid "No antispam phrase!"
-msgstr ""
-
-#: website/adduser.php:139 website/majluj.php:136 website/new_password.php:62
-msgid "Wrong antispam phrase!"
-msgstr "Грешен антиспам фраза!"
-
-#: website/adduser.php:145 website/adduser.php:148
+#: website/adduser.php:134 website/adduser.php:137
 msgid "No password"
 msgstr "Не парола"
 
-#: website/adduser.php:151
+#: website/adduser.php:140
 msgid "Passwords are different or empty!"
 msgstr "Паролите са различни, или празна!"
 
-#: website/adduser.php:154
+#: website/adduser.php:143
 msgid "Password to short (should be >= 5 characters)!"
 msgstr "Парола на кратък (трябва да бъде> = 5 символа)!"
 
-#: website/adduser.php:175
+#: website/adduser.php:165
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
 msgstr "Изглежда, че <а HREF = 'mypage.php? Потребителско име = %s '> профила си </ A> вече е бил създаден."
 
-#: website/adduser.php:176 website/adduser.php:259
-msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
-msgstr "Един имейл за да потвърдите вашия имейл адрес бе изпратено до Вас. Когато се потвърди, Вашата сметка ще бъде напълно оперативна. До тогава, няма да можете да получавате имейли с дневна резюмета на хода на Вашето GeoKrety. Връзката е валидно за 5 дни. Сега можете да извършвате операции по GeoKrety. Чувствайте се свободни да влезете в системата и да се насладите GeoKrety.org! :)"
+#: website/adduser.php:166
+msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr ""
 
-#: website/adduser.php:177 website/longin.php:9 website/templates.php:189
+#: website/adduser.php:167 website/longin.php:9 website/templates.php:189
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Влизам"
 
-#: website/adduser.php:177 website/templates.php:192
+#: website/adduser.php:167 website/templates.php:192
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Забравена парола?"
 
-#: website/adduser.php:184
+#: website/adduser.php:174
 msgid "The username you entered is already in use."
 msgstr "Сте въвели потребителско име вече е в употреба."
 
-#: website/adduser.php:191
+#: website/adduser.php:181
 msgid "The email you entered is already in use."
 msgstr "Въведеният имейл е вече в употреба."
 
-#: website/adduser.php:207
+#: website/adduser.php:197
 msgid "Wrong email address?"
 msgstr "Грешен имейл адрес?"
 
-#: website/adduser.php:256
+#: website/adduser.php:200 website/majluj.php:190 website/new_password.php:88
+msgid "reCaptcha failed!"
+msgstr ""
+
+#: website/adduser.php:249
 msgid "Account successfully created"
 msgstr ""
+
+#: website/adduser.php:252
+msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr "Един имейл за да потвърдите вашия имейл адрес бе изпратено до Вас. Когато се потвърди, Вашата сметка ще бъде напълно оперативна. До тогава, няма да можете да получавате имейли с дневна резюмета на хода на Вашето GeoKrety. Връзката е валидно за 5 дни. Сега можете да извършвате операции по GeoKrety. Чувствайте се свободни да влезете в системата и да се насладите GeoKrety.org! :)"
 
 #: website/aktywuj_maila.php:41 website/confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -152,7 +153,7 @@ msgid "Your currently configured email address (%s) seems to be invalid. Please 
 msgstr ""
 
 #: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
-#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:273
+#: website/imgup.php:69 website/majluj.php:33 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
@@ -197,7 +198,7 @@ msgstr ""
 msgid "Your comment"
 msgstr "Вашият коментар"
 
-#: website/comment.php:198 website/majluj.php:125
+#: website/comment.php:198 website/majluj.php:113
 msgid "Send message"
 msgstr "Изпрати съобщение"
 
@@ -230,27 +231,27 @@ msgstr "Bad координати или неизвестен формат."
 msgid "Missing or invalid coordinates."
 msgstr "Липсващи или невалидни координати."
 
-#: website/cotozalog.php:8 website/templates/konfig.php:181
+#: website/cotozalog.php:8 website/templates/konfig.php:185
 msgid "Dropped to"
 msgstr "Спаднаха до"
 
-#: website/cotozalog.php:9 website/templates/konfig.php:182
+#: website/cotozalog.php:9 website/templates/konfig.php:186
 msgid "Grabbed from"
 msgstr "Сграбчи от"
 
-#: website/cotozalog.php:10 website/templates/konfig.php:183
+#: website/cotozalog.php:10 website/templates/konfig.php:187
 msgid "A comment"
 msgstr "Коментар"
 
-#: website/cotozalog.php:11 website/templates/konfig.php:184
+#: website/cotozalog.php:11 website/templates/konfig.php:188
 msgid "Seen in"
 msgstr "Погледнат в"
 
-#: website/cotozalog.php:12 website/templates/konfig.php:185
+#: website/cotozalog.php:12 website/templates/konfig.php:189
 msgid "Archived"
 msgstr "Архивиран"
 
-#: website/cotozalog.php:13 website/templates/konfig.php:186
+#: website/cotozalog.php:13 website/templates/konfig.php:190
 msgid "Dipped in"
 msgstr "Фар в"
 
@@ -279,23 +280,23 @@ msgid "Freshman mole"
 msgstr "Филма мол"
 
 #: website/cotozalog.php:40 website/generatorek.php:132
-#: website/templates/konfig.php:188
+#: website/templates/konfig.php:192
 #: website/templates/waypointy-translations.html:132
 msgid "Traditional"
 msgstr "Традиционните"
 
 #: website/cotozalog.php:41 website/generatorek.php:133
-#: website/templates/konfig.php:189
+#: website/templates/konfig.php:193
 msgid "A book/CD/DVD..."
 msgstr "Книга / CD / DVD ..."
 
 #: website/cotozalog.php:42 website/generatorek.php:134
-#: website/templates/konfig.php:190
+#: website/templates/konfig.php:194
 msgid "A human"
 msgstr "А на човека"
 
 #: website/cotozalog.php:43 website/generatorek.php:135
-#: website/templates/konfig.php:191
+#: website/templates/konfig.php:195
 msgid "A coin"
 msgstr "Монета"
 
@@ -505,8 +506,8 @@ msgid "Comment"
 msgstr "Коментар"
 
 #: website/edit.php:569 website/generatorek.php:142 website/grp_create.php:66
-#: website/majluj.php:106 website/newscomments.php:251
-#: website/race_add.php:143 website/register.php:63
+#: website/majluj.php:95 website/newscomments.php:251 website/race_add.php:143
+#: website/register.php:63
 msgid "characters left"
 msgstr "оставащи символа"
 
@@ -1172,39 +1173,39 @@ msgstr ""
 msgid "Contact with user"
 msgstr "Свържете се с потребители"
 
-#: website/majluj.php:43
+#: website/majluj.php:35
 msgid "Wrong recipient"
 msgstr ""
 
-#: website/majluj.php:60 website/majluj.php:193
+#: website/majluj.php:52 website/majluj.php:184
 msgid "This user haven't defined an email address."
 msgstr "Този потребител не са определени на имейл адрес."
 
-#: website/majluj.php:62
+#: website/majluj.php:54
 msgid "You haven't defined an email address."
 msgstr "Не сте определен имейл адрес."
 
-#: website/majluj.php:88
+#: website/majluj.php:77
 msgid "From"
 msgstr "От"
 
-#: website/majluj.php:93
+#: website/majluj.php:82
 msgid "To"
 msgstr "Към"
 
-#: website/majluj.php:99
+#: website/majluj.php:88
 msgid "Subject"
 msgstr "Предмет"
 
-#: website/majluj.php:104
+#: website/majluj.php:93
 msgid "Message"
 msgstr "Съобщение"
 
-#: website/majluj.php:191
+#: website/majluj.php:182
 msgid "Ok"
 msgstr ""
 
-#: website/majluj.php:196
+#: website/majluj.php:187
 #, php-format
 msgid "Sorry, but you have to wait %d minutes before you can send another message."
 msgstr ""
@@ -1333,23 +1334,19 @@ msgstr "Снимки на моите geokrets"
 msgid "Where are my geokrets?"
 msgstr "Къде са ми geokrets?"
 
-#: website/new_password.php:38
+#: website/new_password.php:27
 msgid "To obtain a new password, please enter your e-mail address. A new password will be e-mailed."
 msgstr "За да получите нова парола, моля въведете своя имейл адрес. Новата парола ще бъде по електронна поща."
 
-#: website/new_password.php:43
-msgid "Antispam"
-msgstr "Антиспам"
-
-#: website/new_password.php:81
+#: website/new_password.php:77
 msgid "Your new password in GeoKrety service is"
 msgstr "Вашата нова парола в GeoKrety услуга"
 
-#: website/new_password.php:85
+#: website/new_password.php:81
 msgid "New password sent to"
 msgstr "Нова парола изпратен"
 
-#: website/new_password.php:89
+#: website/new_password.php:85
 msgid "No such email"
 msgstr "Няма такъв имейл"
 
@@ -2113,7 +2110,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: website/templates/konfig.php:192
+#: website/templates/konfig.php:196
 msgid "KretyPost"
 msgstr ""
 

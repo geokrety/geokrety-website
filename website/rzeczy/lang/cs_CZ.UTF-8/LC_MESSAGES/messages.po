@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-05 09:39+0000\n"
-"PO-Revision-Date: 2018-10-05 09:42\n"
+"POT-Creation-Date: 2018-10-19 11:13+0000\n"
+"PO-Revision-Date: 2018-10-19 11:23\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -19,56 +19,57 @@ msgstr ""
 "X-Crowdin-Language: cs\n"
 "X-Crowdin-File: /master/messages.po\n"
 
-#: website/adduser.php:8 website/adduser.php:122 website/templates.php:186
+#: website/adduser.php:8 website/adduser.php:109 website/templates.php:186
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
 msgstr "Registrovat nového uživatele"
 
-#: website/adduser.php:67
+#: website/adduser.php:55
 msgid "Required fields"
 msgstr "Povinná pole"
 
-#: website/adduser.php:71 website/ruchy.php:683
+#: website/adduser.php:59 website/ruchy.php:683
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: website/adduser.php:76 website/api-login2secid.php:63
+#: website/adduser.php:64 website/api-login2secid.php:63
 #: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Heslo"
 
-#: website/adduser.php:81
+#: website/adduser.php:69
 msgid "Verify Password"
 msgstr "Heslo znova"
 
-#: website/adduser.php:86 website/edit.php:401 website/new_password.php:52
+#: website/adduser.php:74 website/edit.php:401 website/new_password.php:42
 msgid "Email"
 msgstr "E-mail"
 
-#: website/adduser.php:88
+#: website/adduser.php:76
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Ano, chci dostávat upozornění emailem (posílané denně o půlnoci) pokud můj nebo mnou sledovaný GeoKrtek změní pozici."
 
-#: website/adduser.php:93 website/majluj.php:110 website/ruchy.php:939
+#: website/adduser.php:82 website/majluj.php:100 website/new_password.php:34
+#: website/ruchy.php:939
 msgid "Enter code"
 msgstr "Zadejte kód"
 
-#: website/adduser.php:103 website/edit.php:488 website/mypage.php:307
+#: website/adduser.php:90 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Jazyk"
 
-#: website/adduser.php:118 website/templates.php:117 website/templates.php:141
+#: website/adduser.php:105 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:147
 #: website/templates/krety.html:234
 msgid "Terms of use"
 msgstr "Podmínky používání"
 
-#: website/adduser.php:125
+#: website/adduser.php:112
 msgid "Tips"
 msgstr "Tipy"
 
-#: website/adduser.php:128 website/edit.php:205
+#: website/adduser.php:115 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -82,62 +83,62 @@ msgstr "Přečti si více o výběru dobrých hesel:\n"
 "<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Síla hesla</a></li>\n"
 "</ul>"
 
-#: website/adduser.php:137 website/majluj.php:134 website/new_password.php:60
-msgid "No antispam phrase!"
-msgstr "Není vyplněná kontrola proti spamu!"
-
-#: website/adduser.php:139 website/majluj.php:136 website/new_password.php:62
-msgid "Wrong antispam phrase!"
-msgstr "Špatně vyplněná kontrola proti spamu!"
-
-#: website/adduser.php:145 website/adduser.php:148
+#: website/adduser.php:134 website/adduser.php:137
 msgid "No password"
 msgstr "Nevyplnili jste heslo"
 
-#: website/adduser.php:151
+#: website/adduser.php:140
 msgid "Passwords are different or empty!"
 msgstr "Hesla se neshodují nebo nejsou vyplněna!"
 
-#: website/adduser.php:154
+#: website/adduser.php:143
 msgid "Password to short (should be >= 5 characters)!"
 msgstr "Heslo je příliš krátké (musí mít nejméně 5 znaků)!"
 
-#: website/adduser.php:175
+#: website/adduser.php:165
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
 msgstr "Vypadá to, že <a href='mypage.php?userid=%s'>váš účet</a> byl již vytvořen."
 
-#: website/adduser.php:176 website/adduser.php:259
-msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
-msgstr "Kontrolní email byl odeslán na vaši emailovou adresu. Po potvrzení bude váš účet plně funkční. Do té doby nebudete dostávat emaily s denním přehledem pohybu vašich GeoKrtků. Kontrolní odkaz platí 5 dní. Nyní můžete provádět operace s GeoKrtky. Přihlaste se a užívejte si GeoKrety.org! :)"
+#: website/adduser.php:166
+msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr ""
 
-#: website/adduser.php:177 website/longin.php:9 website/templates.php:189
+#: website/adduser.php:167 website/longin.php:9 website/templates.php:189
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Přihlášení"
 
-#: website/adduser.php:177 website/templates.php:192
+#: website/adduser.php:167 website/templates.php:192
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Zapomenuté heslo?"
 
-#: website/adduser.php:184
+#: website/adduser.php:174
 msgid "The username you entered is already in use."
 msgstr "Zadané uživatelské jméno je již v provozu."
 
-#: website/adduser.php:191
+#: website/adduser.php:181
 msgid "The email you entered is already in use."
 msgstr "Email, který jste zadali, je již v provozu."
 
-#: website/adduser.php:207
+#: website/adduser.php:197
 msgid "Wrong email address?"
 msgstr "Špatná emailová adresa?"
 
-#: website/adduser.php:256
+#: website/adduser.php:200 website/majluj.php:190 website/new_password.php:88
+msgid "reCaptcha failed!"
+msgstr ""
+
+#: website/adduser.php:249
 msgid "Account successfully created"
 msgstr "Účet byl úspěšně vytvořen"
+
+#: website/adduser.php:252
+msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
+msgstr "Kontrolní email byl odeslán na vaši emailovou adresu. Po potvrzení bude váš účet plně funkční. Do té doby nebudete dostávat emaily s denním přehledem pohybu vašich GeoKrtků. Kontrolní odkaz platí 5 dní. Nyní můžete provádět operace s GeoKrtky. Přihlaste se a užívejte si GeoKrety.org! :)"
 
 #: website/aktywuj_maila.php:41 website/confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -157,7 +158,7 @@ msgid "Your currently configured email address (%s) seems to be invalid. Please 
 msgstr "Vaše aktuálně nastavená emailová adresa (%s) se zdá být neplatná. <a href=\"/edit.php?co=email\">aktualizujte vaší e-mailovou adresu</a> v předvolbách."
 
 #: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
-#: website/imgup.php:69 website/majluj.php:41 website/newscomments.php:273
+#: website/imgup.php:69 website/majluj.php:33 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
@@ -202,7 +203,7 @@ msgstr "Přidat komentář:"
 msgid "Your comment"
 msgstr "Váš komentář"
 
-#: website/comment.php:198 website/majluj.php:125
+#: website/comment.php:198 website/majluj.php:113
 msgid "Send message"
 msgstr "Poslat zprávu"
 
@@ -235,27 +236,27 @@ msgstr "Špatné souřadnice nebo neznámý formát."
 msgid "Missing or invalid coordinates."
 msgstr "Chybějící nebo neplatné souřadnice."
 
-#: website/cotozalog.php:8 website/templates/konfig.php:181
+#: website/cotozalog.php:8 website/templates/konfig.php:185
 msgid "Dropped to"
 msgstr "Necháno v"
 
-#: website/cotozalog.php:9 website/templates/konfig.php:182
+#: website/cotozalog.php:9 website/templates/konfig.php:186
 msgid "Grabbed from"
 msgstr "Vyjmuto z"
 
-#: website/cotozalog.php:10 website/templates/konfig.php:183
+#: website/cotozalog.php:10 website/templates/konfig.php:187
 msgid "A comment"
 msgstr "Komentář"
 
-#: website/cotozalog.php:11 website/templates/konfig.php:184
+#: website/cotozalog.php:11 website/templates/konfig.php:188
 msgid "Seen in"
 msgstr "Viděno v"
 
-#: website/cotozalog.php:12 website/templates/konfig.php:185
+#: website/cotozalog.php:12 website/templates/konfig.php:189
 msgid "Archived"
 msgstr "Archivováno"
 
-#: website/cotozalog.php:13 website/templates/konfig.php:186
+#: website/cotozalog.php:13 website/templates/konfig.php:190
 msgid "Dipped in"
 msgstr "Viděno"
 
@@ -284,23 +285,23 @@ msgid "Freshman mole"
 msgstr "Prvák krtek"
 
 #: website/cotozalog.php:40 website/generatorek.php:132
-#: website/templates/konfig.php:188
+#: website/templates/konfig.php:192
 #: website/templates/waypointy-translations.html:132
 msgid "Traditional"
 msgstr "Tradiční"
 
 #: website/cotozalog.php:41 website/generatorek.php:133
-#: website/templates/konfig.php:189
+#: website/templates/konfig.php:193
 msgid "A book/CD/DVD..."
 msgstr "Kniha/CD/DVD..."
 
 #: website/cotozalog.php:42 website/generatorek.php:134
-#: website/templates/konfig.php:190
+#: website/templates/konfig.php:194
 msgid "A human"
 msgstr "Člověk"
 
 #: website/cotozalog.php:43 website/generatorek.php:135
-#: website/templates/konfig.php:191
+#: website/templates/konfig.php:195
 msgid "A coin"
 msgstr "Mince"
 
@@ -510,8 +511,8 @@ msgid "Comment"
 msgstr "Poznámka"
 
 #: website/edit.php:569 website/generatorek.php:142 website/grp_create.php:66
-#: website/majluj.php:106 website/newscomments.php:251
-#: website/race_add.php:143 website/register.php:63
+#: website/majluj.php:95 website/newscomments.php:251 website/race_add.php:143
+#: website/register.php:63
 msgid "characters left"
 msgstr "Zbývající znaky"
 
@@ -1177,39 +1178,39 @@ msgstr ""
 msgid "Contact with user"
 msgstr "Kontaktovat uživatele"
 
-#: website/majluj.php:43
+#: website/majluj.php:35
 msgid "Wrong recipient"
 msgstr "Nesprávný příjemce"
 
-#: website/majluj.php:60 website/majluj.php:193
+#: website/majluj.php:52 website/majluj.php:184
 msgid "This user haven't defined an email address."
 msgstr "Tento uživatel nemá zadanou emailovou adresu"
 
-#: website/majluj.php:62
+#: website/majluj.php:54
 msgid "You haven't defined an email address."
 msgstr "Nezadal jsi emailovou adresu"
 
-#: website/majluj.php:88
+#: website/majluj.php:77
 msgid "From"
 msgstr "Od"
 
-#: website/majluj.php:93
+#: website/majluj.php:82
 msgid "To"
 msgstr "Pro"
 
-#: website/majluj.php:99
+#: website/majluj.php:88
 msgid "Subject"
 msgstr "Předmět"
 
-#: website/majluj.php:104
+#: website/majluj.php:93
 msgid "Message"
 msgstr "Zprávy"
 
-#: website/majluj.php:191
+#: website/majluj.php:182
 msgid "Ok"
 msgstr "Ok"
 
-#: website/majluj.php:196
+#: website/majluj.php:187
 #, php-format
 msgid "Sorry, but you have to wait %d minutes before you can send another message."
 msgstr "Omlouváme se, ale budete muset počkat %d minut předtím, než můžete odeslat další zprávu."
@@ -1338,23 +1339,19 @@ msgstr "Fotky z mých geokrets"
 msgid "Where are my geokrets?"
 msgstr "Sledovaní GeoKrtci"
 
-#: website/new_password.php:38
+#: website/new_password.php:27
 msgid "To obtain a new password, please enter your e-mail address. A new password will be e-mailed."
 msgstr "Pro obdržení nového hesla, zadejte prosím váš email. Vaše nové heslo vám bude odesláno emailem."
 
-#: website/new_password.php:43
-msgid "Antispam"
-msgstr "Kontrolní klíč"
-
-#: website/new_password.php:81
+#: website/new_password.php:77
 msgid "Your new password in GeoKrety service is"
 msgstr "Vaše nové heslo na Geokrtky je"
 
-#: website/new_password.php:85
+#: website/new_password.php:81
 msgid "New password sent to"
 msgstr "Nové heslo byla zasláno na"
 
-#: website/new_password.php:89
+#: website/new_password.php:85
 msgid "No such email"
 msgstr "Není zadán email!"
 
@@ -2092,33 +2089,33 @@ msgstr "Operace s GeoKrtkem"
 #: website/templates.php:9 website/templates.php:72 website/templates.php:198
 #: website/templates.php:261 website/templates/krety.html:125
 msgid "Log a GeoKret"
-msgstr ""
+msgstr "Zapiš Geokrtka"
 
 #: website/templates.php:66 website/templates.php:138
 #: website/templates.php:183 website/templates.php:255
 #: website/templates.php:321 website/templates.php:327
 #: website/templates/krety-m.html:46 website/templates/krety.html:234
 msgid "Report abuse"
-msgstr ""
+msgstr "Nahlásit zneužití"
 
 #: website/templates.php:120 website/templates.php:303
 #: website/templates/krety.html:151
 msgid "Side products"
-msgstr ""
+msgstr "Ostatní služby"
 
 #: website/templates.php:147 website/templates/krety_logged_in.html:3
 msgid "My account"
-msgstr ""
+msgstr "Můj účet"
 
 #: website/templates.php:150 website/templates/krety_logged_in.html:5
 msgid "Account details"
-msgstr ""
+msgstr "Podrobnosti účtu"
 
 #: website/templates.php:177 website/templates/krety_logged_in.html:16
 msgid "Logout"
-msgstr ""
+msgstr "Odhlásit se"
 
-#: website/templates/konfig.php:192
+#: website/templates/konfig.php:196
 msgid "KretyPost"
 msgstr "KretyPost"
 
@@ -2217,7 +2214,7 @@ msgstr "[GeoKrety] Aktivujte svůj účet"
 
 #: website/templates/krety.html:59
 msgid "Exit translation mode"
-msgstr ""
+msgstr "Ukončit režim překladu"
 
 #: website/templates/krety.html:91
 msgid "Saint Nicholas Day"
@@ -2253,7 +2250,7 @@ msgstr ""
 
 #: website/templates/krety.html:109
 msgid "GeoKrety 10 years Birthday!!!"
-msgstr ""
+msgstr "GeoKrety 10 let narozeniny!!!"
 
 #: website/templates/krety.html:111
 msgid "GeoKrety Birthday!!!"
@@ -2269,15 +2266,15 @@ msgstr ""
 
 #: website/templates/krety.html:197
 msgid "Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode."
-msgstr ""
+msgstr "Pomozte překlad GeoKrety.org do vašeho jazyka. Chcete-li ukončit režim převodu, vyberte jiný jazyk v nabídce."
 
 #: website/templates/krety.html:197
 msgid "Fix translation"
-msgstr ""
+msgstr "Oprava překladu"
 
 #: website/templates/krety.html:198
 msgid "Contact-us"
-msgstr ""
+msgstr "Napište nám"
 
 #: website/templates/krety.html:203
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
@@ -2285,23 +2282,23 @@ msgstr ""
 
 #: website/templates/krety.html:205
 msgid "Enjoying GeoKrety.org?"
-msgstr ""
+msgstr "Líbí se vám GeoKrety.org?"
 
 #: website/templates/krety.html:206
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
-msgstr ""
+msgstr "Pokud použijete GeoKrety.org a zjistili jste, že je užitečné zvážíte prosím donating"
 
 #: website/templates/krety.html:210
 msgid "Contribute"
-msgstr ""
+msgstr "Přispět"
 
 #: website/templates/krety.html:234
 msgid "version"
-msgstr ""
+msgstr "verze"
 
 #: website/templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
-msgstr ""
+msgstr "Vyžádejte si GeoKret"
 
 #: website/templates/waypointy-translations.html:3
 msgid "Afghanistan"

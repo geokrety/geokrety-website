@@ -10,6 +10,10 @@ $config['cdn_url'] = 'https://cdn.geokrety.org';
 // Google map Api key
 $GOOGLE_MAP_KEY = 'xxx';
 
+// reCaptcha Api key
+$GOOGLE_RECAPTCHA_PUBLIC_KEY = 'xxx';
+$GOOGLE_RECAPTCHA_SECRET_KEY = 'xxx';
+
 // Password hashing
 // Crypt alorythms https://en.wikipedia.org/wiki/Crypt_(C)#Key_derivation_functions_supported_by_crypt
 $config['sol'] = '$5$xxx'; // crypt() hash
