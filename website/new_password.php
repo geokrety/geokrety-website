@@ -59,6 +59,7 @@ if (empty($kret_email)) { //--------------------  if login is not set
         // ------------- almost everything is ok
 
         $link = DBConnect();
+        $kret_email = mysqli_real_escape_string($link, trim($kret_email));
 
         $result = mysqli_query($link, "SELECT `email`, `userid` FROM `gk-users` WHERE `email`='$kret_email' LIMIT 1");
         $row = mysqli_fetch_row($result);
