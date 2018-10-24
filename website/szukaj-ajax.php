@@ -43,10 +43,16 @@ function cacheOk($waypoint, $cache_link, $name, $owner, $cache_type, $cache_coun
 }
 
 /**
- * json result (tresc) to send when NO cache is found.
+ * json result (tresc) to send when NO cache found.
  */
-function cacheNotFound() {
+function noCacheFound() {
     return '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('No cache found');
+}
+/**
+ * json result (tresc) to send when cache code is unknown.
+ */
+function cacheUnknown() {
+    return '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('Missing or invalid coordinates');
 }
 
 /**
@@ -140,7 +146,7 @@ if ($_REQUEST['skad'] == 'ajax') {
             $waypointy = new Waypointy($link, false);
             $hasResult = $waypointy->getByWaypoint($wpt);
             if (!$hasResult) {
-                $return['tresc'] = cacheNotFound();
+                $return['tresc'] = cacheUnknown();
                 echo json_encode($return);
             } else {
                 $lat = $waypointy->lat;
@@ -176,7 +182,7 @@ if ($_REQUEST['skad'] == 'ajax') {
             $return['IleSkrzynek'] = $byNameCount;
 
             if ($byNameCount == 0) {// no result
-                $return['tresc'] = cacheNotFound();
+                $return['tresc'] = noCacheFound();
             } elseif ($byNameCount > 1) {
                 $maxCache = 4;
                 if ($byNameCount < $maxCache) {
@@ -198,7 +204,7 @@ if ($_REQUEST['skad'] == 'ajax') {
             } else { // == 1
                 $hasResult = $waypointy->getByName($_REQUEST['NazwaSkrzynki']);
                 if (!$hasResult) {// never the case
-                    $return['tresc'] = cacheNotFound();
+                    $return['tresc'] = cacheUnknown();
                 } elseif (!empty(trim($waypointy->lat)) and !empty(trim($waypointy->lon))) {
                     $return['tresc'] = cacheOk($waypointy->waypoint, $waypointy->cache_link, $waypointy->name,
                       $waypointy->owner, $waypointy->cache_type, $waypointy->country, $waypointy->country_code);
