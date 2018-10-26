@@ -294,6 +294,9 @@ $gkLogoUrl = $config['cdn_url'].'/images/banners/geokrety.png';
 $gkHeadline = _('Welcome to GeoKrety.org!');
 $gkDescription = _('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="help.php#about">read more...</a>');
 $gkKeywords = 'geokrety,opencaching,geocaching,geocoin,geobook,krety,geokret,geokrets,geocache,gps';
+$lastUpdate = filemtime(__FILE__);
+$dateModified = date('c', $helpLastUpdate);
+$datePublished = date('c', $helpLastUpdate);
 
 $ldHelper = new LDHelper($gkName, $gkUrl, $gkLogoUrl);
 $ldJSONWebSite = $ldHelper->helpWebSite(
@@ -302,7 +305,10 @@ $ldJSONWebSite = $ldHelper->helpWebSite(
     $gkLogoUrl,
     $gkName,
     $gkUrl,
-    $gkKeywords
+    $gkKeywords,
+    $lang,
+    $dateModified,
+    $datePublished
     );
 
 $TRESC .= $ldJSONWebSite;

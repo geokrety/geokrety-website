@@ -161,6 +161,7 @@ if ($speedtest_konkret_tabelka) {
 
 $i = $pokaz_od;
 
+$gkUrl = $config['adres'];
 $konkretLogsCount = 0;
 //$konkretLogs[];
 
@@ -176,7 +177,7 @@ if ($result) {
         } else {
             $ruch_username = $ruch_user;
             $ruch_user = "<a href='mypage.php?userid=$ruch_userid'>$ruch_user</a>";
-            $ruch_userurl = 'mypage.php?userid='.$ruch_userid;
+            $ruch_userurl = $gkUrl.'mypage.php?userid='.$ruch_userid;
         }
 
         $opislogu = $cotozalog[$logtype];
@@ -311,10 +312,11 @@ if ($result) {
         // </tr>';
         // }
         /*******************************************************************************************************************************************/
-        $konkretLogs[$konkretLogsCount]['author'] = $ruch_username;
-        $konkretLogs[$konkretLogsCount]['authorUrl'] = $ruch_userurl;
-        $konkretLogs[$konkretLogsCount]['dateCreated'] = $data;
-        $konkretLogs[$konkretLogsCount]['text'] = $koment;
+        $konkretLogs[$konkretLogsCount] = new \Geokrety\Domain\KonkretLog();
+        $konkretLogs[$konkretLogsCount]->authorName = $ruch_username;
+        $konkretLogs[$konkretLogsCount]->authorUrl = $ruch_userurl;
+        $konkretLogs[$konkretLogsCount]->dateCreated = $data;
+        $konkretLogs[$konkretLogsCount]->text = $koment;
         $TABELKA .= "<a name='log$ruch_id'></a><table class='kretlogi' style=\"border-collapse: inherit;\">
 	<tr class='spacer'><td colspan='3'></td></tr>
 	<tr class='light toprow' >

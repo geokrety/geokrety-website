@@ -18,7 +18,7 @@ fi
 
 body='{
  "request": {
- "message": "this is an api request",
+ "message": "Website '${TRAVIS_BUILD_NUMBER}' triggers QA Tests for '${QA_BRANCH}'",
  "config": {
    "env": {
      "TARGET_ENV": "'${QA_BRANCH}'"
