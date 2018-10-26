@@ -60,9 +60,7 @@ notifications:
     irc:
         channels:
         - "chat.freenode.net#geokrety"
-        on_success: change # default: always
-        on_failure: always # default: always
+        on_success: always
+        on_failure: always
         template:
-        - "%{repository_slug}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
-        - "Change view : %{compare_url}"
-        - "Build details : %{build_url}"
+        - "%{build_url} WEBSITE %{build_number} | %{branch} - %{commit} | %{result}"
