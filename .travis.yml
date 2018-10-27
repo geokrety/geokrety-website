@@ -53,7 +53,8 @@ jobs:
       script:
         # TRAVIS_QA_TOKEN from https://travis-ci.org/geokrety/geokrety-website/settings
         # TRAVIS_BRANCH   from https://docs.travis-ci.com/user/environment-variables/
-        - bash ./.travis_hook_qa.sh ${TRAVIS_QA_TOKEN} ${TRAVIS_BRANCH}
+        - bash ./scripts/qatests_hook.sh ${TRAVIS_QA_TOKEN} ${TRAVIS_BRANCH}
+        - bash ./scripts/qatests_wait.sh ${TRAVIS_QA_TOKEN}
 notifications:
     # doc: https://docs.travis-ci.com/user/notifications/#configuring-irc-notifications
     irc:
