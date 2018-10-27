@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-19 11:13+0000\n"
-"PO-Revision-Date: 2018-10-19 11:21\n"
+"POT-Creation-Date: 2018-10-27 10:35+0000\n"
+"PO-Revision-Date: 2018-10-27 10:41\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -1740,7 +1740,7 @@ msgstr "Hier geboren :)"
 msgid "Cannot edit this log"
 msgstr "Log kann nicht bearbeitet werden"
 
-#: website/ruchy.php:193 website/szukaj-ajax.php:67
+#: website/ruchy.php:193 website/szukaj-ajax.php:73
 #, php-format
 msgid "Unexpected error (id:%s), please report."
 msgstr "Unerwarteter Fehler (ID:%s), bitte melden."
@@ -1917,7 +1917,7 @@ msgstr "oder Name des Caches"
 msgid "Check"
 msgstr "Prüfen"
 
-#: website/ruchy.php:894 website/szukaj-ajax.php:167
+#: website/ruchy.php:894 website/szukaj-ajax.php:173
 msgid "Enter at least 5 characters"
 msgstr "Bitte mindestens 5 Zeichen eingeben"
 
@@ -2002,7 +2002,7 @@ msgstr "Wegpunkt %s"
 msgid "flag"
 msgstr "Flagge"
 
-#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:194
+#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:200
 #, php-format
 msgid "by %s"
 msgstr "von %s"
@@ -2030,38 +2030,42 @@ msgstr "Land: %s"
 msgid "No cache found"
 msgstr "Keinen Cache gefunden"
 
-#: website/szukaj-ajax.php:58
+#: website/szukaj-ajax.php:55
+msgid "Missing or invalid coordinates"
+msgstr ""
+
+#: website/szukaj-ajax.php:64
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr "Bitte trage die Koordinaten (Lat/Lon) des Caches %s im Koordinaten-Eingabefeld ein."
 
-#: website/szukaj-ajax.php:59
+#: website/szukaj-ajax.php:65
 #, php-format
 msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr "<a href=\"%s\">Mehr zum Thema GeoKrets in GC-Caches ablegen</a>"
 
-#: website/szukaj-ajax.php:106
+#: website/szukaj-ajax.php:112
 msgid "GeoKret not found"
 msgstr "GeoKret nicht gefunden"
 
-#: website/szukaj-ajax.php:119
+#: website/szukaj-ajax.php:125
 msgid "Last log:"
 msgstr "Letztes Log:"
 
-#: website/szukaj-ajax.php:127
+#: website/szukaj-ajax.php:133
 #, php-format
 msgid "%s by %s."
 msgstr "%s von %s."
 
-#: website/szukaj-ajax.php:132
+#: website/szukaj-ajax.php:138
 msgid "Invalid tracking code"
 msgstr "Falscher Tracking-Code"
 
-#: website/szukaj-ajax.php:183
+#: website/szukaj-ajax.php:189
 msgid "caches match"
 msgstr "Passende Caches"
 
-#: website/szukaj-ajax.php:185
+#: website/szukaj-ajax.php:191
 #, php-format
 msgid "%d caches match (the first %d)"
 msgstr "%d entsprechende Caches gefunden (Die ersten %d)"
