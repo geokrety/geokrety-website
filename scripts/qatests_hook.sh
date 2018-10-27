@@ -42,6 +42,3 @@ if [[ ${REQUEST_RESULT} == *"access denied"* ]]; then
   echo " X request denied"
   exit 1
 fi
-
-echo " * now waiting pending QA tests build"
-. ./.travis_wait_build.sh ${QA_TOKEN}

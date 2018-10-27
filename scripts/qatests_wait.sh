@@ -45,6 +45,8 @@ function getBuildInfo() {
     BUILD_ID=$(echo "${BUILD_INFO}" | grep '"id": '|head -n1| awk -F'[ ,]' '{print $8}')
 }
 
+echo " * now waiting pending QA tests build"
+
 # ToCheck over the time : possible improvement using build_id to ignore instead of waiting intermediate state
 # wait 'created ' or 'started' state
 while [[ ( "${BUILD_STATE}" != "created" ) && ( "${BUILD_STATE}" != "started" ) && ( ${ITERATION} -lt ${ITERATION_MAX} ) ]]
@@ -78,7 +80,8 @@ done
 if [ ${ITERATION} -ge ${ITERATION_MAX} ]; then
   DATETIME=$(date '+%Y-%m-%d %H:%M:%S')
   echo " * ${DATETIME} build #${QA_BUILD_ID} Timeout, state was \"${BUILD_STATE}\" after $((ITERATION * ITERATION_RETRY_SLEEP)) seconds"
-  exit 1
+  echo " * WARN: build doesn't failed for QA timeout case, anyway please check QA results"
+  exit 0
 fi
 
 if [ "${BUILD_STATE}" == "failed" ]; then
