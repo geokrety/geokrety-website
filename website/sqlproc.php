@@ -1,6 +1,5 @@
 <?php
 
-
 class sqlproc {
     public $sql;
     public $use_errory = true;
