@@ -1,6 +1,5 @@
 <?php
 
-
 if (!function_exists(licznikejro)) {
     function ulicznik($witryna) {
         // licznik mySQL
