@@ -52,7 +52,7 @@ function szukaj_kreta($where, $limit, $title = 'GeoKrety', $longin = '', $sql = 
         unset($id, $nr, $nazwa, $opis, $userid, $data, $typ, $user, $kiedys_uzywany, $edycja_ruchow);
     }
 
-    $return = "<h2>$title</h2>$naglowek_tablicy<table>$return</table>$naglowek_tablicy";
+    $return = "<h2>$title</h2>$naglowek_tablicy<table id="szukaj_kreta_table">$return</table>$naglowek_tablicy";
     mysqli_free_result($result);
 
     return $return;
