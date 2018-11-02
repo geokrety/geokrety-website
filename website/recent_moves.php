@@ -257,7 +257,7 @@ function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders
     $return = "<h2>$title</h2>
 $naglowek_tablicy
 $multiphoto_start
-<table class='$sortable rm_padded' $table_layout>
+<table id='recent_moves_table' class='$sortable rm_padded' $table_layout>
 $table_headers
 $TRESC
 </table>

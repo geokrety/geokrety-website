@@ -985,9 +985,9 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     </div>
     <div class="col-sm-4">
       <div class="btn-group btn-group-vertical btn-block" role="group">
-        <button type="button" onClick="dzis();" class="btn btn-default">'._('Today').'</button>
-        <button type="button" onClick="wczoraj();" class="btn btn-default">'._('Yesterday').'</button>
-        <button type="button" onClick="przedwczoraj();" class="btn btn-default">'._('Two days ago').'</button>
+        <button type="button" id="ruchy_btn_today" onClick="dzis();" class="btn btn-default">'._('Today').'</button>
+        <button type="button" id="ruchy_btn_yesterday" onClick="wczoraj();" class="btn btn-default">'._('Yesterday').'</button>
+        <button type="button" id="ruchy_btn_two_day" onClick="przedwczoraj();" class="btn btn-default">'._('Two days ago').'</button>
       </div>
     </div>
   </div>
@@ -1006,7 +1006,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
     <div class="col-sm-4">
       <div class="btn-group btn-group-vertical" role="group" style="width: 100%;">
-        <button type="button" onClick="teraz();" class="btn btn-default" aria-describedby="helpBlockNow">'._('now').'</button>
+        <button type="button" id="ruchy_btn_now" onClick="teraz();" class="btn btn-default" aria-describedby="helpBlockNow">'._('now').'</button>
         <span id="helpBlockNow" class="help-block">'._('Enter exact time when You think it may be important').'</span>
       </div>
     </div>
@@ -1027,7 +1027,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
   <div class="form-group">
     <label class="col-sm-2 control-label"></label>
     <div class="col-sm-6">
-      <input type="submit" value="'._('Go!').'" class="btn btn-default" />'.$extra_hidden_fields.'<input type="hidden" id="js" name="js" value="----" />
+      <input type="submit" id="ruchy_submit" value="'._('Go!').'" class="btn btn-default" />'.$extra_hidden_fields.'<input type="hidden" id="js" name="js" value="----" />
     </div>
   </div>
 </form>';
