@@ -49,7 +49,7 @@ jobs:
         - scripts/export-translations-github.sh
         - scripts/compile-translations.sh
     - stage: qaTests
-      if: branch IN (master, boly38)
+      if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN)
       script:
         # TRAVIS_QA_TOKEN from https://travis-ci.org/geokrety/geokrety-website/settings
         # TRAVIS_BRANCH   from https://docs.travis-ci.com/user/environment-variables/
