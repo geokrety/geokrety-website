@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-30 09:35+0000\n"
-"PO-Revision-Date: 2018-10-30 09:42\n"
+"POT-Creation-Date: 2018-11-04 13:53+0000\n"
+"PO-Revision-Date: 2018-11-04 14:02\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Crowdin-Language: ru\n"
 "X-Crowdin-File: /master/messages.po\n"
 
-#: website/adduser.php:8 website/adduser.php:109 website/templates.php:186
+#: website/adduser.php:8 website/adduser.php:124 website/templates.php:186
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
@@ -33,43 +33,43 @@ msgstr "Обязательные для заполнения поля"
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: website/adduser.php:64 website/api-login2secid.php:63
+#: website/adduser.php:67 website/api-login2secid.php:63
 #: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Пароль"
 
-#: website/adduser.php:69
+#: website/adduser.php:76
 msgid "Verify Password"
 msgstr "Подтвердите пароль"
 
-#: website/adduser.php:74 website/edit.php:401 website/new_password.php:42
+#: website/adduser.php:85 website/edit.php:401 website/new_password.php:42
 msgid "Email"
 msgstr "Адрес электронной почты"
 
-#: website/adduser.php:76
+#: website/adduser.php:90
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Да, я хочу получать по e-mail уведомления об изменении местоположения моих ГеоКротов или ГеоКротов, которые я отслеживаю (отсылаются в полночь по CET/CESC)."
 
-#: website/adduser.php:82 website/majluj.php:100 website/new_password.php:34
+#: website/adduser.php:96 website/majluj.php:100 website/new_password.php:34
 #: website/ruchy.php:939
 msgid "Enter code"
 msgstr "Введите код"
 
-#: website/adduser.php:90 website/edit.php:488 website/mypage.php:307
+#: website/adduser.php:104 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Язык"
 
-#: website/adduser.php:105 website/templates.php:117 website/templates.php:141
+#: website/adduser.php:118 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:147
 #: website/templates/krety.html:234
 msgid "Terms of use"
 msgstr "Условия использования"
 
-#: website/adduser.php:112
+#: website/adduser.php:127
 msgid "Tips"
 msgstr "Подсказки"
 
-#: website/adduser.php:115 website/edit.php:205
+#: website/adduser.php:130 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -83,60 +83,60 @@ msgstr "Больше информации о выборе хороших пар�
 "<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Password strength</a></li>\n"
 "</ul>"
 
-#: website/adduser.php:134 website/adduser.php:137
+#: website/adduser.php:149 website/adduser.php:152
 msgid "No password"
 msgstr "Пустой пароль"
 
-#: website/adduser.php:140
+#: website/adduser.php:155
 msgid "Passwords are different or empty!"
 msgstr "Пароли отличаются или не введены!"
 
-#: website/adduser.php:143
+#: website/adduser.php:158
 msgid "Password to short (should be >= 5 characters)!"
 msgstr "Пароль слишком короткий (должен быть >=5 символов)!"
 
-#: website/adduser.php:165
+#: website/adduser.php:180
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
 msgstr "Похоже, что <a href='mypage.php?userid=%s'>Ваша учетная запись</a> уже создана."
 
-#: website/adduser.php:166
+#: website/adduser.php:181
 msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr ""
 
-#: website/adduser.php:167 website/longin.php:9 website/templates.php:189
+#: website/adduser.php:182 website/longin.php:9 website/templates.php:189
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Авторизоваться"
 
-#: website/adduser.php:167 website/templates.php:192
+#: website/adduser.php:182 website/templates.php:192
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Забыли пароль?"
 
-#: website/adduser.php:174
+#: website/adduser.php:189
 msgid "The username you entered is already in use."
 msgstr "Это имя уже используется другим пользователем."
 
-#: website/adduser.php:181
+#: website/adduser.php:196
 msgid "The email you entered is already in use."
 msgstr "Этот адрес email уже используется."
 
-#: website/adduser.php:197
+#: website/adduser.php:212
 msgid "Wrong email address?"
 msgstr "Неверный адрес электронной почты?"
 
-#: website/adduser.php:200 website/majluj.php:190 website/new_password.php:88
+#: website/adduser.php:215 website/majluj.php:190 website/new_password.php:88
 msgid "reCaptcha failed!"
 msgstr ""
 
-#: website/adduser.php:249
+#: website/adduser.php:264
 msgid "Account successfully created"
 msgstr "Аккаунт успешно создан"
 
-#: website/adduser.php:252
+#: website/adduser.php:267
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr "Сообщение для подтверждения Вашего адреса электронной почты было отправлено на Ваш e-mail. Ваша учетная запись станет полностью функциональной после подтверждения. До подтверждения Вы не сможете получать ежедневные уведомления по почте со статистикой и информацией о перемещении ГеоКротов. Ссылка для подтверждения в посланном Вам письме действительна в течении 5 дней. Но Вы уже можете пользоваться сайтом GeoKrety: Входите на сайт под своим логином и паролем! :)"
 
@@ -524,7 +524,7 @@ msgstr ""
 msgid "errors"
 msgstr "++ errors;"
 
-#: website/galeria.php:10 website/geokret_gallery.php:72 website/index.php:222
+#: website/galeria.php:10 website/geokret_gallery.php:72 website/index.php:225
 #: website/templates.php:21 website/templates.php:84 website/templates.php:210
 #: website/templates.php:273 website/templates/krety.html:131
 msgid "Photo gallery"
@@ -722,11 +722,11 @@ msgstr "Запомнить описание на следующие %d мину�
 msgid "Home"
 msgstr "Главная"
 
-#: website/index.php:86 website/index.php:294
+#: website/index.php:86 website/index.php:297
 msgid "Welcome to GeoKrety.org!"
 msgstr "Добро пожаловать на GeoKrety.org!"
 
-#: website/index.php:91 website/index.php:295
+#: website/index.php:91 website/index.php:298
 msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
 msgstr ""
 
@@ -768,35 +768,35 @@ msgstr "регистрация не требуется!"
 msgid "News"
 msgstr "Новости"
 
-#: website/index.php:162 website/newscomments.php:47
+#: website/index.php:163 website/newscomments.php:47
 msgid "Comments"
 msgstr "Комментарии"
 
-#: website/index.php:203
+#: website/index.php:205
 msgid "Recent logs on the map"
 msgstr "Последние заметки на карте"
 
-#: website/index.php:220
+#: website/index.php:222
 msgid "Recently uploaded images"
 msgstr "Недавно загруженные фотографии"
 
-#: website/index.php:239
+#: website/index.php:242
 msgid "Recently registered GeoKrets"
 msgstr "Недавно созданные ГеоКроты"
 
-#: website/index.php:256
+#: website/index.php:259
 msgid "Online users"
 msgstr "Сейчас в сети"
 
-#: website/index.php:269
+#: website/index.php:272
 msgid "Join our translation team"
 msgstr "Присоединяйтесь к нашей команде переводчиков"
 
-#: website/index.php:269
+#: website/index.php:272
 msgid "Suggest a better translation - inline"
 msgstr "Предложить лучший вариант перевода"
 
-#: website/index.php:269
+#: website/index.php:272
 msgid "visits/day"
 msgstr "посещений/день"
 
@@ -2002,7 +2002,7 @@ msgstr ""
 msgid "flag"
 msgstr ""
 
-#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:200
+#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:201
 #, php-format
 msgid "by %s"
 msgstr ""
