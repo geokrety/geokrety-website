@@ -56,25 +56,39 @@ if ((empty($kret_login))) { //--------------------  if login is not set
 <table style="border-spacing:3px 6px;">
 
 <tr>
-<td class="right tmpcol">'._('Username').':</td>
-<td><input class="tmpbox" type="text" maxlength="30" id="login" name="login" onblur="validateLogin();" onkeyup="validateLogin(event);"/><span id="login_img"></span><br /></td>
+  <td class="right tmpcol">'._('Username').':</td>
+  <td>
+    <input class="tmpbox" type="text" maxlength="30" id="login" name="login" onblur="validateLogin();" onkeyup="validateLogin(event);"/>
+    <span id="login_img"></span><br />
+  </td>
 </tr>
 
 <tr>
-<td class="right tmpcol">'._('Password').':</td>
-<td><input class="tmpbox" type="password" name="haslo1" id="haslo1" maxlength="80" onblur="passwordChanged(); validatePassword1();" onkeyup="passwordChanged(); validatePassword1(event); " /><span id="haslo1_img"></span><span class="szare" /> min 5 characters </span><span id="strength"></span></td></td>
+  <td class="right tmpcol">'._('Password').':</td>
+  <td>
+    <input class="tmpbox" type="password" name="haslo1" id="haslo1" maxlength="80"
+      onblur="passwordChanged(); validatePassword1();" onkeyup="passwordChanged(); validatePassword1(event); " />
+    <span id="haslo1_img"></span><span class="szare" /> min 5 characters </span><span id="strength"></span>
+  </td>
 </tr>
 
 <tr>
-<td class="right tmpcol">'._('Verify Password').':</td>
-<td><input class="tmpbox" type="password" name="haslo2" id="haslo2" maxlength="80" onblur="validatePassword2();" onkeyup="validatePassword2(event);" /><span id="haslo2_img"></td>
+  <td class="right tmpcol">'._('Verify Password').':</td>
+  <td>
+    <input class="tmpbox" type="password" name="haslo2" id="haslo2" maxlength="80"
+      onblur="validatePassword2();" onkeyup="validatePassword2(event);" />
+     <span id="haslo2_img">
+  </td>
 </tr>
 
 <tr>
-<td class="right tmpcol">'._('Email').':</td>
-<td><input class="tmpbox" type="text" maxlength="150" name="email" id="email" onblur="validateEmail();" onkeyup="validateEmail(event);" /><span id="email_img"></span><br />
-<input type="checkbox" name="wysylacmaile" value="1" checked />'._('Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location.').'
-</td>
+  <td class="right tmpcol">'._('Email').':</td>
+  <td>
+    <input class="tmpbox" type="text" maxlength="150" name="email" id="email"
+      onblur="validateEmail();" onkeyup="validateEmail(event);" />
+    <span id="email_img"></span><br />
+    <input type="checkbox" name="wysylacmaile" value="1" checked />'._('Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location.').'
+  </td>
 </tr>';
 
     if ($GOOGLE_RECAPTCHA_PUBLIC_KEY) {
@@ -87,11 +101,10 @@ if ((empty($kret_login))) { //--------------------  if login is not set
     }
 
     $TRESC .= '<tr>
-<td class="right tmpcol">'._('Language').':</td>
-<td><select id="jezyk" class="tmpbox" style="height:1.8em;" name="jezyk">'.$jezyki.'</select></td>
+  <td class="right tmpcol">'._('Language').':</td>
+  <td><select id="jezyk" class="tmpbox" style="height:1.8em;" name="jezyk">'.$jezyki.'</select></td>
 </tr>
 '.
-
     // <tr>
     // <td class="right tmpcol">' . _("Home coordinates") . ':</td>
     // <td>
@@ -99,14 +112,16 @@ if ((empty($kret_login))) { //--------------------  if login is not set
     // <span class="szare">' . _('<a href="'.$config['adres'].'help.php#acceptableformats" target="_blank">Acceptable geographic coordinate formats</a>') . '<br /></span>
     // </td>
     // </tr>
-
-    '</table>
-
-<p><a href="termsofuse.php">'._('Terms of use').'</a></p>
+'
+<tr class="mg1">
+  <td>&#160;</td>
+  <td><a href="termsofuse.php">'._('Terms of use').'</a></td>
+</tr>
+</table>
 
 <br />
 <input type="hidden" id="js" name="js" value="----" />
-<input style="margin-left:200px" type="submit" value=" '._('Register a new user').' ➔" />
+<input id="adduser_btn_submit" style="margin-left:200px" type="submit" value=" '._('Register a new user').' ➔" />
 
 </form>'.
     '<h2>'._('Tips').'</h2>'.

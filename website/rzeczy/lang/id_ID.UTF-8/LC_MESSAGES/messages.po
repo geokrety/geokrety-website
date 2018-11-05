@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-19 11:13+0000\n"
-"PO-Revision-Date: 2018-10-19 11:21\n"
+"POT-Creation-Date: 2018-11-04 13:53+0000\n"
+"PO-Revision-Date: 2018-11-04 14:02\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Crowdin-Language: id\n"
 "X-Crowdin-File: /master/messages.po\n"
 
-#: website/adduser.php:8 website/adduser.php:109 website/templates.php:186
+#: website/adduser.php:8 website/adduser.php:124 website/templates.php:186
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:1
 msgid "Register a new user"
@@ -33,43 +33,43 @@ msgstr "Bidang yang harus diisi"
 msgid "Username"
 msgstr "Nama"
 
-#: website/adduser.php:64 website/api-login2secid.php:63
+#: website/adduser.php:67 website/api-login2secid.php:63
 #: website/longin.php:141 website/mypage.php:43
 msgid "Password"
 msgstr "Kata sandi"
 
-#: website/adduser.php:69
+#: website/adduser.php:76
 msgid "Verify Password"
 msgstr "Verifikasi kata sandi"
 
-#: website/adduser.php:74 website/edit.php:401 website/new_password.php:42
+#: website/adduser.php:85 website/edit.php:401 website/new_password.php:42
 msgid "Email"
 msgstr "Surel"
 
-#: website/adduser.php:76
+#: website/adduser.php:90
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
 msgstr "Ya, saya ingin menerima tanda email (dikirim setiap hari pada tengah malam CET/CESC) ketika saya atau menyaksikan GeoKret perubahan lokasi."
 
-#: website/adduser.php:82 website/majluj.php:100 website/new_password.php:34
+#: website/adduser.php:96 website/majluj.php:100 website/new_password.php:34
 #: website/ruchy.php:939
 msgid "Enter code"
 msgstr "Masukkan kode"
 
-#: website/adduser.php:90 website/edit.php:488 website/mypage.php:307
+#: website/adduser.php:104 website/edit.php:488 website/mypage.php:307
 msgid "Language"
 msgstr "Bahasa"
 
-#: website/adduser.php:105 website/templates.php:117 website/templates.php:141
+#: website/adduser.php:118 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:147
 #: website/templates/krety.html:234
 msgid "Terms of use"
 msgstr "Jangka waktu penggunaan"
 
-#: website/adduser.php:112
+#: website/adduser.php:127
 msgid "Tips"
 msgstr "Petunjuk"
 
-#: website/adduser.php:115 website/edit.php:205
+#: website/adduser.php:130 website/edit.php:205
 msgid "Read more about choosing good passwords:\n"
 "<ul>\n"
 "<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
@@ -83,60 +83,60 @@ msgstr "Baca lebih lanjut tentang memilih kata kunci yang baik:\n"
 "<li> <a href=\"http://en.wikipedia.org/wiki/Password_strength\"> Kekuatan kata sandi </a> </ li> \n"
 "</ ul>"
 
-#: website/adduser.php:134 website/adduser.php:137
+#: website/adduser.php:149 website/adduser.php:152
 msgid "No password"
 msgstr "Tidak ada kata sandi"
 
-#: website/adduser.php:140
+#: website/adduser.php:155
 msgid "Passwords are different or empty!"
 msgstr "Kata sandi berbeda atau kosong!"
 
-#: website/adduser.php:143
+#: website/adduser.php:158
 msgid "Password to short (should be >= 5 characters)!"
 msgstr "Kata sandi terlalu pendek (seharusnya >= 5 karakter)!"
 
-#: website/adduser.php:165
+#: website/adduser.php:180
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
 msgstr "Itu tampaknya bahwa <a href='mypage.php?userid=%s'>akun anda</a> sudah pernah dibuat."
 
-#: website/adduser.php:166
+#: website/adduser.php:181
 msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr ""
 
-#: website/adduser.php:167 website/longin.php:9 website/templates.php:189
+#: website/adduser.php:182 website/longin.php:9 website/templates.php:189
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
 msgstr "Masuk"
 
-#: website/adduser.php:167 website/templates.php:192
+#: website/adduser.php:182 website/templates.php:192
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:3
 msgid "Forgot password?"
 msgstr "Lupa kata sandi?"
 
-#: website/adduser.php:174
+#: website/adduser.php:189
 msgid "The username you entered is already in use."
 msgstr "Nama pengguna yang anda masukkan sudah digunakan."
 
-#: website/adduser.php:181
+#: website/adduser.php:196
 msgid "The email you entered is already in use."
 msgstr "Surel yang anda masukkan sudah pernah digunakan."
 
-#: website/adduser.php:197
+#: website/adduser.php:212
 msgid "Wrong email address?"
 msgstr "Alamat surel salah?"
 
-#: website/adduser.php:200 website/majluj.php:190 website/new_password.php:88
+#: website/adduser.php:215 website/majluj.php:190 website/new_password.php:88
 msgid "reCaptcha failed!"
 msgstr ""
 
-#: website/adduser.php:249
+#: website/adduser.php:264
 msgid "Account successfully created"
 msgstr ""
 
-#: website/adduser.php:252
+#: website/adduser.php:267
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr "Sebuah surel untuk konfirmasi alamat surel anda sudah dikirim ke anda. Ketika anda konfirmasi, akun anda akan beroperasi secara penuh. Sampai saat itu, anda tidak bisa menerima surel dengan ringkasan harian dari pergerakan GeoKrety anda. Tautan tersebut berlaku untuk 5 hari. Sekarang anda dapat melakukan pengoperasian pada GeoKrety. Jangan ragu untuk masuk dan nikmati GeoKrety.org! :)"
 
@@ -524,7 +524,7 @@ msgstr ""
 msgid "errors"
 msgstr "kesalahan"
 
-#: website/galeria.php:10 website/geokret_gallery.php:72 website/index.php:222
+#: website/galeria.php:10 website/geokret_gallery.php:72 website/index.php:225
 #: website/templates.php:21 website/templates.php:84 website/templates.php:210
 #: website/templates.php:273 website/templates/krety.html:131
 msgid "Photo gallery"
@@ -722,11 +722,11 @@ msgstr "Ingat deskripsi untuk % d menit berikutnya"
 msgid "Home"
 msgstr "Rumah"
 
-#: website/index.php:86 website/index.php:294
+#: website/index.php:86 website/index.php:297
 msgid "Welcome to GeoKrety.org!"
 msgstr ""
 
-#: website/index.php:91 website/index.php:295
+#: website/index.php:91 website/index.php:298
 msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
 msgstr ""
 
@@ -768,35 +768,35 @@ msgstr "tidak perlu mendaftar!"
 msgid "News"
 msgstr "Berita"
 
-#: website/index.php:162 website/newscomments.php:47
+#: website/index.php:163 website/newscomments.php:47
 msgid "Comments"
 msgstr "Komentar"
 
-#: website/index.php:203
+#: website/index.php:205
 msgid "Recent logs on the map"
 msgstr "Log terakhir di peta"
 
-#: website/index.php:220
+#: website/index.php:222
 msgid "Recently uploaded images"
 msgstr "Gambar yang baru saja diunggah"
 
-#: website/index.php:239
+#: website/index.php:242
 msgid "Recently registered GeoKrets"
 msgstr "GeoKrets yang baru saja terdaftar"
 
-#: website/index.php:256
+#: website/index.php:259
 msgid "Online users"
 msgstr "Pengguna online"
 
-#: website/index.php:269
+#: website/index.php:272
 msgid "Join our translation team"
 msgstr ""
 
-#: website/index.php:269
+#: website/index.php:272
 msgid "Suggest a better translation - inline"
 msgstr ""
 
-#: website/index.php:269
+#: website/index.php:272
 msgid "visits/day"
 msgstr "kunjungan/hari"
 
@@ -808,66 +808,66 @@ msgstr "Tersembunyi"
 msgid "in"
 msgstr "dari"
 
-#: website/konkret-tabelka.php:188
+#: website/konkret-tabelka.php:189
 msgid "Report as missing"
 msgstr "Laporkan hilang"
 
-#: website/konkret-tabelka.php:222 website/lingering.php:115
+#: website/konkret-tabelka.php:223 website/lingering.php:115
 #: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search for caches in this area on geocaching.com"
 msgstr "Mencari cache di daerah ini pada geocaching.com"
 
-#: website/konkret-tabelka.php:222 website/lingering.php:115
+#: website/konkret-tabelka.php:223 website/lingering.php:115
 #: website/mygeokrets.php:183 website/recent_moves.php:170
 msgid "Search geocaching.com"
 msgstr "Cari geocaching.com"
 
-#: website/konkret-tabelka.php:233
+#: website/konkret-tabelka.php:234
 msgid "Write comment"
 msgstr "Tulis komentar"
 
-#: website/konkret-tabelka.php:239 website/konkret.php:83
+#: website/konkret-tabelka.php:240 website/konkret.php:84
 #: website/recent_moves.php:215
 msgid "Add photo"
 msgstr "Tambah foto"
 
-#: website/konkret-tabelka.php:239 website/recent_moves.php:215
+#: website/konkret-tabelka.php:240 website/recent_moves.php:215
 msgid "Edit log"
 msgstr "Sunting log"
 
-#: website/konkret-tabelka.php:245
+#: website/konkret-tabelka.php:246
 msgid "Delete log"
 msgstr "Hapus log"
 
-#: website/konkret-tabelka.php:274 website/konkret.php:136
+#: website/konkret-tabelka.php:275 website/konkret.php:137
 msgid "Rename"
 msgstr "Ubah nama"
 
-#: website/konkret-tabelka.php:275 website/konkret.php:137
+#: website/konkret-tabelka.php:276 website/konkret.php:138
 msgid "Delete photo"
 msgstr "Hapus foto"
 
-#: website/konkret-tabelka.php:364
+#: website/konkret-tabelka.php:366
 msgid "Delete comment"
 msgstr "Hapus komentar"
 
-#: website/konkret.php:82
+#: website/konkret.php:83
 msgid "Edit description"
 msgstr "Sunting deskripsi"
 
-#: website/konkret.php:86
+#: website/konkret.php:87
 msgid "Print a label for this geokret"
 msgstr "Cetak sebuah label untuk geokret ini"
 
-#: website/konkret.php:87
+#: website/konkret.php:88
 msgid "Archive this geokret"
 msgstr "Arsipkan geokret ini"
 
-#: website/konkret.php:93
+#: website/konkret.php:94
 msgid "Write a note"
 msgstr "Tulis sebuah catatan"
 
-#: website/konkret.php:94 website/mypage.php:328
+#: website/konkret.php:95 website/mypage.php:328
 #: website/statystyczka-hubs.php:11 website/statystyczka-lata.php:11
 #: website/statystyczka.php:11 website/statystyczka2.php:11
 #: website/statystyczka3.php:11 website/templates.php:24
@@ -879,122 +879,122 @@ msgstr "Tulis sebuah catatan"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: website/konkret.php:95
+#: website/konkret.php:96
 msgid "View photo gallery"
 msgstr "Lihat galeri foto"
 
-#: website/konkret.php:95
+#: website/konkret.php:96
 msgid "Number of photos in the gallery"
 msgstr "Jumlah foto dalam galeri"
 
-#: website/konkret.php:113 website/lingering.php:184
+#: website/konkret.php:114 website/lingering.php:184
 #: website/mygeokrets.php:254
 msgid "Log this GeoKret"
 msgstr "Log GeoKret ini"
 
-#: website/konkret.php:114
+#: website/konkret.php:115
 msgid "Recreate a label for this geokret"
 msgstr "Buat kembali sebuah label untuk geokret ini"
 
-#: website/konkret.php:145
+#: website/konkret.php:146
 msgid "Altitude profile"
 msgstr "Ketinggian profil"
 
-#: website/konkret.php:171
+#: website/konkret.php:172
 msgid "Email the owner"
 msgstr "Email pengguna"
 
-#: website/konkret.php:177
+#: website/konkret.php:178
 msgid "Login to claim this GeoKret"
 msgstr "Masuk untuk mengklaim Geokret ini"
 
-#: website/konkret.php:179
+#: website/konkret.php:180
 #, php-format
 msgid "This GeoKret is available for adoption. Please <a href=\"%s\">login</a> first."
 msgstr ""
 
-#: website/konkret.php:182
+#: website/konkret.php:183
 msgid "Claim this GeoKret"
 msgstr "Klaim Geokret ini"
 
-#: website/konkret.php:184
+#: website/konkret.php:185
 #, php-format
 msgid "This GeoKret is available for adoption. You can <a href=\"%s\">claim</a> this GeoKret."
 msgstr ""
 
-#: website/konkret.php:246
+#: website/konkret.php:247
 msgid "You can rate this GeoKret"
 msgstr "Anda dapat menilai GeoKret ini"
 
-#: website/konkret.php:249
+#: website/konkret.php:250
 msgid "You have already rated this GeoKret"
 msgstr "Anda sudah menilai GeoKret ini"
 
-#: website/konkret.php:251
+#: website/konkret.php:252
 msgid "You can't rate your own GeoKret"
 msgstr "Anda tidak dapat menilai GeoKret anda sendiri"
 
-#: website/konkret.php:253
+#: website/konkret.php:254
 msgid "You can't rate this geokret"
 msgstr "Anda tidak dapat menilai geokret ini"
 
-#: website/konkret.php:275
+#: website/konkret.php:276
 msgid "Total distance"
 msgstr "Jarak total"
 
-#: website/konkret.php:276
+#: website/konkret.php:277
 msgid "Places visited"
 msgstr "Tempat-tempat yang dikunjungi"
 
-#: website/konkret.php:277
+#: website/konkret.php:278
 msgid "Forum links"
 msgstr "Tautan forum"
 
-#: website/konkret.php:278
+#: website/konkret.php:279
 msgid "Country track"
 msgstr "Trek negara"
 
-#: website/konkret.php:279
+#: website/konkret.php:280
 msgid "Rating"
 msgstr "Penilaian"
 
-#: website/konkret.php:281
+#: website/konkret.php:282
 msgid "votes"
 msgstr "suara"
 
-#: website/konkret.php:281
+#: website/konkret.php:282
 msgid "average rating"
 msgstr "penilaian rata-rata"
 
-#: website/konkret.php:285
+#: website/konkret.php:286
 msgid "Share on"
 msgstr "Bagikan pada"
 
-#: website/konkret.php:296
+#: website/konkret.php:297
 msgid "Short description"
 msgstr "Deskripsi singkat"
 
-#: website/konkret.php:327
+#: website/konkret.php:328
 msgid "start"
 msgstr "mulai"
 
-#: website/konkret.php:328
+#: website/konkret.php:329
 msgid "trip points"
 msgstr "titik perjalanan"
 
-#: website/konkret.php:329
+#: website/konkret.php:330
 msgid "recently seen"
 msgstr "baru saja dilihat"
 
-#: website/konkret.php:338
+#: website/konkret.php:339
 msgid "The google map is not avaliable due to large numer of points."
 msgstr "Peta google tidak tersedia karena banyaknya angka."
 
-#: website/konkret.php:340
+#: website/konkret.php:341
 msgid "This geokret has not started yet"
 msgstr "Geokret ini belum dimulai"
 
-#: website/konkret.php:345
+#: website/konkret.php:346
 msgid "Download the track as:"
 msgstr "Mengunggah lagu sebagai:"
 
@@ -1740,7 +1740,7 @@ msgstr "Lahir di sini :)"
 msgid "Cannot edit this log"
 msgstr "Tidak dapat menyunting log ini"
 
-#: website/ruchy.php:193 website/szukaj-ajax.php:67
+#: website/ruchy.php:193 website/szukaj-ajax.php:73
 #, php-format
 msgid "Unexpected error (id:%s), please report."
 msgstr ""
@@ -1917,7 +1917,7 @@ msgstr ""
 msgid "Check"
 msgstr "Memeriksa"
 
-#: website/ruchy.php:894 website/szukaj-ajax.php:167
+#: website/ruchy.php:894 website/szukaj-ajax.php:173
 msgid "Enter at least 5 characters"
 msgstr ""
 
@@ -2002,7 +2002,7 @@ msgstr ""
 msgid "flag"
 msgstr ""
 
-#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:194
+#: website/szukaj-ajax.php:29 website/szukaj-ajax.php:201
 #, php-format
 msgid "by %s"
 msgstr ""
@@ -2030,38 +2030,42 @@ msgstr ""
 msgid "No cache found"
 msgstr "Tidak ada cache yang ditemukan"
 
-#: website/szukaj-ajax.php:58
+#: website/szukaj-ajax.php:55
+msgid "Missing or invalid coordinates"
+msgstr ""
+
+#: website/szukaj-ajax.php:64
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
 msgstr ""
 
-#: website/szukaj-ajax.php:59
+#: website/szukaj-ajax.php:65
 #, php-format
 msgid "<a href=\"%s\">Learn more about hiding geokrets in GC caches</a>"
 msgstr ""
 
-#: website/szukaj-ajax.php:106
+#: website/szukaj-ajax.php:112
 msgid "GeoKret not found"
 msgstr "GeoKret tidak ditemukan"
 
-#: website/szukaj-ajax.php:119
+#: website/szukaj-ajax.php:125
 msgid "Last log:"
 msgstr ""
 
-#: website/szukaj-ajax.php:127
+#: website/szukaj-ajax.php:133
 #, php-format
 msgid "%s by %s."
 msgstr ""
 
-#: website/szukaj-ajax.php:132
+#: website/szukaj-ajax.php:138
 msgid "Invalid tracking code"
 msgstr "Kode pelacakan tidak benar"
 
-#: website/szukaj-ajax.php:183
+#: website/szukaj-ajax.php:189
 msgid "caches match"
 msgstr "cache cocok"
 
-#: website/szukaj-ajax.php:185
+#: website/szukaj-ajax.php:191
 #, php-format
 msgid "%d caches match (the first %d)"
 msgstr ""

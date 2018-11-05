@@ -65,7 +65,7 @@ $OGON .= '<script type="text/javascript" src="'.CONFIG_CDN_LIBRARIES.'/lytebox/l
 $HEAD .= '<link rel="stylesheet" href="'.CONFIG_CDN_LIBRARIES.'/lytebox/lytebox.css" type="text/css" media="screen" />';
 $HEAD .= '<style type="text/css">.temptip TD{font-size: 8pt; padding:0px 2px 0px 2px; background: lightyellow;}</style>';
 
-// -------------------------------------- statystyki podstawowe ------------------------------- //
+// -------------------------------------- statystyki podstawowe / basic statistics -------------- //
 
 $result = mysqli_query($link, "SELECT * FROM `gk-wartosci` WHERE `name` LIKE 'stat_%'");
 while ($row = mysqli_fetch_assoc($result)) {
@@ -84,7 +84,7 @@ $(function () {
 
 $TRESC .= '
 <h2>'._('Welcome to GeoKrety.org!').'</h2>
-<div class="row">
+<div class="row" id="welcome_intro">
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -105,7 +105,7 @@ $TRESC .= '
         <strong>'._('If you found a GeoKret, enter the tracking code here:').'</strong>
         <form name="formularz" action="ruchy.php" method="get">
           <input type="text" name="nr" id="nr" size="6" maxlength="6">
-          <input type="submit" value="'._('Go!').'">
+          <input type="submit" value="'._('Go!').'" id="welcome_go">
         </form>
         <span class="male">('._('no need to register!').')</span>
       </div>
@@ -147,6 +147,7 @@ if ($speedtest_index) {
 // -------------------------------------- news ------------------------------- //
 
 $TRESC .= '<h2>'._('News').'</h2>';
+$TRESC .= '<div id="welcome_new">';
 
 $sql = 'SELECT DATE(`date`), `tresc`, `tytul`, `who`, `userid`, `komentarze`, `news_id` FROM `gk-news` ORDER BY `date` DESC LIMIT 2';
 $result = mysqli_query($link, $sql);
@@ -170,6 +171,7 @@ while ($row = mysqli_fetch_array($result)) {
     </div>';
 }
 unset($date, $tresc, $tytul, $who, $userid, $row);
+$TRESC .= '</div>';
 // ***************
 if ($speedtest_index) {
     $ST1 = 'news';
@@ -217,7 +219,8 @@ if ($speedtest_index) {
 
 // -------------------------------------- recent pictures ------------------------------- //
 
-$TRESC .= '<h2>'._('Recently uploaded images').'</h2><table><tr><td>';
+$TRESC .= '<h2>'._('Recently uploaded images').'</h2>
+<table id="recent_pictures_table"><tr><td>';
 $TRESC .= recent_pictures('LIMIT 10');
 $TRESC .= '</td></tr><tr><td align="right"><a href="galeria.php">'._('Photo gallery').' >>></a></td></tr></table>';
 // ***************
@@ -253,7 +256,7 @@ if ($speedtest_index) {
 
 // ---- kto online ----//
 
-$TRESC .= '<div style="margin-top: 1em;" class="xs">'._('Online users').': ';
+$TRESC .= '<div style="margin-top: 1em;" class="xs" id="online_users">'._('Online users').': ';
 
 $link->query("SET time_zone = '+0:00'");
 $sql = 'SELECT `user`, `userid` FROM `gk-users` WHERE `ostatni_login` > DATE_SUB(NOW(), INTERVAL 5 MINUTE)';
@@ -294,6 +297,9 @@ $gkLogoUrl = $config['cdn_url'].'/images/banners/geokrety.png';
 $gkHeadline = _('Welcome to GeoKrety.org!');
 $gkDescription = _('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="help.php#about">read more...</a>');
 $gkKeywords = 'geokrety,opencaching,geocaching,geocoin,geobook,krety,geokret,geokrets,geocache,gps';
+$lastUpdate = filemtime(__FILE__);
+$dateModified = date('c', $helpLastUpdate);
+$datePublished = date('c', $helpLastUpdate);
 
 $ldHelper = new LDHelper($gkName, $gkUrl, $gkLogoUrl);
 $ldJSONWebSite = $ldHelper->helpWebSite(
@@ -302,7 +308,10 @@ $ldJSONWebSite = $ldHelper->helpWebSite(
     $gkLogoUrl,
     $gkName,
     $gkUrl,
-    $gkKeywords
+    $gkKeywords,
+    $lang,
+    $dateModified,
+    $datePublished
     );
 
 $TRESC .= $ldJSONWebSite;

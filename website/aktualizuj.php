@@ -1,6 +1,5 @@
 <?php
 
-
 function aktualizuj_obrazek_statystyki($userid) {
     if ($userid == 0) {
         return;

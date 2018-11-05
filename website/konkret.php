@@ -70,6 +70,7 @@ mysqli_free_result($result);
 $social_url = $config['adres'].'konkret.php?id='.$kret_id; // for social networks
 $user_url = $config['adres'].'mypage.php?userid='.$userid; // for JSON-LD
 $social_name = ("Geokrety: $nazwa");
+$geokretyGKCode = sprintf('GK%04X', $kret_id);
 
 //policz ilosc obrazkow
 // $result = mysqli_query($link, "SELECT COUNT(*) FROM `gk-obrazki` WHERE `id_kreta` = '$id' LIMIT 1");
@@ -270,7 +271,7 @@ $TRESC = $claim_alert.'
 '</td></tr>
 
 <tr>
-<td class="tresc1 konkretlabel" style="width:10em">Reference Number:</td><td><strong>'.sprintf('GK%04X', $kret_id).'</strong></td></tr>
+<td class="tresc1 konkretlabel" style="width:10em">Reference Number:</td><td><strong>'.$geokretyGKCode.'</strong></td></tr>
 '.$tracking_code.'
 <tr><td class="tresc1 konkretlabel">'._('Total distance').': </td><td><strong>'.$droga_total.' km</strong></td></tr>
 <tr><td class="tresc1 konkretlabel">'._('Places visited').': </td><td><strong>'.$skrzynki.'</strong></td></tr>
@@ -346,71 +347,38 @@ if ($skrzynki > 0) {
 }
 
 // ----------------------------------------------JSON-LD---------------------------
-// example with https://www.google.com/webmasters/markup-helper/u/0/
 // schema used: http://schema.org/Sculpture
-$gkkeywords = 'geokrety,opencaching,'.$cotozakret[$krettyp];
-$TRESC .= '
-<script type="application/ld+json">
-{
-  "@context" : "http://schema.org",
-  "@type" : "Sculpture",
-  "name" : '.json_encode($nazwa).',
-  "url" : '.json_encode($social_url).',
-  "author" : {
-    "@type" : "Person",
-    "name" : '.json_encode($user).',
-    "sameAs" : '.json_encode($user_url).'
-  },
-  "datePublished" : '.json_encode(date('c', strtotime($gktimestamp))).','; //  ISO 8601
+
+$gkName = $config['adres'];
+$gkUrl = $config['adres'];
+$gkLogoUrl = $config['cdn_url'].'/images/banners/geokrety.png';
+$gkkeywords = 'geokrety,'.$geokretyGKCode.',geokret,opencaching,geocaching,travel,'.$cotozakret[$krettyp];
+
+$ldHelper = new LDHelper($gkName, $gkUrl, $gkLogoUrl);
+$konkret = new \Geokrety\Domain\Konkret();
+$konkret->name = $geokretyGKCode.' - '.$nazwa;
+$konkret->description = $opis;
+$konkret->url = $social_url;
+$konkret->author = $user;
+$konkret->authorUrl = $user_url;
+$konkret->datePublished = date('c', strtotime($gktimestamp));
 if (isset($obrazki_plik)) {
-    $TRESC .= '
-  "image" : '.json_encode(CONFIG_CDN_OBRAZKI_MALE.'/'.$obrazki_plik).',';
+    $konkret->imageUrl = CONFIG_CDN_OBRAZKI_MALE.'/'.$obrazki_plik;
 }
-$TRESC .= '
-  "keywords" : '.json_encode($gkkeywords).',
-  "text" : '.json_encode($opis).',
-  "description" : '.json_encode($opis).',
-  "publisher" : {
-    "@type" : "Organization",
-    "name" : "geokrety.org"
-  }';
+$konkret->keywords = $gkkeywords;
+// rate
 if (isset($ratingCount) && $ratingCount > 0) {
-    $TRESC .= ',
-  "aggregateRating" : {
-    "@type" : "AggregateRating",
-    "worstRating" : "1",
-    "bestRating" : "5",
-    "ratingValue" : '.json_encode($ratingAvg).',
-    "ratingCount" : '.json_encode($ratingCount).'
-  }';
+    $konkret->ratingCount = $ratingCount;
+    $konkret->ratingAvg = $ratingAvg;
 }
-  $TRESC .= ',
-  "commentCount" : '.json_encode($konkretLogsCount).',';
+// comments
 if ($konkretLogsCount > 0) {
-    $TRESC .= '
-  "comment" : [';
-    $firstLog = true;
-    foreach ($konkretLogs as &$konkretLog) {
-        if ($firstLog) {
-            $firstLog = false;
-        } else {
-            $TRESC .= ',';
-        }
-        $TRESC .= '{
-      "author" : {
-        "@type" : "Person",
-        "name" : '.json_encode($konkretLog['author']).',
-        "sameAs" : '.json_encode($konkretLog['authorUrl']).'
-      },
-      "text" : '.json_encode($konkretLog['text']).',
-      "dateCreated" : '.json_encode(date('c', strtotime($konkretLog['dateCreated']))).'
-}';
-    }
-    $TRESC .= ']';
+    $konkret->konkretLogs = $konkretLogs;
 }
+$ldJsonKonkret = $ldHelper->helpKonkret($konkret);
 $TRESC .= '
-}
-</script>';
+'.$ldJsonKonkret.'
+';
 
 // ----------------------------------------------JSON-LD-(end)---------------------
 

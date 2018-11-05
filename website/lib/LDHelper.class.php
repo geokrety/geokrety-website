@@ -5,6 +5,8 @@
  * This helps modern search engines to get website meta-information in a standardized way.
  **/
 class LDHelper {
+    public $lgGenerator;
+
     public $geokretyName;
     public $geokretyUrl;
     public $geokretyLogoUrl;
@@ -14,26 +16,31 @@ class LDHelper {
     public $geokretyOrganization;
 
     public function __construct($geokretyName, $geokretyUrl, $geokretyLogoUrl) {
+        $this->lgGenerator = new LDGeneratorFactory();
         $this->geokretyName = $geokretyName;
         $this->geokretyUrl = $geokretyUrl;
         $this->geokretyLogoUrl = $geokretyLogoUrl;
 
-        $this->geokretyLogo = LDGeneratorFactory::createLdContext('ImageObject', [
+        $this->geokretyLogo = $this->lgGenerator->createLdContext('ImageObject', [
             'url' => $geokretyLogoUrl,
         ]);
-        /*
-        $this->geokretyLogo = LDGeneratorFactory::createLdContext('ImageObject', [
-            'url' => $geokretyLogoUrl,
-        ]);
-        */
-        $this->geokretyPerson = LDGeneratorFactory::createLdContext('Person', [
-            'name' => $geokretyName,
-        ]);
-        $this->geokretyOrganization = LDGeneratorFactory::createLdContext('Organization', [
-            'name' => $geokretyName,
-            'url' => $geokretyUrl,
-            'logo' => $this->geokretyLogo,
-        ]);
+        $this->geokretyPerson = $this->createAuthor($geokretyName, $geokretyUrl);
+        $this->geokretyOrganization = $this->createOrganization($geokretyName, $geokretyUrl);
+    }
+
+    public function createOrganization($orgName, $orgUrl) {
+        return $this->lgGenerator->createLdContext('Organization', [
+                'name' => $orgName,
+                'url' => $orgUrl,
+                'logo' => $this->geokretyLogo,
+            ]);
+    }
+
+    public function createAuthor($authorName, $authorUrl) {
+        return $this->lgGenerator->createLdContext('Person', [
+                'name' => $authorName,
+                'sameAs' => $authorUrl,
+            ]);
     }
 
     /**
@@ -45,7 +52,7 @@ class LDHelper {
      */
     public function helpArticle($headline, $description, $articleUrl, $imageUrl, $keywords, $lang,
                                 $dateModified, $datePublished, $mainEntityOfPage) {
-        $context = LDGeneratorFactory::createLdContext('Article', [
+        $context = $this->lgGenerator->createLdContext('Article', [
             'headline' => $headline,
             'description' => $description,
             'url' => $articleUrl,
@@ -64,22 +71,73 @@ class LDHelper {
 
     /**
      * schema used: http://schema.org/WebSite.
-     *
-     * Torann/json-ld PR 39 https://github.com/Torann/json-ld/pull/39
      */
-    public function helpWebSite($headline, $description, $imageUrl, $name, $siteUrl, $keywords) {
-        $context = LDGeneratorFactory::createLdContext('WebSite', [
+    public function helpWebSite($headline, $description, $imageUrl, $name, $siteUrl, $keywords, $lang,
+                                $dateModified, $datePublished) {
+        $context = $this->lgGenerator->createLdContext('WebSite', [
             'about' => $description,
             'headline' => $headline,
             'url' => $siteUrl,
             'image' => $imageUrl,
             'name' => $name,
             'keywords' => $keywords,
-            // Wait PR 39 // 'publisher' => $this->geokretyOrganization,
-            // Wait PR 39 // 'inLanguage' => $lang,
-            // Wait PR 39 // 'datePublished' => $datePublished,
+            'publisher' => $this->geokretyOrganization,
+            'inLanguage' => $lang,
+            'dateModified' => $dateModified,
+            'datePublished' => $datePublished,
         ]);
 
         return $context->generate();
+    }
+
+    public function createAggregateRating($ratingValue, $ratingCount) {
+        return $this->lgGenerator->createLdContext('AggregateRating', [
+            'reviewCount' => null,
+            'ratingValue' => $ratingValue,
+            'bestRating' => 5,
+            'worstRating' => 1,
+            'ratingCount' => $ratingCount,
+            ]);
+    }
+
+    /**
+     * schema used: http://schema.org/Sculpture.
+     */
+    public function helpKonkret($konkret) {
+        // sculpture attributes
+        $sculptureContent = [
+            'name' => $konkret->name,
+            'url' => $konkret->url,
+            'author' => $this->createAuthor($konkret->author, $konkret->authorUrl),
+            'datePublished' => $konkret->datePublished,
+            'image' => $konkret->imageUrl,
+            'keywords' => $konkret->keywords,
+            'about' => $konkret->description,
+            'publisher' => $this->geokretyOrganization,
+        ];
+        // if rating is present
+        if (isset($konkret->ratingCount) && $konkret->ratingCount > 0) {
+            $sculptureContent['aggregateRating'] = $this->createAggregateRating($konkret->ratingAvg, $konkret->ratingCount);
+        }
+
+        // comments
+        if (isset($konkret->konkretLogs) && is_array($konkret->konkretLogs)) {
+            $allComments = [];
+            $sculptureContent['commentCount'] = count($konkret->konkretLogs);
+            foreach ($konkret->konkretLogs as &$konkretLog) {
+                $commentContent = [
+                    'author' => $this->createAuthor($konkretLog->authorName, $konkretLog->authorUrl),
+                    'text' => $konkretLog->text,
+                    'dateCreated' => $konkretLog->dateCreated,
+                ];
+                $comment = $this->lgGenerator->createLdContext('Comment', $commentContent);
+                array_push($allComments, $comment->getProperties());
+            }
+            $sculptureContent['comment'] = $allComments;
+        }
+
+        $sculpture = $this->lgGenerator->createLdContext('Sculpture', $sculptureContent);
+
+        return $sculpture->generate();
     }
 }

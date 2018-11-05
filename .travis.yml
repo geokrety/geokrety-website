@@ -43,7 +43,24 @@ script:
 jobs:
   include:
     - stage: deploy
+      if: branch IN (master, boly38)
       php: 5.6
       script:
         - scripts/export-translations-github.sh
         - scripts/compile-translations.sh
+    - stage: qaTests
+      if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN)
+      script:
+        # TRAVIS_QA_TOKEN from https://travis-ci.org/geokrety/geokrety-website/settings
+        # TRAVIS_BRANCH   from https://docs.travis-ci.com/user/environment-variables/
+        - bash ./scripts/qatests_hook.sh ${TRAVIS_QA_TOKEN} ${TRAVIS_BRANCH}
+        - bash ./scripts/qatests_wait.sh ${TRAVIS_QA_TOKEN}
+notifications:
+    # doc: https://docs.travis-ci.com/user/notifications/#configuring-irc-notifications
+    irc:
+        channels:
+        - "chat.freenode.net#geokrety"
+        on_success: always
+        on_failure: always
+        template:
+        - "%{build_url} WEBSITE %{build_number} | %{branch} - %{commit} | %{result}"
