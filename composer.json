@@ -1,14 +1,19 @@
 {
-    "config": {
-        "platform": {
-            "php": "5.6.32"
-        }
-    },
-    "require": {
-        "friendsofphp/php-cs-fixer": "v2.13.1",
-        "phpunit/phpunit": "5.7.27"
-    },
-    "autoload": {
-        "files": ["website/vendor/autoload.php"]
+  "config": {
+    "platform": {
+      "php": "5.6.32"
     }
+  },
+  "require": {
+    "friendsofphp/php-cs-fixer": "v2.13.1",
+    "phpunit/phpunit": "5.7.27"
+  },
+  "autoload": {
+    "classmap": [
+      "tests/lib/"
+    ],
+    "files": [
+      "website/vendor/autoload.php"
+    ]
+  }
 }
