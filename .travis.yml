@@ -19,6 +19,10 @@ addons:
             - moreutils
             - gettext
 
+before_install:
+    - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+    - sudo dpkg -i crowdin.deb
+
 install:
     - cd website && composer install && cd ..
     - composer install
