@@ -71,6 +71,7 @@ $config['generated'] = 'files/';
 
 // cdn paths
 $config['cdn_images'] = $config['cdn_url'].'/images';
+$config['cdn_logos'] = $config['cdn_images'].'/logos/';
 $config['cdn_obrazki'] = $config['cdn_images'].'/obrazki';
 $config['cdn_obrazki_male'] = $config['cdn_images'].'/obrazki-male';
 $config['cdn_icons'] = $config['cdn_images'].'/icons';
@@ -85,6 +86,7 @@ $config['cdn_maps'] = $config['cdn_url'].'/maps';
 
 define('CONFIG_CDN', $config['cdn_url']);
 define('CONFIG_CDN_IMAGES', $config['cdn_images']);
+define('CONFIG_CDN_LOGOS', $config['cdn_logos']);
 define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
 define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
 define('CONFIG_CDN_ICONS', $config['cdn_icons']);
@@ -197,7 +199,10 @@ $cotozakret['4'] = _('KretyPost');
 
 $config_ile_wzorow_banerkow = 9;    // ile wzorأ³w banerkأ³w ze statystykami
 
+// help social groups
 @require dirname(__FILE__).'/konfig-groups.php';
+// halloffame credits
+@require dirname(__FILE__).'/konfig-credits.php';
 
 @require dirname(__FILE__).'/konfig-local.php';
 //this is important, because we may include konfig.php from other directory like /a/b/c/test.php
