@@ -25,7 +25,7 @@ function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin) {
             $sql = "SELECT COUNT(gk.id) FROM `gk-geokrety` AS gk WHERE gk.hands_of='$kret_userid'";
         }
 
-        $link = DBConnect();
+        $link = GKDB::getLink();
         $result = mysqli_query($link, $sql);
         list($ilosc_rzedow) = mysqli_fetch_array($result);
         mysqli_free_result($result);
@@ -119,9 +119,6 @@ function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin) {
         unset($fixed_table);
     }
     ($_REQUEST['multilog'] == '1') ? $multilog = true : $multilog = false;
-
-    // speed testing
-    //include('speedtest.php'); $st=new SpeedTest; $result = mysqli_query($link, $sql); print($st->stop_show().'s'); mysqli_free_result($result);
 
     $result = mysqli_query($link, $sql);
     //$result=NULL;

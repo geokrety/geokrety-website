@@ -22,7 +22,7 @@ function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders
         $prefix_adresu = '';
     }
 
-    $link = DBConnect();
+    $link = GKDB::getLink();
 
     $po_ile = 0;
 
@@ -71,6 +71,12 @@ function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders
     } // if zapytanie==''
 
     unset($table_layout, $fixed_table, $table_headers);
+    $fixed_table[1] = '';
+    $fixed_table[2] = '';
+    $fixed_table[3] = '';
+    $fixed_table[4] = '';
+    $fixed_table[5] = '';
+    $fixed_table[6] = '';
     $sortable = '';
     if ($showheaders or $emailversion) {
         if ($po_ile > 50) { // w tej chwili nie uzywane bo wylaczona jest opcja show_all

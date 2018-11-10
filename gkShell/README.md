@@ -149,6 +149,24 @@ Then to play with geokrety locally, you will run 3 docker containers:
 
 * the script will output you server ip and how to connect to your geokrety instance.
 
+### Run Geokrety tests
+
+If you haven't done it before, update first php dependencies using Composer. *More details on [INSTALL.md](../INSTALL.md)*
+
+````
+    gk composer
+````
+
+Launch the following command (and follow instructions) to create test database
+````
+    gk testdb
+````
+
+Launch the following command to execute phpunit tests
+````
+    gk tests
+````
+
 ### Other commands
 
 To get more commands, execute the following:

@@ -40,18 +40,22 @@ learnAndLaunch() {
 
 ###
 # gkShell commands
+HELP_COMMANDS="help|info"
+IMAGES_COMMANDS="build|images|history"
+DOCKERS_COMMANDS="run|ps|stop|rm"
+DEV_COMMANDS="sh|logs|tail|testdb|tests"
 if isWindowsHost; then
   INSTALL_COMMANDS="composer|install|uninstall"
-  ALLOWED_COMMANDS="help|info|${INSTALL_COMMANDS}|build|images|history|run|ps|stop|rm|sh|logs|tail|alias|dm-ip|dm-sh"
+  EXTRA_COMMANDS="alias|dm-ip|dm-sh"
 else
-  ALLOWED_COMMANDS="help|info|composer|build|images|history|run|ps|stop|rm|sh|logs|tail|alias"
+  INSTALL_COMMANDS="composer"
+  EXTRA_COMMANDS="alias"
   DOCKER_CMD="sudo docker"
 fi
+ALLOWED_COMMANDS="${HELP_COMMANDS}|${INSTALL_COMMANDS}|${IMAGES_COMMANDS}|${DOCKERS_COMMANDS}|${DEV_COMMANDS}|${EXTRA_COMMANDS}"
 # don't tell about volume for now
 # VOLUME_COMMANDS="volume-create|volume-ls|volume-rm|volume-inspect"
-# EXHAUSTIVE_LIST_OF_COMMANDS="${ALLOWED_COMMANDS}|${VOLUME_COMMANDS}"
-#
-#
+# EXHAUSTIVE_LIST_OF_COMMANDS="${ALLOWED_COMMANDS}|${VOLUME_COMMANDS}"#
 dockerNeeded() {
     echo " X Docker is required : 'docker version' must success"
     echo
@@ -82,6 +86,7 @@ computedParams() {
   CONFIG_APACHE_DIR="${PROJECT_DIR}/gkShell/apache2"
   CONFIG_CONFIGS_DIR="${CONFIG_DIR}/configs"
   CONFIG_DB_DIR="${CONFIG_DIR}/mariadb"
+  CONFIG_TEST_DB_DIR="${CONFIG_DIR}/testdb"
 
   SCRIPTS_DIR="$(cd -P -- "${PROJECT_DIR}/../geokrety-scripts/" 2>/dev/null && pwd -P)"
 
@@ -138,8 +143,9 @@ hasConfigMapping() {
 hasScriptsMapping() {
   return $(hasMapping ${SHARED_FOLDER_GKSCRIPTS});
 }
+# require computedParams
 hasComposerDeps() {
-  return $( [ -f "${WEBSITE_DIR}/vendor/autoload.php" ] &&  [ -f "${WEBSITE_DIR}/vendor/autoload.php" ] )
+  return $( [ -f "${PROJECT_DIR}/vendor/autoload.php" ] &&  [ -f "${WEBSITE_DIR}/vendor/autoload.php" ] )
 }
 command-help-help() {
  echo " are you recursive compliant ?"
@@ -169,9 +175,9 @@ command-info() {
      mustInstall=true
     fi
     if hasConfigMapping; then
-     echo "${SHARED_FOLDER_GKCONFIG} mapping  : ${DOCKER_DEFAULT_MACHINE}:/${SHARED_FOLDER_GKCONFIG}  mounted on ${HOST_GK_CONFIG}"
+     echo "${SHARED_FOLDER_GKCONFIG}  mapping : ${DOCKER_DEFAULT_MACHINE}:/${SHARED_FOLDER_GKCONFIG}  mounted on ${HOST_GK_CONFIG}"
     else
-     echo "${SHARED_FOLDER_GKCONFIG} mapping  : **missing**"
+     echo "${SHARED_FOLDER_GKCONFIG}  mapping : **missing**"
      mustInstall=true
     fi
     if hasScriptsMapping; then
@@ -389,29 +395,62 @@ command-help-rm() {
 command-rm() {
   learnAndLaunch ${DOCKER_CMD} rm ${CONTAINER_NAME} ${ADM_CONTAINER_NAME} ${DB_CONTAINER_NAME}
 }
+command-help-testdb() {
+  echo " create unit tests database. Require db to be running"
+}
+command-testdb() {
+  computedParams
+  echo "construct database SQL files from docker/mariadb ones"
+  learnAndLaunch \"${CONFIG_TEST_DB_DIR}\"/generateSql.sh
+
+  echo
+  echo "please execute the following commands"
+  echo
+  echo "to generate config files:"
+  echo "  tests/config/generateTestConfig.sh"
+  echo
+  echo "to generate test database:"
+  echo "  $0 sh ${DB_CONTAINER_NAME}"
+  echo "  /testdb/createTestDb.sh"
+  echo "  exit"
+}
+command-help-tests() {
+ echo " run geokrety PHPUnit: unit tests"
+}
+command-tests() {
+  if ! hasEnvSet; then
+    setupEnv
+  fi
+  PHPUNIT_CMD="export test_database_host=\"gk\"; export test_database_pwd=\"\${MYSQL_ROOT_PASSWORD}\"; vendor/bin/phpunit"
+  learnAndLaunch ${PHPUNIT_CMD}
+
+}
 command-help-sh() {
- echo " open shell session onto geokrety container"
+ echo " open shell session onto geokrety container (default to ${CONTAINER_NAME})"
 }
 command-sh() {
   PREFIX=""
   if isWindowsHost; then
-    PREFIX="winpty "
+    PREFIX="winpty"
   fi
+  TARGET_CONTAINER=${SECOND:-${CONTAINER_NAME}}
   echo "bash [CTRL+D to logout]"
-  learnAndLaunch ${PREFIX} ${DOCKER_CMD} exec -ti ${CONTAINER_NAME} bash
+  learnAndLaunch ${PREFIX} ${DOCKER_CMD} exec -ti ${TARGET_CONTAINER} bash
 }
 command-help-logs() {
  echo " show geokrety container last logs"
 }
 command-logs() {
-  learnAndLaunch ${DOCKER_CMD} logs ${CONTAINER_NAME}
+  TARGET_CONTAINER=${SECOND:-${CONTAINER_NAME}}
+  learnAndLaunch ${DOCKER_CMD} logs ${TARGET_CONTAINER}
 }
 command-help-tail() {
  echo " tail geokrety container logs"
 }
 command-tail() {
   echo "[CTRL+C to quit]"
-  learnAndLaunch ${DOCKER_CMD} logs -f ${CONTAINER_NAME}
+  TARGET_CONTAINER=${SECOND:-${CONTAINER_NAME}}
+  learnAndLaunch ${DOCKER_CMD} logs -f ${TARGET_CONTAINER}
 }
 command-dm-ip() {
   learnAndLaunch docker-machine ip ${DOCKER_DEFAULT_MACHINE}
@@ -455,6 +494,7 @@ command-alias() {
   if isWindowsHost; then
     PREFIX="winpty "
   fi
+  alias gk_phperrors="${PREFIX}${DOCKER_CMD} exec -it devGeokrety sh -c \"cat /tmp/PHP_errors.log\""
   # update waypointy : import them from third parties
   alias gk_wp_update="${PREFIX}${DOCKER_CMD} exec -it devGeokrety sh -c \"cd /opt/geokrety-scripts/waypointy/oc && php xml2sql.php\""
   # report waypointy translations

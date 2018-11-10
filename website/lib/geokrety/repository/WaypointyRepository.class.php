@@ -1,7 +1,9 @@
 <?php
 
-class Waypointy {
-    // database session opened with DBPConnect();
+namespace Geokrety\Repository;
+
+class WaypointyRepository {
+    // database session opened with DBConnect();
     private $dblink;
     // report current activity to stdout
     private $verbose;

@@ -47,7 +47,7 @@ if (!ctype_digit($kret_id)) {
     exit;
 }
 
-$link = DBConnect();
+$link = GKDB::getLink();
 
 $result = mysqli_query($link,
     "SELECT id, nr, nazwa, opis, owner, us.user, data, typ, droga, skrzynki, zdjecia, avatarid, timestamp_oc

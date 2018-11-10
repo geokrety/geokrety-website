@@ -9,6 +9,7 @@ services:
             - 3306:3306
         volumes:
             - /gkConfig/mariadb/:/docker-entrypoint-initdb.d:ro
+            - /gkConfig/testdb:/testdb
         environment:
             - TIME_ZONE=UTC
             - MYSQL_ROOT_PASSWORD

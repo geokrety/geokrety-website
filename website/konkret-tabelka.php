@@ -8,7 +8,6 @@ $speedtest_konkret_tabelka = 1;
 $speedtest_konkret_tabelka_maxtime = 2.0;
 $debugecho_konkret_tabelka = $_GET['debugecho'];
 if ($speedtest_konkret_tabelka) {
-    include_once 'speedtest.php';
     $st_konkret_tabelka = new SpeedTest();
     $st_konkret_tabelka_ = new SpeedTest();
     include_once 'defektoskop.php';
