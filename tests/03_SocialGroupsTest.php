@@ -1,14 +1,12 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
 /**
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
-class SocialGroupsTest extends TestCase {
+class SocialGroupsTest extends GKTestCase {
     public function test_generate_social_groups() {
         // GIVEN
-        require_once 'website/templates/konfig-groups.php';
+        include 'website/templates/konfig-groups.php';
         $socialGroups = new \Geokrety\View\SocialGroups($config['gk_social_groups']);
 
         // WHEN
@@ -20,6 +18,6 @@ class SocialGroupsTest extends TestCase {
         $this->assertGreaterThan(0, $groupsCount, 'please define one or more social groups into konfig-groups');
 
         $this->assertNotNull($groupsTable);
-        $this->assertTrue($testUtil->isValidHtmlContent($groupsTable), 'social groups table: must be valid html content');
+        $this->assertTrue($testUtil->isValidHtmlContent($groupsTable), 'social groups table invalid html content');
     }
 }

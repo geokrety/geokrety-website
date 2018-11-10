@@ -1,5 +1,6 @@
 <?php
 
+require_once '__sentry.php';
 // defektoskop - wypisuje bledy z tablicy
 
 function defektoskop($tablica, $logerrors = true, $error_msg = '', $severity = '3', $code = '') {
@@ -79,57 +80,61 @@ function table_exists($table) {
 
 // error_add dopisuje rekord do tabeli gk-errory ktora zawiera rozne dziwne zdarzenia na serwerze - np takie ktore nie powinno miec miejsca.
 function errory_add($details, $severity = 0, $error_uid = '') {
-    include_once 'templates/konfig.php';    // config
-    $link = DBConnect();
-
-    include_once 'longin_chceck.php';
-    $longin_status = longin_chceck();
-    $userid = $longin_status['userid'];
-    if ($userid == '') {
-        $userid = 0;
-    }
-    $requestIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    $requestTime = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
-
-    // $file = $_SERVER["SCRIPT_NAME"];
-    // $break = Explode('/', $file);
-    // $pfile = $break[count($break) - 1];
-
-    $pfile = $_SERVER['REQUEST_URI'];
-    if ($_POST['formname'] == '-') {
-        return;
-    }//niepotrzebne - wychodzimy
-    $posty = '';
-    foreach ($_GET as $var => $value) {
-        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-        if ($var == 'gk_id' && ctype_digit($value)) {
-            $posty .= "G|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
-        } else {
-            $posty .= "G|$var| = |$value|<br/>";
+    try {
+        include_once 'templates/konfig.php';    // config
+        $link = GKDB::getLink();
+        include_once 'longin_chceck.php';
+        $longin_status = longin_chceck();
+        $userid = $longin_status['userid'];
+        if ($userid == '') {
+            $userid = 0;
         }
-    }
-    foreach ($_POST as $var => $value) {
-        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-        if ($var == 'gk_id' && ctype_digit($value)) {
-            $posty .= "P|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
-        } elseif (($var != 'haslo1') && ($var != 'haslo2')) {
-            $posty .= "P|$var| = |$value|<br/>";
+        $requestIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        $requestTime = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
+
+        // $file = $_SERVER["SCRIPT_NAME"];
+        // $break = Explode('/', $file);
+        // $pfile = $break[count($break) - 1];
+
+        $pfile = $_SERVER['REQUEST_URI'];
+        if ($_POST['formname'] == '-') {
+            return;
+        }//niepotrzebne - wychodzimy
+        $posty = '';
+        foreach ($_GET as $var => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            if ($var == 'gk_id' && ctype_digit($value)) {
+                $posty .= "G|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
+            } else {
+                $posty .= "G|$var| = |$value|<br/>";
+            }
         }
-    }
+        foreach ($_POST as $var => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            if ($var == 'gk_id' && ctype_digit($value)) {
+                $posty .= "P|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
+            } elseif (($var != 'haslo1') && ($var != 'haslo2')) {
+                $posty .= "P|$var| = |$value|<br/>";
+            }
+        }
 
-    if ($details != '') {
-        $details = mysqli_real_escape_string($link, $details);
-    }
-    if ($posty != '') {
-        $posty = mysqli_real_escape_string($link, "<hr>$posty");
-    }
-    $referer = '';
-    if (!empty($_SERVER['HTTP_REFERER'])) {
-        $referer = '<br/>REF:'.$_SERVER['HTTP_REFERER'];
-    }
+        if ($details != '') {
+            $details = mysqli_real_escape_string($link, $details);
+        }
+        if ($posty != '') {
+            $posty = mysqli_real_escape_string($link, "<hr>$posty");
+        }
+        $referer = '';
+        if (!empty($_SERVER['HTTP_REFERER'])) {
+            $referer = '<br/>REF:'.$_SERVER['HTTP_REFERER'];
+        }
 
-    $sql = "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`)
-		VALUES ('$error_uid', '$userid', '$requestIp', '$requestTime', '$pfile$referer', '$details$posty', '$severity')";
+        $sql = "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`)
+        VALUES ('$error_uid', '$userid', '$requestIp', '$requestTime', '$pfile$referer', '$details$posty', '$severity')";
 
-    $result = mysqli_query($link, $sql);
+        $result = mysqli_query($link, $sql);
+    } catch (Exception $exc) {
+        // we have not DB access, so we can't store it
+        echo '<small><sup>not stored</sup></small>';
+    }
 }

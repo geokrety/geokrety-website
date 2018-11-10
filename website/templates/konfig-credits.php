@@ -2,6 +2,7 @@
 
 if (!isset($config)) {
     $config = array();
+    $config['gk_credits'] = array();
 }
 
 $config['gk_credits'][] = [

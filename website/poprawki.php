@@ -199,7 +199,6 @@ if ($y) {
     if ($ok == true) {
         unset($result);
         if ($sql0 != '') {
-            include_once 'speedtest.php';
             $st = new SpeedTest();
             $TRESC .= "SQL: $sql0";
             $result = mysqli_query($link, $sql0);
@@ -242,7 +241,6 @@ if ($y) {
     if ($ok == true) {
         unset($result);
         if ($sql != '' && !isset($g_readonly)) {
-            include_once 'speedtest.php';
             $st = new SpeedTest();
             $TRESC .= "SQL: $sql<br />";
             $result = mysqli_query($link, $sql);
