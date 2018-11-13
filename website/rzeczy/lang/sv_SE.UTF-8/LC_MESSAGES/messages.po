@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-11 20:37+0000\n"
-"PO-Revision-Date: 2018-11-11 20:42\n"
+"POT-Creation-Date: 2018-11-13 10:30+0000\n"
+"PO-Revision-Date: 2018-11-13 10:33\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
@@ -55,7 +55,7 @@ msgstr "Ja, jag vill ta emot e-postmeddelanden (sänds dagligen vid midnatt CET 
 msgid "Enter code"
 msgstr "Ange kod"
 
-#: website/adduser.php:104 website/edit.php:488 website/mypage.php:307
+#: website/adduser.php:104 website/edit.php:488 website/mypage.php:309
 msgid "Language"
 msgstr "Språk"
 
@@ -862,7 +862,7 @@ msgstr "Arkivera denna geokret"
 msgid "Write a note"
 msgstr "Skriv en notering"
 
-#: website/konkret.php:95 website/mypage.php:328
+#: website/konkret.php:95 website/mypage.php:327
 #: website/statystyczka-hubs.php:11 website/statystyczka-lata.php:11
 #: website/statystyczka.php:11 website/statystyczka2.php:11
 #: website/statystyczka3.php:11 website/templates.php:24
@@ -1246,13 +1246,13 @@ msgstr ""
 msgid "Generate new secid"
 msgstr ""
 
-#: website/mypage.php:106 website/mypage.php:369 website/templates.php:162
+#: website/mypage.php:106 website/mypage.php:368 website/templates.php:162
 #: website/templates/plugins/function.login_check.php:47
 #: website/templates/krety_logged_in.html:9
 msgid "My recent logs"
 msgstr "Mina senaste loggar"
 
-#: website/mypage.php:116 website/mypage.php:370 website/templates.php:165
+#: website/mypage.php:116 website/mypage.php:369 website/templates.php:165
 #: website/templates/plugins/function.login_check.php:48
 #: website/templates/krety_logged_in.html:10
 msgid "Recent moves of my geokrets"
@@ -1277,58 +1277,62 @@ msgstr ""
 msgid "Send a message to the user"
 msgstr "Skicka ett meddelande till användaren"
 
-#: website/mypage.php:306
+#: website/mypage.php:307
+msgid "To change your username or remove your account, send us <a href=\"/kontakt.php\">an email</a>."
+msgstr ""
+
+#: website/mypage.php:308
 msgid "Joined us"
 msgstr "Gick med"
 
-#: website/mypage.php:320
+#: website/mypage.php:318
 msgid "Subscribe to RSS channel"
 msgstr "Prenumerera på RSS-kanal"
 
-#: website/mypage.php:320
+#: website/mypage.php:319
 msgid "Be up to date with your and watched GeoKrets!"
 msgstr "Håll dig uppdaterad om dina och dina bevakade GeoKrets!"
 
-#: website/mypage.php:335 website/mypage.php:374 website/user_stat.php:194
+#: website/mypage.php:334 website/mypage.php:373 website/user_stat.php:194
 msgid "User stats"
 msgstr ""
 
-#: website/mypage.php:340
+#: website/mypage.php:339
 msgid "Badges"
 msgstr "Märken"
 
-#: website/mypage.php:363
+#: website/mypage.php:362
 msgid "Links"
 msgstr "Länkar"
 
-#: website/mypage.php:366 website/templates.php:153
+#: website/mypage.php:365 website/templates.php:153
 #: website/templates/plugins/function.login_check.php:44
 #: website/templates/krety_logged_in.html:6
 msgid "Geokrets in my inventory"
 msgstr "Geokrets hos mig"
 
-#: website/mypage.php:367 website/templates.php:156
+#: website/mypage.php:366 website/templates.php:156
 #: website/templates/plugins/function.login_check.php:45
 #: website/templates/krety_logged_in.html:7
 msgid "My geokrets"
 msgstr "Mina geokrets"
 
-#: website/mypage.php:368 website/templates.php:159
+#: website/mypage.php:367 website/templates.php:159
 #: website/templates/krety_logged_in.html:8
 msgid "Watched geokrets"
 msgstr "Bevakade geokrets"
 
-#: website/mypage.php:371 website/templates.php:168
+#: website/mypage.php:370 website/templates.php:168
 #: website/templates/krety_logged_in.html:11
 msgid "My photos"
 msgstr "Mina foton"
 
-#: website/mypage.php:372 website/templates.php:171
+#: website/mypage.php:371 website/templates.php:171
 #: website/templates/krety_logged_in.html:12
 msgid "Photos of my geokrets"
 msgstr "Foton av mina geokrets"
 
-#: website/mypage.php:373 website/templates.php:174
+#: website/mypage.php:372 website/templates.php:174
 #: website/templates/plugins/function.login_check.php:49
 #: website/templates/krety_logged_in.html:13
 msgid "Where are my geokrets?"
