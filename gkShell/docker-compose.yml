@@ -1,0 +1,41 @@
+version: '3'
+services:
+## database service
+    # keep 'db' as service name to match adminer default hostname
+    db:
+        image: mariadb:10.3
+        container_name: dbGeokrety
+        ports:
+            - 3306:3306
+        volumes:
+            - /gkConfig/mariadb/:/docker-entrypoint-initdb.d:ro
+        environment:
+            - TIME_ZONE=UTC
+            - MYSQL_ROOT_PASSWORD
+
+## database administration service
+    adminer:
+        image: adminer:4.6.2
+        container_name: adminer
+        ports:
+            - 8880:8080
+        restart: unless-stopped
+        depends_on:
+            - db
+
+## geokrety service
+    geokrety:
+        # following line causes docker-compose to build image using ./Dockerfile
+        image: geokrety:v0
+        container_name: devGeokrety
+        ports:
+            - 80:80
+        volumes:
+            - /gkWebsite:/var/www/html
+            - /gkConfig/configs:/var/www/config
+            - /gkScripts:/opt/geokrety-scripts
+        environment:
+            - website_config_directory=/var/www/config
+            - MYSQL_ROOT_PASSWORD
+        depends_on:
+            - db

@@ -199,18 +199,22 @@ $cotozakret['4'] = _('KretyPost');
 
 $config_ile_wzorow_banerkow = 9;    // ile wzorأ³w banerkأ³w ze statystykami
 
-// help social groups
-@require dirname(__FILE__).'/konfig-groups.php';
+// ---- ---- load konfig files ---- ---- //
+if (!getenv('website_config_directory')) {
+    $websiteConfigDirectory = dirname(__FILE__);
+} else {
+    $websiteConfigDirectory = getenv('website_config_directory');
+}
+//~ make platform dependant config configurable (for tests)
+@require $websiteConfigDirectory.'/konfig-local.php';
+@require $websiteConfigDirectory.'/konfig-mysql.php';
+
+//~ keep hard-coded location for static configs
 // halloffame credits
-@require dirname(__FILE__).'/konfig-credits.php';
-
-@require dirname(__FILE__).'/konfig-local.php';
-//this is important, because we may include konfig.php from other directory like /a/b/c/test.php
-//in that case it is safest if we point to konfig-local using full path using dirname(__FILE__).
-
-@require dirname(__FILE__).'/konfig-mysql.php';
-//this is important, because we may include konfig.php from other directory like /a/b/c/test.php
-//in that case it is safest if we point to konfig-local using full path using dirname(__FILE__).
+@require dirname(__FILE__).DIRECTORY_SEPARATOR.'konfig-credits.php';
+// help social groups
+@require dirname(__FILE__).DIRECTORY_SEPARATOR.'konfig-groups.php';
+// ------------------------------------- //
 
 define('CONFIG_HOST', $config['host']);
 define('CONFIG_USERNAME', $config['username']);

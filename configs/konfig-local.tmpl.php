@@ -1,7 +1,11 @@
 <?php
 
 // Site url
-$config['adres'] = 'http://localhost/';
+$config['adres'] = 'http://gk/';
+
+// reCaptcha Api key - disabled
+unset($GOOGLE_RECAPTCHA_PUBLIC_KEY);
+unset($GOOGLE_RECAPTCHA_SECRET_KEY);
 
 // Password hashing
 // Crypt alorythms https://en.wikipedia.org/wiki/Crypt_(C)#Key_derivation_functions_supported_by_crypt
@@ -13,20 +17,23 @@ $config['md5_string1'] = 'xxx'; // hex chars
 $config['md5_string2'] = 'xxx'; // hex chars
 
 // Cryptographic vectors
-define('SWISTAK_KEY', 'xxx'); // some random string
-define('SWISTAK_IV32', 'xxx'); // 32 hex chars
+$config['swistak_key'] = 'xxx'; // some random string
+$config['swistak_iv32'] = 'xxx'; // 32 hex chars
 
 // Create news password
-$config['news_password'] = 'xxx';
+$config['news_password'] = 'xxx'; // some random string
+
+// export day limit bypass
+$kocham_kaczynskiego = 'xxx'; // some random string
 
 // jRating access token
-$config['jrating_token'] = 'xxx';
+$config['jrating_token'] = 'xxx'; // some random string
+
+// Delay between each message (rate limit inter-users messages)
+$config['mail_rate_limit'] = 15;
 
 // admin users
 $config['superusers'] = array('1', '6262', '26422');
-
-// export day limit bypass
-$kocham_kaczynskiego = 'xxx';
 
 // Google map Api key
 $GOOGLE_MAP_KEY = '';
