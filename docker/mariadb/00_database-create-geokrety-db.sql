@@ -479,7 +479,7 @@ CREATE TABLE `gk-users` (
   `user` varchar(80) COLLATE utf8_polish_ci DEFAULT NULL,
   `haslo` varchar(500) COLLATE utf8_polish_ci DEFAULT NULL,
   `haslo2` varchar(120) COLLATE utf8_polish_ci NOT NULL,
-  `email` varchar(150) COLLATE utf8_polish_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8_polish_ci NOT NULL DEFAULT '',
   `email_invalid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '* 0 ok * 1 blocked * 2 autoresponder',
   `joined` datetime DEFAULT NULL,
   `wysylacmaile` binary(1) NOT NULL DEFAULT '1',
@@ -493,7 +493,7 @@ CREATE TABLE `gk-users` (
   `godzina` int(11) NOT NULL,
   `statpic` tinyint(1) DEFAULT '1',
   `ostatni_mail` datetime DEFAULT NULL,
-  `ostatni_login` datetime NOT NULL,
+  `ostatni_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `secid` varchar(128) COLLATE utf8_polish_ci NOT NULL COMMENT 'tajny klucz usera'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
