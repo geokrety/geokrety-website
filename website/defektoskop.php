@@ -85,6 +85,11 @@ function errory_add($details, $severity = 0, $error_uid = '') {
     include_once 'longin_chceck.php';
     $longin_status = longin_chceck();
     $userid = $longin_status['userid'];
+    if ($userid == '') {
+        $userid = 0;
+    }
+    $requestIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    $requestTime = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
 
     // $file = $_SERVER["SCRIPT_NAME"];
     // $break = Explode('/', $file);
@@ -118,14 +123,13 @@ function errory_add($details, $severity = 0, $error_uid = '') {
     if ($posty != '') {
         $posty = mysqli_real_escape_string($link, "<hr>$posty");
     }
+    $referer = '';
     if (!empty($_SERVER['HTTP_REFERER'])) {
         $referer = '<br/>REF:'.$_SERVER['HTTP_REFERER'];
-    } else {
-        $referer = '<br/>REF: --MISSING--';
     }
 
     $sql = "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`)
-		VALUES ('$error_uid', '$userid', '".$_SERVER['HTTP_X_FORWARDED_FOR']."', '".date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])."', '$pfile$referer', '$details$posty', '$severity')";
+		VALUES ('$error_uid', '$userid', '$requestIp', '$requestTime', '$pfile$referer', '$details$posty', '$severity')";
 
     $result = mysqli_query($link, $sql);
 }

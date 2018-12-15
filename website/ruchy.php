@@ -404,18 +404,20 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
         $kret_comment = czysc($kret_comment);
         $kret_username = czysc($kret_username);
+        $action_userid = 0; // set default to 0
         if ($user != null) {
             $kret_username = '';
+            $action_userid = $user;
         }
         if ($alt == '') {
             $alt = '-7000';
         }
-        if (empty($country)) {
+        if (empty($country) && ($kret_logtype != '2')) {
             include 'get_country_from_coords.php';
             $country = get_country_from_coords($lat, $lon);
 
             if ($country == 'xyz') {
-                $queryResult = mysqli_query($link, "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`) VALUES ('unknown_flag', '0', '0.0.0.0', '".date('Y-m-d H:i:s')."', 'ruchy.php', '$lat,$lon', '0')");
+                $queryResult = mysqli_query($link, "INSERT INTO `gk-errory` (`uid`, `userid`, `ip` ,`date`, `file` ,`details` ,`severity`) VALUES ('unknown_flag', $action_userid, '0.0.0.0', '".date('Y-m-d H:i:s')."', 'ruchy.php', '$lat,$lon', '0')");
                 if (!$queryResult) {
                     $errors[] = unexpectedError('ruchy l419 add gk-errory unknown_flag', mysqli_error($link));
                 }
@@ -425,30 +427,30 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         if ((($kret_logtype == '0') or ($kret_logtype == '3') or ($kret_logtype == '5'))) {
             // jeśli nie edycja
             if ($EDIT != 1) {
-                $sql = "INSERT INTO `gk-ruchy` (`id`, `lat`, `lon`, `alt`, `country`, `waypoint`, `data`, `user`, `koment`, `logtype`, `username`, `data_dodania`, `app`, `app_ver`) 	VALUES ('$kretid', '$lat', '$lon', '$alt', '$country', '$waypoint', '$data', '$user', '$kret_comment', '$kret_logtype', '$kret_username', NOW(), '$kret_app', '$kret_app_ver')";
+                $sql = "INSERT INTO `gk-ruchy` (`id`, `lat`, `lon`, `alt`, `country`, `waypoint`, `data`, `user`, `koment`, `logtype`, `username`, `data_dodania`, `app`, `app_ver`) 	VALUES ('$kretid', '$lat', '$lon', '$alt', '$country', '$waypoint', '$data', '$action_userid', '$kret_comment', '$kret_logtype', '$kret_username', NOW(), '$kret_app', '$kret_app_ver')";
             }
 
             // Edycja
             else {
-                $sql = "UPDATE `gk-ruchy` SET `id` = '$kretid', `lat`='$lat', `lon`='$lon', `waypoint`='$waypoint', `data`='$data', `user`='$user', `koment`='$kret_comment', `logtype`='$kret_logtype', `username`='$kret_username' WHERE `ruch_id` = '$g_ruchid' LIMIT 1";
+                $sql = "UPDATE `gk-ruchy` SET `id` = '$kretid', `lat`='$lat', `lon`='$lon', `waypoint`='$waypoint', `data`='$data', `user`='$action_userid', `koment`='$kret_comment', `logtype`='$kret_logtype', `username`='$kret_username' WHERE `ruch_id` = '$g_ruchid' LIMIT 1";
             }
         } else {
             if ((($kret_logtype == '1') or ($kret_logtype == '2') or ($kret_logtype == '4'))) {
                 // jeśli nie edycja
                 if ($EDIT != 1) {
-                    $sql = "INSERT INTO `gk-ruchy` (`id`, `data`, `user`, `koment`, `logtype`, `username`, `data_dodania`, `app`, `app_ver`) VALUES ('$kretid', '$data', '$user', '$kret_comment', '$kret_logtype', '$kret_username', NOW(), '$kret_app', '$kret_app_ver')";
+                    $sql = "INSERT INTO `gk-ruchy` (`id`, `data`, `user`, `koment`, `logtype`, `username`, `data_dodania`, `app`, `app_ver`) VALUES ('$kretid', '$data', '$action_userid', '$kret_comment', '$kret_logtype', '$kret_username', NOW(), '$kret_app', '$kret_app_ver')";
                 }
 
                 // Edycja
                 else {
-                    $sql = "UPDATE `gk-ruchy` SET `id` = '$kretid', `lat`=NULL, `lon`=NULL, `alt`=-32768, `country`='', `waypoint`='', `data`='$data', `user`='$user', `koment`='$kret_comment', `logtype`='$kret_logtype', `username`='$kret_username' WHERE `ruch_id` = '$g_ruchid' LIMIT 1";
+                    $sql = "UPDATE `gk-ruchy` SET `id` = '$kretid', `lat`=NULL, `lon`=NULL, `alt`=-32768, `country`='', `waypoint`='', `data`='$data', `user`='$action_userid', `koment`='$kret_comment', `logtype`='$kret_logtype', `username`='$kret_username' WHERE `ruch_id` = '$g_ruchid' LIMIT 1";
                 }
             }
         }
         // else if($kret_logtype=='6')
         // {
         // /*jeśli nie edycja*/
-        // if($EDIT != 1)	$sql = "INSERT INTO `gk-ruchy` (`id`, `data`, `user`, `koment`, `logtype`, `username`, `data_dodania`) VALUES ('$kretid', '$data', '$user', '$kret_comment', '$kret_logtype', '$kret_username', NOW())";
+        // if($EDIT != 1)	$sql = "INSERT INTO `gk-ruchy` (`id`, `data`, `user`, `koment`, `logtype`, `username`, `data_dodania`) VALUES ('$kretid', '$data', '$action_userid', '$kret_comment', '$kret_logtype', '$kret_username', NOW())";
         // }
 
         $result = mysqli_query($link, $sql);
