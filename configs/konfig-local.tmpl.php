@@ -17,8 +17,8 @@ $config['md5_string1'] = 'xxx'; // hex chars
 $config['md5_string2'] = 'xxx'; // hex chars
 
 // Cryptographic vectors
-$config['swistak_key'] = 'xxx'; // some random string
-$config['swistak_iv32'] = 'xxx'; // 32 hex chars
+$config['swistak_key'] = '0123456789ABCDEF'; // some random string - 16 hex chars
+$config['swistak_iv32'] = '0123456789ABCDEF0123456789ABCDEF'; // 32 hex chars
 
 // Create news password
 $config['news_password'] = 'xxx'; // some random string

@@ -110,7 +110,7 @@ CREATE TABLE `gk-errory` (
   `severity` int(10) NOT NULL DEFAULT '0',
   `date` datetime NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK errors';
 
 -- --------------------------------------------------------
 
@@ -125,18 +125,18 @@ CREATE TABLE `gk-geokrety` (
   `opis` text COLLATE utf8_polish_ci,
   `owner` int(10) UNSIGNED DEFAULT NULL,
   `data` datetime DEFAULT NULL,
-  `droga` int(10) UNSIGNED NOT NULL,
-  `skrzynki` smallint(5) UNSIGNED NOT NULL,
+  `droga` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'road traveled in km',
+  `skrzynki` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'number of visited cache box',
   `zdjecia` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `ost_pozycja_id` int(10) UNSIGNED NOT NULL,
-  `ost_log_id` int(10) UNSIGNED NOT NULL,
+  `ost_pozycja_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'position last ruchy id',
+  `ost_log_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'log last ruchy id',
   `hands_of` int(10) DEFAULT NULL COMMENT 'In the hands of user',
   `missing` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `typ` enum('0','1','2','3','4') COLLATE utf8_polish_ci NOT NULL,
-  `avatarid` int(10) UNSIGNED NOT NULL,
-  `timestamp_oc` datetime NOT NULL,
+  `avatarid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `timestamp_oc` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='Geokrety';
 
 -- --------------------------------------------------------
 
@@ -220,7 +220,7 @@ CREATE TABLE `gk-miasta` (
   `lat` double NOT NULL,
   `lon` double NOT NULL,
   `country` varchar(3) COLLATE utf8_polish_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='city';
 
 -- --------------------------------------------------------
 
@@ -238,7 +238,7 @@ CREATE TABLE `gk-news` (
   `userid` int(10) NOT NULL,
   `komentarze` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `ostatni_komentarz` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK news';
 
 -- --------------------------------------------------------
 
@@ -253,7 +253,7 @@ CREATE TABLE `gk-news-comments` (
   `date` datetime NOT NULL,
   `comment` varchar(1000) COLLATE utf8_polish_ci NOT NULL,
   `icon` tinyint(3) UNSIGNED NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK news comments';
 
 -- --------------------------------------------------------
 
@@ -267,7 +267,7 @@ CREATE TABLE `gk-news-comments-access` (
   `read` datetime DEFAULT NULL,
   `post` datetime DEFAULT NULL,
   `subscribed` enum('0','1') COLLATE utf8_polish_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK news subscription';
 
 -- --------------------------------------------------------
 
@@ -284,7 +284,7 @@ CREATE TABLE `gk-obrazki` (
   `plik` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `opis` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK images';
 
 -- --------------------------------------------------------
 
@@ -339,7 +339,7 @@ CREATE TABLE `gk-ostatnieruchy` (
   `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `app` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'www' COMMENT 'source of the log',
-  `app_ver` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci COMMENT 'apploction version/codename'
+  `app_ver` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci COMMENT 'application version/codename'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
@@ -368,12 +368,12 @@ CREATE TABLE `gk-races` (
   `created` datetime NOT NULL COMMENT 'kiedy utworzono',
   `raceOwner` bigint(20) NOT NULL,
   `private` binary(1) NOT NULL DEFAULT '0' COMMENT '0 = public, 1 = private',
-  `haslo` varchar(16) COLLATE utf8_bin NOT NULL COMMENT 'haslo tajnego wyścigu',
+  `haslo` varchar(16) COLLATE utf8_bin NOT NULL COMMENT 'haslo tajnego wyścigu - password for private course',
   `raceTitle` varchar(32) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `racestart` date NOT NULL COMMENT 'początek rajdu',
   `raceend` date NOT NULL,
   `opis` varchar(5120) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `raceOpts` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL COMMENT 'typ wyścigu',
+  `raceOpts` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL COMMENT 'typ wyścigu - race type',
   `wpt` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `targetlat` double DEFAULT NULL,
   `targetlon` double DEFAULT NULL,
@@ -412,16 +412,16 @@ CREATE TABLE `gk-races-krety` (
 CREATE TABLE `gk-ruchy` (
   `ruch_id` int(10) UNSIGNED NOT NULL,
   `id` int(10) UNSIGNED NOT NULL,
-  `lat` double(8,5) DEFAULT NULL,
-  `lon` double(8,5) DEFAULT NULL,
-  `alt` int(5) NOT NULL DEFAULT '-32768',
-  `country` varchar(3) COLLATE utf8_polish_ci NOT NULL,
-  `droga` int(10) UNSIGNED NOT NULL,
-  `waypoint` varchar(10) COLLATE utf8_polish_ci NOT NULL,
-  `data` datetime DEFAULT NULL,
-  `data_dodania` datetime DEFAULT NULL,
-  `user` int(10) UNSIGNED DEFAULT '0',
-  `koment` varchar(5120) COLLATE utf8_polish_ci DEFAULT NULL,
+  `lat` double(8,5) DEFAULT NULL COMMENT 'latitude',
+  `lon` double(8,5) DEFAULT NULL COMMENT 'longitude',
+  `alt` int(5) NOT NULL DEFAULT '-32768' COMMENT 'altitude',
+  `country` varchar(3) COLLATE utf8_polish_ci NOT NULL DEFAULT '' COMMENT 'country code',
+  `droga` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'road traveled in km',
+  `waypoint` varchar(10) COLLATE utf8_polish_ci NOT NULL DEFAULT '' COMMENT 'waypoint code - empty for comment',
+  `data` datetime DEFAULT NULL COMMENT 'ruchy user provided date',
+  `data_dodania` datetime DEFAULT NULL COMMENT 'ruchy database added date',
+  `user` int(10) UNSIGNED DEFAULT '0' COMMENT 'ruchy author user id',
+  `koment` varchar(5120) COLLATE utf8_polish_ci DEFAULT NULL COMMENT 'ruchy user provided comment',
   `zdjecia` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `komentarze` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `logtype` enum('0','1','2','3','4','5','6') COLLATE utf8_polish_ci DEFAULT '0' COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
@@ -429,7 +429,7 @@ CREATE TABLE `gk-ruchy` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `app` varchar(16) COLLATE utf8_polish_ci NOT NULL DEFAULT 'www' COMMENT 'source of the log',
   `app_ver` varchar(16) COLLATE utf8_polish_ci NOT NULL COMMENT 'apploction version/codename'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK ruchy - geokrety movements';
 
 -- --------------------------------------------------------
 
@@ -495,7 +495,7 @@ CREATE TABLE `gk-users` (
   `ostatni_mail` datetime DEFAULT NULL,
   `ostatni_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `secid` varchar(128) COLLATE utf8_polish_ci NOT NULL COMMENT 'tajny klucz usera'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK users';
 
 -- --------------------------------------------------------
 
@@ -527,7 +527,7 @@ CREATE TABLE `gk-waypointy` (
   `link` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='Waypoints';
 
 -- --------------------------------------------------------
 
