@@ -6,10 +6,6 @@ set -e
 
 GIT_BRANCH=master
 if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; then
-  echo -e "Starting translation export\n"
-  CROWDIN_CLI_URL=https://downloads.crowdin.com/cli/v2/crowdin-cli.zip
-  CROWDIN_CLI_VERSION=2.0.25
-
   TMP=$(mktemp -d)
 
   #go to home and setup git
@@ -21,7 +17,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
 
   # Get latest strings
   cd geokrety-crowdin
-  wget ${CROWDIN_CLI_URL} --no-verbose -O crowdin-cli.zip; unzip crowdin-cli.zip; rm crowdin-cli.zip
 
   # Extract new strings
   xgettext --from-code=UTF-8 -o $TMP/messages.pot --language=PHP -f website/rzeczy/lang/input-files-for-xgettext
@@ -29,7 +24,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
   msgcat -o website/rzeczy/messages.po.txt $TMP/messages.pot $TMP/smarty.pot
 
   # Upload new strings
-  java -jar $CROWDIN_CLI_VERSION/crowdin-cli.jar upload --branch $GIT_BRANCH
+  crowdin upload --branch $GIT_BRANCH
 
   #add, commit and push files
   read -r plus minus filename <<< $( git diff --numstat website/rzeczy/messages.po.txt )

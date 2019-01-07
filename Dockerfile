@@ -1,6 +1,6 @@
 FROM php:5.6-apache
 
-MAINTAINER Mathieu Alorent <contact@geokretymap.org>
+LABEL maintainer="Mathieu Alorent <contact@geokretymap.org>"
 
 # Add extension to php
 RUN apt-get update \

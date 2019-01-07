@@ -28,7 +28,7 @@ else {
 }
 
 // Prevent passing unwanted data
-require_once 'templates/konfig-local.php';
+// require_once 'templates/konfig-local.php';
 $langShortcode = substr($lang, 0, 2);
 if (!array_key_exists($langShortcode, $config_jezyk_encoding)) {
     $lang = 'en_US.UTF-8';
@@ -40,7 +40,7 @@ if (!array_key_exists($langShortcode, $config_jezyk_encoding)) {
 putenv("LANG=$lang"); //fox windows only
 //putenv("LANGUAGE=$lang"); //fox windows only
 
-require_once 'templates/konfig-local.php';
+// require_once 'templates/konfig-local.php';
 @setlocale(LC_MESSAGES, $lang);
 setlocale(LC_TIME, $lang);
 setlocale(LC_NUMERIC, 'en_EN');

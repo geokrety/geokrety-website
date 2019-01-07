@@ -66,6 +66,7 @@ if (count($_GET) == 0) {
     );
     list($count4, $count5, $count6, $count7, $count8, $count9) = mysqli_fetch_row($result);
 
+    $TRESC .= '<a href="_admin.php">Admin</a> > ';
     $TRESC .= 'Last error ID: <a href=errory.php?action=view&from_id='.($last_id)."&from_sev=0'>$last_id</a><br/>";
     $TRESC .= '<br/>';
     $TRESC .= "<a href='errory.php?action=view&from_id=".($last_id - 100)."&from_sev=0'>View last 100</a>&nbsp;&nbsp;&nbsp;<a href='errory.php?action=view&from_id=".($last_id - 100)."&from_sev=2'>View last 100, sev 2+</a><br/>";
@@ -211,6 +212,7 @@ td.mid {text-align: center}
         $najnowsze_id = $g_from_id;
     }
 
+    $TRESC .= '<a href="_admin.php">Admin</a> > ';
     $TRESC .= "<a href='errory.php'>Home</a> ";
     $TRESC .= "<a href='errory.php?action=view&from_id=$najnowsze_id$gg_from_sev$gg_only_code'>Refresh new</a> ";
     $TRESC .= "<a href='errory.php?action=view$gg_from_id$gg_from_sev$gg_only_code'>This page</a> Top id=$najnowsze_id ";

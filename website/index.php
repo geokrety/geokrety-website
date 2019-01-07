@@ -81,7 +81,10 @@ $(function () {
   });
 })
 </script>\n";
-
+$userid_longin = $longin_status['userid'];
+if (in_array($userid_longin, $config['superusers'])) {
+    $TRESC .= '<div style="float: right;"><img class="menu-lab16" src="'.CONFIG_CDN_IMAGES.'/icons/diaspora.png" alt="*" /><a href="_admin.php">'._('admin').'</a></div>';
+}
 $TRESC .= '
 <h2>'._('Welcome to GeoKrety.org!').'</h2>
 <div class="row" id="welcome_intro">

@@ -296,30 +296,29 @@ if (!ctype_digit($kret_userid) & $kret_userid != null) {
 <table width="100%" style="padding-top: 1px;">
 
 <!-- ---------------------------- USER ----------------------------------------------- -->
-<tr><td class="heading1"><img src="'.CONFIG_CDN_IMAGES.'/log-icons/2/icon_25.jpg" alt="member" width="25" height="25" /> '.$user.'</td></tr>
-
 <tr>
-<td class="tresc1"><div style="text-align: right;">'.$logout.'</div></td>
+  <td class="heading1">
+    <div style="float: right;">'.$logout.'</div>
+    <img src="'.CONFIG_CDN_IMAGES.'/log-icons/2/icon_25.jpg" alt="member" width="25" height="25" /> '.$user.'
+  </td>
 </tr>
-
 <tr>
-<td class="tresc1">'._('Joined us').': '.$timestamp.'<br />
-'._('Language').": $config_jezyk_nazwa[$lang]  $edit_lang <br />$email $edit".'<br />
-'.$coords.'<br />'.$secid_pole.'<br />
-</td>
+  <td class="tresc1">
+      '._('To change your username or remove your account, send us <a href="/kontakt.php">an email</a>.').'<br />
+      '._('Joined us').': '.$timestamp.'<br />
+      '._('Language').": $config_jezyk_nazwa[$lang]  $edit_lang <br />$email $edit".'<br />
+      '.$coords.'<br />'.$secid_pole.'<br />
+  </td>
 </tr>
-
+<tr><td align="right">'.$dodaj_obrazek.'</td></tr>
+<tr><td align="right">'.$OBRAZKI.'</td></tr>
 <tr>
-<td align="right">'.$dodaj_obrazek.'</td></tr>
-
-<tr>
-<td align="right">'.$OBRAZKI.'</td></tr>
-
-<tr>
-
-<td class="tresc1"><img src="'.CONFIG_CDN_IMAGES.'/icons/rss.png" alt="RSS" width="14" height="14" /> <a href="georss.php?userid='.$kret_userid.'">'._('Subscribe to RSS channel').'</a>.<br />'._('Be up to date with your and watched GeoKrets!').
-        '</td></tr>
-
+  <td class="tresc1">
+    <img src="'.CONFIG_CDN_IMAGES.'/icons/rss.png" alt="RSS" width="14" height="14" />
+     <a href="georss.php?userid='.$kret_userid.'">'._('Subscribe to RSS channel').'</a>.<br />
+     '._('Be up to date with your and watched GeoKrets!').'
+  </td>
+</tr>
 <tr><td class="tresc1">'.$wyslij_wiadomosc.'</td></tr>
 </table>
 
