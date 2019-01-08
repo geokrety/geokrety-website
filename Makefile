@@ -32,19 +32,19 @@ updatedev: builddev
 	docker-compose -f docker-compose.dev.yml --project-name=gk-dev2 down
 
 
-buildrec:
-	docker-compose -f docker-compose.rec.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT) geokrety-rec
+buildstaging:
+	docker-compose -f docker-compose.staging.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT) geokrety-staging
 
-startrec: buildrec
-	docker-compose -f docker-compose.rec.yml --project-name=gk-rec up -d geokrety-rec
+startstaging: buildstaging
+	docker-compose -f docker-compose.staging.yml --project-name=gk-staging up -d geokrety-rstaging
 
-stoprec:
-	docker-compose -f docker-compose.rec.yml --project-name=gk-rec down
+stopstaging:
+	docker-compose -f docker-compose.staging.yml --project-name=gk-staging down
 
-updaterec: buildrec
-	docker-compose -f docker-compose.rec.yml --project-name=gk-rec2 up -d geokrety-rec
-	docker-compose -f docker-compose.rec.yml --project-name=gk-rec up -d geokrety-rec
-	docker-compose -f docker-compose.rec.yml --project-name=gk-rec2 down
+updatestaging: buildstaging
+	docker-compose -f docker-compose.staging.yml --project-name=gk-staging2 up -d geokrety-staging
+	docker-compose -f docker-compose.staging.yml --project-name=gk-staging up -d geokrety-staging
+	docker-compose -f docker-compose.staging.yml --project-name=gk-staging2 down
 
 
 buildprod:

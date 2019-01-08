@@ -2,10 +2,10 @@ version: '3'
 services:
 
 ## geokrety service
-    geokrety-rec:
+    geokrety-staging:
         # following line causes docker-compose to build image using ./Dockerfile
         build: .
-        image: geokrety:rec
+        image: geokrety:staging
         volumes:
             - ../configs/konfig-mysql.php:/var/www/html/templates/konfig-mysql.php:ro
             - ../configs/konfig-local.php:/var/www/html/templates/konfig-local.php:ro
@@ -24,8 +24,8 @@ services:
             - ../vars/year-stats/:/var/www/html/templates/stats/year/
         labels:
             - "traefik.enable=true"
-            - "traefik.backend=geokrety-legacy-rec"
-            - "traefik.frontend.rule=Host:rec.geokrety.org"
+            - "traefik.backend=geokrety-legacy-staging"
+            - "traefik.frontend.rule=Host:staging.geokrety.org,rec.geokrety.org"
             - "traefik.backend.loadbalancer.method=drr"
             - "traefik.docker.network=srv_geokrety-front"
         networks:
