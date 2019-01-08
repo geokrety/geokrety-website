@@ -3,7 +3,7 @@
 // identify the user śćńółż
 
 function whoiswho($id) {
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
 
     if ($id == 0) {
         return '(not logged in)';

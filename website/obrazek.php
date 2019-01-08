@@ -2,7 +2,7 @@
 
 function obrazek($alfabet = 'a c d e f h i k m n p s t w x y z 1 2 3 4 5 7 8') {
     // generates antispam token + picture śćńółż
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     include_once 'random_string.php';
     $STRING = random_string(6, $alfabet);
 

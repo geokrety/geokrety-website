@@ -17,7 +17,7 @@ elseif (!empty($_COOKIE['geokret1'])) {
 
 else {
     // choose language  according to the browser setting
-    include 'templates/konfig.php';    // config
+    include_once 'templates/konfig.php';    // config
     include 'lang-accept.php';
     $lang = al2gt($config_jezyk_encoding);
 

@@ -93,7 +93,7 @@ function read_verification_code($kod) {
 
 /// wsysyła maila z kodem i wsadza go do bazy.
 function verify_mail_send($email, $userid, $subject = '', $msg = '') {
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];

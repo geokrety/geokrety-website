@@ -3,7 +3,7 @@
 // drawing timeline
 
 function rysuj_timeline($kretid) {
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     include 'tools/wykresy/jpgraph/jpgraph.php';

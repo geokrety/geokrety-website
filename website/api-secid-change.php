@@ -12,7 +12,7 @@ if ($_GET['confirmed'] == '1') {
     include_once 'fn-generate_secid.php';
     $secid = generateRandomString(128);
 
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $result = mysqli_query($link, "UPDATE `gk-users` SET `secid` = '$secid' WHERE `gk-users`.`userid` = $userid;");

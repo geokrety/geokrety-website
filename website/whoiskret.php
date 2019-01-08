@@ -3,7 +3,7 @@
 // identify the kret śćńółż
 
 function whoiskret($id) {
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
 
     $link = DBConnect();
 

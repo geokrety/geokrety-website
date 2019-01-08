@@ -9,7 +9,7 @@ $longin_status = longin_chceck();
 $userid = $longin_status['userid'];
 
 if (isset($userid) && is_numeric($userid)) {
-    include 'templates/konfig.php';    // config
+    include_once 'templates/konfig.php';    // config
     $link = DBConnect();
 
     $sql = "SELECT `plik`, `opis` FROM `gk-obrazki` WHERE `user`='$userid' GROUP BY `plik` order by `timestamp` DESC limit 10";

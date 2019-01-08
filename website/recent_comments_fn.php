@@ -3,7 +3,7 @@
 // display table with recent comments
 
 function recent_comments($where, $limit, $title = '', $zapytanie = '', $showheaders = 0, $emailversion = 0) {
-    include 'templates/konfig.php';    // config
+    include_once 'templates/konfig.php';    // config
     include 'cotozalog.php';
     include_once 'gc_search_link.php';
     // include_once("longin_chceck.php");
