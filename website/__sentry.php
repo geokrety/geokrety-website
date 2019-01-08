@@ -1,6 +1,6 @@
 <?php
 
-require 'templates/konfig.php';
+require_once 'templates/konfig.php';
 
 if (defined('SENTRY_DSN')) {
     require_once 'templates/sentry-php-master/lib/Raven/Autoloader.php';

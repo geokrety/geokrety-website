@@ -1,7 +1,7 @@
 <?php
 
 require_once 'db.php'; // modul bazodanowy
-require 'templates/konfig.php';
+require_once 'templates/konfig.php';
 require_once 'wybierz_jezyk.php'; // wybór języka
 require_once SMARTY_DIR.'Smarty.class.php';
 require_once 'longin_chceck.php';
