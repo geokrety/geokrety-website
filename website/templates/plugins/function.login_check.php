@@ -12,7 +12,7 @@ function login_check() {
     if (empty($sessid)) {
         $ERR = 1;
     } else {
-        include 'templates/konfig.php';
+        include_once 'templates/konfig.php';
 
         $link = DBConnect();
 

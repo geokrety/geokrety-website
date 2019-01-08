@@ -11,7 +11,7 @@ $g_list = $_GET['list'];
 
 // --------- obsluga dodawania/usuwania obserwatorow ---------
 if (ctype_digit($g_id)) {
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     include 'longin_chceck.php';
 
     $longin_status = longin_chceck();
@@ -59,7 +59,7 @@ if (ctype_digit($g_id)) {
 // --------- obsluga listowania obserwatorow ---------
 else {
     if (ctype_digit($g_list)) {
-        include 'templates/konfig.php';
+        include_once 'templates/konfig.php';
         $link = DBConnect();
 
         $TRESC = "<div style='background:#ececec; width:400px; padding:15px;'>

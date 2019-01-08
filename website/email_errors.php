@@ -10,7 +10,7 @@ function email_errors($from_date, $from_sev = 7) {
         }
     }
 
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     include_once 'db.php';
 
     $db = new db();

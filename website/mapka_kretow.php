@@ -27,7 +27,7 @@ if (!isset($g_userid)) {  // jeśli nie ma parametru userid
 
 if (isset($g_userid)) {
     // wyciągnięcie lat/lon usera
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     $sql = "SELECT `lat`, `lon` FROM `gk-users` WHERE `userid`='$g_userid' LIMIT 1";
     $result = mysqli_query($link, $sql);
     $row = mysqli_fetch_array($result);

@@ -79,7 +79,7 @@ function table_exists($table) {
 
 // error_add dopisuje rekord do tabeli gk-errory ktora zawiera rozne dziwne zdarzenia na serwerze - np takie ktore nie powinno miec miejsca.
 function errory_add($details, $severity = 0, $error_uid = '') {
-    include 'templates/konfig.php';    // config
+    include_once 'templates/konfig.php';    // config
     $link = DBConnect();
 
     include_once 'longin_chceck.php';

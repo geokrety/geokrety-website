@@ -23,7 +23,7 @@ function konkret_mapka($id) {
     }
     // ------------------------------------------------------------
 
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     include_once 'waypoint_info.php';
 
     $result = $db->exec(
