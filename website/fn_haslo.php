@@ -26,9 +26,7 @@
 
 if (!function_exists(haslo_koduj)) {
     include 'templates/PasswordHash.php';
-    if (!isset($config)) {
-        include_once 'templates/konfig.php';
-    }
+    global $config;
 
     // tworzy hasz hasła
 

@@ -5,7 +5,7 @@ require_once '__sentry.php';
 // this page shows details of a geokret śćńółźłśśóś
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
-include_once 'templates/konfig.php';
+global $config, $GOOGLE_MAP_KEY, $GOOGLE_MAP_KEY;
 
 $TYTUL = _('Geokrets on the map').' :: β (beta)';
 
@@ -40,7 +40,6 @@ if ($lat == 0 and $lon == 0) {
 
 $HEAD .= '<script>var center_lat='.$lat.'; var center_lon='.$lon.';</script>';
 
-include_once 'templates/konfig.php';
 $OGON .= '<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key='.$GOOGLE_MAP_KEY.'" type="text/javascript"></script>
 <script type="text/javascript" src="mapka_kretow.js"></script>';
 $BODY = 'onload="load()" onunload="GUnload()"';
