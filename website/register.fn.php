@@ -3,8 +3,6 @@
 function registerNewGeoKret($kret_nazwa, $kret_opis, $owner_id, $kret_typ, $aktualizuj = true, &$trackingcode = '', $trackingcode_prefix = '', $trackingcode_randomcount = 6, $trackingcode_suffix = '', $trackingcode_alphabet = '') {
     $MAX_TRIES = 100;
 
-    include_once 'templates/konfig.php';
-
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];

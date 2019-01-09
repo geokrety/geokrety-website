@@ -6,12 +6,11 @@ $kret_haslo1 = $_POST['password'];
 $kret_login = $_POST['login'];
 
 if (!empty($kret_login) and !empty($kret_haslo1)) { // logging in with supplied data
-    include_once 'templates/konfig.php';
     include 'czysc.php';
     include_once 'fn_haslo.php';
 
     function haszuj($str) {
-        include_once 'templates/konfig.php';
+        global $config;
         $md5_string1 = $config['md5_string1'];
         $md5_string2 = $config['md5_string2'];
 

@@ -5,6 +5,7 @@ require_once '__sentry.php';
 // smarty cache
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
+global $GOOGLE_MAP_KEY;
 
 $TYTUL = _('Geokrets on the map').' :: β (beta)';
 
@@ -27,7 +28,6 @@ if (!isset($g_userid)) {  // jeśli nie ma parametru userid
 
 if (isset($g_userid)) {
     // wyciągnięcie lat/lon usera
-    include_once 'templates/konfig.php';
     $sql = "SELECT `lat`, `lon` FROM `gk-users` WHERE `userid`='$g_userid' LIMIT 1";
     $result = mysqli_query($link, $sql);
     $row = mysqli_fetch_array($result);

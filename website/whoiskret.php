@@ -3,8 +3,6 @@
 // identify the kret śćńółż
 
 function whoiskret($id) {
-    include_once 'templates/konfig.php';
-
     $link = DBConnect();
 
     // user chcek
