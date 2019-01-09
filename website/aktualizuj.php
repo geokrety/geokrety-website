@@ -93,7 +93,6 @@ function aktualizuj_obrazek_statystyki($userid) {
 function zlicz_droge($ruch_id) {
     // calculate distance between this and previous location
 
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $result = mysqli_query($link, "SELECT `id`, `data` FROM `gk-ruchy` WHERE `ruch_id`='$ruch_id' LIMIT 1");
@@ -144,7 +143,6 @@ function aktualizuj_droge($id) {
     //$sql7 = "UPDATE `gk-geokrety` SET `droga` = '$droga_total' WHERE `id` = '$id' LIMIT 1";
     //$result7 = mysql_query($sql7);
 
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $sql = "
@@ -174,7 +172,6 @@ AND ru1.droga <> round( 6371 * acos( cos( radians(ru1.lat) ) * cos( radians( ru2
 // counts number of visited caches
 // (counts distinct values of lat+lon for logstype 0 and 3 only
 function aktualizuj_skrzynki($id) {
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $sql7 = "UPDATE `gk-geokrety` gk SET skrzynki =
@@ -185,7 +182,6 @@ function aktualizuj_skrzynki($id) {
 
 // counts number of photos
 function aktualizuj_zdjecia($id) {
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $sql7 = "UPDATE `gk-geokrety` gk SET zdjecia =
@@ -197,7 +193,6 @@ function aktualizuj_zdjecia($id) {
 // updates the ost_pozycja_id which is the ruch_id for last log of type grabbed, dropped, met or archived
 // all these log types change or may change the current location (and state) of geokret
 function aktualizuj_ost_pozycja_id($id) {
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $result = mysqli_query($link,
@@ -229,7 +224,6 @@ function aktualizuj_ost_pozycja_id($id) {
 
 // updates the ost_log_id which is the ruch_id for last log
 function aktualizuj_ost_log_id($id) {
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $result = mysqli_query($link,
@@ -297,7 +291,6 @@ function aktualizuj_rekach($gkid) {
         return;
     }
 
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $handsof = 'NULL';
@@ -318,7 +311,6 @@ function aktualizuj_rekach($gkid) {
 // --------------------------------------- RACES --------------------------------//
 
 function aktualizuj_race($gk_id, $lat1, $lon1) {
-    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $sql = "SELECT rg.raceGkId, r.raceid, r.raceOpts, r.targetlat, r.targetlon, rg.finished, r.raceend, r.targetDist, r.targetCaches, rg.initDist, rg.initCaches, gk.skrzynki, gk.droga

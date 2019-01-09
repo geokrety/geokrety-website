@@ -93,7 +93,6 @@ function read_verification_code($kod) {
 
 /// wsysyła maila z kodem i wsadza go do bazy.
 function verify_mail_send($email, $userid, $subject = '', $msg = '') {
-    include_once 'templates/konfig.php';
     // ----- Check if db object is present, if not create one -----
     if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
         $db = $GLOBALS['db'];
@@ -102,6 +101,7 @@ function verify_mail_send($email, $userid, $subject = '', $msg = '') {
         $db = new db();
     }
     // ------------------------------------------------------------
+    global $config;
 
     $kod = get_verification_code($userid);
     $db->exec_num_rows("INSERT INTO `gk-aktywnemaile` (`kod`, `userid`, `email`) VALUES ('$kod', '$userid', '$email')", $num_rows, 0, 'Failed to insert verification code into DB', 7, 'verify_mail');

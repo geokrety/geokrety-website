@@ -3,7 +3,7 @@
 // display table with recent moves
 
 function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders = 0, $emailversion = 0) {
-    include_once 'templates/konfig.php';    // config
+    global $config;
     include 'cotozalog.php';
     include_once 'gc_search_link.php';
     include_once 'days_ago.php';

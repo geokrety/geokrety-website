@@ -9,11 +9,11 @@ function login_check() {
         $sessid = $_COOKIE['geokret0'];
     }
 
+    global $config;
+
     if (empty($sessid)) {
         $ERR = 1;
     } else {
-        include_once 'templates/konfig.php';
-
         $link = DBConnect();
 
         // session id chceck

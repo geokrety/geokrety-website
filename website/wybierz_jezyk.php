@@ -1,6 +1,7 @@
 <?php
 
 require_once '__sentry.php';
+global $config_jezyk_encoding;
 
 // Call the user's language
 // search-ajax has the same without include
@@ -17,7 +18,6 @@ elseif (!empty($_COOKIE['geokret1'])) {
 
 else {
     // choose language  according to the browser setting
-    include_once 'templates/konfig.php';    // config
     include 'lang-accept.php';
     $lang = al2gt($config_jezyk_encoding);
 

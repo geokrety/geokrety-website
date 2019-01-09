@@ -22,8 +22,7 @@ function konkret_mapka($id) {
         $db = new db();
     }
     // ------------------------------------------------------------
-
-    include_once 'templates/konfig.php';
+    global $config;
     include_once 'waypoint_info.php';
 
     $result = $db->exec(
