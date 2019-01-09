@@ -25,7 +25,7 @@ class db {
 
     public function __construct() {
         if (!defined('CONFIG_HOST')) {
-            include 'templates/konfig.php';
+            include_once 'templates/konfig.php';
         }
         $this->pconnect();
     }

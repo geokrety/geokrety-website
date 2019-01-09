@@ -36,7 +36,7 @@ function longlinewrap($str, $maxLength = 45, $char = ' ') {
 }
 
 function czysc($string) {
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     //return  (trim(mysqli_escape_string($link, htmlentities(strip_tags(stripslashes($newStr)), ENT_QUOTES, 'UTF-8'))));
@@ -67,7 +67,7 @@ function czysc($string) {
 // }
 
 function parse_bbcode($string) {
-    include 'templates/konfig.php';
+    include_once 'templates/konfig.php';
     $link = DBConnect();
 
     $string = htmlentities(iconv('UTF-8', 'UTF-8//IGNORE', $string), ENT_NOQUOTES, 'UTF-8');

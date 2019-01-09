@@ -25,7 +25,7 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.backend=geokrety-legacy-boly38"
-            - "traefik.frontend.rule=Host:boly38.gk.kumy.org"
+            - "traefik.frontend.rule=Host:boly38.staging.geokrety.org,boly38.gk.kumy.org"
             - "traefik.backend.loadbalancer.method=drr"
             - "traefik.docker.network=srv_geokrety-front"
         networks:

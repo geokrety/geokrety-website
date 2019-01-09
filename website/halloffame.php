@@ -20,7 +20,7 @@ $harrieklomp = '<a href="mypage.php?userid=7861">Harrie Klomp</a>';
 $TRESC = '
 <p><i>Idę sobie i patrzę, a_leją zasłużonych... B. Smoleń</i></p>
 
-<div class="rozdzial">Developers</div>
+<div class="rozdzial">'._('Developers').'</div>
 	<ul>
 	<li><strong>'.$filips.'</strong> idea, code and design</li>
 	<li><strong><a href="mypage.php?userid=6262">simor</a></strong> visions into code ;)</li>
@@ -29,7 +29,7 @@ $TRESC = '
 </ul>
 
 
-<div class="rozdzial">Support</div>
+<div class="rozdzial">'._('Support').'</div>
 	<ul>
 	<li><strong><a href="mypage.php?userid=1789">Thathanka</a></strong> | <strong><a href="mypage.php?userid=196">Quinto</a></strong> :: GK logo (the mole, different versions)</li>
 	<li><strong>gosia</strong> MySQL support, sandwiches and more :)</li>
@@ -38,7 +38,7 @@ $TRESC = '
 
 
 
-<div class="rozdzial">Help</div>
+<div class="rozdzial">'._('Help').'</div>
 <ul>
 	<li><strong>sp2ong</strong> betatesting, idea, public relation and advertising:)</li>
 	<li><strong>shchenka</strong> betatesting, language support</li>
@@ -48,7 +48,7 @@ $TRESC = '
 	<li><strong><a href="mypage.php?userid=30144">YvesProvence</a></strong> public relation and advertising</li>
 </ul>
 
-<div class="rozdzial">Translations</div>
+<div class="rozdzial">'._('Translations').'</div>
 <!-- country alphabetical order
    - crowdin contributors (need rights) https://crowdin.com/project/geokrety/settings#reports-top-members
    -->
@@ -109,7 +109,7 @@ $creditsConfig = $config['gk_credits'];
 $credits = new \Geokrety\View\Credits($creditsConfig);
 if ($credits->count() > 0) {
     $TRESC .= $creditsStyle;
-    $TRESC .= '<div class="rozdzial">Credits</div>';
+    $TRESC .= '<div class="rozdzial">'._('Credits').'</div>';
     $TRESC .= $credits->toHtmlDivs();
 }
 /* manage geokrety credits - end */
