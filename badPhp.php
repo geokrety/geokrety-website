@@ -16,3 +16,5 @@ $db = new db();
 
 $ret = 0;
 $desc = 'Link without code';
+
+$longLine = '<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PEAR-GK" xsi:noNamespaceSchemaLocation="../../../phpcs.xsd">';
