@@ -1,7 +1,8 @@
 <?php
 
 //
-// @deprecated : please use lib/Waypointy.class.php instead, cf. szukaj-ajax.php for usage example
+// @deprecated : please use \Geokrety\Repository\WaypointyRepository instead
+// cf. szukaj-ajax.php for usage example
 //
 // seeks waypoint in the database and returns details
 

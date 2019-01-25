@@ -60,7 +60,7 @@ $user = $longin_status['userid'];
 
 // preg_replace("/[^a-z0-9.:]+/i", "", $string);
 
-$link = DBConnect();
+$link = GKDB::getLink();
 
 // if mobile version is set
 if ($longin_status['mobile_mode'] == 1) {
