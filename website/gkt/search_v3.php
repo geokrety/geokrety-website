@@ -1,5 +1,7 @@
 <?php
 
+require_once '../__sentry.php';
+
 // export data via JSON śćńółżź
 
 require '../templates/konfig.php';     // config
