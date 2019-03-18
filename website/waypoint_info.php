@@ -18,7 +18,7 @@ function waypoint_info($waypoint) {
         $prefiksy_inne_1 = array('N');
         $prefiksy_inne_3 = array('WPG');
 
-        require 'templates/konfig.php';
+        require_once 'templates/konfig.php';
         $link = DBConnect();
 
         // ---------------------------- powinno być w waypointach ----------------------------//

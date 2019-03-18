@@ -185,6 +185,15 @@ this request returns also the secret tracking codes (the <b>nr</b> variable) for
 </li>
 </ul>
 
+<h3>Retriving Geokrety information</h3>
+<p><ul>
+<li>trip in JSON: list latest 1000 trip steps for a given Geokrety, eg:<br />
+'.$config['adres'].'rest/konkret/trip/read.php?id=67914</li>
+<li>trip in CSV: list latest 1000 trip steps for a given Geokrety, eg:<br />
+'.$config['adres'].'rest/konkret/trip/read.php?id=67914&format=csv</li>
+<li>trip in GPX: list latest 1000 trip steps for a given Geokrety, eg:<br />
+'.$config['adres'].'rest/konkret/trip/read.php?id=67914&format=gpx</li>
+</ul></p>
 
 <a id="write"></a><h1>Write</h1>
 
@@ -261,6 +270,15 @@ this request returns also the secret tracking codes (the <b>nr</b> variable) for
 <li><a href="https://gist.github.com/filipsPL/d5a1b191a69ea6775ba2">pyGK (python)</a></li>
 <li>phpGK (php)</li>
 </ul>
+
+
+
+
+<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://cdn.geokrety.org/exports/">here</a>.</p>
+
+
+<p><b><u>'.$config['adres'].'export2.php</b></u></p>
+
 
 ';
 

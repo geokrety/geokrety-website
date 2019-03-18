@@ -16,6 +16,7 @@ require_once 'smarty_start.php';
 //foreach ($_POST as $key => $value) { $_POST[$key] = mysqli_real_escape_string(strip_tags($value));}
 
 $kret_gk = $_GET['gk'];
+$kret_nocache = $_GET['nocache'];
 // autopoprawione...
 $kret_id = $_GET['id'];
 // autopoprawione...import_request_variables('g', 'kret_');
@@ -308,43 +309,52 @@ $TRESC = $claim_alert.'
 <tr><td>'.$t31.'</td><td>'.$t32.'</td><td>'.$t33.'</td></tr>
 </table>';
 
-// wczytanie mapek z pliczku wprost do nagłóweczka
-
-// if number of points > 50, don't load dynamic map
-
-// display the map
-if (($skrzynki <= 250 and $skrzynki > 0) and $droga_total < 100000) {
-    $OGON .= '<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key='.$GOOGLE_MAP_KEY.'" type="text/javascript"></script>';
-    if (!file_exists($config['mapki']."/map/GK-$id.map")) {
-        include 'konkret-mapka.php';
-        konkret_mapka($id);
-    } // generuje plik z mapką krecika
-
-    $HEAD .= file_get_contents($config['mapki']."/map/GK-$id.map");
-    $BODY .= 'onload="load()" onunload="GUnload()"';
-    $TRESC .= '<table width="100%">
-<tr><td class="heading1"><a name="map"></a><img src="'.CONFIG_CDN_ICONS.'/mapa.png" alt="Map:" width="22" height="22" /></td></tr>
-<tr><td class="tresc1">
-<img src="'.CONFIG_CDN_PINS_ICONS.'/red.png" alt="[Red flag]" width="12" height="20" /> = '._('start').'
-<img src="'.CONFIG_CDN_PINS_ICONS.'/yellow.png" alt="[Yellow flag]" width="12" height="20" /> = '._('trip points').'
-<img src="'.CONFIG_CDN_PINS_ICONS.'/green.png" alt="[Green flag]" width="12" height="20" /> = '._('recently seen').'
-</td></tr>
-
-</table><div id="map0" class="gmapa"></div>';
+// manage map data cache and files
+$mapDirectory = 'mapki/';
+if (isset($config['mapki'])) {
+    $mapDirectory = $config['mapki'];
+}
+$tripService = new \Geokrety\Service\TripService($mapDirectory);
+if (isset($kret_nocache)) { // we enforce to regenerate cache
+    $tripService->evictTripCache($id);
 }
 
-// don't display the map
-
-elseif ($skrzynki > 0) {
-    $TRESC .= '<p><i>'._('The google map is not avaliable due to large numer of points.').'</i></p>';
-} else {
+if ($skrzynki <= 0) { // no trip
     $TRESC .= '<p><i>'._('This geokret has not started yet').'</i></p>';
+} else { // ($skrzynki > 0) // legacy - we must have downloadable csv and gpx files
+    $tripService->ensureGeneratedFiles($id);
+
+    // manage trip map ******************************* // leafletjs CDN
+    $HEAD .= <<<EOHEAD
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+  <script type="text/javascript" src="konkret.js"></script>
+EOHEAD;
+
+    // bridge from php translated message and id to javascript map functions (cf konkret.js)
+    $TRESC .= '
+    <div id="mapid" class="gmapa" style="z-index:0;">
+    </div>
+    <script type="text/javascript">
+    // <![CDATA[
+        $(document).ready(function(){
+            let onLoadErrorHtmlMessage = "<center><b>'._('unable to initialize map').'</b></center>";
+            let lastSeenMessage = "<b>'._('last seen here !').'</b><br/>";
+            let mapGeokretyId = '.$id.';
+            initMapForGeokrety(mapGeokretyId, onLoadErrorHtmlMessage, lastSeenMessage);
+        });
+    // ]]>
+    </script>
+';
+    $TRESC .= _('Download the track as:')." <a href='".$tripService->getTripGpxFilename($kret_id)."'>gpx.gz</a> | <a href='".$tripService->getTripCsvFilename($kret_id)."'>csv.gz</a>";
+    $TRESC .= $TABELKA;
 }
 
-if ($skrzynki > 0) {
-    $TRESC .= $TABELKA;
-    $TRESC .= _('Download the track as:')." <a href='".CONFIG_CDN_MAPS."/gpx/GK-$kret_id.gpx'>GPX</a> | <a href='".CONFIG_CDN_MAPS."/csv/GK-$kret_id.csv.gz'>csv.gz</a>";
-}
+//// *******************************
 
 // ----------------------------------------------JSON-LD---------------------------
 // schema used: http://schema.org/Sculpture
