@@ -61,6 +61,21 @@ function setBorderColorGreen(obj) {
 }
 window['setBorderColorGreen'] = setBorderColorGreen;
 
+/**
+ * executed before submit formularz
+ */
+function onSubmitRuchy() {
+  // re enable fields to get their values
+  var poleWpt = $('#wpt');
+  var poleLatlon = $('#latlon');
+  poleLatlon.prop('disabled', false);
+  poleWpt.prop('disabled', false);
+  $('#js').value=1;
+
+  return validateAddRuchy(this);
+}
+
+
 // ----------------------------------------------------- geolocation -------------------------------------
 function validateAddRuchy(thisForm) {
   var ret = false;
