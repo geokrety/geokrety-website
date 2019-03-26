@@ -22,7 +22,7 @@ $TRESC = '
 
 <ul>
 <li><a href="https://chrome.google.com/webstore/detail/geokrety-toolbox/ldbheajkebdflbjdckojokbfdndkahnl?hl=en-US">Google Chrome</a></li>
-<li><a href="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js">Firefox</a> (needs <a href="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/">greasemonkey add-on</a>)</li>
+<li><a href="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js">Firefox</a> (needs <a href="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/">Tampermonkey add-on</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/">greasemonkey add-on</a>)</li>
 </ul>
 
 ';

@@ -701,7 +701,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     }
     // ------------ home coordinates? -------------- //
 
-    $TRESC .= '<form name="formularz" action="'.$_SERVER['PHP_SELF'].$get_czy_edycja.'" onsubmit="this.js.value=1; return validateAddRuchy(this);" method="post" class="form-horizontal"><input type="hidden" name="formname" value="ruchy" />';
+    $TRESC .= '<form name="formularz" action="'.$_SERVER['PHP_SELF'].$get_czy_edycja.'" onsubmit="onSubmitRuchy()" method="post" class="form-horizontal"><input type="hidden" name="formname" value="ruchy" />';
 
     $step_number = 1;
 
@@ -946,7 +946,9 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     }
 
     // -------------------- 4 (additional data)
-    $OGON .= "<script>
+    $OGON .= "<script type=\"text/javascript\">
+    // <![CDATA[
+
     $(function () {
       $('.input-group.date').datepicker({
         format: \"yyyy-mm-dd\",
@@ -965,6 +967,8 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         alwaysShow: true
       });
     })
+
+    // ]]>
     </script>\n";
     $TRESC .= '
 
