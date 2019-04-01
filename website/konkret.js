@@ -39,6 +39,7 @@ function removeMarkers(plotlayers) {
 
 function displayMapDataAsPlotLayers(map, plotList, lastSeenMessage) {
     var plotlayers=[];
+    var group = new L.featureGroup();
 
     for (i=0;i<plotList.length;i++) {
       //~ create marker
@@ -56,8 +57,8 @@ function displayMapDataAsPlotLayers(map, plotList, lastSeenMessage) {
       var plotmark = new L.Marker(plot, markOptions);
       plotmark.data=plotList[i];
 
-      //~ add marker to the map
-      map.addLayer(plotmark);
+      //~ add marker to the group
+      plotmark.addTo(group);
 
       //~ bind popup
       if (markIcon == greenIcon) {
@@ -75,6 +76,8 @@ function displayMapDataAsPlotLayers(map, plotList, lastSeenMessage) {
         map.setView([plotList[i].lat, plotList[i].lon], 4);
       }
     }
+    group.addTo(map);
+    map.fitBounds(group.getBounds());
     return plotlayers;
 }
 
