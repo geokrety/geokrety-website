@@ -6,10 +6,22 @@ namespace Geokrety\Service;
  * TripService : manage geokrety trip with a cache version.
  */
 class TripToGPXConverter {
-    public static function generateGPX($geokretyId, $trips) {
-        $validationService = new ValidationService();
-        $geokretyId = $validationService->ensureIntGTE('geokretyId', $geokretyId, 1);
-        $trips = $validationService->ensureNotEmptyArray('trips', $trips);
+    // common validation service
+    private $validationService;
+
+    private $geokretyId;
+    private $trips;
+
+    public function __construct($geokretyId, $trips) {
+        $this->validationService = new ValidationService();
+        $this->geokretyId = $this->validationService->ensureIntGTE('geokretyId', $geokretyId, 1);
+        $this->trips = $this->validationService->ensureNotEmptyArray('trips', $trips);
+    }
+
+    public function generateGPX() {
+        $geokretyId = $this->geokretyId;
+        $trips = $this->trips;
+
         $generationDateTime = date('Y-m-d').'T'.date('H:i:s').'Z';
         $minLat = $trips[0]->lat;
         $minLon = $trips[0]->lon;
@@ -24,7 +36,7 @@ class TripToGPXConverter {
             $minLat = min($minLat, $lat);
             $minLon = min($minLon, $lon);
             $maxLat = max($maxLat, $lat);
-            $maxLat = max($maxLat, $lon);
+            $maxLon = max($maxLon, $lon);
 
             $ruchData = $trip->ruchData;
             $waypoint = $trip->waypoint;
@@ -74,7 +86,7 @@ EOWPT;
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.0" creator="Geokrety.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/0" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
   <time>$generationDateTime</time>
-  <bounds minlat="$minLat" minlon="$minLon" maxlat="$maxLat" maxlon="$maxLat"/>
+  <bounds minlat="$minLat" minlon="$minLon" maxlat="$maxLat" maxlon="$maxLon"/>
   <trk>
     <name>GK $geokretyId</name>
     <trkseg>
@@ -86,9 +98,9 @@ EOXML;
         return $gpx_content;
     }
 
-    public static function render($geokretyId, $trips, $filename = 'trip.gpx') {
+    public function render($filename = 'trip.gpx') {
         $debug = false;
-        $gpx_content = self::generateGPX($geokretyId, $trips);
+        $gpx_content = $this->generateGPX();
 
         header('Access-Control-Allow-Origin: *');
         if (!$debug) {
@@ -98,13 +110,14 @@ EOXML;
         http_response_code(200);
         if ($debug) {
             echo '<pre>'.htmlspecialchars($gpx_content).'</pre>';
-        } else {
-            echo $gpx_content;
+
+            return;
         }
+        echo $gpx_content;
     }
 
-    public static function generateFile($geokretyId, $trips, $gpxFile) {
-        $gpx_content = self::generateGPX($geokretyId, $trips);
+    public function generateFile($gpxFile) {
+        $gpx_content = $this->generateGPX();
         // zapis CSV (gzipped)
         $gzip = gzopen($gpxFile, 'w');
         gzwrite($gzip, $gpx_content);

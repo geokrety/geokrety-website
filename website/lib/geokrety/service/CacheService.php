@@ -44,7 +44,7 @@ class CacheService {
     }
 
     private function assumeCacheDirectory() {
-        file_exists($this->cacheDirectory) || mkdir($this->cacheDirectory, 0777, true);
+        file_exists($this->cacheDirectory) || mkdir($this->cacheDirectory, 0770, true);
     }
 
     private function getCacheFilename($cacheId) {

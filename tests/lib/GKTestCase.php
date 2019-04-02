@@ -41,7 +41,7 @@ abstract class GKTestCase extends TestCase {
         if (file_exists($this->cacheDirectory)) {
             $this->deleteDir($this->cacheDirectory);
         }
-        file_exists($this->cacheDirectory) || mkdir($this->cacheDirectory, 0777, true);
+        file_exists($this->cacheDirectory) || mkdir($this->cacheDirectory, 0770, true);
     }
 
     // https://stackoverflow.com/questions/3349753/delete-directory-with-files-in-it
@@ -56,9 +56,9 @@ abstract class GKTestCase extends TestCase {
         foreach ($files as $file) {
             if (is_dir($file)) {
                 self::deleteDir($file);
-            } else {
-                unlink($file);
+                continue;
             }
+            unlink($file);
         }
         rmdir($dirPath);
     }

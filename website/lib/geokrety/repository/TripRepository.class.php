@@ -4,7 +4,7 @@ namespace Geokrety\Repository;
 
 class TripRepository {
     const SELECT_RUCHY = <<<EOQUERY
-SELECT    `ruch_id`,`id`,`gk-ruchy`.`lat`,`gk-ruchy`.`lon`,`gk-ruchy`.`country`,`gk-ruchy`.`alt`,`gk-ruchy`.`waypoint`,
+SELECT    `ruch_id`,`gk-ruchy`.`lat`,`gk-ruchy`.`lon`,`gk-ruchy`.`country`,`gk-ruchy`.`alt`,`gk-ruchy`.`waypoint`,
           `data`,`data_dodania`,`gk-ruchy`.`user`,`gk-users`.`user`,`koment`,`logtype`,`droga`,
           `gk-waypointy`.`name`,`gk-waypointy`.`typ`,`gk-waypointy`.`owner`,`gk-waypointy`.`status`,`gk-waypointy`.`link`
 FROM      `gk-ruchy`
@@ -61,13 +61,12 @@ EOQUERY;
         }
 
         // associate result vars
-        $stmt->bind_result($ruchId, $ìd, $lat, $lon, $country, $alt, $waypoint,
+        $stmt->bind_result($ruchId, $lat, $lon, $country, $alt, $waypoint,
                            $data, $dataDodania, $user, $username, $koment, $logtype, $droga,
                            $wpName, $wpType, $wpOwner, $wpStatus, $wpLink);
 
         $trips = array();
 
-        /* Lecture des valeurs */
         while ($stmt->fetch()) {
             $trip = new \Geokrety\Domain\TripStep($waypoint);
             $trip->lat = $lat;
