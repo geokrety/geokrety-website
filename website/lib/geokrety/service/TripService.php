@@ -6,9 +6,6 @@ namespace Geokrety\Service;
  * TripService : manage geokrety trip with a cache version.
  */
 class TripService {
-    // database session
-    private $db;
-
     // map directory
     private $mapDirectory;
     // cache service
@@ -21,9 +18,8 @@ class TripService {
     public function __construct($mapDirectory, $verbose = false) {
         $this->mapDirectory = $mapDirectory;
         $cacheDirectory = $mapDirectory.'__cache/';
-        $this->db = \GKDB::getLink();
         $this->cacheService = new CacheService($cacheDirectory, $verbose);
-        $this->tripRepository = new \Geokrety\Repository\TripRepository($this->db);
+        $this->tripRepository = new \Geokrety\Repository\TripRepository(\GKDB::getLink());
         $this->validationService = new ValidationService();
     }
 
@@ -58,21 +54,24 @@ class TripService {
 
     public function onTripUpdate($geokretyId) {
         $this->evictTripCache($geokretyId);
-        $trips = $this->generateTripFiles($geokretyId);
+        $this->generateTripFiles($geokretyId);
     }
 
     public function generateTripFiles($geokretyId) {
         $trips = $this->getTrip($geokretyId);
         if (count($trips) > 0) {
-            TripToCSVConverter::generateFile($geokretyId, $trips, $this->getTripCsvFilename($geokretyId));
-            TripToGPXConverter::generateFile($geokretyId, $trips, $this->getTripGpxFilename($geokretyId));
+            $csvConverter = new TripToCSVConverter($geokretyId, $trips);
+            $gpxConverter = new TripToGPXConverter($geokretyId, $trips);
+            $csvConverter->generateFile($this->getTripCsvFilename($geokretyId));
+            $gpxConverter->generateFile($this->getTripGpxFilename($geokretyId));
         }
 
         return $trips;
     }
 
     public function renderGpx($geokretyId, $trips, $filename = 'trip.gpx') {
-        TripToGPXConverter::render($geokretyId, $trips, $filename);
+        $gpxConverter = new TripToGPXConverter($geokretyId, $trips);
+        $gpxConverter->render($filename);
     }
 
     public function getTripCsvFilename($geokretyId) {
@@ -84,7 +83,8 @@ class TripService {
     }
 
     public function renderCsv($geokretyId, $trips, $filename = 'trip.csv') {
-        TripToCSVConverter::render($geokretyId, $trips, $filename);
+        $csvConverter = new TripToCSVConverter($geokretyId, $trips);
+        $csvConverter->render($filename);
     }
 
     private function getTripCacheId($geokretyId) {

@@ -18,7 +18,7 @@ class TripRepositoryTest extends GKTestCase {
         $this->expectException(\Exception::class);
 
         // WHEN
-        $trips = $tripRepository->getByGeokretyId($geokretyId, 123);
+        $tripRepository->getByGeokretyId($geokretyId, 123);
     }
 
     public function test_trips_geokrety_not_found() {
@@ -31,7 +31,7 @@ class TripRepositoryTest extends GKTestCase {
         $this->expectException(\Geokrety\Exception\NoDataException::class);
 
         // WHEN
-        $trips = $tripRepository->getByGeokretyId($geokretyId, 123);
+        $tripRepository->getByGeokretyId($geokretyId, 123);
     }
 
     public function test_trips_success() {
@@ -43,8 +43,8 @@ class TripRepositoryTest extends GKTestCase {
         $waypointAB = 'GC00AB1';
         $userIdA = $this->testUtil->givenRandomUser('testUserA', 'fr');
         $userIdB = $this->testUtil->givenRandomUser('testUserB', 'pl');
-        $wpAAId = $this->testUtil->givenWaypoint($waypointAA, rand(40, 75), rand(-15, 35));
-        $wpABId = $this->testUtil->givenWaypoint($waypointAB, rand(40, 75), rand(-15, 35));
+        $this->testUtil->givenWaypoint($waypointAA, rand(40, 75), rand(-15, 35));
+        $this->testUtil->givenWaypoint($waypointAB, rand(40, 75), rand(-15, 35));
 
         $expectedCount = 0;
         $this->testUtil->givenRandomTripData($geokretyId, $userIdA, $waypointAA);

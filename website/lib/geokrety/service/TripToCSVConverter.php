@@ -6,7 +6,19 @@ namespace Geokrety\Service;
  * TripService : manage geokrety trip with a cache version.
  */
 class TripToCSVConverter {
-    public static function escapeComment($comment) {
+    // common validation service
+    private $validationService;
+
+    private $geokretyId;
+    private $trips;
+
+    public function __construct($geokretyId, $trips) {
+        $this->validationService = new ValidationService();
+        $this->geokretyId = $this->validationService->ensureIntGTE('geokretyId', $geokretyId, 1);
+        $this->trips = $this->validationService->ensureNotEmptyArray('trips', $trips);
+    }
+
+    public function escapeComment($comment) {
         $comment = str_replace('"', '\'', $comment);
         $comment = str_replace(';', ',', $comment);
         $comment = str_replace('\r', ' ', $comment);
@@ -16,26 +28,13 @@ class TripToCSVConverter {
         return $comment;
     }
 
-    public static function generateCSV($geokretyId, $trips) {
-        $validationService = new ValidationService();
-        $geokretyId = $validationService->ensureIntGTE('geokretyId', $geokretyId, 1);
-        $trips = $validationService->ensureNotEmptyArray('trips', $trips);
-
-        $generationDateTime = date('Y-m-d').'T'.date('H:i:s').'Z';
-        $minLat = $trips[0]->lat;
-        $minLon = $trips[0]->lon;
-        $maxLat = $trips[0]->lat;
-        $maxLon = $trips[0]->lon;
+    public function generateCSV() {
+        $trips = $this->trips;
 
         foreach ($trips as $trip) {
             $lat = $trip->lat;
             $lon = $trip->lon;
             $alt = $trip->alt;
-
-            $minLat = min($minLat, $lat);
-            $minLon = min($minLon, $lon);
-            $maxLat = max($maxLat, $lat);
-            $maxLat = max($maxLat, $lon);
 
             $ruchId = $trip->ruchId;
             $waypoint = $trip->waypoint;
@@ -64,9 +63,9 @@ EOCSV;
         return $csv_content;
     }
 
-    public static function render($geokretyId, $trips, $filename = 'trip.gpx') {
+    public function render($filename = 'trip.csv') {
         $debug = false;
-        $csv_content = self::generateCSV($geokretyId, $trips);
+        $csv_content = $this->generateCSV();
 
         header('Access-Control-Allow-Origin: *');
         if (!$debug) {
@@ -76,13 +75,14 @@ EOCSV;
         http_response_code(200);
         if ($debug) {
             echo '<pre>'.htmlspecialchars($csv_content).'</pre>';
-        } else {
-            echo $csv_content;
+
+            return;
         }
+        echo $csv_content;
     }
 
-    public static function generateFile($geokretyId, $trips, $csvFile) {
-        $csv_content = self::generateCSV($geokretyId, $trips);
+    public function generateFile($csvFile) {
+        $csv_content = $this->generateCSV();
         // zapis CSV (gzipped)
         $gzip = gzopen($csvFile, 'w');
         gzwrite($gzip, $csv_content);

@@ -11,15 +11,14 @@ class TripServiceTest extends GKTestCase {
 
     public function test_trips_cache() {
         // GIVEN
-        $link = GKDB::getLink();
         $tripService = new \Geokrety\Service\TripService($this->mapDirectory, $this->verbose);
         $geokretyId = 1234567;
         $waypointAA = 'GC00AA1';
         $waypointAB = 'GC00AB1';
         $userIdA = $this->testUtil->givenRandomUser('testUserA', 'fr');
         $userIdB = $this->testUtil->givenRandomUser('testUserB', 'pl');
-        $wpAAId = $this->testUtil->givenWaypoint($waypointAA, rand(40, 75), rand(-15, 35));
-        $wpABId = $this->testUtil->givenWaypoint($waypointAB, rand(40, 75), rand(-15, 35));
+        $this->testUtil->givenWaypoint($waypointAA, rand(40, 75), rand(-15, 35));
+        $this->testUtil->givenWaypoint($waypointAB, rand(40, 75), rand(-15, 35));
 
         $expectedCount = 0;
         $this->testUtil->givenRandomTripData($geokretyId, $userIdA, $waypointAA);
