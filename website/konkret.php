@@ -293,13 +293,12 @@ $TRESC = $claim_alert.'
 </table>
 
 <table width="100%">
-<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/info.png" alt="Comment:" width="22" height="22" /></td></tr>
-
+<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/info.png" alt="Comment:" width="22" height="22" /> '._('Comment').'</td></tr>
 <tr><td class="tresc1" title="'._('Short description').'">'.$opis.'</td></tr>
-<tr><td align="right">'.$add_image.' '.$edit_kreta.'</td></tr>
+<tr><td class="right">'.$add_image.' '.$edit_kreta.'</td></tr>
 <tr><td class="tresc1">'.$MAIN_PHOTO.'</td></tr>
 
-<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/tool.png" alt="Links:" width="22" height="22" /></td></tr>
+<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/tool.png" alt="Links:" width="22" height="22" /> '._('Actions').'</td></tr>
 
 </table>
 <table class="tresc1">
@@ -335,6 +334,18 @@ if ($skrzynki <= 0) { // no trip
   <script type="text/javascript" src="konkret.js"></script>
 EOHEAD;
 
+    $mapLegend = '<img src="'.CONFIG_CDN_PINS_ICONS.'/red.png" alt="[Red flag]" width="12" height="20" /> = '._('start').'
+                  <img src="'.CONFIG_CDN_PINS_ICONS.'/yellow.png" alt="[Yellow flag]" width="12" height="20" /> = '._('trip points').'
+                  <img src="'.CONFIG_CDN_PINS_ICONS.'/green.png" alt="[Green flag]" width="12" height="20" /> = '._('recently seen');
+
+    $TRESC .= '<table width="100%">
+<tr><td class="heading1" colspan="2"><a name="map"></a><img src="'.CONFIG_CDN_ICONS.'/mapa.png" alt="Map:" width="22" height="22" /> '._('Map').'</td></tr>
+<tr>
+  <td>'._('Legend').' : '.$mapLegend.'</td>
+  <td class="right">'._('Download the track as:').' <a href="'.$tripService->getTripGpxFilename($kret_id).'">gpx.gz</a> | <a href="'.$tripService->getTripCsvFilename($kret_id).'">csv.gz</a></td>
+</tr>
+</table>';
+
     // bridge from php translated message and id to javascript map functions (cf konkret.js)
     $TRESC .= '
     <div id="mapid" class="gmapa" style="z-index:0;">
@@ -350,7 +361,6 @@ EOHEAD;
     // ]]>
     </script>
 ';
-    $TRESC .= _('Download the track as:')." <a href='".$tripService->getTripGpxFilename($kret_id)."'>gpx.gz</a> | <a href='".$tripService->getTripCsvFilename($kret_id)."'>csv.gz</a>";
     $TRESC .= $TABELKA;
 }
 
