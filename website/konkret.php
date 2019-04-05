@@ -262,23 +262,19 @@ if ($userRated == 0 and $currentUserKnowsTC == 1 and $ownerIsLogged != 1) {
 
 // <div itemscope itemtype="http://schema.org/Sculpture">
 $TRESC = $claim_alert.'
-<!-- css to move to CDN ? hard to maintain..-->
-<style>
-.konkretlabel {white-space: nowrap;}
-</style>
 <table width="100%">
 <tr><td class="heading1" colspan="2"><img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$krettyp.'/icon_25.jpg" alt="Info:" width="25" height="25" /> GeoKret <strong>'.$nazwa.'</strong> ('.$cotozakret[$krettyp].') '.
 (($userid > 0) ? ('by <a href="mypage.php?userid='.$userid.'">'.$user.'</a>'.' '.$wyslij_wiadomosc) : ' - unclaimed').
 '</td></tr>
 
 <tr>
-<td class="tresc1 konkretlabel" style="width:10em">Reference Number:</td><td><strong>'.$geokretyGKCode.'</strong></td></tr>
+<td class="tresc1 wsnowrap" style="width:10em">Reference Number:</td><td><strong>'.$geokretyGKCode.'</strong></td></tr>
 '.$tracking_code.'
-<tr><td class="tresc1 konkretlabel">'._('Total distance').': </td><td><strong>'.$droga_total.' km</strong></td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Places visited').': </td><td><strong>'.$skrzynki.'</strong></td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Forum links').': </td><td><form name="frm1">'.$link1.' '.$link2.'</form></td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Country track').': </td><td>'.$cykl_flag.'</td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Rating').': </td>
+<tr><td class="tresc1 wsnowrap">'._('Total distance').': </td><td><strong>'.$droga_total.' km</strong></td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Places visited').': </td><td><strong>'.$skrzynki.'</strong></td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Forum links').': </td><td><form name="frm1">'.$link1.' '.$link2.'</form></td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Country track').': </td><td>'.$cykl_flag.'</td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Rating').': </td>
 <td style="padding-top: 10px;"><div class="basic" id="'.$ratingAvg.'+'.$id.'+'.$userid_longin.'+'.$ratingSha.'+'.$lang.'"></div>
 <span class="szare">'._('votes').': '.$ratingCount.', '._('average rating').
 ': '.$ratingAvg.'. '.$userCanRateThisGK.'.</span>
