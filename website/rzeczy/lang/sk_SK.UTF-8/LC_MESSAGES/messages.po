@@ -3,8 +3,8 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-03 17:01+0000\n"
-"PO-Revision-Date: 2019-04-03 17:14\n"
+"POT-Creation-Date: 2019-04-08 18:26+0000\n"
+"PO-Revision-Date: 2019-04-08 18:31\n"
 "Last-Translator: geokrety <geokrety@gmail.com>\n"
 "Language-Team: Slovak\n"
 "Language: sk_SK\n"
@@ -231,27 +231,27 @@ msgstr "Bad poloha alebo neznámy formát."
 msgid "Missing or invalid coordinates."
 msgstr "Chýbajúce alebo neplatné poloha."
 
-#: website/cotozalog.php:8 website/templates/konfig.php:189
+#: website/cotozalog.php:8 website/templates/konfig.php:193
 msgid "Dropped to"
 msgstr "Vložený do"
 
-#: website/cotozalog.php:9 website/templates/konfig.php:190
+#: website/cotozalog.php:9 website/templates/konfig.php:194
 msgid "Grabbed from"
 msgstr "Vybratý z"
 
-#: website/cotozalog.php:10 website/templates/konfig.php:191
+#: website/cotozalog.php:10 website/templates/konfig.php:195
 msgid "A comment"
 msgstr "Poznámka"
 
-#: website/cotozalog.php:11 website/templates/konfig.php:192
+#: website/cotozalog.php:11 website/templates/konfig.php:196
 msgid "Seen in"
 msgstr "Videný v"
 
-#: website/cotozalog.php:12 website/templates/konfig.php:193
+#: website/cotozalog.php:12 website/templates/konfig.php:197
 msgid "Archived"
 msgstr "Archivovaný"
 
-#: website/cotozalog.php:13 website/templates/konfig.php:194
+#: website/cotozalog.php:13 website/templates/konfig.php:198
 msgid "Dipped in"
 msgstr "Prešiel cez"
 
@@ -280,23 +280,23 @@ msgid "Freshman mole"
 msgstr "Krtko začiatočník"
 
 #: website/cotozalog.php:40 website/generatorek.php:132
-#: website/templates/konfig.php:196
+#: website/templates/konfig.php:200
 #: website/templates/waypointy-translations.html:132
 msgid "Traditional"
 msgstr "Tradičný"
 
 #: website/cotozalog.php:41 website/generatorek.php:133
-#: website/templates/konfig.php:197
+#: website/templates/konfig.php:201
 msgid "A book/CD/DVD..."
 msgstr "Kniha/CD/DVD..."
 
 #: website/cotozalog.php:42 website/generatorek.php:134
-#: website/templates/konfig.php:198
+#: website/templates/konfig.php:202
 msgid "A human"
 msgstr "Človek"
 
 #: website/cotozalog.php:43 website/generatorek.php:135
-#: website/templates/konfig.php:199
+#: website/templates/konfig.php:203
 msgid "A coin"
 msgstr "Mince"
 
@@ -498,10 +498,10 @@ msgstr "Typ geokreta"
 msgid "help.php#geokretytypes"
 msgstr "help_generate.php?help=sk#geokretytypes"
 
-#: website/edit.php:567 website/generatorek.php:140 website/labels.php:67
-#: website/recent_comments_fn.php:102 website/recent_moves.php:99
-#: website/register.php:61 website/ruchy.php:588 website/ruchy.php:856
-#: website/ruchy.php:1022
+#: website/edit.php:567 website/generatorek.php:140 website/konkret.php:292
+#: website/labels.php:67 website/recent_comments_fn.php:102
+#: website/recent_moves.php:99 website/register.php:61 website/ruchy.php:588
+#: website/ruchy.php:856 website/ruchy.php:1022
 msgid "Comment"
 msgstr "Komentár"
 
@@ -946,57 +946,81 @@ msgstr "Nemôžete hodnotiť svoj vlastný GeoKret"
 msgid "You can't rate this geokret"
 msgstr "Nemôžete hodnotiť tento geokret"
 
-#: website/konkret.php:277
+#: website/konkret.php:273
 msgid "Total distance"
 msgstr "Celková vzdialenosť"
 
-#: website/konkret.php:278
+#: website/konkret.php:274
 msgid "Places visited"
 msgstr "Navštívené miesta"
 
-#: website/konkret.php:279
+#: website/konkret.php:275
 msgid "Forum links"
 msgstr "Odkazy na fórum"
 
-#: website/konkret.php:280
+#: website/konkret.php:276
 msgid "Country track"
 msgstr "Stopa v krajine"
 
-#: website/konkret.php:281
+#: website/konkret.php:277
 msgid "Rating"
 msgstr "Hodnotenie"
 
-#: website/konkret.php:283
+#: website/konkret.php:279
 msgid "votes"
 msgstr "hlasov"
 
-#: website/konkret.php:283
+#: website/konkret.php:279
 msgid "average rating"
 msgstr "Priemerný rating"
 
-#: website/konkret.php:287
+#: website/konkret.php:283
 msgid "Share on"
 msgstr ""
 
-#: website/konkret.php:298
+#: website/konkret.php:293
 msgid "Short description"
 msgstr "Stručný popis"
 
-#: website/konkret.php:323
+#: website/konkret.php:297
+msgid "Actions"
+msgstr ""
+
+#: website/konkret.php:318
 msgid "This geokret has not started yet"
 msgstr "Tento geokret ešte nezačala"
 
-#: website/konkret.php:345
+#: website/konkret.php:331
+msgid "start"
+msgstr ""
+
+#: website/konkret.php:332
+msgid "trip points"
+msgstr ""
+
+#: website/konkret.php:333
+msgid "recently seen"
+msgstr ""
+
+#: website/konkret.php:336
+msgid "Map"
+msgstr ""
+
+#: website/konkret.php:338
+msgid "Legend"
+msgstr ""
+
+#: website/konkret.php:339
+msgid "Download the track as:"
+msgstr "Stiahnite si skladby ako:"
+
+#: website/konkret.php:350
 msgid "unable to initialize map"
 msgstr ""
 
-#: website/konkret.php:346
+#: website/konkret.php:351
 msgid "last seen here !"
 msgstr ""
-
-#: website/konkret.php:353
-msgid "Download the track as:"
-msgstr "Stiahnite si skladby ako:"
 
 #: website/kontakt.php:10
 msgid "Contact"
@@ -2124,7 +2148,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: website/templates/konfig.php:200
+#: website/templates/konfig.php:204
 msgid "KretyPost"
 msgstr "KretyPost"
 
