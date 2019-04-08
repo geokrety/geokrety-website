@@ -104,11 +104,15 @@ define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 //js
 $config['funkcje.js'] = '/funkcje.js';
 $config['ajaxtooltip.js'] = CONFIG_CDN_LIBRARIES.'/ajaxtooltip/ajaxtooltip-1.min.js';
-$config['colorbox.js'] = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
-$config['colorbox.css'] = CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css';
 $config['securimage'] = 'templates/libraries/securimage-3.6.7/';
 define('CDN_BOOTSTRAP_DATEPICKER_JS', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js');
 define('CDN_BOOTSTRAP_DATEPICKER_CSS', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css');
+
+define('CDN_COLORBOX_JS', CONFIG_CDN_LIBRARIES.'/colorbox/1.6.4/jquery.colorbox-min.js');
+define('CDN_COLORBOX_CSS', CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css');
+
+define('CDN_LEAFLET_JS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.js');
+define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
 
 // Default timezone
 $config['timezone'] = 'Europe/Paris';
