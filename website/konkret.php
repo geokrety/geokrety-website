@@ -319,14 +319,12 @@ if ($skrzynki <= 0) { // no trip
 } else { // ($skrzynki > 0) // legacy - we must have downloadable csv and gpx files
     $tripService->ensureGeneratedFiles($id);
 
-    // manage trip map ******************************* // leafletjs CDN
+    // manage trip map ******************************* // geokrety CDN
+    $leafletCss = CDN_LEAFLET_CSS;
+    $leafletJs = CDN_LEAFLET_JS;
     $HEAD .= <<<EOHEAD
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-   crossorigin=""></script>
+  <link rel="stylesheet" href="$leafletCss"/>
+  <script src="$leafletJs"></script>
   <script type="text/javascript" src="konkret.js"></script>
 EOHEAD;
 
@@ -399,7 +397,7 @@ $TRESC .= '
 // ----------------------------------------------JSON-LD-(end)---------------------
 
 $TYTUL = $nazwa;
-$OGON .= '<script type="text/javascript" src="'.$config['colorbox.js'].'?ver=1.1"></script>
+$OGON .= '<script type="text/javascript" src="'.CDN_COLORBOX_JS.'?ver=1.1"></script>
 <script type="text/javascript" src="'.$config['funkcje.js'].'"></script>
 <script type="text/javascript" src="/templates/rating/jquery/jRating.jquery.js"></script>
 <script type="text/javascript">
@@ -429,7 +427,7 @@ $(document).ready(function(){
 });".'
 </script>
 <link rel="stylesheet" type="text/css" href="/templates/rating/jquery/jRating.jquery.css?ver=1.2" media="screen" />
-<link rel="stylesheet" type="text/css" href="'.$config['colorbox.css'].'?ver=1.2" media="screen"/>
+<link rel="stylesheet" type="text/css" href="'.CDN_COLORBOX_CSS.'" media="screen"/>
 ';
 
 $OGON .= '

@@ -61,7 +61,7 @@ if (($p_formname == 'newavatar') and $allowed_to_modify and ctype_digit($p_avata
 } elseif ($errors == '') {
     //standard gallery
     $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
-    $OGON .= '<script type="text/javascript" src="'.$config['colorbox.js'].'"></script><link rel="stylesheet" type="text/css" href="'.$config['colorbox.css'].'" media="screen"/>';
+    $OGON .= '<script type="text/javascript" src="'.CDN_COLORBOX_JS.'"></script><link rel="stylesheet" type="text/css" href="'.CDN_COLORBOX_CSS.'" media="screen"/>';
     $OGON .= '
 			<script>
 				$(document).ready(function(){
