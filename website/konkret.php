@@ -16,6 +16,7 @@ require_once 'smarty_start.php';
 //foreach ($_POST as $key => $value) { $_POST[$key] = mysqli_real_escape_string(strip_tags($value));}
 
 $kret_gk = $_GET['gk'];
+$kret_nocache = $_GET['nocache'];
 // autopoprawione...
 $kret_id = $_GET['id'];
 // autopoprawione...import_request_variables('g', 'kret_');
@@ -261,23 +262,19 @@ if ($userRated == 0 and $currentUserKnowsTC == 1 and $ownerIsLogged != 1) {
 
 // <div itemscope itemtype="http://schema.org/Sculpture">
 $TRESC = $claim_alert.'
-<!-- css to move to CDN ? hard to maintain..-->
-<style>
-.konkretlabel {white-space: nowrap;}
-</style>
 <table width="100%">
 <tr><td class="heading1" colspan="2"><img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$krettyp.'/icon_25.jpg" alt="Info:" width="25" height="25" /> GeoKret <strong>'.$nazwa.'</strong> ('.$cotozakret[$krettyp].') '.
 (($userid > 0) ? ('by <a href="mypage.php?userid='.$userid.'">'.$user.'</a>'.' '.$wyslij_wiadomosc) : ' - unclaimed').
 '</td></tr>
 
 <tr>
-<td class="tresc1 konkretlabel" style="width:10em">Reference Number:</td><td><strong>'.$geokretyGKCode.'</strong></td></tr>
+<td class="tresc1 wsnowrap" style="width:10em">Reference Number:</td><td><strong>'.$geokretyGKCode.'</strong></td></tr>
 '.$tracking_code.'
-<tr><td class="tresc1 konkretlabel">'._('Total distance').': </td><td><strong>'.$droga_total.' km</strong></td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Places visited').': </td><td><strong>'.$skrzynki.'</strong></td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Forum links').': </td><td><form name="frm1">'.$link1.' '.$link2.'</form></td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Country track').': </td><td>'.$cykl_flag.'</td></tr>
-<tr><td class="tresc1 konkretlabel">'._('Rating').': </td>
+<tr><td class="tresc1 wsnowrap">'._('Total distance').': </td><td><strong>'.$droga_total.' km</strong></td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Places visited').': </td><td><strong>'.$skrzynki.'</strong></td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Forum links').': </td><td><form name="frm1">'.$link1.' '.$link2.'</form></td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Country track').': </td><td>'.$cykl_flag.'</td></tr>
+<tr><td class="tresc1 wsnowrap">'._('Rating').': </td>
 <td style="padding-top: 10px;"><div class="basic" id="'.$ratingAvg.'+'.$id.'+'.$userid_longin.'+'.$ratingSha.'+'.$lang.'"></div>
 <span class="szare">'._('votes').': '.$ratingCount.', '._('average rating').
 ': '.$ratingAvg.'. '.$userCanRateThisGK.'.</span>
@@ -292,13 +289,12 @@ $TRESC = $claim_alert.'
 </table>
 
 <table width="100%">
-<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/info.png" alt="Comment:" width="22" height="22" /></td></tr>
-
+<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/info.png" alt="Comment:" width="22" height="22" /> '._('Comment').'</td></tr>
 <tr><td class="tresc1" title="'._('Short description').'">'.$opis.'</td></tr>
-<tr><td align="right">'.$add_image.' '.$edit_kreta.'</td></tr>
+<tr><td class="right">'.$add_image.' '.$edit_kreta.'</td></tr>
 <tr><td class="tresc1">'.$MAIN_PHOTO.'</td></tr>
 
-<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/tool.png" alt="Links:" width="22" height="22" /></td></tr>
+<tr><td class="heading1"><img src="'.CONFIG_CDN_ICONS.'/tool.png" alt="Links:" width="22" height="22" /> '._('Actions').'</td></tr>
 
 </table>
 <table class="tresc1">
@@ -308,43 +304,61 @@ $TRESC = $claim_alert.'
 <tr><td>'.$t31.'</td><td>'.$t32.'</td><td>'.$t33.'</td></tr>
 </table>';
 
-// wczytanie mapek z pliczku wprost do nagłóweczka
-
-// if number of points > 50, don't load dynamic map
-
-// display the map
-if (($skrzynki <= 250 and $skrzynki > 0) and $droga_total < 100000) {
-    $OGON .= '<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key='.$GOOGLE_MAP_KEY.'" type="text/javascript"></script>';
-    if (!file_exists($config['mapki']."/map/GK-$id.map")) {
-        include 'konkret-mapka.php';
-        konkret_mapka($id);
-    } // generuje plik z mapką krecika
-
-    $HEAD .= file_get_contents($config['mapki']."/map/GK-$id.map");
-    $BODY .= 'onload="load()" onunload="GUnload()"';
-    $TRESC .= '<table width="100%">
-<tr><td class="heading1"><a name="map"></a><img src="'.CONFIG_CDN_ICONS.'/mapa.png" alt="Map:" width="22" height="22" /></td></tr>
-<tr><td class="tresc1">
-<img src="'.CONFIG_CDN_PINS_ICONS.'/red.png" alt="[Red flag]" width="12" height="20" /> = '._('start').'
-<img src="'.CONFIG_CDN_PINS_ICONS.'/yellow.png" alt="[Yellow flag]" width="12" height="20" /> = '._('trip points').'
-<img src="'.CONFIG_CDN_PINS_ICONS.'/green.png" alt="[Green flag]" width="12" height="20" /> = '._('recently seen').'
-</td></tr>
-
-</table><div id="map0" class="gmapa"></div>';
+// manage map data cache and files
+$mapDirectory = 'mapki/';
+if (isset($config['mapki'])) {
+    $mapDirectory = $config['mapki'];
+}
+$tripService = new \Geokrety\Service\TripService($mapDirectory);
+if (isset($kret_nocache)) { // we enforce to regenerate cache
+    $tripService->evictTripCache($id);
 }
 
-// don't display the map
-
-elseif ($skrzynki > 0) {
-    $TRESC .= '<p><i>'._('The google map is not avaliable due to large numer of points.').'</i></p>';
-} else {
+if ($skrzynki <= 0) { // no trip
     $TRESC .= '<p><i>'._('This geokret has not started yet').'</i></p>';
+} else { // ($skrzynki > 0) // legacy - we must have downloadable csv and gpx files
+    $tripService->ensureGeneratedFiles($id);
+
+    // manage trip map ******************************* // geokrety CDN
+    $leafletCss = CDN_LEAFLET_CSS;
+    $leafletJs = CDN_LEAFLET_JS;
+    $HEAD .= <<<EOHEAD
+  <link rel="stylesheet" href="$leafletCss"/>
+  <script src="$leafletJs"></script>
+  <script type="text/javascript" src="konkret.js"></script>
+EOHEAD;
+
+    $mapLegend = '<img src="'.CONFIG_CDN_PINS_ICONS.'/red.png" alt="[Red flag]" width="12" height="20" /> = '._('start').'
+                  <img src="'.CONFIG_CDN_PINS_ICONS.'/yellow.png" alt="[Yellow flag]" width="12" height="20" /> = '._('trip points').'
+                  <img src="'.CONFIG_CDN_PINS_ICONS.'/green.png" alt="[Green flag]" width="12" height="20" /> = '._('recently seen');
+
+    $TRESC .= '<table width="100%">
+<tr><td class="heading1" colspan="2"><a name="map"></a><img src="'.CONFIG_CDN_ICONS.'/mapa.png" alt="Map:" width="22" height="22" /> '._('Map').'</td></tr>
+<tr>
+  <td>'._('Legend').' : '.$mapLegend.'</td>
+  <td class="right">'._('Download the track as:').' <a href="'.$tripService->getTripGpxFilename($kret_id).'">gpx.gz</a> | <a href="'.$tripService->getTripCsvFilename($kret_id).'">csv.gz</a></td>
+</tr>
+</table>';
+
+    // bridge from php translated message and id to javascript map functions (cf konkret.js)
+    $TRESC .= '
+    <div id="mapid" class="gmapa" style="z-index:0;">
+    </div>
+    <script type="text/javascript">
+    // <![CDATA[
+        $(document).ready(function(){
+            let onLoadErrorHtmlMessage = "<center><b>'._('unable to initialize map').'</b></center>";
+            let lastSeenMessage = "<b>'._('last seen here !').'</b><br/>";
+            let mapGeokretyId = '.$id.';
+            initMapForGeokrety(mapGeokretyId, onLoadErrorHtmlMessage, lastSeenMessage);
+        });
+    // ]]>
+    </script>
+';
+    $TRESC .= $TABELKA;
 }
 
-if ($skrzynki > 0) {
-    $TRESC .= $TABELKA;
-    $TRESC .= _('Download the track as:')." <a href='".CONFIG_CDN_MAPS."/gpx/GK-$kret_id.gpx'>GPX</a> | <a href='".CONFIG_CDN_MAPS."/csv/GK-$kret_id.csv.gz'>csv.gz</a>";
-}
+//// *******************************
 
 // ----------------------------------------------JSON-LD---------------------------
 // schema used: http://schema.org/Sculpture
@@ -383,7 +397,7 @@ $TRESC .= '
 // ----------------------------------------------JSON-LD-(end)---------------------
 
 $TYTUL = $nazwa;
-$OGON .= '<script type="text/javascript" src="'.$config['colorbox.js'].'?ver=1.1"></script>
+$OGON .= '<script type="text/javascript" src="'.CDN_COLORBOX_JS.'?ver=1.1"></script>
 <script type="text/javascript" src="'.$config['funkcje.js'].'"></script>
 <script type="text/javascript" src="/templates/rating/jquery/jRating.jquery.js"></script>
 <script type="text/javascript">
@@ -413,7 +427,7 @@ $(document).ready(function(){
 });".'
 </script>
 <link rel="stylesheet" type="text/css" href="/templates/rating/jquery/jRating.jquery.css?ver=1.2" media="screen" />
-<link rel="stylesheet" type="text/css" href="'.$config['colorbox.css'].'?ver=1.2" media="screen"/>
+<link rel="stylesheet" type="text/css" href="'.CDN_COLORBOX_CSS.'" media="screen"/>
 ';
 
 $OGON .= '
