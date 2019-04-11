@@ -53,7 +53,7 @@ try {
     // handle errors
     $errorResponse = new \Geokrety\Domain\ErrorResponse($action, $noDataException);
     $errorResponse->write($format, 404);
-} catch (Exception $exception) {
+} catch (\Exception $exception) {
     // handle errors
     $errorResponse = new \Geokrety\Domain\ErrorResponse($action, $exception);
     $errorResponse->write($format);
