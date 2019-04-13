@@ -110,7 +110,7 @@ else {
                         aktualizuj_ost_log_id($kret_id);
                         aktualizuj_obrazek_statystyki($owner);
                         include 'konkret-mapka.php';
-                        konkret_mapka($kretid);        // generuje plik z mapką krecika
+                        konkret_mapka($kret_id);        // generuje plik z mapką krecika
                     }
                 }
             }
