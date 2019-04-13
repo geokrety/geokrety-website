@@ -17,19 +17,11 @@ updateboly38: buildboly38
 	docker-compose -f docker-compose.boly38.yml --project-name=gk-boly382 down
 
 
-builddev:
-	docker-compose -f docker-compose.dev.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT) geokrety-dev
+buildkumy:
+	docker-compose -f docker-compose.kumy.yml build --build-arg GIT_COMMIT=$(GIT_COMMIT)
 
-startdev: builddev
-	docker-compose -f docker-compose.dev.yml --project-name=gk-dev up -d geokrety-dev
-
-stopdev:
-	docker-compose -f docker-compose.dev.yml --project-name=gk-dev down
-
-updatedev: builddev
-	docker-compose -f docker-compose.dev.yml --project-name=gk-dev2 up -d geokrety-dev
-	docker-compose -f docker-compose.dev.yml --project-name=gk-dev up -d geokrety-dev
-	docker-compose -f docker-compose.dev.yml --project-name=gk-dev2 down
+updatekumy: buildkumy
+	docker stack deploy -c docker-compose.kumy.yml gk-legacy
 
 
 buildstaging:
