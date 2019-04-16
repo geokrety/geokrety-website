@@ -49,10 +49,6 @@ try {
         default:
             throw new Exception("format '$format' not supported, expected one of $supportedFormats");
     }
-} catch (\Geokrety\Exception\NoDataException $noDataException) {
-    // handle errors
-    $errorResponse = new \Geokrety\Domain\ErrorResponse($action, $noDataException);
-    $errorResponse->write($format, 404);
 } catch (\Exception $exception) {
     // handle errors
     $errorResponse = new \Geokrety\Domain\ErrorResponse($action, $exception);

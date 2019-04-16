@@ -9,6 +9,20 @@ class TripServiceTest extends GKTestCase {
         $this->cleanCache();
     }
 
+    public function test_trips_update_and_get_when_no_data() {
+        // GIVEN
+        $geokretyId = 1234567;
+        $tripService = new \Geokrety\Service\TripService($this->mapDirectory, $this->verbose);
+
+        // WHEN
+        $tripService->onTripUpdate($geokretyId);
+        $trips = $tripService->getTrip($geokretyId);
+
+        // THEN
+        $this->assertNotNull($trips);
+        $this->assertEmpty($trips);
+    }
+
     public function test_trips_cache() {
         // GIVEN
         $tripService = new \Geokrety\Service\TripService($this->mapDirectory, $this->verbose);

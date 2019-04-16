@@ -56,16 +56,17 @@ EOQUERY;
 
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
+
+        $trips = array();
+
         if ($nbRow == 0) {
-            throw new \Geokrety\Exception\NoDataException("No trip found for geokretyId:$geokretyId");
+            return $trips;
         }
 
         // associate result vars
         $stmt->bind_result($ruchId, $lat, $lon, $country, $alt, $waypoint,
                            $data, $dataDodania, $user, $username, $koment, $logtype, $droga,
                            $wpName, $wpType, $wpOwner, $wpStatus, $wpLink);
-
-        $trips = array();
 
         while ($stmt->fetch()) {
             $trip = new \Geokrety\Domain\TripStep($waypoint);
