@@ -2,23 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 {assign var="smartyDataMiesiac" value=$smarty.now|date_format:"%m%d"}
 {assign var="smartyDataRok" value=$smarty.now|date_format:"%Y%m%d"}
-{assign var="baseUrl" value="https://cdn.geokrety.org"}
-{assign var="cssUrl" value="https://cdn.geokrety.org/css"}
-{assign var="bannerUrl" value="https://cdn.geokrety.org/images/banners"}
-{assign var="iconsUrl" value="https://cdn.geokrety.org/images/icons"}
 <head>
   <meta http-equiv="Content-Type" content="text/xml; charset=UTF-8" />
   <title>GeoKrety: {$tytul}</title>
   <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety-handheld.css" media="handheld" />
   <link href='https://fonts.googleapis.com/css?family=Oxygen&amp;subset=latin,latin-ext,cyrillic-ext,greek-ext,vietnamese,cyrillic' rel='stylesheet' type='text/css' />
   <link rel="author" href="https://plus.google.com/100314116846204554033/"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.geokrety.org/images/favicon/apple-touch-icon.png"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.geokrety.org/images/favicon/favicon-32x32.png"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.geokrety.org/images/favicon/favicon-16x16.png"/>
-  <link rel="manifest" href="https://cdn.geokrety.org/images/favicon/manifest.json"/>
-  <link rel="mask-icon" href="https://cdn.geokrety.org/images/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
-  <link rel="shortcut icon" href="https://cdn.geokrety.org/images/favicon/favicon.ico"/>
-  <meta name="msapplication-config" content="https://cdn.geokrety.org/images/favicon/browserconfig.xml"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="{$imagesUrl}/favicon/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="{$imagesUrl}/favicon/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="{$imagesUrl}/favicon/favicon-16x16.png"/>
+  <link rel="manifest" href="{$imagesUrl}/favicon/manifest.json"/>
+  <link rel="mask-icon" href="{$imagesUrl}/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
+  <link rel="shortcut icon" href="{$imagesUrl}/favicon/favicon.ico"/>
+  <meta name="msapplication-config" content="{$imagesUrl}/favicon/browserconfig.xml"/>
   <meta name="theme-color" content="#ffffff"/>
 {if $lang eq 'zu_ZA.UTF-8'}{literal}
   <script type="text/javascript">
@@ -30,15 +26,15 @@
   </script>
   <script type="text/javascript" src="//cdn.crowdin.com/jipt/jipt.js"></script>
 {/literal}{/if}
-  <link rel="stylesheet" href="https://cdn.geokrety.org/libraries/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{$cdnUrl}/libraries/bootstrap/3.3.7/css/bootstrap.min.css">
 {$head}
     {* javascript used by analytics (bottom of the page), and leafletjs (map) *}
-    <script type="text/javascript" src="https://cdn.geokrety.org/libraries/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="{$cdnUrl}/libraries/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript"
-            src="https://cdn.geokrety.org/libraries/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.geokrety.org/libraries/moment.js/2.22.0/moment.min.js"></script>
+            src="{$cdnUrl}/libraries/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{$cdnUrl}/libraries/moment.js/2.22.0/moment.min.js"></script>
     <script type="text/javascript"
-            src="https://cdn.geokrety.org/libraries/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
+            src="{$cdnUrl}/libraries/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
     {* ** *}
 {if $smartyDataMiesiac eq '401'}	{* prima aprilis *}
   <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety-1kwietnia.css" media="screen" />
