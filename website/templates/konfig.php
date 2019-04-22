@@ -1,63 +1,69 @@
 <?php
 
 // config file for GeoKrety
-$config['prod_server_name'] = 'geokrety.org';
-$config['adres'] = 'https://geokrety.org/';
+$config['prod_server_name'] = isset($_ENV['PROD_SERVER_NAME']) ? $_ENV['PROD_SERVER_NAME'] : 'geokrety.org';
+$config['adres'] = isset($_ENV['PROD_SERVER_URL']) ? $_ENV['PROD_SERVER_URL'] : $config['prod_server_name'];
+
+// MySQL config
+$config['host'] = isset($_ENV['DB_HOSTNAME']) ? $_ENV['DB_HOSTNAME'] : 'db';
+$config['username'] = isset($_ENV['DB_USERNAME']) ? $_ENV['DB_USERNAME'] : 'xxx';
+$config['pass'] = isset($_ENV['DB_PASSWORD']) ? $_ENV['DB_PASSWORD'] : 'xxx';
+$config['db'] = isset($_ENV['DB_NAME']) ? $_ENV['DB_NAME'] : 'xxx';
+$config['charset'] = isset($_ENV['DB_CHARSET']) ? $_ENV['DB_CHARSET'] : 'utf8';
 
 // CDN url
-
-$config['cdn_url'] = 'https://cdn.geokrety.org';
+$config['cdn_url'] = isset($_ENV['CDN_SERVER_URL']) ? $_ENV['CDN_SERVER_URL'] : 'https://cdn.geokrety.org';
 
 // Google map Api key
-$GOOGLE_MAP_KEY = 'xxx';
+$GOOGLE_MAP_KEY = isset($_ENV['GOOGLE_MAP_KEY']) ? $_ENV['GOOGLE_MAP_KEY'] : 'xxx';
 
 // reCaptcha Api key
-$GOOGLE_RECAPTCHA_PUBLIC_KEY = 'xxx';
-$GOOGLE_RECAPTCHA_SECRET_KEY = 'xxx';
+$GOOGLE_RECAPTCHA_PUBLIC_KEY = isset($_ENV['GOOGLE_RECAPTCHA_PUBLIC_KEY']) ? $_ENV['GOOGLE_RECAPTCHA_PUBLIC_KEY'] : 'xxx';
+$GOOGLE_RECAPTCHA_SECRET_KEY = isset($_ENV['GOOGLE_RECAPTCHA_SECRET_KEY']) ? $_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'] : 'xxx';
 
 // Password hashing
 // Crypt alorythms https://en.wikipedia.org/wiki/Crypt_(C)#Key_derivation_functions_supported_by_crypt
-$config['sol'] = '$5$xxx'; // crypt() hash
-$config['sol2'] = 'xxx'; // some random string
+$config['sol'] = isset($_ENV['PASSWORD_HASH']) ? $_ENV['PASSWORD_HASH'] : '$5$xxx'; // crypt() hash
+$config['sol2'] = isset($_ENV['PASSWORD_HASH_LEGACY']) ? $_ENV['PASSWORD_HASH_LEGACY'] : 'xxx'; // some random string
 
 // Api2login hashes
-$config['md5_string1'] = 'xxx'; // hex chars
-$config['md5_string2'] = 'xxx'; // hex chars
+$config['md5_string1'] = isset($_ENV['API2LOGIN_MD5_STR1']) ? $_ENV['API2LOGIN_MD5_STR1'] : 'xxx'; // hex chars
+$config['md5_string2'] = isset($_ENV['API2LOGIN_MD5_STR2']) ? $_ENV['API2LOGIN_MD5_STR2'] : 'xxx'; // hex chars
 
 // Cryptographic vectors
-$config['swistak_key'] = 'xxx'; // some random string
-$config['swistak_iv32'] = 'xxx'; // 32 hex chars
+$config['swistak_key'] = isset($_ENV['SWISTAK_KEY']) ? $_ENV['SWISTAK_KEY'] : 'xxx'; // some random string
+$config['swistak_iv32'] = isset($_ENV['SWISTAK_IV32']) ? $_ENV['SWISTAK_IV32'] : 'xxx'; // 32 hex chars
 
 // dodajniusa access
-$config['news_password'] = 'xxx'; // some random string
+$config['news_password'] = isset($_ENV['NEWS_PASSWORD']) ? $_ENV['NEWS_PASSWORD'] : 'xxx'; // some random string
 
 // export bypass
-$kocham_kaczynskiego = 'xxx'; // some random string
+$kocham_kaczynskiego = isset($_ENV['EXPORT_BYPASS_TOKEN']) ? $_ENV['EXPORT_BYPASS_TOKEN'] : 'xxx'; // some random string
 
 // jRating access token
-$config['jrating_token'] = 'xxx'; // some random string
+$config['jrating_token'] = isset($_ENV['JRATING_TOKEN']) ? $_ENV['JRATING_TOKEN'] : 'xxx'; // some random string
 
 // Delay between each message (rate limit inter-users messages)
-$config['mail_rate_limit'] = 15;
+$config['mail_rate_limit'] = isset($_ENV['MAIL_RATE_LIMIT']) ? $_ENV['MAIL_RATE_LIMIT'] : 15;
 
 // admin users
 $config['superusers'] = array('1', '6262', '26422');
 
 // Email gateway
-$config['pop_hostname'] = 'pop.gmail.com';
-$config['pop_port'] = 995;
-$config['pop_tls'] = true;
-$config['pop_username'] = 'xxx';
-$config['pop_password'] = 'xxx';
+$config['pop_hostname'] = isset($_ENV['POP_HOSTNAME']) ? $_ENV['POP_HOSTNAME'] : 'pop.gmail.com';
+$config['pop_port'] = isset($_ENV['POP_PORT']) ? $_ENV['POP_PORT'] : 995;
+$config['pop_tls'] = isset($_ENV['POP_TLS']) ? $_ENV['POP_TLS'] : true;
+$config['pop_username'] = isset($_ENV['POP_USERNAME']) ? $_ENV['POP_USERNAME'] : 'xxx';
+$config['pop_password'] = isset($_ENV['POP_PASSWORD']) ? $_ENV['POP_PASSWORD'] : 'xxx';
 
 // Sentry integration
-$config['sentry_dsn'] = 'https://xx:yyy@zzz/1';
-$config['sentry_env'] = 'development';
+$config['sentry_dsn'] = isset($_ENV['SENTRY_DSN']) ? $_ENV['SENTRY_DSN'] : 'https://xx:yyy@zzz/1';
+$config['sentry_env'] = isset($_ENV['SENTRY_ENV']) ? $_ENV['SENTRY_ENV'] : 'development';
 
 // Piwik conf
-$config['piwik_url'] = '';
-$config['piwik_site_id'] = '';
-$config['piwik_token'] = '';
+$config['piwik_url'] = isset($_ENV['PIWIK_URL']) ? $_ENV['PIWIK_URL'] : '';
+$config['piwik_site_id'] = isset($_ENV['PIWIK_SITE_ID']) ? $_ENV['PIWIK_SITE_ID'] : '';
+$config['piwik_token'] = isset($_ENV['PIWIK_TOKEN']) ? $_ENV['PIWIK_TOKEN'] : '';
 
 // Partners
 $config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
@@ -115,7 +121,7 @@ define('CDN_LEAFLET_JS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.js');
 define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
 
 // Default timezone
-$config['timezone'] = 'Europe/Paris';
+$config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';
 
 // Smarty
 define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
@@ -212,8 +218,8 @@ if (!getenv('website_config_directory')) {
     $websiteConfigDirectory = getenv('website_config_directory');
 }
 //~ make platform dependant config configurable (for tests)
-@require $websiteConfigDirectory.'/konfig-local.php';
-@require $websiteConfigDirectory.'/konfig-mysql.php';
+is_file($websiteConfigDirectory.'/konfig-local.php') and require $websiteConfigDirectory.'/konfig-local.php';
+is_file($websiteConfigDirectory.'/konfig-mysql.php') and require $websiteConfigDirectory.'/konfig-mysql.php';
 
 //~ keep hard-coded location for static configs
 // halloffame credits
