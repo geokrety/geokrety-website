@@ -78,6 +78,7 @@ $config['generated'] = 'files/';
 
 // cdn paths
 $config['cdn_images'] = $config['cdn_url'].'/images';
+$config['cdn_banners'] = $config['cdn_images'].'/banners';
 $config['cdn_logos'] = $config['cdn_images'].'/logos/';
 $config['cdn_obrazki'] = $config['cdn_images'].'/obrazki';
 $config['cdn_obrazki_male'] = $config['cdn_images'].'/obrazki-male';
@@ -94,6 +95,7 @@ $config['cdn_maps'] = $config['cdn_url'].'/maps';
 define('CONFIG_PROD_SERVER_NAME', $config['prod_server_name']);
 define('CONFIG_CDN', $config['cdn_url']);
 define('CONFIG_CDN_IMAGES', $config['cdn_images']);
+define('CONFIG_CDN_BANNERS', $config['cdn_banners']);
 define('CONFIG_CDN_LOGOS', $config['cdn_logos']);
 define('CONFIG_CDN_OBRAZKI', $config['cdn_obrazki']);
 define('CONFIG_CDN_OBRAZKI_MALE', $config['cdn_obrazki_male']);
