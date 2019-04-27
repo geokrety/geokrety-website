@@ -97,7 +97,7 @@ function errory_add($details, $severity = 0, $error_uid = '') {
         // $pfile = $break[count($break) - 1];
 
         $pfile = $_SERVER['REQUEST_URI'];
-        if ($_POST['formname'] == '-') {
+        if (isset($_POST['formname']) && $_POST['formname'] == '-') {
             return;
         }//niepotrzebne - wychodzimy
         $posty = '';
