@@ -74,11 +74,11 @@ if (empty($kret_email)) { //--------------------  if login is not set
 
             $ip = getenv('HTTP_X_FORWARDED_FOR');
             $ip_addr = gethostbyaddr($ip);
-            $wiadomosc = _('Your new password in GeoKrety service is').": $haslo_new\n\nRequest from: $ip :: $ip_addr\nIf this mail is unwanted, contact us by replying to this mail.";
+            $wiadomosc = sprintf(_("Your new password in GeoKrety service is: %s\n\nRequest from: %s :: %s\nIf this mail is unwanted, contact us by replying to this mail."), $haslo_new, $ip, $ip_addr);
 
             $headers = 'From: GeoKrety <geokrety@gmail.com>'."\r\n";
-            mail($email, '[GeoKrety] New password', $wiadomosc, $headers);
-            $TRESC = _('New password sent to')." $email";
+            mail($email, '[GeoKrety] '._('New password'), $wiadomosc, $headers);
+            $TRESC = sprintf(_('New password sent to %s'), $email);
 
             errory_add('New password sent.', 0, 'new_password');
         } else {
