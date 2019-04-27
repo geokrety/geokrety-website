@@ -5,7 +5,7 @@ function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin) {
     include_once 'gc_search_link.php';
     include_once 'days_ago.php';
     require 'templates/konfig.php';
-    if (!function_exists(waypoint_info)) {
+    if (!function_exists('waypoint_info')) {
         include 'waypoint_info.php';
     }
 

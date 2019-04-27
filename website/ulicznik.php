@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists(licznikejro)) {
+if (!function_exists('licznikejro')) {
     function ulicznik($witryna) {
         // licznik mySQL
         // argument:    nazwa dla licznika
