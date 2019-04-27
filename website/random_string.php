@@ -7,6 +7,7 @@ function random_string($max, $alphabet = 'a b c d e f g h i j k l m n p q r s t 
     }
 
     $chars = explode(' ', $alphabet);
+    $rtn = '';
     for ($i = 0; $i < $max; ++$i) {
         $rnd = array_rand($chars);
         $rtn .= ($chars[$rnd]);

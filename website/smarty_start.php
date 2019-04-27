@@ -34,7 +34,7 @@ $smarty->cache_dir = './templates/cache/';
 $smarty->plugins_dir[] = './templates/plugins/';
 $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
 
-if ($_GET['template'] == 'm') {
+if (isset($_GET['template']) && $_GET['template'] == 'm') {
     $template = 'krety-m.html';
 } else {
     $template = 'krety.html';

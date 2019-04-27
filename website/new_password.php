@@ -7,7 +7,7 @@ $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
 $TYTUL = 'Forgotten Password';
-$OGON .= '<script src="https://www.google.com/recaptcha/api.js"></script>';
+$OGON = '<script src="https://www.google.com/recaptcha/api.js"></script>';
 
 $g_recaptcha = $_POST['g-recaptcha-response'];
 // autopoprawione...
