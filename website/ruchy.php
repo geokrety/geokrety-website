@@ -470,10 +470,10 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
             $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
             // $piwikTracker->enableBulkTracking();
             $piwikTracker->setTokenAuth(PIWIK_TOKEN);
-            $piwikTracker->setUrl($config['adres'].'ruchy.php');
+            $piwikTracker->setUrl($config['adres'].'/ruchy.php');
             $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
-            $piwikTracker->setUserAgent("$kret_app $kret_app_ver");
-            $piwikTracker->setBrowserLanguage($kret_mobile_lang);
+            $piwikTracker->setUserAgent($_SERVER['HTTP_USER_AGENT']." ($kret_app $kret_app_ver)");
+            $piwikTracker->setBrowserLanguage($kret_mobile_lang.$lang);
             $piwikTracker->doTrackPageView('GKMoved');
             // $piwikTracker->doBulkTrack();
         }
