@@ -191,3 +191,19 @@ if ($_GET['gzip'] == 1) {
     header('Content-Type: application/xml');
     echo $OUTPUT;
 }
+
+// -- Piwik Tracking API init --
+if (PIWIK_URL !== '') {
+    require_once 'templates/piwik-php-tracker/PiwikTracker.php';
+    PiwikTracker::$URL = PIWIK_URL;
+    $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
+    // $piwikTracker->enableBulkTracking();
+    $piwikTracker->setTokenAuth(PIWIK_TOKEN);
+    $piwikTracker->setUrl($config['adres'].'/export2.php');
+    $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
+    $piwikTracker->setUserAgent($_SERVER['HTTP_USER_AGENT']);
+    $piwikTracker->setBrowserLanguage($lang);
+    $piwikTracker->doTrackPageView('GKExport2');
+    // $piwikTracker->doBulkTrack();
+}
+// -- Piwik Tracking API end --

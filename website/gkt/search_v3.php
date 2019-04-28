@@ -93,3 +93,21 @@ if (($g_mode == 'latlon') and is_numeric($g_lat) and is_numeric($g_lon)) {
 
 header('Content-Type: text/plain');
 echo $OUTPUT;
+
+// -- Piwik Tracking API init --
+if (PIWIK_URL !== '') {
+    require_once 'templates/piwik-php-tracker/PiwikTracker.php';
+    PiwikTracker::$URL = PIWIK_URL;
+    $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
+    // $piwikTracker->enableBulkTracking();
+    $piwikTracker->setTokenAuth(PIWIK_TOKEN);
+    $piwikTracker->setUrl($config['adres'].'/export2.php');
+    $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
+    $piwikTracker->setUserAgent($_SERVER['HTTP_USER_AGENT']);
+    $piwikTracker->setLatitude($g_lat);
+    $piwikTracker->setLongitude($g_lon);
+    $piwikTracker->setBrowserLanguage($lang);
+    $piwikTracker->doTrackPageView('GKT');
+    // $piwikTracker->doBulkTrack();
+}
+// -- Piwik Tracking API end --
