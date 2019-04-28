@@ -113,8 +113,8 @@ define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 $config['funkcje.js'] = '/funkcje.js';
 $config['ajaxtooltip.js'] = CONFIG_CDN_LIBRARIES.'/ajaxtooltip/ajaxtooltip-1.min.js';
 $config['securimage'] = 'templates/libraries/securimage-3.6.7/';
-define('CDN_BOOTSTRAP_DATEPICKER_JS', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js');
-define('CDN_BOOTSTRAP_DATEPICKER_CSS', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css');
+define('CDN_BOOTSTRAP_DATEPICKER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-datepicker/1.8.0/bootstrap-datepicker.min.js');
+define('CDN_BOOTSTRAP_DATEPICKER_CSS', CONFIG_CDN_LIBRARIES.' /libs/bootstrap-datepicker/1.8.0/bootstrap-datepicker3.min.css');
 
 define('CDN_COLORBOX_JS', CONFIG_CDN_LIBRARIES.'/colorbox/1.6.4/jquery.colorbox-min.js');
 define('CDN_COLORBOX_CSS', CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css');
