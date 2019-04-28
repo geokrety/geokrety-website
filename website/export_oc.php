@@ -112,3 +112,19 @@ $OUTPUT
 header('Content-Type: application/xml');
 
 echo $OUTPUT;
+
+// -- Piwik Tracking API init --
+if (PIWIK_URL !== '') {
+    require_once 'templates/piwik-php-tracker/PiwikTracker.php';
+    PiwikTracker::$URL = PIWIK_URL;
+    $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
+    // $piwikTracker->enableBulkTracking();
+    $piwikTracker->setTokenAuth(PIWIK_TOKEN);
+    $piwikTracker->setUrl($config['adres'].'/export_oc.php');
+    $piwikTracker->setIp($_SERVER['HTTP_X_FORWARDED_FOR']);
+    $piwikTracker->setUserAgent($_SERVER['HTTP_USER_AGENT']);
+    $piwikTracker->setBrowserLanguage($lang);
+    $piwikTracker->doTrackPageView('GKExportOC');
+    // $piwikTracker->doBulkTrack();
+}
+// -- Piwik Tracking API end --
