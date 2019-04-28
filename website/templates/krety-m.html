@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
-{assign var="cssUrl" value="https://cdn.geokrety.org/css"}
 <head>
 	<meta http-equiv="Content-Type" content="text/xml; charset=UTF-8" />
 	<title>GeoKrety: {$tytul}</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.geokrety.org/images/favicon/apple-touch-icon.png"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.geokrety.org/images/favicon/favicon-32x32.png"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.geokrety.org/images/favicon/favicon-16x16.png"/>
-  <link rel="manifest" href="https://cdn.geokrety.org/images/favicon/manifest.json"/>
-  <link rel="mask-icon" href="https://cdn.geokrety.org/images/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
-  <link rel="shortcut icon" href="https://cdn.geokrety.org/images/favicon/favicon.ico"/>
-  <meta name="msapplication-config" content="https://cdn.geokrety.org/images/favicon/browserconfig.xml"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="apple-touch-icon" sizes="180x180" href="{$imagesUrl}/favicon/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="{$imagesUrl}/favicon/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="{$imagesUrl}/favicon/favicon-16x16.png"/>
+  <link rel="manifest" href="{$imagesUrl}/favicon/manifest.json"/>
+  <link rel="mask-icon" href="{$imagesUrl}/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
+  <link rel="shortcut icon" href="{$imagesUrl}/favicon/favicon.ico"/>
+  <meta name="msapplication-config" content="{$imagesUrl}/favicon/browserconfig.xml"/>
+  <link rel="stylesheet" href="{$cdnUrl}/libraries/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{$cssUrl}/krety.css"  media="screen" />
 	<link rel="stylesheet" type="text/css" href="{$cssUrl}/krety-handheld.css"  media="handheld" />
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="{$cdnUrl}/libraries/jquery/jquery-3.3.1.min.js"></script>
 
 	{$head}
 </head>

@@ -12,7 +12,7 @@ class TripRepositoryTest extends GKTestCase {
         // GIVEN
         $link = GKDB::getLink();
         $tripRepository = new \Geokrety\Repository\TripRepository($link, $this->verbose);
-        $geokretyId = '325';
+        $geokretyId = 'sdsd';
 
         // THEN
         $this->expectException(\Exception::class);
@@ -27,11 +27,12 @@ class TripRepositoryTest extends GKTestCase {
         $tripRepository = new \Geokrety\Repository\TripRepository($link, $this->verbose);
         $geokretyId = 325;
 
-        // THEN
-        $this->expectException(\Geokrety\Exception\NoDataException::class);
-
         // WHEN
-        $tripRepository->getByGeokretyId($geokretyId, 123);
+        $trips = $tripRepository->getByGeokretyId($geokretyId, 123);
+
+        // THEN
+        $this->assertNotNull($trips);
+        $this->assertEmpty($trips);
     }
 
     public function test_trips_success() {

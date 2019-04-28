@@ -24,7 +24,7 @@
 // password correct 14) 1.6809070110321 sekund
 // password correct 15) 2.8649749755859 sekund
 
-if (!function_exists(haslo_koduj)) {
+if (!function_exists('haslo_koduj')) {
     include 'templates/PasswordHash.php';
     global $config;
 
