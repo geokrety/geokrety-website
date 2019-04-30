@@ -96,7 +96,7 @@ echo $OUTPUT;
 
 // -- Piwik Tracking API init --
 if (PIWIK_URL !== '') {
-    require_once 'templates/piwik-php-tracker/PiwikTracker.php';
+    require_once '../templates/piwik-php-tracker/PiwikTracker.php';
     PiwikTracker::$URL = PIWIK_URL;
     $piwikTracker = new PiwikTracker($idSite = PIWIK_SITE_ID);
     // $piwikTracker->enableBulkTracking();
