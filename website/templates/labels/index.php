@@ -2,6 +2,7 @@
 
 // perform a search śćółżźńóó
 //include_once("../../wybierz_jezyk.php"); // choose the user's language
+require '../../__sentry.php';   // Error catching
 require '../konfig.php';   // config
 
 $kret_helplang = $_POST['helplang'];
