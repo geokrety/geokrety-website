@@ -1,5 +1,6 @@
 <?php
 
+require '../__sentry.php';   // Error catching
 require_once '../wybierz_jezyk.php'; // choose the user's language
 
 $TYTUL = 'GK info';

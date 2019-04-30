@@ -1,6 +1,7 @@
 <?php
 
 // perform a search śćółżźńóó
+require '../../__sentry.php';   // Error catching
 require_once 'wybierz_jezyk.php'; // choose the user's language
 
 $kret_id = $_POST['id'];
