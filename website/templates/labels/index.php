@@ -3,7 +3,6 @@
 // perform a search śćółżźńóó
 //include_once("../../wybierz_jezyk.php"); // choose the user's language
 require '../konfig.php';   // config
-require '../konfig-local.php';     // config
 
 $kret_helplang = $_POST['helplang'];
 // autopoprawione...
