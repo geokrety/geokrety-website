@@ -47,6 +47,7 @@
       {include file=$content_template}
     {/if}
   </div>
+  {include file='footer.tpl'}
 
 { if not IS_PROD }
   <div class="alert alert-danger" role="alert">
