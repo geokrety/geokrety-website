@@ -1,5 +1,6 @@
 <?php
 
+require '../__sentry.php';   // Error catching
 require_once '../templates/konfig.php';
 
 function go2geo($waypoint) {

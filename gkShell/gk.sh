@@ -284,7 +284,7 @@ hasApacheConfig() {
 }
 copyLegacyApacheConfig() {
   echo "create Apache config files from docker/apache2 ones"
-  learnAndLaunch cp "${LEGACY_APACHE_DIR}"/*.* "${CONFIG_APACHE_DIR}"
+  learnAndLaunch cp \"${LEGACY_APACHE_DIR}\"/*.* \"${CONFIG_APACHE_DIR}\"
 }
 command-build() {
   computedParams

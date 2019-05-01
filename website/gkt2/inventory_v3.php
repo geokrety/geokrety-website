@@ -2,6 +2,7 @@
 
 // export data via JSON śćńółżź
 
+require '../__sentry.php';   // Error catching
 require '../templates/konfig.php';     // config
 
 require_once '../longin_chceck.php';
