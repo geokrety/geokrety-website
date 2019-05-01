@@ -1,289 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
-{assign var="smartyDataMiesiac" value=$smarty.now|date_format:"%m%d"}
-{assign var="smartyDataRok" value=$smarty.now|date_format:"%Y%m%d"}
+<!DOCTYPE html>
+<html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/xml; charset=UTF-8" />
-  <title>GeoKrety: {$tytul}</title>
-  <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety-handheld.css" media="handheld" />
-  <link href='https://fonts.googleapis.com/css?family=Oxygen&amp;subset=latin,latin-ext,cyrillic-ext,greek-ext,vietnamese,cyrillic' rel='stylesheet' type='text/css' />
-  <link rel="author" href="https://plus.google.com/100314116846204554033/"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="{$imagesUrl}/favicon/apple-touch-icon.png"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="{$imagesUrl}/favicon/favicon-32x32.png"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="{$imagesUrl}/favicon/favicon-16x16.png"/>
-  <link rel="manifest" href="{$imagesUrl}/favicon/manifest.json"/>
-  <link rel="mask-icon" href="{$imagesUrl}/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
-  <link rel="shortcut icon" href="{$imagesUrl}/favicon/favicon.ico"/>
-  <meta name="msapplication-config" content="{$imagesUrl}/favicon/browserconfig.xml"/>
-  <meta name="theme-color" content="#ffffff"/>
-{if $lang eq 'zu_ZA.UTF-8'}{literal}
-  <script type="text/javascript">
-    var _jipt = [];
-    _jipt.push(['project', 'geokrety']);
-    _jipt.push(['escape', function() {
-      window.location.href = "/lang.php?lang=en_US.UTF-8";
-    }]);
-  </script>
-  <script type="text/javascript" src="//cdn.crowdin.com/jipt/jipt.js"></script>
-{/literal}{/if}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GeoKrety: {$title}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="{$cdnUrl}/libraries/bootstrap/3.3.7/css/bootstrap.min.css">
-{$head}
-    {* javascript used by analytics (bottom of the page), and leafletjs (map) *}
-    <script type="text/javascript" src="{$cdnUrl}/libraries/jquery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript"
-            src="{$cdnUrl}/libraries/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{$cdnUrl}/libraries/moment.js/2.22.0/moment.min.js"></script>
-    <script type="text/javascript"
-            src="{$cdnUrl}/libraries/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
-    {* ** *}
-{if $smartyDataMiesiac eq '401'}	{* prima aprilis *}
-  <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety-1kwietnia.css" media="screen" />
-{else}
-  <link rel="stylesheet" type="text/css" href="{$cssUrl}/krety.css?ver=19.6" media="screen" />
-{/if}
-  <link rel="stylesheet" type="text/css" href="{$cssUrl}/flag-icon.min.css" media="screen" />
+  <link rel="stylesheet" href="{$cssUrl}/krety-v2.css" media="screen" />
+  <link rel="stylesheet" href="{$cssUrl}/flag-icon.min.css" media="screen" />
+  <link rel="stylesheet" href="{$cdnUrl}/libraries/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{$imagesUrl}/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{$imagesUrl}/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{$imagesUrl}/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="{$imagesUrl}/favicon/manifest.json" />
+  <link rel="mask-icon" href="{$imagesUrl}/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+  <link rel="shortcut icon" href="{$imagesUrl}/favicon/favicon.ico" />
+  <meta name="msapplication-config" content="{$imagesUrl}/favicon/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
 </head>
-<body {$body}>
-{if $lang eq 'zu_ZA.UTF-8'}{literal}
-<style>
-  #jipt-close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: block;
-      width: 40px;
-      height: 40px;
-      text-align: center;
-      line-height: 35px;
-      font-size: 30px;
-      text-decoration: none;
-      border-radius: 3px;
-  }
-</style>
-  <a id="jipt-close-btn" href="/lang.php?lang=en_US.UTF-8" title="{/literal}{t}Exit translation mode{/t}{literal}">×</a>
-{/literal}{/if}
 
-<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="infoModalLabel">Info Title</h4>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<body>
+  <header>
+    <p class="logo"><a href="/">Geo<span class="black">Krety</span>.org</a></p>
+    <p class="subline">Open source item tracking for all caching platforms</p>
+    <span class="bg"></span>
+    <img class="sun" src="{$imagesUrl}/header/sun.svg">
+  </header>
 
-
-{assign var="specialmsg" value="/home/geokrety/wiadomosc_specjalna.tpl"}
-{ if file_exists($specialmsg) }
-<div id="banner" style="position: absolute; top: 0; right: 0;background-color: green;width: 60%;">
-<div id="banner-content" style="margin: 0 auto;margin-left: 5px; padding: 9px; color: white; font-weight: bold;">
-{include file=$specialmsg}
-</div></div>
-{/if}
-
-<div id="top">
-  <a href="https://geokrety.org/">
-{if $smartyDataMiesiac eq '1206'}
-	<img src="{$bannerUrl}/logo-mikolajki.png" border="0" alt="logo" title="{t}Saint Nicholas Day{/t}" />
-{elseif $smartyDataMiesiac >= 1224 and $smartyDataMiesiac <=  1228 }
-	<img src="{$bannerUrl}/logo-swieta2.png" border="0" alt="logo" title="{t}Merry Christmas!{/t}" />
-{elseif $smartyDataMiesiac == 1231 or ($smartyDataMiesiac >=  101 and $smartyDataMiesiac <= 104 )}
-	<img src="{$bannerUrl}/logo-sylwestra.png" border="0" alt="logo" title="{t}Happy New Year!!!{/t}" />
-{elseif $smartyDataMiesiac == 214}
-	<img src="{$bannerUrl}/logo-walentynki.png" border="0" alt="logo" title="{t}Valentine's Day{/t}" />
-{elseif $smartyDataMiesiac == 401}
-	<img src="{$bannerUrl}/geozyrafy.png" border="0" alt="logo" title="{t}First April!!!{/t}" />
-{elseif $smartyDataMiesiac == '1031'}
-	<img src="{$bannerUrl}/geokrety+pumpkin.png" border="0" alt="logo" title="{t}Hallowen{/t}" />
-
-{elseif ($smartyDataMiesiac == 327 )}
-	<img src="{$bannerUrl}/logo-wielkanoc2.png" border="0" alt="logo" title="{t}Easter!{/t}" />
-
-{elseif ($smartyDataMiesiac >= 321 and $smartyDataMiesiac <= 329 )}
-	<img src="{$bannerUrl}/logo-wiosna.png" border="0" alt="logo" title="{t}Spring!{/t}" />
-{elseif $smartyDataRok >= 20171026 and $smartyDataRok <= 20181026 }
-	<img src="{$bannerUrl}/10years-banner-top.png" border="0" alt="logo" title="{t}GeoKrety 10 years Birthday!!!{/t}" />
-{elseif $smartyDataMiesiac eq '1026'}
-	<img src="{$bannerUrl}/logo-urodziny.png" border="0" alt="logo" title="{t}GeoKrety Birthday!!!{/t}" />
-
-{* święta ruchome - odkomentować w miarę potrzeby *}
-{elseif ($smartyDataMiesiac == 110 )}
-	<img src="{$bannerUrl}/geokrety+wosp.png" border="0" alt="logo" title="{t}The Grand Finale - Great Orchestra of Christmas Charity.{/t}" />
-{else}
-	<img src="{$bannerUrl}/logo-puste.png" border="0" alt="{t}Normal day{/t}" />
-{/if}
-  </a> {$tytul}
-</div>
-
-<div id="lewo">
-<ul class="dropdown spritemenu greenmenu">
-<li><img class="menu-home" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_home" href="/index.php">{t}Home{/t}</a></li>
-<li><img class="menu-flag_add" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_ruchy" href="/ruchy.php"><strong>{t}Log a GeoKret{/t}</strong></a><br/>
-	<span class="bardzomale" style="padding-left:21px">{t}no need to register!{/t}</span></li>
-	{include file="$template_login"}
-</ul>
-<ul class="dropdown spritemenu innemenu">
-<li><img class="menu-search" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_search" href="/szukaj.php">{t}Search{/t}</a></li>
-<li><img class="menu-photos" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_photo" href="/galeria.php">{t}Photo gallery{/t}</a></li>
-<li class="dir" id="menu_stats_parent" ><img class="menu-stat" src="{$iconsUrl}/_.gif" alt="*" /> {t}Statistics{/t}
- <ul>
- <li><img class="menu-stat" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_stats" href="/statystyczka.php">{t}Statistics{/t}</a></li>
- <li><img class="menu-stat" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_stats_country" href="/country_stat.php">{t}Stats by country{/t}</a></li>
- <li><img class="menu-lost" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_stats_lost" href="/lost.php">{t}Probably lost geokrets{/t}</a></li>
- </ul>
-</li>
-<li><img class="menu-down" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_download" href="/download.php">{t}Download{/t}</a></li>
-<li><img class="menu-newspaper" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_news" href="/niusy.php">{t}News{/t}</a></li>
-<li class="dir" id="menu_help_parent" ><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> {t}Help{/t} / Docs
- <ul>
- <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_help" href="{t}help.php{/t}">{t}Help{/t}</a></li>
- <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_help_en" href="/help.php">Help in english</a></li>
- <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_help_hotel" href="/molehole.php">Moleholes and GK hotels</a></li>
- <li><img class="menu-newspaper" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_help_press" href="presscorner.php">{t}Press corner{/t}</a></li>
- <li><img class="menu-help16" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_help_term" href="termsofuse.php">{t}Terms of use{/t}</a></li>
- <li><img class="menu-code" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_help_api" href="api.php">GK interface / api</a></li>
- </ul>
-</li>
-<li class="dir" id="menu_prod_parent" ><img class="menu-lab16" src="{$iconsUrl}/_.gif" alt="*" /> {t}Side products{/t}
- <ul>
- <li><img class="menu-mapka" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_prod_map" href="/geomapa.php">{t}Map of caches{/t}</a></li>
- <li><img class="menu-mapka" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_prod_gkmap" href="https://GeokretyMap.org/">GeokretyMap.org</a></li>
- <li><img class="menu-lab16" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_prod_tool" href="/toolbox.php">GeoKrety Toolbox</a></li>
- <li><img class="menu-lab16" src="{$iconsUrl}/_.gif" alt="*" /> <a id="menu_prod_waypt" href="/go2geo/">Waypoint resolver</a></li>
- </ul>
-</li>
-
-</ul>
-<ul class="dropdown flagi innemenu">
-<li>
-<a href="lang.php?lang=en_US.UTF-8" id="menu_flag_en" title="English"><span class="flag-icon flag-icon-gb"></a>
-<a href="lang.php?lang=pl_PL.UTF-8" id="menu_flag_pl" title="Polski"><span class="flag-icon flag-icon-pl"></a>
-<a href="lang.php?lang=de_DE.UTF-8" id="menu_flag_de" title="Deutsch"><span class="flag-icon flag-icon-de"></a>
-<a href="lang.php?lang=fr_FR.UTF-8" id="menu_flag_fr" title="Français"><span class="flag-icon flag-icon-fr"></a>
-<a href="lang.php?lang=es_ES.UTF-8" id="menu_flag_es" title="Español"><span class="flag-icon flag-icon-es"></a>
-<a href="lang.php?lang=cs_CZ.UTF-8" id="menu_flag_cs" title="Česky"><span class="flag-icon flag-icon-cz"></a>
-<a href="lang.php?lang=sk_SK.UTF-8" id="menu_flag_sk" title="Slovenčina"><span class="flag-icon flag-icon-sk"></a>
-<a href="lang.php?lang=it_IT.UTF-8" id="menu_flag_it" title="Italiano"><span class="flag-icon flag-icon-it"></a>
-<a href="lang.php?lang=ro_RO.UTF-8" id="menu_flag_ro" title="Română"><span class="flag-icon flag-icon-ro"></a>
-<a href="lang.php?lang=da_DK.UTF-8" id="menu_flag_da" title="Dansk"><span class="flag-icon flag-icon-dk"></a>
-<a href="lang.php?lang=pt_PT.UTF-8" id="menu_flag_pt" title="Português"><span class="flag-icon flag-icon-pt"></a>
-<a href="lang.php?lang=nl_NL.UTF-8" id="menu_flag_nl" title="Nederlands"><span class="flag-icon flag-icon-nl"></a>
-<a href="lang.php?lang=sv_SE.UTF-8" id="menu_flag_sv" title="Svenska"><span class="flag-icon flag-icon-se"></a>
-<a href="lang.php?lang=fi_FI.UTF-8" id="menu_flag_fi" title="Suomi"><span class="flag-icon flag-icon-fi"></a>
-<a href="lang.php?lang=et_EE.UTF-8" id="menu_flag_et" title="Eesti"><span class="flag-icon flag-icon-ee"></a>
-<a href="lang.php?lang=hu_HU.UTF-8" id="menu_flag_hu" title="Magyar"><span class="flag-icon flag-icon-hu"></a>
-<a href="lang.php?lang=lt_LT.UTF-8" id="menu_flag_lt" title="Lietuvių"><span class="flag-icon flag-icon-lt"></a>
-<a href="lang.php?lang=lv_LV.UTF-8" id="menu_flag_lv" title="Latviešu"><span class="flag-icon flag-icon-lv"></a>
-<a href="lang.php?lang=uk_UA.UTF-8" id="menu_flag_uk" title="Українська"><span class="flag-icon flag-icon-ua"></a>
-<a href="lang.php?lang=bg_BG.UTF-8" id="menu_flag_bg" title="Български"><span class="flag-icon flag-icon-bg"></a>
-<a href="lang.php?lang=sq_AL.UTF-8" id="menu_flag_sq" title="Shqip"><span class="flag-icon flag-icon-al"></a>
-<a href="lang.php?lang=el_GR.UTF-8" id="menu_flag_el" title="Ελληνικά"><span class="flag-icon flag-icon-gr"></a>
-<a href="lang.php?lang=th_TH.UTF-8" id="menu_flag_th" title="ไทย"><span class="flag-icon flag-icon-th"></a>
-<a href="lang.php?lang=tl_PH.UTF-8" id="menu_flag_tl" title="Pilipinas"><span class="flag-icon flag-icon-ph"></a>
-<a href="lang.php?lang=ca_ES.UTF-8" id="menu_flag_ca" title="Català"><span class="flag-icon flag-icon-es-ct"></a>
-<a href="lang.php?lang=zh_CN.UTF-8" id="menu_flag_zh" title="Chinese"><span class="flag-icon flag-icon-cn"></a>
-<a href="lang.php?lang=ru_RU.UTF-8" id="menu_flag_ru" title="Русский"><span class="flag-icon flag-icon-ru"></a>
-<a href="lang.php?lang=tr_TR.UTF-8" id="menu_flag_tr" title="Türk"><span class="flag-icon flag-icon-tr"></span></a>
-</li>
-</ul>
-
-<ul class="dropdown innemenu">
-<li><a href="{t}help.php#about{/t}">{t}About{/t}</a></li>
-<li><a href="halloffame.php">{t}Hall of fame{/t}</a></li>
-<li><a href="lang.php?lang=zu_ZA.UTF-8" title="{t}Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode.{/t}"><i class="glyphicon glyphicon-wrench"></i> {t}Fix translation{/t}</a></li>
-<li><a href="kontakt.php"><i class="glyphicon glyphicon-envelope"></i> {t}Contact-us{/t}</a></li>
-</ul>
-
-<ul class="dropdown ">
-  <li>
-    <div class="panel panel-success donate" data-toggle="tooltip" title="{t}The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support{/t}.">
-      <div class="panel-body text-center">
-        <p><b>{t}Enjoying GeoKrety.org?{/t}</b></p>
-        <p>{t}If you use GeoKrety.org and have found it helpful, please consider donating{/t}.</p>
-      </div>
-      <div class="panel-body text-center">
-        <a class="btn btn-success btn-lg btn-block" href="https://www.paypal.fr/cgi-bin/webscr?cmd=_donations&business=geokrety@gmail.com&lc=EN&item_name=Donation+to+support+the+GeoKrety.org+service&no_note=0&cn=&currency_code=EUR&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
-          {t}Contribute{/t}
-        </a>
-      </div>
-    </div>
-  </li>
-</ul>
-
-</div>
-
-<div id="prawo">
+  <div class="container">
+    {$content}
+  </div>
 
 { if not IS_PROD }
-<div class="alert alert-danger" role="alert">
-<b>{t escape=no}This is not the production instance. If you are not a tester, then you probably whish to go to our <a href="https://geokrety.org">production website</a>.{/t}</b>
-</div>
+  <div class="alert alert-danger" role="alert">
+  <b>{t escape=no}This is not the production instance. If you are not a tester, then you probably whish to go to our <a href="https://geokrety.org">production website</a>.{/t}</b>
+  </div>
 {/if}
+  {include file='navbar.tpl'}
 
-{if count($alert_msgs)}
-{foreach from=$alert_msgs item=alert_msg}
-<div class="alert alert-{$alert_msg.level}" role="alert">
-{$alert_msg.message}
-</div>
-{/foreach}
-{/if}
-
-<!-- tresc -->
-{$tresc}
-<!-- tresc -->
-</div>
-
-<div id="footnote">Made in Poland | by filips | <a href="http://validator.w3.org/check?uri=referer" class="male">xhtml</a> + <a class="male" href="http://jigsaw.w3.org/css-validator/check/referer">css</a> | <a class="male" href="https://geokrety.org/">geokrety.org</a> | <a class="male" href="/kontakt.php">{t}contact{/t}</a> | <a class="male" href="https://plus.google.com/100314116846204554033?rel=author">g+</a> | <a class="male" href="abuse.php">{t}Report abuse{/t}</a> | <a class="male" href="termsofuse.php">{t}Terms of use{/t}</a> | <a href="/set_ssl.php"><img src="{$iconsUrl}/ssl.png" alt="ssl" border="0" /></a> {t}version{/t}:{include file='../git-version'}</div>
-{$ogon}
-{literal}
-<script type="text/javascript">
-$(document).ready(function(){
-  // https://stackoverflow.com/a/23921617/944936
-  // Every time a modal is shown, if it has an autofocus element, focus on it.
-  $('.modal').on('shown.bs.modal', function() {
-    $(this).find('[autofocus]').focus();
-  });
-
-  $('.donate[data-toggle="tooltip"]').tooltip();
-});
-</script>
-<script type="text/javascript">
-/* jQuery ajax example of refreshing a static captcha */
-function refreshCaptcha() {
-    $.ajax({ url: 'templates/libraries/securimage-3.6.7/securimage_refresh.php',
-        dataType: 'json',
-    }).done(function(data) {
-        var src = 'templates/libraries/securimage-3.6.7/securimage_show.php?id=' + data.captchaId + '&rand=' + Math.random();
-        $('#siimage').attr('src', src); // replace image with new captcha
-        $('#captcha_id').attr('value', data.captchaId); // update hidden form field
-    });
-}
-</script>
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//piwik.kumy.net/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '51']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//piwik.kumy.net/piwik.php?idsite=51&rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-{/literal}
-
+  <script type="text/javascript" src="{$cdnUrl}/libraries/jquery/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="{$cdnUrl}/libraries/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{$cdnUrl}/libraries/moment.js/2.22.0/moment.min.js"></script>
+  <script type="text/javascript" src="{$cdnUrl}/libraries/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
+  <script type="text/javascript">
+    {literal}
+    (function($) {
+      $(document).ready(function() {
+        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          $(this).parent().siblings().removeClass('open');
+          $(this).parent().toggleClass('open');
+        });
+      });
+    })(jQuery);
+    {/literal}
+  </script>
 </body>
+
 </html>

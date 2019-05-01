@@ -31,9 +31,9 @@ $smarty->assign('bannerUrl', CONFIG_CDN_BANNERS);
 $smarty->assign('iconsUrl', CONFIG_CDN_ICONS);
 $smarty->assign('head', $HEAD);
 $smarty->assign('body', $BODY);
-$smarty->assign('tytul', $TYTUL);
-$smarty->assign('tresc', $TRESC);
-$smarty->assign('ogon', $OGON);
+$smarty->assign('title', $TYTUL);
+$smarty->assign('content', $TRESC);
+$smarty->assign('footer', $OGON);
 
 $smarty->assign('lang', $_COOKIE['geokret1']);
 
