@@ -16,5 +16,12 @@ if (defined('SENTRY_DSN')) {
     $error_handler->registerShutdownFunction();
 }
 
- $vendorDir = join(DIRECTORY_SEPARATOR, array(dirname(__FILE__), 'vendor'));
- include_once $vendorDir.DIRECTORY_SEPARATOR.'autoload.php';
+$vendorDir = join(DIRECTORY_SEPARATOR, array(dirname(__FILE__), 'vendor'));
+include_once $vendorDir.DIRECTORY_SEPARATOR.'autoload.php';
+
+// Start session
+if (SESSION_IN_REDIS) {
+    ini_set('session.save_handler', 'redis');
+    ini_set('session.save_path', REDIS_DSN);
+}
+session_start();

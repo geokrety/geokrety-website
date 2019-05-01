@@ -19,7 +19,7 @@ function go2geo($waypoint) {
     $prefiksy['2']['GA'] = 'http://geocaching.com.au/cache/';
 
     // geocaching.com
-    $prefiksy['2']['GC'] = GEOCACHING_CACHE_WP;
+    $prefiksy['2']['GC'] = CACHE_WPT_LINK_GC;
 
     // terra http://www.terracaching.com/viewcache.cgi?C=TCCWU
     $prefiksy['2']['TC'] = 'http://www.terracaching.com/viewcache.cgi?C=';

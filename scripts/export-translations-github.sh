@@ -20,7 +20,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "$GIT_BRANCH" ]; t
 
   # Extract new strings
   xgettext --from-code=UTF-8 -o $TMP/messages.pot --language=PHP -f website/rzeczy/lang/input-files-for-xgettext
-  tsmarty2c -o $TMP/smarty.pot ./website/templates/index.html ./website/templates/krety-m.html ./website/templates/krety.html ./website/templates/krety_not_logged_in.html ./website/templates/krety_logged_in.html ./website/templates/waypointy-translations.html
+  tsmarty2c -o $TMP/smarty.pot ./website/templates/smarty/ ./website/templates/index.html ./website/templates/krety-m.html ./website/templates/krety.html ./website/templates/krety_not_logged_in.html ./website/templates/krety_logged_in.html ./website/templates/waypointy-translations.html
   msgcat -o website/rzeczy/messages.po.txt $TMP/messages.pot $TMP/smarty.pot
 
   # Upload new strings

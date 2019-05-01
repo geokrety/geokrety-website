@@ -2,19 +2,25 @@
 
 require_once '__sentry.php';
 
-// change secid. executed from mypage.php
+$smarty_cache_this_page = 0; // this page should be cached for n seconds
+require_once 'smarty_start.php';
+$template = 'dialog/user_secid_refresh.tpl';
 
-if ($_GET['confirmed'] == '1') {
-    include_once 'longin_chceck.php';
-    $longin_status = longin_chceck();
-    $userid = $longin_status['userid'];
+loginFirst();
+
+// Save values
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
+    $user = $userR->getById($_SESSION['currentUser']);
 
     include_once 'fn-generate_secid.php';
-    $secid = generateRandomString(128);
-
-    $link = DBConnect();
-
-    $result = mysqli_query($link, "UPDATE `gk-users` SET `secid` = '$secid' WHERE `gk-users`.`userid` = $userid;");
+    $user->secid = generateRandomString(128);
+    if ($user->update()) {
+        success(_('Secid refreshed'));
+        $user->redirect();
+    } else {
+        danger(_('Error refreshing secid'));
+    }
 }
 
-header('Location: /mypage.php');
+require_once 'smarty.php';

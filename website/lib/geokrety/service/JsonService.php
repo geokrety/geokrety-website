@@ -43,6 +43,9 @@ class JsonService {
             case JSON_ERROR_CTRL_CHAR: return 'JSON_ERROR_CTRL_CHAR';
             case JSON_ERROR_SYNTAX: return 'JSON_ERROR_SYNTAX';
             case JSON_ERROR_UTF8: return 'JSON_ERROR_UTF8';
+            case JSON_ERROR_RECURSION: return 'JSON_ERROR_RECURSION';
+            case JSON_ERROR_INF_OR_NAN: return 'JSON_ERROR_INF_OR_NAN';
+            case JSON_ERROR_UNSUPPORTED_TYPE: return 'JSON_ERROR_UNSUPPORTED_TYPE';
             default: return 'Unknown error';
         }
     }

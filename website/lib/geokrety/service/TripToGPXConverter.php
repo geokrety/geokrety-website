@@ -38,10 +38,10 @@ class TripToGPXConverter {
             $maxLat = max($maxLat, $lat);
             $maxLon = max($maxLon, $lon);
 
-            $ruchData = $trip->ruchData;
+            $ruchData = $trip->ruchData->format('c');
             $waypoint = $trip->waypoint;
             $waypointName = $trip->waypointName;
-            $logType = $trip->getLogTypeString();
+            $logType = $trip->logType->getLogTypeString();
             $username = $trip->username;
             $byUsername = sprintf(_('by %s'), $username);
             // keep light GPX file // $comment = $trip->comment;
@@ -65,6 +65,9 @@ class TripToGPXConverter {
       <trkpt lat="$lat" lon="$lon"><ele>$alt</ele></trkpt>
 $gpx_track
 EOTRACK;
+
+            // TODO would be nice to convert to real Xml library builder.
+            // We've also have \Service\Xml\… for such task
 
             // GPX - WAYPOINT
             $gpx_wpt = <<<EOWPT

@@ -36,39 +36,6 @@ margin-top:40px;
     return $return;
 }
 
-function success($tablica, $logerrors = true, $error_msg = '', $severity = '1', $code = '') {
-    $return .= "<div style='
-border:solid 2px #80D07C;
-width:75%;
-margin-left: auto;
-margin-right: auto;
-background:white;
-padding:10px;
-margin-top:40px;
-	'><img src='".CONFIG_CDN_IMAGES."/icons/success.png' style='display: block; margin-left: auto; margin-right: auto; padding-bottom:10px;'>";
-    if (is_array($tablica)) {
-        $return .= '<ul>';
-        foreach ($tablica as $linia) {
-            $return .= "<li style='padding:0;margin-bottom:10px;'>$linia</li>";
-            $wszystkie_linie = "$wszystkie_linie<br />*$linia";
-        }
-        $return .= '</ul>';
-    } else {
-        $return .= "<div style='text-align:center;margin-bottom:10px;'>$tablica</div>";
-        $wszystkie_linie = $tablica;
-    }
-
-    if ($logerrors) {
-        if ($error_msg != '') {
-            $error_msg = $error_msg.'<br/>';
-        }
-        errory_add("<b>$error_msg</b><u>Success</u>: $wszystkie_linie", $severity, $code);
-    }
-    $return .= '</div>';
-
-    return $return;
-}
-
 function table_exists($table) {
     $result = mysqli_query($link, "show tables like '$table'") or die('error reading database');
     if (mysqli_num_rows($result) > 0) {

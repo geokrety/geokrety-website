@@ -44,9 +44,10 @@ class TestUtil {
     public function cleanTestData($verbose) {
         $delRuch = $this->givenCleanRuchy();
         $delWP = $this->givenCleanWaypoint();
+        $delGeokrety = $this->givenCleanGeokrety();
         $delUsers = $this->givenCleanUsers();
         if ($verbose && $delRuch + $delWP + $delUsers > 0) {
-            echo "\ndel $delRuch ruchy, $delWP waypoint, $delUsers users\n";
+            echo "\ndel $delRuch ruchy, $delWP waypoint, $delGeokrety geoKrety, $delUsers users\n";
         }
     }
 
@@ -54,6 +55,14 @@ class TestUtil {
         $link = GKDB::getLink();
         $sql = 'DELETE FROM `gk-ruchy`';
         $this->executeSql($link, 'clean ruchy', $sql);
+
+        return mysqli_affected_rows($link);
+    }
+
+    public function givenCleanGeokrety() {
+        $link = GKDB::getLink();
+        $sql = 'DELETE FROM `gk-geokrety`';
+        $this->executeSql($link, 'clean geokrety', $sql);
 
         return mysqli_affected_rows($link);
     }
@@ -83,6 +92,15 @@ class TestUtil {
                 NULL, NOW(), '')";
 
         return $this->executeInsert("insert user $username", $sql);
+    }
+
+    public function givenGeokret($id, $name, $type, $trackingCode) {
+        $sql = "INSERT INTO `gk-geokrety` (`id`, `nr`, `nazwa`, `opis`, `owner`, `data`, `droga`, `skrzynki`,
+                                           `zdjecia`, `ost_pozycja_id`, `ost_log_id`, `hands_of`, `missing`,
+                                           `typ`, `avatarid`, `timestamp_oc`, `timestamp`)
+        VALUES ($id, '$trackingCode', '$name', NULL, NULL, NULL, '', '', '0', '', '', NULL, '$type', 1, '', '', now())";
+
+        return $this->executeInsert("insert geokret $id/$trackingCode", $sql);
     }
 
     public function givenWaypoint($wpCode, $lat, $lon) {
