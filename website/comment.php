@@ -109,7 +109,7 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
 		WHERE ru.ruch_id='$g_ruchid' AND ru.id='$g_gkid' AND ru.ruch_id=gk.ost_pozycja_id AND ru.logtype IN ('0','3') AND gk.typ!='2'
 		LIMIT 1";
 
-        $row = $db->exec_fetch_row($sql, $num_rows, 0, 'Przy tym logu nie mozna zglosic zaginiecia.'.' [#'.__LINE__.']', 7);
+        $row = $db->exec_fetch_row($sql, $num_rows, 0, 'With this log you can not report a loss.'.' [#'.__LINE__.']', 7);
 
         // jak wykryto blad to nie ma przebacz, bye!
 
@@ -132,7 +132,7 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
 		WHERE ru.ruch_id=$g_ruchid AND ru.id=$g_gkid
 		LIMIT 1";
 
-        $row = $db->exec_fetch_row($sql, $num_rows, 0, 'Dla tych danych wejsciowych (gk_id i ruch_id) nie mozna dodac komentarza!'.' [#'.__LINE__.']', 7);
+        $row = $db->exec_fetch_row($sql, $num_rows, 0, 'For these input data (gk_id and move_id) you can not add a comment!'.' [#'.__LINE__.']', 7);
 
         // jak wykryto blad to nie ma przebacz, bye!
         if ($num_rows <= 0) {
@@ -187,8 +187,8 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
 
     $TRESC .= '
     <div class="form-group">
-      <label class="control-label">'._('Your comment').'</label>
-      <input type="text" class="form-control" name="comment" id="text_field" maxlength="500" autofocus>
+      <label class="control-label">'._('Your comment').' *</label>
+      <input type="text" class="form-control" name="comment" id="text_field" minlength="1" maxlength="500" autofocus required>
     </div>
     <input type="hidden" name="gk_id" value="'.$g_gkid.'">
     <input type="hidden" name="ruch_id" value="'.$g_ruchid.'">
@@ -228,7 +228,7 @@ else {
             $sql = "SELECT ru.ruch_id FROM `gk-ruchy` ru
 		WHERE ru.ruch_id='$p_ruch_id' AND ru.id='$p_gk_id'";
         }
-        $db->exec_num_rows($sql, $num_rows, 0, 'Dla tych danych wejsciowych (post) nie mozna dodac komentarza.'.' [#'.__LINE__.']', 7);
+        $db->exec_num_rows($sql, $num_rows, 0, 'For these input data (post) you can not add a comment.'.' [#'.__LINE__.']', 7);
 
         // jak wykryto blad to nie ma przebacz, bye!
         if ($num_rows <= 0) {
@@ -301,7 +301,7 @@ else {
 
         $sql = "INSERT INTO `gk-ruchy-comments` (`ruch_id`, `kret_id`, `user_id`, `data_dodania`, `comment`, `type`)
 		  VALUES ('$p_ruch_id', '$p_gk_id', '$userid', '$now', '$p_comment_esc', '$comment_type')";
-        $db->exec_num_rows($sql, $num_rows, 0, 'Blad podczas dodawania nowego rekordu-komentarza.'.' [#'.__LINE__.']', 7);
+        $db->exec_num_rows($sql, $num_rows, 0, 'Error when adding a new record-comment.'.' [#'.__LINE__.']', 7);
 
         aktualizuj_komentarze_dla_ruchu($p_ruch_id);
 
@@ -344,7 +344,7 @@ else {
 			FROM `gk-ruchy-comments` co
 			LEFT JOIN `gk-geokrety` gk ON (co.kret_id = gk.id)
 			WHERE co.comment_id='$g_delete' LIMIT 1";
-            $row = $db->exec_fetch_row($sql, $num_rows, 0, 'Nieudana proba usuniecia komentarza, brak komentarza!'.' [#'.__LINE__.']', 7);
+            $row = $db->exec_fetch_row($sql, $num_rows, 0, '!'.' [#'.__LINE__.']', 7);
 
             // jak wykryto blad to nie ma przebacz, bye!
             if ($num_rows <= 0) {
@@ -384,7 +384,7 @@ else {
             */
 
             $sql = "DELETE FROM `gk-ruchy-comments` WHERE `comment_id` = '$g_delete' LIMIT 1";
-            $db->exec($sql, $num_rows, 0, 'Blad podczas usuwania rekordu-komentarza.', 7);
+            $db->exec($sql, $num_rows, 0, 'Error while deleting the record-comment.', 7);
 
             aktualizuj_komentarze_dla_ruchu($ruch_id);
 
@@ -406,7 +406,7 @@ else {
             if ((empty($p_comment)) and (ctype_digit($p_gk_id)) and (ctype_digit($p_ruch_id))) {
                 APIerror();
                 include_once 'defektoskop.php';
-                errory_add('Obsluga komentarzy - brak komentarza', 0);
+                errory_add('Comment support - no comment', 0);
                 header("Location: konkret.php?id=$p_gk_id#log$p_ruch_id");
                 exit;
             }
@@ -417,7 +417,7 @@ else {
                 if (ctype_digit($p_gk_id)) {
                     APIerror();
                     include_once 'defektoskop.php';
-                    errory_add('Obsluga komentarzy - brak wszystkich danych?', 50);
+                    errory_add('Commenting - no data available?', 50);
                     header("Location: konkret.php?id=$p_gk_id");
                     exit;
                 }
@@ -426,7 +426,7 @@ else {
                 else {
                     APIerror();
                     include_once 'defektoskop.php';
-                    errory_add('<b>eee? czyzby zly url a moze ktos sie wlamuje?</b>', 100);
+                    errory_add('<b>A bad url and maybe someone is breaking?</b>', 100);
                     echo return_error_message($something_went_wrong.' [#'.__LINE__.']');
                     exit;
                 }

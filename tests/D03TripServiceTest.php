@@ -26,7 +26,7 @@ class TripServiceTest extends GKTestCase {
     public function test_trips_cache() {
         // GIVEN
         $tripService = new \Geokrety\Service\TripService($this->mapDirectory, $this->verbose);
-        $geokretyId = 1234567;
+        $geokretyId = $this->testUtil->givenGeokret(1234567, 'name', '0', 'ABC123');
         $waypointAA = 'GC00AA1';
         $waypointAB = 'GC00AB1';
         $userIdA = $this->testUtil->givenRandomUser('testUserA', 'fr');

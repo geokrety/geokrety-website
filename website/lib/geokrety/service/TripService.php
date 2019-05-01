@@ -33,7 +33,7 @@ class TripService {
         $tripCacheId = $this->getTripCacheId($geokretyId);
         $tripCache = $this->cacheService->get($tripCacheId);
         if ($tripCache === null) {
-            $trips = $this->tripRepository->getByGeokretyId($geokretyId, $count);
+            $trips = $this->tripRepository->getByGeokretyId($geokretyId, $count, $noRecurs = true);
             $tripCache = $trips;
             $this->cacheService->set($tripCacheId, $trips);
         }

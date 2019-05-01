@@ -15,9 +15,9 @@ DOCKER_DEFAULT_MACHINE=default
 IMAGE_NAME=geokrety
 IMAGE_TAG=v0
 IMAGE_FULLNAME=${IMAGE_NAME}:${IMAGE_TAG}
-CONTAINER_NAME=devGeokrety
-DB_CONTAINER_NAME=dbGeokrety
-ADM_CONTAINER_NAME=adminer
+CONTAINER_NAME=geokrety_application
+DB_CONTAINER_NAME=geokrety_db
+ADM_CONTAINER_NAME=geokrety_adminer
 VOLUME_NAME=GKvolume
 
 # mount points
@@ -148,7 +148,7 @@ hasComposerDeps() {
   return $( [ -f "${PROJECT_DIR}/vendor/autoload.php" ] &&  [ -f "${WEBSITE_DIR}/vendor/autoload.php" ] )
 }
 command-help-help() {
- echo " are you recursive compliant ?"
+ echo " are you recursive compliant?"
 }
 command-help() {
  echo " type \"$0 help <command>\" in order to get details about a command"
@@ -351,30 +351,41 @@ command-run() {
     command-run-linux
   fi
 }
+run-info() {
+  echo
+  echo "lets go !"
+#   echo "     Push-gateway - http://gk:9091"
+#   echo "     Prometheus   - http://gk:9090"
+  echo "     Adminer      - http://gk:8880/?server=db&username=root&db=geokrety-db"
+  echo "     Geokrety     - http://gk/"
+  echo "NB/ you could have to wait a minute while database init."
+
+  echo "TODO to move to base docker image :"
+  echo "- execute 'gk sh' then:"
+  echo "pecl install redis"
+  echo "docker-php-ext-enable redis"
+  echo "service apache2 reload"
+}
+
 command-run-windows() {
   if ! hasWebsiteMapping || ! hasConfigMapping; then
     echo " X please run $0 install";
     exit 1
   fi
   DOCKER_IP=$(docker-machine ip ${DOCKER_DEFAULT_MACHINE})
-  learnAndLaunch ${DOCKER_COMPOSE} up -d
+  learnAndLaunch ${DOCKER_COMPOSE} up -d || exit 1
 
   echo
   echo " - 'C:\Windows\System32\drivers\etc\hosts' aliases to verify:"
   echo "     ${DOCKER_IP}  gk"
   echo
-  echo "lets go !"
-  echo "     Adminer    - http://gk:8880/?server=db&username=root&db=geokrety-db"
-  echo "     Geokrety   - http://gk/"
-  echo "NB/ you could have to wait a minute while database init."
+  run-info
 }
-command-run-linux() {
-  learnAndLaunch ${DOCKER_COMPOSE} up -d
 
-  echo
-  echo "lets go !"
-  echo "     Adminer    - http://127.0.0.1:8880/?server=db&username=root&db=geokrety-db"
-  echo "     Geokrety   - http://127.0.0.1:8000/"
+command-run-linux() {
+  learnAndLaunch ${DOCKER_COMPOSE} up -d || exit 1
+
+  run-info
 }
 command-help-ps() {
  echo " show docker containers execution status (default docker machine)"
@@ -494,13 +505,13 @@ command-alias() {
   if isWindowsHost; then
     PREFIX="winpty "
   fi
-  alias gk_phperrors="${PREFIX}${DOCKER_CMD} exec -it devGeokrety sh -c \"cat /tmp/PHP_errors.log\""
+  alias gk_phperrors="${PREFIX}${DOCKER_CMD} exec -it geokrety_application sh -c \"cat /tmp/PHP_errors.log\""
   # update waypointy : import them from third parties
-  alias gk_wp_update="${PREFIX}${DOCKER_CMD} exec -it devGeokrety sh -c \"cd /opt/geokrety-scripts/waypointy/oc && php xml2sql.php\""
+  alias gk_wp_update="${PREFIX}${DOCKER_CMD} exec -it geokrety_application sh -c \"cd /opt/geokrety-scripts/waypointy/oc && php xml2sql.php\""
   # report waypointy translations
-  alias gk_wp_report="${PREFIX}${DOCKER_CMD} exec -it devGeokrety sh -c \"cd /opt/geokrety-scripts/waypointy/oc && php waypointy-translations.php report\""
+  alias gk_wp_report="${PREFIX}${DOCKER_CMD} exec -it geokrety_application sh -c \"cd /opt/geokrety-scripts/waypointy/oc && php waypointy-translations.php report\""
   # generate waypointy translations template
-  alias gk_wp_generate="${PREFIX} ${DOCKER_CMD} exec -it devGeokrety sh -c \"cd /opt/geokrety-scripts/waypointy/oc && php waypointy-translations.php generate\""
+  alias gk_wp_generate="${PREFIX} ${DOCKER_CMD} exec -it geokrety_application sh -c \"cd /opt/geokrety-scripts/waypointy/oc && php waypointy-translations.php generate\""
   echo
   echo " geokrety project alias : "
   alias |grep gk_

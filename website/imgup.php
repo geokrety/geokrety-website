@@ -1,16 +1,16 @@
 <?php
 
 require_once '__sentry.php';
+use Geokrety\Service\ValidationService;
 
 // smarty cache
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
+loginFirst();
 
-require_once 'czysc.php';
-
-$max_file_size = 110000;
-$max_width = 800;
-$max_height = 700;
+$max_file_size = ini_get('upload_max_filesize');
+$max_width = 6000;
+$max_height = 6000;
 $allow_types = array('image/jpeg', 'image/pjpeg', 'image/png', 'image/gif');
 $save_desc_cookie_period = 15; // minutes
 $save_desc_cookie_name = 'gk_imgup0';
@@ -19,30 +19,29 @@ $longin_status = longin_chceck();
 $userid = $longin_status['userid'];
 
 $g_all_id = $_GET['all_id'];
-// autopoprawione...
 $g_id = $_GET['id'];
-// autopoprawione...
 $g_rename = $_GET['rename'];
-// autopoprawione...
 $g_typ = $_GET['typ'];
-// autopoprawione...import_request_variables('g', 'g_');
 
 $p_avatar = $_POST['avatar'];
-// autopoprawione...
 $p_formname = $_POST['formname'];
-// autopoprawione...
 $p_multiphoto_nr = $_POST['multiphoto_nr'];
-// autopoprawione...
-$p_opis = $_POST['opis'];
-// autopoprawione...
+$p_opis = ValidationService::noHtml($_POST['opis']);
 $p_save_desc = $_POST['save_desc'];
-// autopoprawione...
 $p_submit = $_POST['submit'];
-// autopoprawione...import_request_variables('p', 'p_');
 
-//obsluga multiphoto zanim zaczniemy cokolwiek robic
+$template = 'dialog/picture_upload.tpl';
+$smarty->assign('max_width', $max_width);
+$smarty->assign('max_height', $max_height);
+$smarty->assign('max_file_size', $max_file_size);
+$smarty->assign('save_desc_cookie_period', $save_desc_cookie_period);
+$smarty->assign('save_desc_cookie', $_COOKIE[$save_desc_cookie_name]);
+$smarty->assign('type', $g_typ);
+$smarty->assign('id', $g_id);
+
+// multiphoto support before we start doing anything
 if (($p_formname == 'multiphoto') && (count($p_multiphoto_nr) > 0)) {
-    //obsluga formy multiphoto, teraz pokazemy zwykly formularz ale dopiszemu mu pole all_id zlozony ze wszystkich numerow logow oddzielonych kropkami
+    // multiphoto form support, now we will show a regular form but add it to the all_id field made up of all log numbers separated by dots
     $g_typ = 1;
     $g_id = $p_multiphoto_nr[0];
 
@@ -55,131 +54,114 @@ if (($p_formname == 'multiphoto') && (count($p_multiphoto_nr) > 0)) {
     $multiphoto = true;
 } else {
     if (isset($g_all_id)) {
-        //obsluga imgup gdy wgrywamy juz zdjecie i jest ustawione pole all_id
+        // imgup support when uploading a photo and the all_id field is set
         $all_id = $g_all_id;
         $multiphoto = true;
     } else {
-        //zwykla obsluga imgup, bez pola all_id
+        // simple imgup support, no all_id field
         $all_id = '';
         $multiphoto = false;
     }
 }
 
-if ($userid == null) {
-    $errors[] = "<a href='/longin.php'>"._('Please login.').'</a>';
-}
 if (!ctype_digit($g_typ) or !ctype_digit($g_id)) {
-    $errors[] = _('Invalid input');
-}
-
-// jak wykryto blad to nie ma przebacz, bye!
-if (isset($errors)) {
-    include_once 'defektoskop.php';
-    $TRESC = defektoskop($errors, true, '', 3, 'imgup');
-    include_once 'smarty.php';
-    exit;
+    danger(_('Invalid input'), $redirect = true);
 }
 
 //$rename = true when user supplied valid number but we dont know if he has the right to rename this picture
 if (ctype_digit($g_rename)) {
     $rename = true;
+    $smarty->assign('picture_id', $g_rename);
 } else {
     $rename = false;
 }
 
 if ($rename) {
-    $TYTUL = _('Rename image');
+    $smarty->assign('modal_title', _('Rename image'));
 } elseif ($multiphoto) {
-    $TYTUL = _('Image upload').sprintf(' (for %d logs)', $multiphoto_count);
+    $smarty->assign('modal_title', sprintf(_('Image upload for %d logs'), $multiphoto_count));
 } else {
-    $TYTUL = _('Image upload');
+    $smarty->assign('modal_title', _('Image upload'));
 }
 
 //set some more default values
 $id_kreta = -1;
 $can_set_avatar = false;      // check if current user is the owner and then let mark a photo as an avatar
-$editing_mode = false;        // check if current user has the right to rename requested picture
-$allowed_to_upload = false;   // check if current user can upload requested photo type
+$smarty->assign('editing_mode', false); // check if current user has the right to rename requested picture
+$smarty->assign('can_set_avatar', false);
 
 // ------------------------------------------------------ serious business starts from here ;-))
 
-$link = DBConnect();
-
 if ($rename) { //check if we are allowed to rename
-    $sql2 = "SELECT opis, typ, plik FROM `gk-obrazki` WHERE obrazekid='$g_rename' AND user='$userid' LIMIT 1";
-    $result2 = mysqli_query($link, $sql2);
-    $row2 = mysqli_fetch_row($result2);
-    mysqli_free_result($result2);
-    list($f_opis, $f_typ, $f_obrazki_plik) = $row2;
-    if ($row2 != '') {
-        $editing_mode = true;
-    } else {
-        $errors[] = 'Error #12012110';
-    } // Cannot rename this photo because you are not it\'s author!
+    $pictureR = new \Geokrety\Repository\PictureRepository(GKDB::getLink());
+    $picture = $pictureR->getById($g_rename);
+
+    if (is_null($picture)) {
+        danger(_('No such picture'), $redirect = true);
+    }
+
+    if (!$picture->isOwner()) {
+        danger(_('Cannot rename this photo because you are not it\'s author!'), $redirect = true);
+    }
+    $smarty->assign('editing_mode', true);
+    $smarty->assign('picture', $picture);
 }
 
-// jaki typ logu
-if ($g_typ == '0' or $g_typ == '3') { //kret
-    $sql2 = "SELECT nazwa FROM `gk-geokrety` WHERE id='$g_id' LIMIT 1";
-    $result2 = mysqli_query($link, $sql2);
-    $row2 = mysqli_fetch_row($result2);
-    mysqli_free_result($result2);
-    if ($row2[0] != '') {
-        if ($rename) {
-            $TYTUL = _('Rename image of').' '.$row2[0];
-        } else {
-            $TYTUL = _('Upload image for').' '.$row2[0];
-        }
+// what type of log
+if ($g_typ == '0') { //kret
+    $gkR = new \Geokrety\Repository\KonkretRepository(GKDB::getLink());
+    $geokret = $gkR->getById($g_id);
+
+    if (is_null($geokret)) {
+        danger(_('No such GeoKret'), $redirect = true);
     }
 
-    $sql2 = "SELECT id FROM `gk-geokrety` WHERE id='$g_id' AND owner='$userid' LIMIT 1";
-    $result2 = mysqli_query($link, $sql2);
-    $row2 = mysqli_fetch_row($result2);
-    mysqli_free_result($result2);
-    list($id_kreta) = $row2;
-    if ($id_kreta != '') {
-        $can_set_avatar = true;
-        $allowed_to_upload = true;
-    } else {
-        $errors[] = 'Error #12012111';
-    } //Cannot add this type of photo because you are not the owner of this geokret!
+    if (!$geokret->isOwner()) {
+        danger(_('Cannot add this type of photo because you are not the owner of this GeoKret!'), $redirect = true);
+    }
+    $can_set_avatar = true;
+    $smarty->assign('can_set_avatar', true);
+
+    if ($geokret->name) {
+        if ($rename) {
+            $smarty->assign('modal_title', sprintf(_('Rename image of %s'), $geokret->name));
+        } else {
+            $smarty->assign('modal_title', sprintf(_('Upload image for %s'), $geokret->name));
+        }
+    }
+    $id_kreta = $geokret->id;
 } elseif ($g_typ == '1') { // log
-    $sql2 = "SELECT nazwa FROM `gk-geokrety` WHERE id=(SELECT id FROM `gk-ruchy` WHERE ruch_id='$g_id' AND user='$userid' LIMIT 1) LIMIT 1";
-    $result2 = mysqli_query($link, $sql2);
-    $row2 = mysqli_fetch_row($result2);
-    mysqli_free_result($result2);
-    if ($row2[0] != '' && !$multiphoto) {
-        if ($rename) {
-            $TYTUL = _('Rename image of').' '.$row2[0];
-        } else {
-            $TYTUL = _('Upload image for').' '.$row2[0];
-        }
+    $tripR = new \Geokrety\Repository\TripRepository(GKDB::getLink());
+    $trip = $tripR->getByTripId($g_id);
+
+    if (is_null($trip)) {
+        danger(_('No such trip'), $redirect = true);
     }
 
-    $sql2 = "SELECT id FROM `gk-ruchy` WHERE ruch_id='$g_id' AND user='$userid' LIMIT 1";
-    $result2 = mysqli_query($link, $sql2);
-    $row2 = mysqli_fetch_row($result2);
-    mysqli_free_result($result2);
-    list($id_kreta) = $row2;
-    if ($id_kreta != '') {
-        $allowed_to_upload = true;
-    } else {
-        $errors[] = 'Error #12012112';
-    } //_('Cannot add this type of photo because you haven\'t moved this geokret!');
+    if (!$trip->isAuthor()) {
+        danger(_('Cannot add this type of photo because you haven\'t moved this GeoKret!'), $redirect = true);
+    }
+
+    if (!empty($trip->geokret->name) && !$multiphoto) {
+        if ($rename) {
+            $smarty->assign('modal_title', sprintf(_('Rename image for %s'), $trip->geokret->name));
+        } else {
+            $smarty->assign('modal_title', sprintf(_('Upload image for %s'), $trip->geokret->name));
+        }
+    }
+    $id_kreta = $trip->geokretId;
 } elseif ($g_typ == '2') { // user
-    if ($g_id == $userid) {
-        $allowed_to_upload = true;
-    } else {
-        $errors[] = 'Error #12012113';
-    } //_('Cannot add a photo to somebody else\'s profile!');
+    if ($g_id != $userid) {
+        danger(_('Cannot add a photo to somebody else\'s profile!'), $redirect = true);
+    }
     $id_kreta = 0;
 }
 
-if ($_FILES['obrazek'] and $allowed_to_upload) {
+if ($_FILES['obrazek']) {
     $OBRAZEK = $_FILES['obrazek'];
     $uploadfile = $config['obrazki'].basename($OBRAZEK['name']);
 
-    // ustawienia kukisowe
+    // link settings
     if ($g_typ == '1') {
         if ($p_save_desc == 'true') {
             setcookie($save_desc_cookie_name, $p_opis, time() + $save_desc_cookie_period * 60);
@@ -188,17 +170,13 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
         }
     }
 
-    //print_r($OBRAZEK);
-
     if (($OBRAZEK['error'] == 1) || ($OBRAZEK['error'] == 2)) {
         $errors[] = _('Uploaded file too large');
-    } elseif ($OBRAZEK['size'] > $max_file_size) {
+    } elseif ($OBRAZEK['size'] > $max_file_size * 1024 * 1024) {
         $errors[] = _('Uploaded file too large').' ('.$OBRAZEK['size'].'b)';
     } elseif (!in_array(strtolower($OBRAZEK['type']), $allow_types)) {
         $errors[] = _('Uploaded image format not supported').' ('.$OBRAZEK['type'].')';
-    }
-
-    if ($OBRAZEK['error'] != 0) {
+    } elseif ($OBRAZEK['error'] != 0) {
         $errors[] = _('Other error').' ('.$OBRAZEK['error'].')';
     }
     if ($OBRAZEK['tmp_name']) {
@@ -215,32 +193,40 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
     include_once 'defektoskop.php';
     errory_add('NEW PHOTO<br/>size='.$OBRAZEK['size']." $width x $height", 0, 'new_photo');
 
-    // jak wykryto blad to nie ma przebacz, bye!
+    // as an error has been detected, there is no forgiveness, bye!
     if (isset($errors)) {
         include_once 'defektoskop.php';
         $TRESC = defektoskop($errors, true, '', 3, 'imgup');
-        include_once 'smarty.php';
-        exit;
+        foreach ($errors as $error) {
+            danger($error);
+        }
+        header('Location: '.(isset($_POST['goto']) ? $_POST['goto'] : '/'));
+        die();
     }
 
     // -----------------------------------------------------------------------------------
 
     include_once 'random_string.php';
     $stara_nazwa = '';
-    $p_opis = czysc($p_opis);
 
     if ($all_id == '') {
         $all_id = $g_id;
     }
     $numery = explode('.', $all_id);
+    $tripR = new \Geokrety\Repository\TripRepository(GKDB::getLink());
     for ($i = 0; $i < count($numery); ++$i) {
         $g_id = $numery[$i];
         if ($multiphoto) {
-            //w przypadku multiphoto musimy pobrac id_kreta dla kazdego logu
-            $result = mysqli_query($link, "SELECT id FROM `gk-ruchy` WHERE ruch_id='$g_id' AND user='$userid' LIMIT 1");
-            $row = mysqli_fetch_row($result);
-            mysqli_free_result($result);
-            $id_kreta = $row[0];
+            $trip = $tripR->getByTripId($g_id);
+
+            if (is_null($trip)) {
+                danger(sprintf(_('No such trip %1'), $g_id), $redirect = true);
+            }
+
+            if (!$trip->isAuthor()) {
+                danger(sprintf(_('Your not the author of trip %1'), $g_id), $redirect = true);
+            }
+            $id_kreta = $trip->geokretId;
         }
 
         $filename = time().random_string(5);
@@ -251,52 +237,54 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
         if ((move_uploaded_file($OBRAZEK['tmp_name'], $uploadfile)) or (($stara_nazwa != '') and (copy($stara_nazwa, $uploadfile)))) {
             $stara_nazwa = $uploadfile;
 
-            // ------------------ ImageMagick ------------------ //
-            //if($extension == "jpg") exec("convert -strip -quality 72 $uploadfile $uploadfile");
-            //simor - jezeli userowi powiodlo sie zmniejszenie pliku do wymaganych rozmiarow to nie edytujmy juz jego pliku
-            // w przyszlosci, mozna tutaj napisac f-cje ktora po wgraniu oryginalnej fotki, sama je obetnie do tych ~100kb
-
+            exec("convert $uploadfile -resize 1280x1280\> $uploadfile");
             exec("convert -size 300x300 $uploadfile -thumbnail x200   -resize '200x<'   -resize 50% -gravity center -crop 100x100+0+0  +repage ".$config['obrazki-male']."$filename.$extension");
 
-            chmod($uploadfile, 0666);
-            chmod($config['obrazki-male']."$filename.$extension", 0666);
+            chmod($uploadfile, 0664);
+            chmod($config['obrazki-male']."$filename.$extension", 0664);
 
             // ------------------------ SQL ------------------------- //
+            $picture = new \Geokrety\Domain\Picture();
+            $picture->type = $g_typ;
+            $picture->tripId = $g_id;
+            $picture->geokretId = $id_kreta;
+            $picture->userId = $userid;
+            $picture->filename = $filename.'.'.$extension;
+            $picture->caption = $p_opis;
 
-            $sql = "INSERT INTO `gk-obrazki` (typ, id, id_kreta, user, plik, opis)
-					VALUES ('$g_typ', '$g_id', '$id_kreta', '$userid', '$filename.$extension', '$p_opis')";
-
-            if (mysqli_query($link, $sql)) {
-                if ($g_typ == '1') {
-                    mysqli_query($link,
-                        "UPDATE `gk-ruchy` SET zdjecia = (SELECT count(*) FROM `gk-obrazki` ob WHERE ob.id = '$g_id' AND ob.typ='1')
-								WHERE ruch_id='$g_id'"
-                    );
-                }
-
-                if ($can_set_avatar and ($p_avatar) == 'true') {
-                    //get last inserted id (cannot use mysqli_insert_id() because of persistant connections
-                    $result = mysqli_query($link, "SELECT obrazekid FROM `gk-obrazki` WHERE id = '$g_id' AND plik = '$filename.$extension' LIMIT 1");
-                    list($last_inserted_id) = mysqli_fetch_array($result);
-                    mysqli_free_result($result);
-
-                    mysqli_query($link, "UPDATE `gk-geokrety` SET avatarid='$last_inserted_id' WHERE id='$id_kreta'");
-                }
-            } else {
-                $TRESC = 'Error #2314';
+            if (!$picture->insert()) {
+                danger(_('Failed to save picture…'), $redirect = true);
             }
 
-            //$TRESC = "<p>Ok.</p><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$filename.$extension\" /><p>$p_opis</p>";
+            if ($g_typ == '1') {
+                $tripR = new \Geokrety\Repository\TripRepository(GKDB::getLink());
+                $trip = $tripR->getByTripId($g_id);
+
+                $pictureR = new \Geokrety\Repository\PictureRepository(GKDB::getLink());
+                $trip->picturesCount = $pictureR->countTotalPicturesByTripId($g_id);
+                if (!$trip->update()) {
+                    danger(_('Failed to save pictureCount…'), $redirect = true);
+                }
+            }
+
+            if ($can_set_avatar and $p_avatar == 'on') {
+                $geokretR = new \Geokrety\Repository\KonkretRepository(GKDB::getLink());
+                $gk = $geokretR->getById($id_kreta);
+                $gk->avatarId = $picture->id;
+                if (!$gk->update()) {
+                    danger(_('Failed to save avatarId…'), $redirect = true);
+                }
+            }
+            success(_('Picture saved'));
         } else {
-            $TRESC = 'Error #20100111';
-            include_once 'smarty.php';
-            exit();
+            danger(_('Failed to move uploaded file…'), $redirect = true);
         }
     }
 
-    // na zakonczenie przekierowanie w jakies drogie uzytkownikowi miejsce :)
+    // for ending redirection in any pricey place for the user :)
     if ($multiphoto) {
         header("Location: mypage.php?userid=$userid&co=3&multiphoto=1");
+        die();
     } else {
         $link_obrazek['0'] = 'konkret.php?id=';
         $link_obrazek['1'] = $link_obrazek['0'];
@@ -305,19 +293,24 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
 
         if ($id_kreta == 0) {
             $identyfikator = $g_id;
-        } // id logu
+        } // id window
         else {
             $identyfikator = $id_kreta;
         }
 
         header('Location: '.$link_obrazek[$g_typ].$identyfikator);
-        exit();
+        die();
     }
-} elseif ($p_submit != '' && $p_formname == 'rename') { //WHEN SUBMITTING A RENAME FORM  ---------------------------------
-    $p_opis = czysc($p_opis);
-    $sql = "UPDATE `gk-obrazki` SET opis='$p_opis' WHERE obrazekid='$g_rename'";
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $p_formname == 'rename') { //WHEN SUBMITTING A RENAME FORM  ---------------------------------
+    $pictureR = new \Geokrety\Repository\PictureRepository(GKDB::getLink());
+    $picture = $pictureR->getById($g_rename);
+    $picture->caption = $p_opis;
 
-    $result = mysqli_query($link, $sql) or $TRESC = 'Error #2315';
+    if (!$picture->update()) {
+        danger(_('Failed to update picture caption…'), $redirect = true);
+    }
+
+    success(_('Picture updated'));
 
     $link_obrazek['0'] = 'konkret.php?id=';
     $link_obrazek['1'] = $link_obrazek['0'];
@@ -325,82 +318,12 @@ if ($_FILES['obrazek'] and $allowed_to_upload) {
 
     if ($id_kreta == 0) {
         $identyfikator = $g_id;
-    } // id logu
+    } // id window
     else {
         $identyfikator = $id_kreta;
     }
     header('Location: '.$link_obrazek[$g_typ].$identyfikator);
-} else { // ------------------------------------------------------------------------------------------------------------------------------------
-    // generujemy forme
-    if ($errors == '') {
-        $BODY .= 'onload="count_remaining(\'opis\', \'licznik\', 50)" ';
-        $OGON .= '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';    // character counters
-        $HEAD .=
-        '<style type="text/css">
-table.imgup1{
-	width: 300px;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	margin-left:auto;
-	margin-right:auto;
-	padding:5px;
-}
-table.imgup2{
-	width: 540px;
-	border: 2px solid #a7d940;
-	padding:15px 10px 15px 10px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:20px;
-	margin-bottom:20px;
-}
-.imgup3{
-	width:110px;
-	margin-left:auto;
-	margin-right:auto;
-}
-</style>';
-
-        if (!$editing_mode) {
-            $TRESC .= '<table class="imgup1">'.
-                        '<tr><td>'._('Supported image types').':</td><td>jpg, png, gif</td></tr>'.
-                        '<tr><td>'._('Maximum width').':</td><td>'.$max_width.' px</td></tr>'.
-                        '<tr><td>'._('Maximum height').':</td><td>'.$max_height.' px</td></tr>'.
-                        '<tr><td>'._('Maximum file size').':</td><td>'.$max_file_size.' bytes</td></tr>'.
-                        '</table>';
-            $old_opis = 'value="'.htmlentities($_COOKIE[$save_desc_cookie_name], ENT_QUOTES, 'UTF-8', false).'" ';
-        } else {
-            $old_opis = 'value="'.htmlentities($f_opis, ENT_QUOTES, 'UTF-8', false).'" ';
-        }
-
-        //$TRESC .= "<div width='100%' height='2em'></div>";
-
-        $tmp_js_count_remaining = "count_remaining(\\'opis\\', \\'licznik\\', 50);";
-        $tmp_js_preview_text_in_picture = " copy_value_to_innerHTML(\\'opis\\',\\'pic\\');";
-
-        $tmp_js = '<script type="text/javascript">
-		<!--
-		document.write(\'<input id="opis" name="opis" size="50" '.$old_opis.'maxlength="50" onkeyup="'.$tmp_js_count_remaining.$tmp_js_preview_text_in_picture.'" /><br/><span class="bardzomale">'._('Characters left:').' <span style="text-align:left" id="licznik"></span></span>\');
-		//-->
-		</script><noscript><input id="opis" name="opis" size="50" '.$old_opis.'maxlength="50" /></noscript>';
-
-        $TRESC .= '<form name="imgup" method="post" enctype="multipart/form-data" action="'.$_SERVER['PHP_SELF'].'?typ='.$g_typ.'&amp;id='.$g_id.($rename ? '&amp;rename='.$g_rename : '').($multiphoto ? '&amp;all_id='.$all_id : '').'">'.
-            ($editing_mode ? ' <input type="hidden" name="formname" value="rename" />' : '').
-            '<table class="imgup2">'.
-            ($editing_mode ? '' : ' <tr><td><input type="hidden" name="MAX_FILE_SIZE" value="'.$max_file_size.'" /><div style="text-align:right">'._('File:').' </div></td><td><input type="file" name="obrazek" size="50"/></td></tr>').
-            ' <tr><td><div style="text-align:right">'._('Description').': </div></td><td>'.$tmp_js.'</td></tr>'.
-            (($can_set_avatar and $allowed_to_upload and !$editing_mode) ? ' <tr><td><div style="text-align:right">'._('Use as avatar').': </div></td><td><input id="avatar" type="checkbox" name="avatar" value="true" /><span class="bardzomale"> ('.sprintf(_('Geokret\'s main picture, displayed under this icon: %s'), '<img src="'.CONFIG_CDN_ICONS.'/idcard.png" alt="avatar"/>').')</span></td></tr>' : '').
-            ((($g_typ == '1') and !$editing_mode) ? ' <tr><td><div style="text-align:right">'._('Remember').': </div></td><td><input id="save_desc" type="checkbox" name="save_desc" value="true" '.(empty($_COOKIE[$save_desc_cookie_name]) ? '' : 'checked').'/> <img src="'.CONFIG_CDN_ICONS.'/help.png" alt="HELP" border="0" height="11" width="11" title="'.sprintf(_('Remember the description for the next %d minutes'), $save_desc_cookie_period).'"></td></tr>' : '').
-            ' <tr><td></td><td><input type="submit" name="submit" value="Go!" /></td></tr>'.
-            '</table>'.
-            '</form>';
-
-        ($f_obrazki_plik == '') ? $tmpphoto = CONFIG_CDN_ICONS.'/empty_obrazek.png' : $tmpphoto = CONFIG_CDN_OBRAZKI_MALE."/$f_obrazki_plik";
-        $TRESC .= "<div class='imgup3'><span class=\"obrazek\"><img src=\"$tmpphoto\" border=\"0\" alt=\"$f_opis\" title=\"$f_opis\" width=\"100\" height=\"100\"/><br /><span id=\"pic\">$f_opis</span></span></div>";
-    } else {   // errory
-        include_once 'defektoskop.php';
-        $TRESC = defektoskop($errors, true, '', 3, 'imgup');
-    }
+    die();
 }
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //

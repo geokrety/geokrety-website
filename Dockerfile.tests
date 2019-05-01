@@ -1,0 +1,16 @@
+ARG BASE_IMAGE=geokrety/website-legacy-base
+ARG BASE_TAG=latest
+FROM ${BASE_IMAGE}:${BASE_TAG}
+
+RUN apt update \
+ && apt-get install -y software-properties-common gnupg2 \
+ && apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8 \
+ && add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.1/debian stretch main' \
+ && apt update \
+ && DEBIAN_FRONTEND=noninteractive apt install -y mariadb-server \
+ && apt clean
+
+WORKDIR /usr/local/src/geokrety/
+COPY scripts/docker-tests-entrypoint.sh /
+
+ENTRYPOINT /bin/bash /docker-tests-entrypoint.sh

@@ -19,10 +19,6 @@ if (!function_exists('licznikejro')) {
 
         $ile = $row[1];
 
-        session_start();
-        //if(empty($_SESSION[$sesid . "geokrety" . $row[0]])){
-        //        $_SESSION[$sesid . "geokrety" .  $row[0]] = 1;
-
         if (empty($_SESSION['geokrety'.$row[0]])) {
             $_SESSION['geokrety'.$row[0]] = 1;
 
@@ -34,7 +30,7 @@ if (!function_exists('licznikejro')) {
 
         $srednio = sprintf('%.1f', $ile / (($dzisiaj - strtotime($row[2])) / 86400));
 
-        $tablica = array($ile, $srednio, $row[2]);
+        $tablica = array('total' => $ile, 'average' => $srednio, 'date' => $row[2]);
 
         return $tablica;
     }

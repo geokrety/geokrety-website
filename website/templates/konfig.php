@@ -3,6 +3,7 @@
 // config file for GeoKrety
 $config['prod_server_name'] = isset($_ENV['PROD_SERVER_NAME']) ? $_ENV['PROD_SERVER_NAME'] : 'geokrety.org';
 $config['adres'] = isset($_ENV['SERVER_URL']) ? $_ENV['SERVER_URL'] : $config['prod_server_name'];
+$config['gk_version'] = isset($_ENV['GK_VERSION']) ? $_ENV['GK_VERSION'] : 'dev';
 
 // MySQL config
 $config['host'] = isset($_ENV['DB_HOSTNAME']) ? $_ENV['DB_HOSTNAME'] : 'db';
@@ -10,6 +11,12 @@ $config['username'] = isset($_ENV['DB_USERNAME']) ? $_ENV['DB_USERNAME'] : 'xxx'
 $config['pass'] = isset($_ENV['DB_PASSWORD']) ? $_ENV['DB_PASSWORD'] : 'xxx';
 $config['db'] = isset($_ENV['DB_NAME']) ? $_ENV['DB_NAME'] : 'xxx';
 $config['charset'] = isset($_ENV['DB_CHARSET']) ? $_ENV['DB_CHARSET'] : 'utf8';
+
+// Redis
+$config['redis_dsn'] = isset($_ENV['REDIS_DSN']) ? $_ENV['REDIS_DSN'] : 'tcp://redis:6379';
+
+// Session
+$config['session_in_redis'] = isset($_ENV['SESSION_IN_REDIS']) ? filter_var($_ENV['SESSION_IN_REDIS'], FILTER_VALIDATE_BOOLEAN) : false;
 
 // CDN url
 $config['cdn_url'] = isset($_ENV['CDN_SERVER_URL']) ? $_ENV['CDN_SERVER_URL'] : 'https://cdn.geokrety.org';
@@ -56,9 +63,10 @@ $config['superusers'] = array('1', '6262', '26422');
 // Email gateway
 $config['pop_hostname'] = isset($_ENV['POP_HOSTNAME']) ? $_ENV['POP_HOSTNAME'] : 'pop.gmail.com';
 $config['pop_port'] = isset($_ENV['POP_PORT']) ? $_ENV['POP_PORT'] : 995;
-$config['pop_tls'] = isset($_ENV['POP_TLS']) ? $_ENV['POP_TLS'] : true;
+$config['pop_tls'] = isset($_ENV['POP_TLS']) ? filter_var($_ENV['POP_TLS'], FILTER_VALIDATE_BOOLEAN) : true;
 $config['pop_username'] = isset($_ENV['POP_USERNAME']) ? $_ENV['POP_USERNAME'] : 'xxx';
 $config['pop_password'] = isset($_ENV['POP_PASSWORD']) ? $_ENV['POP_PASSWORD'] : 'xxx';
+$config['support_mail'] = isset($_ENV['SUPPORT_MAIL']) ? $_ENV['SUPPORT_MAIL'] : 'xxx';
 
 // Sentry integration
 $config['sentry_dsn'] = isset($_ENV['SENTRY_DSN']) ? $_ENV['SENTRY_DSN'] : 'https://xx:yyy@zzz/1';
@@ -70,11 +78,14 @@ $config['piwik_site_id'] = isset($_ENV['PIWIK_SITE_ID']) ? $_ENV['PIWIK_SITE_ID'
 $config['piwik_token'] = isset($_ENV['PIWIK_TOKEN']) ? $_ENV['PIWIK_TOKEN'] : '';
 
 // Partners
-$config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
+$config['cache_wpt_link_gc'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
+$config['cache_wpt_link_n'] = 'http://www.navicache.com/cgi-bin/db/displaycache2.pl?CacheID=';
 
 // map api url
 $config['geokrety_map_url'] = isset($_ENV['GEOKRETY_MAP_URL']) ? $_ENV['GEOKRETY_MAP_URL'] : 'https://api.geokretymap.org';
+$config['geokrety_map_default_params'] = isset($_ENV['GEOKRETY_MAP_DEFAULT_PARAMS']) ? $_ENV['GEOKRETY_MAP_DEFAULT_PARAMS'] : '#2/42.941/2.109/1/1/0/0/90/';
 define('GEOKRETY_MAP_URL', $config['geokrety_map_url']);
+define('GEOKRETY_MAP_DEFAULT_PARAMS', $config['geokrety_map_default_params']);
 
 // input validation
 $config['waypointy_min_length'] = 4;
@@ -104,6 +115,7 @@ $config['cdn_css'] = $config['cdn_url'].'/css';
 $config['cdn_maps'] = $config['cdn_url'].'/maps';
 
 define('CONFIG_PROD_SERVER_NAME', $config['prod_server_name']);
+define('CONFIG_GK_VERSION', $config['gk_version']);
 define('CONFIG_CDN', $config['cdn_url']);
 define('CONFIG_CDN_IMAGES', $config['cdn_images']);
 define('CONFIG_CDN_BANNERS', $config['cdn_banners']);
@@ -120,36 +132,81 @@ define('CONFIG_CDN_JS', $config['cdn_js']);
 define('CONFIG_CDN_CSS', $config['cdn_css']);
 define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 
+// Some configs
+define('CHECK_NR_MAX_PROCESSED_ITEMS', isset($_ENV['CHECK_NR_MAX_PROCESSED_ITEMS']) ? $_ENV['CHECK_NR_MAX_PROCESSED_ITEMS'] : 10);
+
 //js
 $config['funkcje.js'] = '/funkcje.js';
 $config['ajaxtooltip.js'] = CONFIG_CDN_LIBRARIES.'/ajaxtooltip/ajaxtooltip-1.min.js';
 $config['securimage'] = 'templates/libraries/securimage-3.6.7/';
-define('CDN_BOOTSTRAP_DATEPICKER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-datepicker/1.8.0/bootstrap-datepicker.min.js');
-define('CDN_BOOTSTRAP_DATEPICKER_CSS', CONFIG_CDN_LIBRARIES.' /libs/bootstrap-datepicker/1.8.0/bootstrap-datepicker3.min.css');
+define('CDN_BOOTSTRAP_DATEPICKER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js');
+define('CDN_BOOTSTRAP_DATEPICKER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css');
+
+define('CDN_BOOTSTRAP_DATETIMEPICKER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
+define('CDN_BOOTSTRAP_DATETIMEPICKER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
+
+define('CDN_BOOTSTRAP_3_TYPEAHEAD_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js');
+
+define('CDN_BOOTSTRAP_TAGSINPUT_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js');
+define('CDN_BOOTSTRAP_TAGSINPUT_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css');
+
+define('CDN_MOMENT_JS', CONFIG_CDN_LIBRARIES.'/moment.js/2.24.0/moment-with-locales.min.js');
+define('CDN_LATINIZE_JS', CONFIG_CDN_LIBRARIES.'/latinize/0.4.0/latinize.min.js');
 
 define('CDN_COLORBOX_JS', CONFIG_CDN_LIBRARIES.'/colorbox/1.6.4/jquery.colorbox-min.js');
 define('CDN_COLORBOX_CSS', CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css');
 
 define('CDN_LEAFLET_JS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.js');
 define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
+define('CDN_LEAFLET_CENTERCROSS_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');
+define('CDN_LEAFLET_AJAX_JS', CONFIG_CDN_LIBRARIES.'/leaflet-ajax/2.1.0/leaflet.ajax.min.js');
+define('CDN_LEAFLET_MARKERCLUSTER_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.markercluster/1.4.1/leaflet.markercluster.js');
+define('CDN_LEAFLET_MARKERCLUSTER_CSS', CONFIG_CDN_LIBRARIES.'/Leaflet.markercluster/1.4.1/MarkerCluster.css');
+define('CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS', CONFIG_CDN_LIBRARIES.'/Leaflet.markercluster/1.4.1/MarkerCluster.Default.css');
+define('CDN_LEAFLET_GEOKRETYFILTER_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.geokretyfilter/leaflet.Control.GeoKretyFilter.js');
+define('CDN_LEAFLET_GEOKRETYFILTER_CSS', CONFIG_CDN_LIBRARIES.'/Leaflet.geokretyfilter/leaflet.Control.GeoKretyFilter.css');
+define('CDN_LEAFLET_PLUGIN_BING_JS', CONFIG_CDN_LIBRARIES.'/leaflet-bing/Bing.js');
+define('CDN_LEAFLET_NOUISLIDER_JS', CONFIG_CDN_LIBRARIES.'/noUiSlider/8.1.0/nouislider.min.js');
+define('CDN_LEAFLET_NOUISLIDER_CSS', CONFIG_CDN_LIBRARIES.'/noUiSlider/8.1.0/nouislider.min.css');
+define('CDN_LEAFLET_SPIN_JS', CONFIG_CDN_LIBRARIES.'/leaflet.spin.js/leaflet.spin.js');
+define('CDN_LEAFLET_FULLSCREEN_JS', CONFIG_CDN_LIBRARIES.'/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js');
+define('CDN_LEAFLET_FULLSCREEN_CSS', CONFIG_CDN_LIBRARIES.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
+
+define('CDN_SPIN_JS', CONFIG_CDN_LIBRARIES.'/spin.js/2.3.2/spin.min.js');
+
+define('CDN_SLIDEOUT_JS', CONFIG_CDN_LIBRARIES.'/slideout/1.0.1/slideout.min.js');
+
+define('CDN_JQUERY_VALIDATION_JS', CONFIG_CDN_LIBRARIES.'/jquery-validate/1.19.0/jquery.validate.js');
+define('CDN_PARSLEY_BOOTSTRAP3_JS', CONFIG_CDN_LIBRARIES.'/parsley.js/parsleyjs-bootstrap3.js');
+define('CDN_PARSLEY_JS', CONFIG_CDN_LIBRARIES.'/parsley.js/2.9.1/parsley.js');
+define('CDN_PARSLEY_CSS', CONFIG_CDN_LIBRARIES.'/parsley.js/2.9.1/parsley.css');
+
+define('CDN_BOOTSTRAP_SLIDER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-slider/10.6.1/bootstrap-slider.min.js');
+define('CDN_BOOTSTRAP_SLIDER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-slider/10.6.1/bootstrap-slider.min.css');
+
+define('CDN_ZXCVBN_JS', CONFIG_CDN_LIBRARIES.'/zxcvbn/4.4.2/zxcvbn.min.js');
+define('CDN_STRENGTHIFY_JS', CONFIG_CDN_LIBRARIES.'/strengthify/0.5.8/jquery.strengthify.min.js');
+define('CDN_STRENGTHIFY_CSS', CONFIG_CDN_LIBRARIES.'/strengthify/0.5.8/strengthify.min.css');
 
 // Default timezone
 $config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';
 
 // Temp directories
-$config['temp_dir_smarty_compile'] = isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $_ENV['TEMP_DIR_SMARTY_COMPILE'] : '/tmp/templates/compile/';
-$config['temp_dir_smarty_cache'] = isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/';
-$config['temp_dir_htmlpurifier_cache'] = isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/';
+define('TEMP_DIR_SMARTY_COMPILE', isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $_ENV['TEMP_DIR_SMARTY_COMPILE'] : '/tmp/templates/compile/');
+define('TEMP_DIR_SMARTY_CACHE', isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/');
+define('TEMP_DIR_HTMLPURIFIER_CACHE', isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/');
 
 // Reverse geocoders
 define('SERVICE_REVERSE_COUNTRY_GEOCODER', isset($_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER']) ? $_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER'] : 'https://geo.geokrety.org/api/getCountry?lat=%s&lon=%s');
 define('SERVICE_ELEVATION_GEOCODER', isset($_ENV['SERVICE_ELEVATION_GEOCODER']) ? $_ENV['SERVICE_ELEVATION_GEOCODER'] : 'https://geo.geokrety.org/api/getElevation?lat=%s&lon=%s');
 
-// Smarty
-define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
+// Smarty (composer install)
+define('SMARTY_DIR', 'vendor/smarty/smarty/libs/');
 
 // language .po directory
 define('BINDTEXTDOMAIN_PATH', __DIR__.'/../rzeczy/lang');
+
+set_include_path(__DIR__.'/..');
 
 //http://pl.wiktionary.org/wiki/Wikis%C5%82ownik:Kody_j%C4%99zyk%C3%B3w
 // pierwszy niech będzie angielski jako difoltowy!
@@ -192,7 +249,8 @@ $config_jezyk_nazwa['en'] = 'English';
 $config_jezyk_nazwa['bg'] = 'Български';
 $config_jezyk_nazwa['ca'] = 'Català';
 $config_jezyk_nazwa['cn'] = 'Chinese';
-$config_jezyk_nazwa['cz'] = 'Česky';
+// $config_jezyk_nazwa['cz'] = 'Česky'; // cz is not valid ISO 639-1 Code !!!
+$config_jezyk_nazwa['cs'] = 'Česky';
 $config_jezyk_nazwa['de'] = 'Deutsch';
 $config_jezyk_nazwa['dk'] = 'Dansk';
 $config_jezyk_nazwa['el'] = 'Ελληνικά';
@@ -214,10 +272,8 @@ $config_jezyk_nazwa['sv'] = 'Svenska';
 $config_jezyk_nazwa['th'] = 'ไทย';
 $config_jezyk_nazwa['tr'] = 'Türk';
 $config_jezyk_nazwa['uk'] = 'Українська';
-//$config_jezyk_nazwa[''] = '';
 
-// mb_internal_encoding("UTF-8");
-
+// Todo to be refactored using \Geokrety\Domain\LogType
 $cotozalog['0'] = _('Dropped to');
 $cotozalog['1'] = _('Grabbed from');
 $cotozalog['2'] = _('A comment');
@@ -231,7 +287,21 @@ $cotozakret['2'] = _('A human');
 $cotozakret['3'] = _('A coin');
 $cotozakret['4'] = _('KretyPost');
 
-$config_ile_wzorow_banerkow = 9;    // ile wzorأ³w banerkأ³w ze statystykami
+define('STATPIC_TEMPLATE_COUNT', 9);    // how many patterns in the statistics with the statistics
+
+$config['home_news_per_page'] = 2;
+$config['home_trip_per_page'] = 7;
+$config['home_geokrety_per_page'] = 7;
+$config['home_online_users_time'] = '5 MINUTE';
+$config['geokrety_per_page'] = 25;
+$config['trip_per_page'] = 25;
+$config['pictures_per_gallery_page'] = 99;
+$config['news_per_page'] = 10;
+
+$config['welcome'] = _('Welcome to GeoKrety.org!');
+$config['punchline'] = _('Open source item tracking for all caching platforms');
+$config['intro'] = _('GeoKrety a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href="%1">read more</a>.');
+$config['keywords'] = 'geokrety,opencaching,geocaching,geocoin,geobook,krety,geokret,geokrets,geocache,gps';
 
 // ---- ---- load konfig files ---- ---- //
 if (!getenv('website_config_directory')) {
@@ -256,6 +326,9 @@ define('CONFIG_PASS', $config['pass']);
 define('CONFIG_DB', $config['db']);
 define('CONFIG_CHARSET', $config['charset']);
 define('CONFIG_TIMEZONE', $config['timezone']);
+
+define('REDIS_DSN', $config['redis_dsn']);
+define('SESSION_IN_REDIS', $config['session_in_redis']);
 
 if (!function_exists('DBPConnect')) {
     /**
@@ -289,6 +362,116 @@ if (!function_exists('amIOnProd')) {
         return isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == CONFIG_PROD_SERVER_NAME;
     }
 }
+if (!function_exists('gkid')) {
+    /**
+     * Function that format a GeoKret id to hex notation.
+     *
+     * @return string
+     */
+    function gkid($id) {
+        return sprintf('GK%04X', $id);
+    }
+}
+
+if (!function_exists('loginFirst')) {
+    /**
+     * Function that check login and redirect if necessary.
+     * It save the current page for 120s and restore after login.
+     *
+     * @return string
+     */
+    function loginFirst() {
+        if (!isset($_SESSION['currentUser']) || empty($_SESSION['currentUser'])) {
+            // Please login first
+            warning('Please login first!');
+
+            include_once 'defektoskop.php';
+            errory_add('anonymous - longin_fwd', 4, 'Page:'.$_SERVER['REQUEST_URI']);
+            setcookie('longin_fwd', base64_encode($_SERVER['REQUEST_URI']), time() + 120);
+            header('Location: /longin.php');
+            die();
+        }
+
+        return true;
+    }
+}
+
+if (!function_exists('success')) {
+    /**
+     * Function that add message to session as success.
+     *
+     * @return string
+     */
+    function success($message) {
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'success',
+            'message' => $message,
+        );
+    }
+}
+
+if (!function_exists('info')) {
+    /**
+     * Function that add message to session as info.
+     *
+     * @return string
+     */
+    function info($message) {
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'info',
+            'message' => $message,
+        );
+    }
+}
+
+if (!function_exists('warning')) {
+    /**
+     * Function that add message to session as warning.
+     *
+     * @return string
+     */
+    function warning($message) {
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'warning',
+            'message' => $message,
+        );
+    }
+}
+
+if (!function_exists('danger')) {
+    /**
+     * Function that add message to session as danger.
+     *
+     * @return string
+     */
+    function danger($message, $redirect = false) {
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'danger',
+            'message' => $message,
+        );
+        if ($redirect) {
+            header('Location: '.(isset($_POST['goto']) ? $_POST['goto'] : '/'));
+            die();
+        }
+    }
+}
+
+if (!function_exists('hasErrors')) {
+    /**
+     * Function that check if errors were already recorded in the session.
+     *
+     * @return string
+     */
+    function hasErrors() {
+        if (!isset($_SESSION['alert_msgs'])) {
+            return false;
+        }
+
+        return sizeof(array_filter($_SESSION['alert_msgs'], function ($k) {
+            return $k['level'] == 'danger';
+        })) > 0;
+    }
+}
 
 // PROD ONLY: keep only fatal, no more warning
 if (amIOnProd()) {
@@ -297,6 +480,10 @@ if (amIOnProd()) {
 } else {
     define('IS_PROD', false);
 }
+
+define('MOVES_PER_PAGE', $config['trip_per_page']);
+define('NEWS_PER_PAGE', $config['news_per_page']);
+define('PICTURES_PER_GALLERY_PAGE', $config['pictures_per_gallery_page']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
 define('SWISTAK_IV32', $config['swistak_iv32']);
@@ -318,7 +505,8 @@ define('PIWIK_SITE_ID', $config['piwik_site_id']);
 define('PIWIK_TOKEN', $config['piwik_token']);
 
 // Partners
-define('GEOCACHING_CACHE_WP', $config['geocaching_cache_wp']);
+define('CACHE_WPT_LINK_GC', $config['cache_wpt_link_gc']);
+define('CACHE_WPT_LINK_N', $config['cache_wpt_link_n']);
 
 // input validation
 define('CONFIG_WAYPOINTY_MIN_LENGTH', $config['waypointy_min_length']);

@@ -38,11 +38,11 @@ class TripToCSVConverter {
 
             $ruchId = $trip->ruchId;
             $waypoint = $trip->waypoint;
-            $ruchData = $trip->ruchData;
+            $ruchData = $trip->ruchData->format('c');
             $comment = self::escapeComment($trip->comment);
-            $logType = $trip->getLogTypeString();
+            $logType = $trip->logType->getLogTypeString();
             $country = $trip->country;
-            $distance = $trip->droga;
+            $distance = $trip->distance;
             $username = $trip->username;
             $waypointName = $trip->waypointName;
             $link = $trip->waypointLink;

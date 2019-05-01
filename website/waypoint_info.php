@@ -46,7 +46,7 @@ function waypoint_info($waypoint) {
             // ---------------- dodajemy linki do innych waypointów ------------------- //
             if (in_array($prefiks, $prefiksy_inne)) {    // if cache is from other, known network
                 if ($prefiks == 'GC') {
-                    $row[5] = GEOCACHING_CACHE_WP.$waypoint;
+                    $row[5] = CACHE_WPT_LINK_GC.$waypoint;
                 } elseif (in_array($prefiks_1, $prefiksy_inne_1)) {    // if cache is from Navicache (N....)()
                     if ($prefiks_1 == 'N') {
                         $row[5] = 'http://www.navicache.com/cgi-bin/db/displaycache2.pl?CacheID='.hexdec(substr($waypoint, 1, 10));
