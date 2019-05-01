@@ -33,7 +33,19 @@
   </header>
 
   <div class="container">
+    {if count($alert_msgs)}
+      {foreach from=$alert_msgs item=alert_msg}
+        <div class="alert alert-{$alert_msg.level} alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="{t}Close{/t}"><span aria-hidden="true">&times;</span></button>
+          {$alert_msg.message}
+        </div>
+      {/foreach}
+    {/if}
+
     {$content}
+    {if $content_template}
+      {include file=$content_template}
+    {/if}
   </div>
 
 { if not IS_PROD }
