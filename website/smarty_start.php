@@ -31,7 +31,7 @@ $smarty_cache_id = basename($_SERVER['SCRIPT_NAME']);
 $smarty_cache_filename = $smarty_cache_id.$lang.$template_login;
 
 $smarty = new Smarty();
-$smarty->template_dir = './templates/';
+$smarty->template_dir = './templates/smarty/';
 $smarty->compile_dir = $config['temp_dir_smarty_compile'];
 $smarty->cache_dir = $config['temp_dir_smarty_cache'];
 $smarty->plugins_dir[] = './templates/plugins/';
