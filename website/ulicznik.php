@@ -19,10 +19,6 @@ if (!function_exists('licznikejro')) {
 
         $ile = $row[1];
 
-        session_start();
-        //if(empty($_SESSION[$sesid . "geokrety" . $row[0]])){
-        //        $_SESSION[$sesid . "geokrety" .  $row[0]] = 1;
-
         if (empty($_SESSION['geokrety'.$row[0]])) {
             $_SESSION['geokrety'.$row[0]] = 1;
 

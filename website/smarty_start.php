@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once 'db.php'; // modul bazodanowy
 require_once 'templates/konfig.php';
 require_once 'wybierz_jezyk.php'; // wybór języka
@@ -34,6 +36,7 @@ $smarty->compile_dir = $config['temp_dir_smarty_compile'];
 $smarty->cache_dir = $config['temp_dir_smarty_cache'];
 $smarty->plugins_dir[] = './templates/plugins/';
 $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
+$smarty->assign('content_template', false);
 
 $longin_status = longin_chceck();
 // quick and dirty check if someone is logged in
@@ -46,7 +49,7 @@ if ($longin_status['plain'] != null) {
 if (isset($_GET['template']) && $_GET['template'] == 'm') {
     $template = 'krety-m.html';
 } else {
-    $template = 'krety.html';
+    $template = 'krety.tpl';
 }
 
 if (($smarty_cache_this_page > 0) and isset($smarty_cache_filename)) {  // czy jest znacznik na stronie, żeby keszowac te strone

@@ -16,7 +16,7 @@ if (!isset($smarty)) {
     $headers = 'From: GeoKrety <geokrety@gmail.com>'."\r\n";
     $headers .= 'Return-Path: <geokrety@gmail.com>'."\r\n";
     try {
-        mail('contact@geokretymap.org, sirsimor@gmail.com, stefaniak@gmail.com', 'Smarty error!', $TRESC, $headers);
+        mail('geokrety@gmail.com', 'Smarty error!', $TRESC, $headers);
     } catch (Exception $e) {
     }
     exit;
@@ -38,7 +38,9 @@ $smarty->assign('footer', $OGON);
 $smarty->assign('lang', $_COOKIE['geokret1']);
 
 $smarty->assign('template_login', $template_login);
-$smarty->assign('alert_msgs', $alert_msgs);
+
+$smarty->assign('alert_msgs', array_merge($alert_msgs, $_SESSION['alert_msgs']));
+unset($_SESSION['alert_msgs']);
 
 $smarty->display($template, $smarty_cache_filename);
 exit();
