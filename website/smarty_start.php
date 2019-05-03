@@ -2,6 +2,8 @@
 
 session_start();
 
+use Carbon\Carbon;
+
 require_once 'db.php'; // modul bazodanowy
 require_once 'templates/konfig.php';
 require_once 'wybierz_jezyk.php'; // wybór języka
@@ -30,18 +32,30 @@ foreach ($_GET as $key => $value) {
 $smarty_cache_id = basename($_SERVER['SCRIPT_NAME']);
 $smarty_cache_filename = $smarty_cache_id.$lang.$template_login;
 
-$smarty = new Smarty();
+$smarty = new SmartyBC();
+$smarty->escape_html = true;
 $smarty->template_dir = './templates/smarty/';
 $smarty->compile_dir = $config['temp_dir_smarty_compile'];
 $smarty->cache_dir = $config['temp_dir_smarty_cache'];
 $smarty->plugins_dir[] = './templates/plugins/';
-$smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
-$smarty->assign('content_template', false);
+$smarty->compile_check = true; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
+$smarty->assign('content_template', false); // Store included template name
+$smarty->assign('jquery',array()); // Store page jquery
+$smarty->assign('isSuperUser', false);
+$smarty->registerClass('Carbon', '\Carbon\Carbon');
+
+$smarty->assign('site_welcome', $config['welcome']);
+$smarty->assign('site_punchline', $config['punchline']);
+$smarty->assign('site_intro', $config['intro']);
+$smarty->assign('site_keywords', $config['keywords']);
+
 
 $longin_status = longin_chceck();
-// quick and dirty check if someone is logged in
 if ($longin_status['plain'] != null) {
     $smarty->assign('isLoggedIn', true);
+    if (in_array($longin_status['userid'], $config['superusers'])) {
+      $smarty->assign('isSuperUser', true);
+    }
 } else {
     $smarty->assign('isLoggedIn', false);
 }

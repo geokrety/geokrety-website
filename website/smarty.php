@@ -27,6 +27,8 @@ $smarty->error_reporting = E_ALL;
 $smarty->assign('cdnUrl', CONFIG_CDN);
 $smarty->assign('cssUrl', CONFIG_CDN_CSS);
 $smarty->assign('imagesUrl', CONFIG_CDN_IMAGES);
+$smarty->assign('avatarUrl', CONFIG_CDN_OBRAZKI);
+$smarty->assign('avatarMinUrl', CONFIG_CDN_OBRAZKI_MALE);
 $smarty->assign('bannerUrl', CONFIG_CDN_BANNERS);
 $smarty->assign('iconsUrl', CONFIG_CDN_ICONS);
 $smarty->assign('head', $HEAD);
