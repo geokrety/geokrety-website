@@ -51,7 +51,7 @@
             <li><a href="/go2geo/"><i class="fa fa-map-pin"></i> Waypoint resolver</a></li>
           </ul>
         </li>
-        {if $isLoggedIn}
+        {if isset($isLoggedIn) and $isLoggedIn}
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -59,6 +59,9 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="/mypage.php"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Details</a></li>
+            {if isset($isSuperUser) and $isSuperUser}
+            <li><a href="/_admin.php"><i class="fa fa-lock"></i> Admin</a></li>
+            {/if}
             <li role="separator" class="divider"></li>
             <li><a href="/mypage.php?co=5"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> My inventory</a></li>
             <li><a href="/mypage.php?co=1"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span> My GeoKrety</a></li>

@@ -30,7 +30,7 @@ if (!function_exists('licznikejro')) {
 
         $srednio = sprintf('%.1f', $ile / (($dzisiaj - strtotime($row[2])) / 86400));
 
-        $tablica = array($ile, $srednio, $row[2]);
+        $tablica = array('total' => $ile, 'average' => $srednio, 'date' => $row[2]);
 
         return $tablica;
     }

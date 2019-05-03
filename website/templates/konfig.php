@@ -223,7 +223,12 @@ $cotozakret['2'] = _('A human');
 $cotozakret['3'] = _('A coin');
 $cotozakret['4'] = _('KretyPost');
 
-$config_ile_wzorow_banerkow = 9;    // ile wzorأ³w banerkأ³w ze statystykami
+$config_ile_wzorow_banerkow = 9;    // how many patterns in the statistics with the statistics
+
+$config['welcome'] = 'Welcome to GeoKrety.org!';
+$config['punchline'] = 'Open source item tracking for all caching platforms';
+$config['intro'] = 'This service is similar to TravelBug™ or GeoLutins and aims at tracking things you put to geocache containers… <a href="%1">read more</a>.';
+$config['keywords'] = 'geokrety,opencaching,geocaching,geocoin,geobook,krety,geokret,geokrets,geocache,gps';
 
 // ---- ---- load konfig files ---- ---- //
 if (!getenv('website_config_directory')) {
