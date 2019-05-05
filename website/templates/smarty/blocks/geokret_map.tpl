@@ -3,7 +3,7 @@
     {t}Map{/t}
   </div>
   <div class="panel-body">
-    {if $geokret_details.caches_count}
+    {if $geokret_details->cachesCount}
     <p>
       {t}Legend:{/t}
       <img src="{$iconsUrl}/pins/red.png" alt="[Red flag]" width="12" height="20" /> = {t}start{/t}
