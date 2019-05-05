@@ -66,12 +66,12 @@ if ($speedtest_konkret_tabelka) {
     }
 }
 
-$sql = "SELECT ru.ruch_id, ru.lat, ru.lon, ru.waypoint, ru.data, ru.user, ru.koment, ru.zdjecia, ru.komentarze, ru.logtype, ru.username, us.user, ru.country, ru.alt, ru.droga
-FROM (`gk-ruchy` ru)
-LEFT JOIN `gk-users` AS us ON (ru.user = us.userid)
-WHERE ru.id = '$id' AND ru.logtype != '6'
-ORDER BY ru.data DESC, ru.data_dodania DESC
-LIMIT $pokaz_od, $po_ile";
+// $sql = "SELECT ru.ruch_id, ru.lat, ru.lon, ru.waypoint, ru.data, ru.user, ru.koment, ru.zdjecia, ru.komentarze, ru.logtype, ru.username, us.user, ru.country, ru.alt, ru.droga
+// FROM (`gk-ruchy` ru)
+// LEFT JOIN `gk-users` AS us ON (ru.user = us.userid)
+// WHERE ru.id = '$id' AND ru.logtype != '6'
+// ORDER BY ru.data DESC, ru.data_dodania DESC
+// LIMIT $pokaz_od, $po_ile";
 
 //proba uzycia listy ruchow:
 $sql = "SELECT ru.ruch_id, ru.lat, ru.lon, ru.waypoint, ru.data, ru.user, ru.koment, ru.zdjecia, ru.komentarze, ru.logtype, ru.username, us.user, ru.country, ru.alt, ru.droga, ru.app, ru.app_ver
@@ -182,7 +182,7 @@ if ($result) {
         $opislogu = $cotozalog[$logtype];
 
         // -----------------------------------------------------------------------------------------------------------
-        //jezeli kret siedzi w skrzynce to dodaj opcje zgloszenia zaginiecia
+        // if the mole is sitting in a box, add the options for reporting the disappearance
         $missing_pic = "<img class='textalign10' src='".CONFIG_CDN_ICONS."/missing10.png' alt='!!' width='10' height='10' border='0' />";
         if ($userid_longin != null and $i == 0 and ($logtype == '0' or $logtype == '3') and $krettyp != '2') {
             $missing = "<span class='xs' style='padding-left:1em;white-space:nowrap;'>".$missing_pic.' <a  data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'" data-type="missing">'._('Report as missing')."</a> $missing_pic</span>";
@@ -198,11 +198,11 @@ if ($result) {
             $appImg = '';
         }
 
-        // jeśli to nie komentarz
+        // if it's not a comment
         if ($logtype == '0' or $logtype == '3' or $logtype == '5') {
             list(, , $name, $typ, $kraj, $linka) = waypoint_info($waypoint);
 
-            // co psuje JS:
+            // what JS writes:
             $name = strtr($name, array("'" => '`'));
 
             !empty($kraj) ? $title = "$kraj [$country]" : $title = "[$country]";
@@ -226,8 +226,8 @@ if ($result) {
         }
 
         // -----------------------------------------------------------------------------------------------------------
-        // SKASUJ_LINK & EDYTUJ_LINK & COMMENT LINK
-        // jeśli owner albo wlaściciel ruchu
+        // ERASE_LINK & EDIT_LINK & COMMENT LINK
+        // if owner or owner of the move
 
         if ($userid_longin > 0) {
             $new_comment_link = '<a data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'" href="#"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/comment_new16.png" alt="[Add_comment]" title="'._('Write comment').'" width="16" height="16" border="0" /></a>';

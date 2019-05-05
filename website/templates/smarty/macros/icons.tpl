@@ -6,6 +6,8 @@
   <img src="{$imagesUrl}/log-icons/{$gk_type}/icon_25.jpg" alt="{t}GK type icon{/t}" title="{gkType2Text type=$gk_type}" />
 {/function}
 
-{function flag country='xyz'}
-  <span class="flag-icon flag-icon-{$country}" title="{$country}"></span>
+{function country_track items=[]}{foreach from=$items item=item name=country}
+<span class="label label-info">{country_flag country=$item.country} {$item.count}</span>
+{if not $smarty.foreach.country.last}→{/if}
+{/foreach}
 {/function}

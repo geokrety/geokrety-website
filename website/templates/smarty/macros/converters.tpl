@@ -1,9 +1,7 @@
-{function id2gk id=0}
-{"GK%04X"|sprintf:$id}
+{function id2gk id=0}{"GK%04X"|sprintf:$id}
 {/function}
 
-{function gkType2Text type=0}
-{if type == 0}
+{function gkType2Text type=0}{if type == 0}
 {t}Traditionnal{/t}
 {elseif type == 1}
 {t}A book/CD/DVD…{/t}
@@ -16,8 +14,7 @@
 {/if}
 {/function}
 
-{function logType2Text type=0}
-{if type == 0}
+{function logType2Text type=0}{if type == 0}
 {t}Dropped to{/t}
 {elseif type == 1}
 {t}Grabbed from{/t}

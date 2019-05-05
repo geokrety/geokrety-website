@@ -20,7 +20,6 @@ try {
 
     $smarty->assign('counter', ulicznik('index'));
 
-
     // -------------------------------------- statystyki podstawowe / basic statistics -------------- //
 
     $result = mysqli_query($link, "SELECT * FROM `gk-wartosci` WHERE `name` LIKE 'stat_%'");

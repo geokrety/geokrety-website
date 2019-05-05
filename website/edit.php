@@ -138,7 +138,7 @@ if (ctype_digit($g_delete) and ($g_confirmed == '1')) {
         konkret_mapka($id_kreta);
         header("Location: konkret.php?id=$id_kreta#map");
     } else {
-        errory_add('Proba skasowania logu przez osobe nieautoryzowana', 7, 'UNAUTHORIZED');
+        errory_add('An attempt to delete a log by an unauthorized person', 7, 'UNAUTHORIZED');
         //$TRESC = 'Entry NOT deleted';
         exit;
     }

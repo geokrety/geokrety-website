@@ -11,7 +11,7 @@
         <small><span title="{$move.nazwa}">{$move.nazwa|truncate:30:"…"}</span></small>
       </td>
       <td>
-        <span class="flag-icon flag-icon-{$move.country}"></span>
+        {country_flag country=$move.country}
         {call cacheLink waypoint=$move.waypoint lat=$move.lat lon=$move.lon}
       </td>
       <td><span title="{$move.koment}">{$move.koment|truncate:60:"…"}</span></td>

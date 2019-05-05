@@ -3,6 +3,9 @@
 {include file='macros/icons.tpl'}
 {include file='macros/links_news.tpl'}
 {include file='macros/links_user.tpl'}
+<ol class="breadcrumb">
+  <li class="active">{t}Home{/t}</li>
+</ol>
 
 <h2>{t}{$site_welcome}{/t}</h2>
 
