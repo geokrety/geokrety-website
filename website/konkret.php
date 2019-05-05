@@ -42,28 +42,18 @@ $link = GKDB::getLink();
 $kret_gk = sprintf('GK%04X', $kret_id);
 require_once 'czy_obserwowany.php'; //geokret_watchers
 
-// Load GK Details
-$sql = "SELECT id as gk_id, nr as tracking_code, nazwa as name,
-  opis as description, owner as owner_id, us.user as username,
-  data as creation_date, typ as type, droga as distance,
-  skrzynki as caches_count, zdjecia as pictures_count, avatarid as avatar_id,
-  ost_pozycja_id AS last_position_id, ost_log_id AS last_log_id
-  FROM `gk-geokrety` gk
-  LEFT JOIN `gk-users` us ON gk.owner = us.userid
-  WHERE gk.id='$kret_id' LIMIT 1";
-$result = mysqli_query($link, $sql);
-// if there is no such mole it is better to end the action :)
-if (mysqli_num_rows($result) == 0) {
+$gk = new \Geokrety\Repository\KonkretRepository($link);
+$geokret = $gk->getById($kret_id, true);
+if (is_null($geokret)) {
     include_once 'defektoskop.php';
     $TRESC = defektoskop(_('No such GeoKret!'), true, 'there is no such mole', 3, 'WRONG_DATA');
     include_once 'smarty.php';
     exit;
 }
-$geokret = mysqli_fetch_all($result, MYSQLI_ASSOC)[0];
 $smarty->assign('geokret_details', $geokret);
 
 // Is owner?
-$smarty->assign('isGeokretOwner', $userid_longin != null && $userid_longin == $geokret['owner_id']);
+$smarty->assign('isGeokretOwner', $userid_longin != null && $userid_longin == $geokret->ownerId);
 
 // Load country track
 $sql = 'SELECT  country, COUNT(*) as count
@@ -151,7 +141,7 @@ if ($page > $max_page) {
 
 //-------------------------------------------- MAP ------------------------------- //
 
-if ($geokret['caches_count'] > 0) {
+if ($geokret->cachesCount > 0) {
     $smarty->append('css', CDN_LEAFLET_CSS);
     $smarty->append('javascript', CDN_LEAFLET_JS);
     $smarty->append('javascript', '/konkret.js');
@@ -231,22 +221,22 @@ $smarty->assign('moves_pictures', $moves_pictures);
 
 $gkName = $config['adres'];
 $gkUrl = $config['adres']."konkret.php?id=$kret_id";
-$gkOwnerUrl = $config['adres'].'mypage.php?id='.$geokret['owner_id'];
+$gkOwnerUrl = $config['adres'].'mypage.php?id='.$geokret->ownerId;
 $gkLogoUrl = $config['cdn_url'].'/images/banners/geokrety.png';
-$gkkeywords = $config['keywords'].",$kret_gk,".$cotozakret[$geokret['type']];
+$gkkeywords = $config['keywords'].",$kret_gk,".$cotozakret[$geokret->type];
 
 $ldHelper = new LDHelper($gkName, $config['adres'], $gkLogoUrl);
 $konkret = new \Geokrety\Domain\Konkret();
-$konkret->name = $kret_gk.' - '.$geokret['name'];
-$konkret->description = $geokret['description'];
+$konkret->name = $kret_gk.' - '.$geokret->name;
+$konkret->description = $geokret->description;
 $konkret->url = $gkUrl;
-$konkret->author = $geokret['username'];
+// $konkret->author = $geokret['username']; // TODO
 $konkret->authorUrl = $gkOwnerUrl;
-$konkret->datePublished = date('c', strtotime($geokret['creation_date']));
-if (isset($avatar)) {
-    $konkret->imageUrl = CONFIG_CDN_OBRAZKI_MALE.'/'.$avatar['filename'];
-}
-$konkret->keywords = $gkkeywords;
+$konkret->datePublished = date('c', strtotime($geokret->datePublished));
+// if (isset($avatar)) {
+//     $konkret->imageUrl = CONFIG_CDN_OBRAZKI_MALE.'/'.$avatar['filename']; // TODO
+// }
+//$konkret->keywords = $gkkeywords;
 // // rate
 // if (isset($ratingCount) && $ratingCount > 0) {
 //     $konkret->ratingCount = $ratingCount;
@@ -261,7 +251,7 @@ $smarty->assign('ldjson', $ldHelper->helpKonkret($konkret));
 
 // ----------------------------------------------JSON-LD-(end)---------------------
 
-$TYTUL = $geokret['name'];
+$TYTUL = $geokret->name;
 
 $baseContent = '<div class="modal-body"><div class="center-block" style="width: 45px;"><img src="https://cdn.geokrety.house.kumy.net/images/loaders/rings.svg" /></div></div>';
 $jquery = <<<EOD

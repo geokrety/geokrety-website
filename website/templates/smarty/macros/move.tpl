@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-xs-2">
         <div class="center-block">
-          {log_icon id=$move.id type=$move.logtype gk_type=$geokret.type}<br />
+          {log_icon id=$move.id type=$move.logtype gk_type=$geokret->type}<br />
           <small>{$move.distance}&nbsp;km</small>
         </div>
       </div>
@@ -52,8 +52,8 @@
           <div class="btn-toolbar" role="toolbar">
 
             <div class="btn-group pull-right" role="group">
-              {if $move.id == $geokret.last_position_id and $move.logtype|in_array:['0','3'] AND $geokret.type != '2'}
-              <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-move-comment-type="missing" data-gkid="{$geokret.gk_id}" data-ruchid="{$move.id}">
+              {if $move.id == $geokret->lastPositionId and $move.logtype|in_array:['0','3'] AND $geokret->type != '2'}
+              <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-move-comment-type="missing" data-gkid="{$geokret->id}" data-ruchid="{$move.id}">
                 {fa icon="exclamation-triangle"}
               </button>
               {/if}
@@ -62,7 +62,7 @@
                 {fa icon="picture-o"}
               </a>
               {/if}
-              <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-gkid="{$geokret.gk_id}" data-ruchid="{$move.id}">
+              <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-gkid="{$geokret->id}" data-ruchid="{$move.id}">
                 {fa icon="comment"}
               </button>
             </div>

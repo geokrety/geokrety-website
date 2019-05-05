@@ -2,7 +2,12 @@
 
 namespace Geokrety\Repository;
 
-class TripRepository extends AbstractRepositoy {
+class TripRepository {
+    // database session opened with DBConnect();
+    private $dblink;
+    // report current activity to stdout
+    private $verbose;
+
     const SELECT_RUCHY = <<<EOQUERY
 SELECT    `ruch_id`,`gk-ruchy`.`lat`,`gk-ruchy`.`lon`,`gk-ruchy`.`country`,`gk-ruchy`.`alt`,`gk-ruchy`.`waypoint`,
           `data`,`data_dodania`,`gk-ruchy`.`user`,`gk-users`.`user`,`koment`,`logtype`,`droga`,
@@ -16,7 +21,8 @@ EOQUERY;
     private $validationService;
 
     public function __construct($dblink, $verbose = false) {
-        parent::__construct();
+        $this->dblink = $dblink;
+        $this->verbose = $verbose;
         $this->validationService = new \Geokrety\Service\ValidationService();
     }
 

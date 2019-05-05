@@ -1,14 +1,14 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    {call gk_icon gk_type=$geokret_details.type}
+    {call gk_icon gk_type=$geokret_details->type}
     {t escape=no
-    gk_name=$geokret_details.name
-    gk_type={gkType2Text type=$geokret_details.type}
-    username={userLink id=$geokret_details.owner_id username=$geokret_details.username}
+    gk_name=$geokret_details->name
+    gk_type={gkType2Text type=$geokret_details->type}
+    username={userLink id=$geokret_details->ownerId username=$geokret_details->ownerName}
     }%1 (%2) by %3{/t}
     {if $isGeokretOwner}
     <div class="btn-group pull-right" role="group">
-      <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret_details.gk_id}" title="{t}Edit GeoKret details{/t}">
+      <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret_details->id}" title="{t}Edit GeoKret details{/t}">
         {fa icon="pencil"}
       </a>
     </div>
@@ -20,15 +20,15 @@
       <div class="col-xs-12 col-md-9">
         <dl class="dl-horizontal pull-left ">
           <dt>{t}Reference number{/t}</dt>
-          <dd>{id2gk id=$geokret_details.gk_id}</dd>
+          <dd>{id2gk id=$geokret_details->id}</dd>
           {if $geokret_already_seen}
           <dt>{t}Tracking code{/t}</dt>
-          <dd><strong>{$geokret_details.tracking_code}</strong></dd>
+          <dd><strong>{$geokret_details->trackingCode}</strong></dd>
           {/if}
           <dt>{t}Total distance{/t}</dt>
-          <dd>{$geokret_details.distance} km</dd>
+          <dd>{$geokret_details->distance} km</dd>
           <dt>{t}Places visited{/t}</dt>
-          <dd>{$geokret_details.caches_count}</dd>
+          <dd>{$geokret_details->cachesCount}</dd>
           <dt>{t}Social share{/t}</dt>
           <dd>
             {fa icon="facebook" title="{t}Share on Facebook{/t}"}
@@ -43,7 +43,7 @@
       </div>
       <div class="col-xs-12 col-md-3 gallery">
         {pictureOrDefault item=$geokret_avatar skipLinkToEntity=true skipTags=true isGeokretOwner=$isGeokretOwner}
-        {altitudeProfile gk_id=$geokret_details.gk_id}
+        {altitudeProfile gk_id=$geokret_details->id}
       </div>
     </div>
 

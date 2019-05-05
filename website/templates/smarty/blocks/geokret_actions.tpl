@@ -4,19 +4,19 @@
 {/function}
 
 {function log}
-<div class="col-md-4">{fa icon="pencil"} <a href="/ruchy.php?nr={$geokret_details.tracking_code}">{t}Log this GeoKret{/t}</a></div>
+<div class="col-md-4">{fa icon="pencil"} <a href="/ruchy.php?nr={$geokret_details->trackingCode}">{t}Log this GeoKret{/t}</a></div>
 {/function}
 
 {function label}
-<div class="col-md-4">{fa icon="tag"} <a href="/labels.php?id={$geokret_details.gk_id}&nr={$geokret_details.tracking_code}">{t}Print a label for this GeoKret{/t}</a></div>
+<div class="col-md-4">{fa icon="tag"} <a href="/labels.php?id={$geokret_details->id}&nr={$geokret_details->trackingCode}">{t}Print a label for this GeoKret{/t}</a></div>
 {/function}
 
 {function statistics}
-<div class="col-md-4">{fa icon="line-chart"} <a href="/gk_stat.php?id={$geokret_details.gk_id}">{t}Statistics{/t}</a></div>
+<div class="col-md-4">{fa icon="line-chart"} <a href="/gk_stat.php?id={$geokret_details->id}">{t}Statistics{/t}</a></div>
 {/function}
 
 {function adopt}
-{if !$geokret_details.owner_id}
+{if !$geokret_details->ownerId}
 {if $isLoggedIn}
 <div class="col-md-4">{fa icon="heart"} <a href="/claim.php">{t}Adopt this GeoKret{/t}</a></div>
 {else}
@@ -26,12 +26,12 @@
 {/function}
 
 {function archive}
-<div class="col-md-4">{fa icon="archive"} <a href="/ruchy.php?nr={$geokret_details.tracking_code}&type=archive">{t}Archive this GeoKret{/t}</a></div>
+<div class="col-md-4">{fa icon="archive"} <a href="/ruchy.php?nr={$geokret_details->trackingCode}&type=archive">{t}Archive this GeoKret{/t}</a></div>
 {/function}
 
 {function email}
-{if !$geokret_details.owner_id}
-<div class="col-md-4">{fa icon="envelope"} <a href="/majluj.php?to={$geokret_details.owner_id}&re={$geokret_details.gk_id}">{t}Email owner{/t}</a></div>
+{if !$geokret_details->ownerId}
+<div class="col-md-4">{fa icon="envelope"} <a href="/majluj.php?to={$geokret_details->ownerId}&re={$geokret_details->id}">{t}Email owner{/t}</a></div>
 {/if}
 {/function}
 
