@@ -7,7 +7,7 @@ require_once 'smarty_start.php';
 
 $userid = $longin_status['userid'];
 if (!in_array($userid, $config['superusers'])) {
-    exit;
+    header('Location: /');
 }
 
 $TYTUL = _('Admin');

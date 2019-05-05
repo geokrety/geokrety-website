@@ -34,7 +34,7 @@ function czy_obserwowany($id, $userid) {
         $observers = $row[0];
 
         if ($observers > 0) {
-            $observers_link = "<a class='cb2' href='obserwuj.php?list=$id'>$observers</a>";
+            $observers_link = "<a class='cb2' href='/obserwuj.php?list=$id'>$observers</a>";
         } else {
             $observers_link = "$observers";
         }
@@ -43,16 +43,16 @@ function czy_obserwowany($id, $userid) {
 
         if ($OUT == 0) {        // if not observed
             $return['plain'] = 0;
-            $return['html'] = "<a href='obserwuj.php?id=$id'>"._('Watch this GeoKret')."</a> $observers_html";
+            $return['html'] = "<a href='/obserwuj.php?id=$id'>"._('Watch this GeoKret')."</a> $observers_html";
             $return['icon'] = CONFIG_CDN_ICONS.'/watch_y.png';
         } elseif ($OUT == 1) {        // if observed
             $return['plain'] = 1;
-            $return['html'] = "<a href='obserwuj.php?id=$id'>"._('Stop watching this GeoKret')."</a> $observers_html";
+            $return['html'] = "<a href='/obserwuj.php?id=$id'>"._('Stop watching this GeoKret')."</a> $observers_html";
             $return['icon'] = CONFIG_CDN_ICONS.'/watch_n.png';
         } elseif ($OUT == 3) {        // if my
             $return['plain'] = 3;
             if ($observers > 0) {
-                $return['html'] = "<a class='cb2' href='obserwuj.php?list=$id'>"._('Users watching it').": $observers</a>";
+                $return['html'] = "<a class='cb2' href='/obserwuj.php?list=$id'>"._('Users watching it').": $observers</a>";
             } else {
                 $return['html'] = _('Users watching this GeoKret').': 0';
             }

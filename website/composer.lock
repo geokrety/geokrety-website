@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8fd34c6591641779a05a6d604d2297c4",
+    "content-hash": "349534e05e6bbe21a8605999e0bb53fb",
     "packages": [
+        {
+            "name": "benhall14/php-pagination",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kumy/php-pagination.git",
+                "reference": "bbeca356e66408d4a709ff3d5b4017f01e0c4a2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kumy/php-pagination/zipball/bbeca356e66408d4a709ff3d5b4017f01e0c4a2d",
+                "reference": "bbeca356e66408d4a709ff3d5b4017f01e0c4a2d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "benhall14\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Hall",
+                    "email": "ben@conobe.co.uk",
+                    "homepage": "https://conobe.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A lightweight PHP pagination class to output pagination links.",
+            "homepage": "https://github.com/benhall14/php-pagination",
+            "keywords": [
+                "paginate",
+                "pagination",
+                "php"
+            ],
+            "support": {
+                "source": "https://github.com/kumy/php-pagination/tree/master"
+            },
+            "time": "2019-05-04T20:41:37+00:00"
+        },
         {
             "name": "google/recaptcha",
             "version": "1.2.1",
@@ -55,16 +101,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.36.2",
+            "version": "1.37.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9"
+                "reference": "5be4fdf97076a685b23efdedfc2b73ad0c5eab70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9",
-                "reference": "cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
+                "reference": "5be4fdf97076a685b23efdedfc2b73ad0c5eab70",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +155,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-12-28T10:07:33+00:00"
+            "time": "2019-04-19T10:27:42+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -242,16 +288,16 @@
         },
         {
             "name": "torann/json-ld",
-            "version": "0.0.14",
+            "version": "0.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Torann/json-ld.git",
-                "reference": "a85d7f6df9dc0637715f2af3904eb7b6d0b76d4a"
+                "reference": "4d439220cb012df2705e2ad6472d2426fcb14b4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Torann/json-ld/zipball/a85d7f6df9dc0637715f2af3904eb7b6d0b76d4a",
-                "reference": "a85d7f6df9dc0637715f2af3904eb7b6d0b76d4a",
+                "url": "https://api.github.com/repos/Torann/json-ld/zipball/4d439220cb012df2705e2ad6472d2426fcb14b4c",
+                "reference": "4d439220cb012df2705e2ad6472d2426fcb14b4c",
                 "shasum": ""
             },
             "require": {
@@ -289,13 +335,15 @@
                 "schema",
                 "structured-data"
             ],
-            "time": "2018-10-12T20:07:44+00:00"
+            "time": "2019-04-25T16:25:48+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "benhall14/php-pagination": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

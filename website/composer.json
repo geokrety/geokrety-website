@@ -4,10 +4,15 @@
       "php": "5.6.32"
     }
   },
+  "repositories": [{
+    "type": "vcs",
+    "url": "https://github.com/kumy/php-pagination.git"
+  }],
   "require": {
     "torann/json-ld": "^0.0",
     "google/recaptcha": "^1.2",
-    "nesbot/carbon": "^1.36"
+    "nesbot/carbon": "^1.36",
+    "benhall14/php-pagination": "dev-master"
   },
   "autoload": {
     "classmap": [

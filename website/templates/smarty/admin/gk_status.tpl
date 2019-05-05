@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-  <li><a href="/">Home</a></li>
+  <li><a href="/">{t}Home{/t}</a></li>
   <li><a href="/_admin.php">Admin</a></li>
   <li class="active">GK Status</li>
 </ol>

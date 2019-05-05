@@ -2,8 +2,6 @@
 
 session_start();
 
-use Carbon\Carbon;
-
 require_once 'db.php'; // modul bazodanowy
 require_once 'templates/konfig.php';
 require_once 'wybierz_jezyk.php'; // wybór języka
@@ -37,27 +35,37 @@ $smarty->escape_html = true;
 $smarty->template_dir = './templates/smarty/';
 $smarty->compile_dir = $config['temp_dir_smarty_compile'];
 $smarty->cache_dir = $config['temp_dir_smarty_cache'];
-$smarty->plugins_dir[] = './templates/plugins/';
+$smarty->addPluginsDir('./templates/plugins/');
 $smarty->compile_check = true; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
 $smarty->assign('content_template', false); // Store included template name
-$smarty->assign('jquery',array()); // Store page jquery
+$smarty->assign('css', array()); // Store dynamic css filename to load
+$smarty->assign('javascript', array()); // Store dynamic javascript filename to load
+$smarty->assign('jquery', array()); // Store page jquery
 $smarty->assign('isSuperUser', false);
 $smarty->registerClass('Carbon', '\Carbon\Carbon');
+
+// DEBUG DO NOT MERGE THAT
+        $smarty->clear_all_cache();
+        $smarty->clear_compiled_tpl();
+// DEBUG DO NOT MERGE THAT
 
 $smarty->assign('site_welcome', $config['welcome']);
 $smarty->assign('site_punchline', $config['punchline']);
 $smarty->assign('site_intro', $config['intro']);
 $smarty->assign('site_keywords', $config['keywords']);
 
-
 $longin_status = longin_chceck();
 if ($longin_status['plain'] != null) {
+    $userid_longin = $longin_status['userid'];
     $smarty->assign('isLoggedIn', true);
+    $smarty->assign('currentUser', $longin_status['userid']);
     if (in_array($longin_status['userid'], $config['superusers'])) {
-      $smarty->assign('isSuperUser', true);
+        $smarty->assign('isSuperUser', true);
     }
 } else {
+    $smarty->assign('currentUser', false);
     $smarty->assign('isLoggedIn', false);
+    $smarty->assign('isSuperUser', false);
 }
 
 if (isset($_GET['template']) && $_GET['template'] == 'm') {
@@ -66,6 +74,8 @@ if (isset($_GET['template']) && $_GET['template'] == 'm') {
     $template = 'krety.tpl';
 }
 
+// DEBUG kumy
+$smarty_cache_this_page = 0;
 if (($smarty_cache_this_page > 0) and isset($smarty_cache_filename)) {  // czy jest znacznik na stronie, żeby keszowac te strone
     $smarty->caching = 2; // lifetime is per cache - http://www.smarty.net/docsv2/en/variable.cache.lifetime.tpl
     $smarty->cache_lifetime = $smarty_cache_this_page;
