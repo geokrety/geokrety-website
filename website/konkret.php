@@ -42,8 +42,9 @@ $link = GKDB::getLink();
 $kret_gk = sprintf('GK%04X', $kret_id);
 require_once 'czy_obserwowany.php'; //geokret_watchers
 
-$gk = new \Geokrety\Repository\KonkretRepository($link);
-$geokret = $gk->getById($kret_id, true);
+// GeoKret details
+$gkR = new \Geokrety\Repository\KonkretRepository($link);
+$geokret = $gkR->getById($kret_id);
 if (is_null($geokret)) {
     include_once 'defektoskop.php';
     $TRESC = defektoskop(_('No such GeoKret!'), true, 'there is no such mole', 3, 'WRONG_DATA');
@@ -51,40 +52,17 @@ if (is_null($geokret)) {
     exit;
 }
 $smarty->assign('geokret_details', $geokret);
+$smarty->assign('isGeokretOwner', $geokret->isOwner($userid_longin));
+$smarty->assign('geokret_already_seen', $gkR->hasUserTouched($userid_longin, $geokret->id));
 
-// Is owner?
-$smarty->assign('isGeokretOwner', $userid_longin != null && $userid_longin == $geokret->ownerId);
+// Country track
+$countryTrack = $geokret->cachesCount ? $gkR->getCountryTrack($geokret->id) : NULL;
+$smarty->assign('country_track', $countryTrack);
 
-// Load country track
-$sql = 'SELECT  country, COUNT(*) as count
-FROM (
-  SELECT  @r := @r + (@country != country) AS gn,
-          @country := country AS sn,
-          s.*
-  FROM (SELECT @r := 0, @country := \'\') vars,
-       `gk-ruchy` as s
-  WHERE id = '.$kret_id.'
-  AND s.lat is not null
-  AND s.lon is not null
-  ORDER BY data_dodania asc, data
-) q
-GROUP BY gn';
-$result = mysqli_query($link, $sql);
-$smarty->assign('country_track', mysqli_fetch_all($result, MYSQLI_ASSOC));
-
-// Load avatar
-$sql = 'SELECT ob.typ as type, ob.id, ob.id_kreta as gk_id, ob.user as user_id, ob.plik as filename, ob.opis as legend
-FROM `gk-obrazki` ob
-LEFT JOIN `gk-geokrety` gk ON (ob.obrazekid = gk.avatarid)
-WHERE gk.id = '.$kret_id.'
-LIMIT 1';
-$result = mysqli_query($link, $sql);
-if (mysqli_num_rows($result)) {
-    $avatar = mysqli_fetch_all($result, MYSQLI_ASSOC)[0];
-    $smarty->assign('geokret_avatar', $avatar);
-} else {
-    $smarty->assign('geokret_avatar', false);
-}
+// Avatar
+$pictureR = new \Geokrety\Repository\PictureRepository($link);
+$avatar = $gk->avatarId ? $pictureR->getByGeokretAvatarId($gk->avatarId) : NULL;
+$smarty->assign('geokret_avatar', $avatar);
 
 $jquery = <<<'EOD'
 $('.collapse').on('shown.bs.collapse', function(){
@@ -95,45 +73,24 @@ $('.collapse').on('shown.bs.collapse', function(){
 EOD;
 $smarty->append('jquery', $jquery);
 
-// link to ruchy
-// if user is logged in
-$smarty->assign('geokret_already_seen', false);
-if ($userid_longin != null) {
-    // if the guest already had the mole in his hand, he can confidently know his number
-    $result = mysqli_query($link, "SELECT user FROM `gk-ruchy`
-      WHERE id='$kret_id'
-      AND user='$userid_longin'
-      AND logtype <> '2'
-      LIMIT 1");
-    $row = mysqli_fetch_array($result);
-    mysqli_free_result($result);
-    $smarty->assign('geokret_already_seen', !empty($row) or ($userid == $userid_longin));
-}
+// pictures
+$pictures = $pictureR->getByGeokretId($geokret->id);
+$smarty->assign('geokret_pictures', $pictures);
 
-//-------------------------------------------- OBRAZKI / PHOTOS ------------------------------- //
-
-$result = mysqli_query($link, "SELECT obrazekid AS picture_id, id AS id, user AS user_id, id_kreta AS geokret_id,
-  plik AS filename, opis AS legend, typ AS type
-  FROM `gk-obrazki`
-  WHERE id_kreta='$kret_id'
-  ORDER BY obrazekid DESC
-  LIMIT 30");
-$smarty->assign('geokret_pictures', mysqli_fetch_all($result, MYSQLI_ASSOC));
-
-// altitude
-if (is_file("templates/wykresy/$kret_id-m.png") and is_file("templates/wykresy/$kret_id-m.png")) {
+// Altitude
+if (is_file('templates/wykresy/'.$geokret->id.'-m.png') and is_file('templates/wykresy/'.$geokret->id.'-m.png')) {
     $smarty->assign('geokret_altitude_profile', true);
 }
 
-//-------------------------------------------- OBRAZKI / PHOTOS : end ------------------------------- //
-
 // Watchers
-$smarty->assign('geokret_watchers', czy_obserwowany($kret_id, $userid_longin));
+$smarty->assign('geokret_watchers', czy_obserwowany($geokret->id, $userid_longin));
 
 // how many moves in total
-$result = mysqli_query($link, "SELECT COUNT(*) FROM `gk-ruchy` WHERE id = '$kret_id'");
-$total_move_count = mysqli_fetch_array($result)[0];
+$tripR = new \Geokrety\Repository\TripRepository($link);
+$total_move_count = $tripR->countTotalMoveByGeokretId($geokret->id);
 $smarty->assign('total_move_count', $total_move_count);
+
+// Pagination total number of pages
 $max_page = ceil($total_move_count / 20);
 if ($page > $max_page) {
     $page = $max_page;
@@ -172,27 +129,14 @@ EOD;
 
 // ----------------------------------------------Ruchy-----------------------------
 
-$move_start = ($page - 1) * 20;
 // Moves
-$sql = "SELECT ru.ruch_id AS id, ru.data AS date,
-ru.koment AS comment, ru.zdjecia AS pictures_count,
-ru.komentarze AS comments_count, ru.logtype As logtype,
-ru.user AS author_id, us.user AS username, ru.username AS username_anonymous,
-ru.lat, ru.lon, ru.waypoint,
-ru.country, ru.alt, ru.droga AS distance,
-ru.app, ru.app_ver
-FROM `gk-ruchy` ru
-LEFT JOIN `gk-users` AS us ON (ru.user = us.userid)
-WHERE ru.id = $kret_id
-ORDER BY ru.data DESC
-LIMIT $move_start, 20";
-$result = mysqli_query($link, $sql);
-$moves = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$move_start = ($page - 1) * 20;
+$moves = $tripR->getAllTripByGeokretyId($geokret->id, $move_start, MOVES_PER_PAGE);
 $smarty->assign('moves', $moves);
 
 // Extract moves ids
 $moves_ids = array_map(function ($move) {
-    return $move['id'];
+    return $move->ruchId;
 }, $moves);
 
 // Moves comments
@@ -206,11 +150,11 @@ $result = mysqli_query($link, $sql);
 $moves_comments = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $smarty->assign('moves_comments', $moves_comments);
 
-$sql = "SELECT obrazekid AS picture_id, id AS id, user AS user_id, id_kreta AS geokret_id,
+$sql = 'SELECT obrazekid AS picture_id, id AS id, user AS user_id, id_kreta AS geokret_id,
   plik AS filename, opis AS legend, typ AS type
   FROM `gk-obrazki`
-  WHERE id_kreta='$kret_id'
-  AND id IN (".implode(',', $moves_ids).')
+  WHERE id_kreta=$kret_id
+  AND id IN ('.implode(',', $moves_ids).')
   ORDER BY timestamp DESC';
 $result = mysqli_query($link, $sql);
 $moves_pictures = mysqli_fetch_all($result, MYSQLI_ASSOC);

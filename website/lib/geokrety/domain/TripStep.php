@@ -8,7 +8,7 @@ class TripStep {
     public $alt; // altitude
 
     //~ ruchy centric
-    public $ruchId; // ruhy entry id
+    public $ruchId; // ruchy entry id
     public $ruchData; // ruchy user provided date
     public $ruchDataDodania; // ruchy database added date
 
@@ -18,6 +18,14 @@ class TripStep {
     public $logType; // 0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip
     public $country; // country code
     public $droga; // road traveled in km
+
+    //~ geokret centric
+    public $geokretId; // geokret id
+
+    public $app; // application name
+    public $appVer; // application version
+    public $picturesCount; // number of pictures
+    public $commentsCount; // number of comments
 
     //~ waypoint centric
     public $waypoint; // waypoint code (optional)
@@ -64,7 +72,7 @@ EOHTML;
             $commentExtract = substr($commentExtract, 0, 100).'(...)';
         }
         $htmlContent .= <<<EOHTML
-$this->ruchDataDodania $this->username ($this->logTypeString) $this->country ($this->droga km): $commentExtract
+$this->ruchDataDodania $this->username ($this->logTypeString) $this->country ($this->distance km): $commentExtract
 EOHTML;
 
         return $htmlContent;

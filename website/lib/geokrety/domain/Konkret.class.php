@@ -52,4 +52,8 @@ class Konkret {
             default: return null;
         }
     }
+
+    public function isOwner($userId) {
+      return !is_null($userId) && $userId === $self->ownerId;
+    }
 }

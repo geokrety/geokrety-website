@@ -42,7 +42,7 @@ class TripToCSVConverter {
             $comment = self::escapeComment($trip->comment);
             $logType = $trip->getLogTypeString();
             $country = $trip->country;
-            $distance = $trip->droga;
+            $distance = $trip->distance;
             $username = $trip->username;
             $waypointName = $trip->waypointName;
             $link = $trip->waypointLink;

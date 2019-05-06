@@ -7,7 +7,7 @@
 {/function}
 
 {function country_track items=[]}{foreach from=$items item=item name=country}
-<span class="label label-info">{country_flag country=$item.country} {$item.count}</span>
+<span class="label label-info">{country_flag country=$item->country} {$item->count}</span>
 {if not $smarty.foreach.country.last}→{/if}
 {/foreach}
 {/function}
