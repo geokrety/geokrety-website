@@ -144,17 +144,6 @@ $tripCommentR = new  \Geokrety\Repository\TripCommentRepository($link);
 $moves_comments = $tripCommentR->getByTripIds($moves_ids);
 $smarty->assign('moves_comments', $moves_comments);
 
-// Moves pictures
-$sql = 'SELECT obrazekid AS picture_id, id AS id, user AS user_id, id_kreta AS geokret_id,
-  plik AS filename, opis AS legend, typ AS type
-  FROM `gk-obrazki`
-  WHERE id_kreta=$kret_id
-  AND id IN ('.implode(',', $moves_ids).')
-  ORDER BY timestamp DESC';
-$result = mysqli_query($link, $sql);
-$moves_pictures = mysqli_fetch_all($result, MYSQLI_ASSOC);
-$smarty->assign('moves_pictures', $moves_pictures);
-
 // ----------------------------------------------JSON-LD---------------------------
 // schema used: http://schema.org/Sculpture
 
