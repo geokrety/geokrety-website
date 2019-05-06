@@ -1,6 +1,6 @@
 {function move_comment}
 {foreach from=$moves_comments item=comment}
-{if $comment.ruch_id != $move.id}{continue}{/if}
+{if $comment.ruch_id != $move->ruchId}{continue}{/if}
 <!-- List group -->
 <ul class="list-group">
   <li class="list-group-item list-group-item-{if $comment.type == 0}info{else}danger{/if}">
@@ -11,7 +11,7 @@
     </div>
     <div class="pull-right">
       {Carbon::parse($comment.data_dodania)->diffForHumans()}
-      {if $isGeokretOwner or $currentUser == $move.author_id or $currentUser == $comment.user_id }
+      {if $isGeokretOwner or $currentUser == $move->userId or $currentUser == $comment.user_id }
       <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment-delete" data-id="{$comment.comment_id}">
         {fa icon="trash"}
       </button>

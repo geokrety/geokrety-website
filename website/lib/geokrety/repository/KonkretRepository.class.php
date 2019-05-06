@@ -28,12 +28,11 @@ EOQUERY;
     }
 
     public function getById($id) {
-
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
 
         $where = <<<EOQUERY
-    WHERE id = ?
-    LIMIT 1
+  WHERE id = ?
+  LIMIT 1
 EOQUERY;
 
         $sql = self::SELECT_KONKRET.$where;
@@ -56,7 +55,7 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return NULL;
+            return null;
         }
 
         // associate result vars
@@ -89,5 +88,95 @@ EOQUERY;
         $stmt->close();
 
         return $geokret;
+    }
+
+    public function getCountryTrack($gkId) {
+        $gkId = $this->validationService->ensureIntGTE('gkid', $gkId, 1);
+
+        $sql = <<<EOQUERY
+SELECT    country, COUNT(*) as count
+FROM      (SELECT @r := @r + (@country != country) AS gn,
+                  @country := country AS sn,
+                  s.*
+           FROM   (SELECT @r := 0, @country := '') vars,
+                   `gk-ruchy` as s
+           WHERE id = ?
+           AND s.lat is not null
+           AND s.lon is not null
+           ORDER BY data_dodania asc, data
+          ) q
+GROUP BY  gn
+EOQUERY;
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('d', $gkId)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        $stmt->store_result();
+        $nbRow = $stmt->num_rows;
+
+        if ($nbRow == 0) {
+            return null;
+        }
+
+        // associate result vars
+        $stmt->bind_result($country, $count);
+
+        $steps = array();
+        while ($stmt->fetch()) {
+            $step = new \Geokrety\Domain\CountryTrackStep();
+            $step->country = $country;
+            $step->count = $count;
+
+            array_push($steps, $step);
+        }
+
+        $stmt->close();
+
+        return $steps;
+    }
+
+    public function hasUserTouched($userId, $gkId) {
+        if (is_null($userId)) {
+          return false;
+        }
+        $userId = $this->validationService->ensureIntGTE('userid', $userId, 1);
+        $gkId = $this->validationService->ensureIntGTE('gkid', $gkId, 1);
+
+        $sql = <<<EOQUERY
+SELECT  user FROM `gk-ruchy`
+WHERE   id = ?
+AND     user = ?
+AND     logtype <> '2'
+LIMIT   1
+EOQUERY;
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('dd', $gkId, $userId)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        $stmt->store_result();
+        return $stmt->num_rows;
     }
 }

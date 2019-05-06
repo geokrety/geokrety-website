@@ -11,36 +11,36 @@
 {function picture skipLinkToEntity=false skipTags=false isGeokretOwner=false}{* item="" *}
 <figure>
   <div class="parent">
-    {call img filename=$item.filename}
+    {call img filename=$item->filename}
     {if not $skipTags}
-    {if isset($item.country) and $item.country}{country_flag country=$item.country}{/if}
-    {if $item.type == '0'}<span class="type gk" title="{t}A GeoKret avatar{/t}"></span>
-    {elseif $item.type == '1'}<span class="type plane" title="{t}A move picture{/t}"></span>
-    {elseif $item.type == '2'}<span class="type human" title="{t}User's avatar{/t}"></span>
+    {if isset($item->country) and $item->country}{country_flag country=$item->country}{/if}
+    {if $item->type == '0'}<span class="type gk" title="{t}A GeoKret avatar{/t}"></span>
+    {elseif $item->type == '1'}<span class="type plane" title="{t}A move picture{/t}"></span>
+    {elseif $item->type == '2'}<span class="type human" title="{t}User's avatar{/t}"></span>
     {/if}
     {/if}
   </div>
   <figcaption>
     <p class="text-center">
-      {if $item.legend}
-      <small title="{$item.legend}">{$item.legend|truncate:30:'…'}</small>
+      {if $item->legend}
+      <small title="{$item->legend}">{$item->legend|truncate:30:'…'}</small>
       {else}
       &nbsp;
       {/if}
     </p>
     {if not $skipLinkToEntity}
     <p class="text-center">
-      {if $item.type == '0'}{* GK *}
-      {call gkLink id=$item.gk_id gk_name=$item.gk_name|default:''}
-      {else if $item.type == '1'}{* MOVE *}
-      {call gkLink id=$item.gk_id gk_name=$item.gk_name move_id=$item.id}
-      {else if $item.type == '2'}{* USER *}
-      {call userLink id=$item.user_id username=$item.username}
+      {if $item->type == '0'}{* GK *}
+      {call gkLink id=$itemC gk_name=$item->name|default:''}
+      {else if $item->type == '1'}{* MOVE *}
+      {call gkLink id=$item->geokretId gk_name=$item->name move_id=$item->id}
+      {else if $item->type == '2'}{* USER *}
+      {call userLink id=$item->userId username=$item->ownerName}
       {else}
       {t}Unknown type{/t}
       {/if}
     </p>
-    {elseif $isLoggedIn and ($isGeokretOwner or $currentUser == $item.user_id)}
+    {elseif $isLoggedIn and ($isGeokretOwner or $currentUser == $item->userId)}
     <div class="btn-group pull-right" role="group">
       <button type="button" class="btn btn-warning btn-xs" title="{t}Edit avatar{/t}">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -68,7 +68,7 @@
     {if $isGeokretOwner}
     <p class="text-center"><small><em>{t}Add an avatar{/t}</em></small></p>
     <div class="btn-group pull-right" role="group">
-      <a class="btn btn-primary btn-xs" href="/imgup.php?typ=0&id={$geokret_details.gk_id}&avatar=on" title="{t}Upload an avatar{/t}">
+      <a class="btn btn-primary btn-xs" href="/imgup.php?typ=0&id={$geokret_details->geokretId}&avatar=on" title="{t}Upload an avatar{/t}">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </a>
     </div>

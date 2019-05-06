@@ -227,6 +227,8 @@ $cotozakret['4'] = _('KretyPost');
 
 $config_ile_wzorow_banerkow = 9;    // how many patterns in the statistics with the statistics
 
+$config['moves_per_page'] = 20;
+
 $config['welcome'] = 'Welcome to GeoKrety.org!';
 $config['punchline'] = 'Open source item tracking for all caching platforms';
 $config['intro'] = 'This service is similar to TravelBug™ or GeoLutins and aims at tracking things you put to geocache containers… <a href="%1">read more</a>.';
@@ -296,6 +298,8 @@ if (amIOnProd()) {
 } else {
     define('IS_PROD', false);
 }
+
+define('MOVES_PER_PAGE', $config['moves_per_page']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
 define('SWISTAK_IV32', $config['swistak_iv32']);
