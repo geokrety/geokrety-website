@@ -68,19 +68,9 @@ EOQUERY;
 
     // -------------------------------------- recent pictures ------------------------------- //
 
-    $sql = <<<EOQUERY
-SELECT    ob.typ as type, ob.id, ob.id_kreta as gk_id, ob.user as user_id,
-          ob.plik as filename, ob.opis as legend, gk.nazwa as gk_name,
-          us.user as username, ru.country, ru.data as date
-FROM      `gk-obrazki` ob
-LEFT JOIN `gk-geokrety` gk ON (ob.id_kreta = gk.id)
-LEFT JOIN `gk-users` us ON (ob.user = us.userid)
-LEFT JOIN `gk-ruchy` ru ON (ob.id = ru.ruch_id )
-ORDER BY  `obrazekid` DESC
-LIMIT     18
-EOQUERY;
-    $result = mysqli_query($link, $sql);
-    $smarty->assign('recent_pictures', mysqli_fetch_all($result, MYSQLI_ASSOC));
+    $pictureR = new \Geokrety\Repository\PictureRepository($link);
+    $pictures = $pictureR->getRecentPictures(18);
+    $smarty->assign('recent_pictures', $pictures);
 
     // -------------------------------------- recent geokrety ------------------------------- //
 

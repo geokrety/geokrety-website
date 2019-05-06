@@ -15,3 +15,16 @@ class Picture {
       // TODO
     }
 }
+
+class PictureUser extends Picture {
+    public $username;
+}
+
+class PictureGeoKret extends Picture {
+    public $name;
+}
+
+class PictureTrip extends PictureGeoKret {
+    public $country;
+    public $date;
+}

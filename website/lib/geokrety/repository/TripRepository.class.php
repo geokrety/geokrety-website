@@ -42,7 +42,7 @@ EOQUERY;
     LIMIT ?
 EOQUERY;
 
-        $sql = self::SELECT_RUCHY_WITH_WAYPOINT.$where;
+        $sql = self::SELECT_RUCHY.$where;
         if ($this->verbose) {
             echo "\n$sql\n";
         }
