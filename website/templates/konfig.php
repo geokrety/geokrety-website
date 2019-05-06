@@ -68,6 +68,9 @@ $config['piwik_token'] = isset($_ENV['PIWIK_TOKEN']) ? $_ENV['PIWIK_TOKEN'] : ''
 // Partners
 $config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
 
+// input validation
+$config['waypointy_min_length'] = 4;
+
 // generated files
 $config['obrazki'] = 'obrazki/';
 $config['obrazki-male'] = 'obrazki-male/';
@@ -296,5 +299,8 @@ define('PIWIK_TOKEN', $config['piwik_token']);
 
 // Partners
 define('GEOCACHING_CACHE_WP', $config['geocaching_cache_wp']);
+
+// input validation
+define('CONFIG_WAYPOINTY_MIN_LENGTH', $config['waypointy_min_length']);
 
 date_default_timezone_set(CONFIG_TIMEZONE);

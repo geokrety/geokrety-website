@@ -893,7 +893,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
           <input type="button" id="btn_sprawdzskrzynke" name="sprawdzskrzynke" value="'._('Check').'" '.$disabled_cachename.'onclick="sprawdzNazwe();" class="btn btn-default">
         </span>
       </div>
-      <div id="errorAtLeast" style="visibility:hidden"><img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '._('Enter at least 5 characters').'</div>
+      <div id="errorAtLeast" style="visibility:hidden"><img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '.sprintf(_('Enter at least %d characters'), CONFIG_WAYPOINTY_MIN_LENGTH).'</div>
       <span id="helpBlockCacheName" class="help-block">'.
         _('Enter cache name. Works only with opencaching networks.')
       .' <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0"></a>

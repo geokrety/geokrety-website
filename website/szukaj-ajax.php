@@ -178,8 +178,8 @@ function waypointLinkLabel($waypoint, $name) {
                 $return['lon'] = '';
                 echo json_encode($return);
             }
-        } elseif (!empty($_REQUEST['NazwaSkrzynki']) and mb_strlen($_REQUEST['NazwaSkrzynki']) < 5) {
-            $return['tresc'] = '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" id="szukaj_img_error_5car" width="16" height="16" /> '._('Enter at least 5 characters');
+        } elseif (!empty($_REQUEST['NazwaSkrzynki']) and mb_strlen($_REQUEST['NazwaSkrzynki']) < CONFIG_WAYPOINTY_MIN_LENGTH) {
+            $return['tresc'] = '<img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" id="szukaj_img_error_5car" width="16" height="16" /> '.sprintf(_('Enter at least %d characters'), CONFIG_WAYPOINTY_MIN_LENGTH);
             echo json_encode($return);
         } elseif (!empty($_REQUEST['NazwaSkrzynki'])) {
             $waypointy = new \Geokrety\Repository\WaypointyRepository($link, false);

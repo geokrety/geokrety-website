@@ -94,7 +94,7 @@ function sprawdzWpt(e) {
   var poleInValue = (doc.getElementById(poleInId).value).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
   var poleOut = doc.getElementById(poleOutId);
 
-  if (poleInValue.length >= 6) {
+  if (poleInValue.length >= 4) {
     if (e || (poleAjaxStatus.title != poleInValue)) {
       poleAjaxStatus.innerHTML = 'Retrieving...';
       poleAjaxStatus.title = poleInValue;
