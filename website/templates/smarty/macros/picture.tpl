@@ -31,11 +31,11 @@
     {if not $skipLinkToEntity}
     <p class="text-center">
       {if $item->type == '0'}{* GK *}
-      {call gkLink id=$itemC gk_name=$item->name|default:''}
+      {call gkLink id=$item->geokretId gk_name=$item->name|default:''}
       {else if $item->type == '1'}{* MOVE *}
-      {call gkLink id=$item->geokretId gk_name=$item->name move_id=$item->id}
+      {call gkLink id=$item->geokretId gk_name=$item->name move_id=$item->tripId}
       {else if $item->type == '2'}{* USER *}
-      {call userLink id=$item->userId username=$item->ownerName}
+      {call userLink id=$item->userId username=$item->username}
       {else}
       {t}Unknown type{/t}
       {/if}
