@@ -140,16 +140,11 @@ $moves_ids = array_map(function ($move) {
 }, $moves);
 
 // Moves comments
-$sql = "SELECT co.comment_id, co.ruch_id, co.user_id, co.data_dodania, co.comment, co.type, us.user
-FROM (`gk-ruchy-comments` co)
-LEFT JOIN `gk-users` AS us ON (co.user_id = us.userid)
-WHERE co.kret_id='$kret_id'
-AND co.ruch_id IN (".implode(',', $moves_ids).')
-ORDER BY co.ruch_id, co.comment_id ASC';
-$result = mysqli_query($link, $sql);
-$moves_comments = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$tripCommentR = new  \Geokrety\Repository\TripCommentRepository($link);
+$moves_comments = $tripCommentR->getByTripIds($moves_ids);
 $smarty->assign('moves_comments', $moves_comments);
 
+// Moves pictures
 $sql = 'SELECT obrazekid AS picture_id, id AS id, user AS user_id, id_kreta AS geokret_id,
   plik AS filename, opis AS legend, typ AS type
   FROM `gk-obrazki`

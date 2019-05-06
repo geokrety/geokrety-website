@@ -188,7 +188,7 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
     $TRESC .= '
     <div class="form-group">
       <label class="control-label">'._('Your comment').'</label>
-      <input type="text" class="form-control" name="comment" id="text_field" maxlength="500" autofocus>
+      <input type="text" class="form-control" name="comment" id="text_field" minlength="1" maxlength="500" autofocus>
     </div>
     <input type="hidden" name="gk_id" value="'.$g_gkid.'">
     <input type="hidden" name="ruch_id" value="'.$g_ruchid.'">
