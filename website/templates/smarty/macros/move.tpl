@@ -52,12 +52,12 @@
           <div class="btn-toolbar" role="toolbar">
 
             <div class="btn-group pull-right" role="group">
-              {if $move.id == $geokret->lastPositionId and $move->logType|in_array:['0','3'] AND $geokret->type != '2'}
+              {if $move->ruchId == $geokret->lastPositionId and $move->logType|in_array:['0','3'] AND $geokret->type != '2'}
               <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-move-comment-type="missing" data-gkid="{$geokret->id}" data-ruchid="{$move->ruchId}">
                 {fa icon="exclamation-triangle"}
               </button>
               {/if}
-              {if $currentUser == $move.author_id }
+              {if $currentUser == $move->userId }
               <a class="btn btn-success btn-xs" href="/imgup.php?typ=1&id={$move->ruchId}" role="button" title="{t}Upload a picture{/t}">
                 {fa icon="picture-o"}
               </a>
@@ -67,7 +67,7 @@
               </button>
             </div>
 
-            {if isset($isGeokretOwner) and $isGeokretOwner or $currentUser == $move.author_id }
+            {if isset($isGeokretOwner) and $isGeokretOwner or $currentUser == $move->userId }
             <div class="btn-group pull-right" role="group">
               <a class="btn btn-warning btn-xs" href="/ruchy.php?edit=1&ruchid={$move->ruchId}" role="button" title="{t}Edit log{/t}">
                 {fa icon="pencil"}

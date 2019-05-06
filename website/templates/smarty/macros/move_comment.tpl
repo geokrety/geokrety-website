@@ -1,18 +1,18 @@
 {function move_comment}
 {foreach from=$moves_comments item=comment}
-{if $comment.ruch_id != $move->ruchId}{continue}{/if}
+{if $comment->tripId != $move->ruchId}{continue}{/if}
 <!-- List group -->
 <ul class="list-group">
-  <li class="list-group-item list-group-item-{if $comment.type == 0}info{else}danger{/if}">
+  <li class="list-group-item list-group-item-{if $comment->type === 0}info{else}danger{/if}">
     <div class="pull-left">
-      {if $comment.type == 0}{fa icon="comment"}{else}{fa icon="exclamation-triangle"}{/if}
-      {call userLink id=$comment.user_id username=$comment.user}:
-      {$comment.comment}
+      {if $comment->type == 0}{fa icon="comment"}{else}{fa icon="exclamation-triangle"}{/if}
+      {call userLink id=$comment->userId username=$comment->username}:
+      {$comment->comment}
     </div>
     <div class="pull-right">
-      {Carbon::parse($comment.data_dodania)->diffForHumans()}
-      {if $isGeokretOwner or $currentUser == $move->userId or $currentUser == $comment.user_id }
-      <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment-delete" data-id="{$comment.comment_id}">
+      {Carbon::parse($comment->date)->diffForHumans()}
+      {if $isGeokretOwner or $currentUser == $move->userId or $currentUser == $comment->userId }
+      <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment-delete" data-id="{$comment->id}">
         {fa icon="trash"}
       </button>
       {/if}
