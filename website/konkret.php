@@ -85,17 +85,6 @@ if (is_file('templates/wykresy/'.$geokret->id.'-m.png') and is_file('templates/w
 // Watchers
 $smarty->assign('geokret_watchers', czy_obserwowany($geokret->id, $userid_longin));
 
-// how many moves in total
-$tripR = new \Geokrety\Repository\TripRepository($link);
-$total_move_count = $tripR->countTotalMoveByGeokretId($geokret->id);
-$smarty->assign('total_move_count', $total_move_count);
-
-// Pagination total number of pages
-$max_page = ceil($total_move_count / 20);
-if ($page > $max_page) {
-    $page = $max_page;
-}
-
 //-------------------------------------------- MAP ------------------------------- //
 
 if ($geokret->cachesCount > 0) {
@@ -129,8 +118,18 @@ EOD;
 
 // ----------------------------------------------Ruchy-----------------------------
 
-// Moves
-$move_start = ($page - 1) * 20;
+// how many moves in total
+$tripR = new \Geokrety\Repository\TripRepository($link);
+$total_move_count = $tripR->countTotalMoveByGeokretId($geokret->id);
+$smarty->assign('total_move_count', $total_move_count);
+
+// Pagination total number of pages
+$max_page = ceil($total_move_count / MOVES_PER_PAGE);
+if ($page > $max_page) {
+    $page = $max_page;
+}
+$move_start = ($page - 1) * MOVES_PER_PAGE;
+
 $moves = $tripR->getAllTripByGeokretyId($geokret->id, $move_start, MOVES_PER_PAGE);
 $smarty->assign('moves', $moves);
 
