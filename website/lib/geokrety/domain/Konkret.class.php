@@ -9,7 +9,7 @@ class Konkret {
     public $description;
     // public $url; // TODO update ldjson
     public $ownerId; // TODO update ldjson
-    public $ownerName='xxx'; // TODO update ldjson
+    public $ownerName = 'xxx'; // TODO update ldjson
     // public $authorUrl; // TODO update ldjson
     public $datePublished;
     public $type;
@@ -27,15 +27,15 @@ class Konkret {
     public $konkretLogs;
 
     public function getUrl() {
-      // TODO
+        // TODO
     }
 
     public function getAuthorUrl() {
-      // TODO
+        // TODO
     }
 
     public function getAvatarUrl() {
-      // TODO
+        // TODO
     }
 
     public function enrichFields() {
@@ -54,6 +54,6 @@ class Konkret {
     }
 
     public function isOwner($userId) {
-      return !is_null($userId) && $userId === $self->ownerId;
+        return !is_null($userId) && $userId === $self->ownerId;
     }
 }

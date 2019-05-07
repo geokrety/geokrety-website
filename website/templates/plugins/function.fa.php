@@ -28,7 +28,7 @@ function smarty_function_fa(array $params, Smarty_Internal_Template $template) {
     }
 
     if (in_array('title', array_keys($params)) && !empty($params['title'])) {
-      $title = $params['title'];
+        $title = $params['title'];
     }
 
     return '<i class="fa '.$class.'"'.(isset($title) ? ' title="'.$title.'"' : '').'></i>';

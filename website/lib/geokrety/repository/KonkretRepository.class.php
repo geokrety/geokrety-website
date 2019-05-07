@@ -148,7 +148,7 @@ EOQUERY;
 
     public function hasUserTouched($userId, $gkId) {
         if (is_null($userId)) {
-          return false;
+            return false;
         }
         $userId = $this->validationService->ensureIntGTE('userid', $userId, 1);
         $gkId = $this->validationService->ensureIntGTE('gkid', $gkId, 1);
@@ -177,6 +177,7 @@ EOQUERY;
         }
 
         $stmt->store_result();
+
         return $stmt->num_rows;
     }
 }
