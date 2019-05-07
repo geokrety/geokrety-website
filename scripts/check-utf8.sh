@@ -23,7 +23,7 @@ while test $# -gt 0; do
 
     echo "$0 $current using checkCommand:${checkCommand}"
 
-    for file in `find . -type f -not \( -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' -o -path './.git/*' -o -path './vars/*' -o -path './website/templates/qr2/data/*' \) -exec grep -Iq . {} \; -and -print`; do
+    for file in `find . -type f -not \( -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' -o -path './.git/*' -o -path './vars/*' -o -path './website/templates/qr2/data/*' -o -path './website/vendor/*' \) -exec grep -Iq . {} \; -and -print`; do
         if [ "$checkCommand" == "isutf8" ]; then
             RESULTS=`isutf8 "$file"`
         else
