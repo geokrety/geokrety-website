@@ -55,7 +55,7 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return null;
+            return array();
         }
 
         // associate result vars
@@ -126,7 +126,7 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return null;
+            return array();
         }
 
         // associate result vars

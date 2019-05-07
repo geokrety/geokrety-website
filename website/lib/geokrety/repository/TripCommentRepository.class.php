@@ -23,6 +23,9 @@ EOQUERY;
 
     public function getByTripIds(array $ids) {
         $count = count($ids);
+        if (!$count) {
+          return array();
+        }
 
         $where = <<<EOQUERY
   WHERE     ruch_id IN (%s)
@@ -50,7 +53,7 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return null;
+            return array();
         }
 
         // associate result vars

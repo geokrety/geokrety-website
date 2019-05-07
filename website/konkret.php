@@ -126,7 +126,7 @@ $smarty->assign('total_move_count', $total_move_count);
 // Pagination total number of pages
 $max_page = ceil($total_move_count / MOVES_PER_PAGE);
 if ($page > $max_page) {
-    $page = $max_page;
+    $page = $max_page || 1;
 }
 $move_start = ($page - 1) * MOVES_PER_PAGE;
 
