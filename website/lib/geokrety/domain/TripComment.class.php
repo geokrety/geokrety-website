@@ -12,7 +12,7 @@ class TripComment {
     public $type;
 
     public function isAvatar() {
-      // TODO
+        // TODO
     }
 
     public function enrichFields() {

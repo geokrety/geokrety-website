@@ -142,7 +142,7 @@ EOQUERY;
         return $count;
     }
 
-    public function getAllTripByGeokretyId($geokretyId, $start, $limit=20) {
+    public function getAllTripByGeokretyId($geokretyId, $start, $limit = 20) {
         $action = 'Trip::getByGeokretyId';
 
         $geokretyId = $this->validationService->ensureIntGTE('geokretyId', $geokretyId, 1);
@@ -175,7 +175,7 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return NULL;
+            return null;
         }
 
         // associate result vars

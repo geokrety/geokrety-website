@@ -13,5 +13,6 @@ function smarty_function_country_flag(array $params, Smarty_Internal_Template $t
     if (!in_array('country', array_keys($params)) || empty($params['country'])) {
         return;
     }
+
     return '<span class="flag-icon flag-icon-'.$params['country'].'" title="'.$params['country'].'"></span>';
 }

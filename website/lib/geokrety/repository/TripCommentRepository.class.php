@@ -50,7 +50,7 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return NULL;
+            return null;
         }
 
         // associate result vars

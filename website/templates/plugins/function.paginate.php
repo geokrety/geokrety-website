@@ -12,9 +12,9 @@ use benhall14\PHPPagination\Pagination as Pagination;
  * -------------------------------------------------------------
  */
 function smarty_function_paginate(array $params, Smarty_Internal_Template $template) {
-
     if (empty($params['total'])) {
         trigger_error("assign: missing 'total' parameter");
+
         return;
     }
 
@@ -26,7 +26,7 @@ function smarty_function_paginate(array $params, Smarty_Internal_Template $templ
     $pagination->screenReader(false);
 
     if (in_array('fragment', array_keys($params)) && !empty($params['fragment'])) {
-      $pagination->fragmentQueryString($params['fragment']);
+        $pagination->fragmentQueryString($params['fragment']);
     }
 
     return $pagination->total($params['total'])->output();
