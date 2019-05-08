@@ -17,7 +17,7 @@ function sprawdzWpt(e) {
   var pole_in_value = (doc.getElementById(pole_in_id).value).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
   var pole_out = doc.getElementById(pole_out_id);
 
-  if (pole_in_value.length >= 6) {
+  if (pole_in_value.length >= 4) {
     if (e || (pole_ajax_status.title != pole_in_value)) {
       pole_ajax_status.innerHTML = 'Retrieving...';
       pole_ajax_status.title = pole_in_value;

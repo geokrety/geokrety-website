@@ -2,7 +2,7 @@
 
 // config file for GeoKrety
 $config['prod_server_name'] = isset($_ENV['PROD_SERVER_NAME']) ? $_ENV['PROD_SERVER_NAME'] : 'geokrety.org';
-$config['adres'] = isset($_ENV['PROD_SERVER_URL']) ? $_ENV['PROD_SERVER_URL'] : $config['prod_server_name'];
+$config['adres'] = isset($_ENV['SERVER_URL']) ? $_ENV['SERVER_URL'] : $config['prod_server_name'];
 
 // MySQL config
 $config['host'] = isset($_ENV['DB_HOSTNAME']) ? $_ENV['DB_HOSTNAME'] : 'db';
@@ -68,6 +68,9 @@ $config['piwik_token'] = isset($_ENV['PIWIK_TOKEN']) ? $_ENV['PIWIK_TOKEN'] : ''
 // Partners
 $config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
 
+// input validation
+$config['waypointy_min_length'] = 4;
+
 // generated files
 $config['obrazki'] = 'obrazki/';
 $config['obrazki-male'] = 'obrazki-male/';
@@ -124,6 +127,11 @@ define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
 
 // Default timezone
 $config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';
+
+// Temp directories
+$config['temp_dir_smarty_compile'] = isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $_ENV['TEMP_DIR_SMARTY_COMPILE'] : '/tmp/templates/compile/';
+$config['temp_dir_smarty_cache'] = isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/';
+$config['temp_dir_htmlpurifier_cache'] = isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/';
 
 // Smarty
 define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
@@ -273,6 +281,9 @@ if (!function_exists('amIOnProd')) {
 // PROD ONLY: keep only fatal, no more warning
 if (amIOnProd()) {
     error_reporting(E_ERROR | E_PARSE);
+    define('IS_PROD', true);
+} else {
+    define('IS_PROD', false);
 }
 
 define('SWISTAK_KEY', $config['swistak_key']);
@@ -296,5 +307,8 @@ define('PIWIK_TOKEN', $config['piwik_token']);
 
 // Partners
 define('GEOCACHING_CACHE_WP', $config['geocaching_cache_wp']);
+
+// input validation
+define('CONFIG_WAYPOINTY_MIN_LENGTH', $config['waypointy_min_length']);
 
 date_default_timezone_set(CONFIG_TIMEZONE);

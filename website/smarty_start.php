@@ -8,8 +8,18 @@ require_once 'longin_chceck.php';
 
 require_once 'check_email_validity.php';
 
+function create_tmp_dir($path) {
+    if (!file_exists($path) && !mkdir($path, 0750, true)) {
+        die("Fail to creating $path directory");
+    }
+}
+create_tmp_dir($config['temp_dir_smarty_compile']);
+create_tmp_dir($config['temp_dir_smarty_cache']);
+create_tmp_dir($config['temp_dir_htmlpurifier_cache']);
+
 require_once 'templates/htmlpurifier/library/HTMLPurifier.auto.php';
-$HTMLPurifierconfig_conf = HTMLPurifier_Config::createDefault();
+$HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();
+$HTMLPurifierconfig_conf->set('Cache.SerializerPath', $config['temp_dir_htmlpurifier_cache']);
 $HTMLPurifier = new HTMLPurifier($HTMLPurifierconfig_conf);
 foreach ($_GET as $key => $value) {
     $_GET[$key] = $HTMLPurifier->purify($value);
@@ -29,8 +39,8 @@ $smarty_cache_filename = $smarty_cache_id.$lang.$template_login;
 
 $smarty = new Smarty();
 $smarty->template_dir = './templates/';
-$smarty->compile_dir = './templates/compile/';
-$smarty->cache_dir = './templates/cache/';
+$smarty->compile_dir = $config['temp_dir_smarty_compile'];
+$smarty->cache_dir = $config['temp_dir_smarty_cache'];
 $smarty->plugins_dir[] = './templates/plugins/';
 $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
 

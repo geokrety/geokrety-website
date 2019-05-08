@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-30 21:46+0000\n"
+"POT-Creation-Date: 2019-05-08 13:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: website/adduser.php:118 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:151
-#: website/templates/krety.html:238
+#: website/templates/krety.html:244
 msgid "Terms of use"
 msgstr ""
 
@@ -259,27 +259,27 @@ msgstr ""
 msgid "Missing or invalid coordinates."
 msgstr ""
 
-#: website/cotozalog.php:8 website/templates/konfig.php:201
+#: website/cotozalog.php:8 website/templates/konfig.php:209
 msgid "Dropped to"
 msgstr ""
 
-#: website/cotozalog.php:9 website/templates/konfig.php:202
+#: website/cotozalog.php:9 website/templates/konfig.php:210
 msgid "Grabbed from"
 msgstr ""
 
-#: website/cotozalog.php:10 website/templates/konfig.php:203
+#: website/cotozalog.php:10 website/templates/konfig.php:211
 msgid "A comment"
 msgstr ""
 
-#: website/cotozalog.php:11 website/templates/konfig.php:204
+#: website/cotozalog.php:11 website/templates/konfig.php:212
 msgid "Seen in"
 msgstr ""
 
-#: website/cotozalog.php:12 website/templates/konfig.php:205
+#: website/cotozalog.php:12 website/templates/konfig.php:213
 msgid "Archived"
 msgstr ""
 
-#: website/cotozalog.php:13 website/templates/konfig.php:206
+#: website/cotozalog.php:13 website/templates/konfig.php:214
 msgid "Dipped in"
 msgstr ""
 
@@ -308,23 +308,23 @@ msgid "Freshman mole"
 msgstr ""
 
 #: website/cotozalog.php:40 website/generatorek.php:132
-#: website/templates/konfig.php:208
+#: website/templates/konfig.php:216
 #: website/templates/waypointy-translations.html:132
 msgid "Traditional"
 msgstr ""
 
 #: website/cotozalog.php:41 website/generatorek.php:133
-#: website/templates/konfig.php:209
+#: website/templates/konfig.php:217
 msgid "A book/CD/DVD..."
 msgstr ""
 
 #: website/cotozalog.php:42 website/generatorek.php:134
-#: website/templates/konfig.php:210
+#: website/templates/konfig.php:218
 msgid "A human"
 msgstr ""
 
 #: website/cotozalog.php:43 website/generatorek.php:135
-#: website/templates/konfig.php:211
+#: website/templates/konfig.php:219
 msgid "A coin"
 msgstr ""
 
@@ -1122,7 +1122,7 @@ msgstr ""
 #: website/templates.php:135 website/templates.php:180
 #: website/templates.php:252 website/templates.php:318
 #: website/templates.php:324 website/templates/krety-m.html:44
-#: website/templates/krety.html:238
+#: website/templates/krety.html:244
 msgid "contact"
 msgstr ""
 
@@ -2055,7 +2055,8 @@ msgid "Check"
 msgstr ""
 
 #: website/ruchy.php:896 website/szukaj-ajax.php:182
-msgid "Enter at least 5 characters"
+#, php-format
+msgid "Enter at least %d characters"
 msgstr ""
 
 #: website/ruchy.php:898
@@ -2240,7 +2241,7 @@ msgstr ""
 #: website/templates.php:66 website/templates.php:138
 #: website/templates.php:183 website/templates.php:255
 #: website/templates.php:321 website/templates.php:327
-#: website/templates/krety-m.html:44 website/templates/krety.html:238
+#: website/templates/krety-m.html:44 website/templates/krety.html:244
 msgid "Report abuse"
 msgstr ""
 
@@ -2261,7 +2262,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: website/templates/konfig.php:212
+#: website/templates/konfig.php:220
 msgid "KretyPost"
 msgstr ""
 
@@ -2481,7 +2482,14 @@ msgstr ""
 msgid "Contribute"
 msgstr ""
 
-#: website/templates/krety.html:238
+#: website/templates/krety.html:227
+msgid ""
+"This is not the production instance. If you are not a tester, then you "
+"probably whish to go to our <a href=\"https://geokrety.org\">production "
+"website</a>."
+msgstr ""
+
+#: website/templates/krety.html:244
 msgid "version"
 msgstr ""
 
