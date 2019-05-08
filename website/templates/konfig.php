@@ -2,7 +2,7 @@
 
 // config file for GeoKrety
 $config['prod_server_name'] = isset($_ENV['PROD_SERVER_NAME']) ? $_ENV['PROD_SERVER_NAME'] : 'geokrety.org';
-$config['adres'] = isset($_ENV['PROD_SERVER_URL']) ? $_ENV['PROD_SERVER_URL'] : $config['prod_server_name'];
+$config['adres'] = isset($_ENV['SERVER_URL']) ? $_ENV['SERVER_URL'] : $config['prod_server_name'];
 
 // MySQL config
 $config['host'] = isset($_ENV['DB_HOSTNAME']) ? $_ENV['DB_HOSTNAME'] : 'db';
