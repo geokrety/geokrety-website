@@ -281,6 +281,9 @@ if (!function_exists('amIOnProd')) {
 // PROD ONLY: keep only fatal, no more warning
 if (amIOnProd()) {
     error_reporting(E_ERROR | E_PARSE);
+    define('IS_PROD', true);
+} else {
+    define('IS_PROD', false);
 }
 
 define('SWISTAK_KEY', $config['swistak_key']);
