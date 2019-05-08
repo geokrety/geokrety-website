@@ -27,10 +27,17 @@ if ($longin_status['plain'] != null) {
 
 $smarty_cache_filename = $smarty_cache_id.$lang.$template_login;
 
+if (!file_exists('/tmp/templates/compile/') && !mkdir('/tmp/templates/compile/', 0750, true)) {
+    die('Fail to creating templates/compile directory');
+}
+if (!file_exists('/tmp/templates/cache/') && !mkdir('/tmp/templates/cache/', 0750, true)) {
+    die('Fail to creating templates/cache directory');
+}
+
 $smarty = new Smarty();
 $smarty->template_dir = './templates/';
-$smarty->compile_dir = './templates/compile/';
-$smarty->cache_dir = './templates/cache/';
+$smarty->compile_dir = '/tmp/templates/compile/';
+$smarty->cache_dir = '/tmp/templates/cache/';
 $smarty->plugins_dir[] = './templates/plugins/';
 $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
 
