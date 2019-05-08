@@ -37,6 +37,12 @@
   </header>
 
   <div class="container">
+{if not IS_PROD}
+    <div class="alert alert-danger" role="alert">
+    <b>{t escape=no}This is not the production instance. If you are not a tester, then you probably whish to go to our <a href="https://geokrety.org">production website</a>.{/t}</b>
+    </div>
+{/if}
+
     {if count($alert_msgs)}
     {foreach from=$alert_msgs item=alert_msg}
     <div class="alert alert-{$alert_msg.level} alert-dismissible" role="alert">
@@ -53,11 +59,6 @@
   </div>
   {include file='footer.tpl'}
 
-{ if not IS_PROD }
-  <div class="alert alert-danger" role="alert">
-  <b>{t escape=no}This is not the production instance. If you are not a tester, then you probably whish to go to our <a href="https://geokrety.org">production website</a>.{/t}</b>
-  </div>
-{/if}
   {include file='navbar.tpl'}
 
   {if isset($ldjson) and $ldjson}
