@@ -128,6 +128,11 @@ define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
 // Default timezone
 $config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';
 
+// Temp directories
+$config['temp_dir_smarty_compile'] = isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $_ENV['TEMP_DIR_SMARTY_COMPILE'] : '/tmp/templates/compile/';
+$config['temp_dir_smarty_cache'] = isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/';
+$config['temp_dir_htmlpurifier_cache'] = isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/';
+
 // Smarty
 define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
 
