@@ -39,7 +39,7 @@
 
     {if $move->picturesCount}
     <div class="row">
-      <div class="col-xs-12">HAS PICTURE
+      <div class="col-xs-12">
         {call move_picture moves_pictures=$geokret_pictures}
       </div>
     </div>

@@ -25,6 +25,10 @@ function smarty_function_paginate(array $params, Smarty_Internal_Template $templ
     $pagination->retainQueryString();
     $pagination->screenReader(false);
 
+    $pagination->pagesBeforeSeparator(isset($params['pagesBeforeSeparator']) ? $params['pagesBeforeSeparator'] : 2);
+    $pagination->pagesAroundActive(isset($params['pagesAroundActive']) ? $params['pagesAroundActive'] : 2);
+    $pagination->perPage(isset($params['perPage']) ? $params['perPage'] : 20);
+
     if (in_array('fragment', array_keys($params)) && !empty($params['fragment'])) {
         $pagination->fragmentQueryString($params['fragment']);
     }

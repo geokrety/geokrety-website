@@ -24,7 +24,7 @@ EOQUERY;
     public function getByTripIds(array $ids) {
         $count = count($ids);
         if (!$count) {
-          return array();
+            return array();
         }
 
         $where = <<<EOQUERY

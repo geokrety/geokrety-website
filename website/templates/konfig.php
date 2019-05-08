@@ -87,10 +87,8 @@ $config['generated'] = 'files/';
 $config['cdn_images'] = $config['cdn_url'].'/images';
 $config['cdn_banners'] = $config['cdn_images'].'/banners';
 $config['cdn_logos'] = $config['cdn_images'].'/logos/';
-// $config['cdn_obrazki'] = $config['cdn_images'].'/obrazki';
-$config['cdn_obrazki'] = 'https://cdn.geokrety.org/images/obrazki';
-// $config['cdn_obrazki_male'] = $config['cdn_images'].'/obrazki-male';
-$config['cdn_obrazki_male'] = 'https://cdn.geokrety.org/images/obrazki-male/';
+$config['cdn_obrazki'] = $config['cdn_images'].'/obrazki';
+$config['cdn_obrazki_male'] = $config['cdn_images'].'/obrazki-male';
 $config['cdn_icons'] = $config['cdn_images'].'/icons';
 $config['cdn_log_icons'] = $config['cdn_images'].'/log-icons';
 $config['cdn_pins'] = $config['cdn_icons'].'/pins';
@@ -228,6 +226,7 @@ $cotozakret['4'] = _('KretyPost');
 $config_ile_wzorow_banerkow = 9;    // how many patterns in the statistics with the statistics
 
 $config['moves_per_page'] = 20;
+$config['pictures_per_gallery_page'] = 99;
 
 $config['welcome'] = 'Welcome to GeoKrety.org!';
 $config['punchline'] = 'Open source item tracking for all caching platforms';
@@ -300,6 +299,7 @@ if (amIOnProd()) {
 }
 
 define('MOVES_PER_PAGE', $config['moves_per_page']);
+define('PICTURES_PER_GALLERY_PAGE', $config['pictures_per_gallery_page']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
 define('SWISTAK_IV32', $config['swistak_iv32']);
