@@ -17,8 +17,8 @@ require_once SMARTY_DIR.'Smarty.class.php';
 
 $smarty = new Smarty();
 $smarty->template_dir = './templates/';
-$smarty->compile_dir = './templates/compile/';
-$smarty->cache_dir = './templates/cache/';
+$smarty->compile_dir = $config['temp_dir_smarty_compile'];
+$smarty->cache_dir = $config['temp_dir_smarty_cache'];
 $smarty->plugins_dir[] = './templates/plugins/';
 
 $TRESC = '';
