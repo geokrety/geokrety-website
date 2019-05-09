@@ -29,7 +29,6 @@ if ($_GET['logout']) {      // logging out
     // clear cookies
     $time = time();
     setcookie('geokret0', '', $time - 3600);
-    include 'smarty_start.php';
     $_SESSION['alert_msgs'][] = array(
       'level' => 'success',
       'message' => _('You have been successfully logged out. See you soon!'),

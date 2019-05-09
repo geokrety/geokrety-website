@@ -47,7 +47,7 @@
     {foreach from=$alert_msgs item=alert_msg}
     <div class="alert alert-{$alert_msg.level} alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="{t}Close{/t}"><span aria-hidden="true">&times;</span></button>
-      {$alert_msg.message}
+      {$alert_msg.message nofilter}
     </div>
     {/foreach}
     {/if}

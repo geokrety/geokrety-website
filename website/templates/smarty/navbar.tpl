@@ -63,17 +63,17 @@
             <li><a href="/_admin.php">{fa icon="support"} Admin</a></li>
             {/if}
             <li role="separator" class="divider"></li>
-            <li><a href="/mypage.php?co=5"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> My inventory</a></li>
-            <li><a href="/mypage.php?co=1"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span> My GeoKrety</a></li>
-            <li><a href="/mypage.php?co=2"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Watched GeoKrety</a></li>
+            <li><a href="/mypage.php?co=5">{fa icon="briefcase"} My inventory</a></li>
+            <li><a href="/mypage.php?co=1">{fa icon="bolt"} My GeoKrety</a></li>
+            <li><a href="/mypage.php?co=2">{fa icon="binoculars"} Watched GeoKrety</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/mypage.php?co=3"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span> My recent logs</a></li>
-            <li><a href="/mypage.php?co=4"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span> Recent moves of my GeoKrety</a></li>
+            <li><a href="/mypage.php?co=3">{fa icon="plane"} My recent logs</a></li>
+            <li><a href="/mypage.php?co=4">{fa icon="plane"} Recent moves of my GeoKrety</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/galeria.php?f=myown"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> My photos</a></li>
-            <li><a href="/galeria.php?f=mygeokrets"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Photos of my GeoKrety</a></li>
+            <li><a href="/galeria.php?f=myown">{fa icon="picture-o"} My photos</a></li>
+            <li><a href="/galeria.php?f=mygeokrets">{fa icon="picture-o"} Photos of my GeoKrety</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/mapka_kretow.php"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Where are my GeoKrety?</a></li>
+            <li><a href="/mapka_kretow.php">{fa icon="map-marker"} Where are my GeoKrety?</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/longin.php?logout=1">{fa icon="sign-out"} Sign out</a></li>
           </ul>
