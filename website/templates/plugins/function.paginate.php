@@ -13,7 +13,7 @@ use benhall14\PHPPagination\Pagination as Pagination;
  */
 function smarty_function_paginate(array $params, Smarty_Internal_Template $template) {
     if (empty($params['total'])) {
-        trigger_error("assign: missing 'total' parameter");
+        trigger_error("paginate: missing 'total' parameter");
 
         return;
     }
@@ -29,8 +29,8 @@ function smarty_function_paginate(array $params, Smarty_Internal_Template $templ
     $pagination->pagesAroundActive(isset($params['pagesAroundActive']) ? $params['pagesAroundActive'] : 2);
     $pagination->perPage(isset($params['perPage']) ? $params['perPage'] : 20);
 
-    if (in_array('fragment', array_keys($params)) && !empty($params['fragment'])) {
-        $pagination->fragmentQueryString($params['fragment']);
+    if (in_array('anchor', array_keys($params)) && !empty($params['anchor'])) {
+        $pagination->fragmentQueryString($params['anchor']);
     }
 
     return $pagination->total($params['total'])->output();

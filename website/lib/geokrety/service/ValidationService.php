@@ -31,4 +31,23 @@ class ValidationService {
 
         return $intValue;
     }
+
+    public function ensureOrderBy($desc, $value, $references, $defaultWay) {
+        if (is_null($value)) {
+          return array($references[0], $defaultWay);
+        }
+
+        $value_ = $value;
+        $order = 'ASC';
+        if ($value[0] == '-') {
+          $value_ = substr($value, 1);
+          $order = 'DESC';
+        }
+
+        if (!in_array($value_, $references)) {
+            throw new \InvalidArgumentException("expected $desc to be in allowed values (".implode(', ', $references).')');
+        }
+
+        return [$value_, $order];
+    }
 }

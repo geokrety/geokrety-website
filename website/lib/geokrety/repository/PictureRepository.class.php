@@ -2,14 +2,7 @@
 
 namespace Geokrety\Repository;
 
-class PictureRepository {
-    // database session opened with DBConnect();
-    private $dblink;
-    // report current activity to stdout
-    private $verbose;
-
-    // common validation service
-    private $validationService;
+class PictureRepository extends AbstractRepository {
 
     const SELECT_PICTURE = <<<EOQUERY
 SELECT    ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
@@ -26,12 +19,6 @@ LEFT JOIN `gk-geokrety` gk ON (ob.id_kreta = gk.id)
 LEFT JOIN `gk-users` us ON (ob.user = us.userid)
 LEFT JOIN `gk-ruchy` ru ON (ob.id = ru.ruch_id )
 EOQUERY;
-
-    public function __construct($dblink, $verbose = false) {
-        $this->dblink = $dblink;
-        $this->verbose = $verbose;
-        $this->validationService = new \Geokrety\Service\ValidationService();
-    }
 
     public function getByGeokretAvatarId($id) {
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
@@ -232,7 +219,7 @@ EOQUERY;
                   break;
                 case 2:
                   $picture = new \Geokrety\Domain\PictureUser();
-                  $picture->username = $username;
+                  $picture->authorName = $username;
                   break;
                 default:
                   throw new \Exception("picture id:$id has a wrong type ($type) : ($stmt->errno) ".$stmt->error);

@@ -2,24 +2,13 @@
 
 namespace Geokrety\Repository;
 
-class TripCommentRepository {
-    // database session opened with DBConnect();
-    private $dblink;
-
-    // report current activity to stdout
-    private $verbose;
+class TripCommentRepository extends AbstractRepository {
 
     const SELECT_COMMENT = <<<EOQUERY
 SELECT    comment_id, ruch_id, kret_id, user_id, data_dodania, comment, type, user
 FROM      `gk-ruchy-comments`
 LEFT JOIN `gk-users` ON (user_id = userid)
 EOQUERY;
-
-    public function __construct($dblink, $verbose = false) {
-        $this->dblink = $dblink;
-        $this->verbose = $verbose;
-        $this->validationService = new \Geokrety\Service\ValidationService();
-    }
 
     public function getByTripIds(array $ids) {
         $count = count($ids);

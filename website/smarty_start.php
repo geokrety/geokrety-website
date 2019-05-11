@@ -1,10 +1,11 @@
 <?php
 
+ini_set('session.save_handler', 'redis');
+ini_set('session.save_path', 'tcp://redis:6379');
 session_start();
 
-require_once 'db.php'; // modul bazodanowy
 require_once 'templates/konfig.php';
-require_once 'wybierz_jezyk.php'; // wybór języka
+require_once 'wybierz_jezyk.php'; // language selection
 require_once SMARTY_DIR.'Smarty.class.php';
 require_once 'longin_chceck.php';
 
@@ -36,7 +37,11 @@ $smarty->template_dir = './templates/smarty/';
 $smarty->compile_dir = $config['temp_dir_smarty_compile'];
 $smarty->cache_dir = $config['temp_dir_smarty_cache'];
 $smarty->addPluginsDir('./templates/plugins/');
-$smarty->compile_check = true; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
+if (amIOnProd()) {
+  $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
+} else {
+  $smarty->compile_check = true;
+}
 $smarty->assign('content_template', false); // Store included template name
 $smarty->assign('css', array()); // Store dynamic css filename to load
 $smarty->assign('javascript', array()); // Store dynamic javascript filename to load
@@ -59,6 +64,7 @@ if ($longin_status['plain'] != null) {
     $userid_longin = $longin_status['userid'];
     $smarty->assign('isLoggedIn', true);
     $smarty->assign('currentUser', $longin_status['userid']);
+    define('CURRENT_USER', $longin_status['userid']);
     if (in_array($longin_status['userid'], $config['superusers'])) {
         $smarty->assign('isSuperUser', true);
     }
@@ -66,6 +72,7 @@ if ($longin_status['plain'] != null) {
     $smarty->assign('currentUser', false);
     $smarty->assign('isLoggedIn', false);
     $smarty->assign('isSuperUser', false);
+    define('CURRENT_USER', 0);
 }
 
 if (isset($_GET['template']) && $_GET['template'] == 'm') {

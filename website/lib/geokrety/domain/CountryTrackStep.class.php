@@ -2,7 +2,7 @@
 
 namespace Geokrety\Domain;
 
-class CountryTrackStep {
+class CountryTrackStep extends AbstractObject {
     public $country;
     public $count;
 }

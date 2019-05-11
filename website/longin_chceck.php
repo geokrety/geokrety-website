@@ -2,6 +2,7 @@
 
 function longin_chceck() {
     $ERR = '';
+    $dblink = GKDB::getLink();
 
     if (!empty($_COOKIE['geokret0'])) {
         $sessid = $_COOKIE['geokret0'];
@@ -13,14 +14,17 @@ function longin_chceck() {
 
     //elseif(!empty($_POST['secid']) and strlen($_POST['secid'] == 128)) {  // jest przekazany tajny kod
     elseif (!empty($_POST['secid'])) {  // jest przekazany tajny kod
-        $db = new db();
-        $kret_secid = $db->get_db_link()->real_escape_string($_POST['secid']);
-        $sql = "SELECT `userid`, `user` FROM `gk-users` WHERE `secid`='".$db->get_db_link()->real_escape_string($_POST['secid'])."' LIMIT 1";
+        $kret_secid = $dblink->real_escape_string($_POST['secid']);
+        $sql = 'SELECT userid, user FROM `gk-users` WHERE secid = ? LIMIT 1';
+        $stmt = $dblink->prepare($sql);
+        $stmt->bind_param('s', $_POST['secid']);
+        $stmt->execute();
+        $stmt->store_result();
 
-        $row = $db->exec_fetch_row($sql, $num_rows, 1, 'Blad podczas pobierania rekordu z tabeli gk-users', '', 'SECID_NOT_FOUND');
-
-        if (!empty($row)) {       // if valid secid returned
-            list($userid, $user) = $row;
+        if (!$stmt->num_rows) {       // if valid secid returned
+            $stmt->bind_result($userid, $user);
+            $stmt->fetch();
+            $stmt->close();
             $return['mobile_mode'] = 1; // mobile mode
         } else { // wrong secid
             $ERR[] = _('Wrong secid identifier');
@@ -31,17 +35,24 @@ function longin_chceck() {
             exit();
         }
     } else {
-        include_once 'db.php';
-        $db = new db();
+        $sql = 'SELECT userid, user FROM `gk-aktywnesesje` WHERE sessid = ? LIMIT 1';
+        $stmt = $dblink->prepare($sql);
+        $stmt->bind_param('s', $sessid);
+        $stmt->execute();
+        $stmt->store_result();
 
-        $sql = "SELECT `userid`, `user` FROM `gk-aktywnesesje` WHERE `sessid`='$sessid' LIMIT 1";
-        $row = $db->exec_fetch_row($sql, $num_rows, 1, 'Blad podczas pobierania rekordu z tabeli gk-aktywnesesje`', '', 'SESSION_NOT_FOUND');
-        list($userid, $user) = $row;
+        if ($stmt->num_rows) {
+            $stmt->bind_result($userid, $user);
+            $stmt->fetch();
+            $stmt->close();
 
-        if ($num_rows > 0) {
             // update ostatniej wizyty
-            $sql = "UPDATE `gk-users` SET `ostatni_login` = NOW() WHERE `userid` = '$userid' LIMIT 1";
-            $db->exec($sql, $num_rows, "Blad podczas updatowania pola ostatni_login dla usera $userid", '', 'SESSION_NOT_FOUND');
+            $sql = 'UPDATE `gk-users` SET ostatni_login = NOW() WHERE userid = ? LIMIT 1';
+            $stmt = $dblink->prepare($sql);
+            $stmt->bind_param('d', $userid);
+            $stmt->execute();
+            $stmt->fetch();
+            $stmt->close();
         } else {   // if no active session found and cookie was set then it must be invalid cookie - clear them all!!!
             if (!empty($sessid)) {
                 setcookie('geokret0', false, time() - 360000);

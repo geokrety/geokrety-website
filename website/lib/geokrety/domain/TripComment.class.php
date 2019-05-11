@@ -2,7 +2,7 @@
 
 namespace Geokrety\Domain;
 
-class TripComment {
+class TripComment extends AbstractObject {
     public $id;
     public $tripId;
     public $geokretId;
