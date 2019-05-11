@@ -128,6 +128,9 @@ define('CDN_COLORBOX_CSS', CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css');
 
 define('CDN_LEAFLET_JS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.js');
 define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
+define('CDN_LEAFLET_CENTERCROSS_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');
+
+define('CDN_SLIDEOUT_JS', CONFIG_CDN_LIBRARIES.'/slideout/1.0.1/slideout.min.js');
 
 // Default timezone
 $config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';
@@ -225,7 +228,12 @@ $cotozakret['4'] = _('KretyPost');
 
 $config_ile_wzorow_banerkow = 9;    // how many patterns in the statistics with the statistics
 
-$config['moves_per_page'] = 20;
+$config['home_news_per_page'] = 2;
+$config['home_trip_per_page'] = 7;
+$config['home_geokrety_per_page'] = 7;
+$config['home_online_users_time'] = '5 MINUTE';
+$config['geokrety_per_page'] = 25;
+$config['trip_per_page'] = 25;
 $config['pictures_per_gallery_page'] = 99;
 
 $config['welcome'] = 'Welcome to GeoKrety.org!';
@@ -289,6 +297,16 @@ if (!function_exists('amIOnProd')) {
         return isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == CONFIG_PROD_SERVER_NAME;
     }
 }
+if (!function_exists('gkid')) {
+    /**
+     * Function that format a GeoKret id to hex notation.
+     *
+     * @return string
+     */
+    function gkid($id) {
+        return sprintf('GK%04X', $id);
+    }
+}
 
 // PROD ONLY: keep only fatal, no more warning
 if (amIOnProd()) {
@@ -298,7 +316,7 @@ if (amIOnProd()) {
     define('IS_PROD', false);
 }
 
-define('MOVES_PER_PAGE', $config['moves_per_page']);
+define('MOVES_PER_PAGE', $config['trip_per_page']);
 define('PICTURES_PER_GALLERY_PAGE', $config['pictures_per_gallery_page']);
 
 define('SWISTAK_KEY', $config['swistak_key']);

@@ -1,8 +1,6 @@
 {include file='macros/converters.tpl'}
 {include file='macros/picture.tpl'}
 {include file='macros/icons.tpl'}
-{include file='macros/links_news.tpl'}
-{include file='macros/links_user.tpl'}
 <ol class="breadcrumb">
   <li class="active">{t}Home{/t}</li>
 </ol>
@@ -24,8 +22,7 @@
 {include file='blocks/news.tpl'}
 {/foreach}
 
-<h2>{t}Recent logs{/t}</h2>
-{include file='blocks/moves_table.tpl'}
+{include file='blocks/trip_table.tpl'}
 <a href="/mapki/google_static_logs.png" data-preview-image="/mapki/google_static_logs.png">
   {t}Recent logs on the map{/t}
 </a>
@@ -35,12 +32,14 @@
 <a href="galeria.php">{t}Photo gallery{/t}</a>
 
 <h2>{t}Recently registered GeoKrety{/t}</h2>
-{include file='blocks/geokrety_table.tpl'}
+{include file='blocks/geokrety_table_recently_created.tpl'}
 
+{if $online_users}
 <h2>{t}Online users{/t}</h2>
 {foreach from=$online_users item=item}
-{call userLink id=$item.user_id username=$item.username}
+{userlink user=$item}
 {/foreach}
+{/if}
 
 <div class="pull-right">
   {t total=$counter.total}%1 visits{/t} ({t visits=$counter.average}%1 visits/day{/t})

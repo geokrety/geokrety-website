@@ -18,10 +18,10 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12 col-md-9">
-        <dl class="dl-horizontal pull-left ">
+        <dl class="dl-horizontal pull-left">
           <dt>{t}Reference number{/t}</dt>
           <dd>{id2gk id=$geokret_details->id}</dd>
-          {if $geokret_already_seen}
+          {if $geokret_already_seen or $currentUser == $geokret_details->ownerId}
           <dt>{t}Tracking code{/t}</dt>
           <dd><strong>{$geokret_details->trackingCode}</strong></dd>
           {/if}

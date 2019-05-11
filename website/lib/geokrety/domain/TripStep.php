@@ -2,7 +2,7 @@
 
 namespace Geokrety\Domain;
 
-class TripStep {
+class TripStep extends AbstractObject {
     public $lat; // latitude
     public $lon; // longitude
     public $alt; // altitude
@@ -21,6 +21,7 @@ class TripStep {
 
     //~ geokret centric
     public $geokretId; // geokret id
+    public $geokret; // Konkret object
 
     public $app; // application name
     public $appVer; // application version
@@ -41,6 +42,14 @@ class TripStep {
 
     public function __construct($waypoint) {
         $this->waypoint = $waypoint;
+    }
+
+    public function author() {
+        $user = new User();
+        $user->id = $this->userId;
+        $user->username = $this->username;
+
+        return $user;
     }
 
     public function enrichFields() {

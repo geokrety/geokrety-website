@@ -2,15 +2,16 @@
 
 namespace Geokrety\Domain;
 
-class Konkret {
+class Konkret extends AbstractObject {
     public $id;
     public $trackingCode;
     public $name;
     public $description;
     // public $url; // TODO update ldjson
     public $ownerId; // TODO update ldjson
-    public $ownerName = 'xxx'; // TODO update ldjson
+    public $ownerName; // TODO update ldjson
     // public $authorUrl; // TODO update ldjson
+    public $holderId; // TODO update ldjson
     public $datePublished;
     public $type;
     public $typeString;
@@ -25,6 +26,8 @@ class Konkret {
     public $ratingCount;
     public $ratingAvg;
     public $konkretLogs;
+    public $lastLog;
+    public $lastPosition;
 
     public function getUrl() {
         // TODO
@@ -53,7 +56,24 @@ class Konkret {
         }
     }
 
-    public function isOwner($userId) {
-        return !is_null($userId) && $userId === $self->ownerId;
+    public function owner() {
+        $user = new User();
+        $user->id = $this->ownerId;
+        $user->username = $this->ownerName;
+
+        return $user;
+    }
+
+    public function isOwner() {
+        return !is_null(CURRENT_USER) && CURRENT_USER == $this->ownerId;
+    }
+
+    public function hasCurrentUserSeenGeokretId() {
+        if ($this->isOwner()) {
+            return true;
+        }
+        $tripR = new \Geokrety\Repository\TripRepository(\GKDB::getLink());
+
+        return $tripR->hasCurrentUserSeenGeokretId($this->id);
     }
 }

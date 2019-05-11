@@ -12,7 +12,7 @@ const FA_ICON_SIZES = array('lg', '2x', '3x', '4x', '5x');
  */
 function smarty_function_fa(array $params, Smarty_Internal_Template $template) {
     if (!in_array('icon', array_keys($params)) || empty($params['icon'])) {
-        trigger_error("assign: missing 'icon' parameter");
+        trigger_error("fa: missing 'icon' parameter");
 
         return;
     }
@@ -20,7 +20,7 @@ function smarty_function_fa(array $params, Smarty_Internal_Template $template) {
 
     if (in_array('size', array_keys($params)) && !empty($params['size'])) {
         if (!in_array($params['size'], FA_ICON_SIZES)) {
-            trigger_error("assign: wrong 'size' parameter value.");
+            trigger_error("fa: wrong 'size' parameter value.");
 
             return;
         }

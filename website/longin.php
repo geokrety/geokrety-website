@@ -17,14 +17,18 @@ function haszuj($str) {
     return md5($config['md5_string1'].$str.$config['md5_string2']);
 }
 
+$dblink = GKDB::getLink();
+
 if ($_GET['logout']) {      // logging out
     // delete session id
     $sessid = $_COOKIE['geokret0'];
-    $link = DBConnect();
 
-    $result = mysqli_query($link, "DELETE FROM `gk-aktywnesesje` WHERE `sessid`='$sessid'");
-    mysqli_close($link);
-    $link = null; // prevent warning from smarty.php
+    $sql = 'DELETE FROM `gk-aktywnesesje` WHERE sessid = ?';
+    $stmt = $dblink->prepare($sql);
+    $stmt->bind_param('s', $sessid);
+    $stmt->execute();
+    $stmt->fetch();
+    $stmt->close();
 
     // clear cookies
     $time = time();

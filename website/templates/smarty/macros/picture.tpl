@@ -31,16 +31,16 @@
     {if not $skipLinkToEntity}
     <p class="text-center">
       {if $item->type == '0'}{* GK *}
-      {call gkLink id=$item->geokretId gk_name=$item->name|default:''}
+      {gklink gk=$item}
       {else if $item->type == '1'}{* MOVE *}
-      {call gkLink id=$item->geokretId gk_name=$item->name move_id=$item->tripId}
+      {gklink gk=$item}
       {else if $item->type == '2'}{* USER *}
-      {call userLink id=$item->userId username=$item->username}
+      {userlink user=$item->author()}
       {else}
       {t}Unknown type{/t}
       {/if}
     </p>
-    {elseif $isLoggedIn and ($isGeokretOwner or $currentUser == $item->userId)}
+    {elseif $isLoggedIn and ($isGeokretOwner or $currentUser == $item->id)}
     <div class="btn-group pull-right" role="group">
       <button type="button" class="btn btn-warning btn-xs" title="{t}Edit avatar{/t}">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

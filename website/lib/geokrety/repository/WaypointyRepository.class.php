@@ -2,11 +2,7 @@
 
 namespace Geokrety\Repository;
 
-class WaypointyRepository {
-    // database session opened with DBConnect();
-    private $dblink;
-    // report current activity to stdout
-    private $verbose;
+class WaypointyRepository extends AbstractRepository {
 
     private $prefiksy_oc = array('OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR', 'LT', 'LV'); // oc i inne full wypas
     private $prefiksy_inne = array('GC');     // cache from Geocaching
@@ -38,11 +34,6 @@ EOQUERY;
     public $kraj;
     public $country;
     public $country_code;
-
-    public function __construct($dblink, $verbose) {
-        $this->dblink = $dblink;
-        $this->verbose = $verbose;
-    }
 
     public function getByWaypoint($waypoint) {
         if (!isset($waypoint) || $waypoint == '') {

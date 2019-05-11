@@ -2,7 +2,7 @@
 
 namespace Geokrety\Domain;
 
-class KonkretLog {
+class KonkretLog extends AbstractObject {
     public $authorName;
     public $authorUrl;
     public $text;

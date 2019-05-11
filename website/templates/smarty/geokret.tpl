@@ -1,8 +1,6 @@
 {include file='macros/converters.tpl'}
 {include file='macros/picture.tpl'}
 {include file='macros/icons.tpl'}
-{include file='macros/links_gk.tpl'}
-{include file='macros/links_user.tpl'}
 {include file='macros/move.tpl'}
 {include file='macros/move_comment.tpl'}
 {include file='macros/move_picture.tpl'}

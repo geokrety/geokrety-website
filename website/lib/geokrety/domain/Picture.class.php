@@ -2,13 +2,13 @@
 
 namespace Geokrety\Domain;
 
-class Picture {
+class Picture extends AbstractObject {
     public $id;
     public $type;
     public $geokretId;
     public $userId;
     public $filename;
-    public $ownerName = 'xxx'; // TODO update ldjson
+    public $authorName; // TODO update ldjson
     public $legend;
 
     public function isAvatar() {
@@ -18,6 +18,14 @@ class Picture {
 
 class PictureUser extends Picture {
     public $username;
+
+    public function author() {
+        $user = new \Geokrety\Domain\User();
+        $user->id = $this->userId;
+        $user->username = $this->authorName;
+
+        return $user;
+    }
 }
 
 class PictureGeoKret extends Picture {

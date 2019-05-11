@@ -1,17 +1,7 @@
 {include file='macros/converters.tpl'}
 {include file='macros/picture.tpl'}
 {include file='macros/icons.tpl'}
-{include file='macros/links_gk.tpl'}
-{include file='macros/links_user.tpl'}
-
-{function pagination perpage=$picturesPerGalleryPage}
-{if $total > $perpage}
-<div class="pull-right">
-  {paginate total=$total fragment='gallery' pagesAroundActive=4 pagesBeforeSeparator=4 perPage=$perpage}
-</div>
-<div class="clearfix"></div>
-{/if}
-{/function}
+{include file='macros/paginate.tpl'}
 
 <ol class="breadcrumb">
   <li><a href="/">{t}Home{/t}</a></li>
@@ -19,7 +9,7 @@
 </ol>
 
 <a class="anchor" id="gallery"></a>
-{pagination total=$totalPictures}
+{call pagination total=$totalPictures perpage=$picturesPerGalleryPage anchor='gallery'}
 <div class="gallery">
   {foreach from=$pictures item=item}
   {call picture item=$item}
@@ -27,4 +17,4 @@
   <em>{t}No picture uploaded yet.{/t}</em>
   {/foreach}
 </div>
-{pagination total=$totalPictures}
+{call pagination total=$totalPictures perpage=$picturesPerGalleryPage anchor='gallery'}
