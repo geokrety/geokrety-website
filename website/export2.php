@@ -80,11 +80,11 @@ $required_one_of = array(
   'userid',
   'gkid',
   'wpt',
-  'inventory',
+  'secid',
 );
 $foundParam = 0;
 foreach ($required_one_of as $param) {
-    if (array_key_exists($param, $_GET)) {
+    if (array_key_exists($param, $_GET) && !empty($_GET[$param])) {
         ++$foundParam;
     }
 }
@@ -159,7 +159,9 @@ if (isset($g_userid) and ($g_inventory == 1) and ($g_userid > 0)) {
     }
 }
 // ----------------------------- KRETY ------------------------------//
-
+if (!$WHERE_area and !$WHERE_user and !$WHERE_since and !$WHERE_gkid and !$WHERE_wpt) {
+  exit(1);
+}
 if (!isset($sql)) {
     $sql = "SELECT gk.id, gk.nazwa, gk.opis, gk.owner as id_owner, us.user as owner, gk.data as data_utw, gk.droga, ru.logtype as stan, ru.lat, ru.lon, ru.waypoint, gk.typ, pic.plik, gk.ost_pozycja_id, gk.ost_log_id
 FROM `gk-geokrety` AS gk
