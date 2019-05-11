@@ -63,7 +63,7 @@ foreach ($_GET as $key => $value) {
 
 if (isset($g_modifiedsince) & !ctype_digit($od)) {
     $eg = '?modifiedsince='.date('YmdHis', time() - (2 * 60 * 60));
-    $warning = "The 'modifiedsince' paramter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note our timezone: CET/CEST (UTC+1/+2 in summer).<br/>Try this for data from the last 2 hours.: $eg";
+    $warning = "The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note our timezone: CET/CEST (UTC+1/+2 in summer).<br/>Try this for data from the last 2 hours.: $eg";
     errory_add($warning, 6, 'export2');
     echo $warning;
     exit;
@@ -74,6 +74,29 @@ if (isset($g_modifiedsince) & !ctype_digit($od)) {
 $limit_czasu_d = 10;    // in days; limits the amount of data to download //
 $limit_czasu_s = 86400 * $limit_czasu_d;
 $jak_stare_dane = time() - strtotime("$g_modifiedsince");
+
+$required_one_of = array(
+  'modifiedsince',
+  'userid',
+  'gkid',
+  'wpt',
+  'inventory',
+);
+$foundParam = 0;
+foreach ($required_one_of as $param) {
+    if (array_key_exists($param, $_GET)) {
+        ++$foundParam;
+    }
+}
+if (array_key_exists('latNE', $_GET) && array_key_exists('latSW', $_GET) && array_key_exists('lonNE', $_GET) && array_key_exists('lonSW', $_GET)) {
+    ++$foundParam;
+}
+if (!$foundParam) { // one parameter is required
+    $warning = 'At least one filter is required. For more information, see '.$config['adres'].'api.php';
+    errory_add($warning, 6, 'export2');
+    echo $warning;
+    exit;
+}
 
 if (($jak_stare_dane > $limit_czasu_s) and ($g_kocham_kaczynskiego != $kocham_kaczynskiego) and ($od > 0) and (count($_GET) > 0)) { // jeśli modifiedsince jest jedynym argumentem...
     $warning = "The requested period exceeds the $limit_czasu_d days limit (you requested data for the past ".round($jak_stare_dane / 86400, 2).' days) -- please download a static version of the XML. For more information, see '.$config['adres'].'api.php';
