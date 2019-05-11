@@ -98,7 +98,8 @@ $smarty->append('css', CDN_LEAFLET_CSS);
 $smarty->append('javascript', CDN_LEAFLET_JS);
 $smarty->append('javascript', CDN_LEAFLET_CENTERCROSS_JS);
 
-$jquery = <<<EOD
+if ($user->hasCoordinates()) {
+    $jquery = <<<EOD
 var map = L.map("mapid");
 var osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 var osmAttrib = "Map data © <a href=\"https://www.openstreetmap.org\">OpenStreetMap</a> contributors";
@@ -119,7 +120,8 @@ map.addLayer(osm);
 // var bounds = [[44.31307, 4.70770], [44.31107, 4.70570]];
 // L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
 EOD;
-$smarty->append('jquery', $jquery);
+    $smarty->append('jquery', $jquery);
+}
 
 $smarty->assign('content_template', 'user.tpl');
 require_once 'smarty.php';

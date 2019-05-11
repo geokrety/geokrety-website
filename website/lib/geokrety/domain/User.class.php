@@ -22,6 +22,10 @@ class User extends AbstractObject {
 
     protected $dblink = null;
 
+    public function hasCoordinates() {
+        return $this->latitude && $this->longitude;
+    }
+
     protected function getLink() {
         if (is_null($this->dblink)) {
             $this->dblink = \GKDB::getLink();
