@@ -90,20 +90,6 @@ elseif ($kret_co == '5') {
     $smarty->assign('geokrety', $geokrety);
     $smarty->assign('geokretyTotal', $geokretyTotal);
     $smarty->assign('geokretyPerPage', $config['geokrety_per_page']);
-    // $przetrzymywane_krety_sql = "SELECT gk.id, gk.nr, gk.nazwa, gk.opis, gk.owner, gk.data, gk.typ, us.user
-        // 	FROM `gk-geokrety` AS gk
-        // 	LEFT JOIN `gk-ruchy` ru ON ( gk.ost_pozycja_id = ru.ruch_id )
-        // 	LEFT JOIN `gk-users` us ON ( gk.owner = us.userid )
-        // 	WHERE ( ru.logtype = '1' AND ru.user = '$user->id' )
-        // 		OR ( ru.logtype = '5' AND ru.user = '$user->id' )
-        // 		OR (gk.owner = '$user->id' AND gk.ost_pozycja_id = '0')
-        // 	ORDER BY gk.id ASC";
-    //
-    // include_once 'szukaj_kreta.php';
-    // include_once 'mygeokrets.php';
-    // $TYTUL = sprintf(_("%s's Inventory"), $user->username);
-    // $TRESC .= mygeokrets($kret_co, $user->id, 100, $TYTUL, $longin_status['userid']);
-// } elseif ($kret_co == '6') {
 }
 
 // ------------------------------ SMARTY ------------------------------ //
