@@ -125,8 +125,8 @@ EOXML;
         fclose($file);
 
         // zapis CSV (gzipped)
-        $gzip = gzopen($gpxFile, 'w');
-        gzwrite($gzip, $gpx_content.'.gz');
+        $gzip = gzopen($gpxFile.'.gz', 'w');
+        gzwrite($gzip, $gpx_content);
         gzclose($gzip);
     }
 }

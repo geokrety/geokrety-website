@@ -336,7 +336,7 @@ EOHEAD;
 <tr><td class="heading1" colspan="2"><a name="map"></a><img src="'.CONFIG_CDN_ICONS.'/mapa.png" alt="Map:" width="22" height="22" /> '._('Map').'</td></tr>
 <tr>
   <td>'._('Legend').' : '.$mapLegend.'</td>
-  <td class="right">'._('Download the track as:').' <a href="'.$tripService->getTripGpxFilename($kret_id).'">gpx.gz</a> | <a href="'.$tripService->getTripCsvFilename($kret_id).'">csv.gz</a></td>
+  <td class="right">'._('Download the track as:').' <a href="'.$tripService->getTripGpxFilename($kret_id).'">gpx</a> | <a href="'.$tripService->getTripGpxFilename($kret_id).'.gz">gpx.gz</a> | <a href="'.$tripService->getTripCsvFilename($kret_id).'">csv.gz</a></td>
 </tr>
 </table>';
 
