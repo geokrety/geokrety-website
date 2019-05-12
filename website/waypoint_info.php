@@ -13,7 +13,8 @@ function waypoint_info($waypoint) {
         $prefiks_1 = substr($waypoint, 0, 1);
         $prefiks_3 = substr($waypoint, 0, 3);
 
-        $prefiksy_oc = array('OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR'); // oc i inne full wypas
+        // There are not only OC prefixes, but all supported
+        $prefiksy_oc = array('OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MV', 'MS', 'TR', 'LT', 'LV', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR'); // oc i inne full wypas
         $prefiksy_inne = array('GC');
         $prefiksy_inne_1 = array('N');
         $prefiksy_inne_3 = array('WPG');
