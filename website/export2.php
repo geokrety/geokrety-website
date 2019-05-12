@@ -159,7 +159,7 @@ if (isset($g_userid) and ($g_inventory == 1) and ($g_userid > 0)) {
     }
 }
 // ----------------------------- KRETY ------------------------------//
-if (!$WHERE_area and !$WHERE_user and !$WHERE_since and !$WHERE_gkid and !$WHERE_wpt) {
+if (!isset($sql) and !$WHERE_area and !$WHERE_user and !$WHERE_since and !$WHERE_gkid and !$WHERE_wpt) {
     exit(1);
 }
 if (!isset($sql)) {
