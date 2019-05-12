@@ -1,19 +1,19 @@
 {include file='macros/paginate.tpl'}
 
-<a class="anchor" id="owned"></a>
+<a class="anchor" id="inventory"></a>
 <h2>{t}Inventory{/t}</h2>
 
-{call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='owned'}
+{call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='inventory'}
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
         <th></th>
-        <th>{t}ID{/t} {sort column='id' type='numeric' anchor='owned'}</th>
-        <th class="text-center">{t}Owner{/t} {sort column='owner' type='alpha' anchor='owned'}</th>
-        <th class="text-center">{t}Last move{/t} {sort column='ru.data' type='amount' anchor='owned'}</th>
-        <th class="text-right"><img src="{$imagesUrl}/log-icons/dist.gif" title="{t}Distance{/t}" /> {sort column='droga' type='numeric' anchor='owned'}</th>
-        <th class="text-right"><img src="{$imagesUrl}/log-icons/2caches.png" title="{t}Caches count{/t}" /> {sort column='skrzynki' type='numeric' anchor='owned'}</th>
+        <th>{t}ID{/t} {sort column='id' type='numeric' anchor='inventory'}</th>
+        <th class="text-center">{t}Owner{/t} {sort column='owner' type='alpha' anchor='inventory'}</th>
+        <th class="text-center">{t}Last move{/t} {sort column='ru.data' type='amount' anchor='inventory'}</th>
+        <th class="text-right"><img src="{$imagesUrl}/log-icons/dist.gif" title="{t}Distance{/t}" /> {sort column='droga' type='numeric' anchor='inventory'}</th>
+        <th class="text-right"><img src="{$imagesUrl}/log-icons/2caches.png" title="{t}Caches count{/t}" /> {sort column='skrzynki' type='numeric' anchor='inventory'}</th>
         <th></th>
       </tr>
     </thead>

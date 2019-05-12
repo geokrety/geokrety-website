@@ -7,7 +7,7 @@
       </li>
       <li>
         {fa icon="bolt"}
-        <a href="/mypage.php?userid={$user->id}&co=1">My GeoKrety</a>
+        <a href="/mypage.php?userid={$user->id}&co=1">Owned GeoKrety</a>
       </li>
       <li>
         {fa icon="bolt"}
@@ -15,19 +15,19 @@
       </li>
       <li>
         {fa icon="plane"}
-        <a href="/mypage.php?userid={$user->id}&co=3">My recent logs</a>
+        <a href="/mypage.php?userid={$user->id}&co=3">Recently posted moves</a>
       </li>
       <li>
         {fa icon="plane"}
-        <a href="/mypage.php?userid={$user->id}&co=4">Recent Geokrety moves</a>
+        <a href="/mypage.php?userid={$user->id}&co=4">Moves of owned Geokrety</a>
       </li>
       <li>
         {fa icon="picture-o"}
-        <a href="/galeria.php?photosby={$user->id}">My photos</a>
+        <a href="/galeria.php?photosby={$user->id}">Posted pictures</a>
       </li>
       <li>
         {fa icon="picture-o"}
-        <a href="/galeria.php?userid={$user->id}">Photos of my GeoKrety</a>
+        <a href="/galeria.php?userid={$user->id}">Owned GeoKrety pictures</a>
       </li>
       <li>
         {fa icon="map-marker"}
