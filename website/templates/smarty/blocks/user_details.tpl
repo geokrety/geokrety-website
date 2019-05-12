@@ -11,7 +11,7 @@
       <a class="btn btn-warning btn-xs" href="/georss.php?userid={$user->id}" title="{t}Subscribe to RSS channel{/t}">
         {fa icon="rss"}
       </a>
-      {if $isLoggedIn and $currentUser == $user->id}
+      {if $user->isCurrentUser()}
       <a class="btn btn-info btn-xs" href="/edit.php?co=haslo" title="{t}Password change{/t}">
         {fa icon="key"}
       </a>
@@ -28,13 +28,13 @@
         <dt>{t}Language{/t}</dt>
         <dd>
           {$user->language}
-          {if $isLoggedIn and $currentUser == $user->id}
+          {if $user->isCurrentUser() }
           <a class="btn btn-warning btn-xs" href="/edit.php?co=lang" title="{t}Change prefered language{/t}">
             {fa icon="pencil"}
           </a>
           {/if}
         </dd>
-        {if $isLoggedIn and $currentUser == $user->id}
+        {if $user->isCurrentUser()}
         <dt>{t}Email{/t}</dt>
         <dd>
           {if $user->email}
@@ -62,7 +62,7 @@
     </div>
 
     <div class="gallery pull-right">
-      {pictureOrDefault item=null}
+      {pictureOrDefault item=$user->avatar()}
     </div>
     <div class="clearfix"></div>
   </div>

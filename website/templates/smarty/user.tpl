@@ -30,7 +30,9 @@
     {include file='blocks/user_details.tpl'}
     {/if}
     {include file='blocks/user_actions.tpl'}
+    {if $user->isCurrentUser()}
     {include file='blocks/user_map_home.tpl'}
+    {/if}
     {include file='blocks/user_statpic.tpl'}
   </div>
 </div>

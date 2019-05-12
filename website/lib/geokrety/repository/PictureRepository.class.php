@@ -20,7 +20,59 @@ LEFT JOIN `gk-users` us ON (ob.user = us.userid)
 LEFT JOIN `gk-ruchy` ru ON (ob.id = ru.ruch_id )
 EOQUERY;
 
-    public function getByGeokretAvatarId($id) {
+    public function getAvatarByUserId($id) {
+        $id = $this->validationService->ensureIntGTE('id', $id, 1);
+
+        $avatarType = 2;
+        // $avatarType = \Geokrety\Domain\AVATAR; // TODO why this doesn't work???
+        $where = <<<EOQUERY
+  WHERE user = ?
+  AND   typ = $avatarType
+  LIMIT 1
+EOQUERY;
+
+        $sql = self::SELECT_PICTURE.$where;
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('d', $id)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        $stmt->store_result();
+        $nbRow = $stmt->num_rows;
+
+        if ($nbRow == 0) {
+            return null;
+        }
+
+        // associate result vars
+        $stmt->bind_result($id, $type, $geokretId, $userId, $filename, $legend);
+
+        $picture = new \Geokrety\Domain\PictureUser();
+        while ($stmt->fetch()) {
+            $picture->id = $id;
+            $picture->type = $type;
+            $picture->geokretId = $geokretId;
+            $picture->userId = $userId;
+            $picture->filename = $filename;
+            $picture->legend = $legend;
+        }
+
+        $stmt->close();
+
+        return $picture;
+    }
+
+    public function getAvatarByGeokretId($id) {
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
 
         $where = <<<EOQUERY
@@ -48,13 +100,13 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return array();
+            return null;
         }
 
         // associate result vars
         $stmt->bind_result($id, $type, $geokretId, $userId, $filename, $legend);
 
-        $picture = new \Geokrety\Domain\Picture();
+        $picture = new \Geokrety\Domain\PictureGeoKret();
         while ($stmt->fetch()) {
             $picture->id = $id;
             $picture->type = $type;
@@ -105,7 +157,7 @@ EOQUERY;
 
         $pictures = array();
         while ($stmt->fetch()) {
-            $picture = new \Geokrety\Domain\Picture();
+            $picture = new \Geokrety\Domain\PictureGeoKret();
             $picture->id = $id;
             $picture->type = $type;
             $picture->geokretId = $geokretId;
@@ -219,7 +271,7 @@ EOQUERY;
                   break;
                 case 2:
                   $picture = new \Geokrety\Domain\PictureUser();
-                  $picture->authorName = $username;
+                  $picture->username = $username;
                   break;
                 default:
                   throw new \Exception("picture id:$id has a wrong type ($type) : ($stmt->errno) ".$stmt->error);

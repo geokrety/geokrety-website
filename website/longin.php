@@ -91,7 +91,7 @@ if ($_GET['logout']) {      // logging out
             $sql = "UPDATE `gk-users` SET `haslo` = '', `haslo2`='$haslo2' WHERE `userid` = '$userid' LIMIT 1";
             $result = mysqli_query($link, $sql);
         }
-        $remember = (($kret_remember == 1) ? 1 : 0); // or remember
+        $remember = (($kret_remember == 1 || $kret_remember == 'on' ) ? 1 : 0); // or remember
 
         // sesion id token
         include_once 'random_string.php';
@@ -103,7 +103,7 @@ if ($_GET['logout']) {      // logging out
             $czas_zycia_ciastka = 5184000;
         } // 60 days
         else {
-            $czas_zycia_ciastka = 3600;
+            $czas_zycia_ciastka = 3600*24;
         }
         setcookie('geokret0', $sessid, time() + $czas_zycia_ciastka); // setting cookie with sessid
 

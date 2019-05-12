@@ -14,9 +14,9 @@
     {call img filename=$item->filename}
     {if not $skipTags}
     {if isset($item->country) and $item->country}{country_flag country=$item->country}{/if}
-    {if $item->type == '0'}<span class="type gk" title="{t}A GeoKret avatar{/t}"></span>
-    {elseif $item->type == '1'}<span class="type plane" title="{t}A move picture{/t}"></span>
-    {elseif $item->type == '2'}<span class="type human" title="{t}User's avatar{/t}"></span>
+    {if $item->type == 0}<span class="type gk" title="{t}A GeoKret avatar{/t}"></span>
+    {elseif $item->type == 1}<span class="type plane" title="{t}A move picture{/t}"></span>
+    {elseif $item->type == 2}<span class="type human" title="{t}User's avatar{/t}"></span>
     {/if}
     {/if}
   </div>
@@ -30,11 +30,11 @@
     </p>
     {if not $skipLinkToEntity}
     <p class="text-center">
-      {if $item->type == '0'}{* GK *}
-      {gklink gk=$item}
-      {else if $item->type == '1'}{* MOVE *}
-      {gklink gk=$item}
-      {else if $item->type == '2'}{* USER *}
+      {if $item->type == 0}{* GK *}
+      {gklink gk=$item->geokret()}
+      {else if $item->type == 1}{* MOVE *}
+      {triplink trip=$item->trip()}
+      {else if $item->type == 2}{* USER *}
       {userlink user=$item->author()}
       {else}
       {t}Unknown type{/t}
@@ -80,7 +80,7 @@
 {/function}
 
 {function pictureOrDefault skipLinkToEntity=false skipTags=false isGeokretOwner=false}{* item="" *}
-{if $item}
+{if $item->filename}
 {picture item=$item skipLinkToEntity=$skipLinkToEntity skipTags=$skipTags isGeokretOwner=$isGeokretOwner}
 {else}
 {pictureDefault isGeokretOwner=$isGeokretOwner}

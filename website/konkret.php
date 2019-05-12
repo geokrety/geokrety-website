@@ -51,9 +51,11 @@ if (is_null($geokret)) {
     include_once 'smarty.php';
     exit;
 }
+echo "$kret_id";
 $smarty->assign('geokret_details', $geokret);
+print_r($geokret);
 $smarty->assign('isGeokretOwner', $geokret->isOwner($userid_longin));
-$smarty->assign('geokret_already_seen', $gkR->hasUserTouched($userid_longin, $geokret->id));
+$smarty->assign('geokret_already_seen', $geokret->hasCurrentUserSeenGeokretId());
 
 // Country track
 $countryTrack = $geokret->cachesCount ? $gkR->getCountryTrack($geokret->id) : null;
@@ -61,7 +63,7 @@ $smarty->assign('country_track', $countryTrack);
 
 // Avatar
 $pictureR = new \Geokrety\Repository\PictureRepository($link);
-$avatar = $gk->avatarId ? $pictureR->getByGeokretAvatarId($gk->avatarId) : null;
+$avatar = $gk->avatarId ? $pictureR->getAvatarByGeokretId($gk->avatarId) : null;
 $smarty->assign('geokret_avatar', $avatar);
 
 $jquery = <<<'EOD'
