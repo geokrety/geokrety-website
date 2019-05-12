@@ -78,8 +78,11 @@ elseif ($kret_co == '3') {
 // --------------------------------------------------------------------- recent moves of MY geokrets
 
 elseif ($kret_co == '4') {
-    include_once 'recent_moves.php';
-    $TRESC .= recent_moves("WHERE gk.owner='$user->id'", 50, _('Recent moves of my geokrets'), '', true);
+    $tripR = new \Geokrety\Repository\TripRepository($dblink);
+    list($trip, $tripTotal) = $tripR->getAllTripByOwnerId($user->id, $orderBy, 'desc', $config['trip_per_page'], $page);
+    $smarty->assign('trip', $trip);
+    $smarty->assign('tripTotal', $tripTotal);
+    $smarty->assign('tripPerPage', $config['trip_per_page']);
 }
 
 // ----------------------------------------- user's inventory
