@@ -14,7 +14,7 @@
     {else if $user_subpage == 2}
     {include file='blocks/geokrety_table_watched.tpl'}
     {else if $user_subpage == 3}
-    {include file='blocks/trip_table.tpl'}
+    {include file='blocks/geokrety_table_trip.tpl'}
     {else if $user_subpage == 4}
     <h2>{t}Recently moved GeoKrety{/t}</h2>
     {else if $user_subpage == 5}
