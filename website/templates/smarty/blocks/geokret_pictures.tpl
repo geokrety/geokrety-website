@@ -13,7 +13,7 @@
   <div class="panel-body">
     <div class="gallery">
       {foreach from=$geokret_pictures item=item}
-      {picture item=$item skipLinkToEntity=true skipTags=true isOwner=$geokret_details->isOwner()}
+      {picture item=$item skipLinkToEntity=true skipTags=false isOwner=$geokret_details->isOwner()}
       {foreachelse}
       <em>{t}No picture uploaded yet.{/t}</em>
       {/foreach}

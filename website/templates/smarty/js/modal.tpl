@@ -1,7 +1,6 @@
-
 // ----------------------------- MODAL START
 
-$('#modal').on('show.bs.modal', function (event) {
+$('#modal').on('show.bs.modal', function(event) {
   var button = $(event.relatedTarget)
   var typeName = button.data('type');
   var modal = $(this);
@@ -11,16 +10,20 @@ $('#modal').on('show.bs.modal', function (event) {
     var commentType = button.data('move-comment-type');
     var gkid = button.data('gkid');
     var ruchid = button.data('ruchid');
-    modal.find('.modal-content').load('comment.php?gkid='+gkid+'&ruchid='+ruchid+'&type='+commentType);
+    modal.find('.modal-content').load('comment.php?gkid=' + gkid + '&ruchid=' + ruchid + '&type=' + commentType);
   } else if (typeName == 'move-delete') {
     var id = button.data('id');
-    modal.find('.modal-content').load('_dialog_move_delete.php?id='+id);
+    modal.find('.modal-content').load('_dialog_move_delete.php?id=' + id);
   } else if (typeName == 'move-comment-delete') {
     var id = button.data('id');
-    modal.find('.modal-content').load('_dialog_move_comment_delete.php?id='+id);
-} else if (typeName == 'picture-delete') {
+    modal.find('.modal-content').load('_dialog_move_comment_delete.php?id=' + id);
+  } else if (typeName == 'picture-delete') {
     var id = button.data('id');
-    modal.find('.modal-content').load('_dialog_picture_delete.php?id='+id);
+    modal.find('.modal-content').load('_dialog_picture_delete.php?id=' + id);
+  } else if (typeName == 'picture-set-avatar') {
+    var pictureid = button.data('pictureid');
+    var geokretid = button.data('geokretid');
+    modal.find('.modal-content').load('_dialog_picture_set_avatar.php?geokretid=' + geokretid + '&pictureid=' + pictureid);
   }
 })
 
