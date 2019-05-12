@@ -3,7 +3,7 @@
     {t}Pictures{/t}
     {if $isGeokretOwner}
     <div class="btn-group pull-right" role="group">
-      <a class="btn btn-success btn-xs" href="/imgup.php?typ=0&id={$geokret_details.gk_id}" title="{t}Upload a picture{/t}">
+      <a class="btn btn-success btn-xs" href="/imgup.php?typ=0&id={$geokret_details->id}" title="{t}Upload a picture{/t}">
         {fa icon="picture-o"}
       </a>
     </div>
