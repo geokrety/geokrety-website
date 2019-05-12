@@ -5,7 +5,7 @@
 <div class="modal-header alert-danger">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 class="modal-title" id="modalLabel">{t}Do you really want to delete this trip?{/t}</h4>
-</div>{$trip|print_r}
+</div>
 <form name="comment" action="edit.php?delete={$trip->ruchId}&confirmed=1" method="post">
   <div class="modal-body">
     {call move move=$trip geokret=$trip->geokret showActions=false}
