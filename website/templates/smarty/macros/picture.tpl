@@ -1,5 +1,5 @@
 {function img width=100 height=100}{* filename="" *}
-<img src="{$avatarMinUrl}/{$filename}" width="{$width}" height="{$height}" data-preview-image="{$avatarUrl}/{$filename}" />
+<img src="{$avatarMinUrl}/{$filename}" width="{$width}" height="{$height}" data-preview-image="{$avatarUrl}/{$filename}" class="{if $item->isAvatar()}is-avatar{/if}" />
 {/function}
 
 {function picture skipLinkToEntity=false skipTags=false isOwner=false skipButtons=false}{* item="" *}
@@ -36,10 +36,10 @@
     </p>
     {elseif not $skipButtons and $isLoggedIn and ($isOwner or $currentUser == $item->userId)}
     <div class="btn-group pull-right" role="group">
-      {if not $item->isAvatar()}
-      <a class="btn btn-success btn-xs" href="{$item->editUrl()}" title="{t}Set as avatar{/t}">
+      {if not $item->isAvatar() and $item->geokretId}
+      <button type="button" class="btn btn-success btn-xs" title="{t}Set as avatar{/t}" data-toggle="modal" data-target="#modal" data-type="picture-set-avatar" data-pictureid="{$item->id}" data-geokretid="{$item->geokretId}">
         {fa icon="id-card"}
-      </a>
+      </button>
       {/if}
       <a class="btn btn-warning btn-xs" href="{$item->editUrl()}" title="{t}Edit picture{/t}">
         {fa icon="pencil"}
