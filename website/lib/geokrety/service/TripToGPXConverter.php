@@ -118,9 +118,15 @@ EOXML;
 
     public function generateFile($gpxFile) {
         $gpx_content = $this->generateGPX();
+
+        // raw xml
+        $file = fopen($gpxFile, 'w');
+        fwrite($file, $gpx_content);
+        fclose($file);
+
         // zapis CSV (gzipped)
         $gzip = gzopen($gpxFile, 'w');
-        gzwrite($gzip, $gpx_content);
+        gzwrite($gzip, $gpx_content.'.gz');
         gzclose($gzip);
     }
 }

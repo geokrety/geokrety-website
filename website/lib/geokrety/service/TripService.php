@@ -79,7 +79,7 @@ class TripService {
     }
 
     public function getTripGpxFilename($geokretyId) {
-        return $this->mapDirectory.'gpx/GK-'.$geokretyId.'.gpx.gz';
+        return $this->mapDirectory.'gpx/GK-'.$geokretyId.'.gpx';
     }
 
     public function renderCsv($geokretyId, $trips, $filename = 'trip.csv') {
