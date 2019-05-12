@@ -108,8 +108,8 @@ function initMap() {
     attribution: osmAttrib
   });
 
-  // start the map in South-East England
-  map.setView(new L.LatLng(51.3, 0.7), 9);
+  // start the map in Paris
+  map.setView(new L.LatLng(48.85, 2.35), 3);
   map.addLayer(osm);
   return map;
 }

@@ -180,7 +180,7 @@ $smarty->assign('ldjson', $ldHelper->helpKonkret($konkret));
 
 $TYTUL = $geokret->name;
 
-$baseContent = '<div class="modal-body"><div class="center-block" style="width: 45px;"><img src="https://cdn.geokrety.house.kumy.net/images/loaders/rings.svg" /></div></div>';
+$baseContent = '<div class="modal-body"><div class="center-block" style="width: 45px;"><img src="'.CONFIG_CDN_IMAGES.'/loaders/rings.svg" /></div></div>';
 $jquery = <<<EOD
 $('#modal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
