@@ -6,7 +6,7 @@
   <li class="list-group-item list-group-item-{if $comment->type === 0}info{else}danger{/if}">
     <div class="pull-left">
       {if $comment->type == 0}{fa icon="comment"}{else}{fa icon="exclamation-triangle"}{/if}
-      {call userLink id=$comment->userId username=$comment->username}:
+      {userlink user=$comment->author()}:
       {$comment->comment}
     </div>
     <div class="pull-right">

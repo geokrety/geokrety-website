@@ -7,12 +7,21 @@ class TripComment extends AbstractObject {
     public $tripId;
     public $geokretId;
     public $userId;
+    public $username
     public $date;
     public $comment;
     public $type;
 
     public function isAvatar() {
         // TODO
+    }
+
+    public function author() {
+        $user = new \Geokrety\Domain\User();
+        $user->id = $this->userId;
+        $user->username = $this->username;
+
+        return $user;
     }
 
     public function enrichFields() {

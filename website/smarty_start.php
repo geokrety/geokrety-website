@@ -62,17 +62,21 @@ $smarty->assign('site_keywords', $config['keywords']);
 $longin_status = longin_chceck();
 if ($longin_status['plain'] != null) {
     $userid_longin = $longin_status['userid'];
-    $smarty->assign('isLoggedIn', true);
     $smarty->assign('currentUser', $longin_status['userid']);
-    define('CURRENT_USER', $longin_status['userid']);
+    $smarty->assign('isLoggedIn', true);
+    $_SESSION['currentUser'] = $longin_status['userid'];
+    $_SESSION['isLoggedIn'] = true;
     if (in_array($longin_status['userid'], $config['superusers'])) {
         $smarty->assign('isSuperUser', true);
+        $_SESSION['isSuperUser'] = true;
     }
 } else {
     $smarty->assign('currentUser', false);
     $smarty->assign('isLoggedIn', false);
     $smarty->assign('isSuperUser', false);
-    define('CURRENT_USER', 0);
+    $_SESSION['currentUser'] = false;
+    $_SESSION['isLoggedIn'] = false;
+    $_SESSION['isSuperUser'] = false;
 }
 
 if (isset($_GET['template']) && $_GET['template'] == 'm') {

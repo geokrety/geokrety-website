@@ -11,7 +11,7 @@
           </p>
           <br />
           <a class="btn btn-warning btn-xs" href="/edit.php?co=latlon" title="{t}Update home coordinates and obervation area{/t}">
-            {fa icon="pencil"} {t}Define your home coordinate{/t}
+            {fa icon="pencil"} {t}Define your home coordinates{/t}
           </a>
         </div>
         {/if}

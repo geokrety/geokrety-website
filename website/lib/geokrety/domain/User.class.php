@@ -20,34 +20,34 @@ class User extends AbstractObject {
     public $lastlogin;
     public $secid;
 
-    protected $dblink = null;
+    public function isCurrentUser() {
+        return $_SESSION['isLoggedIn'] && $_SESSION['currentUser'] === $this->id;
+    }
 
     public function hasCoordinates() {
         return $this->latitude && $this->longitude;
     }
 
-    protected function getLink() {
-        if (is_null($this->dblink)) {
-            $this->dblink = \GKDB::getLink();
-        }
+    public function avatar() {
+        $pictureR = new \Geokrety\Repository\PictureRepository(\GKDB::getLink());
 
-        return $this->dblink;
+        return $pictureR->getAvatarByUserId($this->id);
     }
 
     public function getStatsGeokretyCreated() {
-        $gkR = new \Geokrety\Repository\KonkretRepository($this->getLink());
+        $gkR = new \Geokrety\Repository\KonkretRepository(\GKDB::getLink());
 
         return $gkR->getStatsByUserId($this->id);
     }
 
     public function getStatsGeokretyMoved() {
-        $tripeR = new \Geokrety\Repository\TripRepository($this->getLink());
+        $tripeR = new \Geokrety\Repository\TripRepository(\GKDB::getLink());
 
         return $tripeR->getStatsByOwnerId($this->id);
     }
 
     public function getBadges() {
-        $badgeR = new \Geokrety\Repository\BadgeRepository($this->getLink());
+        $badgeR = new \Geokrety\Repository\BadgeRepository(\GKDB::getLink());
 
         return $badgeR->getByUserId($this->id);
     }

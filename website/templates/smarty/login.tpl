@@ -24,7 +24,7 @@
             <div class="col-sm-offset-2 col-sm-10">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"> {t}Remember me{/t}
+                  <input id="remember" name="remember" type="checkbox"> {t}Remember me{/t}
                 </label>
                 <p class="help-block">
                   {t escape=no url="/help.php#cookies"}We are using cookies only for storing login information and language preferences. Read more about our <a href="%1">cookies policy</a>.{/t}

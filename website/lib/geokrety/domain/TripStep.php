@@ -40,7 +40,7 @@ class TripStep extends AbstractObject {
     public $logTypeString;
     public $htmlContent;
 
-    public function __construct($waypoint) {
+    public function __construct($waypoint=null) {
         $this->waypoint = $waypoint;
     }
 

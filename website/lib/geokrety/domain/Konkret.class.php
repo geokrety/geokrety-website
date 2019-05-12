@@ -11,7 +11,8 @@ class Konkret extends AbstractObject {
     public $ownerId; // TODO update ldjson
     public $ownerName; // TODO update ldjson
     // public $authorUrl; // TODO update ldjson
-    public $holderId; // TODO update ldjson
+    public $holderId;
+    public $holderName;
     public $datePublished;
     public $type;
     public $typeString;
@@ -19,6 +20,8 @@ class Konkret extends AbstractObject {
     public $cachesCount;
     public $picturesCount;
     public $avatarId; // TODO update ldjson
+    public $avatarFilename; // TODO update ldjson
+    public $avatarLegend;
     public $lastPositionId;
     public $lastLogId;
     public $missing;
@@ -60,12 +63,34 @@ class Konkret extends AbstractObject {
         $user = new User();
         $user->id = $this->ownerId;
         $user->username = $this->ownerName;
+        $user->filename = $this->avatarFilename;
 
         return $user;
     }
 
+    public function holder() {
+        $user = new User();
+        $user->id = $this->holderId;
+        $user->username = $this->holderName;
+
+        return $user;
+    }
+
+    public function avatar() {
+        $picture = new PictureGeoKret();
+        $picture->id = $this->avatarId;
+        $picture->type = AVATAR;
+        $picture->geokretId = $this->id;
+        $picture->name = $this->name;
+        $picture->userId = $this->ownerId;
+        $picture->filename = $this->avatarFilename;
+        $picture->legend = $this->avatarLegend;
+
+        return $picture;
+    }
+
     public function isOwner() {
-        return !is_null(CURRENT_USER) && CURRENT_USER == $this->ownerId;
+        return $_SESSION['isLoggedIn'] && $_SESSION['currentUser'] === $this->ownerId;
     }
 
     public function hasCurrentUserSeenGeokretId() {

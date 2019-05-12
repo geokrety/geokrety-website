@@ -21,7 +21,7 @@
             </div>
             <div class="pull-right">
               {Carbon::parse($move->ruchData)->diffForHumans()} /
-              {call userLink id=$move->userId username=$move->username}
+              {userlink user=$move->author()}
               {application_icon app=$move->app app_ver=$move->appVer}
             </div>
 

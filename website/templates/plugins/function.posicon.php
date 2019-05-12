@@ -40,7 +40,7 @@ function smarty_function_posicon(array $params, Smarty_Internal_Template $templa
     $lastLogType = is_null($gk->lastLog) ? '' : $gk->lastLog->logType;
     $lastUserId = is_null($gk->lastPosition) ? 0 : $gk->lastPosition->userId;
 
-    $iconClass = \Geokrety\Service\IconConverterService::computeLogType($lastLocationType, $lastUserId, CURRENT_USER);
+    $iconClass = \Geokrety\Service\IconConverterService::computeLogType($lastLocationType, $lastUserId, $_SESSION['currentUser']);
     $message = getPosIcon($gk->type.$iconClass);
 
     return '<img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$gk->type.'/1'.$iconClass.'.png" alt="'._('status icon').'" title="'.$message.'" width="37" height="37" border="0" />';

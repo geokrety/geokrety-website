@@ -192,7 +192,7 @@ EOQUERY;
         if (!($stmt = $this->dblink->prepare($sql))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         }
-        $currentUser = CURRENT_USER;
+        $currentUser = $_SESSION['currentUser'];
         if (!$stmt->bind_param('dd', $gkId, $currentUser)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }

@@ -9,49 +9,50 @@ FROM    `gk-geokrety` gk
 EOQUERY;
 
     const SELECT_KONKRET = <<<EOQUERY
-SELECT  id AS id, nr AS tracking_code, nazwa AS name, opis AS description,
-        owner AS owner_id, data AS date_published,
-        typ AS type, droga AS distance, skrzynki AS caches_count,
-        zdjecia AS pictures_count, avatarid AS avatar_id,
-        ost_pozycja_id AS last_position_id,
-        ost_log_id AS last_log_id, hands_of AS holder_id, missing
-FROM    `gk-geokrety` gk
+SELECT      gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
+            gk.ost_log_id, gk.ost_pozycja_id,
+            gk.avatarid, pic.plik, pic.opis,
+            owner.user, holder.userid, holder.user
+FROM        `gk-geokrety` gk
+LEFT JOIN   `gk-users` AS owner ON (gk.owner = owner.userid)
+LEFT JOIN   `gk-obrazki` AS pic ON (gk.avatarid = pic.obrazekid)
+LEFT JOIN   `gk-users` AS holder ON (gk.hands_of = holder.userid)
 EOQUERY;
 
     const SELECT_USER_KONKRET_INVENTORY = <<<EOQUERY
-SELECT    gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
-          gk.ost_log_id, ru.data, ru.logtype, ru.koment, ru.user, us.user, ru.username,
-          gk.ost_pozycja_id, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
-          gk.avatarid, pic.plik,
-          owner.user
-FROM      `gk-geokrety` gk
-LEFT JOIN `gk-ruchy` AS ru ON (gk.ost_log_id = ru.ruch_id)
-LEFT JOIN `gk-ruchy` AS ru2 ON (gk.ost_pozycja_id = ru2.ruch_id)
-LEFT JOIN `gk-users` AS us ON (ru.user = us.userid)
-LEFT JOIN `gk-obrazki` AS pic ON (gk.avatarid = pic.obrazekid)
-LEFT JOIN `gk-users` AS owner ON (gk.owner = owner.userid)
+SELECT      gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
+            gk.ost_log_id, ru.data, ru.logtype, ru.koment, ru.user, us.user, ru.username,
+            gk.ost_pozycja_id, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
+            gk.avatarid, pic.plik,
+            owner.user
+FROM        `gk-geokrety` gk
+LEFT JOIN   `gk-ruchy` AS ru ON (gk.ost_log_id = ru.ruch_id)
+LEFT JOIN   `gk-ruchy` AS ru2 ON (gk.ost_pozycja_id = ru2.ruch_id)
+LEFT JOIN   `gk-users` AS us ON (ru.user = us.userid)
+LEFT JOIN   `gk-obrazki` AS pic ON (gk.avatarid = pic.obrazekid)
+LEFT JOIN   `gk-users` AS owner ON (gk.owner = owner.userid)
 EOQUERY;
 
     const SELECT_USER_KONKRET_WATCHED = <<<EOQUERY
-SELECT    gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
-          gk.ost_log_id, ru.data, ru.logtype, ru.koment, ru.user, us.user, ru.username,
-          gk.ost_pozycja_id, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
-          gk.avatarid, pic.plik,
-          owner.user
-FROM (`gk-obserwable` ob)
-LEFT JOIN `gk-geokrety` AS gk ON (ob.id = gk.id)
-LEFT JOIN `gk-ruchy` AS ru ON (gk.ost_log_id = ru.ruch_id)
-LEFT JOIN `gk-ruchy` AS ru2 ON (gk.ost_pozycja_id = ru2.ruch_id)
-LEFT JOIN `gk-users` AS us ON (ru.user = us.userid)
-LEFT JOIN `gk-obrazki` AS pic ON (gk.avatarid = pic.obrazekid)
-LEFT JOIN `gk-users` AS owner ON (gk.owner = owner.userid)
+SELECT      gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
+            gk.ost_log_id, ru.data, ru.logtype, ru.koment, ru.user, us.user, ru.username,
+            gk.ost_pozycja_id, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
+            gk.avatarid, pic.plik,
+            owner.user
+FROM        (`gk-obserwable` ob)
+LEFT JOIN   `gk-geokrety` AS gk ON (ob.id = gk.id)
+LEFT JOIN   `gk-ruchy` AS ru ON (gk.ost_log_id = ru.ruch_id)
+LEFT JOIN   `gk-ruchy` AS ru2 ON (gk.ost_pozycja_id = ru2.ruch_id)
+LEFT JOIN   `gk-users` AS us ON (ru.user = us.userid)
+LEFT JOIN   `gk-obrazki` AS pic ON (gk.avatarid = pic.obrazekid)
+LEFT JOIN   `gk-users` AS owner ON (gk.owner = owner.userid)
 EOQUERY;
 
     public function getById($id) {
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
 
         $where = <<<EOQUERY
-  WHERE id = ?
+  WHERE gk.id = ?
   LIMIT 1
 EOQUERY;
 
@@ -73,29 +74,34 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
+        $geokret = new \Geokrety\Domain\Konkret();
         if ($nbRow == 0) {
-            return array();
+            return null;
         }
 
         // associate result vars
-        $stmt->bind_result($id, $trackingCode, $name, $description,
-                           $ownerId, $datePublished, $type,
-                           $distance, $cachesCount, $picturesCount, $avatarId,
-                           $lastPositionId, $lastLogId, $lastLogId, $missing);
+        $stmt->bind_result($id, $trackingCode, $name, $description, $datePublished, $type, $distance, $cachesCount, $picturesCount, $ownerId, $missing,
+                           $lastLogId, $lastPositionId,
+                           $avatarId, $avatarFilename, $avatarLegend,
+                           $ownerName, $holderId, $holderName);
 
-        $geokret = new \Geokrety\Domain\Konkret();
         while ($stmt->fetch()) {
             $geokret->id = $id;
             $geokret->trackingCode = $trackingCode;
             $geokret->name = $name;
             $geokret->description = $description;
             $geokret->ownerId = $ownerId;
+            $geokret->ownerName = $ownerName;
+            $geokret->holderId = $holderId;
+            $geokret->holderName = $holderName;
             $geokret->datePublished = $datePublished;
             $geokret->type = $type;
             $geokret->distance = $distance; // road traveled in km
             $geokret->cachesCount = $cachesCount;
             $geokret->picturesCount = $picturesCount;
             $geokret->avatarId = $avatarId;
+            $geokret->avatarFilename = $avatarFilename;
+            $geokret->avatarLegend = $avatarLegend;
             $geokret->lastPositionId = $lastPositionId;
             $geokret->lastLogId = $lastLogId;
             $geokret->missing = $missing;
@@ -141,8 +147,9 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
+        $geokrety = array();
         if ($nbRow == 0) {
-            return array(array(), $total);
+            return array($geokrety, $total);
         }
 
         // associate result vars
@@ -151,7 +158,6 @@ EOQUERY;
                            $lastPositionId, $lastPositionWaypoint, $lastPositionLat, $lastPositionLon, $lastPositionCountry, $lastPositionLogType, $lastPositionUserId,
                            $avatarId, $avatarFilename,
                            $ownerName);
-        $geokrety = array();
         while ($stmt->fetch()) {
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
@@ -230,8 +236,9 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
+        $geokrety = array();
         if ($nbRow == 0) {
-            return array(array(), $total);
+            return array($geokrety, $total);
         }
 
         // associate result vars
@@ -322,8 +329,9 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
+        $geokrety = array();
         if ($nbRow == 0) {
-            return array(array(), $total);
+            return array($geokrety, $total);
         }
 
         // associate result vars
@@ -332,7 +340,7 @@ EOQUERY;
                            $lastPositionId, $lastPositionWaypoint, $lastPositionLat, $lastPositionLon, $lastPositionCountry, $lastPositionLogType, $lastPositionUserId,
                            $avatarId, $avatarFilename,
                            $ownerName);
-        $geokrety = array();
+
         while ($stmt->fetch()) {
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
@@ -403,8 +411,9 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
+        $geokrety = array();
         if ($nbRow == 0) {
-            return array();
+            return $geokrety;
         }
 
         // associate result vars
@@ -413,7 +422,7 @@ EOQUERY;
                            $lastPositionId, $lastPositionWaypoint, $lastPositionLat, $lastPositionLon, $lastPositionCountry, $lastPositionLogType, $lastPositionUserId,
                            $avatarId, $avatarFilename,
                            $ownerName);
-        $geokrety = array();
+
         while ($stmt->fetch()) {
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
@@ -495,14 +504,14 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
+        $steps = array();
         if ($nbRow == 0) {
-            return array();
+            return $steps;
         }
 
         // associate result vars
         $stmt->bind_result($country, $count);
 
-        $steps = array();
         while ($stmt->fetch()) {
             $step = new \Geokrety\Domain\CountryTrackStep();
             $step->country = $country;
