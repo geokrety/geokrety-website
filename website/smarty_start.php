@@ -59,6 +59,10 @@ $smarty->assign('site_punchline', $config['punchline']);
 $smarty->assign('site_intro', $config['intro']);
 $smarty->assign('site_keywords', $config['keywords']);
 
+$smarty->assign('geokrety_types', $cotozakret);
+$smarty->assign('geokrety_moves_types', $cotozalog);
+$smarty->assign('languages', $config_jezyk_nazwa);
+
 $longin_status = longin_chceck();
 if ($longin_status['plain'] != null) {
     $userid_longin = $longin_status['userid'];

@@ -33,7 +33,11 @@ class Konkret extends AbstractObject {
     public $lastPosition;
 
     public function getUrl() {
-        // TODO
+        return '/konkret.php?id='.$this->id;
+    }
+
+    public function editUrl() {
+        return '/edit.php?co=geokret&id='.$this->id;
     }
 
     public function getAuthorUrl() {
@@ -89,6 +93,12 @@ class Konkret extends AbstractObject {
         $picture->isGkAvatar = true;
 
         return $picture;
+    }
+
+    public function save() {
+        $geokretR = new \Geokrety\Repository\KonkretRepository(\GKDB::getLink());
+
+        return $geokretR->updateGeokret($this);
     }
 
     public function isOwner() {

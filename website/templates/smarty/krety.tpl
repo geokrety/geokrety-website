@@ -80,6 +80,7 @@
     (function($) {
     {/literal}
     {include file="js/modal.tpl"}
+    {include file="js/maxlenght.tpl"}
     {if count($jquery)}
       {foreach from=$jquery item=item}
         {$item nofilter}
