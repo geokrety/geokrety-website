@@ -51,9 +51,7 @@ if (is_null($geokret)) {
     include_once 'smarty.php';
     exit;
 }
-echo "$kret_id";
 $smarty->assign('geokret_details', $geokret);
-print_r($geokret);
 $smarty->assign('isGeokretOwner', $geokret->isOwner($userid_longin));
 $smarty->assign('geokret_already_seen', $geokret->hasCurrentUserSeenGeokretId());
 
