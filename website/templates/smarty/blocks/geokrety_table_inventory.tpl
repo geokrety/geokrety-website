@@ -48,7 +48,7 @@
         </td>
         <td>
           {if $geokret->isOwner()}
-          <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret->id}" title="{t}Change prefered language{/t}">
+          <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret->id}" title="{t}Edit GeoKret{/t}">
             {fa icon="pencil"}
           </a>
           {/if}
