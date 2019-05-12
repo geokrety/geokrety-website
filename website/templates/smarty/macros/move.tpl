@@ -1,3 +1,5 @@
+{include file='macros/move_picture.tpl'}
+
 {function move showActions=true}{* move= *}
 <a class="anchor" id="log{$move->ruchId}"></a>
 <div class="panel panel-default">
@@ -67,7 +69,7 @@
               </button>
             </div>
 
-            {if isset($isGeokretOwner) and $isGeokretOwner or $currentUser == $move->userId }
+            {if $geokret_details->isOwner() or $currentUser == $move->userId }
             <div class="btn-group pull-right" role="group">
               <a class="btn btn-warning btn-xs" href="/ruchy.php?edit=1&ruchid={$move->ruchId}" role="button" title="{t}Edit log{/t}">
                 {fa icon="pencil"}

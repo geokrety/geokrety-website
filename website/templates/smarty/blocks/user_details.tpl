@@ -62,7 +62,7 @@
     </div>
 
     <div class="gallery pull-right">
-      {pictureOrDefault item=$user->avatar()}
+      {pictureOrDefault item=$user->avatar() skipLinkToEntity=true isOwner=$user->isCurrentUser()}
     </div>
     <div class="clearfix"></div>
   </div>

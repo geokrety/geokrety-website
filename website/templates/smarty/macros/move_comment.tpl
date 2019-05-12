@@ -11,7 +11,7 @@
     </div>
     <div class="pull-right">
       {Carbon::parse($comment->date)->diffForHumans()}
-      {if $isGeokretOwner or $currentUser == $move->userId or $currentUser == $comment->userId }
+      {if $geokret_details->isOwner() or $currentUser == $move->userId or $currentUser == $comment->userId }
       <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment-delete" data-id="{$comment->id}">
         {fa icon="trash"}
       </button>

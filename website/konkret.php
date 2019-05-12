@@ -52,7 +52,6 @@ if (is_null($geokret)) {
     exit;
 }
 $smarty->assign('geokret_details', $geokret);
-$smarty->assign('isGeokretOwner', $geokret->isOwner($userid_longin));
 $smarty->assign('geokret_already_seen', $geokret->hasCurrentUserSeenGeokretId());
 
 // Country track
@@ -179,30 +178,6 @@ $smarty->assign('ldjson', $ldHelper->helpKonkret($konkret));
 // ----------------------------------------------JSON-LD-(end)---------------------
 
 $TYTUL = $geokret->name;
-
-$baseContent = '<div class="modal-body"><div class="center-block" style="width: 45px;"><img src="'.CONFIG_CDN_IMAGES.'/loaders/rings.svg" /></div></div>';
-$jquery = <<<EOD
-$('#modal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget)
-  var typeName = button.data('type');
-  var modal = $(this);
-  modal.find('.modal-content').html('$baseContent');
-
-  if (typeName == 'move-comment') {
-    var commentType = button.data('move-comment-type');
-    var gkid = button.data('gkid');
-    var ruchid = button.data('ruchid');
-    modal.find('.modal-content').load('comment.php?gkid='+gkid+'&ruchid='+ruchid+'&type='+commentType);
-  } else if (typeName == 'move-delete') {
-    var id = button.data('id');
-    modal.find('.modal-content').load('_dialog_move_delete.php?id='+id);
-  } else if (typeName == 'move-comment-delete') {
-    var id = button.data('id');
-    modal.find('.modal-content').load('_dialog_move_comment_delete.php?id='+id);
-  }
-})
-EOD;
-$smarty->append('jquery', $jquery);
 
 $smarty->assign('content_template', 'geokret.tpl');
 

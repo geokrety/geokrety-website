@@ -1,14 +1,9 @@
-{function pictureIcon}{* filename="" *}
-<a href="{$avatarUrl}/{$filename}" data-preview-image="{$avatarMinUrl}/{$filename}">
-  <img src="{$iconsUrl}/idcard.png" width="14" height="10" alt="{t}GeoKret has avatar{/t}" />
-</a>
-{/function}
 
 {function img width=100 height=100}{* filename="" *}
 <img src="{$avatarMinUrl}/{$filename}" width="{$width}" height="{$height}" data-preview-image="{$avatarUrl}/{$filename}" />
 {/function}
 
-{function picture skipLinkToEntity=false skipTags=false isGeokretOwner=false}{* item="" *}
+{function picture skipLinkToEntity=false skipTags=false isOwner=false skipButtons=false}{* item="" *}
 <figure>
   <div class="parent">
     {call img filename=$item->filename}
@@ -40,12 +35,12 @@
       {t}Unknown type{/t}
       {/if}
     </p>
-    {elseif $isLoggedIn and ($isGeokretOwner or $currentUser == $item->id)}
+    {elseif not $skipButtons and $isLoggedIn and ($isOwner or $currentUser == $item->userId)}
     <div class="btn-group pull-right" role="group">
-      <button type="button" class="btn btn-warning btn-xs" title="{t}Edit avatar{/t}">
+      <a class="btn btn-warning btn-xs" href="{$item->editUrl()}" title="{t}Edit picture{/t}">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-      </button>
-      <button type="button" class="btn btn-danger btn-xs" title="{t}Delete avatar{/t}">
+      </a>
+      <button type="button" class="btn btn-danger btn-xs" title="{t}Delete picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-delete" data-id="{$item->id}">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </button>
     </div>
@@ -54,18 +49,18 @@
 </figure>
 {/function}
 
-{function pictureDefault overlayAdd=false isGeokretOwner=false}{* item="" *}
+{function pictureDefault overlayAdd=false isOwner=false skipButtons=false}{* item="" *}
 <figure>
   <div class="parent">
     <img src="{$imagesUrl}/the-mole-grey.svg" width="100" height="100" />
-    {if $isGeokretOwner}
+    {if $isOwner}
     <div class="overlay center-block">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </div>
     {/if}
   </div>
   <figcaption>
-    {if $isGeokretOwner}
+    {if not $skipButtons and $isOwner}
     <p class="text-center"><small><em>{t}Add an avatar{/t}</em></small></p>
     <div class="btn-group pull-right" role="group">
       <a class="btn btn-primary btn-xs" href="/imgup.php?typ=0&id={$geokret_details->geokretId}&avatar=on" title="{t}Upload an avatar{/t}">
@@ -79,11 +74,11 @@
 </figure>
 {/function}
 
-{function pictureOrDefault skipLinkToEntity=false skipTags=false isGeokretOwner=false}{* item="" *}
+{function pictureOrDefault skipLinkToEntity=false skipTags=false isOwner=false skipButtons=false}{* item="" *}
 {if $item && $item->filename}
-{picture item=$item skipLinkToEntity=$skipLinkToEntity skipTags=$skipTags isGeokretOwner=$isGeokretOwner}
+{picture item=$item skipLinkToEntity=$skipLinkToEntity skipTags=$skipTags isOwner=$isOwner skipButtons=$skipButtons}
 {else}
-{pictureDefault isGeokretOwner=$isGeokretOwner}
+{pictureDefault isOwner=$isOwner}
 {/if}
 {/function}
 
