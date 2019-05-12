@@ -8,11 +8,16 @@ define(__NAMESPACE__.'\USER', 2);
 
 class Picture extends AbstractObject {
     public $id;
+    public $tripId;
     public $type;
     public $geokretId;
     public $userId;
     public $filename;
     public $legend;
+
+    public function deleteUrl() {
+        return '/edit.php?delete_obrazek='.$this->id.'&confirmed=1';
+    }
 }
 
 class PictureUser extends Picture {
@@ -25,6 +30,10 @@ class PictureUser extends Picture {
 
         return $user;
     }
+
+    public function editUrl() {
+        return '/imgup.php?user&&typ='.$this->type.'&id='.$this->userId.'&rename='.$this->id;
+    }
 }
 
 class PictureGeoKret extends Picture {
@@ -36,6 +45,10 @@ class PictureGeoKret extends Picture {
         $geokret->name = $this->name;
 
         return $geokret;
+    }
+
+    public function editUrl() {
+        return '/imgup.php?geokret&typ='.$this->type.'&id='.$this->geokretId.'&rename='.$this->id;
     }
 }
 
@@ -50,5 +63,9 @@ class PictureTrip extends PictureGeoKret {
         $trip->userId = $this->userId;
 
         return $trip;
+    }
+
+    public function editUrl() {
+        return '/imgup.php?trip&typ='.$this->type.'&id='.$this->tripId.'&rename='.$this->id;
     }
 }

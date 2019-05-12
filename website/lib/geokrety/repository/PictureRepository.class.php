@@ -5,13 +5,13 @@ namespace Geokrety\Repository;
 class PictureRepository extends AbstractRepository {
 
     const SELECT_PICTURE = <<<EOQUERY
-SELECT    ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
+SELECT    ob.obrazekid, ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
           ob.plik as filename, ob.opis as legend
 FROM      `gk-obrazki` ob
 EOQUERY;
 
     const SELECT_PICTURES_DETAILS = <<<EOQUERY
-SELECT    ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
+SELECT    ob.obrazekid, ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
           ob.plik as filename, ob.opis as legend, gk.nazwa as gk_name,
           us.user as username, ru.country, ru.data as date, ru.ruch_id
 FROM      `gk-obrazki` ob
@@ -55,11 +55,12 @@ EOQUERY;
         }
 
         // associate result vars
-        $stmt->bind_result($id, $type, $geokretId, $userId, $filename, $legend);
+        $stmt->bind_result($id, $tripId, $type, $geokretId, $userId, $filename, $legend);
 
         $picture = new \Geokrety\Domain\PictureUser();
         while ($stmt->fetch()) {
             $picture->id = $id;
+            $picture->tripId = $tripId;
             $picture->type = $type;
             $picture->geokretId = $geokretId;
             $picture->userId = $userId;
@@ -104,11 +105,12 @@ EOQUERY;
         }
 
         // associate result vars
-        $stmt->bind_result($id, $type, $geokretId, $userId, $filename, $legend);
+        $stmt->bind_result($id, $tripId, $type, $geokretId, $userId, $filename, $legend);
 
         $picture = new \Geokrety\Domain\PictureGeoKret();
         while ($stmt->fetch()) {
             $picture->id = $id;
+            $picture->tripId = $tripId;
             $picture->type = $type;
             $picture->geokretId = $geokretId;
             $picture->userId = $userId;
@@ -153,14 +155,37 @@ EOQUERY;
         }
 
         // associate result vars
-        $stmt->bind_result($id, $type, $geokretId, $userId, $filename, $legend);
+        $stmt->bind_result($id, $tripId, $type, $geokretId, $userId, $filename, $legend);
 
         $pictures = array();
         while ($stmt->fetch()) {
-            $picture = new \Geokrety\Domain\PictureGeoKret();
+            $picture = null;
+            switch ($type) {
+                case 0:
+                  $picture = new \Geokrety\Domain\PictureGeoKret();
+                  $picture->geokretId = $geokretId;
+                  $picture->geokretName = $geokretName;
+                  $picture->country = $country;
+                  $picture->date = $date;
+                  break;
+                case 1:
+                  $picture = new \Geokrety\Domain\PictureTrip();
+                  $picture->geokretId = $geokretId;
+                  $picture->geokretName = $geokretName;
+                  $picture->country = $country;
+                  $picture->date = $date;
+                  $picture->tripId = $tripId;
+                  break;
+                case 2:
+                  $picture = new \Geokrety\Domain\PictureUser();
+                  $picture->username = $username;
+                  break;
+                default:
+                  throw new \Exception("picture id:$id has a wrong type ($type) : ($stmt->errno) ".$stmt->error);
+            }
             $picture->id = $id;
+            $picture->tripId = $tripId;
             $picture->type = $type;
-            $picture->geokretId = $geokretId;
             $picture->userId = $userId;
             $picture->filename = $filename;
             $picture->legend = $legend;
@@ -171,6 +196,23 @@ EOQUERY;
         $stmt->close();
 
         return $pictures;
+    }
+
+    public function getById($id) {
+        $id = $this->validationService->ensureIntGTE('id', $id, 1);
+
+        $where = <<<EOQUERY
+  WHERE     obrazekid = ?
+  LIMIT     1
+EOQUERY;
+
+        $sql = self::SELECT_PICTURES_DETAILS.$where;
+
+        $pictures = $this->getPicturesSql($sql, array($id));
+        if (sizeof($pictures) === 1) {
+            return $pictures[0];
+        }
+        return null;
     }
 
     public function getRecentPictures($limit) {
@@ -247,7 +289,7 @@ EOQUERY;
         }
 
         // associate result vars
-        $stmt->bind_result($id, $type, $geokretId, $userId, $filename, $legend,
+        $stmt->bind_result($id, $tripId, $type, $geokretId, $userId, $filename, $legend,
                            $geokretName, $username, $country, $date, $tripId);
 
         $pictures = array();
@@ -277,6 +319,7 @@ EOQUERY;
                   throw new \Exception("picture id:$id has a wrong type ($type) : ($stmt->errno) ".$stmt->error);
             }
             $picture->id = $id;
+            $picture->tripId = $tripId;
             $picture->type = $type;
             $picture->userId = $userId;
             $picture->filename = $filename;

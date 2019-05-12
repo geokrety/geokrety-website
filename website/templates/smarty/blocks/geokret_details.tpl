@@ -6,7 +6,7 @@
     gk_type={gkType2Text type=$geokret_details->type}
     username={userlink user=$geokret_details->owner()}
 }%1 (%2) by %3{/t}
-    {if $isGeokretOwner}
+    {if $geokret_details->isOwner()}
     <div class="btn-group pull-right" role="group">
       <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret_details->id}" title="{t}Edit GeoKret details{/t}">
         {fa icon="pencil"}
@@ -42,7 +42,7 @@
         </dl>
       </div>
       <div class="col-xs-12 col-md-3 gallery">
-        {pictureOrDefault item=$geokret_details->avatar() skipLinkToEntity=true isGeokretOwner=$isGeokretOwner}
+        {pictureOrDefault item=$geokret_details->avatar() skipLinkToEntity=true isOwner=$geokret_details->isOwner()}
         {altitudeProfile gk_id=$geokret_details->id}
       </div>
     </div>

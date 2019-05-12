@@ -45,7 +45,7 @@
   </div>
   <div class="panel-body">
     {if $isLoggedIn}
-      {if $isGeokretOwner}
+      {if $geokret_details->isOwner()}
         <div class="row">
           {watchers}
           {log}

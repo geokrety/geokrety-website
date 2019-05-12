@@ -9,6 +9,7 @@ namespace Geokrety\Service;
  */
 class JsonService {
     public function safe_json_encode($value, $options = 0, $depth = 512) {
+        print_r($value);
         $encoded = json_encode($value, $options, $depth);
         if ($encoded === false && $value && json_last_error() == JSON_ERROR_UTF8) {
             $encoded = json_encode($this->utf8ize($value), $options, $depth);
@@ -43,6 +44,9 @@ class JsonService {
             case JSON_ERROR_CTRL_CHAR: return 'JSON_ERROR_CTRL_CHAR';
             case JSON_ERROR_SYNTAX: return 'JSON_ERROR_SYNTAX';
             case JSON_ERROR_UTF8: return 'JSON_ERROR_UTF8';
+            case JSON_ERROR_RECURSION: return 'JSON_ERROR_RECURSION';
+            case JSON_ERROR_INF_OR_NAN: return 'JSON_ERROR_INF_OR_NAN';
+            case JSON_ERROR_UNSUPPORTED_TYPE: return 'JSON_ERROR_UNSUPPORTED_TYPE';
             default: return 'Unknown error';
         }
     }

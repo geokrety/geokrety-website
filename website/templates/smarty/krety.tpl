@@ -79,6 +79,7 @@
     {literal}
     (function($) {
     {/literal}
+    {include file="js/modal.tpl"}
     {if count($jquery)}
       {foreach from=$jquery item=item}
         {$item nofilter}
