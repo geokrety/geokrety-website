@@ -80,7 +80,7 @@
 {/function}
 
 {function pictureOrDefault skipLinkToEntity=false skipTags=false isGeokretOwner=false}{* item="" *}
-{if $item->filename}
+{if $item && $item->filename}
 {picture item=$item skipLinkToEntity=$skipLinkToEntity skipTags=$skipTags isGeokretOwner=$isGeokretOwner}
 {else}
 {pictureDefault isGeokretOwner=$isGeokretOwner}
