@@ -7,7 +7,7 @@ class TripComment extends AbstractObject {
     public $tripId;
     public $geokretId;
     public $userId;
-    public $username
+    public $username;
     public $date;
     public $comment;
     public $type;
