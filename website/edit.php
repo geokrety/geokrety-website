@@ -531,56 +531,39 @@ elseif ($g_co == 'statpic') {
 // -----------------------------  edit geokret
 
 elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
-    $OGON = '<script type="text/javascript" src="'.$config['funkcje.js'].'"></script>';     // character counters
-
-    $sql = "SELECT `nazwa`, `opis`, `typ` FROM `gk-geokrety` WHERE `owner`='$userid' AND `id`='$g_id' LIMIT 1";
-    list($nazwa, $opis, $typ) = $db->exec_fetch_row($sql, $num_rows, 0, 'Proba edycji nieistniejacego geokreta', 7, 'WRONG_DATA');
-
-    // jak wykryto blad to nie ma przebacz, bye!
-    if ($num_rows <= 0) {
+    // Load GeoKret
+    $geokretR = new \Geokrety\Repository\KonkretRepository(GKDB::getLink());
+    $geokrety = $geokretR->getById($g_id);
+    if (is_null($geokrety)) {
         include_once 'defektoskop.php';
         $TRESC = defektoskop('No such GeoKret!', false);
         include_once 'smarty.php';
         exit;
     }
+    $smarty->assign('geokret', $geokrety);
 
-    $opis = preg_replace("[\[<a href=[\"\'](.+?)[\"\'][\s]*(rel=nofollow)?>Link</a>\]]", '$1', $opis);
-
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" ><table>
-<tr>
-<td>'._('GeoKret name').':</td>
-<td><input type="text" name="nazwa" maxlength="45" value="'.$nazwa.'"/></td>
-</tr>
-<tr>
-<td>'._('Geokret type').'</td>
-<td>
-<select size="1" name="typ">';
-
-    foreach ($cotozakret as $key => $value) {
-        $TRESC .= "<option value='$key'".($typ == "$key" ? 'selected="selected"' : '').'>'._("$value").'</option>';
-    }
-
-    $TRESC .= '</select> <a href="'._('help.php#geokretytypes').'"><img src="'.CONFIG_CDN_ICONS.'/help.png" alt="HELP" width="11" height="11" border="0" /></a>
-</td>
-</tr>
-<tr>
-<td>'._('Comment').':</td>
-<td><textarea class="raz" name="opis" rows="7" cols="40" maxlength="5120" id="poledoliczenia" onkeyup="zliczaj(5120)">'.strip_tags($opis).'</textarea><br />
-<span class="szare"><input id="licznik" disabled="disabled" type="text" size="3" name="licznik" /> '._('characters left').'</span></td>
-</tr>
-</table><input type="hidden" name="id" value="'.$g_id.'" />
-<input type="submit" value=" go! " /></form>';
+    // load template
+    $smarty->assign('content_template', 'forms/geokret_details_edit.tpl');
 } elseif (ctype_digit($p_id) && ctype_digit($p_typ) && ($p_typ >= 0 && $p_typ <= count($cotozakret)) && isset($p_nazwa) && isset($p_opis)) {
-    $p_nazwa = czysc($p_nazwa);
-    $p_opis = czysc($p_opis);
+
+    $geokret = new \Geokrety\Domain\Konkret();
+    $geokret->id = $p_id;
+    $geokret->description = $p_opis;
+    $geokret->type = $p_typ;
 
     if (!empty($p_nazwa)) {
-        edit_put("UPDATE `gk-geokrety` SET `nazwa` = '$p_nazwa', `opis` = '$p_opis', `typ` = '$p_typ' WHERE `id` = '$p_id' AND `owner` = '$userid' LIMIT 1");
-    } else {
-        edit_put("UPDATE `gk-geokrety` SET `opis` = '$p_opis', `typ` = '$p_typ' WHERE `id` = '$p_id' AND `owner` = '$userid' LIMIT 1");
+        $geokret->name = $p_nazwa;
     }
-
-    header("Location: konkret.php?id=$p_id");
+    if ($geokret->save()) {
+        header('Location: '.$geokret->getUrl());
+        die();
+    }
+    $_SESSION['alert_msgs'][] = array(
+        'level' => 'danger',
+        'message' => _('Failed to save GeoKret…'),
+    );
+    header('Location: '.$geokret->editUrl());
+    die();
 } else {
     include_once 'defektoskop.php';
     if (!ctype_digit($p_id)) {

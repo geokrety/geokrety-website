@@ -606,4 +606,41 @@ EOQUERY;
             'distance' => $distance,
         );
     }
+
+    public function updateGeokret($geokret) {
+        if (empty($geokret->nazwa)) {
+            $bind = array('ssd', array($geokret->description, $geokret->type, $geokret->id));
+            $sql = <<<EOQUERY
+UPDATE  `gk-geokrety`
+SET     opis = ?, typ = ?
+WHERE   id = ?
+LIMIT   1
+EOQUERY;
+        } else {
+            $bind = array('sssd', array($geokret->name, $geokret->description, $geokret->type, $geokret->id));
+            $sql = <<<EOQUERY
+UPDATE  `gk-geokrety`
+SET     nazwa = ?, opis = ?, typ = ?
+WHERE   id = ?
+LIMIT   1
+EOQUERY;
+        }
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param($bind[0], ...$bind[1])) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        $stmt->store_result();
+
+        return $stmt->affected_rows >= 0;
+    }
 }
