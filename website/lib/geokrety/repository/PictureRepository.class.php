@@ -7,7 +7,8 @@ class PictureRepository extends AbstractRepository {
     const SELECT_PICTURES_DETAILS = <<<EOQUERY
 SELECT    ob.obrazekid, ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
           ob.plik as filename, ob.opis as legend, gk.nazwa as gk_name,
-          us.user as username, ru.country, ru.data as date, ru.ruch_id
+          us.user as username, ru.country, ru.data as date, ru.ruch_id,
+          gk.avatarid = ob.obrazekid AS isGkAvatar
 FROM      `gk-obrazki` ob
 LEFT JOIN `gk-geokrety` gk ON (ob.id_kreta = gk.id)
 LEFT JOIN `gk-users` us ON (ob.user = us.userid)
@@ -20,25 +21,8 @@ EOQUERY;
         $avatarType = 2;
         // $avatarType = \Geokrety\Domain\AVATAR; // TODO why this doesn't work???
         $where = <<<EOQUERY
-  WHERE     user = ?
-  AND       typ = $avatarType
-  LIMIT     1
-EOQUERY;
-
-        $sql = self::SELECT_PICTURES_DETAILS.$where;
-
-        $pictures = $this->getPicturesSql($sql, array($id));
-        if (sizeof($pictures) === 1) {
-            return $pictures[0];
-        }
-        return null;
-    }
-
-    public function getAvatarByGeokretId($id) {
-        $id = $this->validationService->ensureIntGTE('id', $id, 1);
-
-        $where = <<<EOQUERY
-  WHERE     obrazekid = ?
+  WHERE     ob.user = ?
+  AND       ob.typ = $avatarType
   LIMIT     1
 EOQUERY;
 
@@ -55,7 +39,7 @@ EOQUERY;
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
 
         $where = <<<EOQUERY
-  WHERE     id_kreta = ?
+  WHERE     ob.id_kreta = ?
   ORDER     BY obrazekid DESC
 EOQUERY;
 
@@ -156,7 +140,7 @@ EOQUERY;
 
         // associate result vars
         $stmt->bind_result($id, $tripId, $type, $geokretId, $userId, $filename, $legend,
-                           $geokretName, $username, $country, $date, $tripId);
+                           $geokretName, $username, $country, $date, $tripId, $isGkAvatar);
 
         $pictures = array();
         while ($stmt->fetch()) {
@@ -168,6 +152,7 @@ EOQUERY;
                   $picture->geokretName = $geokretName;
                   $picture->country = $country;
                   $picture->date = $date;
+                  $picture->isGkAvatar = $isGkAvatar;
                   break;
                 case 1:
                   $picture = new \Geokrety\Domain\PictureTrip();

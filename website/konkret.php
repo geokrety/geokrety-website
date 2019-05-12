@@ -58,21 +58,8 @@ $smarty->assign('geokret_already_seen', $geokret->hasCurrentUserSeenGeokretId())
 $countryTrack = $geokret->cachesCount ? $gkR->getCountryTrack($geokret->id) : null;
 $smarty->assign('country_track', $countryTrack);
 
-// Avatar
-$pictureR = new \Geokrety\Repository\PictureRepository($link);
-$avatar = $gk->avatarId ? $pictureR->getAvatarByGeokretId($gk->avatarId) : null;
-$smarty->assign('geokret_avatar', $avatar);
-
-$jquery = <<<'EOD'
-$('.collapse').on('shown.bs.collapse', function(){
-  $(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
-}).on('hidden.bs.collapse', function(){
-  $(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
-});
-EOD;
-$smarty->append('jquery', $jquery);
-
 // pictures
+$pictureR = new \Geokrety\Repository\PictureRepository($link);
 $pictures = $pictureR->getByGeokretId($geokret->id);
 $smarty->assign('geokret_pictures', $pictures);
 

@@ -14,6 +14,11 @@ class Picture extends AbstractObject {
     public $userId;
     public $filename;
     public $legend;
+    public $isGkAvatar;
+
+    public function isAvatar() {
+        return $this->isGkAvatar;
+    }
 
     public function deleteUrl() {
         return '/edit.php?delete_obrazek='.$this->id.'&confirmed=1';
@@ -29,6 +34,10 @@ class PictureUser extends Picture {
         $user->username = $this->username;
 
         return $user;
+    }
+
+    public function isAvatar() {
+        return $this->type === USER;
     }
 
     public function editUrl() {

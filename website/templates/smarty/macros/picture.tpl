@@ -1,4 +1,3 @@
-
 {function img width=100 height=100}{* filename="" *}
 <img src="{$avatarMinUrl}/{$filename}" width="{$width}" height="{$height}" data-preview-image="{$avatarUrl}/{$filename}" />
 {/function}
@@ -37,11 +36,16 @@
     </p>
     {elseif not $skipButtons and $isLoggedIn and ($isOwner or $currentUser == $item->userId)}
     <div class="btn-group pull-right" role="group">
+      {if not $item->isAvatar()}
+      <a class="btn btn-success btn-xs" href="{$item->editUrl()}" title="{t}Set as avatar{/t}">
+        {fa icon="id-card"}
+      </a>
+      {/if}
       <a class="btn btn-warning btn-xs" href="{$item->editUrl()}" title="{t}Edit picture{/t}">
-        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+        {fa icon="pencil"}
       </a>
       <button type="button" class="btn btn-danger btn-xs" title="{t}Delete picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-delete" data-id="{$item->id}">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        {fa icon="trash"}
       </button>
     </div>
     {/if}

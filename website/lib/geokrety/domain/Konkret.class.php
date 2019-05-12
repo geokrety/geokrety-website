@@ -79,12 +79,14 @@ class Konkret extends AbstractObject {
     public function avatar() {
         $picture = new PictureGeoKret();
         $picture->id = $this->avatarId;
+        $picture->tripId = null;
         $picture->type = AVATAR;
         $picture->geokretId = $this->id;
         $picture->name = $this->name;
         $picture->userId = $this->ownerId;
         $picture->filename = $this->avatarFilename;
         $picture->legend = $this->avatarLegend;
+        $picture->isGkAvatar = true;
 
         return $picture;
     }
