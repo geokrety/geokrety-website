@@ -4,7 +4,7 @@ services:
     # keep 'db' as service name to match adminer default hostname
     db:
         image: mariadb:10.3
-        container_name: dbGeokrety
+        container_name: geokrety_db
         ports:
             - 3306:3306
         volumes:
@@ -14,10 +14,16 @@ services:
             - TIME_ZONE=UTC
             - MYSQL_ROOT_PASSWORD
 
+    redis:
+        image: redis:5.0.4
+        container_name: geokrety_redis
+        ports:
+        - "6379:6379"
+
 ## database administration service
     adminer:
         image: adminer:4.6.2
-        container_name: adminer
+        container_name: geokrety_adminer
         ports:
             - 8880:8080
         restart: unless-stopped
@@ -28,7 +34,7 @@ services:
     geokrety:
         # following line causes docker-compose to build image using ./Dockerfile
         image: geokrety:v0
-        container_name: devGeokrety
+        container_name: geokrety_application
         ports:
             - 80:80
         volumes:
@@ -38,5 +44,7 @@ services:
         environment:
             - website_config_directory=/var/www/config
             - MYSQL_ROOT_PASSWORD
+            - CDN_SERVER_URL=https://new-theme.cdn.geokrety.org
         depends_on:
             - db
+            - redis

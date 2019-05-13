@@ -149,8 +149,8 @@ $config['temp_dir_smarty_compile'] = isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $
 $config['temp_dir_smarty_cache'] = isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/';
 $config['temp_dir_htmlpurifier_cache'] = isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/';
 
-// Smarty
-define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
+// Smarty (composer install)
+define('SMARTY_DIR', 'vendor/smarty/smarty/libs/');
 
 // language .po directory
 define('BINDTEXTDOMAIN_PATH', __DIR__.'/../rzeczy/lang');
