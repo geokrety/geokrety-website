@@ -1,5 +1,7 @@
 <?php
 
+require_once(SMARTY_PLUGINS_DIR . 'modifier.escape.php');
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------
@@ -16,5 +18,11 @@ function smarty_function_gklink(array $params, Smarty_Internal_Template $templat
         return;
     }
     $gk = $params['gk'];
-    return '<a href="/konkret.php?id='.$gk->id.'" title="'.$gk->name.'">'.gkid($gk->id).'</a>';
+    $title = smarty_modifier_escape($gk->name);
+    $text = gkid($gk->id);
+    if (in_array('txt', array_keys($params)) && $params['txt'] == 'name') {
+        $text = $title;
+    }
+
+    return '<a href="'.$gk->geturl().'" title="'.$title.'">'.$text.'</a>';
 }

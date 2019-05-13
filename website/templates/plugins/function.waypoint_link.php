@@ -1,5 +1,7 @@
 <?php
 
+require_once(SMARTY_PLUGINS_DIR . 'modifier.escape.php');
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------
@@ -31,5 +33,5 @@ function smarty_function_waypoint_link(array $params, Smarty_Internal_Template $
         $title = htmlentities($waypointy->name, ENT_QUOTES)." ($title)";
     }
 
-    return '<a href="'.$waypointy->cache_link.'" title="'.$title.'">'.htmlentities($params['wpt']).'</a>';
+    return '<a href="'.$waypointy->cache_link.'" title="'.$title.'">'.smarty_modifier_escape($params['wpt']).'</a>';
 }

@@ -35,5 +35,5 @@ function smarty_function_logicon(array $params, Smarty_Internal_Template $templa
 
     $iconClass = \Geokrety\Service\IconConverterService::computeLocationType($lastLogType);
 
-    return '<img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$gk->type.'/2'.$iconClass.'.png" alt="'.getLogTypeText($lastLogType).'-2'.$iconClass.'-" title="" / />';
+    return '<img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$gk->type.'/2'.$iconClass.'.png" alt="'._('logtype icon').'" title="'.getLogTypeText($lastLogType).'" / />';
 }

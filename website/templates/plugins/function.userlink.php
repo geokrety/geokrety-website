@@ -1,5 +1,7 @@
 <?php
 
+require_once(SMARTY_PLUGINS_DIR . 'modifier.escape.php');
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------
@@ -23,7 +25,7 @@ function smarty_function_userlink(array $params, Smarty_Internal_Template $templ
     $user = $params['user'];
 
     if (!$user->id) {
-        return '<em class="user-anonymous">'.$user->username.'</em>';
+        return '<em class="user-anonymous">'.smarty_modifier_escape($user->username).'</em>';
     }
-    return '<a href="/mypage.php?userid='.$user->id.'" title="'.$user->username.'">'.$user->username.'</a>';
+    return '<a href="/mypage.php?userid='.$user->id.'" title="'.smarty_modifier_escape($user->username).'">'.smarty_modifier_escape($user->username).'</a>';
 }
