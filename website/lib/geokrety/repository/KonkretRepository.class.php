@@ -607,7 +607,7 @@ EOQUERY;
         );
     }
 
-    public function updateGeokret($geokret) {
+    public function updateGeokret(\Geokrety\Domain\Konkret $geokret) {
         if (empty($geokret->nazwa)) {
             $bind = array('ssd', array($geokret->description, $geokret->type, $geokret->id));
             $sql = <<<EOQUERY
