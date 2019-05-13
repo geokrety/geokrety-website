@@ -608,23 +608,21 @@ EOQUERY;
     }
 
     public function updateGeokret(\Geokrety\Domain\Konkret $geokret) {
-        if (empty($geokret->nazwa)) {
-            $bind = array('ssd', array($geokret->description, $geokret->type, $geokret->id));
-            $sql = <<<EOQUERY
+        $sql = <<<EOQUERY
 UPDATE  `gk-geokrety`
-SET     opis = ?, typ = ?
-WHERE   id = ?
+SET     nr = ?, nazwa = ?, opis = ?, data = ?, typ = ?, droga = ?, skrzynki = ?,
+        zdjecia = ?, owner = ?, missing = ?, ost_log_id = ?, ost_pozycja_id = ?,
+        avatarid = ?
+WHERE   id = $geokret->id
 LIMIT   1
 EOQUERY;
-        } else {
-            $bind = array('sssd', array($geokret->name, $geokret->description, $geokret->type, $geokret->id));
-            $sql = <<<EOQUERY
-UPDATE  `gk-geokrety`
-SET     nazwa = ?, opis = ?, typ = ?
-WHERE   id = ?
-LIMIT   1
-EOQUERY;
-        }
+        $bind = array(
+            $geokret->trackingCode, $geokret->name, $geokret->description,
+            $geokret->datePublished, $geokret->type, $geokret->distance,
+            $geokret->cachesCount, $geokret->picturesCount, $geokret->ownerId,
+            $geokret->missing, $geokret->lastLogId, $geokret->lastPositionId,
+            $geokret->avatarId,
+        );
 
         if ($this->verbose) {
             echo "\n$sql\n";
@@ -633,7 +631,7 @@ EOQUERY;
         if (!($stmt = $this->dblink->prepare($sql))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         }
-        if (!$stmt->bind_param($bind[0], ...$bind[1])) {
+        if (!$stmt->bind_param('sssssiiiiiiii', ...$bind)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
         if (!$stmt->execute()) {
@@ -641,6 +639,15 @@ EOQUERY;
         }
         $stmt->store_result();
 
-        return $stmt->affected_rows >= 0;
+        if ($stmt->affected_rows >= 0) {
+            return true;
+        }
+
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'danger',
+            'message' => _('Failed to GeoKret…'),
+        );
+
+        return false;
     }
 }

@@ -34,14 +34,14 @@ class ValidationService {
 
     public function ensureOrderBy($desc, $value, $references, $defaultWay) {
         if (is_null($value)) {
-          return array($references[0], $defaultWay);
+            return array($references[0], $defaultWay);
         }
 
         $value_ = $value;
         $order = 'ASC';
         if ($value[0] == '-') {
-          $value_ = substr($value, 1);
-          $order = 'DESC';
+            $value_ = substr($value, 1);
+            $order = 'DESC';
         }
 
         if (!in_array($value_, $references)) {
@@ -49,5 +49,10 @@ class ValidationService {
         }
 
         return [$value_, $order];
+    }
+
+    // taken from https://stackoverflow.com/a/48798326/944936
+    public function is_whitespace($string) {
+        return preg_match('~^\p{Z}$~u', $string);
     }
 }

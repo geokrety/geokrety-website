@@ -118,6 +118,7 @@ SET     user = ?, email = ?, email_invalid = ?, wysylacmaile = ?,
         godzina = ?, statpic = ?, ostatni_mail = ?,
         ostatni_login = ?, secid = ?
 WHERE   userid = $user->id
+LIMIT   1
 EOQUERY;
         $bind = array(
             $user->username, $user->email, $user->isEmailActive,
@@ -148,7 +149,7 @@ EOQUERY;
 
         $_SESSION['alert_msgs'][] = array(
             'level' => 'danger',
-            'message' => _('Failed to save…'),
+            'message' => _('Failed to save user…'),
         );
 
         return false;

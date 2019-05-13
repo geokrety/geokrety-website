@@ -5,7 +5,7 @@
 <h2>{t}Create a new GeoKret{/t}</h2>
 {/if}
 
-<form class="form-horizontal" action="{$smarty.server.PHP_SELF}" method="post">
+<form class="form-horizontal" method="post">
   {if !is_null($geokret) and $geokret->id}
   <input type="hidden" id="geokretId" name="id" value="{$geokret->id}">
   {/if}
