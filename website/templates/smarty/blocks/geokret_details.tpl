@@ -2,7 +2,7 @@
   <div class="panel-heading">
     {call gk_icon gk_type=$geokret_details->type}
     {t escape=no
-    gk_name=$geokret_details->name
+    gk_name={gklink gk=$geokret_details txt='name'}
     gk_type={gkType2Text type=$geokret_details->type}
     username={userlink user=$geokret_details->owner()}
 }%1 (%2) by %3{/t}

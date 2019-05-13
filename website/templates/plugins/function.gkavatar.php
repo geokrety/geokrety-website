@@ -1,5 +1,7 @@
 <?php
 
+require_once(SMARTY_PLUGINS_DIR . 'modifier.escape.php');
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------
@@ -22,7 +24,7 @@ function smarty_function_gkavatar(array $params, Smarty_Internal_Template $templ
 
     $gkhex = gkid($gk->id);
     $iconUrl = CONFIG_CDN_ICONS.'/idcard.png';
-    $title = _('GeoKret has avatar');
+    $title = smarty_modifier_escape(_('GeoKret has avatar'));
     $miniatureUrl = CONFIG_CDN_OBRAZKI_MALE.'/'.$gk->avatarFilename;
     $fullSizeUrl = CONFIG_CDN_OBRAZKI.'/'.$gk->avatarFilename;
 

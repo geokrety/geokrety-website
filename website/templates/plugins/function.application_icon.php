@@ -1,5 +1,7 @@
 <?php
 
+require_once(SMARTY_PLUGINS_DIR . 'modifier.escape.php');
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------
@@ -17,6 +19,7 @@ function smarty_function_application_icon(array $params, Smarty_Internal_Templat
     if (in_array('app_ver', array_keys($params)) || empty($params['app_ver'])) {
         $title .= ' '.$params['app_ver'];
     }
+    $title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
 
-    return '<img src="'.CONFIG_CDN_IMAGES.'/api/icons/16/'.$params['app'].'.png" title="'.$title.'">';
+    return '<img src="'.CONFIG_CDN_IMAGES.'/api/icons/16/'.smarty_modifier_escape($params['app'], 'url').'.png" title="'.smarty_modifier_escape($title).'">';
 }

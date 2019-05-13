@@ -1,5 +1,7 @@
 <?php
 
+require_once(SMARTY_PLUGINS_DIR . 'modifier.escape.php');
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------
@@ -14,5 +16,5 @@ function smarty_function_country_flag(array $params, Smarty_Internal_Template $t
         return;
     }
 
-    return '<span class="flag-icon flag-icon-'.$params['country'].'" title="'.$params['country'].'"></span>';
+    return '<span class="flag-icon flag-icon-'.smarty_modifier_escape($params['country']).'" title="'.smarty_modifier_escape($params['country']).'"></span>';
 }
