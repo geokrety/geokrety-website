@@ -17,7 +17,6 @@ $kret_szablon = $_POST['szablon'];
 $kret_tracking = $_POST['tracking'];
 // autopoprawione...import_request_variables('p', 'kret_');
 
-define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
 require_once SMARTY_DIR.'Smarty.class.php';
 
 $smarty = new Smarty();

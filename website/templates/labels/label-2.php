@@ -32,7 +32,6 @@ $conaco = array("\n" => ' ', '  ' => ' ');
 $opis = mb_substr(strtr(strip_tags($opis), $conaco), 0, $cut);
 $id = sprintf('GK%04X', $id);
 
-define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
 require_once SMARTY_DIR.'Smarty.class.php';
 
 $smarty = new Smarty();
