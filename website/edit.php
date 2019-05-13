@@ -498,34 +498,25 @@ elseif ($g_co == 'lang') {
 // ----------------------------- edit STATPIC
 
 elseif ($g_co == 'statpic') {
-    $result = mysqli_query($link, "SELECT `statpic` FROM `gk-users` WHERE `userid`='$userid' LIMIT 1");
-    $row = mysqli_fetch_row($result);
-    list($statpic) = $row;
-    mysqli_free_result($result);
+    $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
+    $user = $userR->getById($_SESSION['currentUser']);
+    $smarty->assign('user', $user);
 
-    for ($i = 1; $i <= $config_ile_wzorow_banerkow; ++$i) {
-        if ($i == $statpic) {
-            $selected = 'checked="checked"';
-        } else {
-            $selected = '';
-        } // który ma user aktualnie obrazek
-        $statpics .= '<p><img src="statpics/wzory/'.$i.'.png" alt="obrazek statystyki"  /> <input type="radio" name="statpic" value="'.$i.'" '.$selected.'  /></p>';
+    // load template
+    $smarty->assign('content_template', 'forms/statpic_choose.tpl');
+
+    // Same values
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && ctype_digit($_POST['statpic'])) {
+        $user->statpic = $_POST['statpic'];
+        if ($user->save()) {
+            // Force refresh statpic
+            include 'aktualizuj.php';
+            aktualizuj_obrazek_statystyki($user->id);
+
+            header('Location: '.$user->getUrl());
+            die();
+        }
     }
-
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post"><table>
-<tr>
-<td>'._('Choose statpic').':</td>
-<td>'.$statpics.'</td>
-</tr>
-</table><input type="submit" value=" go! " /></form>';
-} elseif ($p_statpic != '') {
-    $statpic = (int) mysqli_real_escape_string($link, substr($p_statpic, 0, 1));
-    edit_put("UPDATE `gk-users` SET `statpic` = '$statpic' WHERE `userid` = '$userid' LIMIT 1");
-
-    include 'aktualizuj.php';
-    aktualizuj_obrazek_statystyki($userid);
-
-    header("Location: mypage.php?userid=$userid");
 }
 
 // -----------------------------  edit geokret
@@ -584,7 +575,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
     if (!isset($p_opis)) {
         errory_add('!isset($p_opis)', 4, 'edit');
     }
-    errory_add('A czemu komus udalo sie tu dojsc??', 7, 'edit');
+    errory_add('How did you managed to get here?', 7, 'edit');
 }
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //

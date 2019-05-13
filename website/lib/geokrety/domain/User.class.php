@@ -20,6 +20,10 @@ class User extends AbstractObject {
     public $lastlogin;
     public $secid;
 
+    public function getUrl() {
+        return '/mypage.php?userid='.$this->id;
+    }
+
     public function isCurrentUser() {
         return $_SESSION['isLoggedIn'] && $_SESSION['currentUser'] === $this->id;
     }
@@ -32,6 +36,12 @@ class User extends AbstractObject {
         $pictureR = new \Geokrety\Repository\PictureRepository(\GKDB::getLink());
 
         return $pictureR->getAvatarByUserId($this->id);
+    }
+
+    public function save() {
+        $userR = new \Geokrety\Repository\UserRepository(\GKDB::getLink());
+
+        return $userR->updateUser($this);
     }
 
     public function getStatsGeokretyCreated() {

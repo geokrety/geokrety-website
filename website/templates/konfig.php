@@ -226,7 +226,7 @@ $cotozakret['2'] = _('A human');
 $cotozakret['3'] = _('A coin');
 $cotozakret['4'] = _('KretyPost');
 
-$config_ile_wzorow_banerkow = 9;    // how many patterns in the statistics with the statistics
+define('STATPIC_TEMPLATE_COUNT', 9);    // how many patterns in the statistics with the statistics
 
 $config['home_news_per_page'] = 2;
 $config['home_trip_per_page'] = 7;

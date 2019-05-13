@@ -109,4 +109,48 @@ EOQUERY;
 
         return $users;
     }
+
+    public function updateUser(\Geokrety\Domain\User $user) {
+        $sql = <<<EOQUERY
+UPDATE  `gk-users`
+SET     user = ?, email = ?, email_invalid = ?, wysylacmaile = ?,
+        lang = ?, lat = ?, lon = ?, promien = ?, country = ?,
+        godzina = ?, statpic = ?, ostatni_mail = ?,
+        ostatni_login = ?, secid = ?
+WHERE   userid = $user->id
+EOQUERY;
+        $bind = array(
+            $user->username, $user->email, $user->isEmailActive,
+            $user->acceptEmail, $user->language, $user->latitude,
+            $user->longitude, $user->observationRadius,
+            $user->country, $user->emailHour, $user->statpic,
+            $user->lastMail, $user->lastlogin, $user->secid,
+        );
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('ssiisddisiisss', ...$bind)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        $stmt->store_result();
+
+        if ($stmt->affected_rows >= 0) {
+            return true;
+        }
+
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'danger',
+            'message' => _('Failed to save…'),
+        );
+
+        return false;
+    }
 }
