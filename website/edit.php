@@ -39,7 +39,7 @@ $p_jezyk = $_POST['jezyk'];
 // autopoprawione...
 $p_latlon = $_POST['latlon'];
 // autopoprawione...
-$p_nazwa = $_POST['nazwa'];
+$p_nazwa = trim($_POST['nazwa']);
 // autopoprawione...
 $p_opis = $_POST['opis'];
 // autopoprawione...
@@ -524,37 +524,33 @@ elseif ($g_co == 'statpic') {
 elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
     // Load GeoKret
     $geokretR = new \Geokrety\Repository\KonkretRepository(GKDB::getLink());
-    $geokrety = $geokretR->getById($g_id);
-    if (is_null($geokrety)) {
+    $geokret = $geokretR->getById($g_id);
+    if (is_null($geokret)) {
         include_once 'defektoskop.php';
         $TRESC = defektoskop('No such GeoKret!', false);
         include_once 'smarty.php';
         exit;
     }
-    $smarty->assign('geokret', $geokrety);
+    $smarty->assign('geokret', $geokret);
 
     // load template
     $smarty->assign('content_template', 'forms/geokret_details_edit.tpl');
-} elseif (ctype_digit($p_id) && ctype_digit($p_typ) && ($p_typ >= 0 && $p_typ <= count($cotozakret)) && isset($p_nazwa) && isset($p_opis)) {
 
-    $geokret = new \Geokrety\Domain\Konkret();
-    $geokret->id = $p_id;
-    $geokret->description = $p_opis;
-    $geokret->type = $p_typ;
+    // Same values
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && ctype_digit($p_id) && ctype_digit($p_typ) && ($p_typ >= 0 && $p_typ <= count($cotozakret)) && isset($p_nazwa) && isset($p_opis)) {
+        $geokret->description = $p_opis;
+        $geokret->type = $p_typ;
 
-    if (!empty($p_nazwa)) {
-        $geokret->name = $p_nazwa;
+        $validationService = new \Geokrety\Service\ValidationService();
+        if (!$validationService->is_whitespace($p_nazwa)) {
+            $geokret->name = $p_nazwa;
+        }
+        if ($geokret->save()) {
+            header('Location: '.$geokret->getUrl());
+            die();
+        }
     }
-    if ($geokret->save()) {
-        header('Location: '.$geokret->getUrl());
-        die();
-    }
-    $_SESSION['alert_msgs'][] = array(
-        'level' => 'danger',
-        'message' => _('Failed to save GeoKret…'),
-    );
-    header('Location: '.$geokret->editUrl());
-    die();
+
 } else {
     include_once 'defektoskop.php';
     if (!ctype_digit($p_id)) {
