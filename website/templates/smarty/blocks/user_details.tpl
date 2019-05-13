@@ -29,9 +29,11 @@
         <dd>
           {$user->language}
           {if $user->isCurrentUser() }
-          <a class="btn btn-warning btn-xs" href="/edit.php?co=lang" title="{t}Change prefered language{/t}">
-            {fa icon="pencil"}
-          </a>
+          <div class="btn-group pull-right" role="group">
+            <button type="button" class="btn btn-warning btn-xs" title="{t}Choose prefered language{/t}" data-toggle="modal" data-target="#modal" data-type="user-choose-language">
+              {fa icon="pencil"}
+            </button>
+          </div>
           {/if}
         </dd>
         {if $user->isCurrentUser()}
@@ -42,9 +44,11 @@
           {else}
           <em>{t}No email address, please add one!{/t}</em>
           {/if}
-          <a class="btn btn-warning btn-xs" href="/edit.php?co=lang" title="{t}Update email address{/t}">
-            {fa icon="pencil"}
-          </a>
+          <div class="btn-group pull-right" role="group">
+            <button type="button" class="btn btn-warning btn-xs" title="{t}Update email address{/t}" data-toggle="modal" data-target="#modal" data-type="user-update-email">
+              {fa icon="pencil"}
+            </button>
+          </div>
         </dd>
         <dt>{t}Secid{/t}</dt>
         <dd>

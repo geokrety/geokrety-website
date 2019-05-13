@@ -49,7 +49,7 @@ $p_statpic = $_POST['statpic'];
 // autopoprawione...
 $p_typ = $_POST['typ'];
 // autopoprawione...
-$p_wysylacmaile = $_POST['wysylacmaile'];
+$p_wysylacmaile = $_POST['subscribe'];
 // autopoprawione...import_request_variables('p', 'p_');
 
 if ($userid == null || !ctype_digit($userid)) {
@@ -375,58 +375,12 @@ var initial_zoom = $map_zoom;
 
 // ----------------------------- edit email of user
 
-elseif ($g_co == 'email') {
-    $result = mysqli_query($link, "SELECT `email`, `wysylacmaile` FROM `gk-users` WHERE `userid`='$userid' LIMIT 1");
-    $row = mysqli_fetch_row($result);
-    list($email, $wysylacmaile) = $row;
-    mysqli_free_result($result);
-
-    if ($wysylacmaile == 1) {
-        $wysylacmaile = 'checked="checked" ';
-    }
-
-    $HEAD .= '<style type="text/css">
-	.atable { width:auto; }
-	.atable td { padding:0 15px 15px 0 }
-	.l1 {margin-bottom:0;margin-top:0px}
-	.l1 li {padding-bottom:0;padding-top:6px}
-	.l2 li {padding-bottom:0;padding-top:3px}
-	</style>';
-
-    $news1 = explode('*', _('Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location'));
-    $news2 = explode('*', _('Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to'));
-
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post"><table class="atable">
-<tr>
-<td>'._('Email').':</td>
-<td><input type="text" size="30" maxlength="150" name="email" value="'.$email.'" /><br />
-<input type="checkbox" name="wysylacmaile" value="1" '.$wysylacmaile.'/>&nbsp;'._('Yes, I want to receive email alerts (sent once a day). Email alerts may contain any of the following:').'<br/>
-
-'."<ul class='l1'>
-<li>"._('GeoKrety.org news')."</li>
-<li>$news1[0]</li>
-	<ul class='l2'>
-	<li>$news1[1]</li>
-	<li>$news1[2]</li>
-	<li>$news1[3]</li>
-	</ul>
-<li>$news2[0]</li>
-	<ul class='l2'>
-	<li>$news2[1]</li>
-	<li>$news2[2]</li>
-	<li>$news2[3]</li>
-	<li>$news2[4]</li>
-	<li>$news2[5]</li>
-	</ul>
-</ul>".'
-
-</td>
-</tr>
-</table><input type="submit" value="Save" /></form>';
-} elseif (isset($p_email)) {
+elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     include_once 'verify_mail.php';
 
-    if ($p_wysylacmaile != 1) {
+    if ($p_wysylacmaile == 'on') {
+        $p_wysylacmaile = 1;
+    } else {
         $p_wysylacmaile = 0;
     }
 
@@ -471,28 +425,23 @@ elseif ($g_co == 'email') {
 
 // ----------------------------- edit ENCODING  /  LANG
 
-elseif ($g_co == 'lang') {
-    $result = mysqli_query($link, "SELECT `lang` FROM `gk-users` WHERE `userid`='$userid' LIMIT 1");
-    $row = mysqli_fetch_row($result);
-    list($jezyk) = $row;
-    mysqli_free_result($result);
-
-    $jezyki = "<option value=\"$jezyk\">".$config_jezyk_nazwa[$jezyk].'</option>';
-
-    foreach ($config_jezyk_nazwa as $jezyk_skrot => $jezyk) {
-        $jezyki .= "<option value=\"$jezyk_skrot\">$jezyk</option>\n";
+elseif ($g_co == 'lang' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!array_key_exists($_POST['language'], $config_jezyk_nazwa)) {
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'danger',
+            'message' => _('Invalid language selected…'),
+        );
     }
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" ><table>
-<tr>
-<td>'._('Language').':</td>
-<td><select id="jezyk" name="jezyk">'.$jezyki.'</select></td>
-</tr>
-</table><input type="submit" value=" go! " /></form>';
-} elseif ($p_jezyk != '') {
-    $jezyk = mysqli_real_escape_string($link, substr($p_jezyk, 0, 2));
-    edit_put("UPDATE `gk-users` SET `lang` = '$jezyk' WHERE `userid` = '$userid' LIMIT 1");
-    header("Location: mypage.php?userid=$userid");
+    // Save values
+    $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
+    $user = $userR->getById($_SESSION['currentUser']);
+    $smarty->assign('user', $user);
+    $user->language = $_POST['language'];
+    if ($user->save()) {
+        header('Location: '.$user->getUrl());
+        die();
+    }
 }
 
 // ----------------------------- edit STATPIC
@@ -503,9 +452,9 @@ elseif ($g_co == 'statpic') {
     $smarty->assign('user', $user);
 
     // load template
-    $smarty->assign('content_template', 'forms/statpic_choose.tpl');
+    $smarty->assign('content_template', 'forms/user_statpic_choose.tpl');
 
-    // Same values
+    // Save values
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && ctype_digit($_POST['statpic'])) {
         $user->statpic = $_POST['statpic'];
         if ($user->save()) {
@@ -536,7 +485,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
     // load template
     $smarty->assign('content_template', 'forms/geokret_details_edit.tpl');
 
-    // Same values
+    // Save values
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && ctype_digit($p_id) && ctype_digit($p_typ) && ($p_typ >= 0 && $p_typ <= count($cotozakret)) && isset($p_nazwa) && isset($p_opis)) {
         $geokret->description = $p_opis;
         $geokret->type = $p_typ;
@@ -550,7 +499,6 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
             die();
         }
     }
-
 } else {
     include_once 'defektoskop.php';
     if (!ctype_digit($p_id)) {

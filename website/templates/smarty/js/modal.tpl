@@ -24,6 +24,10 @@ $('#modal').on('show.bs.modal', function(event) {
     var pictureid = button.data('pictureid');
     var geokretid = button.data('geokretid');
     modal.find('.modal-content').load('_dialog_picture_set_avatar.php?geokretid=' + geokretid + '&pictureid=' + pictureid);
+  } else if (typeName == 'user-choose-language') {
+    modal.find('.modal-content').load('_dialog_user_choose_language.php');
+} else if (typeName == 'user-update-email') {
+    modal.find('.modal-content').load('_dialog_user_update_email.php');
   }
 })
 
