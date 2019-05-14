@@ -378,49 +378,51 @@ var initial_zoom = $map_zoom;
 elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     include_once 'verify_mail.php';
 
-    if ($p_wysylacmaile == 'on') {
-        $p_wysylacmaile = 1;
-    } else {
-        $p_wysylacmaile = 0;
-    }
+    $p_wysylacmaile = $p_wysylacmaile == 'on' ? 1 : 0;
 
-    // ----- Check if db object is present, if not create one -----
-    if (is_object($GLOBALS['db']) && get_class($GLOBALS['db']) === 'db') {
-        $db = $GLOBALS['db'];
-    } else {
-        include_once 'db.php';
-        $db = new db();
-    }
-    // ------------------------------------------------------------
     $stopka = "\n\nRegards,\nGeoKrety.org Team";
 
     if (verify_email_address($p_email)) {
-        list($username, $old_email) = $db->exec_fetch_row("SELECT `user`, `email` FROM `gk-users` WHERE `userid`='$userid' LIMIT 1", $num_rows, 0);
-
-        $db->exec_num_rows("UPDATE `gk-users` SET `wysylacmaile` = '$p_wysylacmaile' WHERE `userid` = '$userid' LIMIT 1", $num_rows, 0);
+        // Save values
+        $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
+        $user = $userR->getById($_SESSION['currentUser']);
+        $smarty->assign('user', $user);
+        $user->acceptEmail = $p_wysylacmaile;
+        $user->save();
 
         // jezeli email nie zostal zmieniony to nie potrzeba tej calej procedury
-        if ($old_email != $p_email) {
+        if ($user->email != $p_email) {
             // If you don't receive your activation email within the next couple of minutes, please check your spam or junk folder. To prevent this problem in the future, please add geokrety@gmail.com to your allowed senders list.
 
-            $wyslany = verify_mail_send($p_email, $userid, _('[GeoKrety] Email address change request at geokrety.org'), _("Hello $username,\n\nA request to change your email address has been made at geokrety.org. You need to confirm the change by clicking on the link below or by copying and pasting it in your browser.\n\n%s\n\nThis is a one-time URL - it can be used only once. It expires after 5 days. If you do not click the link to confirm, your email address at geokrety.org will not be updated.$stopka"));
+            $wyslany = verify_mail_send($p_email, $_SESSION['currentUser'], _('[GeoKrety] Email address change request at geokrety.org'), _("Hello $user->username,\n\nA request to change your email address has been made at geokrety.org. You need to confirm the change by clicking on the link below or by copying and pasting it in your browser.\n\n%s\n\nThis is a one-time URL - it can be used only once. It expires after 5 days. If you do not click the link to confirm, your email address at geokrety.org will not be updated.$stopka"));
 
             //we send an email to the old address as well.
-            verify_mail_send_astext($old_email, _('[GeoKrety] Email address change request at geokrety.org'), _("Hello $username,\n\nA request to change your email address has been made at geokrety.org. In order to confirm the update of your email address you will need to follow the instructions sent to your new email address within 5 days.$stopka"));
+            verify_mail_send_astext($user->email, _('[GeoKrety] Email address change request at geokrety.org'), _("Hello $user->username,\n\nA request to change your email address has been made at geokrety.org. In order to confirm the update of your email address you will need to follow the instructions sent to your new email address within 5 days.$stopka"));
 
             if ($wyslany) {
-                $TRESC = _('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days.');
+                $_SESSION['alert_msgs'][] = array(
+                    'level' => 'success',
+                    'message' => _('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days.'),
+                );
             } else {
                 include_once 'defektoskop.php';
-                $TRESC = defektoskop(_('Error, please try again later...'), true, 'verification email was not sent', 6, 'verify_mail');
+                defektoskop(_('Error, please try again later…'), true, 'verification email was not sent', 6, 'verify_mail');
+                $_SESSION['alert_msgs'][] = array(
+                    'level' => 'danger',
+                    'message' => _('Error, please try again later…'),
+                );
             }
-        } else {
-            header('Location: mypage.php');
         }
     } else {
         include_once 'defektoskop.php';
         $TRESC = defektoskop(_('Wrong email or subscribtion option'), true, 'verify_mail returned false', 6, 'verify_mail');
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'danger',
+            'message' => _('Wrong email or subscribtion option'),
+        );
     }
+    header('Location: mypage.php');
+    die();
 }
 
 // ----------------------------- edit ENCODING  /  LANG
