@@ -7,10 +7,10 @@
         {else}
         <div class="leaflet-container text-center">
           <p>
-            <em>No home coordinates have been defined.</em>
+            <em>{t}No home coordinates have been defined.{/t}</em>
           </p>
           <br />
-          <a class="btn btn-warning btn-xs" href="/edit.php?co=latlon" title="{t}Update home coordinates and obervation area{/t}">
+          <a class="btn btn-warning btn-xs pull-right" href="/edit.php?co=latlon" title="{t}Update home coordinates and obervation area{/t}">
             {fa icon="pencil"} {t}Define your home coordinates{/t}
           </a>
         </div>

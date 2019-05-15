@@ -102,6 +102,7 @@ $smarty->append('javascript', CDN_LEAFLET_JS);
 $smarty->append('javascript', CDN_LEAFLET_CENTERCROSS_JS);
 
 if ($user->hasCoordinates()) {
+    $radius = $user->observationRadius * 1000;
     $jquery = <<<EOD
 var map = L.map("mapid");
 var osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
@@ -112,13 +113,14 @@ var osm = new L.TileLayer(osmUrl, {
   attribution: osmAttrib
 });
 
-// start the map // TODO: what to do if user has no coordinates?
+// start the map
 map.setView(new L.LatLng($user->latitude, $user->longitude), 6);
 map.addLayer(osm);
 
-
-// var control = L.control.centerCross({show: true, position: "topright"});
-// map.addControl(control);
+var circle = L.circle([$user->latitude, $user->longitude], {
+    color: 'red',
+    radius: $radius
+}).addTo(map);
 
 // var bounds = [[44.31307, 4.70770], [44.31107, 4.70570]];
 // L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);

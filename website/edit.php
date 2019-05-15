@@ -37,7 +37,7 @@ $p_id = $_POST['id'];
 // autopoprawione...
 $p_jezyk = $_POST['jezyk'];
 // autopoprawione...
-$p_latlon = $_POST['latlon'];
+$p_latlon = $_POST['coordinates'];
 // autopoprawione...
 $p_nazwa = trim($_POST['nazwa']);
 // autopoprawione...
@@ -236,141 +236,52 @@ elseif ($g_co == 'haslo') {
 
         header("Location: mypage.php?userid=$userid");
     }
-}
+    // }
 
 // ------------------------------ edit LAT i LON
 
-elseif ($g_co == 'latlon') {
-    list($edit_lat, $edit_lon, $edit_promien) = $db->exec_fetch_row("SELECT `lat`, `lon`, `promien` FROM `gk-users` WHERE `userid`='$userid' LIMIT 1", $num_rows, 0);
-    $edit_lat_lon = $edit_lat.' '.$edit_lon;
+} elseif ($g_co == 'latlon') {
+    $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
+    $user = $userR->getById($_SESSION['currentUser']);
+    $smarty->assign('user', $user);
 
-    $HEAD .= '<style type="text/css">
-.atable { width:auto; }
-.atable td { padding:0 15px 15px 0 }
-#container { position:relative; }
-#map_canvas {
-	border: 1px solid #999999;
-	width:400px;
-	height:250px;
-}
-#reticule {
-    position:absolute;
-    width:31px;
-    height:31px;
-    left:50%;
-    top:50%;
-    margin-top:-14px;
-    margin-left:-14px;
-}
-</style>';
-    $HEAD .= '<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />';
-
-    if ($edit_lat == null) {
-        $map_zoom = 1;
-    } else {
-        switch ($edit_promien) {
-    case 0:  $map_zoom = 12;
-        break;
-    case 1:  $map_zoom = 12;
-        break;
-    case 2:  $map_zoom = 12;
-        break;
-    case 3:  $map_zoom = 11;
-        break;
-    case 4:  $map_zoom = 11;
-        break;
-    case 5:  $map_zoom = 10;
-        break;
-    case 6:  $map_zoom = 10;
-        break;
-    case 7:  $map_zoom = 10;
-        break;
-    case 8:  $map_zoom = 9;
-        break;
-    case 9:  $map_zoom = 9;
-        break;
-    case 10: $map_zoom = 9;
-        break;
-    default: $map_zoom = 7;
-        break;
-    }
+    // load values into form
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+        $_POST['coordinates'] = $user->latitude.' '.$user->longitude;
+        $_POST['radius'] = is_null($user->observationRadius) ? 5 : $user->observationRadius;
     }
 
-    $map_lat = $edit_lat == null ? 19.31114 : $edit_lat;
-    $map_lon = $edit_lon == null ? 13.35938 : $edit_lon;
-    $map_promien = $edit_promien * 1000;
-
-    include 'fn_latlon.php';
-    getLatLonBox($map_lat, $map_lon, $map_promien, $dlat, $dlon);
-    $lat1 = round($map_lat - $dlat, 6);
-    $lat2 = round($map_lat + $dlat, 6);
-    $lon1 = round($map_lon - $dlon, 6);
-    $lon2 = round($map_lon + $dlon, 6);
-
-    $OGON .= "
-<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=$GOOGLE_MAP_KEY&sensor=false'></script>
-<script type='text/javascript'>
-var initial_lat1 = $lat1;
-var initial_lat2 = $lat2;
-var initial_lon1 = $lon1;
-var initial_lon2 = $lon2;
-var initial_map_lat = $map_lat;
-var initial_map_lon = $map_lon;
-var initial_zoom = $map_zoom;
-</script>
-<script type='text/javascript' src='edit_latlon-1.min.js'></script>";
-
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" >
-<table class="atable">
-<tr>
-<td>'._('Home coordinates').':</td>
-<td width="350px">
-<input type="text" id="latlon" name="latlon" value="'.$edit_lat_lon.'" size="35" onkeyup="latlon_keyup(event);"/><br />
-<span class="szare">'._('Use the map to select a location or enter coordinates manually.').'<br/>'._('eg.').' 52.1534 21.0539<br />N 52° 09.204 E 021° 03.234<br />N 52° 9\' 12.2400" E 21° 3\' 14.0400<br />'.sprintf(_('<a href="%s" target="_blank">Other acceptable lat/lon formats</a>'), $config['adres'].'help.php#acceptableformats').'</span>
-</td>
-<td rowspan="2">
-<div id="container">
-	<div id="map_canvas"></div>
-	<div id="reticule"><img src="'.CONFIG_CDN_ICONS.'/crosshair.png" /></div>
-</div>
-</td>
-
-</tr>
-<tr>
-<td>'._('Observation area').':</td>
-<td>
-<input type="text" id="radius" name="radius" value="'.$edit_promien.'" size="1" style="text-align:center" onkeyup="radius_keyup(event);"/> km <span class="szare"><span id="radrange">(0 - 10km)</span><br/>'._('You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0.').'</span>
-
-</td>
-</tr>
-</table><input type="hidden" name="co" value="latlon" /><input type="submit" value="Save" /></form>';
-
-    $TRESC .= file_get_contents('ribbon_beta.html');
-} elseif ($p_co == 'latlon') {
-    errory_add('edycja lat lon', 4, 'latlon');
-    $p_latlon = trim($p_latlon);
-    $p_radius = trim($p_radius);
-    if (!empty($p_latlon)) {
+    // Save values
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($p_latlon)) {
         include_once 'cords_parse.php';
         $cords_parse = cords_parse($p_latlon);
         if ($cords_parse['error'] != '') {
-            $errors[] = $cords_parse['error'];
-            $TRESC = defektoskop($errors);
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'danger',
+                'message' => _('Error parsing coordinates'),
+            );
+        } elseif ((!ctype_digit($p_radius) && !empty($p_radius)) or ($p_radius > 10)) {
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'danger',
+                'message' => _('Observation radius is invalid or outside the min/max range 0-10'),
+            );
         } else {
-            if ((!ctype_digit($p_radius) && !empty($p_radius)) or ($p_radius > 10)) {
-                $errors[] = _('Observation radius is invalid or outside the min/max range').' (0-10)';
-                $TRESC = defektoskop($errors);
-            } else {
-                $lat = $cords_parse[0];
-                $lon = $cords_parse[1];
-                edit_put("UPDATE `gk-users` SET `lat` = '$lat', `lon` = '$lon', `promien` = '$p_radius' WHERE `userid` = '$userid' LIMIT 1");
-                header("Location: mypage.php?userid=$userid");
+            $user->latitude = $cords_parse[0];
+            $user->longitude = $cords_parse[1];
+            $user->observationRadius = $p_radius;
+            if ($user->save()) {
+                header('Location: '.$user->getUrl());
+                die();
             }
         }
-    } else {
-        edit_put("UPDATE `gk-users` SET `lat` = NULL, `lon` = NULL, `promien` = '0'  WHERE `userid` = '$userid' LIMIT 1");
-        header("Location: mypage.php?userid=$userid");
     }
+
+    // load template
+    $smarty->assign('content_template', 'forms/user_update_observation_area.tpl');
+    $smarty->append('css', CDN_LEAFLET_CSS);
+    $smarty->append('javascript', CDN_LEAFLET_JS);
+    $smarty->append('javascript', CDN_LEAFLET_CENTERCROSS_JS);
+    $smarty->append('js_template', 'js/observationRadius.tpl');
 }
 
 // ----------------------------- edit email of user

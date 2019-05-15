@@ -45,6 +45,7 @@ if (amIOnProd()) {
 $smarty->assign('content_template', false); // Store included template name
 $smarty->assign('css', array()); // Store dynamic css filename to load
 $smarty->assign('javascript', array()); // Store dynamic javascript filename to load
+$smarty->assign('js_template', array()); // Store dynamic javascript filename to load as javascript content
 $smarty->assign('jquery', array()); // Store page jquery
 $smarty->assign('isSuperUser', false);
 $smarty->registerClass('Carbon', '\Carbon\Carbon');

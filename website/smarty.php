@@ -25,6 +25,8 @@ if (!isset($smarty)) {
 $smarty->error_reporting = E_ALL;
 
 $smarty->assign('cdnUrl', CONFIG_CDN);
+$smarty->assign('jsUrl', CONFIG_CDN_JS);
+$smarty->assign('librariesUrl', CONFIG_CDN_LIBRARIES);
 $smarty->assign('cssUrl', CONFIG_CDN_CSS);
 $smarty->assign('imagesUrl', CONFIG_CDN_IMAGES);
 $smarty->assign('avatarUrl', CONFIG_CDN_OBRAZKI);

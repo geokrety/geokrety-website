@@ -28,6 +28,8 @@ $('#modal').on('show.bs.modal', function(event) {
     modal.find('.modal-content').load('_dialog_user_choose_language.php');
 } else if (typeName == 'user-update-email') {
     modal.find('.modal-content').load('_dialog_user_update_email.php');
+} else if (typeName == 'latlon') {
+    modal.find('.modal-content').load('_dialog_user_update_observation_area.php');
   }
 })
 
