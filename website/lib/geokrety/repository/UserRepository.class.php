@@ -158,10 +158,7 @@ EOQUERY;
             return true;
         }
 
-        $_SESSION['alert_msgs'][] = array(
-            'level' => 'danger',
-            'message' => _('Failed to save user…'),
-        );
+        danger(_('Failed to save user…'));
 
         return false;
     }

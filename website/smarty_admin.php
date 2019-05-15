@@ -14,28 +14,17 @@ $TYTUL = 'Erase smarty templates';
 
 if (isset($_POST['formname'])) {
     if ($_POST['formname'] == 'clear_all_cache') {
-        $_SESSION['alert_msgs'][] = array(
-          'level' => 'info',
-          'message' => _('Clearing cache…'),
-        );
+        info(_('Clearing cache…'));
         $smarty->clear_all_cache();
         sleep(2);
-        $_SESSION['alert_msgs'][] = array(
-          'level' => 'success',
-          'message' => _('Cache cleared 👍'),
-        );
+        success(_('Cache cleared 👍'));
     }
 
     if ($_POST['formname'] == 'clear_compiled_tpl') {
-        $_SESSION['alert_msgs'][] = array(
-          'level' => 'info',
-          'message' => _('Clearing compiled templates…'),
-        );
+        info(_('Clearing compiled templates…'));
         $smarty->clear_compiled_tpl();
         sleep(2);
-        $_SESSION['alert_msgs'][] = array(
-          'level' => 'success',
-          'message' => _('Cache cleared 👍'),
+        success(_('Cache cleared 👍'));
         );
     }
 }

@@ -33,10 +33,7 @@ if ($_GET['logout']) {      // logging out
     // clear cookies
     $time = time();
     setcookie('geokret0', '', $time - 3600);
-    $_SESSION['alert_msgs'][] = array(
-      'level' => 'success',
-      'message' => _('You have been successfully logged out. See you soon!'),
-    );
+    success(_('You have been successfully logged out. See you soon!'));
     header('Location: /');
     exit;
 } elseif (!empty($_COOKIE['geokret0'])) {
@@ -107,10 +104,7 @@ if ($_GET['logout']) {      // logging out
         }
         setcookie('geokret0', $sessid, time() + $czas_zycia_ciastka); // setting cookie with sessid
 
-        $_SESSION['alert_msgs'][] = array(
-          'level' => 'success',
-          'message' => _('Welcome on board!'),
-        );
+        success(_('Welcome on board!'));
         $goto = base64_decode($_COOKIE['longin_fwd']);
         setcookie('longin_fwd', '', $time - 360000);
         if (!empty($goto) && preg_match('/^\//', $goto) && preg_match('/^https?:\/\/((www\.)?geokrety\.(com|org|net))|localhost|new-theme\.geokrety\.house\.kumy\.net\//', $_SERVER['HTTP_REFERER'])) {

@@ -1,10 +1,11 @@
 <?php
 
 require_once '__sentry.php';
-loginFirst();
 
 $smarty_cache_this_page = 0;
 require_once 'smarty_start.php';
+loginFirst();
+
 $template = 'dialog/picture_delete.tpl';
 
 $picture_id = $_GET['id'];

@@ -16,8 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     include_once 'fn-generate_secid.php';
     $user->secid = generateRandomString(128);
-    $user->save();
-    $user->redirect();
+    if ($user->save()) {
+        success(_('Secid refreshed'));
+        $user->redirect();
+    } else {
+        danger(_('Error refreshing secid'));
+    }
 }
 
 require_once 'smarty.php';

@@ -207,24 +207,15 @@ elseif ($g_co == 'haslo') {
         }
 
         if ((empty($p_haslo1)) or (empty($p_haslo2)) or (empty($p_haslo_old)) or ($p_haslo1 != $p_haslo2) or (strlen($p_haslo1) < 5)) {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'danger',
-                'message' => _('Passwords different or empty or too short'),
-            );
+            danger(_('Passwords different or empty or too short'));
         } elseif (!$haslo_check) {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'danger',
-                'message' => _('Wrong current password'),
-            );
+            danger(_('Wrong current password'));
         } else {
             $haslo2 = haslo_koduj($p_haslo1);
             $user->password = $haslo2;
             $user->oldPassword = '';
             if ($user->save()) {
-                $_SESSION['alert_msgs'][] = array(
-                    'level' => 'success',
-                    'message' => _('Your password has been changed'),
-                );
+                success(_('Your password has been changed'));
                 include_once 'defektoskop.php';
                 errory_add('New password set', 0, 'new_password');
                 $user->redirect();
@@ -257,20 +248,15 @@ elseif ($g_co == 'haslo') {
         include_once 'cords_parse.php';
         $cords_parse = cords_parse($p_latlon);
         if ($cords_parse['error'] != '') {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'danger',
-                'message' => _('Error parsing coordinates'),
-            );
+            danger(_('Error parsing coordinates'));
         } elseif ((!ctype_digit($p_radius) && !empty($p_radius)) or ($p_radius > 10)) {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'danger',
-                'message' => _('Observation radius is invalid or outside the min/max range 0-10'),
-            );
+            danger(_('Observation radius is invalid or outside the min/max range 0-10'));
         } else {
             $user->latitude = $cords_parse[0];
             $user->longitude = $cords_parse[1];
             $user->observationRadius = $p_radius;
             if ($user->save()) {
+                success(_('Your observation area has been changed'));
                 $user->redirect();
             }
         }
@@ -311,28 +297,19 @@ elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
             verify_mail_send_astext($user->email, _('[GeoKrety] Email address change request at geokrety.org'), _("Hello $user->username,\n\nA request to change your email address has been made at geokrety.org. In order to confirm the update of your email address you will need to follow the instructions sent to your new email address within 5 days.$stopka"));
 
             if ($wyslany) {
-                $_SESSION['alert_msgs'][] = array(
-                    'level' => 'success',
-                    'message' => _('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days.'),
-                );
+                success(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days.'));
             } else {
                 include_once 'defektoskop.php';
                 defektoskop(_('Error, please try again later…'), true, 'verification email was not sent', 6, 'verify_mail');
-                $_SESSION['alert_msgs'][] = array(
-                    'level' => 'danger',
-                    'message' => _('Error, please try again later…'),
-                );
+                danger(_('Error, please try again later…'));
             }
         }
     } else {
         include_once 'defektoskop.php';
         $TRESC = defektoskop(_('Wrong email or subscribtion option'), true, 'verify_mail returned false', 6, 'verify_mail');
-        $_SESSION['alert_msgs'][] = array(
-            'level' => 'danger',
-            'message' => _('Wrong email or subscribtion option'),
-        );
+        danger(_('Wrong email or subscribtion option'));
     }
-    header('Location: mypage.php');
+    $user->redirect();
     die();
 }
 
@@ -340,10 +317,7 @@ elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
 elseif ($g_co == 'lang' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!array_key_exists($_POST['language'], $config_jezyk_nazwa)) {
-        $_SESSION['alert_msgs'][] = array(
-            'level' => 'danger',
-            'message' => _('Invalid language selected…'),
-        );
+        danger(_('Invalid language selected…'));
     }
 
     // Save values
@@ -352,6 +326,7 @@ elseif ($g_co == 'lang' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $smarty->assign('user', $user);
     $user->language = $_POST['language'];
     if ($user->save()) {
+        success(_('Your prefered language has been changed'));
         $user->redirect();
     }
 }
@@ -374,6 +349,7 @@ elseif ($g_co == 'statpic') {
             include 'aktualizuj.php';
             aktualizuj_obrazek_statystyki($user->id);
 
+            success(_('Your statpic template has been changed'));
             $user->redirect();
         }
     }
@@ -406,6 +382,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
             $geokret->name = $p_nazwa;
         }
         if ($geokret->save()) {
+            success(_('GeoKret has been updated'));
             $geokret->redirect();
         }
     }

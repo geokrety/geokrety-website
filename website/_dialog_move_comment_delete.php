@@ -1,10 +1,11 @@
 <?php
 
 require_once '__sentry.php';
-loginFirst();
 
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
+loginFirst();
+
 $template = 'dialog/move_comment_delete.tpl';
 
 $move_comment_id = $_GET['id'];
