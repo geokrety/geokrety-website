@@ -327,10 +327,7 @@ if (!function_exists('loginFirst')) {
     function loginFirst() {
         if (!isset($_SESSION['currentUser']) || empty($_SESSION['currentUser'])) {
             // Please login first
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'warning',
-                'message' => _('Please login first!'),
-            );
+            warning('Please login first!');
 
             include_once 'defektoskop.php';
             errory_add('anonymous - longin_fwd', 4, 'Page:'.$_SERVER['REQUEST_URI']);
@@ -340,6 +337,62 @@ if (!function_exists('loginFirst')) {
         }
 
         return true;
+    }
+}
+
+if (!function_exists('success')) {
+    /**
+     * Function that add message to session as success.
+     *
+     * @return string
+     */
+    function success($message) {
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'success',
+                'message' => $message,
+            );
+    }
+}
+
+if (!function_exists('info')) {
+    /**
+     * Function that add message to session as info.
+     *
+     * @return string
+     */
+    function info($message) {
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'info',
+                'message' => $message,
+            );
+    }
+}
+
+if (!function_exists('warning')) {
+    /**
+     * Function that add message to session as warning.
+     *
+     * @return string
+     */
+    function warning($message) {
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'warning',
+                'message' => $message,
+            );
+    }
+}
+
+if (!function_exists('danger')) {
+    /**
+     * Function that add message to session as danger.
+     *
+     * @return string
+     */
+    function danger($message) {
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'danger',
+                'message' => $message,
+            );
     }
 }
 

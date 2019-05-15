@@ -643,10 +643,7 @@ EOQUERY;
             return true;
         }
 
-        $_SESSION['alert_msgs'][] = array(
-            'level' => 'danger',
-            'message' => _('Failed to GeoKret…'),
-        );
+        danger(_('Failed to GeoKret…'));
 
         return false;
     }
