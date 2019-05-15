@@ -227,8 +227,7 @@ elseif ($g_co == 'haslo') {
                 );
                 include_once 'defektoskop.php';
                 errory_add('New password set', 0, 'new_password');
-                header('Location: '.$user->getUrl());
-                die();
+                $user->redirect();
             }
         }
     }
@@ -272,8 +271,7 @@ elseif ($g_co == 'haslo') {
             $user->longitude = $cords_parse[1];
             $user->observationRadius = $p_radius;
             if ($user->save()) {
-                header('Location: '.$user->getUrl());
-                die();
+                $user->redirect();
             }
         }
     }
@@ -354,8 +352,7 @@ elseif ($g_co == 'lang' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $smarty->assign('user', $user);
     $user->language = $_POST['language'];
     if ($user->save()) {
-        header('Location: '.$user->getUrl());
-        die();
+        $user->redirect();
     }
 }
 
@@ -377,8 +374,7 @@ elseif ($g_co == 'statpic') {
             include 'aktualizuj.php';
             aktualizuj_obrazek_statystyki($user->id);
 
-            header('Location: '.$user->getUrl());
-            die();
+            $user->redirect();
         }
     }
 }
@@ -410,8 +406,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
             $geokret->name = $p_nazwa;
         }
         if ($geokret->save()) {
-            header('Location: '.$geokret->getUrl());
-            die();
+            $geokret->redirect();
         }
     }
 } else {
