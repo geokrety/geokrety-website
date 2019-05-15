@@ -132,8 +132,14 @@ define('CDN_LEAFLET_CENTERCROSS_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.CenterCross/
 
 define('CDN_SLIDEOUT_JS', CONFIG_CDN_LIBRARIES.'/slideout/1.0.1/slideout.min.js');
 
+define('CDN_JQUERY_VALIDATION_JS', CONFIG_CDN_LIBRARIES.'/jquery-validate/1.19.0/jquery.validate.min.js');
+
 define('CDN_BOOTSTRAP_SLIDER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-slider/10.6.1/bootstrap-slider.min.js');
 define('CDN_BOOTSTRAP_SLIDER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-slider/10.6.1/bootstrap-slider.min.css');
+
+define('CDN_ZXCVBN_JS', CONFIG_CDN_LIBRARIES.'/zxcvbn/4.4.2/zxcvbn.min.js');
+define('CDN_STRENGTHIFY_JS', CONFIG_CDN_LIBRARIES.'/strengthify/0.5.8/jquery.strengthify.min.js');
+define('CDN_STRENGTHIFY_CSS', CONFIG_CDN_LIBRARIES.'/strengthify/0.5.8/strengthify.min.css');
 
 // Default timezone
 $config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';

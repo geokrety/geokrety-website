@@ -111,15 +111,6 @@ EOQUERY;
     }
 
     public function updateUser(\Geokrety\Domain\User $user) {
-        $sql = <<<EOQUERY
-UPDATE  `gk-users`
-SET     user = ?, email = ?, email_invalid = ?, wysylacmaile = ?,
-        lang = ?, lat = ?, lon = ?, promien = ?, country = ?,
-        godzina = ?, statpic = ?, ostatni_mail = ?,
-        ostatni_login = ?, secid = ?
-WHERE   userid = $user->id
-LIMIT   1
-EOQUERY;
         $bind = array(
             $user->username, $user->email, $user->isEmailActive,
             $user->acceptEmail, $user->language, $user->latitude,
@@ -127,6 +118,26 @@ EOQUERY;
             $user->country, $user->emailHour, $user->statpic,
             $user->lastMail, $user->lastlogin, $user->secid,
         );
+        $bindStr = 'ssiisddisiisss';
+
+        if (!empty($user->password)) {
+            $set = ", haslo = '', haslo2 = ?";
+            $bind[] = $user->password;
+            $bindStr .= 's';
+        // } else {
+        //     $set = '';
+        }
+
+        $sql = <<<EOQUERY
+UPDATE  `gk-users`
+SET     user = ?, email = ?, email_invalid = ?, wysylacmaile = ?,
+        lang = ?, lat = ?, lon = ?, promien = ?, country = ?,
+        godzina = ?, statpic = ?, ostatni_mail = ?,
+        ostatni_login = ?, secid = ?
+        $set
+WHERE   userid = $user->id
+LIMIT   1
+EOQUERY;
 
         if ($this->verbose) {
             echo "\n$sql\n";
@@ -135,7 +146,7 @@ EOQUERY;
         if (!($stmt = $this->dblink->prepare($sql))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         }
-        if (!$stmt->bind_param('ssiisddisiisss', ...$bind)) {
+        if (!$stmt->bind_param($bindStr, ...$bind)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
         if (!$stmt->execute()) {
@@ -153,5 +164,39 @@ EOQUERY;
         );
 
         return false;
+    }
+
+    public function loadUserPassword(\Geokrety\Domain\User $user) {
+        $sql = <<<EOQUERY
+SELECT  haslo, haslo2
+FROM    `gk-users`
+WHERE   userid = $user->id
+LIMIT   1
+EOQUERY;
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        $stmt->store_result();
+        $nbRow = $stmt->num_rows;
+
+        if ($nbRow == 0) {
+            return array();
+        }
+
+        // associate result vars
+        $stmt->bind_result($user->oldPassword, $user->password);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $user;
     }
 }

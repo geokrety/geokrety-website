@@ -19,6 +19,8 @@ class User extends AbstractObject {
     public $lastMail;
     public $lastlogin;
     public $secid;
+    public $password;
+    public $oldPassword;
 
     public function getUrl() {
         return '/mypage.php?userid='.$this->id;
@@ -42,6 +44,12 @@ class User extends AbstractObject {
         $userR = new \Geokrety\Repository\UserRepository(\GKDB::getLink());
 
         return $userR->updateUser($this);
+    }
+
+    public function loadPassword() {
+        $userR = new \Geokrety\Repository\UserRepository(\GKDB::getLink());
+
+        return $userR->loadUserPassword($this);
     }
 
     public function getStatsGeokretyCreated() {

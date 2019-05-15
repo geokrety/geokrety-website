@@ -27,11 +27,11 @@ $p_co = $_POST['co'];
 // autopoprawione...
 $p_email = $_POST['email'];
 // autopoprawione...
-$p_haslo1 = $_POST['haslo1'];
+$p_haslo1 = $_POST['inputPasswordNew'];
 // autopoprawione...
-$p_haslo2 = $_POST['haslo2'];
+$p_haslo2 = $_POST['inputPasswordConfirm'];
 // autopoprawione...
-$p_haslo_old = $_POST['haslo_old'];
+$p_haslo_old = $_POST['inputPasswordOld'];
 // autopoprawione...
 $p_id = $_POST['id'];
 // autopoprawione...
@@ -165,8 +165,8 @@ elseif (ctype_digit($g_delete_obrazek) and ($g_confirmed == '1')) {
 
     $result2 = mysqli_query($link, "DELETE FROM `gk-obrazki` WHERE `gk-obrazki`.`user` = '$userid' AND `gk-obrazki`.`obrazekid`='$g_delete_obrazek' LIMIT 1");
 
-    //jezeli usuwamy obrazek kreta to aktualizuj pole zdjecia
-    // bo mozemy tez usunac obrazek uzytkownika - wtedy nie ma co aktualizowac.
+    // if we delete a mole image, update the photo field
+    // because we can also delete the image of the user - then there is nothing to update.
     if ($id_kreta > 0) {
         include_once 'aktualizuj.php';
         aktualizuj_zdjecia($id_kreta);
@@ -189,57 +189,59 @@ elseif (ctype_digit($g_delete_obrazek) and ($g_confirmed == '1')) {
 // ------------------------------ edit password
 
 elseif ($g_co == 'haslo') {
-    $OGON = '<script type="text/javascript" src="adduser-2.min.js"></script>';     // character counters
-    $OGON .= '<style type="text/css">
-.atable { width:auto; }
-.atable td { padding:0 15px 15px 0 }
-</style>';
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" ><table class="atable">
-<tr><td>'._('Old password').'</td><td><input type="password" name="haslo_old" maxlength="40" /></td></tr>
-<tr>
-<td>'._('New password').':</td>
-<td><input type="password" name="haslo1" id="haslo1" maxlength="80" onblur="passwordChanged(); validatePassword1();" onkeyup="passwordChanged(); validatePassword1(event); " /><span id="haslo1_img"></span><span id="strength"></span><br />'
-    ._('Retype').':<br /><input type="password" name="haslo2" maxlength="80" /><br />
-<span class="szare" />>= 5 '._('characters').'</td>
-</tr></table><input type="hidden" name="co" value="haslo" /><input type="submit" value="Save" /></form><p>'._(
-        'Read more about choosing good passwords:
-<ul>
-<li><a href="http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html">Choosing Good Passwords -- A User Guide</a></li>
-<li><a href="http://www.csoonline.com/article/220721/how-to-write-good-passwords">How to Write Good Passwords</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Password_strength">Password strength</a></li>
-</ul>'
-    );
-} elseif ($p_co == 'haslo') {
-    $result = mysqli_query($link, "SELECT `haslo`, `haslo2`  FROM `gk-users` WHERE `userid`='$userid' LIMIT 1");
-    $row = mysqli_fetch_row($result);
-    list($haslo, $haslo2) = $row;
+    $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
+    $user = $userR->getById($_SESSION['currentUser']);
+    $smarty->assign('user', $user);
 
-    include_once 'fn_haslo.php';
+    // Save values
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $user->loadPassword();
+        include_once 'fn_haslo.php';
 
-    // haslo starego typu
-    if ($haslo != '') {
-        $haslo_check = ($haslo == crypt($p_haslo_old, $config['sol']));
-    } else {
-        $haslo_check = haslo_sprawdz($p_haslo_old, $haslo2);
+        // old type password
+        if ($user->oldPassword == '') {
+            $haslo_check = haslo_sprawdz($p_haslo_old, $user->password);
+        } else {
+            // Old algorithm
+            $haslo_check = ($haslo == crypt($p_haslo_old, $config['sol']));
+        }
+
+        if ((empty($p_haslo1)) or (empty($p_haslo2)) or (empty($p_haslo_old)) or ($p_haslo1 != $p_haslo2) or (strlen($p_haslo1) < 5)) {
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'danger',
+                'message' => _('Passwords different or empty or too short'),
+            );
+        } elseif (!$haslo_check) {
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'danger',
+                'message' => _('Wrong current password'),
+            );
+        } else {
+            $haslo2 = haslo_koduj($p_haslo1);
+            $user->password = $haslo2;
+            $user->oldPassword = '';
+            if ($user->save()) {
+                $_SESSION['alert_msgs'][] = array(
+                    'level' => 'success',
+                    'message' => _('Your password has been changed'),
+                );
+                include_once 'defektoskop.php';
+                errory_add('New password set', 0, 'new_password');
+                header('Location: '.$user->getUrl());
+                die();
+            }
+        }
     }
 
-    if ((empty($p_haslo1)) or (empty($p_haslo2)) or (empty($p_haslo_old)) or ($p_haslo1 != $p_haslo2) or (strlen($p_haslo1) < 5)) {
-        $TRESC = _('Passwords different or empty or too short');
-    } elseif (!$haslo_check) {
-        $TRESC = _('Wrong current password');
-    } else {
-        $haslo2 = haslo_koduj($p_haslo1);
-        edit_put("UPDATE `gk-users` SET `haslo` = '', `haslo2`='$haslo2' WHERE `userid` = '$userid' LIMIT 1");
-
-        include_once 'defektoskop.php';
-        errory_add('New password set', 0, 'new_password');
-
-        header("Location: mypage.php?userid=$userid");
-    }
-    // }
+    // load template
+    $smarty->assign('content_template', 'forms/user_update_password.tpl');
+    $smarty->assign('strengthify', CDN_ZXCVBN_JS); // Async loaded by strengthify
+    $smarty->append('javascript', CDN_STRENGTHIFY_JS);
+    $smarty->append('css', CDN_STRENGTHIFY_CSS);
+    $smarty->append('javascript', CDN_JQUERY_VALIDATION_JS);
+    $smarty->append('js_template', 'js/user_update_password.tpl');
 
 // ------------------------------ edit LAT i LON
-
 } elseif ($g_co == 'latlon') {
     $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
     $user = $userR->getById($_SESSION['currentUser']);
