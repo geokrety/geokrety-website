@@ -218,14 +218,14 @@ elseif ($g_co == 'haslo') {
 
     // haslo starego typu
     if ($haslo != '') {
-        $haslo_sprawdz = ($haslo == crypt($p_haslo_old, $config['sol']));
+        $haslo_check = ($haslo == crypt($p_haslo_old, $config['sol']));
     } else {
-        $haslo2_sprawdz = haslo_sprawdz($p_haslo_old, $haslo2);
+        $haslo_check = haslo_sprawdz($p_haslo_old, $haslo2);
     }
 
     if ((empty($p_haslo1)) or (empty($p_haslo2)) or (empty($p_haslo_old)) or ($p_haslo1 != $p_haslo2) or (strlen($p_haslo1) < 5)) {
         $TRESC = _('Passwords different or empty or too short');
-    } elseif ($haslo_sprawdz and $haslo2_sprawdz) {
+    } elseif (!$haslo_check) {
         $TRESC = _('Wrong current password');
     } else {
         $haslo2 = haslo_koduj($p_haslo1);
