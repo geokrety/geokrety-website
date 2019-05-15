@@ -317,6 +317,32 @@ if (!function_exists('gkid')) {
     }
 }
 
+if (!function_exists('loginFirst')) {
+    /**
+     * Function that check login and redirect if necessary.
+     * It save the current page for 120s and restore after login.
+     *
+     * @return string
+     */
+    function loginFirst() {
+        if (!isset($_SESSION['currentUser']) || empty($_SESSION['currentUser'])) {
+            // Please login first
+            $_SESSION['alert_msgs'][] = array(
+                'level' => 'warning',
+                'message' => _('Please login first!'),
+            );
+
+            include_once 'defektoskop.php';
+            errory_add('anonymous - longin_fwd', 4, 'Page:'.$_SERVER['REQUEST_URI']);
+            setcookie('longin_fwd', base64_encode($_SERVER['REQUEST_URI']), time() + 120);
+            header('Location: /longin.php');
+            die();
+        }
+
+        return true;
+    }
+}
+
 // PROD ONLY: keep only fatal, no more warning
 if (amIOnProd()) {
     error_reporting(E_ERROR | E_PARSE);

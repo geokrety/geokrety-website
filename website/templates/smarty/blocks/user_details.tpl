@@ -54,7 +54,7 @@
         <dd>
           <div class="input-group">
             <input class="form-control input-sm" type="text" id="secid" value="{$user->secid}" title="{t}Used to authenticate in other applications. Keep it secret!{/t}" readonly>
-            <a class="btn btn-warning btn-xs input-group-addon" href="/api-secid-change.php" title="{t}Generate a new secid{/t}">
+            <a class="btn btn-warning btn-xs input-group-addon" href="" title="{t}Generate a new secid{/t}" data-toggle="modal" data-target="#modal" data-type="secid-refresh">
               {fa icon="refresh"}
             </a>
           </div>

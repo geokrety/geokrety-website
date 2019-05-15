@@ -113,7 +113,7 @@ if ($_GET['logout']) {      // logging out
         );
         $goto = base64_decode($_COOKIE['longin_fwd']);
         setcookie('longin_fwd', '', $time - 360000);
-        if (!empty($goto) && preg_match('/^\//', $goto) && preg_match('/^https?:\/\/((www\.)?geokrety\.(com|org|net))|localhost\//', $_SERVER['HTTP_REFERER'])) {
+        if (!empty($goto) && preg_match('/^\//', $goto) && preg_match('/^https?:\/\/((www\.)?geokrety\.(com|org|net))|localhost|new-theme\.geokrety\.house\.kumy\.net\//', $_SERVER['HTTP_REFERER'])) {
             errory_add("bravo, goto=|$goto|", 4, 'longin');
             $goto = base64_decode($_COOKIE['longin_fwd']);
             header("Location: $goto");

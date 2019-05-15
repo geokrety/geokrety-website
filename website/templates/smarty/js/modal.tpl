@@ -26,10 +26,12 @@ $('#modal').on('show.bs.modal', function(event) {
     modal.find('.modal-content').load('_dialog_picture_set_avatar.php?geokretid=' + geokretid + '&pictureid=' + pictureid);
   } else if (typeName == 'user-choose-language') {
     modal.find('.modal-content').load('_dialog_user_choose_language.php');
-} else if (typeName == 'user-update-email') {
+  } else if (typeName == 'user-update-email') {
     modal.find('.modal-content').load('_dialog_user_update_email.php');
-} else if (typeName == 'latlon') {
+  } else if (typeName == 'latlon') {
     modal.find('.modal-content').load('_dialog_user_update_observation_area.php');
+} else if (typeName == 'secid-refresh') {
+    modal.find('.modal-content').load('api-secid-change.php');
   }
 })
 
