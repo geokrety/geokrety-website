@@ -377,7 +377,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
         $geokret->type = $p_typ;
 
         $validationService = new \Geokrety\Service\ValidationService();
-        if (!$validationService->is_whitespace($p_nazwa)) {
+        if (!$validationService->is_whitespace($p_nazwa) && !empty($p_nazwa)) {
             $geokret->name = $p_nazwa;
         }
         if ($geokret->save()) {

@@ -27,6 +27,9 @@ $HTMLPurifier = new HTMLPurifier($HTMLPurifierconfig_conf);
 foreach ($_GET as $key => $value) {
     $_GET[$key] = $HTMLPurifier->purify($value);
 }
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = $HTMLPurifier->purify($value);
+}
 
 $smarty_cache_id = basename($_SERVER['SCRIPT_NAME']);
 $smarty_cache_filename = $smarty_cache_id.$lang.$template_login;
