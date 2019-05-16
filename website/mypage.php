@@ -99,33 +99,10 @@ elseif ($kret_co == '5') {
 
 $smarty->append('css', CDN_LEAFLET_CSS);
 $smarty->append('javascript', CDN_LEAFLET_JS);
-$smarty->append('javascript', CDN_LEAFLET_CENTERCROSS_JS);
+$smarty->append('javascript', CDN_LEAFLET_AJAX_JS);
 
 if ($user->hasCoordinates()) {
-    $radius = $user->observationRadius * 1000;
-    $jquery = <<<EOD
-var map = L.map("mapid");
-var osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-var osmAttrib = "Map data © <a href=\"https://www.openstreetmap.org\">OpenStreetMap</a> contributors";
-var osm = new L.TileLayer(osmUrl, {
-  minZoom: 0,
-  maxZoom: 12,
-  attribution: osmAttrib
-});
-
-// start the map
-map.setView(new L.LatLng($user->latitude, $user->longitude), 6);
-map.addLayer(osm);
-
-var circle = L.circle([$user->latitude, $user->longitude], {
-    color: 'red',
-    radius: $radius
-}).addTo(map);
-
-// var bounds = [[44.31307, 4.70770], [44.31107, 4.70570]];
-// L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
-EOD;
-    $smarty->append('jquery', $jquery);
+    $smarty->append('js_template', 'js/user_map_home.tpl.js');
 }
 
 $smarty->assign('content_template', 'user.tpl');

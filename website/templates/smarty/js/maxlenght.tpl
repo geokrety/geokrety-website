@@ -1,8 +1,8 @@
-// ----------------------------------- JQUERY - GK EDIT - BEGIN
+// ----------------------------------- JQUERY - MAX LENGHT - BEGIN
 
 $('.maxl[maxlength]').maxlength({
     warningClass: "label label-danger",
     limitReachedClass: "label label-success",
 });
 
-// ----------------------------------- JQUERY - GK EDIT - END
+// ----------------------------------- JQUERY - MAX LENGHT - END
