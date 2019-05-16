@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "490a6b4f5c85374a7d07f83950632046",
+    "content-hash": "af0fe13420cc83b991175f4b10d145fd",
     "packages": [
         {
             "name": "benhall14/php-pagination",
@@ -264,6 +264,54 @@
                 "templating"
             ],
             "time": "2018-09-12T20:54:16+00:00"
+        },
+        {
+            "name": "sokil/php-isocodes",
+            "version": "2.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sokil/php-isocodes.git",
+                "reference": "53f8f4da336401a3c5de64838e4069c33c7d5f1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sokil/php-isocodes/zipball/53f8f4da336401a3c5de64838e4069c33c7d5f1e",
+                "reference": "53f8f4da336401a3c5de64838e4069c33c7d5f1e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gettext": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^4.8 || ^6.5",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sokil\\IsoCodes\\": [
+                        "src/"
+                    ]
+                },
+                "classmap": [
+                    "stubs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmytro Sokil",
+                    "email": "dmytro.sokil@gmail.com"
+                }
+            ],
+            "description": "ISO country, subdivision, language, currency and script definitions and their translations. Based on pythons pycountry.",
+            "time": "2019-04-10T07:15:49+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

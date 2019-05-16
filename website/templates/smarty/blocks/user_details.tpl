@@ -27,7 +27,7 @@
         <dd>{Carbon::parse($user->joinDate)->diffForHumans()}</dd>
         <dt>{t}Language{/t}</dt>
         <dd>
-          {$user->language}
+          {language lang=$user->language}
           {if $user->isCurrentUser() }
           <div class="btn-group pull-right" role="group">
             <button type="button" class="btn btn-warning btn-xs" title="{t}Choose prefered language{/t}" data-toggle="modal" data-target="#modal" data-type="user-choose-language">
