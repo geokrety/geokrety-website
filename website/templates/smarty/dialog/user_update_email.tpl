@@ -27,14 +27,14 @@
           <li>GeoKrety.org news</li>
           <li>Recent logs on:</li>
           <ul>
-            <li>your own geokrets</li>
-            <li>geokrets that you watch</li>
-            <li>any geokrets logged near your home location</li>
+            <li>your own GeoKrety</li>
+            <li>GeoKrety that you watch</li>
+            <li>any GeoKrety logged near your home location</li>
           </ul>
           <li>Comments posted to any of the following:</li>
           <ul>
-            <li>your own geokrets</li>
-            <li>geokrets that you watch</li>
+            <li>your own GeoKrety</li>
+            <li>GeoKrety that you watch</li>
             <li>your logs</li>
             <li>your comments</li>
             <li>news posts you have are subscribed to</li>
