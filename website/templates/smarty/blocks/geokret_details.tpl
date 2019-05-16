@@ -8,6 +8,11 @@
 }%1 (%2) by %3{/t}
     {if $geokret_details->isOwner()}
     <div class="btn-group pull-right" role="group">
+      {if $geokret_details->owner()->email}
+      <a class="btn btn-primary btn-xs" href="/majluj.php?to={$geokret_details->ownerId}&re={$geokret_details->id}" title="{t}Send a message to the user{/t}">
+        {fa icon="envelope"}
+      </a>
+      {/if}
       <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret_details->id}" title="{t}Edit GeoKret details{/t}">
         {fa icon="pencil"}
       </a>

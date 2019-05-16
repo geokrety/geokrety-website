@@ -10,6 +10,7 @@ class Konkret extends AbstractObject {
     // public $url; // TODO update ldjson
     public $ownerId; // TODO update ldjson
     public $ownerName; // TODO update ldjson
+    public $ownerEmail;
     // public $authorUrl; // TODO update ldjson
     public $holderId;
     public $holderName;
@@ -68,6 +69,7 @@ class Konkret extends AbstractObject {
         $user->id = $this->ownerId;
         $user->username = $this->ownerName;
         $user->filename = $this->avatarFilename;
+        $user->email = $this->ownerEmail;
 
         return $user;
     }

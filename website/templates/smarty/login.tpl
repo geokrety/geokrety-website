@@ -6,7 +6,7 @@
         <h3 class="panel-title">{t}Login{/t}</h3>
       </div>
       <div class="panel-body">
-        <form action="/longin.php{if $goto}?goto={$goto}{/if}" method="post" class="form-horizontal">
+        <form action="/longin.php{if isset($goto) and $goto}?goto={$goto}{/if}" method="post" class="form-horizontal">
 
           <div class="form-group">
             <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>

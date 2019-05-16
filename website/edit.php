@@ -6,7 +6,6 @@ require_once '__sentry.php';
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 require_once 'defektoskop.php';
-require 'templates/konfig.php';    // config
 require_once 'czysc.php';
 
 $TYTUL = _('Edit');

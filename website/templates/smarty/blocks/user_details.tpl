@@ -2,7 +2,7 @@
   <div class="panel-heading">
     {call gk_icon gk_type=2}
     {userlink user=$user}
-    <div class="pull-right">
+    <div class="btn-group pull-right" role="group">
       {if $user->email}
       <a class="btn btn-primary btn-xs" href="/majluj.php?to={$user->id}" title="{t}Send a message to the user{/t}">
         {fa icon="envelope"}

@@ -55,6 +55,7 @@ $config['pop_port'] = isset($_ENV['POP_PORT']) ? $_ENV['POP_PORT'] : 995;
 $config['pop_tls'] = isset($_ENV['POP_TLS']) ? $_ENV['POP_TLS'] : true;
 $config['pop_username'] = isset($_ENV['POP_USERNAME']) ? $_ENV['POP_USERNAME'] : 'xxx';
 $config['pop_password'] = isset($_ENV['POP_PASSWORD']) ? $_ENV['POP_PASSWORD'] : 'xxx';
+$config['support_mail'] = isset($_ENV['SUPPORT_MAIL']) ? $_ENV['SUPPORT_MAIL'] : 'xxx';
 
 // Sentry integration
 $config['sentry_dsn'] = isset($_ENV['SENTRY_DSN']) ? $_ENV['SENTRY_DSN'] : 'https://xx:yyy@zzz/1';
@@ -219,9 +220,6 @@ $config_jezyk_nazwa['sv'] = 'Svenska';
 $config_jezyk_nazwa['th'] = 'ไทย';
 $config_jezyk_nazwa['tr'] = 'Türk';
 $config_jezyk_nazwa['uk'] = 'Українська';
-//$config_jezyk_nazwa[''] = '';
-
-// mb_internal_encoding("UTF-8");
 
 $cotozalog['0'] = _('Dropped to');
 $cotozalog['1'] = _('Grabbed from');

@@ -12,7 +12,7 @@ EOQUERY;
 SELECT      gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
             gk.ost_log_id, gk.ost_pozycja_id,
             gk.avatarid, pic.plik, pic.opis,
-            owner.user, holder.userid, holder.user
+            owner.user, holder.userid, holder.user, owner.email
 FROM        `gk-geokrety` gk
 LEFT JOIN   `gk-users` AS owner ON (gk.owner = owner.userid)
 LEFT JOIN   `gk-obrazki` AS pic ON (gk.avatarid = pic.obrazekid)
@@ -83,7 +83,7 @@ EOQUERY;
         $stmt->bind_result($id, $trackingCode, $name, $description, $datePublished, $type, $distance, $cachesCount, $picturesCount, $ownerId, $missing,
                            $lastLogId, $lastPositionId,
                            $avatarId, $avatarFilename, $avatarLegend,
-                           $ownerName, $holderId, $holderName);
+                           $ownerName, $holderId, $holderName, $ownerEmail);
 
         while ($stmt->fetch()) {
             $geokret->id = $id;
@@ -92,6 +92,7 @@ EOQUERY;
             $geokret->description = $description;
             $geokret->ownerId = $ownerId;
             $geokret->ownerName = $ownerName;
+            $geokret->ownerEmail = $ownerEmail;
             $geokret->holderId = $holderId;
             $geokret->holderName = $holderName;
             $geokret->datePublished = $datePublished;
