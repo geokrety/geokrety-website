@@ -22,7 +22,7 @@
   <div class="panel-body">
 
     <div class="pull-left">
-      <dl class="dl-horizontal">
+      <dl class="{if !$user_subpage}dl-horizontal{/if}">
         <dt>{t}Joined us{/t}</dt>
         <dd>{Carbon::parse($user->joinDate)->diffForHumans()}</dd>
         <dt>{t}Language{/t}</dt>
