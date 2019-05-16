@@ -17,6 +17,10 @@ $('#modal').on('show.bs.modal', function(event) {
   } else if (typeName == 'move-comment-delete') {
     var id = button.data('id');
     modal.find('.modal-content').load('_dialog_move_comment_delete.php?id=' + id);
+} else if (typeName == 'picture-upload') {
+    var type = button.data('type');
+    var id = button.data('id');
+    modal.find('.modal-content').load('imgup.php');
   } else if (typeName == 'picture-delete') {
     var id = button.data('id');
     modal.find('.modal-content').load('_dialog_picture_delete.php?id=' + id);

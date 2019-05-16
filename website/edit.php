@@ -228,7 +228,7 @@ elseif ($g_co == 'haslo') {
     $smarty->append('javascript', CDN_STRENGTHIFY_JS);
     $smarty->append('css', CDN_STRENGTHIFY_CSS);
     $smarty->append('javascript', CDN_JQUERY_VALIDATION_JS);
-    $smarty->append('js_template', 'js/user_update_password.tpl');
+    $smarty->append('js_template', 'js/user_update_password.tpl.js');
 
 // ------------------------------ edit LAT i LON
 } elseif ($g_co == 'latlon') {
@@ -266,7 +266,7 @@ elseif ($g_co == 'haslo') {
     $smarty->append('css', CDN_LEAFLET_CSS);
     $smarty->append('javascript', CDN_LEAFLET_JS);
     $smarty->append('javascript', CDN_LEAFLET_CENTERCROSS_JS);
-    $smarty->append('js_template', 'js/observationRadius.tpl');
+    $smarty->append('js_template', 'js/observationRadius.tpl.js');
 }
 
 // ----------------------------- edit email of user

@@ -65,7 +65,7 @@
   {$ldjson nofilter}
   {/if}
 
-  {include file="dialog/base_modal.tpl"}
+  {include file="dialog/base_modal.tpl.js"}
 
   <script type="text/javascript" src="{$cdnUrl}/libraries/jquery/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="{$cdnUrl}/libraries/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -81,7 +81,7 @@
         $( document ).ready( function () {
 {/literal}
         {include file="js/modal.tpl"}
-        {include file="js/maxlenght.tpl"}
+        {include file="js/maxlenght.tpl.js"}
         {if count($js_template)}{foreach from=$js_template item=item}
         {include file=$item}
         {/foreach}{/if}
