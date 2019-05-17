@@ -127,7 +127,7 @@ if ($g_typ == '0') { //kret
         if ($rename) {
             $smarty->assign('modal_title', sprintf(_('Rename image of %s'), $geokret->name));
         } else {
-            $smarty->assign('modal_title', sprintf(_('B* Upload image for %s'), $geokret->name));
+            $smarty->assign('modal_title', sprintf(_('Upload image for %s'), $geokret->name));
         }
     }
     $id_kreta = $geokret->id;
