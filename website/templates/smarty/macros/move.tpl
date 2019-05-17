@@ -61,9 +61,9 @@
                             </button>
                             {/if}
                             {if $currentUser == $move->userId }
-                            <a class="btn btn-success btn-xs" href="/imgup.php?typ=1&id={$move->ruchId}" role="button" title="{t}Upload a picture{/t}">
+                            <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$move->ruchId}" data-picture-type="1">
                                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
-                            </a>
+                            </button>
                             {/if}
                             <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-gkid="{$geokret->id}" data-ruchid="{$move->ruchId}">
                                 {fa icon="plus"}&nbsp;{fa icon="comment"}

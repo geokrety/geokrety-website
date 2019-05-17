@@ -20,8 +20,24 @@ class Picture extends AbstractObject {
         return $this->isGkAvatar;
     }
 
+    public function isOwner() {
+        return $_SESSION['isLoggedIn'] && $_SESSION['currentUser'] === $this->userId;
+    }
+
     public function deleteUrl() {
         return '/edit.php?delete_obrazek='.$this->id.'&confirmed=1';
+    }
+
+    public function insert() {
+        $pictureR = new \Geokrety\Repository\PictureRepository(\GKDB::getLink());
+
+        return $pictureR->insertPicture($this);
+    }
+
+    public function update() {
+        $pictureR = new \Geokrety\Repository\PictureRepository(\GKDB::getLink());
+
+        return $pictureR->updatePicture($this);
     }
 }
 
@@ -49,7 +65,7 @@ class PictureGeoKret extends Picture {
     public $name;
 
     public function geokret() {
-        $geokret = new \Geokrety\Domain\User();
+        $geokret = new \Geokrety\Domain\Konkret();
         $geokret->id = $this->geokretId;
         $geokret->name = $this->name;
 

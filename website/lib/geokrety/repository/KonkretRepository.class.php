@@ -608,13 +608,13 @@ EOQUERY;
         );
     }
 
-    public function updateGeokret(\Geokrety\Domain\Konkret $geokret) {
+    public function updateGeokret(\Geokrety\Domain\Konkret &$geokret) {
         $sql = <<<EOQUERY
 UPDATE  `gk-geokrety`
 SET     nr = ?, nazwa = ?, opis = ?, data = ?, typ = ?, droga = ?, skrzynki = ?,
         zdjecia = ?, owner = ?, missing = ?, ost_log_id = ?, ost_pozycja_id = ?,
         avatarid = ?
-WHERE   id = $geokret->id
+WHERE   id = ?
 LIMIT   1
 EOQUERY;
         $bind = array(
@@ -623,6 +623,7 @@ EOQUERY;
             $geokret->cachesCount, $geokret->picturesCount, $geokret->ownerId,
             $geokret->missing, $geokret->lastLogId, $geokret->lastPositionId,
             $geokret->avatarId,
+            $geokret->id
         );
 
         if ($this->verbose) {
@@ -632,7 +633,7 @@ EOQUERY;
         if (!($stmt = $this->dblink->prepare($sql))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         }
-        if (!$stmt->bind_param('sssssiiiiiiii', ...$bind)) {
+        if (!$stmt->bind_param('sssssiiiiiiiii', ...$bind)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
         if (!$stmt->execute()) {
@@ -644,7 +645,7 @@ EOQUERY;
             return true;
         }
 
-        danger(_('Failed to GeoKret…'));
+        danger(_('Failed to update GeoKret…'));
 
         return false;
     }

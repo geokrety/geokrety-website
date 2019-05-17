@@ -150,9 +150,9 @@ EOQUERY;
                   $picture = new \Geokrety\Domain\PictureGeoKret();
                   $picture->geokretId = $geokretId;
                   $picture->geokretName = $geokretName;
-                  $picture->country = $country;
                   $picture->date = $date;
                   $picture->isGkAvatar = $isGkAvatar;
+                  $picture->tripId = $geokretId; // Isn't there an error in the db schema?
                   break;
                 case 1:
                   $picture = new \Geokrety\Domain\PictureTrip();
@@ -170,7 +170,6 @@ EOQUERY;
                   throw new \Exception("picture id:$id has a wrong type ($type) : ($stmt->errno) ".$stmt->error);
             }
             $picture->id = $id;
-            $picture->tripId = $tripId;
             $picture->type = $type;
             $picture->userId = $userId;
             $picture->filename = $filename;
@@ -245,5 +244,93 @@ LIMIT     1
 EOQUERY;
 
         return $this->countTotalPicturesBySql($sql, array($userId));
+    }
+
+    public function countTotalPicturesByTripId($tripId) {
+        $tripId = $this->validationService->ensureIntGTE('tripId', $tripId, 1);
+
+        $sql = <<<EOQUERY
+SELECT  COUNT(*) as total
+FROM    `gk-obrazki` ob
+WHERE   ob.id = ?
+AND     ob.typ='1'
+LIMIT   1
+EOQUERY;
+
+        return $this->countTotalPicturesBySql($sql, array($tripId));
+    }
+
+    public function insertPicture(\Geokrety\Domain\Picture &$picture) {
+        $sql = <<<EOQUERY
+INSERT INTO `gk-obrazki`
+            (id, typ, id_kreta, user, plik, opis)
+VALUES      (?, ?, ?, ?, ?, ?)
+EOQUERY;
+
+        $bind = array(
+            $picture->tripId, $picture->type,
+            $picture->geokretId, $picture->userId,
+            $picture->filename, $picture->legend,
+        );
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('isiiss', ...$bind)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        $stmt->store_result();
+        $picture->id = $stmt->insert_id;
+
+        if ($stmt->affected_rows >= 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updatePicture(\Geokrety\Domain\Picture &$picture) {
+        $sql = <<<EOQUERY
+UPDATE  `gk-obrazki`
+SET     id = ?, typ = ?, id_kreta = ?, user = ?, plik = ?, opis = ?
+WHERE   obrazekid = ?
+LIMIT   1
+EOQUERY;
+        $bind = array(
+            $picture->tripId, $picture->type,
+            $picture->geokretId, $picture->userId,
+            $picture->filename, $picture->legend,
+            $picture->id
+        );
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('isiissi', ...$bind)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        $stmt->store_result();
+
+        if ($stmt->affected_rows >= 0) {
+            return true;
+        }
+
+        danger(_('Failed to update picture…'));
+
+        return false;
     }
 }

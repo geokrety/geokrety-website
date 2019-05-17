@@ -47,7 +47,7 @@
         </dl>
       </div>
       <div class="col-xs-12 col-md-3 gallery">
-        {pictureOrDefault item=$geokret_details->avatar() skipLinkToEntity=true isOwner=$geokret_details->isOwner()}
+        {pictureOrDefault item=$geokret_details->avatar() skipLinkToEntity=true isOwner=$geokret_details->isOwner() pictureType=0 id=$geokret_details->id}
         {altitudeProfile gk_id=$geokret_details->id}
       </div>
     </div>

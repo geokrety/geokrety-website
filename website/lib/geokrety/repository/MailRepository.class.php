@@ -79,7 +79,7 @@ EOQUERY;
         return $stmt->num_rows > 0 ? true : false;
     }
 
-    public function insertMail(\Geokrety\Domain\Mail $mail) {
+    public function insertMail(\Geokrety\Domain\Mail &$mail) {
         $sql = <<<EOQUERY
 INSERT INTO `gk-maile`
             (random_string, `from`, `to`, temat, tresc, ip)

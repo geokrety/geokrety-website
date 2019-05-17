@@ -346,10 +346,10 @@ if (!function_exists('success')) {
      * @return string
      */
     function success($message) {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'success',
-                'message' => $message,
-            );
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'success',
+            'message' => $message,
+        );
     }
 }
 
@@ -360,10 +360,10 @@ if (!function_exists('info')) {
      * @return string
      */
     function info($message) {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'info',
-                'message' => $message,
-            );
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'info',
+            'message' => $message,
+        );
     }
 }
 
@@ -374,10 +374,10 @@ if (!function_exists('warning')) {
      * @return string
      */
     function warning($message) {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'warning',
-                'message' => $message,
-            );
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'warning',
+            'message' => $message,
+        );
     }
 }
 
@@ -387,11 +387,15 @@ if (!function_exists('danger')) {
      *
      * @return string
      */
-    function danger($message) {
-            $_SESSION['alert_msgs'][] = array(
-                'level' => 'danger',
-                'message' => $message,
-            );
+    function danger($message, $redirect = false) {
+        $_SESSION['alert_msgs'][] = array(
+            'level' => 'danger',
+            'message' => $message,
+        );
+        if ($redirect) {
+            header('Location: '.(isset($_POST['goto']) ? $_POST['goto'] : '/'));
+            die();
+        }
     }
 }
 

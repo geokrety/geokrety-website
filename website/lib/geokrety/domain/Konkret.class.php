@@ -85,7 +85,7 @@ class Konkret extends AbstractObject {
     public function avatar() {
         $picture = new PictureGeoKret();
         $picture->id = $this->avatarId;
-        $picture->tripId = null;
+        $picture->tripId = $this->id; // Isn't there an error in the db schema?
         $picture->type = AVATAR;
         $picture->geokretId = $this->id;
         $picture->name = $this->name;
@@ -97,7 +97,7 @@ class Konkret extends AbstractObject {
         return $picture;
     }
 
-    public function save() {
+    public function update() {
         $geokretR = new \Geokrety\Repository\KonkretRepository(\GKDB::getLink());
 
         return $geokretR->updateGeokret($this);

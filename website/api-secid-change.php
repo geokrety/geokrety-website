@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     include_once 'fn-generate_secid.php';
     $user->secid = generateRandomString(128);
-    if ($user->save()) {
+    if ($user->update()) {
         success(_('Secid refreshed'));
         $user->redirect();
     } else {

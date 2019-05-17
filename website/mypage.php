@@ -40,6 +40,13 @@ $dblink = GKDB::getLink();
 
 $userR = new \Geokrety\Repository\UserRepository($dblink);
 $user = $userR->getById($kret_userid);
+if (is_null($user)) {
+    include_once 'defektoskop.php';
+    $TRESC = defektoskop(_('No such User!'), true, 'there is no such user', 3, 'WRONG_DATA');
+    include_once 'smarty.php';
+    exit;
+}
+
 $smarty->assign('user', $user);
 $smarty->assign('badges', $user->getBadges());
 $smarty->assign('statsCreatedGeokrety', $user->getStatsGeokretyCreated());

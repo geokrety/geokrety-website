@@ -3,9 +3,9 @@
         {t}Pictures{/t}
         {if $geokret_details->isOwner()}
         <div class="btn-group pull-right" role="group">
-            <a class="btn btn-success btn-xs" href="/imgup.php?typ=0&id={$geokret_details->id}" title="{t}Upload a picture{/t}">
+            <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$geokret_details->id}" data-picture-type="0">
                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
-            </a>
+            </button>
         </div>
         <div class="clearfix"></div>
         {/if}

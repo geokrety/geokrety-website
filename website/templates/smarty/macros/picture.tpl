@@ -1,18 +1,22 @@
 {function img width=100 height=100}{* filename="" *}
-<img src="{$avatarMinUrl}/{$filename}" width="{$width}" height="{$height}" data-preview-image="{$avatarUrl}/{$filename}" class="{if $item->isAvatar()}is-avatar{/if}" />
+<a href="{$avatarUrl}/{$filename}">
+    <img src="{$avatarMinUrl}/{$filename}" width="{$width}" height="{$height}" data-preview-image="{$avatarUrl}/{$filename}" />
+</a>
 {/function}
 
 {function picture skipLinkToEntity=false skipTags=false isOwner=false skipButtons=false}{* item="" *}
 <figure>
     <div class="parent">
-        {call img filename=$item->filename}
-        {if not $skipTags}
-        {if isset($item->country) and $item->country}{country_flag country=$item->country}{/if}
-        {if $item->type == 0}<span class="type gk" title="{t}A GeoKret avatar{/t}"></span>
-        {elseif $item->type == 1}<span class="type plane" title="{t}A move picture{/t}"></span>
-        {elseif $item->type == 2}<span class="type human" title="{t}User's avatar{/t}"></span>
-        {/if}
-        {/if}
+        <div class="image-container{if $item->isAvatar()} is-avatar{/if}">
+            {call img filename=$item->filename}
+            {if not $skipTags}
+            {if isset($item->country) and $item->country}{country_flag country=$item->country}{/if}
+            {if $item->type == 0}<span class="type gk" title="{t}A GeoKret avatar{/t}"></span>
+            {elseif $item->type == 1}<span class="type plane" title="{t}A move picture{/t}"></span>
+            {elseif $item->type == 2}<span class="type human" title="{t}User's avatar{/t}"></span>
+            {/if}
+            {/if}
+        </div>
     </div>
     <figcaption>
         <p class="text-center">
@@ -41,10 +45,10 @@
                 {fa icon="id-card"}
             </button>
             {/if}
-            <a class="btn btn-warning btn-xs" href="{$item->editUrl()}" title="{t}Edit picture{/t}">
+            <button class="btn btn-warning btn-xs" title="{t}Edit picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-edit" data-id="{$item->tripId}" data-picture-type="{$item->type}" data-picture-id="{$item->id}">
                 {fa icon="pencil"}
-            </a>
-            <button type="button" class="btn btn-danger btn-xs" title="{t}Delete picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-delete" data-id="{$item->id}">
+            </button>
+            <button type="button" class="btn btn-danger btn-xs" title="{t}Delete picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-delete" data-picture-id="{$item->id}">
                 {fa icon="trash"}
             </button>
         </div>
@@ -55,9 +59,11 @@
 
 {function pictureDefault overlayAdd=false isOwner=false skipButtons=false}{* item="" *}
 <figure>
-    <div class="parent">
-        <img src="{$imagesUrl}/the-mole-grey.svg" width="100" height="100" />
-        {if $isOwner}
+    <div class="parent"{if not $skipButtons and $isOwner} data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$id}" data-picture-type="{$pictureType}" data-is-avatar="on"{/if}>
+        <div class="image-container">
+            <img src="{$imagesUrl}/the-mole-grey.svg" class="center-block" />
+        </div>
+        {if not $skipButtons and $isOwner}
         <div class="overlay center-block">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </div>
@@ -65,11 +71,11 @@
     </div>
     <figcaption>
         {if not $skipButtons and $isOwner}
-        <p class="text-center"><small><em>{t}Add an avatar{/t}</em></small></p>
+        <p class="text-center" title="{t}Add an avatar{/t}"><small><em>{t}Add an avatar{/t}</em></small></p>
         <div class="btn-group pull-right" role="group">
-            <a class="btn btn-primary btn-xs" href="/imgup.php?typ=0&id={$geokret_details->geokretId}&avatar=on" title="{t}Upload an avatar{/t}">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </a>
+            <button class="btn btn-success btn-xs" title="{t}Upload an avatar{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$id}" data-picture-type="{$pictureType}" data-is-avatar="on">
+                {fa icon="plus"}&nbsp;{fa icon="picture-o"}
+            </button>
         </div>
         {else}
         <p class="text-center"><small><em>{t}No avatar{/t}</em></small></p>
@@ -78,11 +84,11 @@
 </figure>
 {/function}
 
-{function pictureOrDefault skipLinkToEntity=false skipTags=false isOwner=false skipButtons=false}{* item="" *}
-{if $item && $item->filename}
+{function pictureOrDefault skipLinkToEntity=false skipTags=false isOwner=false skipButtons=false pictureType=0 id=0}{* item="" *}
+{if isset($item) && $item && $item->filename}
 {picture item=$item skipLinkToEntity=$skipLinkToEntity skipTags=$skipTags isOwner=$isOwner skipButtons=$skipButtons}
 {else}
-{pictureDefault isOwner=$isOwner}
+{pictureDefault isOwner=$isOwner pictureType=$pictureType id=$id}
 {/if}
 {/function}
 

@@ -213,7 +213,7 @@ elseif ($g_co == 'haslo') {
             $haslo2 = haslo_koduj($p_haslo1);
             $user->password = $haslo2;
             $user->oldPassword = '';
-            if ($user->save()) {
+            if ($user->update()) {
                 success(_('Your password has been changed'));
                 include_once 'defektoskop.php';
                 errory_add('New password set', 0, 'new_password');
@@ -254,7 +254,7 @@ elseif ($g_co == 'haslo') {
             $user->latitude = $cords_parse[0];
             $user->longitude = $cords_parse[1];
             $user->observationRadius = $p_radius;
-            if ($user->save()) {
+            if ($user->update()) {
                 success(_('Your observation area has been changed'));
                 $user->redirect();
             }
@@ -284,7 +284,7 @@ elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = $userR->getById($_SESSION['currentUser']);
         $smarty->assign('user', $user);
         $user->acceptEmail = $p_wysylacmaile;
-        $user->save();
+        $user->update();
 
         // jezeli email nie zostal zmieniony to nie potrzeba tej calej procedury
         if ($user->email != $p_email) {
@@ -324,7 +324,7 @@ elseif ($g_co == 'lang' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $userR->getById($_SESSION['currentUser']);
     $smarty->assign('user', $user);
     $user->language = $_POST['language'];
-    if ($user->save()) {
+    if ($user->update()) {
         success(_('Your prefered language has been changed'));
         $user->redirect();
     }
@@ -343,7 +343,7 @@ elseif ($g_co == 'statpic') {
     // Save values
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && ctype_digit($_POST['statpic'])) {
         $user->statpic = $_POST['statpic'];
-        if ($user->save()) {
+        if ($user->update()) {
             // Force refresh statpic
             include 'aktualizuj.php';
             aktualizuj_obrazek_statystyki($user->id);
@@ -380,7 +380,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
         if (!$validationService->is_whitespace($p_nazwa) && !empty($p_nazwa)) {
             $geokret->name = $p_nazwa;
         }
-        if ($geokret->save()) {
+        if ($geokret->update()) {
             success(_('GeoKret has been updated'));
             $geokret->redirect();
         }

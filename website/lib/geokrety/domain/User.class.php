@@ -40,7 +40,7 @@ class User extends AbstractObject {
         return $pictureR->getAvatarByUserId($this->id);
     }
 
-    public function save() {
+    public function update() {
         $userR = new \Geokrety\Repository\UserRepository(\GKDB::getLink());
 
         return $userR->updateUser($this);

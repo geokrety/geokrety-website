@@ -44,6 +44,12 @@ class TripStep extends AbstractObject {
         $this->waypoint = $waypoint;
     }
 
+    public function update() {
+        $tripR = new \Geokrety\Repository\TripRepository(\GKDB::getLink());
+
+        return $tripR->updateTripStep($this);
+    }
+
     public function author() {
         $user = new User();
         $user->id = $this->userId;
@@ -67,6 +73,10 @@ class TripStep extends AbstractObject {
             case 5: return _('dip');
             default: return null;
         }
+    }
+
+    public function isAuthor() {
+        return $_SESSION['isLoggedIn'] && $_SESSION['currentUser'] === $this->userId;
     }
 
     public function getHtmlContent() {
