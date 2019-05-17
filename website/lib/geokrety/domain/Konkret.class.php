@@ -22,7 +22,7 @@ class Konkret extends AbstractObject {
     public $picturesCount;
     public $avatarId; // TODO update ldjson
     public $avatarFilename; // TODO update ldjson
-    public $avatarLegend;
+    public $avatarCaption;
     public $lastPositionId;
     public $lastLogId;
     public $missing;
@@ -91,7 +91,7 @@ class Konkret extends AbstractObject {
         $picture->name = $this->name;
         $picture->userId = $this->ownerId;
         $picture->filename = $this->avatarFilename;
-        $picture->legend = $this->avatarLegend;
+        $picture->caption = $this->avatarCaption;
         $picture->isGkAvatar = true;
 
         return $picture;

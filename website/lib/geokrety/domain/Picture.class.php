@@ -13,7 +13,7 @@ class Picture extends AbstractObject {
     public $geokretId;
     public $userId;
     public $filename;
-    public $legend;
+    public $caption;
     public $isGkAvatar;
 
     public function isAvatar() {

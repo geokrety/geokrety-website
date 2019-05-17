@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="opis" class="col-sm-2 control-label">{t}Caption{/t}</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="opis" name="opis" placeholder="Caption" maxlength="50" value="{if isset($picture)}{$picture->legend}{/if}">
+                        <input type="text" class="form-control" id="opis" name="opis" placeholder="Caption" maxlength="50" value="{if isset($picture)}{$picture->caption}{/if}">
                     </div>
                 </div>
 

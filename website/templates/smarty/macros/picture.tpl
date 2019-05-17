@@ -20,8 +20,8 @@
     </div>
     <figcaption>
         <p class="text-center">
-            {if $item->legend}
-            <small title="{$item->legend}">{$item->legend|truncate:30:'…'}</small>
+            {if $item->caption}
+            <small title="{$item->caption}">{$item->caption|truncate:30:'…'}</small>
             {else}
             &nbsp;
             {/if}

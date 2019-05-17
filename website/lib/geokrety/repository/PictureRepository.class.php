@@ -6,7 +6,7 @@ class PictureRepository extends AbstractRepository {
 
     const SELECT_PICTURES_DETAILS = <<<EOQUERY
 SELECT    ob.obrazekid, ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
-          ob.plik as filename, ob.opis as legend, gk.nazwa as gk_name,
+          ob.plik as filename, ob.opis as caption, gk.nazwa as gk_name,
           us.user as username, ru.country, ru.data as date, ru.ruch_id,
           gk.avatarid = ob.obrazekid AS isGkAvatar
 FROM      `gk-obrazki` ob
@@ -139,7 +139,7 @@ EOQUERY;
         }
 
         // associate result vars
-        $stmt->bind_result($id, $tripId, $type, $geokretId, $userId, $filename, $legend,
+        $stmt->bind_result($id, $tripId, $type, $geokretId, $userId, $filename, $caption,
                            $geokretName, $username, $country, $date, $tripId, $isGkAvatar);
 
         $pictures = array();
@@ -173,7 +173,7 @@ EOQUERY;
             $picture->type = $type;
             $picture->userId = $userId;
             $picture->filename = $filename;
-            $picture->legend = $legend;
+            $picture->caption = $caption;
 
             array_push($pictures, $picture);
         }
@@ -270,7 +270,7 @@ EOQUERY;
         $bind = array(
             $picture->tripId, $picture->type,
             $picture->geokretId, $picture->userId,
-            $picture->filename, $picture->legend,
+            $picture->filename, $picture->caption,
         );
 
         if ($this->verbose) {
@@ -306,7 +306,7 @@ EOQUERY;
         $bind = array(
             $picture->tripId, $picture->type,
             $picture->geokretId, $picture->userId,
-            $picture->filename, $picture->legend,
+            $picture->filename, $picture->caption,
             $picture->id
         );
 

@@ -83,7 +83,7 @@ EOQUERY;
                            $app, $appVer, $picturesCount, $commentsCount,
                            $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
                            $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picLegend
+                           $picFilename, $picCaption
                            );
 
         while ($stmt->fetch()) {
@@ -182,7 +182,7 @@ EOQUERY;
                            $app, $appVer, $picturesCount, $commentsCount,
                            $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
                            $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picLegend
+                           $picFilename, $picCaption
                            );
 
         $trip = new \Geokrety\Domain\TripStep($waypoint);
@@ -351,7 +351,7 @@ EOQUERY;
                            $app, $appVer, $picturesCount, $commentsCount,
                            $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
                            $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picLegend
+                           $picFilename, $picCaption
                            );
 
         $trips = array();
@@ -456,7 +456,7 @@ EOQUERY;
                            $app, $appVer, $picturesCount, $commentsCount,
                            $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
                            $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picLegend
+                           $picFilename, $picCaption
                            );
 
         $trips = array();
@@ -561,7 +561,7 @@ EOQUERY;
                            $app, $appVer, $picturesCount, $commentsCount,
                            $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
                            $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picLegend
+                           $picFilename, $picCaption
                            );
 
         $trips = array();
@@ -658,7 +658,7 @@ EOQUERY;
                            $app, $appVer, $picturesCount, $commentsCount,
                            $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
                            $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picLegend
+                           $picFilename, $picCaption
                            );
 
         $trips = array();

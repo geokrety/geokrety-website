@@ -254,7 +254,7 @@ if ($_FILES['obrazek']) {
             $picture->geokretId = $id_kreta;
             $picture->userId = $userid;
             $picture->filename = $filename.'.'.$extension;
-            $picture->legend = $p_opis;
+            $picture->caption = $p_opis;
             if (!$picture->insert()) {
                 danger(_('Failed to save picture…'), $redirect=true);
             }
@@ -306,10 +306,10 @@ if ($_FILES['obrazek']) {
     $p_opis = czysc($p_opis);
     $pictureR = new \Geokrety\Repository\PictureRepository(GKDB::getLink());
     $picture = $pictureR->getById($g_rename);
-    $picture->legend = $p_opis;
+    $picture->caption = $p_opis;
 
     if (!$picture->update()) {
-        danger(_('Failed to update picture legend…'), $redirect=true);
+        danger(_('Failed to update picture caption…'), $redirect=true);
     }
 
     $link_obrazek['0'] = 'konkret.php?id=';

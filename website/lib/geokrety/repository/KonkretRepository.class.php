@@ -82,7 +82,7 @@ EOQUERY;
         // associate result vars
         $stmt->bind_result($id, $trackingCode, $name, $description, $datePublished, $type, $distance, $cachesCount, $picturesCount, $ownerId, $missing,
                            $lastLogId, $lastPositionId,
-                           $avatarId, $avatarFilename, $avatarLegend,
+                           $avatarId, $avatarFilename, $avatarCaption,
                            $ownerName, $holderId, $holderName, $ownerEmail);
 
         while ($stmt->fetch()) {
@@ -102,7 +102,7 @@ EOQUERY;
             $geokret->picturesCount = $picturesCount;
             $geokret->avatarId = $avatarId;
             $geokret->avatarFilename = $avatarFilename;
-            $geokret->avatarLegend = $avatarLegend;
+            $geokret->avatarCaption = $avatarCaption;
             $geokret->lastPositionId = $lastPositionId;
             $geokret->lastLogId = $lastLogId;
             $geokret->missing = $missing;
