@@ -12,6 +12,7 @@ require_once 'defektoskop.php';
 $TYTUL = _('Claim a GeoKret');
 
 $smarty->assign('content_template', 'forms/geokret_claim.tpl');
+$smarty->append('javascript', CDN_JQUERY_VALIDATION_JS);
 
 $g_id = $_GET['id'];
 
