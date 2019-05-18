@@ -79,6 +79,7 @@
           </ul>
         </li>
         {else}
+        <li><a href="/adduser.php">{fa icon="user-plus"} Create account</a></li>
         <li><a href="/longin.php">{fa icon="sign-in"} Sign in</a></li>
         {/if}
       </ul>

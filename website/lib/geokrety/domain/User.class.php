@@ -21,6 +21,7 @@ class User extends AbstractObject {
     public $secid;
     public $password;
     public $oldPassword;
+    public $ip;
 
     public function getUrl() {
         return '/mypage.php?userid='.$this->id;
@@ -38,6 +39,12 @@ class User extends AbstractObject {
         $pictureR = new \Geokrety\Repository\PictureRepository(\GKDB::getLink());
 
         return $pictureR->getAvatarByUserId($this->id);
+    }
+
+    public function insert() {
+        $userR = new \Geokrety\Repository\UserRepository(\GKDB::getLink());
+
+        return $userR->insertUser($this);
     }
 
     public function update() {

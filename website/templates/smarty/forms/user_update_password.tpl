@@ -11,23 +11,23 @@
           <div class="col-md-6">
 
             <div class="form-group">
-              <label for="inputPasswordOld" class="col-sm-2 control-label">Current password</label>
+              <label for="inputPasswordOld" class="col-sm-2 control-label">{t}Current password{/t}</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPasswordOld" name="inputPasswordOld" placeholder="Old password" required>
+                <input type="password" class="form-control" id="inputPasswordOld" name="inputPasswordOld" placeholder="{t}Old password{/t}" required>
               </div>
             </div>
             <hr />
             <div class="form-group">
-              <label for="inputPasswordNew" class="col-sm-2 control-label">New password</label>
+              <label for="inputPasswordNew" class="col-sm-2 control-label">{t}New password{/t}</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPasswordNew" name="inputPasswordNew" placeholder="New password" required>
+                <input type="password" class="form-control" id="inputPasswordNew" name="inputPasswordNew" placeholder="{t}New passwor{/t}" required>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="inputPasswordConfirm" class="col-sm-2 control-label">Confirm password</label>
+              <label for="inputPasswordConfirm" class="col-sm-2 control-label">{t}Confirm password{/t}</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" placeholder="Confirm password" required>
+                <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" placeholder="{t}Confirm password{/t}" required>
               </div>
             </div>
 

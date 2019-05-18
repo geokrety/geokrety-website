@@ -35,11 +35,13 @@
                         </div>
                     </div>
 
+{if isset($GOOGLE_RECAPTCHA_PUBLIC_KEY)}
                     <div class="form-group">
                         <div class="col-sm-10 col-sm-offset-2">
                             <div class="g-recaptcha" data-sitekey="{$GOOGLE_RECAPTCHA_PUBLIC_KEY}" id="recaptcha_wrapper"></div>
                         </div>
                     </div>
+{/if}
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
