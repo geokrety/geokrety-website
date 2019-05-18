@@ -69,7 +69,9 @@
         </div>
 
         <div class="gallery pull-right">
-            {pictureOrDefault item=$user->avatar() skipLinkToEntity=true isOwner=$user->isCurrentUser() pictureType=2 id=$user->id}
+            {foreach $user->avatar() as $avatar}
+                {pictureOrDefault item=$avatar skipLinkToEntity=true isOwner=$user->isCurrentUser() pictureType=$avatar->type id=$user->id}
+            {/foreach}
         </div>
         <div class="clearfix"></div>
     </div>

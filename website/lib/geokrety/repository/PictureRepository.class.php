@@ -23,16 +23,12 @@ EOQUERY;
         $where = <<<EOQUERY
   WHERE     ob.user = ?
   AND       ob.typ = $avatarType
-  LIMIT     1
 EOQUERY;
 
         $sql = self::SELECT_PICTURES_DETAILS.$where;
 
         $pictures = $this->getPicturesSql($sql, array($id));
-        if (sizeof($pictures) === 1) {
-            return $pictures[0];
-        }
-        return null;
+        return $pictures;
     }
 
     public function getByGeokretId($id) {
