@@ -121,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user->email = '';
         $user->isEmailActive = 0;
         $user->observationRadius = 0;
+        $user->statpic = 1;
 
         if (!$user->insert()) {
             danger(_('Failed to register user. Please repeat your registration at a later time.'));
