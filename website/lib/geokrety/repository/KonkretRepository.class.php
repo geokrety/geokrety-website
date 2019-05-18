@@ -121,6 +121,78 @@ EOQUERY;
         return $geokret;
     }
 
+    public function getByTrackingCode($nr) {
+
+        $where = <<<EOQUERY
+  WHERE gk.nr = ?
+  LIMIT 1
+EOQUERY;
+
+        $sql = self::SELECT_KONKRET.$where;
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('s', $nr)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        $stmt->store_result();
+        $nbRow = $stmt->num_rows;
+
+        $geokret = new \Geokrety\Domain\Konkret();
+        if ($nbRow == 0) {
+            return null;
+        }
+
+        // associate result vars
+        $stmt->bind_result($id, $trackingCode, $name, $description, $datePublished, $type, $distance, $cachesCount, $picturesCount, $ownerId, $missing,
+                           $lastLogId, $lastPositionId,
+                           $avatarId, $avatarFilename, $avatarCaption,
+                           $ownerName, $holderId, $holderName, $ownerEmail);
+
+        while ($stmt->fetch()) {
+            // Workaround: Fix database encoding
+            $name = html_entity_decode($name);
+            $description = html_entity_decode($description);
+            $ownerName = html_entity_decode($ownerName);
+            $holderName = html_entity_decode($holderName);
+
+            $geokret->id = $id;
+            $geokret->trackingCode = $trackingCode;
+            $geokret->name = $name;
+            $geokret->description = $description;
+            $geokret->ownerId = $ownerId;
+            $geokret->ownerName = $ownerName;
+            $geokret->ownerEmail = $ownerEmail;
+            $geokret->holderId = $holderId;
+            $geokret->holderName = $holderName;
+            $geokret->datePublished = $datePublished;
+            $geokret->type = $type;
+            $geokret->distance = $distance; // road traveled in km
+            $geokret->cachesCount = $cachesCount;
+            $geokret->picturesCount = $picturesCount;
+            $geokret->avatarId = $avatarId;
+            $geokret->avatarFilename = $avatarFilename;
+            $geokret->avatarCaption = $avatarCaption;
+            $geokret->lastPositionId = $lastPositionId;
+            $geokret->lastLogId = $lastLogId;
+            $geokret->missing = $missing;
+
+            $geokret->enrichFields();
+        }
+
+        $stmt->close();
+
+        return $geokret;
+    }
+
     public function getInventoryByUserId($id, $orderBy = null, $defaultWay = 'asc', $limit = 20, $curPage = 1) {
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
         list($order, $way) = $this->validationService->ensureOrderBy('orderBy', $orderBy, ['id', 'owner', 'ru.data', 'droga', 'skrzynki'], $defaultWay);
