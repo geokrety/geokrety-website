@@ -45,7 +45,7 @@
                 {fa icon="id-card"}
             </button>
             {/if}
-            <button class="btn btn-warning btn-xs" title="{t}Edit picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-edit" data-id="{$item->tripId}" data-picture-type="{$item->type}" data-picture-id="{$item->id}">
+            <button class="btn btn-warning btn-xs" title="{t}Edit picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-edit" data-id="{if not empty($id)}{$id}{else}{$item->tripId}{/if}" data-picture-type="{$item->type}" data-picture-id="{$item->id}">
                 {fa icon="pencil"}
             </button>
             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-delete" data-picture-id="{$item->id}">

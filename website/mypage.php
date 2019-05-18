@@ -48,13 +48,18 @@ if (is_null($user)) {
 }
 
 $smarty->assign('user', $user);
-$smarty->assign('badges', $user->getBadges());
-$smarty->assign('statsCreatedGeokrety', $user->getStatsGeokretyCreated());
-$smarty->assign('statsMovedGeokrety', $user->getStatsGeokretyMoved());
 
 $TYTUL = _('My Page')." - $user->username";
 
-if ($kret_co == '1') {
+if (empty($kret_co)) {
+    $smarty->assign('badges', $user->getBadges());
+    $smarty->assign('statsCreatedGeokrety', $user->getStatsGeokretyCreated());
+    $smarty->assign('statsMovedGeokrety', $user->getStatsGeokretyMoved());
+}
+
+// ------------------------------------------------------------------- owned geokrets
+
+elseif ($kret_co == '1') {
     $geokretR = new \Geokrety\Repository\KonkretRepository($dblink);
     list($geokrety, $geokretyTotal) = $geokretR->getOwnedByUserId($user->id, $orderBy, 'desc', $config['geokrety_per_page'], $page);
     $smarty->assign('geokrety', $geokrety);
