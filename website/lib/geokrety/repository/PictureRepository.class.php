@@ -141,6 +141,10 @@ EOQUERY;
 
         $pictures = array();
         while ($stmt->fetch()) {
+            // Workaround: Fix database encoding
+            $geokretName = html_entity_decode($geokretName);
+            $caption = html_entity_decode($caption);
+
             $picture = null;
             switch ($type) {
                 case 0:

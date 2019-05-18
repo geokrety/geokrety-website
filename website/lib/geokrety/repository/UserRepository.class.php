@@ -76,6 +76,9 @@ EOQUERY;
         $stmt->fetch();
         $stmt->close();
 
+        // Workaround: Fix database encoding
+        $user->username = html_entity_decode($user->username);
+
         return $user;
     }
 
@@ -116,6 +119,9 @@ EOQUERY;
         }
         $stmt->close();
 
+        // Workaround: Fix database encoding
+        $username = html_entity_decode($username);
+
         return $users;
     }
 
@@ -154,6 +160,9 @@ EOQUERY;
         }
         $stmt->store_result();
         $user->id = $stmt->insert_id;
+
+        // Workaround: Fix database encoding
+        $user->username = html_entity_decode($user->username);
 
         if ($stmt->affected_rows >= 0) {
             return true;
@@ -208,6 +217,9 @@ EOQUERY;
             throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
         }
         $stmt->store_result();
+
+        // Workaround: Fix database encoding
+        $user->username = html_entity_decode($user->username);
 
         if ($stmt->affected_rows >= 0) {
             return true;

@@ -20,6 +20,10 @@ function smarty_function_language(array $params, Smarty_Internal_Template $templ
 
     $isoCodes = new \Sokil\IsoCodes\IsoCodesFactory();
     $languages = $isoCodes->getLanguages();
+    // Some workarounds database errors
+    if ($lang == 'cz') {
+        $lang = 'cs';
+    }
     $language = $languages->getByAlpha2($lang);
 
     return $language->getName();

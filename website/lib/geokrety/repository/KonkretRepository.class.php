@@ -86,6 +86,12 @@ EOQUERY;
                            $ownerName, $holderId, $holderName, $ownerEmail);
 
         while ($stmt->fetch()) {
+            // Workaround: Fix database encoding
+            $name = html_entity_decode($name);
+            $description = html_entity_decode($description);
+            $ownerName = html_entity_decode($ownerName);
+            $holderName = html_entity_decode($holderName);
+
             $geokret->id = $id;
             $geokret->trackingCode = $trackingCode;
             $geokret->name = $name;
@@ -160,6 +166,13 @@ EOQUERY;
                            $avatarId, $avatarFilename,
                            $ownerName);
         while ($stmt->fetch()) {
+            // Workaround: Fix database encoding
+            $name = html_entity_decode($name);
+            $description = html_entity_decode($description);
+            $ownerName = html_entity_decode($ownerName);
+            $holderName = html_entity_decode($holderName);
+            $lastLogComment = html_entity_decode($lastLogComment);
+
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
             $geokret->trackingCode = $trackingCode;
@@ -250,6 +263,12 @@ EOQUERY;
                            $ownerName);
         $geokrety = array();
         while ($stmt->fetch()) {
+            // Workaround: Fix database encoding
+            $name = html_entity_decode($name);
+            $description = html_entity_decode($description);
+            $ownerName = html_entity_decode($ownerName);
+            $lastLogComment = html_entity_decode($lastLogComment);
+
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
             $geokret->trackingCode = $trackingCode;
@@ -343,6 +362,12 @@ EOQUERY;
                            $ownerName);
 
         while ($stmt->fetch()) {
+            // Workaround: Fix database encoding
+            $name = html_entity_decode($name);
+            $description = html_entity_decode($description);
+            $ownerName = html_entity_decode($ownerName);
+            $lastLogComment = html_entity_decode($lastLogComment);
+
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
             $geokret->trackingCode = $trackingCode;
@@ -425,6 +450,12 @@ EOQUERY;
                            $ownerName);
 
         while ($stmt->fetch()) {
+            // Workaround: Fix database encoding
+            $name = html_entity_decode($name);
+            $description = html_entity_decode($description);
+            $ownerName = html_entity_decode($ownerName);
+            $lastLogComment = html_entity_decode($lastLogComment);
+
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
             $geokret->trackingCode = $trackingCode;
