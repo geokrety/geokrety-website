@@ -7,7 +7,7 @@ $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 loginFirst();
 
-require_once 'czysc.php';
+$validationService = new \Geokrety\Service\ValidationService();
 
 $max_file_size = ini_get('upload_max_filesize');
 $max_width = 6000;
@@ -27,7 +27,7 @@ $g_typ = $_GET['typ'];
 $p_avatar = $_POST['avatar'];
 $p_formname = $_POST['formname'];
 $p_multiphoto_nr = $_POST['multiphoto_nr'];
-$p_opis = $_POST['opis'];
+$p_opis = $validationService->noHtml($_POST['opis']);
 $p_save_desc = $_POST['save_desc'];
 $p_submit = $_POST['submit'];
 
@@ -209,7 +209,6 @@ if ($_FILES['obrazek']) {
 
     include_once 'random_string.php';
     $stara_nazwa = '';
-    $p_opis = czysc($p_opis);
 
     if ($all_id == '') {
         $all_id = $g_id;
@@ -253,6 +252,7 @@ if ($_FILES['obrazek']) {
             $picture->userId = $userid;
             $picture->filename = $filename.'.'.$extension;
             $picture->caption = $p_opis;
+
             if (!$picture->insert()) {
                 danger(_('Failed to save picture…'), $redirect = true);
             }
@@ -276,6 +276,7 @@ if ($_FILES['obrazek']) {
                     danger(_('Failed to save avatarId…'), $redirect = true);
                 }
             }
+            success(_('Picture saved'));
         } else {
             danger(_('Failed to move uploaded file…'), $redirect = true);
         }
@@ -284,6 +285,7 @@ if ($_FILES['obrazek']) {
     // for ending redirection in any pricey place for the user :)
     if ($multiphoto) {
         header("Location: mypage.php?userid=$userid&co=3&multiphoto=1");
+        die();
     } else {
         $link_obrazek['0'] = 'konkret.php?id=';
         $link_obrazek['1'] = $link_obrazek['0'];
@@ -298,10 +300,9 @@ if ($_FILES['obrazek']) {
         }
 
         header('Location: '.$link_obrazek[$g_typ].$identyfikator);
-        exit();
+        die();
     }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $p_formname == 'rename') { //WHEN SUBMITTING A RENAME FORM  ---------------------------------
-    $p_opis = czysc($p_opis);
     $pictureR = new \Geokrety\Repository\PictureRepository(GKDB::getLink());
     $picture = $pictureR->getById($g_rename);
     $picture->caption = $p_opis;
@@ -309,6 +310,8 @@ if ($_FILES['obrazek']) {
     if (!$picture->update()) {
         danger(_('Failed to update picture caption…'), $redirect = true);
     }
+
+    success(_('Picture updated'));
 
     $link_obrazek['0'] = 'konkret.php?id=';
     $link_obrazek['1'] = $link_obrazek['0'];
@@ -321,6 +324,7 @@ if ($_FILES['obrazek']) {
         $identyfikator = $id_kreta;
     }
     header('Location: '.$link_obrazek[$g_typ].$identyfikator);
+    die();
 }
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //

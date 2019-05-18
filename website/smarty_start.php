@@ -18,7 +18,7 @@ function create_tmp_dir($path) {
 }
 create_tmp_dir($config['temp_dir_smarty_compile']);
 create_tmp_dir($config['temp_dir_smarty_cache']);
-create_tmp_dir($config['temp_dir_htmlpurifier_cache']);
+create_tmp_dir(TEMP_DIR_HTMLPURIFIER_CACHE);
 
 $HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();
 $HTMLPurifierconfig_conf->set('Cache.SerializerPath', TEMP_DIR_HTMLPURIFIER_CACHE);

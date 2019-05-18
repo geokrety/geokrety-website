@@ -6,7 +6,7 @@ require_once '__sentry.php';
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 require_once 'defektoskop.php';
-require_once 'czysc.php';
+$validationService = new \Geokrety\Service\ValidationService();
 
 $TYTUL = _('Edit');
 $userid = $longin_status['userid'];
@@ -38,7 +38,7 @@ $p_jezyk = $_POST['jezyk'];
 // autopoprawione...
 $p_latlon = $_POST['coordinates'];
 // autopoprawione...
-$p_nazwa = trim($_POST['nazwa']);
+$p_nazwa = $validationService->noHtml($_POST['nazwa']);
 // autopoprawione...
 $p_opis = $_POST['opis'];
 // autopoprawione...
@@ -376,8 +376,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
         $geokret->description = $p_opis;
         $geokret->type = $p_typ;
 
-        $validationService = new \Geokrety\Service\ValidationService();
-        if (!$validationService->is_whitespace($p_nazwa) && !empty($p_nazwa)) {
+        if (!$validationService->is_whitespace($p_nazwa)) {
             $geokret->name = $p_nazwa;
         }
         if ($geokret->update()) {

@@ -53,6 +53,14 @@ class ValidationService {
 
     // taken from https://stackoverflow.com/a/48798326/944936
     public function is_whitespace($string) {
-        return preg_match('~^\p{Z}$~u', $string);
+        return preg_match('~^\p{Z}$~u', $string) || empty($string);
+    }
+
+    public function noHtml($string) {
+        $HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();
+        $HTMLPurifierconfig_conf->set('Cache.SerializerPath', TEMP_DIR_HTMLPURIFIER_CACHE);
+        $HTMLPurifierconfig_conf->set('HTML.Allowed', '');
+        $HTMLPurifier = new \HTMLPurifier($HTMLPurifierconfig_conf);
+        return $HTMLPurifier->purify($string);
     }
 }
