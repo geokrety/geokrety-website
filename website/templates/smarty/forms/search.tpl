@@ -8,7 +8,7 @@
                 <label for="inputSearchGK" class="col-sm-2 control-label">{t}Reference Number{/t}</label>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="gk" id="inputSearchGK" placeholder="GK032F" value="{if isset($smarty.get.gk)}{$smarty.get.gk}{/if}">
+                        <input type="text" class="form-control" name="gk" id="inputSearchGK" placeholder="GK032F" value="{if isset($smarty.get.gk)}{$smarty.get.gk}{/if}" required>
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">{t}Search{/t}</button>
                         </span>
@@ -22,7 +22,7 @@
                 <label for="inputSearchNR" class="col-sm-2 control-label">{t}Tracking Code{/t}</label>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="nr" id="inputSearchNR" placeholder="XF3ACS" value="{if isset($smarty.get.gk)}{$smarty.get.gk}{/if}">
+                        <input type="text" class="form-control" name="nr" id="inputSearchNR" placeholder="XF3ACS" value="{if isset($smarty.get.gk)}{$smarty.get.gk}{/if}" required>
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">{t}Search{/t}</button>
                         </span>
@@ -36,7 +36,7 @@
                 <label for="inputSearchName" class="col-sm-2 control-label">{t}GeoKret name{/t}</label>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="nazwa" id="inputSearchName" value="{if isset($smarty.get.nazwa)}{$smarty.get.nazwa}{/if}">
+                        <input type="text" class="form-control" name="nazwa" id="inputSearchName" value="{if isset($smarty.get.nazwa)}{$smarty.get.nazwa}{/if}" required>
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">{t}Search{/t}</button>
                         </span>
@@ -50,7 +50,7 @@
                 <label for="inputSearchOwner" class="col-sm-2 control-label">{t}User name or id{/t}</label>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="owner" id="inputSearchOwner" value="{if isset($smarty.get.owner)}{$smarty.get.owner}{/if}">
+                        <input type="text" class="form-control" name="owner" id="inputSearchOwner" value="{if isset($smarty.get.owner)}{$smarty.get.owner}{/if}" required>
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">{t}Search{/t}</button>
                         </span>
@@ -64,7 +64,7 @@
                 <label for="inputSearchWaypoint" class="col-sm-2 control-label">{t}Geokrety visiting the cache{/t}</label>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="wpt" id="inputSearchWaypoint" placeholder="OP05E5" value="{if isset($smarty.get.wpt)}{$smarty.get.wpt}{/if}">
+                        <input type="text" class="form-control" name="wpt" id="inputSearchWaypoint" placeholder="OP05E5" value="{if isset($smarty.get.wpt)}{$smarty.get.wpt}{/if}" required>
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">{t}Search{/t}</button>
                         </span>
