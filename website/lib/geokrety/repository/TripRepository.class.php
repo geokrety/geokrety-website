@@ -771,6 +771,49 @@ EOQUERY;
         );
     }
 
+    public function insertTripStep(\Geokrety\Domain\TripStep &$trip) {
+        $sql = <<<EOQUERY
+INSERT INTO `gk-ruchy`
+            (id, lat, lon, country, alt, waypoint, data,
+            data_dodania, user, username, koment, logtype,
+            droga, app, app_ver, zdjecia, komentarze)
+VALUES      (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+EOQUERY;
+
+        $bind = array(
+            $trip->geokretId, $trip->lat, $trip->lon,
+            $trip->country, $trip->alt, $trip->waypoint,
+            $trip->ruchData, $trip->ruchDataDodania, $trip->userId,
+            $trip->username, $trip->comment, $trip->logType,
+            $trip->distance, $trip->app, $trip->appVer, $trip->picturesCount,
+            $trip->commentsCount,
+        );
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('iddsisssisssissii', ...$bind)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        $stmt->store_result();
+        $trip->id = $stmt->insert_id;
+
+        if ($stmt->affected_rows >= 0) {
+            return true;
+        }
+
+        danger(_('Failed to create Trip Step…'));
+
+        return false;
+    }
+
     public function updateTripStep(\Geokrety\Domain\TripStep &$trip) {
         $sql = <<<EOQUERY
 UPDATE  `gk-ruchy`
@@ -786,7 +829,7 @@ EOQUERY;
             $trip->country, $trip->alt, $trip->waypoint,
             $trip->ruchData, $trip->ruchDataDodania, $trip->userId,
             $trip->username, $trip->comment, $trip->logType,
-            $trip->droga, $trip->app, $trip->appVer, $trip->picturesCount,
+            $trip->distance, $trip->app, $trip->appVer, $trip->picturesCount,
             $trip->commentsCount,
             $trip->ruchId,
         );

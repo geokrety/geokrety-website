@@ -17,7 +17,7 @@ class TripStep extends AbstractObject {
     public $comment; // ruchy username comment
     public $logType; // 0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip
     public $country; // country code
-    public $droga; // road traveled in km
+    public $distance; // road traveled in km
 
     //~ geokret centric
     public $geokretId; // geokret id
@@ -42,6 +42,12 @@ class TripStep extends AbstractObject {
 
     public function __construct($waypoint = null) {
         $this->waypoint = $waypoint;
+    }
+
+    public function insert() {
+        $tripR = new \Geokrety\Repository\TripRepository(\GKDB::getLink());
+
+        return $tripR->insertTripStep($this);
     }
 
     public function update() {
