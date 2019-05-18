@@ -9,11 +9,19 @@ var osm = new L.TileLayer(osmUrl, {
   attribution: osmAttrib
 });
 
+if ({$user->latitude} == 0 && {$user->longitude} == 0) {
+    var center = new L.LatLng(48.85, 2.35);
+    var zoom = 3;
+} else {
+    var center = new L.LatLng({$user->latitude}, {$user->longitude});
+    var zoom = 6;
+}
+
 // start the map
-map.setView(new L.LatLng({$user->latitude}, {$user->longitude}), 6);
+map.setView(center, zoom);
 map.addLayer(osm);
 
-var circle = L.circle([{$user->latitude}, {$user->longitude}], {
+var circle = L.circle(center, {
     color: 'red',
     radius: {$user->observationRadius * 1000}
 }).addTo(map);
