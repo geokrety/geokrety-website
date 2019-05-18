@@ -18,7 +18,7 @@ class TripRepositoryTest extends GKTestCase {
         $this->expectException(\Exception::class);
 
         // WHEN
-        $tripRepository->getByGeokretyId($geokretyId, 123);
+        $tripRepository->getByGeokretyId($geokretyId, 123, $recurs = false);
     }
 
     public function test_trips_geokrety_not_found() {
@@ -28,7 +28,7 @@ class TripRepositoryTest extends GKTestCase {
         $geokretyId = 325;
 
         // WHEN
-        $trips = $tripRepository->getByGeokretyId($geokretyId, 123);
+        $trips = $tripRepository->getByGeokretyId($geokretyId, 123, $recurs = false);
 
         // THEN
         $this->assertNotNull($trips);
@@ -61,7 +61,7 @@ class TripRepositoryTest extends GKTestCase {
         $limit = 100;
 
         // WHEN
-        $trips = $tripRepository->getByGeokretyId($geokretyId, $limit);
+        $trips = $tripRepository->getByGeokretyId($geokretyId, $limit, $recurs = false);
 
         // THEN
         $this->assertNotNull($trips);

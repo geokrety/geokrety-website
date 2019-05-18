@@ -9,7 +9,6 @@ namespace Geokrety\Service;
  */
 class JsonService {
     public function safe_json_encode($value, $options = 0, $depth = 512) {
-        print_r($value);
         $encoded = json_encode($value, $options, $depth);
         if ($encoded === false && $value && json_last_error() == JSON_ERROR_UTF8) {
             $encoded = json_encode($this->utf8ize($value), $options, $depth);

@@ -38,7 +38,7 @@ INNER JOIN  `gk-geokrety` gk ON (ru.id = gk.id)
 LEFT JOIN   `gk-obrazki` AS ob ON (gk.avatarid = ob.obrazekid)
 EOQUERY;
 
-    public function getByGeokretyId($geokretyId, $limit) {
+    public function getByGeokretyId($geokretyId, $limit, $noRecurs = false) {
         $action = 'Trip::getByGeokretyId';
 
         $geokretyId = $this->validationService->ensureIntGTE('geokretyId', $geokretyId, 1);
@@ -128,7 +128,9 @@ EOQUERY;
             $geokret->avatarFilename = $picFilename;
             $geokret->lastPositionId = $gkLastPositionId;
             $geokret->lastLogId = $gkLastLogId;
-            $geokret->lastLog = $trip;
+            if (!$noRecurs) {
+                $geokret->lastLog = $trip;
+            }
             $geokret->missing = $gkMissing;
             $geokret->holderId = $gkHolderId;
             $trip->geokret = $geokret;
