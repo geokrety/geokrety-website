@@ -143,13 +143,13 @@ $konkret = new \Geokrety\Domain\Konkret();
 $konkret->name = $kret_gk.' - '.$geokret->name;
 $konkret->description = $geokret->description;
 $konkret->url = $gkUrl;
-// $konkret->author = $geokret['username']; // TODO
+$konkret->author = $geokret->ownerName;
 $konkret->authorUrl = $gkOwnerUrl;
 $konkret->datePublished = date('c', strtotime($geokret->datePublished));
-// if (isset($avatar)) {
-//     $konkret->imageUrl = CONFIG_CDN_OBRAZKI_MALE.'/'.$avatar['filename']; // TODO
-// }
-//$konkret->keywords = $gkkeywords;
+if (isset($konkret->avatarFilename)) {
+    $konkret->imageUrl = CONFIG_CDN_OBRAZKI_MALE.'/'.$konkret->avatarFilename;
+}
+$konkret->keywords = $gkkeywords;
 // // rate
 // if (isset($ratingCount) && $ratingCount > 0) {
 //     $konkret->ratingCount = $ratingCount;

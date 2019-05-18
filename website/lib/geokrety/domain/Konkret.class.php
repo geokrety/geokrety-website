@@ -45,10 +45,6 @@ class Konkret extends AbstractObject {
         // TODO
     }
 
-    public function getAvatarUrl() {
-        // TODO
-    }
-
     public function enrichFields() {
         $this->typeString = $this->getTypeString();
     }
