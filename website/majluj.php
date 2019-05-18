@@ -36,7 +36,6 @@ $smarty->assign('userTo', $userTo);
 $mailR = new \Geokrety\Repository\MailRepository(GKDB::getLink());
 $hasSentMailRecently = $mailR->hasUserSentMessageInLast($_SESSION['currentUser'], $config['mail_rate_limit']);
 
-
 if (empty($userTo->email)) {
     danger(_('This user hasn\'t defined an email address yet.'));
     $userTo->redirect();

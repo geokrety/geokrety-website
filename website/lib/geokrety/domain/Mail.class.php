@@ -12,7 +12,7 @@ class Mail extends AbstractObject {
     public $timestamp;
     public $ip;
 
-    function insert() {
+    public function insert() {
         $mailR = new \Geokrety\Repository\MailRepository(\GKDB::getLink());
 
         return $mailR->insertMail($this);

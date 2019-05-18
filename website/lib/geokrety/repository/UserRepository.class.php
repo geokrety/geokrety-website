@@ -124,7 +124,7 @@ EOQUERY;
             $set = ", haslo = '', haslo2 = ?";
             $bind[] = $user->password;
             $bindStr .= 's';
-        // } else {
+            // } else {
         //     $set = '';
         }
 

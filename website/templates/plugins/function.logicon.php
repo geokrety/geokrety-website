@@ -9,6 +9,7 @@ function getLogTypeText($id) {
         case '4': return _('Archived');
         case '5': return _('Dipped in');
     }
+
     return '';
 }
 

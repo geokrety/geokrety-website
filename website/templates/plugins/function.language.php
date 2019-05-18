@@ -21,5 +21,6 @@ function smarty_function_language(array $params, Smarty_Internal_Template $templ
     $isoCodes = new \Sokil\IsoCodes\IsoCodesFactory();
     $languages = $isoCodes->getLanguages();
     $language = $languages->getByAlpha2($lang);
+
     return $language->getName();
 }

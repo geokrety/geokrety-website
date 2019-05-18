@@ -3,7 +3,6 @@
 namespace Geokrety\Repository;
 
 class WaypointyRepository extends AbstractRepository {
-
     private $prefiksy_oc = array('OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR', 'LT', 'LV'); // oc i inne full wypas
     private $prefiksy_inne = array('GC');     // cache from Geocaching
     private $prefiksy_inne_1 = array('N');    // cache from Navicache (N....)

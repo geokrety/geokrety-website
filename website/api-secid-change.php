@@ -10,7 +10,6 @@ loginFirst();
 
 // Save values
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
     $user = $userR->getById($_SESSION['currentUser']);
 

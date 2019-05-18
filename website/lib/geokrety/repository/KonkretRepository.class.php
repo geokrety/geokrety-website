@@ -623,7 +623,7 @@ EOQUERY;
             $geokret->cachesCount, $geokret->picturesCount, $geokret->ownerId,
             $geokret->missing, $geokret->lastLogId, $geokret->lastPositionId,
             $geokret->avatarId,
-            $geokret->id
+            $geokret->id,
         );
 
         if ($this->verbose) {

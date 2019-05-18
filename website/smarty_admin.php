@@ -25,7 +25,6 @@ if (isset($_POST['formname'])) {
         $smarty->clear_compiled_tpl();
         sleep(2);
         success(_('Cache cleared 👍'));
-        );
     }
 }
 

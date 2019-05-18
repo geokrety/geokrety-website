@@ -3,7 +3,6 @@
 namespace Geokrety\Repository;
 
 class PictureRepository extends AbstractRepository {
-
     const SELECT_PICTURES_DETAILS = <<<EOQUERY
 SELECT    ob.obrazekid, ob.id, ob.typ as type, ob.id_kreta as gk_id, ob.user as user_id,
           ob.plik as filename, ob.opis as caption, gk.nazwa as gk_name,
@@ -28,6 +27,7 @@ EOQUERY;
         $sql = self::SELECT_PICTURES_DETAILS.$where;
 
         $pictures = $this->getPicturesSql($sql, array($id));
+
         return $pictures;
     }
 
@@ -58,6 +58,7 @@ EOQUERY;
         if (sizeof($pictures) === 1) {
             return $pictures[0];
         }
+
         return null;
     }
 
@@ -303,7 +304,7 @@ EOQUERY;
             $picture->tripId, $picture->type,
             $picture->geokretId, $picture->userId,
             $picture->filename, $picture->caption,
-            $picture->id
+            $picture->id,
         );
 
         if ($this->verbose) {

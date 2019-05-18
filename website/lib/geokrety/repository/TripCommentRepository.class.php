@@ -3,7 +3,6 @@
 namespace Geokrety\Repository;
 
 class TripCommentRepository extends AbstractRepository {
-
     const SELECT_COMMENT = <<<EOQUERY
 SELECT    comment_id, ruch_id, kret_id, user_id, data_dodania, comment, type, user
 FROM      `gk-ruchy-comments`

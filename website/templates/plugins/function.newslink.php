@@ -17,5 +17,6 @@ function smarty_function_newslink(array $params, Smarty_Internal_Template $templ
     }
     $news = $params['news'];
     $badge = '<span class="badge">'.$news->commentsCount.'</span>';
+
     return $badge.' <a href="/newscomments.php?newsid='.$news->id.'">'._('Comments').'</a>';
 }

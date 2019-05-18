@@ -3,7 +3,6 @@
 namespace Geokrety\Repository;
 
 class BadgeRepository extends AbstractRepository {
-
     const SELECT_BADGE = <<<EOQUERY
 SELECT    id, userid, timestamp, `desc`, file
 FROM      `gk-badges` ba

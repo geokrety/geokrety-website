@@ -40,9 +40,9 @@ $smarty->compile_dir = $config['temp_dir_smarty_compile'];
 $smarty->cache_dir = $config['temp_dir_smarty_cache'];
 $smarty->addPluginsDir('./templates/plugins/');
 if (amIOnProd()) {
-  $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
+    $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
 } else {
-  $smarty->compile_check = true;
+    $smarty->compile_check = true;
 }
 $smarty->assign('content_template', false); // Store included template name
 $smarty->assign('css', array()); // Store dynamic css filename to load

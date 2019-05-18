@@ -786,7 +786,7 @@ EOQUERY;
             $trip->username, $trip->comment, $trip->logType,
             $trip->droga, $trip->app, $trip->appVer, $trip->picturesCount,
             $trip->commentsCount,
-            $trip->ruchId
+            $trip->ruchId,
         );
 
         if ($this->verbose) {

@@ -22,5 +22,6 @@ function smarty_function_award(array $params, Smarty_Internal_Template $template
     }
     $url = CONFIG_CDN_IMAGES.'/medals/'.$params['file'];
     $title = smarty_gettext_strarg('Award for %1 GeoKrety', $params['title']);
+
     return '<img src="'.$url.'" title="'.$title.'" />';
 }

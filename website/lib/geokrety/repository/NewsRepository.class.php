@@ -3,14 +3,13 @@
 namespace Geokrety\Repository;
 
 class NewsRepository extends AbstractRepository {
-
     const SELECT_NEWS = <<<EOQUERY
 SELECT  news_id, DATE(date), tytul, tresc, who, userid, komentarze
 FROM    `gk-news`
 ORDER   BY date DESC
 EOQUERY;
 
-    public function get($limit=2) {
+    public function get($limit = 2) {
         $limit = $this->validationService->ensureIntGTE('limit', $limit, 1);
 
         $where = <<<EOQUERY

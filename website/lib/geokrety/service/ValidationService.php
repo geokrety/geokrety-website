@@ -61,6 +61,7 @@ class ValidationService {
         $HTMLPurifierconfig_conf->set('Cache.SerializerPath', TEMP_DIR_HTMLPURIFIER_CACHE);
         $HTMLPurifierconfig_conf->set('HTML.Allowed', '');
         $HTMLPurifier = new \HTMLPurifier($HTMLPurifierconfig_conf);
+
         return $HTMLPurifier->purify($string);
     }
 }

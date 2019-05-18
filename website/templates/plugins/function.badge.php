@@ -16,5 +16,6 @@ function smarty_function_badge(array $params, Smarty_Internal_Template $template
         return;
     }
     $url = CONFIG_CDN_IMAGES.'/badges/'.$params['infos']->filename;
+
     return '<img src="'.$url.'" title="'.$params['infos']->description.'" />';
 }
