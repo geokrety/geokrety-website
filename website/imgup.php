@@ -66,7 +66,7 @@ if (($p_formname == 'multiphoto') && (count($p_multiphoto_nr) > 0)) {
 }
 
 if (!ctype_digit($g_typ) or !ctype_digit($g_id)) {
-    danger(_('Invalid input'), $redirect=true);
+    danger(_('Invalid input'), $redirect = true);
 }
 
 //$rename = true when user supplied valid number but we dont know if he has the right to rename this picture
@@ -98,11 +98,11 @@ if ($rename) { //check if we are allowed to rename
     $picture = $pictureR->getById($g_rename);
 
     if (is_null($picture)) {
-        danger(_('No such picture'), $redirect=true);
+        danger(_('No such picture'), $redirect = true);
     }
 
     if (!$picture->isOwner()) {
-        danger(_('Cannot rename this photo because you are not it\'s author!'), $redirect=true);
+        danger(_('Cannot rename this photo because you are not it\'s author!'), $redirect = true);
     }
     $smarty->assign('editing_mode', true);
     $smarty->assign('picture', $picture);
@@ -114,11 +114,11 @@ if ($g_typ == '0') { //kret
     $geokret = $gkR->getById($g_id);
 
     if (is_null($geokret)) {
-        danger(_('No such GeoKret'), $redirect=true);
+        danger(_('No such GeoKret'), $redirect = true);
     }
 
     if (!$geokret->isOwner()) {
-        danger(_('Cannot add this type of photo because you are not the owner of this GeoKret!'), $redirect=true);
+        danger(_('Cannot add this type of photo because you are not the owner of this GeoKret!'), $redirect = true);
     }
     $can_set_avatar = true;
     $smarty->assign('can_set_avatar', true);
@@ -131,17 +131,16 @@ if ($g_typ == '0') { //kret
         }
     }
     $id_kreta = $geokret->id;
-
 } elseif ($g_typ == '1') { // log
     $tripR = new \Geokrety\Repository\TripRepository(GKDB::getLink());
     $trip = $tripR->getByTripId($g_id);
 
     if (is_null($trip)) {
-        danger(_('No such trip'), $redirect=true);
+        danger(_('No such trip'), $redirect = true);
     }
 
     if (!$trip->isAuthor()) {
-        danger(_('Cannot add this type of photo because you haven\'t moved this GeoKret!'), $redirect=true);
+        danger(_('Cannot add this type of photo because you haven\'t moved this GeoKret!'), $redirect = true);
     }
 
     if (!empty($trip->geokret->name) && !$multiphoto) {
@@ -154,7 +153,7 @@ if ($g_typ == '0') { //kret
     $id_kreta = $trip->geokretId;
 } elseif ($g_typ == '2') { // user
     if ($g_id != $userid) {
-        danger(_('Cannot add a photo to somebody else\'s profile!'), $redirect=true);
+        danger(_('Cannot add a photo to somebody else\'s profile!'), $redirect = true);
     }
     $id_kreta = 0;
 }
@@ -223,11 +222,11 @@ if ($_FILES['obrazek']) {
             $trip = $tripR->getByTripId($g_id);
 
             if (is_null($trip)) {
-                danger(sprintf(_('No such trip %1'), $g_id), $redirect=true);
+                danger(sprintf(_('No such trip %1'), $g_id), $redirect = true);
             }
 
             if (!$trip->isAuthor()) {
-                danger(sprintf(_('Your not the author of trip %1'), $g_id), $redirect=true);
+                danger(sprintf(_('Your not the author of trip %1'), $g_id), $redirect = true);
             }
             $id_kreta = $trip->geokretId;
         }
@@ -246,7 +245,6 @@ if ($_FILES['obrazek']) {
             chmod($uploadfile, 0664);
             chmod($config['obrazki-male']."$filename.$extension", 0664);
 
-
             // ------------------------ SQL ------------------------- //
             $picture = new \Geokrety\Domain\Picture();
             $picture->type = $g_typ;
@@ -256,7 +254,7 @@ if ($_FILES['obrazek']) {
             $picture->filename = $filename.'.'.$extension;
             $picture->caption = $p_opis;
             if (!$picture->insert()) {
-                danger(_('Failed to save picture…'), $redirect=true);
+                danger(_('Failed to save picture…'), $redirect = true);
             }
 
             if ($g_typ == '1') {
@@ -266,7 +264,7 @@ if ($_FILES['obrazek']) {
                 $pictureR = new \Geokrety\Repository\PictureRepository(GKDB::getLink());
                 $trip->picturesCount = $pictureR->countTotalPicturesByTripId($g_id);
                 if (!$trip->update()) {
-                    danger(_('Failed to save pictureCount…'), $redirect=true);
+                    danger(_('Failed to save pictureCount…'), $redirect = true);
                 }
             }
 
@@ -275,11 +273,11 @@ if ($_FILES['obrazek']) {
                 $gk = $geokretR->getById($id_kreta);
                 $gk->avatarId = $picture->id;
                 if (!$gk->update()) {
-                    danger(_('Failed to save avatarId…'), $redirect=true);
+                    danger(_('Failed to save avatarId…'), $redirect = true);
                 }
             }
         } else {
-            danger(_('Failed to move uploaded file…'), $redirect=true);
+            danger(_('Failed to move uploaded file…'), $redirect = true);
         }
     }
 
@@ -309,7 +307,7 @@ if ($_FILES['obrazek']) {
     $picture->caption = $p_opis;
 
     if (!$picture->update()) {
-        danger(_('Failed to update picture caption…'), $redirect=true);
+        danger(_('Failed to update picture caption…'), $redirect = true);
     }
 
     $link_obrazek['0'] = 'konkret.php?id=';
