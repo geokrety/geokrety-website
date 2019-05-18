@@ -1,11 +1,20 @@
 <div class="panel panel-default">
   <div class="panel-heading">
+{if $geokret_details->ownerId}
     {call gk_icon gk_type=$geokret_details->type}
     {t escape=no
     gk_name={gklink gk=$geokret_details txt='name'}
     gk_type={gkType2Text type=$geokret_details->type}
     username={userlink user=$geokret_details->owner()}
 }%1 (%2) by %3{/t}
+{else}
+    {call gk_icon gk_type=$geokret_details->type}
+    {t escape=no
+    gk_name={gklink gk=$geokret_details txt='name'}
+    gk_type={gkType2Text type=$geokret_details->type}
+    username={userlink user=$geokret_details->owner()}
+}%1 (%2){/t} - {t}Ready for adoption{/t}
+{/if}
     {if $geokret_details->isOwner()}
     <div class="btn-group pull-right" role="group">
       {if $geokret_details->owner()->email}

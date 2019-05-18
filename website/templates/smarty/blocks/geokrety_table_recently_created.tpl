@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       {foreach from=$recent_geokrety item=geokret}
-      <tr>
+      <tr class="{if $geokret->missing}danger{elseif !$geokret->ownerId}info{/if}">
         <td>{call gk_icon gk_type=$geokret->type}</td>
         <td>
           {gklink gk=$geokret}{gkavatar gk=$geokret}<br />

@@ -57,78 +57,57 @@ EOQUERY;
 EOQUERY;
 
         $sql = self::SELECT_KONKRET.$where;
-        if ($this->verbose) {
-            echo "\n$sql\n";
+
+        $geokrety = $this->getBySql($sql, 'i', array($id));
+        if (sizeof($geokrety) > 0) {
+            return $geokrety[0];
         }
-
-        if (!($stmt = $this->dblink->prepare($sql))) {
-            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
-        }
-        if (!$stmt->bind_param('d', $id)) {
-            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-        if (!$stmt->execute()) {
-            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        $stmt->store_result();
-        $nbRow = $stmt->num_rows;
-
-        $geokret = new \Geokrety\Domain\Konkret();
-        if ($nbRow == 0) {
-            return null;
-        }
-
-        // associate result vars
-        $stmt->bind_result($id, $trackingCode, $name, $description, $datePublished, $type, $distance, $cachesCount, $picturesCount, $ownerId, $missing,
-                           $lastLogId, $lastPositionId,
-                           $avatarId, $avatarFilename, $avatarCaption,
-                           $ownerName, $holderId, $holderName, $ownerEmail);
-
-        while ($stmt->fetch()) {
-            // Workaround: Fix database encoding
-            $name = html_entity_decode($name);
-            $description = html_entity_decode($description);
-            $ownerName = html_entity_decode($ownerName);
-            $holderName = html_entity_decode($holderName);
-
-            $geokret->id = $id;
-            $geokret->trackingCode = $trackingCode;
-            $geokret->name = $name;
-            $geokret->description = $description;
-            $geokret->ownerId = $ownerId;
-            $geokret->ownerName = $ownerName;
-            $geokret->ownerEmail = $ownerEmail;
-            $geokret->holderId = $holderId;
-            $geokret->holderName = $holderName;
-            $geokret->datePublished = $datePublished;
-            $geokret->type = $type;
-            $geokret->distance = $distance; // road traveled in km
-            $geokret->cachesCount = $cachesCount;
-            $geokret->picturesCount = $picturesCount;
-            $geokret->avatarId = $avatarId;
-            $geokret->avatarFilename = $avatarFilename;
-            $geokret->avatarCaption = $avatarCaption;
-            $geokret->lastPositionId = $lastPositionId;
-            $geokret->lastLogId = $lastLogId;
-            $geokret->missing = $missing;
-
-            $geokret->enrichFields();
-        }
-
-        $stmt->close();
-
-        return $geokret;
     }
 
     public function getByTrackingCode($nr) {
-
         $where = <<<EOQUERY
   WHERE gk.nr = ?
   LIMIT 1
 EOQUERY;
 
         $sql = self::SELECT_KONKRET.$where;
+
+        $geokrety = $this->getBySql($sql, 's', array($nr));
+        if (sizeof($geokrety) > 0) {
+            return $geokrety[0];
+        }
+    }
+
+    public function getByName($name) {
+        $where = <<<EOQUERY
+  WHERE     gk.nazwa LIKE ?
+  ORDER BY  id DESC
+  LIMIT     100
+EOQUERY;
+
+        $sql = self::SELECT_KONKRET.$where;
+
+        return $this->getBySql($sql, 's', array("%$name%"));
+    }
+
+    public function getByVisitedCache($name) {
+        $where = <<<EOQUERY
+  WHERE gk.id IN (
+                SELECT      DISTINCT(ru.id)
+                FROM        `gk-ruchy` AS ru
+                WHERE       ru.waypoint = ?
+                ORDER BY    id DESC
+      )
+  LIMIT       100
+EOQUERY;
+
+        $sql = self::SELECT_KONKRET.$where;
+echo $sql;
+
+        return $this->getBySql($sql, 's', array("$name"));
+    }
+
+    public function getBySql($sql, $bindStr, $bind) {
         if ($this->verbose) {
             echo "\n$sql\n";
         }
@@ -136,7 +115,7 @@ EOQUERY;
         if (!($stmt = $this->dblink->prepare($sql))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         }
-        if (!$stmt->bind_param('s', $nr)) {
+        if (!$stmt->bind_param($bindStr, ...$bind)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
         if (!$stmt->execute()) {
@@ -146,9 +125,8 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
-        $geokret = new \Geokrety\Domain\Konkret();
         if ($nbRow == 0) {
-            return null;
+            return array();
         }
 
         // associate result vars
@@ -157,6 +135,7 @@ EOQUERY;
                            $avatarId, $avatarFilename, $avatarCaption,
                            $ownerName, $holderId, $holderName, $ownerEmail);
 
+        $geokrety = array();
         while ($stmt->fetch()) {
             // Workaround: Fix database encoding
             $name = html_entity_decode($name);
@@ -164,6 +143,7 @@ EOQUERY;
             $ownerName = html_entity_decode($ownerName);
             $holderName = html_entity_decode($holderName);
 
+            $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $id;
             $geokret->trackingCode = $trackingCode;
             $geokret->name = $name;
@@ -186,11 +166,12 @@ EOQUERY;
             $geokret->missing = $missing;
 
             $geokret->enrichFields();
+            array_push($geokrety, $geokret);
         }
 
         $stmt->close();
 
-        return $geokret;
+        return $geokrety;
     }
 
     public function getInventoryByUserId($id, $orderBy = null, $defaultWay = 'asc', $limit = 20, $curPage = 1) {

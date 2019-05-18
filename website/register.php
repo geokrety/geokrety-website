@@ -32,15 +32,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $opis = $kret_opis;
 
     if ($validationService->is_whitespace($nazwa)) {
-        danger(_('No GeoKret\'s name!'), $die = true);
+        danger(_('No GeoKret\'s name!'));
+        include_once 'smarty.php';
+        die();
     } elseif (!array_key_exists($kret_typ, $cotozakret)) {
-        danger(_('Error - wrong GK type!'), $die = true);
+        danger(_('Error - wrong GK type!'));
+        include_once 'smarty.php';
+        die();
     } else {
         require_once 'register.fn.php';
         $kret_id = registerNewGeoKret($nazwa, $opis, $user->id, $kret_typ, true);
 
         if ($kret_id == 0) {
-            danger(_('Error, please try again later…'), $die = true);
+            danger(_('Error, please try again later…'));
+            include_once 'smarty.php';
+            die();
         }
 
         // do we log the first move?

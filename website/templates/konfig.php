@@ -388,17 +388,14 @@ if (!function_exists('danger')) {
      *
      * @return string
      */
-    function danger($message, $redirect = false, $die = false) {
+    function danger($message, $redirect = false) {
         $_SESSION['alert_msgs'][] = array(
             'level' => 'danger',
             'message' => $message,
         );
         if ($redirect) {
+            echo "REDIRECT";
             header('Location: '.(isset($_POST['goto']) ? $_POST['goto'] : '/'));
-            die();
-        }
-        if ($die) {
-            include_once 'smarty.php';
             die();
         }
     }

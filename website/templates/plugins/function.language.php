@@ -10,9 +10,13 @@
  * -------------------------------------------------------------
  */
 function smarty_function_language(array $params, Smarty_Internal_Template $template) {
-    if (!in_array('lang', array_keys($params)) || empty($params['lang'])) {
+    if (!in_array('lang', array_keys($params))) {
         trigger_error("language: missing 'lang' parameter");
 
+        return;
+    }
+
+    if (empty($params['lang'])) {
         return;
     }
 

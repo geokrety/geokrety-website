@@ -19,22 +19,29 @@ $p_oc = trim($_POST['oc']);
 $p_tc = trim($_POST['tc']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     if (isset($p_tc) && !ctype_alnum($p_tc)) {
-        danger(_('Invalid Tracking Code!'), $die = true);
+        danger(_('Invalid Tracking Code!'));
+        include_once 'smarty.php';
+        die();
     }
     if (isset($p_oc) && !ctype_alnum($p_oc)) {
-        danger(_('Invalid Owner Code!'), $die = true);
+        danger(_('Invalid Owner Code!'));
+        include_once 'smarty.php';
+        die();
     }
 
     $geokretR = new \Geokrety\Repository\KonkretRepository(GKDB::getLink());
     $geokret = $geokretR->getByTrackingCode($p_tc);
     if (is_null($geokret)) {
-        danger(_('No such GeoKret!'), $die = true);
+        danger(_('No such GeoKret!'));
+        include_once 'smarty.php';
+        die();
     }
 
     if ($geokret->ownerId != 0) {
-        danger(_('This GeoKret is not for adoption!'), $die = true);
+        danger(_('This GeoKret is not for adoption!'));
+        include_once 'smarty.php';
+        die();
     }
 
     include 'owner_code.fn.php';

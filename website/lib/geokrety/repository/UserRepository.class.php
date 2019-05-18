@@ -19,7 +19,12 @@ EOQUERY;
 
         $sql = self::SELECT_USER.$where;
 
-        return $this->getBySql($sql, 'd', array($id));
+        $users = $this->getBySql($sql, 'd', array($id));
+        if (sizeof($users) > 0) {
+            return $users[0];
+        }
+
+        return null;
     }
 
     public function getByUsername($username) {
@@ -30,7 +35,33 @@ EOQUERY;
 
         $sql = self::SELECT_USER.$where;
 
-        return $this->getBySql($sql, 's', array($username));
+        $users = $this->getBySql($sql, 's', array($username));
+        if (sizeof($users) > 0) {
+            return $users[0];
+        }
+
+        return null;
+    }
+
+    public function getByUsernameOrId($username) {
+
+        if (ctype_digit($username)) {
+            $where = <<<EOQUERY
+    WHERE userid = ?
+EOQUERY;
+            $bindStr = 'i';
+        } else {
+            $where = <<<EOQUERY
+    WHERE user LIKE ?
+EOQUERY;
+            $bindStr = 's';
+            $username = "%$username%";
+        }
+
+        $sql = self::SELECT_USER.$where;
+
+        echo "\n$sql\n";
+        return $this->getBySql($sql, $bindStr, array($username));
     }
 
     public function getByEmail($email) {
@@ -41,7 +72,12 @@ EOQUERY;
 
         $sql = self::SELECT_USER.$where;
 
-        return $this->getBySql($sql, 's', array($email));
+        $users = $this->getBySql($sql, 's', array($email));
+        if (sizeof($users) > 0) {
+            return $users[0];
+        }
+
+        return null;
     }
 
     public function getBySql($sql, $bind, array $params) {
@@ -62,24 +98,45 @@ EOQUERY;
         $nbRow = $stmt->num_rows;
 
         if ($nbRow == 0) {
-            return null;
+            return array();
         }
 
-        // associate result vars
-        $user = new \Geokrety\Domain\User();
-        $stmt->bind_result($user->id, $user->username, $user->email, $user->isEmailActive,
-            $user->joinDate, $user->acceptEmail, $user->language, $user->latitude,
-            $user->longitude, $user->observationRadius, $user->country,
-            $user->emailHour, $user->statpic, $user->lastMail, $user->lastlogin,
-            $user->secid, $user->ip);
+        $stmt->bind_result($id, $username, $email, $isEmailActive,
+            $joinDate, $acceptEmail, $language, $latitude,
+            $longitude, $observationRadius, $country,
+            $emailHour, $statpic, $lastMail, $lastlogin,
+            $secid, $ip);
 
-        $stmt->fetch();
+        $users = array();
+        while ($stmt->fetch()) {
+            // associate result vars
+            $user = new \Geokrety\Domain\User();
+            $user->id = $id;
+            $user->username = $username;
+            $user->email = $email;
+            $user->isEmailActive = $isEmailActive;
+            $user->joinDate = $joinDate;
+            $user->acceptEmail = $acceptEmail;
+            $user->language = $language;
+            $user->latitude = $latitude;
+            $user->longitude = $longitude;
+            $user->observationRadius = $observationRadius;
+            $user->country = $country;
+            $user->emailHour = $emailHour;
+            $user->statpic = $statpic;
+            $user->lastMail = $lastMail;
+            $user->lastlogin = $lastlogin;
+            $user->secid = $secid;
+            $user->ip = $ip;
+
+            // Workaround: Fix database encoding
+            $user->username = html_entity_decode($user->username);
+            array_push($users, $user);
+        }
+
         $stmt->close();
 
-        // Workaround: Fix database encoding
-        $user->username = html_entity_decode($user->username);
-
-        return $user;
+        return $users;
     }
 
     public function getOnlineUsers($interval = '5 MINUTE') {
@@ -132,7 +189,7 @@ EOQUERY;
             $user->longitude, $user->observationRadius,
             $user->country, $user->emailHour, $user->statpic,
             $user->lastMail, $user->lastlogin, $user->secid,
-            $user->ip, $user->password
+            $user->ip, $user->password,
         );
         $bindStr = 'ssiisddisiisssss';
 
@@ -180,7 +237,7 @@ EOQUERY;
             $user->longitude, $user->observationRadius,
             $user->country, $user->emailHour, $user->statpic,
             $user->lastMail, $user->lastlogin, $user->secid,
-            $user->ip
+            $user->ip,
         );
         $bindStr = 'ssiisddisiissss';
 
