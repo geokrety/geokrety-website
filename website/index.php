@@ -70,9 +70,9 @@ EOD;
     // ----------------------------------------------JSON-LD---------------------------
     $gkName = $config['adres'];
     $gkUrl = $config['adres'];
-    $gkLogoUrl = $config['cdn_url'].'/images/banners/geokrety.png';
+    $gkLogoUrl = $config['cdn_url'].'/images/the-mole.svg';
     $gkHeadline = _($config['punchline']);
-    $gkDescription = _($config['intro']);
+    $gkDescription = str_replace('%1', $config['adres'].'/help.php#about', _($config['intro']));
     $gkKeywords = $config['keywords'];
     $lastUpdate = filemtime(__FILE__);
     $dateModified = date('c', $helpLastUpdate);
