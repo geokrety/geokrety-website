@@ -434,5 +434,6 @@ define('GEOCACHING_CACHE_WP', $config['geocaching_cache_wp']);
 
 // input validation
 define('CONFIG_WAYPOINTY_MIN_LENGTH', $config['waypointy_min_length']);
+define('TEMP_DIR_HTMLPURIFIER_CACHE', $config['temp_dir_htmlpurifier_cache']);
 
 date_default_timezone_set(CONFIG_TIMEZONE);

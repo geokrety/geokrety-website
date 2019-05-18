@@ -20,10 +20,9 @@ create_tmp_dir($config['temp_dir_smarty_compile']);
 create_tmp_dir($config['temp_dir_smarty_cache']);
 create_tmp_dir($config['temp_dir_htmlpurifier_cache']);
 
-require_once 'templates/htmlpurifier/library/HTMLPurifier.auto.php';
 $HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();
-$HTMLPurifierconfig_conf->set('Cache.SerializerPath', $config['temp_dir_htmlpurifier_cache']);
-$HTMLPurifier = new HTMLPurifier($HTMLPurifierconfig_conf);
+$HTMLPurifierconfig_conf->set('Cache.SerializerPath', TEMP_DIR_HTMLPURIFIER_CACHE);
+$HTMLPurifier = new \HTMLPurifier($HTMLPurifierconfig_conf);
 foreach ($_GET as $key => $value) {
     $_GET[$key] = $HTMLPurifier->purify($value);
 }
