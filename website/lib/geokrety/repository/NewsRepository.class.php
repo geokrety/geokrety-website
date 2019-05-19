@@ -42,7 +42,7 @@ EOQUERY;
         $newsList = array();
         while ($stmt->fetch()) {
             $news = new \Geokrety\Domain\News();
-            $news->id = $userid;
+            $news->id = $id;
             $news->date = $date;
             $news->title = $title;
             $news->content = $content;
