@@ -45,7 +45,6 @@
             <li><a href="/lost.php">{fa icon="grav"} Lost GeoKrety</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/download.php">{fa icon="download"} Downloads</a></li>
-            <li><a href="/geomapa.php">{fa icon="map"} Garmin map of caches</a></li>
             <li><a href="https://geokretymap.org">{fa icon="map"} GeoKretyMap <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
             <li><a href="/toolbox.php">{fa icon="cog"} GeoKrety Toolbox</a></li>
             <li><a href="/go2geo/">{fa icon="map-pin"} Waypoint resolver</a></li>
