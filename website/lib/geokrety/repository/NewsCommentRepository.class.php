@@ -71,10 +71,16 @@ EOQUERY;
             $newsComment->comment = $comment;
             $newsComment->icon = $icon;
 
+            // Workaround: Fix database encoding
+            $newsComment->comment = html_entity_decode($newsComment->comment);
+
             $user = new \Geokrety\Domain\User();
             $user->id = $userId;
             $user->username = $username;
             $newsComment->author = $user;
+
+            // Workaround: Fix database encoding
+            $user->username = html_entity_decode($user->username);
 
             array_push($newsCommentList, $newsComment);
         }

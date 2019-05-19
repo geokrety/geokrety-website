@@ -69,6 +69,10 @@ EOQUERY;
             $news->authorId = $authorId;
             $news->commentsCount = $commentsCount;
 
+            // Workaround: Fix database encoding
+            $news->content = html_entity_decode($news->content);
+            $news->authorName = html_entity_decode($news->authorName);
+
             array_push($newsList, $news);
         }
 
