@@ -75,9 +75,7 @@ $("#formNewComment").validate({
             maxlength: 1000
         },
     },
-
     {include 'js/_jsValidationFixup.tpl.js'}
-
 });
 
 // ----------------------------------- JQUERY - NEWS COMMENT - END
