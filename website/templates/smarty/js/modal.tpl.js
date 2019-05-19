@@ -42,6 +42,12 @@ $('#modal').on('show.bs.modal', function(event) {
         modal.find('.modal-content').load('/_dialog_user_update_observation_area.php');
     } else if (typeName == 'secid-refresh') {
         modal.find('.modal-content').load('/api-secid-change.php');
+    } else if (typeName == 'news-subscription') {
+        var id = button.data('id');
+        modal.find('.modal-content').load('/_dialog_news_subscription.php?id=' + id);
+    } else if (typeName == 'news-comment-delete') {
+        var id = button.data('id');
+        modal.find('.modal-content').load('/_dialog_news_comment_delete.php?id=' + id);
     }
 })
 

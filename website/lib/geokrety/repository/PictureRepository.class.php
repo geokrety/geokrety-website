@@ -123,7 +123,6 @@ EOQUERY;
         if ($count && !$stmt->bind_param(str_repeat('d', $count), ...$params)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
-
         if (!$stmt->execute()) {
             throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
         }

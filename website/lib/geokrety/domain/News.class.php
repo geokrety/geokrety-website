@@ -19,4 +19,12 @@ class News extends AbstractObject {
 
         return $user;
     }
+
+    public function isUserSubscribed($userId) {
+    }
+
+    public function getComments() {
+        $newsCommentR = new \Geokrety\Repository\NewsCommentRepository(\GKDB::getLink());
+        return $newsCommentR->getByNewsId($this->id);
+    }
 }

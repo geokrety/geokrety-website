@@ -62,6 +62,6 @@ class ValidationService {
         $HTMLPurifierconfig_conf->set('HTML.Allowed', '');
         $HTMLPurifier = new \HTMLPurifier($HTMLPurifierconfig_conf);
 
-        return $HTMLPurifier->purify($string);
+        return $HTMLPurifier->purify(trim($string));
     }
 }

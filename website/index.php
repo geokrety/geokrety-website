@@ -40,7 +40,7 @@ EOD;
     // -------------------------------------- news ------------------------------- //
 
     $newsR = new Geokrety\Repository\NewsRepository($link);
-    list($news, $newsCount) = $newsR->get($config['home_news_per_page']);
+    list($news, $newsCount) = $newsR->getRecent($config['home_news_per_page']);
     $smarty->assign('news', $news);
 
     // -------------------------------------- recent moves ------------------------------- //

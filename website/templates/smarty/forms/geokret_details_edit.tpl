@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">{t}GeoKret name{/t}</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control maxlenght" id="inputName" name="nazwa" placeholder="{t}GeoKret name{/t}" minlength="1" maxlength="45" value="{if isset($geokret) and $geokret->name}{$geokret->name}{/if}">
+                    <input type="text" class="form-control maxl" id="inputName" name="nazwa" placeholder="{t}GeoKret name{/t}" minlength="1" maxlength="45" value="{if isset($geokret) and $geokret->name}{$geokret->name}{/if}">
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label for="inputMission" class="col-sm-2 control-label">{t}Mission{/t}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control maxlenght" rows="5" id="inputMission" name="opis" placeholder="{t}What is this GeoKrety mission?{/t}" maxlength="5120">{if isset($geokret) and $geokret->description}{$geokret->description}{/if}</textarea>
+                    <textarea class="form-control maxl" rows="5" id="inputMission" name="opis" placeholder="{t}What is this GeoKrety mission?{/t}" maxlength="5120">{if isset($geokret) and $geokret->description}{$geokret->description}{/if}</textarea>
                 </div>
             </div>
 
