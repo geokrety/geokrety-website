@@ -20,12 +20,13 @@ EOQUERY;
         return $count > 0 ? $news[0] : null;
     }
 
-    public function getRecent($limit = 2) {
+    public function getRecent($start = 0, $limit = 2) {
+        $start = $this->validationService->ensureIntGTE('start', $start, 0);
         $limit = $this->validationService->ensureIntGTE('limit', $limit, 1);
 
         $where = <<<EOQUERY
   ORDER BY  date DESC
-  LIMIT     $limit
+  LIMIT     $start, $limit
 EOQUERY;
 
         $sql = self::SELECT_NEWS.$where;
@@ -117,5 +118,31 @@ EOQUERY;
         }
 
         return false;
+    }
+
+    public function countTotalNews() {
+
+        $sql = <<<EOQUERY
+SELECT  COUNT(*)
+FROM    `gk-news`
+EOQUERY;
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        $stmt->store_result();
+        $stmt->bind_result($count);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $count;
     }
 }

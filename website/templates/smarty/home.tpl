@@ -22,6 +22,7 @@
 {include file='blocks/news.tpl'}
 {/foreach}
 
+<h2>{t}Recent moves{/t}</h2>
 {include file='blocks/geokrety_table_trip.tpl'}
 <a href="/mapki/google_static_logs.png" data-preview-image="/mapki/google_static_logs.png">
   {t}Recent logs on the map{/t}

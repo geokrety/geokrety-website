@@ -244,6 +244,7 @@ $config['home_online_users_time'] = '5 MINUTE';
 $config['geokrety_per_page'] = 25;
 $config['trip_per_page'] = 25;
 $config['pictures_per_gallery_page'] = 99;
+$config['news_per_page'] = 10;
 
 $config['welcome'] = 'Welcome to GeoKrety.org!';
 $config['punchline'] = 'Open source item tracking for all caching platforms';
@@ -409,6 +410,7 @@ if (amIOnProd()) {
 }
 
 define('MOVES_PER_PAGE', $config['trip_per_page']);
+define('NEWS_PER_PAGE', $config['news_per_page']);
 define('PICTURES_PER_GALLERY_PAGE', $config['pictures_per_gallery_page']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
