@@ -76,7 +76,7 @@
     </div>
     <div class="panel-body">
 
-        <p>A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety.B y now, on the OC system, we have registered following GK (or GK/TB)
+        <p>A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety. By now, on the OC system, we have registered following GK (or GK/TB)
             hotels/motels:</p>
 
 

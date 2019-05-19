@@ -21,16 +21,19 @@ class SocialGroups {
     }
 
     public function toHtmlTable() {
-        $groupsTable = '<table style="padding:15px;" cellpadding="10">'
-                   .'<thead><tr>'
-                   .'<th>'.$this->socialGroups[0]['lang'].'</th>'
-                   .'<th>'.$this->socialGroups[0]['service'].'</th>'
-                   .'<th>'.$this->socialGroups[0]['title'].'</th>'
-                   .'</tr></thead>'
-                   .'<tbody>';
+        $groupsTable = '<div class="table-responsive">'
+            .'<table class="table table-striped">'
+                .'<thead>'
+                    .'<tr>'
+                    .'<th>'.$this->socialGroups[0]['lang'].'</th>'
+                    .'<th>'.$this->socialGroups[0]['service'].'</th>'
+                    .'<th>'.$this->socialGroups[0]['title'].'</th>'
+                    .'</tr>'
+                .'</thead>'
+                .'<tbody>';
         for ($i = 1; $i < count($this->socialGroups); ++$i) {
             $groupsTable .= '<tr>'
-                       .'<td style="padding:4px;"><span class="flag-icon flag-icon-'
+                       .'<td><span class="flag-icon flag-icon-'
                        .$this->socialGroups[$i]['flag']
                        .'"></span>'
                        .'&#160;'.$this->socialGroups[$i]['lang'].'</td>'
@@ -38,7 +41,9 @@ class SocialGroups {
                        .'<td><a href="'.$this->socialGroups[$i]['link'].'">'.$this->socialGroups[$i]['title'].'</td>'
                        .'</tr>';
         }
-        $groupsTable .= '</tbody></table>';
+        $groupsTable .= '</tbody>'
+                .'</table>'
+            .'</div>';
 
         return $groupsTable;
     }
