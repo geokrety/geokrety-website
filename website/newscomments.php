@@ -27,49 +27,17 @@ $g_mode = $_GET['mode'];
 $g_newsid = $_GET['newsid'];
 
 // -----------------------------------------------------------------------------------------------
-// if we find any unknown parameters, we log information to the errors
-// it's just for safety, in some time you can do it again :)
-$allowed_request_variables = array('NEWSID', 'COMMENT', 'SUBSCRIBED', 'SUBMIT', 'MODE', 'DELETE', 'CONFIRMED');
-foreach ($_GET as $var => $value) {
-    if (!in_array(strtoupper($var), $allowed_request_variables)) {
-        $bad_request_variables[] = "G|$var|";
-    }
-}
-foreach ($_POST as $var => $value) {
-    if (!in_array(strtoupper($var), $allowed_request_variables)) {
-        $bad_request_variables[] = "P|$var|";
-    }
-}
-if (isset($bad_request_variables)) {
-    $bad_request_variables[] = '<b><u>BAD_REQUEST_VARIABLES!!</u></b>';
-    include_once 'defektoskop.php';
-    defektoskop($bad_request_variables);
+
+$newsR = new Geokrety\Repository\NewsRepository(\GKDB::getLink());
+$news = $newsR->getById($_GET['newsid']);
+$smarty->assign('news', $news);
+
+if (is_null($news)) {
+    danger(_('News post not found.'), $redirect = true);
 }
 
-function loadData($smarty) {
-    $newsR = new Geokrety\Repository\NewsRepository(\GKDB::getLink());
-    $news = $newsR->getById($_GET['newsid']);
-    $smarty->assign('news', $news);
-
-    if (is_null($news)) {
-        danger(_('News post not found.'), $redirect = true);
-    }
-
-    $newsComments = $news->getComments();
-    $smarty->assign('newsComments', $newsComments);
-
-    if ($_SESSION['isLoggedIn']) {
-        $newsSubscriptionR = new Geokrety\Repository\NewsSubscriptionRepository(\GKDB::getLink());
-        $newsSubscription = $newsSubscriptionR->getByNewsIdUserId($_GET['newsid'], $_SESSION['currentUser']);
-        $smarty->assign('newsSubscription', $newsSubscription);
-    }
-
-    return $news;
-}
-
-// -----------------------------------------------------------------------------------------------
-
-$news = loadData($smarty);
+$newsComments = $news->getComments();
+$smarty->assign('newsComments', $newsComments);
 
 // Save last view, so we don't notify in daily mails
 if ($_SESSION['isLoggedIn']) {
@@ -92,12 +60,14 @@ if ($_SESSION['isLoggedIn']) {
             die();
         }
     }
+    $smarty->assign('newsSubscription', $newsSubscription);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     loginFirst();
 }
 
+// Delete news comment
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     if (!ctype_digit($_POST['delete'])) {
         danger(_('Invalid parameters'));
@@ -127,6 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
         danger(_('Failed to delete comment'));
     }
 }
+
+// Manage subscription
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && (isset($_POST['subscribe']) || isset($_POST['comment']))) {
     $oldSubscription = $newsSubscription->subscribed;
     // Save user's subscription
@@ -144,6 +116,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && (isset($_POST['subscribe']) || isset
         }
     }
 }
+
+// Save news comment
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['comment'])) {
     if ($validationService->is_whitespace($p_comment)) {
         danger(_('No comment found!'));
