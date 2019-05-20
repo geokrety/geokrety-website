@@ -30,8 +30,8 @@
         <a href="/galeria.php?userid={$user->id}">Owned GeoKrety pictures</a>
       </li>
       <li>
-        {fa icon="map-marker"}
-        <a href="/mapka_kretow.php?userid={$user->id}">Where are my GeoKrety?</a>
+        {fa icon="map"}
+        <a href="/gkmap.php{GEOKRETY_MAP_DEFAULT_PARAMS}{$user->username}"> Where are my GeoKrety?</a>
       </li>
       <li>
         {fa icon="bar-chart-o"}

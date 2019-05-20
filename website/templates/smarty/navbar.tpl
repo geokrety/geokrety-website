@@ -28,6 +28,14 @@
             <li><a href="/galeria.php"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Photo gallery</a></li>
           </ul>
         </li>
+{capture name="mapParameters"}
+{if isset($isLoggedIn) and $isLoggedIn and isset($user) and isset($user->lat) and isset($user->lon) and empty($user->lat) and empty($user->lon)}
+#11/{$user->lat}/{$user->lon}/1/1/0/0/90/
+{else}
+{GEOKRETY_MAP_DEFAULT_PARAMS}
+{/if}
+{/capture}
+        <li><a href="/gkmap.php{$smarty.capture.mapParameters}">{fa icon="map"} Map of GeoKrety</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -45,7 +53,6 @@
             <li><a href="/lost.php">{fa icon="grav"} Lost GeoKrety</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/download.php">{fa icon="download"} Downloads</a></li>
-            <li><a href="https://geokretymap.org">{fa icon="map"} GeoKretyMap <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
             <li><a href="/toolbox.php">{fa icon="cog"} GeoKrety Toolbox</a></li>
             <li><a href="/go2geo/">{fa icon="map-pin"} Waypoint resolver</a></li>
           </ul>
@@ -72,7 +79,7 @@
             <li><a href="/galeria.php?f=myown">{fa icon="picture-o"} My photos</a></li>
             <li><a href="/galeria.php?f=mygeokrets">{fa icon="picture-o"} Photos of my GeoKrety</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/mapka_kretow.php">{fa icon="map-marker"} Where are my GeoKrety?</a></li>
+            <li><a href="/gkmap.php{GEOKRETY_MAP_DEFAULT_PARAMS}{$user->username}">{fa icon="map"} Where are my GeoKrety?</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/longin.php?logout=1">{fa icon="sign-out"} Sign out</a></li>
           </ul>
@@ -82,6 +89,7 @@
         <li><a href="/longin.php">{fa icon="sign-in"} Sign in</a></li>
         {/if}
       </ul>
+
 
     </div>
 

@@ -71,7 +71,9 @@ $config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.
 
 // map api url
 $config['geokrety_map_url'] = isset($_ENV['GEOKRETY_MAP_URL']) ? $_ENV['GEOKRETY_MAP_URL'] : 'https://api.geokretymap.org';
+$config['geokrety_map_default_params'] = isset($_ENV['GEOKRETY_MAP_DEFAULT_PARAMS']) ? $_ENV['GEOKRETY_MAP_DEFAULT_PARAMS'] : '#2/42.941/2.109/1/1/0/0/90/';
 define('GEOKRETY_MAP_URL', $config['geokrety_map_url']);
+define('GEOKRETY_MAP_DEFAULT_PARAMS', $config['geokrety_map_default_params']);
 
 // input validation
 $config['waypointy_min_length'] = 4;
@@ -131,6 +133,19 @@ define('CDN_LEAFLET_JS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.js');
 define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
 define('CDN_LEAFLET_CENTERCROSS_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');
 define('CDN_LEAFLET_AJAX_JS', CONFIG_CDN_LIBRARIES.'/leaflet-ajax/2.1.0/leaflet.ajax.min.js');
+define('CDN_LEAFLET_MARKERCLUSTER_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.markercluster/1.4.1/leaflet.markercluster.js');
+define('CDN_LEAFLET_MARKERCLUSTER_CSS', CONFIG_CDN_LIBRARIES.'/Leaflet.markercluster/1.4.1/MarkerCluster.css');
+define('CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS', CONFIG_CDN_LIBRARIES.'/Leaflet.markercluster/1.4.1/MarkerCluster.Default.css');
+define('CDN_LEAFLET_GEOKRETYFILTER_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.geokretyfilter/leaflet.Control.GeoKretyFilter.js');
+define('CDN_LEAFLET_GEOKRETYFILTER_CSS', CONFIG_CDN_LIBRARIES.'/Leaflet.geokretyfilter/leaflet.Control.GeoKretyFilter.css');
+define('CDN_LEAFLET_PLUGIN_BING_JS', CONFIG_CDN_LIBRARIES.'/leaflet-bing/Bing.js');
+define('CDN_LEAFLET_NOUISLIDER_JS', CONFIG_CDN_LIBRARIES.'/noUiSlider/8.1.0/nouislider.min.js');
+define('CDN_LEAFLET_NOUISLIDER_CSS', CONFIG_CDN_LIBRARIES.'/noUiSlider/8.1.0/nouislider.min.css');
+define('CDN_LEAFLET_SPIN_JS', CONFIG_CDN_LIBRARIES.'/leaflet.spin.js/leaflet.spin.js');
+define('CDN_LEAFLET_FULLSCREEN_JS', CONFIG_CDN_LIBRARIES.'/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js');
+define('CDN_LEAFLET_FULLSCREEN_CSS', CONFIG_CDN_LIBRARIES.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
+
+define('CDN_SPIN_JS', CONFIG_CDN_LIBRARIES.'/spin.js/2.3.2/spin.min.js');
 
 define('CDN_SLIDEOUT_JS', CONFIG_CDN_LIBRARIES.'/slideout/1.0.1/slideout.min.js');
 

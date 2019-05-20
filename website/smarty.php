@@ -22,6 +22,12 @@ if (!isset($smarty)) {
     exit;
 }
 
+if ($_SESSION['isLoggedIn'] && !$smarty->getTemplateVars('user')) {
+    $userR = new \Geokrety\Repository\UserRepository(\GKDB::getLink());
+    $user = $userR->getById($_SESSION['currentUser']);
+    $smarty->assign('user', $user);
+}
+
 $smarty->error_reporting = E_ALL;
 
 $smarty->assign('cdnUrl', CONFIG_CDN);
