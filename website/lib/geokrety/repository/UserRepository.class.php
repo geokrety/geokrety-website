@@ -60,7 +60,6 @@ EOQUERY;
 
         $sql = self::SELECT_USER.$where;
 
-        echo "\n$sql\n";
         return $this->getBySql($sql, $bindStr, array($username));
     }
 
