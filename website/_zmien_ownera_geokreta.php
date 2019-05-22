@@ -57,13 +57,14 @@ LIMIT 1;";
         $TRESC .= "<p><a href='konkret.php?id=$id'>strona kreta</a></p>";
 
         include_once 'aktualizuj.php';
-        aktualizuj_droge($kret_id);
-        aktualizuj_skrzynki($kret_id);
-        aktualizuj_ost_pozycja_id($kret_id);
-        aktualizuj_ost_log_id($kret_id);
-        aktualizuj_obrazek_statystyki($owner);
+        aktualizuj_droge($id);
+        aktualizuj_skrzynki($id);
+        aktualizuj_ost_pozycja_id($id);
+        aktualizuj_ost_log_id($id);
+        aktualizuj_obrazek_statystyki($olduserid);
+        aktualizuj_obrazek_statystyki($newuserid);
         include 'konkret-mapka.php';
-        konkret_mapka($kretid);         // generuje plik z mapką krecika
+        konkret_mapka($id);         // generuje plik z mapką krecika
     }
 }
 

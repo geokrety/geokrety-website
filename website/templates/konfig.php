@@ -68,6 +68,10 @@ $config['piwik_token'] = isset($_ENV['PIWIK_TOKEN']) ? $_ENV['PIWIK_TOKEN'] : ''
 // Partners
 $config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
 
+// map api url
+$config['geokrety_map_url'] = isset($_ENV['GEOKRETY_MAP_URL']) ? $_ENV['GEOKRETY_MAP_URL'] : 'https://api.geokretymap.org';
+define('GEOKRETY_MAP_URL', $config['geokrety_map_url']);
+
 // input validation
 $config['waypointy_min_length'] = 4;
 
