@@ -70,5 +70,9 @@ function registerNewGeoKret($kret_nazwa, $kret_opis, $owner_id, $kret_typ, $aktu
     include_once 'defektoskop.php';
     errory_add("New GK:$kret_id TC:$trackingcode Owner:$owner_id ($licznik attempts)", 1, 'registerNewGeoKret');
 
+    // Notify GKM
+    // Workaround for https://github.com/geokrety/geokrety-website/issues/324
+    file_get_contents(GEOKRETY_MAP_URL."/gk/$kret_id/dirty");
+
     return $kret_id;
 }
