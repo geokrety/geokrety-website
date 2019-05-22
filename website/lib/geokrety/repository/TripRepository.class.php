@@ -52,6 +52,29 @@ EOQUERY;
 EOQUERY;
 
         $sql = self::SELECT_RUCHY.$where;
+        return $this->getBySql($sql, 'd', array($geokretyId));
+    }
+
+    public function getByTripId($tripId) {
+        $action = 'Trip::getByGeokretyId';
+
+        $tripId = $this->validationService->ensureIntGTE('tripId', $tripId, 1);
+
+        $where = <<<EOQUERY
+    WHERE       `ruch_id` = ?
+    LIMIT       1
+EOQUERY;
+
+        $sql = self::SELECT_RUCHY.$where;
+        $tripSteps = $this->getBySql($sql, 'd', array($tripId));
+        if (sizeof($tripSteps) > 0) {
+            return $tripSteps[0];
+        }
+
+        return null;
+    }
+
+    public function getBySql($sql, $bindStr, array $bind) {
         if ($this->verbose) {
             echo "\n$sql\n";
         }
@@ -59,7 +82,7 @@ EOQUERY;
         if (!($stmt = $this->dblink->prepare($sql))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         }
-        if (!$stmt->bind_param('d', $geokretyId)) {
+        if (sizeof($bind) && !$stmt->bind_param($bindStr, ...$bind)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
 
@@ -69,11 +92,10 @@ EOQUERY;
 
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
-
-        $trips = array();
+        $tripSteps = array();
 
         if ($nbRow == 0) {
-            return $trips;
+            return $tripSteps;
         }
 
         // associate result vars
@@ -113,106 +135,8 @@ EOQUERY;
             $trip->waypointStatus = $wpStatus;
             $trip->waypointLink = $wpLink;
 
-            $geokret = new \Geokrety\Domain\Konkret();
-            $geokret->id = $geokretId;
-            $geokret->trackingCode = $gkTrackingCode;
-            $geokret->name = $gkName;
-            $geokret->description = $gkDescription;
-            $geokret->ownerId = $gkOwnerId;
-            $geokret->datePublished = $gkDatePublished;
-            $geokret->type = $gkType;
-            $geokret->distance = $gkDistance; // road traveled in km
-            $geokret->cachesCount = $gkCachesCount;
-            $geokret->picturesCount = $gkPicturesCount;
-            $geokret->avatarId = $gkAvatarId;
-            $geokret->avatarFilename = $picFilename;
-            $geokret->lastPositionId = $gkLastPositionId;
-            $geokret->lastLogId = $gkLastLogId;
-            if (!$noRecurs) {
-                $geokret->lastLog = $trip;
-            }
-            $geokret->missing = $gkMissing;
-            $geokret->holderId = $gkHolderId;
-            $trip->geokret = $geokret;
-
-            $trip->enrichFields();
-            array_push($trips, $trip);
-        }
-
-        $stmt->close();
-
-        return $trips;
-    }
-
-    public function getByTripId($tripId) {
-        $action = 'Trip::getByGeokretyId';
-
-        $tripId = $this->validationService->ensureIntGTE('tripId', $tripId, 1);
-
-        $where = <<<EOQUERY
-    WHERE       `ruch_id` = ?
-    LIMIT       1
-EOQUERY;
-
-        $sql = self::SELECT_RUCHY.$where;
-        if ($this->verbose) {
-            echo "\n$sql\n";
-        }
-
-        if (!($stmt = $this->dblink->prepare($sql))) {
-            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
-        }
-        if (!$stmt->bind_param('d', $tripId)) {
-            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        if (!$stmt->execute()) {
-            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        $stmt->store_result();
-        $nbRow = $stmt->num_rows;
-
-        if ($nbRow == 0) {
-            return null;
-        }
-
-        // associate result vars
-        $stmt->bind_result($ruchId, $geokretId, $lat, $lon, $country, $alt, $waypoint,
-                           $data, $dataDodania, $user, $usernameAnonymous, $username, $koment, $logtype, $droga,
-                           $wpName, $wpType, $wpOwner, $wpStatus, $wpLink,
-                           $app, $appVer, $picturesCount, $commentsCount,
-                           $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
-                           $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picCaption
-                           );
-
-        $trip = new \Geokrety\Domain\TripStep($waypoint);
-        while ($stmt->fetch()) {
-            $trip->lat = $lat;
-            $trip->lon = $lon;
-            $trip->alt = $alt;
-            $trip->ruchId = $ruchId;
-            $trip->ruchData = $data;
-            $trip->ruchDataDodania = $dataDodania;
-            $trip->userId = $user;
-            $trip->username = isset($username) ? $username : $usernameAnonymous;
-            $trip->comment = $koment;
-            $trip->logType = $logtype;
-            $trip->country = $country;
-            $trip->distance = $droga; // road traveled in km
-            $trip->geokretId = $geokretId;
-            $trip->app = $app;
-            $trip->appVer = $appVer;
-            $trip->picturesCount = $picturesCount;
-            $trip->commentsCount = $commentsCount;
-
-            $trip->waypoint = $waypoint;
-            $trip->waypointName = $wpName;
-            $trip->waypointType = $wpType;
-            $trip->waypointOwner = $wpOwner;
-            $trip->waypointStatus = $wpStatus;
-            $trip->waypointLink = $wpLink;
+            // Workaround: Fix database encoding
+            $trip->comment = html_entity_decode($trip->comment);
 
             $geokret = new \Geokrety\Domain\Konkret();
             $geokret->id = $geokretId;
@@ -234,12 +158,17 @@ EOQUERY;
             $geokret->holderId = $gkHolderId;
             $trip->geokret = $geokret;
 
+            // Workaround: Fix database encoding
+            $geokret->name = html_entity_decode($geokret->name);
+            $geokret->description = html_entity_decode($geokret->description);
+
             $trip->enrichFields();
+            array_push($tripSteps, $trip);
         }
 
         $stmt->close();
 
-        return $trip;
+        return $tripSteps;
     }
 
     public function countTotalMoveByGeokretId($gkId) {
@@ -324,93 +253,7 @@ EOQUERY;
 EOQUERY;
 
         $sql = self::SELECT_RUCHY.$where;
-        if ($this->verbose) {
-            echo "\n$sql\n";
-        }
-
-        if (!($stmt = $this->dblink->prepare($sql))) {
-            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
-        }
-        if (!$stmt->bind_param('d', $geokretyId)) {
-            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        if (!$stmt->execute()) {
-            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        $stmt->store_result();
-        $nbRow = $stmt->num_rows;
-
-        if ($nbRow == 0) {
-            return array();
-        }
-
-        // associate result vars
-        $stmt->bind_result($ruchId, $geokretId, $lat, $lon, $country, $alt, $waypoint,
-                           $data, $dataDodania, $user, $usernameAnonymous, $username, $koment, $logtype, $droga,
-                           $wpName, $wpType, $wpOwner, $wpStatus, $wpLink,
-                           $app, $appVer, $picturesCount, $commentsCount,
-                           $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
-                           $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picCaption
-                           );
-
-        $trips = array();
-        while ($stmt->fetch()) {
-            $trip = new \Geokrety\Domain\TripStep($waypoint);
-            $trip->lat = $lat;
-            $trip->lon = $lon;
-            $trip->alt = $alt;
-            $trip->ruchId = $ruchId;
-            $trip->ruchData = $data;
-            $trip->ruchDataDodania = $dataDodania;
-            $trip->userId = $user;
-            $trip->username = isset($username) ? $username : $usernameAnonymous;
-            $trip->comment = $koment;
-            $trip->logType = $logtype;
-            $trip->country = $country;
-            $trip->distance = $droga; // road traveled in km
-            $trip->geokretId = $geokretId;
-            $trip->app = $app;
-            $trip->appVer = $appVer;
-            $trip->picturesCount = $picturesCount;
-            $trip->commentsCount = $commentsCount;
-
-            $trip->waypoint = $waypoint;
-            $trip->waypointName = $wpName;
-            $trip->waypointType = $wpType;
-            $trip->waypointOwner = $wpOwner;
-            $trip->waypointStatus = $wpStatus;
-            $trip->waypointLink = $wpLink;
-
-            $geokret = new \Geokrety\Domain\Konkret();
-            $geokret->id = $geokretId;
-            $geokret->trackingCode = $gkTrackingCode;
-            $geokret->name = $gkName;
-            $geokret->description = $gkDescription;
-            $geokret->ownerId = $gkOwnerId;
-            $geokret->datePublished = $gkDatePublished;
-            $geokret->type = $gkType;
-            $geokret->distance = $gkDistance; // road traveled in km
-            $geokret->cachesCount = $gkCachesCount;
-            $geokret->picturesCount = $gkPicturesCount;
-            $geokret->avatarId = $gkAvatarId;
-            $geokret->avatarFilename = $picFilename;
-            $geokret->lastPositionId = $gkLastPositionId;
-            $geokret->lastLogId = $gkLastLogId;
-            $geokret->lastLog = $trip;
-            $geokret->missing = $gkMissing;
-            $geokret->holderId = $gkHolderId;
-            $trip->geokret = $geokret;
-
-            $trip->enrichFields();
-            array_push($trips, $trip);
-        }
-
-        $stmt->close();
-
-        return $trips;
+        return $this->getBySql($sql, 'd', array($geokretyId));
     }
 
     public function getAllTripByAuthorId($id, $orderBy = null, $defaultWay = 'desc', $limit = 20, $curPage = 1) {
@@ -429,93 +272,8 @@ EOQUERY;
 EOQUERY;
 
         $sql = self::SELECT_RUCHY.$where;
-        if ($this->verbose) {
-            echo "\n$sql\n";
-        }
-
-        if (!($stmt = $this->dblink->prepare($sql))) {
-            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
-        }
-        if (!$stmt->bind_param('d', $id)) {
-            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        if (!$stmt->execute()) {
-            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        $stmt->store_result();
-        $nbRow = $stmt->num_rows;
-
-        if ($nbRow == 0) {
-            return array(array(), $total);
-        }
-
-        // associate result vars
-        $stmt->bind_result($ruchId, $geokretId, $lat, $lon, $country, $alt, $waypoint,
-                           $data, $dataDodania, $user, $usernameAnonymous, $username, $koment, $logtype, $droga,
-                           $wpName, $wpType, $wpOwner, $wpStatus, $wpLink,
-                           $app, $appVer, $picturesCount, $commentsCount,
-                           $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
-                           $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picCaption
-                           );
-
-        $trips = array();
-        while ($stmt->fetch()) {
-            $trip = new \Geokrety\Domain\TripStep($waypoint);
-            $trip->lat = $lat;
-            $trip->lon = $lon;
-            $trip->alt = $alt;
-            $trip->ruchId = $ruchId;
-            $trip->ruchData = $data;
-            $trip->ruchDataDodania = $dataDodania;
-            $trip->userId = $user;
-            $trip->username = isset($username) ? $username : $usernameAnonymous;
-            $trip->comment = $koment;
-            $trip->logType = $logtype;
-            $trip->country = $country;
-            $trip->distance = $droga; // road traveled in km
-            $trip->geokretId = $geokretId;
-            $trip->app = $app;
-            $trip->appVer = $appVer;
-            $trip->picturesCount = $picturesCount;
-            $trip->commentsCount = $commentsCount;
-
-            $trip->waypoint = $waypoint;
-            $trip->waypointName = $wpName;
-            $trip->waypointType = $wpType;
-            $trip->waypointOwner = $wpOwner;
-            $trip->waypointStatus = $wpStatus;
-            $trip->waypointLink = $wpLink;
-
-            $geokret = new \Geokrety\Domain\Konkret();
-            $geokret->id = $geokretId;
-            $geokret->trackingCode = $gkTrackingCode;
-            $geokret->name = $gkName;
-            $geokret->description = $gkDescription;
-            $geokret->ownerId = $gkOwnerId;
-            $geokret->datePublished = $gkDatePublished;
-            $geokret->type = $gkType;
-            $geokret->distance = $gkDistance; // road traveled in km
-            $geokret->cachesCount = $gkCachesCount;
-            $geokret->picturesCount = $gkPicturesCount;
-            $geokret->avatarId = $gkAvatarId;
-            $geokret->avatarFilename = $picFilename;
-            $geokret->lastPositionId = $gkLastPositionId;
-            $geokret->lastLogId = $gkLastLogId;
-            $geokret->lastLog = $trip;
-            $geokret->missing = $gkMissing;
-            $geokret->holderId = $gkHolderId;
-            $trip->geokret = $geokret;
-
-            $trip->enrichFields();
-            array_push($trips, $trip);
-        }
-
-        $stmt->close();
-
-        return array($trips, $total);
+        $tripSteps = $this->getBySql($sql, 'd', array($id));
+        return array($tripSteps, $total);
     }
 
     public function getAllTripByOwnerId($id, $orderBy = null, $defaultWay = 'desc', $limit = 20, $curPage = 1) {
@@ -534,93 +292,8 @@ EOQUERY;
 EOQUERY;
 
         $sql = self::SELECT_RUCHY.$where;
-        if ($this->verbose) {
-            echo "\n$sql\n";
-        }
-
-        if (!($stmt = $this->dblink->prepare($sql))) {
-            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
-        }
-        if (!$stmt->bind_param('d', $id)) {
-            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        if (!$stmt->execute()) {
-            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        $stmt->store_result();
-        $nbRow = $stmt->num_rows;
-
-        if ($nbRow == 0) {
-            return array(array(), $total);
-        }
-
-        // associate result vars
-        $stmt->bind_result($ruchId, $geokretId, $lat, $lon, $country, $alt, $waypoint,
-                           $data, $dataDodania, $user, $usernameAnonymous, $username, $koment, $logtype, $droga,
-                           $wpName, $wpType, $wpOwner, $wpStatus, $wpLink,
-                           $app, $appVer, $picturesCount, $commentsCount,
-                           $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
-                           $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picCaption
-                           );
-
-        $trips = array();
-        while ($stmt->fetch()) {
-            $trip = new \Geokrety\Domain\TripStep($waypoint);
-            $trip->lat = $lat;
-            $trip->lon = $lon;
-            $trip->alt = $alt;
-            $trip->ruchId = $ruchId;
-            $trip->ruchData = $data;
-            $trip->ruchDataDodania = $dataDodania;
-            $trip->userId = $user;
-            $trip->username = isset($username) ? $username : $usernameAnonymous;
-            $trip->comment = $koment;
-            $trip->logType = $logtype;
-            $trip->country = $country;
-            $trip->distance = $droga; // road traveled in km
-            $trip->geokretId = $geokretId;
-            $trip->app = $app;
-            $trip->appVer = $appVer;
-            $trip->picturesCount = $picturesCount;
-            $trip->commentsCount = $commentsCount;
-
-            $trip->waypoint = $waypoint;
-            $trip->waypointName = $wpName;
-            $trip->waypointType = $wpType;
-            $trip->waypointOwner = $wpOwner;
-            $trip->waypointStatus = $wpStatus;
-            $trip->waypointLink = $wpLink;
-
-            $geokret = new \Geokrety\Domain\Konkret();
-            $geokret->id = $geokretId;
-            $geokret->trackingCode = $gkTrackingCode;
-            $geokret->name = $gkName;
-            $geokret->description = $gkDescription;
-            $geokret->ownerId = $gkOwnerId;
-            $geokret->datePublished = $gkDatePublished;
-            $geokret->type = $gkType;
-            $geokret->distance = $gkDistance; // road traveled in km
-            $geokret->cachesCount = $gkCachesCount;
-            $geokret->picturesCount = $gkPicturesCount;
-            $geokret->avatarId = $gkAvatarId;
-            $geokret->avatarFilename = $picFilename;
-            $geokret->lastPositionId = $gkLastPositionId;
-            $geokret->lastLogId = $gkLastLogId;
-            $geokret->lastLog = $trip;
-            $geokret->missing = $gkMissing;
-            $geokret->holderId = $gkHolderId;
-            $trip->geokret = $geokret;
-
-            $trip->enrichFields();
-            array_push($trips, $trip);
-        }
-
-        $stmt->close();
-
-        return array($trips, $total);
+        $tripSteps = $this->getBySql($sql, 'd', array($id));
+        return array($tripSteps, $total);
     }
 
     public function getRecentTrip($limit = 10) {
@@ -634,90 +307,7 @@ EOQUERY;
 EOQUERY;
 
         $sql = self::SELECT_RECENT_RUCHY.$where;
-        if ($this->verbose) {
-            echo "\n$sql\n";
-        }
-
-        if (!($stmt = $this->dblink->prepare($sql))) {
-            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
-        }
-
-        if (!$stmt->execute()) {
-            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
-        }
-
-        $stmt->store_result();
-        $nbRow = $stmt->num_rows;
-
-        if ($nbRow == 0) {
-            return array();
-        }
-
-        // associate result vars
-        $stmt->bind_result($ruchId, $geokretId, $lat, $lon, $country, $alt, $waypoint,
-                           $data, $dataDodania, $user, $usernameAnonymous, $username, $koment, $logtype, $droga,
-                           $wpName, $wpType, $wpOwner, $wpStatus, $wpLink,
-                           $app, $appVer, $picturesCount, $commentsCount,
-                           $gkName, $gkTrackingCode, $gkDescription, $gkOwnerId, $gkDatePublished, $gkDistance, $gkCachesCount, $gkPicturesCount,
-                           $gkLastPositionId, $gkLastLogId, $gkHolderId, $gkMissing, $gkType, $gkAvatarId,
-                           $picFilename, $picCaption
-                           );
-
-        $trips = array();
-        while ($stmt->fetch()) {
-            $trip = new \Geokrety\Domain\TripStep($waypoint);
-            $trip->lat = $lat;
-            $trip->lon = $lon;
-            $trip->alt = $alt;
-            $trip->ruchId = $ruchId;
-            $trip->ruchData = $data;
-            $trip->ruchDataDodania = $dataDodania;
-            $trip->userId = $user;
-            $trip->username = isset($username) ? $username : $usernameAnonymous;
-            $trip->comment = $koment;
-            $trip->logType = $logtype;
-            $trip->country = $country;
-            $trip->distance = $droga; // road traveled in km
-            $trip->geokretId = $geokretId;
-            $trip->app = $app;
-            $trip->appVer = $appVer;
-            $trip->picturesCount = $picturesCount;
-            $trip->commentsCount = $commentsCount;
-
-            $trip->waypoint = $waypoint;
-            $trip->waypointName = $wpName;
-            $trip->waypointType = $wpType;
-            $trip->waypointOwner = $wpOwner;
-            $trip->waypointStatus = $wpStatus;
-            $trip->waypointLink = $wpLink;
-
-            $geokret = new \Geokrety\Domain\Konkret();
-            $geokret->id = $geokretId;
-            $geokret->trackingCode = $gkTrackingCode;
-            $geokret->name = $gkName;
-            $geokret->description = $gkDescription;
-            $geokret->ownerId = $gkOwnerId;
-            $geokret->datePublished = $gkDatePublished;
-            $geokret->type = $gkType;
-            $geokret->distance = $gkDistance; // road traveled in km
-            $geokret->cachesCount = $gkCachesCount;
-            $geokret->picturesCount = $gkPicturesCount;
-            $geokret->avatarId = $gkAvatarId;
-            $geokret->avatarFilename = $picFilename;
-            $geokret->lastPositionId = $gkLastPositionId;
-            $geokret->lastLogId = $gkLastLogId;
-            $geokret->lastLog = $trip;
-            $geokret->missing = $gkMissing;
-            $geokret->holderId = $gkHolderId;
-            $trip->geokret = $geokret;
-
-            $trip->enrichFields();
-            array_push($trips, $trip);
-        }
-
-        $stmt->close();
-
-        return $trips;
+        return $this->getBySql($sql, '', array());
     }
 
     public function getStatsByOwnerId($userId) {
