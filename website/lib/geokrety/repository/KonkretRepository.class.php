@@ -560,7 +560,7 @@ EOQUERY;
 
         $sql = <<<EOQUERY
 SELECT    country, COUNT(*) as count
-FROM      (SELECT @r := @r + (@country != country) AS gn,
+FROM      (SELECT @r := @r + (@country COLLATE utf8mb4_general_ci != country) AS gn,
                   @country := country AS sn,
                   s.*
            FROM   (SELECT @r := 0, @country := '') vars,

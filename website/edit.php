@@ -308,7 +308,9 @@ elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $TRESC = defektoskop(_('Wrong email or subscribtion option'), true, 'verify_mail returned false', 6, 'verify_mail');
         danger(_('Wrong email or subscribtion option'));
     }
-    $user->redirect();
+    if (!is_null($user)) {
+        $user->redirect();
+    }
     die();
 }
 
