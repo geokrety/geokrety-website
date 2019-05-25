@@ -183,7 +183,7 @@ echo $sql;
 
         $orderDate = ($order == 'ru.data' ? 'if(ru.data <> \'\', 0, 1), ' : '');
         $where = <<<EOQUERY
-    WHERE     gk.owner = ?
+    WHERE     gk.hands_of = ?
     ORDER BY  $orderDate $order $way, nazwa ASC
     LIMIT     $start, $limit
 EOQUERY;
