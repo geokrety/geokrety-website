@@ -82,6 +82,7 @@
 {/literal}
         {include file="js/modal.tpl.js"}
         {include file="js/maxlenght.tpl.js"}
+        {include file="js/tooltips.tpl.js"}
         {if count($js_template)}{foreach from=$js_template item=item}
         {include file=$item}
         {/foreach}{/if}
