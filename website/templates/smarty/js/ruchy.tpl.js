@@ -232,7 +232,6 @@ $("#nextButtonNR").click(function() {
     }
 });
 $('#accordion div.panel-collapse').on('show.bs.collapse', function () {
-    console.log("COUCOU");
     $('div.panel-collapse').each(function() {
         $(this).collapse('hide');
     });
