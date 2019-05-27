@@ -14,8 +14,8 @@
         }
     },
     highlight: function(element, errorClass, validClass) {
-        $(element).parents(".col-sm-10, .col-sm-4").addClass("has-error").removeClass("has-success");
+        $(element).parents(".col-sm-10, .col-sm-6, .col-sm-4").addClass("has-error").removeClass("has-success");
     },
     unhighlight: function(element, errorClass, validClass) {
-        $(element).parents(".col-sm-10, .col-sm-4").addClass("has-success").removeClass("has-error");
+        $(element).parents(".col-sm-10, .col-sm-6, .col-sm-4").addClass("has-success").removeClass("has-error");
     }
