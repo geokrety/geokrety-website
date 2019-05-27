@@ -135,6 +135,7 @@ function colorizeParentPanel(element) {
     colorizePanelOnValidation(panel);
 };
 
+// Load GK preview
 function loadGKFromNr(nr) {
     if ($( "#nr" ).valid()) {
         $.post( "check_nr.php", { nr: nr })
@@ -146,6 +147,7 @@ function loadGKFromNr(nr) {
     }
 }
 
+// Display the map
 function showMap(coordinates) {
     $("#mapField").removeClass("map-togglable");
     if (map === undefined) {
@@ -161,6 +163,7 @@ function showMap(coordinates) {
     map.flyTo(latlng, 6);
 }
 
+// Load coordinates from a waypoint
 function loadCoordinatesFromWpt(wpt) {
     if ($( "#wpt" ).valid()) {
         var latlon = $("#latlon");
@@ -179,6 +182,7 @@ function loadCoordinatesFromWpt(wpt) {
     }
 }
 
+// Convert coordinates format
 function convertCoordinates(coordinates) {
     if ($( "#latlon" ).valid()) {
         var latlon = $("#latlon");
@@ -192,11 +196,13 @@ function convertCoordinates(coordinates) {
     }
 }
 
+// Check if a move type require coordinates
 function isLocationNeeded() {
     var logtype = $('input[name=logtype]:checked', '#moveForm').val();
     return logtype === undefined ? true : ['0', '3', '5'].includes(logtype);
 }
 
+// Toggle location panel based on move type requirement
 function toggleLocationSubfrom() {
     if (isLocationNeeded()) {
         $("#panelLocation").show();
@@ -224,15 +230,14 @@ $("#nextButtonNR").click(function() {
     } else {
         $('#collapseMessage').collapse('show');
     }
-    //  data-toggle="collapse" data-parent="#accordion" href="#collapseLocation" aria-expanded="true" aria-controls="collapseLocation"
 });
-$('#collapseLocation, #collapseMessage').on('shown.bs.collapse', function () {
+$('#accordion div.panel-collapse').on('show.bs.collapse', function () {
     console.log("COUCOU");
-    $('#accordion > div.panel').collapse('hide');
+    $('div.panel-collapse').each(function() {
+        $(this).collapse('hide');
+    });
 })
-// $('#collapseMessage').on('hidden.bs.collapse', function () {
-//     $('div[data-parent="#accordion"]').collapse('hide');
-// })
+
 
 // bind radio buttons
 $("#moveForm input[type=radio]").change(function() {
