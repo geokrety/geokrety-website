@@ -154,7 +154,10 @@ define('CDN_SPIN_JS', CONFIG_CDN_LIBRARIES.'/spin.js/2.3.2/spin.min.js');
 
 define('CDN_SLIDEOUT_JS', CONFIG_CDN_LIBRARIES.'/slideout/1.0.1/slideout.min.js');
 
-define('CDN_JQUERY_VALIDATION_JS', CONFIG_CDN_LIBRARIES.'/jquery-validate/1.19.0/jquery.validate.min.js');
+define('CDN_JQUERY_VALIDATION_JS', CONFIG_CDN_LIBRARIES.'/jquery-validate/1.19.0/jquery.validate.js');
+define('CDN_PARSLEY_BOOTSTRAP3_JS', CONFIG_CDN_LIBRARIES.'/parsley.js/parsleyjs-bootstrap3.js');
+define('CDN_PARSLEY_JS', CONFIG_CDN_LIBRARIES.'/parsley.js/2.9.1/parsley.js');
+define('CDN_PARSLEY_CSS', CONFIG_CDN_LIBRARIES.'/parsley.js/2.9.1/parsley.css');
 
 define('CDN_BOOTSTRAP_SLIDER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-slider/10.6.1/bootstrap-slider.min.js');
 define('CDN_BOOTSTRAP_SLIDER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-slider/10.6.1/bootstrap-slider.min.css');

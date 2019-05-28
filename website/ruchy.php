@@ -590,7 +590,10 @@ $smarty->append('javascript', CDN_MOMENT_JS);
 $smarty->append('css', CDN_BOOTSTRAP_DATETIMEPICKER_CSS);
 $smarty->append('javascript', CDN_BOOTSTRAP_DATETIMEPICKER_JS);
 
-$smarty->append('javascript', CDN_JQUERY_VALIDATION_JS);
+// $smarty->append('javascript', CDN_JQUERY_VALIDATION_JS);
+$smarty->append('javascript', CDN_PARSLEY_BOOTSTRAP3_JS);
+$smarty->append('javascript', CDN_PARSLEY_JS);
+$smarty->append('css', CDN_PARSLEY_CSS);
 
 $smarty->append('js_template', 'js/ruchy.tpl.js');
 $smarty->assign('content_template', 'ruchy.tpl');

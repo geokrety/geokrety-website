@@ -3,16 +3,13 @@
     <li class="active">{t}Log a GeoKret{/t}</li>
 </ol>
 
+<form class="form-horizontal" id="moveForm" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
+    <div class="hidden" id="accordionParking"></div>
 
-<form class="form-horizontal" id="moveForm">
-
-    <div class="hidden" id="accordionParking">
-    </div>
-
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel-group" id="movePanelGroup" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingLogtype" data-toggle="collapse" data-parent="#accordion" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">
+            <div class="panel-heading" role="tab" id="headingLogtype" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">
                 <h4 class="panel-title">
                     Log type
                 </h4>
@@ -75,9 +72,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-3 col-sm-offset-2">
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseNR" aria-expanded="true" aria-controls="collapseNR">Next</button>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">Next</button>
+                            </div>
                         </div>
                     </div>
 
@@ -85,13 +84,13 @@
             </div>
         </div>
 
-        <div class="panel panel-default" id="panelNR">
-            <div class="panel-heading" role="tab" id="headingNR" data-toggle="collapse" data-parent="#accordion" href="#collapseNR" aria-expanded="false" aria-controls="collapseNR">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingGeokret" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">
                 <h4 class="panel-title">
                     Identify GeoKret
                 </h4>
             </div>
-            <div id="collapseNR" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNR">
+            <div id="collapseGeokret" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGeokret">
                 <div class="panel-body">
 
                     <div class="row">
@@ -101,23 +100,28 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="nr" id="nr" minlength="6" maxlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" />
+                                        <input type="text" name="nr" id="nr" minlength="6" maxlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="button" id="nrSearchButton">{fa icon="search"}</button>
                                         </span>
                                     </div>
-                                    <span id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{$imagesUrl}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">6 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u></span>
+                                    <span id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{$imagesUrl}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">6 characters
+                                        from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u></span>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4" id="nrResult">
+                        <div class="col-sm-4 alert alert-success hidden" id="nrResult">
+                        </div>
+                        <div class="col-sm-4 alert alert-danger hidden" id="nrError">
                         </div>
                     </div>
 
-                    <div class="form-group top-buffer">
-                        <div class="col-sm-3 col-sm-offset-2">
-                            <button type="button" class="btn btn-primary btn-block" id="nextButtonNR" >Next</button>
+                    <div class="row">
+                        <div class="form-group top-buffer">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <button type="button" class="btn btn-primary btn-block" id="nextButtonNR">Next</button>
+                            </div>
                         </div>
                     </div>
 
@@ -126,7 +130,7 @@
         </div>
 
         <div class="panel panel-default" id="panelLocation">
-            <div class="panel-heading" role="tab" id="headingLocation" data-toggle="collapse" data-parent="#accordion" href="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+            <div class="panel-heading" role="tab" id="headingLocation" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLocation" aria-expanded="true" aria-controls="collapseLocation">
                 <h4 class="panel-title">
                     New location
                 </h4>
@@ -135,10 +139,10 @@
                 <div class="panel-body">
 
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Waypoint</label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-10">
                                     <div class="input-group">
                                         <input type="text" name="wpt" id="wpt" minlength="4" maxlength="20" class="form-control" aria-describedby="helpBlockWaypoint" placeholder="GC1AQ2N" required>
                                         <span class="input-group-btn">
@@ -152,8 +156,10 @@
                                         </a>
                                     </span>
                                 </div>
+                            </div>
+                            <div class="form-group" id="findbyCacheName">
                                 <label class="col-sm-2 control-label">or cache name</label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-10">
                                     <div class="input-group">
                                         <input type="text" name="NazwaSkrzynki" id="NazwaSkrzynki" size="20" class="form-control" aria-describedby="helpBlockCacheName">
                                         <span class="input-group-btn">
@@ -169,41 +175,51 @@
                                 </div>
                             </div>
 
-                            <div class="form-group coordinates-togglable" id="coordinateField">
-                                <label class="col-sm-2 control-label">Coordinates</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group">
-                                        <input type="text" id="latlon" name="latlon" class="form-control" aria-describedby="helpBlockCoordinates" required>
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" title="Validate coordinates" id="coordinatesSearchButton">{fa icon="search"}</button>
-                                            <!--button class="btn btn-default" type="button" title="Log at my home position" id="homeLocationButton">{fa icon="home"}</button-->
-                                            <!--button class="btn btn-default" type="button" title="Use geolocation" id="geolocationButton">{fa icon="location-arrow"}</button-->
-                                        </span>
+                            <div class="col-sm-offset-2 col-sm-10 margin-bottom-20">
+                                <div class="panel panel-default" id="GCcoordinatesHelp">
+                                    <div class="panel-body">
+                                        <p class="text-center">
+                                            This is a Geocaching.com cache that no one logged on GeoKrety.org yet.
+                                            To ensure correct travel of this GeoKret, please copy/paste cache coordinates
+                                            in the 'Coordinates' field.
+                                        </p>
                                     </div>
-
-
-                                    <span id="helpBlockCoordinates" class="help-block">
-                                        <a href="help.php#acceptableformats" target="_blank">Acceptable geographic coordinate formats</a><br />
-                                        <span class="szare">eg.
-                                            52.1534 21.0539<br />
-                                            N 52° 09.204 E 021° 03.234<br />
-                                            N 52° 9' 12.2400" E 21° 3' 14.0400"</span>
-                                    </span>
                                 </div>
                             </div>
+
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
+
+
                             <div class="panel panel-default map-togglable" id="mapField">
+                                <div class="panel-heading">
+                                    Coordinates
+                                </div>
                                 <div class="panel-body">
+                                    <div class="form-group coordinates-togglable" id="coordinateField">
+                                        <div class="col-sm-12">
+                                            <div class="input-group">
+                                                <input type="text" id="latlon" name="latlon" class="form-control" aria-describedby="helpBlockCoordinates" required>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" title="Validate coordinates" id="coordinatesSearchButton">{fa icon="search"}</button>
+                                                    <!--button class="btn btn-default" type="button" title="Log at my home position" id="homeLocationButton">{fa icon="home"}</button-->
+                                                    <!--button class="btn btn-default" type="button" title="Use geolocation" id="geolocationButton">{fa icon="location-arrow"}</button-->
+                                                    <a href="/help.php#acceptableformats" target="_blank" class="btn btn-default" type="button" title="Acceptable geographic coordinates formats" id="geolocationButton">{fa icon="question-circle"}</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div id="mapid" class="leaflet-container-200"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group top-buffer">
-                        <div class="col-sm-3 col-sm-offset-2">
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">Next</button>
+                    <div class="row">
+                        <div class="form-group top-buffer">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">Next</button>
+                            </div>
                         </div>
                     </div>
 
@@ -212,7 +228,7 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingMessage" data-toggle="collapse" data-parent="#accordion" href="#collapseMessage" aria-expanded="false" aria-controls="collapseMessage">
+            <div class="panel-heading" role="tab" id="headingMessage" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">
                 <h4 class="panel-title">
                     Additional data
                 </h4>
@@ -233,7 +249,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Username</label>
                         <div class="col-sm-6">
-                            <input type="text" name="username" id="username" data-toggle="tooltip" data-html="true" class="form-control" title=" This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc." maxlength="20" required />
+                            <input type="text" name="usernameXXX" id="username" data-toggle="tooltip" data-html="true" class="form-control" title=" This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc." minlength="3"
+                                maxlength="20" required />
                         </div>
                     </div>
 
@@ -247,11 +264,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-3 col-sm-offset-2">
-                            <button type="button" id="submitButton" class="btn btn-primary btn-block">Post your log</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -259,4 +271,9 @@
     </div>
 
 
+    <div class="form-group">
+        <div class="col-sm-3 col-sm-offset-2">
+            <button type="button" id="submitButton" class="btn btn-primary btn-block">Post your log</button>
+        </div>
+    </div>
 </form>

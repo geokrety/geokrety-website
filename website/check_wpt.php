@@ -33,7 +33,7 @@ if (!$hasResult) {
         }
     }
 
-    http_response_code(400);
+    http_response_code(404);
     if ($waypoint->isGCWaypoint($_POST['wpt'])) {
         die(_('"This is a Geocaching.com cache that no one logged yet on GeoKrety.org. Please copy/paste cache coordinates in the field below."'));
     }

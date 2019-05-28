@@ -6,7 +6,7 @@ function initializeMap() {
     var osmAttrib = 'Map data © <a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {
       minZoom: 0,
-      maxZoom: 12,
+      // maxZoom: 12,
       attribution: osmAttrib
     });
 
@@ -21,7 +21,7 @@ function initializeMap() {
     // start the map
     map.setView(center, zoom);
     map.addLayer(osm);
-    
+
     return map;
 }
 // ----------------------------------- JQUERY - MAP INIT - END
