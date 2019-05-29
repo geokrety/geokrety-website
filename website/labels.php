@@ -77,7 +77,8 @@ $TRESC = '<form action="templates/labels/index.php" method="POST">
 					<option value="3" selected="selected">With QR Code</option>
 					<option value="5">SVG classic (beta)</option>
 					<option value="6">SVG circle (beta)</option>
-					<option value="png1">Modern :: Wallson (beta)</option>
+					<option value="png1">Modern :: Wallson 1</option>
+					<option value="png5">Modern :: Wallson 2 (with QR)</option>
 					<option value="png2">Classic :: filips (beta)</option>
 					<option value="png3">Middle classic :: filips (beta)</option>
 					<option value="png4">Modern :: Schrottie (beta)</option>
