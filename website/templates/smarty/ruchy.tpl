@@ -10,9 +10,9 @@
 
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingLogtype" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">
-                <h4 class="panel-title">
-                    Log type
-                </h4>
+                Log type
+                <div class="pull-right" id="logTypeHeader"></div>
+                <div class="clearfix"></div>
             </div>
             <div id="collapseLogtype" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingLogtype">
                 <div class="panel-body">
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="col-lg-8 col-lg-pull-4 top-buffer">
-                            <div class="form-group">
+                            <div class="form-group" id="infoLogtypeFormGroup">
                                 <div class="col-sm-10 col-sm-offset-1">
 
                                     <label>
@@ -86,9 +86,9 @@
 
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingGeokret" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">
-                <h4 class="panel-title">
-                    Identify GeoKret
-                </h4>
+                Identify GeoKret
+                <div class="pull-right" id="geokretHeader"></div>
+                <div class="clearfix"></div>
             </div>
             <div id="collapseGeokret" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGeokret">
                 <div class="panel-body">
@@ -131,9 +131,9 @@
 
         <div class="panel panel-default" id="panelLocation">
             <div class="panel-heading" role="tab" id="headingLocation" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLocation" aria-expanded="true" aria-controls="collapseLocation">
-                <h4 class="panel-title">
-                    New location
-                </h4>
+                New location
+                <div class="pull-right" id="locationHeader"></div>
+                <div class="clearfix"></div>
             </div>
             <div id="collapseLocation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLocation">
                 <div class="panel-body">
@@ -229,9 +229,9 @@
 
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingMessage" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">
-                <h4 class="panel-title">
-                    Additional data
-                </h4>
+                Additional data
+                <div class="pull-right" id="additionalDataHeader"></div>
+                <div class="clearfix"></div>
             </div>
             <div id="collapseMessage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMessage">
                 <div class="panel-body">

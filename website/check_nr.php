@@ -2,6 +2,7 @@
 
 require_once '__sentry.php';
 
+// TODO: We should return Json, not raw values
 if (substr(strtoupper($_POST['nr']), 0, 2) === 'GK') {
     http_response_code(400);
     die(_('You seems to have used the GeoKret public identifier. We need the private code (Tracking Code) here. Hint: it doesn\'t starts with \'GK\' 😉'));

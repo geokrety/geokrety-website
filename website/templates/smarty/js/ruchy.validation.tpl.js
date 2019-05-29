@@ -4,11 +4,22 @@
 //     priority-enabled: false,
 // });
 
+$('input[type=radio][name=logtype]').change(function() {
+  // scroll to top
+  $([document.documentElement, document.body]).animate({
+        scrollTop: $("#infoLogtypeFormGroup").offset().top - 100
+    }, 250);
+  // Show selection in pannel header
+  $("#logTypeHeader").html("Grab");
+});
+
 window.Parsley.addAsyncValidator('checkNr', function (xhr) {
     var valid = 200 === xhr.status;
     if (valid) {
         $("#nrResult").html(xhr.responseText).show().removeClass("hidden");
         $("#nrError").hide();
+        // Show selection in pannel header
+        $("#geokretHeader").html("GKB65C");
     } else {
         $("#nrError").html(xhr.responseText).show().removeClass("hidden");
         $("#nrResult").hide();
@@ -20,7 +31,15 @@ $('#nr').parsley().on('field:ajaxoptions', function(instance, ajaxOptions) {
     ajaxOptions['type'] = 'POST';
 });
 
+$('#nr').parsley().on('field:success', function() {
+  $(':focus').blur();
+});
 
+$('#wpt').parsley().on('field:success', function() {
+  $(':focus').blur();
+  // Show selection in pannel header
+  $("#locationHeader").html($('#wpt').val());
+});
 
 // window.Parsley
 //     .addValidator('notInTheFuture', {
