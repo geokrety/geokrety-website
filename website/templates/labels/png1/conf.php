@@ -1,7 +1,7 @@
 <?php
 
-$imgname = "$kret_szablon/label.jpg";
-$img = imagecreatefromjpeg($imgname); /* Attempt to open */
+$imgname = "$kret_szablon/geokret_label_v1.png";
+$img = imagecreatefrompng($imgname); /* Attempt to open */
 
 $czarny = imagecolorallocate($img, 0, 0, 0);
 $czerwony = imagecolorallocate($img, 240, 0, 0);
@@ -9,12 +9,12 @@ $czerwony = imagecolorallocate($img, 240, 0, 0);
 //$font = "../fonts/techniczna.ttf";
 $font = '../fonts/lucida.ttf';
 
-imagettftext($img, 15, 0, 246, 44, $czarny, $font, "$kret_nazwa");
-imagettftext($img, 15, 0, 252, 122, $czarny, $font, $kret_owner);
-imagettftext($img, 10, 0, 252, 212, $czarny, $font, wordwrap(stripcslashes(strip_tags($kret_opis, '<img>')), 30));
+imagettftext($img, 35, 0, 600, 100, $czarny, $font, "$kret_nazwa");
+imagettftext($img, 35, 0, 600, 287, $czarny, $font, $kret_owner);
+imagettftext($img, 25, 0, 600, 500, $czarny, $font, wordwrap(stripcslashes(strip_tags($kret_opis, '<img>')), 35));
 
-imagettftext($img, 15, 0, 572, 44, $czarny, $font, $kret_tracking);
-imagettftext($img, 15, 0, 792, 44, $czarny, $font, $kret_id);
+imagettftext($img, 35, 0, 1420, 100, $czarny, $font, $kret_tracking);
+imagettftext($img, 35, 0, 2010, 100, $czarny, $font, $kret_id);
 
 header('Content-Type: image/jpeg');
 imagejpeg($img);
