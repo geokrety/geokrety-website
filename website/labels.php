@@ -82,7 +82,9 @@ $TRESC = '<form action="templates/labels/index.php" method="POST">
 					<option value="png2">Classic :: filips (beta)</option>
 					<option value="png3">Middle classic :: filips (beta)</option>
 					<option value="png4">Modern :: Schrottie (beta)</option>
-					<option value="7">SVG PostStamp (beta)</option>
+					<option value="7">PostStamp (simple)</option>
+					<option value="png6">Key chain horizontal + QR</option>
+					<option value="png7">Key chain vertical + QR</option>
 					</select></td>
   </tr>
   <tr>
