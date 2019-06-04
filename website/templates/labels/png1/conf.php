@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Geokrety label template
+ *
+ * Template name: Modern :: Wallson 1
+ */
+
 require_once 'common.php';
 
 $imgname = "$kret_szablon/geokret_label_v1.png";
