@@ -296,7 +296,5 @@ $("#inputDate").click(function() {
     $("#datetimepicker").data("DateTimePicker").show();
 });
 
-{
-    include file = "js/ruchy.validation.tpl.js"
-}
+{include file = "js/ruchy.validation.tpl.js"}
 // ----------------------------------- JQUERY - RUCHY - END
