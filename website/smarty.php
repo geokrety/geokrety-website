@@ -2,11 +2,6 @@
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //
 
-// tymczasowo - zamknij linki do mysqli-a
-if ($link->connected) {
-    mysqli_close($link);
-}
-
 if (!isset($smarty)) {
     echo 'Oops! Something went wrong. Please try again later, we are working on this... <br/>Sorry for the inconvenience!';
     include_once 'defektoskop.php';
@@ -46,11 +41,13 @@ $smarty->assign('content', $TRESC);
 $smarty->assign('footer', $OGON);
 
 $smarty->assign('lang', $_COOKIE['geokret1']);
-
 $smarty->assign('template_login', $template_login);
 
-$smarty->assign('alert_msgs', array_merge($alert_msgs, isset($_SESSION['alert_msgs']) ? $_SESSION['alert_msgs'] : []));
-unset($_SESSION['alert_msgs']);
-
-$smarty->display($template, $smarty_cache_filename);
-exit();
+if (isset($smartyOut)) {
+    $smartyOut = $smarty->fetch($template, $smarty_cache_filename);
+} else {
+    $smarty->assign('alert_msgs', array_merge($alert_msgs, isset($_SESSION['alert_msgs']) ? $_SESSION['alert_msgs'] : []));
+    unset($_SESSION['alert_msgs']);
+    $smarty->display($template, $smarty_cache_filename);
+    exit();
+}

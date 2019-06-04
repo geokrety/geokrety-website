@@ -5,40 +5,82 @@
 // });
 
 $('input[type=radio][name=logtype]').change(function() {
-  // scroll to top
-  $([document.documentElement, document.body]).animate({
+    // scroll to top
+    $([document.documentElement, document.body]).animate({
         scrollTop: $("#infoLogtypeFormGroup").offset().top - 100
     }, 250);
-  // Show selection in pannel header
-  $("#logTypeHeader").html("Grab");
+
+    // Force validate
+    $("#moveForm").parsley().whenValidate({
+        group: "logtype"
+    });
 });
 
-window.Parsley.addAsyncValidator('checkNr', function (xhr) {
+// Validate Tracking code
+window.Parsley.addAsyncValidator('checkNr', function(xhr) {
     var valid = 200 === xhr.status;
     if (valid) {
-        $("#nrResult").html(xhr.responseText).show().removeClass("hidden");
+        var data = JSON.parse(xhr.responseText);
+        // Display fetched GK infos
+        $("#nrResult").html(data['html']).show().removeClass("hidden");
         $("#nrError").hide();
         // Show selection in pannel header
-        $("#geokretHeader").html("GKB65C");
+        $("#geokretHeader").html(data['gkid']);
     } else {
         $("#nrError").html(xhr.responseText).show().removeClass("hidden");
         $("#nrResult").hide();
+        $("#locationHeader").html('');
     }
     return 200 === xhr.status;
 }, '/check_nr.php');
 
-$('#nr').parsley().on('field:ajaxoptions', function(instance, ajaxOptions) {
-    ajaxOptions['type'] = 'POST';
+// Validate Waypoint
+window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
+    var valid = 200 === xhr.status;
+    var coordinates;
+    showMap();
+    if (valid) {
+        var data = JSON.parse(xhr.responseText);
+        // Display fetched Waypoint infos
+        $("#wptResult").html(data['html']).show().removeClass("hidden");
+        $("#wptError").hide();
+        // Show selection in pannel header
+        $("#locationHeader").html(data['waypoint']);
+        // Fill coordinates field
+        coordinates = [data['latitude'], data['longitude']];
+        positionUpdate(coordinates);
+        hideCoordinatesField();
+    } else {
+        $("#wptError").html(xhr.responseText).show().removeClass("hidden");
+        $("#wptResult").hide();
+        $("#locationHeader").html('');
+        toggleCoordinatesField();
+    }
+    return 200 === xhr.status;
+}, '/check_wpt.php');
+
+// Show selection in pannel header
+$('#logType0').parsley().on('field:success', function() {
+    var selectedLogType = $("input[type=radio][name='logtype']:checked").val();
+    var selectedLogTypeText = logTypeToText(selectedLogType);
+    $("#logTypeHeader").html(selectedLogTypeText);
+    colorizeParentPanel($('#logType0'), true);
+}).on('field:error', function() {
+    colorizeParentPanel($('#logType0'), false);
 });
 
 $('#nr').parsley().on('field:success', function() {
-  $(':focus').blur();
+    $(':focus').blur();
+    colorizeParentPanel($('#nr'), true);
+}).on('field:error', function() {
+    colorizeParentPanel($('#nr'), false);
 });
 
 $('#wpt').parsley().on('field:success', function() {
-  $(':focus').blur();
-  // Show selection in pannel header
-  $("#locationHeader").html($('#wpt').val());
+    $(':focus').blur();
+    colorizeParentPanel($('#wpt'), true);
+}).on('field:error', function() {
+    colorizeParentPanel($('#wpt'), false);
 });
 
 // window.Parsley

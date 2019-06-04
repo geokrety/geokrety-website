@@ -14,7 +14,7 @@
                 <div class="pull-right" id="logTypeHeader"></div>
                 <div class="clearfix"></div>
             </div>
-            <div id="collapseLogtype" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingLogtype">
+            <div id="collapseLogtype" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLogtype">
                 <div class="panel-body">
 
                     <div class="row">
@@ -33,7 +33,7 @@
                                 <div class="col-sm-10 col-sm-offset-1">
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType0" value="0" required>
+                                        <input type="radio" name="logtype" id="logType0" value="0" required data-parsley-group="logtype">
                                         <div class="dropped box" data-toggle="tooltip" title="When you've left a GeoKret in a cache">
                                             <span>I've dropped GeoKret</span>
                                         </div>
@@ -100,7 +100,7 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="nr" id="nr" minlength="6" maxlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" />
+                                        <input type="text" name="nr" id="nr" minlength="6" maxlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" style="text-transform:uppercase" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="button" id="nrSearchButton">{fa icon="search"}</button>
                                         </span>
@@ -135,7 +135,7 @@
                 <div class="pull-right" id="locationHeader"></div>
                 <div class="clearfix"></div>
             </div>
-            <div id="collapseLocation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLocation">
+            <div id="collapseLocation" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingLocation">
                 <div class="panel-body">
 
                     <div class="row">
@@ -144,8 +144,9 @@
                                 <label class="col-sm-2 control-label">Waypoint</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
-                                        <input type="text" name="wpt" id="wpt" minlength="4" maxlength="20" class="form-control" aria-describedby="helpBlockWaypoint" placeholder="GC1AQ2N" required>
+                                        <input type="text" name="wpt" id="wpt" minlength="4" maxlength="20" required class="form-control" aria-describedby="helpBlockWaypoint" placeholder="eg. GC1AQ2N" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" style="text-transform:uppercase">
                                         <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" id="wptSearchByNameButton" title="{t}Lookup opencaching cache by name{/t}"><img src="{$imagesUrl}/logos/geocaching.svg" width="18px" /></button>
                                             <button class="btn btn-default" type="button" id="wptSearchButton">{fa icon="search"}</button>
                                         </span>
                                     </div>
@@ -157,8 +158,8 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group" id="findbyCacheName">
-                                <label class="col-sm-2 control-label">or cache name</label>
+                            <div class="form-group hidden" id="findbyCacheName">
+                                <label class="col-sm-2 control-label">OC cache name</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
                                         <input type="text" name="NazwaSkrzynki" id="NazwaSkrzynki" size="20" class="form-control" aria-describedby="helpBlockCacheName">
@@ -167,7 +168,7 @@
                                         </span>
                                     </div>
                                     <span id="helpBlockCacheName" class="help-block">
-                                        Enter cache name. Works only with opencaching networks.
+                                        Enter cache name. <strong>Works only with opencaching networks</strong>.
                                         <a href="help.php#fullysupportedwaypoints">
                                             {fa icon="question-circle"}
                                         </a>
@@ -175,7 +176,9 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-offset-2 col-sm-10 margin-bottom-20">
+                            <div class="col-sm-offset-2 col-sm-10 alert alert-danger hidden" id="wptError">
+                            </div>
+                            <!-- <div class="col-sm-offset-2 col-sm-10 margin-bottom-20 hidden">
                                 <div class="panel panel-default" id="GCcoordinatesHelp">
                                     <div class="panel-body">
                                         <p class="text-center">
@@ -185,7 +188,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                         <div class="col-sm-6">
@@ -196,7 +199,7 @@
                                     Coordinates
                                 </div>
                                 <div class="panel-body">
-                                    <div class="form-group coordinates-togglable" id="coordinateField">
+                                    <div class="form-group coordinates-togglableXXX" id="coordinateField">
                                         <div class="col-sm-12">
                                             <div class="input-group">
                                                 <input type="text" id="latlon" name="latlon" class="form-control" aria-describedby="helpBlockCoordinates" required>

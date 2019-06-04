@@ -33,6 +33,10 @@ class Konkret extends AbstractObject {
     public $lastLog;
     public $lastPosition;
 
+    public function getGKId() {
+        return gkid($this->id);
+    }
+
     public function getUrl() {
         return '/konkret.php?id='.$this->id;
     }
