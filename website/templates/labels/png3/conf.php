@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Geokrety label template
+ *
+ * Template name: Middle classic :: filips
+ */
+
 $imgname = "$kret_szablon/label.png";
 $img = imagecreatefrompng($imgname); /* Attempt to open */
 
