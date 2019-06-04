@@ -28,9 +28,7 @@ $('#movePanelGroup div.panel-collapse').on('show.bs.collapse', function() {
 })
 
 // Initialize map
-{
-    include 'js/_map_init.tpl.js'
-}
+{include 'js/_map_init.tpl.js'}
 // The map object
 var map;
 // The marker on the map
