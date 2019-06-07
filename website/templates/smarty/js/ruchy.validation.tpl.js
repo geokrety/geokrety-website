@@ -1,14 +1,13 @@
 // ----------------------------------- JQUERY - VALIDATION RULES - BEGIN
 
-// var formInstance = $('#moveForm').parsley({
-//     priority-enabled: false,
-// });
+var isValidLatlon = false;
+var isWaypointFound = false;
 
 $('input[type=radio][name=logtype]').change(function() {
-    // scroll to top
-    $([document.documentElement, document.body]).animate({
-        scrollTop: $("#infoLogtypeFormGroup").offset().top - 100
-    }, 250);
+    // // scroll to top
+    // $([document.documentElement, document.body]).animate({
+    //     scrollTop: $("#infoLogtypeFormGroup").offset().top - 100
+    // }, 250);
 
     // Force validate
     $("#moveForm").parsley().whenValidate({
@@ -19,45 +18,64 @@ $('input[type=radio][name=logtype]').change(function() {
 // Validate Tracking code
 window.Parsley.addAsyncValidator('checkNr', function(xhr) {
     var valid = 200 === xhr.status;
+    var data = $.parseJSON(xhr.responseText);
+    this.removeError('errorNr');
     if (valid) {
-        var data = JSON.parse(xhr.responseText);
+        var data = $.parseJSON(xhr.responseText);
         // Display fetched GK infos
-        $("#nrResult").html(data['html']).show().removeClass("hidden");
-        $("#nrError").hide();
-        // Show selection in pannel header
-        $("#geokretHeader").html(data['gkid']);
+        $("#nrResult").html(data.html).show().removeClass("hidden");
+        $("#geokretHeader").html(data.gkid);
     } else {
-        $("#nrError").html(xhr.responseText).show().removeClass("hidden");
+        this.addError('errorNr', { message: data.error })
         $("#nrResult").hide();
-        $("#locationHeader").html('');
+        $("#geokretHeader").html('');
     }
-    return 200 === xhr.status;
+    return valid;
 }, '/check_nr.php');
 
 // Validate Waypoint
 window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
     var valid = 200 === xhr.status;
+    var data = $.parseJSON(xhr.responseText);
     var coordinates;
     showMap();
+    this.removeError('errorWaypoint');
     if (valid) {
-        var data = JSON.parse(xhr.responseText);
-        // Display fetched Waypoint infos
-        $("#wptResult").html(data['html']).show().removeClass("hidden");
-        $("#wptError").hide();
-        // Show selection in pannel header
-        $("#locationHeader").html(data['waypoint']);
+        $("#locationHeader").html(data['waypoint'].toUpperCase());
         // Fill coordinates field
-        coordinates = [data['latitude'], data['longitude']];
-        positionUpdate(coordinates);
+        positionUpdate([data.latitude, data.longitude]);
         hideCoordinatesField();
+    } else if (isWaypointFound) {
+        this.addError('errorWaypoint', { message: data.error })
+        $("#locationHeader").html('');
+        toggleCoordinatesField();
+        positionClear();
+        dropMarker();
+    } else if (isValidLatlon) {
+        $("#locationHeader").html($("#wpt").val().toUpperCase());
+        return true;
     } else {
-        $("#wptError").html(xhr.responseText).show().removeClass("hidden");
-        $("#wptResult").hide();
+        this.addError('errorWaypoint', { message: data.error })
         $("#locationHeader").html('');
         toggleCoordinatesField();
     }
-    return 200 === xhr.status;
+    isWaypointFound = valid;
+    return valid;
 }, '/check_wpt.php');
+
+// Validate Coordinates
+window.Parsley.addAsyncValidator('checkCoordinates', function(xhr) {
+    var valid = 200 === xhr.status;
+    var data = $.parseJSON(xhr.responseText);
+    var latlon = $('#latlon').parsley();
+    this.removeError('errorLatlon');
+    if (valid) {
+        positionUpdate([data.lat, data.lon]);
+    } else {
+        this.addError('errorLatlon', { message: data.error })
+    }
+    return valid;
+}, '/check_coordinates.php');
 
 // Show selection in pannel header
 $('#logType0').parsley().on('field:success', function() {
@@ -77,10 +95,48 @@ $('#nr').parsley().on('field:success', function() {
 });
 
 $('#wpt').parsley().on('field:success', function() {
-    $(':focus').blur();
+    if (!$("#latlon").parsley().isValid()) {
+    // if (isWaypointFound && !$("#latlon").parsley().isValid()) {
+        $(':focus').blur();
+    }
     colorizeParentPanel($('#wpt'), true);
 }).on('field:error', function() {
     colorizeParentPanel($('#wpt'), false);
+});
+
+$('#latlon').parsley().on('field:success', function() {
+    isValidLatlon = true;
+    showMarker($("#latlon").val().split(' '));
+}).on('field:validated', function() {
+    $("#wpt").parsley().reset();
+    $("#wpt").parsley().validate();
+}).on('field:error', function() {
+    isValidLatlon = false;
+    dropMarker();
+});
+
+$('#nrNextButton').on('click', function() {
+    $("#moveForm").parsley().whenValidate({
+        group: "trackingCode"
+    });
+});
+
+// Special case when location is not necessary
+$("#logtypeNextButton").on('click', function() {
+    if (isLocationNeeded()) {
+        $('#collapseLocation').collapse('show');
+    } else {
+        $('#collapseMessage').collapse('show');
+    }
+    $("#moveForm").parsley().whenValidate({
+        group: "logtype"
+    });
+});
+
+$('#locationNextButton').on('click', function() {
+    $("#moveForm").parsley().whenValidate({
+        group: "location"
+    });
 });
 
 // window.Parsley

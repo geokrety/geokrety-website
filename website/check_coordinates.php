@@ -3,16 +3,16 @@
 require_once '__sentry.php';
 
 include_once 'cords_parse.php';
-$coords_parse = cords_parse($_POST['latlon']);
+$coords_parse = cords_parse($_GET['latlon']);
 
-if ($_POST['validateOnly'] == 'true') {
-    if ($coords_parse['error'] == '') {
-        die('"true"'); // Json valid
-    }
+$response = array(
+    'lat' => $coords_parse[0],
+    'lon' => $coords_parse[1],
+    'format' => $coords_parse['format'],
+    'error' => $coords_parse['error'],
+);
 
-    die('"'.$coords_parse['error'].'"'); // Json valid
+if ($coords_parse['error'] != '') {
+    http_response_code(400);
 }
-
-if ($coords_parse['error'] == '') {
-    die($coords_parse[0] .' '. $coords_parse[1]);
-}
+echo json_encode($response);

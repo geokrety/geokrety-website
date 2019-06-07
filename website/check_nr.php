@@ -3,21 +3,25 @@
 require_once '__sentry.php';
 header('Content-Type: application/json');
 
+function error($message) {
+    die(json_encode(array("error" => $message)));
+}
+
 if (substr(strtoupper($_GET['nr']), 0, 2) === 'GK') {
     http_response_code(400);
-    die(_('"You seems to have used the GeoKret public identifier. We need the private code (Tracking Code) here. Hint: it doesn\'t starts with \'GK\' 😉"'));
+    error(_('You seems to have used the GeoKret public identifier. We need the private code (Tracking Code) here. Hint: it doesn\'t starts with \'GK\' 😉'));
 }
 
 if (strlen($_GET['nr']) < 6) {
     http_response_code(400);
-    die(_('"Tracking Code seems too short. We expect 6 characters here."'));
+    error(_('Tracking Code seems too short. We expect 6 characters here.'));
 }
 
 $geokretR = new \Geokrety\Repository\KonkretRepository(GKDB::getLink());
 $geokret = $geokretR->getByTrackingCode($_GET['nr']);
 if (!is_a($geokret, '\Geokrety\Domain\Konkret')) {
     http_response_code(404);
-    die(_('"Sorry, but this Tracking Code was not found in our database."'));
+    error(_('Sorry, but this Tracking Code was not found in our database.'));
 }
 
 $smarty_cache_this_page = 0; // this page should be cached for n seconds

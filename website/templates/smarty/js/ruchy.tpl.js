@@ -12,13 +12,13 @@ $("#datetimepicker").datetimepicker({
 });
 $("#datetimepicker").data("DateTimePicker").date(moment());
 
-// Automatic scroll on panel open
-$("#movePanelGroup div.panel-collapse").on("shown.bs.collapse", function(e) {
-    var $panel = $(this).closest(".panel");
-    $("html,body").animate({
-        scrollTop: $panel.offset().top - 105
-    }, 250);
-});
+// // Automatic scroll on panel open
+// $("#movePanelGroup div.panel-collapse").on("shown.bs.collapse", function(e) {
+//     var $panel = $(this).closest(".panel");
+//     $("html,body").animate({
+//         scrollTop: $panel.offset().top - 105
+//     }, 250);
+// });
 
 // Force accordion collapse, usefull when one panel is dynamically removed
 $('#movePanelGroup div.panel-collapse').on('show.bs.collapse', function() {
@@ -44,16 +44,42 @@ function showMap() {
     }
 }
 
-// Display the marker on map
+// Fill the coordinates
 function positionUpdate(coordinates) {
-    var latlng = L.latLng(coordinates);
+    if (!coordinates[0] || !coordinates[1]) {
+        return;
+    }
+    var latlngString = coordinates[0] + ' ' + coordinates[1];
+    if ($("#latlon").val() != latlngString) {
+        $("#latlon").val(latlngString);
+        $("#latlon").parsley().validate();
+    }
+}
+
+// Clear the coordinates
+function positionClear() {
+    if ($("#latlon").val() != '') {
+        $("#latlon").val('').trigger("change");
+    }
+}
+
+// Display the marker on map
+function showMarker(coordinates) {
+    // var latlng = L.latLng(coordinates);
     if (cacheMarker === undefined) {
         cacheMarker = L.marker([0, 0]).addTo(map);
     }
-    cacheMarker.setLatLng(latlng);
-    map.flyTo(latlng, 6);
-    console.log(latlng);
-    $("#latlon").val(latlng.lat + ' ' + latlng.lng);
+    cacheMarker.setLatLng(coordinates);
+    map.setView(coordinates, 6);
+}
+
+// Remove the marker from map
+function dropMarker() {
+    if (cacheMarker !== undefined) {
+        map.removeLayer(cacheMarker);
+    }
+    cacheMarker = undefined;
+    map.setView(PARIS, 3);
 }
 
 // Show coordinates field
@@ -62,27 +88,13 @@ function toggleCoordinatesField() {
         hideCoordinatesField();
     } else {
         $("#coordinateField").removeClass("coordinates-togglable");
+        $("#latlon").parsley().reset();
     }
 }
 // Show coordinates field
 function hideCoordinatesField() {
-    $("#coordinateField").addClass("coordinates-togglableXXX");
+    $("#coordinateField").addClass("coordinates-togglable");
 }
-
-// // geolocation parameters
-// var geolocationOptions = {
-//   enableHighAccuracy: true,
-//   timeout: 5000,
-//   maximumAge: 0
-// };
-
-
-// function isFieldValid(fieldElement) {
-//     // if (!$(this).valid()) {
-//     //     errorCount = errorCount + 1;
-//     // }
-//     return true;
-// }
 
 // Colorize a panel group if fields have errors
 function colorizeParentPanel(element, valid) {
@@ -97,68 +109,6 @@ function colorizeParentPanel(element, valid) {
             .removeClass("panel-success");
     }
 };
-
-// // Colorize all pannel
-// function colorizePanelsOnValidation() {
-//     $(".panel-group > div.panel").each(function() {
-//         _colorizePanelOnValidation(this);
-//     });
-// };
-
-// // Pannel colors - single
-// function colorizeParentPanel(element, valid) {
-//     var panel = $(element).closest(".panel");
-//     _colorizePanelOnValidation(panel, valid);
-// };
-
-// // Load GK preview
-// function loadGKFromNr(nr) {
-//     console.log("loadGKFromNr");
-//     if ($( "#nr" ).parsley().isValid()) {
-//         console.log("loadGKFromNr: Valid");
-//         $.get( "check_nr.php", { nr: nr })
-//         .done(function( data ) {
-//             $("#nrResult").html(data);
-//         });
-//     } else {
-//         console.log("loadGKFromNr: Invalid");
-//         $("#nrResult").html("");
-//     }
-// }
-
-// // Load coordinates from a waypoint
-// function loadCoordinatesFromWpt(wpt) {
-//     // if ($( "#wpt" ).parsley().isValid()) {
-//     //     var latlon = $("#latlon");
-//     //     $.get( "check_wpt.php", { wpt: wpt, coordinates: latlon.val() })
-//     //     .done(function( data ) {
-//     //         latlon.val(data);
-//     //         // validator.check($("#latlon"));
-//     //         showMap(data);
-//     //     });
-//     // // } else {
-//     // //     $("#latlon").val("");
-//     // }
-//     if ($("#wpt").val().substring(0, 2).toUpperCase() != 'GC') {
-//         $("#coordinateField").addClass("coordinates-togglable");
-//     } else {
-//         $("#coordinateField").removeClass("coordinates-togglable");
-//     }
-// }
-
-// // Convert coordinates format
-// function convertCoordinates(coordinates) {
-//     if ($( "#latlon" ).valid()) {
-//         var latlon = $("#latlon");
-//         $.get( "check_coordinates.php", { latlon: coordinates })
-//         .done(function( data ) {
-//             $("#latlon").val(data);
-//             showMap(data);
-//             validator.resetElements($("#wpt"));
-//             colorizePanelOnValidation($("#latlon").closest("div.panel"));
-//         });
-//     }
-// }
 
 // Check if Waypoint is GC
 function isWaypointGC() {
@@ -223,34 +173,14 @@ $("#submitButton").click(function() {
     // }
 });
 
-// // bind on Next buttons
-// $("button[data-toggle]").click(function() {
-//     colorizeParentPanel(this);
-// });
-// Special case for NR one
-$("#nextButtonNR").click(function() {
-    if (isLocationNeeded()) {
-        $('#collapseLocation').collapse('show');
-    } else {
-        $('#collapseMessage').collapse('show');
-    }
-});
-
-
-
-// // bind radio buttons
-// $("#moveForm input[type=text], #moveForm input[type=radio]").change(function() {
-//     colorizeParentPanel(this);
-// });
-//
-// // bind text buttons
-// $("#moveForm input[type=text]").keyup(function() {
-//     colorizeParentPanel(this);
-// });
-
 // bind nrSearchButton
 $("#nrSearchButton").bind("click", function() {
     $("#nr").parsley().validate();
+});
+
+// bind coordinatesSearchButton
+$("#coordinatesSearchButton").bind("click", function() {
+    $("#latlon").parsley().validate();
 });
 
 // bind wptSearchButton
@@ -267,27 +197,6 @@ $("#wpt").on('input', function() {
 $("#wptSearchByNameButton").bind("click", function() {
     $("#findbyCacheName").toggle().removeClass("hidden");
 });
-
-// bind coordinatesSearchButton
-$("#coordinatesSearchButton").bind("click", function() {
-    // convertCoordinates($("#latlon").val());
-    var latlng = $("#latlon").val().split(' ');
-    console.log("LatLng:" + latlng);
-    positionUpdate(latlng);
-    map.flyTo(latlng, 17);
-});
-
-// // bind geolocationButton
-// $( "#geolocationButton" ).bind("click", function() {
-//     window.navigator.geolocation.getCurrentPosition(function(position) {
-//         var coordinates = position.coords.latitude + " " + position.coords.longitude;
-//         $("#latlon").val(coordinates);
-//         convertCoordinates(coordinates);
-//     }, function(error) {
-//         console.log(error);
-//     }, geolocationOptions);
-//
-// });
 
 // bind datetimepicker
 $("#inputDate").click(function() {

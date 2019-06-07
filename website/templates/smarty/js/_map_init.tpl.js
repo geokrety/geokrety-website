@@ -1,4 +1,5 @@
 // ----------------------------------- JQUERY - MAP INIT - BEGIN
+var PARIS = new L.LatLng(48.85, 2.35);
 
 function initializeMap() {
     var map = L.map('mapid');
@@ -11,7 +12,7 @@ function initializeMap() {
     });
 
     {if !isset($user) or is_null($user) or is_null($user->latitude) or is_null($user->longitude)}
-        var center = new L.LatLng(48.85, 2.35);
+        var center = PARIS;
         var zoom = 3;
     {else}
         var center = new L.LatLng({$user->latitude}, {$user->longitude});

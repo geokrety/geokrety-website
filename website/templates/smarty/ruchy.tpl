@@ -9,6 +9,53 @@
     <div class="panel-group" id="movePanelGroup" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingGeokret" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">
+                Identify GeoKret
+                <div class="pull-right" id="geokretHeader"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="collapseGeokret" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGeokret">
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="nr" class="col-sm-2 control-label">Tracking Code</label>
+                                <div class="col-sm-10">
+
+                                    <div class="input-group">
+                                        <input type="text" name="nr" id="nr" minlength="6" maxlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout"
+                                            data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" />
+                                        <span class="input-group-btn">
+                                            {if $isLoggedIn}
+                                            <button class="btn btn-default" type="button" id="nrInventorySelectButton" title="Select GeoKrety from inventory" data-toggle="modal" data-target="#modal" data-type="select-from-inventory">{fa
+                                                icon="briefcase"}</button>
+                                            {/if}
+                                            <button class="btn btn-default" type="button" id="nrSearchButton" title="Verify tracking code">{fa icon="search"}</button>
+                                        </span>
+                                    </div>
+                                    <span id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{$imagesUrl}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">6 characters
+                                        from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 alert alert-success hidden" id="nrResult"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group top-buffer">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <button type="button" class="btn btn-primary btn-block" id="nrNextButton" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">Next</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingLogtype" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">
                 Log type
                 <div class="pull-right" id="logTypeHeader"></div>
@@ -75,52 +122,7 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-sm-3 col-sm-offset-2">
-                                <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">Next</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingGeokret" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">
-                Identify GeoKret
-                <div class="pull-right" id="geokretHeader"></div>
-                <div class="clearfix"></div>
-            </div>
-            <div id="collapseGeokret" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGeokret">
-                <div class="panel-body">
-
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <label for="nr" class="col-sm-2 control-label">Tracking Code</label>
-                                <div class="col-sm-10">
-
-                                    <div class="input-group">
-                                        <input type="text" name="nr" id="nr" minlength="6" maxlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" style="text-transform:uppercase" />
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" id="nrSearchButton">{fa icon="search"}</button>
-                                        </span>
-                                    </div>
-                                    <span id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{$imagesUrl}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">6 characters
-                                        from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u></span>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 alert alert-success hidden" id="nrResult">
-                        </div>
-                        <div class="col-sm-4 alert alert-danger hidden" id="nrError">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group top-buffer">
-                            <div class="col-sm-3 col-sm-offset-2">
-                                <button type="button" class="btn btn-primary btn-block" id="nextButtonNR">Next</button>
+                                <button type="button" class="btn btn-primary btn-block" id="logtypeNextButton">Next</button>
                             </div>
                         </div>
                     </div>
@@ -144,7 +146,8 @@
                                 <label class="col-sm-2 control-label">Waypoint</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
-                                        <input type="text" name="wpt" id="wpt" minlength="4" maxlength="20" required class="form-control" aria-describedby="helpBlockWaypoint" placeholder="eg. GC1AQ2N" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" style="text-transform:uppercase">
+                                        <input type="text" name="wpt" id="wpt" minlength="4" maxlength="20" required class="form-control" aria-describedby="helpBlockWaypoint" placeholder="eg. GC1AQ2N" data-parsley-trigger="input focusout"
+                                            data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" data-parsley-group="location" data-parsley-errors-messages-disabled data-parsley-debounce="500" style="text-transform:uppercase">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="button" id="wptSearchByNameButton" title="{t}Lookup opencaching cache by name{/t}"><img src="{$imagesUrl}/logos/geocaching.svg" width="18px" /></button>
                                             <button class="btn btn-default" type="button" id="wptSearchButton">{fa icon="search"}</button>
@@ -176,20 +179,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-offset-2 col-sm-10 alert alert-danger hidden" id="wptError">
-                            </div>
-                            <!-- <div class="col-sm-offset-2 col-sm-10 margin-bottom-20 hidden">
-                                <div class="panel panel-default" id="GCcoordinatesHelp">
-                                    <div class="panel-body">
-                                        <p class="text-center">
-                                            This is a Geocaching.com cache that no one logged on GeoKrety.org yet.
-                                            To ensure correct travel of this GeoKret, please copy/paste cache coordinates
-                                            in the 'Coordinates' field.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> -->
-
                         </div>
                         <div class="col-sm-6">
 
@@ -199,10 +188,11 @@
                                     Coordinates
                                 </div>
                                 <div class="panel-body">
-                                    <div class="form-group coordinates-togglableXXX" id="coordinateField">
+                                    <div class="form-group coordinates-togglable" id="coordinateField">
                                         <div class="col-sm-12">
                                             <div class="input-group">
-                                                <input type="text" id="latlon" name="latlon" class="form-control" aria-describedby="helpBlockCoordinates" required>
+                                                <input type="text" id="latlon" name="latlon" class="form-control" aria-describedby="helpBlockCoordinates" required data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates"
+                                                    data-parsley-errors-messages-disabled>
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-default" type="button" title="Validate coordinates" id="coordinatesSearchButton">{fa icon="search"}</button>
                                                     <!--button class="btn btn-default" type="button" title="Log at my home position" id="homeLocationButton">{fa icon="home"}</button-->
@@ -221,7 +211,7 @@
                     <div class="row">
                         <div class="form-group top-buffer">
                             <div class="col-sm-3 col-sm-offset-2">
-                                <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">Next</button>
+                                <button type="button" class="btn btn-primary btn-block" id="locationNextButton" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">Next</button>
                             </div>
                         </div>
                     </div>
@@ -252,7 +242,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Username</label>
                         <div class="col-sm-6">
-                            <input type="text" name="usernameXXX" id="username" data-toggle="tooltip" data-html="true" class="form-control" title=" This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc." minlength="3"
+                            <input type="text" name="username" id="username" data-toggle="tooltip" data-html="true" class="form-control" title=" This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc." minlength="3"
                                 maxlength="20" required />
                         </div>
                     </div>
@@ -267,6 +257,12 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-3 col-sm-offset-2">
+                            <button type="button" id="submitButton" class="btn btn-primary btn-block">Post your log</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -274,9 +270,4 @@
     </div>
 
 
-    <div class="form-group">
-        <div class="col-sm-3 col-sm-offset-2">
-            <button type="button" id="submitButton" class="btn btn-primary btn-block">Post your log</button>
-        </div>
-    </div>
 </form>

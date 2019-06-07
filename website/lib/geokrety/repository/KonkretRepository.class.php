@@ -174,19 +174,22 @@ echo $sql;
         return $geokrety;
     }
 
-    public function getInventoryByUserId($id, $orderBy = null, $defaultWay = 'asc', $limit = 20, $curPage = 1) {
+    public function getInventoryByUserId($id, $orderBy = null, $defaultWay = 'asc', $limit = null, $curPage = 1) {
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
         list($order, $way) = $this->validationService->ensureOrderBy('orderBy', $orderBy, ['id', 'owner', 'ru.data', 'droga', 'skrzynki'], $defaultWay);
-
-        $total = self::count('WHERE gk.hands_of = ?', array('d', $id));
-        $start = $this->paginate($total, $curPage, $limit);
 
         $orderDate = ($order == 'ru.data' ? 'if(ru.data <> \'\', 0, 1), ' : '');
         $where = <<<EOQUERY
     WHERE     gk.hands_of = ?
     ORDER BY  $orderDate $order $way, nazwa ASC
+EOQUERY;
+        if (!is_null($limit)) {
+            $total = self::count('WHERE gk.hands_of = ?', array('d', $id));
+            $start = $this->paginate($total, $curPage, $limit);
+            $where .= <<<EOQUERY
     LIMIT     $start, $limit
 EOQUERY;
+        }
 
         $sql = self::SELECT_USER_KONKRET_INVENTORY.$where;
 

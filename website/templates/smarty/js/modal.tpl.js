@@ -48,6 +48,8 @@ $('#modal').on('show.bs.modal', function(event) {
     } else if (typeName == 'news-comment-delete') {
         var id = button.data('id');
         modal.find('.modal-content').load('/_dialog_news_comment_delete.php?id=' + id);
+    } else if (typeName == 'select-from-inventory') {
+        modal.find('.modal-content').load('/_dialog_select_from_inventory.php');
     }
 })
 
