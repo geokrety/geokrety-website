@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-22 20:05+0000\n"
-"PO-Revision-Date: 2019-06-08 21:00\n"
+"PO-Revision-Date: 2019-06-08 21:10\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -207,11 +207,11 @@ msgstr "Отослать сообщение"
 
 #: website/confirm.php:31
 msgid "It seems that your link has been malformed, possibly by your email software. If clicking on the link directly from within the email does not work, try to copy and paste it into your browser's address field making sure to copy and paste the whole url."
-msgstr "Похоже, что ваша ссылка была неправильно, возможно, ваша почтовая программа. Если нажав на ссылку непосредственно в электронную почту не работает, попробуйте скопировать и вставить его в адресную строку вашего браузера убедившись в том, скопируйте и вставьте весь URL."
+msgstr "Похоже, что ваша ссылка некорректна. Если нажатие на ссылку непосредственно в почтовом клиенте не работает, попробуйте скопировать и вставить адрес в браузер."
 
 #: website/confirm.php:32 website/confirm.php:40
 msgid "Bad confirmation code."
-msgstr "Bad код подтверждения."
+msgstr "Некорректный код подтверждения."
 
 #: website/confirm.php:49
 msgid "This confirmation code has expired."
@@ -220,11 +220,11 @@ msgstr "Этот код подтверждения истек."
 #: website/confirm.php:49
 #, php-format
 msgid "To change your email %sclick here%s."
-msgstr "Чтобы изменить адрес электронной %s Нажмите сюда, %s ."
+msgstr "Чтобы изменить e-mail %sнажмите сюда%s."
 
 #: website/confirm.php:66
 msgid "This confirmation code has already been processed."
-msgstr "Этот код подтверждения уже были обработаны."
+msgstr "Этот код подтверждения уже был использован."
 
 #: website/cords_parse.php:236
 msgid "Bad coordinates or unknown format."
@@ -232,7 +232,7 @@ msgstr "Ошибка в координатах или неизвестный ф�
 
 #: website/cords_parse.php:244
 msgid "Missing or invalid coordinates."
-msgstr "Нужно ввести координаты."
+msgstr "Отсутствуют или неправильные координаты."
 
 #: website/cotozalog.php:8 website/templates/konfig.php:213
 msgid "Dropped to"
@@ -715,7 +715,7 @@ msgstr "Файл:"
 
 #: website/imgup.php:392
 msgid "Use as avatar"
-msgstr "Использовать в качестве аватара"
+msgstr "Установить в качестве аватара"
 
 #: website/imgup.php:392
 #, php-format
@@ -951,7 +951,7 @@ msgstr "Вы не можете оценить этого ГеоКрота"
 
 #: website/konkret.php:273
 msgid "Total distance"
-msgstr "Общий путь"
+msgstr "Пройдено всего"
 
 #: website/konkret.php:274
 msgid "Places visited"
@@ -959,7 +959,7 @@ msgstr "Посетил мест"
 
 #: website/konkret.php:275
 msgid "Forum links"
-msgstr "Forum links"
+msgstr "Ссылки на форум"
 
 #: website/konkret.php:276
 msgid "Country track"
@@ -967,15 +967,15 @@ msgstr "Посещенные страны"
 
 #: website/konkret.php:277
 msgid "Rating"
-msgstr "рейтинг"
+msgstr "Оценка"
 
 #: website/konkret.php:279
 msgid "votes"
-msgstr "Голосов"
+msgstr "голосов"
 
 #: website/konkret.php:279
 msgid "average rating"
-msgstr "Средняя оценка:"
+msgstr "средняя оценка"
 
 #: website/konkret.php:283
 msgid "Share on"
@@ -1097,7 +1097,7 @@ msgstr "Обратите внимание: не все переводы дост
 
 #: website/lingering.php:189 website/mygeokrets.php:232
 msgid "Edit this GeoKret"
-msgstr "Редактировать свойства ГеоКрота"
+msgstr "Редактировать ГеоКрота"
 
 #: website/lingering.php:227 website/mygeokrets.php:325
 #: website/recent_moves.php:97 website/ruchy.php:681
@@ -1159,7 +1159,7 @@ msgstr "<p>Это список геокротов у которых послед
 
 #: website/lost.php:13
 msgid "The map of lost geokrets to organize the rescue mission"
-msgstr "Карта потерял geokrets организовать спасательную миссию"
+msgstr "Карта потерянных геокротов (спасите их!)"
 
 #: website/lost.php:14
 msgid "The list is generated daily."
@@ -1398,11 +1398,11 @@ msgstr "Новость не найдена"
 
 #: website/newscomments.php:230
 msgid "Unsubscribe from this news post"
-msgstr "Отписаться от этого нового поста"
+msgstr "Отписаться от этой новости"
 
 #: website/newscomments.php:233 website/newscomments.php:252
 msgid "Subscribe to this news post"
-msgstr "Подписаться на этот новый пост"
+msgstr "Подписаться на эту новость"
 
 #: website/newscomments.php:248
 msgid "Write new comment"
@@ -1422,7 +1422,7 @@ msgstr "Посмотреть комментарии"
 
 #: website/obserwuj.php:64
 msgid "Users watching this GeoKret:"
-msgstr "Пользователи отслеживают этого ГеоКрота:"
+msgstr "Пользователи, отслеживающие этого ГеоКрота:"
 
 #: website/presscorner.php:10 website/templates.php:114
 #: website/templates/krety.html:150
@@ -1788,7 +1788,7 @@ msgstr "Не указан или указан неверный Код слеже
 
 #: website/ruchy.php:206
 msgid "Missing or invalid Reference Number"
-msgstr "Не указан или указан неверный номер"
+msgstr "Не указан или указан неверный номер крота"
 
 #: website/ruchy.php:214
 msgid "Invalid log type"
@@ -2239,7 +2239,7 @@ msgstr "Перемещения"
 
 #: website/user_stat.php:225
 msgid "Geokrety created"
-msgstr "Зарегистрировано кротов"
+msgstr "Создано геокротов"
 
 #: website/user_stat.php:228
 msgid "Portfolio"
@@ -2322,11 +2322,11 @@ msgstr "Связаться с нами"
 
 #: website/templates/krety.html:207
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
-msgstr "Мы предлагаем вам пожертвовать 3 евро, но будем благодарны за любую сумму. В любом случае, проект GeoKrety.org полностью бесплатный и с открытым исходниками, и будет таким всегда. Спасибо за поддержку"
+msgstr "Мы предлагаем вам пожертвовать 200 рублей, но будем благодарны за любую сумму. В любом случае, проект GeoKrety.org полностью бесплатный и с открытым исходниками, и будет таким всегда. Спасибо за поддержку"
 
 #: website/templates/krety.html:209
 msgid "Enjoying GeoKrety.org?"
-msgstr "Вам нравится сайт GeoKrety.org?"
+msgstr "Вам нравятся ГеоКроты?"
 
 #: website/templates/krety.html:210
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
