@@ -14,7 +14,7 @@
                 <div class="pull-right" id="geokretHeader"></div>
                 <div class="clearfix"></div>
             </div>
-            <div id="collapseGeokret" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGeokret">
+            <div id="collapseGeokret" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingGeokret">
                 <div class="panel-body">
 
                     <div class="row">
@@ -137,7 +137,7 @@
                 <div class="pull-right" id="locationHeader"></div>
                 <div class="clearfix"></div>
             </div>
-            <div id="collapseLocation" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingLocation">
+            <div id="collapseLocation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLocation">
                 <div class="panel-body">
 
                     <div class="row">

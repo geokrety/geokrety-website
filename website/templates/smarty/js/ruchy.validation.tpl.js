@@ -41,22 +41,18 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
     showMap();
     this.removeError('errorWaypoint');
     if (valid) {
-        $("#locationHeader").html(data['waypoint'].toUpperCase());
         // Fill coordinates field
         positionUpdate([data.latitude, data.longitude]);
         hideCoordinatesField();
     } else if (isWaypointFound) {
         this.addError('errorWaypoint', { message: data.error })
-        $("#locationHeader").html('');
         toggleCoordinatesField();
         positionClear();
         dropMarker();
     } else if (isValidLatlon) {
-        $("#locationHeader").html($("#wpt").val().toUpperCase());
         return true;
     } else {
         this.addError('errorWaypoint', { message: data.error })
-        $("#locationHeader").html('');
         toggleCoordinatesField();
     }
     isWaypointFound = valid;
@@ -95,13 +91,15 @@ $('#nr').parsley().on('field:success', function() {
 });
 
 $('#wpt').parsley().on('field:success', function() {
-    if (!$("#latlon").parsley().isValid()) {
+    if (isWaypointFound) {
     // if (isWaypointFound && !$("#latlon").parsley().isValid()) {
         $(':focus').blur();
     }
     colorizeParentPanel($('#wpt'), true);
+    $("#locationHeader").html($('#wpt').val().toUpperCase());
 }).on('field:error', function() {
     colorizeParentPanel($('#wpt'), false);
+    $("#locationHeader").html('');
 });
 
 $('#latlon').parsley().on('field:success', function() {
