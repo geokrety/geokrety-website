@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-22 20:05+0000\n"
-"PO-Revision-Date: 2019-06-08 21:10\n"
+"PO-Revision-Date: 2019-06-08 21:20\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -450,11 +450,11 @@ msgstr "Вы можете получать уведомления, если лю
 
 #: website/edit.php:361
 msgid "Observation radius is invalid or outside the min/max range"
-msgstr "Наблюдение радиус является недействительным или за пределами минимального / максимального диапазона"
+msgstr "Радиус наблюдения не верен или вне допустимых значений"
 
 #: website/edit.php:396
 msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
-msgstr "Последние журналов: * собственные geokrets * geokrets, что вы смотрите * любой geokrets вошли около вашего дома расположения"
+msgstr "Последние записи *ваших* геокротов, отслеживаемых геокротов и любых геокротов, замеченных рядом с вашими домашними координатами"
 
 #: website/edit.php:397
 msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
@@ -516,7 +516,7 @@ msgstr "символов осталось"
 
 #: website/email2gk.php:10
 msgid "Email2GK :: β (beta)"
-msgstr ""
+msgstr "Email2ГК :: β (бета)"
 
 #: website/errory.php:9
 msgid "errors"
@@ -922,7 +922,7 @@ msgstr "Авторизуйтесь, чтобы сообщить о пробле�
 #: website/konkret.php:181
 #, php-format
 msgid "This GeoKret is available for adoption. Please <a href=\"%s\">login</a> first."
-msgstr ""
+msgstr "Вы можете усыновить этого Геокрота. Пожалуйста, сначала <a href=\"%s\">войдите</a>."
 
 #: website/konkret.php:184
 msgid "Claim this GeoKret"
@@ -931,7 +931,7 @@ msgstr "Сообщить о проблеме с ГеоКротом"
 #: website/konkret.php:186
 #, php-format
 msgid "This GeoKret is available for adoption. You can <a href=\"%s\">claim</a> this GeoKret."
-msgstr ""
+msgstr "Вы можете усыновить этого Геокрота. Перейдите по <a href=\"%s\">ссылке</a>."
 
 #: website/konkret.php:248
 msgid "You can rate this GeoKret"
@@ -1186,7 +1186,7 @@ msgstr "Проехал %s км"
 
 #: website/m/qr.php:29
 msgid "Log grabbing or dropping"
-msgstr ""
+msgstr "Взял или положил"
 
 #: website/m/qr.php:30
 msgid "View the GK details"
@@ -1199,7 +1199,7 @@ msgstr "Описание:"
 #: website/m/qr.php:37
 #, php-format
 msgid "<a href=\"%s\">%s</a>, the home of free, trackable moles."
-msgstr ""
+msgstr "<a href=\"%s\">%s</a>, дом бесплатных геокротов."
 
 #: website/majluj.php:8
 msgid "Contact with user"
@@ -1248,7 +1248,7 @@ msgstr "Кротель (отель Геокротов) представляет 
 
 #: website/molehole.php:73
 msgid "By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
-msgstr "В настоящее время в системе OC, мы зарегистрировали после GK (или GK / ТБ) отели / мотели:"
+msgstr "В настоящее время в системе OC, мы зарегистрировали следующие кротели:"
 
 #: website/mypage.php:10 website/mypage.php:57
 msgid "My Page"
@@ -1763,7 +1763,7 @@ msgstr "Создать нового ГеоКрота"
 
 #: website/register.php:38
 msgid "Set my home coordinates as a starting point"
-msgstr "Установите координаты моего дома в качестве отправной точки"
+msgstr "Установить мои домашние координаты как стартовую точку"
 
 #: website/register.php:82
 msgid "No GeoKret's name!"
@@ -1796,7 +1796,7 @@ msgstr "Неверный тип записи"
 
 #: website/ruchy.php:219
 msgid "No lat/lon OR waypoint name!"
-msgstr "Нет Широта/Долгота ИЛИ имени точки!"
+msgstr "Нет координат или имени точки!"
 
 #: website/ruchy.php:224
 msgid "No username supplied"
@@ -1812,7 +1812,7 @@ msgstr "Неправильное время (часы)"
 
 #: website/ruchy.php:299
 msgid "Identical log has been submited."
-msgstr ""
+msgstr "Такая же запись была отправлена."
 
 #: website/ruchy.php:311
 msgid "There is an entry with this date. Correct the date or the hour."
@@ -1888,7 +1888,7 @@ msgstr "Тип записи"
 
 #: website/ruchy.php:822
 msgid "help.php#Chooselogtype"
-msgstr "http://geokrety.org/help_generate.php?help=ru#Chooselogtype"
+msgstr "help.php#Chooselogtype"
 
 #: website/ruchy.php:827
 msgid "When you've left a GeoKret in a cache"
@@ -1916,7 +1916,7 @@ msgstr "Я встретил ГеоКрота"
 
 #: website/ruchy.php:848
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
-msgstr "Когда вы \"макнули\" Геокрота в тайник: положили и сразу же забрали - тогда крот будет отмечен в тайнике, но останется у вас"
+msgstr "Когда вы погостили Геокрота в тайника: положили и сразу же забрали - тогда крот будет отмечен в тайнике, но останется у вас"
 
 #: website/ruchy.php:849
 msgid "I've dipped a GeoKret"
@@ -1924,7 +1924,7 @@ msgstr "Я погостил ГеоКрота"
 
 #: website/ruchy.php:866
 msgid "Identify GeoKret"
-msgstr "Идентификация ГеоКрота"
+msgstr "Выберите ГеоКрота"
 
 #: website/ruchy.php:875
 msgid "New location"
@@ -1936,7 +1936,7 @@ msgstr "<a href=\"help.php#locationdlagc\">Узнать больше о Геок
 
 #: website/ruchy.php:880
 msgid "Waypoint"
-msgstr "Путевая точка"
+msgstr "Точка"
 
 #: website/ruchy.php:884
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
@@ -1944,7 +1944,7 @@ msgstr "например GC1AQ2N, OP069B, OC033A…"
 
 #: website/ruchy.php:885 website/ruchy.php:899
 msgid "help.php#fullysupportedwaypoints"
-msgstr "http://geokrety.org/help_generate.php?help=ru#fullysupportedwaypoints"
+msgstr "help.php#fullysupportedwaypoints"
 
 #: website/ruchy.php:888
 msgid "or name of cache"
@@ -1969,7 +1969,7 @@ msgstr "Координаты"
 
 #: website/ruchy.php:914
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
-msgstr ""
+msgstr "<a href=\"help.php#acceptableformats\" target=\"_blank\">Допустимые форматы географических координат</a>"
 
 #: website/ruchy.php:926
 msgid "Logged using geolocation"
@@ -2119,7 +2119,7 @@ msgstr "ГеоКроты посещающие этот тайник"
 
 #: website/szukaj.php:59
 msgid "Geokrets in"
-msgstr "Геокротов в тайнике"
+msgstr "Геокротов в"
 
 #: website/szukaj.php:107
 msgid "GeoKret owner"
@@ -2199,7 +2199,7 @@ msgstr ""
 
 #: website/toolbox.php:11
 msgid "Geokrety Toolbox"
-msgstr ""
+msgstr "Инструменты ГеоКротов"
 
 #: website/user_stat.php:200
 msgid "Me"
@@ -2223,7 +2223,7 @@ msgstr "Статистика по странам"
 
 #: website/user_stat.php:216
 msgid "Logs"
-msgstr "Логи (записи)"
+msgstr "Записи"
 
 #: website/user_stat.php:219
 msgid "Logtypes"
