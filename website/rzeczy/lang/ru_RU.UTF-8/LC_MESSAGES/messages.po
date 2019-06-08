@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-22 20:05+0000\n"
-"PO-Revision-Date: 2019-06-08 20:30\n"
+"PO-Revision-Date: 2019-06-08 20:40\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -25,7 +25,7 @@ msgstr "Зарегистрироваться"
 
 #: website/adduser.php:55
 msgid "Required fields"
-msgstr "Обязательные для заполнения поля"
+msgstr "Обязательные поля"
 
 #: website/adduser.php:59 website/ruchy.php:685
 msgid "Username"
@@ -42,7 +42,7 @@ msgstr "Подтвердите пароль"
 
 #: website/adduser.php:85 website/edit.php:401 website/new_password.php:42
 msgid "Email"
-msgstr "Адрес электронной почты"
+msgstr "E-mail"
 
 #: website/adduser.php:90
 msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) when my or watched GeoKret changes its location."
@@ -83,7 +83,7 @@ msgstr "Больше информации о выборе хороших пар�
 
 #: website/adduser.php:149 website/adduser.php:152
 msgid "No password"
-msgstr "Пустой пароль"
+msgstr "Нет пароля"
 
 #: website/adduser.php:155
 msgid "Passwords are different or empty!"
@@ -106,7 +106,7 @@ msgstr "Сообщение для подтверждения Вашего адр
 #: website/templates/plugins/function.login_check.php:36
 #: website/templates/krety_not_logged_in.html:2
 msgid "Login"
-msgstr "Авторизоваться"
+msgstr "Войти"
 
 #: website/adduser.php:182 website/templates.php:192
 #: website/templates/plugins/function.login_check.php:36
@@ -120,7 +120,7 @@ msgstr "Это имя уже используется другим пользо�
 
 #: website/adduser.php:196
 msgid "The email you entered is already in use."
-msgstr "Этот адрес email уже используется."
+msgstr "Этот адрес e-mail уже используется."
 
 #: website/adduser.php:212
 msgid "Wrong email address?"
@@ -136,7 +136,7 @@ msgstr "Аккаунт успешно создан"
 
 #: website/adduser.php:267
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
-msgstr "Сообщение для подтверждения Вашего адреса электронной почты было отправлено на Ваш e-mail. Ваша учетная запись станет полностью функциональной после подтверждения. До подтверждения Вы не сможете получать ежедневные уведомления по почте со статистикой и информацией о перемещении ГеоКротов. Ссылка для подтверждения в посланном Вам письме действительна в течении 5 дней. Но Вы уже можете пользоваться сайтом GeoKrety: Входите на сайт под своим логином и паролем! :)"
+msgstr "Сообщение для подтверждения Вашего адреса электронной почты было отправлено на Ваш e-mail. Ваша учетная запись станет полностью функциональной после подтверждения. До подтверждения Вы не сможете получать ежедневные уведомления по почте со статистикой и информацией о перемещении ГеоКротов. Ссылка для подтверждения в посланном Вам письме действительна в течении 5 дней. Но Вы уже можете пользоваться сайтом ГеоКРотов: Входите на сайт под своим логином и паролем! :)"
 
 #: website/aktywuj_maila.php:41 website/confirm.php:83
 msgid "Your email address has been updated successfully."
@@ -144,7 +144,7 @@ msgstr "Ваш адрес электронной почты был успешн�
 
 #: website/aktywuj_maila.php:55
 msgid "Bad confirmation code or other error."
-msgstr "Bad код подтверждения или другую ошибку."
+msgstr "Неверный код подтверждения или другая ошибка."
 
 #: website/api.php:8
 msgid "GK XML interface"
@@ -160,7 +160,7 @@ msgstr "Похоже, ваш адрес электронной почты (%s) �
 #: website/please_login.php:11 website/race_join.php:12
 #: website/register.php:28
 msgid "Please login."
-msgstr "Пожалуйста, авторизуйтесь."
+msgstr "Пожалуйста, войдите."
 
 #: website/comment.php:20
 msgid "Unknown error."
@@ -372,7 +372,7 @@ msgstr "Карта тайников"
 #: website/download.php:22 website/geomapa.php:26
 #, php-format
 msgid "As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href=\"help.php#fullysupportedwaypoints\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
-msgstr "Как мы уже собирали путевые точки значительное число кэшей ( %s ) кэш по всему миру - <a href=\"help.php#fullysupportedwaypoints\"> нажмите здесь </ a> для получения списка поддерживаемых услуг), мы решили создать прозрачную карту из тех, кэши для приборов Garmin (IMG формат). Теперь вы можете иметь все эти кэши на одной карте (на самом деле: mapset)."
+msgstr "Т.к. мы уже собрали точки значительного числа тайников(%s) по всему миру - <a href=\"help.php#fullysupportedwaypoints\">нажмите здесь</a> для получения списка поддерживаемых платформ), мы решили создать доступную карту из тайников для приборов Garmin (img формат). Теперь вы можете видеть все тайники на одной карте (на самом деле, mapset)."
 
 #: website/download.php:25
 msgid "Read more and get the map"
@@ -380,7 +380,7 @@ msgstr "Читать далее и получить карту"
 
 #: website/download.php:28
 msgid "GeoKrety logo"
-msgstr "GeoKrety логотип"
+msgstr "Логотип Геокротов"
 
 #: website/download.php:35
 msgid "Sample geokret label"
@@ -424,7 +424,7 @@ msgstr "Неправильный текущий пароль"
 
 #: website/edit.php:326 website/mypage.php:157
 msgid "Home coordinates"
-msgstr "Координаты дома"
+msgstr "Домашние координаты"
 
 #: website/edit.php:329
 msgid "Use the map to select a location or enter coordinates manually."
@@ -446,7 +446,7 @@ msgstr "Наблюдение области"
 
 #: website/edit.php:342
 msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
-msgstr "Вы можете получать уведомления, если любой geokret вошел в пределах заданного расстояния от вашего дома координат. Чтобы отключить введите 0."
+msgstr "Вы можете получать уведомления, если любой Геокрот оказался в пределах заданного расстояния от ваших домашних координат. Чтобы отключить, введите 0."
 
 #: website/edit.php:361
 msgid "Observation radius is invalid or outside the min/max range"
@@ -1380,7 +1380,9 @@ msgstr "Для получения нового пароля, пожалуйст�
 msgid "Your new password in GeoKrety service is: %s\n\n"
 "Request from: %s :: %s\n"
 "If this mail is unwanted, contact us by replying to this mail."
-msgstr ""
+msgstr "Ваш новый пароль на сайте Геокротов %s\n\n"
+"Запрос от %s :: %s\n"
+"Если вы не хотите получать эти письма, свяжитесь с нами, ответив на это письмо."
 
 #: website/new_password.php:81
 #, php-format
@@ -1629,12 +1631,12 @@ msgstr "Гонка %s создана успешно"
 #: website/race_add.php:314
 #, php-format
 msgid "The password for join this private race is %s. Share it with everyone interested in joining this race. You can also use direct link for joining this race: %s or here: %s"
-msgstr ""
+msgstr "Пароль для этой частной гонки %s. Скажите его всем, кто хочет присоединиться к гонке. Также доступна прямая ссылка: %s или %s"
 
 #: website/race_add.php:316
 #, php-format
 msgid "You can use this link for joining this race: %s or here: %s"
-msgstr ""
+msgstr "Вы можете использовать эту ссылку для присоединения к этой гонке: %s или %s"
 
 #: website/race_conf.php:5
 msgid "Race to destination"
