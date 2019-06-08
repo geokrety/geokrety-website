@@ -1,36 +1,11 @@
-CREATE DATABASE  IF NOT EXISTS `geokrety-db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `geokrety-db`;
+-- Adminer 4.7.1 MySQL dump
 
--- phpMyAdmin SQL Dump
--- version 4.8.0
--- https://www.phpmyadmin.net/
---
--- Host: db
--- Generation Time: Apr 30, 2018 at 09:30 PM
--- Server version: 10.1.13-MariaDB-1~jessie
--- PHP Version: 7.2.4
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-SET FOREIGN_KEY_CHECKS=0;
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `geokrety`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `captcha_codes`
---
+SET NAMES utf8mb4;
 
 CREATE TABLE `captcha_codes` (
   `id` varchar(40) COLLATE utf8mb4_bin NOT NULL,
@@ -38,123 +13,103 @@ CREATE TABLE `captcha_codes` (
   `code` varchar(32) COLLATE utf8mb4_bin NOT NULL,
   `code_display` varchar(32) COLLATE utf8mb4_bin NOT NULL,
   `created` int(11) NOT NULL,
-  `audio_data` mediumblob
+  `audio_data` mediumblob,
+  PRIMARY KEY (`id`,`namespace`),
+  KEY `created` (`created`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-aktywnekody`
---
 
 CREATE TABLE `gk-aktywnekody` (
   `kod` varchar(60) COLLATE utf8_polish_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-aktywnemaile`
---
 
 CREATE TABLE `gk-aktywnemaile` (
   `kod` varchar(60) COLLATE utf8_polish_ci NOT NULL,
   `userid` bigint(20) NOT NULL,
   `email` varchar(150) COLLATE utf8_polish_ci NOT NULL,
-  `done` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '1=confirmed',
+  `done` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '1=confirmed',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-aktywnesesje`
---
 
 CREATE TABLE `gk-aktywnesesje` (
   `sessid` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `userid` bigint(20) NOT NULL,
   `user` varchar(30) COLLATE utf8_polish_ci NOT NULL,
-  `remember` binary(1) NOT NULL DEFAULT '0'
+  `remember` binary(1) NOT NULL DEFAULT '0',
+  KEY `userid` (`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-badges`
---
 
 CREATE TABLE `gk-badges` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` bigint(20) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `desc` varchar(128) COLLATE utf8_polish_ci NOT NULL,
-  `file` varchar(32) COLLATE utf8_polish_ci NOT NULL
+  `file` varchar(32) COLLATE utf8_polish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `timestamp` (`timestamp`),
+  KEY `userid` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='badges for the users';
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-errory`
---
 
 CREATE TABLE `gk-errory` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` varchar(50) COLLATE utf8_polish_ci NOT NULL DEFAULT '',
-  `userid` int(10) UNSIGNED NOT NULL,
-  `ip` varchar(16) COLLATE utf8_polish_ci NOT NULL,
+  `userid` int(10) unsigned NOT NULL,
+  `ip` varchar(46) COLLATE utf8_polish_ci NOT NULL,
   `file` text COLLATE utf8_polish_ci NOT NULL,
   `details` mediumtext COLLATE utf8_polish_ci NOT NULL,
   `severity` int(10) NOT NULL DEFAULT '0',
   `date` datetime NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK errors';
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `date` (`date`),
+  KEY `severity` (`severity`),
+  KEY `userid` (`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-geokrety`
---
 
 CREATE TABLE `gk-geokrety` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nr` varchar(9) COLLATE utf8_polish_ci NOT NULL,
   `nazwa` varchar(75) COLLATE utf8_polish_ci DEFAULT NULL,
   `opis` text COLLATE utf8_polish_ci,
-  `owner` int(10) UNSIGNED DEFAULT NULL,
+  `owner` int(10) unsigned DEFAULT NULL,
   `data` datetime DEFAULT NULL,
-  `droga` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'road traveled in km',
-  `skrzynki` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'number of visited cache box',
-  `zdjecia` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `ost_pozycja_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'position last ruchy id',
-  `ost_log_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'log last ruchy id',
+  `droga` int(10) unsigned NOT NULL,
+  `skrzynki` smallint(5) unsigned NOT NULL,
+  `zdjecia` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `ost_pozycja_id` int(10) unsigned NOT NULL,
+  `ost_log_id` int(10) unsigned NOT NULL,
   `hands_of` int(10) DEFAULT NULL COMMENT 'In the hands of user',
-  `missing` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `missing` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `typ` enum('0','1','2','3','4') COLLATE utf8_polish_ci NOT NULL,
-  `avatarid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `timestamp_oc` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='Geokrety';
+  `avatarid` int(10) unsigned NOT NULL,
+  `timestamp_oc` datetime NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`nr`) USING BTREE,
+  KEY `owner` (`owner`),
+  KEY `nr` (`nr`),
+  KEY `ost_pozycja_id` (`ost_pozycja_id`),
+  KEY `avatarid` (`avatarid`),
+  KEY `ost_log_id` (`ost_log_id`),
+  KEY `hands_of_index` (`hands_of`),
+  KEY `id_typ` (`typ`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-geokrety-rating`
---
 
 CREATE TABLE `gk-geokrety-rating` (
   `id` bigint(20) NOT NULL COMMENT 'id kreta',
   `userid` bigint(20) NOT NULL COMMENT 'id usera',
-  `rate` float NOT NULL DEFAULT '0' COMMENT 'single rating (number of stars)'
+  `rate` float NOT NULL DEFAULT '0' COMMENT 'single rating (number of stars)',
+  PRIMARY KEY (`id`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK ratings';
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-grupy`
---
 
 CREATE TABLE `gk-grupy` (
   `groupid` bigint(20) NOT NULL,
@@ -162,55 +117,38 @@ CREATE TABLE `gk-grupy` (
   `joined` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='wchich kret belongs to which group';
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-grupy-desc`
---
 
 CREATE TABLE `gk-grupy-desc` (
-  `groupid` bigint(20) NOT NULL,
+  `groupid` bigint(20) NOT NULL AUTO_INCREMENT,
   `creator` bigint(20) NOT NULL,
   `created` datetime DEFAULT NULL,
   `private` binary(1) NOT NULL,
   `desc` blob NOT NULL,
-  `name` varchar(128) COLLATE utf8_polish_ci NOT NULL
+  `name` varchar(128) COLLATE utf8_polish_ci NOT NULL,
+  UNIQUE KEY `groupid` (`groupid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='descriptions of groups';
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-licznik`
---
 
 CREATE TABLE `gk-licznik` (
   `witryna` varchar(20) COLLATE utf8_polish_ci NOT NULL DEFAULT '',
   `licznik` bigint(20) NOT NULL,
-  `od` datetime NOT NULL
+  `od` datetime NOT NULL,
+  PRIMARY KEY (`witryna`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-maile`
---
 
 CREATE TABLE `gk-maile` (
-  `id_maila` bigint(20) NOT NULL,
+  `id_maila` bigint(20) NOT NULL AUTO_INCREMENT,
   `random_string` varchar(10) COLLATE utf8_polish_ci NOT NULL,
   `from` bigint(20) NOT NULL,
   `to` bigint(20) NOT NULL,
   `temat` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   `tresc` text COLLATE utf8_polish_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `ip` varchar(50) COLLATE utf8_polish_ci NOT NULL
+  `ip` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  UNIQUE KEY `id_maila` (`id_maila`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-miasta`
---
 
 CREATE TABLE `gk-miasta` (
   `id` bigint(20) NOT NULL,
@@ -219,177 +157,146 @@ CREATE TABLE `gk-miasta` (
   `alternatenames` varchar(500) COLLATE utf8_polish_ci NOT NULL,
   `lat` double NOT NULL,
   `lon` double NOT NULL,
-  `country` varchar(3) COLLATE utf8_polish_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='city';
+  `country` varchar(3) COLLATE utf8_polish_ci NOT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-news`
---
 
 CREATE TABLE `gk-news` (
-  `news_id` bigint(20) NOT NULL,
+  `news_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `czas_postu` datetime NOT NULL,
   `tytul` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `tresc` mediumtext COLLATE utf8_polish_ci,
   `who` varchar(80) COLLATE utf8_polish_ci NOT NULL,
   `userid` int(10) NOT NULL,
-  `komentarze` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `ostatni_komentarz` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK news';
+  `komentarze` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `ostatni_komentarz` datetime DEFAULT NULL,
+  PRIMARY KEY (`news_id`),
+  KEY `date` (`date`),
+  KEY `userid` (`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-news-comments`
---
 
 CREATE TABLE `gk-news-comments` (
-  `comment_id` int(10) UNSIGNED NOT NULL,
-  `news_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
+  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `news_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `date` datetime NOT NULL,
   `comment` varchar(1000) COLLATE utf8_polish_ci NOT NULL,
-  `icon` tinyint(3) UNSIGNED NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK news comments';
+  `icon` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`comment_id`),
+  KEY `news_id` (`news_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-news-comments-access`
---
 
 CREATE TABLE `gk-news-comments-access` (
-  `news_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
+  `news_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `read` datetime DEFAULT NULL,
   `post` datetime DEFAULT NULL,
-  `subscribed` enum('0','1') COLLATE utf8_polish_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK news subscription';
+  `subscribed` enum('0','1') COLLATE utf8_polish_ci NOT NULL,
+  PRIMARY KEY (`news_id`,`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-obrazki`
---
 
 CREATE TABLE `gk-obrazki` (
-  `typ` tinyint(3) UNSIGNED DEFAULT NULL,
-  `obrazekid` int(10) UNSIGNED NOT NULL,
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_kreta` int(10) UNSIGNED NOT NULL,
-  `user` int(10) UNSIGNED NOT NULL,
+  `typ` tinyint(3) unsigned DEFAULT NULL,
+  `obrazekid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
+  `id_kreta` int(10) unsigned NOT NULL,
+  `user` int(10) unsigned NOT NULL,
   `plik` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `opis` varchar(50) COLLATE utf8_polish_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK images';
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `obrazekid` (`obrazekid`),
+  KEY `idkreta_typ` (`id_kreta`,`typ`),
+  KEY `id` (`id`),
+  KEY `id_kreta` (`id_kreta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-obrazki-2`
---
 
 CREATE TABLE `gk-obrazki-2` (
   `typ` int(11) DEFAULT NULL,
-  `obrazekid` bigint(20) NOT NULL,
+  `obrazekid` bigint(20) NOT NULL AUTO_INCREMENT,
   `id` bigint(20) NOT NULL,
   `id_kreta` bigint(20) NOT NULL,
   `user` bigint(20) NOT NULL,
   `plik` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `opis` varchar(50) COLLATE utf8_polish_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `obrazekid` (`obrazekid`),
+  KEY `idkreta_typ` (`id_kreta`,`typ`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-obserwable`
---
 
 CREATE TABLE `gk-obserwable` (
-  `userid` int(10) UNSIGNED NOT NULL,
-  `id` int(10) UNSIGNED NOT NULL
+  `userid` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL,
+  KEY `userid` (`userid`),
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-ostatnieruchy`
---
 
 CREATE TABLE `gk-ostatnieruchy` (
-  `ruch_id` int(10) UNSIGNED DEFAULT '0',
-  `id` int(10) UNSIGNED,
+  `ruch_id` int(10) unsigned DEFAULT '0',
+  `id` int(10) unsigned,
   `lat` double(8,5) DEFAULT NULL,
   `lon` double(8,5) DEFAULT NULL,
   `alt` int(5) DEFAULT '-32768',
   `country` varchar(3) CHARACTER SET utf8 COLLATE utf8_polish_ci,
-  `droga` int(10) UNSIGNED,
+  `droga` int(10) unsigned,
   `waypoint` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `data` datetime DEFAULT NULL,
   `data_dodania` datetime DEFAULT NULL,
-  `user` int(10) UNSIGNED DEFAULT '0',
+  `user` int(10) unsigned DEFAULT '0',
   `koment` varchar(5120) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `zdjecia` tinyint(3) UNSIGNED DEFAULT '0',
-  `komentarze` smallint(5) UNSIGNED DEFAULT '0',
+  `zdjecia` tinyint(3) unsigned DEFAULT '0',
+  `komentarze` smallint(5) unsigned DEFAULT '0',
   `logtype` enum('0','1','2','3','4','5','6') CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT '0' COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
   `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `app` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'www' COMMENT 'source of the log',
-  `app_ver` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci COMMENT 'application version/codename'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `app_ver` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci COMMENT 'apploction version/codename'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-owner-codes`
---
 
 CREATE TABLE `gk-owner-codes` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `kret_id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kret_id` int(10) unsigned NOT NULL,
   `code` varchar(20) COLLATE utf8_polish_ci NOT NULL,
   `generated_date` datetime NOT NULL,
   `claimed_date` datetime NOT NULL,
-  `user_id` int(10) NOT NULL DEFAULT '0'
+  `user_id` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `kret_id` (`kret_id`),
+  KEY `code` (`code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-races`
---
 
 CREATE TABLE `gk-races` (
-  `raceid` bigint(20) NOT NULL,
-  `created` datetime NOT NULL COMMENT 'kiedy utworzono',
+  `raceid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created` datetime NOT NULL COMMENT 'Creation date',
   `raceOwner` bigint(20) NOT NULL,
   `private` binary(1) NOT NULL DEFAULT '0' COMMENT '0 = public, 1 = private',
-  `haslo` varchar(16) COLLATE utf8_bin NOT NULL COMMENT 'haslo tajnego wyścigu - password for private course',
+  `haslo` varchar(16) COLLATE utf8_bin NOT NULL COMMENT 'password to join the race',
   `raceTitle` varchar(32) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `racestart` date NOT NULL COMMENT 'początek rajdu',
+  `racestart` date NOT NULL COMMENT 'Race start date',
   `raceend` date NOT NULL,
   `opis` varchar(5120) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `raceOpts` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL COMMENT 'typ wyścigu - race type',
+  `raceOpts` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL COMMENT 'Type of race',
   `wpt` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `targetlat` double DEFAULT NULL,
   `targetlon` double DEFAULT NULL,
-  `targetDist` bigint(20) DEFAULT NULL COMMENT 'docelowa ogległość',
-  `targetCaches` bigint(20) DEFAULT NULL COMMENT 'docelowa liczba keszy',
-  `status` int(1) NOT NULL COMMENT 'status wyścigu. 0=zapisy, 1=trwa, 2=skończony, 3=zakończony ale logi spływają'
+  `targetDist` bigint(20) DEFAULT NULL COMMENT 'target distance',
+  `targetCaches` bigint(20) DEFAULT NULL COMMENT 'targeted number of caches',
+  `status` int(1) NOT NULL COMMENT 'race status. 0 = initialized, 1 = persist, 2 = finite, 3 = finished but logs flow down',
+  PRIMARY KEY (`raceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='race definitions';
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-races-krety`
---
 
 CREATE TABLE `gk-races-krety` (
-  `raceGkId` bigint(20) NOT NULL,
+  `raceGkId` bigint(20) NOT NULL AUTO_INCREMENT,
   `raceid` bigint(20) NOT NULL,
   `geokretid` bigint(20) NOT NULL,
   `initDist` bigint(20) NOT NULL COMMENT 'początkowy dystans kreta',
@@ -400,59 +307,60 @@ CREATE TABLE `gk-races-krety` (
   `finishDist` bigint(20) NOT NULL COMMENT 'dist na chwilę zakończenia rajdu',
   `finishCaches` bigint(20) NOT NULL COMMENT 'caches na chwilę zakończenia rajdu',
   `finishLat` double DEFAULT NULL,
-  `finishLon` double DEFAULT NULL
+  `finishLon` double DEFAULT NULL,
+  UNIQUE KEY `raceGkId` (`raceGkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='uczestnicy rajdów';
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-ruchy`
---
 
 CREATE TABLE `gk-ruchy` (
-  `ruch_id` int(10) UNSIGNED NOT NULL,
-  `id` int(10) UNSIGNED NOT NULL,
-  `lat` double(8,5) DEFAULT NULL COMMENT 'latitude',
-  `lon` double(8,5) DEFAULT NULL COMMENT 'longitude',
-  `alt` int(5) NOT NULL DEFAULT '-32768' COMMENT 'altitude',
-  `country` varchar(3) COLLATE utf8_polish_ci NOT NULL DEFAULT '' COMMENT 'country code',
-  `droga` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'road traveled in km',
-  `waypoint` varchar(10) COLLATE utf8_polish_ci NOT NULL DEFAULT '' COMMENT 'waypoint code - empty for comment',
-  `data` datetime DEFAULT NULL COMMENT 'ruchy user provided date',
-  `data_dodania` datetime DEFAULT NULL COMMENT 'ruchy database added date',
-  `user` int(10) UNSIGNED DEFAULT '0' COMMENT 'ruchy author user id',
-  `koment` varchar(5120) COLLATE utf8_polish_ci DEFAULT NULL COMMENT 'ruchy user provided comment',
-  `zdjecia` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
-  `komentarze` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `ruch_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
+  `lat` double(8,5) DEFAULT NULL,
+  `lon` double(8,5) DEFAULT NULL,
+  `alt` int(5) NOT NULL DEFAULT '-32768',
+  `country` varchar(3) COLLATE utf8_polish_ci NOT NULL,
+  `droga` int(10) unsigned NOT NULL,
+  `waypoint` varchar(10) COLLATE utf8_polish_ci NOT NULL,
+  `data` datetime DEFAULT NULL,
+  `data_dodania` datetime DEFAULT NULL,
+  `user` int(10) unsigned DEFAULT '0',
+  `koment` varchar(5120) COLLATE utf8_polish_ci DEFAULT NULL,
+  `zdjecia` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `komentarze` smallint(5) unsigned NOT NULL DEFAULT '0',
   `logtype` enum('0','1','2','3','4','5','6') COLLATE utf8_polish_ci DEFAULT '0' COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
   `username` varchar(20) COLLATE utf8_polish_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `app` varchar(16) COLLATE utf8_polish_ci NOT NULL DEFAULT 'www' COMMENT 'source of the log',
-  `app_ver` varchar(16) COLLATE utf8_polish_ci NOT NULL COMMENT 'apploction version/codename'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK ruchy - geokrety movements';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-ruchy-comments`
---
-
-CREATE TABLE `gk-ruchy-comments` (
-  `comment_id` int(10) UNSIGNED NOT NULL,
-  `ruch_id` int(10) UNSIGNED NOT NULL,
-  `kret_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL COMMENT 'id autora postu',
-  `data_dodania` datetime NOT NULL,
-  `comment` varchar(500) COLLATE utf8_polish_ci NOT NULL,
-  `type` tinyint(3) UNSIGNED NOT NULL COMMENT '0-sam wpis, 1-brak kreta',
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `app_ver` varchar(16) COLLATE utf8_polish_ci NOT NULL COMMENT 'apploction version/codename',
+  PRIMARY KEY (`ruch_id`),
+  KEY `id_2` (`id`),
+  KEY `waypoint` (`waypoint`),
+  KEY `user` (`user`),
+  KEY `lat` (`lat`),
+  KEY `lon` (`lon`),
+  KEY `logtype` (`logtype`),
+  KEY `data` (`data`),
+  KEY `data_dodania` (`data_dodania`),
+  KEY `timestamp` (`timestamp`),
+  KEY `alt` (`alt`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `gk-statystyki-dzienne`
---
+CREATE TABLE `gk-ruchy-comments` (
+  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ruch_id` int(10) unsigned NOT NULL,
+  `kret_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL COMMENT 'id autora postu',
+  `data_dodania` datetime NOT NULL,
+  `comment` varchar(500) COLLATE utf8_polish_ci NOT NULL,
+  `type` tinyint(3) unsigned NOT NULL COMMENT '0-sam wpis, 1-brak kreta',
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`comment_id`),
+  KEY `kret_id` (`kret_id`),
+  KEY `user_id` (`user_id`),
+  KEY `ruch_id` (`ruch_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
 
 CREATE TABLE `gk-statystyki-dzienne` (
   `data` date NOT NULL,
@@ -465,54 +373,46 @@ CREATE TABLE `gk-statystyki-dzienne` (
   `users` int(11) NOT NULL,
   `users_` int(11) NOT NULL,
   `ruchow` int(11) NOT NULL,
-  `ruchow_` int(11) NOT NULL
+  `ruchow_` int(11) NOT NULL,
+  UNIQUE KEY `data` (`data`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='informacje nt. przyrostu zmiennych dzień po dniu';
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-users`
---
 
 CREATE TABLE `gk-users` (
-  `userid` int(10) UNSIGNED NOT NULL,
-  `user` varchar(80) COLLATE utf8_polish_ci DEFAULT NULL,
-  `haslo` varchar(500) COLLATE utf8_polish_ci DEFAULT NULL,
-  `haslo2` varchar(120) COLLATE utf8_polish_ci NOT NULL,
-  `email` varchar(150) COLLATE utf8_polish_ci NOT NULL DEFAULT '',
+  `userid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user` varchar(80) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `haslo` varchar(500) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `haslo2` varchar(120) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `email` varchar(150) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL DEFAULT '',
   `email_invalid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '* 0 ok * 1 blocked * 2 autoresponder',
   `joined` datetime DEFAULT NULL,
   `wysylacmaile` binary(1) NOT NULL DEFAULT '1',
-  `ip` varchar(16) COLLATE utf8_polish_ci NOT NULL,
+  `ip` varchar(46) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `lang` varchar(2) COLLATE utf8_polish_ci DEFAULT NULL,
+  `lang` varchar(2) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
   `lat` double(8,5) DEFAULT NULL,
   `lon` double(8,5) DEFAULT NULL,
-  `promien` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `country` char(3) COLLATE utf8_polish_ci DEFAULT NULL,
+  `promien` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `country` char(3) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
   `godzina` int(11) NOT NULL,
   `statpic` tinyint(1) DEFAULT '1',
   `ostatni_mail` datetime DEFAULT NULL,
-  `ostatni_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `secid` varchar(128) COLLATE utf8_polish_ci NOT NULL COMMENT 'tajny klucz usera'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GK users';
+  `ostatni_login` datetime DEFAULT NULL,
+  `secid` varchar(128) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL COMMENT 'tajny klucz usera',
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `user` (`user`),
+  KEY `secid` (`secid`),
+  KEY `ostatni_login` (`ostatni_login`),
+  KEY `email_invalid` (`email_invalid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-wartosci`
---
 
 CREATE TABLE `gk-wartosci` (
   `name` varchar(32) COLLATE utf8_polish_ci NOT NULL,
-  `value` float NOT NULL
+  `value` float NOT NULL,
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk-waypointy`
---
 
 CREATE TABLE `gk-waypointy` (
   `waypoint` varchar(11) COLLATE utf8_polish_ci NOT NULL DEFAULT '',
@@ -526,42 +426,293 @@ CREATE TABLE `gk-waypointy` (
   `kraj` varchar(200) COLLATE utf8_polish_ci NOT NULL,
   `link` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='Waypoints';
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`waypoint`),
+  UNIQUE KEY `waypoint` (`waypoint`),
+  KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `gk-waypointy-gc`
---
+CREATE TABLE `gk-waypointy-country` (
+  `kraj` varchar(200) COLLATE utf8_polish_ci NOT NULL,
+  `country` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL,
+  UNIQUE KEY `unique_kraj` (`kraj`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `gk-waypointy-country` (`kraj`, `country`) VALUES
+('Afghanistan',	'Afghanistan'),
+('Ägypten',	'Egypt'),
+('Albania',	'Albania'),
+('Albanien',	'Albania'),
+('Amerikanisch-Ozeanien',	'American Samoa'),
+('Argentinien',	'Argentina'),
+('Argentyna',	'Argentina'),
+('Armenia',	'Armenia'),
+('AT',	'Austria'),
+('AU',	'Australia'),
+('Australien',	'Australia'),
+('Austria',	'Austria'),
+('Bahamas',	'Bahamas'),
+('Belarus (Weißrußland)',	'Belarus'),
+('Belgia',	'Belgium'),
+('Belgien',	'Belgium'),
+('Białoruś',	'Belarus'),
+('Bosnien-Herzegowina',	'Bosnia and Herzegovina'),
+('Botsuana',	'Botswana'),
+('Brasilien',	'Brazil'),
+('Bulgarien',	'Bulgaria'),
+('Bułgaria',	'Bulgaria'),
+('CA',	'Canada'),
+('Canada',	'Canada'),
+('Česká Republika',	'Czech Republic'),
+('Chile',	'Chile'),
+('Chiny',	'China'),
+('Chorwacja',	'Croatia'),
+('Costa Rica',	'Costa Rica'),
+('Cypr',	'Cyprus'),
+('CZ',	'Czech Republic'),
+('Czeska Republika',	'Czech Republic'),
+('Dänemark',	'Denmark'),
+('Dania',	'Denmark'),
+('DE',	'Germany'),
+('Demokratische Volksrepublik Korea',	'North Korea'),
+('Denmark',	'Denmark'),
+('Deutschland',	'Germany'),
+('Dominikanische Republik',	'Dominican Republic'),
+('Ecuador',	'Ecuador'),
+('Egipt',	'Egypt'),
+('El Salvador',	'El Salvador'),
+('ES',	'Spain'),
+('Estland',	'Estonia'),
+('Estonia',	'Estonia'),
+('Falklandinseln',	'Falkland Islands'),
+('Färöer (zu Dänemark)',	'Faroe Islands'),
+('Finlandia',	'Finland'),
+('Finnland',	'Finland'),
+('France',	'France'),
+('Francja',	'France'),
+('Frankreich',	'France'),
+('Georgien',	'Georgia'),
+('Germany',	'Germany'),
+('Gibraltar',	'Gibraltar'),
+('Granada',	'Granada'),
+('Grecja',	'Greece'),
+('Greenland',	'Greenland'),
+('Griechenland',	'Greece'),
+('Grönland',	'Greenland'),
+('Großbritannien',	'United Kingdom'),
+('Guatemala',	'Guatemala'),
+('Hiszpania',	'Spain'),
+('Holandia',	'Netherlands'),
+('Honduras',	'Honduras'),
+('HR',	'Croatia'),
+('ID',	'Indonesia'),
+('IN',	'India'),
+('Indie',	'India'),
+('Indien',	'India'),
+('Irland',	'Ireland'),
+('Irlandia',	'Ireland'),
+('Island',	'Iceland'),
+('Islandia',	'Iceland'),
+('Israel',	'Israel'),
+('Italien',	'Italy'),
+('Japan',	'Japan'),
+('Jemen',	'Yemen'),
+('Jordanien',	'Jordan'),
+('Kambodża',	'Cambodia'),
+('Kanada',	'Canada'),
+('Kapverden',	'Cape Verde'),
+('Kasachstan',	'Kazakhstan'),
+('Kenia',	'Kenya'),
+('KG',	'Kyrgyzstan'),
+('Kirgistan',	'Kyrgyzstan'),
+('Kolumbien',	'Colombia'),
+('Kroatien',	'Croatia'),
+('Kuba',	'Cuba'),
+('Laos',	'Laos'),
+('Lettland',	'Latvia'),
+('Liechtenstein',	'Liechtenstein'),
+('Litauen',	'Lithuania'),
+('Litwa',	'Lithuania'),
+('Luxemburg',	'Luxembourg'),
+('Łotwa',	'Latvia'),
+('Malaysia',	'Malaysia'),
+('Malediven',	'Maldives'),
+('Malta',	'Malta'),
+('Marokko',	'Morocco'),
+('Maroko',	'Morocco'),
+('Mauritius',	'Mauritius'),
+('Mazedonien',	'Macedonia'),
+('Mexico',	'Mexico'),
+('Mexiko',	'Mexico'),
+('Mołdawia',	'Moldova'),
+('Monako',	'Monaco'),
+('Montenegro',	'Montenegro'),
+('Namibia',	'Namibia'),
+('Nepal',	'Nepal'),
+('Neuseeland',	'New Zealand'),
+('Nicaragua',	'Nicaragua'),
+('Niderlandy',	'Netherlands'),
+('Niederlande',	'Netherlands'),
+('Niederländische Antillen',	'Netherlands Antilles'),
+('Niemcy',	'Germany'),
+('NO',	'Norway'),
+('Norwegen',	'Norway'),
+('Norwegia',	'Norway'),
+('Österreich',	'Austria'),
+('Panama',	'Panama'),
+('Papua-Neuguinea',	'Papua New Guinea'),
+('Philippinen',	'Philippines'),
+('PL',	'Poland'),
+('Polen',	'Poland'),
+('Polska',	'Poland'),
+('Portugal',	'Portugal'),
+('Portugalia',	'Portugal'),
+('Rosja',	'Russia'),
+('Ruanda',	'Rwanda'),
+('Rumänien',	'Romania'),
+('Rumunia',	'Romania'),
+('Russische Föderation',	'Russia'),
+('Sambia',	'Zambia'),
+('Saudi-Arabien',	'Saudi Arabia'),
+('Schweden',	'Sweden'),
+('Schweiz',	'Switzerland'),
+('SE',	'Sweden'),
+('Serbien',	'Serbia'),
+('Serbien und Montenegro',	'Serbia and Montenegro'),
+('Seychellen',	'Seychelles'),
+('SI',	'Slovenia'),
+('Simbabwe',	'Zimbabwe'),
+('SK',	'Slovakia'),
+('Slowakai',	'Slovakia'),
+('Slowenien',	'Slovenia'),
+('Słowacja',	'Slovakia'),
+('Soviet Union',	'Soviet Union'),
+('Spain',	'Spain'),
+('Spanien',	'Spain'),
+('Sri Lanka',	'Sri Lanka'),
+('Südafrika',	'South Africa'),
+('Sudan',	'Sudan'),
+('Südgeorgien und die Südlichen Sandwichinseln',	'South Georgia and the South Sandwich Islands'),
+('Svalbard und Jan Mayen',	'Svalbard and Jan Mayen'),
+('Sweden',	'Sweden'),
+('Syrien',	'Syria'),
+('Szwajcaria',	'Switzerland'),
+('Szwecja',	'Sweden'),
+('Taiwan',	'Taiwan'),
+('Tajlandia',	'Thailand'),
+('Tansania',	'Tanzania'),
+('Thailand',	'Thailand'),
+('Togo',	'Togo'),
+('Trinidad und Tobago',	'Trinidad and Tobago'),
+('Tschad',	'Chad'),
+('Tschechische Republik',	'Czech Republic'),
+('Tunesien',	'Tunisia'),
+('Tunezja',	'Tunisia'),
+('Turcja',	'Turkey'),
+('Türkei',	'Turkey'),
+('UA',	'Ukraine'),
+('Uganda',	'Uganda'),
+('UK',	'United Kingdom'),
+('Ukraina',	'Ukraine'),
+('Ukraine',	'Ukraine'),
+('Ungarn',	'Hungary'),
+('United States',	'United States'),
+('US',	'United States'),
+('USA',	'USA'),
+('Usbekistan',	'Uzbekistan'),
+('Vatikan (Heiliger Stuhl)',	'Holy See'),
+('Vereinigte Arabische Emirate',	'United Arab Emirates'),
+('Vereinigte Staaten',	'United States'),
+('Vietnam',	'Vietnam'),
+('Virgin Islands (U.S.)',	'United States Virgin Islands'),
+('Volksrepublik China',	'China'),
+('Węgry',	'Hungary'),
+('Wielka Brytania',	'United Kingdom'),
+('Wietnam',	'Vietnam'),
+('Włochy',	'Italy'),
+('Zjednoczone Emiraty Arabskie',	'United Arab Emirates'),
+('Zypern',	'Cyprus');
 
 CREATE TABLE `gk-waypointy-gc` (
   `wpt` varchar(8) COLLATE utf8_polish_ci NOT NULL,
   `lat` float NOT NULL,
   `lon` float NOT NULL,
   `country` varchar(3) COLLATE utf8_polish_ci NOT NULL,
-  `alt` float NOT NULL
+  `alt` float NOT NULL,
+  UNIQUE KEY `wpt` (`wpt`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci COMMENT='GC.com waypoints';
 
--- --------------------------------------------------------
 
---
--- Table structure for table `gk_simplepo_catalogues`
---
+CREATE TABLE `gk-waypointy-type` (
+  `typ` varchar(200) COLLATE utf8_polish_ci NOT NULL,
+  `cache_type` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL,
+  UNIQUE KEY `unique_typ` (`typ`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `gk-waypointy-type` (`typ`, `cache_type`) VALUES
+('beweglicher Cache',	'Mobile'),
+('BIT Cache',	'BIT Cache'),
+('Cemetery',	'Cemetery'),
+('Drive-In',	'Drive-In'),
+('Drive-In-Cache',	'Drive-In'),
+('Event',	'Event'),
+('Event Cache',	'Event'),
+('Event-Cache',	'Event'),
+('Geocache',	'Traditional'),
+('Geocache|Event Cache',	'Event'),
+('Geocache|Multi-cache',	'Multicache'),
+('Geocache|Mystery Cache',	'Mystery'),
+('Geocache|Traditional Cache',	'Traditional'),
+('Geocache|Unknown Cache',	'Unknown cache'),
+('Geocache|Virtual Cache',	'Virtual'),
+('Geocache|Webcam Cache',	'Webcam'),
+('Guest Book',	'Guest Book'),
+('Inny typ skrzynki',	'Other'),
+('kvíz',	'Quiz'),
+('Letterbox',	'Letterbox'),
+('Mathe-/Physikcache',	'Math / physics cache'),
+('Medical Facility',	'Medical Facility'),
+('Mobilna',	'Mobile'),
+('Moving',	'Mobile'),
+('Moving Cache',	'Mobile'),
+('MP3 (Podcache)',	'MP3'),
+('Multi',	'Multicache'),
+('Multicache',	'Multicache'),
+('neznámá',	'Unknown cache'),
+('normaler Cache',	'Traditional'),
+('Other',	'Other'),
+('Own cache',	'Own cache'),
+('Podcast cache',	'Podcast cache'),
+('Quiz',	'Quiz'),
+('Rätselcache',	'Mystery'),
+('Skrzynka nietypowa',	'Unusual box'),
+('tradiční',	'Traditional'),
+('Traditional',	'Traditional'),
+('Traditional Cache',	'Traditional'),
+('Tradycyjna',	'Traditional'),
+('unbekannter Cachetyp',	'Unknown cache'),
+('Unknown type',	'Unknown cache'),
+('USB (Dead Drop)',	'USB'),
+('Virtual',	'Virtual'),
+('Virtual Cache',	'Virtual'),
+('virtueller Cache',	'Virtual'),
+('Webcam',	'Webcam'),
+('Webcam Cache',	'Webcam'),
+('Webcam-Cache',	'Webcam'),
+('Wirtualna',	'Virtual'),
+('Wydarzenie',	'Event');
 
 CREATE TABLE `gk_simplepo_catalogues` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `gk_simplepo_messages`
---
 
 CREATE TABLE `gk_simplepo_messages` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `catalogue_id` int(11) NOT NULL,
   `msgid` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `msgstr` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -572,334 +723,9 @@ CREATE TABLE `gk_simplepo_messages` (
   `is_obsolete` tinyint(1) NOT NULL,
   `is_header` tinyint(1) NOT NULL,
   `previous_untranslated_string` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `captcha_codes`
---
-ALTER TABLE `captcha_codes`
-  ADD PRIMARY KEY (`id`,`namespace`),
-  ADD KEY `created` (`created`);
-
---
--- Indexes for table `gk-aktywnesesje`
---
-ALTER TABLE `gk-aktywnesesje`
-  ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `gk-badges`
---
-ALTER TABLE `gk-badges`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `timestamp` (`timestamp`),
-  ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `gk-errory`
---
-ALTER TABLE `gk-errory`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `date` (`date`),
-  ADD KEY `severity` (`severity`),
-  ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `gk-geokrety`
---
-ALTER TABLE `gk-geokrety`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`nr`) USING BTREE,
-  ADD KEY `owner` (`owner`),
-  ADD KEY `nr` (`nr`),
-  ADD KEY `ost_pozycja_id` (`ost_pozycja_id`),
-  ADD KEY `avatarid` (`avatarid`),
-  ADD KEY `ost_log_id` (`ost_log_id`),
-  ADD KEY `hands_of_index` (`hands_of`),
-  ADD KEY `id_typ` (`typ`) USING BTREE;
-
---
--- Indexes for table `gk-geokrety-rating`
---
-ALTER TABLE `gk-geokrety-rating`
-  ADD PRIMARY KEY (`id`,`userid`);
-
---
--- Indexes for table `gk-grupy-desc`
---
-ALTER TABLE `gk-grupy-desc`
-  ADD UNIQUE KEY `groupid` (`groupid`),
-  ADD UNIQUE KEY `groupid_2` (`groupid`);
-
---
--- Indexes for table `gk-licznik`
---
-ALTER TABLE `gk-licznik`
-  ADD PRIMARY KEY (`witryna`);
-
---
--- Indexes for table `gk-maile`
---
-ALTER TABLE `gk-maile`
-  ADD UNIQUE KEY `id_maila` (`id_maila`);
-
---
--- Indexes for table `gk-miasta`
---
-ALTER TABLE `gk-miasta`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `gk-news`
---
-ALTER TABLE `gk-news`
-  ADD PRIMARY KEY (`news_id`),
-  ADD KEY `date` (`date`),
-  ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `gk-news-comments`
---
-ALTER TABLE `gk-news-comments`
-  ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `news_id` (`news_id`);
-
---
--- Indexes for table `gk-news-comments-access`
---
-ALTER TABLE `gk-news-comments-access`
-  ADD PRIMARY KEY (`news_id`,`user_id`);
-
---
--- Indexes for table `gk-obrazki`
---
-ALTER TABLE `gk-obrazki`
-  ADD UNIQUE KEY `obrazekid` (`obrazekid`),
-  ADD KEY `idkreta_typ` (`id_kreta`,`typ`),
-  ADD KEY `id` (`id`),
-  ADD KEY `id_kreta` (`id_kreta`);
-
---
--- Indexes for table `gk-obrazki-2`
---
-ALTER TABLE `gk-obrazki-2`
-  ADD UNIQUE KEY `obrazekid` (`obrazekid`),
-  ADD KEY `idkreta_typ` (`id_kreta`,`typ`);
-
---
--- Indexes for table `gk-obserwable`
---
-ALTER TABLE `gk-obserwable`
-  ADD KEY `userid` (`userid`),
-  ADD KEY `id` (`id`);
-
---
--- Indexes for table `gk-owner-codes`
---
-ALTER TABLE `gk-owner-codes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kret_id` (`kret_id`),
-  ADD KEY `code` (`code`);
-
---
--- Indexes for table `gk-races`
---
-ALTER TABLE `gk-races`
-  ADD PRIMARY KEY (`raceid`);
-
---
--- Indexes for table `gk-races-krety`
---
-ALTER TABLE `gk-races-krety`
-  ADD UNIQUE KEY `raceGkId` (`raceGkId`);
-
---
--- Indexes for table `gk-ruchy`
---
-ALTER TABLE `gk-ruchy`
-  ADD PRIMARY KEY (`ruch_id`),
-  ADD KEY `id_2` (`id`),
-  ADD KEY `waypoint` (`waypoint`),
-  ADD KEY `user` (`user`),
-  ADD KEY `lat` (`lat`),
-  ADD KEY `lon` (`lon`),
-  ADD KEY `logtype` (`logtype`),
-  ADD KEY `data` (`data`),
-  ADD KEY `data_dodania` (`data_dodania`),
-  ADD KEY `timestamp` (`timestamp`),
-  ADD KEY `alt` (`alt`);
-
---
--- Indexes for table `gk-ruchy-comments`
---
-ALTER TABLE `gk-ruchy-comments`
-  ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `kret_id` (`kret_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `ruch_id` (`ruch_id`);
-
---
--- Indexes for table `gk-statystyki-dzienne`
---
-ALTER TABLE `gk-statystyki-dzienne`
-  ADD UNIQUE KEY `data` (`data`);
-
---
--- Indexes for table `gk-users`
---
-ALTER TABLE `gk-users`
-  ADD PRIMARY KEY (`userid`),
-  ADD UNIQUE KEY `user` (`user`),
-  ADD KEY `secid` (`secid`),
-  ADD KEY `ostatni_login` (`ostatni_login`),
-  ADD KEY `email_invalid` (`email_invalid`);
-
---
--- Indexes for table `gk-wartosci`
---
-ALTER TABLE `gk-wartosci`
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `gk-waypointy`
---
-ALTER TABLE `gk-waypointy`
-  ADD PRIMARY KEY (`waypoint`),
-  ADD UNIQUE KEY `waypoint` (`waypoint`),
-  ADD KEY `name` (`name`);
-
---
--- Indexes for table `gk-waypointy-gc`
---
-ALTER TABLE `gk-waypointy-gc`
-  ADD UNIQUE KEY `wpt` (`wpt`);
-
---
--- Indexes for table `gk_simplepo_catalogues`
---
-ALTER TABLE `gk_simplepo_catalogues`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `gk_simplepo_messages`
---
-ALTER TABLE `gk_simplepo_messages`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `gk-badges`
---
-ALTER TABLE `gk-badges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=948;
-
---
--- AUTO_INCREMENT for table `gk-errory`
---
-ALTER TABLE `gk-errory`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1208370;
-
---
--- AUTO_INCREMENT for table `gk-geokrety`
---
-ALTER TABLE `gk-geokrety`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67914;
-
---
--- AUTO_INCREMENT for table `gk-grupy-desc`
---
-ALTER TABLE `gk-grupy-desc`
-  MODIFY `groupid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `gk-maile`
---
-ALTER TABLE `gk-maile`
-  MODIFY `id_maila` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6835;
-
---
--- AUTO_INCREMENT for table `gk-news`
---
-ALTER TABLE `gk-news`
-  MODIFY `news_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
-
---
--- AUTO_INCREMENT for table `gk-news-comments`
---
-ALTER TABLE `gk-news-comments`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
-
---
--- AUTO_INCREMENT for table `gk-obrazki`
---
-ALTER TABLE `gk-obrazki`
-  MODIFY `obrazekid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53679;
-
---
--- AUTO_INCREMENT for table `gk-obrazki-2`
---
-ALTER TABLE `gk-obrazki-2`
-  MODIFY `obrazekid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5147;
-
---
--- AUTO_INCREMENT for table `gk-owner-codes`
---
-ALTER TABLE `gk-owner-codes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
-
---
--- AUTO_INCREMENT for table `gk-races`
---
-ALTER TABLE `gk-races`
-  MODIFY `raceid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `gk-races-krety`
---
-ALTER TABLE `gk-races-krety`
-  MODIFY `raceGkId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
-
---
--- AUTO_INCREMENT for table `gk-ruchy`
---
-ALTER TABLE `gk-ruchy`
-  MODIFY `ruch_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1349547;
-
---
--- AUTO_INCREMENT for table `gk-ruchy-comments`
---
-ALTER TABLE `gk-ruchy-comments`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15260;
-
---
--- AUTO_INCREMENT for table `gk-users`
---
-ALTER TABLE `gk-users`
-  MODIFY `userid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38785;
-
---
--- AUTO_INCREMENT for table `gk_simplepo_catalogues`
---
-ALTER TABLE `gk_simplepo_catalogues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT for table `gk_simplepo_messages`
---
-ALTER TABLE `gk_simplepo_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83584;
-SET FOREIGN_KEY_CHECKS=1;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- 2019-06-08 19:35:43
