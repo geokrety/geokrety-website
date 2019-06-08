@@ -6,8 +6,6 @@
  * Template name: Modern :: Wallson 1
  */
 
-require_once 'common.php';
-
 $imgname = "$kret_szablon/geokret_label_v1.png";
 $img = imagecreatefrompng($imgname); /* Attempt to open */
 
@@ -18,7 +16,7 @@ $font = '../fonts/lucida.ttf';
 
 imagettftext($img, 35, 0, 600, 100, $czarny, $font, "$kret_nazwa");
 imagettftext($img, 35, 0, 600, 287, $czarny, $font, $kret_owner);
-imagettftext($img, 25, 0, 600, 500, $czarny, $font, mb_wordwrap(stripcslashes(strip_tags($kret_opis, '<img>')), 35));
+imagettftext($img, 25, 0, 600, 500, $czarny, $font, StringUtils::mb_wordwrap(stripcslashes(strip_tags($kret_opis, '<img>')), 32));
 
 imagettftext($img, 35, 0, 1420, 100, $czarny, $font, $kret_tracking);
 imagettftext($img, 35, 0, 2010, 100, $czarny, $font, $kret_id);
@@ -33,10 +31,10 @@ $manual_strings = array(
 );
 
 // First manuals column
-imagettftext($img, 18, 0, 1245, 220, $czarny, $font, mb_wordwrap(implode("\n\n", [$manual_strings['pl'], $manual_strings['en'], $manual_strings['de']]), 45));
+imagettftext($img, 18, 0, 1245, 220, $czarny, $font, StringUtils::mb_wordwrap(implode("\n\n", [$manual_strings['pl'], $manual_strings['en'], $manual_strings['de']]), 45));
 
 // Second manuals column
-imagettftext($img, 18, 0, 1800, 220, $czarny, $font, mb_wordwrap(implode("\n\n", [$manual_strings['cz'], $manual_strings['fr'], $manual_strings['ru']]), 45));
+imagettftext($img, 18, 0, 1800, 220, $czarny, $font, StringUtils::mb_wordwrap(implode("\n\n", [$manual_strings['cz'], $manual_strings['fr'], $manual_strings['ru']]), 45));
 
 header('Content-Type: image/jpeg');
 imagejpeg($img);
