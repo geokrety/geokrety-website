@@ -12,7 +12,7 @@
         <th>{t}Spotted in{/t}{if isset($tripTotal)} {sort column='waypoint' type='alpha' anchor='trip'}{/if}</th>
         <th>{t}Comment{/t}</th>
         <th class="text-center">{t}Last move{/t}{if isset($tripTotal)} {sort column='ru.data' type='amount' anchor='trip'}{/if}</th>
-        <th class="text-right"><img src="{$imagesUrl}/log-icons/dist.gif" title="{t}Distance{/t}" />{if isset($tripTotal)} {sort column='droga' type='numeric' anchor='trip'}{/if}</th>
+        <th class="text-right"><img src="{$imagesUrl}/log-icons/dist.gif" title="{t}Distance{/t}" />{if isset($tripTotal)} {sort column='ru.droga' type='numeric' anchor='trip'}{/if}</th>
         <th></th>
       </tr>
     </thead>

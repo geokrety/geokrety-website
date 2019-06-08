@@ -260,7 +260,7 @@ EOQUERY;
         $action = 'Trip::getAllTripByAuthorId';
 
         $id = $this->validationService->ensureIntGTE('id', $id, 1);
-        list($order, $way) = $this->validationService->ensureOrderBy('orderBy', $orderBy, ['ru.data', 'id', 'ru.waypoint', 'droga'], $defaultWay);
+        list($order, $way) = $this->validationService->ensureOrderBy('orderBy', $orderBy, ['ru.data', 'id', 'ru.waypoint', 'ru.droga'], $defaultWay);
 
         $total = self::count('WHERE ru.user = ?', array('d', $id));
         $start = $this->paginate($total, $curPage, $limit);
