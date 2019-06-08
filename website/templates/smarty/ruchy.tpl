@@ -3,7 +3,7 @@
     <li class="active">{t}Log a GeoKret{/t}</li>
 </ol>
 
-<form class="form-horizontal" id="moveForm" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
+<form class="form-horizontal" id="moveForm" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
     <div class="hidden" id="accordionParking"></div>
 
     <div class="panel-group" id="movePanelGroup" role="tablist" aria-multiselectable="true">

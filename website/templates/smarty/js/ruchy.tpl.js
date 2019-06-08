@@ -147,8 +147,14 @@ function logTypeToText(logtype) {
 function toggleLocationSubfrom() {
     if (isLocationNeeded()) {
         $("#panelLocation").show();
+        $("#panelLocation input").each(function() {
+            $(this).prop('disabled', false);
+        })
     } else {
         $("#panelLocation").hide();
+        $("#panelLocation input").each(function() {
+            $(this).prop('disabled', true);
+        })
     }
 }
 
