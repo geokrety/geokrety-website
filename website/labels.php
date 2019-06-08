@@ -64,20 +64,20 @@ $TRESC = '<form action="templates/labels/index.php" method="POST">
     <td>Reference number:</td><td>'.$id.'</td>
   </tr>
   <tr>
-    <td>'._('Comment').':</td><td>
-		<span class="szare">'._('Edit this text to fit your needs as well as the label size').':</span>
+    <td>'._('Comment').':</td>
+		<td><span class="szare">'._('Edit this text to fit your needs as well as the label size').':</span><br>
 		<textarea cols="50" rows="10" name="opis">'.rawurldecode($opis).'</textarea></td>
   </tr>
   <tr>
     <td>'._('Label template').':</td>
-		<td><select id="szablon" name="szablon" size=6>
+		<td><select id="szablon" name="szablon" size=10>
 					<option value="0">Small</option>
 					<option value="1">Medium</option>
 					<option value="2">Normal</option>
-					<option value="3" selected="selected">With QR Code</option>
+					<option value="3">With QR Code</option>
 					<option value="5">SVG classic (beta)</option>
 					<option value="6">SVG circle (beta)</option>
-					<option value="png1">Modern :: Wallson 1</option>
+					<option value="png1" selected>Modern :: Wallson 1</option>
 					<option value="png5">Modern :: Wallson 2 (with QR)</option>
 					<option value="png2">Classic :: filips</option>
 					<option value="png3">Middle classic :: filips</option>
