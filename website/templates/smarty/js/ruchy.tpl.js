@@ -61,6 +61,7 @@ function positionClear() {
     if ($("#latlon").val() != '') {
         $("#latlon").val('').trigger("change");
     }
+    isValidLatlon = false;
 }
 
 // Display the marker on map

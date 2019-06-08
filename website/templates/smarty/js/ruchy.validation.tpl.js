@@ -50,6 +50,7 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
         positionClear();
         dropMarker();
     } else if (isValidLatlon) {
+        isWaypointFound = valid;
         return true;
     } else {
         this.addError('errorWaypoint', { message: data.error })
