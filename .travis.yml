@@ -31,8 +31,6 @@ before_install:
     - gkShell/config/testdb/generateSql.sh
     - mysql -u root --password="" < gkShell/config/testdb/00_database-create-geokrety-db.sql
     - mysql -u root --password="" < gkShell/config/testdb/01_grant-root.sql
-    - mysql -u root --password="" < gkShell/config/testdb/10_gk-waypointy-country.sql
-    - mysql -u root --password="" < gkShell/config/testdb/11_gk-waypointy-type.sql
     - tests/config/generateTestConfig.sh
 # mysql  pid file: /var/run/mysqld/mysqld.pid
 # mysql sock file: /var/run/mysqld/mysqld.sock
