@@ -43,6 +43,8 @@
     </div>
 {/if}
 
+{include file='blocks/banner_contribute.tpl'}
+
     {if count($alert_msgs)}
     {foreach from=$alert_msgs item=alert_msg}
     <div class="alert alert-{$alert_msg.level} alert-dismissible" role="alert">
