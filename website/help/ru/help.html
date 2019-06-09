@@ -169,14 +169,14 @@
 
 Мы поддерживаем следующие тайники (точки):
 <ul>
-  <li>OP.... -- OpenCaching: <a href="https://www.opencaching.pl/">Польская PL база</a></li>
-  <li>OC.... -- OpenCaching: <a href="http://www.opencaching.de/">Немецкая DE база</a></li>
-  <li>OK.... -- OpenCaching: <a href="http://www.opencaching.org.uk/">Английская UK база</a></li>
-  <li>OS.... -- OpenCaching: <a href="http://www.opencaching.se/">Шведская и норвежская (SE/NO) база</a></li>
-  <li>OB.... -- OpenCaching: <a href="http://www.opencaching.nl/">NL database</a></li>
-  <li>OZ.... -- OpenCaching: <a href="http://www.opencaching.cz/">Czech database</a> -- updated manually from time to time</li>
-  <li>GA.... -- <a href="http://geocaching.com.au/">GeoCaching Australia</a> -- updated daily (lat, lon, cache name, link)</li>
-  <li>TR/VI/MS/EX.... -- <a href="http://www.geocaching.su/">GeoCaching Russia</a> -- updated every two hours (lat, lon, cache name, link, owner)</li>
+  <li>OP.... -- OpenCaching: <a href="https://www.opencaching.pl/">Польская (PL) база</a></li>
+  <li>OC.... -- OpenCaching: <a href="http://www.opencaching.de/">Немецкая (DE) база</a></li>
+  <li>OK.... -- OpenCaching: <a href="http://www.opencaching.org.uk/">Английская (UK) база</a></li>
+  <li>OS.... -- OpenCaching: <a href="http://www.opencaching.se/">Шведская и норвежская (SE/NO) базы</a></li>
+  <li>OB.... -- OpenCaching: <a href="http://www.opencaching.nl/">Голландская (NL) база</a></li>
+  <li>OZ.... -- OpenCaching: <a href="http://www.opencaching.cz/">Чешская (CZ) база</a> -- обновляется в ручном режиме</li>
+  <li>GA.... -- <a href="http://geocaching.com.au/">GeoCaching Австралия</a> -- обновляется раз в день (координаты, название тайника, ссылка)</li>
+  <li>TR/MS/LT.... -- <a href="http://www.geocaching.su/">Геокешинг SU</a> -- обновляется каждые два часа (координаты, название тайника, ссылка, автор)</li>
   <li>GE.... -- <a href="http://www.gpsgames.org/">gpsgames.org database</a> -- updated daily (lat, lon, cache name, link)</li>
   <li>GD.... -- <a href="http://www.gpsgames.org/">gpsgames.org GeoDashing</a> waypoints (updated monthly)</li>
   <li>unique name -- <a href="http://www.geopeitus.ee/">geopeitus.ee -- Estonian database</a> -- updated daily (lat, lon, cache name, link)</li>
@@ -188,28 +188,26 @@
 <a id="partiallysupportedwaypoints"></a>
 <div class="rozdzial">Частично поддерживаемые точки</div>
 
-From waypoints listed below we can generate a proper link to the cache:
+Для этих точек мы можем только сгенерировать ссылку на тайник:
 <ul>
   <li>GC.... -- GeoCaching.com</li>
   <li>N.... -- Navicache.com</li>
 </ul>
-But maybe in the future we will be able to do more. So enter the waypoint anyway.
+Но, наверное, в будущем мы сможем больше. Так что в любом случае, не забывайте указывать код тайника.
 
 <a id="locationdlagc"></a>
 <div class="rozdzial">Как отметить Геокрота в тайнике geocaching.com?</div>
 
-<p>GC waypoints are not fully supported by GeoKrety (<i>Licensee shall not remarket, resell, and/or redistribute the Data or any
-derived portion(s) of the Data in its digital form to any third party whatsoever... <a href="https://www.geocaching.com/waypoints/agreement.aspx">from waypoint license agreement</a></i>). However you can easily use GeoKrety with GC caches. There are two
-  options:</p>
+<p>Тайники с geocaching.com поддерживаются не полностью (<i>Licensee shall not remarket, resell, and/or redistribute the Data or any derived portion(s) of the Data in its digital form to any third party whatsoever... <a href="https://www.geocaching.com/waypoints/agreement.aspx">выдержка из соглашения об использовании</a></i>). Однако, вы можете использовать ГеоКротов с GC тайниками. Есть два варианта:</p>
 
 <ul>
 
-  <li>The easiest and recommended way is to use our GeoKrety Toolbox (GKT) - a greasemonkey script (written and maintained by <a href="'.$config['adres'].'mypage.php?userid=6262">simor</a>). Currently it can be used in the following browsers:
+  <li>Самый простой и рекомендуемый способ - использовать наш GeoKrety Toolbox (GKT) - скрипт GreaseMonkey (написанный и поддерживаемый <a href="'.$config['adres'].'mypage.php?userid=6262">simor</a>). На текущий момент поддерживаются следующие браузеры:
 
-    <p>- <a href="https://www.mozilla.com/firefox/">Mozilla FireFox</a> (from version 3.5), you also need <a href="https://addons.mozilla.org/firefox/addon/748">Greasemonkey Add-on</a>. Install GKT for Firefox <b><a href="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js">here</a></b>.</p>
-    <p>- <a href="https://www.google.com/chrome">Google Chrome</a>. Install GKT for Chrome <b><a href="https://chrome.google.com/extensions/detail/ldbheajkebdflbjdckojokbfdndkahnl">here</a></b>.</p>
+    <p>- <a href="https://www.mozilla.com/firefox/">Mozilla Firefox</a>, также необходимо <a href="https://addons.mozilla.org/firefox/addon/748">расширение Greasemonkey</a>. Установить GKT для Firefox можно <b><a href="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js">здесь</a></b>.</p>
+    <p>- <a href="https://www.google.com/chrome">Google Chrome</a>. Установить GKT для Chrome можно <b><a href="https://chrome.google.com/extensions/detail/ldbheajkebdflbjdckojokbfdndkahnl">здесь</a></b>.</p>
 
-    You also need an account on geokrety.org. After installing GKT in your browser, you will see an extra [<strong> Geo<span style="color: white; background-color: #303030;">Krety</span>.org </strong>] panel on the right hand side of every GC cache page.
+    Вам также необходимо быть зарегистрированным на сайте geokrety.org. After installing GKT in your browser, you will see an extra [<strong> Geo<span style="color: white; background-color: #303030;">Krety</span>.org </strong>] panel on the right hand side of every GC cache page.
     From the list of GeoKrety pick the one you wish to drop and click "Drop selected GK" - you will be redirected to the standard logging page with both the GC Code and coordinates already filled in. Check the date, add a comment and you're done. <br
     />
 
@@ -219,14 +217,14 @@ derived portion(s) of the Data in its digital form to any third party whatsoever
       /> <img style="border: 1px solid #a7d940;" src="https://cdn.geokrety.org/images/help/gkt_screenshot030_3.png" alt="GKT screenshot" /></p>
   </li>
 
-  <li>Manual way. Go to <strong><a href="ruchy.php">Log a GeoKret</a></strong> page and under the section <strong>New location</strong> enter the following:
+  <li>Вручную. Go to <strong><a href="ruchy.php">Log a GeoKret</a></strong> page and under the section <strong>New location</strong> enter the following:
 
     <ol>
       <li>in the waypoint field, enter the GC Code of the cache (eg. GC1AQ2N).</li>
       <li>in the lat/lon field, enter the coordinates of the cache (you can copy-paste it directly from cache page or <a href="#acceptableformats">use other acceptable formats</a>)</li>
     </ol>
 
-    <p>Here is an example:</p>
+    <p>Пример:</p>
 
     <p><img src="https://cdn.geokrety.org/images/help/location-dla-gc3.png" alt="how to log GK for GC caches" width="787" height="824" /></p>
   </li>
@@ -244,23 +242,23 @@ govern their usage, and Geocachers are allowed to give out GC codes.</i>
 <a id="acceptableformats"></a>
 <div class="rozdzial">Допустимые форматы координат</div>
 
-<p>You can enter lat/lon coordinates in different formats:</p>
+<p>Вы можете указывать координаты в разных форматах:</p>
 <ul>
-  <li><b>degrees (DD.dddddd°)</b></li>
+  <li><b>градусы (DD.dddddd°)</b></li>
   <pre>
 	52.205205 21.190891
 	52.205205/21.190891
 	N 52.205205 E 21.190891
 	+52.205205 -21.190891
 </pre>
-  <li><b>degrees, minutes (DD°MM.mmm’)</b></li>
+  <li><b>градусы и минуты (DD°MM.mmm’)</b></li>
   <pre>
 	52 12.3123 -21 11.45345
 	N52 12.3123 W21 11.45345
 	+52 12.3123 -21 11.45345
 	N 52° 10.369' W 021° 01.542'
 </pre>
-  <li><b>degrees, minutes, seconds (DD°MM’SS.s”)</b></li>
+  <li><b>градусы, минуты и секунды (DD°MM’SS.s”)</b></li>
   <pre>
 	52 12 18.74 -21 11 27.21
 	N52° 12' 18.74", W21° 11' 27.21"
