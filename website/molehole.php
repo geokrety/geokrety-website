@@ -127,6 +127,8 @@ $lista_hoteli = array('OP0F87', 'OP2262',  'OP16B8', 'OC85FC', 'OK0085', 'OP1C23
 'OU0318',
 'OB1466',
 'TR17200',
+'TR22853',
+'TR22854',
 );
 
 // `lat`, `lon`, `name`, `typ`, `kraj`, `link`, `alt`, `country`, `status`
