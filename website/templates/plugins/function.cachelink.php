@@ -21,25 +21,27 @@ function smarty_function_cachelink(array $params, Smarty_Internal_Template $temp
 
     $trip = $params['tripStep'];
     if (empty($trip->waypoint)) {
+        if ($trip->lat && $trip->lon) {
+            return '<a href="http://www.geocaching.com/seek/nearest.aspx?origin_lat='.$trip->lat.'&origin_long='.$trip->lon.'&dist=1" title="'._('Search on geocaching.com').'">'.$trip->getLat().'/'.$trip->getLon().'</a>';
+        }
         return;
     }
 
-    if ($trip->waypointName && $trip->waypointLink) {
-        return '<a href="'.smarty_modifier_escape($trip->waypointLink, 'url').'">'.smarty_modifier_escape($trip->waypoint).'</a><br /><small>'.smarty_modifier_escape($trip->waypointName).'</small>';
+    $title = $trip->getLat().'/'.$trip->getLon();
+    if ($trip->waypointName) {
+        $title = htmlentities($trip->waypointName, ENT_QUOTES)." ($title)";
+    }
+
+    if ($trip->waypoint && $trip->waypointName && $trip->waypointLink) {
+        return '<a href="'.$trip->waypointLink.'" title="'.$title.'">'.smarty_modifier_escape($trip->waypoint).'</a><br /><small>'.smarty_modifier_escape($trip->waypointName).'</small>';
     }
 
     $wpt = waypoint_info($trip->waypoint);
 
     if ($wpt[5]) {
-        $link = '<a href="'.smarty_modifier_escape($wpt[5], 'url').'">'.smarty_modifier_escape($trip->waypoint).'</a>';
+        $link = '<a href="'.$wpt[5].'" title="'.$title.'">'.smarty_modifier_escape($trip->waypoint).'</a>';
 
         return $link.'<br /><small>'.smarty_modifier_escape($wpt[2]).'</small>';
-    }
-
-    if ($wpt[0] && $wpt[1]) {
-        $linkText = _('Search on geocaching.com');
-
-        return smarty_modifier_escape($wpt[0]).' '.smarty_modifier_escape($wpt[1]).'<br /><small>(<a href="http://www.geocaching.com/seek/nearest.aspx?origin_lat='.smarty_modifier_escape($wpt[0], 'url').'&origin_long='.smarty_modifier_escape($wpt[1], 'url').'&dist=1">'.$linkText.'</a>)</small>';
     }
 
     trigger_error('cachelink: failed to render');

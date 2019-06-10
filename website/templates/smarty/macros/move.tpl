@@ -19,7 +19,7 @@
 
                         <div class="pull-left">
                             {country_flag country=$move->country}
-                            {waypoint_link wpt=$move->waypoint lat=$move->lat lon=$move->lon}
+                            {cachelink tripStep=$move}
                         </div>
                         <div class="pull-right">
                             {Carbon::parse($move->ruchData)->diffForHumans()} /

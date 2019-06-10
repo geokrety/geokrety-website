@@ -44,6 +44,14 @@ class TripStep extends AbstractObject {
         $this->waypoint = $waypoint;
     }
 
+    public function getLat() {
+        return number_format($this->lat, 5, '.', '');
+    }
+
+    public function getLon() {
+        return number_format($this->lon, 5, '.', '');
+    }
+
     public function insert() {
         $tripR = new \Geokrety\Repository\TripRepository(\GKDB::getLink());
 
