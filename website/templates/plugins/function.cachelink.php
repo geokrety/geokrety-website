@@ -22,7 +22,7 @@ function smarty_function_cachelink(array $params, Smarty_Internal_Template $temp
     $trip = $params['tripStep'];
     if (empty($trip->waypoint)) {
         if ($trip->lat && $trip->lon) {
-            return '<a href="http://www.geocaching.com/seek/nearest.aspx?origin_lat='.$trip->lat.'&origin_long='.$trip->lon.'&dist=1" title="'._('Search on geocaching.com').'">'.$trip->getLat().'/'.$trip->getLon().'</a>';
+            return '<a href="https://www.geocaching.com/seek/nearest.aspx?origin_lat='.$trip->lat.'&origin_long='.$trip->lon.'&dist=1" title="'._('Search on geocaching.com').'">'.$trip->getLat().'/'.$trip->getLon().'</a>';
         }
         return;
     }
