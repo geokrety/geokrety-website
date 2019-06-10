@@ -52,7 +52,7 @@ EOQUERY;
 EOQUERY;
 
         $sql = self::SELECT_RUCHY.$where;
-        return $this->getBySql($sql, 'd', array($geokretyId));
+        return $this->getBySql($sql, 'd', array($geokretyId), $noRecurs);
     }
 
     public function getByTripId($tripId) {
@@ -74,7 +74,7 @@ EOQUERY;
         return null;
     }
 
-    public function getBySql($sql, $bindStr, array $bind) {
+    public function getBySql($sql, $bindStr, array $bind, $noRecurs = false) {
         if ($this->verbose) {
             echo "\n$sql\n";
         }
@@ -153,7 +153,9 @@ EOQUERY;
             $geokret->avatarFilename = $picFilename;
             $geokret->lastPositionId = $gkLastPositionId;
             $geokret->lastLogId = $gkLastLogId;
-            $geokret->lastLog = $trip;
+            if (!$noRecurs) {
+                $geokret->lastLog = $trip;
+            }
             $geokret->missing = $gkMissing;
             $geokret->holderId = $gkHolderId;
             $trip->geokret = $geokret;
