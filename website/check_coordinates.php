@@ -6,8 +6,8 @@ include_once 'cords_parse.php';
 $coords_parse = cords_parse($_GET['latlon']);
 
 $response = array(
-    'lat' => $coords_parse[0],
-    'lon' => $coords_parse[1],
+    'lat' => number_format($coords_parse[0], 5, '.', ''),
+    'lon' => number_format($coords_parse[1], 5, '.', ''),
     'format' => $coords_parse['format'],
     'error' => $coords_parse['error'],
 );
