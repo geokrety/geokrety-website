@@ -19,6 +19,8 @@ class ClassicTemplate extends PngTemplate {
         imagettftext($img, 17, 0, 61, 221, $blackColor, $this->getFont(), $gkId);
         imagettftext($img, 17, 0, 379, 221, $blackColor, $this->getFont(), $trackingCode);
 
+        $img = $this->fillBackground($img);
+
         $this->printPng($img);
     }
 }

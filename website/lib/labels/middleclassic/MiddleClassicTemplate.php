@@ -18,6 +18,8 @@ class MiddleClassicTemplate extends PngTemplate {
         imagettftext($img, 15, 0, 214, 110, $blackColor, $this->getFont(), $trackingCode);
         imagettftext($img, 15, 0, 24, 110, $blackColor, $this->getFont(), $gkId);
 
+        $img = $this->fillBackground($img);
+
         $this->printPng($img);
     }
 }
