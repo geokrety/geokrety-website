@@ -18,6 +18,29 @@ abstract class PngTemplate extends Template {
         imagedestroy($img);
     }
 
+    /**
+     * Fills transparent image with given background color.
+     *
+     * @param $img resource transparent image to fill
+     * @param array $bgColor background color, white by default
+     *
+     * @return resource
+     */
+    public function fillBackground($img, $bgColor = ['red' => 255, 'green' => 255, 'blue' => 255]) {
+        $width = imagesx($img);
+        $height = imagesy($img);
+
+        //create new image and fill with background color
+        $backgroundImg = imagecreatetruecolor($width, $height);
+        $color = imagecolorallocate($backgroundImg, $bgColor['red'], $bgColor['green'], $bgColor['blue']);
+        imagefill($backgroundImg, 0, 0, $color);
+
+        //copy original image to background
+        imagecopy($backgroundImg, $img, 0, 0, 0, 0, $width, $height);
+
+        return $backgroundImg;
+    }
+
     public function getFont($font = 'lucida.ttf') {
         return '../fonts/'.$font;
     }
