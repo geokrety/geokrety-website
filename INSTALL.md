@@ -10,12 +10,30 @@ If you note other requirements, feel free to add it here.
 * smarty 2 + smarty-gettext plugin
 
 
-## Run Geokrety locally
+## Run Geokrety locally (gkShell)
 
 To run a geokrety instance on your Windows/Linux workstation using Docker :
 
  cf. [gkShell](gkShell/README.md)
 
+
+## Run Geokrety locally (docker-compose)
+
+(Tested on Windows 10)
+
+Pre-requisites:
+- Docker installed
+- Docker-compose installed
+
+One-line run command:
+
+     docker-compose -f docker-compose.local.yml up
+
+Now local instance should be up and running and available at http://localhost:8000/
+
+Empty database with proper schema was initialized and exposed on local port `13306`.
+
+Errors are logged in `gk-errory` table in the database
 
 ## How to install contributors tools
 
