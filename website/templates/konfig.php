@@ -18,8 +18,12 @@ $config['cdn_url'] = isset($_ENV['CDN_SERVER_URL']) ? $_ENV['CDN_SERVER_URL'] : 
 $GOOGLE_MAP_KEY = isset($_ENV['GOOGLE_MAP_KEY']) ? $_ENV['GOOGLE_MAP_KEY'] : 'xxx';
 
 // reCaptcha Api key
-$GOOGLE_RECAPTCHA_PUBLIC_KEY = isset($_ENV['GOOGLE_RECAPTCHA_PUBLIC_KEY']) ? $_ENV['GOOGLE_RECAPTCHA_PUBLIC_KEY'] : 'xxx';
-$GOOGLE_RECAPTCHA_SECRET_KEY = isset($_ENV['GOOGLE_RECAPTCHA_SECRET_KEY']) ? $_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'] : 'xxx';
+if (isset($_ENV['GOOGLE_RECAPTCHA_PUBLIC_KEY'])) {
+    $GOOGLE_RECAPTCHA_PUBLIC_KEY = $_ENV['GOOGLE_RECAPTCHA_PUBLIC_KEY'];
+}
+if (isset($_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'])) {
+    $GOOGLE_RECAPTCHA_SECRET_KEY = $_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'];
+}
 
 // Password hashing
 // Crypt alorythms https://en.wikipedia.org/wiki/Crypt_(C)#Key_derivation_functions_supported_by_crypt
