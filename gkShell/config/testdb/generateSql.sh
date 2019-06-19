@@ -7,13 +7,6 @@ testDb-createPrefix() {
   cat "${DIR}/__create_prefix" > "${DIR}/${targetFile}"
   tail -n +3 "${SRC_DIR}/${targetFile}" >> "${DIR}/${targetFile}"
 }
-testDb-usePrefix() {
-  targetFile=$1
-  cat "${DIR}/__use_prefix" > "${DIR}/${targetFile}"
-  tail -n +3 "${SRC_DIR}/${targetFile}" >> "${DIR}/${targetFile}"
-}
 
 testDb-createPrefix "00_database-create-geokrety-db.sql"
 cp "${SRC_DIR}/01_grant-root.sql" "${DIR}/"
-testDb-usePrefix "10_gk-waypointy-country.sql"
-testDb-usePrefix "11_gk-waypointy-type.sql"
