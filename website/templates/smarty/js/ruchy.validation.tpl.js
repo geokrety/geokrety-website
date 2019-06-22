@@ -152,8 +152,10 @@ $('#latlon').parsley().on('field:success', function() {
     isValidLatlon = true;
     showMarker($("#latlon").val().split(' '));
 }).on('field:validated', function() {
-    $("#wpt").parsley().reset();
-    $("#wpt").parsley().validate();
+    if (!isWaypointFound) {
+        $("#wpt").parsley().reset();
+        $("#wpt").parsley().validate();
+    }
 }).on('field:error', function() {
     isValidLatlon = false;
     dropMarker();
@@ -174,7 +176,6 @@ $('#inputDate').parsley().on('field:success', function() {
 // });
 
 $('#comment').parsley().on('field:validated', function() {
-    console.log("#comment field:validated");
     validateGroupAdditionalData();
 });
 
@@ -182,10 +183,8 @@ function validateGroupAdditionalData() {
     $("#moveForm").parsley().whenValid({
         group: 'additionalData'
     }).done(function() {
-        console.log("validateGroupAdditionalData done");
         colorizeParentPanel($('#inputDate'), true);
     }).fail(function() {
-        console.log("validateGroupAdditionalData fail");
         colorizeParentPanel($('#inputDate'), false);
     });
 }

@@ -109,7 +109,6 @@ function hideCoordinatesField() {
 
 // Colorize a panel group if fields have errors
 function colorizeParentPanel(element, valid) {
-    console.log("colorizeParentPanel");
     var panel = element.closest(".panel");
     if (valid) {
         panel.addClass("panel-success")
