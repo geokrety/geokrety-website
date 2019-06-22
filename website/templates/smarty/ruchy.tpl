@@ -186,6 +186,8 @@
                             <div class="panel panel-default map-togglable" id="mapField">
                                 <div class="panel-heading">
                                     Coordinates
+                                    <div class="pull-right" id="cacheName"></div>
+                                    <div class="clearfix"></div>
                                 </div>
                                 <div class="panel-body">
                                     <div class="form-group coordinates-togglable" id="coordinateField">

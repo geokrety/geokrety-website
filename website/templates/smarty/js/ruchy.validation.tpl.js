@@ -48,17 +48,20 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
         // Fill coordinates field
         positionUpdate([data.latitude, data.longitude]);
         hideCoordinatesField();
+        $("#cacheName").text(data.name);
     } else if (isWaypointFound) {
         this.addError('errorWaypoint', { message: data.error })
         toggleCoordinatesField();
         positionClear();
         dropMarker();
+        $("#cacheName").text('');
     } else if (isValidLatlon) {
         isWaypointFound = valid;
         return true;
     } else {
         this.addError('errorWaypoint', { message: data.error })
         toggleCoordinatesField();
+        $("#cacheName").text('');
     }
     isWaypointFound = valid;
     return valid;
