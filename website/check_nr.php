@@ -39,6 +39,7 @@ $response = array(
     'nr' => strtoupper($geokret->trackingCode),
     'name' => $geokret->name,
     'description' => $geokret->description,
+    'datePublished' => $geokret->datePublished,
     'ownerId' => $geokret->ownerId,
     'ownerName' => $geokret->ownerName,
     'holderId' => $geokret->holderId,

@@ -1,5 +1,6 @@
 // ----------------------------------- JQUERY - VALIDATION RULES - BEGIN
 
+var movedGeokret = null;
 var isValidLatlon = false;
 var isWaypointFound = false;
 
@@ -25,11 +26,14 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
         // Display fetched GK infos
         $("#nrResult").html(data.html).show().removeClass("hidden");
         $("#geokretHeader").html(data.gkid);
+        movedGeokret = data;
     } else {
         this.addError('errorNr', { message: data.error })
         $("#nrResult").hide();
         $("#geokretHeader").html('');
+        movedGeokret = null;
     }
+    $('#inputDate').parsley().validate();
     return valid;
 }, '/check_nr.php');
 
@@ -74,6 +78,44 @@ window.Parsley.addAsyncValidator('checkCoordinates', function(xhr) {
     return valid;
 }, '/check_coordinates.php');
 
+window.Parsley.addValidator('datebeforenow', {
+    validateString: function(value, format) {
+        if (! value) {
+            return true;
+        }
+        var date = moment(value, format, true);
+        if (! date.isValid()) {
+            return false;
+        }
+        return date.isBefore(moment());
+    },
+    messages: {
+      en: 'The date cannot be in the future.',
+      fr: 'La date ne peut pas etre dans le futur.'
+    },
+    priority: 256,
+});
+
+window.Parsley.addValidator('dateaftergkbirth', {
+    validateString: function(value, format) {
+        if (!value || movedGeokret === null) {
+            return;
+        }
+        var date = moment(value, format, true);
+        if (!date.isValid()) {
+            return;
+        }
+
+        var birthdate = moment.utc(movedGeokret.datePublished, "YYYY-MM-DD HH:mm:ss", true);
+        return birthdate <= date; // TODO: Born date include seconds, that may be a problem, let's wait to see when the form will accept
+    },
+    messages: {
+      en: 'The date cannot be before the GeoKret birthdate.',
+      fr: 'La date ne peut pas etre anterieur à la naissance du GeoKret.'
+    },
+    priority: 256,
+});
+
 // Show selection in pannel header
 $('#logType0').parsley().on('field:success', function() {
     var selectedLogType = $("input[type=radio][name='logtype']:checked").val();
@@ -114,6 +156,37 @@ $('#latlon').parsley().on('field:success', function() {
     dropMarker();
 });
 
+$('#inputDate').parsley().on('field:success', function() {
+    $("#additionalDataHeader").html($('#datetimepicker').data("DateTimePicker").date().fromNow());
+}).on('field:validated', function() {
+    validateGroupAdditionalData();
+}).on('field:error', function() {
+    $("#additionalDataHeader").html('');
+});
+
+// TODO: dynamically bind username check
+// $('#username').parsley().on('field:validated', function() {
+//     console.log("#username field:validated");
+//     validateGroupAdditionalData();
+// });
+
+$('#comment').parsley().on('field:validated', function() {
+    console.log("#comment field:validated");
+    validateGroupAdditionalData();
+});
+
+function validateGroupAdditionalData() {
+    $("#moveForm").parsley().whenValid({
+        group: 'additionalData'
+    }).done(function() {
+        console.log("validateGroupAdditionalData done");
+        colorizeParentPanel($('#inputDate'), true);
+    }).fail(function() {
+        console.log("validateGroupAdditionalData fail");
+        colorizeParentPanel($('#inputDate'), false);
+    });
+}
+
 $('#nrNextButton').on('click', function() {
     $("#moveForm").parsley().whenValidate({
         group: "trackingCode"
@@ -137,23 +210,5 @@ $('#locationNextButton').on('click', function() {
         group: "location"
     });
 });
-
-// window.Parsley
-//     .addValidator('notInTheFuture', {
-//             requirementType: 'integer',
-//             validateNumber: function(value, requirement) {
-//                 // is valid date?
-//                 var timestamp = Date.parse(value),
-//                     minTs = Date.parse(requirement);
-//
-//                 return isNaN(timestamp) ? false : timestamp > minTs);
-//                 return 0 === value % requirement;
-//         },
-//         messages: {
-//             en: 'This value should be a multiple of %s',
-//             fr: 'Cette valeur doit être un multiple de %s'
-//         }
-//     }
-// );
 
 // ----------------------------------- JQUERY - VALIDATION RULES - END

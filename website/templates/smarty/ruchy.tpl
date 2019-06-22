@@ -233,24 +233,26 @@
                         <label for="inputDate" class="col-sm-2 control-label">Date</label>
                         <div class="col-sm-6">
                             <div class="input-group date" id="datetimepicker">
-                                <input type="text" class="form-control" name="data" id="inputDate" readonly required>
+                                <input type="text" class="form-control" name="data" id="inputDate" readonly required data-parsley-group="additionalData" data-parsley-datebeforenow="llll" data-parsley-dateaftergkbirth="llll" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" />
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
                     </div>
 
+                    {if !$isLoggedIn}
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Username</label>
                         <div class="col-sm-6">
-                            <input type="text" name="username" id="username" data-toggle="tooltip" data-html="true" class="form-control" title=" This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc." minlength="3"
-                                maxlength="20" required />
+                            <input type="text" name="usernamess" id="username" data-toggle="tooltip" data-html="true" class="form-control" title=" This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc." minlength="3"
+                                maxlength="20" required data-parsley-group="additionalData" data-parsley-trigger="input focusout" />
                         </div>
                     </div>
+                    {/if}
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Comment</label>
                         <div class="col-sm-6">
-                            <textarea id="poledoliczenia" name="comment" rows="6" maxlength="5120" class="form-control" aria-describedby="helpBlockComment"></textarea>
+                            <textarea id="comment" name="comment" rows="6" maxlength="5120" class="form-control" aria-describedby="helpBlockComment" data-parsley-group="additionalData" data-parsley-trigger="input focusout"></textarea>
                             <span id="helpBlockComment" class="help-block">
                                 It is always nice to receive a little message ;)
                             </span>

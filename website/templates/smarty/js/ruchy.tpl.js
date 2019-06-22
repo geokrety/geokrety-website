@@ -1,5 +1,7 @@
 // ----------------------------------- JQUERY - RUCHY - BEGIN
 
+moment.locale('en'); // TODO: load from user settings
+
 // Bind tooltip on NR field: Display label example
 $(".tooltip_large").tooltip({
     placement: "top",
@@ -9,6 +11,11 @@ $(".tooltip_large").tooltip({
 // Bind datepicker
 $("#datetimepicker").datetimepicker({
     ignoreReadonly: true,
+    collapse: false,
+    sideBySide: true,
+    showTodayButton: true,
+    format: 'llll',
+    locale: moment.locale()
 });
 $("#datetimepicker").data("DateTimePicker").date(moment());
 
@@ -76,6 +83,9 @@ function showMarker(coordinates) {
 
 // Remove the marker from map
 function dropMarker() {
+    if (map === undefined) {
+        return;
+    }
     if (cacheMarker !== undefined) {
         map.removeLayer(cacheMarker);
     }
@@ -99,6 +109,7 @@ function hideCoordinatesField() {
 
 // Colorize a panel group if fields have errors
 function colorizeParentPanel(element, valid) {
+    console.log("colorizeParentPanel");
     var panel = element.closest(".panel");
     if (valid) {
         panel.addClass("panel-success")
