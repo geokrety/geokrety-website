@@ -169,11 +169,11 @@ $('#inputDate').parsley().on('field:success', function() {
     $("#additionalDataHeader").html('');
 });
 
-// TODO: dynamically bind username check
-// $('#username').parsley().on('field:validated', function() {
-//     console.log("#username field:validated");
-//     validateGroupAdditionalData();
-// });
+{if !$isLoggedIn}
+$('#username').parsley().on('field:validated', function() {
+    validateGroupAdditionalData();
+});
+{/if}
 
 $('#comment').parsley().on('field:validated', function() {
     validateGroupAdditionalData();
