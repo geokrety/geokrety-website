@@ -44,5 +44,9 @@ function smarty_function_cachelink(array $params, Smarty_Internal_Template $temp
         return $link.'<br /><small>'.smarty_modifier_escape($wpt[2]).'</small>';
     }
 
+    if ($trip->waypoint) {
+        return '<span title="'.$title.'">'.smarty_modifier_escape($trip->waypoint).'</span>';
+    }
+
     trigger_error('cachelink: failed to render');
 }
