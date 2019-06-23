@@ -67,7 +67,8 @@ $config['piwik_site_id'] = isset($_ENV['PIWIK_SITE_ID']) ? $_ENV['PIWIK_SITE_ID'
 $config['piwik_token'] = isset($_ENV['PIWIK_TOKEN']) ? $_ENV['PIWIK_TOKEN'] : '';
 
 // Partners
-$config['geocaching_cache_wp'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
+$config['cache_wpt_link_gc'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
+$config['cache_wpt_link_n'] = 'http://www.navicache.com/cgi-bin/db/displaycache2.pl?CacheID=';
 
 // map api url
 $config['geokrety_map_url'] = isset($_ENV['GEOKRETY_MAP_URL']) ? $_ENV['GEOKRETY_MAP_URL'] : 'https://api.geokretymap.org';
@@ -129,7 +130,10 @@ define('CDN_BOOTSTRAP_DATEPICKER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-datepick
 define('CDN_BOOTSTRAP_DATETIMEPICKER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
 define('CDN_BOOTSTRAP_DATETIMEPICKER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
 
+define('CDN_BOOTSTRAP_3_TYPEAHEAD_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js');
+
 define('CDN_MOMENT_JS', CONFIG_CDN_LIBRARIES.'/moment.js/2.24.0/moment-with-locales.min.js');
+define('CDN_LATINIZE_JS', CONFIG_CDN_LIBRARIES.'/latinize/0.4.0/latinize.min.js');
 
 define('CDN_COLORBOX_JS', CONFIG_CDN_LIBRARIES.'/colorbox/1.6.4/jquery.colorbox-min.js');
 define('CDN_COLORBOX_CSS', CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css');
@@ -456,7 +460,8 @@ define('PIWIK_SITE_ID', $config['piwik_site_id']);
 define('PIWIK_TOKEN', $config['piwik_token']);
 
 // Partners
-define('GEOCACHING_CACHE_WP', $config['geocaching_cache_wp']);
+define('CACHE_WPT_LINK_GC', $config['cache_wpt_link_gc']);
+define('CACHE_WPT_LINK_N', $config['cache_wpt_link_n']);
 
 // input validation
 define('CONFIG_WAYPOINTY_MIN_LENGTH', $config['waypointy_min_length']);

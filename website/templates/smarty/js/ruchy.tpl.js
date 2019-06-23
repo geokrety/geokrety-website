@@ -220,5 +220,34 @@ $("#inputDate").click(function() {
     $("#datetimepicker").data("DateTimePicker").show();
 });
 
+// bind findbyCacheNameInput
+var findbyCacheNameInput = $("#findbyCacheNameInput");
+findbyCacheNameInput.typeahead({
+    items: 9,
+    minLength: 4,
+    source: function(text, callback) {
+        return $.get("/check_wpt_name.php", { 'query': text })
+            .done(function(data) {
+                callback(data);
+            })
+    },
+    matcher: function (item) {
+        var it = this.displayText(item);
+        return ~latinize(it.toLowerCase()).indexOf(this.query.toLowerCase().normalize('NFD'));
+    },
+    displayText: function (item) {
+        var text = typeof item !== 'undefined' && typeof item.name != 'undefined' ? item.name : item;
+        var waypoint = typeof item !== 'undefined' && typeof item.waypoint != 'undefined' ? item.waypoint + ' - ' : '';
+        return waypoint + text;
+    },
+    updater: function (item) {
+        if (typeof item !== 'undefined' && typeof item.waypoint != 'undefined') {
+            $("#wpt").val(item.waypoint).trigger("focusout");
+            $("#findbyCacheName").toggle();
+        };
+        return typeof item !== 'undefined' && typeof item.name != 'undefined' ? item.name : item;
+    },
+});
+
 {include file = "js/ruchy.validation.tpl.js"}
 // ----------------------------------- JQUERY - RUCHY - END

@@ -165,7 +165,7 @@
                                 <label class="col-sm-2 control-label">OC cache name</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
-                                        <input type="text" name="NazwaSkrzynki" id="NazwaSkrzynki" size="20" class="form-control" aria-describedby="helpBlockCacheName">
+                                        <input type="text" name="findbyCacheNameInput" id="findbyCacheNameInput" size="20" class="form-control" aria-describedby="helpBlockCacheName">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="button">{fa icon="search"}</button>
                                         </span>

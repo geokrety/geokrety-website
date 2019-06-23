@@ -22,16 +22,16 @@ function smarty_function_waypoint_link(array $params, Smarty_Internal_Template $
     }
 
     $link = GKDB::getLink();
-    $waypointy = new \Geokrety\Repository\WaypointyRepository($link, false);
-    $hasResult = $waypointy->getByWaypoint($params['wpt']);
-    if (!$hasResult) {
+    $waypointR = new \Geokrety\Repository\WaypointyRepository($link, false);
+    $waypoint = $waypointR->getByWaypoint($params['wpt']);
+    if (sizeof($waypoint) < 1) {
         return false;
     }
 
-    $title = $waypointy->lat.'/'.$waypointy->lon;
-    if ($waypointy->name) {
-        $title = htmlentities($waypointy->name, ENT_QUOTES)." ($title)";
+    $title = $waypoint->lat.'/'.$waypoint->lon;
+    if ($waypoint->name) {
+        $title = htmlentities($waypoint->name, ENT_QUOTES)." ($title)";
     }
 
-    return '<a href="'.$waypointy->cache_link.'" title="'.$title.'">'.smarty_modifier_escape($params['wpt']).'</a>';
+    return '<a href="'.$waypoint->cache_link.'" title="'.$title.'">'.smarty_modifier_escape($params['wpt']).'</a>';
 }

@@ -12,6 +12,14 @@ class ValidationService {
         }
     }
 
+    public function ensureNotEmpty($desc, $value) {
+        if (empty($value) || $this->is_whitespace($value)) {
+            throw new \InvalidArgumentException("expected not empty $desc");
+        }
+
+        return $value;
+    }
+
     public function ensureNotEmptyArray($desc, $value) {
         if (!is_array($value) || empty($value)) {
             throw new \InvalidArgumentException("expected not empty $desc");
