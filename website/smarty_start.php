@@ -16,8 +16,8 @@ function create_tmp_dir($path) {
         die("Fail to creating $path directory");
     }
 }
-create_tmp_dir($config['temp_dir_smarty_compile']);
-create_tmp_dir($config['temp_dir_smarty_cache']);
+create_tmp_dir(TEMP_DIR_SMARTY_COMPILE);
+create_tmp_dir(TEMP_DIR_SMARTY_CACHE);
 create_tmp_dir(TEMP_DIR_HTMLPURIFIER_CACHE);
 
 $HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();
@@ -36,8 +36,8 @@ $smarty_cache_filename = $smarty_cache_id.$lang.$template_login;
 $smarty = new SmartyBC();
 $smarty->escape_html = true;
 $smarty->template_dir = './templates/smarty/';
-$smarty->compile_dir = $config['temp_dir_smarty_compile'];
-$smarty->cache_dir = $config['temp_dir_smarty_cache'];
+$smarty->compile_dir = TEMP_DIR_SMARTY_COMPILE;
+$smarty->cache_dir = TEMP_DIR_SMARTY_CACHE;
 $smarty->addPluginsDir('./templates/plugins/');
 if (amIOnProd()) {
     $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl

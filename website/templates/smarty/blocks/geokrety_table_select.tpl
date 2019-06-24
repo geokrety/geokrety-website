@@ -9,11 +9,11 @@
                 <th><input type="checkbox" id="geokretySelectAll" title="Select all" /></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="geokretyListTable">
             {foreach from=$geokrety item=geokret}
             <tr>
                 <td>
-                    <button class="btn btn-primary" type="submit">Choose</button>
+                    <button class="btn btn-primary" name="btnChooseGK" data-trackingcode="{$geokret->trackingCode}">Choose</button>
                 </td>
                 <td>
                     {gklink gk=$geokret} {gkavatar gk=$geokret}<br />
@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     {if $geokret->hasCurrentUserSeenGeokretId()}
-                    <input type="checkbox" name="geokretySelected" />
+                    <input type="checkbox" name="geokretySelected" data-trackingcode="{$geokret->trackingCode}" />
                     {/if}
                 </td>
             </tr>
@@ -39,5 +39,3 @@
         </tbody>
     </table>
 </div>
-
-<div class="alert alert-warning" role="alert">Not yet implemented!</div>

@@ -3,7 +3,7 @@
     <li class="active">{t}Log a GeoKret{/t}</li>
 </ol>
 
-<form class="form-horizontal" id="moveForm" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
+<form class="form-horizontal" id="moveForm" method="POST" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
     <div class="hidden" id="accordionParking"></div>
 
     <div class="panel-group" id="movePanelGroup" role="tablist" aria-multiselectable="true">
@@ -24,7 +24,7 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="nr" id="nr" minlength="6" maxlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout"
+                                        <input type="text" name="nr" id="nr" minlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout"
                                             data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" />
                                         <span class="input-group-btn">
                                             {if $isLoggedIn}
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 alert alert-success hidden" id="nrResult"></div>
+                        <ul class="col-sm-4 alert alert-success hidden list-unstyled" id="nrResult"></ul>
                     </div>
 
                     <div class="row">
@@ -164,12 +164,7 @@
                             <div class="form-group hidden" id="findbyCacheName">
                                 <label class="col-sm-2 control-label">OC cache name</label>
                                 <div class="col-sm-10">
-                                    <div class="input-group">
-                                        <input type="text" name="findbyCacheNameInput" id="findbyCacheNameInput" size="20" class="form-control" aria-describedby="helpBlockCacheName">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">{fa icon="search"}</button>
-                                        </span>
-                                    </div>
+                                    <input type="text" name="findbyCacheNameInput" id="findbyCacheNameInput" size="20" class="form-control" aria-describedby="helpBlockCacheName">
                                     <span id="helpBlockCacheName" class="help-block">
                                         Enter cache name. <strong>Works only with opencaching networks</strong>.
                                         <a href="help.php#fullysupportedwaypoints">

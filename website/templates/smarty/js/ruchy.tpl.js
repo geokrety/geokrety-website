@@ -242,12 +242,15 @@ findbyCacheNameInput.typeahead({
     },
     updater: function (item) {
         if (typeof item !== 'undefined' && typeof item.waypoint != 'undefined') {
+            $("#wpt").parsley().reset();
             $("#wpt").val(item.waypoint).trigger("focusout");
             $("#findbyCacheName").toggle();
         };
         return typeof item !== 'undefined' && typeof item.name != 'undefined' ? item.name : item;
     },
 });
+
+{include file = "js/ruchy.inventory.tpl.js"}
 
 {include file = "js/ruchy.validation.tpl.js"}
 // ----------------------------------- JQUERY - RUCHY - END

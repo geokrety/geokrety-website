@@ -592,6 +592,8 @@ $smarty->append('javascript', CDN_BOOTSTRAP_DATETIMEPICKER_JS);
 
 $smarty->append('javascript', CDN_LATINIZE_JS);
 $smarty->append('javascript', CDN_BOOTSTRAP_3_TYPEAHEAD_JS);
+$smarty->append('javascript', CDN_BOOTSTRAP_TAGSINPUT_JS);
+$smarty->append('css', CDN_BOOTSTRAP_TAGSINPUT_CSS);
 $smarty->append('javascript', CDN_PARSLEY_BOOTSTRAP3_JS);
 $smarty->append('javascript', CDN_PARSLEY_JS);
 $smarty->append('css', CDN_PARSLEY_CSS);

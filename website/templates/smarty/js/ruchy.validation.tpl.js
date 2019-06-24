@@ -3,6 +3,7 @@
 var movedGeokret = null;
 var isValidLatlon = false;
 var isWaypointFound = false;
+var birthdate = null
 
 $('input[type=radio][name=logtype]').change(function() {
     // // scroll to top
@@ -16,6 +17,8 @@ $('input[type=radio][name=logtype]').change(function() {
     });
 });
 
+
+
 // Validate Tracking code
 window.Parsley.addAsyncValidator('checkNr', function(xhr) {
     var valid = 200 === xhr.status;
@@ -24,11 +27,29 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
     if (valid) {
         var data = $.parseJSON(xhr.responseText);
         // Display fetched GK infos
-        $("#nrResult").html(data.html).show().removeClass("hidden");
-        $("#geokretHeader").html(data.gkid);
-        movedGeokret = data;
+        var result = '';
+        var header = '';
+        data.forEach(geokret => {
+            result = result + '<li>'+geokret.html+'</li>';
+            header = header + ' '+geokret.gkid;
+        });
+        if ($("#geokretHeader").html() != header) { // Prevent flickering
+            $("#nrResult").html(result).show().removeClass("hidden");
+            $("#geokretHeader").html(header);
+        }
+
+        movedGeokret = data.map(function (geokret) {
+            geokret.datePublished = moment.utc(geokret.datePublished, "YYYY-MM-DD HH:mm:ss", true);
+            // Save youngest geokret
+            if (birthdate < geokret.datePublished || birthdate == null) {
+                birthdate = geokret.datePublished;
+            }
+            return geokret;
+        });
     } else {
-        this.addError('errorNr', { message: data.error })
+        data.forEach(error => {
+            this.addError('errorNr', { message: error });
+        });
         $("#nrResult").hide();
         $("#geokretHeader").html('');
         movedGeokret = null;
@@ -48,7 +69,7 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
         // Fill coordinates field
         positionUpdate([data.latitude, data.longitude]);
         hideCoordinatesField();
-        $("#cacheName").text(data.name);
+        $("#cacheName").html('<a href="' + data.link + '" target="_blank">' + (data.name ? data.name : data.waypoint) + ' <i class="fa fa-external-link" aria-hidden="true"></i></a>');
     } else if (isWaypointFound) {
         this.addError('errorWaypoint', { message: data.error })
         toggleCoordinatesField();
@@ -109,7 +130,7 @@ window.Parsley.addValidator('dateaftergkbirth', {
             return;
         }
 
-        var birthdate = moment.utc(movedGeokret.datePublished, "YYYY-MM-DD HH:mm:ss", true);
+        // var birthdate = moment.utc(movedGeokret.datePublished, "YYYY-MM-DD HH:mm:ss", true);
         return birthdate <= date; // TODO: Born date include seconds, that may be a problem, let's wait to see when the form will accept
     },
     messages: {
@@ -130,7 +151,9 @@ $('#logType0').parsley().on('field:success', function() {
 });
 
 $('#nr').parsley().on('field:success', function() {
-    $(':focus').blur();
+    if ($('#nr').val().length == 6) {
+        $(':focus').blur();
+    }
     colorizeParentPanel($('#nr'), true);
 }).on('field:error', function() {
     colorizeParentPanel($('#nr'), false);
@@ -211,6 +234,15 @@ $('#locationNextButton').on('click', function() {
     $("#moveForm").parsley().whenValidate({
         group: "location"
     });
+});
+
+// $('#moveForm').parsley().on('form:error', function() {
+$("#submitButton").on('click', function() {
+    var firstError = $("#movePanelGroup div.panel.panel-danger:first div.panel-collapse");
+    if (firstError) {
+        console.log("Toglle to first error",$("#movePanelGroup div.panel + .panel-danger:first") );
+        firstError.collapse('toggle');
+    }
 });
 
 // ----------------------------------- JQUERY - VALIDATION RULES - END

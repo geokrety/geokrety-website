@@ -120,6 +120,9 @@ define('CONFIG_CDN_JS', $config['cdn_js']);
 define('CONFIG_CDN_CSS', $config['cdn_css']);
 define('CONFIG_CDN_MAPS', $config['cdn_maps']);
 
+// Some configs
+define('CHECK_NR_MAX_PROCESSED_ITEMS', isset($_ENV['CHECK_NR_MAX_PROCESSED_ITEMS']) ? $_ENV['CHECK_NR_MAX_PROCESSED_ITEMS'] : 10);
+
 //js
 $config['funkcje.js'] = '/funkcje.js';
 $config['ajaxtooltip.js'] = CONFIG_CDN_LIBRARIES.'/ajaxtooltip/ajaxtooltip-1.min.js';
@@ -131,6 +134,9 @@ define('CDN_BOOTSTRAP_DATETIMEPICKER_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-datet
 define('CDN_BOOTSTRAP_DATETIMEPICKER_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
 
 define('CDN_BOOTSTRAP_3_TYPEAHEAD_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js');
+
+define('CDN_BOOTSTRAP_TAGSINPUT_JS', CONFIG_CDN_LIBRARIES.'/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js');
+define('CDN_BOOTSTRAP_TAGSINPUT_CSS', CONFIG_CDN_LIBRARIES.'/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css');
 
 define('CDN_MOMENT_JS', CONFIG_CDN_LIBRARIES.'/moment.js/2.24.0/moment-with-locales.min.js');
 define('CDN_LATINIZE_JS', CONFIG_CDN_LIBRARIES.'/latinize/0.4.0/latinize.min.js');
@@ -174,9 +180,9 @@ define('CDN_STRENGTHIFY_CSS', CONFIG_CDN_LIBRARIES.'/strengthify/0.5.8/strengthi
 $config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';
 
 // Temp directories
-$config['temp_dir_smarty_compile'] = isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $_ENV['TEMP_DIR_SMARTY_COMPILE'] : '/tmp/templates/compile/';
-$config['temp_dir_smarty_cache'] = isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/';
-$config['temp_dir_htmlpurifier_cache'] = isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/';
+define('TEMP_DIR_SMARTY_COMPILE', isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $_ENV['TEMP_DIR_SMARTY_COMPILE'] : '/tmp/templates/compile/');
+define('TEMP_DIR_SMARTY_CACHE', isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/');
+define('TEMP_DIR_HTMLPURIFIER_CACHE', isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/');
 
 // Smarty (composer install)
 define('SMARTY_DIR', 'vendor/smarty/smarty/libs/');
@@ -465,6 +471,5 @@ define('CACHE_WPT_LINK_N', $config['cache_wpt_link_n']);
 
 // input validation
 define('CONFIG_WAYPOINTY_MIN_LENGTH', $config['waypointy_min_length']);
-define('TEMP_DIR_HTMLPURIFIER_CACHE', $config['temp_dir_htmlpurifier_cache']);
 
 date_default_timezone_set(CONFIG_TIMEZONE);

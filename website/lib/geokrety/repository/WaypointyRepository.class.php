@@ -61,19 +61,21 @@ EOQUERY;
         $limit = $this->validationService->ensureIntGTE('limit', $limit, 1);
         $where = <<<EOQUERY
   WHERE     wp.name LIKE CONCAT('%', ?, '%')
+  OR        wp.waypoint LIKE CONCAT('%', ?, '%')
   ORDER BY  wp.name ASC
   LIMIT     $limit
 EOQUERY;
         $sql = self::SELECT_WAYPOINTY.$where;
-        return $this->getBySql($sql, 's', array($waypointName));
+        return $this->getBySql($sql, 'ss', array($waypointName, $waypointName));
     }
 
     public function countDistinctName($waypointName) {
         $where = <<<EOQUERY
   WHERE     wp.name LIKE CONCAT('%', ?, '%')
+  OR        wp.waypoint LIKE CONCAT('%', ?, '%')
   ORDER BY  wp.name ASC
 EOQUERY;
-        return self::count($where, array('s', $waypointName));
+        return self::count($where, array('ss', array($waypointName, $waypointName)));
     }
 
     public function getBySql($sql, $bind, array $params) {

@@ -41,8 +41,8 @@ $response = array(
     'name' => $waypoint->name,
     'owner' => $waypoint->ownerName,
     'type' => $waypoint->type,
-    'cacheType' => $waypoint->type,
-    'cacheLink' => $waypoint->link,
+    'typeName' => $waypoint->typeName,
+    'link' => $waypoint->link,
     'isGCWaypoint' => Waypoint::isGCWaypoint($_GET['wpt']),
 );
 echo json_encode($response);
