@@ -17,7 +17,24 @@ $('input[type=radio][name=logtype]').change(function() {
     });
 });
 
+// Convert geokret date to moment object
+function geokretDateToMoment(data) {
+    movedGeokret = data.map(function (geokret) {
+        geokret.datePublished = moment.utc(geokret.datePublished, "YYYY-MM-DD HH:mm:ss", true);
+        // Save youngest geokret
+        if (birthdate < geokret.datePublished || birthdate == null) {
+            birthdate = geokret.datePublished;
+        }
+        return geokret;
+    });
+}
 
+// Force revalidate date if additional group has been validated before
+function revalidateMoveDate() {
+    if (!$("#additionalDataPanel.panel-default").length) {
+        $('#inputDate').parsley().validate();
+    }
+}
 
 // Validate Tracking code
 window.Parsley.addAsyncValidator('checkNr', function(xhr) {
@@ -38,14 +55,7 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
             $("#geokretHeader").html(header);
         }
 
-        movedGeokret = data.map(function (geokret) {
-            geokret.datePublished = moment.utc(geokret.datePublished, "YYYY-MM-DD HH:mm:ss", true);
-            // Save youngest geokret
-            if (birthdate < geokret.datePublished || birthdate == null) {
-                birthdate = geokret.datePublished;
-            }
-            return geokret;
-        });
+        geokretDateToMoment(data);
     } else {
         data.forEach(error => {
             this.addError('errorNr', { message: error });
@@ -54,7 +64,8 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
         $("#geokretHeader").html('');
         movedGeokret = null;
     }
-    $('#inputDate').parsley().validate();
+    // Force revalidate date
+    revalidateMoveDate();
     return valid;
 }, '/check_nr.php');
 
@@ -130,8 +141,7 @@ window.Parsley.addValidator('dateaftergkbirth', {
             return;
         }
 
-        // var birthdate = moment.utc(movedGeokret.datePublished, "YYYY-MM-DD HH:mm:ss", true);
-        return birthdate <= date; // TODO: Born date include seconds, that may be a problem, let's wait to see when the form will accept
+        return birthdate <= date; // TODO: Born date include seconds, that may be a problem
     },
     messages: {
       en: 'The date cannot be before the GeoKret birthdate.',
@@ -150,6 +160,7 @@ $('#logType0').parsley().on('field:success', function() {
     colorizeParentPanel($('#logType0'), false);
 });
 
+// Events for NR
 $('#nr').parsley().on('field:success', function() {
     if ($('#nr').val().length == 6) {
         $(':focus').blur();
@@ -159,6 +170,7 @@ $('#nr').parsley().on('field:success', function() {
     colorizeParentPanel($('#nr'), false);
 });
 
+// Events for WPT
 $('#wpt').parsley().on('field:success', function() {
     if (isWaypointFound) {
     // if (isWaypointFound && !$("#latlon").parsley().isValid()) {
@@ -171,6 +183,7 @@ $('#wpt').parsley().on('field:success', function() {
     $("#locationHeader").html('');
 });
 
+// Events for LATLON
 $('#latlon').parsley().on('field:success', function() {
     isValidLatlon = true;
     showMarker($("#latlon").val().split(' '));
@@ -184,6 +197,7 @@ $('#latlon').parsley().on('field:success', function() {
     dropMarker();
 });
 
+// Events for DATE
 $('#inputDate').parsley().on('field:success', function() {
     $("#additionalDataHeader").html($('#datetimepicker').data("DateTimePicker").date().fromNow());
 }).on('field:validated', function() {
@@ -192,12 +206,15 @@ $('#inputDate').parsley().on('field:success', function() {
     $("#additionalDataHeader").html('');
 });
 
+{* validate username on for anonymous *}
 {if !$isLoggedIn}
+// Events for DATE
 $('#username').parsley().on('field:validated', function() {
     validateGroupAdditionalData();
 });
 {/if}
 
+// Events for COMMENT
 $('#comment').parsley().on('field:validated', function() {
     validateGroupAdditionalData();
 });
@@ -212,6 +229,7 @@ function validateGroupAdditionalData() {
     });
 }
 
+// Click on next validate group
 $('#nrNextButton').on('click', function() {
     $("#moveForm").parsley().whenValidate({
         group: "trackingCode"
@@ -219,6 +237,7 @@ $('#nrNextButton').on('click', function() {
 });
 
 // Special case when location is not necessary
+// Click on next validate group
 $("#logtypeNextButton").on('click', function() {
     if (isLocationNeeded()) {
         $('#collapseLocation').collapse('show');
@@ -230,19 +249,12 @@ $("#logtypeNextButton").on('click', function() {
     });
 });
 
+// Special case when location is not necessary
+// Click on next validate group
 $('#locationNextButton').on('click', function() {
     $("#moveForm").parsley().whenValidate({
         group: "location"
     });
-});
-
-// $('#moveForm').parsley().on('form:error', function() {
-$("#submitButton").on('click', function() {
-    var firstError = $("#movePanelGroup div.panel.panel-danger:first div.panel-collapse");
-    if (firstError) {
-        console.log("Toglle to first error",$("#movePanelGroup div.panel + .panel-danger:first") );
-        firstError.collapse('toggle');
-    }
 });
 
 // ----------------------------------- JQUERY - VALIDATION RULES - END

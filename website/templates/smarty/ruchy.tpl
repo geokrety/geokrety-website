@@ -217,7 +217,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="additionalDataPanel">
             <div class="panel-heading" role="tab" id="headingMessage" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">
                 Additional data
                 <div class="pull-right" id="additionalDataHeader"></div>

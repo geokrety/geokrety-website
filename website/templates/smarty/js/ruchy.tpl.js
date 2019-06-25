@@ -112,11 +112,11 @@ function colorizeParentPanel(element, valid) {
     var panel = element.closest(".panel");
     if (valid) {
         panel.addClass("panel-success")
-            .removeClass("panel-standard")
+            .removeClass("panel-default")
             .removeClass("panel-danger");
     } else {
         panel.addClass("panel-danger")
-            .removeClass("panel-standard")
+            .removeClass("panel-default")
             .removeClass("panel-success");
     }
 };
@@ -183,11 +183,14 @@ $("#moveForm input[type=radio]").change(function() {
 });
 
 // bind on submit
-$("#submitButton").click(function() {
-    // colorizePanelsOnValidation();
-    // if ($("#moveForm").valid()) {
-    $("#moveForm").submit();
-    // }
+$("#submitButton").on('click', function() {
+    var firstError = $("#movePanelGroup div.panel.panel-danger:first div.panel-collapse");
+    if (firstError) {
+        console.log("Toglle to first error",$("#movePanelGroup div.panel + .panel-danger:first") );
+        firstError.collapse('toggle');
+    } else {
+        $("#moveForm").submit();
+    }
 });
 
 // bind nrSearchButton
@@ -220,7 +223,7 @@ $("#inputDate").click(function() {
     $("#datetimepicker").data("DateTimePicker").show();
 });
 
-// bind findbyCacheNameInput
+// bind findbyCacheNameInput. typeahead for lookup by cache name
 var findbyCacheNameInput = $("#findbyCacheNameInput");
 findbyCacheNameInput.typeahead({
     items: 9,
