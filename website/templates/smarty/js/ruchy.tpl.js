@@ -184,11 +184,10 @@ $("#moveForm input[type=radio]").change(function() {
 
 // bind on submit
 $("#submitButton").on('click', function() {
+    $("#moveForm").submit();
     var firstError = $("#movePanelGroup div.panel.panel-danger:first div.panel-collapse");
     if (firstError) {
         firstError.collapse('toggle');
-    } else {
-        $("#moveForm").submit();
     }
 });
 
