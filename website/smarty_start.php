@@ -1,9 +1,5 @@
 <?php
 
-ini_set('session.save_handler', 'redis');
-ini_set('session.save_path', 'tcp://redis:6379');
-session_start();
-
 require_once 'templates/konfig.php';
 require_once 'wybierz_jezyk.php'; // language selection
 require_once SMARTY_DIR.'Smarty.class.php';

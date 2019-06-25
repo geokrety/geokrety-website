@@ -3,17 +3,20 @@
 // change header checkbox
 $("body").on('change', "#geokretySelectAll", function() {
     var checked = $(this).is(":checked");
-    $("#geokretyListTable [name*='geokretySelected']").slice(0, {CHECK_NR_MAX_PROCESSED_ITEMS}).each(function() {
+    var inventory = $("#geokretyListTable [name*='geokretySelected']");
+    inventory.slice(0, {CHECK_NR_MAX_PROCESSED_ITEMS}).each(function() {
         this.checked = checked;
     })
-    $("#modalInventorySelectButton span.badge").text($("#geokretyListTable [name*='geokretySelected']:checkbox:checked").length);
+    toggleAlertMaxGKReached(inventory.length, this);
 
 // change one GeoKret checkbox
 }).on('change', "#geokretyListTable [name*='geokretySelected']", function() {
-    if (!$(this).is(":checked") && $("#geokretyListTable [name*='geokretySelected']:checkbox:checked").length < {CHECK_NR_MAX_PROCESSED_ITEMS}) {
+    var inventory = $("#geokretyListTable [name*='geokretySelected']:checkbox:checked");
+    if (!$(this).is(":checked") && inventory.length < {CHECK_NR_MAX_PROCESSED_ITEMS}) {
         $("#geokretySelectAll").prop("checked", false);
     }
-    $("#modalInventorySelectButton span.badge").text($("#geokretyListTable [name*='geokretySelected']:checkbox:checked").length);
+    var selectedCount = inventory.length;
+    toggleAlertMaxGKReached(inventory.length, this);
 
 // GK specific choose button
 }).on('click', "#geokretyListTable [name*='btnChooseGK']", function(event) {
@@ -49,6 +52,26 @@ function removeTrackingCode(trackingCode) {
     var foundTrackingCodes = $("#nr").val().split(',').filter(function (el) { return el.toUpperCase() != trackingCode.toUpperCase() }).join(',');
     $("#nr").parsley().reset();
     $("#nr").val(foundTrackingCodes).trigger("focusout");
+}
+
+//
+function toggleAlertMaxGKReached(count, el) {
+    if (count > {CHECK_NR_MAX_PROCESSED_ITEMS}) {
+        $(el).prop("checked", false);
+        showAlertMaxGKReached(true);
+        $("#modalInventorySelectButton span.badge").text({CHECK_NR_MAX_PROCESSED_ITEMS});
+    } else {
+        $("#modalInventorySelectButton span.badge").text(count);
+    }
+}
+
+// Show/hide warning message
+function showAlertMaxGKReached(show) {
+    if (show) {
+        $("#maxGKSelctionReached").show().removeClass("hidden");
+    } else {
+        $("#maxGKSelctionReached").hide();
+    }
 }
 
 // ----------------------------------- JQUERY - RUCHY INVENTORY - END

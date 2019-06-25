@@ -186,7 +186,6 @@ $("#moveForm input[type=radio]").change(function() {
 $("#submitButton").on('click', function() {
     var firstError = $("#movePanelGroup div.panel.panel-danger:first div.panel-collapse");
     if (firstError) {
-        console.log("Toglle to first error",$("#movePanelGroup div.panel + .panel-danger:first") );
         firstError.collapse('toggle');
     } else {
         $("#moveForm").submit();

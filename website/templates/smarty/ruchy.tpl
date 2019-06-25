@@ -24,7 +24,7 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="nr" id="nr" minlength="6" required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout"
+                                        <input type="text" name="nr" id="nr" minlength="6" {if !$isLoggedIn}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout"
                                             data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" />
                                         <span class="input-group-btn">
                                             {if $isLoggedIn}

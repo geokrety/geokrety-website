@@ -11,6 +11,12 @@ $config['pass'] = isset($_ENV['DB_PASSWORD']) ? $_ENV['DB_PASSWORD'] : 'xxx';
 $config['db'] = isset($_ENV['DB_NAME']) ? $_ENV['DB_NAME'] : 'xxx';
 $config['charset'] = isset($_ENV['DB_CHARSET']) ? $_ENV['DB_CHARSET'] : 'utf8';
 
+// Redis
+$config['redis_dsn'] = isset($_ENV['REDIS_DSN']) ? $_ENV['REDIS_DSN'] : 'tcp://redis:6379';
+
+// Session
+$config['session_in_redis'] = isset($_ENV['SESSION_IN_REDIS']) ? $_ENV['SESSION_IN_REDIS'] : true;
+
 // CDN url
 $config['cdn_url'] = isset($_ENV['CDN_SERVER_URL']) ? $_ENV['CDN_SERVER_URL'] : 'https://cdn.geokrety.org';
 
@@ -307,6 +313,9 @@ define('CONFIG_PASS', $config['pass']);
 define('CONFIG_DB', $config['db']);
 define('CONFIG_CHARSET', $config['charset']);
 define('CONFIG_TIMEZONE', $config['timezone']);
+
+define('REDIS_DSN', $config['redis_dsn']);
+define('SESSION_IN_REDIS', $config['session_in_redis']);
 
 if (!function_exists('DBPConnect')) {
     /**

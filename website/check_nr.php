@@ -86,9 +86,13 @@ class NRChecker {
 
         if (!sizeof($nrArray)) {
             array_push($this->errors, _('No Tracking Code provided.'));
+            return;
+        } elseif (!$_SESSION['isLoggedIn'] && sizeof($nrArray) > 1) {
+            array_push($this->errors, _('Anonymous users cannot check multiple Tracking Codes at once. Please login first.'));
+            return;
         } elseif (sizeof($nrArray) > CHECK_NR_MAX_PROCESSED_ITEMS) {
             array_push($this->errors, sprintf(_('Only %d Tracking Codes may be specified at once, there are %d selected.'), CHECK_NR_MAX_PROCESSED_ITEMS, sizeof($nrArray)));
-            $nrArray = array_slice($nrArray, 0, CHECK_NR_MAX_PROCESSED_ITEMS);
+            return;
         }
 
         foreach ($nrArray as $nr) {
