@@ -234,7 +234,7 @@ findbyCacheNameInput.typeahead({
     },
     matcher: function (item) {
         var it = this.displayText(item);
-        return ~latinize(it.toLowerCase()).indexOf(this.query.toLowerCase().normalize('NFD'));
+        return ~latinize(it.toLowerCase()).indexOf(latinize(this.query.toLowerCase()));
     },
     displayText: function (item) {
         var text = typeof item !== 'undefined' && typeof item.name != 'undefined' ? item.name : item;
