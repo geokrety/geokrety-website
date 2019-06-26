@@ -162,7 +162,7 @@
                                 </div>
                             </div>
                             <div class="form-group hidden" id="findbyCacheName">
-                                <label class="col-sm-2 control-label">OC cache name</label>
+                                <label class="col-sm-2 control-label">Cache name</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="findbyCacheNameInput" id="findbyCacheNameInput" size="20" class="form-control" aria-describedby="helpBlockCacheName">
                                     <span id="helpBlockCacheName" class="help-block">
