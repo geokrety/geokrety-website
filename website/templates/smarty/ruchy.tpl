@@ -166,7 +166,7 @@
                                 <div class="col-sm-10">
                                     <input type="text" name="findbyCacheNameInput" id="findbyCacheNameInput" size="20" class="form-control" aria-describedby="helpBlockCacheName">
                                     <span id="helpBlockCacheName" class="help-block">
-                                        Enter cache name. <strong>Works only with opencaching networks</strong>.
+                                        Enter cache name. <strong>Does not work for GC caches</strong>.
                                         <a href="help.php#fullysupportedwaypoints">
                                             {fa icon="question-circle"}
                                         </a>
