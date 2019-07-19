@@ -20,11 +20,27 @@
     {else if $user_subpage == 3}
     <a class="anchor" id="trip"></a>
     <h2>{t}Recently posted moves{/t}</h2>
-    {include file='blocks/geokrety_table_trip.tpl'}
+    {if $trip}
+      {include file='blocks/geokrety_table_trip.tpl'}
+    {else}
+      {if $user->isCurrentUser()}
+        <em>{t}You didn't have logged any GeoKrety yet.{/t}</em>
+      {else}
+        <em>{t escape=no username=$user->username}%1 didn't have logged any GeoKrety yet.{/t}</em>
+      {/if}
+    {/if}
     {else if $user_subpage == 4}
     <a class="anchor" id="trip"></a>
     <h2>{t}Moves of owned Geokrety{/t}</h2>
-    {include file='blocks/geokrety_table_trip.tpl'}
+    {if $trip}
+      {include file='blocks/geokrety_table_trip.tpl'}
+    {else}
+      {if $user->isCurrentUser()}
+        <em>{t}You didn't have created any GeoKrety yet or your GeoKrety never traveled yet.{/t}</em>
+      {else}
+        <em>{t escape=no username=$user->username}%1 didn't have created any GeoKrety yet or his GeoKrety never traveled yet.{/t}</em>
+      {/if}
+    {/if}
     {else if $user_subpage == 5}
     {include file='blocks/geokrety_table_inventory.tpl'}
     {else}

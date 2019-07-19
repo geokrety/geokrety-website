@@ -3,6 +3,7 @@
 <a class="anchor" id="owned"></a>
 <h2>{t}Owned GeoKrety{/t}</h2>
 
+{if $geokrety}
 {call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='owned'}
 <div class="table-responsive">
   <table class="table table-striped">
@@ -63,3 +64,10 @@
   </table>
 </div>
 {call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='owned'}
+{else}
+  {if $user->isCurrentUser()}
+    <em>{t}Hey! You don't own any GeoKrety. Do you know you may <a href="/register.php">create</a> them for free?{/t}</em>
+  {else}
+    <em>{t escape=no username=$user->username}%1 has not yet created any GeoKrety.{/t}</em>
+  {/if}
+{/if}

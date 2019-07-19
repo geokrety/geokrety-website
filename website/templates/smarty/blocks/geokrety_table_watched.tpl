@@ -3,6 +3,7 @@
 <a class="anchor" id="watched"></a>
 <h2>{t}Watched GeoKrety{/t}</h2>
 
+{if $geokrety}
 {call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='watched'}
 <div class="table-responsive">
   <table class="table table-striped">
@@ -67,3 +68,10 @@
   </table>
 </div>
 {call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='watched'}
+{else}
+  {if $user->isCurrentUser()}
+    <em>{t}You have any watched GeoKrety.{/t}</em>
+  {else}
+    <em>{t escape=no username=$user->username}%1 has no GeoKrety in his watch list.{/t}</em>
+  {/if}
+{/if}
