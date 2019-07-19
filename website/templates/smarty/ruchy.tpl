@@ -148,7 +148,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group">
                                         <input type="text" name="wpt" id="wpt" value="{{$tripStep->waypoint}}" minlength="4" maxlength="20" required class="form-control" aria-describedby="helpBlockWaypoint" placeholder="eg. GC1AQ2N" data-parsley-trigger="input focusout"
-                                            data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" data-parsley-group="location" data-parsley-errors-messages-disabled data-parsley-debounce="500" data-parsley-pattern="^[a-zA-Z0-9]+" style="text-transform:uppercase">
+                                            data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" data-parsley-group="location" data-parsley-errors-messages-disabled data-parsley-debounce="500" style="text-transform:uppercase">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="button" id="wptSearchByNameButton" title="{t}Lookup opencaching cache by name{/t}"><img src="{$imagesUrl}/logos/geocaching.svg" width="18px" /></button>
                                             <button class="btn btn-default" type="button" id="wptSearchButton">{fa icon="search"}</button>
