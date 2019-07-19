@@ -56,6 +56,15 @@ class TrackingCodesValidationService extends AbstractValidationService {
         return true;
     }
 
+    protected function checkCharacters($nr) {
+        if (!preg_match('/[^A-Za-z0-9]+/', $nr)) {
+            return true;
+        }
+        $this->errors[] = sprintf(_('Tracking Code "%s" contains invalid characters.'), $nr);
+
+        return false;
+    }
+
     private function loockupNr($nr) {
         $geokret = $this->geokretR->getByTrackingCode($nr);
         if (!is_a($geokret, '\Geokrety\Domain\Konkret')) {
@@ -116,6 +125,9 @@ class TrackingCodesValidationService extends AbstractValidationService {
         }
 
         foreach ($nrArray as $nr) {
+            if (!$this->checkCharacters($nr)) {
+                continue;
+            }
             if (!$this->isGKNumber($nr)) {
                 continue;
             }
