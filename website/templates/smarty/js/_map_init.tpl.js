@@ -2,7 +2,9 @@
 var PARIS = new L.LatLng(48.85, 2.35);
 
 function initializeMap() {
-    var map = L.map('mapid');
+    var map = L.map('mapid', {
+        worldCopyJump: true
+    });
     var osmUrl = {literal}'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';{/literal}
     var osmAttrib = 'Map data © <a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {

@@ -99,7 +99,9 @@ function displayMapDataAsPolyLayer(map, plotList) {
 }
 
 function initMap() {
-  var map = L.map("mapid");
+  var map = L.map("mapid", {
+      worldCopyJump: true
+  });
   var osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
   var osmAttrib = "Map data © <a href=\"https://www.openstreetmap.org\">OpenStreetMap</a> contributors";
   var osm = new L.TileLayer(osmUrl, {
