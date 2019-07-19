@@ -8,11 +8,13 @@
         {fa icon="link" title="{t}Copy link to page{/t}"}
         {fa icon="forumbee" title="{t}Copy to page as bbcode{/t}"}
       </p>
+{if $user->isCurrentUser()}
       <p class="pull-right">
         <a class="btn btn-warning btn-xs pull-right" href="/edit.php?co=statpic" title="{t}Choose statpic{/t}">
           {fa icon="pencil"}
         </a>
       </p>
+{/if}
     </figcaption>
   </div>
 </div>

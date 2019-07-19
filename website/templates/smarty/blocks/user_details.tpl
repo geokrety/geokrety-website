@@ -65,7 +65,9 @@
                 {/if}
             </dl>
 
-            {t escape=no}To change your username or remove your account? Send us <a href="/kontakt.php">an email</a>!{/t}
+            {if $user->isCurrentUser()}
+                {t escape=no}To change your username or remove your account? Send us <a href="/kontakt.php">an email</a>!{/t}
+            {/if}
         </div>
 
         <div class="gallery pull-right">
