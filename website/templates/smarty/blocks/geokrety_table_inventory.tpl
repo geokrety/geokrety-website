@@ -3,6 +3,7 @@
 <a class="anchor" id="inventory"></a>
 <h2>{t}Inventory{/t}</h2>
 
+{if $geokrety}
 {call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='inventory'}
 <div class="table-responsive">
   <table class="table table-striped">
@@ -62,3 +63,10 @@
   </table>
 </div>
 {call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='inventory'}
+{else}
+  {if $user->isCurrentUser()}
+    <em>{t escape=no}Your inventory is empty. Check <a href="/gkmap.php">the map</a> to find GeoKrety near you!{/t}</em>
+  {else}
+    <em>{t escape=no username=$user->username}%1's inventory is currently empty.{/t}</em>
+  {/if}
+{/if}
