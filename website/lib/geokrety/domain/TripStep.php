@@ -194,7 +194,8 @@ class TripStep extends AbstractObject {
     public function author() {
         $user = new User();
         $user->id = $this->userId;
-        $user->username = $this->username;
+        // Workaround: Fix database encoding
+        $user->username = html_entity_decode($this->username);
 
         return $user;
     }

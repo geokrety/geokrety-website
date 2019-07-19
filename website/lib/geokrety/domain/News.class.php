@@ -15,7 +15,8 @@ class News extends AbstractObject {
     public function author() {
         $user = new User();
         $user->id = $this->authorId;
-        $user->username = $this->authorName;
+        // Workaround: Fix database encoding
+        $user->username = html_entity_decode($this->authorName);
 
         return $user;
     }
