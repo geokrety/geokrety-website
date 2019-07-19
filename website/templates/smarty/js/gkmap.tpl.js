@@ -24,7 +24,9 @@ var slider = undefined;
 
 function initmap() {
     // set up the map
-    map = new L.Map('map');
+    map = new L.map('map', {
+        worldCopyJump: true
+    });
 
     // Hash link
     //var hash = new L.Hash(map, { zoom: 8, center: [43.5943, 6.9509] });
