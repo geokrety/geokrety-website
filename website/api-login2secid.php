@@ -28,6 +28,7 @@ if (!empty($kret_login) and !empty($kret_haslo1)) { // logging in with supplied 
     mysqli_free_result($result);
 
     if ((empty($row))) {
+        http_response_code(400);
         echo 'error 1';
         exit;
     } else { // istnieje użytkownik taki //
@@ -35,6 +36,7 @@ if (!empty($kret_login) and !empty($kret_haslo1)) { // logging in with supplied 
         if ($haslo != '') {
             $haslo_sprawdzone = ($haslo_in == $haslo);
             if ($haslo_sprawdzone) {
+                http_response_code(400);
                 echo 'error 1';
                 exit;
             }
@@ -44,6 +46,7 @@ if (!empty($kret_login) and !empty($kret_haslo1)) { // logging in with supplied 
         if ($haslo2 != '') {
             $haslo2_sprawdzone = haslo_sprawdz($kret_haslo1, $haslo2);
             if (!$haslo2_sprawdzone) {
+                http_response_code(400);
                 echo 'error 1';
                 exit;
             }
