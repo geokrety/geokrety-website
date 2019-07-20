@@ -114,6 +114,9 @@ $config['cdn_js'] = $config['cdn_url'].'/js';
 $config['cdn_css'] = $config['cdn_url'].'/css';
 $config['cdn_maps'] = $config['cdn_url'].'/maps';
 
+define('CONFIG_SITE_BASE_URL', $config['adres']);
+define('CONFIG_CDN_URL', $config['cdn_url']);
+
 define('CONFIG_PROD_SERVER_NAME', $config['prod_server_name']);
 define('CONFIG_GK_VERSION', $config['gk_version']);
 define('CONFIG_CDN', $config['cdn_url']);
