@@ -7,8 +7,6 @@ require_once 'smarty_start.php';
 
 $TYTUL = _('GK XML interface');
 
-$one_hour_before = date('YmdHis', time() - (1 * 60 * 60));
-
 $smarty->assign('content_template', 'api.tpl');
 
 require_once 'smarty.php';
