@@ -24,6 +24,6 @@ CREATE TABLE `gk-waypointy-sync` (
                                    `last_update` VARCHAR(15) NULL DEFAULT NULL
 )
   COMMENT='Last synchronization time for GC services'
-  COLLATE='utf8_general_ci'
+  COLLATE='utf8mb4_unicode_ci'
   ENGINE=InnoDB
 ;
