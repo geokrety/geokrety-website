@@ -50,7 +50,6 @@
             <li><a href="/api.php">{fa icon="cog"} {t}GK interface / API{/t}</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/statystyczka.php">{fa icon="bar-chart"} {t}Statistics{/t}</a></li>
-            <li><a href="/lost.php">{fa icon="grav"} {t}Lost GeoKrety{/t}</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/download.php">{fa icon="download"} {t}Downloads{/t}</a></li>
             <li><a href="/toolbox.php">{fa icon="cog"} {t}GeoKrety Toolbox{/t}</a></li>
