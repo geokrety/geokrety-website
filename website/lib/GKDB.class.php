@@ -81,6 +81,7 @@ class GKDB {
         if (!$stmt->execute()) {
             throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
         }
+
         return $stmt;
     }
 
