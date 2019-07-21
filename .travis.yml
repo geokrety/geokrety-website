@@ -9,12 +9,11 @@ branches:
     - /\+travis\d+$/
 php:
   - 5.6
-  - 7.1
-  - 7.2
+  - 7.3
 
 # https://docs.travis-ci.com/user/database-setup/#mariadb
 addons:
-    mariadb: '10.0'
+    mariadb: '10.1'
     apt:
         packages:
             - moreutils
@@ -26,11 +25,16 @@ env:
 
 # https://andidittrich.de/2017/06/travisci-setup-mysql-tablesdata-before-running-tests.html
 before_install:
+    # Workaround bug on travis failing to install mariadb
+    - sudo apt-get remove --purge mysql-common mysql-client-core-5.7 mysql-server-core-5.7
+    - sudo apt-get install -y -o Dpkg::Options::='--force-confnew' mariadb-server mariadb-server-10.1
+    - sudo systemctl start mysql
+    # End workaround
     - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
     - sudo dpkg -i crowdin.deb
     - gkShell/config/testdb/generateSql.sh
     - mysql -u root --password="" < gkShell/config/testdb/00_database-create-geokrety-db.sql
-    - mysql -u root --password="" < gkShell/config/testdb/01_grant-root.sql
+    # - mysql -u root --password="" < gkShell/config/testdb/01_grant-root.sql # Unneeded?
     - tests/config/generateTestConfig.sh
 # mysql  pid file: /var/run/mysqld/mysqld.pid
 # mysql sock file: /var/run/mysqld/mysqld.sock
@@ -53,8 +57,8 @@ script:
     #- scripts/phplint.sh website/ # Disabled see issue #69
     # Check CS fixer
     - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
-    # Unit tests with PHPUnit
-    - vendor/bin/phpunit
+    # Unit tests with PHPUnit ; output to stdr to prevent session issues https://stackoverflow.com/a/38045422/944936
+    - vendor/bin/phpunit --stderr
 
 jobs:
   include:
