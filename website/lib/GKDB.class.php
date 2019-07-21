@@ -3,6 +3,7 @@
 class GKDB {
     private static $connectCount = 0;
     private static $_instance = null;
+    private static $preparedStatements = array();
 
     private $link = null;
 
@@ -70,11 +71,20 @@ class GKDB {
         unset($this->link);
     }
 
-    public static function prepareBindExecute(string $action, string $sql, string $bindParams = null, array $bindValues = null) {
-        $link = self::getLink();
-        if (!($stmt = $link->prepare($sql))) {
-            throw new \Exception($action.' prepare failed: ('.$link->errno.') '.$link->error);
+    public static function getPreparedStatement($sql) {
+        if (!array_key_exists($sql, self::$preparedStatements)) {
+            $link = self::getLink();
+            if (!($stmt = $link->prepare($sql))) {
+                throw new \Exception($action.' prepare failed: ('.$link->errno.') '.$link->error);
+            }
+            self::$preparedStatements[$sql] = $stmt;
         }
+
+        return self::$preparedStatements[$sql];
+    }
+
+    public static function prepareBindExecute(string $action, string $sql, string $bindParams = null, array $bindValues = null) {
+        $stmt = self::getPreparedStatement($sql);
         if (!is_null($bindValues) && !$stmt->bind_param($bindParams, ...$bindValues)) {
             throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
         }
