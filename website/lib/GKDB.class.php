@@ -26,11 +26,11 @@ class GKDB {
     }
 
     public function connect() {
-        if ($this->link != null) {
+        if ($this->link !== null) {
             try {
-                mysqli_get_server_info($this->link);
-
-                return $this->link;
+                if (@mysqli_ping($this->link)) {
+                    return $this->link;
+                }
             } catch (Exception $exc) {
             }
         }
@@ -68,6 +68,20 @@ class GKDB {
         }
         mysqli_close($this->link);
         unset($this->link);
+    }
+
+    public static function prepareBindExecute(string $action, string $sql, string $bindParams = null, array $bindValues = null) {
+        $link = self::getLink();
+        if (!($stmt = $link->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$link->errno.') '.$link->error);
+        }
+        if (!is_null($bindValues) && !$stmt->bind_param($bindParams, ...$bindValues)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+        return $stmt;
     }
 
     public function __clone() {
