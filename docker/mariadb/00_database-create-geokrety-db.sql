@@ -405,12 +405,12 @@ CREATE TABLE `gk-waypointy` (
   `lat` double(8,5) DEFAULT NULL,
   `lon` double(8,5) DEFAULT NULL,
   `alt` int(5) NOT NULL DEFAULT '-32768',
-  `country` char(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `owner` varchar(150) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `typ` varchar(200) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `kraj` varchar(200) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `country` char(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'country code as ISO 3166-1 alpha-2',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `typ` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kraj` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'full English country name',
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`waypoint`),
@@ -630,6 +630,12 @@ CREATE TABLE `gk-waypointy-gc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='GC.com waypoints';
 
 
+CREATE TABLE `gk-waypointy-sync` (
+  `service_id` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_update` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Last synchronization time for GC services';
+
+
 CREATE TABLE `gk-waypointy-type` (
   `typ` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cache_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -689,4 +695,4 @@ INSERT INTO `gk-waypointy-type` (`typ`, `cache_type`) VALUES
 ('Wirtualna',	'Virtual'),
 ('Wydarzenie',	'Event');
 
--- 2019-07-19 17:31:41
+-- 2019-07-21 08:17:51
