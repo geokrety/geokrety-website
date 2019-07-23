@@ -64,7 +64,7 @@ EOQUERY;
         while ($stmt->fetch()) {
             $news = new \Geokrety\Domain\News();
             $news->id = $id;
-            $news->date = $date;
+            $news->setDate($date);
             $news->title = $title;
             $news->content = $content;
             $news->authorName = $authorName;

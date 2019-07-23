@@ -27,4 +27,11 @@ class NewsComment extends AbstractObject {
     public function isAuthor() {
         return $_SESSION['isSuperUser'] || $_SESSION['isLoggedIn'] && $_SESSION['currentUser'] === $this->userId;
     }
+
+    public function setDate($date, $format = 'Y-m-d H:i:s') {
+        if (is_a($date, '\Datetime')) {
+            $this->date = $date;
+        }
+        $this->date = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
+    }
 }
