@@ -21,7 +21,6 @@ function smarty_function_language(array $params, Smarty_Internal_Template $templ
     }
 
     $lang = $params['lang'];
-    $countryService = new \Geokrety\Service\CountryService();
 
-    return $countryService->getLanguageName($lang);
+    return \Geokrety\Service\CountryService::getLanguageName($lang);
 }

@@ -28,13 +28,13 @@ class CountryService extends AbstractValidationService {
         return strtolower($content);
     }
 
-    public function getCountryName($countryCode) {
+    public static function getCountryName($countryCode) {
         $isoCodes = new \Sokil\IsoCodes\IsoCodesFactory();
 
         return $isoCodes->getCountries()->getByAlpha2(strtoupper($countryCode))->getLocalName();
     }
 
-    public function getLanguageName($lang) {
+    public static function getLanguageName($lang) {
         $isoCodes = new \Sokil\IsoCodes\IsoCodesFactory();
         $languages = $isoCodes->getLanguages();
         // Some workarounds database errors
