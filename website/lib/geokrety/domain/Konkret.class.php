@@ -61,6 +61,14 @@ class Konkret extends AbstractObject {
         $this->datePublished = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
     }
 
+    public function getDatePublished() {
+        if (is_a($this->datePublished, '\Datetime')) {
+            return $this->datePublished->format('Y-m-d H:i:s');
+        }
+
+        return $this->datePublished;
+    }
+
     public function enrichFields() {
         $this->typeString = $this->getTypeString();
     }

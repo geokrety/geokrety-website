@@ -32,4 +32,19 @@ class TripComment extends AbstractObject {
             default: return null;
         }
     }
+
+    public function getDate() {
+        if (is_a($this->date, '\Datetime')) {
+            return $this->date->format('Y-m-d H:i:s');
+        }
+
+        return $this->date;
+    }
+
+    public function setDate($date, $format = 'Y-m-d H:i:s') {
+        if (is_a($date, '\Datetime')) {
+            $this->date = $date;
+        }
+        $this->date = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
+    }
 }

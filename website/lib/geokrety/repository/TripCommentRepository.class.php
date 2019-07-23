@@ -55,7 +55,7 @@ EOQUERY;
             $tripComment->geokretId = $geokretId;
             $tripComment->userId = $userId;
             $tripComment->username = $username;
-            $tripComment->date = $date;
+            $tripComment->setDate($date);
             $tripComment->comment = $comment;
             $tripComment->type = $type;
 
