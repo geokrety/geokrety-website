@@ -184,7 +184,7 @@ EOQUERY;
     }
 
     public function countTotalPicturesBySql($sql, array $params = null) {
-        $count = count($params);
+        $count = is_array($params) ? count($params) : 0;
 
         if ($this->verbose) {
             echo "\n$sql\n";
