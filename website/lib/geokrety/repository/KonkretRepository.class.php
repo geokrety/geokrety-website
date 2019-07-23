@@ -729,7 +729,7 @@ LIMIT   1
 EOQUERY;
         $bind = array(
             $geokret->trackingCode, $geokret->name, $geokret->description,
-            $geokret->datePublished, $geokret->type, $geokret->distance,
+            $geokret->getDatePublished(), $geokret->type, $geokret->distance,
             $geokret->cachesCount, $geokret->picturesCount, $geokret->ownerId,
             $geokret->missing, $geokret->lastLogId, $geokret->lastPositionId,
             $geokret->avatarId,
