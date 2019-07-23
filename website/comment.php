@@ -89,8 +89,6 @@ if (isset($p_comment)) {
     $p_comment = trim($p_comment);
 }
 
-$link = DBConnect();
-
 require_once 'db.php';
 $db = new db();
 
@@ -243,56 +241,6 @@ else {
         include_once 'czysc.php';
         $p_comment_esc = czysc($p_comment);
 
-        /*
-        if ($missing_report)
-        {
-            // data z koncowka sekund 06 aby w tabeli ruchy nie kolidowalo z jakims istniejacym ruchem (tam wszystkie maja koncowki 00)
-            // nie wiem co by bylo gdyby byly dwa logi o identycznych sekundach ale pewnie filips wie :P
-            $now=date("Y-m-d H:i:06");
-            //wpisujemy niewidzialny logtype 6 tak aby zmniejszyc ilosc zmian w module exportujacym i zeby OC wiedzialo kiedy wyjac kreta ze skrzynki
-            $sql = "INSERT INTO `gk-ruchy` (`id`, `data`, `user`, `koment`, `logtype`, `username`, `data_dodania`)
-                    VALUES ('$p_gk_id', '$now', '$userid', '$p_comment_esc', '6', '', '$now')";
-            $result = mysqli_query($link, $sql);
-
-            if((!$result) OR (mysqli_affected_rows($result)==0))
-            {
-                include_once('defektoskop.php');
-                if(!$result) errory_add("SQL FAILED: $sql",100);
-                else if(mysqli_num_rows($result)==0) errory_add("SQL RETURN 0: $sql",100);
-                header("Location: konkret.php?id=$p_gk_id");
-                exit;
-            }
-
-            // jak juz wpisalismy to pobieramy id tego ruchu aby wpisac go w polu extra tabeli komentarzy
-            $sql = "SELECT `ruch_id`
-                    FROM `gk-ruchy`
-                    WHERE ((`id`='$p_gk_id') AND (`logtype`='6') AND (`user`='$userid') AND (`data_dodania`='$now') AND (`data`='$now'))
-                    LIMIT 1";
-            $result = mysqli_query($link, $sql);
-            if((!$result) OR (mysqli_num_rows($result)==0))
-            {
-                include_once('defektoskop.php');
-                if(!$result) errory_add("SQL FAILED: $sql",100);
-                else if(mysqli_num_rows($result)==0) errory_add("SQL RETURN 0: $sql",100);
-                header("Location: konkret.php?id=$p_gk_id");
-                exit;
-            }
-            $row = mysqli_fetch_array($result);
-            if($result) mysqli_free_result($result);
-            $ruch_id_logtype6 = $row[0];
-
-            $comment_type='1';
-            $comment_extra=$ruch_id_logtype6;
-        }
-        else
-        {
-            $now=date("Y-m-d H:i:s");
-            $comment_type='0';
-            $comment_extra='0';
-        }
-        */
-
-        $now = date('Y-m-d H:i:s');
         if ($missing_report) {
             $comment_type = '1';
         } else {
@@ -300,7 +248,7 @@ else {
         }
 
         $sql = "INSERT INTO `gk-ruchy-comments` (`ruch_id`, `kret_id`, `user_id`, `data_dodania`, `comment`, `type`)
-		  VALUES ('$p_ruch_id', '$p_gk_id', '$userid', '$now', '$p_comment_esc', '$comment_type')";
+		  VALUES ('$p_ruch_id', '$p_gk_id', '$userid', NOW(), '$p_comment_esc', '$comment_type')";
         $db->exec_num_rows($sql, $num_rows, 0, 'Error when adding a new record-comment.'.' [#'.__LINE__.']', 7);
 
         aktualizuj_komentarze_dla_ruchu($p_ruch_id);
