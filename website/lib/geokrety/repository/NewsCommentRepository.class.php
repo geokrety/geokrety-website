@@ -69,7 +69,7 @@ EOQUERY;
             $newsComment->id = $commentId;
             $newsComment->newsId = $newsId;
             $newsComment->userId = $userId;
-            $newsComment->date = $date;
+            $newsComment->setDate($date);
             $newsComment->comment = $comment;
             $newsComment->icon = $icon;
 

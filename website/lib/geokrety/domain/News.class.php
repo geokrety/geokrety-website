@@ -29,4 +29,11 @@ class News extends AbstractObject {
 
         return $newsCommentR->getByNewsId($this->id);
     }
+
+    public function setDate($date, $format = 'Y-m-d') {
+        if (is_a($date, '\Datetime')) {
+            $this->date = $date;
+        }
+        $this->date = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
+    }
 }

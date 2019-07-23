@@ -20,9 +20,10 @@
             </h3>
         </div>
         <div class="panel-title pull-right">
+            {print_date date=$item->date}
             {newslink news=$item}
             <i>
-                {$item->date} ({userlink user=$item->author()})
+                ({userlink user=$item->author()})
             </i>
         </div>
         <div class="clearfix"></div>
