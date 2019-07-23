@@ -24,9 +24,6 @@ class db {
     private $clear_errors_after_exec = false;
 
     public function __construct() {
-        if (!defined('CONFIG_HOST')) {
-            include_once 'templates/konfig.php';
-        }
         $this->pconnect();
     }
 
@@ -43,11 +40,7 @@ class db {
     }
 
     private function pconnect() {
-        $this->mysqli = new mysqli(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));
-        if (!$this->mysqli) {
-            die('DB ERROR: '.$this->mysqli->errno);
-        }
-        $this->mysqli->set_charset(constant('CONFIG_CHARSET'));
+        $this->mysqli = GKDB::getLink();
     }
 
     // this returns a resource or false if query failed
@@ -235,12 +228,8 @@ class db {
     }
 
     private function execute_raw($sql) {
-        $mylink = new mysqli(constant('CONFIG_HOST'), constant('CONFIG_USERNAME'), constant('CONFIG_PASS'), constant('CONFIG_DB'));
-        if (!$mylink) {
-            die('execute_raw DB ERROR: '.$mylink->errno);
-        }
-        $mylink->query($sql);
-        $mylink->close();
+        $this->mysqli->query($sql);
+        $this->mysqli->close();
     }
 
     private function send_error_to_db($details, $severity = 0, $error_uid = '') {
