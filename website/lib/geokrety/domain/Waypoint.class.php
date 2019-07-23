@@ -61,8 +61,7 @@ class Waypoint extends AbstractObject {
         if (!is_null($this->country)) {
             return $this->country;
         }
-        $countryService = new \Geokrety\Service\CountryService();
-        $this->country = $countryService->getCountryName($this->getCountryCode());
+        $this->country = \Geokrety\Service\CountryService::getCountryName($this->getCountryCode());
 
         return $this->country;
     }
@@ -71,8 +70,7 @@ class Waypoint extends AbstractObject {
         if (!is_null($this->countryCode)) {
             return strtolower($this->countryCode);
         }
-        $countryService = new \Geokrety\Service\CountryService();
-        $this->countryCode = strtolower($countryService->getCountryCode($this->getCoordinates()));
+        $this->countryCode = strtolower(\Geokrety\Service\CountryService::getCountryCode($this->getCoordinates()));
 
         return $this->countryCode;
     }
@@ -81,8 +79,7 @@ class Waypoint extends AbstractObject {
         if (!is_null($this->alt) && $this->alt != -32768 && $this->alt != -2000) {
             return $this->alt;
         }
-        $elevationService = new \Geokrety\Service\ElevationService();
-        $this->alt = $elevationService->getElevation($this->getCoordinates());
+        $this->alt = \Geokrety\Service\ElevationService::getElevation($this->getCoordinates());
 
         return $this->alt;
     }
