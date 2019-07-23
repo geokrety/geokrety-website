@@ -192,7 +192,7 @@ define('CDN_STRENGTHIFY_JS', CONFIG_CDN_LIBRARIES.'/strengthify/0.5.8/jquery.str
 define('CDN_STRENGTHIFY_CSS', CONFIG_CDN_LIBRARIES.'/strengthify/0.5.8/strengthify.min.css');
 
 // Default timezone
-$config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'Europe/Paris';
+$config['timezone'] = isset($_ENV['TIMEZONE']) ? $_ENV['TIMEZONE'] : 'GMT';
 
 // Temp directories
 define('TEMP_DIR_SMARTY_COMPILE', isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $_ENV['TEMP_DIR_SMARTY_COMPILE'] : '/tmp/templates/compile/');
