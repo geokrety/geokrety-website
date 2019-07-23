@@ -74,9 +74,9 @@
   <script type="text/javascript" src="{$cdnUrl}/libraries/moment.js/2.22.0/moment.min.js"></script>
   <script type="text/javascript" src="{$cdnUrl}/libraries/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
   <script type="text/javascript" src="{$cdnUrl}/libraries/preview-image-jquery/1.0/preview-image.min.js"></script>
-  {if count($javascript)}{foreach from=$javascript item=item}
+  {foreach from=$javascript item=item}
   <script type="text/javascript" src="{$item nofilter}"></script>
-  {/foreach}{/if}
+  {/foreach}
   <script type="text/javascript">
 {literal}
     (function($) {
