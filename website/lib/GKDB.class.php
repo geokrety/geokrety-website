@@ -70,7 +70,7 @@ class GKDB {
         unset($this->link);
     }
 
-    public static function prepareBindExecute(string $action, string $sql, string $bindParams = null, array $bindValues = null) {
+    public static function prepareBindExecute($action, $sql, $bindParams = null, $bindValues = null) {
         $link = self::getLink();
         if (!($stmt = $link->prepare($sql))) {
             throw new \Exception($action.' prepare failed: ('.$link->errno.') '.$link->error);
