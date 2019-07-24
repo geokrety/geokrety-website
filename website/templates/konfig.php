@@ -141,6 +141,10 @@ $config['temp_dir_smarty_compile'] = isset($_ENV['TEMP_DIR_SMARTY_COMPILE']) ? $
 $config['temp_dir_smarty_cache'] = isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['TEMP_DIR_SMARTY_CACHE'] : '/tmp/templates/cache/';
 $config['temp_dir_htmlpurifier_cache'] = isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/';
 
+// Reverse geocoders
+define('SERVICE_REVERSE_COUNTRY_GEOCODER', isset($_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER']) ? $_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER'] : 'https://geo.geokrety.org/api/getCountry?lat=%s&lon=%s');
+define('SERVICE_ELEVATION_GEOCODER', isset($_ENV['SERVICE_ELEVATION_GEOCODER']) ? $_ENV['SERVICE_ELEVATION_GEOCODER'] : 'https://geo.geokrety.org/api/getElevation?lat=%s&lon=%s');
+
 // Smarty
 define('SMARTY_DIR', '/usr/share/php/smarty/libs/');
 
