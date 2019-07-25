@@ -9,7 +9,7 @@ class LDHelperTest extends GKTestCase {
         // GIVEN
         $ldHelper = new LDHelper('geokrety.org', 'https://geokrety.org', 'https://cdn.geokrety.org/images/banners/geokrety.png');
         $testDate = date('c', 1355310732);
-        $expectedDate = '2012-12-12T12:12:12+01:00';
+        $expectedDate = '2012-12-12T11:12:12+00:00';
 
         // WHEN
         $ldJSONArticle = $ldHelper->helpArticle(
@@ -51,7 +51,7 @@ class LDHelperTest extends GKTestCase {
         // GIVEN
         $ldHelper = new LDHelper('geokrety.org', 'https://geokrety.org', 'https://cdn.geokrety.org/images/banners/geokrety.png');
         $testDate = date('c', 1355310732);
-        $expectedDate = '2012-12-12T12:12:12+01:00';
+        $expectedDate = '2012-12-12T11:12:12+00:00';
 
         // WHEN
         // ($headline, $description, $imageUrl, $name, $siteUrl, $keywords)
@@ -122,7 +122,7 @@ class LDHelperTest extends GKTestCase {
         $ldJSONWebSite = $ldHelper->helpKonkret($konkret);
 
         // THEN
-        $expectedDate = '2012-12-12T12:12:12+01:00';
+        $expectedDate = '2012-12-12T11:12:12+00:00';
         $expectedResult = self::LD_JSON_SCRIPT_START
         .'{'
         .'"@context":"http:\/\/schema.org",'
