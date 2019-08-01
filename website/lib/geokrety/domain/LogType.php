@@ -2,44 +2,34 @@
 
 namespace Geokrety\Domain;
 
-const LOG_TYPE_DROPPED = 0;
-const LOG_TYPE_GRABBED = 1;
-const LOG_TYPE_COMMENT = 2;
-const LOG_TYPE_SEEN = 3;
-const LOG_TYPE_ARCHIVED = 4;
-const LOG_TYPE_DIPPED = 5;
-
-const LOG_TYPES = array(
-    LOG_TYPE_DROPPED,
-    LOG_TYPE_GRABBED,
-    LOG_TYPE_COMMENT,
-    LOG_TYPE_SEEN,
-    LOG_TYPE_ARCHIVED,
-    LOG_TYPE_DIPPED,
-);
-
-// It would have been nice if it  could be a constant
-$LOG_TYPES_TEXT = array(
-    LOG_TYPE_DROPPED => _('Dropped to'),
-    LOG_TYPE_GRABBED => _('Grabbed from'),
-    LOG_TYPE_COMMENT => _('A comment'),
-    LOG_TYPE_SEEN => _('Seen in'),
-    LOG_TYPE_ARCHIVED => _('Archived'),
-    LOG_TYPE_DIPPED => _('Dipped in'),
-);
-
-const LOG_TYPES_REQUIRING_COORDINATES = array(
-    LOG_TYPE_DROPPED,
-    LOG_TYPE_SEEN,
-    LOG_TYPE_DIPPED,
-);
-
-const LOG_TYPES_THEORICALLY_IN_CACHE = array(
-    LOG_TYPE_DROPPED,
-    LOG_TYPE_SEEN,
-);
-
 class LogType extends AbstractObject {
+    const LOG_TYPE_DROPPED = 0;
+    const LOG_TYPE_GRABBED = 1;
+    const LOG_TYPE_COMMENT = 2;
+    const LOG_TYPE_SEEN = 3;
+    const LOG_TYPE_ARCHIVED = 4;
+    const LOG_TYPE_DIPPED = 5;
+
+    const LOG_TYPES = array(
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_GRABBED,
+        self::LOG_TYPE_COMMENT,
+        self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_ARCHIVED,
+        self::LOG_TYPE_DIPPED,
+    );
+
+    const LOG_TYPES_REQUIRING_COORDINATES = array(
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_DIPPED,
+    );
+
+    const LOG_TYPES_THEORICALLY_IN_CACHE = array(
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_SEEN,
+    );
+
     private $logtype;
 
     public function __construct($logtype = null) {
@@ -59,15 +49,15 @@ class LogType extends AbstractObject {
     }
 
     public function isValid() {
-        return in_array($this->logtype, LOG_TYPES);
+        return in_array($this->logtype, self::LOG_TYPES);
     }
 
     public function isCoordinatesRequired() {
-        return in_array($this->logtype, LOG_TYPES_REQUIRING_COORDINATES);
+        return in_array($this->logtype, self::LOG_TYPES_REQUIRING_COORDINATES);
     }
 
     public function isTheoricallyInCache() {
-        return in_array($this->logtype, LOG_TYPES_THEORICALLY_IN_CACHE);
+        return in_array($this->logtype, self::LOG_TYPES_THEORICALLY_IN_CACHE);
     }
 
     public function getLogTypeString() {

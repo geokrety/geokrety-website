@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // $trip->ruchDataDodania = $dataDodania;
             $trip->userId = $user->id;
             $trip->comment = _('Born here :)');
-            $trip->logType = '5';
+            $trip->setLogtype(\Geokrety\Domain\LogType::LOG_TYPE_DIPPED);
             $trip->app = 'www';
             $trip->appVer = ''; // Note: DB should accept null here
             $trip->picturesCount = 0; // Note: DB should accept null here

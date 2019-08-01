@@ -81,35 +81,35 @@
                                 <div class="col-sm-10 col-sm-offset-1">
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LOG_TYPE_DROPPED}}" value="{{\Geokrety\Domain\LOG_TYPE_DROPPED}}" {{if $tripStep->isType(\Geokrety\Domain\LOG_TYPE_DROPPED)}}checked{{/if}} required data-parsley-group="logtype">
+                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_DROPPED)}}checked{{/if}} required data-parsley-group="logtype">
                                         <div class="dropped box" data-toggle="tooltip" title="{t}When you've left a GeoKret in a cache{/t}">
                                             <span>{t}I've dropped GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LOG_TYPE_GRABBED}}" value="{{\Geokrety\Domain\LOG_TYPE_GRABBED}}" {{if $tripStep->isType(\Geokrety\Domain\LOG_TYPE_GRABBED)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_GRABBED)}}checked{{/if}} required>
                                         <div class="grabbed box" data-toggle="tooltip" title="{t}When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>{/t}" data-html="true">
                                             <span>{t}I've grabbed GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LOG_TYPE_SEEN}}" value="{{\Geokrety\Domain\LOG_TYPE_SEEN}}" {{if $tripStep->isType(\Geokrety\Domain\LOG_TYPE_SEEN)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_SEEN)}}checked{{/if}} required>
                                         <div class="met box" data-toggle="tooltip" title="{t}When you've met a GeoKret in a cache but haven't taken it with you{/t}">
                                             <span>{t}I've met GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LOG_TYPE_DIPPED}}" value="{{\Geokrety\Domain\LOG_TYPE_DIPPED}}" {{if $tripStep->isType(\Geokrety\Domain\LOG_TYPE_DIPPED)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_DIPPED)}}checked{{/if}} required>
                                         <div class="dipped box" data-toggle="tooltip" title="{t}When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory{/t}">
                                             <span>{t}I've dipped a GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LOG_TYPE_COMMENT}}" value="{{\Geokrety\Domain\LOG_TYPE_COMMENT}}" {{if $tripStep->isType(\Geokrety\Domain\LOG_TYPE_COMMENT)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_COMMENT)}}checked{{/if}} required>
                                         <div class="comment box" data-toggle="tooltip" title="{t}When you want to write a comment :){/t}">
                                             <span>{t}Comment{/t}</span>
                                         </div>
