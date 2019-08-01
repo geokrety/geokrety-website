@@ -78,6 +78,7 @@ EOQUERY;
     public function getByWaypointFromRuchy($waypoint) {
         $action = 'Waypointy::getByWaypointFromRuchy';
 
+        throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         if (!($stmt = $this->dblink->prepare(self::SELECT_RUCHY
                        .' WHERE `waypoint` LIKE ? ORDER BY `data_dodania` DESC LIMIT 1'))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
