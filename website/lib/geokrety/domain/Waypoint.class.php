@@ -2,12 +2,12 @@
 
 namespace Geokrety\Domain;
 
-const PREFIX_OC = array('OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MV', 'MS', 'TR', 'LT', 'LV', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR');
-const PREFIX_GC = array('GC');
-const PREFIX_N = array('N');
-const PREFIX_WPG = array('WPG');
-
 class Waypoint extends AbstractObject {
+    const PREFIX_OC = array('OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MV', 'MS', 'TR', 'LT', 'LV', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR');
+    const PREFIX_GC = array('GC');
+    const PREFIX_N = array('N');
+    const PREFIX_WPG = array('WPG');
+
     public $waypoint; // ID
     public $lat;
     public $lon;
@@ -21,19 +21,19 @@ class Waypoint extends AbstractObject {
     public $countryCode; // Should be ISO 3166-1 alpha-2
 
     public static function isOCWaypoint($wpt) {
-        return in_array(substr(strtoupper($wpt), 0, 2), PREFIX_OC);
+        return in_array(substr(strtoupper($wpt), 0, 2), self::PREFIX_OC);
     }
 
     public static function isGCWaypoint($wpt) {
-        return in_array(substr(strtoupper($wpt), 0, 2), PREFIX_GC);
+        return in_array(substr(strtoupper($wpt), 0, 2), self::PREFIX_GC);
     }
 
     public static function isWPGWaypoint($wpt) {
-        return in_array(substr(strtoupper($wpt), 0, 3), PREFIX_WPG);
+        return in_array(substr(strtoupper($wpt), 0, 3), self::PREFIX_WPG);
     }
 
     public static function isNavicache($wpt) {
-        return in_array(substr(strtoupper($wpt), 0, 1), PREFIX_N);
+        return in_array(substr(strtoupper($wpt), 0, 1), self::PREFIX_N);
     }
 
     public static function isImportedWaypoint($wpt) {
