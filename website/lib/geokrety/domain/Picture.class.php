@@ -2,15 +2,11 @@
 
 namespace Geokrety\Domain;
 
-// define(__NAMESPACE__.'\PICTURE_AVATAR', 0);
-// define(__NAMESPACE__.'\PICTURE_TRIP', 1);
-// define(__NAMESPACE__.'\PICTURE_USER', 2);
-
-const PICTURE_AVATAR = 0;
-const PICTURE_TRIP = 1;
-const PICTURE_USER = 2;
-
 class Picture extends AbstractObject {
+    const PICTURE_AVATAR = 0;
+    const PICTURE_TRIP = 1;
+    const PICTURE_USER = 2;
+
     public $id;
     public $tripId;
     public $type;
@@ -58,7 +54,7 @@ class PictureUser extends Picture {
     }
 
     public function isAvatar() {
-        return $this->type === PICTURE_USER;
+        return $this->type === self::PICTURE_USER;
     }
 
     public function editUrl() {
