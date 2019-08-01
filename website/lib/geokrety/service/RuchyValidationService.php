@@ -123,7 +123,7 @@ class RuchyValidationService extends AbstractValidationService {
     }
 
     protected function checkLogtypeIsAllowed() {
-        if ($this->tripStep->logType != \Geokrety\Domain\LOG_TYPE_ARCHIVED) {
+        if ($this->tripStep->logType != \Geokrety\Domain\LogType::LOG_TYPE_ARCHIVED) {
             return true;
         }
         $errors = array();
