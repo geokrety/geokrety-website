@@ -106,7 +106,7 @@ class Konkret extends AbstractObject {
         $picture = new PictureGeoKret();
         $picture->id = $this->avatarId;
         $picture->tripId = $this->id; // Isn't there an error in the db schema?
-        $picture->type = PICTURE_AVATAR;
+        $picture->type = \Geokrety\Domain\Picture::PICTURE_AVATAR;
         $picture->geokretId = $this->id;
         $picture->name = $this->name;
         $picture->userId = $this->ownerId;
