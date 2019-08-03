@@ -90,7 +90,8 @@ class WaypointValidationService extends AbstractValidationService {
 
             return false;
         }
-        $this->wpt = $waypoint;
+        $this->wpt->lat = $this->waypointR->lat;
+        $this->wpt->lon = $this->waypointR->lon;
 
         return true;
     }

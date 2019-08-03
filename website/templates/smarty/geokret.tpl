@@ -4,6 +4,7 @@
 {include file='macros/move.tpl'}
 {include file='macros/move_comment.tpl'}
 {include file='macros/move_picture.tpl'}
+{include file='macros/paginate.tpl'}
 <ol class="breadcrumb">
   <li><a href="/">{t}Home{/t}</a></li>
   <li class="active">{t}GeoKrety{/t}</li>
