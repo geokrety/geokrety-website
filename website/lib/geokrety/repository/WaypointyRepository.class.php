@@ -39,7 +39,7 @@ EOQUERY;
     public $country;
     public $country_code;
 
-    public function __construct($dblink, $verbose) {
+    public function __construct($dblink, $verbose = false) {
         $this->dblink = $dblink;
         $this->verbose = $verbose;
     }
@@ -78,7 +78,6 @@ EOQUERY;
     public function getByWaypointFromRuchy($waypoint) {
         $action = 'Waypointy::getByWaypointFromRuchy';
 
-        throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
         if (!($stmt = $this->dblink->prepare(self::SELECT_RUCHY
                        .' WHERE `waypoint` LIKE ? ORDER BY `data_dodania` DESC LIMIT 1'))) {
             throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
@@ -91,9 +90,9 @@ EOQUERY;
         }
         $this->waypoint = $waypoint;
         if ($this->isGCWaypoint($waypoint)) {
-            $this->cache_link = GEOCACHING_CACHE_WP.$waypoint;
+            $this->cache_link = CACHE_WPT_LINK_GC.$waypoint;
         } elseif ($this->isNavicache($waypoint)) {
-            $this->cache_link = 'http://www.navicache.com/cgi-bin/db/displaycache2.pl?CacheID='.hexdec(substr($waypoint, 1, 10));
+            $this->cache_link = CACHE_WPT_LINK_N.hexdec(substr($waypoint, 1, 10));
         }
 
         if (!$stmt->bind_result($this->lat, $this->lon, $this->country_code, $this->alt)) {
