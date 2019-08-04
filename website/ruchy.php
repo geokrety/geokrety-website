@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tripStepValues->waypoint = $_POST['wpt'];
     $tripStepValues->userId = !$tripStepValues->userId ? $_SESSION['currentUser'] : $tripStepValues->userId;
     $tripStepValues->username = $_POST['username'];
-    $tripStepValues->comment = $_POST['comment'];
+    $tripStepValues->setComment($_POST['comment']);
     $tripStepValues->app = $_POST['app'];
     $tripStepValues->appVer = $_POST['app_ver'];
 
@@ -123,6 +123,9 @@ $smarty->append('javascript', CDN_BOOTSTRAP_3_TYPEAHEAD_JS);
 $smarty->append('javascript', CDN_PARSLEY_BOOTSTRAP3_JS);
 $smarty->append('javascript', CDN_PARSLEY_JS);
 $smarty->append('css', CDN_PARSLEY_CSS);
+
+$smarty->append('javascript', CDN_SIMPLEMDE_JS);
+$smarty->append('css', CDN_SIMPLEMDE_CSS);
 
 $smarty->append('js_template', 'js/ruchy.tpl.js');
 $smarty->assign('content_template', 'ruchy.tpl');

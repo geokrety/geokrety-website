@@ -159,6 +159,9 @@ define('CDN_LATINIZE_JS', CONFIG_CDN_LIBRARIES.'/latinize/0.4.0/latinize.min.js'
 define('CDN_COLORBOX_JS', CONFIG_CDN_LIBRARIES.'/colorbox/1.6.4/jquery.colorbox-min.js');
 define('CDN_COLORBOX_CSS', CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css');
 
+define('CDN_SIMPLEMDE_JS', CONFIG_CDN_LIBRARIES.'/inscrybmde/1.11.6/inscrybmde.min.js');
+define('CDN_SIMPLEMDE_CSS', CONFIG_CDN_LIBRARIES.'/inscrybmde/1.11.6/inscrybmde.min.css');
+
 define('CDN_LEAFLET_JS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.js');
 define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');
 define('CDN_LEAFLET_CENTERCROSS_JS', CONFIG_CDN_LIBRARIES.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');

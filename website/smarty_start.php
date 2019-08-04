@@ -20,10 +20,10 @@ $HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();
 $HTMLPurifierconfig_conf->set('Cache.SerializerPath', TEMP_DIR_HTMLPURIFIER_CACHE);
 $HTMLPurifier = new \HTMLPurifier($HTMLPurifierconfig_conf);
 foreach ($_GET as $key => $value) {
-    $_GET[$key] = $HTMLPurifier->purify($value);
+    $_GET[$key] = $HTMLPurifier->purify(html_entity_decode($value));
 }
 foreach ($_POST as $key => $value) {
-    $_POST[$key] = $HTMLPurifier->purify($value);
+    $_POST[$key] = $HTMLPurifier->purify(html_entity_decode($value));
 }
 
 $smarty_cache_id = basename($_SERVER['SCRIPT_NAME']);

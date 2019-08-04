@@ -119,7 +119,7 @@ EOQUERY;
             $trip->ruchDataDodania = $dataDodania;
             $trip->userId = $user;
             $trip->username = isset($username) ? $username : $usernameAnonymous;
-            $trip->comment = $koment;
+            $trip->setComment($koment);
             $trip->setLogtype($logtype);
             $trip->country = $country;
             $trip->distance = $droga; // road traveled in km
