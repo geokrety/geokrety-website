@@ -31,7 +31,12 @@ class CountryService extends AbstractValidationService {
     public static function getCountryName($countryCode) {
         $isoCodes = new \Sokil\IsoCodes\IsoCodesFactory();
 
-        return $isoCodes->getCountries()->getByAlpha2(strtoupper($countryCode))->getLocalName();
+        $alpha2 = $isoCodes->getCountries()->getByAlpha2(strtoupper($countryCode));
+        if (is_null($alpha2)) {
+            return 'Unknown';
+        }
+
+        return $alpha2->getLocalName();
     }
 
     public static function getLanguageName($lang) {
