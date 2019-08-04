@@ -31,7 +31,7 @@
           {country_flag country=$step->country}
           {cachelink tripStep=$step}
         </td>
-        <td><span title="{$step->comment}">{$step->comment|truncate:60:"…"}</span></td>
+        <td><span title="{$step->comment}">{$step->comment|truncate:60:"…"|markdown nofilter}</span></td>
         <td nowrap>
           {print_date date=$step->ruchData}
           <br />

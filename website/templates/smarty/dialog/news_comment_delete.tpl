@@ -17,7 +17,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-            {$comment->comment}
+            {$comment->comment|markdown nofilter}
         </div>
     </div>
 
