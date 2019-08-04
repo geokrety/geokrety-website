@@ -3,9 +3,9 @@
     <li class="active">{t}Log a GeoKret{/t}</li>
 </ol>
 
-<form class="form-horizontal" id="moveForm" method="POST" {{if $tripStep->ruchId}}action="?ruchid={{$tripStep->ruchId}}"{{/if}} data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
-    <input type="hidden" name="app" value="www" required />
-    <input type="hidden" name="app_ver" value="{CONFIG_GK_VERSION}" required />
+<form class="form-horizontal" id="moveForm" method="POST" {if $tripStep->ruchId}action="?ruchid={$tripStep->ruchId}"{/if} data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
+    <input type="hidden" name="app" value="{if $tripStep->app}{$tripStep->app}{else}www{/if}" />
+    <input type="hidden" name="app_ver" value="{if $tripStep->appVer}{$tripStep->appVer}{else}{CONFIG_GK_VERSION}{/if}" />
     <div class="hidden" id="accordionParking"></div>
 
     <div class="panel-group" id="movePanelGroup" role="tablist" aria-multiselectable="true">
@@ -26,7 +26,7 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="nr" id="nr" value="{{$tripStep->geokretNr}}" minlength="6" {if !$isLoggedIn}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout"
+                                        <input type="text" name="nr" id="nr" value="{$tripStep->geokretNr}" minlength="6" {if !$isLoggedIn}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout"
                                             data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" />
                                         <span class="input-group-btn">
                                             {if $isLoggedIn}
@@ -81,35 +81,35 @@
                                 <div class="col-sm-10 col-sm-offset-1">
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_DROPPED)}}checked{{/if}} required data-parsley-group="logtype">
+                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}" value="{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}" {if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_DROPPED)}checked{/if} required data-parsley-group="logtype">
                                         <div class="dropped box" data-toggle="tooltip" title="{t}When you've left a GeoKret in a cache{/t}">
                                             <span>{t}I've dropped GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_GRABBED)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}" value="{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}" {if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_GRABBED)}checked{/if} required>
                                         <div class="grabbed box" data-toggle="tooltip" title="{t}When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>{/t}" data-html="true">
                                             <span>{t}I've grabbed GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_SEEN)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}" value="{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}" {if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_SEEN)}checked{/if} required>
                                         <div class="met box" data-toggle="tooltip" title="{t}When you've met a GeoKret in a cache but haven't taken it with you{/t}">
                                             <span>{t}I've met GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_DIPPED)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}" value="{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}" {if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_DIPPED)}checked{/if} required>
                                         <div class="dipped box" data-toggle="tooltip" title="{t}When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory{/t}">
                                             <span>{t}I've dipped a GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}}" value="{{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}}" {{if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_COMMENT)}}checked{{/if}} required>
+                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}" value="{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}" {if $tripStep->isType(\Geokrety\Domain\LogType::LOG_TYPE_COMMENT)}checked{/if} required>
                                         <div class="comment box" data-toggle="tooltip" title="{t}When you want to write a comment :){/t}">
                                             <span>{t}Comment{/t}</span>
                                         </div>
@@ -147,7 +147,7 @@
                                 <label class="col-sm-2 control-label">{t}Waypoint{/t}</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
-                                        <input type="text" name="wpt" id="wpt" value="{{$tripStep->waypoint}}" minlength="4" maxlength="20" required class="form-control" aria-describedby="helpBlockWaypoint" placeholder="eg. GC1AQ2N" data-parsley-trigger="input focusout"
+                                        <input type="text" name="wpt" id="wpt" value="{$tripStep->waypoint}" minlength="4" maxlength="20" required class="form-control" aria-describedby="helpBlockWaypoint" placeholder="eg. GC1AQ2N" data-parsley-trigger="input focusout"
                                             data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" data-parsley-group="location" data-parsley-errors-messages-disabled data-parsley-debounce="500" style="text-transform:uppercase">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="button" id="wptSearchByNameButton" title="{t}Lookup opencaching cache by name{/t}"><img src="{$imagesUrl}/logos/geocaching.svg" width="18px" /></button>
@@ -189,7 +189,7 @@
                                     <div class="form-group coordinates-togglable" id="coordinateField">
                                         <div class="col-sm-12">
                                             <div class="input-group">
-                                                <input type="text" id="latlon" name="latlon" value="{{' '|implode:$tripStep->getCoordinates()}}" class="form-control" aria-describedby="helpBlockCoordinates" required data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates"
+                                                <input type="text" id="latlon" name="latlon" value="{' '|implode:$tripStep->getCoordinates()}" class="form-control" aria-describedby="helpBlockCoordinates" required data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates"
                                                     data-parsley-errors-messages-disabled>
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-default" type="button" title="Validate coordinates" id="coordinatesSearchButton">{fa icon="search"}</button>
@@ -244,7 +244,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">{t}Username{/t}</label>
                         <div class="col-sm-6">
-                            <input type="text" name="username" id="username" value="{{$tripStep->username}}" data-toggle="tooltip" data-html="true" class="form-control" title="{t}This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc.{/t}" minlength="3"
+                            <input type="text" name="username" id="username" value="{$tripStep->username}" data-toggle="tooltip" data-html="true" class="form-control" title="{t}This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc.{/t}" minlength="3"
                                 maxlength="20" required data-parsley-group="additionalData" data-parsley-trigger="input focusout" />
                         </div>
                     </div>
@@ -252,8 +252,8 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">{t}Comment{/t}</label>
-                        <div class="col-sm-6">
-                            <textarea id="comment" name="comment" rows="6" maxlength="5120" class="form-control" aria-describedby="helpBlockComment" data-parsley-group="additionalData" data-parsley-trigger="input focusout">{{$tripStep->comment}}</textarea>
+                        <div class="col-sm-10">
+                            <textarea id="comment" name="comment" rows="12" maxlength="5120" class="form-control" aria-describedby="helpBlockComment" data-parsley-group="additionalData" data-parsley-trigger="input focusout">{$tripStep->comment}</textarea>
                             <span id="helpBlockComment" class="help-block">
                                 {t}It is always nice to receive a little message ;){/t}
                             </span>
