@@ -14,7 +14,7 @@
     {if not $geokret_details->description}
     <em>{t}This GeoKret doesn't have a special mission…{/t}</em>
     {else}
-    {$geokret_details->description}
+    {$geokret_details->description|markdown nofilter}
     {/if}
   </div>
 </div>

@@ -372,6 +372,9 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
 
     // load template
     $smarty->assign('content_template', 'forms/geokret_details_edit.tpl');
+    $smarty->append('javascript', CDN_SIMPLEMDE_JS);
+    $smarty->append('css', CDN_SIMPLEMDE_CSS);
+    $smarty->append('js_template', 'js/geokret_register.tpl.js');
 
     // Save values
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && ctype_digit($p_id) && ctype_digit($p_typ) && ($p_typ >= 0 && $p_typ <= count($cotozakret)) && isset($p_nazwa) && isset($p_opis)) {
