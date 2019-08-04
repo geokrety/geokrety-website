@@ -247,14 +247,14 @@ var_dump($gk);
         <pre>
 <span style="color: #507090">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;</span>
 <span style="color: #007000">&lt;gkxml</span> <span style="color: #0000C0">version=</span><span style="background-color: #fff0f0">&quot;1.0&quot;</span> <span style="color: #0000C0">date=</span><span style="background-color: #fff0f0">&quot;2010-12-09 19:10:03&quot;</span><span style="color: #007000">&gt;</span>
-    <span style="color: #007000">&lt;GeoKrety&gt;</span>
+    <span style="color: #007000">&lt;geokrety&gt;</span>
     	<span style="color: #007000">&lt;geokret</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;8143&quot;</span> <span style="color: #0000C0">dist=</span><span style="background-color: #fff0f0">&quot;251&quot;</span> <span style="color: #0000C0">lat=</span><span style="background-color: #fff0f0">&quot;53.14598&quot;</span> <span style="color: #0000C0">lon=</span><span style="background-color: #fff0f0">&quot;23.18567&quot;</span>
     	<span style="color: #0000C0">waypoint=</span><span style="background-color: #fff0f0">&quot;OP2FD9&quot;</span> <span style="color: #0000C0">owner_id=</span><span style="background-color: #fff0f0">&quot;3813&quot;</span> <span style="color: #0000C0">state=</span><span style="background-color: #fff0f0">&quot;0&quot;</span> <span style="color: #0000C0">type=</span><span style="background-color: #fff0f0">&quot;0&quot;</span>
     	<span style="color: #0000CC">last_pos_id=</span><span style="background-color: #fff0f0">&quot;11536&quot;</span> <span style="color: #0000CC">last_log_id=</span><span style="background-color: #fff0f0">&quot;11553&quot;</span>
     	<span style="color: #0000C0">image=</span><span style="background-color: #fff0f0">&quot;1273660644jr8sm.jpg&quot;</span><span style="color: #007000">&gt;</span>
     	<span style="color: #507090">&lt;![CDATA[Wiewireczka]]&gt;</span>
     	<span style="color: #007000">&lt;/geokret&gt;</span>
-    <span style="color: #007000">&lt;/GeoKrety&gt;</span>
+    <span style="color: #007000">&lt;/geokrety&gt;</span>
 <span style="color: #007000">&lt;/gkxml&gt;</span>
 </pre>
         <p>
