@@ -50,6 +50,22 @@ class TripStep extends AbstractObject {
         $this->waypoint = $waypoint;
     }
 
+    public function getUrl($anchor = null) {
+        $anchor_ = '';
+        if (!is_null($anchor)) {
+            $anchor_ = '#'.$anchor;
+        } else {
+            $anchor_ = '#log'.$this->ruchId;
+        }
+
+        $geokretUrl = $this->geokret->geturl();
+
+        $tripR = new TripRepository(\GKDB::getLink());
+        $page = '&page='.$tripR->getLogOnPageNumber($this->ruchId);
+
+        return $geokretUrl.$page.$anchor_;
+    }
+
     public function getWaypoint() {
         return trim(strtoupper($this->waypoint));
     }

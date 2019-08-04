@@ -398,6 +398,46 @@ EOQUERY;
         );
     }
 
+    public function getLogOnPageNumber($ruchId) {
+        $ruchId = $this->validationService->ensureIntGTE('ruchId', $ruchId, 1);
+        $perPage = MOVES_PER_PAGE;
+
+        $sql = <<<EOQUERY
+SELECT  CEILING(gkmoves.rank / $perPage) AS page
+FROM    (SELECT     @rank:=@rank+1 AS rank, ruch_id
+         FROM       `gk-ruchy` AS ru, (SELECT @rank:=0) t2
+         WHERE      id = (SELECT  id
+                          FROM    `gk-ruchy`
+                          WHERE   ruch_id = ?
+                          )
+         ORDER BY   ru.data DESC, ru.data_dodania DESC
+         ) AS gkmoves
+WHERE    gkmoves.ruch_id = ?
+EOQUERY;
+
+        if ($this->verbose) {
+            echo "\n$sql\n";
+        }
+
+        if (!($stmt = $this->dblink->prepare($sql))) {
+            throw new \Exception($action.' prepare failed: ('.$this->dblink->errno.') '.$this->dblink->error);
+        }
+        if (!$stmt->bind_param('dd', $ruchId, $ruchId)) {
+            throw new \Exception($action.' binding parameters failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        if (!$stmt->execute()) {
+            throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
+        }
+
+        $stmt->store_result();
+        $stmt->bind_result($page);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $page;
+    }
+
     public function insertTripStep(\Geokrety\Domain\TripStep &$trip) {
         $sql = <<<EOQUERY
 INSERT INTO `gk-ruchy`
@@ -430,7 +470,7 @@ EOQUERY;
             throw new \Exception($action.' execute failed: ('.$stmt->errno.') '.$stmt->error);
         }
         $stmt->store_result();
-        $trip->id = $stmt->insert_id;
+        $trip->ruchId = $stmt->insert_id;
 
         if ($stmt->affected_rows >= 0) {
             return true;

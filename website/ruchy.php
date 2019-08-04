@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }, $trips));
                 echo $xml->asXML();
             } else {
-                header('Location: '.$trips[0]->geokret->getUrl('log'.$trip->ruchId));
+                header('Location: '.$trips[0]->getUrl());
             }
             die();
         }
