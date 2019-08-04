@@ -17,6 +17,9 @@ $kret_typ = $_POST['typ'];
 $logAtHome = $_POST['logAtHome'];
 
 $smarty->assign('content_template', 'forms/geokret_details_edit.tpl');
+$smarty->append('javascript', CDN_SIMPLEMDE_JS);
+$smarty->append('css', CDN_SIMPLEMDE_CSS);
+$smarty->append('js_template', 'js/geokret_register.tpl.js');
 $smarty->assign('geokret_create', true);
 
 $userR = new \Geokrety\Repository\UserRepository(GKDB::getLink());
@@ -64,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $trip->ruchData = date('Y-m-d H:i:s');
             // $trip->ruchDataDodania = $dataDodania;
             $trip->userId = $user->id;
-            $trip->comment = _('Born here :)');
+            $trip->setComment(_('Born here :)'));
             $trip->setLogtype(\Geokrety\Domain\LogType::LOG_TYPE_DIPPED);
             $trip->app = 'www';
             $trip->appVer = ''; // Note: DB should accept null here
