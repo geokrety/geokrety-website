@@ -51,6 +51,11 @@ $('#collapseLocation').on('shown.bs.collapse', function() {
     }
 })
 
+// Force map refresh on location show
+$('#collapseMessage').on('shown.bs.collapse', function() {
+    inscrybmde.codemirror.refresh();
+})
+
 // Initialize map
 {include 'js/_map_init.tpl.js'}
 // The map object
