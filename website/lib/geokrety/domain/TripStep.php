@@ -78,6 +78,14 @@ class TripStep extends AbstractObject {
         return $this->lon ? number_format($this->lon, 5, '.', '') : null;
     }
 
+    public function setComment(string $comment) {
+        // Workaround historical database modifications
+        $txt = str_replace('<br />', '  ', $comment);
+        $txt = str_replace('[<a href=\'', '', $txt);
+        $txt = str_replace('\' rel=nofollow>Link</a>]', '', $txt);
+        $this->comment = $txt;
+    }
+
     public function getCoordinates() {
         if (!$this->lat || !$this->lon) {
             return array();
@@ -149,6 +157,7 @@ class TripStep extends AbstractObject {
 
                 return false;
             }
+
             $dbIsSuccess = $this->update();
         }
 

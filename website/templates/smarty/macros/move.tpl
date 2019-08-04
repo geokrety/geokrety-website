@@ -33,7 +33,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        {$move->comment}
+                        {$move->comment|markdown nofilter}
                     </div>
                 </div>
 

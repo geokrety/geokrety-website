@@ -18,6 +18,17 @@ $("#datetimepicker").datetimepicker({
     locale: moment.locale()
 });
 
+// Bind SimpleMDE editor
+var inscrybmde = new InscrybMDE({
+    element: $("#comment")[0],
+    hideIcons: ['side-by-side', 'fullscreen', 'quote'],
+    promptURLs: true,
+    spellChecker: false,
+	renderingConfig: {
+		singleLineBreaks: false,
+	},
+});
+
 // // Automatic scroll on panel open
 // $("#movePanelGroup div.panel-collapse").on("shown.bs.collapse", function(e) {
 //     var $panel = $(this).closest(".panel");
