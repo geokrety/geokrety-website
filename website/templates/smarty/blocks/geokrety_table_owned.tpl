@@ -26,7 +26,7 @@
         </td>
         <td>
           {gklink gk=$geokret} {gkavatar gk=$geokret}<br />
-          <small><span title="{$geokret->name}">{$geokret->name|truncate:30:"…"}</span></small>
+          <small><span title="{$geokret->name}">{$geokret->name|truncate:30:"…"|markdown nofilter}</span></small>
         </td>
         <td>
           {country_flag country=$geokret->lastPosition->country}
