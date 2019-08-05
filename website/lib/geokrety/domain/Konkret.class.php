@@ -57,6 +57,7 @@ class Konkret extends AbstractObject {
     public function setDatePublished($date, $format = 'Y-m-d H:i:s') {
         if (is_a($date, '\Datetime')) {
             $this->datePublished = $date;
+            return;
         }
         $this->datePublished = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
     }
@@ -134,5 +135,27 @@ class Konkret extends AbstractObject {
         $tripR = new \Geokrety\Repository\TripRepository(\GKDB::getLink());
 
         return $tripR->hasCurrentUserSeenGeokretId($this->id);
+    }
+
+    public static function generate() {
+        $lipsum = new \joshtronic\LoremIpsum();
+        $geokret = new \Geokrety\Domain\Konkret();
+        $geokret->id = random_int(424242, 888888);
+        $geokret->type = random_int(0, 4);
+        $geokret->setDatePublished(new \DateTime());
+        $geokret->ownerId = random_int(424242, 888888);
+        $geokret->holderId = random_int(424242, 888888);
+        $geokret->ownerName = $lipsum->words(1);
+        $geokret->name = $lipsum->words(1);
+        $geokret->description = $lipsum->sentences(3);
+        $geokret->distance = random_int(0, 9999);
+        $geokret->lastLog = \Geokrety\Domain\TripStep::generate($geokret->id, $geokret);
+        $geokret->lastPosition = $geokret->lastLog;
+        $geokret->lastLogId = $geokret->lastLog->ruchId;
+        $geokret->lastPositionId = $geokret->lastPosition->ruchId;
+        $geokret->missing = 0;
+        $geokret->avatarFilename = '1273660644jr8sm.jpg';
+
+        return $geokret;
     }
 }

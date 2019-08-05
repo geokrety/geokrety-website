@@ -9,13 +9,16 @@ class Errors extends Base {
         parent::__construct();
         $this->xmlErrors = $this->xml->addChild('errors');
 
-        $this->insertSessionErrors();
         if (!is_null($msg)) {
             $this->xmlErrors->addChild('error', $msg);
         }
     }
 
-    private function insertSessionErrors() {
+    public function addError($msg) {
+        $this->xmlErrors->addChild('error', $msg);
+    }
+
+    public function insertSessionErrors() {
         if (empty($_SESSION['alert_msgs'])) {
             return;
         }

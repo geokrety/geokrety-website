@@ -4,6 +4,7 @@
 $config['prod_server_name'] = isset($_ENV['PROD_SERVER_NAME']) ? $_ENV['PROD_SERVER_NAME'] : 'geokrety.org';
 $config['adres'] = isset($_ENV['SERVER_URL']) ? $_ENV['SERVER_URL'] : $config['prod_server_name'];
 $config['gk_version'] = isset($_ENV['GK_VERSION']) ? $_ENV['GK_VERSION'] : 'dev';
+$config['gk_app_name'] = isset($_ENV['GK_APP_NAME']) ? $_ENV['GK_APP_NAME'] : 'www';
 
 // MySQL config
 $config['host'] = isset($_ENV['DB_HOSTNAME']) ? $_ENV['DB_HOSTNAME'] : 'db';
@@ -118,6 +119,7 @@ define('CONFIG_SITE_BASE_URL', $config['adres']);
 define('CONFIG_CDN_URL', $config['cdn_url']);
 
 define('CONFIG_PROD_SERVER_NAME', $config['prod_server_name']);
+define('CONFIG_GK_APP_NAME', $config['gk_app_name']);
 define('CONFIG_GK_VERSION', $config['gk_version']);
 define('CONFIG_CDN', $config['cdn_url']);
 define('CONFIG_CDN_IMAGES', $config['cdn_images']);
@@ -161,6 +163,11 @@ define('CDN_COLORBOX_CSS', CONFIG_CDN_LIBRARIES.'/colorbox/colorbox-1.min.css');
 
 define('CDN_SIMPLEMDE_JS', CONFIG_CDN_LIBRARIES.'/inscrybmde/1.11.6/inscrybmde.min.js');
 define('CDN_SIMPLEMDE_CSS', CONFIG_CDN_LIBRARIES.'/inscrybmde/1.11.6/inscrybmde.min.css');
+
+define('CDN_PRISM_CSS', CONFIG_CDN_LIBRARIES.'/prism/1.16.0/prism.min.css');
+define('CDN_PRISM_JS', CONFIG_CDN_LIBRARIES.'/prism/1.16.0/prism.min.js');
+define('CDN_PRISM_MARKUP_TEMPLATING_JS', CONFIG_CDN_LIBRARIES.'/prism/1.16.0/prism-markup-templating.min.js');
+define('CDN_PRISM_PHP_JS', CONFIG_CDN_LIBRARIES.'/prism/1.16.0/prism-php.min.js');
 
 define('CDN_LEAFLET_JS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.js');
 define('CDN_LEAFLET_CSS', CONFIG_CDN_LIBRARIES.'/leaflet/1.4.0/leaflet.css');

@@ -104,26 +104,22 @@
         </p>
 
         <h4>Convert GKID to integer</h4>
-        <pre>
-&lt;?php
+        <pre><code class="language-php">&lt;?php
 $gk = 'GK1234';
 $id = hexdec(substr($gk, 2));
 var_dump($id);
 
 # result:
-# int(4660)
-</pre>
+# int(4660)</code></pre>
 
         <h4>Convert integer to GKID</h4>
-        <pre>
-&lt;?php
+        <pre><code class="language-php">&lt;?php
 $id = 4660;
 $gk = sprintf("GK%04X", $id);
 var_dump($gk);
 
 # result:
-# string(6) "GK1234"
-</pre>
+# string(6) "GK1234"</code></pre>
 
     </div>
 </div>
@@ -151,37 +147,7 @@ var_dump($gk);
             Example: <code>{CONFIG_SITE_BASE_URL}export.php?modifiedsince=20090901000000</code>
         </sample>
         <h4>Sample output (without headers)</h4>
-        <pre>
-<!-- HTML generated using hilite.me -->
-<span style="color: #507090">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;</span>
-<span style="color: #007000">&lt;gkxml</span> <span style="color: #0000C0">version=</span><span style="background-color: #fff0f0">&quot;1.0&quot;</span> <span style="color: #0000C0">date=</span><span style="background-color: #fff0f0">&quot;2013-01-05 13:00:49&quot;</span><span style="color: #007000">&gt;</span>
-    <span style="color: #007000">&lt;geokret</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;6664&quot;</span><span style="color: #007000">&gt;</span>
-        <span style="color: #007000">&lt;name&gt;</span><span style="color: #507090">&lt;![CDATA[Piramidy]]&gt;</span><span style="color: #007000">&lt;/name&gt;</span>
-        <span style="color: #007000">&lt;description&gt;</span><span style="color: #507090">&lt;![CDATA[by Terry Pratchett]]&gt;</span><span style="color: #007000">&lt;/description&gt;</span>
-        <span style="color: #007000">&lt;owner</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;3807&quot;</span><span style="color: #007000">&gt;</span><span style="color: #507090">&lt;![CDATA[meteor2017]]&gt;</span><span style="color: #007000">&lt;/owner&gt;</span>
-        <span style="color: #007000">&lt;datecreated&gt;</span>2010-01-17 17:43:50<span style="color: #007000">&lt;/datecreated&gt;</span>
-        <span style="color: #007000">&lt;distancetravelled&gt;</span>408<span style="color: #007000">&lt;/distancetravelled&gt;</span>
-        <span style="color: #007000">&lt;state&gt;</span>0<span style="color: #007000">&lt;/state&gt;</span>
-        <span style="color: #007000">&lt;missing&gt;</span>0<span style="color: #007000">&lt;/missing&gt;</span>
-        <span style="color: #007000">&lt;position</span> <span style="color: #0000C0">latitude=</span><span style="background-color: #fff0f0">&quot;49.48972&quot;</span> <span style="color: #0000C0">longitude=</span><span style="background-color: #fff0f0">&quot;18.96848&quot;</span> <span style="color: #007000">/&gt;</span>
-        <span style="color: #007000">&lt;waypoints&gt;</span>
-            <span style="color: #007000">&lt;waypoint&gt;</span><span style="color: #507090">&lt;![CDATA[OP41A1]]&gt;</span><span style="color: #007000">&lt;/waypoint&gt;</span>
-        <span style="color: #007000">&lt;/waypoints&gt;</span>
-        <span style="color: #007000">&lt;type</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;1&quot;</span><span style="color: #007000">&gt;</span><span style="color: #507090">&lt;![CDATA[A book/CD/DVD...]]&gt;</span><span style="color: #007000">&lt;/type&gt;</span>
-    <span style="color: #007000">&lt;/geokret&gt;</span>
-    <span style="color: #007000">&lt;moves</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;284778&quot;</span><span style="color: #007000">&gt;</span>
-        <span style="color: #007000">&lt;geokret</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;28328&quot;</span><span style="color: #007000">&gt;</span><span style="color: #507090">&lt;![CDATA[Indián 2]]&gt;</span><span style="color: #007000">&lt;/geokret&gt;</span>
-        <span style="color: #007000">&lt;position</span> <span style="color: #0000C0">latitude=</span><span style="background-color: #fff0f0">&quot;50.33383&quot;</span> <span style="color: #0000C0">longitude=</span><span style="background-color: #fff0f0">&quot;13.51802&quot;</span> <span style="color: #007000">/&gt;</span>
-        <span style="color: #007000">&lt;waypoints&gt;</span>
-            <span style="color: #007000">&lt;waypoint&gt;</span><span style="color: #507090">&lt;![CDATA[GC1W85C]]&gt;</span><span style="color: #007000">&lt;/waypoint&gt;</span>
-        <span style="color: #007000">&lt;/waypoints&gt;</span>
-        <span style="color: #007000">&lt;date</span> <span style="color: #0000C0">moved=</span><span style="background-color: #fff0f0">&quot;2013-01-05 12:00:00&quot;</span> <span style="color: #0000C0">logged=</span><span style="background-color: #fff0f0">&quot;2013-01-05 12:48:01&quot;</span> <span style="color: #007000">/&gt;</span>
-        <span style="color: #007000">&lt;user</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;17715&quot;</span><span style="color: #007000">&gt;</span><span style="color: #507090">&lt;![CDATA[sacreecoeur]]&gt;</span><span style="color: #007000">&lt;/user&gt;</span>
-        <span style="color: #007000">&lt;comment&gt;</span><span style="color: #507090">&lt;![CDATA[Moje první GeoKrety]]&gt;</span><span style="color: #007000">&lt;/comment&gt;</span>
-        <span style="color: #007000">&lt;logtype</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;0&quot;</span><span style="color: #007000">&gt;</span><span style="color: #507090">&lt;![CDATA[Dropped to]]&gt;</span><span style="color: #007000">&lt;/logtype&gt;</span>
-    <span style="color: #007000">&lt;/moves&gt;</span>
-<span style="color: #007000">&lt;/gkxml&gt;</span>
-</pre>
+        <pre><code class="language-xml">{$gk_xml_export}</code></pre>
     </div>
 </div>
 
@@ -207,29 +173,7 @@ var_dump($gk);
 
         <h4>Sample output (without headers)</h4>
         <!-- HTML generated using hilite.me -->
-        <pre>
-<span style="color: #507090">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;</span>
-<span style="color: #007000">&lt;gkxml</span> <span style="color: #0000C0">version=</span><span style="background-color: #fff0f0">&quot;1.0&quot;</span> <span style="color: #0000C0">date=</span><span style="background-color: #fff0f0">&quot;2013-01-05 13:00:49&quot;</span><span style="color: #007000">&gt;</span>
-    <span style="color: #007000">&lt;geokret</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;4849&quot;</span><span style="color: #007000">&gt;</span>
-        <span style="color: #007000">&lt;name&gt;</span><span style="color: #507090">&lt;![CDATA[B&amp;B&#39;s Dragonfly]]&gt;</span><span style="color: #007000">&lt;/name&gt;</span>
-        <span style="color: #007000">&lt;distancetravelled&gt;</span>1959<span style="color: #007000">&lt;/distancetravelled&gt;</span>
-        <span style="color: #007000">&lt;state&gt;</span>0<span style="color: #007000">&lt;/state&gt;</span>
-        <span style="color: #007000">&lt;position</span> <span style="color: #0000C0">latitude=</span><span style="background-color: #fff0f0">&quot;53.73917&quot;</span> <span style="color: #0000C0">longitude=</span><span style="background-color: #fff0f0">&quot;17.40568&quot;</span> <span style="color: #007000">/&gt;</span>
-        <span style="color: #007000">&lt;waypoints&gt;</span>
-            <span style="color: #007000">&lt;waypoint&gt;</span><span style="color: #507090">&lt;![CDATA[OP1003]]&gt;</span><span style="color: #007000">&lt;/waypoint&gt;</span>
-        <span style="color: #007000">&lt;/waypoints&gt;</span>
-    <span style="color: #007000">&lt;/geokret&gt;</span>
-    <span style="color: #007000">&lt;geokret</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;3249&quot;</span><span style="color: #007000">&gt;</span>
-        <span style="color: #007000">&lt;name&gt;</span><span style="color: #507090">&lt;![CDATA[GeoKretynka]]&gt;</span><span style="color: #007000">&lt;/name&gt;</span>
-        <span style="color: #007000">&lt;distancetravelled&gt;</span>113<span style="color: #007000">&lt;/distancetravelled&gt;</span>
-        <span style="color: #007000">&lt;state&gt;</span>1<span style="color: #007000">&lt;/state&gt;</span>
-        <span style="color: #007000">&lt;position</span> <span style="color: #0000C0">latitude=</span><span style="background-color: #fff0f0">&quot;0.00000&quot;</span> <span style="color: #0000C0">longitude=</span><span style="background-color: #fff0f0">&quot;0.00000&quot;</span> <span style="color: #007000">/&gt;</span>
-        <span style="color: #007000">&lt;waypoints&gt;</span>
-            <span style="color: #007000">&lt;waypoint&gt;</span><span style="color: #507090">&lt;![CDATA[]]&gt;</span><span style="color: #007000">&lt;/waypoint&gt;</span>
-        <span style="color: #007000">&lt;/waypoints&gt;</span>
-    <span style="color: #007000">&lt;/geokret&gt;</span>
-<span style="color: #007000">&lt;/gkxml&gt;</span>
-</pre>
+        <pre><code class="language-xml">{$gk_xml_export_oc}</code></pre>
     </div>
 </div>
 
@@ -244,19 +188,7 @@ var_dump($gk);
 
         <h4>Sample output (without headers)</h4>
         <!-- HTML generated using hilite.me -->
-        <pre>
-<span style="color: #507090">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;</span>
-<span style="color: #007000">&lt;gkxml</span> <span style="color: #0000C0">version=</span><span style="background-color: #fff0f0">&quot;1.0&quot;</span> <span style="color: #0000C0">date=</span><span style="background-color: #fff0f0">&quot;2010-12-09 19:10:03&quot;</span><span style="color: #007000">&gt;</span>
-    <span style="color: #007000">&lt;geokrety&gt;</span>
-    	<span style="color: #007000">&lt;geokret</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;8143&quot;</span> <span style="color: #0000C0">dist=</span><span style="background-color: #fff0f0">&quot;251&quot;</span> <span style="color: #0000C0">lat=</span><span style="background-color: #fff0f0">&quot;53.14598&quot;</span> <span style="color: #0000C0">lon=</span><span style="background-color: #fff0f0">&quot;23.18567&quot;</span>
-    	<span style="color: #0000C0">waypoint=</span><span style="background-color: #fff0f0">&quot;OP2FD9&quot;</span> <span style="color: #0000C0">owner_id=</span><span style="background-color: #fff0f0">&quot;3813&quot;</span> <span style="color: #0000C0">state=</span><span style="background-color: #fff0f0">&quot;0&quot;</span> <span style="color: #0000C0">type=</span><span style="background-color: #fff0f0">&quot;0&quot;</span>
-    	<span style="color: #0000CC">last_pos_id=</span><span style="background-color: #fff0f0">&quot;11536&quot;</span> <span style="color: #0000CC">last_log_id=</span><span style="background-color: #fff0f0">&quot;11553&quot;</span>
-    	<span style="color: #0000C0">image=</span><span style="background-color: #fff0f0">&quot;1273660644jr8sm.jpg&quot;</span><span style="color: #007000">&gt;</span>
-    	<span style="color: #507090">&lt;![CDATA[Wiewireczka]]&gt;</span>
-    	<span style="color: #007000">&lt;/geokret&gt;</span>
-    <span style="color: #007000">&lt;/geokrety&gt;</span>
-<span style="color: #007000">&lt;/gkxml&gt;</span>
-</pre>
+        <pre><code class="language-xml">{$gk_xml_export2}</code></pre>
         <p>
             <ul>
                 <li><code>last_pos_id</code> - id of the last position (waypoint)</li>
@@ -457,25 +389,10 @@ var_dump($gk);
         </p>
 
         <h4>On success</h4>
-        <!-- HTML generated using hilite.me -->
-        <pre>
-<span style="color: #507090">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
-<span style="color: #007000">&lt;gkxml</span> <span style="color: #0000C0">version=</span><span style="background-color: #fff0f0">&quot;1.0&quot;</span> <span style="color: #0000C0">date=</span><span style="background-color: #fff0f0">&quot;2013-01-03 21:29:11&quot;</span><span style="color: #007000">&gt;</span>
-    <span style="color: #007000">&lt;geokrety&gt;</span>
-        <span style="color: #007000">&lt;geokret</span> <span style="color: #0000C0">id=</span><span style="background-color: #fff0f0">&quot;27334&quot;</span><span style="color: #007000">/&gt;</span>
-    <span style="color: #007000">&lt;/geokrety&gt;</span>
-<span style="color: #007000">&lt;/gkxml&gt;</span>
-</pre>
+        <pre><code class="language-xml">{$gk_xml_ruchy_saved}</code></pre>
+
         <h4>On error</h4>
-        <pre>
-<span style="color: #507090">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
-<span style="color: #007000">&lt;gkxml</span> <span style="color: #0000C0">version=</span><span style="background-color: #fff0f0">&quot;1.0&quot;</span> <span style="color: #0000C0">date=</span><span style="background-color: #fff0f0">&quot;2013-01-03 21:13:51&quot;</span><span style="color: #007000">&gt;</span>
-    <span style="color: #007000">&lt;errors&gt;</span>
-        <span style="color: #007000">&lt;error&gt;</span>Wrong secid<span style="color: #007000">&lt;/error&gt;</span>
-        <span style="color: #007000">&lt;error&gt;</span>Wrond date or time<span style="color: #007000">&lt;/error&gt;</span>
-    <span style="color: #007000">&lt;/errors&gt;</span>
-<span style="color: #007000">&lt;/gkxml&gt;</span>
-</pre>
+        <pre><code class="language-xml">{$gk_xml_ruchy_error}</code></pre>
 
     </div>
 </div>
