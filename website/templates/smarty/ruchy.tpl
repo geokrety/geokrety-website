@@ -4,7 +4,7 @@
 </ol>
 
 <form class="form-horizontal" id="moveForm" method="POST" {if $tripStep->ruchId}action="?ruchid={$tripStep->ruchId}"{/if} data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
-    <input type="hidden" name="app" value="{if $tripStep->app}{$tripStep->app}{else}www{/if}" />
+    <input type="hidden" name="app" value="{if $tripStep->app}{$tripStep->app}{else}{CONFIG_GK_APP_NAME}{/if}" />
     <input type="hidden" name="app_ver" value="{if $tripStep->appVer}{$tripStep->appVer}{else}{CONFIG_GK_VERSION}{/if}" />
     <div class="hidden" id="accordionParking"></div>
 

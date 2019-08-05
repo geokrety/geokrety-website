@@ -69,10 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $trip->userId = $user->id;
             $trip->setComment(_('Born here :)'));
             $trip->setLogtype(\Geokrety\Domain\LogType::LOG_TYPE_DIPPED);
-            $trip->app = 'www';
-            $trip->appVer = ''; // Note: DB should accept null here
-            $trip->picturesCount = 0; // Note: DB should accept null here
-            $trip->commentsCount = 0; // Note: DB should accept null here
+            $trip->app = CONFIG_GK_APP_NAME;
+            $trip->appVer = CONFIG_GK_VERSION;
+            $trip->picturesCount = 0;
+            $trip->commentsCount = 0;
             $trip->insert();
         }
     }

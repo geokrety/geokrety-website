@@ -3,6 +3,8 @@
 namespace Geokrety\Domain;
 
 use Geokrety\Repository\TripRepository;
+use \Geokrety\Domain\Konkret;
+use \Geokrety\Domain\LogType;
 
 include_once 'aktualizuj.php';
 include_once 'konkret-mapka.php';
@@ -78,7 +80,7 @@ class TripStep extends AbstractObject {
         return $this->lon ? number_format($this->lon, 5, '.', '') : null;
     }
 
-    public function setComment(string $comment) {
+    public function setComment(?string $comment) {
         // Workaround historical database modifications
         $txt = str_replace('<br />', '  ', $comment);
         $txt = str_replace('[<a href=\'', '', $txt);
@@ -102,11 +104,28 @@ class TripStep extends AbstractObject {
         return $this->ruchData;
     }
 
+    public function getDateLogged() {
+        if (is_a($this->ruchDataDodania, '\Datetime')) {
+            return $this->ruchDataDodania->format('Y-m-d H:i:s');
+        }
+
+        return $this->ruchDataDodania;
+    }
+
     public function setDate($date, $format = 'Y-m-d H:i:s') {
         if (is_a($date, '\Datetime')) {
             $this->ruchData = $date;
+            return;
         }
         $this->ruchData = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
+    }
+
+    public function setDateLogged($date, $format = 'Y-m-d H:i:s') {
+        if (is_a($date, '\Datetime')) {
+            $this->ruchDataDodania = $date;
+            return;
+        }
+        $this->ruchDataDodania = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
     }
 
     public function setLogtype($logtype) {
@@ -254,5 +273,31 @@ $this->ruchDataDodania $this->username ($this->logTypeString) $this->country ($t
 EOHTML;
 
         return $htmlContent;
+    }
+
+    public static function generate(int $geokretId, &$geokret, $logtype = LogType::LOG_TYPE_DIPPED) {
+        $lipsum = new \joshtronic\LoremIpsum();
+        $trip = new \Geokrety\Domain\TripStep();
+        $trip->geokretId = $geokretId;
+        $trip->geokret = $geokret;
+        $trip->lat = 53.14598;
+        $trip->lon = 23.18567;
+        $trip->name = $lipsum->words(3);
+        $trip->alt = 150;
+        $trip->ruchId = random_int(424242, 888888);
+        $trip->setDate((new \DateTime())->sub(new \DateInterval('P10DT8H42M23S')));
+        $trip->setDateLogged(new \DateTime());
+        $trip->waypoint = 'GC5BRQK';
+        $trip->country = 'fr';
+        $trip->userId = random_int(424242, 888888);
+        $trip->username = $lipsum->words(1);
+        $trip->setComment(_('Follow the white rabbit 🐇'));
+        $trip->setLogtype($logtype);
+        $trip->app = CONFIG_GK_APP_NAME;
+        $trip->appVer = CONFIG_GK_VERSION;
+        $trip->picturesCount = 0;
+        $trip->commentsCount = 0;
+
+        return $trip;
     }
 }
