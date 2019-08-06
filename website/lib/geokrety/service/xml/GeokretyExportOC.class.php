@@ -4,7 +4,7 @@ namespace Geokrety\Service\Xml;
 
 class GeokretyExportOC extends GeokretyBase {
 
-    public function addGeokret(\Geokrety\Domain\Konkret $geokret) {
+    public function addGeokret(\Geokrety\Domain\Konkret &$geokret) {
         $gk = $this->xml->addChild('geokret');
         $gk->addAttribute('id', $geokret->id);
         $gk->addChildWithCDATA('name', $geokret->name);

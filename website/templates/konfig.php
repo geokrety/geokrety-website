@@ -311,7 +311,7 @@ $config['trip_per_page'] = 25;
 $config['pictures_per_gallery_page'] = 99;
 $config['news_per_page'] = 10;
 $config['export_day_limit'] = 10;
-$config['sql_recent_trips_hard_limit'] = 1000;
+$config['sql_hard_limit'] = 1000;
 
 $config['welcome'] = _('Welcome to GeoKrety.org!');
 $config['punchline'] = _('Open source item tracking for all caching platforms');
@@ -502,7 +502,7 @@ define('PICTURES_PER_GALLERY_PAGE', $config['pictures_per_gallery_page']);
 
 define('EXPORT_DAY_LIMIT', $config['export_day_limit']);
 
-define('SQL_RECENT_TRIPS_HARD_LIMIT', $config['sql_recent_trips_hard_limit']);
+define('SQL_HARD_LIMIT', $config['sql_hard_limit']);
 
 define('SWISTAK_KEY', $config['swistak_key']);
 define('SWISTAK_IV32', $config['swistak_iv32']);

@@ -20,6 +20,14 @@ class ValidationService extends AbstractValidationService {
         return $value;
     }
 
+    public static function ensureIsSecid($value) {
+        if (empty($value) || self::is_whitespace($value) || strlen($value) < 128) {
+            throw new \InvalidArgumentException("expected secid to be in secid format");
+        }
+
+        return $value;
+    }
+
     public function ensureNotEmptyArray($desc, $value) {
         if (!is_array($value) || empty($value)) {
             throw new \InvalidArgumentException("expected not empty $desc");

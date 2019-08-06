@@ -27,6 +27,24 @@ EOQUERY;
         return null;
     }
 
+    public function getBySecid($secid) {
+        \Geokrety\Service\ValidationService::ensureIsSecid($secid);
+
+        $where = <<<EOQUERY
+  WHERE secid = ?
+  LIMIT 1
+EOQUERY;
+
+        $sql = self::SELECT_USER.$where;
+
+        $users = $this->getBySql($sql, 's', array($secid));
+        if (sizeof($users) > 0) {
+            return $users[0];
+        }
+
+        return null;
+    }
+
     public function getByUsername($username) {
         $where = <<<EOQUERY
   WHERE user = ?

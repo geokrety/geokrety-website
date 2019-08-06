@@ -62,9 +62,9 @@ class Konkret extends AbstractObject {
         $this->datePublished = \DateTime::createFromFormat($format, $date, new \DateTimeZone('UTC'));
     }
 
-    public function getDatePublished() {
+    public function getDatePublished($format = 'Y-m-d H:i:s') {
         if (is_a($this->datePublished, '\Datetime')) {
-            return $this->datePublished->format('Y-m-d H:i:s');
+            return $this->datePublished->format($format);
         }
 
         return $this->datePublished;
@@ -139,6 +139,8 @@ class Konkret extends AbstractObject {
 
     public static function generate() {
         $lipsum = new \joshtronic\LoremIpsum();
+        $lipsum->words(1); // prevent default 'lorem'
+
         $geokret = new \Geokrety\Domain\Konkret();
         $geokret->id = random_int(424242, 888888);
         $geokret->type = random_int(0, 4);
@@ -146,6 +148,7 @@ class Konkret extends AbstractObject {
         $geokret->ownerId = random_int(424242, 888888);
         $geokret->holderId = random_int(424242, 888888);
         $geokret->ownerName = $lipsum->words(1);
+        $geokret->holderName = $lipsum->words(1);
         $geokret->name = $lipsum->words(1);
         $geokret->description = $lipsum->sentences(3);
         $geokret->distance = random_int(0, 9999);
@@ -154,6 +157,7 @@ class Konkret extends AbstractObject {
         $geokret->lastLogId = $geokret->lastLog->ruchId;
         $geokret->lastPositionId = $geokret->lastPosition->ruchId;
         $geokret->missing = 0;
+        $geokret->places = random_int(0, 999);
         $geokret->avatarFilename = '1273660644jr8sm.jpg';
 
         return $geokret;
