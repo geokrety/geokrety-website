@@ -112,6 +112,16 @@ EOQUERY;
         return $this->getBySql($sql, 's', array("$name"));
     }
 
+    public function getByModifiedSince($modifiedsince) {
+        $where = <<<EOQUERY
+  WHERE gk.timestamp > ?
+EOQUERY;
+
+        $sql = self::SELECT_KONKRET.$where;
+
+        return $this->getBySql($sql, 's', array($modifiedsince));
+    }
+
     public function getBySql($sql, $bindStr, $bind) {
         if ($this->verbose) {
             echo "\n$sql\n";
