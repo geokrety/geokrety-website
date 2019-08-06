@@ -438,6 +438,22 @@ EOQUERY;
         return $page;
     }
 
+    public function getByModifiedSince($modifiedsince) {
+        // $modifiedsince = $this->validationService->ensureIsDate('modifiedsince', $modifiedsince);
+
+        $logtype_comment = \Geokrety\Domain\LogType::LOG_TYPE_COMMENT;
+        $limit = SQL_RECENT_TRIPS_HARD_LIMIT;
+        $where = <<<EOQUERY
+    WHERE       ru.timestamp > ?
+    ORDER BY    ru.ruch_id DESC
+    LIMIT       $limit
+EOQUERY;
+
+        $sql = self::SELECT_RUCHY.$where;
+
+        return $this->getBySql($sql, 's', array($modifiedsince));
+    }
+
     public function insertTripStep(\Geokrety\Domain\TripStep &$trip) {
         $sql = <<<EOQUERY
 INSERT INTO `gk-ruchy`

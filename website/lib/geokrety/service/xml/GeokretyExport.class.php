@@ -8,12 +8,14 @@ class GeokretyExport extends GeokretyBase {
         $gk = $this->xml->addChild('geokret');
         $gk->addAttribute('id', $geokret->id);
         $gk->addChildWithCDATA('name', $geokret->name);
-        $gk->addChildWithCDATA('description', $geokret->description);
+        $gk->addChildWithCDATA('description', \Formatter::toText($geokret->description));
+        $gk->addChildWithCDATA('description_html', \Formatter::toHtml($geokret->description));
+        $gk->addChildWithCDATA('description_markdown', $geokret->description);
         $owner = $gk->addChildWithCDATA('owner', $geokret->ownerName);
         $owner->addAttribute('id', $geokret->ownerId);
         $gk->addChild('datecreated', $geokret->getDatePublished());
         $gk->addChild('distancetravelled', $geokret->distance);
-        $gk->addChild('state', $geokret->lastPosition->logType->isTheoricallyInCache() ? '1' : '0');
+        $gk->addChild('state', $geokret->lastPosition->logType->getLogTypeId());
         $gk->addChild('missing', $geokret->missing);
         $position = $gk->addChild('position');
         $position->addAttribute('latitude', $geokret->lastPosition->lat);
@@ -39,7 +41,9 @@ class GeokretyExport extends GeokretyBase {
         $dates->addAttribute('logged', $tripStep->getDateLogged());
         $user = $trip->addChildWithCDATA('user', $tripStep->author()->username);
         $user->addAttribute('id', $tripStep->author()->id);
-        $trip->addChildWithCDATA('comment', $tripStep->comment);
+        $trip->addChildWithCDATA('comment', \Formatter::toText($tripStep->comment));
+        $trip->addChildWithCDATA('comment_html', \Formatter::toHtml($tripStep->comment));
+        $trip->addChildWithCDATA('comment_markdown', $tripStep->comment);
         $logtype = $trip->addChildWithCDATA('logtype', $tripStep->logType->getLogTypeString());
         $logtype->addAttribute('id', $tripStep->logType->getLogTypeId());
     }

@@ -76,11 +76,11 @@ class Konkret extends AbstractObject {
 
     public function getTypeString() {
         switch ($this->type) {
-            case 0: return _('traditional');
-            case 1: return _('book/cd/dvd');
-            case 2: return _('human');
-            case 3: return _('coin');
-            case 4: return _('kretypost');
+            case 0: return _('Traditional');
+            case 1: return _('A book/CD/DVD...');
+            case 2: return _('A human');
+            case 3: return _('A coin');
+            case 4: return _('KretyPost');
             default: return null;
         }
     }
