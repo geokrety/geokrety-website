@@ -27,7 +27,7 @@ abstract class Base {
     protected $xml;
 
     public function __construct() {
-        $xml = new SimpleXMLExtended('<gkxml/>');
+        $xml = new SimpleXMLExtended('<?xml version="1.0" encoding="utf-8"?><gkxml/>');
         $xml->addAttribute('version', '1.0');
         $xml->addAttribute('date', date('Y-m-d H:i:s'));
         $this->xml = $xml;
