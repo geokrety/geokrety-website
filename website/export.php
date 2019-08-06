@@ -5,7 +5,6 @@ require_once '__sentry.php';
 // export data via xml
 header('Content-Type: application/xml; charset=UTF-8');
 
-
 // ----------------------------------------------------- date format -------- //
 
 if (!ctype_digit($_GET['modifiedsince'])) {
@@ -49,7 +48,7 @@ foreach ($geokrety as $geokret) {
 foreach ($moves as $move) {
     $xml->addMove($move);
 }
-$xml->outputAsXML();
+$xml->outputAsXML((string) $_GET['gzip'] == '1', 'export2.xml.gz');
 
 // ----------------------------- OUT ------------------------------//
 

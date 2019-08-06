@@ -41,9 +41,15 @@ abstract class Base {
         return $this->xml->asXML();
     }
 
-    public function outputAsXML() {
-        header('Content-Type: application/xml; charset=UTF-8');
-        echo $this->xml->asXML();
+    public function outputAsXML(bool $gzip = false, $filename = 'out.xml.gz') {
+        if ($gzip) {
+            header('Content-Disposition: attachment; filename='.$filename);
+            header('Content-type: application/x-gzip');
+            echo gzencode($this->xml->asXML(), 5);
+        } else {
+            header('Content-Type: application/xml; charset=UTF-8');
+            echo $this->xml->asXML();
+        }
     }
 
     public function asXMLPretty() {
