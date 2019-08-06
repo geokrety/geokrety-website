@@ -10,7 +10,7 @@ class GeokretyRuchy extends GeokretyBase {
         $this->xmlGeokrety = $this->xml->addChild('geokrety');
     }
 
-    public function addGeokret(\Geokrety\Domain\Konkret $geokret) {
+    public function addGeokret(\Geokrety\Domain\Konkret &$geokret) {
         $gk = $this->xmlGeokrety->addChild('geokret');
         $gk->addAttribute('id', $geokret->id);
     }

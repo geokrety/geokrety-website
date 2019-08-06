@@ -30,7 +30,7 @@ if (($jak_stare_dane > $limit_czasu_s) and ($_GET['kocham_kaczynskiego'] !== $ko
     $xml = new \Geokrety\Service\Xml\Errors();
     $xml->addError($warning);
     $xml->outputAsXML();
-    exit;
+    die();
 }
 
 // ----------------------------- KRETY ------------------------------//
@@ -48,7 +48,7 @@ foreach ($geokrety as $geokret) {
 foreach ($moves as $move) {
     $xml->addMove($move);
 }
-$xml->outputAsXML((string) $_GET['gzip'] == '1', 'export2.xml.gz');
+$xml->outputAsXML((string) $_GET['gzip'] === '1', 'export2.xml.gz');
 
 // ----------------------------- OUT ------------------------------//
 

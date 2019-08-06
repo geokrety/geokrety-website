@@ -11,7 +11,7 @@ EOQUERY;
     const SELECT_KONKRET = <<<EOQUERY
 SELECT      gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
             gk.ost_log_id, ru.data, ru.logtype, ru.koment, ru.user, us.user, ru.username,
-            gk.ost_pozycja_id, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
+            gk.ost_pozycja_id, ru2.data, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
             gk.avatarid, pic.plik, pic.opis,
             owner.user, holder.userid, holder.user, owner.email
 FROM        `gk-geokrety` gk
@@ -26,7 +26,7 @@ EOQUERY;
     const SELECT_USER_KONKRET_INVENTORY = <<<EOQUERY
 SELECT      gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
             gk.ost_log_id, ru.data, ru.logtype, ru.koment, ru.user, us.user, ru.username,
-            gk.ost_pozycja_id, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
+            gk.ost_pozycja_id, ru2.data, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
             gk.avatarid, pic.plik, pic.opis,
             owner.user, holder.userid, holder.user, owner.email
 FROM        `gk-geokrety` gk
@@ -41,7 +41,7 @@ EOQUERY;
     const SELECT_USER_KONKRET_WATCHED = <<<EOQUERY
 SELECT      gk.id, gk.nr, gk.nazwa, gk.opis, gk.data ,gk.typ, gk.droga, gk.skrzynki, gk.zdjecia, gk.owner, gk.missing,
             gk.ost_log_id, ru.data, ru.logtype, ru.koment, ru.user, us.user, ru.username,
-            gk.ost_pozycja_id, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
+            gk.ost_pozycja_id, ru2.data, ru2.waypoint, ru2.lat, ru2.lon, ru2.country, ru2.logtype, ru2.user,
             gk.avatarid, pic.plik, pic.opis,
             owner.user, holder.userid, holder.user, owner.email
 FROM        `gk-obserwable` ob
@@ -113,8 +113,10 @@ EOQUERY;
     }
 
     public function getByModifiedSince($modifiedsince) {
+        $limit = SQL_HARD_LIMIT;
         $where = <<<EOQUERY
-  WHERE gk.timestamp > ?
+  WHERE     gk.timestamp > ?
+  LIMIT     $limit
 EOQUERY;
 
         $sql = self::SELECT_KONKRET.$where;
@@ -147,7 +149,7 @@ EOQUERY;
         // associate result vars
         $stmt->bind_result($id, $trackingCode, $name, $description, $datePublished, $type, $distance, $cachesCount, $picturesCount, $ownerId, $missing,
                            $lastLogId, $lastLogDate, $lastLogLogType, $lastLogComment, $lastLogUserId, $lastLogUsername, $lastLogUsername_,
-                           $lastPositionId, $lastPositionWaypoint, $lastPositionLat, $lastPositionLon, $lastPositionCountry, $lastPositionLogType, $lastPositionUserId,
+                           $lastPositionId, $lastPositionDate, $lastPositionWaypoint, $lastPositionLat, $lastPositionLon, $lastPositionCountry, $lastPositionLogType, $lastPositionUserId,
                            $avatarId, $avatarFilename, $avatarCaption,
                            $ownerName, $holderId, $holderName, $ownerEmail);
 
@@ -181,24 +183,29 @@ EOQUERY;
             $geokret->lastLogId = $lastLogId;
             $geokret->missing = $missing;
 
-            $lastLog = new \Geokrety\Domain\TripStep($this->dblink);
-            $lastLog->ruchId = $lastLogId;
-            $lastLog->setDate($lastLogDate);
-            $lastLog->setLogtype($lastLogLogType);
-            $lastLog->setComment($lastLogComment);
-            $lastLog->userId = $lastLogUserId;
-            $lastLog->username = $lastLogUsername_ ? $lastLogUsername_ : $lastLogUsername;
-            $geokret->lastLog = $lastLog;
+            if ($lastLogId) {
+                $lastLog = new \Geokrety\Domain\TripStep($this->dblink);
+                $lastLog->ruchId = $lastLogId;
+                $lastLog->setDate($lastLogDate);
+                $lastLog->setLogtype($lastLogLogType);
+                $lastLog->setComment($lastLogComment);
+                $lastLog->userId = $lastLogUserId;
+                $lastLog->username = $lastLogUsername_ ? $lastLogUsername_ : $lastLogUsername;
+                $geokret->lastLog = $lastLog;
+            }
 
-            $lastPosition = new \Geokrety\Domain\TripStep($this->dblink);
-            $lastPosition->ruchId = $lastLogId;
-            $lastPosition->userId = $lastPositionUserId;
-            $lastPosition->waypoint = $lastPositionWaypoint;
-            $lastPosition->lat = $lastPositionLat;
-            $lastPosition->lon = $lastPositionLon;
-            $lastPosition->country = $lastPositionCountry;
-            $lastPosition->setLogtype($lastPositionLogType);
-            $geokret->lastPosition = $lastPosition;
+            if ($lastPositionId) {
+                $lastPosition = new \Geokrety\Domain\TripStep($this->dblink);
+                $lastPosition->ruchId = $lastLogId;
+                $lastPosition->userId = $lastPositionUserId;
+                $lastPosition->waypoint = $lastPositionWaypoint;
+                $lastPosition->lat = $lastPositionLat;
+                $lastPosition->lon = $lastPositionLon;
+                $lastPosition->country = $lastPositionCountry;
+                $lastPosition->setDate($lastPositionDate);
+                $lastPosition->setLogtype($lastPositionLogType);
+                $geokret->lastPosition = $lastPosition;
+            }
 
             $geokret->enrichFields();
             array_push($geokrety, $geokret);

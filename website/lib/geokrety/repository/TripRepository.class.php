@@ -442,7 +442,7 @@ EOQUERY;
         // $modifiedsince = $this->validationService->ensureIsDate('modifiedsince', $modifiedsince);
 
         $logtype_comment = \Geokrety\Domain\LogType::LOG_TYPE_COMMENT;
-        $limit = SQL_RECENT_TRIPS_HARD_LIMIT;
+        $limit = SQL_HARD_LIMIT;
         $where = <<<EOQUERY
     WHERE       ru.timestamp > ?
     ORDER BY    ru.ruch_id DESC

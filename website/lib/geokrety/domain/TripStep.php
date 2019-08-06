@@ -96,9 +96,9 @@ class TripStep extends AbstractObject {
         return array($this->getLat(), $this->getLon());
     }
 
-    public function getDate() {
+    public function getDate($format = 'Y-m-d H:i:s') {
         if (is_a($this->ruchData, '\Datetime')) {
-            return $this->ruchData->format('Y-m-d H:i:s');
+            return $this->ruchData->format($format);
         }
 
         return $this->ruchData;

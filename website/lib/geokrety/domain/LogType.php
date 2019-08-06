@@ -57,7 +57,7 @@ class LogType extends AbstractObject {
     }
 
     public function isTheoricallyInCache() {
-        return in_array($this->logtype, self::LOG_TYPES_THEORICALLY_IN_CACHE);
+        return !is_null($this->logtype) && in_array($this->logtype, self::LOG_TYPES_THEORICALLY_IN_CACHE);
     }
 
     public function getLogTypeString() {

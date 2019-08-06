@@ -10,6 +10,7 @@ $TYTUL = _('GK XML interface');
 // Generate a GeoKret
 $geokret = \Geokrety\Domain\Konkret::generate();
 $geokret2 = \Geokrety\Domain\Konkret::generate();
+$geokret2->missing = true;
 
 // Render ruchy saved
 $xml = new \Geokrety\Service\Xml\GeokretyRuchy();

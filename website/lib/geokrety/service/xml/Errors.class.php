@@ -14,7 +14,7 @@ class Errors extends Base {
         }
     }
 
-    public function outputAsXML() {
+    public function outputAsXML(bool $gzip = false, $filename = 'out.xml.gz') {
         http_response_code(400);
         parent::outputAsXML();
     }
