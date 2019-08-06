@@ -1,7 +1,7 @@
 {function alertLimitDays}
 <div class="alert alert-info" role="alert">
-    <b>Note:</b> <code>export*.php</code> has a limit of retrieved data set at <code>10 days</code>
-    (ie you can download data changed in the past 10 days only). This should be
+    <b>Note:</b> <code>export*.php</code> has a limit of retrieved data set at <code>{EXPORT_DAY_LIMIT} days</code>
+    (ie you can download data changed in the past {EXPORT_DAY_LIMIT} days only). This should be
     enough to sync local OC nodes or other databases. To get older data use
     <a href="{CONFIG_CDN_URL}/exports/">static exports</a>.
 </div>
