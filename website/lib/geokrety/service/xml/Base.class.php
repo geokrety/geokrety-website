@@ -41,6 +41,11 @@ abstract class Base {
         return $this->xml->asXML();
     }
 
+    public function outputAsXML() {
+        header('Content-Type: application/xml; charset=UTF-8');
+        echo $this->xml->asXML();
+    }
+
     public function asXMLPretty() {
         $dom = new \DOMDocument('1.0');
         $dom->preserveWhiteSpace = false;

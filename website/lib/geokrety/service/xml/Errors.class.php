@@ -14,6 +14,11 @@ class Errors extends Base {
         }
     }
 
+    public function outputAsXML() {
+        http_response_code(400);
+        parent::outputAsXML();
+    }
+
     public function addError($msg) {
         $this->xmlErrors->addChild('error', $msg);
     }

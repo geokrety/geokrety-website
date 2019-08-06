@@ -15,7 +15,7 @@ $isApi = isset($_POST['formname']) && $_POST['formname'] == 'ruchy';
 if ($isApi && !$_SESSION['isLoggedIn']) {
     $xml = new \Geokrety\Service\Xml\Errors(_('Anonymous users cannot use the API. Please authenticate first.'));
     $xml->insertSessionErrors();
-    echo $xml->asXML();
+    $xml->outputAsXML();
     die();
 }
 
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($isApi) {
             $xml = new \Geokrety\Service\Xml\Errors();
             $xml->insertSessionErrors();
-            echo $xml->asXML();
+            $xml->outputAsXML();
             die();
         }
     } else {
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $xml->addGeokrety(array_map(function ($k) {
                     return $k->geokret;
                 }, $trips));
-                echo $xml->asXML();
+                $xml->outputAsXML();
             } else {
                 header('Location: '.$trips[0]->getUrl());
             }
