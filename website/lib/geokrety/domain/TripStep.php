@@ -224,7 +224,7 @@ class TripStep extends AbstractObject {
         aktualizuj_skrzynki($this->geokretId);  // counts number of visited caches
         aktualizuj_ost_pozycja_id($this->geokretId);    // Last GeoKret position
         aktualizuj_ost_log_id($this->geokretId);        // Last log
-        aktualizuj_obrazek_statystyki($this->geokret->ownerId); // compute pictures statisques
+        aktualizuj_obrazek_statystyki($this->geokret->ownerId); // compute pictures statistics
         aktualizuj_rekach($this->geokretId);    // compute current holder
         konkret_mapka($this->geokretId);        // generates a file with a map of the mole
         if ($this->logType->isCoordinatesRequired()) {
