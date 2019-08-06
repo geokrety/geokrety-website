@@ -238,10 +238,18 @@ var_dump($gk);
                 <pre>{CONFIG_SITE_BASE_URL}export2.php?userid=1&inventory=1</pre>
             </li>
             <li>
-                The same but with <code>secid</code> secret user's identification:<br />
+                The same but with <code>secid</code> secret user's identification<br />
+
                 <pre>{CONFIG_SITE_BASE_URL}export2.php?secid=xxx&inventory=1</pre>
                 this request returns also the secret tracking codes
                 (the <b>nr</b> variable) for all GeoKrety in user's inventory.
+
+                <div class="alert alert-danger" role="alert">
+                    <b>Note on security:</b> we used to pass <code>secid</code> as a <code>GET</code> parameter.
+                    This has some security implication, as it doesn't transit in
+                    a secured way over internet. It is recommended to pass it via
+                    <code>POST</code>. All other parameters remain the same (ie as <code>GET</code>).
+                </div>
             </li>
         </ul>
 

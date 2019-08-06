@@ -40,10 +40,10 @@ if (isset($_GET['modifiedsince']) && !ctype_digit($_GET['modifiedsince'])) {
 }
 
 try {
-    if (isset($_GET['secid'])) {
-        \Geokrety\Service\ValidationService::ensureIsSecid($_GET['secid']);
+    if (isset($_REQUEST['secid'])) {
+        \Geokrety\Service\ValidationService::ensureIsSecid($_REQUEST['secid']);
         $userR = new \Geokrety\Repository\UserRepository(\GKDB::getLink());
-        $user = $userR->getBySecid($_GET['secid']);
+        $user = $userR->getBySecid($_REQUEST['secid']);
     }
 } catch (InvalidArgumentException $e) {
     $xml = new \Geokrety\Service\Xml\Errors();
