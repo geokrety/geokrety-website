@@ -81,6 +81,9 @@ class WaypointValidationService extends AbstractValidationService {
         $waypoint = $this->waypointR->getByWaypoint($this->wpt->waypoint);
 
         if (is_null($waypoint) && (is_null($coordinates) || sizeof($coordinates) === 0)) {
+            $cacheUrl = sprintf(SERVICE_GO2GEO, $this->wpt->waypoint);
+            $this->errors[] = sprintf(_('View the <a href="%s" target="_blank">cache page</a>.'), $cacheUrl);
+
             if (Waypoint::isGCWaypoint($this->wpt->waypoint)) {
                 $this->errors[] = _('This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \'Coordinates\' field.');
 
