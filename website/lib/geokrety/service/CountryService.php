@@ -20,12 +20,30 @@ class CountryService extends AbstractValidationService {
         }
 
         $url = sprintf(SERVICE_REVERSE_COUNTRY_GEOCODER, $coordinates['lat'], $coordinates['lon']);
-        $content = file_get_contents($url);
+        $country = $content = file_get_contents($url);
         if ($content === false || empty($content)) {
-            return DEFAULT_COUNTRY_CODE;
-        }
+            // fallback
+            $url = sprintf(SERVICE_REVERSE_COUNTRY_GEOCODER_GOOGLE, $coordinates['lat'], $coordinates['lon'], GOOGLE_MAP_KEY);
+            $content = file_get_contents($url);
 
-        return strtolower($content);
+            // Really give up
+            if ($content === false || empty($content)) {
+                return null;
+            }
+
+            // Process retrieved data from google
+            $jsondata = json_decode($content, true);
+            if (is_array($jsondata) and $jsondata['status'] == 'OK') {
+                $data = array();
+                foreach ($jsondata['results']['0']['address_components'] as $element) {
+                    $data[implode(' ', $element['types'])] = $element['short_name'];
+                }
+
+                $country = $data['country political'];
+            }
+
+        }
+        return strtolower($country);
     }
 
     public static function getCountryName($countryCode) {

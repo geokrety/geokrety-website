@@ -22,7 +22,20 @@ class ElevationService extends AbstractValidationService {
         $url = sprintf(SERVICE_ELEVATION_GEOCODER, $coordinates['lat'], $coordinates['lon']);
         $content = file_get_contents($url);
         if ($content === false || empty($content)) {
-            return DEFAULT_ELEVATION;
+            // fallback
+            $url = sprintf(SERVICE_ELEVATION_GEOCODER_GOOGLE, $coordinates['lat'], $coordinates['lon'], GOOGLE_MAP_KEY);
+            $content = file_get_contents($url);
+
+            // Really give up
+            if ($content === false || empty($content)) {
+                return null;
+            }
+
+            // Process retrieved data from google
+            $jsondata = json_decode($content, true);
+            if (is_array($jsondata) and $jsondata['status'] == 'OK') {
+                $content = $jsondata['results']['0']['elevation'];
+            }
         }
 
         return $content;
