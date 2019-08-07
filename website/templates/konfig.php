@@ -210,8 +210,11 @@ define('TEMP_DIR_SMARTY_CACHE', isset($_ENV['TEMP_DIR_SMARTY_CACHE']) ? $_ENV['T
 define('TEMP_DIR_HTMLPURIFIER_CACHE', isset($_ENV['TEMP_DIR_HTMLPURIFIER_CACHE']) ? $_ENV['TEMP_DIR_HTMLPURIFIER_CACHE'] : '/tmp/htmlpurifier/cache/');
 
 // Reverse geocoders
-define('SERVICE_REVERSE_COUNTRY_GEOCODER', isset($_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER']) ? $_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER'] : 'https://geo.geokrety.org/api/getCountry?lat=%s&lon=%s');
-define('SERVICE_ELEVATION_GEOCODER', isset($_ENV['SERVICE_ELEVATION_GEOCODER']) ? $_ENV['SERVICE_ELEVATION_GEOCODER'] : 'https://geo.geokrety.org/api/getElevation?lat=%s&lon=%s');
+define('GOOGLE_MAP_KEY', $GOOGLE_MAP_KEY);
+define('SERVICE_REVERSE_COUNTRY_GEOCODER', $_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER'] ?? 'https://geo.geokrety.org/api/getCountry?lat=%s&lon=%s');
+define('SERVICE_REVERSE_COUNTRY_GEOCODER_GOOGLE', $_ENV['SERVICE_REVERSE_COUNTRY_GEOCODER_GOOGLE'] ?? 'https://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&key=%s');
+define('SERVICE_ELEVATION_GEOCODER', $_ENV['SERVICE_ELEVATION_GEOCODER'] ?? 'https://geo.geokrety.org/api/getElevation?lat=%s&lon=%s');
+define('SERVICE_ELEVATION_GEOCODER_GOOGLE', $_ENV['SERVICE_ELEVATION_GEOCODER_GOOGLE'] ?? 'https://maps.googleapis.com/maps/api/elevation/json?locations=%s,%s&key=%s');
 
 // Smarty (composer install)
 define('SMARTY_DIR', 'vendor/smarty/smarty/libs/');
