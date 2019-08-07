@@ -220,11 +220,11 @@ if ($_FILES['obrazek']) {
             $trip = $tripR->getByTripId($g_id);
 
             if (is_null($trip)) {
-                danger(sprintf(_('No such trip %1'), $g_id), $redirect = true);
+                danger(sprintf(_('No such trip %s'), $g_id), $redirect = true);
             }
 
             if (!$trip->isAuthor()) {
-                danger(sprintf(_('Your not the author of trip %1'), $g_id), $redirect = true);
+                danger(sprintf(_('You\'re not the author of trip %s'), $g_id), $redirect = true);
             }
             $id_kreta = $trip->geokretId;
         }

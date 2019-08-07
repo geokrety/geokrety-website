@@ -63,8 +63,8 @@ script:
 jobs:
   include:
     - stage: deploy
-      if: branch IN (master, boly38)
-      php: 5.6
+      if: branch IN (master, boly38, feature/new-theme)
+      php: 7.3
       script:
         - scripts/export-translations-github.sh
         - scripts/compile-translations.sh
