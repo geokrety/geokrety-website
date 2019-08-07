@@ -8,7 +8,7 @@ function check_email_validity($userid, $alert_msgs) {
     $row = $db->exec_fetch_row($sql, $num_rows);
     list($email, $email_invalid) = $row;
 
-    $message = sprintf(_('Your currently configured email address (%s) seems to be invalid. Please <a href="/edit.php?co=email">update your email address</a> in the preferences.'), $email);
+    $message = sprintf(_('Your currently configured email address (%s) seems to be invalid. Please <a href="%s">update your email address</a> in the preferences.'), $email, '/edit.php?co=email');
     switch ($email_invalid) {
         case 1:
             $alert_msgs[] = array(
