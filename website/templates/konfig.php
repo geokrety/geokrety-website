@@ -216,6 +216,9 @@ define('SERVICE_REVERSE_COUNTRY_GEOCODER_GOOGLE', $_ENV['SERVICE_REVERSE_COUNTRY
 define('SERVICE_ELEVATION_GEOCODER', $_ENV['SERVICE_ELEVATION_GEOCODER'] ?? 'https://geo.geokrety.org/api/getElevation?lat=%s&lon=%s');
 define('SERVICE_ELEVATION_GEOCODER_GOOGLE', $_ENV['SERVICE_ELEVATION_GEOCODER_GOOGLE'] ?? 'https://maps.googleapis.com/maps/api/elevation/json?locations=%s,%s&key=%s');
 
+// Side services
+define('SERVICE_GO2GEO', $_ENV['SERVICE_GO2GEO'] ?? 'https://geokrety.org/go2geo/?wpt=%s');
+
 // Smarty (composer install)
 define('SMARTY_DIR', 'vendor/smarty/smarty/libs/');
 
