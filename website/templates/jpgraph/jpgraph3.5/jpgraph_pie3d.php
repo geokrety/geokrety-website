@@ -524,7 +524,7 @@ class PiePlot3D extends PiePlot {
                 // For slices larger than 270 degrees we might cross
                 // another boundary as well. This means that we must
                 // split the slice further. The comparison gets a little
-                // bit complicated since we must take into accound that
+                // bit complicated since we must take into account that
                 // a pie might have a startangle >0 and hence a slice might
                 // wrap around the 0 angle.
                 // Three cases:
