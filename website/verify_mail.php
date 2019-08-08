@@ -110,7 +110,7 @@ function verify_mail_send($email, $userid, $subject = '', $msg = '') {
     }
 
     if (empty($msg)) { //default message
-        $msg = _("An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it :)\n\n%s");
+        $msg = _("An account in GeoKrety.org associated with this email was created. To activate this email please click on the link below. If you don't know why is that mail and what is GeoKrety.org, just delete this email and forget about it 😃\n\n%s");
     }
 
     if (empty($subject)) { //default subject

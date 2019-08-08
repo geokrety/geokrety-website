@@ -45,7 +45,7 @@ if (count($_GET) == 1 and !empty($g_em)) {
     $time_of_request = $matches[1];
     $requested_by_user = $matches[2];
 
-    if ($time_of_request + 5 * 24 * 3600 < time()) {
+    if ($time_of_request + REGISTRATION_MAIL_VALIDITY * 24 * 3600 < time()) {
         $TRESC = defektoskop(_('This confirmation code has expired.').' '.sprintf(_('To change your email %sclick here%s.'), "<a href='/edit.php?co=email'>", '</a>'), true, 'Confirmation code expired', 6, 'confirmEmailChange');
         include_once 'smarty.php';
         exit;
