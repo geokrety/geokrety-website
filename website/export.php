@@ -9,7 +9,7 @@ header('Content-Type: application/xml; charset=UTF-8');
 
 if (!ctype_digit($_GET['modifiedsince'])) {
     $eg = '?modifiedsince='.date('YmdHis', time() - (2 * 60 * 60));
-    $warning = sprintf(_("The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note it must be given as UTC. Try this for data from the last 2 hours.: %s"), $eg);
+    $warning = sprintf(_("The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note it must be given as UTC. Try this for data from the last 2 hours: %s"), $eg);
 
     // Render ruchy error
     $xml = new \Geokrety\Service\Xml\Errors();
