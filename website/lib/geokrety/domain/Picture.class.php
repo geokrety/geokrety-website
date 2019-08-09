@@ -25,7 +25,7 @@ class Picture extends AbstractObject {
     }
 
     public function deleteUrl() {
-        return '/edit.php?delete_obrazek='.$this->id.'&confirmed=1';
+        return 'edit.php?delete_obrazek='.$this->id.'&confirmed=1';
     }
 
     public function insert() {
@@ -58,7 +58,7 @@ class PictureUser extends Picture {
     }
 
     public function editUrl() {
-        return '/imgup.php?user&&typ='.$this->type.'&id='.$this->userId.'&rename='.$this->id;
+        return 'imgup.php?user&&typ='.$this->type.'&id='.$this->userId.'&rename='.$this->id;
     }
 }
 
@@ -74,7 +74,7 @@ class PictureGeoKret extends Picture {
     }
 
     public function editUrl() {
-        return '/imgup.php?geokret&typ='.$this->type.'&id='.$this->geokretId.'&rename='.$this->id;
+        return 'imgup.php?geokret&typ='.$this->type.'&id='.$this->geokretId.'&rename='.$this->id;
     }
 }
 
@@ -84,14 +84,22 @@ class PictureTrip extends PictureGeoKret {
 
     public function trip() {
         $trip = new \Geokrety\Domain\TripStep();
-        $trip->id = $this->id;
+        $trip->ruchId = $this->tripId;
         $trip->geokretId = $this->geokretId;
+        $trip->geokret = $this->geokret();
         $trip->userId = $this->userId;
 
         return $trip;
     }
 
+    public function geokret() {
+        $geokret = new \Geokrety\Domain\Konkret();
+        $geokret->id = $this->geokretId;
+
+        return $geokret;
+    }
+
     public function editUrl() {
-        return '/imgup.php?trip&typ='.$this->type.'&id='.$this->tripId.'&rename='.$this->id;
+        return 'imgup.php?trip&typ='.$this->type.'&id='.$this->tripId.'&rename='.$this->id;
     }
 }

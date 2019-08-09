@@ -2,7 +2,7 @@
 
 require_once '__sentry.php';
 
-try {
+// try {
     // smarty cache
     $smarty_cache_this_page = 0;
     require_once 'smarty_start.php';
@@ -96,6 +96,6 @@ EOD;
 
     // ----------------------------------------------JSON-LD-(end)---------------------
     require_once 'smarty.php';
-} catch (Exception $exc) {
-    echo 'Service unavailable - '.$exc->getMessage();
-}
+// } catch (Exception $exc) {
+//     echo 'Service unavailable - '.$exc->getMessage();
+// }

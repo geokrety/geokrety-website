@@ -1,7 +1,7 @@
 {include file='macros/paginate.tpl'}
 
 <ol class="breadcrumb">
-    <li><a href="/">{t}Home{/t}</a></li>
+    <li><a href="">{t}Home{/t}</a></li>
     <li class="active">{t}Download{/t}</li>
 </ol>
 
@@ -23,7 +23,7 @@
     <div class="panel-body">
         {t escape=no count="2019/05/19: 576697"}As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href="help.php#fullysupportedwaypoints">click here</a> for a list of supported services) we decided
         to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset).{/t}
-        {t escape=no url="/download_garmin_map.php"}Read more and <a href="%1">get the map</a>.{/t}
+        {t escape=no url="download_garmin_map.php"}Read more and <a href="%1">get the map</a>.{/t}
     </div>
 </div>
 

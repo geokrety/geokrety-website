@@ -2,7 +2,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 class="modal-title" id="modalLabel">{t}Choose your prefered language{/t}</h4>
 </div>
-<form name="comment" action="/edit.php?co=lang" method="post">
+<form name="languageChange" action="{$user->languageChangeUrl()}" method="post">
   <div class="modal-body">
 
     <div class="form-group">

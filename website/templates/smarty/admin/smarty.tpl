@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
-  <li><a href="/">{t}Home{/t}</a></li>
-  <li><a href="/_admin.php">Admin</a></li>
+  <li><a href="">{t}Home{/t}</a></li>
+  <li><a href="_admin.php">Admin</a></li>
   <li class="active">Smarty</li>
 </ol>
 

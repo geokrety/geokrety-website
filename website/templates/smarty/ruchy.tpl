@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-    <li><a href="/">{t}Home{/t}</a></li>
+    <li><a href="">{t}Home{/t}</a></li>
     <li class="active">{t}Log a GeoKret{/t}</li>
 </ol>
 
@@ -195,7 +195,7 @@
                                                     <button class="btn btn-default" type="button" title="Validate coordinates" id="coordinatesSearchButton">{fa icon="search"}</button>
                                                     <!--button class="btn btn-default" type="button" title="Log at my home position" id="homeLocationButton">{fa icon="home"}</button-->
                                                     <!--button class="btn btn-default" type="button" title="Use geolocation" id="geolocationButton">{fa icon="location-arrow"}</button-->
-                                                    <a href="/help.php#acceptableformats" target="_blank" class="btn btn-default" type="button" title="Acceptable geographic coordinates formats" id="geolocationButton">{fa icon="question-circle"}</a>
+                                                    <a href="help.php#acceptableformats" target="_blank" class="btn btn-default" type="button" title="Acceptable geographic coordinates formats" id="geolocationButton">{fa icon="question-circle"}</a>
                                                 </span>
                                             </div>
                                         </div>

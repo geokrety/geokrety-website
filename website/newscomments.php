@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['comment'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    header('Location: /newscomments.php?newsid='.$news->id);
+    header('Location: '.$news->getUrl());
     die();
 }
 

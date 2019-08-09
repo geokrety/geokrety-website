@@ -8,6 +8,24 @@ ErrorDocument 403 /errors/error403.html
 ErrorDocument 404 /errors/error404.html
 
 RewriteEngine On
+RewriteBase /
+
+
+# Languages manipulations
+# https://stackoverflow.com/a/19902914/944936
+
+# empty url -> redirect to en/
+RewriteCond %{QUERY_STRING} !lang=(en|fr|de|pl|bg|ca|da|el|es|et|fi|cs|hu|it|nl|pt|zh|ro|ru|sk|sq|sv|th|tr|uk)
+RewriteRule ^$ en/ [R=301,L]
+
+# url is ONLY '/en' or '/de' -> redirect to /en/ or /de/ (adding slash)
+RewriteRule ^(en|fr|de|pl|bg|ca|da|el|es|et|fi|cs|hu|it|nl|pt|zh|ro|ru|sk|sq|sv|th|tr|uk)$  $1/ [R=301,L]
+
+# now all urls have en/ de/ -> parse them
+RewriteRule ^(en|fr|de|pl|bg|ca|da|el|es|et|fi|cs|hu|it|nl|pt|zh|ro|ru|sk|sq|sv|th|tr|uk)/(.*)$  $2?lang=$1&%{query_STRING} [L]
+
+
+# Legacy access to files
 RewriteCond %{REQUEST_URI} ^/statpics/.*\.png
 RewriteCond "%{HTTP_REFERER}" "^geokrety.org"
 RewriteRule ^statpics/(.*)$ https://cdn.geokrety.org/images/statpics/$1 [R=301,L]

@@ -43,11 +43,19 @@ class Konkret extends AbstractObject {
             $anchor_ = '#'.$anchor;
         }
 
-        return '/konkret.php?id='.$this->id.$anchor_;
+        return sprintf('konkret.php?id=%d%s', $this->id, $anchor_);
     }
 
     public function editUrl() {
-        return '/edit.php?co=geokret&id='.$this->id;
+        return sprintf('edit.php?co=geokret&id=%d', $this->id);
+    }
+
+    public function ruchyUrl() {
+        return sprintf('ruchy.php?nr=%s', $this->trackingCode);
+    }
+
+    public function mailToUrl() {
+        return sprintf('majluj.php?to=%d&re=%d', $this->ownerId, $this->id);
     }
 
     public function getAuthorUrl() {

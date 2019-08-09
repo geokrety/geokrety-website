@@ -31,8 +31,8 @@ function smarty_function_logicon(array $params, Smarty_Internal_Template $templa
         return;
     }
     $gk = $params['gk'];
-    $lastLogType = is_null($gk->lastLog) ? '' : $gk->lastLog->logType;
-    $iconClass = \Geokrety\Service\IconConverterService::computeLocationType($lastLogType->getLogTypeId());
+    $lastLogType = is_null($gk->lastLog) ? '' : $gk->lastLog->logType->getLogTypeId();
+    $iconClass = \Geokrety\Service\IconConverterService::computeLocationType($lastLogType);
 
     return '<img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$gk->type.'/2'.$iconClass.'.png" title="'.getLogTypeText($iconClass).'">';
 }

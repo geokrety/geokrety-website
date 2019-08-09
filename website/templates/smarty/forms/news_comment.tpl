@@ -6,7 +6,7 @@
     </div>
     <div class="panel-body">
         {if $isLoggedIn}
-        <form class="form-horizontal" action="/newscomments.php?newsid={$news->id}" method="post" id="formNewComment">
+        <form class="form-horizontal" action="{$news->getUrl()}" method="post" id="formNewComment">
 
             <div class="form-group">
                 <label for="comment" class="col-sm-2 control-label">{t}Comment{/t}</label>

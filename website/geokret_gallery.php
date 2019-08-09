@@ -5,7 +5,6 @@ require_once '__sentry.php';
 // photo gallery of a particular geokret
 // allows the owner to set which picture will be used as avatar
 
-// smarty cache -- above this declaration should be wybierz_jezyk.php!
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 

@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-    <li><a href="/">{t}Home{/t}</a></li>
+    <li><a href="">{t}Home{/t}</a></li>
     <li class="active">{t}GeoKrety Map{/t}</li>
 </ol>
 

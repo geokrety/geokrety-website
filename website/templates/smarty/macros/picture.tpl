@@ -104,7 +104,7 @@
     <figcaption>
         <p class="text-center">
             <small><em>{t}Altitude profile{/t}</em></small>
-            <a href="/help.php#altitude" title="{t}How is this computed?{/t}">{fa icon="question-circle"}</a>
+            <a href="help.php#altitude" title="{t}How is this computed?{/t}">{fa icon="question-circle"}</a>
         </p>
     </figcaption>
 </figure>

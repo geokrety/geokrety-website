@@ -12,6 +12,10 @@ class News extends AbstractObject {
     public $commentsCount;
     public $lastCommentDate;
 
+    public function getUrl() {
+        return sprintf('newscomments.php?newsid=%d', $this->id);
+    }
+
     public function author() {
         $user = new User();
         $user->id = $this->authorId;

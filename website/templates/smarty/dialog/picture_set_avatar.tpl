@@ -4,7 +4,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 class="modal-title" id="modalLabel">{t}Do you really want to set this picture as avatar?{/t}</h4>
 </div>
-<form action="/geokret_gallery.php?id={$picture->geokretId}" method="post">
+<form action="geokret_gallery.php?id={$picture->geokretId}" method="post">
   <input type="hidden" name="formname" value="newavatar" />
   <input type="hidden" name="avatarid" value="{$picture->id}" />
   <div class="modal-body">

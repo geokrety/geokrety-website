@@ -2,7 +2,6 @@
 
 require_once '__sentry.php';
 
-require_once 'wybierz_jezyk.php'; // choose the user's language
 require 'templates/konfig.php';
 
 // smarty cache

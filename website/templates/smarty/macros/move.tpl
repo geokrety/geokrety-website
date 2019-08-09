@@ -73,7 +73,7 @@
 
                         {if $geokret_details->isOwner() or $currentUser == $move->userId }
                         <div class="btn-group pull-right" role="group">
-                            <a class="btn btn-warning btn-xs" href="/ruchy.php?edit=1&ruchid={$move->ruchId}" role="button" title="{t}Edit log{/t}">
+                            <a class="btn btn-warning btn-xs" href="{$move->editUrl()}" role="button" title="{t}Edit log{/t}">
                                 {fa icon="pencil"}
                             </a>
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete log{/t}" data-toggle="modal" data-target="#modal" data-type="move-delete" data-id="{$move->ruchId}">

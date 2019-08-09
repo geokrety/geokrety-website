@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-    <li><a href="/">{t}Home{/t}</a></li>
+    <li><a href="">{t}Home{/t}</a></li>
     <li class="active">{t}Register a new user{/t}</li>
 </ol>
 
@@ -87,7 +87,7 @@
                             <p class="form-control-static"><a href="termsofuse.php">{t}Terms of use{/t}</a></p>
                         </div>
                         <div class="col-sm-5">
-                            <p class="form-control-static"><a href="/longin.php">{t}Already have an account?{/t}</a></p>
+                            <p class="form-control-static"><a href="longin.php">{t}Already have an account?{/t}</a></p>
                         </div>
                     </div>
 
