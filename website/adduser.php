@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         verify_mail_send($kret_email, $user->id);         // send email with a verification code
 
-        success(sprintf(_('Account successfully created. An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for %d days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! 😃 <strong>But please retain that without a confirmed email address, you will not be able to recover your accound in case of password loss</strong>.'), REGISTRATION_MAIL_VALIDITY));
+        success(sprintf(_('Account successfully created. An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for %d days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! 😃 <strong>But please retain that without a confirmed email address, you will not be able to recover your account in case of password loss</strong>.'), REGISTRATION_MAIL_VALIDITY));
 
         include_once 'aktualizuj.php';
         aktualizuj_obrazek_statystyki($user->id);
