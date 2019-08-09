@@ -2,7 +2,6 @@
 
 require_once '__sentry.php';
 
-// smarty cache -- above this declaration should be wybierz_jezyk.php!
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require 'smarty_start.php';
 

@@ -3,7 +3,7 @@
     {t}Mission{/t}
     {if $geokret_details->isOwner()}
     <div class="btn-group pull-right" role="group">
-      <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret_details->id}" title="{t}Edit GeoKret details{/t}">
+      <a class="btn btn-warning btn-xs" href="{$geokret_details->editUrl()}" title="{t}Edit GeoKret details{/t}">
         {fa icon="pencil"}
       </a>
     </div>

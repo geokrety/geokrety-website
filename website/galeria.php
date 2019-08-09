@@ -5,7 +5,6 @@ require_once '__sentry.php';
 $smarty_cache_this_page = 0; // this page should be cached for n seconds
 require_once 'smarty_start.php';
 
-require_once 'wybierz_jezyk.php';
 $TYTUL = _('Photo gallery');
 
 $g_f = $_GET['f'];

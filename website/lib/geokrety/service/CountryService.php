@@ -7,7 +7,7 @@ const DEFAULT_COUNTRY_CODE = 'xyz';
 /**
  * CountryService : return country code from coordinates.
  */
-class CountryService extends AbstractValidationService {
+class CountryService {
     public static function getCountryCode($coordinates) {
         if (is_null($coordinates)) {
             return DEFAULT_COUNTRY_CODE;
@@ -41,8 +41,8 @@ class CountryService extends AbstractValidationService {
 
                 $country = $data['country political'];
             }
-
         }
+
         return strtolower($country);
     }
 
@@ -55,17 +55,5 @@ class CountryService extends AbstractValidationService {
         }
 
         return $alpha2->getLocalName();
-    }
-
-    public static function getLanguageName($lang) {
-        $isoCodes = new \Sokil\IsoCodes\IsoCodesFactory();
-        $languages = $isoCodes->getLanguages();
-        // Some workarounds database errors
-        if ($lang == 'cz') {
-            $lang = 'cs';
-        }
-        $language = $languages->getByAlpha2($lang);
-
-        return $language->getName();
     }
 }

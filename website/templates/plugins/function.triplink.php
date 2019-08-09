@@ -17,5 +17,5 @@ function smarty_function_triplink(array $params, Smarty_Internal_Template $templ
     }
     $trip = $params['trip'];
 
-    return '<a href="/konkret.php?id='.$trip->geokretId.'#log'.$trip->id.'" title="'._('Link to move').'">'.gkid($trip->geokretId).'</a>';
+    return '<a href="'.$trip->getUrl().'" title="'._('Link to move').'">'.gkid($trip->geokretId).'</a>';
 }

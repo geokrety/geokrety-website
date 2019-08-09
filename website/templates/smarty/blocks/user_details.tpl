@@ -4,15 +4,15 @@
         {userlink user=$user}
         <div class="btn-group pull-right" role="group">
             {if $user->email}
-            <a class="btn btn-primary btn-xs" href="/majluj.php?to={$user->id}" title="{t}Send a message to the user{/t}">
+            <a class="btn btn-primary btn-xs" href="{$user->mailToUrl()}" title="{t}Send a message to the user{/t}">
                 {fa icon="envelope"}
             </a>
             {/if}
-            <a class="btn btn-warning btn-xs" href="/georss.php?userid={$user->id}" title="{t}Subscribe to RSS channel{/t}">
+            <a class="btn btn-warning btn-xs" href="{$user->geoRssUrl()}" title="{t}Subscribe to RSS channel{/t}">
                 {fa icon="rss"}
             </a>
             {if $user->isCurrentUser()}
-            <a class="btn btn-info btn-xs" href="/edit.php?co=haslo" title="{t}Password change{/t}">
+            <a class="btn btn-info btn-xs" href="{$user->passwordChangeUrl()}" title="{t}Password change{/t}">
                 {fa icon="key"}
             </a>
             <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$user->id}" data-picture-type="2" data-is-avatar="on">
@@ -66,7 +66,7 @@
             </dl>
 
             {if $user->isCurrentUser()}
-                {t escape=no}To change your username or remove your account? Send us <a href="/kontakt.php">an email</a>!{/t}
+                {t escape=no}To change your username or remove your account? Send us <a href="kontakt.php">an email</a>!{/t}
             {/if}
         </div>
 

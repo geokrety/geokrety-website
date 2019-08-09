@@ -33,18 +33,20 @@
           {userlink user=$geokret->owner()}
         </td>
         <td>
+          {if !is_null($geokret->lastLog)}
           {country_flag country=$geokret->lastPosition->country}
           {cachelink tripStep=$geokret->lastPosition}
+          {/if}
         </td>
         <td class="text-center" nowrap>
           {logicon gk=$geokret}
-          {if $geokret->lastLog->ruchData}
+          {if !is_null($geokret->lastLog)}
           {print_date date=$geokret->lastLog->ruchData}
+          <br />
+          <small>{userlink user=$geokret->lastLog->author()}</small>
           {else}
           {print_date date=$geokret->datePublished}
           {/if}
-          <br />
-          <small>{userlink user=$geokret->lastLog->author()}</small>
         </td>
         <td class="text-right">
           {$geokret->distance}
@@ -54,12 +56,12 @@
         </td>
         <td>
           {if $geokret->isOwner()}
-          <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret->id}" title="{t}Update this GeoKret{/t}">
+          <a class="btn btn-warning btn-xs" href="{$geokret->editUrl()}" title="{t}Update this GeoKret{/t}">
             {fa icon="pencil"}
           </a>
           {/if}
           {if $geokret->hasCurrentUserSeenGeokretId()}
-          <a href="/ruchy.php?nr={$geokret->trackingCode}" title="{t}Log this GeoKret{/t}">{fa icon="smile-o"}</a>
+          <a href="{$geokret->ruchyUrl()}" title="{t}Log this GeoKret{/t}">{fa icon="smile-o"}</a>
           {/if}
         </td>
       </tr>

@@ -33,13 +33,13 @@
         </td>
         <td class="text-center" nowrap>
           {logicon gk=$geokret}
-          {if $geokret->lastLog->ruchData}
+          {if !is_null($geokret->lastLog)}
           {print_date date=$geokret->lastLog->ruchData}
+          <br />
+          <small>{userlink user=$geokret->lastLog->author()}</small>
           {else}
           {print_date date=$geokret->datePublished}
           {/if}
-          <br />
-          <small>{userlink user=$geokret->lastLog->author()}</small>
         </td>
         <td class="text-right">
           {$geokret->distance}
@@ -49,7 +49,7 @@
         </td>
         <td>
           {if $geokret->isOwner()}
-          <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$geokret->id}" title="{t}Edit GeoKret{/t}">
+          <a class="btn btn-warning btn-xs" href="{$geokret->editUrl()}" title="{t}Edit GeoKret{/t}">
             {fa icon="pencil"}
           </a>
           {/if}
@@ -65,7 +65,7 @@
 {call pagination total=$geokretyTotal perpage=$geokretyPerPage anchor='inventory'}
 {else}
   {if $user->isCurrentUser()}
-    <em>{t escape=no}Your inventory is empty. Check <a href="/gkmap.php">the map</a> to find GeoKrety near you!{/t}</em>
+    <em>{t escape=no}Your inventory is empty. Check <a href="gkmap.php">the map</a> to find GeoKrety near you!{/t}</em>
   {else}
     <em>{t escape=no username=$user->username}%1's inventory is currently empty.{/t}</em>
   {/if}

@@ -21,6 +21,11 @@ function smarty_function_language(array $params, Smarty_Internal_Template $templ
     }
 
     $lang = $params['lang'];
+    $language = \Geokrety\Service\LanguageService::getLanguageByAlpha2($lang);
 
-    return \Geokrety\Service\CountryService::getLanguageName($lang);
+    if (in_array('locale', array_keys($params)) && $params['lang']) {
+        return $language->getLocalName(); // українська
+    }
+
+    return $language->getName(); // Ukrainian
 }
