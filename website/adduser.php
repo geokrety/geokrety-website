@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!is_null($user)) {
             if (empty($user->email) && $user->joinDate < 3600 && $user->lastlogin == 0 && $user->ip == $_SERVER['HTTP_X_FORWARDED_FOR']) {
-                warning(sprintf(_('It seems that <a href="%s">your account</a> has already been created.<br />In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)'), 'mypage.php?userid='.$user->id));
+                warning(sprintf(_('It seems that <a href="%s">your account</a> has already been created.<br />In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for %d days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! 😃'), $user->getUrl(), REGISTRATION_MAIL_VALIDITY));
                 header('Location: /longin.php');
                 die();
             }
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         verify_mail_send($kret_email, $user->id);         // send email with a verification code
 
-        success(_('Account successfully created. An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :) <strong>But please retain that without a confirmed email address, you will not be able to recover your accound in case of password loss</strong>.'));
+        success(sprintf(_('Account successfully created. An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for %d days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! 😃 <strong>But please retain that without a confirmed email address, you will not be able to recover your accound in case of password loss</strong>.'), REGISTRATION_MAIL_VALIDITY));
 
         include_once 'aktualizuj.php';
         aktualizuj_obrazek_statystyki($user->id);

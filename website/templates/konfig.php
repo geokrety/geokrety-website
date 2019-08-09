@@ -502,6 +502,8 @@ if (amIOnProd()) {
     define('IS_PROD', false);
 }
 
+define('REGISTRATION_MAIL_VALIDITY', $_ENV['REGISTRATION_MAIL_VALIDITY'] ?? 5);
+
 define('MOVES_PER_PAGE', $config['trip_per_page']);
 define('NEWS_PER_PAGE', $config['news_per_page']);
 define('PICTURES_PER_GALLERY_PAGE', $config['pictures_per_gallery_page']);
