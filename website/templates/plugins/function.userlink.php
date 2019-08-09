@@ -29,5 +29,5 @@ function smarty_function_userlink(array $params, Smarty_Internal_Template $templ
         return '<em class="user-anonymous">'.smarty_modifier_escape($user->username).'</em>';
     }
 
-    return '<a href="/mypage.php?userid='.$user->id.'" title="'.smarty_modifier_escape($user->username).'"'.$target.'>'.smarty_modifier_escape($user->username).'</a>';
+    return '<a href="'.$user->getUrl().'" title="'.smarty_modifier_escape($user->username).'"'.$target.'>'.smarty_modifier_escape($user->username).'</a>';
 }

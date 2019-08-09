@@ -471,7 +471,7 @@ if (!function_exists('danger')) {
             'message' => $message,
         );
         if ($redirect) {
-            header('Location: '.(isset($_POST['goto']) ? $_POST['goto'] : '/'));
+            header('Location: '.(isset($_POST['goto']) ? $_POST['goto'] : ''));
             die();
         }
     }

@@ -1,8 +1,8 @@
 {include file='macros/paginate.tpl'}
 
 <ol class="breadcrumb">
-    <li><a href="/">{t}Home{/t}</a></li>
-    <li><a href="/download.php">{t}Download{/t}</a></li>
+    <li><a href="">{t}Home{/t}</a></li>
+    <li><a href="download.php">{t}Download{/t}</a></li>
     <li class="active">{t}Garmin maps{/t}</li>
 </ol>
 

@@ -4,7 +4,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="modalLabel">{$modal_title}</h4>
 </div>
-<form action="/imgup.php?typ={$type}&id={$id}{if isset($picture_id)}&rename={$picture_id}{/if}" method="post" enctype="multipart/form-data">
+<form action="imgup.php?typ={$type}&id={$id}{if isset($picture_id)}&rename={$picture_id}{/if}" method="post" enctype="multipart/form-data">
     <div class="modal-body">
 
         <div class="row">

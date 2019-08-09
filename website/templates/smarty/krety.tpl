@@ -8,6 +8,11 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="alternate" hreflang="en" href="https://new-theme.geokrety.house.kumy.net/en/" />
+  <link rel="alternate" hreflang="fr" href="https://new-theme.geokrety.house.kumy.net/fr/" />
+  <link rel="alternate" hreflang="de" href="https://new-theme.geokrety.house.kumy.net/de/" />
+  <link rel="alternate" hreflang="pl" href="https://new-theme.geokrety.house.kumy.net/pl/" />
+
   <link rel="stylesheet" href="{$cdnUrl}/libraries/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="{$cssUrl}/krety-v2.css" media="screen" />
   <link rel="stylesheet" href="{$cssUrl}/flag-icon.min.css" media="screen" />
@@ -30,7 +35,7 @@
 
 <body>
   <header>
-    <p class="logo"><a href="/">Geo<span class="black">Krety</span>.org</a></p>
+    <p class="logo"><a href="">Geo<span class="black">Krety</span>.org</a></p>
     <p class="subline">{$site_punchline}</p>
     <span class="bg"></span>
     <img class="sun" src="{$imagesUrl}/header/sun.svg">

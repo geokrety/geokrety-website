@@ -3,7 +3,7 @@
 {include file='macros/icons.tpl'}
 
 <ol class="breadcrumb">
-  <li><a href="/">{t}Home{/t}</a></li>
+  <li><a href="">{t}Home{/t}</a></li>
 {if $user->isCurrentUser()}
   <li class="active">{t}My page{/t}</li>
 {else}

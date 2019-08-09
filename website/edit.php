@@ -60,7 +60,7 @@ if ($userid == null || !ctype_digit($userid)) {
     } else {
         errory_add('anonymous - longin_fwd', 4, 'Edit');
         setcookie('longin_fwd', base64_encode($_SERVER['REQUEST_URI']), time() + 120);
-        header('Location: /longin.php');
+        header('Location: longin.php');
         exit;
     }
 }
@@ -276,7 +276,7 @@ elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $p_wysylacmaile = $p_wysylacmaile == 'on' ? 1 : 0;
 
-    $stopka = "\n\nRegards,\nGeoKrety.org Team";
+    $stopka = _("\n\nRegards,\nGeoKrety.org Team");
 
     if (verify_email_address($p_email)) {
         // Save values
@@ -317,8 +317,8 @@ elseif ($g_co == 'email' && $_SERVER['REQUEST_METHOD'] == 'POST') {
 // ----------------------------- edit ENCODING  /  LANG
 
 elseif ($g_co == 'lang' && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!array_key_exists($_POST['language'], $config_jezyk_nazwa)) {
-        danger(_('Invalid language selected…'));
+    if (!\Geokrety\Service\LanguageService::isLanguageSupported($_POST['language'])) {
+        danger(_('Invalid language selected…'), True);
     }
 
     // Save values

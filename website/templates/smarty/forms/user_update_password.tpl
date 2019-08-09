@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body">
 
-    <form name="comment" action="/edit.php?co=haslo" method="post" class="form-horizontal" id="passwordChangeForm">
+    <form name="comment" action="{$user->passwordChangeUrl()}" method="post" class="form-horizontal" id="passwordChangeForm">
       <div class="modal-body">
 
         <div class="row">

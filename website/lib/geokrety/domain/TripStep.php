@@ -54,10 +54,10 @@ class TripStep extends AbstractObject {
 
     public function getUrl($anchor = null) {
         $anchor_ = '';
-        if (!is_null($anchor)) {
-            $anchor_ = '#'.$anchor;
-        } else {
+        if (is_null($anchor)) {
             $anchor_ = '#log'.$this->ruchId;
+        } else {
+            $anchor_ = '#'.$anchor;
         }
 
         $geokretUrl = $this->geokret->geturl();
@@ -66,6 +66,10 @@ class TripStep extends AbstractObject {
         $page = '&page='.$tripR->getLogOnPageNumber($this->ruchId);
 
         return $geokretUrl.$page.$anchor_;
+    }
+
+    public function editUrl() {
+        return sprintf('ruchy.php?edit=1&ruchid=%d', $this->ruchId);
     }
 
     public function getWaypoint() {

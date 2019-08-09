@@ -7,7 +7,7 @@ const DEFAULT_ELEVATION = -2000;
 /**
  * ElevationService : return elevation from coordinates.
  */
-class ElevationService extends AbstractValidationService {
+class ElevationService {
     public static function getElevation($coordinates) {
         if (is_null($coordinates)) {
             return DEFAULT_ELEVATION;

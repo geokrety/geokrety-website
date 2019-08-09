@@ -40,12 +40,12 @@
         <td>{if in_array($step->logType, array('0', '3', '5'))}{$step->distance} km{/if}</td>
         <td>
           {if $step->geokret->isOwner()}
-          <a class="btn btn-warning btn-xs" href="/edit.php?co=geokret&id={$step->geokret->id}" title="{t}Update this GeoKret{/t}">
+          <a class="btn btn-warning btn-xs" href="{$step->geokret->editUrl()}" title="{t}Update this GeoKret{/t}">
             {fa icon="pencil"}
           </a>
           {/if}
           {if $step->geokret->hasCurrentUserSeenGeokretId()}
-          <a href="/ruchy.php?nr={$step->geokret->trackingCode}" title="{t}Log this GeoKret{/t}">{fa icon="smile-o"}</a>
+          <a href="{$step->geokret->ruchyUrl()}" title="{t}Log this GeoKret{/t}">{fa icon="smile-o"}</a>
           {/if}
         </td>
       </tr>

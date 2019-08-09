@@ -24,7 +24,35 @@ class User extends AbstractObject {
     public $ip;
 
     public function getUrl() {
-        return '/mypage.php?userid='.$this->id;
+        return 'mypage.php?userid='.$this->id;
+    }
+
+    public function passwordChangeUrl() {
+        return 'edit.php?co=haslo';
+    }
+
+    public function homeCoordinatesChangeUrl() {
+        return 'edit.php?co=latlon';
+    }
+
+    public function statpicChangeUrl() {
+        return 'edit.php?co=statpic';
+    }
+
+    public function languageChangeUrl() {
+        return 'edit.php?co=lang';
+    }
+
+    public function emailChangeUrl() {
+        return 'edit.php?co=lang';
+    }
+
+    public function mailToUrl() {
+        return sprintf('majluj.php?to=to=%d', $this->id);
+    }
+
+    public function geoRssUrl() {
+        return sprintf('georss.php?userid=%d', $this->id);
     }
 
     public function setJoinDate($date, $format = 'Y-m-d H:i:s') {

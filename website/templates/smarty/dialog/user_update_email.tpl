@@ -2,7 +2,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 class="modal-title" id="modalLabel">{t}Update your email address{/t}</h4>
 </div>
-<form name="comment" action="/edit.php?co=email" method="post">
+<form name="comment" action="{$user->emailChangeUrl()}" method="post">
   <div class="modal-body">
 
     <div class="form-group">

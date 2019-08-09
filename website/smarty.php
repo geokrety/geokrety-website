@@ -40,7 +40,10 @@ $smarty->assign('title', $TYTUL);
 $smarty->assign('content', $TRESC);
 $smarty->assign('footer', $OGON);
 
-$smarty->assign('lang', $_COOKIE['geokret1']);
+// $smarty->assign('lang', $_COOKIE['geokret1']);
+$smarty->assign('languages', \Geokrety\Service\LanguageService::getSupportedLanguages(True));
+$supportedLanguages = \Geokrety\Service\LanguageService::SUPPORTED_LANGUAGES;
+$smarty->assign('detected_lang', http\Env::negotiateLanguage($supportedLanguages));
 $smarty->assign('template_login', $template_login);
 
 if (isset($smartyOut)) {
