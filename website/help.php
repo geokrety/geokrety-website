@@ -10,10 +10,14 @@ $TYTUL = _('Help');
 // .logtypes .mid TD{text-align: middle;}
 // </style>';
 
-$jezyk = strtolower($_GET['help']); // w jamim języku ma być help?
-if (!in_array($jezyk, ['en', 'cz', 'de', 'fr', 'hu', 'pl', 'ru', 'sk', 'it'])) {
-    die;
-}
+// $jezyk = strtolower($_GET['help']); // w jamim języku ma być help?
+// if (!in_array($jezyk, ['en', 'cz', 'de', 'fr', 'hu', 'pl', 'ru', 'sk', 'it'])) {
+//     die;
+// }
+echo '<br /><br /><br />';
+echo LANGUAGE;
+$jezyk = strtolower(LANGUAGE);
+echo $jezyk;
 
 $TRESC = file_get_contents("help/$jezyk/help.html");
 
