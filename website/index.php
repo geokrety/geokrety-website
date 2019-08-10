@@ -10,11 +10,19 @@ new \GeoKrety\Service\Config();
 $f3->set('TMP', GK_F3_TMP);
 $f3->set('CACHE', GK_F3_CACHE);
 new Session();
+// $f3->get('SESSION.IS_LOGGED_IN');
+// $f3->get('SESSION.CURRENT_USER');
 
 $f3->route('HEAD /', function () {});
-$f3->route('GET @debug_env: /env', '\GeoKrety\Service\Config::printEnvironements');
 
 $f3->route('GET @home: /', '\GeoKrety\Controller\Home->get');
+
+$f3->route('GET @login: /login [sync]', '\GeoKrety\Controller\Login->loginForm');
+// $f3->route('GET @login: /login [ajax]', '\GeoKrety\Controller\Login->loginFormFragment');
+$f3->route('POST @login: /login [sync]', '\GeoKrety\Controller\Login->login');
+// $f3->route('POST @login: /login [ajax]', '\GeoKrety\Controller\Login->loginFragment');
+
+$f3->route('GET @logout: /logout [sync]', '\GeoKrety\Controller\Login->logout');
 
 $f3->route('GET @news_list: /news', '\GeoKrety\Controller\NewsList->get');
 $f3->map('@news_details: /news/@newsid', '\GeoKrety\Controller\NewsDetails');
@@ -32,3 +40,6 @@ $f3->route('GET @move: /move-geokrety/',
 );
 
 $f3->run();
+if (GK_DEBUG) {
+    echo $f3->get('DB')->log();
+}

@@ -26,6 +26,6 @@ class NewsComment extends Base {
     }
 
     public function isAuthor() {
-        return IS_LOGGED_IN && CURRENT_USER === (int) $this->author;
+        return $f3->get('SESSION.IS_LOGGED_IN') && $f3->get('SESSION.CURRENT_USER') === (int) $this->author;
     }
 }

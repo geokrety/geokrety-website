@@ -19,8 +19,8 @@
 {/block}
 
 {block name=javascript}
-{if IS_LOGGED_IN}
+{if $f3->get('SESSION.IS_LOGGED_IN')}
     // Bind modal
-    {include 'js/news_subscription_modal.js.tpl'}
+    {include 'js/dialog_news_subscription.js.tpl'}
 {/if}
 {/block}

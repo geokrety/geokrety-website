@@ -27,6 +27,7 @@ class Smarty extends \Prefab {
         $smarty->cache_dir = GK_SMARTY_CACHE_DIR;
         $smarty->addPluginsDir(GK_SMARTY_PLUGINS_DIR);
         $smarty->compile_check = true;
+        $smarty->assign('f3', \Base::instance());
         // if (amIOnProd()) {
         //     $smarty->compile_check = false; // use smarty_admin.php to clear compiled templates when necessary - http://www.smarty.net/docsv2/en/variable.compile.check.tpl
         // } else {

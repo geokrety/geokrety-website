@@ -6,12 +6,13 @@
 {block name=js}{/block}
 
 <script type="text/javascript">
-  (function($) {
-      $( document ).ready( function () {
-      {include file="js/modal.tpl.js"}
-      {include file="js/maxlenght.tpl.js"}
-      {include file="js/tooltips.tpl.js"}
-      {block name=javascript}{/block}
-      });
-  })(jQuery);
+    (function($) {
+        $( document ).ready( function () {
+            {include file="js/modal.tpl.js"}
+            {include file="js/maxlenght.tpl.js"}
+            {include file="js/tooltips.tpl.js"}
+            {if ! $f3->get('SESSION.IS_LOGGED_IN')}{include 'js/dialog_login.js.tpl'}{/if}
+            {block name=javascript}{/block}
+        });
+    })(jQuery);
 </script>
