@@ -3,11 +3,8 @@
 namespace GeoKrety\Service;
 
 class Config {
-
     public function __construct() {
         // TODO REMOVE THAT
-        define('IS_LOGGED_IN', $_ENV['IS_LOGGED_IN'] ?? True);
-        define('CURRENT_USER', 26422);
         define('LANGUAGE', 'en');
 
         // Environment
@@ -20,6 +17,11 @@ class Config {
         // define('GK_DB_DSN', $_ENV['GK_DB_DSN'] ?? 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');
         define('GK_DB_USER', $_ENV['GK_DB_USER'] ?? 'geokrety');
         define('GK_DB_PASSWORD', $_ENV['GK_DB_PASSWORD'] ?? 'geokrety');
+
+        // HASHING seeds
+        define('GK_PASSWORD_HASH_ROTATION', $_ENV['GK_PASSWORD_HASH_ROTATION'] ?? 8);
+        define('GK_PASSWORD_HASH', $_ENV['GK_PASSWORD_HASH'] ?? 'geokrety');
+        define('GK_PASSWORD_SEED', $_ENV['GK_PASSWORD_SEED'] ?? 'rand_string');
 
         // F3
         define('GK_F3_TMP', $_ENV['GK_F3_TMP'] ?? '/tmp/f3/');
@@ -59,7 +61,6 @@ class Config {
 
         define('GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL', $_ENV['GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/inscrybmde/1.11.6/inscrybmde.min.js');
         define('GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL', $_ENV['GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL'] ?? GK_CDN_LIBRARIES_URL.'/inscrybmde/1.11.6/inscrybmde.min.css');
-
     }
 
     public static function printEnvironements() {

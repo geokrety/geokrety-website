@@ -24,6 +24,6 @@ class News extends Base {
 
     public function isSubscribed() {
         // Note: Cache count() for 1 second
-        return $this->has('subscriptions', array('news = ? AND user = ? AND subscribed = ?', $this->id, CURRENT_USER, '1'))->count(null, null, 1) === 1;
+        return $this->has('subscriptions', array('news = ? AND user = ? AND subscribed = ?', $this->id, \Base::instance()->get('SESSION.CURRENT_USER'), '1'))->count(null, null, 1) === 1;
     }
 }

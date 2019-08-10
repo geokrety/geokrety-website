@@ -17,7 +17,7 @@ class NewsDetails extends Base {
         Smarty::assign('news', $news);
 
         // Save last view
-        if (CURRENT_USER) {
+        if ($f3->get('SESSION.CURRENT_USER')) {
             $subscription = $this->loadSubscription($f3);
             $subscription->last_read_datetime = NewsSubscription::now();
             $subscription->save();
@@ -34,7 +34,7 @@ class NewsDetails extends Base {
         // Create the comment
         $comment = new NewsComment();
         $comment->news = $f3->get('PARAMS.newsid');
-        $comment->author = CURRENT_USER;
+        $comment->author = $f3->get('SESSION.CURRENT_USER');
         $comment->content = $f3->get('POST.comment');
         $comment->icon = 0;
 
@@ -63,11 +63,11 @@ class NewsDetails extends Base {
 
     private function loadSubscription(\Base $f3) {
         $subscription = new NewsSubscription();
-        $subscription->load(array('news = ? AND user = ?', $f3->get('PARAMS.newsid'), CURRENT_USER));
+        $subscription->load(array('news = ? AND user = ?', $f3->get('PARAMS.newsid'), $f3->get('SESSION.CURRENT_USER')));
 
         if ($subscription->dry()) {
             $subscription->news = $f3->get('PARAMS.newsid');
-            $subscription->user = CURRENT_USER;
+            $subscription->user = $f3->get('SESSION.CURRENT_USER');
         }
 
         return $subscription;

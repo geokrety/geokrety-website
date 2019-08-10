@@ -19,7 +19,7 @@
         {t}Leave a comment{/t}
     </div>
     <div class="panel-body">
-        {if IS_LOGGED_IN}
+        {if $f3->get('SESSION.IS_LOGGED_IN')}
         <form class="form-horizontal" action="" method="post" id="formNewsComment" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
 
             <div class="form-group">
@@ -80,7 +80,7 @@
 {/block}
 
 {block name=javascript}
-{if IS_LOGGED_IN}
+{if $f3->get('SESSION.IS_LOGGED_IN')}
     // Bind SimpleMDE editor
     var inscrybmde = new InscrybMDE({
         element: $("#comment")[0],
@@ -96,6 +96,6 @@
     });
 
     // Bind modal
-    {include 'js/news_subscription_modal.js.tpl'}
+    {include 'js/dialog_news_subscription.js.tpl'}
 {/if}
 {/block}
