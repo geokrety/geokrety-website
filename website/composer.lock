@@ -4,8 +4,39 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d349460d42086a8ed0264f867141407",
+    "content-hash": "0d31c2dc004ee03175f10d5257ef60ce",
     "packages": [
+        {
+            "name": "bcosca/fatfree-core",
+            "version": "3.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bcosca/fatfree-core.git",
+                "reference": "c5aa056d2111e666e87f6129fe633c6a2aeeaae2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/c5aa056d2111e666e87f6129fe633c6a2aeeaae2",
+                "reference": "c5aa056d2111e666e87f6129fe633c6a2aeeaae2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
+            "homepage": "http://fatfreeframework.com/",
+            "time": "2018-12-24T13:37:45+00:00"
+        },
         {
             "name": "benhall14/php-pagination",
             "version": "dev-master",
@@ -313,6 +344,111 @@
                 "hash-map"
             ],
             "time": "2014-12-15T23:03:51+00:00"
+        },
+        {
+            "name": "ikkez/f3-cortex",
+            "version": "v1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-cortex.git",
+                "reference": "b21fdf78c61a145adb027458f89f1dc60c50992c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-cortex/zipball/b21fdf78c61a145adb027458f89f1dc60c50992c",
+                "reference": "b21fdf78c61a145adb027458f89f1dc60c50992c",
+                "shasum": ""
+            },
+            "require": {
+                "ikkez/f3-schema-builder": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "A multi-engine ORM / ODM for the PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-cortex",
+            "keywords": [
+                "F3",
+                "fatfree",
+                "mongo",
+                "orm",
+                "sql"
+            ],
+            "time": "2019-02-03T17:17:11+00:00"
+        },
+        {
+            "name": "ikkez/f3-flash",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-flash.git",
+                "reference": "3ba9ca1ddc80a54ff17a069c47c23e32d601c5d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-flash/zipball/3ba9ca1ddc80a54ff17a069c47c23e32d601c5d6",
+                "reference": "3ba9ca1ddc80a54ff17a069c47c23e32d601c5d6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Add simple Flash Messages and Flash Keys to PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-middleware",
+            "keywords": [
+                "F3",
+                "fatfree",
+                "flash",
+                "session"
+            ],
+            "time": "2017-12-06T17:50:51+00:00"
+        },
+        {
+            "name": "ikkez/f3-schema-builder",
+            "version": "v2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-schema-builder.git",
+                "reference": "42d8f3f0a117dce29ab3fe30ef46fafb419224e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-schema-builder/zipball/42d8f3f0a117dce29ab3fe30ef46fafb419224e3",
+                "reference": "42d8f3f0a117dce29ab3fe30ef46fafb419224e3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "SQL Schema Builder Plugin for PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-schema-builder",
+            "keywords": [
+                "F3",
+                "fatfree",
+                "sql"
+            ],
+            "time": "2018-05-15T13:03:21+00:00"
         },
         {
             "name": "joshtronic/php-loremipsum",
