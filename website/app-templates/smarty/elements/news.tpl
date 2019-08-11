@@ -2,6 +2,7 @@
     <div class="panel-heading">
         <div class="panel-title pull-left">
             <h3 class="panel-title">
+                {if $f3->get('SESSION.CURRENT_USER')}
                 {if $item->isSubscribed()}
                 <button type="button" class="btn btn-default btn-xs" title="{t}Unsubscribe from news{/t}" data-toggle="modal" data-target="#modal" data-type="news-subscription" data-id="{$item->id}">
                     {fa icon="bell"}
@@ -10,6 +11,7 @@
                 <button type="button" class="btn btn-default btn-xs" title="{t}Subscribe to news{/t}" data-toggle="modal" data-target="#modal" data-type="news-subscription" data-id="{$item->id}">
                     {fa icon="bell-slash"}
                 </button>
+                {/if}
                 {/if}
                 {$item->title}
             </h3>

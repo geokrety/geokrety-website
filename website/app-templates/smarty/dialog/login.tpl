@@ -20,7 +20,7 @@
                             <input type="password" class="form-control" id="inputPassword" name="password" placeholder="{t}Password{/t}" maxlength="80">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="checkbox">
                                 <label>
@@ -31,7 +31,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary">{t}Sign in{/t}</button>

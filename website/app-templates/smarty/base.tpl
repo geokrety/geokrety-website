@@ -6,7 +6,7 @@
     <div class="container">
         {include file='banners/is_not_prod.tpl'}
         {include file='banners/contribute.tpl'}
-        {include file='banners/debug.tpl'}
+        {*include file='banners/debug.tpl'*}
         {include file='banners/flash_messages.tpl'}
         {block name=content}{/block}
     </div>

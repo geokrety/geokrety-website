@@ -27,6 +27,8 @@ $f3->route('GET @logout: /logout [sync]', '\GeoKrety\Controller\Login->logout');
 $f3->route('GET @news_list: /news', '\GeoKrety\Controller\NewsList->get');
 $f3->map('@news_details: /news/@newsid', '\GeoKrety\Controller\NewsDetails');
 
+$f3->map('@news_comment_delete: /news-comment/@newscommentid/delete', '\GeoKrety\Controller\NewsCommentDelete');
+
 $f3->route('GET @news_subscription: /news/@newsid/subscribe [sync]', '\GeoKrety\Controller\NewsSubscription->subscription');
 $f3->route('GET @news_subscription: /news/@newsid/subscribe [ajax]', '\GeoKrety\Controller\NewsSubscription->subscriptionFragment');
 $f3->route('POST @news_subscription: /news/@newsid/subscribe', '\GeoKrety\Controller\NewsSubscription->subscriptionToggle');

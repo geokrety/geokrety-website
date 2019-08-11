@@ -15,7 +15,7 @@ class Smarty extends \Prefab {
 
     public static function render(string $template) {
         $smarty = self::getSmarty();
-        $smarty->assign('alert_msgs', $_SESSION['alert_msgs'] ?? array());
+        // $smarty->assign('alert_msgs', $f3['alert_msgs'] ?? array());
         $smarty->display($template);
     }
 

@@ -54,26 +54,7 @@
 
 <h3>{t}Comments{/t}</h3>
 {foreach $news->comments as $comment}
-<div class="panel panel-{if $comment->updated_on_datetime >= $news_last_read_datetime}info{else}default{/if}">
-    <div class="panel-heading">
-        <div class="pull-left">
-            {fa icon="file-text-o"}
-            {$comment->author|userlink nofilter}
-        </div>
-        <div class="pull-right">
-            {$comment->updated_on_datetime|print_date nofilter}
-            {if $comment->isAuthor() or IS_SUPER_USER}
-            <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="news-comment-delete" data-id="{$comment->id}">
-                {fa icon="trash"}
-            </button>
-            {/if}
-        </div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="panel-body">
-        {$comment->content|markdown nofilter}
-    </div>
-</div>
+{include file='elements/news_comment.tpl'}
 {foreachelse}
 {t}There are no comments for this post.{/t}
 {/foreach}
@@ -89,13 +70,14 @@
         spellChecker: false,
         status: false,
         forceSync: true,
-    	renderingConfig: {
-    		singleLineBreaks: false,
-    	},
+       renderingConfig: {
+               singleLineBreaks: false,
+       },
         minHeight: '100px',
     });
 
     // Bind modal
     {include 'js/dialog_news_subscription.js.tpl'}
+    {include 'js/dialog_news_comment_delete.js.tpl'}
 {/if}
 {/block}

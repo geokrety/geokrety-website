@@ -1,11 +1,11 @@
 {block name=content}
-<div class="modal-header alert-info">
+<div class="modal-header {if $subscription->subscribed}alert-danger{else}alert-info{/if}">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="modalLabel">
         {if $subscription->subscribed}
-        {t}Do you really want to unsubscribe this news?{/t}
+        {t}Do you really want to unsubscribe from this news?{/t}
         {else}
-        {t}Do you really want to subscribe this news?{/t}
+        {t}Subscribe to this news?{/t}
         {/if}
     </h4>
 </div>
@@ -19,7 +19,7 @@
 
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
-        <button type="submit" class="btn btn-info">
+        <button type="submit" class="btn btn-info {if $subscription->subscribed}btn-danger{else}btn-info{/if}">
             {if $subscription->subscribed}
             {t}Unsubscribe{/t}
             {else}
