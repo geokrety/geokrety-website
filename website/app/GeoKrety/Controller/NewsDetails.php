@@ -13,13 +13,15 @@ class NewsDetails extends Base {
         // Load news
         $news = new News();
         $news->load(array('id = ?', $f3->get('PARAMS.newsid')));
-        $news->comments->orderBy('id DESC');
+        if (!is_null($news->comments)) {
+            $news->comments->orderBy('id DESC');
+        }
         Smarty::assign('news', $news);
 
         // Save last view
         if ($f3->get('SESSION.CURRENT_USER')) {
             $subscription = $this->loadSubscription($f3);
-            $subscription->last_read_datetime = NewsSubscription::now();
+            $subscription->touch('last_read_datetime');
             $subscription->save();
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to save visit.'), 'danger');

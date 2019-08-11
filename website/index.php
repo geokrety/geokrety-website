@@ -24,8 +24,11 @@ $f3->route('POST @login: /login [sync]', '\GeoKrety\Controller\Login->login');
 
 $f3->route('GET @logout: /logout [sync]', '\GeoKrety\Controller\Login->logout');
 
-$f3->route('GET @news_list: /news', '\GeoKrety\Controller\NewsList->get');
 $f3->map('@news_details: /news/@newsid', '\GeoKrety\Controller\NewsDetails');
+$f3->route(array(
+        'GET @news_list: /news',
+        'GET @news_list_paginate: /news/page/@page',
+    ), '\GeoKrety\Controller\NewsList->get');
 
 $f3->map('@news_comment_delete: /news-comment/@newscommentid/delete', '\GeoKrety\Controller\NewsCommentDelete');
 

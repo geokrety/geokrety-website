@@ -41,6 +41,9 @@ class Config {
         define('GK_MAP_DEFAULT_PARAMS', $_ENV['GK_MAP_DEFAULT_PARAMS'] ?? '#2/42.941/2.109/1/1/0/0/90/');
 
         // SOME LIMITS
+        define('GK_PAGINATION_NEWS', $_ENV['GK_PAGINATION_NEWS'] ?? 2);
+
+        // SOME TTL LIMITS
         define('GK_SITE_STATS_CACHE_TTL', $_ENV['GK_SITE_STATS_CACHE_TTL'] ?? 600);
         define('GK_SITE_LATEST_NEWS_CACHE_TTL', $_ENV['GK_SITE_LATEST_NEWS_CACHE_TTL'] ?? 1800);
 

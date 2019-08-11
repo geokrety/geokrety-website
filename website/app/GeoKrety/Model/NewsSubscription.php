@@ -7,6 +7,9 @@ class NewsSubscription extends Base {
     protected $table = 'gk-news-comments-access';
 
     protected $fieldConf = array(
+        'last_read_datetime' => array(
+             'type' => \DB\SQL\Schema::DT_DATETIME,
+        ),
         'user' => array(
             'belongs-to-one' => '\GeoKrety\Model\User',
         ),

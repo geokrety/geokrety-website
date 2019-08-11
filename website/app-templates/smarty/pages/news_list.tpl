@@ -1,21 +1,16 @@
-{*include file='macros/paginate.tpl'*}
+{include file='macros/pagination.tpl'}
 {extends file='base.tpl'}
 
 {block name=content}
 <a class="anchor" id="news"></a>
 
-{*if isset($totalNews)}
-{call pagination total=$totalNews perpage=$newsPerPage anchor='news'}
-{/if*}
+{call pagination pg=$pg anchor='news'}
 
-{foreach from=$news item=item}
+{foreach from=$news.subset item=item}
 {include file='elements/news.tpl'}
 {/foreach}
 
-{*if isset($totalNews)}
-{call pagination total=$totalNews perpage=$newsPerPage anchor='news'}
-{/if*}
-
+{call pagination pg=$pg anchor='news'}
 {/block}
 
 {block name=javascript}
