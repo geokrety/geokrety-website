@@ -19,7 +19,7 @@
         <div class="panel-title pull-right">
             {$item->updated_on_datetime|print_date nofilter}
             {$item|newslink nofilter}
-            <i>({if $item->author}{$item->author|userlink nofilter}{else}{$item->author_name}{/if})</i>
+            <i>({if $item->countRel('author')}{$item->author|userlink nofilter}{else}{$item->author_name}{/if})</i>
         </div>
         <div class="clearfix"></div>
     </div>

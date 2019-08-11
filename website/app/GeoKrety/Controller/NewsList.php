@@ -2,14 +2,21 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\News;
 
 class NewsList extends Base {
     public function get($f3) {
         $news = new News();
-        $news = $news->find(null, ['order' => 'updated_on_datetime DESC'], GK_SITE_LATEST_NEWS_CACHE_TTL);
-        Smarty::assign('news', $news);
+        $filter = array();
+        $option = array('order' => 'updated_on_datetime DESC');
+        $subset = $news->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_NEWS, $filter, $option);
+        Smarty::assign('news', $subset);
+
+        $pages = new Pagination($subset['total'], $subset['limit']);
+        Smarty::assign('pg', $pages);
+
         Smarty::render('pages/news_list.tpl');
     }
 }

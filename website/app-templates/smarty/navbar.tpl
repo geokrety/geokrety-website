@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{'home'|alias}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {t}Home{/t}</a></li>
-                <li><a href="{'news_list'|alias}">{fa icon="newspaper-o"} News</a></li>
+                <li><a href="{'news_list'|alias}">{fa icon="newspaper-o"} {t}News{/t}</a></li>
                 <li><a href="ruchy.php"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a></li>
 
                 <li class="dropdown">

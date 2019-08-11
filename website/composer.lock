@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62c883bafc83545425c96168d3fae9fa",
+    "content-hash": "a27b7d3ca3246f586f70d6ce84be8add",
     "packages": [
         {
             "name": "bcosca/fatfree-core",
@@ -460,6 +460,43 @@
                 "session"
             ],
             "time": "2017-12-06T17:50:51+00:00"
+        },
+        {
+            "name": "ikkez/f3-pagination",
+            "version": "v1.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-pagination.git",
+                "reference": "099cd47a7b52c827e3d8f33aed977beee4565565"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-pagination/zipball/099cd47a7b52c827e3d8f33aed977beee4565565",
+                "reference": "099cd47a7b52c827e3d8f33aed977beee4565565",
+                "shasum": ""
+            },
+            "require": {
+                "bcosca/fatfree-core": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Provides a pagebrowser and some pagination utilities for the PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-pagination",
+            "keywords": [
+                "F3",
+                "fatfree",
+                "pagebrowser",
+                "pagination"
+            ],
+            "time": "2017-12-31T11:49:11+00:00"
         },
         {
             "name": "ikkez/f3-schema-builder",

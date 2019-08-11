@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<h2>{t}News{/t}</h2>
+<h2>{fa icon="newspaper-o"} {t}News{/t}</h2>
 {foreach from=$news item=item}
 {include file='elements/news.tpl'}
 {/foreach}
