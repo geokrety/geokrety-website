@@ -49,9 +49,9 @@ CHANGE `post` `last_post_datetime` datetime NULL AFTER `last_read_datetime`;
 ```sql
 ALTER TABLE `gk-geokrety`
 CHANGE `nr` `tracking_code` varchar(9) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `id`,
-CHANGE `nazwa` `name` varchar(75) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `tracking_code`,
+CHANGE `nazwa` `name` varchar(75) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `tracking_code`,
 CHANGE `opis` `mission` mediumtext COLLATE 'utf8mb4_unicode_ci' NULL AFTER `name`,
-CHANGE `data` `created_on_datetime` datetime NULL AFTER `owner`,
+CHANGE `data` `created_on_datetime` datetime NULL DEFAULT CURRENT_TIMESTAMP AFTER `owner`,
 CHANGE `droga` `distance` int(10) unsigned NOT NULL AFTER `created_on_datetime`,
 CHANGE `skrzynki` `caches_count` smallint(5) unsigned NOT NULL AFTER `distance`,
 CHANGE `zdjecia` `pictures_count` smallint(5) unsigned NOT NULL DEFAULT '0' AFTER `caches_count`,
@@ -62,6 +62,14 @@ CHANGE `typ` `type` enum('0','1','2','3','4') COLLATE 'utf8mb4_unicode_ci' NOT N
 CHANGE `avatarid` `avatar` int(10) unsigned NOT NULL AFTER `type`,
 CHANGE `timestamp_oc` `timestamp_oc` datetime NOT NULL COMMENT 'Unused?' AFTER `avatar`,
 CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `timestamp_oc`;
+
+ALTER TABLE `gk-geokrety`
+CHANGE `distance` `distance` int(10) unsigned NOT NULL DEFAULT '0' AFTER `created_on_datetime`,
+CHANGE `caches_count` `caches_count` smallint(5) unsigned NOT NULL DEFAULT '0' AFTER `distance`,
+CHANGE `last_position` `last_position` int(10) unsigned NULL AFTER `pictures_count`,
+CHANGE `last_log` `last_log` int(10) unsigned NULL AFTER `last_position`,
+CHANGE `avatar` `avatar` int(10) unsigned NULL AFTER `type`;
+
 ```
 
 ```sql

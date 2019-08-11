@@ -10,13 +10,9 @@ class Auth extends \Auth {
         $user->load(array('username = ?', $id));
 
         $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
-        if ($hasher->CheckPassword($pw.GK_PASSWORD_HASH.GK_PASSWORD_SEED, (string)$user->password)) {
-            \Flash::instance()->addMessage(_('Welcome on board!'), 'success');
-
+        if ($hasher->CheckPassword($pw.GK_PASSWORD_HASH.GK_PASSWORD_SEED, (string) $user->password)) {
             return true;
         }
-
-        \Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
 
         return false;
     }

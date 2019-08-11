@@ -3,14 +3,15 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
+use GeoKrety\AuthGroup;
 
 class Login extends Base {
     public function loginForm($f3) {
-        Smarty::render('extends:base.tpl|dialog/login.tpl');
+        Smarty::render('extends:base.tpl|forms/login.tpl');
     }
 
     // public function loginFormFragment($f3) {
-    //     Smarty::render('dialog/login.tpl');
+    //     Smarty::render('forms/login.tpl');
     // }
 
     public function login($f3) {
@@ -22,10 +23,18 @@ class Login extends Base {
             if ($user->valid()) {
                 $f3->set('SESSION.CURRENT_USER', $user->id);
                 $f3->set('SESSION.IS_LOGGED_IN', true);
+                if (in_array($user->id, GK_SITE_ADMINISTRATORS)) {
+                    $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_ADMINISTRATORS);
+                } else {
+                    $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
+                }
                 $f3->reroute('@home');
+                \Flash::instance()->addMessage(_('Welcome on board!'), 'success');
+            } else {
+                \Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
             }
         }
-        Smarty::render('extends:base.tpl|dialog/login.tpl');
+        Smarty::render('extends:base.tpl|forms/login.tpl');
     }
 
     // public function loginFragment($f3) {
@@ -36,6 +45,7 @@ class Login extends Base {
     public function logout($f3) {
         $f3->set('SESSION.CURRENT_USER', null);
         $f3->set('SESSION.IS_LOGGED_IN', null);
+        $f3->set('SESSION.user.group', null);
         $f3->reroute('@home');
     }
 }
