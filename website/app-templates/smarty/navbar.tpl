@@ -61,7 +61,7 @@
                         <li><a href="termsofuse.php">{fa icon="legal"} {t}Term of use{/t}</a></li>
                         <li><a href="presscorner.php">{fa icon="newspaper-o"} {t}Press corner{/t}</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="api.php">{fa icon="cog"} {t}GK interface / API{/t}</a></li>
+                        <li><a href="{'help_api'|alias}">{fa icon="cog"} {t}GK interface / API{/t}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="statystyczka.php">{fa icon="bar-chart"} {t}Statistics{/t}</a></li>
                         <li role="separator" class="divider"></li>

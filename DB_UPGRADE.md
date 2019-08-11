@@ -45,3 +45,36 @@ CHANGE `user_id` `user` int(10) unsigned NOT NULL AFTER `news`,
 CHANGE `read` `last_read_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `user`,
 CHANGE `post` `last_post_datetime` datetime NULL AFTER `last_read_datetime`;
 ```
+
+```sql
+ALTER TABLE `gk-geokrety`
+CHANGE `nr` `tracking_code` varchar(9) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `id`,
+CHANGE `nazwa` `name` varchar(75) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `tracking_code`,
+CHANGE `opis` `mission` mediumtext COLLATE 'utf8mb4_unicode_ci' NULL AFTER `name`,
+CHANGE `data` `created_on_datetime` datetime NULL AFTER `owner`,
+CHANGE `droga` `distance` int(10) unsigned NOT NULL AFTER `created_on_datetime`,
+CHANGE `skrzynki` `caches_count` smallint(5) unsigned NOT NULL AFTER `distance`,
+CHANGE `zdjecia` `pictures_count` smallint(5) unsigned NOT NULL DEFAULT '0' AFTER `caches_count`,
+CHANGE `ost_pozycja_id` `last_position` int(10) unsigned NOT NULL AFTER `pictures_count`,
+CHANGE `ost_log_id` `last_log` int(10) unsigned NOT NULL AFTER `last_position`,
+CHANGE `hands_of` `holder` int(10) unsigned NULL COMMENT 'In the hands of user' AFTER `loast_log`,
+CHANGE `typ` `type` enum('0','1','2','3','4') COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `missing`,
+CHANGE `avatarid` `avatar` int(10) unsigned NOT NULL AFTER `type`,
+CHANGE `timestamp_oc` `timestamp_oc` datetime NOT NULL COMMENT 'Unused?' AFTER `avatar`,
+CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `timestamp_oc`;
+```
+
+```sql
+ALTER TABLE `gk-ruchy`
+CHANGE `ruch_id` `id` int(10) unsigned NOT NULL AUTO_INCREMENT FIRST,
+CHANGE `id` `geokret` int(10) unsigned NOT NULL AFTER `id`,
+CHANGE `country` `country` varchar(3) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'ISO 3166-1 https://fr.wikipedia.org/wiki/ISO_3166-1' AFTER `alt`,
+CHANGE `droga` `distance` int(10) unsigned NULL AFTER `country`,
+CHANGE `data` `created_on_datetime` datetime NULL ON UPDATE CURRENT_TIMESTAMP AFTER `waypoint`,
+CHANGE `data_dodania` `moved_on_datetime` datetime NULL COMMENT 'The move as configured by user' AFTER `created_on_datetime`,
+CHANGE `koment` `comment` varchar(5120) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `user`,
+CHANGE `zdjecia` `pictures_count` tinyint(3) unsigned NULL DEFAULT '0' AFTER `comment`,
+CHANGE `komentarze` `coumments_count` smallint(5) unsigned NULL DEFAULT '0' AFTER `pictures_count`,
+CHANGE `user` `author` int(10) unsigned NULL DEFAULT '0' AFTER `moved_on_datetime`,
+CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`;
+```
