@@ -6,7 +6,7 @@ use GeoKrety\Service\HTMLPurifier;
 
 class NewsComment extends Base {
     protected $db = 'DB';
-    protected $table = 'news_comments';
+    protected $table = 'gk-news-comments';
 
     protected $fieldConf = array(
         'author' => array(
@@ -26,6 +26,8 @@ class NewsComment extends Base {
     }
 
     public function isAuthor() {
-        return $f3->get('SESSION.IS_LOGGED_IN') && $f3->get('SESSION.CURRENT_USER') === (int) $this->author;
+        $f3 = \Base::instance();
+
+        return $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
 }
