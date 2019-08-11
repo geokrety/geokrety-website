@@ -4,7 +4,7 @@ namespace GeoKrety\Model;
 
 class User extends Base {
     protected $db = 'DB';
-    protected $table = 'users';
+    protected $table = 'gk-users';
 
     protected $fieldConf = array(
         'news' => array(

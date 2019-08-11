@@ -16,7 +16,7 @@ class Config {
         define('GK_ENVIRONMENT', $_ENV['GK_ENVIRONMENT'] ?? 'dev');
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
         define('GK_DEBUG', isset($_ENV['GK_DEBUG']) && filter_var($_ENV['GK_DEBUG'], FILTER_VALIDATE_BOOLEAN));
-        define('GK_F3_DEBUG', $_ENV['GK_DEBUG'] ?? 3);
+        define('GK_F3_DEBUG', $_ENV['GK_DEBUG'] ?? 1);
 
         // DATABASE config
         define('GK_DB_DSN', 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');
@@ -78,6 +78,26 @@ class Config {
         define('GK_CDN_LIBRARIES_PRISM_JS_URL', $_ENV['GK_CDN_LIBRARIES_PRISM_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism.min.js');
         define('GK_CDN_LIBRARIES_PRISM_PHP_JS_URL', $_ENV['GK_CDN_LIBRARIES_PRISM_PHP_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-php.min.js');
         define('GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL', $_ENV['GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-markup-templating.min.js');
+
+
+        define('GK_CDN_LEAFLET_JS', $_ENV['GK_CDN_LEAFLET_JS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.js');
+        define('GK_CDN_LEAFLET_CSS', $_ENV['GK_CDN_LEAFLET_CSS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.css');
+        define('GK_CDN_LEAFLET_CENTERCROSS_JS', $_ENV['GK_CDN_LEAFLET_CENTERCROSS_JS'] ?? GK_CDN_LIBRARIES_URL.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');
+        define('GK_CDN_LEAFLET_AJAX_JS', $_ENV['GK_CDN_LEAFLET_AJAX_JS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet-ajax/2.1.0/leaflet.ajax.min.js');
+        define('GK_CDN_LEAFLET_MARKERCLUSTER_JS', $_ENV['GK_CDN_LEAFLET_MARKERCLUSTER_JS'] ?? GK_CDN_LIBRARIES_URL.'/Leaflet.markercluster/1.4.1/leaflet.markercluster.js');
+        define('GK_CDN_LEAFLET_MARKERCLUSTER_CSS', $_ENV['GK_CDN_LEAFLET_MARKERCLUSTER_CSS'] ?? GK_CDN_LIBRARIES_URL.'/Leaflet.markercluster/1.4.1/MarkerCluster.css');
+        define('GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS', $_ENV['GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS'] ?? GK_CDN_LIBRARIES_URL.'/Leaflet.markercluster/1.4.1/MarkerCluster.Default.css');
+        define('GK_CDN_LEAFLET_GEOKRETYFILTER_JS', $_ENV['GK_CDN_LEAFLET_GEOKRETYFILTER_JS'] ?? GK_CDN_LIBRARIES_URL.'/Leaflet.geokretyfilter/leaflet.Control.GeoKretyFilter.js');
+        define('GK_CDN_LEAFLET_GEOKRETYFILTER_CSS', $_ENV['GK_CDN_LEAFLET_GEOKRETYFILTER_CSS'] ?? GK_CDN_LIBRARIES_URL.'/Leaflet.geokretyfilter/leaflet.Control.GeoKretyFilter.css');
+        define('GK_CDN_LEAFLET_PLUGIN_BING_JS', $_ENV['GK_CDN_LEAFLET_PLUGIN_BING_JS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet-bing/Bing.js');
+        define('GK_CDN_LEAFLET_NOUISLIDER_JS', $_ENV['GK_CDN_LEAFLET_NOUISLIDER_JS'] ?? GK_CDN_LIBRARIES_URL.'/noUiSlider/8.1.0/nouislider.min.js');
+        define('GK_CDN_LEAFLET_NOUISLIDER_CSS', $_ENV['GK_CDN_LEAFLET_NOUISLIDER_CSS'] ?? GK_CDN_LIBRARIES_URL.'/noUiSlider/8.1.0/nouislider.min.css');
+        define('GK_CDN_LEAFLET_SPIN_JS', $_ENV['GK_CDN_LEAFLET_SPIN_JS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet.spin.js/leaflet.spin.js');
+        define('GK_CDN_LEAFLET_FULLSCREEN_JS',$_ENV['GK_CDN_LEAFLET_FULLSCREEN_JS'] ??  GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js');
+        define('GK_CDN_LEAFLET_FULLSCREEN_CSS', $_ENV['GK_CDN_LEAFLET_FULLSCREEN_CSS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
+
+        define('GK_CDN_SPIN_JS', $_ENV['GK_CDN_SPIN_JS'] ?? GK_CDN_LIBRARIES_URL.'/spin.js/2.3.2/spin.min.js');
+
     }
 
     public static function printEnvironements() {

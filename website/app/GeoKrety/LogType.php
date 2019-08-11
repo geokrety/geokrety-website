@@ -68,6 +68,7 @@ class LogType {
             case 3: return _('met');
             case 4: return _('archive');
             case 5: return _('dip');
+            case 9: return _('Born');
         }
 
         return null;

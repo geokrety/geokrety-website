@@ -16,8 +16,8 @@ $f3->set('DEBUG', GK_F3_DEBUG);
 // Start Session
 new Session();
 
-// Falsum
-Falsum\Run::handler();
+// // Falsum
+// Falsum\Run::handler();
 
 // Healthcheck route
 $f3->route('HEAD /', function () {});
