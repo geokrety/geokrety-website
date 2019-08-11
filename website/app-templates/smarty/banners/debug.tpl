@@ -5,6 +5,7 @@
   DEFINED LANG: {LANGUAGE}<br />
   IS_LOGGED_IN: [{$f3->get('SESSION.IS_LOGGED_IN')}]<br />
   CURRENT_USER: [{$f3->get('SESSION.CURRENT_USER')}]<br />
+  GROUP: [{$f3->get('SESSION.user.group')}]<br />
   {$smarty.session|print_r}<br />
 </div>
 {/if}

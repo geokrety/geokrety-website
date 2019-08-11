@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a27b7d3ca3246f586f70d6ce84be8add",
+    "content-hash": "3ca40b3a828d9af47a9a424680c9e5bb",
     "packages": [
         {
             "name": "bcosca/fatfree-core",
@@ -428,6 +428,61 @@
             "time": "2019-02-03T17:17:11+00:00"
         },
         {
+            "name": "ikkez/f3-falsum",
+            "version": "v2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-falsum.git",
+                "reference": "998454fb032f046e6443998106d0cf6ad55efafe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-falsum/zipball/998454fb032f046e6443998106d0cf6ad55efafe",
+                "reference": "998454fb032f046e6443998106d0cf6ad55efafe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Falsum\\": "src/Falsum/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Morais dos Santos",
+                    "homepage": "https://ra.fael.ml",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Christian Knuth",
+                    "homepage": "https://ikkez.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Pretty error handling for Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-falsum",
+            "keywords": [
+                "F3",
+                "error",
+                "exception",
+                "falsum",
+                "fat-free framework",
+                "handling",
+                "library"
+            ],
+            "time": "2019-07-11T15:36:04+00:00"
+        },
+        {
             "name": "ikkez/f3-flash",
             "version": "1.0.1",
             "source": {
@@ -530,6 +585,45 @@
                 "sql"
             ],
             "time": "2018-05-15T13:03:21+00:00"
+        },
+        {
+            "name": "ikkez/f3-validation-engine",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-validation-engine.git",
+                "reference": "f19deef07ea8ac2a5f415c9a977766fe018cf1c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-validation-engine/zipball/f19deef07ea8ac2a5f415c9a977766fe018cf1c9",
+                "reference": "f19deef07ea8ac2a5f415c9a977766fe018cf1c9",
+                "shasum": ""
+            },
+            "require": {
+                "wixel/gump": "^1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Validation engine for Cortex and the PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-validation-engine",
+            "keywords": [
+                "F3",
+                "GUMP",
+                "cortex",
+                "fatfree",
+                "model",
+                "validation"
+            ],
+            "time": "2019-02-19T00:15:53+00:00"
         },
         {
             "name": "joshtronic/php-loremipsum",
@@ -1836,6 +1930,81 @@
                 "geoip"
             ],
             "time": "2015-12-06T20:17:20+00:00"
+        },
+        {
+            "name": "wixel/gump",
+            "version": "v1.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Wixel/GUMP.git",
+                "reference": "b32c92206fb7014a40179b8468ba8bab90b3f879"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Wixel/GUMP/zipball/b32c92206fb7014a40179b8468ba8bab90b3f879",
+                "reference": "b32c92206fb7014a40179b8468ba8bab90b3f879",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "gump.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Nieuwoudt",
+                    "homepage": "https://wixelhq.com"
+                },
+                {
+                    "name": "Filis Futsarov",
+                    "homepage": "https://filis.me"
+                }
+            ],
+            "description": "A fast, extensible & stand-alone PHP input validation class that allows you to validate any data",
+            "homepage": "https://wixelhq.com/",
+            "time": "2018-06-02T23:09:34+00:00"
+        },
+        {
+            "name": "xfra35/f3-access",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xfra35/f3-access.git",
+                "reference": "7b62d1c0e0a881c8b2e510fee31863fc44afa7b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xfra35/f3-access/zipball/7b62d1c0e0a881c8b2e510fee31863fc44afa7b7",
+                "reference": "7b62d1c0e0a881c8b2e510fee31863fc44afa7b7",
+                "shasum": ""
+            },
+            "require": {
+                "bcosca/fatfree-core": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Route access control for the PHP Fat-Free Framework",
+            "homepage": "https://github.com/xfra35/f3-access",
+            "keywords": [
+                "F3",
+                "access control",
+                "fatfree",
+                "permissions"
+            ],
+            "time": "2016-02-18T14:42:16+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

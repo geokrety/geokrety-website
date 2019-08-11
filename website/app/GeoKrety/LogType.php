@@ -48,8 +48,8 @@ class LogType {
         return $logtype == $this->logtype;
     }
 
-    public function isValid() {
-        return in_array($this->logtype, self::LOG_TYPES);
+    public static function isValid($logtype) {
+        return in_array($logtype, self::LOG_TYPES, true);
     }
 
     public function isCoordinatesRequired() {

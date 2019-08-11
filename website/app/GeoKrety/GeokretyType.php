@@ -23,6 +23,10 @@ class GeokretyType {
         $this->type = $type;
     }
 
+    public function __toString() {
+        return $this->type;
+    }
+
     public function getTypeId() {
         return $this->type;
     }
@@ -35,19 +39,23 @@ class GeokretyType {
         return $type == $this->type;
     }
 
-    public function isValid() {
-        return in_array($this->type, self::GEOKRETY_TYPES);
+    public static function isValid($type) {
+        return in_array((int)$type, self::GEOKRETY_TYPES, true);
     }
 
     public function getTypeString() {
-        switch ($this->type) {
-            case 0: return _('Traditional');
-            case 1: return _('A book/CD/DVD...');
-            case 2: return _('A human');
-            case 3: return _('A coin');
-            case 4: return _('KretyPost');
-        }
+        $types = self::getTypes();
 
-        return null;
+        return $types[$this->type];
+    }
+
+    public static function getTypes() {
+        return array(
+            self::GEOKRETY_TYPE_TRADITIONAL => _('Traditional'),
+            self::GEOKRETY_TYPE_BOOK_CD_DVD => _('A book/CD/DVD...'),
+            self::GEOKRETY_TYPE_HUMAN => _('A human'),
+            self::GEOKRETY_TYPE_COIN => _('A coin'),
+            self::GEOKRETY_TYPE_KRETYPOST => _('KretyPost'),
+        );
     }
 }
