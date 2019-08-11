@@ -3,6 +3,7 @@
 require 'vendor/autoload.php';
 $f3 = \Base::instance();
 $f3->config('app/config.ini');
+$f3->config('app/routes.ini');
 
 // Create GK_* consts from environments
 new \GeoKrety\Service\Config();
@@ -17,44 +18,14 @@ new Session();
 // Falsum
 Falsum\Run::handler();
 
-// Routes
+// Healthcheck route
 $f3->route('HEAD /', function () {});
-
-$f3->route('GET @home: /', '\GeoKrety\Controller\Home->get');
-
-$f3->route('GET @login: /login [sync]', '\GeoKrety\Controller\Login->loginForm');
-// $f3->route('GET @login: /login [ajax]', '\GeoKrety\Controller\Login->loginFormFragment');
-$f3->route('POST @login: /login [sync]', '\GeoKrety\Controller\Login->login');
-// $f3->route('POST @login: /login [ajax]', '\GeoKrety\Controller\Login->loginFragment');
-
-$f3->route('GET @logout: /logout [sync]', '\GeoKrety\Controller\Login->logout');
-
-$f3->map('@news_details: /news/@newsid', '\GeoKrety\Controller\NewsDetails');
-$f3->route(array(
-        'GET @news_list: /news',
-        'GET @news_list_paginate: /news/page/@page',
-    ), '\GeoKrety\Controller\NewsList->get');
-
-$f3->map('@news_comment_delete: /news-comment/@newscommentid/delete', '\GeoKrety\Controller\NewsCommentDelete');
-
-$f3->route('GET @news_subscription: /news/@newsid/subscribe [sync]', '\GeoKrety\Controller\NewsSubscription->subscription');
-$f3->route('GET @news_subscription: /news/@newsid/subscribe [ajax]', '\GeoKrety\Controller\NewsSubscription->subscriptionFragment');
-$f3->route('POST @news_subscription: /news/@newsid/subscribe', '\GeoKrety\Controller\NewsSubscription->subscriptionToggle');
-
-$f3->route('GET @user: /users/@userid', '\GeoKrety\Controller\Home->get');
-
-$f3->map('@geokret_details: /geokrety/@gkid', '\GeoKrety\Controller\GeokretDetails');
-$f3->map('@geokret_create: /geokrety/create', '\GeoKrety\Controller\GeokretCreate');
-$f3->map('@geokret_edit: /geokrety/@gkid/edit', '\GeoKrety\Controller\GeokretEdit');
-$f3->route('GET @geokret_label_generator: /geokrety/@gkid/label', '\GeoKrety\Controller\GeokretDetails->get');
 
 $f3->route('GET @move: /move-geokrety/',
     function () {
         \GeoKrety\Service\Smarty::render('pages/move.tpl');
     }
 );
-
-$f3->map('@help_api: /help/api', '\GeoKrety\Controller\HelpApi');
 
 // Authorizations
 $access = \Access::instance();
@@ -73,7 +44,7 @@ $validator->onError(function ($text, $key) {
 });
 $validator->addValidator('not_empty', function ($field, $input, $param = null) {return \GeoKrety\Validation\Base::isNotEmpty($input[$field]); }, 'The {0} field cannot be empty');
 $validator->addValidator('geokrety_type', function ($field, $input, $param = null) {return \GeoKrety\GeokretyType::isValid($input[$field]); }, 'The GeoKret type is invalid');
-$validator->addValidator('log_type', function($value,$params=NULL) {return \GeoKrety\LogType::isValid($input[$field]);}, 'The move type is invalid');
+$validator->addValidator('log_type', function ($value, $params = null) {return \GeoKrety\LogType::isValid($input[$field]); }, 'The move type is invalid');
 $validator->addFilter('HTMLPurifier', function ($value, $params = null) {return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value); });
 $validator->loadLang();
 
