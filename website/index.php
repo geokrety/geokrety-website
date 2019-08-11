@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 $f3 = \Base::instance();
 $f3->config('app/config.ini');
 $f3->config('app/routes.ini');
+$f3->config('app/authorizations.ini');
 
 // Create GK_* consts from environments
 new \GeoKrety\Service\Config();
@@ -29,15 +30,9 @@ $f3->route('GET @move: /move-geokrety/',
 
 // Authorizations
 $access = \Access::instance();
-$access->policy('allow');
-$access->deny('@login', \GeoKrety\AuthGroup::AUTH_GROUP_AUTHENTICATED);
-$access->deny('@geokret_create');
-$access->deny('@geokret_edit');
-$access->allow('@geokret_create', \GeoKrety\AuthGroup::AUTH_GROUP_AUTHENTICATED);
-$access->allow('@geokret_edit', \GeoKrety\AuthGroup::AUTH_GROUP_AUTHENTICATED);
 $access->authorize($f3->get('SESSION.user.group'));
 
-// Initialize the validator with custom
+// Initialize the validator with custom rules
 $validator = \Validation::instance();
 $validator->onError(function ($text, $key) {
     \Flash::instance()->addMessage($text, 'danger');
