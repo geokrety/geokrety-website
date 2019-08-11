@@ -24,7 +24,9 @@ class GeokretyType {
     }
 
     public function __toString() {
-        return $this->type;
+        $types = self::getTypes();
+
+        return $types[$this->type];
     }
 
     public function getTypeId() {

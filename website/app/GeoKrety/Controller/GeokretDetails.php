@@ -2,22 +2,14 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Geokret;
 
 class GeokretDetails extends Base {
     public function get($f3) {
-        echo "class:GeokretDetails";
-        // $news = new News();
-        // $filter = array();
-        // $option = array('order' => 'updated_on_datetime DESC');
-        // $subset = $news->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_NEWS, $filter, $option);
-        // Smarty::assign('news', $subset);
-        //
-        // $pages = new Pagination($subset['total'], $subset['limit']);
-        // Smarty::assign('pg', $pages);
-        //
-        // Smarty::render('pages/news_list.tpl');
+        $geokret = new Geokret();
+        $geokret->load(array('id = ?', $f3->get('PARAMS.gkid')));
+        Smarty::assign('geokret', $geokret);
+        Smarty::render('pages/geokret_details.tpl');
     }
 }

@@ -19,7 +19,6 @@ class Geokret extends Base {
         ),
         'type' => array(
             'type' => Schema::DT_VARCHAR128,
-            'filter' => 'trim',
             'validate' => 'geokrety_type',
             'index' => true,
         ),
@@ -70,6 +69,10 @@ class Geokret extends Base {
     //     return HTMLPurifier::getPurifier()->purify($value);
     // }
 
+    public function get_gkid() {
+        return sprintf("GK%04X", $this->id);
+    }
+
     public function get_type($value) {
         return new \GeoKrety\GeokretyType($value);
     }
@@ -80,6 +83,12 @@ class Geokret extends Base {
 
     public function get_updated_on_datetime($value) {
         return self::get_date_object($value);
+    }
+
+    public function isOwner() {
+        $f3 = \Base::instance();
+
+        return $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
     }
 
     public function __construct() {

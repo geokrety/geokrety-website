@@ -85,4 +85,27 @@ CHANGE `zdjecia` `pictures_count` tinyint(3) unsigned NULL DEFAULT '0' AFTER `co
 CHANGE `komentarze` `coumments_count` smallint(5) unsigned NULL DEFAULT '0' AFTER `pictures_count`,
 CHANGE `user` `author` int(10) unsigned NULL DEFAULT '0' AFTER `moved_on_datetime`,
 CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`;
+
+```
+ALTER TABLE `gk-users`
+CHANGE `userid` `id` int(10) unsigned NOT NULL AUTO_INCREMENT FIRST,
+CHANGE `user` `username` varchar(80) COLLATE 'utf8mb4_polish_ci' NULL AFTER `id`,
+CHANGE `haslo` `old_password` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'This hash is not used anymore' AFTER `username`,
+CHANGE `haslo2` `password` varchar(120) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `old_password`,
+CHANGE `email` `email` varchar(150) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `password`,
+CHANGE `joined` `joined_on_datetime` datetime NULL AFTER `email_invalid`,
+CHANGE `wysylacmaile` `daily_mails` binary(1) NOT NULL DEFAULT '1' AFTER `joined_on_datetime`,
+CHANGE `ip` `registration_ip` varchar(46) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `daily_mails`,
+CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `registration_ip`,
+CHANGE `lang` `prefered_language` varchar(2) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `updated_on_datetime`,
+CHANGE `lat` `home_latitude` double(8,5) NULL AFTER `prefered_language`,
+CHANGE `lon` `home_longitude` double(8,5) NULL AFTER `home_latitude`,
+CHANGE `promien` `observation_area` smallint(5) unsigned NULL AFTER `home_longitude`,
+CHANGE `country` `home_country` char(3) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `observation_area`,
+CHANGE `godzina` `daily_mails_hour` int(11) NOT NULL AFTER `home_country`,
+CHANGE `statpic` `statpic_template_id` tinyint(1) NOT NULL DEFAULT '1' AFTER `daily_mails_hour`,
+CHANGE `ostatni_mail` `last_mail_datetime` datetime NULL AFTER `statpic_template_id`,
+CHANGE `ostatni_login` `last_login_datetime` datetime NULL AFTER `last_mail_datetime`;
+```sql
+
 ```

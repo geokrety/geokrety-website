@@ -27,12 +27,11 @@ class GeokretEdit extends Base {
 
         if ($geokret->validate()) {
             $geokret->save();
-            \Flash::instance()->addMessage("name:$geokret->name <br />tracking_code:$geokret->tracking_code <br />type:$geokret->type", 'danger');
 
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
             } else {
-                \Flash::instance()->addMessage(sprintf(_('Your GeoKret has been created. You may now wish to <a href="%s">print</a> it a great label…'), $f3->alias('geokret_label_generator', '@gkid='.$geokret->id)), 'success');
+                \Flash::instance()->addMessage(_('Your GeoKret has been updated.'), 'success');
                 $f3->reroute('@geokret_details(@gkid='.$geokret->id.')');
             }
         }
