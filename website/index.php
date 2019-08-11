@@ -44,6 +44,8 @@ $f3->route('GET @move: /move-geokrety/',
     }
 );
 
+$f3->map('@help_api: /help/api', '\GeoKrety\Controller\HelpApi');
+
 $f3->run();
 if (GK_DEBUG) {
     echo $f3->get('DB')->log();

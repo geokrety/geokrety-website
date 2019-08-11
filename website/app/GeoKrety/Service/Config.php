@@ -7,6 +7,9 @@ class Config {
         // TODO REMOVE THAT
         define('LANGUAGE', 'en');
 
+        // SITE CONFIG
+        define('GK_SITE_BASE_SERVER_URL', $_ENV['GK_SITE_BASE_SERVER_URL'] ?? 'https://geokrety.org');
+
         // Environment
         define('GK_ENVIRONMENT', $_ENV['GK_ENVIRONMENT'] ?? 'dev');
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
@@ -40,12 +43,15 @@ class Config {
         define('GK_MAP_URL', $_ENV['GK_MAP_URL'] ?? 'https://api.geokretymap.org');
         define('GK_MAP_DEFAULT_PARAMS', $_ENV['GK_MAP_DEFAULT_PARAMS'] ?? '#2/42.941/2.109/1/1/0/0/90/');
 
-        // SOME LIMITS
+        // PAGINATION LIMITS
         define('GK_PAGINATION_NEWS', $_ENV['GK_PAGINATION_NEWS'] ?? 2);
 
-        // SOME TTL LIMITS
+        // TTL LIMITS
         define('GK_SITE_STATS_CACHE_TTL', $_ENV['GK_SITE_STATS_CACHE_TTL'] ?? 600);
         define('GK_SITE_LATEST_NEWS_CACHE_TTL', $_ENV['GK_SITE_LATEST_NEWS_CACHE_TTL'] ?? 1800);
+
+        // API LIMITS
+        define('GK_API_EXPORT_LIMIT_DAYS', $_ENV['GK_API_EXPORT_LIMIT_DAYS'] ?? 10);
 
         // CDN
         define('GK_CDN_SERVER_URL', $_ENV['GK_CDN_SERVER_URL'] ?? 'https://cdn.geokrety.org');
@@ -58,12 +64,17 @@ class Config {
         // CDN LIBRARIES
         define('GK_CDN_LIBRARIES_URL', $_ENV['GK_CDN_LIBRARIES_URL'] ?? GK_CDN_SERVER_URL.'/libraries');
 
-        define('GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL', $_ENV['GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/parsley.js/parsleyjs-bootstrap3.js');
-        define('GK_CDN_LIBRARIES_PARSLEY_JS_URL', $_ENV['GK_CDN_LIBRARIES_PARSLEY_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/parsley.js/2.9.1/parsley.js');
         define('GK_CDN_LIBRARIES_PARSLEY_CSS_URL', $_ENV['GK_CDN_LIBRARIES_PARSLEY_CSS_URL'] ?? GK_CDN_LIBRARIES_URL.'/parsley.js/2.9.1/parsley.css');
+        define('GK_CDN_LIBRARIES_PARSLEY_JS_URL', $_ENV['GK_CDN_LIBRARIES_PARSLEY_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/parsley.js/2.9.1/parsley.js');
+        define('GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL', $_ENV['GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/parsley.js/parsleyjs-bootstrap3.js');
 
-        define('GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL', $_ENV['GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/inscrybmde/1.11.6/inscrybmde.min.js');
         define('GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL', $_ENV['GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL'] ?? GK_CDN_LIBRARIES_URL.'/inscrybmde/1.11.6/inscrybmde.min.css');
+        define('GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL', $_ENV['GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/inscrybmde/1.11.6/inscrybmde.min.js');
+
+        define('GK_CDN_LIBRARIES_PRISM_CSS_URL', $_ENV['GK_CDN_LIBRARIES_PRISM_CSS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism.min.css');
+        define('GK_CDN_LIBRARIES_PRISM_JS_URL', $_ENV['GK_CDN_LIBRARIES_PRISM_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism.min.js');
+        define('GK_CDN_LIBRARIES_PRISM_PHP_JS_URL', $_ENV['GK_CDN_LIBRARIES_PRISM_PHP_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-php.min.js');
+        define('GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL', $_ENV['GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-markup-templating.min.js');
     }
 
     public static function printEnvironements() {
