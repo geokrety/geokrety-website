@@ -6,7 +6,7 @@
             <div class="col-xs-2">
                 <div class="center-block">
                     {$move|logicon nofilter}
-                    <small>{if !is_null($move->lat)}{$move->distance}&nbsp;km{/if}</small>
+                    <small>{if !is_null($move->lat) and !is_null($move->lon)}{$move->distance}&nbsp;km{/if}</small>
                 </div>
             </div>
             <div class="col-xs-10">
