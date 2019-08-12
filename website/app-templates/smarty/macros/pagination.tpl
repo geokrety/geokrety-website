@@ -1,4 +1,4 @@
-{function pagination pg=array() anchor='top'}
+{function pagination pg=array() anchor='top'}{if $pg->getMax() > 1}
 <div class="pull-right">
     <ul class="pagination">
         {if $pg->getFirst()}
@@ -19,4 +19,4 @@
     </ul>
 </div>
 <div class="clearfix"></div>
-{/function}
+{/if}{/function}
