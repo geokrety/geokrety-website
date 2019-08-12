@@ -1,8 +1,8 @@
+{include file='macros/pagination.tpl'}
 <a class="anchor" id="moves"></a>
 
-{foreach from=$geokret->moves item=item}
-{*call move move=$item geokret=$geokret_details moves_pictures=$geokret_pictures*}
-
+{call pagination pg=$pg anchor='moves'}
+{foreach from=$moves.subset item=item}
 {include file='elements/move.tpl' move=$item}
 
 {foreachelse}
@@ -12,3 +12,4 @@ TODO: Hey! This GeoKret has not moved it. blablabla
 TODO: Did you found this GeoKret? Log it!
 {/if}
 {/foreach}
+{call pagination pg=$pg anchor='moves'}

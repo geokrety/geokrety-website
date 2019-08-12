@@ -48,6 +48,7 @@ class Config {
 
         // PAGINATION LIMITS
         define('GK_PAGINATION_NEWS', $_ENV['GK_PAGINATION_NEWS'] ?? 2);
+        define('GK_PAGINATION_GEOKRET_MOVES', $_ENV['GK_PAGINATION_GEOKRET_MOVES'] ?? 10);
 
         // TTL LIMITS
         define('GK_SITE_STATS_CACHE_TTL', $_ENV['GK_SITE_STATS_CACHE_TTL'] ?? 600);
