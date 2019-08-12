@@ -58,17 +58,17 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{fa icon="support"} {t}Help{/t} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="help.php">{fa icon="support"} {t}Help{/t}</a></li>
-                        <li><a href="molehole.php">{fa icon="bed"} {t}Moleholes and GK hotels{/t}</a></li>
-                        <li><a href="termsofuse.php">{fa icon="legal"} {t}Term of use{/t}</a></li>
-                        <li><a href="presscorner.php">{fa icon="newspaper-o"} {t}Press corner{/t}</a></li>
+                        <li><a href="{'help'|alias}">{fa icon="support"} {t}Help{/t}</a></li>
+                        <li><a href="{'work_in_progress'|alias}">{fa icon="bed"} {t}Moleholes and GK hotels{/t}</a></li>
+                        <li><a href="{'terms_of_use'|alias}">{fa icon="legal"} {t}Terms of use{/t}</a></li>
+                        <li><a href="{'press_corner'|alias}">{fa icon="newspaper-o"} {t}Press corner{/t}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{'help_api'|alias}">{fa icon="cog"} {t}GK interface / API{/t}</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="statystyczka.php">{fa icon="bar-chart"} {t}Statistics{/t}</a></li>
+                        <li><a href="{'statistics'|alias}">{fa icon="bar-chart"} {t}Statistics{/t}</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="download.php">{fa icon="download"} {t}Downloads{/t}</a></li>
-                        <li><a href="toolbox.php">{fa icon="cog"} {t}GeoKrety Toolbox{/t}</a></li>
+                        <li><a href="{'work_in_progress'|alias}">{fa icon="download"} {t}Downloads{/t}</a></li>
+                        <li><a href="{'work_in_progress'|alias}">{fa icon="cog"} {t}GeoKrety Toolbox{/t}</a></li>
                         <li><a href="go2geo/">{fa icon="map-pin"} {t}Waypoint resolver{/t}</a></li>
                     </ul>
                 </li>
