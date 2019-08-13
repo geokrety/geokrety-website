@@ -16,7 +16,6 @@ class GeokretCreate extends Base {
 
         if ($geokret->validate()) {
             $geokret->save();
-            \Flash::instance()->addMessage("name:$geokret->name <br />tracking_code:$geokret->tracking_code <br />type:$geokret->type", 'danger');
 
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
