@@ -8,28 +8,28 @@ class Base {
     protected $hasErrors = false;
     protected $obj = null;
 
-    protected function checkNotNull(string $attribute, string $message = null) {
-        if (self::isEmpty($this->obj->$attribute)) {
-            $this->hasErrors = true;
-            $this->flash(sprintf(_('\'%s\' could not be empty.'), $attribute), $message);
-
-            return false;
-        }
-
-        return true;
-    }
-
-    protected function checkInArray(int $attribute, array $array, string $message = null) {
-        echo var_dump($attribute);
-        if (!in_array($this->obj->$attribute, $array, TRUE)) {
-            $this->hasErrors = true;
-            $this->flash(sprintf(_('\'%s\' not in allowed values.'), $attribute), $message);
-
-            return false;
-        }
-
-        return true;
-    }
+    // protected function checkNotNull(string $attribute, string $message = null) {
+    //     if (self::isEmpty($this->obj->$attribute)) {
+    //         $this->hasErrors = true;
+    //         $this->flash(sprintf(_('\'%s\' could not be empty.'), $attribute), $message);
+    //
+    //         return false;
+    //     }
+    //
+    //     return true;
+    // }
+    //
+    // protected function checkInArray(int $attribute, array $array, string $message = null) {
+    //     echo var_dump($attribute);
+    //     if (!in_array($this->obj->$attribute, $array, TRUE)) {
+    //         $this->hasErrors = true;
+    //         $this->flash(sprintf(_('\'%s\' not in allowed values.'), $attribute), $message);
+    //
+    //         return false;
+    //     }
+    //
+    //     return true;
+    // }
 
     protected function flash(string $default, string $message = null, string $level = 'danger') {
         \Flash::instance()->addMessage($message ?? $default, $level);

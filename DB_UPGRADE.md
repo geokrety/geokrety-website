@@ -85,8 +85,9 @@ CHANGE `zdjecia` `pictures_count` tinyint(3) unsigned NULL DEFAULT '0' AFTER `co
 CHANGE `komentarze` `coumments_count` smallint(5) unsigned NULL DEFAULT '0' AFTER `pictures_count`,
 CHANGE `user` `author` int(10) unsigned NULL DEFAULT '0' AFTER `moved_on_datetime`,
 CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`;
-
 ```
+
+```sql
 ALTER TABLE `gk-users`
 CHANGE `userid` `id` int(10) unsigned NOT NULL AUTO_INCREMENT FIRST,
 CHANGE `user` `username` varchar(80) COLLATE 'utf8mb4_polish_ci' NULL AFTER `id`,
@@ -106,6 +107,28 @@ CHANGE `godzina` `daily_mails_hour` int(11) NOT NULL AFTER `home_country`,
 CHANGE `statpic` `statpic_template_id` tinyint(1) NOT NULL DEFAULT '1' AFTER `daily_mails_hour`,
 CHANGE `ostatni_mail` `last_mail_datetime` datetime NULL AFTER `statpic_template_id`,
 CHANGE `ostatni_login` `last_login_datetime` datetime NULL AFTER `last_mail_datetime`;
-```sql
-
 ```
+
+```sql
+ALTER TABLE `gk-waypointy`
+CHANGE `typ` `type` varchar(200) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `owner`,
+CHANGE `kraj` `country_name` varchar(200) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'full English country name' AFTER `type`,
+CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `status`;
+ALTER TABLE `gk-waypointy`
+ADD `id` int unsigned NOT NULL AUTO_INCREMENT UNIQUE FIRST;
+ALTER TABLE `gk-waypointy`
+ADD PRIMARY KEY `id` (`id`),
+ADD INDEX (`waypoint`),
+DROP INDEX `PRIMARY`,
+DROP INDEX `id`,
+DROP INDEX `name`;
+```
+
+```sql
+INSERT INTO `gk-waypointy` (waypoint, lat, lon, alt, country, link)
+SELECT distinct(replace(`waypoint`, ' ', '')) as waypoint, `lat`, `lon`, `alt`, `country`, concat('https://www.geocaching.com/geocache/', replace(`waypoint`, ' ', ''))
+FROM `gk-ruchy`
+WHERE waypoint LIKE 'GC%'
+ON DUPLICATE KEY UPDATE `gk-waypointy`.waypoint=`gk-ruchy`.waypoint;
+```
+
