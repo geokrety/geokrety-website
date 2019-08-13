@@ -15,6 +15,9 @@ class Move extends Base {
         'geokret' => array(
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
         ),
+        'comments' => array(
+            'has-many' => array('\GeoKrety\Model\MoveComment', 'move'),
+        ),
         // 'avatar' => array(
         //     'belongs-to-one' => '\GeoKrety\Model\GeokretAvatar',
         // ),
@@ -52,9 +55,9 @@ class Move extends Base {
         return self::get_date_object($value);
     }
 
-    // public function isAuthor() {
-    //     $f3 = \Base::instance();
-    //
-    //     return $f3->get('SESSION.CURRENT_USER') === $this->author->id;
-    // }
+    public function isAuthor() {
+        $f3 = \Base::instance();
+
+        return $f3->get('SESSION.CURRENT_USER') === $this->author->id;
+    }
 }

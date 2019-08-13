@@ -62,22 +62,22 @@
 
 {block name=javascript}
 {if $f3->get('SESSION.IS_LOGGED_IN')}
-    // Bind SimpleMDE editor
-    var inscrybmde = new InscrybMDE({
-        element: $("#comment")[0],
-        hideIcons: ['side-by-side', 'fullscreen', 'quote'],
-        promptURLs: true,
-        spellChecker: false,
-        status: false,
-        forceSync: true,
-       renderingConfig: {
-               singleLineBreaks: false,
-       },
-        minHeight: '100px',
-    });
+// Bind SimpleMDE editor
+var inscrybmde = new InscrybMDE({
+    element: $("#comment")[0],
+    hideIcons: ['side-by-side', 'fullscreen', 'quote'],
+    promptURLs: true,
+    spellChecker: false,
+    status: false,
+    forceSync: true,
+   renderingConfig: {
+           singleLineBreaks: false,
+   },
+    minHeight: '100px',
+});
 
-    // Bind modal
-    {include 'js/dialog_news_subscription.js.tpl'}
-    {include 'js/dialog_news_comment_delete.js.tpl'}
+// Bind modal
+{include 'js/dialog_news_subscription.js.tpl'}
+{include 'js/dialog_news_comment_delete.js.tpl'}
 {/if}
 {/block}

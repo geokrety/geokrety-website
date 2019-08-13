@@ -85,7 +85,9 @@
         {/if}
 
     </div>
-    {if $showActions and $move->comments_count}
-    {*call move_comment*}
+    {if $move->comments_count}
+    {foreach from=$move->comments item=item}
+    {include file='elements/move_comment.tpl' comment=$item}
+    {/foreach}
     {/if}
 </div>

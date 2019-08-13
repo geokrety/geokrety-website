@@ -24,4 +24,7 @@
 
 initializeMap();
 // TODO load moves as geojson
+
+// Bind modal
+{include 'js/dialog_move_comment_delete.js.tpl'}
 {/block}
