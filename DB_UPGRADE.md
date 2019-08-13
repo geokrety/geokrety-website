@@ -138,7 +138,7 @@ CHANGE `comment_id` `id` int(10) unsigned NOT NULL AUTO_INCREMENT FIRST,
 CHANGE `ruch_id` `move` int(10) unsigned NOT NULL AFTER `id`,
 CHANGE `kret_id` `geokret` int(10) unsigned NOT NULL AFTER `move`,
 CHANGE `user_id` `author` int(10) unsigned NOT NULL AFTER `geokret`,
-CHANGE `data_dodania` `created_on_datetime` datetime NOT NULL AFTER `author`,
+CHANGE `data_dodania` `created_on_datetime` datetime NULL DEFAULT CURRENT_TIMESTAMP AFTER `author`,
 CHANGE `comment` `content` varchar(500) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `created_on_datetime`,
 CHANGE `type` `type` tinyint(3) unsigned NOT NULL COMMENT '0=comment, 1=missing' AFTER `content`,
 CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `type`;

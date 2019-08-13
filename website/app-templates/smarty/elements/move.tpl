@@ -44,30 +44,29 @@
         </div>
         {/if}
 
-        {if $showActions and $f3->get('SESSION.CURRENT_USER')}
+        {if !$hide_actions and $f3->get('SESSION.CURRENT_USER')}
         <div class="row">
             <div class="col-xs-12">
                 <div class="pull-right">
                     <div class="btn-toolbar" role="toolbar">
 
                         <div class="btn-group pull-right" role="group">
-                            {if $move->id == $geokret->last_position and $move->logtype->isTheoricallyInCache() AND $geokret->type->getTypeId() != \GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
-                            <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-move-comment-type="missing" data-gkid="{$geokret->id}"
-                                data-id="{$move->id}">
+                            {if $move->id == $move->geokret->last_position->id and $move->logtype->isTheoricallyInCache() and $move->geokret->type->getTypeId() != \GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
+                            <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}" data-move-comment-type="missing">
                                 {fa icon="exclamation-triangle"}
                             </button>
                             {/if}
-                            {if $f3->get('SESSION.CURRENT_USER') == $move->user->id }
+                            {if $move->isAuthor()}
                             <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$move->id}" data-picture-type="1">
                                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
                             </button>
                             {/if}
-                            <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-gkid="{$geokret->id}" data-id="{$move->id}">
+                            <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}">
                                 {fa icon="plus"}&nbsp;{fa icon="comment"}
                             </button>
                         </div>
 
-                        {if $geokret->isOwner() or $f3->get('SESSION.CURRENT_USER') == $move->user->id }
+                        {if $move->geokret->isOwner() or $move->isAuthor() }
                         <div class="btn-group pull-right" role="group">
                             <a class="btn btn-warning btn-xs" href="#" role="button" title="{t}Edit log{/t}">
                                 {fa icon="pencil"}
@@ -85,7 +84,7 @@
         {/if}
 
     </div>
-    {if $move->comments_count}
+    {if !$hide_comments and $move->comments_count}
     {foreach from=$move->comments item=item}
     {include file='elements/move_comment.tpl' comment=$item}
     {/foreach}

@@ -17,7 +17,7 @@
         {/if}
 
         <div class="btn-group pull-right" role="group">
-            {if $geokret->owner->email}
+            {if $f3->get('SESSION.CURRENT_USER') and $geokret->owner->email}
             <a class="btn btn-primary btn-xs" href="{'mail_by_geokret'|alias}" title="{t user=$geokret->owner->username}Send a message to %1{/t}">
                 {fa icon="envelope"}
             </a>
