@@ -6,7 +6,7 @@
         </div>
         <div class="pull-right">
             {$comment->updated_on_datetime|print_date nofilter}
-            {if $comment->isAuthor() && !$hide_actions}
+            {if !$hide_actions and $comment->isAuthor()}
             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="news-comment-delete" data-id="{$comment->id}">
                 {fa icon="trash"}
             </button>

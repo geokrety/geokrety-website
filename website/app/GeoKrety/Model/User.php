@@ -14,7 +14,10 @@ class User extends Base {
             'has-many' => array('\GeoKrety\Model\NewsComment', 'author'),
         ),
         'moves' => array(
-            'has-many' => array('\GeoKrety\Model\Move', 'author'),
+            'has-many' => array('\GeoKrety\Model\MoveComment', 'author'),
+        ),
+        'moves_comments' => array(
+            'has-many' => array('\GeoKrety\Model\NewsComment', 'author'),
         ),
         'news_subscription' => array(
             'has-many' => array('\GeoKrety\Model\NewsSubscription', 'user'),
@@ -26,4 +29,8 @@ class User extends Base {
             'has-many' => array('\GeoKrety\Model\Geokret', 'holder'),
         ),
     );
+
+    public function get_username($value) {
+        return html_entity_decode($value);
+    }
 }
