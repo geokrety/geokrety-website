@@ -1,12 +1,19 @@
 <?php
 
 namespace GeoKrety\Model;
+use DB\SQL\Schema;
 
 class User extends Base {
+    use \Validation\Traits\CortexTrait;
+
     protected $db = 'DB';
     protected $table = 'gk-users';
 
     protected $fieldConf = array(
+        'prefered_language' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'validate' => 'not_empty|language_supported',
+        ),
         'news' => array(
             'has-many' => array('\GeoKrety\Model\News', 'author'),
         ),

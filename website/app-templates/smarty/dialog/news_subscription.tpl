@@ -10,24 +10,24 @@
     </h4>
 </div>
 
-<div class="modal-body">
-    <form name="comment" action="{'news_subscription'|alias:sprintf('newsid=%d', $subscription->news->id)}" method="post">
+<form name="comment" action="{'news_subscription'|alias:sprintf('newsid=%d', $subscription->news->id)}" method="post">
+    <div class="modal-body">
         {if $subscription->subscribed}
         <input type="hidden" name="subscribe" value="off" />
         {else}
         <input type="hidden" name="subscribe" value="on" />
         {/if}
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
-            <button type="submit" class="btn btn-info {if $subscription->subscribed}btn-danger{else}btn-info{/if}">
-                {if $subscription->subscribed}
-                {t}Unsubscribe{/t}
-                {else}
-                {t}Subscribe{/t}
-                {/if}
-            </button>
-        </div>
-    </form>
-</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
+        <button type="submit" class="btn btn-info {if $subscription->subscribed}btn-danger{else}btn-info{/if}">
+            {if $subscription->subscribed}
+            {t}Unsubscribe{/t}
+            {else}
+            {t}Subscribe{/t}
+            {/if}
+        </button>
+    </div>
+</form>
 {/block}

@@ -4,14 +4,14 @@
     <h4 class="modal-title" id="modalLabel">{t}Do you really want to delete this news comment?{/t}</h4>
 </div>
 
-<div class="modal-body">
-    <form name="comment" action="{'news_comment_delete'|alias:sprintf('newscommentid=%d', $comment->id)}" method="post">
+<form name="comment" action="{'news_comment_delete'|alias:sprintf('newscommentid=%d', $comment->id)}" method="post">
+    <div class="modal-body">
         {include file='elements/news_comment.tpl' hide_actions=true}
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
-            <button type="submit" class="btn btn-danger">{t}Delete{/t}</button>
-        </div>
-    </form>
-</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
+        <button type="submit" class="btn btn-danger">{t}Delete{/t}</button>
+    </div>
+</form>
 {/block}

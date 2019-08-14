@@ -30,4 +30,7 @@
 
 initializeMap();
 // TODO load GeoKrety near home as geojson
+
+// Bind modal
+{include 'js/dialog_user_details.js.tpl'}
 {/block}

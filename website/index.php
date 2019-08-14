@@ -37,10 +37,11 @@ $validator = \Validation::instance();
 $validator->onError(function ($text, $key) {
     \Flash::instance()->addMessage($text, 'danger');
 });
-$validator->addValidator('not_empty', function ($field, $input, $param = null) {return \GeoKrety\Validation\Base::isNotEmpty($input[$field]); }, 'The {0} field cannot be empty');
-$validator->addValidator('geokrety_type', function ($field, $input, $param = null) {return \GeoKrety\GeokretyType::isValid($input[$field]); }, 'The GeoKret type is invalid');
-$validator->addValidator('log_type', function ($value, $params = null) {return \GeoKrety\LogType::isValid($input[$field]); }, 'The move type is invalid');
-$validator->addFilter('HTMLPurifier', function ($value, $params = null) {return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value); });
+$validator->addValidator('not_empty', function ($field, $input, $param = null) { return \GeoKrety\Validation\Base::isNotEmpty($input[$field]); }, 'The {0} field cannot be empty');
+$validator->addValidator('geokrety_type', function ($field, $input, $param = null) { return \GeoKrety\GeokretyType::isValid($input[$field]); }, 'The GeoKret type is invalid');
+$validator->addValidator('log_type', function ($field, $input, $param = null) { return \GeoKrety\LogType::isValid($input[$field]); }, 'The move type is invalid');
+$validator->addValidator('language_supported', function ($field, $input, $param = null) { return \GeoKrety\Service\LanguageService::isLanguageSupported($input[$field]); }, 'This language is not supported');
+$validator->addFilter('HTMLPurifier', function ($value, $params = null) { return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value); });
 $validator->loadLang();
 
 $f3->run();

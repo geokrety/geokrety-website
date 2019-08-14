@@ -151,3 +151,14 @@ CHANGE `timestamp` `awarded_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAM
 CHANGE `desc` `description` varchar(128) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `awarded_on_datetime`,
 CHANGE `file` `filename` varchar(32) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `description`;
 ```
+
+```sql
+ALTER TABLE `gk-aktywnemaile`
+ADD `id` int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
+CHANGE `kod` `token` varchar(60) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `id`,
+CHANGE `userid` `user` int(10) unsigned NOT NULL AFTER `token`,
+CHANGE `done` `confirmed` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0=unconfirmed 1=confirmed' AFTER `email`,
+CHANGE `timestamp` `created_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP AFTER `confirmed`,
+ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE,
+RENAME TO `gk-email-activation`;
+```
