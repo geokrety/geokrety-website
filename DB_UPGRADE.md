@@ -95,7 +95,7 @@ CHANGE `haslo` `old_password` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL COM
 CHANGE `haslo2` `password` varchar(120) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `old_password`,
 CHANGE `email` `email` varchar(150) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `password`,
 CHANGE `joined` `joined_on_datetime` datetime NULL AFTER `email_invalid`,
-CHANGE `wysylacmaile` `daily_mails` binary(1) NOT NULL DEFAULT '1' AFTER `joined_on_datetime`,
+CHANGE `wysylacmaile` `daily_mails` tinyint(1) NOT NULL DEFAULT '1' AFTER `joined_on_datetime`,
 CHANGE `ip` `registration_ip` varchar(46) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `daily_mails`,
 CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `registration_ip`,
 CHANGE `lang` `prefered_language` varchar(2) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `updated_on_datetime`,
@@ -157,7 +157,7 @@ ALTER TABLE `gk-aktywnemaile`
 ADD `id` int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
 CHANGE `kod` `token` varchar(60) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `id`,
 CHANGE `userid` `user` int(10) unsigned NOT NULL AFTER `token`,
-CHANGE `done` `confirmed` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0=unconfirmed 1=confirmed' AFTER `email`,
+CHANGE `done` `confirmed` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '0=unconfirmed 1=confirmed' AFTER `email`,
 CHANGE `timestamp` `created_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP AFTER `confirmed`,
 ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE,
 RENAME TO `gk-email-activation`;
