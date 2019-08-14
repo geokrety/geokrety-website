@@ -2,9 +2,6 @@
 
 namespace GeoKrety\Service;
 
-use GeoKrety\Validation\Base as Validator;
-use GeoKrety\Model\Waypoint;
-
 /**
  * WaypointInfo : Some waypoint helpers
  */

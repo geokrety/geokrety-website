@@ -143,3 +143,11 @@ CHANGE `comment` `content` varchar(500) COLLATE 'utf8mb4_unicode_ci' NOT NULL AF
 CHANGE `type` `type` tinyint(3) unsigned NOT NULL COMMENT '0=comment, 1=missing' AFTER `content`,
 CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `type`;
 ```
+
+```sql
+ALTER TABLE `gk-badges`
+CHANGE `userid` `holder` bigint(20) NOT NULL AFTER `id`,
+CHANGE `timestamp` `awarded_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP AFTER `user`,
+CHANGE `desc` `description` varchar(128) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `awarded_on_datetime`,
+CHANGE `file` `filename` varchar(32) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `description`;
+```

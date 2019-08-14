@@ -6,10 +6,6 @@ class News extends Base {
     protected $db = 'DB';
     protected $table = 'news';
 
-    public function get_updated_on_datetime($value) {
-        return self::get_date_object($value);
-    }
-
     protected $fieldConf = array(
         'author' => array(
             'belongs-to-one' => '\GeoKrety\Model\User',
@@ -21,6 +17,10 @@ class News extends Base {
             'has-many' => array('\GeoKrety\Model\NewsSubscription', 'news'),
         ),
     );
+
+    public function get_updated_on_datetime($value) {
+        return self::get_date_object($value);
+    }
 
     public function isSubscribed() {
         // Note: Cache count() for 1 second

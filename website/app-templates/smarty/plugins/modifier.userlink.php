@@ -18,5 +18,5 @@ function smarty_modifier_userlink($user, ?string $target = null) {
         return '<em class="user-anonymous">'._('Anonymous').'</em>';
     }
 
-    return '<a href="'.\Base::instance()->alias('user', 'userid='.$user->id).'" title="'.sprintf('View %s\'s profile', smarty_modifier_escape($user->username)).'"'.$target_html.'>'.smarty_modifier_escape($user->username).'</a>';
+    return '<a href="'.\Base::instance()->alias('user_details', 'userid='.$user->id).'" title="'.sprintf('View %s\'s profile', smarty_modifier_escape($user->username)).'"'.$target_html.'>'.smarty_modifier_escape($user->username).'</a>';
 }
