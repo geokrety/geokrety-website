@@ -13,11 +13,11 @@ function initializeMap() {
       attribution: osmAttrib
     });
 
-    {if !isset($user) or is_null($user) or is_null($user->latitude) or is_null($user->longitude)}
+    {if !isset($user) or is_null($user) or is_null($user->home_latitude) or is_null($user->home_longitude)}
         var center = PARIS;
         var zoom = 3;
     {else}
-        var center = new L.LatLng({$user->latitude}, {$user->longitude});
+        var center = new L.LatLng({$user->home_latitude}, {$user->home_longitude});
         var zoom = 6;
     {/if}
 

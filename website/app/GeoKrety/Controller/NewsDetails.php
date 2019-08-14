@@ -12,10 +12,8 @@ class NewsDetails extends Base {
     public function get(\Base $f3) {
         // Load news
         $news = new News();
+        $news->filter('comments', null, array('order' => 'id DESC'));
         $news->load(array('id = ?', $f3->get('PARAMS.newsid')));
-        if (!is_null($news->comments)) {
-            $news->comments->orderBy('id DESC');
-        }
         Smarty::assign('news', $news);
 
         // Save last view
