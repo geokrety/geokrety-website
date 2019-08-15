@@ -13,6 +13,10 @@ class UserDetails extends Base {
         $user = new User();
         $user->filter('badges', null, array('order' => 'awarded_on_datetime ASC'));
         $user->load(array('id = ?', $f3->get('PARAMS.userid')));
+        if ($user->dry()) {
+            Smarty::render('dialog/alert_404.tpl');
+            die();
+        }
         Smarty::assign('user', $user);
 
         // GeoKrety owned stats
