@@ -9,6 +9,7 @@ class Config {
 
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', $_ENV['GK_SITE_BASE_SERVER_URL'] ?? 'https://geokrety.org');
+        define('GK_SITE_EMAIL', $_ENV['GK_SITE_EMAIL'] ?? 'geokrety@gmail.com');
         define('GK_SITE_ADMINISTRATORS', explode(',', $_ENV['GK_SITE_ADMINISTRATORS'] ?? '1,26422,35313'));
         define('GK_SITE_TRACKING_CODE_LENGTH', $_ENV['GK_SITE_TRACKING_CODE_LENGTH'] ?? 6);
         define('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH', $_ENV['GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH'] ?? 42);
@@ -25,6 +26,13 @@ class Config {
         // define('GK_DB_DSN', $_ENV['GK_DB_DSN'] ?? 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');
         define('GK_DB_USER', $_ENV['GK_DB_USER'] ?? 'geokrety');
         define('GK_DB_PASSWORD', $_ENV['GK_DB_PASSWORD'] ?? 'geokrety');
+
+        // SMTP config
+        define('GK_SMTP_HOST', $_ENV['GK_SMTP_HOST'] ?? 'smtp.gmail.com');
+        define('GK_SMTP_PORT', $_ENV['GK_SMTP_PORT'] ?? 465);
+        define('GK_SMTP_SCHEME', $_ENV['GK_SMTP_SCHEME'] ?? 'SSL');
+        define('GK_SMTP_USER', $_ENV['GK_SMTP_USER'] ?? '');
+        define('GK_SMTP_PASSWORD', $_ENV['GK_SMTP_PASSWORD'] ?? '');
 
         // HASHING seeds
         define('GK_PASSWORD_HASH_ROTATION', $_ENV['GK_PASSWORD_HASH_ROTATION'] ?? 8);

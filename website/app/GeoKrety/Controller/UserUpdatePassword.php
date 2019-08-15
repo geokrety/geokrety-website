@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
-use GeoKrety\Model\EmailActivation;
 use GeoKrety\Model\User;
 use Hautelook\Phpass\PasswordHash;
 
@@ -22,7 +21,7 @@ class UserUpdatePassword extends Base {
     }
 
     public function get(\Base $f3) {
-        Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_password.tpl');
+        Smarty::fetch('extends:full_screen_modal.tpl|dialog/user_update_password.tpl');
     }
 
     public function get_ajax(\Base $f3) {
@@ -59,10 +58,22 @@ class UserUpdatePassword extends Base {
         $user->password = $hasher->HashPassword($password_new.GK_PASSWORD_HASH.GK_PASSWORD_SEED);
         if ($user->validate()) {
             $user->save();
-            // TODO send mail
+            $this->sendEmail($user);
             \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
         }
 
         $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
+    }
+
+    protected function sendEmail($user) {
+        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
+        $smtp->set('From', GK_SITE_EMAIL);
+        $smtp->set('To', $user->email);
+        $smtp->set('Errors-To', GK_SITE_EMAIL);
+        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
+        $smtp->set('Subject', _('GeoKrety: Your password has been changed'));
+        if (!$smtp->send(Smarty::fetch('mails/password_changed.tpl'))) {
+            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+        }
     }
 }

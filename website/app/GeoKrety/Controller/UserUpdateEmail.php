@@ -29,6 +29,7 @@ class UserUpdateEmail extends Base {
     }
 
     public function post(\Base $f3) {
+        $f3->get('DB')->begin();
         $userid = $this->user->id;
         $daily_mail = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
         $error = false;
@@ -52,7 +53,7 @@ class UserUpdateEmail extends Base {
             $activation->erase(array('NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)', GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
 
             // Check email unicity over both tables
-            if ($user->count(array('email = ?', $f3->get('POST.email'))) || $activation->count(array('email = ?', $f3->get('POST.email')))) {
+            if ($user->count(array('email = ?', $f3->get('POST.email'))) || $activation->count(array('email = ?', $f3->get('POST.email')), null, 0)) {
                 \Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
                 $error = true;
             } else {
@@ -63,7 +64,8 @@ class UserUpdateEmail extends Base {
                 $activation->email = $f3->get('POST.email');
                 if ($activation->validate()) {
                     $activation->save();
-                    // TODO send mail
+                    Smarty::assign('token', $activation->token);
+                    $this->sendEmail($user);
                     \Flash::instance()->addMessage(sprintf(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for %d days.'), GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY), 'warning');
                 } else {
                     $error = true;
@@ -78,6 +80,24 @@ class UserUpdateEmail extends Base {
             die();
         }
 
+        $f3->get('DB')->commit();
         $f3->reroute("@user_details(@userid=$userid)");
+    }
+
+    protected function sendEmail($user) {
+        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
+        $smtp->set('From', GK_SITE_EMAIL);
+        $smtp->set('Errors-To', GK_SITE_EMAIL);
+        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
+        $smtp->set('Subject', _('GeoKrety: changing your email address'));
+
+        $smtp->set('To', $user->email);
+        if (!$smtp->send(Smarty::fetch('mails/email_changed_to_old_address.tpl'))) {
+            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+        }
+        $smtp->set('To', \Base::instance()->get('POST.email'));
+        if (!$smtp->send(Smarty::fetch('mails/email_changed_to_new_address.tpl'))) {
+            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+        }
     }
 }

@@ -19,6 +19,11 @@ class Smarty extends \Prefab {
         $smarty->display($template);
     }
 
+    public static function fetch(string $template) {
+        $smarty = self::getSmarty();
+        return $smarty->fetch($template);
+    }
+
     public function __construct() {
         $smarty = new \SmartyBC();
         $smarty->escape_html = true;
