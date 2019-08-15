@@ -6,18 +6,18 @@
                 <h3 class="panel-title">{t}Login{/t}</h3>
             </div>
             <div class="panel-body">
-                <form action="{'login'|alias}{if isset($goto) and $goto}?goto={$goto}{/if}" method="post" class="form-horizontal">
+                <form action="{'login'|alias}{if isset($goto) and $goto}?goto={$goto}{/if}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
 
                     <div class="form-group">
                         <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputUsername" name="login" placeholder="{t}Username{/t}" maxlength="30" value="{$smarty.post.login}">
+                            <input type="text" class="form-control" id="inputUsername" name="login" placeholder="{t}Username{/t}" maxlength="30" value="{$smarty.post.login}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-sm-2 control-label">{t}Password{/t}</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="{t}Password{/t}" maxlength="80">
+                            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="{t}Password{/t}" maxlength="80" required>
                         </div>
                     </div>
                     <!-- <div class="form-group">
