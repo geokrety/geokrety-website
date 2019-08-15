@@ -36,6 +36,10 @@ class User extends Base {
             'type' => Schema::DT_SMALLINT,
             'validate' => 'min_numeric,0|max_numeric,'.GK_USER_OBSERVATION_AREA_MAX_KM,
         ),
+        'statpic_template_id' => array(
+            'type' => Schema::DT_SMALLINT,
+            'validate' => 'min_numeric,1|max_numeric,'.GK_USER_STATPIC_TEMPLATE_COUNT,
+        ),
         'email_activation' => array(
             'has-many' => array('\GeoKrety\Model\EmailActivation', 'user'),
         ),
@@ -102,6 +106,9 @@ class User extends Base {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->refreshSecid();
+        });
+        $this->aftersave(function ($self) {
+            \GeoKrety\Service\UserBannerGenerator::generate($self);
         });
     }
 }
