@@ -14,7 +14,7 @@
                 <div class="radio radio-inline">
                     <label>
                         <input type="radio" name="statpic" value="{$statpic}" {if $user->statpic_template_id === $statpic} checked{/if}>
-                        {$statpic}{$statpic|statpictemplate nofilter}
+                        {$statpic|statpictemplate nofilter}
                     </label>
                 </div>
                 {/for}
