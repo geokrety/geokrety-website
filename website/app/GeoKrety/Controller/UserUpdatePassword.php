@@ -21,7 +21,7 @@ class UserUpdatePassword extends Base {
     }
 
     public function get(\Base $f3) {
-        Smarty::fetch('extends:full_screen_modal.tpl|dialog/user_update_password.tpl');
+        Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_password.tpl');
     }
 
     public function get_ajax(\Base $f3) {
