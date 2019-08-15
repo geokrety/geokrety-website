@@ -3,12 +3,15 @@
 {block name=css}
 <link rel="stylesheet" href="{GK_CDN_LEAFLET_CSS}">
 <link rel="stylesheet" href="{GK_CDN_STRENGTHIFY_CSS}">
+<link rel="stylesheet" href="{GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL}">
+<link rel="stylesheet" href="{GK_GOOGLE_RECAPTCHA_JS_URL}">
 {/block}
 
 {block name=js}
 <script type="text/javascript" src="{GK_CDN_LEAFLET_JS}"></script>
 <script type="text/javascript" src="{GK_CDN_LEAFLET_AJAX_JS}"></script>
 <script type="text/javascript" src="{GK_CDN_STRENGTHIFY_JS}"></script>
+<script type="text/javascript" src="{GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL}"></script>
 {/block}
 
 {block name=content}
