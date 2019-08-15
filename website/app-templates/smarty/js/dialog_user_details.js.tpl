@@ -15,6 +15,8 @@ $('#modal').on('shown.bs.modal', function(event) {
                 zxcvbn: '{GK_CDN_ZXCVBN_JS}'
             });
         });
+    } else if (typeName == 'user-refresh-secid') {
+        $(this).find('.modal-content').load("{'user_refresh_secid'|alias}");
     }
 });
 
