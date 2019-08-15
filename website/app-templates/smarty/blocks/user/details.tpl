@@ -12,7 +12,7 @@
                 {fa icon="rss"}
             </a>
             {if $user->isCurrentUser()}
-            <a class="btn btn-info btn-xs" href="#" title="{t}Password change{/t}">
+            <a class="btn btn-info btn-xs" href="#" title="{t}Password change{/t}" data-toggle="modal" data-target="#modal" data-type="user-update-password">
                 {fa icon="key"}
             </a>
             <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$user->id}" data-picture-type="2" data-is-avatar="on">

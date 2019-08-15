@@ -21,19 +21,19 @@ class MoveCommentCreate extends Base {
     }
 
     public function get_comment(\Base $f3) {
-        Smarty::render('extends:base_modal.tpl|dialog/move_comment_create.tpl');
+        Smarty::render('extends:full_screen_modal.tpl|dialog/move_comment_create.tpl');
     }
 
     public function get_comment_ajax(\Base $f3) {
-        Smarty::render('dialog/move_comment_create.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/move_comment_create.tpl');
     }
 
     public function get_missing(\Base $f3) {
-        Smarty::render('extends:base_modal.tpl|dialog/move_comment_create_missing.tpl');
+        Smarty::render('extends:full_screen_modal.tpl|dialog/move_comment_create_missing.tpl');
     }
 
     public function get_missing_ajax(\Base $f3) {
-        Smarty::render('dialog/move_comment_create_missing.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/move_comment_create_missing.tpl');
     }
 
     public function post_comment(\Base $f3) {

@@ -3,12 +3,13 @@
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="modalLabel">{t}Update your email address{/t}</h4>
 </div>
+
 <form id="update-email" name="update-email" action="{'user_update_email'|alias}" method="post" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
     <div class="modal-body">
 
         <div class="form-group">
             <label for="inputEmail">{t}Email address{/t}</label>
-            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="{t}Email{/t}" value="{$user->email}">
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="{t}Email{/t}" value="{$user->email}" required>
         </div>
 
         <div class="checkbox">

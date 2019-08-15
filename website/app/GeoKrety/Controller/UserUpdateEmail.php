@@ -21,11 +21,11 @@ class UserUpdateEmail extends Base {
     }
 
     public function get(\Base $f3) {
-        Smarty::render('extends:base_modal.tpl|dialog/user_update_email.tpl');
+        Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_email.tpl');
     }
 
     public function get_ajax(\Base $f3) {
-        Smarty::render('dialog/user_update_email.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/user_update_email.tpl');
     }
 
     public function post(\Base $f3) {

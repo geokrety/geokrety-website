@@ -2,10 +2,12 @@
 
 {block name=css}
 <link rel="stylesheet" href="{GK_CDN_LEAFLET_CSS}">
+<link rel="stylesheet" href="{GK_CDN_STRENGTHIFY_CSS}">
 {/block}
 
 {block name=js}
 <script type="text/javascript" src="{GK_CDN_LEAFLET_JS}"></script>
+<script type="text/javascript" src="{GK_CDN_STRENGTHIFY_JS}"></script>
 {/block}
 
 {block name=content}
