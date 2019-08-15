@@ -10,7 +10,7 @@ CHANGE `date` `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `user_id`
 ## Create views
 ```sql
 CREATE VIEW `users` AS
-SELECT `userid` as id,`user` as username,`haslo2` as password, email, email_invalid, joined as joined_on_datetime, wysylacmaile as daily_mails, ip, timestamp as updated_on_datetime, lang as prefered_language, lat as home_latitude, lon as home_longitude, country as home_country, statpic as statpic_template_id, ostatni_mail as last_mail_datetime, ostatni_login as last_login_datetime, secid
+SELECT `userid` as id,`user` as username,`haslo2` as password, email, email_invalid, joined as joined_on_datetime, wysylacmaile as daily_mails, ip, timestamp as updated_on_datetime, lang as preferred_language, lat as home_latitude, lon as home_longitude, country as home_country, statpic as statpic_template_id, ostatni_mail as last_mail_datetime, ostatni_login as last_login_datetime, secid
 FROM `gk-users`;
 ```
 
