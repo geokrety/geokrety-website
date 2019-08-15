@@ -50,6 +50,9 @@ class Config {
         define('GK_SMARTY_COMPILE_DIR', $_ENV['GK_SMARTY_COMPILE_DIR'] ?? '/tmp/smarty/compile/');
         define('GK_SMARTY_CACHE_DIR', $_ENV['GK_SMARTY_CACHE_DIR'] ?? '/tmp/smarty/cache/');
 
+        // Home coordinates
+        define('GK_USER_OBSERVATION_AREA_MAX_KM', $_ENV['GK_USER_OBSERVATION_AREA_MAX_KM'] ?? 10);
+
         // HTMLPurifier
         define('GK_HTMLPURIFIER_CACHE_DIR', $_ENV['GK_HTMLPURIFIER_CACHE_DIR'] ?? '/tmp/htmlpurifier/cache/');
 
@@ -106,7 +109,7 @@ class Config {
         define('GK_CDN_LEAFLET_NOUISLIDER_JS', $_ENV['GK_CDN_LEAFLET_NOUISLIDER_JS'] ?? GK_CDN_LIBRARIES_URL.'/noUiSlider/8.1.0/nouislider.min.js');
         define('GK_CDN_LEAFLET_NOUISLIDER_CSS', $_ENV['GK_CDN_LEAFLET_NOUISLIDER_CSS'] ?? GK_CDN_LIBRARIES_URL.'/noUiSlider/8.1.0/nouislider.min.css');
         define('GK_CDN_LEAFLET_SPIN_JS', $_ENV['GK_CDN_LEAFLET_SPIN_JS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet.spin.js/leaflet.spin.js');
-        define('GK_CDN_LEAFLET_FULLSCREEN_JS',$_ENV['GK_CDN_LEAFLET_FULLSCREEN_JS'] ??  GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js');
+        define('GK_CDN_LEAFLET_FULLSCREEN_JS', $_ENV['GK_CDN_LEAFLET_FULLSCREEN_JS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js');
         define('GK_CDN_LEAFLET_FULLSCREEN_CSS', $_ENV['GK_CDN_LEAFLET_FULLSCREEN_CSS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
 
         define('GK_CDN_SPIN_JS', $_ENV['GK_CDN_SPIN_JS'] ?? GK_CDN_LIBRARIES_URL.'/spin.js/2.3.2/spin.min.js');
@@ -114,7 +117,6 @@ class Config {
         define('GK_CDN_ZXCVBN_JS', $_ENV['GK_CDN_ZXCVBN_JS'] ?? GK_CDN_LIBRARIES_URL.'/zxcvbn/4.4.2/zxcvbn.min.js');
         define('GK_CDN_STRENGTHIFY_JS', $_ENV['GK_CDN_STRENGTHIFY_JS'] ?? GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/jquery.strengthify.min.js');
         define('GK_CDN_STRENGTHIFY_CSS', $_ENV['GK_CDN_STRENGTHIFY_CSS'] ?? GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/strengthify.min.css');
-
     }
 
     public static function printEnvironements() {

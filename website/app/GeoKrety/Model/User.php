@@ -24,6 +24,18 @@ class User extends Base {
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty|ciphered_password',
         ),
+        'home_latitude' => array(
+            'type' => Schema::DT_FLOAT,
+            'validate' => 'float',
+        ),
+        'home_longitude' => array(
+            'type' => Schema::DT_FLOAT,
+            'validate' => 'float',
+        ),
+        'observation_area' => array(
+            'type' => Schema::DT_SMALLINT,
+            'validate' => 'min_numeric,0|max_numeric,'.GK_USER_OBSERVATION_AREA_MAX_KM,
+        ),
         'email_activation' => array(
             'has-many' => array('\GeoKrety\Model\EmailActivation', 'user'),
         ),
@@ -59,6 +71,10 @@ class User extends Base {
 
     public function get_joined_on_datetime($value) {
         return self::get_date_object($value);
+    }
+
+    public function get_home_coordinates($value) {
+        return $this->home_latitude .' '. $this->home_longitude;
     }
 
     public function hasHomeCoordinates() {
