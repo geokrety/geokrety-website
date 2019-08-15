@@ -84,7 +84,6 @@ class Config {
         define('GK_CDN_LIBRARIES_PRISM_PHP_JS_URL', $_ENV['GK_CDN_LIBRARIES_PRISM_PHP_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-php.min.js');
         define('GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL', $_ENV['GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL'] ?? GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-markup-templating.min.js');
 
-
         define('GK_CDN_LEAFLET_JS', $_ENV['GK_CDN_LEAFLET_JS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.js');
         define('GK_CDN_LEAFLET_CSS', $_ENV['GK_CDN_LEAFLET_CSS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.css');
         define('GK_CDN_LEAFLET_CENTERCROSS_JS', $_ENV['GK_CDN_LEAFLET_CENTERCROSS_JS'] ?? GK_CDN_LIBRARIES_URL.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');
@@ -102,6 +101,10 @@ class Config {
         define('GK_CDN_LEAFLET_FULLSCREEN_CSS', $_ENV['GK_CDN_LEAFLET_FULLSCREEN_CSS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
 
         define('GK_CDN_SPIN_JS', $_ENV['GK_CDN_SPIN_JS'] ?? GK_CDN_LIBRARIES_URL.'/spin.js/2.3.2/spin.min.js');
+
+        define('GK_CDN_ZXCVBN_JS', $_ENV['GK_CDN_ZXCVBN_JS'] ?? GK_CDN_LIBRARIES_URL.'/zxcvbn/4.4.2/zxcvbn.min.js');
+        define('GK_CDN_STRENGTHIFY_JS', $_ENV['GK_CDN_STRENGTHIFY_JS'] ?? GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/jquery.strengthify.min.js');
+        define('GK_CDN_STRENGTHIFY_CSS', $_ENV['GK_CDN_STRENGTHIFY_CSS'] ?? GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/strengthify.min.css');
 
     }
 

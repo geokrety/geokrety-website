@@ -13,11 +13,15 @@ class User extends Base {
         'email' => array(
             'type' => Schema::DT_VARCHAR256,
             'filter' => 'trim',
-            'validate' => 'required|valid_email|email_host',
+            'validate' => 'valid_email|email_host',
         ),
         'prefered_language' => array(
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty|language_supported',
+        ),
+        'password' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'validate' => 'not_empty|ciphered_password',
         ),
         'email_activation' => array(
             'has-many' => array('\GeoKrety\Model\EmailActivation', 'user'),
