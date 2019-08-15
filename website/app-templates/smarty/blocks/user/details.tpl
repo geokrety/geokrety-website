@@ -3,7 +3,7 @@
         <img src="{GK_CDN_IMAGES_URL}/log-icons/2/icon_25.jpg" width="25" height="25" />
         {$user|userlink nofilter}
         <div class="btn-group pull-right" role="group">
-            {if $user->email}
+            {if $f3->get('SESSION.CURRENT_USER') && $user->email}
             <a class="btn btn-primary btn-xs" href="{'mail_to_user'|alias}" title="{t user=$user->email}Send a message to %1{/t}">
                 {fa icon="envelope"}
             </a>

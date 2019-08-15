@@ -28,11 +28,13 @@ class Login extends Base {
                 } else {
                     $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
                 }
-                $f3->reroute('@home');
                 \Flash::instance()->addMessage(_('Welcome on board!'), 'success');
+                $f3->reroute('@home');
             } else {
-                \Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
+                \Flash::instance()->addMessage(_('Something went wrong during the login procedure.'), 'danger');
             }
+        } else {
+            \Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
         }
         Smarty::render('extends:base.tpl|forms/login.tpl');
     }
