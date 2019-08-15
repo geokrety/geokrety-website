@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{GK_CDN_LIBRARIES_URL}/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{GK_CDN_CSS_URL}/krety-v2.css" media="screen" />
     <link rel="stylesheet" href="{GK_CDN_CSS_URL}/flag-icon.min.css" media="screen" />
+    <link rel="stylesheet" href="{GK_CDN_LIBRARIES_PARSLEY_CSS_URL}">
     {block name=css}{/block}
 
     <link rel="apple-touch-icon" sizes="180x180" href="{GK_CDN_IMAGES_URL}/favicon/apple-touch-icon.png" />
