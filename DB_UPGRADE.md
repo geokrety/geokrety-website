@@ -162,3 +162,14 @@ CHANGE `timestamp` `created_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAM
 ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE,
 RENAME TO `gk-email-activation`;
 ```
+
+```sql
+ALTER TABLE `gk-maile`
+CHANGE `id_maila` `id` bigint(20) NOT NULL AUTO_INCREMENT FIRST,
+CHANGE `random_string` `token` varchar(10) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `id`,
+CHANGE `temat` `subject` varchar(255) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `to`,
+CHANGE `tresc` `content` mediumtext COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `subject`,
+CHANGE `timestamp` `sent_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `content`,
+CHANGE `ip` `ip` varchar(46) NOT NULL AFTER `sent_on_datetime`,
+RENAME TO `gk-mail`;
+```

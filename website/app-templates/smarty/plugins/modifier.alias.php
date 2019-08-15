@@ -10,5 +10,5 @@
  * -------------------------------------------------------------
  */
 function smarty_modifier_alias($string, $params = '', $query = '') {
-    return \Base::instance()->alias($string, $params, $query);
+    return GK_SITE_BASE_SERVER_URL.\Base::instance()->alias($string, $params, $query);
 }

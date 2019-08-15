@@ -2,7 +2,7 @@
 
 namespace GeoKrety\Model;
 
-use GeoKrety\Service\HTMLPurifier;
+// use GeoKrety\Service\HTMLPurifier;
 use DB\SQL\Schema;
 
 class Geokret extends Base {

@@ -15,6 +15,7 @@ class Config {
         define('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH', $_ENV['GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH'] ?? 42);
         define('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY', $_ENV['GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY'] ?? 5);
         define('GK_SITE_SECID_CODE_LENGTH', $_ENV['GK_SITE_SECID_CODE_LENGTH'] ?? 128);
+        define('GK_SITE_MAIL_TOKEN_LENGTH', $_ENV['GK_SITE_MAIL_TOKEN_LENGTH'] ?? 10);
 
         // Environment
         define('GK_ENVIRONMENT', $_ENV['GK_ENVIRONMENT'] ?? 'dev');
@@ -60,6 +61,11 @@ class Config {
         // Statpic banner
         define('GK_USER_STATPIC_TEMPLATE_COUNT', $_ENV['GK_USER_STATPIC_TEMPLATE_COUNT'] ?? 9);
         define('GK_USER_STATPIC_FONT', $_ENV['GK_USER_STATPIC_FONT'] ?? 'RobotoCondensed-Regular.ttf');
+
+        // google api
+        define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', $_ENV['GK_GOOGLE_RECAPTCHA_PUBLIC_KEY'] ?? '');
+        define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', $_ENV['GK_GOOGLE_RECAPTCHA_SECRET_KEY'] ?? '');
+        define('GK_GOOGLE_RECAPTCHA_JS_URL', $_ENV['GK_GOOGLE_RECAPTCHA_JS_URL'] ?? 'https://www.google.com/recaptcha/api.js');
 
         // map api url
         define('GK_MAP_URL', $_ENV['GK_MAP_URL'] ?? 'https://api.geokretymap.org');
