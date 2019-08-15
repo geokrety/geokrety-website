@@ -79,7 +79,7 @@
                         {t}My account{/t} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="mypage.php"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}My details{/t}</a></li>
+                        <li><a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}My details{/t}</a></li>
                         {if isset($isSuperUser) and $isSuperUser}
                         <li><a href="_admin.php">{fa icon="support"} {t}Admin{/t}</a></li>
                         {/if}
