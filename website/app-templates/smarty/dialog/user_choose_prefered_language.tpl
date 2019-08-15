@@ -12,13 +12,12 @@
             <div class="col-sm-10">
                 <select class="form-control" id="inputLanguage" name="language">
                     {foreach $languages as $code => $lang}
-                    <option value="{$code}" {if $user->prefered_language === $code} selected{/if}>{$lang}</option>
+                    <option value="{$code}" {if $user->preferred_language === $code} selected{/if}>{$lang}</option>
                     {/foreach}
                 </select>
             </div>
         </div>
 
-        <hr />
         <em>{t}This will be the default language when you log in and the main language in the emails you may receive.{/t}</em>
 
     </div>

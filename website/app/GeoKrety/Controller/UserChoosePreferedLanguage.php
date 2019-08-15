@@ -23,17 +23,17 @@ class UserChoosePreferedLanguage extends Base {
     }
 
     public function get(\Base $f3) {
-        Smarty::render('extends:full_screen_modal.tpl|dialog/user_choose_prefered_language.tpl');
+        Smarty::render('extends:full_screen_modal.tpl|dialog/user_choose_preferred_language.tpl');
     }
 
     public function get_ajax(\Base $f3) {
-        Smarty::render('extends:base_modal.tpl|dialog/user_choose_prefered_language.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/user_choose_preferred_language.tpl');
     }
 
     public function post(\Base $f3) {
         $userid = $this->user->id;
         $user = $this->user;
-        $user->prefered_language = $f3->get('POST.language');
+        $user->preferred_language = $f3->get('POST.language');
 
         if ($user->validate()) {
             $user->save();

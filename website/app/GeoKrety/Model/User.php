@@ -16,7 +16,7 @@ class User extends Base {
             'filter' => 'trim',
             'validate' => 'valid_email|email_host',
         ),
-        'prefered_language' => array(
+        'preferred_language' => array(
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty|language_supported',
         ),
