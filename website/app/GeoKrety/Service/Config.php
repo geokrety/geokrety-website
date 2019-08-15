@@ -41,6 +41,7 @@ class Config {
         define('GK_PASSWORD_SEED', $_ENV['GK_PASSWORD_SEED'] ?? 'rand_string');
 
         // F3
+        define('GK_F3_UI', $_ENV['GK_F3_UI'] ?? './app-ui');
         define('GK_F3_TMP', $_ENV['GK_F3_TMP'] ?? '/tmp/f3/');
         define('GK_F3_CACHE', $_ENV['GK_F3_CACHE'] ?? 'redis=redis:6379');
 
@@ -50,11 +51,15 @@ class Config {
         define('GK_SMARTY_COMPILE_DIR', $_ENV['GK_SMARTY_COMPILE_DIR'] ?? '/tmp/smarty/compile/');
         define('GK_SMARTY_CACHE_DIR', $_ENV['GK_SMARTY_CACHE_DIR'] ?? '/tmp/smarty/cache/');
 
+        // HTMLPurifier
+        define('GK_HTMLPURIFIER_CACHE_DIR', $_ENV['GK_HTMLPURIFIER_CACHE_DIR'] ?? '/tmp/htmlpurifier/cache/');
+
         // Home coordinates
         define('GK_USER_OBSERVATION_AREA_MAX_KM', $_ENV['GK_USER_OBSERVATION_AREA_MAX_KM'] ?? 10);
 
-        // HTMLPurifier
-        define('GK_HTMLPURIFIER_CACHE_DIR', $_ENV['GK_HTMLPURIFIER_CACHE_DIR'] ?? '/tmp/htmlpurifier/cache/');
+        // Statpic banner
+        define('GK_USER_STATPIC_TEMPLATE_COUNT', $_ENV['GK_USER_STATPIC_TEMPLATE_COUNT'] ?? 9);
+        define('GK_USER_STATPIC_FONT', $_ENV['GK_USER_STATPIC_FONT'] ?? 'RobotoCondensed-Regular.ttf');
 
         // map api url
         define('GK_MAP_URL', $_ENV['GK_MAP_URL'] ?? 'https://api.geokretymap.org');

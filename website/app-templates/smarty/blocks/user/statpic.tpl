@@ -10,7 +10,7 @@
       </p>
 {if $user->isCurrentUser()}
       <p class="pull-right">
-        <a class="btn btn-warning btn-xs pull-right" href="#" title="{t}Choose statpic{/t}">
+        <a class="btn btn-warning btn-xs pull-right" href="{'user_template_chooser'|alias}" title="{t}Choose statpic{/t}">
           {fa icon="pencil"}
         </a>
       </p>
