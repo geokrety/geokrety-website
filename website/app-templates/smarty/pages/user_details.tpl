@@ -7,6 +7,7 @@
 
 {block name=js}
 <script type="text/javascript" src="{GK_CDN_LEAFLET_JS}"></script>
+<script type="text/javascript" src="{GK_CDN_LEAFLET_AJAX_JS}"></script>
 <script type="text/javascript" src="{GK_CDN_STRENGTHIFY_JS}"></script>
 {/block}
 
@@ -30,8 +31,12 @@
 {block name=javascript}
 {include file='js/_map_init.tpl.js'}
 
-initializeMap();
-// TODO load GeoKrety near home as geojson
+var map = initializeMap();
+
+// Load GeoKrety near home position
+var bounds = map.getBounds();
+var geojsonLayer = new L.GeoJSON.AJAX("{GK_MAP_URL}/geojson?latTL="+bounds.getNorthWest().lat+"&lonTL="+bounds.getSouthEast().lng+"&latBR="+bounds.getSouthEast().lat+"&lonBR="+bounds.getNorthWest().lng+"&limit=500&json=1&daysFrom=0&daysTo=45");
+geojsonLayer.addTo(map);
 
 // Bind modal
 {include 'js/dialog_user_details.js.tpl'}
