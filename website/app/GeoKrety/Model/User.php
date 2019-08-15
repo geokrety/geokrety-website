@@ -70,4 +70,22 @@ class User extends Base {
 
         return $f3->get('SESSION.CURRENT_USER') === $this->id;
     }
+
+    public function refreshSecid() {
+        // generate new secid
+        $seed = str_split(str_repeat('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 42));
+        shuffle($seed);
+        $rand = '';
+        foreach (array_rand($seed, GK_SITE_SECID_CODE_LENGTH) as $k) {
+            $rand .= $seed[$k];
+        }
+        $this->secid = $rand;
+    }
+
+    public function __construct() {
+        parent::__construct();
+        $this->beforeinsert(function ($self) {
+            $self->refreshSecid();
+        });
+    }
 }
