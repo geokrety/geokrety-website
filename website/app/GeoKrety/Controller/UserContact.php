@@ -7,7 +7,16 @@ use GeoKrety\Model\User;
 use GeoKrety\Model\Mail;
 
 class UserContact extends BaseUser {
-    public function loadToUser($f3) {
+
+	function getPostUrl(\Base $f3) {
+        return $f3->alias('mail_to_user');
+    }
+
+	function getPostRedirectUrl() {
+        return sprintf('@user_details(@userid=%d)', $this->userTo->id);
+    }
+
+    public function loadToUser(\Base $f3) {
         $user = new User();
         $user->load(array('id = ?', $f3->get('PARAMS.userid')));
         if ($user->dry()) {
@@ -18,35 +27,40 @@ class UserContact extends BaseUser {
         Smarty::assign('userTo', $this->userTo);
     }
 
-    public function get(\Base $f3) {
+    protected function _get(\Base $f3) {
+        Smarty::assign('postUrl', $this->getPostUrl($f3));
         $this->loadToUser($f3);
+    }
+
+    public function get(\Base $f3) {
+        $this->_get($f3);
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_contact.tpl');
     }
 
     public function get_ajax(\Base $f3) {
-        $this->loadToUser($f3);
+        $this->_get($f3);
         Smarty::render('extends:base_modal.tpl|dialog/user_contact.tpl');
     }
 
     public function post(\Base $f3) {
-        // reCaptcha
-        if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
-            $recaptcha = new \ReCaptcha\ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
-            $resp = $recaptcha->verify($f3->get('POST.g-recaptcha-response'), $f3->get('IP'));
-            if (!$resp->isSuccess()) {
-                \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
-                \Flash::instance()->addMessage(print_r($resp->getErrorCodes(), true), 'danger');
-                $this->get($f3);
-                die();
-            }
-        }
-
         $this->loadToUser($f3);
         $mail = new Mail();
         $mail->from = $this->user;
         $mail->to = $this->userTo;
         $mail->subject = $f3->get('POST.subject');
         $mail->content = $f3->get('POST.message');
+        Smarty::assign('mail', $mail);
+
+        // reCaptcha
+        if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
+            $recaptcha = new \ReCaptcha\ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
+            $resp = $recaptcha->verify($f3->get('POST.g-recaptcha-response'), $f3->get('IP'));
+            if (!$resp->isSuccess()) {
+                \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
+                $this->get($f3);
+                die();
+            }
+        }
 
         if ($mail->validate()) {
             $mail->save();
@@ -56,13 +70,12 @@ class UserContact extends BaseUser {
                 $this->get($f3);
                 die();
             } else {
-                Smarty::assign('mail', $mail);
                 $this->sendEmail($mail);
                 \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to->username), 'success');
             }
         }
 
-        $f3->reroute(sprintf('@user_details(@userid=%d)', $mail->to->id));
+        $f3->reroute($this->getPostRedirectUrl());
     }
 
     protected function sendEmail($mail) {
