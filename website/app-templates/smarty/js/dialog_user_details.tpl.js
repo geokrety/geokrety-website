@@ -19,23 +19,5 @@ $('#modal').on('shown.bs.modal', function(event) {
         });
     } else if (typeName == 'user-refresh-secid') {
         $(this).find('.modal-content').load("{'user_refresh_secid'|alias}");
-    } else if (typeName == 'user-contact') {
-        var id = button.data('id');
-        $(this).find('.modal-content').load("{'mail_to_user'|alias:'userid=%ID%'}".replace('%ID%', id), function() {
-            $('#user-contact').parsley();
-            // Bind SimpleMDE editor
-            inscrybmde = new InscrybMDE({
-                element: $("#message")[0],
-                hideIcons: ['side-by-side', 'fullscreen', 'quote', 'image'],
-                promptURLs: true,
-                spellChecker: false,
-                status: false,
-                forceSync: true,
-                renderingConfig: {
-                    singleLineBreaks: false,
-                },
-                minHeight: '100px',
-            });
-        });
     }
 });

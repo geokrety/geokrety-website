@@ -18,9 +18,9 @@
 
         <div class="btn-group pull-right" role="group">
             {if $f3->get('SESSION.CURRENT_USER') and $geokret->owner->email}
-            <a class="btn btn-primary btn-xs" href="{'mail_by_geokret'|alias}" title="{t user=$geokret->owner->username}Send a message to %1{/t}">
+            <button class="btn btn-primary btn-xs" title="{t user=$geokret->owner->username}Send a message to %1{/t}" data-toggle="modal" data-target="#modal" data-type="user-contact-by-geokret" data-id="{$geokret->id}">
                 {fa icon="envelope"}
-            </a>
+            </button>
             {/if}
             {if $geokret->isOwner()}
             <a class="btn btn-warning btn-xs" href="{'geokret_edit'|alias}" title="{t}Edit GeoKret details{/t}">

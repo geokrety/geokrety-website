@@ -17,7 +17,8 @@
 
 {include file="js/tooltips.tpl.js"}
 
-{if ! $f3->get('SESSION.IS_LOGGED_IN')}{include 'js/dialog_login.js.tpl'}{/if}
+{if !$f3->get('SESSION.IS_LOGGED_IN')}{include 'js/dialog_login.js.tpl'}{/if}
+{block name=javascript_modal}{/block}
 {block name=javascript}{/block}
 
         });

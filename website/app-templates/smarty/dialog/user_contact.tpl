@@ -5,6 +5,7 @@
 {block name=js}
 <script type="text/javascript" src="{GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL}"></script>
 <script type="text/javascript" src="{GK_GOOGLE_RECAPTCHA_JS_URL}"></script>
+<script type="text/javascript" src="{GK_CDN_SPIN_JS}"></script>
 {/block}
 
 {block name=modal_content}
@@ -13,7 +14,7 @@
     <h4 class="modal-title" id="modalLabel">{t}Contact user{/t}</h4>
 </div>
 
-<form id="user-contact" class="form-horizontal" action="{'mail_to_user'|alias}" method="post" data-parsley-validate data-parsley-priority-enabled="false" data-parsley-ui-enabled="true">
+<form id="user-contact" class="form-horizontal" action="{$postUrl}" method="post" data-parsley-validate data-parsley-priority-enabled="false" data-parsley-ui-enabled="true">
     <div class="modal-body">
 
         <div class="form-group">
@@ -26,14 +27,14 @@
         <div class="form-group">
             <label for="inputSubject" class="col-sm-2 control-label">{t}Subject{/t}</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control maxl" id="inputSubject" name="subject" placeholder="{t}Message subject{/t}" maxlength="75" required value="{if isset($smarty.post.subject)}{$smarty.post.subject}{else if isset($subject)}{$subject}{/if}">
+                <input type="text" class="form-control maxl" id="inputSubject" name="subject" placeholder="{t}Message subject{/t}" maxlength="75" required value="{$mail->subject}">
             </div>
         </div>
 
         <div class="form-group">
             <label for="inputUsername" class="col-sm-2 control-label">{t}Message{/t}</label>
             <div class="col-sm-10">
-                <textarea class="form-control maxl" rows="5" id="message" name="message" placeholder="{t}Message to user{/t}" maxlength="5120" required>{if isset($smarty.post.message)}{$smarty.post.message}{/if}</textarea>
+                <textarea class="form-control maxl" rows="5" id="message" name="message" placeholder="{t}Message to user{/t}" maxlength="5120" required>{$mail->content}</textarea>
             </div>
         </div>
 
@@ -55,20 +56,6 @@
 </form>
 {/block}
 
-{block name=javascript}
-$('#user-contact').parsley();
-
-// Bind SimpleMDE editor
-var inscrybmde = new InscrybMDE({
-    element: $("#message")[0],
-    hideIcons: ['side-by-side', 'fullscreen', 'quote', 'image'],
-    promptURLs: true,
-    spellChecker: false,
-    status: false,
-    forceSync: true,
-    renderingConfig: {
-        singleLineBreaks: false,
-    },
-    minHeight: '100px',
-});
+{block name=javascript_modal append}
+{include 'js/dialog_contact_user.tpl.js'}
 {/block}
