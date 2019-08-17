@@ -18,6 +18,8 @@
 {include file='elements/news.tpl'}
 {/foreach}
 
+<h2>{t}🔮 Work In Progress{/t}</h2>
+{include file='banners/wip.tpl'}
 {/block}
 
 
