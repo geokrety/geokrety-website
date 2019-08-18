@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1aa8c7d5c913a6ebd7fbd8a7167fae5e",
+    "content-hash": "0de7162219ba609a7e4779ad2695fe3c",
     "packages": [
         {
             "name": "bcosca/fatfree-core",
@@ -255,16 +255,16 @@
         },
         {
             "name": "google/recaptcha",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/recaptcha.git",
-                "reference": "c4a17d6af648d4f3814430cd103cba50b75b571c"
+                "reference": "98c4a6573b27e8b0990ea8789c74ea378795134c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/recaptcha/zipball/c4a17d6af648d4f3814430cd103cba50b75b571c",
-                "reference": "c4a17d6af648d4f3814430cd103cba50b75b571c",
+                "url": "https://api.github.com/repos/google/recaptcha/zipball/98c4a6573b27e8b0990ea8789c74ea378795134c",
+                "reference": "98c4a6573b27e8b0990ea8789c74ea378795134c",
                 "shasum": ""
             },
             "require": {
@@ -298,7 +298,7 @@
                 "recaptcha",
                 "spam"
             ],
-            "time": "2019-05-24T12:44:03+00:00"
+            "time": "2019-08-16T15:48:25+00:00"
         },
         {
             "name": "hautelook/phpass",
@@ -391,17 +391,11 @@
         },
         {
             "name": "ikkez/f3-cortex",
-            "version": "v1.6.0",
+            "version": "dev-issue-87",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ikkez/f3-cortex.git",
-                "reference": "b21fdf78c61a145adb027458f89f1dc60c50992c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ikkez/f3-cortex/zipball/b21fdf78c61a145adb027458f89f1dc60c50992c",
-                "reference": "b21fdf78c61a145adb027458f89f1dc60c50992c",
-                "shasum": ""
+                "url": "https://github.com/kumy/f3-cortex.git",
+                "reference": "a0322f790319dce6fd92957d35146ed879fe170f"
             },
             "require": {
                 "ikkez/f3-schema-builder": "2.*"
@@ -412,7 +406,6 @@
                     "lib/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0"
             ],
@@ -420,12 +413,12 @@
             "homepage": "https://github.com/ikkez/f3-cortex",
             "keywords": [
                 "F3",
+                "Mongo",
+                "ORM",
                 "fatfree",
-                "mongo",
-                "orm",
                 "sql"
             ],
-            "time": "2019-02-03T17:17:11+00:00"
+            "time": "2019-08-18T19:43:55+00:00"
         },
         {
             "name": "ikkez/f3-events",
@@ -2720,7 +2713,8 @@
     "minimum-stability": "beta",
     "stability-flags": {
         "benhall14/php-pagination": 20,
-        "league/geotools": 0
+        "league/geotools": 0,
+        "ikkez/f3-cortex": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

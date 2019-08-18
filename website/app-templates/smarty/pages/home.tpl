@@ -15,7 +15,7 @@
 
 <h2>{fa icon="newspaper-o"} {t}News{/t}</h2>
 {foreach from=$news item=item}
-{include file='elements/news.tpl'}
+{include file='elements/news.tpl' news=$item}
 {/foreach}
 
 <h2>{t}🔮 Work In Progress{/t}</h2>

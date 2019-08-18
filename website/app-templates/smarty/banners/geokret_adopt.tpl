@@ -1,4 +1,4 @@
-{if is_null($geokret->owner) or !is_null($geokret->owner_codes)}
+{if is_null($geokret->owner) or $geokret->owner_codes->count()}
 <div class="alert alert-info alert-dismissible" role="alert">
   {if $geokret->isOwner()}
   {t escape=no token=$geokret->owner_codes.0->token tracking_code=$geokret->tracking_code}You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret.{/t}
