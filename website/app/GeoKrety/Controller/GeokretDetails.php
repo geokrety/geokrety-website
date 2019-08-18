@@ -11,6 +11,7 @@ class GeokretDetails extends Base {
     public function get($f3) {
         // load GeoKret
         $geokret = new Geokret();
+        $geokret->filter('owner_codes', array('user = ?', null));
         $geokret->load(array('id = ?', $f3->get('PARAMS.gkid')));
         Smarty::assign('geokret', $geokret);
 

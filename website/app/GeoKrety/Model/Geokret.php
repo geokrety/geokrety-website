@@ -41,6 +41,9 @@ class Geokret extends Base {
         'moves' => array(
             'has-many' => array('\GeoKrety\Model\Move', 'geokret'),
         ),
+        'owner_codes' => array(
+            'has-many' => array('\GeoKrety\Model\OwnerCode', 'geokret'),
+        ),
         // 'avatar' => array(
         //     'belongs-to-one' => '\GeoKrety\Model\GeokretAvatar',
         // ),
