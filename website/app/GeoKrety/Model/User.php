@@ -107,8 +107,5 @@ class User extends Base {
         $this->beforeinsert(function ($self) {
             $self->refreshSecid();
         });
-        $this->aftersave(function ($self) {
-            \GeoKrety\Service\UserBannerGenerator::generate($self);
-        });
     }
 }

@@ -29,6 +29,7 @@ class Login extends Base {
                     $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
                 }
                 \Flash::instance()->addMessage(_('Welcome on board!'), 'success');
+                \Event::instance()->emit('user.login', $user);
                 $f3->reroute('@home');
             } else {
                 \Flash::instance()->addMessage(_('Something went wrong during the login procedure.'), 'danger');
@@ -45,9 +46,12 @@ class Login extends Base {
     // }
 
     public function logout($f3) {
+        $user = new \GeoKrety\Model\User();
+        $user->load(array('username = ?', $f3->get('SESSION.CURRENT_USER')));
         $f3->set('SESSION.CURRENT_USER', null);
         $f3->set('SESSION.IS_LOGGED_IN', null);
         $f3->set('SESSION.user.group', null);
+        \Event::instance()->emit('user.logout', $user);
         $f3->reroute('@home');
     }
 }

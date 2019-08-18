@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ca40b3a828d9af47a9a424680c9e5bb",
+    "content-hash": "1aa8c7d5c913a6ebd7fbd8a7167fae5e",
     "packages": [
         {
             "name": "bcosca/fatfree-core",
@@ -426,6 +426,42 @@
                 "sql"
             ],
             "time": "2019-02-03T17:17:11+00:00"
+        },
+        {
+            "name": "ikkez/f3-events",
+            "version": "v0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-events.git",
+                "reference": "4dab051ad68ec93efa8ac42045579afc440189c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-events/zipball/4dab051ad68ec93efa8ac42045579afc440189c3",
+                "reference": "4dab051ad68ec93efa8ac42045579afc440189c3",
+                "shasum": ""
+            },
+            "require": {
+                "bcosca/fatfree-core": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Sweet event system for the PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-events",
+            "keywords": [
+                "F3",
+                "event",
+                "fatfree"
+            ],
+            "time": "2017-03-27T09:54:13+00:00"
         },
         {
             "name": "ikkez/f3-falsum",

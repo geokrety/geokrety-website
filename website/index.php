@@ -46,4 +46,14 @@ $validator->addValidator('ciphered_password', function ($field, $input, $param =
 $validator->addFilter('HTMLPurifier', function ($value, $params = null) { return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value); });
 $validator->loadLang();
 
+// Listen Events
+$events = \Event::instance();
+//$events->on('user.login', function (\GeoKrety\Model\User $user) {});
+//$events->on('user.logout', function (\GeoKrety\Model\User $user) {});
+//$events->on('news-comment.new', function (\GeoKrety\Model\News $news) {});
+//$events->on('geokret.new', function (\GeoKrety\Model\Geokret $geokret) {});
+$events->on('user.statpic.template.changed', function (\GeoKrety\Model\User $user) {
+    \GeoKrety\Service\UserBannerGenerator::generate($user);
+});
+
 $f3->run();
