@@ -2,7 +2,7 @@
 <a class="anchor" id="moves"></a>
 
 {call pagination pg=$pg anchor='moves'}
-{foreach from=$moves.subset item=item}
+{foreach from=(array)$moves.subset item=item}
 {include file='elements/move.tpl' move=$item}
 
 {foreachelse}

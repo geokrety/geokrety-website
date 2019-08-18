@@ -6,8 +6,8 @@
 
 {call pagination pg=$pg anchor='news'}
 
-{foreach from=$news.subset item=item}
-{include file='elements/news.tpl'}
+{foreach from=(array)$news.subset item=item}
+{include file='elements/news.tpl' news=$item}
 {/foreach}
 
 {call pagination pg=$pg anchor='news'}

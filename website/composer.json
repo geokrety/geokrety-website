@@ -4,6 +4,10 @@
             "php": "5.6.32"
         }
     },
+    "repositories": [{
+        "url": "https://github.com/kumy/f3-cortex.git",
+        "type": "git"
+    }],
     "require": {
         "torann/json-ld": "0.0.14",
         "google/recaptcha": "^1.2",
@@ -18,7 +22,7 @@
         "joshtronic/php-loremipsum": "^1.0",
         "bcosca/fatfree-core": "^3.6",
         "ikkez/f3-flash": "^1.0",
-        "ikkez/f3-cortex": "^1.6",
+        "ikkez/f3-cortex": "dev-issue-87",
         "hautelook/phpass": "^1.1",
         "ikkez/f3-pagination": "^1.4",
         "xfra35/f3-access": "^1.0",
