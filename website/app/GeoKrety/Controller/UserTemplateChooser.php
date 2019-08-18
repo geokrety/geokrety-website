@@ -21,6 +21,7 @@ class UserTemplateChooser extends BaseUser {
                 \Flash::instance()->addMessage(_('Failed to save your preferred user banner template.'), 'danger');
             } else {
                 \Flash::instance()->addMessage(_('Your user banner template preference has been successfully saved.'), 'success');
+                \Event::instance()->emit('user.statpic.template.changed', $user);
             }
         } else {
             $this->get($f3);
