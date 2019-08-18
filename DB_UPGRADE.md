@@ -70,6 +70,9 @@ CHANGE `last_position` `last_position` int(10) unsigned NULL AFTER `pictures_cou
 CHANGE `last_log` `last_log` int(10) unsigned NULL AFTER `last_position`,
 CHANGE `avatar` `avatar` int(10) unsigned NULL AFTER `type`;
 
+UPDATE `gk-geokrety` SET `last_log` = NULL WHERE `last_log` = 0;
+UPDATE `gk-geokrety` SET `last_position` = NULL WHERE `last_position` = 0;
+
 ```
 
 ```sql
@@ -172,4 +175,17 @@ CHANGE `tresc` `content` mediumtext COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER 
 CHANGE `timestamp` `sent_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `content`,
 CHANGE `ip` `ip` varchar(46) NOT NULL AFTER `sent_on_datetime`,
 RENAME TO `gk-mail`;
+```
+
+```sql
+ALTER TABLE `gk-owner-codes`
+CHANGE `kret_id` `geokret` int(10) unsigned NOT NULL AFTER `id`,
+CHANGE `code` `token` varchar(20) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `geokret`,
+CHANGE `generated_date` `generated_on_datetime` datetime NULL DEFAULT CURRENT_TIMESTAMP AFTER `token`,
+CHANGE `claimed_date` `claimed_on_datetime` datetime NULL AFTER `generated_on_datetime`,
+CHANGE `user_id` `user` int(10) unsigned NULL AFTER `claimed_on_datetime`,
+ADD FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`),
+ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`);
+
+UPDATE `gk-owner-codes` SET `claimed_on_datetime` = NULL, `user` = NULL WHERE `user` = '0';
 ```

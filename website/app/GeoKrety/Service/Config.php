@@ -16,6 +16,7 @@ class Config {
         define('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY', $_ENV['GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY'] ?? 5);
         define('GK_SITE_SECID_CODE_LENGTH', $_ENV['GK_SITE_SECID_CODE_LENGTH'] ?? 128);
         define('GK_SITE_MAIL_TOKEN_LENGTH', $_ENV['GK_SITE_MAIL_TOKEN_LENGTH'] ?? 10);
+        define('GK_SITE_OWNER_CODE_LENGTH', $_ENV['GK_SITE_OWNER_CODE_LENGTH'] ?? 6);
 
         // Environment
         define('GK_ENVIRONMENT', $_ENV['GK_ENVIRONMENT'] ?? 'dev');
