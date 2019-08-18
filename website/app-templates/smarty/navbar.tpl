@@ -104,10 +104,6 @@
                 {else}
                 <li><a href="{'user_register'|alias}">{fa icon="user-plus"} {t}Create account{/t}</a></li>
                 <li><a href="{'login'|alias}">{fa icon="sign-in"} {t}Sign in{/t}</a>
-
-                    <button type="button" class="btn btn-default btn-xs" title="{t}Login{/t}" data-toggle="modal" data-target="#modal" data-type="login">
-                        {fa icon="bell-slash"}
-                    </button></li>
                 {/if}
             </ul>
 
