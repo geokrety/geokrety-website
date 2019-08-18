@@ -27,6 +27,11 @@ class NewsSubscription extends Base {
             \Flash::instance()->addMessage(_('Failed to update your subscriptions preferences.'), 'danger');
         }
 
+        if ($subscription->subscribed) {
+            \Flash::instance()->addMessage(_('You will now receive updates on new comments.'), 'success');
+        } else {
+            \Flash::instance()->addMessage(_('You will not receive updates anymore.'), 'success');
+        }
         $f3->reroute('news_details', 'newsid='.$f3->get('PARAMS.newsid'));
     }
 
