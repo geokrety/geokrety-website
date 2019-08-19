@@ -63,10 +63,16 @@ $events = \Event::instance();
 // $events->on('news-comment.deleted', function (\GeoKrety\Model\NewsComment $comment) {});
 // $events->on('move-comment.created', function (\GeoKrety\Model\MoveComment $comment) {});
 // $events->on('move-comment.deleted', function (\GeoKrety\Model\MoveComment $comment) {});
+// $events->on('contact.new', function (\GeoKrety\Model\Mail $mail) {});
 // $events->on('geokret.created', function (\GeoKrety\Model\Geokret $geokret) {});
 // $events->on('geokret.updated', function (\GeoKrety\Model\Geokret $geokret) {});
-// $events->on('geokret.claimed', function (\GeoKrety\Model\Geokret $geokret, ?\GeoKrety\Model\User $oldUser, \GeoKrety\Model\User $newUser) {});
-// $events->on('contact.new', function (\GeoKrety\Model\Mail $mail) {});
+// $events->on('geokret.owner_code.created', function (\GeoKrety\Model\OwnerCode $ownerCode) {});
+$events->on('geokret.claimed', function (\GeoKrety\Model\Geokret $geokret, $context) {  // context => $oldUser, $newUser
+    \GeoKrety\Service\UserBannerGenerator::generate($context['newUser']);
+    if (!is_null($context['oldUser'])) {
+        \GeoKrety\Service\UserBannerGenerator::generate($context['oldUser']);
+    }
+});
 $events->on('user.statpic.template.changed', function (\GeoKrety\Model\User $user) {
     \GeoKrety\Service\UserBannerGenerator::generate($user);
 });
