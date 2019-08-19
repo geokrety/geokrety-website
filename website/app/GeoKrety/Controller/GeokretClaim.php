@@ -55,7 +55,11 @@ class GeokretClaim extends Base {
                 \Flash::instance()->addMessage(sprintf(_('🎉 Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
                 $f3->get('DB')->commit();
                 $this->sendEmail($ownerCode->geokret, $oldOwner);
-                \Event::instance()->emit('geokret.claimed', $ownerCode->geokret, $oldOwner, $ownerCode->user);
+                $context = array(
+                    'oldUser' => $oldOwner,
+                    'newUser' => $ownerCode->user,
+                );
+                \Event::instance()->emit('geokret.claimed', $ownerCode->geokret, $context);
                 $f3->reroute('@geokret_details(@gkid='.$ownerCode->geokret->id.')');
             }
         }

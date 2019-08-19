@@ -13,6 +13,10 @@ class GeokretDetails extends Base {
         $geokret = new Geokret();
         $geokret->filter('owner_codes', array('user = ?', null));
         $geokret->load(array('id = ?', $f3->get('PARAMS.gkid')));
+        if ($geokret->dry()) {
+            \Flash::instance()->addMessage(_('This GeoKret doesn\'t exists.'), 'danger');
+            $f3->reroute('@home');
+        }
         Smarty::assign('geokret', $geokret);
 
         // Load move independently to use pagination

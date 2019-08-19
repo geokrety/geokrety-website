@@ -23,12 +23,14 @@
 {/block}
 
 {block name=javascript}
+{if $geokret->caches_count}
 {include file='js/_map_init.tpl.js'}
-
 initializeMap();
 // TODO load moves as geojson
+{/if}
 
 // Bind modal
 {include 'js/dialog_move_comment.js.tpl'}
 {include 'js/dialog_contact_user.tpl.js'}
+{include 'js/dialog_offer_for_adoption.tpl.js'}
 {/block}
