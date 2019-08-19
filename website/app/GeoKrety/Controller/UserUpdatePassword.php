@@ -72,7 +72,7 @@ class UserUpdatePassword extends Base {
         $smtp->set('To', $user->email);
         $smtp->set('Errors-To', GK_SITE_EMAIL);
         $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', _('GeoKrety: Your password has been changed'));
+        $smtp->set('Subject', GK_EMAIL_SUBJECT_PREFIX._('Your password has been changed'));
         if (!$smtp->send(Smarty::fetch('mails/password_changed.tpl'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
         }
