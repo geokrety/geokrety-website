@@ -25,7 +25,7 @@
 {/function}
 
 {function archive}
-<div class="col-md-4">{fa icon="archive"} s<a href="#">{t}Archive this GeoKret{/t}</a></div>
+<div class="col-md-4">{fa icon="archive"} <a href="#">{t}Archive this GeoKret{/t}</a></div>
 {/function}
 
 {function email}

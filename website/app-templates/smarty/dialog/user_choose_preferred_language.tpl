@@ -1,7 +1,7 @@
 {block name=modal_content}
 <div class="modal-header alert-info">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="modalLabel">{t}Choose your prefered language{/t}</h4>
+    <h4 class="modal-title" id="modalLabel">{t}Choose your preferred language{/t}</h4>
 </div>
 
 <form name="languageChange" action="{'user_language_chooser'|alias}" method="post">
