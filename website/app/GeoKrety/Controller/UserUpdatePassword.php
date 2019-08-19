@@ -59,6 +59,7 @@ class UserUpdatePassword extends Base {
         if ($user->validate()) {
             $user->save();
             $this->sendEmail($user);
+            \Event::instance()->emit('user.password.changed', $user);
             \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
         }
 

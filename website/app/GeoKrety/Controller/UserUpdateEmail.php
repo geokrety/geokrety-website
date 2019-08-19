@@ -66,6 +66,7 @@ class UserUpdateEmail extends Base {
                     $activation->save();
                     Smarty::assign('token', $activation->token);
                     $this->sendEmail($user);
+                    \Event::instance()->emit('user.email.change', $activation);
                     \Flash::instance()->addMessage(sprintf(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for %d days.'), GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY), 'warning');
                 } else {
                     $error = true;

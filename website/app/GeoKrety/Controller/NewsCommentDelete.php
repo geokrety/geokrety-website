@@ -17,6 +17,7 @@ class NewsCommentDelete extends Base {
         $newsid = $comment->news->id;
         if ($comment->valid()) {
             $comment->erase();
+            \Event::instance()->emit('news-comment.deleted', $comment);
         }
         $f3->reroute("@news_details(@newsid=$newsid)");
     }

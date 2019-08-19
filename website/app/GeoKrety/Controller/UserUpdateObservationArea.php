@@ -36,6 +36,7 @@ class UserUpdateObservationArea extends Base {
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to save your home coordinates.'), 'danger');
             } else {
+                \Event::instance()->emit('user.home_location.changed', $user);
                 \Flash::instance()->addMessage(_('Your home coordinates were successfully saved.'), 'success');
             }
         } else {

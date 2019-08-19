@@ -33,10 +33,12 @@ class UserChoosePreferedLanguage extends Base {
     public function post(\Base $f3) {
         $userid = $this->user->id;
         $user = $this->user;
+        $oldlanguage = $user->preferred_language;
         $user->preferred_language = $f3->get('POST.language');
 
         if ($user->validate()) {
             $user->save();
+            \Event::instance()->emit('user.language.changed', $user, $oldlanguage);
             \Flash::instance()->addMessage(_('Language updated.'), 'success');
         } else {
             $this->get($f3);
