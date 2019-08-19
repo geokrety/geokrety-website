@@ -3,7 +3,7 @@
 {block name=content}
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">{t}Select your prefered statpic background{/t}</h3>
+        <h3 class="panel-title">{t}Select your preferred statpic background{/t}</h3>
     </div>
     <div class="panel-body">
 

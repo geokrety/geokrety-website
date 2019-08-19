@@ -33,7 +33,7 @@
                     {if $user->preferred_language}{$user->preferred_language|language}{else}<em>{t}Nothing selected{/t}</em>{/if}
                     {if $user->isCurrentUser() }
                     <div class="btn-group pull-right" role="group">
-                        <button type="button" class="btn btn-warning btn-xs" title="{t}Choose prefered language{/t}" data-toggle="modal" data-target="#modal" data-type="user-choose-language">
+                        <button type="button" class="btn btn-warning btn-xs" title="{t}Choose preferred language{/t}" data-toggle="modal" data-target="#modal" data-type="user-choose-language">
                             {fa icon="pencil"}
                         </button>
                     </div>
