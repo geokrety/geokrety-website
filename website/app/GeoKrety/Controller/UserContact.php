@@ -83,7 +83,7 @@ class UserContact extends BaseUser {
         $smtp->set('From', GK_SITE_EMAIL);
         $smtp->set('Errors-To', GK_SITE_EMAIL);
         $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', sprintf(_('GeoKrety: contact from user %s'), $mail->from->username));
+        $smtp->set('Subject', GK_EMAIL_SUBJECT_PREFIX.sprintf(_('Contact from user %s'), $mail->from->username));
 
         $smtp->set('To', $mail->to->email);
         if (!$smtp->send(Smarty::fetch('mails/user_contact.tpl'))) {

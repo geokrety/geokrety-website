@@ -90,7 +90,7 @@ class UserUpdateEmail extends Base {
         $smtp->set('From', GK_SITE_EMAIL);
         $smtp->set('Errors-To', GK_SITE_EMAIL);
         $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', _('GeoKrety: changing your email address'));
+        $smtp->set('Subject', GK_EMAIL_SUBJECT_PREFIX._('Changing your email address'));
 
         $smtp->set('To', $user->email);
         if (!$smtp->send(Smarty::fetch('mails/email_changed_to_old_address.tpl'))) {
