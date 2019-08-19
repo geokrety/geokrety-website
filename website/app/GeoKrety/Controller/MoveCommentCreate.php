@@ -46,6 +46,7 @@ class MoveCommentCreate extends Base {
 
         if ($comment->validate()) {
             $comment->save();
+            \Event::instance()->emit('move-comment.created', $comment);
             \Flash::instance()->addMessage(_('Comment saved.'), 'success');
         } else {
             Smarty::assign('comment', $comment);
@@ -67,6 +68,7 @@ class MoveCommentCreate extends Base {
 
         if ($comment->validate()) {
             $comment->save();
+            \Event::instance()->emit('move-comment.created', $comment);
             \Flash::instance()->addMessage(_('Comment saved.'), 'success');
         } else {
             Smarty::assign('comment', $comment);

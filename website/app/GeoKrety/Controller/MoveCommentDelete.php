@@ -33,6 +33,7 @@ class MoveCommentDelete extends Base {
 
         if ($comment->valid()) {
             $comment->erase();
+            \Event::instance()->emit('move-comment.deleted', $comment);
             \Flash::instance()->addMessage(_('Comment removed.'), 'success');
         } else {
             \Flash::instance()->addMessage(_('Failed to delete comment.'), 'danger');

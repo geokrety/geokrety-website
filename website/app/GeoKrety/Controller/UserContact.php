@@ -7,12 +7,11 @@ use GeoKrety\Model\User;
 use GeoKrety\Model\Mail;
 
 class UserContact extends BaseUser {
-
-	function getPostUrl(\Base $f3) {
+    public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_to_user');
     }
 
-	function getPostRedirectUrl() {
+    public function getPostRedirectUrl() {
         return sprintf('@user_details(@userid=%d)', $this->userTo->id);
     }
 
@@ -71,6 +70,7 @@ class UserContact extends BaseUser {
                 die();
             } else {
                 $this->sendEmail($mail);
+                \Event::instance()->emit('contact.created', $mail);
                 \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to->username), 'success');
             }
         }

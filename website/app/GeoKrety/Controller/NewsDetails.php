@@ -53,7 +53,7 @@ class NewsDetails extends Base {
                 \Flash::instance()->addMessage(_('Failed to create comment.'), 'danger');
             } else {
                 \Flash::instance()->addMessage(_('Your comment has been saved.'), 'success');
-                \Event::instance()->emit('news-comment.new', $comment->news);
+                \Event::instance()->emit('news-comment.created', $comment);
                 $f3->reroute('news_details', 'newsid='.$f3->get('PARAMS.newsid'));
             }
         }

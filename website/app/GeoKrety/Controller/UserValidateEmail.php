@@ -23,6 +23,7 @@ class UserValidateEmail extends Base {
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to activate your email address.'), 'danger');
             } else {
+                \Event::instance()->emit('user.email.changed', $activation);
                 \Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
             }
 
