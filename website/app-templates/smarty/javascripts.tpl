@@ -5,6 +5,7 @@
 <script type="text/javascript" src="{GK_CDN_LIBRARIES_URL}/preview-image-jquery/1.0/preview-image.min.js"></script>
 <script type="text/javascript" src="{GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL}"></script>
 <script type="text/javascript" src="{GK_CDN_LIBRARIES_PARSLEY_JS_URL}"></script>
+<script type="text/javascript" src="{GK_CDN_SPIN_JS}"></script>
 {block name=js}{/block}
 
 <script type="text/javascript">

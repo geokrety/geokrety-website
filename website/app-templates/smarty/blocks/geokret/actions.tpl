@@ -34,6 +34,10 @@
 {/if}
 {/function}
 
+{function transfer}
+<div class="col-md-4">{fa icon="handshake-o"} <a href="#">{t}Transfer ownership{/t}</a></div>
+{/function}
+
 {function empty}
 <div class="col-md-4">&nbsp;</div>
 {/function}
@@ -53,6 +57,7 @@
         <div class="row">
           {statistics}
           {empty}
+          {transfer}
         </div>
       {else}
         <div class="row">

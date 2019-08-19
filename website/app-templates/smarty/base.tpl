@@ -12,12 +12,12 @@
         {include file='banners/user_email_pending_validation.tpl'}
         {include file='banners/flash_messages.tpl'}
         {block name=content}{/block}
+        <div id ="spinner-center" style="top:30%;left:50%;z-index: 3000000000;"></div>
     </div>
 {include file='footer.tpl'}
 {include file='navbar.tpl'}
 {include file="dialog/base_modal.tpl"}
 {include file='javascripts.tpl'}
 {include file='github_link.tpl'}
-<div id ="spinner-center" style="position:fixed;top:30%;left:50%;z-index: 3000000000;"></div>
 </body>
 </html>
