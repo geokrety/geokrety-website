@@ -20,7 +20,7 @@
                         </div>
                         <div class="pull-right">
                             {$move->moved_on_datetime|print_date nofilter} /
-                            {$move->author|userlink nofilter}
+                            {$move->author|userlink:$move->username nofilter}
                             {$move|application_icon nofilter}
                         </div>
 

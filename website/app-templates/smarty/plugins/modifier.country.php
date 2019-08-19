@@ -11,7 +11,10 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a flag for a country
  * -------------------------------------------------------------
  */
-function smarty_modifier_country(string $countryCode) {
+function smarty_modifier_country(?string $countryCode) {
+    if (is_null($countryCode)) {
+        return;
+    }
     $countryCode = smarty_modifier_escape($countryCode);
     // TODO localize country name in title
     return '<span class="flag-icon flag-icon-'.$countryCode.'" title="'.$countryCode.'"></span>';
