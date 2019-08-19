@@ -23,6 +23,8 @@ class Config {
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
         define('GK_DEBUG', isset($_ENV['GK_DEBUG']) && filter_var($_ENV['GK_DEBUG'], FILTER_VALIDATE_BOOLEAN));
         define('GK_F3_DEBUG', $_ENV['GK_DEBUG'] ?? 1);
+        define('GK_APP_NAME', $_ENV['GK_APP_NAME'] ?? 'www');
+        define('GK_APP_VERSION', $_ENV['GK_APP_VERSION'] ?? 'dev');
         define('GK_EMAIL_SUBJECT_PREFIX', $_ENV['GK_EMAIL_SUBJECT_PREFIX'] ?? '[GeoKrety] ');
 
         // DATABASE config

@@ -38,3 +38,8 @@
     </div>
 </div>
 {/block}
+
+
+{block name=javascript append}
+{include 'js/geokret_claim.tpl.js'}
+{/block}

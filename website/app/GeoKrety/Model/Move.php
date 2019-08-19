@@ -3,8 +3,11 @@
 namespace GeoKrety\Model;
 
 use GeoKrety\Service\HTMLPurifier;
+use DB\SQL\Schema;
 
 class Move extends Base {
+    use \Validation\Traits\CortexTrait;
+
     protected $db = 'DB';
     protected $table = 'gk-ruchy';
 
@@ -14,6 +17,10 @@ class Move extends Base {
         ),
         'geokret' => array(
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
+        ),
+        'comment' => array(
+            'type' => Schema::DT_TEXT,
+            'filter' => 'HTMLPurifier',
         ),
         'comments' => array(
             'has-many' => array('\GeoKrety\Model\MoveComment', 'move'),
@@ -28,6 +35,9 @@ class Move extends Base {
         //     'belongs-to-one' => '\GeoKrety\Model\Move',
         // ),
         'created_on_datetime' => array(
+             'type' => \DB\SQL\Schema::DT_DATETIME,
+        ),
+        'moved_on_datetime' => array(
              'type' => \DB\SQL\Schema::DT_DATETIME,
         ),
         'updated_on_datetime' => array(
@@ -59,5 +69,13 @@ class Move extends Base {
         $f3 = \Base::instance();
 
         return $f3->get('SESSION.CURRENT_USER') === $this->author->id;
+    }
+
+    public function __construct() {
+        parent::__construct();
+        $this->beforeinsert(function ($self) {
+            $self->touch('created_on_datetime');
+            $self->touch('moved_on_datetime');
+        });
     }
 }
