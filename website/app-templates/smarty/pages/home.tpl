@@ -13,13 +13,12 @@
   </div>
 </div>
 
-<h2>{fa icon="newspaper-o"} {t}News{/t}</h2>
+<h2>📰 {t}News{/t}</h2>
 {foreach from=$news item=item}
 {include file='elements/news.tpl' news=$item}
 {/foreach}
 
-<h2>{fa icon="newspaper-o"} {t}Latest moves{/t}</h2>
-
+<h2>🥾 {t}Latest moves{/t}</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -40,8 +39,28 @@
   </table>
 </div>
 
-<h2>{t}🔮 Work In Progress{/t}</h2>
+<h2>📷 {t}Recent pictures{/t}</h2>
 {include file='banners/wip.tpl'}
+
+<h2>🐥 {t}Recently created GeoKrety{/t}</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>{t}ID{/t}</th>
+        <th class="text-center">{t}Owner{/t}</th>
+        <th class="text-center">{t}Birthdate{/t}</th>
+      </tr>
+    </thead>
+    <tbody>
+{foreach from=$geokrety item=item}
+{include file='elements/geokrety_as_list_recently_born.tpl' geokret=$item}
+{/foreach}
+    </tbody>
+  </table>
+</div>
+
 {/block}
 
 
