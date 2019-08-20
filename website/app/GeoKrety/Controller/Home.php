@@ -18,7 +18,7 @@ class Home extends Base {
 
         // Load latest news
         $news = new News();
-        $news = $news->find(null, ['order' => 'updated_on_datetime DESC', 'limit' => 3], GK_SITE_CACHE_TTL_LATEST_NEWS);
+        $news = $news->find(null, ['order' => 'created_on_datetime DESC', 'limit' => 3], GK_SITE_CACHE_TTL_LATEST_NEWS);
         Smarty::assign('news', $news);
 
         Smarty::render('pages/home.tpl');

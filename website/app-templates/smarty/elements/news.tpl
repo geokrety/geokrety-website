@@ -17,7 +17,7 @@
             </h3>
         </div>
         <div class="panel-title pull-right">
-            {$news->updated_on_datetime|print_date nofilter}
+            {$news->created_on_datetime|print_date nofilter}
             {$news|newslink nofilter}
             <i>({if !is_null($news->author)}{$news->author|userlink nofilter}{else}{$news->author_name}{/if})</i>
         </div>
