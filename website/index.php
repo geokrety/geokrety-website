@@ -50,15 +50,15 @@ $validator->loadLang();
 $events = \Event::instance();
 // $events->on('user.login', function (\GeoKrety\Model\User $user) {});
 // $events->on('user.logout', function (\GeoKrety\Model\User $user) {});
-// $events->on('user.language.changed', function (\GeoKrety\Model\User $user, ?string $oldLanguage) {});
+// $events->on('user.language.changed', function (\GeoKrety\Model\User $user, $context) {});  // context => $oldLanguage
 // $events->on('user.home_location.changed', function (\GeoKrety\Model\User $user) {});
 // $events->on('user.email.change', function (\GeoKrety\Model\EmailActivation $activation) {});
 // $events->on('user.email.changed', function (\GeoKrety\Model\EmailActivation $activation) {});
 // $events->on('user.password.changed', function (\GeoKrety\Model\User $user) {});
 // $events->on('user.secid.changed', function (\GeoKrety\Model\User $user) {});
 // $events->on('user.statpic.template.changed', function (\GeoKrety\Model\User $user) {});
-// $events->on('news.subscribed', function (\GeoKrety\Model\News $news, \GeoKrety\Model\User $user) {});
-// $events->on('news.unsubscribed', function (\GeoKrety\Model\News $news, \GeoKrety\Model\User $user) {});
+// $events->on('news.subscribed', function (\GeoKrety\Model\News $news) {});
+// $events->on('news.unsubscribed', function (\GeoKrety\Model\News $news) {});
 // $events->on('news-comment.created', function (\GeoKrety\Model\NewsComment $comment) {});
 // $events->on('news-comment.deleted', function (\GeoKrety\Model\NewsComment $comment) {});
 // $events->on('move-comment.created', function (\GeoKrety\Model\MoveComment $comment) {});

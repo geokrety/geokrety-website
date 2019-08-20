@@ -28,10 +28,10 @@ class NewsSubscription extends Base {
         }
 
         if ($subscription->subscribed) {
-            \Event::instance()->emit('news.subscribed', $subscription->news, $subscription->user);
+            \Event::instance()->emit('news.subscribed', $subscription->news);
             \Flash::instance()->addMessage(_('You will now receive updates on new comments.'), 'success');
         } else {
-            \Event::instance()->emit('news.unsubscribed', $subscription->news, $subscription->user);
+            \Event::instance()->emit('news.unsubscribed', $subscription->news);
             \Flash::instance()->addMessage(_('You will not receive updates anymore.'), 'success');
         }
         $f3->reroute('news_details', 'newsid='.$f3->get('PARAMS.newsid'));
