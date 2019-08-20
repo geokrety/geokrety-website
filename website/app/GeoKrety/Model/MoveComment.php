@@ -62,7 +62,7 @@ class MoveComment extends Base {
 
     public function __construct() {
         parent::__construct();
-        $this->afterinsert(function ($self) {
+        $this->aftersave(function ($self) {
             $self->move->comments_count = $self->count(array('move = ?', $self->move->id), null, 0); // Disable TTL
             $self->move->save();
         });

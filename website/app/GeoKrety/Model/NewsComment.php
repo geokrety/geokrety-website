@@ -30,4 +30,18 @@ class NewsComment extends Base {
 
         return $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
+
+    public function __construct() {
+        parent::__construct();
+        $this->aftersave(function ($self) {
+            $self->news->comments_count = $self->count(array('news = ?', $self->news->id), null, 0); // Disable TTL
+            $self->news->save();
+            \Cache::instance()->clear('cacheHomeLatestNews');
+        });
+        $this->aftererase(function ($self) {
+            $self->news->comments_count = $self->count(array('news = ?', $self->news->id), null, 0); // Disable TTL
+            $self->news->save();
+            \Cache::instance()->clear('cacheHomeLatestNews');
+        });
+    }
 }

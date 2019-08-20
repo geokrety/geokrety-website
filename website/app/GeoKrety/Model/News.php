@@ -2,9 +2,13 @@
 
 namespace GeoKrety\Model;
 
+use DB\SQL\Schema;
+
 class News extends Base {
+    use \Validation\Traits\CortexTrait;
+
     protected $db = 'DB';
-    protected $table = 'news';
+    protected $table = 'gk-news';
 
     protected $fieldConf = array(
         'author' => array(
@@ -16,9 +20,19 @@ class News extends Base {
         'subscriptions' => array(
             'has-many' => array('\GeoKrety\Model\NewsSubscription', 'news'),
         ),
+        'created_on_datetime' => array(
+             'type' => Schema::DT_DATETIME,
+        ),
+        'last_commented_on_datetime' => array(
+             'type' => Schema::DT_DATETIME,
+        ),
     );
 
-    public function get_updated_on_datetime($value) {
+    public function get_created_on_datetime($value) {
+        return self::get_date_object($value);
+    }
+
+    public function get_last_commented_on_datetime($value) {
         return self::get_date_object($value);
     }
 
