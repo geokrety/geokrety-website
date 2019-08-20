@@ -75,6 +75,10 @@ class Config {
         define('GK_MAP_URL', $_ENV['GK_MAP_URL'] ?? 'https://api.geokretymap.org');
         define('GK_MAP_DEFAULT_PARAMS', $_ENV['GK_MAP_DEFAULT_PARAMS'] ?? '#2/42.941/2.109/1/1/0/0/90/');
 
+        // Home LATEST COUNTS
+        define('GK_HOME_COUNT_NEWS', $_ENV['GK_HOME_COUNT_NEWS'] ?? 3);
+        define('GK_HOME_COUNT_MOVES', $_ENV['GK_HOME_COUNT_MOVES'] ?? 10);
+
         // PAGINATION LIMITS
         define('GK_PAGINATION_NEWS', $_ENV['GK_PAGINATION_NEWS'] ?? 2);
         define('GK_PAGINATION_GEOKRET_MOVES', $_ENV['GK_PAGINATION_GEOKRET_MOVES'] ?? 10);
@@ -83,7 +87,7 @@ class Config {
         define('GK_SITE_CACHE_TTL_WAYPOINT', $_ENV['GK_SITE_CACHE_TTL_WAYPOINT'] ?? 3600);
         define('GK_SITE_CACHE_TTL_STATS', $_ENV['GK_SITE_CACHE_TTL_STATS'] ?? 600);
         define('GK_SITE_CACHE_TTL_LATEST_NEWS', $_ENV['GK_SITE_CACHE_TTL_LATEST_NEWS'] ?? 1800);
-        define('GK_SITE_CACHE_TTL_USER_MOVED_GEOKRET', $_ENV['GK_SITE_CACHE_TTL_USER_MOVED_GEOKRET'] ?? 1800);
+        define('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY', $_ENV['GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY'] ?? 0);
 
         // API LIMITS
         define('GK_API_EXPORT_LIMIT_DAYS', $_ENV['GK_API_EXPORT_LIMIT_DAYS'] ?? 10);

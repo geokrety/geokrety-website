@@ -25,6 +25,12 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     );
 
+    const LOG_TYPES_COUNT_KILOMETERS = array(
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_DIPPED,
+    );
+
     const LOG_TYPES_THEORICALLY_IN_CACHE = array(
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
@@ -33,7 +39,7 @@ class LogType {
     private $logtype;
 
     public function __construct($logtype = null) {
-        $this->logtype = $logtype;
+        $this->logtype = (int) $logtype;
     }
 
     public function getLogTypeId() {
@@ -53,7 +59,11 @@ class LogType {
     }
 
     public function isCoordinatesRequired() {
-        return in_array($this->logtype, self::LOG_TYPES_REQUIRING_COORDINATES);
+        return in_array($this->logtype, self::LOG_TYPES_REQUIRING_COORDINATES, true);
+    }
+
+    public function isCountingKilometers() {
+        return in_array($this->logtype, self::LOG_TYPES_COUNT_KILOMETERS, true);
     }
 
     public function isTheoricallyInCache() {

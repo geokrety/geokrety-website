@@ -80,6 +80,13 @@ CHANGE `user` `author` int(10) unsigned NULL DEFAULT '0' AFTER `moved_on_datetim
 CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`;
 ```
 
+**Fix some weird dates**
+```sql
+UPDATE `gk-ruchy`
+SET created_on_datetime=moved_on_datetime
+WHERE created_on_datetime < '2000-01-01 00:00:00'
+OR created_on_datetime > '2029-01-01 00:00:00';
+```
 
 **Find rows not having foreign key available and fix them**
 ```sql
@@ -95,6 +102,22 @@ WHERE author IN (18747, 30494, 37469);
 UPDATE `gk-ruchy` SET `author` = NULL WHERE `author` = 0;
 ALTER TABLE `gk-ruchy`
 CHANGE `author` `author` int(10) unsigned NULL AFTER `moved_on_datetime`,
+ADD FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`);
+
+SELECT distinct(geokret)
+FROM `gk-ruchy`
+WHERE geokret NOT IN (SELECT DISTINCT id FROM `gk-geokrety`)
+LIMIT 50;
+
+UPDATE `gk-ruchy`
+SET geokret = NULL
+WHERE geokret IN (0, 5295, 15335, 30163, 30164, 30166, 30168, 30169, 30170, 65632, 65633, 65634, 65635, 65636, 65637, 65638, 65642);
+
+DELETE FROM `gk-ruchy`
+WHERE geokret = 0;
+
+ALTER TABLE `gk-ruchy`
+ADD FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`),
 ADD FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`);
 ```
 
