@@ -94,6 +94,12 @@ class Geokret extends Base {
         return $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
     }
 
+    public function isHolder() {
+        $f3 = \Base::instance();
+
+        return $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
+    }
+
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {

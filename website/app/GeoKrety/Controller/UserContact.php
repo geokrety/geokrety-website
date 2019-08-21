@@ -6,7 +6,7 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
 use GeoKrety\Model\Mail;
 
-class UserContact extends BaseUser {
+class UserContact extends BaseCurrentUser {
     public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_to_user');
     }

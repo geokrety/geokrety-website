@@ -4,7 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 
-class UserTemplateChooser extends BaseUser {
+class UserTemplateChooser extends BaseCurrentUser {
     public function get(\Base $f3) {
         Smarty::assign('statpic_template_count', GK_USER_STATPIC_TEMPLATE_COUNT);
         Smarty::render('pages/user_template_chooser.tpl');
