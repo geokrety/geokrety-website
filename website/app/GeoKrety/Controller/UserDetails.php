@@ -9,7 +9,7 @@ use GeoKrety\Service\AwardGenerator;
 
 class UserDetails extends Base {
     public function get($f3) {
-        // load GeoKret
+        // load User
         $user = new User();
         $user->filter('badges', null, array('order' => 'awarded_on_datetime ASC'));
         $user->load(array('id = ?', $f3->get('PARAMS.userid')));
