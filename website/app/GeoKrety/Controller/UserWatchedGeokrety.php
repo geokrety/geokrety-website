@@ -11,7 +11,7 @@ class UserWatchedGeokrety extends BaseUser {
         // Load watched GeoKrety
         $geokret = new Geokret();
         $geokret->has('watchers', array('user = ?', $this->user->id));
-        $subset = $geokret->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_USER_WATCHED_GEOKRETY, $filter, null);
+        $subset = $geokret->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_USER_WATCHED_GEOKRETY, null, null);
         Smarty::assign('geokrety', $subset);
         // Paginate
         $pages = new Pagination($subset['total'], $subset['limit']);
