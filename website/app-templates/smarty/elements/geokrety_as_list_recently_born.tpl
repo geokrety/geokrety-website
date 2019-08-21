@@ -2,6 +2,7 @@
     <td>{$geokret|gkicon nofilter}</td>
     <td>
         {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
+        <small>{$geokret->gkid}</small>
     </td>
     <td class="text-center">
         {$geokret->owner|userlink nofilter}

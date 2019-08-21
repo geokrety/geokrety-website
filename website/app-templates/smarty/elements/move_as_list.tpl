@@ -4,7 +4,7 @@
     </td>
     <td>
         {$move->geokret|gklink nofilter} {$move->geokret|gkavatar nofilter}<br />
-        <small><span title="{$move->geokret->name}">{$move->geokret->name|truncate:30:"…"}</span></small>
+        <small>{$move->geokret->gkid}</small>
     </td>
     <td>
         {$move->country|country nofilter}
