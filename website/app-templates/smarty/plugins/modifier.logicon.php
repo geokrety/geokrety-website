@@ -12,5 +12,8 @@
 function smarty_modifier_logicon(\GeoKrety\Model\Move $move, bool $showSmall = false) {
     $gkType = $move->geokret->type->getTypeId();
 
-    return '<img src="'.GK_CDN_IMAGES_URL.'/log-icons/'.$gkType.'/'.($showSmall?'2':'').$move->logtype->getLogTypeId().'.png" title="'.$move->id.': '.$move->logtype->getLogTypeString().'">';
+    $url = GK_SITE_BASE_SERVER_URL.\Base::instance()->alias('geokret_details', '@gkid='.$move->geokret->id);
+    $img = '<img src="'.GK_CDN_IMAGES_URL.'/log-icons/'.$gkType.'/'.($showSmall ? '2' : '').$move->logtype->getLogTypeId().'.png" title="'.$move->id.': '.$move->logtype->getLogTypeString().'">';
+
+    return '<a href="'.$url.'#log'.$move->id.'">'.$img.'</a>';
 }

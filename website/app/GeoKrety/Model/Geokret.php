@@ -76,6 +76,10 @@ class Geokret extends Base {
         return sprintf("GK%04X", $this->id);
     }
 
+    public function get_name($value) {
+        return html_entity_decode($value);
+    }
+
     public function get_type($value) {
         return new \GeoKrety\GeokretyType($value);
     }
