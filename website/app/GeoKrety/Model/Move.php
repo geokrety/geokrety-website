@@ -49,6 +49,10 @@ class Move extends Base {
         return HTMLPurifier::getPurifier()->purify($value);
     }
 
+    public function get_username($value) {
+        return html_entity_decode($value);
+    }
+
     public function get_logtype($value) {
         return new \GeoKrety\LogType($value);
     }
