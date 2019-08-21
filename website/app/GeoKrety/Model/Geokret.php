@@ -98,13 +98,13 @@ class Geokret extends Base {
     public function isOwner() {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
+        return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
     }
 
     public function isHolder() {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
+        return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
     }
 
     public function __construct() {

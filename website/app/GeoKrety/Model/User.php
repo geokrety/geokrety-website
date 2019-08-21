@@ -91,7 +91,7 @@ class User extends Base {
     public function isCurrentUser() {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') === $this->id;
+        return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->id;
     }
 
     public function refreshSecid() {

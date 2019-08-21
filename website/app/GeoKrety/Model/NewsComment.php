@@ -28,7 +28,7 @@ class NewsComment extends Base {
     public function isAuthor() {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') === $this->author->id;
+        return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
 
     public function __construct() {
