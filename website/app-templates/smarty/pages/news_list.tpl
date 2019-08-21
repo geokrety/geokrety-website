@@ -6,9 +6,11 @@
 
 {call pagination pg=$pg anchor='news'}
 
-{foreach from=(array)$news.subset item=item}
+{if $news.subset}
+{foreach from=$news.subset item=item}
 {include file='elements/news.tpl' news=$item}
 {/foreach}
+{/if}
 
 {call pagination pg=$pg anchor='news'}
 {/block}

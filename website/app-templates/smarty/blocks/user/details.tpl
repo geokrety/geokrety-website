@@ -44,7 +44,7 @@
                 <dd>
                     {if $user->email}
                     {$user->email}
-                    {else if $user->email_activation->count()}
+                    {else if $user->email_activation}
                     <em>{t}Pending email validation, don't forget to click the link in validation mail!{/t}</em>
                     {else}
                     <em>{t}No email address, please add one!{/t}</em>
