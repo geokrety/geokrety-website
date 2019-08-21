@@ -62,6 +62,7 @@ CHANGE `avatar` `avatar` int(10) unsigned NULL AFTER `type`;
 
 UPDATE `gk-geokrety` SET `last_log` = NULL WHERE `last_log` = 0;
 UPDATE `gk-geokrety` SET `last_position` = NULL WHERE `last_position` = 0;
+UPDATE `gk-geokrety` SET `holder` = NULL WHERE `holder` = 0;
 
 ```
 
@@ -220,3 +221,17 @@ ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`);
 
 UPDATE `gk-owner-codes` SET `claimed_on_datetime` = NULL, `user` = NULL WHERE `user` = '0';
 ```
+
+```sql
+ALTER TABLE `gk-obserwable`
+CHANGE `userid` `user` int(10) unsigned NOT NULL FIRST,
+CHANGE `id` `geokret` int(10) unsigned NOT NULL AFTER `user`,
+ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`),
+ADD FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`),
+RENAME TO `gk-watched`;
+```
+
+
+
+
+

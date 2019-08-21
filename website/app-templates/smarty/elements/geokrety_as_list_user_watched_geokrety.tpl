@@ -7,6 +7,9 @@
         <small>{$geokret->gkid}</small>
     </td>
     <td class="text-center">
+        {$geokret->owner|userlink:'' nofilter}
+    </td>
+    <td class="text-center">
         {if !is_null($geokret->last_position)}
         {$geokret->last_position->country|country nofilter}
         {$geokret->last_position|cachelink nofilter}

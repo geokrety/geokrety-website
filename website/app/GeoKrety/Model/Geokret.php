@@ -44,6 +44,9 @@ class Geokret extends Base {
         'owner_codes' => array(
             'has-many' => array('\GeoKrety\Model\OwnerCode', 'geokret'),
         ),
+        'watchers' => array(
+            'has-many' => array('\GeoKrety\Model\Watched', 'geokret'),
+        ),
         // 'avatar' => array(
         //     'belongs-to-one' => '\GeoKrety\Model\GeokretAvatar',
         // ),

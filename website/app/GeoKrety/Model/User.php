@@ -64,6 +64,9 @@ class User extends Base {
         'geokrety_held' => array(
             'has-many' => array('\GeoKrety\Model\Geokret', 'holder'),
         ),
+        'watched_geokrety' => array(
+            'has-many' => array('\GeoKrety\Model\Watched', 'user'),
+        ),
         'badges' => array(
             'has-many' => array('\GeoKrety\Model\Badge', 'holder'),
         ),
