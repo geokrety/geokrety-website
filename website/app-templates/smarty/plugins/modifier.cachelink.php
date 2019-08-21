@@ -13,6 +13,7 @@ include_once 'waypoint_info.php';
  * -------------------------------------------------------------
  */
 function smarty_modifier_cachelink(\GeoKrety\Model\Move $move) {
+    // TODO
     return $move->waypoint;
 
     // if (!in_array('tripStep', array_keys($params)) || empty($params['tripStep'])) {
