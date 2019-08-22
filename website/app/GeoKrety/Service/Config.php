@@ -73,7 +73,10 @@ class Config {
 
         // map api url
         define('GK_MAP_URL', $_ENV['GK_MAP_URL'] ?? 'https://api.geokretymap.org');
-        define('GK_MAP_DEFAULT_PARAMS', $_ENV['GK_MAP_DEFAULT_PARAMS'] ?? '#2/42.941/2.109/1/1/0/0/90/');
+        define('GK_MAP_DEFAULT_ZOOM', $_ENV['GK_MAP_DEFAULT_ZOOM'] ?? 4);
+        define('GK_MAP_DEFAULT_ZOOM_USER_HOME', $_ENV['GK_MAP_DEFAULT_ZOOM_USER_HOME'] ?? 8);
+        define('GK_MAP_DEFAULT_LAT', $_ENV['GK_MAP_DEFAULT_LAT'] ?? 42.941);
+        define('GK_MAP_DEFAULT_LON', $_ENV['GK_MAP_DEFAULT_LON'] ?? 2.109);
 
         // Home LATEST COUNTS
         define('GK_HOME_COUNT_NEWS', $_ENV['GK_HOME_COUNT_NEWS'] ?? 3);
