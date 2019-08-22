@@ -4,7 +4,7 @@
 {include file='macros/pagination.tpl'}
 <a class="anchor" id="recent-moves"></a>
 
-<h2>🛩️ {t username=$user->username}%1's recent moves{/t}</h2>
+<h2>🛩️ {t username=$user->username}%1's GeoKrety recent moves{/t}</h2>
 <div class="row">
     <div class="col-xs-12 col-md-9">
 
