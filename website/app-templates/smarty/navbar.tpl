@@ -30,14 +30,7 @@
                         <li><a href="{'photo_gallery'|alias}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> {t}Photo gallery{/t}</a></li>
                     </ul>
                 </li>
-                {capture name="mapParameters"}
-                {if $f3->get('SESSION.IS_LOGGED_IN') and isset($user) and isset($user->lat) and isset($user->lon) and empty($user->lat) and empty($user->lon)}
-                #11/{$user->lat}/{$user->lon}/1/1/0/0/90/
-                {else}
-                {GK_MAP_DEFAULT_PARAMS}
-                {/if}
-                {/capture}
-                <li><a href="{'geokrety_map'|alias}">{fa icon="map"} {t}GeoKrety Map{/t}</a></li>
+                <li><a href="{'geokrety_map'|alias}#{\GeoKrety\Controller\Map::buildFragmentNearUserHome()}">{fa icon="map"} {t}GeoKrety Map{/t}</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -96,7 +89,7 @@
 
                         </li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="{'user_owned_map'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}">{fa icon="map"} {t}Where are my GeoKrety?{/t}</a></li>
+                        <li><a href="{'geokrety_map'|alias}#{\GeoKrety\Controller\Map::buildFragmentUserIdGeokrety($f3->get('SESSION.CURRENT_USER'))}">{fa icon="map"} {t}Where are my GeoKrety?{/t}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{'logout'|alias}">{fa icon="sign-out"} {t}Sign out{/t}</a></li>
                     </ul>

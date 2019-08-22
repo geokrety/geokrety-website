@@ -31,11 +31,11 @@
       </li>
       <li>
         {fa icon="map"}
-        <a href="#">{t}Where are my GeoKrety?{/t}</a>
+        <a href="{'geokrety_map'|alias}#{\GeoKrety\Controller\Map::buildFragmentUserIdGeokrety($f3->get('PARAMS.userid'))}">{t}Where are my GeoKrety?{/t}</a>
       </li>
       <li>
         {fa icon="bar-chart-o"}
-        <a href="{'user_owned_map'|alias}">{t}User stats{/t}</a>
+        <a href="{'user_statistics'|alias}">{t}User stats{/t}</a>
       </li>
     </ul>
   </div>

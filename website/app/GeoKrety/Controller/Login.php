@@ -22,6 +22,7 @@ class Login extends Base {
             $user->load(array('username = ?', $f3->get('POST.login')));
             if ($user->valid()) {
                 $f3->set('SESSION.CURRENT_USER', $user->id);
+                $f3->set('SESSION.CURRENT_USERNAME', $user->username);
                 $f3->set('SESSION.IS_LOGGED_IN', true);
                 if (in_array($user->id, GK_SITE_ADMINISTRATORS)) {
                     $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_ADMINISTRATORS);
@@ -47,8 +48,9 @@ class Login extends Base {
 
     public function logout($f3) {
         $user = new \GeoKrety\Model\User();
-        $user->load(array('username = ?', $f3->get('SESSION.CURRENT_USER')));
+        $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
         $f3->set('SESSION.CURRENT_USER', null);
+        $f3->set('SESSION.CURRENT_USERNAME', null);
         $f3->set('SESSION.IS_LOGGED_IN', null);
         $f3->set('SESSION.user.group', null);
         \Event::instance()->emit('user.logout', $user);
