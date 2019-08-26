@@ -2,9 +2,12 @@
 
 namespace GeoKrety\Model;
 
+use DB\SQL\Schema;
 use GeoKrety\Service\HTMLPurifier;
 
 class NewsComment extends Base {
+    use \Validation\Traits\CortexTrait;
+
     protected $db = 'DB';
     protected $table = 'gk-news-comments';
 
@@ -14,6 +17,21 @@ class NewsComment extends Base {
         ),
         'news' => array(
             'belongs-to-one' => '\GeoKrety\Model\News',
+        ),
+        'updated_on_datetime' => array(
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+        ),
+        'content' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
+            'validate' => 'not_empty',
+            'filter' => 'trim|HTMLPurifier',
+        ),
+        'icon' => array(
+            'type' => Schema::DT_INT1,
+            'nullable' => false,
         ),
     );
 

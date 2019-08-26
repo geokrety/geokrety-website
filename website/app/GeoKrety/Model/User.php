@@ -81,7 +81,7 @@ class User extends Base {
     }
 
     public function get_home_coordinates($value) {
-        return $this->home_latitude .' '. $this->home_longitude;
+        return $this->home_latitude.' '.$this->home_longitude;
     }
 
     public function hasHomeCoordinates() {

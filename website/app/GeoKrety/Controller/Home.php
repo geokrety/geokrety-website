@@ -25,7 +25,7 @@ class Home extends Base {
 
         // Load latest moves
         $move = new Move();
-        $moves = $move->find(null, ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_MOVES], GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY);
+        $moves = $move->find(null, ['order' => 'updated_on_datetime DESC', 'limit' => GK_HOME_COUNT_MOVES], GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY);
         Smarty::assign('moves', $moves);
 
         // Load latest moves

@@ -52,7 +52,7 @@ class UserBannerGenerator {
         ob_start();
         imagepng($raw);
         $img->load(ob_get_clean());
-        
+
         // Save image to disk
         $f3->write(sprintf('statpics/%d.png', $user->id), $img->dump('png', 9));
     }

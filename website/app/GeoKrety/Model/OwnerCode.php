@@ -1,6 +1,7 @@
 <?php
 
 namespace GeoKrety\Model;
+
 use DB\SQL\Schema;
 
 class OwnerCode extends Base {

@@ -10,7 +10,7 @@ class NewsList extends Base {
     public function get($f3) {
         $news = new News();
         $filter = array();
-        $option = array('order' => 'updated_on_datetime DESC');
+        $option = array('order' => 'created_on_datetime DESC');
         $subset = $news->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_NEWS, $filter, $option);
         Smarty::assign('news', $subset);
 

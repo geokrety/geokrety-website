@@ -33,6 +33,7 @@ class NewsCommentDelete extends Base {
             Smarty::render('dialog/alert_403.tpl');
             die();
         }
+
         return $comment;
     }
 }

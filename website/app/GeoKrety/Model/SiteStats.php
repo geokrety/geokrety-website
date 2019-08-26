@@ -3,7 +3,6 @@
 namespace GeoKrety\Model;
 
 class SiteStats extends Base {
-  protected
-    $db = 'DB',
-    $table = 'site_values';
+    protected $db = 'DB';
+    protected $table = 'site_values';
 }

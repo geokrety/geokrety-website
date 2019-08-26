@@ -8,7 +8,6 @@ namespace GeoKrety\Service;
  * https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1
  */
 class LanguageService extends \Prefab {
-
     private $isoCodesFactory = null;
 
     const DEFAULT_LANGUAGE_CODE = 'en';

@@ -21,6 +21,7 @@ class Map extends Base {
         }
         $user = new User();
         $user->load(array('id = ?', $ownerId));
+
         return self::buildFragment(null, null, GK_MAP_DEFAULT_ZOOM, $user->username, $old, $ghost, $missing, $dayMin, $dayMax);
     }
 

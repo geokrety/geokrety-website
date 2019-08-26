@@ -71,6 +71,9 @@ class Config {
         define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', $_ENV['GK_GOOGLE_RECAPTCHA_SECRET_KEY'] ?? '');
         define('GK_GOOGLE_RECAPTCHA_JS_URL', $_ENV['GK_GOOGLE_RECAPTCHA_JS_URL'] ?? 'https://www.google.com/recaptcha/api.js');
 
+        // go2geo url
+        define('GK_SERVICE_GO2GEO_URL', $_ENV['GK_SERVICE_GO2GEO_URL'] ?? 'https://geokrety.org/go2geo/?wpt=%s');
+
         // map api url
         define('GK_MAP_URL', $_ENV['GK_MAP_URL'] ?? 'https://api.geokretymap.org');
         define('GK_MAP_DEFAULT_ZOOM', $_ENV['GK_MAP_DEFAULT_ZOOM'] ?? 4);
@@ -101,6 +104,20 @@ class Config {
 
         // API LIMITS
         define('GK_API_EXPORT_LIMIT_DAYS', $_ENV['GK_API_EXPORT_LIMIT_DAYS'] ?? 10);
+
+        // ITEMS LIMITS
+        define('GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS', $_ENV['GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS'] ?? 10);
+        define('GK_CHECK_WAYPOINT_MIN_LENGTH', $_ENV['GK_CHECK_WAYPOINT_MIN_LENGTH'] ?? 4);
+        define('GK_CHECK_WAYPOINT_MAX_LENGTH', $_ENV['GK_CHECK_WAYPOINT_MAX_LENGTH'] ?? 20);
+        define('GK_CHECK_WAYPOINT_NAME_MIN_LENGTH', $_ENV['GK_CHECK_WAYPOINT_NAME_MIN_LENGTH'] ?? 4);
+        define('GK_CHECK_WAYPOINT_NAME_MAX_LENGTH', $_ENV['GK_CHECK_WAYPOINT_NAME_MAX_LENGTH'] ?? 20);
+        define('GK_CHECK_WAYPOINT_NAME_COUNT', $_ENV['GK_CHECK_WAYPOINT_NAME_COUNT'] ?? 10);
+
+        // SIZES
+        define('GK_GEOKRET_NAME_MIN_LENGTH', $_ENV['GK_GEOKRET_NAME_MIN_LENGTH'] ?? 4);
+        define('GK_GEOKRET_NAME_MAX_LENGTH', $_ENV['GK_GEOKRET_NAME_MAX_LENGTH'] ?? 75);
+        define('GK_USERNAME_MIN_LENGTH', $_ENV['GK_USERNAME_MIN_LENGTH'] ?? 3);
+        define('GK_USERNAME_MAX_LENGTH', $_ENV['GK_USERNAME_MAX_LENGTH'] ?? 20);
 
         // CDN
         define('GK_CDN_SERVER_URL', $_ENV['GK_CDN_SERVER_URL'] ?? 'https://cdn.geokrety.org');
@@ -142,6 +159,14 @@ class Config {
         define('GK_CDN_LEAFLET_FULLSCREEN_CSS', $_ENV['GK_CDN_LEAFLET_FULLSCREEN_CSS'] ?? GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
 
         define('GK_CDN_SPIN_JS', $_ENV['GK_CDN_SPIN_JS'] ?? GK_CDN_LIBRARIES_URL.'/spin.js/2.3.2/spin.min.js');
+
+        define('GK_CDN_MOMENT_JS', $_ENV['GK_CDN_MOMENT_JS'] ?? GK_CDN_LIBRARIES_URL.'/moment.js/2.24.0/moment-with-locales.min.js');
+        define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS', $_ENV['GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS'] ?? GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
+        define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS', $_ENV['GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS'] ?? GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
+
+        define('GK_CDN_LATINIZE_JS', $_ENV['GK_CDN_LATINIZE_JS'] ?? GK_CDN_LIBRARIES_URL.'/latinize/0.4.0/latinize.min.js');
+
+        define('GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS', $_ENV['GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS'] ?? GK_CDN_LIBRARIES_URL.'/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js');
 
         define('GK_CDN_ZXCVBN_JS', $_ENV['GK_CDN_ZXCVBN_JS'] ?? GK_CDN_LIBRARIES_URL.'/zxcvbn/4.4.2/zxcvbn.min.js');
         define('GK_CDN_STRENGTHIFY_JS', $_ENV['GK_CDN_STRENGTHIFY_JS'] ?? GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/jquery.strengthify.min.js');

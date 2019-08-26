@@ -73,12 +73,13 @@ CHANGE `id` `geokret` int(10) unsigned NOT NULL AFTER `id`,
 CHANGE `country` `country` varchar(3) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'ISO 3166-1 https://fr.wikipedia.org/wiki/ISO_3166-1' AFTER `alt`,
 CHANGE `droga` `distance` int(10) unsigned NULL AFTER `country`,
 CHANGE `data` `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `waypoint`,
-CHANGE `data_dodania` `moved_on_datetime` datetime NULL COMMENT 'The move as configured by user' AFTER `created_on_datetime`,
+CHANGE `data_dodania` `moved_on_datetime` datetime NOT NULL COMMENT 'The move as configured by user' AFTER `created_on_datetime`,
 CHANGE `koment` `comment` varchar(5120) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `user`,
 CHANGE `zdjecia` `pictures_count` tinyint(3) unsigned NULL DEFAULT '0' AFTER `comment`,
 CHANGE `komentarze` `comments_count` smallint(5) unsigned NULL DEFAULT '0' AFTER `pictures_count`,
 CHANGE `user` `author` int(10) unsigned NULL DEFAULT '0' AFTER `moved_on_datetime`,
-CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`;
+CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`,
+CHANGE `username` `username` varchar(20) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `logtype`;
 ```
 
 **Fix some weird dates**
@@ -87,6 +88,13 @@ UPDATE `gk-ruchy`
 SET created_on_datetime=moved_on_datetime
 WHERE created_on_datetime < '2000-01-01 00:00:00'
 OR created_on_datetime > '2029-01-01 00:00:00';
+```
+
+**Set username as null**
+```sql
+UPDATE `gk-ruchy`
+SET username=null
+WHERE username='';
 ```
 
 **Find rows not having foreign key available and fix them**

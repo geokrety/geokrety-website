@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DB\SQL\Schema;
-
 class Watched extends Base {
     protected $db = 'DB';
     protected $table = 'gk-watched';

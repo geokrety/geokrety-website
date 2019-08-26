@@ -10,6 +10,7 @@ class GeokretCreate extends Base {
         Smarty::assign('isCreate', true);
         Smarty::render('pages/geokret_create.tpl');
     }
+
     public function post($f3) {
         $geokret = new Geokret();
         $geokret->copyFrom('POST');

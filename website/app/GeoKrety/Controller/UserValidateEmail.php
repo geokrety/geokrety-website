@@ -26,7 +26,6 @@ class UserValidateEmail extends Base {
                 \Event::instance()->emit('user.email.changed', $activation);
                 \Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
             }
-
         }
         $f3->reroute('@home');
     }

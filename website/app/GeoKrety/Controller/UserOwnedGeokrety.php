@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\LogType;
 use GeoKrety\Pagination;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;

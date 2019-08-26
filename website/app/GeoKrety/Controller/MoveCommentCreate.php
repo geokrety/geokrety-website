@@ -54,7 +54,7 @@ class MoveCommentCreate extends Base {
             die();
         }
 
-        $f3->reroute("@geokret_details(@gkid=$gkid)");
+        $f3->reroute("@geokret_details(@gkid=$gkid)#log".$comment->move->id);
     }
 
     public function post_missing(\Base $f3) {
@@ -76,6 +76,6 @@ class MoveCommentCreate extends Base {
             die();
         }
 
-        $f3->reroute("@geokret_details(@gkid=$gkid)");
+        $f3->reroute("@geokret_details(@gkid=$gkid)#log".$comment->move->id);
     }
 }

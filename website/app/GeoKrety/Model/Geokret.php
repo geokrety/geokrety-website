@@ -15,7 +15,7 @@ class Geokret extends Base {
         'name' => array(
             'type' => Schema::DT_VARCHAR128,
             'filter' => 'trim|HTMLPurifier',
-            'validate' => 'not_empty|min_len,3|max_len,75',
+            'validate' => 'not_empty|min_len,'.GK_GEOKRET_NAME_MIN_LENGTH.'|max_len,'.GK_GEOKRET_NAME_MAX_LENGTH,
         ),
         'type' => array(
             'type' => Schema::DT_VARCHAR128,
@@ -76,11 +76,15 @@ class Geokret extends Base {
     // }
 
     public function get_gkid() {
-        return sprintf("GK%04X", $this->id);
+        return sprintf('GK%04X', $this->id);
     }
 
     public function get_name($value) {
         return html_entity_decode($value);
+    }
+
+    public function get_tracking_code($value) {
+        return strtoupper($value);
     }
 
     public function get_type($value) {
