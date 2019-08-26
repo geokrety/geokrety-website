@@ -11,26 +11,57 @@ class User extends Base {
     protected $table = 'gk-users';
 
     protected $fieldConf = array(
+        'username' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+        ),
         'email' => array(
             'type' => Schema::DT_VARCHAR256,
             'filter' => 'trim',
             'validate' => 'valid_email|email_host',
         ),
+        'email_invalid' => array(
+            'type' => Schema::DT_INT1,
+            'nullable' => false,
+            'default' => 0,
+        ),
         'preferred_language' => array(
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty|language_supported',
+        ),
+        'joined_on_datetime' => array(
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
+        ),
+        'daily_mails' => array(
+            'type' => Schema::DT_INT1,
+            'default' => '1',
+            'nullable' => false,
+        ),
+        'daily_mails_hour' => array(
+            'type' => Schema::DT_INT4,
+            'nullable' => false,
+        ),
+        'registration_ip' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
         ),
         'password' => array(
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty|ciphered_password',
         ),
         'home_latitude' => array(
-            'type' => Schema::DT_FLOAT,
+            'type' => Schema::DT_DOUBLE,
             'validate' => 'float',
         ),
         'home_longitude' => array(
-            'type' => Schema::DT_FLOAT,
+            'type' => Schema::DT_DOUBLE,
             'validate' => 'float',
+        ),
+        'home_country' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
         ),
         'observation_area' => array(
             'type' => Schema::DT_SMALLINT,
@@ -39,6 +70,19 @@ class User extends Base {
         'statpic_template_id' => array(
             'type' => Schema::DT_SMALLINT,
             'validate' => 'min_numeric,1|max_numeric,'.GK_USER_STATPIC_TEMPLATE_COUNT,
+        ),
+        'updated_on_datetime' => array(
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+        ),
+        'last_mail_datetime' => array(
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
+        ),
+        'last_login_datetime' => array(
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
         ),
         'email_activation' => array(
             'has-many' => array('\GeoKrety\Model\EmailActivation', 'user'),

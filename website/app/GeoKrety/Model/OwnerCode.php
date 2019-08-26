@@ -19,9 +19,16 @@ class OwnerCode extends Base {
         ),
         'generated_on_datetime' => array(
             'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
         ),
         'claimed_on_datetime' => array(
-             'type' => Schema::DT_DATETIME,
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
+        ),
+        'token' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
         ),
     );
 

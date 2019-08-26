@@ -14,6 +14,18 @@ class News extends Base {
         'author' => array(
             'belongs-to-one' => '\GeoKrety\Model\User',
         ),
+        'author_name' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
+        ),
+        'title' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
+        ),
+        'content' => array(
+            'type' => Schema::DT_LONGTEXT,
+            'nullable' => true,
+        ),
         'comments' => array(
             'has-many' => array('\GeoKrety\Model\NewsComment', 'news'),
         ),
@@ -21,10 +33,18 @@ class News extends Base {
             'has-many' => array('\GeoKrety\Model\NewsSubscription', 'news'),
         ),
         'created_on_datetime' => array(
-             'type' => Schema::DT_DATETIME,
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
         ),
         'last_commented_on_datetime' => array(
-             'type' => Schema::DT_DATETIME,
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+        ),
+        'comments_count' => array(
+            'type' => Schema::DT_INT2,
+            'nullable' => false,
         ),
     );
 

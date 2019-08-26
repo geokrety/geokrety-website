@@ -17,14 +17,15 @@ FROM `gk-wartosci`;
 ```sql
 ALTER TABLE `gk-news`
 CHANGE `news_id` `id` bigint(20) NOT NULL AUTO_INCREMENT FIRST,
-CHANGE `date` `created_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `id`,
+CHANGE `date` `created_on_datetime` datetime NULL DEFAULT CURRENT_TIMESTAMP AFTER `id`,
 DROP `czas_postu`,
 CHANGE `tytul` `title` varchar(50) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `created_on_datetime`,
 CHANGE `tresc` `content` longtext COLLATE 'utf8mb4_unicode_ci' NULL AFTER `title`,
-CHANGE `who` `author_name` varchar(80) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `content`,
-CHANGE `userid` `author` int(10) unsigned NOT NULL AFTER `author_name`,
+CHANGE `who` `author_name` varchar(80) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `content`,
+CHANGE `userid` `author` int(10) unsigned NULL AFTER `author_name`,
 CHANGE `komentarze` `comments_count` smallint(5) unsigned NOT NULL DEFAULT '0' AFTER `author`,
-CHANGE `ostatni_komentarz` `last_commented_on_datetime` datetime NULL AFTER `comments_count`;
+CHANGE `ostatni_komentarz` `last_commented_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `comments_count`,
+ADD FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`);
 ```
 
 
@@ -78,7 +79,7 @@ CHANGE `koment` `comment` varchar(5120) COLLATE 'utf8mb4_unicode_ci' NULL AFTER 
 CHANGE `zdjecia` `pictures_count` tinyint(3) unsigned NULL DEFAULT '0' AFTER `comment`,
 CHANGE `komentarze` `comments_count` smallint(5) unsigned NULL DEFAULT '0' AFTER `pictures_count`,
 CHANGE `user` `author` int(10) unsigned NULL DEFAULT '0' AFTER `moved_on_datetime`,
-CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`,
+CHANGE `timestamp` `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `username`,
 CHANGE `username` `username` varchar(20) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `logtype`;
 ```
 
@@ -133,14 +134,14 @@ ADD FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`);
 ```sql
 ALTER TABLE `gk-users`
 CHANGE `userid` `id` int(10) unsigned NOT NULL AUTO_INCREMENT FIRST,
-CHANGE `user` `username` varchar(80) COLLATE 'utf8mb4_polish_ci' NULL AFTER `id`,
+CHANGE `user` `username` varchar(80) COLLATE 'utf8mb4_polish_ci' NOT NULL AFTER `id`,
 CHANGE `haslo` `old_password` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'This hash is not used anymore' AFTER `username`,
 CHANGE `haslo2` `password` varchar(120) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `old_password`,
 CHANGE `email` `email` varchar(150) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `password`,
 CHANGE `joined` `joined_on_datetime` datetime NULL AFTER `email_invalid`,
 CHANGE `wysylacmaile` `daily_mails` tinyint(1) NOT NULL DEFAULT '1' AFTER `joined_on_datetime`,
 CHANGE `ip` `registration_ip` varchar(46) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `daily_mails`,
-CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `registration_ip`,
+CHANGE `timestamp` `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `registration_ip`,
 CHANGE `lang` `prefered_language` varchar(2) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `updated_on_datetime`,
 CHANGE `lat` `home_latitude` double(8,5) NULL AFTER `prefered_language`,
 CHANGE `lon` `home_longitude` double(8,5) NULL AFTER `home_latitude`,
@@ -156,7 +157,7 @@ CHANGE `ostatni_login` `last_login_datetime` datetime NULL AFTER `last_mail_date
 ALTER TABLE `gk-waypointy`
 CHANGE `typ` `type` varchar(200) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `owner`,
 CHANGE `kraj` `country_name` varchar(200) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'full English country name' AFTER `type`,
-CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `status`;
+CHANGE `timestamp` `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `status`;
 ALTER TABLE `gk-waypointy`
 ADD `id` int unsigned NOT NULL AUTO_INCREMENT UNIQUE FIRST;
 ALTER TABLE `gk-waypointy`
@@ -167,6 +168,7 @@ DROP INDEX `id`,
 DROP INDEX `name`;
 ```
 
+**Insert waypoints from moves to waypointy**
 ```sql
 INSERT INTO `gk-waypointy` (waypoint, lat, lon, alt, country, link)
 SELECT distinct(replace(`waypoint`, ' ', '')) as waypoint, `lat`, `lon`, `alt`, `country`, concat('https://www.geocaching.com/geocache/', replace(`waypoint`, ' ', ''))
@@ -184,15 +186,31 @@ CHANGE `user_id` `author` int(10) unsigned NOT NULL AFTER `geokret`,
 CHANGE `data_dodania` `created_on_datetime` datetime NULL DEFAULT CURRENT_TIMESTAMP AFTER `author`,
 CHANGE `comment` `content` varchar(500) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `created_on_datetime`,
 CHANGE `type` `type` tinyint(3) unsigned NOT NULL COMMENT '0=comment, 1=missing' AFTER `content`,
-CHANGE `timestamp` `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `type`;
+CHANGE `timestamp` `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `type`,
+ADD FOREIGN KEY (`move`) REFERENCES `gk-ruchy` (`id`),
+ADD FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`),
+ADD FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`);
+```
+
+
+**Fix gk-badges holders**
+```sql
+SELECT *
+FROM `gk-badges`
+WHERE holder NOT IN (SELECT DISTINCT id FROM `gk-users`)
+LIMIT 50;
+
+DELETE FROM `gk-badges`
+WHERE holder = 16957;
 ```
 
 ```sql
 ALTER TABLE `gk-badges`
-CHANGE `userid` `holder` bigint(20) NOT NULL AFTER `id`,
-CHANGE `timestamp` `awarded_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP AFTER `user`,
+CHANGE `userid` `holder` int(10) unsigned NOT NULL AFTER `id`,
+CHANGE `timestamp` `awarded_on_datetime` datetime NULL DEFAULT CURRENT_TIMESTAMP AFTER `user`,
 CHANGE `desc` `description` varchar(128) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `awarded_on_datetime`,
-CHANGE `file` `filename` varchar(32) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `description`;
+CHANGE `file` `filename` varchar(32) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `description`,
+ADD FOREIGN KEY (`holder`) REFERENCES `gk-users` (`id`);
 ```
 
 ```sql
@@ -201,7 +219,7 @@ ADD `id` int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST,
 CHANGE `kod` `token` varchar(60) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `id`,
 CHANGE `userid` `user` int(10) unsigned NOT NULL AFTER `token`,
 CHANGE `done` `confirmed` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '0=unconfirmed 1=confirmed' AFTER `email`,
-CHANGE `timestamp` `created_on_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP AFTER `confirmed`,
+CHANGE `timestamp` `created_on_datetime` datetime NULL DEFAULT CURRENT_TIMESTAMP AFTER `confirmed`,
 ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE,
 RENAME TO `gk-email-activation`;
 ```

@@ -34,6 +34,10 @@ class Mail extends Base {
         'sent_on_datetime' => array(
              'type' => Schema::DT_DATETIME,
         ),
+        'ip' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
+        ),
     );
 
     public function get_sent_on_datetime($value) {
