@@ -1,27 +1,8 @@
 <?php
 
-namespace GeoKrety\Controller;
+namespace GeoKrety\Service;
 
-class ToolsCoordinatesConverter extends Base {
-    public function get($f3) {
-        header('Content-Type: application/json; charset=utf-8');
-
-        $coords_parse = $this->cords_parse($f3->get('GET.coordinates'));
-        if ($coords_parse['error'] != '') {
-            http_response_code(400);
-            echo json_encode(array(
-                'error' => $coords_parse['error'],
-            ));
-            die();
-        }
-        $response = array(
-            'lat' => $coords_parse[0],
-            'lon' => $coords_parse[1],
-            'format' => $coords_parse['format'],
-        );
-        echo json_encode($response);
-    }
-
+class CoordinatesConverter {
     //N 57° 27.758 E 022° 50.999 [(5)=53] [(7)=55] [(�)=194] [(�)=176]  i na koncu: [28(�)=194] [29(�)=160]  ???
     //North.: 6189860 East.: 544201 (UTM32) ... lol
     //N 047° 20,363' O 015° 02,705'
@@ -34,17 +15,17 @@ class ToolsCoordinatesConverter extends Base {
     //50°54′N 15°44′E
     //56.326N 54.235O
 
-    private function cords_parse($cords) {
+    public static function parse($coords) {
         $ret[0] = '';
         $ret[1] = '';
         $ret['format'] = '';
         $ret['error'] = '';
 
-        if (!empty($cords)) {
+        if (!empty($coords)) {
             if (get_magic_quotes_gpc()) {
-                $cords = stripslashes($cords);
+                $coords = stripslashes($coords);
             }
-            $cords = trim($cords);
+            $coords = trim($coords);
 
             $d1 = '[0-9]';
             $d2 = '[0-9]{1,2}';
@@ -73,7 +54,7 @@ class ToolsCoordinatesConverter extends Base {
                 "$break*".
                 "($sign2)$sp*($d3)$smiec_sp+($d2)$smiec_sp+(($d2)($comma($d1+)))$smiec_sp*";
 
-            if (preg_match('#^'.$regex.'$#i', strtolower($cords), $matches)) {
+            if (preg_match('#^'.$regex.'$#i', strtolower($coords), $matches)) {
                 //for ($i=0; $i<count($matches); $i++) echo "<div>$i = [".$matches[$i]."]</div>";
 
                 $deg = (int) $matches[2];
@@ -121,7 +102,7 @@ class ToolsCoordinatesConverter extends Base {
                 "$break*".
                 "($sign2)$sp*($d3)$smiec+$sp*($d2)$smiec+$sp*(($d2)($comma($d1+))?)$smiec_sp*";
 
-            if (preg_match('#^'.$regex.'$#i', strtolower($cords), $matches)) {
+            if (preg_match('#^'.$regex.'$#i', strtolower($coords), $matches)) {
                 //for ($i=0; $i<count($matches); $i++) echo "<div>$i = [".$matches[$i]."]</div>";
 
                 $deg = (int) $matches[2];
@@ -175,7 +156,7 @@ class ToolsCoordinatesConverter extends Base {
                 "$break*".
                 "($sign2)$sp*($d3)$smiec_sp+(($d2)($comma($d1+))?)$smiec_sp*";
 
-            if (preg_match('#^'.$regex.'$#i', strtolower($cords), $matches)) {
+            if (preg_match('#^'.$regex.'$#i', strtolower($coords), $matches)) {
                 //for ($i=0; $i<count($matches); $i++) echo "<div>$i = [".$matches[$i]."]</div>";
 
                 $deg = (int) $matches[2];
@@ -226,7 +207,7 @@ class ToolsCoordinatesConverter extends Base {
                 "$break*".
                 "($sign2)$sp*(($d3)($comma($d1+))?)$deg_sp*";
 
-            if (preg_match('#^'.$regex.'$#i', strtolower($cords), $matches)) {
+            if (preg_match('#^'.$regex.'$#i', strtolower($coords), $matches)) {
                 //for ($i=0; $i<count($matches); $i++) echo "<div>$i = [".$matches[$i]."]</div>";
 
                 $deg = (float) str_replace(',', '.', $matches[2]);

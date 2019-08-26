@@ -11,7 +11,7 @@
 <script type="text/javascript" src="{GK_CDN_LEAFLET_AJAX_JS}"></script>
 <script type="text/javascript" src="{GK_CDN_STRENGTHIFY_JS}"></script>
 <script type="text/javascript" src="{GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL}"></script>
-<script type="text/javascript" src="{GK_GOOGLE_RECAPTCHA_JS_URL}"></script>
+{if GK_GOOGLE_RECAPTCHA_JS_URL}<script type="text/javascript" src="{GK_GOOGLE_RECAPTCHA_JS_URL}"></script>{/if}
 {/block}
 
 {block name=content}

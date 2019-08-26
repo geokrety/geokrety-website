@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        {if $isEdit}
+        {if $geokret->id}
         <h3 class="panel-title">{t}Edit a GeoKret{/t}</h3>
         {else}
         <h3 class="panel-title">{t}Create a new GeoKret{/t}</h3>
@@ -10,13 +10,10 @@
 
 
         <form class="form-horizontal" method="post" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
-{if $isEdit}
-            <input type="hidden" id="geokretId" name="id" value="{if isset($geokret)}{$geokret->id}{/if}">
-{/if}
             <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">{t}GeoKret name{/t}</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control maxl" id="inputName" name="name" placeholder="{t}GeoKret name{/t}" minlength="3" maxlength="75" required value="{if isset($geokret)}{$geokret->name}{/if}">
+                    <input type="text" class="form-control maxl" id="inputName" name="name" placeholder="{t}GeoKret name{/t}" minlength="{GK_GEOKRET_NAME_MIN_LENGTH}" maxlength="{GK_GEOKRET_NAME_MAX_LENGTH}" required value="{$geokret->name}">
                 </div>
             </div>
 
@@ -34,7 +31,7 @@
             <div class="form-group">
                 <label for="inputMission" class="col-sm-2 control-label">{t}Mission{/t}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control maxl" rows="5" id="inputMission" name="mission" placeholder="{t}What is this GeoKrety mission?{/t}" maxlength="5120">{if isset($geokret)}{$geokret->mission}{/if}</textarea>
+                    <textarea class="form-control maxl" rows="5" id="inputMission" name="mission" placeholder="{t}What is this GeoKrety mission?{/t}" maxlength="5120">{$geokret->mission}</textarea>
                 </div>
             </div>
 
@@ -52,7 +49,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">{if $isEdit}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
+                    <button type="submit" class="btn btn-primary">{if $geokret->id}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
                 </div>
             </div>
 

@@ -3,7 +3,7 @@
 namespace GeoKrety\Service;
 
 /**
- * LogIconConverter : some convertions from legacy iconology
+ * LogIconConverter : some convertions from legacy iconology.
  */
 class LogIconConverter {
     public static function computeLogType($locationType, $lastUserId, $currentUser) {

@@ -30,7 +30,7 @@ class GeokretOfferForAdoption extends Base {
 
     public function post(\Base $f3) {
         $this->loadGeokret($f3);
-        if (!$this->geokret->isOwner()){
+        if (!$this->geokret->isOwner()) {
             \Flash::instance()->addMessage(_('You must be the GeoKret owner to generate new Owner Code.'), 'danger');
             $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $this->geokret->id));
         }

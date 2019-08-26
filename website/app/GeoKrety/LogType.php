@@ -19,6 +19,13 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     );
 
+    const LOG_TYPES_ALIVE = array(
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_GRABBED,
+        self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_DIPPED,
+    );
+
     const LOG_TYPES_REQUIRING_COORDINATES = array(
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
@@ -36,10 +43,19 @@ class LogType {
         self::LOG_TYPE_SEEN,
     );
 
+    const LOG_TYPES_LAST_POSITION = array(
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_GRABBED,
+        self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_DIPPED,
+    );
+
     private $logtype;
 
     public function __construct($logtype = null) {
-        $this->logtype = (int) $logtype;
+        if (!is_null($logtype)) {
+            $this->logtype = (int) $logtype;
+        }
     }
 
     public function getLogTypeId() {
@@ -56,6 +72,10 @@ class LogType {
 
     public static function isValid($logtype) {
         return in_array($logtype, self::LOG_TYPES, true);
+    }
+
+    public function isAlive() {
+        return in_array($this->logtype, self::LOG_TYPES_ALIVE, true);
     }
 
     public function isCoordinatesRequired() {

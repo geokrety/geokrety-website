@@ -21,6 +21,7 @@ class Smarty extends \Prefab {
 
     public static function fetch(string $template) {
         $smarty = self::getSmarty();
+
         return $smarty->fetch($template);
     }
 

@@ -42,7 +42,7 @@ class GeokretyType {
     }
 
     public static function isValid($type) {
-        return in_array((int)$type, self::GEOKRETY_TYPES, true);
+        return in_array((int) $type, self::GEOKRETY_TYPES, true);
     }
 
     public function getTypeString() {

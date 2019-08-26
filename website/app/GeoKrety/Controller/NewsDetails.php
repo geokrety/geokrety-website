@@ -6,7 +6,6 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Model\News;
 use GeoKrety\Model\NewsComment;
 use GeoKrety\Model\NewsSubscription;
-use GeoKrety\Validation\NewsCommentValidator;
 
 class NewsDetails extends Base {
     public function get(\Base $f3) {
@@ -43,8 +42,7 @@ class NewsDetails extends Base {
         $subscription->subscribed = filter_var($f3->get('POST.subscribe'), FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
 
         // Validate
-        $commentValidator = new NewsCommentValidator();
-        if ($commentValidator->validate($comment)) {
+        if ($comment->validate()) {
             // Save
             $subscription->save();
             $comment->save();

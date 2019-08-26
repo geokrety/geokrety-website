@@ -7,12 +7,11 @@ use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Mail;
 
 class UserContactByGeokret extends UserContact {
-
-	function getPostUrl(\Base $f3) {
+    public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_by_geokret');
     }
 
-	function getPostRedirectUrl() {
+    public function getPostRedirectUrl() {
         return sprintf('@geokret_details(@gkid=%d)', $this->geokret->id);
     }
 

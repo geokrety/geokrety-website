@@ -3,7 +3,6 @@
 namespace GeoKrety\Model;
 
 class Base extends \DB\Cortex {
-
     protected function get_date_object($value) {
         if (is_a($value, '\Datetime')) {
             return $value;
@@ -15,5 +14,4 @@ class Base extends \DB\Cortex {
     public static function now() {
         return (new \DateTime('now', new \DateTimeZone('UTC')))->format('Y-m-d H:i:s');
     }
-
 }

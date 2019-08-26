@@ -52,4 +52,4 @@ window.Parsley.addAsyncValidator('checkCoordinates', function(xhr) {
         this.addError('errorLatlon', { message: data.error })
     }
     return valid;
-}, '{'coordinates_converter'|alias}');
+}, '{'validate_coordinates'|alias}');

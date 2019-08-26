@@ -1,6 +1,7 @@
 <?php
 
 namespace GeoKrety\Model;
+
 use DB\SQL\Schema;
 
 class Mail extends Base {

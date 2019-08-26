@@ -51,7 +51,7 @@
                     <div class="btn-toolbar" role="toolbar">
 
                         <div class="btn-group pull-right" role="group">
-                            {if $move->id == $move->geokret->last_position->id and $move->logtype->isTheoricallyInCache() and $move->geokret->type->getTypeId() != \GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
+                            {if $move->id === $move->geokret->last_position->id and $move->logtype->isTheoricallyInCache() and $move->geokret->type->getTypeId() != \GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}" data-move-comment-type="missing">
                                 {fa icon="exclamation-triangle"}
                             </button>
@@ -68,7 +68,7 @@
 
                         {if $move->geokret->isOwner() or $move->isAuthor() }
                         <div class="btn-group pull-right" role="group">
-                            <a class="btn btn-warning btn-xs" href="#" role="button" title="{t}Edit log{/t}">
+                            <a class="btn btn-warning btn-xs" href="{'geokrety_move_edit'|alias:sprintf('@moveid=%d', $move->id)}" role="button" title="{t}Edit log{/t}">
                                 {fa icon="pencil"}
                             </a>
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete log{/t}" data-toggle="modal" data-target="#modal" data-type="move-delete" data-id="{$move->id}">

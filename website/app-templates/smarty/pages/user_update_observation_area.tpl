@@ -22,7 +22,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputCoordinates">{t}Home coordinates{/t}</label>
-                            <input type="text" class="form-control" id="inputCoordinates" name="coordinates" placeholder="{t}Home coordinates{/t}" value="{$user->home_coordinates}" data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates" data-parsley-errors-messages-disabled>
+                            <input type="text" class="form-control" id="inputCoordinates" name="coordinates" placeholder="{t}Home coordinates{/t}" value="{$user->home_coordinates}" data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled >
                         </div>
 
                         <p>
