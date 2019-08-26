@@ -57,13 +57,18 @@ class Geokret extends Base {
             'belongs-to-one' => '\GeoKrety\Model\Move',
         ),
         'created_on_datetime' => array(
-             'type' => Schema::DT_DATETIME,
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
         ),
         'moved_on_datetime' => array(
-             'type' => Schema::DT_DATETIME,
+            'type' => Schema::DT_DATETIME,
+            'nullable' => false,
         ),
         'updated_on_datetime' => array(
-             'type' => Schema::DT_DATETIME,
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
         ),
     );
 

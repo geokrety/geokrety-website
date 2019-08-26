@@ -12,12 +12,25 @@ class EmailActivation extends Base {
 
     protected $fieldConf = array(
         'email' => array(
-            'type' => Schema::DT_VARCHAR256,
+            'type' => Schema::DT_VARCHAR128,
             'filter' => 'trim',
             'validate' => 'required|valid_email|email_host',
         ),
         'user' => array(
             'belongs-to-one' => '\GeoKrety\Model\User',
+        ),
+        'token' => array(
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
+        ),
+        'confirmed' => array(
+            'type' => Schema::DT_INT1,
+            'nullable' => false,
+        ),
+        'created_on_datetime' => array(
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
         ),
     );
 

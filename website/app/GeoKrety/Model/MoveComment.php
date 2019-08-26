@@ -24,12 +24,14 @@ class MoveComment extends Base {
             'item' => array('0', '1'),
         ),
         'created_on_datetime' => array(
-             'type' => \DB\SQL\Schema::DT_DATETIME,
-             'nullable' => false,
+            'type' => \DB\SQL\Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
         ),
         'updated_on_datetime' => array(
-             'type' => \DB\SQL\Schema::DT_DATETIME,
-             'nullable' => false,
+            'type' => \DB\SQL\Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
         ),
         'author' => array(
             'belongs-to-one' => '\GeoKrety\Model\User',
