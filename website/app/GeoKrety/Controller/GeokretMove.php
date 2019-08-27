@@ -10,7 +10,7 @@ use GeoKrety\Service\Validation\Waypoint as WaypointValidation;
 
 class GeokretMove extends BaseMove {
     public function get($f3) {
-        $tracking_code = $this->tracking_code ?? $this->move->geokret->tracking_code;
+        $tracking_code = $this->move->geokret->tracking_code ?? ($this->tracking_code ?? $f3->get('GET.tracking_code'));
         Smarty::assign('tracking_code', $tracking_code);
         Smarty::render('pages/geokret_move.tpl');
     }
