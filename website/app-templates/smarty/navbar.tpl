@@ -96,7 +96,7 @@
                 </li>
                 {else}
                 <li><a href="{'user_register'|alias}">{fa icon="user-plus"} {t}Create account{/t}</a></li>
-                <li><a href="{'login'|alias}">{fa icon="sign-in"} {t}Sign in{/t}</a>
+                <li><a href="{'login'|alias}?goto={urlencode($f3->get('PATH'))}">{fa icon="sign-in"} {t}Sign in{$f3->get('FRAGMENT')}{/t}</a>
                 {/if}
             </ul>
 

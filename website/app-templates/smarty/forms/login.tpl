@@ -6,7 +6,7 @@
                 <h3 class="panel-title">{t}Login{/t}</h3>
             </div>
             <div class="panel-body">
-                <form action="{'login'|alias}{if isset($goto) and $goto}?goto={$goto}{/if}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
+                <form action="{'login'|alias}{if $f3->exists('GET.goto')}?goto={urlencode($f3->get('GET.goto'))}{/if}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
 
                     <div class="form-group">
                         <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>
