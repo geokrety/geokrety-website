@@ -66,7 +66,7 @@
                             </button>
                         </div>
 
-                        {if $move->geokret->isOwner() or $move->isAuthor() }
+                        {if $move->isAuthor() }
                         <div class="btn-group pull-right" role="group">
                             <a class="btn btn-warning btn-xs" href="{'geokrety_move_edit'|alias:sprintf('@moveid=%d', $move->id)}" role="button" title="{t}Edit log{/t}">
                                 {fa icon="pencil"}
