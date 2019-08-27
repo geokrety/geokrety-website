@@ -31,6 +31,9 @@ class Login extends Base {
                 }
                 \Flash::instance()->addMessage(_('Welcome on board!'), 'success');
                 \Event::instance()->emit('user.login', $user);
+                if ($f3->exists('GET.goto')) {
+                    $f3->reroute($f3->get('GET.goto'));
+                }
                 $f3->reroute('@home');
             } else {
                 \Flash::instance()->addMessage(_('Something went wrong during the login procedure.'), 'danger');
