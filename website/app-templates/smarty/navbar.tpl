@@ -1,8 +1,8 @@
-<nav class="navbar-inverse navbar-fixed-top">
+<nav class="navbar-inverse navbar-fixed-top sidebarNavigation" data-sidebarClass="navbar-inverse">
     <div class="container-fluid">
 
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed left-navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
                 <span class="sr-only">{t}Toggle navigation{/t}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
