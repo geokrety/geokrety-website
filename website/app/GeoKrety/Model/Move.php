@@ -59,7 +59,6 @@ class Move extends Base {
         'waypoint' => array(
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-            'validate' => 'logtype_require_coordinates',
             'filter' => 'trim|HTMLPurifier',
         ),
         'comment' => array(
@@ -316,6 +315,7 @@ EOQUERY;
             'order' => 'moved_on_datetime DESC',
         );
         $lastMove->load($filter, $options);
+        $geokret->last_log = $lastMove->id;
     }
 
     private function updateGeokretStats(&$geokret) {
