@@ -79,9 +79,7 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
     this.removeError('errorWaypoint');
     if (valid) {
         // Fill coordinates field
-        if (!$("#latlon").is(":visible")) { // Prevent update loop if manually updated
-            positionUpdate([data.latitude, data.longitude]);
-        }
+        positionUpdate([data.latitude, data.longitude]);
         hideCoordinatesField();
         $("#cacheName").html('<a href="' + data.link + '" target="_blank">' + (data.name ? data.name : data.waypoint) + ' <i class="fa fa-external-link" aria-hidden="true"></i></a>');
     } else if (isWaypointFound) {
