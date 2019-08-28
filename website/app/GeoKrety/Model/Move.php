@@ -109,6 +109,15 @@ class Move extends Base {
         return HTMLPurifier::getPurifier()->purify($value);
     }
 
+    public function get_comment($value) {
+        // Workaround historical database modifications
+        $txt = str_replace('<br />', '  ', $value);
+        $txt = str_replace('[<a href=\'', '', $txt);
+        $txt = str_replace('\' rel=nofollow>Link</a>]', '', $txt);
+
+        return HTMLPurifier::getPurifier()->purify($txt);
+    }
+
     public function get_username($value) {
         return html_entity_decode($value);
     }
