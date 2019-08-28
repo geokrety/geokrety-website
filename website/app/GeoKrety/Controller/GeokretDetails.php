@@ -20,5 +20,7 @@ class GeokretDetails extends BaseGeokret {
         Smarty::assign('pg', $pages);
 
         Smarty::render('pages/geokret_details.tpl');
+
+        // TODO geokret_already_seen
     }
 }

@@ -44,6 +44,8 @@
                     <dd>{$geokret->distance} km</dd>
                     <dt>{t}Places visited{/t}</dt>
                     <dd>{$geokret->caches_count}</dd>
+                    <dt>{t}Born{/t}</dt>
+                    <dd>{$geokret->created_on_datetime|print_date nofilter}</dd>
                     <dt>{t}Social share{/t}</dt>
                     <dd>
                         {fa icon="facebook" title="{t}Share on Facebook{/t}"}
