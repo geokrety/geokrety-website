@@ -14,7 +14,7 @@ class GeokretyExport2 extends GeokretyBase {
 
     public function addGeokretWithTrackingCode(\GeoKrety\Model\Geokret &$geokret, ?\GeoKrety\Model\User &$user = null) {
         $gk = $this->xmlGeokrety->addChildWithCDATA('geokret', $geokret->name);
-        $gk->addAttribute('id', $geokret->id);
+        $gk->addAttribute('id', $geokret->gkid());
         $gk->addAttribute('type', $geokret->type->getTypeId());
         if (!is_null($user) && $user->id === $geokret->holder->id) {
             $gk->addAttribute('nr', $geokret->tracking_code);

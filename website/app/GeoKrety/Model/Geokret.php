@@ -12,6 +12,9 @@ class Geokret extends Base {
     protected $table = 'gk-geokrety';
 
     protected $fieldConf = array(
+        'gkid' => array(
+            'type' => Schema::DT_INT4,
+        ),
         'name' => array(
             'type' => Schema::DT_VARCHAR128,
             'filter' => 'trim|HTMLPurifier',
@@ -24,7 +27,7 @@ class Geokret extends Base {
         ),
         'tracking_code' => array(
             'type' => Schema::DT_VARCHAR128,
-            'validate' => 'geokrety_type',
+            'validate' => 'required',
             'index' => true,
             'unique' => true,
         ),
@@ -80,8 +83,12 @@ class Geokret extends Base {
     //     return HTMLPurifier::getPurifier()->purify($value);
     // }
 
-    public function get_gkid() {
-        return sprintf('GK%04X', $this->id);
+    public function gkid() {
+        return hexdec(substr($this->gkid, 2));
+    }
+
+    public function get_gkid($value) {
+        return sprintf('GK%04X', $value);
     }
 
     public function get_name($value) {

@@ -3,7 +3,7 @@
         {t}Pictures{/t}
         {if $geokret->isOwner()}
         <div class="btn-group pull-right" role="group">
-            <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$geokret->id}" data-picture-type="0">
+            <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$geokret->gkid}" data-picture-type="0">
                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
             </button>
         </div>

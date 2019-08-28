@@ -60,7 +60,7 @@ class GeokretClaim extends Base {
                     'newUser' => $ownerCode->user,
                 );
                 \Event::instance()->emit('geokret.claimed', $ownerCode->geokret, $context);
-                $f3->reroute('@geokret_details(@gkid='.$ownerCode->geokret->id.')');
+                $f3->reroute('@geokret_details(@gkid='.$ownerCode->geokret->gkid.')');
             }
         }
 

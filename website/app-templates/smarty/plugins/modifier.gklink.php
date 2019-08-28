@@ -15,5 +15,5 @@ function smarty_modifier_gklink(\GeoKrety\Model\Geokret $geokret, ?string $textS
     $text = is_null($textString) ? $geokret->name : $textString;
     $target_html = is_null($target) ? '' : ' target="'.$params['target'].'"';
 
-    return '<a href="'.\Base::instance()->alias('geokret_details', 'gkid='.$geokret->id).'" title="'.sprintf(_('View %s\'s profile'), smarty_modifier_escape($geokret->name)).'"'.$target_html.'>'.smarty_modifier_escape($text).'</a>';
+    return '<a href="'.\Base::instance()->alias('geokret_details', '@gkid='.$geokret->gkid).'" title="'.sprintf(_('View %s\'s profile'), smarty_modifier_escape($geokret->name)).'"'.$target_html.'>'.smarty_modifier_escape($text).'</a>';
 }

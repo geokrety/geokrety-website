@@ -124,7 +124,7 @@ class GeokretMove extends BaseMove {
             \Flash::instance()->addMessage(_('Failed to save move.'), 'danger');
         } else {
             \Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
-            $f3->reroute('@geokret_details_paginate(@gkid='.$moves[0]->geokret->id.',page='.$moves[0]->getMoveOnPage().')#log'.$moves[0]->id);
+            $f3->reroute('@geokret_details_paginate(@gkid='.$moves[0]->geokret->gkid.',page='.$moves[0]->getMoveOnPage().')#log'.$moves[0]->id);
         }
         $this->get($f3);
     }

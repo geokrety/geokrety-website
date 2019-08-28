@@ -12,7 +12,7 @@ class UserContactByGeokret extends UserContact {
     }
 
     public function getPostRedirectUrl() {
-        return sprintf('@geokret_details(@gkid=%d)', $this->geokret->id);
+        return sprintf('@geokret_details(@gkid=%d)', $this->geokret->gkid);
     }
 
     protected function _get(\Base $f3) {
