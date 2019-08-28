@@ -78,6 +78,11 @@ function positionUpdate(coordinates) {
     if (!coordinates[0] || !coordinates[1]) {
         return;
     }
+    // Prevent update loop if manually updated
+    if ($("#latlon").val() !== "" && $("#latlon").is(":visible")) {
+        return;
+    }
+
     var latlngString = coordinates[0] + ' ' + coordinates[1];
     if ($("#latlon").val() != latlngString) {
         $("#latlon").val(latlngString);
