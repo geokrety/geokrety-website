@@ -6,6 +6,10 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\AuthGroup;
 
 class Login extends Base {
+    const NO_REDIRECT_URLS = array(
+        '/login',
+        '/logout',
+    );
     public function loginForm($f3) {
         Smarty::render('extends:base.tpl|forms/login.tpl');
     }
@@ -32,7 +36,10 @@ class Login extends Base {
                 \Flash::instance()->addMessage(_('Welcome on board!'), 'success');
                 \Event::instance()->emit('user.login', $user);
                 if ($f3->exists('GET.goto')) {
-                    $f3->reroute($f3->get('GET.goto'));
+                    $goto = $f3->get('GET.goto');
+                    if (!in_array($goto, self::NO_REDIRECT_URLS)) {
+                        $f3->reroute($goto);
+                    }
                 }
                 $f3->reroute('@home');
             } else {
