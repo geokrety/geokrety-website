@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        {if $geokret->id}
+        {if $geokret && $geokret->gkid()}
         <h3 class="panel-title">{t}Edit a GeoKret{/t}</h3>
         {else}
         <h3 class="panel-title">{t}Create a new GeoKret{/t}</h3>
@@ -35,21 +35,21 @@
                 </div>
             </div>
 
-            {*if $isCreate and $user->hasCoordinates()}
+            {if (!$geokret or !$geokret->gkid()) and $user->hasHomeCoordinates()}
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="logAtHome" name="log_at_home"> {t}Set my home coordinates as a starting point.{/t}
+                        <label data-toggle="tooltip" title="{t}This will create a first "dipped" move for your GeoKret, marking it's starting point.{/t}">
+                            <input type="checkbox" id="logAtHome" name="log_at_home"{if $f3->get('POST.log_at_home')} checked{/if}> {t}Set my home coordinates as a starting point.{/t}
                         </label>
                     </div>
                 </div>
             </div>
-            {/if*}
+            {/if}
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">{if $geokret->id}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
+                    <button type="submit" class="btn btn-primary">{if $geokret && $geokret->gkid()}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
                 </div>
             </div>
 

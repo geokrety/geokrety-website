@@ -62,7 +62,7 @@ class TrackingCode {
         Smarty::assign('geokret', $geokret);
         $response = array(
             'html' => Smarty::fetch('chunks/geokrety_status.tpl'),
-            'id' => $geokret->id,
+            'id' => $geokret->gkid(),
             'gkid' => $geokret->gkid,
             'nr' => $geokret->tracking_code,
             'name' => $geokret->name,

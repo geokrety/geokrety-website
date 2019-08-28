@@ -64,7 +64,22 @@ CHANGE `avatar` `avatar` int(10) unsigned NULL AFTER `type`;
 UPDATE `gk-geokrety` SET `last_log` = NULL WHERE `last_log` = 0;
 UPDATE `gk-geokrety` SET `last_position` = NULL WHERE `last_position` = 0;
 UPDATE `gk-geokrety` SET `holder` = NULL WHERE `holder` = 0;
+```
 
+**Workaround security issue**
+```sql
+ALTER TABLE `gk-geokrety`
+ADD `gkid` int(10) unsigned NOT NULL COMMENT 'The real GK id : https://stackoverflow.com/a/33791018/944936' AFTER `id`;
+
+update `gk-geokrety`
+set gkid=id
+
+DELIMITER ;;
+CREATE TRIGGER `gk-geokrety_gkid` BEFORE INSERT ON `gk-geokrety` FOR EACH ROW
+  BEGIN
+    SET NEW.gkid= COALESCE((SELECT MAX(gkid) FROM `gk-geokrety`),0) + 1;
+  END;;
+DELIMITER ;
 ```
 
 ```sql

@@ -6,20 +6,7 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\OwnerCode;
 
-class GeokretOfferForAdoption extends Base {
-    public function loadGeokret(\Base $f3) {
-        parent::beforeRoute($f3);
-
-        $geokret = new Geokret();
-        $geokret->load(array('id = ?', $f3->get('PARAMS.gkid')));
-        if ($geokret->dry()) {
-            Smarty::render('dialog/alert_404.tpl');
-            die();
-        }
-        $this->geokret = $geokret;
-        Smarty::assign('geokret', $this->geokret);
-    }
-
+class GeokretOfferForAdoption extends BaseGeokret {
     public function get(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/geokret_offer_for_adoption.tpl');
     }
@@ -29,16 +16,15 @@ class GeokretOfferForAdoption extends Base {
     }
 
     public function post(\Base $f3) {
-        $this->loadGeokret($f3);
         if (!$this->geokret->isOwner()) {
             \Flash::instance()->addMessage(_('You must be the GeoKret owner to generate new Owner Code.'), 'danger');
-            $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $this->geokret->id));
+            $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $this->geokret->gkid));
         }
 
         $ownerCode = new OwnerCode();
         if ($ownerCode->count(array('geokret = ? AND user = ?', $this->geokret->id, null), null, 0)) {
             \Flash::instance()->addMessage(_('An Owner Code is already available for this GeoKret.'), 'warning');
-            $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $this->geokret->id));
+            $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $this->geokret->gkid));
         }
 
         $ownerCode->geokret = $this->geokret;
@@ -54,6 +40,6 @@ class GeokretOfferForAdoption extends Base {
             }
         }
 
-        $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $ownerCode->geokret->id));
+        $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $ownerCode->geokret->gkid));
     }
 }

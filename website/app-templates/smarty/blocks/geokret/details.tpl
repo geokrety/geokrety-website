@@ -18,7 +18,7 @@
 
         <div class="btn-group pull-right" role="group">
             {if $f3->get('SESSION.CURRENT_USER') and $geokret->owner->email}
-            <button class="btn btn-primary btn-xs" title="{t user=$geokret->owner->username}Send a message to %1{/t}" data-toggle="modal" data-target="#modal" data-type="user-contact-by-geokret" data-id="{$geokret->id}">
+            <button class="btn btn-primary btn-xs" title="{t user=$geokret->owner->username}Send a message to %1{/t}" data-toggle="modal" data-target="#modal" data-type="user-contact-by-geokret" data-id="{$geokret->gkid}">
                 {fa icon="envelope"}
             </button>
             {/if}
@@ -35,7 +35,7 @@
             <div class="col-xs-12 col-md-9">
                 <dl class="dl-horizontal pull-left">
                     <dt>{t}Reference number{/t}</dt>
-                    <dd>{$geokret->gkid}</dd>
+                    <dd title="{$geokret->gkid()}">{$geokret->gkid}</dd>
                     {if $geokret->isOwner() or $geokret_already_seen}
                     <dt>{t}Tracking code{/t}</dt>
                     <dd><strong>{$geokret->tracking_code}</strong></dd>
@@ -57,8 +57,8 @@
                 </dl>
             </div>
             <div class="col-xs-12 col-md-3 gallery">
-                {*pictureOrDefault item=$geokret->avatar() skipLinkToEntity=true isOwner=$geokret->isOwner() pictureType=0 id=$geokret->id*}
-                {*altitudeProfile gk_id=$geokret->id*}
+                {*pictureOrDefault item=$geokret->avatar() skipLinkToEntity=true isOwner=$geokret->isOwner() pictureType=0 id=$geokret->gkid*}
+                {*altitudeProfile gk_id=$geokret->gkid*}
             </div>
         </div>
 

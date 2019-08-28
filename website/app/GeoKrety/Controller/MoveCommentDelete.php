@@ -29,7 +29,7 @@ class MoveCommentDelete extends Base {
 
     public function post(\Base $f3) {
         $comment = $this->comment;
-        $gkid = $comment->geokret->id;
+        $gkid = $comment->geokret->gkid;
 
         if ($comment->valid()) {
             $comment->erase();

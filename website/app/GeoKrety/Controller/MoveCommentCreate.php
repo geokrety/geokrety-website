@@ -37,7 +37,7 @@ class MoveCommentCreate extends Base {
     }
 
     public function post_comment(\Base $f3) {
-        $gkid = $this->move->geokret->id;
+        $gkid = $this->move->geokret->gkid;
         $comment = new MoveComment();
         $comment->move = $this->move;
         $comment->geokret = $this->move->geokret;
@@ -58,7 +58,7 @@ class MoveCommentCreate extends Base {
     }
 
     public function post_missing(\Base $f3) {
-        $gkid = $this->move->geokret->id;
+        $gkid = $this->move->geokret->gkid;
         $comment = new MoveComment();
         $comment->move = $this->move;
         $comment->geokret = $this->move->geokret;

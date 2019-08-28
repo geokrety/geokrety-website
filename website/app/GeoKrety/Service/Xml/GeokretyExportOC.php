@@ -5,7 +5,7 @@ namespace GeoKrety\Service\Xml;
 class GeokretyExportOC extends GeokretyBase {
     public function addGeokret(\GeoKrety\Model\Geokret &$geokret) {
         $gk = $this->xml->addChild('geokret');
-        $gk->addAttribute('id', $geokret->id);
+        $gk->addAttribute('id', $geokret->gkid());
         $gk->addChildWithCDATA('name', $geokret->name);
         $gk->addChild('distancetravelled', $geokret->distance);
         $gk->addChild('state', $geokret->last_position->logtype->isTheoricallyInCache() ? '1' : '0');

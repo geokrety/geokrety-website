@@ -36,7 +36,7 @@
 
 {function transfer}
 <div class="col-md-4">{fa icon="handshake-o"}
-    <a href="#" title="{t}Make this GeoKret available for adoption by another user{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-offer-for-adoption" data-id="{$geokret->id}">
+    <a href="#" title="{t}Make this GeoKret available for adoption by another user{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-offer-for-adoption" data-id="{$geokret->gkid}">
         {t}Transfer ownership{/t}
     </a>
 </div>

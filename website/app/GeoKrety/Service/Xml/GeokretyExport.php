@@ -7,7 +7,7 @@ use GeoKrety\Service\Markdown;
 class GeokretyExport extends GeokretyBase {
     public function addGeokret(\GeoKrety\Model\Geokret &$geokret) {
         $gk = $this->xml->addChild('geokret');
-        $gk->addAttribute('id', $geokret->id);
+        $gk->addAttribute('id', $geokret->gkid());
         $gk->addChildWithCDATA('name', $geokret->name);
         $gk->addChildWithCDATA('description', Markdown::toText($geokret->mission));
         $gk->addChildWithCDATA('description_html', Markdown::toHtml($geokret->mission));
