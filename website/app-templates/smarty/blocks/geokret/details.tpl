@@ -46,7 +46,7 @@
                     <dd>{$geokret->caches_count}</dd>
                     <dt>{t}Born{/t}</dt>
                     <dd>{$geokret->created_on_datetime|print_date nofilter}</dd>
-                    <dt>{t}Social share{/t}</dt>
+                    {* TODO <dt>{t}Social share{/t}</dt>
                     <dd>
                         {fa icon="facebook" title="{t}Share on Facebook{/t}"}
                         {fa icon="twitter" title="{t}Share on Twitter{/t}"}
@@ -55,7 +55,7 @@
                         {fa icon="forumbee" title="{t}Copy to page as bbcode{/t}"}
                     </dd>
                     <dt>{t}Country track{/t}</dt>
-                    <dd>{*country_track items=$country_track*}</dd>
+                    <dd>{country_track items=$country_track}</dd>*}
                 </dl>
             </div>
             <div class="col-xs-12 col-md-3 gallery">
