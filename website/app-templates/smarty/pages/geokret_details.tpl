@@ -30,6 +30,7 @@ initializeMap();
 {/if}
 
 // Bind modal
+{include 'js/dialog_move_delete.js.tpl'}
 {include 'js/dialog_move_comment.js.tpl'}
 {include 'js/dialog_contact_user.tpl.js'}
 {include 'js/dialog_offer_for_adoption.tpl.js'}
