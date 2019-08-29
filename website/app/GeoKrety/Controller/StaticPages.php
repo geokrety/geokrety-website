@@ -13,6 +13,10 @@ class StaticPages extends Base {
         Smarty::render('pages/press_corner.tpl');
     }
 
+    public function geokrety_toolbox($f3) {
+        Smarty::render('pages/geokrety_toolbox.tpl');
+    }
+
     public function work_in_progress($f3) {
         Smarty::render('pages/work_in_progress.tpl');
     }

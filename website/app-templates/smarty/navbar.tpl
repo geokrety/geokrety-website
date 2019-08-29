@@ -82,7 +82,7 @@
                         <li><a href="{'statistics'|alias}">{fa icon="bar-chart"} {t}Statistics{/t}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{'downloads'|alias}">{fa icon="download"} {t}Downloads{/t}</a></li>
-                        <li><a href="{'gkt'|alias}">{fa icon="cog"} {t}GeoKrety Toolbox{/t}</a></li>
+                        <li><a href="{'geokrety_toolbox'|alias}">{fa icon="cog"} {t}GeoKrety Toolbox{/t}</a></li>
                         <li><a href="go2geo/">{fa icon="map-pin"} {t}Waypoint resolver{/t}</a></li>
                     </ul>
                 </li>
