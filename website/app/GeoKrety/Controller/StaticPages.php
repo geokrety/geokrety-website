@@ -17,6 +17,10 @@ class StaticPages extends Base {
         Smarty::render('pages/geokrety_toolbox.tpl');
     }
 
+    public function downloads($f3) {
+        Smarty::render('pages/downloads.tpl');
+    }
+
     public function work_in_progress($f3) {
         Smarty::render('pages/work_in_progress.tpl');
     }
