@@ -11,9 +11,15 @@
             <a class="navbar-brand" href="{'home'|alias}">GeoKrety.org</a>
 
             <div class="pull-right hidden-sm hidden-md hidden-lg">
+                {if $f3->get('SESSION.IS_LOGGED_IN')}
                 <a href="{'geokrety_move_create'|alias}" class="btn btn-success navbar-btn">
                     {t}Log a GeoKret{/t}
                 </a>
+                {else}
+                <a href="{'login'|alias}?goto={urlencode($f3->get('PATH'))}" class="btn btn-primary navbar-btn">
+                    {fa icon="sign-in"} {t}Sign in{/t}
+                </a>
+                {/if}
                 &nbsp;
             </div>
         </div>
@@ -28,7 +34,7 @@
                 <li><a href="{'news_list'|alias}">{fa icon="newspaper-o"} {t}News{/t}</a></li>
                 <li>
                     <p class="navbar-btn">
-                        <a href="{'geokrety_move_create'|alias}" class="btn btn-success"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a>
+                        <a href="{'geokrety_move_create'|alias}" class="btn btn-success btn-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a>
                     </p>
                 </li>
 

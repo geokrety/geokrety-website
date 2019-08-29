@@ -1,11 +1,16 @@
 {if $f3->get('SESSION.IS_LOGGED_IN')}
+<li>
+    <a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}">
+        <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}My profile{/t}
+    </a>
+</li>
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         {t}My account{/t} <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-        <li><a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}Profile{/t}</a></li>
+        <li><a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}My profile{/t}</a></li>
         {if isset($isSuperUser) and $isSuperUser}
         <li><a href="_admin.php">{fa icon="support"} {t}Admin{/t}</a></li>
         {/if}
@@ -28,6 +33,12 @@
     </ul>
 </li>
 {else}
+<li>
+    <p class="navbar-btn">
+        <a href="{'login'|alias}?goto={urlencode($f3->get('PATH'))}" class="btn btn-primary btn-block">
+            {fa icon="sign-in"} {t}Sign in{/t}
+        </a>
+    </p>
+</li>
 <li><a href="{'user_register'|alias}">{fa icon="user-plus"} {t}Create account{/t}</a></li>
-<li><a href="{'login'|alias}?goto={urlencode($f3->get('PATH'))}">{fa icon="sign-in"} {t}Sign in{$f3->get('FRAGMENT')}{/t}</a>
-    {/if}
+{/if}
