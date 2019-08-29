@@ -24,7 +24,7 @@ function geokretDateToMoment(data) {
 
         // Save youngest geokret
         if (birthdate < geokret.createdOnDatetime || birthdate == null) {
-            birthdate = geokret.createdOnDatetime;
+            birthdate = geokret.createdOnDatetime.startOf('minute');
         }
         return geokret;
     });

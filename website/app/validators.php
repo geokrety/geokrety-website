@@ -74,7 +74,7 @@ $validator->addValidator('not_in_the_future', function ($field, $input, $param =
 }, _('{0} cannot be in the future'));
 
 $validator->addValidator('after_geokret_birth', function ($field, $input, $param = null) {
-    return $input[$field] >= $input['geokret']->created_on_datetime;
+    return $input[$field]->format('Y-m-d H:i') >= $input['geokret']->created_on_datetime->format('Y-m-d H:i');
 }, _('{0} must be after GeoKret birth'));
 
 $validator->addFilter('HTMLPurifier', function ($value, $params = null) {
