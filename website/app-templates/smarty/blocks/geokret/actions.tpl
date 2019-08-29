@@ -11,7 +11,9 @@
 {/function}
 
 {function statistics}
+{* TODO
 <div class="col-md-4">{fa icon="line-chart"} <a href="#">{t}Statistics{/t}</a></div>
+*}
 {/function}
 
 {function adopt}
@@ -47,37 +49,37 @@
 {/function}
 
 <div class="panel panel-default">
-  <div class="panel-heading">
-    {t}Actions{/t}
-  </div>
-  <div class="panel-body">
-    {if $f3->get('SESSION.CURRENT_USER')}
-      {if $geokret->isOwner()}
+    <div class="panel-heading">
+        {t}Actions{/t}
+    </div>
+    <div class="panel-body">
+        {if $f3->get('SESSION.CURRENT_USER')}
+        {if $geokret->isOwner()}
         <div class="row">
-          {watchers}
-          {log}
-          {label}
+            {watchers}
+            {log}
+            {label}
         </div>
         <div class="row">
-          {statistics}
-          {empty}
-          {transfer}
+            {statistics}
+            {empty}
+            {transfer}
         </div>
-      {else}
+        {else}
         <div class="row">
-          {watchers}
-          {if $geokret_already_seen}{log}{else}{empty}{/if}
-          {email}
+            {watchers}
+            {if $geokret_already_seen}{log}{else}{empty}{/if}
+            {email}
         </div>
         <div class="row">
-          {statistics}
-          {adopt}
+            {statistics}
+            {adopt}
         </div>
-      {/if}
-    {else}
-      <div class="row">
-        {statistics}
-      </div>
-    {/if}
-  </div>
+        {/if}
+        {else}
+        <div class="row">
+            {statistics}
+        </div>
+        {/if}
+    </div>
 </div>
