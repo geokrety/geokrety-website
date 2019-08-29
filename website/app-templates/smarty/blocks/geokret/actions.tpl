@@ -3,7 +3,7 @@
 {/function}
 
 {function log}
-<div class="col-md-4">{fa icon="pencil"} <a href="#">{t}Log this GeoKret{/t}</a></div>
+<div class="col-md-4">{fa icon="pencil"} <a href="{'geokrety_move_create'|alias}?tracking_code={$geokret->tracking_code}">{t}Log this GeoKret{/t}</a></div>
 {/function}
 
 {function label}
