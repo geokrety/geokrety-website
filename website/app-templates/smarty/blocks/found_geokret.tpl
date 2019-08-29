@@ -12,7 +12,7 @@
         <input class="form-control input-lg" type="text" name="tracking_code" id="tracking_code" size="{GK_SITE_TRACKING_CODE_LENGTH}" maxlength="{GK_SITE_TRACKING_CODE_LENGTH}" placeholder="{t}Tracking code{/t}">
       </div>
 
-      <button type="submit" class="btn btn-primary btn-lg btn-block">{t}Log it!{/t}</button>
+      <button type="submit" class="btn btn-success btn-lg btn-block">{t}Log it!{/t}</button>
     </form>
   </div>
 </div>

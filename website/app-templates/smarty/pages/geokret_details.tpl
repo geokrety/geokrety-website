@@ -15,6 +15,7 @@
 {include file='banners/geokret_adopt.tpl'}
 {include file='blocks/geokret/details.tpl'}
 {include file='blocks/geokret/mission.tpl'}
+{include file='blocks/geokret/found_it.tpl'}
 {include file='blocks/geokret/pictures.tpl'}
 {include file='blocks/geokret/actions.tpl'}
 {include file='blocks/geokret/map.tpl'}
