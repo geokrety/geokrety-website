@@ -35,8 +35,11 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary">{t}Sign in{/t}</button>
+                            <a href="{'user_register'|alias}">{t}No account yet ? Register now!{/t}</a>
                             <div class="pull-right">
-                                <a href="new_password.php">{t}Forgot your password?{/t}</a>
+                                <p>
+                                    <a href="{'password_forget'|alias}">{t}Forgot your password?{/t}</a>
+                                </p>
                             </div>
                         </div>
                     </div>
