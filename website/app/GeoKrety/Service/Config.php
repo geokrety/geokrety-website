@@ -126,6 +126,7 @@ class Config {
         // define('GK_CDN_JS_URL', $_ENV['GK_CDN_IMAGES_URL'] ?? GK_CDN_SERVER_URL.'/images');
         define('GK_CDN_IMAGES_URL', $_ENV['GK_CDN_IMAGES_URL'] ?? GK_CDN_SERVER_URL.'/images');
         define('GK_CDN_ICONS_URL', $_ENV['GK_CDN_ICONS_URL'] ?? GK_CDN_IMAGES_URL.'/icons');
+        define('GK_CDN_LOGOS_URL', $_ENV['GK_CDN_LOGOS_URL'] ?? GK_CDN_IMAGES_URL.'/logos');
 
         // CDN LIBRARIES
         define('GK_CDN_LIBRARIES_URL', $_ENV['GK_CDN_LIBRARIES_URL'] ?? GK_CDN_SERVER_URL.'/libraries');
