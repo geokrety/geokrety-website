@@ -22,7 +22,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">{t}Geokrety interactive map{/t}</div>
+            <div class="panel-heading">{t}GeoKrety interactive map{/t}</div>
             <div class="panel-body">
                 <div id="mapid" class="leaflet-container"></div>
             </div>
