@@ -44,7 +44,7 @@
 
         </form>
         {else}
-        <em>{t escape=no url="{'login'|alias}?goto={urlencode($f3->get('PATH'))}"}Please <a href="%1">login</a> to post a comment{/t}</em>
+        <em>{t escape=no url="{'login'|alias}?goto={urlencode($f3->get('ALIAS'))}"}Please <a href="%1">login</a> to post a comment{/t}</em>
         {/if}
     </div>
 </div>

@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
-use GeoKrety\Service\LanguageService;
 use GeoKrety\Model\User;
 
 class UserChoosePreferedLanguage extends Base {
@@ -18,8 +17,6 @@ class UserChoosePreferedLanguage extends Base {
         }
         $this->user = $user;
         Smarty::assign('user', $this->user);
-
-        Smarty::assign('languages', LanguageService::getSupportedLanguages(true));
     }
 
     public function get(\Base $f3) {
