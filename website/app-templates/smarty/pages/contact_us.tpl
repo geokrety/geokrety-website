@@ -14,7 +14,15 @@
         <div class="row">
             <label class="col-sm-2 control-label">{t}Email{/t}</label>
             <div class="col-sm-6">
-                <img src="{GK_CDN_IMAGES_URL}/emailowy_adres.png" alt="mail" width="503" height="36" />
+                <img src="{GK_CDN_IMAGES_URL}/emailowy_adres.png" alt="mail" class="img-responsive" />
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-2 control-label">{t}Or via the user profile{/t}</label>
+            <div class="col-sm-6">
+                <a href="{'mail_to_user'|alias:sprintf('@userid=%d', 26422)}">kumy</a> (en français, in english)<br />
+                <a href="{'mail_to_user'|alias:sprintf('@userid=%d', 35313)}">bsllm</a> (en français, in english)<br />
             </div>
         </div>
 
@@ -43,14 +51,9 @@
         </div>
 
         <div class="row">
-            <label class="col-sm-2 control-label">{t}Or via the user profile{/t}</label>
+            <label class="col-sm-2 control-label">{t}Wanna sign or encrypt your mails?{/t}</label>
             <div class="col-sm-6">
-                <a href="{'user_details'|alias:sprintf('@userid=%d', 26422)}">kumy</a> (en français, in english)<br />
-                <a href="{'user_details'|alias:sprintf('@userid=%d', 35313)}">bsllm</a> (en français, in english)<br />
-                <a href="{'user_details'|alias:sprintf('@userid=%d', 1)}">filips</a> (po polsku, in english)<br />
-                <a href="{'user_details'|alias:sprintf('@userid=%d', 6262)}">simor</a> (po polsku, in english)<br />
-                <br />
-                <p>{t escape=no gpg_url="rzeczy/geokrety.org.pub" gpg_id="76B00039"}Our public PGP/GPG key <a href="%1">is here (%2)</a>{/t}</p>
+                <p>{t escape=no gpg_url=GK_CDN_GPGKEY_URL gpg_id=GK_CDN_GPGKEY_ID}Our public PGP/GPG key <a href="%1">is here (%2)</a>{/t}</p>
             </div>
         </div>
     </div>

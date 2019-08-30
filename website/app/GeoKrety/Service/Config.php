@@ -127,6 +127,9 @@ class Config {
         // CDN
         define('GK_CDN_SERVER_URL', $_ENV['GK_CDN_SERVER_URL'] ?? 'https://cdn.geokrety.org');
 
+        define('GK_CDN_GPGKEY_URL', $_ENV['GK_CDN_GPGKEY_URL'] ?? GK_CDN_SERVER_URL.'/geokrety.org.pub');
+        define('GK_CDN_GPGKEY_ID', $_ENV['GK_CDN_GPGKEY_ID'] ?? '76B00039');
+
         define('GK_CDN_CSS_URL', $_ENV['GK_CDN_CSS_URL'] ?? GK_CDN_SERVER_URL.'/css');
         // define('GK_CDN_JS_URL', $_ENV['GK_CDN_IMAGES_URL'] ?? GK_CDN_SERVER_URL.'/images');
         define('GK_CDN_IMAGES_URL', $_ENV['GK_CDN_IMAGES_URL'] ?? GK_CDN_SERVER_URL.'/images');
