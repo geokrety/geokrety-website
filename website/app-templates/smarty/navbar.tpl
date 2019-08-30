@@ -59,12 +59,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <img src="{GK_CDN_ICONS_URL}/language.svg" width="14" />
                         {t}Language{/t}
-                        <small title="{t}Currently selected language{/t}">({LANGUAGE})</small>
+                        <small title="{t}Currently selected language{/t}">({\Multilang::instance()->current})</small>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         {foreach $languages as $code => $lang}
-                        <li><a href="/{$code}">{$lang}</a></li>
+                        <li><a href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), $code)}">{$lang}</a></li>
                         {/foreach}
                     </ul>
                 </li>
