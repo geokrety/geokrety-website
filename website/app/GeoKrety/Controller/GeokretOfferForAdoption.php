@@ -17,13 +17,13 @@ class GeokretOfferForAdoption extends BaseGeokret {
     public function post(\Base $f3) {
         if (!$this->geokret->isOwner()) {
             \Flash::instance()->addMessage(_('You must be the GeoKret owner to generate new Owner Code.'), 'danger');
-            $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $this->geokret->gkid));
+            $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
         }
 
         $ownerCode = new OwnerCode();
         if ($ownerCode->count(array('geokret = ? AND user = ?', $this->geokret->id, null), null, 0)) {
             \Flash::instance()->addMessage(_('An Owner Code is already available for this GeoKret.'), 'warning');
-            $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $this->geokret->gkid));
+            $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
         }
 
         $ownerCode->geokret = $this->geokret;
@@ -39,6 +39,6 @@ class GeokretOfferForAdoption extends BaseGeokret {
             }
         }
 
-        $f3->reroute(sprintf('@geokret_details(@gkid=%d)', $ownerCode->geokret->gkid));
+        $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $ownerCode->geokret->gkid));
     }
 }
