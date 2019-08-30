@@ -16,7 +16,7 @@
                     {t}Log a GeoKret{/t}
                 </a>
                 {else}
-                <a href="{'login'|alias}?goto={urlencode($f3->get('ALIAS'))}" class="btn btn-primary navbar-btn">
+                <a href="{login_link}" class="btn btn-primary navbar-btn">
                     {fa icon="sign-in"} {t}Sign in{/t}
                 </a>
                 {/if}

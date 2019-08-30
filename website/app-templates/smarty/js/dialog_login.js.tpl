@@ -4,7 +4,7 @@ $('#modal').on('show.bs.modal', function(event) {
 
     if (typeName == 'login') {
         var id = button.data('id');
-        $(this).find('.modal-content').load("{'login'|alias}?goto={urlencode($f3->get('ALIAS'))}");
+        $(this).find('.modal-content').load("{login_link}");
     } else if (typeName == 'logout') {
         var id = button.data('id');
         $(this).find('.modal-content').load("{'logout'|alias}");
