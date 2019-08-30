@@ -8,6 +8,14 @@ use GeoKrety\Model\NewsComment;
 use GeoKrety\Model\NewsSubscription;
 
 class NewsDetails extends Base {
+    public function beforeRoute($f3) {
+        parent::beforeRoute($f3);
+
+        $comment = new NewsComment();
+        $this->comment = $comment;
+        Smarty::assign('comment', $this->comment);
+    }
+
     public function get(\Base $f3) {
         // Load news
         $news = new News();
@@ -31,10 +39,10 @@ class NewsDetails extends Base {
 
     public function post(\Base $f3, $params) {
         // Create the comment
-        $comment = new NewsComment();
+        $comment = $this->comment;
         $comment->news = $f3->get('PARAMS.newsid');
         $comment->author = $f3->get('SESSION.CURRENT_USER');
-        $comment->content = $f3->get('POST.comment');
+        $comment->content = $f3->get('POST.content');
         $comment->icon = 0;
 
         // Create the subscription

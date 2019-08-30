@@ -44,7 +44,7 @@
         </div>
         {/if}
 
-        {if !$hide_actions and $f3->get('SESSION.CURRENT_USER')}
+        {if isset($hide_actions) && !hide_actions && $f3->get('SESSION.CURRENT_USER')}
         <div class="row">
             <div class="col-xs-12">
                 <div class="pull-right">
@@ -84,7 +84,7 @@
         {/if}
 
     </div>
-    {if !$hide_comments and $move->comments_count}
+    {if isset($hide_comments) && !$hide_comments and $move->comments_count}
     {foreach from=$move->comments item=item}
     {include file='elements/move_comment.tpl' comment=$item}
     {/foreach}

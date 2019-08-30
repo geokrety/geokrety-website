@@ -18,6 +18,6 @@ class Watched extends Base {
     public function isWatcher() {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->user->id;
+        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->user) && $f3->get('SESSION.CURRENT_USER') === $this->user->id;
     }
 }

@@ -26,6 +26,10 @@ CHANGE `userid` `author` int(10) unsigned NULL AFTER `author_name`,
 CHANGE `komentarze` `comments_count` smallint(5) unsigned NOT NULL DEFAULT '0' AFTER `author`,
 CHANGE `ostatni_komentarz` `last_commented_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `comments_count`,
 ADD FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`);
+
+UPDATE `gk-news`
+SET author = null
+WHERE author=0;
 ```
 
 

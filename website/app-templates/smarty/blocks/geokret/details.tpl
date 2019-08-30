@@ -36,7 +36,7 @@
                 <dl class="dl-horizontal pull-left">
                     <dt>{t}Reference number{/t}</dt>
                     <dd title="{$geokret->gkid()}">{$geokret->gkid}</dd>
-                    {if $geokret->isOwner() or $geokret_already_seen}
+                    {if $geokret->isOwner() or $geokret->hasTouchedInThePast()}
                     <dt>{t}Tracking code{/t}</dt>
                     <dd><strong>{$geokret->tracking_code}</strong></dd>
                     {/if}

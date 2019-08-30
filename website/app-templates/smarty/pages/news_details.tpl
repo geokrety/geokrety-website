@@ -20,9 +20,9 @@
         <form class="form-horizontal" action="" method="post" id="formNewsComment" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
 
             <div class="form-group">
-                <label for="comment" class="col-sm-2 control-label">{t}Comment{/t}</label>
+                <label for="content" class="col-sm-2 control-label">{t}Comment{/t}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control maxl" rows="5" id="comment" name="comment" placeholder="{t}Your comment{/t}" maxlength="1000" required>{$smarty.post.comment}</textarea>
+                    <textarea class="form-control maxl" rows="5" id="content" name="content" placeholder="{t}Your comment{/t}" maxlength="1000" required>{$comment.content}</textarea>
                 </div>
             </div>
 

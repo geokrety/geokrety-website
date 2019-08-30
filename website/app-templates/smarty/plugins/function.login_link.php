@@ -12,7 +12,7 @@
 function smarty_function_login_link() {
     $f3 = \Base::instance();
     $query = array(
-        'goto' => urlencode($f3->get('GET.goto')),
+        'goto' => urlencode($f3->get('ALIAS')),
         'params' => urlencode(base64_encode($f3->serialize($f3->get('PARAMS')))),
     );
 

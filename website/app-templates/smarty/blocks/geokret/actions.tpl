@@ -68,7 +68,7 @@
         {else}
         <div class="row">
             {watchers}
-            {if $geokret_already_seen}{log}{else}{empty}{/if}
+            {if $geokret->hasTouchedInThePast()}{log}{else}{empty}{/if}
             {email}
         </div>
         <div class="row">

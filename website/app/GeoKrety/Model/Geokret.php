@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Model;
 
-// use GeoKrety\Service\HTMLPurifier;
 use DB\SQL\Schema;
+use GeoKrety\LogType;
 
 class Geokret extends Base {
     use \Validation\Traits\CortexTrait;
@@ -114,13 +114,27 @@ class Geokret extends Base {
     public function isOwner() {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
+        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->owner) && $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
     }
 
     public function isHolder() {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
+        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->holder) && $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
+    }
+
+    public function hasTouchedInThePast() {
+        $f3 = \Base::instance();
+        if (!$f3->get('SESSION.CURRENT_USER')) {
+            return false;
+        }
+
+        if ($this->isOwner() || $this->isHolder()) {
+            return true;
+        }
+
+        $move = new Move();
+        return $move->count(array('author = ? AND geokret = ? AND logtype IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED)) > 0;
     }
 
     public function __construct() {

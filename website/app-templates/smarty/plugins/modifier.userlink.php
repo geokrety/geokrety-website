@@ -12,7 +12,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * -------------------------------------------------------------
  */
 function smarty_modifier_userlink($user, ?string $alternative_name = null) {
-    if (!$user->id) {
+    if (is_null($user) || !$user->id) {
         $username = _('Anonymous');
         if (!is_null($alternative_name)) {
             $username = smarty_modifier_escape($alternative_name);

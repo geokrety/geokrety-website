@@ -25,7 +25,7 @@
     <div class="panel-body">
 
         <div class="pull-left">
-            <dl class="{if !$user_subpage}dl-horizontal{/if}">
+            <dl class="dl-horizontal">
                 <dt>{t}Joined us{/t}</dt>
                 <dd>{$user->joined_on_datetime|print_date nofilter}</dd>
                 <dt>{t}Language{/t}</dt>

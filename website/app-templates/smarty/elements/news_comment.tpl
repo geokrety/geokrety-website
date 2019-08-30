@@ -1,4 +1,4 @@
-<div class="panel panel-{if $news_last_read_datetime && $comment->updated_on_datetime >= $news_last_read_datetime}info{else}default{/if}">
+<div class="panel panel-{if isset($news_last_read_datetime) && $comment->updated_on_datetime >= $news_last_read_datetime}info{else}default{/if}">
     <div class="panel-heading">
         <div class="pull-left">
             {fa icon="file-text-o"}
@@ -6,7 +6,7 @@
         </div>
         <div class="pull-right">
             {$comment->updated_on_datetime|print_date nofilter}
-            {if !$hide_actions and $comment->isAuthor()}
+            {if isset($hide_action) && !$hide_actions and $comment->isAuthor()}
             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="news-comment-delete" data-id="{$comment->id}">
                 {fa icon="trash"}
             </button>

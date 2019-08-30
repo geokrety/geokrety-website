@@ -10,8 +10,8 @@
         {$geokret->owner|userlink nofilter}
     </td>
     <td class="text-center" nowrap>
-        {$geokret->last_log|logicon:true nofilter}
         {if !is_null($geokret->last_log)}
+        {$geokret->last_log|logicon:true nofilter}
         {$geokret->last_log->moved_on_datetime|print_date nofilter}
         <br />
         <small>{$geokret->last_log->author|userlink nofilter}</small>
