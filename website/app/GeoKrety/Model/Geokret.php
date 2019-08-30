@@ -134,6 +134,7 @@ class Geokret extends Base {
         }
 
         $move = new Move();
+
         return $move->count(array('author = ? AND geokret = ? AND logtype IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED)) > 0;
     }
 
