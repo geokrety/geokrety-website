@@ -2,7 +2,6 @@
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-include_once 'waypoint_info.php';
 /*
  * Smarty plugin
  * -------------------------------------------------------------
