@@ -9,8 +9,7 @@ $f3->config('app/authorizations.ini');
 // Create GK_* consts from environments
 new \GeoKrety\Service\Config();
 
-Raven_Autoloader::register();
-new Raven_Client(['dsn' => GK_SENTRY_DSN, 'environment' => GK_SENTRY_ENV, 'release' => GK_APP_VERSION]);
+\Sentry\init(['dsn' => GK_SENTRY_DSN, 'environment' => GK_SENTRY_ENV, 'release' => GK_APP_VERSION]);
 
 $f3->set('UI', GK_F3_UI);
 $f3->set('TMP', GK_F3_TMP);
