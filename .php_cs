@@ -3,19 +3,9 @@
 if (class_exists('PhpCsFixer\Finder')) {
     echo "PHP-CS-Fixer 2.x rules\n";
     $finder = PhpCsFixer\Finder::create()
-        ->exclude('website/szef/')
-        ->exclude('website/templates/colorbox/')
-        ->exclude('website/templates/compile/')
-        ->exclude('website/templates/rating/')
-        ->exclude('website/templates/jpgraph/')
-        ->exclude('website/templates/libraries/')
-        ->exclude('website/templates/htmlpurifier/')
-        ->exclude('website/templates/sentry-php-master/')
-        ->exclude('website/templates/piwik-php-tracker/')
-        ->notPath('website/templates/GoogleMap.php')
-        ->notPath('website/templates/PasswordHash.php')
-        ->notPath('website/templates/JSMin.php')
-        ->notPath('website/szef/smarty.php')
+        ->exclude('website/old/')
+        ->exclude('website/vendor/')
+        ->exclude('vendor/')
         ->in(__DIR__)
     ;
 
@@ -37,19 +27,9 @@ if (class_exists('PhpCsFixer\Finder')) {
 } elseif (class_exists('Symfony\CS\Finder\DefaultFinder')) {
     echo "PHP-CS-Fixer 1.x rules\n";
     $finder = Symfony\CS\Finder::create()
-        ->exclude('szef')
-        ->exclude('templates/colorbox')
-        ->exclude('templates/compile')
-        ->exclude('templates/rating')
-        ->exclude('templates/jpgraph')
-        ->exclude('templates/libraries')
-        ->exclude('templates/htmlpurifier')
-        ->exclude('templates/sentry-php-master')
-        ->exclude('templates/piwik-php-tracker')
-        ->notPath('templates/GoogleMap.php')
-        ->notPath('templates/PasswordHash.php')
-        ->notPath('templates/JSMin.php')
-        ->notPath('/szef/smarty.php')
+        ->exclude('website/old/')
+        ->exclude('website/vendor/')
+        ->exclude('vendor/')
         ->in('website/')
     ;
 
