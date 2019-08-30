@@ -18,6 +18,6 @@ class GeokretMoveDelete extends BaseMove {
         \Event::instance()->emit('move.deleted', $move);
         \Flash::instance()->addMessage(_('Move removed.'), 'success');
 
-        $f3->reroute(sprintf("@geokret_details_paginate(@gkid=%s,page=%d)#moves", $gkid, $current_page));
+        $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,page=%d)#moves', $gkid, $current_page));
     }
 }

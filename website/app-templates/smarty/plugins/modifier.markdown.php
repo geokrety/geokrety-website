@@ -1,6 +1,7 @@
 <?php
 
-use \GeoKrety\Service\Markdown;
+use GeoKrety\Service\Markdown;
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------

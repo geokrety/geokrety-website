@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
-use GeoKrety\Model\Geokret;
 use GeoKrety\Model\OwnerCode;
 
 class GeokretOfferForAdoption extends BaseGeokret {

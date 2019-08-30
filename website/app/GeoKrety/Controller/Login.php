@@ -10,6 +10,7 @@ class Login extends Base {
         'login',
         'logout',
     );
+
     public function loginForm($f3) {
         Smarty::render('extends:base.tpl|forms/login.tpl');
     }

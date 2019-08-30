@@ -12,7 +12,6 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * -------------------------------------------------------------
  */
 function smarty_modifier_application_icon(\GeoKrety\Model\Move $move) {
-
     if (empty($move->app) || $move->app === 'www') {
         return;
     }
