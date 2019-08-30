@@ -1,9 +1,9 @@
-#!/bin/bash -x
+#!/bin/bash
 
 which php-cs-fixer 1>&2 2> /dev/null || { echo "php-cs-fixer command missing"; exit 1; }
 
 START_TIME=$SECONDS
-php-cs-fixer -vv --dry-run --diff fix $@
+php-cs-fixer -vv --diff fix $@
 ELAPSED_TIME=$(($SECONDS - $START_TIME))
 cmdresult=$?
 

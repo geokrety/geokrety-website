@@ -14,6 +14,7 @@ class UserContact extends BaseCurrentUser {
         $this->mail = $mail;
         Smarty::assign('mail', $this->mail);
     }
+
     public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_to_user');
     }
