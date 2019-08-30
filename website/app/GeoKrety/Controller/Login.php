@@ -7,8 +7,8 @@ use GeoKrety\AuthGroup;
 
 class Login extends Base {
     const NO_REDIRECT_URLS = array(
-        '/login',
-        '/logout',
+        'login',
+        'logout',
     );
     public function loginForm($f3) {
         Smarty::render('extends:base.tpl|forms/login.tpl');

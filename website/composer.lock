@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a18f714e4b4693ea44bf18d18c1d379",
+    "content-hash": "5dd7d48f02d70dc38190955a2cf9ecea",
     "packages": [
         {
             "name": "bcosca/fatfree-core",
@@ -2034,6 +2034,43 @@
                 "permissions"
             ],
             "time": "2016-02-18T14:42:16+00:00"
+        },
+        {
+            "name": "xfra35/f3-multilang",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xfra35/f3-multilang.git",
+                "reference": "ffaf7eb49af12fdd61e89fb6c740a994c960975c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xfra35/f3-multilang/zipball/ffaf7eb49af12fdd61e89fb6c740a994c960975c",
+                "reference": "ffaf7eb49af12fdd61e89fb6c740a994c960975c",
+                "shasum": ""
+            },
+            "require": {
+                "bcosca/fatfree-core": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Route localization plugin for the PHP Fat-Free Framework",
+            "homepage": "https://github.com/xfra35/f3-multilang",
+            "keywords": [
+                "F3",
+                "fatfree",
+                "localization",
+                "multilingual"
+            ],
+            "time": "2018-01-10T07:17:32+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

@@ -5,7 +5,7 @@
   {else if $f3->get('SESSION.CURRENT_USER')}
   {t escape=no page={'geokret_claim'|alias}}This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href="%1">claim</a> this GeoKret.{/t}
   {else}
-  {t escape=no page="{'login'|alias}?goto={urlencode($f3->get('PATH'))}"}This GeoKret is available for adoption. Please <a href="%1">login</a> first.{/t}
+  {t escape=no page="{'login'|alias}?goto={urlencode($f3->get('ALIAS'))}"}This GeoKret is available for adoption. Please <a href="%1">login</a> first.{/t}
   {/if}
 </div>
 {/if}

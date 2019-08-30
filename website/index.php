@@ -20,14 +20,7 @@ new Session();
 // // Falsum
 // Falsum\Run::handler();
 
-// Healthcheck route
-$f3->route('HEAD /', function () {});
-
-$f3->route('GET @move: /move-geokrety/',
-    function () {
-        \GeoKrety\Service\Smarty::render('pages/move.tpl');
-    }
-);
+\Multilang::instance();
 
 // Authorizations
 $access = \Access::instance();
