@@ -33,7 +33,7 @@
     </td>
     <td class="text-right">
         {if $geokret->isHolder()}
-        <a class="btn btn-default btn-xs" href="#" title="{t}Move this GeoKret{/t}">🛩️</a>
+        <a class="btn btn-default btn-xs" href="{'move_create'|alias}?tracking_code={$geokret->tracking_code}" title="{t}Move this GeoKret{/t}">🛩️</a>
         {/if}
     </td>
 </tr>

@@ -11,7 +11,8 @@ class UserOwnedGeokretyMoves extends BaseUser {
         // Load moves
         $move = new Move();
         $move->has('geokret.owner', array('id = ?', $this->user->id));
-        $subset = $move->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_USER_OWNED_GEOKRETY_RECENT_MOVES);
+        $options = array('order' => 'moved_on_datetime DESC');
+        $subset = $move->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_USER_OWNED_GEOKRETY_RECENT_MOVES, null, $options);
         Smarty::assign('moves', $subset);
         // Paginate
         $pages = new Pagination($subset['total'], $subset['limit']);

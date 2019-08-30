@@ -40,7 +40,7 @@ class HelpApi extends Base {
         Smarty::assign('gk_xml_export2', $xml->asXMLPretty());
 
         // Render ruchy error
-        $xml = new \Geokrety\Service\Xml\Errors();
+        $xml = new \GeoKrety\Service\Xml\Errors();
         $xml->addError(_('Wrong secid'));
         $xml->addError(_('Wrong date or time'));
         Smarty::assign('gk_xml_ruchy_error', $xml->asXMLPretty());

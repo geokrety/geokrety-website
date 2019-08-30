@@ -9,7 +9,7 @@ class MoveComment extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-ruchy-comments';
+    protected $table = 'gk-move-comments';
 
     protected $fieldConf = array(
         'content' => array(
