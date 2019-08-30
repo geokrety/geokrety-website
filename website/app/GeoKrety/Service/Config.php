@@ -18,6 +18,10 @@ class Config {
         define('GK_SITE_MAIL_TOKEN_LENGTH', $_ENV['GK_SITE_MAIL_TOKEN_LENGTH'] ?? 10);
         define('GK_SITE_OWNER_CODE_LENGTH', $_ENV['GK_SITE_OWNER_CODE_LENGTH'] ?? 6);
 
+        // SENTRY CONFIG
+        define('GK_SENTRY_DSN', $_ENV['GK_SENTRY_DSN'] ?? null);
+        define('GK_SENTRY_ENV', $_ENV['GK_SENTRY_ENV'] ?? 'dev');
+
         // Environment
         define('GK_ENVIRONMENT', $_ENV['GK_ENVIRONMENT'] ?? 'dev');
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
