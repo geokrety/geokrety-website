@@ -73,7 +73,10 @@ class LanguageService extends \Prefab {
         return $languages;
     }
 
-    public static function getLanguageByAlpha2($langAlpha2) {
+    public static function getLanguageByAlpha2($langAlpha2, $locale = false) {
+        if ($locale) {
+            return self::SUPPORTED_LANGUAGES_LOCAL_NAME[$langAlpha2];
+        }
         $isoCodes = self::instance()->isoCodesFactory;
         $languages = $isoCodes->getLanguages();
 
@@ -88,6 +91,6 @@ class LanguageService extends \Prefab {
             $langAlpha2 = 'da';
         }
 
-        return $languages->getByAlpha2($langAlpha2);
+        return $languages->getByAlpha2($langAlpha2)->getLocalName();
     }
 }

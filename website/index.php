@@ -20,7 +20,14 @@ new Session();
 // // Falsum
 // Falsum\Run::handler();
 
-\Multilang::instance();
+// Language
+$ml = \Multilang::instance();
+setlocale(LC_MESSAGES, LANGUAGE);
+// setlocale(LC_TIME, LANGUAGE);
+// setlocale(LC_NUMERIC, 'en_EN');
+bindtextdomain('messages', GK_GETTEXT_BINDTEXTDOMAIN_PATH);
+bind_textdomain_codeset('messages', 'UTF-8');
+textdomain('messages');
 
 // Authorizations
 $access = \Access::instance();
