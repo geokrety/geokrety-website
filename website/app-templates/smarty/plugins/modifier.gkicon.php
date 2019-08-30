@@ -1,6 +1,5 @@
 <?php
 
-use \Geokrety\GeokretyType;
 /*
  * Smarty plugin
  * -------------------------------------------------------------

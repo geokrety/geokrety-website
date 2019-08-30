@@ -5,7 +5,8 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 
 class StaticPages extends Base {
-    public function head($f3) {}
+    public function head($f3) {
+    }
 
     public function terms_of_use($f3) {
         Smarty::render('pages/terms_of_use.tpl');

@@ -3,12 +3,9 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
-use GeoKrety\Service\LanguageService;
-use GeoKrety\Controller\StaticPages;
 
 class Help extends Base {
     public function get($f3) {
-
         $social_groups = array();
         $social_groups[] = [
             'link' => 'https://www.facebook.com/groups/1624761011150615/about/',

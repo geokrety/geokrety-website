@@ -6,6 +6,7 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Validation\Coordinates as CoordinatesValidation;
 use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
 use GeoKrety\Service\Validation\Waypoint as WaypointValidation;
+
 // use GeoKrety\Service\; // Country / Elevation services
 
 class GeokretMove extends BaseMove {

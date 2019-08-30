@@ -1,6 +1,7 @@
 <?php
 
 namespace GeoKrety\Controller;
+
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
 
