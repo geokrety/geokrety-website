@@ -1,5 +1,5 @@
 
-<form class="form-horizontal" id="moveForm" method="POST" action="{if $move->id}{'geokrety_move_edit'|alias}{else}{'geokrety_move_create'|alias}{/if}" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
+<form class="form-horizontal" id="moveForm" method="POST" action="{if $move->id}{'geokrety_move_edit'|alias}{else}{'move_create'|alias}{/if}" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled]">
     <input type="hidden" name="app" value="{if $move->app}{$move->app}{else}{GK_APP_NAME}{/if}" />
     <input type="hidden" name="app_ver" value="{if $move->app_ver}{$move->app_ver}{else}{GK_APP_VERSION}{/if}" />
     <div class="hidden" id="accordionParking"></div>
@@ -74,35 +74,35 @@
                                 <div class="col-sm-10 col-sm-offset-1">
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}" value="{\Geokrety\Domain\LogType::LOG_TYPE_DROPPED}" {if $move->logtype->isType(\Geokrety\Domain\LogType::LOG_TYPE_DROPPED)}checked{/if} required data-parsley-group="logtype">
+                                        <input type="radio" name="logtype" id="logType{\GeoKrety\LogType::LOG_TYPE_DROPPED}" value="{\GeoKrety\LogType::LOG_TYPE_DROPPED}" {if $move->logtype->isType(\GeoKrety\LogType::LOG_TYPE_DROPPED)}checked{/if} required data-parsley-group="logtype">
                                         <div class="dropped box" data-toggle="tooltip" title="{t}When you've left a GeoKret in a cache{/t}">
                                             <span>{t}I've dropped GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}" value="{\Geokrety\Domain\LogType::LOG_TYPE_GRABBED}" {if $move->logtype->isType(\Geokrety\Domain\LogType::LOG_TYPE_GRABBED)}checked{/if} required>
+                                        <input type="radio" name="logtype" id="logType{\GeoKrety\LogType::LOG_TYPE_GRABBED}" value="{\GeoKrety\LogType::LOG_TYPE_GRABBED}" {if $move->logtype->isType(\GeoKrety\LogType::LOG_TYPE_GRABBED)}checked{/if} required>
                                         <div class="grabbed box" data-toggle="tooltip" title="{t}When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>{/t}" data-html="true">
                                             <span>{t}I've grabbed GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}" value="{\Geokrety\Domain\LogType::LOG_TYPE_SEEN}" {if $move->logtype->isType(\Geokrety\Domain\LogType::LOG_TYPE_SEEN)}checked{/if} required>
+                                        <input type="radio" name="logtype" id="logType{\GeoKrety\LogType::LOG_TYPE_SEEN}" value="{\GeoKrety\LogType::LOG_TYPE_SEEN}" {if $move->logtype->isType(\GeoKrety\LogType::LOG_TYPE_SEEN)}checked{/if} required>
                                         <div class="met box" data-toggle="tooltip" title="{t}When you've met a GeoKret in a cache but haven't taken it with you{/t}">
                                             <span>{t}I've met GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}" value="{\Geokrety\Domain\LogType::LOG_TYPE_DIPPED}" {if $move->logtype->isType(\Geokrety\Domain\LogType::LOG_TYPE_DIPPED)}checked{/if} required>
+                                        <input type="radio" name="logtype" id="logType{\GeoKrety\LogType::LOG_TYPE_DIPPED}" value="{\GeoKrety\LogType::LOG_TYPE_DIPPED}" {if $move->logtype->isType(\GeoKrety\LogType::LOG_TYPE_DIPPED)}checked{/if} required>
                                         <div class="dipped box" data-toggle="tooltip" title="{t}When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory{/t}">
                                             <span>{t}I've dipped a GeoKret{/t}</span>
                                         </div>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="logtype" id="logType{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}" value="{\Geokrety\Domain\LogType::LOG_TYPE_COMMENT}" {if $move->logtype->isType(\Geokrety\Domain\LogType::LOG_TYPE_COMMENT)}checked{/if} required>
+                                        <input type="radio" name="logtype" id="logType{\GeoKrety\LogType::LOG_TYPE_COMMENT}" value="{\GeoKrety\LogType::LOG_TYPE_COMMENT}" {if $move->logtype->isType(\GeoKrety\LogType::LOG_TYPE_COMMENT)}checked{/if} required>
                                         <div class="comment box" data-toggle="tooltip" title="{t}When you want to write a comment :){/t}">
                                             <span>{t}Comment{/t}</span>
                                         </div>

@@ -7,6 +7,13 @@ use GeoKrety\Model\User;
 use GeoKrety\Model\Mail;
 
 class UserContact extends BaseCurrentUser {
+    public function beforeRoute($f3) {
+        parent::beforeRoute($f3);
+
+        $mail = new Mail();
+        $this->mail = $mail;
+        Smarty::assign('mail', $this->mail);
+    }
     public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_to_user');
     }
@@ -43,7 +50,7 @@ class UserContact extends BaseCurrentUser {
 
     public function post(\Base $f3) {
         $this->loadToUser($f3);
-        $mail = new Mail();
+        $mail = $this->mail;
         $mail->from = $this->user;
         $mail->to = $this->userTo;
         $mail->subject = $f3->get('POST.subject');

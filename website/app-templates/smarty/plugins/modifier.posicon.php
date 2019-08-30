@@ -46,7 +46,7 @@ function computeLocationType($logType) {
  */
 function smarty_modifier_posicon(\GeoKrety\Model\Geokret $geokret) {
     $lastLocationType = $geokret->last_position ? $geokret->last_position->logtype->getLogTypeId() : '';
-    $lastUserId = $geokret->last_position ? $geokret->last_position->author->id : 0;
+    $lastUserId = ($geokret->last_position && !is_null($geokret->last_position->author)) ? $geokret->last_position->author->id : 0;
 
     $iconClass = computelogtype($lastLocationType, $lastUserId, \Base::instance()->get('SESSION.CURRENT_USER'));
     $message = getPosIcon($geokret->type->getTypeId().$iconClass);

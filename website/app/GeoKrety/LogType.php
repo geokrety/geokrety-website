@@ -50,6 +50,13 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     );
 
+    const LOG_TYPES_USER_TOUCHED = array(
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_GRABBED,
+        self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_DIPPED,
+    );
+
     private $logtype;
 
     public function __construct($logtype = null) {
