@@ -6,11 +6,15 @@
         <h3 class="panel-title">{t}Developers{/t}</h3>
     </div>
     <div class="panel-body">
+        {t}Current team:{/t}
         <ul>
-            <li><strong>{$contributors['filips']|userlink nofilter}</strong> {t}idea, code and design{/t}</li>
-            <li><strong>{$contributors['kumy']|userlink nofilter}</strong> {t escape=no url="https://github.com/geokrety"}hosting, code and <a href="%1">planning GK v2</a>{/t}</li>
-            <li><strong>{$contributors['BSLLM']|userlink nofilter}</strong> {t}code, public relation and advertising{/t}</li>
-            <li><strong>{$contributors['simor']|userlink nofilter}</strong> {t}visions into code 😉{/t}</li>
+            <li><strong>{$contributors['kumy']|userlink nofilter}</strong> {t escape=no url="https://github.com/geokrety"}hosting, code, new design, support and <a href="%1">planning GK v2</a>{/t}</li>
+            <li><strong>{$contributors['BSLLM']|userlink nofilter}</strong> {t}code, support, public relation and advertising{/t}</li>
+        </ul>
+        {t}Legacy team:{/t}
+        <ul>
+            <li><strong>{$contributors['filips']|userlink nofilter}</strong> {t}idea, code and original design{/t}</li>
+            <li><strong>{$contributors['simor']|userlink nofilter}</strong> {t}visions into (legacy) code 😉{/t}</li>
         </ul>
     </div>
 </div>
