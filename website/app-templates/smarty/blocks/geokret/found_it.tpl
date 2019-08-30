@@ -3,7 +3,7 @@
         {t}Found it? Log it!{/t}
     </div>
     <div class="panel-body">
-        <form class="form form-horizontal" action="{'geokrety_move_create'|alias}" method="get">
+        <form class="form form-horizontal" action="{'move_create'|alias}" method="get">
 
             <div class="form-group">
                 <label for="tracking_code" class="col-sm-2 control-label">Tracking Code</label>

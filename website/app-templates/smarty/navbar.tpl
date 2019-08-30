@@ -12,7 +12,7 @@
 
             <div class="pull-right hidden-sm hidden-md hidden-lg">
                 {if $f3->get('SESSION.IS_LOGGED_IN')}
-                <a href="{'geokrety_move_create'|alias}" class="btn btn-success navbar-btn">
+                <a href="{'move_create'|alias}" class="btn btn-success navbar-btn">
                     {t}Log a GeoKret{/t}
                 </a>
                 {else}
@@ -34,14 +34,14 @@
                 <li><a href="{'news_list'|alias}">{fa icon="newspaper-o"} {t}News{/t}</a></li>
                 <li>
                     <p class="navbar-btn">
-                        <a href="{'geokrety_move_create'|alias}" class="btn btn-success btn-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a>
+                        <a href="{'move_create'|alias}" class="btn btn-success btn-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a>
                     </p>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{fa icon="cogs"} {t}Actions{/t} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{'geokrety_move_create'|alias}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a></li>
+                        <li><a href="{'move_create'|alias}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a></li>
                         {if $f3->get('SESSION.IS_LOGGED_IN')}
                         <li><a href="{'geokret_create'|alias}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {t}Create a new GeoKret{/t}</a></li>
                         <li><a href="{'geokret_claim'|alias}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {t}Claim a GeoKret{/t}</a></li>
