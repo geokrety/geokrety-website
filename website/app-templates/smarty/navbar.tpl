@@ -58,8 +58,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <img src="{GK_CDN_ICONS_URL}/language.svg" width="14" />
-                        {t}Language{/t}
-                        <small title="{t}Currently selected language{/t}">({\Multilang::instance()->current})</small>
+                        <span title="{t}Currently selected language{/t}">{\Multilang::instance()->current|language:true}</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">

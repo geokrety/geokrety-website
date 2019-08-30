@@ -12,7 +12,7 @@
             <tr>
                 <td>
                     {foreach from=$group.lang item=lang name=languages}
-                    {\GeoKrety\Service\LanguageService::getLanguageByAlpha2($lang)->getLocalName()}
+                    {$lang|language:true}
                     {if !$smarty.foreach.languages.last}, {/if}
                     {/foreach}
                 </td>

@@ -10,11 +10,5 @@
  * -------------------------------------------------------------
  */
 function smarty_modifier_language(string $lang, bool $asLocale = false) {
-    $language = \GeoKrety\Service\LanguageService::getLanguageByAlpha2($lang);
-
-    if ($asLocale) {
-        return $language->getLocalName(); // українська
-    }
-
-    return $language->getName(); // Ukrainian
+    return \GeoKrety\Service\LanguageService::getLanguageByAlpha2($lang, $asLocale);
 }

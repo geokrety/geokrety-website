@@ -49,6 +49,7 @@ class Config {
         define('GK_F3_UI', $_ENV['GK_F3_UI'] ?? './app-ui');
         define('GK_F3_TMP', $_ENV['GK_F3_TMP'] ?? '/tmp/f3/');
         define('GK_F3_CACHE', $_ENV['GK_F3_CACHE'] ?? 'redis=redis:6379');
+        define('GK_GETTEXT_BINDTEXTDOMAIN_PATH', $_ENV['GK_GETTEXT_BINDTEXTDOMAIN_PATH'] ?? './app/languages');
 
         // Smarty
         define('GK_SMARTY_TEMPLATES_DIR', $_ENV['GK_SMARTY_TEMPLATES_DIR'] ?? './app-templates/smarty/');
