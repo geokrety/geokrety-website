@@ -35,7 +35,8 @@ class UserChoosePreferedLanguage extends Base {
 
         if ($user->validate()) {
             $user->save();
-            \Event::instance()->emit('user.language.changed', $user, array('oldlanguage' => $oldlanguage));
+            $context = array('oldlanguage' => $oldlanguage);
+            \Event::instance()->emit('user.language.changed', $user, $context);
             \Flash::instance()->addMessage(_('Language updated.'), 'success');
         } else {
             $this->get($f3);

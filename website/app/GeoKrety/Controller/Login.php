@@ -25,6 +25,8 @@ class Login extends Base {
             $user = new \GeoKrety\Model\User();
             $user->load(array('username = ?', $f3->get('POST.login')));
             if ($user->valid()) {
+                $ml = \Multilang::instance();
+                $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
                 $f3->set('SESSION.CURRENT_USER', $user->id);
                 $f3->set('SESSION.CURRENT_USERNAME', $user->username);
                 $f3->set('SESSION.IS_LOGGED_IN', true);
@@ -38,10 +40,10 @@ class Login extends Base {
                 if ($f3->exists('GET.goto')) {
                     $goto = $f3->get('GET.goto');
                     if (!in_array($goto, self::NO_REDIRECT_URLS)) {
-                        $f3->reroute($goto);
+                        $f3->reroute($ml->alias($goto, $params, $user->preferred_language));
                     }
                 }
-                $f3->reroute('@home');
+                $ml->reroute('@home', $params, $user->preferred_language);
             } else {
                 \Flash::instance()->addMessage(_('Something went wrong during the login procedure.'), 'danger');
             }
