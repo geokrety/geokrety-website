@@ -20,7 +20,7 @@ git config --global user.email "geokrety@gmail.com"
 git config --global user.name "GeoKrety Bot"
 
 # Build mo files
-for file in $(ls -d website/rzeczy/lang/*.UTF-8); do
+for file in $(ls -d website/app/languages/*.UTF-8); do
   msgfmt -v ${file}/LC_MESSAGES/messages.po -o ${file}/LC_MESSAGES/messages.mo
   git add -f ${file}/LC_MESSAGES/messages.mo
 done

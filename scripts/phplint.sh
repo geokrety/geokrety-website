@@ -16,8 +16,8 @@ while test $# -gt 0; do
         continue
     fi
 
-    for file in `find $current -type f -name "*.php"` ; do
-        RESULTS=`php -l $file`
+    for file in $(find $current -type f -not \( -path './website/old/*' -o -path './.git/*' -o -path './vendor/*' -o -path './website/vendor/*' \) -name "*.php") ; do
+        RESULTS=$(php -l $file)
 
         if [ "$RESULTS" != "No syntax errors detected in $file" ] ; then
             echo $RESULTS
