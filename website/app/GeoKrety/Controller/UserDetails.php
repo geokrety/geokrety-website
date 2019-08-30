@@ -32,7 +32,7 @@ class UserDetails extends Base {
 
         // GeoKrety moved stats
         $geokretyMoved = $f3->get('DB')->exec(
-            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-ruchy` WHERE author = ? AND logtype NOT IN (?, ?)',
+            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-moves` WHERE author = ? AND logtype NOT IN (?, ?)',
             array(
                 $f3->get('PARAMS.userid'),
                 LogType::LOG_TYPE_COMMENT,

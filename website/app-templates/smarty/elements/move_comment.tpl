@@ -7,7 +7,7 @@
         </div>
         <div class="pull-right">
             {$comment->created_on_datetime|print_date nofilter}
-            {if !$hide_actions and ($comment->geokret->isOwner() or $comment->move->isAuthor() or $comment->isAuthor())}
+            {if !(isset($hide_actions) && $hide_actions) and ($comment->geokret->isOwner() or $comment->move->isAuthor() or $comment->isAuthor())}
             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment-delete" data-id="{$comment->id}">
                 {fa icon="trash"}
             </button>

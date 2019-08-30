@@ -12,7 +12,7 @@ $validator->addValidator('not_empty', function ($field, $input, $param = null) {
 }, _('The {0} field cannot be empty'));
 
 $validator->addValidator('geokrety_type', function ($field, $input, $param = null) {
-    return \GeoKrety\GeokretyType::isValid($input[$field]);
+    return \GeoKrety\GeokretyType::isValid($input[$field]->getTypeId());
 }, _('The GeoKret type is invalid'));
 
 $validator->addValidator('log_type', function ($field, $input, $param = null) {

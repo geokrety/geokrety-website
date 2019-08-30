@@ -11,7 +11,7 @@ class Move extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-ruchy';
+    protected $table = 'gk-moves';
 
     protected $fieldConf = array(
         'author' => array(

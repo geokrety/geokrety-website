@@ -27,7 +27,7 @@ class Geokret extends Base {
         ),
         'tracking_code' => array(
             'type' => Schema::DT_VARCHAR128,
-            'validate' => 'required',
+            // 'validate' => 'required',
             'index' => true,
             'unique' => true,
         ),

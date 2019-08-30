@@ -12,7 +12,7 @@
 
         <div class="form-group">
             <label class="control-label">{t}Your comment{/t}</label>
-            <input type="text" class="form-control" name="comment" id="comment" value="{$comment->content}" minlength="1" maxlength="500" autofocus required>
+            <input type="text" class="form-control" name="comment" id="comment" value="{if isset($comment)}{$comment->content}{/if}" minlength="1" maxlength="500" autofocus required>
         </div>
 
     </div>
