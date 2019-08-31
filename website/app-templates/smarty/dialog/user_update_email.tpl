@@ -25,23 +25,23 @@
         <p>
             <em>
                 {t}Email alerts may contain any of the following:{/t}
-                {t escape=no}<ul>
-                    <li>GeoKrety.org news</li>
-                    <li>Recent logs on:</li>
+                <ul>
+                    <li>{t}GeoKrety.org news{/t}</li>
+                    <li>{t}Recent logs on:{/t}</li>
                     <ul>
-                        <li>your own GeoKrety</li>
-                        <li>GeoKrety that you watch</li>
-                        <li>any GeoKrety logged near your home location</li>
+                        <li>{t}your own GeoKrety{/t}</li>
+                        <li>{t}GeoKrety that you watch{/t}</li>
+                        <li>{t}any GeoKrety logged near your home location{/t}</li>
                     </ul>
-                    <li>Comments posted to any of the following:</li>
+                    <li>{t}Comments posted to any of the following:{/t}</li>
                     <ul>
-                        <li>your own GeoKrety</li>
-                        <li>GeoKrety that you watch</li>
-                        <li>your logs</li>
-                        <li>your comments</li>
-                        <li>news posts you have are subscribed to</li>
+                        <li>{t}your own GeoKrety{/t}</li>
+                        <li>{t}GeoKrety that you watch{/t}</li>
+                        <li>{t}your logs{/t}</li>
+                        <li>{t}your comments{/t}</li>
+                        <li>{t}news posts you have are subscribed to{/t}</li>
                     </ul>
-                </ul>{/t}
+                </ul>
             </em>
         </p>
 
