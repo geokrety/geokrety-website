@@ -32,8 +32,7 @@ class Config {
         define('GK_EMAIL_SUBJECT_PREFIX', $_ENV['GK_EMAIL_SUBJECT_PREFIX'] ?? '[GeoKrety] ');
 
         // DATABASE config
-        define('GK_DB_DSN', 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');
-        // define('GK_DB_DSN', $_ENV['GK_DB_DSN'] ?? 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');
+        define('GK_DB_DSN', $_ENV['GK_DB_DSN'] ?? 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');
         define('GK_DB_USER', $_ENV['GK_DB_USER'] ?? 'geokrety');
         define('GK_DB_PASSWORD', $_ENV['GK_DB_PASSWORD'] ?? 'geokrety');
 
