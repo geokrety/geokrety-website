@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label for="inputMission" class="col-sm-2 control-label">{t}Mission{/t}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control maxl" rows="5" id="inputMission" name="mission" placeholder="{t}What is this GeoKrety mission?{/t}" maxlength="5120">{if isset($geokret)}{$geokret->mission}{/if}</textarea>
+                    <textarea class="form-control maxl" rows="5" id="inputMission" name="mission" placeholder="{t}What is this GeoKret mission?{/t}" maxlength="5120">{if isset($geokret)}{$geokret->mission}{/if}</textarea>
                 </div>
             </div>
 
