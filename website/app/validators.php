@@ -67,7 +67,7 @@ $validator->addValidator('move_not_same_datetime', function ($field, $input, $pa
     $move->load(array($field.' = ? AND geokret = ? AND id != ?', $input[$field]->format('Y-m-d H:i:s'), $input['geokret']->id, $input['_id']));
 
     return $move->dry();
-}, _('Something already exists at the same {0}'));
+}, _('Something already exists at the same datetime "{0}"'));
 
 $validator->addValidator('not_in_the_future', function ($field, $input, $param = null) {
     return $input[$field] <= new DateTime();
