@@ -31,7 +31,7 @@
                 {foreach from=$geokrety item=geokret}
                 <tr>
                     <td>
-                        <button class="btn btn-primary" name="btnChooseGK" data-trackingcode="{$geokret->tracking_code}">Choose</button>
+                        <button class="btn btn-primary" name="btnChooseGK" data-trackingcode="{$geokret->tracking_code}">{t}Choose{/t}</button>
                     </td>
                     <td>
                         {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
