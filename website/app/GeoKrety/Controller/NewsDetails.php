@@ -29,7 +29,7 @@ class NewsDetails extends Base {
             $subscription->touch('last_read_datetime');
             $subscription->save();
             if ($f3->get('ERROR')) {
-                \Flash::instance()->addMessage(_('Failed to save visit.'), 'danger');
+                \Flash::instance()->addMessage(_('Failed to record read datetime.'), 'danger');
             }
             Smarty::assign('news_last_read_datetime', $subscription->last_read_datetime);
         }
@@ -56,7 +56,7 @@ class NewsDetails extends Base {
             $comment->save();
 
             if ($f3->get('ERROR')) {
-                \Flash::instance()->addMessage(_('Failed to create comment.'), 'danger');
+                \Flash::instance()->addMessage(_('Error while saving comment.'), 'danger');
             } else {
                 \Flash::instance()->addMessage(_('Your comment has been saved.'), 'success');
                 \Event::instance()->emit('news-comment.created', $comment);
