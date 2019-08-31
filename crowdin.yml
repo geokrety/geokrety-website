@@ -1,11 +1,11 @@
 project_identifier: geokrety
 api_key_env: CROWDIN_API_KEY
-base_path: 
+base_path:
 preserve_hierarchy: true
 files:
-  - source: /website/rzeczy/messages.po.txt
-    translation: /website/rzeczy/lang/%locale_with_underscore%.UTF-8/LC_MESSAGES/messages.po
+  - source: /website/app/languages/messages.po.txt
+    translation: /website/app/languages/%locale_with_underscore%.UTF-8/LC_MESSAGES/messages.po
     dest: messages.po
-  - source: /website/help/en/help.html
-    translation: /website/help/%two_letters_code%/help.html
+  - source: /website/app-templates/smarty/help-pages/en/help.html
+    translation: /website/app-templates/smarty/help-pages/%two_letters_code%/help.html
     dest: help.html
