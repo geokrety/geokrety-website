@@ -19,7 +19,7 @@
             </li>
             <li>
                 {fa icon="plane"}
-                <a href="{'user_owned_recent_moves'|alias}">{t}Moves of owned Geokrety{/t}</a>
+                <a href="{'user_owned_recent_moves'|alias}">{t}Moves of owned GeoKrety{/t}</a>
             </li>
             <li>
                 {fa icon="picture-o"}
