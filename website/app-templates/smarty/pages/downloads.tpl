@@ -15,7 +15,7 @@
         <h3 class="panel-title"><img src="{GK_CDN_ICONS_URL}/mapa.png" width="24" height="20" alt="mapka" /> {t}Map of caches for Garmin units{/t}</h3>
     </div>
     <div class="panel-body">
-        {t escape=no count="2019/05/19: 576697" url_help="{'help'|alias}#fullysupportedwaypoints"}As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href="%2">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset).{/t}
+        {t escape=no count="2019/05/19: 576697" url_help={'help'|alias:null:null:'#fullysupportedwaypoints'}}As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href="%2">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset).{/t}
         {t escape=no url="download_garmin_map.php"}Read more and <a href="%1">get the map</a>.{/t}
     </div>
 </div>*}

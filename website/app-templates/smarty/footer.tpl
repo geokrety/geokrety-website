@@ -1,9 +1,9 @@
 <footer class="footer">
     <ul class="footer_bottom_ul">
       <li><a href="{'home'|alias}">{t}Home{/t}</a></li>
-      <li><a href="{'help'|alias}#about">About</a></li>
-      <li><a href="{'news_list'|alias}">News</a></li>
-      <li><a href="{'contact_us'|alias}">Contact</a></li>
+      <li><a href="{'help'|alias:null:null:'#about'}">{t}About{/t}</a></li>
+      <li><a href="{'news_list'|alias}">{t}News{/t}</a></li>
+      <li><a href="{'contact_us'|alias}">{t}Contact{/t}</a></li>
     </ul>
 
     <p class="text-center">
