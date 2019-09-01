@@ -2,7 +2,7 @@
 <div class="pull-right">
     <ul class="pagination">
         {if $pg->getFirst()}
-            <li><a href="{$pg->getPath()}{$pg->getFirst()}#{$anchor}">First</a></li>
+            <li><a href="{$pg->getPath()}{$pg->getFirst()}#{$anchor}">{t}First{/t}</a></li>
         {/if}
         {if $pg->getPrev()}
             <li><a href="{$pg->getPath()}{$pg->getPrev()}#{$anchor}"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
@@ -14,7 +14,7 @@
             <li><a href="{$pg->getPath()}{$pg->getNext()}#{$anchor}"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
         {/if}
         {if $pg->getLast()}
-            <li><a href="{$pg->getPath()}{$pg->getLast()}#{$anchor}">Last [{$pg->getLast()}]</a></li>
+            <li><a href="{$pg->getPath()}{$pg->getLast()}#{$anchor}">{t count=$pg->getLast()}Last [%1]{/t}</a></li>
         {/if}
     </ul>
 </div>
