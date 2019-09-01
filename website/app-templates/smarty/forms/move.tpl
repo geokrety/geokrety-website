@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group">
-                                <label for="nr" class="col-sm-2 control-label">{t}Tracking Code{/t}</label>
+                                <label for="nr" class="col-sm-2 control-label"><abbr title="Tracking Code">{t}Tracking Code{/t}</abbr></label>
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
