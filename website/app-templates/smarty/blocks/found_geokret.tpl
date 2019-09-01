@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <p>
-            {t}Please enter the tracking code here:{/t}
+            {t escape=no title="Tracking Code"}Please enter the <abbr title="%1">Tracking Code</abbr> here:{/t}
         </p>
         <form class="form" action="{'move_create'|alias}" method="get">
 
