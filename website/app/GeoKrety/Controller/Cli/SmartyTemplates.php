@@ -20,6 +20,5 @@ class SmartyTemplates {
         if (exec('chown -R www-data.www-data '.GK_SMARTY_COMPILE_DIR) === null) {
             echo "\e[0;31mError changing templates owner to php user\e[0m".PHP_EOL;
         }
-
     }
 }

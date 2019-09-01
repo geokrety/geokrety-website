@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use GeoKrety\Service\Smarty;
-
 class GetText {
     public function buildTranslations() {
         if (exec('find app/languages/ -name \*.po -execdir msgfmt -v messages.po -o messages.mo \;') === null) {
