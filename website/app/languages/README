@@ -1,18 +1,24 @@
 To extract strings from templates:
 
   sudo apt install tsmarty2c
+  # or
+  composer require smarty-gettext/tsmarty2c
 
 Generate `input-files-for-xgettext`
 
-  find ./website/ -type f -name '*.php' -not -path './website/lib/*' -not -path './website/vendor/*' -not -path './website/templates/*' | sort > website/rzeczy/lang/input-files-for-xgettext
+  find ./website/ -type f -name '*.php' -not -path './website/old/*' -not -path './website/vendor/*' -not -path './website/templates/*' | sort > /tmp/input-files-for-xgettext
 
 Extract gettext string using:
 
-  xgettext --from-code=UTF-8 -o /tmp/messages.pot --language=PHP -f website/rzeczy/lang/input-files-for-xgettext
-  tsmarty2c -o /tmp/smarty.pot ./website/templates/smarty ./website/templates/waypointy-translations.html
-  msgcat -o website/rzeczy/messages.po.txt /tmp/messages.pot /tmp/smarty.pot
+  xgettext --from-code=UTF-8 -o /tmp/messages.pot --language=PHP -f /tmp/input-files-for-xgettext
+  tsmarty2c -o /tmp/smarty.pot ./website/app-templates
+  msgcat -o website/app/languages/messages.po.txt /tmp/messages.pot /tmp/smarty.pot
 
+  xgettext --from-code=UTF-8 -o $TMP/messages.pot --language=PHP -f /tmp/input-files-for-xgettext
+  ./vendor/bin/tsmarty2c.php -o $TMP/smarty.pot ./website/app-templates
+  msgcat -o website/app/languages/messages.po.txt $TMP/messages.pot $TMP/smarty.pot
+  msgcat -o website/app/languages/messages.po.txt $TMP/messages.pot $TMP/smarty.pot
 
 Compile translation:
 
-  msgfmt website/rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.po -o website/rzeczy/lang/fr_FR.UTF-8/LC_MESSAGES/messages.mo
+  msgfmt website/app/languages/fr_FR.UTF-8/LC_MESSAGES/messages.po -o website/app/languages/fr_FR.UTF-8/LC_MESSAGES/messages.mo

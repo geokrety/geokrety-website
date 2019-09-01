@@ -43,8 +43,6 @@ before_install:
 install:
     - cd website && composer install && cd ..
     - composer install
-    - sudo curl -L https://raw.githubusercontent.com/smarty-gettext/smarty-gettext/master/tsmarty2c.php -o /usr/local/bin/tsmarty2c
-    - sudo chmod 0755 /usr/local/bin/tsmarty2c
     - phpenv config-rm xdebug.ini || return 0
 
 jobs:
@@ -66,8 +64,7 @@ jobs:
         - stage: deploy
           if: branch IN (master, boly38, feature/new-theme)
           script:
-          - scripts/export-translations-github.sh
-          - scripts/compile-translations.sh
+          - scripts/export-translations-to-crowdin.sh
         - stage: qaTests
           if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN)
           script:
