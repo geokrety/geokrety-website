@@ -9,7 +9,7 @@
         <form class="form-horizontal" method="post" id="formClaim" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
 
             <div class="form-group">
-                <label for="inputTrackingCode" class="col-sm-2 control-label">{t}Tracking Code{/t}</label>
+                <label for="inputTrackingCode" class="col-sm-2 control-label"><abbr title="Tracking Code">{t}Tracking Code{/t}</abbr></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputTrackingCode" name="tc" placeholder="ABC123" minlength="6" value="{if isset($smarty.post.tc)}{$smarty.post.tc}{/if}" required>
                 </div>
