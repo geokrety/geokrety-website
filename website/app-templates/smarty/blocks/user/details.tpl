@@ -68,7 +68,7 @@
             </dl>
 
             {if $user->isCurrentUser()}
-                {t escape=no}To change your username or remove your account? Send us <a href="{'contact_us'|alias}">an email</a>!{/t}
+                {t escape=no url={'contact_us'|alias}}To change your username or remove your account? Send us <a href="%1">an email</a>!{/t}
             {/if}
         </div>
 
