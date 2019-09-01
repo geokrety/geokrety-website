@@ -63,7 +63,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         {foreach $languages as $code => $lang}
-                        <li><a href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), $code)}">{$lang}</a></li>
+                        <li><a href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), $code)}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}">{$lang}</a></li>
                         {/foreach}
                     </ul>
                 </li>
