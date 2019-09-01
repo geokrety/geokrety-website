@@ -27,7 +27,7 @@
 
         </li>
         <li role="separator" class="divider"></li>
-        <li><a href="{'geokrety_map'|alias}#{\GeoKrety\Controller\Map::buildFragmentUserIdGeokrety($f3->get('SESSION.CURRENT_USER'))}">{fa icon="map"} {t}Where are my GeoKrety?{/t}</a></li>
+        <li><a href="{'geokrety_map'|alias:null:null:{\GeoKrety\Controller\Map::buildFragmentUserIdGeokrety($f3->get('SESSION.CURRENT_USER'))}}">{fa icon="map"} {t}Where are my GeoKrety?{/t}</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="{'logout'|alias}">{fa icon="sign-out"} {t}Sign out{/t}</a></li>
     </ul>

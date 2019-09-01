@@ -31,7 +31,7 @@
             </li>
             <li>
                 {fa icon="map"}
-                <a href="{'geokrety_map'|alias}#{\GeoKrety\Controller\Map::buildFragmentUserIdGeokrety($f3->get('PARAMS.userid'))}">{t}Where are my GeoKrety?{/t}</a>
+                <a href="{'geokrety_map'|alias:null:null:{\GeoKrety\Controller\Map::buildFragmentUserIdGeokrety($f3->get('PARAMS.userid'))}}">{t}Where are my GeoKrety?{/t}</a>
             </li>
             {* TODO
             <li>

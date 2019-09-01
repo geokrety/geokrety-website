@@ -21,7 +21,7 @@
             <ul>
                 <li>{t}a title "Mole-hole (specific name where the cache is located)" e.g. "Mole-hole Pomeranczarnia"{/t}</li>
                 <li>{t}a subtitle "GeoKretExpress (departure area) - (destination area)" e.g. "GeoKretExpress Warszawa - Berlin"{/t}</li>
-                <li>{t url="{'mole_holes'|alias}"}a standard text, explaining the mole-hole-system (and maybe a link to <a href="%1">%1</a>?){/t}</li>
+                <li>{t url={'mole_holes'|alias}}a standard text, explaining the mole-hole-system (and maybe a link to <a href="%1">%1</a>?){/t}</li>
                 <li>{t}some information about the end of the tunnel (destination area, partner, partner-mole-hole-cache){/t}</li>
                 <li>{t}And probably detailed information about the mole-hole-cache and the neighbourhood, how to get there, hint, spoiler and so on.{/t}</li>
             </ul>
