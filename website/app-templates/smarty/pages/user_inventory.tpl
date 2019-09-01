@@ -4,7 +4,7 @@
 {include file='macros/pagination.tpl'}
 <a class="anchor" id="inventory"></a>
 
-<h2>🎒 {t}User inventory{/t}</h2>
+<h2>🎒 {t username=$user->username}%1's inventory{/t}</h2>
 <div class="row">
     <div class="col-xs-12 col-md-9">
 
