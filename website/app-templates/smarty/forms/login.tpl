@@ -6,7 +6,8 @@
                 <h3 class="panel-title">{t}Login{/t}</h3>
             </div>
             <div class="panel-body">
-                <form action="{'login'|alias}{if $f3->exists('GET.goto')}?goto={urlencode($f3->get('GET.goto'))}&params={$f3->get('GET.params')}{/if}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
+
+                <form action="{'login'|alias}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
 
                     <div class="form-group">
                         <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>
