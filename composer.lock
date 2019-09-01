@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f32d6f06d203d2c15b04c8818adafb4",
+    "content-hash": "8b86e5b327b65189dd9cea41cdd65815",
     "packages": [
         {
             "name": "composer/semver",
@@ -381,6 +381,50 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "time": "2019-08-27T16:03:01+00:00"
+        },
+        {
+            "name": "geekwright/po",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geekwright/Po.git",
+                "reference": "31cfb43d44f2084f1d79bb7581c63412f41d592b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geekwright/Po/zipball/31cfb43d44f2084f1d79bb7581c63412f41d592b",
+                "reference": "31cfb43d44f2084f1d79bb7581c63412f41d592b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Geekwright\\Po\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Richard Griffith",
+                    "email": "richard@geekwright.com"
+                }
+            ],
+            "description": "Objects to assist in reading, manipulating and creating GNU gettext style PO files",
+            "homepage": "https://github.com/geekwright/Po",
+            "keywords": [
+                "gettext",
+                "i18n",
+                "l10n",
+                "po",
+                "pot"
+            ],
+            "time": "2016-08-24T22:08:24+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1686,6 +1730,162 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "smarty-gettext/smarty-gettext",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smarty-gettext/smarty-gettext.git",
+                "reference": "00fe2fcbc41e24e0245cd9d73f96bc7b0337972d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smarty-gettext/smarty-gettext/zipball/00fe2fcbc41e24e0245cd9d73f96bc7b0337972d",
+                "reference": "00fe2fcbc41e24e0245cd9d73f96bc7b0337972d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gettext": "*",
+                "ext-pcre": "*",
+                "php": "~5.3|~7.0"
+            },
+            "require-dev": {
+                "azatoth/php-pgettext": "~1.0",
+                "smarty/smarty": "3.1.*"
+            },
+            "suggest": {
+                "azatoth/php-pgettext": "Support msgctxt for {t} via context parameter"
+            },
+            "bin": [
+                "tsmarty2c.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "block.t.php",
+                    "function.locale.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1+"
+            ],
+            "authors": [
+                {
+                    "name": "Sagi Bashari",
+                    "email": "sagi@boom.org.il"
+                },
+                {
+                    "name": "Elan Ruusamäe",
+                    "email": "glen@delfi.ee"
+                }
+            ],
+            "description": "Gettext plugin enabling internationalization in Smarty Package files",
+            "homepage": "https://github.com/smarty-gettext/smarty-gettext",
+            "time": "2017-05-12T12:14:46+00:00"
+        },
+        {
+            "name": "smarty-gettext/tsmarty2c",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smarty-gettext/tsmarty2c.git",
+                "reference": "d120f23f4055e4652ef47ea36810f93fa4e920d6"
+            },
+            "require": {
+                "geekwright/po": "^1.0",
+                "php": "^5.5.9 || ^7.0",
+                "smarty-gettext/smarty-gettext": "~1.5.0",
+                "smarty/smarty": "~3.1.31",
+                "symfony/console": "^3.2",
+                "symfony/finder": "~2.8|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "bin": [
+                "bin/tsmarty2c.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartyGettext\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SmartyGettext\\Test\\": "tests"
+                }
+            },
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Elan Ruusamäe",
+                    "email": "glen@pld-linux.org"
+                }
+            ],
+            "description": "Smarty Gettext Translation String Ripper",
+            "homepage": "https://github.com/smarty-gettext/tsmarty2c",
+            "support": {
+                "issues": "https://github.com/smarty-gettext/tsmarty2c/issues"
+            },
+            "time": "2017-11-12T02:17:22+00:00"
+        },
+        {
+            "name": "smarty/smarty",
+            "version": "v3.1.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smarty-php/smarty.git",
+                "reference": "dd55b23121e55a3b4f1af90a707a6c4e5969530f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/dd55b23121e55a3b4f1af90a707a6c4e5969530f",
+                "reference": "dd55b23121e55a3b4f1af90a707a6c4e5969530f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "libs/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Monte Ohrt",
+                    "email": "monte@ohrt.com"
+                },
+                {
+                    "name": "Uwe Tews",
+                    "email": "uwe.tews@googlemail.com"
+                },
+                {
+                    "name": "Rodney Rehm",
+                    "email": "rodney.rehm@medialize.de"
+                }
+            ],
+            "description": "Smarty - the compiling PHP template engine",
+            "homepage": "http://www.smarty.net",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2018-09-12T20:54:16+00:00"
         },
         {
             "name": "symfony/console",
