@@ -24,9 +24,7 @@ new Session();
 
 // Language
 $ml = \Multilang::instance();
-setlocale(LC_MESSAGES, LANGUAGE);
-// setlocale(LC_TIME, LANGUAGE);
-// setlocale(LC_NUMERIC, 'en_EN');
+\Carbon\Carbon::setLocale($ml->current);
 bindtextdomain('messages', GK_GETTEXT_BINDTEXTDOMAIN_PATH);
 bind_textdomain_codeset('messages', 'UTF-8');
 textdomain('messages');
