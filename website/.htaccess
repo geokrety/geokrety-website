@@ -11,22 +11,19 @@ RewriteEngine On
 RewriteBase /
 
 
-# Languages manipulations
-# https://stackoverflow.com/a/19902914/944936
-
-# # empty url -> redirect to en/
-# RewriteCond %{QUERY_STRING} !lang=(en|fr|de|pl|bg|ca|da|el|es|et|fi|cs|hu|it|nl|pt|zh|ro|ru|sk|sq|sv|th|tr|uk)
-# RewriteRule ^$ en/ [R=301,L]
-#
-# # url is ONLY '/en' or '/de' -> redirect to /en/ or /de/ (adding slash)
-# RewriteRule ^(en|fr|de|pl|bg|ca|da|el|es|et|fi|cs|hu|it|nl|pt|zh|ro|ru|sk|sq|sv|th|tr|uk)$  $1/ [R=301,L]
-#
-# # now all urls have en/ de/ -> parse them
-# RewriteRule ^(en|fr|de|pl|bg|ca|da|el|es|et|fi|cs|hu|it|nl|pt|zh|ro|ru|sk|sq|sv|th|tr|uk)/(.*)$  $2?lang=$1&%{query_STRING} [L]
-#
-#
 # # Issue-68: Change link to download GeoKrety Toolbox
 # Redirect "(en|fr|de|pl|bg|ca|da|el|es|et|fi|cs|hu|it|nl|pt|zh|ro|ru|sk|sq|sv|th|tr|uk)/download/GeoKrety.Toolbox.user.js" "https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js"
+
+
+# Issue-221: robots.txt per domain
+RewriteCond %{REQUEST_FILENAME} /robots.txt$
+RewriteCond %{DOCUMENT_ROOT}/robots-files/%{HTTP_HOST}.txt -f
+RewriteRule robots.txt$ /robots-files/%{HTTP_HOST}.txt [L]
+
+# define a fallback if no config file provided
+RewriteCond %{REQUEST_FILENAME} /robots.txt$
+RewriteCond %{DOCUMENT_ROOT}/robots-files/%{HTTP_HOST}.txt !-f
+RewriteRule robots.txt$ /robots-files/default.txt [L]
 
 
 RewriteRule ^(app|templates)\/|\.ini$ - [R=404]
@@ -36,16 +33,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L,QSA]
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
-
-
-# Issue-221: robots.txt per domain
-RewriteCond %{REQUEST_FILENAME} ^/robots.txt$
-RewriteCond %{DOCUMENT_ROOT}/robots-files/%{HTTP_HOST}.txt -f
-RewriteRule robots.txt$ /robots-files/%{HTTP_HOST}.txt [L]
-# define a fallback if no config file provided
-RewriteCond %{REQUEST_FILENAME} ^/robots.txt$
-RewriteCond %{DOCUMENT_ROOT}/robots-files/%{HTTP_HOST}.txt !-f
-RewriteRule robots.txt$ /robots-files/default.txt [L]
 
 
 # Legacy access to files
