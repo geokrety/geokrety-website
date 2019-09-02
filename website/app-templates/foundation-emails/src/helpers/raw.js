@@ -6,5 +6,5 @@
  * {{{{/raw}}}}
  */
 module.exports = function(content) {
-  return content.fn();
+    return content.fn();
 }
