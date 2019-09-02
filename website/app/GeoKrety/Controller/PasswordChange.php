@@ -107,8 +107,10 @@ class PasswordChange extends Base {
         Smarty::assign('user', $user);
         if (!$smtp->send(Smarty::fetch('password-changed.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the mail.'), 'danger');
+
             return false;
         }
+
         return true;
     }
 }

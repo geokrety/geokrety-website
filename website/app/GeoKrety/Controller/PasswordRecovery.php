@@ -71,8 +71,10 @@ class PasswordRecovery extends Base {
         Smarty::assign('token', $token);
         if (!$smtp->send(Smarty::fetch('password-recovery.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the mail.'), 'danger');
+
             return false;
         }
+
         return true;
     }
 }
