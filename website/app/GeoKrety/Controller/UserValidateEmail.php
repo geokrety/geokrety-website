@@ -14,6 +14,7 @@ class UserValidateEmail extends Base {
             $f3->get('DB')->begin();
             $user = $activation->user;
             $user->email = $activation->email;
+            $user->email_invalid = 0;
             if ($user->validate()) {
                 $user->save();
                 $activation->erase(array('token = ?', $f3->get('PARAMS.token')));

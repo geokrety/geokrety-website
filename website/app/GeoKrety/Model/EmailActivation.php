@@ -25,11 +25,22 @@ class EmailActivation extends Base {
         ),
         'confirmed' => array(
             'type' => Schema::DT_INT1,
+            'default' => 0,
             'nullable' => false,
         ),
         'created_on_datetime' => array(
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
+        ),
+        'updated_on_datetime' => array(
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
+            // ON UPDATE CURRENT_TIMESTAMP
+        ),
+        'requesting_ip' => array(
+            'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
         ),
     );
@@ -40,7 +51,8 @@ class EmailActivation extends Base {
 
     public function __construct() {
         parent::__construct();
-        $this->beforesave(function ($self) {
+        $this->beforeinsert(function ($self) {
+            $self->requesting_ip = \Base::instance()->get('IP');
             // generate Verification Token
             $seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
             shuffle($seed);
