@@ -747,3 +747,19 @@ ALTER TABLE `gk-waypointy`
 ADD `added_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `status`,
 CHANGE `updated_on_datetime` `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `added_on_datetime`;
 ```
+
+```sql
+CREATE TABLE `gk-password-tokens` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `token` varchar(60) NOT NULL,
+  `user` int(11) unsigned NOT NULL,
+  `used` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=unused 1=used',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `used_on_datetime` datetime NULL,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `requesting_ip` varchar(46) NOT NULL,
+  FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE,
+  INDEX `token_used` (`token`, `used`),
+  INDEX `created_on_datetime` (`created_on_datetime`)
+) COMMENT='Retrieve user password' ENGINE='InnoDB' COLLATE 'utf8mb4_unicode_ci';
+```

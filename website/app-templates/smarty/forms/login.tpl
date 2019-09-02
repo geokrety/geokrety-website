@@ -39,7 +39,7 @@
                             <a href="{'user_register'|alias}">{t}No account yet ? Register now!{/t}</a>
                             <div class="pull-right">
                                 <p>
-                                    <a href="{'password_forget'|alias}">{t}Forgot your password?{/t}</a>
+                                    <a href="{'password_recovery'|alias}">{t}Forgot your password?{/t}</a>
                                 </p>
                             </div>
                         </div>
