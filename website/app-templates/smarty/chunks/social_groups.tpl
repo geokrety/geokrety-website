@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>{t}languages{/t}</th>
-                <th>{t}group service{/t}</th>
+                <th>{t}platform{/t}</th>
                 <th>{t}group name{/t}</th>
             </tr>
         </thead>
