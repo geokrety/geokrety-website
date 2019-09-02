@@ -2,8 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2019-07-24 22:45+0000\n"
 "PO-Revision-Date: 2019-08-31 17:10\n"
+=======
+"POT-Creation-Date: 2019-09-02 17:40+0000\n"
+"PO-Revision-Date: 2019-09-02 17:52\n"
+>>>>>>> New Crowdin translations (#466)
 "Last-Translator: geokrety\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -57,11 +62,19 @@ msgstr "Wpisz kod"
 msgid "Language"
 msgstr "Język"
 
+<<<<<<< HEAD
 #: website/adduser.php:118 website/templates.php:117 website/templates.php:141
 #: website/termsofuse.php:11 website/templates/krety.html:151
 #: website/templates/krety.html:244
 msgid "Terms of use"
 msgstr "Zasady użytkowania"
+=======
+#: website/app/GeoKrety/Controller/GeokretMove.php:92
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:28
+#: website/app/GeoKrety/Controller/UserContact.php:66
+msgid "reCaptcha failed!"
+msgstr "reCaptcha nie powiodło się!"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/adduser.php:127
 msgid "Tips"
@@ -150,11 +163,57 @@ msgstr "Kreci interfejs XMLowy ;)"
 msgid "Your currently configured email address (%s) seems to be invalid. Please <a href=\"/edit.php?co=email\">update your email address</a> in the preferences."
 msgstr "Aktualnie skonfigurowany adres e-mail (%s) wydaje się być nieprawidłowy. <a href=\"/edit.php?co=email\">Zaktualizuj swój adres teraz</a>."
 
+<<<<<<< HEAD
 #: website/claim.php:22 website/comment.php:75 website/generatorek.php:57
 #: website/imgup.php:69 website/majluj.php:33 website/newscomments.php:273
 #: website/please_login.php:11 website/race_join.php:12 website/register.php:28
 msgid "Please login."
 msgstr "Zaloguj się."
+=======
+#: website/app/GeoKrety/Controller/PasswordChange.php:22
+msgid "Sorry this token is not valid, already used or expired."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:55
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:51
+msgid "New passwords doesn't match."
+msgstr "Nowe hasło się nie zgadza."
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:83
+msgid "Unexpected error occured."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:92
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:63
+msgid "Your password has been changed."
+msgstr "Twoje hasło zostało zmienione."
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:99
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
+msgid "Your password has been changed"
+msgstr "Twoje hasło zostało zmienione"
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:109
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:73
+msgid "An error occured while sending the mail."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:39
+msgid "Sorry no account using that email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:56
+msgid "An email containing a validation link has been sent to the provided email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:63
+msgid "Password reset request"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:40
+msgid "Language preferences updated."
+msgstr "Zaktualizowano preferencje językowe."
+>>>>>>> New Crowdin translations (#466)
 
 #: website/comment.php:20
 msgid "Unknown error."
@@ -182,7 +241,60 @@ msgstr "Podaj proszę informacje mogące być przydate przy odnalezieniu tego kr
 msgid "Log:"
 msgstr "Logi:"
 
+<<<<<<< HEAD
 #: website/comment.php:164 website/comment.php:179
+=======
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:57
+msgid "Sorry but this mail address is already in use."
+msgstr "Przykro nam, ale ten email został już wykorzystany."
+
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:70
+#, php-format
+msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for %d days."
+msgstr "Email potwierdzający został wysłany na Twój nowy adres. Aby potwierdzić zmianę adresu kliknij na link zawarty w tymże mailu. Link jest ważny przez %d dni."
+
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:93
+msgid "Changing your email address"
+msgstr "Zmień swój adres e-mail"
+
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:97
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:101
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:77
+msgid "An error occured while sending the confirmation mail."
+msgstr "Wystąpił błąd podczas wysyłania e-maila z potwierdzeniem."
+
+#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:37
+msgid "Failed to save your home coordinates."
+msgstr "Błąd podczas zapisy koordynatów domowych."
+
+#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:40
+msgid "Your home coordinates were successfully saved."
+msgstr "Twoje koordynaty domowe zostały zapisane."
+
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
+msgid "Your old password is invalid."
+msgstr "Twoje stare hasło jest niepoprawne."
+
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:12
+msgid "Sorry this validation token is invalid or expired."
+msgstr "Przepraszamy, ale ten kod potwierdzający jest nieprawidłowy bądź już wygasł."
+
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:25
+msgid "Failed to activate your email address."
+msgstr "Błąd podczas aktywacji Twojego adresu e-mail."
+
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:28
+msgid "Your email address has been validated."
+msgstr "Twój adres e-mail został potwierdzony."
+
+#: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:45
+msgid "Waypoint seems empty."
+msgstr "Punkt wygląda na pusty."
+
+#: website/app/GeoKrety/Controller/Validation/WaypointName.php:20
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:50
+>>>>>>> New Crowdin translations (#466)
 #, php-format
 msgid "By %s, on %s"
 msgstr "Przez %s, na %s"
@@ -228,9 +340,61 @@ msgstr "Złe współrzędne lub nieznany format"
 msgid "Missing or invalid coordinates."
 msgstr "Brak lub błędne współrzędne"
 
+<<<<<<< HEAD
 #: website/cotozalog.php:8 website/templates/konfig.php:221
 msgid "Dropped to"
 msgstr "Wrzucony do"
+=======
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
+#, php-format
+msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:32
+#, php-format
+msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't starts with 'GK' 😉"
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:44
+#, php-format
+msgid "Tracking Code \"%s\" contains invalid characters."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:54
+#, php-format
+msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:99
+msgid "No Tracking Code provided."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:103
+msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:107
+#, php-format
+msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:62
+msgid "Waypoint contains invalid characters."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:83
+#, php-format
+msgid "View the <a href=\"%s\" target=\"_blank\">cache page</a>."
+msgstr "Zobacz <a href=\"%s\" target=\"_blank\">stronę kesza</a>."
+
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:86
+msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the 'Coordinates' field."
+msgstr ""
+
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:90
+msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/cotozalog.php:9 website/templates/konfig.php:222
 msgid "Grabbed from"
@@ -830,10 +994,24 @@ msgstr "Przeszukaj geocaching.com"
 msgid "Write comment"
 msgstr "Skomentuj"
 
+<<<<<<< HEAD
 #: website/konkret-tabelka.php:239 website/konkret.php:85
 #: website/recent_moves.php:221
 msgid "Add photo"
 msgstr "Dodaj fotkę"
+=======
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
+#: website/app-templates/smarty/pages/home.tpl:29
+#: website/app-templates/smarty/pages/news_details.tpl:23
+#: website/app-templates/smarty/pages/news_details.tpl:41
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
+#: website/app-templates/smarty/forms/move.tpl:107
+#: website/app-templates/smarty/forms/move.tpl:244
+#: website/app-templates/smarty/js/geokret_move.tpl.js:186
+msgid "Comment"
+msgstr "Komentarz"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/konkret-tabelka.php:239 website/recent_moves.php:221
 msgid "Edit log"
@@ -847,9 +1025,18 @@ msgstr "Usuń log"
 msgid "Rename"
 msgstr "Zmień nazwę"
 
+<<<<<<< HEAD
 #: website/konkret-tabelka.php:275 website/konkret.php:139
 msgid "Delete photo"
 msgstr "Usuń obrazek"
+=======
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
+#: website/app-templates/smarty/dialog/user_update_email.tpl:53
+#: website/app-templates/smarty/dialog/user_update_password.tpl:56
+#: website/app-templates/smarty/pages/password_change.tpl:59
+msgid "Change"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/konkret-tabelka.php:365
 msgid "Delete comment"
@@ -1237,9 +1424,17 @@ msgstr "Przepraszamy, ale musisz odczekać %d minut zanim będziesz mógł wysł
 msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
 msgstr "GK hotel/motel to łatwoosiągalny kesz, znajdujący się niedaleko lotniska, stacji kolejowej, autostrady itp, na tyle duży, aby mógł pomieścić kilka(naście) geokretów. Geokeszerzy mogą zabierać lub zostawiać krety."
 
+<<<<<<< HEAD
 #: website/molehole.php:73
 msgid "By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
 msgstr "Na OC mamy zarejestrowane następujące GK (lub GK+TB) hotele/motele:"
+=======
+#: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/pages/password_recovery.tpl:26
+msgid "Email address"
+msgstr "Adres email"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/mypage.php:10 website/mypage.php:57
 msgid "My Page"
@@ -1379,9 +1574,16 @@ msgstr "Nowe hasło w serwisie GeoKrety to: %s\n\n"
 msgid "New password sent to %s"
 msgstr "Nowe hasło zostało wysłane na adres %s"
 
+<<<<<<< HEAD
 #: website/new_password.php:85
 msgid "No such email"
 msgstr "Oj, nie ma takiego emaila"
+=======
+#: website/app-templates/smarty/dialog/user_update_password.tpl:12
+#: website/app-templates/smarty/pages/password_change.tpl:16
+msgid "Change your password"
+msgstr "Zmień swoje hasło"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/newscomments.php:118
 msgid "News post not found."
@@ -1391,6 +1593,7 @@ msgstr "Nie znaleziono takiego niuso-posta"
 msgid "Unsubscribe from this news post"
 msgstr "Zaprzestań subskrybcji tego posta"
 
+<<<<<<< HEAD
 #: website/newscomments.php:233 website/newscomments.php:252
 msgid "Subscribe to this news post"
 msgstr "Zasubskrybuj tego posta"
@@ -1398,6 +1601,21 @@ msgstr "Zasubskrybuj tego posta"
 #: website/newscomments.php:248
 msgid "Write new comment"
 msgstr "Skomentuj"
+=======
+#: website/app-templates/smarty/dialog/user_update_password.tpl:26
+#: website/app-templates/smarty/dialog/user_update_password.tpl:28
+#: website/app-templates/smarty/pages/password_change.tpl:44
+#: website/app-templates/smarty/pages/password_change.tpl:46
+msgid "New password"
+msgstr "Nowe hasło"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:33
+#: website/app-templates/smarty/dialog/user_update_password.tpl:35
+#: website/app-templates/smarty/pages/password_change.tpl:51
+#: website/app-templates/smarty/pages/password_change.tpl:53
+msgid "Confirm password"
+msgstr "Potwierdź hasło"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/newscomments.php:253
 msgid "Post comment"
@@ -2095,9 +2313,26 @@ msgstr "Nieprawidłowy tracking code"
 msgid "caches match"
 msgstr "keszy pasuje"
 
+<<<<<<< HEAD
 #: website/szukaj-ajax.php:199
 #, php-format
 msgid "%d caches match (the first %d)"
+=======
+#: website/app-templates/smarty/pages/password_recovery.tpl:10
+msgid "Password recovery"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_recovery.tpl:19
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_recovery.tpl:40
+msgid "Send me a recovery link"
+msgstr ""
+
+#: website/app-templates/smarty/pages/work_in_progress.tpl:4
+msgid "This page doesn't exists yet, but we're working on it!"
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/szukaj.php:44
@@ -2327,9 +2562,28 @@ msgstr ""
 msgid "version"
 msgstr "wersja"
 
+<<<<<<< HEAD
 #: website/templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
 msgstr "Przejmij Geokreta"
+=======
+#: website/app-templates/smarty/pages/password_change.tpl:25
+msgid "Please enter the verification token received by mail."
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:30
+#: website/app-templates/smarty/pages/password_change.tpl:32
+msgid "Verification Token"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:39
+msgid "Please define a new password."
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:6
+msgid "GeoKrety Toolbox - GKT"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/templates/waypointy-translations.html:3
 msgid "Afghanistan"
@@ -2695,9 +2949,17 @@ msgstr "Arabia Saudyjska"
 msgid "Sweden"
 msgstr "Szwecja"
 
+<<<<<<< HEAD
 #: website/templates/waypointy-translations.html:94
 msgid "Switzerland"
 msgstr "Szwajcaria"
+=======
+#: website/app-templates/smarty/header.tpl:3
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Open source item tracking for all geocaching platforms"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/templates/waypointy-translations.html:95
 msgid "Serbia"
@@ -2887,9 +3149,20 @@ msgstr ""
 msgid "Medical Facility"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/templates/waypointy-translations.html:144
 msgid "MP3"
 msgstr "MP3"
+=======
+#: website/app-templates/smarty/forms/geokret.tpl:52
+msgid "Create"
+msgstr "Utwórz"
+
+#: website/app-templates/smarty/forms/login.tpl:6
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Login"
+msgstr "Zaloguj się"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/templates/waypointy-translations.html:145
 msgid "Unknowncache"
@@ -2910,4 +3183,48 @@ msgstr ""
 #: website/templates/waypointy-translations.html:149
 msgid "USB"
 msgstr "USB"
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:174
+msgid "Dropped"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:177
+msgid "Grabbed"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:180
+msgid "Met"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:183
+msgid "Dipped"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Congratulation 🎉"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Your password has been succesfully changed."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "You're getting this email because you've changed your password from our website. If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Forgot Your Password?"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "It happens. Click the link below to reset your password."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Reset Password"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "You're getting this email because you've requested a password recovery from our website. If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
+msgstr ""
 

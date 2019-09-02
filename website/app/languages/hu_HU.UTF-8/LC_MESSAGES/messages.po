@@ -2,8 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2019-07-24 22:45+0000\n"
 "PO-Revision-Date: 2019-08-17 14:20\n"
+=======
+"POT-Creation-Date: 2019-09-02 17:40+0000\n"
+"PO-Revision-Date: 2019-09-02 17:52\n"
+>>>>>>> New Crowdin translations (#466)
 "Last-Translator: geokrety\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
@@ -160,6 +165,7 @@ msgstr "Kérlek jelentkezz be."
 msgid "Unknown error."
 msgstr ""
 
+<<<<<<< HEAD
 #: website/comment.php:46
 msgid "Oops! Something went wrong."
 msgstr "Hoppá! Valami rosszul sült el."
@@ -180,6 +186,12 @@ msgstr "&quot;&quot; Kérem, adjon tájékoztatást, amely segíthet a tulajdono
 
 #: website/comment.php:164
 msgid "Log:"
+=======
+#: website/app/GeoKrety/Controller/GeokretMove.php:92
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:28
+#: website/app/GeoKrety/Controller/UserContact.php:66
+msgid "reCaptcha failed!"
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/comment.php:164 website/comment.php:179
@@ -450,8 +462,53 @@ msgstr ""
 msgid "Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/edit.php:397
 msgid "Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to"
+=======
+#: website/app/GeoKrety/Controller/PasswordChange.php:22
+msgid "Sorry this token is not valid, already used or expired."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:55
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:51
+msgid "New passwords doesn't match."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:83
+msgid "Unexpected error occured."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:92
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:63
+msgid "Your password has been changed."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:99
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
+msgid "Your password has been changed"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:109
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:73
+msgid "An error occured while sending the mail."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:39
+msgid "Sorry no account using that email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:56
+msgid "An email containing a validation link has been sent to the provided email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:63
+msgid "Password reset request"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:40
+msgid "Language preferences updated."
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/edit.php:403
@@ -739,6 +796,7 @@ msgstr ""
 msgid "Welcome to GeoKrety.org!"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/index.php:94 website/index.php:301
 msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
 msgstr ""
@@ -798,6 +856,18 @@ msgstr "Legutóbb regisztrált GeoKret-ek"
 
 #: website/index.php:262
 msgid "Online users"
+=======
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:12
+msgid "Sorry this validation token is invalid or expired."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:25
+msgid "Failed to activate your email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:28
+msgid "Your email address has been validated."
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/index.php:275
@@ -993,8 +1063,13 @@ msgstr ""
 msgid "trip points"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/konkret.php:333
 msgid "recently seen"
+=======
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:90
+msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/konkret.php:336
@@ -1714,9 +1789,40 @@ msgstr ""
 msgid "Race list"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/recent_comments.php:18
 msgid "Recent Log Comments"
 msgstr "Friss Napló Hozzászólások"
+=======
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:20
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
+#: website/app-templates/smarty/dialog/user_contact.tpl:51
+#: website/app-templates/smarty/dialog/user_update_email.tpl:51
+#: website/app-templates/smarty/dialog/news_subscription.tpl:23
+#: website/app-templates/smarty/dialog/move_delete.tpl:13
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:13
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:20
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:13
+#: website/app-templates/smarty/dialog/user_update_password.tpl:54
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:61
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:68
+msgid "Dismiss"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
+#: website/app-templates/smarty/pages/home.tpl:29
+#: website/app-templates/smarty/pages/news_details.tpl:23
+#: website/app-templates/smarty/pages/news_details.tpl:41
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
+#: website/app-templates/smarty/forms/move.tpl:107
+#: website/app-templates/smarty/forms/move.tpl:244
+#: website/app-templates/smarty/js/geokret_move.tpl.js:186
+msgid "Comment"
+msgstr "Hozzászólás"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/recent_comments_fn.php:13
 msgid "Recent log comments"
@@ -1732,9 +1838,18 @@ msgstr "Felhasználó"
 msgid "Recent logs"
 msgstr "Legújabb bejegyzések"
 
+<<<<<<< HEAD
 #: website/recent_newscomments.php:17
 msgid "Recent news comments"
 msgstr "Friss hírek hozzászólások"
+=======
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
+#: website/app-templates/smarty/dialog/user_update_email.tpl:53
+#: website/app-templates/smarty/dialog/user_update_password.tpl:56
+#: website/app-templates/smarty/pages/password_change.tpl:59
+msgid "Change"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/recent_newscomments_fn.php:8
 msgid "View all comments"
@@ -1779,9 +1894,17 @@ msgstr "Hiányzó vagy téves követőkód"
 msgid "Missing or invalid Reference Number"
 msgstr "Hiányzó vagy téves hivatkozási szám"
 
+<<<<<<< HEAD
 #: website/ruchy.php:214
 msgid "Invalid log type"
 msgstr "Érvénytelen bejegyzéstípus"
+=======
+#: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/pages/password_recovery.tpl:26
+msgid "Email address"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/ruchy.php:219
 msgid "No lat/lon OR waypoint name!"
@@ -1895,8 +2018,14 @@ msgstr ""
 msgid "I've grabbed GeoKret"
 msgstr "Elhoztam egy GeoKretet"
 
+<<<<<<< HEAD
 #: website/ruchy.php:841
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
+=======
+#: website/app-templates/smarty/dialog/user_update_password.tpl:12
+#: website/app-templates/smarty/pages/password_change.tpl:16
+msgid "Change your password"
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/ruchy.php:842
@@ -1907,6 +2036,7 @@ msgstr "Felfedeztem egy GeoKretet"
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/ruchy.php:849
 msgid "I've dipped a GeoKret"
 msgstr "GeoKret meglátogatta ezt a helyet"
@@ -1914,6 +2044,21 @@ msgstr "GeoKret meglátogatta ezt a helyet"
 #: website/ruchy.php:866
 msgid "Identify GeoKret"
 msgstr "GeoKret azonosítása"
+=======
+#: website/app-templates/smarty/dialog/user_update_password.tpl:26
+#: website/app-templates/smarty/dialog/user_update_password.tpl:28
+#: website/app-templates/smarty/pages/password_change.tpl:44
+#: website/app-templates/smarty/pages/password_change.tpl:46
+msgid "New password"
+msgstr "Új jelszó"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:33
+#: website/app-templates/smarty/dialog/user_update_password.tpl:35
+#: website/app-templates/smarty/pages/password_change.tpl:51
+#: website/app-templates/smarty/pages/password_change.tpl:53
+msgid "Confirm password"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/ruchy.php:875
 msgid "New location"
@@ -2038,9 +2183,26 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/szukaj-ajax.php:44
 #, php-format
 msgid "cache type: %s"
+=======
+#: website/app-templates/smarty/pages/password_recovery.tpl:10
+msgid "Password recovery"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_recovery.tpl:19
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_recovery.tpl:40
+msgid "Send me a recovery link"
+msgstr ""
+
+#: website/app-templates/smarty/pages/work_in_progress.tpl:4
+msgid "This page doesn't exists yet, but we're working on it!"
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/szukaj-ajax.php:47
@@ -2311,9 +2473,28 @@ msgstr "Támogatnád a GeoKrety.org-ot?"
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
 msgstr "Ha használod a GeoKrety.org-ot és segítőkész vagy támogthatsz minket egy csekély összeggel"
 
+<<<<<<< HEAD
 #: website/templates/krety.html:214
 msgid "Contribute"
 msgstr "Támogatás"
+=======
+#: website/app-templates/smarty/pages/password_change.tpl:25
+msgid "Please enter the verification token received by mail."
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:30
+#: website/app-templates/smarty/pages/password_change.tpl:32
+msgid "Verification Token"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:39
+msgid "Please define a new password."
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:6
+msgid "GeoKrety Toolbox - GKT"
+msgstr ""
+>>>>>>> New Crowdin translations (#466)
 
 #: website/templates/krety.html:227
 msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
@@ -2687,8 +2868,15 @@ msgstr ""
 msgid "Saudi Arabia"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/templates/waypointy-translations.html:93
 msgid "Sweden"
+=======
+#: website/app-templates/smarty/header.tpl:3
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Open source item tracking for all geocaching platforms"
+>>>>>>> New Crowdin translations (#466)
 msgstr ""
 
 #: website/templates/waypointy-translations.html:94
@@ -2883,9 +3071,16 @@ msgstr ""
 msgid "Medical Facility"
 msgstr ""
 
+<<<<<<< HEAD
 #: website/templates/waypointy-translations.html:144
 msgid "MP3"
 msgstr ""
+=======
+#: website/app-templates/smarty/forms/login.tpl:6
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Login"
+msgstr "Bejelentkezés"
+>>>>>>> New Crowdin translations (#466)
 
 #: website/templates/waypointy-translations.html:145
 msgid "Unknowncache"
@@ -2905,5 +3100,49 @@ msgstr ""
 
 #: website/templates/waypointy-translations.html:149
 msgid "USB"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:174
+msgid "Dropped"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:177
+msgid "Grabbed"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:180
+msgid "Met"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:183
+msgid "Dipped"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Congratulation 🎉"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Your password has been succesfully changed."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "You're getting this email because you've changed your password from our website. If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Forgot Your Password?"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "It happens. Click the link below to reset your password."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Reset Password"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "You're getting this email because you've requested a password recovery from our website. If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
 msgstr ""
 
