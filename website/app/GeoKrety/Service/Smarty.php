@@ -28,7 +28,8 @@ class Smarty extends \Prefab {
     public function __construct() {
         $smarty = new \SmartyBC();
         $smarty->escape_html = true;
-        $smarty->template_dir = GK_SMARTY_TEMPLATES_DIR;
+        $smarty->addTemplateDir(GK_SMARTY_TEMPLATES_DIR, 'main');
+        $smarty->addTemplateDir(GK_SMARTY_FOUNDATION_TEMPLATES_DIR, 'emails');
         $smarty->compile_dir = GK_SMARTY_COMPILE_DIR;
         $smarty->cache_dir = GK_SMARTY_CACHE_DIR;
         $smarty->addPluginsDir(GK_SMARTY_PLUGINS_DIR);
