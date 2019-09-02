@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-01 18:46+0000\n"
-"PO-Revision-Date: 2019-09-02 10:06\n"
+"POT-Creation-Date: 2019-09-02 17:40+0000\n"
+"PO-Revision-Date: 2019-09-02 17:52\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
@@ -70,6 +70,7 @@ msgid "Move removed."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/GeokretMove.php:92
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:28
 #: website/app/GeoKrety/Controller/UserContact.php:66
 msgid "reCaptcha failed!"
 msgstr ""
@@ -156,6 +157,46 @@ msgstr ""
 msgid "You will not receive updates anymore."
 msgstr ""
 
+#: website/app/GeoKrety/Controller/PasswordChange.php:22
+msgid "Sorry this token is not valid, already used or expired."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:55
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:51
+msgid "New passwords doesn't match."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:83
+msgid "Unexpected error occured."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:92
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:63
+msgid "Your password has been changed."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:99
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
+msgid "Your password has been changed"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordChange.php:109
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:73
+msgid "An error occured while sending the mail."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:39
+msgid "Sorry no account using that email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:56
+msgid "An email containing a validation link has been sent to the provided email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:63
+msgid "Password reset request"
+msgstr ""
+
 #: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:40
 msgid "Language preferences updated."
 msgstr ""
@@ -238,27 +279,15 @@ msgstr ""
 msgid "Your old password is invalid."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:51
-msgid "New passwords doesn't match."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:63
-msgid "Your password has been changed."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
-msgid "Your password has been changed"
-msgstr ""
-
 #: website/app/GeoKrety/Controller/UserValidateEmail.php:12
 msgid "Sorry this validation token is invalid or expired."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserValidateEmail.php:24
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:25
 msgid "Failed to activate your email address."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserValidateEmail.php:27
+#: website/app/GeoKrety/Controller/UserValidateEmail.php:28
 msgid "Your email address has been validated."
 msgstr ""
 
@@ -378,7 +407,7 @@ msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To
 msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:90
-msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exists?"
+msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr ""
 
 #: website/app-templates/smarty/plugins/modifier.award.php:14
@@ -937,6 +966,7 @@ msgstr ""
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
 #: website/app-templates/smarty/forms/move.tpl:107
 #: website/app-templates/smarty/forms/move.tpl:244
+#: website/app-templates/smarty/js/geokret_move.tpl.js:186
 msgid "Comment"
 msgstr ""
 
@@ -960,6 +990,7 @@ msgstr ""
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
 #: website/app-templates/smarty/dialog/user_update_email.tpl:53
 #: website/app-templates/smarty/dialog/user_update_password.tpl:56
+#: website/app-templates/smarty/pages/password_change.tpl:59
 msgid "Change"
 msgstr ""
 
@@ -1000,6 +1031,8 @@ msgid "Update your email address"
 msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/pages/password_recovery.tpl:26
 msgid "Email address"
 msgstr ""
 
@@ -1120,6 +1153,7 @@ msgid "Do you really want to delete this news comment?"
 msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:12
+#: website/app-templates/smarty/pages/password_change.tpl:16
 msgid "Change your password"
 msgstr ""
 
@@ -1133,11 +1167,15 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:26
 #: website/app-templates/smarty/dialog/user_update_password.tpl:28
+#: website/app-templates/smarty/pages/password_change.tpl:44
+#: website/app-templates/smarty/pages/password_change.tpl:46
 msgid "New password"
 msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:33
 #: website/app-templates/smarty/dialog/user_update_password.tpl:35
+#: website/app-templates/smarty/pages/password_change.tpl:51
+#: website/app-templates/smarty/pages/password_change.tpl:53
 msgid "Confirm password"
 msgstr ""
 
@@ -1274,6 +1312,18 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:35
 msgid "Your current statpic"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_recovery.tpl:10
+msgid "Password recovery"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_recovery.tpl:19
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_recovery.tpl:40
+msgid "Send me a recovery link"
 msgstr ""
 
 #: website/app-templates/smarty/pages/work_in_progress.tpl:4
@@ -1500,6 +1550,19 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:25
+msgid "Please enter the verification token received by mail."
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:30
+#: website/app-templates/smarty/pages/password_change.tpl:32
+msgid "Verification Token"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:39
+msgid "Please define a new password."
 msgstr ""
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:6
@@ -1904,6 +1967,8 @@ msgid "Waypoint resolver"
 msgstr ""
 
 #: website/app-templates/smarty/header.tpl:3
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
 msgid "Open source item tracking for all geocaching platforms"
 msgstr ""
 
@@ -2108,6 +2173,7 @@ msgid "Create"
 msgstr ""
 
 #: website/app-templates/smarty/forms/login.tpl:6
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
 msgid "Login"
 msgstr ""
 
@@ -2130,5 +2196,49 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/login.tpl:42
 msgid "Forgot your password?"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:174
+msgid "Dropped"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:177
+msgid "Grabbed"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:180
+msgid "Met"
+msgstr ""
+
+#: website/app-templates/smarty/js/geokret_move.tpl.js:183
+msgid "Dipped"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Congratulation 🎉"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Your password has been succesfully changed."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "You're getting this email because you've changed your password from our website. If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Forgot Your Password?"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "It happens. Click the link below to reset your password."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Reset Password"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "You're getting this email because you've requested a password recovery from our website. If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
 msgstr ""
 
