@@ -153,6 +153,7 @@ class User extends Base {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->refreshSecid();
+            $self->registration_ip = \Base::instance()->get('IP');
         });
     }
 }

@@ -325,7 +325,7 @@ WHERE geokret = 0;
 
 ```sql
 ALTER TABLE `gk-users`
-CHANGE `id` `id` int(10) unsigned NOT NULL AUTO_INCREMENT FIRST,
+CHANGE `id` `id` int(11) unsigned NOT NULL AUTO_INCREMENT FIRST,
 CHANGE `user` `username` varchar(80) COLLATE 'utf8mb4_polish_ci' NOT NULL AFTER `id`,
 CHANGE `haslo` `old_password` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'This hash is not used anymore' AFTER `username`,
 CHANGE `haslo2` `password` varchar(120) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `old_password`,
@@ -342,7 +342,8 @@ CHANGE `country` `home_country` char(3) COLLATE 'utf8mb4_unicode_ci' NULL AFTER 
 CHANGE `godzina` `daily_mails_hour` int(11) NOT NULL AFTER `home_country`,
 CHANGE `statpic` `statpic_template_id` tinyint(1) NOT NULL DEFAULT '1' AFTER `daily_mails_hour`,
 CHANGE `ostatni_mail` `last_mail_datetime` datetime NULL AFTER `statpic_template_id`,
-CHANGE `ostatni_login` `last_login_datetime` datetime NULL AFTER `last_mail_datetime`;
+CHANGE `ostatni_login` `last_login_datetime` datetime NULL AFTER `last_mail_datetime`,
+ADD INDEX `email` (`email`);
 
 ALTER TABLE `gk-ruchy`
 ADD FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`),
@@ -413,6 +414,7 @@ CHANGE `kod` `token` varchar(60) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `id
 CHANGE `userid` `user` int(10) unsigned NOT NULL AFTER `token`,
 CHANGE `done` `confirmed` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '0=unconfirmed 1=confirmed' AFTER `email`,
 CHANGE `timestamp` `created_on_datetime` datetime NULL  AFTER `confirmed`,
+ADD `requesting_ip` varchar(46) NULL,
 ADD FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE,
 RENAME TO `gk-email-activation`;
 ```
@@ -494,9 +496,6 @@ CHANGE `holder` `holder` int(11) unsigned NULL COMMENT 'In the hands of user' AF
 CHANGE `owner` `owner` int(11) unsigned NULL AFTER `mission`,
 ADD FOREIGN KEY (`holder`) REFERENCES `gk-users` (`id`),
 ADD FOREIGN KEY (`owner`) REFERENCES `gk-users` (`id`);
-
-ALTER TABLE `gk-users`
-CHANGE `id` `id` int(11) unsigned NOT NULL AUTO_INCREMENT FIRST;
 
 ALTER TABLE `gk-ruchy`
 CHANGE `id` `id` int(11) unsigned NOT NULL AUTO_INCREMENT FIRST,
