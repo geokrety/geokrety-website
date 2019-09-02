@@ -50,10 +50,11 @@ class PasswordRecovery extends Base {
         }
 
         $token->save();
-        \Event::instance()->emit('password.token.generated', $token);
-        \Flash::instance()->addMessage(_('An email containing a validation link has been sent to the provided email address.'), 'success');
 
-        $this->sendEmail($token);
+        \Event::instance()->emit('password.token.generated', $token);
+        if ($this->sendEmail($token)) {
+            \Flash::instance()->addMessage(_('An email containing a validation link has been sent to the provided email address.'), 'success');
+        }
 
         $f3->reroute('home');
     }
@@ -70,6 +71,8 @@ class PasswordRecovery extends Base {
         Smarty::assign('token', $token);
         if (!$smtp->send(Smarty::fetch('password-recovery.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the mail.'), 'danger');
+            return false;
         }
+        return true;
     }
 }

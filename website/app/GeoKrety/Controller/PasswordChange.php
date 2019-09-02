@@ -67,8 +67,6 @@ class PasswordChange extends Base {
             die();
         }
         $user->save();
-        \Event::instance()->emit('user.password.changed', $user);
-        \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
 
         // Mark token as used
         $token->used = 1;
@@ -89,7 +87,10 @@ class PasswordChange extends Base {
 
         $f3->get('DB')->commit();
 
-        $this->sendEmail($user);
+        \Event::instance()->emit('user.password.changed', $user);
+        if ($this->sendEmail($user)) {
+            \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
+        }
 
         $f3->reroute('login');
     }
@@ -106,6 +107,8 @@ class PasswordChange extends Base {
         Smarty::assign('user', $user);
         if (!$smtp->send(Smarty::fetch('password-changed.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the mail.'), 'danger');
+            return false;
         }
+        return true;
     }
 }
