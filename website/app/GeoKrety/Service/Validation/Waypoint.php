@@ -87,7 +87,7 @@ class Waypoint {
 
                     return false;
                 }
-                $this->errors[] = _('Sorry, but this waypoint is not (yet) in our database. Does it really exists?');
+                $this->errors[] = _('Sorry, but this waypoint is not (yet) in our database. Does it really exist?');
 
                 return false;
             } else {
