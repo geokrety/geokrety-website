@@ -20,4 +20,7 @@
     <link rel="shortcut icon" href="{GK_CDN_IMAGES_URL}/favicon/favicon.ico" />
     <meta name="msapplication-config" content="{GK_CDN_IMAGES_URL}/favicon/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
+{if \Multilang::instance()->current === 'inline-translation'}
+    {include file="js/_crowdin.tpl.html"}
+{/if}
 </head>
