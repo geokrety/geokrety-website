@@ -27,12 +27,14 @@ class Config {
         define('GK_SENTRY_ENV', $_ENV['GK_SENTRY_ENV'] ?? 'dev');
 
         // Environment
+        define('GK_INSTANCE_NAME', $_ENV['GK_INSTANCE_NAME'] ?? 'dev');
         define('GK_ENVIRONMENT', $_ENV['GK_ENVIRONMENT'] ?? 'dev');
+        define('GK_DEPLOY_DATE', $_ENV['GK_DEPLOY_DATE'] ?? 'unknown');
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
         define('GK_DEBUG', isset($_ENV['GK_DEBUG']) && filter_var($_ENV['GK_DEBUG'], FILTER_VALIDATE_BOOLEAN));
         define('GK_F3_DEBUG', $_ENV['GK_DEBUG'] ?? 1);
         define('GK_APP_NAME', $_ENV['GK_APP_NAME'] ?? 'www');
-        define('GK_APP_VERSION', $_ENV['GK_APP_VERSION'] ?? 'dev');
+        define('GK_APP_VERSION', $_ENV['GIT_COMMIT'] ?? 'undef');
         define('GK_EMAIL_SUBJECT_PREFIX', $_ENV['GK_EMAIL_SUBJECT_PREFIX'] ?? '[GeoKrety] ');
 
         // DATABASE config
