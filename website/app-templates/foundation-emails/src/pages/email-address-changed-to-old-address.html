@@ -24,7 +24,7 @@ subject: '{$subject}'
 
             <p>{t}If you did not requested this, click the link below.{/t}</p>
             <center>
-                <button class="large expand alert" href="{'user_update_email_revert_token'|alias:sprintf('token=%s', $token->revert_token)}">{t}Rever this change!{/t}</button>
+                <button class="large expand alert" href="{'user_update_email_revert_token'|alias:sprintf('token=%s', $token->revert_token)}">{t}Revert this change!{/t}</button>
             </center>
             <p>{t expire=$token->revert_expire_on_datetime|print_date_expiration}This link expires %1.{/t}</p>
 
