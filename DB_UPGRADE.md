@@ -770,5 +770,15 @@ ADD `previous_email` varchar(150) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'Sto
 ADD `updating_ip` varchar(46) COLLATE 'utf8mb4_unicode_ci' NULL,
 CHANGE `confirmed` `used` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '0=unused 1=validated 2=refused 3=expired' AFTER `email`;
 
+ALTER TABLE `gk-email-activation`
+CHANGE `updated_on_datetime` `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `created_on_datetime`,
+CHANGE `used_on_datetime` `used_on_datetime` datetime NULL AFTER `updated_on_datetime`,
+ADD `revert_token` varchar(60) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `token`,
+ADD `reverted_on_datetime` datetime NULL AFTER `used_on_datetime`,
+ADD `reverting_ip` varchar(46) COLLATE 'utf8mb4_unicode_ci' NULL;
 
+ALTER TABLE `gk-email-activation`
+ADD INDEX `used_created_on_datetime_token` (`used`, `created_on_datetime`, `token`),
+ADD INDEX `used_used_on_datetime_revert_token` (`used`, `used_on_datetime`, `revert_token`),
+ADD INDEX `used_created_on_datetime_used_on_datetime` (`used`, `created_on_datetime`, `used_on_datetime`);
 ```

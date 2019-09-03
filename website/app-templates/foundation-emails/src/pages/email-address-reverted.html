@@ -9,12 +9,21 @@ subject: '{$subject}'
             <spacer size="16"></spacer>
 
             <p>{t username=$user->username}Hi %1,{/t}</p>
-            <h1 class="text-center">{t}Congratulation 🎉{/t}</h1>
+            <h1 class="text-center">{t}Hooray 🥳{/t}</h1>
 
             <spacer size="16"></spacer>
 
-            <p class="text-center">{t}Your email address has been succesfully changed.{/t}</p>
+            <p class="text-center">{t}Your email address has been succesfully reverted.{/t}</p>
             <button class="large expand" href="{'login'|alias}">{t}Login{/t}</button>
+
+            <spacer size="16"></spacer>
+            <hr>
+            <spacer size="16"></spacer>
+
+            <p>{t}You should also consider changing your password immediatelly.{/t}</p>
+            <center>
+                <button class="" href="{'user_update_password'|alias}">{t}Change my password!{/t}</button>
+            </center>
 
             {{> signature}}
             <hr />

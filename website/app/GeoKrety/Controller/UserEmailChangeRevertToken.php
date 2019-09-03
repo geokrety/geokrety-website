@@ -5,7 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\EmailActivation;
 
-class UserEmailChangeToken extends Base {
+class UserEmailChangeRevertToken extends Base {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
@@ -13,7 +13,7 @@ class UserEmailChangeToken extends Base {
 
         // Check database for provided token
         if ($f3->exists('PARAMS.token')) {
-            $token->load(array('token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('PARAMS.token'), EmailActivation::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
+            $token->load(array('revert_token = ? AND used = ? AND DATE_ADD(used_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('PARAMS.token'), EmailActivation::TOKEN_CHANGED, GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY));
             if ($token->dry()) {
                 \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
                 $f3->reroute('user_update_email_validate');
@@ -30,29 +30,24 @@ class UserEmailChangeToken extends Base {
         if ($f3->get('DB')->trans()) {
             $f3->get('DB')->rollback();
         }
-        Smarty::render('pages/email_change_token.tpl');
+        Smarty::render('pages/email_change_revert_token.tpl');
     }
 
     public function accept($f3) {
-        // Mark token used
-        EmailActivation::disableOtherTokensForUser($this->token->user, $this->token->token);
-        $this->token->used = EmailActivation::TOKEN_CHANGED;
-        $this->token->touch('used_on_datetime');
-        $this->token->previous_email = $this->token->user->email;
+        // Mark token as used
+        $this->token->used = EmailActivation::TOKEN_VALIDATED;
+    }
 
-        // Save the new email
-        $this->token->user->email = $this->token->email;
-        $this->token->user->email_invalid = 0;
+    public function refuse($f3) {
+        // Mark token as used
+        $this->token->used = EmailActivation::TOKEN_REVERTED;
+        $this->token->touch('reverted_on_datetime');
+        $this->token->user->email = $this->token->previous_email;
 
         if (!$this->token->user->validate()) {
             $this->get($f3);
             die();
         }
-    }
-
-    public function refuse($f3) {
-        // Mark token as used
-        $this->token->used = EmailActivation::TOKEN_REFUSED;
     }
 
     public function post($f3) {
@@ -69,7 +64,7 @@ class UserEmailChangeToken extends Base {
             die();
         }
 
-        $this->token->updating_ip = \Base::instance()->get('IP');
+        $this->token->reverting_ip = \Base::instance()->get('IP');
         if (!$this->token->validate()) {
             $this->get($f3);
             die();
@@ -89,19 +84,19 @@ class UserEmailChangeToken extends Base {
 
         // Notifications
         if ($f3->get('POST.validate') === 'true') {
-            \Event::instance()->emit('user.email.changed', $this->token);
-            if ($this->sendEmail($this->token)) {
-                \Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
-            }
+            \Flash::instance()->addMessage(_('Perfect! Enjoy your new email address. (This token is now revoked)'), 'success');
         } else {
-            \Flash::instance()->addMessage(_('No change has been processed. This token is now revoked.'), 'warning');
+            \Event::instance()->emit('user.email.changed', $this->token);
+            if ($this->sendEmail($this->token->user)) {
+                \Flash::instance()->addMessage(_('Your email address has been reverted.'), 'success');
+            }
         }
 
         $f3->reroute(sprintf('user_details(@userid=%d)', $this->token->user->id));
     }
 
-    protected function sendEmail(EmailActivation $token) {
-        $subject = GK_EMAIL_SUBJECT_PREFIX.'✉️ '._('Email address changed');
+    protected function sendEmail($user) {
+        $subject = GK_EMAIL_SUBJECT_PREFIX.'✉️ '._('Email address reverted');
         $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
         $smtp->set('From', GK_SITE_EMAIL);
         $smtp->set('Errors-To', GK_SITE_EMAIL);
@@ -109,14 +104,8 @@ class UserEmailChangeToken extends Base {
         $smtp->set('Subject', '=?utf-8?B?'.base64_encode($subject).'?=');
         Smarty::assign('subject', $subject);
 
-        $smtp->set('To', $token->previous_email);
-        if (!$smtp->send(Smarty::fetch('email-address-changed-to-old-address.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
-
-            return false;
-        }
-        $smtp->set('To', $token->email);
-        if (!$smtp->send(Smarty::fetch('email-address-changed-to-new-address.html'))) {
+        $smtp->set('To', $user->email);
+        if (!$smtp->send(Smarty::fetch('email-address-reverted.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
 
             return false;
