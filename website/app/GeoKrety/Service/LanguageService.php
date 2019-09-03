@@ -47,6 +47,7 @@ class LanguageService extends \Prefab {
         'th' => 'ไทย',
         'tr' => 'Türk',
         'uk' => 'Українська',
+        'inline-translation' => 'Translation mode',
     );
 
     public function __construct() {
