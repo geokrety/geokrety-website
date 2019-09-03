@@ -69,6 +69,9 @@ th.columns {
   Margin: 0 auto;
   padding-left: 16px;
   padding-bottom: 16px; }
+  th.columns .columns {
+    padding-left: 0 !important;
+    padding-right: 0 !important; }
 
 th.columns.last {
   padding-right: 16px; }
@@ -89,6 +92,9 @@ th.large-12.last {
 
 th.large-12 center {
   min-width: 532px; }
+
+.body .columns th.large-12 {
+  width: 100%; }
 
 td.expander,
 th.expander {
@@ -239,6 +245,32 @@ table.button:visited table a,
 table.button:active table a {
   border: 0 solid #218c98; }
 
+table.button.success table td {
+  background: #3adb76;
+  border: 0px solid #3adb76; }
+
+table.button.success table a {
+  border: 0 solid #3adb76; }
+
+table.button.success:hover table td {
+  background: #23bf5d; }
+
+table.button.success:hover table a {
+  border: 0 solid #23bf5d; }
+
+table.button.alert table td {
+  background: #ec5840;
+  border: 0px solid #ec5840; }
+
+table.button.alert table a {
+  border: 0 solid #ec5840; }
+
+table.button.alert:hover table td {
+  background: #e23317; }
+
+table.button.alert:hover table a {
+  border: 0 solid #e23317; }
+
 table.menu {
   width: 580px; }
   table.menu th.menu-item {
@@ -269,8 +301,14 @@ table.menu.vertical th.menu-item {
     box-sizing: border-box;
     padding-left: 16px !important;
     padding-right: 16px !important; }
+    table.body .columns .columns {
+      padding-left: 0 !important;
+      padding-right: 0 !important; }
   th.small-12 {
     display: inline-block !important;
+    width: 100% !important; }
+  .columns th.small-12 {
+    display: block !important;
     width: 100% !important; }
   table.menu {
     width: 100% !important; }

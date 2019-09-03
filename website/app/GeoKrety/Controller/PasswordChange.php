@@ -37,8 +37,6 @@ class PasswordChange extends Base {
     }
 
     public function post($f3) {
-        // TODO check captcha
-
         // Don't execute post if token is not valid
         $token = $this->token;
         if ($token->dry()) {

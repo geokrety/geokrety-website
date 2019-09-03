@@ -762,4 +762,13 @@ CREATE TABLE `gk-password-tokens` (
   INDEX `token_used` (`token`, `used`),
   INDEX `created_on_datetime` (`created_on_datetime`)
 ) COMMENT='Retrieve user password' ENGINE='InnoDB' COLLATE 'utf8mb4_unicode_ci';
+
+ALTER TABLE `gk-email-activation`
+ADD INDEX `token` (`token`),
+ADD `used_on_datetime` datetime NULL AFTER `created_on_datetime`,
+ADD `previous_email` varchar(150) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'Store the previous in case of needed rollback' AFTER `user`,
+ADD `updating_ip` varchar(46) COLLATE 'utf8mb4_unicode_ci' NULL,
+CHANGE `confirmed` `used` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '0=unused 1=validated 2=refused 3=expired' AFTER `email`;
+
+
 ```
