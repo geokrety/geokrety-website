@@ -15,6 +15,7 @@ class StaticPages extends Base {
     public function terms_of_use($f3) {
         Smarty::render('extends:base.tpl|dialog/terms_of_use.tpl');
     }
+
     public function terms_of_use_ajax(\Base $f3) {
         Smarty::render('extends:base_modal.tpl|dialog/terms_of_use.tpl');
     }

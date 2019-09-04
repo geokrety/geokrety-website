@@ -2,11 +2,9 @@
 
 namespace GeoKrety\Controller;
 
-use Carbon\Carbon;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
 use GeoKrety\Model\AccountActivation as AccountActivationModel;
-use GeoKrety\Model\EmailActivation;
 use GeoKrety\Email\AccountActivation;
 
 class Registration extends Base {

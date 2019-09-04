@@ -4,8 +4,6 @@ namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
 use Hautelook\Phpass\PasswordHash;
-use GeoKrety\Model\EmailActivation;
-use GeoKrety\Model\AccountActivation;
 
 class User extends Base {
     use \Validation\Traits\CortexTrait;
@@ -153,6 +151,7 @@ class User extends Base {
 
     public function set_password($value) {
         $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
+
         return $hasher->HashPassword($value.GK_PASSWORD_HASH.GK_PASSWORD_SEED);
     }
 
@@ -217,6 +216,5 @@ class User extends Base {
             \Event::instance()->emit('user.created', $this);
             $self->generateAccountActivation();
         });
-
     }
 }

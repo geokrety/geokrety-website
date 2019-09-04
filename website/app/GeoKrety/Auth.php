@@ -3,7 +3,7 @@
 namespace GeoKrety;
 
 use Hautelook\Phpass\PasswordHash;
-use \GeoKrety\Model\User;
+use GeoKrety\Model\User;
 
 class Auth extends \Auth {
     protected function _geokrety($id, $pw, $realm) {
