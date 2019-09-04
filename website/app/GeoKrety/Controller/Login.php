@@ -4,11 +4,14 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\AuthGroup;
+use GeoKrety\Model\User;
+use GeoKrety\Email\AccountActivation;
 
 class Login extends Base {
     const NO_REDIRECT_URLS = array(
         'login',
         'logout',
+        'registration_activate',
     );
 
     public function loginForm($f3) {
@@ -23,9 +26,15 @@ class Login extends Base {
         $auth = new \GeoKrety\Auth('geokrety', array('id' => 'username', 'pw' => 'password'));
         $login_result = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($login_result) {
-            $user = new \GeoKrety\Model\User();
+            $user = new User();
             $user->load(array('username = ?', $f3->get('POST.login')));
             if ($user->valid()) {
+                if (!$user->isAccountValid()) {
+                    $smtp = new AccountActivation();
+                    $smtp->sendActivationAgainOnLogin($user->activation);
+                    $f3->reroute('login');
+                }
+
                 $ml = \Multilang::instance();
                 $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
                 $f3->set('SESSION.CURRENT_USER', $user->id);
@@ -51,7 +60,7 @@ class Login extends Base {
         } else {
             \Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
         }
-        Smarty::render('extends:base.tpl|forms/login.tpl');
+        $this->loginForm($f3);
     }
 
     // public function loginFragment($f3) {

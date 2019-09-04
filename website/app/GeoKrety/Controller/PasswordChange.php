@@ -17,7 +17,7 @@ class PasswordChange extends Base {
 
         // Check database for provided token
         if ($f3->exists('PARAMS.token')) {
-            $token->load(array('token = ? AND used = 0 AND DATE_ADD(created_on_datetime, INTERVAL '.GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY.' DAY) >= ? ', $f3->get('PARAMS.token'), (new \DateTime())->format('Y-m-d H:i:s')));
+            $token->load(array('token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW() ', $f3->get('PARAMS.token'), PasswordToken::TOKEN_UNUSED, GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY));
             if ($token->dry()) {
                 \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
             }

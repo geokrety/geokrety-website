@@ -782,3 +782,34 @@ ADD INDEX `used_created_on_datetime_token` (`used`, `created_on_datetime`, `toke
 ADD INDEX `used_used_on_datetime_revert_token` (`used`, `used_on_datetime`, `revert_token`),
 ADD INDEX `used_created_on_datetime_used_on_datetime` (`used`, `created_on_datetime`, `used_on_datetime`);
 ```
+
+```sql
+ALTER TABLE `gk-users`
+ADD INDEX `username` (`username`),
+ADD INDEX `username_email` (`username`, `email`),
+ADD `terms_of_use_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Acceptation date' AFTER `last_login_datetime`,
+ADD `account_valid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=unconfirmed 1=confirmed' AFTER `email`,
+CHANGE `secid` `secid` varchar(128) COLLATE 'utf8mb4_unicode_ci' NOT NULL COMMENT 'connect by other applications' AFTER `terms_of_use_datetime`;
+
+ALTER TABLE `gk-users`
+CHANGE `terms_of_use_datetime` `terms_of_use_datetime` datetime NOT NULL COMMENT 'Acceptation date' AFTER `last_login_datetime`;
+
+UPDATE `gk-users`
+SET account_valid = 1
+WHERE account_valid = 0;
+
+CREATE TABLE `gk-account-activation` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `token` varchar(60) NOT NULL,
+  `user` int(11) unsigned NOT NULL,
+  `used` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=unused 1=validated 2=expired',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `used_on_datetime` datetime NULL,
+  `requesting_ip` varchar(46) NOT NULL,
+  `validating_ip` varchar(46) NULL,
+  FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE
+) ENGINE='InnoDB' COLLATE 'utf8mb4_unicode_ci';
+
+ALTER TABLE `gk-account-activation`
+ADD INDEX `used_created_on_datetime` (`used`, `created_on_datetime`);
+```

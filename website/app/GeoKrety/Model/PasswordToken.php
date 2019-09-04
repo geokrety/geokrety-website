@@ -7,6 +7,10 @@ use DB\SQL\Schema;
 class PasswordToken extends Base {
     use \Validation\Traits\CortexTrait;
 
+    const TOKEN_UNUSED = 0;
+    const TOKEN_VALIDATED = 1;
+    const TOKEN_EXPIRED = 2;
+
     protected $db = 'DB';
     protected $table = 'gk-password-tokens';
 
@@ -21,7 +25,7 @@ class PasswordToken extends Base {
         ),
         'used' => array(
             'type' => Schema::DT_INT1,
-            'default' => 0,
+            'default' => self::TOKEN_UNUSED,
             'nullable' => false,
         ),
         'created_on_datetime' => array(

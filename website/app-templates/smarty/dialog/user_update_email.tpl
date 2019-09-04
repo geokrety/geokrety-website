@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <label for="inputEmail">{t}Email address{/t}</label>
-            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="{t}Email{/t}" value="{$user->email}" required>
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="{t}Email address{/t}" value="{$user->email}" required>
         </div>
 
         <div class="checkbox">

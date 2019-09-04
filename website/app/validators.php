@@ -85,6 +85,10 @@ $validator->addValidator('email_activation_require_revert', function ($field, $i
     return in_array($input['used'], \GeoKrety\Model\EmailActivation::TOKEN_NEED_REVERT, true);
 }, '{0} require revert fileds');
 
+$validator->addValidator('account_activation_require_validate', function ($field, $input, $param = null) {
+    return in_array($input['used'], \GeoKrety\Model\AccountActivation::TOKEN_NEED_VALIDATE, true);
+}, '{0} require validate fileds');
+
 $validator->addFilter('HTMLPurifier', function ($value, $params = null) {
     return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value);
 });

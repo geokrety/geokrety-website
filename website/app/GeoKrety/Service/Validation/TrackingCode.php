@@ -46,7 +46,7 @@ class TrackingCode {
         return false;
     }
 
-    private function loockupTrackingCode($trackingCode) {
+    private function lookupTrackingCode($trackingCode) {
         $geokret = new Geokret();
         $geokret->load(array('tracking_code = ?', $trackingCode));
 
@@ -119,7 +119,7 @@ class TrackingCode {
             if (!$this->checkLength($trackingCode)) {
                 continue;
             }
-            $this->loockupTrackingCode($trackingCode);
+            $this->lookupTrackingCode($trackingCode);
         }
 
         return true;

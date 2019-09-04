@@ -4,7 +4,6 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
-use Hautelook\Phpass\PasswordHash;
 
 class UserUpdatePassword extends Base {
     public function beforeRoute($f3) {
@@ -54,8 +53,7 @@ class UserUpdatePassword extends Base {
         }
 
         // Save new password
-        $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
-        $user->password = $hasher->HashPassword($password_new.GK_PASSWORD_HASH.GK_PASSWORD_SEED);
+        $user->password = $password_new;
         if ($user->validate()) {
             $user->save();
             $this->sendEmail($user);

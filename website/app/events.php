@@ -2,12 +2,17 @@
 
 // Listen Events
 $events = \Event::instance();
+// $events->on('user.created', function (\GeoKrety\Model\User $user) {});
+// $events->on('user.activated', function (\GeoKrety\Model\User $user) {});
+// $events->on('user.destroyed', function (\GeoKrety\Model\User $user) {});
+// $events->on('activation.token.generated', function (\GeoKrety\Model\AccountActivation $token) {});
+// $events->on('activation.token.used', function (\GeoKrety\Model\AccountActivation $token) {});
 // $events->on('user.login', function (\GeoKrety\Model\User $user) {});
 // $events->on('user.logout', function (\GeoKrety\Model\User $user) {});
 // $events->on('user.language.changed', function (\GeoKrety\Model\User $user, $context) {});  // context => $oldLanguage
 // $events->on('user.home_location.changed', function (\GeoKrety\Model\User $user) {});
-// $events->on('user.email.change', function (\GeoKrety\Model\EmailActivation $activation) {});
-// $events->on('user.email.changed', function (\GeoKrety\Model\EmailActivation $activation) {});
+// $events->on('user.email.change', function (\GeoKrety\Model\EmailActivation $token) {});
+// $events->on('user.email.changed', function (\GeoKrety\Model\EmailActivation $token) {});
 // $events->on('email.token.generated', function (\GeoKrety\Model\EmailActivation $token) {});
 // $events->on('email.token.used', function (\GeoKrety\Model\EmailActivation $token) {});
 // $events->on('user.secid.changed', function (\GeoKrety\Model\User $user) {});
