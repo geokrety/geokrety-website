@@ -20,8 +20,7 @@ abstract class Base {
             $user->filter('email_activation', array('used = 0'));
             $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
             if ($user->valid()) {
-                // TODO this must not be pushed in smarty as `user` but `current_user`
-                \GeoKrety\Service\Smarty::assign('user', $user);
+                \GeoKrety\Service\Smarty::assign('current_user', $user);
             }
         }
     }

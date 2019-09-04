@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            {if (!isset($geokret) or !$geokret->gkid()) and $user->hasHomeCoordinates()}
+            {if (!isset($geokret) or !$geokret->gkid()) and $current_user->hasHomeCoordinates()}
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">

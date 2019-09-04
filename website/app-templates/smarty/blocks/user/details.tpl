@@ -3,7 +3,7 @@
         <img src="{GK_CDN_IMAGES_URL}/log-icons/2/icon_25.jpg" width="25" height="25" />
         {$user|userlink nofilter}
         <div class="btn-group pull-right" role="group">
-            {if $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') !== $user->id && $user->email}
+            {if $f3->get('SESSION.CURRENT_USER') && !$user->isCurrentUser() && $user->email}
             <button class="btn btn-primary btn-xs" title="{t user=$user->username}Send a message to %1{/t}" data-toggle="modal" data-target="#modal" data-type="user-contact" data-id="{$user->id}">
                 {fa icon="envelope"}
             </button>
