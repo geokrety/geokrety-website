@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 22:07+0000\n"
-"PO-Revision-Date: 2019-09-03 22:19\n"
+"POT-Creation-Date: 2019-09-04 13:29+0000\n"
+"PO-Revision-Date: 2019-09-04 21:55\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -504,6 +504,11 @@ msgstr "τυφλοπόντικας Freshman"
 msgid "status icon"
 msgstr ""
 
+#: website/app-templates/smarty/plugins/modifier.user_avatar.php:20
+#, php-format
+msgid "%s's profile avatar"
+msgstr ""
+
 #: website/app-templates/smarty/plugins/modifier.userlink.php:16
 msgid "Anonymous"
 msgstr ""
@@ -921,7 +926,7 @@ msgid "Owned GeoKrety pictures"
 msgstr ""
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:34
-#: website/app-templates/smarty/navbar-profile.tpl:30
+#: website/app-templates/smarty/navbar-profile.tpl:28
 msgid "Where are my GeoKrety?"
 msgstr ""
 
@@ -1266,6 +1271,18 @@ msgstr ""
 msgid "Select <span class=\"badge\">%1</span>"
 msgstr ""
 
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%2\">create an account</a>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr ""
+
 #: website/app-templates/smarty/banners/site_intro.tpl:3
 msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
 msgstr ""
@@ -1303,7 +1320,7 @@ msgid "This is not the production instance. If you are not a tester, then you pr
 msgstr ""
 
 #: website/app-templates/smarty/banners/user_email_invalid.tpl:3
-msgid "Sorry, but we have troubles sending your email notifications. Is you email still valid?"
+msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
 msgstr ""
 
 #: website/app-templates/smarty/banners/contribute.tpl:2
@@ -1567,7 +1584,7 @@ msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/mot
 msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:76
-msgid "Current mole holes"
+msgid "Current GK-Hotels/Motels"
 msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
@@ -1604,6 +1621,10 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
 msgid "Available for:"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:20
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 msgstr ""
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:7
@@ -1942,17 +1963,17 @@ msgstr "Φωτογραφίες μου"
 msgid "Photos of my GeoKrety"
 msgstr ""
 
-#: website/app-templates/smarty/navbar-profile.tpl:32
+#: website/app-templates/smarty/navbar-profile.tpl:30
 msgid "Sign out"
 msgstr ""
 
-#: website/app-templates/smarty/navbar-profile.tpl:39
+#: website/app-templates/smarty/navbar-profile.tpl:37
 #: website/app-templates/smarty/navbar.tpl:20
 #: website/app-templates/smarty/forms/login.tpl:38
 msgid "Sign in"
 msgstr ""
 
-#: website/app-templates/smarty/navbar-profile.tpl:43
+#: website/app-templates/smarty/navbar-profile.tpl:41
 msgid "Create account"
 msgstr ""
 
@@ -2351,6 +2372,7 @@ msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
 msgid "This link expires %1."
 msgstr ""
 
