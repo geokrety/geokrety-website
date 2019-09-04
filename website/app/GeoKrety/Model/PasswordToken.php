@@ -74,5 +74,11 @@ class PasswordToken extends Base {
             }
             $self->token = $rand;
         });
+
+        $this->virtual('expire_on_datetime', function ($self) {
+            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
+
+            return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY)));
+        });
     }
 }
