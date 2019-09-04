@@ -135,6 +135,13 @@ class HallOfFame extends Base {
             'desc' => 'Automated tests (used by <a href="https://github.com/geokrety/geokrety-website-qa">geokrety-website-qa</a>)',
         ];
         $credits[] = [
+            'name' => 'Libravatar',
+            'icon' => 'https://seccdn.libravatar.org/nobody/65.png',
+            'icon_width' => '65px',
+            'link' => 'https://www.libravatar.org/',
+            'desc' => 'Libravatar is a service which delivers your avatar (profile picture) to other websites.',
+        ];
+        $credits[] = [
             'name' => 'reCAPTCHA',
             'icon' => GK_CDN_LOGOS_URL.'/RecaptchaLogo.svg',
             'icon_width' => '70px',

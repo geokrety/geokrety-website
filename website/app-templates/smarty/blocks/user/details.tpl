@@ -73,6 +73,7 @@
         </div>
 
         <div class="gallery pull-right">
+            {$user|user_avatar nofilter}
             {*foreach $user->avatar() as $avatar}
                 {pictureOrDefault item=$avatar skipLinkToEntity=true isOwner=$user->isCurrentUser() pictureType=$avatar->type id=$user->id}
             {/foreach*}
