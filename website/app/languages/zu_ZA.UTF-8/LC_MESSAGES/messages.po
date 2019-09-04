@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 22:07+0000\n"
-"PO-Revision-Date: 2019-09-03 22:20\n"
+"POT-Creation-Date: 2019-09-04 13:29+0000\n"
+"PO-Revision-Date: 2019-09-04 21:57\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -504,6 +504,11 @@ msgstr "crwdns13948:0crwdne13948:0"
 msgid "status icon"
 msgstr "crwdns15726:0crwdne15726:0"
 
+#: website/app-templates/smarty/plugins/modifier.user_avatar.php:20
+#, php-format
+msgid "%s's profile avatar"
+msgstr "crwdns16368:0%scrwdne16368:0"
+
 #: website/app-templates/smarty/plugins/modifier.userlink.php:16
 msgid "Anonymous"
 msgstr "crwdns15728:0crwdne15728:0"
@@ -921,7 +926,7 @@ msgid "Owned GeoKrety pictures"
 msgstr "crwdns14714:0crwdne14714:0"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:34
-#: website/app-templates/smarty/navbar-profile.tpl:30
+#: website/app-templates/smarty/navbar-profile.tpl:28
 msgid "Where are my GeoKrety?"
 msgstr "crwdns14716:0crwdne14716:0"
 
@@ -1266,6 +1271,18 @@ msgstr "crwdns16168:0crwdne16168:0"
 msgid "Select <span class=\"badge\">%1</span>"
 msgstr "crwdns14786:0%1crwdne14786:0"
 
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "crwdns16370:0%1crwdne16370:0"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%2\">create an account</a>."
+msgstr "crwdns16372:0%2crwdne16372:0"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "crwdns16374:0crwdne16374:0"
+
 #: website/app-templates/smarty/banners/site_intro.tpl:3
 msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
 msgstr "crwdns16262:0%1crwdne16262:0"
@@ -1303,8 +1320,8 @@ msgid "This is not the production instance. If you are not a tester, then you pr
 msgstr "crwdns14910:0crwdne14910:0"
 
 #: website/app-templates/smarty/banners/user_email_invalid.tpl:3
-msgid "Sorry, but we have troubles sending your email notifications. Is you email still valid?"
-msgstr "crwdns15838:0crwdne15838:0"
+msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
+msgstr "crwdns16366:0crwdne16366:0"
 
 #: website/app-templates/smarty/banners/contribute.tpl:2
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
@@ -1567,8 +1584,8 @@ msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/mot
 msgstr "crwdns15884:0crwdne15884:0"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:76
-msgid "Current mole holes"
-msgstr "crwdns15182:0crwdne15182:0"
+msgid "Current GK-Hotels/Motels"
+msgstr "crwdns16402:0crwdne16402:0"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
@@ -1605,6 +1622,10 @@ msgstr "crwdns15148:0%1crwdnd15148:0%2crwdnd15148:0%1crwdnd15148:0%2crwdnd15148:
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
 msgid "Available for:"
 msgstr "crwdns15150:0crwdne15150:0"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:20
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
+msgstr "crwdns16376:0%1crwdnd16376:0%2crwdnd16376:0%3crwdne16376:0"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:7
 msgid "%1's recent moves"
@@ -1942,17 +1963,17 @@ msgstr "crwdns14518:0crwdne14518:0"
 msgid "Photos of my GeoKrety"
 msgstr "crwdns14902:0crwdne14902:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:32
+#: website/app-templates/smarty/navbar-profile.tpl:30
 msgid "Sign out"
 msgstr "crwdns14904:0crwdne14904:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:39
+#: website/app-templates/smarty/navbar-profile.tpl:37
 #: website/app-templates/smarty/navbar.tpl:20
 #: website/app-templates/smarty/forms/login.tpl:38
 msgid "Sign in"
 msgstr "crwdns14908:0crwdne14908:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:43
+#: website/app-templates/smarty/navbar-profile.tpl:41
 msgid "Create account"
 msgstr "crwdns14906:0crwdne14906:0"
 
@@ -2351,6 +2372,7 @@ msgstr "crwdns16354:0crwdne16354:0"
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
 msgid "This link expires %1."
 msgstr "crwdns16318:0%1crwdne16318:0"
 
