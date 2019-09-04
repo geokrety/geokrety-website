@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 22:07+0000\n"
-"PO-Revision-Date: 2019-09-03 22:19\n"
+"POT-Creation-Date: 2019-09-04 13:29+0000\n"
+"PO-Revision-Date: 2019-09-04 21:55\n"
 "Last-Translator: geokrety\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -41,7 +41,7 @@ msgstr "Dein GeoKret „%s“ wurde adoptiert 🎉"
 
 #: website/app/GeoKrety/Controller/GeokretClaim.php:84
 msgid "An error occured while sending the adoption mail notification to old owner."
-msgstr "Beim Senden der Adoptions-Mail-Benachrichtigung an den alten Besitzer ist ein Fehler aufgetreten."
+msgstr "Beim Senden der Mail-Benachrichtigung zur Adoption an den alten Besitzer ist ein Fehler aufgetreten."
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:36
 msgid "Born here"
@@ -504,6 +504,11 @@ msgstr "Nesthocker"
 msgid "status icon"
 msgstr "Statussymbol"
 
+#: website/app-templates/smarty/plugins/modifier.user_avatar.php:20
+#, php-format
+msgid "%s's profile avatar"
+msgstr "%s's Profilbild"
+
 #: website/app-templates/smarty/plugins/modifier.userlink.php:16
 msgid "Anonymous"
 msgstr "Anonym"
@@ -660,7 +665,7 @@ msgstr "Tracking-Code"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:43
 msgid "Total distance"
-msgstr "Gesamte Entfernung"
+msgstr "Gesamtentfernung"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:45
 msgid "Places visited"
@@ -750,7 +755,7 @@ msgstr "Karte"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:8
 msgid "Caption:"
-msgstr "Überschrift:"
+msgstr "Legende:"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:9
 msgid "start"
@@ -921,7 +926,7 @@ msgid "Owned GeoKrety pictures"
 msgstr "Bilder eigener GeoKrety"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:34
-#: website/app-templates/smarty/navbar-profile.tpl:30
+#: website/app-templates/smarty/navbar-profile.tpl:28
 msgid "Where are my GeoKrety?"
 msgstr "Wo sind meine GeoKrety?"
 
@@ -1252,7 +1257,7 @@ msgstr "ID"
 #: website/app-templates/smarty/pages/user_inventory.tpl:19
 #: website/app-templates/smarty/pages/home.tpl:52
 msgid "Owner"
-msgstr "Eigentümer"
+msgstr "Besitzer"
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
 msgid "Select all (but max %1)"
@@ -1266,13 +1271,25 @@ msgstr "Wählen"
 msgid "Select <span class=\"badge\">%1</span>"
 msgstr "Wähle <span class=\"badge\">%1</span>"
 
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "Auch wenn es - momentan - nicht erforderlich ist, empfehlen wir dir dich <a href=\"%1\">einzuloggen</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%2\">create an account</a>."
+msgstr "Zögere nicht ein <a href=\"%2\">Konto anzulegen</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "Du bist dann in der Lage dein GeoKrety-Inventar zu verwalten, Bilder hochzuladen, deine Logs zu editieren und natürlich eigene GeoKrety zu erstellen!"
+
 #: website/app-templates/smarty/banners/site_intro.tpl:3
 msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
 msgstr "GeoKrety ist ein kostenloser Online-Dienst für Objektverfolgung in GPS-Spielen wie Geocaching oder Opencaching. Du kannst kleine Gegenstände, Bücher, Münzen, Haustiere oder Menschen mit uns verfolgen…<a href=\"%1\">Mehr lesen</a>."
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "Du hast diesen GeoKret zur Adoption freigegeben. Der Besitzer-Code lautet: <strong>%1</strong>. Gib ihn zusammen mit dem Tracking-Code <strong>%2</strong> an Benutzer, die deinen GeoKret adoptieren werden."
+msgstr "Du hast diesen GeoKret zur Adoption freigegeben. Der Besitzer-Code lautet: <strong>%1</strong>. Gib ihn zusammen mit dem Tracking-Code <strong>%2</strong> an Benutzer, die deinen GeoKret adoptieren wollen."
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:6
 msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
@@ -1296,14 +1313,14 @@ msgstr "<strong>%1 km</strong> sind alle GeoKrety bereits insgesamt gereist (Das
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:21
 msgid "And that's thanks to you! Congratulation!"
-msgstr "Und das dank dir! Herzlichen Glückwunsch!"
+msgstr "Und das dank dir! Gratulation!"
 
 #: website/app-templates/smarty/banners/is_not_prod.tpl:3
 msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
 msgstr "Dies ist nicht die Produktions-Webseite. Falls du kein Tester bist, möchtest du wahrscheinlich auf unsere <a href=\"https://geokrety.org\">Produktions-Webseite</a>."
 
 #: website/app-templates/smarty/banners/user_email_invalid.tpl:3
-msgid "Sorry, but we have troubles sending your email notifications. Is you email still valid?"
+msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
 msgstr "Wir haben leider Probleme deine E-Mail-Benachrichtigungen zu senden. Ist deine E-Mail-Adresse noch gültig?"
 
 #: website/app-templates/smarty/banners/contribute.tpl:2
@@ -1313,7 +1330,7 @@ msgstr "Schließen"
 
 #: website/app-templates/smarty/banners/contribute.tpl:3
 msgid "This branch 🥦 is activelly developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "Dieser Bereich 🥦 wird gerade aktiv weiterentwickelt 👨‍💻, wenn du Fehler findest 🐛, prüfe 👀 ob die<a href=\"%1\" target=\"_blank\">bekannten Probleme ♻ auf GitHub %2</a> und öffne gerne 🈚 eine neue 🆕 Meldung. (Eine Fehlermeldung pro Problem bitte 🙏)"
+msgstr "Dieser Bereich 🥦 wird gerade aktiv weiterentwickelt 👨‍💻, wenn du Fehler findest 🐛, prüfe 👀 die <a href=\"%1\" target=\"_blank\">bekannten Probleme ♻ auf GitHub %2</a> und öffne gerne 🈚 eine neue 🆕 Meldung. (Eine Fehlermeldung pro Problem bitte 🙏)"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
@@ -1321,7 +1338,7 @@ msgstr "Zu deinem Benutzerkonto ist leider keine E-Mail-Adresse hinterlegt. Du k
 
 #: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
 msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "Du hast eine ausstehende E-Mail-Bestätigung. Vergiss nicht auf den Link in der E-Mail zu klicken um die Prozedur abzuschliessen. Der Link läuft ab in %1!"
+msgstr "Du hast eine ausstehende E-Mail-Bestätigung. Vergiss nicht auf den Link in der E-Mail zu klicken um die Prozedur abzuschließen. Der Link läuft ab in %1!"
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:6
 msgid "Select your preferred statpic background"
@@ -1567,8 +1584,8 @@ msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/mot
 msgstr "Ein GeoKrety-Hotel/Motel ist ein einfach zu erreichender Cache, nahe an einem Flughafen/Autobahn/Bahnhof, der groß genug ist, um einige GeoKrety zu beherbergen. Cacher können GeoKrety mitnehmen oder ablegen. Bislang haben wir auf dem OC-System die folgenden GK (oder GK/TB)-Hotels/Motels registriert:"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:76
-msgid "Current mole holes"
-msgstr "Aktuelle Maulwurflöcher"
+msgid "Current GK-Hotels/Motels"
+msgstr "Aktuelle GK-Hotels/Motels"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
@@ -1596,7 +1613,7 @@ msgstr "GeoKrety Toolbox - GKT"
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:10
 msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
-msgstr "Zeigt GeoKrety-Trackables auf <a href=\"%1\" target=\"_blank\">Geocaching.com</a> Cache-Seiten und ermöglicht GeoKrety-Trackables in Geocaching-Caches abzulegen."
+msgstr "Zeigt GeoKrety-Trackables auf <a href=\"%1\" target=\"_blank\">geocaching.com</a> Cache-Seiten und ermöglicht GeoKrety-Trackables in Geocaching-Caches abzulegen."
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:14
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
@@ -1605,6 +1622,10 @@ msgstr "Dieses Skript wurden geschrieben um eine Brücke zwischen der sehr belie
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
 msgid "Available for:"
 msgstr "Verfügbar für:"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:20
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
+msgstr "<a href=\"%1\">Firefox</a> (benötigt <a href=\"%2\">Tampermonkey Add-On</a> oder <a href=\"%3\">Greasmonkey Add-On</a>)"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:7
 msgid "%1's recent moves"
@@ -1672,7 +1693,7 @@ msgstr "Der Nutzer muss sicherstellen, dass die von ihm auf der Website veröffe
 
 #: website/app-templates/smarty/pages/terms_of_use.tpl:23
 msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "Wir geben keinerlei Gewährleistung oder Garantie bezüglich der Genauigkeit, Aktualität, Leistung, Vollständigkeit oder Eignung der Informationen und Materialien, die auf dieser Website angeboten oder gefunden werden. Der Nutzer erkennt an, dass solche Informationen und Materialien möglicherweise Ungenauigkeiten oder Fehler enthalten und wir ausdrücklich eine Haftung für etwaige Ungenauigkeiten oder Fehler in vollen gesetzlich zulässigen Umfang ausschliessen."
+msgstr "Wir geben keinerlei Gewährleistung oder Garantie bezüglich der Genauigkeit, Aktualität, Leistung, Vollständigkeit oder Eignung der Informationen und Materialien, die auf dieser Website angeboten oder gefunden werden. Der Nutzer erkennt an, dass solche Informationen und Materialien möglicherweise Ungenauigkeiten oder Fehler enthalten und wir ausdrücklich eine Haftung für etwaige Ungenauigkeiten oder Fehler in vollen gesetzlich zulässigen Umfang ausschließen."
 
 #: website/app-templates/smarty/pages/terms_of_use.tpl:27
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
@@ -1942,17 +1963,17 @@ msgstr "Meine Fotos"
 msgid "Photos of my GeoKrety"
 msgstr "Fotos meiner GeoKrety"
 
-#: website/app-templates/smarty/navbar-profile.tpl:32
+#: website/app-templates/smarty/navbar-profile.tpl:30
 msgid "Sign out"
 msgstr "Abmelden"
 
-#: website/app-templates/smarty/navbar-profile.tpl:39
+#: website/app-templates/smarty/navbar-profile.tpl:37
 #: website/app-templates/smarty/navbar.tpl:20
 #: website/app-templates/smarty/forms/login.tpl:38
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: website/app-templates/smarty/navbar-profile.tpl:43
+#: website/app-templates/smarty/navbar-profile.tpl:41
 msgid "Create account"
 msgstr "Konto erstellen"
 
@@ -2057,11 +2078,11 @@ msgstr "Veröffentlicht unter <a href=\"%1\">MIT-Lizenz</a>"
 
 #: website/app-templates/smarty/footer.tpl:13
 msgid "Leave in-context translation"
-msgstr ""
+msgstr "Im-Kontext-Übersetzung verlassen"
 
 #: website/app-templates/smarty/footer.tpl:15
 msgid "in-context translation"
-msgstr ""
+msgstr "Im-Kontext-Übersetzung"
 
 #: website/app-templates/smarty/footer.tpl:19
 msgid "Designed with <abbr title=\"love\">💗</abbr> by <a href=\"%1\">The GeoKrety Team</a>"
@@ -2166,7 +2187,7 @@ msgstr "Wenn du einen GeoKret auf eine Caching-Tour mitnimmst; dies ist das als 
 
 #: website/app-templates/smarty/forms/move.tpl:100
 msgid "I've dipped a GeoKret"
-msgstr "GeoKret-Zwischenstopp"
+msgstr "GeoKret-Besuch"
 
 #: website/app-templates/smarty/forms/move.tpl:106
 msgid "When you want to write a comment :)"
@@ -2351,6 +2372,7 @@ msgstr "Diese Änderung rückgängig machen!"
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
 msgid "This link expires %1."
 msgstr "Diese Link läuft ab %1."
 
