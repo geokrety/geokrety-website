@@ -73,7 +73,7 @@
 
         <p>{t}A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety. By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:{/t}</p>
 
-        <h3>{t}Current mole holes{/t}</h3>
+        <h3>{t}Current GK-Hotels/Motels{/t}</h3>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
