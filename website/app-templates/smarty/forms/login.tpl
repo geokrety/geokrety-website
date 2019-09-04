@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary">{t}Sign in{/t}</button>
-                            <a href="{'user_register'|alias}">{t}No account yet ? Register now!{/t}</a>
+                            <a href="{'registration'|alias}">{t}No account yet ? Register now!{/t}</a>
                             <div class="pull-right">
                                 <p>
                                     <a href="{'password_recovery'|alias}">{t}Forgot your password?{/t}</a>

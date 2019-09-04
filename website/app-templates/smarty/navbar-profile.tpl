@@ -23,9 +23,7 @@
         <li><a href="{'user_owned_recent_moves'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}">{fa icon="plane"} {t}Recent moves of my GeoKrety{/t}</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="{'user_pictures'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}">{fa icon="picture-o"} {t}My photos{/t}</a></li>
-        <li><a href="{'user_owned_pictures'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}">{fa icon="picture-o"} {t}Photos of my GeoKrety{/t}</a>
-
-        </li>
+        <li><a href="{'user_owned_pictures'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}">{fa icon="picture-o"} {t}Photos of my GeoKrety{/t}</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="{'geokrety_map'|alias:null:null:{\GeoKrety\Controller\Map::buildFragmentUserIdGeokrety($f3->get('SESSION.CURRENT_USER'))}}">{fa icon="map"} {t}Where are my GeoKrety?{/t}</a></li>
         <li role="separator" class="divider"></li>
@@ -40,5 +38,5 @@
         </a>
     </p>
 </li>
-<li><a href="{'user_register'|alias}">{fa icon="user-plus"} {t}Create account{/t}</a></li>
+<li><a href="{'registration'|alias}">{fa icon="user-plus"} {t}Create account{/t}</a></li>
 {/if}
