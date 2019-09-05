@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 22:26+0000\n"
-"PO-Revision-Date: 2019-09-05 07:51\n"
+"POT-Creation-Date: 2019-09-05 08:20+0000\n"
+"PO-Revision-Date: 2019-09-05 08:28\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -158,7 +158,7 @@ msgid "You will not receive updates anymore."
 msgstr "crwdns15630:0crwdne15630:0"
 
 #: website/app/GeoKrety/Controller/PasswordChange.php:22
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:17
+#: website/app/GeoKrety/Controller/RegistrationActivate.php:18
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
 #: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:18
 #: website/app/GeoKrety/Controller/UserEmailChangeToken.php:18
@@ -260,6 +260,7 @@ msgstr "crwdns16274:0crwdne16274:0"
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:105
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:109
 #: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
+#: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "An error occured while sending the confirmation mail."
 msgstr "crwdns15662:0crwdne15662:0"
 
@@ -352,10 +353,14 @@ msgid "<strong>Your account is not yet active.</strong> The confirmation email w
 msgstr "crwdns16420:0%scrwdne16420:0"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:32
+msgid "Account activated"
+msgstr "crwdns16450:0crwdne16450:0"
+
+#: website/app/GeoKrety/Email/AccountActivation.php:41
 msgid "Welcome on GeoKrety.org"
 msgstr "crwdns16422:0crwdne16422:0"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:36
+#: website/app/GeoKrety/Email/AccountActivation.php:45
 #: website/app/GeoKrety/Model/User.php:204
 msgid "An error occured while sending the activation mail."
 msgstr "crwdns16424:0crwdne16424:0"
@@ -628,6 +633,7 @@ msgstr "crwdns15756:0crwdne15756:0"
 
 #: website/app-templates/smarty/mails/user_contact.tpl:1
 #: website/app-templates/smarty/mails/geokret_adopted.tpl:1
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
@@ -2108,6 +2114,7 @@ msgid "Waypoint resolver"
 msgstr "crwdns14892:0crwdne14892:0"
 
 #: website/app-templates/smarty/header.tpl:3
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
@@ -2353,6 +2360,7 @@ msgid "Register"
 msgstr "crwdns16438:0crwdne16438:0"
 
 #: website/app-templates/smarty/forms/login.tpl:6
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
@@ -2392,6 +2400,46 @@ msgstr "crwdns16244:0crwdne16244:0"
 msgid "Dipped"
 msgstr "crwdns16246:0crwdne16246:0"
 
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Congratulation 🎉"
+msgstr "crwdns16248:0crwdne16248:0"
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr "crwdns16452:0crwdne16452:0"
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr "crwdns16306:0crwdne16306:0"
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "crwdns16448:0crwdne16448:0"
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
+msgstr "crwdns16310:0%1crwdnd16310:0%2crwdne16310:0"
+
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "Welcome to GeoKrety.org"
 msgstr "crwdns16440:0crwdne16440:0"
@@ -2414,38 +2462,6 @@ msgstr "crwdns16318:0%1crwdne16318:0"
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "If your account is not activated within that time, then it will be automatically deleted."
 msgstr "crwdns16446:0crwdne16446:0"
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "crwdns16306:0crwdne16306:0"
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "crwdns16448:0crwdne16448:0"
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
-msgstr "crwdns16310:0%1crwdnd16310:0%2crwdne16310:0"
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-msgid "Congratulation 🎉"
-msgstr "crwdns16248:0crwdne16248:0"
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 msgid "Your email address has been succesfully changed."
