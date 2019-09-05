@@ -15,7 +15,7 @@ class LanguageService extends \Prefab {
     const SUPPORTED_LANGUAGES = array(
         'en', 'fr', 'de', 'pl', 'bg', 'ca',
         'da', 'el', 'es', 'et', 'fi', 'cs',
-        'hu', 'it', 'nl', 'pt', 'zh',
+        'hu', 'it', 'ja', 'nl', 'pt', 'zh',
         'ro', 'ru', 'sk', 'sq', 'sv', 'th',
         'tr', 'uk',
     );
@@ -35,6 +35,7 @@ class LanguageService extends \Prefab {
         'fr' => 'Français',
         'hu' => 'Magyar',
         'it' => 'Italiano',
+        'ja' => '日本人',
         'nl' => 'Nederlands',
         'ph' => 'Pilipinas',
         'pl' => 'Polski',
