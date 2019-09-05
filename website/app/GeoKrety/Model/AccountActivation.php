@@ -99,8 +99,9 @@ class AccountActivation extends Base {
             $self->token = $this->randToken();
         });
 
-        // $this->beforeupdate(function ($self) {
-        // });
+        $this->aftersave(function ($self) {
+            \Event::instance()->emit('activation.token.used', $this->token);
+        });
 
         $this->virtual('expire_on_datetime', function ($self) {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();

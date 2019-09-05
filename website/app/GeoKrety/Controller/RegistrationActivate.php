@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
 use GeoKrety\Model\AccountActivation as AccountActivationModel;
+use GeoKrety\Email\AccountActivation;
 
 class RegistrationActivate extends Base {
     public function beforeRoute($f3) {
@@ -37,7 +38,8 @@ class RegistrationActivate extends Base {
         $this->token->save();
         $f3->get('DB')->commit();
         \Event::instance()->emit('user.activated', $this->token->user);
-        \Event::instance()->emit('user.activated', $this->token->user);
+        $smtp = new AccountActivation();
+        $smtp->sendActivationConfirm($this->token);
 
         Smarty::render('pages/registration_validate.tpl');
     }
