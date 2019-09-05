@@ -13,11 +13,14 @@
   </div>
 </div>
 
+{if $news}
 <h2>📰 {t}News{/t}</h2>
 {foreach from=$news item=item}
 {include file='elements/news.tpl' news=$item}
 {/foreach}
+{/if}
 
+{if $moves}
 <h2>🥾 {t}Latest moves{/t}</h2>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -38,10 +41,13 @@
     </tbody>
   </table>
 </div>
+{/if}
+
 
 <h2>📷 {t}Recent pictures{/t}</h2>
 {include file='banners/wip.tpl'}
 
+{if $geokrety}
 <h2>🐥 {t}Recently created GeoKrety{/t}</h2>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -60,6 +66,7 @@
     </tbody>
   </table>
 </div>
+{/if}
 
 {/block}
 
