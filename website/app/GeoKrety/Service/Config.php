@@ -4,8 +4,6 @@ namespace GeoKrety\Service;
 
 class Config {
     public function __construct() {
-        // TODO REMOVE THAT
-        define('LANGUAGE', 'en');
 
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', $_ENV['GK_SITE_BASE_SERVER_URL'] ?? 'https://geokrety.org');

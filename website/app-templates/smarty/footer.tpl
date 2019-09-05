@@ -10,9 +10,9 @@
         {t escape=no url="https://github.com/geokrety/geokrety-website/blob/master/LICENSE"}Released under <a href="%1">MIT license</a>{/t}
         |
 {if \Multilang::instance()->current === 'inline-translation'}
-        <a href="{GK_SITE_BASE_SERVER_URL}">{t}Leave in-context translation{/t}</a>
+        <a href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), \Multilang::instance()->primary)}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}">{t}Leave in-context translation{/t}</a>
 {else}
-        <a href="{GK_SITE_BASE_SERVER_URL}/inline-translation">{t}in-context translation{/t}</a>
+        <a href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), 'inline-translation')}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}">{t}in-context translation{/t}</a>
 {/if}
     </p>
     <p class="text-center">
