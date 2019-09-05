@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 22:26+0000\n"
-"PO-Revision-Date: 2019-09-05 07:50\n"
+"POT-Creation-Date: 2019-09-05 08:20+0000\n"
+"PO-Revision-Date: 2019-09-05 08:29\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
@@ -158,7 +158,7 @@ msgid "You will not receive updates anymore."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/PasswordChange.php:22
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:17
+#: website/app/GeoKrety/Controller/RegistrationActivate.php:18
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
 #: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:18
 #: website/app/GeoKrety/Controller/UserEmailChangeToken.php:18
@@ -260,6 +260,7 @@ msgstr ""
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:105
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:109
 #: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
+#: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "An error occured while sending the confirmation mail."
 msgstr ""
 
@@ -352,10 +353,14 @@ msgid "<strong>Your account is not yet active.</strong> The confirmation email w
 msgstr ""
 
 #: website/app/GeoKrety/Email/AccountActivation.php:32
+msgid "Account activated"
+msgstr ""
+
+#: website/app/GeoKrety/Email/AccountActivation.php:41
 msgid "Welcome on GeoKrety.org"
 msgstr ""
 
-#: website/app/GeoKrety/Email/AccountActivation.php:36
+#: website/app/GeoKrety/Email/AccountActivation.php:45
 #: website/app/GeoKrety/Model/User.php:204
 msgid "An error occured while sending the activation mail."
 msgstr ""
@@ -628,6 +633,7 @@ msgstr ""
 
 #: website/app-templates/smarty/mails/user_contact.tpl:1
 #: website/app-templates/smarty/mails/geokret_adopted.tpl:1
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
@@ -2108,6 +2114,7 @@ msgid "Waypoint resolver"
 msgstr ""
 
 #: website/app-templates/smarty/header.tpl:3
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
@@ -2353,6 +2360,7 @@ msgid "Register"
 msgstr ""
 
 #: website/app-templates/smarty/forms/login.tpl:6
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
@@ -2392,6 +2400,46 @@ msgstr ""
 msgid "Dipped"
 msgstr ""
 
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+msgid "Congratulation 🎉"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+msgid "You're getting this email because you've just signed up on our website."
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
+msgstr ""
+
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "Welcome to GeoKrety.org"
 msgstr ""
@@ -2413,38 +2461,6 @@ msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr ""
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr ""
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "You're getting this email because you've just signed up on our website."
-msgstr ""
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
-msgstr ""
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-msgid "Congratulation 🎉"
 msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
