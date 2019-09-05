@@ -38,13 +38,13 @@
             <div class="panel-body">
                 <dl id="map-legend">
                     <dt><img src="https://geokretymap.org/js/images/marker-icon.png"><span id="map-legend-blue">0</span></dt>
-                    <dd>Has moved since 90 days</dd>
+                    <dd>{t}Has moved since 90 days{/t}</dd>
 
                     <dt><img src="https://geokretymap.org/js/images/marker-icon-red.png"><span id="map-legend-red">0</span></dt>
-                    <dd>Has a known move date and hasn't moved since 90 days</dd>
+                    <dd>{t}Has a known move date and hasn't moved since 90 days{/t}</dd>
 
                     <dt><img src="https://geokretymap.org/js/images/marker-icon-grey.png"><span id="map-legend-grey">0</span></dt>
-                    <dd>No known move date</dd>
+                    <dd>{t}No known move date{/t}</dd>
                 </dl>
             </div>
         </div>
