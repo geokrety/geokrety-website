@@ -4,7 +4,6 @@ namespace GeoKrety\Service;
 
 class Config {
     public function __construct() {
-
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', $_ENV['GK_SITE_BASE_SERVER_URL'] ?? 'https://geokrety.org');
         define('GK_SITE_EMAIL', $_ENV['GK_SITE_EMAIL'] ?? 'geokrety@gmail.com');

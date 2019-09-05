@@ -13,7 +13,7 @@ class Home extends Base {
         // Load statistics
         $siteStats = new SiteStats();
         $result = $siteStats->find(array('name LIKE ?', 'stat_%'));
-        foreach ($result as $item) {
+        foreach ($result ?: [] as $item) {
             $statistics[$item['name']] = $item['value'];
         }
         Smarty::assign('stats', $statistics);
