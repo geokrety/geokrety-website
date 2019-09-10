@@ -70,6 +70,10 @@ class Config {
         define('GK_SMARTY_COMPILE_DIR', $_ENV['GK_SMARTY_COMPILE_DIR'] ?? '/tmp/smarty/compile/');
         define('GK_SMARTY_CACHE_DIR', $_ENV['GK_SMARTY_CACHE_DIR'] ?? '/tmp/smarty/cache/');
 
+        // Local DEV only - disabled by default
+        define('GK_DEV_LOCAL', $_ENV['GK_DEV_LOCAL'] ?? 0);
+        define('GK_DEV_CACHE_DIR', $_ENV['GK_DEV_CACHE_DIR'] ?? './');
+
         // HTMLPurifier
         define('GK_HTMLPURIFIER_CACHE_DIR', $_ENV['GK_HTMLPURIFIER_CACHE_DIR'] ?? '/tmp/htmlpurifier/cache/');
 

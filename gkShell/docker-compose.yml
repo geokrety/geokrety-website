@@ -47,6 +47,7 @@ services:
             - GK_CDN_SERVER_URL=https://new-theme.cdn.geokrety.org
             - GK_SITE_BASE_SERVER_URL=http://gk
             - GK_DEBUG=3
+            - GK_DEV_LOCAL=1
         depends_on:
             - db
             - redis

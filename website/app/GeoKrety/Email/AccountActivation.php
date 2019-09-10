@@ -32,7 +32,10 @@ class AccountActivation extends Base {
         $this->setSubject('🎉 '._('Account activated'));
         $this->set('To', $token->user->email);
         Smarty::assign('token', $token);
-        if (!$this->send(Smarty::fetch('email-account-activated.html'))) {
+        $emailContent = Smarty::fetch('email-account-activated.html');
+        if (GK_DEV_LOCAL) {
+            $this->localMail($emailContent, '___activated.html');
+        } else if (!$this->send($emailContent)) {
             \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
         }
     }
@@ -41,12 +44,25 @@ class AccountActivation extends Base {
         $this->setSubject('🎉 '._('Welcome on GeoKrety.org'));
         $this->set('To', $token->user->email);
         Smarty::assign('token', $token);
-        if (!$this->send(Smarty::fetch('email-account-activation.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the activation mail.'), 'danger');
+        $emailContent = Smarty::fetch('email-account-activation.html');
+        if (GK_DEV_LOCAL) {
+            $this->localMail($emailContent, '___activate.html');
+        } else if (!$this->send($emailContent)) {
+           //  \Flash::instance()->addMessage(_('An error occured while sending the activation mail.'), 'danger');
         } else {
             if (!is_null($this->message)) {
                 \Flash::instance()->addMessage(sprintf($this->message, Carbon::instance($token->expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])), 'success');
             }
         }
+    }
+
+    /**
+      * Local DEV only
+      * Instead of using smtp server to send an email, provide a local file with email content.
+      */
+    protected function localMail($emailContent, $localFilename) {
+        $targetFile = GK_DEV_CACHE_DIR.$localFilename;
+        file_put_contents($targetFile, $emailContent);
+        \Flash::instance()->addMessage(sprintf("local mail <a href='/%s' target='_new'>file</a>", $targetFile), 'success');
     }
 }
