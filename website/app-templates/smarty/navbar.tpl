@@ -87,6 +87,15 @@
                         <li><a href="go2geo/">{fa icon="map-pin"} {t}Waypoint resolver{/t}</a></li>
                     </ul>
                 </li>
+                {if is_null(GK_SMTP_HOST)}
+                <li>
+                    <p class="navbar-btn">
+                        <a href="{'local_mail_list'|alias}" class="btn btn-danger btn-block">
+                            {fa icon="envelope"} Dev Mailbox <span class="badge">{if is_countable($f3->get('SESSION.LOCAL_MAIL'))}{$f3->get('SESSION.LOCAL_MAIL')|count}{else}0{/if}</span>
+                        </a>
+                    </p>
+                </li>
+                {/if}
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-xs">
                 {include file="navbar-profile.tpl"}
