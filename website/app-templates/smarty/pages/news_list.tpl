@@ -4,15 +4,17 @@
 {block name=content}
 <a class="anchor" id="news"></a>
 
-{call pagination pg=$pg anchor='news'}
 
 {if $news.subset}
+{call pagination pg=$pg anchor='news'}
 {foreach from=$news.subset item=item}
 {include file='elements/news.tpl' news=$item}
 {/foreach}
+{call pagination pg=$pg anchor='news'}
+{else}
+<em>{t}There is no news yet{/t}</em>
 {/if}
 
-{call pagination pg=$pg anchor='news'}
 {/block}
 
 {block name=javascript}

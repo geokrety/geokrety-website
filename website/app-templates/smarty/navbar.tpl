@@ -31,9 +31,7 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="{'home'|alias}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {t}Home{/t}</a></li>
-                {if $news}
                 <li><a href="{'news_list'|alias}">{fa icon="newspaper-o"} {t}News{/t}</a></li>
-                {/if}
                 <li>
                     <p class="navbar-btn">
                         <a href="{'move_create'|alias}" class="btn btn-success btn-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a>
