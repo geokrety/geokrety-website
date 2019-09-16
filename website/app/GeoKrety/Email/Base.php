@@ -24,4 +24,13 @@ abstract class Base extends \SMTP {
         $this->set('Subject', '=?utf-8?B?'.base64_encode($prefix.$subject).'?=');
         Smarty::assign('subject', $prefix.$subject);
     }
+
+    public function send($message, $log = true, $mock = false) {
+        if (is_null(GK_SMTP_HOST)) {
+            \Base::instance()->push('SESSION.LOCAL_MAIL', array('smtp' => clone $this, 'message' => $message));
+
+            return true;
+        }
+        parent::send($message, $log, $mock);
+    }
 }

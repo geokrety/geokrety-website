@@ -45,7 +45,7 @@ class Config {
         define('GK_DB_PASSWORD', $_ENV['GK_DB_PASSWORD'] ?? 'geokrety');
 
         // SMTP config
-        define('GK_SMTP_HOST', $_ENV['GK_SMTP_HOST'] ?? 'smtp.gmail.com');
+        define('GK_SMTP_HOST', $_ENV['GK_SMTP_HOST'] ?: null);
         define('GK_SMTP_PORT', $_ENV['GK_SMTP_PORT'] ?? 465);
         define('GK_SMTP_SCHEME', $_ENV['GK_SMTP_SCHEME'] ?? 'SSL');
         define('GK_SMTP_USER', $_ENV['GK_SMTP_USER'] ?? '');
