@@ -4,7 +4,6 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\PasswordToken;
-use Hautelook\Phpass\PasswordHash;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 
 class PasswordRecoveryChange extends Base {
@@ -59,8 +58,7 @@ class PasswordRecoveryChange extends Base {
         $f3->get('DB')->begin();
 
         // Save new password
-        $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
-        $user->password = $hasher->HashPassword($password_new.GK_PASSWORD_HASH.GK_PASSWORD_SEED);
+        $user->password = $password_new;
         if (!$user->validate()) {
             $this->get($f3);
             die();

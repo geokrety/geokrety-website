@@ -10,9 +10,11 @@ class Auth extends \Auth {
         $user = new User();
         $user->load(array('username = ?', $id));
 
-        $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
-        if ($hasher->CheckPassword($pw.GK_PASSWORD_HASH.GK_PASSWORD_SEED, (string) $user->password)) {
-            return true;
+        if ($user->valid()) {
+            $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
+            if ($hasher->CheckPassword($pw.GK_PASSWORD_HASH.GK_PASSWORD_SEED, (string) $user->password)) {
+                return true;
+            }
         }
 
         return false;
