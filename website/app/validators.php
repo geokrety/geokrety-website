@@ -24,7 +24,9 @@ $validator->addValidator('language_supported', function ($field, $input, $param 
 }, _('This language is not supported'));
 
 $validator->addValidator('ciphered_password', function ($field, $input, $param = null) {
-    return substr($input[$field], 0, 7) === '$2a$11$';
+    $expectedPasswordPrefix = sprintf('$2a$%02d$', GK_PASSWORD_HASH_ROTATION);
+
+    return substr($input[$field], 0, 7) === $expectedPasswordPrefix;
 }, _('The password must be ciphered'));
 
 $validator->addValidator('anonymous_only_required', function ($field, $input, $param = null) {
