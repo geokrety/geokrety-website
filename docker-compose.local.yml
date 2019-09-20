@@ -6,8 +6,7 @@ services:
         ports:
             - "8000:80"
         volumes:
-            - ${PWD}/website/:/var/www/html/:rw
-            - ${PWD}/configs/ssmtp.tmpl.conf:/etc/ssmtp/ssmtp.conf:ro
+            - ${PWD}/:/var/www/geokrety/:rw
         depends_on:
             - db
             - redis
