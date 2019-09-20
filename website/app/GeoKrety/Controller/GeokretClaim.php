@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\OwnerCode;
 use GeoKrety\Model\Move;
+use GeoKrety\Email\GeokretClaim as GeokretClaimEmail;
 
 class GeokretClaim extends Base {
     public function get(\Base $f3) {
@@ -56,34 +57,21 @@ class GeokretClaim extends Base {
             } else {
                 \Flash::instance()->addMessage(sprintf(_('🎉 Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
                 $f3->get('DB')->commit();
-                $this->sendEmail($ownerCode->geokret, $oldOwner);
+
                 $context = array(
                     'oldUser' => $oldOwner,
                     'newUser' => $ownerCode->user,
                 );
                 \Event::instance()->emit('geokret.claimed', $ownerCode->geokret, $context);
+
+                // Send email
+                $smtp = new GeokretClaimEmail();
+                $smtp->sendClaimedNotification($ownerCode->geokret, $oldOwner);
+
                 $f3->reroute('@geokret_details(@gkid='.$ownerCode->geokret->gkid.')');
             }
         }
 
         $this->get($f3);
-    }
-
-    protected function sendEmail($geokret, $user) {
-        if (!$user->email) {
-            return;
-        }
-        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
-        $smtp->set('From', GK_SITE_EMAIL);
-        $smtp->set('To', $user->email);
-        $smtp->set('Errors-To', GK_SITE_EMAIL);
-        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', GK_EMAIL_SUBJECT_PREFIX.sprintf(_('Your GeoKret \'%s\' has been adopted 🎉'), $geokret->name));
-        Smarty::assign('geokret', $geokret);
-        Smarty::assign('user', $user);
-
-        if (!$smtp->send(Smarty::fetch('mails/geokret_adopted.tpl'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the adoption mail notification to old owner.'), 'danger');
-        }
     }
 }
