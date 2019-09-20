@@ -7,4 +7,4 @@ ENV GIT_COMMIT=$GIT_COMMIT
 CMD ["bash", "-c", "php index.php /cli/smarty/compile-all-templates && php index.php /cli/gettext/build-translations && exec apache2-foreground"]
 
 HEALTHCHECK --start-period=60s --interval=30s --timeout=5s --retries=3 \
-CMD curl --fail -v -I http://localhost:80/en || exit 1
+CMD curl --fail -v --output /dev/stderr http://localhost:80/health || exit 1
