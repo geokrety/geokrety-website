@@ -33,7 +33,7 @@ abstract class Base extends \SMTP {
 
     public function send($message, $log = true, $mock = false) {
         if (is_null(GK_SMTP_HOST)) {
-            \Base::instance()->push('SESSION.LOCAL_MAIL', array('smtp' => clone $this, 'message' => $message));
+            \Base::instance()->push('SESSION.LOCAL_MAIL', array('smtp' => clone $this, 'message' => $message, 'read' => false));
 
             return true;
         }
