@@ -813,3 +813,8 @@ CREATE TABLE `gk-account-activation` (
 ALTER TABLE `gk-account-activation`
 ADD INDEX `used_created_on_datetime` (`used`, `created_on_datetime`);
 ```
+
+```sql
+ALTER TABLE `gk-moves`
+CHANGE `app_ver` `app_ver` varchar(128) COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'application version/codename' AFTER `app`;
+```
