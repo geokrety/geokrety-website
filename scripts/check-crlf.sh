@@ -1,6 +1,13 @@
 #!/bin/bash
 START_TIME=$SECONDS
-find . -type f -not \( -path './website/old/*' -o -path './.git/*' -o -path './vendor/*' -o -path './website/vendor/*' \) -exec file -m /dev/null "{}" ";" | grep CRLF
+find . -type f -not \( -path './website/old/*' \
+                    -o -path './.git/*' \
+                    -o -path './vendor/*' \
+                    -o -path './website/vendor/*' \
+                    -o -path './.idea/*' \
+                    -o -name '*.iml' \
+                    -o -name '*.dont-push.*' \
+    \) -exec file -m /dev/null "{}" ";" | grep CRLF
 cmdresult=$?
 ELAPSED_TIME=$(($SECONDS - $START_TIME))
 

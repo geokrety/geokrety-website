@@ -16,7 +16,31 @@ while test $# -gt 0; do
         continue
     fi
 
-    for file in `find . -type f -not \( -path './website/db/migrations/*' -o -path './website/old/*' -o -path './.git/*' -o -path './vendor/*' -o -path './website/vendor/*' -o -path './website/app-templates/foundation-emails/node_modules/*' -o -path './website/app-templates/smarty/help-pages/*' \) \( -name '*.php' -o -name '*.js' -o -name '*.html' -o -name '*.txt' -o -name '*.css' -o -name '*.tpl' -o -name '*.xml' \)` ; do
+    TO_SCAN_FILES=$(find . -type f -not \( \
+                       -path './website/db/migrations/*' \
+                    -o -path './website/old/*'  \
+                    -o -path './.git/*'  \
+                    -o -path './vendor/*'  \
+                    -o -path './website/vendor/*'  \
+                    -o -path './.idea/*' \
+                    -o -path './website/app-templates/foundation-emails/node_modules/*'  \
+                    -o -path './website/app-templates/smarty/help-pages/*' \
+                    -o -name '*.iml' \
+                    -o -name '*.dont-push.*' \
+                     \) \(  \
+                    -name '*.php'  \
+                    -o -name '*.js'  \
+                    -o -name '*.html'  \
+                    -o -name '*.txt'  \
+                    -o -name '*.css'  \
+                    -o -name '*.tpl'  \
+                    -o -name '*.xml'  \
+                    \))
+    NBFILE=$(ls -R ${TO_SCAN_FILES}|wc -l)
+
+    echo "$0 $current for ${NBFILE} file(s)"
+
+    for file in ${TO_SCAN_FILES}; do
         RESULTS=`egrep -l " +$" "$file"`
 
         if [ -n "$RESULTS" ] ; then

@@ -21,9 +21,20 @@ while test $# -gt 0; do
         continue
     fi
 
-    echo "$0 $current using checkCommand:${checkCommand}"
+    TO_SCAN_FILES=$(find . -type f -not \( \
+                   -path './website/old/*' \
+                -o -path './.git/*' \
+                -o -path './vendor/*' \
+                -o -path './website/vendor/*' \
+                -o -path './.idea/*' \
+                -o -name '*.iml' \
+                -o -name '*.dont-push.*' \
+                 \) -exec grep -Iq . {} \; -and -print)
+    NBFILE=$(ls -R ${TO_SCAN_FILES}|wc -l)
 
-    for file in `find . -type f -not \( -path './website/old/*' -o -path './.git/*' -o -path './vendor/*' -o -path './website/vendor/*' \) -exec grep -Iq . {} \; -and -print`; do
+    echo "$0 $current using checkCommand:${checkCommand} for ${NBFILE} file(s)"
+
+    for file in ${TO_SCAN_FILES}; do
         if [ "$checkCommand" == "isutf8" ]; then
             RESULTS=`isutf8 "$file"`
         else
