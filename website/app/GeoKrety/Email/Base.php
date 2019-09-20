@@ -3,6 +3,7 @@
 namespace GeoKrety\Email;
 
 use GeoKrety\Service\Smarty;
+use GeoKrety\Model\User;
 
 abstract class Base extends \SMTP {
     public function __construct($host = GK_SMTP_HOST, $port = GK_SMTP_PORT, $scheme = GK_SMTP_SCHEME, $user = GK_SMTP_USER, $pw = GK_SMTP_PASSWORD, $ctx = null) {
@@ -10,6 +11,11 @@ abstract class Base extends \SMTP {
         $this->setFromDefault();
         $this->set('Errors-To', GK_SITE_EMAIL);
         $this->set('Content-Type', 'text/html; charset=UTF-8');
+    }
+
+    protected function setTo(User $user) {
+        // TODO what to do if user has no email?
+        $this->set('To', $user->email);
     }
 
     protected function setFromDefault() {

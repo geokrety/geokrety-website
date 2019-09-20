@@ -30,7 +30,7 @@ class AccountActivation extends Base {
 
     public function sendActivationConfirm(AccountActivationModel $token) {
         $this->setSubject('🎉 '._('Account activated'));
-        $this->set('To', $token->user->email);
+        $this->setTo($token->user);
         Smarty::assign('token', $token);
         if (!$this->send(Smarty::fetch('email-account-activated.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
@@ -39,7 +39,7 @@ class AccountActivation extends Base {
 
     protected function sendEmail(AccountActivationModel $token) {
         $this->setSubject('🎉 '._('Welcome on GeoKrety.org'));
-        $this->set('To', $token->user->email);
+        $this->setTo($token->user);
         Smarty::assign('token', $token);
         if (!$this->send(Smarty::fetch('email-account-activation.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the activation mail.'), 'danger');
