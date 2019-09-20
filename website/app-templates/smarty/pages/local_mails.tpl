@@ -14,18 +14,22 @@
             <tr>
                 <th>{t}ID{/t}</th>
                 <th>{t}Subject{/t}</th>
+                <th>{t}From{/t}</th>
+                <th>{t}To{/t}</th>
                 <th class="text-right">{t}Action{/t}</th>
             </tr>
         </thead>
         <tbody>
             {foreach from=$f3->get('SESSION.LOCAL_MAIL') item=item key=key}
-            <tr>
+            <tr{if !$item.read} class="bold"{/if}>
                 <td>{$key}</td>
                 <td>
                     <a href="{'local_mail'|alias:sprintf('@mailid=%d', $key)}" target="_blank">
                         {$item.smtp->Subject|iconv_mime_decode} {fa icon="external-link"}
                     </a>
                 </td>
+                <td>{$item.smtp->From}</td>
+                <td>{$item.smtp->To}</td>
                 <td class="text-right">
                     <a href="{'local_mail_delete'|alias:sprintf('@mailid=%d', $key)}" class="btn btn-danger btn-xs" title="{t}Delete mail{/t}">
                         {fa icon="trash"}
