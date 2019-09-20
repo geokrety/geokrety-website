@@ -81,8 +81,8 @@ class Config {
         define('GK_USER_STATPIC_FONT', $_ENV['GK_USER_STATPIC_FONT'] ?? 'RobotoCondensed-Regular.ttf');
 
         // google api
-        define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', $_ENV['GK_GOOGLE_RECAPTCHA_PUBLIC_KEY'] ?? '');
-        define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', $_ENV['GK_GOOGLE_RECAPTCHA_SECRET_KEY'] ?? '');
+        define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', $_ENV['GK_GOOGLE_RECAPTCHA_PUBLIC_KEY'] ?? false);
+        define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', $_ENV['GK_GOOGLE_RECAPTCHA_SECRET_KEY'] ?? false);
         define('GK_GOOGLE_RECAPTCHA_JS_URL', $_ENV['GK_GOOGLE_RECAPTCHA_JS_URL'] ?? 'https://www.google.com/recaptcha/api.js');
 
         // go2geo url
