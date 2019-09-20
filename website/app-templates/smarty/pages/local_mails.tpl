@@ -16,12 +16,17 @@
                 <th>{t}Subject{/t}</th>
                 <th>{t}From{/t}</th>
                 <th>{t}To{/t}</th>
-                <th class="text-right">{t}Action{/t}</th>
+                <th class="text-right">
+                    {t}Action{/t}
+                    <a href="{'local_mail_delete_all'|alias}" class="btn btn-danger btn-xs" title="{t}Delete all mails{/t}">
+                        {fa icon="trash"}
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody>
             {foreach from=$f3->get('SESSION.LOCAL_MAIL') item=item key=key}
-            <tr{if !$item.read} class="bold"{/if}>
+            <tr {if !$item.read}class="bold"{/if}>
                 <td>{$key}</td>
                 <td>
                     <a href="{'local_mail'|alias:sprintf('@mailid=%d', $key)}" target="_blank">
