@@ -20,4 +20,9 @@ class LocalMail extends Base {
         $f3->clear(sprintf('SESSION.LOCAL_MAIL.%d', $mailid));
         $f3->reroute('local_mail_list');
     }
+
+    public function delete_all($f3) {
+        $f3->clear('SESSION.LOCAL_MAIL');
+        $f3->reroute('local_mail_list');
+    }
 }
