@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
+use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 
 class UserUpdatePassword extends Base {
     public function beforeRoute($f3) {
@@ -56,23 +57,15 @@ class UserUpdatePassword extends Base {
         $user->password = $password_new;
         if ($user->validate()) {
             $user->save();
-            $this->sendEmail($user);
+
             \Event::instance()->emit('user.password.changed', $user);
             \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
+
+            // Send email
+            $smtp = new PasswordChangeEmail();
+            $smtp->sendPasswordChangedNotification($user);
         }
 
         $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
-    }
-
-    protected function sendEmail($user) {
-        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
-        $smtp->set('From', GK_SITE_EMAIL);
-        $smtp->set('To', $user->email);
-        $smtp->set('Errors-To', GK_SITE_EMAIL);
-        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', GK_EMAIL_SUBJECT_PREFIX._('Your password has been changed'));
-        if (!$smtp->send(Smarty::fetch('mails/password_changed.tpl'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
-        }
     }
 }
