@@ -5,8 +5,9 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\PasswordToken;
 use Hautelook\Phpass\PasswordHash;
+use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 
-class PasswordChange extends Base {
+class PasswordRecoveryChange extends Base {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
@@ -83,32 +84,15 @@ class PasswordChange extends Base {
             die();
         }
 
+        \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
         $f3->get('DB')->commit();
 
         \Event::instance()->emit('user.password.changed', $user);
-        if ($this->sendEmail($user)) {
-            \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
-        }
+
+        // Send email
+        $smtp = new PasswordChangeEmail();
+        $smtp->sendPasswordChangedNotification($user);
 
         $f3->reroute('login');
-    }
-
-    protected function sendEmail($user) {
-        $subject = GK_EMAIL_SUBJECT_PREFIX.'🔑 '._('Your password has been changed');
-        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
-        $smtp->set('From', GK_SITE_EMAIL_SUPPORT);
-        $smtp->set('To', $user->email);
-        $smtp->set('Errors-To', GK_SITE_EMAIL);
-        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', '=?utf-8?B?'.base64_encode($subject).'?=');
-        Smarty::assign('subject', $subject);
-        Smarty::assign('user', $user);
-        if (!$smtp->send(Smarty::fetch('password-changed.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the mail.'), 'danger');
-
-            return false;
-        }
-
-        return true;
     }
 }

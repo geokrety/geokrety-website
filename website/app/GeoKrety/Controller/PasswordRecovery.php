@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
 use GeoKrety\Model\PasswordToken;
+use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 
 class PasswordRecovery extends Base {
     public function beforeRoute($f3) {
@@ -52,29 +53,11 @@ class PasswordRecovery extends Base {
         $token->save();
 
         \Event::instance()->emit('password.token.generated', $token);
-        if ($this->sendEmail($token)) {
-            \Flash::instance()->addMessage(_('An email containing a validation link has been sent to the provided email address.'), 'success');
-        }
+
+        // Send email
+        $smtp = new PasswordChangeEmail();
+        $smtp->sendPasswordChangeToken($token);
 
         $f3->reroute('home');
-    }
-
-    protected function sendEmail($token) {
-        $subject = GK_EMAIL_SUBJECT_PREFIX.'🔑 '._('Password reset request');
-        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
-        $smtp->set('From', GK_SITE_EMAIL_SUPPORT);
-        $smtp->set('To', $token->user->email);
-        $smtp->set('Errors-To', GK_SITE_EMAIL);
-        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', '=?utf-8?B?'.base64_encode($subject).'?=');
-        Smarty::assign('subject', $subject);
-        Smarty::assign('token', $token);
-        if (!$smtp->send(Smarty::fetch('password-recovery.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the mail.'), 'danger');
-
-            return false;
-        }
-
-        return true;
     }
 }
