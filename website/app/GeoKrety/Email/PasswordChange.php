@@ -17,9 +17,10 @@ class PasswordChange extends Base {
         Smarty::assign('token', $token);
         if (!$this->send(Smarty::fetch('email-password-recovery.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the password reset mail.'), 'danger');
-        } else {
-            \Flash::instance()->addMessage(_('An email containing a validation link has been sent to the provided email address.'), 'success');
+
+            return;
         }
+        \Flash::instance()->addMessage(_('An email containing a validation link has been sent to the provided email address.'), 'success');
     }
 
     public function sendPasswordChangedNotification(User $user) {
