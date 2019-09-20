@@ -44,7 +44,9 @@ services:
         environment:
             - website_config_directory=/var/www/config
             - MYSQL_ROOT_PASSWORD
-            - CDN_SERVER_URL=https://new-theme.cdn.geokrety.org
+            - GK_CDN_SERVER_URL=https://new-theme.cdn.geokrety.org
+            - GK_SITE_BASE_SERVER_URL=http://gk
+            - GK_DEBUG=3
         depends_on:
             - db
             - redis

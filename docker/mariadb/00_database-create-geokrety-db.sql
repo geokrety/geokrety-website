@@ -1,4 +1,5 @@
 -- Adminer 4.7.1 MySQL dump
+USE `geokrety-db`;  -- tofix: find a way to avoid this line in local Makefile
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
