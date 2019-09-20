@@ -38,6 +38,7 @@ class Config {
         define('GK_APP_NAME', $_ENV['GK_APP_NAME'] ?? 'www');
         define('GK_APP_VERSION', $_ENV['GIT_COMMIT'] ?? 'undef');
         define('GK_EMAIL_SUBJECT_PREFIX', $_ENV['GK_EMAIL_SUBJECT_PREFIX'] ?? '[GeoKrety] ');
+        define('GK_BOT_USERNAME', $_ENV['GK_BOT_USERNAME'] ?? 'GeoKrety Bot ');
 
         // DATABASE config
         define('GK_DB_DSN', $_ENV['GK_DB_DSN'] ?? 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');

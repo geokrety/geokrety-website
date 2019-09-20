@@ -34,14 +34,16 @@ class GeokretClaim extends Base {
         $ownerCode->user = $f3->get('SESSION.CURRENT_USER');
         $ownerCode->touch('claimed_on_datetime');
         $ownerCode->geokret->owner = $f3->get('SESSION.CURRENT_USER');
+
         // Create a move comment
         $move = new Move();
-        $move->username = 'GeoKrety-bot';
+        $move->username = GK_BOT_USERNAME;
         $move->geokret = $ownerCode->geokret;
         $move->logtype = \GeoKrety\LogType::LOG_TYPE_COMMENT;
         $move->comment = sprintf('🙌 Owner change. From: [%s](%s) to: [%s](%s) /GK Team/', $oldOwner->username, $f3->alias('user_details', '@userid='.$oldOwner->id), $ownerCode->user->username, $f3->alias('user_details', '@userid='.$ownerCode->user->id));
         $move->app = GK_APP_NAME;
         $move->app_ver = GK_APP_VERSION;
+        $move->touch('moved_on_datetime');
 
         if ($ownerCode->validate() && $ownerCode->geokret->validate() && $move->validate()) {
             $ownerCode->save();

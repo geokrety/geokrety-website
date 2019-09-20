@@ -29,14 +29,11 @@ $validator->addValidator('ciphered_password', function ($field, $input, $param =
 
 $validator->addValidator('anonymous_only_required', function ($field, $input, $param = null) {
     $f3 = \Base::instance();
-    if ($f3->get('SESSION.CURRENT_USER') && \GeoKrety\Validation\Base::isEmpty($input[$field])) {
-        return true;
-    }
-    if (!$f3->get('SESSION.CURRENT_USER') && \GeoKrety\Validation\Base::isNotEmpty($input[$field])) {
-        return true;
+    if (!$f3->get('SESSION.CURRENT_USER') && \GeoKrety\Validation\Base::isEmpty($input[$field])) {
+        return false;
     }
 
-    return false;
+    return true;
 }, _('Anonymous users must provide a value for {0}'));
 
 $validator->addValidator('registered_only_required', function ($field, $input, $param = null) {
@@ -63,6 +60,10 @@ $validator->addValidator('logtype_require_coordinates', function ($field, $input
 }, _('This logtype require valid {0} coordinates'));
 
 $validator->addValidator('move_not_same_datetime', function ($field, $input, $param = null) {
+    if (!$input[$field]) {
+        return true;
+    }
+
     $move = new  \GeoKrety\Model\Move();
     $move->load(array($field.' = ? AND geokret = ? AND id != ?', $input[$field]->format('Y-m-d H:i:s'), $input['geokret']->id, $input['_id']));
 
@@ -70,10 +71,18 @@ $validator->addValidator('move_not_same_datetime', function ($field, $input, $pa
 }, _('Something already exists at the same datetime "{0}"'));
 
 $validator->addValidator('not_in_the_future', function ($field, $input, $param = null) {
+    if (!$input[$field]) {
+        return true;
+    }
+
     return $input[$field] <= new DateTime();
 }, _('{0} cannot be in the future'));
 
 $validator->addValidator('after_geokret_birth', function ($field, $input, $param = null) {
+    if (!$input[$field]) {
+        return true;
+    }
+
     return $input[$field]->format('Y-m-d H:i') >= $input['geokret']->created_on_datetime->format('Y-m-d H:i');
 }, _('{0} must be after GeoKret birth'));
 

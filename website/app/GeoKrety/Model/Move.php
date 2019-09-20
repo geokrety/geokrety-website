@@ -85,7 +85,7 @@ class Move extends Base {
         'app_ver' => array(
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-            'validate' => 'max_len,16',
+            'validate' => 'max_len,128',
             'filter' => 'trim|HTMLPurifier',
         ),
         'created_on_datetime' => array(
@@ -96,7 +96,7 @@ class Move extends Base {
         'moved_on_datetime' => array(
             'type' => Schema::DT_DATETIME,
             'nullable' => false,
-            'validate' => 'not_in_the_future|after_geokret_birth|move_not_same_datetime',
+            'validate' => 'required|not_in_the_future|after_geokret_birth|move_not_same_datetime',
         ),
         'updated_on_datetime' => array(
             'type' => Schema::DT_DATETIME,
@@ -155,7 +155,7 @@ class Move extends Base {
     }
 
     public function get_moved_on_datetime($value) {
-        return self::get_date_object($value);
+        return is_null($value) ? null : self::get_date_object($value);
     }
 
     public function get_updated_on_datetime($value) {
