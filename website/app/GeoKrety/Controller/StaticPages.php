@@ -8,10 +8,6 @@ class StaticPages extends Base {
     public function head($f3) {
     }
 
-    public function health($f3) {
-        echo 'OK';
-    }
-
     public function terms_of_use($f3) {
         Smarty::render('extends:base.tpl|dialog/terms_of_use.tpl');
     }

@@ -52,7 +52,9 @@ class Config {
         define('GK_SMTP_PASSWORD', $_ENV['GK_SMTP_PASSWORD'] ?? '');
 
         // HASHING seeds
-        define('GK_PASSWORD_HASH_ROTATION', $_ENV['GK_PASSWORD_HASH_ROTATION'] ?? 8);
+        define('GK_PASSWORD_MIN_HASH_ROTATION', 10);
+        define('GK_PASSWORD_MAX_HASH_ROTATION', 99);
+        define('GK_PASSWORD_HASH_ROTATION', $_ENV['GK_PASSWORD_HASH_ROTATION'] ?? 11);
         define('GK_PASSWORD_HASH', $_ENV['GK_PASSWORD_HASH'] ?? 'geokrety');
         define('GK_PASSWORD_SEED', $_ENV['GK_PASSWORD_SEED'] ?? 'rand_string');
 
@@ -197,5 +199,21 @@ class Config {
             $text .= "* **$key** -> $value\n";
         }
         echo \Markdown::instance()->convert($text);
+    }
+
+    public function isValid() {
+        return count($this->validationDetails()) == 0;
+    }
+
+    public function validationDetails() {
+        $details = [];
+        if (GK_PASSWORD_HASH_ROTATION > GK_PASSWORD_MAX_HASH_ROTATION) {
+            array_push($details, 'GK_PASSWORD_HASH_ROTATION must be less than '.GK_PASSWORD_MAX_HASH_ROTATION);
+        }
+        if (GK_PASSWORD_HASH_ROTATION < GK_PASSWORD_MIN_HASH_ROTATION) {
+            array_push($details, 'GK_PASSWORD_HASH_ROTATION must be greater than '.GK_PASSWORD_MIN_HASH_ROTATION);
+        }
+
+        return $details;
     }
 }
