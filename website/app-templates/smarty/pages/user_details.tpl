@@ -32,7 +32,7 @@
 {/block}
 
 {block name=javascript}
-{if $user->isCurrentUser()}
+{if $user->isCurrentUser() && $user->hasHomeCoordinates()}
 {include file='js/_map_init.tpl.js'}
 var map = initializeMap();
 // Load GeoKrety near home position
