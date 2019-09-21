@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\EmailActivation;
+use GeoKrety\Email\EmailChange;
 
 class UserEmailChangeRevertToken extends Base {
     public function beforeRoute($f3) {
@@ -86,31 +87,12 @@ class UserEmailChangeRevertToken extends Base {
         if ($f3->get('POST.validate') === 'true') {
             \Flash::instance()->addMessage(_('Perfect! Enjoy your new email address. (This token is now revoked)'), 'success');
         } else {
+            $smtp = new EmailChange();
+            $smtp->sendEmailRevertedNotification($this->token->user);
+            \Flash::instance()->addMessage(_('Your email address has been reverted.'), 'success');
             \Event::instance()->emit('user.email.changed', $this->token);
-            if ($this->sendEmail($this->token->user)) {
-                \Flash::instance()->addMessage(_('Your email address has been reverted.'), 'success');
-            }
         }
 
         $f3->reroute(sprintf('user_details(@userid=%d)', $this->token->user->id));
-    }
-
-    protected function sendEmail($user) {
-        $subject = GK_EMAIL_SUBJECT_PREFIX.'✉️ '._('Email address reverted');
-        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
-        $smtp->set('From', GK_SITE_EMAIL);
-        $smtp->set('Errors-To', GK_SITE_EMAIL);
-        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', '=?utf-8?B?'.base64_encode($subject).'?=');
-        Smarty::assign('subject', $subject);
-
-        $smtp->set('To', $user->email);
-        if (!$smtp->send(Smarty::fetch('email-address-reverted.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
-
-            return false;
-        }
-
-        return true;
     }
 }
