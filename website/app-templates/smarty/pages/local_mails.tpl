@@ -29,8 +29,8 @@
             <tr {if !$item.read}class="bold"{/if}>
                 <td>{$key}</td>
                 <td>
-                    <a href="{'local_mail'|alias:sprintf('@mailid=%d', $key)}" target="_blank">
-                        {$item.smtp->Subject|iconv_mime_decode} {fa icon="external-link"}
+                    <a href="{'local_mail'|alias:sprintf('@mailid=%d', $key)}">
+                        {$item.smtp->Subject|iconv_mime_decode}
                     </a>
                 </td>
                 <td>{$item.smtp->From}</td>
