@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\EmailActivation;
+use GeoKrety\Email\EmailChange;
 
 class UserEmailChangeToken extends Base {
     public function beforeRoute($f3) {
@@ -90,38 +91,13 @@ class UserEmailChangeToken extends Base {
         // Notifications
         if ($f3->get('POST.validate') === 'true') {
             \Event::instance()->emit('user.email.changed', $this->token);
-            if ($this->sendEmail($this->token)) {
-                \Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
-            }
+            $smtp = new EmailChange();
+            $smtp->sendEmailChangedNotification($this->token);
+            \Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
         } else {
             \Flash::instance()->addMessage(_('No change has been processed. This token is now revoked.'), 'warning');
         }
 
         $f3->reroute(sprintf('user_details(@userid=%d)', $this->token->user->id));
-    }
-
-    protected function sendEmail(EmailActivation $token) {
-        $subject = GK_EMAIL_SUBJECT_PREFIX.'✉️ '._('Email address changed');
-        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
-        $smtp->set('From', GK_SITE_EMAIL);
-        $smtp->set('Errors-To', GK_SITE_EMAIL);
-        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', '=?utf-8?B?'.base64_encode($subject).'?=');
-        Smarty::assign('subject', $subject);
-
-        $smtp->set('To', $token->previous_email);
-        if (!$smtp->send(Smarty::fetch('email-address-changed-to-old-address.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
-
-            return false;
-        }
-        $smtp->set('To', $token->email);
-        if (!$smtp->send(Smarty::fetch('email-address-changed-to-new-address.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
-
-            return false;
-        }
-
-        return true;
     }
 }

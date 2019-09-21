@@ -13,9 +13,18 @@ abstract class Base extends \SMTP {
         $this->set('Content-Type', 'text/html; charset=UTF-8');
     }
 
-    protected function setTo(User $user) {
-        // TODO what to do if user has no email?
-        $this->set('To', $user->email);
+    protected function setTo($userOrEmail) {
+        if (is_a($userOrEmail, '\GeoKrety\Model\User')) {
+            // TODO what to do if user has no email?
+            $this->setToEmail($userOrEmail->email);
+
+            return;
+        }
+        $this->setToEmail($userOrEmail);
+    }
+
+    private function setToEmail(string $email) {
+        $this->set('To', $email);
     }
 
     protected function setFromDefault() {
