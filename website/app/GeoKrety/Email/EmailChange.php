@@ -4,6 +4,7 @@ namespace GeoKrety\Email;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\EmailActivation;
+use GeoKrety\Model\User;
 
 class EmailChange extends Base {
     protected function setFromDefault() {
@@ -56,6 +57,15 @@ class EmailChange extends Base {
         $this->setTo($token->email);
 
         if (!$this->send(Smarty::fetch('email-address-changed-to-new-address.html'))) {
+            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+        }
+    }
+
+    public function sendEmailRevertedNotification(User $user) {
+        $this->setSubject('📯 '._('Email address reverted'));
+        $this->setTo($user);
+
+        if (!$this->send(Smarty::fetch('email-address-reverted.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
         }
     }

@@ -85,8 +85,8 @@ class UserUpdateEmail extends Base {
             }
             $token->save();
             $smtp->sendEmailChangeNotification($token);
-            \Event::instance()->emit('user.email.change', $token);
             \Flash::instance()->addMessage(sprintf(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])), 'success');
+            \Event::instance()->emit('user.email.change', $token);
         }
 
         $f3->get('DB')->commit();
