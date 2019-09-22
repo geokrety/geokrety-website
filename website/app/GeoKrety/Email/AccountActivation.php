@@ -10,7 +10,7 @@ class AccountActivation extends Base {
     private $message;
 
     protected function setFromDefault() {
-        $this->setFromSupport();
+        $this->set('From', GK_SITE_EMAIL_REGISTRATION);
     }
 
     public function sendActivation(AccountActivationModel $token) {
