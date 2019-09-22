@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
 use GeoKrety\Model\Mail;
+use GeoKrety\Email\UserContact as EmailUserContact;
 
 class UserContact extends BaseCurrentUser {
     public function beforeRoute($f3) {
@@ -12,6 +13,7 @@ class UserContact extends BaseCurrentUser {
 
         $mail = new Mail();
         $this->mail = $mail;
+        $this->mail->from = $this->user;
         Smarty::assign('mail', $this->mail);
     }
 
@@ -20,7 +22,7 @@ class UserContact extends BaseCurrentUser {
     }
 
     public function getPostRedirectUrl() {
-        return sprintf('@user_details(@userid=%d)', $this->userTo->id);
+        return sprintf('@user_details(@userid=%d)', $this->mail->to->id);
     }
 
     public function loadToUser(\Base $f3) {
@@ -30,8 +32,7 @@ class UserContact extends BaseCurrentUser {
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
-        $this->userTo = $user;
-        Smarty::assign('userTo', $this->userTo);
+        $this->mail->to = $user;
     }
 
     protected function _get(\Base $f3) {
@@ -52,8 +53,6 @@ class UserContact extends BaseCurrentUser {
     public function post(\Base $f3) {
         $this->loadToUser($f3);
         $mail = $this->mail;
-        $mail->from = $this->user;
-        $mail->to = $this->userTo;
         $mail->subject = $f3->get('POST.subject');
         $mail->content = $f3->get('POST.message');
         Smarty::assign('mail', $mail);
@@ -77,31 +76,13 @@ class UserContact extends BaseCurrentUser {
                 $this->get($f3);
                 die();
             } else {
-                $this->sendEmail($mail);
+                $smtp = new EmailUserContact();
+                $smtp->sendUserMessage($mail);
                 \Event::instance()->emit('contact.created', $mail);
                 \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to->username), 'success');
             }
         }
 
         $f3->reroute($this->getPostRedirectUrl());
-    }
-
-    protected function sendEmail($mail) {
-        $smtp = new \SMTP(GK_SMTP_HOST, GK_SMTP_PORT, GK_SMTP_SCHEME, GK_SMTP_USER, GK_SMTP_PASSWORD);
-        $smtp->set('From', GK_SITE_EMAIL);
-        $smtp->set('Errors-To', GK_SITE_EMAIL);
-        $smtp->set('Content-Type', 'text/html; charset=UTF-8');
-        $smtp->set('Subject', GK_EMAIL_SUBJECT_PREFIX.sprintf(_('Contact from user %s'), $mail->from->username));
-
-        $smtp->set('To', $mail->to->email);
-        if (!$smtp->send(Smarty::fetch('mails/user_contact.tpl'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending mail.'), 'danger');
-            $this->get($f3);
-            die();
-        }
-        $smtp->set('To', $mail->from->email);
-        if (!$smtp->send(Smarty::fetch('mails/user_contact.tpl'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending mail copy.'), 'danger');
-        }
     }
 }

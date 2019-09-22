@@ -6,8 +6,6 @@ class Config {
     public function __construct() {
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', $_ENV['GK_SITE_BASE_SERVER_URL'] ?? 'https://geokrety.org');
-        define('GK_SITE_EMAIL', $_ENV['GK_SITE_EMAIL'] ?? 'geokrety@gmail.com');
-        define('GK_SITE_EMAIL_SUPPORT', $_ENV['GK_SITE_EMAIL_SUPPORT'] ?? GK_SITE_EMAIL);
         define('GK_SITE_ADMINISTRATORS', explode(',', $_ENV['GK_SITE_ADMINISTRATORS'] ?? '1,26422,35313'));
         define('GK_SITE_TRACKING_CODE_LENGTH', $_ENV['GK_SITE_TRACKING_CODE_LENGTH'] ?? 6);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', $_ENV['GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH'] ?? 42);
@@ -23,6 +21,12 @@ class Config {
         define('GK_SITE_USERNAME_MIN_LENGTH', $_ENV['GK_SITE_USERNAME_MIN_LENGTH'] ?? 3);
         define('GK_SITE_USERNAME_MAX_LENGTH', $_ENV['GK_SITE_USERNAME_MAX_LENGTH'] ?? 80);
         define('GK_SITE_USER_PASSWORD_MIN_LENGTH', $_ENV['GK_SITE_USER_PASSWORD_MIN_LENGTH'] ?? 6);
+
+        // SITE EMAIL From
+        define('GK_SITE_EMAIL', $_ENV['GK_SITE_EMAIL'] ?? 'geokrety@gmail.com');
+        define('GK_SITE_EMAIL_SUPPORT', $_ENV['GK_SITE_EMAIL_SUPPORT'] ?? GK_SITE_EMAIL);
+        define('GK_SITE_EMAIL_REGISTRATION', $_ENV['GK_SITE_EMAIL_REGISTRATION'] ?? GK_SITE_EMAIL);
+        define('GK_SITE_EMAIL_MESSAGE_CENTER', $_ENV['GK_SITE_EMAIL_MESSAGE_CENTER'] ?? GK_SITE_EMAIL);
 
         // SENTRY CONFIG
         define('GK_SENTRY_DSN', $_ENV['GK_SENTRY_DSN'] ?? null);

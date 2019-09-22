@@ -19,7 +19,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">{t}To{/t}</label>
             <div class="col-sm-10">
-                <p class="form-control-static">{t username=$userTo->username lang={$userTo->preferred_language|language}}%1 (speak %2){/t}</p>
+                <p class="form-control-static">{t username=$mail->to->username lang={$mail->to->preferred_language|language}}%1 (speak %2){/t}</p>
             </div>
         </div>
 
