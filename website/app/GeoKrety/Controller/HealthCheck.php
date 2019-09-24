@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\HealthState;
+use GeoKrety\Service\Config;
 
 class HealthCheck extends Base {
     protected $state;
@@ -17,7 +18,7 @@ class HealthCheck extends Base {
     }
 
     private function checkWebsiteConfig() {
-        $websiteConfig = new \GeoKrety\Service\Config();
+        $websiteConfig = Config::instance();
         $validationDetails = null;
         $isConfigOk = $websiteConfig->isValid();
         if (!$isConfigOk) {
