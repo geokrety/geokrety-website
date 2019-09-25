@@ -19,6 +19,9 @@ class EmailChange extends Base {
     }
 
     protected function sendEmailChangeNotificationToOldEmail(EmailActivation $token) {
+        if (is_null($token->user->email)) {
+            return;
+        }
         $this->setSubject('📯 '._('Changing your email address'));
         $this->setTo($token->user);
 
@@ -44,6 +47,9 @@ class EmailChange extends Base {
     }
 
     protected function sendEmailChangedNotificationToOldEmail(EmailActivation $token) {
+        if (is_null($token->previous_email)) {
+            return;
+        }
         $this->setSubject('📯 '._('Email address changed'));
         $this->setTo($token->previous_email);
 
