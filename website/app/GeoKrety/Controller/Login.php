@@ -29,7 +29,7 @@ class Login extends Base {
             $user = new User();
             $user->load(array('username = ?', $f3->get('POST.login')));
             if ($user->valid()) {
-                if (!$user->isAccountValid()) {
+                if (!$user->isAccountValid() && $user->activation) {
                     $smtp = new AccountActivation();
                     $smtp->sendActivationAgainOnLogin($user->activation);
                     $f3->reroute('login');
