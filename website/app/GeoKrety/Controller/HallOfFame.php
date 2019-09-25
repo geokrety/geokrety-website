@@ -6,13 +6,13 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
 
 class HallOfFame extends Base {
-    public function get($f3) {
-        $contributors_ids = array(1, 6262, 35313, 26422, 1789, 497, 30144, 196, 7861, 17135);
-        $contributors = array();
+    const CONTRIBUTORS_IDS = array('filips', 'simor', 'BSLLM', 'kumy', 'Thathanka', 'moose', 'YvesProvence', 'Quinto', 'harrieklomp', 'Lineflyer');
 
-        foreach ($contributors_ids as $userid) {
+    public function get($f3) {
+        $contributors = array();
+        foreach (self::CONTRIBUTORS_IDS as $username) {
             $user = new User();
-            $user->load(array('id = ?', $userid));
+            $user->load(array('username = ?', $username));
             if ($user->valid()) {
                 $contributors[$user->username] = $user;
             }
@@ -147,6 +147,11 @@ class HallOfFame extends Base {
             'icon_width' => '70px',
             'link' => 'https://www.google.com/recaptcha/',
             'desc' => 'Secure captcha (stop bots)',
+        ];
+        $credits[] = [
+            'name' => 'Phinx',
+            'link' => 'https://phinx.org/',
+            'desc' => 'PHP Database Migrations For Everyone',
         ];
         Smarty::assign('app_credits', $credits);
 

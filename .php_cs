@@ -6,6 +6,7 @@ if (class_exists('PhpCsFixer\Finder')) {
         ->exclude('website/old/')
         ->exclude('website/vendor/')
         ->exclude('vendor/')
+        ->exclude('db/migrations/')
         ->in(__DIR__)
     ;
 
@@ -30,6 +31,7 @@ if (class_exists('PhpCsFixer\Finder')) {
         ->exclude('website/old/')
         ->exclude('website/vendor/')
         ->exclude('vendor/')
+        ->exclude('db/migrations/')
         ->in('website/')
     ;
 

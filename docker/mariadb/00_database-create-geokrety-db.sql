@@ -1,5 +1,4 @@
--- Adminer 4.7.1 MySQL dump
-USE `geokrety-db`;  -- tofix: find a way to avoid this line in local Makefile
+-- Adminer 4.7.3 MySQL dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -8,345 +7,339 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-CREATE TABLE `captcha_codes` (
-  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `namespace` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code_display` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created` int(11) NOT NULL,
-  `audio_data` mediumblob,
-  PRIMARY KEY (`id`,`namespace`),
-  KEY `created` (`created`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `gk-account-activation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` int(11) unsigned NOT NULL,
+  `used` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=unused 1=validated 2=expired',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `used_on_datetime` datetime DEFAULT NULL,
+  `requesting_ip` varchar(46) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `validating_ip` varchar(46) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user` (`user`),
+  KEY `used_created_on_datetime` (`used`,`created_on_datetime`),
+  CONSTRAINT `gk-account-activation_ibfk_1` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 
-CREATE TABLE `gk-aktywnekody` (
-  `kod` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-aktywnemaile` (
-  `kod` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `userid` bigint(20) NOT NULL,
-  `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `done` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '1=confirmed',
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-aktywnesesje` (
-  `sessid` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `userid` bigint(20) NOT NULL,
-  `user` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember` binary(1) NOT NULL DEFAULT '0',
-  KEY `userid` (`userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `gk-activation-codes` (
+  `token` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 
 CREATE TABLE `gk-badges` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userid` bigint(20) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `desc` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `holder` int(11) unsigned NOT NULL,
+  `description` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filename` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `awarded_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `timestamp` (`timestamp`),
-  KEY `userid` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='badges for the users';
+  KEY `timestamp` (`awarded_on_datetime`),
+  KEY `userid` (`holder`),
+  CONSTRAINT `gk-badges_ibfk_1` FOREIGN KEY (`holder`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT COMMENT='badges for the users';
 
 
-CREATE TABLE `gk-errory` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `userid` int(10) unsigned NOT NULL,
-  `ip` varchar(46) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `severity` int(10) NOT NULL DEFAULT '0',
-  `date` datetime NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+CREATE TABLE `gk-email-activation` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `token` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revert_token` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` int(11) unsigned NOT NULL,
+  `previous_email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Store the previous in case of needed rollback',
+  `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `used` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=unused 1=validated 2=refused 3=expired',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `used_on_datetime` datetime DEFAULT NULL,
+  `reverted_on_datetime` datetime DEFAULT NULL,
+  `requesting_ip` varchar(46) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updating_ip` varchar(46) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reverting_ip` varchar(46) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `date` (`date`),
-  KEY `severity` (`severity`),
-  KEY `userid` (`userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `user` (`user`),
+  KEY `token` (`token`),
+  KEY `used_created_on_datetime_token` (`used`,`created_on_datetime`,`token`),
+  KEY `used_used_on_datetime_revert_token` (`used`,`used_on_datetime`,`revert_token`),
+  KEY `used_created_on_datetime_used_on_datetime` (`used`,`created_on_datetime`,`used_on_datetime`),
+  CONSTRAINT `gk-email-activation_ibfk_1` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `gk-email-activation_ibfk_2` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 
 CREATE TABLE `gk-geokrety` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nr` varchar(9) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nazwa` varchar(75) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `opis` mediumtext COLLATE utf8mb4_unicode_ci,
-  `owner` int(10) unsigned DEFAULT NULL,
-  `data` datetime DEFAULT NULL,
-  `droga` int(10) unsigned NOT NULL,
-  `skrzynki` smallint(5) unsigned NOT NULL,
-  `zdjecia` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `ost_pozycja_id` int(10) unsigned NOT NULL,
-  `ost_log_id` int(10) unsigned NOT NULL,
-  `hands_of` int(10) unsigned DEFAULT NULL COMMENT 'In the hands of user',
-  `missing` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `typ` enum('0','1','2','3','4') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatarid` int(10) unsigned NOT NULL,
-  `timestamp_oc` datetime NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `gkid` int(11) unsigned NOT NULL COMMENT 'The real GK id : https://stackoverflow.com/a/33791018/944936',
+  `tracking_code` varchar(9) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mission` mediumtext COLLATE utf8mb4_unicode_ci,
+  `owner` int(11) unsigned DEFAULT NULL,
+  `distance` int(10) unsigned NOT NULL DEFAULT '0',
+  `caches_count` smallint(6) NOT NULL DEFAULT '0',
+  `pictures_count` smallint(6) NOT NULL DEFAULT '0',
+  `last_position` int(11) unsigned DEFAULT NULL,
+  `last_log` int(11) unsigned DEFAULT NULL,
+  `holder` int(11) unsigned DEFAULT NULL COMMENT 'In the hands of user',
+  `missing` tinyint(4) NOT NULL DEFAULT '0',
+  `type` enum('0','1','2','3','4') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` int(10) unsigned DEFAULT NULL,
+  `timestamp_oc` datetime NOT NULL COMMENT 'Unused?',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`nr`) USING BTREE,
+  UNIQUE KEY `id` (`tracking_code`),
   KEY `owner` (`owner`),
-  KEY `nr` (`nr`),
-  KEY `ost_pozycja_id` (`ost_pozycja_id`),
-  KEY `avatarid` (`avatarid`),
-  KEY `ost_log_id` (`ost_log_id`),
-  KEY `hands_of_index` (`hands_of`),
-  KEY `id_typ` (`typ`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `nr` (`tracking_code`),
+  KEY `ost_pozycja_id` (`last_position`),
+  KEY `avatarid` (`avatar`),
+  KEY `ost_log_id` (`last_log`),
+  KEY `hands_of_index` (`holder`),
+  KEY `id_typ` (`type`),
+  CONSTRAINT `gk-geokrety_ibfk_1` FOREIGN KEY (`holder`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-geokrety_ibfk_2` FOREIGN KEY (`owner`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 
 CREATE TABLE `gk-geokrety-rating` (
-  `id` bigint(20) NOT NULL COMMENT 'id kreta',
-  `userid` bigint(20) NOT NULL COMMENT 'id usera',
-  `rate` float NOT NULL DEFAULT '0' COMMENT 'single rating (number of stars)',
-  PRIMARY KEY (`id`,`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='GK ratings';
-
-
-CREATE TABLE `gk-grupy` (
-  `groupid` bigint(20) NOT NULL,
-  `kretid` bigint(20) NOT NULL,
-  `joined` date DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='wchich kret belongs to which group';
-
-
-CREATE TABLE `gk-grupy-desc` (
-  `groupid` bigint(20) NOT NULL AUTO_INCREMENT,
-  `creator` bigint(20) NOT NULL,
-  `created` datetime DEFAULT NULL,
-  `private` binary(1) NOT NULL,
-  `desc` blob NOT NULL,
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  UNIQUE KEY `groupid` (`groupid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='descriptions of groups';
-
-
-CREATE TABLE `gk-licznik` (
-  `witryna` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `licznik` bigint(20) NOT NULL,
-  `od` datetime NOT NULL,
-  PRIMARY KEY (`witryna`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-maile` (
-  `id_maila` bigint(20) NOT NULL AUTO_INCREMENT,
-  `random_string` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `from` bigint(20) NOT NULL,
-  `to` bigint(20) NOT NULL,
-  `temat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tresc` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `ip` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  UNIQUE KEY `id_maila` (`id_maila`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-miasta` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(130) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `asciiname` varchar(130) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alternatenames` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lat` double NOT NULL,
-  `lon` double NOT NULL,
-  `country` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-news` (
-  `news_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `czas_postu` datetime NOT NULL,
-  `tytul` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tresc` longtext COLLATE utf8mb4_unicode_ci,
-  `who` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `userid` int(10) NOT NULL,
-  `komentarze` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `ostatni_komentarz` datetime DEFAULT NULL,
-  PRIMARY KEY (`news_id`),
-  KEY `date` (`date`),
-  KEY `userid` (`userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-news-comments` (
-  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `news_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `date` datetime NOT NULL,
-  `comment` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `news_id` (`news_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-news-comments-access` (
-  `news_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `read` datetime DEFAULT NULL,
-  `post` datetime DEFAULT NULL,
-  `subscribed` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`news_id`,`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-obrazki` (
-  `typ` tinyint(3) unsigned DEFAULT NULL,
-  `obrazekid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id` int(10) unsigned NOT NULL,
-  `id_kreta` int(10) unsigned NOT NULL,
-  `user` int(10) unsigned NOT NULL,
-  `plik` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `opis` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  UNIQUE KEY `obrazekid` (`obrazekid`),
-  KEY `idkreta_typ` (`id_kreta`,`typ`),
-  KEY `id` (`id`),
-  KEY `id_kreta` (`id_kreta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-obserwable` (
-  `userid` int(10) unsigned NOT NULL,
-  `id` int(10) unsigned NOT NULL,
-  KEY `userid` (`userid`),
-  KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-ostatnieruchy` (
-  `ruch_id` int(10) unsigned DEFAULT '0',
-  `id` int(10) unsigned DEFAULT NULL,
-  `lat` double(8,5) DEFAULT NULL,
-  `lon` double(8,5) DEFAULT NULL,
-  `alt` int(5) DEFAULT '-32768',
-  `country` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `droga` int(10) unsigned DEFAULT NULL,
-  `waypoint` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data` datetime DEFAULT NULL,
-  `data_dodania` datetime DEFAULT NULL,
-  `user` int(10) unsigned DEFAULT '0',
-  `koment` varchar(5120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `zdjecia` tinyint(3) unsigned DEFAULT '0',
-  `komentarze` smallint(5) unsigned DEFAULT '0',
-  `logtype` enum('0','1','2','3','4','5','6') COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
-  `username` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `app` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT 'www' COMMENT 'source of the log',
-  `app_ver` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'apploction version/codename'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-owner-codes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `kret_id` int(10) unsigned NOT NULL,
-  `code` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `generated_date` datetime NOT NULL,
-  `claimed_date` datetime NOT NULL,
-  `user_id` int(10) NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `geokret` int(11) unsigned NOT NULL COMMENT 'id kreta',
+  `user` int(11) unsigned NOT NULL COMMENT 'id usera',
+  `rate` double NOT NULL DEFAULT '0' COMMENT 'single rating (number of stars)',
+  `rated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `kret_id` (`kret_id`),
-  KEY `code` (`code`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-CREATE TABLE `gk-races` (
-  `raceid` bigint(20) NOT NULL AUTO_INCREMENT,
-  `created` datetime NOT NULL COMMENT 'Creation date',
-  `raceOwner` bigint(20) NOT NULL,
-  `private` binary(1) NOT NULL DEFAULT '0' COMMENT '0 = public, 1 = private',
-  `haslo` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'password to join the race',
-  `raceTitle` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `racestart` date NOT NULL COMMENT 'Race start date',
-  `raceend` date NOT NULL,
-  `opis` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `raceOpts` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Type of race',
-  `wpt` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `targetlat` double DEFAULT NULL,
-  `targetlon` double DEFAULT NULL,
-  `targetDist` bigint(20) DEFAULT NULL COMMENT 'target distance',
-  `targetCaches` bigint(20) DEFAULT NULL COMMENT 'targeted number of caches',
-  `status` int(1) NOT NULL COMMENT 'race status. 0 = initialized, 1 = persist, 2 = finite, 3 = finished but logs flow down',
-  PRIMARY KEY (`raceid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='race definitions';
-
-
-CREATE TABLE `gk-races-krety` (
-  `raceGkId` bigint(20) NOT NULL AUTO_INCREMENT,
-  `raceid` bigint(20) NOT NULL,
-  `geokretid` bigint(20) NOT NULL,
-  `initDist` bigint(20) NOT NULL COMMENT 'początkowy dystans kreta',
-  `initCaches` bigint(20) NOT NULL COMMENT 'początkowa liczba zaliczonych keszy kreta',
-  `distToDest` float DEFAULT NULL COMMENT 'dystans do celu',
-  `joined` datetime NOT NULL,
-  `finished` datetime DEFAULT NULL,
-  `finishDist` bigint(20) NOT NULL COMMENT 'dist na chwilę zakończenia rajdu',
-  `finishCaches` bigint(20) NOT NULL COMMENT 'caches na chwilę zakończenia rajdu',
-  `finishLat` double DEFAULT NULL,
-  `finishLon` double DEFAULT NULL,
-  UNIQUE KEY `raceGkId` (`raceGkId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='uczestnicy rajdów';
-
-
-CREATE TABLE `gk-ruchy` (
-  `ruch_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id` int(10) unsigned NOT NULL,
-  `lat` double(8,5) DEFAULT NULL,
-  `lon` double(8,5) DEFAULT NULL,
-  `alt` int(5) DEFAULT '-32768',
-  `country` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `droga` int(10) unsigned NOT NULL DEFAULT '0',
-  `waypoint` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data` datetime DEFAULT NULL,
-  `data_dodania` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user` int(10) unsigned DEFAULT '0',
-  `koment` text COLLATE utf8mb4_unicode_ci,
-  `zdjecia` tinyint(3) unsigned DEFAULT '0',
-  `komentarze` smallint(5) unsigned DEFAULT '0',
-  `logtype` enum('0','1','2','3','4','5','6') COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
-  `username` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `app` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'source of the log',
-  `app_ver` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'apploction version/codename',
-  PRIMARY KEY (`ruch_id`),
-  KEY `id_2` (`id`),
-  KEY `waypoint` (`waypoint`),
+  KEY `geokret` (`geokret`),
   KEY `user` (`user`),
+  CONSTRAINT `gk-geokrety-rating_ibfk_1` FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-geokrety-rating_ibfk_2` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT COMMENT='GK ratings';
+
+
+CREATE TABLE `gk-mail` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `token` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `from` int(11) unsigned NOT NULL,
+  `to` int(11) unsigned NOT NULL,
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sent_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(46) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_maila` (`id`),
+  KEY `from` (`from`),
+  KEY `to` (`to`),
+  CONSTRAINT `gk-mail_ibfk_1` FOREIGN KEY (`from`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-mail_ibfk_2` FOREIGN KEY (`to`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+
+CREATE TABLE `gk-move-comments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `move` int(11) unsigned NOT NULL,
+  `geokret` int(11) unsigned NOT NULL,
+  `author` int(11) unsigned NOT NULL,
+  `content` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` tinyint(4) NOT NULL COMMENT '0=comment, 1=missing',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `kret_id` (`geokret`),
+  KEY `user_id` (`author`),
+  KEY `ruch_id` (`move`),
+  CONSTRAINT `gk-move-comments_ibfk_1` FOREIGN KEY (`move`) REFERENCES `gk-moves` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `gk-move-comments_ibfk_2` FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `gk-move-comments_ibfk_3` FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+
+CREATE TABLE `gk-moves` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `geokret` int(11) unsigned NOT NULL,
+  `lat` double DEFAULT NULL,
+  `lon` double DEFAULT NULL,
+  `alt` int(5) DEFAULT '-32768',
+  `country` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'ISO 3166-1 https://fr.wikipedia.org/wiki/ISO_3166-1',
+  `distance` int(10) unsigned DEFAULT NULL,
+  `waypoint` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author` int(11) unsigned DEFAULT '0',
+  `comment` varchar(5120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pictures_count` tinyint(4) DEFAULT '0',
+  `comments_count` smallint(6) DEFAULT '0',
+  `logtype` enum('0','1','2','3','4','5','6') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip',
+  `username` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `app` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'source of the log',
+  `app_ver` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'application version/codename',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `moved_on_datetime` datetime NOT NULL COMMENT 'The move as configured by user',
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_2` (`geokret`),
+  KEY `waypoint` (`waypoint`),
+  KEY `user` (`author`),
   KEY `lat` (`lat`),
   KEY `lon` (`lon`),
   KEY `logtype` (`logtype`),
-  KEY `data` (`data`),
-  KEY `data_dodania` (`data_dodania`),
-  KEY `timestamp` (`timestamp`),
-  KEY `alt` (`alt`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `data` (`created_on_datetime`),
+  KEY `data_dodania` (`moved_on_datetime`),
+  KEY `timestamp` (`updated_on_datetime`),
+  KEY `alt` (`alt`),
+  CONSTRAINT `gk-moves_ibfk_1` FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-moves_ibfk_2` FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 
-CREATE TABLE `gk-ruchy-comments` (
-  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ruch_id` int(10) unsigned NOT NULL,
-  `kret_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL COMMENT 'id autora postu',
-  `data_dodania` datetime NOT NULL,
-  `comment` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` tinyint(3) unsigned NOT NULL COMMENT '0-sam wpis, 1-brak kreta',
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`comment_id`),
-  KEY `kret_id` (`kret_id`),
-  KEY `user_id` (`user_id`),
-  KEY `ruch_id` (`ruch_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `gk-news` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci,
+  `author_name` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author` int(11) unsigned DEFAULT NULL,
+  `comments_count` smallint(6) NOT NULL DEFAULT '0',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_commented_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `date` (`created_on_datetime`),
+  KEY `userid` (`author`),
+  CONSTRAINT `gk-news_ibfk_1` FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-news_ibfk_2` FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+
+CREATE TABLE `gk-news-comments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `news` int(11) unsigned NOT NULL,
+  `author` int(11) unsigned NOT NULL,
+  `content` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` tinyint(4) NOT NULL,
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `news` (`news`),
+  KEY `author` (`author`),
+  CONSTRAINT `gk-news-comments_ibfk_1` FOREIGN KEY (`news`) REFERENCES `gk-news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-news-comments_ibfk_2` FOREIGN KEY (`news`) REFERENCES `gk-news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-news-comments_ibfk_3` FOREIGN KEY (`author`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+
+CREATE TABLE `gk-news-comments-access` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `news` int(11) unsigned NOT NULL,
+  `user` int(11) unsigned NOT NULL,
+  `last_read_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_post_datetime` datetime DEFAULT NULL,
+  `subscribed` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`news`,`user`),
+  UNIQUE KEY `id` (`id`),
+  KEY `user` (`user`),
+  CONSTRAINT `gk-news-comments-access_ibfk_1` FOREIGN KEY (`news`) REFERENCES `gk-news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-news-comments-access_ibfk_2` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+
+CREATE TABLE `gk-owner-codes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `geokret` int(11) unsigned NOT NULL,
+  `token` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `generated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `claimed_on_datetime` datetime DEFAULT NULL,
+  `user` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `kret_id` (`geokret`),
+  KEY `code` (`token`),
+  KEY `user` (`user`),
+  CONSTRAINT `gk-owner-codes_ibfk_1` FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-owner-codes_ibfk_2` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-owner-codes_ibfk_3` FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `gk-owner-codes_ibfk_4` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+
+CREATE TABLE `gk-password-tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` int(11) unsigned NOT NULL,
+  `used` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=unused 1=used',
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `used_on_datetime` datetime DEFAULT NULL,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `requesting_ip` varchar(46) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user` (`user`),
+  KEY `token_used` (`token`,`used`),
+  KEY `created_on_datetime` (`created_on_datetime`),
+  CONSTRAINT `gk-password-tokens_ibfk_1` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT COMMENT='Retrieve user password';
+
+
+CREATE TABLE `gk-pictures` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `typ` tinyint(4) DEFAULT NULL,
+  `move` int(11) unsigned DEFAULT NULL,
+  `geokret` int(11) unsigned DEFAULT NULL,
+  `user` int(11) unsigned DEFAULT NULL,
+  `filename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `caption` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `obrazekid` (`id`),
+  KEY `idkreta_typ` (`geokret`,`typ`),
+  KEY `id` (`move`),
+  KEY `id_kreta` (`geokret`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+
+CREATE TABLE `gk-races` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation date',
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `organizer` int(11) unsigned NOT NULL,
+  `private` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 = public, 1 = private',
+  `password` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'password to join the race',
+  `title` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_on_datetime` datetime DEFAULT NULL COMMENT 'Race start date',
+  `end_on_datetime` datetime DEFAULT NULL COMMENT 'Race end date',
+  `type` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Type of race',
+  `waypoint` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target_lat` double DEFAULT NULL,
+  `target_lon` double DEFAULT NULL,
+  `target_dist` int(11) DEFAULT NULL COMMENT 'target distance',
+  `target_caches` int(11) DEFAULT NULL COMMENT 'targeted number of caches',
+  `status` int(1) NOT NULL COMMENT 'race status. 0 = initialized, 1 = persist, 2 = finite, 3 = finished but logs flow down',
+  PRIMARY KEY (`id`),
+  KEY `organizer` (`organizer`),
+  CONSTRAINT `gk-races_ibfk_1` FOREIGN KEY (`organizer`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT COMMENT='race definitions';
+
+
+CREATE TABLE `gk-races-krety` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `race` int(11) NOT NULL,
+  `geokret` int(11) unsigned NOT NULL,
+  `initial_distance` int(11) NOT NULL,
+  `initial_caches_count` int(11) NOT NULL,
+  `distance_to_destination` double DEFAULT NULL,
+  `joined_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `finished_on_datetime` datetime DEFAULT NULL,
+  `finish_distance` int(11) NOT NULL,
+  `finish_caches_count` int(11) NOT NULL,
+  `finish_lat` double DEFAULT NULL,
+  `finish_lon` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `raceGkId` (`id`),
+  KEY `race` (`race`),
+  KEY `geokret` (`geokret`),
+  CONSTRAINT `gk-races-krety_ibfk_1` FOREIGN KEY (`race`) REFERENCES `gk-races` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-races-krety_ibfk_2` FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT COMMENT='uczestnicy rajdów';
 
 
 CREATE TABLE `gk-statystyki-dzienne` (
@@ -361,70 +354,104 @@ CREATE TABLE `gk-statystyki-dzienne` (
   `users_` int(11) NOT NULL,
   `ruchow` int(11) NOT NULL,
   `ruchow_` int(11) NOT NULL,
+  PRIMARY KEY (`data`),
   UNIQUE KEY `data` (`data`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='informacje nt. przyrostu zmiennych dzień po dniu';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT COMMENT='informacje nt. przyrostu zmiennych dzień po dniu';
 
 
 CREATE TABLE `gk-users` (
-  `userid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci DEFAULT NULL,
-  `haslo` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `haslo2` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL,
+  `old_password` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'This hash is not used anymore',
+  `password` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `account_valid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=unconfirmed 1=confirmed',
   `email_invalid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '* 0 ok * 1 blocked * 2 autoresponder',
-  `joined` datetime DEFAULT NULL,
-  `wysylacmaile` binary(1) NOT NULL DEFAULT '1',
-  `ip` varchar(46) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `lang` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lat` double(8,5) DEFAULT NULL,
-  `lon` double(8,5) DEFAULT NULL,
-  `promien` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `country` char(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `godzina` int(11) NOT NULL,
-  `statpic` tinyint(1) DEFAULT '1',
-  `ostatni_mail` datetime DEFAULT NULL,
-  `ostatni_login` datetime DEFAULT NULL,
-  `secid` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'tajny klucz usera',
-  PRIMARY KEY (`userid`),
-  UNIQUE KEY `user` (`user`),
+  `joined_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `daily_mails` tinyint(1) NOT NULL DEFAULT '1',
+  `registration_ip` varchar(46) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preferred_language` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `home_latitude` double DEFAULT NULL,
+  `home_longitude` double DEFAULT NULL,
+  `observation_area` smallint(6) DEFAULT NULL,
+  `home_country` char(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `daily_mails_hour` int(11) NOT NULL,
+  `statpic_template_id` tinyint(1) NOT NULL DEFAULT '1',
+  `last_mail_datetime` datetime DEFAULT NULL,
+  `last_login_datetime` datetime DEFAULT NULL,
+  `terms_of_use_datetime` datetime NOT NULL COMMENT 'Acceptation date',
+  `secid` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'connect by other applications',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user` (`username`),
   KEY `secid` (`secid`),
-  KEY `ostatni_login` (`ostatni_login`),
-  KEY `email_invalid` (`email_invalid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  KEY `ostatni_login` (`last_login_datetime`),
+  KEY `email_invalid` (`email_invalid`),
+  KEY `email` (`email`),
+  KEY `username` (`username`),
+  KEY `username_email` (`username`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 
 CREATE TABLE `gk-wartosci` (
   `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` float NOT NULL,
+  PRIMARY KEY (`name`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+INSERT INTO `gk-wartosci` (`name`, `value`) VALUES
+('droga_mediana',	0),
+('droga_srednia',	0),
+('stat_droga',	0),
+('stat_droga_ksiezyc',	0),
+('stat_droga_obwod',	0),
+('stat_droga_slonce',	0),
+('stat_geokretow',	0),
+('stat_geokretow_zakopanych',	0),
+('stat_ruchow',	0),
+('stat_userow',	0);
+
+CREATE TABLE `gk-watched` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) unsigned NOT NULL,
+  `geokret` int(11) unsigned NOT NULL,
+  `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `userid` (`user`),
+  KEY `id` (`geokret`),
+  CONSTRAINT `gk-watched_ibfk_1` FOREIGN KEY (`user`) REFERENCES `gk-users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `gk-watched_ibfk_2` FOREIGN KEY (`geokret`) REFERENCES `gk-geokrety` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 
 CREATE TABLE `gk-waypointy` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `waypoint` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `lat` double(8,5) DEFAULT NULL,
-  `lon` double(8,5) DEFAULT NULL,
+  `lat` double DEFAULT NULL,
+  `lon` double DEFAULT NULL,
   `alt` int(5) NOT NULL DEFAULT '-32768',
   `country` char(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'country code as ISO 3166-1 alpha-2',
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `owner` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `typ` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `kraj` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'full English country name',
+  `type` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_name` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'full English country name',
   `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`waypoint`),
+  `added_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `waypoint` (`waypoint`),
-  KEY `name` (`name`(191))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `waypoint_2` (`waypoint`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 
 CREATE TABLE `gk-waypointy-country` (
   `kraj` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`kraj`),
   UNIQUE KEY `unique_kraj` (`kraj`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 INSERT INTO `gk-waypointy-country` (`kraj`, `country`) VALUES
 ('Afghanistan',	'Afghanistan'),
@@ -621,27 +648,18 @@ INSERT INTO `gk-waypointy-country` (`kraj`, `country`) VALUES
 ('Zjednoczone Emiraty Arabskie',	'United Arab Emirates'),
 ('Zypern',	'Cyprus');
 
-CREATE TABLE `gk-waypointy-gc` (
-  `wpt` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lat` float NOT NULL,
-  `lon` float NOT NULL,
-  `country` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alt` float NOT NULL,
-  UNIQUE KEY `wpt` (`wpt`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='GC.com waypoints';
-
-
 CREATE TABLE `gk-waypointy-sync` (
   `service_id` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_update` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Last synchronization time for GC services';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT COMMENT='Last synchronization time for GC services';
 
 
 CREATE TABLE `gk-waypointy-type` (
   `typ` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cache_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`typ`),
   UNIQUE KEY `unique_typ` (`typ`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 INSERT INTO `gk-waypointy-type` (`typ`, `cache_type`) VALUES
 ('beweglicher Cache',	'Mobile'),
@@ -696,4 +714,16 @@ INSERT INTO `gk-waypointy-type` (`typ`, `cache_type`) VALUES
 ('Wirtualna',	'Virtual'),
 ('Wydarzenie',	'Event');
 
--- 2019-07-21 08:17:51
+CREATE TABLE `phinxlog` (
+  `version` bigint(20) NOT NULL,
+  `migration_name` varchar(100) DEFAULT NULL,
+  `start_time` timestamp NULL DEFAULT NULL,
+  `end_time` timestamp NULL DEFAULT NULL,
+  `breakpoint` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `phinxlog` (`version`, `migration_name`, `start_time`, `end_time`, `breakpoint`) VALUES
+(20190925191013,	NULL,	NULL,	NULL,	0);
+
+-- 2019-09-25 20:36:36
