@@ -35,7 +35,7 @@ class EmailActivation extends Base {
         ),
         'previous_email' => array(
             'type' => Schema::DT_VARCHAR128,
-            'filter' => 'trim',
+            'nullable' => true,
             'validate' => 'required|valid_email',
             'validate_depends' => [
                 'used' => ['validate', 'email_activation_require_update'],
