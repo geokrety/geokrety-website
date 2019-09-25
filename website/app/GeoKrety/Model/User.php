@@ -44,7 +44,8 @@ class User extends Base {
         'preferred_language' => array(
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'required|language_supported',
-            'nullable' => true,
+            'default' => 'en',
+            'nullable' => false,
         ),
         'joined_on_datetime' => array(
             'type' => Schema::DT_DATETIME,
