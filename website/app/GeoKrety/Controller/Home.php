@@ -13,6 +13,7 @@ class Home extends Base {
         // Load statistics
         $siteStats = new SiteStats();
         $result = $siteStats->find(array('name LIKE ?', 'stat_%'));
+        $statistics = array();
         foreach ($result ?: [] as $item) {
             $statistics[$item['name']] = $item['value'];
         }
