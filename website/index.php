@@ -1,20 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
-$f3 = \Base::instance();
-$f3->config('app/config.ini');
-$f3->config('app/routes.ini');
-$f3->config('app/authorizations.ini');
-
-// Create GK_* consts from environments
-new \GeoKrety\Service\Config();
-
-\Sentry\init(['dsn' => GK_SENTRY_DSN, 'environment' => GK_SENTRY_ENV, 'release' => GK_APP_VERSION]);
-
-$f3->set('UI', GK_F3_UI);
-$f3->set('TMP', GK_F3_TMP);
-$f3->set('CACHE', GK_F3_CACHE);
-$f3->set('DEBUG', GK_F3_DEBUG);
+require 'init-f3.php';
 
 // Start Session
 new Session();

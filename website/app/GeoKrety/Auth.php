@@ -19,4 +19,10 @@ class Auth extends \Auth {
 
         return false;
     }
+
+    public static function hash_password($value) {
+        $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
+
+        return $hasher->HashPassword($value.GK_PASSWORD_HASH.GK_PASSWORD_SEED);
+    }
 }

@@ -76,6 +76,10 @@ class Config extends \Prefab {
         define('GK_SMARTY_COMPILE_DIR', $_ENV['GK_SMARTY_COMPILE_DIR'] ?? '/tmp/smarty/compile/');
         define('GK_SMARTY_CACHE_DIR', $_ENV['GK_SMARTY_CACHE_DIR'] ?? '/tmp/smarty/cache/');
 
+        // Phinx
+        define('GK_DB_MIGRATIONS_DIR', $_ENV['GK_DB_MIGRATIONS_DIR'] ?? '../db/migrations/');
+        define('GK_DB_SEEDS_DIR', $_ENV['GK_DB_SEEDS_DIR'] ?? '../db/seeds/');
+
         // HTMLPurifier
         define('GK_HTMLPURIFIER_CACHE_DIR', $_ENV['GK_HTMLPURIFIER_CACHE_DIR'] ?? '/tmp/htmlpurifier/cache/');
 

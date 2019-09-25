@@ -143,7 +143,7 @@ ALTER TABLE `gk-ruchy` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_
 # Special collation for username, as we have users having the same username, one in ascii and the other with polish characters. Maćko / Macko ; Pająki / Pajaki …
 ```sql
 ALTER TABLE `gk-users`
-CHANGE `user` `user` varchar(80) COLLATE 'utf8mb4_polish_ci' NOT NULL AFTER `userid`,
+CHANGE `user` `user` varchar(80) COLLATE 'utf8mb4_bin' NOT NULL AFTER `userid`,
 CHANGE `haslo` `haslo` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `user`,
 CHANGE `haslo2` `haslo2` varchar(120) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `haslo`,
 CHANGE `email` `email` varchar(150) COLLATE 'utf8mb4_unicode_ci' NOT NULL DEFAULT '' AFTER `haslo2`,

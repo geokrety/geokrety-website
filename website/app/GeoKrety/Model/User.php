@@ -3,7 +3,6 @@
 namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
-use Hautelook\Phpass\PasswordHash;
 
 class User extends Base {
     use \Validation\Traits\CortexTrait;
@@ -150,9 +149,7 @@ class User extends Base {
     );
 
     public function set_password($value) {
-        $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
-
-        return $hasher->HashPassword($value.GK_PASSWORD_HASH.GK_PASSWORD_SEED);
+        return \GeoKrety\Auth::hash_password($value);
     }
 
     public function get_username($value) {
