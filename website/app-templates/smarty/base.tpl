@@ -6,7 +6,6 @@
     <div class="container">
         {include file='banners/is_not_prod.tpl'}
         {include file='banners/contribute.tpl'}
-        {*include file='banners/debug.tpl'*}
         {include file='banners/user_email_missing.tpl'}
         {include file='banners/user_email_invalid.tpl'}
         {include file='banners/user_email_pending_validation.tpl'}
