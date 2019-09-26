@@ -56,11 +56,11 @@ jobs:
           # Unit tests with PHPUnit ; output to stdr to prevent session issues https://stackoverflow.com/a/38045422/944936
           - vendor/bin/phpunit --stderr
         - stage: deploy
-          if: branch IN (master, boly38, feature/new-theme)
+          if: branch IN (master, boly38, feature/new-theme) AND type = 'push'
           script:
           - scripts/export-translations-to-crowdin.sh
         - stage: qaTests
-          if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN)
+          if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
           script:
           # TRAVIS_QA_TOKEN from https://travis-ci.org/geokrety/geokrety-website/settings
           # TRAVIS_BRANCH   from https://docs.travis-ci.com/user/environment-variables/
