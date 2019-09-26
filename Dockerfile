@@ -4,7 +4,7 @@ FROM ${BASE_IMAGE}:${BASE_TAG}
 ARG GIT_COMMIT='undef'
 ENV GIT_COMMIT=$GIT_COMMIT
 
-CMD ["bash", "-c", "cd /var/www/geokrety/website; ./vendor/bin/phinx-migrations migrate && php index.php /cli/smarty/compile-all-templates && php index.php /cli/gettext/build-translations && exec apache2-foreground"]
+CMD ["bash", "-c", "cd /var/www/geokrety; ./vendor/bin/phinx-migrations migrate && cd /var/www/geokrety/website && php index.php /cli/smarty/compile-all-templates && php index.php /cli/gettext/build-translations && exec apache2-foreground"]
 
 WORKDIR /var/www/geokrety/website
 HEALTHCHECK --start-period=60s --interval=30s --timeout=5s --retries=3 \

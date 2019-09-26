@@ -1,5 +1,7 @@
 <?php
 
+chdir('website');
+
 // Framework bootstrap code here
 require 'init-f3.php';
 
