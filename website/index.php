@@ -5,9 +5,6 @@ require 'init-f3.php';
 // Start Session
 new Session();
 
-// // Falsum
-// Falsum\Run::handler();
-
 // Local Mail
 if (is_null(GK_SMTP_HOST)) {
     $f3->route('GET @local_mail_list: /dev/mail', '\GeoKrety\Controller\LocalMail->list');
