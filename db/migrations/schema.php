@@ -205,7 +205,7 @@ return array (
           'NUMERIC_SCALE' => NULL,
           'DATETIME_PRECISION' => NULL,
           'CHARACTER_SET_NAME' => 'utf8mb4',
-          'COLLATION_NAME' => 'utf8mb4_polish_ci',
+          'COLLATION_NAME' => 'utf8mb4_bin',
           'COLUMN_TYPE' => 'varchar(80)',
           'COLUMN_KEY' => 'UNI',
           'EXTRA' => '',
