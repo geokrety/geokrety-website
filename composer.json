@@ -8,20 +8,43 @@
             "php": "7.3"
         }
     },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "require": {
-        "friendsofphp/php-cs-fixer": "^2.15",
-        "phpunit/phpunit": "5.7.27",
-        "smarty-gettext/tsmarty2c": "^0.1.2"
+        "torann/json-ld": "0.0.14",
+        "google/recaptcha": "^1.2",
+        "nesbot/carbon": "^2",
+        "benhall14/php-pagination": "dev-master",
+        "smarty/smarty": "^3.1",
+        "smarty-gettext/smarty-gettext": "~1.5.0",
+        "sokil/php-isocodes": "^2.2",
+        "ezyang/htmlpurifier": "^4.10",
+        "league/geotools": "@stable",
+        "erusev/parsedown": "1.8.*",
+        "bcosca/fatfree-core": "^3.6",
+        "ikkez/f3-flash": "^1.0",
+        "ikkez/f3-cortex": "^1.6",
+        "hautelook/phpass": "^1.1",
+        "ikkez/f3-pagination": "^1.4",
+        "xfra35/f3-access": "^1.0",
+        "ikkez/f3-falsum": "^2.8",
+        "ikkez/f3-validation-engine": "^1.5",
+        "ikkez/f3-events": "^0.9.0",
+        "xfra35/f3-multilang": "^1.2",
+        "sentry/sdk": "^2.0",
+        "pear/services_libravatar": "^0.2.4",
+        "robmorgan/phinx": "^0.11.1"
     },
     "autoload": {
         "classmap": [
             "tests/lib/"
-        ],
-        "files": [
-            "website/vendor/autoload.php"
         ]
     },
     "require-dev": {
-        "odan/phinx-migrations-generator": "^4.3"
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "phpunit/phpunit": "5.7.27",
+        "smarty-gettext/tsmarty2c": "^0.1.2",
+        "odan/phinx-migrations-generator": "^4.3",
+        "fzaninotto/faker": "^1.8"
     }
 }
