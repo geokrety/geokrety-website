@@ -37,10 +37,13 @@ class Config extends \Prefab {
         define('GK_ENVIRONMENT', getenv('GK_ENVIRONMENT') ?: 'dev');
         define('GK_DEPLOY_DATE', getenv('GK_DEPLOY_DATE') ?: 'unknown');
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
-        define('GK_DEBUG', getenv('GK_DEBUG') ? filter_var(getenv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN) : false);
-        // define('GK_DEBUG', isset(getEnv('GK_DEBUG')) && filter_var(getEnv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN));
-        // define('GK_DEBUG', isset($_ENV['GK_DEBUG']) && filter_var($_ENV['GK_DEBUG'], FILTER_VALIDATE_BOOLEAN));
-        define('GK_F3_DEBUG', getenv('GK_DEBUG') ?: 1);
+        if (GK_IS_PRODUCTION) {
+            define('GK_DEBUG', false);
+            define('GK_F3_DEBUG', false);
+        } else {
+            define('GK_DEBUG', getenv('GK_DEBUG') ? filter_var(getenv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN) : false);
+            define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ?: true);
+        }
         define('GK_APP_NAME', getenv('GK_APP_NAME') ?: 'www');
         define('GK_APP_VERSION', getenv('GIT_COMMIT') ?: 'undef');
         define('GK_EMAIL_SUBJECT_PREFIX', getenv('GK_EMAIL_SUBJECT_PREFIX') ?: '[GeoKrety] ');
