@@ -12,10 +12,7 @@ CMD ["apache2-foreground"]
 
 COPY --chown=www-data:www-data composer.json /var/www/geokrety/composer.json
 COPY --chown=www-data:www-data composer.lock /var/www/geokrety/composer.lock
-COPY --chown=www-data:www-data tests /var/www/geokrety/tests
-RUN set -eux; \
-    cd /var/www/geokrety; \
-    composer install --no-scripts --no-dev
+RUN composer install --no-scripts --no-dev --no-autoloader --no-interaction
 
 COPY --chown=www-data:www-data . /var/www/geokrety/
 
