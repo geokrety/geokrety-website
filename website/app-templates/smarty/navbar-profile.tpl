@@ -7,7 +7,7 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        {t}My account{/t} <span class="caret"></span>
+        {$current_user->username} <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
         <li><a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}My profile{/t}</a></li>
