@@ -6,6 +6,7 @@ class Config extends \Prefab {
     public function __construct() {
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
+        define('GK_SITE_MINIO_SERVER_URL', getenv('GK_SITE_MINIO_SERVER_URL') ?: 'https://minio.geokrety.org');
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '1,26422,35313'));
         define('GK_SITE_TRACKING_CODE_LENGTH', getenv('GK_SITE_TRACKING_CODE_LENGTH') ?: 6);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH') ?: 42);

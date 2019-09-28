@@ -1,6 +1,6 @@
 {if $f3->get('SESSION.IS_LOGGED_IN')}
 {if IS_ADMIN}
-<li><a href="_admin.php">{fa icon="support"} {t}Admin{/t}</a></li>
+<li><a href="{'admin_home'|alias}">{fa icon="support"} {t}Admin{/t}</a></li>
 {/if}
 <li>
     <a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}">
