@@ -32,7 +32,7 @@ class UserBannerGenerator {
             )
         );
 
-        $img = new \Image(sprintf('statpics/wzory/%d.png', $user->statpic_template_id));
+        $img = new \Image(sprintf('%s/statpics/templates/%d.png', $f3->get('UI'), $user->statpic_template_id));
         $raw = $img->data();
         $font = $f3->get('UI').'/fonts/'.GK_USER_STATPIC_FONT;
 

@@ -69,15 +69,15 @@ class Config extends \Prefab {
         define('GK_PASSWORD_SEED', getenv('GK_PASSWORD_SEED') ?: 'rand_string');
 
         // F3
-        define('GK_F3_UI', getenv('GK_F3_UI') ?: './app-ui');
+        define('GK_F3_UI', getenv('GK_F3_UI') ?: '../app-ui');
         define('GK_F3_TMP', getenv('GK_F3_TMP') ?: '/tmp/f3/');
         define('GK_F3_CACHE', getenv('GK_F3_CACHE') ?: 'redis=redis:6379');
-        define('GK_GETTEXT_BINDTEXTDOMAIN_PATH', getenv('GK_GETTEXT_BINDTEXTDOMAIN_PATH') ?: './app/languages');
+        define('GK_GETTEXT_BINDTEXTDOMAIN_PATH', getenv('GK_GETTEXT_BINDTEXTDOMAIN_PATH') ?: '../app/languages');
 
         // Smarty
-        define('GK_SMARTY_TEMPLATES_DIR', getenv('GK_SMARTY_TEMPLATES_DIR') ?: './app-templates/smarty/');
-        define('GK_SMARTY_FOUNDATION_TEMPLATES_DIR', getenv('GK_SMARTY_FOUNDATION_TEMPLATES_DIR') ?: './app-templates/foundation-emails/dist/');
-        define('GK_SMARTY_PLUGINS_DIR', getenv('GK_SMARTY_PLUGINS_DIR') ?: './app-templates/smarty/plugins/');
+        define('GK_SMARTY_TEMPLATES_DIR', getenv('GK_SMARTY_TEMPLATES_DIR') ?: '../app-templates/smarty/');
+        define('GK_SMARTY_FOUNDATION_TEMPLATES_DIR', getenv('GK_SMARTY_FOUNDATION_TEMPLATES_DIR') ?: '../app-templates/foundation-emails/dist/');
+        define('GK_SMARTY_PLUGINS_DIR', getenv('GK_SMARTY_PLUGINS_DIR') ?: '../app-templates/smarty/plugins/');
         define('GK_SMARTY_COMPILE_DIR', getenv('GK_SMARTY_COMPILE_DIR') ?: '/tmp/smarty/compile/');
         define('GK_SMARTY_CACHE_DIR', getenv('GK_SMARTY_CACHE_DIR') ?: '/tmp/smarty/cache/');
 

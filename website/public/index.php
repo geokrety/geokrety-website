@@ -1,6 +1,6 @@
 <?php
 
-require 'init-f3.php';
+require '../init-f3.php';
 
 // Start Session
 new Session();
@@ -24,7 +24,7 @@ textdomain('messages');
 $access = \Access::instance();
 $access->authorize($f3->get('SESSION.user.group'));
 
-include 'app/validators.php';
-include 'app/events.php';
+include '../app/validators.php';
+include '../app/events.php';
 
 $f3->run();
