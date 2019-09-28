@@ -1,4 +1,7 @@
 {if $f3->get('SESSION.IS_LOGGED_IN')}
+{if IS_ADMIN}
+<li><a href="_admin.php">{fa icon="support"} {t}Admin{/t}</a></li>
+{/if}
 <li>
     <a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}">
         <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}My profile{/t}
@@ -11,9 +14,6 @@
     </a>
     <ul class="dropdown-menu">
         <li><a href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> {t}My profile{/t}</a></li>
-        {if isset($isSuperUser) and $isSuperUser}
-        <li><a href="_admin.php">{fa icon="support"} {t}Admin{/t}</a></li>
-        {/if}
         <li role="separator" class="divider"></li>
         <li><a href="{'user_inventory'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}">{fa icon="briefcase"} {t}My inventory{/t}</a></li>
         <li><a href="{'user_owned'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}">{fa icon="bolt"} {t}My GeoKrety{/t}</a></li>
