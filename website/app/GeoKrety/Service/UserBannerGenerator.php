@@ -34,7 +34,7 @@ class UserBannerGenerator {
 
         $img = new \Image(sprintf('%s/statpics/templates/%d.png', $f3->get('UI'), $user->statpic_template_id));
         $raw = $img->data();
-        $font = $f3->get('UI').'/fonts/'.GK_USER_STATPIC_FONT;
+        $font = sprintf('%s/fonts/%s', $f3->get('UI'), GK_USER_STATPIC_FONT);
 
         $text_color_black = imagecolorallocate($raw, 0, 0, 0);
 
