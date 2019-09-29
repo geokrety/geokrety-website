@@ -34,7 +34,7 @@
         {else}
 
         {if $user->isCurrentUser()}
-        <em>{t escape=no url_map={'geokrety_map'|alias} url_create={'geokret_create'|alias}}Your inventory is empty. Check <a href="%1">the map</a> and try to find GeoKrety near you! You can also <a href="%2">create your own GeoKrety/a> for free!{/t}</em>
+        <em>{t escape=no url_map={'geokrety_map'|alias} url_create={'geokret_create'|alias}}Your inventory is empty. Check <a href="%1">the map</a> and try to find GeoKrety near you! You can also <a href="%2">create your own GeoKrety</a> for free!{/t}</em>
         {else}
         <em>{t escape=no username=$user->username}%1's inventory is currently empty.{/t}</em>
         {/if}
