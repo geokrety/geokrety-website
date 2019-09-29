@@ -30,8 +30,12 @@ $events = \Event::instance();
 // $events->on('move-comment.created', function (\GeoKrety\Model\MoveComment $comment) {});
 // $events->on('move-comment.deleted', function (\GeoKrety\Model\MoveComment $comment) {});
 // $events->on('contact.new', function (\GeoKrety\Model\Mail $mail) {});
-// $events->on('geokret.created', function (\GeoKrety\Model\Geokret $geokret) {});
-// $events->on('geokret.updated', function (\GeoKrety\Model\Geokret $geokret) {});
+$events->on('geokret.created', function (\GeoKrety\Model\Geokret $geokret) {
+    \GeoKrety\Service\UserBanner::generate($geokret->owner);
+});
+$events->on('geokret.updated', function (\GeoKrety\Model\Geokret $geokret) {
+    \GeoKrety\Service\UserBanner::generate($geokret->owner);
+});
 // $events->on('geokret.owner_code.created', function (\GeoKrety\Model\OwnerCode $ownerCode) {});
 $events->on('geokret.claimed', function (\GeoKrety\Model\Geokret $geokret, $context) {  // context => $oldUser, $newUser
     \GeoKrety\Service\UserBanner::generate($context['newUser']);
