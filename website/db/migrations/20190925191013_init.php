@@ -2287,6 +2287,13 @@ class Init extends Phinx\Migration\AbstractMigration {
             ('stat_geokretow_zakopanych',	0),
             ('stat_ruchow',	0),
             ('stat_userow',	0);");
+        $this->execute('
+        DELIMITER ;;
+        CREATE TRIGGER `gk-geokrety_gkid` BEFORE INSERT ON `gk-geokrety` FOR EACH ROW
+          BEGIN
+            SET NEW.gkid= COALESCE((SELECT MAX(gkid) FROM `gk-geokrety`),0) + 1;
+          END;;
+        DELIMITER ;');
         $this->execute('SET FOREIGN_KEY_CHECKS = 1;');
         $this->execute('SET UNIQUE_CHECKS = 1;');
     }
