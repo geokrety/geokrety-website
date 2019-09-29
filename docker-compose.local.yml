@@ -11,12 +11,16 @@ services:
         depends_on:
             - db
             - redis
+            - minio
         environment:
             GK_DB_USER: geokrety
             GK_DB_PASSWORD: geokrety
             GK_DB_DSN: mysql:host=db;port=3306;dbname=geokrety-db;charset=utf8mb4
             GK_CDN_SERVER_URL: https://new-theme.cdn.geokrety.org
             GK_SITE_BASE_SERVER_URL: http://localhost:8000
+            GK_MINIO_SERVER_URL_EXTERNAL: http://localhost:9000
+            GK_MINIO_ACCESS_KEY: geokrety
+            GK_MINIO_SECRET_KEY: geokrety
 
     ## database administration service
     adminer:
@@ -43,8 +47,23 @@ services:
         ports:
             - "13306:3306"
         command: mysqld # --init-file="/tmp/database/00_database-create-geokrety-db.sql"
+
     redis:
         image: redis:5.0.4
         container_name: geokrety_redis
         ports:
             - "6379:6379"
+
+    minio:
+        image: minio/minio
+        container_name: geokrety_minio
+        ports:
+            - "9000:9000"
+        command:
+            - "server"
+            - "/data"
+    volumes:
+        - ./minio_data:/data/
+    environment:
+        MINIO_ACCESS_KEY: geokrety
+        MINIO_SECRET_KEY: geokrety
