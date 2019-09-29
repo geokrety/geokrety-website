@@ -34,11 +34,11 @@ $events = \Event::instance();
 // $events->on('geokret.updated', function (\GeoKrety\Model\Geokret $geokret) {});
 // $events->on('geokret.owner_code.created', function (\GeoKrety\Model\OwnerCode $ownerCode) {});
 $events->on('geokret.claimed', function (\GeoKrety\Model\Geokret $geokret, $context) {  // context => $oldUser, $newUser
-    \GeoKrety\Service\UserBannerGenerator::generate($context['newUser']);
+    \GeoKrety\Service\UserBanner::generate($context['newUser']);
     if (!is_null($context['oldUser'])) {
-        \GeoKrety\Service\UserBannerGenerator::generate($context['oldUser']);
+        \GeoKrety\Service\UserBanner::generate($context['oldUser']);
     }
 });
 $events->on('user.statpic.template.changed', function (\GeoKrety\Model\User $user) {
-    \GeoKrety\Service\UserBannerGenerator::generate($user);
+    \GeoKrety\Service\UserBanner::generate($user);
 });

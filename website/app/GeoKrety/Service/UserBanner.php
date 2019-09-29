@@ -3,15 +3,23 @@
 namespace GeoKrety\Service;
 
 use GeoKrety\LogType;
+use GeoKrety\Model\User;
 
 /**
- * UserBannerGenerator : generate user banner (statpic).
+ * UserBanner.
  */
-class UserBannerGenerator {
+class UserBanner {
     const TEXT_SIZE_BIG = 13;
     const TEXT_SIZE_SMALL = 9;
 
-    public static function generate(\GeoKrety\Model\User $user) {
+    public static function get_banner_url(User $user) {
+        return S3Client::instance(true)->getObjectUrl(
+             GK_BUCKET_STATPIC_NAME,
+             sprintf('%d.png', $user->id)
+        );
+    }
+
+    public static function generate(User $user) {
         $f3 = \Base::instance();
 
         // GeoKrety moved stats
@@ -53,7 +61,11 @@ class UserBannerGenerator {
         imagepng($raw);
         $img->load(ob_get_clean());
 
-        // Save image to disk
-        $f3->write(sprintf('statpics/%d.png', $user->id), $img->dump('png', 9));
+        // Store file
+        S3Client::instance()->putObject([
+            'Bucket' => GK_BUCKET_STATPIC_NAME,
+            'Key' => sprintf('%d.png', $user->id),
+            'Body' => $img->dump('png', 9),
+        ]);
     }
 }

@@ -14,7 +14,7 @@ composer: ## run composer install locally
 	composer 2>/dev/null 1>&2 || { echo "composer is required : composer install guide at https://getcomposer.org"; exit 1; }
 	composer install
 phpcs:
-	sh ./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
+	./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
 
 ## DEV Local instance of geokrety
 buildlocal: ## build local docker compose

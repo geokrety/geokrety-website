@@ -16,6 +16,9 @@ if [ "$1" = 'apache2-foreground' ]; then
     # build translations
     php index.php /cli/gettext/build-translations
 
+    # # Create buckets
+    # php index.php /cli/bucket/create/statpics
+
     cd /var/www/geokrety
 fi
 

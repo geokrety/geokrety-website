@@ -6,7 +6,6 @@ class Config extends \Prefab {
     public function __construct() {
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
-        define('GK_SITE_MINIO_SERVER_URL', getenv('GK_SITE_MINIO_SERVER_URL') ?: 'https://minio.geokrety.org');
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '1,26422,35313'));
         define('GK_SITE_TRACKING_CODE_LENGTH', getenv('GK_SITE_TRACKING_CODE_LENGTH') ?: 6);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH') ?: 42);
@@ -32,6 +31,13 @@ class Config extends \Prefab {
         // SENTRY CONFIG
         define('GK_SENTRY_DSN', getenv('GK_SENTRY_DSN') ?: null);
         define('GK_SENTRY_ENV', getenv('GK_SENTRY_ENV') ?: 'dev');
+
+        // Minio
+        define('GK_MINIO_SERVER_URL', getenv('GK_MINIO_SERVER_URL') ?: 'http://minio:9000');
+        define('GK_MINIO_SERVER_URL_EXTERNAL', getenv('GK_MINIO_SERVER_URL_EXTERNAL') ?: GK_MINIO_SERVER_URL);
+        define('GK_MINIO_ACCESS_KEY', getenv('GK_MINIO_ACCESS_KEY') ?: null);
+        define('GK_MINIO_SECRET_KEY', getenv('GK_MINIO_SECRET_KEY') ?: null);
+        define('GK_BUCKET_STATPIC_NAME', getenv('GK_BUCKET_STATPIC_NAME') ?: 'statpic');
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
