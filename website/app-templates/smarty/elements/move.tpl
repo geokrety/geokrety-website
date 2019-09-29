@@ -51,7 +51,7 @@
                     <div class="btn-toolbar" role="toolbar">
 
                         <div class="btn-group pull-right" role="group">
-                            {if $move->id === $move->geokret->last_position->id and $move->logtype->isTheoricallyInCache() and $move->geokret->type->getTypeId() != \GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
+                            {if $move->geokret->last_position and $move->id === $move->geokret->last_position->id and $move->logtype->isTheoricallyInCache() and $move->geokret->type->getTypeId() != \GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}" data-move-comment-type="missing">
                                 {fa icon="exclamation-triangle"}
                             </button>
