@@ -35,9 +35,9 @@ install:
     - composer install --dev
     - phpenv config-rm xdebug.ini || return 0
     # Install database
-    - ./vendor/bin/phinx migrate
+    - (cd website; ../vendor/bin/phinx migrate)
     # Seed database with initial values
-    - ./vendor/bin/phinx seed:run
+    - (cd website; ../vendor/bin/phinx seed:run)
 
 jobs:
     include:
