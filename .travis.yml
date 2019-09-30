@@ -34,10 +34,6 @@ before_install:
 install:
     - composer install --dev
     - phpenv config-rm xdebug.ini || return 0
-    # Install database
-    - (cd website; ../vendor/bin/phinx migrate)
-    # Seed database with initial values
-    - (cd website; ../vendor/bin/phinx seed:run)
 
 jobs:
     include:
@@ -55,10 +51,19 @@ jobs:
           - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
           # Unit tests with PHPUnit ; output to stdr to prevent session issues https://stackoverflow.com/a/38045422/944936
           - vendor/bin/phpunit --stderr
+
+        - stage: database
+          script:
+          # Install database
+          - (cd website && ../vendor/bin/phinx migrate)
+          # Seed database with initial values
+          - (cd website && ../vendor/bin/phinx seed:run)
+
         - stage: deploy
           if: branch IN (master, boly38, feature/new-theme) AND type = 'push'
           script:
           - scripts/export-translations-to-crowdin.sh
+
         - stage: qaTests
           if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
           script:
