@@ -4031,16 +4031,6 @@ return array (
       ),
       'foreign_keys' => 
       array (
-        'gk-moves_ibfk_1' => 
-        array (
-          'TABLE_NAME' => 'gk-moves',
-          'COLUMN_NAME' => 'geokret',
-          'CONSTRAINT_NAME' => 'gk-moves_ibfk_1',
-          'REFERENCED_TABLE_NAME' => 'gk-geokrety',
-          'REFERENCED_COLUMN_NAME' => 'id',
-          'UPDATE_RULE' => 'NO ACTION',
-          'DELETE_RULE' => 'NO ACTION',
-        ),
         'gk-moves_ibfk_2' => 
         array (
           'TABLE_NAME' => 'gk-moves',
@@ -4050,6 +4040,16 @@ return array (
           'REFERENCED_COLUMN_NAME' => 'id',
           'UPDATE_RULE' => 'NO ACTION',
           'DELETE_RULE' => 'NO ACTION',
+        ),
+        'gk-moves_ibfk_3' => 
+        array (
+          'TABLE_NAME' => 'gk-moves',
+          'COLUMN_NAME' => 'geokret',
+          'CONSTRAINT_NAME' => 'gk-moves_ibfk_3',
+          'REFERENCED_TABLE_NAME' => 'gk-geokrety',
+          'REFERENCED_COLUMN_NAME' => 'id',
+          'UPDATE_RULE' => 'NO ACTION',
+          'DELETE_RULE' => 'CASCADE',
         ),
       ),
     ),
