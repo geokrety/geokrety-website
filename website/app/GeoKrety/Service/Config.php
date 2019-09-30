@@ -89,8 +89,8 @@ class Config extends \Prefab {
         define('GK_SMARTY_CACHE_DIR', getenv('GK_SMARTY_CACHE_DIR') ?: '/tmp/smarty/cache/');
 
         // Phinx
-        define('GK_DB_MIGRATIONS_DIR', getenv('GK_DB_MIGRATIONS_DIR') ?: '../db/migrations/');
-        define('GK_DB_SEEDS_DIR', getenv('GK_DB_SEEDS_DIR') ?: '../db/seeds/');
+        define('GK_DB_MIGRATIONS_DIR', getenv('GK_DB_MIGRATIONS_DIR') ?: './db/migrations/');
+        define('GK_DB_SEEDS_DIR', getenv('GK_DB_SEEDS_DIR') ?: './db/seeds/');
 
         // HTMLPurifier
         define('GK_HTMLPURIFIER_CACHE_DIR', getenv('GK_HTMLPURIFIER_CACHE_DIR') ?: '/tmp/htmlpurifier/cache/');

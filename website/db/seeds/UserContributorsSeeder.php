@@ -12,7 +12,8 @@ class UserContributorsSeeder extends AbstractSeed {
      * http://docs.phinx.org/en/latest/seeding.html
      */
     public function run() {
-        $data = [];
+        $data = array();
+
         foreach (GeoKrety\Controller\HallOfFame::CONTRIBUTORS_IDS as $username) {
             $data[] = [
                 'username' => $username,

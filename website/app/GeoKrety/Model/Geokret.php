@@ -3,6 +3,7 @@
 namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
+use GeoKrety\GeokretyType;
 use GeoKrety\LogType;
 
 class Geokret extends Base {
@@ -151,5 +152,18 @@ class Geokret extends Base {
             // TODO ensure unicity
             $self->tracking_code = strtoupper($rand);
         });
+    }
+
+    public static function generate() {
+        $faker = \Faker\Factory::create();
+
+        $userCount = \Base::instance()->get('DB')->exec('SELECT COUNT(*) AS count FROM `gk-users`')[0]['count'];
+
+        $geokret = new self();
+        $geokret->name = $faker->sentence($nbWords = 2, $variableNbWords = true);
+        $geokret->type = $faker->randomElement($array = GeokretyType::GEOKRETY_TYPES);
+        $geokret->mission = $faker->paragraphs($nb = 3, $asText = true);
+        $geokret->owner = $faker->numberBetween(1, $userCount);
+        $geokret->save();
     }
 }
