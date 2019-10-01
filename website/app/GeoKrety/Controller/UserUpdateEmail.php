@@ -4,7 +4,7 @@ namespace GeoKrety\Controller;
 
 use Carbon\Carbon;
 use GeoKrety\Service\Smarty;
-use GeoKrety\Model\EmailActivation;
+use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Email\EmailChange;
 
@@ -56,12 +56,12 @@ class UserUpdateEmail extends Base {
 
         // Generate activation token and send mail
         if ($user->email !== $f3->get('POST.email')) { // If email changed
-            $token = new EmailActivation(); // TODO rename this class to EmailActivationToken
+            $token = new EmailActivationToken();
             Smarty::assign('token', $token);
             $smtp = new EmailChange();
 
             // Resend validation - implicit mail unicity from token table too
-            $token->load(array('email = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('POST.email'), EmailActivation::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
+            $token->load(array('email = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
             if ($token->valid()) {
                 $smtp->sendEmailChangeNotification($token);
                 \Flash::instance()->addMessage(sprintf(_('The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->diffForHumans(['parts' => 3, 'join' => true])), 'success');

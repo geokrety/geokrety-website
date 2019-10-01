@@ -2,7 +2,7 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use GeoKrety\Model\EmailActivation;
+use GeoKrety\Model\EmailActivationToken as EmailActivationTokenModel;
 
 class EmailActivationToken {
     public function prune(\Base $f3) {
@@ -14,7 +14,7 @@ class EmailActivationToken {
 
         echo "\e[0;32mLaunch task\e[0m".PHP_EOL;
         $f3->set('LOCK.EmailActivationToken.prune', 'true', 60);
-        EmailActivation::expireOldTokens();
+        EmailActivationTokenModel::expireOldTokens();
         $f3->clear('LOCK.EmailActivationToken.prune');
     }
 }

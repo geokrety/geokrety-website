@@ -115,7 +115,7 @@ class User extends Base {
             'validate' => 'required|date',
         ),
         'email_activation' => array(
-            'has-many' => array('\GeoKrety\Model\EmailActivation', 'user'),
+            'has-many' => array('\GeoKrety\Model\EmailActivationToken', 'user'),
         ),
         'news' => array(
             'has-many' => array('\GeoKrety\Model\News', 'author'),

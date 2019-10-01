@@ -3,7 +3,7 @@
 namespace GeoKrety\Email;
 
 use GeoKrety\Service\Smarty;
-use GeoKrety\Model\EmailActivation;
+use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 
 class EmailChange extends Base {
@@ -11,14 +11,14 @@ class EmailChange extends Base {
         $this->setFromSupport();
     }
 
-    public function sendEmailChangeNotification(EmailActivation $token) {
+    public function sendEmailChangeNotification(EmailActivationToken $token) {
         Smarty::assign('token', $token);
 
         $this->sendEmailChangeNotificationToOldEmail($token);
         $this->sendEmailChangeNotificationToNewEmail($token);
     }
 
-    protected function sendEmailChangeNotificationToOldEmail(EmailActivation $token) {
+    protected function sendEmailChangeNotificationToOldEmail(EmailActivationToken $token) {
         if (is_null($token->user->email)) {
             return;
         }
@@ -30,7 +30,7 @@ class EmailChange extends Base {
         }
     }
 
-    protected function sendEmailChangeNotificationToNewEmail(EmailActivation $token) {
+    protected function sendEmailChangeNotificationToNewEmail(EmailActivationToken $token) {
         $this->setSubject('✉️ '._('Changing your email address'));
         $this->setTo($token->email);
 
@@ -39,14 +39,14 @@ class EmailChange extends Base {
         }
     }
 
-    public function sendEmailChangedNotification(EmailActivation $token) {
+    public function sendEmailChangedNotification(EmailActivationToken $token) {
         Smarty::assign('token', $token);
 
         $this->sendEmailChangedNotificationToOldEmail($token);
         $this->sendEmailChangedNotificationToNewEmail($token);
     }
 
-    protected function sendEmailChangedNotificationToOldEmail(EmailActivation $token) {
+    protected function sendEmailChangedNotificationToOldEmail(EmailActivationToken $token) {
         if (is_null($token->previous_email)) {
             return;
         }
@@ -58,7 +58,7 @@ class EmailChange extends Base {
         }
     }
 
-    protected function sendEmailChangedNotificationToNewEmail(EmailActivation $token) {
+    protected function sendEmailChangedNotificationToNewEmail(EmailActivationToken $token) {
         $this->setSubject('✉️ '._('Email address changed'));
         $this->setTo($token->email);
 
