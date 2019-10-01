@@ -192,7 +192,6 @@ class User extends Base {
 
     protected function generateAccountActivation() {
         $token = new AccountActivation();
-        AccountActivation::expireOldTokens(); // TODO launch as cron
         $token->user = $this;
         if ($token->validate()) {
             $token->save();
