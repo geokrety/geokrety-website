@@ -3,18 +3,18 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
-use GeoKrety\Model\EmailActivation;
+use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Email\EmailChange;
 
 class UserEmailChangeToken extends Base {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
-        $token = new EmailActivation();
+        $token = new EmailActivationToken();
 
         // Check database for provided token
         if ($f3->exists('PARAMS.token')) {
-            $token->load(array('token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('PARAMS.token'), EmailActivation::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
+            $token->load(array('token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('PARAMS.token'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
             if ($token->dry()) {
                 \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
                 $f3->reroute('user_update_email_validate');
@@ -36,8 +36,8 @@ class UserEmailChangeToken extends Base {
 
     public function accept($f3) {
         // Mark token used
-        EmailActivation::disableOtherTokensForUser($this->token->user, $this->token->token);
-        $this->token->used = EmailActivation::TOKEN_CHANGED;
+        EmailActivationToken::disableOtherTokensForUser($this->token->user, $this->token->token);
+        $this->token->used = EmailActivationToken::TOKEN_CHANGED;
         $this->token->touch('used_on_datetime');
         $this->token->previous_email = $this->token->user->email;
 
@@ -53,7 +53,7 @@ class UserEmailChangeToken extends Base {
 
     public function refuse($f3) {
         // Mark token as used
-        $this->token->used = EmailActivation::TOKEN_REFUSED;
+        $this->token->used = EmailActivationToken::TOKEN_REFUSED;
     }
 
     public function post($f3) {

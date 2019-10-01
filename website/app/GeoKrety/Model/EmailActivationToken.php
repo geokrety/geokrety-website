@@ -4,7 +4,7 @@ namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
 
-class EmailActivation extends Base {
+class EmailActivationToken extends Base {
     use \Validation\Traits\CortexTrait;
 
     const TOKEN_UNUSED = 0;
@@ -108,7 +108,7 @@ class EmailActivation extends Base {
 
     public static function expireOldTokens() {
         $f3 = \Base::instance();
-        $activation = new EmailActivation();
+        $activation = new EmailActivationToken();
         $expiredTokens = $activation->find(array(
             'used = ? AND (NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY) OR NOW() >= DATE_ADD(used_on_datetime, INTERVAL ? DAY))',
             self::TOKEN_UNUSED,
@@ -125,7 +125,7 @@ class EmailActivation extends Base {
     }
 
     public static function disableOtherTokensForUser(User $user, $except = null) {
-        $activation = new EmailActivation();
+        $activation = new EmailActivationToken();
         $otherTokens = $activation->find(array('user = ? AND used = ?', $user->id, self::TOKEN_UNUSED));
         if ($otherTokens === false) {
             return;
