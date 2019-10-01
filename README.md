@@ -11,5 +11,5 @@ Please contact us directly for any security issue contact@geokretymap.org
 cf. [INSTALL.md](INSTALL.md) and [CONTRIBUTING.md](CONTRIBUTING.md) readme files.
 
 # Credits
-![powered by F3](https://cdn.geokrety.org/images/logos/f3.png)\
+![powered by F3](https://cdn.geokrety.org/images/logos/f3.svg)\
 Powered by [Fat-Free Framework](https://fatfreeframework.com)
