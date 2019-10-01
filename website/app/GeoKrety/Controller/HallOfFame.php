@@ -153,6 +153,13 @@ class HallOfFame extends Base {
             'link' => 'https://phinx.org/',
             'desc' => 'PHP Database Migrations For Everyone',
         ];
+        $credits[] = [
+            'name' => 'Fat-Free Framework',
+            'icon' => GK_CDN_LOGOS_URL.'/f3.svg',
+            'icon_width' => '130px',
+            'link' => 'https://fatfreeframework.com',
+            'desc' => 'PHP micro-framework',
+        ];
         Smarty::assign('app_credits', $credits);
 
         Smarty::render('pages/hall_of_fame.tpl');
