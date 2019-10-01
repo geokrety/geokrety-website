@@ -126,7 +126,7 @@ $config['gk_credits'][] = [
 ];
 $config['gk_credits'][] = [
     'name' => 'Fat-Free Framework',
-    'icon' => CONFIG_CDN_LOGOS.'f3.png',
+    'icon' => CONFIG_CDN_LOGOS.'f3.svg',
     'icon_width' => '130px',
     'link' => 'https://fatfreeframework.com',
     'desc' => 'PHP micro-framework',
