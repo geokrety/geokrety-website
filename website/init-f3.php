@@ -4,6 +4,7 @@ require __DIR__.'/../vendor/autoload.php';
 $f3 = \Base::instance();
 $f3->config(__DIR__.'/app/config.ini');
 $f3->config(__DIR__.'/app/routes.ini');
+$f3->config(__DIR__.'/app/cli.ini');
 $f3->config(__DIR__.'/app/authorizations.ini');
 
 // Create GK_* consts from environments
