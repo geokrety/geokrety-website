@@ -58,7 +58,6 @@ class UserUpdateEmail extends Base {
         if ($user->email !== $f3->get('POST.email')) { // If email changed
             $token = new EmailActivation(); // TODO rename this class to EmailActivationToken
             Smarty::assign('token', $token);
-            EmailActivation::expireOldTokens(); // TODO move this to a cron job
             $smtp = new EmailChange();
 
             // Resend validation - implicit mail unicity from token table too

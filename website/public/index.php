@@ -1,6 +1,7 @@
 <?php
 
 require '../init-f3.php';
+$f3->config('../app/cron.ini');
 
 // Start Session
 new Session();
@@ -17,4 +18,5 @@ if (is_null(GK_SMTP_HOST)) {
 $access = \Access::instance();
 $access->authorize($f3->get('SESSION.user.group'));
 
+Cron::instance();
 $f3->run();
