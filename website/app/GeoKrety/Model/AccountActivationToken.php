@@ -4,7 +4,7 @@ namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
 
-class AccountActivation extends Base {
+class AccountActivationToken extends Base {
     use \Validation\Traits\CortexTrait;
 
     const TOKEN_UNUSED = 0;
@@ -65,7 +65,7 @@ class AccountActivation extends Base {
     // TODO call that from cron
     public static function expireOldTokens() {
         $f3 = \Base::instance();
-        $activation = new AccountActivation();
+        $activation = new AccountActivationToken();
         $expiredTokens = $activation->find(array(
             'used = ? AND NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)',
             self::TOKEN_UNUSED,

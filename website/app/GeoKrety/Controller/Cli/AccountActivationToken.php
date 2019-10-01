@@ -2,7 +2,7 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use GeoKrety\Model\AccountActivation as AccountActivationTokenModel;
+use GeoKrety\Model\AccountActivationToken as AccountActivationTokenModel;
 
 class AccountActivationToken {
     public function prune(\Base $f3) {

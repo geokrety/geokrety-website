@@ -4,7 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
-use GeoKrety\Model\AccountActivation as AccountActivationModel;
+use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
 use GeoKrety\Email\AccountActivation;
 
 class RegistrationActivate extends Base {
