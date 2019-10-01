@@ -124,3 +124,10 @@ $config['gk_credits'][] = [
     'link' => 'https://www.google.com/recaptcha/',
     'desc' => 'Secure captcha (stop bots)',
 ];
+$config['gk_credits'][] = [
+    'name' => 'Fat-Free Framework',
+    'icon' => CONFIG_CDN_LOGOS.'f3.png',
+    'icon_width' => '130px',
+    'link' => 'https://fatfreeframework.com',
+    'desc' => 'PHP micro-framework',
+];
