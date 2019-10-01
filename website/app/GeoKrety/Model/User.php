@@ -145,7 +145,7 @@ class User extends Base {
             'has-many' => array('\GeoKrety\Model\Badge', 'holder'),
         ),
         'activation' => array(
-            'has-one' => array('\GeoKrety\Model\AccountActivation', 'user'),
+            'has-one' => array('\GeoKrety\Model\AccountActivationToken', 'user'),
         ),
     );
 
@@ -191,7 +191,7 @@ class User extends Base {
     }
 
     protected function generateAccountActivation() {
-        $token = new AccountActivation();
+        $token = new AccountActivationToken();
         $token->user = $this;
         if ($token->validate()) {
             $token->save();

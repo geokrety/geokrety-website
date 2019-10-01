@@ -4,7 +4,7 @@ namespace GeoKrety\Email;
 
 use Carbon\Carbon;
 use GeoKrety\Service\Smarty;
-use GeoKrety\Model\AccountActivation as AccountActivationModel;
+use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
 
 class AccountActivation extends Base {
     private $message;
