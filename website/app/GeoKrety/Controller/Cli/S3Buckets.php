@@ -2,6 +2,8 @@
 
 namespace GeoKrety\Controller\Cli;
 
+use GeoKrety\Service\S3Client;
+
 class S3Buckets {
     public function createStatpic() {
         // This policy sets the bucket to read only
