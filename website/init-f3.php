@@ -23,6 +23,16 @@ if (GK_F3_DEBUG) {
     error_reporting(E_ALL);
 }
 
+// Language
+$ml = \Multilang::instance();
+\Carbon\Carbon::setLocale($ml->current);
+bindtextdomain('messages', GK_GETTEXT_BINDTEXTDOMAIN_PATH);
+bind_textdomain_codeset('messages', 'UTF-8');
+textdomain('messages');
+
+include __DIR__.'/app/validators.php';
+include __DIR__.'/app/events.php';
+
 if (!$f3->exists('DB')) {
     $f3->set('DB', new \DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;']));
 }
