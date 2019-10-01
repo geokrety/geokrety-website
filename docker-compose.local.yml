@@ -62,8 +62,8 @@ services:
         command:
             - "server"
             - "/data"
-    volumes:
-        - ./minio_data:/data/
-    environment:
-        MINIO_ACCESS_KEY: geokrety
-        MINIO_SECRET_KEY: geokrety
+        volumes:
+            - ./minio_data:/data/
+        environment:
+            MINIO_ACCESS_KEY: geokrety
+            MINIO_SECRET_KEY: geokrety
