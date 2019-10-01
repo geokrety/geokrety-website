@@ -30,3 +30,10 @@ repos:
       - id: php-cs-fixer
         files: \.(php)$
         args: [ --config=.php_cs -q ]
+
+  - repo: https://github.com/IamTheFij/docker-pre-commit.git
+    rev: v2.0.0
+    hooks:
+      - id: docker-compose-check
+        files: docker-compose.*.y[a]{0,1}ml$
+      - id: hadolint
