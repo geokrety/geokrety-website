@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a89dc47bf047d381dae4126dfcbc259e",
+    "content-hash": "036aa5645660a3856c9a0d57210fdb42",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1219,6 +1219,41 @@
                 "psr-7"
             ],
             "time": "2018-07-31T19:32:56+00:00"
+        },
+        {
+            "name": "ikkez/f3-assets",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-assets.git",
+                "reference": "bf04f3c6e8cfe627f2a42a54e89d913cd823394c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-assets/zipball/bf04f3c6e8cfe627f2a42a54e89d913cd823394c",
+                "reference": "bf04f3c6e8cfe627f2a42a54e89d913cd823394c",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "CSS/JS Assets Plugin for PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-assets",
+            "keywords": [
+                "F3",
+                "JS",
+                "css",
+                "fatfree",
+                "minify"
+            ],
+            "time": "2019-04-25T11:39:18+00:00"
         },
         {
             "name": "ikkez/f3-cortex",
@@ -6504,7 +6539,8 @@
     "minimum-stability": "beta",
     "stability-flags": {
         "benhall14/php-pagination": 20,
-        "league/geotools": 0
+        "league/geotools": 0,
+        "ikkez/f3-assets": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
