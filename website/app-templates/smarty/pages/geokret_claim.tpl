@@ -24,7 +24,7 @@
 
             <div class="col-sm-10 col-sm-offset-2">
                 <p>
-                    <em>The process require a "Tracking Code" generally written on the GeoKret label or encraved on the coin plus an "Owner Code" generally given on a paper sheet.</em>
+                    <em>{t}The process require a "Tracking Code" generally written on the GeoKret label or engraved on the coin plus an "Owner Code" generally given on a paper sheet.{/t}</em>
                 </p>
             </div>
 
