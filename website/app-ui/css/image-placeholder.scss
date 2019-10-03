@@ -1,0 +1,19 @@
+.img-placeholder-dash {
+  border: 3px dashed grey;
+  height: 190px;
+  width: 138px;
+}
+
+.img-placeholder-dash:hover {
+  border-color: darkgrey;
+}
+
+.img-placeholder-dash::after {
+  content: "+";
+  color: grey;
+  font-size: 5em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
