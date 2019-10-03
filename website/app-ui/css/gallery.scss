@@ -1,0 +1,113 @@
+/* div.gallery */
+div.justify {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+div.gallery {
+  position: relative;
+  z-index: 2;
+  // padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+  figure {
+    border: 1px solid silver;
+    width: 112px;
+    height: 163px;
+    margin: 6px;
+    float: left;
+  }
+
+  figcaption {
+    border-top: 1px solid silver;
+    background-color: #eee;
+    height: 51px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  figcaption > p {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 3px;
+  }
+
+  figure div.parent {
+    position: relative;
+    display: block;
+    width: 110px;
+    height: 110px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  figure img {
+    display: block;
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  figure .image-container {
+    border: 1px solid #eee;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+  }
+
+  figure div.is-avatar {
+    border-color: #2ab2c2;
+  }
+
+  .overlay {
+    position: absolute;
+    color: white;
+    width: 18px;
+    height: 14px;
+  }
+
+  .flag-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #eee;
+    width: 18px;
+    height: 14px;
+  }
+
+  span.gk {
+    content: " ";
+    background-size: 20px 20px;
+    background: url("../../public/assets/images/the-mole-grey.svg") no-repeat center;
+    width: 22px;
+    height: 22px;
+  }
+
+  span.plane:before {
+    content: "\2708";
+  }
+
+  span.human:before {
+    content: "\1F464";
+  }
+
+  span.type {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 3px;
+    padding-right: 3px;
+    border: 1px solid #eee;
+    background-color: white;
+  }
+}

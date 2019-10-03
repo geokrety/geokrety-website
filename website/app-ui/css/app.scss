@@ -1,0 +1,91 @@
+@import "header";
+@import "footer";
+@import "flags";
+@import "image-placeholder";
+@import "geokret-move";
+@import "geokret-move-tracking-code";
+@import "icons";
+@import "gallery";
+@import "map-home";
+@import "submenu";
+@import "statpic";
+@import "credits";
+/* Move down content because we have a fixed navbar that is 50px tall */
+.container {
+  // padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+// Space between row on mobile
+@media (max-width: 991px) {
+  .top-buffer {
+    margin-top: 20px;
+  }
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+.leaflet-container {
+  height: 400px;
+}
+
+.leaflet-container-200 {
+  height: 230px;
+}
+
+.leaflet-container-small {
+  background-color: #eee;
+  border: 1px solid silver;
+  height: 163px;
+}
+
+#preview-image-plugin-overlay {
+  z-index: 9999;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -55px;
+  visibility: hidden;
+}
+
+figcaption.caption-button {
+  p {
+    margin: 10px 5px 5px;
+  }
+}
+
+.user-anonymous {
+  color: #888;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+}
+
+.margin-20 {
+  margin: 20px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.coordinates-togglable, .map-togglable {
+  display: none;
+}
+
+.navbar-inverse .navbar-nav > li > a.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}

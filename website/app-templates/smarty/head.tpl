@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="{GK_CDN_LIBRARIES_URL}/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{GK_CDN_LIBRARIES_URL}/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{GK_CDN_CSS_URL}/krety-v2.css" media="screen" />
     <link rel="stylesheet" href="{GK_CDN_CSS_URL}/flag-icon.min.css" media="screen" />
     <link rel="stylesheet" href="{GK_CDN_LIBRARIES_PARSLEY_CSS_URL}">
     {\Assets::instance()->renderGroup(\Assets::instance()->getAssets('head')) nofilter}

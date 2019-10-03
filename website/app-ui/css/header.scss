@@ -1,0 +1,148 @@
+header {
+    width: 100%;
+    background: #2ab2c2;
+    overflow: hidden;
+    height: 220px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    position: relative;
+    display: block;
+}
+
+header .bg {
+    background-image: url("../../public/assets/images/header/bg.svg");
+    width: 900px;
+    background-size: 77%;
+    background-repeat: no-repeat;
+    height: 190px;
+    display: block;
+    background-position: center;
+    top: 45px;
+    margin-left: -450px;
+    z-index: 1;
+    opacity: 0.5;
+    left: 50%;
+    position: absolute;
+}
+
+header .sun {
+    width: 38px;
+    margin: 0 auto;
+    left: 52%;
+    top: 4px;
+    animation: 20s linear infinite rotating;
+    -webkit-animation: 20s linear infinite rotating;
+    -moz-animation: 20s linear infinite rotating;
+    -ms-animation: 20s linear infinite rotating;
+    z-index: 2;
+    position: absolute;
+}
+
+header .logo {
+    font-family: Righteous,cursive;
+    top: 53px;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 55px;
+    text-shadow: -3px 4px 0 rgba(0,0,0,.4);
+}
+
+header .subline {
+    color: #fff;
+    z-index: 4;
+    position: relative;
+    text-shadow: -1px 1px rgba(0,0,0,.5);
+    font-size: 18px;
+    display: block;
+    background: rgba(0,0,0,.4);
+    padding: 1px 20px;
+    width: 485px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 53px;
+}
+// Space between row on mobile
+@media (max-width: 991px) {
+    header {
+        height: 110px;
+        margin-bottom: 5px;
+    }
+
+    header .bg {
+        height: 100px;
+        background-size: 40%;
+        top: 20px;
+    }
+
+    header .logo {
+        top: 25px;
+        font-size: 30px;
+    }
+
+    header .subline {
+        font-size: 12px;
+        padding: 1px 10px;
+        width: 400px;
+        top: 20px;
+    }
+
+    header .sun {
+        width: 20px;
+        left: 58%;
+    }
+    a.github-corner svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+header .logo .black {
+    background-color: #000;
+}
+
+header .logo a {
+    text-decoration: none;
+    color: #fff;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+@-webkit-keyframes rotating {
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+@-moz-keyframes rotating {
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+@-ms-keyframes rotating {
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
