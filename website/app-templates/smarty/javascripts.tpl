@@ -25,4 +25,6 @@
 
         });
     })(jQuery);
+
+{\Assets::instance()->renderGroup(\Assets::instance()->getAssets('footer')) nofilter}
 </script>

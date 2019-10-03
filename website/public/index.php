@@ -2,6 +2,7 @@
 
 require '../init-f3.php';
 $f3->config('../app/cron.ini');
+$f3->config('../app/assets.ini');
 
 // Start Session
 new Session();
@@ -19,4 +20,6 @@ $access = \Access::instance();
 $access->authorize($f3->get('SESSION.user.group'));
 
 Cron::instance();
+$assets = \Assets::instance();
+
 $f3->run();
