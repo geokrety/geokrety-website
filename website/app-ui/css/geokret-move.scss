@@ -1,0 +1,139 @@
+// Progress indicator
+
+#progress_circles {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+#progress_circles li {
+  list-style: none;
+  display: inline-block;
+  background: #ccc;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#progress_circles li[aria-pressed] {
+  background: #6b6b6b;
+}
+// Hide radio button
+input[type="radio"] {
+  display: none;
+}
+// Colorize on selected
+
+input[type="radio"]:checked + .box {
+  background-color: #8bb92d;
+}
+
+input[type="radio"]:checked + .box span {
+  color: white;
+}
+
+input[type="radio"]:checked + .box span:before {
+  opacity: 1;
+}
+// Grey on disabled
+
+input[type="radio"]:disabled + .box {
+  color: grey;
+  background-color: lightgrey;
+}
+
+input[type="radio"]:disabled + .box span:before {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+// the box
+
+.logtypes .radio-inline,
+.logtypes .radio-inline + .logtypes .radio-inline {
+  margin: 0;
+  padding: 5px;
+}
+
+.box {
+  width: 115px;
+  height: 115px;
+  background-color: lightgrey;
+  will-change: transition;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 1em 1em 1em 1em;
+}
+
+.box span {
+  position: absolute;
+  padding: 12px;
+  left: 0;
+  right: 0;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
+.box span:before {
+  content: "";
+  font-size: 1.2em;
+  display: block;
+  top: 15px;
+  transition: all 300ms ease-in-out;
+  font-weight: normal;
+  color: white;
+  min-height: 37px;
+  padding-right: 37px;
+  background-position: center;
+  background-size: 37px 37px;
+  background-repeat: no-repeat;
+}
+
+.box span:hover {
+  transform: scale(1.1);
+}
+
+.box:active {
+  // transform: translateY(10px);
+  transform: scale(0.95);
+}
+
+.dropped span:before {
+  background-image: url("../../public/assets/images/log-icons/0/0.svg");
+}
+
+.dipped span:before {
+  background-image: url("../../public/assets/images/log-icons/0/5.svg");
+}
+
+.met span:before {
+  background-image: url("../../public/assets/images/log-icons/0/3.svg");
+}
+
+.grabbed span:before {
+  background-image: url("../../public/assets/images/log-icons/0/1.svg");
+}
+
+.comment span:before {
+  background-image: url("../../public/assets/images/log-icons/0/2.svg");
+}
+
+.archive span:before {
+  background-image: url("../../public/assets/images/log-icons/0/4.svg");
+}
+
+div.nr div.tooltip {
+  min-width: 240px;
+}
