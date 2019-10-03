@@ -21,5 +21,6 @@ $access->authorize($f3->get('SESSION.user.group'));
 
 Cron::instance();
 $assets = \Assets::instance();
+\Assets\Sass::instance()->init();
 
 $f3->run();

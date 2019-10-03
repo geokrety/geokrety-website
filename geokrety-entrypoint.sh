@@ -19,6 +19,9 @@ if [ "$1" = 'apache2-foreground' ]; then
     # Create buckets
     php index.php /cli/bucket/create/statpics
 
+    # give permission to webserver to write css files
+    chown -R www-data.www-data /var/www/geokrety/website/public/assets/compressed
+
     cd /var/www/geokrety
 fi
 
