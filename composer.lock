@@ -1253,7 +1253,46 @@
                 "fatfree",
                 "minify"
             ],
-            "time": "2019-04-25T11:39:18+00:00"
+            "time": "2017-09-05T20:06:26+00:00"
+        },
+        {
+            "name": "ikkez/f3-assets-sass",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-assets-sass.git",
+                "reference": "cb45462e4dee32b4b64603f583b1f61fe428cc03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-assets-sass/zipball/cb45462e4dee32b4b64603f583b1f61fe428cc03",
+                "reference": "cb45462e4dee32b4b64603f583b1f61fe428cc03",
+                "shasum": ""
+            },
+            "require": {
+                "ikkez/f3-assets": "^1.1",
+                "scssphp/scssphp": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "SASS addon for the Assets plugin for PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-assets-sass",
+            "keywords": [
+                "F3",
+                "css",
+                "fatfree",
+                "sass",
+                "scss"
+            ],
+            "time": "2019-06-21T14:07:50+00:00"
         },
         {
             "name": "ikkez/f3-cortex",
@@ -2922,6 +2961,67 @@
                 "phinx"
             ],
             "time": "2019-08-28T12:24:19+00:00"
+        },
+        {
+            "name": "scssphp/scssphp",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scssphp/scssphp.git",
+                "reference": "98e10149058102817b493c5a147fa582cb62d46e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scssphp/scssphp/zipball/98e10149058102817b493c5a147fa582cb62d46e",
+                "reference": "98e10149058102817b493c5a147fa582cb62d46e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.3",
+                "squizlabs/php_codesniffer": "~2.5",
+                "twbs/bootstrap": "~4.3",
+                "zurb/foundation": "~6.5"
+            },
+            "bin": [
+                "bin/pscss"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ScssPhp\\ScssPhp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "homepage": "https://github.com/robocoder"
+                },
+                {
+                    "name": "Cédric Morin",
+                    "email": "cedric@yterium.com",
+                    "homepage": "https://github.com/Cerdic"
+                }
+            ],
+            "description": "scssphp is a compiler for SCSS written in PHP.",
+            "homepage": "http://scssphp.github.io/scssphp/",
+            "keywords": [
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylesheet"
+            ],
+            "time": "2019-10-03T17:09:15+00:00"
         },
         {
             "name": "sentry/sdk",
@@ -6539,8 +6639,7 @@
     "minimum-stability": "beta",
     "stability-flags": {
         "benhall14/php-pagination": 20,
-        "league/geotools": 0,
-        "ikkez/f3-assets": 20
+        "league/geotools": 0
     },
     "prefer-stable": true,
     "prefer-lowest": false,
