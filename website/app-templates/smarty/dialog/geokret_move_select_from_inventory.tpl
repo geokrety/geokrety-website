@@ -4,6 +4,7 @@
 </div>
 <div class="modal-body">
 
+{if $geokrety}
     <div class="alert alert-info hidden" role="alert" id="maxGKSelctionReached">
         {t max={GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS}}Only %1 GeoKrety can be processed at a time.{/t}
     </div>
@@ -55,9 +56,14 @@
             </tbody>
         </table>
     </div>
+{else}
+    <em>{t}Your inventory is empty.{/t}</em>
+{/if}
 
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
+{if $geokrety}
     <button type="submit" class="btn btn-primary" id="modalInventorySelectButton">{t escape=no count=0}Select <span class="badge">%1</span>{/t}</button>
+{/if}
 </div>
