@@ -3,6 +3,7 @@
 namespace GeoKrety\Service\Validation;
 
 use GeoKrety\Model\Waypoint as WaypointModel;
+use GeoKrety\Service\CoordinatesConverter;
 use GeoKrety\Service\WaypointInfo;
 
 class Waypoint {
