@@ -22,7 +22,7 @@ class Login extends Base {
     //     Smarty::render('forms/login.tpl');
     // }
 
-    public function login($f3) {
+    public function login(\Base $f3) {
         $auth = new \GeoKrety\Auth('geokrety', array('id' => 'username', 'pw' => 'password'));
         $login_result = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($login_result) {
@@ -55,7 +55,7 @@ class Login extends Base {
                         $f3->reroute($ml->alias($goto, $params, $user->preferred_language));
                     }
                 }
-                $ml->reroute('@home', $params, $user->preferred_language);
+                $f3->reroute($ml->alias('@home', $params, $user->preferred_language));
             } else {
                 \Flash::instance()->addMessage(_('Something went wrong during the login procedure.'), 'danger');
             }
