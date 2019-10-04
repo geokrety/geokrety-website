@@ -4,13 +4,11 @@
     <title>GeoKrety: {block name=title}{/block}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="{GK_CDN_LIBRARIES_URL}/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{GK_CDN_LIBRARIES_URL}/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{GK_CDN_CSS_URL}/flag-icon.min.css" media="screen" />
-    <link rel="stylesheet" href="{GK_CDN_LIBRARIES_PARSLEY_CSS_URL}">
+    {\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_CSS)}
+    {\Assets::instance()->addCss(GK_CDN_FONT_AWESOME_CSS)}
+    {\Assets::instance()->addCss(GK_CDN_FLAG_ICON_CSS)}
+    {\Assets::instance()->addCss(GK_CDN_LIBRARIES_PARSLEY_CSS_URL)}
     {\Assets::instance()->renderGroup(\Assets::instance()->getAssets('head')) nofilter}
-    {block name=css}{/block}
 
     <link rel="apple-touch-icon" sizes="180x180" href="{GK_CDN_IMAGES_URL}/favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="{GK_CDN_IMAGES_URL}/favicon/favicon-32x32.png" />

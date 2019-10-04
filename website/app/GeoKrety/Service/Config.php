@@ -182,6 +182,18 @@ class Config extends \Prefab {
         define('GK_CDN_LIBRARIES_PRISM_PHP_JS_URL', getenv('GK_CDN_LIBRARIES_PRISM_PHP_JS_URL') ?: GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-php.min.js');
         define('GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL', getenv('GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL') ?: GK_CDN_LIBRARIES_URL.'/prism/1.16.0/prism-markup-templating.min.js');
 
+        define('GK_CDN_JQUERY_JS', getenv('GK_CDN_JQUERY_JS') ?: GK_CDN_LIBRARIES_URL.'/jquery/jquery-3.3.1.min.js');
+
+        define('GK_CDN_BOOTSTRAP_JS', getenv('GK_CDN_BOOTSTRAP_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap/3.3.7/js/bootstrap.min.js');
+        define('GK_CDN_BOOTSTRAP_CSS', getenv('GK_CDN_BOOTSTRAP_CSS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap/3.3.7/css/bootstrap.min.css');
+
+        define('GK_CDN_FONT_AWESOME_CSS', getenv('GK_CDN_FONT_AWESOME_CSS') ?: GK_CDN_LIBRARIES_URL.'/font-awesome/4.7.0/css/font-awesome.min.css');
+        define('GK_CDN_FLAG_ICON_CSS', getenv('GK_CDN_FLAG_ICON_CSS') ?: GK_CDN_CSS_URL.'/flag-icon.min.css');
+
+        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.22.0/moment.min.js');
+        define('GK_CDN_BOOTSTRAP_MAXLENGTH_JS', getenv('GK_CDN_BOOTSTRAP_MAXLENGTH_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js');
+        define('GK_CDN_PREVIEW_IMAGE_JQUERY_JS', getenv('GK_CDN_PREVIEW_IMAGE_JQUERY_JS') ?: GK_CDN_LIBRARIES_URL.'/preview-image-jquery/1.0/preview-image.min.js');
+
         define('GK_CDN_LEAFLET_JS', getenv('GK_CDN_LEAFLET_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.js');
         define('GK_CDN_LEAFLET_CSS', getenv('GK_CDN_LEAFLET_CSS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.css');
         define('GK_CDN_LEAFLET_CENTERCROSS_JS', getenv('GK_CDN_LEAFLET_CENTERCROSS_JS') ?: GK_CDN_LIBRARIES_URL.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');

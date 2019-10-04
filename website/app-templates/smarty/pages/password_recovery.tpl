@@ -1,8 +1,6 @@
 {extends file='base.tpl'}
 
-{block name=js}
-{if GK_GOOGLE_RECAPTCHA_JS_URL}<script type="text/javascript" src="{GK_GOOGLE_RECAPTCHA_JS_URL}"></script>{/if}
-{/block}
+{if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}
 
 {block name=content}
 <div class="panel panel-default">

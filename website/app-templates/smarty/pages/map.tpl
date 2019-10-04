@@ -1,22 +1,17 @@
 {extends file='base.tpl'}
 
-{block name=css}
-<link rel="stylesheet" href="{GK_CDN_LEAFLET_CSS}">
-<link rel="stylesheet" href="{GK_CDN_LEAFLET_MARKERCLUSTER_CSS}">
-<link rel="stylesheet" href="{GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS}">
-<link rel="stylesheet" href="{GK_CDN_LEAFLET_GEOKRETYFILTER_CSS}">
-<link rel="stylesheet" href="{GK_CDN_LEAFLET_NOUISLIDER_CSS}">
-<link rel="stylesheet" href="{GK_CDN_LEAFLET_FULLSCREEN_CSS}">
-{/block}
-
-{block name=js}
-<script type="text/javascript" src="{GK_CDN_LEAFLET_JS}"></script>
-<script type="text/javascript" src="{GK_CDN_LEAFLET_MARKERCLUSTER_JS}"></script>
-<script type="text/javascript" src="{GK_CDN_LEAFLET_GEOKRETYFILTER_JS}"></script>
-<script type="text/javascript" src="{GK_CDN_LEAFLET_NOUISLIDER_JS}"></script>
-<script type="text/javascript" src="{GK_CDN_LEAFLET_SPIN_JS}"></script>
-<script type="text/javascript" src="{GK_CDN_LEAFLET_FULLSCREEN_JS}"></script>
-{/block}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_CSS)}
+{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS})}
+{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_GEOKRETYFILTER_CSS})}
+{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_NOUISLIDER_CSS})}
+{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_FULLSCREEN_CSS})}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_MARKERCLUSTER_JS)}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_GEOKRETYFILTER_JS)}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_NOUISLIDER_JS)}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_SPIN_JS)}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_FULLSCREEN_JS)}
 
 {block name=content}
 <div class="row">

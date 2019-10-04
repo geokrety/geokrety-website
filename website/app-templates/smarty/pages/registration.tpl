@@ -1,13 +1,8 @@
 {extends file='base.tpl'}
 
-{block name=css}
-<link rel="stylesheet" href="{GK_CDN_STRENGTHIFY_CSS}">
-{/block}
-
-{block name=js}
-<script type="text/javascript" src="{GK_CDN_STRENGTHIFY_JS}"></script>
-{if GK_GOOGLE_RECAPTCHA_JS_URL}<script type="text/javascript" src="{GK_GOOGLE_RECAPTCHA_JS_URL}"></script>{/if}
-{/block}
+{\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS)}
+{\Assets::instance()->addJs(GK_CDN_STRENGTHIFY_JS)}
+{if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}
 
 {block name=content}
 

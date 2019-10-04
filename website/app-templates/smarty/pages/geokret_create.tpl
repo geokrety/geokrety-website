@@ -1,15 +1,7 @@
 {extends file='base.tpl'}
 
-{block name=css}
-<link rel="stylesheet" href="{GK_CDN_LIBRARIES_PARSLEY_CSS_URL}">
-<link rel="stylesheet" href="{GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL}">
-{/block}
-
-{block name=js}
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL}"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_PARSLEY_JS_URL}"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL}"></script>
-{/block}
+{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
 
 {block name=content}
 {include 'forms/geokret.tpl'}
