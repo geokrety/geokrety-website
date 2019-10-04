@@ -1,12 +1,7 @@
 {extends file='base.tpl'}
 
-{block name=css}
-<link rel="stylesheet" href="{GK_CDN_STRENGTHIFY_CSS}">
-{/block}
-
-{block name=js}
-<script type="text/javascript" src="{GK_CDN_STRENGTHIFY_JS}"></script>
-{/block}
+{\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS)}
+{\Assets::instance()->addJs(GK_CDN_STRENGTHIFY_JS)}
 
 {block name=content}
 

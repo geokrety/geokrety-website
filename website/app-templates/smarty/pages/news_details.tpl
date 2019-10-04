@@ -1,12 +1,7 @@
 {extends file='base.tpl'}
 
-{block name=css}
-<link rel="stylesheet" href="{GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL}">
-{/block}
-
-{block name=js}
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL}"></script>
-{/block}
+{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
 
 {block name=content}
 {include 'elements/news.tpl' item=$news}

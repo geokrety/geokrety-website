@@ -1,14 +1,14 @@
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_URL}/jquery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_URL}/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_URL}/moment.js/2.22.0/moment.min.js"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_URL}/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_URL}/preview-image-jquery/1.0/preview-image.min.js"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL}"></script>
-<script type="text/javascript" src="{GK_CDN_LIBRARIES_PARSLEY_JS_URL}"></script>
-<script src="{GK_CDN_LIBRARIES_PARSLEY_JS_LANG_DIR_URL}/{\Multilang::instance()->current}.js"></script>
-<script type="text/javascript" src="{GK_CDN_SPIN_JS}"></script>
-{block name=js}{/block}
+{\Assets::instance()->addJs(GK_CDN_JQUERY_JS, 100)}
+{\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_JS, 100)}
+{\Assets::instance()->addJs(GK_CDN_MOMENT_JS, 100)}
+{\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_MAXLENGTH_JS)}
+{\Assets::instance()->addJs(GK_CDN_PREVIEW_IMAGE_JQUERY_JS)}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL)}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_PARSLEY_JS_URL)}
+{\Assets::instance()->addJs(sprintf('%s/%s.js', GK_CDN_LIBRARIES_PARSLEY_JS_LANG_DIR_URL, \Multilang::instance()->current))}
+{\Assets::instance()->addJs(GK_CDN_SPIN_JS)}
 
+{\Assets::instance()->renderGroup(\Assets::instance()->getAssets('footer')) nofilter}
 <script type="text/javascript">
     (function($) {
         $( document ).ready( function () {
@@ -26,5 +26,4 @@
         });
     })(jQuery);
 
-{\Assets::instance()->renderGroup(\Assets::instance()->getAssets('footer')) nofilter}
 </script>

@@ -1,12 +1,7 @@
 {extends file='base.tpl'}
 
-{block name=css}
-<link rel="stylesheet" href="{GK_CDN_LEAFLET_CSS}">
-{/block}
-
-{block name=js}
-<script type="text/javascript" src="{GK_CDN_LEAFLET_JS}"></script>
-{/block}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
 
 {block name=content}
 <div class="panel panel-default">
