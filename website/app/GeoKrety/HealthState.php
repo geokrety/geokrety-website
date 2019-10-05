@@ -28,7 +28,7 @@ class HealthState {
     public function setDependencyState($dependency, $state, $details = null) {
         $this->checkValidState($state);
         $this->dependencies[$dependency]['state'] = $state;
-        if (!is_null($details)) {
+        if ($this->isOk() && !is_null($details)) {
             $this->dependencies[$dependency]['details'] = $details;
         }
     }
