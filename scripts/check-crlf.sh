@@ -4,6 +4,7 @@ find . -type f -not \( -path './website/old/*' \
                     -o -path './.git/*' \
                     -o -path './vendor/*' \
                     -o -path './website/vendor/*' \
+                    -o -path './website/app-templates/foundation-emails/node_modules/*' \
                     -o -path './.idea/*' \
                     -o -name '*.iml' \
                     -o -name '*.dont-push.*' \

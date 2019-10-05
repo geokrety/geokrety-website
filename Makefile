@@ -18,15 +18,15 @@ composer: ## run composer install locally
 	composer 2>/dev/null 1>&2 || { echo "composer is required : composer install guide at https://getcomposer.org"; exit 1; }
 	composer install
 phpcs: ## run php check style fixer
-	sh ./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
+	php ./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
 crlf: ## run file checks : check CR/LF
-	sh ./scripts/check-crlf.sh
+	bash ./scripts/check-crlf.sh
 trailing: ## run file check : check trailing spaces
-	sh ./scripts/check-trailling-spaces.sh .
+	bash ./scripts/check-trailling-spaces.sh .
 utf8: ## run file check : utf8
-	sh ./scripts/check-utf8.sh .
+	bash ./scripts/check-utf8.sh .
 test: ## run PHPUnit tests
-	sh ./vendor/bin/phpunit
+	php ./vendor/bin/phpunit
 check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, utf8, test
 
 seed: ## generate random data
