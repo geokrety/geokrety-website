@@ -101,11 +101,7 @@
                 {include file="navbar-profile.tpl"}
             </ul>
 
-
         </div>
-
-
-
 
     </div>
 </nav>
