@@ -36,6 +36,10 @@ class StaticPages extends Base {
         Smarty::render('pages/work_in_progress.tpl');
     }
 
+    public function app_version($f3) {
+        echo json_encode(['version' => GK_APP_VERSION], JSON_UNESCAPED_UNICODE);
+    }
+
     public static function _404($f3) {
         Smarty::render('pages/404.tpl');
     }

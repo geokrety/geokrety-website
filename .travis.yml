@@ -65,8 +65,11 @@ script:
   - (cd website/public && php index.php /health)
 
 stages:
+  - name: test
   - name: deploy
     if: branch IN (master, boly38, feature/new-theme) AND type = 'push'
+  - name: qaWait
+    if: branch IN (feature/new-theme, feature/ntQA) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
   - name: qaTests
     if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
 
@@ -75,7 +78,9 @@ jobs:
     - stage: deploy
       script:
         - scripts/export-translations-to-crowdin.sh
-
+    - stage: qaWait
+      script:
+        - bash ./scripts/app_version_wait.sh ${TRAVIS_BRANCH}
     - stage: qaTests
       script:
         # TRAVIS_QA_TOKEN from https://travis-ci.org/geokrety/geokrety-website/settings
