@@ -35,7 +35,7 @@ seed: ## generate random data
 ## DEV Local instance of geokrety
 #	mkdir -p ./website/templates
 build: ## build local docker compose
-	docker-compose -f ${LOCAL_COMPOSE} build
+	docker-compose -f ${LOCAL_COMPOSE} build --build-arg GIT_COMMIT=local
 start: ## run local docker compose of geokrety containers
 	docker-compose -f ${LOCAL_COMPOSE} up -d && echo "geokety is available at http://localhost:8000"
 stop: ## stop local docker compose of geokrety containers
