@@ -37,7 +37,7 @@
                     <dt>{t}Reference number{/t}</dt>
                     <dd title="{$geokret->gkid()}">{$geokret->gkid}</dd>
                     {if $geokret->isOwner() or $geokret->hasTouchedInThePast()}
-                    <dt><abbr title="Tracking Code">{t}Tracking Code{/t}</abbr></dt>
+                    <dt>{t}Tracking Code{/t}</dt>
                     <dd><strong>{$geokret->tracking_code}</strong></dd>
                     {/if}
                     <dt>{t}Total distance{/t}</dt>
