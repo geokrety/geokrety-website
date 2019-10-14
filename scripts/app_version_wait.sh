@@ -74,7 +74,5 @@ do
 done
 if [[ "${CURRENT_VERSION}" != "${EXPECTED_VERSION}" ]]; then
    echo "${DATETIME} endpoint not ready after ${ITERATION_MAX} iterations"
-   # TODO : remove me when staging will provided /app-version
-   exit 0
-   # exit 1;# failure
+   exit 1;# failure
 fi
