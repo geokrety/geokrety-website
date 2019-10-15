@@ -49,7 +49,10 @@ function getCurrentHash() {
   if [ ${CURL_STATUS} != 0 ] ; then
     echo "${DATETIME} endpoint not ready (${CURL_STATUS})"
   else
-    CURRENT_VERSION=$(echo "${CURL_RESULT}" | ${JQ_CMD} --raw-output .version 2>/dev/null|echo "${CURL_RESULT}")
+    CURRENT_VERSION=$(echo "${CURL_RESULT}" | ${JQ_CMD} --raw-output .version 2>/dev/null)
+    if [[ $? != 0 ]] ; then
+      CURRENT_VERSION=${CURL_RESULT}
+    fi
     if [[ "${CURRENT_VERSION}" != "${LAST_VERSION}" ]] ; then
       echo "${DATETIME} current version is: '${CURRENT_VERSION}'"
       LAST_VERSION=${CURRENT_VERSION}
@@ -74,7 +77,5 @@ do
 done
 if [[ "${CURRENT_VERSION}" != "${EXPECTED_VERSION}" ]]; then
    echo "${DATETIME} endpoint not ready after ${ITERATION_MAX} iterations"
-   # TODO : remove me when staging will provided /app-version
-   exit 0
-   # exit 1;# failure
+   exit 1;# failure
 fi
