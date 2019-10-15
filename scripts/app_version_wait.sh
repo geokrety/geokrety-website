@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #~ default values
-GIT_DESCRIBE_RESULT=$(git describe)
+GIT_DESCRIBE_RESULT=$(git describe --abbrev=8)
 DEFAULT_TARGET=http://localhost:8000/en
 DEFAULT_VERSION=${2:-$GIT_DESCRIBE_RESULT}
 
