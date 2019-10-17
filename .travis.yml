@@ -71,7 +71,7 @@ stages:
   - name: qaWait
     if: branch IN (feature/new-theme, feature/ntQA) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
   - name: qaTests
-    if: branch IN (master, boly38) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
+    if: branch IN (master, boly38, feature/new-theme) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
 
 jobs:
   include:
