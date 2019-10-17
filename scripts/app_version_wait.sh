@@ -4,6 +4,7 @@
 GIT_DESCRIBE_RESULT=$(git describe --abbrev=8)
 DEFAULT_TARGET=http://localhost:8000/en
 DEFAULT_VERSION=${2:-$GIT_DESCRIBE_RESULT}
+JQ_CMD=jq
 
 #~ input values
 QA_BRANCH=$1
@@ -27,30 +28,31 @@ CURRENT_VERSION=
 
 ## JQ Json Parser - https://github.com/stedolan/jq
 installJq() {
-    JQ_CMD=./jq-linux64
-    JQ_URL=https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
-    if [ "$OS" == "Windows_NT" ]; then
-      JQ_CMD=./jq-win64.exe
-      JQ_URL=https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe
-    fi
-    if [ ! -f ${JQ_CMD} ]; then
-      echo " * download jq"
-      curl -s -L ${JQ_URL} -o ${JQ_CMD}
-      echo " * chmod jq"
-      chmod +x ${JQ_CMD}
+    if ! command -v ${JQ_CMD}; then
+      if [ "$OS" == "Windows_NT" ]; then
+        JQ_CMD=./jq-win64.exe
+        JQ_URL=https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe
+        if [ ! -f ${JQ_CMD} ]; then
+          echo " * download jq"
+          curl -s -L ${JQ_URL} -o ${JQ_CMD}
+          echo " * chmod jq"
+          chmod +x ${JQ_CMD}
+        fi
+      else
+          echo "Error: the jq command is not available on your system."
+      fi
     fi
 }
 
 
 function getCurrentHash() {
   DATETIME=$(date '+%Y-%m-%d %H:%M:%S')
-  CURL_RESULT=$(curl -s $TARGET_URL)
+  CURL_RESULT=$(curl -s "$TARGET_URL")
   CURL_STATUS=$?
   if [ ${CURL_STATUS} != 0 ] ; then
     echo "${DATETIME} endpoint not ready (${CURL_STATUS})"
   else
-    CURRENT_VERSION=$(echo "${CURL_RESULT}" | ${JQ_CMD} --raw-output .version 2>/dev/null)
-    if [[ $? != 0 ]] ; then
+    if CURRENT_VERSION=$(echo "${CURL_RESULT}" | ${JQ_CMD} --raw-output .version 2>/dev/null); then
       CURRENT_VERSION=${CURL_RESULT}
     fi
     if [[ "${CURRENT_VERSION}" != "${LAST_VERSION}" ]] ; then
