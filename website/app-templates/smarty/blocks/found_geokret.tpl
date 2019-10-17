@@ -3,7 +3,7 @@
         <h4>{t}Found a GeoKret?{/t}</h4>
     </div>
     <div class="panel-body">
-        <p>
+        <p id="found-geokret-label">
             {t escape=no title="Tracking Code"}Please enter the <abbr title="%1">Tracking Code</abbr> here:{/t}
         </p>
         <form class="form" action="{'move_create'|alias}" method="get">
