@@ -177,12 +177,12 @@
   <li>OZ.... -- OpenCaching: <a href="http://www.opencaching.cz/">Чешская (CZ) база</a> -- обновляется в ручном режиме</li>
   <li>GA.... -- <a href="http://geocaching.com.au/">GeoCaching Австралия</a> -- обновляется раз в день (координаты, название тайника, ссылка)</li>
   <li>TR/MS/LT.... -- <a href="http://www.geocaching.su/">Геокешинг SU</a> -- обновляется каждые два часа (координаты, название тайника, ссылка, автор)</li>
-  <li>GE.... -- <a href="http://www.gpsgames.org/">gpsgames.org database</a> -- updated daily (lat, lon, cache name, link)</li>
-  <li>GD.... -- <a href="http://www.gpsgames.org/">gpsgames.org GeoDashing</a> waypoints (updated monthly)</li>
-  <li>unique name -- <a href="http://www.geopeitus.ee/">geopeitus.ee -- Estonian database</a> -- updated daily (lat, lon, cache name, link)</li>
-  <li>GR.... -- Geocaching Romania -- <a href="http://geocaching.plus.ro/">romanian database</a> -- updated manually</li>
-  <li>GC.... -- Geocaching Hungary -- <a href="http://www.geocaching.hu/">hungarian database</a> -- updated daily</li>
-  <li>WPG -- WaypointGame -- <a href="http://wpg.alleycat.pl/">Polish Waypoint Game</a> mainly for generating map -- updated daily</li>
+  <li>GE.... -- <a href="http://www.gpsgames.org/">база данных gpsgames.org</a> -- обновляется ежедневно (координаты, название тайника, ссылка)</li>
+  <li>GD.... -- <a href="http://www.gpsgames.org/">gpsgames.org GeoDashing</a> путевые точки (обновляется ежемесячно)</li>
+  <li>EE.... -- <a href="http://www.geopeitus.ee/">geopeitus.ee -- Эстонская база данных</a> -- обновляется ежедневно (координаты, название тайника, ссылка)</li>
+  <li>GR.... -- Геокешинг Румыния -- <a href="http://geocaching.plus.ro/">Румынская база данных</a> -- обновляется в ручном режиме</li>
+  <li>GC.... -- Геокешинг Венгрия -- <a href="http://www.geocaching.hu/">Венгерская база данных</a> -- обновляется ежедневно</li>
+  <li>WPG -- WaypointGame -- <a href="http://wpg.alleycat.pl/">Польская игра путевох точек</a> в основном для создания карт -- обновляется ежедневно</li>
 </ul>
 
 <a id="partiallysupportedwaypoints"></a>
@@ -207,21 +207,22 @@
     <p>- <a href="https://www.mozilla.com/firefox/">Mozilla Firefox</a>, также необходимо <a href="https://addons.mozilla.org/firefox/addon/748">расширение Greasemonkey</a>. Установить GKT для Firefox можно <b><a href="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js">здесь</a></b>.</p>
     <p>- <a href="https://www.google.com/chrome">Google Chrome</a>. Установить GKT для Chrome можно <b><a href="https://chrome.google.com/extensions/detail/ldbheajkebdflbjdckojokbfdndkahnl">здесь</a></b>.</p>
 
-    Вам также необходимо быть зарегистрированным на сайте geokrety.org. After installing GKT in your browser, you will see an extra [<strong> Geo<span style="color: white; background-color: #303030;">Krety</span>.org </strong>] panel on the right hand side of every GC cache page.
-    From the list of GeoKrety pick the one you wish to drop and click "Drop selected GK" - you will be redirected to the standard logging page with both the GC Code and coordinates already filled in. Check the date, add a comment and you're done. <br
+    Вам также необходимо быть зарегистрированным на сайте geokrety.org. После установки GKT в Вашем браузере Вы увидите дополнительную панель [<strong> Geo<span style="color: white; background-color: #303030;">Krety</span>.org </strong>]
+с правой стороны каждой страницы GC тайника.
+    Из списка GeoKrety выберите ту, которую Вы хотите выбросить, и нажмите "Drop selected GK" - Вы будете перенаправлены на стандартную страницу журнала с кодом GC и уже заполненными координатами. Проверьте дату, добавьте комментарий и Вы закончили. <br
     />
 
-    <p>Here is how GKT looks like:</p>
+    <p>Вот как выглядит GKT:</p>
 
     <p><img style="border: 1px solid #ccc;" src="https://cdn.geokrety.org/images/help/gkt_screenshot030_1.png" alt="GKT screenshot" /> <img style="border: 1px solid #ccc;" src="https://cdn.geokrety.org/images/help/gkt_screenshot030_2.png" alt="GKT screenshot"
       /> <img style="border: 1px solid #a7d940;" src="https://cdn.geokrety.org/images/help/gkt_screenshot030_3.png" alt="GKT screenshot" /></p>
   </li>
 
-  <li>Вручную. Go to <strong><a href="ruchy.php">Log a GeoKret</a></strong> page and under the section <strong>New location</strong> enter the following:
+  <li>Вручную. Перейдите на страницу <strong><a href="ruchy.php">Записать GeoKret</a></strong> и под разделом <strong>Новое местоположение</strong> введите следующее:
 
     <ol>
-      <li>in the waypoint field, enter the GC Code of the cache (eg. GC1AQ2N).</li>
-      <li>in the lat/lon field, enter the coordinates of the cache (you can copy-paste it directly from cache page or <a href="#acceptableformats">use other acceptable formats</a>)</li>
+      <li>в поле путевой точки, введите код GC тайника (например. GC1AQ2N).</li>
+      <li>в поле координат введите координаты тайника (можно скопировать его прямо с страницы тайника или <a href="#acceptableformats">использовать другие приемлемые форматы</a>)</li>
     </ol>
 
     <p>Пример:</p>
@@ -229,11 +230,10 @@
     <p><img src="https://cdn.geokrety.org/images/help/location-dla-gc3.png" alt="how to log GK for GC caches" width="787" height="824" /></p>
   </li>
   <li>
-    <p><b>Note:</b> <a href="'.htmlspecialchars('https://forums.groundspeak.com/GC/index.php?s=8154d8ac03f5b64142fb5d1587b53c11&showtopic=232614&view=findpost&p=4083361').'">according to groundspeak</a>, geocaching.com users may use and log geokrety ;):<br
+    <p><b>Примечание:</b> <a href="'.htmlspecialchars('https://forums.groundspeak.com/GC/index.php?s=8154d8ac03f5b64142fb5d1587b53c11&showtopic=232614&view=findpost&p=4083361').'">согласно groundspeak</a>, пользователи geocaching.com могут резистрировать geoKrety ;):<br
       />
 
-      <i>I have checked with Brian, and his definitive answer is that these 'rogue' TBs are not of concern to us - reviewers and GS staff. We cannot
-govern their usage, and Geocachers are allowed to give out GC codes.</i>
+      <i>Я проверил с Brian и его окончательный ответ, что эти ТБ не наша забота - рецензентов и сотрудников GS. Мы не можем регулировать их использование и пользователям разрешено выдавать для них коды GC.</i>
     </p>
   </li>
 
@@ -276,31 +276,31 @@ govern their usage, and Geocachers are allowed to give out GC codes.</i>
   </thead>
   <tr>
     <td class="mid"><img src="https://cdn.geokrety.org/images/icons/edit.png" alt="" width="16" height="16" /></td>
-    <td><strong>edit</strong> - an email address, description, log entry</td>
+    <td><strong>отредактируйте</strong> - адрес электронной почты, описание, запись журнала</td>
   </tr>
   <tr>
     <td class="mid"><img src="https://cdn.geokrety.org/images/icons/delete.png" alt="" width="16" height="16" /></td>
-    <td><strong>delete</strong> - a log entry, photo or comment</td>
+    <td><strong>удалить</strong> - запись журнала, фото или комментарий</td>
   </tr>
   <tr>
     <td class="mid"><img src="https://cdn.geokrety.org/images/icons/image.png" alt="" width="16" height="16" /></td>
-    <td><strong>upload photo</strong> - attach a photo to a log entry or your profile</td>
+    <td><strong>загрузить фото</strong> - прикрепить фото к записи журнала или Вашему профилю</td>
   </tr>
   <tr>
     <td class="mid"><img src="https://cdn.geokrety.org/images/icons/usmiech.png" alt="" width="16" height="16" /></td>
-    <td><strong>known GeoKret</strong> - you already logged this GeoKret before, now you can log it without its Tracking Code (it is provided for you automatically)</td>
+    <td><strong>известный GeoKret</strong> - Вы уже зарегистрировали этот GeoKret раньше, теперь Вы можете занести запись в журнал без кода отслеживания (код предоставляется Вам автоматически)</td>
   </tr>
   <tr>
     <td class="mid"><img src="https://cdn.geokrety.org/images/icons/idcard.png" alt="" width="14" height="10" /></td>
-    <td><strong>avatar</strong> - move mouse over this icon to see GeoKret's avatar</td>
+    <td><strong>аватар</strong> - проведите курсор мыши по этому значку, чтобы увидеть GeoKret аватар</td>
   </tr>
   <tr>
     <td class="mid"><img src="https://cdn.geokrety.org/images/icons/comment_new16.png" alt="" width="16" height="16" /></td>
-    <td><strong>comment</strong> - you may comment a log entry or a news post</td>
+    <td><strong>комментируйте</strong> - Вы можете комментировать запись в журнале или новость</td>
   </tr>
   <tr>
     <td class="mid"><img src="https://cdn.geokrety.org/images/icons/missing16.png" alt="" width="16" height="16" /></td>
-    <td><strong>report missing</strong> - you may report a GeoKret missing if you have visited the cache where the GeoKret should be but it wasn't there</td>
+    <td><strong>отсылайте сообщение</strong> - Вы можете сообщить о пропавшем GeoKret, если Вы посетили тайник, где GeoKret должен быть, но его там не было</td>
   </tr>
 </table>
 
@@ -316,25 +316,24 @@ govern their usage, and Geocachers are allowed to give out GC codes.</i>
 
 <a id="altitude"></a>
 <div class="rozdzial">Высота и код стран</div>
-<p>Thanks to <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> and <a href="https://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html">GTOPO30</a> elevation data and lat/lon to country code conversion (<a href="http://www.geonames.org/">geonames</a>),
-  each trip point has assigned an altitude and country code (a flag). According to that data, the altitude profile is drawn. Above data and plots are updated every 10-15 minutes.</p>
+<p>Благодаря <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> и <a href="https://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html">GTOPO30</a> данным высоты и координатам к конвертации кода страны (<a href="http://www.geonames.org/">geonames</a>),
+для каждого пункта назначения установлена высота над уровнем моря и код страны (флаг). По данным, рисуется профиль высоты. Данные обновляются каждые 10-15 минут.</p>
 
 
 <a id="qr"></a>
 <div class="rozdzial">QR код</div>
-<p>For easy logging dropping or grabbing during your trip, I've added the possibility of attaching QR code on the GK label. QR Code is a kind of bar code, which can be "scanned" by your mobile phone, which will redirect you to the proper page at geokrety.org;
-  you will not have to enter the tracking code, everything will be encrypted in the QR. <a href="https://en.wikipedia.org/wiki/QR_Code ">Read more about QR Code</a>.</p>
+<p>Для возможности быстро занести запись в журнал во время поездки, мы добавили возможность прикладывать QR-код на метку GK. QR-код — это вид штрих-кода, который при отсканирован с мобильного телефона, перенаправляет Вас на соответствующую страницу на geokrety.org; Вам не придётся вводить код отслеживания, все будет зашифровано в QR. <a href="https://en.wikipedia.org/wiki/QR_Code ">Подробнее о QR-коде</a>.</p>
 
 <p><img src="https://cdn.geokrety.org/images/help/qr-geokrety.png" alt="QR code of geokrety.org" width="132" height="132" /></p>
-<p>The QR code with encrypted address of geokrety.org page.</p>
+<p>QR-код с зашифрованным адресом страницы geokrety.org.</p>
 
-<p><strong>When you find a GeoKret with QR code on the label you can:</strong></p>
+<p><strong>Когда Вы находите GeoKret с QR-кодом на метке, Вам необходимо:</strong></p>
 <p><img src="https://cdn.geokrety.org/images/help/qr-instrukcja.png" alt="instructions" /></p>
 
 <ol>
   <li>Сфотографируй код с помощью мобильного телефона</li>
   <li>Разшифруй его и нажми на URL</li>
-  <li>Log the grabbing or hiding the GeoKret. The tracking code will be indicated by the url.</li>
+  <li>Запиши свои действия с GeoKret. Код отслеживания будет указан по url.</li>
 </ol>
 
 <p><strong>Как декодировать</strong></p>
@@ -344,12 +343,12 @@ govern their usage, and Geocachers are allowed to give out GC codes.</i>
 <a id="othertrackable"></a>
 <div class="rozdzial">Другие трекаблы</div>
 
-<p>There are others trackable items systems:</p>
+<p>Существуют другие системы отслеживания элементов:</p>
 <ul>
   <li><a href="https://www.geocaching.com/track/">TravelBugs</a></li>
   <li><s><a href="http://www.geocachearmy.com">www.geocachearmy.com</a></s></li>
   <li><a href="http://www.geolutins.com">www.geolutins.com</a></li>
-  <li><a href="https://geotrackable.com">geotrackable.com"</a></li>
+  <li><a href="https://geotrackable.com">geotrackable.com</a></li>
   <li><s><a href="http://www.travelertags.com">www.travelertags.com</a></s></li>
   <li><a href="http://www.pathtags.com">www.pathtags.com</a></li>
 </ul>
@@ -357,25 +356,24 @@ govern their usage, and Geocachers are allowed to give out GC codes.</i>
 <a id="privacy"></a>
 <div class="rozdzial">Защита персональных данных</div>
 
-<p>Your e-mail address will be not transferred to third parties. Your password is one-way encrypted, so it can not be revealed.</p>
+<p>Ваш адрес электронной почты не будет передан третьим лицам. Ваш пароль односторонне шифрованный, поэтому он не может быть раскрыт.</p>
 
 <a id="cookies"></a>
 <div class="rozdzial">Политика использования Cookies</div>
 
-<p>This website uses cookies to store some information necesarry to use the site in convinient way. We use cookies for: <strong>1)</strong> Storing login information (verify logged in user) and <strong>2)</strong> Storing language preferences. Both are absolutelly
-  harmless. That's it! :)</p>
+<p>Этот сайт использует cookies для хранения некоторой информации, что необходимо для удобного использовия сайтом. Мы используем cookies для: <strong>1)</strong> Сохранение логин информации (проверка авторизации пользователя) и <strong>2)</strong> Сохранение языковых предпочтений. Оба пункта абсолютно безвредны. Вот и всё! :)</p>
 
-<p>However, if you would like to, you can change your cookie settings <a href="https://www.aboutcookies.org/Default.aspx?page=1">at any time in your browser</a>.</p>
+<p>Однако, если Вы хотите, Вы можете изменить настройки cookie <a href="https://www.aboutcookies.org/Default.aspx?page=1">в любое время в браузере</a>.</p>
 
 <a id="https"></a>
-<div class="rozdzial">HTTPS and SSL</div>
+<div class="rozdzial">HTTPS и SSL</div>
 
-<p>You can use secure connection (https) with our server: <a href="https://geokrety.org">https://geokrety.org</a> or use a padlock icon at the bottom of page.</p>
+<p>Вы можете использовать безопасное соединение (https) с нашим сервером: <a href="https://geokrety.org">https://geokrety.org</a> или использовать значок блокировки в нижней части страницы.</p>
 
 <a id="morehelp"></a>
 <div class="rozdzial">Нужна дополнительная помощь?</div>
 
-<p>To get more help on GeoKrety <a href="https://geokrety.org/kontakt.php">contact us</a> or visit the forums:</p>
+<p>Чтобы получить больше помощи на GeoKrety <a href="https://geokrety.org/kontakt.php">свяжитесь с нами</a> или посетите форумы:</p>
 
 #GK_SOCIAL_GROUPS#
 

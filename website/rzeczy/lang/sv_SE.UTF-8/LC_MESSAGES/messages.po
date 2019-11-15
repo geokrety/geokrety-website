@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-24 22:45+0000\n"
-"PO-Revision-Date: 2019-09-06 04:31\n"
+"PO-Revision-Date: 2019-10-25 02:30\n"
 "Last-Translator: geokrety\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
@@ -74,7 +74,12 @@ msgid "Read more about choosing good passwords:\n"
 "<li><a href=\"http://www.csoonline.com/article/220721/how-to-write-good-passwords\">How to Write Good Passwords</a></li>\n"
 "<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Password strength</a></li>\n"
 "</ul>"
-msgstr ""
+msgstr "Läs mer om att välja bra lösenord:\n"
+"<ul>\n"
+"<li><a href=\"http://hitachi-id.com/password-manager/docs/choosing-good-passwords.html\">Choosing Good Passwords -- A User Guide</a></li>\n"
+"<li><a href=\"http://www.csoonline.com/article/220721/how-to-write-good-passwords\">How to Write Good Passwords</a></li>\n"
+"<li><a href=\"http://en.wikipedia.org/wiki/Password_strength\">Password strength</a></li>\n"
+"</ul>"
 
 #: website/adduser.php:149 website/adduser.php:152
 msgid "No password"
@@ -91,7 +96,7 @@ msgstr "Lösenord är för kort (bör vara> = 5 tecken)!"
 #: website/adduser.php:180
 #, php-format
 msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
-msgstr ""
+msgstr "Det verkar som om <a href='mypage.php?userid=%s'>ditt konto</a> redan har skapats."
 
 #: website/adduser.php:181
 msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
@@ -111,11 +116,11 @@ msgstr "Har du glömt ditt lösenord?"
 
 #: website/adduser.php:189
 msgid "The username you entered is already in use."
-msgstr ""
+msgstr "Användarnamnet du angav används redan."
 
 #: website/adduser.php:196
 msgid "The email you entered is already in use."
-msgstr ""
+msgstr "E-postadressen du angav används redan."
 
 #: website/adduser.php:212
 msgid "Wrong email address?"
@@ -123,11 +128,11 @@ msgstr "Fel e-postadress?"
 
 #: website/adduser.php:215 website/majluj.php:190 website/new_password.php:88
 msgid "reCaptcha failed!"
-msgstr ""
+msgstr "reCaptcha misslyckades!"
 
 #: website/adduser.php:264
 msgid "Account successfully created"
-msgstr ""
+msgstr "Konto har skapats"
 
 #: website/adduser.php:267
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
@@ -139,7 +144,7 @@ msgstr ""
 
 #: website/aktywuj_maila.php:55
 msgid "Bad confirmation code or other error."
-msgstr ""
+msgstr "Dålig bekräftelsekod eller annat fel."
 
 #: website/api.php:8
 msgid "GK XML interface"
@@ -180,16 +185,16 @@ msgstr "&quot;&quot; Vänligen lämna alla upplysningar som kan hjälpa ägaren 
 
 #: website/comment.php:164
 msgid "Log:"
-msgstr ""
+msgstr "Logg:"
 
 #: website/comment.php:164 website/comment.php:179
 #, php-format
 msgid "By %s, on %s"
-msgstr ""
+msgstr "Av %s, på %s"
 
 #: website/comment.php:179
 msgid "Last comment:"
-msgstr ""
+msgstr "Senaste kommentar:"
 
 #: website/comment.php:190
 msgid "Your comment"
@@ -205,28 +210,28 @@ msgstr ""
 
 #: website/confirm.php:32 website/confirm.php:40
 msgid "Bad confirmation code."
-msgstr ""
+msgstr "Dålig bekräftelsekod."
 
 #: website/confirm.php:49
 msgid "This confirmation code has expired."
-msgstr ""
+msgstr "Denna bekräftelsekod är utgången."
 
 #: website/confirm.php:49
 #, php-format
 msgid "To change your email %sclick here%s."
-msgstr ""
+msgstr "För att ändra din e-post %sklicka här%s."
 
 #: website/confirm.php:66
 msgid "This confirmation code has already been processed."
-msgstr ""
+msgstr "Denna bekräftelsekod har redan bearbetats."
 
 #: website/cords_parse.php:236
 msgid "Bad coordinates or unknown format."
-msgstr ""
+msgstr "Dåliga koordinater eller okänt format."
 
 #: website/cords_parse.php:244
 msgid "Missing or invalid coordinates."
-msgstr ""
+msgstr "Saknade eller ogiltiga koordinater."
 
 #: website/cotozalog.php:8 website/templates/konfig.php:221
 msgid "Dropped to"
@@ -305,7 +310,7 @@ msgstr "Statistik per land"
 
 #: website/country_stat.php:30
 msgid "Where are GeoKrety now?"
-msgstr ""
+msgstr "Var är GeoKrety nu?"
 
 #: website/czy_obserwowany.php:42
 msgid "Number of users who are watching this geokret"
@@ -351,7 +356,7 @@ msgstr "Översättningsfil"
 
 #: website/download.php:15
 msgid "Our translation files are now hosted on crowdin."
-msgstr ""
+msgstr "Vår översättningsfiler finns nu tillgängliga hos crowdin."
 
 #: website/download.php:16
 msgid "Suggest a better translation"
@@ -370,11 +375,11 @@ msgstr ""
 
 #: website/download.php:25
 msgid "Read more and get the map"
-msgstr ""
+msgstr "Läs mer och hämta kartan"
 
 #: website/download.php:28
 msgid "GeoKrety logo"
-msgstr ""
+msgstr "GeoKrety logo"
 
 #: website/download.php:35
 msgid "Sample geokret label"
@@ -382,7 +387,7 @@ msgstr "Exempel på en geokret-etikett"
 
 #: website/download.php:36
 msgid "Please note, that you can create a label for your geokret automatically, by clicking on the appropriate link on the GK's page."
-msgstr ""
+msgstr "Notera att du kan skapa en etikett för din geokret automatiskt, genom att klicka på motsvarande länk på sidan för denna GK."
 
 #: website/edit.php:12 website/ruchy.php:670
 msgid "Edit"
@@ -422,7 +427,7 @@ msgstr "Hemkoordinater"
 
 #: website/edit.php:329
 msgid "Use the map to select a location or enter coordinates manually."
-msgstr ""
+msgstr "Använd kartan för att välja en plats eller ange koordinater manuellt."
 
 #: website/edit.php:329 website/race_join.php:41 website/ruchy.php:916
 #: website/szukaj.php:85 website/szukaj.php:93 website/szukaj.php:116
@@ -432,11 +437,11 @@ msgstr "t.ex.."
 #: website/edit.php:329
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Other acceptable lat/lon formats</a>"
-msgstr ""
+msgstr "<a href=\"%s\" target=\"_blank\">Andra tillåtna lat/lon-format</a>"
 
 #: website/edit.php:340 website/mypage.php:157
 msgid "Observation area"
-msgstr ""
+msgstr "Observationsarea"
 
 #: website/edit.php:342
 msgid "You can receive notification if any geokret is logged within the specified distance of your home coordinates. To disable enter 0."
@@ -460,11 +465,11 @@ msgstr ""
 
 #: website/edit.php:406
 msgid "GeoKrety.org news"
-msgstr ""
+msgstr "GeoKrety.org nyheter"
 
 #: website/edit.php:452 website/edit.php:455
 msgid "[GeoKrety] Email address change request at geokrety.org"
-msgstr ""
+msgstr "[GeoKrety] Förfrågan om ändring av e-postadress på geokrety.org"
 
 #: website/edit.php:458
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link is valid for 5 days."
@@ -472,7 +477,7 @@ msgstr ""
 
 #: website/edit.php:461
 msgid "Error, please try again later..."
-msgstr ""
+msgstr "Fel, försök igen senare..."
 
 #: website/edit.php:468
 msgid "Wrong email or subscribtion option"
@@ -493,7 +498,7 @@ msgstr "GeoKret-typ"
 
 #: website/edit.php:563 website/register.php:57
 msgid "help.php#geokretytypes"
-msgstr ""
+msgstr "help.php#geokretytypes"
 
 #: website/edit.php:567 website/generatorek.php:140 website/konkret.php:292
 #: website/labels.php:83 website/recent_comments_fn.php:102
@@ -510,7 +515,7 @@ msgstr "tecken kvar"
 
 #: website/email2gk.php:10
 msgid "Email2GK :: β (beta)"
-msgstr ""
+msgstr "Email2GK :: β (beta)"
 
 #: website/errory.php:9
 msgid "errors"
@@ -619,7 +624,7 @@ msgstr "Visa grupp"
 #: website/templates.php:249 website/templates.php:315
 #: website/templates/krety.html:200
 msgid "Hall of fame"
-msgstr ""
+msgstr "Topplista"
 
 #: website/halloffame.php:23
 msgid "Developers"
@@ -645,7 +650,7 @@ msgstr "Översättningar"
 
 #: website/halloffame.php:112
 msgid "Credits"
-msgstr ""
+msgstr "Medverkande"
 
 #: website/imgup.php:72
 msgid "Invalid input"
@@ -714,7 +719,7 @@ msgstr "Använd som avatar"
 #: website/imgup.php:392
 #, php-format
 msgid "Geokret's main picture, displayed under this icon: %s"
-msgstr ""
+msgstr "Geokret:s huvudbild, visas under denna ikon: %s"
 
 #: website/imgup.php:393
 msgid "Remember"
@@ -733,15 +738,15 @@ msgstr "Hem"
 
 #: website/index.php:86
 msgid "admin"
-msgstr ""
+msgstr "admin"
 
 #: website/index.php:89 website/index.php:300
 msgid "Welcome to GeoKrety.org!"
-msgstr ""
+msgstr "Välkommen till GeoKrety.org!"
 
 #: website/index.php:94 website/index.php:301
 msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
-msgstr ""
+msgstr "Denna tjänst liknar TravelBug(TM) eller GeoLutins och siktar på att spåra saker du lägger i geocache-containers... <a href=\"help.php#about\">läs mer...</a>"
 
 #: website/index.php:100
 msgid "registered GeoKrets"
@@ -766,7 +771,7 @@ msgstr ""
 
 #: website/index.php:111 website/ruchy.php:1036
 msgid "Go!"
-msgstr ""
+msgstr "Kör!"
 
 #: website/index.php:113 website/templates.php:12 website/templates.php:75
 #: website/templates.php:201 website/templates.php:264
@@ -786,7 +791,7 @@ msgstr "Kommentarer"
 
 #: website/index.php:208
 msgid "Recent logs on the map"
-msgstr ""
+msgstr "Senaste loggar på kartan"
 
 #: website/index.php:225
 msgid "Recently uploaded images"
@@ -802,11 +807,11 @@ msgstr "Online-användare"
 
 #: website/index.php:275
 msgid "Join our translation team"
-msgstr ""
+msgstr "Gå med i vårt översättnings-team"
 
 #: website/index.php:275
 msgid "Suggest a better translation - inline"
-msgstr ""
+msgstr "Föreslå en bättre översättning - inline"
 
 #: website/index.php:275
 msgid "visits/day"
@@ -814,7 +819,7 @@ msgstr "besök/dag"
 
 #: website/konkret-tabelka.php:188
 msgid "Report as missing"
-msgstr ""
+msgstr "Rapportera som saknad"
 
 #: website/konkret-tabelka.php:222 website/lingering.php:115
 #: website/mygeokrets.php:180 website/recent_moves.php:176
@@ -897,7 +902,7 @@ msgstr "Logga denna GeoKret"
 
 #: website/konkret.php:116
 msgid "Recreate a label for this geokret"
-msgstr ""
+msgstr "Återskapa en etikett för denna geokret"
 
 #: website/konkret.php:147
 msgid "Altitude profile"
@@ -927,11 +932,11 @@ msgstr ""
 
 #: website/konkret.php:248
 msgid "You can rate this GeoKret"
-msgstr ""
+msgstr "Du kan betygsätta denna GeoKret"
 
 #: website/konkret.php:251
 msgid "You have already rated this GeoKret"
-msgstr ""
+msgstr "Du har redan betygsatt denna GeoKret"
 
 #: website/konkret.php:253
 msgid "You can't rate your own GeoKret"
@@ -939,7 +944,7 @@ msgstr ""
 
 #: website/konkret.php:255
 msgid "You can't rate this geokret"
-msgstr ""
+msgstr "Du kan inte betygsätta denna geokret"
 
 #: website/konkret.php:273
 msgid "Total distance"
@@ -959,7 +964,7 @@ msgstr "Spåra land"
 
 #: website/konkret.php:277
 msgid "Rating"
-msgstr ""
+msgstr "Betyg"
 
 #: website/konkret.php:279
 msgid "votes"
@@ -967,7 +972,7 @@ msgstr "röster"
 
 #: website/konkret.php:279
 msgid "average rating"
-msgstr ""
+msgstr "genomsnittsbetyg"
 
 #: website/konkret.php:283
 msgid "Share on"
@@ -979,23 +984,23 @@ msgstr "Kort beskrivning"
 
 #: website/konkret.php:297
 msgid "Actions"
-msgstr ""
+msgstr "Åtgärder"
 
 #: website/konkret.php:318
 msgid "This geokret has not started yet"
-msgstr ""
+msgstr "Denna geokret har inte startat än"
 
 #: website/konkret.php:331
 msgid "start"
-msgstr ""
+msgstr "start"
 
 #: website/konkret.php:332
 msgid "trip points"
-msgstr ""
+msgstr "res-poäng"
 
 #: website/konkret.php:333
 msgid "recently seen"
-msgstr ""
+msgstr "nyligen sedda"
 
 #: website/konkret.php:336
 msgid "Map"
@@ -1007,15 +1012,15 @@ msgstr ""
 
 #: website/konkret.php:339
 msgid "Download the track as:"
-msgstr ""
+msgstr "Ladda ner spåret som:"
 
 #: website/konkret.php:350
 msgid "unable to initialize map"
-msgstr ""
+msgstr "kunde inte initialisera karta"
 
 #: website/konkret.php:351
 msgid "last seen here !"
-msgstr ""
+msgstr "senaste sedd här !"
 
 #: website/kontakt.php:10
 msgid "Contact"
@@ -1112,7 +1117,7 @@ msgstr "Antal besökta cacher"
 
 #: website/longin.php:42
 msgid "You have successfully logged out of GeoKrety website."
-msgstr ""
+msgstr "Du har loggat ut ur GeoKretys webbplats."
 
 #: website/longin.php:44
 msgid "You are probably logged in."
@@ -1136,7 +1141,7 @@ msgstr ""
 
 #: website/longin_chceck.php:26
 msgid "Wrong secid identifier"
-msgstr ""
+msgstr "Fel secid-identifierare"
 
 #: website/lost.php:9 website/templates.php:33 website/templates.php:96
 #: website/templates.php:222 website/templates.php:285
@@ -1154,7 +1159,7 @@ msgstr ""
 
 #: website/lost.php:14
 msgid "The list is generated daily."
-msgstr ""
+msgstr "Listan genereras dagligen."
 
 #: website/lost_mapka.php:10 website/mapa.php:9 website/mapka_kretow.php:10
 #: website/race.php:335
@@ -1168,12 +1173,12 @@ msgstr ""
 #: website/m/qr.php:25
 #, php-format
 msgid "<strong>%s</strong> by %s</h1>"
-msgstr ""
+msgstr "<strong>%s</strong> av %s</h1>"
 
 #: website/m/qr.php:26
 #, php-format
 msgid "Travelled %s km"
-msgstr ""
+msgstr "Rest %s km"
 
 #: website/m/qr.php:29
 msgid "Log grabbing or dropping"
@@ -1181,16 +1186,16 @@ msgstr ""
 
 #: website/m/qr.php:30
 msgid "View the GK details"
-msgstr ""
+msgstr "Visa GK-detaljerna"
 
 #: website/m/qr.php:33
 msgid "Description:"
-msgstr ""
+msgstr "Beskrivning:"
 
 #: website/m/qr.php:37
 #, php-format
 msgid "<a href=\"%s\">%s</a>, the home of free, trackable moles."
-msgstr ""
+msgstr "<a href=\"%s\">%s</a>, hem för gratis, spårbara mullvadar."
 
 #: website/majluj.php:8
 msgid "Contact with user"
@@ -1198,7 +1203,7 @@ msgstr "Kontakt med anvädaren"
 
 #: website/majluj.php:35
 msgid "Wrong recipient"
-msgstr ""
+msgstr "Fel mottagare"
 
 #: website/majluj.php:52 website/majluj.php:184
 msgid "This user haven't defined an email address."
@@ -1231,7 +1236,7 @@ msgstr "Ok"
 #: website/majluj.php:187
 #, php-format
 msgid "Sorry, but you have to wait %d minutes before you can send another message."
-msgstr ""
+msgstr "Tyvärr, men du måste vänta %d minuter innan du kan skicka fler meddelanden."
 
 #: website/molehole.php:71
 msgid "a GK hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GK. Cachers may grab or drop GK"
@@ -1255,7 +1260,7 @@ msgstr "Denna användare är inte inloggad"
 
 #: website/mypage.php:66
 msgid "keep secret!"
-msgstr ""
+msgstr "håll hemligt!"
 
 #: website/mypage.php:67
 msgid "The old secid will be deleted and the new one will be generated. You will have to update the secid in all applications which are using the code."
@@ -1263,11 +1268,11 @@ msgstr ""
 
 #: website/mypage.php:67
 msgid "Are you sure?"
-msgstr ""
+msgstr "Är du säker?"
 
 #: website/mypage.php:68
 msgid "Generate new secid"
-msgstr ""
+msgstr "Generera nytt secid"
 
 #: website/mypage.php:107 website/mypage.php:383 website/templates.php:162
 #: website/templates/plugins/function.login_check.php:47
@@ -1302,7 +1307,7 @@ msgstr "Skicka ett meddelande till användaren"
 
 #: website/mypage.php:315
 msgid "To change your username or remove your account, send us <a href=\"/kontakt.php\">an email</a>."
-msgstr ""
+msgstr "För att ändra ditt användarnamn eller ta bort ditt konto, skicka oss <a href=\"/kontakt.php\">ett e-postmeddelande</a>."
 
 #: website/mypage.php:316
 msgid "Joined us"
@@ -1318,7 +1323,7 @@ msgstr "Håll dig uppdaterad om dina och dina bevakade GeoKrets!"
 
 #: website/mypage.php:346 website/mypage.php:388 website/user_stat.php:194
 msgid "User stats"
-msgstr ""
+msgstr "Användarstatistik"
 
 #: website/mypage.php:353
 msgid "Badges"
@@ -1370,12 +1375,14 @@ msgstr "För att få ett nytt lösenord, uppge din e-postadress. Ett nytt lösen
 msgid "Your new password in GeoKrety service is: %s\n\n"
 "Request from: %s :: %s\n"
 "If this mail is unwanted, contact us by replying to this mail."
-msgstr ""
+msgstr "Ditt nya lösenord hos GeoKrety-tjänsten är: %s\n\n"
+"Begäran från: %s :: %s\n"
+"Om detta mail är oönskat, kontakta oss genom att svara på detta mail."
 
 #: website/new_password.php:81
 #, php-format
 msgid "New password sent to %s"
-msgstr ""
+msgstr "Nytt lösenord skickat till %s"
 
 #: website/new_password.php:85
 msgid "No such email"
@@ -1383,7 +1390,7 @@ msgstr "E-postadressen finns ej"
 
 #: website/newscomments.php:118
 msgid "News post not found."
-msgstr ""
+msgstr "Nyhetsinlägg kunde inte hittas."
 
 #: website/newscomments.php:230
 msgid "Unsubscribe from this news post"
@@ -1436,7 +1443,7 @@ msgstr "lösenord"
 #: website/race.php:387 website/race_join.php:8 website/race_list.php:50
 #: website/race_list.php:52 website/race_list.php:57
 msgid "Join the Race"
-msgstr ""
+msgstr "Gå med i loppet"
 
 #: website/race.php:63 website/race_list.php:55
 msgid "no"
@@ -1444,25 +1451,25 @@ msgstr "nej"
 
 #: website/race.php:72
 msgid "Edit this race"
-msgstr ""
+msgstr "Redigera detta lopp"
 
 #: website/race.php:85 website/race_list.php:71
 msgid "Distance to destination"
-msgstr ""
+msgstr "Distans till mål"
 
 #: website/race.php:90 website/race_list.php:75
 #, php-format
 msgid "% of target distance done"
-msgstr ""
+msgstr "% av måldistans klart"
 
 #: website/race.php:94 website/race_list.php:79
 #, php-format
 msgid "% of target caches visited"
-msgstr ""
+msgstr "% av mål-cacher besökta"
 
 #: website/race.php:103 website/race_list.php:98
 msgid "Rank"
-msgstr ""
+msgstr "Rankning"
 
 #: website/race.php:107
 msgid "Last log"
@@ -1470,7 +1477,7 @@ msgstr "Senaste logg"
 
 #: website/race.php:110 website/race_list.php:103
 msgid "Average speed"
-msgstr ""
+msgstr "Medelhastighet"
 
 #: website/race.php:217 website/race_list.php:128 website/race_list.php:130
 #: website/race_list.php:132
@@ -1479,21 +1486,21 @@ msgstr "km/dag"
 
 #: website/race.php:274 website/race_list.php:171
 msgid "Race information"
-msgstr ""
+msgstr "Lopp-information"
 
 #: website/race.php:279 website/race.php:412 website/race_list.php:176
 #: website/race_list.php:273
 msgid "Race status"
-msgstr ""
+msgstr "Lopp-status"
 
 #: website/race.php:291 website/race.php:411 website/race_add.php:147
 #: website/race_list.php:188 website/race_list.php:272
 msgid "Race type"
-msgstr ""
+msgstr "Lopp-typ"
 
 #: website/race.php:297 website/race_add.php:127 website/race_list.php:194
 msgid "Start date"
-msgstr ""
+msgstr "Startdatum"
 
 #: website/race.php:304 website/race_add.php:134 website/race_list.php:201
 msgid "End date"
@@ -1501,51 +1508,51 @@ msgstr "Slutdatum"
 
 #: website/race.php:311 website/race_add.php:120 website/race_list.php:208
 msgid "Private race"
-msgstr ""
+msgstr "Privat lopp"
 
 #: website/race.php:319 website/race_add.php:141 website/race_list.php:216
 msgid "Race description"
-msgstr ""
+msgstr "Lopp-beskrivning"
 
 #: website/race.php:325 website/race.php:355
 msgid "Geokrety races"
-msgstr ""
+msgstr "Geokrety-lopp"
 
 #: website/race.php:339 website/race_list.php:227
 msgid "Race participants"
-msgstr ""
+msgstr "Lopp-deltagare"
 
 #: website/race.php:344
 msgid "No participants. Yet..."
-msgstr ""
+msgstr "Inga deltagare. Än..."
 
 #: website/race.php:347 website/race_list.php:232
 msgid "Race"
-msgstr ""
+msgstr "Lopp"
 
 #: website/race.php:383 website/race_add.php:8
 msgid "Register a new Race"
-msgstr ""
+msgstr "Registrera ett nytt lopp"
 
 #: website/race.php:391
 msgid "My races"
-msgstr ""
+msgstr "Mina lopp"
 
 #: website/race.php:397
 msgid "Races"
-msgstr ""
+msgstr "Lopp"
 
 #: website/race.php:398 website/race_list.php:259
 msgid "Filter races by status"
-msgstr ""
+msgstr "Filtrera lopp på status"
 
 #: website/race.php:400 website/race_list.php:260
 msgid "All races"
-msgstr ""
+msgstr "Alla lopp"
 
 #: website/race.php:408 website/race_add.php:115 website/race_list.php:269
 msgid "Race title"
-msgstr ""
+msgstr "Lopp-titel"
 
 #: website/race_add.php:16
 msgid "Please login"
@@ -1553,11 +1560,11 @@ msgstr "Logga in"
 
 #: website/race_add.php:42 website/race_add.php:330
 msgid "This is not your race"
-msgstr ""
+msgstr "Detta är inte ditt lopp"
 
 #: website/race_add.php:44
 msgid "You can't edit the race which has started"
-msgstr ""
+msgstr "Du kan inte redigera ett lopp som redan startat"
 
 #: website/race_add.php:106
 msgid "Save changes"
@@ -1565,15 +1572,15 @@ msgstr "Spara ändringar"
 
 #: website/race_add.php:112
 msgid "Race info"
-msgstr ""
+msgstr "Lopp-information"
 
 #: website/race_add.php:148
 msgid "Please choose race type. The default is race to destination cache (waypoint)"
-msgstr ""
+msgstr "Ange lopptyp. Standard är lopp till målcache (waypoint)"
 
 #: website/race_add.php:153
 msgid "Please choose the destination cache (waypoint)"
-msgstr ""
+msgstr "Vänligen välj målcache (waypoint)"
 
 #: website/race_add.php:164
 msgid "Distance"
@@ -1581,27 +1588,27 @@ msgstr "Avstånd"
 
 #: website/race_add.php:171
 msgid "Visited caches"
-msgstr ""
+msgstr "Besökta cacher"
 
 #: website/race_add.php:210
 msgid "Wrong start date"
-msgstr ""
+msgstr "Fel startdatum"
 
 #: website/race_add.php:213
 msgid "Wrong end date"
-msgstr ""
+msgstr "Fel slutdatum"
 
 #: website/race_add.php:216
 msgid "End date <= start date"
-msgstr ""
+msgstr "Slutdatum <= startdatum"
 
 #: website/race_add.php:220
 msgid "Wrong target waypoint"
-msgstr ""
+msgstr "Fel målwaypoint"
 
 #: website/race_add.php:222
 msgid "Wrong target distance"
-msgstr ""
+msgstr "Fel måldistans"
 
 #: website/race_add.php:224
 msgid "Wrong caches number"
@@ -1609,12 +1616,12 @@ msgstr ""
 
 #: website/race_add.php:245
 msgid "Unable to resolve waypoint "
-msgstr ""
+msgstr "Kunde inte tyda waypoint "
 
 #: website/race_add.php:311
 #, php-format
 msgid "Race %s created successfully"
-msgstr ""
+msgstr "Lopp %s skapat"
 
 #: website/race_add.php:314
 #, php-format
@@ -1624,23 +1631,23 @@ msgstr ""
 #: website/race_add.php:316
 #, php-format
 msgid "You can use this link for joining this race: %s or here: %s"
-msgstr ""
+msgstr "Du kan använda denna länk för att gå med i detta lopp: %s eller här: %s"
 
 #: website/race_conf.php:5
 msgid "Race to destination"
-msgstr ""
+msgstr "Lopp till mål"
 
 #: website/race_conf.php:6
 msgid "Maximize distance"
-msgstr ""
+msgstr "Maximera distans"
 
 #: website/race_conf.php:7
 msgid "Reach target distance"
-msgstr ""
+msgstr "Nå måldistans"
 
 #: website/race_conf.php:8
 msgid "Maximize number of visited caches"
-msgstr ""
+msgstr "Maximera antal besökta cacher"
 
 #: website/race_conf.php:9
 msgid "Reach target number of caches"
@@ -1648,35 +1655,35 @@ msgstr ""
 
 #: website/race_conf.php:11
 msgid "This race hasn't started yet"
-msgstr ""
+msgstr "Detta lopp har inte startat än"
 
 #: website/race_conf.php:12
 msgid "The race is running"
-msgstr ""
+msgstr "Loppet är pågående"
 
 #: website/race_conf.php:13
 msgid "The race has ended"
-msgstr ""
+msgstr "Loppet har avslutats"
 
 #: website/race_join.php:45
 msgid "The race to join"
-msgstr ""
+msgstr "Loppet att gå med i"
 
 #: website/race_join.php:50
 msgid "Password for private races"
-msgstr ""
+msgstr "Lösenord för privata lopp"
 
 #: website/race_join.php:52
 msgid "If you are the race owner, you don't need to enter password"
-msgstr ""
+msgstr "Om du är loppets ägare, behöver du inte ange något lösenord"
 
 #: website/race_join.php:58
 msgid "Please read this race rules before joining!"
-msgstr ""
+msgstr "Var vänlig läs dessa loppregler innan du går med!"
 
 #: website/race_join.php:79
 msgid "No race selected"
-msgstr ""
+msgstr "Inget lopp valt"
 
 #: website/race_join.php:82
 msgid "No reference number"
@@ -1684,19 +1691,19 @@ msgstr "Inget referensnummer"
 
 #: website/race_join.php:96
 msgid "Unknown geokret"
-msgstr ""
+msgstr "Okänd geokret"
 
 #: website/race_join.php:103
 msgid "This is not your geokret"
-msgstr ""
+msgstr "Detta är inte din geokret"
 
 #: website/race_join.php:117
 msgid "Unknown race"
-msgstr ""
+msgstr "Okänt lopp"
 
 #: website/race_join.php:120
 msgid "This race is private. Please provide the password"
-msgstr ""
+msgstr "Detta lopp är privat. Vänligen ange lösenordet"
 
 #: website/race_join.php:123
 msgid "Wrong password"
@@ -1704,15 +1711,15 @@ msgstr "Fel lösenord"
 
 #: website/race_join.php:126
 msgid "This race already started. Please select another race."
-msgstr ""
+msgstr "Loppet har redan startat. Välj ett annat lopp."
 
 #: website/race_join.php:144
 msgid "Internal error, please report"
-msgstr ""
+msgstr "Internt fel, vänligen rapportera"
 
 #: website/race_list.php:240
 msgid "Race list"
-msgstr ""
+msgstr "Lopp-lista"
 
 #: website/recent_comments.php:18
 msgid "Recent Log Comments"
@@ -1752,7 +1759,7 @@ msgstr "Registrera en ny GeoKret"
 
 #: website/register.php:38
 msgid "Set my home coordinates as a starting point"
-msgstr ""
+msgstr "Ange mina hemkoordinater som en startpunkt"
 
 #: website/register.php:82
 msgid "No GeoKret's name!"
@@ -1769,7 +1776,7 @@ msgstr "Kan inte editera denna log"
 #: website/ruchy.php:193
 #, php-format
 msgid "Unexpected error (id:%s), please report."
-msgstr ""
+msgstr "Oväntat fel (id:%s), vänligen rapportera."
 
 #: website/ruchy.php:202
 msgid "Missing or invalid Tracking Code"
@@ -1825,11 +1832,11 @@ msgstr "Lägg till kommentar"
 
 #: website/ruchy.php:587 website/ruchy.php:855
 msgid "When you want to write a comment :)"
-msgstr ""
+msgstr "När du vill skriva en kommentar :)"
 
 #: website/ruchy.php:595
 msgid "Reference number"
-msgstr ""
+msgstr "Referensnummer"
 
 #: website/ruchy.php:621
 msgid "Archive a GeoKret"
@@ -1837,7 +1844,7 @@ msgstr "Arkivera en GeoKret"
 
 #: website/ruchy.php:631
 msgid "When a GeoKret has been missing for a long time"
-msgstr ""
+msgstr "När en GeoKret har varit saknad under en lång tid"
 
 #: website/ruchy.php:632
 msgid "Archive"
@@ -1845,11 +1852,11 @@ msgstr "Arkivera"
 
 #: website/ruchy.php:657
 msgid "Tracking Code"
-msgstr ""
+msgstr "Spårningskod"
 
 #: website/ruchy.php:660
 msgid "6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with 'GK' here</u>."
-msgstr ""
+msgstr "6 tecken från GeoKret-etikett, t.ex XF3ACS. <u>Använd inte koden som börjar med 'GK' här</u>."
 
 #: website/ruchy.php:674
 msgid "Although it is possible to perform GeoKrety operations without logging in, we encourage you to create an account and log in. It will take you about 15 seconds :)"
@@ -1861,11 +1868,11 @@ msgstr "Det kan vara ditt:<br />-  geocachinganvändarnamn<br />- smeknamn<br />
 
 #: website/ruchy.php:700
 msgid "Logged at my home coordinates"
-msgstr ""
+msgstr "Loggad vid mina hemkoordinater"
 
 #: website/ruchy.php:700
 msgid "Log GeoKret at my home coordinates"
-msgstr ""
+msgstr "Logga GeoKret vid mina hemkoordinater"
 
 #: website/ruchy.php:711
 msgid "Choose log type"
@@ -1877,11 +1884,11 @@ msgstr "Loggtyp"
 
 #: website/ruchy.php:822
 msgid "help.php#Chooselogtype"
-msgstr ""
+msgstr "help.php#Chooselogtype"
 
 #: website/ruchy.php:827
 msgid "When you've left a GeoKret in a cache"
-msgstr ""
+msgstr "När du har lämnat en GeoKret i en cache"
 
 #: website/ruchy.php:828
 msgid "I've dropped GeoKret"
@@ -1929,15 +1936,15 @@ msgstr "Waypoint"
 
 #: website/ruchy.php:884
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
-msgstr ""
+msgstr "t.ex.: GC1AQ2N, OP069B, OC033A…"
 
 #: website/ruchy.php:885 website/ruchy.php:899
 msgid "help.php#fullysupportedwaypoints"
-msgstr ""
+msgstr "help.php#fullysupportedwaypoints"
 
 #: website/ruchy.php:888
 msgid "or name of cache"
-msgstr ""
+msgstr "eller namn på cache"
 
 #: website/ruchy.php:893
 msgid "Check"
@@ -1946,7 +1953,7 @@ msgstr "Kontrollera"
 #: website/ruchy.php:896 website/szukaj-ajax.php:182
 #, php-format
 msgid "Enter at least %d characters"
-msgstr ""
+msgstr "Ange minst %d tecken"
 
 #: website/ruchy.php:898
 msgid "Enter cache name. Works only with opencaching networks."
@@ -1958,19 +1965,19 @@ msgstr "Koordinater"
 
 #: website/ruchy.php:914
 msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
-msgstr ""
+msgstr "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptabla geografiska koordinatformat</a>"
 
 #: website/ruchy.php:926
 msgid "Logged using geolocation"
-msgstr ""
+msgstr "Loggad med hjälp av geolocation"
 
 #: website/ruchy.php:926
 msgid "Use geolocation"
-msgstr ""
+msgstr "Använd positionering"
 
 #: website/ruchy.php:927
 msgid "Clear coordinates"
-msgstr ""
+msgstr "Rensa koordinater"
 
 #: website/ruchy.php:938
 msgid "Captcha verification"
@@ -1998,7 +2005,7 @@ msgstr "Ange exakt tid när du tror att det kan vara viktigt"
 
 #: website/ruchy.php:1028
 msgid "It is always nice to receive a little message ;)"
-msgstr ""
+msgstr "Det är alltid najs att få ta emot ett litet meddelande ;)"
 
 #: website/statystyczka.php:46
 msgid "Top ten total distance: traditional and books"
@@ -2027,12 +2034,12 @@ msgstr "waypoint %s"
 
 #: website/szukaj-ajax.php:36
 msgid "flag"
-msgstr ""
+msgstr "flagga"
 
 #: website/szukaj-ajax.php:39 website/szukaj-ajax.php:209 website/szukaj.php:74
 #, php-format
 msgid "by %s"
-msgstr ""
+msgstr "av %s"
 
 #: website/szukaj-ajax.php:42
 msgid "OK"
@@ -2041,12 +2048,12 @@ msgstr "OK"
 #: website/szukaj-ajax.php:44
 #, php-format
 msgid "cache type: %s"
-msgstr ""
+msgstr "cachetyp: %s"
 
 #: website/szukaj-ajax.php:47
 #, php-format
 msgid "country: %s %s"
-msgstr ""
+msgstr "land: %s %s"
 
 #: website/szukaj-ajax.php:49
 #, php-format
@@ -2059,12 +2066,12 @@ msgstr "Inga cacher hittades"
 
 #: website/szukaj-ajax.php:65
 msgid "Missing or invalid coordinates"
-msgstr ""
+msgstr "Saknade eller ogiltiga koordinater"
 
 #: website/szukaj-ajax.php:74
 #, php-format
 msgid "Please provide the coordinates (lat/lon) of the cache %s in the \"coordinates\" input box."
-msgstr ""
+msgstr "Ange koordinaterna (lat/lon) för cachen %s i inmatningsrutan \"koordinater\"."
 
 #: website/szukaj-ajax.php:75
 #, php-format
@@ -2077,12 +2084,12 @@ msgstr "GeoKret inte hittad"
 
 #: website/szukaj-ajax.php:135
 msgid "Last log:"
-msgstr ""
+msgstr "Senaste logg:"
 
 #: website/szukaj-ajax.php:143
 #, php-format
 msgid "%s by %s."
-msgstr ""
+msgstr "%s av %s."
 
 #: website/szukaj-ajax.php:148
 msgid "Invalid tracking code"
@@ -2120,19 +2127,19 @@ msgstr "Logga detta GeoKret"
 #: website/templates.php:9 website/templates.php:72 website/templates.php:198
 #: website/templates.php:261 website/templates/krety.html:129
 msgid "Log a GeoKret"
-msgstr ""
+msgstr "Logga en GeoKret"
 
 #: website/templates.php:66 website/templates.php:138 website/templates.php:183
 #: website/templates.php:255 website/templates.php:321
 #: website/templates.php:327 website/templates/krety-m.html:44
 #: website/templates/krety.html:244
 msgid "Report abuse"
-msgstr ""
+msgstr "Rapportera missbruk"
 
 #: website/templates.php:120 website/templates.php:303
 #: website/templates/krety.html:155
 msgid "Side products"
-msgstr ""
+msgstr "Sidoprodukter"
 
 #: website/templates.php:147 website/templates/krety_logged_in.html:3
 msgid "My account"
@@ -2148,7 +2155,7 @@ msgstr "Logga ut"
 
 #: website/templates/konfig.php:232
 msgid "KretyPost"
-msgstr ""
+msgstr "KretyPost"
 
 #: website/templates/nawigacja_tablicy.php:98
 #: website/templates/nawigacja_tablicy.php:111
@@ -2167,7 +2174,7 @@ msgstr "Visar %s - %s (of %s)"
 
 #: website/templates/plugins/function.login_check.php:46
 msgid "Observed geokrets"
-msgstr ""
+msgstr "Observerad geokrets"
 
 #: website/termsofuse.php:14
 msgid "<p>This document sets the conditions of use of \"geokrety.org\" - a voluntarily operated Internet geocaching service available at https://geokrety.org (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure.</p>\n\n"
@@ -2179,11 +2186,11 @@ msgstr ""
 
 #: website/toolbox.php:11
 msgid "Geokrety Toolbox"
-msgstr ""
+msgstr "Geokrety Verktygslåda"
 
 #: website/user_stat.php:200
 msgid "Me"
-msgstr ""
+msgstr "Jag"
 
 #: website/user_stat.php:201
 msgid "All users"
@@ -2191,7 +2198,7 @@ msgstr "Alla användare"
 
 #: website/user_stat.php:204
 msgid "Average move distance"
-msgstr ""
+msgstr "Genomsnittlig flytt-distans"
 
 #: website/user_stat.php:209
 msgid "Median move distance"
@@ -2199,7 +2206,7 @@ msgstr ""
 
 #: website/user_stat.php:215
 msgid "Country stats"
-msgstr ""
+msgstr "Landsstatistik"
 
 #: website/user_stat.php:216
 msgid "Logs"
@@ -2211,19 +2218,19 @@ msgstr "Loggtyper"
 
 #: website/user_stat.php:222
 msgid "Year stats"
-msgstr ""
+msgstr "Årsstatistik"
 
 #: website/user_stat.php:223
 msgid "Moves"
-msgstr ""
+msgstr "Flytter"
 
 #: website/user_stat.php:225
 msgid "Geokrety created"
-msgstr ""
+msgstr "Geokrety skapad"
 
 #: website/user_stat.php:228
 msgid "Portfolio"
-msgstr ""
+msgstr "Portfölj"
 
 #: website/verify_mail.php:113
 #, php-format
@@ -2233,11 +2240,11 @@ msgstr ""
 
 #: website/verify_mail.php:117
 msgid "[GeoKrety] Activate your account"
-msgstr ""
+msgstr "[GeoKrety] Aktivera ditt konto"
 
 #: website/templates/krety.html:63
 msgid "Exit translation mode"
-msgstr ""
+msgstr "Avsluta översättningsläge"
 
 #: website/templates/krety.html:95
 msgid "Saint Nicholas Day"
@@ -2245,39 +2252,39 @@ msgstr ""
 
 #: website/templates/krety.html:97
 msgid "Merry Christmas!"
-msgstr ""
+msgstr "God jul!"
 
 #: website/templates/krety.html:99
 msgid "Happy New Year!!!"
-msgstr ""
+msgstr "Gott nytt år!!!"
 
 #: website/templates/krety.html:101
 msgid "Valentine's Day"
-msgstr ""
+msgstr "Alla hjärtans dag"
 
 #: website/templates/krety.html:103
 msgid "First April!!!"
-msgstr ""
+msgstr "Första april!!!"
 
 #: website/templates/krety.html:105
 msgid "Hallowen"
-msgstr ""
+msgstr "Halloween"
 
 #: website/templates/krety.html:108
 msgid "Easter!"
-msgstr ""
+msgstr "Påsk!"
 
 #: website/templates/krety.html:111
 msgid "Spring!"
-msgstr ""
+msgstr "Vår!"
 
 #: website/templates/krety.html:113
 msgid "GeoKrety 10 years Birthday!!!"
-msgstr ""
+msgstr "GeoKrety fyller 10 år!!!"
 
 #: website/templates/krety.html:115
 msgid "GeoKrety Birthday!!!"
-msgstr ""
+msgstr "GeoKrety-födelsedag!!!"
 
 #: website/templates/krety.html:119
 msgid "The Grand Finale - Great Orchestra of Christmas Charity."
@@ -2285,19 +2292,19 @@ msgstr ""
 
 #: website/templates/krety.html:121
 msgid "Normal day"
-msgstr ""
+msgstr "Normal dag"
 
 #: website/templates/krety.html:201
 msgid "Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode."
-msgstr ""
+msgstr "Hjälp oss översätta GeoKrety.org till ditt språk. Välj ett annat språk i väljaren för att avsluta översättningsläge."
 
 #: website/templates/krety.html:201
 msgid "Fix translation"
-msgstr ""
+msgstr "Fixa översättning"
 
 #: website/templates/krety.html:202
 msgid "Contact-us"
-msgstr ""
+msgstr "Kontakta-oss"
 
 #: website/templates/krety.html:207
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
@@ -2305,7 +2312,7 @@ msgstr ""
 
 #: website/templates/krety.html:209
 msgid "Enjoying GeoKrety.org?"
-msgstr ""
+msgstr "Gillar du GeoKrety.org?"
 
 #: website/templates/krety.html:210
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
@@ -2313,7 +2320,7 @@ msgstr ""
 
 #: website/templates/krety.html:214
 msgid "Contribute"
-msgstr ""
+msgstr "Bidra"
 
 #: website/templates/krety.html:227
 msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
@@ -2321,7 +2328,7 @@ msgstr ""
 
 #: website/templates/krety.html:244
 msgid "version"
-msgstr ""
+msgstr "version"
 
 #: website/templates/krety_logged_in.html:2
 msgid "Claim a GeoKret"
@@ -2329,19 +2336,19 @@ msgstr ""
 
 #: website/templates/waypointy-translations.html:3
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afghanistan"
 
 #: website/templates/waypointy-translations.html:4
 msgid "Egypt"
-msgstr ""
+msgstr "Egypten"
 
 #: website/templates/waypointy-translations.html:5
 msgid "Albania"
-msgstr ""
+msgstr "Albanien"
 
 #: website/templates/waypointy-translations.html:6
 msgid "American Samoa"
-msgstr ""
+msgstr "Amerikanska Samoa"
 
 #: website/templates/waypointy-translations.html:7
 msgid "Argentina"
@@ -2349,11 +2356,11 @@ msgstr "Argentina"
 
 #: website/templates/waypointy-translations.html:8
 msgid "Armenia"
-msgstr ""
+msgstr "Armenien"
 
 #: website/templates/waypointy-translations.html:9
 msgid "Austria"
-msgstr ""
+msgstr "Österrike"
 
 #: website/templates/waypointy-translations.html:10
 msgid "Australia"
@@ -2361,19 +2368,19 @@ msgstr "Australien"
 
 #: website/templates/waypointy-translations.html:11
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamas"
 
 #: website/templates/waypointy-translations.html:12
 msgid "Belarus"
-msgstr ""
+msgstr "Vitryssland"
 
 #: website/templates/waypointy-translations.html:13
 msgid "Belgium"
-msgstr ""
+msgstr "Belgien"
 
 #: website/templates/waypointy-translations.html:14
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnien och Hercegovina"
 
 #: website/templates/waypointy-translations.html:15
 msgid "Botswana"
@@ -2393,7 +2400,7 @@ msgstr "Kanada"
 
 #: website/templates/waypointy-translations.html:19
 msgid "Czech Republic"
-msgstr ""
+msgstr "Tjeckien"
 
 #: website/templates/waypointy-translations.html:20
 msgid "Chile"
@@ -2405,11 +2412,11 @@ msgstr "Kina"
 
 #: website/templates/waypointy-translations.html:22
 msgid "Croatia"
-msgstr ""
+msgstr "Kroatien"
 
 #: website/templates/waypointy-translations.html:23
 msgid "Costa Rica"
-msgstr ""
+msgstr "Costa Rica"
 
 #: website/templates/waypointy-translations.html:24
 msgid "Cyprus"
@@ -2417,27 +2424,27 @@ msgstr "Cypern"
 
 #: website/templates/waypointy-translations.html:25
 msgid "Denmark"
-msgstr ""
+msgstr "Danmark"
 
 #: website/templates/waypointy-translations.html:26
 msgid "Germany"
-msgstr ""
+msgstr "Tyskland"
 
 #: website/templates/waypointy-translations.html:27
 msgid "North Korea"
-msgstr ""
+msgstr "Nordkorea"
 
 #: website/templates/waypointy-translations.html:28
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Dominikanska republiken"
 
 #: website/templates/waypointy-translations.html:29
 msgid "Ecuador"
-msgstr ""
+msgstr "Ecuador"
 
 #: website/templates/waypointy-translations.html:30
 msgid "El Salvador"
-msgstr ""
+msgstr "El Salvador"
 
 #: website/templates/waypointy-translations.html:31
 msgid "Spain"
@@ -2445,11 +2452,11 @@ msgstr "Spanien"
 
 #: website/templates/waypointy-translations.html:32
 msgid "Estonia"
-msgstr ""
+msgstr "Estland"
 
 #: website/templates/waypointy-translations.html:33
 msgid "Falkland Islands"
-msgstr ""
+msgstr "Falklandsöarna"
 
 #: website/templates/waypointy-translations.html:34
 msgid "Faroe Islands"
@@ -2457,7 +2464,7 @@ msgstr "Färöarna"
 
 #: website/templates/waypointy-translations.html:35
 msgid "Finland"
-msgstr ""
+msgstr "Finland"
 
 #: website/templates/waypointy-translations.html:36
 msgid "France"
@@ -2465,7 +2472,7 @@ msgstr "Frankrike"
 
 #: website/templates/waypointy-translations.html:37
 msgid "Georgia"
-msgstr ""
+msgstr "Georgien"
 
 #: website/templates/waypointy-translations.html:38
 msgid "Gibraltar"
@@ -2473,7 +2480,7 @@ msgstr "Gibraltar"
 
 #: website/templates/waypointy-translations.html:39
 msgid "Granada"
-msgstr ""
+msgstr "Granada"
 
 #: website/templates/waypointy-translations.html:40
 msgid "Greece"
@@ -2485,7 +2492,7 @@ msgstr "Grönland"
 
 #: website/templates/waypointy-translations.html:42
 msgid "United Kingdom"
-msgstr ""
+msgstr "Storbritannien"
 
 #: website/templates/waypointy-translations.html:43
 msgid "Guatemala"
@@ -2493,7 +2500,7 @@ msgstr "Guatemala"
 
 #: website/templates/waypointy-translations.html:44
 msgid "Netherlands"
-msgstr ""
+msgstr "Nederländerna"
 
 #: website/templates/waypointy-translations.html:45
 msgid "Honduras"
@@ -2509,11 +2516,11 @@ msgstr "Indien"
 
 #: website/templates/waypointy-translations.html:48
 msgid "Ireland"
-msgstr ""
+msgstr "Irland"
 
 #: website/templates/waypointy-translations.html:49
 msgid "Iceland"
-msgstr ""
+msgstr "Island"
 
 #: website/templates/waypointy-translations.html:50
 msgid "Israel"
@@ -2529,7 +2536,7 @@ msgstr "Japan"
 
 #: website/templates/waypointy-translations.html:53
 msgid "Yemen"
-msgstr ""
+msgstr "Jemen"
 
 #: website/templates/waypointy-translations.html:54
 msgid "Jordan"
@@ -2541,11 +2548,11 @@ msgstr "Kambodja"
 
 #: website/templates/waypointy-translations.html:56
 msgid "Cape Verde"
-msgstr ""
+msgstr "Kap Verde"
 
 #: website/templates/waypointy-translations.html:57
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazakstan"
 
 #: website/templates/waypointy-translations.html:58
 msgid "Kenya"
@@ -2553,7 +2560,7 @@ msgstr "Kenya"
 
 #: website/templates/waypointy-translations.html:59
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Kirgizistan"
 
 #: website/templates/waypointy-translations.html:60
 msgid "Colombia"
@@ -2561,11 +2568,11 @@ msgstr "Colombia"
 
 #: website/templates/waypointy-translations.html:61
 msgid "Cuba"
-msgstr ""
+msgstr "Kuba"
 
 #: website/templates/waypointy-translations.html:62
 msgid "Laos"
-msgstr ""
+msgstr "Laos"
 
 #: website/templates/waypointy-translations.html:63
 msgid "Latvia"
@@ -2581,11 +2588,11 @@ msgstr "Litauen"
 
 #: website/templates/waypointy-translations.html:66
 msgid "Luxembourg"
-msgstr ""
+msgstr "Luxemburg"
 
 #: website/templates/waypointy-translations.html:67
 msgid "Malaysia"
-msgstr ""
+msgstr "Malaysia"
 
 #: website/templates/waypointy-translations.html:68
 msgid "Maldives"
@@ -2597,7 +2604,7 @@ msgstr "Malta"
 
 #: website/templates/waypointy-translations.html:70
 msgid "Morocco"
-msgstr ""
+msgstr "Marocko"
 
 #: website/templates/waypointy-translations.html:71
 msgid "Mauritius"
@@ -2613,7 +2620,7 @@ msgstr "Mexiko"
 
 #: website/templates/waypointy-translations.html:74
 msgid "Moldova"
-msgstr ""
+msgstr "Moldavien"
 
 #: website/templates/waypointy-translations.html:75
 msgid "Monaco"
@@ -2621,11 +2628,11 @@ msgstr "Monaco"
 
 #: website/templates/waypointy-translations.html:76
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegro"
 
 #: website/templates/waypointy-translations.html:77
 msgid "Namibia"
-msgstr ""
+msgstr "Namibia"
 
 #: website/templates/waypointy-translations.html:78
 msgid "Nepal"
@@ -2633,7 +2640,7 @@ msgstr "Nepal"
 
 #: website/templates/waypointy-translations.html:79
 msgid "New Zealand"
-msgstr ""
+msgstr "Nya Zeeland"
 
 #: website/templates/waypointy-translations.html:80
 msgid "Nicaragua"
@@ -2641,7 +2648,7 @@ msgstr "Nicaragua"
 
 #: website/templates/waypointy-translations.html:81
 msgid "Netherlands Antilles"
-msgstr ""
+msgstr "Nederländska Antillerna"
 
 #: website/templates/waypointy-translations.html:82
 msgid "Norway"
@@ -2653,7 +2660,7 @@ msgstr "Panama"
 
 #: website/templates/waypointy-translations.html:84
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papua Nya Guinea"
 
 #: website/templates/waypointy-translations.html:85
 msgid "Philippines"
@@ -2701,11 +2708,11 @@ msgstr "Serbien"
 
 #: website/templates/waypointy-translations.html:96
 msgid "Serbia and Montenegro"
-msgstr ""
+msgstr "Serbien och Montenegro"
 
 #: website/templates/waypointy-translations.html:97
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychellerna"
 
 #: website/templates/waypointy-translations.html:98
 msgid "Slovenia"
@@ -2721,7 +2728,7 @@ msgstr "Slovakien"
 
 #: website/templates/waypointy-translations.html:101
 msgid "Soviet Union"
-msgstr ""
+msgstr "Sovjetunionen"
 
 #: website/templates/waypointy-translations.html:102
 msgid "Sri Lanka"
@@ -2737,11 +2744,11 @@ msgstr "Sudan"
 
 #: website/templates/waypointy-translations.html:105
 msgid "South Georgia and the South Sandwich Islands"
-msgstr ""
+msgstr "Sydgeorgien och Sydsandwichöarna"
 
 #: website/templates/waypointy-translations.html:106
 msgid "Svalbard and Jan Mayen"
-msgstr ""
+msgstr "Svalbard och Jan Mayen"
 
 #: website/templates/waypointy-translations.html:107
 msgid "Syria"
@@ -2761,15 +2768,15 @@ msgstr "Tanzania"
 
 #: website/templates/waypointy-translations.html:111
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #: website/templates/waypointy-translations.html:112
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "Trinidad och Tobago"
 
 #: website/templates/waypointy-translations.html:113
 msgid "Chad"
-msgstr ""
+msgstr "Tchad"
 
 #: website/templates/waypointy-translations.html:114
 msgid "Tunisia"
@@ -2793,7 +2800,7 @@ msgstr "Ungern"
 
 #: website/templates/waypointy-translations.html:119
 msgid "United States"
-msgstr ""
+msgstr "USA"
 
 #: website/templates/waypointy-translations.html:120
 msgid "USA"
@@ -2801,7 +2808,7 @@ msgstr "USA"
 
 #: website/templates/waypointy-translations.html:121
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #: website/templates/waypointy-translations.html:122
 msgid "Holy See"
@@ -2809,7 +2816,7 @@ msgstr ""
 
 #: website/templates/waypointy-translations.html:123
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "Förenade Arabemiraten"
 
 #: website/templates/waypointy-translations.html:124
 msgid "Vietnam"
@@ -2817,43 +2824,43 @@ msgstr "Vietnam"
 
 #: website/templates/waypointy-translations.html:125
 msgid "United States Virgin Islands"
-msgstr ""
+msgstr "Amerikanska Jungfruöarna"
 
 #: website/templates/waypointy-translations.html:127
 msgid "Mobile"
-msgstr ""
+msgstr "Mobil"
 
 #: website/templates/waypointy-translations.html:128
 msgid "BIT Cache"
-msgstr ""
+msgstr "BIT Cache"
 
 #: website/templates/waypointy-translations.html:129
 msgid "Cemetery"
-msgstr ""
+msgstr "Kyrkogård"
 
 #: website/templates/waypointy-translations.html:130
 msgid "Drive-In"
-msgstr ""
+msgstr "Drive-in"
 
 #: website/templates/waypointy-translations.html:131
 msgid "Event"
-msgstr ""
+msgstr "Händelse"
 
 #: website/templates/waypointy-translations.html:133
 msgid "Multicache"
-msgstr ""
+msgstr "Multicache"
 
 #: website/templates/waypointy-translations.html:134
 msgid "Mystery"
-msgstr ""
+msgstr "Mysterium"
 
 #: website/templates/waypointy-translations.html:135
 msgid "Unknown cache"
-msgstr ""
+msgstr "Okänd cache"
 
 #: website/templates/waypointy-translations.html:136
 msgid "Virtual"
-msgstr ""
+msgstr "Virtuell"
 
 #: website/templates/waypointy-translations.html:137
 msgid "Webcam"
@@ -2865,11 +2872,11 @@ msgstr "Gästbok"
 
 #: website/templates/waypointy-translations.html:139
 msgid "Other"
-msgstr ""
+msgstr "Annat"
 
 #: website/templates/waypointy-translations.html:140
 msgid "Quiz"
-msgstr ""
+msgstr "Frågesport"
 
 #: website/templates/waypointy-translations.html:141
 msgid "Letterbox"
@@ -2877,7 +2884,7 @@ msgstr ""
 
 #: website/templates/waypointy-translations.html:142
 msgid "Math / physics cache"
-msgstr ""
+msgstr "Matte/fysik-cache"
 
 #: website/templates/waypointy-translations.html:143
 msgid "Medical Facility"
@@ -2889,19 +2896,19 @@ msgstr "MP3"
 
 #: website/templates/waypointy-translations.html:145
 msgid "Unknowncache"
-msgstr ""
+msgstr "Okänd cache"
 
 #: website/templates/waypointy-translations.html:146
 msgid "Own cache"
-msgstr ""
+msgstr "Egen cache"
 
 #: website/templates/waypointy-translations.html:147
 msgid "Podcast cache"
-msgstr ""
+msgstr "Podcast cache"
 
 #: website/templates/waypointy-translations.html:148
 msgid "Unusual box"
-msgstr ""
+msgstr "Ovanlig låda"
 
 #: website/templates/waypointy-translations.html:149
 msgid "USB"
