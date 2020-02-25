@@ -37,7 +37,7 @@ class S3Buckets {
         }
         ';
 
-        $s3 = S3Client::instance();
+        $s3 = S3Client::instance()->getS3();
 
         // Create a bucket
         if (!$s3->doesBucketExist(GK_BUCKET_STATPIC_NAME)) {

@@ -2,22 +2,28 @@
 
 namespace GeoKrety\Service;
 
+use Aws\S3\S3Client as AWSS3Client;
+
 class S3Client extends \Prefab {
     private $s3;
     private $s3_public;
 
-    public static function instance($public = false) {
-        $self = parent::instance();
+    /**
+     * @return AWSS3Client
+     */
+    public function getS3(): AWSS3Client {
+        return $this->s3;
+    }
 
-        if ($public) {
-            return $self->s3_public;
-        }
-
-        return $self->s3;
+    /**
+     * @return AWSS3Client
+     */
+    public function getS3Public(): AWSS3Client {
+        return $this->s3_public;
     }
 
     public function __construct() {
-        $this->s3 = new \Aws\S3\S3Client([
+        $this->s3 = new AWSS3Client([
             'version' => 'latest',
             'region' => 'us-east-1',
             'endpoint' => GK_MINIO_SERVER_URL,
@@ -27,7 +33,7 @@ class S3Client extends \Prefab {
                 'secret' => GK_MINIO_SECRET_KEY,
             ],
         ]);
-        $this->s3_public = new \Aws\S3\S3Client([
+        $this->s3_public = new AWSS3Client([
             'version' => 'latest',
             'region' => 'us-east-1',
             'endpoint' => GK_MINIO_SERVER_URL_EXTERNAL,

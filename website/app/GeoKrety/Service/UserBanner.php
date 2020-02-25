@@ -13,7 +13,7 @@ class UserBanner {
     const TEXT_SIZE_SMALL = 9;
 
     public static function get_banner_url(User $user) {
-        return S3Client::instance(true)->getObjectUrl(
+        return S3Client::instance()->getS3Public()->getObjectUrl(
              GK_BUCKET_STATPIC_NAME,
              sprintf('%d.png', $user->id)
         );
@@ -62,7 +62,7 @@ class UserBanner {
         $img->load(ob_get_clean());
 
         // Store file
-        S3Client::instance()->putObject([
+        S3Client::instance()->getS3()->putObject([
             'Bucket' => GK_BUCKET_STATPIC_NAME,
             'Key' => sprintf('%d.png', $user->id),
             'Body' => $img->dump('png', 9),
