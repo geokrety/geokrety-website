@@ -572,7 +572,7 @@ CHANGE `plik` `filename` varchar(50) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER
 CHANGE `opis` `caption` varchar(50) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `filename`,
 CHANGE `timestamp` `created_on_datetime` datetime NULL AFTER `caption`,
 ADD `updated_on_datetime` datetime NULL,
-RENAME TO `gk-pictures`;
+RENAME TO `gk-pictures-to-migrate`;
 
 ALTER TABLE `gk-races`
 CHANGE `raceid` `id` int NOT NULL AUTO_INCREMENT FIRST,
@@ -722,7 +722,7 @@ CHANGE `last_read_datetime` `last_read_datetime` datetime NOT NULL DEFAULT CURRE
 ALTER TABLE `gk-owner-codes`
 CHANGE `generated_on_datetime` `generated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `token`;
 
-ALTER TABLE `gk-pictures`
+ALTER TABLE `gk-pictures-to-migrate`
 CHANGE `created_on_datetime` `created_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `caption`,
 CHANGE `updated_on_datetime` `updated_on_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `created_on_datetime`;
 

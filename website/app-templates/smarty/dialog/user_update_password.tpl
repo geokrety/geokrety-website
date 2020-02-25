@@ -46,7 +46,7 @@
     </div>
 
     <div class="modal-footer">
-        <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to user page{/t}" data-dismiss="modal">
+        <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $currentUser->id)}" title="{t}Back to user page{/t}" data-dismiss="modal">
             {t}Dismiss{/t}
         </a>
         <button type="submit" class="btn btn-primary">{t}Change{/t}</button>

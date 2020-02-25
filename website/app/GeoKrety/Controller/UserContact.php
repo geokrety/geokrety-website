@@ -7,13 +7,18 @@ use GeoKrety\Model\Mail;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
-class UserContact extends BaseCurrentUser {
-    public function beforeRoute($f3) {
-        parent::beforeRoute($f3);
+class UserContact extends Base {
+    use \CurrentUserLoader;
 
+    /**
+     * @var Mail
+     */
+    protected $mail;
+
+    public function _beforeRoute(\Base $f3) {
         $mail = new Mail();
         $this->mail = $mail;
-        $this->mail->from = $this->user;
+        $this->mail->from = $this->currentUser->id;
         Smarty::assign('mail', $this->mail);
     }
 

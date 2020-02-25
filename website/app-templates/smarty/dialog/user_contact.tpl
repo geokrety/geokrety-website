@@ -52,5 +52,5 @@
 {/block}
 
 {block name=javascript_modal append}
-{include 'js/dialog_contact_user.tpl.js'}
+{include 'js/dialogs/dialog_contact_user.tpl.js'}
 {/block}

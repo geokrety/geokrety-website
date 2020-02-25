@@ -14,6 +14,7 @@ function smarty_function_login_link() {
     $query = [
         'goto' => urlencode($f3->get('ALIAS')),
         'params' => urlencode(base64_encode($f3->serialize($f3->get('PARAMS')))),
+        'query' => urlencode(base64_encode($f3->serialize($f3->get('GET')))),
     ];
 
     return GK_SITE_BASE_SERVER_URL.\Base::instance()->alias('login', null, $query);

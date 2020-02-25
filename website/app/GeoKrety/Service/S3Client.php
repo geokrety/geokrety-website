@@ -38,4 +38,8 @@ class S3Client extends \Prefab {
             ],
         ]);
     }
+
+    public static function getThumbnailBucketName($bucket) {
+        return sprintf('%s-thumbnails', $bucket);
+    }
 }

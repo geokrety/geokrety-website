@@ -17,6 +17,6 @@
 {/block}
 
 {block name=javascript}
-{include file="js/geokret_move.tpl.js"}
-{include file="js/dialog_geokret_move_select_from_inventory.tpl.js"}
+{include file="js/moves/geokret_move.tpl.js"}
+{include file="js/dialogs/dialog_geokret_move_select_from_inventory.tpl.js"}
 {/block}

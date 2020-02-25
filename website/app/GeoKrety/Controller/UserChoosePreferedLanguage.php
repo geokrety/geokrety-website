@@ -2,22 +2,14 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\User;
+use CurrentUserLoader;
+use Event;
+use Flash;
 use GeoKrety\Service\Smarty;
+use Multilang;
 
 class UserChoosePreferedLanguage extends Base {
-    public function beforeRoute($f3) {
-        parent::beforeRoute($f3);
-
-        $user = new User();
-        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
-        if ($user->dry()) {
-            Smarty::render('dialog/alert_404.tpl');
-            die();
-        }
-        $this->user = $user;
-        Smarty::assign('user', $this->user);
-    }
+    use CurrentUserLoader;
 
     public function get(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_choose_preferred_language.tpl');
@@ -28,8 +20,7 @@ class UserChoosePreferedLanguage extends Base {
     }
 
     public function post(\Base $f3) {
-        $userid = $this->user->id;
-        $user = $this->user;
+        $user = $this->currentUser;
         $oldlanguage = $user->preferred_language;
         $user->preferred_language = $f3->get('POST.language');
 
@@ -40,10 +31,10 @@ class UserChoosePreferedLanguage extends Base {
 
         $user->save();
         $context = ['oldlanguage' => $oldlanguage];
-        \Event::instance()->emit('user.language.changed', $user, $context);
-        \Flash::instance()->addMessage(_('Language preferences updated.'), 'success');
+        Event::instance()->emit('user.language.changed', $user, $context);
+        Flash::instance()->addMessage(_('Language preferences updated.'), 'success');
 
-        $ml = \Multilang::instance();
-        $f3->reroute($ml->alias('user_details', ['userid' => $userid], $user->preferred_language));
+        $ml = Multilang::instance();
+        $f3->reroute($ml->alias('user_details', ['userid' => $user->id], $user->preferred_language));
     }
 }

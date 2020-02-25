@@ -51,9 +51,13 @@ class Geokret extends Base {
         'watchers' => [
             'has-many' => ['\GeoKrety\Model\Watched', 'geokret'],
         ],
-        // 'avatar' => array(
-        //     'belongs-to-one' => '\GeoKrety\Model\GeokretAvatar',
-        // ),
+        'avatar' => [
+            'belongs-to-one' => '\GeoKrety\Model\Picture',
+            'nullable' => true,
+        ],
+        'avatars' => [
+            'has-many' => ['\GeoKrety\Model\Picture', 'geokret'],
+        ],
         'last_position' => [
             'belongs-to-one' => '\GeoKrety\Model\Move',
         ],
@@ -83,6 +87,20 @@ class Geokret extends Base {
     // public function set_mission($value) {
     //     return HTMLPurifier::getPurifier()->purify($value);
     // }
+
+    public static function gkid2id($gkid) {
+        if (\is_int($gkid)) {
+            return $gkid;
+        }
+        if (ctype_digit($gkid)) {
+            return \intval($gkid);
+        }
+        if (strtoupper(substr($gkid, 0, 2)) === 'GK') {
+            return hexdec(substr($gkid, 2));
+        }
+
+        return null;
+    }
 
     public function gkid() {
         return hexdec(substr($this->gkid, 2));

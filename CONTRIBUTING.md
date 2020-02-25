@@ -24,3 +24,39 @@ If you fork the project, then you will have to activate travis-ci builds for you
 ## Install
 
 please cf. [INSTALL.md](INSTALL.md)
+
+## Updating database
+
+From time to time database schema will need to be updated. We use [Phinx](https://phinx.org/)
+for this purpose and [phinx-migrations-generator](https://odan.github.io/phinx-migrations-generator/)
+to generate database changes.
+
+Please refer to each user guide before use.
+
+To create a new migration file:
+```bash
+$ cd website
+$ ../vendor/bin/phinx-migrations generate
+Phinx by CakePHP - https://phinx.org.
+
+using config file ./phinx.php
+using config parser php
+using migration paths
+ - /var/www/geokrety/website/db/migrations
+using seed paths
+ - /var/www/geokrety/website/db/seeds
+warning no environment specified, defaulting to: local
+using database geokrety
+using config file /var/www/geokrety/website/phinx.php
+using migration path ./db/migrations/
+using schema file ./db/migrations//schema.php
+Database: geokrety
+Load current database schema.
+Comparing schema file to the database.
+No database changes detected.
+```
+ Alternatively, use `make phinx-migrations-generate`.
+```bash
+$ make phinx-migrations-generate
+Phinx by CakePHP - https://phinx.org.
+```

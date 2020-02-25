@@ -5,8 +5,11 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Move;
 use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
+use UserLoader;
 
-class UserOwnedGeokretyMoves extends BaseUser {
+class UserOwnedGeokretyMoves extends Base {
+    use UserLoader;
+
     public function get($f3) {
         // Load moves
         $move = new Move();

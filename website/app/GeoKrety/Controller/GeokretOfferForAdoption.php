@@ -4,13 +4,16 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Model\OwnerCode;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\GeokretLoader;
 
-class GeokretOfferForAdoption extends BaseGeokret {
-    public function get(\Base $f3) {
+class GeokretOfferForAdoption extends Base {
+    use GeokretLoader;
+
+    public function get() {
         Smarty::render('extends:full_screen_modal.tpl|dialog/geokret_offer_for_adoption.tpl');
     }
 
-    public function get_ajax(\Base $f3) {
+    public function get_ajax() {
         Smarty::render('extends:base_modal.tpl|dialog/geokret_offer_for_adoption.tpl');
     }
 

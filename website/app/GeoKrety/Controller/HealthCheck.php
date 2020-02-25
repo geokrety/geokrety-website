@@ -2,6 +2,7 @@
 
 namespace GeoKrety\Controller;
 
+use Aws\S3\Exception\S3Exception;
 use GeoKrety\HealthState;
 use GeoKrety\Service\Config;
 use GeoKrety\Service\S3Client;
@@ -46,16 +47,22 @@ class HealthCheck extends Base {
             // Skip test if s3 is not configured
             return;
         }
-        $s3BucketList = [GK_BUCKET_STATPIC_NAME];
+        $s3BucketList = [
+            GK_BUCKET_NAME_STATPIC,
+            GK_BUCKET_NAME_GEOKRETY_AVATARS,
+            sprintf('%s-thumbnails', GK_BUCKET_NAME_GEOKRETY_AVATARS),
+            GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER,
+            GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER,
+        ];
         $s3 = new S3Client();
 
         foreach ($s3BucketList as $bucket) {
-            $stateName = "s3-public-bucket-$bucket";
+            $stateName = "s3-bucket-$bucket";
 
             try {
                 $s3->getS3Public()->headBucket(['Bucket' => $bucket]);
                 $this->state->setDependencyState($stateName, HealthState::HEALTH_STATE_OK);
-            } catch (\Aws\S3\Exception\S3Exception $e) {
+            } catch (S3Exception $e) {
                 $this->state->setDependencyState($stateName, HealthState::HEALTH_STATE_KO);
             }
         }

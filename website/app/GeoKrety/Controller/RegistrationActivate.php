@@ -8,6 +8,11 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class RegistrationActivate extends Base {
+    /**
+     * @var AccountActivationModel
+     */
+    private $token;
+
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 

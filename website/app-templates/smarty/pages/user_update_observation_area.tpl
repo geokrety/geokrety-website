@@ -17,7 +17,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputCoordinates">{t}Home coordinates{/t}</label>
-                            <input type="text" class="form-control" id="inputCoordinates" name="coordinates" placeholder="{t}Home coordinates{/t}" value="{$user->home_coordinates}" data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled >
+                            <input type="text" class="form-control" id="inputCoordinates" name="coordinates" placeholder="{t}Home coordinates{/t}" value="{$currentUser->home_coordinates}" data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled >
                         </div>
 
                         <p>
@@ -34,7 +34,7 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
                         <div class="form-group">
                             <label for="inputRadius">{t}Observation radius{/t}</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="inputRadius" name="observation_area" value="{$user->observation_area}" min="0" max="{GK_USER_OBSERVATION_AREA_MAX_KM}">
+                                <input type="number" class="form-control" id="inputRadius" name="observation_area" value="{$currentUser->observation_area}" min="0" max="{GK_USER_OBSERVATION_AREA_MAX_KM}">
                                 <span class="input-group-addon">km</span>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
             </div>
 
             <div class="modal-footer">
-                <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to user page{/t}" data-dismiss="modal">
+                <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $currentUser->id)}" title="{t}Back to user page{/t}" data-dismiss="modal">
                     {t}Dismiss{/t}
                 </a>
                 <button type="submit" class="btn btn-primary">{t}Define{/t}</button>
@@ -73,5 +73,5 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
 {block name=javascript}
 {include file='js/_map_init.tpl.js'}
 var map = initializeMap();
-{include file='js/user_observation_area.tpl.js'}
+{include file='js/users/user_observation_area.tpl.js'}
 {/block}

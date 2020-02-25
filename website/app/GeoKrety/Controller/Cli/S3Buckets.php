@@ -2,56 +2,19 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use GeoKrety\Service\S3Client;
+use GeoKrety\Model\Picture as PictureModel;
 
 class S3Buckets {
-    public function createStatpic() {
-        // This policy sets the bucket to read only
-        $policyReadOnly = '{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": [
-                "s3:GetBucketLocation",
-                "s3:ListBucket"
-              ],
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": ["*"]
-              },
-              "Resource": ["arn:aws:s3:::%s"],
-              "Sid": ""
-            },
-            {
-              "Action": [
-                "s3:GetObject"
-              ],
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": ["*"]
-              },
-              "Resource": ["arn:aws:s3:::%s/*"],
-              "Sid": ""
-            }
-          ]
+    public function pruneGeokretyAvatars(\Base $f3): void {
+        if ($f3->exists('LOCK.S3Buckets.pruneGeokretyAvatars')) {
+            echo "\e[0;31mAnother task is already running\e[0m".PHP_EOL;
         }
-        ';
 
-        $s3 = S3Client::instance()->getS3();
-
-        if (!$s3->doesBucketExist(GK_BUCKET_STATPIC_NAME)) {
-            // Create a bucket
-            $result = $s3->createBucket([
-                'Bucket' => GK_BUCKET_STATPIC_NAME,
-            ]);
-            echo "\e[0;32mStatpic s3 bucket created\e[0m".PHP_EOL;
-
-            // Configure the policy
-            $s3->putBucketPolicy([
-                'Bucket' => GK_BUCKET_STATPIC_NAME,
-                'Policy' => sprintf($policyReadOnly, GK_BUCKET_STATPIC_NAME, GK_BUCKET_STATPIC_NAME),
-            ]);
-            echo "\e[0;32mStatpic s3 bucket policy: public\e[0m".PHP_EOL;
-        }
+        echo "\e[0;32mLaunch task\e[0m".PHP_EOL;
+        $f3->set('LOCK.S3Buckets.pruneGeokretyAvatars', 'true', 60);
+        // TODO expire never uploaded pictures
+        PictureModel::expireNeverUploaded();
+        $f3->clear('LOCK.S3Buckets.pruneGeokretyAvatars');
+        echo "\e[0;32mTask end\e[0m".PHP_EOL;
     }
 }

@@ -8,7 +8,7 @@ use GeoKrety\Service\Smarty;
 class HallOfFame extends Base {
     const CONTRIBUTORS_IDS = ['kumy', 'BSLLM', 'filips', 'simor', 'Thathanka', 'moose', 'YvesProvence', 'Quinto', 'harrieklomp', 'Lineflyer'];
 
-    public function get($f3) {
+    public function get() {
         $contributors = [];
         foreach (self::CONTRIBUTORS_IDS as $username) {
             $user = new User();

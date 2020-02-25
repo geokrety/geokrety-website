@@ -7,18 +7,7 @@ use GeoKrety\Model\MoveComment;
 use GeoKrety\Service\Smarty;
 
 class MoveCommentCreate extends Base {
-    public function beforeRoute($f3) {
-        parent::beforeRoute($f3);
-
-        $move = new Move();
-        $move->load(['id = ?', $f3->get('PARAMS.moveid')]);
-        if ($move->dry()) {
-            Smarty::render('dialog/alert_404.tpl');
-            die();
-        }
-        $this->move = $move;
-        Smarty::assign('move', $this->move);
-    }
+    use \MoveLoader;
 
     public function get_comment(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/move_comment_create.tpl');
@@ -77,5 +66,9 @@ class MoveCommentCreate extends Base {
         }
 
         $f3->reroute("@geokret_details(@gkid=$gkid)#log".$comment->move->id);
+    }
+
+    protected function checkAuthor(Move $move) {
+        // Empty
     }
 }

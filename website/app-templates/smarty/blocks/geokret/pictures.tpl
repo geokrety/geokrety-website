@@ -1,22 +1,13 @@
-<div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-        {t}Pictures{/t}
-        {if $geokret->isOwner()}
-        <div class="btn-group pull-right" role="group">
-            <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$geokret->gkid}" data-picture-type="0">
-                {fa icon="plus"}&nbsp;{fa icon="picture-o"}
-            </button>
-        </div>
-        <div class="clearfix"></div>
-        {/if}
-    </div>
+{include file='macros/picture_geokret_avatar.tpl'}
+<a class="anchor" id="gk-avatars-list"></a>
+<div id="geokretPicturesList" class="panel panel-default{if !$avatars} hidden{/if} picturesList">
     <div class="panel-body">
         <div class="gallery">
-            {*foreach from=$geokret_pictures item=item}
-            {picture item=$item skipLinkToEntity=true skipTags=false isOwner=$geokret->isOwner()}
-            {foreachelse*}
-            <em>{t}No picture uploaded yet.{/t}</em>
-            {*/foreach*}
+            {if $avatars}
+            {foreach from=$avatars item=picture}
+                    {call picture_base writable=false item=$picture writable=true}
+            {/foreach}
+            {/if}
         </div>
     </div>
 </div>

@@ -8,7 +8,12 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class PasswordRecovery extends Base {
-    public function beforeRoute($f3) {
+    /**
+     * @var User
+     */
+    private $user;
+
+    public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
 
         $user = new User();
@@ -16,18 +21,18 @@ class PasswordRecovery extends Base {
         Smarty::assign('user', $user);
     }
 
-    public function get($f3) {
+    public function get() {
         Smarty::render('pages/password_recovery.tpl');
     }
 
-    public function post($f3) {
+    public function post(\Base $f3) {
         // reCaptcha
         if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
             $recaptcha = new \ReCaptcha\ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
             $resp = $recaptcha->verify($f3->get('POST.g-recaptcha-response'), $f3->get('IP'));
             if (!$resp->isSuccess()) {
                 \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
-                $this->get($f3);
+                $this->get();
                 die();
             }
         }
@@ -38,7 +43,7 @@ class PasswordRecovery extends Base {
         $user->load(['email = ?', $user->email]);
         if ($user->dry()) {
             \Flash::instance()->addMessage(_('Sorry no account using that email address.'), 'danger');
-            $this->get($f3);
+            $this->get();
             die();
         }
 

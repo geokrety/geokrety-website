@@ -8,7 +8,12 @@ use GeoKrety\Model\NewsSubscription;
 use GeoKrety\Service\Smarty;
 
 class NewsDetails extends Base {
-    public function beforeRoute($f3) {
+    /**
+     * @var NewsComment
+     */
+    private $comment;
+
+    public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
 
         $comment = new NewsComment();

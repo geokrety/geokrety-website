@@ -8,6 +8,7 @@
     {\Assets::instance()->addCss(GK_CDN_FONT_AWESOME_CSS)}
     {\Assets::instance()->addCss(GK_CDN_FLAG_ICON_CSS)}
     {\Assets::instance()->addCss(GK_CDN_LIBRARIES_PARSLEY_CSS_URL)}
+    {\Assets::instance()->addCss(GK_CDN_MAGNIFIC_POPUP_CSS)}
     {\Assets::instance()->addCss('css/app.scss')}
     {\Assets::instance()->renderGroup(\Assets::instance()->getAssets('head')) nofilter}
 

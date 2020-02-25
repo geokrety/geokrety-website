@@ -8,7 +8,7 @@ use GeoKrety\Model\OwnerCode;
 use GeoKrety\Service\Smarty;
 
 class GeokretClaim extends Base {
-    public function get(\Base $f3) {
+    public function get() {
         Smarty::render('pages/geokret_claim.tpl');
     }
 
@@ -19,13 +19,13 @@ class GeokretClaim extends Base {
 
         if ($ownerCode->dry()) {
             \Flash::instance()->addMessage(_('Sorry, the provided owner code and tracking code doesn\'t match.'), 'danger');
-            $this->get($f3);
+            $this->get();
             die();
         }
 
         if ($ownerCode->user) {
             \Flash::instance()->addMessage(_('Sorry, this owner code has already been used.'), 'danger');
-            $this->get($f3);
+            $this->get();
             die();
         }
 
@@ -72,6 +72,6 @@ class GeokretClaim extends Base {
             }
         }
 
-        $this->get($f3);
+        $this->get();
     }
 }

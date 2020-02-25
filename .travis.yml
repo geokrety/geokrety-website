@@ -52,7 +52,7 @@ script:
   # Check against CRLF
   - scripts/check-crlf.sh
   # Check against trailing whitespaces on php files
-  - scripts/check-trailling-spaces.sh .
+  - scripts/check-trailing-spaces.sh .
   # Check against non utf-8 files
   - scripts/check-utf8.sh .
   # Check php syntax

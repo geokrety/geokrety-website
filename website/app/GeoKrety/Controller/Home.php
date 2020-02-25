@@ -9,7 +9,7 @@ use GeoKrety\Model\SiteStats;
 use GeoKrety\Service\Smarty;
 
 class Home extends Base {
-    public function get($f3) {
+    public function get() {
         // Load statistics
         $siteStats = new SiteStats();
         $result = $siteStats->find(['name LIKE ?', 'stat_%']);

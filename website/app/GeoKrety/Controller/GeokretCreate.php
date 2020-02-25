@@ -7,32 +7,34 @@ use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Service\Smarty;
 
-class GeokretCreate extends BaseCurrentUser {
-    public function get($f3) {
+class GeokretCreate extends Base {
+    use \CurrentUserLoader;
+
+    public function get(\Base $f3) {
         Smarty::render('pages/geokret_create.tpl');
     }
 
-    public function post($f3) {
+    public function post(\Base $f3) {
         $f3->get('DB')->begin();
         $geokret = new Geokret();
         Smarty::assign('geokret', $geokret);
         $geokret->name = $f3->get('POST.name');
         $geokret->type = $f3->get('POST.type');
         $geokret->mission = $f3->get('POST.mission');
-        $geokret->owner = $f3->get('SESSION.CURRENT_USER');
-        $geokret->holder = $f3->get('SESSION.CURRENT_USER');
+        $geokret->owner = $this->currentUser;
+        $geokret->holder = $this->currentUser;
 
         if ($geokret->validate()) {
             $geokret->save();
 
-            if ($this->user->hasHomeCoordinates() && filter_var($f3->get('POST.log_at_home'), FILTER_VALIDATE_BOOLEAN)) {
+            if ($this->currentUser->hasHomeCoordinates() && filter_var($f3->get('POST.log_at_home'), FILTER_VALIDATE_BOOLEAN)) {
                 $move = new Move();
                 $move->geokret = $geokret;
                 $move->author = $f3->get('SESSION.CURRENT_USER');
                 $move->logtype = LogType::LOG_TYPE_DIPPED;
                 $move->moved_on_datetime = $geokret->created_on_datetime->format('Y-m-d H:i:s');
-                $move->lat = $this->user->home_latitude;
-                $move->lon = $this->user->home_longitude;
+                $move->lat = $this->currentUser->home_latitude;
+                $move->lon = $this->currentUser->home_longitude;
                 $move->comment = _('Born here');
                 // TODO alt
                 // TODO country

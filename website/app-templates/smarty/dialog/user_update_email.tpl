@@ -9,12 +9,12 @@
 
         <div class="form-group">
             <label for="inputEmail">{t}Email address{/t}</label>
-            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="{t}Email address{/t}" value="{$user->email}" required>
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="{t}Email address{/t}" value="{$currentUser->email}" required>
         </div>
 
         <div class="checkbox">
             <label>
-                <input type="checkbox" name="daily_mails" {if $user->daily_mails}checked{/if}> {t}Yes, I want to receive email alerts (sent once a day).{/t}
+                <input type="checkbox" name="daily_mails" {if $currentUser->daily_mails}checked{/if}> {t}Yes, I want to receive email alerts (sent once a day).{/t}
             </label>
         </div>
 
@@ -47,7 +47,7 @@
 
     </div>
     <div class="modal-footer">
-        <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to user page{/t}" data-dismiss="modal">
+        <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $currentUser->id)}" title="{t}Back to user page{/t}" data-dismiss="modal">
             {t}Dismiss{/t}
         </a>
         <button type="submit" class="btn btn-info">{t}Change{/t}</button>

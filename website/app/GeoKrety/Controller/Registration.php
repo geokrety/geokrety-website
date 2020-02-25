@@ -8,7 +8,12 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class Registration extends Base {
-    public function beforeRoute($f3) {
+    /**
+     * @var User
+     */
+    private $user;
+
+    public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
 
         $user = new User();

@@ -6,7 +6,7 @@ use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Service\Smarty;
 
 class UserEmailChange extends Base {
-    public function get($f3) {
+    public function get(\Base $f3) {
         $token = new EmailActivationToken();
 
         // Check database for provided token

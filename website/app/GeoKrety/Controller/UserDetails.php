@@ -3,22 +3,14 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\LogType;
-use GeoKrety\Model\User;
 use GeoKrety\Service\AwardGenerator;
 use GeoKrety\Service\Smarty;
+use UserLoader;
 
 class UserDetails extends Base {
-    public function get($f3) {
-        // load User
-        $user = new User();
-        $user->filter('badges', null, ['order' => 'awarded_on_datetime ASC']);
-        $user->load(['id = ?', $f3->get('PARAMS.userid')]);
-        if ($user->dry()) {
-            Smarty::render('dialog/alert_404.tpl');
-            die();
-        }
-        Smarty::assign('user', $user);
+    use UserLoader;
 
+    public function get(\Base $f3) {
         // GeoKrety owned stats
         $geokretyOwned = $f3->get('DB')->exec(
             'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-geokrety` WHERE owner = ?',

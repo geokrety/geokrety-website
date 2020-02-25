@@ -2,12 +2,19 @@
 
 namespace GeoKrety\Controller;
 
+use Event;
+use Flash;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\PasswordToken;
 use GeoKrety\Service\Smarty;
 
 class PasswordRecoveryChange extends Base {
-    public function beforeRoute($f3) {
+    /**
+     * @var PasswordToken
+     */
+    private $token;
+
+    public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
 
         $token = new PasswordToken();
@@ -19,7 +26,7 @@ class PasswordRecoveryChange extends Base {
         if ($f3->exists('PARAMS.token')) {
             $token->load(['token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW() ', $f3->get('PARAMS.token'), PasswordToken::TOKEN_UNUSED, GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY]);
             if ($token->dry()) {
-                \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
+                Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
             }
             $token->token = $f3->get('PARAMS.token');
         }
@@ -28,7 +35,7 @@ class PasswordRecoveryChange extends Base {
         Smarty::assign('token', $token);
     }
 
-    public function get($f3) {
+    public function get(\Base $f3) {
         // Reset eventual transaction
         if ($f3->get('DB')->trans()) {
             $f3->get('DB')->rollback();
@@ -36,7 +43,7 @@ class PasswordRecoveryChange extends Base {
         Smarty::render('pages/password_change.tpl');
     }
 
-    public function post($f3) {
+    public function post(\Base $f3) {
         // Don't execute post if token is not valid
         $token = $this->token;
         if ($token->dry()) {
@@ -50,7 +57,7 @@ class PasswordRecoveryChange extends Base {
 
         // Check passwords are equals
         if ($password_new !== $password_new_confirm) {
-            \Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
+            Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
             $this->get($f3);
             die();
         }
@@ -73,19 +80,19 @@ class PasswordRecoveryChange extends Base {
             die();
         }
         $token->save();
-        \Event::instance()->emit('password.token.used', $token);
+        Event::instance()->emit('password.token.used', $token);
 
         // Check for eventual error
         if ($f3->get('ERROR')) {
-            \Flash::instance()->addMessage(_('Unexpected error occured.'), 'danger');
+            Flash::instance()->addMessage(_('Unexpected error occured.'), 'danger');
             $this->get($f3);
             die();
         }
 
-        \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
+        Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
         $f3->get('DB')->commit();
 
-        \Event::instance()->emit('user.password.changed', $user);
+        Event::instance()->emit('user.password.changed', $user);
 
         // Send email
         $smtp = new PasswordChangeEmail();

@@ -6,29 +6,18 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class UserRefreshSecid extends Base {
-    public function beforeRoute($f3) {
-        parent::beforeRoute($f3);
+    use \CurrentUserLoader;
 
-        $user = new User();
-        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
-        if ($user->dry()) {
-            Smarty::render('dialog/alert_404.tpl');
-            die();
-        }
-        $this->user = $user;
-        Smarty::assign('user', $this->user);
-    }
-
-    public function get(\Base $f3) {
+    public function get() {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_refresh_secid.tpl');
     }
 
-    public function get_ajax(\Base $f3) {
+    public function get_ajax() {
         Smarty::render('extends:base_modal.tpl|dialog/user_refresh_secid.tpl');
     }
 
     public function post(\Base $f3) {
-        $user = $this->user;
+        $user = $this->currentUser;
         $user->refreshSecid();
 
         if ($user->validate()) {

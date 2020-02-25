@@ -6,7 +6,7 @@ use GeoKrety\Model\Waypoint;
 use GeoKrety\Service\Smarty;
 
 class MoleHoles extends Base {
-    public function get($f3) {
+    public function get() {
         $moleholesInput = [
             'OP1891', 'OC7DCB', 'OP3373', 'OCBEA7',
             'OP3B15', 'OCCB8A', 'OCC3EC', 'OCC8B7',

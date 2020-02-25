@@ -33,7 +33,7 @@
 {else}
 <li>
     <p class="navbar-btn">
-        <a id="navbar-profile-login" href="{login_link}" class="btn btn-primary btn-block">
+        <a id="navbar-profile-login" href="{login_link}" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal" data-type="form-login">
             {fa icon="sign-in"} {t}Sign in{/t}
         </a>
     </p>

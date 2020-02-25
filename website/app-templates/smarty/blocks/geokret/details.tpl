@@ -1,3 +1,5 @@
+{include file='macros/picture_geokret_avatar.tpl'}
+
 <div class="panel panel-default">
     <div class="panel-heading">
         {$geokret|gkicon nofilter}
@@ -26,6 +28,9 @@
             <a class="btn btn-warning btn-xs" href="{'geokret_edit'|alias}" title="{t}Edit GeoKret details{/t}">
                 {fa icon="pencil"}
             </a>
+            <button id="geokretAvatarUploadButton" class="btn btn-success btn-xs" title="{t}Upload a picture{/t}">
+                {fa icon="plus"}&nbsp;{fa icon="picture-o"}
+            </button>
             {/if}
         </div>
         <div class="clearfix"></div>
@@ -58,9 +63,14 @@
                     <dd>{country_track items=$country_track}</dd>*}
                 </dl>
             </div>
-            <div class="col-xs-12 col-md-3 gallery">
-                {*pictureOrDefault item=$geokret->avatar() skipLinkToEntity=true isOwner=$geokret->isOwner() pictureType=0 id=$geokret->gkid*}
-                {*altitudeProfile gk_id=$geokret->gkid*}
+            <div class="col-xs-12 col-md-3">
+                <div class="pull-right picturesList">
+                    {if $geokret->avatar}
+                      {call geokret_avatar_default item=$geokret->avatar writable=$geokret->isOwner() hideMainAvatarMedal=true}
+                    {/if}
+                    {call picture_base url="https://cdn.geokrety.org/images/wykresy/74480-m.png"}{* TODO: Altitude profile *}
+                    {*altitudeProfile gk_id=$geokret->gkid*}
+                </div>
             </div>
         </div>
 

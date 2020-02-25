@@ -54,7 +54,7 @@ class GeokretyType {
     public static function getTypes() {
         return [
             self::GEOKRETY_TYPE_TRADITIONAL => _('Traditional'),
-            self::GEOKRETY_TYPE_BOOK_CD_DVD => _('A book/CD/DVD...'),
+            self::GEOKRETY_TYPE_BOOK_CD_DVD => _('A book/CD/DVD…'),
             self::GEOKRETY_TYPE_HUMAN => _('A human'),
             self::GEOKRETY_TYPE_COIN => _('A coin'),
             self::GEOKRETY_TYPE_KRETYPOST => _('KretyPost'),

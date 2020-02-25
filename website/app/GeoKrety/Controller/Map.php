@@ -6,7 +6,7 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class Map extends Base {
-    public function get($f3) {
+    public function get() {
         Smarty::render('pages/map.tpl');
     }
 

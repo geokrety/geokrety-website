@@ -7,6 +7,9 @@ class Base extends \DB\Cortex {
         if (is_a($value, '\Datetime')) {
             return $value;
         }
+        if (is_null($value)) {
+            return null;
+        }
 
         return \DateTime::createFromFormat('Y-m-d H:i:s', $value, new \DateTimeZone('UTC'));
     }

@@ -2,6 +2,7 @@ ARG BASE_IMAGE=geokrety/website-legacy-base
 ARG BASE_TAG=latest
 FROM ${BASE_IMAGE}:${BASE_TAG}
 
+LABEL maintainer="GeoKrety Team <contact@geokrety.org>"
 HEALTHCHECK --start-period=60s --interval=30s --timeout=5s --retries=3 \
 CMD curl --fail -v --output /dev/stderr http://localhost:80/health || exit 1
 

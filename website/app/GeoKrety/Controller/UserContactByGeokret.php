@@ -6,6 +6,11 @@ use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 
 class UserContactByGeokret extends UserContact {
+    /**
+     * @var Geokret
+     */
+    private $geokret;
+
     public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_by_geokret');
     }

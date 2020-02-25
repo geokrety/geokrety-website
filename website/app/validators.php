@@ -4,6 +4,7 @@
 $validator = \Validation::instance();
 
 $validator->onError(function ($text, $key) {
+    \Base::instance()->push('validation.error', $text);
     \Flash::instance()->addMessage($text, 'danger');
 });
 
@@ -18,6 +19,10 @@ $validator->addValidator('geokrety_type', function ($field, $input, $param = nul
 $validator->addValidator('log_type', function ($field, $input, $param = null) {
     return \GeoKrety\LogType::isValid($input[$field]->getLogTypeId());
 }, _('The move type is invalid'));
+
+$validator->addValidator('picture_type', function ($field, $input, $param = null) {
+    return \GeoKrety\PictureType::isValid($input[$field]->getTypeId());
+}, _('The picture type is invalid'));
 
 $validator->addValidator('language_supported', function ($field, $input, $param = null) {
     return \GeoKrety\Service\LanguageService::isLanguageSupported($input[$field]);

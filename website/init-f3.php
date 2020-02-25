@@ -1,15 +1,18 @@
 <?php
 
 require __DIR__.'/../vendor/autoload.php';
+
 $f3 = \Base::instance();
+
+// Create GK_* consts from environments
+\GeoKrety\Service\Config::instance();
+// Our dynamic routes will use it
+$f3->route('POST @s3_file_uploaded: /s3/file-uploaded', '\GeoKrety\Controller\GeokretAvatarUploadWebhook->post');
 $f3->config(__DIR__.'/app/config.ini');
 $f3->config(__DIR__.'/app/routes.ini');
 $f3->config(__DIR__.'/app/cli.ini');
 $f3->config(__DIR__.'/app/admin.ini');
 $f3->config(__DIR__.'/app/authorizations.ini');
-
-// Create GK_* consts from environments
-\GeoKrety\Service\Config::instance();
 
 // // Falsum
 // Falsum\Run::handler();

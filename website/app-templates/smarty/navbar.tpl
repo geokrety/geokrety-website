@@ -16,7 +16,7 @@
                     {t}Log a GeoKret{/t}
                 </a>
                 {else}
-                <a href="{login_link}" class="btn btn-primary navbar-btn">
+                <a href="{login_link}" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal" data-type="form-login">
                     {fa icon="sign-in"} {t}Sign in{/t}
                 </a>
                 {/if}

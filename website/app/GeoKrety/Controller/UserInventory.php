@@ -5,9 +5,12 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
+use UserLoader;
 
-class UserInventory extends BaseUser {
-    public function get($f3) {
+class UserInventory extends Base {
+    use UserLoader;
+
+    public function get() {
         // Load inventory
         $geokret = new Geokret();
         $filter = ['holder = ?', $this->user->id];

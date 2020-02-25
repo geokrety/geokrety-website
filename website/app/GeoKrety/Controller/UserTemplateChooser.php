@@ -4,14 +4,16 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 
-class UserTemplateChooser extends BaseCurrentUser {
+class UserTemplateChooser extends Base {
+    use \CurrentUserLoader;
+
     public function get(\Base $f3) {
         Smarty::assign('statpic_template_count', GK_USER_STATPIC_TEMPLATE_COUNT);
         Smarty::render('pages/user_template_chooser.tpl');
     }
 
     public function post(\Base $f3) {
-        $user = $this->user;
+        $user = $this->currentUser;
         $user->statpic_template_id = $f3->get('POST.statpic');
 
         if ($user->validate()) {

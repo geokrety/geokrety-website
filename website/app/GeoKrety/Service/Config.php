@@ -7,6 +7,8 @@ class Config extends \Prefab {
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '1,26422,35313'));
+        define('GK_SITE_SESSION_LIFETIME_DEFAULT', getenv('GK_SITE_SESSION_LIFETIME_DEFAULT') ?: 60 * 60 * 3); // 3 hours
+        define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
         define('GK_SITE_TRACKING_CODE_LENGTH', getenv('GK_SITE_TRACKING_CODE_LENGTH') ?: 6);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH') ?: 42);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY') ?: 15);
@@ -21,6 +23,8 @@ class Config extends \Prefab {
         define('GK_SITE_USERNAME_MIN_LENGTH', getenv('GK_SITE_USERNAME_MIN_LENGTH') ?: 3);
         define('GK_SITE_USERNAME_MAX_LENGTH', getenv('GK_SITE_USERNAME_MAX_LENGTH') ?: 80);
         define('GK_SITE_USER_PASSWORD_MIN_LENGTH', getenv('GK_SITE_USER_PASSWORD_MIN_LENGTH') ?: 6);
+        define('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE', getenv('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE') ?: 12); // Mo
+        define('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES', getenv('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES') ?: 20);
 
         // SITE EMAIL From
         define('GK_SITE_EMAIL', getenv('GK_SITE_EMAIL') ?: 'geokrety@gmail.com');
@@ -37,7 +41,15 @@ class Config extends \Prefab {
         define('GK_MINIO_SERVER_URL_EXTERNAL', getenv('GK_MINIO_SERVER_URL_EXTERNAL') ?: GK_MINIO_SERVER_URL);
         define('GK_MINIO_ACCESS_KEY', getenv('GK_MINIO_ACCESS_KEY') ?: null);
         define('GK_MINIO_SECRET_KEY', getenv('GK_MINIO_SECRET_KEY') ?: null);
-        define('GK_BUCKET_STATPIC_NAME', getenv('GK_BUCKET_STATPIC_NAME') ?: 'statpic');
+
+        define('GK_BUCKET_NAME_STATPIC', getenv('GK_BUCKET_NAME_STATPIC') ?: 'statpic');
+        define('GK_BUCKET_NAME_GEOKRETY_AVATARS', getenv('GK_BUCKET_NAME_GEOKRETY_AVATARS') ?: 'gk-avatars');
+        define('GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER', getenv('GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER') ?: 'pictures-processor-downloader');
+        define('GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER', getenv('GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER') ?: 'pictures-processor-uploader');
+
+        define('GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED', getenv('GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED') ?: '');
+
+        define('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST', getenv('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST') ?: '');
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
@@ -138,6 +150,7 @@ class Config extends \Prefab {
         define('GK_SITE_CACHE_TTL_LATEST_NEWS', getenv('GK_SITE_CACHE_TTL_LATEST_NEWS') ?: 60);
         define('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY') ?: 60);
         define('GK_SITE_CACHE_TTL_LATEST_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_GEOKRETY') ?: 60);
+        define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: 600);
 
         // API LIMITS
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);
@@ -155,6 +168,7 @@ class Config extends \Prefab {
         define('GK_GEOKRET_NAME_MAX_LENGTH', getenv('GK_GEOKRET_NAME_MAX_LENGTH') ?: 75);
         define('GK_USERNAME_MIN_LENGTH', getenv('GK_USERNAME_MIN_LENGTH') ?: 3);
         define('GK_USERNAME_MAX_LENGTH', getenv('GK_USERNAME_MAX_LENGTH') ?: 20);
+        define('GK_PICTURE_CAPTION_MAX_LENGTH', getenv('GK_PICTURE_CAPTION_MAX_LENGTH') ?: 50);
 
         // CDN
         define('GK_CDN_SERVER_URL', getenv('GK_CDN_SERVER_URL') ?: 'https://cdn.geokrety.org');
@@ -191,9 +205,13 @@ class Config extends \Prefab {
         define('GK_CDN_FONT_AWESOME_CSS', getenv('GK_CDN_FONT_AWESOME_CSS') ?: GK_CDN_LIBRARIES_URL.'/font-awesome/4.7.0/css/font-awesome.min.css');
         define('GK_CDN_FLAG_ICON_CSS', getenv('GK_CDN_FLAG_ICON_CSS') ?: GK_CDN_CSS_URL.'/flag-icon.min.css');
 
-        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.22.0/moment.min.js');
         define('GK_CDN_BOOTSTRAP_MAXLENGTH_JS', getenv('GK_CDN_BOOTSTRAP_MAXLENGTH_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js');
         define('GK_CDN_PREVIEW_IMAGE_JQUERY_JS', getenv('GK_CDN_PREVIEW_IMAGE_JQUERY_JS') ?: GK_CDN_LIBRARIES_URL.'/preview-image-jquery/1.0/preview-image.min.js');
+
+//        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.22.0/moment.min.js');
+        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.24.0/moment-with-locales.min.js');
+        define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
+        define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
 
         define('GK_CDN_LEAFLET_JS', getenv('GK_CDN_LEAFLET_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.js');
         define('GK_CDN_LEAFLET_CSS', getenv('GK_CDN_LEAFLET_CSS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.4.0/leaflet.css');
@@ -213,10 +231,6 @@ class Config extends \Prefab {
 
         define('GK_CDN_SPIN_JS', getenv('GK_CDN_SPIN_JS') ?: GK_CDN_LIBRARIES_URL.'/spin.js/2.3.2/spin.min.js');
 
-        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.24.0/moment-with-locales.min.js');
-        define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
-        define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
-
         define('GK_CDN_LATINIZE_JS', getenv('GK_CDN_LATINIZE_JS') ?: GK_CDN_LIBRARIES_URL.'/latinize/0.4.0/latinize.min.js');
 
         define('GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS', getenv('GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js');
@@ -224,6 +238,11 @@ class Config extends \Prefab {
         define('GK_CDN_ZXCVBN_JS', getenv('GK_CDN_ZXCVBN_JS') ?: GK_CDN_LIBRARIES_URL.'/zxcvbn/4.4.2/zxcvbn.min.js');
         define('GK_CDN_STRENGTHIFY_JS', getenv('GK_CDN_STRENGTHIFY_JS') ?: GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/jquery.strengthify.min.js');
         define('GK_CDN_STRENGTHIFY_CSS', getenv('GK_CDN_STRENGTHIFY_CSS') ?: GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/strengthify.min.css');
+
+        define('GK_CDN_DROPZONE_JS', getenv('GK_CDN_DROPZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/dropzone/5.5.1/dropzone.js');
+
+        define('GK_CDN_MAGNIFIC_POPUP_JS', getenv('GK_CDN_MAGNIFIC_POPUP_JS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/jquery.magnific-popup.min.js');
+        define('GK_CDN_MAGNIFIC_POPUP_CSS', getenv('GK_CDN_MAGNIFIC_POPUP_CSS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/magnific-popup.css');
     }
 
     public static function printEnvironements() {

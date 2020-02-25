@@ -2,12 +2,15 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
+use GeoKrety\Model\Picture;
 use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\GeokretLoader;
 
-class GeokretDetails extends BaseGeokret {
+class GeokretDetails extends Base {
+    use GeokretLoader;
+
     public function get($f3) {
         // Load move independently to use pagination
         $move = new Move();
@@ -19,8 +22,13 @@ class GeokretDetails extends BaseGeokret {
         $pages = new Pagination($subset['total'], $subset['limit']);
         Smarty::assign('pg', $pages);
 
+        // Filter this GeoKret avatars
+        $picture = new Picture();
+        $avatars = $picture->find(['geokret = ? AND uploaded_on_datetime != ?', $this->geokret->id, null]);
+        Smarty::assign('avatars', $avatars);
+
         Smarty::render('pages/geokret_details.tpl');
 
-        // TODO geokret_already_seen
+        // TODO check if GeoKret has already been discovered, and display Tracking Code
     }
 }

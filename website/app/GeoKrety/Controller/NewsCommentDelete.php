@@ -2,38 +2,24 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\NewsComment;
 use GeoKrety\Service\Smarty;
+use NewsCommentLoader;
 
 class NewsCommentDelete extends Base {
+    use NewsCommentLoader;
+
     public function get(\Base $f3) {
-        $comment = $this->load($f3);
-        Smarty::assign('comment', $comment);
+        Smarty::assign('comment', $this->comment);
         Smarty::render('dialog/news_comment_delete.tpl');
     }
 
     public function post(\Base $f3) {
-        $comment = $this->load($f3);
-        $newsid = $comment->news->id;
+        $comment = $this->comment;
+        $newsId = $comment->news->id;
         if ($comment->valid()) {
             $comment->erase();
             \Event::instance()->emit('news-comment.deleted', $comment);
         }
-        $f3->reroute("@news_details(@newsid=$newsid)");
-    }
-
-    private function load(\Base $f3) {
-        $comment = new NewsComment();
-        $comment->load(['id = ?', $f3->get('PARAMS.newscommentid')]);
-        if ($comment->dry()) {
-            Smarty::render('dialog/alert_404.tpl');
-            die();
-        }
-        if (!$comment->isAuthor()) {
-            Smarty::render('dialog/alert_403.tpl');
-            die();
-        }
-
-        return $comment;
+        $f3->reroute(sprintf('@news_details(@newsid=%d)', $newsId));
     }
 }

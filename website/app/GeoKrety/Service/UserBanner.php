@@ -14,7 +14,7 @@ class UserBanner {
 
     public static function get_banner_url(User $user) {
         return S3Client::instance()->getS3Public()->getObjectUrl(
-             GK_BUCKET_STATPIC_NAME,
+             GK_BUCKET_NAME_STATPIC,
              sprintf('%d.png', $user->id)
         );
     }
@@ -63,7 +63,7 @@ class UserBanner {
 
         // Store file
         S3Client::instance()->getS3()->putObject([
-            'Bucket' => GK_BUCKET_STATPIC_NAME,
+            'Bucket' => GK_BUCKET_NAME_STATPIC,
             'Key' => sprintf('%d.png', $user->id),
             'Body' => $img->dump('png', 9),
         ]);

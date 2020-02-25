@@ -3,8 +3,11 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\GeokretLoader;
 
-class GeokretEdit extends BaseGeokret {
+class GeokretEdit extends Base {
+    use GeokretLoader;
+
     public function get($f3) {
         Smarty::render('pages/geokret_create.tpl');
     }

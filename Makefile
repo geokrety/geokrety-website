@@ -17,12 +17,15 @@ GIT_COMMIT := $(shell git rev-parse --short HEAD)
 composer: ## run composer install locally
 	composer 2>/dev/null 1>&2 || { echo "composer is required : composer install guide at https://getcomposer.org"; exit 1; }
 	composer install
+composer-autoload: ## Generate and optimize autoloader
+	${PTY_PREFIX} composer dump-autoload --optimize
+
 phpcs: ## run php check style fixer
 	php ./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
 crlf: ## run file checks : check CR/LF
 	bash ./scripts/check-crlf.sh
 trailing: ## run file check : check trailing spaces
-	bash ./scripts/check-trailling-spaces.sh .
+	bash ./scripts/check-trailing-spaces.sh .
 utf8: ## run file check : utf8
 	bash ./scripts/check-utf8.sh .
 test: ## run PHPUnit tests
@@ -31,6 +34,12 @@ check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, 
 
 seed: ## generate random data
 	${PTY_PREFIX} docker exec -ti geokrety-website_web_1 bash -c "cd website && ../vendor/bin/phinx seed:run"
+
+buckets: ## create buckets
+	${PTY_PREFIX} bash -c "./minio/init.sh"
+
+phinx-migrations-generate: ## create new db migration
+	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx-migrations generate"
 
 ## DEV Local instance of geokrety
 #	mkdir -p ./website/templates

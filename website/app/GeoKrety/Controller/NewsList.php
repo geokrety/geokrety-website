@@ -7,7 +7,7 @@ use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
 
 class NewsList extends Base {
-    public function get($f3) {
+    public function get(\Base $f3) {
         $news = new News();
         $filter = [];
         $option = ['order' => 'created_on_datetime DESC'];

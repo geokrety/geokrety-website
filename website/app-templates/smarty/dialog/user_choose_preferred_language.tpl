@@ -12,7 +12,7 @@
             <div class="col-sm-10">
                 <select class="form-control" id="inputLanguage" name="language">
                     {foreach $languages as $code => $lang}
-                    <option value="{$code}" {if $user->preferred_language === $code} selected{/if}>{$lang}</option>
+                    <option value="{$code}" {if $currentUser->preferred_language === $code} selected{/if}>{$lang}</option>
                     {/foreach}
                 </select>
             </div>
@@ -22,7 +22,7 @@
 
     </div>
     <div class="modal-footer">
-        <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to user page{/t}" data-dismiss="modal">
+        <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $currentUser->id)}" title="{t}Back to user page{/t}" data-dismiss="modal">
             {t}Dismiss{/t}
         </a>
         <button type="submit" class="btn btn-info">{t}Change{/t}</button>

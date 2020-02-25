@@ -21,6 +21,9 @@ $access->authorize($f3->get('SESSION.user.group'));
 
 Cron::instance();
 \Assets::instance();
+if (GK_F3_DEBUG) {
+    \Assets::instance()->clear();
+}
 \Assets\Sass::instance()->init();
 
 $f3->run();

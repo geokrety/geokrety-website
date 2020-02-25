@@ -1,7 +1,6 @@
 <?php
 
 if (class_exists('PhpCsFixer\Finder')) {
-    echo "PHP-CS-Fixer 2.x rules\n";
     $finder = PhpCsFixer\Finder::create()
         ->exclude('website/old/')
         ->exclude('website/vendor/')
@@ -26,7 +25,6 @@ if (class_exists('PhpCsFixer\Finder')) {
         ->setFinder($finder)
     ;
 } elseif (class_exists('Symfony\CS\Finder\DefaultFinder')) {
-    echo "PHP-CS-Fixer 1.x rules\n";
     $finder = Symfony\CS\Finder::create()
         ->exclude('website/old/')
         ->exclude('website/vendor/')

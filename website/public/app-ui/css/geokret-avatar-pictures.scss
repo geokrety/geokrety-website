@@ -1,0 +1,36 @@
+div.gallery > figure {
+    div.geokret-picture-actions {
+        z-index: 3;
+        position: absolute;
+        visibility: visible;
+        top: 0;
+        right: 6px;
+        margin-top: 6px;
+        width: inherit;
+        display: none;
+    }
+
+    div.geokret-main-avatar:before {
+        content: "\2605";
+    }
+
+    div.geokret-main-avatar {
+        z-index: 3;
+        position: absolute;
+        visibility: visible;
+        top: 0;
+        left: 20px;
+        -moz-border-radius: 0 0 6px 6px;
+        border-radius: 0 0 6px 6px;
+        margin-left: 0;
+        padding: 4px 1px 1px 1px;
+        background: #e31818;
+        border: 3px double white;
+        border-top: 0;
+        color: white;
+    }
+}
+
+div.gallery > figure:hover div.geokret-picture-actions {
+    display: block;
+}

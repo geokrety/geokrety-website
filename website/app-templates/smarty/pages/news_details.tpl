@@ -69,7 +69,7 @@ var inscrybmde = new InscrybMDE({
 });
 
 // Bind modal
-{include 'js/dialog_news_subscription.js.tpl'}
-{include 'js/dialog_news_comment_delete.js.tpl'}
+{include 'js/dialogs/dialog_news_subscription.tpl.js'}
+{include 'js/dialogs/dialog_news_comment_delete.tpl.js'}
 {/if}
 {/block}
