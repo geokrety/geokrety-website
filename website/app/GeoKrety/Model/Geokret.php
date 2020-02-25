@@ -151,6 +151,7 @@ class Geokret extends Base {
             }
             // TODO ensure unicity
             $self->tracking_code = strtoupper($rand);
+            $self->holder = $self->owner;
         });
     }
 
