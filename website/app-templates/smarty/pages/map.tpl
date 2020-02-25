@@ -2,10 +2,10 @@
 
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_CSS)}
-{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS})}
-{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_GEOKRETYFILTER_CSS})}
-{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_NOUISLIDER_CSS})}
-{\Assets::instance()->addCss(="{GK_CDN_LEAFLET_FULLSCREEN_CSS})}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS)}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_GEOKRETYFILTER_CSS)}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_NOUISLIDER_CSS)}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_FULLSCREEN_CSS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_MARKERCLUSTER_JS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_GEOKRETYFILTER_JS)}

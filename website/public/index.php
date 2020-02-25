@@ -20,8 +20,7 @@ $access = \Access::instance();
 $access->authorize($f3->get('SESSION.user.group'));
 
 Cron::instance();
-$assets = \Assets::instance();
+\Assets::instance();
 \Assets\Sass::instance()->init();
-$assets->addCss('css/app.scss');
 
 $f3->run();
