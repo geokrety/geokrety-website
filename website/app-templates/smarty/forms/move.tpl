@@ -148,7 +148,7 @@
                                     </div>
                                     <span id="helpBlockWaypoint" class="help-block">
                                         {t}eg.: GC1AQ2N, OP069B, OC033A…{/t}
-                                        <a href="help.php#fullysupportedwaypoints">
+                                        <a href="{'help'|alias:null:null:'#fullysupportedwaypoints'}" target="_blank">
                                             {fa icon="question-circle"}
                                         </a>
                                     </span>
@@ -160,7 +160,7 @@
                                     <input type="text" name="findbyCacheNameInput" id="findbyCacheNameInput" size="20" class="form-control" aria-describedby="helpBlockCacheName">
                                     <span id="helpBlockCacheName" class="help-block">
                                         {t escape=no}Enter cache name. <strong>Does not work for GC caches</strong>{/t}.
-                                        <a href="help.php#fullysupportedwaypoints">
+                                        <a href="{'help'|alias:null:null:'#fullysupportedwaypoints'}" target="_blank">
                                             {fa icon="question-circle"}
                                         </a>
                                     </span>
@@ -186,7 +186,7 @@
                                                     <button class="btn btn-default" type="button" title="Validate coordinates" id="coordinatesSearchButton">{fa icon="search"}</button>
                                                     <!--button class="btn btn-default" type="button" title="Log at my home position" id="homeLocationButton">{fa icon="home"}</button-->
                                                     <!--button class="btn btn-default" type="button" title="Use geolocation" id="geolocationButton">{fa icon="location-arrow"}</button-->
-                                                    <a href="help.php#acceptableformats" target="_blank" class="btn btn-default" type="button" title="Acceptable geographic coordinates formats" id="geolocationButton">{fa icon="question-circle"}</a>
+                                                    <a href="{'help'|alias:null:null:'#acceptableformats'}" target="_blank" class="btn btn-default" type="button" title="Acceptable geographic coordinates formats" id="geolocationButton">{fa icon="question-circle"}</a>
                                                 </span>
                                             </div>
                                         </div>
