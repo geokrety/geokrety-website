@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "036aa5645660a3856c9a0d57210fdb42",
+    "content-hash": "8d3608640d0ec249df374ee94e2e7ddc",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -91,16 +91,16 @@
         },
         {
             "name": "bcosca/fatfree-core",
-            "version": "3.6.5",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcosca/fatfree-core.git",
-                "reference": "c5aa056d2111e666e87f6129fe633c6a2aeeaae2"
+                "reference": "64318caa00de4da0f558d2334dc70538bdbcd1ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/c5aa056d2111e666e87f6129fe633c6a2aeeaae2",
-                "reference": "c5aa056d2111e666e87f6129fe633c6a2aeeaae2",
+                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/64318caa00de4da0f558d2334dc70538bdbcd1ad",
+                "reference": "64318caa00de4da0f558d2334dc70538bdbcd1ad",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
             ],
             "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
             "homepage": "http://fatfreeframework.com/",
-            "time": "2018-12-24T13:37:45+00:00"
+            "time": "2019-12-30T20:49:06+00:00"
         },
         {
             "name": "benhall14/php-pagination",
@@ -4426,6 +4426,7 @@
                 "psr",
                 "psr-7"
             ],
+            "abandoned": "laminas/laminas-diactoros",
             "time": "2019-07-10T16:13:25+00:00"
         }
     ],
@@ -6643,7 +6644,10 @@
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*",
+        "ext-gettext": "*"
+    },
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.3"
