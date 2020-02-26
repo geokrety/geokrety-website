@@ -3,17 +3,17 @@
 namespace GeoKrety\Controller;
 
 use Carbon\Carbon;
-use GeoKrety\Service\Smarty;
+use GeoKrety\Email\EmailChange;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
-use GeoKrety\Email\EmailChange;
+use GeoKrety\Service\Smarty;
 
 class UserUpdateEmail extends Base {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
         $user = new User();
-        $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
+        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         if ($user->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();
@@ -61,7 +61,7 @@ class UserUpdateEmail extends Base {
             $smtp = new EmailChange();
 
             // Resend validation - implicit mail unicity from token table too
-            $token->load(array('email = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
+            $token->load(['email = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY]);
             if ($token->valid()) {
                 $smtp->sendEmailChangeNotification($token);
                 \Flash::instance()->addMessage(sprintf(_('The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->diffForHumans(['parts' => 3, 'join' => true])), 'success');
@@ -69,7 +69,7 @@ class UserUpdateEmail extends Base {
             }
 
             // Check email unicity over users table
-            if ($user->count(array('email = ?', $f3->get('POST.email')), null, 0)) { // no cache
+            if ($user->count(['email = ?', $f3->get('POST.email')], null, 0)) { // no cache
                 \Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
                 $this->get($f3);
                 die();

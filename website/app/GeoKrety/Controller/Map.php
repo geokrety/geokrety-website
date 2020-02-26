@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class Map extends Base {
     public function get($f3) {
@@ -20,7 +20,7 @@ class Map extends Base {
             $ownerId = $f3->get('SESSION.CURRENT_USER');
         }
         $user = new User();
-        $user->load(array('id = ?', $ownerId));
+        $user->load(['id = ?', $ownerId]);
 
         return self::buildFragment(null, null, GK_MAP_DEFAULT_ZOOM, $user->username, $old, $ghost, $missing, $dayMin, $dayMax);
     }
@@ -29,7 +29,7 @@ class Map extends Base {
         $f3 = \Base::instance();
         if ($f3->get('SESSION.CURRENT_USER')) {
             $user = new User();
-            $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
+            $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
             if (!is_null($user->home_latitude) && !is_null($user->home_longitude)) {
                 return self::buildFragment($user->home_latitude, $user->home_longitude, GK_MAP_DEFAULT_ZOOM_USER_HOME, $ownerName, $old, $ghost, $missing, $dayMin, $dayMax);
             }

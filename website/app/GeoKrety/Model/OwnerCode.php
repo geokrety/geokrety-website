@@ -10,27 +10,27 @@ class OwnerCode extends Base {
     protected $db = 'DB';
     protected $table = 'gk-owner-codes';
 
-    protected $fieldConf = array(
-        'geokret' => array(
+    protected $fieldConf = [
+        'geokret' => [
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
-        ),
-        'user' => array(
+        ],
+        'user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'generated_on_datetime' => array(
+        ],
+        'generated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-        ),
-        'claimed_on_datetime' => array(
+        ],
+        'claimed_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
-        ),
-        'token' => array(
+        ],
+        'token' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
-        ),
-    );
+        ],
+    ];
 
     public function get_generated_on_datetime($value) {
         return self::get_date_object($value);

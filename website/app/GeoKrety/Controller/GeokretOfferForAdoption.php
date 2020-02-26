@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\OwnerCode;
+use GeoKrety\Service\Smarty;
 
 class GeokretOfferForAdoption extends BaseGeokret {
     public function get(\Base $f3) {
@@ -21,7 +21,7 @@ class GeokretOfferForAdoption extends BaseGeokret {
         }
 
         $ownerCode = new OwnerCode();
-        if ($ownerCode->count(array('geokret = ? AND user = ?', $this->geokret->id, null), null, 0)) {
+        if ($ownerCode->count(['geokret = ? AND user = ?', $this->geokret->id, null], null, 0)) {
             \Flash::instance()->addMessage(_('An Owner Code is already available for this GeoKret.'), 'warning');
             $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
         }

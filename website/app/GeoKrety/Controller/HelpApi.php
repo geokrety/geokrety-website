@@ -2,18 +2,18 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Xml;
-use GeoKrety\Model\Geokret;
 
 class HelpApi extends Base {
     public function get($f3) {
         // Load Geokret 46464
         $geokret = new Geokret();
-        $geokret->load(array('id = ?', 46684));
+        $geokret->load(['id = ?', 46684]);
         // Load Geokret 46464
         $geokret2 = new Geokret();
-        $geokret2->load(array('id = ?', 65536));
+        $geokret2->load(['id = ?', 65536]);
 
         // Render ruchy saved
         $xml = new Xml\GeokretyRuchy();

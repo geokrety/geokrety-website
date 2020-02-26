@@ -12,15 +12,15 @@ class LanguageService extends \Prefab {
 
     const DEFAULT_LANGUAGE_CODE = 'en';
 
-    const SUPPORTED_LANGUAGES = array(
+    const SUPPORTED_LANGUAGES = [
         'en', 'fr', 'de', 'pl', 'bg', 'ca',
         'da', 'el', 'es', 'et', 'fi', 'cs',
         'hu', 'it', 'ja', 'nl', 'pt', 'zh',
         'ro', 'ru', 'sk', 'sq', 'sv', 'th',
         'tr', 'uk',
-    );
+    ];
 
-    const SUPPORTED_LANGUAGES_LOCAL_NAME = array(
+    const SUPPORTED_LANGUAGES_LOCAL_NAME = [
         'en' => 'English',
         'bg' => 'Български',
         'ca' => 'Català',
@@ -49,7 +49,7 @@ class LanguageService extends \Prefab {
         'tr' => 'Türk',
         'uk' => 'Українська',
         'inline-translation' => 'Translation mode',
-    );
+    ];
 
     public function __construct() {
         $this->isoCodesFactory = new \Sokil\IsoCodes\IsoCodesFactory();
@@ -63,7 +63,7 @@ class LanguageService extends \Prefab {
         $isoCodes = self::instance()->isoCodesFactory;
         $langs = $isoCodes->getLanguages();
 
-        $languages = array();
+        $languages = [];
         foreach (self::SUPPORTED_LANGUAGES as $langAlpha2) {
             if ($locale) {
                 $languages[$langAlpha2] = self::SUPPORTED_LANGUAGES_LOCAL_NAME[$langAlpha2];

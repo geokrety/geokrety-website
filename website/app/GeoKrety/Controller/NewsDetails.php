@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\News;
 use GeoKrety\Model\NewsComment;
 use GeoKrety\Model\NewsSubscription;
+use GeoKrety\Service\Smarty;
 
 class NewsDetails extends Base {
     public function beforeRoute($f3) {
@@ -19,8 +19,8 @@ class NewsDetails extends Base {
     public function get(\Base $f3) {
         // Load news
         $news = new News();
-        $news->filter('comments', null, array('order' => 'id DESC'));
-        $news->load(array('id = ?', $f3->get('PARAMS.newsid')));
+        $news->filter('comments', null, ['order' => 'id DESC']);
+        $news->load(['id = ?', $f3->get('PARAMS.newsid')]);
         Smarty::assign('news', $news);
 
         // Save last view
@@ -70,7 +70,7 @@ class NewsDetails extends Base {
 
     private function loadSubscription(\Base $f3) {
         $subscription = new NewsSubscription();
-        $subscription->load(array('news = ? AND user = ?', $f3->get('PARAMS.newsid'), $f3->get('SESSION.CURRENT_USER')));
+        $subscription->load(['news = ? AND user = ?', $f3->get('PARAMS.newsid'), $f3->get('SESSION.CURRENT_USER')]);
 
         if ($subscription->dry()) {
             $subscription->news = $f3->get('PARAMS.newsid');

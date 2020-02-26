@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Email;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 abstract class Base extends \SMTP {
     public function __construct($host = GK_SMTP_HOST, $port = GK_SMTP_PORT, $scheme = GK_SMTP_SCHEME, $user = GK_SMTP_USER, $pw = GK_SMTP_PASSWORD, $ctx = null) {
@@ -42,7 +42,7 @@ abstract class Base extends \SMTP {
 
     public function send($message, $log = true, $mock = false) {
         if (is_null(GK_SMTP_HOST)) {
-            \Base::instance()->push('SESSION.LOCAL_MAIL', array('smtp' => clone $this, 'message' => $message, 'read' => false));
+            \Base::instance()->push('SESSION.LOCAL_MAIL', ['smtp' => clone $this, 'message' => $message, 'read' => false]);
 
             return true;
         }

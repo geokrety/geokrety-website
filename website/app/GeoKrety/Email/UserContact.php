@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Email;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Mail;
+use GeoKrety\Service\Smarty;
 
 class UserContact extends Base {
     protected function setFromDefault() {

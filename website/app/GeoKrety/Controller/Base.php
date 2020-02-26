@@ -13,8 +13,8 @@ abstract class Base {
         // Load current user
         if ($f3->exists('SESSION.CURRENT_USER')) {
             $user = new \GeoKrety\Model\User();
-            $user->filter('email_activation', array('used = 0'));
-            $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
+            $user->filter('email_activation', ['used = 0']);
+            $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
             if ($user->valid()) {
                 \GeoKrety\Service\Smarty::assign('current_user', $user);
             }

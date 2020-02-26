@@ -11,48 +11,48 @@ class AccountActivationToken extends Base {
     const TOKEN_VALIDATED = 1;
     const TOKEN_EXPIRED = 2;
 
-    const TOKEN_NEED_VALIDATE = array(
+    const TOKEN_NEED_VALIDATE = [
         self::TOKEN_VALIDATED,
-    );
+    ];
 
     protected $db = 'DB';
     protected $table = 'gk-account-activation';
 
-    protected $fieldConf = array(
-        'token' => array(
+    protected $fieldConf = [
+        'token' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
-        ),
-        'user' => array(
+        ],
+        'user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'used' => array(
+        ],
+        'used' => [
             'type' => Schema::DT_INT1,
             'default' => self::TOKEN_UNUSED,
             'nullable' => false,
-        ),
-        'created_on_datetime' => array(
+        ],
+        'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
-        ),
-        'used_on_datetime' => array(
+        ],
+        'used_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
-        ),
-        'requesting_ip' => array(
+        ],
+        'requesting_ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-        ),
-        'validating_ip' => array(
+        ],
+        'validating_ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'validate' => 'required',
             'validate_depends' => [
                 'used' => ['validate', 'account_activation_require_validate'],
             ],
-        ),
-    );
+        ],
+    ];
 
     public function get_created_on_datetime($value) {
         return self::get_date_object($value);
@@ -66,11 +66,11 @@ class AccountActivationToken extends Base {
     public static function expireOldTokens() {
         $f3 = \Base::instance();
         $activation = new AccountActivationToken();
-        $expiredTokens = $activation->find(array(
+        $expiredTokens = $activation->find([
             'used = ? AND NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)',
             self::TOKEN_UNUSED,
             GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY,
-        ));
+        ]);
         if ($expiredTokens === false) {
             return;
         }

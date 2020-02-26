@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Model;
 
-use GeoKrety\Service\HTMLPurifier;
 use DB\SQL\Schema;
+use GeoKrety\Service\HTMLPurifier;
 
 class MoveComment extends Base {
     use \Validation\Traits\CortexTrait;
@@ -11,38 +11,38 @@ class MoveComment extends Base {
     protected $db = 'DB';
     protected $table = 'gk-move-comments';
 
-    protected $fieldConf = array(
-        'content' => array(
+    protected $fieldConf = [
+        'content' => [
             'type' => Schema::DT_VARCHAR512,
             'filter' => 'trim|HTMLPurifier',
             'validate' => 'not_empty|min_len,1|max_len,500',
             'nullable' => false,
-        ),
-        'type' => array(
+        ],
+        'type' => [
             'type' => Schema::DT_TINYINT,
             'nullable' => false,
-            'item' => array('0', '1'),
-        ),
-        'created_on_datetime' => array(
+            'item' => ['0', '1'],
+        ],
+        'created_on_datetime' => [
             'type' => \DB\SQL\Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-        ),
-        'updated_on_datetime' => array(
+        ],
+        'updated_on_datetime' => [
             'type' => \DB\SQL\Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
-        ),
-        'author' => array(
+        ],
+        'author' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'geokret' => array(
+        ],
+        'geokret' => [
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
-        ),
-        'move' => array(
+        ],
+        'move' => [
             'belongs-to-one' => '\GeoKrety\Model\Move',
-        ),
-    );
+        ],
+    ];
 
     public function set_content($value) {
         return HTMLPurifier::getPurifier()->purify($value);
@@ -65,11 +65,11 @@ class MoveComment extends Base {
     public function __construct() {
         parent::__construct();
         $this->aftersave(function ($self) {
-            $self->move->comments_count = $self->count(array('move = ?', $self->move->id), null, 0); // Disable TTL
+            $self->move->comments_count = $self->count(['move = ?', $self->move->id], null, 0); // Disable TTL
             $self->move->save();
         });
         $this->aftererase(function ($self) {
-            $self->move->comments_count = $self->count(array('move = ?', $self->move->id), null, 0); // Disable TTL
+            $self->move->comments_count = $self->count(['move = ?', $self->move->id], null, 0); // Disable TTL
             $self->move->save();
         });
     }

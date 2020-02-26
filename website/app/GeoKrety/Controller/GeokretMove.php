@@ -17,7 +17,7 @@ class GeokretMove extends BaseMove {
     }
 
     public function post($f3) {
-        $errors = array();
+        $errors = [];
         $move = $this->move;
         $isEdit = !is_null($this->move->id);
 
@@ -70,7 +70,7 @@ class GeokretMove extends BaseMove {
         }
 
         // Tracking Code parser
-        $moves = array();
+        $moves = [];
         $trackingCodeChecker = new TrackingCodeValidation();
         if ($trackingCodeChecker->validate($f3->get('POST.tracking_code'))) {
             foreach ($trackingCodeChecker->getGeokrety() as $geokret) {

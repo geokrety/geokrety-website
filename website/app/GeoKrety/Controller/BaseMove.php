@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Move;
+use GeoKrety\Service\Smarty;
 
 class BaseMove extends Base {
     public function beforeRoute($f3) {
@@ -17,7 +17,7 @@ class BaseMove extends Base {
             return;
         }
 
-        $this->move->load(array('id = ?', $f3->get('PARAMS.moveid')));
+        $this->move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($this->move->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();

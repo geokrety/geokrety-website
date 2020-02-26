@@ -2,9 +2,9 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\PasswordToken;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
+use GeoKrety\Model\PasswordToken;
+use GeoKrety\Service\Smarty;
 
 class PasswordRecoveryChange extends Base {
     public function beforeRoute($f3) {
@@ -17,7 +17,7 @@ class PasswordRecoveryChange extends Base {
 
         // Check database for provided token
         if ($f3->exists('PARAMS.token')) {
-            $token->load(array('token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW() ', $f3->get('PARAMS.token'), PasswordToken::TOKEN_UNUSED, GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY));
+            $token->load(['token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW() ', $f3->get('PARAMS.token'), PasswordToken::TOKEN_UNUSED, GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY]);
             if ($token->dry()) {
                 \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
             }

@@ -5,7 +5,7 @@ namespace GeoKrety\Service\Validation;
 use GeoKrety\Service\CoordinatesConverter;
 
 class Coordinates {
-    private $errors = array();
+    private $errors = [];
     private $lat = null;
     private $lon = null;
     private $format = null;
@@ -38,11 +38,11 @@ class Coordinates {
     }
 
     public function getCoordinates() {
-        return array(
+        return [
             'lat' => $this->getLat(),
             'lon' => $this->getLon(),
             'format' => $this->format,
-        );
+        ];
     }
 
     public function getLat() {

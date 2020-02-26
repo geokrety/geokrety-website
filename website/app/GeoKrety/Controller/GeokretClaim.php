@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\OwnerCode;
-use GeoKrety\Model\Move;
 use GeoKrety\Email\GeokretClaim as GeokretClaimEmail;
+use GeoKrety\Model\Move;
+use GeoKrety\Model\OwnerCode;
+use GeoKrety\Service\Smarty;
 
 class GeokretClaim extends Base {
     public function get(\Base $f3) {
@@ -14,8 +14,8 @@ class GeokretClaim extends Base {
 
     public function post(\Base $f3) {
         $ownerCode = new OwnerCode();
-        $ownerCode->has('geokret', array('tracking_code = ?', $f3->get('POST.tc')));
-        $ownerCode->load(array('token = ?', $f3->get('POST.oc')));
+        $ownerCode->has('geokret', ['tracking_code = ?', $f3->get('POST.tc')]);
+        $ownerCode->load(['token = ?', $f3->get('POST.oc')]);
 
         if ($ownerCode->dry()) {
             \Flash::instance()->addMessage(_('Sorry, the provided owner code and tracking code doesn\'t match.'), 'danger');
@@ -58,10 +58,10 @@ class GeokretClaim extends Base {
                 \Flash::instance()->addMessage(sprintf(_('🎉 Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
                 $f3->get('DB')->commit();
 
-                $context = array(
+                $context = [
                     'oldUser' => $oldOwner,
                     'newUser' => $ownerCode->user,
-                );
+                ];
                 \Event::instance()->emit('geokret.claimed', $ownerCode->geokret, $context);
 
                 // Send email

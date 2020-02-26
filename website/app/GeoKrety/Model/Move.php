@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Model;
 
+use DB\SQL\Schema;
+use GeoKrety\LogType;
 use GeoKrety\Service\HTMLPurifier;
 use GeoKrety\Service\WaypointInfo;
-use GeoKrety\LogType;
-use DB\SQL\Schema;
 
 class Move extends Base {
     use \Validation\Traits\CortexTrait;
@@ -13,97 +13,97 @@ class Move extends Base {
     protected $db = 'DB';
     protected $table = 'gk-moves';
 
-    protected $fieldConf = array(
-        'author' => array(
+    protected $fieldConf = [
+        'author' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
             'nullable' => true,
-        ),
-        'geokret' => array(
+        ],
+        'geokret' => [
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
             'nullable' => false,
-        ),
-        'logtype' => array(
+        ],
+        'logtype' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'validate' => 'log_type',
-        ),
-        'username' => array(
+        ],
+        'username' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'validate' => 'anonymous_only_required|min_len,'.GK_USERNAME_MIN_LENGTH.'|max_len,'.GK_USERNAME_MAX_LENGTH,
             'filter' => 'trim|HTMLPurifier',
-        ),
-        'lat' => array(
+        ],
+        'lat' => [
             'type' => Schema::DT_DOUBLE,
             'nullable' => true,
             'validate' => 'float|logtype_require_coordinates',
-        ),
-        'lon' => array(
+        ],
+        'lon' => [
             'type' => Schema::DT_DOUBLE,
             'nullable' => true,
             'validate' => 'float|logtype_require_coordinates',
-        ),
-        'alt' => array(
+        ],
+        'alt' => [
             'type' => Schema::DT_INT2,
             'nullable' => true,
             'default' => '-32768',
-        ),
-        'country' => array(
+        ],
+        'country' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-        ),
-        'distance' => array(
+        ],
+        'distance' => [
             'type' => Schema::DT_INT4,
             'nullable' => true,
-        ),
-        'waypoint' => array(
+        ],
+        'waypoint' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'filter' => 'trim|HTMLPurifier',
-        ),
-        'comment' => array(
+        ],
+        'comment' => [
             'type' => Schema::DT_TEXT,
             'filter' => 'HTMLPurifier',
-        ),
-        'comments' => array(
-            'has-many' => array('\GeoKrety\Model\MoveComment', 'move'),
-        ),
-        'pictures_count' => array(
+        ],
+        'comments' => [
+            'has-many' => ['\GeoKrety\Model\MoveComment', 'move'],
+        ],
+        'pictures_count' => [
             'type' => Schema::DT_INT1,
             'nullable' => true,
-        ),
-        'comments_count' => array(
+        ],
+        'comments_count' => [
             'type' => Schema::DT_INT2,
             'nullable' => true,
-        ),
-        'app' => array(
+        ],
+        'app' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'validate' => 'max_len,16',
             'filter' => 'trim|HTMLPurifier',
-        ),
-        'app_ver' => array(
+        ],
+        'app_ver' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'validate' => 'max_len,128',
             'filter' => 'trim|HTMLPurifier',
-        ),
-        'created_on_datetime' => array(
+        ],
+        'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
-        ),
-        'moved_on_datetime' => array(
+        ],
+        'moved_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => false,
             'validate' => 'required|not_in_the_future|after_geokret_birth|move_not_same_datetime',
-        ),
-        'updated_on_datetime' => array(
+        ],
+        'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
-        ),
-    );
+        ],
+    ];
 
     public function set_comment($value) {
         return HTMLPurifier::getPurifier()->purify($value);
@@ -144,10 +144,10 @@ class Move extends Base {
 
     public function get_point() {
         if (is_null($this->lat) || is_null($this->lon)) {
-            return array();
+            return [];
         }
 
-        return array($this->lat, $this->lon);
+        return [$this->lat, $this->lon];
     }
 
     public function get_created_on_datetime($value) {
@@ -183,10 +183,10 @@ EOQUERY;
 
         $page = \Base::instance()->get('DB')->exec(
             $sql,
-            array(
+            [
                 $this->geokret->id,
                 $this->id,
-            )
+            ]
         );
 
         return $page[0]['page'];
@@ -194,17 +194,17 @@ EOQUERY;
 
     private function findNext($move) {
         $next = new Move();
-        $filter = array(
+        $filter = [
             'id != ? AND geokret = ? AND logtype IN ? AND moved_on_datetime > ?',
             $move->id,
             $move->geokret->id,
             array_map('strval', LogType::LOG_TYPES_COUNT_KILOMETERS),
             $move->moved_on_datetime->format('Y-m-d H:i:s'),
-        );
-        $options = array(
+        ];
+        $options = [
             'limit' => 1,
             'order' => 'moved_on_datetime ASC',
-        );
+        ];
         $next->load($filter, $options);
 
         return $next;
@@ -212,17 +212,17 @@ EOQUERY;
 
     private function findPrev($move) {
         $prev = new Move();
-        $filter = array(
+        $filter = [
             'id != ? AND geokret = ? AND logtype IN ? AND moved_on_datetime < ?',
             $move->id,
             $move->geokret->id,
             array_map('strval', LogType::LOG_TYPES_COUNT_KILOMETERS),
             $move->moved_on_datetime->format('Y-m-d H:i:s'),
-        );
-        $options = array(
+        ];
+        $options = [
             'limit' => 1,
             'order' => 'moved_on_datetime DESC',
-        );
+        ];
         $prev->load($filter, $options);
 
         return $prev;
@@ -281,7 +281,7 @@ EOQUERY;
             return;
         }
         $current = new Move();
-        $current->load(array('id = ?', $this->id));
+        $current->load(['id = ?', $this->id]);
         if (empty($current->point)) {
             return;
         }
@@ -302,27 +302,27 @@ EOQUERY;
 
     private function updateGeokretLastPosition(&$geokret) {
         $lastPosition = new Move();
-        $filter = array(
+        $filter = [
             'geokret = ? AND logtype IN ?',
             $geokret->id,
             array_map('strval', LogType::LOG_TYPES_LAST_POSITION),
-        );
-        $options = array(
+        ];
+        $options = [
             'order' => 'moved_on_datetime DESC',
-        );
+        ];
         $lastPosition->load($filter, $options);
         $geokret->last_position = $lastPosition->id;
     }
 
     private function updateGeokretLastMove(&$geokret) {
         $lastMove = new Move();
-        $filter = array(
+        $filter = [
             'geokret = ?',
             $geokret->id,
-        );
-        $options = array(
+        ];
+        $options = [
             'order' => 'moved_on_datetime DESC',
-        );
+        ];
         $lastMove->load($filter, $options);
         $geokret->last_log = $lastMove->id;
     }
@@ -330,9 +330,9 @@ EOQUERY;
     private function updateGeokretStats(&$geokret) {
         $moveStats = \Base::instance()->get('DB')->exec(
             'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `'.$this->table.'` WHERE geokret = ?',
-            array(
+            [
                 $geokret->id,
-            )
+            ]
         );
         $geokret->caches_count = $moveStats[0]['count'];
         $geokret->distance = $moveStats[0]['distance'];
@@ -340,15 +340,15 @@ EOQUERY;
 
     private function updateGeokretMissingStatus(&$geokret) {
         $lastPosition = new Move();
-        $filter = array(
+        $filter = [
             'geokret = ? AND logtype IN ?',
             $geokret->id,
             array_map('strval', LogType::LOG_TYPES_ALIVE),
-        );
-        $options = array(
+        ];
+        $options = [
             'order' => 'moved_on_datetime DESC',
-        );
-        $lastPosition->filter('comments', array('type = 1'));
+        ];
+        $lastPosition->filter('comments', ['type = 1']);
         $lastPosition->countRel('comments');
         $lastPosition->load($filter, $options);
         $geokret->missing = $lastPosition->count_comments > 0;
@@ -359,7 +359,7 @@ EOQUERY;
             return;
         }
         $waypoint = new Waypoint();
-        $waypoint->load(array('waypoint = ?', $this->waypoint));
+        $waypoint->load(['waypoint = ?', $this->waypoint]);
         $waypoint->waypoint = $this->waypoint;
         $waypoint->lat = $this->lat;
         $waypoint->lon = $this->lon;
@@ -370,7 +370,7 @@ EOQUERY;
     private function removeMissingStatus() {
         // TODO, why not change the type and update the comment ???
         $comment = new MoveComment();
-        $comment->erase(array('move = ? AND type = 1', $this->id));
+        $comment->erase(['move = ? AND type = 1', $this->id]);
     }
 
     public function __construct() {
@@ -397,7 +397,7 @@ EOQUERY;
         });
         $this->aftersave(function ($self) {
             $geokret = new Geokret();
-            $geokret->load(array('id = ?', $self->geokret->id));
+            $geokret->load(['id = ?', $self->geokret->id]);
             $self->updateGeokretStats($geokret);
             $self->updateGeokretLastPosition($geokret);
             $self->updateGeokretLastMove($geokret);

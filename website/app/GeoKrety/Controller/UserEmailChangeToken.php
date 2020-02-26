@@ -2,9 +2,9 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Email\EmailChange;
+use GeoKrety\Model\EmailActivationToken;
+use GeoKrety\Service\Smarty;
 
 class UserEmailChangeToken extends Base {
     public function beforeRoute($f3) {
@@ -14,7 +14,7 @@ class UserEmailChangeToken extends Base {
 
         // Check database for provided token
         if ($f3->exists('PARAMS.token')) {
-            $token->load(array('token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('PARAMS.token'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
+            $token->load(['token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('PARAMS.token'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY]);
             if ($token->dry()) {
                 \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
                 $f3->reroute('user_update_email_validate');

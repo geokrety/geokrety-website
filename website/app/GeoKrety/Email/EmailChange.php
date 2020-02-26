@@ -2,9 +2,9 @@
 
 namespace GeoKrety\Email;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class EmailChange extends Base {
     protected function setFromDefault() {

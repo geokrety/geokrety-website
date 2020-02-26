@@ -2,16 +2,16 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\User;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class UserUpdatePassword extends Base {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
         $user = new User();
-        $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
+        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         if ($user->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();
@@ -35,10 +35,10 @@ class UserUpdatePassword extends Base {
 
         // Load current user
         $user = new \GeoKrety\Model\User();
-        $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
+        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
 
         // Check old password
-        $auth = new \GeoKrety\Auth('geokrety', array('id' => 'username', 'pw' => 'password'));
+        $auth = new \GeoKrety\Auth('geokrety', ['id' => 'username', 'pw' => 'password']);
         $check_result = $auth->login($user->username, $f3->get('POST.password_old'));
         if (!$check_result) {
             \Flash::instance()->addMessage(_('Your old password is invalid.'), 'danger');

@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\User;
-use GeoKrety\Model\Mail;
 use GeoKrety\Email\UserContact as EmailUserContact;
+use GeoKrety\Model\Mail;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class UserContact extends BaseCurrentUser {
     public function beforeRoute($f3) {
@@ -27,7 +27,7 @@ class UserContact extends BaseCurrentUser {
 
     public function loadToUser(\Base $f3) {
         $user = new User();
-        $user->load(array('id = ?', $f3->get('PARAMS.userid')));
+        $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();

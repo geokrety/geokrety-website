@@ -6,14 +6,14 @@ class Watched extends Base {
     protected $db = 'DB';
     protected $table = 'gk-watched';
 
-    protected $fieldConf = array(
-        'user' => array(
+    protected $fieldConf = [
+        'user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'geokret' => array(
+        ],
+        'geokret' => [
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
-        ),
-    );
+        ],
+    ];
 
     public function isWatcher() {
         $f3 = \Base::instance();

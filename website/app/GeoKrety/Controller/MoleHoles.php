@@ -2,30 +2,30 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Waypoint;
+use GeoKrety\Service\Smarty;
 
 class MoleHoles extends Base {
     public function get($f3) {
-        $moleholesInput = array(
+        $moleholesInput = [
             'OP1891', 'OC7DCB', 'OP3373', 'OCBEA7',
             'OP3B15', 'OCCB8A', 'OCC3EC', 'OCC8B7',
-        );
-        $moleholes = array();
+        ];
+        $moleholes = [];
         $wpt = new Waypoint();
         foreach ($moleholesInput as $waypoint) {
             $wpt->reset();
-            $wpt->load(array('waypoint = ?', $waypoint));
+            $wpt->load(['waypoint = ?', $waypoint]);
             if ($wpt->valid()) {
-                $moleholes[$waypoint] = array(
+                $moleholes[$waypoint] = [
                     $wpt->name, $wpt->type, $wpt->country_name,
                     $wpt->link, $wpt->country, $wpt->status,
-                );
+                ];
             }
         }
         Smarty::assign('moleholes', $moleholes);
 
-        $molehotelsInput = array(
+        $molehotelsInput = [
             'OP0F87', 'OP2262', 'OP16B8', 'OC85FC', 'OK0085', 'OP1C23',
             'OP115F', 'OP0F87', 'OP183D', 'OP187D', 'OP1990', 'OP0982',
             'OP10F0', 'OC5895', 'OZ0140', 'OP1EAC', 'OP20A0', 'OP1D0E',
@@ -38,17 +38,17 @@ class MoleHoles extends Base {
             'OU01BD', 'OU035B', 'OU024C', 'OU0318', 'OB1466', 'TR17200',
             'TR22853', 'TR22854', 'TR17299', 'TR17436', 'TR17479', 'TR18111',
             'TR18165',
-        );
+        ];
 
-        $gkhotels = array();
+        $gkhotels = [];
         foreach ($molehotelsInput as $waypoint) {
             $wpt->reset();
-            $wpt->load(array('waypoint = ?', $waypoint));
+            $wpt->load(['waypoint = ?', $waypoint]);
             if ($wpt->valid()) {
-                $gkhotels[$waypoint] = array(
+                $gkhotels[$waypoint] = [
                     $wpt->name, $wpt->type, $wpt->country_name,
                     $wpt->link, $wpt->country, $wpt->status,
-                );
+                ];
             }
         }
         Smarty::assign('gkhotels', $gkhotels);

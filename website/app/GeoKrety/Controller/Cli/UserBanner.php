@@ -35,7 +35,7 @@ class UserBanner {
 
     public function generateByUserId($f3) {
         $user = new User();
-        $user->load(array('id = ?', $f3->get('PARAMS.userid')));
+        $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {
             echo "\e[0;32mNo user found\e[0m".PHP_EOL;
 

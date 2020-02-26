@@ -14,7 +14,7 @@ class AwardGenerator {
      *                value: award image names
      */
     public static function getGrantedAwards($count) {
-        $awards = array();
+        $awards = [];
         if ($count >= 1) {
             $awards['1'] = 'medal-1-1.png';
         }

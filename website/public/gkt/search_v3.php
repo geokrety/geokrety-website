@@ -35,7 +35,7 @@ $g_userid = $_GET['userid'];
 //$g_lat = 60.63142;
 //$g_lon = 124.85338;
 
-$arr = array();
+$arr = [];
 
 if (($g_mode == 'latlon') and is_numeric($g_lat) and is_numeric($g_lon)) {
     $latNE = $g_lat + 0.0001;

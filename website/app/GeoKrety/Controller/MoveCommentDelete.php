@@ -2,15 +2,15 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\MoveComment;
+use GeoKrety\Service\Smarty;
 
 class MoveCommentDelete extends Base {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
         $comment = new MoveComment();
-        $comment->load(array('id = ?', $f3->get('PARAMS.movecommentid')));
+        $comment->load(['id = ?', $f3->get('PARAMS.movecommentid')]);
         if ($comment->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();

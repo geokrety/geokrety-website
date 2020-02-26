@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\User;
-use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
 use GeoKrety\Email\AccountActivation;
+use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class Registration extends Base {
     public function beforeRoute($f3) {
@@ -39,8 +39,8 @@ class Registration extends Base {
 
         // Resend validation
         $token = new AccountActivationModel();
-        $token->has('user', array('username = ? AND email = ?', $f3->get('POST.username'), $f3->get('POST.email')));
-        $token->load(array('used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', AccountActivationModel::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY));
+        $token->has('user', ['username = ? AND email = ?', $f3->get('POST.username'), $f3->get('POST.email')]);
+        $token->load(['used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', AccountActivationModel::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY]);
         if ($token->valid()) {
             $smtp = new AccountActivation();
             $smtp->sendActivationAgain($token);

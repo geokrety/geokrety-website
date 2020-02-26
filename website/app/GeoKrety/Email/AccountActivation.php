@@ -3,8 +3,8 @@
 namespace GeoKrety\Email;
 
 use Carbon\Carbon;
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
+use GeoKrety\Service\Smarty;
 
 class AccountActivation extends Base {
     private $message;

@@ -10,52 +10,52 @@ class LogType {
     const LOG_TYPE_ARCHIVED = 4;
     const LOG_TYPE_DIPPED = 5;
 
-    const LOG_TYPES = array(
+    const LOG_TYPES = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_COMMENT,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_ARCHIVED,
         self::LOG_TYPE_DIPPED,
-    );
+    ];
 
-    const LOG_TYPES_ALIVE = array(
+    const LOG_TYPES_ALIVE = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
-    );
+    ];
 
-    const LOG_TYPES_REQUIRING_COORDINATES = array(
+    const LOG_TYPES_REQUIRING_COORDINATES = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
-    );
+    ];
 
-    const LOG_TYPES_COUNT_KILOMETERS = array(
+    const LOG_TYPES_COUNT_KILOMETERS = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
-    );
+    ];
 
-    const LOG_TYPES_THEORICALLY_IN_CACHE = array(
+    const LOG_TYPES_THEORICALLY_IN_CACHE = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
-    );
+    ];
 
-    const LOG_TYPES_LAST_POSITION = array(
+    const LOG_TYPES_LAST_POSITION = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
-    );
+    ];
 
-    const LOG_TYPES_USER_TOUCHED = array(
+    const LOG_TYPES_USER_TOUCHED = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
-    );
+    ];
 
     private $logtype;
 

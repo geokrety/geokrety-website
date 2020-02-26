@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\NewsComment;
+use GeoKrety\Service\Smarty;
 
 class NewsCommentDelete extends Base {
     public function get(\Base $f3) {
@@ -24,7 +24,7 @@ class NewsCommentDelete extends Base {
 
     private function load(\Base $f3) {
         $comment = new NewsComment();
-        $comment->load(array('id = ?', $f3->get('PARAMS.newscommentid')));
+        $comment->load(['id = ?', $f3->get('PARAMS.newscommentid')]);
         if ($comment->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();

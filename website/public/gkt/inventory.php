@@ -18,7 +18,7 @@ function czysc_dane($link, $in) {
     return mysqli_real_escape_string($link, strip_tags($in));
 }
 
-$arr = array();
+$arr = [];
 $loggedin = false;
 
 if (!empty($userid)) {

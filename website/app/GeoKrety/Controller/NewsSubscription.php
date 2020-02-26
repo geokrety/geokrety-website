@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\NewsSubscription as NewsSubscriptionModel;
+use GeoKrety\Service\Smarty;
 
 class NewsSubscription extends Base {
     public function subscription(\Base $f3) {
@@ -39,7 +39,7 @@ class NewsSubscription extends Base {
 
     private function loadSubscription(\Base $f3) {
         $subscription = new NewsSubscriptionModel();
-        $subscription->load(array('news = ? AND user = ?', $f3->get('PARAMS.newsid'), $f3->get('SESSION.CURRENT_USER')));
+        $subscription->load(['news = ? AND user = ?', $f3->get('PARAMS.newsid'), $f3->get('SESSION.CURRENT_USER')]);
         if ($subscription->dry()) {
             $subscription->news = $f3->get('PARAMS.newsid');
             $subscription->user = $f3->get('SESSION.CURRENT_USER');

@@ -8,22 +8,22 @@ class AuthGroup extends \Auth {
     const AUTH_LEVEL_ADMINISTRATORS = 90;
     const AUTH_LEVEL_SUPER_ADMINISTRATORS = 99;
 
-    const AUTH_GROUP_ANONYMOUS = array(
+    const AUTH_GROUP_ANONYMOUS = [
         self::AUTH_LEVEL_ANONYMOUS,
-    );
+    ];
 
-    const AUTH_GROUP_AUTHENTICATED = array(
+    const AUTH_GROUP_AUTHENTICATED = [
         self::AUTH_LEVEL_AUTHENTICATED,
         self::AUTH_LEVEL_ADMINISTRATORS,
         self::AUTH_LEVEL_SUPER_ADMINISTRATORS,
-    );
+    ];
 
-    const AUTH_GROUP_ADMINISTRATORS = array(
+    const AUTH_GROUP_ADMINISTRATORS = [
         self::AUTH_LEVEL_ADMINISTRATORS,
         self::AUTH_LEVEL_SUPER_ADMINISTRATORS,
-    );
+    ];
 
-    const AUTH_GROUP_SUPER_ADMINISTRATORS = array(
+    const AUTH_GROUP_SUPER_ADMINISTRATORS = [
         self::AUTH_LEVEL_SUPER_ADMINISTRATORS,
-    );
+    ];
 }

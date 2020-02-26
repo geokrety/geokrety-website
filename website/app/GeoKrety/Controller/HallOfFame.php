@@ -2,22 +2,22 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class HallOfFame extends Base {
-    const CONTRIBUTORS_IDS = array('kumy', 'BSLLM', 'filips', 'simor', 'Thathanka', 'moose', 'YvesProvence', 'Quinto', 'harrieklomp', 'Lineflyer');
+    const CONTRIBUTORS_IDS = ['kumy', 'BSLLM', 'filips', 'simor', 'Thathanka', 'moose', 'YvesProvence', 'Quinto', 'harrieklomp', 'Lineflyer'];
 
     public function get($f3) {
-        $contributors = array();
+        $contributors = [];
         foreach (self::CONTRIBUTORS_IDS as $username) {
             $user = new User();
-            $user->load(array('username = ?', $username));
+            $user->load(['username = ?', $username]);
             $contributors[$username] = $user->valid() ? $user : null;
         }
         Smarty::assign('contributors', $contributors);
 
-        $credits = array();
+        $credits = [];
         // $credits[] = [
         //     'name' => _('name'),
         //     'icon' => _('logo'),

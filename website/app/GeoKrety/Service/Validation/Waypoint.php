@@ -7,7 +7,7 @@ use GeoKrety\Service\CoordinatesConverter;
 use GeoKrety\Service\WaypointInfo;
 
 class Waypoint {
-    private $errors = array();
+    private $errors = [];
     private $waypoint = null;
 
     public function validate($waypoint, $coordinates = null) {
@@ -68,14 +68,14 @@ class Waypoint {
     protected function checkIsInDatabase($waypoint, $coordinates) {
         $wpt = new WaypointModel();
         $this->waypoint = $wpt;
-        $wpt->load(array('waypoint = ?', $waypoint));
+        $wpt->load(['waypoint = ?', $waypoint]);
 
         if ($wpt->dry()) {
             $coords = null;
             if (!is_null($coordinates)) {
                 $coords_parse = CoordinatesConverter::parse($coordinates);
                 if ($coords_parse['error'] === '') {
-                    $coords = array($coords_parse[0], $coords_parse[1]);
+                    $coords = [$coords_parse[0], $coords_parse[1]];
                 }
             }
 

@@ -7,7 +7,7 @@ require_once 'Services/Libravatar.php';
 class Libravatar extends \Prefab {
     private $libravatar;
 
-    public static function getUrl($identifier, $options = array()) {
+    public static function getUrl($identifier, $options = []) {
         return self::instance()->libravatar->getUrl($identifier, $options);
     }
 

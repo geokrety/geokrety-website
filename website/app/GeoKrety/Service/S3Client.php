@@ -8,16 +8,10 @@ class S3Client extends \Prefab {
     private $s3;
     private $s3_public;
 
-    /**
-     * @return AWSS3Client
-     */
     public function getS3(): AWSS3Client {
         return $this->s3;
     }
 
-    /**
-     * @return AWSS3Client
-     */
     public function getS3Public(): AWSS3Client {
         return $this->s3_public;
     }

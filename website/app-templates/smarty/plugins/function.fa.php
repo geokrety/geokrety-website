@@ -1,6 +1,6 @@
 <?php
 
-const FA_ICON_SIZES = array('lg', '2x', '3x', '4x', '5x');
+const FA_ICON_SIZES = ['lg', '2x', '3x', '4x', '5x'];
 /*
  * Smarty plugin
  * -------------------------------------------------------------

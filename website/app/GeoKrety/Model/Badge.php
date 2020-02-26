@@ -10,26 +10,26 @@ class Badge extends Base {
     protected $db = 'DB';
     protected $table = 'gk-badges';
 
-    protected $fieldConf = array(
-        'holder' => array(
+    protected $fieldConf = [
+        'holder' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'awarded_on_datetime' => array(
+        ],
+        'awarded_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-        ),
-        'description' => array(
+        ],
+        'description' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
             'filter' => 'trim|HTMLPurifier',
-        ),
-        'filename' => array(
+        ],
+        'filename' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
             'filter' => 'trim',
-        ),
-    );
+        ],
+    ];
 
     public function get_awarded_on_datetime($value) {
         return self::get_date_object($value);

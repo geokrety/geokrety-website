@@ -2,18 +2,18 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\SiteStats;
-use GeoKrety\Model\News;
-use GeoKrety\Model\Move;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Model\Move;
+use GeoKrety\Model\News;
+use GeoKrety\Model\SiteStats;
+use GeoKrety\Service\Smarty;
 
 class Home extends Base {
     public function get($f3) {
         // Load statistics
         $siteStats = new SiteStats();
-        $result = $siteStats->find(array('name LIKE ?', 'stat_%'));
-        $statistics = array();
+        $result = $siteStats->find(['name LIKE ?', 'stat_%']);
+        $statistics = [];
         foreach ($result ?: [] as $item) {
             $statistics[$item['name']] = $item['value'];
         }

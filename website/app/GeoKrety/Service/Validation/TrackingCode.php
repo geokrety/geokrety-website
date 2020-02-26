@@ -2,12 +2,12 @@
 
 namespace GeoKrety\Service\Validation;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Service\Smarty;
 
 class TrackingCode {
-    private $errors = array();
-    private $geokrety = array();
+    private $errors = [];
+    private $geokrety = [];
 
     public function getGeokrety() {
         return $this->geokrety;
@@ -48,7 +48,7 @@ class TrackingCode {
 
     private function lookupTrackingCode($trackingCode) {
         $geokret = new Geokret();
-        $geokret->load(array('tracking_code = ?', $trackingCode));
+        $geokret->load(['tracking_code = ?', $trackingCode]);
 
         if ($geokret->dry()) {
             array_push($this->errors, sprintf(_('Sorry, but Tracking Code "%s" was not found in our database.'), $trackingCode));
@@ -60,7 +60,7 @@ class TrackingCode {
 
     private function renderGeokret($geokret) {
         Smarty::assign('geokret', $geokret);
-        $response = array(
+        $response = [
             'html' => Smarty::fetch('chunks/geokrety_status.tpl'),
             'id' => $geokret->gkid(),
             'gkid' => $geokret->gkid,
@@ -80,7 +80,7 @@ class TrackingCode {
             'lastPositionId' => is_null($geokret->last_position) ? null : $geokret->last_position->id,
             'lastLogId' => is_null($geokret->last_log) ? null : $geokret->last_log->id,
             'missing' => $geokret->missing,
-        );
+        ];
 
         return $response;
     }
@@ -132,7 +132,7 @@ class TrackingCode {
 
             return json_encode($this->errors, JSON_UNESCAPED_UNICODE);
         }
-        $response = array();
+        $response = [];
         foreach ($this->geokrety as $geokret) {
             array_push($response, $this->renderGeokret($geokret));
         }

@@ -14,7 +14,7 @@ $userid = $longin_status['userid'];
 
 //import_request_variables('g', 'g_');
 
-$arr = array();
+$arr = [];
 $loggedin = false;
 
 if (!empty($userid)) {
@@ -43,7 +43,7 @@ if (!empty($userid)) {
     mysqli_free_result($result);
 }
 
-$out = array();
+$out = [];
 $out['loggedin'] = ($loggedin ? true : false);
 $out['list'] = $arr;
 

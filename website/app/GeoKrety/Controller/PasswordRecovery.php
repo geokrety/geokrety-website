@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\User;
-use GeoKrety\Model\PasswordToken;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
+use GeoKrety\Model\PasswordToken;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class PasswordRecovery extends Base {
     public function beforeRoute($f3) {
@@ -35,7 +35,7 @@ class PasswordRecovery extends Base {
         // Check database for provided email
         $user = $this->user;
         $user->email = $f3->get('POST.email');
-        $user->load(array('email = ?', $user->email));
+        $user->load(['email = ?', $user->email]);
         if ($user->dry()) {
             \Flash::instance()->addMessage(_('Sorry no account using that email address.'), 'danger');
             $this->get($f3);

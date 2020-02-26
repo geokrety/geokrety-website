@@ -15,139 +15,139 @@ class User extends Base {
     protected $db = 'DB';
     protected $table = 'gk-users';
 
-    protected $fieldConf = array(
-        'username' => array(
+    protected $fieldConf = [
+        'username' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'required|unique|min_len,'.GK_SITE_USERNAME_MIN_LENGTH.'|max_len,'.GK_SITE_USERNAME_MAX_LENGTH,
             'nullable' => false,
             'index' => true,
             'unique' => true,
-        ),
-        'email' => array(
+        ],
+        'email' => [
             'type' => Schema::DT_VARCHAR256,
             'filter' => 'trim',
             'validate' => 'not_empty|valid_email|email_host|unique',
             // TODO make email required, but many users still don't have email address
             'index' => true,
             'unique' => true,
-        ),
-        'account_valid' => array(
+        ],
+        'account_valid' => [
             'type' => Schema::DT_INT1,
             'nullable' => false,
             'default' => self::USER_ACCOUNT_INVALID,
-        ),
-        'email_invalid' => array(
+        ],
+        'email_invalid' => [
             'type' => Schema::DT_INT1,
             'nullable' => false,
             'default' => self::USER_EMAIL_NO_ERROR,
-        ),
-        'preferred_language' => array(
+        ],
+        'preferred_language' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'required|language_supported',
             'default' => 'en',
             'nullable' => false,
-        ),
-        'joined_on_datetime' => array(
+        ],
+        'joined_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-        ),
-        'daily_mails' => array(
+        ],
+        'daily_mails' => [
             'type' => Schema::DT_INT1,
             'default' => 0,
             'nullable' => false,
-        ),
-        'daily_mails_hour' => array(
+        ],
+        'daily_mails_hour' => [
             'type' => Schema::DT_INT4,
             'nullable' => false,
             'validate' => 'min_numeric,0|max_numeric,23',
             'default' => 0,
-        ),
-        'registration_ip' => array(
+        ],
+        'registration_ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
-        ),
-        'password' => array(
+        ],
+        'password' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'required|ciphered_password',
-        ),
-        'home_latitude' => array(
+        ],
+        'home_latitude' => [
             'type' => Schema::DT_DOUBLE,
             'validate' => 'float',
             'nullable' => true,
-        ),
-        'home_longitude' => array(
+        ],
+        'home_longitude' => [
             'type' => Schema::DT_DOUBLE,
             'validate' => 'float',
             'nullable' => true,
-        ),
-        'home_country' => array(
+        ],
+        'home_country' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-        ),
-        'observation_area' => array(
+        ],
+        'observation_area' => [
             'type' => Schema::DT_SMALLINT,
             'validate' => 'min_numeric,0|max_numeric,'.GK_USER_OBSERVATION_AREA_MAX_KM,
             'default' => 0,
-        ),
-        'statpic_template_id' => array(
+        ],
+        'statpic_template_id' => [
             'type' => Schema::DT_SMALLINT,
             'validate' => 'min_numeric,1|max_numeric,'.GK_USER_STATPIC_TEMPLATE_COUNT,
             'default' => 1,
-        ),
-        'updated_on_datetime' => array(
+        ],
+        'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
             // ON UPDATE
-        ),
-        'last_mail_datetime' => array(
+        ],
+        'last_mail_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
-        ),
-        'last_login_datetime' => array(
+        ],
+        'last_login_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
-        ),
-        'terms_of_use_datetime' => array(
+        ],
+        'terms_of_use_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => false,
             'validate' => 'required|date',
-        ),
-        'email_activation' => array(
-            'has-many' => array('\GeoKrety\Model\EmailActivationToken', 'user'),
-        ),
-        'news' => array(
-            'has-many' => array('\GeoKrety\Model\News', 'author'),
-        ),
-        'news_comments' => array(
-            'has-many' => array('\GeoKrety\Model\NewsComment', 'author'),
-        ),
-        'moves' => array(
-            'has-many' => array('\GeoKrety\Model\MoveComment', 'author'),
-        ),
-        'moves_comments' => array(
-            'has-many' => array('\GeoKrety\Model\NewsComment', 'author'),
-        ),
-        'news_subscription' => array(
-            'has-many' => array('\GeoKrety\Model\NewsSubscription', 'user'),
-        ),
-        'geokrety_owned' => array(
-            'has-many' => array('\GeoKrety\Model\Geokret', 'owner'),
-        ),
-        'geokrety_held' => array(
-            'has-many' => array('\GeoKrety\Model\Geokret', 'holder'),
-        ),
-        'watched_geokrety' => array(
-            'has-many' => array('\GeoKrety\Model\Watched', 'user'),
-        ),
-        'badges' => array(
-            'has-many' => array('\GeoKrety\Model\Badge', 'holder'),
-        ),
-        'activation' => array(
-            'has-one' => array('\GeoKrety\Model\AccountActivationToken', 'user'),
-        ),
-    );
+        ],
+        'email_activation' => [
+            'has-many' => ['\GeoKrety\Model\EmailActivationToken', 'user'],
+        ],
+        'news' => [
+            'has-many' => ['\GeoKrety\Model\News', 'author'],
+        ],
+        'news_comments' => [
+            'has-many' => ['\GeoKrety\Model\NewsComment', 'author'],
+        ],
+        'moves' => [
+            'has-many' => ['\GeoKrety\Model\MoveComment', 'author'],
+        ],
+        'moves_comments' => [
+            'has-many' => ['\GeoKrety\Model\NewsComment', 'author'],
+        ],
+        'news_subscription' => [
+            'has-many' => ['\GeoKrety\Model\NewsSubscription', 'user'],
+        ],
+        'geokrety_owned' => [
+            'has-many' => ['\GeoKrety\Model\Geokret', 'owner'],
+        ],
+        'geokrety_held' => [
+            'has-many' => ['\GeoKrety\Model\Geokret', 'holder'],
+        ],
+        'watched_geokrety' => [
+            'has-many' => ['\GeoKrety\Model\Watched', 'user'],
+        ],
+        'badges' => [
+            'has-many' => ['\GeoKrety\Model\Badge', 'holder'],
+        ],
+        'activation' => [
+            'has-one' => ['\GeoKrety\Model\AccountActivationToken', 'user'],
+        ],
+    ];
 
     public function set_password($value) {
         return \GeoKrety\Auth::hash_password($value);

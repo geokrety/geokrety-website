@@ -2,16 +2,16 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
+use GeoKrety\Service\Smarty;
 
 class MoveCommentCreate extends Base {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
         $move = new Move();
-        $move->load(array('id = ?', $f3->get('PARAMS.moveid')));
+        $move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($move->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();

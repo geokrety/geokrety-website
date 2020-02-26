@@ -28,17 +28,17 @@ class Smarty extends \Prefab {
     public function __construct() {
         $smarty = new \SmartyBC();
         $smarty->escape_html = true;
-        $smarty->setTemplateDir(array(
+        $smarty->setTemplateDir([
             'main' => GK_SMARTY_TEMPLATES_DIR,
             'emails' => GK_SMARTY_FOUNDATION_TEMPLATES_DIR,
-        ));
+        ]);
         $smarty->compile_dir = GK_SMARTY_COMPILE_DIR;
         $smarty->cache_dir = GK_SMARTY_CACHE_DIR;
         $smarty->addPluginsDir(GK_SMARTY_PLUGINS_DIR);
         $smarty->compile_check = !GK_IS_PRODUCTION;
         $smarty->assign('f3', \Base::instance());
-        $smarty->assign('css', array()); // Store dynamic css filename to load
-        $smarty->assign('javascript', array()); // Store dynamic javascript filename to load
+        $smarty->assign('css', []); // Store dynamic css filename to load
+        $smarty->assign('javascript', []); // Store dynamic javascript filename to load
         $smarty->assign('isSuperUser', false);
         $smarty->registerClass('Carbon', '\Carbon\Carbon');
         $smarty->caching = 0; // caching is off

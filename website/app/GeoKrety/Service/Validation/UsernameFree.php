@@ -5,7 +5,7 @@ namespace GeoKrety\Service\Validation;
 use GeoKrety\Model\User;
 
 class UsernameFree {
-    private $errors = array();
+    private $errors = [];
     private $username = null;
 
     public function getUsername() {
@@ -24,7 +24,7 @@ class UsernameFree {
 
     private function lookupUsername($username, $email) {
         $user = new User();
-        if ($user->count(array('username = ? AND (email != ? OR account_valid = ?)', $username, $email, User::USER_ACCOUNT_VALID), null, 0) > 0) {
+        if ($user->count(['username = ? AND (email != ? OR account_valid = ?)', $username, $email, User::USER_ACCOUNT_VALID], null, 0) > 0) {
             array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.'), $username));
         }
     }

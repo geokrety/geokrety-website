@@ -2,9 +2,9 @@
 
 namespace GeoKrety\Email;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\User;
 use GeoKrety\Model\PasswordToken;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class PasswordChange extends Base {
     protected function setFromDefault() {

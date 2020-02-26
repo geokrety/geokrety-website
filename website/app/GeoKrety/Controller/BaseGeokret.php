@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Service\Smarty;
 
 class BaseGeokret extends Base {
     public function beforeRoute($f3) {
@@ -14,8 +14,8 @@ class BaseGeokret extends Base {
         }
 
         $geokret = new Geokret();
-        $geokret->filter('owner_codes', array('user = ?', null));
-        $geokret->load(array('gkid = ?', $gkid));
+        $geokret->filter('owner_codes', ['user = ?', null]);
+        $geokret->load(['gkid = ?', $gkid]);
         if ($geokret->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();

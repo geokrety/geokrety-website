@@ -10,35 +10,35 @@ class Mail extends Base {
     protected $db = 'DB';
     protected $table = 'gk-mail';
 
-    protected $fieldConf = array(
-        'token' => array(
+    protected $fieldConf = [
+        'token' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty',
-        ),
-        'from' => array(
+        ],
+        'from' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'to' => array(
+        ],
+        'to' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'subject' => array(
+        ],
+        'subject' => [
             'type' => Schema::DT_VARCHAR128,
             'filter' => 'trim|HTMLPurifier',
             'validate' => 'not_empty|max_len,255',
-        ),
-        'content' => array(
+        ],
+        'content' => [
             'type' => Schema::DT_TEXT,
             'filter' => 'trim|HTMLPurifier',
             'validate' => 'not_empty',
-        ),
-        'sent_on_datetime' => array(
+        ],
+        'sent_on_datetime' => [
              'type' => Schema::DT_DATETIME,
-        ),
-        'ip' => array(
+        ],
+        'ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
-        ),
-    );
+        ],
+    ];
 
     public function get_sent_on_datetime($value) {
         return self::get_date_object($value);

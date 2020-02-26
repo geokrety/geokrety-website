@@ -11,7 +11,7 @@ class Migrations extends Base {
      */
     public function htmlentitesDecodeUsername() {
         $userModel = new User();
-        $users = $userModel->find(array('username like ?', '%&%;%'), null, 0);
+        $users = $userModel->find(['username like ?', '%&%;%'], null, 0);
 
         if (!$users) {
             echo "\e[0;32mNo username to convert\e[0m".PHP_EOL;

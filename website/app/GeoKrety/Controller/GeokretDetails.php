@@ -2,17 +2,17 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Pagination;
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
+use GeoKrety\Pagination;
+use GeoKrety\Service\Smarty;
 
 class GeokretDetails extends BaseGeokret {
     public function get($f3) {
         // Load move independently to use pagination
         $move = new Move();
-        $filter = array('geokret = ?', $this->geokret->id);
-        $option = array('order' => 'moved_on_datetime DESC');
+        $filter = ['geokret = ?', $this->geokret->id];
+        $option = ['order' => 'moved_on_datetime DESC'];
         $subset = $move->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_GEOKRET_MOVES, $filter, $option);
         Smarty::assign('moves', $subset);
         // Paginate

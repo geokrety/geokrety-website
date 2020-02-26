@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
-use GeoKrety\Model\User;
-use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
 use GeoKrety\Email\AccountActivation;
+use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class RegistrationActivate extends Base {
     public function beforeRoute($f3) {
@@ -13,7 +13,7 @@ class RegistrationActivate extends Base {
 
         // Check database for provided token
         $token = new AccountActivationModel();
-        $token->load(array('token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW() ', $f3->get('PARAMS.token'), AccountActivationModel::TOKEN_UNUSED, GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY));
+        $token->load(['token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW() ', $f3->get('PARAMS.token'), AccountActivationModel::TOKEN_UNUSED, GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY]);
         if ($token->dry()) {
             \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
             $f3->reroute('home');

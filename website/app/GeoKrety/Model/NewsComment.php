@@ -11,29 +11,29 @@ class NewsComment extends Base {
     protected $db = 'DB';
     protected $table = 'gk-news-comments';
 
-    protected $fieldConf = array(
-        'author' => array(
+    protected $fieldConf = [
+        'author' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'news' => array(
+        ],
+        'news' => [
             'belongs-to-one' => '\GeoKrety\Model\News',
-        ),
-        'updated_on_datetime' => array(
+        ],
+        'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
-        ),
-        'content' => array(
+        ],
+        'content' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
             'validate' => 'not_empty',
             'filter' => 'trim|HTMLPurifier',
-        ),
-        'icon' => array(
+        ],
+        'icon' => [
             'type' => Schema::DT_INT1,
             'nullable' => false,
-        ),
-    );
+        ],
+    ];
 
     public function set_content($value) {
         return HTMLPurifier::getPurifier()->purify($value);
@@ -52,12 +52,12 @@ class NewsComment extends Base {
     public function __construct() {
         parent::__construct();
         $this->aftersave(function ($self) {
-            $self->news->comments_count = $self->count(array('news = ?', $self->news->id), null, 0); // Disable TTL
+            $self->news->comments_count = $self->count(['news = ?', $self->news->id], null, 0); // Disable TTL
             $self->news->save();
             \Cache::instance()->clear('cacheHomeLatestNews');
         });
         $this->aftererase(function ($self) {
-            $self->news->comments_count = $self->count(array('news = ?', $self->news->id), null, 0); // Disable TTL
+            $self->news->comments_count = $self->count(['news = ?', $self->news->id], null, 0); // Disable TTL
             $self->news->save();
             \Cache::instance()->clear('cacheHomeLatestNews');
         });

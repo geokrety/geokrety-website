@@ -25,19 +25,19 @@ class UserBanner {
         // GeoKrety moved stats
         $geokretyMoved = $f3->get('DB')->exec(
             'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-moves` WHERE author = ? AND logtype NOT IN (?, ?)',
-            array(
+            [
                 $user->id,
                 LogType::LOG_TYPE_COMMENT,
                 LogType::LOG_TYPE_ARCHIVED,
-            )
+            ]
         );
 
         // GeoKrety owned stats
         $geokretyOwned = $f3->get('DB')->exec(
             'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-geokrety` WHERE owner = ?',
-            array(
+            [
                 $user->id,
-            )
+            ]
         );
 
         $img = new \Image(sprintf('%s/statpics/templates/%d.png', $f3->get('UI'), $user->statpic_template_id));

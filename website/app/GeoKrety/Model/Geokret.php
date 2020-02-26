@@ -12,69 +12,69 @@ class Geokret extends Base {
     protected $db = 'DB';
     protected $table = 'gk-geokrety';
 
-    protected $fieldConf = array(
-        'gkid' => array(
+    protected $fieldConf = [
+        'gkid' => [
             'type' => Schema::DT_INT4,
-        ),
-        'name' => array(
+        ],
+        'name' => [
             'type' => Schema::DT_VARCHAR128,
             'filter' => 'trim|HTMLPurifier',
             'validate' => 'not_empty|min_len,'.GK_GEOKRET_NAME_MIN_LENGTH.'|max_len,'.GK_GEOKRET_NAME_MAX_LENGTH,
-        ),
-        'type' => array(
+        ],
+        'type' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'geokrety_type',
             'index' => true,
-        ),
-        'tracking_code' => array(
+        ],
+        'tracking_code' => [
             'type' => Schema::DT_VARCHAR128,
             // 'validate' => 'required',
             'index' => true,
             'unique' => true,
-        ),
-        'mission' => array(
+        ],
+        'mission' => [
             'type' => Schema::DT_TEXT,
             'filter' => 'HTMLPurifier',
-        ),
-        'owner' => array(
+        ],
+        'owner' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'holder' => array(
+        ],
+        'holder' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-        ),
-        'moves' => array(
-            'has-many' => array('\GeoKrety\Model\Move', 'geokret'),
-        ),
-        'owner_codes' => array(
-            'has-many' => array('\GeoKrety\Model\OwnerCode', 'geokret'),
-        ),
-        'watchers' => array(
-            'has-many' => array('\GeoKrety\Model\Watched', 'geokret'),
-        ),
+        ],
+        'moves' => [
+            'has-many' => ['\GeoKrety\Model\Move', 'geokret'],
+        ],
+        'owner_codes' => [
+            'has-many' => ['\GeoKrety\Model\OwnerCode', 'geokret'],
+        ],
+        'watchers' => [
+            'has-many' => ['\GeoKrety\Model\Watched', 'geokret'],
+        ],
         // 'avatar' => array(
         //     'belongs-to-one' => '\GeoKrety\Model\GeokretAvatar',
         // ),
-        'last_position' => array(
+        'last_position' => [
             'belongs-to-one' => '\GeoKrety\Model\Move',
-        ),
-        'last_log' => array(
+        ],
+        'last_log' => [
             'belongs-to-one' => '\GeoKrety\Model\Move',
-        ),
-        'created_on_datetime' => array(
+        ],
+        'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
-        ),
-        'moved_on_datetime' => array(
+        ],
+        'moved_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => false,
-        ),
-        'updated_on_datetime' => array(
+        ],
+        'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
-        ),
-    );
+        ],
+    ];
 
     // public function set_name($value) {
     //     return HTMLPurifier::getPurifier()->purify($value);
@@ -136,7 +136,7 @@ class Geokret extends Base {
 
         $move = new Move();
 
-        return $move->count(array('author = ? AND geokret = ? AND logtype IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED)) > 0;
+        return $move->count(['author = ? AND geokret = ? AND logtype IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED]) > 0;
     }
 
     public function __construct() {

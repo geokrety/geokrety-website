@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
+use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
-use GeoKrety\LogType;
+use GeoKrety\Service\Smarty;
 
 class GeokretCreate extends BaseCurrentUser {
     public function get($f3) {
@@ -43,7 +43,7 @@ class GeokretCreate extends BaseCurrentUser {
                 } else {
                     \Flash::instance()->addMessage(_('Failed to create the GeoKret initial move.'), 'danger');
                     $f3->get('DB')->rollback();
-                    $geokret->resetFields(array('gkid'));  // https://github.com/ikkez/f3-cortex/issues/90
+                    $geokret->resetFields(['gkid']);  // https://github.com/ikkez/f3-cortex/issues/90
                     $this->get($f3);
                     die();
                 }

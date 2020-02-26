@@ -13,5 +13,5 @@ use Carbon\Carbon;
  * -------------------------------------------------------------
  */
 function smarty_modifier_print_date_expiration(\DateTime $date, string $format = 'c') {
-    return Carbon::instance($date)->diffForHumans(array('parts' => 3, 'join' => true));
+    return Carbon::instance($date)->diffForHumans(['parts' => 3, 'join' => true]);
 }

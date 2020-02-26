@@ -58,13 +58,13 @@ $limit_czasu_s = 86400 * EXPORT_DAY_LIMIT;
 $jak_stare_dane = time() - strtotime((string) $_GET['modifiedsince']);
 
 // Check if at least one required param is given
-$required_one_of = array(
+$required_one_of = [
   'modifiedsince',
   'userid',
   'gkid',
   'wpt',
   'secid',
-);
+];
 $foundParam = 0;
 foreach ($required_one_of as $param) {
     if (array_key_exists($param, $_GET) && !empty($_GET[$param])) {
@@ -113,8 +113,8 @@ if (isset($g_userid) and ((string) $_GET['inventory'] === '1') and ($g_userid > 
 $WHERE_area = $WHERE_user = $WHERE_since = $WHERE_gkid = $WHERE_wpt = '';
 $LIMIT = 'LIMIT '.SQL_HARD_LIMIT;
 
-$bind_types = array();
-$bind_values = array();
+$bind_types = [];
+$bind_values = [];
 
 if (isset($g_latNE) and isset($g_lonNE) and isset($g_latSW) and isset($g_lonSW)) {
     $WHERE_area = <<<EOQUERY

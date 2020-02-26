@@ -6,7 +6,7 @@ use GeoKrety\Service\Smarty;
 
 class Help extends Base {
     public function get($f3) {
-        $social_groups = array();
+        $social_groups = [];
         $social_groups[] = [
             'link' => 'https://www.facebook.com/groups/1624761011150615/about/',
             'service' => 'Facebook',

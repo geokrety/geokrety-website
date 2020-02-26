@@ -2,17 +2,17 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\AuthGroup;
-use GeoKrety\Model\User;
 use GeoKrety\Email\AccountActivation;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class Login extends Base {
-    const NO_REDIRECT_URLS = array(
+    const NO_REDIRECT_URLS = [
         'login',
         'logout',
         'registration_activate',
-    );
+    ];
 
     public function loginForm($f3) {
         Smarty::render('extends:base.tpl|forms/login.tpl');
@@ -23,11 +23,11 @@ class Login extends Base {
     // }
 
     public function login(\Base $f3) {
-        $auth = new \GeoKrety\Auth('geokrety', array('id' => 'username', 'pw' => 'password'));
+        $auth = new \GeoKrety\Auth('geokrety', ['id' => 'username', 'pw' => 'password']);
         $login_result = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($login_result) {
             $user = new User();
-            $user->load(array('username = ?', $f3->get('POST.login')));
+            $user->load(['username = ?', $f3->get('POST.login')]);
             if ($user->valid()) {
                 if (!$user->isAccountValid() && $user->activation) {
                     $smtp = new AccountActivation();
@@ -72,7 +72,7 @@ class Login extends Base {
 
     public function logout($f3) {
         $user = new \GeoKrety\Model\User();
-        $user->load(array('id = ?', $f3->get('SESSION.CURRENT_USER')));
+        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         $f3->set('SESSION.CURRENT_USER', null);
         $f3->set('SESSION.CURRENT_USERNAME', null);
         $f3->set('SESSION.IS_LOGGED_IN', null);

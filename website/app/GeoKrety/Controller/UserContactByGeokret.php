@@ -2,9 +2,9 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Mail;
+use GeoKrety\Service\Smarty;
 
 class UserContactByGeokret extends UserContact {
     public function getPostUrl(\Base $f3) {
@@ -27,7 +27,7 @@ class UserContactByGeokret extends UserContact {
 
     public function loadToUser(\Base $f3) {
         $geokret = new Geokret();
-        $geokret->load(array('gkid = ?', hexdec(substr($f3->get('PARAMS.gkid'), 2))));
+        $geokret->load(['gkid = ?', hexdec(substr($f3->get('PARAMS.gkid'), 2))]);
         if ($geokret->dry()) {
             Smarty::render('dialog/alert_404.tpl');
             die();

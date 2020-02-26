@@ -14,40 +14,40 @@ class PasswordToken extends Base {
     protected $db = 'DB';
     protected $table = 'gk-password-tokens';
 
-    protected $fieldConf = array(
-        'token' => array(
+    protected $fieldConf = [
+        'token' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
-        ),
-        'user' => array(
+        ],
+        'user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
             'validate' => 'required',
-        ),
-        'used' => array(
+        ],
+        'used' => [
             'type' => Schema::DT_INT1,
             'default' => self::TOKEN_UNUSED,
             'nullable' => false,
-        ),
-        'created_on_datetime' => array(
+        ],
+        'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-        ),
-        'used_on_datetime' => array(
+        ],
+        'used_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
-        ),
-        'updated_on_datetime' => array(
+        ],
+        'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             // ON UPDATE CURRENT_TIMESTAMP
-        ),
-        'requesting_ip' => array(
+        ],
+        'requesting_ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
-        ),
-    );
+        ],
+    ];
 
     public function get_created_on_datetime($value) {
         return self::get_date_object($value);

@@ -2,9 +2,9 @@
 
 namespace GeoKrety\Email;
 
-use GeoKrety\Service\Smarty;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 
 class GeokretClaim extends Base {
     public function sendClaimedNotification(Geokret $geokret, User $user) {
