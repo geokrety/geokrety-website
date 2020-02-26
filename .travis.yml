@@ -1,7 +1,8 @@
 language: php
 cache:
   directories:
-    - $HOME/.composer/cache/files
+    - vendor
+    - $HOME/.composer/cache
     - $HOME/.php-cs-fixer
 
 branches:
