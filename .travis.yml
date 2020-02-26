@@ -10,7 +10,7 @@ branches:
 
 php:
   - 7.3
-  - 7.4snapshot
+  - 7.4
 
 # https://docs.travis-ci.com/user/environment-variables/#defining-multiple-variables-per-item
 env:
@@ -20,7 +20,9 @@ env:
 matrix:
   fast_finish: true
   allow_failures:
-    - php: 7.4snapshot
+    ## php 7.4 is not yet fully suuported by F3
+    ## see https://github.com/bcosca/fatfree-core/issues/286
+    - php: 7.4
 
 # https://docs.travis-ci.com/user/database-setup/#mariadb
 addons:
