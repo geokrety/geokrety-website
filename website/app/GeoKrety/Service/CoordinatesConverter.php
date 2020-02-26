@@ -22,9 +22,6 @@ class CoordinatesConverter {
         $ret['error'] = '';
 
         if (!empty($coords)) {
-            if (get_magic_quotes_gpc()) {
-                $coords = stripslashes($coords);
-            }
             $coords = trim($coords);
 
             $d1 = '[0-9]';
