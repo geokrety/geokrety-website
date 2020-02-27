@@ -91,6 +91,6 @@ class PasswordRecoveryChange extends Base {
         $smtp = new PasswordChangeEmail();
         $smtp->sendPasswordChangedNotification($user);
 
-        $f3->reroute('login');
+        $f3->reroute('@login');
     }
 }

@@ -34,7 +34,7 @@ class NewsSubscription extends Base {
             \Event::instance()->emit('news.unsubscribed', $subscription->news);
             \Flash::instance()->addMessage(_('You will not receive updates anymore.'), 'success');
         }
-        $f3->reroute('news_details', 'newsid='.$f3->get('PARAMS.newsid'));
+        $f3->reroute('@news_details', 'newsid='.$f3->get('PARAMS.newsid'));
     }
 
     private function loadSubscription(\Base $f3) {

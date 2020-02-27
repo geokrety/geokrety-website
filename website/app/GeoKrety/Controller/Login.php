@@ -32,7 +32,7 @@ class Login extends Base {
                 if (!$user->isAccountValid() && $user->activation) {
                     $smtp = new AccountActivation();
                     $smtp->sendActivationAgainOnLogin($user->activation);
-                    $f3->reroute('login');
+                    $f3->reroute('@login');
                 }
 
                 $ml = \Multilang::instance();
@@ -55,7 +55,7 @@ class Login extends Base {
                         $f3->reroute($ml->alias($goto, $params, $user->preferred_language));
                     }
                 }
-                $f3->reroute($ml->alias('@home', $params, $user->preferred_language));
+                $f3->reroute($ml->alias('home', $params, $user->preferred_language));
             } else {
                 \Flash::instance()->addMessage(_('Something went wrong during the login procedure.'), 'danger');
             }

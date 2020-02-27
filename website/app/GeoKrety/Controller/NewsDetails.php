@@ -60,7 +60,7 @@ class NewsDetails extends Base {
             } else {
                 \Flash::instance()->addMessage(_('Your comment has been saved.'), 'success');
                 \Event::instance()->emit('news-comment.created', $comment);
-                $f3->reroute('news_details', 'newsid='.$f3->get('PARAMS.newsid'));
+                $f3->reroute('@news_details', 'newsid='.$f3->get('PARAMS.newsid'));
             }
         }
 

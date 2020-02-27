@@ -16,7 +16,7 @@ class RegistrationActivate extends Base {
         $token->load(['token = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW() ', $f3->get('PARAMS.token'), AccountActivationModel::TOKEN_UNUSED, GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY]);
         if ($token->dry()) {
             \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
-            $f3->reroute('home');
+            $f3->reroute('@home');
         }
 
         $this->token = $token;
@@ -32,7 +32,7 @@ class RegistrationActivate extends Base {
         $this->token->user->account_valid = User::USER_ACCOUNT_VALID;
         if (!$this->token->validate() || !$this->token->user->validate()) {
             $f3->get('DB')->rollback();
-            $f3->reroute('home');
+            $f3->reroute('@home');
         }
         $this->token->user->save();
         $this->token->save();
