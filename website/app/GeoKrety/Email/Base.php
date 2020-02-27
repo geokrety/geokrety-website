@@ -46,6 +46,7 @@ abstract class Base extends \SMTP {
 
             return true;
         }
-        parent::send($message, $log, $mock);
+
+        return parent::send($message, $log, $mock);
     }
 }

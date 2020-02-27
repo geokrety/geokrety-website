@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
-use GeoKrety\Model\Mail;
 use GeoKrety\Service\Smarty;
 
 class UserContactByGeokret extends UserContact {
@@ -17,12 +16,7 @@ class UserContactByGeokret extends UserContact {
 
     protected function _get(\Base $f3) {
         parent::_get($f3);
-        if (!$f3->exists('mail')) {
-            $mail = new Mail();
-            $mail->subject = sprintf(_('GeoKret: %s (%s)'), $this->geokret->name, $this->geokret->gkid);
-            $f3->set('mail', $mail);
-            Smarty::assign('mail', $mail);
-        }
+        $this->mail->subject = sprintf(_('GeoKret: %s (%s)'), $this->geokret->name, $this->geokret->gkid);
     }
 
     public function loadToUser(\Base $f3) {
@@ -33,7 +27,6 @@ class UserContactByGeokret extends UserContact {
             die();
         }
         $this->geokret = $geokret;
-        $this->userTo = $geokret->owner;
-        Smarty::assign('userTo', $this->userTo);
+        $this->mail->to = $geokret->owner;
     }
 }
