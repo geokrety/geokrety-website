@@ -10,7 +10,7 @@ subject: '{$subject}'
 
             <h1 class="text-center">{t}Hooray 🥳{/t}</h1>
 
-            <p>{t username=$user->username}Hi %1,{/t}</p>
+            <p>{t username=$token->user->username}Hi %1,{/t}</p>
 
             <p class="text-center">{t}Your email address has been succesfully reverted.{/t}</p>
             <button class="large expand" href="{'login'|alias}">{t}Login{/t}</button>
