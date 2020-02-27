@@ -33,16 +33,17 @@ class UserChoosePreferedLanguage extends Base {
         $oldlanguage = $user->preferred_language;
         $user->preferred_language = $f3->get('POST.language');
 
-        if ($user->validate()) {
-            $user->save();
-            $context = ['oldlanguage' => $oldlanguage];
-            \Event::instance()->emit('user.language.changed', $user, $context);
-            \Flash::instance()->addMessage(_('Language preferences updated.'), 'success');
-        } else {
+        if (!$user->validate()) {
             $this->get($f3);
             die();
         }
 
-        $f3->reroute("@user_details(@userid=$userid)");
+        $user->save();
+        $context = ['oldlanguage' => $oldlanguage];
+        \Event::instance()->emit('user.language.changed', $user, $context);
+        \Flash::instance()->addMessage(_('Language preferences updated.'), 'success');
+
+        $ml = \Multilang::instance();
+        $f3->reroute($ml->alias('user_details', ['userid' => $userid], $user->preferred_language));
     }
 }
