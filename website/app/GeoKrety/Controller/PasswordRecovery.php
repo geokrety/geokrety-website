@@ -58,6 +58,6 @@ class PasswordRecovery extends Base {
         $smtp = new PasswordChangeEmail();
         $smtp->sendPasswordChangeToken($token);
 
-        $f3->reroute('home');
+        $f3->reroute('@home');
     }
 }
