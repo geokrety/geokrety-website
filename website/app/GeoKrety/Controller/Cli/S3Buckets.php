@@ -39,12 +39,13 @@ class S3Buckets {
 
         $s3 = S3Client::instance()->getS3();
 
-        // Create a bucket
         if (!$s3->doesBucketExist(GK_BUCKET_STATPIC_NAME)) {
+            // Create a bucket
             $result = $s3->createBucket([
                 'Bucket' => GK_BUCKET_STATPIC_NAME,
             ]);
             echo "\e[0;32mStatpic s3 bucket created\e[0m".PHP_EOL;
+
             // Configure the policy
             $s3->putBucketPolicy([
                 'Bucket' => GK_BUCKET_STATPIC_NAME,
