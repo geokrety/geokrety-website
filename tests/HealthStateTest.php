@@ -28,7 +28,7 @@ class HealthStateTest extends GKTestCase {
     public function test_health_ko() {
         // GIVEN
         $state = new HealthState();
-        $state->setDependencyState('depKo', HealthState::STATE_KO, 'just a test, no worry');
+        $state->setDependencyState('depKo', HealthState::HEALTH_STATE_KO, 'just a test, no worry');
 
         // WHEN
         $state->refreshState();

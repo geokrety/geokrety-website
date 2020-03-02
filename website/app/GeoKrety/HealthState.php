@@ -3,22 +3,23 @@
 namespace GeoKrety;
 
 class HealthState {
-    const STATE_OK = 'ok';
-    const STATE_KO = 'ko';
-    const VALID_STATES = [self::STATE_OK, self::STATE_KO];
+    const HEALTH_STATE_OK = 'ok';
+    const HEALTH_STATE_KO = 'ko';
+
+    const HEALTH_STATES_VALID = [self::HEALTH_STATE_OK, self::HEALTH_STATE_KO];
 
     public $state = null;
     public $dependencies = [];
 
     public function isOk() {
-        return $this->state === self::STATE_OK;
+        return $this->state === self::HEALTH_STATE_OK;
     }
 
     public function refreshState() {
-        $this->state = self::STATE_OK;
+        $this->state = self::HEALTH_STATE_OK;
         foreach ($this->dependencies as $depValue) {
-            if ($depValue['state'] != self::STATE_OK) {
-                $this->state = self::STATE_KO;
+            if ($depValue['state'] != self::HEALTH_STATE_OK) {
+                $this->state = self::HEALTH_STATE_KO;
 
                 return;
             }
@@ -34,7 +35,7 @@ class HealthState {
     }
 
     public function checkValidState($state) {
-        if (!in_array($state, self::VALID_STATES)) {
+        if (!in_array($state, self::HEALTH_STATES_VALID)) {
             throw new \Exception("Unhandled state $state");
         }
     }

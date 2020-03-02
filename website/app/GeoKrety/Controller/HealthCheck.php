@@ -27,15 +27,15 @@ class HealthCheck extends Base {
         if (!$isConfigOk) {
             $validationDetails = $websiteConfig->validationDetails();
         }
-        $this->state->setDependencyState('config', $isConfigOk ? HealthState::STATE_OK : HealthState::STATE_KO, $validationDetails);
+        $this->state->setDependencyState('config', $isConfigOk ? HealthState::HEALTH_STATE_OK : HealthState::HEALTH_STATE_KO, $validationDetails);
     }
 
     private function checkWebsiteDatabase(\Base $f3) {
         $isDbOk = $f3->get('DB') !== false;
-        $this->state->setDependencyState('db', $isDbOk ? HealthState::STATE_OK : HealthState::STATE_KO);
+        $this->state->setDependencyState('db', $isDbOk ? HealthState::HEALTH_STATE_OK : HealthState::HEALTH_STATE_KO);
     }
 
     private function checkDirectoriesPermissions() {
-        $this->state->setDependencyState('assets-dir-perm', is_writable(GK_F3_ASSETS_PUBLIC) ? HealthState::STATE_OK : HealthState::STATE_KO, sprintf('%s must be writable by php', realpath(GK_F3_ASSETS_PUBLIC)));
+        $this->state->setDependencyState('assets-dir-perm', is_writable(GK_F3_ASSETS_PUBLIC) ? HealthState::HEALTH_STATE_OK : HealthState::HEALTH_STATE_KO, sprintf('%s must be writable by php', realpath(GK_F3_ASSETS_PUBLIC)));
     }
 }
