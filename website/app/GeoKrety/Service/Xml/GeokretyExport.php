@@ -16,16 +16,19 @@ class GeokretyExport extends GeokretyBase {
         $owner->addAttribute('id', $geokret->owner->id);
         $gk->addChild('datecreated', $geokret->created_on_datetime->format('Y-m-d H:i:s'));
         $gk->addChild('distancetravelled', $geokret->distance);
-        $gk->addChild('state', $geokret->last_position->logtype->getLogTypeId());
         $gk->addChild('missing', $geokret->missing);
         $position = $gk->addChild('position');
-        if (!is_null($geokret->last_position->lat) && !is_null($geokret->last_position->lon)) {
-            $position->addAttribute('latitude', $geokret->last_position->lat);
-            $position->addAttribute('longitude', $geokret->last_position->lon);
-        }
-        if (!is_null($geokret->last_position->waypoint) && !empty($geokret->last_position->waypoint)) {
-            $wpts = $gk->addChild('waypoints');
-            $wpts->addChildWithCDATA('waypoint', $geokret->last_position->waypoint);
+        if (!is_null($geokret->last_position)) {
+            $gk->addChild('state', $geokret->last_position->logtype->getLogTypeId());
+
+            if (!is_null($geokret->last_position->lat) && !is_null($geokret->last_position->lon)) {
+                $position->addAttribute('latitude', $geokret->last_position->lat);
+                $position->addAttribute('longitude', $geokret->last_position->lon);
+            }
+            if (!is_null($geokret->last_position->waypoint) && !empty($geokret->last_position->waypoint)) {
+                $wpts = $gk->addChild('waypoints');
+                $wpts->addChildWithCDATA('waypoint', $geokret->last_position->waypoint);
+            }
         }
         $type = $gk->addChildWithCDATA('type', $geokret->type->getTypeString());
         $type->addAttribute('id', $geokret->type->getTypeId());
