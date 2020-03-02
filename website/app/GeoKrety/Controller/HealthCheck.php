@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\HealthState;
 use GeoKrety\Service\Config;
+use GeoKrety\Service\S3Client;
 
 class HealthCheck extends Base {
     protected $state;
@@ -16,6 +17,7 @@ class HealthCheck extends Base {
         $this->checkWebsiteConfig();
         $this->checkWebsiteDatabase($f3);
         $this->checkDirectoriesPermissions();
+        $this->checkS3Server();
 
         echo $this->state->render();
     }
@@ -37,5 +39,25 @@ class HealthCheck extends Base {
 
     private function checkDirectoriesPermissions() {
         $this->state->setDependencyState('assets-dir-perm', is_writable(GK_F3_ASSETS_PUBLIC) ? HealthState::HEALTH_STATE_OK : HealthState::HEALTH_STATE_KO, sprintf('%s must be writable by php', realpath(GK_F3_ASSETS_PUBLIC)));
+    }
+
+    private function checkS3Server() {
+        if (is_null(GK_MINIO_ACCESS_KEY)) {
+            // Skip test if s3 is not configured
+            return;
+        }
+        $s3BucketList = [GK_BUCKET_STATPIC_NAME];
+        $s3 = new S3Client();
+
+        foreach ($s3BucketList as $bucket) {
+            $stateName = "s3-public-bucket-$bucket";
+
+            try {
+                $s3->getS3Public()->headBucket(['Bucket' => $bucket]);
+                $this->state->setDependencyState($stateName, HealthState::HEALTH_STATE_OK);
+            } catch (\Aws\S3\Exception\S3Exception $e) {
+                $this->state->setDependencyState($stateName, HealthState::HEALTH_STATE_KO);
+            }
+        }
     }
 }
