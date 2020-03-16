@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 08:20+0000\n"
-"PO-Revision-Date: 2019-09-05 08:28\n"
-"Last-Translator: geokrety\n"
+"POT-Creation-Date: 2019-10-17 12:41+0000\n"
+"PO-Revision-Date: 2020-03-16 00:16\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
 "MIME-Version: 1.0\n"
@@ -12,36 +12,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: geokrety\n"
 "X-Crowdin-Language: zu\n"
 "X-Crowdin-File: /feature.new-theme/messages.po\n"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:20
+#: website/app/GeoKrety/Controller/GeokretClaim.php:21
 msgid "Sorry, the provided owner code and tracking code doesn't match."
 msgstr "crwdns15574:0crwdne15574:0"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:26
+#: website/app/GeoKrety/Controller/GeokretClaim.php:27
 msgid "Sorry, this owner code has already been used."
 msgstr "crwdns15576:0crwdne15576:0"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:52
+#: website/app/GeoKrety/Controller/GeokretClaim.php:55
 msgid "Something went wrong while registering the adoption."
 msgstr "crwdns15578:0crwdne15578:0"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:55
+#: website/app/GeoKrety/Controller/GeokretClaim.php:58
 #, php-format
 msgid "🎉 Congratulation! You are now the owner of %s."
 msgstr "crwdns15580:0%scrwdne15580:0"
-
-#: website/app/GeoKrety/Controller/GeokretClaim.php:79
-#, php-format
-msgid "Your GeoKret '%s' has been adopted 🎉"
-msgstr "crwdns15582:0%scrwdne15582:0"
-
-#: website/app/GeoKrety/Controller/GeokretClaim.php:84
-msgid "An error occured while sending the adoption mail notification to old owner."
-msgstr "crwdns15584:0crwdne15584:0"
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:36
 msgid "Born here"
@@ -70,8 +60,8 @@ msgid "Move removed."
 msgstr "crwdns15596:0crwdne15596:0"
 
 #: website/app/GeoKrety/Controller/GeokretMove.php:92
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:28
-#: website/app/GeoKrety/Controller/UserContact.php:66
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:29
+#: website/app/GeoKrety/Controller/UserContact.php:65
 msgid "reCaptcha failed!"
 msgstr "crwdns13828:0crwdne13828:0"
 
@@ -108,15 +98,15 @@ msgstr "crwdns13862:0crwdne13862:0"
 msgid "Wrong date or time"
 msgstr "crwdns13864:0crwdne13864:0"
 
-#: website/app/GeoKrety/Controller/Login.php:48
+#: website/app/GeoKrety/Controller/Login.php:50
 msgid "Welcome on board!"
 msgstr "crwdns14208:0crwdne14208:0"
 
-#: website/app/GeoKrety/Controller/Login.php:58
+#: website/app/GeoKrety/Controller/Login.php:60
 msgid "Something went wrong during the login procedure."
 msgstr "crwdns15610:0crwdne15610:0"
 
-#: website/app/GeoKrety/Controller/Login.php:61
+#: website/app/GeoKrety/Controller/Login.php:63
 msgid "Username and password doesn't match."
 msgstr "crwdns15612:0crwdne15612:0"
 
@@ -157,49 +147,31 @@ msgstr "crwdns15628:0crwdne15628:0"
 msgid "You will not receive updates anymore."
 msgstr "crwdns15630:0crwdne15630:0"
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:22
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:22
 #: website/app/GeoKrety/Controller/RegistrationActivate.php:18
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:18
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:19
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:19
 msgid "Sorry this token is not valid, already used or expired."
 msgstr "crwdns16208:0crwdne16208:0"
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:53
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:50
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:53
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:51
 msgid "New passwords doesn't match."
 msgstr "crwdns15670:0crwdne15670:0"
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:81
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:80
 msgid "Unexpected error occured."
 msgstr "crwdns16210:0crwdne16210:0"
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:90
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:61
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:85
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:62
 msgid "Your password has been changed."
 msgstr "crwdns15672:0crwdne15672:0"
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:97
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:73
-msgid "Your password has been changed"
-msgstr "crwdns13990:0crwdne13990:0"
-
-#: website/app/GeoKrety/Controller/PasswordChange.php:107
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:73
-msgid "An error occured while sending the mail."
-msgstr "crwdns16212:0crwdne16212:0"
-
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:39
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:40
 msgid "Sorry no account using that email address."
 msgstr "crwdns16214:0crwdne16214:0"
-
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:56
-msgid "An email containing a validation link has been sent to the provided email address."
-msgstr "crwdns16216:0crwdne16216:0"
-
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:63
-msgid "Password reset request"
-msgstr "crwdns16218:0crwdne16218:0"
 
 #: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:40
 msgid "Language preferences updated."
@@ -210,7 +182,7 @@ msgstr "crwdns16126:0crwdne16126:0"
 msgid "GeoKret: %s (%s)"
 msgstr "crwdns15634:0%scrwdnd15634:0%scrwdne15634:0"
 
-#: website/app/GeoKrety/Controller/UserContact.php:76
+#: website/app/GeoKrety/Controller/UserContact.php:75
 msgid "Failed to save the mail."
 msgstr "crwdns15636:0crwdne15636:0"
 
@@ -219,62 +191,31 @@ msgstr "crwdns15636:0crwdne15636:0"
 msgid "Your message to %s has been sent."
 msgstr "crwdns15638:0%scrwdne15638:0"
 
-#: website/app/GeoKrety/Controller/UserContact.php:94
-#, php-format
-msgid "Contact from user %s"
-msgstr "crwdns15640:0%scrwdne15640:0"
-
-#: website/app/GeoKrety/Controller/UserContact.php:98
-msgid "An error occured while sending mail."
-msgstr "crwdns15642:0crwdne15642:0"
-
-#: website/app/GeoKrety/Controller/UserContact.php:104
-msgid "An error occured while sending mail copy."
-msgstr "crwdns15644:0crwdne15644:0"
-
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:62
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:67
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:63
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:68
 msgid "Unexpected value."
 msgstr "crwdns16266:0crwdne16266:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:77
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:82
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:78
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:83
 msgid "Something went wrong, operation aborted."
 msgstr "crwdns16268:0crwdne16268:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:87
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:88
 msgid "Perfect! Enjoy your new email address. (This token is now revoked)"
 msgstr "crwdns16270:0crwdne16270:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:91
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:92
 msgid "Your email address has been reverted."
 msgstr "crwdns16272:0crwdne16272:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:99
-msgid "Email address reverted"
-msgstr "crwdns16274:0crwdne16274:0"
-
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:109
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:114
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:120
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:105
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:109
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
-#: website/app/GeoKrety/Email/AccountActivation.php:36
-msgid "An error occured while sending the confirmation mail."
-msgstr "crwdns15662:0crwdne15662:0"
-
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:94
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:96
 msgid "Your email address has been validated."
 msgstr "crwdns15678:0crwdne15678:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:97
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:98
 msgid "No change has been processed. This token is now revoked."
 msgstr "crwdns16276:0crwdne16276:0"
-
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:104
-msgid "Email address changed"
-msgstr "crwdns16278:0crwdne16278:0"
 
 #: website/app/GeoKrety/Controller/UserRefreshSecid.php:38
 msgid "Failed to refresh your secid."
@@ -292,16 +233,16 @@ msgstr "crwdns15650:0crwdne15650:0"
 msgid "Your user banner template preference has been successfully saved."
 msgstr "crwdns15652:0crwdne15652:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:53
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:54
 msgid "Your email preferences were saved."
 msgstr "crwdns15654:0crwdne15654:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:66
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:67
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "crwdns16348:0%scrwdne16348:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:72
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:73
 msgid "Sorry but this mail address is already in use."
 msgstr "crwdns15656:0crwdne15656:0"
 
@@ -309,10 +250,6 @@ msgstr "crwdns15656:0crwdne15656:0"
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "crwdns16350:0%scrwdne16350:0"
-
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:95
-msgid "Changing your email address"
-msgstr "crwdns15660:0crwdne15660:0"
 
 #: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:37
 msgid "Failed to save your home coordinates."
@@ -322,17 +259,17 @@ msgstr "crwdns15664:0crwdne15664:0"
 msgid "Your home coordinates were successfully saved."
 msgstr "crwdns15666:0crwdne15666:0"
 
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:43
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
 msgid "Your old password is invalid."
 msgstr "crwdns15668:0crwdne15668:0"
 
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:45
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:46
 msgid "Waypoint seems empty."
 msgstr "crwdns13872:0crwdne13872:0"
 
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:20
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:50
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:51
 #, php-format
 msgid "Waypoint length is invalid. It should be between %d and %d characters long."
 msgstr "crwdns13874:0%dcrwdnd13874:0%dcrwdne13874:0"
@@ -356,14 +293,75 @@ msgstr "crwdns16420:0%scrwdne16420:0"
 msgid "Account activated"
 msgstr "crwdns16450:0crwdne16450:0"
 
+#: website/app/GeoKrety/Email/AccountActivation.php:36
+#: website/app/GeoKrety/Email/EmailChange.php:29
+#: website/app/GeoKrety/Email/EmailChange.php:38
+#: website/app/GeoKrety/Email/EmailChange.php:57
+#: website/app/GeoKrety/Email/EmailChange.php:66
+#: website/app/GeoKrety/Email/EmailChange.php:75
+msgid "An error occured while sending the confirmation mail."
+msgstr "crwdns15662:0crwdne15662:0"
+
 #: website/app/GeoKrety/Email/AccountActivation.php:41
 msgid "Welcome on GeoKrety.org"
 msgstr "crwdns16422:0crwdne16422:0"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:45
-#: website/app/GeoKrety/Model/User.php:204
+#: website/app/GeoKrety/Model/User.php:201
 msgid "An error occured while sending the activation mail."
 msgstr "crwdns16424:0crwdne16424:0"
+
+#: website/app/GeoKrety/Email/EmailChange.php:25
+#: website/app/GeoKrety/Email/EmailChange.php:34
+msgid "Changing your email address"
+msgstr "crwdns15660:0crwdne15660:0"
+
+#: website/app/GeoKrety/Email/EmailChange.php:53
+#: website/app/GeoKrety/Email/EmailChange.php:62
+msgid "Email address changed"
+msgstr "crwdns16278:0crwdne16278:0"
+
+#: website/app/GeoKrety/Email/EmailChange.php:71
+msgid "Email address reverted"
+msgstr "crwdns16274:0crwdne16274:0"
+
+#: website/app/GeoKrety/Email/GeokretClaim.php:11
+#, php-format
+msgid "Your GeoKret '%s' has been adopted"
+msgstr "crwdns16466:0%scrwdne16466:0"
+
+#: website/app/GeoKrety/Email/GeokretClaim.php:17
+msgid "An error occured while sending the adoption mail notification to old owner."
+msgstr "crwdns15584:0crwdne15584:0"
+
+#: website/app/GeoKrety/Email/PasswordChange.php:15
+msgid "Password reset request"
+msgstr "crwdns16218:0crwdne16218:0"
+
+#: website/app/GeoKrety/Email/PasswordChange.php:19
+msgid "An error occured while sending the password reset mail."
+msgstr "crwdns16468:0crwdne16468:0"
+
+#: website/app/GeoKrety/Email/PasswordChange.php:23
+msgid "An email containing a validation link has been sent to the provided email address."
+msgstr "crwdns16216:0crwdne16216:0"
+
+#: website/app/GeoKrety/Email/PasswordChange.php:27
+msgid "Your password has been changed"
+msgstr "crwdns13990:0crwdne13990:0"
+
+#: website/app/GeoKrety/Email/PasswordChange.php:31
+msgid "An error occured while sending the password changed mail notification."
+msgstr "crwdns16470:0crwdne16470:0"
+
+#: website/app/GeoKrety/Email/UserContact.php:14
+#, php-format
+msgid "Contact from user %s"
+msgstr "crwdns15640:0%scrwdne15640:0"
+
+#: website/app/GeoKrety/Email/UserContact.php:18
+msgid "An error occured while sending mail."
+msgstr "crwdns15642:0crwdne15642:0"
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -411,7 +409,7 @@ msgstr "crwdns15690:0crwdne15690:0"
 
 #: website/app/GeoKrety/LogType.php:108
 #: website/app-templates/smarty/blocks/geokret/details.tpl:47
-#: website/app-templates/smarty/pages/home.tpl:53
+#: website/app-templates/smarty/pages/home.tpl:59
 msgid "Born"
 msgstr "crwdns15692:0crwdne15692:0"
 
@@ -461,20 +459,20 @@ msgstr "crwdns15706:0%dcrwdnd15706:0%dcrwdne15706:0"
 msgid "Sorry, but username \"%s\" is already used."
 msgstr "crwdns16426:0%scrwdne16426:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:62
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:63
 msgid "Waypoint contains invalid characters."
 msgstr "crwdns15708:0crwdne15708:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:83
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:84
 #, php-format
 msgid "View the <a href=\"%s\" target=\"_blank\">cache page</a>."
 msgstr "crwdns15710:0%scrwdne15710:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:86
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:87
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the 'Coordinates' field."
 msgstr "crwdns15712:0crwdne15712:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:90
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:91
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "crwdns16206:0crwdne16206:0"
 
@@ -548,7 +546,7 @@ msgstr "crwdns16368:0%scrwdne16368:0"
 msgid "Anonymous"
 msgstr "crwdns15728:0crwdne15728:0"
 
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:15
+#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
 #, php-format
 msgid "%s's statpic"
 msgstr "crwdns15730:0%scrwdne15730:0"
@@ -569,101 +567,57 @@ msgstr "crwdns15736:0crwdne15736:0"
 msgid "This language is not supported"
 msgstr "crwdns15738:0crwdne15738:0"
 
-#: website/app/validators.php:28
+#: website/app/validators.php:30
 msgid "The password must be ciphered"
 msgstr "crwdns15740:0crwdne15740:0"
 
-#: website/app/validators.php:40
+#: website/app/validators.php:39
 msgid "Anonymous users must provide a value for {0}"
 msgstr "crwdns15742:0{0}crwdne15742:0"
 
-#: website/app/validators.php:52
+#: website/app/validators.php:51
 msgid "Registered users must provide a value for {0}"
 msgstr "crwdns15744:0{0}crwdne15744:0"
 
-#: website/app/validators.php:63
+#: website/app/validators.php:62
 msgid "This logtype require valid {0} coordinates"
 msgstr "crwdns15746:0{0}crwdne15746:0"
 
-#: website/app/validators.php:70
+#: website/app/validators.php:73
 msgid "Something already exists at the same datetime \"{0}\""
 msgstr "crwdns16128:0{0}crwdne16128:0"
 
-#: website/app/validators.php:74
+#: website/app/validators.php:81
 msgid "{0} cannot be in the future"
 msgstr "crwdns15750:0{0}crwdne15750:0"
 
-#: website/app/validators.php:78
+#: website/app/validators.php:89
 msgid "{0} must be after GeoKret birth"
 msgstr "crwdns15752:0{0}crwdne15752:0"
 
-#: website/export2.php:33
+#: website/public/export2.php:33
 #, php-format
 msgid "The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note it must be given as UTC. Try this for data from the last 2 hours.: %s"
 msgstr "crwdns14018:0%scrwdne14018:0"
 
-#: website/export2.php:50
+#: website/public/export2.php:50
 msgid "Invalid secid."
 msgstr "crwdns14020:0crwdne14020:0"
 
-#: website/export2.php:78
+#: website/public/export2.php:78
 #, php-format
 msgid "At least one filter is required. For more information, see %s"
 msgstr "crwdns14022:0%scrwdne14022:0"
 
-#: website/export2.php:89 website/export.php:27
+#: website/public/export2.php:89 website/public/export.php:27
 #, php-format
 msgid "The requested period exceeds the %s days limit (you requested data for the past %s days) -- please download a static version of the XML. For more information, see %s"
 msgstr "crwdns14024:0%scrwdnd14024:0%scrwdnd14024:0%scrwdne14024:0"
 
-#: website/export.php:12
+#: website/public/export.php:12
 #, php-format
 msgid "The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note it must be given as UTC. Try this for data from the last 2 hours: %s"
 msgstr "crwdns15562:0%scrwdne15562:0"
-
-#: website/app-templates/smarty/mails/password_changed.tpl:1
-msgid "Your password has been successfully changed."
-msgstr "crwdns15754:0crwdne15754:0"
-
-#: website/app-templates/smarty/mails/password_changed.tpl:4
-#: website/app-templates/smarty/mails/user_contact.tpl:16
-#: website/app-templates/smarty/mails/geokret_adopted.tpl:4
-msgid "The GeoKrety Team"
-msgstr "crwdns15756:0crwdne15756:0"
-
-#: website/app-templates/smarty/mails/user_contact.tpl:1
-#: website/app-templates/smarty/mails/geokret_adopted.tpl:1
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
-msgid "Hi %1,"
-msgstr "crwdns15758:0%1crwdne15758:0"
-
-#: website/app-templates/smarty/mails/user_contact.tpl:2
-msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr "crwdns15768:0%2crwdnd15768:0%1crwdne15768:0"
-
-#: website/app-templates/smarty/mails/user_contact.tpl:5
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr "crwdns15770:0%1crwdne15770:0"
-
-#: website/app-templates/smarty/mails/user_contact.tpl:6
-msgid "Referer: %1"
-msgstr "crwdns15772:0%1crwdne15772:0"
-
-#: website/app-templates/smarty/mails/user_contact.tpl:10
-msgid "Subject:"
-msgstr "crwdns15774:0crwdne15774:0"
-
-#: website/app-templates/smarty/mails/user_contact.tpl:14
-msgid "You can reply to %1 using this <a href=\"%2\">link</a>"
-msgstr "crwdns15776:0%1crwdnd15776:0%2crwdne15776:0"
 
 #: website/app-templates/smarty/blocks/geokret/pictures.tpl:3
 msgid "Pictures"
@@ -931,43 +885,49 @@ msgstr "crwdns14702:0crwdne14702:0"
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
 msgstr "crwdns16198:0%1crwdne16198:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:6
+#: website/app-templates/smarty/blocks/user/actions.tpl:3
+#: website/app-templates/smarty/navbar.tpl:46
+#: website/app-templates/smarty/forms/geokret.tpl:6
+msgid "Create a new GeoKret"
+msgstr "crwdns14876:0crwdne14876:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:12
 msgid "View inventory"
 msgstr "crwdns14706:0crwdne14706:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:10
+#: website/app-templates/smarty/blocks/user/actions.tpl:16
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:7
 msgid "Owned GeoKrety"
 msgstr "crwdns14666:0crwdne14666:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:14
+#: website/app-templates/smarty/blocks/user/actions.tpl:20
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:7
 #: website/app-templates/smarty/navbar-profile.tpl:20
 msgid "Watched GeoKrety"
 msgstr "crwdns14676:0crwdne14676:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:18
+#: website/app-templates/smarty/blocks/user/actions.tpl:24
 msgid "Recently posted moves"
 msgstr "crwdns14708:0crwdne14708:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:22
+#: website/app-templates/smarty/blocks/user/actions.tpl:28
 msgid "Moves of owned GeoKrety"
 msgstr "crwdns16134:0crwdne16134:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:26
+#: website/app-templates/smarty/blocks/user/actions.tpl:32
 msgid "Posted pictures"
 msgstr "crwdns14712:0crwdne14712:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:30
+#: website/app-templates/smarty/blocks/user/actions.tpl:36
 msgid "Owned GeoKrety pictures"
 msgstr "crwdns14714:0crwdne14714:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:34
+#: website/app-templates/smarty/blocks/user/actions.tpl:40
 #: website/app-templates/smarty/navbar-profile.tpl:28
 msgid "Where are my GeoKrety?"
 msgstr "crwdns14716:0crwdne14716:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:39
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
 msgid "User stats"
 msgstr "crwdns14532:0crwdne14532:0"
 
@@ -1013,7 +973,7 @@ msgstr "crwdns13908:0crwdne13908:0"
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:13
 #: website/app-templates/smarty/dialog/user_update_password.tpl:54
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:61
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:65
 #: website/app-templates/smarty/pages/email_change.tpl:32
 #: website/app-templates/smarty/pages/email_change.tpl:36
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:68
@@ -1026,7 +986,7 @@ msgstr "crwdns14738:0crwdne14738:0"
 
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:21
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:29
+#: website/app-templates/smarty/pages/home.tpl:32
 #: website/app-templates/smarty/pages/news_details.tpl:23
 #: website/app-templates/smarty/pages/news_details.tpl:41
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
@@ -1095,6 +1055,7 @@ msgid "Contact user"
 msgstr "crwdns14214:0crwdne14214:0"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:20
+#: website/app-templates/smarty/pages/local_mails.tpl:18
 msgid "To"
 msgstr "crwdns15132:0crwdne15132:0"
 
@@ -1103,6 +1064,7 @@ msgid "%1 (speak %2)"
 msgstr "crwdns15134:0%1crwdnd15134:0%2crwdne15134:0"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:27
+#: website/app-templates/smarty/pages/local_mails.tpl:16
 msgid "Subject"
 msgstr "crwdns15136:0crwdne15136:0"
 
@@ -1303,47 +1265,52 @@ msgstr "crwdns15118:0crwdne15118:0"
 msgid "Select GeoKrety from inventory"
 msgstr "crwdns15210:0crwdne15210:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:8
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:9
 msgid "Only %1 GeoKrety can be processed at a time."
 msgstr "crwdns14784:0%1crwdne14784:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:14
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
 msgid "Filter"
 msgstr "crwdns15824:0crwdne15824:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
 msgid "Name or ID"
 msgstr "crwdns15826:0crwdne15826:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:25
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
 #: website/app-templates/smarty/pages/mole_hole.tpl:38
 #: website/app-templates/smarty/pages/mole_hole.tpl:81
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:18
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:18
 #: website/app-templates/smarty/pages/user_inventory.tpl:18
-#: website/app-templates/smarty/pages/home.tpl:27
-#: website/app-templates/smarty/pages/home.tpl:51
+#: website/app-templates/smarty/pages/home.tpl:30
+#: website/app-templates/smarty/pages/home.tpl:57
+#: website/app-templates/smarty/pages/local_mails.tpl:15
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:18
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:18
 msgid "ID"
 msgstr "crwdns14590:0crwdne14590:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:19
 #: website/app-templates/smarty/pages/user_inventory.tpl:19
-#: website/app-templates/smarty/pages/home.tpl:52
+#: website/app-templates/smarty/pages/home.tpl:58
 msgid "Owner"
 msgstr "crwdns14178:0crwdne14178:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
 msgid "Select all (but max %1)"
 msgstr "crwdns15828:0%1crwdne15828:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:34
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:35
 msgid "Choose"
 msgstr "crwdns16168:0crwdne16168:0"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:62
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:60
+msgid "Your inventory is empty."
+msgstr "crwdns16490:0crwdne16490:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:67
 msgid "Select <span class=\"badge\">%1</span>"
 msgstr "crwdns14786:0%1crwdne14786:0"
 
@@ -1405,8 +1372,8 @@ msgid "Close"
 msgstr "crwdns14912:0crwdne14912:0"
 
 #: website/app-templates/smarty/banners/contribute.tpl:3
-msgid "This branch 🥦 is activelly developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "crwdns16182:0%1crwdnd16182:0%2crwdne16182:0"
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "crwdns16488:0%1crwdnd16488:0%2crwdne16488:0"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
@@ -1439,6 +1406,10 @@ msgstr "crwdns16430:0crwdne16430:0"
 #: website/app-templates/smarty/forms/login.tpl:38
 msgid "Sign in"
 msgstr "crwdns14908:0crwdne14908:0"
+
+#: website/app-templates/smarty/pages/news_list.tpl:15
+msgid "There is no news yet"
+msgstr "crwdns16460:0crwdne16460:0"
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
@@ -1720,7 +1691,7 @@ msgstr "crwdns15886:0%1crwdne15886:0"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:19
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:28
+#: website/app-templates/smarty/pages/home.tpl:31
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:19
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:19
 msgid "Spotted in"
@@ -1729,7 +1700,7 @@ msgstr "crwdns14668:0crwdne14668:0"
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:21
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
 #: website/app-templates/smarty/pages/user_inventory.tpl:21
-#: website/app-templates/smarty/pages/home.tpl:31
+#: website/app-templates/smarty/pages/home.tpl:34
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:21
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
 msgid "Distance"
@@ -1756,6 +1727,10 @@ msgstr "crwdns13876:0crwdne13876:0"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:19
 msgid "Owner Code"
 msgstr "crwdns15072:0crwdne15072:0"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:27
+msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
+msgstr "crwdns16492:0crwdne16492:0"
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:33
 msgid "Adopt"
@@ -1798,6 +1773,18 @@ msgstr "crwdns15894:0crwdne15894:0"
 msgid "Legend"
 msgstr "crwdns14564:0crwdne14564:0"
 
+#: website/app-templates/smarty/pages/map.tpl:41
+msgid "Has moved since 90 days"
+msgstr "crwdns16454:0crwdne16454:0"
+
+#: website/app-templates/smarty/pages/map.tpl:44
+msgid "Has a known move date and hasn't moved since 90 days"
+msgstr "crwdns16456:0crwdne16456:0"
+
+#: website/app-templates/smarty/pages/map.tpl:47
+msgid "No known move date"
+msgstr "crwdns16458:0crwdne16458:0"
+
 #: website/app-templates/smarty/pages/map.tpl:56
 msgid "Results are limited to the first 500 responses."
 msgstr "crwdns14566:0crwdne14566:0"
@@ -1808,7 +1795,7 @@ msgstr "crwdns14568:0%1crwdnd14568:0%2crwdne14568:0"
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
 #: website/app-templates/smarty/pages/user_inventory.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:30
+#: website/app-templates/smarty/pages/home.tpl:33
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:20
 msgid "Last move"
 msgstr "crwdns14612:0crwdne14612:0"
@@ -1858,21 +1845,21 @@ msgstr "crwdns14652:0%1crwdne14652:0"
 msgid "🎉 Welcome to GeoKrety.org!"
 msgstr "crwdns15900:0crwdne15900:0"
 
-#: website/app-templates/smarty/pages/home.tpl:16
+#: website/app-templates/smarty/pages/home.tpl:17
 #: website/app-templates/smarty/navbar.tpl:34
 #: website/app-templates/smarty/footer.tpl:5
 msgid "News"
 msgstr "crwdns14164:0crwdne14164:0"
 
-#: website/app-templates/smarty/pages/home.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:24
 msgid "Latest moves"
 msgstr "crwdns15902:0crwdne15902:0"
 
-#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/home.tpl:47
 msgid "Recent pictures"
 msgstr "crwdns15904:0crwdne15904:0"
 
-#: website/app-templates/smarty/pages/home.tpl:45
+#: website/app-templates/smarty/pages/home.tpl:51
 msgid "Recently created GeoKrety"
 msgstr "crwdns15906:0crwdne15906:0"
 
@@ -1891,6 +1878,22 @@ msgstr "crwdns16186:0%1crwdne16186:0"
 #: website/app-templates/smarty/pages/news_details.tpl:56
 msgid "There are no comments for this post."
 msgstr "crwdns15066:0crwdne15066:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:17
+msgid "From"
+msgstr "crwdns16472:0crwdne16472:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:20
+msgid "Action"
+msgstr "crwdns16462:0crwdne16462:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:21
+msgid "Delete all mails"
+msgstr "crwdns16474:0crwdne16474:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:39
+msgid "Delete mail"
+msgstr "crwdns16464:0crwdne16464:0"
 
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:38
 msgid "%1 doesn't own any GeoKrety yet."
@@ -1992,18 +1995,14 @@ msgstr "crwdns16202:0crwdne16202:0"
 msgid "Last [%1]"
 msgstr "crwdns16204:0[%1]crwdne16204:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:4
-#: website/app-templates/smarty/navbar-profile.tpl:13
-msgid "My profile"
-msgstr "crwdns15918:0crwdne15918:0"
-
-#: website/app-templates/smarty/navbar-profile.tpl:10
-msgid "My account"
-msgstr "crwdns14504:0crwdne14504:0"
-
-#: website/app-templates/smarty/navbar-profile.tpl:15
+#: website/app-templates/smarty/navbar-profile.tpl:3
 msgid "Admin"
 msgstr "crwdns13852:0crwdne13852:0"
+
+#: website/app-templates/smarty/navbar-profile.tpl:7
+#: website/app-templates/smarty/navbar-profile.tpl:16
+msgid "My profile"
+msgstr "crwdns15918:0crwdne15918:0"
 
 #: website/app-templates/smarty/navbar-profile.tpl:18
 msgid "My inventory"
@@ -2072,11 +2071,6 @@ msgstr "crwdns14460:0crwdne14460:0"
 msgid "Home"
 msgstr "crwdns14130:0crwdne14130:0"
 
-#: website/app-templates/smarty/navbar.tpl:46
-#: website/app-templates/smarty/forms/geokret.tpl:6
-msgid "Create a new GeoKret"
-msgstr "crwdns14876:0crwdne14876:0"
-
 #: website/app-templates/smarty/navbar.tpl:50
 msgid "Advanced search"
 msgstr "crwdns14878:0crwdne14878:0"
@@ -2121,8 +2115,10 @@ msgstr "crwdns14892:0crwdne14892:0"
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "Open source item tracking for all geocaching platforms"
 msgstr "crwdns15930:0crwdne15930:0"
 
@@ -2135,8 +2131,8 @@ msgid "Contact"
 msgstr "crwdns16192:0crwdne16192:0"
 
 #: website/app-templates/smarty/footer.tpl:10
-msgid "Released under <a href=\"%1\">MIT license</a>"
-msgstr "crwdns14988:0%1crwdne14988:0"
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "crwdns18432:0%1crwdne18432:0"
 
 #: website/app-templates/smarty/footer.tpl:13
 msgid "Leave in-context translation"
@@ -2147,10 +2143,10 @@ msgid "in-context translation"
 msgstr "crwdns16364:0crwdne16364:0"
 
 #: website/app-templates/smarty/footer.tpl:19
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a href=\"%1\">The GeoKrety Team</a>"
-msgstr "crwdns16358:0%1crwdne16358:0"
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr "crwdns18434:0%1crwdne18434:0"
 
-#: website/app-templates/smarty/footer.tpl:27
+#: website/app-templates/smarty/footer.tpl:29
 msgid "Deployed on %1"
 msgstr "crwdns16360:0%1crwdne16360:0"
 
@@ -2364,7 +2360,7 @@ msgstr "crwdns16438:0crwdne16438:0"
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 msgid "Login"
 msgstr "crwdns14526:0crwdne14526:0"
 
@@ -2403,9 +2399,23 @@ msgstr "crwdns16246:0crwdne16246:0"
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 msgid "Congratulation 🎉"
 msgstr "crwdns16248:0crwdne16248:0"
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Hi %1,"
+msgstr "crwdns15758:0%1crwdne15758:0"
 
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 msgid "Your account on GeoKrety.org is now fully functional."
@@ -2418,8 +2428,10 @@ msgstr "crwdns16452:0crwdne16452:0"
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "Sincerely,<br>The GeoKrety Team"
 msgstr "crwdns16306:0crwdne16306:0"
 
@@ -2435,8 +2447,10 @@ msgstr "crwdns16448:0crwdne16448:0"
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
 msgstr "crwdns16310:0%1crwdnd16310:0%2crwdne16310:0"
 
@@ -2455,7 +2469,7 @@ msgstr "crwdns16444:0crwdne16444:0"
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "This link expires %1."
 msgstr "crwdns16318:0%1crwdne16318:0"
 
@@ -2499,6 +2513,7 @@ msgid "Change my password!"
 msgstr "crwdns16322:0crwdne16322:0"
 
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
 msgid "Hooray 🥳"
 msgstr "crwdns16324:0crwdne16324:0"
 
@@ -2538,27 +2553,63 @@ msgstr "crwdns16340:0crwdne16340:0"
 msgid "You're getting this email because you've requested an email address change from our website."
 msgstr "crwdns16342:0crwdne16342:0"
 
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+msgid "View GeoKret"
+msgstr "crwdns16476:0crwdne16476:0"
+
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
+msgstr "crwdns16478:0crwdne16478:0"
+
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 msgid "Your password has been succesfully changed."
 msgstr "crwdns16250:0crwdne16250:0"
 
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 msgid "You're getting this email because you've changed your password on our website."
 msgstr "crwdns16344:0crwdne16344:0"
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "Forgot Your Password?"
 msgstr "crwdns16254:0crwdne16254:0"
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "It happens. Click the link below to reset your password."
 msgstr "crwdns16256:0crwdne16256:0"
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "Reset Password"
 msgstr "crwdns16258:0crwdne16258:0"
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "You're getting this email because you've requested a password recovery on our website."
 msgstr "crwdns16346:0crwdne16346:0"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Contact from a GeoKrety.org user"
+msgstr "crwdns16480:0crwdne16480:0"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "This email was sent by user <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
+msgstr "crwdns16482:0%2crwdnd16482:0%1crwdne16482:0"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr "crwdns15770:0%1crwdne15770:0"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Referer: %1"
+msgstr "crwdns15772:0%1crwdne15772:0"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Subject:"
+msgstr "crwdns15774:0crwdne15774:0"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Reply to %1"
+msgstr "crwdns16484:0%1crwdne16484:0"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
+msgstr "crwdns16486:0crwdne16486:0"
 
