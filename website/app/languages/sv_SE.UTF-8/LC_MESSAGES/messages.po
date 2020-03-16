@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 08:20+0000\n"
-"PO-Revision-Date: 2019-09-05 08:29\n"
-"Last-Translator: geokrety\n"
+"POT-Creation-Date: 2019-10-17 12:41+0000\n"
+"PO-Revision-Date: 2020-03-16 00:16\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
@@ -12,40 +12,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: geokrety\n"
 "X-Crowdin-Language: sv-SE\n"
 "X-Crowdin-File: /feature.new-theme/messages.po\n"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:20
+#: website/app/GeoKrety/Controller/GeokretClaim.php:21
 msgid "Sorry, the provided owner code and tracking code doesn't match."
-msgstr ""
+msgstr "Tyvärr, den angivna ägarkoden och spårningskoden matchar inte."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:26
+#: website/app/GeoKrety/Controller/GeokretClaim.php:27
 msgid "Sorry, this owner code has already been used."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:52
-msgid "Something went wrong while registering the adoption."
-msgstr ""
-
 #: website/app/GeoKrety/Controller/GeokretClaim.php:55
+msgid "Something went wrong while registering the adoption."
+msgstr "Något gick fel vid registreringen av adoptionen."
+
+#: website/app/GeoKrety/Controller/GeokretClaim.php:58
 #, php-format
 msgid "🎉 Congratulation! You are now the owner of %s."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/GeokretClaim.php:79
-#, php-format
-msgid "Your GeoKret '%s' has been adopted 🎉"
-msgstr ""
-
-#: website/app/GeoKrety/Controller/GeokretClaim.php:84
-msgid "An error occured while sending the adoption mail notification to old owner."
-msgstr ""
+msgstr "🎉 Gratulerar! Du är nu ägaren av %s."
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:36
 msgid "Born here"
-msgstr ""
+msgstr "Född här"
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:44
 msgid "Failed to create the GeoKret initial move."
@@ -54,7 +44,7 @@ msgstr ""
 #: website/app/GeoKrety/Controller/GeokretCreate.php:54
 #: website/app/GeoKrety/Controller/GeokretEdit.php:20
 msgid "Failed to create the GeoKret."
-msgstr ""
+msgstr "Kunde inte skapa GeoKret:en."
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:56
 #, php-format
@@ -63,29 +53,29 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/GeokretEdit.php:22
 msgid "Your GeoKret has been updated."
-msgstr ""
+msgstr "Din GeoKret har uppdaterats."
 
 #: website/app/GeoKrety/Controller/GeokretMoveDelete.php:19
 msgid "Move removed."
-msgstr ""
+msgstr "Flytt borttagen."
 
 #: website/app/GeoKrety/Controller/GeokretMove.php:92
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:28
-#: website/app/GeoKrety/Controller/UserContact.php:66
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:29
+#: website/app/GeoKrety/Controller/UserContact.php:65
 msgid "reCaptcha failed!"
-msgstr ""
+msgstr "reCaptcha misslyckades!"
 
 #: website/app/GeoKrety/Controller/GeokretMove.php:125
 msgid "Failed to save move."
-msgstr ""
+msgstr "Kunde inte spara flytt."
 
 #: website/app/GeoKrety/Controller/GeokretMove.php:127
 msgid "Your move has been saved."
-msgstr ""
+msgstr "Din flytt har sparats."
 
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:19
 msgid "You must be the GeoKret owner to generate new Owner Code."
-msgstr ""
+msgstr "Du måste vara GeoKret-ägaren för att generera ny ägarkod."
 
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:25
 msgid "An Owner Code is already available for this GeoKret."
@@ -93,7 +83,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:35
 msgid "Failed to create a new Owner Code."
-msgstr ""
+msgstr "Kunde inte skapa ny ägarkod."
 
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:38
 #, php-format
@@ -102,48 +92,48 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/HelpApi.php:44
 msgid "Wrong secid"
-msgstr ""
+msgstr "Fel secid"
 
 #: website/app/GeoKrety/Controller/HelpApi.php:45
 msgid "Wrong date or time"
-msgstr ""
+msgstr "Fel datum eller tid"
 
-#: website/app/GeoKrety/Controller/Login.php:48
+#: website/app/GeoKrety/Controller/Login.php:50
 msgid "Welcome on board!"
-msgstr ""
+msgstr "Välkommen ombord!"
 
-#: website/app/GeoKrety/Controller/Login.php:58
+#: website/app/GeoKrety/Controller/Login.php:60
 msgid "Something went wrong during the login procedure."
-msgstr ""
+msgstr "Något gick fel under inloggningsproceduren."
 
-#: website/app/GeoKrety/Controller/Login.php:61
+#: website/app/GeoKrety/Controller/Login.php:63
 msgid "Username and password doesn't match."
-msgstr ""
+msgstr "Användarnamn och lösenord matchar inte."
 
 #: website/app/GeoKrety/Controller/MoveCommentCreate.php:50
 #: website/app/GeoKrety/Controller/MoveCommentCreate.php:72
 msgid "Comment saved."
-msgstr ""
+msgstr "Kommentar sparad."
 
 #: website/app/GeoKrety/Controller/MoveCommentDelete.php:37
 msgid "Comment removed."
-msgstr ""
+msgstr "Kommentar borttagen."
 
 #: website/app/GeoKrety/Controller/MoveCommentDelete.php:39
 msgid "Failed to delete comment."
-msgstr ""
+msgstr "Kunde inte radera kommentar."
 
 #: website/app/GeoKrety/Controller/NewsDetails.php:32
 msgid "Failed to record read datetime."
-msgstr ""
+msgstr "Kunde inte spela in läst datum/tid."
 
 #: website/app/GeoKrety/Controller/NewsDetails.php:59
 msgid "Error while saving comment."
-msgstr ""
+msgstr "Fel vid sparande av kommentar."
 
 #: website/app/GeoKrety/Controller/NewsDetails.php:61
 msgid "Your comment has been saved."
-msgstr ""
+msgstr "Din kommentar har sparats."
 
 #: website/app/GeoKrety/Controller/NewsSubscription.php:27
 msgid "Failed to update your subscriptions preferences."
@@ -151,138 +141,89 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/NewsSubscription.php:32
 msgid "You will now receive updates on new comments."
-msgstr ""
+msgstr "Du kommer nu få uppdateringar vid nya kommentarer."
 
 #: website/app/GeoKrety/Controller/NewsSubscription.php:35
 msgid "You will not receive updates anymore."
-msgstr ""
+msgstr "Du kommer inte få uppdateringar längre."
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:22
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:22
 #: website/app/GeoKrety/Controller/RegistrationActivate.php:18
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:18
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:19
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:19
 msgid "Sorry this token is not valid, already used or expired."
-msgstr ""
+msgstr "Tyvärr, denna token är inte giltig, redan använd eller utgången."
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:53
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:50
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:53
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:51
 msgid "New passwords doesn't match."
-msgstr ""
+msgstr "Nya lösenorden matchar inte."
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:81
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:80
 msgid "Unexpected error occured."
-msgstr ""
+msgstr "Oväntat fel uppstod."
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:90
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:61
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:85
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:62
 msgid "Your password has been changed."
-msgstr ""
+msgstr "Ditt lösenord har ändrats."
 
-#: website/app/GeoKrety/Controller/PasswordChange.php:97
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:73
-msgid "Your password has been changed"
-msgstr ""
-
-#: website/app/GeoKrety/Controller/PasswordChange.php:107
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:73
-msgid "An error occured while sending the mail."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:39
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:40
 msgid "Sorry no account using that email address."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:56
-msgid "An email containing a validation link has been sent to the provided email address."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:63
-msgid "Password reset request"
-msgstr ""
+msgstr "Tyvärr, inget konto använder denna e-postadress."
 
 #: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:40
 msgid "Language preferences updated."
-msgstr ""
+msgstr "Språkinställningar uppdaterade."
 
 #: website/app/GeoKrety/Controller/UserContactByGeokret.php:22
 #, php-format
 msgid "GeoKret: %s (%s)"
-msgstr ""
+msgstr "GeoKret: %s (%s)"
 
-#: website/app/GeoKrety/Controller/UserContact.php:76
+#: website/app/GeoKrety/Controller/UserContact.php:75
 msgid "Failed to save the mail."
-msgstr ""
+msgstr "Kunde inte spara e-postmeddelandet."
 
 #: website/app/GeoKrety/Controller/UserContact.php:82
 #, php-format
 msgid "Your message to %s has been sent."
-msgstr ""
+msgstr "Ditt meddelande till %s har skickats."
 
-#: website/app/GeoKrety/Controller/UserContact.php:94
-#, php-format
-msgid "Contact from user %s"
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserContact.php:98
-msgid "An error occured while sending mail."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserContact.php:104
-msgid "An error occured while sending mail copy."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:62
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:67
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:63
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:68
 msgid "Unexpected value."
-msgstr ""
+msgstr "Oväntat värde."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:77
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:82
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:78
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:83
 msgid "Something went wrong, operation aborted."
-msgstr ""
+msgstr "Något gick fel, åtgärd avbruten."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:87
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:88
 msgid "Perfect! Enjoy your new email address. (This token is now revoked)"
-msgstr ""
+msgstr "Perfekt! Njut av din nya e-postadress. (Denna token är nu förbrukad)"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:91
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:92
 msgid "Your email address has been reverted."
-msgstr ""
+msgstr "Din e-postadress har återställts."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:99
-msgid "Email address reverted"
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:109
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:114
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:120
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:105
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:109
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:75
-#: website/app/GeoKrety/Email/AccountActivation.php:36
-msgid "An error occured while sending the confirmation mail."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:94
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:96
 msgid "Your email address has been validated."
-msgstr ""
+msgstr "Din e-postadress har validerats."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:97
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:98
 msgid "No change has been processed. This token is now revoked."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:104
-msgid "Email address changed"
 msgstr ""
 
 #: website/app/GeoKrety/Controller/UserRefreshSecid.php:38
 msgid "Failed to refresh your secid."
-msgstr ""
+msgstr "Kunde inte ladda om ditt secid."
 
 #: website/app/GeoKrety/Controller/UserRefreshSecid.php:41
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
-msgstr ""
+msgstr "Ditt secid har laddats om. Glöm inte att åter-autentisera alla andra applikationer anslutna till ditt GeoKrety-konto. "
 
 #: website/app/GeoKrety/Controller/UserTemplateChooser.php:21
 msgid "Failed to save your preferred user banner template."
@@ -292,50 +233,46 @@ msgstr ""
 msgid "Your user banner template preference has been successfully saved."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:53
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:54
 msgid "Your email preferences were saved."
-msgstr ""
+msgstr "Dina e-postinställningar har sparats."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:66
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:67
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:72
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:73
 msgid "Sorry but this mail address is already in use."
-msgstr ""
+msgstr "Tyvärr men denna e-postadress används redan."
 
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:87
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:95
-msgid "Changing your email address"
-msgstr ""
-
 #: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:37
 msgid "Failed to save your home coordinates."
-msgstr ""
+msgstr "Kunde inte spara dina hemkoordinater."
 
 #: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:40
 msgid "Your home coordinates were successfully saved."
-msgstr ""
+msgstr "Dina hemkoordinater har sparats."
 
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:43
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
 msgid "Your old password is invalid."
-msgstr ""
+msgstr "Ditt gamla lösenord är ogiltigt."
 
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:45
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:46
 msgid "Waypoint seems empty."
-msgstr ""
+msgstr "Waypoint verkar tom."
 
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:20
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:50
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:51
 #, php-format
 msgid "Waypoint length is invalid. It should be between %d and %d characters long."
-msgstr ""
+msgstr "Längd på Waypoint är ogiltig. Den skall vara mellan %d och %d tecken lång."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #, php-format
@@ -350,20 +287,81 @@ msgstr ""
 #: website/app/GeoKrety/Email/AccountActivation.php:27
 #, php-format
 msgid "<strong>Your account is not yet active.</strong> The confirmation email was sent again to your mail address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
-msgstr ""
+msgstr "<strong>Ditt konto är inte aktivt ännu.</strong> Bekräftelsemailet har skickats igen till din e-postadress. Du måste klicka på länken i mailet för att aktivera ditt konto. Bekräftelselänken går ut om %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:32
 msgid "Account activated"
+msgstr "Konto aktiverat"
+
+#: website/app/GeoKrety/Email/AccountActivation.php:36
+#: website/app/GeoKrety/Email/EmailChange.php:29
+#: website/app/GeoKrety/Email/EmailChange.php:38
+#: website/app/GeoKrety/Email/EmailChange.php:57
+#: website/app/GeoKrety/Email/EmailChange.php:66
+#: website/app/GeoKrety/Email/EmailChange.php:75
+msgid "An error occured while sending the confirmation mail."
 msgstr ""
 
 #: website/app/GeoKrety/Email/AccountActivation.php:41
 msgid "Welcome on GeoKrety.org"
-msgstr ""
+msgstr "Välkommen till GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:45
-#: website/app/GeoKrety/Model/User.php:204
+#: website/app/GeoKrety/Model/User.php:201
 msgid "An error occured while sending the activation mail."
+msgstr "Ett fel uppstod vid skickandet av aktiveringsmailet."
+
+#: website/app/GeoKrety/Email/EmailChange.php:25
+#: website/app/GeoKrety/Email/EmailChange.php:34
+msgid "Changing your email address"
+msgstr "Ändra din e-postadress"
+
+#: website/app/GeoKrety/Email/EmailChange.php:53
+#: website/app/GeoKrety/Email/EmailChange.php:62
+msgid "Email address changed"
+msgstr "E-postadress ändrad"
+
+#: website/app/GeoKrety/Email/EmailChange.php:71
+msgid "Email address reverted"
+msgstr "E-postadress återställd"
+
+#: website/app/GeoKrety/Email/GeokretClaim.php:11
+#, php-format
+msgid "Your GeoKret '%s' has been adopted"
+msgstr "Din GeoKret '%s' har adopterats"
+
+#: website/app/GeoKrety/Email/GeokretClaim.php:17
+msgid "An error occured while sending the adoption mail notification to old owner."
 msgstr ""
+
+#: website/app/GeoKrety/Email/PasswordChange.php:15
+msgid "Password reset request"
+msgstr "Begäran om lösenordåterställning"
+
+#: website/app/GeoKrety/Email/PasswordChange.php:19
+msgid "An error occured while sending the password reset mail."
+msgstr "Ett fel uppstod vid skickandet av ditt lösenordåterställningsmail."
+
+#: website/app/GeoKrety/Email/PasswordChange.php:23
+msgid "An email containing a validation link has been sent to the provided email address."
+msgstr "Ett e-postmeddelande med valideringslänk har skickats till den angivna e-postadressen."
+
+#: website/app/GeoKrety/Email/PasswordChange.php:27
+msgid "Your password has been changed"
+msgstr "Ditt lösenord har ändrats"
+
+#: website/app/GeoKrety/Email/PasswordChange.php:31
+msgid "An error occured while sending the password changed mail notification."
+msgstr ""
+
+#: website/app/GeoKrety/Email/UserContact.php:14
+#, php-format
+msgid "Contact from user %s"
+msgstr "Kontakt från anvädare %s"
+
+#: website/app/GeoKrety/Email/UserContact.php:18
+msgid "An error occured while sending mail."
+msgstr "Ett fel uppstod vid skickande av mail."
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -383,11 +381,11 @@ msgstr "Ett mynt"
 
 #: website/app/GeoKrety/GeokretyType.php:60
 msgid "KretyPost"
-msgstr ""
+msgstr "KretyPost"
 
 #: website/app/GeoKrety/LogType.php:102
 msgid "drop"
-msgstr ""
+msgstr "droppa"
 
 #: website/app/GeoKrety/LogType.php:103
 msgid "grab"
@@ -395,15 +393,15 @@ msgstr ""
 
 #: website/app/GeoKrety/LogType.php:104
 msgid "comment"
-msgstr ""
+msgstr "kommentar"
 
 #: website/app/GeoKrety/LogType.php:105
 msgid "met"
-msgstr ""
+msgstr "mött"
 
 #: website/app/GeoKrety/LogType.php:106
 msgid "archive"
-msgstr ""
+msgstr "arkivera"
 
 #: website/app/GeoKrety/LogType.php:107
 msgid "dip"
@@ -411,22 +409,22 @@ msgstr ""
 
 #: website/app/GeoKrety/LogType.php:108
 #: website/app-templates/smarty/blocks/geokret/details.tpl:47
-#: website/app-templates/smarty/pages/home.tpl:53
+#: website/app-templates/smarty/pages/home.tpl:59
 msgid "Born"
-msgstr ""
+msgstr "Född"
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:236
 msgid "Bad coordinates or unknown format."
-msgstr ""
+msgstr "Dåliga koordinater eller okänt format."
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:238
 msgid "Missing or invalid coordinates."
-msgstr ""
+msgstr "Saknade eller ogiltiga koordinater."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
-msgstr ""
+msgstr "Spårningskoden \"%s\" verkar för kort. Vi förväntar oss %d tecken här."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:32
 #, php-format
@@ -436,16 +434,16 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:44
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
-msgstr ""
+msgstr "Spårningskoden \"%s\" innehåller ogiltiga tecken."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:54
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
-msgstr ""
+msgstr "Tyvärr, men spårningskoden \"%s\" kunde inte hittas i vår databas."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:99
 msgid "No Tracking Code provided."
-msgstr ""
+msgstr "Ingen spårningskod angiven."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:103
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
@@ -459,42 +457,42 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:28
 #, php-format
 msgid "Sorry, but username \"%s\" is already used."
-msgstr ""
+msgstr "Tyvärr, men användarnamnet \"%s\" används redan."
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:62
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:63
 msgid "Waypoint contains invalid characters."
-msgstr ""
+msgstr "Waypoint innehåller ogiltiga tecken."
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:83
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:84
 #, php-format
 msgid "View the <a href=\"%s\" target=\"_blank\">cache page</a>."
-msgstr ""
+msgstr "Visa <a href=\"%s\" target=\"_blank\">cache-sidan</a>."
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:86
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:87
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the 'Coordinates' field."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:90
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:91
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
-msgstr ""
+msgstr "Tyvärr, men denna waypoint finns inte (än) i vår databas. Existerar den verkligen?"
 
 #: website/app-templates/smarty/plugins/modifier.award.php:14
 #, php-format
 msgid "Award for %s GeoKrety"
-msgstr ""
+msgstr "Pris för %s GeoKrety"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:19
 msgid "has avatar icon"
-msgstr ""
+msgstr "har avatarikon"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
 msgid "GeoKret has an avatar"
-msgstr ""
+msgstr "GeoKret har en avatar"
 
 #: website/app-templates/smarty/plugins/modifier.gklink.php:18
 #, php-format
 msgid "View %s's profile"
-msgstr ""
+msgstr "Visa %ss profil"
 
 #: website/app-templates/smarty/plugins/modifier.newslink.php:15
 #: website/app-templates/smarty/pages/news_details.tpl:52
@@ -528,7 +526,7 @@ msgstr "Besöker"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:10
 msgid "In the owner hands"
-msgstr ""
+msgstr "I ägarens händer"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:11
 #: website/app-templates/smarty/plugins/modifier.posicon.php:17
@@ -537,168 +535,124 @@ msgstr "Ny GeoKrety"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:54
 msgid "status icon"
-msgstr ""
+msgstr "statusikon"
 
 #: website/app-templates/smarty/plugins/modifier.user_avatar.php:20
 #, php-format
 msgid "%s's profile avatar"
-msgstr ""
+msgstr "%ss profilavatar"
 
 #: website/app-templates/smarty/plugins/modifier.userlink.php:16
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonym"
 
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:15
+#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
 #, php-format
 msgid "%s's statpic"
-msgstr ""
+msgstr "%ss statistikbild"
 
 #: website/app/validators.php:12
 msgid "The {0} field cannot be empty"
-msgstr ""
+msgstr "Fältet {0} kan inte vara tomt"
 
 #: website/app/validators.php:16
 msgid "The GeoKret type is invalid"
-msgstr ""
+msgstr "GeoKret-typen är ogiltig"
 
 #: website/app/validators.php:20
 msgid "The move type is invalid"
-msgstr ""
+msgstr "Flytt-typen är ogiltig"
 
 #: website/app/validators.php:24
 msgid "This language is not supported"
-msgstr ""
+msgstr "Detta språk stöds inte"
 
-#: website/app/validators.php:28
+#: website/app/validators.php:30
 msgid "The password must be ciphered"
-msgstr ""
+msgstr "Lösenordet måste vara krypterat"
 
-#: website/app/validators.php:40
+#: website/app/validators.php:39
 msgid "Anonymous users must provide a value for {0}"
-msgstr ""
+msgstr "Anonyma användare måste ange ett värde på {0}"
 
-#: website/app/validators.php:52
+#: website/app/validators.php:51
 msgid "Registered users must provide a value for {0}"
 msgstr ""
 
-#: website/app/validators.php:63
+#: website/app/validators.php:62
 msgid "This logtype require valid {0} coordinates"
-msgstr ""
+msgstr "Denna loggtyp kräver giltiga {0} koordinater"
 
-#: website/app/validators.php:70
+#: website/app/validators.php:73
 msgid "Something already exists at the same datetime \"{0}\""
-msgstr ""
+msgstr "Någonting finns redan på samma datetime \"{0}\""
 
-#: website/app/validators.php:74
+#: website/app/validators.php:81
 msgid "{0} cannot be in the future"
-msgstr ""
+msgstr "{0} kan inte vara i framtiden"
 
-#: website/app/validators.php:78
+#: website/app/validators.php:89
 msgid "{0} must be after GeoKret birth"
-msgstr ""
+msgstr "{0} måste vara efter GeoKret-födsel"
 
-#: website/export2.php:33
+#: website/public/export2.php:33
 #, php-format
 msgid "The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note it must be given as UTC. Try this for data from the last 2 hours.: %s"
-msgstr ""
+msgstr "Parametern 'modifiedsince' saknas eller är felaktig. Den skall anges i YYYYMMDDhhmmss-format. Notera att det måste anges som UTC. Prova detta för data från senaste två timmarna.: %s"
 
-#: website/export2.php:50
+#: website/public/export2.php:50
 msgid "Invalid secid."
-msgstr ""
+msgstr "Ogiltig secid."
 
-#: website/export2.php:78
+#: website/public/export2.php:78
 #, php-format
 msgid "At least one filter is required. For more information, see %s"
-msgstr ""
+msgstr "Minst ett filter krävs. För mer information, se %s"
 
-#: website/export2.php:89 website/export.php:27
+#: website/public/export2.php:89 website/public/export.php:27
 #, php-format
 msgid "The requested period exceeds the %s days limit (you requested data for the past %s days) -- please download a static version of the XML. For more information, see %s"
 msgstr ""
 
-#: website/export.php:12
+#: website/public/export.php:12
 #, php-format
 msgid "The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note it must be given as UTC. Try this for data from the last 2 hours: %s"
-msgstr ""
-
-#: website/app-templates/smarty/mails/password_changed.tpl:1
-msgid "Your password has been successfully changed."
-msgstr ""
-
-#: website/app-templates/smarty/mails/password_changed.tpl:4
-#: website/app-templates/smarty/mails/user_contact.tpl:16
-#: website/app-templates/smarty/mails/geokret_adopted.tpl:4
-msgid "The GeoKrety Team"
-msgstr ""
-
-#: website/app-templates/smarty/mails/user_contact.tpl:1
-#: website/app-templates/smarty/mails/geokret_adopted.tpl:1
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
-msgid "Hi %1,"
-msgstr ""
-
-#: website/app-templates/smarty/mails/user_contact.tpl:2
-msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
-
-#: website/app-templates/smarty/mails/user_contact.tpl:5
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr ""
-
-#: website/app-templates/smarty/mails/user_contact.tpl:6
-msgid "Referer: %1"
-msgstr ""
-
-#: website/app-templates/smarty/mails/user_contact.tpl:10
-msgid "Subject:"
-msgstr ""
-
-#: website/app-templates/smarty/mails/user_contact.tpl:14
-msgid "You can reply to %1 using this <a href=\"%2\">link</a>"
-msgstr ""
+msgstr "Parametern 'modifiedsince' saknas eller är felaktig. Den skall anges i YYYYMMDDhhmmss-format. Notera att det måste anges som UTC. Prova detta för data från senaste två timmarna: %s"
 
 #: website/app-templates/smarty/blocks/geokret/pictures.tpl:3
 msgid "Pictures"
-msgstr ""
+msgstr "Bilder"
 
 #: website/app-templates/smarty/blocks/geokret/pictures.tpl:6
 #: website/app-templates/smarty/blocks/user/details.tpl:18
 #: website/app-templates/smarty/elements/move.tpl:60
 msgid "Upload a picture"
-msgstr ""
+msgstr "Ladda upp en bild"
 
 #: website/app-templates/smarty/blocks/geokret/pictures.tpl:18
 msgid "No picture uploaded yet."
-msgstr ""
+msgstr "Ingen bild uppladdad än."
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:21
 #: website/app-templates/smarty/blocks/user/details.tpl:7
 msgid "Send a message to %1"
-msgstr ""
+msgstr "Skicka ett meddelande till %1"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:26
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:6
 msgid "Edit GeoKret details"
-msgstr ""
+msgstr "Redigera GeoKret-detaljer"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:37
 msgid "Reference number"
-msgstr ""
+msgstr "Referensnummer"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:40
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
 #: website/app-templates/smarty/pages/geokret_claim.tpl:12
 #: website/app-templates/smarty/forms/move.tpl:21
 msgid "Tracking Code"
-msgstr ""
+msgstr "Spårningskod"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:43
 msgid "Total distance"
@@ -710,29 +664,29 @@ msgstr "Besökta platser"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:49
 msgid "Social share"
-msgstr ""
+msgstr "Social delning"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:51
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Dela på Facebook"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:52
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Dela på Twitter"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:53
 msgid "Share on Instagram"
-msgstr ""
+msgstr "Dela på Instagram"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:54
 #: website/app-templates/smarty/blocks/user/statpic.tpl:8
 msgid "Copy link to page"
-msgstr ""
+msgstr "Kopiera länk till sida"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:55
 #: website/app-templates/smarty/blocks/user/statpic.tpl:9
 msgid "Copy to page as bbcode"
-msgstr ""
+msgstr "Kopiera till sida som bbkod"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:57
 msgid "Country track"
@@ -748,7 +702,7 @@ msgstr "Logga denna GeoKret"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:10
 msgid "Print a label for this GeoKret"
-msgstr ""
+msgstr "Skriv ut en etikett för denna GeoKret"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:15
 #: website/app-templates/smarty/navbar.tpl:82
@@ -757,7 +711,7 @@ msgstr "Statistik"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:22
 msgid "Adopt this GeoKret"
-msgstr ""
+msgstr "Adoptera denna GeoKret"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:24
 msgid "Login to claim this GeoKret"
@@ -765,30 +719,30 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:30
 msgid "Archive this GeoKret"
-msgstr ""
+msgstr "Arkivera denna GeoKret"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:35
 msgid "Email owner"
-msgstr ""
+msgstr "E-posta ägare"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:41
 msgid "Make this GeoKret available for adoption by another user"
-msgstr ""
+msgstr "Gör denna GeoKret tillgänglig för adoption av en annan användare"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:42
 msgid "Transfer ownership"
-msgstr ""
+msgstr "Överför ägarskap"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:53
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
 #: website/app-templates/smarty/pages/user_inventory.tpl:23
 #: website/app-templates/smarty/navbar.tpl:42
 msgid "Actions"
-msgstr ""
+msgstr "Åtgärder"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:3
 msgid "Map"
-msgstr ""
+msgstr "Karta"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:8
 msgid "Caption:"
@@ -796,57 +750,57 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:9
 msgid "start"
-msgstr ""
+msgstr "start"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:10
 msgid "trip points"
-msgstr ""
+msgstr "res-poäng"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:11
 msgid "recently seen"
-msgstr ""
+msgstr "nyligen sedda"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:13
 msgid "Download the track as:"
-msgstr ""
+msgstr "Ladda ner spåret som:"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:17
 msgid "This geokret has not started yet"
-msgstr ""
+msgstr "Denna geokret har inte startat än"
 
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
 msgid "Found it? Log it!"
-msgstr ""
+msgstr "Hittat den? Logga den!"
 
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
 msgid "Please enter the Tracking Code here"
-msgstr ""
+msgstr "Ange spårningskoden här"
 
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
 #: website/app-templates/smarty/blocks/found_geokret.tpl:15
 msgid "Log it!"
-msgstr ""
+msgstr "Logga den!"
 
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:3
 #: website/app-templates/smarty/forms/geokret.tpl:32
 msgid "Mission"
-msgstr ""
+msgstr "Uppdrag"
 
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:15
 msgid "This GeoKret doesn't have a special mission…"
-msgstr ""
+msgstr "Denna GeoKret har inget speciellt uppdrag…"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:3
 msgid "Found a GeoKret?"
-msgstr ""
+msgstr "Hittat en GeoKret?"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:7
 msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr ""
+msgstr "Ange <abbr title=\"%1\">Spårningskoden</abbr> här:"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:12
 msgid "Tracking code"
-msgstr ""
+msgstr "Spårningskod"
 
 #: website/app-templates/smarty/blocks/user/badges.tpl:3
 msgid "Badges"
@@ -854,15 +808,15 @@ msgstr "Märken"
 
 #: website/app-templates/smarty/blocks/user/badges.tpl:9
 msgid "No badge received yet."
-msgstr ""
+msgstr "Ingen medalj mottagen än."
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:3
 msgid "Awards"
-msgstr ""
+msgstr "Utmärkelser"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong> km."
-msgstr ""
+msgstr "%1 har skapat <strong>%2</strong> GeoKrety, som har rest <strong>%3</strong> km."
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:15
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong> km."
@@ -878,7 +832,7 @@ msgstr "Prenumerera på RSS-kanal"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:15
 msgid "Password change"
-msgstr ""
+msgstr "Lösenordsändring"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:29
 msgid "Joined us"
@@ -892,11 +846,11 @@ msgstr "Språk"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:33
 msgid "Nothing selected"
-msgstr ""
+msgstr "Inget markerat"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:36
 msgid "Choose preferred language"
-msgstr ""
+msgstr "Välj förvalt språk"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:43
 #: website/app-templates/smarty/pages/contact_us.tpl:15
@@ -909,15 +863,15 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/details.tpl:50
 msgid "No email address, please add one!"
-msgstr ""
+msgstr "Ingen e-postadress, vänligen lägg till en!"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:53
 msgid "Update email address"
-msgstr ""
+msgstr "Uppdatera e-postadress"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:58
 msgid "Secid"
-msgstr ""
+msgstr "Secid"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:61
 msgid "Used to authenticate in other applications. Keep it secret!"
@@ -925,55 +879,61 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/details.tpl:62
 msgid "Generate a new secid"
-msgstr ""
+msgstr "Generera ett nytt secid"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:71
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr ""
+msgstr "För att ändra ditt användarnamn eller ta bort ditt konto, skicka oss <a href=\"%1\">ett e-postmeddelande</a>!"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:6
+#: website/app-templates/smarty/blocks/user/actions.tpl:3
+#: website/app-templates/smarty/navbar.tpl:46
+#: website/app-templates/smarty/forms/geokret.tpl:6
+msgid "Create a new GeoKret"
+msgstr "Skapa en nyt GeoKret"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:12
 msgid "View inventory"
 msgstr ""
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:10
+#: website/app-templates/smarty/blocks/user/actions.tpl:16
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:7
 msgid "Owned GeoKrety"
-msgstr ""
+msgstr "Ägd GeoKrety"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:14
+#: website/app-templates/smarty/blocks/user/actions.tpl:20
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:7
 #: website/app-templates/smarty/navbar-profile.tpl:20
 msgid "Watched GeoKrety"
 msgstr ""
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:18
+#: website/app-templates/smarty/blocks/user/actions.tpl:24
 msgid "Recently posted moves"
-msgstr ""
+msgstr "Senaste postade flytter"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:22
+#: website/app-templates/smarty/blocks/user/actions.tpl:28
 msgid "Moves of owned GeoKrety"
-msgstr ""
+msgstr "Flytter av ägd GeoKrety"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:26
+#: website/app-templates/smarty/blocks/user/actions.tpl:32
 msgid "Posted pictures"
-msgstr ""
+msgstr "Postade bilder"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:30
+#: website/app-templates/smarty/blocks/user/actions.tpl:36
 msgid "Owned GeoKrety pictures"
-msgstr ""
+msgstr "Ägda GeoKrety-bilder"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:34
+#: website/app-templates/smarty/blocks/user/actions.tpl:40
 #: website/app-templates/smarty/navbar-profile.tpl:28
 msgid "Where are my GeoKrety?"
-msgstr ""
+msgstr "Var är min GeoKrety?"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:39
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
 msgid "User stats"
-msgstr ""
+msgstr "Användarstatistik"
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:10
 msgid "No home coordinates have been defined."
-msgstr ""
+msgstr "Inga hemkoordinater har definierats."
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:13
 #: website/app-templates/smarty/blocks/user/map_home.tpl:21
@@ -982,17 +942,17 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:14
 msgid "Define your home coordinates"
-msgstr ""
+msgstr "Definiera dina hemkoordinater"
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:20
 msgid "GeoKrety near home"
-msgstr ""
+msgstr "GeoKrety nära hem"
 
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:4
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:37
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
 msgid "Commenting a GeoKret move"
-msgstr ""
+msgstr "Kommenterar en GeoKret-flytt"
 
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:14
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
@@ -1013,7 +973,7 @@ msgstr "Din kommentar"
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:13
 #: website/app-templates/smarty/dialog/user_update_password.tpl:54
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:61
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:65
 #: website/app-templates/smarty/pages/email_change.tpl:32
 #: website/app-templates/smarty/pages/email_change.tpl:36
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:68
@@ -1022,11 +982,11 @@ msgstr "Din kommentar"
 #: website/app-templates/smarty/pages/email_change_token.tpl:30
 #: website/app-templates/smarty/pages/email_change_token.tpl:34
 msgid "Dismiss"
-msgstr ""
+msgstr "Avfärda"
 
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:21
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:29
+#: website/app-templates/smarty/pages/home.tpl:32
 #: website/app-templates/smarty/pages/news_details.tpl:23
 #: website/app-templates/smarty/pages/news_details.tpl:41
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
@@ -1038,7 +998,7 @@ msgstr "Kommentar"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
 msgid "Choose your preferred language"
-msgstr ""
+msgstr "Välj ditt förvalda språk"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
 #: website/app-templates/smarty/forms/registration.tpl:40
@@ -1052,14 +1012,14 @@ msgstr ""
 #: website/app-templates/smarty/dialog/user_update_password.tpl:53
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:67
 msgid "Back to user page"
-msgstr ""
+msgstr "Tillbaka till användarsida"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
 #: website/app-templates/smarty/dialog/user_update_email.tpl:53
 #: website/app-templates/smarty/dialog/user_update_password.tpl:56
 #: website/app-templates/smarty/pages/password_change.tpl:59
 msgid "Change"
-msgstr ""
+msgstr "Ändra"
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:3
 msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
@@ -1088,13 +1048,14 @@ msgstr "Användarvillor"
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:46
 msgid "I agree with the terms"
-msgstr ""
+msgstr "Jag godkänner villkoren"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:13
 msgid "Contact user"
-msgstr ""
+msgstr "Kontakta användare"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:20
+#: website/app-templates/smarty/pages/local_mails.tpl:18
 msgid "To"
 msgstr "Till"
 
@@ -1103,12 +1064,13 @@ msgid "%1 (speak %2)"
 msgstr ""
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:27
+#: website/app-templates/smarty/pages/local_mails.tpl:16
 msgid "Subject"
 msgstr "Ämne"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:29
 msgid "Message subject"
-msgstr ""
+msgstr "Meddelandets ämne"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:34
 msgid "Message"
@@ -1116,7 +1078,7 @@ msgstr "Meddelande"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:36
 msgid "Message to user"
-msgstr ""
+msgstr "Meddelande till användare"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:53
 msgid "Send message"
@@ -1124,7 +1086,7 @@ msgstr "Skicka meddelande"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:4
 msgid "Update your email address"
-msgstr ""
+msgstr "Uppdatera din e-postadress"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:11
 #: website/app-templates/smarty/dialog/user_update_email.tpl:12
@@ -1133,17 +1095,17 @@ msgstr ""
 #: website/app-templates/smarty/forms/registration.tpl:11
 #: website/app-templates/smarty/forms/registration.tpl:13
 msgid "Email address"
-msgstr ""
+msgstr "E-postadress"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:17
 #: website/app-templates/smarty/forms/registration.tpl:48
 msgid "Yes, I want to receive email alerts (sent once a day)."
-msgstr ""
+msgstr "Ja, jag vill ta emot e-postvarningar (skickas en gång om dagen)."
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:23
 #: website/app-templates/smarty/forms/registration.tpl:14
 msgid "The main purpose of collecting email is to permit password recovery."
-msgstr ""
+msgstr "Främsta orsaken bakom insamlande av e-post är för att tillåta lösenordsåterställning."
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:27
 msgid "Email alerts may contain any of the following:"
@@ -1151,21 +1113,21 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:29
 msgid "GeoKrety.org news"
-msgstr ""
+msgstr "GeoKrety.org nyheter"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:30
 msgid "Recent logs on:"
-msgstr ""
+msgstr "Senaste loggar på:"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:32
 #: website/app-templates/smarty/dialog/user_update_email.tpl:38
 msgid "your own GeoKrety"
-msgstr ""
+msgstr "din egen GeoKrety"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:33
 #: website/app-templates/smarty/dialog/user_update_email.tpl:39
 msgid "GeoKrety that you watch"
-msgstr ""
+msgstr "GeoKrety som du bevakar"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:34
 msgid "any GeoKrety logged near your home location"
@@ -1173,73 +1135,73 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:36
 msgid "Comments posted to any of the following:"
-msgstr ""
+msgstr "Kommentarer postade till någon av följande:"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:40
 msgid "your logs"
-msgstr ""
+msgstr "dina loggar"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:41
 msgid "your comments"
-msgstr ""
+msgstr "dina kommentarer"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:42
 msgid "news posts you have are subscribed to"
-msgstr ""
+msgstr "nyhetsinlägg som du prenumererar på"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:6
 msgid "Do you really want to unsubscribe from this news?"
-msgstr ""
+msgstr "Vill du verkligen avprenumerera från dessa nyheter?"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:8
 msgid "Subscribe to this news?"
-msgstr ""
+msgstr "Prenumerera på dessa nyheter?"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:26
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Avprenumerera"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:28
 msgid "Subscribe"
-msgstr ""
+msgstr "Prenumerera"
 
 #: website/app-templates/smarty/dialog/move_delete.tpl:4
 msgid "Do you really want to delete this move?"
-msgstr ""
+msgstr "Vill du verkligen ta bort denna flytt?"
 
 #: website/app-templates/smarty/dialog/move_delete.tpl:14
 #: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
 msgid "Delete"
-msgstr ""
+msgstr "Radera"
 
 #: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
 msgid "Do you really want to delete this move comment?"
-msgstr ""
+msgstr "Vill du verkligen ta bort denna flyttkommentar?"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
 msgid "Offer this GeoKret for adoption?"
-msgstr ""
+msgstr "Erbjud denna GeoKret för adoption?"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
 msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr ""
+msgstr "Detta kommer tillåta en annan användare som känner till spårningskoden och ägarkoden att bli den nya ägaren utav denna GeoKret."
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:14
 msgid "Back to GeoKret page"
-msgstr ""
+msgstr "Tillbaka till GeoKret-sida"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:17
 msgid "Generate an Owner Code"
-msgstr ""
+msgstr "Generera en ägarkod"
 
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
 msgid "Declare missing"
-msgstr ""
+msgstr "Deklarera saknad"
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
 msgid "Refresh your secid?"
-msgstr ""
+msgstr "Ladda om din secid?"
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
 msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
@@ -1247,20 +1209,20 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:17
 msgid "Refresh"
-msgstr ""
+msgstr "Uppdatera"
 
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
 msgid "Do you really want to delete this news comment?"
-msgstr ""
+msgstr "Vill du verkligen ta bort denna nyhetskommentar?"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:12
 #: website/app-templates/smarty/pages/password_change.tpl:16
 msgid "Change your password"
-msgstr ""
+msgstr "Ändra ditt lösenord"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:19
 msgid "Current password"
-msgstr ""
+msgstr "Nuvarande lösenord"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:21
 msgid "Old password"
@@ -1280,80 +1242,85 @@ msgstr "Nytt lösenord"
 #: website/app-templates/smarty/forms/registration.tpl:26
 #: website/app-templates/smarty/forms/registration.tpl:28
 msgid "Confirm password"
-msgstr ""
+msgstr "Bekräfta lösenord"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:41
 msgid "Read more about choosing good passwords:"
-msgstr ""
+msgstr "Läs mer om att välja bra lösenord:"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:43
 msgid "Choosing Good Passwords -- A User Guide"
-msgstr ""
+msgstr "Välja bra lösenord - en användarguide"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:44
 msgid "How to Write Good Passwords"
-msgstr ""
+msgstr "Hur man skriver bra lösenord"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:45
 msgid "Password strength"
-msgstr ""
+msgstr "Lösenordsstyrka"
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:3
 #: website/app-templates/smarty/forms/move.tpl:28
 msgid "Select GeoKrety from inventory"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:8
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:9
 msgid "Only %1 GeoKrety can be processed at a time."
-msgstr ""
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:14
-msgid "Filter"
-msgstr ""
+msgstr "Endast %1 GeoKrety kan behandlas på en gång."
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
-msgid "Name or ID"
-msgstr ""
+msgid "Filter"
+msgstr "Filter"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:25
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
+msgid "Name or ID"
+msgstr "Namn eller ID"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
 #: website/app-templates/smarty/pages/mole_hole.tpl:38
 #: website/app-templates/smarty/pages/mole_hole.tpl:81
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:18
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:18
 #: website/app-templates/smarty/pages/user_inventory.tpl:18
-#: website/app-templates/smarty/pages/home.tpl:27
-#: website/app-templates/smarty/pages/home.tpl:51
+#: website/app-templates/smarty/pages/home.tpl:30
+#: website/app-templates/smarty/pages/home.tpl:57
+#: website/app-templates/smarty/pages/local_mails.tpl:15
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:18
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:18
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:19
 #: website/app-templates/smarty/pages/user_inventory.tpl:19
-#: website/app-templates/smarty/pages/home.tpl:52
+#: website/app-templates/smarty/pages/home.tpl:58
 msgid "Owner"
 msgstr "Ägare"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
 msgid "Select all (but max %1)"
-msgstr ""
+msgstr "Välj alla (men max %1)"
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:34
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:35
 msgid "Choose"
+msgstr "Välj"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:60
+msgid "Your inventory is empty."
 msgstr ""
 
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:62
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:67
 msgid "Select <span class=\"badge\">%1</span>"
-msgstr ""
+msgstr "Välj <span class=\"badge\">%1</span>"
 
 #: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
 msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr ""
+msgstr "Även om det inte - ännu - krävs, rekommenderar vi att du <a href=\"%1\">loggar in</a>."
 
 #: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
 msgid "Do not hesitate to <a href=\"%2\">create an account</a>."
-msgstr ""
+msgstr "Tveka inte att <a href=\"%2\">skapa ett konto</a>."
 
 #: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
 msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
@@ -1377,7 +1344,7 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:2
 msgid "Some statistics"
-msgstr ""
+msgstr "Lite statistik"
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:6
 msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
@@ -1389,7 +1356,7 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:21
 msgid "And that's thanks to you! Congratulation!"
-msgstr ""
+msgstr "Och det är tack vare dig! Gratulerar!"
 
 #: website/app-templates/smarty/banners/is_not_prod.tpl:3
 msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
@@ -1397,15 +1364,15 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/user_email_invalid.tpl:3
 msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
-msgstr ""
+msgstr "Tyvärr, men vi har problem med att skicka dig e-postaviseringar. Är din e-post fortfarande giltig?"
 
 #: website/app-templates/smarty/banners/contribute.tpl:2
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: website/app-templates/smarty/banners/contribute.tpl:3
-msgid "This branch 🥦 is activelly developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
 msgstr ""
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
@@ -1423,26 +1390,30 @@ msgstr ""
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:25
 #: website/app-templates/smarty/forms/geokret.tpl:52
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:35
 msgid "Your current statpic"
-msgstr ""
+msgstr "Din nuvarande statistikbild"
 
 #: website/app-templates/smarty/pages/registration_validate.tpl:6
 msgid "Welcome to the GeoKrety.org community!"
-msgstr ""
+msgstr "Välkommen till the GeoKrety.org community!"
 
 #: website/app-templates/smarty/pages/registration_validate.tpl:8
 #: website/app-templates/smarty/navbar-profile.tpl:37
 #: website/app-templates/smarty/navbar.tpl:20
 #: website/app-templates/smarty/forms/login.tpl:38
 msgid "Sign in"
-msgstr ""
+msgstr "Logga in"
+
+#: website/app-templates/smarty/pages/news_list.tpl:15
+msgid "There is no news yet"
+msgstr "Det finns inga nyheter än"
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
-msgstr ""
+msgstr "Lösenordsåterställning"
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
@@ -1450,19 +1421,19 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:40
 msgid "Send me a recovery link"
-msgstr ""
+msgstr "Skicka mig en återställningslänk"
 
 #: website/app-templates/smarty/pages/work_in_progress.tpl:4
 msgid "This page doesn't exists yet, but we're working on it!"
-msgstr ""
+msgstr "Denna sida finns inte än, men vi jobbar på det!"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:6
 msgid "Developers"
-msgstr ""
+msgstr "Utvecklare"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:9
 msgid "Current team:"
-msgstr ""
+msgstr "Nuvarande team:"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:11
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
@@ -1470,7 +1441,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:12
 msgid "code, support, public relation and advertising"
-msgstr ""
+msgstr "kod, support, PR och reklam"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:14
 msgid "Legacy team:"
@@ -1478,7 +1449,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:16
 msgid "idea, code and original design"
-msgstr ""
+msgstr "idé, kod och originaldesign"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:17
 msgid "visions into (legacy) code 😉"
@@ -1486,19 +1457,19 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:24
 msgid "Support"
-msgstr ""
+msgstr "Support"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:28
 msgid "GK logo (the mole, different versions)"
-msgstr ""
+msgstr "GK-logo (mullvaden, olika versioner)"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:29
 msgid "MySQL support, sandwiches and more 😃"
-msgstr ""
+msgstr "MySQL-support, smörgåsar och mer 😃"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:30
 msgid "GK maps"
-msgstr ""
+msgstr "GK-kartor"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:37
 #: website/app-templates/smarty/navbar.tpl:72
@@ -1508,19 +1479,19 @@ msgstr "Hjälp"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:41
 msgid "betatesting, idea, public relation and advertising 😃"
-msgstr ""
+msgstr "betatestande, idé, PR och reklam 😃"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:42
 msgid "betatesting, language support"
-msgstr ""
+msgstr "betatestar, språkstöd"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:43
 msgid "betatesting"
-msgstr ""
+msgstr "betatestar"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:44
 msgid "programming support"
-msgstr ""
+msgstr "programmeringssupport"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:45
 msgid "coordinates parser"
@@ -1528,19 +1499,19 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:46
 msgid "public relation and advertising"
-msgstr ""
+msgstr "PR och reklam"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:53
 msgid "Translations"
-msgstr ""
+msgstr "Översättningar"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:82
 msgid "Global reviewers"
-msgstr ""
+msgstr "Globala recensenter"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:89
 msgid "Credits"
-msgstr ""
+msgstr "Medverkande"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:6
 msgid "Contact us"
@@ -1552,35 +1523,35 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/contact_us.tpl:22
 msgid "Or via the user profile"
-msgstr ""
+msgstr "Eller via användarprofilen"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:31
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:39
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:46
 msgid "Public forum"
-msgstr ""
+msgstr "Offentligt forum"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:54
 msgid "Wanna sign or encrypt your mails?"
-msgstr ""
+msgstr "Vill du signera eller kryptera dina e-postmeddelanden?"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:56
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
-msgstr ""
+msgstr "Vår publika PGP/GPG-nyckel <a href=\"%1\">är här (%2)</a>"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:3
 msgid "GK mole-holes and GK hotels/motels"
-msgstr ""
+msgstr "GK-mullvadshål och GK-hotell/motell"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:8
 msgid "GeoKrety mole-hole-system"
-msgstr ""
+msgstr "GeoKrety mullvadshål-system"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:12
 msgid "Draft for basic recommendations for the GeoKrety mole-hole-system:"
@@ -1588,7 +1559,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:14
 msgid "This subject <a href=\"%1\">is being discussed here</a>."
-msgstr ""
+msgstr "Detta ämne <a href=\"%1\">diskuteras här</a>."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:16
 msgid "The system is based on mole-to-mole (peer-to-peer) tunnels. A mole-hole-cache should have a single dedicated destination. A dedicated destination doesn't mean a special cache - an arriving GeoKret may appear in any cache within the destination area."
@@ -1624,7 +1595,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:25
 msgid "some information about the end of the tunnel (destination area, partner, partner-mole-hole-cache)"
-msgstr ""
+msgstr "lite information om slutet på tunneln (destination-area, partner, partner-mole-hole-cache)"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:26
 msgid "And probably detailed information about the mole-hole-cache and the neighbourhood, how to get there, hint, spoiler and so on."
@@ -1632,21 +1603,21 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:30
 msgid "By <cite title=\"Original source\">%1</cite>"
-msgstr ""
+msgstr "Av <cite title=\"Ursprungskälla\">%1</cite>"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:33
 msgid "Current mole-holes"
-msgstr ""
+msgstr "Nuvarande mullvadshål"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:39
 #: website/app-templates/smarty/pages/mole_hole.tpl:82
 msgid "Cache name"
-msgstr ""
+msgstr "Cachenamn"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:40
 #: website/app-templates/smarty/pages/mole_hole.tpl:83
 msgid "Cache type"
-msgstr ""
+msgstr "Cachetyp"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:41
 #: website/app-templates/smarty/pages/mole_hole.tpl:84
@@ -1655,16 +1626,16 @@ msgstr "Land"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:49
 msgid "Status: ready for search"
-msgstr ""
+msgstr "Status: redo att söka"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:51
 #: website/app-templates/smarty/pages/mole_hole.tpl:94
 msgid "Status: not ready to search"
-msgstr ""
+msgstr "Status: inte redo att söka"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:70
 msgid "GeoKrety hotels / motels"
-msgstr ""
+msgstr "GeoKrety-hotell/motell"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:74
 msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety. By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
@@ -1672,31 +1643,31 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:76
 msgid "Current GK-Hotels/Motels"
-msgstr ""
+msgstr "Nuvarande GK-hotell/motell"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
-msgstr ""
+msgstr "Status: Redo att söka"
 
 #: website/app-templates/smarty/pages/password_change.tpl:25
 #: website/app-templates/smarty/pages/email_change.tpl:17
 msgid "Please enter the verification token received by mail."
-msgstr ""
+msgstr "Ange den verifikationstoken som du fick via mail."
 
 #: website/app-templates/smarty/pages/password_change.tpl:30
 #: website/app-templates/smarty/pages/password_change.tpl:32
 #: website/app-templates/smarty/pages/email_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:24
 msgid "Verification Token"
-msgstr ""
+msgstr "Verifikationstoken"
 
 #: website/app-templates/smarty/pages/password_change.tpl:39
 msgid "Please define a new password."
-msgstr ""
+msgstr "Definiera ett nytt lösenord."
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:6
 msgid "GeoKrety Toolbox - GKT"
-msgstr ""
+msgstr "Geokrety Verktygslåda - GKT"
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:10
 msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
@@ -1708,11 +1679,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
 msgid "Available for:"
-msgstr ""
+msgstr "Tillgängligt för:"
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:20
 msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
-msgstr ""
+msgstr "<a href=\"%1\">Firefox</a> (behöver <a href=\"%2\">Tampermonkey tillägg</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:7
 msgid "%1's recent moves"
@@ -1720,20 +1691,20 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:19
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:28
+#: website/app-templates/smarty/pages/home.tpl:31
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:19
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:19
 msgid "Spotted in"
-msgstr ""
+msgstr "Sedd i"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:21
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
 #: website/app-templates/smarty/pages/user_inventory.tpl:21
-#: website/app-templates/smarty/pages/home.tpl:31
+#: website/app-templates/smarty/pages/home.tpl:34
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:21
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
 msgid "Distance"
-msgstr ""
+msgstr "Avstånd"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:22
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
@@ -1741,12 +1712,12 @@ msgstr ""
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:22
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
 msgid "Caches visited count"
-msgstr ""
+msgstr "Antal besökta cacher"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:38
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:38
 msgid "%1 didn't moved any GeoKrety yet."
-msgstr ""
+msgstr "%1 har inte flyttat någon GeoKrety än."
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:6
 #: website/app-templates/smarty/navbar.tpl:47
@@ -1755,15 +1726,19 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:19
 msgid "Owner Code"
+msgstr "Ägarkod"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:27
+msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
 msgstr ""
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:33
 msgid "Adopt"
-msgstr ""
+msgstr "Adoptera"
 
 #: website/app-templates/smarty/pages/registration.tpl:16
 msgid "Create an account"
-msgstr ""
+msgstr "Skapa ett konto"
 
 #: website/app-templates/smarty/pages/press_corner.tpl:7
 #: website/app-templates/smarty/navbar.tpl:77
@@ -1772,35 +1747,47 @@ msgstr "Presshörna"
 
 #: website/app-templates/smarty/pages/email_change.tpl:9
 msgid "Changing your email address."
-msgstr ""
+msgstr "Ändra din e-postadress."
 
 #: website/app-templates/smarty/pages/email_change.tpl:31
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:29
 #: website/app-templates/smarty/pages/email_change_token.tpl:29
 msgid "Back to your profile"
-msgstr ""
+msgstr "Tillbaka till din profil"
 
 #: website/app-templates/smarty/pages/email_change.tpl:35
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:33
 #: website/app-templates/smarty/pages/email_change_token.tpl:33
 msgid "Back to homepage"
-msgstr ""
+msgstr "Tillbaka till startsidan"
 
 #: website/app-templates/smarty/pages/email_change.tpl:39
 msgid "Check the token"
-msgstr ""
+msgstr "Kontrollera token"
 
 #: website/app-templates/smarty/pages/map.tpl:25
 msgid "GeoKrety interactive map"
-msgstr ""
+msgstr "GeoKrety interaktiva kartor"
 
 #: website/app-templates/smarty/pages/map.tpl:37
 msgid "Legend"
 msgstr ""
 
+#: website/app-templates/smarty/pages/map.tpl:41
+msgid "Has moved since 90 days"
+msgstr "Har flyttat senaste 90 dagarna"
+
+#: website/app-templates/smarty/pages/map.tpl:44
+msgid "Has a known move date and hasn't moved since 90 days"
+msgstr "Har ett känt flyttdatum och har inte flyttats senaste 90 dagarna"
+
+#: website/app-templates/smarty/pages/map.tpl:47
+msgid "No known move date"
+msgstr "Inget känt flyttdatum"
+
 #: website/app-templates/smarty/pages/map.tpl:56
 msgid "Results are limited to the first 500 responses."
-msgstr ""
+msgstr "Resultat begränsas till de 500 första svaren."
 
 #: website/app-templates/smarty/pages/map.tpl:57
 msgid "Currently displayed GeoKrety <span id=\"%1\">0</span> on %2"
@@ -1808,10 +1795,10 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
 #: website/app-templates/smarty/pages/user_inventory.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:30
+#: website/app-templates/smarty/pages/home.tpl:33
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:20
 msgid "Last move"
-msgstr ""
+msgstr "Senaste flytt"
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:40
 msgid "%1 doesn't watch any GeoKrety yet."
@@ -1819,7 +1806,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:14
 msgid "Define your observation area"
-msgstr ""
+msgstr "Definiera din observationsarea"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:24
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:25
@@ -1828,23 +1815,23 @@ msgstr "Hemkoordinater"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:29
 msgid "Use the map to select a location or enter coordinates manually."
-msgstr ""
+msgstr "Använd kartan för att välja en plats eller ange koordinater manuellt."
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:31
 msgid "Other acceptable lat/lon formats"
-msgstr ""
+msgstr "Andra tillåtna lat/lon-format"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:40
 msgid "Observation radius"
-msgstr ""
+msgstr "Observationsradie"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:58
 msgid "Center the map on the zone to observe"
-msgstr ""
+msgstr "Centrera kartan på zonen för att observera"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:70
 msgid "Define"
-msgstr ""
+msgstr "Definiera"
 
 #: website/app-templates/smarty/pages/user_inventory.tpl:7
 msgid "%1's inventory"
@@ -1856,29 +1843,29 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/home.tpl:4
 msgid "🎉 Welcome to GeoKrety.org!"
-msgstr ""
+msgstr "🎉 Välkommen till GeoKrety.org!"
 
-#: website/app-templates/smarty/pages/home.tpl:16
+#: website/app-templates/smarty/pages/home.tpl:17
 #: website/app-templates/smarty/navbar.tpl:34
 #: website/app-templates/smarty/footer.tpl:5
 msgid "News"
 msgstr "Nyheter"
 
-#: website/app-templates/smarty/pages/home.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:24
 msgid "Latest moves"
-msgstr ""
+msgstr "Senaste flytter"
 
-#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/home.tpl:47
 msgid "Recent pictures"
-msgstr ""
+msgstr "Senaste bilder"
 
-#: website/app-templates/smarty/pages/home.tpl:45
+#: website/app-templates/smarty/pages/home.tpl:51
 msgid "Recently created GeoKrety"
-msgstr ""
+msgstr "Nyligen skapade GeoKrety"
 
 #: website/app-templates/smarty/pages/news_details.tpl:16
 msgid "Leave a comment"
-msgstr ""
+msgstr "Lämna en kommentar"
 
 #: website/app-templates/smarty/pages/news_details.tpl:33
 msgid "Subscribe to this news post"
@@ -1886,27 +1873,43 @@ msgstr "Prenumerera på denna nyhet inlägget"
 
 #: website/app-templates/smarty/pages/news_details.tpl:47
 msgid "Please <a href=\"%1\">login</a> to post a comment"
-msgstr ""
+msgstr "Vänligen <a href=\"%1\">logga in</a> för att posta kommentarer"
 
 #: website/app-templates/smarty/pages/news_details.tpl:56
 msgid "There are no comments for this post."
 msgstr "Det finns inga kommentarer till denna post."
 
+#: website/app-templates/smarty/pages/local_mails.tpl:17
+msgid "From"
+msgstr "Från"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:20
+msgid "Action"
+msgstr "Åtgärd"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:21
+msgid "Delete all mails"
+msgstr "Radera all e-post"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:39
+msgid "Delete mail"
+msgstr "Radera e-post"
+
 #: website/app-templates/smarty/pages/user_geokrety_owned.tpl:38
 msgid "%1 doesn't own any GeoKrety yet."
-msgstr ""
+msgstr "%1 äger ingen GeoKrety än."
 
 #: website/app-templates/smarty/pages/downloads.tpl:6
 msgid "Translation"
-msgstr ""
+msgstr "Översättning"
 
 #: website/app-templates/smarty/pages/downloads.tpl:9
 msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
-msgstr ""
+msgstr "Våra översättningsfiler finns nu tillgängliga på <a href=\"%1\">crowdin</a>. Vänligen gå med i communityn om du vill bidra genom att översätta Geokrety.org till ditt språk, eller rätta några problem med översättningar."
 
 #: website/app-templates/smarty/pages/downloads.tpl:15
 msgid "Map of caches for Garmin units"
-msgstr ""
+msgstr "Karta över cacher för Garmin-enheter"
 
 #: website/app-templates/smarty/pages/downloads.tpl:18
 msgid "As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href=\"%2\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
@@ -1914,50 +1917,50 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/downloads.tpl:19
 msgid "Read more and <a href=\"%1\">get the map</a>."
-msgstr ""
+msgstr "Läs mer och <a href=\"%1\">hämta kartan</a>."
 
 #: website/app-templates/smarty/pages/downloads.tpl:25
 msgid "Design ressources"
-msgstr ""
+msgstr "Designresurser"
 
 #: website/app-templates/smarty/pages/downloads.tpl:28
 msgid "GeoKrety logo"
-msgstr ""
+msgstr "GeoKrety logo"
 
 #: website/app-templates/smarty/pages/downloads.tpl:30
 msgid "Basic GK logo: "
-msgstr ""
+msgstr "Vanlig GK-logo: "
 
 #: website/app-templates/smarty/pages/downloads.tpl:31
 msgid "The mole itself: "
-msgstr ""
+msgstr "Mullvaden själv: "
 
 #: website/app-templates/smarty/pages/downloads.tpl:32
 msgid "Other ressources: "
-msgstr ""
+msgstr "Andra resurser: "
 
 #: website/app-templates/smarty/pages/downloads.tpl:32
 msgid "here"
-msgstr ""
+msgstr "här"
 
 #: website/app-templates/smarty/pages/downloads.tpl:35
 msgid "Sample GeoKrety labels"
-msgstr ""
+msgstr "Exempel på GeoKrety-etiketter"
 
 #: website/app-templates/smarty/pages/downloads.tpl:36
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
-msgstr ""
+msgstr "Notera att du skapa en etikett för din GeoKrety automatiskt, genom att klicka på motsvarande länk på sidan för denna GeoKret."
 
 #: website/app-templates/smarty/pages/downloads.tpl:38
 #: website/app-templates/smarty/pages/downloads.tpl:39
 #: website/app-templates/smarty/pages/downloads.tpl:40
 #: website/app-templates/smarty/pages/downloads.tpl:41
 msgid "Sample label #%1: "
-msgstr ""
+msgstr "Exempeletikett #%1: "
 
 #: website/app-templates/smarty/pages/downloads.tpl:43
 msgid "Old label design: "
-msgstr ""
+msgstr "Gammal etikettdesign: "
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:7
 msgid "%1's GeoKrety recent moves"
@@ -1966,44 +1969,40 @@ msgstr ""
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:6
 #: website/app-templates/smarty/pages/email_change_token.tpl:6
 msgid "Do you confirm changing your email address?"
-msgstr ""
+msgstr "Vill du bekräfta ändring av din e-postadress?"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:37
 msgid "I approve this change"
-msgstr ""
+msgstr "Jag godkänner ändringen"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:38
 msgid "No, please revert to my old email address"
-msgstr ""
+msgstr "Nej, återgå till min gamla e-postadress"
 
 #: website/app-templates/smarty/pages/email_change_token.tpl:37
 msgid "Yes, change my email address"
-msgstr ""
+msgstr "Ja, ändra min e-postadress"
 
 #: website/app-templates/smarty/pages/email_change_token.tpl:38
 msgid "No, abort this request"
-msgstr ""
+msgstr "Nej, avbryt denna begäran"
 
 #: website/app-templates/smarty/macros/pagination.tpl:5
 msgid "First"
-msgstr ""
+msgstr "Först"
 
 #: website/app-templates/smarty/macros/pagination.tpl:17
 msgid "Last [%1]"
-msgstr ""
+msgstr "Sista [%1]"
 
-#: website/app-templates/smarty/navbar-profile.tpl:4
-#: website/app-templates/smarty/navbar-profile.tpl:13
-msgid "My profile"
-msgstr ""
-
-#: website/app-templates/smarty/navbar-profile.tpl:10
-msgid "My account"
-msgstr "Mitt konto"
-
-#: website/app-templates/smarty/navbar-profile.tpl:15
+#: website/app-templates/smarty/navbar-profile.tpl:3
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
+
+#: website/app-templates/smarty/navbar-profile.tpl:7
+#: website/app-templates/smarty/navbar-profile.tpl:16
+msgid "My profile"
+msgstr "Min profil"
 
 #: website/app-templates/smarty/navbar-profile.tpl:18
 msgid "My inventory"
@@ -2011,15 +2010,15 @@ msgstr ""
 
 #: website/app-templates/smarty/navbar-profile.tpl:19
 msgid "My GeoKrety"
-msgstr ""
+msgstr "Min GeoKrety"
 
 #: website/app-templates/smarty/navbar-profile.tpl:22
 msgid "My recent moves"
-msgstr ""
+msgstr "Mina senaste flytter"
 
 #: website/app-templates/smarty/navbar-profile.tpl:23
 msgid "Recent moves of my GeoKrety"
-msgstr ""
+msgstr "Senaste flytter av min GeoKrety"
 
 #: website/app-templates/smarty/navbar-profile.tpl:25
 msgid "My photos"
@@ -2027,59 +2026,54 @@ msgstr "Mina foton"
 
 #: website/app-templates/smarty/navbar-profile.tpl:26
 msgid "Photos of my GeoKrety"
-msgstr ""
+msgstr "Bilder på min GeoKrety"
 
 #: website/app-templates/smarty/navbar-profile.tpl:30
 msgid "Sign out"
-msgstr ""
+msgstr "Logga ut"
 
 #: website/app-templates/smarty/navbar-profile.tpl:41
 msgid "Create account"
-msgstr ""
+msgstr "Skapa konto"
 
 #: website/app-templates/smarty/chunks/geokrety_status.tpl:9
 msgid "Remove this GeoKret from the selection"
-msgstr ""
+msgstr "Ta bort denna GeoKret från urvalet"
 
 #: website/app-templates/smarty/chunks/geokrety_status.tpl:13
 msgid "Never moved"
-msgstr ""
+msgstr "Aldrig flyttad"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:5
 msgid "languages"
-msgstr ""
+msgstr "språk"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:6
 msgid "platform"
-msgstr ""
+msgstr "plattform"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:7
 msgid "group name"
-msgstr ""
+msgstr "gruppnamn"
 
 #: website/app-templates/smarty/navbar.tpl:6
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Växla navigering"
 
 #: website/app-templates/smarty/navbar.tpl:16
 #: website/app-templates/smarty/navbar.tpl:37
 #: website/app-templates/smarty/navbar.tpl:44
 msgid "Log a GeoKret"
-msgstr ""
+msgstr "Logga en GeoKret"
 
 #: website/app-templates/smarty/navbar.tpl:33
 #: website/app-templates/smarty/footer.tpl:3
 msgid "Home"
 msgstr "Hem"
 
-#: website/app-templates/smarty/navbar.tpl:46
-#: website/app-templates/smarty/forms/geokret.tpl:6
-msgid "Create a new GeoKret"
-msgstr ""
-
 #: website/app-templates/smarty/navbar.tpl:50
 msgid "Advanced search"
-msgstr ""
+msgstr "Avancerad sökning"
 
 #: website/app-templates/smarty/navbar.tpl:51
 msgid "Photo gallery"
@@ -2087,27 +2081,27 @@ msgstr "Fotogalleri"
 
 #: website/app-templates/smarty/navbar.tpl:54
 msgid "GeoKrety Map"
-msgstr ""
+msgstr "GeoKrety Karta"
 
 #: website/app-templates/smarty/navbar.tpl:61
 msgid "Currently selected language"
-msgstr ""
+msgstr "Nuvarande valt språk"
 
 #: website/app-templates/smarty/navbar.tpl:75
 msgid "Moleholes and GK hotels"
-msgstr ""
+msgstr "Mullvadshål och GK-hotell"
 
 #: website/app-templates/smarty/navbar.tpl:79
 msgid "GK interface / API"
-msgstr ""
+msgstr "GK-interface / API"
 
 #: website/app-templates/smarty/navbar.tpl:85
 msgid "Downloads"
-msgstr ""
+msgstr "Nedladdningar"
 
 #: website/app-templates/smarty/navbar.tpl:86
 msgid "GeoKrety Toolbox"
-msgstr ""
+msgstr "Geokrety Verktygslåda"
 
 #: website/app-templates/smarty/navbar.tpl:87
 msgid "Waypoint resolver"
@@ -2121,10 +2115,12 @@ msgstr ""
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "Open source item tracking for all geocaching platforms"
-msgstr ""
+msgstr "Objektspårning med öppen källkod för alla geocaching-plattformar"
 
 #: website/app-templates/smarty/footer.tpl:4
 msgid "About"
@@ -2135,8 +2131,8 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: website/app-templates/smarty/footer.tpl:10
-msgid "Released under <a href=\"%1\">MIT license</a>"
-msgstr ""
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "Släppt under <a id=\"footer-license\" href=\"%1\">MIT-licens</a>"
 
 #: website/app-templates/smarty/footer.tpl:13
 msgid "Leave in-context translation"
@@ -2147,20 +2143,20 @@ msgid "in-context translation"
 msgstr ""
 
 #: website/app-templates/smarty/footer.tpl:19
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a href=\"%1\">The GeoKrety Team</a>"
-msgstr ""
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr "Designad med <abbr title=\"love\">💗</abbr> av <a id=\"footer-team\" href=\"%1\">GeoKrety-teamet</a>"
 
-#: website/app-templates/smarty/footer.tpl:27
+#: website/app-templates/smarty/footer.tpl:29
 msgid "Deployed on %1"
 msgstr ""
 
 #: website/app-templates/smarty/elements/move.tpl:55
 msgid "Report as missing"
-msgstr ""
+msgstr "Rapportera som saknad"
 
 #: website/app-templates/smarty/elements/move.tpl:64
 msgid "Write a comment"
-msgstr ""
+msgstr "Skriv en kommentar"
 
 #: website/app-templates/smarty/elements/move.tpl:71
 msgid "Edit log"
@@ -2179,19 +2175,19 @@ msgstr "Radera kommentar"
 #: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:33
 #: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:30
 msgid "Move this GeoKret"
-msgstr ""
+msgstr "Flytta denna GeoKret"
 
 #: website/app-templates/smarty/elements/credit.tpl:4
 msgid "%1 logo"
-msgstr ""
+msgstr "%1 logo"
 
 #: website/app-templates/smarty/elements/news.tpl:7
 msgid "Unsubscribe from news"
-msgstr ""
+msgstr "Avprenumerera från nyheter"
 
 #: website/app-templates/smarty/elements/news.tpl:11
 msgid "Subscribe to news"
-msgstr ""
+msgstr "Prenumerera på nyheter"
 
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
@@ -2199,29 +2195,29 @@ msgstr "Identifiera GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:30
 msgid "Verify tracking code"
-msgstr ""
+msgstr "Bekräfta spårningskod"
 
 #: website/app-templates/smarty/forms/move.tpl:33
 msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr ""
+msgstr "%1 tecken från <em>GeoKret-etikett</em>. <u>Använd inte koden som börjar med 'GK' här</u>"
 
 #: website/app-templates/smarty/forms/move.tpl:43
 #: website/app-templates/smarty/forms/move.tpl:119
 #: website/app-templates/smarty/forms/move.tpl:203
 msgid "Next"
-msgstr ""
+msgstr "Nästa"
 
 #: website/app-templates/smarty/forms/move.tpl:54
 msgid "Log type"
-msgstr ""
+msgstr "Loggtyp"
 
 #: website/app-templates/smarty/forms/move.tpl:66
 msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
-msgstr ""
+msgstr "Välj åtgärdstypen du har skapat på GeoKret:en. För mer information konsultera hjälpsidan."
 
 #: website/app-templates/smarty/forms/move.tpl:78
 msgid "When you've left a GeoKret in a cache"
-msgstr ""
+msgstr "När du har lämnat en GeoKret i en cache"
 
 #: website/app-templates/smarty/forms/move.tpl:79
 msgid "I've dropped GeoKret"
@@ -2253,7 +2249,7 @@ msgstr "Jag har studsat en GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:106
 msgid "When you want to write a comment :)"
-msgstr ""
+msgstr "När du vill skriva en kommentar :)"
 
 #: website/app-templates/smarty/forms/move.tpl:130
 msgid "New location"
@@ -2261,19 +2257,19 @@ msgstr "Ny plats"
 
 #: website/app-templates/smarty/forms/move.tpl:140
 msgid "Waypoint"
-msgstr ""
+msgstr "Waypoint"
 
 #: website/app-templates/smarty/forms/move.tpl:143
 msgid "eg. GC1AQ2N"
-msgstr ""
+msgstr "t.ex. GC1AQ2N"
 
 #: website/app-templates/smarty/forms/move.tpl:145
 msgid "Lookup opencaching cache by name"
-msgstr ""
+msgstr "Kolla upp opencaching-cache efter namn"
 
 #: website/app-templates/smarty/forms/move.tpl:150
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
-msgstr ""
+msgstr "t.ex.: GC1AQ2N, OP069B, OC033A…"
 
 #: website/app-templates/smarty/forms/move.tpl:162
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
@@ -2305,15 +2301,15 @@ msgstr "Det kan vara ditt:<br />-  geocachinganvändarnamn<br />- smeknamn<br />
 
 #: website/app-templates/smarty/forms/move.tpl:248
 msgid "It is always nice to receive a little message ;)"
-msgstr ""
+msgstr "Det är alltid najs att få ta emot ett litet meddelande ;)"
 
 #: website/app-templates/smarty/forms/move.tpl:271
 msgid "Post your log"
-msgstr ""
+msgstr "Posta din logg"
 
 #: website/app-templates/smarty/forms/geokret.tpl:4
 msgid "Edit a GeoKret"
-msgstr ""
+msgstr "Redigera en GeoKret"
 
 #: website/app-templates/smarty/forms/geokret.tpl:14
 #: website/app-templates/smarty/forms/geokret.tpl:16
@@ -2322,11 +2318,11 @@ msgstr "GeoKret-namn"
 
 #: website/app-templates/smarty/forms/geokret.tpl:21
 msgid "GeoKret type"
-msgstr ""
+msgstr "GeoKret typ"
 
 #: website/app-templates/smarty/forms/geokret.tpl:34
 msgid "What is this GeoKret mission?"
-msgstr ""
+msgstr "Vad är detta GeoKret-uppdrag?"
 
 #: website/app-templates/smarty/forms/geokret.tpl:42
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
@@ -2334,11 +2330,11 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/geokret.tpl:43
 msgid "Set my home coordinates as a starting point."
-msgstr ""
+msgstr "Ange mina hemkoordinater som en startpunkt."
 
 #: website/app-templates/smarty/forms/geokret.tpl:52
 msgid "Create"
-msgstr ""
+msgstr "Skapa"
 
 #: website/app-templates/smarty/forms/registration.tpl:19
 #: website/app-templates/smarty/forms/registration.tpl:21
@@ -2353,18 +2349,18 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/registration.tpl:60
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr ""
+msgstr "Ja, jag accepterar <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">användarvillkoren</a>."
 
 #: website/app-templates/smarty/forms/registration.tpl:77
 msgid "Register"
-msgstr ""
+msgstr "Registrera"
 
 #: website/app-templates/smarty/forms/login.tpl:6
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 msgid "Login"
 msgstr "Logga in"
 
@@ -2378,15 +2374,15 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/login.tpl:39
 msgid "No account yet ? Register now!"
-msgstr ""
+msgstr "Inget konto än? Registrera nu!"
 
 #: website/app-templates/smarty/forms/login.tpl:42
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Glömt ditt lösenord?"
 
 #: website/app-templates/smarty/js/geokret_move.tpl.js:174
 msgid "Dropped"
-msgstr ""
+msgstr "Droppad"
 
 #: website/app-templates/smarty/js/geokret_move.tpl.js:177
 msgid "Grabbed"
@@ -2394,7 +2390,7 @@ msgstr ""
 
 #: website/app-templates/smarty/js/geokret_move.tpl.js:180
 msgid "Met"
-msgstr ""
+msgstr "Mött"
 
 #: website/app-templates/smarty/js/geokret_move.tpl.js:183
 msgid "Dipped"
@@ -2403,9 +2399,23 @@ msgstr ""
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 msgid "Congratulation 🎉"
-msgstr ""
+msgstr "Gratulerar 🎉"
+
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Hi %1,"
+msgstr "Hej %1,"
 
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 msgid "Your account on GeoKrety.org is now fully functional."
@@ -2418,10 +2428,12 @@ msgstr ""
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "Sincerely,<br>The GeoKrety Team"
-msgstr ""
+msgstr "Med vänliga hälsningar,<br>GeoKrety-teamet"
 
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
@@ -2435,14 +2447,16 @@ msgstr ""
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
 msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "Welcome to GeoKrety.org"
-msgstr ""
+msgstr "Välkommen till GeoKrety.org"
 
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
@@ -2450,14 +2464,14 @@ msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "Activate your account"
-msgstr ""
+msgstr "Aktivera ditt konto"
 
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "This link expires %1."
-msgstr ""
+msgstr "Denna länk går ut %1."
 
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
 msgid "If your account is not activated within that time, then it will be automatically deleted."
@@ -2484,23 +2498,24 @@ msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 msgid "Revert this change!"
-msgstr ""
+msgstr "Återställ denna ändring!"
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
 msgid "You should also consider changing your password immediatelly."
-msgstr ""
+msgstr "Du borde överväga att ändra ditt lösenord omedelbart."
 
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
 msgid "Change my password!"
-msgstr ""
+msgstr "Ändra mitt lösenord!"
 
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
 msgid "Hooray 🥳"
-msgstr ""
+msgstr "Hurra 🥳"
 
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 msgid "Your email address has been succesfully reverted."
@@ -2508,15 +2523,15 @@ msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr ""
+msgstr "Någon, förhoppningsvis du, har begärt ändring av sin kontakt e-postadress för sin GeoKret till din."
 
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 msgid "Validate your new email address"
-msgstr ""
+msgstr "Validera din nya e-postadress"
 
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 msgid "This link is valid for %1."
-msgstr ""
+msgstr "Denna länk är giltig för %1."
 
 #: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
 msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
@@ -2528,37 +2543,73 @@ msgstr ""
 
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr ""
+msgstr "Någon, förhoppningsvis du, har begärt en ändring av kontakts e-postadress för din GeoKrety till: %1."
 
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
 msgid "Do not change!"
-msgstr ""
+msgstr "Ändra inte!"
 
 #: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
 msgid "You're getting this email because you've requested an email address change from our website."
 msgstr ""
 
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
-msgid "Your password has been succesfully changed."
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+msgid "View GeoKret"
+msgstr "Visa GeoKret"
+
+#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
 msgstr ""
 
-#: website/app-templates/foundation-emails/dist/password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+msgid "Your password has been succesfully changed."
+msgstr "Ditt lösenord har ändrats."
+
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 msgid "You're getting this email because you've changed your password on our website."
 msgstr ""
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "Forgot Your Password?"
-msgstr ""
+msgstr "Glömt ditt lösenord?"
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "It happens. Click the link below to reset your password."
 msgstr ""
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 msgid "Reset Password"
+msgstr "Återställ lösenord"
+
+#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
+msgid "You're getting this email because you've requested a password recovery on our website."
 msgstr ""
 
-#: website/app-templates/foundation-emails/dist/password-recovery.html:1
-msgid "You're getting this email because you've requested a password recovery on our website."
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Contact from a GeoKrety.org user"
+msgstr "Kontakt från en GeoKrety.org-användare"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "This email was sent by user <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
+msgstr "Detta e-postmeddelande skickades av användaren <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Referer: %1"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Subject:"
+msgstr "Ämne:"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "Reply to %1"
+msgstr "Svara på %1"
+
+#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
 msgstr ""
 
