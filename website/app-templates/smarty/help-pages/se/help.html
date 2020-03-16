@@ -1,0 +1,841 @@
+<ol>
+    <li><a href="#about">Om GeoKrety</a></li>
+    <li><a href="#create">Lag din egen GeoKrety</a></li>
+    <li><a href="#geokretytypes">Forskjellige GeoKrets</a></li>
+    <li><a href="#Chooselogtype">Forskjellige logger</a></li>
+    <li><a href="#fullysupportedwaypoints">Fullt støttede veipunkt</a></li>
+    <li><a href="#partiallysupportedwaypoints">Delvis støttede veipunkt</a></li>
+    <li><a href="#locationdlagc">Hvordan logge et drop i en geocaching.com cache</a></li>
+    <li><a href="#acceptableformats">Godtatte geografiske koordinatformater</a></li>
+    <li><a href="#iconology">Ikonologien (hvordan endre og slette loggen din, laste opp et fotografi osv)</a></li>
+    <li><a href="#GKandCode">Referansenummer og sporbarkode</a></li>
+    <li><a href="#altitude">Høyde og landskode</a></li>
+    <li><a href="#qr">QR-kode</a></li>
+    <li><a href="email2gk.php">Email2GK gateway</a></li>
+    <li><a href="molehole.php">GK moldvarp-hull og GK hoteller/moteller</a></li>
+    <li><a href="#othertrackable">Andre sporbare gjenstanders databaser</a></li>
+    <li><a href="#privacy">Personlig databeskyttelse</a></li>
+    <li><a href="{GK_CDN_GPGKEY_URL}">PGP/GPG nøkkel ({GK_CDN_GPGKEY_ID})</a></li>
+    <li><a href="{'terms_of_use'|alias}">Betingelser for bruk</a></li>
+    <li><a href="#cookies">Retningslinjer for informasjonskapsler</a></li>
+    <li><a href="#https">HTTPS og SSL krypterte koblinger</a></li>
+    <li><a href="#morehelp"><strong>Trenger du mer hjelp?</strong></a></li>
+</ol>
+
+<a class="anchor" id="about"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">Om GeoKrety</div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-8">
+                <p class="text-justify">
+                    GeoKrety (Fra Gresk <i>geo</i> = ‘jord’, and Polsk
+                    <i>krety</i> = ‘<a href="https://en.wikipedia.org/wiki/Mole_%28animal%29">muldvarp</a>’)
+                    er en tjeneste som er lik TravelBug(TM) eller GeoLutins, som sikter
+                    til sporbare objekt du legger fra deg i geocachebeholdere. Folk
+                    flytter disse registrerte objekter (som heter GeoKrety) fra cache
+                    til cache og registrerer alle bevegelser i denne tjenesten. Reisen
+                    til hver enkelt GeoKrety blir deretter presentert i et kart.
+                </p>
+                <p class="text-justify">
+                    GeoKrety er ikke en salgsgjenstand, du må ikke putte
+                    noe inn i caches for å kunne ta med en GeoKrety, og du skal ikke
+                    ta noe fra en cache i bytte for en GeoKrety. Om du
+                    skulle ta en byttegjenstand fra en cache, er det et bytte du gjør mellom byttegjenstander,
+                    og du kan likevel i tillegg legge igjen en GeoKrety.
+                </p>
+                <p class="text-justify">
+                    Denne tjenesten er helt gratis (sammenlignet med TravelBug) og
+                    enkel å bruke. En GeoKrety kan være alt mulig, men i de fleste tilfeller
+                    er det ofte en liten figur.
+                </p>
+                <p class="text-justify">
+                    Vær vennlig å se (rediger, om nødvendig) artikkelen om GeoKrety
+                    <a href="https://en.wikipedia.org/wiki/GeoKrety">på Wikipedia</a>.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <a href="https://en.wikipedia.org/wiki/Mole_%28animal%29">
+                        <img src="{GK_CDN_IMAGES_URL}/help/kret-foto.jpg" alt="muldvarp bilde" width="300" height="225" title="En muldvarp" />
+                    </a>
+                </p>
+                <p>Hvordan uttale GeoKrety? ;)</p>
+                <audio controls="controls">
+                    <source src="{GK_CDN_SERVER_URL}/sounds/geokrety.mp3" type="audio/mp3" />
+                    Nettleseren din støtter ikke video.
+                </audio>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<a class="anchor" id="create"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">Lag din egen GeoKrety</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-7">
+
+                <ol>
+                    <li>Få en konto på GeoKrety.org tjenesten</li>
+                    <li>
+                        Registrer GeoKretyen og noter ned GeoKretyens
+                        sporbarkode (eks. XF3ACS) generert av tjenesten. Denne
+                        koden er hemmelig, og kun du og de som finner denne
+                        GeoKretyen skal vite den.
+                    </li>
+                    <li>
+                        Skriv en lapp med GeoKret'ens navn, sporbarkode,
+                        referansenummer (eks. GK003F) og eier på den. Fest
+                        denne lappen på GeoKretyen (eks. en figur)
+                    </li>
+                </ol>
+
+                <p>Deretter må du gjøre følgende:</p>
+                <ol>
+                    <li>Putt GeoKretyen i en cache og registrer den som droppet i cachen i tjenesten</li>
+                    <li>Ha det gøy med å følge med reisen til din GeoKrety!</li>
+                </ol>
+
+                <p>Eksempel på klar GeoKrety</p>
+                <img src="{GK_CDN_IMAGES_URL}/help/geokret-przyklad-sp2ong_1.jpg" alt="eksempel" width="250" height="188" />
+                <img src="{GK_CDN_IMAGES_URL}/help/geokret-przyklad-sp2ong_2.jpg" alt="eksempel 2" width="250" height="148" />
+                <img src="{GK_CDN_IMAGES_URL}/help/geokret-przyklad-dziku.jpg" alt="eksempel" width="250" height="180" />
+
+            </div>
+            <div class="col-md-5">
+                <p>
+                    <iframe width="420" height="315" src="https://www.youtube.com/embed/t2VsHFkUl7U"> </iframe>
+                    Se en video med instruksjoner om registrering og
+                    det å lage din egen GeoKrety.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<a class="anchor" id="geokretytypes"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">GeoKrety typer</div>
+    <div class="panel-body">
+        <div class="row">
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="{GK_CDN_IMAGES_URL}/log-icons/0/icon.jpg" alt="tradisjonell" width="100" height="100" />
+                    <div class="caption">
+                        <h3>Tradisjonell</h3>
+                        <p>En liten figur, med en sporbar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="thumbnail">
+                    <img src="{GK_CDN_IMAGES_URL}/log-icons/1/icon.jpg" alt="bok" width="100" height="100" />
+                    <div class="caption">
+                        <h3>En bok/CD/DVD/…</h3>
+                        <p class="text-justify">
+                            Når du ønsker å spore bøker, CDér, DVDér droppet i
+                            cachebeholdere. Bare fest et GeoKret-nummer og en
+                            kort instruksjon på baksiden av coveret.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="{GK_CDN_IMAGES_URL}/log-icons/2/icon.jpg" alt="" width="100" height="100" />
+                    <div class="caption">
+                        <h3>Et menneske</h3>
+                        <p>
+                            Når du ønsker å spore deg selv og skrive feks. en GeoBlog
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="{GK_CDN_IMAGES_URL}/log-icons/3/icon.jpg" alt="" width="100" height="100" />
+                    <div class="caption">
+                        <h3>En mynt</h3>
+                        <p>
+                            En vanlig KeoKrety, men i form av en mynt
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="{GK_CDN_IMAGES_URL}/log-icons/4/icon.jpg" alt="" width="100" height="100" />
+                    <div class="caption">
+                        <h3>KretyPost</h3>
+                        <p>
+                            En vanlig KeoKrety, men i form av et postkort/epost. Sjekk <a href="#kretypostrules">regler</a> under.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<a class="anchor" id="kretypostrules"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <img src="{GK_CDN_IMAGES_URL}/log-icons/4/icon_25.jpg" alt="kretyposmt ikon" />
+        KretyPost regler
+    </div>
+    <div class="panel-body">
+        <strong>Kort beskrivelse:</strong>
+        <ol>
+            <li>Ta et kort (som kan være et postkort, men også et hjemmelaget kort) og skriv noen få linjer til mottekar på det.</li>
+            <li>Som mottaker adresseres mottagerens kallenavn, region (land, distrikt, by) og angi en målcache (best med alle tilgjengelige veipunkter - GC-kode, OC-kode, etc.).</li>
+            <li>Lag en GeoKrety med typen "KretyPost", skriv ut et merke (<a href="https://picasaweb.google.com/gc.bonnie.clyde/GeoKretyMeetsGeopost"> se eksempler </a>) med sporingskoden og sett dette merket på postkortet. (du kan generere enkle merker i en labelgenerator på GeoKrety-siden)</li>
+            <li>(viktig:) Laminer helst det ferdige postkortet for å beskytte det mot væte eller slitasje på reisen.</li>
+            <li>Putt postkortet i en cache nær ditt hjemsted, logg GeoKretyen som droppet og vent... :-)</li>
+            <li>(viktig:) Informer mottakeren, som antakelig vil like å observere denne GeoKretyen</li>
+        </ol>
+    </div>
+</div>
+
+
+
+<a class="anchor" id="Chooselogtype"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Loggtyper
+    </div>
+    <div class="panel-body">
+
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ikon</th>
+                        <th>Beskrivelse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td nowrap>
+                            <img src="{GK_CDN_IMAGES_URL}/log-icons/0/0.png" alt="dropp" />
+                            eller                            <img src="{GK_CDN_IMAGES_URL}/log-icons/2/0.png" alt="dropp" />
+                        </td>
+                        <td>
+                            <strong>Jeg har droppet en GeoKrety</strong><br />
+                            når du har sluppet en GeoKrety i en cache.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap>
+                            <img src="{GK_CDN_IMAGES_URL}/log-icons/0/1.png" alt="ta med" />
+                            eller                            <img src="{GK_CDN_IMAGES_URL}/log-icons/2/1.png" alt="ta med" />
+                        </td>
+                        <td>
+                            <strong>Jeg tok med meg en GeoKrety</strong><br />
+                            når du har tatt med deg en GeoKrety fra en cache og ikke skal
+                            droppe den i en annen cache <i>med en gang</i>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap>
+                            <img src="{GK_CDN_IMAGES_URL}/log-icons/0/3.png" alt="oppdaget" />
+                            eller                            <img src="{GK_CDN_IMAGES_URL}/log-icons/2/3.png" alt="oppdaget" />
+                        </td>
+                        <td>
+                            <strong>Jeg oppdaget en GeoKrety</strong><br />
+                            når du fant en GeoKrety i en cache, men ikke tar den med deg.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap>
+                            <img src="{GK_CDN_IMAGES_URL}/log-icons/0/5.png" alt="besøkt" />
+                            eller                            <img src="{GK_CDN_IMAGES_URL}/log-icons/2/5.png" alt="besøkt" />
+                        </td>
+                        <td>
+                            <strong>GeoKretyen besøkte cachen</strong><br />
+                            når du tar med en GeoKrety på cachetur; dette er
+                            det samme som å gjøre et dropp og ta den med igjen - den besøkte
+                            cachen/lokaliteten er logget, men GeoKretyen er fremdeles i din
+                            beholdning.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="{GK_CDN_IMAGES_URL}/log-icons/0/2.png" alt="notat" />
+                        </td>
+                        <td>
+                            <strong>Kommenter</strong><br />
+                            når du vil skrive en kommentar :)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="{GK_CDN_IMAGES_URL}/log-icons/0/4.png" alt="dvalemodus" >
+                        </td>
+                        <td>
+                            <strong>Dvalemodus / arkivering</strong><br />
+                            når en GeoKrety har vært savnet en lengre tid.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+<a class="anchor" id="fullysupportedwaypoints"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Fullt støttede veipunkt
+    </div>
+    <div class="panel-body">
+        <p>Du kan lett indikere en plassering av GeoKrety ved å gå inn på enten veipunkt eller navnet på cacher.</p>
+
+        <h5>Cacher fra tjenester listet under er full støttede:</h5>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ikon</th>
+                        <th>Type</th>
+                        <th>Url</th>
+                        <th>Kommentarer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OP</td>
+                        <td>OpenCaching</td>
+                        <td><a href="https://www.opencaching.pl/">Polsk database</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OC</td>
+                        <td>OpenCaching</td>
+                        <td><a href="http://www.opencaching.de/">Tysk database</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OK</td>
+                        <td>OpenCaching</td>
+                        <td><a href="http://www.opencaching.org.uk/">UK database</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>OpenCaching</td>
+                        <td><a href="http://www.opencaching.se/">SE/NO database</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OB</td>
+                        <td>OpenCaching</td>
+                        <td><a href="http://www.opencaching.nl/">NL database</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OZ</td>
+                        <td>OpenCaching</td>
+                        <td><a href="http://www.opencaching.cz/">Tjekkisk database</a></td>
+                        <td>oppdatert manuelt fra time til time</td>
+                    </tr>
+                    <tr>
+                        <td>GA</td>
+                        <td></td>
+                        <td><a href="http://geocaching.com.au/">Geocaching Australia</a></td>
+                        <td>oppdatert daglig (lat, lon, cachenavn, link)</td>
+                    </tr>
+                    <tr>
+                        <td>TR/VI/MS/EX</td>
+                        <td></td>
+                        <td><a href="http://www.geocaching.su/">GeoCaching Russland</a></td>
+                        <td>oppdatert hver andre time (lat, lon, cachenavn, link, eier)</td>
+                    </tr>
+                    <tr>
+                        <td>GE</td>
+                        <td></td>
+                        <td><a href="http://www.gpsgames.org/">gpsgames.org database</a></td>
+                        <td>oppdatert daglig (lat, lon, cachenavn, link)</td>
+                    </tr>
+                    <tr>
+                        <td>GD</td>
+                        <td></td>
+                        <td><a href="http://www.gpsgames.org/">gpsgames.org GeoDashing</a></td>
+                        <td>veipunkt (oppdatert månedlig)</td>
+                    </tr>
+                    <tr>
+                        <td><em>unikt navn</em></td>
+                        <td>geopeitus.ee</td>
+                        <td><a href="http://www.geopeitus.ee/">Estlandsk database</a></td>
+                        <td>oppdatert daglig (lat, lon, cachenavn, link)</td>
+                    </tr>
+                    <tr>
+                        <td>GR</td>
+                        <td>Geocaching Romania</td>
+                        <td><a href="http://geocaching.plus.ro/">rumensk database</a></td>
+                        <td>oppdatert manuelt</td>
+                    </tr>
+                    <tr>
+                        <td>GC</td>
+                        <td>Geocaching Ungarn</td>
+                        <td><a href="http://www.geocaching.hu/">ungarsk database</a></td>
+                        <td>oppdatert daglig</td>
+                    </tr>
+                    <tr>
+                        <td>WPG</td>
+                        <td>Veipunktspill</td>
+                        <td><a href="http://wpg.alleycat.pl/">Polsk Veipunktspill</a></td>
+                        <td>for genereringskart - oppdatert daglig</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            <img src="{GK_CDN_IMAGES_URL}/help/logo-oc.png" alt="oc" width="88" height="89" />
+            <img src="{GK_CDN_IMAGES_URL}/help/logo-au.png" alt="au" width="50" height="50" />
+            <img src="{GK_CDN_IMAGES_URL}/help/logo-ru.png" alt="" width="200" height="63" />
+            <img src="{GK_CDN_IMAGES_URL}/help/logo-gpsgames.jpg" alt="" width="242" height="63" />
+            <img src="{GK_CDN_IMAGES_URL}/help/logo-geopeitus.png" alt="ee" width="165" height="40" />
+            <img src="{GK_CDN_IMAGES_URL}/help/logo-hu.jpg" alt="hu" width="150" height="38" />
+            <img src="{GK_CDN_IMAGES_URL}/help/wpg.png" width="312" height="90" border="0" alt="" />
+        </p>
+
+
+        <a class="anchor" id="partiallysupportedwaypoints"></a>
+        <h5>Delvis støttede veipunkt:</h5>
+        <p>
+            Fra veipunkt listet under, kan vi generere en gyldig link til cachen:
+        </p>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ikon</th>
+                        <th>Type</th>
+                        <th>Url</th>
+                        <th>Kommentarer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GC</td>
+                        <td>Geocaching</td>
+                        <td><a href="https://www.geocaching.com/">geocaching.com</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>N</td>
+                        <td>Navicache</td>
+                        <td><a href="https://www.navicache.com/">Navicache.com</a></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            Men vi vil kanskje bli i stand til å gjøre mer i fremtiden. Så gå til veipunkt likevel.
+        </p>
+
+    </div>
+</div>
+
+<a class="anchor" id="locationdlagc"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Hvordan logge et dropp i en geocaching.com cache?
+    </div>
+    <div class="panel-body">
+
+
+        <p>
+            GC veipunkt er ikke fullt ut støttet av GeoKrety.
+            (<i>Lisens skal ikke markedsføres på nytt, bli solgt på nytt, og/eller redistribuere dens
+                Data eller deler av den(s) data i dens digitale form
+                til noen tredjeparter under noen omstendigheter uansett...
+                <a href="https://www.geocaching.com/waypoints/agreement.aspx">fra veipunkt lisens-samtykke</a></i>
+            ). Uansett, kan du lett bruke GeoKrety med GC-cacher.
+        </p>
+
+        <p>
+            Det finnes to muligheter:
+        </p>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a class="anchor" id="using-gkt"></a>
+            <h3>Den letteste og anbefalte måte, er å bruke vår verktøyboks GeoKrety Toolboks (GKT)</h3>
+
+            <p>
+                Dette er et greasemonkey script (skrevet og vedlikeholdt av <a href="https://geokrety.org/mypage.php?userid=6262"> simor </a>).
+            </p>
+
+            <h3>Installer (GKT)</h3>
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <i class="fa fa-arrow-down fa-5x" aria-hidden="true"></i>
+                        <div class="caption">
+                            <h3><a href="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js">Installer GKT</a></h3>
+                            <h3>for <a href="https://www.mozilla.com/firefox/">Mozilla FireFox</a></h3>
+                            <p>
+                                du trenger også <a href="https://addons.mozilla.org/firefox/addon/748">Greasemonkey Add-on</a>
+                                eller <a href="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/">Tampermonkey add-on</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <i class="fa fa-arrow-down fa-5x" aria-hidden="true"></i>
+                        <div class="caption">
+                            <h3><a href="https://chrome.google.com/extensions/detail/ldbheajkebdflbjdckojokbfdndkahnl">Installer GKT</a></h3>
+                            <h3>for <a href="https://www.google.com/chrome">Google Chrome</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h3>Konfigurasjon og bruk</h3>
+            <p>
+                Du trenger også en konto på geokrety.org. Etter installering av GKT
+                i din nettleser, vil du se en ekstra
+                [<strong> Geo<span style="color: white; background-color: #303030;">Krety</span>.org </strong>]
+                panel på høyre siden av alle GC cachesider.
+                Fra listen over GeoKrety, velg den du vil droppe og
+                klikk "Drop selected GK" - du vil bli dirigert videre til standard
+                logge-side med både GC-kode og koordinater fyllt
+                inn. Sjekk datoen, legg til en kommentar, og du er ferdig.
+            </p>
+
+
+            <h3>Her er hvordan GKT ser ut som</h3>
+            <p>
+                <img src="{GK_CDN_IMAGES_URL}/help/gkt_screenshot030_1.png" alt="GKT skjermdump">
+                <img src="{GK_CDN_IMAGES_URL}/help/gkt_screenshot030_2.png" alt="GKT skjermdump">
+                <img src="{GK_CDN_IMAGES_URL}/help/gkt_screenshot030_3.png" alt="GKT skjermdump">
+            </p>
+        </li>
+
+        <li class="list-group-item">
+            <a class="anchor" id="manual-log"></a>
+            <h4>Manuellt, med bruk av kopier og lim inn (copy and paste)</h4>
+            <p>
+                Gå til <a href="{'move_create'|alias}">Logg en GeoKret</a> siden
+                og under den delen <strong>Ny plassering</strong> gå inn på
+                følgende:
+
+            </p>
+            <ol>
+                <li>i veipunktfeltet, fyll inn GC-koden til cachen (eks. GC1AQ2N).</li>
+                <li>i lat/lon feltet, fyller du inn koordinatene til cachen (du kan kopier-lime den direkte fra cachesiden
+eller<a href="#acceptableformats">bruke andre aksepterte format</a>)</li>
+            </ol>
+            <p>Her er et eksempel:</p>
+            <p><img src="{GK_CDN_IMAGES_URL}/help/location-dla-gc3.png" alt="hvordan logge GK for GC-cacher" class="center-block img-responsive" /></p>
+
+            <p>
+                <b>NB:</b> <a href="https://forums.groundspeak.com/GC/index.php?s=8154d8ac03f5b64142fb5d1587b53c11&showtopic=232614&view=findpost&p=4083361">i henhold til groundspeak</a>,
+                kan geocaching.com bruker, bruke og logge geokrety ;)<br />
+
+                <i>
+                    Jeg har sjekket med Brian, og hans definitive svar er at
+                    disse 'useriøse' TB-ene er ikke bekymringsfullt for oss - reviewere og
+                    GS-stab. Vi kan ikke bestemme deres bruk, og Geocachere har
+                    lov til å gi fra seg GC-koder.
+                </i>
+            </p>
+        </li>
+    </ul>
+</div>
+
+<a class="anchor" id="acceptableformats"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Akseptable geografiske koordinat-formater
+    </div>
+    <div class="panel-body">
+        <p>Du kan skrive lat/lon koordinater i forskjellige formater:</p>
+        <ul>
+            <li><b>grader (Degrees) (DD.dddddd°)</b></li>
+<pre>
+52.205205 21.190891
+52.205205/21.190891
+N 52.205205 E 21.190891
++52.205205 -21.190891
+</pre>
+            <li><b>Grader, Minutter (degrees, minutes) (DD°MM.mmm’)</b></li>
+<pre>
+52 12.3123 -21 11.45345
+N52 12.3123 W21 11.45345
++52 12.3123 -21 11.45345
+N 52° 10.369' W 021° 01.542'
+</pre>
+            <li><b>Grader, Minutt, sekunder (degrees, minutes, seconds) (DD°MM’SS.s”)</b></li>
+<pre>
+52 12 18.74 -21 11 27.21
+N52° 12' 18.74", W21° 11' 27.21"
+52° 12' 18.74", -21° 11' 27.21"
+</pre>
+        </ul>
+    </div>
+</div>
+
+<a class="anchor" id="iconology"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Ikonologien
+    </div>
+    <div class="panel-body">
+
+        <h5>hvordan redigere og slette loggen din, laste opp foto osv</h5>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ikon</th>
+                        <th>Handling</th>
+                        <th>Beskrivelse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="{GK_CDN_IMAGES_URL}/icons/edit.png" alt="" width="16" height="16" /></td>
+                        <td><strong>redigere</strong></td>
+                        <td>en epost adresse, beskrivelse, loggtilgang</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{GK_CDN_IMAGES_URL}/icons/delete.png" alt="" width="16" height="16" /></td>
+                        <td><strong>slett</strong></td>
+                        <td>en logghandling, foto eller kommentar</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{GK_CDN_IMAGES_URL}/icons/image.png" alt="" width="16" height="16" /></td>
+                        <td><strong>last opp bilde</strong></td>
+                        <td>legg ved et foto i en logghandling ellr din profil</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{GK_CDN_IMAGES_URL}/icons/usmiech.png" alt="" width="16" height="16" /></td>
+                        <td><strong>kjente GeoKretyer</strong></td>
+                        <td>du har allerede logget denne GeoKretyen før, du kan nå logge den ute sporingskode (du er levert automatisk)</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{GK_CDN_IMAGES_URL}/icons/idcard.png" alt="" width="14" height="10" /></td>
+                        <td><strong>avatar</strong></td>
+                        <td>beveg musen over dette ikonet for å se GeoKetys avatar</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{GK_CDN_IMAGES_URL}/icons/comment_new16.png" alt="" width="16" height="16" /></td>
+                        <td><strong>kommentar</strong></td>
+                        <td>du kan kommentere en logg eller en nyhetspost</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{GK_CDN_IMAGES_URL}/icons/missing16.png" alt="" width="16" height="16" /></td>
+                        <td><strong>rapporter som savnet</strong></td>
+                        <td>du kan rapportere en GeoKrety som savnet hvis du har besøkt cachen der GeoKretyen skulle være og den ikke var der</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<a class="anchor" id="GKandCode"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Referansenummer og Sporingskode
+    </div>
+    <div class="panel-body">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <h2>Referansenummer</h2>
+                    <div class="caption">
+                        <h3>eks. GK003F</h3>
+                        <p>
+                            Det er et <u>offentlig</u> nummer som kan bli brukt for å henvise til en GeoKrety.
+                            Det inneholder "GK" prefix og 4 tall i hexadecimal system.
+                            Du kan bruke det for å søke etter en spesifikt GeoKret eller for å linke til
+                            denn GeoKret. Det er synlig for alle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <h2>Sporingskode</h2>
+                    <div class="caption">
+                        <h3>eks. XF3ACS</h3>
+                        <p>
+                            Det er en <u>hemmelig</u> identifikasjonskode som
+                            kreves for å poste logger som feks "ta med", "Dropp" og
+                            andre fiksjoner for en GeoKret. Kun eier og geocachere
+                            som finner GeoKretyen bør vite denne koden. Det er ikke
+                            anbefalt å poste denne koden hvor som helst. Men selvfølgelig må denne koden
+                            være skrevet på GeoKretys merke for å tillate finner å
+                           logge den.
+Contextrequest.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<a class="anchor" id="altitude"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Altitude og landskode
+    </div>
+    <div class="panel-body">
+        <p>
+            Takket være <a href="https://www2.jpl.nasa.gov/srtm/">SRTM</a> og <a href="https://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html">GTOPO30</a> høydedata og konvertering av lat/ lon til landkode (<a href="http://www.geonames.org/">geogames</a>), har hvert turpunkt blitt tildelt en høyde og landskode (et flagg).
+            I henhold til disse data, har høydedataprofilen blitt tegnet. Ovenstående data og punkt er oppdatert hvert 10-15 minutt.
+        </p>
+    </div>
+</div>
+
+<a class="anchor" id="qr"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        QR-kode
+    </div>
+    <div class="panel-body">
+        <p>
+            For lettvint logging av dropp eller ta med på din tur, har vi lagt til muligheten av å feste en QR-kode på GK-labelen. QR-kode er en slags bar-kode, som kan bli "scannet ved hjelp av mobiltelefon, som vil sende deg videre til den riktige siden på geokrety.org ; du vi da ikke trenge å skrive sporingskooden, for alt vil være kryptert i QR-koden. <a href="https://en.wikipedia.org/wiki/QR_Code ">Les mere om QR-kode</a>.
+        </p>
+
+        <p><img src="{GK_CDN_IMAGES_URL}/help/qr-geokrety.png" alt="QR-kode av geokrety.org" width="132" height="132" /></p>
+        <p>QR-koden med kryptert adresse til geokrety.org siden.</p>
+
+        <h3>Når du finner en GeoKret med QR-kode på labelen, kan du:</h3>
+        <p><img src="{GK_CDN_IMAGES_URL}/help/qr-instrukcja.png" alt="instruksjoner" class="img-responsive"></p>
+        <ol>
+            <li>Ta et foto av koden med din mobiltelefon</li>
+            <li>Dekode den og klikke på url-lenken</li>
+            <li>Logge ta med eller gjemme geoKretyen. Sporingskoden vil bli indikert av url-lenken.</li>
+        </ol>
+
+
+        <h3>Hvordan dekode?</h3>
+        <p>
+            Du kan feks bruke gratis en applikasjon med din mobiltelefon, som feks:<a href="https://f-droid.org/repository/browse/?fdid=com.google.zxing.client.android">Barcode Scanner</a>
+        </p>
+    </div>
+</div>
+
+<a class="anchor" id="othertrackable"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Andre gjenstanders sporbardatabaser
+    </div>
+    <div class="panel-body">
+        <p>Det finnes andre systemer for sporbare gjenstander:</p>
+        <ul>
+            <li><a href="https://www.geocaching.com/track/">TravelBugs</a></li>
+            <li><s><a href="http://www.geocachearmy.com">www.geocachearmy.com</a></s></li>
+            <li><a href="http://www.geolutins.com">www.geolutins.com</a></li>
+            <li><a href="https://geotrackable.com">geotrackable.com"</a></li>
+            <li><s><a href="http://www.travelertags.com">www.travelertags.com</a></s></li>
+            <li><a href="http://www.pathtags.com">www.pathtags.com</a></li>
+        </ul>
+    </div>
+</div>
+
+<a class="anchor" id="privacy"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Personlig databeskyttelse
+    </div>
+    <div class="panel-body">
+        <p>
+            Din e-post adresse vil ikke bli videreformidlet til noen tredjeparter.
+            Ditt passord er ein-veis kryptert, så det kan ikke bli sluppet på avveie.
+        </p>
+    </div>
+</div>
+
+<a class="anchor" id="cookies"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Cookies regler
+    </div>
+    <div class="panel-body">
+        <p>
+            Denne websiden bruker cookies for å lagre informasjon som er nødvendig for en behagelig bruk av siden. Vi bruker cookies til:
+        </p>
+        <ol>
+            <li>
+                Lagre innloggings-informasjon (verifisere bruker ved innlogging)
+            </li>
+            <li>
+                Lagre språk-preferanser.
+            </li>
+        </ol>
+        <p>
+            Begge er helt ufarlige. Det er alt! :)
+        </p>
+        <p>
+            Likevel, hvis du vil, kan du endre dine cookie-innstillinger <a href="https://www.aboutcookies.org/Default.aspx?page=1">når som helst i din nettleser</a>.
+        </p>
+    </div>
+</div>
+
+<a class="anchor" id="https"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        HTTPS og SSL
+    </div>
+    <div class="panel-body">
+        <p>
+            Forbindelsen til vår server er sikret med bruk av TLS-kryptering. Du bør se en grønn hengelås i navigasjon/adresse-linje. Den indikerer at kommunikasjonen mellom deg og serveren ikke kan bli lest av noen andre, som er fint for din egen integritet!
+        </p>
+    </div>
+</div>
+
+<a class="anchor" id="ipv6"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        IPv6
+    </div>
+    <div class="panel-body">
+        <p>
+            Vår server bruker IPv6, noe som betyr av vi er forberedt på fremtiden!
+            <a href="https://www.icann.org/news/blog/ipv6-the-future-is-now-more-than-ever">IPv6: Fremtiden er Nå Mer enn Noen Gang</a>
+        </p>
+    </div>
+</div>
+
+<a class="anchor" id="morehelp"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Trenger du mer hjelp?
+    </div>
+    <div class="panel-body">
+        <p>For å få mer hjelp med GeoKrety <a href="{'contact_us'|alias}">contact us</a> eller besøk forumet:</p>
+
+        {include file="chunks/social_groups.tpl"}
+    </div>
+</div>
