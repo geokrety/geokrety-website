@@ -1,36 +1,66 @@
 div.gallery > figure {
-    div.geokret-picture-actions {
-        z-index: 3;
-        position: absolute;
-        visibility: visible;
-        top: 0;
-        right: 6px;
-        margin-top: 6px;
-        width: inherit;
-        display: none;
-    }
+  div.pictures-actions {
+    z-index: 3;
+    position: absolute;
+    visibility: visible;
+    margin-top: 6px;
+    width: inherit;
 
-    div.geokret-main-avatar:before {
-        content: "\2605";
+    .pictures-actions-buttons {
+      display: none;
     }
+  }
 
-    div.geokret-main-avatar {
-        z-index: 3;
-        position: absolute;
-        visibility: visible;
-        top: 0;
-        left: 20px;
-        -moz-border-radius: 0 0 6px 6px;
-        border-radius: 0 0 6px 6px;
-        margin-left: 0;
-        padding: 4px 1px 1px 1px;
-        background: #e31818;
-        border: 3px double white;
-        border-top: 0;
-        color: white;
-    }
+  div.picture-is-main-avatar:before {
+    content: "\2605";
+  }
+
+  div.picture-is-main-avatar {
+    z-index: 3;
+    position: absolute;
+    visibility: visible;
+    top: 0;
+    left: 20px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    margin-left: 0;
+    padding: 4px 1px 1px 1px;
+    background: #e31818;
+    border: 3px double white;
+    border-top: 0;
+    color: white;
+  }
 }
 
-div.gallery > figure:hover div.geokret-picture-actions {
-    display: block;
+div.gallery div.pictures-actions-pull:hover div.pictures-actions-buttons {
+  display: block;
+}
+
+div.gallery div.pictures-actions-pull:hover:before {
+  content: "";
+}
+
+div.gallery div.pictures-actions-pull:hover {
+  padding: 5px 15px;
+}
+
+
+div.pictures-actions-pull:before {
+  content: "\2039";
+}
+
+div.pictures-actions-pull {
+  z-index: 3;
+  position: absolute;
+  visibility: visible;
+  top: 6px;
+  right: 6px;
+  -moz-border-radius: 6px 0 0 6px;
+  border-radius: 6px 0 0 6px;
+  margin-left: 0;
+  padding: 1px 4px 1px 1px;
+  background: #c4c4c4;
+  border: 3px double white;
+  border-right: 0;
+  color: white;
 }

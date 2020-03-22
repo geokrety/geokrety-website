@@ -40,6 +40,17 @@ buckets: ## create buckets
 
 phinx-migrations-generate: ## create new db migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx-migrations generate"
+phinx-migrate: ## play migration
+	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
+
+compile-all-templates:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/smarty/compile-all-templates"
+clear-all-templates:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/smarty/clear-compiled-templates"
+build-translations:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/gettext/build-translations"
+clear-assets:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/assets/clear"
 
 ## DEV Local instance of geokrety
 #	mkdir -p ./website/templates

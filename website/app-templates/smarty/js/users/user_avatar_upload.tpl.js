@@ -1,6 +1,6 @@
 // ----------------------------------- JQUERY - GEOKRET AVATAR UPLOAD - BEGIN
 
-$("div#geokretAvatar").dropzone({
+$("div#userAvatar").dropzone({
     url: '#',
     method: "POST",
     acceptedFiles: "image/*",
@@ -9,13 +9,13 @@ $("div#geokretAvatar").dropzone({
     thumbnailWidth: 100,
     thumbnailHeight: 100,
     dictDefaultMessage: '',
-    clickable: "#geokretAvatarUploadButton",
-    previewsContainer: "#geokretPicturesList div.panel-body div.gallery",
+    clickable: "#userAvatarUploadButton",
+    previewsContainer: "#userPicturesList div.panel-body > div.gallery",
 
     accept: function (file, done) {
         file.postData = [];
         $.ajax({
-            url: "{'geokret_avatar_upload_get_s3_signature'|alias}",
+            url: "{'user_avatar_upload_get_s3_signature'|alias}",
             data: {
                 filename: file.name
             },
@@ -61,14 +61,14 @@ $("div#geokretAvatar").dropzone({
 
     init: function () {
         this.on("addedfile", function (files) {
-            $("#geokretPicturesList").removeClass("hidden");
+            $("#userPicturesList").removeClass("hidden");
         });
 
         this.on("success", function (file) {
             let dropzone = this;
             $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
                 dropzone.removeFile(file);
-                $("#geokretPicturesList .panel-body > div.gallery").append(data);
+                $("#userPicturesList .panel-body > div.gallery").append(data);
             });
         });
 

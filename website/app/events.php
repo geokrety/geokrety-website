@@ -30,10 +30,10 @@ $events = \Event::instance();
 // $events->on('move-comment.created', function (\GeoKrety\Model\MoveComment $comment) {});
 // $events->on('move-comment.deleted', function (\GeoKrety\Model\MoveComment $comment) {});
 // $events->on('geokret.avatar.presigned_request', function (\GeoKrety\Model\Picture $picture, $context) {});  // context => s3 response
-// $events->on('geokret.avatar.image.uploaded', function (\GeoKrety\Model\Picture $picture) {});
-// $events->on('geokret.avatar.image.caption.saved', function (\GeoKrety\Model\Picture $picture) {});
-// $events->on('geokret.avatar.image.deleted', function (\GeoKrety\Model\Picture $picture) {});
-// $events->on('geokret.avatar.image.defined', function (\GeoKrety\Model\Picture $picture) {});
+// $events->on('picture.uploaded', function (\GeoKrety\Model\Picture $picture) {});
+// $events->on('picture.caption.saved', function (\GeoKrety\Model\Picture $picture) {});
+// $events->on('picture.deleted', function (\GeoKrety\Model\Picture $picture) {});
+// $events->on('picture.avatar.defined', function (\GeoKrety\Model\Picture $picture) {});
 // $events->on('contact.new', function (\GeoKrety\Model\Mail $mail) {});
 $events->on('geokret.created', function (\GeoKrety\Model\Geokret $geokret) {
     \GeoKrety\Service\UserBanner::generate($geokret->owner);

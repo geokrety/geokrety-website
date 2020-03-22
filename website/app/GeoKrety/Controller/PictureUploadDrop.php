@@ -5,7 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Picture;
 use function Sentry\captureMessage;
 
-class GeokretAvatarUploadDrop extends Base {
+class PictureUploadDrop extends Base {
     public function drop_s3_file_signature(\Base $f3) {
         if ($f3->get('HEADERS.Host') !== 'website' || $f3->get('HEADERS.Authorization') !== sprintf('Bearer %s', GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST)) {
             captureMessage('GeokretAvatarUploadDrop: Unauthorized access attempt');

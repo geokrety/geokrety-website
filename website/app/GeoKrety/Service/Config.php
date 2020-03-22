@@ -43,6 +43,9 @@ class Config extends \Prefab {
 
         define('GK_BUCKET_NAME_STATPIC', getenv('GK_BUCKET_NAME_STATPIC') ?: 'statpic');
         define('GK_BUCKET_NAME_GEOKRETY_AVATARS', getenv('GK_BUCKET_NAME_GEOKRETY_AVATARS') ?: 'gk-avatars');
+        define('GK_BUCKET_NAME_USERS_AVATARS', getenv('GK_BUCKET_NAME_USERS_AVATARS') ?: 'users-avatars');
+        define('GK_BUCKET_NAME_MOVES_PICTURES', getenv('GK_BUCKET_NAME_MOVES_PICTURES') ?: 'moves-pictures');
+
         define('GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER', getenv('GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER') ?: 'pictures-processor-downloader');
         define('GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER', getenv('GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER') ?: 'pictures-processor-uploader');
 

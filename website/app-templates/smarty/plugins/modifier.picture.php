@@ -1,5 +1,7 @@
 <?php
 
+use GeoKrety\Model\Picture;
+
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
 /*
@@ -11,46 +13,65 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a picture
  * -------------------------------------------------------------
  */
-function smarty_modifier_picture(\GeoKrety\Model\Picture $picture) {
-    $iconUrl = GK_CDN_ICONS_URL.'/idcard.png';
-    $alt = _('This is an image');
-    $title = _('This is an image');
-
-    return <<< EOT
-<img src="$iconUrl" width="100" height="100" alt="$alt" title="$title" />
-
+function smarty_modifier_picture(Picture $picture, $hideMainAvatarMedal = false) {
+    $template_string = <<<'EOT'
 <div class="gallery">
     <figure>
-        <div{if isset($id)} id="{$id}"{/if} class="parent">
+        <div id="{$picture->key}" class="parent">
             <div class="image-container">
-                {if isset($url)}
-                    <img src="{$url}">
-                {else}
+                {if !$picture->isUploaded()}
                     <img src="/assets/images/the-mole-grey.svg">
+                    <span class="picture-message">{t}Picture is not yet ready{/t}</span>
+                {else}
+                    <a class="picture-link" href="{$picture->url}">
+                        <img src="{$picture->thumbnail_url}">
+                    </a>
                 {/if}
             </div>
-            <div class="overlay center-block">
-                {if isset($writable) && $writable}
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                {/if}
-            </div>
+            {if !$hideMainAvatarMedal && $picture->isMainAvatar()}
+                <div class="picture-is-main-avatar"></div>
+            {/if}
         </div>
         <figcaption>
-            <p class="text-center">
-                {if isset($caption)}
-                    {$caption}
-                {/if}
+            <p class="text-center picture-caption">
+                {$picture->caption}
             </p>
-            {if isset($link)}
-                <p class="text-center">
-                    {$link}
-                </p>
-            {/if}
+            <p class="text-center">
+                <!-- TODO: link to another item. GK/User/Move… -->
+            </p>
         </figcaption>
+        {if !$hideMainAvatarMedal &&  $picture->isAuthor()}
+            <div class="pull-right">
+                <div class="pictures-actions pictures-actions-pull">
+                    <div class="btn-group pictures-actions-buttons" role="group">
+                        {if !$picture->isMainAvatar()}
+                            <button class="btn btn-primary btn-xs" title="{t}Define as main avatar{/t}"
+                                    data-toggle="modal" data-target="#modal" data-type="define-as-main-avatar"
+                                    data-id="{$picture->key}">
+                                ★
+                            </button>
+                        {/if}
+                        <button class="btn btn-warning btn-xs" title="{t}Edit picture details{/t}" data-toggle="modal"
+                                data-target="#modal" data-type="picture-edit" data-id="{$picture->key}">
+                            {fa icon="pencil"}
+                        </button>
+                        <button class="btn btn-danger btn-xs" title="{t}Delete picture{/t}" data-toggle="modal"
+                                data-target="#modal" data-type="picture-delete" data-id="{$picture->key}">
+                            {fa icon="trash"}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {/if}
     </figure>
 </div>
-
-
-
 EOT;
+
+    $smarty = GeoKrety\Service\Smarty::getSmarty();
+    $smarty->assign('picture', $picture);
+    $smarty->assign('hideMainAvatarMedal', $hideMainAvatarMedal);
+    $html = $smarty->display('string:'.$template_string);
+    $smarty->clearAssign(['picture', 'hideMainAvatarMedal']);
+
+    return $html;
 }

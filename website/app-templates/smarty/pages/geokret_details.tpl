@@ -32,19 +32,11 @@
 {include 'js/dialogs/dialog_move_comment.tpl.js'}
 {include 'js/dialogs/dialog_contact_user.tpl.js'}
 {include 'js/dialogs/dialog_offer_for_adoption.tpl.js'}
-{include 'js/dialogs/dialog_geokret_avatar_actions.tpl.js'}
-{include 'js/dialogs/dialog_geokret_avatar_upload.tpl.js'}
+{include 'js/dialogs/dialog_picture_actions.tpl.js'}
+{*{include 'js/dialogs/dialog_geokret_avatar_upload.tpl.js'}*}
 
 {if $geokret->isOwner()}
 {include 'js/geokrety/geokret_avatar_upload.tpl.js'}
 {/if}
-
-$('.gallery').each(function() {
-  $(this).magnificPopup({
-    delegate: 'a.picture-link',
-    type: 'image',
-    gallery: { enabled:true }
-  });
-});
 
 {/block}

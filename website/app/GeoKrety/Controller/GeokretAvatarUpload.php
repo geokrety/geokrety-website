@@ -5,8 +5,10 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Picture;
 use GeoKrety\PictureType;
+use GeoKrety\Traits\GeokretLoader;
 
 class GeokretAvatarUpload extends AbstractPictureUpload {
+    use GeokretLoader;
 
     protected function generateKey(): string {
         return uniqid(sprintf('%s_', $this->geokret->gkid), true);
@@ -16,22 +18,16 @@ class GeokretAvatarUpload extends AbstractPictureUpload {
         return GK_BUCKET_NAME_GEOKRETY_AVATARS;
     }
 
+    public function getPictureType(): int {
+        return PictureType::PICTURE_GEOKRET_AVATAR;
+    }
+
     public function getEventNameBase(): string {
         return 'geokret.avatar';
     }
 
-    public function generatePictureObject(\base $f3): Picture {
-        $picture = new Picture();
-        $picture->bucket = GK_BUCKET_NAME_GEOKRETY_AVATARS;
-        $picture->key = $this->getImgKey();
-        $picture->type = PictureType::PICTURE_GEOKRET_AVATAR;
+    public function setRelationships(Picture $picture): void {
+        $f3 = \Base::instance(); //get('PARAMS.gkid');
         $picture->geokret = Geokret::gkid2id($f3->get('PARAMS.gkid'));
-        if ($f3->exists('POST.filename')) {
-            $picture->filename = $f3->get('POST.filename');
-        }
-        $picture->caption = null;
-
-        return $picture;
     }
-
 }

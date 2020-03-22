@@ -15,7 +15,7 @@
             <a class="btn btn-info btn-xs" href="#" title="{t}Password change{/t}" data-toggle="modal" data-target="#modal" data-type="user-update-password">
                 {fa icon="key"}
             </a>
-            <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$user->id}" data-picture-type="2" data-is-avatar="on">
+            <button id="userAvatarUploadButton" class="btn btn-success btn-xs" title="{t}Upload a picture{/t}">
                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
             </button>
             {/if}
@@ -74,12 +74,8 @@
 
         <div class="gallery pull-right">
             {$user|user_avatar nofilter}
-            {*foreach $user->avatar() as $avatar}
-                {pictureOrDefault item=$avatar skipLinkToEntity=true isOwner=$user->isCurrentUser() pictureType=$avatar->type id=$user->id}
-            {/foreach*}
         </div>
         <div class="clearfix"></div>
     </div>
-
 
 </div>

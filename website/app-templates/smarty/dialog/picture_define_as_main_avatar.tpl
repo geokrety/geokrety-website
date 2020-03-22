@@ -1,15 +1,13 @@
-{include file='macros/picture_geokret_avatar.tpl'}
-
 {block name=modal_content}
 <div class="modal-header alert-info">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="modalLabel">{t}Do you want to set this picture as main GeoKret avatar?{/t}</h4>
+    <h4 class="modal-title" id="modalLabel">{t}Do you want to set this picture as main avatar?{/t}</h4>
 </div>
 
-<form name="picture" action="{'geokret_avatar_define'|alias:sprintf('key=%s', $picture->key)}" method="POST">
+<form name="picture" action="{'picture_define_as_main_avatar'|alias:sprintf('key=%s', $picture->key)}" method="POST">
     <div class="modal-body">
         <div class="gallery image-preview">
-            {call geokret_avatar_default item=$picture}
+            {$picture|picture:true nofilter}
         </div>
     </div>
     <div class="modal-footer">

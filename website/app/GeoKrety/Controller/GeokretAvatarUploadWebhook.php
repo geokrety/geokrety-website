@@ -44,7 +44,7 @@ class GeokretAvatarUploadWebhook extends Base {
         if ($picture->validate()) {
             $picture->save();
 
-            \Event::instance()->emit('geokret.avatar.image.uploaded', $picture);
+            \Event::instance()->emit('picture.uploaded', $picture);
         }
     }
 }

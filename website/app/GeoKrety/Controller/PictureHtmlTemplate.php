@@ -3,14 +3,14 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Picture;
-use GeoKrety\Service\Smarty;
 use PictureLoader;
 
-class GeokretAvatarHtmlTemplate extends Base {
+class PictureHtmlTemplate extends Base {
     use PictureLoader;
 
     public function get() {
-        Smarty::render('elements/picture_geokret_avatar.tpl');
+        $smarty = \GeoKrety\Service\Smarty::getSmarty();
+        echo $smarty->display('string:{$picture|picture nofilter}');
     }
 
     protected function checkAuthor(Picture $picture) {

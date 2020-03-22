@@ -13,6 +13,12 @@ class PictureType {
         self::PICTURE_USER_AVATAR,
     ];
 
+    const BUCKET_MAP = [
+        self::PICTURE_GEOKRET_AVATAR => GK_BUCKET_NAME_GEOKRETY_AVATARS,
+        self::PICTURE_GEOKRET_MOVE => GK_BUCKET_NAME_MOVES_PICTURES,
+        self::PICTURE_USER_AVATAR => GK_BUCKET_NAME_USERS_AVATARS,
+    ];
+
     private $type;
 
     public function __construct($type = null) {
@@ -53,5 +59,9 @@ class PictureType {
             self::PICTURE_GEOKRET_MOVE => _('GeoKret move'),
             self::PICTURE_USER_AVATAR => _('User avatar'),
         ];
+    }
+
+    public function getBucketName() {
+        return self::BUCKET_MAP[$this->type];
     }
 }

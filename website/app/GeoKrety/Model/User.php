@@ -147,6 +147,13 @@ class User extends Base {
         'activation' => [
             'has-one' => ['\GeoKrety\Model\AccountActivationToken', 'user'],
         ],
+        'avatar' => [
+            'belongs-to-one' => '\GeoKrety\Model\Picture',
+            'nullable' => true,
+        ],
+        'avatars' => [
+            'has-many' => ['\GeoKrety\Model\Picture', 'geokret'],
+        ],
     ];
 
     public function set_password($value) {

@@ -1,13 +1,11 @@
-{include file='macros/picture_geokret_avatar.tpl'}
-
 {block name=modal_content}
     <div class="modal-header alert-info">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="modalLabel">{t}Manage GeoKret avatar picture{/t}</h4>
+        <h4 class="modal-title" id="modalLabel">{t}Manage picture{/t}</h4>
     </div>
-    <form action="{'geokret_avatar_edit'|alias:sprintf('key=%s', $picture->key)}" method="post" class="form-horizontal">
+    <form action="{'picture_edit'|alias:sprintf('key=%s', $picture->key)}" method="post" class="form-horizontal">
         <div class="modal-body">
 
             <div class="form-group">
@@ -17,6 +15,7 @@
                 </div>
             </div>
 
+            {if $picture->type->isType(GeoKrety\PictureType::PICTURE_GEOKRET_AVATAR)}
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
@@ -30,21 +29,20 @@
                     </div>
                 </div>
             </div>
+            {/if}
 
             <div class="form-group">
                 <div class="col-xs-6 col-sm-4 col-sm-offset-2">
                     <div class="gallery image-preview">
                         {if isset($picture)}
-                            {call geokret_avatar_default item=$picture}
-                        {else}
-                            {call geokret_avatar_default}
+                            {$picture|picture:true nofilter}
                         {/if}
                     </div>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{t}Skip{/t}</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
             <button type="submit" class="btn btn-info">{t}Save{/t}</button>
         </div>
     </form>

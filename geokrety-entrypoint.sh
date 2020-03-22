@@ -22,20 +22,17 @@ if [ "$1" = 'apache2-foreground' ]; then
     # Create buckets
     make buckets
 
-    cd /var/www/geokrety/website
     # Migrate database
-    ../vendor/bin/phinx migrate
+    make phinx-migrate
 
-    cd public
     # build templates
-    php index.php /cli/smarty/compile-all-templates
+    make compile-all-templates
+
     # build translations
-    php index.php /cli/gettext/build-translations
+    make build-translations
 
     # give permission to webserver to write css files
     chown -R www-data.www-data /var/www/geokrety/website/public/assets/compressed
-
-    cd /var/www/geokrety
 fi
 
 exec "$@"

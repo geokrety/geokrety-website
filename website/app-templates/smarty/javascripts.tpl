@@ -19,6 +19,7 @@
 {include file='js/modal.tpl.js'}
 {include file='js/maxlenght.tpl.js'}
 {include file='js/tooltips.tpl.js'}
+{include file='js/magnificPopup.tpl.js'}
 {include file='js/dialogs/dialog_login.tpl.js'}{*load js/dialogs/dialog_login all the time as it may be necessary when user leave it's session open too long*}
 
 {block name=javascript_modal}{/block}

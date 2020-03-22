@@ -6,11 +6,8 @@ use Aws\S3\PostObjectV4;
 use Event;
 use GeoKrety\Model\Picture;
 use GeoKrety\Service\S3Client;
-use GeoKrety\Traits\GeokretLoader;
 
 abstract class AbstractPictureUpload extends Base {
-    use GeokretLoader;
-
     /**
      * @var string
      */
@@ -98,9 +95,25 @@ abstract class AbstractPictureUpload extends Base {
         return sprintf('%s/%s', $this->getBucket(), $this->getImgKey());
     }
 
+    public function generatePictureObject(\Base $f3): Picture {
+        $picture = new Picture();
+        $picture->bucket = $this->getBucket();
+        $picture->key = $this->getImgKey();
+        $picture->type = $this->getPictureType();
+        if ($f3->exists('POST.filename')) {
+            $picture->filename = $f3->get('POST.filename');
+        }
+        $picture->caption = null;
+        $this->setRelationships($picture);
+
+        return $picture;
+    }
+
     abstract public function getBucket(): string;
 
-    abstract public function generatePictureObject(\base $f3): Picture;
-
     abstract public function getEventNameBase(): string;
+
+    abstract public function getPictureType(): int;
+
+    abstract public function setRelationships(Picture $picture): void;
 }

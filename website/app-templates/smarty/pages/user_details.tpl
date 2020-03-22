@@ -12,8 +12,9 @@
 {block name=content}
     <div class="row">
         <div class="col-xs-12 col-md-9">
-            <div id="userAvatar" class="{if $user->is}dropzone{/if}">
+            <div id="userAvatar" class="{if $user->isCurrentUser()}dropzone{/if}">
                 {include file='blocks/user/details.tpl'}
+                {include file='blocks/user/pictures.tpl'}
             </div>
             {include file='blocks/user/awards.tpl'}
             {include file='blocks/user/badges.tpl'}
@@ -29,6 +30,11 @@
 {/block}
 
 {block name=javascript}
+
+    {if $user->isCurrentUser()}
+        {include 'js/users/user_avatar_upload.tpl.js'}
+    {/if}
+
     {if $user->isCurrentUser() && $user->hasHomeCoordinates()}
         {include file='js/_map_init.tpl.js'}
         var map = initializeMap();
@@ -41,4 +47,5 @@
     // Bind modal
     {include 'js/dialogs/dialog_user_details.tpl.js'}
     {include 'js/dialogs/dialog_contact_user.tpl.js'}
+    {include 'js/dialogs/dialog_picture_actions.tpl.js'}
 {/block}

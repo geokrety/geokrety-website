@@ -3,6 +3,7 @@
 namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
+use GeoKrety\PictureType;
 use GeoKrety\Service\S3Client;
 
 class Picture extends Base {
@@ -74,6 +75,22 @@ class Picture extends Base {
 
     // TODO: validate that at least `move` or `geokret` or `user` is filled
 
+    public function __construct() {
+        parent::__construct();
+        $this->beforeinsert(function ($self) {
+            $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
+        });
+    }
+
+    public static function expireNeverUploaded() {
+        $pictureModel = new Picture();
+        $pictureModel->erase([
+            'uploaded_on_datetime = ? AND NOW() > DATE_ADD(created_on_datetime, INTERVAL ? MINUTE)',
+            null,
+            GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES,
+        ]);
+    }
+
     public function set_type($value) {
         if (\is_int($value)) {
             return $value;
@@ -104,44 +121,37 @@ class Picture extends Base {
         return self::get_date_object($value);
     }
 
-    public static function expireNeverUploaded() {
-        $pictureModel = new Picture();
-        $pictureModel->erase([
-            'uploaded_on_datetime = ? AND NOW() > DATE_ADD(created_on_datetime, INTERVAL ? MINUTE)',
-            null,
-            GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES,
-        ]);
-    }
-
     public function isAuthor() {
         $f3 = \Base::instance();
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
 
-    public function isGeokretMainAvatar() {
-        return $this->geokret->avatar && $this->geokret->avatar->id === $this->id;
+    public function isMainAvatar(): bool {
+        if ($this->type->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
+            return $this->geokret->avatar && $this->geokret->avatar->id === $this->id;
+        }
+        if ($this->type->isType(PictureType::PICTURE_USER_AVATAR)) {
+            return $this->user->avatar && $this->user->avatar->id === $this->id;
+        }
+
+        return false;
+    }
+
+    public function isUploaded(): bool {
+        return !is_null($this->uploaded_on_datetime);
     }
 
     public function get_url() {
         $s3 = S3Client::instance()->getS3Public();
-        $publicUrl = $s3->getObjectUrl(GK_BUCKET_NAME_GEOKRETY_AVATARS, $this->key);
 
-        return $publicUrl;
+        return $s3->getObjectUrl($this->type->getBucketName(), $this->key);
     }
 
     public function get_thumbnail_url() {
         $s3 = S3Client::instance()->getS3Public();
-        $bucketName = S3Client::getThumbnailBucketName(GK_BUCKET_NAME_GEOKRETY_AVATARS);
-        $publicUrl = $s3->getObjectUrl($bucketName, $this->key);
+        $bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
 
-        return $publicUrl;
-    }
-
-    public function __construct() {
-        parent::__construct();
-        $this->beforeinsert(function ($self) {
-            $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
-        });
+        return $s3->getObjectUrl($bucketName, $this->key);
     }
 }
