@@ -36,7 +36,9 @@ class Login extends Base {
                     $f3->reroute('@login');
                 }
 
-                $f3->set('COOKIE.PHPSESSID', $f3->get('COOKIE.PHPSESSID'), $f3->get('POST.remember') ? GK_SITE_SESSION_LIFETIME_REMEMBER : GK_SITE_SESSION_LIFETIME_DEFAULT);
+                if ($f3->get('POST.remember')) {
+                    $f3->set('COOKIE.PHPSESSID', $f3->get('COOKIE.PHPSESSID'), GK_SITE_SESSION_LIFETIME_REMEMBER);
+                }
                 $ml = Multilang::instance();
                 $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
                 $f3->set('SESSION.CURRENT_USER', $user->id);
@@ -76,10 +78,7 @@ class Login extends Base {
     public function logout(\Base $f3) {
         $user = new User();
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
-        $f3->set('SESSION.CURRENT_USER', null);
-        $f3->set('SESSION.CURRENT_USERNAME', null);
-        $f3->set('SESSION.IS_LOGGED_IN', null);
-        $f3->set('SESSION.user.group', null);
+        $f3->clear('SESSION');
         $f3->clear('COOKIE.PHPSESSID');
         Event::instance()->emit('user.logout', $user);
         $f3->reroute('@home');

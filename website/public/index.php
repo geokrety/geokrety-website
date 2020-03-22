@@ -4,8 +4,11 @@ require '../init-f3.php';
 $f3->config('../app/cron.ini');
 $f3->config('../app/assets.ini');
 
-// Start Session
-new Session();
+// Prevent filling the session storage, with one shot sessions
+if (!in_array($_SERVER['REQUEST_URI'], ['/health', '/cron'])) {
+    // Start Session
+    new \DB\SQL\Session($f3->get('DB'));
+}
 
 // Local Mail
 if (is_null(GK_SMTP_HOST)) {
