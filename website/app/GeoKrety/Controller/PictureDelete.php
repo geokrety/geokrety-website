@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\PictureType;
-use GeoKrety\Service\S3Client;
 use GeoKrety\Service\Smarty;
 
 class PictureDelete extends Base {
@@ -18,17 +17,6 @@ class PictureDelete extends Base {
     }
 
     public function delete(\Base $f3) {
-        $s3 = S3Client::instance()->getS3Public();
-        // TODO: Not sure how to validate the deletion in the backend
-        $s3->deleteObject([
-            'Bucket' => $this->picture->bucket,
-            'Key' => $this->picture->key,
-        ]);
-        $s3->deleteObject([
-            'Bucket' => S3Client::getThumbnailBucketName($this->picture->bucket),
-            'Key' => $this->picture->key,
-        ]);
-
         $this->picture->erase();
         \Event::instance()->emit('picture.deleted', $this->picture);
 

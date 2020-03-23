@@ -415,5 +415,12 @@ EOQUERY;
                 $self->removeMissingStatus();
             }
         });
+        $this->beforeerase(function ($self) {
+            $pictureModel = new Picture();
+            $pictures = $pictureModel->find(['move = ?', $self->id]);
+            foreach ($pictures as $picture) {
+                $picture->erase();
+            }
+        });
     }
 }

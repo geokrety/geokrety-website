@@ -64,4 +64,8 @@ class PictureType {
     public function getBucketName() {
         return self::BUCKET_MAP[$this->type];
     }
+
+    public function getThumbnailBucketName() {
+        return sprintf('%s-thumbnails', $this->getBucketName());
+    }
 }

@@ -76,13 +76,6 @@ class Picture extends Base {
 
     // TODO: validate that at least `move` or `geokret` or `user` is filled
 
-    public function __construct() {
-        parent::__construct();
-        $this->beforeinsert(function ($self) {
-            $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
-        });
-    }
-
     public static function expireNeverUploaded() {
         $pictureModel = new Picture();
         $pictureModel->erase([
@@ -120,6 +113,14 @@ class Picture extends Base {
 
     public function get_uploaded_on_datetime($value) {
         return self::get_date_object($value);
+    }
+
+    public function getBucketName(): string {
+        return $this->type->getBucketName();
+    }
+
+    public function getThumbnailBucketName(): string {
+        return $this->type->getThumbnailBucketName();
     }
 
     public function isAuthor(): bool {
@@ -176,5 +177,21 @@ class Picture extends Base {
         $bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
 
         return $s3->getObjectUrl($bucketName, $this->key);
+    }
+
+    public function __construct() {
+        parent::__construct();
+        $this->beforeinsert(function ($self) {
+            $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
+        });
+        $this->beforeerase(function ($self) {
+            $s3 = S3Client::instance()->getS3();
+            foreach ([$self->getBucketName(), $self->getThumbnailBucketName()] as $bucket) {
+                $s3->deleteObject([
+                    'Bucket' => $bucket,
+                    'Key' => $self->key,
+                ]);
+            }
+        });
     }
 }
