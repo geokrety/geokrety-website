@@ -35,7 +35,7 @@
                 <div class="col-xs-6 col-sm-4 col-sm-offset-2">
                     <div class="gallery image-preview">
                         {if isset($picture)}
-                            {$picture|picture:true nofilter}
+                            {$picture|picture nofilter}
                         {/if}
                     </div>
                 </div>

@@ -5,7 +5,7 @@
 
 {if $moves.subset}
 {foreach from=$moves.subset item=item}
-{include file='elements/move.tpl' move=$item}
+{include file='elements/move.tpl' move=$item showMainAvatarMedal=true}
 {/foreach}
 {else}
 

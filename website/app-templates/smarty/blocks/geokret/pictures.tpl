@@ -4,7 +4,7 @@
         <div class="gallery">
             {if $geokret->pictures_count}
             {foreach from=$geokret->avatars item=picture}
-                    {$picture|picture nofilter}
+                    {$picture|picture:true nofilter}
             {/foreach}
             {/if}
         </div>

@@ -41,7 +41,11 @@
                 <div class="col-xs-12 gallery">
                     {if $move->pictures_count}
                     {foreach from=$move->pictures item=picture}
-                        {$picture|picture nofilter}
+                        {if isset($showMainAvatarMedal)}
+                            {$picture|picture:$showMainAvatarMedal nofilter}
+                        {else}
+                            {$picture|picture nofilter}
+                        {/if}
                     {/foreach}
                     {/if}
                 </div>

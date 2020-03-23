@@ -4,7 +4,7 @@
         <div class="gallery">
             {if $user->pictures_count}
             {foreach from=$user->avatars item=picture}
-                {$picture|picture nofilter}
+                {$picture|picture:true nofilter}
             {/foreach}
             {/if}
         </div>

@@ -13,7 +13,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a picture
  * -------------------------------------------------------------
  */
-function smarty_modifier_picture(Picture $picture, ?bool $hideMainAvatarMedal = false) {
+function smarty_modifier_picture(Picture $picture, ?bool $showMainAvatarMedal = false) {
     $template_string = <<<'EOT'
 <div class="gallery">
     <figure>
@@ -28,7 +28,7 @@ function smarty_modifier_picture(Picture $picture, ?bool $hideMainAvatarMedal = 
                     </a>
                 {/if}
             </div>
-            {if !$hideMainAvatarMedal && $picture->isMainAvatar()}
+            {if $showMainAvatarMedal && $picture->isMainAvatar()}
                 <div class="picture-is-main-avatar" data-toggle="tooltip" title="{t}This is the main avatar{/t}"></div>
             {/if}
         </div>
@@ -40,7 +40,7 @@ function smarty_modifier_picture(Picture $picture, ?bool $hideMainAvatarMedal = 
                 <!-- TODO: link to another item. GK/User/Move… -->
             </p>
         </figcaption>
-        {if !$hideMainAvatarMedal && ($picture->isAuthor() || $picture->hasPermissionOnParent() && !$picture->isMainAvatar())}
+        {if $showMainAvatarMedal && ($picture->isAuthor() || $picture->hasPermissionOnParent() && !$picture->isMainAvatar())}
             <div class="pull-right">
                 <div class="pictures-actions pictures-actions-pull">
                     <div class="btn-group pictures-actions-buttons" role="group">
@@ -71,9 +71,9 @@ EOT;
 
     $smarty = GeoKrety\Service\Smarty::getSmarty();
     $smarty->assign('picture', $picture);
-    $smarty->assign('hideMainAvatarMedal', $hideMainAvatarMedal);
+    $smarty->assign('showMainAvatarMedal', $showMainAvatarMedal);
     $html = $smarty->display('string:'.$template_string);
-    $smarty->clearAssign(['picture', 'hideMainAvatarMedal']);
+    $smarty->clearAssign(['picture', 'showMainAvatarMedal']);
 
     return $html;
 }

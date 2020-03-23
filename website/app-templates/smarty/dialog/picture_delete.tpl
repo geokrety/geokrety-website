@@ -7,7 +7,7 @@
 <form name="picture" action="{'picture_delete'|alias:sprintf('key=%s', $picture->key)}" method="POST">
     <div class="modal-body">
         <div class="gallery image-preview">
-            {$picture|picture:true nofilter}
+            {$picture|picture nofilter}
         </div>
     </div>
     <div class="modal-footer">
