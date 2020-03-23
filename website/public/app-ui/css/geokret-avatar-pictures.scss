@@ -9,6 +9,9 @@ div.gallery > figure {
     .pictures-actions-buttons {
       display: none;
     }
+    div.pictures-actions:empty {
+      display: none;
+    }
   }
 
   div.picture-is-main-avatar:before {

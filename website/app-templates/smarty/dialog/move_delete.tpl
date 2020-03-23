@@ -10,7 +10,11 @@
         {if $move->pictures_count}
             <hr>
             <div class="alert alert-danger" role="alert">
-                Deleting this Move will also delete attached pictures!
+            {if $move->pictures->contains($move->geokret->avatar->id)}
+                {t}Deleting this Move will delete attached pictures and the main avatar!{/t}
+            {else}
+                {t}Deleting this Move will delete attached pictures!{/t}
+            {/if}
             </div>
         {/if}
     </div>

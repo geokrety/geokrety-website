@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\News;
+use GeoKrety\Model\Picture;
 use GeoKrety\Model\SiteStats;
 use GeoKrety\Service\Smarty;
 
@@ -33,6 +34,11 @@ class Home extends Base {
         $geokret = new Geokret();
         $geokrety = $geokret->find(null, ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_RECENT_GEOKRETY], GK_SITE_CACHE_TTL_LATEST_GEOKRETY);
         Smarty::assign('geokrety', $geokrety);
+
+        // Load latest pictures
+        $picture = new Picture();
+        $pictures = $picture->find(['uploaded_on_datetime != ?', null], ['order' => 'uploaded_on_datetime DESC', 'limit' => GK_HOME_COUNT_RECENT_PICTURES], GK_SITE_CACHE_TTL_LATEST_PICTURES);
+        Smarty::assign('pictures', $pictures);
 
         Smarty::render('pages/home.tpl');
     }

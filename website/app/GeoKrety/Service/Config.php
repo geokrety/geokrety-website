@@ -136,6 +136,7 @@ class Config extends \Prefab {
         define('GK_HOME_COUNT_NEWS', getenv('GK_HOME_COUNT_NEWS') ?: 3);
         define('GK_HOME_COUNT_MOVES', getenv('GK_HOME_COUNT_MOVES') ?: 10);
         define('GK_HOME_COUNT_RECENT_GEOKRETY', getenv('GK_HOME_COUNT_RECENT_GEOKRETY') ?: 10);
+        define('GK_HOME_COUNT_RECENT_PICTURES', getenv('GK_HOME_COUNT_RECENT_PICTURES') ?: 18);
 
         // PAGINATION LIMITS
         define('GK_PAGINATION_NEWS', getenv('GK_PAGINATION_NEWS') ?: 2);
@@ -152,6 +153,7 @@ class Config extends \Prefab {
         define('GK_SITE_CACHE_TTL_LATEST_NEWS', getenv('GK_SITE_CACHE_TTL_LATEST_NEWS') ?: 60);
         define('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY') ?: 60);
         define('GK_SITE_CACHE_TTL_LATEST_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_GEOKRETY') ?: 60);
+        define('GK_SITE_CACHE_TTL_LATEST_PICTURES', getenv('GK_SITE_CACHE_TTL_LATEST_PICTURES') ?: 60);
         define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: 600);
 
         // API LIMITS

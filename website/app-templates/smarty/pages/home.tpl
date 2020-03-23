@@ -45,7 +45,15 @@
 
 
 <h2>📷 {t}Recent pictures{/t}</h2>
-{include file='banners/wip.tpl'}
+<div class="panel panel-default picturesList">
+    <div class="panel-body">
+        <div class="gallery">
+            {foreach from=$pictures item=picture}
+                    {$picture|picture:true:true:false nofilter}
+            {/foreach}
+        </div>
+    </div>
+</div>
 
 {if $geokrety}
 <h2>🐥 {t}Recently created GeoKrety{/t}</h2>
@@ -73,7 +81,8 @@
 
 {block name=javascript}
 {if $f3->get('SESSION.IS_LOGGED_IN')}
-    // Bind modal
-    {include 'js/dialogs/dialog_news_subscription.tpl.js'}
+  // Bind modal
+  {include 'js/dialogs/dialog_news_subscription.tpl.js'}
+  {include 'js/dialogs/dialog_picture_actions.tpl.js'}
 {/if}
 {/block}

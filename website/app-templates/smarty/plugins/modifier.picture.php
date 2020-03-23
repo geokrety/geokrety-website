@@ -13,7 +13,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a picture
  * -------------------------------------------------------------
  */
-function smarty_modifier_picture(Picture $picture, ?bool $showMainAvatarMedal = false) {
+function smarty_modifier_picture(Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true) {
     $template_string = <<<'EOT'
 <div class="gallery">
     <figure>
@@ -40,11 +40,11 @@ function smarty_modifier_picture(Picture $picture, ?bool $showMainAvatarMedal = 
                 <!-- TODO: link to another item. GK/User/Move… -->
             </p>
         </figcaption>
-        {if $showMainAvatarMedal && ($picture->isAuthor() || $picture->hasPermissionOnParent() && !$picture->isMainAvatar())}
+        {if $showActionsButtons && ($picture->isAuthor() || $allowSetAsMainAvatar && $picture->hasPermissionOnParent() && !$picture->isMainAvatar())}
             <div class="pull-right">
                 <div class="pictures-actions pictures-actions-pull">
                     <div class="btn-group pictures-actions-buttons" role="group">
-                        {if !$picture->isMainAvatar() && $picture->hasPermissionOnParent()}
+                        {if $allowSetAsMainAvatar && !$picture->isMainAvatar() && $picture->hasPermissionOnParent()}
                             <button class="btn btn-primary btn-xs" title="{t}Define as main avatar{/t}"
                                     data-toggle="modal" data-target="#modal" data-type="define-as-main-avatar"
                                     data-id="{$picture->key}">
@@ -72,6 +72,8 @@ EOT;
     $smarty = GeoKrety\Service\Smarty::getSmarty();
     $smarty->assign('picture', $picture);
     $smarty->assign('showMainAvatarMedal', $showMainAvatarMedal);
+    $smarty->assign('showActionsButtons', $showActionsButtons);
+    $smarty->assign('allowSetAsMainAvatar', $allowSetAsMainAvatar);
     $html = $smarty->display('string:'.$template_string);
     $smarty->clearAssign(['picture', 'showMainAvatarMedal']);
 
