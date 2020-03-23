@@ -1,4 +1,4 @@
-// ----------------------------------- JQUERY - GEOKRET AVATAR UPLOAD - BEGIN
+// ----------------------------------- JQUERY - USER AVATAR UPLOAD - BEGIN
 
 $("div#userAvatar").dropzone({
     url: '#',
@@ -100,4 +100,4 @@ function parseS3UploadError(errorMessage, xhr) {
     return errorMessage;
 }
 
-// ----------------------------------- JQUERY - GEOKRET AVATAR UPLOAD - END
+// ----------------------------------- JQUERY - USER AVATAR UPLOAD - END

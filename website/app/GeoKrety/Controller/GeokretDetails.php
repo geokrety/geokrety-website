@@ -14,6 +14,7 @@ class GeokretDetails extends Base {
     public function get($f3) {
         // Load move independently to use pagination
         $move = new Move();
+        $move->filter('pictures', ['uploaded_on_datetime != ?', null]);
         $filter = ['geokret = ?', $this->geokret->id];
         $option = ['order' => 'moved_on_datetime DESC'];
         $subset = $move->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_GEOKRET_MOVES, $filter, $option);

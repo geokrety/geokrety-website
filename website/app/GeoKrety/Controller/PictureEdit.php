@@ -37,13 +37,15 @@ class PictureEdit extends Base {
             \Event::instance()->emit('picture.caption.saved', $this->picture);
             \Flash::instance()->addMessage(_('Picture caption saved.'), 'success');
 
-            if ($this->picture->type->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
+            if ($this->picture->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
                 $this->post_geokret($f3);
             }
-            if ($this->picture->type->isType(PictureType::PICTURE_USER_AVATAR)) {
+            if ($this->picture->isType(PictureType::PICTURE_USER_AVATAR)) {
                 $this->post_user($f3);
             }
-
+            if ($this->picture->isType(PictureType::PICTURE_GEOKRET_MOVE)) {
+                $this->post_move($f3);
+            }
         }
 
         Smarty::render('extends:full_screen_modal.tpl|dialog/picture_edit.tpl');
@@ -59,10 +61,14 @@ class PictureEdit extends Base {
             $f3->clear('SESSION.saved_geokret_avatar_caption');
         }
 
-        $f3->reroute('@geokret_details(@gkid='.$this->picture->geokret->gkid.')#gk-avatars-list');
+        $f3->reroute(['geokret_details', ['gkid' => $this->picture->geokret->gkid], '#gk-avatars-list']);
     }
 
     private function post_user(\Base $f3) {
-        $f3->reroute('@user_details(@userid='.$this->picture->user->id.')#user-avatars-list');
+        $f3->reroute(['user_details', ['userid' => $this->picture->user->id]], '#user-avatars-list');
+    }
+
+    private function post_move(\Base $f3) {
+        $f3->reroute(['geokret_details', ['gkid' => $this->picture->move->geokret->gkid], '#log'.$this->picture->move->id]);
     }
 }

@@ -12,6 +12,7 @@
 : "${GK_BUCKET_NAME_STATPIC:=statpic}"
 : "${GK_BUCKET_NAME_GEOKRETY_AVATARS:=gk-avatars}"
 : "${GK_BUCKET_NAME_USERS_AVATARS:=users-avatars}"
+: "${GK_BUCKET_NAME_MOVES_PICTURES:=moves-pictures}"
 
 : "${GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER:=pictures-processor-downloader}"
 : "${GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER:=pictures-processor-uploader}"
@@ -27,6 +28,8 @@ mc mb "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}"
 mc mb "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}-thumbnails"
 mc mb "minio/${GK_BUCKET_NAME_USERS_AVATARS}"
 mc mb "minio/${GK_BUCKET_NAME_USERS_AVATARS}-thumbnails"
+mc mb "minio/${GK_BUCKET_NAME_MOVES_PICTURES}"
+mc mb "minio/${GK_BUCKET_NAME_MOVES_PICTURES}-thumbnails"
 mc mb "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER}"
 mc mb "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER}"
 
@@ -36,6 +39,8 @@ mc policy set public "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}"
 mc policy set public "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}-thumbnails"
 mc policy set public "minio/${GK_BUCKET_NAME_USERS_AVATARS}"
 mc policy set public "minio/${GK_BUCKET_NAME_USERS_AVATARS}-thumbnails"
+mc policy set public "minio/${GK_BUCKET_NAME_MOVES_PICTURES}"
+mc policy set public "minio/${GK_BUCKET_NAME_MOVES_PICTURES}-thumbnails"
 
 mc admin user add minio "${GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY}" "${GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY}"
 
@@ -51,5 +56,6 @@ $MINIO_RESTART && mc admin service restart minio
 
 [[ $(mc event list "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}" arn:minio:sqs::picture-uploaded:webhook | wc -l) -gt 0 ]] || mc event add "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}" arn:minio:sqs::picture-uploaded:webhook --event put
 [[ $(mc event list "minio/${GK_BUCKET_NAME_USERS_AVATARS}" arn:minio:sqs::picture-uploaded:webhook | wc -l) -gt 0 ]] || mc event add "minio/${GK_BUCKET_NAME_USERS_AVATARS}" arn:minio:sqs::picture-uploaded:webhook --event put
+[[ $(mc event list "minio/${GK_BUCKET_NAME_MOVES_PICTURES}" arn:minio:sqs::picture-uploaded:webhook | wc -l) -gt 0 ]] || mc event add "minio/${GK_BUCKET_NAME_MOVES_PICTURES}" arn:minio:sqs::picture-uploaded:webhook --event put
 [[ $(mc event list "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER}" arn:minio:sqs::pictures-processor-downloader-uploaded:webhook | wc -l) -gt 0 ]] || mc event add "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER}" arn:minio:sqs::pictures-processor-downloader-uploaded:webhook --event put
 [[ $(mc event list "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER}" arn:minio:sqs::pictures-processor-uploader-uploaded:webhook | wc -l) -gt 0 ]] || mc event add "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER}" arn:minio:sqs::pictures-processor-uploader-uploaded:webhook --event put

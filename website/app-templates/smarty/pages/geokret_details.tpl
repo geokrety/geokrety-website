@@ -33,10 +33,10 @@
 {include 'js/dialogs/dialog_contact_user.tpl.js'}
 {include 'js/dialogs/dialog_offer_for_adoption.tpl.js'}
 {include 'js/dialogs/dialog_picture_actions.tpl.js'}
-{*{include 'js/dialogs/dialog_geokret_avatar_upload.tpl.js'}*}
 
 {if $geokret->isOwner()}
 {include 'js/geokrety/geokret_avatar_upload.tpl.js'}
 {/if}
+{include 'js/moves/move_picture_upload.tpl.js'}
 
 {/block}

@@ -5,6 +5,7 @@ namespace GeoKrety\Model;
 use DB\SQL\Schema;
 use GeoKrety\PictureType;
 use GeoKrety\Service\S3Client;
+use function Sentry\captureMessage;
 
 class Picture extends Base {
     use \Validation\Traits\CortexTrait;
@@ -121,7 +122,7 @@ class Picture extends Base {
         return self::get_date_object($value);
     }
 
-    public function isAuthor() {
+    public function isAuthor(): bool {
         $f3 = \Base::instance();
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
@@ -134,6 +135,9 @@ class Picture extends Base {
         if ($this->type->isType(PictureType::PICTURE_USER_AVATAR)) {
             return $this->user->avatar && $this->user->avatar->id === $this->id;
         }
+        if ($this->type->isType(PictureType::PICTURE_GEOKRET_MOVE)) {
+            return $this->move->geokret->avatar && $this->move->geokret->avatar->id === $this->id;
+        }
 
         return false;
     }
@@ -142,13 +146,32 @@ class Picture extends Base {
         return !is_null($this->uploaded_on_datetime);
     }
 
-    public function get_url() {
+    public function isType($type): bool {
+        return $this->type->isType($type);
+    }
+
+    public function hasPermissionOnParent(): bool {
+        if ($this->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
+            return $this->geokret->isOwner();
+        }
+        if ($this->isType(PictureType::PICTURE_USER_AVATAR)) {
+            return $this->user->isCurrentUser();
+        }
+        if ($this->isType(PictureType::PICTURE_GEOKRET_MOVE)) {
+            return $this->move->geokret->isOwner();
+        }
+
+        captureMessage('We should never reach there!');
+        return false;
+    }
+
+    public function get_url(): string {
         $s3 = S3Client::instance()->getS3Public();
 
         return $s3->getObjectUrl($this->type->getBucketName(), $this->key);
     }
 
-    public function get_thumbnail_url() {
+    public function get_thumbnail_url(): string {
         $s3 = S3Client::instance()->getS3Public();
         $bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
 

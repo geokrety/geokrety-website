@@ -22,6 +22,7 @@ trait CurrentUserLoader {
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         if ($user->dry()) {
             // TODO:
+            http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }

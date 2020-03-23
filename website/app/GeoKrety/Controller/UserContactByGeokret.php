@@ -28,6 +28,7 @@ class UserContactByGeokret extends UserContact {
         $geokret = new Geokret();
         $geokret->load(['gkid = ?', hexdec(substr($f3->get('PARAMS.gkid'), 2))]);
         if ($geokret->dry()) {
+            http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }

@@ -8,7 +8,6 @@ use GeoKrety\Service\Smarty;
 
 abstract class Base {
     public function beforeRoute(\Base $f3) {
-
         // Load supported languages
         Smarty::assign('languages', LanguageService::getSupportedLanguages(true));
 
@@ -23,7 +22,7 @@ abstract class Base {
         }
     }
 
-    // public function afterRoute($f3) {
-    //     \Flash::instance()->addMessage('<pre>'.$f3->get('DB')->log().'</pre>', 'warning');
-    // }
+//    public function afterRoute($f3) {
+//        \Flash::instance()->addMessage('<pre>'.$f3->get('DB')->log().'</pre>', 'warning');
+//    }
 }

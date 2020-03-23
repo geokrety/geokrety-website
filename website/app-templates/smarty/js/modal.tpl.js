@@ -15,7 +15,7 @@ function modalLoadErrors(xhr, callback) {
         return;
     }
     if (xhr.status === 403) {
-        // TODO
+        $('#modal').find('.modal-content').html(xhr.responseText);
         return;
     }
 

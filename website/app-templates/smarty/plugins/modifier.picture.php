@@ -13,7 +13,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a picture
  * -------------------------------------------------------------
  */
-function smarty_modifier_picture(Picture $picture, $hideMainAvatarMedal = false) {
+function smarty_modifier_picture(Picture $picture, ?bool $hideMainAvatarMedal = false) {
     $template_string = <<<'EOT'
 <div class="gallery">
     <figure>
@@ -29,7 +29,7 @@ function smarty_modifier_picture(Picture $picture, $hideMainAvatarMedal = false)
                 {/if}
             </div>
             {if !$hideMainAvatarMedal && $picture->isMainAvatar()}
-                <div class="picture-is-main-avatar"></div>
+                <div class="picture-is-main-avatar" data-toggle="tooltip" title="{t}This is the main avatar{/t}"></div>
             {/if}
         </div>
         <figcaption>
@@ -40,25 +40,27 @@ function smarty_modifier_picture(Picture $picture, $hideMainAvatarMedal = false)
                 <!-- TODO: link to another item. GK/User/Move… -->
             </p>
         </figcaption>
-        {if !$hideMainAvatarMedal &&  $picture->isAuthor()}
+        {if !$hideMainAvatarMedal && ($picture->isAuthor() || $picture->hasPermissionOnParent() && !$picture->isMainAvatar())}
             <div class="pull-right">
                 <div class="pictures-actions pictures-actions-pull">
                     <div class="btn-group pictures-actions-buttons" role="group">
-                        {if !$picture->isMainAvatar()}
+                        {if !$picture->isMainAvatar() && $picture->hasPermissionOnParent()}
                             <button class="btn btn-primary btn-xs" title="{t}Define as main avatar{/t}"
                                     data-toggle="modal" data-target="#modal" data-type="define-as-main-avatar"
                                     data-id="{$picture->key}">
                                 ★
                             </button>
                         {/if}
-                        <button class="btn btn-warning btn-xs" title="{t}Edit picture details{/t}" data-toggle="modal"
-                                data-target="#modal" data-type="picture-edit" data-id="{$picture->key}">
+                        {if $picture->isAuthor()}
+                        <button class="btn btn-warning btn-xs" title="{t}Edit picture details{/t}"
+                                data-toggle="modal" data-target="#modal" data-type="picture-edit" data-id="{$picture->key}">
                             {fa icon="pencil"}
                         </button>
-                        <button class="btn btn-danger btn-xs" title="{t}Delete picture{/t}" data-toggle="modal"
-                                data-target="#modal" data-type="picture-delete" data-id="{$picture->key}">
+                        <button class="btn btn-danger btn-xs" title="{t}Delete picture{/t}"
+                                data-toggle="modal" data-target="#modal" data-type="picture-delete" data-id="{$picture->key}">
                             {fa icon="trash"}
                         </button>
+                        {/if}
                     </div>
                 </div>
             </div>

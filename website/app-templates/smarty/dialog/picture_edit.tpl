@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            {if $picture->type->isType(GeoKrety\PictureType::PICTURE_GEOKRET_AVATAR)}
+            {if $picture->isType(GeoKrety\PictureType::PICTURE_GEOKRET_AVATAR)}
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">

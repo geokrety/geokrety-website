@@ -15,6 +15,7 @@ trait MoveLoader {
         $move = new Move();
         $move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($move->dry()) {
+            http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
@@ -27,6 +28,7 @@ trait MoveLoader {
 
     protected function checkAuthor(Move $move) {
         if (!$move->isAuthor()) {
+            http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
             die();
         }

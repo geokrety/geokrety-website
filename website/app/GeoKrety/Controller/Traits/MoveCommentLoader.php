@@ -15,10 +15,12 @@ trait MoveCommentLoader {
         $comment = new MoveComment();
         $comment->load(['id = ?', $f3->get('PARAMS.movecommentid')]);
         if ($comment->dry()) {
+            http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
         if (!$comment->isAuthor()) {
+            http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
             die();
         }

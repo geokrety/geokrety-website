@@ -1,6 +1,6 @@
 <a class="anchor" id="log{$move->id}"></a>
-<div class="panel panel-default">
-    <div class="panel-body">
+<div class="panel panel-default{if $move->isAuthor()} enable-dropzone{/if}" id="move-{$move->id}" data-id="{$move->id}">
+    <div class="panel-body{if $move->isAuthor()} dropzone{/if}">
 
         <div class="row">
             <div class="col-xs-2">
@@ -36,13 +36,15 @@
             </div>
         </div>
 
-        {if $move->pictures_count}
-        <div class="row">
-            <div class="col-xs-12">
-                {*call move_picture moves_pictures=$geokret_pictures*}
+        <div class="move-pictures {if !$move->pictures_count} hidden--{/if}">
+            <div class="row">
+                <div class="col-xs-12 gallery">
+                    {foreach from=$move->pictures item=picture}
+                        {$picture|picture nofilter}
+                    {/foreach}
+                </div>
             </div>
         </div>
-        {/if}
 
         {if !(isset($hide_actions) && hide_actions) && $f3->get('SESSION.CURRENT_USER')}
         <div class="row">
@@ -51,13 +53,13 @@
                     <div class="btn-toolbar" role="toolbar">
 
                         <div class="btn-group pull-right" role="group">
-                            {if $move->geokret->last_position and $move->id === $move->geokret->last_position->id and $move->logtype->isTheoricallyInCache() and $move->geokret->type->getTypeId() != \GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
+                            {if $move->geokret->last_position and $move->id === $move->geokret->last_position->id and $move->logtype->isTheoricallyInCache() and $move->geokret->type->getTypeId() != GeoKrety\GeokretyType::GEOKRETY_TYPE_HUMAN}
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Report as missing{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}" data-move-comment-type="missing">
                                 {fa icon="exclamation-triangle"}
                             </button>
                             {/if}
                             {if $move->isAuthor()}
-                            <button class="btn btn-success btn-xs" title="{t}Upload a picture{/t}" data-toggle="modal" data-target="#modal" data-type="picture-upload" data-id="{$move->id}" data-picture-type="1">
+                            <button class="btn btn-success btn-xs movePictureUploadButton" title="{t}Upload a picture{/t}">
                                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
                             </button>
                             {/if}

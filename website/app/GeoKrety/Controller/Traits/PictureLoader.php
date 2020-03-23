@@ -17,6 +17,7 @@ trait PictureLoader {
         $picture = new Picture();
         $picture->load(['key = ?', $key]);
         if ($picture->dry()) {
+            http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
@@ -29,6 +30,7 @@ trait PictureLoader {
 
     protected function checkAuthor(Picture $picture) {
         if (!$picture->isAuthor()) {
+            http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
             die();
         }

@@ -34,6 +34,7 @@ class UserContact extends Base {
         $user = new User();
         $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {
+            http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }

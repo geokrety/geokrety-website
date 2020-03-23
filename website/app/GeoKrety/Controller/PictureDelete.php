@@ -32,11 +32,14 @@ class PictureDelete extends Base {
         $this->picture->erase();
         \Event::instance()->emit('picture.deleted', $this->picture);
 
-        if ($this->picture->type->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
-            $f3->reroute(['geokret_details', ['gkid' => $this->picture->geokret->gkid]]);
+        if ($this->picture->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
+            $f3->reroute(['geokret_details', ['gkid' => $this->picture->geokret->gkid], '#gk-avatars-list']);
         }
-        if ($this->picture->type->isType(PictureType::PICTURE_USER_AVATAR)) {
-            $f3->reroute(['user_details', ['userid' => $this->picture->user->id]]);
+        if ($this->picture->isType(PictureType::PICTURE_USER_AVATAR)) {
+            $f3->reroute(['user_details', ['userid' => $this->picture->user->id]], '#user-avatars-list');
+        }
+        if ($this->picture->isType(PictureType::PICTURE_GEOKRET_MOVE)) {
+            $f3->reroute(['geokret_details', ['gkid' => $this->picture->move->geokret->gkid], '#log'.$this->picture->move->id]);
         }
     }
 }

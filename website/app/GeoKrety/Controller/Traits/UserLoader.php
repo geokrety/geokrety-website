@@ -17,6 +17,7 @@ trait UserLoader {
         $user->filter('badges', null, ['order' => 'awarded_on_datetime ASC']);
         $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {
+            http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
