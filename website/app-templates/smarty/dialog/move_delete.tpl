@@ -7,6 +7,12 @@
 <form name="move" action="{'move_delete'|alias:sprintf('moveid=%d', $move->id)}" method="post">
     <div class="modal-body">
         {include file='elements/move.tpl' hide_actions=true}
+        {if $move->pictures_count}
+            <hr>
+            <div class="alert alert-danger" role="alert">
+                Deleting this Move will also delete attached pictures!
+            </div>
+        {/if}
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
