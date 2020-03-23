@@ -2,11 +2,49 @@
 
 use Phinx\Db\Adapter\MysqlAdapter;
 
-class PicturesOnS3 extends Phinx\Migration\AbstractMigration
+class PicturesCount extends Phinx\Migration\AbstractMigration
 {
     public function change()
     {
         $this->execute('SET unique_checks=0; SET foreign_key_checks=0;');
+        $this->table('gk-users', [
+                'id' => false,
+                'primary_key' => ['id'],
+                'engine' => 'InnoDB',
+                'encoding' => 'utf8mb4',
+                'collation' => 'utf8mb4_general_ci',
+                'comment' => '',
+                'row_format' => 'COMPACT',
+            ])
+            ->addColumn('pictures_count', 'integer', [
+                'null' => false,
+                'default' => '0',
+                'limit' => MysqlAdapter::INT_TINY,
+                'comment' => 'Attached avatar count',
+                'after' => 'avatar',
+            ])
+            ->changeColumn('last_mail_datetime', 'datetime', [
+                'null' => true,
+                'after' => 'pictures_count',
+            ])
+            ->changeColumn('last_login_datetime', 'datetime', [
+                'null' => true,
+                'after' => 'last_mail_datetime',
+            ])
+            ->changeColumn('terms_of_use_datetime', 'datetime', [
+                'null' => false,
+                'comment' => 'Acceptation date',
+                'after' => 'last_login_datetime',
+            ])
+            ->changeColumn('secid', 'string', [
+                'null' => false,
+                'limit' => 128,
+                'collation' => 'utf8mb4_unicode_ci',
+                'encoding' => 'utf8mb4',
+                'comment' => 'connect by other applications',
+                'after' => 'terms_of_use_datetime',
+            ])
+            ->save();
         $this->table('gk-geokrety', [
                 'id' => false,
                 'primary_key' => ['id'],
@@ -16,11 +54,17 @@ class PicturesOnS3 extends Phinx\Migration\AbstractMigration
                 'comment' => '',
                 'row_format' => 'COMPACT',
             ])
+            ->addColumn('pictures_count', 'integer', [
+                'null' => false,
+                'default' => '0',
+                'limit' => MysqlAdapter::INT_TINY,
+                'after' => 'caches_count',
+            ])
             ->changeColumn('last_position', 'integer', [
                 'null' => true,
                 'limit' => MysqlAdapter::INT_REGULAR,
                 'signed' => false,
-                'after' => 'caches_count',
+                'after' => 'pictures_count',
             ])
             ->changeColumn('last_log', 'integer', [
                 'null' => true,
@@ -64,13 +108,8 @@ class PicturesOnS3 extends Phinx\Migration\AbstractMigration
                 'update' => 'CURRENT_TIMESTAMP',
                 'after' => 'created_on_datetime',
             ])
-            ->addForeignKey('avatar', 'gk-pictures', 'id', [
-                'constraint' => 'gk-geokrety_ibfk_3',
-                'update' => 'RESTRICT',
-                'delete' => 'SET_NULL',
-            ])
             ->save();
-        $this->table('gk-pictures', [
+        $this->table('gk-moves', [
                 'id' => false,
                 'primary_key' => ['id'],
                 'engine' => 'InnoDB',
@@ -79,71 +118,11 @@ class PicturesOnS3 extends Phinx\Migration\AbstractMigration
                 'comment' => '',
                 'row_format' => 'COMPACT',
             ])
-            ->addColumn('bucket', 'string', [
+            ->changeColumn('pictures_count', 'integer', [
                 'null' => false,
-                'limit' => 128,
-                'collation' => 'utf8mb4_unicode_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'author',
-            ])
-            ->changeColumn('key', 'string', [
-                'null' => false,
-                'limit' => 128,
-                'collation' => 'utf8mb4_unicode_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'bucket',
-            ])
-            ->changeColumn('type', 'integer', [
-                'null' => false,
+                'default' => '0',
                 'limit' => MysqlAdapter::INT_TINY,
-                'after' => 'key',
-            ])
-            ->changeColumn('move', 'integer', [
-                'null' => true,
-                'limit' => MysqlAdapter::INT_REGULAR,
-                'signed' => false,
-                'after' => 'type',
-            ])
-            ->changeColumn('geokret', 'integer', [
-                'null' => true,
-                'limit' => MysqlAdapter::INT_REGULAR,
-                'signed' => false,
-                'after' => 'move',
-            ])
-            ->changeColumn('user', 'integer', [
-                'null' => true,
-                'limit' => MysqlAdapter::INT_REGULAR,
-                'signed' => false,
-                'after' => 'geokret',
-            ])
-            ->changeColumn('filename', 'string', [
-                'null' => true,
-                'limit' => 50,
-                'collation' => 'utf8mb4_unicode_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'user',
-            ])
-            ->changeColumn('caption', 'string', [
-                'null' => true,
-                'limit' => 50,
-                'collation' => 'utf8mb4_unicode_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'filename',
-            ])
-            ->changeColumn('created_on_datetime', 'datetime', [
-                'null' => false,
-                'default' => 'CURRENT_TIMESTAMP',
-                'after' => 'caption',
-            ])
-            ->changeColumn('updated_on_datetime', 'datetime', [
-                'null' => false,
-                'default' => 'CURRENT_TIMESTAMP',
-                'update' => 'CURRENT_TIMESTAMP',
-                'after' => 'created_on_datetime',
-            ])
-            ->changeColumn('uploaded_on_datetime', 'datetime', [
-                'null' => true,
-                'after' => 'updated_on_datetime',
+                'after' => 'comment',
             ])
             ->save();
         $this->execute('SET unique_checks=1; SET foreign_key_checks=1;');

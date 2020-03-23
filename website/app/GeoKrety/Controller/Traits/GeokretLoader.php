@@ -17,15 +17,19 @@ trait GeokretLoader {
         $gkid = Geokret::gkid2id($gkid);
 
         $geokret = new Geokret();
-        $geokret->filter('owner_codes', ['user = ?', null]);
+        $this->geokret = $geokret;
         $geokret->load(['gkid = ?', $gkid]);
+        $this->geokret->filter('owner_codes', ['user = ?', null]);
+        $this->filterHook();
         if ($geokret->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
-        $this->geokret = $geokret;
         Smarty::assign('geokret', $geokret);
     }
 
+    protected function filterHook() {
+        // empty
+    }
 }

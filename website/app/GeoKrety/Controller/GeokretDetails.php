@@ -23,13 +23,12 @@ class GeokretDetails extends Base {
         $pages = new Pagination($subset['total'], $subset['limit']);
         Smarty::assign('pg', $pages);
 
-        // Filter this GeoKret avatars
-        $picture = new Picture();
-        $avatars = $picture->find(['geokret = ? AND uploaded_on_datetime != ?', $this->geokret->id, null]);
-        Smarty::assign('avatars', $avatars);
-
         Smarty::render('pages/geokret_details.tpl');
 
         // TODO check if GeoKret has already been discovered, and display Tracking Code
+    }
+
+    protected function filterHook() {
+        $this->geokret->filter('avatars', ['uploaded_on_datetime != ?', null]);
     }
 }

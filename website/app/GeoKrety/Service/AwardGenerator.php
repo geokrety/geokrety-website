@@ -9,9 +9,9 @@ class AwardGenerator {
     /**
      * Determine granted awards given GeoKrety count.
      *
-     * @return awards array of indexed values
-     *                index key: award title suffix
-     *                value: award image names
+     * @return array of indexed values
+     *               index key: award title suffix
+     *               value: award image names
      */
     public static function getGrantedAwards($count) {
         $awards = [];

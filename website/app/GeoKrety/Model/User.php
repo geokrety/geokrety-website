@@ -114,6 +114,10 @@ class User extends Base {
             'nullable' => false,
             'validate' => 'required|date',
         ],
+        'pictures_count' => [
+            'type' => Schema::DT_TINYINT,
+            'default' => 0,
+        ],
         'email_activation' => [
             'has-many' => ['\GeoKrety\Model\EmailActivationToken', 'user'],
         ],

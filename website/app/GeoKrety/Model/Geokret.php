@@ -36,6 +36,10 @@ class Geokret extends Base {
             'type' => Schema::DT_TEXT,
             'filter' => 'HTMLPurifier',
         ],
+        'pictures_count' => [
+            'type' => Schema::DT_TINYINT,
+            'default' => 0,
+        ],
         'owner' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
         ],

@@ -51,3 +51,31 @@ $events->on('geokret.claimed', function (\GeoKrety\Model\Geokret $geokret, $cont
 $events->on('user.statpic.template.changed', function (\GeoKrety\Model\User $user) {
     \GeoKrety\Service\UserBanner::generate($user);
 });
+$events->on('picture.uploaded', function (\GeoKrety\Model\Picture $picture) {
+    if (!is_null($picture->move)) {
+        ++$picture->move->pictures_count;
+        $picture->move->save();
+    }
+    if (!is_null($picture->geokret)) {
+        ++$picture->geokret->pictures_count;
+        $picture->geokret->save();
+    }
+    if (!is_null($picture->user)) {
+        ++$picture->user->pictures_count;
+        $picture->user->save();
+    }
+});
+$events->on('picture.deleted', function (\GeoKrety\Model\Picture $picture) {
+    if (!is_null($picture->move)) {
+        --$picture->move->pictures_count;
+        $picture->move->save();
+    }
+    if (!is_null($picture->geokret)) {
+        --$picture->geokret->pictures_count;
+        $picture->geokret->save();
+    }
+    if (!is_null($picture->user)) {
+        --$picture->user->pictures_count;
+        $picture->user->save();
+    }
+});

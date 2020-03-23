@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\LogType;
-use GeoKrety\Model\Picture;
 use GeoKrety\Service\AwardGenerator;
 use GeoKrety\Service\Smarty;
 use UserLoader;
@@ -36,11 +35,10 @@ class UserDetails extends Base {
         Smarty::assign('awardsGeoKretyMoved', $awardsGeoKretyMoved);
         Smarty::assign('geokretyMoved', $geokretyMoved[0]);
 
-        // Filter this User's avatars
-        $picture = new Picture();
-        $avatars = $picture->find(['user = ? AND uploaded_on_datetime != ?', $this->user->id, null]);
-        Smarty::assign('avatars', $avatars);
-
         Smarty::render('pages/user_details.tpl');
+    }
+
+    protected function filterHook() {
+        $this->user->filter('avatars', ['uploaded_on_datetime != ?', null]);
     }
 }

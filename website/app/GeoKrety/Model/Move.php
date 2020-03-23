@@ -69,8 +69,8 @@ class Move extends Base {
             'has-many' => ['\GeoKrety\Model\MoveComment', 'move'],
         ],
         'pictures_count' => [
-            'type' => Schema::DT_INT1,
-            'nullable' => true,
+            'type' => Schema::DT_TINYINT,
+            'default' => 0,
         ],
         'pictures' => [
             'has-many' => ['\GeoKrety\Model\Picture', 'move'],

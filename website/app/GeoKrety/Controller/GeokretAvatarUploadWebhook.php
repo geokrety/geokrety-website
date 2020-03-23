@@ -5,6 +5,11 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Picture;
 
 class GeokretAvatarUploadWebhook extends Base {
+//    /**
+//     * @var Picture
+//     */
+//    private $picture;
+
     public function post(\Base $f3) {
         if (!$f3->get('HEADERS.Authorization')) {
             http_response_code(400);
@@ -17,16 +22,9 @@ class GeokretAvatarUploadWebhook extends Base {
             die();
         }
 
-//        // DEBUG
-//        $f3->set('LOGS', '/tmp/');
-//        $logger = new \Log('error.log');
-//        $logger->write(print_r($f3->get('HEADERS'), true));
-//        $logger->write(print_r($f3->get('BODY'), true));
-//        $logger->write(json_decode($f3->get('BODY'), true)['Key']);
-
+        $s3Data = json_decode($f3->get('BODY'), true)['Records'][0]['s3'];
         // Load picture
         $picture = new Picture();
-        $s3Data = json_decode($f3->get('BODY'), true)['Records'][0]['s3'];
         $picture->load([
             'key = ? AND bucket = ?',
             $s3Data['object']['key'],

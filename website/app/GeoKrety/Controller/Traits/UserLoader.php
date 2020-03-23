@@ -14,14 +14,19 @@ trait UserLoader {
 
         // load User
         $user = new User();
+        $this->user = $user;
         $user->filter('badges', null, ['order' => 'awarded_on_datetime ASC']);
+        $this->filterHook();
         $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
-        $this->user = $user;
         Smarty::assign('user', $user);
+    }
+
+    protected function filterHook() {
+        // empty
     }
 }
