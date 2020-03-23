@@ -58,7 +58,7 @@ class TrackingCode {
         array_push($this->geokrety, $geokret);
     }
 
-    private function renderGeokret($geokret) {
+    private function renderGeokret(Geokret $geokret) {
         Smarty::assign('geokret', $geokret);
         $response = [
             'html' => Smarty::fetch('chunks/geokrety_status.tpl'),

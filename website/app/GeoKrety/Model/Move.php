@@ -195,7 +195,7 @@ EOQUERY;
         return $page[0]['page'];
     }
 
-    private function findNext($move) {
+    private function findNext(Move $move) {
         $next = new Move();
         $filter = [
             'id != ? AND geokret = ? AND logtype IN ? AND moved_on_datetime > ?',
@@ -213,7 +213,7 @@ EOQUERY;
         return $next;
     }
 
-    private function findPrev($move) {
+    private function findPrev(Move $move) {
         $prev = new Move();
         $filter = [
             'id != ? AND geokret = ? AND logtype IN ? AND moved_on_datetime < ?',
@@ -303,7 +303,7 @@ EOQUERY;
         $next->save();
     }
 
-    private function updateGeokretLastPosition(&$geokret) {
+    private function updateGeokretLastPosition(Geokret &$geokret) {
         $lastPosition = new Move();
         $filter = [
             'geokret = ? AND logtype IN ?',
@@ -317,7 +317,7 @@ EOQUERY;
         $geokret->last_position = $lastPosition->id;
     }
 
-    private function updateGeokretLastMove(&$geokret) {
+    private function updateGeokretLastMove(Geokret &$geokret) {
         $lastMove = new Move();
         $filter = [
             'geokret = ?',
@@ -330,7 +330,7 @@ EOQUERY;
         $geokret->last_log = $lastMove->id;
     }
 
-    private function updateGeokretStats(&$geokret) {
+    private function updateGeokretStats(Geokret &$geokret) {
         $moveStats = \Base::instance()->get('DB')->exec(
             'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `'.$this->table.'` WHERE geokret = ?',
             [
@@ -341,7 +341,7 @@ EOQUERY;
         $geokret->distance = $moveStats[0]['distance'];
     }
 
-    private function updateGeokretMissingStatus(&$geokret) {
+    private function updateGeokretMissingStatus(Geokret &$geokret) {
         $lastPosition = new Move();
         $filter = [
             'geokret = ? AND logtype IN ?',
@@ -378,11 +378,11 @@ EOQUERY;
 
     public function __construct() {
         parent::__construct();
-        $this->beforeinsert(function ($self) {
+        $this->beforeinsert(function (Move $self) {
             $self->touch('created_on_datetime');
             $self->touch('moved_on_datetime');
         });
-        $this->beforesave(function ($self) {
+        $this->beforesave(function (Move $self) {
             // Force reset fields if coordinates not required
             if ($self->logtype->isCountingKilometers()) {
                 $self->computeDistance(); // This move
@@ -398,7 +398,7 @@ EOQUERY;
                 $self->distance = null;
             }
         });
-        $this->aftersave(function ($self) {
+        $this->aftersave(function (Move $self) {
             $geokret = new Geokret();
             $geokret->load(['id = ?', $self->geokret->id]);
             $self->updateGeokretStats($geokret);
