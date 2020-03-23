@@ -37,8 +37,4 @@ class UserDetails extends Base {
 
         Smarty::render('pages/user_details.tpl');
     }
-
-    protected function filterHook() {
-        $this->user->filter('avatars', ['uploaded_on_datetime != ?', null]);
-    }
 }

@@ -13,6 +13,9 @@ trait MoveLoader {
         parent::beforeRoute($f3);
 
         $move = new Move();
+        $this->move = $move;
+        $this->move->filter('pictures', ['uploaded_on_datetime != ?', null]);
+        $this->filterHook();
         $move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($move->dry()) {
             http_response_code(404);
@@ -22,7 +25,6 @@ trait MoveLoader {
 
         $this->checkAuthor($move);
 
-        $this->move = $move;
         Smarty::assign('move', $this->move);
     }
 
@@ -32,5 +34,9 @@ trait MoveLoader {
             Smarty::render('dialog/alert_403.tpl');
             die();
         }
+    }
+
+    protected function filterHook() {
+        // empty
     }
 }

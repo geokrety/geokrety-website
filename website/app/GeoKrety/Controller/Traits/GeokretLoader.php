@@ -20,6 +20,7 @@ trait GeokretLoader {
         $this->geokret = $geokret;
         $geokret->load(['gkid = ?', $gkid]);
         $this->geokret->filter('owner_codes', ['user = ?', null]);
+        $this->geokret->filter('avatars', ['uploaded_on_datetime != ?', null]);
         $this->filterHook();
         if ($geokret->dry()) {
             http_response_code(404);

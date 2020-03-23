@@ -27,8 +27,4 @@ class GeokretDetails extends Base {
 
         // TODO check if GeoKret has already been discovered, and display Tracking Code
     }
-
-    protected function filterHook() {
-        $this->geokret->filter('avatars', ['uploaded_on_datetime != ?', null]);
-    }
 }
