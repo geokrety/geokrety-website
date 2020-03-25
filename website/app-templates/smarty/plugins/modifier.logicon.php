@@ -9,7 +9,10 @@
  * Purpose:  outputs a position icon
  * -------------------------------------------------------------
  */
-function smarty_modifier_logicon(\GeoKrety\Model\Move $move, bool $showSmall = false) {
+function smarty_modifier_logicon(?\GeoKrety\Model\Move $move, bool $showSmall = false) {
+    if (is_null($move)) {
+        return '';
+    }
     $gkType = $move->geokret->type->getTypeId();
 
     $url = GK_SITE_BASE_SERVER_URL.\Base::instance()->alias('geokret_details', '@gkid='.$move->geokret->gkid);

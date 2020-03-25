@@ -11,7 +11,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a geokret link
  * -------------------------------------------------------------
  */
-function smarty_modifier_userlink($user, ?string $alternative_name = null) {
+function smarty_modifier_userlink(?\GeoKrety\Model\User $user, ?string $alternative_name = null) {
     if (is_null($user) || !$user->id) {
         $username = _('Anonymous');
         if (!is_null($alternative_name)) {

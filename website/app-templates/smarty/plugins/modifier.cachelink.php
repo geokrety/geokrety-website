@@ -11,7 +11,10 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a cache link
  * -------------------------------------------------------------
  */
-function smarty_modifier_cachelink(\GeoKrety\Model\Move $move) {
+function smarty_modifier_cachelink(?\GeoKrety\Model\Move $move) {
+    if (is_null($move)) {
+        return '';
+    }
     // TODO
     return $move->waypoint;
 
