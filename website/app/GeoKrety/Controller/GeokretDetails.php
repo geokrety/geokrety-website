@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Move;
-use GeoKrety\Model\Picture;
 use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Traits\GeokretLoader;

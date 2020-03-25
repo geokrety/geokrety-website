@@ -163,6 +163,7 @@ class Picture extends Base {
         }
 
         captureMessage('We should never reach there!');
+
         return false;
     }
 

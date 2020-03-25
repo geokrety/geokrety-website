@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class UserRefreshSecid extends Base {
