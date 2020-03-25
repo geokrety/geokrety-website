@@ -44,6 +44,7 @@
 {/if}
 
 
+{if $pictures}
 <h2>📷 {t}Recent pictures{/t}</h2>
 <div class="panel panel-default picturesList">
     <div class="panel-body">
@@ -54,6 +55,7 @@
         </div>
     </div>
 </div>
+{/if}
 
 {if $geokrety}
 <h2>🐥 {t}Recently created GeoKrety{/t}</h2>
