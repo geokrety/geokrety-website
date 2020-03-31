@@ -58,6 +58,10 @@ moves-pictures-re-count:
 users-pictures-re-count:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/users/pictures/re-count"
 
+move-clean:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/moves/content/clean"
+move-comment-clean:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/move-comments/content/clean"
 pictures-import-legacy-to-s3:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/pictures/import/legacy-to-s3"
 
