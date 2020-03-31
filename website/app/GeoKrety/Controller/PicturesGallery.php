@@ -2,14 +2,11 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Picture;
 use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 class PicturesGallery extends Base {
-
     public function get() {
         // Load inventory
         $picture = new Picture();

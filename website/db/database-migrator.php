@@ -221,7 +221,6 @@ $pgsql->query("SELECT SETVAL('geokrety.users_id_seq', COALESCE(MAX(id), 1) ) FRO
 $pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_watched;");
 $pgsql->query("SELECT SETVAL('geokrety.waypoints_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints;");
 
-
 $pgsql->query('SET session_replication_role = DEFAULT;');
 
 class BaseMigrator {

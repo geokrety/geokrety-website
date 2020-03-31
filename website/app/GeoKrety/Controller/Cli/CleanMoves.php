@@ -7,7 +7,6 @@ use GeoKrety\Model\Move;
 use GeoKrety\Service\Markdown;
 
 class CleanMoves extends BaseCleaner {
-
     protected function getModel(): \GeoKrety\Model\Base {
         return new Move();
     }

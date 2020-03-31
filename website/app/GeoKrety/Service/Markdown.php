@@ -29,6 +29,7 @@ class Markdown extends \Prefab {
         $string = str_replace('<br />', '  ', $string);
         $string = str_replace('[<a href=\'', '', $string);
         $string = str_replace('\' rel=nofollow>Link</a>]', '', $string);
+
         return HTMLPurifier::getPurifier()->purify($string);
     }
 }

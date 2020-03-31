@@ -4,10 +4,8 @@ namespace GeoKrety\Controller\Cli;
 
 use Base;
 use GeoKrety\Model\MoveComment;
-use GeoKrety\Service\HTMLPurifier;
 
 class CleanMoveComments extends BaseCleaner {
-
     protected function getModel(): \GeoKrety\Model\Base {
         return new MoveComment();
     }
@@ -35,5 +33,4 @@ class CleanMoveComments extends BaseCleaner {
         }
         $this->processResult($object->id, $fixed);
     }
-
 }

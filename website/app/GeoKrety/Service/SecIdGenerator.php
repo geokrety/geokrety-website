@@ -10,6 +10,7 @@ class SecIdGenerator {
         foreach (array_rand($seed, GK_SITE_SECID_CODE_LENGTH) as $k) {
             $rand .= $seed[$k];
         }
+
         return $rand;
     }
 }

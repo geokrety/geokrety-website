@@ -47,6 +47,7 @@ class ConsoleWriter {
         if ($load > 3.00) {
             return ["\e[41m{$loadStr}\e[0m", 5];
         }
+
         return ["\e[32m{$loadStr}\e[0m", 0];
     }
 }
