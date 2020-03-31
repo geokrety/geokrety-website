@@ -4,7 +4,7 @@ FROM ${BASE_IMAGE}:${BASE_TAG}
 
 LABEL maintainer="GeoKrety Team <contact@geokrety.org>"
 HEALTHCHECK --start-period=60s --interval=30s --timeout=5s --retries=3 \
-CMD curl --fail -v --output /dev/stderr http://localhost:80/health || exit 1
+CMD curl -b /tmp/cookie.txt -c /tmp/cookie.txt --fail -v --output /dev/stderr http://localhost:80/health || exit 1
 
 WORKDIR /var/www/geokrety
 
