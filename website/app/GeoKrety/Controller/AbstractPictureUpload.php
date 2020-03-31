@@ -83,16 +83,18 @@ abstract class AbstractPictureUpload extends Base {
 
     public function getImgKey() {
         if (!isset($this->imgKey)) {
-            $this->imgKey = $this->generateKey();
+            $this->imgKey = $this->_generateKey();
         }
 
         return $this->imgKey;
     }
 
-    abstract protected function generateKey(): string;
-
     public function getFullImgKey() {
-        return sprintf('%s/%s', $this->getBucket(), $this->getImgKey());
+        return static::fullImgKey($this->getImgKey());
+    }
+
+    public static function fullImgKey(string $key) {
+        return sprintf('%s/%s', static::getBucket(), $key);
     }
 
     public function generatePictureObject(\Base $f3): Picture {
@@ -109,7 +111,9 @@ abstract class AbstractPictureUpload extends Base {
         return $picture;
     }
 
-    abstract public function getBucket(): string;
+    abstract protected function _generateKey(): string;
+
+    abstract public static function getBucket(): string;
 
     abstract public function getEventNameBase(): string;
 

@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Picture;
 use GeoKrety\PictureType;
 use GeoKrety\Traits\GeokretLoader;
@@ -10,11 +9,15 @@ use GeoKrety\Traits\GeokretLoader;
 class GeokretAvatarUpload extends AbstractPictureUpload {
     use GeokretLoader;
 
-    protected function generateKey(): string {
-        return uniqid(sprintf('%s_', $this->geokret->gkid), true);
+    protected function _generateKey(): string {
+        return self::generateKey($this->geokret->gkid);
     }
 
-    public function getBucket(): string {
+    public static function generateKey($id): string {
+        return uniqid(sprintf('%s_', $id), true);
+    }
+
+    public static function getBucket(): string {
         return GK_BUCKET_NAME_GEOKRETY_AVATARS;
     }
 
@@ -27,7 +30,6 @@ class GeokretAvatarUpload extends AbstractPictureUpload {
     }
 
     public function setRelationships(Picture $picture): void {
-        $f3 = \Base::instance(); //get('PARAMS.gkid');
-        $picture->geokret = Geokret::gkid2id($f3->get('PARAMS.gkid'));
+        $picture->geokret = $this->geokret->id;
     }
 }

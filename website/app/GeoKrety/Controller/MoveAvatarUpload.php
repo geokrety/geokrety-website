@@ -8,11 +8,15 @@ use GeoKrety\PictureType;
 class MoveAvatarUpload extends AbstractPictureUpload {
     use \MoveLoader;
 
-    protected function generateKey(): string {
-        return uniqid(sprintf('MOV%06d_', $this->move->id), true);
+    protected function _generateKey(): string {
+        return self::generateKey($this->move->id);
     }
 
-    public function getBucket(): string {
+    public static function generateKey($id): string {
+        return uniqid(sprintf('MOV%06d_', $id), true);
+    }
+
+    public static function getBucket(): string {
         return GK_BUCKET_NAME_MOVES_PICTURES;
     }
 
@@ -26,5 +30,6 @@ class MoveAvatarUpload extends AbstractPictureUpload {
 
     public function setRelationships(Picture $picture): void {
         $picture->move = $this->move;
+        $picture->geokret = $this->move->geokret;
     }
 }

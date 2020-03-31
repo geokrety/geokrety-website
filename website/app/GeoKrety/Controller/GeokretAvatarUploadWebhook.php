@@ -44,5 +44,7 @@ class GeokretAvatarUploadWebhook extends Base {
 
             \Event::instance()->emit('picture.uploaded', $picture);
         }
+
+        $f3->clear('SESSION');
     }
 }

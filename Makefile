@@ -58,6 +58,9 @@ moves-pictures-re-count:
 users-pictures-re-count:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/users/pictures/re-count"
 
+pictures-import-legacy-to-s3:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/pictures/import/legacy-to-s3"
+
 ## DEV Local instance of geokrety
 #	mkdir -p ./website/templates
 build: ## build local docker compose

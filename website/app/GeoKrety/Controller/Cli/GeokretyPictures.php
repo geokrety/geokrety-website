@@ -50,7 +50,7 @@ class GeokretyPictures {
         $this->processGeokretPicturesCount($geokret, new Picture());
     }
 
-    private function processGeokretPicturesCount(Geokret $geokret, Picture $picture) {
+    private function processGeokretPicturesCount(Geokret &$geokret, Picture &$picture) {
         $picturesCount = $picture->count(['geokret = ? AND uploaded_on_datetime != ?', $geokret->id, null]);
         $picturesCountOld = $geokret->pictures_count;
         $geokret->pictures_count = $picturesCount;
