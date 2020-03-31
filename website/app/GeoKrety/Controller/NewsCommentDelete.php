@@ -9,7 +9,6 @@ class NewsCommentDelete extends Base {
     use NewsCommentLoader;
 
     public function get(\Base $f3) {
-        Smarty::assign('comment', $this->comment);
         Smarty::render('dialog/news_comment_delete.tpl');
     }
 

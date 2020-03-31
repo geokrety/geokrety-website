@@ -13,6 +13,7 @@ trait NewsCommentLoader {
         parent::beforeRoute($f3);
 
         $comment = new NewsComment();
+        $this->comment = $comment;
         $comment->load(['id = ?', $f3->get('PARAMS.newscommentid')]);
         if ($comment->dry()) {
             http_response_code(404);
