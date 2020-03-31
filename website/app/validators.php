@@ -72,7 +72,7 @@ $validator->addValidator('move_not_same_datetime', function ($field, $input, $pa
     }
 
     $move = new  \GeoKrety\Model\Move();
-    $move->load([$field.' = ? AND geokret = ? AND id != ?', $input[$field]->format('Y-m-d H:i:s'), $input['geokret']->id, $input['_id']]);
+    $move->load([$field.' = ? AND geokret = ? AND id != ?', $input[$field]->format(GK_DB_DATETIME_FORMAT), $input['geokret']->id, $input['_id']]);
 
     return $move->dry();
 }, _('Something already exists at the same datetime "{0}"'));

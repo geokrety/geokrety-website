@@ -4,5 +4,5 @@ namespace GeoKrety\Model;
 
 class SiteStats extends Base {
     protected $db = 'DB';
-    protected $table = 'gk-wartosci';
+    protected $table = 'gk_statistics_counters';
 }

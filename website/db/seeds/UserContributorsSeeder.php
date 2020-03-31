@@ -20,7 +20,7 @@ class UserContributorsSeeder extends AbstractSeed {
                 'password' => \GeoKrety\Auth::hash_password($username),
                 'registration_ip' => '127.0.0.1',
                 'daily_mails_hour' => 0,
-                'terms_of_use_datetime' => date('Y-m-d H:i:s'),
+                'terms_of_use_datetime' => date(GK_DB_DATETIME_FORMAT),
                 'secid' => uniqid(),
             ];
         }

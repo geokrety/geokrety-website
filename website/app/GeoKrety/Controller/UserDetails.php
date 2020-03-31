@@ -13,7 +13,7 @@ class UserDetails extends Base {
     public function get(\Base $f3) {
         // GeoKrety owned stats
         $geokretyOwned = $f3->get('DB')->exec(
-            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-geokrety` WHERE owner = ?',
+            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM gk_geokrety WHERE owner = ?',
             [
                 $f3->get('PARAMS.userid'),
             ]
@@ -24,7 +24,7 @@ class UserDetails extends Base {
 
         // GeoKrety moved stats
         $geokretyMoved = $f3->get('DB')->exec(
-            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-moves` WHERE author = ? AND logtype NOT IN (?, ?)',
+            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM gk_moves WHERE author = ? AND logtype NOT IN (?, ?)',
             [
                 $f3->get('PARAMS.userid'),
                 LogType::LOG_TYPE_COMMENT,

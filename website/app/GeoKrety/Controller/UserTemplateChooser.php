@@ -14,7 +14,7 @@ class UserTemplateChooser extends Base {
 
     public function post(\Base $f3) {
         $user = $this->currentUser;
-        $user->statpic_template_id = $f3->get('POST.statpic');
+        $user->statpic_template = $f3->get('POST.statpic');
 
         if ($user->validate()) {
             $user->save();

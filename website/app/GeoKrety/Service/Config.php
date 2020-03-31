@@ -14,6 +14,7 @@ class Config extends \Prefab {
         define('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH') ?: 42);
         define('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY', getenv('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY') ?: 5);
         define('GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY', getenv('GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY') ?: 31);
+        define('GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY', getenv('GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY') ?: 31);
         define('GK_SITE_PASSWORD_RECOVERY_CODE_LENGTH', getenv('GK_SITE_PASSWORD_RECOVERY_CODE_LENGTH') ?: 42);
         define('GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY', getenv('GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY') ?: 1);
         define('GK_SITE_SECID_CODE_LENGTH', getenv('GK_SITE_SECID_CODE_LENGTH') ?: 128);
@@ -71,9 +72,15 @@ class Config extends \Prefab {
         define('GK_BOT_USERNAME', getenv('GK_BOT_USERNAME') ?: 'GeoKrety Bot ');
 
         // DATABASE config
-        define('GK_DB_DSN', getenv('GK_DB_DSN') ?: 'mysql:host=db;port=3306;dbname=geokrety;charset=utf8mb4');
+        define('GK_DB_ENGINE', getenv('GK_DB_ENGINE') ?: 'pgsql');
+        define('GK_DB_HOST', getenv('GK_DB_HOST') ?: 'postgres');
+        define('GK_DB_NAME', getenv('GK_DB_NAME') ?: 'geokrety');
         define('GK_DB_USER', getenv('GK_DB_USER') ?: 'geokrety');
         define('GK_DB_PASSWORD', getenv('GK_DB_PASSWORD') ?: 'geokrety');
+        define('GK_DB_DSN', getenv('GK_DB_DSN') ?: sprintf('%s:host=%s;dbname=%s;user=%s;password=%s', GK_DB_ENGINE, GK_DB_HOST, GK_DB_NAME, GK_DB_USER, GK_DB_PASSWORD));
+
+        define('GK_DB_DATETIME_FORMAT', 'Y-m-d H:i:sP');
+        define('GK_DB_DATETIME_FORMAT_WITHOUT_TZ', 'Y-m-d H:i:s');
 
         // SMTP config
         define('GK_SMTP_HOST', getenv('GK_SMTP_HOST') ?: null);

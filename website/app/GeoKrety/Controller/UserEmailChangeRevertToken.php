@@ -21,7 +21,7 @@ class UserEmailChangeRevertToken extends Base {
 
         // Check database for provided token
         if ($f3->exists('PARAMS.token')) {
-            $token->load(['revert_token = ? AND used = ? AND DATE_ADD(used_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('PARAMS.token'), EmailActivationToken::TOKEN_CHANGED, GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY]);
+            $token->load(['revert_token = ? AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $f3->get('PARAMS.token'), EmailActivationToken::TOKEN_CHANGED, GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY.' DAY']);
             if ($token->dry()) {
                 Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
                 $f3->reroute('@user_update_email_validate');

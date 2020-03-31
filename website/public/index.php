@@ -4,11 +4,7 @@ require '../init-f3.php';
 $f3->config('../app/cron.ini');
 $f3->config('../app/assets.ini');
 
-// Prevent filling the session storage, with one shot sessions
-if (!in_array($_SERVER['REQUEST_URI'], ['/health', '/cron', '/s3/file-uploaded'])) {
-    // Start Session
-    new \DB\SQL\Session($f3->get('DB'));
-}
+new \DB\SQL\Session($f3->get('DB'));
 
 // Local Mail
 if (is_null(GK_SMTP_HOST)) {
@@ -24,9 +20,6 @@ $access->authorize($f3->get('SESSION.user.group'));
 
 Cron::instance();
 \Assets::instance();
-if (GK_F3_DEBUG) {
-    \Assets::instance()->clear();
-}
 \Assets\Sass::instance()->init();
 
 $f3->run();

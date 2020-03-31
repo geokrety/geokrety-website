@@ -45,7 +45,7 @@ class Registration extends Base {
         // Resend validation
         $token = new AccountActivationModel();
         $token->has('user', ['username = ? AND email = ?', $f3->get('POST.username'), $f3->get('POST.email')]);
-        $token->load(['used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', AccountActivationModel::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY]);
+        $token->load(['used = ? AND created_on_datetime + cast(? as interval) >= NOW()', AccountActivationModel::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
         if ($token->valid()) {
             $smtp = new AccountActivation();
             $smtp->sendActivationAgain($token);

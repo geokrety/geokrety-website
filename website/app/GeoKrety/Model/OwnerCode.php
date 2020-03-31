@@ -8,7 +8,7 @@ class OwnerCode extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-owner-codes';
+    protected $table = 'gk_owner_codes';
 
     protected $fieldConf = [
         'geokret' => [

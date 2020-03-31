@@ -25,7 +25,7 @@ class EmailActivationToken extends Base {
     ];
 
     protected $db = 'DB';
-    protected $table = 'gk-email-activation';
+    protected $table = 'gk_email_activation';
 
     protected $fieldConf = [
         'email' => [
@@ -107,13 +107,12 @@ class EmailActivationToken extends Base {
     }
 
     public static function expireOldTokens() {
-        $f3 = \Base::instance();
         $activation = new EmailActivationToken();
         $expiredTokens = $activation->find([
-            'used = ? AND (NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY) OR NOW() >= DATE_ADD(used_on_datetime, INTERVAL ? DAY))',
+            'used = ? AND (created_on_datetime > NOW() - cast(? as interval) OR used_on_datetime > NOW() - cast(? as interval))',
             self::TOKEN_UNUSED,
-            GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY,
-            GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY,
+            GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
+            GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY.' DAY',
         ]);
         if ($expiredTokens === false) {
             return;

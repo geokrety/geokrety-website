@@ -12,7 +12,7 @@ class PasswordToken extends Base {
     const TOKEN_EXPIRED = 2;
 
     protected $db = 'DB';
-    protected $table = 'gk-password-tokens';
+    protected $table = 'gk_password_tokens';
 
     protected $fieldConf = [
         'token' => [

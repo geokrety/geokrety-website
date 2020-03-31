@@ -6,13 +6,13 @@ use DB\SQL\Schema;
 
 class NewsSubscription extends Base {
     protected $db = 'DB';
-    protected $table = 'gk-news-comments-access';
+    protected $table = 'gk_news_comments_access';
 
     protected $fieldConf = [
         'last_read_datetime' => [
              'type' => Schema::DT_DATETIME,
         ],
-        'user' => [
+        'author' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
         ],
         'news' => [

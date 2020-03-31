@@ -23,10 +23,10 @@ if [ "$1" = 'apache2-foreground' ]; then
     make buckets
 
     # Migrate database
-    make phinx-migrate
+    runuser -u www-data make phinx-migrate
 
     # build templates
-    make compile-all-templates
+    runuser -u www-data make compile-all-templates
 
     # build translations
     make build-translations

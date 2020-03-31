@@ -24,7 +24,7 @@ class UserBanner {
 
         // GeoKrety moved stats
         $geokretyMoved = $f3->get('DB')->exec(
-            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-moves` WHERE author = ? AND logtype NOT IN (?, ?)',
+            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM gk_moves WHERE author = ? AND logtype NOT IN (?, ?)',
             [
                 $user->id,
                 LogType::LOG_TYPE_COMMENT,
@@ -34,13 +34,13 @@ class UserBanner {
 
         // GeoKrety owned stats
         $geokretyOwned = $f3->get('DB')->exec(
-            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `gk-geokrety` WHERE owner = ?',
+            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM gk_geokrety WHERE owner = ?',
             [
                 $user->id,
             ]
         );
 
-        $img = new \Image(sprintf('%s/statpics/templates/%d.png', $f3->get('UI'), $user->statpic_template_id));
+        $img = new \Image(sprintf('%s/statpics/templates/%d.png', $f3->get('UI'), $user->statpic_template));
         $raw = $img->data();
         $font = sprintf('%s/fonts/%s', $f3->get('UI'), GK_USER_STATPIC_FONT);
 

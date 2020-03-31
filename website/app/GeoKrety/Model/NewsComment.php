@@ -9,7 +9,7 @@ class NewsComment extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-news-comments';
+    protected $table = 'gk_news_comments';
 
     protected $fieldConf = [
         'author' => [

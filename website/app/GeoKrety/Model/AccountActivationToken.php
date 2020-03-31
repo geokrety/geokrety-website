@@ -16,7 +16,7 @@ class AccountActivationToken extends Base {
     ];
 
     protected $db = 'DB';
-    protected $table = 'gk-account-activation';
+    protected $table = 'gk_account_activation';
 
     protected $fieldConf = [
         'token' => [
@@ -64,12 +64,12 @@ class AccountActivationToken extends Base {
 
     // TODO call that from cron
     public static function expireOldTokens() {
-        $f3 = \Base::instance();
         $activation = new AccountActivationToken();
         $expiredTokens = $activation->find([
             'used = ? AND NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)',
+            'used = ? AND created_on_datetime > NOW() - cast(? as interval)',
             self::TOKEN_UNUSED,
-            GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY,
+            GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
         ]);
         if ($expiredTokens === false) {
             return;

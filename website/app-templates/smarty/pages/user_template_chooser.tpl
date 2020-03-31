@@ -13,7 +13,7 @@
                 {for $statpic=1 to $statpic_template_count}
                 <div class="radio radio-inline">
                     <label>
-                        <input type="radio" name="statpic" value="{$statpic}" {if $currentUser->statpic_template_id === $statpic} checked{/if}>
+                        <input type="radio" name="statpic" value="{$statpic}" {if $currentUser->statpic_template === $statpic} checked{/if}>
                         {$statpic|statpictemplate nofilter}
                     </label>
                 </div>

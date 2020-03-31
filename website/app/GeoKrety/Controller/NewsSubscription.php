@@ -39,10 +39,10 @@ class NewsSubscription extends Base {
 
     private function loadSubscription(\Base $f3) {
         $subscription = new NewsSubscriptionModel();
-        $subscription->load(['news = ? AND user = ?', $f3->get('PARAMS.newsid'), $f3->get('SESSION.CURRENT_USER')]);
+        $subscription->load(['news = ? AND author = ?', $f3->get('PARAMS.newsid'), $f3->get('SESSION.CURRENT_USER')]);
         if ($subscription->dry()) {
             $subscription->news = $f3->get('PARAMS.newsid');
-            $subscription->user = $f3->get('SESSION.CURRENT_USER');
+            $subscription->author = $f3->get('SESSION.CURRENT_USER');
         }
 
         return $subscription;

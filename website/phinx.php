@@ -19,8 +19,9 @@ return [
         'default_database' => 'local',
         'local' => [
             // Database name
-            'name' => $pdo->query('select database()')->fetchColumn(),
+            'name' => GK_DB_NAME,
             'connection' => $pdo,
+            'schema' => GK_DB_NAME,
         ],
     ],
 ];

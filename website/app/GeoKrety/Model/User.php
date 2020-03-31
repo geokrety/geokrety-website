@@ -3,6 +3,7 @@
 namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
+use GeoKrety\Service\SecIdGenerator;
 
 class User extends Base {
     use \Validation\Traits\CortexTrait;
@@ -13,7 +14,7 @@ class User extends Base {
     const USER_EMAIL_NO_ERROR = 0;
 
     protected $db = 'DB';
-    protected $table = 'gk-users';
+    protected $table = 'gk_users';
 
     protected $fieldConf = [
         'username' => [
@@ -83,6 +84,7 @@ class User extends Base {
         ],
         'home_country' => [
             'type' => Schema::DT_VARCHAR128,
+            // TODO: Validator missing
             'nullable' => true,
         ],
         'observation_area' => [
@@ -90,7 +92,7 @@ class User extends Base {
             'validate' => 'min_numeric,0|max_numeric,'.GK_USER_OBSERVATION_AREA_MAX_KM,
             'default' => 0,
         ],
-        'statpic_template_id' => [
+        'statpic_template' => [
             'type' => Schema::DT_SMALLINT,
             'validate' => 'min_numeric,1|max_numeric,'.GK_USER_STATPIC_TEMPLATE_COUNT,
             'default' => 1,
@@ -111,8 +113,8 @@ class User extends Base {
         ],
         'terms_of_use_datetime' => [
             'type' => Schema::DT_DATETIME,
-            'nullable' => false,
-            'validate' => 'required|date',
+            'nullable' => true,
+            'validate' => 'date',
         ],
         'pictures_count' => [
             'type' => Schema::DT_TINYINT,
@@ -134,7 +136,7 @@ class User extends Base {
             'has-many' => ['\GeoKrety\Model\NewsComment', 'author'],
         ],
         'news_subscription' => [
-            'has-many' => ['\GeoKrety\Model\NewsSubscription', 'user'],
+            'has-many' => ['\GeoKrety\Model\NewsSubscription', 'author'],
         ],
         'geokrety_owned' => [
             'has-many' => ['\GeoKrety\Model\Geokret', 'owner'],
@@ -190,17 +192,6 @@ class User extends Base {
         return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->id;
     }
 
-    public function refreshSecid() {
-        // generate new secid
-        $seed = str_split(str_repeat('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 42));
-        shuffle($seed);
-        $rand = '';
-        foreach (array_rand($seed, GK_SITE_SECID_CODE_LENGTH) as $k) {
-            $rand .= $seed[$k];
-        }
-        $this->secid = $rand;
-    }
-
     protected function generateAccountActivation() {
         $token = new AccountActivationToken();
         $token->user = $this;
@@ -216,7 +207,7 @@ class User extends Base {
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
-            $self->refreshSecid();
+            $this->secid = SecIdGenerator::generate();
             $self->registration_ip = \Base::instance()->get('IP');
             $self->daily_mails_hour = rand(0, 23); // Spread the load
         });

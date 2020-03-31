@@ -8,7 +8,7 @@ class Badge extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-badges';
+    protected $table = 'gk_badges';
 
     protected $fieldConf = [
         'holder' => [

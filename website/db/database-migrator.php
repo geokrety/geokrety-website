@@ -1,0 +1,811 @@
+<?php
+
+// Framework bootstrap code here
+use GeoKrety\PictureType;
+use GeoKrety\Service\ConsoleWriter;
+use GeoKrety\Service\LanguageService;
+use GeoKrety\Service\Markdown;
+use GeoKrety\Service\SecIdGenerator;
+
+require '../init-f3.php';
+
+// Get PDO object
+$pgsql = $f3->get('DB')->pdo();
+
+$dsn = 'mysql:host=db;dbname=prod';
+$username = getenv('GK_DB_USER');
+$password = getenv('GK_DB_PASSWORD');
+$options = [
+    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;',
+];
+
+$mysql = new PDO($dsn, $username, $password, $options);
+
+define('DEFAULT_PAGINATION', 1000);
+
+$pgsql->query('SET session_replication_role = replica;');
+$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints", "gk_waypoints_country", "gk_waypoints_sync", "gk_waypoints_types", "phinxlog", "scripts", "sessions" RESTART IDENTITY CASCADE';
+$pgsql->query($sql);
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-waypointy-country';
+$pName = 'gk_waypoints_country';
+$mFields = ['kraj', 'country'];
+$pFields = ['original', 'country'];
+$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-waypointy-sync';
+$pName = 'gk_waypoints_sync';
+$mFields = ['service_id', 'last_update'];
+$pFields = ['service_id', 'last_update'];
+$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-waypointy-type';
+$pName = 'gk_waypoints_types';
+$mFields = ['typ', 'cache_type'];
+$pFields = ['type', 'cache_type'];
+$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-waypointy';
+$pName = 'gk_waypoints';
+$mFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'typ', 'kraj', 'link', 'status', 'timestamp'];
+$pFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
+$migrator = new WaypointMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-users';
+$pName = 'gk_users';
+$mFields = ['userid', 'user', 'haslo2', 'email', 'email_invalid', 'joined', 'timestamp', 'wysylacmaile', 'ip', 'lang', 'lat', 'lon', 'promien', 'country', 'godzina', 'statpic', 'ostatni_mail', 'ostatni_login', 'secid'];
+$pFields = ['id', 'username', 'password', 'email', 'email_invalid', 'joined_on_datetime', 'updated_on_datetime', 'daily_mails', 'registration_ip', 'preferred_language', 'home_latitude', 'home_longitude', 'observation_area', 'home_country', 'daily_mails_hour', 'statpic_template', 'last_mail_datetime', 'last_login_datetime', 'secid'];
+// // , 'pictures_count', 'avatar', 'terms_of_use_datetime', 'account_valid'
+$migrator = new UserMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-news';
+$pName = 'gk_news';
+$mFields = ['news_id', 'date', 'tytul', 'tresc', 'who', 'userid', 'komentarze', 'ostatni_komentarz'];
+$pFields = ['id', 'created_on_datetime', 'title', 'content', 'author_name', 'author', 'comments_count', 'last_commented_on_datetime'];
+$migrator = new NewsMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-news-comments';
+$pName = 'gk_news_comments';
+$mFields = ['comment_id', 'news_id', 'user_id', 'date', 'comment'];
+$pFields = ['id', 'news', 'author', 'created_on_datetime', 'content', 'updated_on_datetime'];
+$migrator = new NewsCommentsMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-news-comments-access';
+$pName = 'gk_news_comments_access';
+$mFields = ['news_id', 'user_id', 'read', 'subscribed'];
+$pFields = ['news', 'author', 'last_read_datetime', 'subscribed'];
+$migrator = new NewsCommentsAccessMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-badges';
+$pName = 'gk_badges';
+$mFields = ['id', 'userid', 'timestamp', 'desc', 'file'];
+$pFields = ['id', 'holder', 'awarded_on_datetime', 'description', 'filename', 'updated_on_datetime'];
+$migrator = new BadgesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-geokrety';
+$pName = 'gk_geokrety';
+$mFields = ['id', 'nr', 'nazwa', 'opis', 'owner', 'data', 'droga', 'skrzynki', 'zdjecia', 'ost_pozycja_id', 'ost_log_id', 'hands_of', 'missing', 'typ', 'avatarid', 'timestamp'];
+$pFields = ['gkid', 'tracking_code', 'name', 'mission', 'owner', 'created_on_datetime', 'distance', 'caches_count', 'pictures_count', 'last_position', 'last_log', 'holder', 'missing', 'type', 'avatar', 'updated_on_datetime'];
+$migrator = new GeokretyMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-geokrety-rating';
+$pName = 'gk_geokrety_rating';
+$mFields = ['id', 'userid', 'rate'];
+$pFields = ['geokret', 'author', 'rate'];
+$migrator = new GeokretyRatesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-maile';
+$pName = 'gk_mails';
+$mFields = ['random_string', 'from', 'to', 'temat', 'tresc', 'timestamp', 'ip'];
+$pFields = ['token', 'from_user', 'to_user', 'subject', 'content', 'sent_on_datetime', 'ip'];
+$migrator = new MailsMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-races';
+$pName = 'gk_races';
+$mFields = ['raceid', 'created', 'raceOwner', 'private', 'haslo', 'raceTitle', 'racestart', 'raceend', 'opis', 'raceOpts', 'wpt', 'targetlat', 'targetlon', 'targetDist', 'targetCaches', 'status'];
+$pFields = ['id', 'created_on_datetime', 'organizer', 'private', 'password', 'title', 'start_on_datetime', 'end_on_datetime', 'description', 'type', 'waypoint', 'target_lat', 'target_lon', 'target_dist', 'target_caches', 'status', 'updated_on_datetime'];
+$migrator = new RacesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-races-krety';
+$pName = 'gk_races_participants';
+$mFields = ['raceGkId', 'raceid', 'geokretid', 'initDist', 'initCaches', 'distToDest', 'joined', 'finished', 'finishDist', 'finishCaches', 'finishLat', 'finishLon'];
+$pFields = ['id', 'race', 'geokret', 'initial_distance', 'initial_caches_count', 'distance_to_destination', 'joined_on_datetime', 'finished_on_datetime', 'finish_distance', 'finish_caches_count', 'finish_lat', 'finish_lon', 'updated_on_datetime'];
+$migrator = new RacesParticipantsMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-owner-codes';
+$pName = 'gk_owner_codes';
+$mFields = ['id', 'kret_id', 'code', 'generated_date', 'claimed_date', 'user_id'];
+$pFields = ['id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'user'];
+$migrator = new OwnerCodesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-statystyki-dzienne';
+$pName = 'gk_statistics_daily_counters';
+$mFields = ['data', 'dzien', 'gk', 'gk_', 'gk_zakopane_', 'procent_zakopanych', 'users', 'users_', 'ruchow', 'ruchow_'];
+$pFields = ['date', 'day_total', 'geokrety_created', 'geokrety_created_total', 'geokrety_in_caches', 'percentage_in_caches', 'users_registered', 'users_registered_total', 'moves_created', 'moves_created_total'];
+$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-wartosci';
+$pName = 'gk_statistics_counters';
+$mFields = ['name', 'value'];
+$pFields = ['name', 'value'];
+$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-waypointy-gc';
+$pName = 'gk_waypoints_gc';
+$mFields = ['wpt', 'country', 'alt', 'lat', 'lon'];
+$pFields = ['waypoint', 'country', 'elevation', 'coordinates'];
+$migrator = new WaypointGCMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-ruchy';
+$pName = 'gk_moves';
+$mFields = ['ruch_id', 'id', 'lat', 'lon', 'alt', 'country', 'droga', 'waypoint', 'data', 'data_dodania', 'user', 'koment', 'zdjecia', 'komentarze', 'logtype', 'username', 'timestamp', 'app', 'app_ver'];
+$pFields = ['id', 'geokret', 'lat', 'lon', 'alt', 'country', 'distance', 'waypoint', 'created_on_datetime', 'moved_on_datetime', 'author', 'comment', 'pictures_count', 'comments_count', 'logtype', 'username', 'updated_on_datetime', 'app', 'app_ver'];
+$migrator = new MovesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-ruchy-comments';
+$pName = 'gk_moves_comments';
+$mFields = ['ruch_id', 'kret_id', 'user_id', 'data_dodania', 'comment', 'type', 'timestamp'];
+$pFields = ['move', 'geokret', 'author', 'created_on_datetime', 'content', 'type', 'updated_on_datetime'];
+$migrator = new MoveCommentsMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-obrazki';
+$pName = 'gk_pictures';
+$mFields = ['obrazekid', 'typ', 'id', 'id_kreta', 'user', 'plik', 'opis', 'timestamp'];
+$pFields = ['id', 'type', 'move', 'geokret', 'user', 'filename', 'caption', 'created_on_datetime', 'updated_on_datetime', 'uploaded_on_datetime', 'author', 'bucket', 'key'];
+$migrator = new PicturesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
+//// ---------------------------------------------------------------------------------------------------------------------
+
+$pgsql->query("SELECT SETVAL('geokrety.account_activation_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_account_activation;");
+$pgsql->query("SELECT SETVAL('geokrety.badges_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_badges;");
+$pgsql->query("SELECT SETVAL('geokrety.email_activation_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_email_activation;");
+$pgsql->query("SELECT SETVAL('geokrety.geokrety_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_geokrety;");
+$pgsql->query("SELECT SETVAL('geokrety.geokrety_rating_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_geokrety_rating;");
+$pgsql->query("SELECT SETVAL('geokrety.gk_statistics_counters_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_statistics_counters;");
+$pgsql->query("SELECT SETVAL('geokrety.gk_statistics_daily_counters_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_statistics_daily_counters;");
+$pgsql->query("SELECT SETVAL('geokrety.mails_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_mails;");
+$pgsql->query("SELECT SETVAL('geokrety.move_comments_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_moves_comments;");
+$pgsql->query("SELECT SETVAL('geokrety.moves_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_moves;");
+$pgsql->query("SELECT SETVAL('geokrety.news_comments_access_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_news_comments_access;");
+$pgsql->query("SELECT SETVAL('geokrety.news_comments_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_news_comments;");
+$pgsql->query("SELECT SETVAL('geokrety.news_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_news;");
+$pgsql->query("SELECT SETVAL('geokrety.owner_codes_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_owner_codes;");
+$pgsql->query("SELECT SETVAL('geokrety.password_tokens_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_password_tokens;");
+$pgsql->query("SELECT SETVAL('geokrety.pictures_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_pictures;");
+$pgsql->query("SELECT SETVAL('geokrety.races_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_races;");
+$pgsql->query("SELECT SETVAL('geokrety.races_participants_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_races_participants;");
+$pgsql->query("SELECT SETVAL('geokrety.scripts_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.scripts;");
+$pgsql->query("SELECT SETVAL('geokrety.users_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_users;");
+$pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_watched;");
+$pgsql->query("SELECT SETVAL('geokrety.waypoints_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints;");
+
+
+$pgsql->query('SET session_replication_role = DEFAULT;');
+
+class BaseMigrator {
+    private $debug = false;
+    private $mName;
+    private $pName;
+    protected $mPdo;
+    protected $pPdo;
+
+    private $mFields;
+    private $pFields;
+
+    private $totalRecords;
+    private $processedRecords = 0;
+    private $totalPages;
+
+    private $writer;
+    protected $purifier;
+
+    public function __construct(PDO $mPdo, PDO $pPdo, string $mName, string $pName, array $mFields, array $pFields) {
+        $this->mName = $mName;
+        $this->pName = $pName;
+        $this->mPdo = $mPdo;
+        $this->pPdo = $pPdo;
+        $this->mFields = $mFields;
+        $this->pFields = $pFields;
+
+        array_walk($this->pFields, function (&$value) { $value = '"'.$value.'"'; });
+        array_walk($this->mFields, function (&$value) { $value = '`'.$value.'`'; });
+
+        if ($this->debug) {
+            $sql = "TRUNCATE {$this->pName} RESTART IDENTITY CASCADE";
+            $this->pPdo->query($sql);
+        }
+        $this->prepareData();
+
+        $this->count();
+        $this->purifier = GeoKrety\Service\HTMLPurifier::getPurifier();
+        $this->writer = new ConsoleWriter("Importing {$this->pName}: %6.2f%% (%s/%d)");
+
+//        $this->pPdo->query('SET session_replication_role = replica;');
+    }
+
+//    public function __destruct() {
+//        $this->pPdo->query('SET session_replication_role = DEFAULT;');
+//    }
+
+    protected function prepareData() {
+        // Empty
+    }
+
+    protected function postProcessData() {
+        // Empty
+    }
+
+    private function count() {
+        $sql = "SELECT count(*) FROM `{$this->mName}`";
+        $stmt = $this->mPdo->query($sql);
+        $this->totalRecords = $stmt->fetchColumn();
+    }
+
+    private function prepareSelect($size): PDOStatement {
+        $fields = join(', ', $this->mFields);
+
+        return $this->mPdo->prepare("SELECT $fields FROM `$this->mName` LIMIT :start, ".$size);
+    }
+
+    private function prepareInsert(int $chunkSize): PDOStatement {
+        $fields = join(', ', $this->pFields);
+        $sqlBase = "INSERT INTO {$this->pName} ($fields) VALUES ";
+        $value = join(', ', array_fill(0, sizeof($this->pFields), '?'));
+        $values = join(', ', array_fill(0, $chunkSize, "($value)"));
+        $sql = $sqlBase.$values;
+
+        return $this->pPdo->prepare($sql);
+    }
+
+    protected function cleanerHook(&$values) {
+        array_walk($values, function (&$value) { $value = trim($value); });
+    }
+
+    public function process($paginate = DEFAULT_PAGINATION) {
+        $select = $this->prepareSelect($paginate);
+        $insert = $this->prepareInsert($paginate);
+
+        $this->totalPages = ceil($this->totalRecords / $paginate);
+        $firstpage = $this->totalPages - floor(($this->totalRecords - $this->processedRecords) / $paginate);
+
+        for ($i = $firstpage; $i <= $this->totalPages; ++$i) {
+            $select->bindParam(':start', $this->processedRecords, PDO::PARAM_INT);
+            $select->execute();
+
+            $results = $select->fetchAll(PDO::FETCH_NUM);
+            $this->_process($insert, $results, $paginate);
+        }
+        echo PHP_EOL;
+        $this->postProcessData();
+    }
+
+    private function _process(&$insert, &$results, int $paginate) {
+        $this->pPdo->beginTransaction();
+
+        $chunkSize = sizeof($results);
+        if (!$chunkSize) {
+            $this->pPdo->rollBack();
+
+            return;
+        }
+
+        if ($chunkSize < $paginate) {
+            $insert = $this->prepareInsert($chunkSize);
+            $paginate = $chunkSize;
+        }
+        $combine = [];
+        foreach ($results as $line) {
+            $this->cleanerHook($line);
+            $combine = array_merge($combine, $line);
+        }
+
+        if ($insert->execute($combine) === false) {
+            $this->pPdo->rollBack();
+            if ($paginate > 1) {
+                $newPaginate = ceil($paginate / 2);
+                $this->process($newPaginate);
+            }
+            echo PHP_EOL;
+            var_dump($results);
+            echo join(', ', $this->pFields).PHP_EOL;
+            echo join(', ', $combine).PHP_EOL;
+            print_r($insert->errorInfo());
+            die();
+        }
+
+        $this->processedRecords += $chunkSize;
+        $this->writer->print([$this->processedRecords / $this->totalRecords * 100, $this->processedRecords, $this->totalRecords]);
+        $this->pPdo->commit();
+    }
+}
+
+class WaypointMigrator extends BaseMigrator {
+    protected function prepareData() {
+        $this->mPdo->query("DELETE FROM `gk-waypointy` WHERE waypoint LIKE ' %' LIMIT 2");
+        $this->mPdo->query('DELETE FROM `gk-waypointy` WHERE `lat` IS NULL OR `lon` IS NULL LIMIT 13');
+    }
+
+    protected function cleanerHook(&$values) {
+        parent::cleanerHook($values);
+        $values[1] = floatval($values[1]);
+        $values[2] = floatval($values[2]);
+    }
+}
+
+class UserMigrator extends BaseMigrator {
+    protected function prepareData() {
+        $this->mPdo->query('UPDATE `gk-users` SET joined = timestamp WHERE joined IS NULL LIMIT 3');
+    }
+
+    protected function cleanerHook(&$values) {
+//        parent::cleanerHook($values);
+        $values[5] = $values[5] === '0000-00-00 00:00:00' ? null : $values[5];  // joined_on_datetime
+        $values[16] = $values[16] === '0000-00-00 00:00:00' ? null : $values[16];  // last_mail_datetime
+        $values[17] = $values[17] === '0000-00-00 00:00:00' ? null : $values[17];  // last_login_datetime
+
+        $values[8] = filter_var($values[8], FILTER_VALIDATE_IP) ? $values[8] : '0.0.0.0';  // registration_ip
+
+        $values[1] = html_entity_decode($this->purifier->purify($values[1]));  // username
+
+        $values[2] = $values[2] ?: null;  // password
+        $values[3] = filter_var($values[3], FILTER_VALIDATE_EMAIL) ? $values[3] : null;  // email
+        $values[9] = LanguageService::isLanguageSupported($values[9]) ? $values[9] : null;  // preferred_language
+        $values[13] = $values[13] ? trim($values[13]) : null;  // home_country
+        $values[18] = $values[18] ?: SecIdGenerator::generate();  // secid
+    }
+
+    // TODO users avatar
+    // TODO revalidate home_country
+}
+
+class NewsMigrator extends BaseMigrator {
+    // 'id', 'created_on_datetime', 'title', 'content', 'author_name', 'author', 'comments_count', 'last_commented_on_datetime'
+    protected function cleanerHook(&$values) {
+        $values[4] = $values[4] ?: 'GK Team';  // author_name
+        $values[5] = $values[5] ?: null;  // author
+        $values[7] = $values[7] ?: null;  // last_commented_on_datetime
+        $values[2] = Markdown::toFormattedMarkdown($values[2]);
+        $values[3] = Markdown::toFormattedMarkdown($values[3]);
+    }
+
+    // TODO: Recompute comments count
+}
+
+class NewsCommentsMigrator extends BaseMigrator {
+    // $pFields = ['id', 'news', 'author', 'content', 'created_on_datetime', 'updated_on_datetime'];
+    protected function cleanerHook(&$values) {
+        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // content
+        $values[5] = $values[3];  // updated_on_datetime
+    }
+}
+
+class NewsCommentsAccessMigrator extends BaseMigrator {
+    protected function cleanerHook(&$values) {
+    }
+}
+
+class BadgesMigrator extends BaseMigrator {
+    protected function prepareData() {
+        $this->mPdo->query('UPDATE `gk-badges` SET timestamp = "2019-12-30 23:25:00" WHERE id = 1056 LIMIT 1');
+    }
+
+    protected function cleanerHook(&$values) {
+        $values[5] = $values[2];  // updated_on_datetime
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('DELETE FROM gk_badges WHERE holder NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+    }
+}
+
+class GeokretyMigrator extends BaseMigrator {
+    // $pFields = ['gkid', 'tracking_code', 'name', 'mission', 'owner', 'created_on_datetime', 'distance', 'caches_count', 'pictures_count', 'last_position', 'last_log', 'holder', 'missing', 'type', 'avatar', 'updated_on_datetime'];
+
+    protected function prepareData() {
+        $this->mPdo->query('UPDATE `gk-geokrety` SET typ = "1" WHERE id = 14282 LIMIT 1');
+    }
+
+    protected function cleanerHook(&$values) {
+        $values[2] = trim(html_entity_decode($this->purifier->purify($values[2])));  // name
+        $values[4] = $values[4] ?: null;  // owner
+        $values[11] = $values[11] ?: null;  // holder
+        $values[12] = $values[12] > 1 ? 1 : 0;  // missing
+
+        $values[14] = $values[14] ?: null;  // avatar
+
+        $values[9] = $values[9] ?: null;  // last_position
+        $values[10] = $values[10] ?: null;  // last_log
+
+        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // mission
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_geokrety SET owner = NULL WHERE owner NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        $this->pPdo->query('UPDATE gk_geokrety SET holder = NULL WHERE holder NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+    }
+
+    // TODO: recompute avatar
+    // TODO: recompute distance
+    // TODO: recompute caches_count
+    // TODO: recompute pictures_count
+    // TODO: recompute last_position
+    // TODO: recompute last_log
+    // TODO: recompute holder
+    // TODO: recompute missing
+}
+
+class GeokretyRatesMigrator extends BaseMigrator {
+    protected function cleanerHook(&$values) {
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('DELETE FROM gk_geokrety_rating WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+    }
+}
+
+class MailsMigrator extends BaseMigrator {
+    // 'token', 'from_user', 'to_user', 'subject', 'content', 'sent_on_datetime', 'ip'
+
+    protected function prepareData() {
+        $this->mPdo->query('UPDATE `gk-maile` SET ip = "107.178.38.23" WHERE id_maila = 7171 LIMIT 1');
+    }
+
+    protected function cleanerHook(&$values) {
+        $values[3] = trim(html_entity_decode($this->purifier->purify($values[3])));  // name
+        $values[4] = Markdown::toFormattedMarkdown($values[4]);  // content
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_mails SET from_user = NULL WHERE from_user NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        $this->pPdo->query('UPDATE gk_mails SET to_user = NULL WHERE to_user NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+    }
+}
+
+class MovesMigrator extends BaseMigrator {
+    //  'id', 'geokret', 'lat', 'lon', 'alt', 'country', 'distance', 'waypoint', 'created_on_datetime',
+    //  'moved_on_datetime', 'author', 'comment', 'pictures_count', 'comments_count', 'logtype', 'username',
+    //  'updated_on_datetime', 'app', 'app_ver'
+
+    protected function prepareData() {
+        $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE data = "0000-00-00 00:00:00" LIMIT 157;');
+        $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE DAY (data) = 0 OR  MONTH (data) = 0 LIMIT 95;');
+        $this->mPdo->query('UPDATE `gk-ruchy` SET `user` = NULL, username = "Deleted user" WHERE `user` = 0 AND `username` = "";');
+        $this->mPdo->query('UPDATE `gk-ruchy` SET `user` = NULL WHERE `user` = 0 AND `username` != "";');
+    }
+
+    protected function cleanerHook(&$values) {
+        $values[7] = $values[7] ?: null;  // waypoint
+        $values[18] = $values[18] ?: ($values[17] === 'www' ? '1.x.x' : null);  // app_ver
+        $values[15] = $values[15] ?: null;  // username
+        if (is_null($values[2]) || is_null($values[3])) {  // coordinates
+            $values[4] = $values[5] = $values[6] = $values[7] = null;
+        }
+        $values[11] = Markdown::toFormattedMarkdown($values[11]);  // comment
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
+        $this->pPdo->query('UPDATE gk_moves SET author = NULL, username = \'Deleted user\' WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        $this->pPdo->query('DELETE FROM gk_moves WHERE geokret NOT IN (SELECT DISTINCT(id) FROM gk_geokrety);');
+    }
+
+    // TODO: recompute alt
+    // TODO: recompute country
+    // TODO: recompute distance
+    // TODO: recompute pictures_count
+    // TODO: recompute comments_count
+
+    // TODO, waypoint foreign key ; remove lat/lon/alt/country ; waypoint id
+}
+
+class MoveCommentsMigrator extends BaseMigrator {
+    // $pFields = ['move', 'geokret', 'author', 'created_on_datetime', 'content', 'type', 'updated_on_datetime'];
+
+    protected function prepareData() {
+        $this->mPdo->query('DELETE FROM `gk-ruchy-comments` WHERE user_id NOT IN (SELECT DISTINCT(userid) FROM `gk-users`) OR kret_id NOT IN (SELECT DISTINCT(id) FROM `gk-geokrety`) OR ruch_id NOT IN (SELECT DISTINCT(ruch_id) FROM `gk-ruchy`);');
+    }
+
+    protected function cleanerHook(&$values) {
+        $values[4] = trim(html_entity_decode($this->purifier->purify($values[4])));  // content
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_moves_comments SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves_comments.geokret = gk_geokrety.gkid');
+    }
+}
+
+class PicturesMigrator extends BaseMigrator {
+    // $pFields = ['id', 'type', 'move', 'geokret', 'user', 'filename', 'caption', 'created_on_datetime', 'updated_on_datetime', 'uploaded_on_datetime', 'author', 'bucket', 'key'];
+
+    protected function prepareData() {
+        $this->mPdo->query('DELETE FROM `gk-obrazki` WHERE typ = 2 AND user NOT IN (SELECT DISTINCT(userid) FROM `gk-users`) OR typ = 0 AND id_kreta NOT IN (SELECT DISTINCT(id) FROM `gk-geokrety`) OR typ = 1 AND id NOT IN (SELECT DISTINCT(ruch_id) FROM `gk-ruchy`);');
+        $this->mPdo->query('UPDATE `gk-obrazki` LEFT JOIN `gk-geokrety` on id_kreta = `gk-geokrety`.id SET `gk-obrazki`.timestamp = `gk-geokrety`.timestamp WHERE `gk-obrazki`.timestamp = "0000-00-00 00:00:00";');
+        $this->mPdo->query('UPDATE `gk-obrazki` SET id_kreta = id WHERE typ = 0 AND id != id_kreta;');
+    }
+
+    protected function cleanerHook(&$values) {
+        $values[6] = trim(html_entity_decode($this->purifier->purify($values[6])));  // caption
+        $values[] = $values[7];  // updated_on_datetime
+        $values[] = $values[7];  // uploaded_on_datetime
+        $values[] = $values[4];  // author
+        $values[] = 'NULL';  // bucket
+        $values[] = 'NULL';  // key
+
+        switch ($values[1]) {
+            case PictureType::PICTURE_GEOKRET_AVATAR:
+                $values[2] = $values[4] = null;
+                break;
+            case PictureType::PICTURE_GEOKRET_MOVE:
+                $values[3] = $values[4] = null;
+                break;
+            case PictureType::PICTURE_USER_AVATAR:
+                $values[2] = $values[3] = null;
+                break;
+        }
+        $values[6] = trim(html_entity_decode($this->purifier->purify($values[6])));  // caption
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_pictures SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_pictures.geokret = gk_geokrety.gkid;');
+        $this->pPdo->query('UPDATE gk_pictures SET author = NULL WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        $this->pPdo->query('UPDATE gk_geokrety SET avatar = NULL WHERE avatar NOT IN (SELECT DISTINCT(id) FROM gk_pictures);');
+        $this->pPdo->query('DELETE FROM gk_pictures WHERE id IN (SELECT gk_pictures.id FROM gk_pictures LEFT JOIN gk_moves ON gk_pictures.move=gk_moves.id WHERE gk_pictures.move IS NOT NULL AND gk_moves.id IS NULL);');
+        $this->pPdo->query('DELETE FROM gk_pictures WHERE id IN (SELECT gk_pictures.id FROM gk_pictures LEFT JOIN gk_users ON gk_pictures.user=gk_users.id WHERE gk_pictures.user IS NOT NULL AND gk_users.id IS NULL);');
+        $this->pPdo->query('UPDATE "gk_pictures" SET geokret=gk_moves.geokret FROM "gk_moves" WHERE "gk_pictures".move=gk_moves.id AND CAST("gk_pictures".type AS text) = \'1\';');
+    }
+
+    // TODO: migrate pictures to buckets
+}
+
+class RacesMigrator extends BaseMigrator {
+    // 'id', 'created_on_datetime', 'organizer', 'private', 'password', 'title', 'start_on_datetime', 'end_on_datetime', 'description', 'type', 'waypoint',
+    // 'target_lat', 'target_lon', 'target_dist', 'target_caches', 'status', 'updated_on_datetime'
+    protected function cleanerHook(&$values) {
+        $values[4] = $values[4] ?: null;  // password
+        $values[5] = trim(html_entity_decode($this->purifier->purify($values[5])));  // title
+        $values[8] = Markdown::toFormattedMarkdown($values[8]);  // description
+        $values[10] = $values[10] ?: null;  // waypoint
+        $values[11] = $values[11] ?: null;  // target_lat
+        $values[12] = $values[12] ?: null;  // target_lon
+        $values[13] = $values[13] ?: null;  // target_dist
+        $values[14] = $values[14] ?: null;  // target_caches
+        $values[] = $values[1];  // updated_on_datetime
+    }
+}
+
+class RacesParticipantsMigrator extends BaseMigrator {
+    // 'id', 'race', 'geokret', 'initial_distance', 'initial_caches_count', 'distance_to_destination', 'joined_on_datetime', 'finished_on_datetime',
+    // 'finish_distance', 'finish_caches_count', 'finish_lat', 'finish_lon', 'updated_on_datetime'
+    protected function cleanerHook(&$values) {
+        $values[] = $values[7] ?: $values[6];  // updated_on_datetime
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_races_participants SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_races_participants.geokret = gk_geokrety.gkid;');
+    }
+}
+
+class OwnerCodesMigrator extends BaseMigrator {
+    // 'id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'user'
+    protected function cleanerHook(&$values) {
+        $values[4] = $values[4] === '0000-00-00 00:00:00' ? null : $values[4];  // claimed_on_datetime
+        $values[5] = $values[5] ?: null;  // user
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_owner_codes SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_owner_codes.geokret = gk_geokrety.gkid;');
+    }
+}
+
+class WaypointGCMigrator extends BaseMigrator {
+    protected function cleanerHook(&$values) {
+        $values[3] = $values[3].','.$values[4];
+        array_pop($values); // drop lon
+    }
+}
+
+//// Check integrity
+//ALTER TABLE "gk_account_activation"
+//DROP CONSTRAINT "gk_account_activation_user_fkey",
+//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_badges"
+//DROP CONSTRAINT "gk_badges_holder_fkey",
+//ADD FOREIGN KEY ("holder") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_geokrety"
+//DROP CONSTRAINT "gk_geokrety_owner_fkey",
+//ADD FOREIGN KEY ("owner") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_geokrety"
+//DROP CONSTRAINT "gk_geokrety_last_position_fkey",
+//ADD FOREIGN KEY ("last_position") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_geokrety"
+//DROP CONSTRAINT "gk_geokrety_last_log_fkey",
+//ADD FOREIGN KEY ("last_log") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_geokrety"
+//DROP CONSTRAINT "gk_geokrety_holder_fkey",
+//ADD FOREIGN KEY ("holder") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_geokrety"
+//DROP CONSTRAINT "gk_geokrety_avatar_fkey",
+//ADD FOREIGN KEY ("avatar") REFERENCES "gk_pictures" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_geokrety_rating"
+//DROP CONSTRAINT "gk_geokrety_rating_geokret_fkey",
+//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_geokrety_rating"
+//DROP CONSTRAINT "gk_geokrety_rating_author_fkey",
+//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_mails"
+//DROP CONSTRAINT "gk_mails_from_user_fkey",
+//ADD FOREIGN KEY ("from_user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_mails"
+//DROP CONSTRAINT "gk_mails_to_user_fkey",
+//ADD FOREIGN KEY ("to_user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_moves_comments"
+//DROP CONSTRAINT "gk_moves_comments_move_fkey",
+//ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_moves_comments"
+//DROP CONSTRAINT "gk_moves_comments_geokret_fkey",
+//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_moves_comments"
+//DROP CONSTRAINT "gk_moves_comments_author_fkey",
+//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_moves"
+//DROP CONSTRAINT "gk_moves_author_fkey",
+//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_moves"
+//DROP CONSTRAINT "gk_moves_geokret_fkey",
+//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_news"
+//DROP CONSTRAINT "gk_news_author_fkey",
+//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_news_comments"
+//DROP CONSTRAINT "gk_news_comments_news_fkey",
+//ADD FOREIGN KEY ("news") REFERENCES "gk_news" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_news_comments"
+//DROP CONSTRAINT "gk_news_comments_author_fkey",
+//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_news_comments_access"
+//DROP CONSTRAINT "gk_news_comments_access_news_fkey",
+//ADD FOREIGN KEY ("news") REFERENCES "gk_news" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_news_comments_access"
+//DROP CONSTRAINT "gk_news_comments_access_author_fkey",
+//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_owner_codes"
+//DROP CONSTRAINT "gk_owner_codes_geokret_fkey",
+//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_owner_codes"
+//DROP CONSTRAINT "gk_owner_codes_user_fkey",
+//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_password_tokens"
+//DROP CONSTRAINT "gk_password_tokens_user_fkey",
+//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_pictures"
+//DROP CONSTRAINT "gk_pictures_move_fkey",
+//ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_pictures"
+//DROP CONSTRAINT "gk_pictures_geokret_fkey",
+//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_pictures"
+//DROP CONSTRAINT "gk_pictures_user_fkey",
+//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_pictures"
+//DROP CONSTRAINT "gk_pictures_author_fkey",
+//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_races"
+//DROP CONSTRAINT "gk_races_organizer_fkey",
+//ADD FOREIGN KEY ("organizer") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_races_participants"
+//DROP CONSTRAINT "gk_races_participants_race_fkey",
+//ADD FOREIGN KEY ("race") REFERENCES "gk_races" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_races_participants"
+//DROP CONSTRAINT "gk_races_participants_geokret_fkey",
+//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_users"
+//DROP CONSTRAINT "gk_users_avatar_fkey",
+//ADD FOREIGN KEY ("avatar") REFERENCES "gk_pictures" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_watched"
+//DROP CONSTRAINT "gk_watched_user_fkey",
+//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+//ALTER TABLE "gk_watched"
+//DROP CONSTRAINT "gk_watched_geokret_fkey",
+//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+//
+////// Reset all sequence
+//SELECT 'SELECT SETVAL(' ||
+//quote_literal(quote_ident(PGT.schemaname) || '.' || quote_ident(S.relname)) ||
+//', COALESCE(MAX(' ||quote_ident(C.attname)|| '), 1) ) FROM ' ||
+//quote_ident(PGT.schemaname)|| '.'||quote_ident(T.relname)|| ';'
+//FROM pg_class AS S,
+//     pg_depend AS D,
+//     pg_class AS T,
+//     pg_attribute AS C,
+//     pg_tables AS PGT
+//WHERE S.relkind = 'S'
+//AND S.oid = D.objid
+//AND D.refobjid = T.oid
+//AND D.refobjid = C.attrelid
+//AND D.refobjsubid = C.attnum
+//AND T.relname = PGT.tablename
+//ORDER BY S.relname;

@@ -6,7 +6,7 @@ use DB\SQL\Schema;
 
 class Waypoint extends Base {
     protected $db = 'DB';
-    protected $table = 'gk-waypointy';
+    protected $table = 'gk_waypoints';
     protected $ttl = GK_SITE_CACHE_TTL_WAYPOINT;
 
     protected $fieldConf = [

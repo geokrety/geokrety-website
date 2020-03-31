@@ -8,7 +8,7 @@ class News extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-news';
+    protected $table = 'gk_news';
 
     protected $fieldConf = [
         'author' => [
@@ -58,6 +58,6 @@ class News extends Base {
 
     public function isSubscribed() {
         // Note: Cache count() for 1 second
-        return $this->has('subscriptions', ['news = ? AND user = ? AND subscribed = ?', $this->id, \Base::instance()->get('SESSION.CURRENT_USER'), '1'])->count(null, null, 1) === 1;
+        return $this->has('subscriptions', ['news = ? AND author = ? AND subscribed = ?', $this->id, \Base::instance()->get('SESSION.CURRENT_USER'), '1'])->count(null, null, 1) === 1;
     }
 }

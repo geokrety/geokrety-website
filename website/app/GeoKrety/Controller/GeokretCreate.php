@@ -32,7 +32,7 @@ class GeokretCreate extends Base {
                 $move->geokret = $geokret;
                 $move->author = $f3->get('SESSION.CURRENT_USER');
                 $move->logtype = LogType::LOG_TYPE_DIPPED;
-                $move->moved_on_datetime = $geokret->created_on_datetime->format('Y-m-d H:i:s');
+                $move->moved_on_datetime = $geokret->created_on_datetime->format(GK_DB_DATETIME_FORMAT);
                 $move->lat = $this->currentUser->home_latitude;
                 $move->lon = $this->currentUser->home_longitude;
                 $move->comment = _('Born here');

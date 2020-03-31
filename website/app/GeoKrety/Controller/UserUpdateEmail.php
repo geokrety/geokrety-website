@@ -44,7 +44,7 @@ class UserUpdateEmail extends Base {
             $smtp = new EmailChange();
 
             // Resend validation - implicit mail unicity from token table too
-            $token->load(['email = ? AND used = ? AND DATE_ADD(created_on_datetime, INTERVAL ? DAY) >= NOW()', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY]);
+            $token->load(['email = ? AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
             if ($token->valid()) {
                 $smtp->sendEmailChangeNotification($token);
                 Flash::instance()->addMessage(sprintf(_('The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->diffForHumans(['parts' => 3, 'join' => true])), 'success');

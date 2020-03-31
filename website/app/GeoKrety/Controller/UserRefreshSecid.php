@@ -2,6 +2,7 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Service\SecIdGenerator;
 use GeoKrety\Service\Smarty;
 
 class UserRefreshSecid extends Base {
@@ -17,7 +18,7 @@ class UserRefreshSecid extends Base {
 
     public function post(\Base $f3) {
         $user = $this->currentUser;
-        $user->refreshSecid();
+        $user->secid = SecIdGenerator::generate();
 
         if ($user->validate()) {
             $user->save();

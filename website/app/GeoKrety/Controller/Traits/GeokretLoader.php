@@ -18,10 +18,10 @@ trait GeokretLoader {
 
         $geokret = new Geokret();
         $this->geokret = $geokret;
-        $geokret->load(['gkid = ?', $gkid]);
         $this->geokret->filter('owner_codes', ['user = ?', null]);
         $this->geokret->filter('avatars', ['uploaded_on_datetime != ?', null]);
         $this->filterHook();
+        $geokret->load(['gkid = ?', $gkid]);
         if ($geokret->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');

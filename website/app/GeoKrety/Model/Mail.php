@@ -8,7 +8,7 @@ class Mail extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-mail';
+    protected $table = 'gk_mails';
 
     protected $fieldConf = [
         'token' => [

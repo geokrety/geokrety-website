@@ -32,6 +32,7 @@ class MoveCommentCreate extends Base {
         $comment->geokret = $this->move->geokret;
         $comment->author = $f3->get('SESSION.CURRENT_USER');
         $comment->content = $f3->get('POST.comment');
+        $comment->type = 0;
 
         if ($comment->validate()) {
             $comment->save();
@@ -53,7 +54,7 @@ class MoveCommentCreate extends Base {
         $comment->geokret = $this->move->geokret;
         $comment->author = $f3->get('SESSION.CURRENT_USER');
         $comment->content = $f3->get('POST.comment');
-        $comment->type = '1';
+        $comment->type = 1;
 
         if ($comment->validate()) {
             $comment->save();

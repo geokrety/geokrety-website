@@ -32,7 +32,7 @@ class UserUpdatePassword extends Base {
 
         // Check old password
         $auth = new Auth('geokrety', ['id' => 'username', 'pw' => 'password']);
-        $check_result = $auth->login($user->username, $f3->get($password_old));
+        $check_result = $auth->login($user->username, $password_old);
         if (!$check_result) {
             Flash::instance()->addMessage(_('Your old password is invalid.'), 'danger');
             $this->get();

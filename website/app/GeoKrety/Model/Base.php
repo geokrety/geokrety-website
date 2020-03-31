@@ -11,10 +11,17 @@ class Base extends \DB\Cortex {
             return null;
         }
 
-        return \DateTime::createFromFormat('Y-m-d H:i:s', $value, new \DateTimeZone('UTC'));
+        $response = null;
+        if (($response = \DateTime::createFromFormat(GK_DB_DATETIME_FORMAT, $value, new \DateTimeZone('UTC'))) === false) {
+            if (($response = \DateTime::createFromFormat(GK_DB_DATETIME_FORMAT_WITHOUT_TZ, $value, new \DateTimeZone('UTC'))) === false) {
+                die("Invalid date format $value (".GK_DB_DATETIME_FORMAT.'/'.GK_DB_DATETIME_FORMAT_WITHOUT_TZ.')');
+            }
+        }
+
+        return $response;
     }
 
     public static function now() {
-        return (new \DateTime('now', new \DateTimeZone('UTC')))->format('Y-m-d H:i:s');
+        return (new \DateTime('now', new \DateTimeZone('UTC')))->format(GK_DB_DATETIME_FORMAT);
     }
 }

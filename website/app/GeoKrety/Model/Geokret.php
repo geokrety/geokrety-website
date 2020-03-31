@@ -10,7 +10,7 @@ class Geokret extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-geokrety';
+    protected $table = 'gk_geokrety';
 
     protected $fieldConf = [
         'gkid' => [
@@ -71,10 +71,6 @@ class Geokret extends Base {
         'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => false,
-        ],
-        'moved_on_datetime' => [
-            'type' => Schema::DT_DATETIME,
             'nullable' => false,
         ],
         'updated_on_datetime' => [

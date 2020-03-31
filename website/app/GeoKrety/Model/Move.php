@@ -11,7 +11,7 @@ class Move extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-moves';
+    protected $table = 'gk_moves';
 
     protected $fieldConf = [
         'author' => [
@@ -112,19 +112,6 @@ class Move extends Base {
         return HTMLPurifier::getPurifier()->purify($value);
     }
 
-    public function get_comment($value) {
-        // Workaround historical database modifications
-        $txt = str_replace('<br />', '  ', $value);
-        $txt = str_replace('[<a href=\'', '', $txt);
-        $txt = str_replace('\' rel=nofollow>Link</a>]', '', $txt);
-
-        return HTMLPurifier::getPurifier()->purify($txt);
-    }
-
-    public function get_username($value) {
-        return html_entity_decode($value);
-    }
-
     public function get_logtype($value) {
         return new \GeoKrety\LogType($value);
     }
@@ -175,15 +162,15 @@ class Move extends Base {
         $perPage = GK_PAGINATION_GEOKRET_MOVES;
         $table = $this->table;
         $sql = <<<EOQUERY
-SELECT  CEILING(gkmoves.rank / $perPage) AS page
-FROM    (SELECT     @rank:=@rank+1 AS rank, id
-         FROM       `$table` AS ru, (SELECT @rank:=0) t2
-         WHERE      geokret = ?
-         ORDER BY   ru.moved_on_datetime DESC
-         ) AS gkmoves
-WHERE    gkmoves.id = ?
+SELECT CEILING(rank / $perPage) AS page
+FROM (
+  SELECT id, RANK() OVER (ORDER BY moved_on_datetime DESC)
+  FROM "gk_moves"
+  WHERE geokret = ?
+  ORDER BY moved_on_datetime ASC
+) as ranked
+WHERE id = ?
 EOQUERY;
-
         $page = \Base::instance()->get('DB')->exec(
             $sql,
             [
@@ -202,7 +189,7 @@ EOQUERY;
             $move->id,
             $move->geokret->id,
             array_map('strval', LogType::LOG_TYPES_COUNT_KILOMETERS),
-            $move->moved_on_datetime->format('Y-m-d H:i:s'),
+            $move->moved_on_datetime->format(GK_DB_DATETIME_FORMAT),
         ];
         $options = [
             'limit' => 1,
@@ -220,7 +207,7 @@ EOQUERY;
             $move->id,
             $move->geokret->id,
             array_map('strval', LogType::LOG_TYPES_COUNT_KILOMETERS),
-            $move->moved_on_datetime->format('Y-m-d H:i:s'),
+            $move->moved_on_datetime->format(GK_DB_DATETIME_FORMAT),
         ];
         $options = [
             'limit' => 1,
@@ -332,7 +319,7 @@ EOQUERY;
 
     private function updateGeokretStats(Geokret &$geokret) {
         $moveStats = \Base::instance()->get('DB')->exec(
-            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM `'.$this->table.'` WHERE geokret = ?',
+            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM "'.$this->table.'" WHERE geokret = ?',
             [
                 $geokret->id,
             ]
@@ -351,8 +338,8 @@ EOQUERY;
         $options = [
             'order' => 'moved_on_datetime DESC',
         ];
-        $lastPosition->filter('comments', ['type = 1']);
-        $lastPosition->countRel('comments');
+        $lastPosition->filter('comments', ['type = ?', 1]);
+//        $lastPosition->countRel('comments');  // TODO: OPEN BUG UPSTREAM
         $lastPosition->load($filter, $options);
         $geokret->missing = $lastPosition->count_comments > 0;
     }
@@ -373,7 +360,7 @@ EOQUERY;
     private function removeMissingStatus() {
         // TODO, why not change the type and update the comment ???
         $comment = new MoveComment();
-        $comment->erase(['move = ? AND type = 1', $this->id]);
+        $comment->erase(['move = ? AND type = ?', $this->id, 1]);
     }
 
     public function __construct() {
@@ -414,6 +401,9 @@ EOQUERY;
             if (!$self->logtype->isTheoricallyInCache()) {
                 $self->removeMissingStatus();
             }
+        });
+        $this->afterupdate(function (Move $self) {
+            // TODO update attached pictures to change the geokret link. Should be done in Postgres
         });
         $this->beforeerase(function ($self) {
             $pictureModel = new Picture();

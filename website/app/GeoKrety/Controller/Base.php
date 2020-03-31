@@ -2,6 +2,7 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
@@ -14,7 +15,7 @@ abstract class Base {
         // Load current user
         if ($f3->exists('SESSION.CURRENT_USER')) {
             $user = new User();
-            $user->filter('email_activation', ['used = 0']);
+            $user->filter('email_activation', ['used = ?', EmailActivationToken::TOKEN_UNUSED]);
             $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
             if ($user->valid()) {
                 Smarty::assign('current_user', $user);

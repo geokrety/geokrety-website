@@ -11,7 +11,7 @@ class Picture extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk-pictures';
+    protected $table = 'gk_pictures';
 
     protected $fieldConf = [
         'author' => [
@@ -79,9 +79,9 @@ class Picture extends Base {
     public static function expireNeverUploaded() {
         $pictureModel = new Picture();
         $pictureModel->erase([
-            'uploaded_on_datetime = ? AND NOW() > DATE_ADD(created_on_datetime, INTERVAL ? MINUTE)',
+            'uploaded_on_datetime = ? AND created_on_datetime > NOW() - cast(? as interval)',
             null,
-            GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES,
+            GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES.' DAY',
         ]);
     }
 
