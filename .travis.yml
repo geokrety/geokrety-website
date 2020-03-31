@@ -1,3 +1,4 @@
+dist: bionic
 language: php
 cache:
   directories:
@@ -20,16 +21,16 @@ env:
 
 matrix:
   fast_finish: true
-  allow_failures:
-    ## php 7.4 is not yet fully suuported by F3
-    ## see https://github.com/bcosca/fatfree-core/issues/286
-    - php: 7.4
+#  allow_failures:
+#    - php: 7.5
 
-# https://docs.travis-ci.com/user/database-setup/#mariadb
+# https://docs.travis-ci.com/user/database-setup/#postgresql
 addons:
-  mariadb: '10.3'
+  postgresql: "11"
   apt:
     packages:
+      - postgresql-11
+      - postgresql-client-11
       - moreutils
       - gettext
 
@@ -37,16 +38,21 @@ addons:
 before_install:
   - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
   - sudo dpkg -i crowdin.deb
-  - mysql -u root -e 'CREATE DATABASE geokrety CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
-  - mysql -u root -e "CREATE USER 'geokrety'@'localhost' IDENTIFIED BY 'geokrety';"
-  - mysql -u root -e "GRANT ALL ON geokrety.* TO 'geokrety'@'localhost';"
+  - psql -c 'create database geokrety;' -U postgres
+  - psql -c "CREATE USER geokrety WITH PASSWORD 'geokrety';" -U postgres
+  - psql -U postgres geokrety < website/db/postgres-schema.sql
+  - psql -U postgres geokrety < website/db/gk_waypoints_country.data.sql
+  - psql -U postgres geokrety < website/db/gk_waypoints_types.data.sql
 
 install:
   - composer install --dev
   - phpenv config-rm xdebug.ini || return 0
 
 before_script:
-  - export GK_DB_DSN="mysql:host=localhost;port=3306;dbname=geokrety;charset=utf8mb4"
+  - export GK_DB_HOST="localhost"
+  - export GK_DB_NAME="geokrety"
+  - export GK_DB_USER="geokrety"
+  - export GK_DB_PASSWORD="geokrety"
 
 script:
   # Check against CRLF
