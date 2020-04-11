@@ -56,7 +56,7 @@ class MoveCreate extends Base {
         $move = $this->move;
         $isEdit = !is_null($this->move->id);
 
-        $move->logtype = $f3->get('POST.logtype');
+        $move->move_type = $f3->get('POST.logtype');
         if ($f3->get('SESSION.CURRENT_USER')) {
             $move->author = $f3->get('SESSION.CURRENT_USER');
         } else {
@@ -70,7 +70,7 @@ class MoveCreate extends Base {
         $date = DateTime::createFromFormat('Y-m-d H:i:s T', $f3->get('POST.date').' '.str_pad($f3->get('POST.hour'), 2, '0', STR_PAD_LEFT).':'.str_pad($f3->get('POST.minute'), 2, '0', STR_PAD_LEFT).':00 UTC');
         $move->moved_on_datetime = $date->format(GK_DB_DATETIME_FORMAT);
 
-        if ($move->logtype->isCoordinatesRequired()) {
+        if ($move->move_type->isCoordinatesRequired()) {
             // Waypoint validation
             $waypointChecker = new WaypointValidation();
             if ($waypointChecker->validate($f3->get('POST.waypoint'), $f3->get('POST.coordinates'))) {

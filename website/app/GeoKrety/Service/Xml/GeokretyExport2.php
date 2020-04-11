@@ -31,14 +31,14 @@ class GeokretyExport2 extends GeokretyBase {
         $gk->addAttribute('dist', $geokret->distance);
         if (!is_null($geokret->last_position)) {
             $gk->addAttribute('date', $geokret->last_position->created_on_datetime->format('Y-m-d'));
-            if ($geokret->last_position->logtype->isTheoricallyInCache()) {
+            if ($geokret->last_position->move_type->isTheoricallyInCache()) {
                 $gk->addAttribute('lat', $geokret->last_position->lat);
                 $gk->addAttribute('lon', $geokret->last_position->lon);
                 if (!is_null($geokret->last_position->waypoint) && !empty($geokret->last_position->waypoint)) {
                     $gk->addAttribute('waypoint', $geokret->last_position->waypoint);
                 }
             }
-            $gk->addAttribute('state', $geokret->last_position->logtype->getLogTypeId());
+            $gk->addAttribute('state', $geokret->last_position->move_type->getLogTypeId());
             $gk->addAttribute('last_pos_id', $geokret->last_position->id);
             $gk->addAttribute('last_log_id', $geokret->last_log->id);
         } else {

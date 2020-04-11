@@ -19,7 +19,7 @@ class GeokretyExport extends GeokretyBase {
         $gk->addChild('missing', $geokret->missing);
         $position = $gk->addChild('position');
         if (!is_null($geokret->last_position)) {
-            $gk->addChild('state', $geokret->last_position->logtype->getLogTypeId());
+            $gk->addChild('state', $geokret->last_position->move_type->getLogTypeId());
 
             if (!is_null($geokret->last_position->lat) && !is_null($geokret->last_position->lon)) {
                 $position->addAttribute('latitude', $geokret->last_position->lat);
@@ -57,7 +57,7 @@ class GeokretyExport extends GeokretyBase {
         $log->addChildWithCDATA('comment', Markdown::toText($move->comment));
         $log->addChildWithCDATA('comment_html', Markdown::toHtml($move->comment));
         $log->addChildWithCDATA('comment_markdown', $move->comment);
-        $logtype = $log->addChildWithCDATA('logtype', $move->logtype->getLogTypeString());
-        $logtype->addAttribute('id', $move->logtype->getLogTypeId());
+        $logtype = $log->addChildWithCDATA('logtype', $move->move_type->getLogTypeString());
+        $logtype->addAttribute('id', $move->move_type->getLogTypeId());
     }
 }

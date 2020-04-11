@@ -25,8 +25,8 @@ if (!empty($userid)) {
     $sql = "SELECT gk.nr, gk.nazwa
 	FROM `gk-geokrety` AS gk
 	LEFT JOIN `gk-ruchy` ru ON ( gk.ost_pozycja_id = ru.ruch_id )
-	WHERE ( ru.logtype = '1' AND ru.user = '$userid' )
-		OR ( ru.logtype = '5' AND ru.user = '$userid' )
+	WHERE ( ru.move_type = '1' AND ru.user = '$userid' )
+		OR ( ru.move_type = '5' AND ru.user = '$userid' )
 		OR (gk.owner = '$userid' AND gk.ost_pozycja_id = '0')
 	";
 

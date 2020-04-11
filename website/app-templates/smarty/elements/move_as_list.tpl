@@ -16,5 +16,5 @@
         <br />
         <small>{$move->author|userlink:$move->username nofilter}</small>
     </td>
-    <td class="text-right">{if $move->logtype && $move->logtype->isCountingKilometers()}{$move->distance} km{/if}</td>
+    <td class="text-right">{if $move->move_type && $move->move_type->isCountingKilometers()}{$move->distance} km{/if}</td>
 </tr>

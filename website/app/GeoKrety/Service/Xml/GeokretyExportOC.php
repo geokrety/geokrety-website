@@ -9,7 +9,7 @@ class GeokretyExportOC extends GeokretyBase {
         $gk->addChildWithCDATA('name', $geokret->name);
         $gk->addChild('distancetravelled', $geokret->distance);
         if (!is_null($geokret->last_position)) {
-            $gk->addChild('state', $geokret->last_position->logtype->isTheoricallyInCache() ? '1' : '0');
+            $gk->addChild('state', $geokret->last_position->move_type->isTheoricallyInCache() ? '1' : '0');
             if (!is_null($geokret->last_position->lat) && !is_null($geokret->last_position->lon)) {
                 $position = $gk->addChild('position');
                 $position->addAttribute('latitude', $geokret->last_position->lat);

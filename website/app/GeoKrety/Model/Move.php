@@ -22,7 +22,7 @@ class Move extends Base {
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
             'nullable' => false,
         ],
-        'logtype' => [
+        'move_type' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'validate' => 'log_type',
@@ -112,7 +112,7 @@ class Move extends Base {
         return HTMLPurifier::getPurifier()->purify($value);
     }
 
-    public function get_logtype($value) {
+    public function get_move_type($value) {
         return new \GeoKrety\LogType($value);
     }
 
@@ -229,7 +229,7 @@ EOQUERY;
         // If my new move type doesn't require coordinates, then the reference
         // point is not me but point just before
         $ref = $this;
-        if (!$this->logtype->isCoordinatesRequired()) {
+        if (!$this->move_type->isCoordinatesRequired()) {
             $ref = $this->findPrev($this);
             if ($ref->dry()) {
                 // There was no move after, reset the next…
@@ -370,13 +370,14 @@ EOQUERY;
             $self->touch('moved_on_datetime');
         });
         $this->beforesave(function (Move $self) {
-            // Force reset fields if coordinates not required
-            if ($self->logtype->isCountingKilometers()) {
+            // TODO Force reset fields if coordinates not required?
+
+            if ($self->move_type->isCountingKilometers()) {
                 $self->computeDistance(); // This move
+                $self->computeDistanceMoveNext(); // The move after
+                $self->computeDistanceMoveNextOldPlace(); // The move after at the old place
             }
-            $self->computeDistanceMoveNext(); // The move after
-            $self->computeDistanceMoveNextOldPlace(); // The move after at the old place
-            if (!$self->logtype->isCoordinatesRequired()) {
+            if (!$self->move_type->isCoordinatesRequired()) {
                 $self->waypoint = null;
                 $self->lat = null;
                 $self->lon = null;
@@ -394,11 +395,11 @@ EOQUERY;
             $self->updateGeokretMissingStatus($geokret);
             $geokret->save();
 
-            if ($self->logtype->isCoordinatesRequired()) {
+            if ($self->move_type->isCoordinatesRequired()) {
                 $self->addWaypoint();
             }
 
-            if (!$self->logtype->isTheoricallyInCache()) {
+            if (!$self->move_type->isTheoricallyInCache()) {
                 $self->removeMissingStatus();
             }
         });
