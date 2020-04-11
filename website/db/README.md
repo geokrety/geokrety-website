@@ -86,7 +86,7 @@ pg_dump --file public-data.tar --host "localhost" --port "5432" --username "geok
 ```bash
 pg_dump --file geokrety-schema.sql --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=p --schema-only --encoding "UTF8" --schema "geokrety" "geokrety"
 
-pg_dump --file public-schema.sql --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=p --schema-only --encoding "UTF8" --schema "public" --table=srtm --table=countries --table=srtm --table=srtm_metadata "geokrety"
+pg_dump --file public-schema.sql --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=p --schema-only --encoding "UTF8" --schema "public" --table=srtm --table=countries --table=srtm_metadata "geokrety"
 ```
 
 
