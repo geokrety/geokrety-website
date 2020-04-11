@@ -23,7 +23,7 @@ class Home extends Base {
         // Load latest news
         $news = new News();
         // See https://github.com/ikkez/f3-cortex/issues/97
-        $filter = ['created_on_datetime > NOW() - cast(? as interval)', GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY.' DAY'];
+        $filter = ["fresher_than(created_on_datetime, ?, 'DAY')", GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY];
         $news = $news->find($filter, ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_NEWS], GK_SITE_CACHE_TTL_LATEST_NEWS);
         Smarty::assign('news', $news);
 

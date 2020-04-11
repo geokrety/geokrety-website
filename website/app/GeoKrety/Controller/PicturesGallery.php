@@ -10,7 +10,7 @@ class PicturesGallery extends Base {
     public function get() {
         // Load inventory
         $picture = new Picture();
-        $option = ['order' => 'updated_on_datetime DESC'];
+        $option = ['order' => 'created_on_datetime DESC'];
         $subset = $picture->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_PICTURES_GALLERY, null, $option);
         Smarty::assign('pictures', $subset);
         // Paginate

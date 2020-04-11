@@ -339,7 +339,7 @@ EOQUERY;
             'order' => 'moved_on_datetime DESC',
         ];
         $lastPosition->filter('comments', ['type = ?', 1]);
-//        $lastPosition->countRel('comments');  // TODO: OPEN BUG UPSTREAM
+//        $lastPosition->countRel('comments');  // TODO: https://github.com/ikkez/f3-cortex/issues/99
         $lastPosition->load($filter, $options);
         $geokret->missing = $lastPosition->count_comments > 0;
     }
@@ -407,6 +407,7 @@ EOQUERY;
             // TODO update attached pictures to change the geokret link. Should be done in Postgres
         });
         $this->beforeerase(function ($self) {
+            // Dropping pictures here instead of relying on db Triggers will delete files on S3
             $pictureModel = new Picture();
             $pictures = $pictureModel->find(['move = ?', $self->id]);
             foreach ($pictures as $picture) {
