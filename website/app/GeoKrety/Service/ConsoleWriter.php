@@ -37,14 +37,16 @@ class ConsoleWriter {
         $newString = vsprintf($this->pattern, $values);
         $this->lastLen = strlen($newString);
         echo $newString;
-        ob_flush(); // TODO: Required for PictureImporter, but seems to fail on other case
+        if (ob_get_level() > 0) {
+            ob_flush();
+        }
         flush();
     }
 
     public function loadAvgSleeper() {
         $load = sys_getloadavg()[0];
         $loadStr = sprintf('%0.2f', $load);
-        if ($load > 3.00) {
+        if ($load > 4.00) {
             return ["\e[41m{$loadStr}\e[0m", 5];
         }
 
