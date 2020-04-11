@@ -24,7 +24,7 @@ $mysql = new PDO($dsn, $username, $password, $options);
 define('DEFAULT_PAGINATION', 1000);
 
 $pgsql->query('SET session_replication_role = replica;');
-$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints", "gk_waypoints_country", "gk_waypoints_sync", "gk_waypoints_types", "phinxlog", "scripts", "sessions" RESTART IDENTITY CASCADE';
+$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_oc", "gk_waypoints_country", "gk_waypoints_sync", "gk_waypoints_types", "phinxlog", "scripts", "sessions" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ $migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-waypointy';
-$pName = 'gk_waypoints';
+$pName = 'gk_waypoints_oc';
 $mFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'typ', 'kraj', 'link', 'status', 'timestamp'];
 $pFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
 $migrator = new WaypointMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
@@ -167,8 +167,8 @@ $migrator->process();
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-waypointy-gc';
 $pName = 'gk_waypoints_gc';
-$mFields = ['wpt', 'country', 'alt', 'lat', 'lon'];
-$pFields = ['waypoint', 'country', 'elevation', 'coordinates'];
+$mFields = ['wpt', 'country', 'alt', 'lon', 'lat'];
+$pFields = ['waypoint', 'country', 'elevation', 'position'];
 $migrator = new WaypointGCMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
@@ -176,7 +176,7 @@ $migrator->process();
 $mName = 'gk-ruchy';
 $pName = 'gk_moves';
 $mFields = ['ruch_id', 'id', 'lat', 'lon', 'alt', 'country', 'droga', 'waypoint', 'data', 'data_dodania', 'user', 'koment', 'zdjecia', 'komentarze', 'logtype', 'username', 'timestamp', 'app', 'app_ver'];
-$pFields = ['id', 'geokret', 'lat', 'lon', 'alt', 'country', 'distance', 'waypoint', 'created_on_datetime', 'moved_on_datetime', 'author', 'comment', 'pictures_count', 'comments_count', 'logtype', 'username', 'updated_on_datetime', 'app', 'app_ver'];
+$pFields = ['id', 'geokret', 'lat', 'lon', 'elevation', 'country', 'distance', 'waypoint', 'moved_on_datetime', 'created_on_datetime', 'author', 'comment', 'pictures_count', 'comments_count', 'move_type', 'username', 'updated_on_datetime', 'app', 'app_ver', 'position'];
 $migrator = new MovesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
@@ -231,7 +231,7 @@ class BaseMigrator {
     protected $pPdo;
 
     private $mFields;
-    private $pFields;
+    protected $pFields;
 
     private $totalRecords;
     private $processedRecords = 0;
@@ -291,11 +291,16 @@ class BaseMigrator {
     private function prepareInsert(int $chunkSize): PDOStatement {
         $fields = join(', ', $this->pFields);
         $sqlBase = "INSERT INTO {$this->pName} ($fields) VALUES ";
-        $value = join(', ', array_fill(0, sizeof($this->pFields), '?'));
-        $values = join(', ', array_fill(0, $chunkSize, "($value)"));
+        $values = $this->prepareInsertValues($chunkSize);
         $sql = $sqlBase.$values;
 
         return $this->pPdo->prepare($sql);
+    }
+
+    protected function prepareInsertValues(int $chunkSize): string {
+        $value = join(', ', array_fill(0, sizeof($this->pFields), '?'));
+
+        return join(', ', array_fill(0, $chunkSize, "($value)"));
     }
 
     protected function cleanerHook(&$values) {
@@ -405,8 +410,8 @@ class NewsMigrator extends BaseMigrator {
         $values[4] = $values[4] ?: 'GK Team';  // author_name
         $values[5] = $values[5] ?: null;  // author
         $values[7] = $values[7] ?: null;  // last_commented_on_datetime
-        $values[2] = Markdown::toFormattedMarkdown($values[2]);
-        $values[3] = Markdown::toFormattedMarkdown($values[3]);
+        $values[2] = Markdown::toFormattedMarkdown($values[2]);  // title
+        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // content
     }
 
     // TODO: Recompute comments count
@@ -510,12 +515,14 @@ class MovesMigrator extends BaseMigrator {
     //  'id', 'geokret', 'lat', 'lon', 'alt', 'country', 'distance', 'waypoint', 'created_on_datetime',
     //  'moved_on_datetime', 'author', 'comment', 'pictures_count', 'comments_count', 'logtype', 'username',
     //  'updated_on_datetime', 'app', 'app_ver'
+    //  'position'
 
     protected function prepareData() {
         $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE data = "0000-00-00 00:00:00" LIMIT 157;');
         $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE DAY (data) = 0 OR  MONTH (data) = 0 LIMIT 95;');
         $this->mPdo->query('UPDATE `gk-ruchy` SET `user` = NULL, username = "Deleted user" WHERE `user` = 0 AND `username` = "";');
         $this->mPdo->query('UPDATE `gk-ruchy` SET `user` = NULL WHERE `user` = 0 AND `username` != "";');
+        $this->mPdo->query('UPDATE `gk-ruchy` SET `lat` = NULL, `lon` = NULL WHERE `logtype` = \'2\' AND `lat` IS NOT NULL AND `lon` IS NOT NULL;');
     }
 
     protected function cleanerHook(&$values) {
@@ -524,8 +531,21 @@ class MovesMigrator extends BaseMigrator {
         $values[15] = $values[15] ?: null;  // username
         if (is_null($values[2]) || is_null($values[3])) {  // coordinates
             $values[4] = $values[5] = $values[6] = $values[7] = null;
+            $values[] = null;  // lon
+            $values[] = null;  // lat
+        } else {
+            $values[] = $values[3];  // lon
+            $values[] = $values[2];  // lat
         }
         $values[11] = Markdown::toFormattedMarkdown($values[11]);  // comment
+    }
+
+    protected function prepareInsertValues(int $chunkSize): string {
+        $value = array_fill(0, sizeof($this->pFields) - 1, '?');
+        $value[] = 'public.ST_SetSRID(public.ST_MakePoint(?, ?), 4326)';
+        $value = join(', ', $value);
+
+        return join(', ', array_fill(0, $chunkSize, "($value)"));
     }
 
     protected function postProcessData() {
@@ -533,10 +553,9 @@ class MovesMigrator extends BaseMigrator {
         $this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
         $this->pPdo->query('UPDATE gk_moves SET author = NULL, username = \'Deleted user\' WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
         $this->pPdo->query('DELETE FROM gk_moves WHERE geokret NOT IN (SELECT DISTINCT(id) FROM gk_geokrety);');
+        $this->pPdo->query('ALTER TABLE "gk_moves" DROP "lat", "lon";');
     }
 
-    // TODO: recompute alt
-    // TODO: recompute country
     // TODO: recompute distance
     // TODO: recompute pictures_count
     // TODO: recompute comments_count
@@ -648,9 +667,28 @@ class OwnerCodesMigrator extends BaseMigrator {
 }
 
 class WaypointGCMigrator extends BaseMigrator {
-    protected function cleanerHook(&$values) {
-        $values[3] = $values[3].','.$values[4];
-        array_pop($values); // drop lon
+    // 'wpt', 'country', 'alt', 'lat', 'lon'
+
+    // TODO clean spaces
+    public function process($paginate = DEFAULT_PAGINATION) {
+        $this->mPdo->query('INSERT INTO `gk-waypointy-gc` FROM SELECT DISTINCT (waypoint), country, elevation, position FROM gk_ruchy;');
+    }
+
+    // $this->mPdo->query('DELETE FROM `gk-waypointy-gc` WHERE wpt = "GC1K14H	";');
+//    protected function cleanerHook(&$values) {
+//        $lon = $values[3];
+//        $lat = $values[4];
+//        array_pop($values); // drop lon
+//        $values[] = $lon;
+//        $values[] = $lat;
+//    }
+
+    protected function prepareInsertValues(int $chunkSize): string {
+        $value = array_fill(0, sizeof($this->pFields) - 1, '?');
+        $value[] = 'public.ST_SetSRID(public.ST_MakePoint(?, ?), 4326)';
+        $value = join(', ', $value);
+
+        return join(', ', array_fill(0, $chunkSize, "($value)"));
     }
 }
 
@@ -808,3 +846,8 @@ class WaypointGCMigrator extends BaseMigrator {
 //AND D.refobjsubid = C.attnum
 //AND T.relname = PGT.tablename
 //ORDER BY S.relname;
+
+//UPDATE "gk_moves" SET
+//"country" = LOWER(iso_a2)
+//from gk_countries
+//where ST_Contains(geom, ST_GeomFromText('point(' || lon || ' ' || lat || ')'));

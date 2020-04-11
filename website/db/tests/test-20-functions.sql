@@ -1,0 +1,46 @@
+-- Start transaction and plan the tests.
+BEGIN;
+SELECT plan(29);
+
+-- Run the tests.
+SELECT is(valid_move_types(), '{0,1,2,3,4,5}'::smallint[], 'Check valid_move_types()');
+SELECT is(move_counting_kilometers(), '{0,3,5}'::smallint[], 'Check move_counting_kilometers()');
+SELECT is(move_requiring_coordinates(), '{0,3,5}'::smallint[], 'Check move_requiring_coordinates()');
+SELECT is(valid_moves_comments_types(), '{0,1}'::smallint[], 'Check valid_moves_comments_types()');
+SELECT is(moves_types_markable_as_missing(), '{0,3}'::smallint[], 'Check moves_types_markable_as_missing()');
+SELECT is(moves_type_last_position(), '{0,1,3,4,5}'::smallint[], 'Check moves_type_last_position()');
+
+SELECT is(validate_move_types(0::smallint), TRUE, 'Check validate_move_types(0)');
+SELECT is(validate_move_types(1::smallint), TRUE, 'Check validate_move_types(1)');
+SELECT is(validate_move_types(2::smallint), TRUE, 'Check validate_move_types(2)');
+SELECT is(validate_move_types(3::smallint), TRUE, 'Check validate_move_types(3)');
+SELECT is(validate_move_types(4::smallint), TRUE, 'Check validate_move_types(4)');
+SELECT is(validate_move_types(5::smallint), TRUE, 'Check validate_move_types(5)');
+SELECT is(validate_move_types(6::smallint), FALSE, 'Check validate_move_types(6)');
+SELECT is(validate_move_types(-1::smallint), FALSE, 'Check validate_move_types(-1)');
+
+SELECT lives_ok('SELECT move_type_count_kilometers(0::smallint)');
+SELECT throws_ok('SELECT move_type_count_kilometers(6::smallint)');
+
+SELECT ok(move_type_count_kilometers(0::smallint) = TRUE, 'Type 0 is counting KM');
+SELECT ok(move_type_count_kilometers(1::smallint) = FALSE, 'Type 1 is NOT counting KM');
+SELECT ok(move_type_count_kilometers(2::smallint) = FALSE, 'Type 2 is NOT counting KM');
+SELECT ok(move_type_count_kilometers(3::smallint) = TRUE, 'Type 3 is counting KM');
+SELECT ok(move_type_count_kilometers(4::smallint) = FALSE, 'Type 4 is NOT counting KM');
+SELECT ok(move_type_count_kilometers(5::smallint) = TRUE, 'Type 5 is counting KM');
+
+SELECT is(validate_moves_comments_type(0::smallint), TRUE, 'Check validate_moves_comments_type(0)');
+SELECT is(validate_moves_comments_type(1::smallint), TRUE, 'Check validate_moves_comments_type(1)');
+SELECT is(validate_moves_comments_type(2::smallint), FALSE, 'Check validate_moves_comments_type(2)');
+
+SELECT is(coords2position(43.68579, 6.87647), '0101000020E610000053B3075A81811B4040F67AF7C7D74540', 'Check conversion coordinates to position');
+SELECT is(position2coords('0101000020E610000053B3075A81811B4040F67AF7C7D74540'), ROW(43.68579::double precision, 6.87647::double precision), 'Check conversion position to coordinates');
+
+SELECT ok(LENGTH(generate_tracking_code()) = 6, 'Secret id size');
+
+SELECT ok(fresher_than('2020-04-07 00:00:00+00'::timestamp with time zone, 100, 'YEAR') = TRUE, 'Older than 100 years');
+
+
+-- Finish the tests and clean up.
+SELECT * FROM finish();
+ROLLBACK;
