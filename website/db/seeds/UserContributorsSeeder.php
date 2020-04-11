@@ -19,12 +19,9 @@ class UserContributorsSeeder extends AbstractSeed {
                 'username' => $username,
                 'password' => \GeoKrety\Auth::hash_password($username),
                 'registration_ip' => '127.0.0.1',
-                'daily_mails_hour' => 0,
-                'terms_of_use_datetime' => date(GK_DB_DATETIME_FORMAT),
-                'secid' => uniqid(),
             ];
         }
 
-        $this->table('gk-users')->insert($data)->save();
+        $this->table('gk_users')->insert($data)->save();
     }
 }

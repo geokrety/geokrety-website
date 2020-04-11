@@ -21,6 +21,7 @@ class Geokrety extends AbstractSeed {
     public function run() {
         $geokret = new Geokret();
         $geokret->name = '🦁 Lion Face';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🦁 Lion Face [🔗](https://emojipedia.org/lion-face/)
@@ -51,6 +52,7 @@ MISSION;
 
         $geokret = new Geokret();
         $geokret->name = '🐤 Baby Chick';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🐤 Baby Chick [🔗](https://emojipedia.org/baby-chick/)
@@ -74,6 +76,7 @@ MISSION;
 
         $geokret = new Geokret();
         $geokret->name = '🦜 Parrot';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🦜 Parrot [🔗](https://emojipedia.org/parrot/)
@@ -93,6 +96,7 @@ MISSION;
 
         $geokret = new Geokret();
         $geokret->name = '🦎 Lizard';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🦎 Lizard [🔗](https://emojipedia.org/lizard/)
@@ -112,6 +116,7 @@ MISSION;
 
         $geokret = new Geokret();
         $geokret->name = '🦊 Fox Face';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🦊 Fox Face  [🔗](https://emojipedia.org/fox-face/)
@@ -132,6 +137,7 @@ MISSION;
 
         $geokret = new Geokret();
         $geokret->name = '🦄 Unicorn Face';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🦄 Unicorn Face [🔗](https://emojipedia.org/unicorn-face/)
@@ -156,6 +162,7 @@ MISSION;
 
         $geokret = new Geokret();
         $geokret->name = '🐖 Pig';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🐖 Pig [🔗](https://emojipedia.org/pig/)
@@ -178,6 +185,7 @@ MISSION;
 
         $geokret = new Geokret();
         $geokret->name = '🐞 Lady Beetle';
+        $geokret->type = 0;
         $geokret->owner = 1;
         $geokret->mission = <<<MISSION
 # 🐞 Lady Beetle [🔗](https://emojipedia.org/lady-beetle/)

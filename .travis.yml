@@ -26,23 +26,42 @@ matrix:
 
 # https://docs.travis-ci.com/user/database-setup/#postgresql
 addons:
-  postgresql: "11"
   apt:
     packages:
-      - postgresql-11
-      - postgresql-client-11
       - moreutils
       - gettext
 
 # https://andidittrich.de/2017/06/travisci-setup-mysql-tablesdata-before-running-tests.html
 before_install:
+  # Packages overrides
+  - sudo apt-get update
+  - sudo apt-get --yes remove postgresql\* postgis\*
+  - sudo apt-get install -y postgresql-12 postgresql-client-12 postgis postgresql-12-postgis-3 postgresql-12-pgtap libtap-parser-sourcehandler-pgtap-perl
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
+  - sudo cp /etc/postgresql/9.6/main/pg_hba.conf /etc/postgresql/12/main/pg_hba.conf
+  - sudo service postgresql restart 12
+  - timeout 60s bash -c "while ! pg_isready; do sleep 0.1; done"
+  # Crowdin
   - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
   - sudo dpkg -i crowdin.deb
+  # Database
   - psql -c 'create database geokrety;' -U postgres
   - psql -c "CREATE USER geokrety WITH PASSWORD 'geokrety';" -U postgres
-  - psql -U postgres geokrety < website/db/postgres-schema.sql
-  - psql -U postgres geokrety < website/db/gk_waypoints_country.data.sql
-  - psql -U postgres geokrety < website/db/gk_waypoints_types.data.sql
+  - export PGDATABASE=geokrety
+  # install extensions
+  - psql -c "CREATE EXTENSION postgis;" -U postgres
+  - psql -c "CREATE EXTENSION postgis_raster;" -U postgres
+  - psql -c "CREATE EXTENSION pgtap;" -U postgres
+  - psql -c "\dx" -U postgres
+  - psql -c "\dT *.plan" -U postgres
+  # Install schema
+  - psql -U postgres < website/db/dumps/public-schema.sql
+  - psql -U postgres < website/db/dumps/geokrety-schema.sql
+  - psql -U postgres < website/db/dumps/gk_waypoints_country.data.sql
+  - psql -U postgres < website/db/dumps/gk_waypoints_types.data.sql
+  - pg_restore -U postgres --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "public" --table "countries" website/db/dumps/public-data.tar
+  # import SRTM subset for tests
+  - website/db/tests-srtm-import.sh
 
 install:
   - composer install --dev
@@ -67,9 +86,11 @@ script:
   - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
   # Install database
   - (cd website && ../vendor/bin/phinx migrate)
+  # Check the database
+  - PGPASSWORD=geokrety PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d geokrety -U geokrety -h localhost -ot website/db/tests/test*.sql
   # Seed database with initial values
   - (cd website && ../vendor/bin/phinx seed:run)
-  # Unit tests with PHPUnit ; output to stdr to prevent session issues https://stackoverflow.com/a/38045422/944936
+  # Unit tests with PHPUnit ; output to stderr to prevent session issues https://stackoverflow.com/a/38045422/944936
   - vendor/bin/phpunit --stderr
   - (cd website/public && php index.php /health)
 

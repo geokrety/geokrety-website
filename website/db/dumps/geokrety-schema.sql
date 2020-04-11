@@ -5,7 +5,7 @@
 -- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
 -- Dumped by pg_dump version 12.2 (Ubuntu 12.2-2.pgdg19.10+1)
 
--- Started on 2020-04-11 13:46:38 CEST
+-- Started on 2020-04-11 22:41:32 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +19,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 11 (class 2615 OID 18016)
+-- TOC entry 12 (class 2615 OID 108151)
 -- Name: geokrety; Type: SCHEMA; Schema: -; Owner: geokrety
 --
 
@@ -29,7 +29,7 @@ CREATE SCHEMA geokrety;
 ALTER SCHEMA geokrety OWNER TO geokrety;
 
 --
--- TOC entry 1518 (class 1255 OID 68859)
+-- TOC entry 2498 (class 1255 OID 108152)
 -- Name: coords2position(double precision, double precision, integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -41,7 +41,7 @@ CREATE FUNCTION geokrety.coords2position(lat double precision, lon double precis
 ALTER FUNCTION geokrety.coords2position(lat double precision, lon double precision, OUT "position" public.geography, srid integer) OWNER TO geokrety;
 
 --
--- TOC entry 1505 (class 1255 OID 18017)
+-- TOC entry 2499 (class 1255 OID 108153)
 -- Name: fresher_than(timestamp with time zone, integer, character varying); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -55,7 +55,19 @@ END;$$;
 ALTER FUNCTION geokrety.fresher_than(datetime timestamp with time zone, duration integer, unit character varying) OWNER TO geokrety;
 
 --
--- TOC entry 2526 (class 1255 OID 151964)
+-- TOC entry 2525 (class 1255 OID 163907)
+-- Name: generate_secid(integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.generate_secid(size integer DEFAULT 42) RETURNS character varying
+    LANGUAGE sql
+    AS $$SELECT array_to_string(array(select substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz',((random()*(62-1)+1)::integer),1) from generate_series(1,size)),'');$$;
+
+
+ALTER FUNCTION geokrety.generate_secid(size integer) OWNER TO geokrety;
+
+--
+-- TOC entry 2519 (class 1255 OID 151723)
 -- Name: generate_tracking_code(integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -67,7 +79,23 @@ CREATE FUNCTION geokrety.generate_tracking_code(size integer DEFAULT 6) RETURNS 
 ALTER FUNCTION geokrety.generate_tracking_code(size integer) OWNER TO geokrety;
 
 --
--- TOC entry 2529 (class 1255 OID 155540)
+-- TOC entry 2538 (class 1255 OID 168128)
+-- Name: geokret_compute_missing(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.geokret_compute_missing(lastposition_id bigint) RETURNS boolean
+    LANGUAGE sql
+    AS $$SELECT COUNT(*) > 0
+FROM "gk_moves_comments"
+WHERE "move" = lastposition_id
+AND "type" = 1;
+$$;
+
+
+ALTER FUNCTION geokrety.geokret_compute_missing(lastposition_id bigint) OWNER TO geokrety;
+
+--
+-- TOC entry 2521 (class 1255 OID 153574)
 -- Name: geokret_compute_total_distance(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -93,7 +121,7 @@ END;$$;
 ALTER FUNCTION geokrety.geokret_compute_total_distance(geokret_id bigint) OWNER TO geokrety;
 
 --
--- TOC entry 2528 (class 1255 OID 152788)
+-- TOC entry 2518 (class 1255 OID 153047)
 -- Name: geokret_gkid(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -114,7 +142,7 @@ END;$$;
 ALTER FUNCTION geokrety.geokret_gkid() OWNER TO geokrety;
 
 --
--- TOC entry 2527 (class 1255 OID 152645)
+-- TOC entry 2522 (class 1255 OID 151722)
 -- Name: geokret_tracking_code(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -130,7 +158,7 @@ END IF;
 
 LOOP
 	NEW.tracking_code = generate_tracking_code();
-	SELECT COUNT(*) = 0 FROM gk_geokrety WHERE gkid = manage_tracking_code INTO found_tc;
+	SELECT COUNT(*) = 0 FROM gk_geokrety WHERE tracking_code = NEW.tracking_code INTO found_tc;
 	EXIT WHEN found_tc;
 END LOOP;
 
@@ -141,7 +169,81 @@ END;$$;
 ALTER FUNCTION geokrety.geokret_tracking_code() OWNER TO geokrety;
 
 --
--- TOC entry 2522 (class 1255 OID 97513)
+-- TOC entry 2536 (class 1255 OID 168125)
+-- Name: geokrety_compute_last_log(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.geokrety_compute_last_log(geokret_id bigint) RETURNS bigint
+    LANGUAGE sql
+    AS $$SELECT id
+FROM "gk_moves"
+WHERE geokret = geokret_id
+ORDER BY moved_on_datetime DESC
+LIMIT 1;$$;
+
+
+ALTER FUNCTION geokrety.geokrety_compute_last_log(geokret_id bigint) OWNER TO geokrety;
+
+--
+-- TOC entry 2511 (class 1255 OID 168146)
+-- Name: geokrety_compute_last_log_and_last_position(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.geokrety_compute_last_log_and_last_position(geokret_id bigint) RETURNS bigint[]
+    LANGUAGE plpgsql
+    AS $$DECLARE
+var_last_log bigint;
+var_last_position bigint;
+BEGIN
+
+-- find last log
+SELECT id
+FROM "gk_moves"
+WHERE geokret = geokret_id
+ORDER BY moved_on_datetime DESC
+LIMIT 1
+INTO var_last_log;
+
+-- find last move
+SELECT id
+FROM "gk_moves"
+WHERE geokret = geokret_id
+AND move_type = ANY (moves_type_last_position())
+ORDER BY moved_on_datetime DESC
+LIMIT 1
+INTO var_last_position;
+
+-- update GeoKret
+UPDATE gk_geokrety
+SET last_log = var_last_log,
+	last_position = var_last_position
+WHERE id = geokret_id;
+
+RETURN ARRAY[var_last_log, var_last_position];
+END;$$;
+
+
+ALTER FUNCTION geokrety.geokrety_compute_last_log_and_last_position(geokret_id bigint) OWNER TO geokrety;
+
+--
+-- TOC entry 2537 (class 1255 OID 168127)
+-- Name: geokrety_compute_last_position(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.geokrety_compute_last_position(geokret_id bigint) RETURNS bigint
+    LANGUAGE sql
+    AS $$SELECT id
+FROM "gk_moves"
+WHERE geokret = geokret_id
+AND move_type = ANY (moves_type_last_position())
+ORDER BY moved_on_datetime DESC
+LIMIT 1;$$;
+
+
+ALTER FUNCTION geokrety.geokrety_compute_last_position(geokret_id bigint) OWNER TO geokrety;
+
+--
+-- TOC entry 2500 (class 1255 OID 108154)
 -- Name: move_counting_kilometers(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -153,7 +255,62 @@ CREATE FUNCTION geokrety.move_counting_kilometers() RETURNS smallint[]
 ALTER FUNCTION geokrety.move_counting_kilometers() OWNER TO geokrety;
 
 --
--- TOC entry 2523 (class 1255 OID 97514)
+-- TOC entry 2520 (class 1255 OID 168144)
+-- Name: move_or_moves_comments_manage_geokret_missing(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.move_or_moves_comments_manage_geokret_missing() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$DECLARE
+v_last_position bigint;
+v_missing boolean;
+BEGIN
+
+IF (TG_OP = 'DELETE' OR TG_OP = 'UPDATE') THEN
+	SELECT last_position
+	FROM gk_geokrety
+	WHERE gk_geokrety.id = OLD.geokret
+	INTO v_last_position;
+	
+	SELECT geokret_compute_missing(v_last_position)
+	INTO v_missing;
+	
+	UPDATE gk_geokrety
+	SET missing = v_missing
+	WHERE gk_geokrety.id = OLD.geokret;
+	
+	IF (TG_OP = 'DELETE') THEN
+		RETURN OLD;
+	END IF;
+END IF;
+
+SELECT last_position
+FROM gk_geokrety
+WHERE gk_geokrety.id = NEW.geokret
+INTO v_last_position;
+	
+SELECT geokret_compute_missing(v_last_position)
+INTO v_missing;
+
+if (v_missing) THEN
+	PERFORM
+	FROM gk_moves
+	WHERE id = v_last_position
+	AND validate_moves_comments_missing(move_type);
+END IF;
+
+UPDATE gk_geokrety
+SET missing = v_missing
+WHERE gk_geokrety.id = NEW.geokret;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.move_or_moves_comments_manage_geokret_missing() OWNER TO geokrety;
+
+--
+-- TOC entry 2501 (class 1255 OID 108155)
 -- Name: move_requiring_coordinates(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -165,7 +322,7 @@ CREATE FUNCTION geokrety.move_requiring_coordinates() RETURNS smallint[]
 ALTER FUNCTION geokrety.move_requiring_coordinates() OWNER TO geokrety;
 
 --
--- TOC entry 1506 (class 1255 OID 18018)
+-- TOC entry 2502 (class 1255 OID 108156)
 -- Name: move_type_count_kilometers(smallint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -184,16 +341,16 @@ END;$$;
 ALTER FUNCTION geokrety.move_type_count_kilometers(move_type smallint) OWNER TO geokrety;
 
 --
--- TOC entry 1507 (class 1255 OID 18019)
+-- TOC entry 2507 (class 1255 OID 108157)
 -- Name: move_type_require_coordinates(smallint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
 CREATE FUNCTION geokrety.move_type_require_coordinates(move_type smallint) RETURNS boolean
     LANGUAGE plpgsql
     AS $$BEGIN
-	IF NOT(move_type = ANY (valid_move_types())) THEN
+	IF NOT(move_type = ANY (geokrety.valid_move_types())) THEN
 		RAISE 'Invalid move-type';
-	ELSIF move_type = ANY (move_requiring_coordinates()) THEN
+	ELSIF move_type = ANY (geokrety.move_requiring_coordinates()) THEN
 		RETURN true;
 	END IF;
 	RETURN false;
@@ -203,7 +360,101 @@ END;$$;
 ALTER FUNCTION geokrety.move_type_require_coordinates(move_type smallint) OWNER TO geokrety;
 
 --
--- TOC entry 1515 (class 1255 OID 68848)
+-- TOC entry 2534 (class 1255 OID 166901)
+-- Name: moves_comments_count_on_move_update(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_comments_count_on_move_update() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (TG_OP = 'DELETE' OR TG_OP = 'UPDATE') THEN
+	PERFORM moves_count_comments(OLD.move);
+	
+	IF (TG_OP = 'DELETE') THEN
+		RETURN OLD;
+	END IF;
+END IF;
+
+PERFORM moves_count_comments(NEW.move);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.moves_comments_count_on_move_update() OWNER TO geokrety;
+
+--
+-- TOC entry 2527 (class 1255 OID 166918)
+-- Name: moves_comments_manage_geokret(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_comments_manage_geokret() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+SELECT geokret
+FROM "gk_moves"
+WHERE "gk_moves".id = NEW.move
+INTO NEW.geokret;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.moves_comments_manage_geokret() OWNER TO geokrety;
+
+--
+-- TOC entry 2523 (class 1255 OID 169504)
+-- Name: moves_comments_missing_only_on_last_position(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_comments_missing_only_on_last_position() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (NEW.type = 1 AND (SELECT COUNT(*) = 0
+FROM gk_geokrety
+WHERE gk_geokrety.id = NEW.geokret
+AND last_position = NEW.move)) THEN
+	RAISE '`missing` can only be set on last move position: gk:% mov:% type:%', NEW.geokret, NEW.move, NEW.type;
+END IF;
+	
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.moves_comments_missing_only_on_last_position() OWNER TO geokrety;
+
+--
+-- TOC entry 2533 (class 1255 OID 166900)
+-- Name: moves_count_comments(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_count_comments(move_id bigint) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$DECLARE
+total bigint;
+BEGIN
+
+SELECT COUNT(*)
+FROM gk_moves_comments
+WHERE "move" = move_id
+INTO total;
+
+UPDATE gk_moves
+SET comments_count = total
+WHERE id = move_id
+AND comments_count != total; -- prevent recursion
+
+RETURN total;
+END;$$;
+
+
+ALTER FUNCTION geokrety.moves_count_comments(move_id bigint) OWNER TO geokrety;
+
+--
+-- TOC entry 2514 (class 1255 OID 108158)
 -- Name: moves_distances_after(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -234,7 +485,7 @@ END;$$;
 ALTER FUNCTION geokrety.moves_distances_after() OWNER TO geokrety;
 
 --
--- TOC entry 1516 (class 1255 OID 68851)
+-- TOC entry 2503 (class 1255 OID 108159)
 -- Name: moves_distances_before(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -259,8 +510,8 @@ END;$$;
 ALTER FUNCTION geokrety.moves_distances_before() OWNER TO geokrety;
 
 --
--- TOC entry 5836 (class 0 OID 0)
--- Dependencies: 1516
+-- TOC entry 5856 (class 0 OID 0)
+-- Dependencies: 2503
 -- Name: FUNCTION moves_distances_before(); Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -268,7 +519,7 @@ COMMENT ON FUNCTION geokrety.moves_distances_before() IS 'The old position';
 
 
 --
--- TOC entry 1508 (class 1255 OID 18020)
+-- TOC entry 2517 (class 1255 OID 108160)
 -- Name: moves_gis_updates(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -295,6 +546,7 @@ END IF;
 IF (TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN
 	IF (NEW.position IS NULL) THEN
 		NEW.country := NULL;
+		NEW.elevation := NULL;
 		RETURN NEW;
 	END IF;
 	
@@ -321,7 +573,34 @@ END;$$;
 ALTER FUNCTION geokrety.moves_gis_updates() OWNER TO geokrety;
 
 --
--- TOC entry 1509 (class 1255 OID 18021)
+-- TOC entry 2513 (class 1255 OID 168147)
+-- Name: moves_log_type_and_position(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_log_type_and_position() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (TG_OP = 'DELETE' OR TG_OP = 'UPDATE') THEN
+	IF (OLD.geokret IS DISTINCT FROM NEW.geokret) THEN
+		-- Updating old position
+		PERFORM geokrety_compute_last_log_and_last_position(OLD.geokret);
+	END IF;
+	IF (TG_OP = 'DELETE') THEN
+		RETURN OLD;
+	END IF;
+END IF;
+
+PERFORM geokrety_compute_last_log_and_last_position(NEW.geokret);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.moves_log_type_and_position() OWNER TO geokrety;
+
+--
+-- TOC entry 2504 (class 1255 OID 108161)
 -- Name: moves_moved_on_datetime_updater(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -339,7 +618,7 @@ END;$$;
 ALTER FUNCTION geokrety.moves_moved_on_datetime_updater() OWNER TO geokrety;
 
 --
--- TOC entry 1510 (class 1255 OID 18022)
+-- TOC entry 2505 (class 1255 OID 108162)
 -- Name: moves_type_change(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -359,7 +638,100 @@ END;$$;
 ALTER FUNCTION geokrety.moves_type_change() OWNER TO geokrety;
 
 --
--- TOC entry 1511 (class 1255 OID 18023)
+-- TOC entry 2539 (class 1255 OID 168123)
+-- Name: moves_type_last_position(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_type_last_position() RETURNS smallint[]
+    LANGUAGE sql
+    AS $$SELECT '{0,1,3,4,5}'::smallint[]$$;
+
+
+ALTER FUNCTION geokrety.moves_type_last_position() OWNER TO geokrety;
+
+--
+-- TOC entry 2535 (class 1255 OID 168122)
+-- Name: moves_types_markable_as_missing(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_types_markable_as_missing() RETURNS smallint[]
+    LANGUAGE sql
+    AS $$SELECT '{0,3}'::smallint[]$$;
+
+
+ALTER FUNCTION geokrety.moves_types_markable_as_missing() OWNER TO geokrety;
+
+--
+-- TOC entry 2528 (class 1255 OID 165822)
+-- Name: news_comments_count_on_news_update(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.news_comments_count_on_news_update() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (TG_OP = 'DELETE' OR TG_OP = 'UPDATE') THEN
+	PERFORM news_compute_news_comments_count(OLD.news);
+	
+	IF (TG_OP = 'DELETE') THEN
+		RETURN OLD;
+	END IF;
+END IF;
+
+PERFORM news_compute_news_comments_count(NEW.news);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.news_comments_count_on_news_update() OWNER TO geokrety;
+
+--
+-- TOC entry 2529 (class 1255 OID 165989)
+-- Name: news_comments_counts_override(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.news_comments_counts_override() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+PERFORM news_compute_news_comments_count(NEW.id);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.news_comments_counts_override() OWNER TO geokrety;
+
+--
+-- TOC entry 2530 (class 1255 OID 165818)
+-- Name: news_compute_news_comments_count(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.news_compute_news_comments_count(news_id bigint) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$DECLARE
+total bigint;
+BEGIN
+
+SELECT COUNT(*)
+FROM gk_news_comments
+WHERE news = news_id
+INTO total;
+
+UPDATE gk_news
+SET comments_count = total
+WHERE id = news_id
+AND comments_count != total; -- prevent recursion
+
+RETURN total;
+END;$$;
+
+
+ALTER FUNCTION geokrety.news_compute_news_comments_count(news_id bigint) OWNER TO geokrety;
+
+--
+-- TOC entry 2506 (class 1255 OID 108163)
 -- Name: on_update_current_timestamp(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -371,14 +743,15 @@ CREATE FUNCTION geokrety.on_update_current_timestamp() RETURNS trigger
 ALTER FUNCTION geokrety.on_update_current_timestamp() OWNER TO geokrety;
 
 --
--- TOC entry 1512 (class 1255 OID 18024)
+-- TOC entry 2541 (class 1255 OID 108164)
 -- Name: picture_type_to_table_name(bigint, bigint, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
 CREATE FUNCTION geokrety.picture_type_to_table_name(geokret bigint DEFAULT NULL::bigint, move bigint DEFAULT NULL::bigint, "user" bigint DEFAULT NULL::bigint, OUT table_name character varying, OUT id bigint, OUT type smallint) RETURNS record
     LANGUAGE plpgsql
-    AS $$
-BEGIN
+    AS $$BEGIN
+
+RAISE 'DEAD CODE `picture_type_to_table_name()`';
 
 	IF (geokret IS NOT NULL AND move IS NULL AND "user" IS NULL) THEN
 		table_name := 'gk_geokrety';
@@ -412,57 +785,92 @@ END;$$;
 ALTER FUNCTION geokrety.picture_type_to_table_name(geokret bigint, move bigint, "user" bigint, OUT table_name character varying, OUT id bigint, OUT type smallint) OWNER TO geokrety;
 
 --
--- TOC entry 1513 (class 1255 OID 18025)
+-- TOC entry 2540 (class 1255 OID 108165)
 -- Name: pictures_counter(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
 CREATE FUNCTION geokrety.pictures_counter() RETURNS trigger
     LANGUAGE plpgsql
-    AS $_$DECLARE
-	ret_old	RECORD;
-	ret_new	RECORD;
-	new_table_name	varchar;
-	old_id	bigint;
-	new_id	bigint;
+    AS $$DECLARE
+	counter smallint;
 BEGIN
 
-SELECT * FROM picture_type_to_table_name(OLD.geokret, OLD.move, OLD.user) INTO ret_old;
-
-IF (TG_OP = 'DELETE') THEN
-	EXECUTE 'UPDATE '
-	|| ret_old.table_name
-	|| ' SET pictures_count=pictures_count - 1
-	WHERE id = $1'
-	USING ret_old.id;
+IF (TG_OP = 'DELETE' OR TG_OP = 'UPDATE') THEN
+	IF (OLD.type = 0) THEN
+		UPDATE gk_geokrety
+		SET pictures_count = v_table.total
+		FROM (SELECT COUNT(*) AS total
+			  FROM gk_pictures 
+			  WHERE "geokret" = OLD.geokret
+			  AND "move" IS NULL
+			  AND uploaded_on_datetime IS NOT NULL
+			  ) AS v_table
+		WHERE gk_geokrety.id = OLD.geokret;
+	ELSIF (OLD.type = 1) THEN
+		UPDATE gk_moves
+		SET pictures_count = v_table.total
+		FROM (SELECT COUNT(*) AS total
+			  FROM gk_pictures
+		      WHERE "move" = OLD.move
+		      AND "geokret" IS NOT NULL
+			  AND uploaded_on_datetime IS NOT NULL
+			  ) AS v_table
+		WHERE gk_moves.id = OLD.move;
+	ELSIF (OLD.type = 2) THEN
+		UPDATE gk_users
+		SET pictures_count = v_table.total
+		FROM (SELECT COUNT(*) AS total
+			  FROM gk_pictures
+			  WHERE "user" = OLD.user
+			  AND uploaded_on_datetime IS NOT NULL
+			  ) AS v_table
+		WHERE gk_users.id = OLD.user;
+	END IF;
 	
-	RETURN OLD;
+	IF (TG_OP = 'DELETE') THEN
+		RETURN OLD;
+	END IF;
 END IF;
 
-SELECT * FROM picture_type_to_table_name(NEW.geokret, NEW.move, NEW.user) INTO ret_new;
-
-IF (TG_OP = 'UPDATE' AND ret_old.id != ret_new.id) THEN
-	EXECUTE 'UPDATE '
-	|| ret_old.table_name
-	|| ' SET pictures_count=pictures_count - 1
-	WHERE id = $1'
-	USING ret_old.id;
+IF (NEW.type = 0) THEN
+	UPDATE gk_geokrety
+	SET pictures_count = v_table.total
+	FROM (SELECT COUNT(*) AS total
+		  FROM gk_pictures 
+		  WHERE "geokret" = NEW.geokret
+		  AND "move" IS NULL
+		  AND uploaded_on_datetime IS NOT NULL
+		  ) AS v_table
+	WHERE gk_geokrety.id = NEW.geokret;
+ELSIF (NEW.type = 1) THEN
+	UPDATE gk_moves
+	SET pictures_count = v_table.total
+	FROM (SELECT COUNT(*) AS total
+		  FROM gk_pictures
+		  WHERE "move" = NEW.move
+		  AND "geokret" IS NOT NULL
+		  AND uploaded_on_datetime IS NOT NULL
+		  ) AS v_table
+	WHERE gk_moves.id = NEW.move;
+ELSIF (NEW.type = 2) THEN
+	UPDATE gk_users
+	SET pictures_count = v_table.total
+	FROM (SELECT COUNT(*) AS total
+		  FROM gk_pictures
+		  WHERE "user" = NEW.user
+		  AND uploaded_on_datetime IS NOT NULL
+		  ) AS v_table
+	WHERE gk_users.id = NEW.user;
 END IF;
 
-EXECUTE 'UPDATE '
-|| ret_new.table_name
-|| ' SET pictures_count=pictures_count + 1
-WHERE id = $1'
-USING ret_new.id;
-	
 RETURN NEW;
-
-END;$_$;
+END;$$;
 
 
 ALTER FUNCTION geokrety.pictures_counter() OWNER TO geokrety;
 
 --
--- TOC entry 1514 (class 1255 OID 18026)
+-- TOC entry 2512 (class 1255 OID 108166)
 -- Name: pictures_type_updater(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -473,11 +881,13 @@ CREATE FUNCTION geokrety.pictures_type_updater() RETURNS trigger
 	geokret_id	bigint;
 BEGIN
 
-SELECT * FROM picture_type_to_table_name(NEW.geokret, NEW.move, NEW.user) INTO ret;
+--SELECT * FROM picture_type_to_table_name(NEW.geokret, NEW.move, NEW.user) INTO ret;
+--NEW.type := ret.type;
 
-NEW.type := ret.type;
+PERFORM validate_picture_type_against_parameters(NEW);
 
-IF (NEW.type != OLD.type AND NEW.type = 1) THEN
+--IF (NEW.type != OLD.type AND NEW.type = 1) THEN
+IF (NEW.type = 1) THEN
 	SELECT geokret FROM gk_moves WHERE id=NEW.move INTO geokret_id;
 	NEW.geokret := geokret_id;
 END IF;
@@ -490,7 +900,7 @@ END;$$;
 ALTER FUNCTION geokrety.pictures_type_updater() OWNER TO geokrety;
 
 --
--- TOC entry 1517 (class 1255 OID 68854)
+-- TOC entry 2508 (class 1255 OID 108167)
 -- Name: position2coords(public.geography, integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -503,7 +913,7 @@ CREATE FUNCTION geokrety.position2coords("position" public.geography, OUT lat do
 ALTER FUNCTION geokrety.position2coords("position" public.geography, OUT lat double precision, OUT lon double precision, srid integer) OWNER TO geokrety;
 
 --
--- TOC entry 1519 (class 1255 OID 69135)
+-- TOC entry 2510 (class 1255 OID 108168)
 -- Name: update_next_move_distance(bigint, bigint, boolean); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -545,7 +955,30 @@ END;$$;
 ALTER FUNCTION geokrety.update_next_move_distance(geokret_id bigint, move_id bigint, exclude_current boolean) OWNER TO geokrety;
 
 --
--- TOC entry 2524 (class 1255 OID 97517)
+-- TOC entry 2526 (class 1255 OID 163953)
+-- Name: user_secid_generate(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.user_secid_generate() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$DECLARE
+found_tc bool;
+BEGIN
+
+IF (NEW.secid IS NOT NULL) THEN
+	RETURN NEW;
+END IF;
+
+NEW.secid = generate_secid();
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.user_secid_generate() OWNER TO geokrety;
+
+--
+-- TOC entry 2509 (class 1255 OID 108169)
 -- Name: valid_move_types(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -557,25 +990,134 @@ CREATE FUNCTION geokrety.valid_move_types() RETURNS smallint[]
 ALTER FUNCTION geokrety.valid_move_types() OWNER TO geokrety;
 
 --
--- TOC entry 2525 (class 1255 OID 97521)
+-- TOC entry 2532 (class 1255 OID 166411)
+-- Name: valid_moves_comments_types(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.valid_moves_comments_types() RETURNS smallint[]
+    LANGUAGE sql
+    AS $$SELECT '{0,1}'::smallint[]$$;
+
+
+ALTER FUNCTION geokrety.valid_moves_comments_types() OWNER TO geokrety;
+
+--
+-- TOC entry 2516 (class 1255 OID 108170)
 -- Name: validate_move_types(smallint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
 CREATE FUNCTION geokrety.validate_move_types(move_type smallint) RETURNS boolean
     LANGUAGE plpgsql
     AS $$BEGIN
-	RETURN move_type IN (valid_move_types());
+	RETURN move_type = ANY (valid_move_types());
 END;$$;
 
 
 ALTER FUNCTION geokrety.validate_move_types(move_type smallint) OWNER TO geokrety;
+
+--
+-- TOC entry 2515 (class 1255 OID 169412)
+-- Name: validate_moves_comments_missing(smallint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.validate_moves_comments_missing(move_type smallint) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (NOT (move_type = ANY (moves_types_markable_as_missing()))) THEN
+	RAISE '`missing` status cannot be set for such move type';
+END IF;
+
+RETURN TRUE;
+END;$$;
+
+
+ALTER FUNCTION geokrety.validate_moves_comments_missing(move_type smallint) OWNER TO geokrety;
+
+--
+-- TOC entry 2531 (class 1255 OID 166442)
+-- Name: validate_moves_comments_type(smallint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.validate_moves_comments_type(comment_type smallint) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$BEGIN
+	RETURN comment_type = ANY (valid_moves_comments_types());
+END;$$;
+
+
+ALTER FUNCTION geokrety.validate_moves_comments_type(comment_type smallint) OWNER TO geokrety;
 
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- TOC entry 236 (class 1259 OID 18027)
+-- TOC entry 248 (class 1259 OID 108285)
+-- Name: gk_pictures; Type: TABLE; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TABLE geokrety.gk_pictures (
+    id bigint NOT NULL,
+    author bigint,
+    bucket character varying(128),
+    key character varying(128),
+    move bigint,
+    geokret bigint,
+    "user" bigint,
+    filename character varying(256),
+    caption character varying(128),
+    created_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
+    uploaded_on_datetime timestamp(0) with time zone,
+    type smallint NOT NULL,
+    CONSTRAINT validate_type CHECK ((type = ANY (ARRAY[0, 1, 2])))
+);
+
+
+ALTER TABLE geokrety.gk_pictures OWNER TO geokrety;
+
+--
+-- TOC entry 5857 (class 0 OID 0)
+-- Dependencies: 248
+-- Name: COLUMN gk_pictures.type; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON COLUMN geokrety.gk_pictures.type IS 'const PICTURE_GEOKRET_AVATAR = 0; const PICTURE_GEOKRET_MOVE = 1; const PICTURE_USER_AVATAR = 2;';
+
+
+--
+-- TOC entry 2524 (class 1255 OID 161251)
+-- Name: validate_picture_type_against_parameters(geokrety.gk_pictures); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.validate_picture_type_against_parameters(row_p geokrety.gk_pictures) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (row_p.type = 0 AND row_p.geokret IS NOT NULL AND row_p.move IS NULL AND row_p.user IS NULL) THEN
+	RETURN true;
+ELSIF (row_p.type = 1 AND row_p.geokret IS NULL AND row_p.move IS NOT NULL AND row_p.user IS NULL) THEN
+	RETURN true;
+ELSIF (row_p.type = 1 AND row_p.geokret IS NOT NULL AND row_p.move IS NOT NULL AND row_p.user IS NULL) THEN
+	RETURN true;
+ELSIF (row_p.type = 2 AND row_p.geokret IS NULL AND row_p.move IS NULL AND row_p.user IS NOT NULL) THEN
+	RETURN true;
+ELSIF (row_p.type > 2) THEN
+	RAISE 'Move type unrecognized (%)', row_p.type USING ERRCODE = 'data_exception';
+ELSIF (row_p.geokret IS NULL AND row_p.move IS NULL AND row_p.user IS NULL) THEN
+	RAISE 'One of Geokret (%), Move (%) or User (%) must be specified', row_p.geokret, row_p.move, row_p.user USING ERRCODE = 'data_exception';
+END IF;
+
+RAISE 'Move `type` does not match the specified arguments.' USING ERRCODE = 'data_exception';
+
+END;$$;
+
+
+ALTER FUNCTION geokrety.validate_picture_type_against_parameters(row_p geokrety.gk_pictures) OWNER TO geokrety;
+
+--
+-- TOC entry 230 (class 1259 OID 108171)
 -- Name: gk_account_activation; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -595,8 +1137,8 @@ CREATE TABLE geokrety.gk_account_activation (
 ALTER TABLE geokrety.gk_account_activation OWNER TO geokrety;
 
 --
--- TOC entry 5837 (class 0 OID 0)
--- Dependencies: 236
+-- TOC entry 5858 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: COLUMN gk_account_activation.used; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -604,7 +1146,7 @@ COMMENT ON COLUMN geokrety.gk_account_activation.used IS '0=unused 1=validated 2
 
 
 --
--- TOC entry 237 (class 1259 OID 18036)
+-- TOC entry 231 (class 1259 OID 108180)
 -- Name: account_activation_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -619,8 +1161,8 @@ CREATE SEQUENCE geokrety.account_activation_id_seq
 ALTER TABLE geokrety.account_activation_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5838 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 5859 (class 0 OID 0)
+-- Dependencies: 231
 -- Name: account_activation_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -628,7 +1170,7 @@ ALTER SEQUENCE geokrety.account_activation_id_seq OWNED BY geokrety.gk_account_a
 
 
 --
--- TOC entry 238 (class 1259 OID 18038)
+-- TOC entry 232 (class 1259 OID 108182)
 -- Name: gk_badges; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -645,7 +1187,7 @@ CREATE TABLE geokrety.gk_badges (
 ALTER TABLE geokrety.gk_badges OWNER TO geokrety;
 
 --
--- TOC entry 239 (class 1259 OID 18043)
+-- TOC entry 233 (class 1259 OID 108187)
 -- Name: badges_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -660,8 +1202,8 @@ CREATE SEQUENCE geokrety.badges_id_seq
 ALTER TABLE geokrety.badges_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5839 (class 0 OID 0)
--- Dependencies: 239
+-- TOC entry 5860 (class 0 OID 0)
+-- Dependencies: 233
 -- Name: badges_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -669,7 +1211,7 @@ ALTER SEQUENCE geokrety.badges_id_seq OWNED BY geokrety.gk_badges.id;
 
 
 --
--- TOC entry 240 (class 1259 OID 18045)
+-- TOC entry 234 (class 1259 OID 108189)
 -- Name: gk_email_activation; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -695,8 +1237,8 @@ CREATE TABLE geokrety.gk_email_activation (
 ALTER TABLE geokrety.gk_email_activation OWNER TO geokrety;
 
 --
--- TOC entry 5840 (class 0 OID 0)
--- Dependencies: 240
+-- TOC entry 5861 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: COLUMN gk_email_activation.previous_email; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -704,8 +1246,8 @@ COMMENT ON COLUMN geokrety.gk_email_activation.previous_email IS 'Store the prev
 
 
 --
--- TOC entry 5841 (class 0 OID 0)
--- Dependencies: 240
+-- TOC entry 5862 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: COLUMN gk_email_activation.used; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -713,7 +1255,7 @@ COMMENT ON COLUMN geokrety.gk_email_activation.used IS '0=unused 1=validated 2=r
 
 
 --
--- TOC entry 241 (class 1259 OID 18055)
+-- TOC entry 235 (class 1259 OID 108199)
 -- Name: email_activation_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -728,8 +1270,8 @@ CREATE SEQUENCE geokrety.email_activation_id_seq
 ALTER TABLE geokrety.email_activation_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5842 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 5863 (class 0 OID 0)
+-- Dependencies: 235
 -- Name: email_activation_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -737,7 +1279,7 @@ ALTER SEQUENCE geokrety.email_activation_id_seq OWNED BY geokrety.gk_email_activ
 
 
 --
--- TOC entry 242 (class 1259 OID 18057)
+-- TOC entry 236 (class 1259 OID 108201)
 -- Name: gk_geokrety; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -766,8 +1308,8 @@ CREATE TABLE geokrety.gk_geokrety (
 ALTER TABLE geokrety.gk_geokrety OWNER TO geokrety;
 
 --
--- TOC entry 5843 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 5864 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: COLUMN gk_geokrety.gkid; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -775,8 +1317,8 @@ COMMENT ON COLUMN geokrety.gk_geokrety.gkid IS 'The real GK id : https://stackov
 
 
 --
--- TOC entry 5844 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 5865 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: COLUMN gk_geokrety.holder; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -784,8 +1326,8 @@ COMMENT ON COLUMN geokrety.gk_geokrety.holder IS 'In the hands of user';
 
 
 --
--- TOC entry 5845 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 5866 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: COLUMN gk_geokrety.missing; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -793,8 +1335,8 @@ COMMENT ON COLUMN geokrety.gk_geokrety.missing IS 'true=missing';
 
 
 --
--- TOC entry 5846 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 5867 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: COLUMN gk_geokrety.type; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -802,7 +1344,7 @@ COMMENT ON COLUMN geokrety.gk_geokrety.type IS '0, 1, 2, 3, 4';
 
 
 --
--- TOC entry 243 (class 1259 OID 18070)
+-- TOC entry 237 (class 1259 OID 108214)
 -- Name: geokrety_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -817,8 +1359,8 @@ CREATE SEQUENCE geokrety.geokrety_id_seq
 ALTER TABLE geokrety.geokrety_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5847 (class 0 OID 0)
--- Dependencies: 243
+-- TOC entry 5868 (class 0 OID 0)
+-- Dependencies: 237
 -- Name: geokrety_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -826,7 +1368,7 @@ ALTER SEQUENCE geokrety.geokrety_id_seq OWNED BY geokrety.gk_geokrety.id;
 
 
 --
--- TOC entry 244 (class 1259 OID 18072)
+-- TOC entry 238 (class 1259 OID 108216)
 -- Name: gk_geokrety_rating; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -843,8 +1385,8 @@ CREATE TABLE geokrety.gk_geokrety_rating (
 ALTER TABLE geokrety.gk_geokrety_rating OWNER TO geokrety;
 
 --
--- TOC entry 5848 (class 0 OID 0)
--- Dependencies: 244
+-- TOC entry 5869 (class 0 OID 0)
+-- Dependencies: 238
 -- Name: COLUMN gk_geokrety_rating.rate; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -852,7 +1394,7 @@ COMMENT ON COLUMN geokrety.gk_geokrety_rating.rate IS 'single rating (number of 
 
 
 --
--- TOC entry 245 (class 1259 OID 18077)
+-- TOC entry 239 (class 1259 OID 108221)
 -- Name: geokrety_rating_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -867,8 +1409,8 @@ CREATE SEQUENCE geokrety.geokrety_rating_id_seq
 ALTER TABLE geokrety.geokrety_rating_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5849 (class 0 OID 0)
--- Dependencies: 245
+-- TOC entry 5870 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: geokrety_rating_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -876,7 +1418,7 @@ ALTER SEQUENCE geokrety.geokrety_rating_id_seq OWNED BY geokrety.gk_geokrety_rat
 
 
 --
--- TOC entry 246 (class 1259 OID 18079)
+-- TOC entry 240 (class 1259 OID 108223)
 -- Name: gk_mails; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -895,7 +1437,7 @@ CREATE TABLE geokrety.gk_mails (
 ALTER TABLE geokrety.gk_mails OWNER TO geokrety;
 
 --
--- TOC entry 247 (class 1259 OID 18086)
+-- TOC entry 241 (class 1259 OID 108230)
 -- Name: gk_moves; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -928,8 +1470,8 @@ CREATE TABLE geokrety.gk_moves (
 ALTER TABLE geokrety.gk_moves OWNER TO geokrety;
 
 --
--- TOC entry 5850 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 5871 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: COLUMN gk_moves.elevation; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -937,8 +1479,8 @@ COMMENT ON COLUMN geokrety.gk_moves.elevation IS '-32768 when alt cannot be foun
 
 
 --
--- TOC entry 5851 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 5872 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: COLUMN gk_moves.country; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -946,8 +1488,8 @@ COMMENT ON COLUMN geokrety.gk_moves.country IS 'ISO 3166-1 https://fr.wikipedia.
 
 
 --
--- TOC entry 5852 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 5873 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: COLUMN gk_moves.app; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -955,8 +1497,8 @@ COMMENT ON COLUMN geokrety.gk_moves.app IS 'source of the log';
 
 
 --
--- TOC entry 5853 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 5874 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: COLUMN gk_moves.app_ver; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -964,8 +1506,8 @@ COMMENT ON COLUMN geokrety.gk_moves.app_ver IS 'application version/codename';
 
 
 --
--- TOC entry 5854 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 5875 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: COLUMN gk_moves.moved_on_datetime; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -973,8 +1515,8 @@ COMMENT ON COLUMN geokrety.gk_moves.moved_on_datetime IS 'The move as configured
 
 
 --
--- TOC entry 5855 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 5876 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: COLUMN gk_moves.move_type; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -982,14 +1524,14 @@ COMMENT ON COLUMN geokrety.gk_moves.move_type IS '0=drop, 1=grab, 2=comment, 3=m
 
 
 --
--- TOC entry 248 (class 1259 OID 18099)
+-- TOC entry 242 (class 1259 OID 108243)
 -- Name: gk_moves_comments; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
 CREATE TABLE geokrety.gk_moves_comments (
     id bigint NOT NULL,
     move bigint NOT NULL,
-    geokret bigint NOT NULL,
+    geokret bigint,
     author bigint,
     content character varying(500) NOT NULL,
     created_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -1002,8 +1544,8 @@ CREATE TABLE geokrety.gk_moves_comments (
 ALTER TABLE geokrety.gk_moves_comments OWNER TO geokrety;
 
 --
--- TOC entry 5856 (class 0 OID 0)
--- Dependencies: 248
+-- TOC entry 5877 (class 0 OID 0)
+-- Dependencies: 242
 -- Name: COLUMN gk_moves_comments.type; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1011,7 +1553,7 @@ COMMENT ON COLUMN geokrety.gk_moves_comments.type IS '0=comment, 1=missing';
 
 
 --
--- TOC entry 249 (class 1259 OID 18108)
+-- TOC entry 243 (class 1259 OID 108252)
 -- Name: gk_news; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1030,7 +1572,7 @@ CREATE TABLE geokrety.gk_news (
 ALTER TABLE geokrety.gk_news OWNER TO geokrety;
 
 --
--- TOC entry 250 (class 1259 OID 18116)
+-- TOC entry 244 (class 1259 OID 108260)
 -- Name: gk_news_comments; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1047,7 +1589,7 @@ CREATE TABLE geokrety.gk_news_comments (
 ALTER TABLE geokrety.gk_news_comments OWNER TO geokrety;
 
 --
--- TOC entry 251 (class 1259 OID 18124)
+-- TOC entry 245 (class 1259 OID 108268)
 -- Name: gk_news_comments_access; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1063,7 +1605,7 @@ CREATE TABLE geokrety.gk_news_comments_access (
 ALTER TABLE geokrety.gk_news_comments_access OWNER TO geokrety;
 
 --
--- TOC entry 252 (class 1259 OID 18128)
+-- TOC entry 246 (class 1259 OID 108272)
 -- Name: gk_owner_codes; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1080,7 +1622,7 @@ CREATE TABLE geokrety.gk_owner_codes (
 ALTER TABLE geokrety.gk_owner_codes OWNER TO geokrety;
 
 --
--- TOC entry 253 (class 1259 OID 18132)
+-- TOC entry 247 (class 1259 OID 108276)
 -- Name: gk_password_tokens; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1092,7 +1634,7 @@ CREATE TABLE geokrety.gk_password_tokens (
     used_on_datetime timestamp(0) with time zone,
     updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
     requesting_ip inet NOT NULL,
-    used smallint NOT NULL,
+    used smallint DEFAULT '0'::smallint NOT NULL,
     CONSTRAINT validate_used CHECK ((used = ANY (ARRAY[0, 1])))
 );
 
@@ -1100,8 +1642,8 @@ CREATE TABLE geokrety.gk_password_tokens (
 ALTER TABLE geokrety.gk_password_tokens OWNER TO geokrety;
 
 --
--- TOC entry 5857 (class 0 OID 0)
--- Dependencies: 253
+-- TOC entry 5878 (class 0 OID 0)
+-- Dependencies: 247
 -- Name: COLUMN gk_password_tokens.used; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1109,41 +1651,7 @@ COMMENT ON COLUMN geokrety.gk_password_tokens.used IS '0=unused 1=used';
 
 
 --
--- TOC entry 254 (class 1259 OID 18141)
--- Name: gk_pictures; Type: TABLE; Schema: geokrety; Owner: geokrety
---
-
-CREATE TABLE geokrety.gk_pictures (
-    id bigint NOT NULL,
-    author bigint,
-    bucket character varying(128),
-    key character varying(128),
-    move bigint,
-    geokret bigint,
-    "user" bigint,
-    filename character varying(256),
-    caption character varying(128),
-    created_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
-    uploaded_on_datetime timestamp(0) with time zone,
-    type smallint NOT NULL,
-    CONSTRAINT validate_type CHECK ((type = ANY (ARRAY[0, 1, 2])))
-);
-
-
-ALTER TABLE geokrety.gk_pictures OWNER TO geokrety;
-
---
--- TOC entry 5858 (class 0 OID 0)
--- Dependencies: 254
--- Name: COLUMN gk_pictures.type; Type: COMMENT; Schema: geokrety; Owner: geokrety
---
-
-COMMENT ON COLUMN geokrety.gk_pictures.type IS 'const PICTURE_GEOKRET_AVATAR = 0; const PICTURE_GEOKRET_MOVE = 1; const PICTURE_USER_AVATAR = 2;';
-
-
---
--- TOC entry 255 (class 1259 OID 18150)
+-- TOC entry 249 (class 1259 OID 108294)
 -- Name: gk_races; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1173,8 +1681,8 @@ CREATE TABLE geokrety.gk_races (
 ALTER TABLE geokrety.gk_races OWNER TO geokrety;
 
 --
--- TOC entry 5859 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5879 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.created_on_datetime; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1182,8 +1690,8 @@ COMMENT ON COLUMN geokrety.gk_races.created_on_datetime IS 'Creation date';
 
 
 --
--- TOC entry 5860 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5880 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.private; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1191,8 +1699,8 @@ COMMENT ON COLUMN geokrety.gk_races.private IS '0 = public, 1 = private';
 
 
 --
--- TOC entry 5861 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5881 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.password; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1200,8 +1708,8 @@ COMMENT ON COLUMN geokrety.gk_races.password IS 'password to join the race';
 
 
 --
--- TOC entry 5862 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5882 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.start_on_datetime; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1209,8 +1717,8 @@ COMMENT ON COLUMN geokrety.gk_races.start_on_datetime IS 'Race start date';
 
 
 --
--- TOC entry 5863 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5883 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.end_on_datetime; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1218,8 +1726,8 @@ COMMENT ON COLUMN geokrety.gk_races.end_on_datetime IS 'Race end date';
 
 
 --
--- TOC entry 5864 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5884 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.target_dist; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1227,8 +1735,8 @@ COMMENT ON COLUMN geokrety.gk_races.target_dist IS 'target distance';
 
 
 --
--- TOC entry 5865 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5885 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.target_caches; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1236,8 +1744,8 @@ COMMENT ON COLUMN geokrety.gk_races.target_caches IS 'targeted number of caches'
 
 
 --
--- TOC entry 5866 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5886 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: COLUMN gk_races.status; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1245,7 +1753,7 @@ COMMENT ON COLUMN geokrety.gk_races.status IS 'race status. 0 = initialized, 1 =
 
 
 --
--- TOC entry 256 (class 1259 OID 18162)
+-- TOC entry 250 (class 1259 OID 108306)
 -- Name: gk_races_participants; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1269,7 +1777,7 @@ CREATE TABLE geokrety.gk_races_participants (
 ALTER TABLE geokrety.gk_races_participants OWNER TO geokrety;
 
 --
--- TOC entry 257 (class 1259 OID 18167)
+-- TOC entry 251 (class 1259 OID 108311)
 -- Name: gk_statistics_counters; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1283,7 +1791,7 @@ CREATE TABLE geokrety.gk_statistics_counters (
 ALTER TABLE geokrety.gk_statistics_counters OWNER TO geokrety;
 
 --
--- TOC entry 258 (class 1259 OID 18170)
+-- TOC entry 252 (class 1259 OID 108314)
 -- Name: gk_statistics_counters_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1299,8 +1807,8 @@ CREATE SEQUENCE geokrety.gk_statistics_counters_id_seq
 ALTER TABLE geokrety.gk_statistics_counters_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5867 (class 0 OID 0)
--- Dependencies: 258
+-- TOC entry 5887 (class 0 OID 0)
+-- Dependencies: 252
 -- Name: gk_statistics_counters_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1308,7 +1816,7 @@ ALTER SEQUENCE geokrety.gk_statistics_counters_id_seq OWNED BY geokrety.gk_stati
 
 
 --
--- TOC entry 259 (class 1259 OID 18172)
+-- TOC entry 253 (class 1259 OID 108316)
 -- Name: gk_statistics_daily_counters; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1330,7 +1838,7 @@ CREATE TABLE geokrety.gk_statistics_daily_counters (
 ALTER TABLE geokrety.gk_statistics_daily_counters OWNER TO geokrety;
 
 --
--- TOC entry 260 (class 1259 OID 18175)
+-- TOC entry 254 (class 1259 OID 108319)
 -- Name: gk_statistics_daily_counters_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1346,8 +1854,8 @@ CREATE SEQUENCE geokrety.gk_statistics_daily_counters_id_seq
 ALTER TABLE geokrety.gk_statistics_daily_counters_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5868 (class 0 OID 0)
--- Dependencies: 260
+-- TOC entry 5888 (class 0 OID 0)
+-- Dependencies: 254
 -- Name: gk_statistics_daily_counters_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1355,7 +1863,7 @@ ALTER SEQUENCE geokrety.gk_statistics_daily_counters_id_seq OWNED BY geokrety.gk
 
 
 --
--- TOC entry 261 (class 1259 OID 18177)
+-- TOC entry 255 (class 1259 OID 108321)
 -- Name: gk_users; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1379,7 +1887,7 @@ CREATE TABLE geokrety.gk_users (
     last_mail_datetime timestamp(0) with time zone,
     last_login_datetime timestamp(0) with time zone,
     terms_of_use_datetime timestamp(0) with time zone,
-    secid character varying(128) NOT NULL,
+    secid character varying(128),
     statpic_template integer DEFAULT 1 NOT NULL,
     email_invalid smallint DEFAULT '0'::smallint NOT NULL,
     account_valid smallint DEFAULT '0'::smallint NOT NULL,
@@ -1391,8 +1899,8 @@ CREATE TABLE geokrety.gk_users (
 ALTER TABLE geokrety.gk_users OWNER TO geokrety;
 
 --
--- TOC entry 5869 (class 0 OID 0)
--- Dependencies: 261
+-- TOC entry 5889 (class 0 OID 0)
+-- Dependencies: 255
 -- Name: COLUMN gk_users.pictures_count; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1400,8 +1908,8 @@ COMMENT ON COLUMN geokrety.gk_users.pictures_count IS 'Attached avatar count';
 
 
 --
--- TOC entry 5870 (class 0 OID 0)
--- Dependencies: 261
+-- TOC entry 5890 (class 0 OID 0)
+-- Dependencies: 255
 -- Name: COLUMN gk_users.terms_of_use_datetime; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1409,8 +1917,8 @@ COMMENT ON COLUMN geokrety.gk_users.terms_of_use_datetime IS 'Acceptation date';
 
 
 --
--- TOC entry 5871 (class 0 OID 0)
--- Dependencies: 261
+-- TOC entry 5891 (class 0 OID 0)
+-- Dependencies: 255
 -- Name: COLUMN gk_users.secid; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1418,8 +1926,8 @@ COMMENT ON COLUMN geokrety.gk_users.secid IS 'connect by other applications';
 
 
 --
--- TOC entry 5872 (class 0 OID 0)
--- Dependencies: 261
+-- TOC entry 5892 (class 0 OID 0)
+-- Dependencies: 255
 -- Name: COLUMN gk_users.account_valid; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1427,7 +1935,7 @@ COMMENT ON COLUMN geokrety.gk_users.account_valid IS '0=unconfirmed 1=confirmed'
 
 
 --
--- TOC entry 262 (class 1259 OID 18193)
+-- TOC entry 256 (class 1259 OID 108337)
 -- Name: gk_watched; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1443,7 +1951,7 @@ CREATE TABLE geokrety.gk_watched (
 ALTER TABLE geokrety.gk_watched OWNER TO geokrety;
 
 --
--- TOC entry 264 (class 1259 OID 18209)
+-- TOC entry 257 (class 1259 OID 108342)
 -- Name: gk_waypoints_country; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1456,7 +1964,7 @@ CREATE TABLE geokrety.gk_waypoints_country (
 ALTER TABLE geokrety.gk_waypoints_country OWNER TO geokrety;
 
 --
--- TOC entry 265 (class 1259 OID 18212)
+-- TOC entry 258 (class 1259 OID 108345)
 -- Name: waypoints_gc_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1471,7 +1979,7 @@ CREATE SEQUENCE geokrety.waypoints_gc_id_seq
 ALTER TABLE geokrety.waypoints_gc_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 266 (class 1259 OID 18214)
+-- TOC entry 259 (class 1259 OID 108347)
 -- Name: gk_waypoints_gc; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1487,7 +1995,7 @@ CREATE TABLE geokrety.gk_waypoints_gc (
 ALTER TABLE geokrety.gk_waypoints_gc OWNER TO geokrety;
 
 --
--- TOC entry 263 (class 1259 OID 18198)
+-- TOC entry 260 (class 1259 OID 108354)
 -- Name: gk_waypoints_oc; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1513,8 +2021,8 @@ CREATE TABLE geokrety.gk_waypoints_oc (
 ALTER TABLE geokrety.gk_waypoints_oc OWNER TO geokrety;
 
 --
--- TOC entry 5873 (class 0 OID 0)
--- Dependencies: 263
+-- TOC entry 5893 (class 0 OID 0)
+-- Dependencies: 260
 -- Name: COLUMN gk_waypoints_oc.country; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1522,8 +2030,8 @@ COMMENT ON COLUMN geokrety.gk_waypoints_oc.country IS 'country code as ISO 3166-
 
 
 --
--- TOC entry 5874 (class 0 OID 0)
--- Dependencies: 263
+-- TOC entry 5894 (class 0 OID 0)
+-- Dependencies: 260
 -- Name: COLUMN gk_waypoints_oc.country_name; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1531,8 +2039,8 @@ COMMENT ON COLUMN geokrety.gk_waypoints_oc.country_name IS 'full English country
 
 
 --
--- TOC entry 5875 (class 0 OID 0)
--- Dependencies: 263
+-- TOC entry 5895 (class 0 OID 0)
+-- Dependencies: 260
 -- Name: COLUMN gk_waypoints_oc.status; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1540,7 +2048,7 @@ COMMENT ON COLUMN geokrety.gk_waypoints_oc.status IS '0, 1, 2, 3, 6, 7';
 
 
 --
--- TOC entry 267 (class 1259 OID 18218)
+-- TOC entry 261 (class 1259 OID 108365)
 -- Name: gk_waypoints_sync; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1553,8 +2061,8 @@ CREATE TABLE geokrety.gk_waypoints_sync (
 ALTER TABLE geokrety.gk_waypoints_sync OWNER TO geokrety;
 
 --
--- TOC entry 5876 (class 0 OID 0)
--- Dependencies: 267
+-- TOC entry 5896 (class 0 OID 0)
+-- Dependencies: 261
 -- Name: TABLE gk_waypoints_sync; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1562,7 +2070,7 @@ COMMENT ON TABLE geokrety.gk_waypoints_sync IS 'Last synchronization time for GC
 
 
 --
--- TOC entry 268 (class 1259 OID 18221)
+-- TOC entry 262 (class 1259 OID 108368)
 -- Name: gk_waypoints_types; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1575,7 +2083,7 @@ CREATE TABLE geokrety.gk_waypoints_types (
 ALTER TABLE geokrety.gk_waypoints_types OWNER TO geokrety;
 
 --
--- TOC entry 269 (class 1259 OID 18227)
+-- TOC entry 263 (class 1259 OID 108374)
 -- Name: mails_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1590,8 +2098,8 @@ CREATE SEQUENCE geokrety.mails_id_seq
 ALTER TABLE geokrety.mails_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5877 (class 0 OID 0)
--- Dependencies: 269
+-- TOC entry 5897 (class 0 OID 0)
+-- Dependencies: 263
 -- Name: mails_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1599,7 +2107,7 @@ ALTER SEQUENCE geokrety.mails_id_seq OWNED BY geokrety.gk_mails.id;
 
 
 --
--- TOC entry 270 (class 1259 OID 18229)
+-- TOC entry 264 (class 1259 OID 108376)
 -- Name: move_comments_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1614,8 +2122,8 @@ CREATE SEQUENCE geokrety.move_comments_id_seq
 ALTER TABLE geokrety.move_comments_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5878 (class 0 OID 0)
--- Dependencies: 270
+-- TOC entry 5898 (class 0 OID 0)
+-- Dependencies: 264
 -- Name: move_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1623,7 +2131,7 @@ ALTER SEQUENCE geokrety.move_comments_id_seq OWNED BY geokrety.gk_moves_comments
 
 
 --
--- TOC entry 271 (class 1259 OID 18231)
+-- TOC entry 265 (class 1259 OID 108378)
 -- Name: moves_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1638,8 +2146,8 @@ CREATE SEQUENCE geokrety.moves_id_seq
 ALTER TABLE geokrety.moves_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5879 (class 0 OID 0)
--- Dependencies: 271
+-- TOC entry 5899 (class 0 OID 0)
+-- Dependencies: 265
 -- Name: moves_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1647,7 +2155,7 @@ ALTER SEQUENCE geokrety.moves_id_seq OWNED BY geokrety.gk_moves.id;
 
 
 --
--- TOC entry 272 (class 1259 OID 18233)
+-- TOC entry 266 (class 1259 OID 108380)
 -- Name: news_comments_access_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1662,8 +2170,8 @@ CREATE SEQUENCE geokrety.news_comments_access_id_seq
 ALTER TABLE geokrety.news_comments_access_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5880 (class 0 OID 0)
--- Dependencies: 272
+-- TOC entry 5900 (class 0 OID 0)
+-- Dependencies: 266
 -- Name: news_comments_access_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1671,7 +2179,7 @@ ALTER SEQUENCE geokrety.news_comments_access_id_seq OWNED BY geokrety.gk_news_co
 
 
 --
--- TOC entry 273 (class 1259 OID 18235)
+-- TOC entry 267 (class 1259 OID 108382)
 -- Name: news_comments_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1686,8 +2194,8 @@ CREATE SEQUENCE geokrety.news_comments_id_seq
 ALTER TABLE geokrety.news_comments_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5881 (class 0 OID 0)
--- Dependencies: 273
+-- TOC entry 5901 (class 0 OID 0)
+-- Dependencies: 267
 -- Name: news_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1695,7 +2203,7 @@ ALTER SEQUENCE geokrety.news_comments_id_seq OWNED BY geokrety.gk_news_comments.
 
 
 --
--- TOC entry 274 (class 1259 OID 18237)
+-- TOC entry 268 (class 1259 OID 108384)
 -- Name: news_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1710,8 +2218,8 @@ CREATE SEQUENCE geokrety.news_id_seq
 ALTER TABLE geokrety.news_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5882 (class 0 OID 0)
--- Dependencies: 274
+-- TOC entry 5902 (class 0 OID 0)
+-- Dependencies: 268
 -- Name: news_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1719,7 +2227,7 @@ ALTER SEQUENCE geokrety.news_id_seq OWNED BY geokrety.gk_news.id;
 
 
 --
--- TOC entry 275 (class 1259 OID 18239)
+-- TOC entry 269 (class 1259 OID 108386)
 -- Name: owner_codes_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1734,8 +2242,8 @@ CREATE SEQUENCE geokrety.owner_codes_id_seq
 ALTER TABLE geokrety.owner_codes_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5883 (class 0 OID 0)
--- Dependencies: 275
+-- TOC entry 5903 (class 0 OID 0)
+-- Dependencies: 269
 -- Name: owner_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1743,7 +2251,7 @@ ALTER SEQUENCE geokrety.owner_codes_id_seq OWNED BY geokrety.gk_owner_codes.id;
 
 
 --
--- TOC entry 276 (class 1259 OID 18241)
+-- TOC entry 270 (class 1259 OID 108388)
 -- Name: password_tokens_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1758,8 +2266,8 @@ CREATE SEQUENCE geokrety.password_tokens_id_seq
 ALTER TABLE geokrety.password_tokens_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5884 (class 0 OID 0)
--- Dependencies: 276
+-- TOC entry 5904 (class 0 OID 0)
+-- Dependencies: 270
 -- Name: password_tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1767,7 +2275,7 @@ ALTER SEQUENCE geokrety.password_tokens_id_seq OWNED BY geokrety.gk_password_tok
 
 
 --
--- TOC entry 277 (class 1259 OID 18243)
+-- TOC entry 271 (class 1259 OID 108390)
 -- Name: phinxlog; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1783,7 +2291,7 @@ CREATE TABLE geokrety.phinxlog (
 ALTER TABLE geokrety.phinxlog OWNER TO geokrety;
 
 --
--- TOC entry 278 (class 1259 OID 18250)
+-- TOC entry 272 (class 1259 OID 108397)
 -- Name: pictures_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1798,8 +2306,8 @@ CREATE SEQUENCE geokrety.pictures_id_seq
 ALTER TABLE geokrety.pictures_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5885 (class 0 OID 0)
--- Dependencies: 278
+-- TOC entry 5905 (class 0 OID 0)
+-- Dependencies: 272
 -- Name: pictures_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1807,7 +2315,7 @@ ALTER SEQUENCE geokrety.pictures_id_seq OWNED BY geokrety.gk_pictures.id;
 
 
 --
--- TOC entry 279 (class 1259 OID 18252)
+-- TOC entry 273 (class 1259 OID 108399)
 -- Name: races_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1822,8 +2330,8 @@ CREATE SEQUENCE geokrety.races_id_seq
 ALTER TABLE geokrety.races_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5886 (class 0 OID 0)
--- Dependencies: 279
+-- TOC entry 5906 (class 0 OID 0)
+-- Dependencies: 273
 -- Name: races_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1831,7 +2339,7 @@ ALTER SEQUENCE geokrety.races_id_seq OWNED BY geokrety.gk_races.id;
 
 
 --
--- TOC entry 280 (class 1259 OID 18254)
+-- TOC entry 274 (class 1259 OID 108401)
 -- Name: races_participants_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1846,8 +2354,8 @@ CREATE SEQUENCE geokrety.races_participants_id_seq
 ALTER TABLE geokrety.races_participants_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5887 (class 0 OID 0)
--- Dependencies: 280
+-- TOC entry 5907 (class 0 OID 0)
+-- Dependencies: 274
 -- Name: races_participants_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1855,7 +2363,7 @@ ALTER SEQUENCE geokrety.races_participants_id_seq OWNED BY geokrety.gk_races_par
 
 
 --
--- TOC entry 281 (class 1259 OID 18256)
+-- TOC entry 275 (class 1259 OID 108403)
 -- Name: scripts; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1869,7 +2377,7 @@ CREATE TABLE geokrety.scripts (
 ALTER TABLE geokrety.scripts OWNER TO geokrety;
 
 --
--- TOC entry 282 (class 1259 OID 18259)
+-- TOC entry 276 (class 1259 OID 108406)
 -- Name: scripts_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1884,8 +2392,8 @@ CREATE SEQUENCE geokrety.scripts_id_seq
 ALTER TABLE geokrety.scripts_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5888 (class 0 OID 0)
--- Dependencies: 282
+-- TOC entry 5908 (class 0 OID 0)
+-- Dependencies: 276
 -- Name: scripts_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1893,7 +2401,7 @@ ALTER SEQUENCE geokrety.scripts_id_seq OWNED BY geokrety.scripts.id;
 
 
 --
--- TOC entry 283 (class 1259 OID 18261)
+-- TOC entry 277 (class 1259 OID 108408)
 -- Name: sessions; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1909,7 +2417,7 @@ CREATE TABLE geokrety.sessions (
 ALTER TABLE geokrety.sessions OWNER TO geokrety;
 
 --
--- TOC entry 284 (class 1259 OID 18267)
+-- TOC entry 278 (class 1259 OID 108414)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1924,8 +2432,8 @@ CREATE SEQUENCE geokrety.users_id_seq
 ALTER TABLE geokrety.users_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5889 (class 0 OID 0)
--- Dependencies: 284
+-- TOC entry 5909 (class 0 OID 0)
+-- Dependencies: 278
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1933,7 +2441,7 @@ ALTER SEQUENCE geokrety.users_id_seq OWNED BY geokrety.gk_users.id;
 
 
 --
--- TOC entry 285 (class 1259 OID 18269)
+-- TOC entry 279 (class 1259 OID 108416)
 -- Name: watched_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1948,8 +2456,8 @@ CREATE SEQUENCE geokrety.watched_id_seq
 ALTER TABLE geokrety.watched_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5890 (class 0 OID 0)
--- Dependencies: 285
+-- TOC entry 5910 (class 0 OID 0)
+-- Dependencies: 279
 -- Name: watched_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1957,7 +2465,7 @@ ALTER SEQUENCE geokrety.watched_id_seq OWNED BY geokrety.gk_watched.id;
 
 
 --
--- TOC entry 286 (class 1259 OID 18271)
+-- TOC entry 280 (class 1259 OID 108418)
 -- Name: waypoints_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1972,8 +2480,8 @@ CREATE SEQUENCE geokrety.waypoints_id_seq
 ALTER TABLE geokrety.waypoints_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5891 (class 0 OID 0)
--- Dependencies: 286
+-- TOC entry 5911 (class 0 OID 0)
+-- Dependencies: 280
 -- Name: waypoints_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: geokrety
 --
 
@@ -1981,7 +2489,7 @@ ALTER SEQUENCE geokrety.waypoints_id_seq OWNED BY geokrety.gk_waypoints_oc.id;
 
 
 --
--- TOC entry 5437 (class 2604 OID 102734)
+-- TOC entry 5446 (class 2604 OID 108420)
 -- Name: gk_account_activation id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1989,7 +2497,7 @@ ALTER TABLE ONLY geokrety.gk_account_activation ALTER COLUMN id SET DEFAULT next
 
 
 --
--- TOC entry 5441 (class 2604 OID 102735)
+-- TOC entry 5450 (class 2604 OID 108421)
 -- Name: gk_badges id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -1997,7 +2505,7 @@ ALTER TABLE ONLY geokrety.gk_badges ALTER COLUMN id SET DEFAULT nextval('geokret
 
 
 --
--- TOC entry 5445 (class 2604 OID 102736)
+-- TOC entry 5454 (class 2604 OID 108422)
 -- Name: gk_email_activation id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2005,7 +2513,7 @@ ALTER TABLE ONLY geokrety.gk_email_activation ALTER COLUMN id SET DEFAULT nextva
 
 
 --
--- TOC entry 5453 (class 2604 OID 102737)
+-- TOC entry 5462 (class 2604 OID 108423)
 -- Name: gk_geokrety id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2013,7 +2521,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety ALTER COLUMN id SET DEFAULT nextval('geokr
 
 
 --
--- TOC entry 5457 (class 2604 OID 102738)
+-- TOC entry 5466 (class 2604 OID 108424)
 -- Name: gk_geokrety_rating id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2021,7 +2529,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety_rating ALTER COLUMN id SET DEFAULT nextval
 
 
 --
--- TOC entry 5459 (class 2604 OID 102739)
+-- TOC entry 5468 (class 2604 OID 108425)
 -- Name: gk_mails id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2029,7 +2537,7 @@ ALTER TABLE ONLY geokrety.gk_mails ALTER COLUMN id SET DEFAULT nextval('geokrety
 
 
 --
--- TOC entry 5465 (class 2604 OID 102740)
+-- TOC entry 5474 (class 2604 OID 108426)
 -- Name: gk_moves id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2037,7 +2545,7 @@ ALTER TABLE ONLY geokrety.gk_moves ALTER COLUMN id SET DEFAULT nextval('geokrety
 
 
 --
--- TOC entry 5470 (class 2604 OID 102741)
+-- TOC entry 5479 (class 2604 OID 108427)
 -- Name: gk_moves_comments id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2045,7 +2553,7 @@ ALTER TABLE ONLY geokrety.gk_moves_comments ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 5474 (class 2604 OID 102742)
+-- TOC entry 5483 (class 2604 OID 108428)
 -- Name: gk_news id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2053,7 +2561,7 @@ ALTER TABLE ONLY geokrety.gk_news ALTER COLUMN id SET DEFAULT nextval('geokrety.
 
 
 --
--- TOC entry 5477 (class 2604 OID 102743)
+-- TOC entry 5486 (class 2604 OID 108429)
 -- Name: gk_news_comments id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2061,7 +2569,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 5479 (class 2604 OID 102744)
+-- TOC entry 5488 (class 2604 OID 108430)
 -- Name: gk_news_comments_access id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2069,7 +2577,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments_access ALTER COLUMN id SET DEFAULT ne
 
 
 --
--- TOC entry 5481 (class 2604 OID 102745)
+-- TOC entry 5490 (class 2604 OID 108431)
 -- Name: gk_owner_codes id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2077,7 +2585,7 @@ ALTER TABLE ONLY geokrety.gk_owner_codes ALTER COLUMN id SET DEFAULT nextval('ge
 
 
 --
--- TOC entry 5484 (class 2604 OID 102746)
+-- TOC entry 5494 (class 2604 OID 108432)
 -- Name: gk_password_tokens id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2085,7 +2593,7 @@ ALTER TABLE ONLY geokrety.gk_password_tokens ALTER COLUMN id SET DEFAULT nextval
 
 
 --
--- TOC entry 5488 (class 2604 OID 102747)
+-- TOC entry 5498 (class 2604 OID 108433)
 -- Name: gk_pictures id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2093,7 +2601,7 @@ ALTER TABLE ONLY geokrety.gk_pictures ALTER COLUMN id SET DEFAULT nextval('geokr
 
 
 --
--- TOC entry 5494 (class 2604 OID 102748)
+-- TOC entry 5504 (class 2604 OID 108434)
 -- Name: gk_races id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2101,7 +2609,7 @@ ALTER TABLE ONLY geokrety.gk_races ALTER COLUMN id SET DEFAULT nextval('geokrety
 
 
 --
--- TOC entry 5499 (class 2604 OID 102749)
+-- TOC entry 5509 (class 2604 OID 108435)
 -- Name: gk_races_participants id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2109,7 +2617,7 @@ ALTER TABLE ONLY geokrety.gk_races_participants ALTER COLUMN id SET DEFAULT next
 
 
 --
--- TOC entry 5500 (class 2604 OID 102750)
+-- TOC entry 5510 (class 2604 OID 108436)
 -- Name: gk_statistics_counters id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2117,7 +2625,7 @@ ALTER TABLE ONLY geokrety.gk_statistics_counters ALTER COLUMN id SET DEFAULT nex
 
 
 --
--- TOC entry 5501 (class 2604 OID 102751)
+-- TOC entry 5511 (class 2604 OID 108437)
 -- Name: gk_statistics_daily_counters id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2125,7 +2633,7 @@ ALTER TABLE ONLY geokrety.gk_statistics_daily_counters ALTER COLUMN id SET DEFAU
 
 
 --
--- TOC entry 5510 (class 2604 OID 102752)
+-- TOC entry 5520 (class 2604 OID 108438)
 -- Name: gk_users id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2133,7 +2641,7 @@ ALTER TABLE ONLY geokrety.gk_users ALTER COLUMN id SET DEFAULT nextval('geokrety
 
 
 --
--- TOC entry 5515 (class 2604 OID 102753)
+-- TOC entry 5525 (class 2604 OID 108439)
 -- Name: gk_watched id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2141,7 +2649,7 @@ ALTER TABLE ONLY geokrety.gk_watched ALTER COLUMN id SET DEFAULT nextval('geokre
 
 
 --
--- TOC entry 5520 (class 2604 OID 102754)
+-- TOC entry 5531 (class 2604 OID 108440)
 -- Name: gk_waypoints_oc id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2149,7 +2657,7 @@ ALTER TABLE ONLY geokrety.gk_waypoints_oc ALTER COLUMN id SET DEFAULT nextval('g
 
 
 --
--- TOC entry 5524 (class 2604 OID 102755)
+-- TOC entry 5534 (class 2604 OID 108441)
 -- Name: scripts id; Type: DEFAULT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2157,7 +2665,16 @@ ALTER TABLE ONLY geokrety.scripts ALTER COLUMN id SET DEFAULT nextval('geokrety.
 
 
 --
--- TOC entry 5590 (class 2606 OID 18296)
+-- TOC entry 5547 (class 2606 OID 108465)
+-- Name: gk_geokrety gk_geokrety_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE ONLY geokrety.gk_geokrety
+    ADD CONSTRAINT gk_geokrety_primary PRIMARY KEY (id);
+
+
+--
+-- TOC entry 5600 (class 2606 OID 108443)
 -- Name: gk_pictures gk_pictures_id; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2166,7 +2683,7 @@ ALTER TABLE ONLY geokrety.gk_pictures
 
 
 --
--- TOC entry 5599 (class 2606 OID 18298)
+-- TOC entry 5609 (class 2606 OID 108445)
 -- Name: gk_statistics_counters gk_statistics_counters_id; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2175,7 +2692,7 @@ ALTER TABLE ONLY geokrety.gk_statistics_counters
 
 
 --
--- TOC entry 5601 (class 2606 OID 18300)
+-- TOC entry 5611 (class 2606 OID 108447)
 -- Name: gk_statistics_daily_counters gk_statistics_daily_counters_date; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2184,7 +2701,7 @@ ALTER TABLE ONLY geokrety.gk_statistics_daily_counters
 
 
 --
--- TOC entry 5603 (class 2606 OID 18302)
+-- TOC entry 5613 (class 2606 OID 108449)
 -- Name: gk_statistics_daily_counters gk_statistics_daily_counters_id; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2193,7 +2710,7 @@ ALTER TABLE ONLY geokrety.gk_statistics_daily_counters
 
 
 --
--- TOC entry 5622 (class 2606 OID 18304)
+-- TOC entry 5629 (class 2606 OID 108451)
 -- Name: gk_waypoints_gc gk_waypoints_gc_id; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2202,7 +2719,7 @@ ALTER TABLE ONLY geokrety.gk_waypoints_gc
 
 
 --
--- TOC entry 5624 (class 2606 OID 18306)
+-- TOC entry 5631 (class 2606 OID 108453)
 -- Name: gk_waypoints_gc gk_waypoints_gc_waypoint; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2211,7 +2728,7 @@ ALTER TABLE ONLY geokrety.gk_waypoints_gc
 
 
 --
--- TOC entry 5626 (class 2606 OID 18308)
+-- TOC entry 5636 (class 2606 OID 108455)
 -- Name: gk_waypoints_sync gk_waypoints_sync_service_id; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2220,7 +2737,7 @@ ALTER TABLE ONLY geokrety.gk_waypoints_sync
 
 
 --
--- TOC entry 5628 (class 2606 OID 18310)
+-- TOC entry 5638 (class 2606 OID 108457)
 -- Name: gk_waypoints_types gk_waypoints_types_type; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2229,7 +2746,7 @@ ALTER TABLE ONLY geokrety.gk_waypoints_types
 
 
 --
--- TOC entry 5526 (class 2606 OID 18312)
+-- TOC entry 5536 (class 2606 OID 108459)
 -- Name: gk_account_activation idx_20969_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2238,7 +2755,7 @@ ALTER TABLE ONLY geokrety.gk_account_activation
 
 
 --
--- TOC entry 5529 (class 2606 OID 18314)
+-- TOC entry 5539 (class 2606 OID 108461)
 -- Name: gk_badges idx_20984_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2247,7 +2764,7 @@ ALTER TABLE ONLY geokrety.gk_badges
 
 
 --
--- TOC entry 5533 (class 2606 OID 18316)
+-- TOC entry 5543 (class 2606 OID 108463)
 -- Name: gk_email_activation idx_20991_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2256,16 +2773,7 @@ ALTER TABLE ONLY geokrety.gk_email_activation
 
 
 --
--- TOC entry 5543 (class 2606 OID 18318)
--- Name: gk_geokrety idx_21002_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
---
-
-ALTER TABLE ONLY geokrety.gk_geokrety
-    ADD CONSTRAINT idx_21002_primary PRIMARY KEY (id);
-
-
---
--- TOC entry 5546 (class 2606 OID 18320)
+-- TOC entry 5556 (class 2606 OID 108467)
 -- Name: gk_geokrety_rating idx_21016_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2274,7 +2782,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety_rating
 
 
 --
--- TOC entry 5565 (class 2606 OID 18322)
+-- TOC entry 5575 (class 2606 OID 108469)
 -- Name: gk_moves_comments idx_21034_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2283,7 +2791,7 @@ ALTER TABLE ONLY geokrety.gk_moves_comments
 
 
 --
--- TOC entry 5559 (class 2606 OID 18324)
+-- TOC entry 5569 (class 2606 OID 108471)
 -- Name: gk_moves idx_21044_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2292,7 +2800,7 @@ ALTER TABLE ONLY geokrety.gk_moves
 
 
 --
--- TOC entry 5570 (class 2606 OID 18326)
+-- TOC entry 5580 (class 2606 OID 108473)
 -- Name: gk_news idx_21058_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2301,7 +2809,7 @@ ALTER TABLE ONLY geokrety.gk_news
 
 
 --
--- TOC entry 5575 (class 2606 OID 18328)
+-- TOC entry 5585 (class 2606 OID 108475)
 -- Name: gk_news_comments idx_21069_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2310,7 +2818,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments
 
 
 --
--- TOC entry 5578 (class 2606 OID 18330)
+-- TOC entry 5588 (class 2606 OID 108477)
 -- Name: gk_news_comments_access idx_21079_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2319,7 +2827,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments_access
 
 
 --
--- TOC entry 5583 (class 2606 OID 18332)
+-- TOC entry 5593 (class 2606 OID 108479)
 -- Name: gk_owner_codes idx_21085_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2328,7 +2836,7 @@ ALTER TABLE ONLY geokrety.gk_owner_codes
 
 
 --
--- TOC entry 5587 (class 2606 OID 18334)
+-- TOC entry 5597 (class 2606 OID 108481)
 -- Name: gk_password_tokens idx_21092_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2337,7 +2845,7 @@ ALTER TABLE ONLY geokrety.gk_password_tokens
 
 
 --
--- TOC entry 5594 (class 2606 OID 18336)
+-- TOC entry 5604 (class 2606 OID 108483)
 -- Name: gk_races idx_21114_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2346,7 +2854,7 @@ ALTER TABLE ONLY geokrety.gk_races
 
 
 --
--- TOC entry 5608 (class 2606 OID 18338)
+-- TOC entry 5620 (class 2606 OID 108485)
 -- Name: gk_users idx_21135_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2355,7 +2863,7 @@ ALTER TABLE ONLY geokrety.gk_users
 
 
 --
--- TOC entry 5615 (class 2606 OID 18340)
+-- TOC entry 5625 (class 2606 OID 108487)
 -- Name: gk_watched idx_21153_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2364,7 +2872,7 @@ ALTER TABLE ONLY geokrety.gk_watched
 
 
 --
--- TOC entry 5619 (class 2606 OID 18342)
+-- TOC entry 5634 (class 2606 OID 108489)
 -- Name: gk_waypoints_oc idx_21160_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2373,7 +2881,7 @@ ALTER TABLE ONLY geokrety.gk_waypoints_oc
 
 
 --
--- TOC entry 5630 (class 2606 OID 18344)
+-- TOC entry 5640 (class 2606 OID 108491)
 -- Name: phinxlog idx_21180_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2382,7 +2890,7 @@ ALTER TABLE ONLY geokrety.phinxlog
 
 
 --
--- TOC entry 5633 (class 2606 OID 18346)
+-- TOC entry 5643 (class 2606 OID 108493)
 -- Name: scripts idx_21189_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2391,7 +2899,7 @@ ALTER TABLE ONLY geokrety.scripts
 
 
 --
--- TOC entry 5635 (class 2606 OID 18348)
+-- TOC entry 5645 (class 2606 OID 108495)
 -- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -2400,7 +2908,7 @@ ALTER TABLE ONLY geokrety.sessions
 
 
 --
--- TOC entry 5536 (class 1259 OID 153045)
+-- TOC entry 5548 (class 1259 OID 152085)
 -- Name: gk_geokrety_uniq_tracking_code; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2408,7 +2916,7 @@ CREATE UNIQUE INDEX gk_geokrety_uniq_tracking_code ON geokrety.gk_geokrety USING
 
 
 --
--- TOC entry 5551 (class 1259 OID 18349)
+-- TOC entry 5561 (class 1259 OID 108496)
 -- Name: gk_moves_country; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2416,7 +2924,7 @@ CREATE INDEX gk_moves_country ON geokrety.gk_moves USING btree (country);
 
 
 --
--- TOC entry 5591 (class 1259 OID 18350)
+-- TOC entry 5601 (class 1259 OID 108497)
 -- Name: gk_pictures_key; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2424,7 +2932,23 @@ CREATE INDEX gk_pictures_key ON geokrety.gk_pictures USING btree (key);
 
 
 --
--- TOC entry 5617 (class 1259 OID 18351)
+-- TOC entry 5614 (class 1259 OID 163970)
+-- Name: gk_users_uniq_secid; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE UNIQUE INDEX gk_users_uniq_secid ON geokrety.gk_users USING btree (secid);
+
+
+--
+-- TOC entry 5615 (class 1259 OID 108547)
+-- Name: gk_users_uniq_username; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE UNIQUE INDEX gk_users_uniq_username ON geokrety.gk_users USING btree (username);
+
+
+--
+-- TOC entry 5632 (class 1259 OID 108498)
 -- Name: gk_waypoints_waypoint; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2432,7 +2956,7 @@ CREATE INDEX gk_waypoints_waypoint ON geokrety.gk_waypoints_oc USING btree (wayp
 
 
 --
--- TOC entry 5527 (class 1259 OID 18352)
+-- TOC entry 5537 (class 1259 OID 108499)
 -- Name: idx_20969_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2440,7 +2964,7 @@ CREATE INDEX idx_20969_user ON geokrety.gk_account_activation USING btree ("user
 
 
 --
--- TOC entry 5530 (class 1259 OID 18353)
+-- TOC entry 5540 (class 1259 OID 108500)
 -- Name: idx_20984_timestamp; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2448,7 +2972,7 @@ CREATE INDEX idx_20984_timestamp ON geokrety.gk_badges USING btree (awarded_on_d
 
 
 --
--- TOC entry 5531 (class 1259 OID 18354)
+-- TOC entry 5541 (class 1259 OID 108501)
 -- Name: idx_20984_userid; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2456,7 +2980,7 @@ CREATE INDEX idx_20984_userid ON geokrety.gk_badges USING btree (holder);
 
 
 --
--- TOC entry 5534 (class 1259 OID 18355)
+-- TOC entry 5544 (class 1259 OID 108502)
 -- Name: idx_20991_token; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2464,7 +2988,7 @@ CREATE INDEX idx_20991_token ON geokrety.gk_email_activation USING btree (token)
 
 
 --
--- TOC entry 5535 (class 1259 OID 18356)
+-- TOC entry 5545 (class 1259 OID 108503)
 -- Name: idx_20991_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2472,7 +2996,7 @@ CREATE INDEX idx_20991_user ON geokrety.gk_email_activation USING btree ("user")
 
 
 --
--- TOC entry 5537 (class 1259 OID 18357)
+-- TOC entry 5549 (class 1259 OID 108504)
 -- Name: idx_21002_avatarid; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2480,7 +3004,7 @@ CREATE INDEX idx_21002_avatarid ON geokrety.gk_geokrety USING btree (avatar);
 
 
 --
--- TOC entry 5538 (class 1259 OID 18358)
+-- TOC entry 5550 (class 1259 OID 108505)
 -- Name: idx_21002_hands_of_index; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2488,7 +3012,7 @@ CREATE INDEX idx_21002_hands_of_index ON geokrety.gk_geokrety USING btree (holde
 
 
 --
--- TOC entry 5539 (class 1259 OID 18361)
+-- TOC entry 5551 (class 1259 OID 108508)
 -- Name: idx_21002_ost_log_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2496,7 +3020,7 @@ CREATE INDEX idx_21002_ost_log_id ON geokrety.gk_geokrety USING btree (last_log)
 
 
 --
--- TOC entry 5540 (class 1259 OID 18362)
+-- TOC entry 5552 (class 1259 OID 108509)
 -- Name: idx_21002_ost_pozycja_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2504,7 +3028,7 @@ CREATE INDEX idx_21002_ost_pozycja_id ON geokrety.gk_geokrety USING btree (last_
 
 
 --
--- TOC entry 5541 (class 1259 OID 18363)
+-- TOC entry 5553 (class 1259 OID 108510)
 -- Name: idx_21002_owner; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2512,7 +3036,7 @@ CREATE INDEX idx_21002_owner ON geokrety.gk_geokrety USING btree (owner);
 
 
 --
--- TOC entry 5544 (class 1259 OID 18364)
+-- TOC entry 5554 (class 1259 OID 108511)
 -- Name: idx_21016_geokret; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2520,7 +3044,7 @@ CREATE INDEX idx_21016_geokret ON geokrety.gk_geokrety_rating USING btree (geokr
 
 
 --
--- TOC entry 5547 (class 1259 OID 18365)
+-- TOC entry 5557 (class 1259 OID 108512)
 -- Name: idx_21016_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2528,7 +3052,7 @@ CREATE INDEX idx_21016_user ON geokrety.gk_geokrety_rating USING btree (author);
 
 
 --
--- TOC entry 5548 (class 1259 OID 18366)
+-- TOC entry 5558 (class 1259 OID 108513)
 -- Name: idx_21024_from; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2536,7 +3060,7 @@ CREATE INDEX idx_21024_from ON geokrety.gk_mails USING btree (from_user);
 
 
 --
--- TOC entry 5549 (class 1259 OID 18367)
+-- TOC entry 5559 (class 1259 OID 108514)
 -- Name: idx_21024_id_maila; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2544,7 +3068,7 @@ CREATE UNIQUE INDEX idx_21024_id_maila ON geokrety.gk_mails USING btree (id);
 
 
 --
--- TOC entry 5550 (class 1259 OID 18368)
+-- TOC entry 5560 (class 1259 OID 108515)
 -- Name: idx_21024_to; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2552,7 +3076,7 @@ CREATE INDEX idx_21024_to ON geokrety.gk_mails USING btree (to_user);
 
 
 --
--- TOC entry 5563 (class 1259 OID 18369)
+-- TOC entry 5573 (class 1259 OID 166833)
 -- Name: idx_21034_kret_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2560,7 +3084,7 @@ CREATE INDEX idx_21034_kret_id ON geokrety.gk_moves_comments USING btree (geokre
 
 
 --
--- TOC entry 5566 (class 1259 OID 18370)
+-- TOC entry 5576 (class 1259 OID 108517)
 -- Name: idx_21034_ruch_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2568,7 +3092,7 @@ CREATE INDEX idx_21034_ruch_id ON geokrety.gk_moves_comments USING btree (move);
 
 
 --
--- TOC entry 5567 (class 1259 OID 18371)
+-- TOC entry 5577 (class 1259 OID 108518)
 -- Name: idx_21034_user_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2576,7 +3100,7 @@ CREATE INDEX idx_21034_user_id ON geokrety.gk_moves_comments USING btree (author
 
 
 --
--- TOC entry 5552 (class 1259 OID 18372)
+-- TOC entry 5562 (class 1259 OID 108519)
 -- Name: idx_21044_alt; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2584,7 +3108,7 @@ CREATE INDEX idx_21044_alt ON geokrety.gk_moves USING btree (elevation);
 
 
 --
--- TOC entry 5553 (class 1259 OID 18373)
+-- TOC entry 5563 (class 1259 OID 108520)
 -- Name: idx_21044_data; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2592,7 +3116,7 @@ CREATE INDEX idx_21044_data ON geokrety.gk_moves USING btree (created_on_datetim
 
 
 --
--- TOC entry 5554 (class 1259 OID 18374)
+-- TOC entry 5564 (class 1259 OID 108521)
 -- Name: idx_21044_data_dodania; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2600,7 +3124,7 @@ CREATE INDEX idx_21044_data_dodania ON geokrety.gk_moves USING btree (moved_on_d
 
 
 --
--- TOC entry 5555 (class 1259 OID 18375)
+-- TOC entry 5565 (class 1259 OID 108522)
 -- Name: idx_21044_id_2; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2608,7 +3132,7 @@ CREATE INDEX idx_21044_id_2 ON geokrety.gk_moves USING btree (geokret);
 
 
 --
--- TOC entry 5556 (class 1259 OID 18376)
+-- TOC entry 5566 (class 1259 OID 108523)
 -- Name: idx_21044_lat; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2616,7 +3140,7 @@ CREATE INDEX idx_21044_lat ON geokrety.gk_moves USING btree (lat);
 
 
 --
--- TOC entry 5557 (class 1259 OID 18377)
+-- TOC entry 5567 (class 1259 OID 108524)
 -- Name: idx_21044_lon; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2624,7 +3148,7 @@ CREATE INDEX idx_21044_lon ON geokrety.gk_moves USING btree (lon);
 
 
 --
--- TOC entry 5560 (class 1259 OID 18378)
+-- TOC entry 5570 (class 1259 OID 108525)
 -- Name: idx_21044_timestamp; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2632,7 +3156,7 @@ CREATE INDEX idx_21044_timestamp ON geokrety.gk_moves USING btree (updated_on_da
 
 
 --
--- TOC entry 5561 (class 1259 OID 18379)
+-- TOC entry 5571 (class 1259 OID 108526)
 -- Name: idx_21044_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2640,7 +3164,7 @@ CREATE INDEX idx_21044_user ON geokrety.gk_moves USING btree (author);
 
 
 --
--- TOC entry 5562 (class 1259 OID 18380)
+-- TOC entry 5572 (class 1259 OID 108527)
 -- Name: idx_21044_waypoint; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2648,7 +3172,7 @@ CREATE INDEX idx_21044_waypoint ON geokrety.gk_moves USING btree (waypoint);
 
 
 --
--- TOC entry 5568 (class 1259 OID 18381)
+-- TOC entry 5578 (class 1259 OID 108528)
 -- Name: idx_21058_date; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2656,7 +3180,7 @@ CREATE INDEX idx_21058_date ON geokrety.gk_news USING btree (created_on_datetime
 
 
 --
--- TOC entry 5571 (class 1259 OID 18382)
+-- TOC entry 5581 (class 1259 OID 108529)
 -- Name: idx_21058_userid; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2664,7 +3188,7 @@ CREATE INDEX idx_21058_userid ON geokrety.gk_news USING btree (author);
 
 
 --
--- TOC entry 5572 (class 1259 OID 18383)
+-- TOC entry 5582 (class 1259 OID 108530)
 -- Name: idx_21069_author; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2672,7 +3196,7 @@ CREATE INDEX idx_21069_author ON geokrety.gk_news_comments USING btree (author);
 
 
 --
--- TOC entry 5573 (class 1259 OID 18384)
+-- TOC entry 5583 (class 1259 OID 108531)
 -- Name: idx_21069_news; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2680,7 +3204,7 @@ CREATE INDEX idx_21069_news ON geokrety.gk_news_comments USING btree (news);
 
 
 --
--- TOC entry 5576 (class 1259 OID 18385)
+-- TOC entry 5586 (class 1259 OID 108532)
 -- Name: idx_21079_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2688,7 +3212,7 @@ CREATE UNIQUE INDEX idx_21079_id ON geokrety.gk_news_comments_access USING btree
 
 
 --
--- TOC entry 5579 (class 1259 OID 18386)
+-- TOC entry 5589 (class 1259 OID 108533)
 -- Name: idx_21079_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2696,7 +3220,7 @@ CREATE INDEX idx_21079_user ON geokrety.gk_news_comments_access USING btree (aut
 
 
 --
--- TOC entry 5580 (class 1259 OID 18387)
+-- TOC entry 5590 (class 1259 OID 108534)
 -- Name: idx_21085_code; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2704,7 +3228,7 @@ CREATE INDEX idx_21085_code ON geokrety.gk_owner_codes USING btree (token);
 
 
 --
--- TOC entry 5581 (class 1259 OID 18388)
+-- TOC entry 5591 (class 1259 OID 108535)
 -- Name: idx_21085_kret_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2712,7 +3236,7 @@ CREATE INDEX idx_21085_kret_id ON geokrety.gk_owner_codes USING btree (geokret);
 
 
 --
--- TOC entry 5584 (class 1259 OID 18389)
+-- TOC entry 5594 (class 1259 OID 108536)
 -- Name: idx_21085_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2720,7 +3244,7 @@ CREATE INDEX idx_21085_user ON geokrety.gk_owner_codes USING btree ("user");
 
 
 --
--- TOC entry 5585 (class 1259 OID 18390)
+-- TOC entry 5595 (class 1259 OID 108537)
 -- Name: idx_21092_created_on_datetime; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2728,7 +3252,7 @@ CREATE INDEX idx_21092_created_on_datetime ON geokrety.gk_password_tokens USING 
 
 
 --
--- TOC entry 5588 (class 1259 OID 18391)
+-- TOC entry 5598 (class 1259 OID 108538)
 -- Name: idx_21092_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2736,7 +3260,7 @@ CREATE INDEX idx_21092_user ON geokrety.gk_password_tokens USING btree ("user");
 
 
 --
--- TOC entry 5592 (class 1259 OID 18392)
+-- TOC entry 5602 (class 1259 OID 108539)
 -- Name: idx_21114_organizer; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2744,7 +3268,7 @@ CREATE INDEX idx_21114_organizer ON geokrety.gk_races USING btree (organizer);
 
 
 --
--- TOC entry 5595 (class 1259 OID 18393)
+-- TOC entry 5605 (class 1259 OID 108540)
 -- Name: idx_21125_geokret; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2752,7 +3276,7 @@ CREATE INDEX idx_21125_geokret ON geokrety.gk_races_participants USING btree (ge
 
 
 --
--- TOC entry 5596 (class 1259 OID 18394)
+-- TOC entry 5606 (class 1259 OID 108541)
 -- Name: idx_21125_race; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2760,7 +3284,7 @@ CREATE INDEX idx_21125_race ON geokrety.gk_races_participants USING btree (race)
 
 
 --
--- TOC entry 5597 (class 1259 OID 18395)
+-- TOC entry 5607 (class 1259 OID 108542)
 -- Name: idx_21125_racegkid; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2768,7 +3292,7 @@ CREATE UNIQUE INDEX idx_21125_racegkid ON geokrety.gk_races_participants USING b
 
 
 --
--- TOC entry 5604 (class 1259 OID 18396)
+-- TOC entry 5616 (class 1259 OID 108543)
 -- Name: idx_21135_avatar; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2776,7 +3300,7 @@ CREATE INDEX idx_21135_avatar ON geokrety.gk_users USING btree (avatar);
 
 
 --
--- TOC entry 5605 (class 1259 OID 18397)
+-- TOC entry 5617 (class 1259 OID 108544)
 -- Name: idx_21135_email; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2784,7 +3308,7 @@ CREATE INDEX idx_21135_email ON geokrety.gk_users USING btree (email);
 
 
 --
--- TOC entry 5606 (class 1259 OID 18398)
+-- TOC entry 5618 (class 1259 OID 108545)
 -- Name: idx_21135_ostatni_login; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2792,23 +3316,7 @@ CREATE INDEX idx_21135_ostatni_login ON geokrety.gk_users USING btree (last_logi
 
 
 --
--- TOC entry 5609 (class 1259 OID 18399)
--- Name: idx_21135_secid; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21135_secid ON geokrety.gk_users USING btree (secid);
-
-
---
--- TOC entry 5610 (class 1259 OID 18400)
--- Name: idx_21135_user; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE UNIQUE INDEX idx_21135_user ON geokrety.gk_users USING btree (username);
-
-
---
--- TOC entry 5611 (class 1259 OID 18401)
+-- TOC entry 5621 (class 1259 OID 108548)
 -- Name: idx_21135_username; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2816,7 +3324,7 @@ CREATE INDEX idx_21135_username ON geokrety.gk_users USING btree (username);
 
 
 --
--- TOC entry 5612 (class 1259 OID 18402)
+-- TOC entry 5622 (class 1259 OID 108549)
 -- Name: idx_21135_username_email; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2824,7 +3332,7 @@ CREATE INDEX idx_21135_username_email ON geokrety.gk_users USING btree (username
 
 
 --
--- TOC entry 5613 (class 1259 OID 18403)
+-- TOC entry 5623 (class 1259 OID 108550)
 -- Name: idx_21153_id; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2832,7 +3340,7 @@ CREATE INDEX idx_21153_id ON geokrety.gk_watched USING btree (geokret);
 
 
 --
--- TOC entry 5616 (class 1259 OID 18404)
+-- TOC entry 5626 (class 1259 OID 108551)
 -- Name: idx_21153_userid; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2840,7 +3348,7 @@ CREATE INDEX idx_21153_userid ON geokrety.gk_watched USING btree ("user");
 
 
 --
--- TOC entry 5620 (class 1259 OID 18405)
+-- TOC entry 5627 (class 1259 OID 108552)
 -- Name: idx_21171_unique_kraj; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2848,7 +3356,7 @@ CREATE UNIQUE INDEX idx_21171_unique_kraj ON geokrety.gk_waypoints_country USING
 
 
 --
--- TOC entry 5631 (class 1259 OID 18406)
+-- TOC entry 5641 (class 1259 OID 108553)
 -- Name: idx_21189_name; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -2856,63 +3364,141 @@ CREATE UNIQUE INDEX idx_21189_name ON geokrety.scripts USING btree (name);
 
 
 --
--- TOC entry 5679 (class 2620 OID 18407)
--- Name: gk_moves gk_moves_after_10_update_picture; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+-- TOC entry 5695 (class 2620 OID 168900)
+-- Name: gk_moves_comments after_10_update_missing; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
-CREATE TRIGGER gk_moves_after_10_update_picture AFTER UPDATE OF geokret ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_type_change();
-
-
---
--- TOC entry 5681 (class 2620 OID 151601)
--- Name: gk_moves gk_moves_after_20_distances; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER gk_moves_after_20_distances AFTER INSERT OR DELETE OR UPDATE OF geokret, lat, lon, moved_on_datetime, "position" ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_distances_after();
+CREATE TRIGGER after_10_update_missing AFTER INSERT OR DELETE OR UPDATE OF geokret, type ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.move_or_moves_comments_manage_geokret_missing();
 
 
 --
--- TOC entry 5678 (class 2620 OID 18408)
--- Name: gk_moves gk_moves_before_10_moved_on_datetime_updater; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+-- TOC entry 5689 (class 2620 OID 108554)
+-- Name: gk_moves after_10_update_picture; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
-CREATE TRIGGER gk_moves_before_10_moved_on_datetime_updater BEFORE INSERT ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_moved_on_datetime_updater();
-
-
---
--- TOC entry 5680 (class 2620 OID 18409)
--- Name: gk_moves gk_moves_before_20_gis_updates; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER gk_moves_before_20_gis_updates BEFORE INSERT OR UPDATE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_gis_updates();
+CREATE TRIGGER after_10_update_picture AFTER UPDATE OF geokret ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_type_change();
 
 
 --
--- TOC entry 5685 (class 2620 OID 18410)
+-- TOC entry 5688 (class 2620 OID 144403)
+-- Name: gk_moves after_20_distances; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER after_20_distances AFTER INSERT OR DELETE OR UPDATE OF geokret, lat, lon, moved_on_datetime, move_type, "position" ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_distances_after();
+
+
+--
+-- TOC entry 5697 (class 2620 OID 166902)
+-- Name: gk_moves_comments after_20_updates_moves; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER after_20_updates_moves AFTER INSERT OR DELETE OR UPDATE OF move ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.moves_comments_count_on_move_update();
+
+
+--
+-- TOC entry 5692 (class 2620 OID 168209)
+-- Name: gk_moves after_30_last_log_and_position; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER after_30_last_log_and_position AFTER INSERT OR DELETE OR UPDATE OF geokret, moved_on_datetime, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_log_type_and_position();
+
+
+--
+-- TOC entry 5693 (class 2620 OID 168916)
+-- Name: gk_moves after_40_update_missing; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER after_40_update_missing AFTER INSERT OR DELETE OR UPDATE OF geokret, moved_on_datetime, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.move_or_moves_comments_manage_geokret_missing();
+
+
+--
+-- TOC entry 5691 (class 2620 OID 108570)
+-- Name: gk_moves before_00_updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
+
+
+--
+-- TOC entry 5694 (class 2620 OID 108571)
+-- Name: gk_moves_comments before_00_updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
+
+
+--
+-- TOC entry 5690 (class 2620 OID 108558)
+-- Name: gk_moves before_10_moved_on_datetime_updater; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_moved_on_datetime_updater BEFORE INSERT ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_moved_on_datetime_updater();
+
+
+--
+-- TOC entry 5696 (class 2620 OID 167896)
+-- Name: gk_moves_comments before_10_update_geokret; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_update_geokret BEFORE INSERT OR UPDATE OF move, geokret ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.moves_comments_manage_geokret();
+
+
+--
+-- TOC entry 5698 (class 2620 OID 169505)
+-- Name: gk_moves_comments before_20_check_move_type_and_missing; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_20_check_move_type_and_missing BEFORE INSERT OR UPDATE OF move, geokret, type ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.moves_comments_missing_only_on_last_position();
+
+
+--
+-- TOC entry 5687 (class 2620 OID 108559)
+-- Name: gk_moves before_20_gis_updates; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_20_gis_updates BEFORE INSERT OR UPDATE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_gis_updates();
+
+
+--
+-- TOC entry 5699 (class 2620 OID 165990)
+-- Name: gk_news comments_count_override; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER comments_count_override AFTER UPDATE OF comments_count ON geokrety.gk_news FOR EACH ROW EXECUTE FUNCTION geokrety.news_comments_counts_override();
+
+
+--
+-- TOC entry 5703 (class 2620 OID 108562)
 -- Name: gk_pictures gk_pictures_ad_pictures_count; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
 CREATE TRIGGER gk_pictures_ad_pictures_count AFTER DELETE ON geokrety.gk_pictures FOR EACH ROW EXECUTE FUNCTION geokrety.pictures_counter();
 
+ALTER TABLE geokrety.gk_pictures DISABLE TRIGGER gk_pictures_ad_pictures_count;
+
 
 --
--- TOC entry 5686 (class 2620 OID 18411)
+-- TOC entry 5704 (class 2620 OID 108563)
 -- Name: gk_pictures gk_pictures_ai_pictures_count; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
 CREATE TRIGGER gk_pictures_ai_pictures_count AFTER INSERT ON geokrety.gk_pictures FOR EACH ROW EXECUTE FUNCTION geokrety.pictures_counter();
 
+ALTER TABLE geokrety.gk_pictures DISABLE TRIGGER gk_pictures_ai_pictures_count;
+
 
 --
--- TOC entry 5687 (class 2620 OID 18412)
+-- TOC entry 5705 (class 2620 OID 108564)
 -- Name: gk_pictures gk_pictures_au_picture_count; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
 CREATE TRIGGER gk_pictures_au_picture_count AFTER UPDATE ON geokrety.gk_pictures FOR EACH ROW EXECUTE FUNCTION geokrety.pictures_counter();
 
+ALTER TABLE geokrety.gk_pictures DISABLE TRIGGER gk_pictures_au_picture_count;
+
 
 --
--- TOC entry 5688 (class 2620 OID 18413)
+-- TOC entry 5706 (class 2620 OID 108565)
 -- Name: gk_pictures gk_pictures_biu_type; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2920,7 +3506,7 @@ CREATE TRIGGER gk_pictures_biu_type BEFORE INSERT OR UPDATE OF move, geokret, "u
 
 
 --
--- TOC entry 5675 (class 2620 OID 152789)
+-- TOC entry 5684 (class 2620 OID 153048)
 -- Name: gk_geokrety manage_gkid; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2928,7 +3514,15 @@ CREATE TRIGGER manage_gkid BEFORE INSERT OR UPDATE OF gkid ON geokrety.gk_geokre
 
 
 --
--- TOC entry 5674 (class 2620 OID 152787)
+-- TOC entry 5712 (class 2620 OID 163954)
+-- Name: gk_users manage_secid; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER manage_secid BEFORE INSERT OR UPDATE OF secid ON geokrety.gk_users FOR EACH ROW EXECUTE FUNCTION geokrety.user_secid_generate();
+
+
+--
+-- TOC entry 5683 (class 2620 OID 152771)
 -- Name: gk_geokrety manage_tracking_code; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2936,7 +3530,23 @@ CREATE TRIGGER manage_tracking_code BEFORE INSERT OR UPDATE OF tracking_code ON 
 
 
 --
--- TOC entry 5671 (class 2620 OID 18414)
+-- TOC entry 5708 (class 2620 OID 157103)
+-- Name: gk_pictures pictures_counter_updater; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER pictures_counter_updater AFTER INSERT OR DELETE OR UPDATE OF move, geokret, "user", uploaded_on_datetime, type ON geokrety.gk_pictures FOR EACH ROW EXECUTE FUNCTION geokrety.pictures_counter();
+
+
+--
+-- TOC entry 5701 (class 2620 OID 165823)
+-- Name: gk_news_comments update_news; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER update_news AFTER INSERT OR DELETE OR UPDATE OF news ON geokrety.gk_news_comments FOR EACH ROW EXECUTE FUNCTION geokrety.news_comments_count_on_news_update();
+
+
+--
+-- TOC entry 5681 (class 2620 OID 108566)
 -- Name: gk_badges updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2944,7 +3554,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_badges FOR EACH 
 
 
 --
--- TOC entry 5672 (class 2620 OID 18415)
+-- TOC entry 5682 (class 2620 OID 108567)
 -- Name: gk_email_activation updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2952,7 +3562,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_email_activation
 
 
 --
--- TOC entry 5673 (class 2620 OID 18416)
+-- TOC entry 5685 (class 2620 OID 108568)
 -- Name: gk_geokrety updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2960,7 +3570,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_geokrety FOR EAC
 
 
 --
--- TOC entry 5676 (class 2620 OID 18417)
+-- TOC entry 5686 (class 2620 OID 108569)
 -- Name: gk_geokrety_rating updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2968,23 +3578,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_geokrety_rating 
 
 
 --
--- TOC entry 5677 (class 2620 OID 18418)
--- Name: gk_moves updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
-
-
---
--- TOC entry 5682 (class 2620 OID 18419)
--- Name: gk_moves_comments updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
-
-
---
--- TOC entry 5683 (class 2620 OID 18420)
+-- TOC entry 5700 (class 2620 OID 108572)
 -- Name: gk_news_comments updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -2992,7 +3586,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_news_comments FO
 
 
 --
--- TOC entry 5684 (class 2620 OID 18421)
+-- TOC entry 5702 (class 2620 OID 108573)
 -- Name: gk_password_tokens updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3000,7 +3594,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_password_tokens 
 
 
 --
--- TOC entry 5689 (class 2620 OID 18422)
+-- TOC entry 5707 (class 2620 OID 108574)
 -- Name: gk_pictures updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3008,7 +3602,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_pictures FOR EAC
 
 
 --
--- TOC entry 5690 (class 2620 OID 18423)
+-- TOC entry 5709 (class 2620 OID 108575)
 -- Name: gk_races updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3016,7 +3610,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_races FOR EACH R
 
 
 --
--- TOC entry 5691 (class 2620 OID 18424)
+-- TOC entry 5710 (class 2620 OID 108576)
 -- Name: gk_races_participants updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3024,7 +3618,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_races_participan
 
 
 --
--- TOC entry 5692 (class 2620 OID 18425)
+-- TOC entry 5711 (class 2620 OID 108577)
 -- Name: gk_users updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3032,7 +3626,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_users FOR EACH R
 
 
 --
--- TOC entry 5693 (class 2620 OID 18426)
+-- TOC entry 5713 (class 2620 OID 108578)
 -- Name: gk_watched updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3040,7 +3634,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_watched FOR EACH
 
 
 --
--- TOC entry 5694 (class 2620 OID 18427)
+-- TOC entry 5714 (class 2620 OID 108579)
 -- Name: gk_waypoints_oc updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3048,7 +3642,7 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_waypoints_oc FOR
 
 
 --
--- TOC entry 5636 (class 2606 OID 18428)
+-- TOC entry 5646 (class 2606 OID 108580)
 -- Name: gk_account_activation gk_account_activation_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3057,7 +3651,7 @@ ALTER TABLE ONLY geokrety.gk_account_activation
 
 
 --
--- TOC entry 5637 (class 2606 OID 18433)
+-- TOC entry 5647 (class 2606 OID 108585)
 -- Name: gk_badges gk_badges_holder_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3066,7 +3660,7 @@ ALTER TABLE ONLY geokrety.gk_badges
 
 
 --
--- TOC entry 5638 (class 2606 OID 18438)
+-- TOC entry 5648 (class 2606 OID 108590)
 -- Name: gk_email_activation gk_email_activation_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3075,7 +3669,7 @@ ALTER TABLE ONLY geokrety.gk_email_activation
 
 
 --
--- TOC entry 5639 (class 2606 OID 18443)
+-- TOC entry 5649 (class 2606 OID 108595)
 -- Name: gk_geokrety gk_geokrety_avatar_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3084,7 +3678,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety
 
 
 --
--- TOC entry 5640 (class 2606 OID 18448)
+-- TOC entry 5650 (class 2606 OID 108600)
 -- Name: gk_geokrety gk_geokrety_holder_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3093,7 +3687,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety
 
 
 --
--- TOC entry 5641 (class 2606 OID 18453)
+-- TOC entry 5651 (class 2606 OID 108605)
 -- Name: gk_geokrety gk_geokrety_last_log_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3102,7 +3696,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety
 
 
 --
--- TOC entry 5642 (class 2606 OID 18458)
+-- TOC entry 5652 (class 2606 OID 108610)
 -- Name: gk_geokrety gk_geokrety_last_position_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3111,7 +3705,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety
 
 
 --
--- TOC entry 5643 (class 2606 OID 18463)
+-- TOC entry 5653 (class 2606 OID 108615)
 -- Name: gk_geokrety gk_geokrety_owner_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3120,7 +3714,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety
 
 
 --
--- TOC entry 5644 (class 2606 OID 18468)
+-- TOC entry 5654 (class 2606 OID 108620)
 -- Name: gk_geokrety_rating gk_geokrety_rating_author_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3129,7 +3723,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety_rating
 
 
 --
--- TOC entry 5645 (class 2606 OID 18473)
+-- TOC entry 5655 (class 2606 OID 108625)
 -- Name: gk_geokrety_rating gk_geokrety_rating_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3138,7 +3732,7 @@ ALTER TABLE ONLY geokrety.gk_geokrety_rating
 
 
 --
--- TOC entry 5646 (class 2606 OID 18478)
+-- TOC entry 5656 (class 2606 OID 108630)
 -- Name: gk_mails gk_mails_from_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3147,7 +3741,7 @@ ALTER TABLE ONLY geokrety.gk_mails
 
 
 --
--- TOC entry 5647 (class 2606 OID 18483)
+-- TOC entry 5657 (class 2606 OID 108635)
 -- Name: gk_mails gk_mails_to_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3156,7 +3750,7 @@ ALTER TABLE ONLY geokrety.gk_mails
 
 
 --
--- TOC entry 5648 (class 2606 OID 18488)
+-- TOC entry 5658 (class 2606 OID 108640)
 -- Name: gk_moves gk_moves_author_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3165,7 +3759,7 @@ ALTER TABLE ONLY geokrety.gk_moves
 
 
 --
--- TOC entry 5650 (class 2606 OID 18493)
+-- TOC entry 5661 (class 2606 OID 108645)
 -- Name: gk_moves_comments gk_moves_comments_author_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3174,7 +3768,7 @@ ALTER TABLE ONLY geokrety.gk_moves_comments
 
 
 --
--- TOC entry 5651 (class 2606 OID 18498)
+-- TOC entry 5660 (class 2606 OID 166834)
 -- Name: gk_moves_comments gk_moves_comments_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3183,7 +3777,7 @@ ALTER TABLE ONLY geokrety.gk_moves_comments
 
 
 --
--- TOC entry 5652 (class 2606 OID 18503)
+-- TOC entry 5662 (class 2606 OID 108655)
 -- Name: gk_moves_comments gk_moves_comments_move_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3192,7 +3786,7 @@ ALTER TABLE ONLY geokrety.gk_moves_comments
 
 
 --
--- TOC entry 5649 (class 2606 OID 18508)
+-- TOC entry 5659 (class 2606 OID 108660)
 -- Name: gk_moves gk_moves_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3201,7 +3795,7 @@ ALTER TABLE ONLY geokrety.gk_moves
 
 
 --
--- TOC entry 5653 (class 2606 OID 18513)
+-- TOC entry 5663 (class 2606 OID 108665)
 -- Name: gk_news gk_news_author_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3210,7 +3804,7 @@ ALTER TABLE ONLY geokrety.gk_news
 
 
 --
--- TOC entry 5656 (class 2606 OID 18518)
+-- TOC entry 5666 (class 2606 OID 108670)
 -- Name: gk_news_comments_access gk_news_comments_access_author_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3219,7 +3813,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments_access
 
 
 --
--- TOC entry 5657 (class 2606 OID 18523)
+-- TOC entry 5667 (class 2606 OID 108675)
 -- Name: gk_news_comments_access gk_news_comments_access_news_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3228,7 +3822,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments_access
 
 
 --
--- TOC entry 5654 (class 2606 OID 18528)
+-- TOC entry 5664 (class 2606 OID 108680)
 -- Name: gk_news_comments gk_news_comments_author_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3237,7 +3831,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments
 
 
 --
--- TOC entry 5655 (class 2606 OID 18533)
+-- TOC entry 5665 (class 2606 OID 108685)
 -- Name: gk_news_comments gk_news_comments_news_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3246,7 +3840,7 @@ ALTER TABLE ONLY geokrety.gk_news_comments
 
 
 --
--- TOC entry 5658 (class 2606 OID 18538)
+-- TOC entry 5668 (class 2606 OID 108690)
 -- Name: gk_owner_codes gk_owner_codes_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3255,7 +3849,7 @@ ALTER TABLE ONLY geokrety.gk_owner_codes
 
 
 --
--- TOC entry 5659 (class 2606 OID 18543)
+-- TOC entry 5669 (class 2606 OID 108695)
 -- Name: gk_owner_codes gk_owner_codes_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3264,7 +3858,7 @@ ALTER TABLE ONLY geokrety.gk_owner_codes
 
 
 --
--- TOC entry 5660 (class 2606 OID 18548)
+-- TOC entry 5670 (class 2606 OID 108700)
 -- Name: gk_password_tokens gk_password_tokens_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3273,7 +3867,7 @@ ALTER TABLE ONLY geokrety.gk_password_tokens
 
 
 --
--- TOC entry 5661 (class 2606 OID 18553)
+-- TOC entry 5671 (class 2606 OID 108705)
 -- Name: gk_pictures gk_pictures_author_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3282,7 +3876,7 @@ ALTER TABLE ONLY geokrety.gk_pictures
 
 
 --
--- TOC entry 5662 (class 2606 OID 18558)
+-- TOC entry 5672 (class 2606 OID 108710)
 -- Name: gk_pictures gk_pictures_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3291,7 +3885,7 @@ ALTER TABLE ONLY geokrety.gk_pictures
 
 
 --
--- TOC entry 5663 (class 2606 OID 18563)
+-- TOC entry 5673 (class 2606 OID 108715)
 -- Name: gk_pictures gk_pictures_move_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3300,7 +3894,7 @@ ALTER TABLE ONLY geokrety.gk_pictures
 
 
 --
--- TOC entry 5664 (class 2606 OID 18568)
+-- TOC entry 5674 (class 2606 OID 108720)
 -- Name: gk_pictures gk_pictures_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3309,7 +3903,7 @@ ALTER TABLE ONLY geokrety.gk_pictures
 
 
 --
--- TOC entry 5665 (class 2606 OID 18573)
+-- TOC entry 5675 (class 2606 OID 108725)
 -- Name: gk_races gk_races_organizer_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3318,7 +3912,7 @@ ALTER TABLE ONLY geokrety.gk_races
 
 
 --
--- TOC entry 5666 (class 2606 OID 18578)
+-- TOC entry 5676 (class 2606 OID 108730)
 -- Name: gk_races_participants gk_races_participants_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3327,7 +3921,7 @@ ALTER TABLE ONLY geokrety.gk_races_participants
 
 
 --
--- TOC entry 5667 (class 2606 OID 18583)
+-- TOC entry 5677 (class 2606 OID 108735)
 -- Name: gk_races_participants gk_races_participants_race_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3336,7 +3930,7 @@ ALTER TABLE ONLY geokrety.gk_races_participants
 
 
 --
--- TOC entry 5668 (class 2606 OID 18588)
+-- TOC entry 5678 (class 2606 OID 108740)
 -- Name: gk_users gk_users_avatar_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3345,7 +3939,7 @@ ALTER TABLE ONLY geokrety.gk_users
 
 
 --
--- TOC entry 5669 (class 2606 OID 18593)
+-- TOC entry 5679 (class 2606 OID 108745)
 -- Name: gk_watched gk_watched_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3354,7 +3948,7 @@ ALTER TABLE ONLY geokrety.gk_watched
 
 
 --
--- TOC entry 5670 (class 2606 OID 18598)
+-- TOC entry 5680 (class 2606 OID 108750)
 -- Name: gk_watched gk_watched_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3362,7 +3956,7 @@ ALTER TABLE ONLY geokrety.gk_watched
     ADD CONSTRAINT gk_watched_user_fkey FOREIGN KEY ("user") REFERENCES geokrety.gk_users(id) ON DELETE CASCADE;
 
 
--- Completed on 2020-04-11 13:46:41 CEST
+-- Completed on 2020-04-11 22:41:35 CEST
 
 --
 -- PostgreSQL database dump complete

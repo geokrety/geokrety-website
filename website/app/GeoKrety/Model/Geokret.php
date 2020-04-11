@@ -176,7 +176,7 @@ class Geokret extends Base {
     public static function generate() {
         $faker = \Faker\Factory::create();
 
-        $userCount = \Base::instance()->get('DB')->exec('SELECT COUNT(*) AS count FROM `gk-users`')[0]['count'];
+        $userCount = \Base::instance()->get('DB')->exec('SELECT COUNT(*) AS count FROM gk_users')[0]['count'];
 
         $geokret = new self();
         $geokret->name = $faker->sentence($nbWords = 2, $variableNbWords = true);
