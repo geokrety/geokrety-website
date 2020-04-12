@@ -14,7 +14,7 @@
         {$geokret->last_log|logicon:true nofilter}
         {$geokret->last_log->moved_on_datetime|print_date nofilter}
         <br />
-        <small>{$geokret->last_log->author|userlink nofilter}</small>
+        <small>{$geokret->last_log->author|userlink:$geokret->last_log->username nofilter}</small>
         {else}
         {$geokret->created_on_datetime|print_date nofilter}
         {/if}
