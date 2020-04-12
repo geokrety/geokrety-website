@@ -17,7 +17,7 @@
         {/if}
 
         <div class="btn-group pull-right" role="group">
-            {if $f3->get('SESSION.CURRENT_USER') and $geokret->owner->email}
+            {if $f3->get('SESSION.CURRENT_USER') and $geokret->owner and $geokret->owner->email}
             <button class="btn btn-primary btn-xs" title="{t user=$geokret->owner->username}Send a message to %1{/t}" data-toggle="modal" data-target="#modal" data-type="user-contact-by-geokret" data-id="{$geokret->gkid}">
                 {fa icon="envelope"}
             </button>

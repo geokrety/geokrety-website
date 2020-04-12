@@ -31,7 +31,7 @@
 {/function}
 
 {function email}
-{if $geokret->owner->email}
+{if $geokret->owner && $geokret->owner->email}
 <div class="col-md-4">{fa icon="envelope"} <a href="{'mail_by_geokret'|alias:sprintf('@gkid=%s', $geokret->gkid)}">{t}Email owner{/t}</a></div>
 {/if}
 {/function}
