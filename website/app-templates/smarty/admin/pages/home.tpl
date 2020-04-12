@@ -8,10 +8,13 @@
                 <div class="panel-body">
                     <ul>
                         <li>
-                            <a href="{GK_SITE_BASE_SERVER_URL}/adminer">Adminer</a>
+                            <a href="{GK_SITE_BASE_SERVER_URL}/adminer" target="_blank">Adminer</a>
                         </li>
                         <li>
-                            <a href="{GK_MINIO_SERVER_URL_EXTERNAL}">Minio</a>
+                            <a href="{GK_SITE_BASE_SERVER_URL}/pgadmin" target="_blank">PGAdmin</a>
+                        </li>
+                        <li>
+                            <a href="{GK_MINIO_SERVER_URL_EXTERNAL}" target="_blank">Minio</a>
                         </li>
                     </ul>
                 </div>
