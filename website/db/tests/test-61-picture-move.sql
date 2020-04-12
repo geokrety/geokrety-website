@@ -6,12 +6,12 @@ BEGIN;
 SELECT plan(9);
 \set nice '\'0101000020E61000000AD7A3703D0A1D409A99999999D94540\''
 
-INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test', 0);
-INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (2, 'test', 0);
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (1, 'test', 0, '2020-04-07 00:00:00+00');
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (2, 'test', 0, '2020-04-07 00:00:00+00');
 INSERT INTO "gk_users" ("id", "username", "registration_ip", "secid") VALUES (1, 'test', '127.0.0.1', 'qwertyuiop');
-INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 2, 1, :nice, '2020-04-07 00:00:00+00', 0);
-INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (2, 2, 1, :nice, '2020-04-07 00:00:00+00', 0);
-INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (3, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 2, 1, :nice, '2020-04-07 01:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (2, 2, 1, :nice, '2020-04-07 02:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (3, 1, 1, :nice, '2020-04-07 03:00:00+00', 0);
 
 -- require uploaded_on_datetime
 INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "type") VALUES (1, 1, 1, 2, 1);

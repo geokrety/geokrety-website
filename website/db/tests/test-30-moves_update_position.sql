@@ -8,13 +8,13 @@ INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1'
 INSERT INTO "gk_geokrety"
     ("id", "gkid", "tracking_code", "name", "mission", "owner", "distance", "caches_count", "pictures_count", "last_position",
      "last_log", "holder", "avatar", "created_on_datetime", "updated_on_datetime", "missing", "type")
-VALUES (1, 1, 'ABC123', 'test 1', NULL, NULL, '0', '0', '0', NULL, NULL, NULL, NULL, now(), now(), '0', '0');
+VALUES (1, 1, 'ABC123', 'test 1', NULL, NULL, '0', '0', '0', NULL, NULL, NULL, NULL, '2020-04-07 00:00:00+00', now(), '0', '0');
 
 SELECT is(id, 1::bigint, 'Seed a GeoKret') from gk_geokrety WHERE id = 1::bigint;
 
 
 INSERT INTO "gk_moves" ("id", "geokret", "author", "lat", "lon", "moved_on_datetime", "move_type")
-VALUES (1, 1, 1, '43.6', '6.8', '2020-04-07 00:00:00+00', '0');
+VALUES (1, 1, 1, '43.6', '6.8', '2020-04-07 01:00:00+00', '0');
 
 SELECT is(
     position,
@@ -24,7 +24,7 @@ SELECT is(
 
 
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type", "position")
-VALUES (2, 1, 1, '2020-04-07 00:00:00+00', '0', '0101000020E61000003333333333331B40CDCCCCCCCCCC4540');
+VALUES (2, 1, 1, '2020-04-07 02:00:00+00', '0', '0101000020E61000003333333333331B40CDCCCCCCCCCC4540');
 
 SELECT results_eq(
     'SELECT lat, lon FROM gk_moves WHERE id = 2::bigint',

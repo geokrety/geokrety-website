@@ -6,7 +6,7 @@ SELECT * FROM no_plan();
 
 --GeoKrety
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
-INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test 1', 0);
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (1, 'test 1', 0, '2020-04-07 00:00:00+00');
 
 -- Moves
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (1, 1, 1, '2020-04-07 00:00:00+00', 2);

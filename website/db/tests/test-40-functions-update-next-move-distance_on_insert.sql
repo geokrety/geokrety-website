@@ -9,8 +9,8 @@ SELECT plan(28);
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
 
 -- id 1
-SELECT lives_ok($$INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type")
-VALUES (1, 1, 'ABC123', 'test 1', 0)$$);
+SELECT lives_ok($$INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type", "created_on_datetime")
+VALUES (1, 1, 'ABC123', 'test 1', 0, '2020-04-07 00:00:00+00')$$);
 SELECT is(distance, 0::bigint, 'GK distance is 0') from gk_geokrety WHERE id = 1::bigint;
 
 -- id 1 -- Nice

@@ -13,8 +13,8 @@ SELECT plan(12);
 
 --GeoKrety
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
-INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type") VALUES (1, 1, 'ABC123', 'test 1', 0);
-INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type") VALUES (2, 2, 'DEF456', 'test 2', 0);
+INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type", "created_on_datetime") VALUES (1, 1, 'ABC123', 'test 1', 0, '2020-04-07 00:00:00+00');
+INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type", "created_on_datetime") VALUES (2, 2, 'DEF456', 'test 2', 0, '2020-04-07 00:00:00+00');
 
 -- Moves
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);

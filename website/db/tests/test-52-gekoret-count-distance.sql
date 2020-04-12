@@ -14,7 +14,7 @@ SELECT plan(9);
 
 --GeoKrety
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
-INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test 1', 0);
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (1, 'test 1', 0, '2020-04-07 00:00:00+00');
 SELECT is(distance, 0::bigint, 'Never moved') FROM gk_geokrety WHERE id = 1::bigint;
 
 -- Moves
@@ -42,7 +42,7 @@ UPDATE "gk_moves" SET move_type=2, position=null WHERE id=5;
 SELECT is(distance, (683+877+524+8590)::bigint, 'Nice/Paris/Berlin/Warsaw/Tokyo') FROM gk_geokrety WHERE id = 1::bigint;
 
 -- test not null
-INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (2, 'test 2', 0);
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (2, 'test 2', 0, '2020-04-07 00:00:00+00');
 INSERT INTO "gk_moves" ("id", "geokret", "author", "move_type") VALUES (7, 2, 1, 2);
 SELECT is(distance, 0::bigint, 'Never moved') FROM gk_geokrety WHERE id = 2::bigint;
 
