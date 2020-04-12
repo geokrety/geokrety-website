@@ -36,8 +36,6 @@ class GeokretCreate extends Base {
                 $move->lat = $this->currentUser->home_latitude;
                 $move->lon = $this->currentUser->home_longitude;
                 $move->comment = _('Born here');
-                // TODO alt
-                // TODO country
                 $move->app = GK_APP_NAME;
                 $move->app_ver = GK_APP_VERSION;
                 if ($move->validate()) {

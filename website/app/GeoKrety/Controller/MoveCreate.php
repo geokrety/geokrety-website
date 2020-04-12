@@ -77,8 +77,6 @@ class MoveCreate extends Base {
                 $move->waypoint = $waypointChecker->getWaypoint()->waypoint;
                 $move->lat = $waypointChecker->getWaypoint()->lat;
                 $move->lon = $waypointChecker->getWaypoint()->lon;
-                $move->alt = $waypointChecker->getWaypoint()->alt;
-                $move->country = $waypointChecker->getWaypoint()->country;
             } else {
                 $errors = array_merge($errors, $waypointChecker->getErrors());
             }
@@ -90,8 +88,6 @@ class MoveCreate extends Base {
                 if ($move->lat != $coordChecker->getLat() || $move->lon != $coordChecker->getLon()) {
                     $move->lat = $coordChecker->getLat();
                     $move->lon = $coordChecker->getLon();
-                    $move->alt = null; // TODO what about alt?
-                    $move->country = null; // TODO what about country?
                 }
             } else {
                 $errors = array_merge($errors, $coordChecker->getErrors());
