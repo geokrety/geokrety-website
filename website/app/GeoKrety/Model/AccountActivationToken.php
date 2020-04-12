@@ -62,7 +62,7 @@ class AccountActivationToken extends Base {
         return self::get_date_object($value);
     }
 
-    // TODO call that from cron
+    // TODO call that from cron // TODO: move this to plpgsql
     public static function expireOldTokens() {
         $activation = new AccountActivationToken();
         $expiredTokens = $activation->find([
@@ -80,23 +80,10 @@ class AccountActivationToken extends Base {
         }
     }
 
-    private function randToken() {
-        // generate Verification Token
-        $seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
-        shuffle($seed);
-        $rand = '';
-        foreach (array_rand($seed, GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH) as $k) {
-            $rand .= $seed[$k];
-        }
-
-        return $rand;
-    }
-
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
-            $self->token = $this->randToken();
         });
 
         $this->aftersave(function ($self) {

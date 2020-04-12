@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(8);
+SELECT plan(10);
 
 \set nice '\'0101000020E61000000AD7A3703D0A1D409A99999999D94540\''
 \set move_type_comment 2
@@ -33,6 +33,14 @@ SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_d
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (6, 'test', 0, '2020-04-07 00:00:00+00');
 SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (6, 6, 1, '2020-04-08 00:00:00+00', 2)$$);
 SELECT is(COUNT(*) > 0, TRUE, 'move in the right range') from gk_geokrety WHERE id = 6::bigint;
+
+-- update can reuse same date
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (7, 'test', 0, '2020-04-07 00:00:00+00');
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (8, 'test', 0, '2020-04-07 00:00:00+00');
+INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (7, 7, 1, '2020-04-08 00:00:00+00', 2);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (8, 8, 1, '2020-04-08 00:00:00+00', 2);
+SELECT lives_ok($$UPDATE "gk_moves" set moved_on_datetime = '2020-04-08 00:00:00+00'::timestamptz WHERE id = 7::bigint$$);
+SELECT throws_ok($$UPDATE "gk_moves" set geokret=8, moved_on_datetime = '2020-04-08 00:00:00+00'::timestamptz WHERE id = 7::bigint$$);
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();
