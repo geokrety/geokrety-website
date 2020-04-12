@@ -40,3 +40,4 @@ include __DIR__.'/app/events.php';
 if (!$f3->exists('DB')) {
     $f3->set('DB', new \DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;']));
 }
+//$f3->set('CORTEX.quoteConditions', false);

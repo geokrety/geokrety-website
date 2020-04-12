@@ -158,7 +158,7 @@ class User extends Base {
             'nullable' => true,
         ],
         'avatars' => [
-            'has-many' => ['\GeoKrety\Model\Picture', 'geokret'],
+            'has-many' => ['\GeoKrety\Model\Picture', 'user'],
         ],
     ];
 

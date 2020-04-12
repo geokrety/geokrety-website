@@ -13,7 +13,7 @@ class UserPictures extends Base {
     public function get($f3) {
         // Load Pictures
         $pictures = new Picture();
-        $filter = ['author = ?', $this->user->id];
+        $filter = ['author = ? AND uploaded_on_datetime != ?', $this->user->id, null];
         $options = ['order' => 'created_on_datetime DESC'];
         $subset = $pictures->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_USER_PICTURES_GALLERY, $filter, $options);
         Smarty::assign('pictures', $subset);

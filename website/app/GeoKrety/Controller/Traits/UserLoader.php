@@ -15,7 +15,7 @@ trait UserLoader {
         // load User
         $user = new User();
         $this->user = $user;
-        $user->filter('badges', null, ['order' => 'awarded_on_datetime ASC']);
+        $this->user->filter('badges', null, ['order' => 'awarded_on_datetime ASC']);
         $this->user->filter('avatars', ['uploaded_on_datetime != ?', null]);
         $this->filterHook();
         $user->load(['id = ?', $f3->get('PARAMS.userid')]);
