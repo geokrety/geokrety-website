@@ -513,7 +513,7 @@ class MailsMigrator extends BaseMigrator {
 
 class MovesMigrator extends BaseMigrator {
     //  'id', 'geokret', 'lat', 'lon', 'alt', 'country', 'distance', 'waypoint', 'created_on_datetime',
-    //  'moved_on_datetime', 'author', 'comment', 'pictures_count', 'comments_count', 'logtype', 'username',
+    //  'moved_on_datetime', 'author', 'comment', 'pictures_count', 'comments_count', 'move_type', 'username',
     //  'updated_on_datetime', 'app', 'app_ver'
     //  'position'
 
@@ -594,8 +594,8 @@ class PicturesMigrator extends BaseMigrator {
         $values[] = $values[7];  // updated_on_datetime
         $values[] = $values[7];  // uploaded_on_datetime
         $values[] = $values[4];  // author
-        $values[] = 'NULL';  // bucket
-        $values[] = 'NULL';  // key
+        $values[] = NULL;  // bucket
+        $values[] = NULL;  // key
 
         switch ($values[1]) {
             case PictureType::PICTURE_GEOKRET_AVATAR:
