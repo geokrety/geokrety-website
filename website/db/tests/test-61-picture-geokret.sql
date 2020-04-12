@@ -9,7 +9,7 @@ SELECT * FROM no_plan();
 INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test', 0);
 INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (2, 'test', 0);
 INSERT INTO "gk_users" ("id", "username", "registration_ip", "secid") VALUES (1, 'test', '127.0.0.1', 'qwertyuiop');
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (1, 2, :nice, '2020-04-07 00:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 2, 1, :nice, '2020-04-07 00:00:00+00', 0);
 
 -- require uploaded_on_datetime
 INSERT INTO "gk_pictures" ("id",  "author", "geokret", "type") VALUES (1, 1, 1, 0);

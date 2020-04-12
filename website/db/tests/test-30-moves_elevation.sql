@@ -12,25 +12,26 @@ SELECT plan(9);
 \set tokyo '\'0101000020E61000006666666666766140CDCCCCCCCCCC4140\''
 
 --GeoKrety
+INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
 INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test 1', 0);
 
 -- Moves
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (1, 1, :nice, '2020-04-07 00:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);
 SELECT is(elevation, 20, 'nice elevation') from gk_moves WHERE id = 1::bigint;
 
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (2, 1, :paris, '2020-04-07 01:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (2, 1, 1, :paris, '2020-04-07 01:00:00+00', 0);
 SELECT is(elevation, 91, 'paris elevation') from gk_moves WHERE id = 2::bigint;
 
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (3, 1, :berlin, '2020-04-07 02:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (3, 1, 1, :berlin, '2020-04-07 02:00:00+00', 0);
 SELECT is(elevation, 44, 'berlin elevation') from gk_moves WHERE id = 3::bigint;
 
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (4, 1, :warsaw, '2020-04-07 03:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (4, 1, 1, :warsaw, '2020-04-07 03:00:00+00', 0);
 SELECT is(elevation, 108, 'warsaw elevation') from gk_moves WHERE id = 4::bigint;
 
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (5, 1, :moscow, '2020-04-07 04:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (5, 1, 1, :moscow, '2020-04-07 04:00:00+00', 0);
 SELECT is(elevation, 147, 'moscow elevation') from gk_moves WHERE id = 5::bigint;
 
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (6, 1, :tokyo, '2020-04-07 05:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (6, 1, 1, :tokyo, '2020-04-07 05:00:00+00', 0);
 SELECT is(elevation, 37 , 'tokyo elevation') from gk_moves WHERE id = 6::bigint;
 
 UPDATE "gk_moves" SET position=:paris WHERE id=1;

@@ -1,6 +1,8 @@
 -- Start transaction and plan the tests.
 BEGIN;
-SELECT plan(29);
+
+SELECT * FROM no_plan();
+-- SELECT plan(29);
 
 -- Run the tests.
 SELECT is(valid_move_types(), '{0,1,2,3,4,5}'::smallint[], 'Check valid_move_types()');
@@ -32,6 +34,34 @@ SELECT ok(move_type_count_kilometers(5::smallint) = TRUE, 'Type 5 is counting KM
 SELECT is(validate_moves_comments_type(0::smallint), TRUE, 'Check validate_moves_comments_type(0)');
 SELECT is(validate_moves_comments_type(1::smallint), TRUE, 'Check validate_moves_comments_type(1)');
 SELECT is(validate_moves_comments_type(2::smallint), FALSE, 'Check validate_moves_comments_type(2)');
+
+SELECT is(moves_type_waypoint(0::smallint, NULL), TRUE, 'Check moves_type_waypoint(NULL)');
+SELECT is(moves_type_waypoint(1::smallint, NULL), TRUE, 'Check moves_type_waypoint(NULL)');
+SELECT is(moves_type_waypoint(2::smallint, NULL), TRUE, 'Check moves_type_waypoint(NULL)');
+SELECT is(moves_type_waypoint(3::smallint, NULL), TRUE, 'Check moves_type_waypoint(NULL)');
+SELECT is(moves_type_waypoint(4::smallint, NULL), TRUE, 'Check moves_type_waypoint(NULL)');
+SELECT is(moves_type_waypoint(5::smallint, NULL), TRUE, 'Check moves_type_waypoint(NULL)');
+
+SELECT is(moves_type_waypoint(0::smallint, 'GC5BRQK'), TRUE, 'Check moves_type_waypoint(GC5BRQK)');
+SELECT throws_ok($$moves_type_waypoint(1::smallint, 'GC5BRQK')$$);
+SELECT throws_ok($$moves_type_waypoint(2::smallint, 'GC5BRQK')$$);
+SELECT is(moves_type_waypoint(3::smallint, 'GC5BRQK'), TRUE, 'Check moves_type_waypoint(GC5BRQK)');
+SELECT throws_ok($$moves_type_waypoint(4::smallint, 'GC5BRQK')$$);
+SELECT is(moves_type_waypoint(5::smallint, 'GC5BRQK'), TRUE, 'Check moves_type_waypoint(GC5BRQK)');
+
+SELECT throws_ok($$moves_type_waypoint(0::smallint, '')$$);
+SELECT throws_ok($$moves_type_waypoint(1::smallint, '')$$);
+SELECT throws_ok($$moves_type_waypoint(2::smallint, '')$$);
+SELECT throws_ok($$moves_type_waypoint(3::smallint, '')$$);
+SELECT throws_ok($$moves_type_waypoint(4::smallint, '')$$);
+SELECT throws_ok($$moves_type_waypoint(5::smallint, '')$$);
+
+SELECT is(moves_check_author_username(1::smallint, NULL), TRUE, 'Check moves_check_author_username(1, NULL)');
+SELECT throws_ok($$moves_check_author_username(1::smallint, '')$$);
+SELECT throws_ok($$moves_check_author_username(1::smallint, 'user')$$);
+SELECT throws_ok($$moves_check_author_username(NULL, NULL)$$);
+SELECT throws_ok($$moves_check_author_username(NULL, '')$$);
+SELECT is(moves_check_author_username(NULL, 'user'), TRUE, 'Check moves_check_author_username(1, user)');
 
 SELECT is(coords2position(43.68579, 6.87647), '0101000020E610000053B3075A81811B4040F67AF7C7D74540', 'Check conversion coordinates to position');
 SELECT is(position2coords('0101000020E610000053B3075A81811B4040F67AF7C7D74540'), ROW(43.68579::double precision, 6.87647::double precision), 'Check conversion position to coordinates');

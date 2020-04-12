@@ -9,7 +9,7 @@ SELECT plan(7);
 INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test', 0);
 INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (2, 'test', 0);
 INSERT INTO "gk_users" ("id", "username", "registration_ip", "secid") VALUES (1, 'test', '127.0.0.1', 'qwertyuiop');
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (1, 1, :nice, '2020-04-07 00:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);
 
 SELECT lives_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "type") VALUES (1, 1, 1, NULL, 1)$$);
 SELECT is(geokret, 1::bigint , 'geokret is set automatically') from gk_pictures WHERE id = 1::bigint;
@@ -24,7 +24,7 @@ SELECT is(geokret, 1::bigint , 'geokret is set automatically') from gk_pictures 
 
 
 -- Changing moved GeoKret must update the picture reference
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (2, 1, :nice, '2020-04-07 00:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (2, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);
 INSERT INTO "gk_pictures" ("id",  "author", "move", "type") VALUES (4, 1, 2, 1);
 UPDATE "gk_moves" set geokret=2 WHERE id = 2::bigint;
 SELECT is(geokret, 2::bigint , 'geokret must be updated') from gk_pictures WHERE id = 4::bigint;

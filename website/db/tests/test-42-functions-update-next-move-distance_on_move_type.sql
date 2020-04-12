@@ -9,13 +9,14 @@ SELECT plan(3);
 \set berlin '\'0101000020E61000009A99999999992A400000000000404A40\''
 
 -- id 1
+INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
 INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type")
 VALUES (1, 1, 'ABC123', 'test 1', 0);
 
 -- Moves
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (1, 1, :nice, '2020-04-07 00:00:00+00', 0);
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (2, 1, :paris, '2020-04-07 01:00:00+00', 0);
-INSERT INTO "gk_moves" ("id", "geokret", "position", "moved_on_datetime", "move_type") VALUES (3, 1, :berlin, '2020-04-07 02:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (2, 1, 1, :paris, '2020-04-07 01:00:00+00', 0);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (3, 1, 1, :berlin, '2020-04-07 02:00:00+00', 0);
 
 -- test move-type (comment)
 UPDATE "gk_moves" SET move_type=2, position=NULL WHERE id=2;
