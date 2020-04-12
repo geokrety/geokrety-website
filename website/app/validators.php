@@ -56,10 +56,10 @@ $validator->addValidator('registered_only_required', function ($field, $input, $
 }, _('Registered users must provide a value for {0}'));
 
 $validator->addValidator('logtype_require_coordinates', function ($field, $input, $param = null) {
-    if ($input['logtype']->isCoordinatesRequired() && strlen($input[$field])) {
+    if ($input['move_type']->isCoordinatesRequired() && strlen($input[$field])) {
         return true;
     }
-    if (!$input['logtype']->isCoordinatesRequired() && !strlen($input[$field])) {
+    if (!$input['move_type']->isCoordinatesRequired() && !strlen($input[$field])) {
         return true;
     }
 
