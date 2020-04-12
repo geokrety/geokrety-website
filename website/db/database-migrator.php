@@ -594,8 +594,8 @@ class PicturesMigrator extends BaseMigrator {
         $values[] = $values[7];  // updated_on_datetime
         $values[] = $values[7];  // uploaded_on_datetime
         $values[] = $values[4];  // author
-        $values[] = NULL;  // bucket
-        $values[] = NULL;  // key
+        $values[] = null;  // bucket
+        $values[] = null;  // key
 
         switch ($values[1]) {
             case PictureType::PICTURE_GEOKRET_AVATAR:
