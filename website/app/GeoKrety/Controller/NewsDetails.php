@@ -79,7 +79,7 @@ class NewsDetails extends Base {
 
         if ($subscription->dry()) {
             $subscription->news = $f3->get('PARAMS.newsid');
-            $subscription->user = $f3->get('SESSION.CURRENT_USER');
+            $subscription->author = $f3->get('SESSION.CURRENT_USER');
         }
 
         return $subscription;
