@@ -74,8 +74,6 @@ class Picture extends Base {
         ],
     ];
 
-    // TODO: validate that at least `move` or `geokret` or `user` is filled
-
     public static function expireNeverUploaded() {
         $pictureModel = new Picture();
         $pictureModel->erase([
@@ -168,12 +166,18 @@ class Picture extends Base {
     }
 
     public function get_url(): string {
+        if (is_null($this->bucket)) {
+            return sprintf('https://cdn.geokrety.org/images/obrazki/%s', $this->filename);
+        }
         $s3 = S3Client::instance()->getS3Public();
 
         return $s3->getObjectUrl($this->type->getBucketName(), $this->key);
     }
 
     public function get_thumbnail_url(): string {
+        if (is_null($this->bucket)) {
+            return sprintf('https://cdn.geokrety.org/images/obrazki-male/%s', $this->filename);
+        }
         $s3 = S3Client::instance()->getS3Public();
         $bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
 
