@@ -207,9 +207,7 @@ class User extends Base {
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
-            $this->secid = SecIdGenerator::generate();
             $self->registration_ip = \Base::instance()->get('IP');
-            $self->daily_mails_hour = rand(0, 23); // Spread the load
         });
         $this->afterinsert(function ($self) {
             \Event::instance()->emit('user.created', $this);

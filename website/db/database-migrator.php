@@ -144,7 +144,7 @@ $migrator->process();
 $mName = 'gk-owner-codes';
 $pName = 'gk_owner_codes';
 $mFields = ['id', 'kret_id', 'code', 'generated_date', 'claimed_date', 'user_id'];
-$pFields = ['id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'user'];
+$pFields = ['id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'user', 'validating_ip', 'used'];
 $migrator = new OwnerCodesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
@@ -662,10 +662,12 @@ class RacesParticipantsMigrator extends BaseMigrator {
 }
 
 class OwnerCodesMigrator extends BaseMigrator {
-    // 'id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'user'
+    // 'id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'user', 'validating_ip', 'used'
     protected function cleanerHook(&$values) {
         $values[4] = $values[4] === '0000-00-00 00:00:00' ? null : $values[4];  // claimed_on_datetime
         $values[5] = $values[5] ?: null;  // user
+        $values[6] = is_null($values[4]) ? null : '127.0.0.1';  // validating_ip
+        $values[7] = is_null($values[4]) ? 0 : 1;  // used
     }
 
     protected function postProcessData() {

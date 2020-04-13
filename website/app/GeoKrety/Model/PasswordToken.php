@@ -69,14 +69,6 @@ class PasswordToken extends Base {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
-            // generate Verification Token
-            $seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
-            shuffle($seed);
-            $rand = '';
-            foreach (array_rand($seed, GK_SITE_PASSWORD_RECOVERY_CODE_LENGTH) as $k) {
-                $rand .= $seed[$k];
-            }
-            $self->token = $rand;
         });
 
         $this->virtual('expire_on_datetime', function ($self) {

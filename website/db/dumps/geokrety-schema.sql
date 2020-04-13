@@ -138,6 +138,28 @@ END;$$;
 ALTER FUNCTION geokrety.fresher_than(datetime timestamp with time zone, duration integer, unit character varying) OWNER TO geokrety;
 
 --
+-- Name: generate_adoption_token(integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.generate_adoption_token(size integer DEFAULT 5) RETURNS character varying
+    LANGUAGE sql
+    AS $$SELECT array_to_string(array(select substr('0123456789',((random()*(10-1)+1)::integer),1) from generate_series(1,size)),'');$$;
+
+
+ALTER FUNCTION geokrety.generate_adoption_token(size integer) OWNER TO geokrety;
+
+--
+-- Name: generate_password_token(integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.generate_password_token(size integer DEFAULT 42) RETURNS character varying
+    LANGUAGE sql
+    AS $$SELECT array_to_string(array(select substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz',((random()*(62-1)+1)::integer),1) from generate_series(1,size)),'');$$;
+
+
+ALTER FUNCTION geokrety.generate_password_token(size integer) OWNER TO geokrety;
+
+--
 -- Name: generate_secid(integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -955,6 +977,86 @@ CREATE FUNCTION geokrety.on_update_current_timestamp() RETURNS trigger
 ALTER FUNCTION geokrety.on_update_current_timestamp() OWNER TO geokrety;
 
 --
+-- Name: owner_code_check_validating_ip(inet, smallint, timestamp with time zone, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.owner_code_check_validating_ip(validating_ip inet, used smallint, claimed_on_datetime timestamp with time zone, "user" bigint) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF used = 0 AND validating_ip IS NULL AND claimed_on_datetime IS NULL AND "user" IS NULL THEN
+	RETURN TRUE;
+ELSIF used = 1::smallint AND validating_ip IS NOT NULL AND claimed_on_datetime IS NOT NULL THEN
+	RETURN TRUE;
+END IF;
+
+RETURN FALSE;
+END;$$;
+
+
+ALTER FUNCTION geokrety.owner_code_check_validating_ip(validating_ip inet, used smallint, claimed_on_datetime timestamp with time zone, "user" bigint) OWNER TO geokrety;
+
+--
+-- Name: owner_code_token_generate(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.owner_code_token_generate() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF NEW.token IS NOT NULL THEN
+	RETURN NEW;
+END IF;
+
+NEW.token = generate_adoption_token(5);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.owner_code_token_generate() OWNER TO geokrety;
+
+--
+-- Name: password_check_validating_ip(inet, smallint, timestamp with time zone); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.password_check_validating_ip(validating_ip inet, used smallint, used_on_datetime timestamp with time zone) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF used = 0 AND validating_ip IS NULL AND used_on_datetime IS NULL THEN
+	RETURN TRUE;
+ELSIF used = 1::smallint AND validating_ip IS NOT NULL AND used_on_datetime IS NOT NULL THEN
+	RETURN TRUE;
+END IF;
+
+RETURN FALSE;
+END;$$;
+
+
+ALTER FUNCTION geokrety.password_check_validating_ip(validating_ip inet, used smallint, used_on_datetime timestamp with time zone) OWNER TO geokrety;
+
+--
+-- Name: password_token_generate(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.password_token_generate() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (OLD.token IS NOT NULL AND NEW.token IS DISTINCT FROM OLD.token) THEN
+	RAISE 'Token cannot be updated';
+END IF;
+
+NEW.token = generate_password_token(42);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.password_token_generate() OWNER TO geokrety;
+
+--
 -- Name: picture_type_to_table_name(bigint, bigint, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -1119,6 +1221,19 @@ CREATE FUNCTION geokrety.position2coords("position" public.geography, OUT lat do
 
 
 ALTER FUNCTION geokrety.position2coords("position" public.geography, OUT lat double precision, OUT lon double precision, srid integer) OWNER TO geokrety;
+
+--
+-- Name: random_between(integer, integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.random_between(low integer, high integer) RETURNS integer
+    LANGUAGE plpgsql STRICT
+    AS $$BEGIN
+	RETURN floor(random()* (high-low + 1) + low);
+END;$$;
+
+
+ALTER FUNCTION geokrety.random_between(low integer, high integer) OWNER TO geokrety;
 
 --
 -- Name: save_gc_waypoints(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
@@ -1789,14 +1904,23 @@ ALTER TABLE geokrety.gk_news_comments_access OWNER TO geokrety;
 CREATE TABLE geokrety.gk_owner_codes (
     id bigint NOT NULL,
     geokret bigint NOT NULL,
-    token character varying(20) NOT NULL,
+    token character varying(20),
     generated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     claimed_on_datetime timestamp(0) with time zone,
-    "user" bigint
+    "user" bigint,
+    validating_ip inet,
+    used smallint DEFAULT '0'::smallint NOT NULL
 );
 
 
 ALTER TABLE geokrety.gk_owner_codes OWNER TO geokrety;
+
+--
+-- Name: COLUMN gk_owner_codes.used; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON COLUMN geokrety.gk_owner_codes.used IS '0=unused 1=used';
+
 
 --
 -- Name: gk_password_tokens; Type: TABLE; Schema: geokrety; Owner: geokrety
@@ -1804,13 +1928,15 @@ ALTER TABLE geokrety.gk_owner_codes OWNER TO geokrety;
 
 CREATE TABLE geokrety.gk_password_tokens (
     id bigint NOT NULL,
-    token character varying(60) NOT NULL,
+    token character varying(60),
     "user" bigint NOT NULL,
     created_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     used_on_datetime timestamp(0) with time zone,
     updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
     requesting_ip inet NOT NULL,
     used smallint DEFAULT '0'::smallint NOT NULL,
+    validating_ip inet,
+    CONSTRAINT check_validating_ip CHECK (geokrety.password_check_validating_ip(validating_ip, used, used_on_datetime)),
     CONSTRAINT validate_used CHECK ((used = ANY (ARRAY[0, 1])))
 );
 
@@ -2028,7 +2154,7 @@ CREATE TABLE geokrety.gk_users (
     home_longitude double precision,
     observation_area smallint,
     home_country character varying,
-    daily_mails_hour smallint DEFAULT '7'::smallint NOT NULL,
+    daily_mails_hour smallint DEFAULT geokrety.random_between(0, 23) NOT NULL,
     avatar bigint,
     pictures_count integer DEFAULT 0 NOT NULL,
     last_mail_datetime timestamp(0) with time zone,
@@ -2716,6 +2842,14 @@ ALTER TABLE ONLY geokrety.gk_waypoints_oc ALTER COLUMN id SET DEFAULT nextval('g
 --
 
 ALTER TABLE ONLY geokrety.scripts ALTER COLUMN id SET DEFAULT nextval('geokrety.scripts_id_seq'::regclass);
+
+
+--
+-- Name: gk_owner_codes check_validating_ip; Type: CHECK CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE geokrety.gk_owner_codes
+    ADD CONSTRAINT check_validating_ip CHECK (geokrety.owner_code_check_validating_ip(validating_ip, used, claimed_on_datetime, "user")) NOT VALID;
 
 
 --
@@ -3427,10 +3561,31 @@ CREATE TRIGGER before_10_manage_gkid BEFORE INSERT OR UPDATE OF gkid ON geokrety
 
 
 --
+-- Name: gk_account_activation before_10_manage_token; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_manage_token BEFORE INSERT OR UPDATE OF token ON geokrety.gk_account_activation FOR EACH ROW EXECUTE FUNCTION geokrety.account_activation_token_generate();
+
+
+--
 -- Name: gk_mails before_10_manage_token; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
 CREATE TRIGGER before_10_manage_token BEFORE INSERT OR UPDATE OF token ON geokrety.gk_mails FOR EACH ROW EXECUTE FUNCTION geokrety.mails_token_generate();
+
+
+--
+-- Name: gk_owner_codes before_10_manage_token; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_manage_token BEFORE INSERT OR UPDATE OF token ON geokrety.gk_owner_codes FOR EACH ROW EXECUTE FUNCTION geokrety.owner_code_token_generate();
+
+
+--
+-- Name: gk_password_tokens before_10_manage_token; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_manage_token BEFORE INSERT OR UPDATE OF token ON geokrety.gk_password_tokens FOR EACH ROW EXECUTE FUNCTION geokrety.password_token_generate();
 
 
 --
@@ -3515,13 +3670,6 @@ CREATE TRIGGER comments_count_override AFTER UPDATE OF comments_count ON geokret
 --
 
 CREATE TRIGGER manage_secid BEFORE INSERT OR UPDATE OF secid ON geokrety.gk_users FOR EACH ROW EXECUTE FUNCTION geokrety.user_secid_generate();
-
-
---
--- Name: gk_account_activation manage_token; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER manage_token BEFORE INSERT OR UPDATE OF token ON geokrety.gk_account_activation FOR EACH ROW EXECUTE FUNCTION geokrety.account_activation_token_generate();
 
 
 --
