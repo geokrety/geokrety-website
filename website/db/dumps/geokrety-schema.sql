@@ -231,6 +231,25 @@ END;$$;
 ALTER FUNCTION geokrety.geokret_gkid() OWNER TO geokrety;
 
 --
+-- Name: geokret_manage_holder(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.geokret_manage_holder() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF NEW.holder IS NULL THEN
+	NEW.holder = NEW.owner;
+	RETURN NEW;
+END IF;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.geokret_manage_holder() OWNER TO geokrety;
+
+--
 -- Name: geokret_tracking_code(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -3334,6 +3353,13 @@ CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves_
 
 
 --
+-- Name: gk_geokrety before_10_manage_gkid; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_manage_gkid BEFORE INSERT OR UPDATE OF gkid ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_gkid();
+
+
+--
 -- Name: gk_email_activation before_10_manage_tokens; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3376,6 +3402,20 @@ CREATE TRIGGER before_20_gis_updates BEFORE INSERT OR UPDATE ON geokrety.gk_move
 
 
 --
+-- Name: gk_geokrety before_20_manage_tracking_code; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_20_manage_tracking_code BEFORE INSERT OR UPDATE OF tracking_code ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_tracking_code();
+
+
+--
+-- Name: gk_geokrety before_30_manage_holder; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_30_manage_holder BEFORE INSERT OR UPDATE OF holder ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_manage_holder();
+
+
+--
 -- Name: gk_moves before_30_waypoint_uppercase; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3397,13 +3437,6 @@ CREATE TRIGGER comments_count_override AFTER UPDATE OF comments_count ON geokret
 
 
 --
--- Name: gk_geokrety manage_gkid; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER manage_gkid BEFORE INSERT OR UPDATE OF gkid ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_gkid();
-
-
---
 -- Name: gk_users manage_secid; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3415,13 +3448,6 @@ CREATE TRIGGER manage_secid BEFORE INSERT OR UPDATE OF secid ON geokrety.gk_user
 --
 
 CREATE TRIGGER manage_token BEFORE INSERT OR UPDATE OF token ON geokrety.gk_account_activation FOR EACH ROW EXECUTE FUNCTION geokrety.account_activation_token_generate();
-
-
---
--- Name: gk_geokrety manage_tracking_code; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER manage_tracking_code BEFORE INSERT OR UPDATE OF tracking_code ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_tracking_code();
 
 
 --
