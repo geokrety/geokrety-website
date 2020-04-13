@@ -8,6 +8,7 @@ class Libravatar extends \Prefab {
     private $libravatar;
 
     public static function getUrl($identifier, $options = []) {
+        // TODO what can we do if there is a DNS problem?
         return self::instance()->libravatar->getUrl($identifier, $options);
     }
 
