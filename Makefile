@@ -31,6 +31,8 @@ utf8: ## run file check : utf8
 test: ## run PHPUnit tests
 	php ./vendor/bin/phpunit
 check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, utf8, test
+test-db: ## run PGTag tests
+	PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -ot website/db/tests/test*.sql
 
 seed: ## generate random data
 	${PTY_PREFIX} docker exec -ti geokrety-website_web_1 bash -c "cd website && ../vendor/bin/phinx seed:run"
