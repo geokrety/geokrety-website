@@ -160,15 +160,6 @@ class Geokret extends Base {
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
-            // generate Tracking Code
-            $seed = str_split('abcdefghjkmnpqrstuvwxyz23456789');
-            shuffle($seed);
-            $rand = '';
-            foreach (array_rand($seed, GK_SITE_TRACKING_CODE_LENGTH) as $k) {
-                $rand .= $seed[$k];
-            }
-            // TODO ensure unicity
-            $self->tracking_code = strtoupper($rand);
             $self->holder = $self->owner;
         });
     }

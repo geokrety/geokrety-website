@@ -30,6 +30,10 @@ SELECT is(tracking_code, 'HIOGRE', 'Tracking code is unmodified') from gk_geokre
 SELECT lives_ok($$INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type") VALUES (5, 5, 'UNIQUE1', 'uniq1', 0)$$);
 SELECT throws_ok($$INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type") VALUES (6, 6, 'UNIQUE1', 'uniq1', 0)$$, 23505, 'duplicate key value violates unique constraint "gk_geokrety_uniq_tracking_code"');
 
+-- will be saved uppercase
+INSERT INTO "gk_geokrety" ("id", "gkid", "tracking_code", "name", "type") VALUES (7, 7, 'jioklj', 'test 7', 0);
+SELECT is(tracking_code, 'JIOKLJ', 'Tracking code will be saved uppercase') from gk_geokrety WHERE id = 7::bigint;
+
 -- Finish the tests and clean up.
 SELECT * FROM finish();
 ROLLBACK;

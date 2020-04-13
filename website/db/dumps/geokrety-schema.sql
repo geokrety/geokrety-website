@@ -241,6 +241,7 @@ found_tc bool;
 BEGIN
 
 IF (NEW.tracking_code IS NOT NULL AND LENGTH(NEW.tracking_code) >= 6) THEN
+	NEW.tracking_code = UPPER(NEW.tracking_code);
 	RETURN NEW;
 END IF;
 
