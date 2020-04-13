@@ -109,4 +109,8 @@ $validator->addFilter('HTMLPurifier', function ($value, $params = null) {
     return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value);
 });
 
+$validator->addFilter('EmptyString2Null', function ($value, $params = null) {
+    return empty($value) ? null : $value;
+});
+
 $validator->loadLang();

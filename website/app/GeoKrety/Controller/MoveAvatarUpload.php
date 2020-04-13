@@ -30,6 +30,5 @@ class MoveAvatarUpload extends AbstractPictureUpload {
 
     public function setRelationships(Picture $picture): void {
         $picture->move = $this->move;
-        $picture->geokret = $this->move->geokret;
     }
 }

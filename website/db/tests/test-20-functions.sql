@@ -49,18 +49,18 @@ SELECT is(moves_type_waypoint(3::smallint, 'GC5BRQK'), TRUE, 'Check moves_type_w
 SELECT throws_ok($$moves_type_waypoint(4::smallint, 'GC5BRQK')$$);
 SELECT is(moves_type_waypoint(5::smallint, 'GC5BRQK'), TRUE, 'Check moves_type_waypoint(GC5BRQK)');
 
-SELECT throws_ok($$moves_type_waypoint(0::smallint, '')$$);
-SELECT throws_ok($$moves_type_waypoint(1::smallint, '')$$);
-SELECT throws_ok($$moves_type_waypoint(2::smallint, '')$$);
-SELECT throws_ok($$moves_type_waypoint(3::smallint, '')$$);
-SELECT throws_ok($$moves_type_waypoint(4::smallint, '')$$);
-SELECT throws_ok($$moves_type_waypoint(5::smallint, '')$$);
+SELECT throws_ok($$SELECT moves_type_waypoint(0::smallint, '')$$);
+SELECT throws_ok($$SELECT moves_type_waypoint(1::smallint, '')$$);
+SELECT throws_ok($$SELECT moves_type_waypoint(2::smallint, '')$$);
+SELECT throws_ok($$SELECT moves_type_waypoint(3::smallint, '')$$);
+SELECT throws_ok($$SELECT moves_type_waypoint(4::smallint, '')$$);
+SELECT throws_ok($$SELECT moves_type_waypoint(5::smallint, '')$$);
 
 SELECT is(moves_check_author_username(1::smallint, NULL), TRUE, 'Check moves_check_author_username(1, NULL)');
-SELECT throws_ok($$moves_check_author_username(1::smallint, '')$$);
-SELECT throws_ok($$moves_check_author_username(1::smallint, 'user')$$);
-SELECT throws_ok($$moves_check_author_username(NULL, NULL)$$);
-SELECT throws_ok($$moves_check_author_username(NULL, '')$$);
+SELECT is(moves_check_author_username(1::smallint, ''), FALSE, 'Check moves_check_author_username(1, EMPTY)');
+SELECT is(moves_check_author_username(1::smallint, 'user'), FALSE, 'Check moves_check_author_username(1, user)');
+SELECT is(moves_check_author_username(NULL, NULL), FALSE, 'Check moves_check_author_username(NULL, NULL)');
+SELECT is(moves_check_author_username(NULL, ''), FALSE, 'Check moves_check_author_username(NULL, EMPTY)');
 SELECT is(moves_check_author_username(NULL, 'user'), TRUE, 'Check moves_check_author_username(1, user)');
 
 SELECT is(coords2position(43.68579, 6.87647), '0101000020E610000053B3075A81811B4040F67AF7C7D74540', 'Check conversion coordinates to position');

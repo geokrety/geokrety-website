@@ -31,7 +31,7 @@ class Move extends Base {
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'validate' => 'anonymous_only_required|min_len,'.GK_USERNAME_MIN_LENGTH.'|max_len,'.GK_USERNAME_MAX_LENGTH,
-            'filter' => 'trim|HTMLPurifier',
+            'filter' => 'trim|HTMLPurifier|EmptyString2Null',
         ],
         'lat' => [
             'type' => Schema::DT_DOUBLE,

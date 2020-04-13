@@ -131,8 +131,8 @@ class MoveCreate extends Base {
         foreach ($errors as $err) {
             Flash::instance()->addMessage($err, 'danger');
         }
-        foreach ($moves as $move) {
-            if (!$move->validate()) {
+        foreach ($moves as $_move) {
+            if (!$_move->validate()) {
                 $error = true;
             }
         }
@@ -143,12 +143,12 @@ class MoveCreate extends Base {
         }
 
         // Save the moves
-        foreach ($moves as $move) {
-            $move->save();
+        foreach ($moves as $_move) {
+            $_move->save();
             if ($isEdit) {
-                Event::instance()->emit('move.updated', $move);
+                Event::instance()->emit('move.updated', $_move);
             } else {
-                Event::instance()->emit('move.created', $move);
+                Event::instance()->emit('move.created', $_move);
             }
         }
         // Do we have some errors while saving to database?
