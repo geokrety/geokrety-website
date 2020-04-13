@@ -140,24 +140,11 @@ class EmailActivationToken extends Base {
         }
     }
 
-    private function randToken() {
-        // generate Verification Token
-        $seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
-        shuffle($seed);
-        $rand = '';
-        foreach (array_rand($seed, GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH) as $k) {
-            $rand .= $seed[$k];
-        }
-
-        return $rand;
-    }
 
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
-            $self->token = $this->randToken();
-            $self->revert_token = $this->randToken();
         });
 
         // $this->beforeupdate(function ($self) {
