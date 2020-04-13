@@ -5,7 +5,7 @@ BEGIN;
 -- SELECT * FROM no_plan();
 SELECT plan(24);
 
-\set nice '\'0101000020E61000000AD7A3703D0A1D409A99999999D94540\''
+\set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set comment 0
 \set missing 1
 \set move_type_dropped 0

@@ -710,7 +710,7 @@ IF (TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN
 		FROM public.countries
 		WHERE public.ST_Intersects(geom, NEW.position::public.geometry)
 		INTO country;
-		
+
 		SELECT public.ST_Value(rast, NEW.position::public.geometry) As elevation
 		FROM public.srtm
 		WHERE public.ST_Intersects(rast, NEW.position::public.geometry)
@@ -1119,6 +1119,34 @@ CREATE FUNCTION geokrety.position2coords("position" public.geography, OUT lat do
 
 
 ALTER FUNCTION geokrety.position2coords("position" public.geography, OUT lat double precision, OUT lon double precision, srid integer) OWNER TO geokrety;
+
+--
+-- Name: save_gc_waypoints(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.save_gc_waypoints() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF TRIM(NEW.waypoint) = '' OR NEW.waypoint IS NULL OR UPPER(SUBSTR(NEW.waypoint, 1, 2)) != 'GC' THEN
+	RETURN NEW;
+ELSIF COUNT(*) > 0 FROM gk_waypoints_gc WHERE waypoint = NEW.waypoint THEN
+	-- TODO what to do if coordinates changed? update?
+	--UPDATE "gk_waypoints_gc"
+	--SET "position" = NEW.position
+	--WHERE waypoint = NEW.waypoint;
+	
+	RETURN NEW;
+END IF;
+
+INSERT INTO gk_waypoints_gc ("waypoint", "country", "elevation", "position")
+VALUES (NEW.waypoint, NEW.country, NEW.elevation, NEW.position);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.save_gc_waypoints() OWNER TO geokrety;
 
 --
 -- Name: update_next_move_distance(bigint, bigint, boolean); Type: FUNCTION; Schema: geokrety; Owner: geokrety
@@ -2699,6 +2727,14 @@ ALTER TABLE ONLY geokrety.gk_geokrety
 
 
 --
+-- Name: gk_mails gk_mails_token_uniq; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE ONLY geokrety.gk_mails
+    ADD CONSTRAINT gk_mails_token_uniq UNIQUE (token);
+
+
+--
 -- Name: gk_news_comments_access gk_news_comments_access_news_author; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3360,6 +3396,13 @@ CREATE TRIGGER after_30_last_log_and_position AFTER INSERT OR DELETE OR UPDATE O
 --
 
 CREATE TRIGGER after_40_update_missing AFTER INSERT OR DELETE OR UPDATE OF geokret, moved_on_datetime, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.move_or_moves_comments_manage_geokret_missing();
+
+
+--
+-- Name: gk_moves after_50_manage_waypoint_gc; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER after_50_manage_waypoint_gc AFTER INSERT ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.save_gc_waypoints();
 
 
 --

@@ -4,7 +4,7 @@ BEGIN;
 SELECT plan(9);
 -- SELECT * FROM no_plan();
 
-\set nice '\'0101000020E61000000AD7A3703D0A1D409A99999999D94540\''
+\set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set paris '\'0101000020E610000066666666666602406666666666664840\''
 \set berlin '\'0101000020E61000009A99999999992A400000000000404A40\''
 \set warsaw '\'0101000020E610000000000000000035409A99999999194A40\''
@@ -17,7 +17,7 @@ INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (
 
 -- Moves
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);
-SELECT is(elevation, 20, 'nice elevation') from gk_moves WHERE id = 1::bigint;
+SELECT is(elevation, 186, 'nice elevation') from gk_moves WHERE id = 1::bigint;
 
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (2, 1, 1, :paris, '2020-04-07 01:00:00+00', 0);
 SELECT is(elevation, 91, 'paris elevation') from gk_moves WHERE id = 2::bigint;

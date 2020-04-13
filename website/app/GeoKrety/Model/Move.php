@@ -182,19 +182,6 @@ EOQUERY;
         return $page[0]['page'];
     }
 
-    private function addWaypoint() {
-        if (!WaypointInfo::isGC($this->waypoint)) {
-            return;
-        }
-        $waypoint = new Waypoint();
-        $waypoint->load(['waypoint = ?', $this->waypoint]);
-        $waypoint->waypoint = $this->waypoint;
-        $waypoint->lat = $this->lat;
-        $waypoint->lon = $this->lon;
-        $waypoint->link = WaypointInfo::getLink($this->waypoint);
-        $waypoint->save();
-    }
-
     public function __construct() {
         parent::__construct();
         $this->beforesave(function (Move $self) {
@@ -205,11 +192,6 @@ EOQUERY;
                 $self->alt = null;
                 $self->country = null;
                 $self->distance = null;
-            }
-        });
-        $this->aftersave(function (Move $self) {
-            if ($self->move_type->isCoordinatesRequired()) {
-                $self->addWaypoint(); // TODO: move this to plpgsql
             }
         });
         $this->beforeerase(function ($self) {

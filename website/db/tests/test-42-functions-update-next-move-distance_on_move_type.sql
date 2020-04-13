@@ -4,7 +4,7 @@ BEGIN;
 
 SELECT plan(3);
 
-\set nice '\'0101000020E61000000AD7A3703D0A1D409A99999999D94540\''
+\set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set paris '\'0101000020E610000066666666666602406666666666664840\''
 \set berlin '\'0101000020E61000009A99999999992A400000000000404A40\''
 
@@ -22,7 +22,7 @@ INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetim
 UPDATE "gk_moves" SET move_type=2, position=NULL WHERE id=2;
 SELECT is(distance, 0, 'first move has 0 km') from gk_moves WHERE id = 1::bigint;
 SELECT is(distance, NULL, 'No distance count for comments') from gk_moves WHERE id = 2::bigint;
-SELECT is(distance, 1075, 'Nice/Berlin') from gk_moves WHERE id = 3::bigint;
+SELECT is(distance, 1074, 'Nice/Berlin') from gk_moves WHERE id = 3::bigint;
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

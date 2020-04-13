@@ -4,7 +4,7 @@ BEGIN;
 
 SELECT plan(12);
 
-\set nice '\'0101000020E61000000AD7A3703D0A1D409A99999999D94540\''
+\set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set paris '\'0101000020E610000066666666666602406666666666664840\''
 \set berlin '\'0101000020E61000009A99999999992A400000000000404A40\''
 \set warsaw '\'0101000020E610000000000000000035409A99999999194A40\''
@@ -29,7 +29,7 @@ UPDATE "gk_moves" SET geokret=2 WHERE id=2;
 SELECT is(distance, 0, 'first move has 0 km') from gk_moves WHERE id = 2::bigint; -- paris
 
 SELECT is(distance, 0, 'first move has 0 km') from gk_moves WHERE id = 1::bigint;
-SELECT is(distance, 1075, 'Nice/Berlin') from gk_moves WHERE id = 3::bigint;
+SELECT is(distance, 1074, 'Nice/Berlin') from gk_moves WHERE id = 3::bigint;
 SELECT is(distance, 524, 'Berlin/Warsaw') from gk_moves WHERE id = 4::bigint;
 SELECT is(distance, 1150, 'Warsaw/Moscow') from gk_moves WHERE id = 5::bigint;
 SELECT is(distance, 7491, 'Moscow/Tokyo') from gk_moves WHERE id = 6::bigint;
@@ -40,7 +40,7 @@ SELECT is(distance, 1371, 'Paris/Warsaw') from gk_moves WHERE id = 4::bigint;
 SELECT is(distance, 1150, 'Warsaw/Moscow') from gk_moves WHERE id = 5::bigint;
 
 SELECT is(distance, 0, 'first move has 0 km') from gk_moves WHERE id = 1::bigint; -- nice
-SELECT is(distance, 1075, 'Nice/Berlin') from gk_moves WHERE id = 3::bigint;
+SELECT is(distance, 1074, 'Nice/Berlin') from gk_moves WHERE id = 3::bigint;
 SELECT is(distance, 8932, 'Berlin/Tokyo') from gk_moves WHERE id = 6::bigint;
 
 

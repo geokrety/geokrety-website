@@ -4,7 +4,7 @@ BEGIN;
 
 SELECT plan(9);
 
-\set nice '\'0101000020E61000000AD7A3703D0A1D409A99999999D94540\''
+\set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set paris '\'0101000020E610000066666666666602406666666666664840\''
 \set berlin '\'0101000020E61000009A99999999992A400000000000404A40\''
 \set warsaw '\'0101000020E610000000000000000035409A99999999194A40\''
@@ -41,7 +41,7 @@ SELECT is(distance, 2065, 'Moscow/Pula') from gk_moves WHERE id = 13::bigint;
 -- Test change date
 UPDATE "gk_moves" SET moved_on_datetime='2020-04-07 01:30:00+00' WHERE id=13;
 SELECT is(distance, 0, 'first move has 0 km') from gk_moves WHERE id = 1::bigint;
-SELECT is(distance, 683, 'Nice/Paris') from gk_moves WHERE id = 2::bigint;
+SELECT is(distance, 680, 'Nice/Paris') from gk_moves WHERE id = 2::bigint;
 SELECT is(distance, 980, 'Paris/Pula') from gk_moves WHERE id = 13::bigint; --
 SELECT is(distance, 857, 'Pula/Berlin') from gk_moves WHERE id = 3::bigint;
 SELECT is(distance, 524, 'Berlin/Warsaw') from gk_moves WHERE id = 4::bigint;
