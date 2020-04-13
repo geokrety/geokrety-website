@@ -348,6 +348,30 @@ LIMIT 1;$$;
 ALTER FUNCTION geokrety.geokrety_compute_last_position(geokret_id bigint) OWNER TO geokrety;
 
 --
+-- Name: mails_token_generate(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.mails_token_generate() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF (TG_OP = 'INSERT' AND NEW.token IS NOT NULL) THEN
+	RETURN NEW;
+END IF;
+
+IF (TG_OP = 'UPDATE' AND NEW.token IS DISTINCT FROM OLD.token) THEN
+	RAISE 'Token cannot be updated';
+END IF;
+
+NEW.token = generate_verification_token(10);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.mails_token_generate() OWNER TO geokrety;
+
+--
 -- Name: move_counting_kilometers(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -1567,7 +1591,7 @@ ALTER SEQUENCE geokrety.geokrety_rating_id_seq OWNED BY geokrety.gk_geokrety_rat
 
 CREATE TABLE geokrety.gk_mails (
     id bigint NOT NULL,
-    token character varying(10) NOT NULL,
+    token character varying(10),
     from_user bigint,
     to_user bigint,
     subject character varying(255) NOT NULL,
@@ -3357,6 +3381,13 @@ CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves_
 --
 
 CREATE TRIGGER before_10_manage_gkid BEFORE INSERT OR UPDATE OF gkid ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_gkid();
+
+
+--
+-- Name: gk_mails before_10_manage_token; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_manage_token BEFORE INSERT OR UPDATE OF token ON geokrety.gk_mails FOR EACH ROW EXECUTE FUNCTION geokrety.mails_token_generate();
 
 
 --

@@ -47,14 +47,6 @@ class Mail extends Base {
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
-            // generate random Token
-            $seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
-            shuffle($seed);
-            $rand = '';
-            foreach (array_rand($seed, GK_SITE_MAIL_TOKEN_LENGTH) as $k) {
-                $rand .= $seed[$k];
-            }
-            $self->token = $rand;
             $self->ip = \Base::instance()->get('IP');
         });
     }
