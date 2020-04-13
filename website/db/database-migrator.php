@@ -196,6 +196,14 @@ $pFields = ['id', 'type', 'move', 'geokret', 'user', 'filename', 'caption', 'cre
 $migrator = new PicturesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-obserwable';
+$pName = 'gk_watched';
+$mFields = ['userid', 'id'];
+$pFields = ['user', 'geokret'];
+$migrator = new WatchedMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
+
 //// ---------------------------------------------------------------------------------------------------------------------
 
 $pgsql->query("SELECT SETVAL('geokrety.account_activation_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_account_activation;");
@@ -411,7 +419,7 @@ class NewsMigrator extends BaseMigrator {
         $values[5] = $values[5] ?: null;  // author
         $values[7] = $values[7] ?: null;  // last_commented_on_datetime
         $values[2] = Markdown::toFormattedMarkdown($values[2]);  // title
-        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // content
+//        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // content // TODO will need deeper migration path
     }
 
     // TODO: Recompute comments count
@@ -518,8 +526,8 @@ class MovesMigrator extends BaseMigrator {
     //  'position'
 
     protected function prepareData() {
-        $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE data = "0000-00-00 00:00:00" LIMIT 157;');
-        $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE DAY (data) = 0 OR  MONTH (data) = 0 LIMIT 95;');
+        $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE data = "0000-00-00 00:00:00";');
+        $this->mPdo->query('UPDATE `gk-ruchy` SET data = data_dodania WHERE DAY (data) = 0 OR  MONTH (data) = 0;');
         $this->mPdo->query('UPDATE `gk-ruchy` SET `user` = NULL, username = "Deleted user" WHERE `user` = 0 AND `username` = "";');
         $this->mPdo->query('UPDATE `gk-ruchy` SET `user` = NULL WHERE `user` = 0 AND `username` != "";');
         $this->mPdo->query('UPDATE `gk-ruchy` SET `lat` = NULL, `lon` = NULL WHERE `logtype` = \'2\' AND `lat` IS NOT NULL AND `lon` IS NOT NULL;');
@@ -690,6 +698,11 @@ class WaypointGCMigrator extends BaseMigrator {
 
         return join(', ', array_fill(0, $chunkSize, "($value)"));
     }
+}
+
+class WatchedMigrator extends BaseMigrator {
+    //    'userid', 'id'
+    //    'user', 'geokret'
 }
 
 //// Check integrity
