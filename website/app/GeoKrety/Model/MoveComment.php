@@ -61,16 +61,4 @@ class MoveComment extends Base {
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
-
-    public function __construct() {
-        parent::__construct();
-        $this->aftersave(function ($self) {
-            $self->move->comments_count = $self->count(['move = ?', $self->move->id], null, 0); // Disable TTL
-            $self->move->save();
-        });
-        $this->aftererase(function ($self) {
-            $self->move->comments_count = $self->count(['move = ?', $self->move->id], null, 0); // Disable TTL
-            $self->move->save();
-        });
-    }
 }
