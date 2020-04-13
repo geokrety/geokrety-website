@@ -68,7 +68,7 @@ class TrackingCode {
             'name' => $geokret->name,
             'mission' => $geokret->mission,
             'createdOnDatetime' => $geokret->created_on_datetime->format('c'),
-            'ownerId' => $geokret->owner->id,
+            'ownerId' => $geokret->owner->id ?? null,
             'ownerName' => $geokret->owner ? $geokret->owner->username : null,
             'holderId' => $geokret->holder ? $geokret->holder->id : null,
             'holderName' => $geokret->holder ? $geokret->holder->username : null,
