@@ -2121,9 +2121,9 @@ ALTER TABLE geokrety.waypoints_gc_id_seq OWNER TO geokrety;
 CREATE TABLE geokrety.gk_waypoints_gc (
     id bigint DEFAULT nextval('geokrety.waypoints_gc_id_seq'::regclass) NOT NULL,
     waypoint character varying(11) NOT NULL,
-    country character varying(3) NOT NULL,
-    elevation integer NOT NULL,
-    "position" public.geography
+    country character varying(3),
+    elevation integer,
+    "position" public.geography NOT NULL
 );
 
 
