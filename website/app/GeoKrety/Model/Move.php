@@ -182,168 +182,6 @@ EOQUERY;
         return $page[0]['page'];
     }
 
-    private function findNext(Move $move) {
-        $next = new Move();
-        $filter = [
-            'id != ? AND geokret = ? AND logtype IN ? AND moved_on_datetime > ?',
-            $move->id,
-            $move->geokret->id,
-            array_map('strval', LogType::LOG_TYPES_COUNT_KILOMETERS),
-            $move->moved_on_datetime->format(GK_DB_DATETIME_FORMAT),
-        ];
-        $options = [
-            'limit' => 1,
-            'order' => 'moved_on_datetime ASC',
-        ];
-        $next->load($filter, $options);
-
-        return $next;
-    }
-
-    private function findPrev(Move $move) {
-        $prev = new Move();
-        $filter = [
-            'id != ? AND geokret = ? AND logtype IN ? AND moved_on_datetime < ?',
-            $move->id,
-            $move->geokret->id,
-            array_map('strval', LogType::LOG_TYPES_COUNT_KILOMETERS),
-            $move->moved_on_datetime->format(GK_DB_DATETIME_FORMAT),
-        ];
-        $options = [
-            'limit' => 1,
-            'order' => 'moved_on_datetime DESC',
-        ];
-        $prev->load($filter, $options);
-
-        return $prev;
-    }
-
-    private function computeDistanceMoveNext() {
-        // Find move just after
-
-        $next = $this->findNext($this);
-        if ($next->dry()) {
-            // There was no move after, abort…
-            return;
-        }
-        // If my new move type doesn't require coordinates, then the reference
-        // point is not me but point just before
-        $ref = $this;
-        if (!$this->move_type->isCoordinatesRequired()) {
-            $ref = $this->findPrev($this);
-            if ($ref->dry()) {
-                // There was no move after, reset the next…
-                $next->distance = 0;
-                $next->save();
-
-                return;
-            }
-        }
-        // Compute distance
-        $coordA = new \League\Geotools\Coordinate\Coordinate($ref->point);
-        $coordB = new \League\Geotools\Coordinate\Coordinate($next->point);
-        $geotools = new \League\Geotools\Geotools();
-        $distance = $geotools->distance()->setFrom($coordA)->setTo($coordB);
-        $next->distance = $distance->in('km')->haversine();
-        $next->save();
-    }
-
-    private function computeDistance() {
-        // Find move just before
-        $prev = $this->findPrev($this);
-        if ($prev->dry()) {
-            // There was no move before
-            $this->distance = 0;
-
-            return;
-        }
-        // Compute distance
-        $coordA = new \League\Geotools\Coordinate\Coordinate($this->point);
-        $coordB = new \League\Geotools\Coordinate\Coordinate($prev->point);
-        $geotools = new \League\Geotools\Geotools();
-        $distance = $geotools->distance()->setFrom($coordA)->setTo($coordB);
-        $this->distance = $distance->in('km')->haversine();
-    }
-
-    private function computeDistanceMoveNextOldPlace() {
-        // Find move just after, but at the old place in history (if edit of course)
-        if (!$this->id) {
-            return;
-        }
-        $current = new Move();
-        $current->load(['id = ?', $this->id]);
-        if (empty($current->point)) {
-            return;
-        }
-
-        $next = $this->findNext($this);
-        if ($next->dry()) {
-            // There was no move after, abort…
-            return;
-        }
-        // Compute distance
-        $coordA = new \League\Geotools\Coordinate\Coordinate($current->point);
-        $coordB = new \League\Geotools\Coordinate\Coordinate($next->point);
-        $geotools = new \League\Geotools\Geotools();
-        $distance = $geotools->distance()->setFrom($coordA)->setTo($coordB);
-        $next->distance = $distance->in('km')->haversine();
-        $next->save();
-    }
-
-    private function updateGeokretLastPosition(Geokret &$geokret) {
-        $lastPosition = new Move();
-        $filter = [
-            'geokret = ? AND logtype IN ?',
-            $geokret->id,
-            array_map('strval', LogType::LOG_TYPES_LAST_POSITION),
-        ];
-        $options = [
-            'order' => 'moved_on_datetime DESC',
-        ];
-        $lastPosition->load($filter, $options);
-        $geokret->last_position = $lastPosition->id;
-    }
-
-    private function updateGeokretLastMove(Geokret &$geokret) {
-        $lastMove = new Move();
-        $filter = [
-            'geokret = ?',
-            $geokret->id,
-        ];
-        $options = [
-            'order' => 'moved_on_datetime DESC',
-        ];
-        $lastMove->load($filter, $options);
-        $geokret->last_log = $lastMove->id;
-    }
-
-    private function updateGeokretStats(Geokret &$geokret) {
-        $moveStats = \Base::instance()->get('DB')->exec(
-            'SELECT COUNT(*) AS count, COALESCE(SUM(distance), 0) AS distance FROM "'.$this->table.'" WHERE geokret = ?',
-            [
-                $geokret->id,
-            ]
-        );
-        $geokret->caches_count = $moveStats[0]['count'];
-        $geokret->distance = $moveStats[0]['distance'];
-    }
-
-    private function updateGeokretMissingStatus(Geokret &$geokret) {
-        $lastPosition = new Move();
-        $filter = [
-            'geokret = ? AND logtype IN ?',
-            $geokret->id,
-            array_map('strval', LogType::LOG_TYPES_ALIVE),
-        ];
-        $options = [
-            'order' => 'moved_on_datetime DESC',
-        ];
-        $lastPosition->filter('comments', ['type = ?', 1]);
-//        $lastPosition->countRel('comments');  // TODO: https://github.com/ikkez/f3-cortex/issues/99
-        $lastPosition->load($filter, $options);
-        $geokret->missing = $lastPosition->count_comments > 0;
-    }
-
     private function addWaypoint() {
         if (!WaypointInfo::isGC($this->waypoint)) {
             return;
@@ -357,26 +195,9 @@ EOQUERY;
         $waypoint->save();
     }
 
-    private function removeMissingStatus() {
-        // TODO, why not change the type and update the comment ???
-        $comment = new MoveComment();
-        $comment->erase(['move = ? AND type = ?', $this->id, 1]);
-    }
-
     public function __construct() {
         parent::__construct();
-        $this->beforeinsert(function (Move $self) {
-            $self->touch('created_on_datetime');
-            $self->touch('moved_on_datetime');
-        });
         $this->beforesave(function (Move $self) {
-            // TODO Force reset fields if coordinates not required?
-
-            if ($self->move_type->isCountingKilometers()) {
-                $self->computeDistance(); // This move
-                $self->computeDistanceMoveNext(); // The move after
-                $self->computeDistanceMoveNextOldPlace(); // The move after at the old place
-            }
             if (!$self->move_type->isCoordinatesRequired()) {
                 $self->waypoint = null;
                 $self->lat = null;
@@ -387,24 +208,9 @@ EOQUERY;
             }
         });
         $this->aftersave(function (Move $self) {
-            $geokret = new Geokret();
-            $geokret->load(['id = ?', $self->geokret->id]);
-            $self->updateGeokretStats($geokret);
-            $self->updateGeokretLastPosition($geokret);
-            $self->updateGeokretLastMove($geokret);
-            $self->updateGeokretMissingStatus($geokret);
-            $geokret->save();
-
             if ($self->move_type->isCoordinatesRequired()) {
-                $self->addWaypoint();
+                $self->addWaypoint(); // TODO: move this to plpgsql
             }
-
-            if (!$self->move_type->isTheoricallyInCache()) {
-                $self->removeMissingStatus();
-            }
-        });
-        $this->afterupdate(function (Move $self) {
-            // TODO update attached pictures to change the geokret link. Should be done in Postgres
         });
         $this->beforeerase(function ($self) {
             // Dropping pictures here instead of relying on db Triggers will delete files on S3
