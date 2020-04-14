@@ -558,10 +558,10 @@ class MovesMigrator extends BaseMigrator {
 
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
+        // TODO find -> Move date time can not be before GeoKret birth (2007-10-26 20:12:28+00)
         $this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
         $this->pPdo->query('UPDATE gk_moves SET author = NULL, username = \'Deleted user\' WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
         $this->pPdo->query('DELETE FROM gk_moves WHERE geokret NOT IN (SELECT DISTINCT(id) FROM gk_geokrety);');
-        $this->pPdo->query('ALTER TABLE "gk_moves" DROP "lat", "lon";');
     }
 
     // TODO: recompute distance
