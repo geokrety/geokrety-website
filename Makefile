@@ -44,6 +44,8 @@ phinx-migrations-generate: ## create new db migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx-migrations generate"
 phinx-migrate: ## play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
+db-migrator: ## play migration
+	${PTY_PREFIX} bash -c "cd website/db && runuser -u www-data php database-migrator.php"
 
 compile-all-templates:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/smarty/compile-all-templates"
