@@ -17,6 +17,8 @@ class MoveCommentDelete extends Base {
     public function post(\Base $f3) {
         $comment = $this->comment;
         $gkid = $comment->geokret->gkid;
+        $page = $comment->move->getMoveOnPage();
+        $move_id = $comment->move->id;
 
         if ($comment->valid()) {
             $comment->erase();
@@ -25,7 +27,6 @@ class MoveCommentDelete extends Base {
         } else {
             Flash::instance()->addMessage(_('Failed to delete comment.'), 'danger');
         }
-        // TODO redirect to the right page/move/anchor…
-        $f3->reroute("@geokret_details(@gkid=$gkid)");
+        $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $gkid, $page, $move_id));
     }
 }

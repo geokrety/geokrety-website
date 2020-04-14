@@ -44,7 +44,7 @@ class MoveCommentCreate extends Base {
             die();
         }
 
-        $f3->reroute("@geokret_details(@gkid=$gkid)#log".$comment->move->id);
+        $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $gkid, $comment->move->getMoveOnPage(), $comment->move->id));
     }
 
     public function post_missing(\Base $f3) {

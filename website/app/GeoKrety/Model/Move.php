@@ -3,9 +3,7 @@
 namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
-use GeoKrety\LogType;
 use GeoKrety\Service\HTMLPurifier;
-use GeoKrety\Service\WaypointInfo;
 
 class Move extends Base {
     use \Validation\Traits\CortexTrait;
@@ -159,23 +157,12 @@ class Move extends Base {
     }
 
     public function getMoveOnPage() {
-        $perPage = GK_PAGINATION_GEOKRET_MOVES;
-        $table = $this->table;
-        $sql = <<<EOQUERY
-SELECT CEILING(rank / $perPage) AS page
-FROM (
-  SELECT id, RANK() OVER (ORDER BY moved_on_datetime DESC)
-  FROM "gk_moves"
-  WHERE geokret = ?
-  ORDER BY moved_on_datetime ASC
-) as ranked
-WHERE id = ?
-EOQUERY;
         $page = \Base::instance()->get('DB')->exec(
-            $sql,
+            'SELECT moves_get_on_page(?, ?, ?) AS page',
             [
-                $this->geokret->id,
                 $this->id,
+                GK_PAGINATION_GEOKRET_MOVES,
+                $this->geokret->id,
             ]
         );
 

@@ -156,7 +156,7 @@ class MoveCreate extends Base {
             Flash::instance()->addMessage(_('Failed to save move.'), 'danger');
         } else {
             Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
-            $f3->reroute('@geokret_details_paginate(@gkid='.$moves[0]->geokret->gkid.',page='.$moves[0]->getMoveOnPage().')#log'.$moves[0]->id);
+            $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $moves[0]->geokret->gkid, $moves[0]->getMoveOnPage(), $moves[0]->id));
         }
         $this->get($f3);
     }

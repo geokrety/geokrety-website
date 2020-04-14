@@ -697,6 +697,42 @@ COMMENT ON FUNCTION geokrety.moves_distances_before() IS 'The old position';
 
 
 --
+-- Name: moves_get_on_page(bigint, bigint, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_get_on_page(move_id bigint, per_page bigint DEFAULT 10, geokret_id bigint DEFAULT NULL::bigint) RETURNS bigint
+    LANGUAGE plpgsql
+    AS $$DECLARE
+_geokret_id bigint;
+_page bigint;
+BEGIN
+
+IF geokret_id IS NULL THEN
+	SELECT geokret
+	FROM gk_moves
+	WHERE id = move_id
+	INTO _geokret_id;
+ELSE
+	_geokret_id = geokret_id;
+END IF;
+
+SELECT CEILING((rank - 1) / per_page) + 1 AS page
+FROM (
+  SELECT id, RANK() OVER (ORDER BY moved_on_datetime DESC)
+  FROM "gk_moves"
+  WHERE geokret = _geokret_id
+  ORDER BY moved_on_datetime ASC
+) as ranked
+WHERE id = move_id
+INTO _page;
+
+RETURN _page;
+END;$$;
+
+
+ALTER FUNCTION geokrety.moves_get_on_page(move_id bigint, per_page bigint, geokret_id bigint) OWNER TO geokrety;
+
+--
 -- Name: moves_gis_updates(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
