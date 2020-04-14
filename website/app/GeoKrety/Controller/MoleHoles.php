@@ -2,7 +2,7 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\Waypoint;
+use GeoKrety\Model\WaypointOC;
 use GeoKrety\Service\Smarty;
 
 class MoleHoles extends Base {
@@ -12,7 +12,7 @@ class MoleHoles extends Base {
             'OP3B15', 'OCCB8A', 'OCC3EC', 'OCC8B7',
         ];
         $moleholes = [];
-        $wpt = new Waypoint();
+        $wpt = new WaypointOC();
         foreach ($moleholesInput as $waypoint) {
             $wpt->reset();
             $wpt->load(['waypoint = ?', $waypoint]);

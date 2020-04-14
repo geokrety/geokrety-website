@@ -2,7 +2,8 @@
 
 namespace GeoKrety\Service\Validation;
 
-use GeoKrety\Model\Waypoint as WaypointModel;
+use GeoKrety\Model\WaypointOC as WaypointOCModel;
+use GeoKrety\Model\WaypointGC as WaypointGCModel;
 use GeoKrety\Service\CoordinatesConverter;
 use GeoKrety\Service\WaypointInfo;
 
@@ -66,10 +67,14 @@ class Waypoint {
     }
 
     protected function checkIsInDatabase($waypoint, $coordinates) {
-        $wpt = new WaypointModel();
-        $this->waypoint = $wpt;
-        $wpt->load(['waypoint = ?', $waypoint]);
+        if (WaypointInfo::isGC($waypoint)) {
+            $this->waypoint = new WaypointGCModel();
+        } else {
+            $this->waypoint = new WaypointOCModel();
+        }
+        $wpt = $this->waypoint;
 
+        $wpt->load(['waypoint = ?', strtoupper($waypoint)]);
         if ($wpt->dry()) {
             $coords = null;
             if (!is_null($coordinates)) {

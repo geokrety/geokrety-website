@@ -50,6 +50,10 @@ class Move extends Base {
             'nullable' => true,
             'validate' => 'float|logtype_require_coordinates',
         ],
+        'position' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
+        ],
         'alt' => [
             'type' => Schema::DT_INT,
             'nullable' => true,

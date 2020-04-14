@@ -248,7 +248,7 @@ CREATE FUNCTION geokrety.geokret_compute_total_places_visited(geokret_id bigint)
 total integer;
 BEGIN
 
-SELECT COALESCE(COUNT(DISTINCT(distance)), 0)
+SELECT COALESCE(COUNT(DISTINCT("position")), 0)
 FROM gk_moves
 WHERE geokret = geokret_id
 INTO total;
@@ -861,8 +861,8 @@ WHERE id = NEW.geokret
 INTO _geokret;
 
 -- move before GK birth
-IF NEW.moved_on_datetime < _geokret.created_on_datetime THEN
-	RAISE 'Move date time can not be before GeoKret birth (%)', _geokret.created_on_datetime;
+IF DATE_TRUNC('MINUTE', NEW.moved_on_datetime) < DATE_TRUNC('MINUTE', _geokret.created_on_datetime) THEN
+	RAISE 'Move date (%) time can not be before GeoKret birth (%)', DATE_TRUNC('MINUTE', NEW.moved_on_datetime), DATE_TRUNC('MINUTE', _geokret.created_on_datetime);
 -- move after NOW()
 ELSIF NEW.moved_on_datetime > NOW()::timestamp(0) THEN
 	RAISE 'The date is in the future (if you are an inventor of a time travelling machine, contact us please!)';
@@ -1522,6 +1522,30 @@ END;$$;
 
 
 ALTER FUNCTION geokrety.validate_picture_type_against_parameters(row_p geokrety.gk_pictures) OWNER TO geokrety;
+
+--
+-- Name: waypoints_gc_fill_from_moves(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.waypoints_gc_fill_from_moves() RETURNS void
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+TRUNCATE "gk_waypoints_gc";
+
+ALTER SEQUENCE waypoints_gc_id_seq RESTART WITH 1;
+
+INSERT INTO "gk_waypoints_gc" (waypoint, country, elevation, position, lat, lon)
+SELECT DISTINCT ON ("waypoint") "waypoint", "country", "elevation", "position", lat, lon
+FROM "gk_moves"
+WHERE "waypoint" LIKE 'GC%'
+AND "waypoint" <> 'GC'
+ORDER BY "waypoint" ASC;
+
+END;$$;
+
+
+ALTER FUNCTION geokrety.waypoints_gc_fill_from_moves() OWNER TO geokrety;
 
 --
 -- Name: gk_account_activation; Type: TABLE; Schema: geokrety; Owner: geokrety
@@ -2318,7 +2342,9 @@ CREATE TABLE geokrety.gk_waypoints_gc (
     waypoint character varying(11) NOT NULL,
     country character varying(3),
     elevation integer,
-    "position" public.geography NOT NULL
+    "position" public.geography NOT NULL,
+    lat double precision,
+    lon double precision
 );
 
 
@@ -2333,7 +2359,7 @@ CREATE TABLE geokrety.gk_waypoints_oc (
     waypoint character varying(11) NOT NULL,
     lat double precision,
     lon double precision,
-    alt integer DEFAULT '-32768'::integer NOT NULL,
+    elevation integer DEFAULT '-32768'::integer NOT NULL,
     country character varying,
     name character varying(255),
     owner character varying(150),

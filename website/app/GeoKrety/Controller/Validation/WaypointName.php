@@ -3,7 +3,7 @@
 namespace GeoKrety\Controller\Validation;
 
 use GeoKrety\Controller\Base;
-use GeoKrety\Model\Waypoint;
+use GeoKrety\Model\WaypointOC;
 
 class WaypointName extends Base {
     public function post($f3) {
@@ -20,7 +20,7 @@ class WaypointName extends Base {
             die(json_encode(['error' => sprintf(_('Waypoint length is invalid. It should be between %d and %d characters long.'), GK_CHECK_WAYPOINT_NAME_MIN_LENGTH, GK_CHECK_WAYPOINT_NAME_MAX_LENGTH)]));
         }
 
-        $waypoint = new Waypoint();
+        $waypoint = new WaypointOC();
         $options = [
             'limit' => GK_CHECK_WAYPOINT_NAME_COUNT,
         ];

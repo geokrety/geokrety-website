@@ -5,10 +5,18 @@ namespace GeoKrety\Model;
 use DateTime;
 use DB\SQL\Schema;
 
-class Waypoint extends Base {
-    protected $db = 'DB';
+/**
+ * @property string name
+ * @property string owner
+ * @property string type
+ * @property string country_name
+ * @property string link
+ * @property DateTime added_on_datetime
+ * @property DateTime updated_on_datetime
+ * @property int status
+ */
+class WaypointOC extends BaseWaypoint {
     protected $table = 'gk_waypoints_oc';
-    protected $ttl = GK_SITE_CACHE_TTL_WAYPOINT;
 
     protected $fieldConf = [
         'waypoint' => [
@@ -23,7 +31,7 @@ class Waypoint extends Base {
             'type' => Schema::DT_DOUBLE,
             'nullable' => true,
         ],
-        'alt' => [
+        'elevation' => [
             'type' => Schema::DT_INT2,
             'default' => '-32768',
             'nullable' => false,
@@ -78,20 +86,13 @@ class Waypoint extends Base {
         return self::get_date_object($value);
     }
 
-    public function get_lat($value): string {
-        return number_format(floatval($value), 5, '.', '');
-    }
-
-    public function get_lon($value): string {
-        return number_format(floatval($value), 5, '.', '');
-    }
-
     public function asArray(): array {
-        $response = [
+        // TODO make this an entity - see also WaypointGC
+        return [
             'waypoint' => $this->waypoint,
             'latitude' => $this->lat,
             'longitude' => $this->lon,
-            'altitude' => $this->alt,
+            'elevation' => $this->elevation,
             'country' => $this->country_name,
             'countryCode' => $this->country,
             'name' => $this->name,
@@ -100,7 +101,5 @@ class Waypoint extends Base {
             'typeName' => $this->type,
             'link' => $this->link,
         ];
-
-        return $response;
     }
 }
