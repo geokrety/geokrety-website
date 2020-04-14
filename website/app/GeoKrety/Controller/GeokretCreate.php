@@ -23,6 +23,7 @@ class GeokretCreate extends Base {
         $geokret->mission = $f3->get('POST.mission');
         $geokret->owner = $this->currentUser;
         $geokret->holder = $this->currentUser;
+        $geokret->touch('created_on_datetime');
 
         if ($geokret->validate()) {
             $geokret->save();
@@ -32,7 +33,7 @@ class GeokretCreate extends Base {
                 $move->geokret = $geokret;
                 $move->author = $f3->get('SESSION.CURRENT_USER');
                 $move->move_type = LogType::LOG_TYPE_DIPPED;
-                $move->moved_on_datetime = $geokret->created_on_datetime->format(GK_DB_DATETIME_FORMAT);
+                $move->touch('moved_on_datetime');
                 $move->lat = $this->currentUser->home_latitude;
                 $move->lon = $this->currentUser->home_longitude;
                 $move->comment = _('Born here');

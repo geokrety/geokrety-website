@@ -2,8 +2,19 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 
+/**
+ * @property int|null id
+ * @property string title
+ * @property string content
+ * @property string|null author_name
+ * @property int|User|null author
+ * @property int comments_count
+ * @property DateTime created_on_datetime
+ * @property DateTime|null last_commented_on_datetime
+ */
 class News extends Base {
     use \Validation\Traits\CortexTrait;
 
@@ -45,18 +56,19 @@ class News extends Base {
         'comments_count' => [
             'type' => Schema::DT_INT2,
             'nullable' => false,
+            'default' => 0,
         ],
     ];
 
-    public function get_created_on_datetime($value) {
+    public function get_created_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_last_commented_on_datetime($value) {
+    public function get_last_commented_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function isSubscribed() {
+    public function isSubscribed(): bool {
         // Note: Cache count() for 1 second
         return $this->has('subscriptions', ['news = ? AND author = ? AND subscribed = ?', $this->id, \Base::instance()->get('SESSION.CURRENT_USER'), '1'])->count(null, null, 1) === 1;
     }

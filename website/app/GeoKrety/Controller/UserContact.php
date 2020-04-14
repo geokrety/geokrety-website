@@ -18,7 +18,7 @@ class UserContact extends Base {
     public function _beforeRoute(\Base $f3) {
         $mail = new Mail();
         $this->mail = $mail;
-        $this->mail->from = $this->currentUser->id;
+        $this->mail->from_user = $this->currentUser->id;
         Smarty::assign('mail', $this->mail);
     }
 
@@ -27,7 +27,7 @@ class UserContact extends Base {
     }
 
     public function getPostRedirectUrl() {
-        return sprintf('@user_details(@userid=%d)', $this->mail->to->id);
+        return sprintf('@user_details(@userid=%d)', $this->mail->to_user->id);
     }
 
     public function loadToUser(\Base $f3) {
@@ -38,7 +38,7 @@ class UserContact extends Base {
             Smarty::render('dialog/alert_404.tpl');
             die();
         }
-        $this->mail->to = $user;
+        $this->mail->to_user = $user;
     }
 
     protected function _get(\Base $f3) {
@@ -85,7 +85,7 @@ class UserContact extends Base {
                 $smtp = new EmailUserContact();
                 $smtp->sendUserMessage($mail);
                 \Event::instance()->emit('contact.created', $mail);
-                \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to->username), 'success');
+                \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to_user->username), 'success');
             }
         }
 

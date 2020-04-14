@@ -2,10 +2,24 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 
+/**
+ * @property int|null id
+ * @property int|Geokret geokret
+ * @property string|null token
+ * @property DateTime generated_on_datetime
+ * @property DateTime|null claimed_on_datetime
+ * @property int|User|null user
+ * @property string|null validating_ip
+ * @property int used
+ */
 class OwnerCode extends Base {
     use \Validation\Traits\CortexTrait;
+
+    const TOKEN_UNUSED = 0;
+    const TOKEN_VALIDATED = 1;
 
     protected $db = 'DB';
     protected $table = 'gk_owner_codes';
@@ -14,29 +28,44 @@ class OwnerCode extends Base {
         'geokret' => [
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
         ],
-        'user' => [
-            'belongs-to-one' => '\GeoKrety\Model\User',
+        'token' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
         ],
         'generated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => true,
+            'nullable' => false,
+            'validate' => 'is_date',
         ],
         'claimed_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
         ],
-        'token' => [
+        'user' => [
+            'belongs-to-one' => '\GeoKrety\Model\User',
+            'nullable' => true,
+        ],
+        'validating_ip' => [
             'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+            'validate' => 'valid_ip',
+            'validate_depends' => [
+                'used' => ['validate', 'account_activation_require_validate'],
+            ],
+        ],
+        'used' => [
+            'type' => Schema::DT_INT1,
+            'default' => self::TOKEN_UNUSED,
             'nullable' => false,
         ],
     ];
 
-    public function get_generated_on_datetime($value) {
+    public function get_generated_on_datetime($value): DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_claimed_on_datetime($value) {
+    public function get_claimed_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 }

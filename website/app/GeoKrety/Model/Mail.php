@@ -2,8 +2,19 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 
+/**
+ * @property int|null id
+ * @property string token
+ * @property int|User|null from_user
+ * @property int|User|null to_user
+ * @property string subject
+ * @property string content
+ * @property DateTime sent_on_datetime
+ * @property string ip
+ */
 class Mail extends Base {
     use \Validation\Traits\CortexTrait;
 
@@ -14,12 +25,15 @@ class Mail extends Base {
         'token' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty',
+            'nullable' => true,
         ],
-        'from' => [
+        'from_user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
+            'nullable' => true,
         ],
-        'to' => [
+        'to_user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
+            'nullable' => true,
         ],
         'subject' => [
             'type' => Schema::DT_VARCHAR128,
@@ -32,7 +46,10 @@ class Mail extends Base {
             'validate' => 'not_empty',
         ],
         'sent_on_datetime' => [
-             'type' => Schema::DT_DATETIME,
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+            'validate' => 'is_date',
         ],
         'ip' => [
             'type' => Schema::DT_VARCHAR128,
@@ -40,7 +57,7 @@ class Mail extends Base {
         ],
     ];
 
-    public function get_sent_on_datetime($value) {
+    public function get_sent_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 

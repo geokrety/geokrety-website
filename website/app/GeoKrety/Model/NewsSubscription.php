@@ -2,33 +2,42 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 
+/**
+ * @property int|null id
+ * @property int|News news
+ * @property int|User author
+ * @property DateTime last_read_datetime
+ * @property bool subscribed
+ */
 class NewsSubscription extends Base {
     protected $db = 'DB';
     protected $table = 'gk_news_comments_access';
 
     protected $fieldConf = [
-        'last_read_datetime' => [
-             'type' => Schema::DT_DATETIME,
-        ],
         'author' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
+            'nullable' => false,
         ],
         'news' => [
             'belongs-to-one' => '\GeoKrety\Model\News',
+            'nullable' => false,
         ],
-        'last_post_datetime' => [
+        'last_read_datetime' => [
             'type' => Schema::DT_DATETIME,
-            'nullable' => true,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+            'validate' => 'is_date',
         ],
         'subscribed' => [
-            'type' => Schema::DT_VARCHAR128,
+            'type' => Schema::DT_BOOLEAN,
             'nullable' => false,
         ],
     ];
 
-    public function get_last_read_datetime($value) {
+    public function get_last_read_datetime($value): DateTime {
         return self::get_date_object($value);
     }
 }

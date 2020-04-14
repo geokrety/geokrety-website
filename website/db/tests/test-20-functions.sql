@@ -49,12 +49,12 @@ SELECT is(moves_type_waypoint(3::smallint, 'GC5BRQK'), TRUE, 'Check moves_type_w
 SELECT throws_ok($$SELECT moves_type_waypoint(4::smallint, 'GC5BRQK')$$);
 SELECT is(moves_type_waypoint(5::smallint, 'GC5BRQK'), TRUE, 'Check moves_type_waypoint(GC5BRQK)');
 
-SELECT throws_ok($$SELECT moves_type_waypoint(0::smallint, '')$$); --
+SELECT lives_ok($$SELECT moves_type_waypoint(0::smallint, '')$$); --
 SELECT throws_ok($$SELECT moves_type_waypoint(1::smallint, '')$$);
 SELECT throws_ok($$SELECT moves_type_waypoint(2::smallint, '')$$);
-SELECT throws_ok($$SELECT moves_type_waypoint(3::smallint, '')$$); --
+SELECT lives_ok($$SELECT moves_type_waypoint(3::smallint, '')$$); --
 SELECT throws_ok($$SELECT moves_type_waypoint(4::smallint, '')$$);
-SELECT throws_ok($$SELECT moves_type_waypoint(5::smallint, '')$$); --
+SELECT lives_ok($$SELECT moves_type_waypoint(5::smallint, '')$$); --
 
 SELECT is(moves_check_author_username(1::smallint, NULL), TRUE, 'Check moves_check_author_username(1, NULL)');
 SELECT is(moves_check_author_username(1::smallint, ''), FALSE, 'Check moves_check_author_username(1, EMPTY)');

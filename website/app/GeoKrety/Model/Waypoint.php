@@ -2,6 +2,7 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 
 class Waypoint extends Base {
@@ -51,31 +52,41 @@ class Waypoint extends Base {
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
         ],
-        'status' => [
-            'type' => Schema::DT_INT1,
-            'default' => '1',
+        'added_on_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
+            'validate' => 'is_date',
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
         ],
+        'status' => [
+            'type' => Schema::DT_INT1,
+            'default' => '1',
+            'nullable' => false,
+        ],
     ];
 
-    public function get_updated_on_datetime($value) {
+    public function get_added_on_datetime($value): DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_lat($value) {
+    public function get_updated_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function get_lat($value): string {
         return number_format(floatval($value), 5, '.', '');
     }
 
-    public function get_lon($value) {
+    public function get_lon($value): string {
         return number_format(floatval($value), 5, '.', '');
     }
 
-    public function asArray() {
+    public function asArray(): array {
         $response = [
             'waypoint' => $this->waypoint,
             'latitude' => $this->lat,

@@ -12,6 +12,10 @@ $validator->addValidator('not_empty', function ($field, $input, $param = null) {
     return \GeoKrety\Validation\Base::isNotEmpty($input[$field]);
 }, _('The {0} field cannot be empty'));
 
+$validator->addValidator('is_date', function ($field, $input, $param = null) {
+    return is_a($input[$field], 'DateTime');
+}, _('The {0} field must be a valid date time'));
+
 $validator->addValidator('geokrety_type', function ($field, $input, $param = null) {
     return \GeoKrety\GeokretyType::isValid($input[$field]->getTypeId());
 }, _('The GeoKret type is invalid'));

@@ -2,8 +2,10 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
+
 class Base extends \DB\Cortex {
-    protected function get_date_object($value) {
+    protected function get_date_object($value): ?DateTime {
         if (is_a($value, '\Datetime')) {
             return $value;
         }
@@ -12,8 +14,8 @@ class Base extends \DB\Cortex {
         }
 
         $response = null;
-        if (($response = \DateTime::createFromFormat(GK_DB_DATETIME_FORMAT, $value, new \DateTimeZone('UTC'))) === false) {
-            if (($response = \DateTime::createFromFormat(GK_DB_DATETIME_FORMAT_WITHOUT_TZ, $value, new \DateTimeZone('UTC'))) === false) {
+        if (($response = DateTime::createFromFormat(GK_DB_DATETIME_FORMAT, $value, new \DateTimeZone('UTC'))) === false) {
+            if (($response = DateTime::createFromFormat(GK_DB_DATETIME_FORMAT_WITHOUT_TZ, $value, new \DateTimeZone('UTC'))) === false) {
                 die("Invalid date format $value (".GK_DB_DATETIME_FORMAT.'/'.GK_DB_DATETIME_FORMAT_WITHOUT_TZ.')');
             }
         }
@@ -22,6 +24,6 @@ class Base extends \DB\Cortex {
     }
 
     public static function now() {
-        return (new \DateTime('now', new \DateTimeZone('UTC')))->format(GK_DB_DATETIME_FORMAT);
+        return (new DateTime('now', new \DateTimeZone('UTC')))->format(GK_DB_DATETIME_FORMAT);
     }
 }

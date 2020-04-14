@@ -11,8 +11,8 @@ class UserContact extends Base {
     }
 
     public function sendUserMessage(Mail $mail) {
-        $this->setSubject('💌 '.sprintf(_('Contact from user %s'), $mail->from->username));
-        $this->setTo($mail->to);
+        $this->setSubject('💌 '.sprintf(_('Contact from user %s'), $mail->from_user->username));
+        $this->setTo($mail->to_user);
 
         if (!$this->send(Smarty::fetch('email-user-contact.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending mail.'), 'danger');

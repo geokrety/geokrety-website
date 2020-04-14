@@ -37,7 +37,7 @@ class Coordinates {
         return $this->errors;
     }
 
-    public function getCoordinates() {
+    public function getCoordinates(): array {
         return [
             'lat' => $this->getLat(),
             'lon' => $this->getLon(),
@@ -45,11 +45,11 @@ class Coordinates {
         ];
     }
 
-    public function getLat() {
+    public function getLat(): float {
         return number_format(floatval($this->lat), 5, '.', '');
     }
 
-    public function getLon() {
+    public function getLon(): float {
         return number_format(floatval($this->lon), 5, '.', '');
     }
 }

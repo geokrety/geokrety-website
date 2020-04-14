@@ -94,6 +94,12 @@ ELSIF "used" = 2 AND updating_ip IS NULL AND used_on_datetime IS NULL AND revert
 	RETURN TRUE;
 ELSIF "used" = 3 AND updating_ip IS NULL AND used_on_datetime IS NULL AND reverting_ip IS NULL AND reverted_on_datetime IS NULL THEN
 	RETURN TRUE;
+ELSIF "used" = 4 AND updating_ip IS NULL AND used_on_datetime IS NULL AND reverting_ip IS NULL AND reverted_on_datetime IS NULL THEN
+	RETURN TRUE;
+ELSIF "used" = 5 AND updating_ip IS NOT NULL AND used_on_datetime IS NOT NULL AND reverting_ip IS NOT NULL AND reverted_on_datetime IS NOT NULL THEN
+	RETURN TRUE;
+ELSIF "used" = 6 AND updating_ip IS NOT NULL AND used_on_datetime IS NOT NULL AND reverting_ip IS NOT NULL AND reverted_on_datetime IS NOT NULL THEN
+	RETURN TRUE;
 END IF;
 
 RETURN FALSE;
@@ -231,6 +237,31 @@ END;$$;
 
 
 ALTER FUNCTION geokrety.geokret_compute_total_distance(geokret_id bigint) OWNER TO geokrety;
+
+--
+-- Name: geokret_compute_total_places_visited(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.geokret_compute_total_places_visited(geokret_id bigint) RETURNS bigint
+    LANGUAGE plpgsql
+    AS $$DECLARE
+total integer;
+BEGIN
+
+SELECT COALESCE(COUNT(DISTINCT(distance)), 0)
+FROM gk_moves
+WHERE geokret = geokret_id
+INTO total;
+
+UPDATE gk_geokrety
+SET caches_count = total
+WHERE gk_geokrety.id = geokret_id;
+
+RETURN total;
+END;$$;
+
+
+ALTER FUNCTION geokrety.geokret_compute_total_places_visited(geokret_id bigint) OWNER TO geokrety;
 
 --
 -- Name: geokret_gkid(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
@@ -653,11 +684,14 @@ IF (TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN
 	IF (OLD.geokret != NEW.geokret) THEN
 		-- Updating old position
 		PERFORM update_next_move_distance(OLD.geokret, OLD.id, true);
+		PERFORM geokret_compute_total_places_visited(OLD.geokret);
+		PERFORM geokret_compute_total_distance(OLD.geokret);
 	END IF;
 	PERFORM update_next_move_distance(NEW.geokret, NEW.id);
 END IF;
 
 PERFORM geokret_compute_total_distance(NEW.geokret);
+PERFORM geokret_compute_total_places_visited(NEW.geokret);
 
 RETURN NEW;
 END;$$;
@@ -900,8 +934,6 @@ CREATE FUNCTION geokrety.moves_type_waypoint(move_type smallint, waypoint charac
 
 IF NOT(move_type = ANY (geokrety.move_requiring_coordinates())) AND waypoint IS NOT NULL THEN
 	RAISE 'waypoint must be null when move_type is %', "move_type";
-ELSIF waypoint = '' THEN
-	RAISE 'waypoint can never be empty';
 END IF;
 
 RETURN TRUE;
@@ -1504,6 +1536,7 @@ CREATE TABLE geokrety.gk_account_activation (
     requesting_ip inet NOT NULL,
     validating_ip inet,
     used smallint DEFAULT '0'::smallint NOT NULL,
+    updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT check_validating_ip CHECK (geokrety.account_activation_check_validating_ip(validating_ip, used)),
     CONSTRAINT validate_used CHECK ((used = ANY (ARRAY[0, 1, 2])))
 );
@@ -1909,7 +1942,7 @@ ALTER TABLE geokrety.gk_news OWNER TO geokrety;
 CREATE TABLE geokrety.gk_news_comments (
     id bigint NOT NULL,
     news bigint NOT NULL,
-    author bigint NOT NULL,
+    author bigint,
     content character varying(1000) NOT NULL,
     created_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP
@@ -3713,6 +3746,13 @@ CREATE TRIGGER manage_secid BEFORE INSERT OR UPDATE OF secid ON geokrety.gk_user
 --
 
 CREATE TRIGGER update_news AFTER INSERT OR DELETE OR UPDATE OF news ON geokrety.gk_news_comments FOR EACH ROW EXECUTE FUNCTION geokrety.news_comments_count_on_news_update();
+
+
+--
+-- Name: gk_account_activation updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_account_activation FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
 
 
 --

@@ -10,9 +10,9 @@ subject: '{$subject}'
 
             <h1 class="text-center">{t}Contact from a GeoKrety.org user{/t} 💌</h1>
 
-            <p>{t username=$mail->to->username}Hi %1,{/t}</p>
+            <p>{t username=$mail->to_user->username}Hi %1,{/t}</p>
 
-            <p>{t escape=no username=$mail->from->username url={'user_details'|alias:sprintf('@userid=%d', $mail->from->id)}}This email was sent by user <a href="%2">%1</a>.{/t}</p>
+            <p>{t escape=no username=$mail->from_user->username url={'user_details'|alias:sprintf('@userid=%d', $mail->from_user->id)}}This email was sent by user <a href="%2">%1</a>.{/t}</p>
 
             <p>
                 {t email=GK_SITE_EMAIL}If you suspect an abuse, please let us know: %1{/t}<br />
@@ -26,7 +26,7 @@ subject: '{$subject}'
             {$mail->content|markdown nofilter}
             <hr />
 
-            <button class="large expand" href="{'mail_to_user'|alias:sprintf('@userid=%d', $mail->from->id)}">{t escape=no username=$mail->from->username}Reply to %1{/t}</button>
+            <button class="large expand" href="{'mail_to_user'|alias:sprintf('@userid=%d', $mail->from_user->id)}">{t escape=no username=$mail->from_user->username}Reply to %1{/t}</button>
 
             {{> signature}}
             <hr />

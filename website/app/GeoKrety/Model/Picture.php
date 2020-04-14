@@ -2,11 +2,27 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\PictureType;
 use GeoKrety\Service\S3Client;
 use function Sentry\captureMessage;
 
+/**
+ * @property int|null id
+ * @property int|User|null author
+ * @property string|null bucket
+ * @property string|null key
+ * @property int|Move|null move
+ * @property int|Geokret|null geokret
+ * @property int|User|null user
+ * @property string|null filename
+ * @property string|null caption
+ * @property DateTime created_on_datetime
+ * @property DateTime|null used_on_datetime
+ * @property DateTime|null uploaded_on_datetime
+ * @property int type
+ */
 class Picture extends Base {
     use \Validation\Traits\CortexTrait;
 
@@ -16,43 +32,17 @@ class Picture extends Base {
     protected $fieldConf = [
         'author' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
-            'nullable' => false,
+            'nullable' => true,
         ],
         'bucket' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty',
-            'nullable' => false,
+            'nullable' => true,
         ],
         'key' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'not_empty',
-            'nullable' => false,
-        ],
-        'created_on_datetime' => [
-            'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-        ],
-        'updated_on_datetime' => [
-            'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => false,
-        ],
-        'uploaded_on_datetime' => [
-            'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => true,
-        ],
-        'caption' => [
-            'type' => Schema::DT_VARCHAR128,
-            'nullable' => true,
-            'validate' => 'max_len,'.GK_PICTURE_CAPTION_MAX_LENGTH,
-            'filter' => 'trim|HTMLPurifier',
-        ],
-        'type' => [
-            'type' => Schema::DT_TINYINT,
-            'validate' => 'picture_type',
-            'nullable' => false,
         ],
         'move' => [
             'belongs-to-one' => '\GeoKrety\Model\Move',
@@ -66,11 +56,38 @@ class Picture extends Base {
             'belongs-to-one' => '\GeoKrety\Model\User',
             'nullable' => true,
         ],
-        // Legacy filename, TODO need migration to S3
         'filename' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
             'filter' => 'trim|HTMLPurifier',
+        ],
+        'caption' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+            'validate' => 'max_len,'.GK_PICTURE_CAPTION_MAX_LENGTH,
+            'filter' => 'trim|HTMLPurifier',
+        ],
+        'created_on_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+            'validate' => 'is_date',
+        ],
+        'updated_on_datetime' => [
+            'type' => Schema::DT_DATETIME,
+//            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
+            'validate' => 'is_date',
+        ],
+        'uploaded_on_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'nullable' => false,
+            'validate' => 'is_date',
+        ],
+        'type' => [
+            'type' => Schema::DT_TINYINT,
+            'validate' => 'picture_type',
+            'nullable' => false,
         ],
     ];
 
@@ -97,19 +114,23 @@ class Picture extends Base {
         return null;
     }
 
-    public function set_geokret($value) {
+    public function set_geokret($value): int {
         return Geokret::gkid2id($value);
     }
 
-    public function get_type($value) {
+    public function get_type($value): PictureType {
         return new \GeoKrety\PictureType($value);
     }
 
-    public function get_updated_on_datetime($value) {
+    public function get_created_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_uploaded_on_datetime($value) {
+    public function get_updated_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function get_uploaded_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 

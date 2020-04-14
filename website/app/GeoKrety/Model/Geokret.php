@@ -2,10 +2,30 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\GeokretyType;
 use GeoKrety\LogType;
 
+/**
+ * @property int|null id
+ * @property string gkid
+ * @property string tracking_code
+ * @property string name
+ * @property string|null mission
+ * @property int|User|null owner
+ * @property int distance
+ * @property int caches_count
+ * @property int pictures_count
+ * @property int|Move|null last_position
+ * @property int|Move|null last_log
+ * @property int|User|null holder
+ * @property int|Picture|null avatar
+ * @property DateTime created_on_datetime
+ * @property DateTime updated_on_datetime
+ * @property bool missing
+ * @property int type
+ */
 class Geokret extends Base {
     use \Validation\Traits\CortexTrait;
 
@@ -16,6 +36,11 @@ class Geokret extends Base {
         'gkid' => [
             'type' => Schema::DT_INT4,
         ],
+        'tracking_code' => [
+            'type' => Schema::DT_VARCHAR128,
+            // 'validate' => 'required',
+            'nullable' => true,
+        ],
         'name' => [
             'type' => Schema::DT_VARCHAR128,
             'filter' => 'trim|HTMLPurifier',
@@ -24,21 +49,27 @@ class Geokret extends Base {
         'type' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'geokrety_type',
-            'index' => true,
-        ],
-        'tracking_code' => [
-            'type' => Schema::DT_VARCHAR128,
-            // 'validate' => 'required',
-            'index' => true,
-            'unique' => true,
         ],
         'mission' => [
             'type' => Schema::DT_TEXT,
             'filter' => 'HTMLPurifier',
+            'nullable' => true,
+        ],
+        'distance' => [
+            'type' => Schema::DT_BIGINT,
+            'default' => 0,
+        ],
+        'caches_count' => [
+            'type' => Schema::DT_INT,
+            'default' => 0,
         ],
         'pictures_count' => [
             'type' => Schema::DT_TINYINT,
             'default' => 0,
+        ],
+        'missing' => [
+            'type' => Schema::DT_BOOLEAN,
+            'default' => false,
         ],
         'owner' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
@@ -72,23 +103,17 @@ class Geokret extends Base {
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
+            'validate' => 'is_date',
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => false,
+//            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
+            'validate' => 'is_date',
         ],
     ];
 
-    // public function set_name($value) {
-    //     return HTMLPurifier::getPurifier()->purify($value);
-    // }
-    //
-    // public function set_mission($value) {
-    //     return HTMLPurifier::getPurifier()->purify($value);
-    // }
-
-    public static function gkid2id($gkid) {
+    public static function gkid2id($gkid): int {
         if (\is_int($gkid)) {
             return $gkid;
         }
@@ -102,47 +127,47 @@ class Geokret extends Base {
         return null;
     }
 
-    public function gkid() {
+    public function gkid(): string {
         return hexdec(substr($this->gkid, 2));
     }
 
-    public function get_gkid($value) {
+    public function get_gkid($value): string {
         return sprintf('GK%04X', $value);
     }
 
-    public function get_name($value) {
+    public function get_name($value): string {
         return html_entity_decode($value);
     }
 
-    public function get_tracking_code($value) {
+    public function get_tracking_code($value): string {
         return strtoupper($value);
     }
 
-    public function get_type($value) {
+    public function get_type($value): GeokretyType {
         return new \GeoKrety\GeokretyType($value);
     }
 
-    public function get_created_on_datetime($value) {
+    public function get_created_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value) {
+    public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function isOwner() {
+    public function isOwner(): bool {
         $f3 = \Base::instance();
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->owner) && $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
     }
 
-    public function isHolder() {
+    public function isHolder(): bool {
         $f3 = \Base::instance();
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->holder) && $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
     }
 
-    public function hasTouchedInThePast() {
+    public function hasTouchedInThePast(): bool {
         $f3 = \Base::instance();
         if (!$f3->get('SESSION.CURRENT_USER')) {
             return false;
@@ -157,7 +182,7 @@ class Geokret extends Base {
         return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED]) > 0;
     }
 
-    public static function generate() {
+    public static function generate(): void {
         $faker = \Faker\Factory::create();
 
         $userCount = \Base::instance()->get('DB')->exec('SELECT COUNT(*) AS count FROM gk_users')[0]['count'];

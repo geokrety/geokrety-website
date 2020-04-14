@@ -2,8 +2,20 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 
+/**
+ * @property int|null id
+ * @property string|null token
+ * @property int|User user
+ * @property DateTime created_on_datetime
+ * @property DateTime|null used_on_datetime
+ * @property DateTime|null updated_on_datetime
+ * @property string requesting_ip
+ * @property int used
+ * @property string|null validating_ip
+ */
 class PasswordToken extends Base {
     use \Validation\Traits\CortexTrait;
 
@@ -23,45 +35,51 @@ class PasswordToken extends Base {
             'belongs-to-one' => '\GeoKrety\Model\User',
             'validate' => 'required',
         ],
-        'used' => [
-            'type' => Schema::DT_INT1,
-            'default' => self::TOKEN_UNUSED,
-            'nullable' => false,
-        ],
         'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => true,
+            'nullable' => false,
+            'validate' => 'is_date',
         ],
         'used_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
+            'validate' => 'is_date',
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
+//            'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-            // ON UPDATE CURRENT_TIMESTAMP
+            'validate' => 'is_date',
         ],
         'requesting_ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => false,
         ],
+        'used' => [
+            'type' => Schema::DT_INT1,
+            'default' => self::TOKEN_UNUSED,
+            'nullable' => false,
+        ],
+        'validating_ip' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+        ],
     ];
 
-    public function get_created_on_datetime($value) {
+    public function get_created_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_used_on_datetime($value) {
+    public function get_used_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value) {
+    public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function isExpired() {
+    public function isExpired(): bool {
         return $this->created_on_datetime->add(new \DateInterval('P'.GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY.'D')) > new \DateTime();
     }
 

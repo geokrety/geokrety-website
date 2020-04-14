@@ -2,8 +2,25 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
 
+/**
+ * @property int|null id
+ * @property string token
+ * @property string revert_token
+ * @property int|User user
+ * @property string previous_email
+ * @property string email
+ * @property DateTime created_on_datetime
+ * @property DateTime updated_on_datetime
+ * @property DateTime|null used_on_datetime
+ * @property DateTime|null reverted_on_datetime
+ * @property string requesting_ip
+ * @property string|null updating_ip
+ * @property string|null reverting_ip
+ * @property int used
+ */
 class EmailActivationToken extends Base {
     use \Validation\Traits\CortexTrait;
 
@@ -60,30 +77,34 @@ class EmailActivationToken extends Base {
         'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => true,
+            'nullable' => false,
+            'validate' => 'is_date',
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
+//            'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
-            // ON UPDATE CURRENT_TIMESTAMP
+            'validate' => 'is_date',
         ],
         'used_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
+            'validate' => 'is_date',
         ],
         'reverted_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
+            'validate' => 'is_date',
         ],
         'requesting_ip' => [
             'type' => Schema::DT_VARCHAR128,
-            'nullable' => true,
+            'nullable' => false,
+            'validate' => 'valid_ip',
         ],
         'updating_ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-            'validate' => 'required',
+            'validate' => 'valid_ip',
             'validate_depends' => [
                 'used' => ['validate', 'email_activation_require_update'],
             ],
@@ -91,22 +112,30 @@ class EmailActivationToken extends Base {
         'reverting_ip' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-            'validate' => 'required',
+            'validate' => 'valid_ip',
             'validate_depends' => [
                 'used' => ['validate', 'email_activation_require_revert'],
             ],
         ],
     ];
 
-    public function get_created_on_datetime($value) {
+    public function get_created_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value) {
+    public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public static function expireOldTokens() {
+    public function get_used_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function get_reverted_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
+    public static function expireOldTokens(): void { // TODO: move this to plpgsql
         $activation = new EmailActivationToken();
         $expiredTokens = $activation->find([
             'used = ? AND (created_on_datetime > NOW() - cast(? as interval) OR used_on_datetime > NOW() - cast(? as interval))',
@@ -123,7 +152,7 @@ class EmailActivationToken extends Base {
         }
     }
 
-    public static function disableOtherTokensForUser(User $user, $except = null) {
+    public static function disableOtherTokensForUser(User $user, $except = null): void { // TODO: move this to plpgsql
         $activation = new EmailActivationToken();
         $otherTokens = $activation->find(['user = ? AND used = ?', $user->id, self::TOKEN_UNUSED]);
         if ($otherTokens === false) {
@@ -150,13 +179,13 @@ class EmailActivationToken extends Base {
         // $this->beforeupdate(function ($self) {
         // });
 
-        $this->virtual('update_expire_on_datetime', function ($self) {
+        $this->virtual('update_expire_on_datetime', function ($self): \DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY)));
         });
 
-        $this->virtual('revert_expire_on_datetime', function ($self) {
+        $this->virtual('revert_expire_on_datetime', function ($self): \DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY)));

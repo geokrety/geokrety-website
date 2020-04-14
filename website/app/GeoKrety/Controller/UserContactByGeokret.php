@@ -33,6 +33,6 @@ class UserContactByGeokret extends UserContact {
             die();
         }
         $this->geokret = $geokret;
-        $this->mail->to = $geokret->owner;
+        $this->mail->to_user = $geokret->owner;
     }
 }

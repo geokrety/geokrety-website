@@ -2,9 +2,33 @@
 
 namespace GeoKrety\Model;
 
+use DateTime;
 use DB\SQL\Schema;
+use GeoKrety\LogType;
 use GeoKrety\Service\HTMLPurifier;
 
+/**
+ * @property int|null id
+ * @property int|Geokret geokret
+ * @property float|null lat
+ * @property float|null lon
+ * @property int|null elevation
+ * @property string|null country
+ * @property int|null distance
+ * @property string|null waypoint
+ * @property int|User|null author
+ * @property string|null comment
+ * @property int pictures_count
+ * @property int comments_count
+ * @property string|null username
+ * @property string|null app
+ * @property string|null app_ver
+ * @property DateTime created_on_datetime
+ * @property DateTime moved_on_datetime
+ * @property DateTime updated_on_datetime
+ * @property int move_type
+ * @property string|null position
+ */
 class Move extends Base {
     use \Validation\Traits\CortexTrait;
 
@@ -12,24 +36,9 @@ class Move extends Base {
     protected $table = 'gk_moves';
 
     protected $fieldConf = [
-        'author' => [
-            'belongs-to-one' => '\GeoKrety\Model\User',
-            'nullable' => true,
-        ],
         'geokret' => [
             'belongs-to-one' => '\GeoKrety\Model\Geokret',
             'nullable' => false,
-        ],
-        'move_type' => [
-            'type' => Schema::DT_VARCHAR128,
-            'nullable' => true,
-            'validate' => 'log_type',
-        ],
-        'username' => [
-            'type' => Schema::DT_VARCHAR128,
-            'nullable' => true,
-            'validate' => 'anonymous_only_required|min_len,'.GK_USERNAME_MIN_LENGTH.'|max_len,'.GK_USERNAME_MAX_LENGTH,
-            'filter' => 'trim|HTMLPurifier|EmptyString2Null',
         ],
         'lat' => [
             'type' => Schema::DT_DOUBLE,
@@ -42,7 +51,7 @@ class Move extends Base {
             'validate' => 'float|logtype_require_coordinates',
         ],
         'alt' => [
-            'type' => Schema::DT_INT2,
+            'type' => Schema::DT_INT,
             'nullable' => true,
             'default' => '-32768',
         ],
@@ -51,7 +60,7 @@ class Move extends Base {
             'nullable' => true,
         ],
         'distance' => [
-            'type' => Schema::DT_INT4,
+            'type' => Schema::DT_INT,
             'nullable' => true,
         ],
         'waypoint' => [
@@ -59,23 +68,34 @@ class Move extends Base {
             'nullable' => true,
             'filter' => 'trim|HTMLPurifier',
         ],
+        'author' => [
+            'belongs-to-one' => '\GeoKrety\Model\User',
+            'nullable' => true,
+        ],
         'comment' => [
             'type' => Schema::DT_TEXT,
             'filter' => 'HTMLPurifier',
+            'nullable' => true,
         ],
         'comments' => [
             'has-many' => ['\GeoKrety\Model\MoveComment', 'move'],
         ],
         'pictures_count' => [
-            'type' => Schema::DT_TINYINT,
+            'type' => Schema::DT_SMALLINT,
             'default' => 0,
         ],
         'pictures' => [
             'has-many' => ['\GeoKrety\Model\Picture', 'move'],
         ],
         'comments_count' => [
-            'type' => Schema::DT_INT2,
+            'type' => Schema::DT_INT,
+            'default' => 0,
+        ],
+        'username' => [
+            'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
+            'validate' => 'anonymous_only_required|min_len,'.GK_USERNAME_MIN_LENGTH.'|max_len,'.GK_USERNAME_MAX_LENGTH,
+            'filter' => 'trim|HTMLPurifier|EmptyString2Null',
         ],
         'app' => [
             'type' => Schema::DT_VARCHAR128,
@@ -93,24 +113,31 @@ class Move extends Base {
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
+            'validate' => 'is_date',
         ],
         'moved_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'nullable' => false,
-            'validate' => 'required|not_in_the_future|after_geokret_birth|move_not_same_datetime',
+            'validate' => 'required|is_date|not_in_the_future|after_geokret_birth|move_not_same_datetime',
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => false,
+//            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => true,
+            'validate' => 'is_date',
+        ],
+        'move_type' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+            'validate' => 'log_type',
         ],
     ];
 
-    public function set_comment($value) {
+    public function set_comment($value): string {
         return HTMLPurifier::getPurifier()->purify($value);
     }
 
-    public function get_move_type($value) {
+    public function get_move_type($value): LogType {
         return new \GeoKrety\LogType($value);
     }
 
@@ -122,15 +149,15 @@ class Move extends Base {
         return $value ? number_format(floatval($value), 5, '.', '') : $value;
     }
 
-    public function get_coordinates($value) {
+    public function get_coordinates($value): string {
         if (is_null($this->lat) || is_null($this->lon)) {
-            return;
+            return '';
         }
 
         return sprintf('%.04f %.04f', $this->lat, $this->lon);
     }
 
-    public function get_point() {
+    public function get_point(): array {
         if (is_null($this->lat) || is_null($this->lon)) {
             return [];
         }
@@ -138,25 +165,25 @@ class Move extends Base {
         return [$this->lat, $this->lon];
     }
 
-    public function get_created_on_datetime($value) {
+    public function get_created_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_moved_on_datetime($value) {
+    public function get_moved_on_datetime($value): ?DateTime {
         return is_null($value) ? null : self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value) {
+    public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function isAuthor() {
+    public function isAuthor(): bool {
         $f3 = \Base::instance();
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
 
-    public function getMoveOnPage() {
+    public function getMoveOnPage(): int {
         $page = \Base::instance()->get('DB')->exec(
             'SELECT moves_get_on_page(?, ?, ?) AS page',
             [

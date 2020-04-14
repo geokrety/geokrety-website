@@ -47,6 +47,7 @@ class UserEmailChangeRevertToken extends Base {
             die();
         }
 
+        $this->token->touch('reverted_on_datetime');
         $this->token->reverting_ip = \Base::instance()->get('IP');
         if (!$this->token->validate()) {
             $this->get($f3);
@@ -67,7 +68,7 @@ class UserEmailChangeRevertToken extends Base {
 
         // Notifications
         if ($f3->get('POST.validate') === 'true') {
-            Flash::instance()->addMessage(_('Perfect! Enjoy your new email address. (This token is now revoked)'), 'success');
+            Flash::instance()->addMessage(_('Perfect! Enjoy your new email address.'), 'success');
         } else {
             $smtp = new EmailChange();
             $smtp->sendEmailRevertedNotification($this->token->user);
@@ -86,7 +87,6 @@ class UserEmailChangeRevertToken extends Base {
     public function refuse(\Base $f3) {
         // Mark token as used
         $this->token->used = EmailActivationToken::TOKEN_REVERTED;
-        $this->token->touch('reverted_on_datetime');
         $this->token->user->email = $this->token->previous_email;
 
         if (!$this->token->user->validate()) {
