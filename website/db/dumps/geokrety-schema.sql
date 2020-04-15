@@ -773,44 +773,42 @@ ALTER FUNCTION geokrety.moves_get_on_page(move_id bigint, per_page bigint, geokr
 CREATE FUNCTION geokrety.moves_gis_updates() RETURNS trigger
     LANGUAGE plpgsql
     AS $$DECLARE
-position public.geography;
-positions RECORD;
+_position public.geography;
+_positions RECORD;
 country	varchar(2);
 elevation integer;
 BEGIN
 
 -- Synchronize lat/lon - position
 IF (OLD.lat IS DISTINCT FROM NEW.lat OR OLD.lon IS DISTINCT FROM NEW.lon) THEN
-	SELECT * FROM coords2position(NEW.lat, NEW.lon) INTO position;
-	NEW.position := position;
+	SELECT * FROM coords2position(NEW.lat, NEW.lon) INTO _position;
+	NEW.position := _position;
 ELSIF (OLD.position IS DISTINCT FROM NEW.position) THEN
-	SELECT * FROM position2coords(NEW.position) INTO positions;
-	NEW.lat := positions.lat;
-	NEW.lon := positions.lon;
+	SELECT * FROM position2coords(NEW.position) INTO _positions;
+	NEW.lat := _positions.lat;
+	NEW.lon := _positions.lon;
+END IF;
+
+IF (NEW.position IS NULL) THEN
+	NEW.country := NULL;
+	NEW.elevation := NULL;
+	RETURN NEW;
 END IF;
 
 -- Find country / elevation
-IF (TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN
-	IF (NEW.position IS NULL) THEN
-		NEW.country := NULL;
-		NEW.elevation := NULL;
-		RETURN NEW;
-	END IF;
-	
-	IF (OLD.position IS DISTINCT FROM NEW.position) THEN
-		SELECT iso_a2
-		FROM public.countries
-		WHERE public.ST_Intersects(geom, NEW.position::public.geometry)
-		INTO country;
+IF (OLD.position IS DISTINCT FROM NEW.position) THEN
+	SELECT iso_a2
+	FROM public.countries
+	WHERE public.ST_Intersects(geog, NEW.position::public.geography)
+	INTO country;
 
-		SELECT public.ST_Value(rast, NEW.position::public.geometry) As elevation
-		FROM public.srtm
-		WHERE public.ST_Intersects(rast, NEW.position::public.geometry)
-		INTO elevation;
+	SELECT public.ST_Value(rast, NEW.position::public.geometry) As elevation
+	FROM public.srtm
+	WHERE public.ST_Intersects(rast, NEW.position::public.geometry)
+	INTO elevation;
 
-		NEW.country := LOWER(country);
-		NEW.elevation := elevation;
-	END IF;
+	NEW.country := LOWER(country);
+	NEW.elevation := elevation;
 END IF;
 
 RETURN NEW;
@@ -3012,6 +3010,14 @@ ALTER TABLE ONLY geokrety.gk_waypoints_gc
 
 
 --
+-- Name: gk_waypoints_gc gk_waypoints_gc_position; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE ONLY geokrety.gk_waypoints_gc
+    ADD CONSTRAINT gk_waypoints_gc_position UNIQUE ("position");
+
+
+--
 -- Name: gk_waypoints_gc gk_waypoints_gc_waypoint; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3656,6 +3662,13 @@ CREATE TRIGGER before_10_manage_gkid BEFORE INSERT OR UPDATE OF gkid ON geokrety
 
 
 --
+-- Name: gk_waypoints_gc before_10_manage_position; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_manage_position BEFORE INSERT OR UPDATE OF "position", lat, lon ON geokrety.gk_waypoints_gc FOR EACH ROW EXECUTE FUNCTION geokrety.moves_gis_updates();
+
+
+--
 -- Name: gk_account_activation before_10_manage_token; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
@@ -3722,7 +3735,7 @@ CREATE TRIGGER before_20_check_move_type_and_missing BEFORE INSERT OR UPDATE OF 
 -- Name: gk_moves before_20_gis_updates; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
-CREATE TRIGGER before_20_gis_updates BEFORE INSERT OR UPDATE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_gis_updates();
+CREATE TRIGGER before_20_gis_updates BEFORE INSERT OR UPDATE OF lat, lon, "position" ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_gis_updates();
 
 
 --
