@@ -44,7 +44,7 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
                 <!-- TODO: link to another item. GK/User/Move… -->
             </p>
         </figcaption>
-        {if $showActionsButtons && ($picture->isAuthor() || $allowSetAsMainAvatar && $picture->hasPermissionOnParent() && !$picture->isMainAvatar())}
+        {if $showActionsButtons && ($picture->isAuthor() || $allowSetAsMainAvatar && $picture->hasPermissionOnParent() && !$picture->isMainAvatar()) && $picture->key}
             <div class="pull-right">
                 <div class="pictures-actions pictures-actions-pull">
                     <div class="btn-group pictures-actions-buttons" role="group">
