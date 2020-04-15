@@ -1074,7 +1074,7 @@ IF NEW.token IS NOT NULL THEN
 	RETURN NEW;
 END IF;
 
-NEW.token = generate_adoption_token(5);
+NEW.token = generate_adoption_token(6);
 
 RETURN NEW;
 END;$$;
@@ -1998,7 +1998,7 @@ CREATE TABLE geokrety.gk_owner_codes (
     token character varying(20),
     generated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     claimed_on_datetime timestamp(0) with time zone,
-    "user" bigint,
+    adopter bigint,
     validating_ip inet,
     used smallint DEFAULT '0'::smallint NOT NULL
 );
@@ -2942,7 +2942,7 @@ ALTER TABLE ONLY geokrety.scripts ALTER COLUMN id SET DEFAULT nextval('geokrety.
 --
 
 ALTER TABLE geokrety.gk_owner_codes
-    ADD CONSTRAINT check_validating_ip CHECK (geokrety.owner_code_check_validating_ip(validating_ip, used, claimed_on_datetime, "user")) NOT VALID;
+    ADD CONSTRAINT check_validating_ip CHECK (geokrety.owner_code_check_validating_ip(validating_ip, used, claimed_on_datetime, adopter)) NOT VALID;
 
 
 --
@@ -3476,7 +3476,7 @@ CREATE INDEX idx_21085_kret_id ON geokrety.gk_owner_codes USING btree (geokret);
 -- Name: idx_21085_user; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
-CREATE INDEX idx_21085_user ON geokrety.gk_owner_codes USING btree ("user");
+CREATE INDEX idx_21085_user ON geokrety.gk_owner_codes USING btree (adopter);
 
 
 --
@@ -4067,7 +4067,7 @@ ALTER TABLE ONLY geokrety.gk_owner_codes
 --
 
 ALTER TABLE ONLY geokrety.gk_owner_codes
-    ADD CONSTRAINT gk_owner_codes_user_fkey FOREIGN KEY ("user") REFERENCES geokrety.gk_users(id) ON DELETE SET NULL;
+    ADD CONSTRAINT gk_owner_codes_user_fkey FOREIGN KEY (adopter) REFERENCES geokrety.gk_users(id) ON DELETE SET NULL;
 
 
 --

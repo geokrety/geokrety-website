@@ -1,5 +1,5 @@
 {if $geokret->owner_codes}
-<div class="alert alert-info alert-dismissible" role="alert">
+<div class="alert alert-info" role="alert">
   {if $geokret->isOwner()}
   {t escape=no token=$geokret->owner_codes.0->token tracking_code=$geokret->tracking_code}You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret.{/t}
   {else if $f3->get('SESSION.CURRENT_USER')}

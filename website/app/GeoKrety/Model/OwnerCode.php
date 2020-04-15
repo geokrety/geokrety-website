@@ -4,6 +4,7 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
+use JsonSerializable;
 
 /**
  * @property int|null id
@@ -11,11 +12,11 @@ use DB\SQL\Schema;
  * @property string|null token
  * @property DateTime generated_on_datetime
  * @property DateTime|null claimed_on_datetime
- * @property int|User|null user
+ * @property int|User|null adopter
  * @property string|null validating_ip
  * @property int used
  */
-class OwnerCode extends Base {
+class OwnerCode extends Base implements JsonSerializable {
     use \Validation\Traits\CortexTrait;
 
     const TOKEN_UNUSED = 0;
@@ -43,7 +44,7 @@ class OwnerCode extends Base {
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
         ],
-        'user' => [
+        'adopter' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
             'nullable' => true,
         ],
@@ -68,5 +69,23 @@ class OwnerCode extends Base {
 
     public function get_claimed_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
+    }
+
+    public function jsonSerialize() {
+        return [
+            'geokret' => [
+                'id' => $this->geokret->id,
+                'gkid' => $this->geokret->gkid(),
+            ],
+            'token' => $this->token,
+            'generated_on_datetime' => $this->generated_on_datetime,
+            'claimed_on_datetime' => $this->claimed_on_datetime,
+            'adopter' => is_null($this->adopter) ? null : [
+                $this->adopter->id,
+                $this->adopter->username,
+            ],
+            'validating_ip' => $this->validating_ip,
+            'used' => $this->used,
+        ];
     }
 }

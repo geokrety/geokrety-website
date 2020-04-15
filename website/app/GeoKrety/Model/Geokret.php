@@ -113,7 +113,7 @@ class Geokret extends Base {
         ],
     ];
 
-    public static function gkid2id($gkid): int {
+    public static function gkid2id($gkid): ?int {
         if (\is_int($gkid)) {
             return $gkid;
         }

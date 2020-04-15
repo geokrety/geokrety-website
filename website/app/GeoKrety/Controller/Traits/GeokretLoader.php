@@ -18,7 +18,7 @@ trait GeokretLoader {
 
         $geokret = new Geokret();
         $this->geokret = $geokret;
-        $this->geokret->filter('owner_codes', ['user = ?', null]);
+        $this->geokret->filter('owner_codes', ['adopter = ?', null]);
         $this->geokret->filter('avatars', ['uploaded_on_datetime != ?', null]);
         $this->filterHook();
         $geokret->load(['gkid = ?', $gkid]);
