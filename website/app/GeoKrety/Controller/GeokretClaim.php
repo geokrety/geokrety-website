@@ -17,13 +17,19 @@ class GeokretClaim extends Base {
         $ownerCode->has('geokret', ['tracking_code = ?', $f3->get('POST.tc')]);
         $ownerCode->load(['token = ?', $f3->get('POST.oc')]);
 
+        if ($ownerCode->geokret->isOwner()) {
+            \Flash::instance()->addMessage(_('You are already the owner.'), 'danger');
+            $this->get();
+            die();
+        }
+
         if ($ownerCode->dry()) {
             \Flash::instance()->addMessage(_('Sorry, the provided owner code and tracking code doesn\'t match.'), 'danger');
             $this->get();
             die();
         }
 
-        if ($ownerCode->user) {
+        if ($ownerCode->used !== OwnerCode::TOKEN_UNUSED) {
             \Flash::instance()->addMessage(_('Sorry, this owner code has already been used.'), 'danger');
             $this->get();
             die();
@@ -35,6 +41,8 @@ class GeokretClaim extends Base {
         $ownerCode->user = $f3->get('SESSION.CURRENT_USER');
         $ownerCode->touch('claimed_on_datetime');
         $ownerCode->geokret->owner = $f3->get('SESSION.CURRENT_USER');
+        $ownerCode->validating_ip = \Base::instance()->get('IP');
+        $ownerCode->used = OwnerCode::TOKEN_USED;
 
         // Create a move comment
         $move = new Move();

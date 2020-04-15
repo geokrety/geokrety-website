@@ -19,7 +19,8 @@ class OwnerCode extends Base {
     use \Validation\Traits\CortexTrait;
 
     const TOKEN_UNUSED = 0;
-    const TOKEN_VALIDATED = 1;
+    const TOKEN_USED = 1;
+    const TOKEN_CANCELLED = 2;
 
     protected $db = 'DB';
     protected $table = 'gk_owner_codes';
@@ -35,7 +36,7 @@ class OwnerCode extends Base {
         'generated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => false,
+            'nullable' => true,
             'validate' => 'is_date',
         ],
         'claimed_on_datetime' => [
@@ -61,7 +62,7 @@ class OwnerCode extends Base {
         ],
     ];
 
-    public function get_generated_on_datetime($value): DateTime {
+    public function get_generated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
