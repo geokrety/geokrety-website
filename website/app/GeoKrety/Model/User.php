@@ -36,6 +36,7 @@ class User extends Base implements JsonSerializable {
 
     const USER_ACCOUNT_INVALID = 0;
     const USER_ACCOUNT_VALID = 1;
+    // TODO: there is more status: terms_of_use, `INVALID` is in fact `UNVALIDATED`…
 
     const USER_EMAIL_NO_ERROR = 0;
 
@@ -234,6 +235,10 @@ class User extends Base implements JsonSerializable {
 
     public function isAccountValid(): bool {
         return $this->account_valid === User::USER_ACCOUNT_VALID;
+    }
+
+    public function hasAcceptedThetermsOfUse(): bool {
+        return !is_null($this->terms_of_use_datetime);
     }
 
     public function isCurrentUser(): bool {

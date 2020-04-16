@@ -8,6 +8,19 @@ use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
 
 abstract class Base {
+    const NO_TERMS_OF_USE_REDIRECT_URLS = [
+        'login',
+        'logout',
+        'registration',
+        'registration_activate',
+        'terms_of_use',
+    ];
+
+    /**
+     * @var User|null Currently logged in user
+     */
+    protected $current_user;
+
     public function beforeRoute(\Base $f3) {
         // Load supported languages
         Smarty::assign('languages', LanguageService::getSupportedLanguages(true));
@@ -19,6 +32,12 @@ abstract class Base {
             $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
             if ($user->valid()) {
                 Smarty::assign('current_user', $user);
+                $this->current_user = $user;
+            }
+
+            // Check term of use acceptation
+            if (!in_array($f3->get('ALIAS'), self::NO_TERMS_OF_USE_REDIRECT_URLS) && !$user->hasAcceptedThetermsOfUse()) {
+                $f3->reroute('@terms_of_use');
             }
         }
     }

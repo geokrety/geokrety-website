@@ -16,6 +16,7 @@ class Registration extends Base {
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
 
+        // TODO: use Traits here?
         $user = new User();
         $this->user = $user;
         Smarty::assign('user', $this->user);

@@ -28,6 +28,14 @@
     <div class="panel-body">
         {call text}
     </div>
+    {if isset($current_user) && !$current_user->hasAcceptedThetermsOfUse}
+        <div class="panel-footer">
+            <form method="POST">
+                <input type="hidden" id="terms_of_use" name="terms_of_use" value="true">
+                <button type="submit" id="termsOfUseAcceptButton" class="btn btn-primary center-block">{t}I agree with the terms{/t}</button>
+            </form>
+        </div>
+    {/if}
 </div>
 {/block}
 
