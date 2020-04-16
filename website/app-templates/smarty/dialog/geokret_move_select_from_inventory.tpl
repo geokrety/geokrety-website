@@ -35,11 +35,11 @@
                         <button class="btn btn-primary" name="btnChooseGK" data-trackingcode="{$geokret->tracking_code}">{t}Choose{/t}</button>
                     </td>
                     <td>
-                        {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
+                        {$geokret|gklink:null:'_blank' nofilter} {$geokret|gkavatar nofilter}<br />
                         <small><span class="gk-name" title="{$geokret->name}">{$geokret->gkid}</span></small>
                     </td>
                     <td class="text-center" class="text-center" nowrap>
-                        {$geokret->owner|userlink nofilter}
+                        {$geokret->owner|userlink:null:'_blank' nofilter}
                         <br />
                         {if !is_null($geokret->last_move)}
                         {$geokret->last_move|logicon nofilter}
