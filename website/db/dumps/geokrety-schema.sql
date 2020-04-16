@@ -700,37 +700,6 @@ END;$$;
 ALTER FUNCTION geokrety.moves_distances_after() OWNER TO geokrety;
 
 --
--- Name: moves_distances_before(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
---
-
-CREATE FUNCTION geokrety.moves_distances_before() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$BEGIN
-
-IF (TG_OP = 'DELETE') THEN
-	SELECT update_next_move_distance(OLD.geokret, OLD.id, true);
-	RETURN OLD;
-END IF;
-
-IF (TG_OP = 'UPDATE') THEN
-    -- Updating old position
-	PERFORM update_next_move_distance(OLD.geokret, OLD.id, true);
-END IF;
-
-RETURN NEW;
-END;$$;
-
-
-ALTER FUNCTION geokrety.moves_distances_before() OWNER TO geokrety;
-
---
--- Name: FUNCTION moves_distances_before(); Type: COMMENT; Schema: geokrety; Owner: geokrety
---
-
-COMMENT ON FUNCTION geokrety.moves_distances_before() IS 'The old position';
-
-
---
 -- Name: moves_get_on_page(bigint, bigint, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -1041,6 +1010,40 @@ CREATE FUNCTION geokrety.on_update_current_timestamp() RETURNS trigger
 
 
 ALTER FUNCTION geokrety.on_update_current_timestamp() OWNER TO geokrety;
+
+--
+-- Name: owner_code_check_only_one_active_per_geokret(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.owner_code_check_only_one_active_per_geokret() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+PERFORM owner_code_check_only_one_active_per_geokret(NEW.geokret);
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.owner_code_check_only_one_active_per_geokret() OWNER TO geokrety;
+
+--
+-- Name: owner_code_check_only_one_active_per_geokret(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.owner_code_check_only_one_active_per_geokret(geokret_id bigint) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF COUNT(*) > 1 FROM "gk_owner_codes" WHERE geokret = geokret_id AND id IS NOT NULL AND used = 0 THEN
+	RAISE 'An owner code for this GeoKret already exists';
+END IF;
+
+RETURN TRUE;
+END;$$;
+
+
+ALTER FUNCTION geokrety.owner_code_check_only_one_active_per_geokret(geokret_id bigint) OWNER TO geokrety;
 
 --
 -- Name: owner_code_check_validating_ip(inet, smallint, timestamp with time zone, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
@@ -2015,7 +2018,8 @@ CREATE TABLE geokrety.gk_owner_codes (
     claimed_on_datetime timestamp(0) with time zone,
     adopter bigint,
     validating_ip inet,
-    used smallint DEFAULT '0'::smallint NOT NULL
+    used smallint DEFAULT '0'::smallint NOT NULL,
+    CONSTRAINT check_validating_ip CHECK (geokrety.owner_code_check_validating_ip(validating_ip, used, claimed_on_datetime, adopter))
 );
 
 
@@ -2953,14 +2957,6 @@ ALTER TABLE ONLY geokrety.scripts ALTER COLUMN id SET DEFAULT nextval('geokrety.
 
 
 --
--- Name: gk_owner_codes check_validating_ip; Type: CHECK CONSTRAINT; Schema: geokrety; Owner: geokrety
---
-
-ALTER TABLE geokrety.gk_owner_codes
-    ADD CONSTRAINT check_validating_ip CHECK (geokrety.owner_code_check_validating_ip(validating_ip, used, claimed_on_datetime, adopter)) NOT VALID;
-
-
---
 -- Name: gk_geokrety gk_geokrety_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3611,6 +3607,13 @@ CREATE UNIQUE INDEX idx_21171_unique_kraj ON geokrety.gk_waypoints_country USING
 --
 
 CREATE UNIQUE INDEX idx_21189_name ON geokrety.scripts USING btree (name);
+
+
+--
+-- Name: gk_owner_codes after_10_check_only_one_active_per_geokret; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER after_10_check_only_one_active_per_geokret AFTER INSERT OR UPDATE OF geokret, used ON geokrety.gk_owner_codes FOR EACH ROW EXECUTE FUNCTION geokrety.owner_code_check_only_one_active_per_geokret();
 
 
 --
