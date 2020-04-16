@@ -17,12 +17,12 @@ $('input[type=radio][name=logtype]').change(function() {
     });
 });
 
-// Convert geokret date to moment object
+// Convert GeoKret date to moment object
 function geokretDateToMoment(data) {
     movedGeokret = data.map(function (geokret) {
         geokret.createdOnDatetime = moment.utc(geokret.createdOnDatetime);
 
-        // Save youngest geokret
+        // Save youngest GeoKret
         if (birthdate < geokret.createdOnDatetime || birthdate == null) {
             birthdate = geokret.createdOnDatetime.startOf('minute');
         }
@@ -72,6 +72,10 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
 
 // Validate Waypoint
 window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
+    // Disable check when we're in log at home
+    if (wptHomeButtonToggled) {
+        return true;
+    }
     var valid = 200 === xhr.status;
     var data = $.parseJSON(xhr.responseText);
     var coordinates;
@@ -88,7 +92,6 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
         });
         toggleCoordinatesField();
         positionClear();
-        dropMarker();
         $("#cacheName").text('');
     } else if (isValidLatlon) {
         isWaypointFound = valid;
@@ -182,7 +185,17 @@ $('#wpt').parsley().on('field:success', function() {
         $(':focus').blur();
     }
     colorizeParentPanel($('#wpt'), true);
-    $("#locationHeader").html($('#wpt').val().toUpperCase());
+    if (wptHomeButtonToggled) {
+        $("#locationHeader").html('<i>{t}My home position{/t}</i>');
+    } else {
+        $("#locationHeader").html($('#wpt').val().toUpperCase());
+    }
+}).on('field:validate', function() {
+    // Disable check when we're in log at home
+    if (wptHomeButtonToggled) {
+        return true;
+    }
+    return false;
 }).on('field:error', function() {
     colorizeParentPanel($('#wpt'), false);
     $("#locationHeader").html('');

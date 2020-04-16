@@ -37,7 +37,7 @@ $("#movePanelGroup div.panel-collapse").on("shown.bs.collapse", function(e) {
     }, 250);
 });
 
-// Force accordion collapse, usefull when one panel is dynamically removed
+// Force accordion collapse, useful when one panel is dynamically removed
 $('#movePanelGroup div.panel-collapse').on('show.bs.collapse', function() {
     $('div.panel-collapse').each(function() {
         $(this).collapse('hide');
@@ -96,6 +96,7 @@ function positionClear() {
         $("#latlon").val('').trigger("change");
     }
     isValidLatlon = false;
+    dropMarker();
 }
 
 // Display the marker on map
@@ -120,6 +121,31 @@ function dropMarker() {
     map.setView(PARIS, 3);
 }
 
+let wptHomeButtonToggled = false;
+// Toggle log at home
+function toggleHome() {
+    wptHomeButtonToggled = !wptHomeButtonToggled;
+    if (wptHomeButtonToggled) {
+        // prepare display
+        $("#wpt").val();
+        showMap();
+        showCoordinatesField();
+        positionUpdate([{$current_user->home_latitude}, {$current_user->home_longitude}]);
+    } else {
+        // clear display
+        hideCoordinatesField();
+        positionClear();
+    }
+    // Disable some form elements
+    $("#wptHomeButton").button('toggle');
+    $("#wptSearchButton").prop('disabled', wptHomeButtonToggled)
+    $("#wptSearchByNameButton").prop('disabled', wptHomeButtonToggled)
+    $("#panelLocation input").each(function() {
+        $(this).prop('disabled', wptHomeButtonToggled);
+    });
+    $("#latlon").prop('disabled', false); // Need to be enabled to have the value posted
+}
+
 // Show coordinates field
 function toggleCoordinatesField() {
     if ($("#wpt").val().substring(0, 2).toUpperCase() != 'GC') {
@@ -128,6 +154,7 @@ function toggleCoordinatesField() {
         showCoordinatesField();
     }
 }
+// Bind coordinates edit button
 $("#mapField .panel-heading").on('click', function() {
     showCoordinatesField();
 })
@@ -192,9 +219,11 @@ function logTypeToText(logtype) {
 function toggleLocationSubfrom() {
     if (isLocationNeeded()) {
         $("#panelLocation").show();
-        $("#panelLocation input").each(function() {
-            $(this).prop('disabled', false);
-        })
+        if (!wptHomeButtonToggled) {
+            $("#panelLocation input").each(function() {
+                $(this).prop('disabled', false);
+            })
+        }
     } else {
         $("#panelLocation").hide();
         $("#panelLocation input").each(function() {
@@ -203,12 +232,21 @@ function toggleLocationSubfrom() {
     }
 }
 
-// Toggle location panel based on move type requirement
+// Toggle searchByName button
 function toggleSearchByNameButton() {
     if (isWaypointGC()) {
         $("#wptSearchByNameButton").show();
     } else {
         $("#wptSearchByNameButton").hide();
+    }
+}
+
+// Toggle homeCoordinates button
+function toggleHomeCoordinatesButton() {
+    if ($("#wpt").val().length) {
+        $("#wptHomeButton").hide();
+    } else {
+        $("#wptHomeButton").show();
     }
 }
 
@@ -244,11 +282,17 @@ $("#wptSearchButton").bind("click", function() {
 // Watch change on waypoint
 $("#wpt").on('input', function() {
     toggleSearchByNameButton()
+    toggleHomeCoordinatesButton()
 });
 
 // bind wptSearchByNameButton
 $("#wptSearchByNameButton").bind("click", function() {
     $("#findbyCacheName").toggle().removeClass("hidden");
+});
+
+// bind wptHomeButton
+$("#wptHomeButton").bind("click", function() {
+    toggleHome();
 });
 
 // bind datetimepicker
@@ -326,8 +370,8 @@ if ($('#wpt').val().length > 0) {
     $("#wpt").trigger("focusout");
 }
 
-{if !$f3->get('SESSION.CURRENT_USER')}
 // Initialize username
+{if !$f3->get('SESSION.CURRENT_USER')}
 if ($('#username').val().length > 0) {
     $("#username").trigger("focusout");
 }

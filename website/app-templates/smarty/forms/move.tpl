@@ -140,8 +140,11 @@
                                 <label class="col-sm-2 control-label">{t}Waypoint{/t}</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
-                                        <input type="text" name="waypoint" id="wpt" value="{$move->waypoint}" minlength="{GK_CHECK_WAYPOINT_MIN_LENGTH}" maxlength="{GK_CHECK_WAYPOINT_MAX_LENGTH}" required class="form-control" aria-describedby="helpBlockWaypoint" placeholder="{t}eg. GC1AQ2N{/t}" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" data-parsley-group="location" data-parsley-errors-messages-disabled data-parsley-debounce="500" data-parsley-remote-options='{ "type": "POST" }' style="text-transform:uppercase">
+                                        <input type="text" name="waypoint" id="wpt" value="{$move->waypoint}" minlength="{GK_CHECK_WAYPOINT_MIN_LENGTH}" maxlength="{GK_CHECK_WAYPOINT_MAX_LENGTH}" data-parsley-validate-if-empty class="form-control" aria-describedby="helpBlockWaypoint" placeholder="{t}eg. GC1AQ2N{/t}" data-parsley-trigger="input focusout" data-parsley-validation-threshold="5" data-parsley-remote data-parsley-remote-validator="checkWpt" data-parsley-group="location" data-parsley-errors-messages-disabled data-parsley-debounce="500" data-parsley-remote-options='{ "type": "POST" }' style="text-transform:uppercase">
                                         <span class="input-group-btn">
+{if isset($current_user) && $current_user->hasHomeCoordinates()}
+                                            <button class="btn btn-default" type="button" id="wptHomeButton">{fa icon="home"}</button>
+{/if}
                                             <button class="btn btn-default" type="button" id="wptSearchByNameButton" title="{t}Lookup opencaching cache by name{/t}"><img src="{GK_CDN_IMAGES_URL}/logos/geocaching.svg" width="18px" /></button>
                                             <button class="btn btn-default" type="button" id="wptSearchButton">{fa icon="search"}</button>
                                         </span>

@@ -225,7 +225,7 @@ class User extends Base implements JsonSerializable {
         return self::get_date_object($value);
     }
 
-    public function get_home_coordinates($value): string {
+    public function get_home_coordinates(): string {
         return $this->home_latitude.' '.$this->home_longitude;
     }
 

@@ -12,7 +12,7 @@ class Waypoint {
     private $waypoint = null;
 
     public function validate($waypoint, $coordinates = null) {
-        if (!$this->checkLength($waypoint)) {
+        if (!$this->checkLength($waypoint, $coordinates)) {
             return false;
         }
         if (!$this->checkCharacters($waypoint)) {
@@ -42,7 +42,10 @@ class Waypoint {
         return $this->waypoint;
     }
 
-    protected function checkLength($waypoint) {
+    protected function checkLength($waypoint, $coordinates) {
+        if(!is_null($coordinates)) {
+            return true;
+        }
         if (empty($waypoint)) {
             $this->errors[] = _('Waypoint seems empty.');
 
