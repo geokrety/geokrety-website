@@ -4,10 +4,11 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
+use JsonSerializable;
 
 /**
  * @property int|null id
- * @property int|User|null holder
+ * @property int|User holder
  * @property DateTime awarded_on_datetime
  * @property DateTime updated_on_datetime
  * @property string description
@@ -47,11 +48,22 @@ class Badge extends Base {
         ],
     ];
 
-    public function get_awarded_on_datetime($value): DateTime {
+    public function get_awarded_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
     public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
+    }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'holder' => $this->holder->id,
+            // 'awarded_on_datetime' => $this->awarded_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            // 'description' => $this->description,
+            // 'filename' => $this->filename,
+        ];
     }
 }

@@ -1820,6 +1820,21 @@ ALTER SEQUENCE geokrety.geokrety_rating_id_seq OWNED BY geokrety.gk_geokrety_rat
 
 
 --
+-- Name: gk_audit_logs; Type: TABLE; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TABLE geokrety.gk_audit_logs (
+    log_datetime timestamp with time zone DEFAULT now() NOT NULL,
+    event character varying,
+    author bigint,
+    ip inet,
+    context json
+);
+
+
+ALTER TABLE geokrety.gk_audit_logs OWNER TO geokrety;
+
+--
 -- Name: gk_mails; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -3183,6 +3198,20 @@ ALTER TABLE ONLY geokrety.scripts
 
 ALTER TABLE ONLY geokrety.sessions
     ADD CONSTRAINT sessions_pkey PRIMARY KEY (session_id);
+
+
+--
+-- Name: audit_logs_index_event; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX audit_logs_index_event ON geokrety.gk_audit_logs USING btree (event);
+
+
+--
+-- Name: audit_logs_index_log_datetime; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX audit_logs_index_log_datetime ON geokrety.gk_audit_logs USING btree (log_datetime);
 
 
 --

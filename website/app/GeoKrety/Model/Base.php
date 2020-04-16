@@ -3,8 +3,9 @@
 namespace GeoKrety\Model;
 
 use DateTime;
+use JsonSerializable;
 
-class Base extends \DB\Cortex {
+abstract class Base extends \DB\Cortex implements JsonSerializable {
     protected function get_date_object($value): ?DateTime {
         if (is_a($value, '\Datetime')) {
             return $value;

@@ -15,4 +15,16 @@ class WaypointGC extends BaseWaypoint {
             'countryCode' => $this->country,
         ];
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'waypoint' => $this->waypoint,
+            // 'elevation' => $this->elevation,
+            // 'country' => $this->country,
+            // 'position' => $this->position,
+            // 'lat' => $this->lat,
+            // 'lon' => $this->lon,
+        ];
+    }
 }

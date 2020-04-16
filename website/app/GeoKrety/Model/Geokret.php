@@ -194,4 +194,26 @@ class Geokret extends Base {
         $geokret->owner = $faker->numberBetween(1, $userCount);
         $geokret->save();
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'gkid' => $this->gkid,
+            // 'tracking_code' => $this->tracking_code,
+            // 'name' => $this->name,
+            // 'mission' => $this->mission,
+            // 'owner' => $this->owner->id ?? null,
+            // 'distance' => $this->distance,
+            // 'caches_count' => $this->caches_count,
+            // 'pictures_count' => $this->pictures_count,
+            // 'last_position' => $this->last_position->id ?? null,
+            // 'last_log' => $this->last_log->id ?? null,
+            // 'holder' => $this->holder->id ?? null,
+            // 'avatar' => $this->avatar->id ?? null,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            // 'missing' => $this->missing,
+            'type' => $this->type->getTypeId(),
+        ];
+    }
 }

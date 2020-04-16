@@ -67,4 +67,17 @@ class Mail extends Base {
             $self->ip = \Base::instance()->get('IP');
         });
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'token' => $this->token,
+            // 'from_user' => $this->from_user->id ?? null,
+            // 'to_user' => $this->to_user->id ?? null,
+            // 'subject' => $this->subject,
+            // 'content' => $this->content,
+            // 'sent_on_datetime' => $this->sent_on_datetime,
+            // 'ip' => $this->ip,
+        ];
+    }
 }

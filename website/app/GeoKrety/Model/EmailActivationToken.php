@@ -191,4 +191,23 @@ class EmailActivationToken extends Base {
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY)));
         });
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'token' => $this->token,
+            // 'revert_token' => $this->revert_token,
+            // 'user' => $this->user->id,
+            'previous_email' => $this->previous_email,
+            'email' => $this->email,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            // 'used_on_datetime' => $this->used_on_datetime,
+            // 'reverted_on_datetime' => $this->reverted_on_datetime,
+            // 'requesting_ip' => $this->requesting_ip,
+            // 'updating_ip' => $this->updating_ip,
+            // 'reverting_ip' => $this->reverting_ip,
+            'used' => $this->used,
+        ];
+    }
 }

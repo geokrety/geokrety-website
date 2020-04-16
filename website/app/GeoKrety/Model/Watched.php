@@ -50,4 +50,14 @@ class Watched extends Base {
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->user) && $f3->get('SESSION.CURRENT_USER') === $this->user->id;
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'user' => $this->user->id,
+            'geokret' => $this->geokret->id,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+        ];
+    }
 }

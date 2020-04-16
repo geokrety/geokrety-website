@@ -4,6 +4,7 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
+use JsonSerializable;
 
 /**
  * @property int|null id
@@ -109,10 +110,7 @@ class AccountActivationToken extends Base {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
-        });
-
-        $this->aftersave(function ($self) {
-            \Event::instance()->emit('activation.token.used', $this->token);
+            \Event::instance()->emit('activation.token.created', $this);
         });
 
         $this->virtual('expire_on_datetime', function ($self) {
@@ -120,5 +118,19 @@ class AccountActivationToken extends Base {
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY)));
         });
+    }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'token' => $this->token,
+            // 'user' => $this->user->id,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'used_on_datetime' => $this->used_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            // 'requesting_ip' => $this->requesting_ip,
+            // 'validating_ip' => $this->validating_ip,
+            'used' => $this->used,
+        ];
     }
 }

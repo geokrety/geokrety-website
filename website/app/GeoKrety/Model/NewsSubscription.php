@@ -40,4 +40,14 @@ class NewsSubscription extends Base {
     public function get_last_read_datetime($value): DateTime {
         return self::get_date_object($value);
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'news' => $this->news->id,
+            // 'author' => $this->author->id,
+            // 'last_read_datetime' => $this->last_read_datetime,
+            'subscribed' => $this->subscribed,
+        ];
+    }
 }

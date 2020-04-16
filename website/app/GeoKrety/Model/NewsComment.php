@@ -65,4 +65,15 @@ class NewsComment extends Base {
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'news' => $this->news->id,
+            // 'author' => $this->author->id ?? null,
+            // 'content' => $this->content,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+        ];
+    }
 }

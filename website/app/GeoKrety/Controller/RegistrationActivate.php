@@ -43,6 +43,7 @@ class RegistrationActivate extends Base {
         $this->token->save();
         $f3->get('DB')->commit();
         \Event::instance()->emit('user.activated', $this->token->user);
+        \Event::instance()->emit('activation.token.used', $this->token);
         $smtp = new AccountActivation();
         $smtp->sendActivationConfirm($this->token);
 

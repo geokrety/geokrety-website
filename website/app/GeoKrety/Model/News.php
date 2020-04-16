@@ -72,4 +72,17 @@ class News extends Base {
         // Note: Cache count() for 1 second
         return $this->has('subscriptions', ['news = ? AND author = ? AND subscribed = ?', $this->id, \Base::instance()->get('SESSION.CURRENT_USER'), '1'])->count(null, null, 1) === 1;
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'title' => $this->title,
+            // 'content' => $this->content,
+            // 'author_name' => $this->author_name,
+            // 'author' => $this->author->id ?? null,
+            // 'comments_count' => $this->comments_count,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'last_commented_on_datetime' => $this->last_commented_on_datetime,
+        ];
+    }
 }

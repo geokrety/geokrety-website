@@ -220,4 +220,22 @@ class Picture extends Base {
             }
         });
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'author' => $this->author->id ?? null,
+            // 'bucket' => $this->bucket,
+            // 'key' => $this->key,
+            // 'move' => $this->move->id ?? null,
+            // 'geokret' => $this->geokret->id ?? null,
+            // 'user' => $this->user->id ?? null,
+            // 'filename' => $this->filename,
+            // 'caption' => $this->caption,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'used_on_datetime' => $this->used_on_datetime,
+            // 'uploaded_on_datetime' => $this->uploaded_on_datetime,
+            'type' => $this->type,
+        ];
+    }
 }

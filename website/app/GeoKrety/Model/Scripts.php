@@ -31,4 +31,12 @@ class Scripts extends Base {
     public function get_last_run_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'last_run_datetime' => $this->last_run_datetime,
+        ];
+    }
 }

@@ -95,4 +95,18 @@ class PasswordToken extends Base {
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY)));
         });
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            // 'token' => $this->token,
+            // 'user' => $this->user->id ?? null,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'used_on_datetime' => $this->used_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            // 'requesting_ip' => $this->requesting_ip,
+            'used' => $this->used,
+            // 'validating_ip' => $this->validating_ip,
+        ];
+    }
 }

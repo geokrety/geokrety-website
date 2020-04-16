@@ -221,4 +221,29 @@ class Move extends Base {
             }
         });
     }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'geokret' => $this->geokret->id,
+            // 'lat' => $this->lat,
+            // 'lon' => $this->lon,
+            // 'elevation' => $this->elevation,
+            // 'country' => $this->country,
+            // 'distance' => $this->distance,
+            // 'waypoint' => $this->waypoint,
+            // 'author' => $this->author->id ?? null,
+            // 'comment' => $this->comment,
+            // 'pictures_count' => $this->pictures_count,
+            // 'comments_count' => $this->comments_count,
+            // 'username' => $this->username,
+            // 'app' => $this->app,
+            // 'app_ver' => $this->app_ver,
+            // 'created_on_datetime' => $this->created_on_datetime,
+            // 'moved_on_datetime' => $this->moved_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            'move_type' => $this->move_type->getLogTypeId(),
+            // 'position' => $this->position,
+        ];
+    }
 }

@@ -73,18 +73,13 @@ class OwnerCode extends Base implements JsonSerializable {
 
     public function jsonSerialize() {
         return [
-            'geokret' => [
-                'id' => $this->geokret->id,
-                'gkid' => $this->geokret->gkid(),
-            ],
-            'token' => $this->token,
-            'generated_on_datetime' => $this->generated_on_datetime,
-            'claimed_on_datetime' => $this->claimed_on_datetime,
-            'adopter' => is_null($this->adopter) ? null : [
-                $this->adopter->id,
-                $this->adopter->username,
-            ],
-            'validating_ip' => $this->validating_ip,
+            'id' => $this->id,
+            'geokret' => $this->geokret->id,
+            // 'token' => $this->token,
+            // 'generated_on_datetime' => $this->generated_on_datetime,
+            // 'claimed_on_datetime' => $this->claimed_on_datetime,
+            // 'adopter' => $this->adopter->id ?? null,
+            // 'validating_ip' => $this->validating_ip,
             'used' => $this->used,
         ];
     }

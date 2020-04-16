@@ -78,7 +78,7 @@ class WaypointOC extends BaseWaypoint {
         ],
     ];
 
-    public function get_added_on_datetime($value): DateTime {
+    public function get_added_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
@@ -88,6 +88,7 @@ class WaypointOC extends BaseWaypoint {
 
     public function asArray(): array {
         // TODO make this an entity - see also WaypointGC
+        // Use the JsonSerialize?
         return [
             'waypoint' => $this->waypoint,
             'latitude' => $this->lat,
@@ -100,6 +101,26 @@ class WaypointOC extends BaseWaypoint {
             'status' => $this->status,
             'typeName' => $this->type,
             'link' => $this->link,
+        ];
+    }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'waypoint' => $this->waypoint,
+            // 'elevation' => $this->elevation,
+            // 'country' => $this->country,
+            // 'position' => $this->position,
+            // 'lat' => $this->lat,
+            // 'lon' => $this->lon,
+            // 'name' => $this->name,
+            // 'owner' => $this->owner,
+            // 'type' => $this->type,
+            // 'country_name' => $this->country_name,
+            // 'link' => $this->link,
+            // 'added_on_datetime' => $this->added_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            // 'status' => $this->status,
         ];
     }
 }

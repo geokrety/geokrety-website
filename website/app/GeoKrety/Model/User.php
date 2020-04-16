@@ -4,7 +4,7 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
-use GeoKrety\Service\SecIdGenerator;
+use JsonSerializable;
 
 /**
  * @property int|null id
@@ -31,7 +31,7 @@ use GeoKrety\Service\SecIdGenerator;
  * @property int email_invalid
  * @property int account_valid
  */
-class User extends Base {
+class User extends Base implements JsonSerializable {
     use \Validation\Traits\CortexTrait;
 
     const USER_ACCOUNT_INVALID = 0;
@@ -204,7 +204,7 @@ class User extends Base {
         return html_entity_decode($value);
     }
 
-    public function get_joined_on_datetime($value): DateTime {
+    public function get_joined_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
@@ -263,5 +263,32 @@ class User extends Base {
             \Event::instance()->emit('user.created', $this);
             $self->generateAccountActivation();
         });
+    }
+
+    public function jsonSerialize() {
+        return [
+            'id' => $this->id,
+            'username' => $this->username,
+            // 'password' => \is_null($this->password) ? false : true,
+            // 'email' => $this->email,
+            // 'joined_on_datetime' => $this->joined_on_datetime,
+            // 'updated_on_datetime' => $this->updated_on_datetime,
+            // 'daily_mails' => $this->daily_mails,
+            // 'registration_ip' => $this->registration_ip,
+            // 'preferred_language' => $this->preferred_language,
+            // 'home_latitude' => $this->home_latitude,
+            // 'home_longitude' => $this->home_longitude,
+            // 'observation_area' => $this->observation_area,
+            // 'home_country' => $this->home_country,
+            // 'daily_mails_hour' => $this->daily_mails_hour,
+            // 'avatar' => $this->avatar->id ?? null,
+            // 'pictures_count' => $this->pictures_count,
+            // 'last_mail_datetime' => $this->last_mail_datetime,
+            // 'last_login_datetime' => $this->last_login_datetime,
+            // 'terms_of_use_datetime' => $this->terms_of_use_datetime,
+            // 'statpic_template' => $this->statpic_template,
+            // 'email_invalid' => $this->email_invalid,
+            'account_valid' => $this->account_valid,
+        ];
     }
 }
