@@ -10,7 +10,7 @@ INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test', 0);
 
 -- token is automatically added
 INSERT INTO "gk_owner_codes" ("id", "geokret") VALUES (1, 1);
-SELECT is(LENGTH(token), 5, 'token is automatically added') FROM gk_owner_codes WHERE id = 1::bigint;
+SELECT is(LENGTH(token), 6, 'token is automatically added') FROM gk_owner_codes WHERE id = 1::bigint;
 
 -- Manual
 INSERT INTO "gk_owner_codes" ("id", "geokret", "token") VALUES (2, 1, 'TOKEN1');
