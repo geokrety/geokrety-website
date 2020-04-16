@@ -1,6 +1,6 @@
 <?php
 
-function audit(string $event, $newObjectModel, $oldObjectModel=null) {
+function audit(string $event, $newObjectModel, $oldObjectModel = null) {
     $log = new \GeoKrety\Model\AuditLog();
     $log->event = $event;
     $log->context = json_encode($newObjectModel);
@@ -8,7 +8,7 @@ function audit(string $event, $newObjectModel, $oldObjectModel=null) {
         $log->new_value = json_encode($oldObjectModel);
     }
     $log->save();
-};
+}
 
 // Listen Events
 $events = \Event::instance();

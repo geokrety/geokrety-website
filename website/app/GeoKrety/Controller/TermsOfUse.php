@@ -2,13 +2,9 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Email\AccountActivation;
-use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
-use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class TermsOfUse extends Base {
-
     public function get($f3) {
         Smarty::render('extends:base.tpl|dialog/terms_of_use.tpl');
     }

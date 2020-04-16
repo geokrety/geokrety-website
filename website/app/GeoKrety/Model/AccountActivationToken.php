@@ -4,7 +4,6 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
-use JsonSerializable;
 
 /**
  * @property int|null id

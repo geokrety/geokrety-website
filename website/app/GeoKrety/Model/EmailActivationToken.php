@@ -169,7 +169,6 @@ class EmailActivationToken extends Base {
         }
     }
 
-
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {

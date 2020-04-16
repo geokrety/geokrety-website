@@ -7,7 +7,7 @@ use DB\SQL\Schema;
 
 /**
  * @property int|DateTime log_datetime
- * @property integer author
+ * @property int author
  * @property string event
  * @property string|null old_value
  * @property string|null new_value

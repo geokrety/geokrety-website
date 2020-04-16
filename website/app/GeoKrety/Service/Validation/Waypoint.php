@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Service\Validation;
 
-use GeoKrety\Model\WaypointOC as WaypointOCModel;
 use GeoKrety\Model\WaypointGC as WaypointGCModel;
+use GeoKrety\Model\WaypointOC as WaypointOCModel;
 use GeoKrety\Service\CoordinatesConverter;
 use GeoKrety\Service\WaypointInfo;
 
