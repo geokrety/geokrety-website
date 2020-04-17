@@ -7,7 +7,7 @@
         <small>{$move->geokret->gkid}</small>
     </td>
     <td>
-        {$move->country|country nofilter}
+        {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country nofilter}{/if}
         {$move|cachelink nofilter}
     </td>
     <td><span title="{$move->comment}">{$move->comment|truncate:60:"…"|markdown nofilter}</span></td>

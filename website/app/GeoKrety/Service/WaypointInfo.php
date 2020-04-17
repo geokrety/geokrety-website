@@ -34,4 +34,8 @@ class WaypointInfo {
     public static function getLink($waypoint) {
         return sprintf(GK_SERVICE_GO2GEO_URL, $waypoint);
     }
+
+    public static function getLinkPosition($lat, $lon) {
+        return sprintf(GK_SERVICE_GC_SEARCH_NEAREST_URL, $lat, $lon);
+    }
 }

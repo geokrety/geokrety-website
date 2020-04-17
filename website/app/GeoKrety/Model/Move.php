@@ -153,12 +153,12 @@ class Move extends Base {
         return $value ? number_format(floatval($value), 5, '.', '') : $value;
     }
 
-    public function get_coordinates($value): string {
+    public function get_coordinates(?string $separator = ' '): string {
         if (is_null($this->lat) || is_null($this->lon)) {
             return '';
         }
 
-        return sprintf('%.04f %.04f', $this->lat, $this->lon);
+        return sprintf('%.04f%s%.04f', $this->lat, $separator, $this->lon);
     }
 
     public function get_point(): array {

@@ -15,8 +15,8 @@
                     <div class="col-xs-12">
 
                         <div class="pull-left">
-                            {$move->country|country nofilter}
-                            {$move|cachelink}
+                            {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country nofilter}{/if}
+                            {$move|cachelink nofilter}
                         </div>
                         <div class="pull-right">
                             {$move->moved_on_datetime|print_date nofilter} /
