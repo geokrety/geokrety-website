@@ -13,7 +13,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a picture
  * -------------------------------------------------------------
  */
-function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true) {
+function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true, ?bool $showItemLink = false, ?bool $showPictureType = false) {
     if (is_null($picture)) {
         return '';
     }
@@ -35,14 +35,31 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
             {if $showMainAvatarMedal && $picture->isMainAvatar()}
                 <div class="picture-is-main-avatar" data-toggle="tooltip" title="{t}This is the main avatar{/t}"></div>
             {/if}
+            {if $showPictureType}
+                {if $picture->isType(\Geokrety\PictureType::PICTURE_USER_AVATAR)}
+                    <span class="type human"></span>
+                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
+                    <span class="type move"></span>
+                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
+                    <span class="type geokret"></span>
+                {/if}
+            {/if}
         </div>
         <figcaption>
-            <p class="text-center picture-caption">
-                {$picture->caption}
+            <p class="text-center picture-caption" title="{$picture->caption|escape:'quotes'}">
+                {$picture->caption}&nbsp;
             </p>
+            {if $showItemLink}
             <p class="text-center">
-                <!-- TODO: link to another item. GK/User/Move… -->
+                {if $picture->isType(\Geokrety\PictureType::PICTURE_USER_AVATAR)}
+                    {$picture->user|userlink nofilter}
+                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
+                    {*$picture->move|movelink nofilter*}
+                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
+                    {$picture->geokret|gklink nofilter}
+                {/if}
             </p>
+            {/if}
         </figcaption>
         {if $showActionsButtons && ($picture->isAuthor() || $allowSetAsMainAvatar && $picture->hasPermissionOnParent() && !$picture->isMainAvatar()) && $picture->key}
             <div class="pull-right">
@@ -78,6 +95,8 @@ EOT;
     $smarty->assign('showMainAvatarMedal', $showMainAvatarMedal);
     $smarty->assign('showActionsButtons', $showActionsButtons);
     $smarty->assign('allowSetAsMainAvatar', $allowSetAsMainAvatar);
+    $smarty->assign('showPictureType', $showPictureType);
+    $smarty->assign('showItemLink', $showItemLink);
     $html = $smarty->display('string:'.$template_string);
     $smarty->clearAssign(['picture', 'showMainAvatarMedal']);
 

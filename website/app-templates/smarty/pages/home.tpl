@@ -50,7 +50,7 @@
     <div class="panel-body">
         <div class="gallery">
             {foreach from=$pictures item=picture}
-                    {$picture|picture:true:true:false nofilter}
+                    {$picture|picture:true:true:false:true:true nofilter}
             {/foreach}
         </div>
     </div>

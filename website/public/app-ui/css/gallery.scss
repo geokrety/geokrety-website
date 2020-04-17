@@ -96,26 +96,35 @@ div.gallery {
         height: 14px;
     }
 
-    span.gk {
+    span.geokret {
         content: " ";
         background-size: 20px 20px;
-        background: url("/assets/images/the-mole-grey.svg") no-repeat center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("/assets/images/the-mole-grey.svg");
         width: 22px;
         height: 22px;
     }
 
-    span.plane:before {
+    span.move:before {
         content: "\2708";
     }
 
-    span.human:before {
-        content: "\1F464";
+    span.human {
+        content: " ";
+        background-size: 15px 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("/assets/images/human-bust.svg");
+        width: 20px;
+        height: 20px;
+        max-width:100%;
     }
 
     span.type {
         position: absolute;
         top: 0;
-        right: 0;
+        left: 0;
         padding-left: 3px;
         padding-right: 3px;
         border: 1px solid #eee;

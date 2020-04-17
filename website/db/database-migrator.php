@@ -631,7 +631,7 @@ class PicturesMigrator extends BaseMigrator {
         $this->pPdo->query('UPDATE "gk_pictures" SET geokret=gk_moves.geokret FROM "gk_moves" WHERE "gk_pictures".move=gk_moves.id AND CAST("gk_pictures".type AS text) = \'1\';');
     }
 
-    // TODO: migrate pictures to buckets
+    // TODO: update Users/GeoKrety/Moves pictures_count
 }
 
 class RacesMigrator extends BaseMigrator {
