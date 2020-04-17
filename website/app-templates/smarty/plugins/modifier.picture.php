@@ -54,7 +54,7 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
                 {if $picture->isType(\Geokrety\PictureType::PICTURE_USER_AVATAR)}
                     {$picture->user|userlink nofilter}
                 {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
-                    {*$picture->move|movelink nofilter*}
+                    {$picture->move|movelink nofilter}
                 {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
                     {$picture->geokret|gklink nofilter}
                 {/if}

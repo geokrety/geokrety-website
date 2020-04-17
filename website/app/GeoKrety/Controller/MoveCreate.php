@@ -112,7 +112,7 @@ class MoveCreate extends Base {
         } else {
             $errors = array_merge($errors, $trackingCodeChecker->getErrors());
         }
-        // Store the input tracking code(s) so it can be disaplyed again on form error
+        // Store the input tracking code(s) so it can be displayed again on form error
         $this->tracking_code = $f3->get('POST.tracking_code');
 
         // reCaptcha

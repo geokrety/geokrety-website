@@ -27,8 +27,8 @@ class Markdown extends \Prefab {
     public static function toFormattedMarkdown($string) {
         // Workaround historical database modifications
         $string = str_replace('<br />', '  ', $string);
-        $string = str_replace('[<a href=\'', '', $string);
-        $string = str_replace('\' rel=nofollow>Link</a>]', '', $string);
+        $string = str_replace('[<a href=\'', '[link](', $string);
+        $string = str_replace('\' rel=nofollow>Link</a>]', ')', $string);
 
         return HTMLPurifier::getPurifier()->purify($string);
     }
