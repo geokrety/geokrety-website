@@ -2981,6 +2981,14 @@ ALTER TABLE ONLY geokrety.gk_news_comments_access
 
 
 --
+-- Name: gk_news_comments_access gk_news_comments_access_news_pkey; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE ONLY geokrety.gk_news_comments_access
+    ADD CONSTRAINT gk_news_comments_access_news_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: gk_pictures gk_pictures_id; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3114,14 +3122,6 @@ ALTER TABLE ONLY geokrety.gk_news
 
 ALTER TABLE ONLY geokrety.gk_news_comments
     ADD CONSTRAINT idx_21069_primary PRIMARY KEY (id);
-
-
---
--- Name: gk_news_comments_access idx_21079_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
---
-
-ALTER TABLE ONLY geokrety.gk_news_comments_access
-    ADD CONSTRAINT idx_21079_primary PRIMARY KEY (news, author);
 
 
 --
