@@ -43,7 +43,7 @@ class Waypoint {
     }
 
     protected function checkLength($waypoint, $coordinates) {
-        if(!is_null($coordinates)) {
+        if (!is_null($coordinates)) {
             return true;
         }
         if (empty($waypoint)) {

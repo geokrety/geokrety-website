@@ -34,6 +34,7 @@ function smarty_modifier_cachelink(?\GeoKrety\Model\Move $move, ?string $alterna
     }
 
     $title = $move->elevation > -2000 ? _('Location: %s Elevation: %dm') : _('Location: %s');
+
     return sprintf(
         '<a href="%s" title="%s"%s>%s</a>',
         WaypointInfo::getLink($move->waypoint),
