@@ -130,6 +130,7 @@ function toggleHome() {
         $("#wpt").val();
         showMap();
         showCoordinatesField();
+        $("#latlon").val(''); // Reset latlon for successful positionUpdate()
         positionUpdate([{$current_user->home_latitude}, {$current_user->home_longitude}]);
     } else {
         // clear display
@@ -144,6 +145,8 @@ function toggleHome() {
         $(this).prop('disabled', wptHomeButtonToggled);
     });
     $("#latlon").prop('disabled', false); // Need to be enabled to have the value posted
+    $("#latlon").prop('readonly', wptHomeButtonToggled); // Need to be enabled to have the value posted
+    $("#locationHeader").html('');
 }
 
 // Show coordinates field

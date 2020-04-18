@@ -184,10 +184,10 @@ $('#wpt').parsley().on('field:success', function() {
     // if (isWaypointFound && !$("#latlon").parsley().isValid()) {
         $(':focus').blur();
     }
-    colorizeParentPanel($('#wpt'), true);
     if (wptHomeButtonToggled) {
         $("#locationHeader").html('<i>{t}My home position{/t}</i>');
     } else {
+        colorizeParentPanel($('#wpt'), true);
         $("#locationHeader").html($('#wpt').val().toUpperCase());
     }
 }).on('field:validate', function() {
@@ -203,6 +203,7 @@ $('#wpt').parsley().on('field:success', function() {
 
 // Events for LATLON
 $('#latlon').parsley().on('field:success', function() {
+    colorizeParentPanel($('#wpt'), true);
     isValidLatlon = true;
     showMarker($("#latlon").val().split(' '));
 }).on('field:validated', function() {
@@ -211,6 +212,8 @@ $('#latlon').parsley().on('field:success', function() {
         $("#wpt").parsley().validate();
     }
 }).on('field:error', function() {
+    colorizeParentPanel($('#wpt'), false);
+    $("#locationHeader").html('');
     isValidLatlon = false;
     dropMarker();
 });
