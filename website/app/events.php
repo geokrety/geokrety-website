@@ -1,12 +1,9 @@
 <?php
 
-function audit(string $event, $newObjectModel, $oldObjectModel = null) {
+function audit(string $event, $newObjectModel) {
     $log = new \GeoKrety\Model\AuditLog();
     $log->event = $event;
     $log->context = json_encode($newObjectModel);
-    if (!is_null($oldObjectModel)) {
-        $log->new_value = json_encode($oldObjectModel);
-    }
     $log->save();
 }
 
@@ -22,10 +19,10 @@ $events->on('user.logout', function (\GeoKrety\Model\User $user) { audit('user.l
 $events->on('user.language.changed', function (\GeoKrety\Model\User $user, $context) { audit('user.language.changed', ['language' => $user->language, 'old_language' => $context]); });  // context => $oldLanguage
 $events->on('user.home_location.changed', function (\GeoKrety\Model\User $user) { audit('user.created', $user); });
 
-$events->on('user.email.change', function (\GeoKrety\Model\EmailActivation $token) { audit('user.email.change', $token); });
-$events->on('user.email.changed', function (\GeoKrety\Model\EmailActivation $token) { audit('user.email.changed', $user); });
-$events->on('email.token.generated', function (\GeoKrety\Model\EmailActivation $token) { audit('email.token.generated', $token); });
-$events->on('email.token.used', function (\GeoKrety\Model\EmailActivation $token) { audit('email.token.used', $token); });
+$events->on('user.email.change', function (\GeoKrety\Model\User $user) { audit('user.email.change', $user); });
+$events->on('user.email.changed', function (\GeoKrety\Model\User $user) { audit('user.email.changed', $user); });
+$events->on('email.token.generated', function (\GeoKrety\Model\EmailActivationToken $token) { audit('email.token.generated', $token); });
+$events->on('email.token.used', function (\GeoKrety\Model\EmailActivationToken $token) { audit('email.token.used', $token); });
 $events->on('user.secid.changed', function (\GeoKrety\Model\User $user) { audit('user.secid.changed', $user); });
 $events->on('user.statpic.template.changed', function (\GeoKrety\Model\User $user) { audit('user.statpic.template.changed', $user); });
 $events->on('user.password.changed', function (\GeoKrety\Model\User $user) { audit('user.password.changed', $user); });

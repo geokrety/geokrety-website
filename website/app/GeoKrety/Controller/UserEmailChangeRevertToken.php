@@ -73,7 +73,7 @@ class UserEmailChangeRevertToken extends Base {
             $smtp = new EmailChange();
             $smtp->sendEmailRevertedNotification($this->token->user);
             Flash::instance()->addMessage(_('Your email address has been reverted.'), 'success');
-            Event::instance()->emit('user.email.changed', $this->token);
+            Event::instance()->emit('user.email.changed', $this->token->user);
         }
 
         $f3->reroute(sprintf('@user_details(@userid=%d)', $this->token->user->id));

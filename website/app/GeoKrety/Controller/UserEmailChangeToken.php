@@ -47,7 +47,6 @@ class UserEmailChangeToken extends Base {
             die();
         }
 
-        $this->token->updating_ip = \Base::instance()->get('IP');
         if (!$this->token->validate()) {
             $this->get($f3);
             die();
@@ -67,7 +66,7 @@ class UserEmailChangeToken extends Base {
 
         // Notifications
         if ($f3->get('POST.validate') === 'true') {
-            Event::instance()->emit('user.email.changed', $this->token);
+            Event::instance()->emit('user.email.changed', $this->token->user);
             $smtp = new EmailChange();
             $smtp->sendEmailChangedNotification($this->token);
             Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
@@ -83,6 +82,7 @@ class UserEmailChangeToken extends Base {
         EmailActivationToken::disableOtherTokensForUser($this->token->user, $this->token->token);
         $this->token->used = EmailActivationToken::TOKEN_CHANGED;
         $this->token->touch('used_on_datetime');
+        $this->token->updating_ip = \Base::instance()->get('IP');
         $this->token->previous_email = $this->token->user->email;
 
         // Save the new email
@@ -106,5 +106,7 @@ class UserEmailChangeToken extends Base {
     public function refuse() {
         // Mark token as used
         $this->token->used = EmailActivationToken::TOKEN_REFUSED;
+        $this->token->touch('reverted_on_datetime');
+        $this->token->reverting_ip = \Base::instance()->get('IP');
     }
 }
