@@ -1,0 +1,16 @@
+
+
+.target-highlight-next-div {
+  @-webkit-keyframes target-fade {
+      100% { background-color: rgba(0,0,0,0); }
+      0% { background-color: rgba(255,255,170,1); }
+  }
+  @-moz-keyframes target-fade {
+      100% { background-color: rgba(0,0,0,0); }
+      0% { background-color: rgba(255,255,170,1); }
+  }
+  :target + div {
+    -webkit-animation: target-fade 8s 1;
+    -moz-animation: target-fade 8s 1;
+  }
+}
