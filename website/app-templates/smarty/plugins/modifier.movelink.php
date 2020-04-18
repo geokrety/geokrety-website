@@ -12,7 +12,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * -------------------------------------------------------------
  */
 function smarty_modifier_movelink(\GeoKrety\Model\Move $move, ?string $textString = null, ?string $target = null): string {
-    $text = is_null($textString) ? _('view move') : $textString;
+    $text = is_null($textString) ? $move->geokret->gkid : $textString;
     $target_html = is_null($target) ? '' : ' target="'.$target.'"';
 
     return sprintf(
@@ -23,5 +23,3 @@ function smarty_modifier_movelink(\GeoKrety\Model\Move $move, ?string $textStrin
         smarty_modifier_escape($text),
     );
 }
-
-//$f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $moves[0]->geokret->gkid, $moves[0]->getMoveOnPage(), $moves[0]->id));
