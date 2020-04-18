@@ -70,7 +70,7 @@ class Move extends Base {
         'waypoint' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-            'filter' => 'trim|HTMLPurifier',
+            'filter' => 'trim|HTMLPurifier|EmptyString2Null',
         ],
         'author' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
