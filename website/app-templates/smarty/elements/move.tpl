@@ -4,10 +4,11 @@
 
         <div class="row">
             <div class="col-xs-2">
-                <div class="center-block">
-                    {$move|logicon nofilter}
-                    <small>{if !is_null($move->lat) and !is_null($move->lon)}{$move->distance}&nbsp;km{/if}</small>
-                </div>
+                <button type="button" class="btn btn-default btn-xs popup-move-navigate" title="{t}Show move on map{/t}" data-id="{$move->step}" {if !$move->move_type->isCoordinatesRequired()}disabled{/if}>
+                    <small>#{$move->step}</small>
+                </button>
+                {$move|logicon nofilter}
+                <small>{if !is_null($move->lat) and !is_null($move->lon)}{$move->distance}&nbsp;km{/if}</small>
             </div>
             <div class="col-xs-10">
 

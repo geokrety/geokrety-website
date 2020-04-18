@@ -1,5 +1,4 @@
 {include file='macros/pagination.tpl'}
-<a class="anchor" id="moves"></a>
 
 {call pagination pg=$pg anchor='moves'}
 

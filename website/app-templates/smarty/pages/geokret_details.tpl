@@ -15,6 +15,8 @@
 {include file='blocks/geokret/mission.tpl'}
 {include file='blocks/geokret/found_it.tpl'}
 {include file='blocks/geokret/actions.tpl'}
+
+    <a class="anchor" id="moves"></a>
 {include file='blocks/geokret/map.tpl'}
     <hr/>
 {include file='blocks/geokret/moves.tpl'}
@@ -22,9 +24,7 @@
 
 {block name=javascript}
 {if $geokret->caches_count}
-{include file='js/_map_init.tpl.js'}
-  initializeMap();
-  // TODO load moves as geojson
+{include file='js/geokrety/geokrety_details_map.tpl.js'}
 {/if}
 
 // Bind modal

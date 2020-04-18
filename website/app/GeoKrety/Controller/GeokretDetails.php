@@ -13,6 +13,7 @@ class GeokretDetails extends Base {
     public function get($f3) {
         // Load move independently to use pagination
         $move = new Move();
+        $move->step = 'ROW_NUMBER() OVER (ORDER BY moved_on_datetime ASC)';
         $move->filter('pictures', ['uploaded_on_datetime != ?', null]);
         $filter = ['geokret = ?', $this->geokret->id];
         $option = ['order' => 'moved_on_datetime DESC'];

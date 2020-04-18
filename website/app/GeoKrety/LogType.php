@@ -47,6 +47,7 @@ class LogType {
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_ARCHIVED,
         self::LOG_TYPE_DIPPED,
     ];
 
