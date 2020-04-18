@@ -7,19 +7,19 @@
         <small>{$geokret->gkid}</small>
     </td>
     <td class="text-center">
-        {if !is_null($geokret->last_position)}
-        {$geokret->last_position->country|country nofilter}
-        {$geokret->last_position|cachelink nofilter}
+        {if !is_null($geokret->last_position) && $geokret->last_position->move_type->isCoordinatesRequired()}
+            {$geokret->last_position->country|country nofilter}
+            {$geokret->last_position|cachelink nofilter}
         {/if}
     </td>
     <td class="text-center" nowrap>
         {if !is_null($geokret->last_position)}
-        {$geokret->last_position|logicon:true nofilter}
-        {$geokret->last_position->moved_on_datetime|print_date nofilter}
-        <br />
-        <small>{$geokret->last_position->author|userlink:$geokret->last_position->username nofilter}</small>
+            {$geokret->last_position|logicon:true nofilter}
+            {$geokret->last_position->moved_on_datetime|print_date nofilter}
+            <br />
+            <small>{$geokret->last_position->author|userlink:$geokret->last_position->username nofilter}</small>
         {else}
-        {$geokret->created_on_datetime|print_date nofilter}
+            {$geokret->created_on_datetime|print_date nofilter}
         {/if}
     </td>
     <td class="text-right">

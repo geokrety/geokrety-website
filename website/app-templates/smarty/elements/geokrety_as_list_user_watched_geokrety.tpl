@@ -10,7 +10,7 @@
         {$geokret->owner|userlink:'' nofilter}
     </td>
     <td class="text-center">
-        {if !is_null($geokret->last_position)}
+        {if !is_null($geokret->last_position) && $geokret->last_position->move_type->isCoordinatesRequired()}
         {$geokret->last_position->country|country nofilter}
         {$geokret->last_position|cachelink nofilter}
         {/if}

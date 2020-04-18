@@ -15,7 +15,7 @@
                     <div class="col-xs-12">
 
                         <div class="pull-left">
-                            {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country nofilter}{/if}
+                            {if $move->move_type->isCoordinatesRequired()}{$move->country|country nofilter}{/if}
                             {$move|cachelink nofilter}
                         </div>
                         <div class="pull-right">
