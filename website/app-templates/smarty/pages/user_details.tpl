@@ -36,12 +36,7 @@
     {/if}
 
     {if $user->isCurrentUser() && $user->hasHomeCoordinates()}
-        {include file='js/_map_init.tpl.js'}
-        var map = initializeMap();
-        // Load GeoKrety near home position
-        var bounds = map.getBounds();
-        var geojsonLayer = new L.GeoJSON.AJAX("{GK_MAP_URL}/geojson?latTL="+bounds.getNorthWest().lat+"&lonTL="+bounds.getSouthEast().lng+"&latBR="+bounds.getSouthEast().lat+"&lonBR="+bounds.getNorthWest().lng+"&limit=500&json=1&daysFrom=0&daysTo=45");
-        geojsonLayer.addTo(map);
+        {include file='js/users/geokrety_near_home_map.tpl.js'}
     {/if}
 
     // Bind modal

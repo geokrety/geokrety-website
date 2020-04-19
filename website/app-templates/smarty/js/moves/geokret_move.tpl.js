@@ -58,10 +58,8 @@ $('#collapseMessage').on('shown.bs.collapse', function() {
 
 // Initialize map
 {include 'js/_map_init.tpl.js'}
-// The map object
-var map;
 // The marker on the map
-var cacheMarker;
+let cacheMarker;
 
 // Display the map
 function showMap() {
@@ -83,7 +81,7 @@ function positionUpdate(coordinates) {
         return;
     }
 
-    var latlngString = coordinates[0] + ' ' + coordinates[1];
+    let latlngString = coordinates[0] + ' ' + coordinates[1];
     if ($("#latlon").val() != latlngString) {
         $("#latlon").val(latlngString);
         $("#latlon").parsley().validate();

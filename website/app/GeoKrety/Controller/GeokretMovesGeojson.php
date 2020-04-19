@@ -8,6 +8,7 @@ class GeokretMovesGeojson extends Base {
     use GeokretLoader;
 
     public function get($f3) {
+        header('Content-Type: application/json; charset=utf-8');
         $page = $f3->get('PARAMS.page');
         if (!ctype_digit(strval($page))) {
             $page = 1;
@@ -26,7 +27,7 @@ class GeokretMovesGeojson extends Base {
                 moved_on_datetime,
                 move_id,
                 move_type,
-                author_username AS author,
+                author, author_username,
                 COALESCE (lag(step) over (order by moved_on_datetime DESC), step) AS next_step,
                 COALESCE (lag(step) over (order by moved_on_datetime ASC), step) AS previous_step
                 from (
@@ -34,10 +35,10 @@ class GeokretMovesGeojson extends Base {
                         ROW_NUMBER() OVER (ORDER BY moved_on_datetime ASC) AS step
                     FROM gk_moves
                     LEFT JOIN gk_users ON author = gk_users.id
-                    WHERE geokret={$this->geokret->id}
+                    WHERE geokret=?
                     ORDER BY moved_on_datetime DESC
-                    LIMIT {$per_page}
-                    OFFSET {$start}
+                    LIMIT ?
+                    OFFSET ?
                 ) as y
                 WHERE y.position is not NULL
             ) as t,
@@ -45,17 +46,17 @@ class GeokretMovesGeojson extends Base {
                 FROM (
                     SELECT id, geokret, position, moved_on_datetime
                     FROM gk_moves
-                    where geokret={$this->geokret->id}
+                    where geokret=?
                     GROUP BY id
                     ORDER BY moved_on_datetime DESC
-                    LIMIT {$per_page}
-                    OFFSET {$start}
+                    LIMIT ?
+                    OFFSET ?
                 ) AS g
                 WHERE g.position is not NULL
                 GROUP BY g.geokret
             ) as f;
 EOT;
-        $result = $f3->get('DB')->exec($sql);
-        echo $result[0]['geojson'];
+        $result = $f3->get('DB')->exec($sql, [$this->geokret->id, $per_page, $start, $this->geokret->id, $per_page, $start]);
+        die($result[0]['geojson']);
     }
 }

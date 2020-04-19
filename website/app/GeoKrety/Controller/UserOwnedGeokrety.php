@@ -21,6 +21,6 @@ class UserOwnedGeokrety extends Base {
         $pages = new Pagination($subset['total'], $subset['limit']);
         Smarty::assign('pg', $pages);
 
-        Smarty::render('pages/user_geokrety_owned.tpl');
+        Smarty::render('pages/user_owned_geokrety.tpl');
     }
 }

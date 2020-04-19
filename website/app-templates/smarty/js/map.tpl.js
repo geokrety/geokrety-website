@@ -1,28 +1,28 @@
-var map;
-var geoJsonLayer;
-var markers = L.markerClusterGroup({
+let map;
+let geoJsonLayer;
+let markers = L.markerClusterGroup({
     maxClusterRadius: 40,
     spiderfyOnMaxZoom: true
 });
-var geokretyfilter = new L.control.geokretyfilter({
+let geokretyfilter = new L.control.geokretyfilter({
     "data": undefined
 }, undefined);
 
-var blue = 0;
-var red = 1;
-var grey = 2;
-var markersCounter = [0, 0, 0];
-var markersCounterTotal = 0;
+let blue = 0;
+let red = 1;
+let grey = 2;
+let markersCounter = [0, 0, 0];
+let markersCounterTotal = 0;
 
-var initial_position = new L.LatLng(43.5943, 6.9509);
-var initial_zoom = 8;
+let initial_position = new L.LatLng(43.5943, 6.9509);
+let initial_zoom = 8;
 
-var maxRange = 90;
-var savedMaxRange = 45;
+let maxRange = 90;
+let savedMaxRange = 45;
 
-var slider = undefined;
+let slider = undefined;
 
-var automatic_bound = false;
+let automatic_bound = false;
 
 function initmap() {
     {include file = 'js/_map_init.tpl.js'}
@@ -102,7 +102,7 @@ function updateSlider(slider) {
     $("#mapid").focus();
 }
 
-var blueIcon = new L.Icon({
+let blueIcon = new L.Icon({
     iconSize: [25, 40],
     iconAnchor: [12, 40],
     popupAnchor: [1, -24],
@@ -110,7 +110,7 @@ var blueIcon = new L.Icon({
     shadowUrl: '{GK_CDN_ICONS_URL}/pins/marker-shadow.png'
 });
 
-var redIcon = new L.Icon({
+let redIcon = new L.Icon({
     iconSize: [25, 40],
     iconAnchor: [12, 40],
     popupAnchor: [1, -24],
@@ -118,7 +118,7 @@ var redIcon = new L.Icon({
     shadowUrl: '{GK_CDN_ICONS_URL}/pins/marker-shadow.png'
 });
 
-var greyIcon = new L.Icon({
+let greyIcon = new L.Icon({
     iconSize: [25, 40],
     iconAnchor: [12, 40],
     popupAnchor: [1, -24],
@@ -169,8 +169,8 @@ function onEachFeature(feature, layer) {
 }
 
 function retrieve() {
-    var bounds = map.getBounds();
-    var filter = "";
+    let bounds = map.getBounds();
+    let filter = "";
 
     //if ($("#geokrety_move_recent").prop('checked') == true) {
     //  filter += "&newer"
@@ -194,7 +194,7 @@ function retrieve() {
         filter += "&ownername=" + $('#geokrety_ownername').val();
     }
 
-    var url = "{GK_MAP_URL}/geojson?latTL=" + Math.round(bounds.getNorth() * 1000) / 1000 +
+    let url = "{GK_MAP_URL}/geojson?latTL=" + Math.round(bounds.getNorth() * 1000) / 1000 +
         "&lonTL=" + Math.round(bounds.getEast() * 1000) / 1000 +
         "&latBR=" + Math.round(bounds.getSouth() * 1000) / 1000 +
         "&lonBR=" + Math.round(bounds.getWest() * 1000) / 1000 +
@@ -279,11 +279,11 @@ function writeUrl() {
 }
 
 function readUrl() {
-    var hash = location.hash;
+    let hash = location.hash;
     if (hash.indexOf('#') === 0) {
         hash = hash.substr(1);
     }
-    var args = hash.split("/");
+    let args = hash.split("/");
     if (args.length == 9) {
         var zoom = parseInt(args[0], 10),
             lat = parseFloat(args[1]),

@@ -1,8 +1,8 @@
 // ----------------------------------- JQUERY - GEOKRET DETAILS MAP - BEGIN
 
 {include file='js/_map_init.tpl.js'}
-var map = initializeMap();
-var geoJsonLayer;
+map = initializeMap();
+let geoJsonLayer;
 
 function moveTypeIcon(move_type) {
     return '<img src="{'GK_CDN_IMAGES_URL'|constant}/log-icons/{$geokret->type->getTypeId()}/'+move_type+'.png" title="'+moveTypeText(move_type)+'">';
@@ -40,10 +40,17 @@ function OpenPopupForStep(step) {
 }
 
 function onEachFeature(feature, layer) {
+    let author = feature.properties.author_username;
+    if (feature.properties.author !== null) {
+        let user_link = "{'user_details'|alias:'userid=%USERID%'}".replace('%USERID%', feature.properties.author);
+        author = `<a href="${ user_link }">${ author }</a>`;
+    } else {
+        author = `<em class="user-anonymous">${ author }</em>`;
+    }
     layer.bindPopup(`
         <h4>${ moveTypeIcon(feature.properties.move_type) } ${ moveTypeText(feature.properties.move_type) }</h4>
         <dl class="dl-horizontal">
-            <dt>{t}Author:{/t}</dt><dd>${ feature.properties.author }</dd>
+            <dt>{t}Author:{/t}</dt><dd>${ author }</dd>
             <dt>{t}Waypoint:{/t}</dt><dd>${ feature.properties.waypoint === null ? feature.properties.lat + '/' + feature.properties.lon : feature.properties.waypoint }</dd>
             <dt>{t}Distance:{/t}</dt><dd>${ feature.properties.distance } km</dd>
             <dt>{t}Country:{/t}</dt><dd><span class="flag-icon flag-icon-${ feature.properties.country }" title="${ feature.properties.country }"></span></dd>
@@ -82,7 +89,7 @@ jQuery.ajax({
 });
 
 map.on('popupopen', function (e) {
-    var px = map.project(e.target._popup._latlng); // find the pixel location on the map where the popup anchor is
+    let px = map.project(e.target._popup._latlng); // find the pixel location on the map where the popup anchor is
     px.y -= e.target._popup._container.clientHeight/2; // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
     map.panTo(map.unproject(px), { animate: true }); // pan to new center
 });

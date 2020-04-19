@@ -46,7 +46,7 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
             {/if}
         </div>
         <figcaption>
-            <p class="text-center picture-caption" title="{$picture->caption|escape:'quotes'}">
+            <p class="text-center picture-caption" title="{$picture->caption}">
                 {$picture->caption}&nbsp;
             </p>
             {if $showItemLink}
