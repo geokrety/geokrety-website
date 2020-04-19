@@ -252,8 +252,14 @@ function toggleHomeCoordinatesButton() {
 }
 
 // bind radio buttons
-$("#moveForm input[type=radio]").change(function() {
+$("#moveForm input[name='logtype']").change(function() {
     toggleLocationSubfrom();
+});
+
+// bind radio buttons
+$("#moveForm label:has(input[name='logtype'])").on('dblclick', function() {
+    console.log('click');
+    $("#logtypeNextButton").click();
 });
 
 // bind on submit
