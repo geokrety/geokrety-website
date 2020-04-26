@@ -10,7 +10,7 @@ class GeokretMovesGeojson extends Base {
     public function get($f3) {
         header('Content-Type: application/json; charset=utf-8');
         $page = $f3->get('PARAMS.page');
-        if (!ctype_digit(strval($page))) {
+        if (!ctype_digit(strval($page)) || $page == 0) {
             $page = 1;
         }
         $start = ($page - 1) * GK_PAGINATION_GEOKRET_MOVES;

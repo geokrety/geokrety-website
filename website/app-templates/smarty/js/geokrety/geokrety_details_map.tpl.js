@@ -78,7 +78,7 @@ function onEachFeature(feature, layer) {
 
 jQuery.ajax({
     dataType: "json",
-    url: "https://new-theme.geokrety.house.kumy.net/en/geokrety/{$geokret->gkid}/geojson/page/{if ($f3->get('PARAMS.page'))}{$f3->get('PARAMS.page')}{else}1{/if}",
+    url: "{'geokret_moves_geojson_paginate'|alias:sprintf('@gkid=%s,@page=%d', $geokret->gkid, $f3->get('PARAMS.page'))}",
     success: function (data) {
         geoJsonLayer = L.geoJson(data, {
             onEachFeature: onEachFeature,
