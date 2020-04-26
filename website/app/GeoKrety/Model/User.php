@@ -283,7 +283,7 @@ class User extends Base implements JsonSerializable {
             WHERE id = ?
 EOT;
 
-        $result = $f3->get('DB')->exec($sql, [GK_DB_SECRET_KEY, GK_DB_GPG_PASSWORD, $this->id], 5);
+        $result = $f3->get('DB')->exec($sql, [GK_DB_SECRET_KEY, GK_DB_GPG_PASSWORD, $this->id], 1);
         if (count($result) === 0) {
             return null;
         }
