@@ -31,7 +31,7 @@ class PicturesImporter extends BaseCleaner {
     }
 
     protected function filterHook() {
-        return ['bucket = ? AND key = ?', NULL, NULL];
+        return ['bucket = ? AND key = ?', null, null];
     }
 
     protected function orderHook() {
