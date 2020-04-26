@@ -148,20 +148,20 @@ Note those demo gpg keys are available in the `db/crypto/` directory. (Key passw
 
 ### Datas
 ```bash
-pg_dump --file geokrety-data.tar --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "geokrety" "geokrety"
+pg_dump --file geokrety-data.tar --host "localhost" --port "5432" --username "geokrety" --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "geokrety" "geokrety"
 
-pg_dump --file secure-data.tar --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "secure" "geokrety"
+pg_dump --file secure-data.tar --host "localhost" --port "5432" --username "geokrety" --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "secure" "geokrety"
 
-pg_dump --file public-data.tar --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "public" --table=srtm --table=countries "geokrety"
+pg_dump --file public-data.tar --host "localhost" --port "5432" --username "geokrety" --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "public" --table=srtm --table=countries "geokrety"
 ```
 
 ### Schema
 ```bash
-pg_dump --file geokrety-schema.sql --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=p --schema-only --encoding "UTF8" --schema "geokrety" "geokrety"
+pg_dump --file geokrety-schema.sql --host "localhost" --port "5432" --username "geokrety" --verbose --format=p --schema-only --encoding "UTF8" --schema "geokrety" "geokrety"
 
-pg_dump --file secure-schema.sql --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=p --schema-only --encoding "UTF8" --schema "secure" "geokrety"
+pg_dump --file secure-schema.sql --host "localhost" --port "5432" --username "geokrety" --verbose --format=p --schema-only --encoding "UTF8" --schema "secure" "geokrety"
 
-pg_dump --file public-schema.sql --host "localhost" --port "5432" --username "geokrety" -W --verbose --format=p --schema-only --encoding "UTF8" --schema "public" "geokrety"
+pg_dump --file public-schema.sql --host "localhost" --port "5432" --username "geokrety" --verbose --format=p --schema-only --encoding "UTF8" --schema "public" "geokrety"
 ```
 
 
