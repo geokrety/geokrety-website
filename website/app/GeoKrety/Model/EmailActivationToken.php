@@ -203,11 +203,13 @@ EOT;
         if (count($result) === 0) {
             return null;
         }
+
         return $result[0]['email'] ?: null;
     }
 
     public function set_email($value): ?string {
         $this->_email = $value;
+
         return $value;
     }
 
@@ -224,11 +226,13 @@ EOT;
         if (count($result) === 0) {
             return null;
         }
+
         return $result[0]['previous_email'] ?: null;
     }
 
     public function set_previous_email($value): ?string {
         $this->_previous_email = $value;
+
         return $value;
     }
 

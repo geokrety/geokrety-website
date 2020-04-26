@@ -3,10 +3,8 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 class GeokretyMap extends Base {
-
     public function get($f3) {
         Smarty::render('pages/geokrety_map.tpl');
     }

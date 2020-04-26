@@ -12,8 +12,6 @@ use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
 use GeoKrety\Service\Validation\Waypoint as WaypointValidation;
 use ReCaptcha\ReCaptcha;
 
-// use GeoKrety\Service\; // TODO Country / Elevation services
-
 class MoveCreate extends Base {
     /**
      * @var Move

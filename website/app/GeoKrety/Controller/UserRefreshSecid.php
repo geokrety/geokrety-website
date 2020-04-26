@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Service\SecIdGenerator;
 use GeoKrety\Service\Smarty;
 
 class UserRefreshSecid extends Base {
