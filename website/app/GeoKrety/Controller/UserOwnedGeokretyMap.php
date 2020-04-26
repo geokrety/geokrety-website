@@ -25,7 +25,7 @@ class UserOwnedGeokretyMap extends Base {
                     coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) AS days
                 FROM "gk_geokrety_in_caches"
                 WHERE owner = ?
-                AND position IS NOT NULL
+                ORDER BY days DESC
             ) as t;
 EOT;
         $result = $f3->get('DB')->exec($sql, [$this->user->id]);

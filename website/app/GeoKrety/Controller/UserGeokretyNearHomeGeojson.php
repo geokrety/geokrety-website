@@ -20,7 +20,7 @@ class UserGeokretyNearHomeGeojson extends Base {
                     coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) AS days
                 FROM "gk_geokrety_near_users_homes"
                 WHERE "c_user_id" = ?
-                ORDER BY home_distance ASC
+                ORDER BY days DESC, home_distance ASC
                 LIMIT 500
             ) as t;
 EOT;

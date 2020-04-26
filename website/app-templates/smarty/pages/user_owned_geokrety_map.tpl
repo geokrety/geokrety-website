@@ -3,6 +3,7 @@
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_AJAX_JS)}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_SPIN_JS)}
 
 {block name=content}
 
@@ -23,7 +24,7 @@
             <div class="panel-body">
                 <ul class="links">
                     <li>
-                        <input type="radio" id="show-by-distance" name="show-by" value="distance" checked>
+                        <input type="radio" id="show-by-distance" name="show-by" value="distance">
                         <label for="show-by-distance">📏 {t}Total distance{/t}</label>
                     </li>
                     <li>
@@ -31,7 +32,7 @@
                         <label for="show-by-caches"><img src="{GK_CDN_IMAGES_URL}/log-icons/2caches.png" title="{t}Caches visited count{/t}" /> {t}Total visited caches{/t}</label>
                     </li>
                     <li>
-                        <input type="radio" id="show-by-days" name="show-by" value="days">
+                        <input type="radio" id="show-by-days" name="show-by" value="days" checked>
                         <label for="show-by-days">⏲️ {t}Last moved date{/t}</label>
                     </li>
                 </ul>

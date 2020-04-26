@@ -1019,31 +1019,15 @@ CREATE FUNCTION geokrety.owner_code_check_only_one_active_per_geokret() RETURNS 
     LANGUAGE plpgsql
     AS $$BEGIN
 
-PERFORM owner_code_check_only_one_active_per_geokret(NEW.geokret);
+IF COUNT(*) > 1 FROM "gk_owner_codes" WHERE geokret = NEW.geokret AND used = 0 THEN
+       RAISE 'An owner code for this GeoKret already exists';
+END IF;
 
 RETURN NEW;
 END;$$;
 
 
 ALTER FUNCTION geokrety.owner_code_check_only_one_active_per_geokret() OWNER TO geokrety;
-
---
--- Name: owner_code_check_only_one_active_per_geokret(bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
---
-
-CREATE FUNCTION geokrety.owner_code_check_only_one_active_per_geokret(geokret_id bigint) RETURNS boolean
-    LANGUAGE plpgsql
-    AS $$BEGIN
-
-IF COUNT(*) > 1 FROM "gk_owner_codes" WHERE geokret = geokret_id AND id IS NOT NULL AND used = 0 THEN
-	RAISE 'An owner code for this GeoKret already exists';
-END IF;
-
-RETURN TRUE;
-END;$$;
-
-
-ALTER FUNCTION geokrety.owner_code_check_only_one_active_per_geokret(geokret_id bigint) OWNER TO geokrety;
 
 --
 -- Name: owner_code_check_validating_ip(inet, smallint, timestamp with time zone, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
@@ -1382,11 +1366,21 @@ CREATE FUNCTION geokrety.user_secid_generate() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
 
-IF (NEW.secid IS NOT NULL) THEN
-	RETURN NEW;
+IF OLD._secid_crypt IS DISTINCT FROM NEW._secid_crypt THEN
+	RAISE '_secid_crypt must not be manually updated';
+END IF;
+IF OLD._secid_hash IS DISTINCT FROM NEW._secid_hash THEN
+	RAISE '_secid_hash must not be manually updated';
 END IF;
 
-NEW.secid = generate_secid();
+IF (NEW._secid IS NULL OR NEW._secid = '') THEN
+	NEW._secid = generate_secid(); -- generate a new token
+END IF;
+
+NEW._secid_crypt = gkencrypt(NEW._secid);
+NEW._secid_hash = public.digest(NEW._secid, 'sha256')::text;
+-- Ensure secid field is always NULL
+NEW._secid = NULL;
 
 RETURN NEW;
 END;$$;
@@ -1598,6 +1592,20 @@ ALTER SEQUENCE geokrety.account_activation_id_seq OWNED BY geokrety.gk_account_a
 
 
 --
+-- Name: audit_logs_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
+--
+
+CREATE SEQUENCE geokrety.audit_logs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE geokrety.audit_logs_id_seq OWNER TO geokrety;
+
+--
 -- Name: gk_badges; Type: TABLE; Schema: geokrety; Owner: geokrety
 --
 
@@ -1643,8 +1651,8 @@ CREATE TABLE geokrety.gk_email_activation (
     token character varying(60),
     revert_token character varying(60),
     "user" bigint NOT NULL,
-    previous_email character varying(150),
-    email character varying(150) NOT NULL,
+    _previous_email character varying(150),
+    _email character varying(150),
     created_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
     used_on_datetime timestamp(0) with time zone,
@@ -1653,6 +1661,11 @@ CREATE TABLE geokrety.gk_email_activation (
     updating_ip inet,
     reverting_ip inet,
     used smallint DEFAULT '0'::smallint NOT NULL,
+    _email_crypt bytea NOT NULL,
+    _previous_email_crypt bytea,
+    _email_hash bytea NOT NULL,
+    _previous_email_hash bytea,
+    CONSTRAINT not_empty CHECK (((_email)::text <> ''::text)),
     CONSTRAINT validate_used_ip_datetime CHECK (geokrety.email_activation_check_used_ip_datetime(used, updating_ip, used_on_datetime, reverting_ip, reverted_on_datetime)),
     CONSTRAINT validate_used_value CHECK ((used = ANY (ARRAY[0, 1, 2, 3, 4, 5, 6])))
 );
@@ -1661,10 +1674,10 @@ CREATE TABLE geokrety.gk_email_activation (
 ALTER TABLE geokrety.gk_email_activation OWNER TO geokrety;
 
 --
--- Name: COLUMN gk_email_activation.previous_email; Type: COMMENT; Schema: geokrety; Owner: geokrety
+-- Name: COLUMN gk_email_activation._previous_email; Type: COMMENT; Schema: geokrety; Owner: geokrety
 --
 
-COMMENT ON COLUMN geokrety.gk_email_activation.previous_email IS 'Store the previous in case of needed rollback';
+COMMENT ON COLUMN geokrety.gk_email_activation._previous_email IS 'Store the previous in case of needed rollback';
 
 
 --
@@ -1831,29 +1844,12 @@ CREATE TABLE geokrety.gk_audit_logs (
     event character varying,
     author bigint,
     ip inet,
-    context json
+    context json,
+    id bigint DEFAULT nextval('geokrety.audit_logs_id_seq'::regclass) NOT NULL
 );
 
 
 ALTER TABLE geokrety.gk_audit_logs OWNER TO geokrety;
-
---
--- Name: gk_mails; Type: TABLE; Schema: geokrety; Owner: geokrety
---
-
-CREATE TABLE geokrety.gk_mails (
-    id bigint NOT NULL,
-    token character varying(10),
-    from_user bigint,
-    to_user bigint,
-    subject character varying(255) NOT NULL,
-    content text NOT NULL,
-    sent_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    ip inet NOT NULL
-);
-
-
-ALTER TABLE geokrety.gk_mails OWNER TO geokrety;
 
 --
 -- Name: gk_moves; Type: TABLE; Schema: geokrety; Owner: geokrety
@@ -1930,6 +1926,229 @@ COMMENT ON COLUMN geokrety.gk_moves.moved_on_datetime IS 'The move as configured
 
 COMMENT ON COLUMN geokrety.gk_moves.move_type IS '0=drop, 1=grab, 2=comment, 3=met, 4=arch, 5=dip';
 
+
+--
+-- Name: gk_users; Type: TABLE; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TABLE geokrety.gk_users (
+    id bigint NOT NULL,
+    username character varying(80) NOT NULL,
+    password character varying(120),
+    joined_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
+    daily_mails boolean DEFAULT true NOT NULL,
+    registration_ip inet NOT NULL,
+    preferred_language character varying(2),
+    home_latitude double precision,
+    home_longitude double precision,
+    observation_area smallint,
+    home_country character varying,
+    daily_mails_hour smallint DEFAULT geokrety.random_between(0, 23) NOT NULL,
+    avatar bigint,
+    pictures_count integer DEFAULT 0 NOT NULL,
+    last_mail_datetime timestamp(0) with time zone,
+    last_login_datetime timestamp(0) with time zone,
+    terms_of_use_datetime timestamp(0) with time zone,
+    statpic_template integer DEFAULT 1 NOT NULL,
+    email_invalid smallint DEFAULT '0'::smallint NOT NULL,
+    account_valid smallint DEFAULT '0'::smallint NOT NULL,
+    _secid_crypt bytea,
+    _email_crypt bytea,
+    _email character varying(128),
+    _secid character varying,
+    _secid_hash bytea,
+    _email_hash bytea,
+    CONSTRAINT validate_account_valid CHECK ((account_valid = ANY (ARRAY[0, 1]))),
+    CONSTRAINT validate_email_invalid CHECK ((email_invalid = ANY (ARRAY[0, 1, 2])))
+);
+
+
+ALTER TABLE geokrety.gk_users OWNER TO geokrety;
+
+--
+-- Name: COLUMN gk_users.pictures_count; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON COLUMN geokrety.gk_users.pictures_count IS 'Attached avatar count';
+
+
+--
+-- Name: COLUMN gk_users.terms_of_use_datetime; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON COLUMN geokrety.gk_users.terms_of_use_datetime IS 'Acceptation date';
+
+
+--
+-- Name: COLUMN gk_users.account_valid; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON COLUMN geokrety.gk_users.account_valid IS '0=unconfirmed 1=confirmed';
+
+
+--
+-- Name: COLUMN gk_users._secid_crypt; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON COLUMN geokrety.gk_users._secid_crypt IS 'READ ONLY
+use _secid for writing';
+
+
+--
+-- Name: COLUMN gk_users._secid; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON COLUMN geokrety.gk_users._secid IS 'WRITE ONLY
+field for secid';
+
+
+--
+-- Name: gk_geokrety_with_details; Type: VIEW; Schema: geokrety; Owner: geokrety
+--
+
+CREATE VIEW geokrety.gk_geokrety_with_details AS
+ SELECT gk_geokrety.id,
+    gk_geokrety.gkid,
+    gk_geokrety.tracking_code,
+    gk_geokrety.name,
+    gk_geokrety.mission,
+    gk_geokrety.owner,
+    gk_geokrety.distance,
+    gk_geokrety.caches_count,
+    gk_geokrety.pictures_count,
+    gk_geokrety.last_position,
+    gk_geokrety.last_log,
+    gk_geokrety.holder,
+    gk_geokrety.avatar,
+    gk_geokrety.created_on_datetime,
+    gk_geokrety.updated_on_datetime,
+    gk_geokrety.missing,
+    gk_geokrety.type,
+    gk_moves."position",
+    gk_moves.lat,
+    gk_moves.lon,
+    gk_moves.waypoint,
+    gk_moves.elevation,
+    gk_moves.country,
+    gk_moves.move_type,
+    gk_moves.author,
+    gk_moves.moved_on_datetime,
+    COALESCE(gk_moves.username, m_author.username) AS author_username,
+    COALESCE(g_owner.username, 'Abandoned'::character varying) AS owner_username,
+    g_avatar.key AS avatar_key
+   FROM ((((geokrety.gk_geokrety
+     LEFT JOIN geokrety.gk_moves ON ((gk_geokrety.last_position = gk_moves.id)))
+     LEFT JOIN geokrety.gk_users m_author ON ((gk_moves.author = m_author.id)))
+     LEFT JOIN geokrety.gk_users g_owner ON ((gk_geokrety.owner = g_owner.id)))
+     LEFT JOIN geokrety.gk_pictures g_avatar ON ((gk_geokrety.avatar = g_avatar.id)));
+
+
+ALTER TABLE geokrety.gk_geokrety_with_details OWNER TO geokrety;
+
+--
+-- Name: gk_geokrety_in_caches; Type: MATERIALIZED VIEW; Schema: geokrety; Owner: geokrety
+--
+
+CREATE MATERIALIZED VIEW geokrety.gk_geokrety_in_caches AS
+ SELECT gk_geokrety_with_details.id,
+    gk_geokrety_with_details.gkid,
+    gk_geokrety_with_details.tracking_code,
+    gk_geokrety_with_details.name,
+    gk_geokrety_with_details.mission,
+    gk_geokrety_with_details.owner,
+    gk_geokrety_with_details.distance,
+    gk_geokrety_with_details.caches_count,
+    gk_geokrety_with_details.pictures_count,
+    gk_geokrety_with_details.last_position,
+    gk_geokrety_with_details.last_log,
+    gk_geokrety_with_details.holder,
+    gk_geokrety_with_details.avatar,
+    gk_geokrety_with_details.created_on_datetime,
+    gk_geokrety_with_details.updated_on_datetime,
+    gk_geokrety_with_details.missing,
+    gk_geokrety_with_details.type,
+    gk_geokrety_with_details."position",
+    gk_geokrety_with_details.lat,
+    gk_geokrety_with_details.lon,
+    gk_geokrety_with_details.waypoint,
+    gk_geokrety_with_details.elevation,
+    gk_geokrety_with_details.country,
+    gk_geokrety_with_details.move_type,
+    gk_geokrety_with_details.author,
+    gk_geokrety_with_details.moved_on_datetime,
+    gk_geokrety_with_details.author_username,
+    gk_geokrety_with_details.owner_username,
+    gk_geokrety_with_details.avatar_key
+   FROM geokrety.gk_geokrety_with_details
+  WHERE (gk_geokrety_with_details.move_type = ANY (geokrety.moves_types_markable_as_missing()))
+  WITH NO DATA;
+
+
+ALTER TABLE geokrety.gk_geokrety_in_caches OWNER TO geokrety;
+
+--
+-- Name: gk_geokrety_near_users_homes; Type: VIEW; Schema: geokrety; Owner: geokrety
+--
+
+CREATE VIEW geokrety.gk_geokrety_near_users_homes AS
+ SELECT c_user.id AS c_user_id,
+    c_user.username AS c_username,
+    gk_geokrety_in_caches.id,
+    gk_geokrety_in_caches.gkid,
+    gk_geokrety_in_caches.tracking_code,
+    gk_geokrety_in_caches.name,
+    gk_geokrety_in_caches.mission,
+    gk_geokrety_in_caches.owner,
+    gk_geokrety_in_caches.distance,
+    gk_geokrety_in_caches.caches_count,
+    gk_geokrety_in_caches.pictures_count,
+    gk_geokrety_in_caches.last_position,
+    gk_geokrety_in_caches.last_log,
+    gk_geokrety_in_caches.holder,
+    gk_geokrety_in_caches.avatar,
+    gk_geokrety_in_caches.created_on_datetime,
+    gk_geokrety_in_caches.updated_on_datetime,
+    gk_geokrety_in_caches.missing,
+    gk_geokrety_in_caches.type,
+    gk_geokrety_in_caches."position",
+    gk_geokrety_in_caches.lat,
+    gk_geokrety_in_caches.lon,
+    gk_geokrety_in_caches.waypoint,
+    gk_geokrety_in_caches.elevation,
+    gk_geokrety_in_caches.country,
+    gk_geokrety_in_caches.move_type,
+    gk_geokrety_in_caches.author,
+    gk_geokrety_in_caches.moved_on_datetime,
+    gk_geokrety_in_caches.author_username,
+    gk_geokrety_in_caches.owner_username,
+    gk_geokrety_in_caches.avatar_key,
+    public.st_distance(gk_geokrety_in_caches."position", geokrety.coords2position(c_user.home_latitude, c_user.home_longitude)) AS home_distance
+   FROM geokrety.gk_geokrety_in_caches,
+    geokrety.gk_users c_user
+  WHERE public.st_dwithin(gk_geokrety_in_caches."position", geokrety.coords2position(c_user.home_latitude, c_user.home_longitude), ((c_user.observation_area * 1000))::double precision)
+  ORDER BY (public.st_distance(gk_geokrety_in_caches."position", geokrety.coords2position(c_user.home_latitude, c_user.home_longitude)) < ((c_user.observation_area * 1000))::double precision);
+
+
+ALTER TABLE geokrety.gk_geokrety_near_users_homes OWNER TO geokrety;
+
+--
+-- Name: gk_mails; Type: TABLE; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TABLE geokrety.gk_mails (
+    id bigint NOT NULL,
+    token character varying(10),
+    from_user bigint,
+    to_user bigint,
+    subject character varying(255) NOT NULL,
+    content text NOT NULL,
+    sent_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    ip inet NOT NULL
+);
+
+
+ALTER TABLE geokrety.gk_mails OWNER TO geokrety;
 
 --
 -- Name: gk_moves_comments; Type: TABLE; Schema: geokrety; Owner: geokrety
@@ -2018,8 +2237,7 @@ CREATE TABLE geokrety.gk_owner_codes (
     claimed_on_datetime timestamp(0) with time zone,
     adopter bigint,
     validating_ip inet,
-    used smallint DEFAULT '0'::smallint NOT NULL,
-    CONSTRAINT check_validating_ip CHECK (geokrety.owner_code_check_validating_ip(validating_ip, used, claimed_on_datetime, adopter))
+    used smallint DEFAULT '0'::smallint NOT NULL
 );
 
 
@@ -2244,69 +2462,6 @@ ALTER TABLE geokrety.gk_statistics_daily_counters_id_seq OWNER TO geokrety;
 --
 
 ALTER SEQUENCE geokrety.gk_statistics_daily_counters_id_seq OWNED BY geokrety.gk_statistics_daily_counters.id;
-
-
---
--- Name: gk_users; Type: TABLE; Schema: geokrety; Owner: geokrety
---
-
-CREATE TABLE geokrety.gk_users (
-    id bigint NOT NULL,
-    username character varying(80) NOT NULL,
-    password character varying(120),
-    email character varying(150),
-    joined_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
-    daily_mails boolean DEFAULT true NOT NULL,
-    registration_ip inet NOT NULL,
-    preferred_language character varying(2),
-    home_latitude double precision,
-    home_longitude double precision,
-    observation_area smallint,
-    home_country character varying,
-    daily_mails_hour smallint DEFAULT geokrety.random_between(0, 23) NOT NULL,
-    avatar bigint,
-    pictures_count integer DEFAULT 0 NOT NULL,
-    last_mail_datetime timestamp(0) with time zone,
-    last_login_datetime timestamp(0) with time zone,
-    terms_of_use_datetime timestamp(0) with time zone,
-    secid character varying(128),
-    statpic_template integer DEFAULT 1 NOT NULL,
-    email_invalid smallint DEFAULT '0'::smallint NOT NULL,
-    account_valid smallint DEFAULT '0'::smallint NOT NULL,
-    CONSTRAINT validate_account_valid CHECK ((account_valid = ANY (ARRAY[0, 1]))),
-    CONSTRAINT validate_email_invalid CHECK ((email_invalid = ANY (ARRAY[0, 1, 2])))
-);
-
-
-ALTER TABLE geokrety.gk_users OWNER TO geokrety;
-
---
--- Name: COLUMN gk_users.pictures_count; Type: COMMENT; Schema: geokrety; Owner: geokrety
---
-
-COMMENT ON COLUMN geokrety.gk_users.pictures_count IS 'Attached avatar count';
-
-
---
--- Name: COLUMN gk_users.terms_of_use_datetime; Type: COMMENT; Schema: geokrety; Owner: geokrety
---
-
-COMMENT ON COLUMN geokrety.gk_users.terms_of_use_datetime IS 'Acceptation date';
-
-
---
--- Name: COLUMN gk_users.secid; Type: COMMENT; Schema: geokrety; Owner: geokrety
---
-
-COMMENT ON COLUMN geokrety.gk_users.secid IS 'connect by other applications';
-
-
---
--- Name: COLUMN gk_users.account_valid; Type: COMMENT; Schema: geokrety; Owner: geokrety
---
-
-COMMENT ON COLUMN geokrety.gk_users.account_valid IS '0=unconfirmed 1=confirmed';
 
 
 --
@@ -2740,6 +2895,23 @@ CREATE TABLE geokrety.sessions (
 ALTER TABLE geokrety.sessions OWNER TO geokrety;
 
 --
+-- Name: tt; Type: TABLE; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TABLE geokrety.tt (
+    id bigint,
+    waypoint character varying(11),
+    country character varying(3),
+    elevation integer,
+    "position" public.geography,
+    lat double precision,
+    lon double precision
+);
+
+
+ALTER TABLE geokrety.tt OWNER TO geokrety;
+
+--
 -- Name: users_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety
 --
 
@@ -2957,6 +3129,22 @@ ALTER TABLE ONLY geokrety.scripts ALTER COLUMN id SET DEFAULT nextval('geokrety.
 
 
 --
+-- Name: gk_audit_logs audit_logs_pkey; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE ONLY geokrety.gk_audit_logs
+    ADD CONSTRAINT audit_logs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: gk_owner_codes check_validating_ip; Type: CHECK CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE geokrety.gk_owner_codes
+    ADD CONSTRAINT check_validating_ip CHECK (geokrety.owner_code_check_validating_ip(validating_ip, used, claimed_on_datetime, adopter)) NOT VALID;
+
+
+--
 -- Name: gk_geokrety gk_geokrety_primary; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
 --
 
@@ -3026,14 +3214,6 @@ ALTER TABLE ONLY geokrety.gk_statistics_daily_counters
 
 ALTER TABLE ONLY geokrety.gk_waypoints_gc
     ADD CONSTRAINT gk_waypoints_gc_id PRIMARY KEY (id);
-
-
---
--- Name: gk_waypoints_gc gk_waypoints_gc_position; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
---
-
-ALTER TABLE ONLY geokrety.gk_waypoints_gc
-    ADD CONSTRAINT gk_waypoints_gc_position UNIQUE ("position");
 
 
 --
@@ -3197,6 +3377,14 @@ ALTER TABLE ONLY geokrety.sessions
 
 
 --
+-- Name: gk_waypoints_gc waypoints_gc_uniq_position; Type: CONSTRAINT; Schema: geokrety; Owner: geokrety
+--
+
+ALTER TABLE ONLY geokrety.gk_waypoints_gc
+    ADD CONSTRAINT waypoints_gc_uniq_position UNIQUE ("position");
+
+
+--
 -- Name: audit_logs_index_event; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
@@ -3211,17 +3399,17 @@ CREATE INDEX audit_logs_index_log_datetime ON geokrety.gk_audit_logs USING btree
 
 
 --
--- Name: gk_geokrety_uniq_tracking_code; Type: INDEX; Schema: geokrety; Owner: geokrety
+-- Name: gk_moves_country_index; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
-CREATE UNIQUE INDEX gk_geokrety_uniq_tracking_code ON geokrety.gk_geokrety USING btree (tracking_code);
+CREATE INDEX gk_moves_country_index ON geokrety.gk_moves USING btree (country);
 
 
 --
--- Name: gk_moves_country; Type: INDEX; Schema: geokrety; Owner: geokrety
+-- Name: gk_moves_type_index; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
-CREATE INDEX gk_moves_country ON geokrety.gk_moves USING btree (country);
+CREATE INDEX gk_moves_type_index ON geokrety.gk_moves USING btree (move_type);
 
 
 --
@@ -3232,10 +3420,29 @@ CREATE INDEX gk_pictures_key ON geokrety.gk_pictures USING btree (key);
 
 
 --
--- Name: gk_users_uniq_secid; Type: INDEX; Schema: geokrety; Owner: geokrety
+-- Name: gk_users_email_uniq; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
-CREATE UNIQUE INDEX gk_users_uniq_secid ON geokrety.gk_users USING btree (secid);
+CREATE INDEX gk_users_email_uniq ON geokrety.gk_users USING btree (_email_hash);
+
+
+--
+-- Name: INDEX gk_users_email_uniq; Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON INDEX geokrety.gk_users_email_uniq IS 'NOTE: Uniq should be active but we have many accounts with duplicated emails:
+
+select email_old, count(*)
+from gk_users
+group by email_old
+HAVING count(*) > 1';
+
+
+--
+-- Name: gk_users_secid_uniq; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE UNIQUE INDEX gk_users_secid_uniq ON geokrety.gk_users USING btree (_secid_hash);
 
 
 --
@@ -3250,6 +3457,13 @@ CREATE UNIQUE INDEX gk_users_uniq_username ON geokrety.gk_users USING btree (use
 --
 
 CREATE INDEX gk_waypoints_waypoint ON geokrety.gk_waypoints_oc USING btree (waypoint);
+
+
+--
+-- Name: id_type_position; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX id_type_position ON geokrety.gk_moves USING btree (move_type, id, "position");
 
 
 --
@@ -3285,41 +3499,6 @@ CREATE INDEX idx_20991_token ON geokrety.gk_email_activation USING btree (token)
 --
 
 CREATE INDEX idx_20991_user ON geokrety.gk_email_activation USING btree ("user");
-
-
---
--- Name: idx_21002_avatarid; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21002_avatarid ON geokrety.gk_geokrety USING btree (avatar);
-
-
---
--- Name: idx_21002_hands_of_index; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21002_hands_of_index ON geokrety.gk_geokrety USING btree (holder);
-
-
---
--- Name: idx_21002_ost_log_id; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21002_ost_log_id ON geokrety.gk_geokrety USING btree (last_log);
-
-
---
--- Name: idx_21002_ost_pozycja_id; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21002_ost_pozycja_id ON geokrety.gk_geokrety USING btree (last_position);
-
-
---
--- Name: idx_21002_owner; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21002_owner ON geokrety.gk_geokrety USING btree (owner);
 
 
 --
@@ -3397,13 +3576,6 @@ CREATE INDEX idx_21044_data ON geokrety.gk_moves USING btree (created_on_datetim
 --
 
 CREATE INDEX idx_21044_data_dodania ON geokrety.gk_moves USING btree (moved_on_datetime);
-
-
---
--- Name: idx_21044_id_2; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21044_id_2 ON geokrety.gk_moves USING btree (geokret);
 
 
 --
@@ -3554,17 +3726,10 @@ CREATE INDEX idx_21135_avatar ON geokrety.gk_users USING btree (avatar);
 
 
 --
--- Name: idx_21135_email; Type: INDEX; Schema: geokrety; Owner: geokrety
+-- Name: idx_21135_last_login_datetime; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
-CREATE INDEX idx_21135_email ON geokrety.gk_users USING btree (email);
-
-
---
--- Name: idx_21135_ostatni_login; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21135_ostatni_login ON geokrety.gk_users USING btree (last_login_datetime);
+CREATE INDEX idx_21135_last_login_datetime ON geokrety.gk_users USING btree (last_login_datetime);
 
 
 --
@@ -3572,13 +3737,6 @@ CREATE INDEX idx_21135_ostatni_login ON geokrety.gk_users USING btree (last_logi
 --
 
 CREATE INDEX idx_21135_username ON geokrety.gk_users USING btree (username);
-
-
---
--- Name: idx_21135_username_email; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_21135_username_email ON geokrety.gk_users USING btree (username, email);
 
 
 --
@@ -3610,10 +3768,73 @@ CREATE UNIQUE INDEX idx_21189_name ON geokrety.scripts USING btree (name);
 
 
 --
--- Name: gk_owner_codes after_10_check_only_one_active_per_geokret; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+-- Name: idx_geokret_avatar; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
-CREATE TRIGGER after_10_check_only_one_active_per_geokret AFTER INSERT OR UPDATE OF geokret, used ON geokrety.gk_owner_codes FOR EACH ROW EXECUTE FUNCTION geokrety.owner_code_check_only_one_active_per_geokret();
+CREATE INDEX idx_geokret_avatar ON geokrety.gk_geokrety USING btree (avatar);
+
+
+--
+-- Name: idx_geokret_hands_of; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_geokret_hands_of ON geokrety.gk_geokrety USING btree (holder);
+
+
+--
+-- Name: idx_geokret_id_position; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_geokret_id_position ON geokrety.gk_geokrety USING btree (last_position) INCLUDE (id);
+
+
+--
+-- Name: idx_geokret_last_log; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_geokret_last_log ON geokrety.gk_geokrety USING btree (last_log);
+
+
+--
+-- Name: idx_geokret_last_position; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_geokret_last_position ON geokrety.gk_geokrety USING btree (last_position);
+
+
+--
+-- Name: idx_geokret_owner; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_geokret_owner ON geokrety.gk_geokrety USING btree (owner);
+
+
+--
+-- Name: idx_geokrety_tracking_code; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE UNIQUE INDEX idx_geokrety_tracking_code ON geokrety.gk_geokrety USING btree (tracking_code);
+
+
+--
+-- Name: idx_moves_geokret; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_moves_geokret ON geokrety.gk_moves USING btree (geokret);
+
+
+--
+-- Name: idx_moves_id; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_moves_id ON geokrety.gk_moves USING btree (id);
+
+
+--
+-- Name: idx_moves_type_id; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE INDEX idx_moves_type_id ON geokrety.gk_moves USING btree (move_type, id);
 
 
 --
@@ -3684,6 +3905,13 @@ CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves 
 --
 
 CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
+
+
+--
+-- Name: gk_users before_10_manage_email; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_10_manage_email BEFORE INSERT OR UPDATE OF _email_crypt, _email, _email_hash ON geokrety.gk_users FOR EACH ROW EXECUTE FUNCTION geokrety.manage_email();
 
 
 --
@@ -3771,10 +3999,38 @@ CREATE TRIGGER before_20_gis_updates BEFORE INSERT OR UPDATE OF lat, lon, "posit
 
 
 --
+-- Name: gk_email_activation before_20_manage_email; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_20_manage_email BEFORE INSERT OR UPDATE OF _email, _email_crypt, _email_hash ON geokrety.gk_email_activation FOR EACH ROW EXECUTE FUNCTION geokrety.manage_email();
+
+
+--
+-- Name: gk_email_activation before_20_manage_previous_email; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_20_manage_previous_email BEFORE INSERT OR UPDATE OF _previous_email, _previous_email_crypt, _previous_email_hash ON geokrety.gk_email_activation FOR EACH ROW EXECUTE FUNCTION geokrety.manage_previous_email();
+
+
+--
+-- Name: gk_users before_20_manage_secid; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_20_manage_secid BEFORE INSERT OR UPDATE OF _secid_crypt, _secid, _secid_hash ON geokrety.gk_users FOR EACH ROW EXECUTE FUNCTION geokrety.user_secid_generate();
+
+
+--
 -- Name: gk_geokrety before_20_manage_tracking_code; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
 CREATE TRIGGER before_20_manage_tracking_code BEFORE INSERT OR UPDATE OF tracking_code ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_tracking_code();
+
+
+--
+-- Name: gk_owner_codes before_20_only_one_at_a_time; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_20_only_one_at_a_time BEFORE INSERT OR UPDATE OF geokret, used ON geokrety.gk_owner_codes FOR EACH ROW EXECUTE FUNCTION geokrety.owner_code_check_only_one_active_per_geokret();
 
 
 --
@@ -3785,10 +4041,24 @@ CREATE TRIGGER before_30_manage_holder BEFORE INSERT OR UPDATE OF holder ON geok
 
 
 --
+-- Name: gk_email_activation before_30_only_one_at_a_time; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_30_only_one_at_a_time BEFORE INSERT OR UPDATE OF "user", used, _email_hash ON geokrety.gk_email_activation FOR EACH ROW WHEN ((new.used = 0)) EXECUTE FUNCTION geokrety.email_activation_check_only_one_active_per_user();
+
+
+--
 -- Name: gk_moves before_30_waypoint_uppercase; Type: TRIGGER; Schema: geokrety; Owner: geokrety
 --
 
 CREATE TRIGGER before_30_waypoint_uppercase BEFORE INSERT OR UPDATE OF waypoint ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_waypoint_uppercase();
+
+
+--
+-- Name: gk_email_activation before_40_check_email_used; Type: TRIGGER; Schema: geokrety; Owner: geokrety
+--
+
+CREATE TRIGGER before_40_check_email_used BEFORE INSERT OR UPDATE OF "user", used, _email_hash ON geokrety.gk_email_activation FOR EACH ROW WHEN ((new.used = 0)) EXECUTE FUNCTION geokrety.email_activation_check_email_already_used();
 
 
 --
@@ -3803,13 +4073,6 @@ CREATE TRIGGER before_40_update_missing BEFORE INSERT OR UPDATE OF geokret, move
 --
 
 CREATE TRIGGER comments_count_override AFTER UPDATE OF comments_count ON geokrety.gk_news FOR EACH ROW EXECUTE FUNCTION geokrety.news_comments_counts_override();
-
-
---
--- Name: gk_users manage_secid; Type: TRIGGER; Schema: geokrety; Owner: geokrety
---
-
-CREATE TRIGGER manage_secid BEFORE INSERT OR UPDATE OF secid ON geokrety.gk_users FOR EACH ROW EXECUTE FUNCTION geokrety.user_secid_generate();
 
 
 --

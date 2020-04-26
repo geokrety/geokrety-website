@@ -1,6 +1,7 @@
 // ----------------------------------- JQUERY - MAP INIT - BEGIN
 let PARIS = new L.LatLng(48.85, 2.35);
 let map;
+let myRenderer = L.canvas({ padding: 0.5 });
 
 function initializeMap() {
     let map = L.map('mapid', {
@@ -17,7 +18,7 @@ function initializeMap() {
 
     {if !isset($current_user) or is_null($current_user->home_latitude) or is_null($current_user->home_longitude)}
         let center = PARIS;
-        let zoom = 3;
+        let zoom = 5;
     {else}
         let center = new L.LatLng({$current_user->home_latitude}, {$current_user->home_longitude});
         let zoom = 10;
@@ -27,10 +28,17 @@ function initializeMap() {
     map.setView(center, zoom);
     map.addLayer(osm);
 
+    map.on('popupopen', function (e) {
+        let px = map.project(e.target._popup._latlng); // find the pixel location on the map where the popup anchor is
+        px.y -= e.target._popup._container.clientHeight/2; // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
+        map.panTo(map.unproject(px), { animate: true }); // pan to new center
+    });
+
     return map;
 }
 
 let geojsonMarkerOptions = {
+    renderer: myRenderer,
     radius: 4,
     fillColor: "#ff7800",
     color: "#000",

@@ -3,9 +3,7 @@
 --
 
 -- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
--- Dumped by pg_dump version 12.2 (Ubuntu 12.2-2.pgdg19.10+1)
-
--- Started on 2020-04-17 17:51:40 CEST
+-- Dumped by pg_dump version 12.2 (Ubuntu 12.2-4)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +17,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 9 (class 2615 OID 2200)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: geokrety
 --
 
@@ -29,49 +26,52 @@ CREATE SCHEMA public;
 ALTER SCHEMA public OWNER TO geokrety;
 
 --
--- TOC entry 5622 (class 0 OID 0)
--- Dependencies: 9
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: geokrety
 --
 
 COMMENT ON SCHEMA public IS 'standard public schema';
 
 
---
--- TOC entry 281 (class 1259 OID 510504)
--- Name: countries_id_seq; Type: SEQUENCE; Schema: public; Owner: geokrety
---
-
-CREATE SEQUENCE public.countries_id_seq
-    START WITH 1
-    INCREMENT BY 246
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.countries_id_seq OWNER TO geokrety;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- TOC entry 279 (class 1259 OID 498649)
 -- Name: countries; Type: TABLE; Schema: public; Owner: geokrety
 --
 
 CREATE TABLE public.countries (
-    id integer DEFAULT nextval('public.countries_id_seq'::regclass) NOT NULL,
+    id integer NOT NULL,
     iso_a2 character varying(2) NOT NULL,
-    geog public.geography NOT NULL
+    geom public.geometry(Geometry,4326) NOT NULL
 );
 
 
 ALTER TABLE public.countries OWNER TO geokrety;
 
 --
--- TOC entry 223 (class 1259 OID 106059)
+-- Name: gk_countries_id_seq; Type: SEQUENCE; Schema: public; Owner: geokrety
+--
+
+CREATE SEQUENCE public.gk_countries_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.gk_countries_id_seq OWNER TO geokrety;
+
+--
+-- Name: gk_countries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: geokrety
+--
+
+ALTER SEQUENCE public.gk_countries_id_seq OWNED BY public.countries.id;
+
+
+--
 -- Name: srtm; Type: TABLE; Schema: public; Owner: geokrety
 --
 
@@ -85,7 +85,6 @@ CREATE TABLE public.srtm (
 ALTER TABLE public.srtm OWNER TO geokrety;
 
 --
--- TOC entry 224 (class 1259 OID 106065)
 -- Name: srtm_metadata; Type: VIEW; Schema: public; Owner: geokrety
 --
 
@@ -109,7 +108,6 @@ CREATE VIEW public.srtm_metadata AS
 ALTER TABLE public.srtm_metadata OWNER TO geokrety;
 
 --
--- TOC entry 207 (class 1259 OID 104455)
 -- Name: srtm_rid_seq; Type: SEQUENCE; Schema: public; Owner: geokrety
 --
 
@@ -125,8 +123,6 @@ CREATE SEQUENCE public.srtm_rid_seq
 ALTER TABLE public.srtm_rid_seq OWNER TO geokrety;
 
 --
--- TOC entry 5623 (class 0 OID 0)
--- Dependencies: 207
 -- Name: srtm_rid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: geokrety
 --
 
@@ -134,7 +130,48 @@ ALTER SEQUENCE public.srtm_rid_seq OWNED BY public.srtm.rid;
 
 
 --
--- TOC entry 5472 (class 2604 OID 106070)
+-- Name: timezones; Type: TABLE; Schema: public; Owner: geokrety
+--
+
+CREATE TABLE public.timezones (
+    gid integer NOT NULL,
+    tzid character varying(80),
+    geom public.geometry(MultiPolygon,4326)
+);
+
+
+ALTER TABLE public.timezones OWNER TO geokrety;
+
+--
+-- Name: timezones_gid_seq; Type: SEQUENCE; Schema: public; Owner: geokrety
+--
+
+CREATE SEQUENCE public.timezones_gid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.timezones_gid_seq OWNER TO geokrety;
+
+--
+-- Name: timezones_gid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: geokrety
+--
+
+ALTER SEQUENCE public.timezones_gid_seq OWNED BY public.timezones.gid;
+
+
+--
+-- Name: countries id; Type: DEFAULT; Schema: public; Owner: geokrety
+--
+
+ALTER TABLE ONLY public.countries ALTER COLUMN id SET DEFAULT nextval('public.gk_countries_id_seq'::regclass);
+
+
+--
 -- Name: srtm rid; Type: DEFAULT; Schema: public; Owner: geokrety
 --
 
@@ -142,16 +179,13 @@ ALTER TABLE ONLY public.srtm ALTER COLUMN rid SET DEFAULT nextval('public.srtm_r
 
 
 --
--- TOC entry 5479 (class 2606 OID 505903)
--- Name: countries countries_pk; Type: CONSTRAINT; Schema: public; Owner: geokrety
+-- Name: timezones gid; Type: DEFAULT; Schema: public; Owner: geokrety
 --
 
-ALTER TABLE ONLY public.countries
-    ADD CONSTRAINT countries_pk PRIMARY KEY (id);
+ALTER TABLE ONLY public.timezones ALTER COLUMN gid SET DEFAULT nextval('public.timezones_gid_seq'::regclass);
 
 
 --
--- TOC entry 5475 (class 2606 OID 106072)
 -- Name: srtm srtm_pkey; Type: CONSTRAINT; Schema: public; Owner: geokrety
 --
 
@@ -160,15 +194,28 @@ ALTER TABLE ONLY public.srtm
 
 
 --
--- TOC entry 5480 (class 1259 OID 505901)
--- Name: geog; Type: INDEX; Schema: public; Owner: geokrety
+-- Name: timezones timezones_pkey; Type: CONSTRAINT; Schema: public; Owner: geokrety
 --
 
-CREATE INDEX geog ON public.countries USING gist (geog);
+ALTER TABLE ONLY public.timezones
+    ADD CONSTRAINT timezones_pkey PRIMARY KEY (gid);
 
 
 --
--- TOC entry 5476 (class 1259 OID 106074)
+-- Name: countries_index_geom; Type: INDEX; Schema: public; Owner: geokrety
+--
+
+CREATE INDEX countries_index_geom ON public.countries USING gist (geom);
+
+
+--
+-- Name: gk_countries_iso_a2; Type: INDEX; Schema: public; Owner: geokrety
+--
+
+CREATE INDEX gk_countries_iso_a2 ON public.countries USING btree (iso_a2);
+
+
+--
 -- Name: srtm_st_convexhull_idx; Type: INDEX; Schema: public; Owner: geokrety
 --
 
@@ -176,14 +223,18 @@ CREATE INDEX srtm_st_convexhull_idx ON public.srtm USING gist (public.st_convexh
 
 
 --
--- TOC entry 5477 (class 1259 OID 106075)
 -- Name: srtm_st_convexhull_idx1; Type: INDEX; Schema: public; Owner: geokrety
 --
 
 CREATE INDEX srtm_st_convexhull_idx1 ON public.srtm USING gist (public.st_convexhull(rast));
 
 
--- Completed on 2020-04-17 17:51:41 CEST
+--
+-- Name: timezones_geom_idx; Type: INDEX; Schema: public; Owner: geokrety
+--
+
+CREATE INDEX timezones_geom_idx ON public.timezones USING gist (geom);
+
 
 --
 -- PostgreSQL database dump complete

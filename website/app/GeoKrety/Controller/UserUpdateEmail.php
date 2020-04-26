@@ -24,7 +24,7 @@ class UserUpdateEmail extends Base {
     public function post(\Base $f3) {
         $f3->get('DB')->begin();
         $user = $this->currentUser;
-        $daily_mail = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+        $daily_mail = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN);
 
         // Save user preferences
         if ($user->daily_mails !== $daily_mail) { // If preferences changed

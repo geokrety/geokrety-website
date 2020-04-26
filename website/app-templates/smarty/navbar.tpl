@@ -51,7 +51,7 @@
                         <li><a id="navbar-actions-gallery" href="{'photo_gallery'|alias}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> {t}Photo gallery{/t}</a></li>
                     </ul>
                 </li>
-                <li><a id="navbar-map" href="{'geokrety_map'|alias:null:null:{\GeoKrety\Controller\Map::buildFragmentNearUserHome()}}">{fa icon="map"} {t}GeoKrety Map{/t}</a></li>
+                <li><a id="navbar-map" href="{'geokrety_map'|alias}">{fa icon="map"} {t}GeoKrety Map{/t}</a></li>
             </ul>
 
             <ul class="nav navbar-nav">

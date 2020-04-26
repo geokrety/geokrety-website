@@ -1,7 +1,14 @@
-// ----------------------------------- JQUERY - USER OWNED GEOKRET MAP - BEGIN
+// ----------------------------------- JQUERY - GKMAP - BEGIN
 
 {include file='js/_map_init.tpl.js'}
 map = initializeMap();
+
+let mode = 'individual';
+
+let markers = L.markerClusterGroup({
+    maxClusterRadius: 40,
+    spiderfyOnMaxZoom: true
+});
 
 function onEachFeature(feature, layer) {
     // TODO properly escape strings (XSS)
@@ -36,29 +43,52 @@ function onEachFeature(feature, layer) {
     `);
 }
 
-$('input[name="show-by"]').click(function() {
-    geoJsonLayer.refresh();
-});
-
-map.on('popupopen', function (e) {
-    let px = map.project(e.target._popup._latlng); // find the pixel location on the map where the popup anchor is
-    px.y -= e.target._popup._container.clientHeight/2; // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
-    map.panTo(map.unproject(px), { animate: true }); // pan to new center
-});
-
 // Load GeoKrety near home position
-let geoJsonLayer = L.geoJson.ajax("{'user_owned_geokrety_geojson'|alias}", {
-    onEachFeature: onEachFeature,
-    pointToLayer: pointToLayer,
-});
-geoJsonLayer.addTo(map);
+function buildurl() {
+    let bounds = map.getBounds();
+    return "{'geokrety_map_geojson'|alias}"
+        .replace('@xmin', bounds.getWest())
+        .replace('@ymin', bounds.getSouth())
+        .replace('@xmax', bounds.getEast())
+        .replace('@ymax', bounds.getNorth());
+}
 
-let bounded = false;
-geoJsonLayer.on('data:loaded', function () {
-  if (!bounded) {
-    map.fitBounds(geoJsonLayer.getBounds(), { padding: [50, 50] });
-    bounded = true;
-  }
+let geoJsonLayer;
+retrieve();
+
+function retrieve() {
+    map.spin(true);
+    jQuery.ajax({
+        dataType: "json",
+        url: buildurl(),
+        success: function (data) {
+            if (map.hasLayer(geoJsonLayer)) {
+                map.removeLayer(geoJsonLayer);
+            }
+            if (mode === 'individual') {
+                geoJsonLayer = L.geoJson(data, {
+                    onEachFeature: onEachFeature,
+                    pointToLayer: pointToLayer,
+                });
+                geoJsonLayer.addTo(map);
+            } else if (mode === 'cluster') {
+                markers.addLayer(geoJsonLayer);
+                layer = map.addLayer(markers);
+            }
+            map.spin(false);
+        },
+        error: function () {
+            map.spin(false);
+        }
+    });
+}
+
+map.on('zoomend', function() {
+    retrieve();
 });
 
-// ----------------------------------- JQUERY - USER OWNED GEOKRET MAP - END
+map.on('dragend', function() {
+    retrieve();
+});
+
+// ----------------------------------- JQUERY - GKMAP - END

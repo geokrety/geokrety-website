@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    {if !GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}
+    {if GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}
     <hr>
     <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2">

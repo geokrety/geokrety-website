@@ -64,7 +64,7 @@
             <div class="col-xs-12 col-md-3">
                 <div class="pull-right picturesList">
                     {if $geokret->avatar}
-                        {$geokret->avatar|picture:true:false nofilter}
+                        {$geokret->avatar|picture:true:false:false nofilter}
                     {/if}
                     {'https://cdn.geokrety.org/images/wykresy/74480.png'|url_picture:'https://cdn.geokrety.org/images/wykresy/74480-m.png' nofilter}{* TODO: Altitude profile *}
                 </div>
