@@ -44,7 +44,7 @@ class UserUpdateEmail extends Base {
             $smtp = new EmailChange();
 
             // Resend validation - implicit mail unicity from token table too
-            $token->load(['email = ? AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
+            $token->load(['_email_hash = public.digest(?, \'sha256\') AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
             if ($token->valid()) {
                 $smtp->sendEmailChangeNotification($token);
                 Flash::instance()->addMessage(sprintf(_('The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->diffForHumans(['parts' => 3, 'join' => true])), 'success');
@@ -52,23 +52,28 @@ class UserUpdateEmail extends Base {
             }
 
             // Check email unicity over users table
-            if ($user->count(['email = ?', $f3->get('POST.email')], null, 0)) { // no cache
+            if ($user->count(['_email_hash = public.digest(?, \'sha256\')', $f3->get('POST.email')], null, 0)) { // no cache
                 Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
                 $this->get($f3);
                 die();
             }
 
             // Saving…
-            $token->user = $f3->get('SESSION.CURRENT_USER');
-            $token->email = $f3->get('POST.email');
+            $token->user = $this->currentUser;
+            $token->_email = $f3->get('POST.email');
             if (!$token->validate()) {
                 $this->get($f3);
                 die();
             }
             $token->save();
-            $smtp->sendEmailChangeNotification($token);
             Flash::instance()->addMessage(sprintf(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])), 'success');
             Event::instance()->emit('user.email.change', $token->user);
+            // Redirect before sending emails
+            $f3->get('DB')->commit();
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id), false, false); // Set die false to continue
+            $f3->abort(); // Send response to client now
+            $smtp->sendEmailChangeNotification($token);
+            die();
         }
 
         $f3->get('DB')->commit();

@@ -24,11 +24,15 @@ Globally:
 $ psql -U geokrety -W tests -h localhost
 CREATE EXTENSION postgis WITH SCHEMA public;
 CREATE EXTENSION postgis_raster WITH SCHEMA public;
+CREATE EXTENSION pgcrypto WITH SCHEMA public;
 \i public-schema.sql
+\i secure-schema.sql
 \i geokrety-schema.sql
 
 $ pg_restore -U geokrety -W --host "localhost" --dbname "tests" --data-only --disable-triggers --verbose --schema "public" public-data.tar
 ```
+
+Refer to the main DB doc and generate a GPG key pair.
 
 ## Create schema for pgtap functions
 ```sql
@@ -39,5 +43,5 @@ CREATE EXTENSION pgtap WITH SCHEMA pgtap;
 # Launch tests
 ```bash
 export PGPASSWORD=geokrety
-PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -S search_path=public,pgtap,geokrety -t -v test*.sql
+PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -S search_path=public,pgtap,geokrety -t website/db/tests/test*.sql
 ```

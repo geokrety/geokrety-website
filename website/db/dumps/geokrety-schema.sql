@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
--- Dumped by pg_dump version 12.2 (Ubuntu 12.2-2.pgdg19.10+1)
+-- Dumped by pg_dump version 12.2 (Ubuntu 12.2-4)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -75,6 +75,42 @@ CREATE FUNCTION geokrety.coords2position(lat double precision, lon double precis
 
 
 ALTER FUNCTION geokrety.coords2position(lat double precision, lon double precision, OUT "position" public.geography, srid integer) OWNER TO geokrety;
+
+--
+-- Name: email_activation_check_email_already_used(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.email_activation_check_email_already_used() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF COUNT(*) > 0 FROM "gk_users" WHERE "id" = NEW.user AND _email_hash = NEW._email_hash THEN
+       RAISE 'Email address already used';
+END IF;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.email_activation_check_email_already_used() OWNER TO geokrety;
+
+--
+-- Name: email_activation_check_only_one_active_per_user(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.email_activation_check_only_one_active_per_user() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF COUNT(*) > 0 FROM "gk_email_activation" WHERE "user" = NEW.user AND used = 0 THEN
+       RAISE 'An email activation code already exists for this user';
+END IF;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.email_activation_check_only_one_active_per_user() OWNER TO geokrety;
 
 --
 -- Name: email_activation_check_used_ip_datetime(smallint, inet, timestamp with time zone, inet, timestamp with time zone); Type: FUNCTION; Schema: geokrety; Owner: geokrety
@@ -401,6 +437,54 @@ LIMIT 1;$$;
 ALTER FUNCTION geokrety.geokrety_compute_last_position(geokret_id bigint) OWNER TO geokrety;
 
 --
+-- Name: gkdecrypt(bytea, character varying, character varying, integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.gkdecrypt(val bytea, secret character varying, psw character varying, key_id integer DEFAULT 1) RETURNS character varying
+    LANGUAGE plpgsql
+    AS $$DECLARE
+gpg_key bytea;
+BEGIN
+
+IF val IS NULL THEN
+	RETURN NULL;
+END IF;
+
+SELECT public.dearmor(public.pgp_sym_decrypt(privatekey::bytea, secret))
+FROM secure.gpg_keys
+WHERE id = key_id
+INTO gpg_key;
+
+RETURN public.pgp_pub_decrypt(val::bytea, gpg_key, psw);
+
+END;$$;
+
+
+ALTER FUNCTION geokrety.gkdecrypt(val bytea, secret character varying, psw character varying, key_id integer) OWNER TO geokrety;
+
+--
+-- Name: gkencrypt(text, integer); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.gkencrypt(val text, key_id integer DEFAULT 1) RETURNS bytea
+    LANGUAGE plpgsql
+    AS $$DECLARE
+gpg_key bytea;
+BEGIN
+
+SELECT public.dearmor(pubkey)
+FROM secure.gpg_keys
+WHERE id = key_id
+INTO gpg_key;
+
+RETURN public.pgp_pub_encrypt(val, gpg_key);
+
+END;$$;
+
+
+ALTER FUNCTION geokrety.gkencrypt(val text, key_id integer) OWNER TO geokrety;
+
+--
 -- Name: mails_token_generate(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -423,6 +507,67 @@ END;$$;
 
 
 ALTER FUNCTION geokrety.mails_token_generate() OWNER TO geokrety;
+
+--
+-- Name: manage_email(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.manage_email() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF OLD._email_crypt IS DISTINCT FROM NEW._email_crypt THEN
+	RAISE '_email_crypt must not be manually updated';
+END IF;
+IF OLD._email_hash IS DISTINCT FROM NEW._email_hash THEN
+	RAISE '_email_hash must not be manually updated';
+END IF;
+
+IF NEW._email IS NULL OR NEW._email = '' THEN
+	NEW._email_crypt = NULL;
+	NEW._email_hash = NULL;
+ELSE
+	NEW._email_crypt = gkencrypt(NEW._email::character varying);
+	NEW._email_hash = public.digest(NEW._email::character varying, 'sha256');
+END IF;
+
+-- Ensure email field is always NULL
+NEW._email = NULL;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.manage_email() OWNER TO geokrety;
+
+--
+-- Name: manage_previous_email(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.manage_previous_email() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+
+IF OLD._previous_email_crypt IS DISTINCT FROM NEW._previous_email_crypt THEN
+	RAISE '_previous_email_crypt must not be manually updated';
+END IF;
+IF OLD._previous_email_hash IS DISTINCT FROM NEW._previous_email_hash THEN
+	RAISE '_previous_email_hash must not be manually updated';
+END IF;
+
+IF NEW._previous_email IS NOT NULL THEN
+	NEW._previous_email_crypt = gkencrypt(NEW._previous_email);
+	NEW._previous_email_hash = public.digest(NEW._previous_email, 'sha256');
+END IF;
+
+-- Ensure previouse_mail field is always NULL
+NEW._previous_email = NULL;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.manage_previous_email() OWNER TO geokrety;
 
 --
 -- Name: move_counting_kilometers(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
@@ -700,6 +845,38 @@ END;$$;
 ALTER FUNCTION geokrety.moves_distances_after() OWNER TO geokrety;
 
 --
+-- Name: moves_distances_before(); Type: FUNCTION; Schema: geokrety; Owner: geokrety
+--
+
+CREATE FUNCTION geokrety.moves_distances_before() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+RAISE 'UNUSED?';
+
+IF (TG_OP = 'DELETE') THEN
+	SELECT update_next_move_distance(OLD.geokret, OLD.id, true);
+	RETURN OLD;
+END IF;
+
+IF (TG_OP = 'UPDATE') THEN
+    -- Updating old position
+	PERFORM update_next_move_distance(OLD.geokret, OLD.id, true);
+END IF;
+
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION geokrety.moves_distances_before() OWNER TO geokrety;
+
+--
+-- Name: FUNCTION moves_distances_before(); Type: COMMENT; Schema: geokrety; Owner: geokrety
+--
+
+COMMENT ON FUNCTION geokrety.moves_distances_before() IS 'The old position';
+
+
+--
 -- Name: moves_get_on_page(bigint, bigint, bigint); Type: FUNCTION; Schema: geokrety; Owner: geokrety
 --
 
@@ -766,11 +943,18 @@ END IF;
 
 -- Find country / elevation
 IF (OLD.position IS DISTINCT FROM NEW.position) THEN
+	--SELECT iso_a2
+	--FROM public.countries
+	--WHERE public.ST_Intersects(geom, NEW.position)
+	--INTO country;
+	
 	SELECT iso_a2
 	FROM public.countries
-	WHERE public.ST_Intersects(geog, NEW.position::public.geography)
+	WHERE public.ST_Intersects(geom, NEW.position::public.geography)
 	INTO country;
 
+
+-- geometry
 	SELECT public.ST_Value(rast, NEW.position::public.geometry) As elevation
 	FROM public.srtm
 	WHERE public.ST_Intersects(rast, NEW.position::public.geometry)
@@ -2893,23 +3077,6 @@ CREATE TABLE geokrety.sessions (
 
 
 ALTER TABLE geokrety.sessions OWNER TO geokrety;
-
---
--- Name: tt; Type: TABLE; Schema: geokrety; Owner: geokrety
---
-
-CREATE TABLE geokrety.tt (
-    id bigint,
-    waypoint character varying(11),
-    country character varying(3),
-    elevation integer,
-    "position" public.geography,
-    lat double precision,
-    lon double precision
-);
-
-
-ALTER TABLE geokrety.tt OWNER TO geokrety;
 
 --
 -- Name: users_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: geokrety

@@ -83,10 +83,10 @@ class UserEmailChangeToken extends Base {
         $this->token->used = EmailActivationToken::TOKEN_CHANGED;
         $this->token->touch('used_on_datetime');
         $this->token->updating_ip = \Base::instance()->get('IP');
-        $this->token->previous_email = $this->token->user->email;
+        $this->token->_previous_email = $this->token->user->email;
 
         // Save the new email
-        $this->token->user->email = $this->token->email;
+        $this->token->user->_email = $this->token->email;
         $this->token->user->email_invalid = 0;
 
         if (!$this->token->user->validate()) {

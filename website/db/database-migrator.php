@@ -55,7 +55,7 @@ $migrator->process();
 $mName = 'gk-waypointy';
 $pName = 'gk_waypoints_oc';
 $mFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'typ', 'kraj', 'link', 'status', 'timestamp'];
-$pFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
+$pFields = ['waypoint', 'lat', 'lon', 'elevation', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
 $migrator = new WaypointMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
@@ -63,7 +63,7 @@ $migrator->process();
 $mName = 'gk-users';
 $pName = 'gk_users';
 $mFields = ['userid', 'user', 'haslo2', 'email', 'email_invalid', 'joined', 'timestamp', 'wysylacmaile', 'ip', 'lang', 'lat', 'lon', 'promien', 'country', 'godzina', 'statpic', 'ostatni_mail', 'ostatni_login', 'secid'];
-$pFields = ['id', 'username', 'password', 'email', 'email_invalid', 'joined_on_datetime', 'updated_on_datetime', 'daily_mails', 'registration_ip', 'preferred_language', 'home_latitude', 'home_longitude', 'observation_area', 'home_country', 'daily_mails_hour', 'statpic_template', 'last_mail_datetime', 'last_login_datetime', 'secid'];
+$pFields = ['id', 'username', 'password', '_email', 'email_invalid', 'joined_on_datetime', 'updated_on_datetime', 'daily_mails', 'registration_ip', 'preferred_language', 'home_latitude', 'home_longitude', 'observation_area', 'home_country', 'daily_mails_hour', 'statpic_template', 'last_mail_datetime', 'last_login_datetime', '_secid'];
 // // , 'pictures_count', 'avatar', 'terms_of_use_datetime', 'account_valid'
 $migrator = new UserMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
@@ -144,7 +144,7 @@ $migrator->process();
 $mName = 'gk-owner-codes';
 $pName = 'gk_owner_codes';
 $mFields = ['id', 'kret_id', 'code', 'generated_date', 'claimed_date', 'user_id'];
-$pFields = ['id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'user', 'validating_ip', 'used'];
+$pFields = ['id', 'geokret', 'token', 'generated_on_datetime', 'claimed_on_datetime', 'adopter', 'validating_ip', 'used'];
 $migrator = new OwnerCodesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
@@ -408,6 +408,11 @@ class UserMigrator extends BaseMigrator {
         $values[9] = LanguageService::isLanguageSupported($values[9]) ? $values[9] : null;  // preferred_language
         $values[13] = $values[13] ? trim($values[13]) : null;  // home_country
         $values[18] = $values[18] ?: SecIdGenerator::generate();  // secid
+    }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_users SET _email = _email, _secid = _secid;');
     }
 
     // TODO users avatar

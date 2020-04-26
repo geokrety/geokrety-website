@@ -32,7 +32,8 @@ use JsonSerializable;
  * @property int account_valid
  */
 class User extends Base implements JsonSerializable {
-    use \Validation\Traits\CortexTrait;
+    // Validation occurs in validate() for this
+//    use \Validation\Traits\CortexTrait;
 
     const USER_ACCOUNT_INVALID = 0;
     const USER_ACCOUNT_VALID = 1;
@@ -55,12 +56,18 @@ class User extends Base implements JsonSerializable {
             'validate' => 'required|ciphered_password',
             'nullable' => true,
         ],
-        'email' => [
+        '_email' => [
             'type' => Schema::DT_VARCHAR256,
-            'filter' => 'trim',
-            'validate' => 'not_empty|valid_email|email_host|unique',
+            // Validation occurs in validate() for this
             // TODO make email required, but many users still don't have email address
-            'unique' => true,
+            'nullable' => true,
+        ],
+        '_email_crypt' => [
+            'type' => Schema::DT_VARCHAR256,
+            'nullable' => true,
+        ],
+        '_email_hash' => [
+            'type' => Schema::DT_VARCHAR256,
             'nullable' => true,
         ],
         'joined_on_datetime' => [
@@ -144,7 +151,15 @@ class User extends Base implements JsonSerializable {
             'validate' => 'min_numeric,1|max_numeric,'.GK_USER_STATPIC_TEMPLATE_COUNT,
             'default' => 1,
         ],
-        'secid' => [
+        '_secid' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+        ],
+        '_secid_crypt' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+        ],
+        '_secid_hash' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
         ],
@@ -255,8 +270,54 @@ class User extends Base implements JsonSerializable {
             $smtp = new \GeoKrety\Email\AccountActivation();
             $smtp->sendActivation($token);
         } else {
-            \Flash::instance()->addMessage(_('An error occured while sending the activation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the activation mail.'), 'danger');
         }
+    }
+
+    public function get_email(): ?string {
+        $f3 = \Base::instance();
+
+        $sql = <<<EOT
+            SELECT gkdecrypt("_email_crypt", ?, ?) AS email
+            FROM gk_users
+            WHERE id = ?
+EOT;
+
+        $result = $f3->get('DB')->exec($sql, [GK_DB_SECRET_KEY, GK_DB_GPG_PASSWORD, $this->id], 5);
+        if (count($result) === 0) {
+            return null;
+        }
+
+        return $result[0]['email'] ?: null;
+    }
+
+    public function set_email($value): ?string {
+        $this->_email = $value;
+
+        return $value;
+    }
+
+    public function get_secid(): ?string {
+        $f3 = \Base::instance();
+
+        $sql = <<<EOT
+            SELECT gkdecrypt("_secid_crypt", ?, ?) AS secid
+            FROM gk_users
+            WHERE id = ?
+EOT;
+
+        $result = $f3->get('DB')->exec($sql, [GK_DB_SECRET_KEY, GK_DB_GPG_PASSWORD, $this->id], 1);
+        if (count($result) === 0) {
+            return null;
+        }
+
+        return $result[0]['secid'] ?: null;
+    }
+
+    public function set_secid($value): ?string {
+        $this->_secid = $value;
+
+        return $value;
     }
 
     public function __construct() {
@@ -268,6 +329,23 @@ class User extends Base implements JsonSerializable {
             \Event::instance()->emit('user.created', $this);
             $self->generateAccountActivation();
         });
+    }
+
+    public function validate($level = 0, $op = '<=') {
+        // TODO: `unique` need a special case as we rely on hashes
+        $rules = [
+            'email' => [
+                'filter' => 'trim',
+                'validate' => 'not_empty|valid_email|email_host',
+            ],
+        ];
+        $data = [
+            'email' => $this->_email ?: $this->email,
+        ];
+        $validation_1 = \Validation::instance()->validate($rules, $data);
+        $validation_2 = \Validation::instance()->validateCortexMapper($this, $level, $op, true);
+
+        return $validation_1 && $validation_2;
     }
 
     public function jsonSerialize() {

@@ -82,6 +82,10 @@ class Config extends \Prefab {
         define('GK_DB_DATETIME_FORMAT', 'Y-m-d H:i:sP');
         define('GK_DB_DATETIME_FORMAT_WITHOUT_TZ', 'Y-m-d H:i:s');
 
+        define('GK_DB_GPG_PASSWORD', getenv('GK_DB_GPG_PASSWORD') ?: 'geokrety');
+        define('GK_DB_SECRET_KEY', getenv('GK_DB_SECRET_KEY') ?: 'secretkey');
+
+
         // SMTP config
         define('GK_SMTP_HOST', getenv('GK_SMTP_HOST') ?: null);
         define('GK_SMTP_PORT', getenv('GK_SMTP_PORT') ?: 465);

@@ -8,7 +8,7 @@ SELECT plan(9);
 
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (1, 'test', 0, '2020-04-07 00:00:00+00');
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (2, 'test', 0, '2020-04-07 00:00:00+00');
-INSERT INTO "gk_users" ("id", "username", "registration_ip", "secid") VALUES (1, 'test', '127.0.0.1', 'qwertyuiop');
+INSERT INTO "gk_users" ("id", "username", "registration_ip", "_secid") VALUES (1, 'test', '127.0.0.1', 'qwertyuiop');
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 2, 1, :nice, '2020-04-07 01:00:00+00', 0);
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (2, 2, 1, :nice, '2020-04-07 02:00:00+00', 0);
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (3, 1, 1, :nice, '2020-04-07 03:00:00+00', 0);

@@ -51,7 +51,7 @@ class EmailChange extends Base {
             return;
         }
         $this->setSubject('📯 '._('Email address changed'));
-        $this->setTo($token->previous_email);
+        $this->setTo($token->_previous_email);
 
         if (!$this->send(Smarty::fetch('email-address-changed-to-old-address.html'))) {
             \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');

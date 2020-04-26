@@ -87,7 +87,7 @@ class UserEmailChangeRevertToken extends Base {
     public function refuse(\Base $f3) {
         // Mark token as used
         $this->token->used = EmailActivationToken::TOKEN_REVERTED;
-        $this->token->user->email = $this->token->previous_email;
+        $this->token->user->_email = $this->token->previous_email;
 
         if (!$this->token->user->validate()) {
             $this->get($f3);

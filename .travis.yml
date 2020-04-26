@@ -56,6 +56,8 @@ before_install:
   - psql -c "\dT *.plan" -U postgres
   # Install schema
   - psql -U postgres < website/db/dumps/public-schema.sql
+  - psql -U postgres < website/db/dumps/secure-schema.sql
+  - psql -U postgres < website/db/crypto/demo-keys.sql
   - psql -U postgres < website/db/dumps/geokrety-schema.sql
   - psql -U postgres < website/db/dumps/gk_waypoints_country.data.sql
   - psql -U postgres < website/db/dumps/gk_waypoints_types.data.sql

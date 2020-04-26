@@ -10,7 +10,7 @@ use DB\SQL\Schema;
  * @property string token
  * @property string revert_token
  * @property int|User user
- * @property string previous_email
+ * @property string _previous_email
  * @property string email
  * @property DateTime created_on_datetime
  * @property DateTime updated_on_datetime
@@ -22,7 +22,8 @@ use DB\SQL\Schema;
  * @property int used
  */
 class EmailActivationToken extends Base {
-    use \Validation\Traits\CortexTrait;
+    // Validation occurs in validate() for this
+//    use \Validation\Traits\CortexTrait;
 
     const TOKEN_UNUSED = 0;
     const TOKEN_CHANGED = 1;
@@ -45,18 +46,38 @@ class EmailActivationToken extends Base {
     protected $table = 'gk_email_activation';
 
     protected $fieldConf = [
+        // Validation occurs in validate() for this
         'email' => [
             'type' => Schema::DT_VARCHAR128,
-            'filter' => 'trim',
-            'validate' => 'required|valid_email|email_host',
+            // Validation occurs in validate() for this
+//            'filter' => 'trim',
+//            'validate' => 'required|valid_email|email_host',
         ],
-        'previous_email' => [
+        '_email_crypt' => [
+            'type' => Schema::DT_VARCHAR256,
+            'nullable' => true,
+        ],
+        '_email_hash' => [
+            'type' => Schema::DT_VARCHAR256,
+            'nullable' => true,
+        ],
+        // Validation occurs in validate() for this
+        '_previous_email' => [
             'type' => Schema::DT_VARCHAR128,
             'nullable' => true,
-            'validate' => 'required|valid_email',
-            'validate_depends' => [
-                'used' => ['validate', 'email_activation_require_update'],
-            ],
+            // Validation occurs in validate() for this
+//            'validate' => 'required|valid_email',
+//            'validate_depends' => [
+//                'used' => ['validate', 'email_activation_require_update'],
+//            ],
+        ],
+        '_previous_email_crypt' => [
+            'type' => Schema::DT_VARCHAR256,
+            'nullable' => true,
+        ],
+        '_previous_email_hash' => [
+            'type' => Schema::DT_VARCHAR256,
+            'nullable' => true,
         ],
         'user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
@@ -169,6 +190,48 @@ class EmailActivationToken extends Base {
         }
     }
 
+    public function get_email(): ?string {
+        $f3 = \Base::instance();
+
+        $sql = <<<EOT
+            SELECT gkdecrypt("_email_crypt", ?, ?) AS email
+            FROM gk_email_activation
+            WHERE id = ?
+EOT;
+
+        $result = $f3->get('DB')->exec($sql, [GK_DB_SECRET_KEY, GK_DB_GPG_PASSWORD, $this->id]);
+        if (count($result) === 0) {
+            return null;
+        }
+        return $result[0]['email'] ?: null;
+    }
+
+    public function set_email($value): ?string {
+        $this->_email = $value;
+        return $value;
+    }
+
+    public function get_previous_email(): ?string {
+        $f3 = \Base::instance();
+
+        $sql = <<<EOT
+            SELECT gkdecrypt("_previous_email_crypt", ?, ?) AS previous_email
+            FROM gk_email_activation
+            WHERE id = ?
+EOT;
+
+        $result = $f3->get('DB')->exec($sql, [GK_DB_SECRET_KEY, GK_DB_GPG_PASSWORD, $this->id]);
+        if (count($result) === 0) {
+            return null;
+        }
+        return $result[0]['previous_email'] ?: null;
+    }
+
+    public function set_previous_email($value): ?string {
+        $this->_previous_email = $value;
+        return $value;
+    }
+
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
@@ -191,14 +254,39 @@ class EmailActivationToken extends Base {
         });
     }
 
+    public function validate($level = 0, $op = '<=') {
+        $rules = [
+            'email' => [
+                'filter' => 'trim',
+                'validate' => 'required|valid_email|email_host',
+            ],
+            'previous_email' => [
+                'filter' => 'trim',
+                'validate' => 'required|valid_email',
+                'validate_depends' => [
+                    'used' => ['validate', 'email_activation_require_update'],
+                ],
+            ],
+        ];
+        $data = [
+            'email' => $this->_email ?: $this->email,
+            'previous_email' => $this->_previous_email ?: $this->previous_email,
+            'used' => $this->used,
+        ];
+        $validation_1 = \Validation::instance()->validate($rules, $data);
+        $validation_2 = \Validation::instance()->validateCortexMapper($this, $level, $op, true);
+
+        return $validation_1 && $validation_2;
+    }
+
     public function jsonSerialize() {
         return [
             'id' => $this->id,
             // 'token' => $this->token,
             // 'revert_token' => $this->revert_token,
             // 'user' => $this->user->id,
-            'previous_email' => $this->previous_email,
-            'email' => $this->email,
+//            'previous_email_hash' => $this->_previous_email_hash,
+//            'email_hash' => $this->_email_hash,
             // 'created_on_datetime' => $this->created_on_datetime,
             // 'updated_on_datetime' => $this->updated_on_datetime,
             // 'used_on_datetime' => $this->used_on_datetime,

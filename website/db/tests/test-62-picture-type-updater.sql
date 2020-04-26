@@ -7,7 +7,7 @@ SELECT plan(3);
 \set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (1, 'test', 0, '2020-04-07 00:00:00+00');
-INSERT INTO "gk_users" ("id", "username", "registration_ip", "secid") VALUES (1, 'test 1', '127.0.0.1', 'qwertyuiop');
+INSERT INTO "gk_users" ("id", "username", "registration_ip", "_secid") VALUES (1, 'test 1', '127.0.0.1', 'qwertyuiop');
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (1, 1, 1, :nice, '2020-04-07 00:00:00+00', 0);
 
 -- require uploaded_on_datetime

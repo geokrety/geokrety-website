@@ -18,7 +18,7 @@ class UserRefreshSecid extends Base {
 
     public function post(\Base $f3) {
         $user = $this->currentUser;
-        $user->secid = SecIdGenerator::generate();
+        $user->_secid = '';
 
         if ($user->validate()) {
             $user->save();
