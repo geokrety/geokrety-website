@@ -68,16 +68,22 @@ abstract class BaseCleaner {
         return 'Processing records: %6.2f%% (%s/%d - fixed: %6.2f%%)';
     }
 
-    public function processAll() {
+    public function processAll(\Base $f3) {
         $this->script = new Scripts();
         $this->script->load(['name = ?', $this->getScriptName()]);
         $filter = $this->filterHook();
         if ($this->script->dry()) {
             $this->script->name = $this->getScriptName();
             $this->script->last_run_datetime = null;
+            $this->script->last_page = 0;
             $this->script->save();
         } else {
             $filter = $this->filterHook();
+        }
+
+        if ($f3->exists('GET.restart')) {
+            $this->script->last_page = $f3->get('GET.restart');
+            echo 'Restart at page:'.$this->script->last_page.PHP_EOL;
         }
 
         $model = $this->getModel();
@@ -91,19 +97,22 @@ abstract class BaseCleaner {
         echo sprintf('%d %s to proceed', $this->total, $this->getModelName()).PHP_EOL;
 
         // Paginate the table resultset as it may blow ram!
+        $start_page = $this->script->last_page;
         $total_pages = ceil($this->total / PER_PAGE);
-        $this->counter = 0;
+        $this->counter = ($start_page) * PER_PAGE;
         $this->counterFixed = 0;
         \Base::instance()->get('DB')->log(false);
 
-        for ($i = 0; $i < $total_pages; ++$i) {
+        for ($i = $start_page; $i < $total_pages; ++$i) {
             $timeBefore = microtime(true);
             $subset = $model->paginate($i, PER_PAGE, $filter, $this->orderHook());
             foreach ($subset['subset'] as $object) {
                 $this->process($object);
                 $this->script->last_run_datetime = $object->updated_on_datetime->format(GK_DB_DATETIME_FORMAT);
             }
-            $this->script->update();
+            $this->script->last_page = $i;
+            $this->script->touch('last_run_datetime');
+            $this->script->save();
             $this->timeSpent = microtime(true) - $timeBefore;
         }
         echo sprintf(PHP_EOL."\e[0;32mRecomputed %d %s. %d Fixed (%0.2f%%)\e[0m", $this->counter, $this->getModelName(), $this->counterFixed, $this->percentErrors).PHP_EOL;

@@ -9,6 +9,7 @@ use DB\SQL\Schema;
  * @property int|null id
  * @property string name
  * @property DateTime|null last_run_datetime
+ * @property int|null $last_page
  */
 class Scripts extends Base {
     use \Validation\Traits\CortexTrait;
@@ -23,8 +24,13 @@ class Scripts extends Base {
         ],
         'last_run_datetime' => [
             'type' => Schema::DT_DATETIME,
-            'nullable' => true,
             'validate' => 'is_date',
+            'nullable' => true,
+        ],
+        'last_page' => [
+            'type' => Schema::DT_INT,
+            'validate' => 'int',
+            'nullable' => true,
         ],
     ];
 
@@ -37,6 +43,7 @@ class Scripts extends Base {
             'id' => $this->id,
             'name' => $this->name,
             'last_run_datetime' => $this->last_run_datetime,
+            'last_page' => $this->last_page,
         ];
     }
 }
