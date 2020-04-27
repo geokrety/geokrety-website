@@ -23,7 +23,7 @@ class CleanMoves extends BaseCleaner {
         return $this->_filterByUpdatedOnDatetime();
     }
 
-    protected function process(\GeoKrety\Model\Base &$object): void {
+    protected function process(&$object): void {
 //        $this->processResult($object->id, true);
 
         $fixed = false;

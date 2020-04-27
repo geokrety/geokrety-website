@@ -8,6 +8,11 @@
 1. Launch importer script `website/db/database-migrator.php`
 1. Import data from `gk_waypoints_types.data.sql` and `gk_waypoints_country.data.sql`
 1. Launch picture Importer (`make pictures-import-legacy-to-s3`)
+1. Launch regeration scripts:
+  1. `make geokrety-pictures-re-count`
+  1. `make moves-pictures-re-count`
+  1. `make users-pictures-re-count`
+  1. `make users-banner-regenerate-all`
 
 ## Initialize SRTM
 The base command to import srtm data into postgis:

@@ -22,7 +22,7 @@ class CleanMoveComments extends BaseCleaner {
         return $this->_filterByUpdatedOnDatetime();
     }
 
-    protected function process(\GeoKrety\Model\Base &$object): void {
+    protected function process(&$object): void {
         $fixed = false;
 
         $origText = $object->content;

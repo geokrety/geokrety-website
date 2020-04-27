@@ -117,7 +117,7 @@ abstract class BaseCleaner {
 
     abstract protected function getModel(): \GeoKrety\Model\Base;
 
-    abstract protected function process(\GeoKrety\Model\Base &$object): void;
+    abstract protected function process(&$object): void;
 
     public function processById(Base $f3) {
         $model = $this->getModel();
@@ -138,10 +138,6 @@ abstract class BaseCleaner {
         $this->counterFixed += $fixed;
         $this->percentProcessed = $this->counter / $this->total * 100;
         $this->percentErrors = $this->counterFixed / $this->total * 100;
-
-//        $this->consoleWriter->print([$this->percentProcessed, $this->counter, $this->total, $this->percentErrors]);
-//        $this->print();
-        ob_flush();
     }
 
     protected function print(): void {

@@ -55,12 +55,15 @@ build-translations:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/gettext/build-translations"
 clear-assets:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/assets/clear"
+
 geokrety-pictures-re-count:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/geokrety/pictures/re-count"
 moves-pictures-re-count:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/moves/pictures/re-count"
 users-pictures-re-count:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/users/pictures/re-count"
+users-banner-regenerate-all:
+	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/user/banner/generate-all"
 
 move-clean:
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/moves/content/clean"

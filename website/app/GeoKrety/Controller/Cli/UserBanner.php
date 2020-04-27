@@ -4,44 +4,43 @@ namespace GeoKrety\Controller\Cli;
 
 use GeoKrety\Model\User;
 
-class UserBanner {
-    public function generateAll() {
-        $userModel = new User();
+class UserBanner extends BaseCleaner {
 
-        $user_count = $userModel->count();
-        if (!$user_count) {
-            echo "\e[0;32mNo user found\e[0m".PHP_EOL;
-
-            return;
-        }
-        echo sprintf('%d users to proceed', $user_count).PHP_EOL;
-
-        // Paginate the table resultset as it may blow ram!
-        define('PER_PAGE', 10);
-        $total_pages = ceil($user_count / PER_PAGE);
-        $counter = 0;
-        for ($i = 0; $i < $total_pages; ++$i) {
-            $subset = $userModel->paginate($i, PER_PAGE);
-            foreach ($subset['subset'] as $user) {
-                \GeoKrety\Service\UserBanner::generate($user);
-                echo sprintf(' * generated banner for  %5s ; %s', $user->id, $user->username).PHP_EOL;
-                ob_flush();
-                ++$counter;
-            }
-        }
-
-        echo sprintf("\e[0;32mGenerated %d user banners\e[0m", $counter).PHP_EOL;
+    protected function getModel(): \GeoKrety\Model\Base {
+        return new User();
     }
 
-    public function generateByUserId($f3) {
-        $user = new User();
-        $user->load(['id = ?', $f3->get('PARAMS.userid')]);
-        if ($user->dry()) {
-            echo "\e[0;32mNo user found\e[0m".PHP_EOL;
+    protected function getModelName(): string {
+        return 'Users';
+    }
 
-            return;
-        }
-        \GeoKrety\Service\UserBanner::generate($user);
-        echo sprintf(' * generated banner for  %5s ; %s', $user->id, $user->username).PHP_EOL;
+    protected function getParamId(\Base $f3): int {
+        return $f3->get('PARAMS.userid');
+    }
+
+    protected function getScriptName(): string {
+        return 'user_banners_generator';
+    }
+
+    protected function filterHook() {
+        return [];
+    }
+
+    protected function orderHook() {
+        return ['order' => 'joined_on_datetime ASC'];
+    }
+
+    protected function process(&$object): void {
+        \GeoKrety\Service\UserBanner::generate($object);
+        $this->processResult($object->id, true);
+        $this->print();
+    }
+
+    protected function print(): void {
+        $this->consoleWriter->print([$this->percentProcessed, $this->counter, $this->total]);
+    }
+
+    protected function getConsoleWriterPattern() {
+        return 'Generating users banners: %6.2f%% (%d/%d)';
     }
 }

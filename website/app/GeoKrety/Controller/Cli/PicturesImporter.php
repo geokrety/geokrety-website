@@ -38,7 +38,7 @@ class PicturesImporter extends BaseCleaner {
         return ['order' => 'created_on_datetime ASC'];
     }
 
-    protected function process(\GeoKrety\Model\Base &$object): void {
+    protected function process(&$object): void {
         $this->downloadFilename = $object->filename;
         $fileContent = $this->downloadFile("https://cdn.geokrety.org/images/obrazki/{$object->filename}");
         $this->uploadFile($object, $fileContent);
