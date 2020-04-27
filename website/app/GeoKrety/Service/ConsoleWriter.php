@@ -10,7 +10,7 @@ class ConsoleWriter {
     private $status = '';
 
     public function __construct(string $pattern, ?array $values = null) {
-        $this->pattern = $pattern.' - %0.1fs - load: %s';
+        $this->pattern = $pattern.' - %0.2fs - load: %s';
 
         if (!is_null($values)) {
             $this->print($values);
