@@ -3036,7 +3036,8 @@ ALTER SEQUENCE geokrety.races_participants_id_seq OWNED BY geokrety.gk_races_par
 CREATE TABLE geokrety.scripts (
     id bigint NOT NULL,
     name character varying(128) NOT NULL,
-    last_run_datetime timestamp with time zone
+    last_run_datetime timestamp with time zone,
+    last_page bigint
 );
 
 
@@ -3942,17 +3943,17 @@ CREATE INDEX idx_geokret_avatar ON geokrety.gk_geokrety USING btree (avatar);
 
 
 --
+-- Name: idx_geokret_gkid; Type: INDEX; Schema: geokrety; Owner: geokrety
+--
+
+CREATE UNIQUE INDEX idx_geokret_gkid ON geokrety.gk_geokrety USING btree (gkid);
+
+
+--
 -- Name: idx_geokret_hands_of; Type: INDEX; Schema: geokrety; Owner: geokrety
 --
 
 CREATE INDEX idx_geokret_hands_of ON geokrety.gk_geokrety USING btree (holder);
-
-
---
--- Name: idx_geokret_id_position; Type: INDEX; Schema: geokrety; Owner: geokrety
---
-
-CREATE INDEX idx_geokret_id_position ON geokrety.gk_geokrety USING btree (last_position) INCLUDE (id);
 
 
 --
