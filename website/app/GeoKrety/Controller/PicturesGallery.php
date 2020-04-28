@@ -11,7 +11,8 @@ class PicturesGallery extends Base {
         // Load inventory
         $picture = new Picture();
         $option = ['order' => 'created_on_datetime DESC'];
-        $subset = $picture->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_PICTURES_GALLERY, null, $option);
+        $filter = ['uploaded_on_datetime != ?', null];
+        $subset = $picture->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_PICTURES_GALLERY, $filter, $option);
         Smarty::assign('pictures', $subset);
         // Paginate
         $pages = new Pagination($subset['total'], $subset['limit']);
