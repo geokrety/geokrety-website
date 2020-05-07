@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 12:41+0000\n"
-"PO-Revision-Date: 2020-04-19 19:27\n"
+"PO-Revision-Date: 2020-05-07 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -340,7 +340,7 @@ msgstr "Anforderung zum Passwort-Reset"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:19
 msgid "An error occured while sending the password reset mail."
-msgstr "Während des Sendens der Zurücksetz-E-Mail ist ein Fehler aufgetreten."
+msgstr "Während des Sendens der Mailbenachrichtigung zur Passwortrücksetzung ist ein Fehler aufgetreten."
 
 #: website/app/GeoKrety/Email/PasswordChange.php:23
 msgid "An email containing a validation link has been sent to the provided email address."
@@ -352,7 +352,7 @@ msgstr "Dein Passwort wurde geändert"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:31
 msgid "An error occured while sending the password changed mail notification."
-msgstr "Während des Sendens der E-Mail-Änderungs-Benachrichtigung ist ein Fehler aufgetreten."
+msgstr "Während des Sendens der Mailbenachrichtigung zur Passwortänderung ist ein Fehler aufgetreten."
 
 #: website/app/GeoKrety/Email/UserContact.php:14
 #, php-format
@@ -1409,7 +1409,7 @@ msgstr "Anmelden"
 
 #: website/app-templates/smarty/pages/news_list.tpl:15
 msgid "There is no news yet"
-msgstr "Es gibt keine neuen Neuigkeiten"
+msgstr "Es gibt noch keine Neuigkeiten"
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
@@ -2144,7 +2144,7 @@ msgstr "Im-Kontext-Übersetzung"
 
 #: website/app-templates/smarty/footer.tpl:19
 msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr "Entwickelt mit <abbr title=\"love\">💗</abbr> von <a id=\"footer-team\" href=\"%1\">dem GeoKrety-Team</a>"
+msgstr "Entwickelt mit <abbr title=\"love\">💗</abbr> vom <a id=\"footer-team\" href=\"%1\">GeoKrety-Team</a>"
 
 #: website/app-templates/smarty/footer.tpl:29
 msgid "Deployed on %1"
@@ -2591,7 +2591,7 @@ msgstr "Kontakt von einem GeoKrety.org-Nutzer"
 
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "This email was sent by user <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
-msgstr "Diese E-Mail wurde von dem Nutzer <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a> gesendet."
+msgstr "Diese E-Mail wurde vom Nutzer <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a> gesendet."
 
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "If you suspect an abuse, please let us know: %1"
@@ -2607,7 +2607,7 @@ msgstr "Betreff:"
 
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "Reply to %1"
-msgstr "%1 antworten"
+msgstr "An %1 antworten"
 
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
