@@ -60,7 +60,7 @@ class HealthCheck extends Base {
             $stateName = "s3-bucket-$bucket";
 
             try {
-                $s3->getS3Public()->headBucket(['Bucket' => $bucket]);
+                $s3->getS3()->headBucket(['Bucket' => $bucket]);
                 $this->state->setDependencyState($stateName, HealthState::HEALTH_STATE_OK);
             } catch (S3Exception $e) {
                 $this->state->setDependencyState($stateName, HealthState::HEALTH_STATE_KO);
