@@ -82,6 +82,7 @@ class UserContact extends Base {
                 $this->get($f3);
                 die();
             } else {
+                $mail->load(['_id = ?', $mail->getMapper()->get('_id')]);
                 $smtp = new EmailUserContact();
                 $smtp->sendUserMessage($mail);
                 \Event::instance()->emit('contact.created', $mail);
