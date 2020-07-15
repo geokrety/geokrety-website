@@ -13,8 +13,8 @@ require '../init-f3.php';
 $pgsql = $f3->get('DB')->pdo();
 
 $dsn = 'mysql:host=db;dbname=prod';
-$username = getenv('GK_DB_USER');
-$password = getenv('GK_DB_PASSWORD');
+$username = getenv('GK_DB_ORIG_USER');
+$password = getenv('GK_DB_ORIG_PASSWORD');
 $options = [
     \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;',
 ];
@@ -23,9 +23,38 @@ $mysql = new PDO($dsn, $username, $password, $options);
 
 define('DEFAULT_PAGINATION', 1000);
 
+$pgsql->query('DROP INDEX gk_moves_country_index;');
+$pgsql->query('DROP INDEX gk_moves_type_index;');
+$pgsql->query('DROP INDEX id_type_position;');
+$pgsql->query('DROP INDEX idx_21034_kret_id;');
+$pgsql->query('DROP INDEX idx_21034_ruch_id;');
+$pgsql->query('DROP INDEX idx_21034_user_id;');
+$pgsql->query('DROP INDEX idx_21044_alt;');
+$pgsql->query('DROP INDEX idx_21044_data;');
+$pgsql->query('DROP INDEX idx_21044_data_dodania;');
+$pgsql->query('DROP INDEX idx_21044_lat;');
+$pgsql->query('DROP INDEX idx_21044_lon;');
+$pgsql->query('DROP INDEX idx_21044_timestamp;');
+$pgsql->query('DROP INDEX idx_21044_user;');
+$pgsql->query('DROP INDEX idx_21044_waypoint;');
+$pgsql->query('DROP INDEX idx_moves_geokret;');
+$pgsql->query('DROP INDEX idx_moves_id;');
+$pgsql->query('DROP INDEX idx_moves_type_id;');
+
+$pgsql->query('CREATE TABLE gk_pictures2 AS SELECT filename, bucket, key FROM gk_pictures;');
+$pgsql->query('CREATE INDEX tmp_idx_pictures_filename ON geokrety.gk_pictures2 USING btree (filename);');
+
 $pgsql->query('SET session_replication_role = replica;');
 $sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_oc", "gk_waypoints_country", "gk_waypoints_sync", "gk_waypoints_types", "phinxlog", "scripts", "sessions" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
+
+// ---------------------------------------------------------------------------------------------------------------------
+$mName = 'gk-waypointy-gc';
+$pName = 'gk_waypoints_gc';
+$mFields = ['wpt', 'country', 'alt', 'lon', 'lat'];
+$pFields = ['waypoint', 'country', 'elevation', 'position'];
+$migrator = new WaypointGCMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+$migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-waypointy-country';
@@ -165,14 +194,6 @@ $migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields)
 $migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
-$mName = 'gk-waypointy-gc';
-$pName = 'gk_waypoints_gc';
-$mFields = ['wpt', 'country', 'alt', 'lon', 'lat'];
-$pFields = ['waypoint', 'country', 'elevation', 'position'];
-$migrator = new WaypointGCMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
-$migrator->process();
-
-// ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-ruchy';
 $pName = 'gk_moves';
 $mFields = ['ruch_id', 'id', 'lat', 'lon', 'alt', 'country', 'droga', 'waypoint', 'data', 'data_dodania', 'user', 'koment', 'zdjecia', 'komentarze', 'logtype', 'username', 'timestamp', 'app', 'app_ver'];
@@ -227,11 +248,35 @@ $pgsql->query("SELECT SETVAL('geokrety.races_participants_id_seq', COALESCE(MAX(
 $pgsql->query("SELECT SETVAL('geokrety.scripts_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.scripts;");
 $pgsql->query("SELECT SETVAL('geokrety.users_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_users;");
 $pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_watched;");
-$pgsql->query("SELECT SETVAL('geokrety.waypoints_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints;");
+$pgsql->query("SELECT SETVAL('geokrety.waypoints_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints;"); // TODO
+
 
 $pgsql->query('SELECT waypoints_gc_fill_from_moves();');
 
+$pgsql->query('UPDATE gk_pictures SET bucket = gkp2.bucket, "key" = gkp2.key FROM gk_pictures2 AS gkp2 WHERE gk_pictures.filename = gkp2.filename;');
+$pgsql->query('DROP TABLE gk_pictures2;');
+
 $pgsql->query('SET session_replication_role = DEFAULT;');
+$pgsql->query('UPDATE gk_users SET _email = _email, _secid = _secid;');
+
+$pgsql->query('CREATE INDEX gk_moves_country_index ON geokrety.gk_moves USING btree (country);');
+$pgsql->query('CREATE INDEX gk_moves_type_index ON geokrety.gk_moves USING btree (move_type);');
+$pgsql->query('CREATE INDEX id_type_position ON geokrety.gk_moves USING btree (move_type, id, "position");');
+$pgsql->query('CREATE INDEX idx_21034_kret_id ON geokrety.gk_moves_comments USING btree (geokret);');
+$pgsql->query('CREATE INDEX idx_21034_ruch_id ON geokrety.gk_moves_comments USING btree (move);');
+$pgsql->query('CREATE INDEX idx_21034_user_id ON geokrety.gk_moves_comments USING btree (author);');
+$pgsql->query('CREATE INDEX idx_21044_alt ON geokrety.gk_moves USING btree (elevation);');
+$pgsql->query('CREATE INDEX idx_21044_data ON geokrety.gk_moves USING btree (created_on_datetime);');
+$pgsql->query('CREATE INDEX idx_21044_data_dodania ON geokrety.gk_moves USING btree (moved_on_datetime);');
+$pgsql->query('CREATE INDEX idx_21044_lat ON geokrety.gk_moves USING btree (lat);');
+$pgsql->query('CREATE INDEX idx_21044_lon ON geokrety.gk_moves USING btree (lon);');
+$pgsql->query('CREATE INDEX idx_21044_timestamp ON geokrety.gk_moves USING btree (updated_on_datetime);');
+$pgsql->query('CREATE INDEX idx_21044_user ON geokrety.gk_moves USING btree (author);');
+$pgsql->query('CREATE INDEX idx_21044_waypoint ON geokrety.gk_moves USING btree (waypoint);');
+$pgsql->query('CREATE INDEX idx_moves_geokret ON geokrety.gk_moves USING btree (geokret);');
+$pgsql->query('CREATE INDEX idx_moves_id ON geokrety.gk_moves USING btree (id);');
+$pgsql->query('CREATE INDEX idx_moves_type_id ON geokrety.gk_moves USING btree (move_type, id);');
+
 
 class BaseMigrator {
     private $debug = false;
@@ -410,10 +455,6 @@ class UserMigrator extends BaseMigrator {
         $values[18] = $values[18] ?: SecIdGenerator::generate();  // secid
     }
 
-    protected function postProcessData() {
-        echo 'Post processing'.PHP_EOL;
-        $this->pPdo->query('UPDATE gk_users SET _email = _email, _secid = _secid;');
-    }
 
     // TODO users avatar
     // TODO revalidate home_country
@@ -566,9 +607,9 @@ class MovesMigrator extends BaseMigrator {
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
         // TODO find -> Move date time can not be before GeoKret birth (2007-10-26 20:12:28+00)
+        $this->pPdo->query('DELETE FROM gk_moves WHERE geokret NOT IN (SELECT DISTINCT(gkid) FROM gk_geokrety);');
         $this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
         $this->pPdo->query('UPDATE gk_moves SET author = NULL, username = \'Deleted user\' WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
-        $this->pPdo->query('DELETE FROM gk_moves WHERE geokret NOT IN (SELECT DISTINCT(id) FROM gk_geokrety);');
     }
 
     // TODO: recompute distance
@@ -687,8 +728,9 @@ class WaypointGCMigrator extends BaseMigrator {
     // 'wpt', 'country', 'alt', 'lat', 'lon'
 
     // TODO clean spaces
-    public function process($paginate = DEFAULT_PAGINATION) {
-        $this->mPdo->query('INSERT INTO `gk-waypointy-gc` FROM SELECT DISTINCT (waypoint), country, elevation, position FROM gk_ruchy;');
+    protected function prepareData() {
+        $this->mPdo->query('DELETE FROM `gk-waypointy-gc`;');
+        $this->mPdo->query('INSERT INTO `gk-waypointy-gc` SELECT waypoint, lat, lon, country, alt FROM `gk-ruchy` WHERE waypoint like \'GC%\' GROUP BY waypoint;');
     }
 
     // $this->mPdo->query('DELETE FROM `gk-waypointy-gc` WHERE wpt = "GC1K14H	";');
