@@ -16,7 +16,7 @@ class PasswordChange extends Base {
         $this->setTo($token->user);
         Smarty::assign('token', $token);
         if (!$this->send(Smarty::fetch('email-password-recovery.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the password reset mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the password reset mail.'), 'danger');
 
             return;
         }
@@ -28,7 +28,7 @@ class PasswordChange extends Base {
         $this->setTo($user);
         Smarty::assign('user', $user);
         if (!$this->send(Smarty::fetch('email-password-changed.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the password changed mail notification.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the password changed mail notification.'), 'danger');
         }
     }
 }

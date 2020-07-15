@@ -33,7 +33,7 @@ class AccountActivation extends Base {
         $this->setTo($token->user);
         Smarty::assign('token', $token);
         if (!$this->send(Smarty::fetch('email-account-activated.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
         }
     }
 
@@ -42,7 +42,7 @@ class AccountActivation extends Base {
         $this->setTo($token->user);
         Smarty::assign('token', $token);
         if (!$this->send(Smarty::fetch('email-account-activation.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the activation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the activation mail.'), 'danger');
         } else {
             if (!is_null($this->message)) {
                 \Flash::instance()->addMessage(sprintf($this->message, Carbon::instance($token->expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])), 'success');

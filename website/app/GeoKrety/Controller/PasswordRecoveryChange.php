@@ -84,7 +84,7 @@ class PasswordRecoveryChange extends Base {
 
         // Check for eventual error
         if ($f3->get('ERROR')) {
-            Flash::instance()->addMessage(_('Unexpected error occured.'), 'danger');
+            Flash::instance()->addMessage(_('Unexpected error occurred.'), 'danger');
             $this->get($f3);
             die();
         }

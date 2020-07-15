@@ -14,7 +14,7 @@ class GeokretClaim extends Base {
         Smarty::assign('geokret', $geokret);
         Smarty::assign('user', $user);
         if (!$this->send(Smarty::fetch('email-geokret-adopted.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the adoption mail notification to old owner.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the adoption mail notification to old owner.'), 'danger');
         }
     }
 }

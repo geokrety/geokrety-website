@@ -26,7 +26,7 @@ class EmailChange extends Base {
         $this->setTo($token->user);
 
         if (!$this->send(Smarty::fetch('email-change-to-old-address.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
         }
     }
 
@@ -35,7 +35,7 @@ class EmailChange extends Base {
         $this->setTo($token->email);
 
         if (!$this->send(Smarty::fetch('email-change-to-new-address.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
         }
     }
 
@@ -54,7 +54,7 @@ class EmailChange extends Base {
         $this->setTo($token->_previous_email);
 
         if (!$this->send(Smarty::fetch('email-address-changed-to-old-address.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
         }
     }
 
@@ -63,7 +63,7 @@ class EmailChange extends Base {
         $this->setTo($token->email);
 
         if (!$this->send(Smarty::fetch('email-address-changed-to-new-address.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
         }
     }
 
@@ -72,7 +72,7 @@ class EmailChange extends Base {
         $this->setTo($user);
 
         if (!$this->send(Smarty::fetch('email-address-reverted.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending the confirmation mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
         }
     }
 }

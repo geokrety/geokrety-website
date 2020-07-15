@@ -15,7 +15,7 @@ class UserContact extends Base {
         $this->setTo($mail->to_user);
 
         if (!$this->send(Smarty::fetch('email-user-contact.html'))) {
-            \Flash::instance()->addMessage(_('An error occured while sending mail.'), 'danger');
+            \Flash::instance()->addMessage(_('An error occurred while sending mail.'), 'danger');
         }
     }
 }
