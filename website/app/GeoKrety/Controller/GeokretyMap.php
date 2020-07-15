@@ -36,14 +36,14 @@ class GeokretyMap extends Base {
         $sql = <<<EOT
             WITH
                 envelope AS (SELECT public.ST_MakeEnvelope(?, ?, ?, ?, 4326)::geometry AS boundingBox),
-                area AS (SELECT public.ST_Area(envelope.boundingBox) AS area, CASE WHEN public.ST_Area(envelope.boundingBox) > 15 THEN 365 ELSE 99999 END AS age FROM envelope)
+                area AS (SELECT public.ST_Area(envelope.boundingBox) AS area, CASE WHEN public.ST_Area(envelope.boundingBox) > 150000 THEN 365 ELSE 730 END AS age FROM envelope)
             SELECT json_build_object(
                 'type', 'FeatureCollection',
-                'features', json_agg(public.ST_AsGeoJSON(t.*)::json)::jsonb
+                'features',  coalesce(json_agg(public.ST_AsGeoJSON(t.*)::json)::jsonb, '[]'::jsonb)
             ) AS geojson
             FROM (
                 SELECT position, gkid, name, waypoint, lat, lon, elevation, country, distance, author, author_username,
-                    moved_on_datetime, caches_count, avatar_key, area.area, area.age,
+                    moved_on_datetime, caches_count, avatar_key, area.area, area.age, owner, owner_username,
                     coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) AS days
                 FROM "gk_geokrety_in_caches", envelope, area
                 WHERE public.ST_Intersects(position::geometry, envelope.boundingBox)
