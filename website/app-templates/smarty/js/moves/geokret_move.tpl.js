@@ -129,7 +129,9 @@ function toggleHome() {
         showMap();
         showCoordinatesField();
         $("#latlon").val(''); // Reset latlon for successful positionUpdate()
+        {if isset($current_user) and !is_null($current_user->home_latitude) and !is_null($current_user->home_longitude)}
         positionUpdate([{$current_user->home_latitude}, {$current_user->home_longitude}]);
+        {/if}
     } else {
         // clear display
         hideCoordinatesField();
