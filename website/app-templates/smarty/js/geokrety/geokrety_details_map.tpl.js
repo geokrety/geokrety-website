@@ -49,6 +49,7 @@ function onEachFeature(feature, layer) {
     }
     layer.bindPopup(`
         <h4>${ moveTypeIcon(feature.properties.move_type) } ${ moveTypeText(feature.properties.move_type) }</h4>
+        <h5>{t}Move details:{/t}</h5>
         <dl class="dl-horizontal">
             <dt>{t}Author:{/t}</dt><dd>${ author }</dd>
             <dt>{t}Waypoint:{/t}</dt><dd>${ feature.properties.waypoint === null ? feature.properties.lat + '/' + feature.properties.lon : feature.properties.waypoint }</dd>
