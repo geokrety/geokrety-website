@@ -12,8 +12,8 @@ class PasswordChange extends Base {
     }
 
     public function sendPasswordChangeToken(PasswordToken $token) {
-        $this->setSubject('🔑 '._('Password reset request'));
         $this->setTo($token->user);
+        $this->setSubject('🔑 '._('Password reset request'));
         Smarty::assign('token', $token);
         if (!$this->send(Smarty::fetch('email-password-recovery.html'))) {
             \Flash::instance()->addMessage(_('An error occurred while sending the password reset mail.'), 'danger');
@@ -24,8 +24,8 @@ class PasswordChange extends Base {
     }
 
     public function sendPasswordChangedNotification(User $user) {
-        $this->setSubject('🔑 '._('Your password has been changed'));
         $this->setTo($user);
+        $this->setSubject('🔑 '._('Your password has been changed'));
         Smarty::assign('user', $user);
         if (!$this->send(Smarty::fetch('email-password-changed.html'))) {
             \Flash::instance()->addMessage(_('An error occurred while sending the password changed mail notification.'), 'danger');

@@ -18,6 +18,9 @@ abstract class Base extends \SMTP {
             // TODO what to do if user has no email?
             $this->setToEmail($userOrEmail->email);
 
+            // load recipient user language
+            \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[$userOrEmail->preferred_language]);
+            \Carbon\Carbon::setLocale($userOrEmail->preferred_language);
             return;
         }
         $this->setToEmail($userOrEmail);
@@ -41,6 +44,10 @@ abstract class Base extends \SMTP {
     }
 
     public function send($message, $log = true, $mock = false) {
+        // Restore current user language
+        \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[\Multilang::instance()->current]);
+        \Carbon\Carbon::setLocale(\Multilang::instance()->current);
+
         if (is_null(GK_SMTP_HOST)) {
             \Base::instance()->push('SESSION.LOCAL_MAIL', ['smtp' => clone $this, 'message' => $message, 'read' => false]);
 

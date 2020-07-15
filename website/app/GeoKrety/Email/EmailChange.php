@@ -22,8 +22,8 @@ class EmailChange extends Base {
         if (is_null($token->user->email)) {
             return;
         }
-        $this->setSubject('📯 '._('Changing your email address'));
         $this->setTo($token->user);
+        $this->setSubject('📯 '._('Changing your email address'));
 
         if (!$this->send(Smarty::fetch('email-change-to-old-address.html'))) {
             \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
@@ -31,8 +31,8 @@ class EmailChange extends Base {
     }
 
     protected function sendEmailChangeNotificationToNewEmail(EmailActivationToken $token) {
-        $this->setSubject('✉️ '._('Changing your email address'));
         $this->setTo($token->email);
+        $this->setSubject('✉️ '._('Changing your email address'));
 
         if (!$this->send(Smarty::fetch('email-change-to-new-address.html'))) {
             \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
@@ -50,8 +50,8 @@ class EmailChange extends Base {
         if (is_null($token->previous_email)) {
             return;
         }
-        $this->setSubject('📯 '._('Email address changed'));
         $this->setTo($token->_previous_email);
+        $this->setSubject('📯 '._('Email address changed'));
 
         if (!$this->send(Smarty::fetch('email-address-changed-to-old-address.html'))) {
             \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
@@ -59,8 +59,8 @@ class EmailChange extends Base {
     }
 
     protected function sendEmailChangedNotificationToNewEmail(EmailActivationToken $token) {
-        $this->setSubject('✉️ '._('Email address changed'));
         $this->setTo($token->email);
+        $this->setSubject('✉️ '._('Email address changed'));
 
         if (!$this->send(Smarty::fetch('email-address-changed-to-new-address.html'))) {
             \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
@@ -68,8 +68,8 @@ class EmailChange extends Base {
     }
 
     public function sendEmailRevertedNotification(User $user) {
-        $this->setSubject('📯 '._('Email address reverted'));
         $this->setTo($user);
+        $this->setSubject('📯 '._('Email address reverted'));
 
         if (!$this->send(Smarty::fetch('email-address-reverted.html'))) {
             \Flash::instance()->addMessage(_('An error occurred while sending the confirmation mail.'), 'danger');
