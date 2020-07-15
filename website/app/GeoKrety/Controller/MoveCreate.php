@@ -5,7 +5,9 @@ namespace GeoKrety\Controller;
 use DateTime;
 use Event;
 use Flash;
+use GeoKrety\LogType;
 use GeoKrety\Model\Move;
+use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Validation\Coordinates as CoordinatesValidation;
 use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
@@ -44,8 +46,26 @@ class MoveCreate extends Base {
     }
 
     public function get(\Base $f3) {
-        $tracking_code = $this->move->geokret->tracking_code ?? ($this->tracking_code ?? $f3->get('GET.tracking_code'));
-        Smarty::assign('tracking_code', $tracking_code);
+        if ((is_null($this->move->geokret) || is_null($this->move->geokret->tracking_code)) && $f3->exists('GET.tracking_code')) {
+            $geokret = new Geokret();
+            $geokret->load(['tracking_code = ?', $f3->get('GET.tracking_code')]);
+            if (!$geokret->dry()) {
+                $this->move->geokret = $geokret;
+            }
+        }
+        if (!LogType::isValid($this->move->move_type->getLogTypeId()) && $f3->exists('GET.move_type')) {
+            $this->move->move_type = $f3->get('GET.move_type');
+        }
+        if (is_null($this->move->waypoint) && $f3->exists('GET.waypoint')) {
+            $this->move->waypoint = $f3->get('GET.waypoint');
+        }
+        if (is_null($this->move->lat) && is_null($this->move->lon) && $f3->exists('GET.coordinates')) {
+            $coordChecker = new CoordinatesValidation();
+            if ($coordChecker->validate($f3->get('GET.coordinates'))) {
+                $this->move->lat = $coordChecker->getLat();
+                $this->move->lon = $coordChecker->getLon();
+            }
+        }
         Smarty::render('pages/geokret_move.tpl');
     }
 

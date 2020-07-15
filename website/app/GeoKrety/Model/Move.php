@@ -26,7 +26,7 @@ use GeoKrety\Service\HTMLPurifier;
  * @property DateTime created_on_datetime
  * @property DateTime moved_on_datetime
  * @property DateTime updated_on_datetime
- * @property int move_type
+ * @property int|LogType move_type
  * @property string|null position
  */
 class Move extends Base {
@@ -142,7 +142,7 @@ class Move extends Base {
     }
 
     public function get_move_type($value): LogType {
-        return new \GeoKrety\LogType($value);
+        return new LogType($value);
     }
 
     public function get_lat($value) {
@@ -153,12 +153,12 @@ class Move extends Base {
         return $value ? number_format(floatval($value), 5, '.', '') : $value;
     }
 
-    public function get_coordinates(?string $separator = ' '): string {
+    public function get_coordinates(): string {
         if (is_null($this->lat) || is_null($this->lon)) {
             return '';
         }
 
-        return sprintf('%.04f%s%.04f', $this->lat, $separator, $this->lon);
+        return sprintf('%.04f %.04f', $this->lat, $this->lon);
     }
 
     public function get_point(): array {

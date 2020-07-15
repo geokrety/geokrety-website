@@ -22,7 +22,7 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="tracking_code" id="nr" value="{$tracking_code}" minlength="{GK_SITE_TRACKING_CODE_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_LENGTH -1}" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
+                                        <input type="text" name="tracking_code" id="nr" value="{if !is_null($move->geokret)}{$move->geokret->tracking_code}{/if}" minlength="{GK_SITE_TRACKING_CODE_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_LENGTH -1}" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
                                         <span class="input-group-btn">
                                             {if $f3->get('SESSION.CURRENT_USER')}
                                             <button class="btn btn-default" type="button" id="nrInventorySelectButton" title="{t}Select GeoKrety from inventory{/t}" data-toggle="modal" data-target="#modal" data-type="select-from-inventory">{fa icon="briefcase"}</button>
@@ -72,7 +72,6 @@
                         <div class="col-lg-8 col-lg-pull-4 top-buffer">
                             <div class="form-group" id="infoLogtypeFormGroup">
                                 <div class="col-sm-10 col-sm-offset-1">
-
                                     <label>
                                         <input type="radio" name="logtype" id="logType{\GeoKrety\LogType::LOG_TYPE_DROPPED}" value="{\GeoKrety\LogType::LOG_TYPE_DROPPED}" {if $move->move_type->isType(\GeoKrety\LogType::LOG_TYPE_DROPPED)}checked{/if} required data-parsley-group="logtype">
                                         <div class="dropped box" data-toggle="tooltip" title="{t}When you've left a GeoKret in a cache{/t}">
