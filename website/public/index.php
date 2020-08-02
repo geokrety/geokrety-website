@@ -4,7 +4,7 @@ require '../init-f3.php';
 $f3->config('../app/cron.ini');
 $f3->config('../app/assets.ini');
 
-new \DB\SQL\Session($f3->get('DB'));
+new \GeoKrety\Session($f3->get('DB'));
 
 // Local Mail
 if (is_null(GK_SMTP_HOST)) {

@@ -30,6 +30,7 @@ use JsonSerializable;
  * @property int statpic_template
  * @property int email_invalid
  * @property int account_valid
+ * @property AccountActivationToken activation
  */
 class User extends Base implements JsonSerializable {
     // Validation occurs in validate() for this

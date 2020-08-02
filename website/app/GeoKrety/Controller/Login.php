@@ -9,6 +9,7 @@ use GeoKrety\AuthGroup;
 use GeoKrety\Email\AccountActivation;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Session;
 use Multilang;
 
 class Login extends Base {
@@ -38,6 +39,7 @@ class Login extends Base {
 
                 if ($f3->get('POST.remember')) {
                     $f3->set('COOKIE.PHPSESSID', $f3->get('COOKIE.PHPSESSID'), GK_SITE_SESSION_LIFETIME_REMEMBER);
+                    Session::setPersistent($f3->get('COOKIE.PHPSESSID'));
                 }
                 $ml = Multilang::instance();
                 $params = $f3->unserialize(base64_decode($f3->get('GET.params')));

@@ -40,8 +40,6 @@ seed: ## generate random data
 buckets: ## create buckets
 	${PTY_PREFIX} bash -c "./minio/init.sh"
 
-phinx-migrations-generate: ## create new db migration
-	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx-migrations generate"
 phinx-migrate: ## play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
 db-migrator: ## play migration
