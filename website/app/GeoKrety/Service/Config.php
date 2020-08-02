@@ -169,6 +169,8 @@ class Config extends \Prefab {
         define('GK_SITE_CACHE_TTL_LATEST_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_GEOKRETY') ?: 60);
         define('GK_SITE_CACHE_TTL_LATEST_PICTURES', getenv('GK_SITE_CACHE_TTL_LATEST_PICTURES') ?: 60);
         define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: 600);
+        define('GK_SITE_CACHE_TTL_LABELS_LIST', getenv('GK_SITE_CACHE_TTL_LABELS_LIST') ?: 600);
+        define('GK_SITE_CACHE_TTL_LABELS_LOOKUP', getenv('GK_SITE_CACHE_TTL_LABELS_LOOKUP') ?: 600);
 
         // API LIMITS
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);
@@ -198,6 +200,7 @@ class Config extends \Prefab {
         define('GK_CDN_IMAGES_URL', getenv('GK_CDN_IMAGES_URL') ?: GK_CDN_SERVER_URL.'/images');
         define('GK_CDN_ICONS_URL', getenv('GK_CDN_ICONS_URL') ?: GK_CDN_IMAGES_URL.'/icons');
         define('GK_CDN_LOGOS_URL', getenv('GK_CDN_LOGOS_URL') ?: GK_CDN_IMAGES_URL.'/logos');
+        define('GK_CDN_LABELS_SCREENSHOTS_URL', getenv('GK_CDN_LABELS_SCREENSHOTS_URL') ?: GK_CDN_IMAGES_URL.'/labels/screenshots');
 
         // CDN LIBRARIES
         define('GK_CDN_LIBRARIES_URL', getenv('GK_CDN_LIBRARIES_URL') ?: GK_CDN_SERVER_URL.'/libraries');

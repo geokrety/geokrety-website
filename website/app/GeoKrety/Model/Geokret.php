@@ -24,7 +24,8 @@ use GeoKrety\LogType;
  * @property DateTime created_on_datetime
  * @property DateTime updated_on_datetime
  * @property bool missing
- * @property int type
+ * @property int|GeokretyType type
+ * @property int|Label label_template
  */
 class Geokret extends Base {
     use \Validation\Traits\CortexTrait;
@@ -70,6 +71,11 @@ class Geokret extends Base {
         'missing' => [
             'type' => Schema::DT_BOOLEAN,
             'default' => false,
+        ],
+        'label_template' => [
+            'belongs-to-one' => '\GeoKrety\Model\Label',
+            'nullable' => true,
+            'validate' => 'is_not_false',
         ],
         'owner' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
@@ -155,6 +161,10 @@ class Geokret extends Base {
         return self::get_date_object($value);
     }
 
+    /**
+     * Check if the current logged in user is the GeoKret owner
+     * @return bool
+     */
     public function isOwner(): bool {
         $f3 = \Base::instance();
 
@@ -213,6 +223,7 @@ class Geokret extends Base {
             // 'created_on_datetime' => $this->created_on_datetime,
             // 'updated_on_datetime' => $this->updated_on_datetime,
             // 'missing' => $this->missing,
+            // 'label_template' => $this->label_template,
             'type' => $this->type->getTypeId(),
         ];
     }

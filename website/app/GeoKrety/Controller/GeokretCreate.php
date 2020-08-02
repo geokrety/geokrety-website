@@ -54,7 +54,7 @@ class GeokretCreate extends Base {
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
             } else {
-                \Flash::instance()->addMessage(sprintf(_('Your GeoKret has been created. You may now wish to <a href="%s">print</a> it a great label…'), $f3->alias('geokret_label_generator', '@gkid='.$geokret->gkid)), 'success');
+                \Flash::instance()->addMessage(sprintf(_('Your GeoKret has been created. You may now wish to <a href="%s">print</a> it a great label…'), $f3->alias('geokret_label', '@gkid='.$geokret->gkid)), 'success');
                 \Event::instance()->emit('geokret.created', $geokret);
                 $f3->reroute('@geokret_details(@gkid='.$geokret->gkid.')');
             }

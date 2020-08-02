@@ -7,7 +7,7 @@
 {/function}
 
 {function label}
-<div class="col-md-4">{fa icon="tag"} <a href="{'geokret_label_generator'|alias}">{t}Print a label for this GeoKret{/t}</a></div>
+<div class="col-md-4">{fa icon="tag"} <a href="{'geokret_label'|alias}">{t}Print a label for this GeoKret{/t}</a></div>
 {/function}
 
 {function statistics}

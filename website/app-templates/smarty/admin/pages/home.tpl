@@ -66,7 +66,7 @@
                 <div class="panel-body">
                     <ul>
                         <li>
-                            …
+                            <a href="http://localhost:8080/">SVG to PNG</a>
                         </li>
                     </ul>
                 </div>

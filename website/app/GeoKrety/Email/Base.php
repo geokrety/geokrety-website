@@ -3,6 +3,7 @@
 namespace GeoKrety\Email;
 
 use GeoKrety\Model\User;
+use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
 
 abstract class Base extends \SMTP {
@@ -19,8 +20,7 @@ abstract class Base extends \SMTP {
             $this->setToEmail($userOrEmail->email);
 
             // load recipient user language
-            \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[$userOrEmail->preferred_language]);
-            \Carbon\Carbon::setLocale($userOrEmail->preferred_language);
+            LanguageService::changeLanguageTo($userOrEmail->preferred_language);
             return;
         }
         $this->setToEmail($userOrEmail);
@@ -45,8 +45,7 @@ abstract class Base extends \SMTP {
 
     public function send($message, $log = true, $mock = false) {
         // Restore current user language
-        \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[\Multilang::instance()->current]);
-        \Carbon\Carbon::setLocale(\Multilang::instance()->current);
+        LanguageService::restoreLanguageToCurrentChosen();
 
         if (is_null(GK_SMTP_HOST)) {
             \Base::instance()->push('SESSION.LOCAL_MAIL', ['smtp' => clone $this, 'message' => $message, 'read' => false]);

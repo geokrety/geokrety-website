@@ -4,6 +4,7 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
+use Validation\Traits\CortexTrait;
 
 /**
  * @property int|null id
@@ -16,7 +17,7 @@ use DB\SQL\Schema;
  * @property DateTime|null last_commented_on_datetime
  */
 class News extends Base {
-    use \Validation\Traits\CortexTrait;
+    use CortexTrait;
 
     protected $db = 'DB';
     protected $table = 'gk_news';

@@ -1,7 +1,7 @@
 <?php
 
 // Framework bootstrap code here
-require 'init-f3.php';
+require __DIR__.'/init-f3.php';
 
 // Get PDO object
 $pdo = $f3->get('DB')->pdo();

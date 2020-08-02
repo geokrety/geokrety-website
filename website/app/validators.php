@@ -99,15 +99,19 @@ $validator->addValidator('after_geokret_birth', function ($field, $input, $param
 
 $validator->addValidator('email_activation_require_update', function ($field, $input, $param = null) {
     return in_array($input['used'], \GeoKrety\Model\EmailActivationToken::TOKEN_NEED_UPDATE, true);
-}, '{0} require update fileds');
+}, '{0} require update fields');
 
 $validator->addValidator('email_activation_require_revert', function ($field, $input, $param = null) {
     return in_array($input['used'], \GeoKrety\Model\EmailActivationToken::TOKEN_NEED_REVERT, true);
-}, '{0} require revert fileds');
+}, '{0} require revert fields');
 
 $validator->addValidator('account_activation_require_validate', function ($field, $input, $param = null) {
     return in_array($input['used'], \GeoKrety\Model\AccountActivationToken::TOKEN_NEED_VALIDATE, true);
-}, '{0} require validate fileds');
+}, '{0} require validate fields');
+
+$validator->addValidator('is_not_false', function ($field, $input, $param = null) {
+    return $input[$field] !== false;
+}, 'Invalid value for {0}');
 
 $validator->addFilter('HTMLPurifier', function ($value, $params = null) {
     return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value);

@@ -8,10 +8,7 @@ namespace GeoKrety\Service;
  * https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1
  */
 class LanguageService extends \Prefab {
-    private $isoCodesFactory = null;
-
     const DEFAULT_LANGUAGE_CODE = 'en';
-
     const SUPPORTED_LANGUAGES = [
         'en', 'fr', 'de', 'pl', 'bg', 'ca',
         'da', 'el', 'es', 'et', 'fi', 'cs',
@@ -19,7 +16,6 @@ class LanguageService extends \Prefab {
         'ro', 'ru', 'sk', 'sq', 'sv', 'th',
         'tr', 'uk',
     ];
-
     const SUPPORTED_LANGUAGES_LOCAL_NAME = [
         'en' => 'English',
         'bg' => 'Български',
@@ -50,6 +46,7 @@ class LanguageService extends \Prefab {
         'uk' => 'Українська',
         'inline-translation' => 'Translation mode',
     ];
+    private $isoCodesFactory = null;
 
     public function __construct() {
         $this->isoCodesFactory = new \Sokil\IsoCodes\IsoCodesFactory();
@@ -57,6 +54,10 @@ class LanguageService extends \Prefab {
 
     public static function isLanguageSupported($langAlpha2) {
         return in_array($langAlpha2, self::SUPPORTED_LANGUAGES);
+    }
+
+    public static function areLanguageSupported(?array $langAlpha2) {
+        return is_null($langAlpha2) || !array_diff($langAlpha2, self::SUPPORTED_LANGUAGES);
     }
 
     public static function getSupportedLanguages($locale = false) {
@@ -94,5 +95,26 @@ class LanguageService extends \Prefab {
         }
 
         return $languages->getByAlpha2($langAlpha2)->getLocalName();
+    }
+
+    public static function translate(string $text, array $languages): array {
+        $response = [];
+        foreach ($languages as $language) {
+            self::changeLanguageTo($language);
+            $response[] = gettext($text);
+        }
+        self::restoreLanguageToCurrentChosen();
+
+        return $response;
+    }
+
+    public static function changeLanguageTo($langAlpha2) {
+        \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[$langAlpha2]);
+        \Carbon\Carbon::setLocale($langAlpha2);
+    }
+
+    public static function restoreLanguageToCurrentChosen() {
+        \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[\Multilang::instance()->current]);
+        \Carbon\Carbon::setLocale(\Multilang::instance()->current);
     }
 }
