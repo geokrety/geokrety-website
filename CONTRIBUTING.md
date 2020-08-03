@@ -30,6 +30,9 @@ $ foundation build
 # will start a webserver to preview the templates in a browser
 ```
 
+## Labels templates
+Please check [dedicated section](CONTRIBUTING.label-templates.md).
+
 ## Install
 
 please cf. [INSTALL.md](INSTALL.md)
