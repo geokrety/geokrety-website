@@ -5,7 +5,7 @@
 -- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
 -- Dumped by pg_dump version 12.2 (Ubuntu 12.2-4)
 
--- Started on 2020-04-26 18:43:14 CEST
+-- Started on 2020-08-03 13:47:46 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -63,7 +63,7 @@ CREATE SEQUENCE secure.gpg_keys_id_seq
 ALTER TABLE secure.gpg_keys_id_seq OWNER TO geokrety;
 
 --
--- TOC entry 5671 (class 0 OID 0)
+-- TOC entry 5673 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: gpg_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: secure; Owner: geokrety
 --
@@ -72,14 +72,14 @@ ALTER SEQUENCE secure.gpg_keys_id_seq OWNED BY secure.gpg_keys.id;
 
 
 --
--- TOC entry 5526 (class 2604 OID 511640)
+-- TOC entry 5528 (class 2604 OID 511640)
 -- Name: gpg_keys id; Type: DEFAULT; Schema: secure; Owner: geokrety
 --
 
 ALTER TABLE ONLY secure.gpg_keys ALTER COLUMN id SET DEFAULT nextval('secure.gpg_keys_id_seq'::regclass);
 
 
--- Completed on 2020-04-26 18:43:14 CEST
+-- Completed on 2020-08-03 13:47:49 CEST
 
 --
 -- PostgreSQL database dump complete
