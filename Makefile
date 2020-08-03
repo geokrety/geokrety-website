@@ -45,29 +45,29 @@ phinx-migrate: ## play migration
 db-migrator: ## play migration
 	${PTY_PREFIX} bash -c "cd website/db && runuser -u www-data php database-migrator.php"
 
-compile-all-templates:
+compile-all-templates: ## compile all smarty templates
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/smarty/compile-all-templates"
-clear-all-templates:
+clear-all-templates: ## drop all generated smarty templates
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/smarty/clear-compiled-templates"
-build-translations:
+build-translations: ## build translation files
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/gettext/build-translations"
-clear-assets:
+clear-assets: ## clear generated assets
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/assets/clear"
 
-geokrety-pictures-re-count:
+geokrety-pictures-re-count: ## recount all geokrety pictures
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/geokrety/pictures/re-count"
-moves-pictures-re-count:
+moves-pictures-re-count: ## recount all moves pictures
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/moves/pictures/re-count"
-users-pictures-re-count:
+users-pictures-re-count: ## recount all users profile pictures
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/users/pictures/re-count"
-users-banner-regenerate-all:
+users-banner-regenerate-all: ## regenerate all users banners
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/user/banner/generate-all"
 
-move-clean:
+move-clean: ## moves cleaner
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/moves/content/clean"
-move-comment-clean:
+move-comment-clean: ## moves comments cleaner
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/move-comments/content/clean"
-pictures-import-legacy-to-s3:
+pictures-import-legacy-to-s3: ## Automatically fetch pictures from legacy urls
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/pictures/import/legacy-to-s3"
 
 ## DEV Local instance of geokrety
