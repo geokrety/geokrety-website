@@ -141,8 +141,8 @@ class MoveCreate extends Base {
         } else {
             $errors = array_merge($errors, $trackingCodeChecker->getErrors());
         }
-        // Store the input tracking code(s) so it can be displayed again on form error
-        $this->tracking_code = $f3->get('POST.tracking_code');
+        // Permit to display again on form error
+        Smarty::assign('move', $moves[0]);
 
         // reCaptcha
         if (!$f3->get('SESSION.CURRENT_USER') && GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
