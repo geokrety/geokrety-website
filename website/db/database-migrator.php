@@ -598,6 +598,7 @@ class MovesMigrator extends BaseMigrator {
 
     protected function prepareInsertValues(int $chunkSize): string {
         $value = array_fill(0, sizeof($this->pFields) - 1, '?');
+        $value[8] = $value[9] = $value[16] = '? AT TIME ZONE \'UTC\' AT TIME ZONE \'Europe/Paris\'';
         $value[] = 'public.ST_SetSRID(public.ST_MakePoint(?, ?), 4326)';
         $value = join(', ', $value);
 
