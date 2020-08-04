@@ -231,6 +231,7 @@ class Config extends \Prefab {
 
 //        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.22.0/moment.min.js');
         define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.24.0/moment-with-locales.min.js');
+        define('GK_CDN_MOMENT_TIMEZONE_JS', getenv('GK_CDN_MOMENT_TIMEZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/moment-timezone/0.5.31/moment-timezone-with-data.min.js');
         define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
         define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
 

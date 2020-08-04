@@ -344,16 +344,18 @@ findbyCacheNameInput.typeahead({
 
 // Convert parsed date to legacy format (date + hour + minute)
 function dateToLegacyFormat() {
-    date = $("#datetimepicker").data("DateTimePicker").date().utc();
+    date = $("#datetimepicker").data("DateTimePicker").date();
     $("#inputHiddenDate").val(date.format('YYYY-MM-DD'));
     $("#inputHiddenHour").val(date.hour());
     $("#inputHiddenMinute").val(date.minute());
+    $("#inputHiddenTimezone").val(date.format('Z'));
 }
 
 function clearLegacyFormat() {
     $("#inputHiddenDate").val('');
     $("#inputHiddenHour").val('');
     $("#inputHiddenMinute").val('');
+    $("#inputHiddenTimezone").val('');
 }
 
 // Initialize date time

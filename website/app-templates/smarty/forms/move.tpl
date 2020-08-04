@@ -232,6 +232,7 @@
                     <input type="hidden" name="date" id="inputHiddenDate" required />
                     <input type="hidden" name="hour" id="inputHiddenHour" required />
                     <input type="hidden" name="minute" id="inputHiddenMinute" required />
+                    <input type="hidden" name="tz" id="inputHiddenTimezone" required />
 
                     {if !$f3->get('SESSION.CURRENT_USER')}
                     <div class="form-group">

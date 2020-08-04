@@ -85,7 +85,18 @@ class MoveCreate extends Base {
         $move->app_ver = $f3->get('POST.app_ver');
 
         // Datetime parser
-        $date = DateTime::createFromFormat('Y-m-d H:i:s T', $f3->get('POST.date').' '.str_pad($f3->get('POST.hour'), 2, '0', STR_PAD_LEFT).':'.str_pad($f3->get('POST.minute'), 2, '0', STR_PAD_LEFT).':00 UTC');
+        $date = DateTime::createFromFormat('Y-m-d H:i:s T', sprintf(
+                '%s %s:%s:00 %s',
+                $f3->get('POST.date'),
+                str_pad($f3->get('POST.hour'), 2, '0', STR_PAD_LEFT),
+                str_pad($f3->get('POST.minute'), 2, '0', STR_PAD_LEFT),
+                $f3->get('POST.tz') ?? 'UTC'
+        ));
+        if ($date === false) {
+            Flash::instance()->addMessage(_('The date time could not be parsed.'), 'danger');
+            $this->get($f3);
+            die();
+        }
         $move->moved_on_datetime = $date->format(GK_DB_DATETIME_FORMAT);
 
         if ($move->move_type->isCoordinatesRequired()) {

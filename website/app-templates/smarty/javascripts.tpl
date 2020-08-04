@@ -1,6 +1,7 @@
 {\Assets::instance()->addJs(GK_CDN_JQUERY_JS, 100)}
 {\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_JS, 100)}
 {\Assets::instance()->addJs(GK_CDN_MOMENT_JS, 100)}
+{\Assets::instance()->addJs(GK_CDN_MOMENT_TIMEZONE_JS)}
 {\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_MAXLENGTH_JS)}
 {\Assets::instance()->addJs(GK_CDN_PREVIEW_IMAGE_JQUERY_JS)}
 {\Assets::instance()->addJs(GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL)}
