@@ -25,7 +25,9 @@ class Image {
         Smarty::assign('geokret', $geokret);
 
         // Localized Help
-        $help = _('<tspan font-weight="bold">User\'s manual:</tspan> <tspan font-weight="bold">1.</tspan> Take this GeoKret. <tspan font-weight="bold">Please note down his Tracking Code.</tspan> <tspan font-weight="bold">2.</tspan> Hide in another cache. <tspan font-weight="bold">3.</tspan> Register the trip at <tspan font-weight="bold">https://geokrety.org</tspan>');
+        // Both strings are necessary here as gettext cannot work with variable
+        _('<tspan font-weight="bold">User\'s manual:</tspan> <tspan font-weight="bold">1.</tspan> Take this GeoKret. <tspan font-weight="bold">Please note down his Tracking Code.</tspan> <tspan font-weight="bold">2.</tspan> Hide in another cache. <tspan font-weight="bold">3.</tspan> Register the trip at <tspan font-weight="bold">https://geokrety.org</tspan>');
+        $help = '<tspan font-weight="bold">User\'s manual:</tspan> <tspan font-weight="bold">1.</tspan> Take this GeoKret. <tspan font-weight="bold">Please note down his Tracking Code.</tspan> <tspan font-weight="bold">2.</tspan> Hide in another cache. <tspan font-weight="bold">3.</tspan> Register the trip at <tspan font-weight="bold">https://geokrety.org</tspan>';
         $translatedHelp = LanguageService::translate($help, array_diff($this->getLanguages(), ['en']));
         foreach ($translatedHelp as $key => $help) {
             Smarty::assign('help'.$key, $help);
