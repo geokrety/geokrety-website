@@ -77,7 +77,7 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-         <h3 class="panel-title">{t}GeoKret Label preview{/t}</h3>
+         <h3 class="panel-title">{t}GeoKret label preview{/t}</h3>
     </div>
     <div class="panel-body">
         <a id="geokretLabelPreviewLink" href="" class="picture-link" title="{t}GeoKret label preview{/t}">
