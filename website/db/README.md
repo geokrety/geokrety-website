@@ -158,6 +158,8 @@ pg_dump --file geokrety-data.tar --host "localhost" --port "5432" --username "ge
 pg_dump --file secure-data.tar --host "localhost" --port "5432" --username "geokrety" --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "secure" "geokrety"
 
 pg_dump --file public-data.tar --host "localhost" --port "5432" --username "geokrety" --verbose --format=t --blobs --data-only --encoding "UTF8" --schema "public" --table=srtm --table=countries "geokrety"
+
+pg_dump --file phinxlogs.data.sql --host "localhost" --port "5432" --username "geokrety" --verbose --format=p --blobs --data-only --encoding "UTF8" --schema "geokrety" --table=phinxlog "geokrety"
 ```
 
 ### Schema
