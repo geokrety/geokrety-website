@@ -7,7 +7,9 @@
 {/function}
 
 {function label}
+{if $geokret->hasTouchedInThePast()}
 <div class="col-md-4">{fa icon="tag"} <a href="{'geokret_label'|alias}">{t}Print a label for this GeoKret{/t}</a></div>
+{/if}
 {/function}
 
 {function statistics}
@@ -74,6 +76,7 @@
         <div class="row">
             {statistics}
             {adopt}
+            {label}
         </div>
         {/if}
         {else}
