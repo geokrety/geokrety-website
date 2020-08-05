@@ -12,10 +12,19 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Traits\GeokretLoader;
 
 class GeokretLabel extends Base {
-    use GeokretLoader;
+    use GeokretLoader {
+        beforeRoute as protected beforeRouteGeoKret;
+    }
+
+    public function beforeRoute(\Base $f3) {
+        $this->beforeRouteGeoKret($f3);
+        if (!$this->geokret->hasTouchedInThePast()) {
+            Flash::instance()->addMessage(_('Sorry you don\'t have the permission to print a label for this GeoKret as you never discovered it!'), 'danger');
+            $f3->reroute('@geokret_details');
+        }
+    }
 
     public function post(\Base $f3) {
-        // Todo check if tracking code is known to current user
         $f3->get('DB')->begin();
 
         // Load the selected template
@@ -75,7 +84,6 @@ class GeokretLabel extends Base {
     }
 
     public function get(\Base $f3) {
-        // Todo check if tracking code is known
         $label = new Label();
         $templates = $label->find(null, ['order' => 'title'], GK_SITE_CACHE_TTL_LABELS_LIST);
         Smarty::assign('templates', $templates);
