@@ -51,6 +51,7 @@ before_install:
   # install extensions
   - psql -c "CREATE EXTENSION postgis;" -U postgres
   - psql -c "CREATE EXTENSION postgis_raster;" -U postgres
+  - psql -c "CREATE EXTENSION pgcrypto WITH SCHEMA public;" -U postgres
   - psql -c "CREATE EXTENSION pgtap;" -U postgres
   - psql -c "\dx" -U postgres
   - psql -c "\dT *.plan" -U postgres
@@ -61,6 +62,7 @@ before_install:
   - psql -U postgres < website/db/dumps/geokrety-schema.sql
   - psql -U postgres < website/db/dumps/gk_waypoints_country.data.sql
   - psql -U postgres < website/db/dumps/gk_waypoints_types.data.sql
+  - psql -U postgres < website/db/dumps/phinxlogs.data.sql
   - pg_restore -U postgres --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "public" --table "countries" website/db/dumps/public-data.tar
   # import SRTM subset for tests
   - website/db/tests-srtm-import.sh
