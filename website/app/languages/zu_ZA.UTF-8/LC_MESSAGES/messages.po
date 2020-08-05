@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-17 12:41+0000\n"
-"PO-Revision-Date: 2020-07-15 19:51\n"
+"POT-Creation-Date: 2020-08-05 14:14+0000\n"
+"PO-Revision-Date: 2020-08-05 14:16\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -19,121 +19,150 @@ msgstr ""
 "X-Crowdin-File-ID: 40\n"
 
 #: website/app/GeoKrety/Controller/GeokretClaim.php:21
+msgid "You are already the owner."
+msgstr "crwdns18452:0crwdne18452:0"
+
+#: website/app/GeoKrety/Controller/GeokretClaim.php:27
 msgid "Sorry, the provided owner code and tracking code doesn't match."
 msgstr "crwdns15574:0crwdne15574:0"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:27
+#: website/app/GeoKrety/Controller/GeokretClaim.php:33
 msgid "Sorry, this owner code has already been used."
 msgstr "crwdns15576:0crwdne15576:0"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:55
+#: website/app/GeoKrety/Controller/GeokretClaim.php:63
 msgid "Something went wrong while registering the adoption."
 msgstr "crwdns15578:0crwdne15578:0"
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:58
+#: website/app/GeoKrety/Controller/GeokretClaim.php:66
 #, php-format
 msgid "🎉 Congratulation! You are now the owner of %s."
 msgstr "crwdns15580:0%scrwdne15580:0"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:36
+#: website/app/GeoKrety/Controller/GeokretCreate.php:39
 msgid "Born here"
 msgstr "crwdns15586:0crwdne15586:0"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:44
+#: website/app/GeoKrety/Controller/GeokretCreate.php:45
 msgid "Failed to create the GeoKret initial move."
 msgstr "crwdns15588:0crwdne15588:0"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:54
-#: website/app/GeoKrety/Controller/GeokretEdit.php:20
+#: website/app/GeoKrety/Controller/GeokretCreate.php:55
+#: website/app/GeoKrety/Controller/GeokretEdit.php:23
 msgid "Failed to create the GeoKret."
 msgstr "crwdns15590:0crwdne15590:0"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:56
+#: website/app/GeoKrety/Controller/GeokretCreate.php:57
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "crwdns15592:0%scrwdne15592:0"
 
-#: website/app/GeoKrety/Controller/GeokretEdit.php:22
+#: website/app/GeoKrety/Controller/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
 msgstr "crwdns15594:0crwdne15594:0"
 
-#: website/app/GeoKrety/Controller/GeokretMoveDelete.php:19
-msgid "Move removed."
-msgstr "crwdns15596:0crwdne15596:0"
+#: website/app/GeoKrety/Controller/GeokretLabel.php:22
+msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
+msgstr "crwdns18454:0crwdne18454:0"
 
-#: website/app/GeoKrety/Controller/GeokretMove.php:92
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:29
-#: website/app/GeoKrety/Controller/UserContact.php:65
-msgid "reCaptcha failed!"
-msgstr "crwdns13828:0crwdne13828:0"
+#: website/app/GeoKrety/Controller/GeokretLabel.php:34
+msgid "This label template does not exists."
+msgstr "crwdns18456:0crwdne18456:0"
 
-#: website/app/GeoKrety/Controller/GeokretMove.php:125
-msgid "Failed to save move."
-msgstr "crwdns15598:0crwdne15598:0"
+#: website/app/GeoKrety/Controller/GeokretLabel.php:49
+msgid "Something went wrong while saving the GeoKret preferred label template."
+msgstr "crwdns18458:0crwdne18458:0"
 
-#: website/app/GeoKrety/Controller/GeokretMove.php:127
-msgid "Your move has been saved."
-msgstr "crwdns15600:0crwdne15600:0"
+#: website/app/GeoKrety/Controller/GeokretLabel.php:64
+msgid "Some chosen languages are invalid."
+msgstr "crwdns18460:0crwdne18460:0"
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:19
+#: website/app/GeoKrety/Controller/GeokretLabel.php:82
+msgid "Please select an export type."
+msgstr "crwdns18462:0crwdne18462:0"
+
+#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
 msgstr "crwdns15602:0crwdne15602:0"
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:25
+#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:28
 msgid "An Owner Code is already available for this GeoKret."
 msgstr "crwdns15604:0crwdne15604:0"
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:35
+#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:38
 msgid "Failed to create a new Owner Code."
 msgstr "crwdns15606:0crwdne15606:0"
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:38
+#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:41
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
 msgstr "crwdns15608:0%scrwdnd15608:0%scrwdne15608:0"
 
-#: website/app/GeoKrety/Controller/HelpApi.php:44
+#: website/app/GeoKrety/Controller/HelpApi.php:42
 msgid "Wrong secid"
 msgstr "crwdns13862:0crwdne13862:0"
 
-#: website/app/GeoKrety/Controller/HelpApi.php:45
+#: website/app/GeoKrety/Controller/HelpApi.php:43
 msgid "Wrong date or time"
 msgstr "crwdns13864:0crwdne13864:0"
 
-#: website/app/GeoKrety/Controller/Login.php:50
+#: website/app/GeoKrety/Controller/Login.php:56
 msgid "Welcome on board!"
 msgstr "crwdns14208:0crwdne14208:0"
 
-#: website/app/GeoKrety/Controller/Login.php:60
+#: website/app/GeoKrety/Controller/Login.php:68
 msgid "Something went wrong during the login procedure."
 msgstr "crwdns15610:0crwdne15610:0"
 
-#: website/app/GeoKrety/Controller/Login.php:63
+#: website/app/GeoKrety/Controller/Login.php:71
 msgid "Username and password doesn't match."
 msgstr "crwdns15612:0crwdne15612:0"
 
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:50
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:72
+#: website/app/GeoKrety/Controller/MoveCommentCreate.php:40
+#: website/app/GeoKrety/Controller/MoveCommentCreate.php:62
 msgid "Comment saved."
 msgstr "crwdns15614:0crwdne15614:0"
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:37
+#: website/app/GeoKrety/Controller/MoveCommentDelete.php:26
 msgid "Comment removed."
 msgstr "crwdns15616:0crwdne15616:0"
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:39
+#: website/app/GeoKrety/Controller/MoveCommentDelete.php:28
 msgid "Failed to delete comment."
 msgstr "crwdns15618:0crwdne15618:0"
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:32
+#: website/app/GeoKrety/Controller/MoveCreate.php:96
+msgid "The date time could not be parsed."
+msgstr "crwdns18464:0crwdne18464:0"
+
+#: website/app/GeoKrety/Controller/MoveCreate.php:152
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:34
+#: website/app/GeoKrety/Controller/Registration.php:52
+#: website/app/GeoKrety/Controller/UserContact.php:71
+msgid "reCaptcha failed!"
+msgstr "crwdns13828:0crwdne13828:0"
+
+#: website/app/GeoKrety/Controller/MoveCreate.php:185
+msgid "Failed to save move."
+msgstr "crwdns15598:0crwdne15598:0"
+
+#: website/app/GeoKrety/Controller/MoveCreate.php:187
+msgid "Your move has been saved."
+msgstr "crwdns15600:0crwdne15600:0"
+
+#: website/app/GeoKrety/Controller/MoveDelete.php:24
+msgid "Move removed."
+msgstr "crwdns15596:0crwdne15596:0"
+
+#: website/app/GeoKrety/Controller/NewsDetails.php:37
 msgid "Failed to record read datetime."
 msgstr "crwdns16122:0crwdne16122:0"
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:59
+#: website/app/GeoKrety/Controller/NewsDetails.php:64
 msgid "Error while saving comment."
 msgstr "crwdns16124:0crwdne16124:0"
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:61
+#: website/app/GeoKrety/Controller/NewsDetails.php:66
 msgid "Your comment has been saved."
 msgstr "crwdns15624:0crwdne15624:0"
 
@@ -149,132 +178,126 @@ msgstr "crwdns15628:0crwdne15628:0"
 msgid "You will not receive updates anymore."
 msgstr "crwdns15630:0crwdne15630:0"
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:22
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:18
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
+#: website/app/GeoKrety/Controller/RegistrationActivate.php:23
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:19
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:19
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:26
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:26
 msgid "Sorry this token is not valid, already used or expired."
 msgstr "crwdns16208:0crwdne16208:0"
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:53
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:51
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:60
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
 msgid "New passwords doesn't match."
 msgstr "crwdns15670:0crwdne15670:0"
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:80
-msgid "Unexpected error occured."
-msgstr "crwdns16210:0crwdne16210:0"
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:87
+msgid "Unexpected error occurred."
+msgstr "crwdns18466:0crwdne18466:0"
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:85
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:62
+#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:92
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:55
 msgid "Your password has been changed."
 msgstr "crwdns15672:0crwdne15672:0"
 
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:40
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:45
 msgid "Sorry no account using that email address."
 msgstr "crwdns16214:0crwdne16214:0"
 
-#: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:40
+#: website/app/GeoKrety/Controller/PictureEdit.php:38
+msgid "Picture caption saved."
+msgstr "crwdns18468:0crwdne18468:0"
+
+#: website/app/GeoKrety/Controller/Registration.php:72
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:56
+msgid "Sorry but this mail address is already in use."
+msgstr "crwdns15656:0crwdne15656:0"
+
+#: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:35
 msgid "Language preferences updated."
 msgstr "crwdns16126:0crwdne16126:0"
 
-#: website/app/GeoKrety/Controller/UserContactByGeokret.php:22
+#: website/app/GeoKrety/Controller/UserContactByGeokret.php:24
 #, php-format
 msgid "GeoKret: %s (%s)"
 msgstr "crwdns15634:0%scrwdnd15634:0%scrwdne15634:0"
 
-#: website/app/GeoKrety/Controller/UserContact.php:75
+#: website/app/GeoKrety/Controller/UserContact.php:81
 msgid "Failed to save the mail."
 msgstr "crwdns15636:0crwdne15636:0"
 
-#: website/app/GeoKrety/Controller/UserContact.php:82
+#: website/app/GeoKrety/Controller/UserContact.php:89
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "crwdns15638:0%scrwdne15638:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:63
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:68
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:45
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:45
 msgid "Unexpected value."
 msgstr "crwdns16266:0crwdne16266:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:78
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:83
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:61
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:59
 msgid "Something went wrong, operation aborted."
 msgstr "crwdns16268:0crwdne16268:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:88
-msgid "Perfect! Enjoy your new email address. (This token is now revoked)"
-msgstr "crwdns16270:0crwdne16270:0"
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:71
+msgid "Perfect! Enjoy your new email address."
+msgstr "crwdns18470:0crwdne18470:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:92
+#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:75
 msgid "Your email address has been reverted."
 msgstr "crwdns16272:0crwdne16272:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:96
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:70
 msgid "Your email address has been validated."
 msgstr "crwdns15678:0crwdne15678:0"
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:98
+#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:77
 msgid "No change has been processed. This token is now revoked."
 msgstr "crwdns16276:0crwdne16276:0"
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:38
+#: website/app/GeoKrety/Controller/UserRefreshSecid.php:26
 msgid "Failed to refresh your secid."
 msgstr "crwdns15646:0crwdne15646:0"
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:41
+#: website/app/GeoKrety/Controller/UserRefreshSecid.php:29
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "crwdns15648:0crwdne15648:0"
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:21
+#: website/app/GeoKrety/Controller/UserTemplateChooser.php:23
 msgid "Failed to save your preferred user banner template."
 msgstr "crwdns15650:0crwdne15650:0"
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:24
+#: website/app/GeoKrety/Controller/UserTemplateChooser.php:26
 msgid "Your user banner template preference has been successfully saved."
 msgstr "crwdns15652:0crwdne15652:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:54
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:37
 msgid "Your email preferences were saved."
 msgstr "crwdns15654:0crwdne15654:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:67
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:50
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "crwdns16348:0%scrwdne16348:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:73
-msgid "Sorry but this mail address is already in use."
-msgstr "crwdns15656:0crwdne15656:0"
-
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:87
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:69
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "crwdns16350:0%scrwdne16350:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:37
+#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:24
 msgid "Failed to save your home coordinates."
 msgstr "crwdns15664:0crwdne15664:0"
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:40
+#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:27
 msgid "Your home coordinates were successfully saved."
 msgstr "crwdns15666:0crwdne15666:0"
 
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
+#: website/app/GeoKrety/Controller/UserUpdatePassword.php:37
 msgid "Your old password is invalid."
 msgstr "crwdns15668:0crwdne15668:0"
-
-#: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:46
-msgid "Waypoint seems empty."
-msgstr "crwdns13872:0crwdne13872:0"
-
-#: website/app/GeoKrety/Controller/Validation/WaypointName.php:20
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:51
-#, php-format
-msgid "Waypoint length is invalid. It should be between %d and %d characters long."
-msgstr "crwdns13874:0%dcrwdnd13874:0%dcrwdne13874:0"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #, php-format
@@ -291,7 +314,7 @@ msgstr "crwdns16418:0%scrwdne16418:0"
 msgid "<strong>Your account is not yet active.</strong> The confirmation email was sent again to your mail address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
 msgstr "crwdns16420:0%scrwdne16420:0"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:32
+#: website/app/GeoKrety/Email/AccountActivation.php:33
 msgid "Account activated"
 msgstr "crwdns16450:0crwdne16450:0"
 
@@ -301,77 +324,77 @@ msgstr "crwdns16450:0crwdne16450:0"
 #: website/app/GeoKrety/Email/EmailChange.php:57
 #: website/app/GeoKrety/Email/EmailChange.php:66
 #: website/app/GeoKrety/Email/EmailChange.php:75
-msgid "An error occured while sending the confirmation mail."
-msgstr "crwdns15662:0crwdne15662:0"
+msgid "An error occurred while sending the confirmation mail."
+msgstr "crwdns18472:0crwdne18472:0"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:41
+#: website/app/GeoKrety/Email/AccountActivation.php:42
 msgid "Welcome on GeoKrety.org"
 msgstr "crwdns16422:0crwdne16422:0"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:45
-#: website/app/GeoKrety/Model/User.php:201
-msgid "An error occured while sending the activation mail."
-msgstr "crwdns16424:0crwdne16424:0"
+#: website/app/GeoKrety/Model/User.php:274
+msgid "An error occurred while sending the activation mail."
+msgstr "crwdns18474:0crwdne18474:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:25
-#: website/app/GeoKrety/Email/EmailChange.php:34
+#: website/app/GeoKrety/Email/EmailChange.php:26
+#: website/app/GeoKrety/Email/EmailChange.php:35
 msgid "Changing your email address"
 msgstr "crwdns15660:0crwdne15660:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:53
-#: website/app/GeoKrety/Email/EmailChange.php:62
+#: website/app/GeoKrety/Email/EmailChange.php:54
+#: website/app/GeoKrety/Email/EmailChange.php:63
 msgid "Email address changed"
 msgstr "crwdns16278:0crwdne16278:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:71
+#: website/app/GeoKrety/Email/EmailChange.php:72
 msgid "Email address reverted"
 msgstr "crwdns16274:0crwdne16274:0"
 
-#: website/app/GeoKrety/Email/GeokretClaim.php:11
+#: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
 msgid "Your GeoKret '%s' has been adopted"
 msgstr "crwdns16466:0%scrwdne16466:0"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:17
-msgid "An error occured while sending the adoption mail notification to old owner."
-msgstr "crwdns15584:0crwdne15584:0"
+msgid "An error occurred while sending the adoption mail notification to old owner."
+msgstr "crwdns18476:0crwdne18476:0"
 
-#: website/app/GeoKrety/Email/PasswordChange.php:15
+#: website/app/GeoKrety/Email/PasswordChange.php:16
 msgid "Password reset request"
 msgstr "crwdns16218:0crwdne16218:0"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:19
-msgid "An error occured while sending the password reset mail."
-msgstr "crwdns16468:0crwdne16468:0"
+msgid "An error occurred while sending the password reset mail."
+msgstr "crwdns18478:0crwdne18478:0"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:23
 msgid "An email containing a validation link has been sent to the provided email address."
 msgstr "crwdns16216:0crwdne16216:0"
 
-#: website/app/GeoKrety/Email/PasswordChange.php:27
+#: website/app/GeoKrety/Email/PasswordChange.php:28
 msgid "Your password has been changed"
 msgstr "crwdns13990:0crwdne13990:0"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:31
-msgid "An error occured while sending the password changed mail notification."
-msgstr "crwdns16470:0crwdne16470:0"
+msgid "An error occurred while sending the password changed mail notification."
+msgstr "crwdns18480:0crwdne18480:0"
 
-#: website/app/GeoKrety/Email/UserContact.php:14
+#: website/app/GeoKrety/Email/UserContact.php:15
 #, php-format
 msgid "Contact from user %s"
 msgstr "crwdns15640:0%scrwdne15640:0"
 
 #: website/app/GeoKrety/Email/UserContact.php:18
-msgid "An error occured while sending mail."
-msgstr "crwdns15642:0crwdne15642:0"
+msgid "An error occurred while sending mail."
+msgstr "crwdns18482:0crwdne18482:0"
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
 msgstr "crwdns13950:0crwdne13950:0"
 
 #: website/app/GeoKrety/GeokretyType.php:57
-msgid "A book/CD/DVD..."
-msgstr "crwdns13952:0crwdne13952:0"
+msgid "A book/CD/DVD…"
+msgstr "crwdns18484:0crwdne18484:0"
 
 #: website/app/GeoKrety/GeokretyType.php:58
 msgid "A human"
@@ -385,43 +408,59 @@ msgstr "crwdns13956:0crwdne13956:0"
 msgid "KretyPost"
 msgstr "crwdns14808:0crwdne14808:0"
 
-#: website/app/GeoKrety/LogType.php:102
+#: website/app/GeoKrety/LogType.php:103
 msgid "drop"
 msgstr "crwdns15680:0crwdne15680:0"
 
-#: website/app/GeoKrety/LogType.php:103
+#: website/app/GeoKrety/LogType.php:104
 msgid "grab"
 msgstr "crwdns15682:0crwdne15682:0"
 
-#: website/app/GeoKrety/LogType.php:104
+#: website/app/GeoKrety/LogType.php:105
 msgid "comment"
 msgstr "crwdns15684:0crwdne15684:0"
 
-#: website/app/GeoKrety/LogType.php:105
+#: website/app/GeoKrety/LogType.php:106
 msgid "met"
 msgstr "crwdns15686:0crwdne15686:0"
 
-#: website/app/GeoKrety/LogType.php:106
+#: website/app/GeoKrety/LogType.php:107
 msgid "archive"
 msgstr "crwdns15688:0crwdne15688:0"
 
-#: website/app/GeoKrety/LogType.php:107
+#: website/app/GeoKrety/LogType.php:108
 msgid "dip"
 msgstr "crwdns15690:0crwdne15690:0"
 
-#: website/app/GeoKrety/LogType.php:108
-#: website/app-templates/smarty/blocks/geokret/details.tpl:47
-#: website/app-templates/smarty/pages/home.tpl:59
+#: website/app/GeoKrety/LogType.php:109
+#: website/app-templates/smarty/pages/home.tpl:69
+#: website/app-templates/smarty/blocks/geokret/details.tpl:50
 msgid "Born"
 msgstr "crwdns15692:0crwdne15692:0"
 
-#: website/app/GeoKrety/Service/CoordinatesConverter.php:236
+#: website/app/GeoKrety/PictureType.php:58
+msgid "GeoKret avatar"
+msgstr "crwdns18486:0crwdne18486:0"
+
+#: website/app/GeoKrety/PictureType.php:59
+msgid "GeoKret move"
+msgstr "crwdns18488:0crwdne18488:0"
+
+#: website/app/GeoKrety/PictureType.php:60
+msgid "User avatar"
+msgstr "crwdns18490:0crwdne18490:0"
+
+#: website/app/GeoKrety/Service/CoordinatesConverter.php:233
 msgid "Bad coordinates or unknown format."
 msgstr "crwdns13922:0crwdne13922:0"
 
-#: website/app/GeoKrety/Service/CoordinatesConverter.php:238
+#: website/app/GeoKrety/Service/CoordinatesConverter.php:235
 msgid "Missing or invalid coordinates."
 msgstr "crwdns13924:0crwdne13924:0"
+
+#: website/app/GeoKrety/Service/Labels/Image.php:28
+msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
+msgstr "crwdns18492:0crwdne18492:0"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
@@ -461,20 +500,29 @@ msgstr "crwdns15706:0%dcrwdnd15706:0%dcrwdne15706:0"
 msgid "Sorry, but username \"%s\" is already used."
 msgstr "crwdns16426:0%scrwdne16426:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:63
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:50
+msgid "Waypoint seems empty."
+msgstr "crwdns13872:0crwdne13872:0"
+
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:55
+#, php-format
+msgid "Waypoint length is invalid. It should be between %d and %d characters long."
+msgstr "crwdns13874:0%dcrwdnd13874:0%dcrwdne13874:0"
+
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
 msgstr "crwdns15708:0crwdne15708:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:84
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:92
 #, php-format
 msgid "View the <a href=\"%s\" target=\"_blank\">cache page</a>."
 msgstr "crwdns15710:0%scrwdne15710:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:87
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the 'Coordinates' field."
 msgstr "crwdns15712:0crwdne15712:0"
 
-#: website/app/GeoKrety/Service/Validation/Waypoint.php:91
+#: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "crwdns16206:0crwdne16206:0"
 
@@ -483,21 +531,39 @@ msgstr "crwdns16206:0crwdne16206:0"
 msgid "Award for %s GeoKrety"
 msgstr "crwdns15716:0%scrwdne15716:0"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:19
+#: website/app-templates/smarty/plugins/modifier.cachelink.php:30
+msgid "Search on geocaching.com"
+msgstr "crwdns18494:0crwdne18494:0"
+
+#: website/app-templates/smarty/plugins/modifier.cachelink.php:36
+#, php-format
+msgid "Location: %s Elevation: %dm"
+msgstr "crwdns18496:0%scrwdnd18496:0%dcrwdne18496:0"
+
+#: website/app-templates/smarty/plugins/modifier.cachelink.php:36
+#, php-format
+msgid "Location: %s"
+msgstr "crwdns18498:0%scrwdne18498:0"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:18
 msgid "has avatar icon"
 msgstr "crwdns15718:0crwdne15718:0"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:19
 msgid "GeoKret has an avatar"
 msgstr "crwdns15720:0crwdne15720:0"
 
-#: website/app-templates/smarty/plugins/modifier.gklink.php:18
+#: website/app-templates/smarty/plugins/modifier.gklink.php:21
 #, php-format
 msgid "View %s's profile"
 msgstr "crwdns15722:0%scrwdne15722:0"
 
+#: website/app-templates/smarty/plugins/modifier.movelink.php:21
+msgid "View move details"
+msgstr "crwdns18500:0crwdne18500:0"
+
 #: website/app-templates/smarty/plugins/modifier.newslink.php:15
-#: website/app-templates/smarty/pages/news_details.tpl:52
+#: website/app-templates/smarty/pages/news_details.tpl:47
 msgid "Comments"
 msgstr "crwdns14266:0crwdne14266:0"
 
@@ -539,12 +605,12 @@ msgstr "crwdns13948:0crwdne13948:0"
 msgid "status icon"
 msgstr "crwdns15726:0crwdne15726:0"
 
-#: website/app-templates/smarty/plugins/modifier.user_avatar.php:20
+#: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
 #, php-format
 msgid "%s's profile avatar"
 msgstr "crwdns16368:0%scrwdne16368:0"
 
-#: website/app-templates/smarty/plugins/modifier.userlink.php:16
+#: website/app-templates/smarty/plugins/modifier.userlink.php:17
 msgid "Anonymous"
 msgstr "crwdns15728:0crwdne15728:0"
 
@@ -553,47 +619,55 @@ msgstr "crwdns15728:0crwdne15728:0"
 msgid "%s's statpic"
 msgstr "crwdns15730:0%scrwdne15730:0"
 
-#: website/app/validators.php:12
+#: website/app/validators.php:13
 msgid "The {0} field cannot be empty"
 msgstr "crwdns15732:0{0}crwdne15732:0"
 
-#: website/app/validators.php:16
+#: website/app/validators.php:17
+msgid "The {0} field must be a valid date time"
+msgstr "crwdns18502:0{0}crwdne18502:0"
+
+#: website/app/validators.php:21
 msgid "The GeoKret type is invalid"
 msgstr "crwdns15734:0crwdne15734:0"
 
-#: website/app/validators.php:20
+#: website/app/validators.php:25
 msgid "The move type is invalid"
 msgstr "crwdns15736:0crwdne15736:0"
 
-#: website/app/validators.php:24
+#: website/app/validators.php:29
+msgid "The picture type is invalid"
+msgstr "crwdns18504:0crwdne18504:0"
+
+#: website/app/validators.php:33
 msgid "This language is not supported"
 msgstr "crwdns15738:0crwdne15738:0"
 
-#: website/app/validators.php:30
+#: website/app/validators.php:39
 msgid "The password must be ciphered"
 msgstr "crwdns15740:0crwdne15740:0"
 
-#: website/app/validators.php:39
+#: website/app/validators.php:48
 msgid "Anonymous users must provide a value for {0}"
 msgstr "crwdns15742:0{0}crwdne15742:0"
 
-#: website/app/validators.php:51
+#: website/app/validators.php:60
 msgid "Registered users must provide a value for {0}"
 msgstr "crwdns15744:0{0}crwdne15744:0"
 
-#: website/app/validators.php:62
+#: website/app/validators.php:71
 msgid "This logtype require valid {0} coordinates"
 msgstr "crwdns15746:0{0}crwdne15746:0"
 
-#: website/app/validators.php:73
+#: website/app/validators.php:82
 msgid "Something already exists at the same datetime \"{0}\""
 msgstr "crwdns16128:0{0}crwdne16128:0"
 
-#: website/app/validators.php:81
+#: website/app/validators.php:90
 msgid "{0} cannot be in the future"
 msgstr "crwdns15750:0{0}crwdne15750:0"
 
-#: website/app/validators.php:89
+#: website/app/validators.php:98
 msgid "{0} must be after GeoKret birth"
 msgstr "crwdns15752:0{0}crwdne15752:0"
 
@@ -621,769 +695,87 @@ msgstr "crwdns14024:0%scrwdnd14024:0%scrwdnd14024:0%scrwdne14024:0"
 msgid "The 'modifiedsince' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format. Note it must be given as UTC. Try this for data from the last 2 hours: %s"
 msgstr "crwdns15562:0%scrwdne15562:0"
 
-#: website/app-templates/smarty/blocks/geokret/pictures.tpl:3
-msgid "Pictures"
-msgstr "crwdns14578:0crwdne14578:0"
-
-#: website/app-templates/smarty/blocks/geokret/pictures.tpl:6
-#: website/app-templates/smarty/blocks/user/details.tpl:18
-#: website/app-templates/smarty/elements/move.tpl:60
-msgid "Upload a picture"
-msgstr "crwdns14580:0crwdne14580:0"
-
-#: website/app-templates/smarty/blocks/geokret/pictures.tpl:18
-msgid "No picture uploaded yet."
-msgstr "crwdns14582:0crwdne14582:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:21
-#: website/app-templates/smarty/blocks/user/details.tpl:7
-msgid "Send a message to %1"
-msgstr "crwdns15778:0%1crwdne15778:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:26
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
-msgid "Edit GeoKret details"
-msgstr "crwdns14586:0crwdne14586:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:37
-msgid "Reference number"
-msgstr "crwdns14622:0crwdne14622:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:40
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
-#: website/app-templates/smarty/pages/geokret_claim.tpl:12
-#: website/app-templates/smarty/forms/move.tpl:21
-msgid "Tracking Code"
-msgstr "crwdns15070:0crwdne15070:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:43
-msgid "Total distance"
-msgstr "crwdns14626:0crwdne14626:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:45
-msgid "Places visited"
-msgstr "crwdns14628:0crwdne14628:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:49
-msgid "Social share"
-msgstr "crwdns14630:0crwdne14630:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:51
-msgid "Share on Facebook"
-msgstr "crwdns14632:0crwdne14632:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-msgid "Share on Twitter"
-msgstr "crwdns14634:0crwdne14634:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:53
-msgid "Share on Instagram"
-msgstr "crwdns14636:0crwdne14636:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:54
-#: website/app-templates/smarty/blocks/user/statpic.tpl:8
-msgid "Copy link to page"
-msgstr "crwdns14638:0crwdne14638:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:55
-#: website/app-templates/smarty/blocks/user/statpic.tpl:9
-msgid "Copy to page as bbcode"
-msgstr "crwdns14640:0crwdne14640:0"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:57
-msgid "Country track"
-msgstr "crwdns14642:0crwdne14642:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:2
-msgid "Watchers"
-msgstr "crwdns15780:0crwdne15780:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:6
-msgid "Log this GeoKret"
-msgstr "crwdns14188:0crwdne14188:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:10
-msgid "Print a label for this GeoKret"
-msgstr "crwdns14596:0crwdne14596:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:15
-#: website/app-templates/smarty/navbar.tpl:82
-msgid "Statistics"
-msgstr "crwdns14476:0crwdne14476:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:22
-msgid "Adopt this GeoKret"
-msgstr "crwdns14598:0crwdne14598:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:24
-msgid "Login to claim this GeoKret"
-msgstr "crwdns14600:0crwdne14600:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:30
-msgid "Archive this GeoKret"
-msgstr "crwdns14602:0crwdne14602:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:35
-msgid "Email owner"
-msgstr "crwdns14604:0crwdne14604:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:41
-msgid "Make this GeoKret available for adoption by another user"
-msgstr "crwdns15782:0crwdne15782:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:42
-msgid "Transfer ownership"
-msgstr "crwdns15784:0crwdne15784:0"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:53
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:23
-#: website/app-templates/smarty/navbar.tpl:42
-msgid "Actions"
-msgstr "crwdns14606:0crwdne14606:0"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:3
-msgid "Map"
-msgstr "crwdns14722:0crwdne14722:0"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:8
-msgid "Caption:"
-msgstr "crwdns14724:0crwdne14724:0"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:9
-msgid "start"
-msgstr "crwdns14726:0crwdne14726:0"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:10
-msgid "trip points"
-msgstr "crwdns14728:0crwdne14728:0"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:11
-msgid "recently seen"
-msgstr "crwdns14730:0crwdne14730:0"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:13
-msgid "Download the track as:"
-msgstr "crwdns15786:0crwdne15786:0"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:17
-msgid "This geokret has not started yet"
-msgstr "crwdns14732:0crwdne14732:0"
-
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
-msgid "Found it? Log it!"
-msgstr "crwdns15788:0crwdne15788:0"
-
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
-msgid "Please enter the Tracking Code here"
-msgstr "crwdns15790:0crwdne15790:0"
-
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
-#: website/app-templates/smarty/blocks/found_geokret.tpl:15
-msgid "Log it!"
-msgstr "crwdns15792:0crwdne15792:0"
-
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
-#: website/app-templates/smarty/forms/geokret.tpl:32
-msgid "Mission"
-msgstr "crwdns14584:0crwdne14584:0"
-
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
-msgid "This GeoKret doesn't have a special mission…"
-msgstr "crwdns14588:0crwdne14588:0"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:3
-msgid "Found a GeoKret?"
-msgstr "crwdns14662:0crwdne14662:0"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:7
-msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "crwdns16172:0%1crwdne16172:0"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:12
-msgid "Tracking code"
-msgstr "crwdns14624:0crwdne14624:0"
-
-#: website/app-templates/smarty/blocks/user/badges.tpl:3
-msgid "Badges"
-msgstr "crwdns14608:0crwdne14608:0"
-
-#: website/app-templates/smarty/blocks/user/badges.tpl:9
-msgid "No badge received yet."
-msgstr "crwdns14610:0crwdne14610:0"
-
-#: website/app-templates/smarty/blocks/user/awards.tpl:3
-msgid "Awards"
-msgstr "crwdns15794:0crwdne15794:0"
-
-#: website/app-templates/smarty/blocks/user/awards.tpl:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong> km."
-msgstr "crwdns16130:0%1crwdnd16130:0%2crwdnd16130:0%3crwdne16130:0"
-
-#: website/app-templates/smarty/blocks/user/awards.tpl:15
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong> km."
-msgstr "crwdns16132:0%1crwdnd16132:0%2crwdnd16132:0%3crwdne16132:0"
-
-#: website/app-templates/smarty/blocks/user/statpic.tpl:13
-msgid "Choose statpic"
-msgstr "crwdns14682:0crwdne14682:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:11
-msgid "Subscribe to RSS channel"
-msgstr "crwdns14684:0crwdne14684:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:15
-msgid "Password change"
-msgstr "crwdns14686:0crwdne14686:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:29
-msgid "Joined us"
-msgstr "crwdns14688:0crwdne14688:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:31
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:33
-msgid "Language"
-msgstr "crwdns14690:0crwdne14690:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:33
-msgid "Nothing selected"
-msgstr "crwdns15796:0crwdne15796:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:36
-msgid "Choose preferred language"
-msgstr "crwdns15798:0crwdne15798:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:43
-#: website/app-templates/smarty/pages/contact_us.tpl:15
-msgid "Email"
-msgstr "crwdns14254:0crwdne14254:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:48
-msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr "crwdns15800:0crwdne15800:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:50
-msgid "No email address, please add one!"
-msgstr "crwdns14694:0crwdne14694:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:53
-msgid "Update email address"
-msgstr "crwdns14696:0crwdne14696:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:58
-msgid "Secid"
-msgstr "crwdns14698:0crwdne14698:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:61
-msgid "Used to authenticate in other applications. Keep it secret!"
-msgstr "crwdns14700:0crwdne14700:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:62
-msgid "Generate a new secid"
-msgstr "crwdns14702:0crwdne14702:0"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:71
-msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr "crwdns16198:0%1crwdne16198:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:3
-#: website/app-templates/smarty/navbar.tpl:46
-#: website/app-templates/smarty/forms/geokret.tpl:6
-msgid "Create a new GeoKret"
-msgstr "crwdns14876:0crwdne14876:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:12
-msgid "View inventory"
-msgstr "crwdns14706:0crwdne14706:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:16
-#: website/app-templates/smarty/pages/user_geokrety_owned.tpl:7
-msgid "Owned GeoKrety"
-msgstr "crwdns14666:0crwdne14666:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:20
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:7
-#: website/app-templates/smarty/navbar-profile.tpl:20
-msgid "Watched GeoKrety"
-msgstr "crwdns14676:0crwdne14676:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:24
-msgid "Recently posted moves"
-msgstr "crwdns14708:0crwdne14708:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:28
-msgid "Moves of owned GeoKrety"
-msgstr "crwdns16134:0crwdne16134:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:32
-msgid "Posted pictures"
-msgstr "crwdns14712:0crwdne14712:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:36
-msgid "Owned GeoKrety pictures"
-msgstr "crwdns14714:0crwdne14714:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:40
-#: website/app-templates/smarty/navbar-profile.tpl:28
-msgid "Where are my GeoKrety?"
-msgstr "crwdns14716:0crwdne14716:0"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:45
-msgid "User stats"
-msgstr "crwdns14532:0crwdne14532:0"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:10
-msgid "No home coordinates have been defined."
-msgstr "crwdns14570:0crwdne14570:0"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:13
-#: website/app-templates/smarty/blocks/user/map_home.tpl:21
-msgid "Update home coordinates and obervation area"
-msgstr "crwdns14572:0crwdne14572:0"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:14
-msgid "Define your home coordinates"
-msgstr "crwdns14574:0crwdne14574:0"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:20
-msgid "GeoKrety near home"
-msgstr "crwdns14576:0crwdne14576:0"
-
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:37
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
-msgid "Commenting a GeoKret move"
-msgstr "crwdns15802:0crwdne15802:0"
-
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
-#: website/app-templates/smarty/pages/news_details.tpl:25
-msgid "Your comment"
-msgstr "crwdns13908:0crwdne13908:0"
-
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:20
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:45
-#: website/app-templates/smarty/dialog/user_contact.tpl:51
-#: website/app-templates/smarty/dialog/user_update_email.tpl:51
-#: website/app-templates/smarty/dialog/news_subscription.tpl:23
-#: website/app-templates/smarty/dialog/move_delete.tpl:13
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:13
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:20
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
-#: website/app-templates/smarty/dialog/news_comment_delete.tpl:13
-#: website/app-templates/smarty/dialog/user_update_password.tpl:54
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:65
-#: website/app-templates/smarty/pages/email_change.tpl:32
-#: website/app-templates/smarty/pages/email_change.tpl:36
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:68
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:30
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:34
-#: website/app-templates/smarty/pages/email_change_token.tpl:30
-#: website/app-templates/smarty/pages/email_change_token.tpl:34
-msgid "Dismiss"
-msgstr "crwdns14738:0crwdne14738:0"
-
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:32
-#: website/app-templates/smarty/pages/news_details.tpl:23
-#: website/app-templates/smarty/pages/news_details.tpl:41
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
-#: website/app-templates/smarty/forms/move.tpl:107
-#: website/app-templates/smarty/forms/move.tpl:244
-#: website/app-templates/smarty/js/geokret_move.tpl.js:186
-msgid "Comment"
-msgstr "crwdns14028:0crwdne14028:0"
-
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
-msgid "Choose your preferred language"
-msgstr "crwdns15804:0crwdne15804:0"
-
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
-#: website/app-templates/smarty/forms/registration.tpl:40
-msgid "This will be the default language when you log in and the main language in the emails you may receive."
-msgstr "crwdns14772:0crwdne14772:0"
-
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:25
-#: website/app-templates/smarty/dialog/user_contact.tpl:50
-#: website/app-templates/smarty/dialog/user_update_email.tpl:50
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:14
-#: website/app-templates/smarty/dialog/user_update_password.tpl:53
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:67
-msgid "Back to user page"
-msgstr "crwdns15090:0crwdne15090:0"
-
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
-#: website/app-templates/smarty/dialog/user_update_email.tpl:53
-#: website/app-templates/smarty/dialog/user_update_password.tpl:56
-#: website/app-templates/smarty/pages/password_change.tpl:59
-msgid "Change"
-msgstr "crwdns14766:0crwdne14766:0"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
-msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
-msgstr "crwdns14926:0%1crwdnd14926:0%1crwdne14926:0"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
-msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr "crwdns14928:0crwdne14928:0"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
-msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr "crwdns16352:0crwdne16352:0"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
-msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "crwdns15892:0crwdne15892:0"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
-msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
-msgstr "crwdns14934:0crwdne14934:0"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:26
-#: website/app-templates/smarty/navbar.tpl:76
-msgid "Terms of use"
-msgstr "crwdns14500:0crwdne14500:0"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:46
-msgid "I agree with the terms"
-msgstr "crwdns16428:0crwdne16428:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:13
-msgid "Contact user"
-msgstr "crwdns14214:0crwdne14214:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:20
-#: website/app-templates/smarty/pages/local_mails.tpl:18
-msgid "To"
-msgstr "crwdns15132:0crwdne15132:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:22
-msgid "%1 (speak %2)"
-msgstr "crwdns15134:0%1crwdnd15134:0%2crwdne15134:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:27
-#: website/app-templates/smarty/pages/local_mails.tpl:16
-msgid "Subject"
-msgstr "crwdns15136:0crwdne15136:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:29
-msgid "Message subject"
-msgstr "crwdns15138:0crwdne15138:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:34
-msgid "Message"
-msgstr "crwdns15140:0crwdne15140:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:36
-msgid "Message to user"
-msgstr "crwdns15142:0crwdne15142:0"
-
-#: website/app-templates/smarty/dialog/user_contact.tpl:53
-msgid "Send message"
-msgstr "crwdns13910:0crwdne13910:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:4
-msgid "Update your email address"
-msgstr "crwdns14758:0crwdne14758:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:11
-#: website/app-templates/smarty/dialog/user_update_email.tpl:12
-#: website/app-templates/smarty/pages/password_recovery.tpl:24
-#: website/app-templates/smarty/pages/password_recovery.tpl:26
-#: website/app-templates/smarty/forms/registration.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:13
-msgid "Email address"
-msgstr "crwdns14980:0crwdne14980:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:17
-#: website/app-templates/smarty/forms/registration.tpl:48
-msgid "Yes, I want to receive email alerts (sent once a day)."
-msgstr "crwdns14760:0crwdne14760:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:23
-#: website/app-templates/smarty/forms/registration.tpl:14
-msgid "The main purpose of collecting email is to permit password recovery."
-msgstr "crwdns14762:0crwdne14762:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:27
-msgid "Email alerts may contain any of the following:"
-msgstr "crwdns14764:0crwdne14764:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:29
-msgid "GeoKrety.org news"
-msgstr "crwdns16136:0crwdne16136:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:30
-msgid "Recent logs on:"
-msgstr "crwdns16138:0crwdne16138:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:32
-#: website/app-templates/smarty/dialog/user_update_email.tpl:38
-msgid "your own GeoKrety"
-msgstr "crwdns16140:0crwdne16140:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:33
-#: website/app-templates/smarty/dialog/user_update_email.tpl:39
-msgid "GeoKrety that you watch"
-msgstr "crwdns16142:0crwdne16142:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:34
-msgid "any GeoKrety logged near your home location"
-msgstr "crwdns16144:0crwdne16144:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:36
-msgid "Comments posted to any of the following:"
-msgstr "crwdns16146:0crwdne16146:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:40
-msgid "your logs"
-msgstr "crwdns16148:0crwdne16148:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:41
-msgid "your comments"
-msgstr "crwdns16150:0crwdne16150:0"
-
-#: website/app-templates/smarty/dialog/user_update_email.tpl:42
-msgid "news posts you have are subscribed to"
-msgstr "crwdns16152:0crwdne16152:0"
-
-#: website/app-templates/smarty/dialog/news_subscription.tpl:6
-msgid "Do you really want to unsubscribe from this news?"
-msgstr "crwdns15808:0crwdne15808:0"
-
-#: website/app-templates/smarty/dialog/news_subscription.tpl:8
-msgid "Subscribe to this news?"
-msgstr "crwdns15810:0crwdne15810:0"
-
-#: website/app-templates/smarty/dialog/news_subscription.tpl:26
-msgid "Unsubscribe"
-msgstr "crwdns14778:0crwdne14778:0"
-
-#: website/app-templates/smarty/dialog/news_subscription.tpl:28
-msgid "Subscribe"
-msgstr "crwdns14780:0crwdne14780:0"
-
-#: website/app-templates/smarty/dialog/move_delete.tpl:4
-msgid "Do you really want to delete this move?"
-msgstr "crwdns15812:0crwdne15812:0"
-
-#: website/app-templates/smarty/dialog/move_delete.tpl:14
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
-#: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
-msgid "Delete"
-msgstr "crwdns14792:0crwdne14792:0"
-
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
-msgid "Do you really want to delete this move comment?"
-msgstr "crwdns14794:0crwdne14794:0"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
-msgid "Offer this GeoKret for adoption?"
-msgstr "crwdns15814:0crwdne15814:0"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
-msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "crwdns16154:0crwdne16154:0"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:14
-msgid "Back to GeoKret page"
-msgstr "crwdns15818:0crwdne15818:0"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:17
-msgid "Generate an Owner Code"
-msgstr "crwdns15820:0crwdne15820:0"
-
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
-msgid "Declare missing"
-msgstr "crwdns15822:0crwdne15822:0"
-
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
-msgid "Refresh your secid?"
-msgstr "crwdns14734:0crwdne14734:0"
-
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
-msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr "crwdns14736:0crwdne14736:0"
-
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:17
-msgid "Refresh"
-msgstr "crwdns14740:0crwdne14740:0"
-
-#: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
-msgid "Do you really want to delete this news comment?"
-msgstr "crwdns14796:0crwdne14796:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:12
-#: website/app-templates/smarty/pages/password_change.tpl:16
-msgid "Change your password"
-msgstr "crwdns15104:0crwdne15104:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:19
-msgid "Current password"
-msgstr "crwdns15106:0crwdne15106:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:21
-msgid "Old password"
-msgstr "crwdns15108:0crwdne15108:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:26
-#: website/app-templates/smarty/dialog/user_update_password.tpl:28
-#: website/app-templates/smarty/pages/password_change.tpl:44
-#: website/app-templates/smarty/pages/password_change.tpl:46
-msgid "New password"
-msgstr "crwdns14258:0crwdne14258:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:33
-#: website/app-templates/smarty/dialog/user_update_password.tpl:35
-#: website/app-templates/smarty/pages/password_change.tpl:51
-#: website/app-templates/smarty/pages/password_change.tpl:53
-#: website/app-templates/smarty/forms/registration.tpl:26
-#: website/app-templates/smarty/forms/registration.tpl:28
-msgid "Confirm password"
-msgstr "crwdns14978:0crwdne14978:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:41
-msgid "Read more about choosing good passwords:"
-msgstr "crwdns15112:0crwdne15112:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:43
-msgid "Choosing Good Passwords -- A User Guide"
-msgstr "crwdns15114:0crwdne15114:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:44
-msgid "How to Write Good Passwords"
-msgstr "crwdns15116:0crwdne15116:0"
-
-#: website/app-templates/smarty/dialog/user_update_password.tpl:45
-msgid "Password strength"
-msgstr "crwdns15118:0crwdne15118:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:3
-#: website/app-templates/smarty/forms/move.tpl:28
-msgid "Select GeoKrety from inventory"
-msgstr "crwdns15210:0crwdne15210:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:9
-msgid "Only %1 GeoKrety can be processed at a time."
-msgstr "crwdns14784:0%1crwdne14784:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
-msgid "Filter"
-msgstr "crwdns15824:0crwdne15824:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
-msgid "Name or ID"
-msgstr "crwdns15826:0crwdne15826:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
-#: website/app-templates/smarty/pages/mole_hole.tpl:38
-#: website/app-templates/smarty/pages/mole_hole.tpl:81
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:18
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:18
-#: website/app-templates/smarty/pages/user_inventory.tpl:18
-#: website/app-templates/smarty/pages/home.tpl:30
-#: website/app-templates/smarty/pages/home.tpl:57
-#: website/app-templates/smarty/pages/local_mails.tpl:15
-#: website/app-templates/smarty/pages/user_geokrety_owned.tpl:18
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:18
-msgid "ID"
-msgstr "crwdns14590:0crwdne14590:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:19
-#: website/app-templates/smarty/pages/user_inventory.tpl:19
-#: website/app-templates/smarty/pages/home.tpl:58
-msgid "Owner"
-msgstr "crwdns14178:0crwdne14178:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
-msgid "Select all (but max %1)"
-msgstr "crwdns15828:0%1crwdne15828:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:35
-msgid "Choose"
-msgstr "crwdns16168:0crwdne16168:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:60
-msgid "Your inventory is empty."
-msgstr "crwdns16490:0crwdne16490:0"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:67
-msgid "Select <span class=\"badge\">%1</span>"
-msgstr "crwdns14786:0%1crwdne14786:0"
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
-msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr "crwdns16370:0%1crwdne16370:0"
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
-msgid "Do not hesitate to <a href=\"%2\">create an account</a>."
-msgstr "crwdns16372:0%2crwdne16372:0"
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
-msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr "crwdns16374:0crwdne16374:0"
-
-#: website/app-templates/smarty/banners/site_intro.tpl:3
-msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
-msgstr "crwdns16262:0%1crwdne16262:0"
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
-msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "crwdns15832:0%1crwdnd15832:0%2crwdne15832:0"
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
-msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
-msgstr "crwdns15834:0%1crwdne15834:0"
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
-msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr "crwdns16176:0%1crwdne16176:0"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:2
-msgid "Some statistics"
-msgstr "crwdns14654:0crwdne14654:0"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:6
-msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "crwdns16178:0%1crwdnd16178:0%2crwdnd16178:0%3crwdne16178:0"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:13
-msgid "<strong>%1</strong> km done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr "crwdns16194:0%1crwdnd16194:0%2crwdnd16194:0%3crwdnd16194:0%4crwdne16194:0"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:21
-msgid "And that's thanks to you! Congratulation!"
-msgstr "crwdns14660:0crwdne14660:0"
-
-#: website/app-templates/smarty/banners/is_not_prod.tpl:3
-msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr "crwdns14910:0crwdne14910:0"
-
-#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
-msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
-msgstr "crwdns16366:0crwdne16366:0"
-
-#: website/app-templates/smarty/banners/contribute.tpl:2
-#: website/app-templates/smarty/banners/flash_messages.tpl:3
-msgid "Close"
-msgstr "crwdns14912:0crwdne14912:0"
-
-#: website/app-templates/smarty/banners/contribute.tpl:3
-msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "crwdns16488:0%1crwdnd16488:0%2crwdne16488:0"
-
-#: website/app-templates/smarty/banners/user_email_missing.tpl:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "crwdns15840:0crwdne15840:0"
-
-#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
-msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "crwdns16284:0%1crwdne16284:0"
+#: website/app-templates/smarty/macros/pagination.tpl:5
+msgid "First"
+msgstr "crwdns16202:0crwdne16202:0"
+
+#: website/app-templates/smarty/macros/pagination.tpl:17
+msgid "Last [%1]"
+msgstr "crwdns16204:0[%1]crwdne16204:0"
+
+#: website/app-templates/smarty/footer.tpl:3
+#: website/app-templates/smarty/navbar.tpl:33
+msgid "Home"
+msgstr "crwdns14130:0crwdne14130:0"
+
+#: website/app-templates/smarty/footer.tpl:4
+msgid "About"
+msgstr "crwdns16190:0crwdne16190:0"
+
+#: website/app-templates/smarty/footer.tpl:5
+#: website/app-templates/smarty/pages/home.tpl:17
+#: website/app-templates/smarty/navbar.tpl:34
+msgid "News"
+msgstr "crwdns14164:0crwdne14164:0"
+
+#: website/app-templates/smarty/footer.tpl:6
+msgid "Contact"
+msgstr "crwdns16192:0crwdne16192:0"
+
+#: website/app-templates/smarty/footer.tpl:10
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "crwdns18432:0%1crwdne18432:0"
+
+#: website/app-templates/smarty/footer.tpl:13
+msgid "Leave in-context translation"
+msgstr "crwdns16362:0crwdne16362:0"
+
+#: website/app-templates/smarty/footer.tpl:15
+msgid "in-context translation"
+msgstr "crwdns16364:0crwdne16364:0"
+
+#: website/app-templates/smarty/footer.tpl:19
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr "crwdns18434:0%1crwdne18434:0"
+
+#: website/app-templates/smarty/footer.tpl:29
+msgid "Deployed on %1"
+msgstr "crwdns16360:0%1crwdne16360:0"
+
+#: website/app-templates/smarty/pages/registration_validate.tpl:6
+msgid "Welcome to the GeoKrety.org community!"
+msgstr "crwdns16430:0crwdne16430:0"
+
+#: website/app-templates/smarty/pages/registration_validate.tpl:8
+#: website/app-templates/smarty/dialog/login.tpl:37
+#: website/app-templates/smarty/navbar.tpl:20
+#: website/app-templates/smarty/navbar-profile.tpl:37
+msgid "Sign in"
+msgstr "crwdns14908:0crwdne14908:0"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:6
+msgid "GeoKrety Toolbox - GKT"
+msgstr "crwdns15144:0crwdne15144:0"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:10
+msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
+msgstr "crwdns15146:0%1crwdne15146:0"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:14
+msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
+msgstr "crwdns15148:0%1crwdnd15148:0%2crwdnd15148:0%1crwdnd15148:0%2crwdnd15148:0%2crwdnd15148:0%1crwdnd15148:0%2crwdne15148:0"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
+msgid "Available for:"
+msgstr "crwdns15150:0crwdne15150:0"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:20
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
+msgstr "crwdns16376:0%1crwdnd16376:0%2crwdnd16376:0%3crwdne16376:0"
+
+#: website/app-templates/smarty/pages/work_in_progress.tpl:4
+msgid "This page doesn't exists yet, but we're working on it!"
+msgstr "crwdns15846:0crwdne15846:0"
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:6
 msgid "Select your preferred statpic background"
@@ -1391,6 +783,8 @@ msgstr "crwdns15844:0crwdne15844:0"
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:25
 #: website/app-templates/smarty/forms/geokret.tpl:52
+#: website/app-templates/smarty/forms/geokret.tpl:110
+#: website/app-templates/smarty/dialog/picture_edit.tpl:46
 msgid "Save"
 msgstr "crwdns15054:0crwdne15054:0"
 
@@ -1398,36 +792,267 @@ msgstr "crwdns15054:0crwdne15054:0"
 msgid "Your current statpic"
 msgstr "crwdns15056:0crwdne15056:0"
 
-#: website/app-templates/smarty/pages/registration_validate.tpl:6
-msgid "Welcome to the GeoKrety.org community!"
-msgstr "crwdns16430:0crwdne16430:0"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:7
+msgid "%1's recent moves"
+msgstr "crwdns15886:0%1crwdne15886:0"
 
-#: website/app-templates/smarty/pages/registration_validate.tpl:8
-#: website/app-templates/smarty/navbar-profile.tpl:37
-#: website/app-templates/smarty/navbar.tpl:20
-#: website/app-templates/smarty/forms/login.tpl:38
-msgid "Sign in"
-msgstr "crwdns14908:0crwdne14908:0"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:18
+#: website/app-templates/smarty/pages/local_mails.tpl:15
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:18
+#: website/app-templates/smarty/pages/home.tpl:30
+#: website/app-templates/smarty/pages/home.tpl:67
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:18
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:18
+#: website/app-templates/smarty/pages/mole_hole.tpl:38
+#: website/app-templates/smarty/pages/mole_hole.tpl:81
+#: website/app-templates/smarty/pages/user_inventory.tpl:18
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
+msgid "ID"
+msgstr "crwdns14590:0crwdne14590:0"
 
-#: website/app-templates/smarty/pages/news_list.tpl:15
-msgid "There is no news yet"
-msgstr "crwdns16460:0crwdne16460:0"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:19
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:19
+#: website/app-templates/smarty/pages/home.tpl:31
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:19
+msgid "Spotted in"
+msgstr "crwdns14668:0crwdne14668:0"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:10
-msgid "Password recovery"
-msgstr "crwdns16228:0crwdne16228:0"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
+#: website/app-templates/smarty/pages/home.tpl:32
+#: website/app-templates/smarty/pages/news_details.tpl:18
+#: website/app-templates/smarty/pages/news_details.tpl:36
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
+#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
+msgid "Comment"
+msgstr "crwdns14028:0crwdne14028:0"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:19
-msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
-msgstr "crwdns16230:0crwdne16230:0"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:20
+#: website/app-templates/smarty/pages/home.tpl:33
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
+#: website/app-templates/smarty/pages/user_inventory.tpl:20
+msgid "Last move"
+msgstr "crwdns14612:0crwdne14612:0"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:40
-msgid "Send me a recovery link"
-msgstr "crwdns16232:0crwdne16232:0"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:32
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
+#: website/app-templates/smarty/pages/user_inventory.tpl:22
+msgid "Caches visited count"
+msgstr "crwdns15888:0crwdne15888:0"
 
-#: website/app-templates/smarty/pages/work_in_progress.tpl:4
-msgid "This page doesn't exists yet, but we're working on it!"
-msgstr "crwdns15846:0crwdne15846:0"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:38
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:38
+msgid "%1 didn't moved any GeoKrety yet."
+msgstr "crwdns15890:0%1crwdne15890:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:16
+#: website/app-templates/smarty/dialog/user_contact.tpl:23
+msgid "Subject"
+msgstr "crwdns15136:0crwdne15136:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:17
+msgid "From"
+msgstr "crwdns16472:0crwdne16472:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:18
+#: website/app-templates/smarty/dialog/user_contact.tpl:16
+msgid "To"
+msgstr "crwdns15132:0crwdne15132:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:20
+msgid "Action"
+msgstr "crwdns16462:0crwdne16462:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:21
+msgid "Delete all mails"
+msgstr "crwdns16474:0crwdne16474:0"
+
+#: website/app-templates/smarty/pages/local_mails.tpl:39
+msgid "Delete mail"
+msgstr "crwdns16464:0crwdne16464:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:7
+#: website/app-templates/smarty/blocks/user/actions.tpl:16
+msgid "Owned GeoKrety"
+msgstr "crwdns14666:0crwdne14666:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:34
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
+#: website/app-templates/smarty/pages/user_inventory.tpl:21
+msgid "Distance"
+msgstr "crwdns14322:0crwdne14322:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:38
+msgid "%1 doesn't own any GeoKrety yet."
+msgstr "crwdns15910:0%1crwdne15910:0"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:6
+#: website/app-templates/smarty/navbar.tpl:47
+msgid "Claim a GeoKret"
+msgstr "crwdns13876:0crwdne13876:0"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:12
+#: website/app-templates/smarty/forms/geokret_label.tpl:31
+#: website/app-templates/smarty/forms/move.tpl:21
+#: website/app-templates/smarty/blocks/geokret/details.tpl:43
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+msgid "Tracking Code"
+msgstr "crwdns15070:0crwdne15070:0"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:19
+msgid "Owner Code"
+msgstr "crwdns15072:0crwdne15072:0"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:27
+msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
+msgstr "crwdns16492:0crwdne16492:0"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:33
+msgid "Adopt"
+msgstr "crwdns15074:0crwdne15074:0"
+
+#: website/app-templates/smarty/pages/home.tpl:4
+msgid "🎉 Welcome to GeoKrety.org!"
+msgstr "crwdns15900:0crwdne15900:0"
+
+#: website/app-templates/smarty/pages/home.tpl:24
+msgid "Latest moves"
+msgstr "crwdns15902:0crwdne15902:0"
+
+#: website/app-templates/smarty/pages/home.tpl:48
+msgid "Recent pictures"
+msgstr "crwdns15904:0crwdne15904:0"
+
+#: website/app-templates/smarty/pages/home.tpl:61
+msgid "Recently created GeoKrety"
+msgstr "crwdns15906:0crwdne15906:0"
+
+#: website/app-templates/smarty/pages/home.tpl:68
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:19
+#: website/app-templates/smarty/pages/user_inventory.tpl:19
+#: website/app-templates/smarty/forms/geokret_label.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:17
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
+msgid "Owner"
+msgstr "crwdns14178:0crwdne14178:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:10
+msgid "%1's Owned GeoKrety map"
+msgstr "crwdns18506:0%1crwdne18506:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:28
+#: website/app-templates/smarty/blocks/geokret/details.tpl:46
+msgid "Total distance"
+msgstr "crwdns14626:0crwdne14626:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:32
+msgid "Total visited caches"
+msgstr "crwdns18508:0crwdne18508:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:36
+msgid "Last moved date"
+msgstr "crwdns18510:0crwdne18510:0"
+
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:7
+msgid "Pictures of %1's GeoKrety"
+msgstr "crwdns18512:0%1crwdne18512:0"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:7
+#: website/app-templates/smarty/blocks/user/actions.tpl:20
+#: website/app-templates/smarty/navbar-profile.tpl:20
+msgid "Watched GeoKrety"
+msgstr "crwdns14676:0crwdne14676:0"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:23
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:55
+#: website/app-templates/smarty/navbar.tpl:42
+msgid "Actions"
+msgstr "crwdns14606:0crwdne14606:0"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:40
+msgid "%1 doesn't watch any GeoKrety yet."
+msgstr "crwdns15896:0%1crwdne15896:0"
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:6
+#: website/app-templates/smarty/pages/email_change_token.tpl:6
+msgid "Do you confirm changing your email address?"
+msgstr "crwdns16294:0crwdne16294:0"
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:29
+#: website/app-templates/smarty/pages/email_change.tpl:31
+#: website/app-templates/smarty/pages/email_change_token.tpl:29
+msgid "Back to your profile"
+msgstr "crwdns16288:0crwdne16288:0"
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:30
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:34
+#: website/app-templates/smarty/pages/email_change.tpl:32
+#: website/app-templates/smarty/pages/email_change.tpl:36
+#: website/app-templates/smarty/pages/email_change_token.tpl:30
+#: website/app-templates/smarty/pages/email_change_token.tpl:34
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:63
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:65
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:14
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:53
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:20
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:13
+#: website/app-templates/smarty/dialog/move_delete.tpl:22
+#: website/app-templates/smarty/dialog/picture_delete.tpl:14
+#: website/app-templates/smarty/dialog/picture_edit.tpl:45
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
+#: website/app-templates/smarty/dialog/news_subscription.tpl:23
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
+#: website/app-templates/smarty/dialog/user_update_email.tpl:51
+#: website/app-templates/smarty/dialog/user_contact.tpl:47
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:20
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:13
+#: website/app-templates/smarty/dialog/user_update_password.tpl:50
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
+msgid "Dismiss"
+msgstr "crwdns14738:0crwdne14738:0"
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:33
+#: website/app-templates/smarty/pages/email_change.tpl:35
+#: website/app-templates/smarty/pages/email_change_token.tpl:33
+msgid "Back to homepage"
+msgstr "crwdns16290:0crwdne16290:0"
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:37
+msgid "I approve this change"
+msgstr "crwdns16296:0crwdne16296:0"
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:38
+msgid "No, please revert to my old email address"
+msgstr "crwdns16298:0crwdne16298:0"
+
+#: website/app-templates/smarty/pages/email_change.tpl:9
+msgid "Changing your email address."
+msgstr "crwdns16286:0crwdne16286:0"
+
+#: website/app-templates/smarty/pages/email_change.tpl:17
+#: website/app-templates/smarty/pages/password_change.tpl:20
+msgid "Please enter the verification token received by mail."
+msgstr "crwdns16234:0crwdne16234:0"
+
+#: website/app-templates/smarty/pages/email_change.tpl:22
+#: website/app-templates/smarty/pages/email_change.tpl:24
+#: website/app-templates/smarty/pages/password_change.tpl:25
+#: website/app-templates/smarty/pages/password_change.tpl:27
+msgid "Verification Token"
+msgstr "crwdns16236:0crwdne16236:0"
+
+#: website/app-templates/smarty/pages/email_change.tpl:39
+msgid "Check the token"
+msgstr "crwdns16292:0crwdne16292:0"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:6
 msgid "Developers"
@@ -1515,6 +1140,68 @@ msgstr "crwdns15046:0crwdne15046:0"
 msgid "Credits"
 msgstr "crwdns15048:0crwdne15048:0"
 
+#: website/app-templates/smarty/pages/user_pictures.tpl:7
+msgid "%1's posted pictures"
+msgstr "crwdns18514:0%1crwdne18514:0"
+
+#: website/app-templates/smarty/pages/news_details.tpl:11
+msgid "Leave a comment"
+msgstr "crwdns15060:0crwdne15060:0"
+
+#: website/app-templates/smarty/pages/news_details.tpl:20
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
+msgid "Your comment"
+msgstr "crwdns13908:0crwdne13908:0"
+
+#: website/app-templates/smarty/pages/news_details.tpl:28
+msgid "Subscribe to this news post"
+msgstr "crwdns15062:0crwdne15062:0"
+
+#: website/app-templates/smarty/pages/news_details.tpl:42
+msgid "Please <a href=\"%1\">login</a> to post a comment"
+msgstr "crwdns16186:0%1crwdne16186:0"
+
+#: website/app-templates/smarty/pages/news_details.tpl:51
+msgid "There are no comments for this post."
+msgstr "crwdns15066:0crwdne15066:0"
+
+#: website/app-templates/smarty/pages/password_change.tpl:11
+#: website/app-templates/smarty/dialog/user_update_password.tpl:8
+msgid "Change your password"
+msgstr "crwdns15104:0crwdne15104:0"
+
+#: website/app-templates/smarty/pages/password_change.tpl:34
+msgid "Please define a new password."
+msgstr "crwdns16238:0crwdne16238:0"
+
+#: website/app-templates/smarty/pages/password_change.tpl:39
+#: website/app-templates/smarty/pages/password_change.tpl:41
+#: website/app-templates/smarty/dialog/user_update_password.tpl:22
+#: website/app-templates/smarty/dialog/user_update_password.tpl:24
+msgid "New password"
+msgstr "crwdns14258:0crwdne14258:0"
+
+#: website/app-templates/smarty/pages/password_change.tpl:46
+#: website/app-templates/smarty/pages/password_change.tpl:48
+#: website/app-templates/smarty/forms/registration.tpl:26
+#: website/app-templates/smarty/forms/registration.tpl:28
+#: website/app-templates/smarty/dialog/user_update_password.tpl:29
+#: website/app-templates/smarty/dialog/user_update_password.tpl:31
+msgid "Confirm password"
+msgstr "crwdns14978:0crwdne14978:0"
+
+#: website/app-templates/smarty/pages/password_change.tpl:54
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
+#: website/app-templates/smarty/dialog/user_update_email.tpl:53
+#: website/app-templates/smarty/dialog/user_update_password.tpl:52
+msgid "Change"
+msgstr "crwdns14766:0crwdne14766:0"
+
+#: website/app-templates/smarty/pages/geokrety_map.tpl:15
+msgid "GeoKrety interactive map"
+msgstr "crwdns15894:0crwdne15894:0"
+
 #: website/app-templates/smarty/pages/contact_us.tpl:6
 msgid "Contact us"
 msgstr "crwdns15860:0crwdne15860:0"
@@ -1522,6 +1209,11 @@ msgstr "crwdns15860:0crwdne15860:0"
 #: website/app-templates/smarty/pages/contact_us.tpl:11
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "crwdns15862:0crwdne15862:0"
+
+#: website/app-templates/smarty/pages/contact_us.tpl:15
+#: website/app-templates/smarty/blocks/user/details.tpl:43
+msgid "Email"
+msgstr "crwdns14254:0crwdne14254:0"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:22
 msgid "Or via the user profile"
@@ -1546,6 +1238,27 @@ msgstr "crwdns15872:0crwdne15872:0"
 #: website/app-templates/smarty/pages/contact_us.tpl:56
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "crwdns15874:0%1crwdnd15874:0%2crwdne15874:0"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:7
+msgid "%1's GeoKrety recent moves"
+msgstr "crwdns15916:0%1crwdne15916:0"
+
+#: website/app-templates/smarty/pages/press_corner.tpl:7
+#: website/app-templates/smarty/navbar.tpl:77
+msgid "Press corner"
+msgstr "crwdns14292:0crwdne14292:0"
+
+#: website/app-templates/smarty/pages/email_change_token.tpl:37
+msgid "Yes, change my email address"
+msgstr "crwdns16300:0crwdne16300:0"
+
+#: website/app-templates/smarty/pages/email_change_token.tpl:38
+msgid "No, abort this request"
+msgstr "crwdns16302:0crwdne16302:0"
+
+#: website/app-templates/smarty/pages/news_list.tpl:15
+msgid "There is no news yet"
+msgstr "crwdns16460:0crwdne16460:0"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:3
 msgid "GK mole-holes and GK hotels/motels"
@@ -1651,189 +1364,9 @@ msgstr "crwdns16402:0crwdne16402:0"
 msgid "Status: Ready for search"
 msgstr "crwdns15188:0crwdne15188:0"
 
-#: website/app-templates/smarty/pages/password_change.tpl:25
-#: website/app-templates/smarty/pages/email_change.tpl:17
-msgid "Please enter the verification token received by mail."
-msgstr "crwdns16234:0crwdne16234:0"
-
-#: website/app-templates/smarty/pages/password_change.tpl:30
-#: website/app-templates/smarty/pages/password_change.tpl:32
-#: website/app-templates/smarty/pages/email_change.tpl:22
-#: website/app-templates/smarty/pages/email_change.tpl:24
-msgid "Verification Token"
-msgstr "crwdns16236:0crwdne16236:0"
-
-#: website/app-templates/smarty/pages/password_change.tpl:39
-msgid "Please define a new password."
-msgstr "crwdns16238:0crwdne16238:0"
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:6
-msgid "GeoKrety Toolbox - GKT"
-msgstr "crwdns15144:0crwdne15144:0"
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:10
-msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
-msgstr "crwdns15146:0%1crwdne15146:0"
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:14
-msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr "crwdns15148:0%1crwdnd15148:0%2crwdnd15148:0%1crwdnd15148:0%2crwdnd15148:0%2crwdnd15148:0%1crwdnd15148:0%2crwdne15148:0"
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
-msgid "Available for:"
-msgstr "crwdns15150:0crwdne15150:0"
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:20
-msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
-msgstr "crwdns16376:0%1crwdnd16376:0%2crwdnd16376:0%3crwdne16376:0"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:7
-msgid "%1's recent moves"
-msgstr "crwdns15886:0%1crwdne15886:0"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:19
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:31
-#: website/app-templates/smarty/pages/user_geokrety_owned.tpl:19
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:19
-msgid "Spotted in"
-msgstr "crwdns14668:0crwdne14668:0"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
-#: website/app-templates/smarty/pages/user_inventory.tpl:21
-#: website/app-templates/smarty/pages/home.tpl:34
-#: website/app-templates/smarty/pages/user_geokrety_owned.tpl:21
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
-msgid "Distance"
-msgstr "crwdns14322:0crwdne14322:0"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
-#: website/app-templates/smarty/pages/user_inventory.tpl:22
-#: website/app-templates/smarty/pages/user_geokrety_owned.tpl:22
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
-msgid "Caches visited count"
-msgstr "crwdns15888:0crwdne15888:0"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:38
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:38
-msgid "%1 didn't moved any GeoKrety yet."
-msgstr "crwdns15890:0%1crwdne15890:0"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:6
-#: website/app-templates/smarty/navbar.tpl:47
-msgid "Claim a GeoKret"
-msgstr "crwdns13876:0crwdne13876:0"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:19
-msgid "Owner Code"
-msgstr "crwdns15072:0crwdne15072:0"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:27
-msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
-msgstr "crwdns16492:0crwdne16492:0"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:33
-msgid "Adopt"
-msgstr "crwdns15074:0crwdne15074:0"
-
-#: website/app-templates/smarty/pages/registration.tpl:16
-msgid "Create an account"
-msgstr "crwdns16432:0crwdne16432:0"
-
-#: website/app-templates/smarty/pages/press_corner.tpl:7
-#: website/app-templates/smarty/navbar.tpl:77
-msgid "Press corner"
-msgstr "crwdns14292:0crwdne14292:0"
-
-#: website/app-templates/smarty/pages/email_change.tpl:9
-msgid "Changing your email address."
-msgstr "crwdns16286:0crwdne16286:0"
-
-#: website/app-templates/smarty/pages/email_change.tpl:31
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:29
-#: website/app-templates/smarty/pages/email_change_token.tpl:29
-msgid "Back to your profile"
-msgstr "crwdns16288:0crwdne16288:0"
-
-#: website/app-templates/smarty/pages/email_change.tpl:35
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:33
-#: website/app-templates/smarty/pages/email_change_token.tpl:33
-msgid "Back to homepage"
-msgstr "crwdns16290:0crwdne16290:0"
-
-#: website/app-templates/smarty/pages/email_change.tpl:39
-msgid "Check the token"
-msgstr "crwdns16292:0crwdne16292:0"
-
-#: website/app-templates/smarty/pages/map.tpl:25
-msgid "GeoKrety interactive map"
-msgstr "crwdns15894:0crwdne15894:0"
-
-#: website/app-templates/smarty/pages/map.tpl:37
-msgid "Legend"
-msgstr "crwdns14564:0crwdne14564:0"
-
-#: website/app-templates/smarty/pages/map.tpl:41
-msgid "Has moved since 90 days"
-msgstr "crwdns16454:0crwdne16454:0"
-
-#: website/app-templates/smarty/pages/map.tpl:44
-msgid "Has a known move date and hasn't moved since 90 days"
-msgstr "crwdns16456:0crwdne16456:0"
-
-#: website/app-templates/smarty/pages/map.tpl:47
-msgid "No known move date"
-msgstr "crwdns16458:0crwdne16458:0"
-
-#: website/app-templates/smarty/pages/map.tpl:56
-msgid "Results are limited to the first 500 responses."
-msgstr "crwdns14566:0crwdne14566:0"
-
-#: website/app-templates/smarty/pages/map.tpl:57
-msgid "Currently displayed GeoKrety <span id=\"%1\">0</span> on %2"
-msgstr "crwdns14568:0%1crwdnd14568:0%2crwdne14568:0"
-
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
-#: website/app-templates/smarty/pages/user_inventory.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:33
-#: website/app-templates/smarty/pages/user_geokrety_owned.tpl:20
-msgid "Last move"
-msgstr "crwdns14612:0crwdne14612:0"
-
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:40
-msgid "%1 doesn't watch any GeoKrety yet."
-msgstr "crwdns15896:0%1crwdne15896:0"
-
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:14
-msgid "Define your observation area"
-msgstr "crwdns15076:0crwdne15076:0"
-
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:24
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:25
-msgid "Home coordinates"
-msgstr "crwdns15078:0crwdne15078:0"
-
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:29
-msgid "Use the map to select a location or enter coordinates manually."
-msgstr "crwdns15080:0crwdne15080:0"
-
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:31
-msgid "Other acceptable lat/lon formats"
-msgstr "crwdns15082:0crwdne15082:0"
-
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:40
-msgid "Observation radius"
-msgstr "crwdns15084:0crwdne15084:0"
-
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:58
-msgid "Center the map on the zone to observe"
-msgstr "crwdns15088:0crwdne15088:0"
-
-#: website/app-templates/smarty/pages/user_update_observation_area.tpl:70
-msgid "Define"
-msgstr "crwdns15092:0crwdne15092:0"
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:7
+msgid "Pictures gallery"
+msgstr "crwdns18516:0crwdne18516:0"
 
 #: website/app-templates/smarty/pages/user_inventory.tpl:7
 msgid "%1's inventory"
@@ -1842,64 +1375,6 @@ msgstr "crwdns16200:0%1crwdne16200:0"
 #: website/app-templates/smarty/pages/user_inventory.tpl:39
 msgid "%1's inventory is currently empty."
 msgstr "crwdns14652:0%1crwdne14652:0"
-
-#: website/app-templates/smarty/pages/home.tpl:4
-msgid "🎉 Welcome to GeoKrety.org!"
-msgstr "crwdns15900:0crwdne15900:0"
-
-#: website/app-templates/smarty/pages/home.tpl:17
-#: website/app-templates/smarty/navbar.tpl:34
-#: website/app-templates/smarty/footer.tpl:5
-msgid "News"
-msgstr "crwdns14164:0crwdne14164:0"
-
-#: website/app-templates/smarty/pages/home.tpl:24
-msgid "Latest moves"
-msgstr "crwdns15902:0crwdne15902:0"
-
-#: website/app-templates/smarty/pages/home.tpl:47
-msgid "Recent pictures"
-msgstr "crwdns15904:0crwdne15904:0"
-
-#: website/app-templates/smarty/pages/home.tpl:51
-msgid "Recently created GeoKrety"
-msgstr "crwdns15906:0crwdne15906:0"
-
-#: website/app-templates/smarty/pages/news_details.tpl:16
-msgid "Leave a comment"
-msgstr "crwdns15060:0crwdne15060:0"
-
-#: website/app-templates/smarty/pages/news_details.tpl:33
-msgid "Subscribe to this news post"
-msgstr "crwdns15062:0crwdne15062:0"
-
-#: website/app-templates/smarty/pages/news_details.tpl:47
-msgid "Please <a href=\"%1\">login</a> to post a comment"
-msgstr "crwdns16186:0%1crwdne16186:0"
-
-#: website/app-templates/smarty/pages/news_details.tpl:56
-msgid "There are no comments for this post."
-msgstr "crwdns15066:0crwdne15066:0"
-
-#: website/app-templates/smarty/pages/local_mails.tpl:17
-msgid "From"
-msgstr "crwdns16472:0crwdne16472:0"
-
-#: website/app-templates/smarty/pages/local_mails.tpl:20
-msgid "Action"
-msgstr "crwdns16462:0crwdne16462:0"
-
-#: website/app-templates/smarty/pages/local_mails.tpl:21
-msgid "Delete all mails"
-msgstr "crwdns16474:0crwdne16474:0"
-
-#: website/app-templates/smarty/pages/local_mails.tpl:39
-msgid "Delete mail"
-msgstr "crwdns16464:0crwdne16464:0"
-
-#: website/app-templates/smarty/pages/user_geokrety_owned.tpl:38
-msgid "%1 doesn't own any GeoKrety yet."
-msgstr "crwdns15910:0%1crwdne15910:0"
 
 #: website/app-templates/smarty/pages/downloads.tpl:6
 msgid "Translation"
@@ -1964,87 +1439,889 @@ msgstr "crwdns14868:0%1crwdne14868:0"
 msgid "Old label design: "
 msgstr "crwdns14870:0crwdne14870:0"
 
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:7
-msgid "%1's GeoKrety recent moves"
-msgstr "crwdns15916:0%1crwdne15916:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:9
+msgid "Define your observation area"
+msgstr "crwdns15076:0crwdne15076:0"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:6
-#: website/app-templates/smarty/pages/email_change_token.tpl:6
-msgid "Do you confirm changing your email address?"
-msgstr "crwdns16294:0crwdne16294:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:19
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:20
+msgid "Home coordinates"
+msgstr "crwdns15078:0crwdne15078:0"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:37
-msgid "I approve this change"
-msgstr "crwdns16296:0crwdne16296:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:24
+msgid "Use the map to select a location or enter coordinates manually."
+msgstr "crwdns15080:0crwdne15080:0"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:38
-msgid "No, please revert to my old email address"
-msgstr "crwdns16298:0crwdne16298:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:26
+msgid "Other acceptable lat/lon formats"
+msgstr "crwdns15082:0crwdne15082:0"
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:37
-msgid "Yes, change my email address"
-msgstr "crwdns16300:0crwdne16300:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:35
+msgid "Observation radius"
+msgstr "crwdns15084:0crwdne15084:0"
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:38
-msgid "No, abort this request"
-msgstr "crwdns16302:0crwdne16302:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:53
+msgid "Center the map on the zone to observe"
+msgstr "crwdns15088:0crwdne15088:0"
 
-#: website/app-templates/smarty/macros/pagination.tpl:5
-msgid "First"
-msgstr "crwdns16202:0crwdne16202:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:62
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:25
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:14
+#: website/app-templates/smarty/dialog/user_update_email.tpl:50
+#: website/app-templates/smarty/dialog/user_contact.tpl:46
+#: website/app-templates/smarty/dialog/user_update_password.tpl:49
+msgid "Back to user page"
+msgstr "crwdns15090:0crwdne15090:0"
 
-#: website/app-templates/smarty/macros/pagination.tpl:17
-msgid "Last [%1]"
-msgstr "crwdns16204:0[%1]crwdne16204:0"
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:65
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
+msgid "Define"
+msgstr "crwdns15092:0crwdne15092:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:3
-msgid "Admin"
-msgstr "crwdns13852:0crwdne13852:0"
+#: website/app-templates/smarty/pages/password_recovery.tpl:8
+msgid "Password recovery"
+msgstr "crwdns16228:0crwdne16228:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:7
-#: website/app-templates/smarty/navbar-profile.tpl:16
-msgid "My profile"
-msgstr "crwdns15918:0crwdne15918:0"
+#: website/app-templates/smarty/pages/password_recovery.tpl:17
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr "crwdns16230:0crwdne16230:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:18
-msgid "My inventory"
-msgstr "crwdns14896:0crwdne14896:0"
+#: website/app-templates/smarty/pages/password_recovery.tpl:22
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/forms/registration.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:13
+#: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/dialog/user_update_email.tpl:12
+msgid "Email address"
+msgstr "crwdns14980:0crwdne14980:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:19
-msgid "My GeoKrety"
-msgstr "crwdns14898:0crwdne14898:0"
+#: website/app-templates/smarty/pages/password_recovery.tpl:38
+msgid "Send me a recovery link"
+msgstr "crwdns16232:0crwdne16232:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:22
-msgid "My recent moves"
-msgstr "crwdns15920:0crwdne15920:0"
+#: website/app-templates/smarty/pages/registration.tpl:11
+msgid "Create an account"
+msgstr "crwdns16432:0crwdne16432:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:23
-msgid "Recent moves of my GeoKrety"
-msgstr "crwdns14900:0crwdne14900:0"
+#: website/app-templates/smarty/forms/geokret_label.tpl:3
+msgid "Generate a GeoKret Label"
+msgstr "crwdns18518:0crwdne18518:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:25
-msgid "My photos"
-msgstr "crwdns14518:0crwdne14518:0"
+#: website/app-templates/smarty/forms/geokret_label.tpl:8
+#: website/app-templates/smarty/forms/geokret_label.tpl:10
+#: website/app-templates/smarty/forms/geokret.tpl:14
+#: website/app-templates/smarty/forms/geokret.tpl:16
+#: website/app-templates/smarty/forms/geokret.tpl:72
+#: website/app-templates/smarty/forms/geokret.tpl:74
+msgid "GeoKret name"
+msgstr "crwdns14176:0crwdne14176:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:26
-msgid "Photos of my GeoKrety"
-msgstr "crwdns14902:0crwdne14902:0"
+#: website/app-templates/smarty/forms/geokret_label.tpl:22
+#: website/app-templates/smarty/forms/geokret_label.tpl:29
+msgid "Reference numbers"
+msgstr "crwdns18520:0crwdne18520:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:30
-msgid "Sign out"
-msgstr "crwdns14904:0crwdne14904:0"
+#: website/app-templates/smarty/forms/geokret_label.tpl:24
+#: website/app-templates/smarty/blocks/geokret/details.tpl:40
+msgid "Reference number"
+msgstr "crwdns14622:0crwdne14622:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:41
-msgid "Create account"
-msgstr "crwdns14906:0crwdne14906:0"
+#: website/app-templates/smarty/forms/geokret_label.tpl:36
+#: website/app-templates/smarty/forms/geokret.tpl:32
+#: website/app-templates/smarty/forms/geokret.tpl:90
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
+msgid "Mission"
+msgstr "crwdns14584:0crwdne14584:0"
 
-#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
-msgid "Remove this GeoKret from the selection"
-msgstr "crwdns14872:0crwdne14872:0"
+#: website/app-templates/smarty/forms/geokret_label.tpl:38
+#: website/app-templates/smarty/forms/geokret.tpl:34
+#: website/app-templates/smarty/forms/geokret.tpl:92
+msgid "What is this GeoKret mission?"
+msgstr "crwdns16170:0crwdne16170:0"
 
-#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
-msgid "Never moved"
-msgstr "crwdns15922:0crwdne15922:0"
+#: website/app-templates/smarty/forms/geokret_label.tpl:43
+msgid "Label template"
+msgstr "crwdns18522:0crwdne18522:0"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:54
+msgid "Label help languages"
+msgstr "crwdns18524:0crwdne18524:0"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:62
+msgid "Note1: not all label templates support this feature and when supported, english is always present."
+msgstr "crwdns18526:0crwdne18526:0"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:69
+msgid "Generate as .png"
+msgstr "crwdns18528:0crwdne18528:0"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:70
+msgid "Generate as .svg"
+msgstr "crwdns18530:0crwdne18530:0"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:71
+msgid "Generate as .pdf"
+msgstr "crwdns18532:0crwdne18532:0"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:80
+msgid "GeoKret Label preview"
+msgstr "crwdns18534:0crwdne18534:0"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:83
+#: website/app-templates/smarty/forms/geokret_label.tpl:84
+msgid "GeoKret label preview"
+msgstr "crwdns18536:0crwdne18536:0"
+
+#: website/app-templates/smarty/forms/geokret.tpl:4
+#: website/app-templates/smarty/forms/geokret.tpl:62
+msgid "Edit a GeoKret"
+msgstr "crwdns15120:0crwdne15120:0"
+
+#: website/app-templates/smarty/forms/geokret.tpl:6
+#: website/app-templates/smarty/forms/geokret.tpl:64
+#: website/app-templates/smarty/blocks/user/actions.tpl:3
+#: website/app-templates/smarty/navbar.tpl:46
+msgid "Create a new GeoKret"
+msgstr "crwdns14876:0crwdne14876:0"
+
+#: website/app-templates/smarty/forms/geokret.tpl:21
+#: website/app-templates/smarty/forms/geokret.tpl:79
+msgid "GeoKret type"
+msgstr "crwdns15122:0crwdne15122:0"
+
+#: website/app-templates/smarty/forms/geokret.tpl:42
+#: website/app-templates/smarty/forms/geokret.tpl:100
+msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
+msgstr "crwdns15942:0crwdne15942:0"
+
+#: website/app-templates/smarty/forms/geokret.tpl:43
+#: website/app-templates/smarty/forms/geokret.tpl:101
+msgid "Set my home coordinates as a starting point."
+msgstr "crwdns15126:0crwdne15126:0"
+
+#: website/app-templates/smarty/forms/geokret.tpl:52
+#: website/app-templates/smarty/forms/geokret.tpl:110
+msgid "Create"
+msgstr "crwdns15128:0crwdne15128:0"
+
+#: website/app-templates/smarty/forms/move.tpl:11
+msgid "Identify GeoKret"
+msgstr "crwdns15208:0crwdne15208:0"
+
+#: website/app-templates/smarty/forms/move.tpl:28
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:3
+msgid "Select GeoKrety from inventory"
+msgstr "crwdns15210:0crwdne15210:0"
+
+#: website/app-templates/smarty/forms/move.tpl:30
+msgid "Verify tracking code"
+msgstr "crwdns15212:0crwdne15212:0"
+
+#: website/app-templates/smarty/forms/move.tpl:33
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "crwdns15938:0%1crwdne15938:0"
+
+#: website/app-templates/smarty/forms/move.tpl:43
+#: website/app-templates/smarty/forms/move.tpl:118
+#: website/app-templates/smarty/forms/move.tpl:205
+msgid "Next"
+msgstr "crwdns15216:0crwdne15216:0"
+
+#: website/app-templates/smarty/forms/move.tpl:54
+msgid "Log type"
+msgstr "crwdns15218:0crwdne15218:0"
+
+#: website/app-templates/smarty/forms/move.tpl:66
+msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
+msgstr "crwdns15220:0crwdne15220:0"
+
+#: website/app-templates/smarty/forms/move.tpl:77
+msgid "When you've left a GeoKret in a cache"
+msgstr "crwdns15222:0crwdne15222:0"
+
+#: website/app-templates/smarty/forms/move.tpl:78
+msgid "I've dropped GeoKret"
+msgstr "crwdns15224:0crwdne15224:0"
+
+#: website/app-templates/smarty/forms/move.tpl:84
+msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
+msgstr "crwdns15226:0crwdne15226:0"
+
+#: website/app-templates/smarty/forms/move.tpl:85
+msgid "I've grabbed GeoKret"
+msgstr "crwdns15228:0crwdne15228:0"
+
+#: website/app-templates/smarty/forms/move.tpl:91
+msgid "When you've met a GeoKret in a cache but haven't taken it with you"
+msgstr "crwdns15230:0crwdne15230:0"
+
+#: website/app-templates/smarty/forms/move.tpl:92
+msgid "I've met GeoKret"
+msgstr "crwdns15232:0crwdne15232:0"
+
+#: website/app-templates/smarty/forms/move.tpl:98
+msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
+msgstr "crwdns15234:0crwdne15234:0"
+
+#: website/app-templates/smarty/forms/move.tpl:99
+msgid "I've dipped a GeoKret"
+msgstr "crwdns15236:0crwdne15236:0"
+
+#: website/app-templates/smarty/forms/move.tpl:105
+msgid "When you want to write a comment :)"
+msgstr "crwdns15238:0crwdne15238:0"
+
+#: website/app-templates/smarty/forms/move.tpl:129
+msgid "New location"
+msgstr "crwdns15240:0crwdne15240:0"
+
+#: website/app-templates/smarty/forms/move.tpl:139
+msgid "Waypoint"
+msgstr "crwdns15242:0crwdne15242:0"
+
+#: website/app-templates/smarty/forms/move.tpl:142
+msgid "eg. GC1AQ2N"
+msgstr "crwdns15940:0crwdne15940:0"
+
+#: website/app-templates/smarty/forms/move.tpl:147
+msgid "Lookup opencaching cache by name"
+msgstr "crwdns15244:0crwdne15244:0"
+
+#: website/app-templates/smarty/forms/move.tpl:152
+msgid "eg.: GC1AQ2N, OP069B, OC033A…"
+msgstr "crwdns15246:0crwdne15246:0"
+
+#: website/app-templates/smarty/forms/move.tpl:164
+msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
+msgstr "crwdns15248:0crwdne15248:0"
+
+#: website/app-templates/smarty/forms/move.tpl:178
+msgid "Coordinates"
+msgstr "crwdns15250:0crwdne15250:0"
+
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Additional data"
+msgstr "crwdns15252:0crwdne15252:0"
+
+#: website/app-templates/smarty/forms/move.tpl:224
+msgid "Date"
+msgstr "crwdns14038:0crwdne14038:0"
+
+#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/forms/registration.tpl:4
+#: website/app-templates/smarty/forms/registration.tpl:6
+#: website/app-templates/smarty/dialog/login.tpl:12
+#: website/app-templates/smarty/dialog/login.tpl:14
+msgid "Username"
+msgstr "crwdns14976:0crwdne14976:0"
+
+#: website/app-templates/smarty/forms/move.tpl:241
+msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
+msgstr "crwdns15254:0crwdne15254:0"
+
+#: website/app-templates/smarty/forms/move.tpl:251
+msgid "It is always nice to receive a little message ;)"
+msgstr "crwdns15256:0crwdne15256:0"
+
+#: website/app-templates/smarty/forms/move.tpl:274
+msgid "Post your log"
+msgstr "crwdns15258:0crwdne15258:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:14
+#: website/app-templates/smarty/dialog/user_update_email.tpl:23
+msgid "The main purpose of collecting email is to permit password recovery."
+msgstr "crwdns14762:0crwdne14762:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:19
+#: website/app-templates/smarty/forms/registration.tpl:21
+#: website/app-templates/smarty/dialog/login.tpl:18
+#: website/app-templates/smarty/dialog/login.tpl:20
+msgid "Password"
+msgstr "crwdns13858:0crwdne13858:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:33
+#: website/app-templates/smarty/blocks/user/details.tpl:31
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
+msgid "Language"
+msgstr "crwdns14690:0crwdne14690:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:40
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
+msgid "This will be the default language when you log in and the main language in the emails you may receive."
+msgstr "crwdns14772:0crwdne14772:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:48
+#: website/app-templates/smarty/dialog/user_update_email.tpl:17
+msgid "Yes, I want to receive email alerts (sent once a day)."
+msgstr "crwdns14760:0crwdne14760:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:49
+msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
+msgstr "crwdns16434:0crwdne16434:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:60
+msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
+msgstr "crwdns16436:0crwdne16436:0"
+
+#: website/app-templates/smarty/forms/registration.tpl:77
+msgid "Register"
+msgstr "crwdns16438:0crwdne16438:0"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:3
+msgid "Found a GeoKret?"
+msgstr "crwdns14662:0crwdne14662:0"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:7
+msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
+msgstr "crwdns16172:0%1crwdne16172:0"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:12
+msgid "Tracking code"
+msgstr "crwdns14624:0crwdne14624:0"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:15
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
+msgid "Log it!"
+msgstr "crwdns15792:0crwdne15792:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:21
+#: website/app-templates/smarty/blocks/user/details.tpl:7
+msgid "Send a message to %1"
+msgstr "crwdns15778:0%1crwdne15778:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:26
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
+msgid "Edit GeoKret details"
+msgstr "crwdns14586:0crwdne14586:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:29
+#: website/app-templates/smarty/blocks/user/details.tpl:18
+#: website/app-templates/smarty/elements/move.tpl:69
+msgid "Upload a picture"
+msgstr "crwdns14580:0crwdne14580:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:48
+msgid "Places visited"
+msgstr "crwdns14628:0crwdne14628:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Social share"
+msgstr "crwdns14630:0crwdne14630:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:54
+msgid "Share on Facebook"
+msgstr "crwdns14632:0crwdne14632:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:55
+msgid "Share on Twitter"
+msgstr "crwdns14634:0crwdne14634:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:56
+msgid "Share on Instagram"
+msgstr "crwdns14636:0crwdne14636:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:57
+#: website/app-templates/smarty/blocks/user/statpic.tpl:8
+msgid "Copy link to page"
+msgstr "crwdns14638:0crwdne14638:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:58
+#: website/app-templates/smarty/blocks/user/statpic.tpl:9
+msgid "Copy to page as bbcode"
+msgstr "crwdns14640:0crwdne14640:0"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:60
+msgid "Country track"
+msgstr "crwdns14642:0crwdne14642:0"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
+msgid "Found it? Log it!"
+msgstr "crwdns15788:0crwdne15788:0"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
+msgid "Please enter the Tracking Code here"
+msgstr "crwdns15790:0crwdne15790:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:2
+msgid "Watchers"
+msgstr "crwdns15780:0crwdne15780:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:6
+msgid "Log this GeoKret"
+msgstr "crwdns14188:0crwdne14188:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:11
+msgid "Print a label for this GeoKret"
+msgstr "crwdns14596:0crwdne14596:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:17
+#: website/app-templates/smarty/navbar.tpl:82
+msgid "Statistics"
+msgstr "crwdns14476:0crwdne14476:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:24
+msgid "Adopt this GeoKret"
+msgstr "crwdns14598:0crwdne14598:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:26
+msgid "Login to claim this GeoKret"
+msgstr "crwdns14600:0crwdne14600:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:32
+msgid "Archive this GeoKret"
+msgstr "crwdns14602:0crwdne14602:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:37
+msgid "Email owner"
+msgstr "crwdns14604:0crwdne14604:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:43
+msgid "Make this GeoKret available for adoption by another user"
+msgstr "crwdns15782:0crwdne15782:0"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:44
+msgid "Transfer ownership"
+msgstr "crwdns15784:0crwdne15784:0"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
+msgid "This GeoKret doesn't have a special mission…"
+msgstr "crwdns14588:0crwdne14588:0"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:3
+msgid "Map"
+msgstr "crwdns14722:0crwdne14722:0"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:8
+msgid "Caption:"
+msgstr "crwdns14724:0crwdne14724:0"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:9
+msgid "start"
+msgstr "crwdns14726:0crwdne14726:0"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:10
+msgid "trip points"
+msgstr "crwdns14728:0crwdne14728:0"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:11
+msgid "recently seen"
+msgstr "crwdns14730:0crwdne14730:0"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:13
+msgid "Download the track as:"
+msgstr "crwdns15786:0crwdne15786:0"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:17
+msgid "This geokret has not started yet"
+msgstr "crwdns14732:0crwdne14732:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:11
+msgid "Subscribe to RSS channel"
+msgstr "crwdns14684:0crwdne14684:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:15
+msgid "Password change"
+msgstr "crwdns14686:0crwdne14686:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:29
+msgid "Joined us"
+msgstr "crwdns14688:0crwdne14688:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:33
+msgid "Nothing selected"
+msgstr "crwdns15796:0crwdne15796:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:36
+msgid "Choose preferred language"
+msgstr "crwdns15798:0crwdne15798:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:48
+msgid "Pending email validation, don't forget to click the link in validation mail!"
+msgstr "crwdns15800:0crwdne15800:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:50
+msgid "No email address, please add one!"
+msgstr "crwdns14694:0crwdne14694:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:53
+msgid "Update email address"
+msgstr "crwdns14696:0crwdne14696:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:58
+msgid "Secid"
+msgstr "crwdns14698:0crwdne14698:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:61
+msgid "Used to authenticate in other applications. Keep it secret!"
+msgstr "crwdns14700:0crwdne14700:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:62
+msgid "Generate a new secid"
+msgstr "crwdns14702:0crwdne14702:0"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:71
+msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
+msgstr "crwdns16198:0%1crwdne16198:0"
+
+#: website/app-templates/smarty/blocks/user/statpic.tpl:13
+msgid "Choose statpic"
+msgstr "crwdns14682:0crwdne14682:0"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:3
+msgid "Awards"
+msgstr "crwdns15794:0crwdne15794:0"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong> km."
+msgstr "crwdns16130:0%1crwdnd16130:0%2crwdnd16130:0%3crwdne16130:0"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:15
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong> km."
+msgstr "crwdns16132:0%1crwdnd16132:0%2crwdnd16132:0%3crwdne16132:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:12
+msgid "View inventory"
+msgstr "crwdns14706:0crwdne14706:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:24
+msgid "Recently posted moves"
+msgstr "crwdns14708:0crwdne14708:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:28
+msgid "Moves of owned GeoKrety"
+msgstr "crwdns16134:0crwdne16134:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:32
+msgid "Posted pictures"
+msgstr "crwdns14712:0crwdne14712:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:36
+msgid "Owned GeoKrety pictures"
+msgstr "crwdns14714:0crwdne14714:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:40
+#: website/app-templates/smarty/navbar-profile.tpl:28
+msgid "Where are my GeoKrety?"
+msgstr "crwdns14716:0crwdne14716:0"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "User stats"
+msgstr "crwdns14532:0crwdne14532:0"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:10
+msgid "No home coordinates have been defined."
+msgstr "crwdns14570:0crwdne14570:0"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:13
+#: website/app-templates/smarty/blocks/user/map_home.tpl:21
+msgid "Update home coordinates and obervation area"
+msgstr "crwdns14572:0crwdne14572:0"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:14
+msgid "Define your home coordinates"
+msgstr "crwdns14574:0crwdne14574:0"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:20
+msgid "GeoKrety near home"
+msgstr "crwdns14576:0crwdne14576:0"
+
+#: website/app-templates/smarty/blocks/user/badges.tpl:3
+msgid "Badges"
+msgstr "crwdns14608:0crwdne14608:0"
+
+#: website/app-templates/smarty/blocks/user/badges.tpl:9
+msgid "No badge received yet."
+msgstr "crwdns14610:0crwdne14610:0"
+
+#: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
+msgid "There is no pictures yet."
+msgstr "crwdns18538:0crwdne18538:0"
+
+#: website/app-templates/smarty/dialog/login.tpl:5
+#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
+#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
+#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+msgid "Login"
+msgstr "crwdns14526:0crwdne14526:0"
+
+#: website/app-templates/smarty/dialog/login.tpl:27
+msgid "Remember me"
+msgstr "crwdns14992:0crwdne14992:0"
+
+#: website/app-templates/smarty/dialog/login.tpl:30
+msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
+msgstr "crwdns18540:0%1crwdne18540:0"
+
+#: website/app-templates/smarty/dialog/login.tpl:38
+msgid "No account yet ? Register now!"
+msgstr "crwdns15944:0crwdne15944:0"
+
+#: website/app-templates/smarty/dialog/login.tpl:41
+msgid "Forgot your password?"
+msgstr "crwdns14996:0crwdne14996:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:9
+msgid "Only %1 GeoKrety can be processed at a time."
+msgstr "crwdns14784:0%1crwdne14784:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
+msgid "Filter"
+msgstr "crwdns15824:0crwdne15824:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
+msgid "Name or ID"
+msgstr "crwdns15826:0crwdne15826:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
+msgid "Select all (but max %1)"
+msgstr "crwdns15828:0%1crwdne15828:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:35
+msgid "Choose"
+msgstr "crwdns16168:0crwdne16168:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:60
+msgid "Your inventory is empty."
+msgstr "crwdns16490:0crwdne16490:0"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:67
+msgid "Select <span class=\"badge\">%1</span>"
+msgstr "crwdns14786:0%1crwdne14786:0"
+
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:4
+msgid "Do you want to set this picture as main avatar?"
+msgstr "crwdns18542:0crwdne18542:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
+msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+msgstr "crwdns14926:0%1crwdnd14926:0%1crwdne14926:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
+msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
+msgstr "crwdns14928:0crwdne14928:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
+msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
+msgstr "crwdns16352:0crwdne16352:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
+msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+msgstr "crwdns15892:0crwdne15892:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
+msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
+msgstr "crwdns14934:0crwdne14934:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:26
+#: website/app-templates/smarty/navbar.tpl:76
+msgid "Terms of use"
+msgstr "crwdns14500:0crwdne14500:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:35
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:54
+msgid "I agree with the terms"
+msgstr "crwdns16428:0crwdne16428:0"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:45
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
+msgid "Commenting a GeoKret move"
+msgstr "crwdns15802:0crwdne15802:0"
+
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
+msgid "Do you really want to delete this move comment?"
+msgstr "crwdns14794:0crwdne14794:0"
+
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
+#: website/app-templates/smarty/dialog/move_delete.tpl:23
+#: website/app-templates/smarty/dialog/picture_delete.tpl:15
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
+msgid "Delete"
+msgstr "crwdns14792:0crwdne14792:0"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:4
+msgid "Do you really want to delete this move?"
+msgstr "crwdns15812:0crwdne15812:0"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:14
+msgid "Deleting this Move will delete attached pictures and the main avatar!"
+msgstr "crwdns18544:0crwdne18544:0"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:16
+msgid "Deleting this Move will delete attached pictures!"
+msgstr "crwdns18546:0crwdne18546:0"
+
+#: website/app-templates/smarty/dialog/picture_delete.tpl:4
+msgid "Do you really want to delete this picture?"
+msgstr "crwdns18548:0crwdne18548:0"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:6
+msgid "Manage picture"
+msgstr "crwdns18550:0crwdne18550:0"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:12
+msgid "Caption"
+msgstr "crwdns18552:0crwdne18552:0"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:24
+msgid "Remember caption"
+msgstr "crwdns18554:0crwdne18554:0"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:27
+msgid "Remember the caption for the next %1 minutes"
+msgstr "crwdns18556:0%1crwdne18556:0"
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
+msgid "Choose your preferred language"
+msgstr "crwdns15804:0crwdne15804:0"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:6
+msgid "Do you really want to unsubscribe from this news?"
+msgstr "crwdns15808:0crwdne15808:0"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:8
+msgid "Subscribe to this news?"
+msgstr "crwdns15810:0crwdne15810:0"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:26
+msgid "Unsubscribe"
+msgstr "crwdns14778:0crwdne14778:0"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:28
+msgid "Subscribe"
+msgstr "crwdns14780:0crwdne14780:0"
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
+msgid "Refresh your secid?"
+msgstr "crwdns14734:0crwdne14734:0"
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
+msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
+msgstr "crwdns14736:0crwdne14736:0"
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:17
+msgid "Refresh"
+msgstr "crwdns14740:0crwdne14740:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:4
+msgid "Update your email address"
+msgstr "crwdns14758:0crwdne14758:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:27
+msgid "Email alerts may contain any of the following:"
+msgstr "crwdns14764:0crwdne14764:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:29
+msgid "GeoKrety.org news"
+msgstr "crwdns16136:0crwdne16136:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:30
+msgid "Recent logs on:"
+msgstr "crwdns16138:0crwdne16138:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:32
+#: website/app-templates/smarty/dialog/user_update_email.tpl:38
+msgid "your own GeoKrety"
+msgstr "crwdns16140:0crwdne16140:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:33
+#: website/app-templates/smarty/dialog/user_update_email.tpl:39
+msgid "GeoKrety that you watch"
+msgstr "crwdns16142:0crwdne16142:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:34
+msgid "any GeoKrety logged near your home location"
+msgstr "crwdns16144:0crwdne16144:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:36
+msgid "Comments posted to any of the following:"
+msgstr "crwdns16146:0crwdne16146:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:40
+msgid "your logs"
+msgstr "crwdns16148:0crwdne16148:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:41
+msgid "your comments"
+msgstr "crwdns16150:0crwdne16150:0"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:42
+msgid "news posts you have are subscribed to"
+msgstr "crwdns16152:0crwdne16152:0"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:9
+msgid "Contact user"
+msgstr "crwdns14214:0crwdne14214:0"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:18
+msgid "%1 (speak %2)"
+msgstr "crwdns15134:0%1crwdnd15134:0%2crwdne15134:0"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:25
+msgid "Message subject"
+msgstr "crwdns15138:0crwdne15138:0"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:30
+msgid "Message"
+msgstr "crwdns15140:0crwdne15140:0"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:32
+msgid "Message to user"
+msgstr "crwdns15142:0crwdne15142:0"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:49
+msgid "Send message"
+msgstr "crwdns13910:0crwdne13910:0"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
+msgid "Declare missing"
+msgstr "crwdns15822:0crwdne15822:0"
+
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
+msgid "Do you really want to delete this news comment?"
+msgstr "crwdns14796:0crwdne14796:0"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:15
+msgid "Current password"
+msgstr "crwdns15106:0crwdne15106:0"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:17
+msgid "Old password"
+msgstr "crwdns15108:0crwdne15108:0"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:37
+msgid "Read more about choosing good passwords:"
+msgstr "crwdns15112:0crwdne15112:0"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:39
+msgid "Choosing Good Passwords -- A User Guide"
+msgstr "crwdns15114:0crwdne15114:0"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:40
+msgid "How to Write Good Passwords"
+msgstr "crwdns15116:0crwdne15116:0"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:41
+msgid "Password strength"
+msgstr "crwdns15118:0crwdne15118:0"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
+msgid "Offer this GeoKret for adoption?"
+msgstr "crwdns15814:0crwdne15814:0"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
+msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
+msgstr "crwdns16154:0crwdne16154:0"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:14
+msgid "Back to GeoKret page"
+msgstr "crwdns15818:0crwdne15818:0"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:17
+msgid "Generate an Owner Code"
+msgstr "crwdns15820:0crwdne15820:0"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:5
 msgid "languages"
@@ -2058,6 +2335,83 @@ msgstr "crwdns16264:0crwdne16264:0"
 msgid "group name"
 msgstr "crwdns15928:0crwdne15928:0"
 
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
+msgid "Remove this GeoKret from the selection"
+msgstr "crwdns14872:0crwdne14872:0"
+
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
+msgid "Never moved"
+msgstr "crwdns15922:0crwdne15922:0"
+
+#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
+msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
+msgstr "crwdns16366:0crwdne16366:0"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "crwdns16370:0%1crwdne16370:0"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
+msgstr "crwdns18558:0%1crwdne18558:0"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "crwdns16374:0crwdne16374:0"
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:3
+msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "crwdns15840:0crwdne15840:0"
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
+msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
+msgstr "crwdns15832:0%1crwdnd15832:0%2crwdne15832:0"
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
+msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
+msgstr "crwdns15834:0%1crwdne15834:0"
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
+msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+msgstr "crwdns16176:0%1crwdne16176:0"
+
+#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
+msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
+msgstr "crwdns16284:0%1crwdne16284:0"
+
+#: website/app-templates/smarty/banners/is_not_prod.tpl:3
+msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr "crwdns14910:0crwdne14910:0"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:2
+msgid "Some statistics"
+msgstr "crwdns14654:0crwdne14654:0"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:6
+msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
+msgstr "crwdns16178:0%1crwdnd16178:0%2crwdnd16178:0%3crwdne16178:0"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:13
+msgid "<strong>%1</strong> km done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
+msgstr "crwdns16194:0%1crwdnd16194:0%2crwdnd16194:0%3crwdnd16194:0%4crwdne16194:0"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:21
+msgid "And that's thanks to you! Congratulation!"
+msgstr "crwdns14660:0crwdne14660:0"
+
+#: website/app-templates/smarty/banners/contribute.tpl:2
+#: website/app-templates/smarty/banners/flash_messages.tpl:3
+msgid "Close"
+msgstr "crwdns14912:0crwdne14912:0"
+
+#: website/app-templates/smarty/banners/contribute.tpl:3
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "crwdns16488:0%1crwdnd16488:0%2crwdne16488:0"
+
+#: website/app-templates/smarty/banners/site_intro.tpl:3
+msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
+msgstr "crwdns16262:0%1crwdne16262:0"
+
 #: website/app-templates/smarty/navbar.tpl:6
 msgid "Toggle navigation"
 msgstr "crwdns14874:0crwdne14874:0"
@@ -2067,11 +2421,6 @@ msgstr "crwdns14874:0crwdne14874:0"
 #: website/app-templates/smarty/navbar.tpl:44
 msgid "Log a GeoKret"
 msgstr "crwdns14460:0crwdne14460:0"
-
-#: website/app-templates/smarty/navbar.tpl:33
-#: website/app-templates/smarty/footer.tpl:3
-msgid "Home"
-msgstr "crwdns14130:0crwdne14130:0"
 
 #: website/app-templates/smarty/navbar.tpl:50
 msgid "Advanced search"
@@ -2124,49 +2473,50 @@ msgstr "crwdns14892:0crwdne14892:0"
 msgid "Open source item tracking for all geocaching platforms"
 msgstr "crwdns15930:0crwdne15930:0"
 
-#: website/app-templates/smarty/footer.tpl:4
-msgid "About"
-msgstr "crwdns16190:0crwdne16190:0"
+#: website/app-templates/smarty/navbar-profile.tpl:3
+msgid "Admin"
+msgstr "crwdns13852:0crwdne13852:0"
 
-#: website/app-templates/smarty/footer.tpl:6
-msgid "Contact"
-msgstr "crwdns16192:0crwdne16192:0"
+#: website/app-templates/smarty/navbar-profile.tpl:7
+#: website/app-templates/smarty/navbar-profile.tpl:16
+msgid "My profile"
+msgstr "crwdns15918:0crwdne15918:0"
 
-#: website/app-templates/smarty/footer.tpl:10
-msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr "crwdns18432:0%1crwdne18432:0"
+#: website/app-templates/smarty/navbar-profile.tpl:18
+msgid "My inventory"
+msgstr "crwdns14896:0crwdne14896:0"
 
-#: website/app-templates/smarty/footer.tpl:13
-msgid "Leave in-context translation"
-msgstr "crwdns16362:0crwdne16362:0"
+#: website/app-templates/smarty/navbar-profile.tpl:19
+msgid "My GeoKrety"
+msgstr "crwdns14898:0crwdne14898:0"
 
-#: website/app-templates/smarty/footer.tpl:15
-msgid "in-context translation"
-msgstr "crwdns16364:0crwdne16364:0"
+#: website/app-templates/smarty/navbar-profile.tpl:22
+msgid "My recent moves"
+msgstr "crwdns15920:0crwdne15920:0"
 
-#: website/app-templates/smarty/footer.tpl:19
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr "crwdns18434:0%1crwdne18434:0"
+#: website/app-templates/smarty/navbar-profile.tpl:23
+msgid "Recent moves of my GeoKrety"
+msgstr "crwdns14900:0crwdne14900:0"
 
-#: website/app-templates/smarty/footer.tpl:29
-msgid "Deployed on %1"
-msgstr "crwdns16360:0%1crwdne16360:0"
+#: website/app-templates/smarty/navbar-profile.tpl:25
+msgid "My photos"
+msgstr "crwdns14518:0crwdne14518:0"
 
-#: website/app-templates/smarty/elements/move.tpl:55
-msgid "Report as missing"
-msgstr "crwdns14136:0crwdne14136:0"
+#: website/app-templates/smarty/navbar-profile.tpl:26
+msgid "Photos of my GeoKrety"
+msgstr "crwdns14902:0crwdne14902:0"
 
-#: website/app-templates/smarty/elements/move.tpl:64
-msgid "Write a comment"
-msgstr "crwdns14810:0crwdne14810:0"
+#: website/app-templates/smarty/navbar-profile.tpl:30
+msgid "Sign out"
+msgstr "crwdns14904:0crwdne14904:0"
 
-#: website/app-templates/smarty/elements/move.tpl:71
-msgid "Edit log"
-msgstr "crwdns14146:0crwdne14146:0"
+#: website/app-templates/smarty/navbar-profile.tpl:41
+msgid "Create account"
+msgstr "crwdns14906:0crwdne14906:0"
 
-#: website/app-templates/smarty/elements/move.tpl:74
-msgid "Delete log"
-msgstr "crwdns14148:0crwdne14148:0"
+#: website/app-templates/smarty/elements/credit.tpl:4
+msgid "%1 logo"
+msgstr "crwdns15936:0%1crwdne15936:0"
 
 #: website/app-templates/smarty/elements/news_comment.tpl:10
 #: website/app-templates/smarty/elements/move_comment.tpl:11
@@ -2179,10 +2529,6 @@ msgstr "crwdns14154:0crwdne14154:0"
 msgid "Move this GeoKret"
 msgstr "crwdns15934:0crwdne15934:0"
 
-#: website/app-templates/smarty/elements/credit.tpl:4
-msgid "%1 logo"
-msgstr "crwdns15936:0%1crwdne15936:0"
-
 #: website/app-templates/smarty/elements/news.tpl:7
 msgid "Unsubscribe from news"
 msgstr "crwdns14718:0crwdne14718:0"
@@ -2191,212 +2537,65 @@ msgstr "crwdns14718:0crwdne14718:0"
 msgid "Subscribe to news"
 msgstr "crwdns14720:0crwdne14720:0"
 
-#: website/app-templates/smarty/forms/move.tpl:11
-msgid "Identify GeoKret"
-msgstr "crwdns15208:0crwdne15208:0"
+#: website/app-templates/smarty/elements/move.tpl:7
+msgid "Show move on map"
+msgstr "crwdns18560:0crwdne18560:0"
 
-#: website/app-templates/smarty/forms/move.tpl:30
-msgid "Verify tracking code"
-msgstr "crwdns15212:0crwdne15212:0"
+#: website/app-templates/smarty/elements/move.tpl:64
+msgid "Report as missing"
+msgstr "crwdns14136:0crwdne14136:0"
 
-#: website/app-templates/smarty/forms/move.tpl:33
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "crwdns15938:0%1crwdne15938:0"
+#: website/app-templates/smarty/elements/move.tpl:73
+msgid "Write a comment"
+msgstr "crwdns14810:0crwdne14810:0"
 
-#: website/app-templates/smarty/forms/move.tpl:43
-#: website/app-templates/smarty/forms/move.tpl:119
-#: website/app-templates/smarty/forms/move.tpl:203
-msgid "Next"
-msgstr "crwdns15216:0crwdne15216:0"
+#: website/app-templates/smarty/elements/move.tpl:80
+msgid "Edit log"
+msgstr "crwdns14146:0crwdne14146:0"
 
-#: website/app-templates/smarty/forms/move.tpl:54
-msgid "Log type"
-msgstr "crwdns15218:0crwdne15218:0"
+#: website/app-templates/smarty/elements/move.tpl:83
+msgid "Delete log"
+msgstr "crwdns14148:0crwdne14148:0"
 
-#: website/app-templates/smarty/forms/move.tpl:66
-msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
-msgstr "crwdns15220:0crwdne15220:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:41
+msgid "Informations:"
+msgstr "crwdns18562:0crwdne18562:0"
 
-#: website/app-templates/smarty/forms/move.tpl:78
-msgid "When you've left a GeoKret in a cache"
-msgstr "crwdns15222:0crwdne15222:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:43
+msgid "Owner:"
+msgstr "crwdns18564:0crwdne18564:0"
 
-#: website/app-templates/smarty/forms/move.tpl:79
-msgid "I've dropped GeoKret"
-msgstr "crwdns15224:0crwdne15224:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:44
+msgid "Distance:"
+msgstr "crwdns18566:0crwdne18566:0"
 
-#: website/app-templates/smarty/forms/move.tpl:85
-msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
-msgstr "crwdns15226:0crwdne15226:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:45
+msgid "Caches:"
+msgstr "crwdns18568:0crwdne18568:0"
 
-#: website/app-templates/smarty/forms/move.tpl:86
-msgid "I've grabbed GeoKret"
-msgstr "crwdns15228:0crwdne15228:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:47
+msgid "Actual position:"
+msgstr "crwdns18570:0crwdne18570:0"
 
-#: website/app-templates/smarty/forms/move.tpl:92
-msgid "When you've met a GeoKret in a cache but haven't taken it with you"
-msgstr "crwdns15230:0crwdne15230:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:49
+msgid "Waypoint:"
+msgstr "crwdns18572:0crwdne18572:0"
 
-#: website/app-templates/smarty/forms/move.tpl:93
-msgid "I've met GeoKret"
-msgstr "crwdns15232:0crwdne15232:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:50
+msgid "Author:"
+msgstr "crwdns18574:0crwdne18574:0"
 
-#: website/app-templates/smarty/forms/move.tpl:99
-msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
-msgstr "crwdns15234:0crwdne15234:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:51
+msgid "Date:"
+msgstr "crwdns18576:0crwdne18576:0"
 
-#: website/app-templates/smarty/forms/move.tpl:100
-msgid "I've dipped a GeoKret"
-msgstr "crwdns15236:0crwdne15236:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:52
+msgid "Country:"
+msgstr "crwdns18578:0crwdne18578:0"
 
-#: website/app-templates/smarty/forms/move.tpl:106
-msgid "When you want to write a comment :)"
-msgstr "crwdns15238:0crwdne15238:0"
-
-#: website/app-templates/smarty/forms/move.tpl:130
-msgid "New location"
-msgstr "crwdns15240:0crwdne15240:0"
-
-#: website/app-templates/smarty/forms/move.tpl:140
-msgid "Waypoint"
-msgstr "crwdns15242:0crwdne15242:0"
-
-#: website/app-templates/smarty/forms/move.tpl:143
-msgid "eg. GC1AQ2N"
-msgstr "crwdns15940:0crwdne15940:0"
-
-#: website/app-templates/smarty/forms/move.tpl:145
-msgid "Lookup opencaching cache by name"
-msgstr "crwdns15244:0crwdne15244:0"
-
-#: website/app-templates/smarty/forms/move.tpl:150
-msgid "eg.: GC1AQ2N, OP069B, OC033A…"
-msgstr "crwdns15246:0crwdne15246:0"
-
-#: website/app-templates/smarty/forms/move.tpl:162
-msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
-msgstr "crwdns15248:0crwdne15248:0"
-
-#: website/app-templates/smarty/forms/move.tpl:176
-msgid "Coordinates"
-msgstr "crwdns15250:0crwdne15250:0"
-
-#: website/app-templates/smarty/forms/move.tpl:214
-msgid "Additional data"
-msgstr "crwdns15252:0crwdne15252:0"
-
-#: website/app-templates/smarty/forms/move.tpl:222
-msgid "Date"
-msgstr "crwdns14038:0crwdne14038:0"
-
-#: website/app-templates/smarty/forms/move.tpl:236
-#: website/app-templates/smarty/forms/registration.tpl:4
-#: website/app-templates/smarty/forms/registration.tpl:6
-#: website/app-templates/smarty/forms/login.tpl:13
-#: website/app-templates/smarty/forms/login.tpl:15
-msgid "Username"
-msgstr "crwdns14976:0crwdne14976:0"
-
-#: website/app-templates/smarty/forms/move.tpl:238
-msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
-msgstr "crwdns15254:0crwdne15254:0"
-
-#: website/app-templates/smarty/forms/move.tpl:248
-msgid "It is always nice to receive a little message ;)"
-msgstr "crwdns15256:0crwdne15256:0"
-
-#: website/app-templates/smarty/forms/move.tpl:271
-msgid "Post your log"
-msgstr "crwdns15258:0crwdne15258:0"
-
-#: website/app-templates/smarty/forms/geokret.tpl:4
-msgid "Edit a GeoKret"
-msgstr "crwdns15120:0crwdne15120:0"
-
-#: website/app-templates/smarty/forms/geokret.tpl:14
-#: website/app-templates/smarty/forms/geokret.tpl:16
-msgid "GeoKret name"
-msgstr "crwdns14176:0crwdne14176:0"
-
-#: website/app-templates/smarty/forms/geokret.tpl:21
-msgid "GeoKret type"
-msgstr "crwdns15122:0crwdne15122:0"
-
-#: website/app-templates/smarty/forms/geokret.tpl:34
-msgid "What is this GeoKret mission?"
-msgstr "crwdns16170:0crwdne16170:0"
-
-#: website/app-templates/smarty/forms/geokret.tpl:42
-msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
-msgstr "crwdns15942:0crwdne15942:0"
-
-#: website/app-templates/smarty/forms/geokret.tpl:43
-msgid "Set my home coordinates as a starting point."
-msgstr "crwdns15126:0crwdne15126:0"
-
-#: website/app-templates/smarty/forms/geokret.tpl:52
-msgid "Create"
-msgstr "crwdns15128:0crwdne15128:0"
-
-#: website/app-templates/smarty/forms/registration.tpl:19
-#: website/app-templates/smarty/forms/registration.tpl:21
-#: website/app-templates/smarty/forms/login.tpl:19
-#: website/app-templates/smarty/forms/login.tpl:21
-msgid "Password"
-msgstr "crwdns13858:0crwdne13858:0"
-
-#: website/app-templates/smarty/forms/registration.tpl:49
-msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
-msgstr "crwdns16434:0crwdne16434:0"
-
-#: website/app-templates/smarty/forms/registration.tpl:60
-msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr "crwdns16436:0crwdne16436:0"
-
-#: website/app-templates/smarty/forms/registration.tpl:77
-msgid "Register"
-msgstr "crwdns16438:0crwdne16438:0"
-
-#: website/app-templates/smarty/forms/login.tpl:6
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-msgid "Login"
-msgstr "crwdns14526:0crwdne14526:0"
-
-#: website/app-templates/smarty/forms/login.tpl:28
-msgid "Remember me"
-msgstr "crwdns14992:0crwdne14992:0"
-
-#: website/app-templates/smarty/forms/login.tpl:31
-msgid "We are using cookies only for storing login information and language preferences. Read more about our <a href=\"%1\">cookies policy</a>."
-msgstr "crwdns14994:0%1crwdne14994:0"
-
-#: website/app-templates/smarty/forms/login.tpl:39
-msgid "No account yet ? Register now!"
-msgstr "crwdns15944:0crwdne15944:0"
-
-#: website/app-templates/smarty/forms/login.tpl:42
-msgid "Forgot your password?"
-msgstr "crwdns14996:0crwdne14996:0"
-
-#: website/app-templates/smarty/js/geokret_move.tpl.js:174
-msgid "Dropped"
-msgstr "crwdns16240:0crwdne16240:0"
-
-#: website/app-templates/smarty/js/geokret_move.tpl.js:177
-msgid "Grabbed"
-msgstr "crwdns16242:0crwdne16242:0"
-
-#: website/app-templates/smarty/js/geokret_move.tpl.js:180
-msgid "Met"
-msgstr "crwdns16244:0crwdne16244:0"
-
-#: website/app-templates/smarty/js/geokret_move.tpl.js:183
-msgid "Dipped"
-msgstr "crwdns16246:0crwdne16246:0"
+#: website/app-templates/smarty/js/geokrety_map.tpl.js:53
+msgid "Elevation:"
+msgstr "crwdns18580:0crwdne18580:0"
 
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
