@@ -12,9 +12,9 @@ SELECT plan(2);
 INSERT INTO "gk_waypoints_gc" ("id", "waypoint", "lat", "lon") VALUES (1, 'GCABC', 40.10, 7.1);
 SELECT throws_ok($$INSERT INTO "gk_waypoints_gc" ("id", "waypoint", "lat", "lon") VALUES (2, 'GCABC', 40.1, 7.1)$$);
 
--- no coordinates duplicate
+-- coordinates may be duplicated, case for events or re-created cache at the same location
 INSERT INTO "gk_waypoints_gc" ("id", "waypoint", "lat", "lon") VALUES (3, 'GCABCDEF', 40.3, 7.3);
-SELECT throws_ok($$INSERT INTO "gk_waypoints_gc" ("id", "waypoint", "lat", "lon") VALUES (4, 'GCABCFGH', 40.3, 7.3)$$);
+SELECT lives_ok($$INSERT INTO "gk_waypoints_gc" ("id", "waypoint", "lat", "lon") VALUES (4, 'GCABCFGH', 40.3, 7.3)$$);
 
 
 -- Finish the tests and clean up.
