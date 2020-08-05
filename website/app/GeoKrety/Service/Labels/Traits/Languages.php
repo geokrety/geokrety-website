@@ -1,11 +1,9 @@
 <?php
 
-
 namespace GeoKrety\Service\Labels\Traits;
 
-
 trait Languages {
-    var $languages = [];
+    public $languages = [];
 
     public function setLanguages(?array $languages) {
         if (empty($languages)) {

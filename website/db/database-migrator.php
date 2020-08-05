@@ -250,7 +250,6 @@ $pgsql->query("SELECT SETVAL('geokrety.users_id_seq', COALESCE(MAX(id), 1) ) FRO
 $pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_watched;");
 $pgsql->query("SELECT SETVAL('geokrety.waypoints_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints;"); // TODO
 
-
 $pgsql->query('SELECT waypoints_gc_fill_from_moves();');
 
 $pgsql->query('UPDATE gk_pictures SET bucket = gkp2.bucket, "key" = gkp2.key FROM gk_pictures2 AS gkp2 WHERE gk_pictures.filename = gkp2.filename;');
@@ -276,7 +275,6 @@ $pgsql->query('CREATE INDEX idx_21044_waypoint ON geokrety.gk_moves USING btree 
 $pgsql->query('CREATE INDEX idx_moves_geokret ON geokrety.gk_moves USING btree (geokret);');
 $pgsql->query('CREATE INDEX idx_moves_id ON geokrety.gk_moves USING btree (id);');
 $pgsql->query('CREATE INDEX idx_moves_type_id ON geokrety.gk_moves USING btree (move_type, id);');
-
 
 class BaseMigrator {
     private $debug = false;
@@ -454,7 +452,6 @@ class UserMigrator extends BaseMigrator {
         $values[13] = $values[13] ? trim($values[13]) : null;  // home_country
         $values[18] = $values[18] ?: SecIdGenerator::generate();  // secid
     }
-
 
     // TODO users avatar
     // TODO revalidate home_country

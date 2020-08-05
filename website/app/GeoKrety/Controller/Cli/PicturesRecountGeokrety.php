@@ -7,7 +7,6 @@ use GeoKrety\Model\Picture;
 use GeoKrety\PictureType;
 
 class PicturesRecountGeokrety extends BaseCleaner {
-
     private $pictureModel;
     private $status;
     private $currentGkid;

@@ -23,12 +23,12 @@ class Pdf extends TCPDF {
         $this->SetKeywords('GeoKrety, PDF, label');
 
         // set default header data
-        $this->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'GeoKrety label', "by Kumy\nhttps://geokrety.org", array(0,64,255), array(0,64,128));
-        $this->setFooterData(array(0,64,0), array(0,64,128));
+        $this->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'GeoKrety label', "by Kumy\nhttps://geokrety.org", [0, 64, 255], [0, 64, 128]);
+        $this->setFooterData([0, 64, 0], [0, 64, 128]);
 
         // set header and footer fonts
-        $this->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-        $this->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $this->setHeaderFont([PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN]);
+        $this->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
 
         // set default monospaced font
         $this->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -77,7 +77,6 @@ class Pdf extends TCPDF {
 //        $image_file = 'https://cdn.geokrety.org/images/banners/logo-puste.png';
 //        $this->Image($image_file, $this->original_lMargin, 5, 45, '', 'PNG', '', 'M', false, 300, '', false, false, 0, false, false, false);
 
-
 //        $this->SetLineStyle(array('width' => 0.85 / $this->k, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => '#f00'));
 //        $this->SetY(15);
 //        $this->SetX($this->original_lMargin);
@@ -104,13 +103,13 @@ class Pdf extends TCPDF {
         $image = new Image();
         $image->setLanguages($this->languages);
 
-        for ($i=0; $i < sizeof($this->geokrety); $i++) {
+        for ($i = 0; $i < sizeof($this->geokrety); ++$i) {
             $labelPNGData = $image->png($this->geokrety[$i]);
 
             // px to mm
             $imageSize = getimagesizefromstring($labelPNGData);
-            $imgW = $imageSize[0]*25.4/self::LABEL_OUTPUT_DPI;
-            $imgH = $imageSize[1]*25.4/self::LABEL_OUTPUT_DPI;
+            $imgW = $imageSize[0] * 25.4 / self::LABEL_OUTPUT_DPI;
+            $imgH = $imageSize[1] * 25.4 / self::LABEL_OUTPUT_DPI;
 
             if ($posX + $imgW > $this->getPageWidth() - $startLeft) {
                 $posX = $startLeft;
@@ -123,7 +122,7 @@ class Pdf extends TCPDF {
             }
 
 //            $this->ImageSVG($file='@'.$labelSVGData, $x=PDF_MARGIN_LEFT, $y=$pos, $w=$imgW, $h=$imgH, $link='', $align='', $palign='', $border=1, $fitonpage=false);
-            $this->Image('@'.$labelPNGData, $x=$posX, $y=$posY, $w=$imgW, $h=$imgH, 'PNG', $link='', '', true, self::LABEL_OUTPUT_DPI, '', false, false, 1, false, false, false);
+            $this->Image('@'.$labelPNGData, $x = $posX, $y = $posY, $w = $imgW, $h = $imgH, 'PNG', $link = '', '', true, self::LABEL_OUTPUT_DPI, '', false, false, 1, false, false, false);
             $posX += $imgW;
         }
 

@@ -2,13 +2,11 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\Picture;
 use GeoKrety\PictureType;
 
 class PicturesRecountMoves extends BaseCleaner {
-
     private $pictureModel;
     private $status;
     private $currentMoveId;

@@ -21,6 +21,7 @@ abstract class Base extends \SMTP {
 
             // load recipient user language
             LanguageService::changeLanguageTo($userOrEmail->preferred_language);
+
             return;
         }
         $this->setToEmail($userOrEmail);

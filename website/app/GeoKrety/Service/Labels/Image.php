@@ -1,8 +1,6 @@
 <?php
 
-
 namespace GeoKrety\Service\Labels;
-
 
 use CURLFile;
 use GeoKrety\Model\Geokret;
@@ -18,9 +16,9 @@ class Image {
     }
 
     /**
-     * @param Geokret $geokret
      * @param string $type The output file type supported by geokrety-svg-to-png
      *                     Currently supported are svg or png
+     *
      * @return string The generated image
      */
     private function fetch(Geokret $geokret, $type = 'svg') {
@@ -36,10 +34,10 @@ class Image {
         $template = sprintf('labels/%s.tpl.svg', is_null($geokret->label_template) ? 'default' : $geokret->label_template->template);
         $labelSVGData = Smarty::fetch($template);
 
-        $stream = 'data://image/svg+xml;base64,' . base64_encode($labelSVGData);
-        $url = 'http://svg-to-png:8080/?' . $type;
+        $stream = 'data://image/svg+xml;base64,'.base64_encode($labelSVGData);
+        $url = 'http://svg-to-png:8080/?'.$type;
 
-        $postVars = array(
+        $postVars = [
             'file' => new CURLFile($stream, 'image/svg+xml', 'label.svg'),
             'qrcode' => sprintf(
                 '%s%s?tracking_code=%s',
@@ -47,13 +45,14 @@ class Image {
                 \Base::instance()->alias('move_create'),
                 $geokret->tracking_code,
             ),
-        );
+        ];
 
-        $options = array(
+        $options = [
             'method' => 'POST',
             'content' => $postVars,
-        );
+        ];
         $result = Web::instance()->request($url, $options);
+
         return $result['body'];
     }
 

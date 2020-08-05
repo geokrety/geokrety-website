@@ -2,16 +2,11 @@
 
 namespace GeoKrety\Controller;
 
-use CURLFile;
 use GeoKrety\Model\Geokret;
-use GeoKrety\Service\Labels\Image;
 use GeoKrety\Service\Labels\Pdf;
 use GeoKrety\Service\Smarty;
-use GeoKrety\Traits\GeokretLoader;
-use Web;
 
 class GeokretyLabels extends Base {
-
 //    public function get() {
 //        // Todo check if tracking code is known
 //        Smarty::render('pages/geokret_label.tpl');
@@ -23,7 +18,7 @@ class GeokretyLabels extends Base {
 
     public function pdf() {
         $gklist = ['GKD99B', 'GKB65C', 'GK10000', 'GK10001', 'GK10002', 'GK10003', '13256', 66184];
-        for ($i = 66185; $i < 66207; $i++) {
+        for ($i = 66185; $i < 66207; ++$i) {
             $gklist[] = $i;
         }
         $gklist = array_map(['\GeoKrety\Model\Geokret', 'gkid2id'], $gklist);

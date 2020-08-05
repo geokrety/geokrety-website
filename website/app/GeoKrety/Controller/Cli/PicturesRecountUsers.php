@@ -2,12 +2,11 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use GeoKrety\Model\User;
 use GeoKrety\Model\Picture;
+use GeoKrety\Model\User;
 use GeoKrety\PictureType;
 
 class PicturesRecountUsers extends BaseCleaner {
-
     private $pictureModel;
     private $status;
     private $currentUserId;

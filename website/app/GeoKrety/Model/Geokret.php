@@ -162,8 +162,7 @@ class Geokret extends Base {
     }
 
     /**
-     * Check if the current logged in user is the GeoKret owner
-     * @return bool
+     * Check if the current logged in user is the GeoKret owner.
      */
     public function isOwner(): bool {
         $f3 = \Base::instance();

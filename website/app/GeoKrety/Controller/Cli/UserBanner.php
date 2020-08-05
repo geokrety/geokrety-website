@@ -5,7 +5,6 @@ namespace GeoKrety\Controller\Cli;
 use GeoKrety\Model\User;
 
 class UserBanner extends BaseCleaner {
-
     protected function getModel(): \GeoKrety\Model\Base {
         return new User();
     }
