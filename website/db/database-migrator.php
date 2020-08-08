@@ -447,7 +447,7 @@ class UserMigrator extends BaseMigrator {
         $values[1] = html_entity_decode($this->purifier->purify($values[1]));  // username
 
         $values[2] = $values[2] ?: null;  // password
-        $values[3] = filter_var($values[3], FILTER_VALIDATE_EMAIL) ? $values[3] : null;  // email
+        $values[3] = filter_var($values[3], FILTER_VALIDATE_EMAIL) ? strtolower($values[3]) : null;  // email
         $values[9] = LanguageService::isLanguageSupported($values[9]) ? $values[9] : null;  // preferred_language
         $values[13] = $values[13] ? trim($values[13]) : null;  // home_country
         $values[18] = $values[18] ?: SecIdGenerator::generate();  // secid

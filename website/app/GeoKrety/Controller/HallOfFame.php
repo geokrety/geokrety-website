@@ -12,7 +12,7 @@ class HallOfFame extends Base {
         $contributors = [];
         foreach (self::CONTRIBUTORS_IDS as $username) {
             $user = new User();
-            $user->load(['username = ?', $username]);
+            $user->load(['lower(username) = lower(?)', $username]);
             $contributors[$username] = $user->valid() ? $user : null;
         }
         Smarty::assign('contributors', $contributors);

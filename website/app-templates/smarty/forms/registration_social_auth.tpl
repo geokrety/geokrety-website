@@ -1,5 +1,11 @@
 <form class="form-horizontal" action="" method="post" data-parsley-validate data-parsley-ui-enabled=true>
 
+{*    <div class="form-group">*}
+{*        <div class="col-sm-offset-2 col-sm-10">*}
+{*            {t escape=no provider=$social_auth_data->provider login={'login'|alias}}If you already own an account on Geokrety.org, please <a href="%2">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed.{/t}*}
+{*        </div>*}
+{*    </div>*}
+
     <div class="form-group">
         <label for="usernameInput" class="col-sm-2 control-label">{t}Username{/t}</label>
         <div class="col-sm-8">
@@ -7,37 +13,12 @@
         </div>
     </div>
 
+    {if !empty($user->email)}
     <div class="form-group">
         <label for="emailInput" class="col-sm-2 control-label">{t}Email address{/t}</label>
         <div class="col-sm-8">
             <input type="email" class="form-control" id="emailInput" name="email" placeholder="{t}Email address{/t}" value="{$user->email}" aria-describedby="emailHelpBlock" required>
             <span id="emailHelpBlock" class="help-block">{t}The main purpose of collecting email is to permit password recovery.{/t}</span>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="passwordInput" class="col-sm-2 control-label">{t}Password{/t}</label>
-        <div class="col-sm-8">
-            <input type="password" class="form-control" id="passwordInput" name="password" placeholder="{t}Password{/t}" minlength="{GK_SITE_USER_PASSWORD_MIN_LENGTH}" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="passwordConfirmInput" class="col-sm-2 control-label">{t}Confirm password{/t}</label>
-        <div class="col-sm-8">
-            <input type="password" class="form-control" id="passwordConfirmInput" name="password_confirm" placeholder="{t}Confirm password{/t}" data-parsley-equalto="#passwordInput" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="preferredLanguageInput" class="col-sm-2 control-label">{t}Language{/t}</label>
-        <div class="col-sm-8">
-            <select class="form-control" id="preferredLanguageInput" name="preferred_language" aria-describedby="preferredLanguageHelpBlock" required>
-                {foreach $languages as $code => $lang}
-                <option value="{$code}" {if $user->preferred_language === $code or \Multilang::instance()->current === $code} selected{/if}>{$lang}</option>
-                {/foreach}
-            </select>
-            <span id="preferredLanguageHelpBlock" class="help-block">{t}This will be the default language when you log in and the main language in the emails you may receive.{/t}</span>
         </div>
     </div>
 
@@ -51,6 +32,7 @@
             </div>
         </div>
     </div>
+    {/if}
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

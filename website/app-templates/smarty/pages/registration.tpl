@@ -8,10 +8,18 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        {t}Create an account{/t}
+        {if isset($social_auth) && $social_auth}
+            {t provider=$social_auth_data->provider}Create an account using %1{/t}
+        {else}
+            {t}Create an account{/t}
+        {/if}
     </div>
     <div class="panel-body">
-{include file='forms/registration.tpl'}
+        {if isset($social_auth) && $social_auth}
+            {include file='forms/registration_social_auth.tpl'}
+        {else}
+            {include file='forms/registration.tpl'}
+        {/if}
     </div>
 </div>
 {/block}
