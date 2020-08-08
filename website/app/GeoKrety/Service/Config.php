@@ -7,6 +7,7 @@ class Config extends \Prefab {
         // SITE CONFIG
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '1,26422,35313'));
+        define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
         define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
         define('GK_SITE_TRACKING_CODE_LENGTH', getenv('GK_SITE_TRACKING_CODE_LENGTH') ?: 6);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH') ?: 42);
@@ -132,6 +133,13 @@ class Config extends \Prefab {
         define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', getenv('GK_GOOGLE_RECAPTCHA_SECRET_KEY') ?: false);
         define('GK_GOOGLE_RECAPTCHA_JS_URL', getenv('GK_GOOGLE_RECAPTCHA_JS_URL') ?: 'https://www.google.com/recaptcha/api.js');
 
+        // OpAuth
+        define('GK_OPAUTH_SECURITY_SALT', getenv('GK_OPAUTH_SECURITY_SALT') ?: false);
+        define('GK_OPAUTH_GOOGLE_CLIENT_ID', getenv('GK_OPAUTH_GOOGLE_CLIENT_ID') ?: false);
+        define('GK_OPAUTH_GOOGLE_CLIENT_SECRET', getenv('GK_OPAUTH_GOOGLE_CLIENT_SECRET') ?: false);
+        define('GK_OPAUTH_FACEBOOK_CLIENT_ID', getenv('GK_OPAUTH_FACEBOOK_CLIENT_ID') ?: false);
+        define('GK_OPAUTH_FACEBOOK_CLIENT_SECRET', getenv('GK_OPAUTH_FACEBOOK_CLIENT_SECRET') ?: false);
+
         // go2geo url
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
         define('GK_SERVICE_GC_SEARCH_NEAREST_URL', getenv('GK_SERVICE_GC_SEARCH_NEAREST_URL') ?: 'https://www.geocaching.com/seek/nearest.aspx?origin_lat=%f&origin_long=%f&dist=1');
@@ -171,6 +179,7 @@ class Config extends \Prefab {
         define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: 600);
         define('GK_SITE_CACHE_TTL_LABELS_LIST', getenv('GK_SITE_CACHE_TTL_LABELS_LIST') ?: 600);
         define('GK_SITE_CACHE_TTL_LABELS_LOOKUP', getenv('GK_SITE_CACHE_TTL_LABELS_LOOKUP') ?: 600);
+        define('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS', getenv('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS') ?: 600);
 
         // API LIMITS
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);

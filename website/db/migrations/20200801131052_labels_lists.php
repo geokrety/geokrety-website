@@ -8,7 +8,8 @@ class LabelsLists extends AbstractMigration {
         $table_labels->addColumn('template', 'string', ['limit' => 128])
             ->addColumn('title', 'string', ['limit' => 512])
             ->addColumn('author', 'string', ['limit' => 128])
-            ->addTimestampsWithTimezone('created_on_datetime', 'updated_on_datetime')
+            ->addColumn('created_on_datetime', 'timestamp', [ 'default' => 'CURRENT_TIMESTAMP', 'update' => '', 'timezone' => true])
+            ->addColumn('updated_on_datetime', 'timestamp', ['null' => true, 'default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
             ->addIndex(['title'])
             ->addIndex(['template'])
             ->create();

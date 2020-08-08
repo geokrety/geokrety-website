@@ -33,9 +33,21 @@
 {else}
 <li>
     <p class="navbar-btn">
-        <a id="navbar-profile-login" href="{login_link}" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal" data-type="form-login">
-            {fa icon="sign-in"} {t}Sign in{/t}
-        </a>
+        <div class="btn-group" role="group">
+            {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
+            <a id="navbar-facebookauth" href="/auth/facebook" class="btn btn-primary">
+                {fa icon="facebook"}</span>
+            </a>
+            {/if}
+            {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
+            <a id="navbar-googleauth" href="/auth/google" class="btn btn-danger">
+                {fa icon="google"}</span>
+            </a>
+            {/if}
+            <a id="navbar-profile-login" href="{login_link}" class="btn btn-info" data-toggle="modal" data-target="#modal" data-type="form-login">
+                {fa icon="sign-in"} {t}Sign in{/t}
+            </a>
+        </div>
     </p>
 </li>
 <li><a id="navbar-profile-register" href="{'registration'|alias}">{fa icon="user-plus"} {t}Create account{/t}</a></li>

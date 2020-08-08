@@ -42,6 +42,10 @@ abstract class Base {
         }
     }
 
+    public function isLoggedIn(): bool {
+        return !is_null($this->current_user);
+    }
+
 //    public function afterRoute($f3) {
 //        \Flash::instance()->addMessage('<pre>'.$f3->get('DB')->log().'</pre>', 'warning');
 //    }

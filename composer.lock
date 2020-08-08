@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f557f122b509ef1382c2a742ac0357bf",
+    "content-hash": "f0537aaf52e6ac1dc27e818ca9a1eb68",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1299,16 +1299,16 @@
         },
         {
             "name": "ikkez/f3-cortex",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ikkez/f3-cortex.git",
-                "reference": "b21fdf78c61a145adb027458f89f1dc60c50992c"
+                "reference": "eb60c951ee7170fd3256e69478fb864eae91e86f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ikkez/f3-cortex/zipball/b21fdf78c61a145adb027458f89f1dc60c50992c",
-                "reference": "b21fdf78c61a145adb027458f89f1dc60c50992c",
+                "url": "https://api.github.com/repos/ikkez/f3-cortex/zipball/eb60c951ee7170fd3256e69478fb864eae91e86f",
+                "reference": "eb60c951ee7170fd3256e69478fb864eae91e86f",
                 "shasum": ""
             },
             "require": {
@@ -1333,7 +1333,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2019-02-03T17:17:11+00:00"
+            "time": "2020-07-21T13:13:10+00:00"
         },
         {
             "name": "ikkez/f3-events",
@@ -1459,6 +1459,42 @@
                 "session"
             ],
             "time": "2017-12-06T17:50:51+00:00"
+        },
+        {
+            "name": "ikkez/f3-opauth",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-opauth.git",
+                "reference": "2f76ad82507202353de804a6885db8e58ccc6106"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-opauth/zipball/2f76ad82507202353de804a6885db8e58ccc6106",
+                "reference": "2f76ad82507202353de804a6885db8e58ccc6106",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/opauth/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Opauth Plugin for PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-opauth",
+            "keywords": [
+                "Authentication",
+                "F3",
+                "OPAuth",
+                "auth",
+                "fatfree",
+                "oauth"
+            ],
+            "time": "2019-05-02T07:00:55+00:00"
         },
         {
             "name": "ikkez/f3-pagination",
@@ -1874,6 +1910,147 @@
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "time": "2019-07-17T15:49:50+00:00"
+        },
+        {
+            "name": "opauth/facebook",
+            "version": "0.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opauth/facebook.git",
+                "reference": "62d12eb277a35660c5ab1b6884a93033803d6b91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opauth/facebook/zipball/62d12eb277a35660c5ab1b6884a93033803d6b91",
+                "reference": "62d12eb277a35660c5ab1b6884a93033803d6b91",
+                "shasum": ""
+            },
+            "require": {
+                "opauth/opauth": ">=0.2.0",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "U-Zyn Chua",
+                    "email": "chua@uzyn.com",
+                    "homepage": "http://uzyn.com"
+                }
+            ],
+            "description": "Facebook strategy for Opauth",
+            "homepage": "http://opauth.org",
+            "keywords": [
+                "Authentication",
+                "auth",
+                "facebook"
+            ],
+            "time": "2020-03-25T06:55:34+00:00"
+        },
+        {
+            "name": "opauth/google",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opauth/google.git",
+                "reference": "35df77684c14acb346a8c3753ae3809852d1a47e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opauth/google/zipball/35df77684c14acb346a8c3753ae3809852d1a47e",
+                "reference": "35df77684c14acb346a8c3753ae3809852d1a47e",
+                "shasum": ""
+            },
+            "require": {
+                "opauth/opauth": ">=0.2.0",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "U-Zyn Chua",
+                    "email": "chua@uzyn.com",
+                    "homepage": "http://uzyn.com"
+                }
+            ],
+            "description": "Google strategy for Opauth",
+            "homepage": "http://opauth.org",
+            "keywords": [
+                "Authentication",
+                "auth",
+                "google"
+            ],
+            "time": "2012-10-18T14:39:52+00:00"
+        },
+        {
+            "name": "opauth/opauth",
+            "version": "0.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opauth/opauth.git",
+                "reference": "3f979012d0bdf2d447bb02b97f7f7d9f482c77e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opauth/opauth/zipball/3f979012d0bdf2d447bb02b97f7f7d9f482c77e8",
+                "reference": "3f979012d0bdf2d447bb02b97f7f7d9f482c77e8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "suggest": {
+                "opauth/facebook": "Allows Facebook authentication",
+                "opauth/google": "Allows Google authentication",
+                "opauth/twitter": "Allows Twitter authentication"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/Opauth/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "U-Zyn Chua",
+                    "email": "chua@uzyn.com",
+                    "homepage": "http://uzyn.com"
+                }
+            ],
+            "description": "Multi-provider authentication framework for PHP",
+            "homepage": "http://opauth.org",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "auth",
+                "facebook",
+                "google",
+                "oauth",
+                "omniauth",
+                "twitter"
+            ],
+            "time": "2018-02-25T03:18:21+00:00"
         },
         {
             "name": "paragonie/random_compat",

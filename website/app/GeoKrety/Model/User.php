@@ -55,6 +55,7 @@ class User extends Base implements JsonSerializable {
         'password' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'required|ciphered_password',
+            'validate_level' => 2,
             'nullable' => true,
         ],
         '_email' => [
@@ -95,6 +96,7 @@ class User extends Base implements JsonSerializable {
         'preferred_language' => [
             'type' => Schema::DT_VARCHAR128,
             'validate' => 'required|language_supported',
+            'validate_level' => 1,
             'default' => 'en',
             'nullable' => true,
         ],
@@ -211,6 +213,9 @@ class User extends Base implements JsonSerializable {
         'activation' => [
             'has-one' => ['\GeoKrety\Model\AccountActivationToken', 'user'],
         ],
+        'social_auth' => [
+            'has-many' => ['\GeoKrety\Model\UserSocialAuth', 'user'],
+        ],
     ];
 
     public function set_password($value): string {
@@ -264,6 +269,10 @@ class User extends Base implements JsonSerializable {
     }
 
     protected function generateAccountActivation(): void {
+        if (empty($this->email)) {
+            // skip sending mail
+            return;
+        }
         $token = new AccountActivationToken();
         $token->user = $this;
         if ($token->validate()) {
@@ -276,6 +285,10 @@ class User extends Base implements JsonSerializable {
     }
 
     public function get_email(): ?string {
+        if (!is_null($this->_email)) {
+            return $this->_email;
+        }
+
         $f3 = \Base::instance();
 
         $sql = <<<EOT
@@ -338,12 +351,21 @@ EOT;
             'email' => [
                 'filter' => 'trim',
                 'validate' => 'not_empty|valid_email|email_host',
+                'validate_level' => 2,
             ],
         ];
         $data = [
             'email' => $this->_email ?: $this->email,
         ];
-        $validation_1 = \Validation::instance()->validate($rules, $data);
+
+        $f3 = \Base::instance();
+        if ($f3->get('ALIAS') === 'registration') {
+            // Validate from normal registration (level 2)
+            // Else validate from social auth form (level 0 - default)
+            $level = 2;
+        }
+
+        $validation_1 = \Validation::instance()->validate($rules, $data, null, $level);
         $validation_2 = \Validation::instance()->validateCortexMapper($this, $level, $op, true);
 
         return $validation_1 && $validation_2;

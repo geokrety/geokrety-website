@@ -4,6 +4,7 @@ require '../init-f3.php';
 $f3->config('../app/cron.ini');
 $f3->config('../app/assets.ini');
 
+ini_set('session.gc_maxlifetime', GK_SITE_SESSION_REMEMBER);
 new \GeoKrety\Session($f3->get('DB'));
 
 // Local Mail
