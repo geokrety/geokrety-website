@@ -69,7 +69,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - 5432:5432
+      - 5433:5432
     environment:
       TZ: GMT
       POSTGRES_DB: "geokrety"
