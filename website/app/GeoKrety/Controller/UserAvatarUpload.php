@@ -13,7 +13,7 @@ class UserAvatarUpload extends AbstractPictureUpload {
     }
 
     public static function generateKey($id): string {
-        return uniqid(sprintf('US%06d_', $id), true);
+        return uniqid(sprintf('US%06d_', $id));
     }
 
     public static function getBucket(): string {

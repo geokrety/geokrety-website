@@ -24,7 +24,7 @@
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label>
-                    <input id="remember" name="remember" type="checkbox"> {t}Remember me{/t}
+                    <input id="rememberMeCheckbox" name="remember" type="checkbox"> {t}Remember me{/t}
                 </label>
                 <p class="help-block">
                     {t escape=no url={'help'|alias:null:null:'#cookies'}}We are using cookies only to keep your session active. Read more about our <a href="%1" target="_blank">cookies policy</a>.{/t}
@@ -34,7 +34,7 @@
     </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">{t}Sign in{/t}</button>
+                <button type="submit" id="signInButton" class="btn btn-primary">{t}Sign in{/t}</button>
                 <a href="{'registration'|alias}">{t}No account yet ? Register now!{/t}</a>
                 <div class="pull-right">
                     <p>

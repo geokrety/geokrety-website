@@ -39,8 +39,7 @@ class PasswordRecovery extends Base {
 
         // Check database for provided email
         $user = $this->user;
-        $user->email = $f3->get('POST.email');
-        $user->load(['email = ?', $user->email]);
+        $user->load(['_email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.email')]);
         if ($user->dry()) {
             \Flash::instance()->addMessage(_('Sorry no account using that email address.'), 'danger');
             $this->get();

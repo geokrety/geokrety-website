@@ -1,68 +1,134 @@
-version: '3.3'
+---
+version: '2.4'
+
+x-variables: &variables
+  environment:
+    TIMEZONE: "GMT"
+    GK_SITE_BASE_SERVER_URL: "http://localhost:3001"
+    GK_CDN_SERVER_URL: "http://localhost:3002"
+
+    GK_MINIO_SERVER_URL_EXTERNAL: "http://localhost:3003"
+    MINIO_ACCESS_KEY: "access_key"
+    MINIO_SECRET_KEY: "secret_key"
+    GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY: "pp_access_key"
+    GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY: "pp_secret_key"
+
+    GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED: "token1"
+    GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_DOWNLOADER: "token2"
+    GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_UPLOADER: "token3"
+    GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST: "token4"
+
+    GK_DEBUG: "True"
+    GK_DEVEL: "True"
+    GK_ENVIRONMENT: "dev"
+    GK_INSTANCE_NAME: "new-theme"
+    GK_DEPLOY_DATE: "2020-08-07T17:23:35.869127Z"
+
+    GK_DB_DRIVER: "pgsql"
+    GK_DB_DSN: "pgsql:host=postgres;dbname=geokrety"
+    GK_DB_USER: "geokrety"
+    GK_DB_PASSWORD: "geokrety"
+    GK_DB_GPG_PASSWORD: "geokrety"
+    GK_DB_SECRET_KEY: "secretkey"
+
+    GK_SITE_EMAIL: "geokrety-dev@kumy.net"
+    GK_SITE_EMAIL_SUPPORT: "geokrety-qa+support@geokrety.org"
+    GK_SITE_EMAIL_REGISTRATION: "geokrety-qa+registration@geokrety.org"
+    GK_SITE_EMAIL_MESSAGE_CENTER: "geokrety-qa+message-center@geokrety.org"
+
+    GK_PASSWORD_HASH_ROTATION: "11"
+    GK_PASSWORD_HASH: "something"
+    GK_PASSWORD_SEED: "seed"
+
+    GK_SESSION_IN_REDIS: "true"
+
 services:
-    web:
-        build: .
-        image: geokrety:local
-        ports:
-            - "8000:80"
-        volumes:
-            - ${PWD}/:/var/www/geokrety/:rw
-        depends_on:
-            - db
-            - redis
-            - minio
-        environment:
-            GK_DB_USER: geokrety
-            GK_DB_PASSWORD: geokrety
-            GK_DB_DSN: mysql:host=db;port=3306;dbname=geokrety-db;charset=utf8mb4
-            GK_CDN_SERVER_URL: https://new-theme.cdn.geokrety.org
-            GK_SITE_BASE_SERVER_URL: http://localhost:8000
-            GK_MINIO_SERVER_URL_EXTERNAL: http://localhost:9000
-            GK_MINIO_ACCESS_KEY: geokrety
-            GK_MINIO_SECRET_KEY: geokrety
 
-    ## database administration service
-    adminer:
-        image: adminer:4.6.2
-        container_name: geokrety_adminer
-        ports:
-            - 8880:8080
-        restart: unless-stopped
-        depends_on:
-            - db
+  website:
+    image: dev/geokrety/website-legacy:new-theme
+    build:
+      context: ./
+      args:
+        BASE_TAG: php74
+    <<: *variables
+    ports:
+      - 3001:80
+    dns:
+      - 8.8.8.8
+    depends_on:
+      - postgres
+      - cdn
+      - minio
+      - redis
+      - svg-to-png
+      - pictures-processor-downloader
+      - pictures-processor-uploader
+    healthcheck:
+      disable: true
 
-    db:
-        image: mysql:5.7
-        volumes:
-            - ./db_data:/var/lib/mysql
-            # Initial DB schema structure
-            - ${PWD}/docker/mariadb:/tmp/database
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: ge0krety
-            MYSQL_DATABASE: geokrety-db
-            MYSQL_USER: geokrety
-            MYSQL_PASSWORD: geokrety
-        ports:
-            - "13306:3306"
-        command: mysqld # --init-file="/tmp/database/00_database-create-geokrety-db.sql"
+  cdn:
+    image: geokrety/cdn:new-theme
+    build: https://github.com/geokrety/GeoKrety-Static.git
+    ports:
+      - 3002:80
 
-    redis:
-        image: redis:5.0.4
-        container_name: geokrety_redis
-        ports:
-            - "6379:6379"
+  postgres:
+    image: geokrety/postgres:new-theme
+    build: https://github.com/geokrety/geokrety-postgres.git
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/ramfs/:/var/lib/postgresql/:rw
+    ports:
+      - 5433:5432
+    environment:
+      TZ: GMT
+      POSTGRES_DB: "geokrety"
+      POSTGRES_USER: "geokrety"
+      POSTGRES_PASSWORD: "geokrety"
+      POSTGIS_ENABLE_OUTDB_RASTERS: 1
+      POSTGIS_GDAL_ENABLED_DRIVERS: ENABLE_ALL
 
-    minio:
-        image: minio/minio
-        container_name: geokrety_minio
-        ports:
-            - "9000:9000"
-        command:
-            - "server"
-            - "/data"
-        volumes:
-            - ./minio_data:/data/
-        environment:
-            MINIO_ACCESS_KEY: geokrety
-            MINIO_SECRET_KEY: geokrety
+  redis:
+    image: redis:5
+
+  minio:
+    image: minio/minio
+    command:
+      - "server"
+      - "/data"
+    environment:
+      MINIO_ACCESS_KEY: access_key
+      MINIO_SECRET_KEY: secret_key
+    ports:
+      - 3003:9000
+    depends_on:
+      - pictures-processor-uploader
+
+  pictures-processor-downloader:
+    image: geokrety/pictures-processor-downloader:new-theme
+    build:
+      context: https://github.com/geokrety/geokrety-pictures-processor.git
+      dockerfile: Dockerfile.downloader
+      args:
+        BASE_TAG: php74
+    environment:
+      GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY: pp_access_key
+      GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY: pp_secret_key
+      GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_DOWNLOADER: "token2"
+      GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST: "token4"
+
+  pictures-processor-uploader:
+    image: geokrety/pictures-processor-uploader:new-theme
+    build:
+      context: https://github.com/geokrety/geokrety-pictures-processor.git
+      dockerfile: Dockerfile.uploader
+      args:
+        BASE_TAG: php74
+    environment:
+      MINIO_ACCESS_KEY: access_key
+      MINIO_SECRET_KEY: secret_key
+      GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_UPLOADER: token3
+
+  svg-to-png:
+    image: geokrety/svg-to-png:new-theme
+    build: https://github.com/geokrety/geokrety-svg-to-png.git

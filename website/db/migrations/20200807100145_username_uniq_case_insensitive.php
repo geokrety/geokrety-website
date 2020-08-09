@@ -5,7 +5,7 @@ use Phinx\Migration\AbstractMigration;
 class UsernameUniqCaseInsensitive extends AbstractMigration {
     public function up() {
         $table = $this->table('gk_users');
-        $table->removeIndexByName('gk_users_username_uniq')
+        $table->removeIndexByName('gk_users_uniq_username')
             ->removeIndexByName('gk_users_username')
             ->update();
         $this->execute('CREATE UNIQUE INDEX gk_users_username_uniq ON gk_users (lower(username))');
@@ -64,7 +64,7 @@ $BODY$;');
     public function down() {
         $table = $this->table('gk_users');
         $table->removeIndexByName('gk_users_username_uniq')
-            ->addIndex(['username'], ['unique' => true, 'name' => 'gk_users_username_uniq'])
+            ->addIndex(['username'], ['unique' => true, 'name' => 'gk_users_uniq_username'])
             ->addIndex(['username'], ['unique' => true, 'name' => 'gk_users_username'])
             ->update();
         $this->execute('DROP TRIGGER before_30_username_trim_spaces ON geokrety.gk_users');

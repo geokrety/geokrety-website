@@ -15,6 +15,8 @@ function initializeMap() {
       // maxZoom: 12,
       attribution: osmAttrib
     });
+    osm.on('load', function () { setTimeout(function () { $("#mapid").attr({ 'data-map-loaded': true }); }) });
+    osm.on('loading', function () { $("#mapid").attr({ 'data-map-loaded': false }); });
 
     {if !isset($current_user) or is_null($current_user->home_latitude) or is_null($current_user->home_longitude)}
         let center = PARIS;

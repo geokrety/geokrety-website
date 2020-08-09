@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id="userMiniMapPanel">
   <div class="panel-body">
     <div class="map-home">
       <figure class="">
@@ -10,7 +10,7 @@
             <em>{t}No home coordinates have been defined.{/t}</em>
           </p>
           <br />
-          <a class="btn btn-warning btn-xs pull-right" href="{'user_observation_area'|alias}" title="{t}Update home coordinates and obervation area{/t}">
+          <a id="userHomePositionEditButtonMinimap" class="btn btn-warning btn-xs pull-right" href="{'user_observation_area'|alias}" title="{t}Update home coordinates and obervation area{/t}">
             {fa icon="pencil"} {t}Define your home coordinates{/t}
           </a>
         </div>
@@ -18,7 +18,7 @@
       </figure>
       <figcaption>
         <p class="text-center"><small>{t}GeoKrety near home{/t}</small></p>
-        <a class="btn btn-warning btn-xs pull-right" href="{'user_observation_area'|alias}" title="{t}Update home coordinates and obervation area{/t}">
+        <a id="userHomePositionEditButton" class="btn btn-warning btn-xs pull-right" href="{'user_observation_area'|alias}" title="{t}Update home coordinates and obervation area{/t}">
           {fa icon="pencil"}
         </a>
       </figcaption>

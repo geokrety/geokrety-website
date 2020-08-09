@@ -17,14 +17,14 @@ class GeokretClaim extends Base {
         $ownerCode->has('geokret', ['tracking_code = ?', $f3->get('POST.tc')]);
         $ownerCode->load(['token = ?', $f3->get('POST.oc')]);
 
-        if ($ownerCode->geokret->isOwner()) {
-            \Flash::instance()->addMessage(_('You are already the owner.'), 'danger');
+        if ($ownerCode->dry()) {
+            \Flash::instance()->addMessage(_('Sorry, the provided owner code and tracking code doesn\'t match.'), 'danger');
             $this->get();
             die();
         }
 
-        if ($ownerCode->dry()) {
-            \Flash::instance()->addMessage(_('Sorry, the provided owner code and tracking code doesn\'t match.'), 'danger');
+        if ($ownerCode->geokret->isOwner()) {
+            \Flash::instance()->addMessage(_('You are already the owner.'), 'danger');
             $this->get();
             die();
         }
@@ -57,6 +57,8 @@ class GeokretClaim extends Base {
         if ($ownerCode->validate() && $ownerCode->geokret->validate() && $move->validate()) {
             $ownerCode->save();
             $ownerCode->geokret->save();
+            // Reload OwnerCode so all linked objects are up to date
+            $ownerCode->load(['id = ?', $ownerCode->id]);
             $move->save();
 
             if ($f3->get('ERROR')) {

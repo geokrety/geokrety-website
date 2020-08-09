@@ -6,7 +6,7 @@
 
     <div class="panel-group" id="movePanelGroup" role="tablist" aria-multiselectable="true">
 
-        <div class="panel panel-default">
+        <div id="panelMoveGeoKret" class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingGeokret" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">
                 {t}Identify GeoKret{/t}
                 <div class="pull-right" id="geokretHeader"></div>
@@ -22,7 +22,7 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="tracking_code" id="nr" value="{if !is_null($move->geokret)}{$move->geokret->tracking_code}{/if}" minlength="{GK_SITE_TRACKING_CODE_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_LENGTH -1}" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
+                                        <input type="text" name="tracking_code" id="nr" value="{if !is_null($move->geokret)}{$move->geokret->tracking_code}{/if}" minlength="{GK_SITE_TRACKING_CODE_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_LENGTH -1}" data-parsley-debounce="500" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
                                         <span class="input-group-btn">
                                             {if $f3->get('SESSION.CURRENT_USER')}
                                             <button class="btn btn-default" type="button" id="nrInventorySelectButton" title="{t}Select GeoKrety from inventory{/t}" data-toggle="modal" data-target="#modal" data-type="select-from-inventory">{fa icon="briefcase"}</button>
@@ -30,7 +30,7 @@
                                             <button class="btn btn-default" type="button" id="nrSearchButton" title="{t}Verify tracking code{/t}">{fa icon="search"}</button>
                                         </span>
                                     </div>
-                                    <span id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{GK_CDN_IMAGES_URL}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">{t escape=no count={GK_SITE_TRACKING_CODE_LENGTH}}%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>{/t}</span>
+                                    <p id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{GK_CDN_IMAGES_URL}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">{t escape=no count={GK_SITE_TRACKING_CODE_LENGTH}}%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>{/t}</p>
                                 </div>
                             </div>
                         </div>
@@ -49,8 +49,8 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingLogtype" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">
+        <div id="panelMoveLogType" class="panel panel-default">
+            <div class="panel-heading collapsed" role="tab" id="headingLogtype" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">
                 {t}Log type{/t}
                 <div class="pull-right" id="logTypeHeader"></div>
                 <div class="clearfix"></div>
@@ -124,8 +124,8 @@
             </div>
         </div>
 
-        <div class="panel panel-default" id="panelLocation">
-            <div class="panel-heading" role="tab" id="headingLocation" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLocation" aria-expanded="true" aria-controls="collapseLocation">
+        <div id="panelLocation" class="panel panel-default">
+            <div class="panel-heading collapsed" role="tab" id="headingLocation" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLocation" aria-expanded="true" aria-controls="collapseLocation">
                 {t}New location{/t}
                 <div class="pull-right" id="locationHeader"></div>
                 <div class="clearfix"></div>
@@ -148,24 +148,24 @@
                                             <button class="btn btn-default" type="button" id="wptSearchButton">{fa icon="search"}</button>
                                         </span>
                                     </div>
-                                    <span id="helpBlockWaypoint" class="help-block">
+                                    <p id="helpBlockWaypoint" class="help-block">
                                         {t}eg.: GC1AQ2N, OP069B, OC033A…{/t}
                                         <a href="{'help'|alias:null:null:'#fullysupportedwaypoints'}" target="_blank">
                                             {fa icon="question-circle"}
                                         </a>
-                                    </span>
+                                    </p>
                                 </div>
                             </div>
                             <div class="form-group hidden" id="findbyCacheName">
                                 <label class="col-sm-2 control-label">Cache name</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="findbyCacheNameInput" id="findbyCacheNameInput" size="20" class="form-control" aria-describedby="helpBlockCacheName">
-                                    <span id="helpBlockCacheName" class="help-block">
+                                    <p id="helpBlockCacheName" class="help-block">
                                         {t escape=no}Enter cache name. <strong>Does not work for GC caches</strong>{/t}.
                                         <a href="{'help'|alias:null:null:'#fullysupportedwaypoints'}" target="_blank">
                                             {fa icon="question-circle"}
                                         </a>
-                                    </span>
+                                    </p>
                                 </div>
                             </div>
 
@@ -183,7 +183,7 @@
                                     <div class="form-group coordinates-togglable" id="coordinateField">
                                         <div class="col-sm-12">
                                             <div class="input-group">
-                                                <input type="text" id="latlon" name="coordinates" value="{$move->coordinates}" class="form-control" aria-describedby="helpBlockCoordinates" required data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" data-parsley-remote data-parsley-remote-validator="checkCoordinates" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled>
+                                                <input type="text" id="latlon" name="coordinates" value="{$move->coordinates}" class="form-control" aria-describedby="helpBlockCoordinates" required data-parsley-group="location" data-parsley-trigger="focusout" data-parsley-debounce="500" data-parsley-remote data-parsley-remote-validator="checkCoordinates" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled>
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-default" type="button" title="Validate coordinates" id="coordinatesSearchButton">{fa icon="search"}</button>
                                                     <!--button class="btn btn-default" type="button" title="Log at my home position" id="homeLocationButton">{fa icon="home"}</button-->
@@ -211,8 +211,8 @@
             </div>
         </div>
 
-        <div class="panel panel-default" id="additionalDataPanel">
-            <div class="panel-heading" role="tab" id="headingMessage" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">
+        <div id="panelMoveAdditionalData" class="panel panel-default" id="additionalDataPanel">
+            <div class="panel-heading collapsed" role="tab" id="headingMessage" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">
                 {t}Additional data{/t}
                 <div class="pull-right" id="additionalDataHeader"></div>
                 <div class="clearfix"></div>
@@ -247,9 +247,9 @@
                         <label class="col-sm-2 control-label">{t}Comment{/t}</label>
                         <div class="col-sm-10">
                             <textarea id="comment" name="comment" rows="12" maxlength="5120" class="form-control" aria-describedby="helpBlockComment" data-parsley-group="additionalData" data-parsley-trigger="input focusout">{$move->comment}</textarea>
-                            <span id="helpBlockComment" class="help-block">
+                            <p id="helpBlockComment" class="help-block">
                                 {t}It is always nice to receive a little message ;){/t}
-                            </span>
+                            </p>
                         </div>
                     </div>
 

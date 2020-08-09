@@ -96,10 +96,7 @@ class AccountActivationToken extends Base {
             self::TOKEN_UNUSED,
             GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
         ]);
-        if ($expiredTokens === false) {
-            return;
-        }
-        foreach ($expiredTokens as $token) {
+        foreach ($expiredTokens ?: [] as $token) {
             $token->used = self::TOKEN_EXPIRED;
             $token->save();
         }

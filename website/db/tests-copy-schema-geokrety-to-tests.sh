@@ -11,6 +11,8 @@ BEGIN;
 
 DROP SCHEMA geokrety CASCADE;
 \i $tmp_dir/geokrety-schema.sql
+CREATE EXTENSION quantile WITH SCHEMA geokrety;
+REFRESH MATERIALIZED VIEW "geokrety"."gk_geokrety_in_caches";
 
 END;
 EOF

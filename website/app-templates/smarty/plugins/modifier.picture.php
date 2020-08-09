@@ -19,7 +19,7 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
     }
 
     $template_string = <<<'EOT'
-<div class="gallery">
+<div class="gallery" data-gk-type="picture" data-picture-type="{$picture->type->getTypeId()}" data-id="{$picture->id}">
     <figure>
         <div id="{$picture->key}" class="parent">
             <div class="image-container">
@@ -46,9 +46,7 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
             {/if}
         </div>
         <figcaption>
-            <p class="text-center picture-caption" title="{$picture->caption}">
-                {$picture->caption}&nbsp;
-            </p>
+            <p class="text-center picture-caption" title="{$picture->caption}">{$picture->caption}</p>
             {if $showItemLink}
             <p class="text-center">
                 {if $picture->isType(\Geokrety\PictureType::PICTURE_USER_AVATAR)}

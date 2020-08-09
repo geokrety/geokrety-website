@@ -17,11 +17,21 @@ class MoveCommentCreate extends Base {
         Smarty::render('extends:base_modal.tpl|dialog/move_comment_create.tpl');
     }
 
+    private function _get_missing(\Base $f3) {
+        if (!$this->move->isGeoKretLastPosition()) {
+            http_response_code(403);
+            Smarty::render('dialog/alert_403.tpl');
+            die();
+        }
+    }
+
     public function get_missing(\Base $f3) {
+        $this->_get_missing($f3);
         Smarty::render('extends:full_screen_modal.tpl|dialog/move_comment_create_missing.tpl');
     }
 
     public function get_missing_ajax(\Base $f3) {
+        $this->_get_missing($f3);
         Smarty::render('extends:base_modal.tpl|dialog/move_comment_create_missing.tpl');
     }
 

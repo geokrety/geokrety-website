@@ -11,13 +11,15 @@ setRadius(parseInt(inputRadius.val()));
 centerMap(inputCoordinates.val().split(" "));
 
 inputRadius.change(function() {
-    setRadius(parseInt(inputRadius.val()));
+    setTimeout(function() { setRadius(parseInt(inputRadius.val())) }, {GK_OBSERVATION_AREA_RADIUS_TIMEOUT})
 });
 
 // Watch map move
 map.on("moveend", function() {
     var center = map.getCenter();
-    inputCoordinates.val(center.lat.toFixed(5) + ' ' + center.lng.toFixed(5))
+    var coordinates = center.lat.toFixed(5) + ' ' + center.lng.toFixed(5);
+    inputCoordinates.attr('value', coordinates); // Used in the qa-tests
+    inputCoordinates.val(coordinates);
     circle.setLatLng(center);
 });
 

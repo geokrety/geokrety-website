@@ -3,7 +3,7 @@
     <div class="form-group">
         <label for="usernameInput" class="col-sm-2 control-label">{t}Username{/t}</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="usernameInput" name="username" placeholder="{t}Username{/t}" value="{$user->username}" required minlength="{GK_SITE_USERNAME_MIN_LENGTH}" maxlength="{GK_SITE_USERNAME_MAX_LENGTH}" data-parsley-trigger="focusout" data-parsley-remote data-parsley-remote-validator="usernameFreeValidator" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled>
+            <input type="text" class="form-control" id="usernameInput" name="username" placeholder="{t}Username{/t}" value="{$user->username}" required minlength="{GK_SITE_USERNAME_MIN_LENGTH}" maxlength="{GK_SITE_USERNAME_MAX_LENGTH}" data-parsley-trigger="focusout" data-parsley-remote data-parsley-remote-validator="usernameFreeValidator" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled data-parsley-debounce="500">
         </div>
     </div>
 
@@ -45,7 +45,7 @@
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="daily_mails" aria-describedby="dailyMailsHelpBlock" {if $user->daily_mails} checked{/if}>{t}Yes, I want to receive email alerts (sent once a day).{/t}
+                    <input type="checkbox" id="dailyMailsInput" name="daily_mails" aria-describedby="dailyMailsHelpBlock" {if $user->daily_mails} checked{/if}>{t}Yes, I want to receive email alerts (sent once a day).{/t}
                     <span id="dailyMailsHelpBlock" class="help-block">{t}Email alerts may contains, travel information about your GeoKrety, news, comments…{/t}</span>
                 </label>
             </div>
@@ -74,7 +74,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">{t}Register{/t}</button>
+            <button id="registerButton" type="submit" class="btn btn-primary">{t}Register{/t}</button>
         </div>
     </div>
 </form>

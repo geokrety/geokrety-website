@@ -1,25 +1,25 @@
 <a class="anchor" id="log{$move->id}"></a>
-<div class="panel panel-default{if $move->isAuthor()} enable-dropzone{/if}" id="move-{$move->id}" data-id="{$move->id}">
+<div class="panel panel-default{if $move->isAuthor()} enable-dropzone{/if}" id="move-{$move->id}" data-gk-type="move" data-id="{$move->id}">
     <div class="panel-body{if $move->isAuthor()} dropzone{/if}">
 
         <div class="row">
-            <div class="col-xs-2">
+            <div class="col-xs-2 move-type">
                 <button type="button" class="btn btn-default btn-xs popup-move-navigate" title="{t}Show move on map{/t}" data-id="{$move->step}" {if !$move->move_type->isCoordinatesRequired()}disabled{/if}>
                     <small>#{$move->step}</small>
                 </button>
                 {$move|logicon nofilter}
-                <small>{if !is_null($move->lat) and !is_null($move->lon)}{$move->distance}&nbsp;km{/if}</small>
+                <small class="move-distance">{if !is_null($move->lat) and !is_null($move->lon)}{$move->distance|distance}{/if}</small>
             </div>
             <div class="col-xs-10">
 
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <div class="pull-left">
+                        <div class="pull-left move-cache">
                             {if $move->move_type->isCoordinatesRequired()}{$move->country|country nofilter}{/if}
                             {$move|cachelink nofilter}
                         </div>
-                        <div class="pull-right">
+                        <div class="pull-right move-author">
                             {$move->moved_on_datetime|print_date nofilter} /
                             {$move->author|userlink:$move->username nofilter}
                             {$move|application_icon nofilter}
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 move-comment">
                         {$move->comment|markdown nofilter}
                     </div>
                 </div>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="move-pictures {if !$move->pictures_count} hidden--{/if}">
+        <div class="move-pictures {if !$move->pictures_count}hidden{/if}">
             <div class="row">
                 <div class="col-xs-12 gallery">
                     {if $move->pictures_count}
@@ -66,18 +66,18 @@
                             </button>
                             {/if}
                             {if $move->isAuthor()}
-                            <button class="btn btn-success btn-xs movePictureUploadButton" title="{t}Upload a picture{/t}">
+                            <button class="btn btn-success btn-xs movePictureUploadButton" title="{t}Upload a picture{/t}" data-type="move-picture-upload" data-id="{$move->id}">
                                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
                             </button>
                             {/if}
-                            <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}">
+                            <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}" data-move-comment-type="comment">
                                 {fa icon="plus"}&nbsp;{fa icon="comment"}
                             </button>
                         </div>
 
                         {if $move->isAuthor() }
                         <div class="btn-group pull-right" role="group">
-                            <a class="btn btn-warning btn-xs" href="{'geokrety_move_edit'|alias:sprintf('@moveid=%d', $move->id)}" role="button" title="{t}Edit log{/t}">
+                            <a class="btn btn-warning btn-xs" href="{'geokrety_move_edit'|alias:sprintf('@moveid=%d', $move->id)}" role="button" title="{t}Edit log{/t}" data-type="move-edit" data-id="{$move->id}">
                                 {fa icon="pencil"}
                             </a>
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete log{/t}" data-toggle="modal" data-target="#modal" data-type="move-delete" data-id="{$move->id}">
@@ -94,8 +94,10 @@
 
     </div>
     {if !(isset($hide_comments) && $hide_comments) and $move->comments_count}
+    <ul class="list-group">
     {foreach from=$move->comments item=item}
     {include file='elements/move_comment.tpl' comment=$item}
     {/foreach}
+    </ul>
     {/if}
 </div>

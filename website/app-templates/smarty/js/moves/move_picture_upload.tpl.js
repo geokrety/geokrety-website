@@ -15,6 +15,8 @@ $('div.enable-dropzone').each(function() {
         dictDefaultMessage: '',
         clickable: baseSelector + " button.movePictureUploadButton",
         previewsContainer: baseSelector + " .move-pictures div.gallery",
+        hiddenInputContainer: baseSelector + " .dropzone",
+
 
         accept: function (file, done) {
             file.postData = [];
@@ -70,16 +72,31 @@ $('div.enable-dropzone').each(function() {
 
             this.on("success", function (file) {
                 let dropzone = this;
-                console.log('Upload ok');
                 $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
                     dropzone.removeFile(file);
                     $(baseSelector + " .move-pictures div.row > div.gallery").append(data);
+
+                    // Refresh img
+                    refresh(file.s3Key);
                 });
+
+            function refresh(fileKey) {
+                if ($("#"+fileKey+" div span.picture-message").length === 0) {
+                    return;
+                }
+                $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
+                    $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
+                    $(baseSelector + " .move-pictures div.row > div.gallery").append(data);
+                });
+                setTimeout(function(){ refresh(fileKey) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
+            }
             });
 
             this.on("error", function (file, errorMessage, xhr) {
                 file.previewElement.querySelector("div.dz-error-message span").innerHTML = parseS3UploadError(errorMessage, xhr);
             });
+
+            {include 'js/_dropzone-drop-local.inc.tpl.js'}
         },
 
     });

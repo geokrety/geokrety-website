@@ -16,6 +16,7 @@ use DB\SQL\Schema;
 abstract class BaseWaypoint extends Base {
     protected $db = 'DB';
     protected $ttl = GK_SITE_CACHE_TTL_WAYPOINT;
+    use \Validation\Traits\CortexTrait;
 
     protected $fieldConf = [
         'waypoint' => [
@@ -38,12 +39,12 @@ abstract class BaseWaypoint extends Base {
         'lat' => [
             'type' => Schema::DT_DOUBLE,
             'nullable' => true,
-            'validate' => 'float|logtype_require_coordinates',
+            'validate' => 'float',
         ],
         'lon' => [
             'type' => Schema::DT_DOUBLE,
             'nullable' => true,
-            'validate' => 'float|logtype_require_coordinates',
+            'validate' => 'float',
         ],
     ];
 

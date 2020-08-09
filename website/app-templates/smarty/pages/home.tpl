@@ -22,7 +22,7 @@
 
 {if $moves}
 <h2>🥾 {t}Latest moves{/t}</h2>
-<div class="table-responsive">
+<div class="table-responsive" id="recentMovesPanel">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -46,7 +46,7 @@
 
 {if $pictures}
 <h2>📷 {t}Recent pictures{/t}</h2>
-<div class="panel panel-default picturesList">
+<div class="panel panel-default picturesList" id="recentPicturesPanel">
     <div class="panel-body">
         <div class="gallery">
             {foreach from=$pictures item=picture}

@@ -124,7 +124,9 @@ class Registration extends Base {
         if ($token->valid()) {
             $f3->reroute(sprintf('@user_details(@userid=%d)', $token->user->id), false, false);
             $smtp = new AccountActivation();
-            $f3->abort();
+            if (!GK_DEVEL) {
+                $f3->abort(); // Send response to client now
+            }
             $smtp->sendActivationAgain($token);
             die();
         }

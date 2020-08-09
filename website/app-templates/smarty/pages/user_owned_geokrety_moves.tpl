@@ -11,7 +11,7 @@
         {if $moves.subset}
         {call pagination pg=$pg anchor='recent-moves'}
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table id="userOwnedGeoKretyRecentMovesTable" class="table table-striped">
                 <thead>
                     <tr>
                         <th></th>
@@ -32,11 +32,7 @@
         {call pagination pg=$pg anchor='recent-moves'}
         {else}
 
-        {if $user->isCurrentUser()}
-        <em>{t escape=no url_map={'geokrety_map'|alias} url_create={'geokret_create'|alias}}You did not moved any GeoKrety yet. Check <a href="%1">the map</a> and try to find GeoKrety near you!{/t}</em>
-        {else}
-        <em>{t escape=no username=$user->username}%1 didn't moved any GeoKrety yet.{/t}</em>
-        {/if}
+        <em>{t escape=no username=$user->username}%1's GeoKrety didn't moved yet.{/t}</em>
 
         {/if}
 

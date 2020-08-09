@@ -13,7 +13,7 @@ class MoveAvatarUpload extends AbstractPictureUpload {
     }
 
     public static function generateKey($id): string {
-        return uniqid(sprintf('MOV%06d_', $id), true);
+        return uniqid(sprintf('MOV%06d_', $id));
     }
 
     public static function getBucket(): string {

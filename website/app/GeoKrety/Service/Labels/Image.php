@@ -37,7 +37,7 @@ class Image {
         $labelSVGData = Smarty::fetch($template);
 
         $stream = 'data://image/svg+xml;base64,'.base64_encode($labelSVGData);
-        $url = 'http://svg-to-png:8080/?'.$type;
+        $url = GK_LABELS_SVG2PNG_URL.'?'.$type;
 
         $postVars = [
             'file' => new CURLFile($stream, 'image/svg+xml', 'label.svg'),

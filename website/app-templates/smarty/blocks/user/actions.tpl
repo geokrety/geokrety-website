@@ -1,6 +1,6 @@
 {if $user->isCurrentUser()}
 <div class="panel panel-default">
-    <a href="{'geokret_create'|alias}" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {t}Create a new GeoKret{/t}</a>
+    <a href="{'geokret_create'|alias}" id="userProfileCreateGeokretButton" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {t}Create a new GeoKret{/t}</a>
 </div>
 {/if}
 

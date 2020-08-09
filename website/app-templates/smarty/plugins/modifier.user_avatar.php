@@ -22,6 +22,9 @@ function smarty_modifier_user_avatar(User $user) {
     $size = 100;
 
     if (!$user->avatar) {
+        if (GK_DEVEL) {
+            return smarty_modifier_url_picture('/assets/images/the-mole-grey.svg');
+        }
         $url = Libravatar::getUrl($identifier);
 
         return smarty_modifier_url_picture($url);

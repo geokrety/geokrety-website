@@ -3,7 +3,7 @@
 {block name=content}
 <div class="panel panel-default">
     <div class="panel-heading">
-        {t}Do you confirm changing your email address?{/t}
+        <h4 class="modal-title" id="modalLabel">{t}Do you confirm changing your email address?{/t}</h4>
     </div>
     <div class="panel-body">
 

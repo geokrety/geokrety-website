@@ -6,7 +6,7 @@
 {block name=content}
 {include 'elements/news.tpl' item=$news}
 
-<div class="panel panel-default">
+<div id="newsCommentPanel" class="panel panel-default">
     <div class="panel-heading">
         {t}Leave a comment{/t}
     </div>
@@ -31,15 +31,13 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">{t}Comment{/t}</button>
-                </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">{t}Comment{/t}</button>
             </div>
 
         </form>
         {else}
-        <em>{t escape=no url={login_link}}Please <a href="%1">login</a> to post a comment{/t}</em>
+        <em>{t escape=no url={'login'|login_link}}Please <a href="%1">login</a> to post a comment{/t}</em>
         {/if}
     </div>
 </div>
@@ -67,6 +65,10 @@ var inscrybmde = new InscrybMDE({
    },
     minHeight: '100px',
 });
+{if GK_DEVEL}
+{* used by Tests-qa in Robot  Framework *}
+$("#content").data({ editor: inscrybmde });
+{/if}
 
 // Bind modal
 {include 'js/dialogs/dialog_news_subscription.tpl.js'}

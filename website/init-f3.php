@@ -14,6 +14,10 @@ $f3->config(__DIR__.'/app/cli.ini');
 $f3->config(__DIR__.'/app/admin.ini');
 $f3->config(__DIR__.'/app/authorizations.ini');
 
+if (GK_DEVEL) {
+    $f3->config('../app/devel.ini');
+}
+
 // OpAuth
 if (GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false) {
     $f3->config(__DIR__.'/app/opauth.ini', true);

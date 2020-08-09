@@ -3,8 +3,9 @@
 {block name=content}
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">{t}Claim a GeoKret{/t}</h3>
+        <h4 class="panel-title" id="modalLabel">{t}Claim a GeoKret{/t}</h4>
     </div>
+
     <div class="panel-body">
         <form class="form-horizontal" method="post" id="formClaim" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
 
@@ -28,10 +29,8 @@
                 </p>
             </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">{t}Adopt{/t}</button>
-                </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">{t}Adopt{/t}</button>
             </div>
 
         </form>

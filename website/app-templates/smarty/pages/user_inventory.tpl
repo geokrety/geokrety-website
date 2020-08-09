@@ -11,7 +11,7 @@
         {if $geokrety.subset}
         {call pagination pg=$pg anchor='inventory'}
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table id="userInventoryTable" class="table table-striped">
                 <thead>
                     <tr>
                         <th></th>

@@ -3,7 +3,7 @@
 {block name=content}
 <div class="panel panel-default">
     <div class="panel-heading">
-        {t}Do you confirm changing your email address?{/t}
+        <h4 class="modal-title" id="modalLabel">{t}Do you confirm changing your email address?{/t}</h4>
     </div>
     <div class="panel-body">
 
@@ -26,16 +26,16 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     {if $f3->get('SESSION.CURRENT_USER')}
-                    <a class="btn btn-default" href="{'user_details'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to your profile{/t}">
+                    <a class="btn btn-default" id="emailChangeDismissButton" href="{'user_details'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to your profile{/t}">
                         {t}Dismiss{/t}
                     </a>
                     {else}
-                    <a class="btn btn-default" href="{'home'|alias}" title="{t}Back to homepage{/t}">
+                    <a class="btn btn-default" id="emailChangeDismissButton" href="{'home'|alias}" title="{t}Back to homepage{/t}">
                         {t}Dismiss{/t}
                     </a>
                     {/if}
-                    <button type="submit" class="btn btn-primary" name="validate" value="true">{t}Yes, change my email address{/t}</button>
-                    <button type="submit" class="btn btn-danger" name="validate" value="false">{t}No, abort this request{/t}</button>
+                    <button type="submit" id="emailChangeAcceptButton" class="btn btn-primary" name="validate" value="true">{t}Yes, change my email address{/t}</button>
+                    <button type="submit" id="emailChangeRefuseButton" class="btn btn-danger" name="validate" value="false">{t}No, abort this request{/t}</button>
                 </div>
             </div>
         </form>

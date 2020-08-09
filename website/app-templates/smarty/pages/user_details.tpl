@@ -37,6 +37,10 @@
 
     {if $user->isCurrentUser() && $user->hasHomeCoordinates()}
         {include file='js/users/geokrety_near_home_map.tpl.js'}
+        {if GK_DEVEL}
+        {* used by Tests-qa in Robot  Framework *}
+        $("#mapid").data({ map: map });
+        {/if}
     {/if}
 
     // Bind modal

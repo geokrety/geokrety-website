@@ -26,7 +26,7 @@
         {/if}
     </td>
     <td class="text-right">
-        {$geokret->distance} km
+        {$geokret->distance|distance}
     </td>
     <td class="text-right">
         {$geokret->caches_count}

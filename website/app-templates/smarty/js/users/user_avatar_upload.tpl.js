@@ -11,6 +11,7 @@ $("div#userAvatar").dropzone({
     dictDefaultMessage: '',
     clickable: "#userAvatarUploadButton",
     previewsContainer: "#userPicturesList div.panel-body > div.gallery",
+    hiddenInputContainer: "div#userAvatar",
 
     accept: function (file, done) {
         file.postData = [];
@@ -69,14 +70,29 @@ $("div#userAvatar").dropzone({
             $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
                 dropzone.removeFile(file);
                 $("#userPicturesList .panel-body > div.gallery").append(data);
+
+                // Refresh img
+                refresh(file.s3Key);
             });
+
+            function refresh(fileKey) {
+                if ($("#"+fileKey+" div span.picture-message").length === 0) {
+                    return;
+                }
+                $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
+                    $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
+                    $("#userPicturesList .panel-body > div.gallery").append(data);
+                });
+                setTimeout(function(){ refresh(fileKey) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
+            }
         });
 
         this.on("error", function (file, errorMessage, xhr) {
             file.previewElement.querySelector("div.dz-error-message span").innerHTML = parseS3UploadError(errorMessage, xhr);
         });
-    },
 
+        {include 'js/_dropzone-drop-local.inc.tpl.js'}
+    },
 });
 
 // TODO: Move this in a global space

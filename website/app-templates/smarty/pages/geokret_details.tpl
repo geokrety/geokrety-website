@@ -14,7 +14,9 @@
     </div>
 {include file='blocks/geokret/mission.tpl'}
 {include file='blocks/geokret/found_it.tpl'}
-{include file='blocks/geokret/actions.tpl'}
+{if $f3->get('SESSION.CURRENT_USER')}
+    {include file='blocks/geokret/actions.tpl'}
+{/if}
 
     <a class="anchor" id="moves"></a>
 {include file='blocks/geokret/map.tpl'}
@@ -25,6 +27,10 @@
 {block name=javascript}
 {if $geokret->caches_count}
 {include file='js/geokrety/geokrety_details_map.tpl.js'}
+{if GK_DEVEL}
+{* used by Tests-qa in Robot  Framework *}
+$("#mapid").data({ map: map });
+{/if}
 {/if}
 
 // Bind modal

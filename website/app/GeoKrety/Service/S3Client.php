@@ -23,8 +23,8 @@ class S3Client extends \Prefab {
             'endpoint' => GK_MINIO_SERVER_URL,
             'use_path_style_endpoint' => true,
             'credentials' => [
-                'key' => GK_MINIO_ACCESS_KEY,
-                'secret' => GK_MINIO_SECRET_KEY,
+                'key' => MINIO_ACCESS_KEY,
+                'secret' => MINIO_SECRET_KEY,
             ],
         ]);
         $this->s3_public = new AWSS3Client([
@@ -33,8 +33,8 @@ class S3Client extends \Prefab {
             'endpoint' => GK_MINIO_SERVER_URL_EXTERNAL,
             'use_path_style_endpoint' => true,
             'credentials' => [
-                'key' => GK_MINIO_ACCESS_KEY,
-                'secret' => GK_MINIO_SECRET_KEY,
+                'key' => MINIO_ACCESS_KEY,
+                'secret' => MINIO_SECRET_KEY,
             ],
         ]);
     }

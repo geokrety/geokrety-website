@@ -1,9 +1,9 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GeoKrety: {block name=title}{/block}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_CSS)}
     {\Assets::instance()->addCss(GK_CDN_FONT_AWESOME_CSS)}
     {\Assets::instance()->addCss(GK_CDN_FLAG_ICON_CSS)}

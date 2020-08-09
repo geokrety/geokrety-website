@@ -18,4 +18,9 @@
 {block name=javascript}
 {include file="js/moves/geokret_move.tpl.js"}
 {include file="js/dialogs/dialog_geokret_move_select_from_inventory.tpl.js"}
+{if GK_DEVEL}
+{* used by Tests-qa in Robot  Framework *}
+$("#mapid").data({ map: map });
+$("#comment").data({ editor: inscrybmde });
+{/if}
 {/block}

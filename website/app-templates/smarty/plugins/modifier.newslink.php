@@ -10,7 +10,11 @@
  * -------------------------------------------------------------
  */
 function smarty_modifier_newslink(\GeoKrety\Model\News $news) {
-    $badge = '<span class="badge">'.$news->comments_count.'</span>';
-
-    return $badge.' <a href="'.\Base::instance()->alias('news_details', 'newsid='.$news->id).'">'._('Comments').'</a>';
+    return sprintf(
+        '<span class="badge">%d</span> <a href="%s" ="news-link" data-id="%d">%s</a>',
+        $news->comments_count,
+        \Base::instance()->alias('news_details', 'newsid='.$news->id),
+        $news->id,
+        ('Comments')
+    );
 }

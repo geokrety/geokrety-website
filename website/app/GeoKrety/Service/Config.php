@@ -5,6 +5,7 @@ namespace GeoKrety\Service;
 class Config extends \Prefab {
     public function __construct() {
         // SITE CONFIG
+        define('HOSTNAME', getenv('HOSTNAME') ?: 'localhost');
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '1,26422,35313'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
@@ -38,10 +39,12 @@ class Config extends \Prefab {
         define('GK_SENTRY_ENV', getenv('GK_SENTRY_ENV') ?: 'dev');
 
         // Minio
-        define('GK_MINIO_SERVER_URL', getenv('GK_MINIO_SERVER_URL') ?: 'http://minio:9000');
+        define('GK_MINIO_HOST', getenv('GK_MINIO_HOST') ?: 'minio');
+        define('GK_MINIO_PORT', getenv('GK_MINIO_PORT') ?: '9000');
+        define('GK_MINIO_SERVER_URL', getenv('GK_MINIO_SERVER_URL') ?: sprintf('http://%s:%s', GK_MINIO_HOST, GK_MINIO_PORT));
         define('GK_MINIO_SERVER_URL_EXTERNAL', getenv('GK_MINIO_SERVER_URL_EXTERNAL') ?: GK_MINIO_SERVER_URL);
-        define('GK_MINIO_ACCESS_KEY', getenv('GK_MINIO_ACCESS_KEY') ?: null);
-        define('GK_MINIO_SECRET_KEY', getenv('GK_MINIO_SECRET_KEY') ?: null);
+        define('MINIO_ACCESS_KEY', getenv('MINIO_ACCESS_KEY') ?: null);
+        define('MINIO_SECRET_KEY', getenv('MINIO_SECRET_KEY') ?: null);
 
         define('GK_BUCKET_NAME_STATPIC', getenv('GK_BUCKET_NAME_STATPIC') ?: 'statpic');
         define('GK_BUCKET_NAME_GEOKRETY_AVATARS', getenv('GK_BUCKET_NAME_GEOKRETY_AVATARS') ?: 'gk-avatars');
@@ -55,6 +58,10 @@ class Config extends \Prefab {
 
         define('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST', getenv('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST') ?: '');
 
+        // Admin services
+        define('ADMIN_SERVICE_ADMINER_URL', getenv('ADMIN_SERVICE_ADMINER_URL') ?: 'https://adminer.admin.geokrety.org');
+        define('ADMIN_SERVICE_PGADMIN_URL', getenv('ADMIN_SERVICE_PGADMIN_URL') ?: 'https://pgadmin.admin.geokrety.org');
+
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
         define('GK_ENVIRONMENT', getenv('GK_ENVIRONMENT') ?: 'dev');
@@ -63,9 +70,11 @@ class Config extends \Prefab {
         if (GK_IS_PRODUCTION) {
             define('GK_DEBUG', false);
             define('GK_F3_DEBUG', false);
+            define('GK_DEVEL', false);
         } else {
             define('GK_DEBUG', getenv('GK_DEBUG') ? filter_var(getenv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN) : false);
-            define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ?: true);
+            define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ? filter_var(getenv('GK_F3_DEBUG'), FILTER_VALIDATE_BOOLEAN) : true);
+            define('GK_DEVEL', getenv('GK_DEVEL') ? filter_var(getenv('GK_DEVEL'), FILTER_VALIDATE_BOOLEAN) : false);
         }
         define('GK_APP_NAME', getenv('GK_APP_NAME') ?: 'www');
         define('GK_APP_VERSION', getenv('GIT_COMMIT') ?: 'undef');
@@ -103,7 +112,9 @@ class Config extends \Prefab {
         // F3
         define('GK_F3_UI', getenv('GK_F3_UI') ?: 'app-ui/');
         define('GK_F3_TMP', getenv('GK_F3_TMP') ?: '/tmp/f3/');
-        define('GK_F3_CACHE', getenv('GK_F3_CACHE') ?: 'redis=redis:6379');
+        define('GK_REDIS_HOST', getenv('GK_REDIS_HOST') ?: 'redis');
+        define('GK_REDIS_PORT', getenv('GK_REDIS_PORT') ?: '6379');
+        define('GK_F3_CACHE', getenv('GK_F3_CACHE') ?: sprintf('redis=%s:%s', GK_REDIS_HOST, GK_REDIS_PORT));
         define('GK_GETTEXT_BINDTEXTDOMAIN_PATH', getenv('GK_GETTEXT_BINDTEXTDOMAIN_PATH') ?: '../app/languages');
         define('GK_F3_ASSETS_PUBLIC', 'assets/compressed/');
 
@@ -113,6 +124,12 @@ class Config extends \Prefab {
         define('GK_SMARTY_PLUGINS_DIR', getenv('GK_SMARTY_PLUGINS_DIR') ?: '../app-templates/smarty/plugins/');
         define('GK_SMARTY_COMPILE_DIR', getenv('GK_SMARTY_COMPILE_DIR') ?: '/tmp/smarty/compile/');
         define('GK_SMARTY_CACHE_DIR', getenv('GK_SMARTY_CACHE_DIR') ?: '/tmp/smarty/cache/');
+
+        // Labels
+        define('GK_LABELS_SVG2PNG_SCHEME', getenv('GK_LABELS_SVG2PNG_SCHEME') ?: 'http');
+        define('GK_LABELS_SVG2PNG_HOST', getenv('GK_LABELS_SVG2PNG_HOST') ?: 'svg-to-png');
+        define('GK_LABELS_SVG2PNG_PORT', getenv('GK_LABELS_SVG2PNG_PORT') ?: '8080');
+        define('GK_LABELS_SVG2PNG_URL', getenv('GK_LABELS_SVG2PNG_URL') ?: sprintf('%s://%s:%s/', GK_LABELS_SVG2PNG_SCHEME, GK_LABELS_SVG2PNG_HOST, GK_LABELS_SVG2PNG_PORT));
 
         // Phinx
         define('GK_DB_MIGRATIONS_DIR', getenv('GK_DB_MIGRATIONS_DIR') ?: './db/migrations/');
@@ -128,10 +145,16 @@ class Config extends \Prefab {
         define('GK_USER_STATPIC_TEMPLATE_COUNT', getenv('GK_USER_STATPIC_TEMPLATE_COUNT') ?: 9);
         define('GK_USER_STATPIC_FONT', getenv('GK_USER_STATPIC_FONT') ?: 'RobotoCondensed-Regular.ttf');
 
-        // google api
-        define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', getenv('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY') ?: false);
-        define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', getenv('GK_GOOGLE_RECAPTCHA_SECRET_KEY') ?: false);
-        define('GK_GOOGLE_RECAPTCHA_JS_URL', getenv('GK_GOOGLE_RECAPTCHA_JS_URL') ?: 'https://www.google.com/recaptcha/api.js');
+        // Google Recaptcha
+        if (!GK_DEVEL) {
+            define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', getenv('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY') ?: false);
+            define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', getenv('GK_GOOGLE_RECAPTCHA_SECRET_KEY') ?: false);
+            define('GK_GOOGLE_RECAPTCHA_JS_URL', getenv('GK_GOOGLE_RECAPTCHA_JS_URL') ?: 'https://www.google.com/recaptcha/api.js');
+        } else {
+            define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', false);
+            define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', false);
+            define('GK_GOOGLE_RECAPTCHA_JS_URL', '');
+        }
 
         // OpAuth
         define('GK_OPAUTH_SECURITY_SALT', getenv('GK_OPAUTH_SECURITY_SALT') ?: false);
@@ -170,16 +193,20 @@ class Config extends \Prefab {
         define('GK_PAGINATION_PICTURES_GALLERY', getenv('GK_PAGINATION_PICTURES_GALLERY') ?: 36);
 
         // TTL LIMITS
-        define('GK_SITE_CACHE_TTL_WAYPOINT', getenv('GK_SITE_CACHE_TTL_WAYPOINT') ?: 3600);
-        define('GK_SITE_CACHE_TTL_STATS', getenv('GK_SITE_CACHE_TTL_STATS') ?: 600);
-        define('GK_SITE_CACHE_TTL_LATEST_NEWS', getenv('GK_SITE_CACHE_TTL_LATEST_NEWS') ?: 60);
-        define('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY') ?: 60);
-        define('GK_SITE_CACHE_TTL_LATEST_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_GEOKRETY') ?: 60);
-        define('GK_SITE_CACHE_TTL_LATEST_PICTURES', getenv('GK_SITE_CACHE_TTL_LATEST_PICTURES') ?: 60);
-        define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: 600);
-        define('GK_SITE_CACHE_TTL_LABELS_LIST', getenv('GK_SITE_CACHE_TTL_LABELS_LIST') ?: 600);
-        define('GK_SITE_CACHE_TTL_LABELS_LOOKUP', getenv('GK_SITE_CACHE_TTL_LABELS_LOOKUP') ?: 600);
-        define('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS', getenv('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS') ?: 600);
+        define('GK_SITE_CACHE_TTL_WAYPOINT', getenv('GK_SITE_CACHE_TTL_WAYPOINT') ?: (GK_DEVEL ? 0 : 3600));
+        define('GK_SITE_CACHE_TTL_STATS', getenv('GK_SITE_CACHE_TTL_STATS') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_LATEST_NEWS', getenv('GK_SITE_CACHE_TTL_LATEST_NEWS') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_LATEST_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_GEOKRETY') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_LATEST_PICTURES', getenv('GK_SITE_CACHE_TTL_LATEST_PICTURES') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_LABELS_LIST', getenv('GK_SITE_CACHE_TTL_LABELS_LIST') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_LABELS_LOOKUP', getenv('GK_SITE_CACHE_TTL_LABELS_LOOKUP') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS', getenv('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS') ?: (GK_DEVEL ? 0 : 600));
+
+        // JS TIMEOUTS
+        define('GK_OBSERVATION_AREA_RADIUS_TIMEOUT', getenv('GK_OBSERVATION_AREA_RADIUS_TIMEOUT') ?: (GK_DEVEL ? 500 : 100));
+        define('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT', getenv('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT') ?: (GK_DEVEL ? 2000 : 500));
 
         // API LIMITS
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);

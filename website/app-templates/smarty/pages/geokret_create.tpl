@@ -21,4 +21,8 @@ var inscrybmde = new InscrybMDE({
     },
     minHeight: '100px',
 });
+{if GK_DEVEL}
+{* used by Tests-qa in Robot  Framework *}
+$("#inputMission").data({ editor: inscrybmde });
+{/if}
 {/block}

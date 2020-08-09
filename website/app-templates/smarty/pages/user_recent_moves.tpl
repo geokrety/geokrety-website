@@ -11,7 +11,7 @@
         {if $moves.subset}
         {call pagination pg=$pg anchor='recent-moves'}
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table id="userRecentMovesTable" class="table table-striped">
                 <thead>
                     <tr>
                         <th></th>

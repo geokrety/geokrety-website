@@ -15,7 +15,7 @@
     </div>
 {include file='footer.tpl'}
 {include file='navbar.tpl'}
-{include file='js/navbar-lateral.tpl'}
+{*include file='js/navbar-lateral.tpl'*}
 {include file="dialog/base_modal.tpl"}
 {include file='javascripts.tpl'}
 {include file='github_link.tpl'}

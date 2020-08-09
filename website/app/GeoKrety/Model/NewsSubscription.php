@@ -34,6 +34,7 @@ class NewsSubscription extends Base {
         'subscribed' => [
             'type' => Schema::DT_BOOLEAN,
             'nullable' => false,
+            'default' => false,
         ],
     ];
 

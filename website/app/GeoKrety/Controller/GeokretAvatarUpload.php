@@ -14,7 +14,7 @@ class GeokretAvatarUpload extends AbstractPictureUpload {
     }
 
     public static function generateKey($id): string {
-        return uniqid(sprintf('%s_', $id), true);
+        return uniqid(sprintf('%s_', $id));
     }
 
     public static function getBucket(): string {

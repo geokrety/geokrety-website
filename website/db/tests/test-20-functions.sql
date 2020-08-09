@@ -11,6 +11,7 @@ SELECT is(move_requiring_coordinates(), '{0,3,5}'::smallint[], 'Check move_requi
 SELECT is(valid_moves_comments_types(), '{0,1}'::smallint[], 'Check valid_moves_comments_types()');
 SELECT is(moves_types_markable_as_missing(), '{0,3}'::smallint[], 'Check moves_types_markable_as_missing()');
 SELECT is(moves_type_last_position(), '{0,1,3,4,5}'::smallint[], 'Check moves_type_last_position()');
+SELECT is(moves_type_hold(), '{1,5}'::smallint[], 'Check moves_type_hold()');
 
 SELECT is(validate_move_types(0::smallint), TRUE, 'Check validate_move_types(0)');
 SELECT is(validate_move_types(1::smallint), TRUE, 'Check validate_move_types(1)');

@@ -164,10 +164,7 @@ class EmailActivationToken extends Base {
             GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
             GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY.' DAY',
         ]);
-        if ($expiredTokens === false) {
-            return;
-        }
-        foreach ($expiredTokens as $token) {
+        foreach ($expiredTokens ?: [] as $token) {
             $token->used = self::TOKEN_EXPIRED;
             $token->save();
         }
@@ -176,10 +173,7 @@ class EmailActivationToken extends Base {
     public static function disableOtherTokensForUser(User $user, $except = null): void { // TODO: move this to plpgsql
         $activation = new EmailActivationToken();
         $otherTokens = $activation->find(['user = ? AND used = ?', $user->id, self::TOKEN_UNUSED]);
-        if ($otherTokens === false) {
-            return;
-        }
-        foreach ($otherTokens as $token) {
+        foreach ($otherTokens ?: [] as $token) {
             if ($except === $token) {
                 // Allow skip a token (the current one ;))
                 continue;

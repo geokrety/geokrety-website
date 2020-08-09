@@ -22,5 +22,12 @@ function smarty_modifier_userlink(?\GeoKrety\Model\User $user, ?string $alternat
         return '<em class="user-anonymous">'.$username.'</em>';
     }
 
-    return '<a href="'.\Base::instance()->alias('user_details', 'userid='.$user->id).'" title="'.sprintf('View %s\'s profile', smarty_modifier_escape($user->username)).'"'.$target_html.'>'.smarty_modifier_escape($user->username).'</a>';
+    return sprintf(
+        '<a href="%s" data-gk-link="user" data-gk-id="%d" title="%s"%s>%s</a>',
+        \Base::instance()->alias('user_details', 'userid='.$user->id),
+        $user->id,
+        sprintf('View %s\'s profile', smarty_modifier_escape($user->username)),
+        $target_html,
+        smarty_modifier_escape($user->username),
+    );
 }

@@ -34,7 +34,7 @@ INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type", "waypoint", "position") VALUES (5, 5, 1, '2020-04-07 00:00:00+00', 3, 'GC5BRQK', :nice);
 SELECT is(caches_count, 1, 'move-type 3') FROM gk_geokrety WHERE id = 5::bigint;
 
-INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (6, 'test 1', 0, '2020-04-07 00:00:00+00');
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime", "owner") VALUES (6, 'test 1', 0, '2020-04-07 00:00:00+00', 1);
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (6, 6, 1, '2020-04-07 00:00:00+00', 4);
 SELECT is(caches_count, 0, 'move-type 4') FROM gk_geokrety WHERE id = 6::bigint;
 
@@ -55,7 +55,7 @@ INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_ty
 SELECT is(caches_count, 2, 'v') FROM gk_geokrety WHERE id = 18::bigint;
 
 -- Multiple
-INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (10, 'test 1', 0, '2020-04-07 01:00:00+00');
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime", "owner") VALUES (10, 'test 1', 0, '2020-04-07 01:00:00+00', 1);
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type", "waypoint", "position") VALUES (10, 10, 1, '2020-04-07 02:00:00+00', 0, 'GC5BRQK', :nice);
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (11, 10, 1, '2020-04-07 03:00:00+00', 1);
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (12, 10, 1, '2020-04-07 04:00:00+00', 2);

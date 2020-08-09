@@ -67,12 +67,15 @@ class PicturesImporter extends BaseCleaner {
         if ($object->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
             $uploader = 'GeoKrety\Controller\GeokretAvatarUpload';
             $id = $object->geokret->gkid;
+            $object->author = $object->geokret->owner;
         } elseif ($object->isType(PictureType::PICTURE_USER_AVATAR)) {
             $uploader = 'GeoKrety\Controller\UserAvatarUpload';
             $id = $object->user->id;
+            $object->author = $object->user;
         } elseif ($object->isType(PictureType::PICTURE_GEOKRET_MOVE)) {
             $uploader = 'GeoKrety\Controller\MoveAvatarUpload';
             $id = $object->move->id;
+            $object->author = $object->move->author;
         } else {
             die('Should never happend');
         }

@@ -23,7 +23,6 @@ class GeokretEdit extends Base {
                 \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
             } else {
                 \Flash::instance()->addMessage(_('Your GeoKret has been updated.'), 'success');
-                \Event::instance()->emit('geokret.updated', $geokret);
                 $f3->reroute('@geokret_details(@gkid='.$geokret->gkid.')');
             }
         }

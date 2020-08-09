@@ -14,7 +14,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * -------------------------------------------------------------
  */
 function smarty_modifier_cachelink(?\GeoKrety\Model\Move $move, ?string $alternative_name = null, ?string $target = 'blank'): string {
-    if (is_null($move)) {
+    if (is_null($move) || !$move->move_type->isCoordinatesRequired()) {
         return '';
     }
 
@@ -22,7 +22,6 @@ function smarty_modifier_cachelink(?\GeoKrety\Model\Move $move, ?string $alterna
     if (!is_null($alternative_name)) {
         $alternative_name = smarty_modifier_escape($alternative_name);
     }
-
     if (empty($move->waypoint)) {
         return sprintf(
             '<a href="%s" title="%s"%s>%s</a>',

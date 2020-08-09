@@ -4,7 +4,7 @@
     <h4 class="modal-title" id="modalLabel">{t}Commenting a GeoKret move{/t}</h4>
 </div>
 
-<form name="move" action="{'move_comment_create'|alias:sprintf('moveid=%d', $move->id)}" method="post">
+<form name="move" action="{'move_comment_create'|alias:sprintf('moveid=%d', $move->id)}" method="post" data-parsley-validate data-parsley-priority-enabled="false" data-parsley-ui-enabled="true">
     <div class="modal-body">
         {include file='elements/move.tpl' move=$move hide_actions=true hide_comments=true}
 
@@ -12,7 +12,7 @@
 
         <div class="form-group">
             <label class="control-label">{t}Your comment{/t}</label>
-            <input type="text" class="form-control" name="comment" id="comment" value="{if isset($comment)}{$comment->content}{/if}" minlength="1" maxlength="500" autofocus required>
+            <input type="text" class="form-control" name="comment" id="comment" value="{if isset($comment)}{$comment->content}{/if}" minlength="1" maxlength="500" autofocus required data-parsley-trigger="input focusout">
         </div>
 
     </div>

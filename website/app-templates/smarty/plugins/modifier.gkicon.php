@@ -10,5 +10,5 @@
  * -------------------------------------------------------------
  */
 function smarty_modifier_gkicon(\GeoKrety\Model\Geokret $geokret) {
-    return '<img src="'.GK_CDN_IMAGES_URL.'/log-icons/'.$geokret->type->getTypeId().'/icon_25.jpg" alt="{t}GK type icon{/t}" title="'.$geokret->type->getTypeId().'">';
+    return '<img src="'.GK_CDN_IMAGES_URL.'/log-icons/'.$geokret->type->getTypeId().'/icon_25.jpg" alt="'._('GK type icon').'" title="'.$geokret->type->getTypeString().'" data-gk-type="'.$geokret->type->getTypeId().'">';
 }

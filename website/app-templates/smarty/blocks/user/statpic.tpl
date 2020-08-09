@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id="userStatpicPanel">
     <div class="panel-body">
         <figure>
             {$user|userstatpic nofilter}
@@ -10,7 +10,7 @@
             </p> *}
             {if $user->isCurrentUser()}
             <p class="pull-right">
-                <a class="btn btn-warning btn-xs pull-right" href="{'user_template_chooser'|alias}" title="{t}Choose statpic{/t}">
+                <a id="userBannerChangeButton" class="btn btn-warning btn-xs pull-right" href="{'user_template_chooser'|alias}" title="{t}Choose statpic{/t}">
                     {fa icon="pencil"}
                 </a>
             </p>

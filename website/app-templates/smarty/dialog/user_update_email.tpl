@@ -14,7 +14,7 @@
 
         <div class="checkbox">
             <label>
-                <input type="checkbox" name="daily_mails" {if $currentUser->daily_mails}checked{/if}> {t}Yes, I want to receive email alerts (sent once a day).{/t}
+                <input type="checkbox" id="dailyMailsCheckbox" name="daily_mails" {if $currentUser->daily_mails}checked{/if}> {t}Yes, I want to receive email alerts (sent once a day).{/t}
             </label>
         </div>
 

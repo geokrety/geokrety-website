@@ -43,7 +43,7 @@ class HealthCheck extends Base {
     }
 
     private function checkS3Server() {
-        if (is_null(GK_MINIO_ACCESS_KEY)) {
+        if (is_null(MINIO_ACCESS_KEY)) {
             // Skip test if s3 is not configured
             return;
         }

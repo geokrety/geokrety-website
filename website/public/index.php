@@ -6,14 +6,9 @@ $f3->config('../app/assets.ini');
 
 ini_set('session.gc_maxlifetime', GK_SITE_SESSION_REMEMBER);
 new \GeoKrety\Session($f3->get('DB'));
-
-// Local Mail
-if (is_null(GK_SMTP_HOST)) {
-    $f3->route('GET @local_mail_list: /dev/mail', '\GeoKrety\Controller\LocalMail->list');
-    $f3->route('GET @local_mail: /dev/mail/@mailid', '\GeoKrety\Controller\LocalMail->get');
-    $f3->route('GET @local_mail_delete: /dev/mail/@mailid/delete', '\GeoKrety\Controller\LocalMail->delete');
-    $f3->route('GET @local_mail_delete_all: /dev/mail/delete/all', '\GeoKrety\Controller\LocalMail->delete_all');
-}
+//// Split DB connexion for session to prevent session rollback
+//$dbSession = new \DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;']);
+//new \GeoKrety\Session($dbSession);
 
 // Authorizations
 $access = \Access::instance();

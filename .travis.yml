@@ -1,3 +1,4 @@
+os: linux
 dist: bionic
 language: php
 cache:
@@ -6,115 +7,148 @@ cache:
     - $HOME/.composer/cache
     - $HOME/.php-cs-fixer
 
+services:
+  - docker
+
+addons:
+  firefox: latest
+
 branches:
   except:
     - /\+travis\d+$/
 
-php:
-  - 7.4
-
-# https://docs.travis-ci.com/user/environment-variables/#defining-multiple-variables-per-item
-env:
-  global:
-    - GK_ENVIRONMENT=testing
-
-# https://docs.travis-ci.com/user/database-setup/#postgresql
-addons:
-  apt:
-    packages:
-      - moreutils
-      - gettext
-
-# https://andidittrich.de/2017/06/travisci-setup-mysql-tablesdata-before-running-tests.html
-before_install:
-  # Packages overrides
-  - sudo apt-get update
-  - sudo apt-get --yes remove postgresql\* postgis\*
-  - sudo apt-get install -y postgresql-12 postgresql-client-12 postgis postgresql-12-postgis-3 postgresql-12-pgtap libtap-parser-sourcehandler-pgtap-perl
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
-  - sudo cp /etc/postgresql/9.6/main/pg_hba.conf /etc/postgresql/12/main/pg_hba.conf
-  - sudo service postgresql restart 12
-  - timeout 60s bash -c "while ! pg_isready; do sleep 0.1; done"
-  # Crowdin
-  - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
-  - sudo dpkg -i crowdin.deb
-  # Database
-  - psql -c 'create database geokrety;' -U postgres
-  - psql -c "CREATE USER geokrety WITH PASSWORD 'geokrety';" -U postgres
-  - export PGDATABASE=geokrety
-  # install extensions
-  - psql -c "CREATE EXTENSION postgis;" -U postgres
-  - psql -c "CREATE EXTENSION postgis_raster;" -U postgres
-  - psql -c "CREATE EXTENSION pgcrypto WITH SCHEMA public;" -U postgres
-  - psql -c "CREATE EXTENSION pgtap;" -U postgres
-  - psql -c "\dx" -U postgres
-  - psql -c "\dT *.plan" -U postgres
-  # Install schema
-  - psql -U postgres < website/db/dumps/public-schema.sql
-  - psql -U postgres < website/db/dumps/secure-schema.sql
-  - psql -U postgres < website/db/crypto/demo-keys.sql
-  - psql -U postgres < website/db/dumps/geokrety-schema.sql
-  - psql -U postgres < website/db/dumps/gk_waypoints_country.data.sql
-  - psql -U postgres < website/db/dumps/gk_waypoints_types.data.sql
-  - psql -U postgres < website/db/dumps/phinxlogs.data.sql
-  - pg_restore -U postgres --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "public" --table "countries" website/db/dumps/public-data.tar
-  # import SRTM subset for tests
-  - website/db/tests-srtm-import.sh
-
-install:
-  - composer install --dev
-  - phpenv config-rm xdebug.ini || return 0
-
-before_script:
-  - export GK_DB_HOST="localhost"
-  - export GK_DB_NAME="geokrety"
-  - export GK_DB_USER="geokrety"
-  - export GK_DB_PASSWORD="geokrety"
-
-script:
-  # Check against CRLF
-  - scripts/check-crlf.sh
-  # Check against trailing whitespaces on php files
-  - scripts/check-trailing-spaces.sh .
-  # Check against non utf-8 files
-  - scripts/check-utf8.sh .
-  # Check php syntax
-  - scripts/phplint.sh ./website/
-  # Check CS fixer
-  - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
-  # Install database
-  - (cd website && ../vendor/bin/phinx migrate)
-  # Check the database
-  - PGPASSWORD=geokrety PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d geokrety -U geokrety -h localhost -ot website/db/tests/test*.sql
-  # Seed database with initial values
-  - (cd website && ../vendor/bin/phinx seed:run)
-  # Unit tests with PHPUnit ; output to stderr to prevent session issues https://stackoverflow.com/a/38045422/944936
-  - vendor/bin/phpunit --stderr
-  - (cd website/public && php index.php /health)
-
-stages:
-  - name: test
-  - name: deploy
-    if: branch IN (master, boly38, feature/new-theme) AND type = 'push'
-  - name: qaWait
-    if: branch IN (feature/new-theme, feature/ntQA) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
-  - name: qaTests
-    if: branch IN (master, boly38, feature/new-theme) AND env(TRAVIS_QA_TOKEN) AND type = 'push'
-
 jobs:
   include:
-    - stage: deploy
+#    - stage: syntax check
+#      php: 7.4
+#      before_script:
+#        - curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer && chmod a+x php-cs-fixer
+#      script:
+#        - phpenv config-rm xdebug.ini || return 0
+#        # Check against CRLF
+#        - scripts/check-crlf.sh
+#        # Check against trailing whitespaces on php files
+#        - scripts/check-trailing-spaces.sh .
+#        # Check against non utf-8 files
+#        - scripts/check-utf8.sh .
+#        # Check php syntax
+#        - scripts/phplint.sh ./website/
+#        # Check CS fixer
+#        - ./php-cs-fixer --no-interaction --dry-run --diff -v fix
+
+    - stage: test-qa
+      if: env(TRAVIS_QA_TOKEN) AND type = 'push'
       script:
+        - export PGUSER=geokrety
+        - export PGPASSWORD=geokrety
+        - export PGDATABASE=geokrety
+        - export PGHOST=localhost
+        - export PGPORT=5433
+        - export DOCKER_COMPOSE="docker-compose -p gk -f docker-compose.local.yml"
+
+        # Stop postgres as we'll use our instance
+        - sudo service postgresql stop 12
+        - sudo apt-get update > /dev/null && sudo apt-get install -y postgresql-client-12 postgis haveged -qq > /dev/null
+        - sudo service haveged start
+
+        # Launch Postgres
+        - sudo mkdir /mnt/ramfs
+        - sudo mount -t tmpfs -o size=2048m tmpfs /mnt/ramfs
+        - ${DOCKER_COMPOSE} pull postgres
+        - ${DOCKER_COMPOSE} up -d --no-build postgres
+        - timeout 60s bash -c "while ! pg_isready; do sleep 0.1; done"
+
+        # Install Postgres extensions
+        - psql -c "CREATE EXTENSION postgis WITH SCHEMA public;"
+        - psql -c "CREATE EXTENSION postgis_raster WITH SCHEMA public;"
+        - psql -c "CREATE EXTENSION pgcrypto WITH SCHEMA public;"
+        - psql -c "CREATE EXTENSION pgtap WITH SCHEMA public;"
+        - psql -c "\dx"
+        - psql -c "\dT *.plan"
+
+        # Install schema
+        - psql < website/db/dumps/public-schema.sql
+        - psql < website/db/dumps/secure-schema.sql
+        - psql < website/db/crypto/demo-keys.sql
+        - psql < website/db/dumps/geokrety-schema.sql
+        - psql < website/db/dumps/gk_waypoints_country.data.sql
+        - psql < website/db/dumps/gk_waypoints_types.data.sql
+        - psql < website/db/dumps/phinxlogs.data.sql
+        - pg_restore --host "$PGHOST" --dbname "$PGDATABASE" --data-only --disable-triggers --verbose --schema "public" --table "countries" website/db/dumps/public-data.tar
+
+        # import SRTM subset for tests
+        - sudo apt-get install -y postgis -qq > /dev/null
+        - website/db/tests-srtm-import.sh
+
+        # Other services
+        - ${DOCKER_COMPOSE} pull cdn redis minio pictures-processor-downloader pictures-processor-uploader svg-to-png
+        - ${DOCKER_COMPOSE} build website
+        - ${DOCKER_COMPOSE} up -d --no-build
+        - docker ps -a
+
+        # Wait for webserver
+        - sudo apt-get install -y httping -qq > /dev/null
+        - for i in $(seq 60); do httping -sGc1 -o 200,302 http://localhost:3001/ && echo OK && break ; sleep 1 ; done
+
+        # Test the database
+        - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl -qq > /dev/null
+        - psql -c "CREATE DATABASE tests WITH TEMPLATE $PGDATABASE OWNER $PGUSER;"
+        - PGDATABASE=tests PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -ot website/db/tests/test*.sql
+
+#        # Seed database with initial values
+#        - ${DOCKER_COMPOSE} exec website make composer-install-dev
+#        - ${DOCKER_COMPOSE} exec website make seed
+#
+#        # Tests with PHPUnit
+#        - ${DOCKER_COMPOSE} exec website make test
+
+        - ${DOCKER_COMPOSE} exec website make test-health
+
+        # Install RobotFramework
+        - pip install -r tests-qa/requirements.txt
+
+#        # Install and launch BrowserStack Local agent
+#        - curl -L https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip | gunzip > BrowserStackLocal && chmod a+x BrowserStackLocal
+#        - export BS_ENABLED=1
+#        - export BS_LOCAL=true
+#        - export BS_LOCAL_ID="travis-${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
+#        - export BS_BUILD=${TRAVIS_BRANCH}
+#        - export GEOKRETY_URL=http://bs-local.com:3000/
+#        - ./BrowserStackLocal --key "${BS_TOKEN}" --verbose --daemon start --local-identifier "${BS_LOCAL_ID}" --force-local
+
+        # Download geckodriver
+        - curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz | tar xzf - -C tests-qa
+
+        # Wait for services to be reachable
+        - export GEOKRETY_URL=http://localhost:3001/
+        - export HEADLESS=True
+        - for i in $(seq 60); do httping -sGc1 -o 200,302 "${GEOKRETY_URL}" && echo OK && break ; sleep 1 ; done
+        # Launch RobotFramework testing
+        - make test-qa
+#        - (cd tests-qa && robot --variable browser:Firefox --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/$TRAVIS_BRANCH -V acceptance/vars/robot-vars.py acceptance/)
+#        - (cd tests-qa && robot --variable browser:Chrome --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/$TRAVIS_BRANCH -V acceptance/vars/robot-vars.py acceptance/)
+
+        # Deploy results to gh-pages
+        - git clone --quiet --branch gh-pages --single-branch https://${GITHUB_TOKEN}@github.com/geokrety/geokrety-website-qa.git publish
+        - cd publish &&
+          cp -a ../tests-qa/docs/${TRAVIS_BRANCH} . &&
+          git status &&
+          git add . &&
+          git config user.name  "Travis" &&
+          git config user.email "travis@travis-ci.org" &&
+          git commit -m "Update QA tests" &&
+          git push -fq origin
+        - echo QA Tests report is available at https://geokrety.github.io/geokrety-website-qa/${TRAVIS_BRANCH}/report.html
+
+    - stage: translations
+      php: 7.4
+      if: branch IN (master, boly38, feature/new-theme) AND type = 'push'
+      script:
+        # Crowdin
+        - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+        - sudo dpkg -i crowdin.deb
+        - sudo apt update && sudo apt install -y moreutils gettext
         - scripts/export-translations-to-crowdin.sh
-    - stage: qaWait
-      script:
-        - bash ./scripts/app_version_wait.sh ${TRAVIS_BRANCH}
-    - stage: qaTests
-      script:
-        # TRAVIS_QA_TOKEN from https://travis-ci.org/geokrety/geokrety-website/settings
-        # TRAVIS_BRANCH   from https://docs.travis-ci.com/user/environment-variables/
-        - bash ./scripts/qatests_hook.sh ${TRAVIS_QA_TOKEN} ${TRAVIS_BRANCH}
-        - bash ./scripts/qatests_wait.sh ${TRAVIS_QA_TOKEN}
 
 notifications:
   # doc: https://docs.travis-ci.com/user/notifications/#configuring-irc-notifications

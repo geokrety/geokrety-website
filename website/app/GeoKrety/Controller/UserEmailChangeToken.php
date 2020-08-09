@@ -69,7 +69,9 @@ class UserEmailChangeToken extends Base {
             Event::instance()->emit('user.email.changed', $this->token->user);
             Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
             $f3->reroute(sprintf('@user_details(@userid=%d)', $this->token->user->id), false, false);
-            $f3->abort(); // Send response to client now
+            if (!GK_DEVEL) {
+                $f3->abort(); // Send response to client now
+            }
             $smtp = new EmailChange();
             $smtp->sendEmailChangedNotification($this->token);
             die();

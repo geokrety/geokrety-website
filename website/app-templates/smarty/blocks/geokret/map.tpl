@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
+<div id="geokretyDetailsMapPanel" class="panel panel-default">
+  <div id="geokretyDetailsMapPanelHeading" class="panel-heading">
     {t}Map{/t}
   </div>
   <div class="panel-body">

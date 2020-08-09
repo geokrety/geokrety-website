@@ -31,7 +31,7 @@ INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (4, 4, 1, :nice, '2020-04-07 00:00:00+00', :move_type_seen);
 SELECT is(last_position, 4::bigint, 'geokret last_position updated - 4') from gk_geokrety WHERE id = 4::bigint;
 
-INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (5, 'test', 0, '2020-04-07 00:00:00+00');
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime", "owner") VALUES (5, 'test', 0, '2020-04-07 00:00:00+00', 1);
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (5, 5, 1, '2020-04-07 00:00:00+00', :move_type_archived);
 SELECT is(last_position, 5::bigint, 'geokret last_position updated - 5') from gk_geokrety WHERE id = 5::bigint;
 

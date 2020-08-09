@@ -6,6 +6,11 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
 
+/**
+ * @property mixed subject
+ * @property mixed from
+ * @property mixed to
+ */
 abstract class Base extends \SMTP {
     public function __construct($host = GK_SMTP_HOST, $port = GK_SMTP_PORT, $scheme = GK_SMTP_SCHEME, $user = GK_SMTP_USER, $pw = GK_SMTP_PASSWORD, $ctx = null) {
         parent::__construct($host, $port, $scheme, $user, $pw, $ctx);
@@ -48,8 +53,8 @@ abstract class Base extends \SMTP {
         // Restore current user language
         LanguageService::restoreLanguageToCurrentChosen();
 
-        if (is_null(GK_SMTP_HOST)) {
-            \Base::instance()->push('SESSION.LOCAL_MAIL', ['smtp' => clone $this, 'message' => $message, 'read' => false]);
+        if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
+            \Base::instance()->push('SESSION.LOCAL_MAIL', ['smtp' => ['subject' => $this->subject, 'from' => $this->from, 'to' => $this->to], 'message' => $message, 'read' => false]);
 
             return true;
         }

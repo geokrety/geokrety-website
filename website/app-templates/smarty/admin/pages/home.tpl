@@ -8,10 +8,10 @@
                 <div class="panel-body">
                     <ul>
                         <li>
-                            <a href="{GK_SITE_BASE_SERVER_URL}/adminer" target="_blank">Adminer</a>
+                            <a href="{ADMIN_SERVICE_ADMINER_URL}" target="_blank">Adminer</a>
                         </li>
                         <li>
-                            <a href="{GK_SITE_BASE_SERVER_URL}/pgadmin" target="_blank">PGAdmin</a>
+                            <a href="{ADMIN_SERVICE_PGADMIN_URL}" target="_blank">PGAdmin</a>
                         </li>
                         <li>
                             <a href="{GK_MINIO_SERVER_URL_EXTERNAL}" target="_blank">Minio</a>
@@ -25,15 +25,6 @@
                 <div class="panel-heading">Generated</div>
                 <div class="panel-body">
                     <ul>
-                        <li>
-                            <a href="{'admin_rebuild_templates'|alias}">Rebuild all templates</a>
-                        </li>
-                        <li>
-                            <a href="{'admin_rebuild_translation'|alias}">Rebuild gettext files</a>
-                        </li>
-                        <li>
-                            <a href="{'admin_assets_clear'|alias}">Clear assets</a>
-                        </li>
                         <li>
                             <a href="{'admin_s3_prune_pictures'|alias}">Prune never uploaded pictures</a>
                         </li>

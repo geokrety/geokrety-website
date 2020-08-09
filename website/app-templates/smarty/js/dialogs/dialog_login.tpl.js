@@ -18,7 +18,7 @@ $('#modal').on('hide.bs.modal', function(event) {
 });
 
 function showLoginForm() {
-    $('#modal').find('.modal-content').load("{login_link}", function() {
+    $('#modal').find('.modal-content').load("{'login'|login_link}", function() {
         loginParsleyForm = $('#modal form').parsley();
     });
 }

@@ -44,11 +44,20 @@ class UserUpdateEmail extends Base {
             $smtp = new EmailChange();
 
             // Resend validation - implicit mail unicity from token table too
-            $token->load(['_email_hash = public.digest(lower(?), \'sha256\') AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
+            $token->load(['user = ? AND _email_hash = public.digest(lower(?), \'sha256\') AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $user->id, $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
             if ($token->valid()) {
                 $smtp->sendEmailChangeNotification($token);
+                Flash::instance()->clearMessages(); // Reset previous messages
                 Flash::instance()->addMessage(sprintf(_('The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->diffForHumans(['parts' => 3, 'join' => true])), 'success');
+                $f3->get('DB')->rollback();
                 $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
+            }
+
+            // Someone else whish to use this address
+            $token->load(['user != ? AND _email_hash = public.digest(lower(?), \'sha256\') AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $user->id, $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
+            if ($token->valid()) {
+                Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
+                $this->get($f3);
             }
 
             // Check email unicity over users table
@@ -71,7 +80,9 @@ class UserUpdateEmail extends Base {
             // Redirect before sending emails
             $f3->get('DB')->commit();
             $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id), false, false); // Set die false to continue
-            $f3->abort(); // Send response to client now
+            if (!GK_DEVEL) {
+                $f3->abort(); // Send response to client now
+            }
             $smtp->sendEmailChangeNotification($token);
             die();
         }

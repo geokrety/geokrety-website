@@ -12,9 +12,16 @@ BEGIN;
 
 DROP SCHEMA geokrety CASCADE;
 \i $tmp_dir/geokrety-schema.sql
+CREATE EXTENSION quantile WITH SCHEMA geokrety;
 
 END;
 EOF
 pg_restore -U geokrety --host "localhost" --dbname "geokrety" --data-only --disable-triggers --schema "geokrety" $tmp_dir/geokrety-data.tar
+
+cat << EOF | psql -U geokrety -h localhost geokrety
+BEGIN;
+REFRESH MATERIALIZED VIEW "geokrety"."gk_geokrety_in_caches";
+END;
+EOF
 
 rm -rf $tmp_dir

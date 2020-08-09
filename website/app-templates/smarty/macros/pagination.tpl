@@ -1,6 +1,6 @@
 {function pagination pg=array() anchor='top'}{if $pg->getMax() > 1}
 <div class="pull-right">
-    <ul class="pagination">
+    <ul class="pagination" data-gk-type="paginator" data-page-total="{$pg->getMax()}" data-page-current="{$pg->getCurrent()}">
         {if $pg->getFirst()}
             <li><a href="{$pg->getPath()}{$pg->getFirst()}#{$anchor}">{t}First{/t}</a></li>
         {/if}

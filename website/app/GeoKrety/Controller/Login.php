@@ -60,10 +60,14 @@ class Login extends Base {
     public function logout(\Base $f3) {
         $user = new User();
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
-        $f3->clear('SESSION');
-        $f3->clear('COOKIE.PHPSESSID');
+        self::disconnectUser($f3);
         Event::instance()->emit('user.logout', $user);
         $f3->reroute('@home');
+    }
+
+    public static function disconnectUser(\Base $f3) {
+        $f3->clear('SESSION');
+        $f3->clear('COOKIE.PHPSESSID');
     }
 
     public static function connectUser(\Base $f3, User $user) {
@@ -84,8 +88,11 @@ class Login extends Base {
         if ($f3->exists('GET.goto')) {
             $goto = $f3->get('GET.goto');
             if (!in_array($goto, self::NO_REDIRECT_URLS)) {
-                $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
-                $query = (!empty($query) ? '?' : '').$query;
+                $query = '';
+                if (!empty(base64_decode($f3->get('GET.query')))) {
+                    $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
+                    $query = (!empty($query) ? '?' : '').$query;
+                }
                 $f3->reroute($ml->alias($goto, $params, $user->preferred_language).$query);
             }
         }
@@ -102,6 +109,7 @@ class Login extends Base {
         $user->has('social_auth', ['uid = ?', $data['uid']]);
         $user->has('social_auth.provider', ['name = ?', $data['provider']]);
         $user->load();
+
 
         // User already authenticated here?
         if ($this->isLoggedIn()) {

@@ -175,8 +175,10 @@ pg_dump --file public-schema.sql --host "localhost" --port "5432" --username "ge
 ## Restore
 
 ### Schema
+```bash
+$ psql -U geokrety -W geokrety -h localhost
+```
 ```sql
-psql -U geokrety -W geokrety -h localhost
 CREATE EXTENSION postgis WITH SCHEMA public;
 CREATE EXTENSION postgis_raster WITH SCHEMA public;
 CREATE EXTENSION pgcrypto WITH SCHEMA public;
@@ -186,13 +188,18 @@ CREATE EXTENSION pgcrypto WITH SCHEMA public;
 ```
 
 ### Datas
-```sql
-pg_restore -U geokrety -W --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "public" public-data.tar
+```bash
+$ pg_restore -U geokrety -W --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "public" public-data.tar
+$ pg_restore -U geokrety -W --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "secure" secure-data.tar
+$ pg_restore -U geokrety -W --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "geokrety" geokrety-data.tar
 
-pg_restore -U geokrety -W --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "secure" secure-data.tar
-
-pg_restore -U geokrety -W --host "localhost" --dbname "geokrety" --data-only --disable-triggers --verbose --schema "geokrety" geokrety-data.tar
+# Then refresh materialized views
+$ psql -U geokrety -W geokrety -h localhost
 ```
+```sql
+REFRESH MATERIALIZED VIEW "gk_geokrety_in_caches"
+```
+
 
 # Datasources
 

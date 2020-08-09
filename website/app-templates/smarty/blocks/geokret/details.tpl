@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id="geokretyDetailsPanel">
     <div class="panel-heading">
         {$geokret|gkicon nofilter}
 
@@ -38,17 +38,17 @@
             <div class="col-xs-12 col-md-9">
                 <dl class="dl-horizontal pull-left">
                     <dt>{t}Reference number{/t}</dt>
-                    <dd title="id:{$geokret->id} gkid{$geokret->gkid()} ">{$geokret->gkid}</dd>
+                    <dd title="id:{$geokret->id} gkid{$geokret->gkid()}" class="geokret-id">{$geokret->gkid}</dd>
                     {if $geokret->isOwner() or $geokret->hasTouchedInThePast()}
                     <dt>{t}Tracking Code{/t}</dt>
-                    <dd><strong>{$geokret->tracking_code}</strong></dd>
+                    <dd class="geokret-tracking-code"><strong>{$geokret->tracking_code}</strong></dd>
                     {/if}
                     <dt>{t}Total distance{/t}</dt>
-                    <dd>{$geokret->distance} km</dd>
+                    <dd class="geokret-distance"><span>{$geokret->distance|distance}</span></dd>
                     <dt>{t}Places visited{/t}</dt>
-                    <dd>{$geokret->caches_count}</dd>
+                    <dd class="geokret-caches-count">{$geokret->caches_count}</dd>
                     <dt>{t}Born{/t}</dt>
-                    <dd>{$geokret->created_on_datetime|print_date nofilter}</dd>
+                    <dd class="geokret-created-on-datetime">{$geokret->created_on_datetime|print_date nofilter}</dd>
                     {* TODO <dt>{t}Social share{/t}</dt>
                     <dd>
                         {fa icon="facebook" title="{t}Share on Facebook{/t}"}
@@ -66,7 +66,7 @@
                     {if $geokret->avatar}
                         {$geokret->avatar|picture:true:false:false nofilter}
                     {/if}
-                    {'https://cdn.geokrety.org/images/wykresy/74480.png'|url_picture:'https://cdn.geokrety.org/images/wykresy/74480-m.png' nofilter}{* TODO: Altitude profile *}
+                    {'/assets/images/placeholder-graph.png'|url_picture:'/assets/images/placeholder-graph.png' nofilter}{* TODO: Altitude profile *}
                 </div>
             </div>
         </div>

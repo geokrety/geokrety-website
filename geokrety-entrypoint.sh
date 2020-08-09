@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 set -e
 
 cat <<'EOF'
@@ -19,9 +19,6 @@ if [ "$1" = 'apache2-foreground' ]; then
     # Generate and optimize autoloader
     make composer-autoload
 
-    # Create buckets
-    make buckets
-
     # Migrate database
     runuser -u www-data make phinx-migrate
 
@@ -33,6 +30,19 @@ if [ "$1" = 'apache2-foreground' ]; then
 
     # give permission to webserver to write css files
     chown -R www-data.www-data /var/www/geokrety/website/public/assets/compressed
+
+    echo "DEBUG: Launch $@"
+    exec "$@" &
+
+    # Create buckets
+    make buckets
+
+    wait
+
+else
+    exec "$@"
 fi
 
-exec "$@"
+echo "#############################"
+echo "###  END"
+echo "#############################"

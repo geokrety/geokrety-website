@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id="geokretyMissionPanel">
   <div class="panel-heading">
     {t}Mission{/t}
     {if $geokret->isOwner()}

@@ -17,8 +17,10 @@ GIT_COMMIT := $(shell git rev-parse --short HEAD)
 composer: ## run composer install locally
 	composer 2>/dev/null 1>&2 || { echo "composer is required : composer install guide at https://getcomposer.org"; exit 1; }
 	composer install
+composer-install-dev: ## run composer install locally
+	composer install --dev
 composer-autoload: ## Generate and optimize autoloader
-	${PTY_PREFIX} composer dump-autoload --optimize
+	composer dump-autoload --optimize
 
 phpcs: ## run php check style fixer
 	php ./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
@@ -29,13 +31,17 @@ trailing: ## run file check : check trailing spaces
 utf8: ## run file check : utf8
 	bash ./scripts/check-utf8.sh .
 test: ## run PHPUnit tests
-	php ./vendor/bin/phpunit
+	php ./vendor/bin/phpunit --stderr
 check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, utf8, test
-test-db: ## run PGTag tests
+test-db: ## run pgtap tests
 	PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -ot website/db/tests/test*.sql
+test-qa: ## run qa tests
+	cd tests-qa && make test
+test-health: ## Check if website health
+	cd website/public && php index.php /health
 
 seed: ## generate random data
-	${PTY_PREFIX} docker exec -ti geokrety-website_web_1 bash -c "cd website && ../vendor/bin/phinx seed:run"
+	cd website && ../vendor/bin/phinx seed:run
 
 buckets: ## create buckets
 	${PTY_PREFIX} bash -c "./minio/init.sh"

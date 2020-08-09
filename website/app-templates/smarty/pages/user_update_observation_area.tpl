@@ -34,7 +34,7 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
                         <div class="form-group">
                             <label for="inputRadius">{t}Observation radius{/t}</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="inputRadius" name="observation_area" value="{$currentUser->observation_area}" min="0" max="{GK_USER_OBSERVATION_AREA_MAX_KM}">
+                                <input type="number" class="form-control" id="inputRadius" name="observation_area" value="{$currentUser->observation_area|default:0}" min="0" max="{GK_USER_OBSERVATION_AREA_MAX_KM}">
                                 <span class="input-group-addon">km</span>
                             </div>
                         </div>
@@ -62,7 +62,7 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
                 <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $currentUser->id)}" title="{t}Back to user page{/t}" data-dismiss="modal">
                     {t}Dismiss{/t}
                 </a>
-                <button type="submit" class="btn btn-primary">{t}Define{/t}</button>
+                <button id="userObservationAreaSubmitButton" type="submit" class="btn btn-primary">{t}Define{/t}</button>
             </div>
 
         </form>
@@ -73,5 +73,9 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
 {block name=javascript}
 {include file='js/_map_init.tpl.js'}
 map = initializeMap();
+{if GK_DEVEL}
+{* used by Tests-qa in Robot  Framework *}
+$("#mapid").data({ map: map });
+{/if}
 {include file='js/users/user_observation_area.tpl.js'}
 {/block}
