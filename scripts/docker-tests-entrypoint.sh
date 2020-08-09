@@ -4,8 +4,8 @@ set -m
 
 MYSQL_USER=root
 
-# Instal website dependencies
-( cd website; composer install --no-scripts; )
+# Install website dependencies
+( cd website && composer install --no-scripts; )
 
 # Install dev dependencies
 composer install --no-scripts
@@ -14,13 +14,13 @@ composer install --no-scripts
 mysqld &
 
 # wait until MySQL is really available
-maxcounter=45
+maxCounter=45
 
 counter=1
 while ! mysql --protocol TCP -u"$MYSQL_USER" -e "show databases;" > /dev/null 2>&1; do
     sleep 1
-    counter=`expr $counter + 1`
-    if [ $counter -gt $maxcounter ]; then
+    counter=$((counter + 1))
+    if [ "$counter" -gt $maxCounter ]; then
         >&2 echo "We have been waiting for MySQL too long already; failing."
         exit 1
     fi;
