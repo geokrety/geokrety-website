@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-05 14:41+0000\n"
-"PO-Revision-Date: 2020-08-05 14:42\n"
+"POT-Creation-Date: 2020-08-05 16:41+0000\n"
+"PO-Revision-Date: 2020-08-19 12:01\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/GeokretClaim.php:21
 msgid "You are already the owner."
-msgstr ""
+msgstr "Já é o proprietário."
 
 #: website/app/GeoKrety/Controller/GeokretClaim.php:27
 msgid "Sorry, the provided owner code and tracking code doesn't match."
@@ -63,23 +63,23 @@ msgstr "O seu GeoKret foi atualizado."
 
 #: website/app/GeoKrety/Controller/GeokretLabel.php:22
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
-msgstr ""
+msgstr "Desculpe, não tem permissão para imprimir uma etiqueta para este GeoKret porque nunca o descobriu!"
 
 #: website/app/GeoKrety/Controller/GeokretLabel.php:34
 msgid "This label template does not exists."
-msgstr ""
+msgstr "Este modelo de etiqueta não existe."
 
 #: website/app/GeoKrety/Controller/GeokretLabel.php:49
 msgid "Something went wrong while saving the GeoKret preferred label template."
-msgstr ""
+msgstr "Algo deu errado ao guardar o modelo de etiqueta preferencial GeoKret."
 
 #: website/app/GeoKrety/Controller/GeokretLabel.php:64
 msgid "Some chosen languages are invalid."
-msgstr ""
+msgstr "Alguns idiomas escolhidos são inválidos."
 
 #: website/app/GeoKrety/Controller/GeokretLabel.php:82
 msgid "Please select an export type."
-msgstr ""
+msgstr "Por favor, seleccione um tipo de exportação."
 
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
@@ -133,7 +133,7 @@ msgstr "Falha ao apagar comentário."
 
 #: website/app/GeoKrety/Controller/MoveCreate.php:96
 msgid "The date time could not be parsed."
-msgstr ""
+msgstr "A data não pôde ser analisada."
 
 #: website/app/GeoKrety/Controller/MoveCreate.php:152
 #: website/app/GeoKrety/Controller/PasswordRecovery.php:34
@@ -193,7 +193,7 @@ msgstr "As novas palavras-passe não coincidem."
 
 #: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:87
 msgid "Unexpected error occurred."
-msgstr ""
+msgstr "Ocorreu um erro inesperado."
 
 #: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:92
 #: website/app/GeoKrety/Controller/UserUpdatePassword.php:55
@@ -206,7 +206,7 @@ msgstr "Não há nenhuma conta a usar esse endereço de email."
 
 #: website/app/GeoKrety/Controller/PictureEdit.php:38
 msgid "Picture caption saved."
-msgstr ""
+msgstr "Legenda da imagem guardada."
 
 #: website/app/GeoKrety/Controller/Registration.php:72
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:56
@@ -243,7 +243,7 @@ msgstr "Alguma coisa não correu bem, operação abortada."
 
 #: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:71
 msgid "Perfect! Enjoy your new email address."
-msgstr ""
+msgstr "Perfeito! Aproveite o seu novo endereço de e-mail."
 
 #: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:75
 msgid "Your email address has been reverted."
@@ -325,7 +325,7 @@ msgstr "Conta activada"
 #: website/app/GeoKrety/Email/EmailChange.php:66
 #: website/app/GeoKrety/Email/EmailChange.php:75
 msgid "An error occurred while sending the confirmation mail."
-msgstr ""
+msgstr "Ocorreu um erro ao enviar o e-mail de confirmação."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:42
 msgid "Welcome on GeoKrety.org"
@@ -334,7 +334,7 @@ msgstr "Bem-vindo a GeoKrety.org"
 #: website/app/GeoKrety/Email/AccountActivation.php:45
 #: website/app/GeoKrety/Model/User.php:274
 msgid "An error occurred while sending the activation mail."
-msgstr ""
+msgstr "Ocorreu um erro ao enviar o e-mail de activação."
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
 #: website/app/GeoKrety/Email/EmailChange.php:35
@@ -357,7 +357,7 @@ msgstr "O seu GeoKret '%s' foi adoptado"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:17
 msgid "An error occurred while sending the adoption mail notification to old owner."
-msgstr ""
+msgstr "Ocorreu um erro ao enviar a notificação de adopção por email, para o antigo proprietário."
 
 #: website/app/GeoKrety/Email/PasswordChange.php:16
 msgid "Password reset request"
@@ -365,7 +365,7 @@ msgstr "Pedido de reposição da palavra-passe"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:19
 msgid "An error occurred while sending the password reset mail."
-msgstr ""
+msgstr "Ocorreu um erro ao enviar o e-mail de redefinição da palavra-passe."
 
 #: website/app/GeoKrety/Email/PasswordChange.php:23
 msgid "An email containing a validation link has been sent to the provided email address."
@@ -377,7 +377,7 @@ msgstr "A sua palavra-passe foi alterada"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:31
 msgid "An error occurred while sending the password changed mail notification."
-msgstr ""
+msgstr "Ocorreu um erro ao enviar o e-mail de notificação da alteração da palavra-passe."
 
 #: website/app/GeoKrety/Email/UserContact.php:15
 #, php-format
@@ -386,7 +386,7 @@ msgstr "Contacto do utilizador %s"
 
 #: website/app/GeoKrety/Email/UserContact.php:18
 msgid "An error occurred while sending mail."
-msgstr ""
+msgstr "Ocorreu um erro ao enviar e-mail."
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -394,7 +394,7 @@ msgstr "Tradicional"
 
 #: website/app/GeoKrety/GeokretyType.php:57
 msgid "A book/CD/DVD…"
-msgstr ""
+msgstr "Um livro/CD/DVD…"
 
 #: website/app/GeoKrety/GeokretyType.php:58
 msgid "A human"
@@ -440,15 +440,15 @@ msgstr "Nascido"
 
 #: website/app/GeoKrety/PictureType.php:58
 msgid "GeoKret avatar"
-msgstr ""
+msgstr "Avatar do GeoKret"
 
 #: website/app/GeoKrety/PictureType.php:59
 msgid "GeoKret move"
-msgstr ""
+msgstr "Movimento do GeoKret"
 
 #: website/app/GeoKrety/PictureType.php:60
 msgid "User avatar"
-msgstr ""
+msgstr "Avatar do utilizador"
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:233
 msgid "Bad coordinates or unknown format."
@@ -458,9 +458,9 @@ msgstr "Coordenadas erradas ou em formato desconhecido."
 msgid "Missing or invalid coordinates."
 msgstr "Coordenadas em falta ou inválidas."
 
-#: website/app/GeoKrety/Service/Labels/Image.php:28
+#: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
-msgstr ""
+msgstr "<tspan font-weight=\"bold\"> Manual de utilizador: </ strong> <tspan font-weight=\"bold\"> 1 </ strong>. Levar este GeoKret. Anote o seu código de seguimento. <tspan font-weight=\"bold\"> 2. </ strong> Esconda-o noutra cache. <tspan font-weight=\"bold\"> 3.</ strong> Registe a viagem em https://geokrety.org/"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
@@ -533,17 +533,17 @@ msgstr "Prémio para %s GeoKrety"
 
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:30
 msgid "Search on geocaching.com"
-msgstr ""
+msgstr "Pesquisar em geocaching.com"
 
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:36
 #, php-format
 msgid "Location: %s Elevation: %dm"
-msgstr ""
+msgstr "Localização: %s Elevação: %dm"
 
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:36
 #, php-format
 msgid "Location: %s"
-msgstr ""
+msgstr "Localização: %s"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:18
 msgid "has avatar icon"
@@ -560,7 +560,7 @@ msgstr "Ver o perfil de %s"
 
 #: website/app-templates/smarty/plugins/modifier.movelink.php:21
 msgid "View move details"
-msgstr ""
+msgstr "Visualizar detalhes do movimento"
 
 #: website/app-templates/smarty/plugins/modifier.newslink.php:15
 #: website/app-templates/smarty/pages/news_details.tpl:47
@@ -625,7 +625,7 @@ msgstr "O campo \"{0}\" não pode estar vazio"
 
 #: website/app/validators.php:17
 msgid "The {0} field must be a valid date time"
-msgstr ""
+msgstr "O campo {0} deve ser uma data válida"
 
 #: website/app/validators.php:21
 msgid "The GeoKret type is invalid"
@@ -637,7 +637,7 @@ msgstr "O tipo de movimento é inválido"
 
 #: website/app/validators.php:29
 msgid "The picture type is invalid"
-msgstr ""
+msgstr "O tipo de imagem é inválido"
 
 #: website/app/validators.php:33
 msgid "This language is not supported"
@@ -946,7 +946,7 @@ msgstr "Dono"
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:10
 msgid "%1's Owned GeoKrety map"
-msgstr ""
+msgstr "%1possui um mapa GeoKrety"
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:28
 #: website/app-templates/smarty/blocks/geokret/details.tpl:46
@@ -955,15 +955,15 @@ msgstr "Distância total"
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:32
 msgid "Total visited caches"
-msgstr ""
+msgstr "Total de caches visitadas"
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:36
 msgid "Last moved date"
-msgstr ""
+msgstr "Data da última movimentação"
 
 #: website/app-templates/smarty/pages/user_owned_pictures.tpl:7
 msgid "Pictures of %1's GeoKrety"
-msgstr ""
+msgstr "Imagens da GeoKrety de %1"
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:7
 #: website/app-templates/smarty/blocks/user/actions.tpl:20
@@ -1142,7 +1142,7 @@ msgstr "Créditos"
 
 #: website/app-templates/smarty/pages/user_pictures.tpl:7
 msgid "%1's posted pictures"
-msgstr ""
+msgstr "Publicações de imagens de %1"
 
 #: website/app-templates/smarty/pages/news_details.tpl:11
 msgid "Leave a comment"
@@ -1366,7 +1366,7 @@ msgstr "Situação: Preparado para pesquisar"
 
 #: website/app-templates/smarty/pages/pictures_gallery.tpl:7
 msgid "Pictures gallery"
-msgstr ""
+msgstr "Galeria de imagens"
 
 #: website/app-templates/smarty/pages/user_inventory.tpl:7
 msgid "%1's inventory"
@@ -1505,7 +1505,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:3
 msgid "Generate a GeoKret Label"
-msgstr ""
+msgstr "Gerar uma etiqueta GeoKret"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:8
 #: website/app-templates/smarty/forms/geokret_label.tpl:10
@@ -1519,7 +1519,7 @@ msgstr "Nome GeoKret"
 #: website/app-templates/smarty/forms/geokret_label.tpl:22
 #: website/app-templates/smarty/forms/geokret_label.tpl:29
 msgid "Reference numbers"
-msgstr ""
+msgstr "Números de referência"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:24
 #: website/app-templates/smarty/blocks/geokret/details.tpl:40
@@ -1545,29 +1545,29 @@ msgstr "Etiqueta modelo"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:54
 msgid "Label help languages"
-msgstr ""
+msgstr "Idiomas de ajuda para etiquetas"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:62
 msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr ""
+msgstr "Nota1: nem todos os modelos de etiqueta suportam esta funcionalidade e, quando suportado, o inglês está sempre presente."
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:69
 msgid "Generate as .png"
-msgstr ""
+msgstr "Gerar como .png"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:70
 msgid "Generate as .svg"
-msgstr ""
+msgstr "Gerar como .svg"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:71
 msgid "Generate as .pdf"
-msgstr ""
+msgstr "Gerar como .pdf"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:80
 #: website/app-templates/smarty/forms/geokret_label.tpl:83
 #: website/app-templates/smarty/forms/geokret_label.tpl:84
 msgid "GeoKret label preview"
-msgstr ""
+msgstr "Antevisão da etiqueta GeoKret"
 
 #: website/app-templates/smarty/forms/geokret.tpl:4
 #: website/app-templates/smarty/forms/geokret.tpl:62
@@ -2032,7 +2032,7 @@ msgstr "Ainda nenhuma insígnia recebida."
 
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
-msgstr ""
+msgstr "Ainda não há imagens."
 
 #: website/app-templates/smarty/dialog/login.tpl:5
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
@@ -2049,7 +2049,7 @@ msgstr "Lembrar de mim"
 
 #: website/app-templates/smarty/dialog/login.tpl:30
 msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr ""
+msgstr "Estamos a usar cookies apenas para manter a sua sessão activa. Leia mais sobre a nossa <a href=\"%1\" target=\"_blank\">política de cookies</a>."
 
 #: website/app-templates/smarty/dialog/login.tpl:38
 msgid "No account yet ? Register now!"
@@ -2089,7 +2089,7 @@ msgstr "Seleccione <span class=\"badge\">%1</span>"
 
 #: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:4
 msgid "Do you want to set this picture as main avatar?"
-msgstr ""
+msgstr "Deseja definir esta imagem como avatar principal?"
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:3
 msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
@@ -2144,31 +2144,31 @@ msgstr "Deseja mesmo excluir este movimento?"
 
 #: website/app-templates/smarty/dialog/move_delete.tpl:14
 msgid "Deleting this Move will delete attached pictures and the main avatar!"
-msgstr ""
+msgstr "Excluir este Movimento irá apagar as imagens anexadas e o avatar principal!"
 
 #: website/app-templates/smarty/dialog/move_delete.tpl:16
 msgid "Deleting this Move will delete attached pictures!"
-msgstr ""
+msgstr "Excluir este Movimento irá apagar as imagens anexadas!"
 
 #: website/app-templates/smarty/dialog/picture_delete.tpl:4
 msgid "Do you really want to delete this picture?"
-msgstr ""
+msgstr "Deseja realmente apagar esta imagem?"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:6
 msgid "Manage picture"
-msgstr ""
+msgstr "Gerir imagem"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:12
 msgid "Caption"
-msgstr ""
+msgstr "Legenda"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:24
 msgid "Remember caption"
-msgstr ""
+msgstr "Lembrar legenda"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:27
 msgid "Remember the caption for the next %1 minutes"
-msgstr ""
+msgstr "Recordar a legenda para os próximos %1 minutos"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
 msgid "Choose your preferred language"
@@ -2350,7 +2350,7 @@ msgstr "Mesmo que não seja - por enquanto - obrigatório, recomendamos que faç
 
 #: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
 msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
-msgstr ""
+msgstr "Não hesite em <a href=\"%1\">criar uma conta</a>."
 
 #: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
 msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
@@ -2536,7 +2536,7 @@ msgstr ""
 
 #: website/app-templates/smarty/elements/move.tpl:7
 msgid "Show move on map"
-msgstr ""
+msgstr "Mostrar movimento no mapa"
 
 #: website/app-templates/smarty/elements/move.tpl:64
 msgid "Report as missing"
@@ -2556,43 +2556,43 @@ msgstr "Apagar log"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:41
 msgid "Informations:"
-msgstr ""
+msgstr "Informações:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:43
 msgid "Owner:"
-msgstr ""
+msgstr "Proprietário:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:44
 msgid "Distance:"
-msgstr ""
+msgstr "Distância:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:45
 msgid "Caches:"
-msgstr ""
+msgstr "Caches:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:47
 msgid "Actual position:"
-msgstr ""
+msgstr "Posição actual:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:49
 msgid "Waypoint:"
-msgstr ""
+msgstr "Ponto de referência"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:50
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:51
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:52
 msgid "Country:"
-msgstr ""
+msgstr "País:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:53
 msgid "Elevation:"
-msgstr ""
+msgstr "Elevação:"
 
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
