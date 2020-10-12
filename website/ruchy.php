@@ -89,13 +89,13 @@ $g_lat = $_GET['lat'];
 // autopoprawione...
 $g_lon = $_GET['lon'];
 // autopoprawione...
-$g_nr = $_GET['nr'];
+$g_nr = preg_replace('/[^a-z0-9]+/i', '', $_GET['nr']);
 // autopoprawione...
 $g_ruchid = $_GET['ruchid'];
 // autopoprawione...
 $g_type = $_GET['type'];
 // autopoprawione...
-$g_waypoint = $_GET['waypoint'];
+$g_waypoint = preg_replace('/[^a-z0-9]+/i', '', $_GET['waypoint']);
 // autopoprawione...import_request_variables('g', 'g_');
 
 $g_data = substr($_GET['data'], 0, 10);
@@ -257,7 +257,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     for ($i = 0; $i < count($numery); ++$i) {
         // ------ kretonumer ---------- //
 
-        $kret_nr = trim(strtoupper($numery[$i]));
+        $kret_nr = mysqli_real_escape_string($link, trim(strtoupper($numery[$i])));
 
         $result = mysqli_query($link, "SELECT id FROM `gk-geokrety` WHERE nr='$kret_nr' LIMIT 1");
         $row = mysqli_fetch_row($result);
