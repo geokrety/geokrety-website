@@ -188,7 +188,7 @@ class Move extends Base {
     }
 
     public function isGeoKretLastPosition(): bool {
-        return $this->geokret->last_position === $this->id;
+        return $this->geokret->last_position->id === $this->id;
     }
 
     public function getMoveOnPage(): int {

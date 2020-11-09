@@ -46,49 +46,31 @@ jobs:
         - export PGPORT=5433
         - export DOCKER_COMPOSE="docker-compose -p gk -f docker-compose.local.yml"
 
+        # Retrieve huge file to initialize database
+        - ./website/db/get_huge_dump_files.sh
+
         # Stop postgres as we'll use our instance
         - sudo service postgresql stop 12
-        - sudo apt-get update > /dev/null && sudo apt-get install -y postgresql-client-12 postgis haveged -qq > /dev/null
-        - sudo service haveged start
+        - sudo apt-get update > /dev/null && sudo apt-get install -y postgresql-client-12 postgis httping -qq > /dev/null
 
         # Launch Postgres
-        - sudo mkdir /mnt/ramfs
-        - sudo mount -t tmpfs -o size=2048m tmpfs /mnt/ramfs
         - ${DOCKER_COMPOSE} pull postgres
         - ${DOCKER_COMPOSE} up -d --no-build postgres
-        - timeout 60s bash -c "while ! pg_isready; do sleep 0.1; done"
-
-        # Install Postgres extensions
-        - psql -c "CREATE EXTENSION postgis WITH SCHEMA public;"
-        - psql -c "CREATE EXTENSION postgis_raster WITH SCHEMA public;"
-        - psql -c "CREATE EXTENSION pgcrypto WITH SCHEMA public;"
-        - psql -c "CREATE EXTENSION pgtap WITH SCHEMA public;"
-        - psql -c "\dx"
-        - psql -c "\dT *.plan"
-
-        # Install schema
-        - psql < website/db/dumps/public-schema.sql
-        - psql < website/db/dumps/secure-schema.sql
-        - psql < website/db/crypto/demo-keys.sql
-        - psql < website/db/dumps/geokrety-schema.sql
-        - psql < website/db/dumps/gk_waypoints_country.data.sql
-        - psql < website/db/dumps/gk_waypoints_types.data.sql
-        - psql < website/db/dumps/phinxlogs.data.sql
-        - pg_restore --host "$PGHOST" --dbname "$PGDATABASE" --data-only --disable-triggers --verbose --schema "public" --table "countries" website/db/dumps/public-data.tar
 
         # import SRTM subset for tests
-        - sudo apt-get install -y postgis -qq > /dev/null
-        - website/db/tests-srtm-import.sh
+        - timeout 60s bash -c "while ! pg_isready; do sleep 1; done"
+        # - ${DOCKER_COMPOSE} logs postgres
+        - ./website/db/tests-srtm-import.sh
 
         # Other services
-        - ${DOCKER_COMPOSE} pull cdn redis minio pictures-processor-downloader pictures-processor-uploader svg-to-png
-        - ${DOCKER_COMPOSE} build website
+        - ${DOCKER_COMPOSE} build website-base website > /dev/null
+        - ${DOCKER_COMPOSE} build pictures-processor pictures-downloader pictures-uploader > /dev/null
+        - ${DOCKER_COMPOSE} pull cdn redis minio svg-to-png
         - ${DOCKER_COMPOSE} up -d --no-build
         - docker ps -a
 
         # Wait for webserver
-        - sudo apt-get install -y httping -qq > /dev/null
-        - for i in $(seq 60); do httping -sGc1 -o 200,302 http://localhost:3001/ && echo OK && break ; sleep 1 ; done
+        - for i in $(seq 60); do httping -sGc1 -o 200,302 http://localhost:3001/ && echo OK && break ; sleep 1 ; ${DOCKER_COMPOSE} logs website ; done || exit 1
 
         # Test the database
         - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl -qq > /dev/null

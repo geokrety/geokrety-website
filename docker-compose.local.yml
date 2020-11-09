@@ -25,6 +25,7 @@ x-variables: &variables
     GK_DEPLOY_DATE: "2020-08-07T17:23:35.869127Z"
 
     GK_DB_DRIVER: "pgsql"
+    GK_DB_HOST: "postgres"
     GK_DB_DSN: "pgsql:host=postgres;dbname=geokrety"
     GK_DB_USER: "geokrety"
     GK_DB_PASSWORD: "geokrety"
@@ -44,13 +45,25 @@ x-variables: &variables
 
 services:
 
+  # used to build image only
+  website-base:
+    image: geokrety/website-legacy-base:php74
+    build:
+      context: https://github.com/geokrety/geokrety-website-docker-base.git#php74
+      dockerfile: Dockerfile
+    command:
+      - "/bin/true"
+
   website:
-    image: dev/geokrety/website-legacy:new-theme
+    image: local/geokrety/website-legacy:new-theme
     build:
       context: ./
       args:
         BASE_TAG: php74
     <<: *variables
+    # You may wish to enable local mount on your local machine
+    # volumes:
+    #   - .:/var/www/geokrety/
     ports:
       - 3001:80
     dns:
@@ -61,8 +74,8 @@ services:
       - minio
       - redis
       - svg-to-png
-      - pictures-processor-downloader
-      - pictures-processor-uploader
+      - pictures-downloader
+      - pictures-uploader
     healthcheck:
       disable: true
 
@@ -77,7 +90,9 @@ services:
     build: https://github.com/geokrety/geokrety-postgres.git
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/ramfs/:/var/lib/postgresql/:rw
+      - ./website/db/dumps/:/docker-entrypoint-initdb.d/
+    tmpfs:
+      - /var/lib/postgresql/data
     ports:
       - 5433:5432
     environment:
@@ -85,7 +100,7 @@ services:
       POSTGRES_DB: "geokrety"
       POSTGRES_USER: "geokrety"
       POSTGRES_PASSWORD: "geokrety"
-      POSTGIS_ENABLE_OUTDB_RASTERS: 1
+      # POSTGIS_ENABLE_OUTDB_RASTERS: 1
       POSTGIS_GDAL_ENABLED_DRIVERS: ENABLE_ALL
 
   redis:
@@ -99,31 +114,40 @@ services:
     environment:
       MINIO_ACCESS_KEY: access_key
       MINIO_SECRET_KEY: secret_key
+    tmpfs:
+      - /data
     ports:
       - 3003:9000
     depends_on:
-      - pictures-processor-uploader
+      - pictures-uploader
 
-  pictures-processor-downloader:
+  # used to build image only
+  pictures-processor:
+    image: geokrety/pictures-processor-base:latest
+    build:
+      context: https://github.com/geokrety/geokrety-pictures-processor.git
+      dockerfile: Dockerfile.base
+      args:
+        BASE_TAG: php74
+    command:
+      - "/bin/true"
+
+  pictures-downloader:
     image: geokrety/pictures-processor-downloader:new-theme
     build:
       context: https://github.com/geokrety/geokrety-pictures-processor.git
       dockerfile: Dockerfile.downloader
-      args:
-        BASE_TAG: php74
     environment:
       GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY: pp_access_key
       GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY: pp_secret_key
       GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_DOWNLOADER: "token2"
       GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST: "token4"
 
-  pictures-processor-uploader:
+  pictures-uploader:
     image: geokrety/pictures-processor-uploader:new-theme
     build:
       context: https://github.com/geokrety/geokrety-pictures-processor.git
       dockerfile: Dockerfile.uploader
-      args:
-        BASE_TAG: php74
     environment:
       MINIO_ACCESS_KEY: access_key
       MINIO_SECRET_KEY: secret_key

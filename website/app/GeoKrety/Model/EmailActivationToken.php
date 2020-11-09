@@ -33,6 +33,11 @@ class EmailActivationToken extends Base {
     const TOKEN_VALIDATED = 5;
     const TOKEN_REVERTED = 6;
 
+    const TOKEN_NEED_PREVIOUS_EMAIL_FIELD = [
+        self::TOKEN_CHANGED,
+        self::TOKEN_VALIDATED,
+        self::TOKEN_REVERTED,
+    ];
     const TOKEN_NEED_UPDATE = [
         self::TOKEN_CHANGED,
         self::TOKEN_REFUSED,
@@ -92,7 +97,7 @@ class EmailActivationToken extends Base {
         ],
         'used' => [
             'type' => Schema::DT_INT1,
-            'default' => 0,
+            'default' => self::TOKEN_UNUSED,
             'nullable' => false,
         ],
         'created_on_datetime' => [
@@ -262,15 +267,16 @@ EOT;
                 'filter' => 'trim',
                 'validate' => 'required|valid_email',
                 'validate_depends' => [
-                    'used' => ['validate', 'email_activation_require_update'],
+                    'used' => ['validate', 'email_activation_require_previous_email_field'],
                 ],
             ],
         ];
         $data = [
             'email' => $this->_email ?: $this->email,
             'previous_email' => $this->_previous_email ?: $this->previous_email,
-            'used' => $this->used,
+            'used' => $this->used ?: self::TOKEN_UNUSED,
         ];
+
         $validation_1 = \Validation::instance()->validate($rules, $data);
         $validation_2 = \Validation::instance()->validateCortexMapper($this, $level, $op, true);
 

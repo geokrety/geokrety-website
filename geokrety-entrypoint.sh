@@ -20,6 +20,7 @@ if [ "$1" = 'apache2-foreground' ]; then
     make composer-autoload
 
     # Migrate database
+    while ! pg_isready -h ${GK_DB_HOST:-postgres}; do sleep 1; done
     runuser -u www-data make phinx-migrate
 
     # build templates

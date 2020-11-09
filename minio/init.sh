@@ -17,7 +17,7 @@
 : "${GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER:=pictures-processor-downloader}"
 : "${GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER:=pictures-processor-uploader}"
 
-: "${GK_WEBSITE_HOST:=localhost}"
+: "${GK_WEBSITE_HOST:=website}"
 : "${GK_WEBSITE_PORT:=80}"
 : "${GK_PICTURES_DOWNLOADER_HOST:=pictures-downloader}"
 : "${GK_PICTURES_DOWNLOADER_PORT:=80}"

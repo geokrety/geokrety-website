@@ -34,7 +34,7 @@ $ export GEOKRETY_URL=http://localhost:3001/
 Note: qa-tests depends on `GK_DEVEL` environment variable which activates some
 special quick access functions to be used only in tests.
 
-Warning: Runnin qa-tests will empty your database!
+Warning: Running qa-tests will empty your database!
 
 The simplest way is to use the `Makefile` to launch all tests
 ```bash

@@ -97,6 +97,10 @@ $validator->addValidator('after_geokret_birth', function ($field, $input, $param
     return $input[$field]->format('Y-m-d H:i') >= $input['geokret']->created_on_datetime->format('Y-m-d H:i');
 }, _('{0} must be after GeoKret birth'));
 
+$validator->addValidator('email_activation_require_previous_email_field', function ($field, $input, $param = null) {
+    return in_array($input['used'], \GeoKrety\Model\EmailActivationToken::TOKEN_NEED_PREVIOUS_EMAIL_FIELD, true);
+}, '{0} require update fields');
+
 $validator->addValidator('email_activation_require_update', function ($field, $input, $param = null) {
     return in_array($input['used'], \GeoKrety\Model\EmailActivationToken::TOKEN_NEED_UPDATE, true);
 }, '{0} require update fields');

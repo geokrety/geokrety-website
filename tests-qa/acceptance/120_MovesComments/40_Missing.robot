@@ -85,21 +85,21 @@ Multiple Missing Report Allowed
     Check Move Comment Missing              ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}    comment=${COMMENT_1}
     Check Move Comment Missing              ${GEOKRET_DETAILS_MOVES_COMMENTS_SECOND_ITEM}   comment=${COMMENT_2}
 
-Comment Is Mandatory
+# TODO: Comment Is Mandatory
 
-# Missing Can Be Deleted By It's Author
+# TODO: Missing Can Be Deleted By It's Author
 
-# Other Users Cannot Delete Missing Reports
+# TODO: Other Users Cannot Delete Missing Reports
 
-# Recent Logs With Missing Should Be Shown Red On Homepage
+# TODO: Recent Logs With Missing Should Be Shown Red On Homepage
 
-# Recent GeoKrety With Missing Should Be Shown Red On Homepage
+# TODO: Recent GeoKrety With Missing Should Be Shown Red On Homepage
 
-# GeoKrety With Missing Should Be Shown Red On Recently Posted Moves Page
+# TODO: GeoKrety With Missing Should Be Shown Red On Recently Posted Moves Page
 
-# GeoKrety With Missing Should Be Shown Red On Owned GeoKrety Moves Page
+# TODO: GeoKrety With Missing Should Be Shown Red On Owned GeoKrety Moves Page
 
-# A New Log Position Reset The Missing Status
+# TODO: A New Log Position Reset The Missing Status
 
 
 
