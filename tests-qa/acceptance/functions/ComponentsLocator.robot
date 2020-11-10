@@ -275,6 +275,16 @@ ${USER_PASSWORD_NEW_INPUT}                      //*[@id="inputPasswordNew"]
 ${USER_PASSWORD_CONFIRM_INPUT}                  //*[@id="inputPasswordConfirm"]
 
 ################
+# USER PASSWORD RECOVERY
+################
+
+${USER_PASSWORD_RECOVERY_EMAIL_INPUT}           //*[@id="email"]
+${USER_PASSWORD_RECOVERY_END_LINK_BUTTON}       //*[@id="sendRecoveryLinkButton"]
+${USER_PASSWORD_RECOVERY_NEW_INPUT}             //*[@id="inputPasswordNew"]
+${USER_PASSWORD_RECOVERY_CONFIRM_INPUT}         //*[@id="inputPasswordConfirm"]
+${USER_PASSWORD_RECOVERY_CHANGE_BUTTON}         //*[@id="changePasswordButton"]
+
+################
 # USER LANGUAGE PREFERENCES
 ################
 

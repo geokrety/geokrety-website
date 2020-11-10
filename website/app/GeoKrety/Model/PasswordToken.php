@@ -88,6 +88,9 @@ class PasswordToken extends Base {
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
         });
+        $this->beforeupdate(function ($self) {
+            $self->validating_ip = \Base::instance()->get('IP');
+        });
 
         $this->virtual('expire_on_datetime', function ($self) {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();

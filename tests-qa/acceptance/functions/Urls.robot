@@ -58,6 +58,9 @@ ${PAGE_USER_1_CONTACT_URL}              ${GK_URL}/en/users/1/contact
 ${PAGE_USER_2_CONTACT_URL}              ${GK_URL}/en/users/2/contact
 ${PAGE_USER_3_CONTACT_URL}              ${GK_URL}/en/users/3/contact
 
+${PAGE_PASSWORD_RECOVERY_URL}           ${GK_URL}/en/password-recovery
+${PAGE_PASSWORD_RECOVERY_RESET_PASSWORD_URL}     ${GK_URL}/en/recover-password/
+
 ${PAGE_GEOKRETY_CREATE_URL}             ${GK_URL}/en/geokrety/create
 ${PAGE_GEOKRETY_CLAIM_URL}              ${GK_URL}/en/geokrety/claim
 

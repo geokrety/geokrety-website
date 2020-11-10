@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">{t}Send me a recovery link{/t}</button>
+                    <button type="submit" id="sendRecoveryLinkButton" class="btn btn-primary">{t}Send me a recovery link{/t}</button>
                 </div>
             </div>
         </form>

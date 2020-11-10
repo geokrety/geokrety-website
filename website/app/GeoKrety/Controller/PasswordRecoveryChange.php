@@ -73,7 +73,7 @@ class PasswordRecoveryChange extends Base {
         $user->save();
 
         // Mark token as used
-        $token->used = 1;
+        $token->used = PasswordToken::TOKEN_VALIDATED;
         $token->touch('used_on_datetime');
         if (!$token->validate()) {
             $this->get($f3);

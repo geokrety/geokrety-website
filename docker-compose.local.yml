@@ -61,9 +61,9 @@ services:
       args:
         BASE_TAG: php74
     <<: *variables
-    # You may wish to enable local mount on your local machine
-    # volumes:
-    #   - .:/var/www/geokrety/
+#    ## You may wish to enable local mount on your local machine
+#    volumes:
+#      - .:/var/www/geokrety/
     ports:
       - 3001:80
     dns:
