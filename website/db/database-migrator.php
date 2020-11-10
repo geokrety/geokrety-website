@@ -516,6 +516,8 @@ class GeokretyMigrator extends BaseMigrator {
         $values[9] = $values[9] ?: null;  // last_position
         $values[10] = $values[10] ?: null;  // last_log
 
+        $values[8] = 0;  // pictures_count ; set to 0 as we'll count when pictures are imported
+
         $values[3] = Markdown::toFormattedMarkdown($values[3]);  // mission
     }
 
@@ -599,6 +601,8 @@ class MovesMigrator extends BaseMigrator {
             $values[] = $values[2];  // lat
         }
         $values[11] = Markdown::toFormattedMarkdown($values[11]);  // comment
+
+        $values[12] = 0;  // pictures_count ; set to 0 as we'll count when pictures are imported
     }
 
     protected function prepareInsertValues(int $chunkSize): string {
@@ -681,9 +685,10 @@ class PicturesMigrator extends BaseMigrator {
         $this->pPdo->query('DELETE FROM gk_pictures WHERE id IN (SELECT gk_pictures.id FROM gk_pictures LEFT JOIN gk_moves ON gk_pictures.move=gk_moves.id WHERE gk_pictures.move IS NOT NULL AND gk_moves.id IS NULL);');
         $this->pPdo->query('DELETE FROM gk_pictures WHERE id IN (SELECT gk_pictures.id FROM gk_pictures LEFT JOIN gk_users ON gk_pictures.user=gk_users.id WHERE gk_pictures.user IS NOT NULL AND gk_users.id IS NULL);');
         $this->pPdo->query('UPDATE "gk_pictures" SET geokret=gk_moves.geokret FROM "gk_moves" WHERE "gk_pictures".move=gk_moves.id AND CAST("gk_pictures".type AS text) = \'1\';');
+        $this->pPdo->query('WITH pictures AS (SELECT COUNT(*) AS total, "user" FROM gk_pictures WHERE type = 2 AND uploaded_on_datetime IS NOT NULL AND "user" IS NOT NULL GROUP BY "user") UPDATE "gk_users" AS u  SET pictures_count = pictures.total FROM pictures WHERE u.id = pictures."user";');
+        $this->pPdo->query('WITH pictures AS (SELECT COUNT(*) AS total, "geokret" FROM gk_pictures WHERE type = 0 AND uploaded_on_datetime IS NOT NULL AND "geokret" IS NOT NULL GROUP BY "geokret") UPDATE "gk_geokrety" AS g  SET pictures_count = pictures.total FROM pictures WHERE g.id = pictures."geokret";');
+        $this->pPdo->query('WITH pictures AS (SELECT COUNT(*) AS total, "move" FROM gk_pictures WHERE type = 01 AND uploaded_on_datetime IS NOT NULL AND "move" IS NOT NULL GROUP BY "move") UPDATE "gk_moves" AS m  SET pictures_count = pictures.total FROM pictures WHERE m.id = pictures."move";');
     }
-
-    // TODO: update Users/GeoKrety/Moves pictures_count
 }
 
 class RacesMigrator extends BaseMigrator {
