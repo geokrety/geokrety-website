@@ -9,7 +9,7 @@ require_once '../longin_chceck.php';
 $longin_status = longin_chceck();
 $userid = $longin_status['userid'];
 
-$arr = array();
+$arr = [];
 $loggedin = false;
 
 if (!empty($userid)) {

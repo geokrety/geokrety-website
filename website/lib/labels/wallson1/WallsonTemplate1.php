@@ -19,7 +19,7 @@ class WallsonTemplate1 extends PngTemplate {
         imagettftext($img, 35, 0, 2010, 100, $blackColor, $this->getFont(), $gkId);
 
         $i = 0;
-        $languagesColumn = array();
+        $languagesColumn = [];
         foreach ($languages as $lang) {
             $lang = $this->getManual($lang);
             if (empty($lang)) {
@@ -31,7 +31,7 @@ class WallsonTemplate1 extends PngTemplate {
             if ($i % 3 == 0) {
                 //We got three manuals, let's push them to the column
                 imagettftext($img, 18, 0, 1245 + ($i / 3 - 1) * 555, 220, $blackColor, $this->getFont(), StringUtils::mb_wordwrap(implode("\n\n", $languagesColumn), 45));
-                $languagesColumn = array();
+                $languagesColumn = [];
             }
         }
 

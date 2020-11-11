@@ -8,7 +8,7 @@ function znak($x) {
 
 function latlon($lat, $lon) {
     // podmianki w lat-lon
-    $conaco_latlon = array('°' => '', "\'" => '', ',' => '.', 'S' => '-', 'W' => '-', 'S ' => '-', 'W ' => '-', 'N' => '', 'E' => '');
+    $conaco_latlon = ['°' => '', "\'" => '', ',' => '.', 'S' => '-', 'W' => '-', 'S ' => '-', 'W ' => '-', 'N' => '', 'E' => ''];
 
     $lat = trim(strtr($lat, $conaco_latlon));
     $lon = trim(strtr($lon, $conaco_latlon));

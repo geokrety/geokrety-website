@@ -13,13 +13,13 @@ class swistak {
 
     public static function safe_b64encode($data) {
         $data = base64_encode($data);
-        $data = str_replace(array('+', '/', '='), array('-', '_', ''), $data);
+        $data = str_replace(['+', '/', '='], ['-', '_', ''], $data);
 
         return $data;
     }
 
     public static function safe_b64decode($data) {
-        $data = str_replace(array('-', '_'), array('+', '/'), $data);
+        $data = str_replace(['-', '_'], ['+', '/'], $data);
         $mod4 = strlen($data) % 4;
         if ($mod4) {
             $data .= substr('====', $mod4);

@@ -3,10 +3,10 @@
  * @SuppressWarnings(PHPMD)
  */
 class TestUtil {
-    private $countries = array('fr', 'us', 'de', 'at', 'es');
-    private $waypoints = array('OC1234', 'GC4566', 'CK2324', 'DD33333', 'CM342244');
-    private $users = array('234', '566', '232', '333', '244');
-    private $logtypes = array('0', '3', '5');
+    private $countries = ['fr', 'us', 'de', 'at', 'es'];
+    private $waypoints = ['OC1234', 'GC4566', 'CK2324', 'DD33333', 'CM342244'];
+    private $users = ['234', '566', '232', '333', '244'];
+    private $logtypes = ['0', '3', '5'];
     private $datum = 1543370882;
 
     public function isValidHtmlContent($htmlExtract) {

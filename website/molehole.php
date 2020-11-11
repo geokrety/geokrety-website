@@ -72,7 +72,7 @@ $TRESC .= '<p>'._('a GK hotel/motel is an easy-to-reach cache, close to an airpo
 
 $TRESC .= '<p>'._('By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:').'</p><table>';
 
-$lista_hoteli = array('OP0F87', 'OP2262',  'OP16B8', 'OC85FC', 'OK0085', 'OP1C23',
+$lista_hoteli = ['OP0F87', 'OP2262',  'OP16B8', 'OC85FC', 'OK0085', 'OP1C23',
 'OP115F',
 'OP0F87',
 'OP183D',
@@ -134,7 +134,7 @@ $lista_hoteli = array('OP0F87', 'OP2262',  'OP16B8', 'OC85FC', 'OK0085', 'OP1C23
 'TR17479',
 'TR18111',
 'TR18165',
-);
+];
 
 // `lat`, `lon`, `name`, `typ`, `kraj`, `link`, `alt`, `country`, `status`
 foreach ($lista_hoteli as $waypoint) {

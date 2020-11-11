@@ -1,4 +1,5 @@
 <?php
+
  include './vendor/autoload.php';
 
  $testConfig = dirname(__FILE__).DIRECTORY_SEPARATOR.'config';

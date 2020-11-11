@@ -14,10 +14,10 @@ function waypoint_info($waypoint) {
         $prefiks_3 = substr($waypoint, 0, 3);
 
         // There are not only OC prefixes, but all supported
-        $prefiksy_oc = array('OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MV', 'MS', 'TR', 'LT', 'LV', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR'); // oc i inne full wypas
-        $prefiksy_inne = array('GC');
-        $prefiksy_inne_1 = array('N');
-        $prefiksy_inne_3 = array('WPG');
+        $prefiksy_oc = ['OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MV', 'MS', 'TR', 'LT', 'LV', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR']; // oc i inne full wypas
+        $prefiksy_inne = ['GC'];
+        $prefiksy_inne_1 = ['N'];
+        $prefiksy_inne_3 = ['WPG'];
 
         require_once 'templates/konfig.php';
         $link = DBConnect();

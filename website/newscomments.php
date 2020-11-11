@@ -80,7 +80,7 @@ $g_newsid = $_GET['newsid'];
 // -----------------------------------------------------------------------------------------------
 // jezeli znajdziemy jakies nieznane  parametry to logujemy informacje do errorow
 // to tak dla bezpieczenstwa, za jakis czas mozna to wyremowac :)
-$allowed_request_variables = array('NEWSID', 'COMMENT', 'SUBSCRIBED', 'SUBMIT', 'MODE', 'DELETE', 'CONFIRMED');
+$allowed_request_variables = ['NEWSID', 'COMMENT', 'SUBSCRIBED', 'SUBMIT', 'MODE', 'DELETE', 'CONFIRMED'];
 foreach ($_GET as $var => $value) {
     if (!in_array(strtoupper($var), $allowed_request_variables)) {
         $bad_request_variables[] = "G|$var|";

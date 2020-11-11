@@ -11,16 +11,16 @@ function check_email_validity($userid, $alert_msgs) {
     $message = sprintf(_('Your currently configured email address (%s) seems to be invalid. Please <a href="/edit.php?co=email">update your email address</a> in the preferences.'), $email);
     switch ($email_invalid) {
         case 1:
-            $alert_msgs[] = array(
+            $alert_msgs[] = [
               'level' => 'danger',
               'message' => $message,
-            );
+            ];
             break;
         case 2:
-            $alert_msgs[] = array(
+            $alert_msgs[] = [
               'level' => 'warning',
               'message' => $message,
-            );
+            ];
             break;
     }
 

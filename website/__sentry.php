@@ -6,9 +6,9 @@ if (defined('SENTRY_DSN')) {
     require_once 'templates/sentry-php-master/lib/Raven/Autoloader.php';
     Raven_Autoloader::register();
     $client = new Raven_Client(SENTRY_DSN);
-    $client->tags_context(array(
+    $client->tags_context([
       'php_version' => phpversion(),
-    ));
+    ]);
     $client->setEnvironment(SENTRY_ENV ?: 'unknown');
     $error_handler = new Raven_ErrorHandler($client);
     $error_handler->registerExceptionHandler();
@@ -16,5 +16,5 @@ if (defined('SENTRY_DSN')) {
     $error_handler->registerShutdownFunction();
 }
 
- $vendorDir = join(DIRECTORY_SEPARATOR, array(dirname(__FILE__), 'vendor'));
+ $vendorDir = join(DIRECTORY_SEPARATOR, [dirname(__FILE__), 'vendor']);
  include_once $vendorDir.DIRECTORY_SEPARATOR.'autoload.php';

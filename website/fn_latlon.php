@@ -38,7 +38,7 @@ if (!function_exists('getLatLonBox')) {
         //$OneDegLonToM = (2 * 6371000) * asin(sqrt(cos($lat1) * cos($lat2) * sin($halfDeltaLon) * sin($halfDeltaLon)));
 
         //tablica od 0 do 99
-        $OneDegLonToMArray = array(
+        $OneDegLonToMArray = [
                                 111194.92664456,
                                 111177.99068883,
                                 111127.18798166,
@@ -129,7 +129,7 @@ if (!function_exists('getLatLonBox')) {
                                 5819.4191546091,
                                 3880.5977812483,
                                 1940.5944300619,
-        );
+        ];
 
         if ($lat < 0) {
             $lat = abs($lat);

@@ -29,7 +29,7 @@ mysqli_free_result($result);
 
 $opis = preg_replace("[\[<a href=\"(.+?)\">Link</a>\]]", '$1', $opis);
 
-$conaco = array("\n" => ' ', '  ' => ' ');
+$conaco = ["\n" => ' ', '  ' => ' '];
 $opis = strtr(strip_tags($opis), $conaco);
 $id = sprintf('GK%04X', $id);
 
@@ -51,7 +51,7 @@ foreach (glob('lib/labels/*/*.php') as $filename) {
 
 // ------ available languages -----//
 
-$jezyki_preferowane = array('en', 'pl');
+$jezyki_preferowane = ['en', 'pl'];
 
 foreach ($config_jezyk_nazwa as $jezyk_skrot => $jezyk) {
     if (in_array($jezyk_skrot, $jezyki_preferowane)) {

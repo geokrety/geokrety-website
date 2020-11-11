@@ -37,7 +37,7 @@ function find_match($curlscore, $curcscore, $curgtlang, $langval, $charval,
         }
     }
 
-    return array($curlscore, $curcscore, $curgtlang);
+    return [$curlscore, $curcscore, $curgtlang];
 }
 
 function al2gt($gettextlangs) {
@@ -102,13 +102,13 @@ function al2gt($gettextlangs) {
         $gtcs = strtoupper($tmp2[1]);
         $noct = @preg_split('/-/', $allang);
 
-        $testvals = array(
-         array(@$alscores[$allang], @$acscores[$gtcs]),
-         array(@$alscores[$noct[0]], @$acscores[$gtcs]),
-         array(@$alscores[$allang], @$acscores['*']),
-         array(@$alscores[$noct[0]], @$acscores['*']),
-         array(@$alscores['*'], @$acscores[$gtcs]),
-         array(@$alscores['*'], @$acscores['*']), );
+        $testvals = [
+         [@$alscores[$allang], @$acscores[$gtcs]],
+         [@$alscores[$noct[0]], @$acscores[$gtcs]],
+         [@$alscores[$allang], @$acscores['*']],
+         [@$alscores[$noct[0]], @$acscores['*']],
+         [@$alscores['*'], @$acscores[$gtcs]],
+         [@$alscores['*'], @$acscores['*']], ];
 
         $found = false;
         foreach ($testvals as $tval) {

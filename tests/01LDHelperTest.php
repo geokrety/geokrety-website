@@ -114,7 +114,7 @@ class LDHelperTest extends GKTestCase {
         $log2->dateCreated = date('c', 1355310732);
         $log2->text = 'log2 content here';
 
-        $konkretLogs = array($log1, $log2);
+        $konkretLogs = [$log1, $log2];
 
         $konkret->konkretLogs = $konkretLogs;
 

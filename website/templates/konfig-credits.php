@@ -1,8 +1,8 @@
 <?php
 
 if (!isset($config)) {
-    $config = array();
-    $config['gk_credits'] = array();
+    $config = [];
+    $config['gk_credits'] = [];
 }
 
 $config['gk_credits'][] = [

@@ -132,7 +132,7 @@ $graph2->title->SetMargin(6); // Add a little bit more margin from the top
 // Create the pie plot
 $p1 = new PiePlot($data);
 
-$p1->SetSliceColors(array('green', 'red', 'blue'));
+$p1->SetSliceColors(['green', 'red', 'blue']);
 
 // Set size of pie
 $p1->SetSize(0.36);

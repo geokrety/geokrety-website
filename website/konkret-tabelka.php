@@ -203,7 +203,7 @@ if ($result) {
             list(, , $name, $typ, $kraj, $linka) = waypoint_info($waypoint);
 
             // co psuje JS:
-            $name = strtr($name, array("'" => '`'));
+            $name = strtr($name, ["'" => '`']);
 
             !empty($kraj) ? $title = "$kraj [$country]" : $title = "[$country]";
             if ($country != '') {
@@ -310,7 +310,7 @@ if ($result) {
         // <td></td>
         // </tr>';
         // }
-        /*******************************************************************************************************************************************/
+
         $konkretLogs[$konkretLogsCount] = new \Geokrety\Domain\KonkretLog();
         $konkretLogs[$konkretLogsCount]->authorName = $ruch_username;
         $konkretLogs[$konkretLogsCount]->authorUrl = $ruch_userurl;

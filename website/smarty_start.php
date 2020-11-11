@@ -61,7 +61,7 @@ if (($smarty_cache_this_page > 0) and isset($smarty_cache_filename)) {  // czy j
     $smarty->caching = 0; // caching is off
 
     // Enable alert message only if page is not cached.
-    $alert_msgs = array();
+    $alert_msgs = [];
     if ($longin_status['plain'] != null) {
         $alert_msgs = check_email_validity($longin_status['userid'], $alert_msgs);
     }

@@ -1,10 +1,10 @@
 <?php
 
 if (!isset($config)) {
-    $config = array();
+    $config = [];
 }
 
-$config['gk_social_groups'] = array();
+$config['gk_social_groups'] = [];
 $config['gk_social_groups'][0] = [
     'link' => _('group link'),
     'service' => _('group service'),

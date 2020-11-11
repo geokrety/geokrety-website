@@ -1,7 +1,7 @@
 <?php
 
 function longlinewrap($str, $maxLength = 45, $char = ' ') {
-    $wordEndChars = array(' ', "\n", "\r", "\f", "\v", "\0");
+    $wordEndChars = [' ', "\n", "\r", "\f", "\v", "\0"];
     $count = 0;
     $newStr = '';
     $openTag = false;
@@ -32,6 +32,7 @@ function longlinewrap($str, $maxLength = 45, $char = ' ') {
             }
         }
     }//End for
+
     return $newStr;
 }
 
@@ -77,7 +78,7 @@ function parse_bbcode($string) {
     // zamiana [ na &#91; zeby uniknac zamiany bbcodu na html wewnatrz tagow [code] - taki szybki hack ;-)
     $string = preg_replace("/(\[code\].*?)(\[)(.*?\[\/code\])/is", '$1&#91;$3', $string);
 
-    $bbcode = array(
+    $bbcode = [
         "/\[code\](.*?)\[\/code\]/is" => "<pre style='border:1px solid #bfd0d9; padding:0.25em;'>$1</pre>",
         "/\[b\](.*?)\[\/b\]/is" => '<b>$1</b>',
         "/\[i\](.*?)\[\/i\]/is" => '<i>$1</i>',
@@ -86,7 +87,7 @@ function parse_bbcode($string) {
         "/\[url\](.*?)\[\/url\]/is" => "<a href='$1'>$2</a>",
         "/\[img\](.*?)\[\/img\]/is" => "<img src='$1' alt='' />",
         "/(?:\s|^)((?:https?|ftp):\/\/[^\"\'\s\]]+)(?:\s|$)/si" => "[<a href='$1' rel=nofollow>Link</a>]",
-    );
+    ];
 
     $string = preg_replace(array_keys($bbcode), array_values($bbcode), $string);
 

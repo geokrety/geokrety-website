@@ -70,13 +70,13 @@ function go2geo($waypoint) {
     $prefiksy['1']['T'] = 'http://www.travelertags.com/index.php?option=com_travelview&func=details&tid='; // +dec
 
     // waypoints, that sites need hex2dec conversion
-    $prefiksy_dec = array('N', 'SH', 'T');
+    $prefiksy_dec = ['N', 'SH', 'T'];
 
     // waypoints, that need waypoint (number) without prefix
-    $prefiksy_sufiksy = array('GE/', 'VI/', 'MS/', 'TR/', 'EX/', 'GR', 'RH', 'TP');
+    $prefiksy_sufiksy = ['GE/', 'VI/', 'MS/', 'TR/', 'EX/', 'GR', 'RH', 'TP'];
 
     // --- order of chceking:
-    $check_order = array(2, 3, 1);
+    $check_order = [2, 3, 1];
 
     // -------------------------------------------------- START ------------------------------------- //
 

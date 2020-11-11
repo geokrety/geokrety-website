@@ -33,7 +33,7 @@ $config['jrating_token'] = 'xxx'; // some random string
 $config['mail_rate_limit'] = 15;
 
 // admin users
-$config['superusers'] = array('1', '6262', '26422', '38785');
+$config['superusers'] = ['1', '6262', '26422', '38785'];
 
 // Google map Api key
 $GOOGLE_MAP_KEY = '';

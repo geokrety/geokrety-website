@@ -11,7 +11,7 @@ require_once 'czysc.php';
 $max_file_size = 110000;
 $max_width = 800;
 $max_height = 700;
-$allow_types = array('image/jpeg', 'image/pjpeg', 'image/png', 'image/gif');
+$allow_types = ['image/jpeg', 'image/pjpeg', 'image/png', 'image/gif'];
 $save_desc_cookie_period = 15; // minutes
 $save_desc_cookie_name = 'gk_imgup0';
 

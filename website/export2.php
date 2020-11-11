@@ -75,13 +75,13 @@ $limit_czasu_d = 10;    // in days; limits the amount of data to download //
 $limit_czasu_s = 86400 * $limit_czasu_d;
 $jak_stare_dane = time() - strtotime("$g_modifiedsince");
 
-$required_one_of = array(
+$required_one_of = [
   'modifiedsince',
   'userid',
   'gkid',
   'wpt',
   'secid',
-);
+];
 $foundParam = 0;
 foreach ($required_one_of as $param) {
     if (array_key_exists($param, $_GET) && !empty($_GET[$param])) {

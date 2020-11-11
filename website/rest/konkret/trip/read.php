@@ -14,7 +14,7 @@ $format = $_GET['format'];
 $geokretyId = $_GET['id'];
 
 $action = 'konkret trip read';
-$supportedFormats = array('json', 'csv', 'gpx');
+$supportedFormats = ['json', 'csv', 'gpx'];
 
 try {
     if (!in_array($format, $supportedFormats)) {

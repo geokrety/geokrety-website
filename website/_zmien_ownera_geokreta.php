@@ -20,7 +20,7 @@ $newuser = $_POST['newuser'];
 
 // etap pierwszy - wyznaczenie userid
 if (isset($gk)) {
-    $id_hex = strtr($gk, array('GK' => '', 'gk' => ''));
+    $id_hex = strtr($gk, ['GK' => '', 'gk' => '']);
     $id = hexdec($id_hex);
 
     // ------ old owner ---------- //

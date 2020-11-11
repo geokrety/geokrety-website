@@ -57,7 +57,7 @@ EOQUERY;
         $stmt->store_result();
         $nbRow = $stmt->num_rows;
 
-        $trips = array();
+        $trips = [];
 
         if ($nbRow == 0) {
             return $trips;

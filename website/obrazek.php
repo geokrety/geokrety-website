@@ -29,5 +29,5 @@ function obrazek($alfabet = 'a c d e f h i k m n p s t w x y z 1 2 3 4 5 7 8') {
     errory_add('CAPTCHA: '.$STRING, 0, 'captcha');
     // koniec badania
 
-    return '<input type="hidden" name="antyspamer" value="'.strtr($crypt, array($config['sol'] => '')).'" />';
+    return '<input type="hidden" name="antyspamer" value="'.strtr($crypt, [$config['sol'] => '']).'" />';
 }

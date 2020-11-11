@@ -51,7 +51,7 @@ $config['jrating_token'] = isset($_ENV['JRATING_TOKEN']) ? $_ENV['JRATING_TOKEN'
 $config['mail_rate_limit'] = isset($_ENV['MAIL_RATE_LIMIT']) ? $_ENV['MAIL_RATE_LIMIT'] : 15;
 
 // admin users
-$config['superusers'] = array('1', '6262', '26422');
+$config['superusers'] = ['1', '6262', '26422'];
 
 // Email gateway
 $config['pop_hostname'] = isset($_ENV['POP_HOSTNAME']) ? $_ENV['POP_HOSTNAME'] : 'pop.gmail.com';

@@ -34,6 +34,7 @@ if (!function_exists('haslo_koduj')) {
         global $t_hasher;
         global $config;
         $t_hasher = new PasswordHash(11, false);   // 11 - wartość na tyle duża, żeby nie było za szybko
+
         return $t_hasher->HashPassword($haslo.$config['sol2'].'127');    // hasło + sól z konfigu + sól lokalna :)
     }
 
@@ -42,6 +43,7 @@ if (!function_exists('haslo_koduj')) {
         global $t_hasher;
         global $config;
         $t_hasher = new PasswordHash(11, false);   // 11 - wartość na tyle duża, żeby nie było za szybko
+
         return $t_hasher->CheckPassword($haslo.$config['sol2'].'127', $hash);    // hasło + sól z konfigu + sól lokalna :)
     }
 }

@@ -14,7 +14,7 @@ $kret_tracking = $_POST['tracking'];
 $template = new $kret_szablon();
 
 if (!isset($kret_helplang)) {
-    $kret_helplang = array('en');
+    $kret_helplang = ['en'];
 } elseif (!in_array('en', $kret_helplang)) {
     $kret_helplang[] = 'en';
 }
