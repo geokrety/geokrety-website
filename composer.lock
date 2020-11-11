@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "061419eaf14b4e91b58609cf0d79a343",
+    "content-hash": "f8612e5e002ae1cf761fad272226d7bd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.159.1",
+            "version": "3.160.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "41d8908c1ac53afc8b5dc68aab7a67765e366e15"
+                "reference": "5f1be65b657a53d79f585e2df8c996931b1b01b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/41d8908c1ac53afc8b5dc68aab7a67765e366e15",
-                "reference": "41d8908c1ac53afc8b5dc68aab7a67765e366e15",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5f1be65b657a53d79f585e2df8c996931b1b01b1",
+                "reference": "5f1be65b657a53d79f585e2df8c996931b1b01b1",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.159.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.160.0"
             },
-            "time": "2020-11-10T19:11:53+00:00"
+            "time": "2020-11-11T19:16:21+00:00"
         },
         {
             "name": "bcosca/fatfree-core",
@@ -8106,11 +8106,11 @@
         },
         {
             "name": "smarty-gettext/tsmarty2c",
-            "version": "0.2.0",
+            "version": "dev-issue-18",
             "source": {
                 "type": "git",
-                "url": "https://github.com/smarty-gettext/tsmarty2c.git",
-                "reference": "4193d1442e35b40d33cc8ca03cbf0285dd177210"
+                "url": "https://github.com/kumy/tsmarty2c.git",
+                "reference": "9247edb"
             },
             "require": {
                 "geekwright/po": "^1.0",
@@ -8152,7 +8152,7 @@
             "support": {
                 "issues": "https://github.com/smarty-gettext/tsmarty2c/issues"
             },
-            "time": "2020-07-09T20:50:56+00:00"
+            "time": "2020-11-11T20:17:22+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -8763,11 +8763,13 @@
     "stability-flags": {
         "bcosca/fatfree-core": 20,
         "benhall14/php-pagination": 20,
-        "league/geotools": 0
+        "league/geotools": 0,
+        "smarty-gettext/tsmarty2c": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
+        "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-gettext": "*",
