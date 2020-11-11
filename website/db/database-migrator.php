@@ -765,6 +765,10 @@ class WaypointGCMigrator extends BaseMigrator {
 class WatchedMigrator extends BaseMigrator {
     //    'userid', 'id'
     //    'user', 'geokret'
+
+    protected function prepareData() {
+        $this->mPdo->query('DELETE FROM `gk-obserwable` WHERE userid NOT IN (SELECT DISTINCT(userid) FROM `gk-users`) OR id NOT IN (SELECT DISTINCT(id) FROM `gk-geokrety`);');
+    }
 }
 
 //// Check integrity
