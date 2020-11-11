@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use DateTime;
-use Event;
 use Flash;
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
@@ -13,6 +12,7 @@ use GeoKrety\Service\Validation\Coordinates as CoordinatesValidation;
 use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
 use GeoKrety\Service\Validation\Waypoint as WaypointValidation;
 use ReCaptcha\ReCaptcha;
+use Sugar\Event;
 
 class MoveCreate extends Base {
     /**

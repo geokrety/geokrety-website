@@ -42,8 +42,8 @@ class RegistrationActivate extends Base {
         $this->token->user->save();
         $this->token->save();
         $f3->get('DB')->commit();
-        \Event::instance()->emit('user.activated', $this->token->user);
-        \Event::instance()->emit('activation.token.used', $this->token);
+        \Sugar\Event::instance()->emit('user.activated', $this->token->user);
+        \Sugar\Event::instance()->emit('activation.token.used', $this->token);
         $smtp = new AccountActivation();
         $smtp->sendActivationConfirm($this->token);
 

@@ -207,13 +207,13 @@ class Geokret extends Base {
     public function __construct() {
         parent::__construct();
         $this->afterinsert(function ($self) {
-            \Event::instance()->emit('geokret.created', $self);
+            \Sugar\Event::instance()->emit('geokret.created', $self);
         });
         $this->afterupdate(function ($self) {
-            \Event::instance()->emit('geokret.updated', $self);
+            \Sugar\Event::instance()->emit('geokret.updated', $self);
         });
         $this->aftererase(function ($self) {
-            \Event::instance()->emit('geokret.deleted', $self);
+            \Sugar\Event::instance()->emit('geokret.deleted', $self);
         });
     }
 

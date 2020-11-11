@@ -85,7 +85,7 @@ class UserContact extends Base {
                 $mail->load(['_id = ?', $mail->getMapper()->get('_id')]);
                 $smtp = new EmailUserContact();
                 $smtp->sendUserMessage($mail);
-                \Event::instance()->emit('contact.created', $mail);
+                \Sugar\Event::instance()->emit('contact.created', $mail);
                 \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to_user->username), 'success');
             }
         }

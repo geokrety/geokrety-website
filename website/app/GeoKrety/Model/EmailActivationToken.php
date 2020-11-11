@@ -185,7 +185,7 @@ class EmailActivationToken extends Base {
             }
             $token->used = self::TOKEN_DISABLED;
             $token->save();
-            \Event::instance()->emit('email.token.used', $token);
+            \Sugar\Event::instance()->emit('email.token.used', $token);
         }
     }
 

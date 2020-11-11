@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use Event;
 use Flash;
 use GeoKrety\Service\Smarty;
 use MoveCommentLoader;
+use Sugar\Event;
 
 class MoveCommentDelete extends Base {
     use MoveCommentLoader;

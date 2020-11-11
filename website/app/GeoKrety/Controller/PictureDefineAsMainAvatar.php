@@ -26,7 +26,7 @@ class PictureDefineAsMainAvatar extends Base {
     }
 
     public function define(\Base $f3) {
-        \Event::instance()->emit('picture.avatar.defined', $this->picture);
+        \Sugar\Event::instance()->emit('picture.avatar.defined', $this->picture);
 
         if ($this->picture->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
             $this->define_geokret($f3);

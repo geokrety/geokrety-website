@@ -17,7 +17,7 @@ class NewsCommentDelete extends Base {
         $newsId = $comment->news->id;
         if ($comment->valid()) {
             $comment->erase();
-            \Event::instance()->emit('news-comment.deleted', $comment);
+            \Sugar\Event::instance()->emit('news-comment.deleted', $comment);
         }
         $f3->reroute(sprintf('@news_details(@newsid=%d)', $newsId));
     }

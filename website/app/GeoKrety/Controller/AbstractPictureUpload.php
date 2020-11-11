@@ -3,9 +3,9 @@
 namespace GeoKrety\Controller;
 
 use Aws\S3\PostObjectV4;
-use Event;
 use GeoKrety\Model\Picture;
 use GeoKrety\Service\S3Client;
+use Sugar\Event;
 
 abstract class AbstractPictureUpload extends Base {
     /**

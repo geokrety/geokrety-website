@@ -106,7 +106,7 @@ class AccountActivationToken extends Base {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
-            \Event::instance()->emit('activation.token.created', $this);
+            \Sugar\Event::instance()->emit('activation.token.created', $this);
         });
 
         $this->virtual('expire_on_datetime', function ($self) {

@@ -3,10 +3,10 @@
 namespace GeoKrety\Controller;
 
 use CurrentUserLoader;
-use Event;
 use Flash;
 use GeoKrety\Service\Smarty;
 use League\Geotools\Coordinate\Coordinate;
+use Sugar\Event;
 
 class UserUpdateObservationArea extends Base {
     use CurrentUserLoader;

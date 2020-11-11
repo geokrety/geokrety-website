@@ -225,13 +225,13 @@ class Move extends Base {
             }
         });
         $this->afterinsert(function ($self) {
-            \Event::instance()->emit('move.created', $self);
+            \Sugar\Event::instance()->emit('move.created', $self);
         });
         $this->afterupdate(function ($self) {
-            \Event::instance()->emit('move.updated', $self);
+            \Sugar\Event::instance()->emit('move.updated', $self);
         });
         $this->aftererase(function ($self) {
-            \Event::instance()->emit('move.deleted', $self);
+            \Sugar\Event::instance()->emit('move.deleted', $self);
         });
     }
 

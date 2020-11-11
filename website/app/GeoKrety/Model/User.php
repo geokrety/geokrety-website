@@ -340,11 +340,11 @@ EOT;
             $self->registration_ip = \Base::instance()->get('IP');
         });
         $this->afterinsert(function ($self) {
-            \Event::instance()->emit('user.created', $this);
+            \Sugar\Event::instance()->emit('user.created', $this);
             $self->generateAccountActivation();
         });
         $this->aftererase(function ($self) {
-            \Event::instance()->emit('user.deleted', $this);
+            \Sugar\Event::instance()->emit('user.deleted', $this);
         });
     }
 

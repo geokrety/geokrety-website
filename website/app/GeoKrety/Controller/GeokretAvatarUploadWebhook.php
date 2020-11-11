@@ -42,7 +42,7 @@ class GeokretAvatarUploadWebhook extends Base {
         if ($picture->validate()) {
             $picture->save();
 
-            \Event::instance()->emit('picture.uploaded', $picture);
+            \Sugar\Event::instance()->emit('picture.uploaded', $picture);
         }
 
         $f3->clear('SESSION');

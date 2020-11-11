@@ -72,7 +72,7 @@ class GeokretClaim extends Base {
                     'oldUser' => $oldOwner,
                     'newUser' => $ownerCode->adopter,
                 ];
-                \Event::instance()->emit('geokret.claimed', $ownerCode->geokret, $context);
+                \Sugar\Event::instance()->emit('geokret.claimed', $ownerCode->geokret, $context);
 
                 // Send email
                 $smtp = new GeokretClaimEmail();

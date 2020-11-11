@@ -3,10 +3,10 @@
 namespace GeoKrety\Controller;
 
 use CurrentUserLoader;
-use Event;
 use Flash;
 use GeoKrety\Service\Smarty;
 use Multilang;
+use Sugar\Event;
 
 class UserChoosePreferedLanguage extends Base {
     use CurrentUserLoader;

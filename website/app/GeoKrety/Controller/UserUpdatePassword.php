@@ -3,12 +3,12 @@
 namespace GeoKrety\Controller;
 
 use CurrentUserLoader;
-use Event;
 use Flash;
 use GeoKrety\Auth;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
+use Sugar\Event;
 
 class UserUpdatePassword extends Base {
     use CurrentUserLoader;

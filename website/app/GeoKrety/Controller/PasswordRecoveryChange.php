@@ -2,11 +2,11 @@
 
 namespace GeoKrety\Controller;
 
-use Event;
 use Flash;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\PasswordToken;
 use GeoKrety\Service\Smarty;
+use Sugar\Event;
 
 class PasswordRecoveryChange extends Base {
     /**

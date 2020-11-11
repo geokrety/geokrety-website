@@ -125,6 +125,9 @@ jobs:
     - stage: translations
       php: 7.4
       if: branch IN (master, boly38, feature/new-theme) AND type = 'push'
+      before_script:
+        - wget https://getcomposer.org/composer-2.phar
+        - php composer-2.phar install --ignore-platform-reqs --dev --no-interaction
       script:
         # Crowdin
         - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb

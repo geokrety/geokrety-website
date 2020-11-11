@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Event;
 use Flash;
 use GeoKrety\Auth;
 use GeoKrety\AuthGroup;
@@ -12,6 +11,7 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Session;
 use Multilang;
+use Sugar\Event;
 
 class Login extends Base {
     const NO_REDIRECT_URLS = [

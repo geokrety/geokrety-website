@@ -18,7 +18,7 @@ class PictureDelete extends Base {
 
     public function delete(\Base $f3) {
         $this->picture->erase();
-        \Event::instance()->emit('picture.deleted', $this->picture);
+        \Sugar\Event::instance()->emit('picture.deleted', $this->picture);
 
         if ($this->picture->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
             $f3->reroute(['geokret_details', ['gkid' => $this->picture->geokret->gkid], '#gk-avatars-list']);

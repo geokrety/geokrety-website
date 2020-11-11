@@ -8,7 +8,7 @@ function audit(string $event, $newObjectModel) {
 }
 
 // Listen Events
-$events = \Event::instance();
+$events = \Sugar\Event::instance();
 $events->on('user.created', function (\GeoKrety\Model\User $user) {
     \GeoKrety\Service\UserBanner::generate($user);
     audit('user.created', $user);

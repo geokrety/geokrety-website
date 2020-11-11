@@ -25,7 +25,7 @@ class UserRefreshSecid extends Base {
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to refresh your secid.'), 'danger');
             } else {
-                \Event::instance()->emit('user.secid.changed', $user);
+                \Sugar\Event::instance()->emit('user.secid.changed', $user);
                 \Flash::instance()->addMessage(_('Your secid has been refreshed. Don\'t forget to re-authenticate any other application connected to your GeoKrety account.'), 'success');
             }
         }

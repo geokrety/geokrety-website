@@ -56,7 +56,7 @@ class PasswordRecovery extends Base {
 
         $token->save();
 
-        \Event::instance()->emit('password.token.generated', $token);
+        \Sugar\Event::instance()->emit('password.token.generated', $token);
 
         // Send email
         $smtp = new PasswordChangeEmail();

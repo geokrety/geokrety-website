@@ -34,7 +34,7 @@ class PictureEdit extends Base {
 
         if ($this->picture->validate()) {
             $this->picture->update();
-            \Event::instance()->emit('picture.caption.saved', $this->picture);
+            \Sugar\Event::instance()->emit('picture.caption.saved', $this->picture);
             \Flash::instance()->addMessage(_('Picture caption saved.'), 'success');
 
             if ($this->picture->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {

@@ -2,11 +2,11 @@
 
 namespace GeoKrety\Controller;
 
-use Event;
 use Flash;
 use GeoKrety\Email\EmailChange;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Service\Smarty;
+use Sugar\Event;
 
 class UserEmailChangeToken extends Base {
     /**

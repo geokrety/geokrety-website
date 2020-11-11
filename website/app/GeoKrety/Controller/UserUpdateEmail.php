@@ -4,11 +4,11 @@ namespace GeoKrety\Controller;
 
 use Carbon\Carbon;
 use CurrentUserLoader;
-use Event;
 use Flash;
 use GeoKrety\Email\EmailChange;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Service\Smarty;
+use Sugar\Event;
 
 class UserUpdateEmail extends Base {
     use CurrentUserLoader;
