@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../konfig.php';    // config
+require_once '../../../__sentry.php';
 
 $aResponse['error'] = false;
 $aResponse['message'] = '';
