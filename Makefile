@@ -36,7 +36,7 @@ check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, 
 test-db: ## run pgtap tests
 	PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -ot website/db/tests/test*.sql
 test-qa: ## run qa tests
-	cd tests-qa && make test
+	cd tests-qa && make test || make rerun-failed-tests
 test-health: ## Check if website health
 	cd website/public && php index.php /health
 

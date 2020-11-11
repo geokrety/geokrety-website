@@ -6,6 +6,7 @@ ifeq (Windows_NT, ${OS})
 endif
 
 TRAVIS_BRANCH ?= local
+ROBOT_PARAMS := --variable browser:Firefox -v images_dir:visual_images  --debugfile debugfile.log --report report.html --xunit xUnit.xml -d docs/$(TRAVIS_BRANCH) -V acceptance/vars/robot-vars.py -e TODO acceptance
 
 # HELP
 # This will output the help for each task
@@ -17,8 +18,17 @@ help: ## This help.
 
 test: ## run robot framework tests (master env)
 	@echo "Run Tests"
-	time PATH=${PATH}:${PWD} robot --variable browser:Firefox -v images_dir:visual_images --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/$(TRAVIS_BRANCH) -V acceptance/vars/robot-vars.py -e TODO acceptance/
+	time PATH=${PATH}:${PWD} robot --log log.html --output output.xml $(ROBOT_PARAMS)
 	sed -i 's@\(<td><a href="${$item.logURL}">${$item.logURL}\)</a></td>@\1<tr><th>Visual Report:</th><td><a href="visualReport.html">visualReport.html</a></td></tr>@' docs/$(TRAVIS_BRANCH)/report.html
+
+rerun-failed-tests: ## rerun robot framework failed tests
+	@echo "ReRun Failing Tests"
+	time PATH=${PATH}:${PWD} robot --log log-rerun.html --output rerun.xml --rerunfailed docs/$(TRAVIS_BRANCH)/output.xml $(ROBOT_PARAMS)
+	sed -i 's@\(<td><a href="${$item.logURL}">${$item.logURL}\)</a></td>@\1<tr><th>Visual Report:</th><td><a href="visualReport.html">visualReport.html</a></td></tr>@' docs/$(TRAVIS_BRANCH)/report.html
+
+	@echo "Merging reports"
+	rebot --nostatusrc --outputdir docs/$(TRAVIS_BRANCH) --output output.xml --merge docs/$(TRAVIS_BRANCH)/output.xml  docs/$(TRAVIS_BRANCH)/rerun.xml
+
 
 local:  ## run Robot Framework remotely on BrowserStack
 	BS_ENABLED=1 BS_LOCAL=true BS_LOCAL_ID=${USER}-local make test
