@@ -1,6 +1,6 @@
 <?php
 
-require_once SMARTY_PLUGINS_DIR . 'modifier.escape.php';
+require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
 const SUPPORTED_APP = [
     'robotframework' => 'svg/robot-framework.svg',
@@ -12,7 +12,6 @@ const SUPPORTED_APP = [
     'PyGK' => '16/PyGK.png',
     'php_post' => '16/php_post.png',
     ];
-
 
 /*
  * Smarty plugin
@@ -30,7 +29,7 @@ function smarty_modifier_application_icon(\GeoKrety\Model\Move $move): string {
 
     $title = $move->app;
     if (!is_null($move->app_ver) && !empty($move->app_ver)) {
-        $title .= ' ' . $move->app_ver;
+        $title .= ' '.$move->app_ver;
     }
 
     return sprintf(

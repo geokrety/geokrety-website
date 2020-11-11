@@ -127,8 +127,9 @@ class DatabaseSeed extends Base {
     public function move(\Base $f3) {
         header('Content-Type: text');
         for ($i = 1; $i <= $f3->get('PARAMS.count'); ++$i) {
-            if ($i > 1)
+            if ($i > 1) {
                 sleep(1);
+            }
 
             $geokret = new Geokret();
             $geokret->load(['id = ?', $f3->get('PARAMS.gkid')]);
@@ -216,9 +217,9 @@ class DatabaseSeed extends Base {
                 $move->id, $move->geokret->id, $move->waypoint, $move->move_type->getLogTypeId(),
                 $move->waypoint, $move->lat, $move->lon);
         } else {
-            error_log(sprintf("Error creating move: %d", $move->geokret->id));
+            error_log(sprintf('Error creating move: %d', $move->geokret->id));
             foreach (\Flash::instance()->getMessages() as $msg) {
-                error_log(sprintf("Reason: %s", $msg['text']));
+                error_log(sprintf('Reason: %s', $msg['text']));
             }
             $f3->error(400);
         }
@@ -238,7 +239,6 @@ class DatabaseSeed extends Base {
                 $news->created_on_datetime = DateTime::createFromFormat('Y-m-d\TH:i:sT', $f3->get('GET.publish_date'))->format(GK_DB_DATETIME_FORMAT);
             } else {
                 $news->touch('created_on_datetime');
-
             }
             if ($news->validate()) {
                 $news->save();

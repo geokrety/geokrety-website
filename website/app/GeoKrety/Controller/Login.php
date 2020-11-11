@@ -110,7 +110,6 @@ class Login extends Base {
         $user->has('social_auth.provider', ['name = ?', $data['provider']]);
         $user->load();
 
-
         // User already authenticated here?
         if ($this->isLoggedIn()) {
             $f3->get('DB')->begin();

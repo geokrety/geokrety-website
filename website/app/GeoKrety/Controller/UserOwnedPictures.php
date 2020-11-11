@@ -4,7 +4,6 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Picture;
 use GeoKrety\Pagination;
-use GeoKrety\PictureType;
 use GeoKrety\Service\Smarty;
 use UserLoader;
 
