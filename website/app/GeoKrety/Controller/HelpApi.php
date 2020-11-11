@@ -11,7 +11,7 @@ class HelpApi extends Base {
         $this->f3 = $f3;
 
         // Load specified GeoKrety on production else first two created
-        [$geokret, $geokret2] = $this->loadGK(GK_IS_PRODUCTION ? [46684, 65536] : [1, 2]);
+        [$geokret, $geokret2] = $this->loadGK(GK_IS_PRODUCTION ? [46657, 65509] : [1, 2]);
 
         // Render ruchy saved
         $xml = new Xml\GeokretyRuchy();
@@ -42,6 +42,8 @@ class HelpApi extends Base {
         $xml->addError(_('Wrong secid'));
         $xml->addError(_('Wrong date or time'));
         Smarty::assign('gk_xml_ruchy_error', $xml->asXMLPretty());
+
+        Smarty::assign('modified_since', date('YmdHis', time() - (1 * 60 * 60)));
 
         Smarty::render('pages/help_api.tpl');
     }

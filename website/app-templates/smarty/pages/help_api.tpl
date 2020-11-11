@@ -151,7 +151,7 @@ var_dump($gk);
             after the date.
         </p>
         <sample>
-            Example: <code>{GK_SITE_BASE_SERVER_URL}/export.php?modifiedsince=20090901000000</code>
+            Example: <code>{GK_SITE_BASE_SERVER_URL}/export.php?modifiedsince={$modified_since}</code>
         </sample>
         <h4>Sample output (without headers)</h4>
         <pre><code class="language-xml">{$gk_xml_export}</code></pre>
@@ -175,7 +175,7 @@ var_dump($gk);
             (grabbed).
         </div>
         <sample>
-            Example: <code>{GK_SITE_BASE_SERVER_URL}/export_oc.php?modifiedsince={php}echo date('YmdHis', time() - (1 * 60 * 60)){/php}</code>
+            Example: <code>{GK_SITE_BASE_SERVER_URL}/export_oc.php?modifiedsince={$modified_since}</code>
         </sample>
 
         <h4>Sample output (without headers)</h4>
@@ -208,7 +208,7 @@ var_dump($gk);
             <li>
                 <code>modifiedsince</code> - list of GeoKrety with the timestamp
                 of the last move <code>> modifiedsince</code> (required for some queries)
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?modifiedsince=20100901000000</pre>
+                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?modifiedsince={$modified_since}</pre>
             </li>
             <li>
                 <code>latNE</code> <code>latSW</code> <code>lonNE</code> <code>lonSW</code> -
