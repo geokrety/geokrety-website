@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 21:18+0000\n"
-"PO-Revision-Date: 2020-11-11 21:24\n"
+"PO-Revision-Date: 2020-11-11 21:51\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -30,7 +30,7 @@ msgstr ""
 #: website/app/GeoKrety/Auth.php:14
 #, php-format
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
-msgstr ""
+msgstr "Mehrere Konten teilen sich die gleiche E-Mail-Adresse. Bitte <a href=\"%s\">kontaktiere uns</a>."
 
 #: website/app/GeoKrety/Controller/GeokretClaim.php:21
 msgid "Sorry, the provided owner code and tracking code doesn't match."
@@ -135,16 +135,16 @@ msgstr "Willkommen an Bord!"
 #: website/app/GeoKrety/Controller/Login.php:141
 #, php-format
 msgid "Your account is now fully connected with %s"
-msgstr ""
+msgstr "Dein Konto ist nun komplett mit %s verbunden"
 
 #: website/app/GeoKrety/Controller/Login.php:152
 #, php-format
 msgid "Your %s account is already connected with another GeoKrety account."
-msgstr ""
+msgstr "Dein %s Konto ist bereits mit einem anderen GeoKrety-Zugang verbunden."
 
 #: website/app/GeoKrety/Controller/Login.php:167
 msgid "Auth request was canceled."
-msgstr ""
+msgstr "Authentisierungs-Anfrage wurde abgebrochen."
 
 #: website/app/GeoKrety/Controller/MoveCommentCreate.php:50
 #: website/app/GeoKrety/Controller/MoveCommentCreate.php:72
@@ -538,7 +538,7 @@ msgstr "Es können nur %d Tracking-Codes gleichzeitig angegeben werden, es wurde
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
 #, php-format
 msgid "Sorry, but username \"%s\" is already used. If that's your account, please <a href=\"%s\">login</a> first."
-msgstr ""
+msgstr "Leider wird der Benutzername \"%s\" bereits verwendet. Wenn das dein Konto ist, <a href=\"%s\">logge</a> dich bitte zuerst ein."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
@@ -586,7 +586,7 @@ msgstr "GeoKret hat einen Avatar"
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
 msgid "GK type icon"
-msgstr ""
+msgstr "GK-Typ Symbol"
 
 #: website/app-templates/smarty/plugins/modifier.gklink.php:22
 #, php-format
@@ -638,7 +638,7 @@ msgstr "Statussymbol"
 #: website/app-templates/smarty/plugins/modifier.statpictemplate.php:13
 #, php-format
 msgid "User statistics banner: %s"
-msgstr ""
+msgstr "Benutzer-Statistik Banner: %s"
 
 #: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
 #, php-format
@@ -846,7 +846,7 @@ msgstr "Anzahl besuchter Caches"
 
 #: smarty/pages:36
 msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
-msgstr ""
+msgstr "Du hast noch keine GeoKrety bewegt. Schaue dir <a href=\"%1\">die Karte</a> an und versuche GeoKrety in der Nähe zu finden!"
 
 #: smarty/pages:38
 msgid "%1 didn't moved any GeoKrety yet."
@@ -862,7 +862,7 @@ msgstr "Entfernung"
 
 #: smarty/pages:36
 msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
+msgstr "Du hast noch keine GeoKrety erstellt. Zögere nicht <a href=\"%2\">eigene GeoKrety</a> kostenlos zu erstellen!"
 
 #: smarty/pages:38
 msgid "%1 doesn't own any GeoKrety yet."
@@ -940,7 +940,7 @@ msgstr "Aktionen"
 
 #: smarty/pages:38
 msgid "You did not watch any GeoKrety yet."
-msgstr ""
+msgstr "Du beobachtest noch keine GeoKrety."
 
 #: smarty/pages:40
 msgid "%1 doesn't watch any GeoKrety yet."
@@ -1169,7 +1169,7 @@ msgstr "Neueste Bewegungen von %1's GeoKrety"
 
 #: smarty/pages:35
 msgid "%1's GeoKrety didn't moved yet."
-msgstr ""
+msgstr "Die GeoKrety von %1 wurden noch nicht bewegt."
 
 #: smarty/pages:7 smarty:77
 msgid "Press corner"
@@ -1297,7 +1297,7 @@ msgstr "%1's Inventar"
 
 #: smarty/pages:37
 msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
+msgstr "Dein Inventar ist leer. Prüfe <a href=\"%1\">die Karte</a> und versuche GeoKrety in der Nähe zu finden! Du kannst auch kostenlos <a href=\"%2\">einen GeoKrety-Zugang</a> erstellen!"
 
 #: smarty/pages:39
 msgid "%1's inventory is currently empty."
@@ -1373,7 +1373,7 @@ msgstr "Beobachtungsradius"
 
 #: smarty/pages:43
 msgid " km. Set it to 0 to disable the observation feature."
-msgstr ""
+msgstr "km. Setze es auf 0 um die Beobachtungsfunktion zu deaktivieren."
 
 #: smarty/pages:53
 msgid "Center the map on the zone to observe"
@@ -1407,7 +1407,7 @@ msgstr "Link zum Zurücksetzen des Passworts zusenden"
 
 #: smarty/pages:12
 msgid "Create an account using %1"
-msgstr ""
+msgstr "Ein Konto mit %1 erstellen"
 
 #: smarty/pages:14
 msgid "Create an account"
@@ -1680,7 +1680,7 @@ msgstr "Loggen!"
 
 #: smarty/blocks/geokret:9
 msgid "%1 <small>(%2)</small> by %3"
-msgstr ""
+msgstr "%1<small>%2</small> von %3"
 
 #: smarty/blocks/geokret:15
 msgid "%1 <small>(%2)</small> - <a href=\"%3\">Ready for adoption</a>"
