@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-13 20:36+0000\n"
-"PO-Revision-Date: 2020-11-13 20:44\n"
+"PO-Revision-Date: 2020-11-13 20:51\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -148,12 +148,12 @@ msgstr "Bienvenue à bord !"
 #: website/app/GeoKrety/Controller/Login.php:146
 #, php-format
 msgid "Your account is already linked with %s"
-msgstr ""
+msgstr "Votre compte est déjà lié avec %s"
 
 #: website/app/GeoKrety/Controller/Login.php:151
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
-msgstr ""
+msgstr "Ce compte %s est déjà lié à un autre compte GeoKrety."
 
 #: website/app/GeoKrety/Controller/Login.php:166
 msgid "Auth request was canceled."
@@ -215,7 +215,7 @@ msgstr "Vous ne recevrez plus de notifications."
 #: website/app/GeoKrety/Controller/OAuthDetach.php:36
 #, php-format
 msgid "Something went wrong while detaching from your %s account. Please contact us."
-msgstr ""
+msgstr "Une erreur s'est produite lors de la déconnexion à votre compte %s . Veuillez nous contacter."
 
 #: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
 #: website/app/GeoKrety/Controller/RegistrationActivate.php:23
@@ -436,7 +436,7 @@ msgstr "Une erreur s'est produite lors de l'envoi du courriel."
 
 #: website/app/GeoKrety/Email/Welcome.php:22
 msgid "An error occurred while sending the welcome mail."
-msgstr ""
+msgstr "Une erreur s'est produite lors de l'envoi du mail de bienvenue."
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -490,12 +490,12 @@ msgstr "Né"
 #: website/app/GeoKrety/Model/UserSocialAuth.php:45
 #, php-format
 msgid "Your may now use your %s account to authenticate on GeoKrety."
-msgstr ""
+msgstr "Vous pouvez maintenant utiliser votre compte %s pour vous authentifier sur GeoKrety."
 
 #: website/app/GeoKrety/Model/UserSocialAuth.php:49
 #, php-format
 msgid "Your account has been detached from %s."
-msgstr ""
+msgstr "Votre compte a été détaché de %s."
 
 #: website/app/GeoKrety/PictureType.php:58
 msgid "GeoKret avatar"
@@ -1486,7 +1486,7 @@ msgstr "Aperçu de l'étiquette du GeoKret"
 
 #: smarty/forms:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
-msgstr ""
+msgstr "Si vous possédez déjà un compte sur GeoKrety.org, veuillez d'abord vous <a href=\"%2\">connecter/a>, puis associez votre compte %1 à partir de la page des paramètres de l'utilisateur. Sinon, veuillez choisir un nom d'utilisateur pour continuer."
 
 #: smarty/forms:10 smarty/forms:12 smarty/forms:239 smarty/forms:4
 #: smarty/forms:6 smarty/dialog:12 smarty/dialog:14
@@ -1803,23 +1803,23 @@ msgstr "Ce GeoKret n'a pas encore voyagé."
 
 #: smarty/blocks/user:4
 msgid "OAuth Connections"
-msgstr ""
+msgstr "Connexions OAuth"
 
 #: smarty/blocks/user:17
 msgid "Disconnect from %1"
-msgstr ""
+msgstr "Se déconnecter de %1"
 
 #: smarty/blocks/user:18
 msgid "Disconnect"
-msgstr ""
+msgstr "Déconnecter"
 
 #: smarty/blocks/user:23
 msgid "Connect with %1"
-msgstr ""
+msgstr "Se connecter avec %1"
 
 #: smarty/blocks/user:23
 msgid "Connect"
-msgstr ""
+msgstr "Connecter"
 
 #: smarty/blocks/user:11
 msgid "Subscribe to RSS channel"
@@ -2049,15 +2049,15 @@ msgstr "La suppression de ce mouvement supprimera les images jointes !"
 
 #: smarty/dialog:2
 msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
-msgstr ""
+msgstr "Vous êtes sur le point de détacher votre compte GeoKrety de votre compte %1 . Vous ne pourrez plus vous connecter via ce fournisseur."
 
 #: smarty/dialog:8 smarty/dialog:26 smarty/dialog:24
 msgid "Detaching OAuth provider"
-msgstr ""
+msgstr "Détachement du fournisseur OAuth"
 
 #: smarty/dialog:16 smarty/dialog:34
 msgid "Detach"
-msgstr ""
+msgstr "Détacher"
 
 #: smarty/dialog:4
 msgid "Do you really want to delete this picture?"
@@ -2065,11 +2065,11 @@ msgstr "Voulez-vous vraiment supprimer cette photo ?"
 
 #: smarty/dialog:2
 msgid "You are not connected to this OAuth provider."
-msgstr ""
+msgstr "Vous n'êtes pas connecté à ce fournisseur OAuth."
 
 #: smarty/dialog:15
 msgid "Back to my profile"
-msgstr ""
+msgstr "Retour à mon profil"
 
 #: smarty/dialog:6
 msgid "Manage picture"
@@ -2289,7 +2289,7 @@ msgstr "Désolé, mais votre compte n'a pas d'e-mail enregistré. Vous ne pourre
 
 #: smarty/banners:4
 msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr ""
+msgstr "Veuillez envisager d'ajouter une <a href=\"%1\">adresse e-mail</a> ou <a href=\"%2\">lier votre compte</a> avec un fournisseur OAuth."
 
 #: smarty/banners:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
@@ -2745,15 +2745,15 @@ msgstr "Vous recevez cet e-mail car un utilisateur de GeoKrety.org vous a envoy�
 
 #: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "Welcome 👐"
-msgstr ""
+msgstr "Bienvenue 👐"
 
 #: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "You're now a GeoKrety.org community member, welcome!"
-msgstr ""
+msgstr "Vous êtes maintenant membre de la communauté GeoKrety.org, bienvenue !"
 
 #: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "As a member you can now register GeoKrety moves, upload pictures and of course create your own GeoKrety for free!"
-msgstr ""
+msgstr "En tant que membre, vous pouvez maintenant enregistrer des mouvements de GeoKrety, téléverser des photos et bien sûr créer gratuitement vos propres GeoKrety !"
 
 #: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
