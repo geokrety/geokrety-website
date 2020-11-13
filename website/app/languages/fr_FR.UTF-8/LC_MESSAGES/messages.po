@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 21:18+0000\n"
-"PO-Revision-Date: 2020-11-11 22:01\n"
+"POT-Creation-Date: 2020-11-13 20:36+0000\n"
+"PO-Revision-Date: 2020-11-13 20:44\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-11-11 21:18+0000\n"
+"POT-Creation-Date: 2020-11-13 20:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -31,6 +31,19 @@ msgstr ""
 #, php-format
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr ""
+
+#: website/app/GeoKrety/Controller/Base.php:69
+#: website/app/GeoKrety/Controller/MoveCreate.php:152
+#: website/app/GeoKrety/Controller/PasswordRecovery.php:34
+#: website/app/GeoKrety/Controller/UserContact.php:71
+msgid "reCaptcha failed!"
+msgstr "La validation du code reCaptcha a échoué !"
+
+#: website/app/GeoKrety/Controller/BaseRegistration.php:25
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:59
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:65
+msgid "Sorry but this mail address is already in use."
+msgstr "Désolé, mais cette adresse de courriel est déjà utilisée."
 
 #: website/app/GeoKrety/Controller/GeokretClaim.php:21
 msgid "Sorry, the provided owner code and tracking code doesn't match."
@@ -128,21 +141,21 @@ msgstr "Une erreur s'est produite lors de la procédure de connexion."
 msgid "Username and password doesn't match."
 msgstr "Le nom d'utilisateur et le mot de passe ne correspondent pas."
 
-#: website/app/GeoKrety/Controller/Login.php:86
+#: website/app/GeoKrety/Controller/Login.php:85
 msgid "Welcome on board!"
 msgstr "Bienvenue à bord !"
 
-#: website/app/GeoKrety/Controller/Login.php:141
+#: website/app/GeoKrety/Controller/Login.php:146
 #, php-format
-msgid "Your account is now fully connected with %s"
+msgid "Your account is already linked with %s"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:152
+#: website/app/GeoKrety/Controller/Login.php:151
 #, php-format
-msgid "Your %s account is already connected with another GeoKrety account."
+msgid "This %s account is already linked with another GeoKrety account."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:167
+#: website/app/GeoKrety/Controller/Login.php:166
 msgid "Auth request was canceled."
 msgstr "La demande d'authentification a été annulée."
 
@@ -162,14 +175,6 @@ msgstr "Erreur lors de la suppression du commentaire."
 #: website/app/GeoKrety/Controller/MoveCreate.php:96
 msgid "The date time could not be parsed."
 msgstr "La date et l'heure n'ont pas pu être analysées."
-
-#: website/app/GeoKrety/Controller/MoveCreate.php:152
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:34
-#: website/app/GeoKrety/Controller/Registration.php:63
-#: website/app/GeoKrety/Controller/Registration.php:113
-#: website/app/GeoKrety/Controller/UserContact.php:71
-msgid "reCaptcha failed!"
-msgstr "La validation du code reCaptcha a échoué !"
 
 #: website/app/GeoKrety/Controller/MoveCreate.php:185
 msgid "Failed to save move."
@@ -207,6 +212,11 @@ msgstr "Vous recevrez maintenant des notifications lors de nouveaux commentaires
 msgid "You will not receive updates anymore."
 msgstr "Vous ne recevrez plus de notifications."
 
+#: website/app/GeoKrety/Controller/OAuthDetach.php:36
+#, php-format
+msgid "Something went wrong while detaching from your %s account. Please contact us."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
 #: website/app/GeoKrety/Controller/RegistrationActivate.php:23
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
@@ -236,12 +246,6 @@ msgstr "Aucun compte n'a été trouvé utilisant cette adresse e-mail."
 #: website/app/GeoKrety/Controller/PictureEdit.php:38
 msgid "Picture caption saved."
 msgstr "Légende de l'image enregistrée."
-
-#: website/app/GeoKrety/Controller/Registration.php:136
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:59
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:65
-msgid "Sorry but this mail address is already in use."
-msgstr "Désolé, mais cette adresse de courriel est déjà utilisée."
 
 #: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:35
 msgid "Language preferences updated."
@@ -369,11 +373,12 @@ msgid "An error occurred while sending the confirmation mail."
 msgstr "Une erreur s'est produite lors de l'envoi du courriel de confirmation."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:42
+#: website/app/GeoKrety/Email/Welcome.php:19
 msgid "Welcome on GeoKrety.org"
 msgstr "Bienvenue sur GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:45
-#: website/app/GeoKrety/Model/User.php:283
+#: website/app/GeoKrety/Model/User.php:310
 msgid "An error occurred while sending the activation mail."
 msgstr "Une erreur s'est produite lors de l'envoi du courriel d'activation."
 
@@ -429,6 +434,10 @@ msgstr "Contact de l'utilisateur %s"
 msgid "An error occurred while sending mail."
 msgstr "Une erreur s'est produite lors de l'envoi du courriel."
 
+#: website/app/GeoKrety/Email/Welcome.php:22
+msgid "An error occurred while sending the welcome mail."
+msgstr ""
+
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
 msgstr "Traditionnel"
@@ -477,6 +486,16 @@ msgstr "transité"
 #: smarty/blocks/geokret:50
 msgid "Born"
 msgstr "Né"
+
+#: website/app/GeoKrety/Model/UserSocialAuth.php:45
+#, php-format
+msgid "Your may now use your %s account to authenticate on GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Model/UserSocialAuth.php:49
+#, php-format
+msgid "Your account has been detached from %s."
+msgstr ""
 
 #: website/app/GeoKrety/PictureType.php:58
 msgid "GeoKret avatar"
@@ -775,14 +794,6 @@ msgid "Deployed on %1"
 msgstr "Déployé le %1"
 
 #: smarty/pages:6
-msgid "Welcome to the GeoKrety.org community!"
-msgstr "Bienvenue dans la communauté GeoKrety.org !"
-
-#: smarty/pages:8 smarty/dialog:37 smarty:20 smarty:48
-msgid "Sign in"
-msgstr "Connexion"
-
-#: smarty/pages:6
 msgid "GeoKrety Toolbox - GKT"
 msgstr "Boîte à outils GeoKrety - GKT"
 
@@ -910,6 +921,14 @@ msgstr "GeoKrety créés récemment"
 msgid "Owner"
 msgstr "Propriétaire"
 
+#: smarty/pages:6
+msgid "Welcome to the GeoKrety.org community!"
+msgstr "Bienvenue dans la communauté GeoKrety.org !"
+
+#: smarty/pages:11 smarty/dialog:37 smarty:20 smarty:48
+msgid "Sign in"
+msgstr "Connexion"
+
 #: smarty/pages:10
 msgid "%1's Owned GeoKrety map"
 msgstr "Carte des GeoKrety possédés par %1"
@@ -956,9 +975,9 @@ msgstr "Retour à votre profil"
 
 #: smarty/pages:30 smarty/pages:34 smarty/pages:32 smarty/pages:36
 #: smarty/pages:63 smarty/dialog:65 smarty/dialog:14 smarty/dialog:53
-#: smarty/dialog:20 smarty/dialog:13 smarty/dialog:22 smarty/dialog:45
-#: smarty/dialog:26 smarty/dialog:23 smarty/dialog:15 smarty/dialog:51
-#: smarty/dialog:47 smarty/dialog:50
+#: smarty/dialog:20 smarty/dialog:13 smarty/dialog:22 smarty/dialog:33
+#: smarty/dialog:32 smarty/dialog:45 smarty/dialog:26 smarty/dialog:23
+#: smarty/dialog:15 smarty/dialog:51 smarty/dialog:47 smarty/dialog:50
 msgid "Dismiss"
 msgstr "Annuler"
 
@@ -1396,8 +1415,8 @@ msgstr "Récupération de mot de passe"
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Si vous avez validé votre adresse e-mail dans le passé, vous pouvez le récupérer facilement. Sinon, vous devrez créer un autre compte, désolé."
 
-#: smarty/pages:22 smarty/pages:24 smarty/forms:18 smarty/forms:20
-#: smarty/forms:11 smarty/forms:13 smarty/dialog:11 smarty/dialog:12
+#: smarty/pages:22 smarty/pages:24 smarty/forms:11 smarty/forms:13
+#: smarty/dialog:11 smarty/dialog:12
 msgid "Email address"
 msgstr "Adresse e-mail"
 
@@ -1465,28 +1484,28 @@ msgstr "Générer un .pdf"
 msgid "GeoKret label preview"
 msgstr "Aperçu de l'étiquette du GeoKret"
 
+#: smarty/forms:5
+msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
+msgstr ""
+
 #: smarty/forms:10 smarty/forms:12 smarty/forms:239 smarty/forms:4
 #: smarty/forms:6 smarty/dialog:12 smarty/dialog:14
 msgid "Username"
 msgstr "Nom d’utilisateur"
 
-#: smarty/forms:21 smarty/forms:14 smarty/dialog:23
-msgid "The main purpose of collecting email is to permit password recovery."
-msgstr "Le but principal de la collecte des adresses e-mail est de permettre la récupération de votre mot de passe."
-
-#: smarty/forms:29 smarty/forms:48 smarty/dialog:17
+#: smarty/forms:31 smarty/forms:48 smarty/dialog:17
 msgid "Yes, I want to receive email alerts (sent once a day)."
 msgstr "Oui, je veux recevoir des alertes par courriel (envoyées une fois par jour)."
 
-#: smarty/forms:30 smarty/forms:49
+#: smarty/forms:32 smarty/forms:49
 msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
 msgstr "Les alertes par courriel peuvent contenir, les informations de voyage de vos GeoKrety, des actualités, des commentaires…"
 
-#: smarty/forms:42 smarty/forms:60
+#: smarty/forms:44 smarty/forms:60
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
 msgstr "Oui, j'accepte les <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">termes d'utilisation</a>."
 
-#: smarty/forms:59 smarty/forms:77
+#: smarty/forms:61 smarty/forms:77
 msgid "Register"
 msgstr "S'inscrire"
 
@@ -1625,6 +1644,10 @@ msgstr "Il est toujours agréable de recevoir un petit message  ;)"
 #: smarty/forms:274
 msgid "Post your log"
 msgstr "Poster votre mouvement"
+
+#: smarty/forms:14 smarty/dialog:23
+msgid "The main purpose of collecting email is to permit password recovery."
+msgstr "Le but principal de la collecte des adresses e-mail est de permettre la récupération de votre mot de passe."
 
 #: smarty/forms:19 smarty/forms:21 smarty/dialog:18 smarty/dialog:20
 msgid "Password"
@@ -1778,6 +1801,26 @@ msgstr "Télécharger ce parcours comme :"
 msgid "This geokret has not started yet"
 msgstr "Ce GeoKret n'a pas encore voyagé."
 
+#: smarty/blocks/user:4
+msgid "OAuth Connections"
+msgstr ""
+
+#: smarty/blocks/user:17
+msgid "Disconnect from %1"
+msgstr ""
+
+#: smarty/blocks/user:18
+msgid "Disconnect"
+msgstr ""
+
+#: smarty/blocks/user:23
+msgid "Connect with %1"
+msgstr ""
+
+#: smarty/blocks/user:23
+msgid "Connect"
+msgstr ""
+
 #: smarty/blocks/user:11
 msgid "Subscribe to RSS channel"
 msgstr "Abonnez-vous au flux RSS"
@@ -1822,7 +1865,7 @@ msgstr "Utilisé pour s'authentifier dans d'autres applications. Gardez-le secre
 msgid "Generate a new secid"
 msgstr "Générer un nouveau secid"
 
-#: smarty/blocks/user:71
+#: smarty/blocks/user:72
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
 msgstr "Pour changer votre nom d'utilisateur ou supprimer votre compte ? Envoyez-nous <a href=\"%1\">un courriel</a> !"
 
@@ -1900,6 +1943,7 @@ msgstr "Il n'y a aucune photo pour l'instant."
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
 #: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
 #: website/app-templates/foundation-emails/dist/email-password-changed.html:1
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "Login"
 msgstr "Connexion"
 
@@ -1971,7 +2015,7 @@ msgstr "Nous ne fournissons aucune garantie quant à l’exactitude, rapidité, 
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
 msgstr "Le contenu publié par vous sur le site ne peut contenir des expressions vulgaires, des contenus abusifs ou illégaux."
 
-#: smarty/dialog:26 smarty:76
+#: smarty/dialog:26 smarty/dialog:45 smarty:76
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -1979,7 +2023,7 @@ msgstr "Conditions d'utilisation"
 msgid "I agree with the terms"
 msgstr "J'accepte les termes d'utilisation"
 
-#: smarty/dialog:45 smarty/dialog:4
+#: smarty/dialog:4
 msgid "Commenting a GeoKret move"
 msgstr "Commenter un mouvement de GeoKret"
 
@@ -2003,9 +2047,29 @@ msgstr "Supprimer ce mouvement supprimera les images jointes et l'avatar princip
 msgid "Deleting this Move will delete attached pictures!"
 msgstr "La suppression de ce mouvement supprimera les images jointes !"
 
+#: smarty/dialog:2
+msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
+msgstr ""
+
+#: smarty/dialog:8 smarty/dialog:26 smarty/dialog:24
+msgid "Detaching OAuth provider"
+msgstr ""
+
+#: smarty/dialog:16 smarty/dialog:34
+msgid "Detach"
+msgstr ""
+
 #: smarty/dialog:4
 msgid "Do you really want to delete this picture?"
 msgstr "Voulez-vous vraiment supprimer cette photo ?"
+
+#: smarty/dialog:2
+msgid "You are not connected to this OAuth provider."
+msgstr ""
+
+#: smarty/dialog:15
+msgid "Back to my profile"
+msgstr ""
 
 #: smarty/dialog:6
 msgid "Manage picture"
@@ -2224,6 +2288,10 @@ msgid "Sorry, but your account has no email registered. You will not be able to 
 msgstr "Désolé, mais votre compte n'a pas d'e-mail enregistré. Vous ne pourrez pas récupérer votre compte lors d'une perte de mot de passe ! De plus, vous ne recevrez pas de notifications quotidiennes de vos GeoKrety ou de GeoKrety suivis."
 
 #: smarty/banners:4
+msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr ""
+
+#: smarty/banners:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
 msgstr "Vous avez défini ce GeoKret comme disponible pour l'adoption. Le code propriétaire est : <strong>%1</strong>. Donnez-le avec le Tracking Code <strong>%2</strong> à l'utilisateur qui adoptera votre GeoKret."
 
@@ -2327,6 +2395,7 @@ msgstr "Résolveur de waypoint"
 #: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 #: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "Open source item tracking for all geocaching platforms"
 msgstr "Suivi d'objets Open Source pour toutes les plateformes de géocaching"
 
@@ -2468,6 +2537,7 @@ msgstr "Félicitations ! 🎉"
 #: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 #: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "Hi %1,"
 msgstr "Bonjour %1,"
 
@@ -2486,11 +2556,13 @@ msgstr "Votre compte sur GeoKrety.org est maintenant entièrement fonctionnel."
 #: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 #: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "Sincerely,<br>The GeoKrety Team"
 msgstr "Sincèrement,<br>L'équipe GeoKrety"
 
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-account-activation.html:1
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "You're getting this email because you've just signed up on our website."
 msgstr "Vous recevez ce courriel parce que vous venez de vous inscrire sur notre site."
 
@@ -2670,4 +2742,20 @@ msgstr "Répondre à %1"
 #: website/app-templates/foundation-emails/dist/email-user-contact.html:1
 msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
 msgstr "Vous recevez cet e-mail car un utilisateur de GeoKrety.org vous a envoyé un message à partir de votre profil utilisateur."
+
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+msgid "Welcome 👐"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+msgid "You're now a GeoKrety.org community member, welcome!"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+msgid "As a member you can now register GeoKrety moves, upload pictures and of course create your own GeoKrety for free!"
+msgstr ""
+
+#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
+msgstr ""
 
