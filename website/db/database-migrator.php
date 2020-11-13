@@ -451,6 +451,14 @@ class UserMigrator extends BaseMigrator {
         $values[9] = LanguageService::isLanguageSupported($values[9]) ? $values[9] : null;  // preferred_language
         $values[13] = $values[13] ? trim($values[13]) : null;  // home_country
         $values[18] = $values[18] ?: SecIdGenerator::generate();  // secid
+        switch ($values[4]) { // email_invalid
+          case 0:
+            $values[4] = is_null($values[3]) ? 3 : 0; //USER_EMAIL_MISSING / USER_EMAIL_NO_ERROR
+            break;
+          case 1:
+            $values[4] = 1; // USER_EMAIL_INVALID
+            break;
+        }
     }
 
     // TODO users avatar
