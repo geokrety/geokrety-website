@@ -15,6 +15,7 @@ ${PAGE_DEV_MAILBOX_FIRST_MAIL_URL}      ${GK_URL}/devel/mail/0
 ${PAGE_DEV_MAILBOX_SECOND_MAIL_URL}     ${GK_URL}/devel/mail/1
 ${PAGE_DEV_MAILBOX_THIRD_MAIL_URL}      ${GK_URL}/devel/mail/2
 ${PAGE_DEV_MAILBOX_FOURTH_MAIL_URL}     ${GK_URL}/devel/mail/3
+${PAGE_DEV_MAILBOX_CLEAR_URL}           ${GK_URL}/devel/mail/delete/all
 ${PAGE_DEV_RESET_DB_URL}                ${GK_URL}/devel/db/reset
 
 ${PAGE_HOME_URL}                        ${GK_URL}/en

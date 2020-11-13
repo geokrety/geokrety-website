@@ -173,6 +173,9 @@ Page ShouldShow FooterElements
 Mailbox Should Contain ${count} Messages
     Element Text Should Be            ${NAVBAR_DEV_MAILBOX_COUNTER}     ${count}
 
+Empty Dev Mailbox Fast
+    Go To Url                         ${PAGE_DEV_MAILBOX_CLEAR_URL}
+
 Empty Dev Mailbox
     Go To Url                         ${PAGE_DEV_MAILBOX_URL}
     Click Element                     ${DEV_MAILBOX_DELETE_ALL_MAILS_BUTTON}
@@ -214,9 +217,11 @@ Sign Out User
 
 Seed ${count} users
     Go To Url                           ${PAGE_SEED_USER}/${count}
+    Empty Dev Mailbox Fast
 
 Seed ${count} users without terms of use
     Go To Url                           ${PAGE_SEED_USER}/${count}/no-terms-of-use
+    Empty Dev Mailbox Fast
 
 Seed ${count} geokrety
     Go To Url                           ${PAGE_SEED_GEOKRETY}/${count}
@@ -233,6 +238,7 @@ Seed ${count} waypoints GC
 Clear DB And Seed ${count} users
     Clear Database
     Go To Url                           ${PAGE_SEED_USER}/${count}
+    Empty Dev Mailbox Fast
 
 Input validation has success
     [Arguments]  ${element}

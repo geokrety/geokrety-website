@@ -21,6 +21,7 @@
         </div>
         <div class="col-xs-12 col-md-3">
             {include file='blocks/user/actions.tpl'}
+            {include file='blocks/user/oauth.tpl'}
             {if $user->isCurrentUser()}
                 {include file='blocks/user/map_home.tpl'}
             {/if}
@@ -47,4 +48,5 @@
     {include 'js/dialogs/dialog_user_details.tpl.js'}
     {include 'js/dialogs/dialog_contact_user.tpl.js'}
     {include 'js/dialogs/dialog_picture_actions.tpl.js'}
+    {include 'js/dialogs/dialog_oauth_disconnect.tpl.js'}
 {/block}

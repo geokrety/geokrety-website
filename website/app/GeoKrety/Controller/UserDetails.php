@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\LogType;
+use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Service\AwardGenerator;
 use GeoKrety\Service\Smarty;
 use UserLoader;
@@ -34,6 +35,10 @@ class UserDetails extends Base {
         $awardsGeoKretyMoved = AwardGenerator::getGrantedAwards($geokretyMoved[0]['count']);
         Smarty::assign('awardsGeoKretyMoved', $awardsGeoKretyMoved);
         Smarty::assign('geokretyMoved', $geokretyMoved[0]);
+
+        // Load Social auth providers
+        $socialProviders = new SocialAuthProvider();
+        Smarty::assign('socialProviders', $socialProviders->find());
 
         Smarty::render('pages/user_details.tpl');
     }

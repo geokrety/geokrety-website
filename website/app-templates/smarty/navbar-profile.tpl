@@ -34,12 +34,12 @@
 <li>
     <p class="navbar-btn">
         <div class="btn-group" role="group">
-            {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
+            {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
             <a id="navbar-facebookauth" href="/auth/facebook" class="btn btn-primary">
                 {fa icon="facebook"}
             </a>
             {/if}
-            {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
+            {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
             <a id="navbar-googleauth" href="/auth/google" class="btn btn-danger">
                 {fa icon="google"}
             </a>

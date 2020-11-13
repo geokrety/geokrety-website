@@ -35,11 +35,13 @@ class RegistrationActivate extends Base {
         $this->token->touch('used_on_datetime');
         $this->token->validating_ip = \Base::instance()->get('IP');
         $this->token->user->account_valid = User::USER_ACCOUNT_VALID;
+        $this->token->user->email_invalid = User::USER_EMAIL_NO_ERROR;
         if (!$this->token->validate() || !$this->token->user->validate()) {
             $f3->get('DB')->rollback();
             $f3->reroute('@home');
         }
         $this->token->user->save();
+        $this->reloadCurrentUser();
         $this->token->save();
         $f3->get('DB')->commit();
         \Sugar\Event::instance()->emit('user.activated', $this->token->user);
@@ -47,6 +49,6 @@ class RegistrationActivate extends Base {
         $smtp = new AccountActivation();
         $smtp->sendActivationConfirm($this->token);
 
-        Smarty::render('pages/registration_validate.tpl');
+        Smarty::render('pages/registration_validated.tpl');
     }
 }

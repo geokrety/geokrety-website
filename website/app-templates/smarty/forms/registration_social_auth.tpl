@@ -1,10 +1,10 @@
 <form class="form-horizontal" action="" method="post" data-parsley-validate data-parsley-ui-enabled=true>
 
-{*    <div class="form-group">*}
-{*        <div class="col-sm-offset-2 col-sm-10">*}
-{*            {t escape=no provider=$social_auth_data->provider login={'login'|alias}}If you already own an account on Geokrety.org, please <a href="%2">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed.{/t}*}
-{*        </div>*}
-{*    </div>*}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            {t escape=no provider=$social_auth_data->provider login={'login'|alias}}If you already own an account on Geokrety.org, please <a href="%2">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed.{/t}
+        </div>
+    </div>
 
     <div class="form-group">
         <label for="usernameInput" class="col-sm-2 control-label">{t}Username{/t}</label>
@@ -13,15 +13,17 @@
         </div>
     </div>
 
-    {if !empty($user->email)}
-    <div class="form-group">
-        <label for="emailInput" class="col-sm-2 control-label">{t}Email address{/t}</label>
-        <div class="col-sm-8">
-            <input type="email" class="form-control" id="emailInput" name="email" placeholder="{t}Email address{/t}" value="{$user->email}" aria-describedby="emailHelpBlock" required>
-            <span id="emailHelpBlock" class="help-block">{t}The main purpose of collecting email is to permit password recovery.{/t}</span>
-        </div>
-    </div>
+{*    {if !$user->hasEmail()}*}
+{*    <div class="form-group">*}
+{*        <label for="emailInput" class="col-sm-2 control-label">{t}Email address{/t}</label>*}
+{*        <div class="col-sm-8">*}
+{*            <input type="email" class="form-control" id="emailInput" name="email" placeholder="{t}Email address{/t}" value="{$user->email}" aria-describedby="emailHelpBlock" required>*}
+{*            <span id="emailHelpBlock" class="help-block">{t}The main purpose of collecting email is to permit password recovery.{/t}</span>*}
+{*        </div>*}
+{*    </div>*}
+{*    {/if}*}
 
+    {if $user->hasEmail()}
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">

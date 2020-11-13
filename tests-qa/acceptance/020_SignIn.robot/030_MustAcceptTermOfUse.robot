@@ -19,6 +19,7 @@ Freshly created accounts are fully valid
     [Documentation]                     No TermsOfUse question for fresh users
     Create User                         ${USER_2.name}
     Activate user account
+    Sign Out Fast
     Go To Url                           ${PAGE_HOME_URL}
     Sign In User                        ${USER_2.name}
     Location Should Not Be              ${PAGE_TERMS_OF_USE_URL}

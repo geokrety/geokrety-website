@@ -109,6 +109,10 @@ class LanguageService extends \Prefab {
     }
 
     public static function changeLanguageTo($langAlpha2) {
+        if (is_null($langAlpha2)) {
+            $langAlpha2 = self::DEFAULT_LANGUAGE_CODE;
+        }
+
         \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[$langAlpha2]);
         \Carbon\Carbon::setLocale($langAlpha2);
     }

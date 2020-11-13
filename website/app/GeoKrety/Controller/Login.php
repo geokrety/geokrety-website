@@ -6,6 +6,7 @@ use Flash;
 use GeoKrety\Auth;
 use GeoKrety\AuthGroup;
 use GeoKrety\Email\AccountActivation;
+use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
@@ -35,7 +36,6 @@ class Login extends Base {
                 if (!$user->isAccountValid() && $user->activation) {
                     $smtp = new AccountActivation();
                     $smtp->sendActivationAgainOnLogin($user->activation);
-                    $f3->reroute('@login');
                 }
 
                 if ($f3->get('POST.remember')) {
@@ -72,7 +72,6 @@ class Login extends Base {
 
     public static function connectUser(\Base $f3, User $user) {
         $ml = Multilang::instance();
-        $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
         $f3->set('SESSION.CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USERNAME', $user->username);
         $f3->set('SESSION.IS_LOGGED_IN', true);
@@ -93,15 +92,16 @@ class Login extends Base {
                     $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
                     $query = (!empty($query) ? '?' : '').$query;
                 }
+                $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
                 $f3->reroute($ml->alias($goto, $params, $user->preferred_language).$query);
             }
         }
-        $f3->reroute($ml->alias('home', $params, $user->preferred_language));
+        $f3->reroute($ml->alias('user_details', ['userid' => $user->id], $user->preferred_language));
     }
 
     public function socialAuthSuccess(array $data) {
         $f3 = \Base::instance();
-        // Call before route manually as we come from an handler and not a route
+        // Call beforeRoute() manually as we come from an handler and not a route
         $this->beforeRoute($f3);
 
         // Do we have an already present association?
@@ -112,17 +112,16 @@ class Login extends Base {
 
         // User already authenticated here?
         if ($this->isLoggedIn()) {
-            $f3->get('DB')->begin();
             // Connect user/provider
             if ($user->dry()) {
+                $f3->get('DB')->begin();
                 $user_social_auth = new \GeoKrety\Model\UserSocialAuth();
                 $user_social_auth->provider = SocialAuthProvider::getProvider($data['provider']);
                 $user_social_auth->user = $this->current_user;
                 $user_social_auth->uid = $data['uid'];
                 if (!$user_social_auth->validate()) {
                     $f3->get('DB')->rollback();
-                    $f3->reroute('@home');
-                    die();
+                    $f3->reroute('@home', $die = true);
                 }
                 $user_social_auth->save();
 
@@ -130,33 +129,33 @@ class Login extends Base {
                 $this->current_user->account_valid = User::USER_ACCOUNT_VALID;
 
                 // TODO a less intrusive way would be to offer user possibility to manually do this, instead of being automatic
-                if (is_null($this->current_user->email) && !empty($data['info']['email'])) {
-                    // Update account with received email, and no validation
+                if (!$this->current_user->hasEmail() && !empty($data['info']['email'])) {
+                    // Update account with received email, and mark it as valid
                     $this->current_user->email = $data['info']['email'];
                     $this->current_user->email_invalid = User::USER_EMAIL_NO_ERROR;
+                    AccountActivationToken::invalidateOtherUserTokens($this->current_user);
                 }
                 $this->current_user->save();
                 $f3->get('DB')->commit();
 
-                Flash::instance()->addMessage(sprintf(_('Your account is now fully connected with %s'), $data['provider']), 'success');
-                $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
+                $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
             }
 
             // This user is already connected to this social auth provider
             if ($user->isCurrentUser()) {
-//                Flash::instance()->addMessage(sprintf(_('Your account is already connected with %s'), $data['provider']), 'info');
-                $f3->reroute('@home');
+                Flash::instance()->addMessage(sprintf(_('Your account is already linked with %s'), $data['provider']), 'info');
+                $f3->reroute('@home', $die = true);
             }
 
             // This social account is already registered with *another* account
-            Flash::instance()->addMessage(sprintf(_('Your %s account is already connected with another GeoKrety account.'), $data['provider']), 'danger');
-            $f3->reroute('@home');
+            Flash::instance()->addMessage(sprintf(_('This %s account is already linked with another GeoKrety account.'), $data['provider']), 'danger');
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
         }
 
         // Create a new user
         if ($user->dry()) {
             $f3->set('SESSION.social_auth_data', json_encode($data));
-            $f3->reroute('@registration_social');
+            $f3->reroute('@registration_social', $die = true);
         }
 
         // Log user in

@@ -22,6 +22,7 @@ class AccountActivationToken extends Base {
     const TOKEN_UNUSED = 0;
     const TOKEN_VALIDATED = 1;
     const TOKEN_EXPIRED = 2;
+    const TOKEN_DISABLED = 3;
 
     const TOKEN_NEED_VALIDATE = [
         self::TOKEN_VALIDATED,
@@ -90,6 +91,7 @@ class AccountActivationToken extends Base {
     // TODO call that from cron // TODO: move this to plpgsql
     public static function expireOldTokens() {
         $activation = new AccountActivationToken();
+        // TODO why is there 2 queries ??? bug or feature ?
         $expiredTokens = $activation->find([
             'used = ? AND NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)',
             'used = ? AND created_on_datetime > NOW() - cast(? as interval)',
@@ -98,6 +100,19 @@ class AccountActivationToken extends Base {
         ]);
         foreach ($expiredTokens ?: [] as $token) {
             $token->used = self::TOKEN_EXPIRED;
+            $token->save();
+        }
+    }
+
+    public static function invalidateOtherUserTokens(User $user) {
+        $activation = new AccountActivationToken();
+        $invalidateTokens = $activation->find([
+            'user = ? AND used = ?',
+            $user->id,
+            self::TOKEN_UNUSED,
+        ]);
+        foreach ($invalidateTokens ?: [] as $token) {
+            $token->used = self::TOKEN_DISABLED;
             $token->save();
         }
     }

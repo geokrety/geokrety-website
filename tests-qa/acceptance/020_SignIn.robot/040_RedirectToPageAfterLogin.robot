@@ -15,12 +15,12 @@ Redirects to last page
     Sign Out User
 
 No redirect urls
-    [Documentation]                     Redirect back on home page
-    [Template]    Redirect to home
-    ${PAGE_SIGN_IN_URL}
-    # ${PAGE_SIGN_OUT_URL}     ### DISABLED WHILE IT DOESN'T SHOW A NICE PAGE
-    ${PAGE_REGISTER_URL}
-    ${GK_URL}/en/registration/fake_token/activate
+    [Documentation]                     Redirect back to
+    [Template]    Redirect to
+    ${PAGE_SIGN_IN_URL}                                 ${PAGE_USER_1_PROFILE_URL}
+    # ${PAGE_SIGN_OUT_URL}                              ### DISABLED WHILE IT DOESN'T SHOW A NICE PAGE
+    ${PAGE_REGISTER_URL}                                ${PAGE_USER_1_PROFILE_URL}
+    ${GK_URL}/en/registration/fake_token/activate       ${PAGE_HOME_URL}
 
 *** Keywords ***
 
@@ -28,9 +28,9 @@ Seed
     Clear Database
     Seed 1 users
 
-Redirect to home
-    [Arguments]    ${url}
+Redirect to
+    [Arguments]    ${url}   ${expected}
     Go To Url                           ${url}
     Sign In User                        ${USER_1.name}
-    Location Should Be                  ${PAGE_HOME_URL}
-    Sign Out User
+    Location Should Be                  ${expected}
+    Sign Out Fast

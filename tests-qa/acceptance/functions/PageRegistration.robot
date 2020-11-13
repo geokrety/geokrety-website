@@ -10,7 +10,7 @@ Create User
     Fill Registration Form            ${username}  ${email}    ${password}
     ...                               ${language}    ${daily_mail}   ${terms_of_use}
     Click Button                      ${REGISTRATION_REGISTER_BUTTON}
-    Location Should Contain           ${GK_URL}/en/users/
+    Location Should Contain           ${GK_URL}/${language}/users/
     Page Should Not Contain           No such item!
 
 

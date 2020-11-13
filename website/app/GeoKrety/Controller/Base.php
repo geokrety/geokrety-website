@@ -21,23 +21,34 @@ abstract class Base {
      */
     protected $current_user;
 
+    /**
+     * @var \Base|null The f3 instance
+     */
+    protected $f3;
+
     public function beforeRoute(\Base $f3) {
+        $this->f3 = $f3;
+
         // Load supported languages
         Smarty::assign('languages', LanguageService::getSupportedLanguages(true));
 
         // Load current user
-        if ($f3->exists('SESSION.CURRENT_USER')) {
+        $this->reloadCurrentUser($f3);
+
+        // Check term of use acceptation
+        if (!in_array($f3->get('ALIAS'), self::NO_TERMS_OF_USE_REDIRECT_URLS) && $this->isLoggedIn() && !$this->current_user->hasAcceptedTheTermsOfUse()) {
+            $f3->reroute('@terms_of_use');
+        }
+    }
+
+    public function reloadCurrentUser() {
+        if ($this->f3->exists('SESSION.CURRENT_USER')) {
             $user = new User();
             $user->filter('email_activation', ['used = ?', EmailActivationToken::TOKEN_UNUSED]);
-            $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
+            $user->load(['id = ?', $this->f3->get('SESSION.CURRENT_USER')]);
             if ($user->valid()) {
                 Smarty::assign('current_user', $user);
                 $this->current_user = $user;
-            }
-
-            // Check term of use acceptation
-            if (!in_array($f3->get('ALIAS'), self::NO_TERMS_OF_USE_REDIRECT_URLS) && !$user->hasAcceptedThetermsOfUse()) {
-                $f3->reroute('@terms_of_use');
             }
         }
     }
@@ -49,4 +60,16 @@ abstract class Base {
 //    public function afterRoute($f3) {
 //        \Flash::instance()->addMessage('<pre>'.$f3->get('DB')->log().'</pre>', 'warning');
 //    }
+
+    public function checkCaptcha(string $func = 'get') {
+        if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
+            $recaptcha = new \ReCaptcha\ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
+            $resp = $recaptcha->verify($this->f3->get('POST.g-recaptcha-response'), $this->f3->get('IP'));
+            if (!$resp->isSuccess()) {
+                \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
+                $this->$func($this->f3);
+                die();
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@ Create an account
     Clear Database
     Create User             ${USER_1.name}
     Empty Dev Mailbox
+    Sign Out Fast
 
 Account not active
     Depends on test                     Create an account
@@ -28,6 +29,7 @@ Confirmation mail sent again
 Validated account can login
     Depends on test                     Confirmation mail sent again
     Activate user account
+    Sign Out Fast
 
     Go To Url                           ${PAGE_HOME_URL}
     Sign In User                        ${USER_1.name}

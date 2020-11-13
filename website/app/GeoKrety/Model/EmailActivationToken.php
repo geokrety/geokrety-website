@@ -23,7 +23,6 @@ use DB\SQL\Schema;
  */
 class EmailActivationToken extends Base {
     // Validation occurs in validate() for this
-//    use \Validation\Traits\CortexTrait;
 
     const TOKEN_UNUSED = 0;
     const TOKEN_CHANGED = 1;

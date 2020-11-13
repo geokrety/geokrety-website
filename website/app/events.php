@@ -21,6 +21,8 @@ $events->on('user.login', function (\GeoKrety\Model\User $user) { audit('user.lo
 $events->on('user.logout', function (\GeoKrety\Model\User $user) { audit('user.logout', $user); });
 $events->on('user.language.changed', function (\GeoKrety\Model\User $user, $context) { audit('user.language.changed', ['language' => $user->language, 'old_language' => $context]); });  // context => $oldLanguage
 $events->on('user.home_location.changed', function (\GeoKrety\Model\User $user) { audit('user.created', $user); });
+$events->on('user.oauth.attach', function (\GeoKrety\Model\UserSocialAuth $userSocialAuth) { audit('user.oauth.attach', $userSocialAuth); });
+$events->on('user.oauth.detach', function (\GeoKrety\Model\UserSocialAuth $userSocialAuth) { audit('user.oauth.detach', $userSocialAuth); });
 
 $events->on('user.email.change', function (\GeoKrety\Model\User $user) { audit('user.email.change', $user); });
 $events->on('user.email.changed', function (\GeoKrety\Model\User $user) { audit('user.email.changed', $user); });

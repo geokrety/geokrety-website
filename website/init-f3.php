@@ -21,10 +21,20 @@ if (GK_DEVEL) {
 
 // OpAuth
 if (GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false) {
+    define('GK_OPAUTH_ACTIVE', true);
     $f3->config(__DIR__.'/app/opauth.ini', true);
+    if (GK_OPAUTH_GOOGLE_CLIENT_ID) {
+        $f3->config(__DIR__.'/app/opauth.google.ini', true);
+    }
+    if (GK_OPAUTH_FACEBOOK_CLIENT_ID) {
+        $f3->config(__DIR__.'/app/opauth.facebook.ini', true);
+    }
+
     $opAuth = OpauthBridge::instance($f3->opauth);
     $opAuth->onSuccess('\GeoKrety\Controller\Login->socialAuthSuccess');
     $opAuth->onAbort('\GeoKrety\Controller\Login->socialAuthAbort');
+} else {
+    define('GK_OPAUTH_ACTIVE', false);
 }
 
 // // Falsum

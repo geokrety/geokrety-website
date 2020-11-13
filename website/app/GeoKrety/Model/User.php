@@ -3,6 +3,7 @@
 namespace GeoKrety\Model;
 
 use DateTime;
+use DB\CortexCollection;
 use DB\SQL\Schema;
 use JsonSerializable;
 
@@ -31,16 +32,19 @@ use JsonSerializable;
  * @property int email_invalid
  * @property int account_valid
  * @property AccountActivationToken activation
+ * @property CortexCollection social_auth
  */
 class User extends Base implements JsonSerializable {
     // Validation occurs in validate() for this
-//    use \Validation\Traits\CortexTrait;
 
     const USER_ACCOUNT_INVALID = 0;
     const USER_ACCOUNT_VALID = 1;
     // TODO: there is more status: terms_of_use, `INVALID` is in fact `UNVALIDATED`…
 
     const USER_EMAIL_NO_ERROR = 0;
+    const USER_EMAIL_INVALID = 1;
+    const USER_EMAIL_UNCONFIRMED = 2;
+    const USER_EMAIL_MISSING = 3;
 
     protected $db = 'DB';
     protected $table = 'gk_users';
@@ -258,8 +262,21 @@ class User extends Base implements JsonSerializable {
         return $this->account_valid === User::USER_ACCOUNT_VALID;
     }
 
-    public function hasAcceptedThetermsOfUse(): bool {
+    public function hasEmail(): bool {
+        return !is_null($this->_email);
+    }
+
+    public function hasAcceptedTheTermsOfUse(): bool {
         return !is_null($this->terms_of_use_datetime);
+    }
+
+    public function isConnectedWithProvider(SocialAuthProvider $provider): bool {
+        if (is_null($this->social_auth)) {
+            return false;
+        }
+        $prov_ids = $this->social_auth->getAll('provider', true);
+
+        return in_array($provider->id, $prov_ids);
     }
 
     public function isCurrentUser(): bool {
@@ -269,23 +286,36 @@ class User extends Base implements JsonSerializable {
     }
 
     protected function generateAccountActivation(): void {
-        if (is_null($this->email) or $this->account_valid === self::USER_ACCOUNT_VALID) {
+        if (is_null($this->email)) {
             // skip sending mail
             return;
         }
-        $token = new AccountActivationToken();
-        $token->user = $this;
-        if ($token->validate()) {
-            $token->save();
-            $smtp = new \GeoKrety\Email\AccountActivation();
-            $smtp->sendActivation($token);
-        } else {
-            \Flash::instance()->addMessage(_('An error occurred while sending the activation mail.'), 'danger');
+
+        // Send welcome mail
+        if ($this->email_invalid === self::USER_EMAIL_NO_ERROR) {
+            $smtp = new \GeoKrety\Email\Welcome();
+            $smtp->sendWelcome($this);
+
+            return;
+        }
+
+        if ($this->account_valid === self::USER_ACCOUNT_INVALID) {
+            $token = new AccountActivationToken();
+            $token->user = $this;
+            if ($token->validate()) {
+                $token->save();
+                $smtp = new \GeoKrety\Email\AccountActivation();
+                $smtp->sendActivation($token);
+            } else {
+                \Flash::instance()->addMessage(_('An error occurred while sending the activation mail.'), 'danger');
+            }
+
+            return;
         }
     }
 
     public function get_email(): ?string {
-        if (!is_null($this->_email)) {
+        if ($this->hasEmail()) {
             return $this->_email;
         }
 
@@ -309,6 +339,12 @@ EOT;
         $this->_email = $value;
 
         return $value;
+    }
+
+    public function isEmailUnique(?string $email = null): bool {
+        $email = $email ?? $this->email;
+
+        return $this->count(['_email_hash = public.digest(lower(?), \'sha256\')', $email], null, 0) > 0; // Do not cache request
     }
 
     public function get_secid(): ?string {

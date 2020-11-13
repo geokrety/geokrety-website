@@ -14,7 +14,7 @@ function modalLoadErrors(xhr, callback) {
         showLoginForm();
         return;
     }
-    if (xhr.status === 403) {
+    if (xhr.status === 403 || xhr.status === 404) {
         $('#modal').find('.modal-content').html(xhr.responseText);
         return;
     }

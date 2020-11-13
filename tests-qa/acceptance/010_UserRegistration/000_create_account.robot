@@ -19,6 +19,12 @@ Create first account
     Page Should Contain                 A confirmation email has been sent to your address
     Element Text Should Be              ${NAVBAR_DEV_MAILBOX_COUNTER}    1
 
+User is connected after registration
+    Depends on test                     Create first account
+    [Documentation]                     User is authenticated after registration
+    !Go To GeoKrety
+    Page Should Not Contain Link        ${NAVBAR_REGISTER_LINK}
+
 Activate account
     Depends on test                     Create first account
     [Documentation]                     Activate account (mail link)
@@ -44,6 +50,7 @@ Email activation confirmation received
 Sign In user
     Depends on test                     Email activation confirmation received
     [Documentation]                     User can sign in
+    Sign Out Fast
     Go To Url                           ${PAGE_HOME_URL}
     Sign In User                        admin
     Page Should Not Contain             Username and password doesn't match.
