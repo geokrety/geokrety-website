@@ -20,8 +20,8 @@ SELECT lives_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting
 SELECT throws_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting_ip", "used", "validating_ip") VALUES (6, 1, '127.0.0.1', 2, '127.0.0.1')$$);
 
 -- validating_ip MUST be set for move type 3
-SELECT lives_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting_ip", "used", "validating_ip") VALUES (7, 1, '127.0.0.1', 3, NULL)$$);
-SELECT throws_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting_ip", "used", "validating_ip") VALUES (8, 1, '127.0.0.1', 3, '127.0.0.1')$$);
+SELECT throws_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting_ip", "used", "validating_ip") VALUES (7, 1, '127.0.0.1', 3, NULL)$$);
+SELECT lives_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting_ip", "used", "validating_ip") VALUES (8, 1, '127.0.0.1', 3, '127.0.0.1')$$);
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

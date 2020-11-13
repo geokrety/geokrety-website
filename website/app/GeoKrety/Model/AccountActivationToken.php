@@ -100,6 +100,7 @@ class AccountActivationToken extends Base {
         ]);
         foreach ($expiredTokens ?: [] as $token) {
             $token->used = self::TOKEN_EXPIRED;
+            $token->validating_ip = \Base::instance()->get('IP');
             $token->save();
         }
     }
