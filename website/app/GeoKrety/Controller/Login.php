@@ -19,6 +19,7 @@ class Login extends Base {
         'login',
         'logout',
         'registration',
+        'registration_social',
         'registration_activate',
     ];
 
