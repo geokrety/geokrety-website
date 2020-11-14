@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-14 15:58+0000\n"
-"PO-Revision-Date: 2020-11-14 16:02\n"
+"POT-Creation-Date: 2020-11-14 17:10+0000\n"
+"PO-Revision-Date: 2020-11-14 17:13\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-11-14 15:58+0000\n"
+"POT-Creation-Date: 2020-11-14 17:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -383,7 +383,7 @@ msgid "An error occurred while sending the activation mail."
 msgstr "crwdns18474:0crwdne18474:0"
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
-#: website/app/GeoKrety/Email/EmailChange.php:35
+#: website/app/GeoKrety/Email/EmailChange.php:35 smarty/pages:3
 msgid "Changing your email address"
 msgstr "crwdns15660:0crwdne15660:0"
 
@@ -482,7 +482,7 @@ msgstr "crwdns15688:0crwdne15688:0"
 msgid "dip"
 msgstr "crwdns15690:0crwdne15690:0"
 
-#: website/app/GeoKrety/LogType.php:109 smarty/pages:69
+#: website/app/GeoKrety/LogType.php:109 smarty/pages:71
 #: smarty/blocks/geokret:50
 msgid "Born"
 msgstr "crwdns15692:0crwdne15692:0"
@@ -765,7 +765,7 @@ msgstr "crwdns14130:0crwdne14130:0"
 msgid "About"
 msgstr "crwdns16190:0crwdne16190:0"
 
-#: smarty:5 smarty/pages:17 smarty:48
+#: smarty:5 smarty/pages:19 smarty/pages:3 smarty:48
 msgid "News"
 msgstr "crwdns14164:0crwdne14164:0"
 
@@ -793,416 +793,452 @@ msgstr "crwdns18434:0%1crwdne18434:0"
 msgid "Deployed on %1"
 msgstr "crwdns16360:0%1crwdne16360:0"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "GeoKrety Toolbox - GKT"
 msgstr "crwdns15144:0crwdne15144:0"
 
-#: smarty/pages:10
+#: smarty/pages:12
 msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
 msgstr "crwdns15146:0%1crwdne15146:0"
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
 msgstr "crwdns15148:0%1crwdnd15148:0%2crwdnd15148:0%1crwdnd15148:0%2crwdnd15148:0%2crwdnd15148:0%1crwdnd15148:0%2crwdne15148:0"
 
-#: smarty/pages:16
+#: smarty/pages:18
 msgid "Available for:"
 msgstr "crwdns15150:0crwdne15150:0"
 
-#: smarty/pages:20
+#: smarty/pages:22
 msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 msgstr "crwdns16376:0%1crwdnd16376:0%2crwdnd16376:0%3crwdne16376:0"
 
-#: smarty/pages:4
+#: smarty/pages:3 smarty/pages:6
 msgid "This page doesn't exists yet, but we're working on it!"
 msgstr "crwdns15846:0crwdne15846:0"
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Statpic background chooser"
+msgstr "crwdns18666:0crwdne18666:0"
+
+#: smarty/pages:8
 msgid "Select your preferred statpic background"
 msgstr "crwdns15844:0crwdne15844:0"
 
-#: smarty/pages:25 smarty/forms:51 smarty/dialog:46
+#: smarty/pages:27 smarty/forms:51 smarty/dialog:46
 msgid "Save"
 msgstr "crwdns15054:0crwdne15054:0"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Your current statpic"
 msgstr "crwdns15056:0crwdne15056:0"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's recent moves"
 msgstr "crwdns15886:0%1crwdne15886:0"
 
-#: smarty/pages:18 smarty/pages:30 smarty/pages:67 smarty/pages:38
+#: smarty/pages:20 smarty/pages:32 smarty/pages:69 smarty/pages:38
 #: smarty/pages:81 smarty/devel/pages:15 smarty/dialog:26
 msgid "ID"
 msgstr "crwdns14590:0crwdne14590:0"
 
-#: smarty/pages:19 smarty/pages:31 smarty/pages:20
+#: smarty/pages:21 smarty/pages:33 smarty/pages:22
 msgid "Spotted in"
 msgstr "crwdns14668:0crwdne14668:0"
 
-#: smarty/pages:20 smarty/pages:32 smarty/pages:18 smarty/pages:35
+#: smarty/pages:22 smarty/pages:34 smarty/pages:20 smarty/pages:37
 #: smarty/forms:106 smarty/forms:247 smarty/dialog:21
 msgid "Comment"
 msgstr "crwdns14028:0crwdne14028:0"
 
-#: smarty/pages:21 smarty/pages:20 smarty/pages:33
+#: smarty/pages:23 smarty/pages:22 smarty/pages:35
 msgid "Last move"
 msgstr "crwdns14612:0crwdne14612:0"
 
-#: smarty/pages:22 smarty/pages:32 smarty/pages:23
+#: smarty/pages:24 smarty/pages:34 smarty/pages:25
 msgid "Caches visited count"
 msgstr "crwdns15888:0crwdne15888:0"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
 msgstr "crwdns18596:0%1crwdne18596:0"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "crwdns15890:0%1crwdne15890:0"
 
-#: smarty/pages:7 smarty/blocks/user:16
+#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:16
 msgid "Owned GeoKrety"
 msgstr "crwdns14666:0crwdne14666:0"
 
-#: smarty/pages:21 smarty/pages:34 smarty/pages:22
+#: smarty/pages:23 smarty/pages:36 smarty/pages:24
 msgid "Distance"
 msgstr "crwdns14322:0crwdne14322:0"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr "crwdns18598:0%2crwdne18598:0"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "crwdns15910:0%1crwdne15910:0"
 
-#: smarty/pages:6 smarty:61
+#: smarty/pages:3 smarty/pages:8 smarty:61
 msgid "Claim a GeoKret"
 msgstr "crwdns13876:0crwdne13876:0"
 
-#: smarty/pages:13 smarty/forms:31 smarty/forms:21 smarty/blocks/geokret:43
+#: smarty/pages:15 smarty/forms:31 smarty/forms:21 smarty/blocks/geokret:43
 #: smarty/blocks/geokret:9
 msgid "Tracking Code"
 msgstr "crwdns15070:0crwdne15070:0"
 
-#: smarty/pages:20
+#: smarty/pages:22
 msgid "Owner Code"
 msgstr "crwdns15072:0crwdne15072:0"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
 msgstr "crwdns16492:0crwdne16492:0"
 
-#: smarty/pages:33
+#: smarty/pages:35
 msgid "Adopt"
 msgstr "crwdns15074:0crwdne15074:0"
 
-#: smarty/pages:4
+#: smarty/pages:3 smarty/pages:6
+msgid "Label generator"
+msgstr "crwdns18668:0crwdne18668:0"
+
+#: smarty/pages:3 smarty/pages:6
 msgid "🎉 Welcome to GeoKrety.org!"
 msgstr "crwdns15900:0crwdne15900:0"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Latest moves"
 msgstr "crwdns15902:0crwdne15902:0"
 
-#: smarty/pages:48
+#: smarty/pages:50
 msgid "Recent pictures"
 msgstr "crwdns15904:0crwdne15904:0"
 
-#: smarty/pages:61
+#: smarty/pages:63
 msgid "Recently created GeoKrety"
 msgstr "crwdns15906:0crwdne15906:0"
 
-#: smarty/pages:68 smarty/pages:19 smarty/forms:15 smarty/forms:17
+#: smarty/pages:70 smarty/pages:21 smarty/forms:15 smarty/forms:17
 #: smarty/dialog:27
 msgid "Owner"
 msgstr "crwdns14178:0crwdne14178:0"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty:16 smarty:51 smarty:58
+msgid "Log a GeoKret"
+msgstr "crwdns14460:0crwdne14460:0"
+
+#: smarty/pages:3 smarty/pages:39 smarty:86 smarty:88
+msgid "Help"
+msgstr "crwdns14074:0crwdne14074:0"
+
+#: smarty/pages:3 smarty/pages:8
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "crwdns16430:0crwdne16430:0"
 
-#: smarty/pages:11 smarty/dialog:37 smarty:32 smarty:48
+#: smarty/pages:13 smarty/dialog:37 smarty:32 smarty:48
 msgid "Sign in"
 msgstr "crwdns14908:0crwdne14908:0"
 
-#: smarty/pages:10
+#: smarty/pages:3 smarty/pages:12
 msgid "%1's Owned GeoKrety map"
 msgstr "crwdns18506:0%1crwdne18506:0"
 
-#: smarty/pages:28 smarty/blocks/geokret:46
+#: smarty/pages:30 smarty/blocks/geokret:46
 msgid "Total distance"
 msgstr "crwdns14626:0crwdne14626:0"
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "Total visited caches"
 msgstr "crwdns18508:0crwdne18508:0"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "Last moved date"
 msgstr "crwdns18510:0crwdne18510:0"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "Pictures of %1's GeoKrety"
 msgstr "crwdns18512:0%1crwdne18512:0"
 
-#: smarty/pages:7 smarty/blocks/user:20 smarty:20
+#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:20 smarty:20
 msgid "Watched GeoKrety"
 msgstr "crwdns14676:0crwdne14676:0"
 
-#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:56
+#: smarty/pages:26 smarty/pages:25 smarty/blocks/geokret:55 smarty:56
 msgid "Actions"
 msgstr "crwdns14606:0crwdne14606:0"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "You did not watch any GeoKrety yet."
 msgstr "crwdns18600:0crwdne18600:0"
 
-#: smarty/pages:40
+#: smarty/pages:42
 msgid "%1 doesn't watch any GeoKrety yet."
 msgstr "crwdns15896:0%1crwdne15896:0"
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Confirm changing your email address"
+msgstr "crwdns18670:0crwdne18670:0"
+
+#: smarty/pages:8
 msgid "Do you confirm changing your email address?"
 msgstr "crwdns16294:0crwdne16294:0"
 
-#: smarty/pages:29 smarty/pages:31
+#: smarty/pages:31 smarty/pages:32
 msgid "Back to your profile"
 msgstr "crwdns16288:0crwdne16288:0"
 
-#: smarty/pages:30 smarty/pages:34 smarty/pages:32 smarty/pages:36
-#: smarty/pages:63 smarty/dialog:65 smarty/dialog:14 smarty/dialog:53
+#: smarty/pages:32 smarty/pages:36 smarty/pages:33 smarty/pages:37
+#: smarty/pages:65 smarty/dialog:65 smarty/dialog:14 smarty/dialog:53
 #: smarty/dialog:20 smarty/dialog:13 smarty/dialog:22 smarty/dialog:33
 #: smarty/dialog:32 smarty/dialog:45 smarty/dialog:26 smarty/dialog:23
 #: smarty/dialog:15 smarty/dialog:51 smarty/dialog:47 smarty/dialog:50
 msgid "Dismiss"
 msgstr "crwdns14738:0crwdne14738:0"
 
-#: smarty/pages:33 smarty/pages:35
+#: smarty/pages:35 smarty/pages:36
 msgid "Back to homepage"
 msgstr "crwdns16290:0crwdne16290:0"
 
-#: smarty/pages:37
+#: smarty/pages:39
 msgid "I approve this change"
 msgstr "crwdns16296:0crwdne16296:0"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "No, please revert to my old email address"
 msgstr "crwdns16298:0crwdne16298:0"
 
-#: smarty/pages:9
+#: smarty/pages:10
 msgid "Changing your email address."
 msgstr "crwdns16286:0crwdne16286:0"
 
-#: smarty/pages:17 smarty/pages:20
+#: smarty/pages:18 smarty/pages:22
 msgid "Please enter the verification token received by mail."
 msgstr "crwdns16234:0crwdne16234:0"
 
-#: smarty/pages:22 smarty/pages:24 smarty/pages:25 smarty/pages:27
+#: smarty/pages:23 smarty/pages:25 smarty/pages:27 smarty/pages:29
 msgid "Verification Token"
 msgstr "crwdns16236:0crwdne16236:0"
 
-#: smarty/pages:39
+#: smarty/pages:40
 msgid "Check the token"
 msgstr "crwdns16292:0crwdne16292:0"
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Hall of fame"
+msgstr "crwdns18672:0crwdne18672:0"
+
+#: smarty/pages:8
 msgid "Developers"
 msgstr "crwdns15014:0crwdne15014:0"
 
-#: smarty/pages:9
+#: smarty/pages:11
 msgid "Current team:"
 msgstr "crwdns15848:0crwdne15848:0"
 
-#: smarty/pages:11
+#: smarty/pages:13
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
 msgstr "crwdns15850:0%1crwdne15850:0"
 
-#: smarty/pages:12
+#: smarty/pages:14
 msgid "code, support, public relation and advertising"
 msgstr "crwdns15852:0crwdne15852:0"
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "Legacy team:"
 msgstr "crwdns15854:0crwdne15854:0"
 
-#: smarty/pages:16
+#: smarty/pages:18
 msgid "idea, code and original design"
 msgstr "crwdns15856:0crwdne15856:0"
 
-#: smarty/pages:17
+#: smarty/pages:19
 msgid "visions into (legacy) code 😉"
 msgstr "crwdns15858:0crwdne15858:0"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Support"
 msgstr "crwdns15024:0crwdne15024:0"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "GK logo (the mole, different versions)"
 msgstr "crwdns15026:0crwdne15026:0"
 
-#: smarty/pages:29
+#: smarty/pages:31
 msgid "MySQL support, sandwiches and more 😃"
 msgstr "crwdns15028:0crwdne15028:0"
 
-#: smarty/pages:30
+#: smarty/pages:32
 msgid "GK maps"
 msgstr "crwdns15030:0crwdne15030:0"
 
-#: smarty/pages:37 smarty:86 smarty:88
-msgid "Help"
-msgstr "crwdns14074:0crwdne14074:0"
-
-#: smarty/pages:41
+#: smarty/pages:43
 msgid "betatesting, idea, public relation and advertising 😃"
 msgstr "crwdns15032:0crwdne15032:0"
 
-#: smarty/pages:42
+#: smarty/pages:44
 msgid "betatesting, language support"
 msgstr "crwdns15034:0crwdne15034:0"
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid "betatesting"
 msgstr "crwdns15036:0crwdne15036:0"
 
-#: smarty/pages:44
+#: smarty/pages:46
 msgid "programming support"
 msgstr "crwdns15038:0crwdne15038:0"
 
-#: smarty/pages:45
+#: smarty/pages:47
 msgid "coordinates parser"
 msgstr "crwdns15040:0crwdne15040:0"
 
-#: smarty/pages:46
+#: smarty/pages:48
 msgid "public relation and advertising"
 msgstr "crwdns15042:0crwdne15042:0"
 
-#: smarty/pages:53
+#: smarty/pages:55
 msgid "Translations"
 msgstr "crwdns15044:0crwdne15044:0"
 
-#: smarty/pages:82
+#: smarty/pages:84
 msgid "Global reviewers"
 msgstr "crwdns15046:0crwdne15046:0"
 
-#: smarty/pages:89
+#: smarty/pages:91
 msgid "Credits"
 msgstr "crwdns15048:0crwdne15048:0"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's posted pictures"
 msgstr "crwdns18514:0%1crwdne18514:0"
 
-#: smarty/pages:11
+#: smarty/pages:3
+msgid "News: %1"
+msgstr "crwdns18674:0%1crwdne18674:0"
+
+#: smarty/pages:13
 msgid "Leave a comment"
 msgstr "crwdns15060:0crwdne15060:0"
 
-#: smarty/pages:20 smarty/dialog:14
+#: smarty/pages:22 smarty/dialog:14
 msgid "Your comment"
 msgstr "crwdns13908:0crwdne13908:0"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "Subscribe to this news post"
 msgstr "crwdns15062:0crwdne15062:0"
 
-#: smarty/pages:40
+#: smarty/pages:42
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "crwdns16186:0%1crwdne16186:0"
 
-#: smarty/pages:45
+#: smarty/pages:47
 msgid "Comments"
 msgstr "crwdns14266:0crwdne14266:0"
 
-#: smarty/pages:49
+#: smarty/pages:51
 msgid "There are no comments for this post."
 msgstr "crwdns15066:0crwdne15066:0"
 
-#: smarty/pages:11 smarty/dialog:8
+#: smarty/pages:3 smarty/pages:13 smarty/dialog:8
 msgid "Change your password"
 msgstr "crwdns15104:0crwdne15104:0"
 
-#: smarty/pages:34
+#: smarty/pages:36
 msgid "Please define a new password."
 msgstr "crwdns16238:0crwdne16238:0"
 
-#: smarty/pages:39 smarty/pages:41 smarty/dialog:22 smarty/dialog:24
+#: smarty/pages:41 smarty/pages:43 smarty/dialog:22 smarty/dialog:24
 msgid "New password"
 msgstr "crwdns14258:0crwdne14258:0"
 
-#: smarty/pages:46 smarty/pages:48 smarty/forms:26 smarty/forms:28
+#: smarty/pages:48 smarty/pages:50 smarty/forms:26 smarty/forms:28
 #: smarty/dialog:29 smarty/dialog:31
 msgid "Confirm password"
 msgstr "crwdns14978:0crwdne14978:0"
 
-#: smarty/pages:54 smarty/dialog:28 smarty/dialog:53 smarty/dialog:52
+#: smarty/pages:56 smarty/dialog:28 smarty/dialog:53 smarty/dialog:52
 msgid "Change"
 msgstr "crwdns14766:0crwdne14766:0"
 
-#: smarty/pages:15
+#: smarty/pages:3
+msgid "Interactive map"
+msgstr "crwdns18676:0crwdne18676:0"
+
+#: smarty/pages:17
 msgid "GeoKrety interactive map"
 msgstr "crwdns15894:0crwdne15894:0"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "Contact us"
 msgstr "crwdns15860:0crwdne15860:0"
 
-#: smarty/pages:11
+#: smarty/pages:13
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "crwdns15862:0crwdne15862:0"
 
-#: smarty/pages:15 smarty/blocks/user:43
+#: smarty/pages:17 smarty/blocks/user:43
 msgid "Email"
 msgstr "crwdns14254:0crwdne14254:0"
 
-#: smarty/pages:22
+#: smarty/pages:24
 msgid "Or via the user profile"
 msgstr "crwdns15864:0crwdne15864:0"
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "IRC"
 msgstr "crwdns15866:0crwdne15866:0"
 
-#: smarty/pages:39
+#: smarty/pages:41
 msgid "Twitter"
 msgstr "crwdns15868:0crwdne15868:0"
 
-#: smarty/pages:46
+#: smarty/pages:48
 msgid "Public forum"
 msgstr "crwdns15870:0crwdne15870:0"
 
-#: smarty/pages:54
+#: smarty/pages:56
 msgid "Wanna sign or encrypt your mails?"
 msgstr "crwdns15872:0crwdne15872:0"
 
-#: smarty/pages:56
+#: smarty/pages:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "crwdns15874:0%1crwdnd15874:0%2crwdne15874:0"
 
-#: smarty/pages:7
+#: smarty/pages:3
+msgid "%1's user profile"
+msgstr "crwdns18678:0%1crwdne18678:0"
+
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's GeoKrety recent moves"
 msgstr "crwdns15916:0%1crwdne15916:0"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "crwdns18602:0%1crwdne18602:0"
 
-#: smarty/pages:7 smarty:91
+#: smarty/pages:3 smarty/pages:9 smarty:91
 msgid "Press corner"
 msgstr "crwdns14292:0crwdne14292:0"
 
-#: smarty/pages:37
+#: smarty/pages:11
+msgid "Help API"
+msgstr "crwdns18680:0crwdne18680:0"
+
+#: smarty/pages:39
 msgid "Yes, change my email address"
 msgstr "crwdns16300:0crwdne16300:0"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "No, abort this request"
 msgstr "crwdns16302:0crwdne16302:0"
 
-#: smarty/pages:15
+#: smarty/pages:18
 msgid "There is no news yet"
 msgstr "crwdns16460:0crwdne16460:0"
 
@@ -1306,129 +1342,141 @@ msgstr "crwdns16402:0crwdne16402:0"
 msgid "Status: Ready for search"
 msgstr "crwdns15188:0crwdne15188:0"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "Pictures gallery"
 msgstr "crwdns18516:0crwdne18516:0"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/forms:6 smarty/blocks/user:3 smarty:60
+msgid "Create a new GeoKret"
+msgstr "crwdns14876:0crwdne14876:0"
+
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's inventory"
 msgstr "crwdns16200:0%1crwdne16200:0"
 
-#: smarty/pages:37
+#: smarty/pages:39
 msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr "crwdns18604:0%1crwdnd18604:0%2crwdne18604:0"
 
-#: smarty/pages:39
+#: smarty/pages:41
 msgid "%1's inventory is currently empty."
 msgstr "crwdns14652:0%1crwdne14652:0"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty:99
+msgid "Downloads"
+msgstr "crwdns14888:0crwdne14888:0"
+
+#: smarty/pages:8
 msgid "Translation"
 msgstr "crwdns14842:0crwdne14842:0"
 
-#: smarty/pages:9
+#: smarty/pages:11
 msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
 msgstr "crwdns15912:0%1crwdne15912:0"
 
-#: smarty/pages:25
-msgid "Design ressources"
-msgstr "crwdns14852:0crwdne14852:0"
+#: smarty/pages:27
+msgid "Design resources"
+msgstr "crwdns18682:0crwdne18682:0"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "GeoKrety logo"
 msgstr "crwdns14854:0crwdne14854:0"
 
-#: smarty/pages:30
+#: smarty/pages:32
 msgid "Basic GK logo: "
 msgstr "crwdns14856:0crwdne14856:0"
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "The mole itself: "
 msgstr "crwdns14858:0crwdne14858:0"
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "Other ressources: "
 msgstr "crwdns14860:0crwdne14860:0"
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "here"
 msgstr "crwdns14862:0crwdne14862:0"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Sample GeoKrety labels"
 msgstr "crwdns14864:0crwdne14864:0"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
 msgstr "crwdns14866:0crwdne14866:0"
 
-#: smarty/pages:38 smarty/pages:39 smarty/pages:40 smarty/pages:41
+#: smarty/pages:40 smarty/pages:41 smarty/pages:42 smarty/pages:43
 msgid "Sample label #%1: "
 msgstr "crwdns14868:0%1crwdne14868:0"
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid "Old label design: "
 msgstr "crwdns14870:0crwdne14870:0"
 
-#: smarty/pages:9
+#: smarty/pages:3 smarty/pages:11
 msgid "Define your observation area"
 msgstr "crwdns15076:0crwdne15076:0"
 
-#: smarty/pages:19 smarty/pages:20
+#: smarty/pages:21 smarty/pages:22
 msgid "Home coordinates"
 msgstr "crwdns15078:0crwdne15078:0"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "crwdns15080:0crwdne15080:0"
 
-#: smarty/pages:26
+#: smarty/pages:28
 msgid "Other acceptable lat/lon formats"
 msgstr "crwdns15082:0crwdne15082:0"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Observation radius"
 msgstr "crwdns15084:0crwdne15084:0"
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid " km. Set it to 0 to disable the observation feature."
 msgstr "crwdns18606:0crwdne18606:0"
 
-#: smarty/pages:53
+#: smarty/pages:55
 msgid "Center the map on the zone to observe"
 msgstr "crwdns15088:0crwdne15088:0"
 
-#: smarty/pages:62 smarty/dialog:25 smarty/dialog:14 smarty/dialog:50
+#: smarty/pages:64 smarty/dialog:25 smarty/dialog:14 smarty/dialog:50
 #: smarty/dialog:46 smarty/dialog:49
 msgid "Back to user page"
 msgstr "crwdns15090:0crwdne15090:0"
 
-#: smarty/pages:65 smarty/dialog:15
+#: smarty/pages:67 smarty/dialog:15
 msgid "Define"
 msgstr "crwdns15092:0crwdne15092:0"
 
-#: smarty/pages:8
+#: smarty/pages:3 smarty/pages:10
 msgid "Password recovery"
 msgstr "crwdns16228:0crwdne16228:0"
 
-#: smarty/pages:17
+#: smarty/pages:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "crwdns16230:0crwdne16230:0"
 
-#: smarty/pages:22 smarty/pages:24 smarty/forms:11 smarty/forms:13
+#: smarty/pages:24 smarty/pages:26 smarty/forms:11 smarty/forms:13
 #: smarty/dialog:11 smarty/dialog:12
 msgid "Email address"
 msgstr "crwdns14980:0crwdne14980:0"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "Send me a recovery link"
 msgstr "crwdns16232:0crwdne16232:0"
 
-#: smarty/pages:12
+#: smarty/pages:3
+msgid "Registration"
+msgstr "crwdns18684:0crwdne18684:0"
+
+#: smarty/pages:14
 msgid "Create an account using %1"
 msgstr "crwdns18608:0%1crwdne18608:0"
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "Create an account"
 msgstr "crwdns16432:0crwdne16432:0"
 
@@ -1512,10 +1560,6 @@ msgstr "crwdns16438:0crwdne16438:0"
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "crwdns15120:0crwdne15120:0"
-
-#: smarty/forms:6 smarty/blocks/user:3 smarty:60
-msgid "Create a new GeoKret"
-msgstr "crwdns14876:0crwdne14876:0"
 
 #: smarty/forms:20
 msgid "GeoKret type"
@@ -2343,10 +2387,6 @@ msgstr "crwdns16262:0%1crwdne16262:0"
 msgid "Toggle navigation"
 msgstr "crwdns14874:0crwdne14874:0"
 
-#: smarty:16 smarty:51 smarty:58
-msgid "Log a GeoKret"
-msgstr "crwdns14460:0crwdne14460:0"
-
 #: smarty:64
 msgid "Advanced search"
 msgstr "crwdns14878:0crwdne14878:0"
@@ -2370,10 +2410,6 @@ msgstr "crwdns14882:0crwdne14882:0"
 #: smarty:93
 msgid "GK interface / API"
 msgstr "crwdns14886:0crwdne14886:0"
-
-#: smarty:99
-msgid "Downloads"
-msgstr "crwdns14888:0crwdne14888:0"
 
 #: smarty:100
 msgid "GeoKrety Toolbox"
