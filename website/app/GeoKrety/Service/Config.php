@@ -71,15 +71,21 @@ class Config extends \Prefab {
             define('GK_DEBUG', false);
             define('GK_F3_DEBUG', false);
             define('GK_DEVEL', false);
+            define('GK_HELP_GEOKRETY_EXAMPLE_1', getenv('GK_HELP_GEOKRETY_EXAMPLE_1') ?: 46657);
+            define('GK_HELP_GEOKRETY_EXAMPLE_2', getenv('GK_HELP_GEOKRETY_EXAMPLE_2') ?: 65509);
         } else {
             define('GK_DEBUG', getenv('GK_DEBUG') ? filter_var(getenv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN) : false);
             define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ? filter_var(getenv('GK_F3_DEBUG'), FILTER_VALIDATE_BOOLEAN) : true);
             define('GK_DEVEL', getenv('GK_DEVEL') ? filter_var(getenv('GK_DEVEL'), FILTER_VALIDATE_BOOLEAN) : false);
+            define('GK_HELP_GEOKRETY_EXAMPLE_1', getenv('GK_HELP_GEOKRETY_EXAMPLE_1') ?: 1);
+            define('GK_HELP_GEOKRETY_EXAMPLE_2', getenv('GK_HELP_GEOKRETY_EXAMPLE_2') ?: 2);
         }
         define('GK_APP_NAME', getenv('GK_APP_NAME') ?: 'www');
         define('GK_APP_VERSION', getenv('GIT_COMMIT') ?: 'undef');
         define('GK_EMAIL_SUBJECT_PREFIX', getenv('GK_EMAIL_SUBJECT_PREFIX') ?: '[GeoKrety] ');
         define('GK_BOT_USERNAME', getenv('GK_BOT_USERNAME') ?: 'GeoKrety Bot ');
+
+        define('GK_HELP_GEOKRETY_EXAMPLE_LIST', [GK_HELP_GEOKRETY_EXAMPLE_1, GK_HELP_GEOKRETY_EXAMPLE_2]);
 
         // DATABASE config
         define('GK_DB_ENGINE', getenv('GK_DB_ENGINE') ?: 'pgsql');

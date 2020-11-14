@@ -11,7 +11,7 @@ class HelpApi extends Base {
         $this->f3 = $f3;
 
         // Load specified GeoKrety on production else first two created
-        [$geokret, $geokret2] = $this->loadGK(GK_IS_PRODUCTION ? [46657, 65509] : [1, 2]);
+        [$geokret, $geokret2] = $this->loadGK(GK_HELP_GEOKRETY_EXAMPLE_LIST);
 
         // Render ruchy saved
         $xml = new Xml\GeokretyRuchy();
