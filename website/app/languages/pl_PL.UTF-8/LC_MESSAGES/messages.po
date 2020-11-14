@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-13 20:36+0000\n"
-"PO-Revision-Date: 2020-11-14 15:14\n"
+"POT-Creation-Date: 2020-11-14 15:58+0000\n"
+"PO-Revision-Date: 2020-11-14 16:03\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-11-13 20:36+0000\n"
+"POT-Creation-Date: 2020-11-14 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Wiele kont posiada ten sam adres e-mail. <a href=\"%s\">skontaktuj się z nami</a>."
 
-#: website/app/GeoKrety/Controller/Base.php:69
+#: website/app/GeoKrety/Controller/Base.php:70
 #: website/app/GeoKrety/Controller/MoveCreate.php:152
 #: website/app/GeoKrety/Controller/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/UserContact.php:71
@@ -133,29 +133,29 @@ msgstr "Błędny secid"
 msgid "Wrong date or time"
 msgstr "Zła data lub godzina"
 
-#: website/app/GeoKrety/Controller/Login.php:48
+#: website/app/GeoKrety/Controller/Login.php:49
 msgid "Something went wrong during the login procedure."
 msgstr "Coś poszło nie tak podczas procesu logowania."
 
-#: website/app/GeoKrety/Controller/Login.php:51
+#: website/app/GeoKrety/Controller/Login.php:52
 msgid "Username and password doesn't match."
 msgstr "Nazwa użytkownika lub hasło nie pasują."
 
-#: website/app/GeoKrety/Controller/Login.php:85
+#: website/app/GeoKrety/Controller/Login.php:86
 msgid "Welcome on board!"
 msgstr "Witaj na pokładzie!"
 
-#: website/app/GeoKrety/Controller/Login.php:146
+#: website/app/GeoKrety/Controller/Login.php:147
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Twoje konto jest już połączone z %s"
 
-#: website/app/GeoKrety/Controller/Login.php:151
+#: website/app/GeoKrety/Controller/Login.php:152
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "To konto %s jest już połączone z innym kontem GeoKretów."
 
-#: website/app/GeoKrety/Controller/Login.php:166
+#: website/app/GeoKrety/Controller/Login.php:167
 msgid "Auth request was canceled."
 msgstr "Żądanie autoryzacji zostało anulowane."
 
@@ -757,7 +757,7 @@ msgstr "Pierwszy"
 msgid "Last [%1]"
 msgstr "Ostatni [%1]"
 
-#: smarty:3 smarty:33
+#: smarty:3 smarty:47
 msgid "Home"
 msgstr "Kopiec"
 
@@ -765,7 +765,7 @@ msgstr "Kopiec"
 msgid "About"
 msgstr "O nas"
 
-#: smarty:5 smarty/pages:17 smarty:34
+#: smarty:5 smarty/pages:17 smarty:48
 msgid "News"
 msgstr "Nowości"
 
@@ -879,7 +879,7 @@ msgstr "Nie utworzyłeś jeszcze żadnego GeoKreta. Nie wahaj się <a href=\"%2\
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 nie jest jeszcze właścicielem żadnego GeoKreta."
 
-#: smarty/pages:6 smarty:47
+#: smarty/pages:6 smarty:61
 msgid "Claim a GeoKret"
 msgstr "Przejmij Geokreta"
 
@@ -925,7 +925,7 @@ msgstr "Właściciel"
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "Witaj w społeczności GeoKrety.org!"
 
-#: smarty/pages:11 smarty/dialog:37 smarty:20 smarty:48
+#: smarty/pages:11 smarty/dialog:37 smarty:32 smarty:48
 msgid "Sign in"
 msgstr "Zaloguj się"
 
@@ -953,7 +953,7 @@ msgstr "Zdjęcia GeoKreta %1"
 msgid "Watched GeoKrety"
 msgstr "Obserwowane GeoKrety"
 
-#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:42
+#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:56
 msgid "Actions"
 msgstr "Akcje"
 
@@ -1053,7 +1053,7 @@ msgstr "Obsługa MySQL, kanapki i inne 😃"
 msgid "GK maps"
 msgstr "Mapa GK"
 
-#: smarty/pages:37 smarty:72 smarty:74
+#: smarty/pages:37 smarty:86 smarty:88
 msgid "Help"
 msgstr "Pomoc"
 
@@ -1190,7 +1190,7 @@ msgstr "%1 ostatnie ruchy Geokretów"
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "GeoKrety %1nie zostały jeszcze przeniesione."
 
-#: smarty/pages:7 smarty:77
+#: smarty/pages:7 smarty:91
 msgid "Press corner"
 msgstr "Kącik prasowy"
 
@@ -1513,7 +1513,7 @@ msgstr "Zarejestruj się"
 msgid "Edit a GeoKret"
 msgstr "Edytuj tego GeoKreta"
 
-#: smarty/forms:6 smarty/blocks/user:3 smarty:46
+#: smarty/forms:6 smarty/blocks/user:3 smarty:60
 msgid "Create a new GeoKret"
 msgstr "Utwórz nowego GeoKreta"
 
@@ -2015,7 +2015,7 @@ msgstr "Nie udzielamy żadnych gwarancji ani gwarancji co do dokładności, term
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
 msgstr "Treści publikowane przez ciebie na stronie nie mogą zawierać wulgaryzmów, treści obraźliwych ani nielegalnych."
 
-#: smarty/dialog:26 smarty/dialog:45 smarty:76
+#: smarty/dialog:26 smarty/dialog:45 smarty:90
 msgid "Terms of use"
 msgstr "Zasady użytkowania"
 
@@ -2343,43 +2343,43 @@ msgstr "GeoKrety to bezpłatna usługa online do śledzenia obiektów w grach GP
 msgid "Toggle navigation"
 msgstr "Przełącz nawigację"
 
-#: smarty:16 smarty:37 smarty:44
+#: smarty:16 smarty:51 smarty:58
 msgid "Log a GeoKret"
 msgstr "Zaloguj GeoKreta"
 
-#: smarty:50
+#: smarty:64
 msgid "Advanced search"
 msgstr "Wyszukiwanie zaawansowane"
 
-#: smarty:51
+#: smarty:65
 msgid "Photo gallery"
 msgstr "Fotki"
 
-#: smarty:54
+#: smarty:68
 msgid "GeoKrety Map"
 msgstr "Mapa GeoKretów"
 
-#: smarty:61
+#: smarty:75
 msgid "Currently selected language"
 msgstr "Aktualnie wybrany język"
 
-#: smarty:75
+#: smarty:89
 msgid "Moleholes and GK hotels"
 msgstr "GeoHotel"
 
-#: smarty:79
+#: smarty:93
 msgid "GK interface / API"
 msgstr "GK interfejs / API"
 
-#: smarty:85
+#: smarty:99
 msgid "Downloads"
 msgstr "Pobierz"
 
-#: smarty:86
+#: smarty:100
 msgid "GeoKrety Toolbox"
 msgstr "Narzędzia GeoKretów"
 
-#: smarty:87
+#: smarty:101
 msgid "Waypoint resolver"
 msgstr "Rozdzielczość punktów drogi"
 
