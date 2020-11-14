@@ -98,7 +98,7 @@
                         *}
                         <li><a id="navbar-downloads" href="{'downloads'|alias}">{fa icon="download"} {t}Downloads{/t}</a></li>
                         <li><a id="navbar-toolbox" href="{'geokrety_toolbox'|alias}">{fa icon="cog"} {t}GeoKrety Toolbox{/t}</a></li>
-                        <li><a id="navbar-resolver" href="go2geo/">{fa icon="map-pin"} {t}Waypoint resolver{/t}</a></li>
+                        <li><a id="navbar-resolver" href="/go2geo/">{fa icon="map-pin"} {t}Waypoint resolver{/t}</a></li>
                     </ul>
                 </li>
                 {if GK_DEVEL}
