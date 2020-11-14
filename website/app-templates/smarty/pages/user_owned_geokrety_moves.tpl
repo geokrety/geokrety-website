@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}🛩️ {t username=$user->username}%1's GeoKrety recent moves{/t}{/block}
+
 {block name=content}
 {include file='macros/pagination.tpl'}
 <a class="anchor" id="recent-moves"></a>

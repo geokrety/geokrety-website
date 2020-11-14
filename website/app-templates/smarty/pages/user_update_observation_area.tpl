@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Define your observation area{/t}{/block}
+
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
 

@@ -1,4 +1,7 @@
 {include file='macros/pagination.tpl'}
+
+{block name=title}{t}News{/t}{/block}
+
 {extends file='base.tpl'}
 
 {block name=content}

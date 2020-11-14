@@ -1,5 +1,6 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Changing your email address{/t}{/block}
 
 {block name=content}
 

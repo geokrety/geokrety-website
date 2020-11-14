@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Password recovery{/t}{/block}
+
 {if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}
 
 {block name=content}

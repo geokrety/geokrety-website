@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}🎉 Welcome to GeoKrety.org!{/t}{/block}
+
 {block name=content}
 <h2>{t}🎉 Welcome to GeoKrety.org!{/t}</h2>
 

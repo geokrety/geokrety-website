@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Interactive map{/t}{/block}
+
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_CSS)}
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS)}

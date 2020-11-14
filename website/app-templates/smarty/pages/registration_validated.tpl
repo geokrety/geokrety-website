@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Welcome to the GeoKrety.org community!{/t}{/block}
+
 {block name=content}
 
 <div class="jumbotron">

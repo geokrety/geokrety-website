@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t username=$user->username}%1's user profile{/t}{/block}
+
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
 {\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS)}
 {\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}

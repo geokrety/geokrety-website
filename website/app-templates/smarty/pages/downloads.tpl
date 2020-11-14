@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Downloads{/t}{/block}
+
 {block name=content}
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -22,7 +24,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">{fa icon="paint-brush"} {t}Design ressources{/t}</h3>
+        <h3 class="panel-title">{fa icon="paint-brush"} {t}Design resources{/t}</h3>
     </div>
     <div class="panel-body">
         <h4>{t}GeoKrety logo{/t}</h4>

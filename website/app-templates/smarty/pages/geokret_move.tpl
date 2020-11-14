@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Log a GeoKret{/t}{/block}
+
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
 {\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
 {\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS)}

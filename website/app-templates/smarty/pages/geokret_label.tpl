@@ -1,7 +1,9 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Label generator{/t}{/block}
+
 {block name=content}
-<h1>Label generator</h1>
+<h1>{t}Label generator{/t}</h1>
 {include file='forms/geokret_label.tpl'}
 {/block}
 

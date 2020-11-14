@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Registration{/t}{/block}
+
 {\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS)}
 {\Assets::instance()->addJs(GK_CDN_STRENGTHIFY_JS)}
 {if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}

@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}🎒 {t username=$user->username}Pictures of %1's GeoKrety{/t}{/block}
+
 {block name=content}
 {include file='macros/pagination.tpl'}
 <a class="anchor" id="gallery"></a>

@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}GeoKrety Toolbox - GKT{/t}{/block}
+
 {block name=content}
 <div class="panel panel-default">
     <div class="panel-heading">

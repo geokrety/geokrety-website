@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Pictures gallery{/t}{/block}
+
 {block name=content}
 {include file='macros/pagination.tpl'}
 <a class="anchor" id="gallery"></a>

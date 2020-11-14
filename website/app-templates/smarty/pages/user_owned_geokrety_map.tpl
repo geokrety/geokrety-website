@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}🛩️ {t username=$user->username}%1's Owned GeoKrety map{/t}{/block}
+
 {\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_AJAX_JS)}

@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Press corner{/t}{/block}
+
 {block name=content}
 
 <div class="panel panel-default">

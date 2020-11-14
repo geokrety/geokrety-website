@@ -1,5 +1,7 @@
 {extends file='base.tpl'}
 
+{block name=title}{t}Change your password{/t}{/block}
+
 {\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS)}
 {\Assets::instance()->addJs(GK_CDN_STRENGTHIFY_JS)}
 
