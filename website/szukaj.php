@@ -49,7 +49,7 @@ require_once 'smarty_start.php';
         }
         mysqli_free_result($result);
     } elseif (!empty($g_wpt)) {
-        $g_owner = mysqli_real_escape_string($link, $g_wpt);
+        $g_wpt = mysqli_real_escape_string($link, $g_wpt);
         include_once 'recent_moves.php';
         $OGON .= '<script type="text/javascript" src="sorttable.min.js"></script>';
         $OGON .= '<script type="text/javascript" src="'.$config['ajaxtooltip.js'].'"></script>';
