@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-13 20:36+0000\n"
-"PO-Revision-Date: 2020-11-14 15:15\n"
+"POT-Creation-Date: 2020-11-14 15:58+0000\n"
+"PO-Revision-Date: 2020-11-14 16:03\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-11-13 20:36+0000\n"
+"POT-Creation-Date: 2020-11-14 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "複数のアカウントが同じメールアドレスを共有しています。 <a href=\"%s\">お問い合わせください</a>."
 
-#: website/app/GeoKrety/Controller/Base.php:69
+#: website/app/GeoKrety/Controller/Base.php:70
 #: website/app/GeoKrety/Controller/MoveCreate.php:152
 #: website/app/GeoKrety/Controller/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/UserContact.php:71
@@ -133,29 +133,29 @@ msgstr "セクションが間違っています"
 msgid "Wrong date or time"
 msgstr "日付または時刻が正しくありません"
 
-#: website/app/GeoKrety/Controller/Login.php:48
+#: website/app/GeoKrety/Controller/Login.php:49
 msgid "Something went wrong during the login procedure."
 msgstr "ログイン手続き中に問題が発生しました。"
 
-#: website/app/GeoKrety/Controller/Login.php:51
+#: website/app/GeoKrety/Controller/Login.php:52
 msgid "Username and password doesn't match."
 msgstr "ユーザー名とパスワードが一致しません。"
 
-#: website/app/GeoKrety/Controller/Login.php:85
+#: website/app/GeoKrety/Controller/Login.php:86
 msgid "Welcome on board!"
 msgstr "ボードへようこそ！"
 
-#: website/app/GeoKrety/Controller/Login.php:146
+#: website/app/GeoKrety/Controller/Login.php:147
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "あなたのアカウントは既に %sとリンクされています"
 
-#: website/app/GeoKrety/Controller/Login.php:151
+#: website/app/GeoKrety/Controller/Login.php:152
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "この %s アカウントは既に別のGeoKretyアカウントとリンクされています。"
 
-#: website/app/GeoKrety/Controller/Login.php:166
+#: website/app/GeoKrety/Controller/Login.php:167
 msgid "Auth request was canceled."
 msgstr "認証リクエストがキャンセルされました。"
 
@@ -757,7 +757,7 @@ msgstr "最初の"
 msgid "Last [%1]"
 msgstr "最後の [%1]"
 
-#: smarty:3 smarty:33
+#: smarty:3 smarty:47
 msgid "Home"
 msgstr "ホーム"
 
@@ -765,7 +765,7 @@ msgstr "ホーム"
 msgid "About"
 msgstr "About"
 
-#: smarty:5 smarty/pages:17 smarty:34
+#: smarty:5 smarty/pages:17 smarty:48
 msgid "News"
 msgstr "ニュース"
 
@@ -879,7 +879,7 @@ msgstr "あなたはまだGeoKretyを作成していません。 <a href=\"%2\">
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 はまだGeoKretyを所有していません。"
 
-#: smarty/pages:6 smarty:47
+#: smarty/pages:6 smarty:61
 msgid "Claim a GeoKret"
 msgstr "Claim a GeoKret"
 
@@ -925,7 +925,7 @@ msgstr "所有者"
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "GeoKrety.org コミュニティへようこそ！"
 
-#: smarty/pages:11 smarty/dialog:37 smarty:20 smarty:48
+#: smarty/pages:11 smarty/dialog:37 smarty:32 smarty:48
 msgid "Sign in"
 msgstr "サインイン"
 
@@ -953,7 +953,7 @@ msgstr "%1の GeoKrety の写真"
 msgid "Watched GeoKrety"
 msgstr "ウォッチした GeoKrety"
 
-#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:42
+#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:56
 msgid "Actions"
 msgstr "アクション"
 
@@ -1053,7 +1053,7 @@ msgstr "MySQL のサポート、サンドイッチ、その他 😃"
 msgid "GK maps"
 msgstr "GKマップ"
 
-#: smarty/pages:37 smarty:72 smarty:74
+#: smarty/pages:37 smarty:86 smarty:88
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -1190,7 +1190,7 @@ msgstr "%1の GeoKrety 最近の動き"
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "%1の GeoKrety はまだ移動されていません。"
 
-#: smarty/pages:7 smarty:77
+#: smarty/pages:7 smarty:91
 msgid "Press corner"
 msgstr "プレスコーナー"
 
@@ -1513,7 +1513,7 @@ msgstr "登録"
 msgid "Edit a GeoKret"
 msgstr "GeoKret を編集"
 
-#: smarty/forms:6 smarty/blocks/user:3 smarty:46
+#: smarty/forms:6 smarty/blocks/user:3 smarty:60
 msgid "Create a new GeoKret"
 msgstr "新しいGeoKretを作成"
 
@@ -2015,7 +2015,7 @@ msgstr "私たちは、正確性、適時性、パフォーマンスに関して
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
 msgstr "サイト上で公開されたコンテンツには、下品な表現、乱用、違法なコンテンツが含まれていない場合があります。"
 
-#: smarty/dialog:26 smarty/dialog:45 smarty:76
+#: smarty/dialog:26 smarty/dialog:45 smarty:90
 msgid "Terms of use"
 msgstr "利用規約"
 
@@ -2343,43 +2343,43 @@ msgstr "GeoKretyはジオキャッシングやオープンキャッシングの�
 msgid "Toggle navigation"
 msgstr "ナビゲーションの切り替え"
 
-#: smarty:16 smarty:37 smarty:44
+#: smarty:16 smarty:51 smarty:58
 msgid "Log a GeoKret"
 msgstr "GeoKret を記録"
 
-#: smarty:50
+#: smarty:64
 msgid "Advanced search"
 msgstr "高度な検索"
 
-#: smarty:51
+#: smarty:65
 msgid "Photo gallery"
 msgstr "フォトギャラリー"
 
-#: smarty:54
+#: smarty:68
 msgid "GeoKrety Map"
 msgstr "GeoKrety マップ"
 
-#: smarty:61
+#: smarty:75
 msgid "Currently selected language"
 msgstr "現在選択中の言語"
 
-#: smarty:75
+#: smarty:89
 msgid "Moleholes and GK hotels"
 msgstr "モルホールとGKホテル"
 
-#: smarty:79
+#: smarty:93
 msgid "GK interface / API"
 msgstr "GK インターフェイス / API"
 
-#: smarty:85
+#: smarty:99
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: smarty:86
+#: smarty:100
 msgid "GeoKrety Toolbox"
 msgstr "GeoKrety ツールボックス"
 
-#: smarty:87
+#: smarty:101
 msgid "Waypoint resolver"
 msgstr "ウェイポイントリゾルバー"
 
