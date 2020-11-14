@@ -599,7 +599,7 @@ class MovesMigrator extends BaseMigrator {
     protected function cleanerHook(&$values) {
         $values[7] = $values[7] ?: null;  // waypoint
         $values[18] = $values[18] ?: ($values[17] === 'www' ? '1.x.x' : null);  // app_ver
-        $values[15] = $values[15] ?: null;  // username
+        $values[15] = $values[15] ? html_entity_decode($this->purifier->purify($values[15])) : null;  // username
         if (is_null($values[2]) || is_null($values[3])) {  // coordinates
             $values[4] = $values[5] = $values[6] = $values[7] = null;
             $values[] = null;  // lon
