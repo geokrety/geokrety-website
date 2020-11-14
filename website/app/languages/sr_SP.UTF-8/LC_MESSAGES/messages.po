@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-14 15:58+0000\n"
-"PO-Revision-Date: 2020-11-14 16:03\n"
+"PO-Revision-Date: 2020-11-14 16:01\n"
 "Last-Translator: \n"
-"Language-Team: Lithuanian\n"
-"Language: lt_LT\n"
+"Language-Team: Serbian (Cyrillic)\n"
+"Language: sr_SP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +19,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && (n%100>19 || n%100<11) ? 0 : (n%10>=2 && n%10<=9) && (n%100>19 || n%100<11) ? 1 : n%1!=0 ? 2: 3);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: geekwright/po\n"
 "X-Crowdin-Project: geokrety\n"
 "X-Crowdin-Project-ID: 260106\n"
-"X-Crowdin-Language: lt\n"
+"X-Crowdin-Language: sr\n"
 "X-Crowdin-File: /feature.new-theme/messages.po\n"
 "X-Crowdin-File-ID: 40\n"
 
@@ -440,7 +440,7 @@ msgstr ""
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
-msgstr "Tradicin"
+msgstr "Традиционална"
 
 #: website/app/GeoKrety/GeokretyType.php:57
 msgid "A book/CD/DVD…"
@@ -448,15 +448,15 @@ msgstr ""
 
 #: website/app/GeoKrety/GeokretyType.php:58
 msgid "A human"
-msgstr "mogaus"
+msgstr "Људско"
 
 #: website/app/GeoKrety/GeokretyType.php:59
 msgid "A coin"
-msgstr "Moneta"
+msgstr ""
 
 #: website/app/GeoKrety/GeokretyType.php:60
 msgid "KretyPost"
-msgstr "KretyPost"
+msgstr ""
 
 #: website/app/GeoKrety/LogType.php:103
 msgid "drop"
@@ -511,11 +511,11 @@ msgstr ""
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:233
 msgid "Bad coordinates or unknown format."
-msgstr "Bad koordinatės arba nežinomo formato."
+msgstr ""
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:235
 msgid "Missing or invalid coordinates."
-msgstr "Trūksta arba jie yra neteisingi koordinatės."
+msgstr ""
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -619,27 +619,27 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.posicon.php:5
 #: website/app-templates/smarty/plugins/modifier.posicon.php:12
 msgid "Inside a cache"
-msgstr "Viduje talpyklą"
+msgstr "Унутар кеш"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:6
 #: website/app-templates/smarty/plugins/modifier.posicon.php:13
 msgid "Travelling"
-msgstr "Kelionės"
+msgstr "Путовање"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:7
 #: website/app-templates/smarty/plugins/modifier.posicon.php:14
 msgid "Still in a cache"
-msgstr "Dar talpyklą"
+msgstr "И даље у кеш"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:8
 #: website/app-templates/smarty/plugins/modifier.posicon.php:15
 msgid "Probably lost"
-msgstr "Turbūt neteko"
+msgstr "Вероватно је изгубио"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:9
 #: website/app-templates/smarty/plugins/modifier.posicon.php:16
 msgid "Visiting"
-msgstr "Vizitas"
+msgstr "Гостујући"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:10
 msgid "In the owner hands"
@@ -648,7 +648,7 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.posicon.php:11
 #: website/app-templates/smarty/plugins/modifier.posicon.php:17
 msgid "Freshman mole"
-msgstr "Fuks molinių"
+msgstr "Бруцош кртица"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:54
 msgid "status icon"
@@ -759,7 +759,7 @@ msgstr ""
 
 #: smarty:3 smarty:47
 msgid "Home"
-msgstr "Namai"
+msgstr "Почетна страница"
 
 #: smarty:4
 msgid "About"
@@ -767,11 +767,11 @@ msgstr ""
 
 #: smarty:5 smarty/pages:17 smarty:48
 msgid "News"
-msgstr "Naujienos"
+msgstr "Новости"
 
 #: smarty:6
 msgid "Contact"
-msgstr "Kontaktas"
+msgstr "Контакт"
 
 #: smarty:10
 msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
@@ -845,7 +845,7 @@ msgstr ""
 #: smarty/pages:20 smarty/pages:32 smarty/pages:18 smarty/pages:35
 #: smarty/forms:106 smarty/forms:247 smarty/dialog:21
 msgid "Comment"
-msgstr "Komentaras"
+msgstr "Коментар"
 
 #: smarty/pages:21 smarty/pages:20 smarty/pages:33
 msgid "Last move"
@@ -919,7 +919,7 @@ msgstr ""
 #: smarty/pages:68 smarty/pages:19 smarty/forms:15 smarty/forms:17
 #: smarty/dialog:27
 msgid "Owner"
-msgstr "Savininkas"
+msgstr "Власник"
 
 #: smarty/pages:6
 msgid "Welcome to the GeoKrety.org community!"
@@ -935,7 +935,7 @@ msgstr ""
 
 #: smarty/pages:28 smarty/blocks/geokret:46
 msgid "Total distance"
-msgstr "Bendras atstumas"
+msgstr "Укупна удаљеност"
 
 #: smarty/pages:32
 msgid "Total visited caches"
@@ -1055,7 +1055,7 @@ msgstr ""
 
 #: smarty/pages:37 smarty:86 smarty:88
 msgid "Help"
-msgstr "Padti"
+msgstr "Помоћ"
 
 #: smarty/pages:41
 msgid "betatesting, idea, public relation and advertising 😃"
@@ -1103,11 +1103,11 @@ msgstr ""
 
 #: smarty/pages:20 smarty/dialog:14
 msgid "Your comment"
-msgstr "Jūsų komentaras"
+msgstr "Ваш коментар"
 
 #: smarty/pages:28
 msgid "Subscribe to this news post"
-msgstr "Prisijungti prie šios naujienos paštu"
+msgstr "Претплатите се на ову вест поруку"
 
 #: smarty/pages:40
 msgid "Please <a href=\"%1\">login</a> to post a comment"
@@ -1115,11 +1115,11 @@ msgstr ""
 
 #: smarty/pages:45
 msgid "Comments"
-msgstr "Komentarai"
+msgstr "Коментари"
 
 #: smarty/pages:49
 msgid "There are no comments for this post."
-msgstr "Nėra komentarų šiam įrašui."
+msgstr "Нема коментара за овај пост."
 
 #: smarty/pages:11 smarty/dialog:8
 msgid "Change your password"
@@ -1131,7 +1131,7 @@ msgstr ""
 
 #: smarty/pages:39 smarty/pages:41 smarty/dialog:22 smarty/dialog:24
 msgid "New password"
-msgstr "Naujas slaptaodis"
+msgstr "Нова лозинка"
 
 #: smarty/pages:46 smarty/pages:48 smarty/forms:26 smarty/forms:28
 #: smarty/dialog:29 smarty/dialog:31
@@ -1156,7 +1156,7 @@ msgstr ""
 
 #: smarty/pages:15 smarty/blocks/user:43
 msgid "Email"
-msgstr "Sisti"
+msgstr "Емаил"
 
 #: smarty/pages:22
 msgid "Or via the user profile"
@@ -1192,7 +1192,7 @@ msgstr ""
 
 #: smarty/pages:7 smarty:91
 msgid "Press corner"
-msgstr "Spaudos kampelis"
+msgstr "Пресс цорнер"
 
 #: smarty/pages:37
 msgid "Yes, change my email address"
@@ -1280,7 +1280,7 @@ msgstr ""
 
 #: smarty/pages:41 smarty/pages:84
 msgid "Country"
-msgstr "Šalis"
+msgstr "Земља"
 
 #: smarty/pages:49
 msgid "Status: ready for search"
@@ -1336,7 +1336,7 @@ msgstr ""
 
 #: smarty/pages:28
 msgid "GeoKrety logo"
-msgstr "GeoKrety logotipas"
+msgstr ""
 
 #: smarty/pages:30
 msgid "Basic GK logo: "
@@ -1376,11 +1376,11 @@ msgstr ""
 
 #: smarty/pages:19 smarty/pages:20
 msgid "Home coordinates"
-msgstr "Pradia koordinai"
+msgstr "Почетна координате"
 
 #: smarty/pages:24
 msgid "Use the map to select a location or enter coordinates manually."
-msgstr "Pasirinkite vietą žemėlapyje arba įveskite koordinates rankiniu būdu."
+msgstr ""
 
 #: smarty/pages:26
 msgid "Other acceptable lat/lon formats"
@@ -1438,7 +1438,7 @@ msgstr ""
 
 #: smarty/forms:8 smarty/forms:10 smarty/forms:13 smarty/forms:15
 msgid "GeoKret name"
-msgstr "GeoKret pavadinimas"
+msgstr "ГеоКрет име"
 
 #: smarty/forms:22 smarty/forms:29
 msgid "Reference numbers"
@@ -1458,7 +1458,7 @@ msgstr ""
 
 #: smarty/forms:43
 msgid "Label template"
-msgstr "Etiket ablon"
+msgstr "Лабел шаблона"
 
 #: smarty/forms:54
 msgid "Label help languages"
@@ -1535,7 +1535,7 @@ msgstr ""
 
 #: smarty/forms:11
 msgid "Identify GeoKret"
-msgstr "Nustatyti GeoKret"
+msgstr "Препознајте ГеоКрет"
 
 #: smarty/forms:28 smarty/dialog:3
 msgid "Select GeoKrety from inventory"
@@ -1567,7 +1567,7 @@ msgstr ""
 
 #: smarty/forms:78
 msgid "I've dropped GeoKret"
-msgstr "A sumajo GeoKret"
+msgstr "Ја сам испао ГеоКрет"
 
 #: smarty/forms:84
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
@@ -1575,7 +1575,7 @@ msgstr ""
 
 #: smarty/forms:85
 msgid "I've grabbed GeoKret"
-msgstr "A sikabinti GeoKret"
+msgstr "И'ве граббед ГеоКрет"
 
 #: smarty/forms:91
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
@@ -1583,7 +1583,7 @@ msgstr ""
 
 #: smarty/forms:92
 msgid "I've met GeoKret"
-msgstr "A susitiko GeoKret"
+msgstr "Ја сам срео ГеоКрет"
 
 #: smarty/forms:98
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
@@ -1591,7 +1591,7 @@ msgstr ""
 
 #: smarty/forms:99
 msgid "I've dipped a GeoKret"
-msgstr "Aš artimųjų GeoKret"
+msgstr "Ја сам пала ГеоКрет"
 
 #: smarty/forms:105
 msgid "When you want to write a comment :)"
@@ -1599,7 +1599,7 @@ msgstr ""
 
 #: smarty/forms:129
 msgid "New location"
-msgstr "Nauja vieta"
+msgstr "Нова локација"
 
 #: smarty/forms:139
 msgid "Waypoint"
@@ -1623,19 +1623,19 @@ msgstr ""
 
 #: smarty/forms:178
 msgid "Coordinates"
-msgstr "Koordinatės"
+msgstr ""
 
 #: smarty/forms:216
 msgid "Additional data"
-msgstr "Papildomi duomenys"
+msgstr "Додатни подаци"
 
 #: smarty/forms:224
 msgid "Date"
-msgstr "Data"
+msgstr "Датум"
 
 #: smarty/forms:241
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
-msgstr "&quot;Tai gali būti jūsų: <br /> - Geocaching / opencaching vardą <br /> - Nick&#39;as <br /> - Pavadinimas ir tt"
+msgstr "&quot;То може да буде ваш: <br /> - Геоцацхинг / опенцацхинг корисничко име <br /> - Надимак <br /> - Име, итд"
 
 #: smarty/forms:251
 msgid "It is always nice to receive a little message ;)"
@@ -1651,11 +1651,11 @@ msgstr ""
 
 #: smarty/forms:19 smarty/forms:21 smarty/dialog:18 smarty/dialog:20
 msgid "Password"
-msgstr "Slaptaodis"
+msgstr "Лозинка"
 
 #: smarty/forms:33 smarty/blocks/user:31 smarty/dialog:11
 msgid "Language"
-msgstr "Kalba"
+msgstr "Језик"
 
 #: smarty/forms:40 smarty/dialog:21
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
@@ -1663,15 +1663,15 @@ msgstr ""
 
 #: smarty/devel/pages:16 smarty/dialog:23
 msgid "Subject"
-msgstr "Dalykas"
+msgstr "Предмет"
 
 #: smarty/devel/pages:17
 msgid "From"
-msgstr "Nuo"
+msgstr "Из"
 
 #: smarty/devel/pages:18 smarty/dialog:16
 msgid "To"
-msgstr "Á"
+msgstr "За"
 
 #: smarty/devel/pages:20
 msgid "Action"
@@ -1723,7 +1723,7 @@ msgstr ""
 
 #: smarty/blocks/geokret:48
 msgid "Places visited"
-msgstr "Vietos aplankė"
+msgstr "Мјеста"
 
 #: smarty/blocks/geokret:3
 msgid "Found it? Log it!"
@@ -1739,7 +1739,7 @@ msgstr ""
 
 #: smarty/blocks/geokret:6
 msgid "Log this GeoKret"
-msgstr "Prisijungti šį GeoKret"
+msgstr "Дневник овај ГеоКрет"
 
 #: smarty/blocks/geokret:11
 msgid "Print a label for this GeoKret"
@@ -1751,7 +1751,7 @@ msgstr ""
 
 #: smarty/blocks/geokret:26
 msgid "Login to claim this GeoKret"
-msgstr "Galėtumėte gauti šią GeoKret"
+msgstr ""
 
 #: smarty/blocks/geokret:32
 msgid "Archive this GeoKret"
@@ -1795,11 +1795,11 @@ msgstr ""
 
 #: smarty/blocks/geokret:13
 msgid "Download the track as:"
-msgstr "Parsisiųsti trasą kaip:"
+msgstr ""
 
 #: smarty/blocks/geokret:17
 msgid "This geokret has not started yet"
-msgstr "Tai geokret dar neprasidėjo"
+msgstr ""
 
 #: smarty/blocks/user:4
 msgid "OAuth Connections"
@@ -1823,7 +1823,7 @@ msgstr ""
 
 #: smarty/blocks/user:11
 msgid "Subscribe to RSS channel"
-msgstr "Prenumeruoti RSS kanalas"
+msgstr "Претплатите се на РСС канал"
 
 #: smarty/blocks/user:15
 msgid "Password change"
@@ -1831,7 +1831,7 @@ msgstr ""
 
 #: smarty/blocks/user:29
 msgid "Joined us"
-msgstr "Registravimasis"
+msgstr "Јоинед нама"
 
 #: smarty/blocks/user:33
 msgid "Nothing selected"
@@ -1871,7 +1871,7 @@ msgstr ""
 
 #: smarty/blocks/user:13
 msgid "Choose statpic"
-msgstr "Pasirinkite statpic"
+msgstr "Одаберите статпиц"
 
 #: smarty/blocks/user:3
 msgid "Awards"
@@ -1927,7 +1927,7 @@ msgstr ""
 
 #: smarty/blocks/user:3
 msgid "Badges"
-msgstr "Ikonas"
+msgstr ""
 
 #: smarty/blocks/user:9
 msgid "No badge received yet."
@@ -1945,11 +1945,11 @@ msgstr ""
 #: website/app-templates/foundation-emails/dist/email-password-changed.html:1
 #: website/app-templates/foundation-emails/dist/email-welcome.html:1
 msgid "Login"
-msgstr "Prisijungimas"
+msgstr "Пријава"
 
 #: smarty/dialog:27
 msgid "Remember me"
-msgstr "Atsiminti mane"
+msgstr "Запамти ме"
 
 #: smarty/dialog:30
 msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
@@ -2017,7 +2017,7 @@ msgstr ""
 
 #: smarty/dialog:26 smarty/dialog:45 smarty:90
 msgid "Terms of use"
-msgstr "Naudojimo sąlygos"
+msgstr "Услови коришћења"
 
 #: smarty/dialog:35 smarty/dialog:54
 msgid "I agree with the terms"
@@ -2129,7 +2129,7 @@ msgstr ""
 
 #: smarty/dialog:29
 msgid "GeoKrety.org news"
-msgstr "GeoKrety.org naujienos"
+msgstr ""
 
 #: smarty/dialog:30
 msgid "Recent logs on:"
@@ -2177,7 +2177,7 @@ msgstr ""
 
 #: smarty/dialog:30
 msgid "Message"
-msgstr "Žinutė"
+msgstr "Порука"
 
 #: smarty/dialog:32
 msgid "Message to user"
@@ -2185,7 +2185,7 @@ msgstr ""
 
 #: smarty/dialog:49
 msgid "Send message"
-msgstr "Siųsti žinutę"
+msgstr "Пошаљи поруку"
 
 #: smarty/dialog:21
 msgid "Declare missing"
@@ -2201,7 +2201,7 @@ msgstr ""
 
 #: smarty/dialog:17
 msgid "Old password"
-msgstr "Senas slaptaodis"
+msgstr "Стара лозинка"
 
 #: smarty/dialog:37
 msgid "Read more about choosing good passwords:"
@@ -2353,7 +2353,7 @@ msgstr ""
 
 #: smarty:65
 msgid "Photo gallery"
-msgstr "Foto galerija"
+msgstr "Фото галерија"
 
 #: smarty:68
 msgid "GeoKrety Map"
@@ -2425,7 +2425,7 @@ msgstr ""
 
 #: smarty:25
 msgid "My photos"
-msgstr "Mano nuotraukos"
+msgstr "Моје фотографије"
 
 #: smarty:26
 msgid "Photos of my GeoKrety"
@@ -2445,7 +2445,7 @@ msgstr ""
 
 #: smarty/elements:10
 msgid "Delete comment"
-msgstr "Ištrinti komentarą"
+msgstr "Брисање коментара"
 
 #: smarty/elements:36 smarty/elements:33 smarty/elements:30
 msgid "Move this GeoKret"
@@ -2465,7 +2465,7 @@ msgstr ""
 
 #: smarty/elements:64
 msgid "Report as missing"
-msgstr "Pranešimas kaip trūkstami"
+msgstr ""
 
 #: smarty/elements:73
 msgid "Write a comment"
@@ -2473,11 +2473,11 @@ msgstr ""
 
 #: smarty/elements:80
 msgid "Edit log"
-msgstr "Redaguoti šį puslapį"
+msgstr "Измени Лог"
 
 #: smarty/elements:83
 msgid "Delete log"
-msgstr "Ištrinti šį puslapį"
+msgstr "Брисање се пријавите"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:41
 msgid "Informations:"
