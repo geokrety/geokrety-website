@@ -10,10 +10,10 @@ namespace GeoKrety\Service;
 class LanguageService extends \Prefab {
     const DEFAULT_LANGUAGE_CODE = 'en';
     const SUPPORTED_LANGUAGES = [
-        'en', 'fr', 'de', 'pl', 'bg', 'ca',
-        'da', 'el', 'es', 'et', 'fi', 'cs',
-        'hu', 'it', 'ja', 'nl', 'pt', 'zh',
-        'ro', 'ru', 'sk', 'sq', 'sv', 'th',
+        'en', 'fr', 'de', 'ru', 'nl', 'pl',
+        'bg', 'ca', 'da', 'el', 'es', 'et',
+        'fi', 'cs', 'hu', 'it', 'ja', 'pt',
+        'zh', 'ro', 'sk', 'sq', 'sv', 'th',
         'tr', 'uk',
     ];
     const SUPPORTED_LANGUAGES_LOCAL_NAME = [
