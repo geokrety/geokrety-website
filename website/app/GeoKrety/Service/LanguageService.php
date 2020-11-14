@@ -6,15 +6,16 @@ namespace GeoKrety\Service;
  * LanguageService : manage languages.
  *
  * https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1
+ * /usr/share/i18n/SUPPORTED
  */
 class LanguageService extends \Prefab {
     const DEFAULT_LANGUAGE_CODE = 'en';
     const SUPPORTED_LANGUAGES = [
         'en', 'fr', 'de', 'ru', 'nl', 'pl',
         'bg', 'ca', 'da', 'el', 'es', 'et',
-        'fi', 'cs', 'hu', 'it', 'ja', 'pt',
-        'zh', 'ro', 'sk', 'sq', 'sv', 'th',
-        'tr', 'uk',
+        'fi', 'cs', 'hu', 'it', 'ja', 'nb',
+        'se', 'nn', 'pt', 'zh', 'ro', 'sk',
+        'sq', 'sr', 'sv', 'th', 'tr', 'uk',
     ];
     const SUPPORTED_LANGUAGES_LOCAL_NAME = [
         'en' => 'English',
@@ -32,14 +33,18 @@ class LanguageService extends \Prefab {
         'hu' => 'Magyar',
         'it' => 'Italiano',
         'ja' => '日本人',
+        'nb' => 'Norsk bokmål',
         'nl' => 'Nederlands',
+        'nn' => 'Norsk nynorsk',
         'ph' => 'Pilipinas',
         'pl' => 'Polski',
         'pt' => 'Português',
         'ro' => 'Română',
         'ru' => 'Русский',
+        'se' => 'Davvisámegiella',
         'sk' => 'Slovenčina',
         'sq' => 'Shqip',
+        'sr' => 'српски језик',
         'sv' => 'Svenska',
         'th' => 'ไทย',
         'tr' => 'Türk',
