@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-14 15:58+0000\n"
-"PO-Revision-Date: 2020-11-14 16:01\n"
+"POT-Creation-Date: 2020-11-14 17:10+0000\n"
+"PO-Revision-Date: 2020-11-14 17:12\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-11-14 15:58+0000\n"
+"POT-Creation-Date: 2020-11-14 17:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -383,7 +383,7 @@ msgid "An error occurred while sending the activation mail."
 msgstr "Сталася помилка під час відправлення листа для активації."
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
-#: website/app/GeoKrety/Email/EmailChange.php:35
+#: website/app/GeoKrety/Email/EmailChange.php:35 smarty/pages:3
 msgid "Changing your email address"
 msgstr "Зміна вашої адреси електронної пошти"
 
@@ -482,7 +482,7 @@ msgstr "архів"
 msgid "dip"
 msgstr "занурення"
 
-#: website/app/GeoKrety/LogType.php:109 smarty/pages:69
+#: website/app/GeoKrety/LogType.php:109 smarty/pages:71
 #: smarty/blocks/geokret:50
 msgid "Born"
 msgstr "Народилося"
@@ -765,7 +765,7 @@ msgstr "Будинок"
 msgid "About"
 msgstr "Про"
 
-#: smarty:5 smarty/pages:17 smarty:48
+#: smarty:5 smarty/pages:19 smarty/pages:3 smarty:48
 msgid "News"
 msgstr "Новини"
 
@@ -793,416 +793,452 @@ msgstr "Спроектовано з <abbr title=\"love\">💗</abbr> by <a id=\"
 msgid "Deployed on %1"
 msgstr "Розгорнуто на %1"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "GeoKrety Toolbox - GKT"
 msgstr "GeoKrety Toolbox - GKT"
 
-#: smarty/pages:10
+#: smarty/pages:12
 msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
 msgstr "Показує GeoKrety трекдати на <a href=\"%1\" target=\"_blank\">geocaching.com</a> сторінки кеша і полегшує видалення GeoKrety треків в кеші геокешингу."
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
 msgstr "Цей сценарій було записано для створення мосту між найбільш популярним <a href=\"%1\">геокешингом. веб-сайт</a> та <a href=\"%2\">geokrety.org</a>. У ньому є два функції. Як тільки ви введете особливу сторінку кеша на <a href=\"%1\">геокешингу. om</a> автоматично перевірить, якщо є будь-які GeoKrety (пункти, стежити за <a href=\"%2\">geokrety. rg</a>) всередині цього кешу і показує результат інвентаря в правій частині екрана (під існуючим переліком Travelbugs і Geocoins). Якщо у тебе є обліковий запис на <a href=\"%2\">geokrety. rg</a> , ви також можете легко видалити GeoKrety в <a href=\"%1\">схованок</a> кеш, тому що код шляхової точки і координат автоматично копіюються на форму реєстрації в <a href=\"%2\">geokrety. rg</a>."
 
-#: smarty/pages:16
+#: smarty/pages:18
 msgid "Available for:"
 msgstr "Доступно для:"
 
-#: smarty/pages:20
+#: smarty/pages:22
 msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 msgstr "<a href=\"%1\">Firefox</a> (потребує <a href=\"%2\">доповнення Tampermonkey</a> або <a href=\"%3\">розширень greasemonkey</a>)"
 
-#: smarty/pages:4
+#: smarty/pages:3 smarty/pages:6
 msgid "This page doesn't exists yet, but we're working on it!"
 msgstr "Ця сторінка ще не існує, але ми працюємо над нею!"
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Statpic background chooser"
+msgstr ""
+
+#: smarty/pages:8
 msgid "Select your preferred statpic background"
 msgstr "Виберіть бажане тло statpic"
 
-#: smarty/pages:25 smarty/forms:51 smarty/dialog:46
+#: smarty/pages:27 smarty/forms:51 smarty/dialog:46
 msgid "Save"
 msgstr "Зберегти"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Your current statpic"
 msgstr "Ваш поточний statpic"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's recent moves"
 msgstr "%1's recent moves"
 
-#: smarty/pages:18 smarty/pages:30 smarty/pages:67 smarty/pages:38
+#: smarty/pages:20 smarty/pages:32 smarty/pages:69 smarty/pages:38
 #: smarty/pages:81 smarty/devel/pages:15 smarty/dialog:26
 msgid "ID"
 msgstr "ID"
 
-#: smarty/pages:19 smarty/pages:31 smarty/pages:20
+#: smarty/pages:21 smarty/pages:33 smarty/pages:22
 msgid "Spotted in"
 msgstr "Розділено в"
 
-#: smarty/pages:20 smarty/pages:32 smarty/pages:18 smarty/pages:35
+#: smarty/pages:22 smarty/pages:34 smarty/pages:20 smarty/pages:37
 #: smarty/forms:106 smarty/forms:247 smarty/dialog:21
 msgid "Comment"
 msgstr "Комментировать"
 
-#: smarty/pages:21 smarty/pages:20 smarty/pages:33
+#: smarty/pages:23 smarty/pages:22 smarty/pages:35
 msgid "Last move"
 msgstr "Останній хід"
 
-#: smarty/pages:22 smarty/pages:32 smarty/pages:23
+#: smarty/pages:24 smarty/pages:34 smarty/pages:25
 msgid "Caches visited count"
 msgstr "Кількість відвіданих схованок"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
 msgstr "Ви ще не перенесли GeoKrety поки що. Перевірте <a href=\"%1\">карту</a> і спробуйте знайти GeoKrety поруч з вами!"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 не перемістив жодного GeoKrety ще."
 
-#: smarty/pages:7 smarty/blocks/user:16
+#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:16
 msgid "Owned GeoKrety"
 msgstr "Власник GeoKrety"
 
-#: smarty/pages:21 smarty/pages:34 smarty/pages:22
+#: smarty/pages:23 smarty/pages:36 smarty/pages:24
 msgid "Distance"
 msgstr "Відстань"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr "Ви ще не створили жодного GeoKreity. Не вагайтеся <a href=\"%2\">створити власну GeoKrety</a> безкоштовно!"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 ще не має жодного GeoKret."
 
-#: smarty/pages:6 smarty:61
+#: smarty/pages:3 smarty/pages:8 smarty:61
 msgid "Claim a GeoKret"
 msgstr "Claim a GeoKret"
 
-#: smarty/pages:13 smarty/forms:31 smarty/forms:21 smarty/blocks/geokret:43
+#: smarty/pages:15 smarty/forms:31 smarty/forms:21 smarty/blocks/geokret:43
 #: smarty/blocks/geokret:9
 msgid "Tracking Code"
 msgstr "Код відстеження"
 
-#: smarty/pages:20
+#: smarty/pages:22
 msgid "Owner Code"
 msgstr "Код власника"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
 msgstr "Процес вимагає «Код відслідковування», як правило, написаний на етикетці GeoKret або гравірувано на монеті плюс \"Власник\" зазвичай зазначений на аркуші."
 
-#: smarty/pages:33
+#: smarty/pages:35
 msgid "Adopt"
 msgstr "Прийняти"
 
-#: smarty/pages:4
+#: smarty/pages:3 smarty/pages:6
+msgid "Label generator"
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:6
 msgid "🎉 Welcome to GeoKrety.org!"
 msgstr "🎉 Ласкаво просимо до GeoKrety.org!"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Latest moves"
 msgstr "Останні ходи"
 
-#: smarty/pages:48
+#: smarty/pages:50
 msgid "Recent pictures"
 msgstr "Нещодавні зображення"
 
-#: smarty/pages:61
+#: smarty/pages:63
 msgid "Recently created GeoKrety"
 msgstr "Нещодавно створено GeoKrety"
 
-#: smarty/pages:68 smarty/pages:19 smarty/forms:15 smarty/forms:17
+#: smarty/pages:70 smarty/pages:21 smarty/forms:15 smarty/forms:17
 #: smarty/dialog:27
 msgid "Owner"
 msgstr "Власник"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty:16 smarty:51 smarty:58
+msgid "Log a GeoKret"
+msgstr "Вхід GeoKret"
+
+#: smarty/pages:3 smarty/pages:39 smarty:86 smarty:88
+msgid "Help"
+msgstr "Допомога"
+
+#: smarty/pages:3 smarty/pages:8
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "Ласкаво просимо до спільноти GeoKrety.org!"
 
-#: smarty/pages:11 smarty/dialog:37 smarty:32 smarty:48
+#: smarty/pages:13 smarty/dialog:37 smarty:32 smarty:48
 msgid "Sign in"
 msgstr "Увійти"
 
-#: smarty/pages:10
+#: smarty/pages:3 smarty/pages:12
 msgid "%1's Owned GeoKrety map"
 msgstr "Заснована GeoKrety карта %1"
 
-#: smarty/pages:28 smarty/blocks/geokret:46
+#: smarty/pages:30 smarty/blocks/geokret:46
 msgid "Total distance"
 msgstr "Загальна відстань"
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "Total visited caches"
 msgstr "Загалом відвіданих схованок"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "Last moved date"
 msgstr "Дата останнього переміщення"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "Pictures of %1's GeoKrety"
 msgstr "Зображення %1з GeoKrety"
 
-#: smarty/pages:7 smarty/blocks/user:20 smarty:20
+#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:20 smarty:20
 msgid "Watched GeoKrety"
 msgstr "Спостерігається GeoKrety"
 
-#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:56
+#: smarty/pages:26 smarty/pages:25 smarty/blocks/geokret:55 smarty:56
 msgid "Actions"
 msgstr "Дії"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "You did not watch any GeoKrety yet."
 msgstr "Ви ще не дивилися GeoKrety нічого."
 
-#: smarty/pages:40
+#: smarty/pages:42
 msgid "%1 doesn't watch any GeoKrety yet."
 msgstr "%1 ще не дивиться GeoKret."
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Confirm changing your email address"
+msgstr ""
+
+#: smarty/pages:8
 msgid "Do you confirm changing your email address?"
 msgstr "Ви підтверджуєте зміну адреси електронної пошти?"
 
-#: smarty/pages:29 smarty/pages:31
+#: smarty/pages:31 smarty/pages:32
 msgid "Back to your profile"
 msgstr "Повернутися в профіль"
 
-#: smarty/pages:30 smarty/pages:34 smarty/pages:32 smarty/pages:36
-#: smarty/pages:63 smarty/dialog:65 smarty/dialog:14 smarty/dialog:53
+#: smarty/pages:32 smarty/pages:36 smarty/pages:33 smarty/pages:37
+#: smarty/pages:65 smarty/dialog:65 smarty/dialog:14 smarty/dialog:53
 #: smarty/dialog:20 smarty/dialog:13 smarty/dialog:22 smarty/dialog:33
 #: smarty/dialog:32 smarty/dialog:45 smarty/dialog:26 smarty/dialog:23
 #: smarty/dialog:15 smarty/dialog:51 smarty/dialog:47 smarty/dialog:50
 msgid "Dismiss"
 msgstr "Відхилити"
 
-#: smarty/pages:33 smarty/pages:35
+#: smarty/pages:35 smarty/pages:36
 msgid "Back to homepage"
 msgstr "Повернутися на головну сторінку"
 
-#: smarty/pages:37
+#: smarty/pages:39
 msgid "I approve this change"
 msgstr "Я схвалюю цю зміну"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "No, please revert to my old email address"
 msgstr "Ні, будь ласка, поверніться на мою стару адресу електронної пошти"
 
-#: smarty/pages:9
+#: smarty/pages:10
 msgid "Changing your email address."
 msgstr "Зміна вашої адреси електронної пошти."
 
-#: smarty/pages:17 smarty/pages:20
+#: smarty/pages:18 smarty/pages:22
 msgid "Please enter the verification token received by mail."
 msgstr "Будь ласка, введіть підтверджувальний маркер отриманий поштою."
 
-#: smarty/pages:22 smarty/pages:24 smarty/pages:25 smarty/pages:27
+#: smarty/pages:23 smarty/pages:25 smarty/pages:27 smarty/pages:29
 msgid "Verification Token"
 msgstr "Токен перевірки"
 
-#: smarty/pages:39
+#: smarty/pages:40
 msgid "Check the token"
 msgstr "Перевірте токен"
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Hall of fame"
+msgstr "Зал слави"
+
+#: smarty/pages:8
 msgid "Developers"
 msgstr "Розробники"
 
-#: smarty/pages:9
+#: smarty/pages:11
 msgid "Current team:"
 msgstr "Поточна команда:"
 
-#: smarty/pages:11
+#: smarty/pages:13
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
 msgstr "хостинг, код, новий дизайн, підтримка і <a href=\"%1\">планування GK v2</a>"
 
-#: smarty/pages:12
+#: smarty/pages:14
 msgid "code, support, public relation and advertising"
 msgstr "код, підтримки , публічне відношення і реклама"
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "Legacy team:"
 msgstr "Команда закономірності:"
 
-#: smarty/pages:16
+#: smarty/pages:18
 msgid "idea, code and original design"
 msgstr "Ідея, код та оригінальний дизайн"
 
-#: smarty/pages:17
+#: smarty/pages:19
 msgid "visions into (legacy) code 😉"
 msgstr "уявлення про (фальшивий) код 😉"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Support"
 msgstr "Підтримка"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "GK logo (the mole, different versions)"
 msgstr "Логотип GK (моль, різні версії)"
 
-#: smarty/pages:29
+#: smarty/pages:31
 msgid "MySQL support, sandwiches and more 😃"
 msgstr "Підтримка MySQL, бутерброди та багато 😃"
 
-#: smarty/pages:30
+#: smarty/pages:32
 msgid "GK maps"
 msgstr "Карти GK"
 
-#: smarty/pages:37 smarty:86 smarty:88
-msgid "Help"
-msgstr "Допомога"
-
-#: smarty/pages:41
+#: smarty/pages:43
 msgid "betatesting, idea, public relation and advertising 😃"
 msgstr "бетестування, ідея, зв'язок і реклама 😃"
 
-#: smarty/pages:42
+#: smarty/pages:44
 msgid "betatesting, language support"
 msgstr "за бажанням, мовна підтримка"
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid "betatesting"
 msgstr "бета-реалізація"
 
-#: smarty/pages:44
+#: smarty/pages:46
 msgid "programming support"
 msgstr "Підтримка програмування"
 
-#: smarty/pages:45
+#: smarty/pages:47
 msgid "coordinates parser"
 msgstr "coordinates parser"
 
-#: smarty/pages:46
+#: smarty/pages:48
 msgid "public relation and advertising"
 msgstr "реклама та зв'язок з громадськістю"
 
-#: smarty/pages:53
+#: smarty/pages:55
 msgid "Translations"
 msgstr "Переклади"
 
-#: smarty/pages:82
+#: smarty/pages:84
 msgid "Global reviewers"
 msgstr "Глобальні рецензенти"
 
-#: smarty/pages:89
+#: smarty/pages:91
 msgid "Credits"
 msgstr "Подяки"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's posted pictures"
 msgstr "%1's posted картинки"
 
-#: smarty/pages:11
+#: smarty/pages:3
+msgid "News: %1"
+msgstr ""
+
+#: smarty/pages:13
 msgid "Leave a comment"
 msgstr "Залишити коментар"
 
-#: smarty/pages:20 smarty/dialog:14
+#: smarty/pages:22 smarty/dialog:14
 msgid "Your comment"
 msgstr "Ваш коментар"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "Subscribe to this news post"
 msgstr "Підписатися на цю новину повідомленням"
 
-#: smarty/pages:40
+#: smarty/pages:42
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "Будь ласка, <a href=\"%1\">увійдіть</a> щоб написати коментар"
 
-#: smarty/pages:45
+#: smarty/pages:47
 msgid "Comments"
 msgstr "Коментарі"
 
-#: smarty/pages:49
+#: smarty/pages:51
 msgid "There are no comments for this post."
 msgstr "Є немає коментарів на цю посаду."
 
-#: smarty/pages:11 smarty/dialog:8
+#: smarty/pages:3 smarty/pages:13 smarty/dialog:8
 msgid "Change your password"
 msgstr "Змінити ваш пароль"
 
-#: smarty/pages:34
+#: smarty/pages:36
 msgid "Please define a new password."
 msgstr "Будь ласка, вкажіть новий пароль."
 
-#: smarty/pages:39 smarty/pages:41 smarty/dialog:22 smarty/dialog:24
+#: smarty/pages:41 smarty/pages:43 smarty/dialog:22 smarty/dialog:24
 msgid "New password"
 msgstr "Новий пароль"
 
-#: smarty/pages:46 smarty/pages:48 smarty/forms:26 smarty/forms:28
+#: smarty/pages:48 smarty/pages:50 smarty/forms:26 smarty/forms:28
 #: smarty/dialog:29 smarty/dialog:31
 msgid "Confirm password"
 msgstr "Підтвердити пароль"
 
-#: smarty/pages:54 smarty/dialog:28 smarty/dialog:53 smarty/dialog:52
+#: smarty/pages:56 smarty/dialog:28 smarty/dialog:53 smarty/dialog:52
 msgid "Change"
 msgstr "Змінити"
 
-#: smarty/pages:15
+#: smarty/pages:3
+msgid "Interactive map"
+msgstr ""
+
+#: smarty/pages:17
 msgid "GeoKrety interactive map"
 msgstr "GeoKrety інтерактивна карта"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "Contact us"
 msgstr "Зв'язатися з нами"
 
-#: smarty/pages:11
+#: smarty/pages:13
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "Якщо у Вас є пропозиції або помилка доповідей, не соромтеся написати нам."
 
-#: smarty/pages:15 smarty/blocks/user:43
+#: smarty/pages:17 smarty/blocks/user:43
 msgid "Email"
 msgstr "Електронна пошта"
 
-#: smarty/pages:22
+#: smarty/pages:24
 msgid "Or via the user profile"
 msgstr "Або через профіль користувача"
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "IRC"
 msgstr "Рух"
 
-#: smarty/pages:39
+#: smarty/pages:41
 msgid "Twitter"
 msgstr "Твіттер"
 
-#: smarty/pages:46
+#: smarty/pages:48
 msgid "Public forum"
 msgstr "Публічний форум"
 
-#: smarty/pages:54
+#: smarty/pages:56
 msgid "Wanna sign or encrypt your mails?"
 msgstr "Хочете підписатися чи зашифрувати ваші повідомлення?"
 
-#: smarty/pages:56
+#: smarty/pages:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "Наш публічний PGP/GPG ключ <a href=\"%1\">тут (%2)</a>"
 
-#: smarty/pages:7
+#: smarty/pages:3
+msgid "%1's user profile"
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's GeoKrety recent moves"
 msgstr "%1останній ходи з GeoKrety"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "%1's GeoKrety не рухався."
 
-#: smarty/pages:7 smarty:91
+#: smarty/pages:3 smarty/pages:9 smarty:91
 msgid "Press corner"
 msgstr "Куточок преси"
 
-#: smarty/pages:37
+#: smarty/pages:11
+msgid "Help API"
+msgstr ""
+
+#: smarty/pages:39
 msgid "Yes, change my email address"
 msgstr "Так, змінити адресу електронної пошти"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "No, abort this request"
 msgstr "Ні, відхилити цей запит"
 
-#: smarty/pages:15
+#: smarty/pages:18
 msgid "There is no news yet"
 msgstr "Ще немає новин"
 
@@ -1306,129 +1342,141 @@ msgstr "Поточні GK-Hotels/Motels"
 msgid "Status: Ready for search"
 msgstr "Статус: Готовий до пошуку"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "Pictures gallery"
 msgstr "Галерея зображень"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/forms:6 smarty/blocks/user:3 smarty:60
+msgid "Create a new GeoKret"
+msgstr "Створити новий GeoKret"
+
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's inventory"
 msgstr "%1інвентар"
 
-#: smarty/pages:37
+#: smarty/pages:39
 msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr "Ваш інвентар порожній. Перевірте <a href=\"%1\">карту</a> і спробуйте знайти GeoKrety поруч з вами! Ви також можете <a href=\"%2\">створити власну GeoKrety</a> безкоштовно!"
 
-#: smarty/pages:39
+#: smarty/pages:41
 msgid "%1's inventory is currently empty."
 msgstr "%1з залишком товару в даний момент порожній."
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty:99
+msgid "Downloads"
+msgstr "Завантажень"
+
+#: smarty/pages:8
 msgid "Translation"
 msgstr "Переклад"
 
-#: smarty/pages:9
+#: smarty/pages:11
 msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
 msgstr "Наші файли перекладу тепер розміщені на <a href=\"%1\">crowdin</a>. Ви можете приєднатися до спільноти, якщо хочете зробити свій внесок у перекладі Geokrety.org на своїй мові або вирішити деякі проблеми з перекладом."
 
-#: smarty/pages:25
-msgid "Design ressources"
-msgstr "Конструювання ресурсів"
+#: smarty/pages:27
+msgid "Design resources"
+msgstr ""
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "GeoKrety logo"
 msgstr "GeoKrety логотип"
 
-#: smarty/pages:30
+#: smarty/pages:32
 msgid "Basic GK logo: "
 msgstr "Логотип основного GK: "
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "The mole itself: "
 msgstr "Сам самотужки: "
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "Other ressources: "
 msgstr "Інші джерела: "
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "here"
 msgstr "сюди"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Sample GeoKrety labels"
 msgstr "Приклад GeoKrety міток"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
 msgstr "Будь ласка, зверніть увагу, що ви можете створити ярлик для вашого GeoKrety автоматично, натиснувши на відповідне посилання на сторінці GeoKret."
 
-#: smarty/pages:38 smarty/pages:39 smarty/pages:40 smarty/pages:41
+#: smarty/pages:40 smarty/pages:41 smarty/pages:42 smarty/pages:43
 msgid "Sample label #%1: "
 msgstr "Приклад мітки #%1: "
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid "Old label design: "
 msgstr "Старий дизайн етикетки: "
 
-#: smarty/pages:9
+#: smarty/pages:3 smarty/pages:11
 msgid "Define your observation area"
 msgstr "Визначення області спостереження"
 
-#: smarty/pages:19 smarty/pages:20
+#: smarty/pages:21 smarty/pages:22
 msgid "Home coordinates"
 msgstr "Головна Координати"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Використовуйте карту, щоб вибрати розташування або введіть координати вручну."
 
-#: smarty/pages:26
+#: smarty/pages:28
 msgid "Other acceptable lat/lon formats"
 msgstr "Інші прийнятні формати lat/lon"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Observation radius"
 msgstr "Спостереження радіусу"
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid " km. Set it to 0 to disable the observation feature."
 msgstr " км. Установіть 0 для відключення функції спостереження."
 
-#: smarty/pages:53
+#: smarty/pages:55
 msgid "Center the map on the zone to observe"
 msgstr "Відцентруйте карту на зоні, щоб спостерігати"
 
-#: smarty/pages:62 smarty/dialog:25 smarty/dialog:14 smarty/dialog:50
+#: smarty/pages:64 smarty/dialog:25 smarty/dialog:14 smarty/dialog:50
 #: smarty/dialog:46 smarty/dialog:49
 msgid "Back to user page"
 msgstr "Назад до сторінки користувача"
 
-#: smarty/pages:65 smarty/dialog:15
+#: smarty/pages:67 smarty/dialog:15
 msgid "Define"
 msgstr "Визначити"
 
-#: smarty/pages:8
+#: smarty/pages:3 smarty/pages:10
 msgid "Password recovery"
 msgstr "Відновлення пароля"
 
-#: smarty/pages:17
+#: smarty/pages:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Якщо ви підтвердили свою адресу електронної пошти в минулому, то легко відновите її. Інше, ви будете повинні створити інший обліковий запис, вибачте."
 
-#: smarty/pages:22 smarty/pages:24 smarty/forms:11 smarty/forms:13
+#: smarty/pages:24 smarty/pages:26 smarty/forms:11 smarty/forms:13
 #: smarty/dialog:11 smarty/dialog:12
 msgid "Email address"
 msgstr "Адреса електронної пошти"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "Send me a recovery link"
 msgstr "Надіслати мені посилання для відновлення"
 
-#: smarty/pages:12
+#: smarty/pages:3
+msgid "Registration"
+msgstr ""
+
+#: smarty/pages:14
 msgid "Create an account using %1"
 msgstr "Створити обліковий запис, використовуючи %1"
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "Create an account"
 msgstr "Створити акаунт"
 
@@ -1512,10 +1560,6 @@ msgstr "Зареєструватися"
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "Редагувати GeoKret"
-
-#: smarty/forms:6 smarty/blocks/user:3 smarty:60
-msgid "Create a new GeoKret"
-msgstr "Створити новий GeoKret"
 
 #: smarty/forms:20
 msgid "GeoKret type"
@@ -2343,10 +2387,6 @@ msgstr "GeoKrety є безкоштовним онлайн-сервісом дл�
 msgid "Toggle navigation"
 msgstr "Переключити навігацію"
 
-#: smarty:16 smarty:51 smarty:58
-msgid "Log a GeoKret"
-msgstr "Вхід GeoKret"
-
 #: smarty:64
 msgid "Advanced search"
 msgstr "Розширений пошук"
@@ -2370,10 +2410,6 @@ msgstr "Молеори та готель GK"
 #: smarty:93
 msgid "GK interface / API"
 msgstr "Інтерфейс GK / API"
-
-#: smarty:99
-msgid "Downloads"
-msgstr "Завантажень"
 
 #: smarty:100
 msgid "GeoKrety Toolbox"
