@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-14 15:58+0000\n"
-"PO-Revision-Date: 2020-11-14 16:01\n"
+"POT-Creation-Date: 2020-11-14 17:10+0000\n"
+"PO-Revision-Date: 2020-11-14 17:12\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-11-14 15:58+0000\n"
+"POT-Creation-Date: 2020-11-14 17:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -383,7 +383,7 @@ msgid "An error occurred while sending the activation mail."
 msgstr "Ett fel inträffade när aktiveringsmailet skulle skickas."
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
-#: website/app/GeoKrety/Email/EmailChange.php:35
+#: website/app/GeoKrety/Email/EmailChange.php:35 smarty/pages:3
 msgid "Changing your email address"
 msgstr "Ändra din e-postadress"
 
@@ -482,7 +482,7 @@ msgstr "arkivera"
 msgid "dip"
 msgstr "dopp"
 
-#: website/app/GeoKrety/LogType.php:109 smarty/pages:69
+#: website/app/GeoKrety/LogType.php:109 smarty/pages:71
 #: smarty/blocks/geokret:50
 msgid "Born"
 msgstr "Född"
@@ -765,7 +765,7 @@ msgstr "Hem"
 msgid "About"
 msgstr "Om"
 
-#: smarty:5 smarty/pages:17 smarty:48
+#: smarty:5 smarty/pages:19 smarty/pages:3 smarty:48
 msgid "News"
 msgstr "Nyheter"
 
@@ -793,416 +793,452 @@ msgstr "Designad med <abbr title=\"love\">💗</abbr> av <a id=\"footer-team\" h
 msgid "Deployed on %1"
 msgstr "Utplacerad på %1"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "GeoKrety Toolbox - GKT"
 msgstr "Geokrety Verktygslåda - GKT"
 
-#: smarty/pages:10
+#: smarty/pages:12
 msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
 msgstr "Visar geoKrety spårbara filer på <a href=\"%1\" target=\"_blank\">geocaching.com</a> cachesidor och underlättar att släppa geoKrety spårbara filer i geocaching-cacher."
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
 msgstr "Detta skript skrevs för att bygga en bro mellan de mest populära <a href=\"%1\">geocaching. om</a> webbplats och <a href=\"%2\">geokrety.org</a>. Den har två funktioner. När du har angett en viss cache sida på <a href=\"%1\">geocaching. Om</a> kommer den automatiskt att kontrollera om det finns några GeoKrety (objekt som spåras på <a href=\"%2\">geokrety. rg</a>) inuti cachen och visa resultatet i inventeringsavsnittet på höger sida av skärmen (under den befintliga listan med Travelbugs och Geocoins). Om du har ett konto på <a href=\"%2\">geokrety. rg</a> du kan också enkelt släppa GeoKrety i <a href=\"%1\">Geocaching</a> cacher eftersom waypoint-koden och koordinaterna automatiskt kopieras över till loggningsformuläret på <a href=\"%2\">geokrety. rg</a>."
 
-#: smarty/pages:16
+#: smarty/pages:18
 msgid "Available for:"
 msgstr "Tillgängligt för:"
 
-#: smarty/pages:20
+#: smarty/pages:22
 msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 msgstr "<a href=\"%1\">Firefox</a> (behöver <a href=\"%2\">Tampermonkey tillägg</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 
-#: smarty/pages:4
+#: smarty/pages:3 smarty/pages:6
 msgid "This page doesn't exists yet, but we're working on it!"
 msgstr "Denna sida finns inte än, men vi jobbar på det!"
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Statpic background chooser"
+msgstr ""
+
+#: smarty/pages:8
 msgid "Select your preferred statpic background"
 msgstr "Välj önskad statpic bakgrund"
 
-#: smarty/pages:25 smarty/forms:51 smarty/dialog:46
+#: smarty/pages:27 smarty/forms:51 smarty/dialog:46
 msgid "Save"
 msgstr "Spara"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Your current statpic"
 msgstr "Din nuvarande statistikbild"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's recent moves"
 msgstr "%1s senaste drag"
 
-#: smarty/pages:18 smarty/pages:30 smarty/pages:67 smarty/pages:38
+#: smarty/pages:20 smarty/pages:32 smarty/pages:69 smarty/pages:38
 #: smarty/pages:81 smarty/devel/pages:15 smarty/dialog:26
 msgid "ID"
 msgstr "ID"
 
-#: smarty/pages:19 smarty/pages:31 smarty/pages:20
+#: smarty/pages:21 smarty/pages:33 smarty/pages:22
 msgid "Spotted in"
 msgstr "Sedd i"
 
-#: smarty/pages:20 smarty/pages:32 smarty/pages:18 smarty/pages:35
+#: smarty/pages:22 smarty/pages:34 smarty/pages:20 smarty/pages:37
 #: smarty/forms:106 smarty/forms:247 smarty/dialog:21
 msgid "Comment"
 msgstr "Kommentar"
 
-#: smarty/pages:21 smarty/pages:20 smarty/pages:33
+#: smarty/pages:23 smarty/pages:22 smarty/pages:35
 msgid "Last move"
 msgstr "Senaste flytt"
 
-#: smarty/pages:22 smarty/pages:32 smarty/pages:23
+#: smarty/pages:24 smarty/pages:34 smarty/pages:25
 msgid "Caches visited count"
 msgstr "Antal besökta cacher"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
 msgstr "Du har inte flyttat någon GeoKrety ännu. Kolla <a href=\"%1\">kartan</a> och försök att hitta GeoKrety nära dig!"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 har inte flyttat någon GeoKrety än."
 
-#: smarty/pages:7 smarty/blocks/user:16
+#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:16
 msgid "Owned GeoKrety"
 msgstr "Ägd GeoKrety"
 
-#: smarty/pages:21 smarty/pages:34 smarty/pages:22
+#: smarty/pages:23 smarty/pages:36 smarty/pages:24
 msgid "Distance"
 msgstr "Avstånd"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr "Du har inte skapat någon GeoKrety ännu. Tveka inte att <a href=\"%2\">skapa din egen GeoKrety</a> gratis!"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 äger ingen GeoKrety än."
 
-#: smarty/pages:6 smarty:61
+#: smarty/pages:3 smarty/pages:8 smarty:61
 msgid "Claim a GeoKret"
 msgstr "Claim a GeoKret"
 
-#: smarty/pages:13 smarty/forms:31 smarty/forms:21 smarty/blocks/geokret:43
+#: smarty/pages:15 smarty/forms:31 smarty/forms:21 smarty/blocks/geokret:43
 #: smarty/blocks/geokret:9
 msgid "Tracking Code"
 msgstr "Spårningskod"
 
-#: smarty/pages:20
+#: smarty/pages:22
 msgid "Owner Code"
 msgstr "Ägarkod"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
 msgstr "Processen kräver en \"spårningskod\" i allmänhet skriven på GeoKret-etiketten eller graverad på myntet plus en \"Ägarkod\" som vanligtvis anges på ett pappersark."
 
-#: smarty/pages:33
+#: smarty/pages:35
 msgid "Adopt"
 msgstr "Adoptera"
 
-#: smarty/pages:4
+#: smarty/pages:3 smarty/pages:6
+msgid "Label generator"
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:6
 msgid "🎉 Welcome to GeoKrety.org!"
 msgstr "🎉 Välkommen till GeoKrety.org!"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Latest moves"
 msgstr "Senaste flytter"
 
-#: smarty/pages:48
+#: smarty/pages:50
 msgid "Recent pictures"
 msgstr "Senaste bilder"
 
-#: smarty/pages:61
+#: smarty/pages:63
 msgid "Recently created GeoKrety"
 msgstr "Nyligen skapade GeoKrety"
 
-#: smarty/pages:68 smarty/pages:19 smarty/forms:15 smarty/forms:17
+#: smarty/pages:70 smarty/pages:21 smarty/forms:15 smarty/forms:17
 #: smarty/dialog:27
 msgid "Owner"
 msgstr "Ägare"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty:16 smarty:51 smarty:58
+msgid "Log a GeoKret"
+msgstr "Logga en GeoKret"
+
+#: smarty/pages:3 smarty/pages:39 smarty:86 smarty:88
+msgid "Help"
+msgstr "Hjälp"
+
+#: smarty/pages:3 smarty/pages:8
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "Välkommen till the GeoKrety.org community!"
 
-#: smarty/pages:11 smarty/dialog:37 smarty:32 smarty:48
+#: smarty/pages:13 smarty/dialog:37 smarty:32 smarty:48
 msgid "Sign in"
 msgstr "Logga in"
 
-#: smarty/pages:10
+#: smarty/pages:3 smarty/pages:12
 msgid "%1's Owned GeoKrety map"
 msgstr "%1s ägda GeoKrety karta"
 
-#: smarty/pages:28 smarty/blocks/geokret:46
+#: smarty/pages:30 smarty/blocks/geokret:46
 msgid "Total distance"
 msgstr "Totalt avstånd"
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "Total visited caches"
 msgstr "Totalt besökta cacher"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "Last moved date"
 msgstr "Senast flyttat datum"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "Pictures of %1's GeoKrety"
 msgstr "Bilder på %1s GeoKrety"
 
-#: smarty/pages:7 smarty/blocks/user:20 smarty:20
+#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:20 smarty:20
 msgid "Watched GeoKrety"
 msgstr "Sedd GeoKrety"
 
-#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:56
+#: smarty/pages:26 smarty/pages:25 smarty/blocks/geokret:55 smarty:56
 msgid "Actions"
 msgstr "Åtgärder"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "You did not watch any GeoKrety yet."
 msgstr "Du tittade inte på någon GeoKrety ännu."
 
-#: smarty/pages:40
+#: smarty/pages:42
 msgid "%1 doesn't watch any GeoKrety yet."
 msgstr "%1 tittar inte på någon GeoKrety ännu."
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Confirm changing your email address"
+msgstr ""
+
+#: smarty/pages:8
 msgid "Do you confirm changing your email address?"
 msgstr "Vill du bekräfta ändring av din e-postadress?"
 
-#: smarty/pages:29 smarty/pages:31
+#: smarty/pages:31 smarty/pages:32
 msgid "Back to your profile"
 msgstr "Tillbaka till din profil"
 
-#: smarty/pages:30 smarty/pages:34 smarty/pages:32 smarty/pages:36
-#: smarty/pages:63 smarty/dialog:65 smarty/dialog:14 smarty/dialog:53
+#: smarty/pages:32 smarty/pages:36 smarty/pages:33 smarty/pages:37
+#: smarty/pages:65 smarty/dialog:65 smarty/dialog:14 smarty/dialog:53
 #: smarty/dialog:20 smarty/dialog:13 smarty/dialog:22 smarty/dialog:33
 #: smarty/dialog:32 smarty/dialog:45 smarty/dialog:26 smarty/dialog:23
 #: smarty/dialog:15 smarty/dialog:51 smarty/dialog:47 smarty/dialog:50
 msgid "Dismiss"
 msgstr "Avfärda"
 
-#: smarty/pages:33 smarty/pages:35
+#: smarty/pages:35 smarty/pages:36
 msgid "Back to homepage"
 msgstr "Tillbaka till startsidan"
 
-#: smarty/pages:37
+#: smarty/pages:39
 msgid "I approve this change"
 msgstr "Jag godkänner ändringen"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "No, please revert to my old email address"
 msgstr "Nej, återgå till min gamla e-postadress"
 
-#: smarty/pages:9
+#: smarty/pages:10
 msgid "Changing your email address."
 msgstr "Ändra din e-postadress."
 
-#: smarty/pages:17 smarty/pages:20
+#: smarty/pages:18 smarty/pages:22
 msgid "Please enter the verification token received by mail."
 msgstr "Ange den verifikationstoken som du fick via mail."
 
-#: smarty/pages:22 smarty/pages:24 smarty/pages:25 smarty/pages:27
+#: smarty/pages:23 smarty/pages:25 smarty/pages:27 smarty/pages:29
 msgid "Verification Token"
 msgstr "Verifikationstoken"
 
-#: smarty/pages:39
+#: smarty/pages:40
 msgid "Check the token"
 msgstr "Kontrollera token"
 
-#: smarty/pages:6
+#: smarty/pages:3
+msgid "Hall of fame"
+msgstr "Topplista"
+
+#: smarty/pages:8
 msgid "Developers"
 msgstr "Utvecklare"
 
-#: smarty/pages:9
+#: smarty/pages:11
 msgid "Current team:"
 msgstr "Nuvarande team:"
 
-#: smarty/pages:11
+#: smarty/pages:13
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
 msgstr "hosting, kod, ny design, support och <a href=\"%1\">planering GK v2</a>"
 
-#: smarty/pages:12
+#: smarty/pages:14
 msgid "code, support, public relation and advertising"
 msgstr "kod, support, PR och reklam"
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "Legacy team:"
 msgstr "Äldre team:"
 
-#: smarty/pages:16
+#: smarty/pages:18
 msgid "idea, code and original design"
 msgstr "idé, kod och originaldesign"
 
-#: smarty/pages:17
+#: smarty/pages:19
 msgid "visions into (legacy) code 😉"
 msgstr "visioner i (legacy) kod 😉"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Support"
 msgstr "Support"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "GK logo (the mole, different versions)"
 msgstr "GK-logo (mullvaden, olika versioner)"
 
-#: smarty/pages:29
+#: smarty/pages:31
 msgid "MySQL support, sandwiches and more 😃"
 msgstr "MySQL-support, smörgåsar och mer 😃"
 
-#: smarty/pages:30
+#: smarty/pages:32
 msgid "GK maps"
 msgstr "GK-kartor"
 
-#: smarty/pages:37 smarty:86 smarty:88
-msgid "Help"
-msgstr "Hjälp"
-
-#: smarty/pages:41
+#: smarty/pages:43
 msgid "betatesting, idea, public relation and advertising 😃"
 msgstr "betatestande, idé, PR och reklam 😃"
 
-#: smarty/pages:42
+#: smarty/pages:44
 msgid "betatesting, language support"
 msgstr "betatestar, språkstöd"
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid "betatesting"
 msgstr "betatestar"
 
-#: smarty/pages:44
+#: smarty/pages:46
 msgid "programming support"
 msgstr "programmeringssupport"
 
-#: smarty/pages:45
+#: smarty/pages:47
 msgid "coordinates parser"
 msgstr "coordinates parser"
 
-#: smarty/pages:46
+#: smarty/pages:48
 msgid "public relation and advertising"
 msgstr "PR och reklam"
 
-#: smarty/pages:53
+#: smarty/pages:55
 msgid "Translations"
 msgstr "Översättningar"
 
-#: smarty/pages:82
+#: smarty/pages:84
 msgid "Global reviewers"
 msgstr "Globala recensenter"
 
-#: smarty/pages:89
+#: smarty/pages:91
 msgid "Credits"
 msgstr "Medverkande"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's posted pictures"
 msgstr "%1s postade bilder"
 
-#: smarty/pages:11
+#: smarty/pages:3
+msgid "News: %1"
+msgstr ""
+
+#: smarty/pages:13
 msgid "Leave a comment"
 msgstr "Lämna en kommentar"
 
-#: smarty/pages:20 smarty/dialog:14
+#: smarty/pages:22 smarty/dialog:14
 msgid "Your comment"
 msgstr "Din kommentar"
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "Subscribe to this news post"
 msgstr "Prenumerera på denna nyhet inlägget"
 
-#: smarty/pages:40
+#: smarty/pages:42
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "Vänligen <a href=\"%1\">logga in</a> för att posta kommentarer"
 
-#: smarty/pages:45
+#: smarty/pages:47
 msgid "Comments"
 msgstr "Kommentarer"
 
-#: smarty/pages:49
+#: smarty/pages:51
 msgid "There are no comments for this post."
 msgstr "Det finns inga kommentarer till denna post."
 
-#: smarty/pages:11 smarty/dialog:8
+#: smarty/pages:3 smarty/pages:13 smarty/dialog:8
 msgid "Change your password"
 msgstr "Ändra ditt lösenord"
 
-#: smarty/pages:34
+#: smarty/pages:36
 msgid "Please define a new password."
 msgstr "Definiera ett nytt lösenord."
 
-#: smarty/pages:39 smarty/pages:41 smarty/dialog:22 smarty/dialog:24
+#: smarty/pages:41 smarty/pages:43 smarty/dialog:22 smarty/dialog:24
 msgid "New password"
 msgstr "Nytt lösenord"
 
-#: smarty/pages:46 smarty/pages:48 smarty/forms:26 smarty/forms:28
+#: smarty/pages:48 smarty/pages:50 smarty/forms:26 smarty/forms:28
 #: smarty/dialog:29 smarty/dialog:31
 msgid "Confirm password"
 msgstr "Bekräfta lösenord"
 
-#: smarty/pages:54 smarty/dialog:28 smarty/dialog:53 smarty/dialog:52
+#: smarty/pages:56 smarty/dialog:28 smarty/dialog:53 smarty/dialog:52
 msgid "Change"
 msgstr "Ändra"
 
-#: smarty/pages:15
+#: smarty/pages:3
+msgid "Interactive map"
+msgstr ""
+
+#: smarty/pages:17
 msgid "GeoKrety interactive map"
 msgstr "GeoKrety interaktiva kartor"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "Contact us"
 msgstr "Kontakta oss"
 
-#: smarty/pages:11
+#: smarty/pages:13
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "Om du har några förslag eller felrapporter är du välkommen att skriva till oss."
 
-#: smarty/pages:15 smarty/blocks/user:43
+#: smarty/pages:17 smarty/blocks/user:43
 msgid "Email"
 msgstr "E-post"
 
-#: smarty/pages:22
+#: smarty/pages:24
 msgid "Or via the user profile"
 msgstr "Eller via användarprofilen"
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "IRC"
 msgstr "IRC"
 
-#: smarty/pages:39
+#: smarty/pages:41
 msgid "Twitter"
 msgstr "Twitter"
 
-#: smarty/pages:46
+#: smarty/pages:48
 msgid "Public forum"
 msgstr "Offentligt forum"
 
-#: smarty/pages:54
+#: smarty/pages:56
 msgid "Wanna sign or encrypt your mails?"
 msgstr "Vill du signera eller kryptera dina e-postmeddelanden?"
 
-#: smarty/pages:56
+#: smarty/pages:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "Vår publika PGP/GPG-nyckel <a href=\"%1\">är här (%2)</a>"
 
-#: smarty/pages:7
+#: smarty/pages:3
+msgid "%1's user profile"
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's GeoKrety recent moves"
 msgstr "%1s GeoKrety senaste drag"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "%1s GeoKrety har inte flyttats ännu."
 
-#: smarty/pages:7 smarty:91
+#: smarty/pages:3 smarty/pages:9 smarty:91
 msgid "Press corner"
 msgstr "Presshörna"
 
-#: smarty/pages:37
+#: smarty/pages:11
+msgid "Help API"
+msgstr ""
+
+#: smarty/pages:39
 msgid "Yes, change my email address"
 msgstr "Ja, ändra min e-postadress"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "No, abort this request"
 msgstr "Nej, avbryt denna begäran"
 
-#: smarty/pages:15
+#: smarty/pages:18
 msgid "There is no news yet"
 msgstr "Det finns inga nyheter än"
 
@@ -1306,129 +1342,141 @@ msgstr "Nuvarande GK-hotell/motell"
 msgid "Status: Ready for search"
 msgstr "Status: Redo att söka"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/pages:9
 msgid "Pictures gallery"
 msgstr "Bilder galleri"
 
-#: smarty/pages:7
+#: smarty/pages:3 smarty/forms:6 smarty/blocks/user:3 smarty:60
+msgid "Create a new GeoKret"
+msgstr "Skapa en nyt GeoKret"
+
+#: smarty/pages:3 smarty/pages:9
 msgid "%1's inventory"
 msgstr "%1's inventory"
 
-#: smarty/pages:37
+#: smarty/pages:39
 msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr "Ditt förråd är tomt. Kolla <a href=\"%1\">kartan</a> och försök att hitta GeoKrety nära dig! Du kan också <a href=\"%2\">skapa din egen GeoKrety</a> gratis!"
 
-#: smarty/pages:39
+#: smarty/pages:41
 msgid "%1's inventory is currently empty."
 msgstr "%1's inventory is currently empty. (Automatic Copy)"
 
-#: smarty/pages:6
+#: smarty/pages:3 smarty:99
+msgid "Downloads"
+msgstr "Nedladdningar"
+
+#: smarty/pages:8
 msgid "Translation"
 msgstr "Översättning"
 
-#: smarty/pages:9
+#: smarty/pages:11
 msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
 msgstr "Våra översättningsfiler finns nu tillgängliga på <a href=\"%1\">crowdin</a>. Vänligen gå med i communityn om du vill bidra genom att översätta Geokrety.org till ditt språk, eller rätta några problem med översättningar."
 
-#: smarty/pages:25
-msgid "Design ressources"
-msgstr "Designresurser"
+#: smarty/pages:27
+msgid "Design resources"
+msgstr ""
 
-#: smarty/pages:28
+#: smarty/pages:30
 msgid "GeoKrety logo"
 msgstr "GeoKrety logo"
 
-#: smarty/pages:30
+#: smarty/pages:32
 msgid "Basic GK logo: "
 msgstr "Vanlig GK-logo: "
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "The mole itself: "
 msgstr "Mullvaden själv: "
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "Other ressources: "
 msgstr "Andra resurser: "
 
-#: smarty/pages:32
+#: smarty/pages:34
 msgid "here"
 msgstr "här"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Sample GeoKrety labels"
 msgstr "Exempel på GeoKrety-etiketter"
 
-#: smarty/pages:36
+#: smarty/pages:38
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
 msgstr "Notera att du skapa en etikett för din GeoKrety automatiskt, genom att klicka på motsvarande länk på sidan för denna GeoKret."
 
-#: smarty/pages:38 smarty/pages:39 smarty/pages:40 smarty/pages:41
+#: smarty/pages:40 smarty/pages:41 smarty/pages:42 smarty/pages:43
 msgid "Sample label #%1: "
 msgstr "Exempeletikett #%1: "
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid "Old label design: "
 msgstr "Gammal etikettdesign: "
 
-#: smarty/pages:9
+#: smarty/pages:3 smarty/pages:11
 msgid "Define your observation area"
 msgstr "Definiera din observationsarea"
 
-#: smarty/pages:19 smarty/pages:20
+#: smarty/pages:21 smarty/pages:22
 msgid "Home coordinates"
 msgstr "Hemkoordinater"
 
-#: smarty/pages:24
+#: smarty/pages:26
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Använd kartan för att välja en plats eller ange koordinater manuellt."
 
-#: smarty/pages:26
+#: smarty/pages:28
 msgid "Other acceptable lat/lon formats"
 msgstr "Andra tillåtna lat/lon-format"
 
-#: smarty/pages:35
+#: smarty/pages:37
 msgid "Observation radius"
 msgstr "Observationsradie"
 
-#: smarty/pages:43
+#: smarty/pages:45
 msgid " km. Set it to 0 to disable the observation feature."
 msgstr " km. Sätt den till 0 för att inaktivera observationsfunktionen."
 
-#: smarty/pages:53
+#: smarty/pages:55
 msgid "Center the map on the zone to observe"
 msgstr "Centrera kartan på zonen för att observera"
 
-#: smarty/pages:62 smarty/dialog:25 smarty/dialog:14 smarty/dialog:50
+#: smarty/pages:64 smarty/dialog:25 smarty/dialog:14 smarty/dialog:50
 #: smarty/dialog:46 smarty/dialog:49
 msgid "Back to user page"
 msgstr "Tillbaka till användarsida"
 
-#: smarty/pages:65 smarty/dialog:15
+#: smarty/pages:67 smarty/dialog:15
 msgid "Define"
 msgstr "Definiera"
 
-#: smarty/pages:8
+#: smarty/pages:3 smarty/pages:10
 msgid "Password recovery"
 msgstr "Lösenordsåterställning"
 
-#: smarty/pages:17
+#: smarty/pages:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Om du har validerat din e-postadress tidigare, då kan du återställa den lätt. Annars måste du skapa ett annat konto, ledsen."
 
-#: smarty/pages:22 smarty/pages:24 smarty/forms:11 smarty/forms:13
+#: smarty/pages:24 smarty/pages:26 smarty/forms:11 smarty/forms:13
 #: smarty/dialog:11 smarty/dialog:12
 msgid "Email address"
 msgstr "E-postadress"
 
-#: smarty/pages:38
+#: smarty/pages:40
 msgid "Send me a recovery link"
 msgstr "Skicka mig en återställningslänk"
 
-#: smarty/pages:12
+#: smarty/pages:3
+msgid "Registration"
+msgstr ""
+
+#: smarty/pages:14
 msgid "Create an account using %1"
 msgstr "Skapa ett konto med %1"
 
-#: smarty/pages:14
+#: smarty/pages:16
 msgid "Create an account"
 msgstr "Skapa ett konto"
 
@@ -1512,10 +1560,6 @@ msgstr "Registrera"
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "Redigera en GeoKret"
-
-#: smarty/forms:6 smarty/blocks/user:3 smarty:60
-msgid "Create a new GeoKret"
-msgstr "Skapa en nyt GeoKret"
 
 #: smarty/forms:20
 msgid "GeoKret type"
@@ -2343,10 +2387,6 @@ msgstr "GeoKrety är en gratis online-tjänst för objektspårning i GPS-spel so
 msgid "Toggle navigation"
 msgstr "Växla navigering"
 
-#: smarty:16 smarty:51 smarty:58
-msgid "Log a GeoKret"
-msgstr "Logga en GeoKret"
-
 #: smarty:64
 msgid "Advanced search"
 msgstr "Avancerad sökning"
@@ -2370,10 +2410,6 @@ msgstr "Mullvadshål och GK-hotell"
 #: smarty:93
 msgid "GK interface / API"
 msgstr "GK-interface / API"
-
-#: smarty:99
-msgid "Downloads"
-msgstr "Nedladdningar"
 
 #: smarty:100
 msgid "GeoKrety Toolbox"
