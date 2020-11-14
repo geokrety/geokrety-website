@@ -12,6 +12,7 @@ abstract class Base {
         'login',
         'logout',
         'registration',
+        'registration_social',
         'registration_activate',
         'terms_of_use',
     ];
