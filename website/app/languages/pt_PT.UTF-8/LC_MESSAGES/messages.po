@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-13 20:36+0000\n"
-"PO-Revision-Date: 2020-11-14 15:14\n"
+"POT-Creation-Date: 2020-11-14 15:58+0000\n"
+"PO-Revision-Date: 2020-11-14 16:03\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-11-13 20:36+0000\n"
+"POT-Creation-Date: 2020-11-14 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Várias contas compartilham o mesmo endereço de e-mail. Por favor <a href=\"%s\">entre em contato conosco</a>."
 
-#: website/app/GeoKrety/Controller/Base.php:69
+#: website/app/GeoKrety/Controller/Base.php:70
 #: website/app/GeoKrety/Controller/MoveCreate.php:152
 #: website/app/GeoKrety/Controller/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/UserContact.php:71
@@ -133,29 +133,29 @@ msgstr "secid errado"
 msgid "Wrong date or time"
 msgstr "Data ou hora errada"
 
-#: website/app/GeoKrety/Controller/Login.php:48
+#: website/app/GeoKrety/Controller/Login.php:49
 msgid "Something went wrong during the login procedure."
 msgstr "Alguma coisa correu mal durante o procedimento de login."
 
-#: website/app/GeoKrety/Controller/Login.php:51
+#: website/app/GeoKrety/Controller/Login.php:52
 msgid "Username and password doesn't match."
 msgstr "O nome de utilizador e a senha não correspondem."
 
-#: website/app/GeoKrety/Controller/Login.php:85
+#: website/app/GeoKrety/Controller/Login.php:86
 msgid "Welcome on board!"
 msgstr "Bem-vindo a bordo!"
 
-#: website/app/GeoKrety/Controller/Login.php:146
+#: website/app/GeoKrety/Controller/Login.php:147
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Sua conta já está vinculada com %s"
 
-#: website/app/GeoKrety/Controller/Login.php:151
+#: website/app/GeoKrety/Controller/Login.php:152
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Esta conta %s já está vinculada a outra conta GeoKrety."
 
-#: website/app/GeoKrety/Controller/Login.php:166
+#: website/app/GeoKrety/Controller/Login.php:167
 msgid "Auth request was canceled."
 msgstr "Solicitação de autenticação cancelada."
 
@@ -757,7 +757,7 @@ msgstr "Primeiro"
 msgid "Last [%1]"
 msgstr "Último [%1]"
 
-#: smarty:3 smarty:33
+#: smarty:3 smarty:47
 msgid "Home"
 msgstr "Início"
 
@@ -765,7 +765,7 @@ msgstr "Início"
 msgid "About"
 msgstr "SOBRE"
 
-#: smarty:5 smarty/pages:17 smarty:34
+#: smarty:5 smarty/pages:17 smarty:48
 msgid "News"
 msgstr "Notícias"
 
@@ -879,7 +879,7 @@ msgstr "Você ainda não criou nenhuma GeoKrety. Não hesite em <a href=\"%2\">c
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 ainda não possui nenhuma GeoKrety."
 
-#: smarty/pages:6 smarty:47
+#: smarty/pages:6 smarty:61
 msgid "Claim a GeoKret"
 msgstr "Claim a GeoKret"
 
@@ -925,7 +925,7 @@ msgstr "Dono"
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "Bem-vindo(a) à comunidade GeoKrety.org!"
 
-#: smarty/pages:11 smarty/dialog:37 smarty:20 smarty:48
+#: smarty/pages:11 smarty/dialog:37 smarty:32 smarty:48
 msgid "Sign in"
 msgstr "Iniciar Sessão"
 
@@ -953,7 +953,7 @@ msgstr "Imagens da GeoKrety de %1"
 msgid "Watched GeoKrety"
 msgstr "GeoKrety observados"
 
-#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:42
+#: smarty/pages:24 smarty/pages:23 smarty/blocks/geokret:55 smarty:56
 msgid "Actions"
 msgstr "Acções"
 
@@ -1053,7 +1053,7 @@ msgstr "Suporte a MySQL, sanduíches e mais 😃"
 msgid "GK maps"
 msgstr "Mapas do GK"
 
-#: smarty/pages:37 smarty:72 smarty:74
+#: smarty/pages:37 smarty:86 smarty:88
 msgid "Help"
 msgstr "Ajuda"
 
@@ -1190,7 +1190,7 @@ msgstr "Últimos movimentos do %1GeoKrety"
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "%1do GeoKrety não se moveu ainda."
 
-#: smarty/pages:7 smarty:77
+#: smarty/pages:7 smarty:91
 msgid "Press corner"
 msgstr "Sala de Imprensa"
 
@@ -1513,7 +1513,7 @@ msgstr "Cadastrar"
 msgid "Edit a GeoKret"
 msgstr "Editar GeoKret"
 
-#: smarty/forms:6 smarty/blocks/user:3 smarty:46
+#: smarty/forms:6 smarty/blocks/user:3 smarty:60
 msgid "Create a new GeoKret"
 msgstr "Criar um novo GeoKret"
 
@@ -2015,7 +2015,7 @@ msgstr "Não garantimos nem fornecemos nenhuma garantia quanto à precisão, opo
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
 msgstr "O conteúdo publicado por si no site não deve conter expressões vulgares, conteúdos abusivos ou ilegais."
 
-#: smarty/dialog:26 smarty/dialog:45 smarty:76
+#: smarty/dialog:26 smarty/dialog:45 smarty:90
 msgid "Terms of use"
 msgstr "Termos de uso"
 
@@ -2343,43 +2343,43 @@ msgstr "GeoKrety é um serviço online gratuito para seguimento de objectos em j
 msgid "Toggle navigation"
 msgstr "Menu de navegação"
 
-#: smarty:16 smarty:37 smarty:44
+#: smarty:16 smarty:51 smarty:58
 msgid "Log a GeoKret"
 msgstr "Registrar um GeoKret"
 
-#: smarty:50
+#: smarty:64
 msgid "Advanced search"
 msgstr "Pesquisa avançada"
 
-#: smarty:51
+#: smarty:65
 msgid "Photo gallery"
 msgstr "Galeria de fotos"
 
-#: smarty:54
+#: smarty:68
 msgid "GeoKrety Map"
 msgstr "Mapa GeoKrety"
 
-#: smarty:61
+#: smarty:75
 msgid "Currently selected language"
 msgstr "Idioma atualmente selecionado"
 
-#: smarty:75
+#: smarty:89
 msgid "Moleholes and GK hotels"
 msgstr "Moleholes e hotéis GK"
 
-#: smarty:79
+#: smarty:93
 msgid "GK interface / API"
 msgstr "Interface GK / API"
 
-#: smarty:85
+#: smarty:99
 msgid "Downloads"
 msgstr "Downloads"
 
-#: smarty:86
+#: smarty:100
 msgid "GeoKrety Toolbox"
 msgstr "Caixa de ferramentas"
 
-#: smarty:87
+#: smarty:101
 msgid "Waypoint resolver"
 msgstr "Resolvedor de Waypoint"
 
