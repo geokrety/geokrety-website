@@ -53,7 +53,7 @@ class RegistrationOAuth extends BaseRegistration {
         }
         $social_auth->save();
 
-        Login::connectUser($f3, $user);
+        Login::connectUser($f3, $user, 'registration.oauth');
     }
 
     public function get(\Base $f3) {

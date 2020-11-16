@@ -213,9 +213,9 @@ var_dump($gk);
                 <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?modifiedsince={$modified_since}</pre>
             </li>
             <li>
-                <code>latNE</code> <code>latSW</code> <code>lonNE</code> <code>lonSW</code> -
-                list of GeoKrety within the area
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?latNE=50&latSW=40&lonNE=50&lonSW=0</pre>
+                <code>lonSW</code> <code>latSW</code> <code>lonNE</code> <code>latNE</code> -
+                list of GeoKrety within the area (restricted to {GK_API_EXPORT_SURFACE_LIMIT}km²)
+                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?lonSW=0&latSW=45&lonNE=6&latNE=50</pre>
             </li>
             <li>
                 <code>userid</code> - lists GeoKrety owned by userid
@@ -252,13 +252,6 @@ var_dump($gk);
                 <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?secid=xxx&inventory=1</pre>
                 this request returns also the secret tracking codes
                 (the <b>nr</b> variable) for all GeoKrety in user's inventory.
-
-                <div class="alert alert-danger" role="alert">
-                    <b>Note on security:</b> we used to pass <code>secid</code> as a <code>GET</code> parameter.
-                    This has some security implication, as it doesn't transit in
-                    a secured way over internet. It is recommended to pass it via
-                    <code>POST</code>. All other parameters remain the same (ie as <code>GET</code>).
-                </div>
             </li>
         </ul>
 

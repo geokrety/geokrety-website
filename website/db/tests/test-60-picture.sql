@@ -34,8 +34,8 @@ SELECT lives_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret",
 SELECT throws_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "user", "type") VALUES (18, 1, 1, NULL, NULL, 2)$$);
 SELECT throws_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "user", "type") VALUES (19, 1, NULL, 1, NULL, 2)$$);
 
-SELECT throws_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "user", "type") VALUES (19, 1, 1, 1, 1, 1)$$, 22000, 'Move `type` does not match the specified arguments.');
-SELECT throws_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "user", "type") VALUES (19, 1, 1, 1, 1, 6)$$, 22000, 'Move type unrecognized (6)');
+SELECT throws_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "user", "type") VALUES (19, 1, 1, 1, 1, 1)$$, 22000, 'Picture `type` does not match the specified arguments.');
+SELECT throws_ok($$INSERT INTO "gk_pictures" ("id",  "author", "move", "geokret", "user", "type") VALUES (19, 1, 1, 1, 1, 6)$$, 22000, 'Picture type unrecognized (6)');
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

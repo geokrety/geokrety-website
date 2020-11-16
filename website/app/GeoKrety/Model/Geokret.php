@@ -119,6 +119,19 @@ class Geokret extends Base {
         ],
     ];
 
+    public function __construct() {
+        parent::__construct();
+        $this->afterinsert(function ($self) {
+            \Sugar\Event::instance()->emit('geokret.created', $self);
+        });
+        $this->afterupdate(function ($self) {
+            \Sugar\Event::instance()->emit('geokret.updated', $self);
+        });
+        $this->aftererase(function ($self) {
+            \Sugar\Event::instance()->emit('geokret.deleted', $self);
+        });
+    }
+
     public static function gkid2id($gkid): ?int {
         if (\is_int($gkid)) {
             return $gkid;
@@ -133,12 +146,33 @@ class Geokret extends Base {
         return null;
     }
 
+    public static function generate(): void {
+        $faker = \Faker\Factory::create();
+
+        $userCount = \Base::instance()->get('DB')->exec('SELECT COUNT(*) AS count FROM gk_users')[0]['count'];
+
+        $geokret = new self();
+        $geokret->name = $faker->sentence($nbWords = 2, $variableNbWords = true);
+        $geokret->type = $faker->randomElement($array = GeokretyType::GEOKRETY_TYPES);
+        $geokret->mission = $faker->paragraphs($nb = 3, $asText = true);
+        $geokret->owner = $faker->numberBetween(1, $userCount);
+        $geokret->save();
+    }
+
     public function gkid(): string {
         return hexdec(substr($this->gkid, 2));
     }
 
-    public function get_gkid($value): string {
-        return sprintf('GK%04X', $value);
+    public function get_gkid($value): ?string {
+        if (is_null($value)) {
+            return null;
+        }
+
+        return self::id2gkid($value);
+    }
+
+    public static function id2gkid(int $id): ?string {
+        return sprintf('GK%04X', $id);
     }
 
     public function get_name($value): string {
@@ -161,6 +195,22 @@ class Geokret extends Base {
         return self::get_date_object($value);
     }
 
+    public function hasTouchedInThePast(): bool {
+        $f3 = \Base::instance();
+        if (!$f3->get('SESSION.CURRENT_USER')) {
+            return false;
+        }
+
+        if ($this->isOwner() || $this->isHolder()) {
+            return true;
+        }
+
+        // TODO, speedup this using a special automanaged table
+        $move = new Move();
+
+        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED]) > 0;
+    }
+
     /**
      * Check if the current logged in user is the GeoKret owner.
      */
@@ -174,47 +224,6 @@ class Geokret extends Base {
         $f3 = \Base::instance();
 
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->holder) && $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
-    }
-
-    public function hasTouchedInThePast(): bool {
-        $f3 = \Base::instance();
-        if (!$f3->get('SESSION.CURRENT_USER')) {
-            return false;
-        }
-
-        if ($this->isOwner() || $this->isHolder()) {
-            return true;
-        }
-
-        $move = new Move();
-
-        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED]) > 0;
-    }
-
-    public static function generate(): void {
-        $faker = \Faker\Factory::create();
-
-        $userCount = \Base::instance()->get('DB')->exec('SELECT COUNT(*) AS count FROM gk_users')[0]['count'];
-
-        $geokret = new self();
-        $geokret->name = $faker->sentence($nbWords = 2, $variableNbWords = true);
-        $geokret->type = $faker->randomElement($array = GeokretyType::GEOKRETY_TYPES);
-        $geokret->mission = $faker->paragraphs($nb = 3, $asText = true);
-        $geokret->owner = $faker->numberBetween(1, $userCount);
-        $geokret->save();
-    }
-
-    public function __construct() {
-        parent::__construct();
-        $this->afterinsert(function ($self) {
-            \Sugar\Event::instance()->emit('geokret.created', $self);
-        });
-        $this->afterupdate(function ($self) {
-            \Sugar\Event::instance()->emit('geokret.updated', $self);
-        });
-        $this->aftererase(function ($self) {
-            \Sugar\Event::instance()->emit('geokret.deleted', $self);
-        });
     }
 
     public function jsonSerialize() {

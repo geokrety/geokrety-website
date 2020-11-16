@@ -5,7 +5,6 @@ namespace GeoKrety\Controller;
 use Flash;
 use GeoKrety\Auth;
 use GeoKrety\AuthGroup;
-use GeoKrety\Email\AccountActivation;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
@@ -23,35 +22,66 @@ class Login extends Base {
         'registration_activate',
     ];
 
+    const NO_GRAPHIC_LOGIN = [
+        'secid',
+    ];
+
     public function loginFormFragment() {
         Smarty::render('extends:base_modal.tpl|dialog/login.tpl');
     }
 
     public function login(\Base $f3) {
-        $auth = new Auth('geokrety', ['id' => 'username', 'pw' => 'password']);
-        $login_result = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
-        if ($login_result) {
-            $user = new User();
-            $user->load(['lower(username) = lower(?)', $f3->get('POST.login')]);
-            if ($user->valid()) {
-                if (!$user->isAccountValid() && $user->activation) {
-                    $smtp = new AccountActivation();
-                    $smtp->sendActivationAgainOnLogin($user->activation);
-                }
-
-                if ($f3->get('POST.remember')) {
-                    $f3->set('COOKIE.PHPSESSID', $f3->get('COOKIE.PHPSESSID'), GK_SITE_SESSION_LIFETIME_REMEMBER);
-                    Session::setPersistent($f3->get('COOKIE.PHPSESSID'));
-                }
-
-                $this::connectUser($f3, $user);
-            } else {
-                Flash::instance()->addMessage(_('Something went wrong during the login procedure.'), 'danger');
+        $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
+        $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
+        if ($user !== false) {
+            if ($f3->get('POST.remember')) {
+                Session::setPersistent();
+                Session::setGKTCookie();
             }
+            $this::connectUser($f3, $user, 'password');
         } else {
             Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
         }
         $this->loginForm();
+    }
+
+    /**
+     * @param \Base       $f3     F3 Base instance
+     * @param User        $user   The user to connect to
+     * @param string|null $method The method used to connect
+     */
+    public static function connectUser(\Base $f3, User $user, ?string $method = null) {
+        $ml = Multilang::instance();
+        $f3->set('SESSION.CURRENT_USER', $user->id);
+        $f3->set('SESSION.CURRENT_USERNAME', $user->username);
+        $f3->set('SESSION.IS_LOGGED_IN', true);
+        if (in_array($user->id, GK_SITE_ADMINISTRATORS)) {
+            $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_ADMINISTRATORS);
+            $f3->set('SESSION.IS_ADMIN', true);
+        } else {
+            $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
+            $f3->set('SESSION.IS_ADMIN', false);
+        }
+
+        Event::instance()->emit("user.login.$method", $user);
+        if (in_array($method, self::NO_GRAPHIC_LOGIN)) {
+            return;
+        }
+        Session::setGKTCookie();
+        Flash::instance()->addMessage(_('Welcome on board!'), 'success');
+        if ($f3->exists('GET.goto')) {
+            $goto = $f3->get('GET.goto');
+            if (!in_array($goto, self::NO_REDIRECT_URLS)) {
+                $query = '';
+                if (!empty(base64_decode($f3->get('GET.query')))) {
+                    $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
+                    $query = (!empty($query) ? '?' : '').$query;
+                }
+                $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
+                $f3->reroute($ml->alias($goto, $params, $user->preferred_language).$query);
+            }
+        }
+        $f3->reroute($ml->alias('user_details', ['userid' => $user->id], $user->preferred_language));
     }
 
     public function loginForm() {
@@ -69,35 +99,24 @@ class Login extends Base {
     public static function disconnectUser(\Base $f3) {
         $f3->clear('SESSION');
         $f3->clear('COOKIE.PHPSESSID');
+        $f3->clear('COOKIE.gkt_on_behalf');
     }
 
-    public static function connectUser(\Base $f3, User $user) {
-        $ml = Multilang::instance();
-        $f3->set('SESSION.CURRENT_USER', $user->id);
-        $f3->set('SESSION.CURRENT_USERNAME', $user->username);
-        $f3->set('SESSION.IS_LOGGED_IN', true);
-        if (in_array($user->id, GK_SITE_ADMINISTRATORS)) {
-            $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_ADMINISTRATORS);
-            $f3->set('SESSION.IS_ADMIN', true);
-        } else {
-            $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
-            $f3->set('SESSION.IS_ADMIN', false);
+    /**
+     * @param string $secid The secid token
+     *
+     * @return void True if authentication succeed
+     */
+    public function secidAuth(\Base $f3, string $secid) {
+        if (strlen($secid) !== 128) {
+            die(_('Invalid "secid" length.'));
         }
-        Flash::instance()->addMessage(_('Welcome on board!'), 'success');
-        Event::instance()->emit('user.login', $user);
-        if ($f3->exists('GET.goto')) {
-            $goto = $f3->get('GET.goto');
-            if (!in_array($goto, self::NO_REDIRECT_URLS)) {
-                $query = '';
-                if (!empty(base64_decode($f3->get('GET.query')))) {
-                    $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
-                    $query = (!empty($query) ? '?' : '').$query;
-                }
-                $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
-                $f3->reroute($ml->alias($goto, $params, $user->preferred_language).$query);
-            }
+        $auth = new Auth('secid');
+        $user = $auth->login($secid, null);
+        if ($user === false) {
+            die(_('Invalid "secid".'));
         }
-        $f3->reroute($ml->alias('user_details', ['userid' => $user->id], $user->preferred_language));
+        Login::connectUser($f3, $user, 'secid');
     }
 
     public function socialAuthSuccess(array $data) {
@@ -106,15 +125,13 @@ class Login extends Base {
         $this->beforeRoute($f3);
 
         // Do we have an already present association?
-        $user = new User();
-        $user->has('social_auth', ['uid = ?', $data['uid']]);
-        $user->has('social_auth.provider', ['name = ?', $data['provider']]);
-        $user->load();
+        $auth = new Auth('oauth');
+        $user = $auth->login($data['uid'], $data['provider']);
 
         // User already authenticated here?
         if ($this->isLoggedIn()) {
             // Connect user/provider
-            if ($user->dry()) {
+            if ($user === false) {
                 $f3->get('DB')->begin();
                 $user_social_auth = new \GeoKrety\Model\UserSocialAuth();
                 $user_social_auth->provider = SocialAuthProvider::getProvider($data['provider']);
@@ -154,13 +171,13 @@ class Login extends Base {
         }
 
         // Create a new user
-        if ($user->dry()) {
+        if ($user === false) {
             $f3->set('SESSION.social_auth_data', json_encode($data));
             $f3->reroute('@registration_social', $die = true);
         }
 
         // Log user in
-        $this::connectUser($f3, $user);
+        $this::connectUser($f3, $user, 'oauth');
     }
 
     public function socialAuthAbort(array $data) {

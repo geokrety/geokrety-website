@@ -2,9 +2,7 @@
 
 namespace GeoKrety\Service\Xml;
 
-abstract class GeokretyBase extends Base {
-    protected $xmlGeokrety;
-
+abstract class GeokretyBaseExport extends Base {
     abstract public function addGeokret(\GeoKrety\Model\Geokret &$geokret);
 
     public function addGeokrety(array $geokrety) {

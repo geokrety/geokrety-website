@@ -146,7 +146,6 @@ Location Should Not Be
 Location With Param Should Be
     [Arguments]    ${url}    &{params}
     ${url_} =       Replace Variables    ${url}
-    Go To           ${url_}
     Location Should Be    ${url_}
 
 Click Element With Param

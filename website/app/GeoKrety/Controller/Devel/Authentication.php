@@ -17,7 +17,7 @@ class Authentication extends Base {
         if ($user === false) {
             echo sprintf("Error signing in user: %s\n", $username);
         } else {
-            Login::connectUser($f3, $user);
+            Login::connectUser($f3, $user, 'devel');
             echo sprintf("User signed in: %s\n", $username);
         }
 

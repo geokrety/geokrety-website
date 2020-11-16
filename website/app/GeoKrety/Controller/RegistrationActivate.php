@@ -41,7 +41,7 @@ class RegistrationActivate extends Base {
             $f3->reroute('@home');
         }
         $this->token->user->save();
-        $this->reloadCurrentUser();
+        $this->loadCurrentUser();
         $this->token->save();
         $f3->get('DB')->commit();
         \Sugar\Event::instance()->emit('user.activated', $this->token->user);

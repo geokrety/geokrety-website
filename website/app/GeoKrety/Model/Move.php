@@ -158,7 +158,7 @@ class Move extends Base {
             return '';
         }
 
-        return sprintf('%.04f %.04f', $this->lat, $this->lon);
+        return sprintf('%.05f %.05f', $this->lat, $this->lon);
     }
 
     public function get_point(): array {

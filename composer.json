@@ -15,11 +15,14 @@
     "require": {
         "ext-bcmath": "*",
         "ext-curl": "*",
+        "ext-dom": "*",
         "ext-gd": "*",
         "ext-gettext": "*",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-pgsql": "*",
+        "ext-xmlwriter": "*",
+        "ext-zlib": "*",
         "aws/aws-sdk-php": "^3.112",
         "bcosca/fatfree-core": "dev-master#28e7e75 as 3.7.x-dev",
         "benhall14/php-pagination": "dev-master",
@@ -50,7 +53,8 @@
         "torann/json-ld": "0.0.19",
         "xfra35/f3-access": "^1.0",
         "xfra35/f3-cron": "^1.2",
-        "xfra35/f3-multilang": "^1.2"
+        "xfra35/f3-multilang": "^1.2",
+        "ikkez/f3-middleware": "^1.1"
     },
     "autoload": {
         "classmap": [

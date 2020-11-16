@@ -23,10 +23,10 @@
                             <a href="{'devel_seed_geokrety'|alias:sprintf('@count=%d', 1)}">Seed "1" GeoKret</a>
                         </li>
                         <li>
-                            <a href="{'devel_seed_geokrety_move'|alias:sprintf('gkid=%d,movetype=%d,@count=%d', 1, 0, 1)}">Seed "1" Drop For GeoKret "1"</a>
+                            <a href="{'devel_seed_geokrety_move'|alias:sprintf('gkid=%d,move_type=%d,@count=%d', 1, 0, 1)}">Seed "1" Drop For GeoKret "1"</a>
                         </li>
                         <li>
-                            <a href="{'devel_seed_geokrety_move'|alias:sprintf('gkid=%d,movetype=%d,@count=%d', 1, 1, 1)}">Seed "1" Grab For GeoKret "1"</a>
+                            <a href="{'devel_seed_geokrety_move'|alias:sprintf('gkid=%d,move_type=%d,@count=%d', 1, 1, 1)}">Seed "1" Grab For GeoKret "1"</a>
                         </li>
                         <li>
                             <a href="{'devel_seed_waypoint_oc'|alias:sprintf('@count=%d', 1)}">Seed "1" Waypoint OC</a>
@@ -36,6 +36,9 @@
                         </li>
                         <li>
                             <a href="{'devel_seed_news'|alias:sprintf('@count=%d', 1)}">Seed "1" News</a>
+                        </li>
+                        <li>
+                            <a href="{'devel_seed_picture_user'|alias:sprintf('@count=%d,userid=%d', 1, 1)}">Seed "1" Picture</a>
                         </li>
                     </ul>
                 </div>

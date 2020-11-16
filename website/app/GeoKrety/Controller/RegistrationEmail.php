@@ -51,7 +51,7 @@ class RegistrationEmail extends BaseRegistration {
         }
         $user->save();
 
-        Login::connectUser($f3, $user);
+        Login::connectUser($f3, $user, 'registration.email');
         $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
     }
 

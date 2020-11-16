@@ -215,7 +215,10 @@ class Config extends \Prefab {
         define('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT', getenv('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT') ?: (GK_DEVEL ? 2000 : 500));
 
         // API LIMITS
+        define('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT', getenv('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT') ?: 'geokrety');
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);
+        define('GK_API_EXPORT_SURFACE_LIMIT', getenv('GK_API_EXPORT_SURFACE_LIMIT') ?: 252000);
+        define('GK_GKT_SEARCH_DISTANCE_LIMIT', getenv('GK_GKT_SEARCH_DISTANCE_LIMIT') ?: 30); // meters around the original position
 
         // ITEMS LIMITS
         define('GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS', getenv('GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS') ?: 10);

@@ -11,6 +11,7 @@ $f3->route('POST @s3_file_uploaded: /s3/file-uploaded', '\GeoKrety\Controller\Ge
 $f3->route('HEAD @s3_file_uploaded: /s3/file-uploaded', function () {});
 $f3->config(__DIR__.'/app/config.ini');
 $f3->config(__DIR__.'/app/routes.ini');
+$f3->config(__DIR__.'/app/routes-legacy.ini', true);
 $f3->config(__DIR__.'/app/cli.ini');
 $f3->config(__DIR__.'/app/admin.ini');
 $f3->config(__DIR__.'/app/authorizations.ini');
@@ -40,7 +41,9 @@ if (GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== fal
 // // Falsum
 // Falsum\Run::handler();
 
-\Sentry\init(['dsn' => GK_SENTRY_DSN, 'environment' => GK_SENTRY_ENV, 'release' => GK_APP_VERSION]);
+if (!is_null(GK_SENTRY_DSN)) {
+    \Sentry\init(['dsn' => GK_SENTRY_DSN, 'environment' => GK_SENTRY_ENV, 'release' => GK_APP_VERSION]);
+}
 
 $f3->set('UI', GK_F3_UI);
 $f3->set('TMP', GK_F3_TMP);

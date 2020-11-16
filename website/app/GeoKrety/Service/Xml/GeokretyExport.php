@@ -2,62 +2,139 @@
 
 namespace GeoKrety\Service\Xml;
 
+use DateTime;
 use GeoKrety\Service\Markdown;
 
-class GeokretyExport extends GeokretyBase {
+class GeokretyExport extends GeokretyBaseExport {
     public function addGeokret(\GeoKrety\Model\Geokret &$geokret) {
-        $gk = $this->xml->addChild('geokret');
-        $gk->addAttribute('id', $geokret->gkid());
-        $gk->addChildWithCDATA('name', $geokret->name);
-        $gk->addChildWithCDATA('description', Markdown::toText($geokret->mission));
-        $gk->addChildWithCDATA('description_html', Markdown::toHtml($geokret->mission));
-        $gk->addChildWithCDATA('description_markdown', $geokret->mission);
-        $owner = $gk->addChildWithCDATA('owner', $geokret->owner->username);
-        $owner->addAttribute('id', $geokret->owner->id);
-        $gk->addChild('datecreated', $geokret->created_on_datetime->format('Y-m-d H:i:s'));
-        $gk->addChild('distancetravelled', $geokret->distance);
-        $gk->addChild('missing', $geokret->missing);
-        $position = $gk->addChild('position');
-        if (!is_null($geokret->last_position)) {
-            $gk->addChild('state', $geokret->last_position->move_type->getLogTypeId());
+        $xml = $this->xml;
 
-            if (!is_null($geokret->last_position->lat) && !is_null($geokret->last_position->lon)) {
-                $position->addAttribute('latitude', $geokret->last_position->lat);
-                $position->addAttribute('longitude', $geokret->last_position->lon);
-            }
-            if (!is_null($geokret->last_position->waypoint) && !empty($geokret->last_position->waypoint)) {
-                $wpts = $gk->addChild('waypoints');
-                $wpts->addChildWithCDATA('waypoint', $geokret->last_position->waypoint);
-            }
+        $xml->startElement('geokret');
+        $xml->writeAttribute('id', $geokret->gkid());
+
+        $xml->startElement('name');
+        $xml->writeCData($geokret->name);
+        $xml->endElement();
+
+        $xml->startElement('description');
+        $xml->writeCData(Markdown::toText($geokret->mission));
+        $xml->endElement();
+
+        $xml->startElement('description_html');
+        $xml->writeCData(Markdown::toHtml($geokret->mission));
+        $xml->endElement();
+
+        $xml->startElement('description_markdown');
+        $xml->writeCData($geokret->mission);
+        $xml->endElement();
+
+        if (!is_null($geokret->owner)) {
+            $xml->startElement('owner');
+
+            $xml->writeAttribute('id', $geokret->owner);
+
+            $xml->startCData();
+            $xml->text($geokret->owner_username);
+            $xml->endCdata();
+
+            $xml->endElement(); // owner
         }
-        $type = $gk->addChildWithCDATA('type', $geokret->type->getTypeString());
-        $type->addAttribute('id', $geokret->type->getTypeId());
+
+        $xml->writeElement('datecreated', $geokret->created_on_datetime->format('Y-m-d H:i:s'));
+        $xml->writeElement('datecreated_Iso8601', $geokret->created_on_datetime->format(DateTime::ATOM));
+
+        $xml->writeElement('distancetravelled', $geokret->distance);
+        if (!is_null($geokret->last_position)) {
+            $xml->writeElement('state', $geokret->move_type->getLogTypeId());
+        }
+        $xml->writeElement('missing', (int) $geokret->missing);
+
+        $xml->startElement('position');
+        if (!is_null($geokret->last_position)) {
+            $xml->writeAttribute('latitude', $geokret->lat ?? '');
+            $xml->writeAttribute('longitude', $geokret->lon ?? '');
+        }
+        $xml->endElement(); // position
+
+        $xml->startElement('waypoints');
+        $xml->startElement('waypoint');
+        $xml->writeCdata($geokret->waypoint ?? '');
+        $xml->endElement(); // waypoint
+        $xml->endElement(); // waypoints
+
+        $xml->startElement('type');
+        $xml->writeAttribute('id', $geokret->type->getTypeId());
+        $xml->writeCdata($geokret->type->getTypeString());
+        $xml->endElement(); // type
+
+        $xml->endElement(); // geokret
     }
 
     public function addMove(\GeoKrety\Model\Move &$move) {
-        $log = $this->xml->addChild('moves');
-        $log->addAttribute('id', $move->id);
-        $gk = $log->addChildWithCDATA('geokret', $move->geokret->name);
-        $gk->addAttribute('id', $move->geokret->id);
-        $position = $log->addChild('position');
+        $xml = $this->xml;
+
+        $xml->startElement('moves');
+        $xml->writeAttribute('id', $move->id);
+
+        $xml->startElement('geokret');
+        $xml->writeAttribute('id', $move->geokret->id);
+        $xml->writeCdata($move->geokret->name);
+        $xml->endElement(); // geokret
+
+        $xml->startElement('position');
         if (!is_null($move->lat) && !is_null($move->lon)) {
-            $position->addAttribute('latitude', $move->lat);
-            $position->addAttribute('longitude', $move->lon);
+            $xml->writeAttribute('latitude', $move->lat);
+            $xml->writeAttribute('longitude', $move->lon);
         }
+        $xml->endElement(); // position
+
         if (!is_null($move->waypoint) && !empty($move->waypoint)) {
-            $wpts = $log->addChild('waypoints');
-            $wpts->addChildWithCDATA('waypoint', $move->waypoint);
+            $xml->startElement('waypoints');
+            $xml->startElement('waypoint');
+            $xml->writeCdata($move->waypoint);
+            $xml->endElement(); // waypoint
+            $xml->endElement(); // waypoints
         }
-        $dates = $log->addChild('date');
-        $dates->addAttribute('moved', $move->moved_on_datetime->format('Y-m-d H:i:s'));
-        $dates->addAttribute('logged', $move->created_on_datetime->format('Y-m-d H:i:s'));
-        $dates->addAttribute('edited', $move->updated_on_datetime->format('Y-m-d H:i:s'));
-        $user = $log->addChildWithCDATA('user', $move->author->username);
-        $user->addAttribute('id', $move->author->id);
-        $log->addChildWithCDATA('comment', Markdown::toText($move->comment));
-        $log->addChildWithCDATA('comment_html', Markdown::toHtml($move->comment));
-        $log->addChildWithCDATA('comment_markdown', $move->comment);
-        $logtype = $log->addChildWithCDATA('logtype', $move->move_type->getLogTypeString());
-        $logtype->addAttribute('id', $move->move_type->getLogTypeId());
+
+        $xml->startElement('date');
+        $xml->writeAttribute('moved', $move->moved_on_datetime->format('Y-m-d H:i:s'));
+        $xml->writeAttribute('logged', $move->created_on_datetime->format('Y-m-d H:i:s'));
+        $xml->writeAttribute('edited', $move->updated_on_datetime->format('Y-m-d H:i:s'));
+        $xml->endElement(); // date
+
+        $xml->startElement('date_Iso8601');
+        $xml->writeAttribute('moved', $move->moved_on_datetime->format(DateTime::ATOM));
+        $xml->writeAttribute('logged', $move->created_on_datetime->format(DateTime::ATOM));
+        $xml->writeAttribute('edited', $move->updated_on_datetime->format(DateTime::ATOM));
+        $xml->endElement(); // date
+
+        $xml->startElement('user');
+        if (!is_null($move->author)) {
+            $xml->writeAttribute('id', $move->author->id);
+            $xml->writeCdata($move->author->username);
+        } else {
+            $xml->writeAttribute('id', null);
+            $xml->writeCdata($move->username);
+        }
+        $xml->endElement(); // user
+
+        $xml->startElement('comment');
+        $xml->writeCdata(Markdown::toText($move->comment));
+        $xml->endElement(); // comment
+
+        $xml->startElement('comment_html');
+        $xml->writeCdata(Markdown::toHtml($move->comment));
+        $xml->endElement(); // comment
+
+        $xml->startElement('comment_markdown');
+        $xml->writeCdata($move->comment);
+        $xml->endElement(); // comment
+
+        $xml->startElement('logtype');
+        $xml->writeAttribute('id', $move->move_type->getLogTypeId());
+        $xml->text($move->move_type->getLogTypeString());
+        $xml->endElement(); // logtype
+
+        $xml->endElement(); // moves
     }
 }

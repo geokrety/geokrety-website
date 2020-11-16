@@ -7,6 +7,7 @@ ${PAGE_SEED_GEOKRETY_OWNED_BY_USER_2}   ${GK_URL}/devel/db/users/2/geokrety/seed
 ${PAGE_SEED_WAYPOINT_OC}                ${GK_URL}/devel/db/waypoint/oc
 ${PAGE_SEED_WAYPOINT_GC}                ${GK_URL}/devel/db/waypoint/gc
 ${PAGE_SEED_NEWS}                       ${GK_URL}/devel/db/news/seed
+${PAGE_SEED_PICTURE_AVATAR}             ${GK_URL}/devel/db/users/1/avatar/1
 
 ${PAGE_LOGIN_USER}                      ${GK_URL}/devel/users/\${params.username}/login
 
@@ -37,12 +38,14 @@ ${PAGE_MOVES_DELETE_URL}                ${GK_URL}/en/moves/\${params.moveid}/del
 ${PAGE_USER_1_PROFILE_URL}              ${GK_URL}/en/users/1
 ${PAGE_USER_2_PROFILE_URL}              ${GK_URL}/en/users/2
 ${PAGE_USER_1_PROFILE_URL_FR}           ${GK_URL}/fr/users/1
+${PAGE_USER_X_PROFILE_URL}              ${GK_URL}/en/users/\${params.userid}
 
 ${PAGE_USER_RECENT_MOVES_URL}           ${GK_URL}/en/users/\${params.userid}/recent-moves
 ${PAGE_USER_INVENTORY_URL}              ${GK_URL}/en/users/\${params.userid}/inventory
+${PAGE_USER_WATCHED_GEOKRETY_URL}       ${GK_URL}/en/users/\${params.userid}/watched-geokrety
 ${PAGE_USER_OWNED_GEOKRETY_URL}         ${GK_URL}/en/users/\${params.userid}/owned-geokrety
 ${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    ${GK_URL}/en/users/\${params.userid}/owned/recent-moves
-${PAGE_USER_POSTED_PICTURES_URL}        ${GK_URL}/en/users/\${params.userid}/pictures
+${PAGE_USER_POSTED_PICTURES_URL}                ${GK_URL}/en/users/\${params.userid}/pictures
 ${PAGE_USER_OWNED_GEOKRETY_PICTURES_URL}        ${GK_URL}/en/users/\${params.userid}/owned/pictures
 
 ${PAGE_USER_1_BANER_TEMPLATE_URL}       ${GK_URL}/en/users/1/choose-statpic-template
@@ -59,8 +62,8 @@ ${PAGE_USER_1_CONTACT_URL}              ${GK_URL}/en/users/1/contact
 ${PAGE_USER_2_CONTACT_URL}              ${GK_URL}/en/users/2/contact
 ${PAGE_USER_3_CONTACT_URL}              ${GK_URL}/en/users/3/contact
 
-${PAGE_PASSWORD_RECOVERY_URL}           ${GK_URL}/en/password-recovery
-${PAGE_PASSWORD_RECOVERY_RESET_PASSWORD_URL}     ${GK_URL}/en/recover-password/
+${PAGE_PASSWORD_RECOVERY_URL}                     ${GK_URL}/en/password-recovery
+${PAGE_PASSWORD_RECOVERY_RESET_PASSWORD_URL}      ${GK_URL}/en/recover-password/
 
 ${PAGE_GEOKRETY_CREATE_URL}             ${GK_URL}/en/geokrety/create
 ${PAGE_GEOKRETY_CLAIM_URL}              ${GK_URL}/en/geokrety/claim
@@ -74,3 +77,11 @@ ${PAGE_GEOKRETY_DETAILS_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/\${par
 ${PAGE_GEOKRETY_DETAILS_1_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0001/contact-owner
 ${PAGE_GEOKRETY_DETAILS_2_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0002/contact-owner
 ${PAGE_GEOKRETY_DETAILS_3_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0003/contact-owner
+
+${PAGE_LEGACY_INDEX_URL}                ${GK_URL}/index.php
+${PAGE_LEGACY_LONGIN_URL}               ${GK_URL}/longin.php
+${PAGE_LEGACY_GKT_INVENTORY_URL}        ${GK_URL}/gkt/v3/inventory
+${PAGE_LEGACY_GKT_SEARCH_URL}           ${GK_URL}/gkt/v3/search
+${PAGE_LEGACY_API_EXPORT_URL}           ${GK_URL}/api/v1/export
+${PAGE_LEGACY_API_EXPORT2_URL}          ${GK_URL}/api/v1/export2
+${PAGE_LEGACY_API_EXPORT_OC_URL}        ${GK_URL}/api/v1/export_oc

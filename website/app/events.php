@@ -15,9 +15,14 @@ $events->on('user.created', function (\GeoKrety\Model\User $user) {
 });
 $events->on('user.activated', function (\GeoKrety\Model\User $user) { audit('user.activated', $user); });
 $events->on('user.deleted', function (\GeoKrety\Model\User $user) { audit('user.deleted', $user->id); });
-$events->on('activation.token.created', function (\GeoKrety\Model\AccountActivationToken $token) { audit('activation.token.generated', $token->user); });
+$events->on('activation.token.created', function (\GeoKrety\Model\AccountActivationToken $token) { audit('activation.token.created', $token->user); });
 $events->on('activation.token.used', function (\GeoKrety\Model\AccountActivationToken $token) { audit('activation.token.used', $token); });
-$events->on('user.login', function (\GeoKrety\Model\User $user) { audit('user.login', $user); });
+$events->on('user.login.password', function (\GeoKrety\Model\User $user) { audit('user.login.password', $user); });
+$events->on('user.login.secid', function (\GeoKrety\Model\User $user) { audit('user.login.secid', $user); });
+$events->on('user.login.oauth', function (\GeoKrety\Model\User $user) { audit('user.login.oauth', $user); });
+$events->on('user.login.devel', function (\GeoKrety\Model\User $user) { audit('user.login.devel', $user); });
+$events->on('user.login.registration.oauth', function (\GeoKrety\Model\User $user) { audit('user.login.registration.oauth', $user); });
+$events->on('user.login.registration.email', function (\GeoKrety\Model\User $user) { audit('user.login.registration.email', $user); });
 $events->on('user.logout', function (\GeoKrety\Model\User $user) { audit('user.logout', $user); });
 $events->on('user.language.changed', function (\GeoKrety\Model\User $user, $context) { audit('user.language.changed', ['language' => $user->language, 'old_language' => $context]); });  // context => $oldLanguage
 $events->on('user.home_location.changed', function (\GeoKrety\Model\User $user) { audit('user.created', $user); });

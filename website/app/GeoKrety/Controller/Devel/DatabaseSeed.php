@@ -7,9 +7,11 @@ use GeoKrety\GeokretyType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\News;
+use GeoKrety\Model\Picture;
 use GeoKrety\Model\User;
 use GeoKrety\Model\WaypointGC;
 use GeoKrety\Model\WaypointOC;
+use GeoKrety\PictureType;
 
 /**
  * Class DatabaseSeed.
@@ -31,6 +33,7 @@ class DatabaseSeed extends Base {
             }
             $user->preferred_language = 'en';
             $user->account_valid = User::USER_ACCOUNT_VALID;
+            $user->_secid = sprintf('%s%d', str_repeat('x', 128 - strlen($i)), $i);
             if ($terms_of_use) {
                 $user->touch('terms_of_use_datetime');
             }
@@ -245,6 +248,32 @@ class DatabaseSeed extends Base {
                 echo sprintf("Create news: %s\n", $news->title);
             } else {
                 echo sprintf("Error creating news: %s\n", $news->title);
+                foreach (\Flash::instance()->getMessages() as $msg) {
+                    echo sprintf("Reason: %s\n\n", $msg['text']);
+                }
+            }
+        }
+
+        echo "==========\n";
+        echo 'done!';
+    }
+
+    public function picture(\Base $f3) {
+        header('Content-Type: text');
+        $start_i = $f3->get('GET.i') ?? 1;
+        for ($i = 1; $i <= $f3->get('PARAMS.count'); ++$i) {
+            $picture = new Picture();
+            $picture->author = $f3->get('PARAMS.userid');
+            $picture->bucket = 'fake-bucket';
+            $picture->key = 'fake-key';
+            $picture->user = $f3->get('PARAMS.userid');
+            $picture->filename = 'fake-filename';
+            $picture->type = PictureType::PICTURE_USER_AVATAR;
+            if ($picture->validate()) {
+                $picture->save();
+                echo sprintf("Create picture: %s\n", $picture->title);
+            } else {
+                echo sprintf("Error creating picture: %s\n", $picture->title);
                 foreach (\Flash::instance()->getMessages() as $msg) {
                     echo sprintf("Reason: %s\n\n", $msg['text']);
                 }

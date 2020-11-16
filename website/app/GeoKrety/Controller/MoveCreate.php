@@ -48,7 +48,7 @@ class MoveCreate extends Base {
     public function get(\Base $f3) {
         if ((is_null($this->move->geokret) || is_null($this->move->geokret->tracking_code)) && $f3->exists('GET.tracking_code')) {
             $geokret = new Geokret();
-            $geokret->load(['tracking_code = ?', $f3->get('GET.tracking_code')]);
+            $geokret->load(['tracking_code = ?', strtoupper($f3->get('GET.tracking_code'))]);
             if (!$geokret->dry()) {
                 $this->move->geokret = $geokret;
             }

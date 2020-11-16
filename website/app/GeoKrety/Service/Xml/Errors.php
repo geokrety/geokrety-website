@@ -7,20 +7,22 @@ class Errors extends Base {
 
     public function __construct($msg = null) {
         parent::__construct();
-        $this->xmlErrors = $this->xml->addChild('errors');
+        $this->xml->startElement('errors');
 
         if (!is_null($msg)) {
-            $this->xmlErrors->addChild('error', $msg);
+            $this->addError($msg);
         }
     }
 
-    public function outputAsXML(bool $gzip = false, $filename = 'out.xml.gz') {
-        http_response_code(400);
-        parent::outputAsXML();
+    public function end() {
+        $this->xml->endElement();
+        parent::end();
     }
 
     public function addError($msg) {
-        $this->xmlErrors->addChild('error', $msg);
+        $this->xml->startElement('error');
+        $this->xml->writeCdata($msg);
+        $this->xml->endElement();
     }
 
     public function insertSessionErrors() {
@@ -33,7 +35,7 @@ class Errors extends Base {
         });
 
         foreach ($alerts as $msg) {
-            $this->xmlErrors->addChild('error', $msg['message']);
+            $this->addError($msg['message']);
         }
     }
 }

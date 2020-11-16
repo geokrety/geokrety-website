@@ -2,7 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\Geokret;
+use GeoKrety\Model\GeokretWithDetails;
+use GeoKrety\Model\Move;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Xml;
 
@@ -16,31 +17,39 @@ class HelpApi extends Base {
         // Render ruchy saved
         $xml = new Xml\GeokretyRuchy();
         $xml->addGeokret($geokret);
+        $xml->end();
         Smarty::assign('gk_xml_ruchy_saved', $xml->asXMLPretty());
 
         // Render export.php
         $xml = new Xml\GeokretyExport();
         $xml->addGeokret($geokret2);
-        $xml->addMove($geokret->last_log);
-        $xml->addMove($geokret2->last_log);
+        $move = new Move();
+        $move->load(['_id = ?', $geokret->last_log]);
+        $xml->addMove($move);
+        $move->load(['_id = ?', $geokret2->last_log]);
+        $xml->addMove($move);
+        $xml->end();
         Smarty::assign('gk_xml_export', $xml->asXMLPretty());
 
         // Render export_oc.php
         $xml = new Xml\GeokretyExportOC();
         $xml->addGeokret($geokret);
         $xml->addGeokret($geokret2);
+        $xml->end();
         Smarty::assign('gk_xml_export_oc', $xml->asXMLPretty());
 
         // Render export2.php
         $xml = new Xml\GeokretyExport2();
         $xml->addGeokret($geokret);
         $xml->addGeokret($geokret2);
+        $xml->end();
         Smarty::assign('gk_xml_export2', $xml->asXMLPretty());
 
         // Render ruchy error
         $xml = new \GeoKrety\Service\Xml\Errors();
         $xml->addError(_('Wrong secid'));
         $xml->addError(_('Wrong date or time'));
+        $xml->end();
         Smarty::assign('gk_xml_ruchy_error', $xml->asXMLPretty());
 
         Smarty::assign('modified_since', date('YmdHis', time() - (1 * 60 * 60)));
@@ -51,7 +60,7 @@ class HelpApi extends Base {
     private function loadGK(array $gkIds): array {
         $geokrety = [];
         foreach ($gkIds as $gkid) {
-            $geokret = new Geokret();
+            $geokret = new GeokretWithDetails();
             $geokret->load(['id = ?', $gkid]);
             $this->checkGK($geokret);
             $geokrety[] = $geokret;

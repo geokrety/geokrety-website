@@ -40,7 +40,7 @@ Post Comment Via Direct Url
     Go To Url                               ${PAGE_MOVES_COMMENT_URL}    moveid=1
     Input Text                              ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}       ${COMMENT}
     Click Button                            ${MODAL_PANEL_SUBMIT_BUTTON}
-    Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1#log1
     Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}    comment=${COMMENT}
 
 Post Comment Via Modal
@@ -50,7 +50,7 @@ Post Comment Via Modal
     Wait Until Modal                        Commenting a GeoKret move
     Input Text                              ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}       ${COMMENT}
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
-    Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1#log1
     Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}    comment=${COMMENT}
 
 Check Valid Comments
@@ -82,7 +82,7 @@ Submit Valid Comment Template
     Input Text                              ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}       ${comment}
     Input validation has success            ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}
     Click Button                            ${MODAL_PANEL_SUBMIT_BUTTON}
-    Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1#log1
     Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}     author=${USER_1.name}    comment=${comment}
 
 Submit Invalid Comment Template

@@ -5,6 +5,7 @@ namespace GeoKrety\Model;
 use DateTime;
 use DB\CortexCollection;
 use DB\SQL\Schema;
+use GeoKrety\Email\AccountActivation;
 use JsonSerializable;
 
 /**
@@ -260,6 +261,18 @@ class User extends Base implements JsonSerializable {
 
     public function isAccountValid(): bool {
         return $this->account_valid === User::USER_ACCOUNT_VALID;
+    }
+
+    /**
+     * Check if user has validated it's account and resend activation email.
+     *
+     * @param User $user The user to check
+     */
+    public function checkValidAccount() {
+        if (!$this->isAccountValid() && $this->activation) {
+            $smtp = new AccountActivation();
+            $smtp->sendActivationAgainOnLogin($this->activation);
+        }
     }
 
     public function hasEmail(): bool {

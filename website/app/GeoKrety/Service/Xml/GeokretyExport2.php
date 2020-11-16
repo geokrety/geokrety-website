@@ -2,52 +2,60 @@
 
 namespace GeoKrety\Service\Xml;
 
-class GeokretyExport2 extends GeokretyBase {
-    public function __construct() {
-        parent::__construct();
-        $this->xmlGeokrety = $this->xml->addChild('geokrety');
+class GeokretyExport2 extends GeokretyBaseExport {
+    public function __construct(bool $stream = false, ?string $compress = null, $filename = 'out.xml') {
+        parent::__construct($stream, $compress, $filename);
+        $this->xml->startElement('geokrety');
+    }
+
+    public function end() {
+        $this->xml->endElement();
+        parent::end();
     }
 
     public function addGeokret(\GeoKrety\Model\Geokret &$geokret) {
-        $this->addGeokretWithTrackingCode($geokret);
-    }
+        $xml = $this->xml;
 
-    public function addGeokretWithTrackingCode(\GeoKrety\Model\Geokret &$geokret, ?\GeoKrety\Model\User &$user = null) {
-        $gk = $this->xmlGeokrety->addChildWithCDATA('geokret', $geokret->name);
-        $gk->addAttribute('id', $geokret->gkid());
-        $gk->addAttribute('type', $geokret->type->getTypeId());
-        if (!is_null($user) && $user->id === $geokret->holder->id) {
-            $gk->addAttribute('nr', $geokret->tracking_code);
+        $xml->startElement('geokret');
+        $xml->writeAttribute('id', $geokret->gkid());
+        $xml->writeAttribute('type', $geokret->type->getTypeId());
+
+        if ($geokret->hasTouchedInThePast()) {
+            $xml->writeAttribute('nr', $geokret->tracking_code);
         }
         if ($geokret->missing) {
-            $gk->addAttribute('missing', $geokret->missing);
+            $xml->writeAttribute('missing', $geokret->missing);
         }
-        $gk->addAttribute('owner_id', $geokret->owner->id);
-        $gk->addAttribute('ownername', $geokret->owner->username);
+
+        if ($geokret->owner) {
+            $xml->writeAttribute('owner_id', $geokret->owner);
+            $xml->writeAttribute('ownername', $geokret->owner_username);
+        }
         if ($geokret->holder) {
-            $gk->addAttribute('holder_id', $geokret->holder->id);
-            $gk->addAttribute('holdername', $geokret->holder->username);
+            $xml->writeAttribute('holder_id', $geokret->holder);
+            $xml->writeAttribute('holdername', $geokret->author_username);
         }
-        $gk->addAttribute('dist', $geokret->distance);
-        if (!is_null($geokret->last_position)) {
-            $gk->addAttribute('date', $geokret->last_position->created_on_datetime->format('Y-m-d'));
-            if ($geokret->last_position->move_type->isTheoricallyInCache()) {
-                $gk->addAttribute('lat', $geokret->last_position->lat);
-                $gk->addAttribute('lon', $geokret->last_position->lon);
-                if (!is_null($geokret->last_position->waypoint) && !empty($geokret->last_position->waypoint)) {
-                    $gk->addAttribute('waypoint', $geokret->last_position->waypoint);
+        $xml->writeAttribute('dist', $geokret->distance);
+        if (!is_null($geokret->position)) {
+            $xml->writeAttribute('date', $geokret->moved_on_datetime->format('Y-m-d'));
+            if ($geokret->move_type->isTheoricallyInCache()) {
+                $xml->writeAttribute('lat', $geokret->lat);
+                $xml->writeAttribute('lon', $geokret->lon);
+                if (!is_null($geokret->waypoint)) {
+                    $xml->writeAttribute('waypoint', $geokret->waypoint);
                 }
             }
-            $gk->addAttribute('state', $geokret->last_position->move_type->getLogTypeId());
-            $gk->addAttribute('last_pos_id', $geokret->last_position->id);
-            $gk->addAttribute('last_log_id', $geokret->last_log->id);
+            $xml->writeAttribute('state', $geokret->move_type->getLogTypeId());
+            $xml->writeAttribute('last_pos_id', $geokret->last_position);
+            $xml->writeAttribute('last_log_id', $geokret->last_log);
         } else {
-            $gk->addAttribute('date', $geokret->created_on_datetime->format('Y-m-d'));
+            $xml->writeAttribute('date', $geokret->created_on_datetime->format('Y-m-d'));
         }
-        $gk->addAttribute('places', $geokret->caches_count);
-        // TODO
-        // if ($geokret->avatar->filename) {
-        //     $gk->addAttribute('image', $geokret->avatar->filename);
-        // }
+        $xml->writeAttribute('places', $geokret->caches_count);
+        if (!is_null($geokret->avatar_key)) {
+            $xml->writeAttribute('image', $geokret->avatar_key);
+        }
+        $xml->writeCdata($geokret->name);
+        $this->xml->endElement(); // geokret
     }
 }

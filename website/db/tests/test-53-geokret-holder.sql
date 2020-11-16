@@ -22,7 +22,7 @@ SELECT is(holder, 1::bigint, 'On create holder is owner') FROM gk_geokrety WHERE
 
 -- On create holder can not be overridden
 INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "holder") VALUES (3, 'test', 0, 1, NULL);
-SELECT is(holder, owner, 'holder can be overridden') FROM gk_geokrety WHERE id = 3::bigint;
+SELECT is(holder, owner, 'holder can not be overridden') FROM gk_geokrety WHERE id = 3::bigint;
 SELECT is(holder, 1::bigint, 'holder can not be overridden') FROM gk_geokrety WHERE id = 3::bigint;
 
 INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "holder") VALUES (4, 'test', 0, 1, 2);
