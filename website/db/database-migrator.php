@@ -517,7 +517,7 @@ class GeokretyMigrator extends BaseMigrator {
         $values[2] = trim(html_entity_decode($this->purifier->purify($values[2])));  // name
         $values[4] = $values[4] ?: null;  // owner
         $values[11] = $values[11] ?: null;  // holder
-        $values[12] = $values[12] > 1 ? 1 : 0;  // missing
+        $values[12] = $values[12] > 0 ? 1 : 0;  // missing
 
         $values[14] = $values[14] ?: null;  // avatar
 
