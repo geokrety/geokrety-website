@@ -102,6 +102,30 @@ class Login extends Base {
         $f3->clear('COOKIE.gkt_on_behalf');
     }
 
+    public function login2Secid() {
+        Smarty::render('extends:base_minimal.tpl|dialog/login_simple.tpl');
+    }
+
+    /**
+     * @return void True if authentication succeed
+     */
+    public function login2Secid_post(\Base $f3) {
+        if (is_null($f3->get('POST.login')) or is_null($f3->get('POST.password'))) {
+            http_response_code(400);
+            echo _('Please provide \'login\' and \'password\' parameters.');
+            die();
+        }
+        $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
+        $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
+        if ($user !== false) {
+            echo $user->secid;
+            Event::instance()->emit("user.login.api2secid", $user);
+            die();
+        }
+        echo _('Username and password doesn\'t match.');
+        //$this->loginForm();
+    }
+
     /**
      * @param string $secid The secid token
      *

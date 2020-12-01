@@ -182,8 +182,14 @@ EOT;
     }
 
     // https://new-theme.staging.geokrety.org/api-login2secid.php
-    public function api_login2secid(\Base $f3) {
-        echo 'TODO';
+    public function login2secid(\Base $f3) {
+        $f3->reroute(['api_v1_login2secid'], $permanent = false, $die = true);
+    }
+
+    // https://new-theme.staging.geokrety.org/api-login2secid.php
+    public function login2secid_post(\Base $f3) {
+        $login = new Login();
+        $login->login2Secid_post($f3);
     }
 
     // https://new-theme.staging.geokrety.org/ruchy.php POST
