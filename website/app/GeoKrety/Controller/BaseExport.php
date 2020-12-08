@@ -59,6 +59,7 @@ abstract class BaseExport {
     }
 
     /**
+     * @param string $query
      * @param array|null $params
      */
     protected function setFilter(string $query, ...$params) {

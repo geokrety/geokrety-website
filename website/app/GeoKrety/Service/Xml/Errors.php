@@ -38,4 +38,20 @@ class Errors extends Base {
             $this->addError($msg['message']);
         }
     }
+
+    /**
+     * Create an xml response from an array of errors
+     *
+     * @param array|string $errors The errors to format
+     */
+    public static function buildError($errors) {
+    //public static function buildError(array|string $errors) { // need php 8.0
+        $errors = gettype($errors) === 'string' ? [$errors] : $errors;
+        $xml = new \GeoKrety\Service\Xml\Errors();
+        foreach ($errors as $err) {
+            $xml->addError($err);
+        }
+        $xml->end();
+        $xml->finish(); // may return raw gzipped data
+    }
 }

@@ -72,7 +72,7 @@ class MoveCreate extends Base {
     public function post(\Base $f3) {
         $errors = [];
         $move = $this->move;
-        $isEdit = !is_null($this->move->id);
+        $isEdit = !is_null($move->id);
 
         $move->move_type = $f3->get('POST.logtype');
         if ($f3->get('SESSION.CURRENT_USER')) {
@@ -93,11 +93,10 @@ class MoveCreate extends Base {
                 $f3->get('POST.tz') ?? 'UTC'
         ));
         if ($date === false) {
-            Flash::instance()->addMessage(_('The date time could not be parsed.'), 'danger');
-            $this->get($f3);
-            die();
+            $errors = array_merge($errors, [_('The date time could not be parsed.')]);
+        } else {
+            $move->moved_on_datetime = $date->format(GK_DB_DATETIME_FORMAT);
         }
-        $move->moved_on_datetime = $date->format(GK_DB_DATETIME_FORMAT);
 
         if ($move->move_type->isCoordinatesRequired()) {
             // Waypoint validation
@@ -141,7 +140,13 @@ class MoveCreate extends Base {
         } else {
             $errors = array_merge($errors, $trackingCodeChecker->getErrors());
         }
-        // Permit to display again on form error
+
+        // We use the first move to retrieve other fields (date, author etc)
+        // Permit to display again on form error.
+        if (sizeof($moves) < 1) {
+            $moves[] = clone $move;
+        }
+        // We use the first move to retrieve other fields (date, author etc)
         Smarty::assign('move', $moves[0]);
 
         // reCaptcha
@@ -149,27 +154,12 @@ class MoveCreate extends Base {
             $recaptcha = new ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
             $resp = $recaptcha->verify($f3->get('POST.g-recaptcha-response'), $f3->get('IP'));
             if (!$resp->isSuccess()) {
-                Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
-                $this->get($f3);
-                die();
+                $errors = array_merge($errors, [_('reCaptcha failed!')]);
             }
         }
 
         // Check for errors
-        $error = sizeof($errors) > 0;
-        foreach ($errors as $err) {
-            Flash::instance()->addMessage($err, 'danger');
-        }
-        foreach ($moves as $_move) {
-            if (!$_move->validate()) {
-                $error = true;
-            }
-        }
-        // Display the form again if some errors are present
-        if ($error) {
-            $this->get($f3);
-            die();
-        }
+        $this->renderErrors($errors, $moves);
 
         // Save the moves
         foreach ($moves as $_move) {
@@ -180,13 +170,39 @@ class MoveCreate extends Base {
                 Event::instance()->emit('move.created', $_move);
             }
         }
+
         // Do we have some errors while saving to database?
         if ($f3->get('ERROR')) {
             Flash::instance()->addMessage(_('Failed to save move.'), 'danger');
+            $this->get($f3);
         } else {
             Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
             $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $moves[0]->geokret->gkid, $moves[0]->getMoveOnPage(), $moves[0]->id));
         }
-        $this->get($f3);
+    }
+
+    protected function _checkErrors(array &$errors, $moves) {
+        $hasError = sizeof($errors) > 0;
+        foreach ($moves as $_move) {
+            if (!$_move->validate()) {
+                $hasError = true;
+            }
+        }
+        if ($hasError and $this->f3->exists('validation.error')) {
+            $errors = array_merge($errors, $this->f3->get('validation.error'));
+        }
+        return $hasError;
+    }
+
+    protected function renderErrors(array $errors, $moves) {
+        $hasError = $this->_checkErrors($errors, $moves);
+        foreach ($errors as $err) {
+            Flash::instance()->addMessage($err, 'danger');
+        }
+        // Display the form again if some errors are present
+        if ($hasError) {
+            $this->get($this->f3);
+            die();
+        }
     }
 }

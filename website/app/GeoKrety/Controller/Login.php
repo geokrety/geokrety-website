@@ -9,6 +9,7 @@ use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\Xml\Errors;
 use GeoKrety\Session;
 use Multilang;
 use Sugar\Event;
@@ -127,18 +128,21 @@ class Login extends Base {
     }
 
     /**
-     * @param string $secid The secid token
+     * @param \Base $f3
+     * @param string|null $secid The secid token
      *
      * @return void True if authentication succeed
      */
-    public function secidAuth(\Base $f3, string $secid) {
+    public function secidAuth(\Base $f3, ?string $secid) {
         if (strlen($secid) !== 128) {
-            die(_('Invalid "secid" length.'));
+            Errors::buildError(_('Invalid "secid'));
+            die();
         }
         $auth = new Auth('secid');
         $user = $auth->login($secid, null);
         if ($user === false) {
-            die(_('Invalid "secid".'));
+            Errors::buildError(_('Invalid "secid'));
+            die();
         }
         Login::connectUser($f3, $user, 'secid');
     }

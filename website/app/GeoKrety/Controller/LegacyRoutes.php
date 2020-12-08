@@ -132,6 +132,12 @@ class LegacyRoutes {
         $f3->reroute(sprintf('@move_create?%s', $url_params), $permanent = false, $die = true);
     }
 
+    // https://new-theme.staging.geokrety.org/ruchy.php POST
+    public function ruchy_post(\Base $f3) {
+        $move = new MoveCreateXML();
+        $move->post_api_xml_legacy($f3);
+    }
+
     // https://new-theme.staging.geokrety.org/templates/medal-pi.png
     public function templates_medals(\Base $f3) {
         $f3->reroute(sprintf('%s/images/medals/medal-%s', GK_CDN_SERVER_URL, $f3->get('PARAMS.medal')), $permanent = true, $die = true);
@@ -190,11 +196,6 @@ EOT;
     public function login2secid_post(\Base $f3) {
         $login = new Login();
         $login->login2Secid_post($f3);
-    }
-
-    // https://new-theme.staging.geokrety.org/ruchy.php POST
-    public function ruchy_post(\Base $f3) {
-        echo 'TODO';
     }
 
     // https://new-theme.staging.geokrety.org/szukaj.php?wpt=OP866L

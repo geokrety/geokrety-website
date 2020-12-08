@@ -71,7 +71,7 @@ $validator->addValidator('logtype_require_coordinates', function ($field, $input
 }, _('This logtype require valid {0} coordinates'));
 
 $validator->addValidator('move_not_same_datetime', function ($field, $input, $param = null) {
-    if (!$input[$field]) {
+    if (!$input[$field] or is_null($input['geokret'])) {
         return true;
     }
 
@@ -90,7 +90,7 @@ $validator->addValidator('not_in_the_future', function ($field, $input, $param =
 }, _('{0} cannot be in the future'));
 
 $validator->addValidator('after_geokret_birth', function ($field, $input, $param = null) {
-    if (!$input[$field]) {
+    if (!$input[$field] or is_null($input['geokret'])) {
         return true;
     }
 
