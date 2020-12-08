@@ -68,7 +68,7 @@ abstract class BaseCleaner {
         return 'Processing records: %6.2f%% (%s/%d - fixed: %6.2f%%)';
     }
 
-    public function processAll(\Base $f3) {
+    public function processAll(Base $f3) {
         $this->script = new Scripts();
         $this->script->load(['name = ?', $this->getScriptName()]);
         $filter = $this->filterHook();

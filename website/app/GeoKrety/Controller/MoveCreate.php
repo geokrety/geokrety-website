@@ -35,13 +35,13 @@ class MoveCreate extends Base {
         if ($this->move->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
 
         if (!$this->move->isAuthor()) {
             http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
-            die();
+            exit();
         }
     }
 
@@ -203,7 +203,7 @@ class MoveCreate extends Base {
         // Display the form again if some errors are present
         if ($hasError) {
             $this->get($this->f3);
-            die();
+            exit();
         }
     }
 }

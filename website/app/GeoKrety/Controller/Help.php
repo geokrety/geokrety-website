@@ -51,7 +51,7 @@ class Help extends Base {
             if (file_exists(GK_SMARTY_TEMPLATES_DIR.'/'.$file)) {
                 Smarty::assign('file', $file);
                 Smarty::render('pages/help.tpl');
-                die();
+                exit();
             }
         }
         StaticPages::_404($f3);

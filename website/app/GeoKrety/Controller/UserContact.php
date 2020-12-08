@@ -36,7 +36,7 @@ class UserContact extends Base {
         if ($user->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
         $this->mail->to_user = $user;
     }
@@ -70,7 +70,7 @@ class UserContact extends Base {
             if (!$resp->isSuccess()) {
                 \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
                 $this->get($f3);
-                die();
+                exit();
             }
         }
 
@@ -80,7 +80,7 @@ class UserContact extends Base {
             if ($f3->get('ERROR')) {
                 \Flash::instance()->addMessage(_('Failed to save the mail.'), 'danger');
                 $this->get($f3);
-                die();
+                exit();
             } else {
                 $mail->load(['_id = ?', $mail->getMapper()->get('_id')]);
                 $smtp = new EmailUserContact();

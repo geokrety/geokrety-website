@@ -9,7 +9,7 @@ trait UserLoader {
      */
     protected $user;
 
-    public function beforeRoute(\Base $f3) {
+    public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
 
         // load User
@@ -22,7 +22,7 @@ trait UserLoader {
         if ($user->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
         Smarty::assign('user', $user);
     }

@@ -17,7 +17,7 @@ class GeokretyMap extends Base {
         $ymax = $f3->get('PARAMS.ymax');
 
         if (!(is_numeric($xmin) && is_numeric($ymin) && is_numeric($xmax) && is_numeric($ymax))) {
-            die();
+            exit();
         }
 
         //        $sql = <<<EOT
@@ -53,6 +53,6 @@ class GeokretyMap extends Base {
 EOT;
 //        echo $sql;
         $result = $f3->get('DB')->exec($sql, [$xmin, $ymin, $xmax, $ymax]);
-        die($result[0]['geojson']);
+        exit($result[0]['geojson']);
     }
 }

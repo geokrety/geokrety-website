@@ -33,7 +33,7 @@ class PasswordRecovery extends Base {
             if (!$resp->isSuccess()) {
                 \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
                 $this->get();
-                die();
+                exit();
             }
         }
 
@@ -43,7 +43,7 @@ class PasswordRecovery extends Base {
         if ($user->dry()) {
             \Flash::instance()->addMessage(_('Sorry no account using that email address.'), 'danger');
             $this->get();
-            die();
+            exit();
         }
 
         // Generate a new token
@@ -51,7 +51,7 @@ class PasswordRecovery extends Base {
         $token->user = $user;
         if (!$token->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
 
         $token->save();

@@ -33,7 +33,7 @@ class MoveCreateXML extends MoveCreate {
         $hasError = $this->_checkErrors($errors, $moves);
         if ($hasError) {
             Errors::buildError($errors);
-            die();
+            exit();
         }
     }
 }

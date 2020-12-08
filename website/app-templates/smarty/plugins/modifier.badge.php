@@ -9,7 +9,7 @@
  * Purpose:  outputs a badge image
  * -------------------------------------------------------------
  */
-function smarty_modifier_badge(\GeoKrety\Model\Badge $badge) {
+function smarty_modifier_badge(GeoKrety\Model\Badge $badge) {
     $url = GK_CDN_IMAGES_URL.'/badges/'.$badge->filename;
 
     return '<img src="'.$url.'" title="'.$badge->description.'" />';

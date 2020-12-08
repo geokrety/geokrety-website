@@ -25,6 +25,6 @@ class UserGeokretyNearHomeGeojson extends Base {
             ) as t;
 EOT;
         $result = $f3->get('DB')->exec($sql, [$this->current_user->id]);
-        die($result[0]['geojson']);
+        exit($result[0]['geojson']);
     }
 }

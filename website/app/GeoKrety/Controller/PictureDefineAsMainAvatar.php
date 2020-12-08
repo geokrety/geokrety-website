@@ -13,7 +13,7 @@ class PictureDefineAsMainAvatar extends Base {
         if (!$picture->hasPermissionOnParent()) {
             http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
-            die();
+            exit();
         }
     }
 

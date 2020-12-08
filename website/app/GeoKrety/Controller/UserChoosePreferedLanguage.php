@@ -26,7 +26,7 @@ class UserChoosePreferedLanguage extends Base {
 
         if (!$user->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
 
         $user->save();

@@ -20,7 +20,7 @@ class PictureUploadDrop extends Base {
         if ($picture->dry()) {
             captureMessage('GeokretAvatarUploadDrop: No such Picture in db');
             http_response_code(404);
-            die();
+            exit();
         }
 
         captureMessage('GeokretAvatarUploadDrop: Picture erased');

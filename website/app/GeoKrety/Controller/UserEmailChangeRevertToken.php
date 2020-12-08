@@ -44,14 +44,14 @@ class UserEmailChangeRevertToken extends Base {
         } else {
             Flash::instance()->addMessage(_('Unexpected value.'), 'danger');
             $this->get($f3);
-            die();
+            exit();
         }
 
         $this->token->touch('reverted_on_datetime');
         $this->token->reverting_ip = \Base::instance()->get('IP');
         if (!$this->token->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
 
         $this->token->user->save();
@@ -60,7 +60,7 @@ class UserEmailChangeRevertToken extends Base {
         if ($f3->get('ERROR')) {
             Flash::instance()->addMessage(_('Something went wrong, operation aborted.'), 'danger');
             $this->get($f3);
-            die();
+            exit();
         }
 
         $f3->get('DB')->commit();
@@ -91,7 +91,7 @@ class UserEmailChangeRevertToken extends Base {
 
         if (!$this->token->user->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
     }
 

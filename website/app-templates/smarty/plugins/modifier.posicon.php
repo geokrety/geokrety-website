@@ -44,7 +44,7 @@ function computeLocationType($logType) {
  * Purpose:  outputs a position icon
  * -------------------------------------------------------------
  */
-function smarty_modifier_posicon(\GeoKrety\Model\Geokret $geokret) {
+function smarty_modifier_posicon(GeoKrety\Model\Geokret $geokret) {
     $lastLocationType = $geokret->last_position ? $geokret->last_position->move_type->getLogTypeId() : '';
     $lastUserId = ($geokret->last_position && !is_null($geokret->last_position->author)) ? $geokret->last_position->author->id : 0;
 

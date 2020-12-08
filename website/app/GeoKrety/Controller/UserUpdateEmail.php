@@ -31,7 +31,7 @@ class UserUpdateEmail extends Base {
             $user->daily_mails = $daily_mail;
             if (!$user->validate()) {
                 $this->get($f3);
-                die();
+                exit();
             }
             $user->save();
             Flash::instance()->addMessage(_('Your email preferences were saved.'), 'success');
@@ -64,7 +64,7 @@ class UserUpdateEmail extends Base {
             if ($user->count(['_email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.email')], null, 0)) { // no cache
                 Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
                 $this->get($f3);
-                die();
+                exit();
             }
 
             // Saving…
@@ -72,7 +72,7 @@ class UserUpdateEmail extends Base {
             $token->_email = $f3->get('POST.email');
             if (!$token->validate()) {
                 $this->get($f3);
-                die();
+                exit();
             }
             $token->save();
             Flash::instance()->addMessage(sprintf(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])), 'success');
@@ -84,7 +84,7 @@ class UserUpdateEmail extends Base {
                 $f3->abort(); // Send response to client now
             }
             $smtp->sendEmailChangeNotification($token);
-            die();
+            exit();
         }
 
         $f3->get('DB')->commit();

@@ -30,7 +30,7 @@ class UserContactByGeokret extends UserContact {
         if ($geokret->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
         $this->geokret = $geokret;
         $this->mail->to_user = $geokret->owner;

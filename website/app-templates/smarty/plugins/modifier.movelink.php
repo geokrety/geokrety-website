@@ -11,7 +11,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a move link
  * -------------------------------------------------------------
  */
-function smarty_modifier_movelink(\GeoKrety\Model\Move $move, ?string $textString = null, ?string $target = null): string {
+function smarty_modifier_movelink(GeoKrety\Model\Move $move, ?string $textString = null, ?string $target = null): string {
     $text = is_null($textString) ? $move->geokret->gkid : $textString;
     $target_html = is_null($target) ? '' : ' target="'.$target.'"';
 

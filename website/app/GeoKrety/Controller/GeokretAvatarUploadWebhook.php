@@ -14,12 +14,12 @@ class GeokretAvatarUploadWebhook extends Base {
         if (!$f3->get('HEADERS.Authorization')) {
             http_response_code(400);
             echo 'Missing Header Authorization';
-            die();
+            exit();
         }
         if ($f3->get('HEADERS.Authorization') !== sprintf('Bearer %s', GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED)) {
             http_response_code(400);
             echo 'Wrong Header Authorization';
-            die();
+            exit();
         }
 
         $s3Data = json_decode($f3->get('BODY'), true)['Records'][0]['s3'];
@@ -35,7 +35,7 @@ class GeokretAvatarUploadWebhook extends Base {
             echo 'No such key';
             // TODO: We should remove the uploaded file
             // TODO: Action have to be reported to admins
-            die();
+            exit();
         }
         $picture->touch('uploaded_on_datetime');
 

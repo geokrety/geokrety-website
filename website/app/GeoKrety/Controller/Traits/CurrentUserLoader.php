@@ -9,13 +9,13 @@ trait CurrentUserLoader {
      */
     protected $currentUser;
 
-    public function beforeRoute(\Base $f3) {
+    public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
 
         if (!$f3->get('SESSION.IS_LOGGED_IN')) {
             // TODO auth first
             Smarty::render('dialog/login.tpl');
-            die();
+            exit();
         }
 
         $user = new User();
@@ -24,7 +24,7 @@ trait CurrentUserLoader {
             // TODO:
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
         $this->currentUser = $user;
         Smarty::assign('currentUser', $this->currentUser);

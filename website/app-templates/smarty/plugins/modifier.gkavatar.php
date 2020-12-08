@@ -9,7 +9,7 @@
  * Purpose:  outputs a geokrety icon based if the GK has an avatar
  * -------------------------------------------------------------
  */
-function smarty_modifier_gkavatar(\GeoKrety\Model\Geokret $geokret) {
+function smarty_modifier_gkavatar(GeoKrety\Model\Geokret $geokret) {
     if (!$geokret->avatar) {
         return;
     }

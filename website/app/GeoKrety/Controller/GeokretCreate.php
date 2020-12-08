@@ -46,7 +46,7 @@ class GeokretCreate extends Base {
                     $f3->get('DB')->rollback();
                     $geokret->resetFields(['gkid']);  // https://github.com/ikkez/f3-cortex/issues/90
                     $this->get($f3);
-                    die();
+                    exit();
                 }
             }
             $f3->get('DB')->commit();

@@ -48,7 +48,7 @@ class PasswordRecoveryChange extends Base {
         $token = $this->token;
         if ($token->dry()) {
             $this->get($f3);
-            die();
+            exit();
         }
 
         $user = $token->user;
@@ -59,7 +59,7 @@ class PasswordRecoveryChange extends Base {
         if ($password_new !== $password_new_confirm) {
             Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
             $this->get($f3);
-            die();
+            exit();
         }
 
         $f3->get('DB')->begin();
@@ -68,7 +68,7 @@ class PasswordRecoveryChange extends Base {
         $user->password = $password_new;
         if (!$user->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
         $user->save();
 
@@ -77,7 +77,7 @@ class PasswordRecoveryChange extends Base {
         $token->touch('used_on_datetime');
         if (!$token->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
         $token->save();
         Event::instance()->emit('password.token.used', $token);
@@ -86,7 +86,7 @@ class PasswordRecoveryChange extends Base {
         if ($f3->get('ERROR')) {
             Flash::instance()->addMessage(_('Unexpected error occurred.'), 'danger');
             $this->get($f3);
-            die();
+            exit();
         }
 
         Flash::instance()->addMessage(_('Your password has been changed.'), 'success');

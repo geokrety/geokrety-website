@@ -20,7 +20,7 @@ trait MoveLoader {
         if ($move->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
 
         $this->checkAuthor($move);
@@ -32,7 +32,7 @@ trait MoveLoader {
         if (!$move->isAuthor()) {
             http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
-            die();
+            exit();
         }
     }
 

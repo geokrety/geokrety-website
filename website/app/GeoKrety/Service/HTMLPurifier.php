@@ -11,7 +11,7 @@ class HTMLPurifier extends \Prefab {
 
     public function __construct() {
         if (!file_exists(GK_HTMLPURIFIER_CACHE_DIR) && !mkdir(GK_HTMLPURIFIER_CACHE_DIR, 0750, true)) {
-            die(sprintf('Fail to create \'%s\' directory', GK_HTMLPURIFIER_CACHE_DIR));
+            exit(sprintf('Fail to create \'%s\' directory', GK_HTMLPURIFIER_CACHE_DIR));
         }
 
         $HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();

@@ -29,6 +29,6 @@ class UserOwnedGeokretyMap extends Base {
             ) as t;
 EOT;
         $result = $f3->get('DB')->exec($sql, [$this->user->id]);
-        die($result[0]['geojson']);
+        exit($result[0]['geojson']);
     }
 }

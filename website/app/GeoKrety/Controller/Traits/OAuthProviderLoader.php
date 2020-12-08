@@ -9,7 +9,7 @@ trait OAuthProviderLoader {
      */
     protected $oauthProvider;
 
-    public function beforeRoute(\Base $f3) {
+    public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
 
         $oauthProvider = new SocialAuthProvider();
@@ -17,7 +17,7 @@ trait OAuthProviderLoader {
         if ($oauthProvider->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
         $this->oauthProvider = $oauthProvider;
         Smarty::assign('oauth_provider', $oauthProvider);

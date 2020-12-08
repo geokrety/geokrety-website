@@ -28,7 +28,7 @@ class UserUpdateObservationArea extends Base {
             }
         } else {
             $this->get($f3);
-            die();
+            exit();
         }
 
         $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));

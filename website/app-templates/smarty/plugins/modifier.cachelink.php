@@ -13,7 +13,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a cache link
  * -------------------------------------------------------------
  */
-function smarty_modifier_cachelink(?\GeoKrety\Model\Move $move, ?string $alternative_name = null, ?string $target = 'blank'): string {
+function smarty_modifier_cachelink(?GeoKrety\Model\Move $move, ?string $alternative_name = null, ?string $target = 'blank'): string {
     if (is_null($move) || !$move->move_type->isCoordinatesRequired()) {
         return '';
     }

@@ -25,7 +25,7 @@ trait GeokretLoader {
         if ($geokret->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
         Smarty::assign('geokret', $geokret);
     }

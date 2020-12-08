@@ -75,7 +75,7 @@ $validator->addValidator('move_not_same_datetime', function ($field, $input, $pa
         return true;
     }
 
-    $move = new  \GeoKrety\Model\Move();
+    $move = new \GeoKrety\Model\Move();
     $move->load([$field.' = ? AND geokret = ? AND id != ?', $input[$field]->format(GK_DB_DATETIME_FORMAT), $input['geokret']->id, $input['_id']]);
 
     return $move->dry();

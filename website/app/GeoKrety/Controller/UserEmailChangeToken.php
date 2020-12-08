@@ -44,12 +44,12 @@ class UserEmailChangeToken extends Base {
         } else {
             Flash::instance()->addMessage(_('Unexpected value.'), 'danger');
             $this->get($f3);
-            die();
+            exit();
         }
 
         if (!$this->token->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
 
         $this->token->user->save();
@@ -58,7 +58,7 @@ class UserEmailChangeToken extends Base {
         if ($f3->get('ERROR')) {
             Flash::instance()->addMessage(_('Something went wrong, operation aborted.'), 'danger');
             $this->get($f3);
-            die();
+            exit();
         }
 
         $f3->get('DB')->commit();
@@ -74,7 +74,7 @@ class UserEmailChangeToken extends Base {
             }
             $smtp = new EmailChange();
             $smtp->sendEmailChangedNotification($this->token);
-            die();
+            exit();
         } else {
             Flash::instance()->addMessage(_('No change has been processed. This token is now revoked.'), 'warning');
         }
@@ -96,7 +96,7 @@ class UserEmailChangeToken extends Base {
 
         if (!$this->token->user->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
     }
 

@@ -12,12 +12,12 @@ class WaypointName extends Base {
 
         if (empty($query)) {
             http_response_code(400);
-            die(json_encode(['error' => _('Waypoint seems empty.')]));
+            exit(json_encode(['error' => _('Waypoint seems empty.')]));
         }
 
         if (strlen($query) < GK_CHECK_WAYPOINT_NAME_MIN_LENGTH || strlen($query) > GK_CHECK_WAYPOINT_NAME_MAX_LENGTH) {
             http_response_code(400);
-            die(json_encode(['error' => sprintf(_('Waypoint length is invalid. It should be between %d and %d characters long.'), GK_CHECK_WAYPOINT_NAME_MIN_LENGTH, GK_CHECK_WAYPOINT_NAME_MAX_LENGTH)]));
+            exit(json_encode(['error' => sprintf(_('Waypoint length is invalid. It should be between %d and %d characters long.'), GK_CHECK_WAYPOINT_NAME_MIN_LENGTH, GK_CHECK_WAYPOINT_NAME_MAX_LENGTH)]));
         }
 
         $waypoint = new WaypointOC();

@@ -3,7 +3,7 @@
 use GeoKrety\HealthState;
 
 class HealthStateTest extends GKTestCase {
-    public function test_health_ok() {
+    public function testHealthOk() {
         // GIVEN
         $state = new HealthState();
 
@@ -15,7 +15,7 @@ class HealthStateTest extends GKTestCase {
         $this->assertTrue($state->isOk(), 'Expected health ok');
     }
 
-    public function test_health_unknown() {
+    public function testHealthUnknown() {
         // GIVEN
         // WHEN
         $state = new HealthState();
@@ -25,7 +25,7 @@ class HealthStateTest extends GKTestCase {
         $this->assertNull($state->state);
     }
 
-    public function test_health_ko() {
+    public function testHealthKo() {
         // GIVEN
         $state = new HealthState();
         $state->setDependencyState('depKo', HealthState::HEALTH_STATE_KO, 'just a test, no worry');

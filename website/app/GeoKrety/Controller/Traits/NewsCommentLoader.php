@@ -9,7 +9,7 @@ trait NewsCommentLoader {
      */
     protected $comment;
 
-    public function beforeRoute(\Base $f3) {
+    public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
 
         $comment = new NewsComment();
@@ -18,12 +18,12 @@ trait NewsCommentLoader {
         if ($comment->dry()) {
             http_response_code(404);
             Smarty::render('dialog/alert_404.tpl');
-            die();
+            exit();
         }
         if (!$comment->isAuthor()) {
             http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
-            die();
+            exit();
         }
 
         Smarty::assign('comment', $comment);

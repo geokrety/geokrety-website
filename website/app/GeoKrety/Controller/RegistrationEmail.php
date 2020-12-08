@@ -38,7 +38,7 @@ class RegistrationEmail extends BaseRegistration {
                 $f3->abort(); // Send response to client now
             }
             $smtp->sendActivationAgain($token);
-            die();
+            exit();
         }
 
         // Check email unicity over users table
@@ -47,7 +47,7 @@ class RegistrationEmail extends BaseRegistration {
         // Save
         if (!$user->validate()) {
             $this->get($f3);
-            die();
+            exit();
         }
         $user->save();
 

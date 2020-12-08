@@ -43,13 +43,13 @@ class GeokretLabel extends Base {
                 if (!$this->geokret->validate()) {
                     $f3->get('DB')->rollback();
                     $this->get($f3);
-                    die();
+                    exit();
                 }
             } catch (Exception $e) {
                 Flash::instance()->addMessage(_('Something went wrong while saving the GeoKret preferred label template.'), 'danger');
                 $f3->get('DB')->rollback();
                 $this->get($f3);
-                die();
+                exit();
             }
             $this->geokret->save();
             $f3->get('DB')->commit();
@@ -63,20 +63,20 @@ class GeokretLabel extends Base {
         if (!empty($f3->get('POST.helpLanguages')) && !LanguageService::areLanguageSupported($f3->get('POST.helpLanguages'))) {
             Flash::instance()->addMessage(_('Some chosen languages are invalid.'), 'danger');
             $this->get($f3);
-            die();
+            exit();
         }
         $f3->set('COOKIE.helpLanguages', json_encode($f3->get('POST.helpLanguages')));
 
         // Export type
         if ($f3->exists('POST.generateAsPng')) {
             $this->png();
-            die();
+            exit();
         } elseif ($f3->exists('POST.generateAsSvg')) {
             $this->svg();
-            die();
+            exit();
         } elseif ($f3->exists('POST.generateAsPdf')) {
             $this->pdf();
-            die();
+            exit();
         }
 
         Flash::instance()->addMessage(_('Please select an export type.'), 'danger');

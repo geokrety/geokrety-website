@@ -9,7 +9,7 @@
  * Purpose:  outputs a position icon
  * -------------------------------------------------------------
  */
-function smarty_modifier_logicon(?\GeoKrety\Model\Move $move, bool $showSmall = false) {
+function smarty_modifier_logicon(?GeoKrety\Model\Move $move, bool $showSmall = false) {
     if (is_null($move)) {
         return '';
     }

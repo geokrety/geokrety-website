@@ -22,7 +22,7 @@ const SUPPORTED_APP = [
  * Purpose:  outputs an icon for an application
  * -------------------------------------------------------------
  */
-function smarty_modifier_application_icon(\GeoKrety\Model\Move $move): string {
+function smarty_modifier_application_icon(GeoKrety\Model\Move $move): string {
     if (empty($move->app) || !array_key_exists($move->app, SUPPORTED_APP)) {
         return '';
     }

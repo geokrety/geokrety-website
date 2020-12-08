@@ -18,7 +18,7 @@ function smarty_modifier_distance(?int $distance, $unit = 'km'): string {
         return '';
     }
     if (!array_key_exists($unit, SUPPORTED_UNITS)) {
-        die(sprintf('Unknown unit: %s', $unit));
+        exit(sprintf('Unknown unit: %s', $unit));
     }
     $_distance = $distance * SUPPORTED_UNITS[$unit];
 

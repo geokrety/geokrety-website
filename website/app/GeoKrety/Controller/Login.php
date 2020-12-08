@@ -114,14 +114,14 @@ class Login extends Base {
         if (is_null($f3->get('POST.login')) or is_null($f3->get('POST.password'))) {
             http_response_code(400);
             echo _('Please provide \'login\' and \'password\' parameters.');
-            die();
+            exit();
         }
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
             echo $user->secid;
             Event::instance()->emit('user.login.api2secid', $user);
-            die();
+            exit();
         }
         echo _('Username and password doesn\'t match.');
         //$this->loginForm();
@@ -135,13 +135,13 @@ class Login extends Base {
     public function secidAuth(\Base $f3, ?string $secid) {
         if (strlen($secid) !== 128) {
             Errors::buildError(_('Invalid "secid'));
-            die();
+            exit();
         }
         $auth = new Auth('secid');
         $user = $auth->login($secid, null);
         if ($user === false) {
             Errors::buildError(_('Invalid "secid'));
-            die();
+            exit();
         }
         Login::connectUser($f3, $user, 'secid');
     }

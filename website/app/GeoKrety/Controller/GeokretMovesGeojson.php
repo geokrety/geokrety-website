@@ -57,6 +57,6 @@ class GeokretMovesGeojson extends Base {
             ) as f;
 EOT;
         $result = $f3->get('DB')->exec($sql, [$this->geokret->id, $per_page, $start, $this->geokret->id, $per_page, $start]);
-        die($result[0]['geojson']);
+        exit($result[0]['geojson']);
     }
 }

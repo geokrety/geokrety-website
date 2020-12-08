@@ -36,14 +36,14 @@ class UserUpdatePassword extends Base {
         if (!$check_result) {
             Flash::instance()->addMessage(_('Your old password is invalid.'), 'danger');
             $this->get();
-            die();
+            exit();
         }
 
         // Check passwords are equals
         if ($password_new !== $password_new_confirm) {
             Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
             $this->get();
-            die();
+            exit();
         }
 
         // Save new password

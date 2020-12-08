@@ -71,7 +71,7 @@ abstract class Base {
             if (!$resp->isSuccess()) {
                 \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
                 $this->$func($this->f3);
-                die();
+                exit();
             }
         }
     }

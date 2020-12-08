@@ -24,7 +24,7 @@ class BaseRegistration extends Base {
         if ($this->user->isEmailUnique()) {
             Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
             $this->$func($this->f3);
-            die();
+            exit();
         }
     }
 }

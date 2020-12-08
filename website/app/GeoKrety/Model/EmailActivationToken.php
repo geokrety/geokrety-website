@@ -243,13 +243,13 @@ EOT;
         // $this->beforeupdate(function ($self) {
         // });
 
-        $this->virtual('update_expire_on_datetime', function ($self): \DateTime {
+        $this->virtual('update_expire_on_datetime', function ($self): DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY)));
         });
 
-        $this->virtual('revert_expire_on_datetime', function ($self): \DateTime {
+        $this->virtual('revert_expire_on_datetime', function ($self): DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY)));

@@ -409,7 +409,7 @@ class BaseMigrator {
             echo join(', ', $this->pFields).PHP_EOL;
             echo join(', ', $combine).PHP_EOL;
             print_r($insert->errorInfo());
-            die();
+            exit();
         }
 
         $this->processedRecords += $chunkSize;

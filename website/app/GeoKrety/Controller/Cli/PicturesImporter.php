@@ -77,7 +77,7 @@ class PicturesImporter extends BaseCleaner {
             $id = $object->move->id;
             $object->author = $object->move->author;
         } else {
-            die('Should never happend');
+            exit('Should never happend');
         }
 
         $object->key = $uploader::generateKey($id);

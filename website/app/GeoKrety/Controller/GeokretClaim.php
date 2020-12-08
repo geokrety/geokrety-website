@@ -20,19 +20,19 @@ class GeokretClaim extends Base {
         if ($ownerCode->dry()) {
             \Flash::instance()->addMessage(_('Sorry, the provided owner code and tracking code doesn\'t match.'), 'danger');
             $this->get();
-            die();
+            exit();
         }
 
         if ($ownerCode->geokret->isOwner()) {
             \Flash::instance()->addMessage(_('You are already the owner.'), 'danger');
             $this->get();
-            die();
+            exit();
         }
 
         if ($ownerCode->used !== OwnerCode::TOKEN_UNUSED) {
             \Flash::instance()->addMessage(_('Sorry, this owner code has already been used.'), 'danger');
             $this->get();
-            die();
+            exit();
         }
 
         $oldOwner = $ownerCode->geokret->owner;
