@@ -6,6 +6,7 @@ cache:
     - vendor
     - $HOME/.composer/cache
     - $HOME/.php-cs-fixer
+    - $HOME/.cache/pre-commit
 
 services:
   - docker
@@ -22,19 +23,13 @@ jobs:
     - stage: syntax check
       php: 7.4
       before_script:
-        - curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer && chmod a+x php-cs-fixer
+        - curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer.phar && chmod a+x php-cs-fixer.phar
+        - curl -L https://github.com/pre-commit/pre-commit/releases/download/v2.9.3/pre-commit-2.9.3.pyz -o pre-commit && chmod a+x pre-commit
       script:
         - phpenv config-rm xdebug.ini || return 0
-        # Check against CRLF
-        - scripts/check-crlf.sh
-        # Check against trailing whitespaces on php files
-        - scripts/check-trailing-spaces.sh .
         # Check against non utf-8 files
         - scripts/check-utf8.sh .
-        # Check php syntax
-        - scripts/phplint.sh ./website/
-        # Check CS fixer
-        - ./php-cs-fixer --no-interaction --dry-run --diff -v fix
+        - ./pre-commit run --all-files
 
     - stage: test-qa
       if: env(TRAVIS_QA_TOKEN) AND type = 'push'
