@@ -58,7 +58,7 @@ Run `npm run litmus` to build as above, then submit to litmus for testing. *AWS 
 
 Run `npm run mail` to build as above, then send to specified email address for testing. *SMTP server details required (config.json)*
 
-Run `npm run zip` to build as above, then zip HTML and images for easy deployment to email marketing services. 
+Run `npm run zip` to build as above, then zip HTML and images for easy deployment to email marketing services.
 
 ### Speeding Up Your Build
 

@@ -8,7 +8,7 @@ class LabelsLists extends AbstractMigration {
         $table_labels->addColumn('template', 'string', ['limit' => 128])
             ->addColumn('title', 'string', ['limit' => 512])
             ->addColumn('author', 'string', ['limit' => 128])
-            ->addColumn('created_on_datetime', 'timestamp', [ 'default' => 'CURRENT_TIMESTAMP', 'update' => '', 'timezone' => true])
+            ->addColumn('created_on_datetime', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'update' => '', 'timezone' => true])
             ->addColumn('updated_on_datetime', 'timestamp', ['null' => true, 'default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
             ->addIndex(['title'])
             ->addIndex(['template'])
@@ -35,7 +35,7 @@ class LabelsLists extends AbstractMigration {
 
         $table_geokrety = $this->table('gk_geokrety');
         $table_geokrety->addColumn('label_template', 'integer', ['null' => true])
-            ->addForeignKey('label_template', 'gk_labels', 'id', ['delete'=> 'SET_NULL', 'update'=> 'NO_ACTION'])
+            ->addForeignKey('label_template', 'gk_labels', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->update();
     }
 }

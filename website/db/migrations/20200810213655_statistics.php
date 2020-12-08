@@ -57,7 +57,6 @@ $BODY$;');
     FOR EACH ROW
     EXECUTE PROCEDURE geokrety.stats_updater_users();');
 
-
         $this->execute('CREATE FUNCTION geokrety.geokrety_stats_updater()
     RETURNS void
     LANGUAGE \'plpgsql\'

@@ -40,9 +40,9 @@ Here are the commonly used tags:
 * `{$geokret->name}`: The GeoKret name
 * `{$georket->gkid}`: The GeoKret `reference number` (ex: `GK1234`)
 * `{$georket->tracking_code}`: The GeoKret `Tracking Code` (ex: `DQ9H4B`)
-* `{$georket->mission}`: The GeoKret specific mission   
+* `{$georket->mission}`: The GeoKret specific mission
 * `{$georket->owner->username}`: The GeoKret owner username
-* `{$georket->type}`: The GeoKret `type` (ex: Traditional, Coin, Book…)  
+* `{$georket->type}`: The GeoKret `type` (ex: Traditional, Coin, Book…)
 
 Please refer to source code, especially the `Model` classes.
 
@@ -54,9 +54,9 @@ Please take care to have it in a "good size" to have it scanned by most devices.
 
  Check other templates at https://github.com/geokrety/geokrety-website/tree/picture-s3-wip/website/app-templates/smarty/labels/
  to find examples.
- 
+
  The simplest way is to copy/paste the placeholder from one of the other templates.
- 
+
  ## Caveats
  As `svg` files are internally `xml`, the tag placeholders must be html encoded (the character `>` have to be replaced
  later by it's escaped equivalent `&gt;`). So we save the original file as `my_template.svg` and it will be automatically

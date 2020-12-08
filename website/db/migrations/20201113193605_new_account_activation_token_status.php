@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class NewAccountActivationTokenStatus extends AbstractMigration
-{
+final class NewAccountActivationTokenStatus extends AbstractMigration {
     public function up() {
         $this->execute('ALTER TABLE geokrety.gk_account_activation DROP CONSTRAINT validate_used;');
         $this->execute('ALTER TABLE geokrety.gk_account_activation ADD CONSTRAINT validate_used CHECK (used = ANY (ARRAY[0, 1, 2, 3]));');
@@ -15,7 +15,7 @@ CREATE OR REPLACE FUNCTION geokrety.account_activation_check_validating_ip(IN va
     VOLATILE
     PARALLEL UNSAFE
     COST 100
-    
+
 AS $BODY$
 BEGIN
 
@@ -41,7 +41,7 @@ CREATE OR REPLACE FUNCTION geokrety.account_activation_check_validating_ip(IN va
     VOLATILE
     PARALLEL UNSAFE
     COST 100
-    
+
 AS $BODY$
 BEGIN
 
@@ -55,6 +55,5 @@ RETURN FALSE;
 END;
 $BODY$;
         ');
-
     }
 }

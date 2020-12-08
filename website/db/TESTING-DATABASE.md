@@ -59,7 +59,7 @@ $ ./website/db/tests-copy-schema-tests-to-geokrety.sh
 ## Launching tests
 The simplest method is to launch tests using the makefile but first we'll export
 the database password so it will not be asked on every tests.
- 
+
 ```bash
 $ export PGPASSWORD=geokrety
 $ make test-db

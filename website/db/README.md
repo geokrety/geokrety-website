@@ -56,7 +56,7 @@ Fixing:
 ```bash
 $ unzip South_America/S17W069.hgt.zip
 Archive:  South_America/S17W069.hgt.zip
-  inflating: s17w069.hgt             
+  inflating: s17w069.hgt
 $ mv s17w069.hgt S17W069.hgt
 $ zip -9 S17W069.hgt.zip S17W069.hgt
   adding: S17W069.hgt (deflated 48%)
@@ -107,15 +107,15 @@ Please specify how long the key should be valid.
       <n>w = key expires in n weeks
       <n>m = key expires in n months
       <n>y = key expires in n years
-Key is valid for? (0) 
+Key is valid for? (0)
 Key does not expire at all
 Is this correct? (y/N) y
 
 GnuPG needs to construct a user ID to identify your key.
 
 Real name: GeoKrety DB Crypto - tests
-Email address: 
-Comment: 
+Email address:
+Comment:
 You selected this USER-ID:
     "GeoKrety DB Crypto - tests"
 

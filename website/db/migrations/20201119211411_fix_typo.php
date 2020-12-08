@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
@@ -54,5 +55,3 @@ RAISE \'Move `type` does not match the specified arguments.\' USING ERRCODE = \'
 END;$$;');
     }
 }
-
-

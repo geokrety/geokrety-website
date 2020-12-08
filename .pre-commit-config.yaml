@@ -1,0 +1,32 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+exclude: |
+  (?x)(
+      ^website/app-templates/foundation-emails/|
+      ^website/app/languages/|
+      ^website/app/dict/|
+      ^website/app-templates/smarty/help-pages/|
+      ^website/public/assets/images/|
+      ^website/db/dumps/
+  )
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.1.9
+    hooks:
+      - id: remove-crlf
+
+  - repo: https://github.com/digitalpulp/pre-commit-php.git
+    rev: 1.4.0
+    hooks:
+      - id: php-lint-all
+      - id: php-cs-fixer
+        files: \.(php)$
+        args: [ --config=.php_cs -q ]

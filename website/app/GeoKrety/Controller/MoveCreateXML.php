@@ -1,13 +1,10 @@
 <?php
 
-
 namespace GeoKrety\Controller;
-
 
 use GeoKrety\Service\Xml\Errors;
 
 class MoveCreateXML extends MoveCreate {
-
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
         $this->authenticate();

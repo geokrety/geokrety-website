@@ -2,8 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class ArchiveByOwner extends AbstractMigration
-{
+class ArchiveByOwner extends AbstractMigration {
     public function up() {
         $this->execute('CREATE FUNCTION geokrety.moves_check_archive_author()
     RETURNS trigger

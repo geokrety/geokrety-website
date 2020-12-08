@@ -191,6 +191,7 @@ class MoveCreate extends Base {
         if ($hasError and $this->f3->exists('validation.error')) {
             $errors = array_merge($errors, $this->f3->get('validation.error'));
         }
+
         return $hasError;
     }
 

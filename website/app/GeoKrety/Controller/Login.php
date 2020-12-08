@@ -120,7 +120,7 @@ class Login extends Base {
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
             echo $user->secid;
-            Event::instance()->emit("user.login.api2secid", $user);
+            Event::instance()->emit('user.login.api2secid', $user);
             die();
         }
         echo _('Username and password doesn\'t match.');
@@ -128,7 +128,6 @@ class Login extends Base {
     }
 
     /**
-     * @param \Base $f3
      * @param string|null $secid The secid token
      *
      * @return void True if authentication succeed

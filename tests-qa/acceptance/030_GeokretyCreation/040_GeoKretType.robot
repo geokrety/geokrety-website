@@ -25,7 +25,7 @@ Seed
     Clear Database
     Seed 1 users
     Sign In ${USER_1.name} Fast
-    
+
 GeoKret is created
     [Arguments]    ${type}      ${type_name}
     Go To Url                           ${PAGE_GEOKRETY_CREATE_URL}

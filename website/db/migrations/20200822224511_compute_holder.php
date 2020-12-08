@@ -2,8 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class ComputeHolder extends AbstractMigration
-{
+class ComputeHolder extends AbstractMigration {
     public function up() {
         // moves_type_hold
         $this->execute('CREATE OR REPLACE FUNCTION geokrety.moves_type_hold(
@@ -12,8 +11,8 @@ class ComputeHolder extends AbstractMigration
     LANGUAGE \'sql\'
 
     COST 100
-    VOLATILE 
-    
+    VOLATILE
+
 AS $BODY$
 SELECT \'{1,5}\'::smallint[]
 $BODY$;');
@@ -26,8 +25,8 @@ $BODY$;');
     LANGUAGE \'plpgsql\'
 
     COST 100
-    VOLATILE 
-    
+    VOLATILE
+
 AS $BODY$
 DECLARE
 	gk gk_geokrety%ROWTYPE;
@@ -57,7 +56,7 @@ ELSE
 	ORDER BY moved_on_datetime DESC
 	LIMIT 1;
 END IF;
-	
+
 IF (last_move IS NULL) THEN
 	-- NO Move
 	last_author := gk.owner;
@@ -139,7 +138,6 @@ $BODY$;');
         $this->execute('DROP FUNCTION geokrety.geokret_current_holder(bigint, timestamp with time zone)');
         $this->execute('DROP TRIGGER after_70_update_holder ON geokrety.gk_moves');
         $this->execute('DROP FUNCTION geokrety.moves_manage_geokret_holder()');
-
 
         $this->execute('DROP TRIGGER before_30_manage_holder ON geokrety.gk_geokrety');
         $this->execute('DROP FUNCTION geokrety.geokret_manage_holder()');

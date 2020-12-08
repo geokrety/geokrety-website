@@ -19,7 +19,7 @@ To run a geokrety instance on your Windows/Linux workstation using Docker :
 
 Pre-requisites:
 - Docker, Docker-compose installed
-- *geokrety-website-docker-base* image available 
+- *geokrety-website-docker-base* image available
 
 ```
  make build
@@ -28,7 +28,7 @@ Pre-requisites:
 
 Then local instance should be up and running and available at http://localhost:8000/
 
-An empty database with proper schema was initialized and exposed on local port `13306`. 
+An empty database with proper schema was initialized and exposed on local port `13306`.
 You could initialize some data using Makefile `seed` target.
 
 ## How to install contributors tools
@@ -42,7 +42,7 @@ For out-of-install scope contributors details, please see also [CONTRIBUTING.md]
 
 ### Linux host
 
-In this section we are using Debian/Ubuntu with Advanced Packaging Tool (`apt`). 
+In this section we are using Debian/Ubuntu with Advanced Packaging Tool (`apt`).
 Depending of your linux distribution and related packaging tool, some commands may differ.
 
 Install php:
@@ -55,9 +55,9 @@ For tests you may have to install some php extensions, here are some examples:
     sudo apt-get install php-fdomdocument
     sudo apt-get install php-mbstring
 
-Install composer 
+Install composer
 - go to https://getcomposer.org
-- execute installation commands like the following sample 
+- execute installation commands like the following sample
 
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     php -r "if (hash_file('sha384', 'composer-setup.php') === '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -82,14 +82,14 @@ As php is for now only installed onto docker container, you will need to install
 
 Provide a `php.ini` file from provided example (ex. `php.ini-development`).
 
-You should enable some extensions: 
+You should enable some extensions:
 ````
 extension_dir = "ext"
 extension=curl
 extension=gettext
 extension=openssl
 extension=mbstring
-```` 
+````
 
 Install composer (cf. https://getcomposer.org)
 
@@ -128,4 +128,3 @@ This action will install the following tools/libraries:
 ````
 
 PHPUnit configuration is located inside `phpunit.xml`.
-

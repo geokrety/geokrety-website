@@ -10,7 +10,7 @@ Actions below need to be executed inside one instance of the `website` container
 ```bash
 $ docker exec -it geokrety-legacy-new-theme_website.1.wagublclfksryxktinddbkv56 bash
 root@b523344ba6c3:/var/www/geokrety# cd website
-root@b523344ba6c3:/var/www/geokrety/website# 
+root@b523344ba6c3:/var/www/geokrety/website#
 ```
 ## Listing migrations
 ```bash
@@ -19,14 +19,14 @@ Phinx by CakePHP - https://phinx.org.
 
 using config file ./phinx.php
 using config parser php
-using migration paths 
+using migration paths
  - /var/www/geokrety/website/db/migrations
-using seed paths 
+using seed paths
  - /var/www/geokrety/website/db/seeds
 warning no environment specified, defaulting to: local
 ordering by creation time
 
- Status  [Migration ID]  Started              Finished             Migration Name 
+ Status  [Migration ID]  Started              Finished             Migration Name
 ----------------------------------------------------------------------------------
      up  20200801131052  2020-08-03 14:11:30+00  2020-08-03 14:11:31+00  LabelsLists
      up  20200802195759  2020-08-03 14:11:31+00  2020-08-03 14:11:31+00  SessionPersist
@@ -44,9 +44,9 @@ Phinx by CakePHP - https://phinx.org.
 
 using config file ./phinx.php
 using config parser php
-using migration paths 
+using migration paths
  - /var/www/geokrety/website/db/migrations
-using seed paths 
+using seed paths
  - /var/www/geokrety/website/db/seeds
 using migration base class Phinx\Migration\AbstractMigration
 using default template
@@ -60,9 +60,9 @@ Phinx by CakePHP - https://phinx.org.
 
 using config file ./phinx.php
 using config parser php
-using migration paths 
+using migration paths
  - /var/www/geokrety/website/db/migrations
-using seed paths 
+using seed paths
  - /var/www/geokrety/website/db/seeds
 warning no environment specified, defaulting to: local
 using database geokrety
@@ -81,9 +81,9 @@ Phinx by CakePHP - https://phinx.org.
 
 using config file ./phinx.php
 using config parser php
-using migration paths 
+using migration paths
  - /var/www/geokrety/website/db/migrations
-using seed paths 
+using seed paths
  - /var/www/geokrety/website/db/seeds
 warning no environment specified, defaulting to: local
 using database geokrety
