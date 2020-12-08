@@ -373,8 +373,7 @@ var_dump($gk);
 
         <h4>Drop or dipped move types</h4>
         <p>
-            In addition to the basic informations above, some move type require
-            som more values.
+            In addition to the basic informations above, some move type require additional values.
         </p>
         <dl class="dl-horizontal">
             <dt>variable</dt>
