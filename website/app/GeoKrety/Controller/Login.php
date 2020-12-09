@@ -128,19 +128,20 @@ class Login extends Base {
     }
 
     /**
-     * @param string|null $secid The secid token
+     * @param string|null $secid     The secid token
+     * @param bool        $streamXML Prepare to render as xml output
      *
      * @return void True if authentication succeed
      */
-    public function secidAuth(\Base $f3, ?string $secid) {
+    public function secidAuth(\Base $f3, ?string $secid, bool $streamXML = true) {
         if (strlen($secid) !== 128) {
-            Errors::buildError(_('Invalid "secid'));
+            Errors::buildError($streamXML, _('Invalid "secid"'));
             exit();
         }
         $auth = new Auth('secid');
         $user = $auth->login($secid, null);
         if ($user === false) {
-            Errors::buildError(_('Invalid "secid'));
+            Errors::buildError($streamXML, _('Invalid "secid"'));
             exit();
         }
         Login::connectUser($f3, $user, 'secid');

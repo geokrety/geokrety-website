@@ -3,8 +3,8 @@
 namespace GeoKrety\Service\Xml;
 
 class GeokretyExport2 extends GeokretyBaseExport {
-    public function __construct(bool $stream = false, ?string $compress = null, $filename = 'out.xml') {
-        parent::__construct($stream, $compress, $filename);
+    public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
+        parent::__construct($streamXML, $compress, $filename);
         $this->xml->startElement('geokrety');
     }
 

@@ -10,9 +10,9 @@ abstract class Base {
     protected $stream;
     private $compress;
 
-    public function __construct(bool $stream = false, ?string $compress = null, $filename = 'out.xml') {
+    public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
         $this->stream = fopen('php://output', 'w');
-        if ($stream === true) {
+        if ($streamXML === true) {
             // No output buffer while streaming
             ob_end_flush();
             ob_implicit_flush();

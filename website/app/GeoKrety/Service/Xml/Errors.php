@@ -5,13 +5,9 @@ namespace GeoKrety\Service\Xml;
 class Errors extends Base {
     protected $xmlErrors;
 
-    public function __construct($msg = null) {
-        parent::__construct();
+    public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
+        parent::__construct($streamXML, $compress, $filename);
         $this->xml->startElement('errors');
-
-        if (!is_null($msg)) {
-            $this->addError($msg);
-        }
     }
 
     public function end() {
@@ -25,29 +21,16 @@ class Errors extends Base {
         $this->xml->endElement();
     }
 
-    public function insertSessionErrors() {
-        if (empty($_SESSION['alert_msgs'])) {
-            return;
-        }
-
-        $alerts = array_filter($_SESSION['alert_msgs'], function ($k) {
-            return $k['level'] == 'danger';
-        });
-
-        foreach ($alerts as $msg) {
-            $this->addError($msg['message']);
-        }
-    }
-
     /**
      * Create an xml response from an array of errors.
      *
+     * @param bool         $stream Prepare to render as xml output
      * @param array|string $errors The errors to format
      */
-    public static function buildError($errors) {
-        //public static function buildError(array|string $errors) { // need php 8.0
+    public static function buildError(bool $stream, $errors) {
+        //public static function buildError(bool $stream, array|string $errors) { // need php 8.0
         $errors = gettype($errors) === 'string' ? [$errors] : $errors;
-        $xml = new \GeoKrety\Service\Xml\Errors();
+        $xml = new \GeoKrety\Service\Xml\Errors($stream);
         foreach ($errors as $err) {
             $xml->addError($err);
         }
