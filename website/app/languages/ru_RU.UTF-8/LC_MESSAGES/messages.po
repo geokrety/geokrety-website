@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-14 17:10+0000\n"
-"PO-Revision-Date: 2020-11-14 17:12\n"
+"PO-Revision-Date: 2020-12-10 17:05\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -77,7 +77,7 @@ msgstr "Не удалось создать первоначальный ход G
 #: website/app/GeoKrety/Controller/GeokretCreate.php:55
 #: website/app/GeoKrety/Controller/GeokretEdit.php:23
 msgid "Failed to create the GeoKret."
-msgstr "Не удалось создать GeoKret."
+msgstr "Не удалось создать ГеоКрота."
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:57
 #, php-format
@@ -86,7 +86,7 @@ msgstr "Ваш GeoKret был создан. Вы теперь можете <a hr
 
 #: website/app/GeoKrety/Controller/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
-msgstr "Ваш GeoKret был обновлен."
+msgstr "Ваш ГеоКрот был обновлен."
 
 #: website/app/GeoKrety/Controller/GeokretLabel.php:22
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
@@ -588,7 +588,7 @@ msgstr "Поиск на geocaching.com"
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:35
 #, php-format
 msgid "Location: %s Elevation: %dm"
-msgstr "Расположение: %s Превышение: %dм"
+msgstr "Место: %s Высота: %dм"
 
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:35
 #, php-format
@@ -869,7 +869,7 @@ msgstr "%1 еще не переместил GeoKrety."
 
 #: smarty/pages:3 smarty/pages:9 smarty/blocks/user:16
 msgid "Owned GeoKrety"
-msgstr "Владелец GeoKrety"
+msgstr "Мои ГеоКроты"
 
 #: smarty/pages:23 smarty/pages:36 smarty/pages:24
 msgid "Distance"
@@ -1119,7 +1119,7 @@ msgstr "%1опубликовал фотографии"
 
 #: smarty/pages:3
 msgid "News: %1"
-msgstr ""
+msgstr "Новости: %1"
 
 #: smarty/pages:13
 msgid "Leave a comment"
@@ -1168,11 +1168,11 @@ msgstr "Изменить"
 
 #: smarty/pages:3
 msgid "Interactive map"
-msgstr ""
+msgstr "Карта"
 
 #: smarty/pages:17
 msgid "GeoKrety interactive map"
-msgstr "интерактивная карта GeoKrety"
+msgstr "Интерактивная карта ГеоКротов"
 
 #: smarty/pages:3 smarty/pages:8
 msgid "Contact us"
@@ -1228,7 +1228,7 @@ msgstr "Пресса"
 
 #: smarty/pages:11
 msgid "Help API"
-msgstr ""
+msgstr "Помощь по API"
 
 #: smarty/pages:39
 msgid "Yes, change my email address"
@@ -1348,7 +1348,7 @@ msgstr "Галерея изображений"
 
 #: smarty/pages:3 smarty/forms:6 smarty/blocks/user:3 smarty:60
 msgid "Create a new GeoKret"
-msgstr "Создать новый GeoKret"
+msgstr "Создать нового ГеоКрота"
 
 #: smarty/pages:3 smarty/pages:9
 msgid "%1's inventory"
@@ -1470,7 +1470,7 @@ msgstr "Отправить мне ссылку для восстановлени
 
 #: smarty/pages:3
 msgid "Registration"
-msgstr ""
+msgstr "Регистрация"
 
 #: smarty/pages:14
 msgid "Create an account using %1"
@@ -1939,7 +1939,7 @@ msgstr "Недавно опубликованные шаги"
 
 #: smarty/blocks/user:28
 msgid "Moves of owned GeoKrety"
-msgstr "Шаги принадлежащего GeoKrety"
+msgstr "Перемещения моих ГеоКротов"
 
 #: smarty/blocks/user:32
 msgid "Posted pictures"
@@ -1951,7 +1951,7 @@ msgstr "Фотографии принадлежащего GeoKrety"
 
 #: smarty/blocks/user:40 smarty:28
 msgid "Where are my GeoKrety?"
-msgstr "Где мои GeoKrety?"
+msgstr "Где мои ГеоКроты?"
 
 #: smarty/blocks/user:10
 msgid "No home coordinates have been defined."
@@ -2181,7 +2181,7 @@ msgstr "Последние записи для:"
 
 #: smarty/dialog:32 smarty/dialog:38
 msgid "your own GeoKrety"
-msgstr "ваш собственный GeoKrety"
+msgstr "ваши ГеоКроты"
 
 #: smarty/dialog:33 smarty/dialog:39
 msgid "GeoKrety that you watch"
@@ -2397,7 +2397,7 @@ msgstr "Фотогалерея"
 
 #: smarty:68
 msgid "GeoKrety Map"
-msgstr "Карта GeoKrety"
+msgstr "Карта ГеоКротов"
 
 #: smarty:75
 msgid "Currently selected language"
@@ -2529,11 +2529,11 @@ msgstr "Расстояние:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:45
 msgid "Caches:"
-msgstr "Кэш:"
+msgstr "Тайники:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:47
 msgid "Actual position:"
-msgstr "Фактическая должность:"
+msgstr "Текущее местоположение:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:49
 msgid "Waypoint:"
@@ -2553,7 +2553,7 @@ msgstr "Страна:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:53
 msgid "Elevation:"
-msgstr "Превышение:"
+msgstr "Высота:"
 
 #: website/app-templates/foundation-emails/dist/email-account-activated.html:1
 #: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
