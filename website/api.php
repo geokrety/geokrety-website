@@ -46,7 +46,7 @@ $gk=sprintf(&quot;GK%04X&quot;,$id);
 
 <p>This can be used to synchronize your database with GK database - useful for OpenCaching and other geocaching projects as well as for other purposes ;) <u>Please note, all opencaching sites should be using Method 2!</u></p>
 
-<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://cdn.geokrety.org/exports/">here</a>.</p>
+<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://api.geokretymap.org/basex/export/">here</a>.</p>
 
 <h3>Method 1: All GeoKrety & logs information (slow and large volume of data)</h3>
 
@@ -95,7 +95,7 @@ To get list of GK that changed location during last hour: '.$config['adres'].'ex
 
 <p>State field may have different value than in other versions of export scripts. This is because OC sites only need to know if a geokret is in a cache or in the hands of some geocacher. So if someone dips a geokret, its state will be 1 (grabbed).</p>
 
-<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://cdn.geokrety.org/exports/">here</a>.</p>
+<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://api.geokretymap.org/basex/export/">here</a>.</p>
 
 
 <p>Sample output:</p>
@@ -122,7 +122,7 @@ To get list of GK that changed location during last hour: '.$config['adres'].'ex
 
 <h2>Retriving information</h2>
 
-<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://cdn.geokrety.org/exports/">here</a>.</p>
+<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://api.geokretymap.org/basex/export/">here</a>.</p>
 
 
 <p><b><u>'.$config['adres'].'export2.php</b></u></p>
@@ -274,7 +274,7 @@ this request returns also the secret tracking codes (the <b>nr</b> variable) for
 
 
 
-<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://cdn.geokrety.org/exports/">here</a>.</p>
+<p><b>Note:</b> export*.php has a limit of retrieved data set at 10 days (ie you can download data changed in the past 10 days only). This should be enough to sync local OC nodes or other databases. To get older data check: <a href="https://api.geokretymap.org/basex/export/">here</a>.</p>
 
 
 <p><b><u>'.$config['adres'].'export2.php</b></u></p>
