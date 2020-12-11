@@ -9,7 +9,7 @@ use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
-use GeoKrety\Service\Xml\Errors;
+use GeoKrety\Service\Xml\Error;
 use GeoKrety\Session;
 use Multilang;
 use Sugar\Event;
@@ -135,13 +135,13 @@ class Login extends Base {
      */
     public function secidAuth(\Base $f3, ?string $secid, bool $streamXML = true) {
         if (strlen($secid) !== 128) {
-            Errors::buildError($streamXML, _('Invalid "secid"'));
+            Error::buildError($streamXML, _('Invalid "secid"'));
             exit();
         }
         $auth = new Auth('secid');
         $user = $auth->login($secid, null);
         if ($user === false) {
-            Errors::buildError($streamXML, _('Invalid "secid"'));
+            Error::buildError($streamXML, _('Invalid "secid"'));
             exit();
         }
         Login::connectUser($f3, $user, 'secid');

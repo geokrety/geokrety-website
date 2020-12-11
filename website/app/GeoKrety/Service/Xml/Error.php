@@ -2,9 +2,7 @@
 
 namespace GeoKrety\Service\Xml;
 
-class Errors extends Base {
-    protected $xmlErrors;
-
+class Error extends Base {
     public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
         parent::__construct($streamXML, $compress, $filename);
         $this->xml->startElement('errors');
@@ -30,7 +28,7 @@ class Errors extends Base {
     public static function buildError(bool $stream, $errors) {
         //public static function buildError(bool $stream, array|string $errors) { // need php 8.0
         $errors = gettype($errors) === 'string' ? [$errors] : $errors;
-        $xml = new \GeoKrety\Service\Xml\Errors($stream);
+        $xml = new \GeoKrety\Service\Xml\Error($stream);
         foreach ($errors as $err) {
             $xml->addError($err);
         }

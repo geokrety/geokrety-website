@@ -20,7 +20,7 @@ Force Tags      json    legacy    gkt    export_v3
 Unauthenticated See Empty Results
     Create Session                          geokrety                    ${GK_URL}
     # Init session COOKIE
-    ${auth} =     GET On Session            geokrety                    url=/devel/
+    ${auth} =     GET On Session            geokrety                    url=/
 
     ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php
     Should Not Be Empty    ${resp.content}
@@ -37,7 +37,7 @@ Unauthenticated See Empty Results
 Authenticated User See His Inventory - User 1 - Empty inventory
     Create Session                          geokrety                    ${GK_URL}
     # Init session COOKIE
-    ${auth} =     GET On Session            geokrety                    url=/devel/
+    ${auth} =     GET On Session            geokrety                    url=/
 
     GET On Session                          geokrety                    url=/devel/users/${USER_1.name}/login
     ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php
@@ -52,7 +52,7 @@ Authenticated User See His Inventory - User 1 - Empty inventory
 Authenticated User See His Inventory - User 2 - Owned 2 Inventory 1
     Create Session                          geokrety                    ${GK_URL}
     # Init session COOKIE
-    ${auth} =     GET On Session            geokrety                    url=/devel/
+    ${auth} =     GET On Session            geokrety                    url=/
 
     ${auth} =     GET On Session            geokrety                    url=/devel/users/${USER_2.name}/login
     ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php
@@ -70,7 +70,7 @@ Authenticated User See His Inventory - User 2 - Owned 2 Inventory 1
 Authenticated User See His Inventory - User 3 - Owned 4 Inventory 4
     Create Session                          geokrety                    ${GK_URL}
     # Init session COOKIE
-    ${auth} =     GET On Session            geokrety                    url=/devel/
+    ${auth} =     GET On Session            geokrety                    url=/
 
     ${auth} =     GET On Session            geokrety                    url=/devel/users/${USER_3.name}/login
     ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php

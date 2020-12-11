@@ -23,6 +23,11 @@ class TrackingCode {
 
             return false;
         }
+        if (strlen($trackingCode) > GK_SITE_TRACKING_CODE_LENGTH) {
+            array_push($this->errors, sprintf(_('Tracking Code "%s" seems too long. We expect %d characters here.'), $trackingCode, GK_SITE_TRACKING_CODE_LENGTH));
+
+            return false;
+        }
 
         return true;
     }
@@ -53,9 +58,11 @@ class TrackingCode {
         if ($geokret->dry()) {
             array_push($this->errors, sprintf(_('Sorry, but Tracking Code "%s" was not found in our database.'), $trackingCode));
 
-            return;
+            return false;
         }
         array_push($this->geokrety, $geokret);
+
+        return true;
     }
 
     private function renderGeokret(Geokret $geokret) {
@@ -95,7 +102,7 @@ class TrackingCode {
         $trackingCodeArray = array_unique($trackingCodeArray);
 
         $trackingCodeCount = sizeof($trackingCodeArray);
-        if (!$trackingCodeCount) {
+        if ($trackingCodeCount === 0) {
             array_push($this->errors, _('No Tracking Code provided.'));
 
             return false;
@@ -109,20 +116,27 @@ class TrackingCode {
             return false;
         }
 
+        $return_status = true;
         foreach ($trackingCodeArray as $trackingCode) {
             if (!$this->checkCharacters($trackingCode)) {
+                $return_status = false;
                 continue;
             }
             if (!$this->isGKNumber($trackingCode)) {
+                $return_status = false;
                 continue;
             }
             if (!$this->checkLength($trackingCode)) {
+                $return_status = false;
                 continue;
             }
-            $this->lookupTrackingCode($trackingCode);
+            if (!$this->lookupTrackingCode($trackingCode)) {
+                $return_status = false;
+                continue;
+            }
         }
 
-        return true;
+        return $return_status;
     }
 
     public function render() {

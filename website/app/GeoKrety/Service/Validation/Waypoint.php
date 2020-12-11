@@ -92,7 +92,7 @@ class Waypoint {
                 $this->errors[] = sprintf(_('View the <a href="%s" target="_blank">cache page</a>.'), $cacheUrl);
 
                 if (WaypointInfo::isGC($waypoint)) {
-                    $this->errors[] = _('This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \'Coordinates\' field.');
+                    $this->errors[] = _('This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the "Coordinates" field.');
 
                     return false;
                 }

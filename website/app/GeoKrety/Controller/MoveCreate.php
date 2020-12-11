@@ -171,14 +171,7 @@ class MoveCreate extends Base {
             }
         }
 
-        // Do we have some errors while saving to database?
-        if ($f3->get('ERROR')) {
-            Flash::instance()->addMessage(_('Failed to save move.'), 'danger');
-            $this->get($f3);
-        } else {
-            Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
-            $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $moves[0]->geokret->gkid, $moves[0]->getMoveOnPage(), $moves[0]->id));
-        }
+        $this->render($moves);
     }
 
     protected function _checkErrors(array &$errors, $moves) {
@@ -204,6 +197,18 @@ class MoveCreate extends Base {
         if ($hasError) {
             $this->get($this->f3);
             exit();
+        }
+    }
+
+    protected function render($moves) {
+        $f3 = $this->f3;
+        // Do we have some errors while saving to database?
+        if ($f3->get('ERROR')) {
+            Flash::instance()->addMessage(_('Failed to save move.'), 'danger');
+            $this->get($f3);
+        } else {
+            Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
+            $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $moves[0]->geokret->gkid, $moves[0]->getMoveOnPage(), $moves[0]->id));
         }
     }
 }

@@ -9,5 +9,13 @@ Documentation     Variables for users definitions
 &{GEOKRETY_5}      name=geokrety05    ref=GK0005    tc=TC0005    id=5    type=0    mission=${EMPTY}
 &{GEOKRETY_6}      name=geokrety06    ref=GK0006    tc=TC0006    id=6    type=0    mission=${EMPTY}
 &{GEOKRETY_7}      name=geokrety07    ref=GK0007    tc=TC0007    id=7    type=0    mission=${EMPTY}
+&{GEOKRETY_8}      name=geokrety08    ref=GK0008    tc=TC0008    id=8    type=0    mission=${EMPTY}
+&{GEOKRETY_9}      name=geokrety09    ref=GK0009    tc=TC0009    id=9    type=0    mission=${EMPTY}
+&{GEOKRETY_10}     name=geokrety10    ref=GK000A    tc=TC000A    id=10   type=0    mission=${EMPTY}
+&{GEOKRETY_11}     name=geokrety11    ref=GK000B    tc=TC000B    id=11   type=0    mission=${EMPTY}
+&{GEOKRETY_12}     name=geokrety12    ref=GK000C    tc=TC000C    id=12   type=0    mission=${EMPTY}
+&{GEOKRETY_13}     name=geokrety13    ref=GK000D    tc=TC000D    id=13   type=0    mission=${EMPTY}
+&{GEOKRETY_14}     name=geokrety14    ref=GK000E    tc=TC000E    id=14   type=0    mission=${EMPTY}
+&{GEOKRETY_15}     name=geokrety15    ref=GK000F    tc=TC000F    id=15   type=0    mission=${EMPTY}
 
 ${TC_INVALID}      ABCDEF
