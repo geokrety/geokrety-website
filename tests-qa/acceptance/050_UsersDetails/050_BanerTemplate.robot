@@ -3,7 +3,7 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
-Force Tags      Users Details
+Force Tags      Users Details    RobotEyes
 Suite Setup     Seed
 
 *** Test Cases ***

@@ -4,7 +4,7 @@ Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/waypoints.resource
-Force Tags      Moves    Location
+Force Tags      Moves    Location    RobotEyes
 Suite Setup     Seed
 
 *** Test Cases ***

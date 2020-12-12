@@ -6,7 +6,7 @@ Resource        ../functions/PageMoves.robot
 Resource        ../functions/Images.robot
 Resource        ../vars/users.resource
 Resource        ../vars/moves.resource
-Force Tags      GeoKrety Details    Moves    Pictures
+Force Tags      GeoKrety Details    Moves    Pictures    RobotEyes
 Suite Setup     Seed
 
 *** Test Cases ***

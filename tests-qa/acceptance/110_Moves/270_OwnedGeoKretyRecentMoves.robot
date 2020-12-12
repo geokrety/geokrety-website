@@ -6,7 +6,7 @@ Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
-Force Tags      Moves    Recent Moves    Owned
+Force Tags      Moves    Recent Moves    Owned    RobotEyes
 Suite Setup     Seed
 
 *** Test Cases ***

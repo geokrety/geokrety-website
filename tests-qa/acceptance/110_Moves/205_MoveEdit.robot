@@ -7,7 +7,7 @@ Resource        ../vars/moves.resource
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Resource        ../vars/waypoints.resource
-Force Tags      Moves    GeoKret Details    Move Comment    Timezone
+Force Tags      Moves    GeoKret Details    Move Comment    Timezone    RobotEyes
 Test Setup     Seed
 
 *** Variables ***

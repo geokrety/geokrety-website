@@ -4,7 +4,7 @@ Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/Images.robot
 Resource        ../vars/users.resource
-Force Tags      Users Details    Pictures
+Force Tags      Users Details    Pictures    RobotEyes
 Suite Setup     Seed
 
 *** Test Cases ***

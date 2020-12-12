@@ -6,7 +6,7 @@ Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
 Resource        ../vars/geokrety.resource
 Resource        ../vars/users.resource
-Force Tags      Moves    GeoKret Details
+Force Tags      Moves    GeoKret Details    RobotEyes
 Test Setup      Seed
 
 *** Test Cases ***
