@@ -453,3 +453,9 @@ ${NEWS_COMMENT_SECOND_COMMENT}                  ${NEWS_COMMENTS}\[2]
 ${NEWS_COMMENT_THIRD_COMMENT}                   ${NEWS_COMMENTS}\[3]
 
 #
+
+################
+# SEARCH BY WAYPOINT PAGE
+################
+
+${SEARCH_BY_WAYPOINT_TABLE}                    //*[@id="searchByWaypointTable"]

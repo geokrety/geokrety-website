@@ -200,6 +200,11 @@ EOT;
 
     // https://new-theme.staging.geokrety.org/szukaj.php?wpt=OP866L
     public function szukaj(\Base $f3) {
-        echo 'TODO';
+        $waypoint = $f3->get('GET.wpt');
+        if (is_null($waypoint)) {
+            http_response_code(400);
+            exit(_('Waypoint parameter must be provided.'));
+        }
+        $f3->reroute(['search_by_waypoint', ['waypoint' => $waypoint]], $permanent = true, $die = true);
     }
 }

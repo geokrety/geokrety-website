@@ -95,3 +95,14 @@ Check Move Comment Missing
     Wait Until Element Contains             ${_element}/div/a[@data-gk-link="user"]    ${author}
     Wait Until Element Contains             ${_element}/div/span[@class="move-comment"]    ${comment.strip()}
     Element should have class               ${_element}    list-group-item-danger
+
+
+Check Search By Waypoint
+    [Arguments]    ${row}    ${gk}    ${move}    ${distance}=${EMPTY}
+    # TODO check status icon
+    Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    2    ${gk.name}
+    Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    2    ${gk.ref}
+    Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    3    ${move.waypoint}
+    Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    4    ${move.comment}
+    # Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    5    <datetime>
+    Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    6    ${distance} km
