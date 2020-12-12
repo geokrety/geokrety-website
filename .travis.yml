@@ -45,8 +45,6 @@ jobs:
         # Retrieve huge file to initialize database
         - ./website/db/get_huge_dump_files.sh
 
-        # Stop postgres as we'll use our instance
-        - sudo service postgresql stop 12
         - sudo apt-get update > /dev/null && sudo apt-get install -y postgresql-client-12 postgis httping -qq > /dev/null
 
         # Launch Postgres

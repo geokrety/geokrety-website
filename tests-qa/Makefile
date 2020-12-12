@@ -6,7 +6,7 @@ ifeq (Windows_NT, ${OS})
 endif
 
 TRAVIS_BRANCH ?= local
-ROBOT_PARAMS := --variable browser:Firefox -v images_dir:visual_images  --debugfile debugfile.log --report report.html --xunit xUnit.xml -d docs/$(TRAVIS_BRANCH) -V acceptance/vars/robot-vars.py -e TODO -s 210_ruchy acceptance/300_LegacyBridges/
+ROBOT_PARAMS := --variable browser:Firefox -v images_dir:visual_images  --debugfile debugfile.log --report report.html --xunit xUnit.xml -d docs/$(TRAVIS_BRANCH) -V acceptance/vars/robot-vars.py -e TODO acceptance
 
 # HELP
 # This will output the help for each task
