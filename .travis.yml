@@ -82,9 +82,6 @@ jobs:
 
         # Install RobotFramework
         - pip install -r tests-qa/requirements.txt > /dev/null
-        - pip freeze |sort
-        - dpkg -l |sort
-        - python --version
 
 #        # Install and launch BrowserStack Local agent
 #        - curl -L https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip | gunzip > BrowserStackLocal && chmod a+x BrowserStackLocal
