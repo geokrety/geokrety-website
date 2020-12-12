@@ -16,6 +16,7 @@ Anonymous users are refused
     Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL}
     Page Should Contain                     Unauthorized
 
+# In fact it update currently connected user, whatever the url is
 Users cannot edit other user observation area
     [Tags]    TODO
     Sign In ${USER_2.name} Fast

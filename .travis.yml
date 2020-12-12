@@ -94,6 +94,7 @@ jobs:
 
         # Download geckodriver
         - curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz | tar xzf - -C tests-qa
+        - sudo apt-get install -y ttf-bitstream-vera fonts-urw-base35 -qq > /dev/null
 
         # Wait for services to be reachable
         - export GEOKRETY_URL=http://localhost:3001/
