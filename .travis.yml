@@ -1,5 +1,5 @@
 os: linux
-dist: bionic
+dist: focal
 language: php
 cache:
   directories:
@@ -32,6 +32,7 @@ jobs:
         - ./pre-commit run --all-files
 
     - stage: test-qa
+      php: 7.4
       if: env(TRAVIS_QA_TOKEN) AND type = 'push'
       script:
         - export PGUSER=geokrety
@@ -83,6 +84,9 @@ jobs:
 
         # Install RobotFramework
         - pip install -r tests-qa/requirements.txt > /dev/null
+        - pip freeze |sort
+        - dpkg -l |sort
+        - python --version
 
 #        # Install and launch BrowserStack Local agent
 #        - curl -L https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip | gunzip > BrowserStackLocal && chmod a+x BrowserStackLocal
