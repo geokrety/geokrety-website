@@ -9,7 +9,6 @@
 
 <div class="modal-body">
     <form action="{'login'|alias}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
-
         <div class="form-group">
             <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>
             <div class="col-sm-10">

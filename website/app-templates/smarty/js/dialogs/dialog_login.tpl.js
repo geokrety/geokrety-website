@@ -7,7 +7,9 @@ $('#modal').on('show.bs.modal', function(event) {
     let typeName = button.data('type');
 
     if (typeName === 'form-login') {
-        showLoginForm();
+        modalLoad("{'login'|login_link nofilter}", function() {
+            loginParsleyForm = $('#modal form').parsley();
+        });
     }
 });
 
@@ -16,11 +18,5 @@ $('#modal').on('hide.bs.modal', function(event) {
         loginParsleyForm.destroy();
     }
 });
-
-function showLoginForm() {
-    $('#modal').find('.modal-content').load("{'login'|login_link}", function() {
-        loginParsleyForm = $('#modal form').parsley();
-    });
-}
 
 // ----------------------------------- JQUERY - DIALOG_LOGIN - END

@@ -8,21 +8,14 @@ use GeoKrety\AuthGroup;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
+use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\Url;
 use GeoKrety\Service\Xml\Error;
 use GeoKrety\Session;
-use Multilang;
 use Sugar\Event;
 
 class Login extends Base {
-    const NO_REDIRECT_URLS = [
-        'login',
-        'logout',
-        'registration',
-        'registration_social',
-        'registration_activate',
-    ];
-
     const NO_GRAPHIC_LOGIN = [
         'secid',
     ];
@@ -52,7 +45,6 @@ class Login extends Base {
      * @param string|null $method The method used to connect
      */
     public static function connectUser(\Base $f3, User $user, ?string $method = null) {
-        $ml = Multilang::instance();
         $f3->set('SESSION.CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USERNAME', $user->username);
         $f3->set('SESSION.IS_LOGGED_IN', true);
@@ -69,20 +61,14 @@ class Login extends Base {
             return;
         }
         Session::setGKTCookie();
+        LanguageService::changeLanguageTo($user->preferred_language);
         Flash::instance()->addMessage(_('Welcome on board!'), 'success');
-        if ($f3->exists('GET.goto')) {
-            $goto = $f3->get('GET.goto');
-            if (!in_array($goto, self::NO_REDIRECT_URLS)) {
-                $query = '';
-                if (!empty(base64_decode($f3->get('GET.query')))) {
-                    $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
-                    $query = (!empty($query) ? '?' : '').$query;
-                }
-                $params = $f3->unserialize(base64_decode($f3->get('GET.params')));
-                $f3->reroute($ml->alias($goto, $params, $user->preferred_language).$query);
-            }
+        $url = Url::unserializeGoto($user->preferred_language);
+        if (is_null($url)) {
+            $ml = \Multilang::instance();
+            $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
         }
-        $f3->reroute($ml->alias('user_details', ['userid' => $user->id], $user->preferred_language));
+        $f3->reroute($url);
     }
 
     public function loginForm() {

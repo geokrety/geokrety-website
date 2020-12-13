@@ -10,5 +10,5 @@
  * -------------------------------------------------------------
  */
 function smarty_modifier_login_link(string $alias = 'login', $params = null) {
-    return \GeoKrety\Service\Url::getGoto($alias, $params);
+    return \GeoKrety\Service\Url::serializeGoto($alias, $params);
 }
