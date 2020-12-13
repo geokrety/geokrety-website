@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a74c08e0113c1f5b4f6ba9335bee185d",
+    "content-hash": "dbe97b1b19d285c685becbdb14b31e5f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -98,22 +98,21 @@
         },
         {
             "name": "bcosca/fatfree-core",
-            "version": "dev-master",
+            "version": "3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcosca/fatfree-core.git",
-                "reference": "28e7e75"
+                "reference": "3e23ae05384b2f830e99c5888b94118819ed948b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/28e7e75",
-                "reference": "28e7e75",
+                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/3e23ae05384b2f830e99c5888b94118819ed948b",
+                "reference": "3e23ae05384b2f830e99c5888b94118819ed948b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -128,9 +127,9 @@
             "homepage": "http://fatfreeframework.com/",
             "support": {
                 "issues": "https://github.com/bcosca/fatfree-core/issues",
-                "source": "https://github.com/bcosca/fatfree-core/tree/master"
+                "source": "https://github.com/bcosca/fatfree-core/tree/3.7.3"
             },
-            "time": "2020-11-06T10:40:46+00:00"
+            "time": "2020-12-13T12:49:39+00:00"
         },
         {
             "name": "benhall14/php-pagination",
@@ -8790,17 +8789,9 @@
             "time": "2020-07-08T17:02:28+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "bcosca/fatfree-core",
-            "version": "9999999-dev",
-            "alias": "3.7.x-dev",
-            "alias_normalized": "3.7.9999999.9999999-dev"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "beta",
     "stability-flags": {
-        "bcosca/fatfree-core": 20,
         "benhall14/php-pagination": 20,
         "league/geotools": 0
     },
