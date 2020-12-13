@@ -15,35 +15,42 @@
   </div>
 </div>
 
-{if $news}
-<h2>📰 {t}News{/t}</h2>
-{foreach from=$news item=item}
-{include file='elements/news.tpl' news=$item}
-{/foreach}
-{/if}
+<div class="row">
+  <div class="col-md-3 col-md-push-9">
+    {include file='banners/donate.tpl'}
+  </div>
+  <div class="col-md-9 col-md-pull-3">
+    {if $news}
+    <h2>📰 {t}News{/t}</h2>
+    {foreach from=$news item=item}
+    {include file='elements/news.tpl' news=$item}
+    {/foreach}
+    {/if}
 
-{if $moves}
-<h2>🥾 {t}Latest moves{/t}</h2>
-<div class="table-responsive" id="recentMovesPanel">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th></th>
-        <th>{t}ID{/t}</th>
-        <th>{t}Spotted in{/t}</th>
-        <th>{t}Comment{/t}</th>
-        <th class="text-center">{t}Last move{/t}</th>
-        <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/dist.gif" title="{t}Distance{/t}" /></th>
-      </tr>
-    </thead>
-    <tbody>
-{foreach from=$moves item=item}
-{include file='elements/move_as_list.tpl' move=$item}
-{/foreach}
-    </tbody>
-  </table>
+    {if $moves}
+    <h2>🥾 {t}Latest moves{/t}</h2>
+    <div class="table-responsive" id="recentMovesPanel">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>{t}ID{/t}</th>
+            <th>{t}Spotted in{/t}</th>
+            <th>{t}Comment{/t}</th>
+            <th class="text-center">{t}Last move{/t}</th>
+            <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/dist.gif" title="{t}Distance{/t}" /></th>
+          </tr>
+        </thead>
+        <tbody>
+    {foreach from=$moves item=item}
+    {include file='elements/move_as_list.tpl' move=$item}
+    {/foreach}
+        </tbody>
+      </table>
+    </div>
+    {/if}
+  </div>
 </div>
-{/if}
 
 
 {if $pictures}

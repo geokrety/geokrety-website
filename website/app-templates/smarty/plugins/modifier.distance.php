@@ -22,5 +22,5 @@ function smarty_modifier_distance(?int $distance, $unit = 'km'): string {
     }
     $_distance = $distance * SUPPORTED_UNITS[$unit];
 
-    return sprintf('%d %s', $_distance, strtolower($unit));
+    return sprintf('%d %s', $_distance, strtolower($unit));
 }
