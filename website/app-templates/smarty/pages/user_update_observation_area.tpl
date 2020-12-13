@@ -42,7 +42,7 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
                         </div>
 
                         <p>
-                            <em>{t}Range is limited to {GK_USER_OBSERVATION_AREA_MAX_KM} km. Set it to 0 to disable the observation feature.{/t}</em>
+                            <em>{t}Range is limited to {GK_USER_OBSERVATION_AREA_MAX_KM|distance}. Set it to 0 to disable the observation feature.{/t}</em>
                         </p>
 
                     </div>

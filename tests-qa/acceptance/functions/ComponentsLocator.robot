@@ -125,22 +125,22 @@ ${GEOKRET_DETAILS_TYPE}                         ${GEOKRET_DETAILS_DETAILS_PANEL}
 ${GEOKRET_DETAILS_TYPE_IMG}                     ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/img
 ${GEOKRET_DETAILS_OWNER}                        ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="user"]
 
-${GEOKRET_DETAILS_TRACKING_CODE}                ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="geokret-tracking-code"]
-${GEOKRET_DETAILS_TRACKING_CODE_LABEL}          ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Tracking Code"]
+${GEOKRET_DETAILS_TRACKING_CODE}                ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-tracking-code"]
+${GEOKRET_DETAILS_TRACKING_CODE_LABEL}          ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Tracking Code"]
 
-${GEOKRET_DETAILS_REF_NUMBER}                   ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="geokret-id"]
-${GEOKRET_DETAILS_REF_NUMBER_LABEL}             ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Reference number"]
+${GEOKRET_DETAILS_REF_NUMBER}                   ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-id"]
+${GEOKRET_DETAILS_REF_NUMBER_LABEL}             ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Reference number"]
 
-${GEOKRET_DETAILS_DISTANCE}                     ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="geokret-distance"]
-${GEOKRET_DETAILS_DISTANCE_LABEL}               ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Total distance"]
+${GEOKRET_DETAILS_DISTANCE}                     ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-distance"]
+${GEOKRET_DETAILS_DISTANCE_LABEL}               ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Total distance"]
 
-${GEOKRET_DETAILS_CACHES_COUNT}                 ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="geokret-caches-count"]
-${GEOKRET_DETAILS_CACHES_COUNT_LABEL}           ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Places visited"]
+${GEOKRET_DETAILS_CACHES_COUNT}                 ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-caches-count"]
+${GEOKRET_DETAILS_CACHES_COUNT_LABEL}           ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Places visited"]
 
-${GEOKRET_DETAILS_CREATED_ON_DATETIME}          ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="geokret-created-on-datetime"]
-${GEOKRET_DETAILS_CREATED_ON_DATETIME_LABEL}    ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Born"]
+${GEOKRET_DETAILS_CREATED_ON_DATETIME}          ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-created-on-datetime"]
+${GEOKRET_DETAILS_CREATED_ON_DATETIME_LABEL}    ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Born"]
 
-${GEOKRET_DETAILS_MISSION}                      //*[@id="geokretyMissionPanel"]/div[@class="panel-body"]
+${GEOKRET_DETAILS_MISSION}                      //*[@id="geokretyMissionPanel"]/div[contains(@class, "panel-body")]
 
 ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}       //*[@id="tracking_code"]
 ${GEOKRET_DETAILS_FOUND_IT_BUTTON}              //*[@id="foundItLogItButton"]
@@ -217,17 +217,17 @@ ${USER_PROFILE_ICON_IMAGE}                      ${USER_PROFILE_DETAILS_PANEL}/di
 
 ${USER_PROFILE_USERNAME}                        ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="user"]
 
-${USER_PROFILE_JOIN_TIME}                       ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="user-join-on-datetime"]
-${USER_PROFILE_JOIN_TIME_LABEL}                 ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Joined us"]
+${USER_PROFILE_JOIN_TIME}                       ${USER_PROFILE_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="user-join-on-datetime"]
+${USER_PROFILE_JOIN_TIME_LABEL}                 ${USER_PROFILE_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Joined us"]
 
-${USER_PROFILE_LANGUAGE}                        ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="user-language"]
-${USER_PROFILE_LANGUAGE_LABEL}                  ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Language"]
+${USER_PROFILE_LANGUAGE}                        ${USER_PROFILE_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="user-language"]
+${USER_PROFILE_LANGUAGE_LABEL}                  ${USER_PROFILE_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Language"]
 
-${USER_PROFILE_EMAIL}                           ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-body"]//dd[@class="user-email"]
-${USER_PROFILE_EMAIL_LABEL}                     ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Email"]
+${USER_PROFILE_EMAIL}                           ${USER_PROFILE_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="user-email"]
+${USER_PROFILE_EMAIL_LABEL}                     ${USER_PROFILE_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Email"]
 
 ${USER_PROFILE_SECID}                           //*[@id="secid"]
-${USER_PROFILE_SECID_LABEL}                     ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-body"]//dt[text()="Secid"]
+${USER_PROFILE_SECID_LABEL}                     ${USER_PROFILE_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Secid"]
 
 ${USER_PROFILE_GAINED_CREATED_AWARDS}           ${USER_PROFILE_AWARDS_PANEL}//span[@class="created-awards"]
 ${USER_PROFILE_GAINED_MOVED_AWARDS}             ${USER_PROFILE_AWARDS_PANEL}//span[@class="moves-awards"]
@@ -426,7 +426,7 @@ ${GALLERY_FOURTH_IMAGE}                             ${GALLERY_IMAGES}\[4]
 
 ${NEWS_PANEL}                                   //div[contains(@class, "panel") and @data-gk-type="news"]
 ${NEWS_PANEL_HEADING}                           ${NEWS_PANEL}//div[@class="panel-heading"]
-${NEWS_PANEL_BODY}                              ${NEWS_PANEL}//div[@class="panel-body"]
+${NEWS_PANEL_BODY}                              ${NEWS_PANEL}//div[contains(@class, "panel-body")]
 
 ${NEWS_TITLE}                                   ${NEWS_PANEL_HEADING}//h3//span[@class="title"]
 ${NEWS_AUTHOR}                                  ${NEWS_PANEL_HEADING}//i[@class="author"]

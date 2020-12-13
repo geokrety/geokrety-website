@@ -15,7 +15,7 @@
         <ol>
             <li>{t}The system is based on mole-to-mole (peer-to-peer) tunnels. A mole-hole-cache should have a single dedicated destination. A dedicated destination doesn't mean a special cache - an arriving GeoKret may appear in any cache within the destination area.{/t}</li>
             <li>{t}The tunnel should work in both directions. It takes two GeoKrety friends to run a tunnel. Each partner is running a mole-hole-cache, collecting the GeoKrety and sending them over to the other partner, who is spreading the incoming GeoKrety in his homezone.{/t}</li>
-            <li>{t}The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least 500 km.{/t}</li>
+            <li>{t distance=500|distance}The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least %1.{/t}</li>
             <li>{t}GeoKrety in a mole-hole are impatient, so no GeoKrety should wait longer than two months for transportation.{/t}</li>
             <li>{t}Each listing of a mole-hole-cache should include{/t}</li>
             <ul>
