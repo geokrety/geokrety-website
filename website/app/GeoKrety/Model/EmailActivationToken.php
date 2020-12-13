@@ -20,6 +20,7 @@ use DB\SQL\Schema;
  * @property string|null updating_ip
  * @property string|null reverting_ip
  * @property int used
+ * @property mixed update_expire_on_datetime
  */
 class EmailActivationToken extends Base {
     // Validation occurs in validate() for this
