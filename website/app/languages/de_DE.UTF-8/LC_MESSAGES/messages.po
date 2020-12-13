@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-12 19:27+0000\n"
-"PO-Revision-Date: 2020-12-12 19:34\n"
+"PO-Revision-Date: 2020-12-12 20:31\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -34,11 +34,11 @@ msgstr "Mehrere Konten teilen sich die gleiche E-Mail-Adresse. Bitte <a href=\"%
 
 #: website/app/GeoKrety/Controller/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "Parameter \"userid\" muss eine gültige Zahl sein."
 
 #: website/app/GeoKrety/Controller/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "Parameter \"gkid\" muss eine gültige Zahl oder GKid (GKXXXXX) sein."
 
 #: website/app/GeoKrety/Controller/Base.php:72
 #: website/app/GeoKrety/Controller/MoveCreate.php:157
@@ -143,7 +143,7 @@ msgstr "Datum oder Zeit ungültig"
 
 #: website/app/GeoKrety/Controller/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
-msgstr ""
+msgstr "Der Wegpunkt-Parameter muss angegeben werden."
 
 #: website/app/GeoKrety/Controller/Login.php:44
 #: website/app/GeoKrety/Controller/Login.php:126
@@ -156,12 +156,12 @@ msgstr "Willkommen an Bord!"
 
 #: website/app/GeoKrety/Controller/Login.php:116
 msgid "Please provide 'login' and 'password' parameters."
-msgstr ""
+msgstr "Bitte gib 'Login'- und 'Password'-Parameter an."
 
 #: website/app/GeoKrety/Controller/Login.php:138
 #: website/app/GeoKrety/Controller/Login.php:144
 msgid "Invalid \"secid\""
-msgstr ""
+msgstr "Ungültige \"SecID\""
 
 #: website/app/GeoKrety/Controller/Login.php:192
 #, php-format
@@ -548,7 +548,7 @@ msgstr "Der Tracking-Code \"%s\" scheint zu kurz zu sein. Wir erwarten hier %d Z
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Der Tracking-Code \"%s\" scheint zu lang zu sein. Wir erwarten hier %d Zeichen."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -594,7 +594,7 @@ msgstr "Die <a href=\"%s\" target=\"_blank\">Cache-Seite</a> anzeigen."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "Dies ist ein Cache von geocaching.com, den bislang keiner auf GeoKrety.org geloggt hat. Um eine korrekte Reise dieses GeoKret sicherzustellen, kopiere bitte die Cache-Koordinaten in das \"Koordinaten\"-Feld."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -1947,7 +1947,7 @@ msgstr "Quelloffene Verfolgung von Gegenständen für alle Geocaching-Plattforme
 
 #: smarty/pages:3 smarty/pages:9
 msgid "GeoKrety visiting the cache %1"
-msgstr ""
+msgstr "GeoKrety besucht den Cache %1"
 
 #: smarty/pages:20
 msgid "Name"
@@ -1963,7 +1963,7 @@ msgstr "Entfernung"
 
 #: smarty/pages:37
 msgid "No GeoKrety has visited cache %1 yet."
-msgstr ""
+msgstr "Noch kein GeoKret hat den Cache %1 besucht."
 
 #: smarty/pages:3 smarty/pages:9
 msgid "%1's recent moves"
