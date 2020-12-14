@@ -119,10 +119,10 @@ Check created awards counters
     Has 0 moved awards
 
 User ${username} created ${count1} on distance ${count2}
-    Element Should Contain          ${USER_PROFILE_AWARDS_PANEL}    ${username} has created ${count1} GeoKrety, which travelled ${count2} km.
+    Element Should Contain          ${USER_PROFILE_AWARDS_PANEL}    ${username} has created ${count1} GeoKrety, which travelled ${count2} km.
 
 User ${username} moved ${count1} on distance ${count2}
-    Element Should Contain          ${USER_PROFILE_AWARDS_PANEL}    ${username} has moved ${count1} GeoKrety on a total distance of ${count2} km.
+    Element Should Contain          ${USER_PROFILE_AWARDS_PANEL}    ${username} has moved ${count1} GeoKrety on a total distance of ${count2} km.
 
 Has ${count} created awards
     ${total} =    Get Element Count    ${USER_PROFILE_GAINED_CREATED_AWARDS}/img
