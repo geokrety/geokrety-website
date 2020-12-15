@@ -101,6 +101,7 @@ Multiple Missing Report Allowed
 
 # TODO: A New Log Position Reset The Missing Status
 
+# TODO: Missing GeoKrety Are Visually Disabled
 
 
 # Comment Is Shown In Modal

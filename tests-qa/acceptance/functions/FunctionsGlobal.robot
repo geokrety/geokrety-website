@@ -256,6 +256,10 @@ Element should have class
     [Arguments]  ${element}  ${className}
     Wait until page contains element    ${element}\[contains(@class, "${className}")]
 
+Element should not have class
+    [Arguments]  ${element}  ${className}
+    Page Should Not Contain Element    ${element}\[contains(@class, "${className}")]
+
 Panel validation has success
     [Arguments]  ${element}
     Wait until page contains element    ${element}\[contains(@class, "panel-success")]    timeout=3

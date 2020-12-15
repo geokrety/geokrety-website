@@ -17,7 +17,7 @@ Post Move
     Create Session    gk        ${GK_URL}
     ${resp}=          POST On Session    gk    /devel/db/geokrety/move/seed    data=${move}    headers=${CONTENT_TYPE_FORM_URLENCODED}
     Request Should Be Successful     ${resp}
- 200ms    Click Element    ${action}/parent::label
+ # 200ms    Click Element    ${action}/parent::label
 
 Post Move Comment
     [Arguments]    ${moveid}=1    ${comment}=${EMPTY}
@@ -49,7 +49,7 @@ Check GeoKret Move
     Page Should Contain Element             ${location}\[${row}]//div[contains(@class, "move-author")]//*[contains(text(), "${author}")]
     Page Should Contain Element             ${location}\[${row}]//div[contains(@class, "move-comment")]//*[contains(text(), "${comment}")]
 
-    Run Keyword If      ${move.move_type} in @{REQUIRE_COORDINATES}     Page Should Contain Element    ${location}\[${row}]//small[contains(@class, "move-distance") and contains(text(), "${distance} km")]
+    Run Keyword If      ${move.move_type} in @{REQUIRE_COORDINATES}     Page Should Contain Element    ${location}\[${row}]//small[contains(@class, "move-distance") and contains(text(), "${distance} km")]
     ...                 ELSE                                            Page Should Contain Element    ${location}\[${row}]//small[contains(@class, "move-distance") and normalize-space(text())=""]
     Run Keyword If      ${move.move_type} in @{REQUIRE_COORDINATES}     Page Should Contain Element    ${location}\[${row}]//div[contains(@class, "move-cache")]//*[contains(text(), "${move.waypoint}")]
     ...                 ELSE                                            Page Should Contain Element    ${location}\[${row}]//div[contains(@class, "move-cache") and normalize-space(text())=""]

@@ -31,6 +31,8 @@ class MoveCreate extends Base {
             return;
         }
 
+        // From there we are editing a move
+
         $this->move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($this->move->dry()) {
             http_response_code(404);
@@ -39,6 +41,12 @@ class MoveCreate extends Base {
         }
 
         if (!$this->move->isAuthor()) {
+            http_response_code(403);
+            Smarty::render('dialog/alert_403.tpl');
+            exit();
+        }
+
+        if (!$this->move->move_type->isEditable()) {
             http_response_code(403);
             Smarty::render('dialog/alert_403.tpl');
             exit();
@@ -84,18 +92,23 @@ class MoveCreate extends Base {
         $move->app = $f3->get('POST.app');
         $move->app_ver = $f3->get('POST.app_ver');
 
-        // Datetime parser
-        $date = DateTime::createFromFormat('Y-m-d H:i:s T', sprintf(
-                '%s %s:%s:00 %s',
-                $f3->get('POST.date'),
-                str_pad($f3->get('POST.hour'), 2, '0', STR_PAD_LEFT),
-                str_pad($f3->get('POST.minute'), 2, '0', STR_PAD_LEFT),
-                $f3->get('POST.tz') ?? 'UTC'
-        ));
-        if ($date === false) {
-            $errors = array_merge($errors, [_('The date time could not be parsed.')]);
+        if (!$f3->exists('POST.date') and !$f3->exists('POST.hour') and !$f3->exists('POST.minute')) {
+            // Assume current if not provided
+            $move->touch('moved_on_datetime');
         } else {
-            $move->moved_on_datetime = $date->format(GK_DB_DATETIME_FORMAT);
+            // Datetime parser
+            $date = DateTime::createFromFormat('Y-m-d H:i:s T', sprintf(
+                    '%s %s:%s:00 %s',
+                    $f3->get('POST.date'),
+                    str_pad($f3->get('POST.hour'), 2, '0', STR_PAD_LEFT),
+                    str_pad($f3->get('POST.minute'), 2, '0', STR_PAD_LEFT),
+                    $f3->get('POST.tz') ?? 'UTC'
+            ));
+            if ($date === false) {
+                $errors = array_merge($errors, [_('The date time could not be parsed.')]);
+            } else {
+                $move->moved_on_datetime = $date->format(GK_DB_DATETIME_FORMAT);
+            }
         }
 
         if ($move->move_type->isCoordinatesRequired()) {
@@ -208,7 +221,7 @@ class MoveCreate extends Base {
             $this->get($f3);
         } else {
             Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
-            $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $moves[0]->geokret->gkid, $moves[0]->getMoveOnPage(), $moves[0]->id));
+            $f3->reroute($moves[0]->reroute_url);
         }
     }
 }

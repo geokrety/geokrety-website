@@ -16,6 +16,12 @@
         }%1 <small>(%2)</small> - <a href="%3">Ready for adoption</a>{/t}
         {/if}
 
+        {if $geokret->isMissing()}
+            - {t}missing{/t}
+        {elseif $geokret->isArchived()}
+            - {t}archived{/t}
+        {/if}
+
         <div class="btn-group pull-right" role="group">
             {if $f3->get('SESSION.CURRENT_USER') and $geokret->owner and $geokret->owner->email}
             <button class="btn btn-primary btn-xs" title="{t user=$geokret->owner->username}Send a message to %1{/t}" data-toggle="modal" data-target="#modal" data-type="user-contact-by-geokret" data-id="{$geokret->gkid}">
@@ -33,7 +39,7 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body {if $geokret->isMissing()}panel-body-danger{elseif $geokret->isArchived()}panel-body-default{/if}">
         <div class="row">
             <div class="col-xs-12 col-md-9">
                 <dl class="dl-horizontal pull-left">

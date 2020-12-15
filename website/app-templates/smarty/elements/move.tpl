@@ -77,9 +77,11 @@
 
                         {if $move->isAuthor() }
                         <div class="btn-group pull-right" role="group">
+                            {if $move->move_type->isEditable()}
                             <a class="btn btn-warning btn-xs" href="{'geokrety_move_edit'|alias:sprintf('@moveid=%d', $move->id)}" role="button" title="{t}Edit log{/t}" data-type="move-edit" data-id="{$move->id}">
                                 {fa icon="pencil"}
                             </a>
+                            {/if}
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete log{/t}" data-toggle="modal" data-target="#modal" data-type="move-delete" data-id="{$move->id}">
                                 {fa icon="trash"}
                             </button>

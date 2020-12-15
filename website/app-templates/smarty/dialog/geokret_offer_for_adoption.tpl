@@ -4,7 +4,7 @@
     <h4 class="modal-title" id="modalLabel">{t}Offer this GeoKret for adoption?{/t}</h4>
 </div>
 
-<form name="languageChange" action="{'geokret_offer_for_adoption'|alias}" method="post">
+<form name="offerForAdoptionForm" action="{'geokret_offer_for_adoption'|alias}" method="post">
     <div class="modal-body">
 
         <em>{t}This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret.{/t}</em>

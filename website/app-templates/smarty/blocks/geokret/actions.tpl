@@ -13,6 +13,7 @@
 {/function}
 
 {function statistics}
+<div class="col-md-4">&nbsp;</div>
 {* TODO
 <div class="col-md-4">{fa icon="line-chart"} <a href="#">{t}Statistics{/t}</a></div>
 *}
@@ -29,7 +30,9 @@
 {/function}
 
 {function archive}
-<div class="col-md-4">{fa icon="archive"} <a id="geokretDetailsArchiveLink" href="#">{t}Archive this GeoKret{/t}</a></div>
+{if !$geokret->isArchived()}
+<div class="col-md-4">{fa icon="archive"} <a id="geokretDetailsArchiveLink" href="#" title="{t}Mark this GeoKret as archived{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-mark-archived" data-id="{$geokret->gkid}">{t}Archive this GeoKret{/t}</a></div>
+{/if}
 {/function}
 
 {function email}
@@ -66,6 +69,11 @@
             {statistics}
             {empty}
             {transfer}
+        </div>
+        <div class="row">
+            {empty}
+            {empty}
+            {archive}
         </div>
         {else}
         <div class="row">

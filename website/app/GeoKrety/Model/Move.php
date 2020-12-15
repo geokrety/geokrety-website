@@ -28,6 +28,7 @@ use GeoKrety\Service\HTMLPurifier;
  * @property DateTime updated_on_datetime
  * @property int|LogType move_type
  * @property string|null position
+ * @property string|null reroute_url
  */
 class Move extends Base {
     use \Validation\Traits\CortexTrait;
@@ -179,6 +180,14 @@ class Move extends Base {
 
     public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
+    }
+
+    public function get_reroute_url($value): ?string {
+        if (is_null($this->id)) {
+            return null;
+        }
+
+        return sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $this->geokret->gkid, $this->getMoveOnPage(), $this->id);
     }
 
     public function isAuthor(): bool {

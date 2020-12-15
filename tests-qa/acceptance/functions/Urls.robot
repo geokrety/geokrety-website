@@ -28,6 +28,7 @@ ${PAGE_SIGN_OUT_URL}                    ${GK_URL}/en/logout
 ${PAGE_NEWS_LIST_URL}                   ${GK_URL}/en/news
 ${PAGE_NEWS_URL}                        ${GK_URL}/en/news/\${params.newsid}
 ${PAGE_MOVES_URL}                       ${GK_URL}/en/moves
+${PAGE_MOVES_FROM_INVENTORY_URL}        ${GK_URL}/en/moves/select-from-inventory
 ${PAGE_PICTURES_GALLERY_URL}            ${GK_URL}/en/picture/gallery
 
 ${PAGE_MOVES_EDIT_URL}                  ${GK_URL}/en/moves/\${params.moveid}/edit

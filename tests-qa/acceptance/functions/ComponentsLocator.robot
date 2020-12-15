@@ -118,27 +118,29 @@ ${GEOKRET_CREATE_MISSION_INPUT}             //*[@id="inputMission"]
 # GEOKRETY DETAILS
 ################
 
-${GEOKRET_DETAILS_DETAILS_PANEL}                   //*[@id="geokretyDetailsPanel"]
+${GEOKRET_DETAILS_DETAILS_PANEL}                //*[@id="geokretyDetailsPanel"]
+${GEOKRET_DETAILS_DETAILS_PANEL_HEADING}        ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-heading")]
+${GEOKRET_DETAILS_DETAILS_PANEL_BODY}           ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]
 
 ${GEOKRET_DETAILS_NAME}                         ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="geokret"]
 ${GEOKRET_DETAILS_TYPE}                         ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/small
 ${GEOKRET_DETAILS_TYPE_IMG}                     ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/img
 ${GEOKRET_DETAILS_OWNER}                        ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="user"]
 
-${GEOKRET_DETAILS_TRACKING_CODE}                ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-tracking-code"]
-${GEOKRET_DETAILS_TRACKING_CODE_LABEL}          ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Tracking Code"]
+${GEOKRET_DETAILS_TRACKING_CODE}                ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dd[@class="geokret-tracking-code"]
+${GEOKRET_DETAILS_TRACKING_CODE_LABEL}          ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dt[text()="Tracking Code"]
 
-${GEOKRET_DETAILS_REF_NUMBER}                   ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-id"]
-${GEOKRET_DETAILS_REF_NUMBER_LABEL}             ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Reference number"]
+${GEOKRET_DETAILS_REF_NUMBER}                   ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dd[@class="geokret-id"]
+${GEOKRET_DETAILS_REF_NUMBER_LABEL}             ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dt[text()="Reference number"]
 
-${GEOKRET_DETAILS_DISTANCE}                     ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-distance"]
-${GEOKRET_DETAILS_DISTANCE_LABEL}               ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Total distance"]
+${GEOKRET_DETAILS_DISTANCE}                     ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dd[@class="geokret-distance"]
+${GEOKRET_DETAILS_DISTANCE_LABEL}               ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dt[text()="Total distance"]
 
-${GEOKRET_DETAILS_CACHES_COUNT}                 ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-caches-count"]
-${GEOKRET_DETAILS_CACHES_COUNT_LABEL}           ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Places visited"]
+${GEOKRET_DETAILS_CACHES_COUNT}                 ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dd[@class="geokret-caches-count"]
+${GEOKRET_DETAILS_CACHES_COUNT_LABEL}           ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dt[text()="Places visited"]
 
-${GEOKRET_DETAILS_CREATED_ON_DATETIME}          ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dd[@class="geokret-created-on-datetime"]
-${GEOKRET_DETAILS_CREATED_ON_DATETIME_LABEL}    ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]//dt[text()="Born"]
+${GEOKRET_DETAILS_CREATED_ON_DATETIME}          ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dd[@class="geokret-created-on-datetime"]
+${GEOKRET_DETAILS_CREATED_ON_DATETIME_LABEL}    ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dt[text()="Born"]
 
 ${GEOKRET_DETAILS_MISSION}                      //*[@id="geokretyMissionPanel"]/div[contains(@class, "panel-body")]
 
@@ -149,6 +151,7 @@ ${GEOKRET_DETAILS_WATCHERS_LINK}                //*[@id="geokretDetailsWatchersL
 ${GEOKRET_DETAILS_LOG_THIS_GEOKRET_LINK}        //*[@id="geokretDetailsLogThisGeokretLink"]
 ${GEOKRET_DETAILS_TRANSFER_OWNERSHIP_LINK}      //*[@id="geokretDetailsOfferAdoptionLink"]
 ${GEOKRET_DETAILS_PRINT_LABEL_LINK}             //*[@id="geokretDetailsPrintLabelLink"]
+${GEOKRET_DETAILS_ARCHIVE_LINK}                 //*[@id="geokretDetailsArchiveLink"]
 
 ${GEOKRET_DETAILS_MAP_PANEL}                    //*[@id="geokretyDetailsMapPanel"]
 ${GEOKRET_DETAILS_MAP}                          //*[@id="mapid"]

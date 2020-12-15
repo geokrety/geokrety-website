@@ -226,6 +226,14 @@ class Geokret extends Base {
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->holder) && $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
     }
 
+    public function isArchived(): bool {
+        return is_null($this->last_position) ? false : $this->last_position->move_type->isType(LogType::LOG_TYPE_ARCHIVED);
+    }
+
+    public function isMissing(): bool {
+        return $this->missing;
+    }
+
     public function jsonSerialize() {
         return [
             'id' => $this->id,

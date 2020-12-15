@@ -2,11 +2,11 @@
 Documentation     Variables for users definitions
 
 *** Variables ***
-&{WPT_GC_1}     id=GC0001       coords=43.00000 7.00000    name=${EMPTY}    country=fr    elevation=800
-&{WPT_GC_2}     id=GC0002       coords=43.00000 7.01000    name=${EMPTY}    country=fr    elevation=800
-&{WPT_GC_3}     id=GC0003       coords=43.00000 7.02000    name=${EMPTY}    country=fr    elevation=800
-&{WPT_GC_4}     id=GC0004       coords=43.00000 7.03000    name=${EMPTY}    country=fr    elevation=800
-&{WPT_GC_5}     id=GC0005       coords=43.00000 7.04000    name=${EMPTY}    country=fr    elevation=800
+&{WPT_GC_1}     id=GC0001       coords=43.60000 7.00000    name=${EMPTY}    country=fr    elevation=800
+&{WPT_GC_2}     id=GC0002       coords=43.70000 7.01000    name=${EMPTY}    country=fr    elevation=800
+&{WPT_GC_3}     id=GC0003       coords=43.80000 7.02000    name=${EMPTY}    country=fr    elevation=800
+&{WPT_GC_4}     id=GC0004       coords=43.90000 7.03000    name=${EMPTY}    country=fr    elevation=800
+&{WPT_GC_5}     id=GC0005       coords=43.10000 7.04000    name=${EMPTY}    country=fr    elevation=800
 
 ${INVALID_WPT}          ABCDEF
 ${INVALID_GC_WPT}       GCZZZZ

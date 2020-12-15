@@ -4,7 +4,7 @@
     <h4 class="modal-title" id="modalLabel">{t}Do you really want to delete this move?{/t}</h4>
 </div>
 
-<form name="move" action="{'move_delete'|alias:sprintf('moveid=%d', $move->id)}" method="post">
+<form name="moveDeleteForm" action="{'move_delete'|alias:sprintf('moveid=%d', $move->id)}" method="post">
     <div class="modal-body">
         {include file='elements/move.tpl' hide_actions=true}
         {if $move->pictures_count}

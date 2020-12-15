@@ -58,6 +58,14 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     ];
 
+    const LOG_TYPES_EDITABLE = [
+        self::LOG_TYPE_DROPPED,
+        self::LOG_TYPE_GRABBED,
+        self::LOG_TYPE_COMMENT,
+        self::LOG_TYPE_SEEN,
+        self::LOG_TYPE_DIPPED,
+    ];
+
     private $logtype;
 
     public function __construct($logtype = null) {
@@ -96,6 +104,10 @@ class LogType {
 
     public function isTheoricallyInCache() {
         return !is_null($this->logtype) && in_array($this->logtype, self::LOG_TYPES_THEORICALLY_IN_CACHE);
+    }
+
+    public function isEditable() {
+        return !is_null($this->logtype) && in_array($this->logtype, self::LOG_TYPES_EDITABLE);
     }
 
     public function getLogTypeString() {
