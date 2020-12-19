@@ -56,7 +56,7 @@ Force Tags      xml    legacy    ruchy
 
 Required Parameters
     [Template]    Post Return Error
-    ${move_11}    The date time could not be parsed.    Waypoint seems empty.    Missing or invalid coordinates.    No Tracking Code provided.    The Moved_on_datetime field is required    The Moved_on_datetime field must be a valid date time
+    ${move_11}    Waypoint seems empty.    Missing or invalid coordinates.    No Tracking Code provided.
     ${move_12}    No Tracking Code provided.
     ${move_13}    Waypoint seems empty.    Missing or invalid coordinates.
     ${move_14}    Missing or invalid coordinates.    View the <a href="https://geokrety.org/go2geo/?wpt=${move_14.wpt}" target="_blank">cache page</a>.     This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the "Coordinates" field.
