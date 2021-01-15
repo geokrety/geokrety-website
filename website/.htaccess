@@ -22,3 +22,8 @@ RewriteRule ^obrazki-male/(.*)$ https://cdn.geokrety.org/images/obrazki-male/$1 
 
 RewriteCond %{REQUEST_URI} ^/templates/medal-.*\.png
 RewriteRule ^templates/(medal-.*\.png)$ https://cdn.geokrety.org/images/medals/$1 [R=301,L]
+
+Header add Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.geokrety.org *.kumy.net; object-src 'none'; style-src 'self' data: 'unsafe-inline' *.geokrety.org *.kumy.net fonts.googleapis.com; img-src 'self' *.geokrety.org *.kumy.net *.openstreetmap.org; media-src *; frame-src 'none'; font-src *; connect-src 'self'; frame-ancestors 'none';"
+Header add X-Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.geokrety.org *.kumy.net; object-src 'none'; style-src 'self' data: 'unsafe-inline' *.geokrety.org *.kumy.net fonts.googleapis.com; img-src 'self' *.geokrety.org *.kumy.net *.openstreetmap.org; media-src *; frame-src 'none'; font-src *; connect-src 'self'; frame-ancestors 'none';"
+Header add X-WebKit-CSP "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.geokrety.org *.kumy.net; object-src 'none'; style-src 'self' data: 'unsafe-inline' *.geokrety.org *.kumy.net fonts.googleapis.com; img-src 'self' *.geokrety.org *.kumy.net *.openstreetmap.org; media-src *; frame-src 'none'; font-src *; connect-src 'self'; frame-ancestors 'none';"
+Header add X-FRAME-OPTIONS "DENY"
