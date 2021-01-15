@@ -294,7 +294,7 @@ if ($y) {
     $TRESC .= '<hr>';
 }
 
-$me = $_SERVER['PHP_SELF'].'?g=g';
+$me = $_SERVER['SCRIPT_NAME'].'?g=g';
 if (isset($g_readonly)) {
     $me = $me.'&readonly=1';
     $TRESC .= '<hr/><strong>READONLY MODE!</strong><hr/>';

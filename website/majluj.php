@@ -66,7 +66,7 @@ if ($longin_status['plain'] == null) {
         }
 
         //$BODY = "onload='var x = document.getElementById(\"auto_focus\"); if (x!=null) {x.focus();} '";
-        $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'?to='.$g_to.'" method="post" />
+        $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'?to='.$g_to.'" method="post" />
 <table style="border-spacing:3px 3px;">
 
 <tr >

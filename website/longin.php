@@ -131,7 +131,7 @@ if ($_GET['logout']) {      // logging out
         }
     }
 } else {
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].(isset($_GET['goto']) ? '?goto='.htmlentities($_GET['goto']) : '').'" method="post" enctype="application/x-www-form-urlencoded" >
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].(isset($_GET['goto']) ? '?goto='.htmlentities($_GET['goto']) : '').'" method="post" enctype="application/x-www-form-urlencoded" >
 <table>
 <tr>
 <td style="width:200px;">Login:</td>

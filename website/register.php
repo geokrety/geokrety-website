@@ -39,7 +39,7 @@ if ($longin_status['plain'] == null) {
     }
     // ------------ home coordinates? -------------- //
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 <table>
 <tr>
 <td>'._('GeoKret name').':</td>

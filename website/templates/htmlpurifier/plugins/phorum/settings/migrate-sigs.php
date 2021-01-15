@@ -66,7 +66,7 @@ function phorum_htmlpurifier_migrate_sigs($offset) {
         return true;
     }
     $host  = $_SERVER['HTTP_HOST'];
-    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    $uri   = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
     $extra = 'admin.php?module=modsettings&mod=htmlpurifier&migrate-sigs=' . $offset;
     // relies on output buffering to work
     header("Location: http://$host$uri/$extra");

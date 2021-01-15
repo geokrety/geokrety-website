@@ -30,7 +30,7 @@ if ($longin_status['plain'] == null) {
     // --------------------------------------- FORMULARZ ------------------------------------------- //
     // ---------------------------------------------------------------------------------------------- //
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" name="formularz" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" name="formularz" />
 <input type="hidden" name="join" value="joined" />
 
 <table>

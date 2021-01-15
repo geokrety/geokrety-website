@@ -194,7 +194,7 @@ elseif ($g_co == 'haslo') {
 .atable { width:auto; }
 .atable td { padding:0 15px 15px 0 }
 </style>';
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" ><table class="atable">
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" ><table class="atable">
 <tr><td>'._('Old password').'</td><td><input type="password" name="haslo_old" maxlength="40" /></td></tr>
 <tr>
 <td>'._('New password').':</td>
@@ -320,7 +320,7 @@ var initial_zoom = $map_zoom;
 </script>
 <script type='text/javascript' src='edit_latlon-1.min.js'></script>";
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" >
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" >
 <table class="atable">
 <tr>
 <td>'._('Home coordinates').':</td>
@@ -396,7 +396,7 @@ elseif ($g_co == 'email') {
     $news1 = explode('*', _('Recent logs of:*your own geokrets*geokrets that you watch*any geokrets logged near your home location'));
     $news2 = explode('*', _('Comments posted to any of the following:*your own geokrets*geokrets that you watch*your logs*your comments*news posts you have are subscribed to'));
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post"><table class="atable">
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post"><table class="atable">
 <tr>
 <td>'._('Email').':</td>
 <td><input type="text" size="30" maxlength="150" name="email" value="'.$email.'" /><br />
@@ -483,7 +483,7 @@ elseif ($g_co == 'lang') {
         $jezyki .= "<option value=\"$jezyk_skrot\">$jezyk</option>\n";
     }
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" ><table>
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" ><table>
 <tr>
 <td>'._('Language').':</td>
 <td><select id="jezyk" name="jezyk">'.$jezyki.'</select></td>
@@ -512,7 +512,7 @@ elseif ($g_co == 'statpic') {
         $statpics .= '<p><img src="statpics/wzory/'.$i.'.png" alt="obrazek statystyki"  /> <input type="radio" name="statpic" value="'.$i.'" '.$selected.'  /></p>';
     }
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post"><table>
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post"><table>
 <tr>
 <td>'._('Choose statpic').':</td>
 <td>'.$statpics.'</td>
@@ -546,7 +546,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
 
     $opis = preg_replace("[\[<a href=[\"\'](.+?)[\"\'][\s]*(rel=nofollow)?>Link</a>\]]", '$1', $opis);
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" ><table>
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" ><table>
 <tr>
 <td>'._('GeoKret name').':</td>
 <td><input type="text" name="nazwa" maxlength="45" value="'.$nazwa.'"/></td>

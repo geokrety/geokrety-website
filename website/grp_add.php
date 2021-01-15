@@ -63,7 +63,7 @@ if (($_POST['listagrup'] != '' or $POST['listagrup_prv'] != '') and $kretid != '
     }
     mysqli_free_result($result);
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'" method="post" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'?id='.$_GET['id'].'" method="post" />
 <table>
 <tr>
 <td><p>'._('Private groups').' <br /><select name="listagrup_prv[]" size="10" multiple>'.$listagrup_prv.'</select></p></td>

@@ -56,7 +56,7 @@ if (!in_array($userid, $config['superusers'])) {
 if ($longin_status['plain'] == null) {
     $TRESC = _('Please login.');
 } elseif ((!isset($kret_count))) { //--------------------  if NOT all required variables are set
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 <table>
 <tr>
 <td width="30%">How many GeoKrets to create?</td>

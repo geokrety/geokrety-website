@@ -79,7 +79,7 @@ AND `gk-ostatnieruchy`.country = '$g_country'"
     } else { //nothing to search
         $TRESC = '
 <table>
-<form action="'.$_SERVER['PHP_SELF'].'" method="get">
+<form action="'.$_SERVER['SCRIPT_NAME'].'" method="get">
 <tr>
 <td>Reference Number:</td>
 <td><input name="gk" /> <span class="szare">'._('eg.').' GK032F</span></td>
@@ -87,14 +87,14 @@ AND `gk-ostatnieruchy`.country = '$g_country'"
 </tr>
 </form>
 
-<!-- <form action="'.$_SERVER['PHP_SELF'].'" method="get">
+<!-- <form action="'.$_SERVER['SCRIPT_NAME'].'" method="get">
 <tr>
 <td>Tracking Code:</td>
 <td><input name="nr" /> <span class="szare">'._('eg.').' XF3ACS</span></td>
 <td><input type="submit" value=" go! " /></td></tr>
 </form>
 -->
-<form action="'.$_SERVER['PHP_SELF'].'" method="get">
+<form action="'.$_SERVER['SCRIPT_NAME'].'" method="get">
 <tr>
 <td>'._('GeoKret name').':</td>
 <td><input name="nazwa" /></td>
@@ -102,7 +102,7 @@ AND `gk-ostatnieruchy`.country = '$g_country'"
 </tr>
 </form>
 
-<form action="'.$_SERVER['PHP_SELF'].'" method="get">
+<form action="'.$_SERVER['SCRIPT_NAME'].'" method="get">
 <tr>
 <td>'._('GeoKret owner').':</td>
 <td><input name="owner" /></td>
@@ -110,7 +110,7 @@ AND `gk-ostatnieruchy`.country = '$g_country'"
 </tr>
 </form>
 
-<form action="'.$_SERVER['PHP_SELF'].'" method="get">
+<form action="'.$_SERVER['SCRIPT_NAME'].'" method="get">
 <tr>
 <td>'._('Geokrety visiting the cache').':</td>
 <td><input name="wpt" /> <span class="szare">'._('eg.').' OP05E5</span></td>

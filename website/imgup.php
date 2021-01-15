@@ -384,7 +384,7 @@ table.imgup2{
 		//-->
 		</script><noscript><input id="opis" name="opis" size="50" '.$old_opis.'maxlength="50" /></noscript>';
 
-        $TRESC .= '<form name="imgup" method="post" enctype="multipart/form-data" action="'.$_SERVER['PHP_SELF'].'?typ='.$g_typ.'&amp;id='.$g_id.($rename ? '&amp;rename='.$g_rename : '').($multiphoto ? '&amp;all_id='.$all_id : '').'">'.
+        $TRESC .= '<form name="imgup" method="post" enctype="multipart/form-data" action="'.$_SERVER['SCRIPT_NAME'].'?typ='.$g_typ.'&amp;id='.$g_id.($rename ? '&amp;rename='.$g_rename : '').($multiphoto ? '&amp;all_id='.$all_id : '').'">'.
             ($editing_mode ? ' <input type="hidden" name="formname" value="rename" />' : '').
             '<table class="imgup2">'.
             ($editing_mode ? '' : ' <tr><td><input type="hidden" name="MAX_FILE_SIZE" value="'.$max_file_size.'" /><div style="text-align:right">'._('File:').' </div></td><td><input type="file" name="obrazek" size="50"/></td></tr>').

@@ -245,7 +245,7 @@ if (ctype_digit($g_newsid)) {
     if ($loggedin) {
         $TRESC .= "$subscribe_link";
 
-        $TRESC .= "<div style='padding:0.5em 0 1em 0;'>"._('Write new comment').":<form name='newscomment' action='".$_SERVER['PHP_SELF']."?newsid=$g_newsid' method='post' >
+        $TRESC .= "<div style='padding:0.5em 0 1em 0;'>"._('Write new comment').":<form name='newscomment' action='".$_SERVER['SCRIPT_NAME']."?newsid=$g_newsid' method='post' >
 		<textarea id='poledoliczenia' name='comment' rows='3' style='width:100%' onkeyup='zliczaj(1000)'></textarea>
 		<input type='hidden' name='newsid' value='$g_newsid' />
 		<span style='float:right'>"._('characters left').": <input id='licznik' disabled='disabled' type='text' size='3' name='licznik' /></span>

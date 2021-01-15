@@ -51,7 +51,7 @@ foreach ($config_jezyk_nazwa as $jezyk_skrot => $jezyk) {
 if ((empty($kret_login))) { //--------------------  if login is not set
     include_once './obrazek.php';
 
-    $TRESC = '<form name="adduser" action="'.$_SERVER['PHP_SELF'].'" onsubmit="this.js.value=1; return validateAddUser(this);" method="post" >
+    $TRESC = '<form name="adduser" action="'.$_SERVER['SCRIPT_NAME'].'" onsubmit="this.js.value=1; return validateAddUser(this);" method="post" >
 <h2>'._('Required fields').'</h2>
 <table style="border-spacing:3px 6px;">
 

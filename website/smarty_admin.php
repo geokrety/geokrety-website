@@ -38,7 +38,7 @@ if (isset($_POST['formname'])) {
         echo 'DONE<br />';
     }
 }
-$me = $_SERVER['PHP_SELF'];
+$me = $_SERVER['SCRIPT_NAME'];
 $TRESC .= '<table>';
 $TRESC .= "<tr><td><form action='$me' method='post'><input type='hidden' name='formname' value='clear_all_cache'/><input type='submit' value='clear_all_cache' /></form></td></tr>";
 $TRESC .= "<tr><td><form action='$me' method='post'><input type='hidden' name='formname' value='clear_compiled_tpl'/><input type='submit' value='clear_compiled_tpl' /></form></td></tr>";

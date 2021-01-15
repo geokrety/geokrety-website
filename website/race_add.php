@@ -108,7 +108,7 @@ $( "#accordion" ).accordion();
         $submitButton = $TYTUL;
     }
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" name="formularz" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" name="formularz" />
 <h2>'._('Race info').'</h2>
 <table>
 <tr>

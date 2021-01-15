@@ -26,7 +26,7 @@ if (empty($kret_email)) { //--------------------  if login is not set
 
     $TRESC = '<p>'._('To obtain a new password, please enter your e-mail address. A new password will be e-mailed.').'</p>
 
-<form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 <table>';
 
     if ($GOOGLE_RECAPTCHA_PUBLIC_KEY) {

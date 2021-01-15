@@ -77,7 +77,7 @@ if (isset($kret_tytul) and isset($kret_tresc) and isset($kret_who) and isset($kr
     $row2 = mysqli_fetch_array($result);
     $last_post_id = $row2['news_id'];
 
-    $TRESC = '<h2>New Post</h2><form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+    $TRESC = '<h2>New Post</h2><form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 <table>
 <tr>
 <td>Hasło</td>
@@ -120,7 +120,7 @@ if (isset($kret_tytul) and isset($kret_tresc) and isset($kret_who) and isset($kr
 
 <br /><h2>Edit</h2>
 
-<form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 Update post id: <input type="text" name="view_old_post_id" size="5" value="'.$last_post_id.'"  /> <input type="submit" value=" view " />
 </form>
 ';

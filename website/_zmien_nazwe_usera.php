@@ -32,7 +32,7 @@ if (isset($kret_olduser)) {
         list($user, $userid, $email) = $row;
         $TRESC .= "<a href='".$config['adres']."mypage.php?userid=$userid' target='_blank'>$user</a> :: $userid :: $email<br />";
     }
-    $TRESC .= '<p></p><form action="'.$_SERVER['PHP_SELF'].'" method="post" />Old user id: <input name="olduserid" /><br />
+    $TRESC .= '<p></p><form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />Old user id: <input name="olduserid" /><br />
 	New user name: <input name="newuser" /><br /><input type="submit" value=" Etap 3 &gt; " />
 	</form>';
 }
@@ -48,7 +48,7 @@ elseif (isset($kret_olduserid) and is_numeric($kret_olduserid) and isset($kret_n
 
 // etap zerowy - formularz
 else {
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 <table>
 <tr>
 <td>Old user name:</td>

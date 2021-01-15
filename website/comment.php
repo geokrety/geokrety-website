@@ -154,7 +154,7 @@ if (ctype_digit($g_gkid) and ctype_digit($g_ruchid)) {
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="infoModalLabel">'.$title_text.'</h4>
   </div>
-  <form name="comment" action="'.$_SERVER['PHP_SELF'].'" method="post" >
+  <form name="comment" action="'.$_SERVER['SCRIPT_NAME'].'" method="post" >
     <div class="modal-body">';
 
     if ($missing_report) {

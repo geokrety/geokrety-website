@@ -52,7 +52,7 @@ if (!empty($kret_login) and !empty($kret_haslo1)) { // logging in with supplied 
 
     echo "$secid";
 } else {
-    echo '<form action="'.$_SERVER['PHP_SELF'].'" method="post" enctype="application/x-www-form-urlencoded" >
+    echo '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" enctype="application/x-www-form-urlencoded" >
 <table>
 <tr>
 <td>Login:</td>

@@ -70,7 +70,7 @@ LIMIT 1;";
 
 // etap zerowy - formularz
 else {
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 <table>
 <tr><td>GK (np GK0212): </td><td><input name="gk" /> -> <td>newuser: (np filips)  </td><td><input name="newuser" /></tr>
 </table>

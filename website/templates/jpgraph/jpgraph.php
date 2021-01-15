@@ -297,11 +297,11 @@ function GenImgName() {
     elseif( $supported & IMG_XPM ) $img_format="xpm";
 
 
-    if( !isset($_SERVER['PHP_SELF']) ) {
+    if( !isset($_SERVER['SCRIPT_NAME']) ) {
         JpGraphError::RaiseL(25005);
         //(" Can't access PHP_SELF, PHP global variable. You can't run PHP from command line if you want to use the 'auto' naming of cache or image files.");
     }
-    $fname = basename($_SERVER['PHP_SELF']);
+    $fname = basename($_SERVER['SCRIPT_NAME']);
     if( !empty($_SERVER['QUERY_STRING']) ) {
         $q = @$_SERVER['QUERY_STRING'];
         $fname .= '_'.preg_replace("/\W/", "_", $q).'.'.$img_format;
@@ -1226,7 +1226,7 @@ class Graph {
         global $_SERVER;
 
         if( $aCacheName=='auto' ) {
-            $aCacheName=basename($_SERVER['PHP_SELF']);
+            $aCacheName=basename($_SERVER['SCRIPT_NAME']);
         }
 
         $urlarg = $this->GetURLArguments();
@@ -1325,7 +1325,7 @@ class Graph {
         }
 
         if( $aScriptName=='auto' ) {
-            $aScriptName=basename($_SERVER['PHP_SELF']);
+            $aScriptName=basename($_SERVER['SCRIPT_NAME']);
         }
 
         $urlarg = $this->GetURLArguments(true);
@@ -1395,7 +1395,7 @@ class Graph {
 
     function GetCSIMImgHTML($aCSIMName, $aScriptName='auto', $aBorder=0 ) {
         if( $aScriptName=='auto' ) {
-            $aScriptName=basename($_SERVER['PHP_SELF']);
+            $aScriptName=basename($_SERVER['SCRIPT_NAME']);
         }
         $urlarg = $this->GetURLArguments(true);
         return "<img src=\"".$aScriptName.'?'.$urlarg."\" ismap=\"ismap\" usemap=\"#".$aCSIMName.'" height="'.$this->img->height."\" alt=\"".$this->iCSIMImgAlt."\" />\n";

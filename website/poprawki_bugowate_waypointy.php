@@ -31,7 +31,7 @@ function a($result) {
         $waypoint2 = trim($waypoint);
         $waypoint = str_replace(' ', '&nbsp;', $waypoint);
 
-        $link2 = "<a href='".$_SERVER['PHP_SELF']."?id=$id&wp=$waypoint2'>fixme</a>";
+        $link2 = "<a href='".$_SERVER['SCRIPT_NAME']."?id=$id&wp=$waypoint2'>fixme</a>";
         $link3 = "<a href='http://coord.info/$waypoint2'>coord.info</a>";
         $link_gk = "<a href='konkret.php?id=$kretid' title='[".htmlentities($koment, ENT_QUOTES)."]'>kret</a>";
         $TRESC .= "[$id] [$waypoint] $lat $lon $link_gk - $link - $link3 - $link2<br/>";
@@ -151,7 +151,7 @@ if ($x && $y) {
     $TRESC .= '<br />bye!<br /><br />';
 } else {
     if (($userid == '1801' or $userid == '1')) {
-        $me = $_SERVER['PHP_SELF'].'?g=g';
+        $me = $_SERVER['SCRIPT_NAME'].'?g=g';
 
         $TRESC .= "<span STYLE='font-family: courier'>";
 

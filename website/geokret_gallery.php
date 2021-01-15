@@ -169,7 +169,7 @@ if (($p_formname == 'newavatar') and $allowed_to_modify and ctype_digit($p_avata
     if ($allowed_to_modify) {
         if ($ile_obrazkow > 0) {
             $intro = '<li>'._("To set this GeoKret's avatar, select one of the pictures and click the Save button below.").'</li>';
-            $form_begin = '<form action="'.$_SERVER['PHP_SELF']."?id=$g_id".'" method="post"><input type="hidden" name="formname" value="newavatar" />';
+            $form_begin = '<form action="'.$_SERVER['SCRIPT_NAME']."?id=$g_id".'" method="post"><input type="hidden" name="formname" value="newavatar" />';
             $form_end = '<input type="submit" value=" '._('Save new avatar').' " /></form>';
         } else {
             $intro = '<li>'._("Your GeoKret doesn't have any pictures. You can add them by clicking on this icon on the GeoKret's page: ").'<img src="templates/image.png" alt="Add photo" width="16" height="16" border="0" /></li>';

@@ -202,7 +202,7 @@ td.mid {text-align: center}
         $kret_deletevalue = '0';
     }
 
-    $me = $_SERVER['PHP_SELF'].'?action=view';
+    $me = $_SERVER['SCRIPT_NAME'].'?action=view';
     $TRESC .= "<form action='$me' method='post' />";
 
     $result = mysqli_query($link, $sql);

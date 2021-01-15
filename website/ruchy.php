@@ -701,7 +701,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     }
     // ------------ home coordinates? -------------- //
 
-    $TRESC .= '<form name="formularz" action="'.$_SERVER['PHP_SELF'].$get_czy_edycja.'" onsubmit="onSubmitRuchy()" method="post" class="form-horizontal"><input type="hidden" name="formname" value="ruchy" />';
+    $TRESC .= '<form name="formularz" action="'.$_SERVER['SCRIPT_NAME'].$get_czy_edycja.'" onsubmit="onSubmitRuchy()" method="post" class="form-horizontal"><input type="hidden" name="formname" value="ruchy" />';
 
     $step_number = 1;
 

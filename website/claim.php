@@ -103,7 +103,7 @@ if (ctype_alnum($p_oc) && ctype_alnum($p_tc)) {
 
     errory_add('formularz przywlaszczania', 0, 'claim_form');
 
-    $TRESC = '<form action="'.$_SERVER['PHP_SELF'].'" method="post" />
+    $TRESC = '<form action="'.$_SERVER['SCRIPT_NAME'].'" method="post" />
 
 <table style="border-spacing:3px 3px;">
 
