@@ -230,7 +230,7 @@ if ($result) {
         // jeśli owner albo wlaściciel ruchu
 
         if ($userid_longin > 0) {
-            $new_comment_link = '<a data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'" href="/"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/comment_new16.png" alt="[Add_comment]" title="'._('Write comment').'" width="16" height="16" border="0" /></a>';
+            $new_comment_link = '<button class="btn btn-link" data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/comment_new16.png" alt="[Add_comment]" title="'._('Write comment').'" width="16" height="16" border="0" /></button>';
         } else {
             $new_comment_link = '';
         }
