@@ -232,9 +232,9 @@ if (ctype_digit($g_newsid)) {
         $subscribe_or_not1 = 'subscribe';
         $subscribe_or_not2 = _('Subscribe to this news post');
     }
-    $subscribe_link = "<div style='width:100%;text-align:center;'><a href='newscomments.php?newsid=$g_newsid&mode=$subscribe_or_not1'>$subscribe_or_not2</a></div>";
+    $subscribe_link = "<div style='width:100%;text-align:center;'><a href='/newscomments.php?newsid=$g_newsid&mode=$subscribe_or_not1'>$subscribe_or_not2</a></div>";
 
-    $TRESC .= "<div class='alignleft50'><span class='news_title'>$f_tytul</span></div><div class='alignright50 xs'>Comments ($f_komentarze) - <i>$f_date (<a href='mypage.php?userid=$f_userid'>$f_who</a>)</i></div><div class='news_body'>$f_tresc</div>";
+    $TRESC .= "<div class='alignleft50'><span class='news_title'>$f_tytul</span></div><div class='alignright50 xs'>Comments ($f_komentarze) - <i>$f_date (<a href='/mypage.php?userid=$f_userid'>$f_who</a>)</i></div><div class='news_body'>$f_tresc</div>";
 
     $TRESC .= '<div align="right"><g:plusone size="medium" href="/newscomments.php?newsid='.$g_newsid.'"></g:plusone></div>';
 

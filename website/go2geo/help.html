@@ -3,8 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/xml; charset=UTF-8" />
 	<title>go2geo :: resolve geocaching waypoints...</title>
-	<link rel="shortcut icon" href="../favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="go2geo.css" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/go2geo/go2geo.css" />
 
 </head>
 <body>

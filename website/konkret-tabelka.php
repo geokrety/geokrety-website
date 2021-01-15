@@ -175,8 +175,8 @@ if ($result) {
             $ruch_user = "<span class='userA'>$ruch_username</span>";
         } else {
             $ruch_username = $ruch_user;
-            $ruch_user = "<a href='mypage.php?userid=$ruch_userid'>$ruch_user</a>";
-            $ruch_userurl = $gkUrl.'mypage.php?userid='.$ruch_userid;
+            $ruch_user = "<a href='/mypage.php?userid=$ruch_userid'>$ruch_user</a>";
+            $ruch_userurl = $gkUrl.'/mypage.php?userid='.$ruch_userid;
         }
 
         $opislogu = $cotozalog[$logtype];
@@ -230,13 +230,13 @@ if ($result) {
         // jeśli owner albo wlaściciel ruchu
 
         if ($userid_longin > 0) {
-            $new_comment_link = '<a data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'" href="#"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/comment_new16.png" alt="[Add_comment]" title="'._('Write comment').'" width="16" height="16" border="0" /></a>';
+            $new_comment_link = '<a data-toggle="modal" data-target="#infoModal" data-gkid="'.$id.'" data-ruchid="'.$ruch_id.'" href="/"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/comment_new16.png" alt="[Add_comment]" title="'._('Write comment').'" width="16" height="16" border="0" /></a>';
         } else {
             $new_comment_link = '';
         }
 
         if ($ruch_userid == $userid_longin) {
-            $edytuj_link = '&nbsp;<a href="imgup.php?typ=1&amp;id='.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/image.png" alt="[Add_photo]" title="'._('Add photo').'" width="16" height="16" border="0" /></a>&nbsp;<a href="ruchy.php?edit=1&amp;ruchid='.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/edit.png" alt="[Edit_log]" title="'._('Edit log').'" width="16" height="16" border="0" /></a>';
+            $edytuj_link = '&nbsp;<a href="/imgup.php?typ=1&amp;id='.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/image.png" alt="[Add_photo]" title="'._('Add photo').'" width="16" height="16" border="0" /></a>&nbsp;<a href="/ruchy.php?edit=1&amp;ruchid='.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/edit.png" alt="[Edit_log]" title="'._('Edit log').'" width="16" height="16" border="0" /></a>';
         } else {
             $edytuj_link = '';
         }
@@ -268,11 +268,11 @@ if ($result) {
                     $ph_opis = preg_replace("/(([^\s\&]|(\&[\S]+\;)){10})/u", '$1&shy;', $ph_opis);
 
                     ($ph_obrazek_id == $avatar_id) ? $tmpclass = 'obrazek_hi' : $tmpclass = 'obrazek';
-                    $tmp = "<div class='$tmpclass'><a href='obrazki/$ph_plik' rel='cb' title='$ph_opis'><img src='".CONFIG_CDN_OBRAZKI_MALE."/$ph_plik' border='0' alt='Photo: $ph_opis' width='100' height='100'/></a><br />$ph_opis";
+                    $tmp = "<div class='$tmpclass'><a href='/obrazki/$ph_plik' rel='cb' title='$ph_opis'><img src='".CONFIG_CDN_OBRAZKI_MALE."/$ph_plik' border='0' alt='Photo: $ph_opis' width='100' height='100'/></a><br />$ph_opis";
 
                     if ($ruch_userid == $userid_longin) {
-                        $tmp .= " <a href='imgup.php?typ=1&amp;id=$ruch_id&amp;rename=$ph_obrazek_id' title='"._('Rename')."'><img src='".CONFIG_CDN_ICONS."/edit10.png' alt='[Rename]' width='10' height='10' border='0' /></a> ";
-                        $tmp .= " <a href='edit.php?delete_obrazek=$ph_obrazek_id' title='"._('Delete photo')."' onClick='return CzySkasowac(this, \"this photo?\")'><img src='".CONFIG_CDN_ICONS."/delete.png' alt='[Delete]' width='11' height='11' border='0' /></a>";
+                        $tmp .= " <a href='/imgup.php?typ=1&amp;id=$ruch_id&amp;rename=$ph_obrazek_id' title='"._('Rename')."'><img src='".CONFIG_CDN_ICONS."/edit10.png' alt='[Rename]' width='10' height='10' border='0' /></a> ";
+                        $tmp .= " <a href='/edit.php?delete_obrazek=$ph_obrazek_id' title='"._('Delete photo')."' onClick='return CzySkasowac(this, \"this photo?\")'><img src='".CONFIG_CDN_ICONS."/delete.png' alt='[Delete]' width='11' height='11' border='0' /></a>";
                     }
                     $tmp .= '<br />';
                     $tmp .= '</div>';
@@ -362,7 +362,7 @@ if ($result) {
                     list($co_comment_id, $co_ruch_id, $co_user_id, $co_data_dodania, $co_comment, $co_type, $co_username) = $co_row;
 
                     if (($userid == $userid_longin) or ($co_user_id == $userid_longin)) {
-                        $delete_comment = "<span style='float:right'><a href='comment.php?delete=$co_comment_id' title='"._('Delete comment')."' onClick='return CzySkasowac(this, \"this comment?\")'><img style='padding-top:1px;' src='".CONFIG_CDN_ICONS."/delete.png' alt='Delete' width='11' height='11' border='0' /></a></span>";
+                        $delete_comment = "<span style='float:right'><a href='/comment.php?delete=$co_comment_id' title='"._('Delete comment')."' onClick='return CzySkasowac(this, \"this comment?\")'><img style='padding-top:1px;' src='".CONFIG_CDN_ICONS."/delete.png' alt='Delete' width='11' height='11' border='0' /></a></span>";
                     } else {
                         $delete_comment = '';
                     }
@@ -392,7 +392,7 @@ if ($result) {
                     $TABELKA .= '
 				<tr>
 				<td></td>
-				<td class="'.$tmp_class.'" colspan="2">'."$comment_icon<a href='mypage.php?userid=$co_user_id'>$co_username</a>: $co_comment$delete_comment</td>".'
+				<td class="'.$tmp_class.'" colspan="2">'."$comment_icon<a href='/mypage.php?userid=$co_user_id'>$co_username</a>: $co_comment$delete_comment</td>".'
 				<td></td>
 				</tr>
 				';

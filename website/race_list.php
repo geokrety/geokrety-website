@@ -305,8 +305,8 @@ ORDER BY r.`created` DESC";
         }
 
         $TRESC .= '<tr'.(($rowcount % 2) ? " class='odd'" : '').'>'.'
-<td><a href="race.php?raceid='.$row['raceid'].'">'.$row['raceTitle'].'</a></td>
-<td><a href="mypage.php?userid='.$row['raceOwner'].'">'.$row['user'].'</a></td>
+<td><a href="/race.php?raceid='.$row['raceid'].'">'.$row['raceTitle'].'</a></td>
+<td><a href="/mypage.php?userid='.$row['raceOwner'].'">'.$row['user'].'</a></td>
 <td>'.$private.'</td>
 <td>'.$conf_race_type[$row['raceOpts']].'</td>
 <td>'.$conf_race_status_icon[$row['status']].'<br />'.$czas.'</td>

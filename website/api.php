@@ -11,7 +11,7 @@ $one_hour_before = date('YmdHis', time() - (1 * 60 * 60));
 
 $TRESC = '
 
-Jump to: <a href="#read">Read</a> | <a href="#write">Write</a>
+Jump to: <a href="'.$_SERVER['SCRIPT_NAME'].'#read">Read</a> | <a href="'.$_SERVER['SCRIPT_NAME'].'#write">Write</a>
 
 <h1>Read</h1>
 
@@ -262,7 +262,7 @@ this request returns also the secret tracking codes (the <b>nr</b> variable) for
 </p>
 
 <p>If you provide an <b>app</b> name, it would be nice to send us an application icon (16x16, png, eg <img src="'.CONFIG_CDN_IMAGES.'/api/icons/16/Opencaching.png" alt="app icon" />), that we could add short info about application in the log entry.</p>
-<p>If you have any idea, how to improve this API or any function-request, feel free to <a href="kontakt.php">contact us</a>!</p>
+<p>If you have any idea, how to improve this API or any function-request, feel free to <a href="/kontakt.php">contact us</a>!</p>
 
 <h3>Sample scripts</h3>
 <p>Here are sample scripts for using GK api</p>

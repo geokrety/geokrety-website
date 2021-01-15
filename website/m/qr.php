@@ -26,8 +26,8 @@ $TRESC = '<h1>'.sprintf(_('<strong>%s</strong> by %s</h1>'), $nazwa, $user).
 '<h2>'.sprintf(_('Travelled %s km'), $droga_total).'</h2>
 
 <div class="btn-group btn-group-vertical btn-group-lg" role="group" style="width: 100%;">
-  <a class="btn btn-default" href="../ruchy.php?nr='.$nr.'">'._('Log grabbing or dropping').'</a>
-  <a class="btn btn-default" href="../konkret.php?id='.$id.'">'._('View the GK details').'</a>
+  <a class="btn btn-default" href="/ruchy.php?nr='.$nr.'">'._('Log grabbing or dropping').'</a>
+  <a class="btn btn-default" href="/konkret.php?id='.$id.'">'._('View the GK details').'</a>
 </div>
 
 <h3>'._('Description:').'</h3>'.$opis.'

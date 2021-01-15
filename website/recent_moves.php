@@ -218,7 +218,7 @@ function recent_moves($where, $limit, $title = '', $zapytanie = '', $showheaders
         }
 
         if ($multiphoto) {
-            $multiphoto_checkbox = "<td><input type=checkbox name='multiphoto_nr[]' value='$f_ruch_id'><a href='imgup.php?typ=1&id=$f_ruch_id'><img src='".CONFIG_CDN_ICONS."/image.png' alt='Add photo' title='"._('Add photo')."' width='16' height='16' /></a><a href='ruchy.php?edit=1&ruchid=$f_ruch_id'><img src='".CONFIG_CDN_ICONS."/edit.png' alt='Edit' title='"._('Edit log')."' width='16' height='16' /></a></td>";
+            $multiphoto_checkbox = "<td><input type=checkbox name='multiphoto_nr[]' value='$f_ruch_id'><a href='/imgup.php?typ=1&id=$f_ruch_id'><img src='".CONFIG_CDN_ICONS."/image.png' alt='Add photo' title='"._('Add photo')."' width='16' height='16' /></a><a href='/ruchy.php?edit=1&ruchid=$f_ruch_id'><img src='".CONFIG_CDN_ICONS."/edit.png' alt='Edit' title='"._('Edit log')."' width='16' height='16' /></a></td>";
         } else {
             $multiphoto_checkbox = '';
         }

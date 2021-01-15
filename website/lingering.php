@@ -141,7 +141,7 @@ $link = DBConnect();
 
             //formatting of the last user data
             if ($f_lastuserid > 0) {
-                $lastuser = "<br /><a href='mypage.php?userid=$f_lastuserid'>$f_lastuser</a>";
+                $lastuser = "<br /><a href='/mypage.php?userid=$f_lastuserid'>$f_lastuser</a>";
             } elseif ($f_lastuserid == '0') {
                 $lastuser = "<br />(?) $f_lastanonuser";
             } else {
@@ -186,7 +186,7 @@ $link = DBConnect();
 
             //if logged in =  owner, then  allow him to edit it
             if ($longin == $f_userid) {
-                $edycja_kreta = "<a href='edit.php?co=geokret&amp;id=".$f_id."'><img src='templates/edit.png' alt='edit' title='"._('Edit this GeoKret')."' width='16' height='16' border='0' /></a> ";
+                $edycja_kreta = "<a href='/edit.php?co=geokret&amp;id=".$f_id."'><img src='templates/edit.png' alt='edit' title='"._('Edit this GeoKret')."' width='16' height='16' border='0' /></a> ";
             } else {
                 $edycja_kreta = '';
             }
@@ -196,7 +196,7 @@ $link = DBConnect();
 
             // ---  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-            $ownerrow = "<td class='mid'><a href='mypage.php?userid=$f_userid'>$f_ownername</a></td>\n";
+            $ownerrow = "<td class='mid'><a href='/mypage.php?userid=$f_userid'>$f_ownername</a></td>\n";
             $ownercolumn = " <th $fixed_table[8]>"._('Owner')."</th>\n";
             $cacherow = "<td data-sort='$f_lastlocation_country$f_lastlocation_waypoint'>$lastcache</td>";
             $cachecolumn = " <th $fixed_table[3]>"._('Cache')."</th>\n";

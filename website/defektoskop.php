@@ -104,7 +104,7 @@ function errory_add($details, $severity = 0, $error_uid = '') {
         foreach ($_GET as $var => $value) {
             $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
             if ($var == 'gk_id' && ctype_digit($value)) {
-                $posty .= "G|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
+                $posty .= "G|$var| = |<a href='/konkret.php?id=$value'>$value</a>|<br/>";
             } else {
                 $posty .= "G|$var| = |$value|<br/>";
             }
@@ -112,7 +112,7 @@ function errory_add($details, $severity = 0, $error_uid = '') {
         foreach ($_POST as $var => $value) {
             $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
             if ($var == 'gk_id' && ctype_digit($value)) {
-                $posty .= "P|$var| = |<a href='konkret.php?id=$value'>$value</a>|<br/>";
+                $posty .= "P|$var| = |<a href='/konkret.php?id=$value'>$value</a>|<br/>";
             } elseif (($var != 'haslo1') && ($var != 'haslo2')) {
                 $posty .= "P|$var| = |$value|<br/>";
             }

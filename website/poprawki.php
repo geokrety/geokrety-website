@@ -303,7 +303,7 @@ if (isset($g_readonly)) {
 $TRESC .= "
 <table>
 <tr>
-<td style='background:#FFFFAF'><a href='_admin.php'>Admin</a> > gk-ruchy
+<td style='background:#FFFFAF'><a href='/_admin.php'>Admin</a> > gk-ruchy
 
 <table style='padding:5px'><tr><form action='$me' method='post' />
 	<td>pwd <input type='password' name='z' size='15'/></td>

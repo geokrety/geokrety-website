@@ -92,7 +92,7 @@ if (ctype_alnum($p_oc) && ctype_alnum($p_tc)) {
     include 'owner_code.fn.php';
     include_once 'defektoskop.php';
     if (claimGeoKret($id, $p_oc, $p_tc, $visitorid)) {
-        $TRESC = "Congratulations, you are now the owner of <b><a href='konkret.php?id=$id'>$nazwa</a></b>";
+        $TRESC = "Congratulations, you are now the owner of <b><a href='/konkret.php?id=$id'>$nazwa</a></b>";
         errory_add($TRESC, 0);
     } else {
         $errors[] = 'Operation failed!';

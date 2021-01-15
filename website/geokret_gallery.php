@@ -82,7 +82,7 @@ if (($p_formname == 'newavatar') and $allowed_to_modify and ctype_digit($p_avata
     $nawiguj_tablice = nawiguj_tablice($ile_obrazkow, $po_ile);
     $pokaz_od = $nawiguj_tablice['od'];
     $naglowek_tablicy = '<table><tr>'.
-                        '<td><div style="margin:10px auto 10px auto;"><a href="konkret.php?id='.$g_id.'">&lt;&lt; '._("Return to GeoKret's page").'</a></div></td>'.
+                        '<td><div style="margin:10px auto 10px auto;"><a href="/konkret.php?id='.$g_id.'">&lt;&lt; '._("Return to GeoKret's page").'</a></div></td>'.
                         '<td>'.$nawiguj_tablice['naglowek'].'</td>'.
                         '</tr></table>';
     // ----

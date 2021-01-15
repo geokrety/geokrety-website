@@ -140,7 +140,7 @@ function waypointLinkLabel($waypoint, $name) {
                         if ($ret != '') {
                             $ret .= '<br />';
                         }
-                        $ret .= "<img src='".CONFIG_CDN_IMAGES."/icons/ok.png' alt='OK' id='szukaj_img_ok_gk_".$id."' width='16' height='16' /> ".sprintf(_('%s by %s.'), "<a href='konkret.php?id=$id'>$nazwa</a>", "<a href='mypage.php?userid=$userid'>$username</a>")." $lastlog";
+                        $ret .= "<img src='".CONFIG_CDN_IMAGES."/icons/ok.png' alt='OK' id='szukaj_img_ok_gk_".$id."' width='16' height='16' /> ".sprintf(_('%s by %s.'), "<a href='/konkret.php?id=$id'>$nazwa</a>", "<a href='/mypage.php?userid=$userid'>$username</a>")." $lastlog";
                     }
                 }
                 echo $ret;

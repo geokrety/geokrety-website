@@ -16,7 +16,7 @@ if (file_exists($gkCommitFile)) {
 
 $adminLink = '';
 if (in_array($userid, $config['superusers'])) {
-    $adminLink = '<a href="_admin.php">Admin</a> > ';
+    $adminLink = '<a href="/_admin.php">Admin</a> > ';
 }
 
 $TRESC .= '<h2>'.$adminLink.'Server status</h2>';

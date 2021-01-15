@@ -83,7 +83,7 @@ $(function () {
 </script>\n";
     $userid_longin = $longin_status['userid'];
     if (in_array($userid_longin, $config['superusers'])) {
-        $TRESC .= '<div style="float: right;"><img class="menu-lab16" src="'.CONFIG_CDN_IMAGES.'/icons/diaspora.png" alt="*" /><a href="_admin.php">'._('admin').'</a></div>';
+        $TRESC .= '<div style="float: right;"><img class="menu-lab16" src="'.CONFIG_CDN_IMAGES.'/icons/diaspora.png" alt="*" /><a href="/_admin.php">'._('admin').'</a></div>';
     }
     $TRESC .= '
 <h2>'._('Welcome to GeoKrety.org!').'</h2>
@@ -91,7 +91,7 @@ $(function () {
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-body">
-        '._('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="help.php#about">read more...</a>').'
+        '._('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="/help.php#about">read more...</a>').'
       </div>
     </div>
     <div class="panel panel-default">
@@ -163,9 +163,9 @@ $(function () {
           <h3 class="panel-title">'.$tytul.'</h3>
         </div>
         <div class="panel-title pull-right">
-          <a href="newscomments.php?newsid='.$newsid.'">'._('Comments').' <span class="badge">'.$komentarze.'</span></a>
+          <a href="/newscomments.php?newsid='.$newsid.'">'._('Comments').' <span class="badge">'.$komentarze.'</span></a>
           <i>
-            '.$date.' ('.($userid == 0 ? $who : '<a href="mypage.php?userid='.$userid.'">'.$who.'</a>').')
+            '.$date.' ('.($userid == 0 ? $who : '<a href="/mypage.php?userid='.$userid.'">'.$who.'</a>').')
           </i>
         </div>
         <div class="clearfix"></div>
@@ -205,7 +205,7 @@ $(function () {
 		ORDER BY ru.ruch_id DESC limit 7
 "
 );
-    $TRESC .= '<div style="margin-top: 10px; text-align: right">'."<a href='mapki/google_static_logs.png' class='att_js' title='ajax|2|mapki/google_static_logs.png'>"._('Recent logs on the map').'</a>'.'</div>';
+    $TRESC .= '<div style="margin-top: 10px; text-align: right">'."<a href='/mapki/google_static_logs.png' class='att_js' title='ajax|2|mapki/google_static_logs.png'>"._('Recent logs on the map').'</a>'.'</div>';
     // ***************
     if ($speedtest_index) {
         $ST1 = 'recent moves';
@@ -225,7 +225,7 @@ $(function () {
     $TRESC .= '<h2>'._('Recently uploaded images').'</h2>
 <table id="recent_pictures_table"><tr><td>';
     $TRESC .= recent_pictures('LIMIT 10');
-    $TRESC .= '</td></tr><tr><td align="right"><a href="galeria.php">'._('Photo gallery').' >>></a></td></tr></table>';
+    $TRESC .= '</td></tr><tr><td align="right"><a href="/galeria.php">'._('Photo gallery').' >>></a></td></tr></table>';
     // ***************
     if ($speedtest_index) {
         $ST1 = 'pictures';
@@ -272,7 +272,7 @@ $(function () {
 
     $TRESC .= '<p>
 <img src="'.CONFIG_CDN_IMAGES.'/icons/question.png" alt="down" width="16" height="16" />
-<a href="https://crwd.in/geokrety">'._('Join our translation team').'</a> | <a href="lang.php?lang=zu_ZA.UTF-8">'._('Suggest a better translation - inline')."</a> ($lang)</p><p class='male' align='right'>[$ulicznik[0]] [$ulicznik[1] "._('visits/day').']</p>';
+<a href="https://crwd.in/geokrety">'._('Join our translation team').'</a> | <a href="/lang.php?lang=zu_ZA.UTF-8">'._('Suggest a better translation - inline')."</a> ($lang)</p><p class='male' align='right'>[$ulicznik[0]] [$ulicznik[1] "._('visits/day').']</p>';
     $TRESC .= '</div>';
     // ***************
     if ($speedtest_index) {
@@ -298,7 +298,7 @@ $(function () {
     $gkUrl = $config['adres'];
     $gkLogoUrl = $config['cdn_url'].'/images/banners/geokrety.png';
     $gkHeadline = _('Welcome to GeoKrety.org!');
-    $gkDescription = _('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="help.php#about">read more...</a>');
+    $gkDescription = _('This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href="/help.php#about">read more...</a>');
     $gkKeywords = 'geokrety,opencaching,geocaching,geocoin,geobook,krety,geokret,geokrets,geocache,gps';
     $lastUpdate = filemtime(__FILE__);
     $dateModified = date('c', $helpLastUpdate);

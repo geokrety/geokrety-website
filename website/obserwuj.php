@@ -73,7 +73,7 @@ else {
     );
         while ($row = mysqli_fetch_array($result)) {
             list($f_user_id, $f_username) = $row;
-            $TRESC .= "<li style='padding:0'><a href='mypage.php?userid=$f_user_id' onclick='$.fn.colorbox.close(); setTimeout(function(){parent.location.href=\"mypage.php?userid=$f_user_id\";},400); return false;'>$f_username</a></li>";
+            $TRESC .= "<li style='padding:0'><a href='/mypage.php?userid=$f_user_id' onclick='$.fn.colorbox.close(); setTimeout(function(){parent.location.href=\"mypage.php?userid=$f_user_id\";},400); return false;'>$f_username</a></li>";
         }
         $TRESC .= '</ul></div></div>';
         mysqli_free_result($result);

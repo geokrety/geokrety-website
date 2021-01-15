@@ -66,18 +66,18 @@ if (count($_GET) == 0) {
     );
     list($count4, $count5, $count6, $count7, $count8, $count9) = mysqli_fetch_row($result);
 
-    $TRESC .= '<a href="_admin.php">Admin</a> > ';
-    $TRESC .= 'Last error ID: <a href=errory.php?action=view&from_id='.($last_id)."&from_sev=0'>$last_id</a><br/>";
+    $TRESC .= '<a href="/_admin.php">Admin</a> > ';
+    $TRESC .= 'Last error ID: <a href=/errory.php?action=view&from_id='.($last_id)."&from_sev=0'>$last_id</a><br/>";
     $TRESC .= '<br/>';
-    $TRESC .= "<a href='errory.php?action=view&from_id=".($last_id - 100)."&from_sev=0'>View last 100</a>&nbsp;&nbsp;&nbsp;<a href='errory.php?action=view&from_id=".($last_id - 100)."&from_sev=2'>View last 100, sev 2+</a><br/>";
-    $TRESC .= "<a href='errory.php?action=view&from_id=".($last_id - 1000)."&from_sev=0'>View last 1000</a>&nbsp;&nbsp;&nbsp;<a href='errory.php?action=view&from_id=".($last_id - 1000)."&from_sev=2'>View last 1000, sev 2+</a><br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_id=".($last_id - 100)."&from_sev=0'>View last 100</a>&nbsp;&nbsp;&nbsp;<a href='/errory.php?action=view&from_id=".($last_id - 100)."&from_sev=2'>View last 100, sev 2+</a><br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_id=".($last_id - 1000)."&from_sev=0'>View last 1000</a>&nbsp;&nbsp;&nbsp;<a href='/errory.php?action=view&from_id=".($last_id - 1000)."&from_sev=2'>View last 1000, sev 2+</a><br/>";
     $TRESC .= '<br/>';
-    $TRESC .= "<a href='errory.php?action=view&from_sev=4'>View all sev 4+ (dev debug 1)</a> [$count4]<br/>";
-    $TRESC .= "<a href='errory.php?action=view&from_sev=5'>View all sev 5+ (dev debug 2)</a> [$count5]<br/>";
-    $TRESC .= "<a href='errory.php?action=view&from_sev=6'>View all sev 6+ (warning low)</a> [$count6]<br/>";
-    $TRESC .= "<a href='errory.php?action=view&from_sev=7'>View all sev 7+ (warning high)</a> [$count7]<br/>";
-    $TRESC .= "<a href='errory.php?action=view&from_sev=8'>View all sev 8+ (defektoskop/error!)</a> [$count8]<br/>";
-    $TRESC .= "<a href='errory.php?action=view&from_sev=9'>View all sev 9  (error!!)</a> [$count9]<br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_sev=4'>View all sev 4+ (dev debug 1)</a> [$count4]<br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_sev=5'>View all sev 5+ (dev debug 2)</a> [$count5]<br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_sev=6'>View all sev 6+ (warning low)</a> [$count6]<br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_sev=7'>View all sev 7+ (warning high)</a> [$count7]<br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_sev=8'>View all sev 8+ (defektoskop/error!)</a> [$count8]<br/>";
+    $TRESC .= "<a href='/errory.php?action=view&from_sev=9'>View all sev 9  (error!!)</a> [$count9]<br/>";
 
     echo "<?xml version='1.0' encoding='UTF-8'?><html xmlns='http://www.w3.org/1999/xhtml' xml:lang='pl' lang='pl'><head>$HEAD</head><body>$TRESC</body></html>";
 
@@ -212,10 +212,10 @@ td.mid {text-align: center}
         $najnowsze_id = $g_from_id;
     }
 
-    $TRESC .= '<a href="_admin.php">Admin</a> > ';
-    $TRESC .= "<a href='errory.php'>Home</a> ";
-    $TRESC .= "<a href='errory.php?action=view&from_id=$najnowsze_id$gg_from_sev$gg_only_code'>Refresh new</a> ";
-    $TRESC .= "<a href='errory.php?action=view$gg_from_id$gg_from_sev$gg_only_code'>This page</a> Top id=$najnowsze_id ";
+    $TRESC .= '<a href="/_admin.php">Admin</a> > ';
+    $TRESC .= "<a href='/errory.php'>Home</a> ";
+    $TRESC .= "<a href='/errory.php?action=view&from_id=$najnowsze_id$gg_from_sev$gg_only_code'>Refresh new</a> ";
+    $TRESC .= "<a href='/errory.php?action=view$gg_from_id$gg_from_sev$gg_only_code'>This page</a> Top id=$najnowsze_id ";
     $TRESC .= '&nbsp;&nbsp;&nbsp;&nbsp;<b>FILTER</b> ';
     $TRESC .= "id: <input type='textbox' name='from_id' value='$kret_from_id' size='7'/>";
     $TRESC .= "&nbsp;&nbsp;code: <input type='textbox' name='only_code' value='$kret_only_code' size='15'/>";

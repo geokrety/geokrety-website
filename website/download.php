@@ -19,17 +19,17 @@ $TRESC = '
 <div class="rozdzial">'._('Map of caches').'</div>
 <img src="'.CONFIG_CDN_ICONS.'/mapa.png" width="24" height="20" alt="language" />';
 
-$TRESC .= sprintf(_('As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href="help.php#fullysupportedwaypoints">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset).'), '2012/01/07: 665937');
+$TRESC .= sprintf(_('As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href="/help.php#fullysupportedwaypoints">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset).'), '2012/01/07: 665937');
 
 $TRESC .= '</p>
-<p><a href="geomapa.php">'._('Read more and get the map').'</a></p>
+<p><a href="/geomapa.php">'._('Read more and get the map').'</a></p>
 
 
 <div class="rozdzial">'._('GeoKrety logo').'</div>
 <ul>
 <li>Basic GK logo: <a href="https://github.com/geokrety/GeoKrety-Graphic-Resources/blob/master/doodle/geokrety.svg">SVG</a> | <a href="https://cdn.geokrety.org/images/banners/geokrety.png">PNG</a></li>
-<li>Other versions: <a href="rzeczy/logo/">here</a></li>
-<li>GK doodle: <a href="rzeczy/logo/doodle">here</a></li>
+<li>Other versions: <a href="/rzeczy/logo/">here</a></li>
+<li>GK doodle: <a href="/rzeczy/logo/doodle">here</a></li>
 </ul>
 
 <div class="rozdzial">'._('Sample geokret label').':</div>

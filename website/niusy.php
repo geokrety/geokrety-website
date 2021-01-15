@@ -30,9 +30,9 @@ if ($longin_status['plain'] != null) {
             $styl = '';
         }
         if ($userid != 0) {
-            $author = "<a href='mypage.php?userid=$userid'>$who</a>";
+            $author = "<a href='/mypage.php?userid=$userid'>$who</a>";
         } else {
-            $author = "<a href='kontakt.php'>$who</a>";
+            $author = "<a href='/kontakt.php'>$who</a>";
         }
         $TRESC .= '<div class="panel panel-default">
           <div class="panel-heading">
@@ -40,7 +40,7 @@ if ($longin_status['plain'] != null) {
               <h3 class="panel-title">'.$tytul.'</h3>
             </div>
             <div class="panel-title pull-right">
-              <a href="newscomments.php?newsid='.$newsid.'" '.$styl.'>'.$txt_view_comments.' <span class="badge">'.$komentarze.'</span></a>
+              <a href="/newscomments.php?newsid='.$newsid.'" '.$styl.'>'.$txt_view_comments.' <span class="badge">'.$komentarze.'</span></a>
               <i>
                 '.$date.' ('.$author.')
               </i>
@@ -65,9 +65,9 @@ if ($longin_status['plain'] != null) {
               <h3 class="panel-title">'.$tytul.'</h3>
             </div>
             <div class="panel-title pull-right">
-              <a href="newscomments.php?newsid='.$newsid.'">'.$txt_view_comments.' <span class="badge">'.$komentarze.'</span></a>
+              <a href="/newscomments.php?newsid='.$newsid.'">'.$txt_view_comments.' <span class="badge">'.$komentarze.'</span></a>
               <i>
-                '.$date.' (<a href="mypage.php?userid='.$userid.'">'.$who.'</a>)
+                '.$date.' (<a href="/mypage.php?userid='.$userid.'">'.$who.'</a>)
               </i>
             </div>
             <div class="clearfix"></div>

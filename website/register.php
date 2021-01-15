@@ -54,7 +54,7 @@ if ($longin_status['plain'] == null) {
         $TRESC .= "<option value='$key'>"._("$value").'</option>';
     }
 
-    $TRESC .= '</select> <a href="'._('help.php#geokretytypes').'"><img src="'.CONFIG_CDN_ICONS.'/help.png" alt="HELP" width="11" height="11" border="0" /></a>
+    $TRESC .= '</select> <a href="/'._('help.php#geokretytypes').'"><img src="'.CONFIG_CDN_ICONS.'/help.png" alt="HELP" width="11" height="11" border="0" /></a>
 </td>
 </tr>
 <tr>

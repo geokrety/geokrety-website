@@ -205,7 +205,7 @@ function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin) {
 
             //formatting of the last user data
             if ($f_lastuserid > 0) {
-                $lastuser = "<br /><a href='mypage.php?userid=$f_lastuserid'>$f_lastuser</a>";
+                $lastuser = "<br /><a href='/mypage.php?userid=$f_lastuserid'>$f_lastuser</a>";
             } elseif ($f_lastuserid == '0') {
                 $lastuser = "<br />(?) $f_lastanonuser";
             } else {
@@ -229,7 +229,7 @@ function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin) {
             if ($kret_co == '1' or $kret_co == '5') {
                 //if logged in =  owner, then  allow him to edit it
                 if ($longin == $f_userid) {
-                    $edycja_kreta = "<a href='edit.php?co=geokret&amp;id=".$f_id."'><img src='".CONFIG_CDN_ICONS."/edit.png' alt='edit' title='"._('Edit this GeoKret')."' width='16' height='16' border='0' /></a>";
+                    $edycja_kreta = "<a href='/edit.php?co=geokret&amp;id=".$f_id."'><img src='".CONFIG_CDN_ICONS."/edit.png' alt='edit' title='"._('Edit this GeoKret')."' width='16' height='16' border='0' /></a>";
                 } else {
                     $edycja_kreta = '';
                 }
@@ -273,18 +273,18 @@ function mygeokrets($kret_co, $kret_userid, $limit, $title, $longin) {
             } elseif ($kret_co == '2') {
                 //if logged in = the person whose watched gks we are listing, then  allow him to cancel subscription
                 if ($longin == $kret_userid) {
-                    $cancel = "<a href='obserwuj.php?id=".$f_id."' title='"._('Stop watching this GeoKret')."'><img src='".CONFIG_CDN_ICONS."/watch_n.png' alt='stop watching' width='16' height='16' border='0' /></a>";
+                    $cancel = "<a href='/obserwuj.php?id=".$f_id."' title='"._('Stop watching this GeoKret')."'><img src='".CONFIG_CDN_ICONS."/watch_n.png' alt='stop watching' width='16' height='16' border='0' /></a>";
                 } else {
                     $cancel = '';
                 }
 
                 $actions = "$cancel"; // $loguj_kreta";
-                $ownerrow = "<td class='mid'><a href='mypage.php?userid=$f_userid'>$f_ownername</a></td>\n";
+                $ownerrow = "<td class='mid'><a href='/mypage.php?userid=$f_userid'>$f_ownername</a></td>\n";
                 $ownercolumn = " <th $fixed_table[8]>"._('Owner')."</th>\n";
                 $cacherow = "<td data-sort='$f_lastlocation_country$f_lastlocation_waypoint'>$lastcache</td>";
                 $cachecolumn = " <th $fixed_table[3]>"._('Cache')."</th>\n";
             } elseif ($kret_co == '5') {
-                $ownerrow = "<td class='mid'><a href='mypage.php?userid=$f_userid'>$f_ownername</a></td>\n";
+                $ownerrow = "<td class='mid'><a href='/mypage.php?userid=$f_userid'>$f_ownername</a></td>\n";
                 $ownercolumn = " <th $fixed_table[8]>"._('Owner')."</th>\n";
                 $cacherow = '';
                 $cachecolumn = '';

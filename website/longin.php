@@ -41,7 +41,7 @@ if ($_GET['logout']) {      // logging out
     header('Location: /');
     $TRESC = _('You have successfully logged out of GeoKrety website.');
 } elseif (!empty($_COOKIE['geokret0'])) {
-    $TRESC = _('You are probably logged in.').' <a href="longin.php?logout=1">Logout</a>';
+    $TRESC = _('You are probably logged in.').' <a href="/longin.php?logout=1">Logout</a>';
 } elseif (!empty($kret_login) and !empty($kret_haslo1)) { // logging in with supplied data
     include_once 'defektoskop.php';
 

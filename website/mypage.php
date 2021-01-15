@@ -41,12 +41,12 @@ require_once 'smarty_start.php';
         } else {   // user właściwy
             $sql_user = "SELECT `user`, `joined`, `lang`, `lat`, `lon`, `promien`, `country`, `email`, `secid` FROM `gk-users` WHERE `userid`='$kret_userid' LIMIT 1";
 
-            $edit = '<a href="edit.php?co=email" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a><br />'._('Password').' <a href="edit.php?co=haslo" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a>';
-            $edit_lang = '<a href="edit.php?co=lang" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a>';
-            $edit_statpic = '<a href="edit.php?co=statpic" title="Edit statpic"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/> '._('Choose statpic').'</a>';
-            $edit_latlon = '<a href="edit.php?co=latlon" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a>';
-            $dodaj_obrazek = '<a href="imgup.php?typ=2&amp;id='.$longin_status['userid'].'"><img src="'.CONFIG_CDN_IMAGES.'/icons/image.png" alt="add photo" title="add photo" width="16" height="16" border="0" /></a>';
-            $logout = '<img src="'.CONFIG_CDN_IMAGES.'/icons/exit.png" alt="logout" title="logout" width="16" height="16" /> <a href="longin.php?logout=1">'._(Logout).'</a>';
+            $edit = '<a href="/edit.php?co=email" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a><br />'._('Password').' <a href="/edit.php?co=haslo" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a>';
+            $edit_lang = '<a href="/edit.php?co=lang" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a>';
+            $edit_statpic = '<a href="/edit.php?co=statpic" title="Edit statpic"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/> '._('Choose statpic').'</a>';
+            $edit_latlon = '<a href="/edit.php?co=latlon" title="Edit"><img src="'.CONFIG_CDN_IMAGES.'/icons/edit.png" alt="edit" width="16" height="16" border="0"/></a>';
+            $dodaj_obrazek = '<a href="/imgup.php?typ=2&amp;id='.$longin_status['userid'].'"><img src="'.CONFIG_CDN_IMAGES.'/icons/image.png" alt="add photo" title="add photo" width="16" height="16" border="0" /></a>';
+            $logout = '<img src="'.CONFIG_CDN_IMAGES.'/icons/exit.png" alt="logout" title="logout" width="16" height="16" /> <a href="/longin.php?logout=1">'._(Logout).'</a>';
         }
 
         // info o userze
@@ -278,7 +278,7 @@ require_once 'smarty_start.php';
 
                 // jeśli email user chce dostawać
                 //if($row[0]!='')
-                $wyslij_wiadomosc = '<img src="'.CONFIG_CDN_IMAGES.'/icons/email.png" alt="send message to user" title="send message to user" width="16" height="16" /> <a href="majluj.php?to='.$kret_userid.'">'._('Send a message to the user').'</a>.';
+                $wyslij_wiadomosc = '<img src="'.CONFIG_CDN_IMAGES.'/icons/email.png" alt="send message to user" title="send message to user" width="16" height="16" /> <a href="/majluj.php?to='.$kret_userid.'">'._('Send a message to the user').'</a>.';
             }
 
             // ------------------------------------------------------------------- my geokrets
@@ -292,7 +292,7 @@ require_once 'smarty_start.php';
                 $OBRAZKI .= "<span class=\"obrazek\"><a href=\"obrazki/$obrazki_plik\" target=\"_blank\"><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
 
                 if ($longin_status['userid'] == $kret_userid) {
-                    $OBRAZKI .= ' <a href="edit.php?delete_obrazek='.$obrazki_id.'" onClick="return CzySkasowac(this, \'this entry???\')"><img src="'.CONFIG_CDN_IMAGES.'/icons/delete.png" alt="delete" width="11" height="11" border="0" /></a>';
+                    $OBRAZKI .= ' <a href="/edit.php?delete_obrazek='.$obrazki_id.'" onClick="return CzySkasowac(this, \'this entry???\')"><img src="'.CONFIG_CDN_IMAGES.'/icons/delete.png" alt="delete" width="11" height="11" border="0" /></a>';
                 }
                 $OBRAZKI .= '</span>';
 
@@ -323,7 +323,7 @@ require_once 'smarty_start.php';
 <tr>
   <td class="tresc1">
     <img src="'.CONFIG_CDN_IMAGES.'/icons/rss.png" alt="RSS" width="14" height="14" />
-     <a href="georss.php?userid='.$kret_userid.'">'._('Subscribe to RSS channel').'</a>.<br />
+     <a href="/georss.php?userid='.$kret_userid.'">'._('Subscribe to RSS channel').'</a>.<br />
      '._('Be up to date with your and watched GeoKrets!').'
   </td>
 </tr>
@@ -343,7 +343,7 @@ require_once 'smarty_start.php';
 <tr><td class="tresc1">'.$lista_odznaczen_geokrety_obce.'</td></tr>
 <tr><td class="tresc1" style="text-align: right;">
   <img src="'.CONFIG_CDN_IMAGES.'/icons/stat.png" width="16" height="16" alt="stats" />
-   <a href="user_stat.php?userid='.$kret_userid.'">'._('User stats').'</a>
+   <a href="/user_stat.php?userid='.$kret_userid.'">'._('User stats').'</a>
 </td></tr>
 </table>
 
@@ -377,15 +377,15 @@ BB Code:  <span class="szare">[url='.$config['adres'].'mypage.php?userid='.$kret
 <tr><td class="heading1"><img src="'.CONFIG_CDN_IMAGES.'/icons/tool.png" alt="tools" width="22" height="22" /> '._('Links').'</td></tr>
 <tr>
 <td class="tresc1">
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="mypage.php?userid='.$kret_userid.'&amp;co=5">'._('Geokrets in my inventory').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="mypage.php?userid='.$kret_userid.'&amp;co=1">'._('My geokrets').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="mypage.php?userid='.$kret_userid.'&amp;co=2">'._('Watched geokrets').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="mypage.php?userid='.$kret_userid.'&amp;co=3">'._('My recent logs').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="mypage.php?userid='.$kret_userid.'&amp;co=4">'._('Recent moves of my geokrets').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="galeria.php?photosby='.$kret_userid.'">'._('My photos').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="galeria.php?userid='.$kret_userid.'">'._('Photos of my geokrets').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="mapka_kretow.php?userid='.$kret_userid.'">'._('Where are my geokrets?').'</a><br />
-<img src="'.CONFIG_CDN_IMAGES.'/icons/stat.png" width="16" height="16" alt="stats" /> <a href="user_stat.php?userid='.$kret_userid.'">'._('User stats').'</a>
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/mypage.php?userid='.$kret_userid.'&amp;co=5">'._('Geokrets in my inventory').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/mypage.php?userid='.$kret_userid.'&amp;co=1">'._('My geokrets').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/mypage.php?userid='.$kret_userid.'&amp;co=2">'._('Watched geokrets').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/mypage.php?userid='.$kret_userid.'&amp;co=3">'._('My recent logs').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/mypage.php?userid='.$kret_userid.'&amp;co=4">'._('Recent moves of my geokrets').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/galeria.php?photosby='.$kret_userid.'">'._('My photos').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/galeria.php?userid='.$kret_userid.'">'._('Photos of my geokrets').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/mapka_kretow.php?userid='.$kret_userid.'">'._('Where are my geokrets?').'</a><br />
+<img src="'.CONFIG_CDN_IMAGES.'/icons/stat.png" width="16" height="16" alt="stats" /> <a href="/user_stat.php?userid='.$kret_userid.'">'._('User stats').'</a>
 
 </td>
 </tr>

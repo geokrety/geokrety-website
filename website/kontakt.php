@@ -55,7 +55,7 @@ $TRESC .= '
         <a href="'.$config['adres'].'mypage.php?userid=26422">kumy</a> (en français, in english)<br/>
         <a href="'.$config['adres'].'mypage.php?userid=35313">bsllm</a> (en français, in english)<br/>
         <br/>
-        <p>Our public PGP/GPG key <a href="rzeczy/geokrety.org.pub">is here (76B00039)</a></p>
+        <p>Our public PGP/GPG key <a href="/rzeczy/geokrety.org.pub">is here (76B00039)</a></p>
     </div>
 </div>
 

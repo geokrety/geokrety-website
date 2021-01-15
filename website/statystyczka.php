@@ -19,20 +19,20 @@ $TRESC = file_get_contents($config['generated'].'statystyczka.html');
 // -------------------------------------- plots ------------------------------- //
 
 $TRESC .= '
-<p><a href="statystyczka2.php">More stats</a> | <a href="statystyczka3.php">Even more stats</a> | <a href="country_stat.php">Country stats</a> | <a href="statystyczka-hubs.php">Caches - Hubs</a> | <a href="/mapa.php">GK on the map</a> | <a href="/mapki/globus-animate.gif">GK on the 3D rotating map</a></p>
+<p><a href="/statystyczka2.php">More stats</a> | <a href="/statystyczka3.php">Even more stats</a> | <a href="/country_stat.php">Country stats</a> | <a href="/statystyczka-hubs.php">Caches - Hubs</a> | <a href="/mapa.php">GK on the map</a> | <a href="/mapki/globus-animate.gif">GK on the 3D rotating map</a></p>
 
 <p><img src="'.CONFIG_CDN_IMAGES.'/wykresy/new/all_gk_.png" width="590" height="350" alt="" /></p>
 <p><img src="'.CONFIG_CDN_IMAGES.'/wykresy/new/all_gk_zakopane.png" width="590" height="350" alt="" /></p>
 <p><img src="'.CONFIG_CDN_IMAGES.'/wykresy/new/all_ruchow_.png" width="590" height="350" alt="" /></p>
 <p><img src="'.CONFIG_CDN_IMAGES.'/wykresy/new/all_users_.png" width="590" height="350" alt="" /></p>
 
-<p><a href="statystyczka3.php">Even more stats</a></p>
+<p><a href="/statystyczka3.php">Even more stats</a></p>
 
 <img src="'.CONFIG_CDN_IMAGES.'/wykresy/wpt_types.png" width="450" height="350" alt="Stat by waypoint type" longdesc="Stat by waypoint type" />
 <img src="'.CONFIG_CDN_IMAGES.'/wykresy/gk_types.png" width="450" height="350" alt="Stat by GK type" longdesc="Stat by GK type" />
 <img src="'.CONFIG_CDN_IMAGES.'/wykresy/log_types.png" width="450" height="350" alt="Stat by log type" longdesc="Stat by log type" />
 
-<p><a href="statystyczka2.php">More stats</a> | <a href="country_stat.php">Country stats</a></p>
+<p><a href="/statystyczka2.php">More stats</a> | <a href="/country_stat.php">Country stats</a></p>
 ';
 
 // -------------------------------------- geokrety z największym dorobkiem -------------------- //
@@ -51,7 +51,7 @@ while ($row = mysqli_fetch_array($result)) {
     if ($longin != '') {
         // if owner
         if ($longin == $userid) {
-            $owner_options = '<a href="edit.php?co=geokret&id='.$id.'" title="Edit"><img src="templates/edit.png" alt="edit" width="16" height="16" border="0"/></a> | '.$nr;
+            $owner_options = '<a href="/edit.php?co=geokret&id='.$id.'" title="Edit"><img src="templates/edit.png" alt="edit" width="16" height="16" border="0"/></a> | '.$nr;
         }
     }
 

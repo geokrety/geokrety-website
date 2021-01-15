@@ -69,7 +69,7 @@ WHERE `raceid` = '$raceid' LIMIT 1;";
     // -------------------------- link do  edycji
 
     if ($raceOwner == $longin_status['userid'] and $status == 0) {
-        $editLink = ' | <img src="'.CONFIG_CDN_ICONS.'/edit10.png" width="10" height="10" alt="edit" /> <a href="race_add.php?edit=1&raceid='.$raceid.'">'._('Edit this race').'</a>';
+        $editLink = ' | <img src="'.CONFIG_CDN_ICONS.'/edit10.png" width="10" height="10" alt="edit" /> <a href="/race_add.php?edit=1&raceid='.$raceid.'">'._('Edit this race').'</a>';
     }
 
     // -----------------------  typ wyścigu
@@ -284,7 +284,7 @@ $extraColumnValue
 
 <tr>
 <td>'._('Owner').':</td>
-<td><a href="mypage.php?userid='.$raceOwner.'">'.$user.'</a></td>
+<td><a href="/mypage.php?userid='.$raceOwner.'">'.$user.'</a></td>
 </tr>
 
 <tr>
@@ -322,7 +322,7 @@ $extraColumnValue
 
 <tr>
 <td></td>
-<td style="text-align: right;"><a href="race.php">'._('Geokrety races').' →</a></td>
+<td style="text-align: right;"><a href="/race.php">'._('Geokrety races').' →</a></td>
 </tr>
 
 </table>
@@ -380,15 +380,15 @@ else {
     $TRESC = '<h2>'.$TYTUL.'</h2>
 <table>
 <tr>
-<td style="width:70px;"><img src="'.CONFIG_CDN_ICONS.'/add.png" width="16" height="16" alt="icon" /></td><td><a href="race_add.php">'._('Register a new Race').'</a></td>
+<td style="width:70px;"><img src="'.CONFIG_CDN_ICONS.'/add.png" width="16" height="16" alt="icon" /></td><td><a href="/race_add.php">'._('Register a new Race').'</a></td>
 </tr>
 
 <tr>
-<td><img src="'.CONFIG_CDN_ICONS.'/race_join16.png" width="16" height="16" alt="icon" /></td><td><a href="race_join.php">'._('Join the Race').'</a></td>
+<td><img src="'.CONFIG_CDN_ICONS.'/race_join16.png" width="16" height="16" alt="icon" /></td><td><a href="/race_join.php">'._('Join the Race').'</a></td>
 </tr>
 
 <tr>
-<td><img src="'.CONFIG_CDN_ICONS.'/adduser.png" width="16" height="16" alt="icon" /></td><td><a href="race.php?showUserRaces='.$longin_status['userid'].'">'._('My races').'</a></td>
+<td><img src="'.CONFIG_CDN_ICONS.'/adduser.png" width="16" height="16" alt="icon" /></td><td><a href="/race.php?showUserRaces='.$longin_status['userid'].'">'._('My races').'</a></td>
 </tr>
 
 
@@ -446,8 +446,8 @@ ORDER BY r.status ASC, r.`created` DESC";
         }
 
         $TRESC .= '<tr'.(($rowcount % 2) ? " class='odd'" : '').'>'.'
-<td><a href="race.php?raceid='.$row['raceid'].'">'.$row['raceTitle'].'</a></td>
-<td><a href="mypage.php?userid='.$row['raceOwner'].'">'.$row['user'].'</a></td>
+<td><a href="/race.php?raceid='.$row['raceid'].'">'.$row['raceTitle'].'</a></td>
+<td><a href="/mypage.php?userid='.$row['raceOwner'].'">'.$row['user'].'</a></td>
 <td>'.$private.'</td>
 <td>'.$conf_race_type[$row['raceOpts']].'</td>
 <td>'.$conf_race_status_icon[$row['status']].'<br />'.$czas.'</td>

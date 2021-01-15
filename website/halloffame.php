@@ -12,10 +12,10 @@ $TYTUL = _('Hall of fame');
 
 // --------------------------------------------------------------- SMARTY ---------------------------------------- //
 
-$kumy = '<a href="mypage.php?userid=26422">kumy</a>';
-$lineflyer = '<a href="mypage.php?userid=17135">Lineflyer</a>';
-$filips = '<a href="mypage.php?userid=1">filips</a>';
-$harrieklomp = '<a href="mypage.php?userid=7861">Harrie Klomp</a>';
+$kumy = '<a href="/mypage.php?userid=26422">kumy</a>';
+$lineflyer = '<a href="/mypage.php?userid=17135">Lineflyer</a>';
+$filips = '<a href="/mypage.php?userid=1">filips</a>';
+$harrieklomp = '<a href="/mypage.php?userid=7861">Harrie Klomp</a>';
 
 $TRESC = '
 <p><i>Idę sobie i patrzę, a_leją zasłużonych... B. Smoleń</i></p>
@@ -23,17 +23,17 @@ $TRESC = '
 <div class="rozdzial">'._('Developers').'</div>
 	<ul>
 	<li><strong>'.$filips.'</strong> idea, code and design</li>
-	<li><strong><a href="mypage.php?userid=6262">simor</a></strong> visions into code ;)</li>
+	<li><strong><a href="/mypage.php?userid=6262">simor</a></strong> visions into code ;)</li>
 	<li><strong>'.$kumy.'</strong> hosting, code and <a href="https://github.com/geokrety">planning GK v2</a></li>
-	<li><strong><a href="mypage.php?userid=35313">BSLLM</a></strong> code, public relation and advertising</li>
+	<li><strong><a href="/mypage.php?userid=35313">BSLLM</a></strong> code, public relation and advertising</li>
 </ul>
 
 
 <div class="rozdzial">'._('Support').'</div>
 	<ul>
-	<li><strong><a href="mypage.php?userid=1789">Thathanka</a></strong> | <strong><a href="mypage.php?userid=196">Quinto</a></strong> :: GK logo (the mole, different versions)</li>
+	<li><strong><a href="/mypage.php?userid=1789">Thathanka</a></strong> | <strong><a href="/mypage.php?userid=196">Quinto</a></strong> :: GK logo (the mole, different versions)</li>
 	<li><strong>gosia</strong> MySQL support, sandwiches and more :)</li>
-	<li><strong><a href="mypage.php?userid=497">moose</a></strong> GK maps</li>
+	<li><strong><a href="/mypage.php?userid=497">moose</a></strong> GK maps</li>
 	</ul>
 
 
@@ -45,7 +45,7 @@ $TRESC = '
 	<li><strong>ZYR, Lion &amp; Aquaria</strong> betatesting</li>
 	<li><strong>angelo</strong> programming support</li>
 	<li><strong>Yergo</strong> coordinates parser</li>
-	<li><strong><a href="mypage.php?userid=30144">YvesProvence</a></strong> public relation and advertising</li>
+	<li><strong><a href="/mypage.php?userid=30144">YvesProvence</a></strong> public relation and advertising</li>
 </ul>
 
 <div class="rozdzial">'._('Translations').'</div>

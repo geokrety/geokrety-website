@@ -20,8 +20,8 @@ if (isset($_GET['wpt'])) {
 <head>
     <meta http-equiv="Content-Type" content="text/xml; charset=UTF-8" />
     <title>go2geo :: resolve geocaching waypoints...</title>
-    <link rel="shortcut icon" href="../favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="go2geo.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/go2geo/go2geo.css" />
 
 </head>
 <body>
@@ -35,7 +35,7 @@ if (isset($_GET['wpt'])) {
     <input type="text" name="wpt" size="10" maxlength="10" value="<?php echo $wpt; ?>" /> <input type="submit" value=" go! " />
     <p><span class="error"><?php echo $error; ?></span></p>
     <hr />
-    <span class="szare"><a href="help.php">info & supported waypoints</a> | by: filips</span>
+    <span class="szare"><a href="/go2geo/help.php">info & supported waypoints</a> | by: filips</span>
     </form>
     </div>
   </div>

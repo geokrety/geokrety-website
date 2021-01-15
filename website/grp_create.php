@@ -38,8 +38,8 @@ VALUES ('$userid_longin', NOW(), '$private', '$desc', '$name')";
     $result = mysqli_query($link, $sql) or $TRESC = 'Error #111222333sql';
 
     $TRESC .= _('The group has been created succesfully').' :)<br />';
-    $TRESC .= '<ul><li><a href="konkret.php?id='.$_GET['id'].'">'._('Go back to the geokret page').'</a></li>';
-    $TRESC .= '<li><a href="grp_add.php?id='.$_GET['id'].'">'._('Add the geokret to a group').'</a></li></ul>';
+    $TRESC .= '<ul><li><a href="/konkret.php?id='.$_GET['id'].'">'._('Go back to the geokret page').'</a></li>';
+    $TRESC .= '<li><a href="/grp_add.php?id='.$_GET['id'].'">'._('Add the geokret to a group').'</a></li></ul>';
 }
 
 // ---------------------------------------------------------------------------- formularz

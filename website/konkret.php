@@ -81,22 +81,22 @@ $geokretyGKCode = sprintf('GK%04X', $kret_id);
 
 // if this is owner logged in
 if ($userid == $userid_longin) {
-    $edit_kreta = '<a href="edit.php?co=geokret&amp;id='.$id.'" title="'._('Edit description').'"><img src="'.CONFIG_CDN_ICONS.'/edit.png" alt="[Edit_comment]" width="16" height="16" border="0"/></a>';
-    $add_image = '<a href="imgup.php?typ=0&amp;id='.$id.'"><img src="'.CONFIG_CDN_ICONS.'/image.png" alt="[Add_photo]" title="'._('Add photo').'" width="16" height="16" border="0" /></a>';
+    $edit_kreta = '<a href="/edit.php?co=geokret&amp;id='.$id.'" title="'._('Edit description').'"><img src="'.CONFIG_CDN_ICONS.'/edit.png" alt="[Edit_comment]" width="16" height="16" border="0"/></a>';
+    $add_image = '<a href="/imgup.php?typ=0&amp;id='.$id.'"><img src="'.CONFIG_CDN_ICONS.'/image.png" alt="[Add_photo]" title="'._('Add photo').'" width="16" height="16" border="0" /></a>';
     $tracking_code = '<tr><td class="tresc1">Tracking Code: </td><td><strong>'.$nr.'</strong></td></tr>';
-    //$view_gallery = '<img src="'.CONFIG_CDN_ICONS.'/photos.png" class="textalign16" alt="" width="16" height="16" border="0"/> <a href="geokret_gallery.php?id='.$id.'">' ._("View photo gallery and set avatar"). "</a> <span class='xs' title='". _('Number of photos in the gallery') ."'>($zdjecia)</span>";
-    $print_a_label = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="labels.php?id='.$id.'&nr='.$nr.'">'._('Print a label for this geokret').'</a>';
-    $archiwizuj_kreta = '<img src="'.CONFIG_CDN_ICONS.'/archiwizuj.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="ruchy.php?nr='.$nr.'&amp;type=archive" title="Archive">'._('Archive this geokret').'</a>';
+    //$view_gallery = '<img src="'.CONFIG_CDN_ICONS.'/photos.png" class="textalign16" alt="" width="16" height="16" border="0"/> <a href="/geokret_gallery.php?id='.$id.'">' ._("View photo gallery and set avatar"). "</a> <span class='xs' title='". _('Number of photos in the gallery') ."'>($zdjecia)</span>";
+    $print_a_label = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="/labels.php?id='.$id.'&nr='.$nr.'">'._('Print a label for this geokret').'</a>';
+    $archiwizuj_kreta = '<img src="'.CONFIG_CDN_ICONS.'/archiwizuj.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="/ruchy.php?nr='.$nr.'&amp;type=archive" title="Archive">'._('Archive this geokret').'</a>';
     $ownerIsLogged = 1; // owner is logged in and browsing
 } else {
-    //$view_gallery = '<img src="templates/photos.png" class="textalign16" alt="" width="16" height="16" border="0"/> <a href="geokret_gallery.php?id='.$id.'">' ._("View photo gallery"). "</a> <span class='xs' title='". _('Number of photos in the gallery') ."'>($zdjecia)</span>";
+    //$view_gallery = '<img src="templates/photos.png" class="textalign16" alt="" width="16" height="16" border="0"/> <a href="/geokret_gallery.php?id='.$id.'">' ._("View photo gallery"). "</a> <span class='xs' title='". _('Number of photos in the gallery') ."'>($zdjecia)</span>";
 }
 
-    $write_note = '<img src="'.CONFIG_CDN_ICONS.'/note16.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="ruchy.php?type=note&amp;id='.$id.'">'._('Write a note').'</a>';
+    $write_note = '<img src="'.CONFIG_CDN_ICONS.'/note16.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="/ruchy.php?type=note&amp;id='.$id.'">'._('Write a note').'</a>';
     $view_stat = '<img src="'.CONFIG_CDN_ICONS.'/stat.png" class="textalign16" alt="*" width="16" height="16" border="0" /> <a href="/gk_stat.php?id='.$kret_id.'"> '._('Statistics').'</a>';
-    $view_gallery = '<img src="'.CONFIG_CDN_ICONS.'/photos.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="geokret_gallery.php?id='.$id.'">'._('View photo gallery')."</a> <span class='xs' title='"._('Number of photos in the gallery')."'>($zdjecia)</span>";
+    $view_gallery = '<img src="'.CONFIG_CDN_ICONS.'/photos.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="/geokret_gallery.php?id='.$id.'">'._('View photo gallery')."</a> <span class='xs' title='"._('Number of photos in the gallery')."'>($zdjecia)</span>";
 
-    //$report_missing = '<img src="'.CONFIG_CDN_ICONS.'/flag_add.png" class="textalign16" alt="Archive" width="16" height="16" border="0"/> <a href="ruchy.php?type=missing&amp;id='.$id.'">'. _('Report missing'). '</a>';
+    //$report_missing = '<img src="'.CONFIG_CDN_ICONS.'/flag_add.png" class="textalign16" alt="Archive" width="16" height="16" border="0"/> <a href="/ruchy.php?type=missing&amp;id='.$id.'">'. _('Report missing'). '</a>';
 
     $link1a = htmlentities('[url='.$config['adres'].'konkret.php?id='.$id.']'.$nazwa.'[/url]', ENT_QUOTES, 'UTF-8', false);
     $link2a = htmlentities('<a href="'.$config['adres'].'konkret.php?id='.$id.'">'.$nazwa.'</a>', ENT_QUOTES, 'UTF-8', false);
@@ -113,7 +113,7 @@ if ($userid_longin != null) {
 
     if (!empty($row) or ($userid == $userid_longin)) {
         $report_geokret = '<img src="'.CONFIG_CDN_ICONS.'/flag_add.png" class="textalign16" alt="*" width="16" height="16" /> '."<a href=\"/ruchy.php?nr=$nr\">"._('Log this GeoKret').'</a>';   // link do łatwej edycji
-        $print_a_label_recreate = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="labels.php?id='.$id.'&nr='.$nr.'">'._('Recreate a label for this geokret').'</a>';
+        $print_a_label_recreate = '<img src="'.CONFIG_CDN_ICONS.'/printer.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="/labels.php?id='.$id.'&nr='.$nr.'">'._('Recreate a label for this geokret').'</a>';
         $currentUserKnowsTC = 1; // currently logged user knows TC and can perform some operations with it
     }
 }
@@ -135,8 +135,8 @@ while ($row = mysqli_fetch_row($result)) {
     $MAIN_PHOTO .= "<span class=\"$tmpclass\"><a href=\"".CONFIG_CDN_OBRAZKI."/$obrazki_plik\" rel=\"cb\" title=\"$obrazki_opis\" ><img src=\"".CONFIG_CDN_OBRAZKI_MALE."/$obrazki_plik\" border=\"0\" alt=\"$obrazki_opis\" title=\"$obrazki_opis\" width=\"100\" height=\"100\"/></a><br />$obrazki_opis";
 
     if ($userid == $userid_longin) {
-        $MAIN_PHOTO .= ' <a href="imgup.php?typ='.$obrazki_typ.'&amp;id='.$id.'&amp;rename='.$obrazki_id.'" title="'._('Rename').'"><img src="'.CONFIG_CDN_ICONS.'/edit10.png" alt="rename" width="10" height="10" border="0" /></a> ';
-        $MAIN_PHOTO .= ' <a href="edit.php?delete_obrazek='.$obrazki_id.'" onclick="return CzySkasowac(this, \'this photo?\')" title="'._('Delete photo').'"><img src="'.CONFIG_CDN_ICONS.'/delete10.png" alt="delete" width="10" height="10" border="0" /></a> ';
+        $MAIN_PHOTO .= ' <a href="/imgup.php?typ='.$obrazki_typ.'&amp;id='.$id.'&amp;rename='.$obrazki_id.'" title="'._('Rename').'"><img src="'.CONFIG_CDN_ICONS.'/edit10.png" alt="rename" width="10" height="10" border="0" /></a> ';
+        $MAIN_PHOTO .= ' <a href="/edit.php?delete_obrazek='.$obrazki_id.'" onclick="return CzySkasowac(this, \'this photo?\')" title="'._('Delete photo').'"><img src="'.CONFIG_CDN_ICONS.'/delete10.png" alt="delete" width="10" height="10" border="0" /></a> ';
     }
     $MAIN_PHOTO .= '</span>';
 }
@@ -169,21 +169,21 @@ require_once 'konkret-country.php';
 //$exists = mysqli_num_rows(mysqli_query($link, "SELECT `user` FROM `gk-users` WHERE `userid`='$userid' AND `email` != '' LIMIT 1"));
 $exists = 1;
 if (($userid_longin != null) and ($exists) and ($userid != $userid_longin)) {
-    $wyslij_wiadomosc = "<a href='majluj.php?to=$userid&amp;re=$kret_id'><img src='".CONFIG_CDN_ICONS."/email.png' class='textalign16' alt='' title='".('Send a message to the user')."' width='16' height='16' border='0'/></a>";
-    $email_owner = '<img src="'.CONFIG_CDN_ICONS.'/email.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="majluj.php?to='.$userid.'&amp;re='.$kret_id.'">'._('Email the owner').'</a>';
+    $wyslij_wiadomosc = "<a href='/majluj.php?to=$userid&amp;re=$kret_id'><img src='".CONFIG_CDN_ICONS."/email.png' class='textalign16' alt='' title='".('Send a message to the user')."' width='16' height='16' border='0'/></a>";
+    $email_owner = '<img src="'.CONFIG_CDN_ICONS.'/email.png" class="textalign16" alt="*" width="16" height="16" border="0"/> <a href="/majluj.php?to='.$userid.'&amp;re='.$kret_id.'">'._('Email the owner').'</a>';
 }
 
 $claim_geokret = '';
 if ($userid == 0) { // if we have an unclaimed geokret then prepare "claim it" text
     if ($userid_longin === null) { // anonim
-        $claim_geokret = '<a href="longin.php">'._('Login to claim this GeoKret').'</a>';
+        $claim_geokret = '<a href="/longin.php">'._('Login to claim this GeoKret').'</a>';
         $claim_alert = '<div class="alert alert-info" role="alert">'
-        .sprintf(_('This GeoKret is available for adoption. Please <a href="%s">login</a> first.'), 'longin.php').
+        .sprintf(_('This GeoKret is available for adoption. Please <a href="%s">login</a> first.'), '/longin.php').
         '</div>';
     } else {
-        $claim_geokret = "<a href='claim.php'>"._('Claim this GeoKret').'</a>';
+        $claim_geokret = "<a href='/claim.php'>"._('Claim this GeoKret').'</a>';
         $claim_alert = '<div class="alert alert-info" role="alert">'
-        .sprintf(_('This GeoKret is available for adoption. You can <a href="%s">claim</a> this GeoKret.'), 'claim.php').
+        .sprintf(_('This GeoKret is available for adoption. You can <a href="%s">claim</a> this GeoKret.'), '/claim.php').
         '</div>';
     }
 }
@@ -264,7 +264,7 @@ if ($userRated == 0 and $currentUserKnowsTC == 1 and $ownerIsLogged != 1) {
 $TRESC = $claim_alert.'
 <table width="100%">
 <tr><td class="heading1" colspan="2"><img src="'.CONFIG_CDN_IMAGES.'/log-icons/'.$krettyp.'/icon_25.jpg" alt="Info:" width="25" height="25" /> GeoKret <strong>'.$nazwa.'</strong> ('.$cotozakret[$krettyp].') '.
-(($userid > 0) ? ('by <a href="mypage.php?userid='.$userid.'">'.$user.'</a>'.' '.$wyslij_wiadomosc) : ' - unclaimed').
+(($userid > 0) ? ('by <a href="/mypage.php?userid='.$userid.'">'.$user.'</a>'.' '.$wyslij_wiadomosc) : ' - unclaimed').
 '</td></tr>
 
 <tr>
@@ -336,7 +336,7 @@ EOHEAD;
 <tr><td class="heading1" colspan="2"><a name="map"></a><img src="'.CONFIG_CDN_ICONS.'/mapa.png" alt="Map:" width="22" height="22" /> '._('Map').'</td></tr>
 <tr>
   <td>'._('Legend').' : '.$mapLegend.'</td>
-  <td class="right">'._('Download the track as:').' <a href="'.$tripService->getTripGpxFilename($kret_id).'">gpx</a> | <a href="'.$tripService->getTripGpxFilename($kret_id).'.gz">gpx.gz</a> | <a href="'.$tripService->getTripCsvFilename($kret_id).'">csv.gz</a></td>
+  <td class="right">'._('Download the track as:').' <a href="/'.$tripService->getTripGpxFilename($kret_id).'">gpx</a> | <a href="/'.$tripService->getTripGpxFilename($kret_id).'.gz">gpx.gz</a> | <a href="/'.$tripService->getTripCsvFilename($kret_id).'">csv.gz</a></td>
 </tr>
 </table>';
 

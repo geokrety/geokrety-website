@@ -33,11 +33,11 @@ function login_check() {
 
     if ($ERR == 1) {    // gdy error
         $return['plain'] = null;
-        $return['html'] = '<p><img src="'.CONFIG_CDN_ICONS.'/adduser.png" alt="" width="16" height="16" /> <a href="adduser.php">'._('Register a new user').'</a></p><p> <img src="templates/login.png" alt="login" title="login" width="16" height="16" /> <a href="longin.php">'._('Login').'</a></p><p><a href="new_password.php">'._('Forgot password?').'</a> </p>'.$config['host'].$ERR;
+        $return['html'] = '<p><img src="'.CONFIG_CDN_ICONS.'/adduser.png" alt="" width="16" height="16" /> <a href="/adduser.php">'._('Register a new user').'</a></p><p> <img src="/templates/login.png" alt="login" title="login" width="16" height="16" /> <a href="/longin.php">'._('Login').'</a></p><p><a href="/new_password.php">'._('Forgot password?').'</a> </p>'.$config['host'].$ERR;
         $return['userid'] = null;
     } else {
         $return['plain'] = $user;     // user
-        $return['html'] = '<img src="'.CONFIG_CDN_ICONS.'/add.png" alt="add" title="add" width="16" height="16" style="vertical-align:middle;" /> <a href="register.php">'._('Register a new GeoKret').'</a></p>'."
+        $return['html'] = '<img src="'.CONFIG_CDN_ICONS.'/add.png" alt="add" title="add" width="16" height="16" style="vertical-align:middle;" /> <a href="/register.php">'._('Register a new GeoKret').'</a></p>'."
 
 <p><img src=\"'.CONFIG_CDN_ICONS.'/user.png\" alt=\"HOME\" title=\"HOME\" width=\"16\" height=\"16\" style=\"vertical-align:middle; \" /> <a href=\"/mypage.php?userid=$userid\"><strong>$user</strong>: ".'</a><br />
 <div style="padding-left: 8px;">
@@ -49,7 +49,7 @@ function login_check() {
 <img src="'.CONFIG_CDN_ICONS.'/strz.png" alt="*" title="*" width="10" height="10" /> <a href="/mapka_kretow.php?userid='.$userid.'">'._('Where are my geokrets?').'</a> (<strong>NEW</strong>)
 
 </div>
-<p align="right"><a href="longin.php?logout=1">Logout</a></p>';
+<p align="right"><a href="/longin.php?logout=1">Logout</a></p>';
         $return['userid'] = $userid; // userid
     }
 

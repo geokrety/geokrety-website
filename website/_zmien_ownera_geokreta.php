@@ -54,7 +54,7 @@ LIMIT 1;";
         $sql = "INSERT INTO `gk-ruchy` (`id`, `data`, `user`, `koment`, `logtype`, `data_dodania`, `app`) VALUES ('$id', NOW(), '$userid', '$comment', '2', NOW(), 'www')";
         $result = mysqli_query($link, $sql);
         $TRESC .= "<p>$sql</p>";
-        $TRESC .= "<p><a href='konkret.php?id=$id'>strona kreta</a></p>";
+        $TRESC .= "<p><a href='/konkret.php?id=$id'>strona kreta</a></p>";
 
         include_once 'aktualizuj.php';
         aktualizuj_droge($id);

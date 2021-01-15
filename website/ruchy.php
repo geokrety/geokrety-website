@@ -819,7 +819,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
 
   <div class="form-group">
-    <label class="col-sm-2 control-label">'._('Log type').' <a href="'._('help.php#Chooselogtype').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a></label>
+    <label class="col-sm-2 control-label">'._('Log type').' <a href="/'._('help.php#Chooselogtype').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a></label>
     <div class="col-sm-10 logtypes">
 
         <label>
@@ -873,7 +873,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         $TRESC .= '
 <div id="locationToggle">
 <h3><span class="cyferki">'.$step_number++.'.</span>  '._('New location').'</h3>
-<p><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="?" width="11" height="11" /> '._('<a href="help.php#locationdlagc">Learn more about hiding GeoKrety in GC caches</a>').'...</p>
+<p><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="?" width="11" height="11" /> '._('<a href="/help.php#locationdlagc">Learn more about hiding GeoKrety in GC caches</a>').'...</p>
 
 
   <div class="form-group">
@@ -882,7 +882,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
       <input type="text" name="wpt" value="'.$edit_waypoint.'" id="wpt" size="9" '.$disabled_wpt.' onchange="sprawdzWpt();" onkeyup="sprawdzWpt(event);" class="form-control" aria-describedby="helpBlockWaypoint">
       <span id="helpBlockWaypoint" class="help-block">'.
         _('eg.: GC1AQ2N, OP069B, OC033A…')
-      .' <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>
+      .' <a href="/'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>
       </span>
     </div>
     <label class="col-sm-1 control-label">'._('or name of cache').'</label>
@@ -896,7 +896,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
       <div id="errorAtLeast" style="visibility:hidden"><img src="'.CONFIG_CDN_IMAGES.'/icons/error.png" alt="error" width="16" height="16" /> '.sprintf(_('Enter at least %d characters'), CONFIG_WAYPOINTY_MIN_LENGTH).'</div>
       <span id="helpBlockCacheName" class="help-block">'.
         _('Enter cache name. Works only with opencaching networks.')
-      .' <a href="'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0"></a>
+      .' <a href="/'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0"></a>
       </span>
     </div>
     <div class="col-sm-4">
@@ -911,7 +911,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     <div class="col-sm-6">
       <input type="text" id="latlon" name="latlon" value="'.$edit_lat_lon.'" size="25" '.$disabled_coords.' class="form-control" aria-describedby="helpBlockCoordinates">
       <span id="helpBlockCoordinates" class="help-block">'.
-        _('<a href="help.php#acceptableformats" target="_blank">Acceptable geographic coordinate formats</a>').'<br />
+        _('<a href="/help.php#acceptableformats" target="_blank">Acceptable geographic coordinate formats</a>').'<br />
         <span class="szare">
         '._('eg.').'
           52.1534 21.0539<br />

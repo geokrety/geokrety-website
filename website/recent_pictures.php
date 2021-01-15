@@ -9,9 +9,9 @@ function recent_pictures($sql_limit = '', $sql_where = '') {
     require 'templates/konfig.php';
     $link = DBConnect();
 
-    $link_kret_typ['0'] = 'konkret.php?id=';
+    $link_kret_typ['0'] = '/konkret.php?id=';
     $link_kret_typ['1'] = $link_kret_typ['0'];
-    $link_kret_typ['2'] = 'mypage.php?userid=';
+    $link_kret_typ['2'] = '/mypage.php?userid=';
 
     $sql = "SELECT ob.typ, ob.id, ob.id_kreta, ob.plik, ob.opis, gk.nazwa, us.user, ru.country, ru.data
 		FROM `gk-obrazki` ob

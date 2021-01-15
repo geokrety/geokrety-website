@@ -44,7 +44,7 @@ function szukaj_kreta($where, $limit, $title = 'GeoKrety', $longin = '', $sql = 
         }
 
         if ($longin == $userid) {
-            $kiedys_uzywany = '<a href="edit.php?co=geokret&amp;id='.$id.'" title="Edit"><img src="templates/edit.png" alt="edit" width="16" height="16" border="0"/></a> ';
+            $kiedys_uzywany = '<a href="/edit.php?co=geokret&amp;id='.$id.'" title="Edit"><img src="templates/edit.png" alt="edit" width="16" height="16" border="0"/></a> ';
         }
 
         $return .= '<tr><td><img src="'.CONFIG_CDN_IMAGES."/log-icons/$typ/icon_25.jpg\" alt=\"typ\" width=\"25\" height=\"25\" /></td><td><a href=\"konkret.php?id=$id\">".sprintf('GK%04X', $id)."</a><br /><span class=\"bardzomale\">$nazwa</span></td><td>by <a href=\"mypage.php?userid=$userid\">$user</a></td><td class=\"szare\">$data</td><td>$kiedys_uzywany $edycja_ruchow</td></tr>";

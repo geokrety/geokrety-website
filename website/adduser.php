@@ -17,7 +17,7 @@ td.tmpcol {width:20%;padding-top:7px;font-weight:bold;}
 require_once 'defektoskop.php';
 
 if ($longin_status['plain'] != null) {
-    $TRESC = defektoskop("<a href='longin.php?logout=1'>Logout</a>", false);
+    $TRESC = defektoskop("<a href='/longin.php?logout=1'>Logout</a>", false);
     include_once 'smarty.php';
     exit;
 }
@@ -115,7 +115,7 @@ if ((empty($kret_login))) { //--------------------  if login is not set
 '
 <tr class="mg1">
   <td>&#160;</td>
-  <td><a href="termsofuse.php">'._('Terms of use').'</a></td>
+  <td><a href="/termsofuse.php">'._('Terms of use').'</a></td>
 </tr>
 </table>
 
@@ -177,9 +177,9 @@ if ((empty($kret_login))) { //--------------------  if login is not set
                 list($existing_userid) = $row;
                 unset($error);
 
-                $error[] = sprintf(_("It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."), $existing_userid).'<br /><br />'.
+                $error[] = sprintf(_("It seems that <a href='/mypage.php?userid=%s'>your account</a> has already been created."), $existing_userid).'<br /><br />'.
                             _('In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)').'<br /><br />'.
-                            "[<a href='longin.php'>"._('Login')."</a>] [<a href='new_password.php'>"._('Forgot password?').'</a>]';
+                            "[<a href='/longin.php'>"._('Login')."</a>] [<a href='/new_password.php'>"._('Forgot password?').'</a>]';
                 include_once 'defektoskop.php';
                 $TRESC = defektoskop($error, true, '', '', 'USER_REGISTERED_RECENTLY');
                 include_once 'smarty.php';

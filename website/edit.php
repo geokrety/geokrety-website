@@ -560,7 +560,7 @@ elseif ($g_co == 'geokret' && ctype_digit($g_id)) {
         $TRESC .= "<option value='$key'".($typ == "$key" ? 'selected="selected"' : '').'>'._("$value").'</option>';
     }
 
-    $TRESC .= '</select> <a href="'._('help.php#geokretytypes').'"><img src="'.CONFIG_CDN_ICONS.'/help.png" alt="HELP" width="11" height="11" border="0" /></a>
+    $TRESC .= '</select> <a href="/'._('help.php#geokretytypes').'"><img src="'.CONFIG_CDN_ICONS.'/help.png" alt="HELP" width="11" height="11" border="0" /></a>
 </td>
 </tr>
 <tr>

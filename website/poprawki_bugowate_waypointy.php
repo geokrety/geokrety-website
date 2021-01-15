@@ -33,7 +33,7 @@ function a($result) {
 
         $link2 = "<a href='".$_SERVER['SCRIPT_NAME']."?id=$id&wp=$waypoint2'>fixme</a>";
         $link3 = "<a href='http://coord.info/$waypoint2'>coord.info</a>";
-        $link_gk = "<a href='konkret.php?id=$kretid' title='[".htmlentities($koment, ENT_QUOTES)."]'>kret</a>";
+        $link_gk = "<a href='/konkret.php?id=$kretid' title='[".htmlentities($koment, ENT_QUOTES)."]'>kret</a>";
         $TRESC .= "[$id] [$waypoint] $lat $lon $link_gk - $link - $link3 - $link2<br/>";
     }
 
@@ -58,7 +58,7 @@ function b($link, $result) {
                 $fix = '--';
             }
         }
-        $link_gk = "<a href='konkret.php?id=$kretid'>kret</a>";
+        $link_gk = "<a href='/konkret.php?id=$kretid'>kret</a>";
         $TRESC .= "[$ruchid] $fix [$country->$country2] $lat $lon - $link_gk<br/>";
     }
 
