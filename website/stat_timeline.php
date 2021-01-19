@@ -45,7 +45,7 @@ FROM `gk-ruchy`
 WHERE `id` = '$gk'
 AND `logtype`
 IN (
-'0', '1', '3'
+'0', '1', '3', '5'
 )
 ORDER BY `data`"
 );
