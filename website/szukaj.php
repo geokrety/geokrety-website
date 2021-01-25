@@ -11,15 +11,15 @@ require_once 'smarty_start.php';
 
     $g_country = $_GET['country'];
     // autopoprawione...
-    $g_gk = $_GET['gk'];
+    $g_gk = trim($_GET['gk']);
     // autopoprawione...
-    $g_nr = $_GET['nr'];
+    $g_nr = trim($_GET['nr']);
     // autopoprawione...
-    $g_owner = $_GET['owner'];
+    $g_owner = trim($_GET['owner']);
     // autopoprawione...
-    $g_wpt = $_GET['wpt'];
+    $g_wpt = trim($_GET['wpt']);
     // autopoprawione...
-    $g_nazwa = $_GET['nazwa'];
+    $g_nazwa = trim($_GET['nazwa']);
     // autopoprawione...import_request_variables('g', 'g_');
 
     require_once 'szukaj_kreta.php';
