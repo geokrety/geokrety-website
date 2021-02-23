@@ -3,6 +3,7 @@
 namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
+use Validation\Traits\CortexTrait;
 
 /**
  * @property int|null id
@@ -14,9 +15,10 @@ use DB\SQL\Schema;
  * @property float lon
  */
 abstract class BaseWaypoint extends Base {
+    use CortexTrait;
+
     protected $db = 'DB';
     protected $ttl = GK_SITE_CACHE_TTL_WAYPOINT;
-    use \Validation\Traits\CortexTrait;
 
     protected $fieldConf = [
         'waypoint' => [
