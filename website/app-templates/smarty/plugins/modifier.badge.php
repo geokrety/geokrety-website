@@ -10,7 +10,5 @@
  * -------------------------------------------------------------
  */
 function smarty_modifier_badge(GeoKrety\Model\Badge $badge) {
-    $url = GK_CDN_IMAGES_URL.'/badges/'.$badge->filename;
-
-    return '<img src="'.$url.'" title="'.$badge->description.'" />';
+    return '<img src="'.$badge->url.'" title="'.$badge->description.'" />';
 }

@@ -12,6 +12,7 @@ use DB\SQL\Schema;
  * @property DateTime updated_on_datetime
  * @property string description
  * @property string filename
+ * @property string url
  */
 class Badge extends Base {
     use \Validation\Traits\CortexTrait;
@@ -53,6 +54,10 @@ class Badge extends Base {
 
     public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
+    }
+
+    public function get_url(): string {
+        return GK_CDN_IMAGES_URL.'/badges/'.$this->filename;
     }
 
     public function jsonSerialize() {

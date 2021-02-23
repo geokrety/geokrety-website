@@ -526,7 +526,7 @@ class GeokretyMigrator extends BaseMigrator {
 
         $values[8] = 0;  // pictures_count ; set to 0 as we'll count when pictures are imported
 
-        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // mission
+        $values[3] = Markdown::toFormattedMarkdown(trim(html_entity_decode($this->purifier->purify($values[3]))));  // mission
     }
 
     protected function postProcessData() {
