@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-12 19:27+0000\n"
-"PO-Revision-Date: 2020-12-12 19:34\n"
+"PO-Revision-Date: 2021-03-04 16:13\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -34,11 +34,11 @@ msgstr "Più account condividono lo stesso indirizzo email. Per favore <a href=\
 
 #: website/app/GeoKrety/Controller/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "Il parametro \"userid\" deve essere un numero valido."
 
 #: website/app/GeoKrety/Controller/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "Il parametro \"gkid\" deve essere un numero valido o un GKid."
 
 #: website/app/GeoKrety/Controller/Base.php:72
 #: website/app/GeoKrety/Controller/MoveCreate.php:157
@@ -143,7 +143,7 @@ msgstr "Data o ora errata"
 
 #: website/app/GeoKrety/Controller/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
-msgstr ""
+msgstr "Il parametro \"waypoint\" è necessario."
 
 #: website/app/GeoKrety/Controller/Login.php:44
 #: website/app/GeoKrety/Controller/Login.php:126
@@ -156,12 +156,12 @@ msgstr "Benvenuto a bordo!"
 
 #: website/app/GeoKrety/Controller/Login.php:116
 msgid "Please provide 'login' and 'password' parameters."
-msgstr ""
+msgstr "Per favore fornisci i parametri \"login\" e \"password\"."
 
 #: website/app/GeoKrety/Controller/Login.php:138
 #: website/app/GeoKrety/Controller/Login.php:144
 msgid "Invalid \"secid\""
-msgstr ""
+msgstr "Parametro \"secid\" non valido."
 
 #: website/app/GeoKrety/Controller/Login.php:192
 #, php-format
@@ -548,7 +548,7 @@ msgstr "Codice di tracciamento \"%s\" sembra troppo breve. Ci aspettiamo %d cara
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Il codice di tracking \"%s\" sembra troppo lungo. Ci aspettiamo %d caratteri."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -594,7 +594,7 @@ msgstr "Visualizza la pagina <a href=\"%s\" target=\"_blank\">cache</a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "Questa è una cache Geocaching.com che nessuno ha ancora loggato su GeoKrety.org. Per garantire che questo GeoKret viaggi correttamente, copia e incolla le coordinate della cache nel campo \"Coordinate\" per favore."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -1498,7 +1498,7 @@ msgstr "Ricordami"
 
 #: smarty/dialog:32
 msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr ""
+msgstr "Usiamo i cookies solo per mantenere attiva la tua sessione. Leggi di più riguardo alla nostra <a href=\"%1\" target=\"_blank\">politica sui cookies</a>."
 
 #: smarty/dialog:40
 msgid "No account yet ? Register now!"
@@ -2035,7 +2035,7 @@ msgstr "Il GeoKrety di %1non si è ancora spostato."
 
 #: smarty/pages:3
 msgid "Registration"
-msgstr ""
+msgstr "Registrazione"
 
 #: smarty/pages:14
 msgid "Create an account using %1"
@@ -2063,7 +2063,7 @@ msgstr "Non ci sono ancora notizie"
 
 #: smarty/pages:3
 msgid "Confirm changing your email address"
-msgstr ""
+msgstr "Conferma la modifica della tua email"
 
 #: smarty/pages:8
 msgid "Do you confirm changing your email address?"
@@ -2155,7 +2155,7 @@ msgstr "<a href=\"%1\">Firefox</a> (necessita di <a href=\"%2\">Tampermonkey add
 
 #: smarty/pages:3
 msgid "Interactive map"
-msgstr ""
+msgstr "Mappa interattiva"
 
 #: smarty/pages:17
 msgid "GeoKrety interactive map"
@@ -2467,7 +2467,7 @@ msgstr "No, interrompe questa richiesta"
 
 #: smarty/pages:3 smarty/pages:6
 msgid "Label generator"
-msgstr ""
+msgstr "Generatore di etichette"
 
 #: smarty/pages:3 smarty/pages:8
 msgid "Contact us"
