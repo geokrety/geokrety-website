@@ -276,6 +276,8 @@ $pgsql->query('CREATE INDEX idx_moves_geokret ON geokrety.gk_moves USING btree (
 $pgsql->query('CREATE INDEX idx_moves_id ON geokrety.gk_moves USING btree (id);');
 $pgsql->query('CREATE INDEX idx_moves_type_id ON geokrety.gk_moves USING btree (move_type, id);');
 
+$pgsql->query('REFRESH MATERIALIZED VIEW gk_geokrety_in_caches;');
+
 class BaseMigrator {
     private $debug = false;
     private $mName;
