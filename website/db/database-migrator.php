@@ -777,6 +777,11 @@ class WatchedMigrator extends BaseMigrator {
     protected function prepareData() {
         $this->mPdo->query('DELETE FROM `gk-obserwable` WHERE userid NOT IN (SELECT DISTINCT(userid) FROM `gk-users`) OR id NOT IN (SELECT DISTINCT(id) FROM `gk-geokrety`);');
     }
+
+    protected function postProcessData() {
+        echo 'Post processing'.PHP_EOL;
+        $this->pPdo->query('UPDATE gk_watched SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_watched.geokret = gk_geokrety.gkid');
+    }
 }
 
 //// Check integrity
