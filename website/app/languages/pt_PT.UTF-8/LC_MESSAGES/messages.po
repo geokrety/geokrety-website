@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-12 19:27+0000\n"
-"PO-Revision-Date: 2020-12-12 19:33\n"
+"PO-Revision-Date: 2021-03-15 14:34\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -34,11 +34,11 @@ msgstr "Várias contas compartilham o mesmo endereço de e-mail. Por favor <a hr
 
 #: website/app/GeoKrety/Controller/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "O parâmetro \"userid\" deve ser um número válido."
 
 #: website/app/GeoKrety/Controller/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "O parâmetro \"gkid\" deve ser um número válido ou GKid (GKXXXXX)."
 
 #: website/app/GeoKrety/Controller/Base.php:72
 #: website/app/GeoKrety/Controller/MoveCreate.php:157
@@ -143,7 +143,7 @@ msgstr "Data ou hora errada"
 
 #: website/app/GeoKrety/Controller/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
-msgstr ""
+msgstr "Deve fornecer um Ponto Adicional"
 
 #: website/app/GeoKrety/Controller/Login.php:44
 #: website/app/GeoKrety/Controller/Login.php:126
@@ -156,12 +156,12 @@ msgstr "Bem-vindo a bordo!"
 
 #: website/app/GeoKrety/Controller/Login.php:116
 msgid "Please provide 'login' and 'password' parameters."
-msgstr ""
+msgstr "Por favor, forneça os parâmetros 'login' e 'senha'."
 
 #: website/app/GeoKrety/Controller/Login.php:138
 #: website/app/GeoKrety/Controller/Login.php:144
 msgid "Invalid \"secid\""
-msgstr ""
+msgstr "\"Secid\" inválido"
 
 #: website/app/GeoKrety/Controller/Login.php:192
 #, php-format
@@ -548,7 +548,7 @@ msgstr "O Código de seguimento \"%s\" parece ser muito curto. Esperamos %d cara
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "O Código de Seguimento \"%s\" parece ser muito longo. São esperados %d caracteres aqui."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -594,7 +594,7 @@ msgstr "Veja <a href=\"%s\" target=\"_blank\">cache page</a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "Esta é uma cache de Geocaching.com que ainda ninguém registou em GeoKrety.org. Para garantir a viagem correcta deste GeoKret, por favor, copiar/colar as coordenadas da cache no campo 'Coordenadas'."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -1947,7 +1947,7 @@ msgstr "Rastreamento de item de código aberto para todas as plataformas de geoc
 
 #: smarty/pages:3 smarty/pages:9
 msgid "GeoKrety visiting the cache %1"
-msgstr ""
+msgstr "Geokrety de visita à cache %1"
 
 #: smarty/pages:20
 msgid "Name"
@@ -1955,7 +1955,7 @@ msgstr "Nome"
 
 #: smarty/pages:21
 msgid "Cache"
-msgstr "Cachear"
+msgstr "Cache"
 
 #: smarty/pages:24 smarty/pages:23 smarty/pages:36
 msgid "Distance"
@@ -1963,7 +1963,7 @@ msgstr "Distância"
 
 #: smarty/pages:37
 msgid "No GeoKrety has visited cache %1 yet."
-msgstr ""
+msgstr "Ainda nenhuma GeoKrety visitou a cache %1."
 
 #: smarty/pages:3 smarty/pages:9
 msgid "%1's recent moves"
@@ -2143,7 +2143,7 @@ msgstr "Mostra trackables GeoKrety em <a href=\"%1\" target=\"_blank\">geocachin
 
 #: smarty/pages:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr ""
+msgstr "Este script foi escrito para criar uma ponte entre o site <a href=\"%1\">geocaching.com</a> e o <a href=\"%2\">geokrety.org</a>. Tem duas funções. Assim que consultar a página de qualquer cache no <a href=\"%1\">geocaching.com</a> irá verificar automaticamente se existe algum Geokrety (items seguidos no <a href=\"%2\">geokrety.org</a>) dentro dessa cache e mostra o resultado na secção de inventário no lado direito da página (depois da lista de Travelbugs e Geocoins). Se tiver uma conta no <a href=\"%2\">geokrety.org</a> pode também largar GeoKrety nas <a href=\"%1\">Geocaches</a> porque o código do waypoint e as coordenadas são automaticamente copiadas para o formulário de registo em <a href=\"%2\">geokrety.org</a>."
 
 #: smarty/pages:18
 msgid "Available for:"
