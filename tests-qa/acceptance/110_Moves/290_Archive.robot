@@ -2,6 +2,7 @@
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RequestsLibrary
 Library         JSONLibrary
+Library         String
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
@@ -221,6 +222,24 @@ Deleting Last Archive Set The GeoKret As Awaken
     ${json} =    Convert String to JSON 	          ${resp.content}
     ${value} =   Get Value From Json                ${json}          $[0]
     Length Should Be                                ${value}         1
+
+Archived GeoKrety Have Archive Icon In Owned Page
+    Post Move                                       ${MOVE_2}
+    Sign In ${USER_1.name} Fast
+
+    Go To Url                                       ${PAGE_USER_OWNED_GEOKRETY_URL}           userid=${MOVE_2.author}
+    Element Count Should Be                         ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr     1
+    ${img_src} =    Get Element Attribute           ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr[1]/td[1]/img    src
+    ${img} =        Fetch From Right                ${img_src}    /
+    Should Be Equal As Strings                      ${img}    18.png
+
+    Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
+
+    Go To Url                                       ${PAGE_USER_OWNED_GEOKRETY_URL}           userid=${MOVE_2.author}
+    Element Count Should Be                         ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr     1
+    ${img_src} =    Get Element Attribute           ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr[1]/td[1]/img    src
+    ${img} =        Fetch From Right                ${img_src}    /
+    Should Be Equal As Strings                      ${img}    14.png
 
 
 # TODO: Validate the popup content

@@ -24,7 +24,7 @@ function computeLogType($locationType, $lastUserId, $currentUser) {
     if ($locationType == '') {
         return '9';
     }
-    if (($locationType == '1' or $locationType == '5') or $lastUserId == $currentUser) {
+    if ((($locationType == '1' or $locationType == '5') or $lastUserId == $currentUser) and $locationType != '4') {
         return '8';
     }
 
