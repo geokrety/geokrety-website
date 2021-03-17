@@ -4,13 +4,13 @@ Our label templates are stored internally in [`.svg`](https://en.wikipedia.org/w
 `php` code allowing everyone to contribute to our label templates.
 
 We recommend usage of [Inkscape](https://inkscape.org/) (preferably version >= v1.0) which is available on GNU/Linux,
-Windows and macOS as it's what's used in the backed to render label pictures.
+Windows and macOS as it's what's used in the backend side to render label pictures.
 
 # Rules
 We expect new labels templates to respect some rules
 * If `user manual` is provided, the English version must be hardcoded. Use the text `User's manual: 1. Take this GeoKret. Please note down his Tracking Code. 2. Hide in another cache. 3. Register the trip at https://geokrety.org`
 as it's the one that's available in other languages.
-* Files are rendered using the `svg` dimensions (ratio of `1:1`), so take care to fit in normal paper size.
+* Files are rendered using the `svg` dimensions (ratio of `1:1`), so take care to make it fit in normal paper (A4) size.
 * We support dynamic generation of QRCodes containing direct link to the logging page including `Tracking Code`.
 For this, the template must include a specific placeholder. See [Adding QRCode](#adding-qrcode) section.
 * We do not yet support GeoKrety avatars inclusion (PR are welcome!)
