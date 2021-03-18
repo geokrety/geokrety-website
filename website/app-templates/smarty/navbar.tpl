@@ -86,7 +86,7 @@
                     <a id="navbar-help" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{fa icon="support"} {t}Help{/t} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a id="navbar-help-help" href="{'help'|alias}">{fa icon="support"} {t}Help{/t}</a></li>
-                        <li><a id="navbar-help-holes" href="{'mole_holes'|alias}">{fa icon="bed"} {t}Moleholes and GK hotels{/t}</a></li>
+{*                        <li><a id="navbar-help-holes" href="{'mole_holes'|alias}">{fa icon="bed"} {t}Moleholes and GK hotels{/t}</a></li>*}
                         <li><a id="navbar-help-terms" href="{'terms_of_use'|alias}">{fa icon="legal"} {t}Terms of use{/t}</a></li>
                         <li><a id="navbar-help-press" href="{'press_corner'|alias}">{fa icon="newspaper-o"} {t}Press corner{/t}</a></li>
                         <li role="separator" class="divider"></li>
