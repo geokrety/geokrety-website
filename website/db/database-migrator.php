@@ -698,6 +698,7 @@ class PicturesMigrator extends BaseMigrator {
         $this->pPdo->query('WITH pictures AS (SELECT COUNT(*) AS total, "user" FROM gk_pictures WHERE type = 2 AND uploaded_on_datetime IS NOT NULL AND "user" IS NOT NULL GROUP BY "user") UPDATE "gk_users" AS u  SET pictures_count = pictures.total FROM pictures WHERE u.id = pictures."user";');
         $this->pPdo->query('WITH pictures AS (SELECT COUNT(*) AS total, "geokret" FROM gk_pictures WHERE type = 0 AND uploaded_on_datetime IS NOT NULL AND "geokret" IS NOT NULL GROUP BY "geokret") UPDATE "gk_geokrety" AS g  SET pictures_count = pictures.total FROM pictures WHERE g.id = pictures."geokret";');
         $this->pPdo->query('WITH pictures AS (SELECT COUNT(*) AS total, "move" FROM gk_pictures WHERE type = 01 AND uploaded_on_datetime IS NOT NULL AND "move" IS NOT NULL GROUP BY "move") UPDATE "gk_moves" AS m  SET pictures_count = pictures.total FROM pictures WHERE m.id = pictures."move";');
+        $this->pPdo->query('WITH subquery AS (select id, "user" as uid from gk_pictures where author = "user" and uploaded_on_datetime is not null order by uploaded_on_datetime desc) UPDATE gk_users SET avatar = subquery.id FROM subquery WHERE gk_users.id = subquery.uid;');
     }
 }
 
