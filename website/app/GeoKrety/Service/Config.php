@@ -97,6 +97,7 @@ class Config extends \Prefab {
 
         define('GK_DB_DATETIME_FORMAT', 'Y-m-d H:i:sP');
         define('GK_DB_DATETIME_FORMAT_WITHOUT_TZ', 'Y-m-d H:i:s');
+        define('GK_DB_DATETIME_FORMAT_AS_INT', 'YmdHis');
 
         define('GK_DB_GPG_PASSWORD', getenv('GK_DB_GPG_PASSWORD') ?: 'geokrety');
         define('GK_DB_SECRET_KEY', getenv('GK_DB_SECRET_KEY') ?: 'secretkey');
@@ -172,6 +173,30 @@ class Config extends \Prefab {
         // go2geo url
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
         define('GK_SERVICE_GC_SEARCH_NEAREST_URL', getenv('GK_SERVICE_GC_SEARCH_NEAREST_URL') ?: 'https://www.geocaching.com/seek/nearest.aspx?origin_lat=%f&origin_long=%f&dist=1');
+
+        // okapi services
+        define('GK_OKAPI_CONSUMER_KEY_OC_PL', getenv('GK_OKAPI_CONSUMER_KEY_OC_PL') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_DE', getenv('GK_OKAPI_CONSUMER_KEY_OC_DE') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_UK', getenv('GK_OKAPI_CONSUMER_KEY_OC_UK') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_US', getenv('GK_OKAPI_CONSUMER_KEY_OC_US') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_NL', getenv('GK_OKAPI_CONSUMER_KEY_OC_NL') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_RO', getenv('GK_OKAPI_CONSUMER_KEY_OC_RO') ?: null);
+
+        define('GK_OKAPI_URL_OC_PL', getenv('GK_OKAPI_URL_OC_PL') ?: 'https://opencaching.pl');
+        define('GK_OKAPI_URL_OC_DE', getenv('GK_OKAPI_URL_OC_DE') ?: 'https://www.opencaching.de');
+        define('GK_OKAPI_URL_OC_UK', getenv('GK_OKAPI_URL_OC_UK') ?: 'https://opencache.uk');
+        define('GK_OKAPI_URL_OC_US', getenv('GK_OKAPI_URL_OC_US') ?: 'https://www.opencaching.us');
+        define('GK_OKAPI_URL_OC_NL', getenv('GK_OKAPI_URL_OC_NL') ?: 'https://www.opencaching.nl');
+        define('GK_OKAPI_URL_OC_RO', getenv('GK_OKAPI_URL_OC_RO') ?: 'https://www.opencaching.ro');
+
+        define('GK_OKAPI_PARTNERS', [
+            'OC_PL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_PL, 'url' => GK_OKAPI_URL_OC_PL],
+            'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_OKAPI_URL_OC_DE],
+            'OC_UK' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_UK, 'url' => GK_OKAPI_URL_OC_UK],
+            'OC_US' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_US, 'url' => GK_OKAPI_URL_OC_US],
+            'OC_NL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_NL, 'url' => GK_OKAPI_URL_OC_NL],
+            'OC_RO' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_RO, 'url' => GK_OKAPI_URL_OC_RO],
+        ]);
 
         // map api url
         define('GK_MAP_URL', getenv('GK_MAP_URL') ?: 'https://api.geokretymap.org');

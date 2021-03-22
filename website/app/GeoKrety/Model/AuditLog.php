@@ -57,7 +57,7 @@ class AuditLog extends Base {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
-            $self->ip = \Base::instance()->get('IP');
+            $self->ip = \Base::instance()->get('IP') ?: null;
         });
     }
 

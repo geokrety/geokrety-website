@@ -8,7 +8,8 @@ $f3 = \Base::instance();
 \GeoKrety\Service\Config::instance();
 // Our dynamic routes will use it
 $f3->route('POST @s3_file_uploaded: /s3/file-uploaded', '\GeoKrety\Controller\GeokretAvatarUploadWebhook->post');
-$f3->route('HEAD @s3_file_uploaded: /s3/file-uploaded', function () {});
+$f3->route('HEAD @s3_file_uploaded: /s3/file-uploaded', function () {
+});
 $f3->config(__DIR__.'/app/config.ini');
 $f3->config(__DIR__.'/app/routes.ini');
 $f3->config(__DIR__.'/app/routes-legacy.ini', true);
@@ -64,5 +65,5 @@ include __DIR__.'/app/validators.php';
 include __DIR__.'/app/events.php';
 
 if (!$f3->exists('DB')) {
-    $f3->set('DB', new \DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;']));
+    $f3->set('DB', new \DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;', \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]));
 }

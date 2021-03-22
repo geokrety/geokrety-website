@@ -14,6 +14,8 @@ use DB\SQL\Schema;
  * @property DateTime added_on_datetime
  * @property DateTime updated_on_datetime
  * @property int status
+ * @property string position
+ * @property string|null provider
  */
 class WaypointOC extends BaseWaypoint {
     protected $table = 'gk_waypoints_oc';
@@ -76,6 +78,16 @@ class WaypointOC extends BaseWaypoint {
             'default' => '1',
             'nullable' => false,
         ],
+        'position' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+            'default' => null,
+        ],
+        'provider' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+            'default' => null,
+        ],
     ];
 
     public function get_added_on_datetime($value): ?DateTime {
@@ -101,6 +113,7 @@ class WaypointOC extends BaseWaypoint {
             'status' => $this->status,
             'typeName' => $this->type,
             'link' => $this->link,
+            'provider' => $this->provider,
         ];
     }
 
@@ -121,6 +134,7 @@ class WaypointOC extends BaseWaypoint {
             // 'added_on_datetime' => $this->added_on_datetime,
             // 'updated_on_datetime' => $this->updated_on_datetime,
             // 'status' => $this->status,
+            // 'provider' => $this->provider,
         ];
     }
 }

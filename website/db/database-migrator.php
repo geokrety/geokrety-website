@@ -248,7 +248,8 @@ $pgsql->query("SELECT SETVAL('geokrety.races_participants_id_seq', COALESCE(MAX(
 $pgsql->query("SELECT SETVAL('geokrety.scripts_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.scripts;");
 $pgsql->query("SELECT SETVAL('geokrety.users_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_users;");
 $pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_watched;");
-$pgsql->query("SELECT SETVAL('geokrety.waypoints_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints;"); // TODO
+$pgsql->query("SELECT SETVAL('geokrety.waypoints_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_oc;");
+$pgsql->query("SELECT SETVAL('geokrety.waypoints_gc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_gc;");
 
 $pgsql->query('SELECT waypoints_gc_fill_from_moves();');
 
