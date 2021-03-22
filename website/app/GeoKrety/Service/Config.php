@@ -59,8 +59,8 @@ class Config extends \Prefab {
         define('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST', getenv('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST') ?: '');
 
         // Admin services
-        define('ADMIN_SERVICE_ADMINER_URL', getenv('ADMIN_SERVICE_ADMINER_URL') ?: 'https://adminer.admin.geokrety.org');
-        define('ADMIN_SERVICE_PGADMIN_URL', getenv('ADMIN_SERVICE_PGADMIN_URL') ?: 'https://pgadmin.admin.geokrety.org');
+        define('ADMIN_SERVICE_ADMINER_URL', getenv('ADMIN_SERVICE_ADMINER_URL') ?: GK_SITE_BASE_SERVER_URL.'/adminer');
+        define('ADMIN_SERVICE_PGADMIN_URL', getenv('ADMIN_SERVICE_PGADMIN_URL') ?: GK_SITE_BASE_SERVER_URL.'/pgadmin');
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
