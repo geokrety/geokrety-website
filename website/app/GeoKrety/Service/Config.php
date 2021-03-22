@@ -27,6 +27,7 @@ class Config extends \Prefab {
         define('GK_SITE_USER_PASSWORD_MIN_LENGTH', getenv('GK_SITE_USER_PASSWORD_MIN_LENGTH') ?: 6);
         define('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE', getenv('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE') ?: 12); // Mo
         define('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES', getenv('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES') ?: 20);
+        define('GK_SITE_USER_AGENT', getenv('GK_SITE_USER_AGENT') ?: 'GeOkrety/2.x');
 
         // SITE EMAIL From
         define('GK_SITE_EMAIL', getenv('GK_SITE_EMAIL') ?: 'geokrety@gmail.com');

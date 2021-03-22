@@ -17,6 +17,8 @@ $f3->config(__DIR__.'/app/cli.ini');
 $f3->config(__DIR__.'/app/admin.ini');
 $f3->config(__DIR__.'/app/authorizations.ini');
 
+ini_set('user_agent', GK_SITE_USER_AGENT);
+
 if (GK_DEVEL) {
     $f3->config('../app/devel.ini');
 }
