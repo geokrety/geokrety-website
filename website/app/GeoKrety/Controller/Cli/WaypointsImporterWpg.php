@@ -12,14 +12,11 @@ class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
     const SCRIPT_CODE = 'WPG';
     const SCRIPT_NAME = 'waypoint_importer_wpg';
 
+    /**
+     * @throws Exception
+     */
     public function process() {
-        $this->start();
-        try {
-            $this->perform_topografix_incremental_update(self::WPG_API_ENDPOINT);
-        } catch (Exception $exception) {
-            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
-        }
-        $this->end();
+        $this->perform_topografix_incremental_update(self::WPG_API_ENDPOINT);
     }
 
     /**

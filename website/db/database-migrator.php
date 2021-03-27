@@ -68,7 +68,7 @@ $migrator->process();
 $mName = 'gk-waypointy-sync';
 $pName = 'gk_waypoints_sync';
 $mFields = ['service_id', 'last_update'];
-$pFields = ['service_id', 'last_update'];
+$pFields = ['service_id', 'revision'];
 $migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 

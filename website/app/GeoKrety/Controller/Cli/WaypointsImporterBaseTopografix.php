@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
 use Exception;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Service\ConsoleWriter;
@@ -19,20 +18,13 @@ abstract class WaypointsImporterBaseTopografix extends WaypointsImporterBase {
         echo sprintf("*** \e[0;33mRunning full import\e[0m").PHP_EOL;
         ob_flush();
 
-        //$tmp_file = tmpfile();
-        //$path = stream_get_meta_data($tmp_file)['uri'];
         $nUpdated = 0;
         $nError = 0;
 
-        //File::download(sprintf("%s?%s", $api_endpoint, $url_params), $path);
-        //$xml_raw = strtr(file_get_contents($path), array('&' => '+'));
-        //$xml = simplexml_load_string($xml_raw, "SimpleXMLElement", LIBXML_NOENT | LIBXML_NOCDATA);
         $xml = $this->download_xml(sprintf('%s?%s', $api_endpoint, $url_params));
 
         $caches_count = sizeof($xml->wpt);
         if ($caches_count) {
-            $db = Base::instance()->get('DB');
-            $db->begin();
             $console_writer = new ConsoleWriter('Importing cache %7s: %6.2f%% (%s/%d) - %d errors');
             foreach ($xml->wpt as $cache) {
                 $waypoint = $this->_wpt_extractor($cache);
@@ -57,9 +49,7 @@ abstract class WaypointsImporterBaseTopografix extends WaypointsImporterBase {
                 $console_writer->print([$waypoint, $total / $caches_count * 100, $total, $caches_count, $nError]);
             }
             echo PHP_EOL;
-            $db->commit();
         }
-        $this->save_last_update();
     }
 
     /**

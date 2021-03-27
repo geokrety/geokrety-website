@@ -1,0 +1,34 @@
+---
+subject: '{$subject}'
+---
+
+<container>
+    <row>
+        <columns>
+
+            <spacer size="16"></spacer>
+
+            <h1 class="text-center">❗ {t}Cron Failure{/t}</h1>
+
+            <p>{t username=$user->username}Hi %1,{/t}</p>
+            <p class="text-justified">{t cron=$cron escape=no}Cron <strong>%1</strong> has failed, please check the logs!{/t}</p>
+
+            <p class="code">
+                {$error['code']} {$error['status']}<br>
+                {$error['text']}<br><br>
+                {$error['trace']}
+            </p>
+
+            {{> signature}}
+            <hr />
+
+            <p>
+                <small>
+                    {t}You're getting this email because you're one the website admins.{/t}
+                </small>
+            </p>
+        </columns>
+    </row>
+
+    <spacer size="16"></spacer>
+</container>

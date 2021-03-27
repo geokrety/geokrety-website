@@ -265,7 +265,7 @@ EOT;
             ],
             'previous_email' => [
                 'filter' => 'trim',
-                'validate' => 'required|valid_email',
+                'validate' => 'valid_email',
                 'validate_depends' => [
                     'used' => ['validate', 'email_activation_require_previous_email_field'],
                 ],

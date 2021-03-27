@@ -7,32 +7,45 @@ use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\ConsoleWriter;
 use GeoKrety\Service\File;
-use PDOException;
 
 class WaypointsImporterOKAPI extends WaypointsImporterBase {
     const OKAPI_CHANGELOG_ENDPOINT = '/okapi/services/replicate/changelog';
     const OKAPI_FULL_DUMP_ENDPOINT = '/okapi/services/replicate/fulldump';
 
+    const SCRIPT_CODE = 'OKAPI';
     const SCRIPT_NAME = 'waypoint_importer_okapi';
+
     public int $nTotal = 0;
     public int $nUpdated = 0;
     public int $nDeleted = 0;
     public int $nSkipped = 0;
     public int $nError = 0;
+    protected bool $_skip_saving_final_last_update = true;
     private ConsoleWriter $console_writer;
     private string $mPart = 'n/a';
 
     public function process() {
-        $this->start();
-        $this->console_writer = new ConsoleWriter('Importing OKAPI %7s: %6.2f%% (%s/%d) - U:%d D:%d S:%d E:%d');
+        $this->console_writer = new ConsoleWriter('Importing %7s: %6.2f%% (%s/%d) - U:%d D:%d S:%d E:%d');
+        $this->db->commit(); // Terminate "general" transaction
+        $this->has_error = false;
         foreach (GK_OKAPI_PARTNERS as $okapi => $params) {
+            $this->reset_counters();
+            $this->db->begin();
             try {
                 $this->process_okapi($okapi, $params);
             } catch (Exception $exception) {
+                $this->db->rollback();
+                $this->has_error = true;
+                $this->error = str_replace($params['key'], 'xxx', $exception->getMessage());
+                $this->save_last_update($okapi);
                 echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
+                continue;
             }
+            $this->db->commit();
         }
-        parent::end();
+        if ($this->has_error) {
+            throw new Exception('One OKAPI service failed');
+        }
     }
 
     /**
@@ -48,10 +61,10 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
 
         $okapiSync = new WaypointSync();
         $okapiSync->load(['service_id = ?', $okapi]);
-        if ($okapiSync->dry() or is_null($okapiSync->last_update)) {
+        if ($okapiSync->dry() or is_null($okapiSync->revision)) {
             $this->process_okapi_full($okapi, $params);
         } else {
-            $this->process_okapi_incremental($okapi, $okapiSync->last_update, $params);
+            $this->process_okapi_incremental($okapi, $okapiSync->revision, $params);
         }
         echo PHP_EOL;
     }
@@ -69,16 +82,16 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
         ob_flush();
         $tmp_file = tmpfile();
         $path = stream_get_meta_data($tmp_file)['uri'];
-        //$tmpdir = File::tmpdir();
-        $tmpdir = '/tmp/tmp_504366139';
+        $tmpdir = File::tmpdir();
+        //$tmpdir = '/tmp/tmp_1396280926';
 
         try {
             $url_params = http_build_query([
                 'pleeaase' => 'true',
                 'consumer_key' => $params['key'],
             ]);
-            //File::download(sprintf("%s%s?%s", $params['url'], self::OKAPI_FULL_DUMP_ENDPOINT, $url_params), $path);
-            //File::extract_tar($path, $tmpdir);
+            File::download(sprintf('%s%s?%s', $params['url'], self::OKAPI_FULL_DUMP_ENDPOINT, $url_params), $path);
+            File::extract_tar($path, $tmpdir);
 
             $index = json_decode(file_get_contents($tmpdir.'/index.json'));
             $totalFiles = sizeof($index->data_files);
@@ -89,7 +102,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             }
             $this->save_last_update($okapi, $index->revision);
         } finally {
-            //File::deleteTree($tmpdir);
+            File::deleteTree($tmpdir);
         }
     }
 
@@ -145,13 +158,19 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             }
             try {
                 $wpt->save();
-            } catch (PDOException $exception) {
+            } catch (Exception $exception) {
                 ++$this->nError;
                 $this->print_stats();
+                echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
+                echo $exception->getTraceAsString().PHP_EOL;
                 continue;
             }
+
             ++$this->nUpdated;
             $this->print_stats();
+        }
+        if ($this->nError > 0) {
+            $this->has_error = true;
         }
     }
 
@@ -173,14 +192,6 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 return null;
         }
     }
-
-    //private function save_last_update(string $okapi, int $revision) {
-    //    $okapiSync = new WaypointSync();
-    //    $okapiSync->load(['service_id = ?', $okapi]);
-    //    $okapiSync->service_id = $okapi;
-    //    $okapiSync->last_update = $revision;
-    //    $okapiSync->save();
-    //}
 
     /**
      * @param string $okapi    The currently processing OKAPI service
@@ -219,5 +230,12 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             $more = $json->more;
             $this->save_last_update($okapi, $revision);
         }
+    }
+
+    private function reset_counters() {
+        $this->nUpdated = 0;
+        $this->nDeleted = 0;
+        $this->nSkipped = 0;
+        $this->nError = 0;
     }
 }

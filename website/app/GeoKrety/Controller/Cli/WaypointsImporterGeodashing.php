@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
-use Exception;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Service\ConsoleWriter;
 use GeoKrety\Service\File;
@@ -18,19 +16,6 @@ class WaypointsImporterGeodashing extends WaypointsImporterBase {
     const SCRIPT_NAME = 'waypoint_importer_geodashing';
 
     public function process() {
-        $this->start();
-        try {
-            $this->perform_incremental_update();
-        } catch (Exception $exception) {
-            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
-        }
-        $this->end();
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function perform_incremental_update() {
         echo sprintf("*** \e[0;33mRunning full import\e[0m").PHP_EOL;
         ob_flush();
 
@@ -42,9 +27,6 @@ class WaypointsImporterGeodashing extends WaypointsImporterBase {
 
         File::download(self::GD_API_ENDPOINT, $path);
         File::extract_zip($path, $tmpdir);
-
-        $db = Base::instance()->get('DB');
-        $db->begin();
 
         $caches_count = count(file($csv_file));
 
@@ -72,7 +54,5 @@ class WaypointsImporterGeodashing extends WaypointsImporterBase {
             }
             echo PHP_EOL;
         }
-        $this->save_last_update();
-        $db->commit();
     }
 }

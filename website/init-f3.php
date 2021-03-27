@@ -50,6 +50,7 @@ if (!is_null(GK_SENTRY_DSN)) {
 
 $f3->set('UI', GK_F3_UI);
 $f3->set('TMP', GK_F3_TMP);
+$f3->set('LOGS', GK_F3_LOGS);
 $f3->set('CACHE', GK_F3_CACHE);
 $f3->set('DEBUG', GK_F3_DEBUG);
 if (GK_F3_DEBUG) {

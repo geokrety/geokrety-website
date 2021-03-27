@@ -6,24 +6,33 @@ use Base;
 use DateTime;
 use Exception;
 use GeoKrety\Model\Scripts;
+use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\File;
 use GeoKrety\Service\HTMLPurifier;
+use function pcntl_async_signals;
 use function pcntl_signal;
 use SimpleXMLElement;
 
 abstract class WaypointsImporterBase {
     protected DateTime $start_datetime;
     protected \HTMLPurifier $purifier;
+    protected bool $has_error = false;
+    protected ?string $error;
+    protected bool $_skip_saving_final_last_update = false;
+    /**
+     * @var array|array[]|mixed|null
+     */
+    protected $db;
 
     public function __construct() {
         $this->start_datetime = new DateTime();
         $this->purifier = HTMLPurifier::getPurifier();
+        $this->db = Base::instance()->get('DB');
 
         // Disable database log profiler - it explode memory in big imports
         Base::instance()->get('DB')->log(false);
         $this->trap_sigint();
-        $this->lock();
     }
 
     /**
@@ -32,6 +41,36 @@ abstract class WaypointsImporterBase {
     private function trap_sigint() {
         pcntl_async_signals(true);
         pcntl_signal(SIGINT, [$this, 'shutdown']);       // Catch SIGINT, run shutdown()
+    }
+
+    /**
+     * Start the import process.
+     *
+     * @throws Exception
+     */
+    public function run() {
+        $this->start();
+        try {
+            $this->process();
+        } catch (Exception $exception) {
+            $this->has_error = true;
+            $this->db->rollback();
+            $this->error = $exception->getMessage();
+            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
+            echo $exception->getTraceAsString().PHP_EOL;
+            $this->end();
+            throw $exception;
+        }
+        $this->end();
+    }
+
+    /**
+     * Start import functions.
+     */
+    protected function start() {
+        $this->lock();
+        $this->db->begin();
+        echo sprintf("* \e[0;32mStarting %s Waypoint synchronization at %s\e[0m", static::SCRIPT_CODE, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL;
     }
 
     /**
@@ -49,23 +88,53 @@ abstract class WaypointsImporterBase {
     }
 
     /**
-     * Start the import process.
+     * The real work process.
+     *
+     * @throws Exception
      */
-    abstract public function process();
-
-    /**
-     * Start import functions.
-     */
-    protected function start() {
-        echo sprintf("* \e[0;32mStarting Waypoint synchronization: %s\e[0m", $this->start_datetime->format('YmdHis')).PHP_EOL;
-    }
+    abstract protected function process();
 
     /**
      * Process end actions.
      */
     protected function end() {
+        if ($this->db->inTransaction()) {
+            $this->db->commit();
+        }
+
+        if (!$this->_skip_saving_final_last_update) {
+            $this->save_last_update();
+        }
         $this->unlock();
         echo sprintf("* \e[0;32mEnd Waypoint synchronization: %s\e[0m", date('YmdHis')).PHP_EOL;
+    }
+
+    /**
+     * Store last script update.
+     *
+     * @param string|null $service  The service code
+     * @param int|null    $revision The eventual revision to store
+     */
+    protected function save_last_update(?string $service = null, ?int $revision = null) {
+        $svc = $service ?? static::SCRIPT_CODE;
+
+        $wpt = new WaypointOC();
+        $wpt_count = $wpt->count(['provider = ?', $svc]);
+
+        $okapiSync = new WaypointSync();
+        $okapiSync->load(['service_id = ?', $svc]);
+        $okapiSync->service_id = $svc;
+        $okapiSync->revision = $revision ?? $okapiSync->revision;
+        $okapiSync->updated_on_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
+        if ($this->has_error) {
+            ++$okapiSync->error_count;
+            $okapiSync->last_error = $this->error;
+            $okapiSync->last_error_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
+        } else {
+            $okapiSync->wpt_count = $wpt_count;
+            $okapiSync->last_success_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
+        }
+        $okapiSync->save();
     }
 
     /**
@@ -78,6 +147,16 @@ abstract class WaypointsImporterBase {
     }
 
     /**
+     * Callback used on signal trap.
+     */
+    public function shutdown() {
+        $this->db->rollback();
+        $this->unlock();
+        echo PHP_EOL.'Exiting…'.PHP_EOL;
+        exit();
+    }
+
+    /**
      * Convert statuses strings to oc statuses.
      *
      * @param string      $status  Cache status
@@ -87,23 +166,6 @@ abstract class WaypointsImporterBase {
      */
     protected function status_to_id(string $status, ?string $subtype = null): ?int {
         return $status ?: 1;
-    }
-
-    /**
-     * Store last script update.
-     *
-     * @param string|null $service  The service code
-     * @param int|null    $revision The eventual revision to store
-     */
-    protected function save_last_update(?string $service = null, ?int $revision = null) {
-        $svc = $service ?? static::SCRIPT_CODE;
-
-        $okapiSync = new WaypointSync();
-        $okapiSync->load(['service_id = ?', $svc]);
-        $okapiSync->service_id = $svc;
-        $okapiSync->revision = $revision;
-        $okapiSync->last_update = $this->start_datetime->format(GK_DB_DATETIME_FORMAT_AS_INT);
-        $okapiSync->save();
     }
 
     /**
@@ -141,7 +203,7 @@ abstract class WaypointsImporterBase {
      *
      * @param $url string The url to download from
      *
-     * @return \SimpleXMLElement The parsed xml
+     * @return SimpleXMLElement The parsed xml
      *
      * @throws Exception
      */
@@ -151,14 +213,5 @@ abstract class WaypointsImporterBase {
         File::download($url, $path);
 
         return simplexml_load_file($path, 'SimpleXMLElement', LIBXML_NOENT | LIBXML_NOCDATA);
-    }
-
-    /**
-     * Callback used on signal trap.
-     */
-    private function shutdown() {
-        $this->unlock();
-        echo PHP_EOL.'Exiting…'.PHP_EOL;                 // New line
-        exit();                                                // Clean quit
     }
 }

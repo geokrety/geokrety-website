@@ -93,7 +93,7 @@ class AccountActivationToken extends Base {
         $activation = new AccountActivationToken();
         // TODO why is there 2 queries ??? bug or feature ?
         $expiredTokens = $activation->find([
-            'used = ? AND NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)',
+            //'used = ? AND NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)',
             'used = ? AND created_on_datetime > NOW() - cast(? as interval)',
             self::TOKEN_UNUSED,
             GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',

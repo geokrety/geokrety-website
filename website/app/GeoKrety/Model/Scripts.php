@@ -5,16 +5,17 @@ namespace GeoKrety\Model;
 use DateTime;
 use DB\SQL\Schema;
 use Exception;
+use Validation\Traits\CortexTrait;
 
 /**
  * @property int|null id
  * @property string name
  * @property DateTime|null last_run_datetime
- * @property int|null $last_page
- * @property DateTime|null locked
+ * @property int|null      $last_page
+ * @property DateTime|null $locked_datetime
  */
 class Scripts extends Base {
-    use \Validation\Traits\CortexTrait;
+    use CortexTrait;
 
     protected $db = 'DB';
     protected $table = 'scripts';
@@ -34,7 +35,7 @@ class Scripts extends Base {
             'validate' => 'int',
             'nullable' => true,
         ],
-        'locked' => [
+        'locked_datetime' => [
             'type' => Schema::DT_DATETIME,
             'validate' => 'is_date',
             'nullable' => true,
@@ -45,8 +46,12 @@ class Scripts extends Base {
         return self::get_date_object($value);
     }
 
+    public function get_locked_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
     public function is_locked(): bool {
-        return !is_null($this->locked);
+        return !is_null($this->locked_datetime);
     }
 
     /**
@@ -59,7 +64,7 @@ class Scripts extends Base {
             throw new Exception(sprintf('Script \'%s\' is already running', $script_name));
         }
         $this->name = $script_name;
-        $this->touch('locked');
+        $this->touch('locked_datetime');
         $this->save();
     }
 
@@ -68,7 +73,8 @@ class Scripts extends Base {
      */
     public function unlock(string $script_name) {
         $this->name = $script_name;
-        $this->locked = null;
+        $this->locked_datetime = null;
+        $this->touch('last_run_datetime');
         $this->save();
     }
 

@@ -17,38 +17,29 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
     const SCRIPT_CODE = 'GC_SU';
     const SCRIPT_NAME = 'waypoint_importer_gc_su';
 
-    public function process() {
-        $this->start();
-        try {
-            $this->process_gc_su();
-        } catch (Exception $exception) {
-            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
-        }
-        parent::end();
-    }
-
     /**
      * Start gc.su import.
      *
      * @throws Exception
      */
-    private function process_gc_su() {
+    public function process() {
         echo "** \e[0;32mProcessing gc.su\e[0m".PHP_EOL;
+        ob_flush();
 
         $okapiSync = new WaypointSync();
         $okapiSync->load(['service_id = ?', self::SCRIPT_CODE]);
         $since = '20y';
         $now = new DateTime();
-        if ($okapiSync->valid() and !is_null($okapiSync->last_update)) {
+        if ($okapiSync->valid() and !is_null($okapiSync->revision)) {
             $since = sprintf('%dm', ceil(($now->getTimestamp() - $okapiSync->get_last_update_as_datetime()->getTimestamp()) / 60));
         }
-        $this->perform_incremental_update($since, $now);
+        $this->perform_incremental_update($since);
     }
 
     /**
      * @throws Exception
      */
-    private function perform_incremental_update(string $since, DateTime $now) {
+    private function perform_incremental_update(string $since) {
         echo sprintf("*** \e[0;33mRunning import since: %s\e[0m", $since).PHP_EOL;
 
         $tmp_file = tmpfile();
@@ -89,16 +80,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
             }
             echo PHP_EOL;
         }
-        $this->save_last_update();
     }
-
-    //private function save_last_update(DateTime $now) {
-    //    $okapiSync = new WaypointSync();
-    //    $okapiSync->load(['service_id = ?', self::SCRIPT_CODE]);
-    //    $okapiSync->service_id = self::SCRIPT_CODE;
-    //    $okapiSync->last_update = $now->format(GK_DB_DATETIME_FORMAT_AS_INT);
-    //    $okapiSync->save();
-    //}
 
     private function cache_type(string $waypoint): string {
         $prefix = substr($waypoint, 0, 2);
@@ -122,12 +104,12 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
     /**
      * Convert gc.su statuses to oc statuses.
      *
-     * @param string $status  gc.su cache status
-     * @param string $subtype gc.su cache subtype
+     * @param string      $status  gc.su cache status
+     * @param string|null $subtype gc.su Cache subtype
      *
      * @return int|null The cache status
      */
-    protected function status_to_id(string $status, string $subtype): ?int {
+    protected function status_to_id(string $status, ?string $subtype = null): ?int {
         if ($status !== '1') {
             // Cache is not in `good status`
             return 3; // archived

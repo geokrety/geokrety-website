@@ -7,7 +7,7 @@ class Config extends \Prefab {
         // SITE CONFIG
         define('HOSTNAME', getenv('HOSTNAME') ?: 'localhost');
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
-        define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '1,26422,35313'));
+        define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '26422'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
         define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
         define('GK_SITE_TRACKING_CODE_LENGTH', getenv('GK_SITE_TRACKING_CODE_LENGTH') ?: 6);
@@ -27,13 +27,14 @@ class Config extends \Prefab {
         define('GK_SITE_USER_PASSWORD_MIN_LENGTH', getenv('GK_SITE_USER_PASSWORD_MIN_LENGTH') ?: 6);
         define('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE', getenv('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE') ?: 12); // Mo
         define('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES', getenv('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES') ?: 20);
-        define('GK_SITE_USER_AGENT', getenv('GK_SITE_USER_AGENT') ?: 'GeOkrety/2.x');
+        define('GK_SITE_CRON_LOCKED_MINUTES', getenv('GK_SITE_CRON_LOCKED_MINUTES') ?: 5);
 
         // SITE EMAIL From
         define('GK_SITE_EMAIL', getenv('GK_SITE_EMAIL') ?: 'geokrety@gmail.com');
         define('GK_SITE_EMAIL_SUPPORT', getenv('GK_SITE_EMAIL_SUPPORT') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_REGISTRATION', getenv('GK_SITE_EMAIL_REGISTRATION') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_MESSAGE_CENTER', getenv('GK_SITE_EMAIL_MESSAGE_CENTER') ?: GK_SITE_EMAIL);
+        define('GK_SITE_EMAIL_ADMIN', getenv('GK_SITE_EMAIL_ADMIN') ?: GK_SITE_EMAIL);
 
         // SENTRY CONFIG
         define('GK_SENTRY_DSN', getenv('GK_SENTRY_DSN') ?: null);
@@ -85,6 +86,7 @@ class Config extends \Prefab {
         define('GK_APP_VERSION', getenv('GIT_COMMIT') ?: 'undef');
         define('GK_EMAIL_SUBJECT_PREFIX', getenv('GK_EMAIL_SUBJECT_PREFIX') ?: '[GeoKrety] ');
         define('GK_BOT_USERNAME', getenv('GK_BOT_USERNAME') ?: 'GeoKrety Bot ');
+        define('GK_SITE_USER_AGENT', getenv('GK_SITE_USER_AGENT') ?: sprintf('GeoKrety/%s (%s)', GK_APP_VERSION, GK_ENVIRONMENT));
 
         define('GK_HELP_GEOKRETY_EXAMPLE_LIST', [GK_HELP_GEOKRETY_EXAMPLE_1, GK_HELP_GEOKRETY_EXAMPLE_2]);
 
@@ -120,6 +122,7 @@ class Config extends \Prefab {
         // F3
         define('GK_F3_UI', getenv('GK_F3_UI') ?: 'app-ui/');
         define('GK_F3_TMP', getenv('GK_F3_TMP') ?: '/tmp/f3/');
+        define('GK_F3_LOGS', getenv('GK_F3_LOGS') ?: '/tmp/f3/logs/');
         define('GK_REDIS_HOST', getenv('GK_REDIS_HOST') ?: 'redis');
         define('GK_REDIS_PORT', getenv('GK_REDIS_PORT') ?: '6379');
         define('GK_F3_CACHE', getenv('GK_F3_CACHE') ?: sprintf('redis=%s:%s', GK_REDIS_HOST, GK_REDIS_PORT));
@@ -175,6 +178,39 @@ class Config extends \Prefab {
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
         define('GK_SERVICE_GC_SEARCH_NEAREST_URL', getenv('GK_SERVICE_GC_SEARCH_NEAREST_URL') ?: 'https://www.geocaching.com/seek/nearest.aspx?origin_lat=%f&origin_long=%f&dist=1');
 
+        //// Waypoint services
+        //define('OC_PL', 'OC_PL');
+        //define('OC_DE', 'OC_DE');
+        //define('OC_UK', 'OC_UK');
+        //define('OC_US', 'OC_US');
+        //define('OC_NL', 'OC_NL');
+        //define('OC_RO', 'OC_RO');
+
+        define('GK_WAYPOINT_SERVICE_URL_OC_PL', getenv('GK_WAYPOINT_SERVICE_URL_OC_PL') ?: 'https://opencaching.pl');
+        define('GK_WAYPOINT_SERVICE_URL_OC_DE', getenv('GK_WAYPOINT_SERVICE_URL_OC_DE') ?: 'https://www.opencaching.de');
+        define('GK_WAYPOINT_SERVICE_URL_OC_UK', getenv('GK_WAYPOINT_SERVICE_URL_OC_UK') ?: 'https://opencache.uk');
+        define('GK_WAYPOINT_SERVICE_URL_OC_US', getenv('GK_WAYPOINT_SERVICE_URL_OC_US') ?: 'https://www.opencaching.us');
+        define('GK_WAYPOINT_SERVICE_URL_OC_NL', getenv('GK_WAYPOINT_SERVICE_URL_OC_NL') ?: 'https://www.opencaching.nl');
+        define('GK_WAYPOINT_SERVICE_URL_OC_RO', getenv('GK_WAYPOINT_SERVICE_URL_OC_RO') ?: 'https://www.opencaching.ro');
+        define('GK_WAYPOINT_SERVICE_URL_WPG', getenv('GK_WAYPOINT_SERVICE_URL_OC_WPG') ?: 'http://wpg.alleycat.pl');
+        define('GK_WAYPOINT_SERVICE_URL_GEODASHING', getenv('GK_WAYPOINT_SERVICE_URL_GEODASHING') ?: 'http://geodashing.gpsgames.org');
+        define('GK_WAYPOINT_SERVICE_URL_GPS_GAMES', getenv('GK_WAYPOINT_SERVICE_URL_GPS_GAMES') ?: 'http://geocaching.gpsgames.org');
+        define('GK_WAYPOINT_SERVICE_URL_GC_SU', getenv('GK_WAYPOINT_SERVICE_URL_GC_SU') ?: 'https://geocaching.su');
+        define('GK_WAYPOINT_SERVICE_URL_GC_HU', getenv('GK_WAYPOINT_SERVICE_URL_GC_HU') ?: 'https://www.geocaching.hu');
+        define('GK_WAYPOINT_SERVICE_URL_GC', getenv('GK_WAYPOINT_SERVICE_URL_GC') ?: 'https://www.geocaching.com');
+
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_PL', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_PL') ?: 5);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_DE', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_DE') ?: 5);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_UK', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_UK') ?: 5);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_US', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_US') ?: 5);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_NL', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_NL') ?: 5);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_RO', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_RO') ?: 5);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_WPG', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_OC_WPG') ?: 1440);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GEODASHING', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GEODASHING') ?: date('t') * 24 * 60);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GPS_GAMES', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GPS_GAMES') ?: 1440);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GC_SU', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GC_SU') ?: 120);
+        define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GC_HU', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GC_HU') ?: 1440);
+
         // okapi services
         define('GK_OKAPI_CONSUMER_KEY_OC_PL', getenv('GK_OKAPI_CONSUMER_KEY_OC_PL') ?: null);
         define('GK_OKAPI_CONSUMER_KEY_OC_DE', getenv('GK_OKAPI_CONSUMER_KEY_OC_DE') ?: null);
@@ -183,20 +219,13 @@ class Config extends \Prefab {
         define('GK_OKAPI_CONSUMER_KEY_OC_NL', getenv('GK_OKAPI_CONSUMER_KEY_OC_NL') ?: null);
         define('GK_OKAPI_CONSUMER_KEY_OC_RO', getenv('GK_OKAPI_CONSUMER_KEY_OC_RO') ?: null);
 
-        define('GK_OKAPI_URL_OC_PL', getenv('GK_OKAPI_URL_OC_PL') ?: 'https://opencaching.pl');
-        define('GK_OKAPI_URL_OC_DE', getenv('GK_OKAPI_URL_OC_DE') ?: 'https://www.opencaching.de');
-        define('GK_OKAPI_URL_OC_UK', getenv('GK_OKAPI_URL_OC_UK') ?: 'https://opencache.uk');
-        define('GK_OKAPI_URL_OC_US', getenv('GK_OKAPI_URL_OC_US') ?: 'https://www.opencaching.us');
-        define('GK_OKAPI_URL_OC_NL', getenv('GK_OKAPI_URL_OC_NL') ?: 'https://www.opencaching.nl');
-        define('GK_OKAPI_URL_OC_RO', getenv('GK_OKAPI_URL_OC_RO') ?: 'https://www.opencaching.ro');
-
         define('GK_OKAPI_PARTNERS', [
-            'OC_PL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_PL, 'url' => GK_OKAPI_URL_OC_PL],
-            'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_OKAPI_URL_OC_DE],
-            'OC_UK' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_UK, 'url' => GK_OKAPI_URL_OC_UK],
-            'OC_US' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_US, 'url' => GK_OKAPI_URL_OC_US],
-            'OC_NL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_NL, 'url' => GK_OKAPI_URL_OC_NL],
-            'OC_RO' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_RO, 'url' => GK_OKAPI_URL_OC_RO],
+            //'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_WAYPOINT_SERVICE_URL_OC_DE],
+            'OC_PL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_PL, 'url' => GK_WAYPOINT_SERVICE_URL_OC_PL],
+            'OC_UK' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_UK, 'url' => GK_WAYPOINT_SERVICE_URL_OC_UK],
+            'OC_US' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_US, 'url' => GK_WAYPOINT_SERVICE_URL_OC_US],
+            'OC_NL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_NL, 'url' => GK_WAYPOINT_SERVICE_URL_OC_NL],
+            'OC_RO' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_RO, 'url' => GK_WAYPOINT_SERVICE_URL_OC_RO],
         ]);
 
         // map api url
