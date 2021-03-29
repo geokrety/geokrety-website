@@ -482,6 +482,10 @@ class NewsMigrator extends BaseMigrator {
 }
 
 class NewsCommentsMigrator extends BaseMigrator {
+    protected function postProcessData() {
+        $this->pPdo->query('UPDATE gk_news_comments SET author=NULL WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+    }
+
     // $pFields = ['id', 'news', 'author', 'content', 'created_on_datetime', 'updated_on_datetime'];
     protected function cleanerHook(&$values) {
         $values[3] = Markdown::toFormattedMarkdown($values[3]);  // content
@@ -490,6 +494,10 @@ class NewsCommentsMigrator extends BaseMigrator {
 }
 
 class NewsCommentsAccessMigrator extends BaseMigrator {
+    protected function postProcessData() {
+        $this->pPdo->query('DELETE FROM gk_news_comments WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+    }
+
     protected function cleanerHook(&$values) {
     }
 }
