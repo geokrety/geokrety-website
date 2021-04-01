@@ -35,6 +35,8 @@ subject: '{$subject}'
                 <small>
                     {t}You're getting this email because one of GeoKrety.org users send you a message via your user profile.{/t}
                     {t escape=no email=GK_SITE_EMAIL subject='%3Cyour%20subject%3E'}If you never created an account on GeoKrety.org, please <a href="mailto:%1?subject=%2">contact us</a>.{/t}
+                    <br>
+                    {include file='elements/version.tpl'}
                 </small>
             </p>
         </columns>

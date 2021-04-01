@@ -10,7 +10,7 @@
         {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country nofilter}{/if}
         {$move|cachelink nofilter}
     </td>
-    <td><span title="{$move->comment|markdown:'text'}">{$move->comment|truncate:60:"…"|markdown nofilter}</span></td>
+    <td><small><span title="{$move->comment|markdown:'text'}">{$move->comment|truncate:80:"(…)"|markdown nofilter}</span></small></td>
     <td class="text-center" nowrap>
         {$move->moved_on_datetime|print_date nofilter}
         <br />

@@ -33,6 +33,8 @@ subject: '{$subject}'
                 <small>
                     {t}You're getting this email because you've requested an email address change from our website.{/t}
                     {t escape=no email=GK_SITE_EMAIL subject=sprintf('%%3Cyour%%20subject%%3E%%20ref%%3A%s', $token->token)}If you never created an account on GeoKrety.org, please <a href="mailto:%1?subject=%2">contact us</a>.{/t}
+                    <br>
+                    {include file='elements/version.tpl'}
                 </small>
             </p>
         </columns>

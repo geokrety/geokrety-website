@@ -102,8 +102,18 @@ th.expander {
   width: 0;
   padding: 0 !important; }
 
+td.text-center,
 h1.text-center,
-p.text-center {
+p.text-center,
+span.text-center {
+  text-align: center; }
+
+td.text-right {
+  text-align: right; }
+
+span.text-center {
+  display: block;
+  width: 100%;
   text-align: center; }
 
 table.float-center,
@@ -117,6 +127,8 @@ body,
 table.body,
 h1,
 h2,
+h3,
+h4,
 p,
 td,
 th,
@@ -131,7 +143,9 @@ a {
   line-height: 1.3; }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   color: inherit;
   word-wrap: normal;
   font-family: Helvetica, Arial, sans-serif;
@@ -144,6 +158,12 @@ h1 {
 
 h2 {
   font-size: 30px; }
+
+h3 {
+  font-size: 28px; }
+
+h4 {
+  font-size: 24px; }
 
 body,
 table.body,

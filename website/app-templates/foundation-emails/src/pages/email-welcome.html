@@ -23,6 +23,8 @@ subject: '{$subject}'
                 <small>
                     {t}You're getting this email because you've just signed up on our website.{/t}
                     {t escape=no email=GK_SITE_EMAIL}If you never created an account on GeoKrety.org, please <a href="mailto:%1">contact us</a>.{/t}
+                    <br>
+                    {include file='elements/version.tpl'}
                 </small>
             </p>
         </columns>
