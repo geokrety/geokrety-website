@@ -32,10 +32,10 @@
             <td>{$item->service_id}</td>
             <td>{constant(sprintf('GK_WAYPOINT_SERVICE_URL_%s', $item->service_id))|link:null:_blank nofilter}</td>
             <td class="text-right">{$item->wpt_count}</td>
-            <td class="text-right">{if !is_null($item->last_success_datetime)}{$item->last_success_datetime|print_date_expiration}{/if}</td>
+            <td class="text-right">{if !is_null($item->last_success_datetime)}{$item->last_success_datetime|print_date_expiration:2}{/if}</td>
             <td class="text-right">{if is_null($item->revision)}{t}N/A{/t}{else}{$item->revision}{/if}</td>
             {if !is_null($item->last_error_datetime)}
-                <td class="text-right" data-toggle="tooltip" title="{$item->last_error}">{$item->last_error_datetime|print_date_expiration}</td>
+                <td class="text-right" data-toggle="tooltip" title="{$item->last_error}">{$item->last_error_datetime|print_date_expiration:2}</td>
             {else}
                 <td></td>
             {/if}

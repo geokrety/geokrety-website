@@ -9,7 +9,9 @@ use GeoKrety\Service\Smarty;
 class Statistics extends Base {
     public function waypoints(\Base $f3) {
         $wptOc = new WaypointSync();
-        $wptOc->last_error_time_diff = 'EXTRACT(EPOCH FROM (DATE_TRUNC(\'MINUTE\', NOW()) - DATE_TRUNC(\'MINUTE\', last_success_datetime)))::integer/60';
+        $wptOc->last_error_time_diff = <<<'SQL'
+EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', last_success_datetime)))::integer/60
+SQL;
         $wpt_oc = $wptOc->find(null, ['order' => 'wpt_count DESC']);
         Smarty::assign('wpt_oc', $wpt_oc);
 
