@@ -40,21 +40,29 @@ abstract class BaseWaypoint extends Base {
         ],
         'lat' => [
             'type' => Schema::DT_DOUBLE,
-            'nullable' => true,
+            'nullable' => false,
             'validate' => 'float',
         ],
         'lon' => [
             'type' => Schema::DT_DOUBLE,
-            'nullable' => true,
+            'nullable' => false,
             'validate' => 'float',
         ],
     ];
 
-    public function get_lat($value): string {
+    public function get_lat($value): ?string {
+        if (is_null($value)) {
+            return null;
+        }
+
         return number_format(floatval($value), 5, '.', '');
     }
 
-    public function get_lon($value): string {
+    public function get_lon($value): ?string {
+        if (is_null($value)) {
+            return null;
+        }
+
         return number_format(floatval($value), 5, '.', '');
     }
 

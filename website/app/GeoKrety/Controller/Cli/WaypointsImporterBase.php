@@ -18,7 +18,7 @@ abstract class WaypointsImporterBase {
     protected DateTime $start_datetime;
     protected \HTMLPurifier $purifier;
     protected bool $has_error = false;
-    protected ?string $error;
+    protected ?string $error = null;
     protected bool $_skip_saving_final_last_update = false;
     /**
      * @var array|array[]|mixed|null
@@ -126,7 +126,7 @@ abstract class WaypointsImporterBase {
         $okapiSync->service_id = $svc;
         $okapiSync->revision = $revision ?? $okapiSync->revision;
         $okapiSync->updated_on_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
-        if ($this->has_error) {
+        if (!is_null($this->error)) {
             ++$okapiSync->error_count;
             $okapiSync->last_error = $this->error;
             $okapiSync->last_error_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
@@ -135,6 +135,7 @@ abstract class WaypointsImporterBase {
             $okapiSync->last_success_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
         }
         $okapiSync->save();
+        $this->error = null;
     }
 
     /**

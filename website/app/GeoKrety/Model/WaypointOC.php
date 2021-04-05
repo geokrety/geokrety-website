@@ -27,11 +27,11 @@ class WaypointOC extends BaseWaypoint {
         ],
         'lat' => [
             'type' => Schema::DT_DOUBLE,
-            'nullable' => true,
+            'nullable' => false,
         ],
         'lon' => [
             'type' => Schema::DT_DOUBLE,
-            'nullable' => true,
+            'nullable' => false,
         ],
         'elevation' => [
             'type' => Schema::DT_INT2,

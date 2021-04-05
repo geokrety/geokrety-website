@@ -23,6 +23,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
     protected bool $_skip_saving_final_last_update = true;
     private ConsoleWriter $console_writer;
     private string $mPart = 'n/a';
+    private array $failingPartners = [];
 
     public function process() {
         $this->console_writer = new ConsoleWriter('Importing %7s: %6.2f%% (%s/%d) - U:%d D:%d S:%d E:%d');
@@ -37,6 +38,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 $this->db->rollback();
                 $this->has_error = true;
                 $this->error = str_replace($params['key'], 'xxx', $exception->getMessage());
+                $this->failingPartners[$okapi][] = $this->error;
                 $this->save_last_update($okapi);
                 echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
                 continue;
@@ -44,7 +46,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             $this->db->commit();
         }
         if ($this->has_error) {
-            throw new Exception('One OKAPI service failed');
+            throw new Exception(sprintf("%d OKAPI service fail: \n%s", sizeof($this->failingPartners), print_r($this->failingPartners, true)));
         }
     }
 
@@ -156,13 +158,12 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             if (isset($change->data->status)) {
                 $wpt->status = $this->status_to_id($change->data->status);
             }
-            try {
+            if ($wpt->valid()) {
                 $wpt->save();
-            } catch (Exception $exception) {
+            } else {
                 ++$this->nError;
                 $this->print_stats();
-                echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
-                echo $exception->getTraceAsString().PHP_EOL;
+                $this->failingPartners[$okapi][] = sprintf("\e[0;31mE: Waypoint is not valid %s\e[0m", $wpt->waypoint);
                 continue;
             }
 
