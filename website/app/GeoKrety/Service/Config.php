@@ -186,6 +186,8 @@ class Config extends \Prefab {
         //define('OC_NL', 'OC_NL');
         //define('OC_RO', 'OC_RO');
 
+        define('GK_WAYPOINT_SYNC_SEND_WAYPOINT_ERRORS', getenv('GK_WAYPOINT_SYNC_SEND_WAYPOINT_ERRORS') ?: false);
+
         define('GK_WAYPOINT_SERVICE_URL_OC_PL', getenv('GK_WAYPOINT_SERVICE_URL_OC_PL') ?: 'https://opencaching.pl');
         define('GK_WAYPOINT_SERVICE_URL_OC_DE', getenv('GK_WAYPOINT_SERVICE_URL_OC_DE') ?: 'https://www.opencaching.de');
         define('GK_WAYPOINT_SERVICE_URL_OC_UK', getenv('GK_WAYPOINT_SERVICE_URL_OC_UK') ?: 'https://opencache.uk');

@@ -19,7 +19,7 @@ SQL;
             $mail = new CronError();
             foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
                 $user->load(['id = ?', $admin_id]);
-                $mail->sendLockedScript($user, $script);
+                $mail->sendLockedScript($script);
             }
         }
     }

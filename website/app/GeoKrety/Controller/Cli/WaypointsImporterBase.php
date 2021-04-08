@@ -5,6 +5,7 @@ namespace GeoKrety\Controller\Cli;
 use Base;
 use DateTime;
 use Exception;
+use GeoKrety\Email\CronError;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
@@ -130,6 +131,8 @@ abstract class WaypointsImporterBase {
             ++$okapiSync->error_count;
             $okapiSync->last_error = $this->error;
             $okapiSync->last_error_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
+            $mail = new CronError();
+            $mail->sendPartnerFatal($service, $this->error);
         } else {
             $okapiSync->wpt_count = $wpt_count;
             $okapiSync->last_success_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);

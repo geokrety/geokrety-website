@@ -19,12 +19,7 @@ if (preg_match('/^\/cron/', $f3->PATH)) {
     $f3->DEBUG = 2;
     $f3->ONERROR = function ($f3) {
         $mail = new CronError();
-        $user = new User();
-        $error = $f3->get('ERROR');
-        foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
-            $user->load(['id = ?', $admin_id]);
-            $mail->sendError($user, "$f3->PATH", $error);
-        }
+        $mail->sendException("$f3->PATH", $f3->get('ERROR'));
         exit(1);
     };
     $f3->config('../app/cron.ini');

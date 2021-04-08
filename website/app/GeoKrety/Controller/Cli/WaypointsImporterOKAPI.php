@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller\Cli;
 
 use Exception;
+use GeoKrety\Email\CronError;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\ConsoleWriter;
@@ -45,9 +46,17 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             }
             $this->db->commit();
         }
-        if ($this->has_error) {
-            throw new Exception(sprintf("%d OKAPI service fail: \n%s", sizeof($this->failingPartners), print_r($this->failingPartners, true)));
+        if ($this->has_error and GK_WAYPOINT_SYNC_SEND_WAYPOINT_ERRORS) {
+            $mail = new CronError();
+            $mail->sendPartnerFailure($this->failingPartners);
         }
+    }
+
+    private function reset_counters() {
+        $this->nUpdated = 0;
+        $this->nDeleted = 0;
+        $this->nSkipped = 0;
+        $this->nError = 0;
     }
 
     /**
@@ -163,7 +172,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             } else {
                 ++$this->nError;
                 $this->print_stats();
-                $this->failingPartners[$okapi][] = sprintf("\e[0;31mE: Waypoint is not valid %s\e[0m", $wpt->waypoint);
+                $this->failingPartners[$okapi][] = sprintf('Waypoint is not valid %s', $wpt->waypoint);
                 continue;
             }
 
@@ -231,12 +240,5 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             $more = $json->more;
             $this->save_last_update($okapi, $revision);
         }
-    }
-
-    private function reset_counters() {
-        $this->nUpdated = 0;
-        $this->nDeleted = 0;
-        $this->nSkipped = 0;
-        $this->nError = 0;
     }
 }
