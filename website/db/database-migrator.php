@@ -23,26 +23,29 @@ $mysql = new PDO($dsn, $username, $password, $options);
 
 define('DEFAULT_PAGINATION', 1000);
 
-$pgsql->query('DROP INDEX gk_moves_country_index;');
-$pgsql->query('DROP INDEX gk_moves_type_index;');
-$pgsql->query('DROP INDEX id_type_position;');
-$pgsql->query('DROP INDEX idx_21034_kret_id;');
-$pgsql->query('DROP INDEX idx_21034_ruch_id;');
-$pgsql->query('DROP INDEX idx_21034_user_id;');
-$pgsql->query('DROP INDEX idx_21044_alt;');
-$pgsql->query('DROP INDEX idx_21044_data;');
-$pgsql->query('DROP INDEX idx_21044_data_dodania;');
-$pgsql->query('DROP INDEX idx_21044_lat;');
-$pgsql->query('DROP INDEX idx_21044_lon;');
-$pgsql->query('DROP INDEX idx_21044_timestamp;');
-$pgsql->query('DROP INDEX idx_21044_user;');
-$pgsql->query('DROP INDEX idx_21044_waypoint;');
-$pgsql->query('DROP INDEX idx_moves_geokret;');
-$pgsql->query('DROP INDEX idx_moves_id;');
-$pgsql->query('DROP INDEX idx_moves_type_id;');
+try {
+    $pgsql->query('DROP INDEX gk_moves_country_index;');
+    $pgsql->query('DROP INDEX gk_moves_type_index;');
+    $pgsql->query('DROP INDEX id_type_position;');
+    $pgsql->query('DROP INDEX idx_21034_kret_id;');
+    $pgsql->query('DROP INDEX idx_21034_ruch_id;');
+    $pgsql->query('DROP INDEX idx_21034_user_id;');
+    $pgsql->query('DROP INDEX idx_21044_alt;');
+    $pgsql->query('DROP INDEX idx_21044_data;');
+    $pgsql->query('DROP INDEX idx_21044_data_dodania;');
+    $pgsql->query('DROP INDEX idx_21044_lat;');
+    $pgsql->query('DROP INDEX idx_21044_lon;');
+    $pgsql->query('DROP INDEX idx_21044_timestamp;');
+    $pgsql->query('DROP INDEX idx_21044_user;');
+    $pgsql->query('DROP INDEX idx_21044_waypoint;');
+    $pgsql->query('DROP INDEX idx_moves_geokret;');
+    $pgsql->query('DROP INDEX idx_moves_id;');
+    $pgsql->query('DROP INDEX idx_moves_type_id;');
 
-$pgsql->query('CREATE TABLE gk_pictures2 AS SELECT filename, bucket, key FROM gk_pictures;');
-$pgsql->query('CREATE INDEX tmp_idx_pictures_filename ON geokrety.gk_pictures2 USING btree (filename);');
+    $pgsql->query('CREATE TABLE gk_pictures2 AS SELECT filename, bucket, key FROM gk_pictures;');
+    $pgsql->query('CREATE INDEX tmp_idx_pictures_filename ON geokrety.gk_pictures2 USING btree (filename);');
+} catch (Exception $e) {
+}
 
 $pgsql->query('SET session_replication_role = replica;');
 $sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_oc", "gk_waypoints_country", "gk_waypoints_sync", "gk_waypoints_types", "scripts" RESTART IDENTITY CASCADE';
