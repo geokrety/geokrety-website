@@ -11,11 +11,19 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a flag for a country
  * -------------------------------------------------------------
  */
-function smarty_modifier_country(?string $countryCode): string {
+/**
+ * @throws \Exception
+ */
+function smarty_modifier_country(?string $countryCode, string $output = 'css'): string {
     if (is_null($countryCode)) {
         $countryCode = 'xyz';
     }
     $countryCode = smarty_modifier_escape($countryCode);
     // TODO localize country name in title
-    return sprintf('<span class="flag-icon flag-icon-%s" title="%s"></span>', $countryCode, $countryCode);
+    if ($output === 'css') {
+        return sprintf('<span class="flag-icon flag-icon-%s" title="%s"></span>', $countryCode, $countryCode);
+    } elseif ($output === 'html') {
+        return sprintf('<img src="https://cdn.geokrety.org/flags/4x3/%s.svg" class="w-4 d-inline-block" width="16" title="%s">', $countryCode, $countryCode);
+    }
+    throw new Exception('smarty_modifier_country(): Unsupported output mode');
 }

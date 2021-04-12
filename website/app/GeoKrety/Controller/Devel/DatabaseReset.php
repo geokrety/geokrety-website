@@ -28,7 +28,7 @@ class DatabaseReset extends Base {
         'news_comments_access_id_seq', 'news_comments_id_seq', 'news_id_seq',
         'owner_codes_id_seq', 'password_tokens_id_seq', 'pictures_id_seq',
         'races_id_seq', 'races_participants_id_seq',
-        'users_id_seq', 'watched_id_seq', 'waypoints_id_seq', 'waypoints_gc_id_seq',
+        'users_id_seq', 'watched_id_seq', 'waypoints_oc_id_seq', 'waypoints_gc_id_seq',
     ];
 
     /**

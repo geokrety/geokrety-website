@@ -8,7 +8,7 @@
         {$move->country|country nofilter}
         {$move|cachelink nofilter}
     </td>
-    <td><span title="{$move->comment|markdown:'text'}">{$move->comment|truncate:60:"…"|markdown nofilter}</span></td>
+    <td><span title="{$move->comment|markdown:'text'}">{$move->comment|markdown:'text'|truncate:60:"(…)" nofilter}</span></td>
     <td class="text-center" nowrap>
         {$move->moved_on_datetime|print_date nofilter}
         <br />

@@ -251,8 +251,8 @@ class User extends Base implements JsonSerializable {
         return self::get_date_object($value);
     }
 
-    public function get_home_coordinates(): string {
-        return $this->home_latitude.' '.$this->home_longitude;
+    public function get_home_coordinates($value): string {
+        return sprintf('%F %F', $this->home_latitude, $this->home_longitude);
     }
 
     public function hasHomeCoordinates(): bool {
@@ -265,8 +265,6 @@ class User extends Base implements JsonSerializable {
 
     /**
      * Check if user has validated it's account and resend activation email.
-     *
-     * @param User $user The user to check
      */
     public function checkValidAccount() {
         if (!$this->isAccountValid() && $this->activation) {

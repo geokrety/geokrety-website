@@ -3,24 +3,18 @@
 namespace GeoKrety\Email;
 
 use GeoKrety\Model\Scripts;
-use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
-class CronError extends Base {
+class CronError extends BasePHPMailer {
+    public function __construct(?bool $exceptions = true, string $body = '') {
+        parent::__construct($exceptions, $body);
+        $this->setToAdmins();
+    }
+
     public function sendPartnerFailure(array $errors) {
         Smarty::assign('errors', $errors);
         $this->setSubject(sprintf('❗ Cron Failure: %s', join(', ', array_keys($errors))));
         $this->sendEmail('emails/cron-partner-failure.tpl');
-    }
-
-    protected function sendEmail(string $template_name) {
-        $user = new User();
-        Smarty::assign('user', $user);
-        foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
-            $user->load(['id = ?', $admin_id]);
-            $this->setTo($user);
-            $this->send(Smarty::fetch($template_name));
-        }
     }
 
     public function sendException(string $cron_name, array $errors) {

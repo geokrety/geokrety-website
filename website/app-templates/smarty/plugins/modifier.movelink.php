@@ -16,7 +16,8 @@ function smarty_modifier_movelink(GeoKrety\Model\Move $move, ?string $textString
     $target_html = is_null($target) ? '' : ' target="'.$target.'"';
 
     return sprintf(
-        '<a href="%s" title="%s"%s>%s</a>',
+        '<a href="%s%s" title="%s"%s>%s</a>',
+        GK_SITE_BASE_SERVER_URL,
         \Base::instance()->alias('geokret_details_paginate', ['gkid' => $move->geokret->gkid(), 'page' => $move->getMoveOnPage()], null, sprintf('log%d', $move->id)),
         _('View move details'),
         $target_html,

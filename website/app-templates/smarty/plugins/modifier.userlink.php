@@ -23,7 +23,8 @@ function smarty_modifier_userlink(?GeoKrety\Model\User $user, ?string $alternati
     }
 
     return sprintf(
-        '<a href="%s" data-gk-link="user" data-gk-id="%d" title="%s"%s>%s</a>',
+        '<a href="%s%s" data-gk-link="user" data-gk-id="%d" title="%s"%s>%s</a>',
+        GK_SITE_BASE_SERVER_URL,
         \Base::instance()->alias('user_details', 'userid='.$user->id),
         $user->id,
         sprintf('View %s\'s profile', smarty_modifier_escape($user->username)),

@@ -47,6 +47,9 @@
                         <li>
                             Change GeoKret ownership
                         </li>
+                        <li>
+                            <a href="{'admin_s3_prune_pictures'|alias}">Prune never uploaded pictures</a>
+                        </li>
                     </ul>
                 </div>
             </div>

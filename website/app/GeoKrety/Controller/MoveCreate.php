@@ -54,20 +54,20 @@ class MoveCreate extends Base {
     }
 
     public function get(\Base $f3) {
-        if ((is_null($this->move->geokret) || is_null($this->move->geokret->tracking_code)) && $f3->exists('GET.tracking_code')) {
+        if ($f3->exists('GET.tracking_code') && (is_null($this->move->geokret) || is_null($this->move->geokret->tracking_code))) {
             $geokret = new Geokret();
             $geokret->load(['tracking_code = ?', strtoupper($f3->get('GET.tracking_code'))]);
             if (!$geokret->dry()) {
                 $this->move->geokret = $geokret;
             }
         }
-        if (!LogType::isValid($this->move->move_type->getLogTypeId()) && $f3->exists('GET.move_type')) {
+        if ($f3->exists('GET.move_type') && !LogType::isValid($this->move->move_type->getLogTypeId())) {
             $this->move->move_type = $f3->get('GET.move_type');
         }
         if (is_null($this->move->waypoint) && $f3->exists('GET.waypoint')) {
             $this->move->waypoint = $f3->get('GET.waypoint');
         }
-        if (is_null($this->move->lat) && is_null($this->move->lon) && $f3->exists('GET.coordinates')) {
+        if ($f3->exists('GET.coordinates') && is_null($this->move->lat) && is_null($this->move->lon)) {
             $coordChecker = new CoordinatesValidation();
             if ($coordChecker->validate($f3->get('GET.coordinates'))) {
                 $this->move->lat = $coordChecker->getLat();

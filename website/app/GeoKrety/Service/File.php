@@ -68,11 +68,11 @@ class File {
      * @see https://stackoverflow.com/a/3406181/944936
      *
      * @param $url string path to source file or URL
-     * @param $output string path to output file or stream
+     * @param $output string|resource path to output file or stream
      *
      * @throws Exception if something goes wrong
      */
-    public static function download(string $url, string $output) {
+    public static function download(string $url, $output) {
         set_error_handler(
             function ($severity, $message, $file, $line) {
                 throw new Exception($message);
@@ -84,12 +84,16 @@ class File {
         } finally {
             restore_error_handler();
         }
-        $writableStream = fopen($output, 'wb');
-        if (!$writableStream) {
-            throw new Exception(sprintf('Failed to create file: %s', $url));
+        if (is_string($output)) {
+            $writableStream = fopen($output, 'wb');
+            if (!$writableStream) {
+                throw new Exception(sprintf('Failed to create file: %s', $url));
+            }
+            stream_copy_to_stream($readableStream, $writableStream);
+            fclose($writableStream);
+        } else {
+            stream_copy_to_stream($readableStream, $output);
         }
-        stream_copy_to_stream($readableStream, $writableStream);
-        fclose($writableStream);
     }
 
     /**

@@ -167,7 +167,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             if (isset($change->data->status)) {
                 $wpt->status = $this->status_to_id($change->data->status);
             }
-            if ($wpt->valid()) {
+            if ($wpt->validate()) {
                 $wpt->save();
             } else {
                 ++$this->nError;

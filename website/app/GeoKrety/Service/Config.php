@@ -17,6 +17,7 @@ class Config extends \Prefab {
         define('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY', getenv('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY') ?: 5);
         define('GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY', getenv('GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY') ?: 31);
         define('GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY', getenv('GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY') ?: 31);
+        define('GK_SITE_NEWS_EMAIL_DAYS_VALIDITY', getenv('GK_SITE_NEWS_EMAIL_DAYS_VALIDITY') ?: 31);
         define('GK_SITE_PASSWORD_RECOVERY_CODE_LENGTH', getenv('GK_SITE_PASSWORD_RECOVERY_CODE_LENGTH') ?: 42);
         define('GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY', getenv('GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY') ?: 1);
         define('GK_SITE_SECID_CODE_LENGTH', getenv('GK_SITE_SECID_CODE_LENGTH') ?: 128);
@@ -33,6 +34,7 @@ class Config extends \Prefab {
         define('GK_SITE_EMAIL', getenv('GK_SITE_EMAIL') ?: 'geokrety@gmail.com');
         define('GK_SITE_EMAIL_SUPPORT', getenv('GK_SITE_EMAIL_SUPPORT') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_REGISTRATION', getenv('GK_SITE_EMAIL_REGISTRATION') ?: GK_SITE_EMAIL);
+        define('GK_SITE_EMAIL_DAILY_MAIL', getenv('GK_SITE_EMAIL_DAILY_MAIL') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_MESSAGE_CENTER', getenv('GK_SITE_EMAIL_MESSAGE_CENTER') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_ADMIN', getenv('GK_SITE_EMAIL_ADMIN') ?: GK_SITE_EMAIL);
 
@@ -106,9 +108,10 @@ class Config extends \Prefab {
         define('GK_DB_SECRET_KEY', getenv('GK_DB_SECRET_KEY') ?: 'secretkey');
 
         // SMTP config
-        define('GK_SMTP_HOST', getenv('GK_SMTP_HOST') ?: null);
-        define('GK_SMTP_PORT', getenv('GK_SMTP_PORT') ?: 465);
-        define('GK_SMTP_SCHEME', getenv('GK_SMTP_SCHEME') ?: 'SSL');
+        define('GK_SMTP_HOST', getenv('GK_SMTP_HOST') ?: 'bootstrap-email');
+        define('GK_SMTP_PORT', getenv('GK_SMTP_PORT') ?: 25);
+        define('GK_SMTP_SCHEME', getenv('GK_SMTP_SCHEME') ?: '');
+        define('GK_SMTP_URI', getenv('GK_SMTP_URI') ?: sprintf('%s:%d', GK_SMTP_HOST, GK_SMTP_PORT));
         define('GK_SMTP_USER', getenv('GK_SMTP_USER') ?: '');
         define('GK_SMTP_PASSWORD', getenv('GK_SMTP_PASSWORD') ?: '');
 
@@ -236,6 +239,8 @@ class Config extends \Prefab {
         define('GK_MAP_DEFAULT_ZOOM_USER_HOME', getenv('GK_MAP_DEFAULT_ZOOM_USER_HOME') ?: 8);
         define('GK_MAP_DEFAULT_LAT', getenv('GK_MAP_DEFAULT_LAT') ?: 42.941);
         define('GK_MAP_DEFAULT_LON', getenv('GK_MAP_DEFAULT_LON') ?: 2.109);
+
+        define('GK_OSM_STATIC_MAPS_URI', getenv('GK_OSM_STATIC_MAPS_URI') ?: 'http://osm-static-maps:3000');
 
         // Home LATEST COUNTS
         define('GK_HOME_COUNT_NEWS', getenv('GK_HOME_COUNT_NEWS') ?: 3);

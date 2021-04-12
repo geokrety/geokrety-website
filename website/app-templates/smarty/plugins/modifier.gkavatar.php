@@ -19,6 +19,6 @@ function smarty_modifier_gkavatar(GeoKrety\Model\Geokret $geokret) {
     $title = _('GeoKret has an avatar');
 
     return <<< EOT
-<img src="$iconUrl" width="14" height="10" alt="$alt" title="$title" />
+<img src="$iconUrl" class="img-fluid w-3" width="14" height="10" alt="$alt" title="$title" />
 EOT;
 }
