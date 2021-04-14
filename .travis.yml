@@ -25,6 +25,7 @@ jobs:
       before_script:
         - curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer.phar && chmod a+x php-cs-fixer.phar
         - curl -L https://github.com/pre-commit/pre-commit/releases/download/v2.9.3/pre-commit-2.9.3.pyz -o pre-commit && chmod a+x pre-commit
+        - curl -L "https://github.com/hadolint/hadolint/releases/download/v1.17.6/hadolint-$(uname -s)-$(uname -m)" -o hadolint && chmod a+x hadolint && ls -la $HOME && cp hadolint $HOME/bin/
       script:
         - phpenv config-rm xdebug.ini || return 0
         # Check against non utf-8 files
