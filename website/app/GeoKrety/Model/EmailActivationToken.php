@@ -21,6 +21,7 @@ use DB\SQL\Schema;
  * @property string|null reverting_ip
  * @property int used
  * @property mixed update_expire_on_datetime
+ * @property mixed previous_email
  */
 class EmailActivationToken extends Base {
     // Validation occurs in validate() for this

@@ -68,10 +68,12 @@ class GeokretClaim extends Base {
                 Flash::instance()->addMessage(_('Something went wrong while registering the adoption.'), 'danger');
                 $f3->get('DB')->rollback();
             } else {
-                Flash::instance()->addMessage(sprintf(_('🎉 Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
                 $f3->get('DB')->commit();
+                Flash::instance()->addMessage(sprintf('🎉 '._('Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
                 $f3->reroute('@geokret_details(@gkid='.$ownerCode->geokret->gkid.')', false, false);
-                $f3->abort();
+                if (!GK_DEVEL) {
+                    $f3->abort(); // Send response to client now
+                }
 
                 $context = [
                     'oldUser' => $oldOwner,
@@ -82,6 +84,8 @@ class GeokretClaim extends Base {
                 // Send email
                 $smtp = new GeokretClaimEmail();
                 $smtp->sendClaimedNotification($ownerCode->geokret, $oldOwner);
+
+                return;
             }
         }
 

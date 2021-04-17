@@ -20,12 +20,9 @@ abstract class Base {
     /**
      * @var User|null Currently logged in user
      */
-    protected $current_user;
+    protected ?User $current_user = null;
 
-    /**
-     * @var \Base|null The f3 instance
-     */
-    protected $f3;
+    protected ?\Base $f3;
 
     public function beforeRoute(\Base $f3) {
         $this->f3 = $f3;
@@ -37,7 +34,7 @@ abstract class Base {
         $this->loadCurrentUser();
 
         // Check term of use acceptation
-        if (!in_array($f3->get('ALIAS'), self::NO_TERMS_OF_USE_REDIRECT_URLS) && $this->isLoggedIn() && !$this->current_user->hasAcceptedTheTermsOfUse()) {
+        if (is_a($this->current_user, '\GeoKrety\Model\User') && !in_array($f3->get('ALIAS'), self::NO_TERMS_OF_USE_REDIRECT_URLS) && $this->isLoggedIn() && !$this->current_user->hasAcceptedTheTermsOfUse()) {
             $f3->reroute('@terms_of_use');
         }
     }

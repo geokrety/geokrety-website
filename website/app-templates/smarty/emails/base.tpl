@@ -9,14 +9,14 @@
     <div class="stack-y w-full">
         <div class="header">
             <div class="s-3"></div>
-            <h1 class="logo align-center">
+            <h1 class="logo align-center text-center">
                 <a href="{'home'|alias}">
                     Geo<span class="black">Krety</span>.org
                 </a>
             </h1>
             <div class="s-3"></div>
             <div class="to-table w-full subline">
-                <p class="align-center text-xs">
+                <p class="align-center text-center text-xs">
                     {t}Open source item tracking for all geocaching platforms{/t}
                 </p>
             </div>
@@ -25,7 +25,7 @@
 
         <div class="s-3"></div>
 
-        <p class="text-3xl align-center">{block name=title}{/block}</p>
+        <p class="text-3xl align-center text-center">{block name=title}{/block}</p>
         <p>{t username=$user->username}Hi %1,{/t}</p>
 
         <div class="s-3"></div>

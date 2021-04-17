@@ -35,7 +35,8 @@ class RegistrationEmail extends BaseRegistration {
             $f3->reroute(sprintf('@user_details(@userid=%d)', $token->user->id), false, false);
             $smtp = new AccountActivation();
             if (!GK_DEVEL) {
-                $f3->abort(); // Send response to client now
+                // Let unit test run smoothly
+                $f3->abort();
             }
             $smtp->sendActivationAgain($token);
             exit();
@@ -50,9 +51,7 @@ class RegistrationEmail extends BaseRegistration {
             exit();
         }
         $user->save();
-
-        Login::connectUser($f3, $user, 'registration.email');
-        $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
+        $f3->reroute(\Multilang::instance()->alias('user_details', ['userid' => $user->id], $user->preferred_language));
     }
 
     public function get(\Base $f3) {

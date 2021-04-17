@@ -113,7 +113,7 @@ SQL;
     }
 
     protected function send() {
-        if ($this->user->hasEmail()) {
+        if (!$this->user->hasEmail()) {
             $this->console_writer->print([$this->user->id, $this->user->username, '400 no email'], true);
 
             return;
@@ -144,7 +144,7 @@ SQL;
             $this->console_writer->print([$this->user->id, $this->user->username, 'sending']);
             $this->email->sendDailyMail($this->user);
         } catch (Exception $e) {
-            $this->console_writer->print([$this->user->id, $this->user->username, '500 error'], true);
+            $this->console_writer->print([$this->user->id, $this->user->username, sprintf('500 error: %s', $e->getMessage())], true);
 
             return;
         }

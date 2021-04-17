@@ -28,6 +28,8 @@ Confirmation mail should be sent
     Valid email change - page form          ${NEW_MAIL}    ${TRUE}
     Mailbox Should Contain 2 Messages
     Go To Url                               ${PAGE_DEV_MAILBOX_URL}
+    ${rowCount}=                            Get Element Count     ${DEV_MAILBOX_MAILS_TABLE_ROWS}
+    Should Be Equal As Integers             2   ${rowCount}
     Page Should Contain                     📯 Changing your email address
     Page Should Contain                     ✉️ Changing your email address
 

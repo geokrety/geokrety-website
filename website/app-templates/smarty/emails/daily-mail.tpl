@@ -1,5 +1,5 @@
 {extends file='emails/base.tpl'}
-{assign fluid=true}
+{assign "fluid" "true"}
 
 {block name=title}{/block}
 {block name=preview}{t}Your GeoKrety watchlist{/t}{/block}
@@ -27,7 +27,7 @@
     <h5>{t}GeoKrety dropped in your observation area{/t}</h5>
     {if isset($gk_near_home_img)}{* Prevent crash if webservice is absent *}
     <div class="s-3"></div>
-        <a href="{'geokrety_map'|alias}" title="{t}Open interactive map{/t}"><img src="cid:{$gk_near_home_img}" alt="{t}Observation area map{/t}" class="img-fluid max-w-150 align-center"></a>
+    <a href="{'geokrety_map'|alias}" title="{t}Open interactive map{/t}"><img src="cid:{$gk_near_home_img}" alt="{t}Observation area map{/t}" class="img-fluid max-w-150 align-center text-center"></a>
     {/if}
     <div class="s-3"></div>
     <table class="table table-striped thead-default table-bordered">

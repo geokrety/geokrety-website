@@ -86,7 +86,7 @@ class Config extends \Prefab {
         }
         define('GK_APP_NAME', getenv('GK_APP_NAME') ?: 'www');
         define('GK_APP_VERSION', getenv('GIT_COMMIT') ?: 'undef');
-        define('GK_EMAIL_SUBJECT_PREFIX', getenv('GK_EMAIL_SUBJECT_PREFIX') ?: '[GeoKrety] ');
+        define('GK_EMAIL_SUBJECT_PREFIX', getenv('GK_EMAIL_SUBJECT_PREFIX') ?: '[GeoKrety]');
         define('GK_BOT_USERNAME', getenv('GK_BOT_USERNAME') ?: 'GeoKrety Bot ');
         define('GK_SITE_USER_AGENT', getenv('GK_SITE_USER_AGENT') ?: sprintf('GeoKrety/%s (%s)', GK_APP_VERSION, GK_ENVIRONMENT));
 

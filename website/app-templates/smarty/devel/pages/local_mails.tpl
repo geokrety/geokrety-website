@@ -30,11 +30,11 @@
                 <td class="mail_id">{$key}</td>
                 <td>
                     <a href="{'devel_mail'|alias:sprintf('@mailid=%d', $key)}" class="displayMailLink">
-                        {$item.smtp.subject|iconv_mime_decode}
+                        {$item.smtp.subject}
                     </a>
                 </td>
                 <td>{$item.smtp.from}</td>
-                <td>{$item.smtp.to}</td>
+                <td>"{$item.smtp.to.0.1}" &lt;{$item.smtp.to.0.0}&gt;</td>
                 <td class="text-right">
                     <a href="{'devel_mail_delete'|alias:sprintf('@mailid=%d', $key)}" class="btn btn-danger btn-xs deleteMailLink" title="{t}Delete mail{/t}">
                         {fa icon="trash"}

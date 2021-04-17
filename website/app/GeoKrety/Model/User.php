@@ -36,7 +36,7 @@ use JsonSerializable;
  * @property CortexCollection social_auth
  */
 class User extends Base implements JsonSerializable {
-    // Validation occurs in validate() for this
+    // Validation occurs in validate() for this class
 
     const USER_ACCOUNT_INVALID = 0;
     const USER_ACCOUNT_VALID = 1;
@@ -274,7 +274,7 @@ class User extends Base implements JsonSerializable {
     }
 
     public function hasEmail(): bool {
-        return !is_null($this->_email);
+        return !is_null($this->get_email());
     }
 
     public function isEmailValid(): bool {
@@ -306,14 +306,6 @@ class User extends Base implements JsonSerializable {
             return;
         }
 
-        // Send welcome mail
-        if ($this->isEmailValid()) {
-            $smtp = new \GeoKrety\Email\Welcome();
-            $smtp->sendWelcome($this);
-
-            return;
-        }
-
         if ($this->account_valid === self::USER_ACCOUNT_INVALID) {
             $token = new AccountActivationToken();
             $token->user = $this;
@@ -330,7 +322,7 @@ class User extends Base implements JsonSerializable {
     }
 
     public function get_email(): ?string {
-        if ($this->hasEmail()) {
+        if (!is_null($this->_email)) {
             return $this->_email;
         }
 

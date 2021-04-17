@@ -19,11 +19,21 @@ Create first account
     Page Should Contain                 A confirmation email has been sent to your address
     Element Text Should Be              ${NAVBAR_DEV_MAILBOX_COUNTER}    1
 
-User is connected after registration
+User is not connected after registration
     Depends on test                     Create first account
-    [Documentation]                     User is authenticated after registration
+    [Documentation]                     User is not connected after registration
     !Go To GeoKrety
-    Page Should Not Contain Link        ${NAVBAR_REGISTER_LINK}
+    Page Should Contain Link            ${NAVBAR_REGISTER_LINK}
+
+User cannot connect as account is not yet active
+    Depends on test                     User is not connected after registration
+    [Documentation]                     User cannot connect as account is not yet active
+    Go To Url                           ${PAGE_HOME_URL}
+    Sign In User                        admin
+    Page Should Not Contain             Welcome on board
+    Location Should Be                  ${PAGE_HOME_URL}
+    Page Should Contain Link            ${NAVBAR_REGISTER_LINK}
+    Delete Second Mail in Mailbox
 
 Activate account
     Depends on test                     Create first account
@@ -32,6 +42,12 @@ Activate account
     ${rowCount}=                        Get Element Count     ${DEV_MAILBOX_MAILS_TABLE_ROWS}
     Should Be Equal As Integers         1   ${rowCount}
     Activate user account
+
+User is connected after activation
+    Depends on test                     Activate account
+    [Documentation]                     User is authenticated after registration
+    !Go To GeoKrety
+    Page Should Not Contain Link        ${NAVBAR_REGISTER_LINK}
 
 Email activation confirmation received
     Depends on test                     Activate account
