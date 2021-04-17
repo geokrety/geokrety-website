@@ -12,6 +12,7 @@ use DB\SQL\Schema;
  * @property DateTime created_on_datetime
  * @property DateTime|null used_on_datetime
  * @property DateTime updated_on_datetime
+ * @property DateTime expire_on_datetime
  * @property string requesting_ip
  * @property string|null validating_ip
  * @property int used

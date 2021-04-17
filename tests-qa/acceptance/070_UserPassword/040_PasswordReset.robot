@@ -45,7 +45,7 @@ Reset Password By Mail
     Element Should Contain                          ${DEV_MAILBOX_SECOND_MAIL_LINK}             🔑 Your password has been changed
 
     Go To Url                                       ${PAGE_DEV_MAILBOX_SECOND_MAIL_URL}
-    Page Should Contain                             Your password has been succesfully changed
+    Page Should Contain                             Your password has been successfully changed
     Click Link With Text                            Login
     Location Should Be                              ${PAGE_SIGN_IN_URL}
 

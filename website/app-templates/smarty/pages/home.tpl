@@ -1,9 +1,9 @@
 {extends file='base.tpl'}
 
-{block name=title}{t}🎉 Welcome to GeoKrety.org!{/t}{/block}
+{block name=title}🎉 {t}Welcome to GeoKrety.org!{/t}{/block}
 
 {block name=content}
-<h2>{t}🎉 Welcome to GeoKrety.org!{/t}</h2>
+<h2>🎉 {t}Welcome to GeoKrety.org!{/t}</h2>
 
 <div class="row" id="welcome_intro">
   <div class="col-md-9">

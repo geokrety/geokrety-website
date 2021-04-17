@@ -32,19 +32,23 @@ class Login extends Base {
                 Session::setPersistent();
                 Session::setGKTCookie();
             }
+            if (!$user->isAccountValid()) {
+                $f3->reroute('@home');
+            }
             $this::connectUser($f3, $user, 'password');
         } else {
             Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
         }
-        $this->loginForm();
+        $this->loginForm($f3);
     }
 
     /**
-     * @param \Base       $f3     F3 Base instance
-     * @param User        $user   The user to connect to
-     * @param string|null $method The method used to connect
+     * @param \Base       $f3       F3 Base instance
+     * @param User        $user     The user to connect to
+     * @param string|null $method   The method used to connect
+     * @param bool        $redirect Redirect to GOTO url
      */
-    public static function connectUser(\Base $f3, User $user, ?string $method = null) {
+    public static function connectUser(\Base $f3, User $user, ?string $method = null, bool $redirect = true) {
         $f3->set('SESSION.CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USERNAME', $user->username);
         $f3->set('SESSION.IS_LOGGED_IN', true);
@@ -63,15 +67,20 @@ class Login extends Base {
         Session::setGKTCookie();
         LanguageService::changeLanguageTo($user->preferred_language);
         Flash::instance()->addMessage(_('Welcome on board!'), 'success');
-        $url = Url::unserializeGoto($user->preferred_language);
-        if (is_null($url)) {
-            $ml = \Multilang::instance();
-            $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
+        if ($redirect) {
+            $url = Url::unserializeGoto($user->preferred_language);
+            if (is_null($url)) {
+                $ml = \Multilang::instance();
+                $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
+            }
+            $f3->reroute($url);
         }
-        $f3->reroute($url);
     }
 
-    public function loginForm() {
+    public function loginForm(\Base $f3) {
+        if ($this->current_user) {
+            $f3->reroute(['user_details', ['userid' => $this->current_user->id]]);
+        }
         Smarty::render('extends:full_screen_modal.tpl|dialog/login.tpl');
     }
 
@@ -105,7 +114,7 @@ class Login extends Base {
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
-            echo $user->secid;
+            //echo $user->secid;
             Event::instance()->emit('user.login.api2secid', $user);
             exit();
         }

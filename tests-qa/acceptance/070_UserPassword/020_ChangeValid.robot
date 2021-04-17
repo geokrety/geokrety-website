@@ -31,7 +31,7 @@ Confirmation mail should be sent
     Page Should Contain                     Your password has been changed
     Click Link                              ${DEV_MAILBOX_FIRST_MAIL_LINK}
     Page Should Contain                     Congratulation
-    Page Should Contain                     Your password has been succesfully changed.
+    Page Should Contain                     Your password has been successfully changed.
 
 *** Keywords ***
 

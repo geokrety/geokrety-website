@@ -9,7 +9,7 @@ use GeoKrety\Service\Smarty;
 class GeokretClaim extends BasePHPMailer {
     public function sendClaimedNotification(Geokret $geokret, User $user) {
         $this->setTo($user);
-        $this->setSubject('🎉 '.sprintf(_('Your GeoKret \'%s\' has been adopted'), $geokret->name));
+        $this->setSubject(sprintf(_('Your GeoKret \'%s\' has been adopted'), $geokret->name), '🎉');
         $this->setFromSupport();
         Smarty::assign('geokret', $geokret);
         Smarty::assign('user', $user);

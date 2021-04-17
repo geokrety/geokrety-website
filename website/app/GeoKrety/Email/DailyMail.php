@@ -22,8 +22,8 @@ class DailyMail extends BasePHPMailer {
      * @throws \PHPMailer\PHPMailer\Exception
      */
     public function sendDailyMail(User $user) {
-        $this->setSubject('🛩️ '.sprintf(_('Watchlist for %s'), Carbon::instance($this->since)->isoFormat('LL')));
-        $this->setTo($user);
+        $this->setSubject(sprintf(_('Watchlist for %s'), Carbon::instance($this->since)->isoFormat('LL')), '🛩️');
+        $this->setTo($user, false, true);
         if ($this->sendEmail('emails/daily-mail.tpl')) {
             $user->touch('last_mail_datetime');
             $user->save();

@@ -32,13 +32,13 @@ On accept confirmation mails should be sent
 
     Go To Url                               ${PAGE_DEV_MAILBOX_THIRD_MAIL_URL}
     Page Should Contain                     Congratulation
-    Page Should Contain                     Your email address has been succesfully changed to: ${NEW_MAIL}.
+    Page Should Contain                     Your email address has been successfully changed to: ${NEW_MAIL}.
     Page Should Contain                     Revert this change!
     Page Should Contain                     Change my password!
 
     Go To Url                               ${PAGE_DEV_MAILBOX_FOURTH_MAIL_URL}
     Page Should Contain                     Congratulation
-    Page Should Contain                     Your email address has been succesfully changed.
+    Page Should Contain                     Your email address has been successfully changed.
     Page Should Contain                     Login
 
 Token is then disabled for old email

@@ -8,10 +8,7 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class RegistrationActivate extends Base {
-    /**
-     * @var AccountActivationModel
-     */
-    private $token;
+    private AccountActivationModel $token;
 
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
@@ -41,14 +38,19 @@ class RegistrationActivate extends Base {
             $f3->reroute('@home');
         }
         $this->token->user->save();
+        Login::connectUser($f3, $this->token->user, 'registration.activate', false);
         $this->loadCurrentUser();
         $this->token->save();
         $f3->get('DB')->commit();
+
+        Smarty::render('pages/registration_validated.tpl');
+        // Let unit test run smoothly
+        if (!GK_DEVEL) {
+            $f3->abort();
+        }
         \Sugar\Event::instance()->emit('user.activated', $this->token->user);
         \Sugar\Event::instance()->emit('activation.token.used', $this->token);
         $smtp = new AccountActivation();
         $smtp->sendActivationConfirm($this->token);
-
-        Smarty::render('pages/registration_validated.tpl');
     }
 }

@@ -53,7 +53,7 @@ class PicturesImporter extends BaseCleaner {
         curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, [$this, 'progress']);
         curl_setopt($ch, CURLOPT_NOPROGRESS, false); // needed to make progress function work
         curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'GeoKrety 2.5.2'); // TODO right version
+        curl_setopt($ch, CURLOPT_USERAGENT, GK_SITE_USER_AGENT);
         $filecontent = curl_exec($ch);
         curl_close($ch);
 
