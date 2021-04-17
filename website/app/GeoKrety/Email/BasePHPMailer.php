@@ -68,7 +68,11 @@ abstract class BasePHPMailer extends PHPMailer {
             parent::clearAddresses();
             parent::addAddress($user->email, $user->username);
             if (!parent::send()) {
-                echo 'An error occurred while sending mail.';
+                if (PHP_SAPI === 'cli') {
+                    echo _('An error occurred while sending mail.');
+                } else {
+                    \Flash::instance()->addMessage(_('An error occurred while sending mail.'), 'danger');
+                }
             }
             LanguageService::restoreLanguageToCurrentChosen();
         }
@@ -83,14 +87,16 @@ abstract class BasePHPMailer extends PHPMailer {
         throw new Exception('send(): Please use sendEmail() instead.');
     }
 
-    /**
-     * TODO what to do if user has no email?
-     */
     protected function setTo(User $user) {
         if (!GK_IS_PRODUCTION) {
             foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
                 $this->recepients[] = $user->findone(['id = ?', $admin_id]);
             }
+
+            return;
+        }
+        if (!$user->hasEmail() or !$user->isEmailValid()) {
+            return;
         }
         $this->recepients[] = $user;
     }

@@ -277,6 +277,10 @@ class User extends Base implements JsonSerializable {
         return !is_null($this->_email);
     }
 
+    public function isEmailValid(): bool {
+        return $this->email_invalid === self::USER_EMAIL_NO_ERROR;
+    }
+
     public function hasAcceptedTheTermsOfUse(): bool {
         return !is_null($this->terms_of_use_datetime);
     }
@@ -303,7 +307,7 @@ class User extends Base implements JsonSerializable {
         }
 
         // Send welcome mail
-        if ($this->email_invalid === self::USER_EMAIL_NO_ERROR) {
+        if ($this->isEmailValid()) {
             $smtp = new \GeoKrety\Email\Welcome();
             $smtp->sendWelcome($this);
 

@@ -1,4 +1,5 @@
 {extends file='emails/base.tpl'}
+{assign fluid=true}
 
 {block name=title}{/block}
 {block name=preview}{t}Your GeoKrety watchlist{/t}{/block}
