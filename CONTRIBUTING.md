@@ -21,14 +21,9 @@ Travis checks are defined into [.travis.yml](website/.travis.yml)
 If you fork the project, then you will have to activate travis-ci builds for your own clone.
 
 ## Emails templates
-Emails templates need to be pre-processed using [Foundation for Emails Template](https://github.com/foundation/foundation-emails-template).
-Please refer to their documentation on how to install the binary on your computer (basically `npm install foundation-cli --global`) then you can build our templates.
-
-```bash
-$ cd website/app-templates/foundation-emails/
-$ foundation build
-# will start a webserver to preview the templates in a browser
-```
+Emails templates are processed using [Bootstrap Emails](https://v1.bootstrapemail.com/) on sending through a special smtp
+gateway see [bootstrap-email-smtp-server](https://github.com/geokrety/bootstrap-email-smtp-server). Please refer to
+their documentation.
 
 ## Labels templates
 Please check [dedicated section](CONTRIBUTING.label-templates.md).

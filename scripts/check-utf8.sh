@@ -26,7 +26,6 @@ while test $# -gt 0; do
                 -o -path './.git/*' \
                 -o -path './vendor/*' \
                 -o -path './website/vendor/*' \
-                -o -path './website/app-templates/foundation-emails/node_modules/*' \
                 -o -path './.idea/*' \
                 -o -name '*.iml' \
                 -o -name '*.dont-push.*' \

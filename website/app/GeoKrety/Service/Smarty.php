@@ -30,7 +30,6 @@ class Smarty extends \Prefab {
         $smarty->escape_html = true;
         $smarty->setTemplateDir([
             'main' => GK_SMARTY_TEMPLATES_DIR,
-            'emails' => GK_SMARTY_FOUNDATION_TEMPLATES_DIR,
         ]);
         $smarty->compile_dir = GK_SMARTY_COMPILE_DIR;
         $smarty->cache_dir = GK_SMARTY_CACHE_DIR;
