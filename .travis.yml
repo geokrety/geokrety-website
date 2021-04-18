@@ -47,7 +47,7 @@ jobs:
 
     - stage: test-qa
       php: 7.4
-      if: env(TRAVIS_QA_TOKEN) AND type = 'push'
+      if: env(TRAVIS_QA_TOKEN) AND type = 'push' AND branch NOT IN (l10n_master, l10n_new-theme)
       script:
         - export PGUSER=geokrety
         - export PGPASSWORD=geokrety
