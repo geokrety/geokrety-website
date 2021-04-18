@@ -2,25 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-12 19:27+0000\n"
-"PO-Revision-Date: 2020-12-12 19:34\n"
+"POT-Creation-Date: 2021-04-18 17:41+0000\n"
+"PO-Revision-Date: 2021-04-18 17:53\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-12-12 19:27+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: geekwright/po\n"
 "X-Crowdin-Project: geokrety\n"
 "X-Crowdin-Project-ID: 260106\n"
 "X-Crowdin-Language: pl\n"
@@ -40,8 +31,8 @@ msgstr ""
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Base.php:72
-#: website/app/GeoKrety/Controller/MoveCreate.php:157
+#: website/app/GeoKrety/Controller/Base.php:69
+#: website/app/GeoKrety/Controller/MoveCreate.php:170
 #: website/app/GeoKrety/Controller/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/UserContact.php:71
 msgid "reCaptcha failed!"
@@ -49,30 +40,30 @@ msgstr "reCaptcha nie powiodło się!"
 
 #: website/app/GeoKrety/Controller/BaseRegistration.php:25
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:59
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:65
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:66
 msgid "Sorry but this mail address is already in use."
 msgstr "Przykro nam, ale ten email został już wykorzystany."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:21
+#: website/app/GeoKrety/Controller/GeokretClaim.php:24
 msgid "Sorry, the provided owner code and tracking code doesn't match."
 msgstr "Przepraszamy, podane kody właściciela i śledzenia nie są zgodne."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:27
+#: website/app/GeoKrety/Controller/GeokretClaim.php:30
 msgid "You are already the owner."
 msgstr "Jesteś już właścicielem."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:33
+#: website/app/GeoKrety/Controller/GeokretClaim.php:36
 msgid "Sorry, this owner code has already been used."
 msgstr "Przepraszamy, ten kod właściciela jest już wykorzystany."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:65
+#: website/app/GeoKrety/Controller/GeokretClaim.php:68
 msgid "Something went wrong while registering the adoption."
 msgstr "Coś poszło nie tak podczas rejestracji adpocji."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/GeokretClaim.php:72
 #, php-format
-msgid "🎉 Congratulation! You are now the owner of %s."
-msgstr "🎉 Gratulacje! Jesteś teraz nowym właścicielem %s."
+msgid "Congratulation! You are now the owner of %s."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:39
 msgid "Born here"
@@ -116,6 +107,18 @@ msgstr "Niektóre wybrane języki są nieprawidłowe."
 msgid "Please select an export type."
 msgstr "Wybierz typ eksportu."
 
+#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:28
+msgid "This GeoKret is already archived."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:43
+msgid "Archiving GeoKret"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:49
+msgid "Failed to archive the GeoKret."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
 msgstr "Musisz być właścicielem GeoKreta, aby wygenerować nowy Kod Właściciela."
@@ -145,35 +148,35 @@ msgstr "Zła data lub godzina"
 msgid "Waypoint parameter must be provided."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:44
-#: website/app/GeoKrety/Controller/Login.php:126
+#: website/app/GeoKrety/Controller/Login.php:40
+#: website/app/GeoKrety/Controller/Login.php:121
 msgid "Username and password doesn't match."
 msgstr "Nazwa użytkownika lub hasło nie pasują."
 
-#: website/app/GeoKrety/Controller/Login.php:72
+#: website/app/GeoKrety/Controller/Login.php:69
 msgid "Welcome on board!"
 msgstr "Witaj na pokładzie!"
 
-#: website/app/GeoKrety/Controller/Login.php:116
+#: website/app/GeoKrety/Controller/Login.php:111
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:138
-#: website/app/GeoKrety/Controller/Login.php:144
+#: website/app/GeoKrety/Controller/Login.php:133
+#: website/app/GeoKrety/Controller/Login.php:139
 msgid "Invalid \"secid\""
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:192
+#: website/app/GeoKrety/Controller/Login.php:187
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Twoje konto jest już połączone z %s"
 
-#: website/app/GeoKrety/Controller/Login.php:197
+#: website/app/GeoKrety/Controller/Login.php:192
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "To konto %s jest już połączone z innym kontem GeoKretów."
 
-#: website/app/GeoKrety/Controller/Login.php:212
+#: website/app/GeoKrety/Controller/Login.php:207
 msgid "Auth request was canceled."
 msgstr "Żądanie autoryzacji zostało anulowane."
 
@@ -190,16 +193,16 @@ msgstr "Komentarz usunięty."
 msgid "Failed to delete comment."
 msgstr "Nie udało się usunąć komentarza."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:96
+#: website/app/GeoKrety/Controller/MoveCreate.php:108
 msgid "The date time could not be parsed."
 msgstr "Data nie mogła zostać przetworzona."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:207
+#: website/app/GeoKrety/Controller/MoveCreate.php:220
 #: website/app/GeoKrety/Controller/MoveCreateXML.php:57
 msgid "Failed to save move."
 msgstr "Błąd w zapisie."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:210
+#: website/app/GeoKrety/Controller/MoveCreate.php:223
 msgid "Your move has been saved."
 msgstr "Twój ruch został zapisany."
 
@@ -237,7 +240,7 @@ msgid "Something went wrong while detaching from your %s account. Please contact
 msgstr "Coś poszło nie tak podczas odłączania od konta %s . Skontaktuj się z nami."
 
 #: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:23
+#: website/app/GeoKrety/Controller/RegistrationActivate.php:20
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
 #: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:26
 #: website/app/GeoKrety/Controller/UserEmailChangeToken.php:26
@@ -335,7 +338,7 @@ msgstr "Twoje preferencje email zostały zapisane."
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "E-mail potwierdzający został wysłany na Twój nowy adres. Aby potwierdzić zmianę adresu kliknij na link zawarty w tymże mailu. Link jest ważny przez %s."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:78
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:79
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "E-mail potwierdzający został wysłany na Twój nowy adres. Aby potwierdzić zmianę adresu kliknij na link zawarty w tymże mailu. Link jest ważny przez %s."
@@ -363,55 +366,68 @@ msgstr "Punkt wygląda na pusty."
 msgid "Waypoint length is invalid. It should be between %d and %d characters long."
 msgstr "Długość punktu trasy jest nieprawidłowa. Powinien mieć długość od %d do %d znaków."
 
+#: website/app/GeoKrety/Email/AccountActivation.php:16
+msgid "A confirmation email has been sent to your address."
+msgstr ""
+
 #: website/app/GeoKrety/Email/AccountActivation.php:17
-#, php-format
-msgid "A confirmation email has been sent to your address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
-msgstr "E-mail potwierdzający został wysłany na Twój nowy adres. Aby aktywować konto kliknij na link zawarty w tymże mailu. Link jest ważny przez %s."
+#: website/app/GeoKrety/Email/AccountActivation.php:38
+#: website/app/GeoKrety/Email/AccountActivation.php:47
+msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
+msgstr ""
 
-#: website/app/GeoKrety/Email/AccountActivation.php:22
+#: website/app/GeoKrety/Email/AccountActivation.php:18
+#: website/app/GeoKrety/Email/AccountActivation.php:39
+#: website/app/GeoKrety/Email/AccountActivation.php:48
 #, php-format
-msgid "Your account seems to already exists. The confirmation email was sent again to your mail address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
-msgstr "Wydaje się, że Twoje konto już istnieje. E-mail z potwierdzeniem został ponownie wysłany na Twój adres e-mail. Musisz kliknąć link podany w wiadomości e-mail, aby aktywować konto. Link potwierdzający wygasa za %s."
+msgid "The confirmation link expires in %s."
+msgstr ""
 
-#: website/app/GeoKrety/Email/AccountActivation.php:27
-#, php-format
-msgid "<strong>Your account is not yet active.</strong> The confirmation email was sent again to your mail address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
-msgstr "<strong> Twoje konto nie jest jeszcze aktywne. </strong> Wiadomość e-mail z potwierdzeniem została ponownie wysłana na Twój adres e-mail. Musisz kliknąć link podany w wiadomości e-mail, aby aktywować konto. Link potwierdzający wygasa za %s."
+#: website/app/GeoKrety/Email/AccountActivation.php:24
+#: website/app-templates/smarty/emails/account-activation.tpl:3
+msgid "Welcome to GeoKrety.org"
+msgstr "Witaj na GeoKrety.org"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:33
+#: website/app/GeoKrety/Email/AccountActivation.php:36
+msgid "Your account seems to already exists."
+msgstr ""
+
+#: website/app/GeoKrety/Email/AccountActivation.php:37
+#: website/app/GeoKrety/Email/AccountActivation.php:46
+msgid "The confirmation email was sent again to your mail address."
+msgstr ""
+
+#: website/app/GeoKrety/Email/AccountActivation.php:45
+msgid "<strong>Your account is not yet active.</strong>"
+msgstr ""
+
+#: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "Account activated"
 msgstr "Konto aktywowane"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:36
-#: website/app/GeoKrety/Email/EmailChange.php:29
-#: website/app/GeoKrety/Email/EmailChange.php:38
-#: website/app/GeoKrety/Email/EmailChange.php:57
-#: website/app/GeoKrety/Email/EmailChange.php:66
-#: website/app/GeoKrety/Email/EmailChange.php:75
-msgid "An error occurred while sending the confirmation mail."
-msgstr "Wystąpił błąd podczas wysyłania wiadomości potwierdzającej."
+#: website/app/GeoKrety/Email/BasePHPMailer.php:67
+msgid "An error occurred while sending mail."
+msgstr "Wystąpił błąd podczas wysyłania wiadomości."
 
-#: website/app/GeoKrety/Email/AccountActivation.php:42
-#: website/app/GeoKrety/Email/Welcome.php:19
-msgid "Welcome on GeoKrety.org"
-msgstr "Witaj na GeoKrety.org"
-
-#: website/app/GeoKrety/Email/AccountActivation.php:45
-#: website/app/GeoKrety/Model/User.php:323
-msgid "An error occurred while sending the activation mail."
-msgstr "Wystąpił błąd podczas wysyłania maila aktywacyjnego."
+#: website/app/GeoKrety/Email/DailyMail.php:25
+#, php-format
+msgid "Watchlist for %s"
+msgstr ""
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
-#: website/app/GeoKrety/Email/EmailChange.php:35 smarty/pages:3
+#: website/app/GeoKrety/Email/EmailChange.php:34
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
+#: website/app-templates/smarty/pages/email_change.tpl:3
 msgid "Changing your email address"
 msgstr "Zmień swój adres e-mail"
 
-#: website/app/GeoKrety/Email/EmailChange.php:54
-#: website/app/GeoKrety/Email/EmailChange.php:63
+#: website/app/GeoKrety/Email/EmailChange.php:52
+#: website/app/GeoKrety/Email/EmailChange.php:60
 msgid "Email address changed"
 msgstr "Adres email został zmieniony"
 
-#: website/app/GeoKrety/Email/EmailChange.php:72
+#: website/app/GeoKrety/Email/EmailChange.php:66
 msgid "Email address reverted"
 msgstr "Adres e-mail wycofany"
 
@@ -420,42 +436,22 @@ msgstr "Adres e-mail wycofany"
 msgid "Your GeoKret '%s' has been adopted"
 msgstr "Twój GeoKret '%s' został adoptowany"
 
-#: website/app/GeoKrety/Email/GeokretClaim.php:17
-msgid "An error occurred while sending the adoption mail notification to old owner."
-msgstr "Wystąpił błąd podczas wysyłania powiadomienia o adopcji do starego właściciela."
-
-#: website/app/GeoKrety/Email/PasswordChange.php:16
+#: website/app/GeoKrety/Email/PasswordChange.php:17
 msgid "Password reset request"
 msgstr "Żądanie zmiany hasła"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:19
-msgid "An error occurred while sending the password reset mail."
-msgstr "Wystąpił błąd podczas wysyłania wiadomości resetującej hasło."
-
-#: website/app/GeoKrety/Email/PasswordChange.php:23
 msgid "An email containing a validation link has been sent to the provided email address."
 msgstr "Wiadomość email z linkiem potwierdzającym adres została wysłana."
 
-#: website/app/GeoKrety/Email/PasswordChange.php:28
+#: website/app/GeoKrety/Email/PasswordChange.php:25
 msgid "Your password has been changed"
 msgstr "Twoje hasło zostało zmienione"
 
-#: website/app/GeoKrety/Email/PasswordChange.php:31
-msgid "An error occurred while sending the password changed mail notification."
-msgstr "Wystąpił błąd podczas wysyłania powiadomienia o zmianie hasła."
-
-#: website/app/GeoKrety/Email/UserContact.php:15
+#: website/app/GeoKrety/Email/UserContact.php:14
 #, php-format
 msgid "Contact from user %s"
 msgstr "Kontakt z użytkownikiem %s"
-
-#: website/app/GeoKrety/Email/UserContact.php:18
-msgid "An error occurred while sending mail."
-msgstr "Wystąpił błąd podczas wysyłania wiadomości."
-
-#: website/app/GeoKrety/Email/Welcome.php:22
-msgid "An error occurred while sending the welcome mail."
-msgstr "Wystąpił błąd podczas wysyłania wiadomości powitalnej."
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -477,34 +473,39 @@ msgstr "Toczygrosz"
 msgid "KretyPost"
 msgstr "Krecia Poczta"
 
-#: website/app/GeoKrety/LogType.php:103
+#: website/app/GeoKrety/LogType.php:115
 msgid "drop"
 msgstr "upuść"
 
-#: website/app/GeoKrety/LogType.php:104
+#: website/app/GeoKrety/LogType.php:116
 msgid "grab"
 msgstr "chwyć"
 
-#: website/app/GeoKrety/LogType.php:105
+#: website/app/GeoKrety/LogType.php:117
 msgid "comment"
 msgstr "komentarz"
 
-#: website/app/GeoKrety/LogType.php:106
+#: website/app/GeoKrety/LogType.php:118
 msgid "met"
 msgstr "odwiedził"
 
-#: website/app/GeoKrety/LogType.php:107
+#: website/app/GeoKrety/LogType.php:119
 msgid "archive"
 msgstr "archiwum"
 
-#: website/app/GeoKrety/LogType.php:108
+#: website/app/GeoKrety/LogType.php:120
 msgid "dip"
 msgstr "pozostawiony"
 
-#: website/app/GeoKrety/LogType.php:109 smarty/blocks/geokret:50
-#: smarty/pages:71
+#: website/app/GeoKrety/LogType.php:121
+#: website/app-templates/smarty/blocks/geokret/details.tpl:56
+#: website/app-templates/smarty/pages/home.tpl:78
 msgid "Born"
 msgstr "Urodzony"
+
+#: website/app/GeoKrety/Model/User.php:317
+msgid "An error occurred while sending the activation mail."
+msgstr "Wystąpił błąd podczas wysyłania maila aktywacyjnego."
 
 #: website/app/GeoKrety/Model/UserSocialAuth.php:45
 #, php-format
@@ -535,6 +536,15 @@ msgstr "Złe współrzędne lub nieznany format"
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:235
 msgid "Missing or invalid coordinates."
 msgstr "Brak lub błędne współrzędne"
+
+#: website/app/GeoKrety/Service/Dialog/Info.php:9
+msgid "Information"
+msgstr ""
+
+#: website/app/GeoKrety/Service/DistanceFormatter.php:28
+#, php-format
+msgid "Invalid unit specified: %s"
+msgstr ""
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -631,12 +641,12 @@ msgstr "GeoKret ma avatar"
 msgid "GK type icon"
 msgstr "Ikona typu GK"
 
-#: website/app-templates/smarty/plugins/modifier.gklink.php:22
+#: website/app-templates/smarty/plugins/modifier.gklink.php:23
 #, php-format
 msgid "View %s's profile"
 msgstr "Zobacz %s profil"
 
-#: website/app-templates/smarty/plugins/modifier.movelink.php:21
+#: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
 msgstr "Zobacz szczegóły przesunięcia"
 
@@ -749,1787 +759,2397 @@ msgstr "{0} nie może być w przyszłości"
 msgid "{0} must be after GeoKret birth"
 msgstr "{0} musi być po urodzinach GeoKreta"
 
-#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:32
-#: smarty/pages:69 smarty/pages:38 smarty/pages:81
-msgid "ID"
-msgstr "ID"
-
-#: smarty/devel/pages:16 smarty/dialog:23
-msgid "Subject"
-msgstr "Temat"
-
-#: smarty/devel/pages:17
-msgid "From"
-msgstr "Od"
-
-#: smarty/devel/pages:18 smarty/dialog:16
-msgid "To"
-msgstr "Do"
-
-#: smarty/devel/pages:20
-msgid "Action"
-msgstr "Działanie"
-
-#: smarty/devel/pages:21
-msgid "Delete all mails"
-msgstr "Usuń wszystkie wiadomości"
-
-#: smarty/devel/pages:39
-msgid "Delete mail"
-msgstr "Usuń e-mail"
-
-#: smarty/elements:10
-msgid "Delete comment"
-msgstr "Usuń komentarz"
-
-#: smarty/elements:7
-msgid "Unsubscribe from news"
-msgstr "Wypisz się z listy"
-
-#: smarty/elements:11
-msgid "Subscribe to news"
-msgstr "Subskrybuj newsy"
-
-#: smarty/elements:7
-msgid "Show move on map"
-msgstr "Pokaż ruch na mapie"
-
-#: smarty/elements:64
-msgid "Report as missing"
-msgstr "Zgłoś zaginięcie"
-
-#: smarty/elements:69 smarty/blocks/geokret:29 smarty/blocks/user:18
-msgid "Upload a picture"
-msgstr "Prześlij zdjęcie"
-
-#: smarty/elements:73
-msgid "Write a comment"
-msgstr "Napisz komentarz"
-
-#: smarty/elements:80
-msgid "Edit log"
-msgstr "Edytuj log"
-
-#: smarty/elements:83
-msgid "Delete log"
-msgstr "Usuń log"
-
-#: smarty/elements:4
-msgid "%1 logo"
-msgstr "%1 logo"
-
-#: smarty/elements:33 smarty/elements:30 smarty/elements:36
-msgid "Move this GeoKret"
-msgstr "Przenieś tego geokreta"
-
-#: smarty/blocks:3
-msgid "Found a GeoKret?"
-msgstr "Znalazłeś GeoKreta?"
-
-#: smarty/blocks:7
-msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "Proszę wprowadź <abbr title=\"%1\">Kod śledzenia</abbr> tutaj:"
-
-#: smarty/blocks:12
-msgid "Tracking code"
-msgstr "Kod śledzenia (Tracking Code)"
-
-#: smarty/blocks:15 smarty/blocks/geokret:14
-msgid "Log it!"
-msgstr "Zaloguj się!"
-
-#: smarty/blocks:10
-msgid "There is no pictures yet."
-msgstr "Nie ma jeszcze zdjęć."
-
-#: smarty/blocks/geokret:9
-msgid "%1 <small>(%2)</small> by %3"
-msgstr "%1 <small>(%2)</small> przez %3"
-
-#: smarty/blocks/geokret:15
-msgid "%1 <small>(%2)</small> - <a href=\"%3\">Ready for adoption</a>"
-msgstr "%1 <small>(%2)</small> - <a href=\"%3\">Gotowy do przyjęcia</a>"
-
-#: smarty/blocks/geokret:21 smarty/blocks/user:7
-msgid "Send a message to %1"
-msgstr "Wyślij wiadomość do %1"
-
-#: smarty/blocks/geokret:26 smarty/blocks/geokret:6
-msgid "Edit GeoKret details"
-msgstr "Edytuj szczegóły GeoKreta"
-
-#: smarty/blocks/geokret:40 smarty/forms:24
-msgid "Reference number"
-msgstr "Numer identyfikacyjny"
-
-#: smarty/blocks/geokret:43 smarty/blocks/geokret:9 smarty/forms:21
-#: smarty/forms:31 smarty/pages:15
-msgid "Tracking Code"
-msgstr "Kod śledzenia"
-
-#: smarty/blocks/geokret:46 smarty/pages:30
-msgid "Total distance"
-msgstr "Dystans całkowity"
-
-#: smarty/blocks/geokret:48
-msgid "Places visited"
-msgstr "Odwiedzone miejsca"
-
-#: smarty/blocks/geokret:3
-msgid "Found it? Log it!"
-msgstr "Znalazłeś? Zaloguj!"
-
-#: smarty/blocks/geokret:11
-msgid "Please enter the Tracking Code here"
-msgstr "Proszę podaj tutaj Tracking Code"
-
-#: smarty/blocks/geokret:3
-msgid "Map"
-msgstr "Mapa"
-
-#: smarty/blocks/geokret:8
-msgid "Caption:"
-msgstr "Opis"
-
-#: smarty/blocks/geokret:9
-msgid "start"
-msgstr "start"
-
-#: smarty/blocks/geokret:10
-msgid "trip points"
-msgstr "punkty trasy"
-
-#: smarty/blocks/geokret:11
-msgid "recently seen"
-msgstr "ostatnio widziany"
-
-#: smarty/blocks/geokret:13
-msgid "Download the track as:"
-msgstr "Pobierz ślad jako:"
-
-#: smarty/blocks/geokret:17
-msgid "This geokret has not started yet"
-msgstr "Ten geokret jeszcze nie wystartował."
-
-#: smarty/blocks/geokret:2
-msgid "Watchers"
-msgstr "Obserwujący"
-
-#: smarty/blocks/geokret:6
-msgid "Log this GeoKret"
-msgstr "Zaloguj tego geokreta"
-
-#: smarty/blocks/geokret:11
-msgid "Print a label for this GeoKret"
-msgstr "Wydrukuj etykietkę dla tego geokreta"
-
-#: smarty/blocks/geokret:24
-msgid "Adopt this GeoKret"
-msgstr "Adoptuj tego GeoKreta"
-
-#: smarty/blocks/geokret:26
-msgid "Login to claim this GeoKret"
-msgstr "Zaloguj się aby przywłaszczyć tego GeoKreta"
-
-#: smarty/blocks/geokret:32
-msgid "Archive this GeoKret"
-msgstr "Archiwizuj tego GeoKreta"
-
-#: smarty/blocks/geokret:37
-msgid "Email owner"
-msgstr "Właściciel emaila"
-
-#: smarty/blocks/geokret:43
-msgid "Make this GeoKret available for adoption by another user"
-msgstr "Udostępnij tego GeoKreta do adopcji przez innego użytkownika"
-
-#: smarty/blocks/geokret:44
-msgid "Transfer ownership"
-msgstr "Transferuj własność"
-
-#: smarty/blocks/geokret:55 smarty:56 smarty/pages:25 smarty/pages:26
-msgid "Actions"
-msgstr "Akcje"
-
-#: smarty/blocks/geokret:3 smarty/forms:31 smarty/forms:36
-msgid "Mission"
-msgstr "Misja"
-
-#: smarty/blocks/geokret:15
-msgid "This GeoKret doesn't have a special mission…"
-msgstr "Ten GeoKret nie ma specjalnej misji…"
-
-#: smarty/blocks/user:13
-msgid "Choose statpic"
-msgstr "Wybierz obrazek statystyk"
-
-#: smarty/blocks/user:11
-msgid "Subscribe to RSS channel"
-msgstr "Zasubskrybuj kanał RSS"
-
-#: smarty/blocks/user:15
-msgid "Password change"
-msgstr "Zmiana hasła"
-
-#: smarty/blocks/user:29
-msgid "Joined us"
-msgstr "Dołączył"
-
-#: smarty/blocks/user:31 smarty/dialog:11 smarty/forms:33
-msgid "Language"
-msgstr "Język"
-
-#: smarty/blocks/user:33
-msgid "Nothing selected"
-msgstr "Nic nie wybrano"
-
-#: smarty/blocks/user:36
-msgid "Choose preferred language"
-msgstr "Zmień preferowany język"
-
-#: smarty/blocks/user:43 smarty/pages:17
-msgid "Email"
-msgstr "e-mail"
-
-#: smarty/blocks/user:48
-msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr "Oczekiwanie na weryfikację adresu e-mail, nie zapomnij kliknąć linku w wiadomości weryfikacyjnej!"
-
-#: smarty/blocks/user:50
-msgid "No email address, please add one!"
-msgstr "Nie ma adresu e-mail, proszę dodaj go!"
-
-#: smarty/blocks/user:53
-msgid "Update email address"
-msgstr "Zaktualizuj adres e-mail"
-
-#: smarty/blocks/user:58
-msgid "Secid"
-msgstr "Secid"
-
-#: smarty/blocks/user:61
-msgid "Used to authenticate in other applications. Keep it secret!"
-msgstr "Używany do autoryzacji w innych aplikacjach. Trzymaj go w sekrecie!"
-
-#: smarty/blocks/user:62
-msgid "Generate a new secid"
-msgstr "Wygeneruj nowy secid"
-
-#: smarty/blocks/user:72
-msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr "Chcesz zmienić swój nick bądź usunąć swoje konto? Wyślij nam <a href=\"%1\">maila</a>!"
-
-#: smarty/blocks/user:3
-msgid "Awards"
-msgstr "Nagrody"
-
-#: smarty/blocks/user:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong> km."
-msgstr "%1 stworzył <strong>%2</strong> GeoKretów, które łącznie przebyły <strong>%3</strong> km."
-
-#: smarty/blocks/user:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong> km."
-msgstr "%1 przeniósł <strong>%2</strong> GeoKretów, na odległość <strong>%3</strong> km."
-
-#: smarty/blocks/user:10
-msgid "No home coordinates have been defined."
-msgstr "Nie ustawiono domyślnych koordynatów domowych."
-
-#: smarty/blocks/user:13 smarty/blocks/user:21
-msgid "Update home coordinates and obervation area"
-msgstr "Zaktualizuj współrzędne domowe i obszar obserwacji"
-
-#: smarty/blocks/user:14
-msgid "Define your home coordinates"
-msgstr "Zdefiniuj kordy domowe"
-
-#: smarty/blocks/user:20
-msgid "GeoKrety near home"
-msgstr "GeoKrety w pobliżu domu"
-
-#: smarty/blocks/user:4
-msgid "OAuth Connections"
-msgstr "Połączenia OAuth"
-
-#: smarty/blocks/user:17
-msgid "Disconnect from %1"
-msgstr "Odłącz od %1"
-
-#: smarty/blocks/user:18
-msgid "Disconnect"
-msgstr "Rozłącz"
-
-#: smarty/blocks/user:23
-msgid "Connect with %1"
-msgstr "Połącz z %1"
-
-#: smarty/blocks/user:23
-msgid "Connect"
-msgstr "Połącz"
-
-#: smarty/blocks/user:3
-msgid "Badges"
-msgstr "Odznaki"
-
-#: smarty/blocks/user:9
-msgid "No badge received yet."
-msgstr "Nie otrzymano jeszcze żadnych odznak."
-
-#: smarty/blocks/user:3 smarty:60 smarty/forms:6 smarty/pages:3
-msgid "Create a new GeoKret"
-msgstr "Utwórz nowego GeoKreta"
-
-#: smarty/blocks/user:12
-msgid "View inventory"
-msgstr "Zobacz inwentarz"
-
-#: smarty/blocks/user:16 smarty/pages:3 smarty/pages:9
-msgid "Owned GeoKrety"
-msgstr "Posiadane GeoKrety"
-
-#: smarty/blocks/user:20 smarty:20 smarty/pages:3 smarty/pages:9
-msgid "Watched GeoKrety"
-msgstr "Obserwowane GeoKrety"
-
-#: smarty/blocks/user:24
-msgid "Recently posted moves"
-msgstr "Ostatnio zalogowane ruchy"
-
-#: smarty/blocks/user:28
-msgid "Moves of owned GeoKrety"
-msgstr "Przenosiny posiadanych GeoKretów"
-
-#: smarty/blocks/user:32
-msgid "Posted pictures"
-msgstr "Dodane zdjęcia"
-
-#: smarty/blocks/user:36
-msgid "Owned GeoKrety pictures"
-msgstr "Zdjęcia posiadanych GeoKretów"
-
-#: smarty/blocks/user:40 smarty:28
-msgid "Where are my GeoKrety?"
-msgstr "Gdzie są moje GeoKrety?"
-
-#: smarty/chunks:5
-msgid "languages"
-msgstr "języki"
-
-#: smarty/chunks:6
-msgid "platform"
-msgstr "platforma"
-
-#: smarty/chunks:7
-msgid "group name"
-msgstr "nazwa grupy"
-
-#: smarty/chunks:9
-msgid "Remove this GeoKret from the selection"
-msgstr "Usuń tego GeoKreta z zaznaczenia"
-
-#: smarty/chunks:10
-msgid " %1 %2 by %3"
-msgstr " %1 %2 przez %3"
-
-#: smarty/chunks:13
-msgid "Never moved"
-msgstr "Jeszcze nieprzeniesiony"
-
-#: smarty/chunks:15
-msgid "%1 %2 %3 by %4"
-msgstr "%1 %2 %3 przez %4"
-
-#: smarty/chunks:17
-msgid "%1 %2"
-msgstr "%1 %2"
-
-#: smarty:3
-msgid "Admin"
-msgstr "Admin"
-
-#: smarty:7 smarty:16
-msgid "My profile"
-msgstr "Mój profil"
-
-#: smarty:18
-msgid "My inventory"
-msgstr "Inwentarz"
-
-#: smarty:19
-msgid "My GeoKrety"
-msgstr "Moje geokrety"
-
-#: smarty:22
-msgid "My recent moves"
-msgstr "Moje najnowsze logi"
-
-#: smarty:23
-msgid "Recent moves of my GeoKrety"
-msgstr "Ostatnie ruchy moich geokretów"
-
-#: smarty:25
-msgid "My photos"
-msgstr "Moje fotki"
-
-#: smarty:26
-msgid "Photos of my GeoKrety"
-msgstr "Fotki moich geokretów"
-
-#: smarty:30
-msgid "Sign out"
-msgstr "Wyloguj się"
-
-#: smarty:48 smarty/dialog:11 smarty/dialog:39 smarty:32 smarty/pages:13
-msgid "Sign in"
-msgstr "Zaloguj się"
-
-#: smarty:53
-msgid "Create account"
-msgstr "Rejestracja"
-
-#: smarty/dialog:4
-msgid "Offer this GeoKret for adoption?"
-msgstr "Chcesz zaoferować tego GeoKreta do adopcji?"
-
-#: smarty/dialog:10
-msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "Pozwoli to innemu użytkownikowi, który zna Kod śledzenia (TC) i Kod właściciela, stać się nowym właścicielem tego GeoKreta."
-
-#: smarty/dialog:14
-msgid "Back to GeoKret page"
-msgstr "Powrót do strony GeoKretów"
-
-#: smarty/dialog:15 smarty/dialog:26 smarty/dialog:50 smarty/dialog:65
-#: smarty/dialog:45 smarty/dialog:14 smarty/dialog:20 smarty/dialog:47
-#: smarty/dialog:22 smarty/dialog:33 smarty/dialog:32 smarty/dialog:53
-#: smarty/dialog:23 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
-#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:65
-msgid "Dismiss"
-msgstr "Anuluj"
-
-#: smarty/dialog:17
-msgid "Generate an Owner Code"
-msgstr "Generuj Kod Właściciela"
-
-#: smarty/dialog:4
-msgid "Choose your preferred language"
-msgstr "Wybierz preferowany język interfejsu"
-
-#: smarty/dialog:21 smarty/forms:40
-msgid "This will be the default language when you log in and the main language in the emails you may receive."
-msgstr "Będzie to domyślny język podczas logowania i główny język w otrzymywanych wiadomościach e-mail."
-
-#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:46
-#: smarty/dialog:50 smarty/pages:64
-msgid "Back to user page"
-msgstr "Powrót do strony użytkownika"
-
-#: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
-msgid "Change"
-msgstr "Zmień"
-
-#: smarty/dialog:4
-msgid "Refresh your secid?"
-msgstr "Odświeżyć secid?"
-
-#: smarty/dialog:10
-msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr "Odświeżenie secid odłączy wszystkie aplikacje, które zostały połączone z Twoim kontem. Będziesz musiał je ponownie uwierzytelnić."
-
-#: smarty/dialog:17
-msgid "Refresh"
-msgstr "Odśwież"
-
-#: smarty/dialog:8 smarty/pages:3 smarty/pages:13
-msgid "Change your password"
-msgstr "Zmień swoje hasło"
-
-#: smarty/dialog:15
-msgid "Current password"
-msgstr "Aktualne hasło"
-
-#: smarty/dialog:17
-msgid "Old password"
-msgstr "Stare hasło"
-
-#: smarty/dialog:22 smarty/dialog:24 smarty/pages:41 smarty/pages:43
-msgid "New password"
-msgstr "Nowe hasło"
-
-#: smarty/dialog:29 smarty/dialog:31 smarty/forms:26 smarty/forms:28
-#: smarty/pages:48 smarty/pages:50
-msgid "Confirm password"
-msgstr "Potwierdź hasło"
-
-#: smarty/dialog:37
-msgid "Read more about choosing good passwords:"
-msgstr "Czytaj więcej o wyborze dobrego hasła:"
-
-#: smarty/dialog:39
-msgid "Choosing Good Passwords -- A User Guide"
-msgstr "Wybierz dobre hasło - instrukcja"
-
-#: smarty/dialog:40
-msgid "How to Write Good Passwords"
-msgstr "Jak napisać dobre hasło"
-
-#: smarty/dialog:41
-msgid "Password strength"
-msgstr "Siła hasła"
-
-#: smarty/dialog:3 smarty/forms:28
-msgid "Select GeoKrety from inventory"
-msgstr "Wybierz GeoKreta z inwentarza"
-
-#: smarty/dialog:9
-msgid "Only %1 GeoKrety can be processed at a time."
-msgstr "Tylko %1 GeoKretów może być przetwarzanych jednocześnie."
-
-#: smarty/dialog:15
-msgid "Filter"
-msgstr "Filtr"
-
-#: smarty/dialog:16
-msgid "Name or ID"
-msgstr "Nazwa lub ID"
-
-#: smarty/dialog:27 smarty/forms:15 smarty/forms:17 smarty/pages:21
-#: smarty/pages:70
-msgid "Owner"
-msgstr "Właściciel"
-
-#: smarty/dialog:28
-msgid "Select all (but max %1)"
-msgstr "Wybierz wszystkie (ale nie więcej niż %1)"
-
-#: smarty/dialog:35
-msgid "Choose"
-msgstr "Wybierz"
-
-#: smarty/dialog:60
-msgid "Your inventory is empty."
-msgstr "Twój ekwipunek jest pusty."
-
-#: smarty/dialog:67
-msgid "Select <span class=\"badge\">%1</span>"
-msgstr "Wybierz <span class=\"badge\">%1</span>"
-
-#: smarty/dialog:6
-msgid "Manage picture"
-msgstr "Zarządzaj zdjęciem"
-
-#: smarty/dialog:12
-msgid "Caption"
-msgstr "Podpis"
-
-#: smarty/dialog:24
-msgid "Remember caption"
-msgstr "Zapamiętaj podpis"
-
-#: smarty/dialog:27
-msgid "Remember the caption for the next %1 minutes"
-msgstr "Zapamiętaj podpis na następne %1 minut"
-
-#: smarty/dialog:46 smarty/forms:51 smarty/pages:27
-msgid "Save"
-msgstr "Zapisz"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this picture?"
-msgstr "Czy na pewno chcesz usunąć to zdjęcie?"
-
-#: smarty/dialog:15 smarty/dialog:23 smarty/dialog:14
-msgid "Delete"
-msgstr "Usuń"
-
-#: smarty/dialog:4
-msgid "Commenting a GeoKret move"
-msgstr "Komentujemy ruch GeoKreta"
-
-#: smarty/dialog:14 smarty/pages:22
-msgid "Your comment"
-msgstr "Komentarz"
-
-#: smarty/dialog:21
-msgid "Declare missing"
-msgstr "Zgłoś zaginięcie"
-
-#: smarty/dialog:5 smarty/dialog:6 smarty/dialog:14 smarty/dialog:16
-#: smarty/forms:10 smarty/forms:12 smarty/forms:4 smarty/forms:6
-#: smarty/forms:239
-msgid "Username"
-msgstr "Użytkownik"
-
-#: smarty/dialog:8 smarty/dialog:9 smarty/dialog:20 smarty/dialog:22
-#: smarty/forms:19 smarty/forms:21
-msgid "Password"
-msgstr "Hasło"
-
-#: smarty/dialog:9
-msgid "Contact user"
-msgstr "Kontakt z użytkownikiem"
-
-#: smarty/dialog:18
-msgid "%1 (speak %2)"
-msgstr "%1 (używa języka %2)"
-
-#: smarty/dialog:25
-msgid "Message subject"
-msgstr "Temat wiadomości"
-
-#: smarty/dialog:30
-msgid "Message"
-msgstr "Wiadomość"
-
-#: smarty/dialog:32
-msgid "Message to user"
-msgstr "Wiadomość do użytkownika"
-
-#: smarty/dialog:49
-msgid "Send message"
-msgstr "Wyślij wiadomość"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this move?"
-msgstr "Czy na pewno chcesz usunąć ten ruch?"
-
-#: smarty/dialog:14
-msgid "Deleting this Move will delete attached pictures and the main avatar!"
-msgstr "Usunięcie tego Ruchu usunie załączone zdjęcia i główny awatar!"
-
-#: smarty/dialog:16
-msgid "Deleting this Move will delete attached pictures!"
-msgstr "Usunięcie tego przenoszenia usunie załączone zdjęcia!"
-
-#: smarty/dialog:4
-msgid "Do you want to set this picture as main avatar?"
-msgstr "Czy chcesz ustawić to zdjęcie jako główny awatar?"
-
-#: smarty/dialog:15 smarty/pages:67
-msgid "Define"
-msgstr "Zdefiniuj"
-
-#: smarty/dialog:2
-msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
-msgstr "Zamierzasz odłączyć konto GeoKrety od konta %1 . Nie będziesz mógł już zalogować się za pośrednictwem tego dostawcy."
-
-#: smarty/dialog:8 smarty/dialog:26 smarty/dialog:24
-msgid "Detaching OAuth provider"
-msgstr "Odłączanie dostawcy OAuth"
-
-#: smarty/dialog:16 smarty/dialog:34
-msgid "Detach"
-msgstr "Detach"
-
-#: smarty/dialog:2
-msgid "You are not connected to this OAuth provider."
-msgstr "Nie jesteś połączony z tym dostawcą OAuth."
-
-#: smarty/dialog:15
-msgid "Back to my profile"
-msgstr "Wróć do mojego profilu"
-
-#: smarty/dialog:3
-msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
-msgstr "Ten dokument określa warunki korzystania z „<a href=\"%1\">geokrety.org </a>” - dobrowolnie obsługiwanej internetowej usługi geocaching dostępnej pod adresem <a href=\"%1\">geokrety.org </a > (zwane dalej „Usługą”). Każda osoba rejestrująca konto (zwana dalej „Użytkownikiem”) wyraża zgodę na przestrzeganie zasad niniejszego regulaminu, poczynając od początku procedury rejestracji."
-
-#: smarty/dialog:7
-msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr "Usługa jest monitorowana i nadzorowana przez grupę wspierających wolontariuszy, zwaną dalej zespołem GK. Zespół GK nie ponosi odpowiedzialności za treści zamieszczane przez użytkowników w Serwisie ani za szkody wynikające z wykorzystania informacji z Usługi."
-
-#: smarty/dialog:11
-msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr "Musisz upewnić się, że informacje publikowane przez użytkownika w serwisie <strong> nie mogą wpływać na istniejące prawo </strong>. W szczególności treści publikowane przez użytkownika nie mogą naruszać praw autorskich osób trzecich. Cała zawartość (w tym opisy GeoKretów, ilustracje i wszystkie ich wpisy w dziennikach) są udostępniane przez opublikowanie ich w Serwisie przez Użytkownika <strong> na licencji Creative Commons </strong> BY-NC-SA wersja 2.5, którego pełna treść jest dostępna online na <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\"> https://creativecommons.org/licenses/by-nc-sa/2.5/ </a>. Dopuszczalne są również treści należące do domeny publicznej. Użytkownik odpowiada bezpośrednio przed właścicielem praw autorskich za wszelkie naruszenia."
-
-#: smarty/dialog:15
-msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "Nie udzielamy żadnych gwarancji ani gwarancji co do dokładności, terminowości, działania, kompletności lub przydatności informacji i materiałów znalezionych lub oferowanych na tej stronie do określonego celu. Użytkownik przyjmuje do wiadomości, że takie informacje i materiały mogą zawierać nieścisłości lub błędy, a my jednoznacznie wyłączamy odpowiedzialność za takie niedokładności lub błędy w najszerszym zakresie dozwolonym przez prawo."
-
-#: smarty/dialog:19
-msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
-msgstr "Treści publikowane przez ciebie na stronie nie mogą zawierać wulgaryzmów, treści obraźliwych ani nielegalnych."
-
-#: smarty/dialog:26 smarty/dialog:45 smarty:90
-msgid "Terms of use"
-msgstr "Zasady użytkowania"
-
-#: smarty/dialog:35 smarty/dialog:54
-msgid "I agree with the terms"
-msgstr "Zgadzam się z warunkami"
-
-#: smarty/dialog:21 smarty/forms:106 smarty/forms:247 smarty/pages:22
-#: smarty/pages:20 smarty/pages:37 smarty/pages:34
-msgid "Comment"
-msgstr "Komentarz"
-
-#: smarty/dialog:6
-msgid "Do you really want to unsubscribe from this news?"
-msgstr "Czy na pewno chcesz zaprzestać subskrypcji tych newsów?"
-
-#: smarty/dialog:8
-msgid "Subscribe to this news?"
-msgstr "Czy chcesz subskrybować te newsy?"
-
-#: smarty/dialog:26
-msgid "Unsubscribe"
-msgstr "Zakończ subskrybcję"
-
-#: smarty/dialog:28
-msgid "Subscribe"
-msgstr "Subskrybuj"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this move comment?"
-msgstr "Czy na pewno chcesz usunąć ten komentarz?"
-
-#: smarty/dialog:2 smarty/dialog:7
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
+#: website/app-templates/smarty/emails/password-changed.tpl:3
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
+#: website/app-templates/smarty/emails/account-activated.tpl:3
+msgid "Congratulation"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
+msgid "Your email address has been successfully changed."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
+msgid "Your email address has been successfully changed to: %1."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
+#: website/app-templates/smarty/emails/password-changed.tpl:12
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:12
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:12
+#: website/app-templates/smarty/emails/account-activated.tpl:12
+#: website/app-templates/smarty/dialog/login.tpl:2
+#: website/app-templates/smarty/dialog/login.tpl:7
 msgid "Login"
 msgstr "Zaloguj się"
 
-#: smarty/dialog:29
-msgid "Remember me"
-msgstr "Pamiętaj mnie"
-
-#: smarty/dialog:32
-msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr "Używamy ciasteczek tylko aby Twoja sesja była aktywna. Przeczytaj więcej o naszej <a href=\"%1\" target=\"_blank\">polityce ciasteczek</a>."
-
-#: smarty/dialog:40
-msgid "No account yet ? Register now!"
-msgstr "Nie masz jeszcze konta? Zarejestruj się teraz!"
-
-#: smarty/dialog:43
-msgid "Forgot your password?"
-msgstr "Nie pamiętasz hasła?"
-
-#: smarty/dialog:4
-msgid "Update your email address"
-msgstr "Zmień swój adres email"
-
-#: smarty/dialog:11 smarty/dialog:12 smarty/forms:11 smarty/forms:13
-#: smarty/pages:24 smarty/pages:26
-msgid "Email address"
-msgstr "Adres email"
-
-#: smarty/dialog:17 smarty/forms:31 smarty/forms:48
-msgid "Yes, I want to receive email alerts (sent once a day)."
-msgstr "Tak, chcę otrzymywać powiadomienia przez email (wysyłane raz dziennie)."
-
-#: smarty/dialog:23 smarty/forms:14
-msgid "The main purpose of collecting email is to permit password recovery."
-msgstr "Głównym celem zbierania wiadomości e-mail jest umożliwienie odzyskania hasła."
-
-#: smarty/dialog:27
-msgid "Email alerts may contain any of the following:"
-msgstr "Wpisy pocztowe mogą zawierać:"
-
-#: smarty/dialog:29
-msgid "GeoKrety.org news"
-msgstr "Nowości na Geokrety.org"
-
-#: smarty/dialog:30
-msgid "Recent logs on:"
-msgstr "Ostatnie logi dla:"
-
-#: smarty/dialog:32 smarty/dialog:38
-msgid "your own GeoKrety"
-msgstr "twoje własne GeoKrety"
-
-#: smarty/dialog:33 smarty/dialog:39
-msgid "GeoKrety that you watch"
-msgstr "GeoKrety, które obserwujesz"
-
-#: smarty/dialog:34
-msgid "any GeoKrety logged near your home location"
-msgstr "GeoKrety zalogowane niedaleko twojej lokalizacji domowej"
-
-#: smarty/dialog:36
-msgid "Comments posted to any of the following:"
-msgstr "„Technologia”, zgodnie z uwagą ogólną do technologii, służąca do „rozwoju”, „produkcji” lub „użytkowania” sprzętu lub „oprogramowania” wyszczególnionych w pozycji 3A001, 3A001, 3A002, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A004, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A007, 3A005, 3A007, 3A005, 3A007, 3A003, 3A003, 3A003, 3A003, 3A007, 3A003, 3A007, 3A007, 3A007, 3A003, 3A003,"
-
-#: smarty/dialog:40
-msgid "your logs"
-msgstr "twoje logi"
-
-#: smarty/dialog:41
-msgid "your comments"
-msgstr "twoje komentarze"
-
-#: smarty/dialog:42
-msgid "news posts you have are subscribed to"
-msgstr "nowe posty, gdy takie subskrybujesz"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this news comment?"
-msgstr "Czy naprawdę chcesz usunąć ten komentarz?"
-
-#: smarty/banners:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "Przepraszamy, ale na Twoim koncie nie ma zarejestrowanego adresu e-mail. Nie będziesz w stanie odzyskać utraconego hasła! Ponadto nie będziesz otrzymywać codziennych powiadomień o Twoich ani o obserwowanych GeoKretach."
-
-#: smarty/banners:4
-msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr "Rozważ <a href=\"%1\">dodanie adresu e-mail</a> lub <a href=\"%2\">powiązanie konta</a> z dostawcą OAuth."
-
-#: smarty/banners:3
-msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "Masz oczekującą weryfikację adresu e-mail. Nie zapomnij kliknąć na link znajdujący się w wiadomości e-mail, aby zakończyć procedurę. Link wygaśnie %1!"
-
-#: smarty/banners:3
-msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr "Nawet jeśli - obecnie - nie ma takiego wymogu to zalecamy ci <a href=\"%1\">zalogowanie</a>."
-
-#: smarty/banners:4
-msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
-msgstr "Nie wahaj się <a href=\"%1\">utworzyć konto</a>."
-
-#: smarty/banners:5
-msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr "Dzięki temu zyskasz możliwość zarządzania swoimi zasobami GeoKretów, dodawania zdjęć, edycji logów i, oczywiście, tworzenia swoich własnych GeoKretów!"
-
-#: smarty/banners:3
-msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
-msgstr "Przepraszamy, ale mamy problemy z wysyłaniem powiadomień e-mail. Czy twój e-mail jest prawidłowy i aktywny?"
-
-#: smarty/banners:3 smarty/banners:2
-msgid "Close"
-msgstr "Zamknij"
-
-#: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr "To nie jest instancja produkcji. Jeśli nie jesteś testerem, to prawdopodobnie chcesz przejść na naszą <a href=\"https://geokrety.org\">stronę produkcyjną</a>."
-
-#: smarty/banners:3
-msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
-msgstr "GeoKrety to bezpłatna usługa online do śledzenia obiektów w grach GPS, takich jak geocaching lub opencaching. Możesz śledzić z nami małe przedmioty, książki, monety, zwierzęta domowe lub ludzi… <a href=\"%1\">przeczytaj więcej</a>."
-
-#: smarty/banners:4
-msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "Ustawiłeś tego GeoKreta do adopcji. Kod właściciela to: <strong>%1</strong>. Podaj go wraz z kodem śledzenia <strong>%2</strong> użytkownikowi, który przyjmie Twój GeoKret."
-
-#: smarty/banners:6
-msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
-msgstr "Ten GeoKret jest dostępny do przyjęcia. Jeśli aktualny właściciel dał Ci kod śledzenia i kod właściciela, możesz <a href=\"%1\">odebrać</a> tego GeoKreta."
-
-#: smarty/banners:8
-msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr "Ten GeoKret jest dostępny do adopcji. Proszę <a href=\"%1\">zaloguj się</a>."
-
-#: smarty/banners:2
-msgid "Some statistics"
-msgstr "Statystyczki"
-
-#: smarty/banners:6
-msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "<strong>%1</strong> zarejestrowanych GeoKretów, <strong>%2</strong> GeoKretów ukrytych przez <strong>%3</strong> użytkowników."
-
-#: smarty/banners:13
-msgid "<strong>%1</strong> km done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr "<strong>%1</strong> km wykonany przez wszystkich GeoKretów ( <strong>%2</strong> x odległość od Ziemi do Księżyca 🌛, <strong>%3</strong> x obwód wyrównawczy Ziemi 🌍 i <strong>%4</strong> x odległość od Ziemi do słońca 🌞)."
-
-#: smarty/banners:21
-msgid "And that's thanks to you! Congratulation!"
-msgstr "I to dzięki tobie! Gratulacje!"
-
-#: smarty/banners:3
-msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "Ta gałąź 🥦 jest aktywnie rozwijana 👨‍💻, jeśli znajdziesz błędy 🐛, sprawdź proszę 👀 <a href=\"%1\" target=\"_blank\">zgłoszone problemy ♻️ na GitHubie %2</a> i czuj się wolny 🈚 w zgłoszeniu nowego 🆕. (Prosimy poruszać jeden błąd w jednym zgłoszeniu 🙏)"
-
-#: smarty:6
-msgid "Toggle navigation"
-msgstr "Przełącz nawigację"
-
-#: smarty:16 smarty:51 smarty:58 smarty/pages:3
-msgid "Log a GeoKret"
-msgstr "Zaloguj GeoKreta"
-
-#: smarty:47 smarty:3
-msgid "Home"
-msgstr "Kopiec"
-
-#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:19
-msgid "News"
-msgstr "Nowości"
-
-#: smarty:61 smarty/pages:3 smarty/pages:8
-msgid "Claim a GeoKret"
-msgstr "Przejmij Geokreta"
-
-#: smarty:64
-msgid "Advanced search"
-msgstr "Wyszukiwanie zaawansowane"
-
-#: smarty:65
-msgid "Photo gallery"
-msgstr "Fotki"
-
-#: smarty:68
-msgid "GeoKrety Map"
-msgstr "Mapa GeoKretów"
-
-#: smarty:75
-msgid "Currently selected language"
-msgstr "Aktualnie wybrany język"
-
-#: smarty:86 smarty:88 smarty/pages:3 smarty/pages:39
-msgid "Help"
-msgstr "Pomoc"
-
-#: smarty:89
-msgid "Moleholes and GK hotels"
-msgstr "GeoHotel"
-
-#: smarty:91 smarty/pages:3 smarty/pages:9
-msgid "Press corner"
-msgstr "Kącik prasowy"
-
-#: smarty:93
-msgid "GK interface / API"
-msgstr "GK interfejs / API"
-
-#: smarty:99 smarty/pages:3
-msgid "Downloads"
-msgstr "Pobierz"
-
-#: smarty:100
-msgid "GeoKrety Toolbox"
-msgstr "Narzędzia GeoKretów"
-
-#: smarty:101
-msgid "Waypoint resolver"
-msgstr "Rozdzielczość punktów drogi"
-
-#: smarty:4
-msgid "About"
-msgstr "O nas"
-
-#: smarty:6
-msgid "Contact"
-msgstr "Kontakt"
-
-#: smarty:10
-msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr "Wydano pod <a id=\"footer-license\" href=\"%1\">licencją MIT</a>"
-
-#: smarty:13
-msgid "Leave in-context translation"
-msgstr "Opuść tłumaczenie kontekstowe"
-
-#: smarty:15
-msgid "in-context translation"
-msgstr "tłumaczenie kontekstowe"
-
-#: smarty:19
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr "Zaprojektowane z <abbr title=\"love\">💗</abbr> przez <a id=\"footer-team\" href=\"%1\">Zespół GeoKretów</a>"
-
-#: smarty:29
-msgid "Deployed on %1"
-msgstr "Wdrożone na %1"
-
-#: smarty/macros:5
-msgid "First"
-msgstr "Pierwszy"
-
-#: smarty/macros:17
-msgid "Last [%1]"
-msgstr "Ostatni [%1]"
-
-#: smarty/forms:5
-msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
-msgstr "Jeśli posiadasz już konto na Geokrety. rg, najpierw <a href=\"%2\">zaloguj się</a> , a następnie połącz swoje konto z %1 ze strony ustawień użytkownika. W innym przypadku wybierz nazwę użytkownika, aby kontynuować."
-
-#: smarty/forms:32 smarty/forms:49
-msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
-msgstr "Powiadomienia e-mail mogą zawierać informacje o podróży GeoKretów, wiadomości, komentarze…"
-
-#: smarty/forms:44 smarty/forms:60
-msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr "Tak, akceptuję <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">warunki użytkowania</a>."
-
-#: smarty/forms:61 smarty/forms:77
-msgid "Register"
-msgstr "Zarejestruj się"
-
-#: smarty/forms:4
-msgid "Edit a GeoKret"
-msgstr "Edytuj tego GeoKreta"
-
-#: smarty/forms:13 smarty/forms:15 smarty/forms:8 smarty/forms:10
-msgid "GeoKret name"
-msgstr "Nazwa GeoKreta"
-
-#: smarty/forms:20
-msgid "GeoKret type"
-msgstr "Typ GeoKreta"
-
-#: smarty/forms:33 smarty/forms:38
-msgid "What is this GeoKret mission?"
-msgstr "Jaka jest misja tego GeoKreta?"
-
-#: smarty/forms:41
-msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
-msgstr "Spowoduje to utworzenie pierwszych \"odwiedzin\" Twojego GeoKreta, oznaczając jego punkt początkowy."
-
-#: smarty/forms:42
-msgid "Set my home coordinates as a starting point."
-msgstr "Ustaw moje współrzędne domowe jako punkt startowy."
-
-#: smarty/forms:51
-msgid "Create"
-msgstr "Utwórz"
-
-#: smarty/forms:11
-msgid "Identify GeoKret"
-msgstr "Identyfikacja GeoKreta"
-
-#: smarty/forms:30
-msgid "Verify tracking code"
-msgstr "Zweryfikuj tracking code"
-
-#: smarty/forms:33
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "%1 znakowy kod z <em>etykiety GeoKreta</em>. <u>Nie używaj tutaj identyfikatora GeoKreta zaczynającego się od 'GK'</u>"
-
-#: smarty/forms:43 smarty/forms:118 smarty/forms:205
-msgid "Next"
-msgstr "Następny"
-
-#: smarty/forms:54
-msgid "Log type"
-msgstr "Typ logu"
-
-#: smarty/forms:66
-msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
-msgstr "Wybierz typ akcji dokonanej na GeoKrecie. Aby uzyskać więcej informacji, odwiedź stronę pomocy."
-
-#: smarty/forms:77
-msgid "When you've left a GeoKret in a cache"
-msgstr "Jeśli zostawiłeś GeoKreta w keszu."
-
-#: smarty/forms:78
-msgid "I've dropped GeoKret"
-msgstr "Wrzuciłem GeoKreta"
-
-#: smarty/forms:84
-msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
-msgstr "Kiedy zabrałeś Geokreta z kesza i nie zamierzasz umieścić go <i>od razu</i> w innym keszu."
-
-#: smarty/forms:85
-msgid "I've grabbed GeoKret"
-msgstr "Zabrałem GeoKreta"
-
-#: smarty/forms:91
-msgid "When you've met a GeoKret in a cache but haven't taken it with you"
-msgstr "Kiedy spotkałeś GeoKreta w keszu, ale nie zabrałeś go ze sobą."
-
-#: smarty/forms:92
-msgid "I've met GeoKret"
-msgstr "Spotkałem GeoKreta"
-
-#: smarty/forms:98
-msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
-msgstr "Kiedy masz GeoKreta ze sobą i odwiedziliście miejsce, jednak nie wrzuciłeś go do skrzynki, tylko dalej pozostaje w Twoim ekwipunku; tak, jakbyś wrzucił i zabrał."
-
-#: smarty/forms:99
-msgid "I've dipped a GeoKret"
-msgstr "Kret odwiedził"
-
-#: smarty/forms:105
-msgid "When you want to write a comment :)"
-msgstr "Jeśli chcesz dopisać tylko komentarz. :)"
-
-#: smarty/forms:129
-msgid "New location"
-msgstr "Nowa lokalizacja"
-
-#: smarty/forms:139
-msgid "Waypoint"
-msgstr "Punkt orientacyjny"
-
-#: smarty/forms:142
-msgid "eg. GC1AQ2N"
-msgstr "np. GC1AQ2N"
-
-#: smarty/forms:147
-msgid "Lookup opencaching cache by name"
-msgstr "Wyszukaj skrzynkę opencaching według nazwy"
-
-#: smarty/forms:152
-msgid "eg.: GC1AQ2N, OP069B, OC033A…"
-msgstr "np.: GC1AQ2N, OP069B, OC033A..."
-
-#: smarty/forms:164
-msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
-msgstr "Wprowadź nazwę skrzynki <strong> Nie działa na skrzynkach GC </strong>"
-
-#: smarty/forms:178
-msgid "Coordinates"
-msgstr "Współrzędne"
-
-#: smarty/forms:216
-msgid "Additional data"
-msgstr "Informacje dodatkowe"
-
-#: smarty/forms:224 smarty/pages:23
-msgid "Date"
-msgstr "Data operacji"
-
-#: smarty/forms:241
-msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
-msgstr "To może być Twój:<br />- login geocaching/opencaching<br />- imię<br />- ksywka, etc."
-
-#: smarty/forms:251
-msgid "It is always nice to receive a little message ;)"
-msgstr "Zawsze jest miło dostać małą wiadomość ;)"
-
-#: smarty/forms:274
-msgid "Post your log"
-msgstr "Wyślij swój dziennik"
-
-#: smarty/forms:3
-msgid "Generate a GeoKret Label"
-msgstr "Generuj etykietę GeoKreta"
-
-#: smarty/forms:22 smarty/forms:29
-msgid "Reference numbers"
-msgstr "Numery referencyjne"
-
-#: smarty/forms:43
-msgid "Label template"
-msgstr "Wzór etykietki"
-
-#: smarty/forms:54
-msgid "Label help languages"
-msgstr "Oznacz języki pomocy"
-
-#: smarty/forms:62
-msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr "Uwaga1: nie wszystkie szablony etykiet obsługują tę funkcję i gdy są obsługiwane, język angielski jest zawsze obecny."
-
-#: smarty/forms:69
-msgid "Generate as .png"
-msgstr "Generuj jako .png"
-
-#: smarty/forms:70
-msgid "Generate as .svg"
-msgstr "Generuj jako .svg"
-
-#: smarty/forms:71
-msgid "Generate as .pdf"
-msgstr "Generuj jako .pdf"
-
-#: smarty/forms:80 smarty/forms:83 smarty/forms:84
-msgid "GeoKret label preview"
-msgstr "Podgląd etykiety GeoKreta"
-
-#: smarty:3
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
+msgid "If you did not requested this, click the link below."
+msgstr "Jeśli nie poprosiłeś o to, kliknij poniższy link."
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
+msgid "Revert this change!"
+msgstr "Cofnij tę zmianę!"
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:20
+#: website/app-templates/smarty/emails/password-recovery.tpl:15
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
+#: website/app-templates/smarty/emails/account-activation.tpl:13
+msgid "This link expires %1."
+msgstr "Ten link wygasa %1."
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:15
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
+msgid "If you did not requested a password change, then you should also consider changing your password immediately."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:17
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:22
+msgid "Change my password!"
+msgstr "Zmień swoje hasło!"
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:29
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:22
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:27
+msgid "You're getting this email because you've changed your email on our website."
+msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w naszej witrynie."
+
+#: website/app-templates/smarty/emails/base.tpl:20
+#: website/app-templates/smarty/header.tpl:3
 msgid "Open source item tracking for all geocaching platforms"
 msgstr "Open source śledzenie pozycji dla wszystkich platform geocachingowych"
 
-#: smarty/pages:3 smarty/pages:9
-msgid "GeoKrety visiting the cache %1"
+#: website/app-templates/smarty/emails/base.tpl:29
+msgid "Hi %1,"
+msgstr "Cześć %1,"
+
+#: website/app-templates/smarty/emails/base.tpl:36
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr "Z poważaniem,<br>The GeoKrety Team"
+
+#: website/app-templates/smarty/emails/base.tpl:45
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
 msgstr ""
 
-#: smarty/pages:20
-msgid "Name"
-msgstr "Nazwa"
+#: website/app-templates/smarty/emails/password-recovery.tpl:3
+msgid "Forgot Your Password?"
+msgstr "Zapomniałeś hasła?"
 
-#: smarty/pages:21
-msgid "Cache"
-msgstr "Kesz"
+#: website/app-templates/smarty/emails/password-recovery.tpl:4
+msgid "Recover your password."
+msgstr ""
 
-#: smarty/pages:24 smarty/pages:23 smarty/pages:36
+#: website/app-templates/smarty/emails/password-recovery.tpl:8
+msgid "It happens. Click the link below to reset your password."
+msgstr "Zdarza się. Kliknij poniższy link, aby zresetować hasło."
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:12
+msgid "Reset Password"
+msgstr "Resetuj hasło"
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:19
+#: website/app-templates/smarty/emails/password-changed.tpl:17
+msgid "You're getting this email because you've changed your password on our website."
+msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w naszej witrynie."
+
+#: website/app-templates/smarty/emails/password-changed.tpl:4
+#: website/app-templates/smarty/emails/account-activated.tpl:4
+msgid "Your account on GeoKrety.org is now active."
+msgstr ""
+
+#: website/app-templates/smarty/emails/password-changed.tpl:8
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
+msgid "Something went wrong while synchronizing partners data"
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
+#: website/app-templates/smarty/emails/cron-exception.tpl:7
+msgid "Something went wrong with a cron job, please check the logs below."
+msgstr ""
+
+#: website/app-templates/smarty/emails/base-admin.tpl:4
+msgid "You're getting this email because you're one the website admins."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:3
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:3
+msgid "Hooray"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:4
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:8
+msgid "Your email address has been successfully reverted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:4
+msgid "One of your GeoKrety has been adopted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:10
+msgid "View GeoKret"
+msgstr "Zobacz Geokreta"
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:15
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
+msgstr "Otrzymujesz tego e-maila, ponieważ jeden z Twoich GeoKretów zmienił właściciela na naszej stronie."
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
+msgid "Confirm your email address change."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
+msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
+msgstr "Ktoś lub Ty poprosił o zmianę twojego adresu kontaktowego e-mail GeoKrety na: %1."
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
+msgid "Do not change!"
+msgstr "Nie zmieniaj!"
+
+#: website/app-templates/smarty/emails/cron-locked.tpl:4
+msgid "A script is locked"
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-locked.tpl:7
+msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
+msgstr ""
+
+#: website/app-templates/smarty/emails/user-contact.tpl:3
+msgid "Contact from a GeoKrety.org user"
+msgstr "Kontakt od użytkownika GeoKrety.org"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:4
+msgid "Someone sent you a private message."
+msgstr ""
+
+#: website/app-templates/smarty/emails/user-contact.tpl:8
+msgid "This email was sent by user <a href=\"%2\">%1</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/user-contact.tpl:12
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr "Jeśli podejrzewasz nadużycie, daj nam znać: %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:13
+msgid "Referer: %1"
+msgstr "Polecający: %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:18
+msgid "Subject:"
+msgstr "Temat:"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:23
+msgid "Reply to %1"
+msgstr "Wyślij odpowiedź do %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:28
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
+msgstr "Otrzymujesz tego e-maila, ponieważ jeden z użytkowników GeoKrety.org wysłał Ci wiadomość za pośrednictwem Twojego profilu użytkownika."
+
+#: website/app-templates/smarty/emails/account-activation.tpl:4
+msgid "One step left to use GeoKrety.org."
+msgstr ""
+
+#: website/app-templates/smarty/emails/account-activation.tpl:7
+msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
+msgstr "Właśnie zarejestrowałeś się na GeoKrety.org. <strong> Musisz teraz aktywować swoje konto, aby móc z niego korzystać. </strong> skorzystaj z linku poniżej."
+
+#: website/app-templates/smarty/emails/account-activation.tpl:10
+msgid "Activate your account"
+msgstr "Aktywuj swoje konto"
+
+#: website/app-templates/smarty/emails/account-activation.tpl:15
+msgid "If your account is not activated within that time, then it will be automatically deleted."
+msgstr "Jeśli Twoje konto nie zostanie aktywowane w tym czasie, zostanie automatycznie usunięte."
+
+#: website/app-templates/smarty/emails/account-activation.tpl:19
+#: website/app-templates/smarty/emails/account-activated.tpl:19
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "Otrzymujesz tego e-maila, ponieważ właśnie zarejestrowała(e)ś się w naszej witrynie."
+
+#: website/app-templates/smarty/emails/cron-exception.tpl:4
+msgid "An exception occurred in a cron job"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
+msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
+msgstr "Ktoś lub Ty poprosił o zmianę adresu kontaktowego e-mail GeoKrety na Twój."
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
+msgid "Validate your new email address"
+msgstr "Potwierdź swój nowy adres e-mail"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
+msgid "This link is valid for %1."
+msgstr "Ten link jest ważny dla %1."
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
+msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
+msgstr "Jeśli nie poprosiłeś o to i nie wiesz, co to jest GeoKrety, zignoruj ten e-mail. Nigdy więcej o nas nie usłyszysz!"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
+msgid "You're getting this email because you've requested an email address change on our website."
+msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w naszej witrynie."
+
+#: website/app-templates/smarty/emails/account-activated.tpl:8
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr "Twoje konto na GeoKrety.org jest już w pełni funkcjonalne."
+
+#: website/app-templates/smarty/emails/account-activated.tpl:15
+msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:5
+msgid "Your GeoKrety watchlist"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:8
+msgid "You're getting this email because you've choose to receive daily mail updates."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:9
+msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:14
+msgid "Here is what changed recently."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:17
+msgid "Latest news"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:27
+msgid "GeoKrety dropped in your observation area"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Open interactive map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Observation area map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:36
+#: website/app-templates/smarty/emails/daily-mail.tpl:79
+#: website/app-templates/smarty/emails/daily-mail.tpl:125
+#: website/app-templates/smarty/emails/daily-mail.tpl:170
+msgid "GeoKret"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:37
+#: website/app-templates/smarty/emails/daily-mail.tpl:80
+#: website/app-templates/smarty/emails/daily-mail.tpl:126
+msgid "Position"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:38
+#: website/app-templates/smarty/emails/daily-mail.tpl:81
+#: website/app-templates/smarty/emails/daily-mail.tpl:127
+#: website/app-templates/smarty/emails/daily-mail.tpl:171
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
+#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:22
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
+#: website/app-templates/smarty/pages/news_details.tpl:20
+#: website/app-templates/smarty/pages/news_details.tpl:37
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
+#: website/app-templates/smarty/pages/home.tpl:39
+msgid "Comment"
+msgstr "Komentarz"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:39
+#: website/app-templates/smarty/emails/daily-mail.tpl:82
+#: website/app-templates/smarty/emails/daily-mail.tpl:128
+#: website/app-templates/smarty/emails/daily-mail.tpl:172
+msgid "Author"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:40
+msgid "Home distance"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:73
+msgid "My GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:78
+#: website/app-templates/smarty/emails/daily-mail.tpl:124
+msgid "Icon"
+msgstr "Ikona"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:83
+msgid "Distance since last move"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:119
+msgid "Watched GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:129
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:23
+#: website/app-templates/smarty/pages/user_inventory.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:23
+#: website/app-templates/smarty/pages/home.tpl:41
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
 msgid "Distance"
 msgstr "Dystans"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/emails/daily-mail.tpl:165
+msgid "Latest move comments"
+msgstr ""
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:15
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
+#: website/app-templates/smarty/pages/user_inventory.tpl:20
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:20
+#: website/app-templates/smarty/pages/home.tpl:37
+#: website/app-templates/smarty/pages/home.tpl:76
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
+#: website/app-templates/smarty/pages/mole_hole.tpl:38
+#: website/app-templates/smarty/pages/mole_hole.tpl:81
+msgid "ID"
+msgstr "ID"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:16
+#: website/app-templates/smarty/dialog/user_contact.tpl:23
+msgid "Subject"
+msgstr "Temat"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:17
+msgid "From"
+msgstr "Od"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:18
+#: website/app-templates/smarty/dialog/user_contact.tpl:16
+msgid "To"
+msgstr "Do"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:20
+msgid "Action"
+msgstr "Działanie"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:21
+msgid "Delete all mails"
+msgstr "Usuń wszystkie wiadomości"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:39
+msgid "Delete mail"
+msgstr "Usuń e-mail"
+
+#: website/app-templates/smarty/elements/move_comment.tpl:10
+#: website/app-templates/smarty/elements/news_comment.tpl:10
+msgid "Delete comment"
+msgstr "Usuń komentarz"
+
+#: website/app-templates/smarty/elements/version.tpl:3
+msgid "Deployed on %1"
+msgstr "Wdrożone na %1"
+
+#: website/app-templates/smarty/elements/news.tpl:7
+msgid "Unsubscribe from news"
+msgstr "Wypisz się z listy"
+
+#: website/app-templates/smarty/elements/news.tpl:11
+msgid "Subscribe to news"
+msgstr "Subskrybuj newsy"
+
+#: website/app-templates/smarty/elements/move.tpl:7
+msgid "Show move on map"
+msgstr "Pokaż ruch na mapie"
+
+#: website/app-templates/smarty/elements/move.tpl:64
+msgid "Report as missing"
+msgstr "Zgłoś zaginięcie"
+
+#: website/app-templates/smarty/elements/move.tpl:69
+#: website/app-templates/smarty/blocks/geokret/details.tpl:35
+#: website/app-templates/smarty/blocks/user/details.tpl:18
+msgid "Upload a picture"
+msgstr "Prześlij zdjęcie"
+
+#: website/app-templates/smarty/elements/move.tpl:73
+msgid "Write a comment"
+msgstr "Napisz komentarz"
+
+#: website/app-templates/smarty/elements/move.tpl:81
+msgid "Edit log"
+msgstr "Edytuj log"
+
+#: website/app-templates/smarty/elements/move.tpl:85
+msgid "Delete log"
+msgstr "Usuń log"
+
+#: website/app-templates/smarty/elements/credit.tpl:4
+msgid "%1 logo"
+msgstr "%1 logo"
+
+#: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:33
+#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:30
+#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:36
+msgid "Move this GeoKret"
+msgstr "Przenieś tego geokreta"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:3
+msgid "Found a GeoKret?"
+msgstr "Znalazłeś GeoKreta?"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:7
+msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
+msgstr "Proszę wprowadź <abbr title=\"%1\">Kod śledzenia</abbr> tutaj:"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:12
+msgid "Tracking code"
+msgstr "Kod śledzenia (Tracking Code)"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:15
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
+msgid "Log it!"
+msgstr "Zaloguj się!"
+
+#: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
+msgid "There is no pictures yet."
+msgstr "Nie ma jeszcze zdjęć."
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:20
+msgid "missing"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:22
+msgid "archived"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:27
+#: website/app-templates/smarty/blocks/user/details.tpl:7
+msgid "Send a message to %1"
+msgstr "Wyślij wiadomość do %1"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:32
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
+msgid "Edit GeoKret details"
+msgstr "Edytuj szczegóły GeoKreta"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:46
+#: website/app-templates/smarty/forms/geokret_label.tpl:24
+msgid "Reference number"
+msgstr "Numer identyfikacyjny"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:49
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+#: website/app-templates/smarty/forms/move.tpl:21
+#: website/app-templates/smarty/forms/geokret_label.tpl:31
+#: website/app-templates/smarty/pages/geokret_claim.tpl:15
+msgid "Tracking Code"
+msgstr "Kod śledzenia"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:30
+msgid "Total distance"
+msgstr "Dystans całkowity"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:54
+msgid "Places visited"
+msgstr "Odwiedzone miejsca"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:58
+msgid "Social share"
+msgstr "Udostępnij innym"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:60
+msgid "Share on Facebook"
+msgstr "Udostępnij na Facebooku"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:61
+msgid "Share on Twitter"
+msgstr "Opublikuj na Twitterze"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:62
+msgid "Share on Instagram"
+msgstr "Udostępnij na Instagramie"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:63
+#: website/app-templates/smarty/blocks/user/statpic.tpl:8
+msgid "Copy link to page"
+msgstr "Skopiuj link na stronę"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:64
+#: website/app-templates/smarty/blocks/user/statpic.tpl:9
+msgid "Copy to page as bbcode"
+msgstr "Kopiuj na stronę jako bbcode"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:66
+msgid "Country track"
+msgstr "Odwiedzone kraje"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
+msgid "Found it? Log it!"
+msgstr "Znalazłeś? Zaloguj!"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
+msgid "Please enter the Tracking Code here"
+msgstr "Proszę podaj tutaj Tracking Code"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:3
+msgid "Map"
+msgstr "Mapa"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:8
+msgid "Caption:"
+msgstr "Opis"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:9
+msgid "start"
+msgstr "start"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:10
+msgid "trip points"
+msgstr "punkty trasy"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:11
+msgid "recently seen"
+msgstr "ostatnio widziany"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:13
+msgid "Download the track as:"
+msgstr "Pobierz ślad jako:"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:17
+msgid "This geokret has not started yet"
+msgstr "Ten geokret jeszcze nie wystartował."
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:2
+msgid "Watchers"
+msgstr "Obserwujący"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:6
+msgid "Log this GeoKret"
+msgstr "Zaloguj tego geokreta"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:11
+msgid "Print a label for this GeoKret"
+msgstr "Wydrukuj etykietkę dla tego geokreta"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:18
+#: website/app-templates/smarty/navbar.tpl:95
+msgid "Statistics"
+msgstr "Statystyczki"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:25
+msgid "Adopt this GeoKret"
+msgstr "Adoptuj tego GeoKreta"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:27
+msgid "Login to claim this GeoKret"
+msgstr "Zaloguj się aby przywłaszczyć tego GeoKreta"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:34
+msgid "Mark this GeoKret as archived"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:34
+msgid "Archive this GeoKret"
+msgstr "Archiwizuj tego GeoKreta"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:40
+msgid "Email owner"
+msgstr "Właściciel emaila"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:46
+msgid "Make this GeoKret available for adoption by another user"
+msgstr "Udostępnij tego GeoKreta do adopcji przez innego użytkownika"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:47
+msgid "Transfer ownership"
+msgstr "Transferuj własność"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:58
+#: website/app-templates/smarty/navbar.tpl:56
+#: website/app-templates/smarty/pages/user_inventory.tpl:25
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
+msgid "Actions"
+msgstr "Akcje"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
+#: website/app-templates/smarty/forms/geokret.tpl:31
+#: website/app-templates/smarty/forms/geokret_label.tpl:36
+msgid "Mission"
+msgstr "Misja"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
+msgid "This GeoKret doesn't have a special mission…"
+msgstr "Ten GeoKret nie ma specjalnej misji…"
+
+#: website/app-templates/smarty/blocks/user/statpic.tpl:13
+msgid "Choose statpic"
+msgstr "Wybierz obrazek statystyk"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:11
+msgid "Subscribe to RSS channel"
+msgstr "Zasubskrybuj kanał RSS"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:15
+msgid "Password change"
+msgstr "Zmiana hasła"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:29
+msgid "Joined us"
+msgstr "Dołączył"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:31
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:33
+msgid "Language"
+msgstr "Język"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:33
+msgid "Nothing selected"
+msgstr "Nic nie wybrano"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:36
+msgid "Choose preferred language"
+msgstr "Zmień preferowany język"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:43
+#: website/app-templates/smarty/pages/contact_us.tpl:17
+msgid "Email"
+msgstr "e-mail"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:48
+msgid "Pending email validation, don't forget to click the link in validation mail!"
+msgstr "Oczekiwanie na weryfikację adresu e-mail, nie zapomnij kliknąć linku w wiadomości weryfikacyjnej!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:50
+msgid "No email address, please add one!"
+msgstr "Nie ma adresu e-mail, proszę dodaj go!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:53
+msgid "Update email address"
+msgstr "Zaktualizuj adres e-mail"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:58
+msgid "Secid"
+msgstr "Secid"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:61
+msgid "Used to authenticate in other applications. Keep it secret!"
+msgstr "Używany do autoryzacji w innych aplikacjach. Trzymaj go w sekrecie!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:62
+msgid "Generate a new secid"
+msgstr "Wygeneruj nowy secid"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:72
+msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
+msgstr "Chcesz zmienić swój nick bądź usunąć swoje konto? Wyślij nam <a href=\"%1\">maila</a>!"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:3
+msgid "Awards"
+msgstr "Nagrody"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:10
+msgid "No home coordinates have been defined."
+msgstr "Nie ustawiono domyślnych koordynatów domowych."
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:13
+#: website/app-templates/smarty/blocks/user/map_home.tpl:21
+msgid "Update home coordinates and obervation area"
+msgstr "Zaktualizuj współrzędne domowe i obszar obserwacji"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:14
+msgid "Define your home coordinates"
+msgstr "Zdefiniuj kordy domowe"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:20
+msgid "GeoKrety near home"
+msgstr "GeoKrety w pobliżu domu"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:4
+msgid "OAuth Connections"
+msgstr "Połączenia OAuth"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:17
+msgid "Disconnect from %1"
+msgstr "Odłącz od %1"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:18
+msgid "Disconnect"
+msgstr "Rozłącz"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect with %1"
+msgstr "Połącz z %1"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect"
+msgstr "Połącz"
+
+#: website/app-templates/smarty/blocks/user/badges.tpl:3
+msgid "Badges"
+msgstr "Odznaki"
+
+#: website/app-templates/smarty/blocks/user/badges.tpl:9
+msgid "No badge received yet."
+msgstr "Nie otrzymano jeszcze żadnych odznak."
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:3
+#: website/app-templates/smarty/navbar.tpl:60
+#: website/app-templates/smarty/forms/geokret.tpl:6
+#: website/app-templates/smarty/pages/geokret_create.tpl:3
+msgid "Create a new GeoKret"
+msgstr "Utwórz nowego GeoKreta"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:12
+msgid "View inventory"
+msgstr "Zobacz inwentarz"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:16
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:9
+msgid "Owned GeoKrety"
+msgstr "Posiadane GeoKrety"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:20
+#: website/app-templates/smarty/navbar-profile.tpl:20
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:9
+msgid "Watched GeoKrety"
+msgstr "Obserwowane GeoKrety"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:24
+msgid "Recently posted moves"
+msgstr "Ostatnio zalogowane ruchy"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:28
+msgid "Moves of owned GeoKrety"
+msgstr "Przenosiny posiadanych GeoKretów"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:32
+msgid "Posted pictures"
+msgstr "Dodane zdjęcia"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:36
+msgid "Owned GeoKrety pictures"
+msgstr "Zdjęcia posiadanych GeoKretów"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:40
+#: website/app-templates/smarty/navbar-profile.tpl:28
+msgid "Where are my GeoKrety?"
+msgstr "Gdzie są moje GeoKrety?"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "User stats"
+msgstr "Statystyki użytkownika"
+
+#: website/app-templates/smarty/chunks/social_groups.tpl:5
+msgid "languages"
+msgstr "języki"
+
+#: website/app-templates/smarty/chunks/social_groups.tpl:6
+msgid "platform"
+msgstr "platforma"
+
+#: website/app-templates/smarty/chunks/social_groups.tpl:7
+msgid "group name"
+msgstr "nazwa grupy"
+
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
+msgid "Remove this GeoKret from the selection"
+msgstr "Usuń tego GeoKreta z zaznaczenia"
+
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
+msgid "Never moved"
+msgstr "Jeszcze nieprzeniesiony"
+
+#: website/app-templates/smarty/navbar-profile.tpl:3
+msgid "Admin"
+msgstr "Admin"
+
+#: website/app-templates/smarty/navbar-profile.tpl:7
+#: website/app-templates/smarty/navbar-profile.tpl:16
+msgid "My profile"
+msgstr "Mój profil"
+
+#: website/app-templates/smarty/navbar-profile.tpl:18
+msgid "My inventory"
+msgstr "Inwentarz"
+
+#: website/app-templates/smarty/navbar-profile.tpl:19
+msgid "My GeoKrety"
+msgstr "Moje geokrety"
+
+#: website/app-templates/smarty/navbar-profile.tpl:22
+msgid "My recent moves"
+msgstr "Moje najnowsze logi"
+
+#: website/app-templates/smarty/navbar-profile.tpl:23
+msgid "Recent moves of my GeoKrety"
+msgstr "Ostatnie ruchy moich geokretów"
+
+#: website/app-templates/smarty/navbar-profile.tpl:25
+msgid "My photos"
+msgstr "Moje fotki"
+
+#: website/app-templates/smarty/navbar-profile.tpl:26
+msgid "Photos of my GeoKrety"
+msgstr "Fotki moich geokretów"
+
+#: website/app-templates/smarty/navbar-profile.tpl:30
+msgid "Sign out"
+msgstr "Wyloguj się"
+
+#: website/app-templates/smarty/navbar-profile.tpl:48
+#: website/app-templates/smarty/dialog/login_simple.tpl:11
+#: website/app-templates/smarty/dialog/login.tpl:38
+#: website/app-templates/smarty/navbar.tpl:32
+#: website/app-templates/smarty/pages/registration_validated.tpl:13
+msgid "Sign in"
+msgstr "Zaloguj się"
+
+#: website/app-templates/smarty/navbar-profile.tpl:53
+msgid "Create account"
+msgstr "Rejestracja"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
+msgid "Offer this GeoKret for adoption?"
+msgstr "Chcesz zaoferować tego GeoKreta do adopcji?"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
+msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
+msgstr "Pozwoli to innemu użytkownikowi, który zna Kod śledzenia (TC) i Kod właściciela, stać się nowym właścicielem tego GeoKreta."
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:14
+msgid "Back to GeoKret page"
+msgstr "Powrót do strony GeoKretów"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
+#: website/app-templates/smarty/dialog/user_update_password.tpl:50
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:65
+#: website/app-templates/smarty/dialog/picture_edit.tpl:45
+#: website/app-templates/smarty/dialog/picture_delete.tpl:14
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:20
+#: website/app-templates/smarty/dialog/user_contact.tpl:47
+#: website/app-templates/smarty/dialog/move_delete.tpl:22
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:14
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:33
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:32
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:53
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:20
+#: website/app-templates/smarty/dialog/news_subscription.tpl:23
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:25
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:13
+#: website/app-templates/smarty/dialog/user_update_email.tpl:51
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:13
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:32
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
+#: website/app-templates/smarty/pages/email_change.tpl:33
+#: website/app-templates/smarty/pages/email_change.tpl:37
+#: website/app-templates/smarty/pages/email_change_token.tpl:32
+#: website/app-templates/smarty/pages/email_change_token.tpl:36
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:65
+msgid "Dismiss"
+msgstr "Anuluj"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:17
+msgid "Generate an Owner Code"
+msgstr "Generuj Kod Właściciela"
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
+msgid "Choose your preferred language"
+msgstr "Wybierz preferowany język interfejsu"
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:40
+msgid "This will be the default language when you log in and the main language in the emails you may receive."
+msgstr "Będzie to domyślny język podczas logowania i główny język w otrzymywanych wiadomościach e-mail."
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:25
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:14
+#: website/app-templates/smarty/dialog/user_update_password.tpl:49
+#: website/app-templates/smarty/dialog/user_contact.tpl:46
+#: website/app-templates/smarty/dialog/user_update_email.tpl:50
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:64
+msgid "Back to user page"
+msgstr "Powrót do strony użytkownika"
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
+#: website/app-templates/smarty/dialog/user_update_password.tpl:52
+#: website/app-templates/smarty/dialog/user_update_email.tpl:53
+#: website/app-templates/smarty/pages/password_change.tpl:56
+msgid "Change"
+msgstr "Zmień"
+
+#: website/app-templates/smarty/dialog/info.tpl:13
+msgid "Acknowledge"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
+msgid "Refresh your secid?"
+msgstr "Odświeżyć secid?"
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
+msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
+msgstr "Odświeżenie secid odłączy wszystkie aplikacje, które zostały połączone z Twoim kontem. Będziesz musiał je ponownie uwierzytelnić."
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:17
+msgid "Refresh"
+msgstr "Odśwież"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:8
+#: website/app-templates/smarty/pages/password_change.tpl:3
+#: website/app-templates/smarty/pages/password_change.tpl:13
+msgid "Change your password"
+msgstr "Zmień swoje hasło"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:15
+msgid "Current password"
+msgstr "Aktualne hasło"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:17
+msgid "Old password"
+msgstr "Stare hasło"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:22
+#: website/app-templates/smarty/dialog/user_update_password.tpl:24
+#: website/app-templates/smarty/pages/password_change.tpl:41
+#: website/app-templates/smarty/pages/password_change.tpl:43
+msgid "New password"
+msgstr "Nowe hasło"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:29
+#: website/app-templates/smarty/dialog/user_update_password.tpl:31
+#: website/app-templates/smarty/forms/registration.tpl:26
+#: website/app-templates/smarty/forms/registration.tpl:28
+#: website/app-templates/smarty/pages/password_change.tpl:48
+#: website/app-templates/smarty/pages/password_change.tpl:50
+msgid "Confirm password"
+msgstr "Potwierdź hasło"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:37
+msgid "Read more about choosing good passwords:"
+msgstr "Czytaj więcej o wyborze dobrego hasła:"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:39
+msgid "Choosing Good Passwords -- A User Guide"
+msgstr "Wybierz dobre hasło - instrukcja"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:40
+msgid "How to Write Good Passwords"
+msgstr "Jak napisać dobre hasło"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:41
+msgid "Password strength"
+msgstr "Siła hasła"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:3
+#: website/app-templates/smarty/forms/move.tpl:28
+msgid "Select GeoKrety from inventory"
+msgstr "Wybierz GeoKreta z inwentarza"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:9
+msgid "Only %1 GeoKrety can be processed at a time."
+msgstr "Tylko %1 GeoKretów może być przetwarzanych jednocześnie."
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
+msgid "Filter"
+msgstr "Filtr"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
+msgid "Name or ID"
+msgstr "Nazwa lub ID"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
+#: website/app-templates/smarty/forms/geokret_label.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:17
+#: website/app-templates/smarty/pages/user_inventory.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:77
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
+msgid "Owner"
+msgstr "Właściciel"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
+msgid "Select all (but max %1)"
+msgstr "Wybierz wszystkie (ale nie więcej niż %1)"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:35
+msgid "Choose"
+msgstr "Wybierz"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:60
+msgid "Your inventory is empty."
+msgstr "Twój ekwipunek jest pusty."
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:67
+msgid "Select <span class=\"badge\">%1</span>"
+msgstr "Wybierz <span class=\"badge\">%1</span>"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:6
+msgid "Manage picture"
+msgstr "Zarządzaj zdjęciem"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:12
+msgid "Caption"
+msgstr "Podpis"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:24
+msgid "Remember caption"
+msgstr "Zapamiętaj podpis"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:27
+msgid "Remember the caption for the next %1 minutes"
+msgstr "Zapamiętaj podpis na następne %1 minut"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:46
+#: website/app-templates/smarty/forms/geokret.tpl:51
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:27
+msgid "Save"
+msgstr "Zapisz"
+
+#: website/app-templates/smarty/dialog/picture_delete.tpl:4
+msgid "Do you really want to delete this picture?"
+msgstr "Czy na pewno chcesz usunąć to zdjęcie?"
+
+#: website/app-templates/smarty/dialog/picture_delete.tpl:15
+#: website/app-templates/smarty/dialog/move_delete.tpl:23
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
+msgid "Delete"
+msgstr "Usuń"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
+msgid "Commenting a GeoKret move"
+msgstr "Komentujemy ruch GeoKreta"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
+#: website/app-templates/smarty/pages/news_details.tpl:22
+msgid "Your comment"
+msgstr "Komentarz"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
+msgid "Declare missing"
+msgstr "Zgłoś zaginięcie"
+
+#: website/app-templates/smarty/dialog/login_simple.tpl:5
+#: website/app-templates/smarty/dialog/login_simple.tpl:6
+#: website/app-templates/smarty/dialog/login.tpl:13
+#: website/app-templates/smarty/dialog/login.tpl:15
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:10
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:12
+#: website/app-templates/smarty/forms/registration.tpl:4
+#: website/app-templates/smarty/forms/registration.tpl:6
+#: website/app-templates/smarty/forms/move.tpl:239
+msgid "Username"
+msgstr "Użytkownik"
+
+#: website/app-templates/smarty/dialog/login_simple.tpl:8
+#: website/app-templates/smarty/dialog/login_simple.tpl:9
+#: website/app-templates/smarty/dialog/login.tpl:19
+#: website/app-templates/smarty/dialog/login.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:19
+#: website/app-templates/smarty/forms/registration.tpl:21
+msgid "Password"
+msgstr "Hasło"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:9
+msgid "Contact user"
+msgstr "Kontakt z użytkownikiem"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:18
+msgid "%1 (speak %2)"
+msgstr "%1 (używa języka %2)"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:25
+msgid "Message subject"
+msgstr "Temat wiadomości"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:30
+msgid "Message"
+msgstr "Wiadomość"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:32
+msgid "Message to user"
+msgstr "Wiadomość do użytkownika"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:49
+msgid "Send message"
+msgstr "Wyślij wiadomość"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:4
+msgid "Do you really want to delete this move?"
+msgstr "Czy na pewno chcesz usunąć ten ruch?"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:14
+msgid "Deleting this Move will delete attached pictures and the main avatar!"
+msgstr "Usunięcie tego Ruchu usunie załączone zdjęcia i główny awatar!"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:16
+msgid "Deleting this Move will delete attached pictures!"
+msgstr "Usunięcie tego przenoszenia usunie załączone zdjęcia!"
+
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:4
+msgid "Do you want to set this picture as main avatar?"
+msgstr "Czy chcesz ustawić to zdjęcie jako główny awatar?"
+
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:67
+msgid "Define"
+msgstr "Zdefiniuj"
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
+msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
+msgstr "Zamierzasz odłączyć konto GeoKrety od konta %1 . Nie będziesz mógł już zalogować się za pośrednictwem tego dostawcy."
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:8
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:26
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:8
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:24
+msgid "Detaching OAuth provider"
+msgstr "Odłączanie dostawcy OAuth"
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:16
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:34
+msgid "Detach"
+msgstr "Detach"
+
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:2
+msgid "You are not connected to this OAuth provider."
+msgstr "Nie jesteś połączony z tym dostawcą OAuth."
+
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:15
+msgid "Back to my profile"
+msgstr "Wróć do mojego profilu"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
+msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+msgstr "Ten dokument określa warunki korzystania z „<a href=\"%1\">geokrety.org </a>” - dobrowolnie obsługiwanej internetowej usługi geocaching dostępnej pod adresem <a href=\"%1\">geokrety.org </a > (zwane dalej „Usługą”). Każda osoba rejestrująca konto (zwana dalej „Użytkownikiem”) wyraża zgodę na przestrzeganie zasad niniejszego regulaminu, poczynając od początku procedury rejestracji."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
+msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
+msgstr "Usługa jest monitorowana i nadzorowana przez grupę wspierających wolontariuszy, zwaną dalej zespołem GK. Zespół GK nie ponosi odpowiedzialności za treści zamieszczane przez użytkowników w Serwisie ani za szkody wynikające z wykorzystania informacji z Usługi."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
+msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
+msgstr "Musisz upewnić się, że informacje publikowane przez użytkownika w serwisie <strong> nie mogą wpływać na istniejące prawo </strong>. W szczególności treści publikowane przez użytkownika nie mogą naruszać praw autorskich osób trzecich. Cała zawartość (w tym opisy GeoKretów, ilustracje i wszystkie ich wpisy w dziennikach) są udostępniane przez opublikowanie ich w Serwisie przez Użytkownika <strong> na licencji Creative Commons </strong> BY-NC-SA wersja 2.5, którego pełna treść jest dostępna online na <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\"> https://creativecommons.org/licenses/by-nc-sa/2.5/ </a>. Dopuszczalne są również treści należące do domeny publicznej. Użytkownik odpowiada bezpośrednio przed właścicielem praw autorskich za wszelkie naruszenia."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
+msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+msgstr "Nie udzielamy żadnych gwarancji ani gwarancji co do dokładności, terminowości, działania, kompletności lub przydatności informacji i materiałów znalezionych lub oferowanych na tej stronie do określonego celu. Użytkownik przyjmuje do wiadomości, że takie informacje i materiały mogą zawierać nieścisłości lub błędy, a my jednoznacznie wyłączamy odpowiedzialność za takie niedokładności lub błędy w najszerszym zakresie dozwolonym przez prawo."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
+msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
+msgstr "Treści publikowane przez ciebie na stronie nie mogą zawierać wulgaryzmów, treści obraźliwych ani nielegalnych."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:26
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:45
+#: website/app-templates/smarty/navbar.tpl:90
+msgid "Terms of use"
+msgstr "Zasady użytkowania"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:35
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:54
+msgid "I agree with the terms"
+msgstr "Zgadzam się z warunkami"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:6
+msgid "Do you really want to unsubscribe from this news?"
+msgstr "Czy na pewno chcesz zaprzestać subskrypcji tych newsów?"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:8
+msgid "Subscribe to this news?"
+msgstr "Czy chcesz subskrybować te newsy?"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:26
+msgid "Unsubscribe"
+msgstr "Zakończ subskrybcję"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:28
+msgid "Subscribe"
+msgstr "Subskrybuj"
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
+msgid "Mark this GeoKret as archived?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:10
+msgid "You are about the archive this GeoKret."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:11
+msgid "This is useful if you think this GeoKret has been destroyed."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:13
+msgid "It will not appear anymore in your active inventory."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:14
+msgid "It will not appear as present in a cache."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:16
+msgid "If someone discover it later, it will be automatically reactivated."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
+msgid "Archive"
+msgstr "Zarchiwizuj"
+
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
+msgid "Do you really want to delete this move comment?"
+msgstr "Czy na pewno chcesz usunąć ten komentarz?"
+
+#: website/app-templates/smarty/dialog/login.tpl:28
+msgid "Remember me"
+msgstr "Pamiętaj mnie"
+
+#: website/app-templates/smarty/dialog/login.tpl:31
+msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
+msgstr "Używamy ciasteczek tylko aby Twoja sesja była aktywna. Przeczytaj więcej o naszej <a href=\"%1\" target=\"_blank\">polityce ciasteczek</a>."
+
+#: website/app-templates/smarty/dialog/login.tpl:39
+msgid "No account yet ? Register now!"
+msgstr "Nie masz jeszcze konta? Zarejestruj się teraz!"
+
+#: website/app-templates/smarty/dialog/login.tpl:42
+msgid "Forgot your password?"
+msgstr "Nie pamiętasz hasła?"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:4
+msgid "Update your email address"
+msgstr "Zmień swój adres email"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/dialog/user_update_email.tpl:12
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:18
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:20
+#: website/app-templates/smarty/forms/registration.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:13
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/pages/password_recovery.tpl:26
+msgid "Email address"
+msgstr "Adres email"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:17
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:31
+#: website/app-templates/smarty/forms/registration.tpl:48
+msgid "Yes, I want to receive email alerts (sent once a day)."
+msgstr "Tak, chcę otrzymywać powiadomienia przez email (wysyłane raz dziennie)."
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:23
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:14
+msgid "The main purpose of collecting email is to permit password recovery."
+msgstr "Głównym celem zbierania wiadomości e-mail jest umożliwienie odzyskania hasła."
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:27
+msgid "Email alerts may contain any of the following:"
+msgstr "Wpisy pocztowe mogą zawierać:"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:29
+msgid "GeoKrety.org news"
+msgstr "Nowości na Geokrety.org"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:30
+msgid "Recent logs on:"
+msgstr "Ostatnie logi dla:"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:32
+#: website/app-templates/smarty/dialog/user_update_email.tpl:38
+msgid "your own GeoKrety"
+msgstr "twoje własne GeoKrety"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:33
+#: website/app-templates/smarty/dialog/user_update_email.tpl:39
+msgid "GeoKrety that you watch"
+msgstr "GeoKrety, które obserwujesz"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:34
+msgid "any GeoKrety logged near your home location"
+msgstr "GeoKrety zalogowane niedaleko twojej lokalizacji domowej"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:36
+msgid "Comments posted to any of the following:"
+msgstr "„Technologia”, zgodnie z uwagą ogólną do technologii, służąca do „rozwoju”, „produkcji” lub „użytkowania” sprzętu lub „oprogramowania” wyszczególnionych w pozycji 3A001, 3A001, 3A002, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A003, 3A004, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A005, 3A007, 3A005, 3A007, 3A005, 3A007, 3A003, 3A003, 3A003, 3A003, 3A007, 3A003, 3A007, 3A007, 3A007, 3A003, 3A003,"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:40
+msgid "your logs"
+msgstr "twoje logi"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:41
+msgid "your comments"
+msgstr "twoje komentarze"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:42
+msgid "news posts you have are subscribed to"
+msgstr "nowe posty, gdy takie subskrybujesz"
+
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
+msgid "Do you really want to delete this news comment?"
+msgstr "Czy naprawdę chcesz usunąć ten komentarz?"
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:3
+msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "Przepraszamy, ale na Twoim koncie nie ma zarejestrowanego adresu e-mail. Nie będziesz w stanie odzyskać utraconego hasła! Ponadto nie będziesz otrzymywać codziennych powiadomień o Twoich ani o obserwowanych GeoKretach."
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:4
+msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr "Rozważ <a href=\"%1\">dodanie adresu e-mail</a> lub <a href=\"%2\">powiązanie konta</a> z dostawcą OAuth."
+
+#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
+msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
+msgstr "Masz oczekującą weryfikację adresu e-mail. Nie zapomnij kliknąć na link znajdujący się w wiadomości e-mail, aby zakończyć procedurę. Link wygaśnie %1!"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "Nawet jeśli - obecnie - nie ma takiego wymogu to zalecamy ci <a href=\"%1\">zalogowanie</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
+msgstr "Nie wahaj się <a href=\"%1\">utworzyć konto</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "Dzięki temu zyskasz możliwość zarządzania swoimi zasobami GeoKretów, dodawania zdjęć, edycji logów i, oczywiście, tworzenia swoich własnych GeoKretów!"
+
+#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
+msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
+msgstr "Przepraszamy, ale mamy problemy z wysyłaniem powiadomień e-mail. Czy twój e-mail jest prawidłowy i aktywny?"
+
+#: website/app-templates/smarty/banners/flash_messages.tpl:3
+#: website/app-templates/smarty/banners/contribute.tpl:2
+msgid "Close"
+msgstr "Zamknij"
+
+#: website/app-templates/smarty/banners/is_not_prod.tpl:3
+msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr "To nie jest instancja produkcji. Jeśli nie jesteś testerem, to prawdopodobnie chcesz przejść na naszą <a href=\"https://geokrety.org\">stronę produkcyjną</a>."
+
+#: website/app-templates/smarty/banners/site_intro.tpl:3
+msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
+msgstr "GeoKrety to bezpłatna usługa online do śledzenia obiektów w grach GPS, takich jak geocaching lub opencaching. Możesz śledzić z nami małe przedmioty, książki, monety, zwierzęta domowe lub ludzi… <a href=\"%1\">przeczytaj więcej</a>."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
+msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
+msgstr "Ustawiłeś tego GeoKreta do adopcji. Kod właściciela to: <strong>%1</strong>. Podaj go wraz z kodem śledzenia <strong>%2</strong> użytkownikowi, który przyjmie Twój GeoKret."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
+msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
+msgstr "Ten GeoKret jest dostępny do przyjęcia. Jeśli aktualny właściciel dał Ci kod śledzenia i kod właściciela, możesz <a href=\"%1\">odebrać</a> tego GeoKreta."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
+msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+msgstr "Ten GeoKret jest dostępny do adopcji. Proszę <a href=\"%1\">zaloguj się</a>."
+
+#: website/app-templates/smarty/banners/donate.tpl:2
+msgid "Enjoying GeoKrety.org?"
+msgstr "Lubisz GeoKrety?"
+
+#: website/app-templates/smarty/banners/donate.tpl:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/donate.tpl:8
+msgid "Donate"
+msgstr ""
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:2
+msgid "Some statistics"
+msgstr "Statystyczki"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:6
+msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
+msgstr "<strong>%1</strong> zarejestrowanych GeoKretów, <strong>%2</strong> GeoKretów ukrytych przez <strong>%3</strong> użytkowników."
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:13
+msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
+msgstr ""
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:21
+msgid "And that's thanks to you! Congratulation!"
+msgstr "I to dzięki tobie! Gratulacje!"
+
+#: website/app-templates/smarty/banners/contribute.tpl:3
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "Ta gałąź 🥦 jest aktywnie rozwijana 👨‍💻, jeśli znajdziesz błędy 🐛, sprawdź proszę 👀 <a href=\"%1\" target=\"_blank\">zgłoszone problemy ♻️ na GitHubie %2</a> i czuj się wolny 🈚 w zgłoszeniu nowego 🆕. (Prosimy poruszać jeden błąd w jednym zgłoszeniu 🙏)"
+
+#: website/app-templates/smarty/navbar.tpl:6
+msgid "Toggle navigation"
+msgstr "Przełącz nawigację"
+
+#: website/app-templates/smarty/navbar.tpl:16
+#: website/app-templates/smarty/navbar.tpl:51
+#: website/app-templates/smarty/navbar.tpl:58
+#: website/app-templates/smarty/pages/geokret_move.tpl:3
+msgid "Log a GeoKret"
+msgstr "Zaloguj GeoKreta"
+
+#: website/app-templates/smarty/navbar.tpl:47
+#: website/app-templates/smarty/footer.tpl:3
+msgid "Home"
+msgstr "Kopiec"
+
+#: website/app-templates/smarty/navbar.tpl:48
+#: website/app-templates/smarty/footer.tpl:5
+#: website/app-templates/smarty/pages/news_list.tpl:3
+#: website/app-templates/smarty/pages/home.tpl:24
+msgid "News"
+msgstr "Nowości"
+
+#: website/app-templates/smarty/navbar.tpl:61
+#: website/app-templates/smarty/pages/geokret_claim.tpl:3
+#: website/app-templates/smarty/pages/geokret_claim.tpl:8
+msgid "Claim a GeoKret"
+msgstr "Przejmij Geokreta"
+
+#: website/app-templates/smarty/navbar.tpl:64
+msgid "Advanced search"
+msgstr "Wyszukiwanie zaawansowane"
+
+#: website/app-templates/smarty/navbar.tpl:65
+msgid "Photo gallery"
+msgstr "Fotki"
+
+#: website/app-templates/smarty/navbar.tpl:68
+msgid "GeoKrety Map"
+msgstr "Mapa GeoKretów"
+
+#: website/app-templates/smarty/navbar.tpl:75
+msgid "Currently selected language"
+msgstr "Aktualnie wybrany język"
+
+#: website/app-templates/smarty/navbar.tpl:86
+#: website/app-templates/smarty/navbar.tpl:88
+#: website/app-templates/smarty/pages/help.tpl:3
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:39
+msgid "Help"
+msgstr "Pomoc"
+
+#: website/app-templates/smarty/navbar.tpl:89
+msgid "Moleholes and GK hotels"
+msgstr "GeoHotel"
+
+#: website/app-templates/smarty/navbar.tpl:91
+#: website/app-templates/smarty/pages/press_corner.tpl:3
+#: website/app-templates/smarty/pages/press_corner.tpl:9
+msgid "Press corner"
+msgstr "Kącik prasowy"
+
+#: website/app-templates/smarty/navbar.tpl:93
+msgid "GK interface / API"
+msgstr "GK interfejs / API"
+
+#: website/app-templates/smarty/navbar.tpl:97
+#: website/app-templates/smarty/pages/downloads.tpl:3
+msgid "Downloads"
+msgstr "Pobierz"
+
+#: website/app-templates/smarty/navbar.tpl:98
+msgid "GeoKrety Toolbox"
+msgstr "Narzędzia GeoKretów"
+
+#: website/app-templates/smarty/navbar.tpl:99
+msgid "Waypoint resolver"
+msgstr "Rozdzielczość punktów drogi"
+
+#: website/app-templates/smarty/footer.tpl:4
+msgid "About"
+msgstr "O nas"
+
+#: website/app-templates/smarty/footer.tpl:6
+msgid "Contact"
+msgstr "Kontakt"
+
+#: website/app-templates/smarty/footer.tpl:10
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "Wydano pod <a id=\"footer-license\" href=\"%1\">licencją MIT</a>"
+
+#: website/app-templates/smarty/footer.tpl:13
+msgid "Leave in-context translation"
+msgstr "Opuść tłumaczenie kontekstowe"
+
+#: website/app-templates/smarty/footer.tpl:15
+msgid "in-context translation"
+msgstr "tłumaczenie kontekstowe"
+
+#: website/app-templates/smarty/footer.tpl:19
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr "Zaprojektowane z <abbr title=\"love\">💗</abbr> przez <a id=\"footer-team\" href=\"%1\">Zespół GeoKretów</a>"
+
+#: website/app-templates/smarty/macros/pagination.tpl:5
+msgid "First"
+msgstr "Pierwszy"
+
+#: website/app-templates/smarty/macros/pagination.tpl:17
+msgid "Last [%1]"
+msgstr "Ostatni [%1]"
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:5
+msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
+msgstr "Jeśli posiadasz już konto na Geokrety. rg, najpierw <a href=\"%2\">zaloguj się</a> , a następnie połącz swoje konto z %1 ze strony ustawień użytkownika. W innym przypadku wybierz nazwę użytkownika, aby kontynuować."
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:32
+#: website/app-templates/smarty/forms/registration.tpl:49
+msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
+msgstr "Powiadomienia e-mail mogą zawierać informacje o podróży GeoKretów, wiadomości, komentarze…"
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:44
+#: website/app-templates/smarty/forms/registration.tpl:60
+msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
+msgstr "Tak, akceptuję <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">warunki użytkowania</a>."
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:61
+#: website/app-templates/smarty/forms/registration.tpl:77
+msgid "Register"
+msgstr "Zarejestruj się"
+
+#: website/app-templates/smarty/forms/geokret.tpl:4
+msgid "Edit a GeoKret"
+msgstr "Edytuj tego GeoKreta"
+
+#: website/app-templates/smarty/forms/geokret.tpl:13
+#: website/app-templates/smarty/forms/geokret.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:8
+#: website/app-templates/smarty/forms/geokret_label.tpl:10
+msgid "GeoKret name"
+msgstr "Nazwa GeoKreta"
+
+#: website/app-templates/smarty/forms/geokret.tpl:20
+msgid "GeoKret type"
+msgstr "Typ GeoKreta"
+
+#: website/app-templates/smarty/forms/geokret.tpl:33
+#: website/app-templates/smarty/forms/geokret_label.tpl:38
+msgid "What is this GeoKret mission?"
+msgstr "Jaka jest misja tego GeoKreta?"
+
+#: website/app-templates/smarty/forms/geokret.tpl:41
+msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
+msgstr "Spowoduje to utworzenie pierwszych \"odwiedzin\" Twojego GeoKreta, oznaczając jego punkt początkowy."
+
+#: website/app-templates/smarty/forms/geokret.tpl:42
+msgid "Set my home coordinates as a starting point."
+msgstr "Ustaw moje współrzędne domowe jako punkt startowy."
+
+#: website/app-templates/smarty/forms/geokret.tpl:51
+msgid "Create"
+msgstr "Utwórz"
+
+#: website/app-templates/smarty/forms/move.tpl:11
+msgid "Identify GeoKret"
+msgstr "Identyfikacja GeoKreta"
+
+#: website/app-templates/smarty/forms/move.tpl:30
+msgid "Verify tracking code"
+msgstr "Zweryfikuj tracking code"
+
+#: website/app-templates/smarty/forms/move.tpl:33
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "%1 znakowy kod z <em>etykiety GeoKreta</em>. <u>Nie używaj tutaj identyfikatora GeoKreta zaczynającego się od 'GK'</u>"
+
+#: website/app-templates/smarty/forms/move.tpl:43
+#: website/app-templates/smarty/forms/move.tpl:118
+#: website/app-templates/smarty/forms/move.tpl:205
+msgid "Next"
+msgstr "Następny"
+
+#: website/app-templates/smarty/forms/move.tpl:54
+msgid "Log type"
+msgstr "Typ logu"
+
+#: website/app-templates/smarty/forms/move.tpl:66
+msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
+msgstr "Wybierz typ akcji dokonanej na GeoKrecie. Aby uzyskać więcej informacji, odwiedź stronę pomocy."
+
+#: website/app-templates/smarty/forms/move.tpl:77
+msgid "When you've left a GeoKret in a cache"
+msgstr "Jeśli zostawiłeś GeoKreta w keszu."
+
+#: website/app-templates/smarty/forms/move.tpl:78
+msgid "I've dropped GeoKret"
+msgstr "Wrzuciłem GeoKreta"
+
+#: website/app-templates/smarty/forms/move.tpl:84
+msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
+msgstr "Kiedy zabrałeś Geokreta z kesza i nie zamierzasz umieścić go <i>od razu</i> w innym keszu."
+
+#: website/app-templates/smarty/forms/move.tpl:85
+msgid "I've grabbed GeoKret"
+msgstr "Zabrałem GeoKreta"
+
+#: website/app-templates/smarty/forms/move.tpl:91
+msgid "When you've met a GeoKret in a cache but haven't taken it with you"
+msgstr "Kiedy spotkałeś GeoKreta w keszu, ale nie zabrałeś go ze sobą."
+
+#: website/app-templates/smarty/forms/move.tpl:92
+msgid "I've met GeoKret"
+msgstr "Spotkałem GeoKreta"
+
+#: website/app-templates/smarty/forms/move.tpl:98
+msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
+msgstr "Kiedy masz GeoKreta ze sobą i odwiedziliście miejsce, jednak nie wrzuciłeś go do skrzynki, tylko dalej pozostaje w Twoim ekwipunku; tak, jakbyś wrzucił i zabrał."
+
+#: website/app-templates/smarty/forms/move.tpl:99
+msgid "I've dipped a GeoKret"
+msgstr "Kret odwiedził"
+
+#: website/app-templates/smarty/forms/move.tpl:105
+msgid "When you want to write a comment :)"
+msgstr "Jeśli chcesz dopisać tylko komentarz. :)"
+
+#: website/app-templates/smarty/forms/move.tpl:129
+msgid "New location"
+msgstr "Nowa lokalizacja"
+
+#: website/app-templates/smarty/forms/move.tpl:139
+msgid "Waypoint"
+msgstr "Punkt orientacyjny"
+
+#: website/app-templates/smarty/forms/move.tpl:142
+msgid "eg. GC1AQ2N"
+msgstr "np. GC1AQ2N"
+
+#: website/app-templates/smarty/forms/move.tpl:147
+msgid "Lookup opencaching cache by name"
+msgstr "Wyszukaj skrzynkę opencaching według nazwy"
+
+#: website/app-templates/smarty/forms/move.tpl:152
+msgid "eg.: GC1AQ2N, OP069B, OC033A…"
+msgstr "np.: GC1AQ2N, OP069B, OC033A..."
+
+#: website/app-templates/smarty/forms/move.tpl:164
+msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
+msgstr "Wprowadź nazwę skrzynki <strong> Nie działa na skrzynkach GC </strong>"
+
+#: website/app-templates/smarty/forms/move.tpl:178
+msgid "Coordinates"
+msgstr "Współrzędne"
+
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Additional data"
+msgstr "Informacje dodatkowe"
+
+#: website/app-templates/smarty/forms/move.tpl:224
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+msgid "Date"
+msgstr "Data operacji"
+
+#: website/app-templates/smarty/forms/move.tpl:241
+msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
+msgstr "To może być Twój:<br />- login geocaching/opencaching<br />- imię<br />- ksywka, etc."
+
+#: website/app-templates/smarty/forms/move.tpl:251
+msgid "It is always nice to receive a little message ;)"
+msgstr "Zawsze jest miło dostać małą wiadomość ;)"
+
+#: website/app-templates/smarty/forms/move.tpl:274
+msgid "Post your log"
+msgstr "Wyślij swój dziennik"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:3
+msgid "Generate a GeoKret Label"
+msgstr "Generuj etykietę GeoKreta"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:22
+#: website/app-templates/smarty/forms/geokret_label.tpl:29
+msgid "Reference numbers"
+msgstr "Numery referencyjne"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:43
+msgid "Label template"
+msgstr "Wzór etykietki"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:54
+msgid "Label help languages"
+msgstr "Oznacz języki pomocy"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:62
+msgid "Note1: not all label templates support this feature and when supported, english is always present."
+msgstr "Uwaga1: nie wszystkie szablony etykiet obsługują tę funkcję i gdy są obsługiwane, język angielski jest zawsze obecny."
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:69
+msgid "Generate as .png"
+msgstr "Generuj jako .png"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:70
+msgid "Generate as .svg"
+msgstr "Generuj jako .svg"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:71
+msgid "Generate as .pdf"
+msgstr "Generuj jako .pdf"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:80
+#: website/app-templates/smarty/forms/geokret_label.tpl:83
+#: website/app-templates/smarty/forms/geokret_label.tpl:84
+msgid "GeoKret label preview"
+msgstr "Podgląd etykiety GeoKreta"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
+msgid "GeoKrety visiting the cache %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:20
+msgid "Name"
+msgstr "Nazwa"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
+msgid "Cache"
+msgstr "Kesz"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:3
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:9
 msgid "%1's recent moves"
 msgstr "%1 najnowsze logi"
 
-#: smarty/pages:21 smarty/pages:33 smarty/pages:22
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:38
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
 msgid "Spotted in"
 msgstr "Widziany w"
 
-#: smarty/pages:23 smarty/pages:22 smarty/pages:35
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:23
+#: website/app-templates/smarty/pages/user_inventory.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:22
+#: website/app-templates/smarty/pages/home.tpl:40
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
 msgid "Last move"
 msgstr "Ostatnie logi"
 
-#: smarty/pages:24 smarty/pages:34 smarty/pages:25
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
 msgid "Caches visited count"
 msgstr "Liczba odwiedzonych skrzynek"
 
-#: smarty/pages:38
-msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
-msgstr "Nie przeniesiono jeszcze żadnych GeoKretów. Sprawdź <a href=\"%1\">mapę</a> i spróbuj znaleźć GeoKreta w pobliżu!"
-
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 nie przeniósł jeszcze żadnego GeoKreta."
 
-#: smarty/pages:3 smarty/pages:12
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:12
 msgid "%1's Owned GeoKrety map"
 msgstr "%1jest właścicielem mapy GeoKretów"
 
-#: smarty/pages:34
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
 msgid "Total visited caches"
 msgstr "Całkowita liczba odwiedzonych skrzynek"
 
-#: smarty/pages:38
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:38
 msgid "Last moved date"
 msgstr "Data ostatniego przeniesienia"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/news_details.tpl:3
 msgid "News: %1"
 msgstr ""
 
-#: smarty/pages:13
+#: website/app-templates/smarty/pages/news_details.tpl:13
 msgid "Leave a comment"
 msgstr "Dodaj komentarz"
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/news_details.tpl:30
 msgid "Subscribe to this news post"
 msgstr "Zasubskrybuj tego posta"
 
-#: smarty/pages:42
+#: website/app-templates/smarty/pages/news_details.tpl:42
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "Proszę <a href=\"%1\">zaloguj się</a> aby dodać komentarz"
 
-#: smarty/pages:47
+#: website/app-templates/smarty/pages/news_details.tpl:47
 msgid "Comments"
 msgstr "Komentarze"
 
-#: smarty/pages:51
+#: website/app-templates/smarty/pages/news_details.tpl:51
 msgid "There are no comments for this post."
 msgstr "Nikt jeszcze nie skomentował..."
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:9
 msgid "%1's GeoKrety recent moves"
 msgstr "%1 ostatnie ruchy Geokretów"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:37
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "GeoKrety %1nie zostały jeszcze przeniesione."
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/registration.tpl:3
 msgid "Registration"
 msgstr ""
 
-#: smarty/pages:14
+#: website/app-templates/smarty/pages/registration.tpl:14
 msgid "Create an account using %1"
 msgstr "Utwórz konto używając %1"
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/registration.tpl:16
 msgid "Create an account"
 msgstr "Utwórz konto"
 
-#: smarty/pages:3 smarty/pages:10
+#: website/app-templates/smarty/pages/password_recovery.tpl:3
+#: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
 msgstr "Odzyskiwanie hasła"
 
-#: smarty/pages:19
+#: website/app-templates/smarty/pages/password_recovery.tpl:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Jeśli zweryfikowałeś swój adres e-mail w przeszłości, możesz go łatwo odzyskać. W przeciwnym razie przykro nam, musisz utworzyć kolejne konto."
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/password_recovery.tpl:40
 msgid "Send me a recovery link"
 msgstr "Wyślij link do zresetowania hasła"
 
-#: smarty/pages:18
+#: website/app-templates/smarty/pages/news_list.tpl:18
 msgid "There is no news yet"
 msgstr "Nie ma jeszcze żadnych newsów"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
+#: website/app-templates/smarty/pages/email_change_token.tpl:3
 msgid "Confirm changing your email address"
 msgstr ""
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:8
+#: website/app-templates/smarty/pages/email_change_token.tpl:8
 msgid "Do you confirm changing your email address?"
 msgstr "Czy potwierdzasz zmianę adresu e-mail?"
 
-#: smarty/pages:31 smarty/pages:32
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:31
+#: website/app-templates/smarty/pages/email_change.tpl:32
+#: website/app-templates/smarty/pages/email_change_token.tpl:31
 msgid "Back to your profile"
 msgstr "Powrót do Twojego profilu"
 
-#: smarty/pages:35 smarty/pages:36
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:35
+#: website/app-templates/smarty/pages/email_change.tpl:36
+#: website/app-templates/smarty/pages/email_change_token.tpl:35
 msgid "Back to homepage"
 msgstr "Powrót do strony głównej"
 
-#: smarty/pages:39
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:39
 msgid "I approve this change"
 msgstr "Akceptuję tę zmianę"
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:40
 msgid "No, please revert to my old email address"
 msgstr "Nie, proszę wróć do mojego starego adresu e-mail"
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_inventory.tpl:3
+#: website/app-templates/smarty/pages/user_inventory.tpl:9
 msgid "%1's inventory"
 msgstr "Inwentarz %1"
 
-#: smarty/pages:39
-msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr "Twój ekwipunek jest pusty. Sprawdź <a href=\"%1\">mapę</a> i spróbuj znaleźć GeoKreta w pobliżu! Możesz również <a href=\"%2\">utworzyć własnego GeoKreta</a> za darmo!"
-
-#: smarty/pages:41
+#: website/app-templates/smarty/pages/user_inventory.tpl:41
 msgid "%1's inventory is currently empty."
 msgstr "Inwentarz %1 jest aktualnie pusty."
 
-#: smarty/pages:38
-msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr "Nie utworzyłeś jeszcze żadnego GeoKreta. Nie wahaj się <a href=\"%2\">utworzyć własnego GeoKreta</a> za darmo!"
-
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:40
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 nie jest jeszcze właścicielem żadnego GeoKreta."
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:3
 msgid "Statpic background chooser"
 msgstr ""
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:8
 msgid "Select your preferred statpic background"
 msgstr "Wybierz preferowane statyczne tło"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:37
 msgid "Your current statpic"
 msgstr "Twoja aktualna stystyka"
 
-#: smarty/pages:22
+#: website/app-templates/smarty/pages/geokret_claim.tpl:22
 msgid "Owner Code"
 msgstr "Kod Właściciela"
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/geokret_claim.tpl:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
 msgstr "Proces wymaga \"kodu śledzenia\" napisanego zazwyczaj na etykiecie GeoKreta lub wygrawerowanego na monecie plus \"Kod właściciela\" podany zazwyczaj na arkuszu."
 
-#: smarty/pages:35
+#: website/app-templates/smarty/pages/geokret_claim.tpl:35
 msgid "Adopt"
 msgstr "Adoptuj"
 
-#: smarty/pages:11
+#: website/app-templates/smarty/pages/help_api.tpl:11
 msgid "Help API"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:8
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
 msgid "GeoKrety Toolbox - GKT"
 msgstr "Narzędzia GeoKretów - GKT"
 
-#: smarty/pages:12
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:12
 msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
 msgstr "Pokazuje przedmioty podróżne GeoKreta na stronach skrzynki <a href=\"%1\" target=\"_blank\">geocaching.com</a> i ułatwia usuwanie przedmiotów podróżnych GeoKrety w skrzynkach Geocaching."
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
 msgstr "Ten skrypt został napisany w celu zbudowania pomostu między najpopularniejszą witryną <a href=\"%1\"> geocaching.com </a> i <a href=\"%2\"> geokrety.org </a>. Ma dwie funkcje. Po wejściu na określoną stronę skrzynki na <a href=\"%1\"> geocaching.com </a> automatycznie sprawdzi, czy są jakieś GeoKrety (przedmioty śledzone na <a href=\"%2\"> geokrety.org < / a>) w tej skrzynce i pokaże wynik w sekcji ekwipunku po prawej stronie ekranu (pod istniejącą listą Travelbugów i Geocoinów). Jeśli masz konto na <a href=\"%2\"> geokrety.org </a>, możesz również łatwo włozyć GeoKrety do skrzynki <a href=\"%1\"> Geocaching </a>, ponieważ kod i współrzędne punktu trasy są automatycznie kopiowane do formularza logowania na <a href=\"%2\"> geokrety.org </a>."
 
-#: smarty/pages:18
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:18
 msgid "Available for:"
 msgstr "Dostępny dla:"
 
-#: smarty/pages:22
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:22
 msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 msgstr "<a href=\"%1\">Firefox</a> (potrzebuje <a href=\"%2\">wtyczki Tampermonkey</a> lub <a href=\"%3\">wtyczki greasemonkey</a>)"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/geokrety_map.tpl:3
 msgid "Interactive map"
 msgstr ""
 
-#: smarty/pages:17
+#: website/app-templates/smarty/pages/geokrety_map.tpl:17
 msgid "GeoKrety interactive map"
 msgstr "Interaktywna mapa GeoKretów"
 
-#: smarty/pages:22 smarty/pages:18
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
+msgid "Waypoints statistics"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:36
+msgid "N/A"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:22
+#: website/app-templates/smarty/pages/email_change.tpl:18
 msgid "Please enter the verification token received by mail."
 msgstr "Wprowadź kod weryfikacyjny przysłany na email."
 
-#: smarty/pages:27 smarty/pages:29 smarty/pages:23 smarty/pages:25
+#: website/app-templates/smarty/pages/password_change.tpl:27
+#: website/app-templates/smarty/pages/password_change.tpl:29
+#: website/app-templates/smarty/pages/email_change.tpl:23
+#: website/app-templates/smarty/pages/email_change.tpl:25
 msgid "Verification Token"
 msgstr "Kod weryfikacyjny"
 
-#: smarty/pages:36
+#: website/app-templates/smarty/pages/password_change.tpl:36
 msgid "Please define a new password."
 msgstr "Ustaw nowe hasło."
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:9
 msgid "Pictures of %1's GeoKrety"
 msgstr "Zdjęcia GeoKreta %1"
 
-#: smarty/pages:3 smarty/pages:6
-msgid "🎉 Welcome to GeoKrety.org!"
-msgstr "🎉 Witaj na stronie GeoKretów!"
+#: website/app-templates/smarty/pages/home.tpl:3
+#: website/app-templates/smarty/pages/home.tpl:6
+msgid "Welcome to GeoKrety.org!"
+msgstr "Witaj na stronie GeoKretów!"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/home.tpl:31
 msgid "Latest moves"
 msgstr "Ostatnie logi"
 
-#: smarty/pages:50
+#: website/app-templates/smarty/pages/home.tpl:57
 msgid "Recent pictures"
 msgstr "Najnowsze fotki"
 
-#: smarty/pages:63
+#: website/app-templates/smarty/pages/home.tpl:70
 msgid "Recently created GeoKrety"
 msgstr "Ostatnio zarejestrowane GeoKrety"
 
-#: smarty/pages:40
-msgid "You did not watch any GeoKrety yet."
-msgstr "Nie oglądałeś jeszcze żadnych GeoKretów."
-
-#: smarty/pages:42
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:42
 msgid "%1 doesn't watch any GeoKrety yet."
 msgstr "%1 nie widział jeszcze żadnego GeoKreta."
 
-#: smarty/pages:10
+#: website/app-templates/smarty/pages/email_change.tpl:10
 msgid "Changing your email address."
 msgstr "Zmień adres email."
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/email_change.tpl:40
 msgid "Check the token"
 msgstr "Sprawdź token"
 
-#: smarty/pages:3 smarty/pages:6
+#: website/app-templates/smarty/pages/work_in_progress.tpl:3
+#: website/app-templates/smarty/pages/work_in_progress.tpl:6
 msgid "This page doesn't exists yet, but we're working on it!"
 msgstr "Ta strona jeszcze nie istnieje, ale pracujemy nad tym!"
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_pictures.tpl:9
 msgid "%1's posted pictures"
 msgstr "%1opublikowanych zdjęć"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/mole_hole.tpl:3
 msgid "GK mole-holes and GK hotels/motels"
 msgstr "Krecie nory i hotele/motele dla GK"
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/mole_hole.tpl:8
 msgid "GeoKrety mole-hole-system"
 msgstr "GeoKrety mole-hole-system"
 
-#: smarty/pages:12
+#: website/app-templates/smarty/pages/mole_hole.tpl:12
 msgid "Draft for basic recommendations for the GeoKrety mole-hole-system:"
 msgstr "Projekt podstawowych zaleceń dla systemu otworów GeoKreta:"
 
-#: smarty/pages:14
+#: website/app-templates/smarty/pages/mole_hole.tpl:14
 msgid "This subject <a href=\"%1\">is being discussed here</a>."
 msgstr "Ten temat <a href=\"%1\">jest omawiany tutaj</a>."
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/mole_hole.tpl:16
 msgid "The system is based on mole-to-mole (peer-to-peer) tunnels. A mole-hole-cache should have a single dedicated destination. A dedicated destination doesn't mean a special cache - an arriving GeoKret may appear in any cache within the destination area."
 msgstr "System oparty jest na połączeniach kret-kret (peer-to-peer). Kretowisko-skrzynka powinno mieć jedno dedykowane miejsce docelowe. Dedykowany cel nie oznacza specjalnej skrzynki - przybywający GeoKret może pojawić się w dowolnej skrzynce w obszarze docelowym."
 
-#: smarty/pages:17
+#: website/app-templates/smarty/pages/mole_hole.tpl:17
 msgid "The tunnel should work in both directions. It takes two GeoKrety friends to run a tunnel. Each partner is running a mole-hole-cache, collecting the GeoKrety and sending them over to the other partner, who is spreading the incoming GeoKrety in his homezone."
 msgstr "Tunel powinien działać w obu kierunkach. Wykonanie tunelu wymaga dwóch znajomych GeoKretów. Każdy partner obsługuje pamięć podręczną, zbiera GeoKretów i wysyła je do innego partnera, kto rozprzestrzenia przychodzącego GeoKreta w swojej ojczyźnie."
 
-#: smarty/pages:18
-msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least 500 km."
-msgstr "Tunel powinien przekraczać granicę lub, jeżeli znajduje się w danym kraju, odległość między otworami na mole powinna wynosić co najmniej 500 km."
+#: website/app-templates/smarty/pages/mole_hole.tpl:18
+msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least %1."
+msgstr ""
 
-#: smarty/pages:19
+#: website/app-templates/smarty/pages/mole_hole.tpl:19
 msgid "GeoKrety in a mole-hole are impatient, so no GeoKrety should wait longer than two months for transportation."
 msgstr "GeoKrety w otworze filmowym są niecierpliwe, więc GeoKrety nie powinny czekać dłużej niż dwa miesiące."
 
-#: smarty/pages:20
+#: website/app-templates/smarty/pages/mole_hole.tpl:20
 msgid "Each listing of a mole-hole-cache should include"
 msgstr "Każda lista skrzynki mole-hole-hole-cache powinna zawierać"
 
-#: smarty/pages:22
+#: website/app-templates/smarty/pages/mole_hole.tpl:22
 msgid "a title \"Mole-hole (specific name where the cache is located)\" e.g. \"Mole-hole Pomeranczarnia\""
 msgstr "tytuł \"Mole-hole (specyficzna nazwa, w której znajduje się skrzynka)\", np. \"Mole-hole Pomeranczarnia\""
 
-#: smarty/pages:23
+#: website/app-templates/smarty/pages/mole_hole.tpl:23
 msgid "a subtitle \"GeoKretExpress (departure area) - (destination area)\" e.g. \"GeoKretExpress Warszawa - Berlin\""
 msgstr "podtytuł „GeoKretExpress (obszar odjazdu) – (obszar docelowy)”, np. „GeoKretExpress Warszawa – Berlin”"
 
-#: smarty/pages:24
+#: website/app-templates/smarty/pages/mole_hole.tpl:24
 msgid "a standard text, explaining the mole-hole-system (and maybe a link to <a href=\"%1\">%1</a>?)"
 msgstr "standardowy tekst, wyjaśniający układ otworów (może link do <a href=\"%1\">%1</a>?)"
 
-#: smarty/pages:25
+#: website/app-templates/smarty/pages/mole_hole.tpl:25
 msgid "some information about the end of the tunnel (destination area, partner, partner-mole-hole-cache)"
 msgstr "niektóre informacje o końcu tunelu (obszar docelowy, partner, partner-mole-hole-cache)"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/mole_hole.tpl:26
 msgid "And probably detailed information about the mole-hole-cache and the neighbourhood, how to get there, hint, spoiler and so on."
 msgstr "I prawdopodobnie szczegółowe informacje na temat skrzynki filmowej i dzielnicy, jak tam dotrzeć, hint, spoiler itd."
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/mole_hole.tpl:30
 msgid "By <cite title=\"Original source\">%1</cite>"
 msgstr "Przez <cite title=\"Original source\">%1</cite>"
 
-#: smarty/pages:33
+#: website/app-templates/smarty/pages/mole_hole.tpl:33
 msgid "Current mole-holes"
 msgstr "Obecne otwory filmowe"
 
-#: smarty/pages:39 smarty/pages:82
+#: website/app-templates/smarty/pages/mole_hole.tpl:39
+#: website/app-templates/smarty/pages/mole_hole.tpl:82
 msgid "Cache name"
 msgstr "Nazwa skrzynki"
 
-#: smarty/pages:40 smarty/pages:83
+#: website/app-templates/smarty/pages/mole_hole.tpl:40
+#: website/app-templates/smarty/pages/mole_hole.tpl:83
 msgid "Cache type"
 msgstr "Rodzaj skrzynki"
 
-#: smarty/pages:41 smarty/pages:84
+#: website/app-templates/smarty/pages/mole_hole.tpl:41
+#: website/app-templates/smarty/pages/mole_hole.tpl:84
 msgid "Country"
 msgstr "Kraj"
 
-#: smarty/pages:49
+#: website/app-templates/smarty/pages/mole_hole.tpl:49
 msgid "Status: ready for search"
 msgstr "Status: gotowy do szukania"
 
-#: smarty/pages:51 smarty/pages:94
+#: website/app-templates/smarty/pages/mole_hole.tpl:51
+#: website/app-templates/smarty/pages/mole_hole.tpl:94
 msgid "Status: not ready to search"
 msgstr "Status: Nie gotowy do szukania"
 
-#: smarty/pages:70
+#: website/app-templates/smarty/pages/mole_hole.tpl:70
 msgid "GeoKrety hotels / motels"
 msgstr "Hotel / motel GeoKretów"
 
-#: smarty/pages:74
+#: website/app-templates/smarty/pages/mole_hole.tpl:74
 msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety. By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
 msgstr "GeoKrety hotel/motel to łatwa do dotarcia skrzynka, blisko lotniska, stacji autostradowej i kolejowej, na tyle duża, aby gościć trochę GeoKrety. Cacherzy mogą przechwycić lub upuszczać GeoKreta. Do tej pory, w systemie OC, zarejestrowaliśmy następujące hotele GK (lub GK/TB):"
 
-#: smarty/pages:76
+#: website/app-templates/smarty/pages/mole_hole.tpl:76
 msgid "Current GK-Hotels/Motels"
 msgstr "Bieżący Hotel/Motel GK"
 
-#: smarty/pages:92
+#: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
 msgstr "Status: Gotowy do szukania"
 
-#: smarty/pages:3 smarty/pages:8
+#: website/app-templates/smarty/pages/registration_validated.tpl:3
+#: website/app-templates/smarty/pages/registration_validated.tpl:8
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "Witaj w społeczności GeoKrety.org!"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/registration_validated.tpl:10
+msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
+msgstr ""
+
+#: website/app-templates/smarty/pages/registration_validated.tpl:12
+msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
+msgstr ""
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:3
 msgid "Hall of fame"
 msgstr "Aleja zasłużonych"
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:8
 msgid "Developers"
 msgstr "Autorzy"
 
-#: smarty/pages:11
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:11
 msgid "Current team:"
 msgstr "Aktualny zespół:"
 
-#: smarty/pages:13
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:13
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
 msgstr "hosting, kod, nowy projekt, wsparcie i <a href=\"%1\"> planowanie GK v2 </a>"
 
-#: smarty/pages:14
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:14
 msgid "code, support, public relation and advertising"
 msgstr "kod, wsparcie, kontakty zewnętrzne i reklama"
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:16
 msgid "Legacy team:"
 msgstr "Starszy zespół:"
 
-#: smarty/pages:18
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:18
 msgid "idea, code and original design"
 msgstr "pomysł, kod i oryginalny design"
 
-#: smarty/pages:19
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:19
 msgid "visions into (legacy) code 😉"
 msgstr "wizje w (starsze) kod 😉"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:26
 msgid "Support"
 msgstr "Wsparcie"
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:30
 msgid "GK logo (the mole, different versions)"
 msgstr "Logo GK (kret, różne wersje)"
 
-#: smarty/pages:31
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:31
 msgid "MySQL support, sandwiches and more 😃"
 msgstr "Obsługa MySQL, kanapki i inne 😃"
 
-#: smarty/pages:32
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:32
 msgid "GK maps"
 msgstr "Mapa GK"
 
-#: smarty/pages:43
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:43
 msgid "betatesting, idea, public relation and advertising 😃"
 msgstr "betatestowanie, pomysł, public relations i reklama 😃"
 
-#: smarty/pages:44
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:44
 msgid "betatesting, language support"
 msgstr "betatestowanie, wsparcie językowe"
 
-#: smarty/pages:45
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:45
 msgid "betatesting"
 msgstr "betatestowanie"
 
-#: smarty/pages:46
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:46
 msgid "programming support"
 msgstr "wsparcie programowania"
 
-#: smarty/pages:47
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:47
 msgid "coordinates parser"
 msgstr "analizator współrzędnych"
 
-#: smarty/pages:48
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:48
 msgid "public relation and advertising"
 msgstr "kontakt i reklama"
 
-#: smarty/pages:55
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:55
 msgid "Translations"
 msgstr "Tłumaczenia"
 
-#: smarty/pages:84
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:84
 msgid "Global reviewers"
 msgstr "Globalni recenzenci"
 
-#: smarty/pages:91
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:91
 msgid "Credits"
 msgstr "Twórcy"
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:3
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:9
 msgid "Pictures gallery"
 msgstr "Galeria zdjęć"
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/downloads.tpl:8
 msgid "Translation"
 msgstr "Tłumaczenie"
 
-#: smarty/pages:11
+#: website/app-templates/smarty/pages/downloads.tpl:11
 msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
 msgstr "Nasze pliki tłumaczeń są teraz hostowane na <a href=\"%1\"> crowdin </a>. Dołącz do społeczności, jeśli chcesz przyczynić się do tłumaczenia Geokrety.org na Twój język lub rozwiązać niektóre problemy z tłumaczeniem."
 
-#: smarty/pages:27
+#: website/app-templates/smarty/pages/downloads.tpl:17
+msgid "Map of caches for Garmin units"
+msgstr "Mapa skrzynek dla urządzeń Garmin"
+
+#: website/app-templates/smarty/pages/downloads.tpl:20
+msgid "As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href=\"%2\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
+msgstr "Jako, że nasz serwis zbiera informacje o znacznej liczbie waypointów z różnych serwisów (%1) na świecie (<a href=\"%2\"> kliknij tutaj </a>aby zobaczyć listę) - wpadliśmy na pomysł, aby z tych waypointów generować mapkę keszy dla odbiorników Gps garmina. Mapka jest transparentna, w formacie img, teraz możesz mieć wszystkie punkty na jednej mapie (właściwie: zestaw map)."
+
+#: website/app-templates/smarty/pages/downloads.tpl:21
+msgid "Read more and <a href=\"%1\">get the map</a>."
+msgstr "Przeczytaj więcej i <a href=\"%1\"> pobierz mapę </a>."
+
+#: website/app-templates/smarty/pages/downloads.tpl:27
 msgid "Design resources"
 msgstr ""
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/downloads.tpl:30
 msgid "GeoKrety logo"
 msgstr "Logo GeoKretów"
 
-#: smarty/pages:32
+#: website/app-templates/smarty/pages/downloads.tpl:32
 msgid "Basic GK logo: "
 msgstr "Podstawowe logo GK: "
 
-#: smarty/pages:33
+#: website/app-templates/smarty/pages/downloads.tpl:33
 msgid "The mole itself: "
 msgstr "Oto Kret: "
 
-#: smarty/pages:34
+#: website/app-templates/smarty/pages/downloads.tpl:34
 msgid "Other ressources: "
 msgstr "Inne zasoby: "
 
-#: smarty/pages:34
+#: website/app-templates/smarty/pages/downloads.tpl:34
 msgid "here"
 msgstr "tutaj"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/downloads.tpl:37
 msgid "Sample GeoKrety labels"
 msgstr "Przykłady etykiet GeoKretów"
 
-#: smarty/pages:38
+#: website/app-templates/smarty/pages/downloads.tpl:38
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
 msgstr "Zważ proszę, że etykietę do swojego kreta możesz wygenerować automatycznie z poziomu strony danego kreta."
 
-#: smarty/pages:40 smarty/pages:41 smarty/pages:42 smarty/pages:43
+#: website/app-templates/smarty/pages/downloads.tpl:40
+#: website/app-templates/smarty/pages/downloads.tpl:41
+#: website/app-templates/smarty/pages/downloads.tpl:42
+#: website/app-templates/smarty/pages/downloads.tpl:43
 msgid "Sample label #%1: "
 msgstr "Przykładowa etykieta #%1: "
 
-#: smarty/pages:45
+#: website/app-templates/smarty/pages/downloads.tpl:45
 msgid "Old label design: "
 msgstr "Styl stara etykieta: "
 
-#: smarty/pages:39
+#: website/app-templates/smarty/pages/email_change_token.tpl:39
 msgid "Yes, change my email address"
 msgstr "Tak, zmień mój adres e-mail"
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/email_change_token.tpl:40
 msgid "No, abort this request"
 msgstr "Nie, przerwij tę prośbę"
 
-#: smarty/pages:3 smarty/pages:6
+#: website/app-templates/smarty/pages/geokret_label.tpl:3
+#: website/app-templates/smarty/pages/geokret_label.tpl:6
 msgid "Label generator"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:8
+#: website/app-templates/smarty/pages/contact_us.tpl:3
+#: website/app-templates/smarty/pages/contact_us.tpl:8
 msgid "Contact us"
 msgstr "Kontakt z nami"
 
-#: smarty/pages:13
+#: website/app-templates/smarty/pages/contact_us.tpl:13
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "Jeśli masz sugestie, pomysły lub dostrzegłeś błędy, pisz do nas śmiało."
 
-#: smarty/pages:24
+#: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Or via the user profile"
 msgstr "Lub poprzez profil użytkownika"
 
-#: smarty/pages:33
+#: website/app-templates/smarty/pages/contact_us.tpl:33
 msgid "IRC"
 msgstr "IRC"
 
-#: smarty/pages:41
+#: website/app-templates/smarty/pages/contact_us.tpl:41
 msgid "Twitter"
 msgstr "Twitter"
 
-#: smarty/pages:48
+#: website/app-templates/smarty/pages/contact_us.tpl:48
 msgid "Public forum"
 msgstr "Publiczne forum"
 
-#: smarty/pages:56
+#: website/app-templates/smarty/pages/contact_us.tpl:56
 msgid "Wanna sign or encrypt your mails?"
 msgstr "Chcesz podpisać lub zaszyfrować swoje maile?"
 
-#: smarty/pages:58
+#: website/app-templates/smarty/pages/contact_us.tpl:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "Nasz publiczny klucz PGP/GPG <a href=\"%1\">jest tutaj(%2)</a>"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/user_details.tpl:3
 msgid "%1's user profile"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:11
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
 msgid "Define your observation area"
 msgstr "Zdefiniuj obszar obserwacji"
 
-#: smarty/pages:21 smarty/pages:22
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:21
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:22
 msgid "Home coordinates"
 msgstr "Koordynaty domowe"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:26
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Aby określić położenie, użyj mapki lub wprowadź współrzędne ręcznie."
 
-#: smarty/pages:28
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:28
 msgid "Other acceptable lat/lon formats"
 msgstr "Inne dopuszczalne formaty szerokości/długości geograficznej"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:37
 msgid "Observation radius"
 msgstr "Obszar obserwacji"
 
-#: smarty/pages:45
-msgid " km. Set it to 0 to disable the observation feature."
-msgstr " km. Ustaw na 0, aby wyłączyć funkcję obserwacji."
-
-#: smarty/pages:55
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:55
 msgid "Center the map on the zone to observe"
 msgstr "Wyśrodkuj mapę w centrum obszaru obserwacji"
 
@@ -2572,244 +3192,4 @@ msgstr "Kraj:"
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:53
 msgid "Elevation:"
 msgstr "Rzęda:"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-msgid "Congratulation 🎉"
-msgstr "Gratulacje 🎉"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "Hi %1,"
-msgstr "Cześć %1,"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-msgid "Your account on GeoKrety.org is now fully functional."
-msgstr "Twoje konto na GeoKrety.org jest już w pełni funkcjonalne."
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "Z poważaniem,<br>The GeoKrety Team"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "Otrzymujesz tego e-maila, ponieważ właśnie zarejestrowała(e)ś się w naszej witrynie."
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
-msgstr "Jeśli nigdy nie utworzyłeś konta na GeoKrety.org, proszę <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">skontaktuj się</a>."
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "Welcome to GeoKrety.org"
-msgstr "Witaj na GeoKrety.org"
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
-msgstr "Właśnie zarejestrowałeś się na GeoKrety.org. <strong> Musisz teraz aktywować swoje konto, aby móc z niego korzystać. </strong> skorzystaj z linku poniżej."
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "Activate your account"
-msgstr "Aktywuj swoje konto"
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "This link expires %1."
-msgstr "Ten link wygasa %1."
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr "Jeśli Twoje konto nie zostanie aktywowane w tym czasie, zostanie automatycznie usunięte."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-msgid "Your email address has been succesfully changed."
-msgstr "Twój adres e-mail został pomyślnie zmieniony."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-msgid "You're getting this email because you've changed your email on our website."
-msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w naszej witrynie."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-msgid "Your email address has been succesfully changed to: %1."
-msgstr "Twój adres e-mail został pomyślnie zmieniony na %1."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "If you did not requested this, click the link below."
-msgstr "Jeśli nie poprosiłeś o to, kliknij poniższy link."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-msgid "Revert this change!"
-msgstr "Cofnij tę zmianę!"
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "You should also consider changing your password immediatelly."
-msgstr "Powinieneś rozważyć natychmiastową zmianę hasła."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "Change my password!"
-msgstr "Zmień swoje hasło!"
-
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "Hooray 🥳"
-msgstr "Brawo 🥳"
-
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-msgid "Your email address has been succesfully reverted."
-msgstr "Twój adres e-mail został pomyślnie przywrócony."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr "Ktoś lub Ty poprosił o zmianę adresu kontaktowego e-mail GeoKrety na Twój."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "Validate your new email address"
-msgstr "Potwierdź swój nowy adres e-mail"
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "This link is valid for %1."
-msgstr "Ten link jest ważny dla %1."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
-msgstr "Jeśli nie poprosiłeś o to i nie wiesz, co to jest GeoKrety, zignoruj ten e-mail. Nigdy więcej o nas nie usłyszysz!"
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "You're getting this email because you've requested an email address change on our website."
-msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w naszej witrynie."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr "Ktoś lub Ty poprosił o zmianę twojego adresu kontaktowego e-mail GeoKrety na: %1."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "Do not change!"
-msgstr "Nie zmieniaj!"
-
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "You're getting this email because you've requested an email address change from our website."
-msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w naszej witrynie."
-
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "Good news, your GeoKret <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a> was just adopted by user <a href=\"%4\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%3</a>."
-msgstr "Dobre wieści, Twój GeoKret <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a> został właśnie przyjęty przez użytkownika <a href=\"%4\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%3</a>."
-
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "View GeoKret"
-msgstr "Zobacz Geokreta"
-
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
-msgstr "Otrzymujesz tego e-maila, ponieważ jeden z Twoich GeoKretów zmienił właściciela na naszej stronie."
-
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-msgid "Your password has been succesfully changed."
-msgstr "Twoje hasło zostało pomyślnie zmienione."
-
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-msgid "You're getting this email because you've changed your password on our website."
-msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w naszej witrynie."
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "Forgot Your Password?"
-msgstr "Zapomniałeś hasła?"
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "It happens. Click the link below to reset your password."
-msgstr "Zdarza się. Kliknij poniższy link, aby zresetować hasło."
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "Reset Password"
-msgstr "Resetuj hasło"
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "You're getting this email because you've requested a password recovery on our website."
-msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o odzyskanie hasła w naszej witrynie."
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Contact from a GeoKrety.org user"
-msgstr "Kontakt od użytkownika GeoKrety.org"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "This email was sent by user <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
-msgstr "Ten e-mail został wysłany przez użytkownika <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr "Jeśli podejrzewasz nadużycie, daj nam znać: %1"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Referer: %1"
-msgstr "Polecający: %1"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Subject:"
-msgstr "Temat:"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Reply to %1"
-msgstr "Wyślij odpowiedź do %1"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
-msgstr "Otrzymujesz tego e-maila, ponieważ jeden z użytkowników GeoKrety.org wysłał Ci wiadomość za pośrednictwem Twojego profilu użytkownika."
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "Welcome 👐"
-msgstr "Witaj 👐"
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "You're now a GeoKrety.org community member, welcome!"
-msgstr "Jesteś teraz członkiem społeczności GeoKrety.org, witamy!"
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "As a member you can now register GeoKrety moves, upload pictures and of course create your own GeoKrety for free!"
-msgstr "Jako członek możesz teraz zarejestrować ruchy GeoKretów, przesyłać zdjęcia i oczywiście tworzyć własne GeoKrety za darmo!"
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
-msgstr ""
 

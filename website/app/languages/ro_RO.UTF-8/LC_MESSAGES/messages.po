@@ -2,25 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-12 19:27+0000\n"
-"PO-Revision-Date: 2020-12-12 19:33\n"
+"POT-Creation-Date: 2021-04-18 17:41+0000\n"
+"PO-Revision-Date: 2021-04-18 17:53\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-12-12 19:27+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
-"X-Generator: geekwright/po\n"
 "X-Crowdin-Project: geokrety\n"
 "X-Crowdin-Project-ID: 260106\n"
 "X-Crowdin-Language: ro\n"
@@ -40,8 +31,8 @@ msgstr ""
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Base.php:72
-#: website/app/GeoKrety/Controller/MoveCreate.php:157
+#: website/app/GeoKrety/Controller/Base.php:69
+#: website/app/GeoKrety/Controller/MoveCreate.php:170
 #: website/app/GeoKrety/Controller/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/UserContact.php:71
 msgid "reCaptcha failed!"
@@ -49,30 +40,30 @@ msgstr "reCaptcha a esuat!"
 
 #: website/app/GeoKrety/Controller/BaseRegistration.php:25
 #: website/app/GeoKrety/Controller/UserUpdateEmail.php:59
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:65
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:66
 msgid "Sorry but this mail address is already in use."
 msgstr "Ne pare rău, dar această adresă de e-mail este deja utilizată."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:21
+#: website/app/GeoKrety/Controller/GeokretClaim.php:24
 msgid "Sorry, the provided owner code and tracking code doesn't match."
 msgstr "Ne pare rău, codul de proprietar furnizat și codul de urmărire nu se potrivesc."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:27
+#: website/app/GeoKrety/Controller/GeokretClaim.php:30
 msgid "You are already the owner."
 msgstr "Sunteți deja proprietarul."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:33
+#: website/app/GeoKrety/Controller/GeokretClaim.php:36
 msgid "Sorry, this owner code has already been used."
 msgstr "Ne pare rău, acest cod de proprietar a fost deja utilizat."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:65
+#: website/app/GeoKrety/Controller/GeokretClaim.php:68
 msgid "Something went wrong while registering the adoption."
 msgstr "Ceva nu a funcționat în timpul înregistrării adopției."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/GeokretClaim.php:72
 #, php-format
-msgid "🎉 Congratulation! You are now the owner of %s."
-msgstr "🎉 Felicitări! Acum ești proprietarul %s."
+msgid "Congratulation! You are now the owner of %s."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:39
 msgid "Born here"
@@ -116,6 +107,18 @@ msgstr "Unele limbi selectate nu sunt valide."
 msgid "Please select an export type."
 msgstr "Vă rugăm să selectaţi un tip de export."
 
+#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:28
+msgid "This GeoKret is already archived."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:43
+msgid "Archiving GeoKret"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:49
+msgid "Failed to archive the GeoKret."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
 msgstr "Trebuie să fiți proprietarul GeoKret pentru a genera noul Cod Proprietar."
@@ -145,35 +148,35 @@ msgstr "Dată sau oră greșită"
 msgid "Waypoint parameter must be provided."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:44
-#: website/app/GeoKrety/Controller/Login.php:126
+#: website/app/GeoKrety/Controller/Login.php:40
+#: website/app/GeoKrety/Controller/Login.php:121
 msgid "Username and password doesn't match."
 msgstr "Numele de utilizator şi parola nu se potrivesc."
 
-#: website/app/GeoKrety/Controller/Login.php:72
+#: website/app/GeoKrety/Controller/Login.php:69
 msgid "Welcome on board!"
 msgstr "Bun venit la bord!"
 
-#: website/app/GeoKrety/Controller/Login.php:116
+#: website/app/GeoKrety/Controller/Login.php:111
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:138
-#: website/app/GeoKrety/Controller/Login.php:144
+#: website/app/GeoKrety/Controller/Login.php:133
+#: website/app/GeoKrety/Controller/Login.php:139
 msgid "Invalid \"secid\""
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:192
+#: website/app/GeoKrety/Controller/Login.php:187
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Contul dvs. este deja conectat cu %s"
 
-#: website/app/GeoKrety/Controller/Login.php:197
+#: website/app/GeoKrety/Controller/Login.php:192
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Acest cont %s este deja conectat cu un alt cont GeoKrety."
 
-#: website/app/GeoKrety/Controller/Login.php:212
+#: website/app/GeoKrety/Controller/Login.php:207
 msgid "Auth request was canceled."
 msgstr "Cererea de autentificare a fost anulată."
 
@@ -190,16 +193,16 @@ msgstr "Comentariu șters."
 msgid "Failed to delete comment."
 msgstr "Ștergerea comentariului a eșuat."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:96
+#: website/app/GeoKrety/Controller/MoveCreate.php:108
 msgid "The date time could not be parsed."
 msgstr "Data nu a putut fi analizată."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:207
+#: website/app/GeoKrety/Controller/MoveCreate.php:220
 #: website/app/GeoKrety/Controller/MoveCreateXML.php:57
 msgid "Failed to save move."
 msgstr "Salvarea mutării a eșuat."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:210
+#: website/app/GeoKrety/Controller/MoveCreate.php:223
 msgid "Your move has been saved."
 msgstr "Mutarea ta a fost salvată."
 
@@ -237,7 +240,7 @@ msgid "Something went wrong while detaching from your %s account. Please contact
 msgstr "Ceva nu a mers bine în timpul detaşării de contul tău %s . Te rugăm să ne contactezi."
 
 #: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:23
+#: website/app/GeoKrety/Controller/RegistrationActivate.php:20
 #: website/app/GeoKrety/Controller/UserEmailChange.php:18
 #: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:26
 #: website/app/GeoKrety/Controller/UserEmailChangeToken.php:26
@@ -335,7 +338,7 @@ msgstr "Preferințele dvs. de e-mail au fost salvate."
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "E-mailul de confirmare a fost trimis din nou la noua dvs. adresă. Trebuie să faceți clic pe link-ul furnizat în e-mail pentru a confirma modificarea adresei dvs. de e-mail. Link-ul de confirmare expiră în %s."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:78
+#: website/app/GeoKrety/Controller/UserUpdateEmail.php:79
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Un e-mail de confirmare a fost trimis la noua dvs. adresă. Trebuie să faceți clic pe link-ul furnizat în e-mail pentru a confirma modificarea adresei dvs. de e-mail. Link-ul de confirmare expiră în %s."
@@ -363,55 +366,68 @@ msgstr "Punctul pare gol."
 msgid "Waypoint length is invalid. It should be between %d and %d characters long."
 msgstr "Lungimea punctului de referinţă este invalidă. Ar trebui să fie între %d şi %d caractere."
 
+#: website/app/GeoKrety/Email/AccountActivation.php:16
+msgid "A confirmation email has been sent to your address."
+msgstr ""
+
 #: website/app/GeoKrety/Email/AccountActivation.php:17
-#, php-format
-msgid "A confirmation email has been sent to your address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
-msgstr "Un e-mail de confirmare a fost trimis la adresa dvs. Trebuie să faceți clic pe link-ul furnizat în e-mail pentru a vă activa contul. Link-ul de confirmare expiră în %s."
+#: website/app/GeoKrety/Email/AccountActivation.php:38
+#: website/app/GeoKrety/Email/AccountActivation.php:47
+msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
+msgstr ""
 
-#: website/app/GeoKrety/Email/AccountActivation.php:22
+#: website/app/GeoKrety/Email/AccountActivation.php:18
+#: website/app/GeoKrety/Email/AccountActivation.php:39
+#: website/app/GeoKrety/Email/AccountActivation.php:48
 #, php-format
-msgid "Your account seems to already exists. The confirmation email was sent again to your mail address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
-msgstr "Contul dvs. pare să existe deja. Emailul de confirmare a fost trimis din nou la adresa dvs. de e-mail. Trebuie să faceți clic pe link-ul furnizat în e-mail pentru a vă activa contul. Link-ul de confirmare expiră în %s."
+msgid "The confirmation link expires in %s."
+msgstr ""
 
-#: website/app/GeoKrety/Email/AccountActivation.php:27
-#, php-format
-msgid "<strong>Your account is not yet active.</strong> The confirmation email was sent again to your mail address. You must click on the link provided in the email to activate your account. The confirmation link expires in %s."
-msgstr "<strong>Contul dvs. nu este încă activ.</strong> Emailul de confirmare a fost trimis din nou la adresa dvs. de e-mail. Trebuie să faceți clic pe link-ul furnizat în e-mail pentru a vă activa contul. Link-ul de confirmare expiră în %s."
+#: website/app/GeoKrety/Email/AccountActivation.php:24
+#: website/app-templates/smarty/emails/account-activation.tpl:3
+msgid "Welcome to GeoKrety.org"
+msgstr "Bun venit la GeoKrety.org"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:33
+#: website/app/GeoKrety/Email/AccountActivation.php:36
+msgid "Your account seems to already exists."
+msgstr ""
+
+#: website/app/GeoKrety/Email/AccountActivation.php:37
+#: website/app/GeoKrety/Email/AccountActivation.php:46
+msgid "The confirmation email was sent again to your mail address."
+msgstr ""
+
+#: website/app/GeoKrety/Email/AccountActivation.php:45
+msgid "<strong>Your account is not yet active.</strong>"
+msgstr ""
+
+#: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "Account activated"
 msgstr "Cont activat"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:36
-#: website/app/GeoKrety/Email/EmailChange.php:29
-#: website/app/GeoKrety/Email/EmailChange.php:38
-#: website/app/GeoKrety/Email/EmailChange.php:57
-#: website/app/GeoKrety/Email/EmailChange.php:66
-#: website/app/GeoKrety/Email/EmailChange.php:75
-msgid "An error occurred while sending the confirmation mail."
-msgstr "A aparut o eroare la trimiterea mail-ului de confirmare."
+#: website/app/GeoKrety/Email/BasePHPMailer.php:67
+msgid "An error occurred while sending mail."
+msgstr "A aparut o eroare la trimiterea mail-ului."
 
-#: website/app/GeoKrety/Email/AccountActivation.php:42
-#: website/app/GeoKrety/Email/Welcome.php:19
-msgid "Welcome on GeoKrety.org"
-msgstr "Bun venit pe GeoKrety.org"
-
-#: website/app/GeoKrety/Email/AccountActivation.php:45
-#: website/app/GeoKrety/Model/User.php:323
-msgid "An error occurred while sending the activation mail."
-msgstr "A aparut o eroare la trimiterea mail-ului de activare."
+#: website/app/GeoKrety/Email/DailyMail.php:25
+#, php-format
+msgid "Watchlist for %s"
+msgstr ""
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
-#: website/app/GeoKrety/Email/EmailChange.php:35 smarty/pages:3
+#: website/app/GeoKrety/Email/EmailChange.php:34
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
+#: website/app-templates/smarty/pages/email_change.tpl:3
 msgid "Changing your email address"
 msgstr "Schimbarea adresei de e-mail"
 
-#: website/app/GeoKrety/Email/EmailChange.php:54
-#: website/app/GeoKrety/Email/EmailChange.php:63
+#: website/app/GeoKrety/Email/EmailChange.php:52
+#: website/app/GeoKrety/Email/EmailChange.php:60
 msgid "Email address changed"
 msgstr "Adresa de e-mail schimbată"
 
-#: website/app/GeoKrety/Email/EmailChange.php:72
+#: website/app/GeoKrety/Email/EmailChange.php:66
 msgid "Email address reverted"
 msgstr "Adresă de e-mail inversată"
 
@@ -420,42 +436,22 @@ msgstr "Adresă de e-mail inversată"
 msgid "Your GeoKret '%s' has been adopted"
 msgstr "GeoKretul tău '%s' a fost adoptat"
 
-#: website/app/GeoKrety/Email/GeokretClaim.php:17
-msgid "An error occurred while sending the adoption mail notification to old owner."
-msgstr "A aparut o eroare la trimiterea notificarii prin email de adoptie catre proprietarul vechi."
-
-#: website/app/GeoKrety/Email/PasswordChange.php:16
+#: website/app/GeoKrety/Email/PasswordChange.php:17
 msgid "Password reset request"
 msgstr "Solicitare resetare parolă"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:19
-msgid "An error occurred while sending the password reset mail."
-msgstr "A aparut o eroare la trimiterea mail-ului de resetare a parolei."
-
-#: website/app/GeoKrety/Email/PasswordChange.php:23
 msgid "An email containing a validation link has been sent to the provided email address."
 msgstr "Un e-mail cu un link de validare a fost trimis la adresa de e-mail furnizată."
 
-#: website/app/GeoKrety/Email/PasswordChange.php:28
+#: website/app/GeoKrety/Email/PasswordChange.php:25
 msgid "Your password has been changed"
 msgstr "Parola ta a fost schimbată"
 
-#: website/app/GeoKrety/Email/PasswordChange.php:31
-msgid "An error occurred while sending the password changed mail notification."
-msgstr "A aparut o eroare la trimiterea notificarii email-ului modificat."
-
-#: website/app/GeoKrety/Email/UserContact.php:15
+#: website/app/GeoKrety/Email/UserContact.php:14
 #, php-format
 msgid "Contact from user %s"
 msgstr "Contact de la utilizatorul %s"
-
-#: website/app/GeoKrety/Email/UserContact.php:18
-msgid "An error occurred while sending mail."
-msgstr "A aparut o eroare la trimiterea mail-ului."
-
-#: website/app/GeoKrety/Email/Welcome.php:22
-msgid "An error occurred while sending the welcome mail."
-msgstr "A aparut o eroare la trimiterea mail-ului de bun venit."
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -477,34 +473,39 @@ msgstr "O monedă"
 msgid "KretyPost"
 msgstr "KretyPost"
 
-#: website/app/GeoKrety/LogType.php:103
+#: website/app/GeoKrety/LogType.php:115
 msgid "drop"
 msgstr "plasare"
 
-#: website/app/GeoKrety/LogType.php:104
+#: website/app/GeoKrety/LogType.php:116
 msgid "grab"
 msgstr "prinde"
 
-#: website/app/GeoKrety/LogType.php:105
+#: website/app/GeoKrety/LogType.php:117
 msgid "comment"
 msgstr "comentariu"
 
-#: website/app/GeoKrety/LogType.php:106
+#: website/app/GeoKrety/LogType.php:118
 msgid "met"
 msgstr "met"
 
-#: website/app/GeoKrety/LogType.php:107
+#: website/app/GeoKrety/LogType.php:119
 msgid "archive"
 msgstr "arhivă"
 
-#: website/app/GeoKrety/LogType.php:108
+#: website/app/GeoKrety/LogType.php:120
 msgid "dip"
 msgstr "dip"
 
-#: website/app/GeoKrety/LogType.php:109 smarty/blocks/geokret:50
-#: smarty/pages:71
+#: website/app/GeoKrety/LogType.php:121
+#: website/app-templates/smarty/blocks/geokret/details.tpl:56
+#: website/app-templates/smarty/pages/home.tpl:78
 msgid "Born"
 msgstr "Născut"
+
+#: website/app/GeoKrety/Model/User.php:317
+msgid "An error occurred while sending the activation mail."
+msgstr "A aparut o eroare la trimiterea mail-ului de activare."
 
 #: website/app/GeoKrety/Model/UserSocialAuth.php:45
 #, php-format
@@ -535,6 +536,15 @@ msgstr "Coordonate rele sau format necunoscut."
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:235
 msgid "Missing or invalid coordinates."
 msgstr "Lipsa sau coordonate incorecte."
+
+#: website/app/GeoKrety/Service/Dialog/Info.php:9
+msgid "Information"
+msgstr ""
+
+#: website/app/GeoKrety/Service/DistanceFormatter.php:28
+#, php-format
+msgid "Invalid unit specified: %s"
+msgstr ""
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -631,12 +641,12 @@ msgstr "GeoKret are un avatar"
 msgid "GK type icon"
 msgstr "Pictogramă tip GK"
 
-#: website/app-templates/smarty/plugins/modifier.gklink.php:22
+#: website/app-templates/smarty/plugins/modifier.gklink.php:23
 #, php-format
 msgid "View %s's profile"
 msgstr "Vezi profilul lui %s"
 
-#: website/app-templates/smarty/plugins/modifier.movelink.php:21
+#: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
 msgstr "Vezi detaliile mutării"
 
@@ -749,1787 +759,2397 @@ msgstr "{0} nu poate fi în viitor"
 msgid "{0} must be after GeoKret birth"
 msgstr "{0} trebuie să fie după nașterea GeoKret"
 
-#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:32
-#: smarty/pages:69 smarty/pages:38 smarty/pages:81
-msgid "ID"
-msgstr "ID"
-
-#: smarty/devel/pages:16 smarty/dialog:23
-msgid "Subject"
-msgstr "Subiect"
-
-#: smarty/devel/pages:17
-msgid "From"
-msgstr "De la"
-
-#: smarty/devel/pages:18 smarty/dialog:16
-msgid "To"
-msgstr "Catre"
-
-#: smarty/devel/pages:20
-msgid "Action"
-msgstr "Acțiune"
-
-#: smarty/devel/pages:21
-msgid "Delete all mails"
-msgstr "Şterge toate mesajele"
-
-#: smarty/devel/pages:39
-msgid "Delete mail"
-msgstr "Ștergere e-mail"
-
-#: smarty/elements:10
-msgid "Delete comment"
-msgstr "Şterge comentariul"
-
-#: smarty/elements:7
-msgid "Unsubscribe from news"
-msgstr "Dezabonare de la ştiri"
-
-#: smarty/elements:11
-msgid "Subscribe to news"
-msgstr "Abonează-te la noutăți"
-
-#: smarty/elements:7
-msgid "Show move on map"
-msgstr "Arată mutarea pe hartă"
-
-#: smarty/elements:64
-msgid "Report as missing"
-msgstr "Raportați ca lipsă"
-
-#: smarty/elements:69 smarty/blocks/geokret:29 smarty/blocks/user:18
-msgid "Upload a picture"
-msgstr "Incarca o imagine"
-
-#: smarty/elements:73
-msgid "Write a comment"
-msgstr "Scrie un comentariu"
-
-#: smarty/elements:80
-msgid "Edit log"
-msgstr "Editare jurnal"
-
-#: smarty/elements:83
-msgid "Delete log"
-msgstr "Ştergere jurnal"
-
-#: smarty/elements:4
-msgid "%1 logo"
-msgstr "Logo %1"
-
-#: smarty/elements:33 smarty/elements:30 smarty/elements:36
-msgid "Move this GeoKret"
-msgstr "Mută acest GeoKret"
-
-#: smarty/blocks:3
-msgid "Found a GeoKret?"
-msgstr "Ai gasit un GeoKret?"
-
-#: smarty/blocks:7
-msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "Te rugăm să introduci <abbr title=\"%1\">Codul de Urmărire</abbr> aici:"
-
-#: smarty/blocks:12
-msgid "Tracking code"
-msgstr "Cod de urmărire"
-
-#: smarty/blocks:15 smarty/blocks/geokret:14
-msgid "Log it!"
-msgstr "Înregistrează-te!"
-
-#: smarty/blocks:10
-msgid "There is no pictures yet."
-msgstr "Nu există poze încă."
-
-#: smarty/blocks/geokret:9
-msgid "%1 <small>(%2)</small> by %3"
-msgstr "%1 <small>(%2)</small> de %3"
-
-#: smarty/blocks/geokret:15
-msgid "%1 <small>(%2)</small> - <a href=\"%3\">Ready for adoption</a>"
-msgstr "%1 <small>(%2)</small> - <a href=\"%3\">Gata de adoptare</a>"
-
-#: smarty/blocks/geokret:21 smarty/blocks/user:7
-msgid "Send a message to %1"
-msgstr "Trimite un mesaj către %1"
-
-#: smarty/blocks/geokret:26 smarty/blocks/geokret:6
-msgid "Edit GeoKret details"
-msgstr "Editare detalii GeoKret"
-
-#: smarty/blocks/geokret:40 smarty/forms:24
-msgid "Reference number"
-msgstr "Număr de referință"
-
-#: smarty/blocks/geokret:43 smarty/blocks/geokret:9 smarty/forms:21
-#: smarty/forms:31 smarty/pages:15
-msgid "Tracking Code"
-msgstr "Cod de urmărire"
-
-#: smarty/blocks/geokret:46 smarty/pages:30
-msgid "Total distance"
-msgstr "Distanta totala"
-
-#: smarty/blocks/geokret:48
-msgid "Places visited"
-msgstr "Locurile vizitate"
-
-#: smarty/blocks/geokret:3
-msgid "Found it? Log it!"
-msgstr "Ai găsit-o? Înregistrează-te!"
-
-#: smarty/blocks/geokret:11
-msgid "Please enter the Tracking Code here"
-msgstr "Te rugăm să introduci codul de urmărire aici"
-
-#: smarty/blocks/geokret:3
-msgid "Map"
-msgstr "Hartă"
-
-#: smarty/blocks/geokret:8
-msgid "Caption:"
-msgstr "Legendă:"
-
-#: smarty/blocks/geokret:9
-msgid "start"
-msgstr "pornește"
-
-#: smarty/blocks/geokret:10
-msgid "trip points"
-msgstr "puncte de cursă"
-
-#: smarty/blocks/geokret:11
-msgid "recently seen"
-msgstr "vazut recent"
-
-#: smarty/blocks/geokret:13
-msgid "Download the track as:"
-msgstr "Descarca piesa ca:"
-
-#: smarty/blocks/geokret:17
-msgid "This geokret has not started yet"
-msgstr "Acest geokret nu a început încă"
-
-#: smarty/blocks/geokret:2
-msgid "Watchers"
-msgstr "Observatoare"
-
-#: smarty/blocks/geokret:6
-msgid "Log this GeoKret"
-msgstr "Log acest GeoKret"
-
-#: smarty/blocks/geokret:11
-msgid "Print a label for this GeoKret"
-msgstr "Printați o etichetă pentru acest GeoKret"
-
-#: smarty/blocks/geokret:24
-msgid "Adopt this GeoKret"
-msgstr "Adoptă acest GeoKret"
-
-#: smarty/blocks/geokret:26
-msgid "Login to claim this GeoKret"
-msgstr "Login pentru a beneficia de acest GeoKret"
-
-#: smarty/blocks/geokret:32
-msgid "Archive this GeoKret"
-msgstr "Arhivează acest GeoKret"
-
-#: smarty/blocks/geokret:37
-msgid "Email owner"
-msgstr "Proprietar e-mail"
-
-#: smarty/blocks/geokret:43
-msgid "Make this GeoKret available for adoption by another user"
-msgstr "Faceți acest GeoKret disponibil pentru adopție de către un alt utilizator"
-
-#: smarty/blocks/geokret:44
-msgid "Transfer ownership"
-msgstr "Transferă proprietate"
-
-#: smarty/blocks/geokret:55 smarty:56 smarty/pages:25 smarty/pages:26
-msgid "Actions"
-msgstr "Acțiuni"
-
-#: smarty/blocks/geokret:3 smarty/forms:31 smarty/forms:36
-msgid "Mission"
-msgstr "Misiune"
-
-#: smarty/blocks/geokret:15
-msgid "This GeoKret doesn't have a special mission…"
-msgstr "Acest GeoKret nu are o misiune specială…"
-
-#: smarty/blocks/user:13
-msgid "Choose statpic"
-msgstr "Alege imagine"
-
-#: smarty/blocks/user:11
-msgid "Subscribe to RSS channel"
-msgstr "Inscrieti-va la canalul RSS"
-
-#: smarty/blocks/user:15
-msgid "Password change"
-msgstr "Schimbare parolă"
-
-#: smarty/blocks/user:29
-msgid "Joined us"
-msgstr "Cont creeat"
-
-#: smarty/blocks/user:31 smarty/dialog:11 smarty/forms:33
-msgid "Language"
-msgstr "Limba"
-
-#: smarty/blocks/user:33
-msgid "Nothing selected"
-msgstr "Nimic selectat"
-
-#: smarty/blocks/user:36
-msgid "Choose preferred language"
-msgstr "Alegeți limba preferată"
-
-#: smarty/blocks/user:43 smarty/pages:17
-msgid "Email"
-msgstr "E-mail"
-
-#: smarty/blocks/user:48
-msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr "În aşteptarea validării e-mailului, nu uitaţi să faceţi clic pe link-ul din e-mailul de validare!"
-
-#: smarty/blocks/user:50
-msgid "No email address, please add one!"
-msgstr "Nicio adresă de e-mail, te rugăm să adaugi una!"
-
-#: smarty/blocks/user:53
-msgid "Update email address"
-msgstr "Actualizare adresă de e-mail"
-
-#: smarty/blocks/user:58
-msgid "Secid"
-msgstr "Secid"
-
-#: smarty/blocks/user:61
-msgid "Used to authenticate in other applications. Keep it secret!"
-msgstr "Folosit pentru autentificare în alte aplicații. Păstrați-o secretă!"
-
-#: smarty/blocks/user:62
-msgid "Generate a new secid"
-msgstr "Generează un nou secid"
-
-#: smarty/blocks/user:72
-msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr "Pentru a vă schimba numele de utilizator sau pentru a vă elimina contul? Trimiteți-ne <a href=\"%1\">un e-mail</a>!"
-
-#: smarty/blocks/user:3
-msgid "Awards"
-msgstr "Premii"
-
-#: smarty/blocks/user:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong> km."
-msgstr "%1 a creat <strong>%2</strong> GeoKrety, care a călătorit <strong>%3</strong> km."
-
-#: smarty/blocks/user:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong> km."
-msgstr "%1 a mutat <strong>%2</strong> GeoKrety pe o distanță totală de <strong>%3</strong> km."
-
-#: smarty/blocks/user:10
-msgid "No home coordinates have been defined."
-msgstr "Nu au fost definite coordonatele casei."
-
-#: smarty/blocks/user:13 smarty/blocks/user:21
-msgid "Update home coordinates and obervation area"
-msgstr "Actualizeaza coordonatele casei si zona de obervare"
-
-#: smarty/blocks/user:14
-msgid "Define your home coordinates"
-msgstr "Definiţi coordonatele de acasă"
-
-#: smarty/blocks/user:20
-msgid "GeoKrety near home"
-msgstr "GeoKrety lângă casa"
-
-#: smarty/blocks/user:4
-msgid "OAuth Connections"
-msgstr "Conexiuni OAuth"
-
-#: smarty/blocks/user:17
-msgid "Disconnect from %1"
-msgstr "Deconectare de la %1"
-
-#: smarty/blocks/user:18
-msgid "Disconnect"
-msgstr "Deconectare"
-
-#: smarty/blocks/user:23
-msgid "Connect with %1"
-msgstr "Conectare cu %1"
-
-#: smarty/blocks/user:23
-msgid "Connect"
-msgstr "Conectează-te"
-
-#: smarty/blocks/user:3
-msgid "Badges"
-msgstr "Insigne"
-
-#: smarty/blocks/user:9
-msgid "No badge received yet."
-msgstr "Încă nu s-a primit nicio insignă."
-
-#: smarty/blocks/user:3 smarty:60 smarty/forms:6 smarty/pages:3
-msgid "Create a new GeoKret"
-msgstr "Creează un GeoKret nou"
-
-#: smarty/blocks/user:12
-msgid "View inventory"
-msgstr "Vezi inventar"
-
-#: smarty/blocks/user:16 smarty/pages:3 smarty/pages:9
-msgid "Owned GeoKrety"
-msgstr "GeoKrety deținut"
-
-#: smarty/blocks/user:20 smarty:20 smarty/pages:3 smarty/pages:9
-msgid "Watched GeoKrety"
-msgstr "GeoKrety urmărit"
-
-#: smarty/blocks/user:24
-msgid "Recently posted moves"
-msgstr "Mutări publicate recent"
-
-#: smarty/blocks/user:28
-msgid "Moves of owned GeoKrety"
-msgstr "Mutări ale GeoKrety deținut"
-
-#: smarty/blocks/user:32
-msgid "Posted pictures"
-msgstr "Poze poze postate"
-
-#: smarty/blocks/user:36
-msgid "Owned GeoKrety pictures"
-msgstr "Poze GeoKrety deținute"
-
-#: smarty/blocks/user:40 smarty:28
-msgid "Where are my GeoKrety?"
-msgstr "Unde sunt GeoKrety-ul meu?"
-
-#: smarty/chunks:5
-msgid "languages"
-msgstr "limbi"
-
-#: smarty/chunks:6
-msgid "platform"
-msgstr "platformă"
-
-#: smarty/chunks:7
-msgid "group name"
-msgstr "numele grupului"
-
-#: smarty/chunks:9
-msgid "Remove this GeoKret from the selection"
-msgstr "Elimină acest GeoKret din selecţie"
-
-#: smarty/chunks:10
-msgid " %1 %2 by %3"
-msgstr " %1 %2 de %3"
-
-#: smarty/chunks:13
-msgid "Never moved"
-msgstr "Nu s-a mutat niciodată"
-
-#: smarty/chunks:15
-msgid "%1 %2 %3 by %4"
-msgstr "%1 %2 %3 de %4"
-
-#: smarty/chunks:17
-msgid "%1 %2"
-msgstr "%1 %2"
-
-#: smarty:3
-msgid "Admin"
-msgstr "Admin"
-
-#: smarty:7 smarty:16
-msgid "My profile"
-msgstr "Profilul meu"
-
-#: smarty:18
-msgid "My inventory"
-msgstr "Inventarul meu"
-
-#: smarty:19
-msgid "My GeoKrety"
-msgstr "GeoKrety meu"
-
-#: smarty:22
-msgid "My recent moves"
-msgstr "Mutările mele recente"
-
-#: smarty:23
-msgid "Recent moves of my GeoKrety"
-msgstr "Mutări recente ale GeoKrety meu"
-
-#: smarty:25
-msgid "My photos"
-msgstr "Fotografiile mele"
-
-#: smarty:26
-msgid "Photos of my GeoKrety"
-msgstr "Fotografii ale GeoKrety meu"
-
-#: smarty:30
-msgid "Sign out"
-msgstr "Deconectare"
-
-#: smarty:48 smarty/dialog:11 smarty/dialog:39 smarty:32 smarty/pages:13
-msgid "Sign in"
-msgstr "Autentificare"
-
-#: smarty:53
-msgid "Create account"
-msgstr "Creare cont"
-
-#: smarty/dialog:4
-msgid "Offer this GeoKret for adoption?"
-msgstr "Oferiti acest GeoKret pentru adoptie?"
-
-#: smarty/dialog:10
-msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "Acest lucru va permite unui alt utilizator care cunoaşte Codul de Urmărire şi Codul Proprietarului să devină noul proprietar al acestui GeoKret."
-
-#: smarty/dialog:14
-msgid "Back to GeoKret page"
-msgstr "Înapoi la pagina GeoKret"
-
-#: smarty/dialog:15 smarty/dialog:26 smarty/dialog:50 smarty/dialog:65
-#: smarty/dialog:45 smarty/dialog:14 smarty/dialog:20 smarty/dialog:47
-#: smarty/dialog:22 smarty/dialog:33 smarty/dialog:32 smarty/dialog:53
-#: smarty/dialog:23 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
-#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:65
-msgid "Dismiss"
-msgstr "Renunţaţi"
-
-#: smarty/dialog:17
-msgid "Generate an Owner Code"
-msgstr "Generează un cod de proprietar"
-
-#: smarty/dialog:4
-msgid "Choose your preferred language"
-msgstr "Alegeți limba preferată"
-
-#: smarty/dialog:21 smarty/forms:40
-msgid "This will be the default language when you log in and the main language in the emails you may receive."
-msgstr "Aceasta va fi limba implicită atunci când vă autentificați și limba principală din e-mailurile pe care le puteți primi."
-
-#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:46
-#: smarty/dialog:50 smarty/pages:64
-msgid "Back to user page"
-msgstr "Înapoi la pagina utilizatorului"
-
-#: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
-msgid "Change"
-msgstr "Schimbă"
-
-#: smarty/dialog:4
-msgid "Refresh your secid?"
-msgstr "Reîmprospătați-vă secidul?"
-
-#: smarty/dialog:10
-msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr "Reîmprospătarea secidului va deconecta toate aplicațiile care au fost conectate la contul dvs. Va trebui să le reautentificați."
-
-#: smarty/dialog:17
-msgid "Refresh"
-msgstr "Împrospătează"
-
-#: smarty/dialog:8 smarty/pages:3 smarty/pages:13
-msgid "Change your password"
-msgstr "Schimbă-ți parola"
-
-#: smarty/dialog:15
-msgid "Current password"
-msgstr "Parola curentă"
-
-#: smarty/dialog:17
-msgid "Old password"
-msgstr "Parola veche"
-
-#: smarty/dialog:22 smarty/dialog:24 smarty/pages:41 smarty/pages:43
-msgid "New password"
-msgstr "Parola noua"
-
-#: smarty/dialog:29 smarty/dialog:31 smarty/forms:26 smarty/forms:28
-#: smarty/pages:48 smarty/pages:50
-msgid "Confirm password"
-msgstr "Confirmă parola"
-
-#: smarty/dialog:37
-msgid "Read more about choosing good passwords:"
-msgstr "Citește mai multe despre alegerea parolelor bune:"
-
-#: smarty/dialog:39
-msgid "Choosing Good Passwords -- A User Guide"
-msgstr "Alegerea parolelor bune -- Ghidul utilizatorului"
-
-#: smarty/dialog:40
-msgid "How to Write Good Passwords"
-msgstr "Cum să scrieți parole bune"
-
-#: smarty/dialog:41
-msgid "Password strength"
-msgstr "Puterea parolei"
-
-#: smarty/dialog:3 smarty/forms:28
-msgid "Select GeoKrety from inventory"
-msgstr "Selectează GeoKrety din inventar"
-
-#: smarty/dialog:9
-msgid "Only %1 GeoKrety can be processed at a time."
-msgstr "Doar %1 GeoKrety poate fi procesat odată."
-
-#: smarty/dialog:15
-msgid "Filter"
-msgstr "Filtrare"
-
-#: smarty/dialog:16
-msgid "Name or ID"
-msgstr "Nume sau ID"
-
-#: smarty/dialog:27 smarty/forms:15 smarty/forms:17 smarty/pages:21
-#: smarty/pages:70
-msgid "Owner"
-msgstr "Proprietar"
-
-#: smarty/dialog:28
-msgid "Select all (but max %1)"
-msgstr "Selectează tot (dar maxim %1)"
-
-#: smarty/dialog:35
-msgid "Choose"
-msgstr "Alege"
-
-#: smarty/dialog:60
-msgid "Your inventory is empty."
-msgstr "Inventarul tău este gol."
-
-#: smarty/dialog:67
-msgid "Select <span class=\"badge\">%1</span>"
-msgstr "Selectează <span class=\"badge\">%1</span>"
-
-#: smarty/dialog:6
-msgid "Manage picture"
-msgstr "Gestionare imagine"
-
-#: smarty/dialog:12
-msgid "Caption"
-msgstr "Legendă"
-
-#: smarty/dialog:24
-msgid "Remember caption"
-msgstr "Ține minte legenda"
-
-#: smarty/dialog:27
-msgid "Remember the caption for the next %1 minutes"
-msgstr "Amintește-ți legenda pentru următoarele %1 minute"
-
-#: smarty/dialog:46 smarty/forms:51 smarty/pages:27
-msgid "Save"
-msgstr "Salvează"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this picture?"
-msgstr "Sunteţi sigur că doriţi să ştergeţi această imagine?"
-
-#: smarty/dialog:15 smarty/dialog:23 smarty/dialog:14
-msgid "Delete"
-msgstr "Ștergere"
-
-#: smarty/dialog:4
-msgid "Commenting a GeoKret move"
-msgstr "Comentând o mutare GeoKret"
-
-#: smarty/dialog:14 smarty/pages:22
-msgid "Your comment"
-msgstr "Comentariu"
-
-#: smarty/dialog:21
-msgid "Declare missing"
-msgstr "Declară"
-
-#: smarty/dialog:5 smarty/dialog:6 smarty/dialog:14 smarty/dialog:16
-#: smarty/forms:10 smarty/forms:12 smarty/forms:4 smarty/forms:6
-#: smarty/forms:239
-msgid "Username"
-msgstr "Nume"
-
-#: smarty/dialog:8 smarty/dialog:9 smarty/dialog:20 smarty/dialog:22
-#: smarty/forms:19 smarty/forms:21
-msgid "Password"
-msgstr "Parola"
-
-#: smarty/dialog:9
-msgid "Contact user"
-msgstr "Contactați utilizatorul"
-
-#: smarty/dialog:18
-msgid "%1 (speak %2)"
-msgstr "%1 (vorbește %2)"
-
-#: smarty/dialog:25
-msgid "Message subject"
-msgstr "Subiectul mesajului"
-
-#: smarty/dialog:30
-msgid "Message"
-msgstr "Mesaj"
-
-#: smarty/dialog:32
-msgid "Message to user"
-msgstr "Mesaj către utilizator"
-
-#: smarty/dialog:49
-msgid "Send message"
-msgstr "Trimite un mesaj"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this move?"
-msgstr "Eşti sigur că vrei să ştergi această mutare?"
-
-#: smarty/dialog:14
-msgid "Deleting this Move will delete attached pictures and the main avatar!"
-msgstr "Ștergerea acestei mutări va șterge imaginile atașate și avatarul principal!"
-
-#: smarty/dialog:16
-msgid "Deleting this Move will delete attached pictures!"
-msgstr "Ștergerea acestei mutări va șterge imaginile atașate!"
-
-#: smarty/dialog:4
-msgid "Do you want to set this picture as main avatar?"
-msgstr "Doriți să setați această imagine ca avatar principal?"
-
-#: smarty/dialog:15 smarty/pages:67
-msgid "Define"
-msgstr "Definire"
-
-#: smarty/dialog:2
-msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
-msgstr "Sunteți pe cale să detașați contul dvs. GeoKrety din contul dvs. %1 . Nu veți mai putea să vă conectați prin intermediul acestui furnizor."
-
-#: smarty/dialog:8 smarty/dialog:26 smarty/dialog:24
-msgid "Detaching OAuth provider"
-msgstr "Detașare furnizor OAuth"
-
-#: smarty/dialog:16 smarty/dialog:34
-msgid "Detach"
-msgstr "Detach"
-
-#: smarty/dialog:2
-msgid "You are not connected to this OAuth provider."
-msgstr "Nu sunteți conectat la acest furnizor OAuth."
-
-#: smarty/dialog:15
-msgid "Back to my profile"
-msgstr "Înapoi la profilul meu"
-
-#: smarty/dialog:3
-msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
-msgstr "Acest document stabilește condițiile de utilizare a \"<a href=\"%1\">geokrety. rg</a>\" - un serviciu de geocaching pe internet operat voluntar disponibil la <a href=\"%1\">geokrety.org</a> (denumit în continuare \"Serviciu\"). Fiecare persoană care înregistrează un cont (denumit în continuare „utilizator”) acceptă respectarea acestor termeni și condiții, de la începutul procedurii de înregistrare."
-
-#: smarty/dialog:7
-msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr "Serviciul este monitorizat și supravegheat de un grup de susținători voluntari, denumită în continuare „echipă GK”. Echipa GK nu este responsabilă pentru conținutul postat de utilizatori pe site sau pentru daunele rezultate din utilizarea informațiilor de la serviciu."
-
-#: smarty/dialog:11
-msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr "Trebuie să vă asigurați că informațiile publicate de utilizator pe Serviciu <strong>nu trebuie să afecteze legea existentă</strong>. În special, conținutul publicat de utilizator nu poate încălca drepturile de autor ale terților. Tot conținutul (inclusiv descrierea GeoKrety, ilustrațiile și toate intrările lor în jurnale sunt puse la dispoziție prin publicarea lor în Serviciu de către Utilizatorul <strong>sunt licențiate sub Creative Commons</strong> BY-NC-SA versiunea 2. , al cărui conținut complet este disponibil online la adresa <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Conținutul domeniului public este de asemenea admis. Utilizatorul este responsabil direct față de deținătorul dreptului de autor pentru orice încălcare a legii."
-
-#: smarty/dialog:15
-msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "Nu oferim nicio garanție sau garanție cu privire la exactitate, actualitate, performanță, integralitatea sau adecvarea informațiilor și a materialelor găsite sau oferite pe acest site în orice scop specific. Confirmaţi că astfel de informaţii şi materiale pot conţine inexactităţi sau erori şi excludem în mod expres răspunderea pentru astfel de inexactităţi sau erori în cea mai mare măsură permisă de lege."
-
-#: smarty/dialog:19
-msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
-msgstr "Conținutul publicat de dvs. pe site poate să nu conțină expresii vulgare, conținut abuziv sau ilegal."
-
-#: smarty/dialog:26 smarty/dialog:45 smarty:90
-msgid "Terms of use"
-msgstr "Termeni de utilizare"
-
-#: smarty/dialog:35 smarty/dialog:54
-msgid "I agree with the terms"
-msgstr "Sunt de acord cu termenii"
-
-#: smarty/dialog:21 smarty/forms:106 smarty/forms:247 smarty/pages:22
-#: smarty/pages:20 smarty/pages:37 smarty/pages:34
-msgid "Comment"
-msgstr "Comentariu"
-
-#: smarty/dialog:6
-msgid "Do you really want to unsubscribe from this news?"
-msgstr "Sigur doriți să vă dezabonați de la această știri?"
-
-#: smarty/dialog:8
-msgid "Subscribe to this news?"
-msgstr "Abonează-te la această știri?"
-
-#: smarty/dialog:26
-msgid "Unsubscribe"
-msgstr "Dezabonare"
-
-#: smarty/dialog:28
-msgid "Subscribe"
-msgstr "Abonează-te"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this move comment?"
-msgstr "Sigur doriți să ștergeți acest comentariu mutare?"
-
-#: smarty/dialog:2 smarty/dialog:7
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
+#: website/app-templates/smarty/emails/password-changed.tpl:3
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
+#: website/app-templates/smarty/emails/account-activated.tpl:3
+msgid "Congratulation"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
+msgid "Your email address has been successfully changed."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
+msgid "Your email address has been successfully changed to: %1."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
+#: website/app-templates/smarty/emails/password-changed.tpl:12
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:12
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:12
+#: website/app-templates/smarty/emails/account-activated.tpl:12
+#: website/app-templates/smarty/dialog/login.tpl:2
+#: website/app-templates/smarty/dialog/login.tpl:7
 msgid "Login"
 msgstr "Autentificare"
 
-#: smarty/dialog:29
-msgid "Remember me"
-msgstr "Retine-ma"
-
-#: smarty/dialog:32
-msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr "Folosim cookie-uri doar pentru a păstra sesiunea activă. Citește mai multe despre politica noastră privind <a href=\"%1\" target=\"_blank\">cookie-urile</a>."
-
-#: smarty/dialog:40
-msgid "No account yet ? Register now!"
-msgstr "Niciun cont? Înregistrează-te acum!"
-
-#: smarty/dialog:43
-msgid "Forgot your password?"
-msgstr "Ți-ai uitat parola?"
-
-#: smarty/dialog:4
-msgid "Update your email address"
-msgstr "Actualizează adresa ta de e-mail"
-
-#: smarty/dialog:11 smarty/dialog:12 smarty/forms:11 smarty/forms:13
-#: smarty/pages:24 smarty/pages:26
-msgid "Email address"
-msgstr "Adresa de e-mail"
-
-#: smarty/dialog:17 smarty/forms:31 smarty/forms:48
-msgid "Yes, I want to receive email alerts (sent once a day)."
-msgstr "Da, vreau să primesc alerte pe e-mail (trimise o dată pe zi)."
-
-#: smarty/dialog:23 smarty/forms:14
-msgid "The main purpose of collecting email is to permit password recovery."
-msgstr "Scopul principal al colectării de e-mail este să permitem recuperarea parolei."
-
-#: smarty/dialog:27
-msgid "Email alerts may contain any of the following:"
-msgstr "Alertele prin e-mail pot conține oricare dintre următoarele:"
-
-#: smarty/dialog:29
-msgid "GeoKrety.org news"
-msgstr "GeoKrety.org știri"
-
-#: smarty/dialog:30
-msgid "Recent logs on:"
-msgstr "Jurnale recente pe:"
-
-#: smarty/dialog:32 smarty/dialog:38
-msgid "your own GeoKrety"
-msgstr "propria ta GeoKrety"
-
-#: smarty/dialog:33 smarty/dialog:39
-msgid "GeoKrety that you watch"
-msgstr "GeoKrety pe care îl vedeți"
-
-#: smarty/dialog:34
-msgid "any GeoKrety logged near your home location"
-msgstr "orice GeoKrety inregistrat in apropierea locatiei dumneavoastra"
-
-#: smarty/dialog:36
-msgid "Comments posted to any of the following:"
-msgstr "Comentarii postate în oricare dintre următoarele:"
-
-#: smarty/dialog:40
-msgid "your logs"
-msgstr "jurnalele tale"
-
-#: smarty/dialog:41
-msgid "your comments"
-msgstr "comentariile dumneavoastră"
-
-#: smarty/dialog:42
-msgid "news posts you have are subscribed to"
-msgstr "postările de știri la care sunteți abonat"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this news comment?"
-msgstr "Eşti sigur că vrei să ştergi acest comentariu?"
-
-#: smarty/banners:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "Ne pare rău, dar contul tău nu are niciun e-mail înregistrat. Nu vă veți putea recupera după o pierdere de parolă! De asemenea, nu veți primi notificări zilnice despre GeoKrety sau GeoKrety pe care le veți viziona."
-
-#: smarty/banners:4
-msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr "Vă rugăm să luați în considerare <a href=\"%1\">adăugarea unei adrese de e-mail</a> sau <a href=\"%2\">legați contul</a> cu un furnizor OAuth."
-
-#: smarty/banners:3
-msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "Ai un e-mail de validare în așteptare. Nu uitați să faceți clic pe link-ul prezent în e-mail pentru a finaliza procedura. Link-ul va expira %1!"
-
-#: smarty/banners:3
-msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr "Chiar dacă - deocamdată - nu este necesar - vă recomandăm să <a href=\"%1\">vă conectați</a>."
-
-#: smarty/banners:4
-msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
-msgstr "Nu ezita să <a href=\"%1\">creezi un cont</a>."
-
-#: smarty/banners:5
-msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr "Atunci veţi putea să vă gestionaţi inventarul GeoKrety şi să încărcaţi poze, să vă editaţi jurnalele şi, desigur, să vă creaţi propriul GeoKrety!"
-
-#: smarty/banners:3
-msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
-msgstr "Ne pare rău, dar avem probleme cu trimiterea notificărilor prin e-mail. Este e-mailul tău încă valabil?"
-
-#: smarty/banners:3 smarty/banners:2
-msgid "Close"
-msgstr "Inchide"
-
-#: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr "Aceasta nu este o instanță de producție. Dacă nu sunteți un tester, atunci probabil mergeți la <a href=\"https://geokrety.org\">site-ul nostru de producție</a>."
-
-#: smarty/banners:3
-msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
-msgstr "GeoKrety este un serviciu online gratuit pentru urmărirea obiectelor în jocuri GPS precum geocaching sau opencaching. Poți urmări obiecte mici, cărți, monede, animale de companie sau oameni cu noi… <a href=\"%1\">citește mai mult</a>."
-
-#: smarty/banners:4
-msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "Ai setat acest GeoKret disponibil pentru adoptare. Codul Proprietarului este: <strong>%1</strong>. Dă-l împreună cu codul de urmărire <strong>%2</strong> utilizatorului care va adopta GeoKret."
-
-#: smarty/banners:6
-msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
-msgstr "Acest GeoKret este disponibil pentru adoptare. Dacă proprietarul curent v-a dat codul de urmărire plus codul proprietarului, atunci puteţi <a href=\"%1\">solicita</a> acest GeoKret."
-
-#: smarty/banners:8
-msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr "Acest GeoKret este disponibil pentru adopție. Vă rugăm să <a href=\"%1\">vă autentificați</a> mai întâi."
-
-#: smarty/banners:2
-msgid "Some statistics"
-msgstr "Câteva statistici"
-
-#: smarty/banners:6
-msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "<strong>%1</strong> a înregistrat GeoKrety, <strong>%2</strong> GeoKrety ascuns de <strong>%3</strong> utilizatori."
-
-#: smarty/banners:13
-msgid "<strong>%1</strong> km done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr "<strong>%1</strong> km parcurși de toți GeoKrety (este <strong>%2</strong> x distanța de la Pământ la Lună 🌛, <strong>%3</strong> x circumferința Ecuatorială a Pământului 🌍 și <strong>%4</strong> x distanța de la Pământ la Soare 🌞)."
-
-#: smarty/banners:21
-msgid "And that's thanks to you! Congratulation!"
-msgstr "Şi asta vă mulţumesc! Felicitări!"
-
-#: smarty/banners:3
-msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "Această ramură 🥦 este dezvoltată activ 👨‍💻, dacă găsești bug-uri 🐛, vă rugăm să verificați 👀 <a href=\"%1\" target=\"_blank\">problemele existente ♻️ pe GitHub %2</a> și să nu ezitați să deschideți noi 🆕. (Sunu 1 bug per problemă te rugăm să 🙏)"
-
-#: smarty:6
-msgid "Toggle navigation"
-msgstr "Comutare navigare"
-
-#: smarty:16 smarty:51 smarty:58 smarty/pages:3
-msgid "Log a GeoKret"
-msgstr "Înregistrează un GeoKret"
-
-#: smarty:47 smarty:3
-msgid "Home"
-msgstr "Acasa"
-
-#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:19
-msgid "News"
-msgstr "Noutati"
-
-#: smarty:61 smarty/pages:3 smarty/pages:8
-msgid "Claim a GeoKret"
-msgstr "Claim a GeoKret"
-
-#: smarty:64
-msgid "Advanced search"
-msgstr "Căutare avansată"
-
-#: smarty:65
-msgid "Photo gallery"
-msgstr "Galerie foto"
-
-#: smarty:68
-msgid "GeoKrety Map"
-msgstr "Hartă GeoKrety"
-
-#: smarty:75
-msgid "Currently selected language"
-msgstr "Limba selectată în prezent"
-
-#: smarty:86 smarty:88 smarty/pages:3 smarty/pages:39
-msgid "Help"
-msgstr "Ajutor"
-
-#: smarty:89
-msgid "Moleholes and GK hotels"
-msgstr "Moleholes și hoteluri GK"
-
-#: smarty:91 smarty/pages:3 smarty/pages:9
-msgid "Press corner"
-msgstr "Apăsaţi colţ"
-
-#: smarty:93
-msgid "GK interface / API"
-msgstr "Interfață GK / API"
-
-#: smarty:99 smarty/pages:3
-msgid "Downloads"
-msgstr "Descărcări"
-
-#: smarty:100
-msgid "GeoKrety Toolbox"
-msgstr "GeoKrety Toolbox"
-
-#: smarty:101
-msgid "Waypoint resolver"
-msgstr "Rezolvare punct"
-
-#: smarty:4
-msgid "About"
-msgstr "Despre"
-
-#: smarty:6
-msgid "Contact"
-msgstr "Contact"
-
-#: smarty:10
-msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr "Publicat sub <a id=\"footer-license\" href=\"%1\">licență MIT</a>"
-
-#: smarty:13
-msgid "Leave in-context translation"
-msgstr "Părăsește traducerea în context"
-
-#: smarty:15
-msgid "in-context translation"
-msgstr "Traducere în context"
-
-#: smarty:19
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr "Proiectat cu <abbr title=\"love\">💗</abbr> de <a id=\"footer-team\" href=\"%1\">Echipa GeoKrety</a>"
-
-#: smarty:29
-msgid "Deployed on %1"
-msgstr "Desfășurat pe %1"
-
-#: smarty/macros:5
-msgid "First"
-msgstr "Primul"
-
-#: smarty/macros:17
-msgid "Last [%1]"
-msgstr "Ultimul [%1]"
-
-#: smarty/forms:5
-msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
-msgstr "Dacă dețineți deja un cont pe Geokrety. rg, te rog <a href=\"%2\">loghează-te</a> mai întâi, apoi asociază contul tău cu %1 din pagina de setări a utilizatorului. Altfel te rugăm să alegi un nume de utilizator pentru a continua."
-
-#: smarty/forms:32 smarty/forms:49
-msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
-msgstr "Alertele prin e-mail pot conține, informații de călătorie despre GeoKrety, știri, comentarii…"
-
-#: smarty/forms:44 smarty/forms:60
-msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr "Da, accept <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">termenii de utilizare</a>."
-
-#: smarty/forms:61 smarty/forms:77
-msgid "Register"
-msgstr "Inregistrare"
-
-#: smarty/forms:4
-msgid "Edit a GeoKret"
-msgstr "Editează un GeoKret"
-
-#: smarty/forms:13 smarty/forms:15 smarty/forms:8 smarty/forms:10
-msgid "GeoKret name"
-msgstr "Numele GeoKret-ului"
-
-#: smarty/forms:20
-msgid "GeoKret type"
-msgstr "GeoKret type"
-
-#: smarty/forms:33 smarty/forms:38
-msgid "What is this GeoKret mission?"
-msgstr "Ce este această misiune GeoKret?"
-
-#: smarty/forms:41
-msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
-msgstr "Aceasta va crea o prima mutare de tip \"dipped\" pentru GeoKret, marcând că este punctul de plecare."
-
-#: smarty/forms:42
-msgid "Set my home coordinates as a starting point."
-msgstr "Setează coordonatele mele de acasă ca punct de plecare."
-
-#: smarty/forms:51
-msgid "Create"
-msgstr "Crează"
-
-#: smarty/forms:11
-msgid "Identify GeoKret"
-msgstr "Identifica GeoKret-ul"
-
-#: smarty/forms:30
-msgid "Verify tracking code"
-msgstr "Verifică codul de urmărire"
-
-#: smarty/forms:33
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "%1 caractere din <em>eticheta GeoKret</em>. <u>Nu utilizaţi codul începând cu 'GK' aici</u>"
-
-#: smarty/forms:43 smarty/forms:118 smarty/forms:205
-msgid "Next"
-msgstr "Următoarea"
-
-#: smarty/forms:54
-msgid "Log type"
-msgstr "Tip jurnal"
-
-#: smarty/forms:66
-msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
-msgstr "Selectaţi tipul de acţiune pe care l-aţi făcut pe GeoKret. Pentru mai multe informaţii, consultaţi pagina de ajutor."
-
-#: smarty/forms:77
-msgid "When you've left a GeoKret in a cache"
-msgstr "Când ai lăsat un GeoKret într-o geocutie"
-
-#: smarty/forms:78
-msgid "I've dropped GeoKret"
-msgstr "Am depus un GeoKret"
-
-#: smarty/forms:84
-msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
-msgstr "Când ai luat un GeoKret dintr-o geocutie şi nu îl vei pune într-o altă geocutie <i>curând</i>"
-
-#: smarty/forms:85
-msgid "I've grabbed GeoKret"
-msgstr "Am luat un GeoKret"
-
-#: smarty/forms:91
-msgid "When you've met a GeoKret in a cache but haven't taken it with you"
-msgstr "Când ai întâlnit un GeoKret într-o geocutie, dar nu l-ai luat cu tine"
-
-#: smarty/forms:92
-msgid "I've met GeoKret"
-msgstr "Am vazut un GeoKret"
-
-#: smarty/forms:98
-msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
-msgstr "Când luaţi un GeoKret pentru un cache-tur; este la fel ca o picătură şi apoi apuca - locaţia vizitată este înregistrată, dar GeoKret se află încă în inventarul tău"
-
-#: smarty/forms:99
-msgid "I've dipped a GeoKret"
-msgstr "Am o scurtă GeoKret"
-
-#: smarty/forms:105
-msgid "When you want to write a comment :)"
-msgstr "Când vrei să scrii un comentariu :)"
-
-#: smarty/forms:129
-msgid "New location"
-msgstr "Locatie noua"
-
-#: smarty/forms:139
-msgid "Waypoint"
-msgstr "Punct"
-
-#: smarty/forms:142
-msgid "eg. GC1AQ2N"
-msgstr "eg. GC1AQ2N"
-
-#: smarty/forms:147
-msgid "Lookup opencaching cache by name"
-msgstr "Caută cache-ul opencaching după nume"
-
-#: smarty/forms:152
-msgid "eg.: GC1AQ2N, OP069B, OC033A…"
-msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
-
-#: smarty/forms:164
-msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
-msgstr "Introdu numele geocutiei. <strong>Nu funcţionează pentru geocutiile GC</strong>"
-
-#: smarty/forms:178
-msgid "Coordinates"
-msgstr "Coordonează"
-
-#: smarty/forms:216
-msgid "Additional data"
-msgstr "Date aditionale"
-
-#: smarty/forms:224 smarty/pages:23
-msgid "Date"
-msgstr "Data"
-
-#: smarty/forms:241
-msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
-msgstr "&quot;&quot; Acest lucru poate fi dvs.: <br /> - Geocaching / opencaching numele de utilizator <br /> - Porecla <br /> - Nume, etc"
-
-#: smarty/forms:251
-msgid "It is always nice to receive a little message ;)"
-msgstr "Este întotdeauna frumos să primiți un mic mesaj ;)"
-
-#: smarty/forms:274
-msgid "Post your log"
-msgstr "Postează-ți jurnalul"
-
-#: smarty/forms:3
-msgid "Generate a GeoKret Label"
-msgstr "Generează o etichetă GeoKret"
-
-#: smarty/forms:22 smarty/forms:29
-msgid "Reference numbers"
-msgstr "Numere de referință"
-
-#: smarty/forms:43
-msgid "Label template"
-msgstr "Sablon eticheta"
-
-#: smarty/forms:54
-msgid "Label help languages"
-msgstr "Eticheta de ajutor limbi"
-
-#: smarty/forms:62
-msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr "Notă1: nu toate șabloanele de etichetă suportă această caracteristică și, atunci când sunt acceptate, limba engleză este întotdeauna prezentă."
-
-#: smarty/forms:69
-msgid "Generate as .png"
-msgstr "Generează ca .png"
-
-#: smarty/forms:70
-msgid "Generate as .svg"
-msgstr "Generează ca .svg"
-
-#: smarty/forms:71
-msgid "Generate as .pdf"
-msgstr "Genereaza ca .pdf"
-
-#: smarty/forms:80 smarty/forms:83 smarty/forms:84
-msgid "GeoKret label preview"
-msgstr "Previzualizare eticheta GeoKret"
-
-#: smarty:3
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
+msgid "If you did not requested this, click the link below."
+msgstr "Dacă nu ați solicitat acest lucru, faceți clic pe link-ul de mai jos."
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
+msgid "Revert this change!"
+msgstr "Reveniți la această modificare!"
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:20
+#: website/app-templates/smarty/emails/password-recovery.tpl:15
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
+#: website/app-templates/smarty/emails/account-activation.tpl:13
+msgid "This link expires %1."
+msgstr "Acest link expiră %1."
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:15
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
+msgid "If you did not requested a password change, then you should also consider changing your password immediately."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:17
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:22
+msgid "Change my password!"
+msgstr "Schimbă-mi parola!"
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:29
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:22
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:27
+msgid "You're getting this email because you've changed your email on our website."
+msgstr "Primești acest e-mail pentru că ți-ai schimbat e-mailul de pe site-ul nostru."
+
+#: website/app-templates/smarty/emails/base.tpl:20
+#: website/app-templates/smarty/header.tpl:3
 msgid "Open source item tracking for all geocaching platforms"
 msgstr "Urmărirea elementelor sursă deschisă pentru toate platformele de geocaching"
 
-#: smarty/pages:3 smarty/pages:9
-msgid "GeoKrety visiting the cache %1"
+#: website/app-templates/smarty/emails/base.tpl:29
+msgid "Hi %1,"
+msgstr "Hi %1,"
+
+#: website/app-templates/smarty/emails/base.tpl:36
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr "Cu sinceritate,<br>Echipa GeoKrety"
+
+#: website/app-templates/smarty/emails/base.tpl:45
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
 msgstr ""
 
-#: smarty/pages:20
-msgid "Name"
-msgstr "Numele"
+#: website/app-templates/smarty/emails/password-recovery.tpl:3
+msgid "Forgot Your Password?"
+msgstr "Ți-ai uitat parola?"
 
-#: smarty/pages:21
-msgid "Cache"
-msgstr "Geocutie"
+#: website/app-templates/smarty/emails/password-recovery.tpl:4
+msgid "Recover your password."
+msgstr ""
 
-#: smarty/pages:24 smarty/pages:23 smarty/pages:36
+#: website/app-templates/smarty/emails/password-recovery.tpl:8
+msgid "It happens. Click the link below to reset your password."
+msgstr "Se întâmplă. Faceţi clic pe link-ul de mai jos pentru a reseta parola."
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:12
+msgid "Reset Password"
+msgstr "Resetare parolă"
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:19
+#: website/app-templates/smarty/emails/password-changed.tpl:17
+msgid "You're getting this email because you've changed your password on our website."
+msgstr "Primești acest e-mail pentru că ți-ai schimbat parola pe site-ul nostru."
+
+#: website/app-templates/smarty/emails/password-changed.tpl:4
+#: website/app-templates/smarty/emails/account-activated.tpl:4
+msgid "Your account on GeoKrety.org is now active."
+msgstr ""
+
+#: website/app-templates/smarty/emails/password-changed.tpl:8
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
+msgid "Something went wrong while synchronizing partners data"
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
+#: website/app-templates/smarty/emails/cron-exception.tpl:7
+msgid "Something went wrong with a cron job, please check the logs below."
+msgstr ""
+
+#: website/app-templates/smarty/emails/base-admin.tpl:4
+msgid "You're getting this email because you're one the website admins."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:3
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:3
+msgid "Hooray"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:4
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:8
+msgid "Your email address has been successfully reverted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:4
+msgid "One of your GeoKrety has been adopted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:10
+msgid "View GeoKret"
+msgstr "Vezi GeoKret"
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:15
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
+msgstr "Primiți acest e-mail pentru că unul dintre GeoKrety s-a schimbat de proprietar pe site-ul nostru."
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
+msgid "Confirm your email address change."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
+msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
+msgstr "Cineva, sperăm că dumneavoastră, a solicitat schimbarea adresei de e-mail pentru persoana de contact GeoKrety la: %1."
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
+msgid "Do not change!"
+msgstr "Nu schimba!"
+
+#: website/app-templates/smarty/emails/cron-locked.tpl:4
+msgid "A script is locked"
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-locked.tpl:7
+msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
+msgstr ""
+
+#: website/app-templates/smarty/emails/user-contact.tpl:3
+msgid "Contact from a GeoKrety.org user"
+msgstr "Contactează de la un utilizator GeoKrety.org"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:4
+msgid "Someone sent you a private message."
+msgstr ""
+
+#: website/app-templates/smarty/emails/user-contact.tpl:8
+msgid "This email was sent by user <a href=\"%2\">%1</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/user-contact.tpl:12
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr "Dacă suspectezi un abuz, te rugăm să ne spui: %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:13
+msgid "Referer: %1"
+msgstr "Referer: %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:18
+msgid "Subject:"
+msgstr "Subiect:"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:23
+msgid "Reply to %1"
+msgstr "Răspunde la %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:28
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
+msgstr "Primești acest e-mail pentru că unul dintre utilizatorii GeoKrety.org îți trimit un mesaj prin intermediul profilului tău de utilizator."
+
+#: website/app-templates/smarty/emails/account-activation.tpl:4
+msgid "One step left to use GeoKrety.org."
+msgstr ""
+
+#: website/app-templates/smarty/emails/account-activation.tpl:7
+msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
+msgstr "Tocmai v-ați înregistrat pe GeoKrety.org. <strong>Încă trebuie să vă activați contul înainte de a-l putea folosi.</strong> Vă rugăm să urmați link-ul de mai jos."
+
+#: website/app-templates/smarty/emails/account-activation.tpl:10
+msgid "Activate your account"
+msgstr "Activează-ți contul"
+
+#: website/app-templates/smarty/emails/account-activation.tpl:15
+msgid "If your account is not activated within that time, then it will be automatically deleted."
+msgstr "În cazul în care contul dvs. nu este activat în acel moment, acesta va fi șters automat."
+
+#: website/app-templates/smarty/emails/account-activation.tpl:19
+#: website/app-templates/smarty/emails/account-activated.tpl:19
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "Primești acest e-mail pentru că tocmai te-ai înscris pe site-ul nostru."
+
+#: website/app-templates/smarty/emails/cron-exception.tpl:4
+msgid "An exception occurred in a cron job"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
+msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
+msgstr "Cineva, să sperăm, a solicitat schimbarea adresei tale de e-mail de contact GeoKrety"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
+msgid "Validate your new email address"
+msgstr "Validați noua adresă de e-mail"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
+msgid "This link is valid for %1."
+msgstr "Acest link este valid pentru %1."
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
+msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
+msgstr "Dacă nu ați solicitat acest lucru și nu știți care sunt GeoKrety, vă rugăm să ignorați acest e-mail. Nu veți mai auzi niciodată despre noi!"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
+msgid "You're getting this email because you've requested an email address change on our website."
+msgstr "Primiți acest e-mail deoarece ați solicitat schimbarea adresei de e-mail pe site-ul nostru."
+
+#: website/app-templates/smarty/emails/account-activated.tpl:8
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr "Contul dvs. de pe GeoKrety.org este acum complet funcțional."
+
+#: website/app-templates/smarty/emails/account-activated.tpl:15
+msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:5
+msgid "Your GeoKrety watchlist"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:8
+msgid "You're getting this email because you've choose to receive daily mail updates."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:9
+msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:14
+msgid "Here is what changed recently."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:17
+msgid "Latest news"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:27
+msgid "GeoKrety dropped in your observation area"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Open interactive map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Observation area map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:36
+#: website/app-templates/smarty/emails/daily-mail.tpl:79
+#: website/app-templates/smarty/emails/daily-mail.tpl:125
+#: website/app-templates/smarty/emails/daily-mail.tpl:170
+msgid "GeoKret"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:37
+#: website/app-templates/smarty/emails/daily-mail.tpl:80
+#: website/app-templates/smarty/emails/daily-mail.tpl:126
+msgid "Position"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:38
+#: website/app-templates/smarty/emails/daily-mail.tpl:81
+#: website/app-templates/smarty/emails/daily-mail.tpl:127
+#: website/app-templates/smarty/emails/daily-mail.tpl:171
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
+#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:22
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
+#: website/app-templates/smarty/pages/news_details.tpl:20
+#: website/app-templates/smarty/pages/news_details.tpl:37
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
+#: website/app-templates/smarty/pages/home.tpl:39
+msgid "Comment"
+msgstr "Comentariu"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:39
+#: website/app-templates/smarty/emails/daily-mail.tpl:82
+#: website/app-templates/smarty/emails/daily-mail.tpl:128
+#: website/app-templates/smarty/emails/daily-mail.tpl:172
+msgid "Author"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:40
+msgid "Home distance"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:73
+msgid "My GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:78
+#: website/app-templates/smarty/emails/daily-mail.tpl:124
+msgid "Icon"
+msgstr "Iconiță"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:83
+msgid "Distance since last move"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:119
+msgid "Watched GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:129
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:23
+#: website/app-templates/smarty/pages/user_inventory.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:23
+#: website/app-templates/smarty/pages/home.tpl:41
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
 msgid "Distance"
 msgstr "Distanță"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/emails/daily-mail.tpl:165
+msgid "Latest move comments"
+msgstr ""
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:15
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:20
+#: website/app-templates/smarty/pages/user_inventory.tpl:20
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:20
+#: website/app-templates/smarty/pages/home.tpl:37
+#: website/app-templates/smarty/pages/home.tpl:76
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
+#: website/app-templates/smarty/pages/mole_hole.tpl:38
+#: website/app-templates/smarty/pages/mole_hole.tpl:81
+msgid "ID"
+msgstr "ID"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:16
+#: website/app-templates/smarty/dialog/user_contact.tpl:23
+msgid "Subject"
+msgstr "Subiect"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:17
+msgid "From"
+msgstr "De la"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:18
+#: website/app-templates/smarty/dialog/user_contact.tpl:16
+msgid "To"
+msgstr "Catre"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:20
+msgid "Action"
+msgstr "Acțiune"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:21
+msgid "Delete all mails"
+msgstr "Şterge toate mesajele"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:39
+msgid "Delete mail"
+msgstr "Ștergere e-mail"
+
+#: website/app-templates/smarty/elements/move_comment.tpl:10
+#: website/app-templates/smarty/elements/news_comment.tpl:10
+msgid "Delete comment"
+msgstr "Şterge comentariul"
+
+#: website/app-templates/smarty/elements/version.tpl:3
+msgid "Deployed on %1"
+msgstr "Desfășurat pe %1"
+
+#: website/app-templates/smarty/elements/news.tpl:7
+msgid "Unsubscribe from news"
+msgstr "Dezabonare de la ştiri"
+
+#: website/app-templates/smarty/elements/news.tpl:11
+msgid "Subscribe to news"
+msgstr "Abonează-te la noutăți"
+
+#: website/app-templates/smarty/elements/move.tpl:7
+msgid "Show move on map"
+msgstr "Arată mutarea pe hartă"
+
+#: website/app-templates/smarty/elements/move.tpl:64
+msgid "Report as missing"
+msgstr "Raportați ca lipsă"
+
+#: website/app-templates/smarty/elements/move.tpl:69
+#: website/app-templates/smarty/blocks/geokret/details.tpl:35
+#: website/app-templates/smarty/blocks/user/details.tpl:18
+msgid "Upload a picture"
+msgstr "Incarca o imagine"
+
+#: website/app-templates/smarty/elements/move.tpl:73
+msgid "Write a comment"
+msgstr "Scrie un comentariu"
+
+#: website/app-templates/smarty/elements/move.tpl:81
+msgid "Edit log"
+msgstr "Editare jurnal"
+
+#: website/app-templates/smarty/elements/move.tpl:85
+msgid "Delete log"
+msgstr "Ştergere jurnal"
+
+#: website/app-templates/smarty/elements/credit.tpl:4
+msgid "%1 logo"
+msgstr "Logo %1"
+
+#: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:33
+#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:30
+#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:36
+msgid "Move this GeoKret"
+msgstr "Mută acest GeoKret"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:3
+msgid "Found a GeoKret?"
+msgstr "Ai gasit un GeoKret?"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:7
+msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
+msgstr "Te rugăm să introduci <abbr title=\"%1\">Codul de Urmărire</abbr> aici:"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:12
+msgid "Tracking code"
+msgstr "Cod de urmărire"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:15
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
+msgid "Log it!"
+msgstr "Înregistrează-te!"
+
+#: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
+msgid "There is no pictures yet."
+msgstr "Nu există poze încă."
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:20
+msgid "missing"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:22
+msgid "archived"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:27
+#: website/app-templates/smarty/blocks/user/details.tpl:7
+msgid "Send a message to %1"
+msgstr "Trimite un mesaj către %1"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:32
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
+msgid "Edit GeoKret details"
+msgstr "Editare detalii GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:46
+#: website/app-templates/smarty/forms/geokret_label.tpl:24
+msgid "Reference number"
+msgstr "Număr de referință"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:49
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+#: website/app-templates/smarty/forms/move.tpl:21
+#: website/app-templates/smarty/forms/geokret_label.tpl:31
+#: website/app-templates/smarty/pages/geokret_claim.tpl:15
+msgid "Tracking Code"
+msgstr "Cod de urmărire"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:30
+msgid "Total distance"
+msgstr "Distanta totala"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:54
+msgid "Places visited"
+msgstr "Locurile vizitate"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:58
+msgid "Social share"
+msgstr "Distribuire socială"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:60
+msgid "Share on Facebook"
+msgstr "Distribuie pe Facebook"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:61
+msgid "Share on Twitter"
+msgstr "Distribuie pe Twitter"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:62
+msgid "Share on Instagram"
+msgstr "Distribuie pe Instagram"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:63
+#: website/app-templates/smarty/blocks/user/statpic.tpl:8
+msgid "Copy link to page"
+msgstr "Copiază link-ul către pagină"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:64
+#: website/app-templates/smarty/blocks/user/statpic.tpl:9
+msgid "Copy to page as bbcode"
+msgstr "Copiază în pagină ca cod de bare"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:66
+msgid "Country track"
+msgstr "Urmareste dupa tara"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
+msgid "Found it? Log it!"
+msgstr "Ai găsit-o? Înregistrează-te!"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
+msgid "Please enter the Tracking Code here"
+msgstr "Te rugăm să introduci codul de urmărire aici"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:3
+msgid "Map"
+msgstr "Hartă"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:8
+msgid "Caption:"
+msgstr "Legendă:"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:9
+msgid "start"
+msgstr "pornește"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:10
+msgid "trip points"
+msgstr "puncte de cursă"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:11
+msgid "recently seen"
+msgstr "vazut recent"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:13
+msgid "Download the track as:"
+msgstr "Descarca piesa ca:"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:17
+msgid "This geokret has not started yet"
+msgstr "Acest geokret nu a început încă"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:2
+msgid "Watchers"
+msgstr "Observatoare"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:6
+msgid "Log this GeoKret"
+msgstr "Log acest GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:11
+msgid "Print a label for this GeoKret"
+msgstr "Printați o etichetă pentru acest GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:18
+#: website/app-templates/smarty/navbar.tpl:95
+msgid "Statistics"
+msgstr "Statistici"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:25
+msgid "Adopt this GeoKret"
+msgstr "Adoptă acest GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:27
+msgid "Login to claim this GeoKret"
+msgstr "Login pentru a beneficia de acest GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:34
+msgid "Mark this GeoKret as archived"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:34
+msgid "Archive this GeoKret"
+msgstr "Arhivează acest GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:40
+msgid "Email owner"
+msgstr "Proprietar e-mail"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:46
+msgid "Make this GeoKret available for adoption by another user"
+msgstr "Faceți acest GeoKret disponibil pentru adopție de către un alt utilizator"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:47
+msgid "Transfer ownership"
+msgstr "Transferă proprietate"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:58
+#: website/app-templates/smarty/navbar.tpl:56
+#: website/app-templates/smarty/pages/user_inventory.tpl:25
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
+msgid "Actions"
+msgstr "Acțiuni"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
+#: website/app-templates/smarty/forms/geokret.tpl:31
+#: website/app-templates/smarty/forms/geokret_label.tpl:36
+msgid "Mission"
+msgstr "Misiune"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
+msgid "This GeoKret doesn't have a special mission…"
+msgstr "Acest GeoKret nu are o misiune specială…"
+
+#: website/app-templates/smarty/blocks/user/statpic.tpl:13
+msgid "Choose statpic"
+msgstr "Alege imagine"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:11
+msgid "Subscribe to RSS channel"
+msgstr "Inscrieti-va la canalul RSS"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:15
+msgid "Password change"
+msgstr "Schimbare parolă"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:29
+msgid "Joined us"
+msgstr "Cont creeat"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:31
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:33
+msgid "Language"
+msgstr "Limba"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:33
+msgid "Nothing selected"
+msgstr "Nimic selectat"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:36
+msgid "Choose preferred language"
+msgstr "Alegeți limba preferată"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:43
+#: website/app-templates/smarty/pages/contact_us.tpl:17
+msgid "Email"
+msgstr "E-mail"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:48
+msgid "Pending email validation, don't forget to click the link in validation mail!"
+msgstr "În aşteptarea validării e-mailului, nu uitaţi să faceţi clic pe link-ul din e-mailul de validare!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:50
+msgid "No email address, please add one!"
+msgstr "Nicio adresă de e-mail, te rugăm să adaugi una!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:53
+msgid "Update email address"
+msgstr "Actualizare adresă de e-mail"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:58
+msgid "Secid"
+msgstr "Secid"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:61
+msgid "Used to authenticate in other applications. Keep it secret!"
+msgstr "Folosit pentru autentificare în alte aplicații. Păstrați-o secretă!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:62
+msgid "Generate a new secid"
+msgstr "Generează un nou secid"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:72
+msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
+msgstr "Pentru a vă schimba numele de utilizator sau pentru a vă elimina contul? Trimiteți-ne <a href=\"%1\">un e-mail</a>!"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:3
+msgid "Awards"
+msgstr "Premii"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:10
+msgid "No home coordinates have been defined."
+msgstr "Nu au fost definite coordonatele casei."
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:13
+#: website/app-templates/smarty/blocks/user/map_home.tpl:21
+msgid "Update home coordinates and obervation area"
+msgstr "Actualizeaza coordonatele casei si zona de obervare"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:14
+msgid "Define your home coordinates"
+msgstr "Definiţi coordonatele de acasă"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:20
+msgid "GeoKrety near home"
+msgstr "GeoKrety lângă casa"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:4
+msgid "OAuth Connections"
+msgstr "Conexiuni OAuth"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:17
+msgid "Disconnect from %1"
+msgstr "Deconectare de la %1"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:18
+msgid "Disconnect"
+msgstr "Deconectare"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect with %1"
+msgstr "Conectare cu %1"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect"
+msgstr "Conectează-te"
+
+#: website/app-templates/smarty/blocks/user/badges.tpl:3
+msgid "Badges"
+msgstr "Insigne"
+
+#: website/app-templates/smarty/blocks/user/badges.tpl:9
+msgid "No badge received yet."
+msgstr "Încă nu s-a primit nicio insignă."
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:3
+#: website/app-templates/smarty/navbar.tpl:60
+#: website/app-templates/smarty/forms/geokret.tpl:6
+#: website/app-templates/smarty/pages/geokret_create.tpl:3
+msgid "Create a new GeoKret"
+msgstr "Creează un GeoKret nou"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:12
+msgid "View inventory"
+msgstr "Vezi inventar"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:16
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:9
+msgid "Owned GeoKrety"
+msgstr "GeoKrety deținut"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:20
+#: website/app-templates/smarty/navbar-profile.tpl:20
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:9
+msgid "Watched GeoKrety"
+msgstr "GeoKrety urmărit"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:24
+msgid "Recently posted moves"
+msgstr "Mutări publicate recent"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:28
+msgid "Moves of owned GeoKrety"
+msgstr "Mutări ale GeoKrety deținut"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:32
+msgid "Posted pictures"
+msgstr "Poze poze postate"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:36
+msgid "Owned GeoKrety pictures"
+msgstr "Poze GeoKrety deținute"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:40
+#: website/app-templates/smarty/navbar-profile.tpl:28
+msgid "Where are my GeoKrety?"
+msgstr "Unde sunt GeoKrety-ul meu?"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "User stats"
+msgstr "Statistici utilizator"
+
+#: website/app-templates/smarty/chunks/social_groups.tpl:5
+msgid "languages"
+msgstr "limbi"
+
+#: website/app-templates/smarty/chunks/social_groups.tpl:6
+msgid "platform"
+msgstr "platformă"
+
+#: website/app-templates/smarty/chunks/social_groups.tpl:7
+msgid "group name"
+msgstr "numele grupului"
+
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
+msgid "Remove this GeoKret from the selection"
+msgstr "Elimină acest GeoKret din selecţie"
+
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
+msgid "Never moved"
+msgstr "Nu s-a mutat niciodată"
+
+#: website/app-templates/smarty/navbar-profile.tpl:3
+msgid "Admin"
+msgstr "Admin"
+
+#: website/app-templates/smarty/navbar-profile.tpl:7
+#: website/app-templates/smarty/navbar-profile.tpl:16
+msgid "My profile"
+msgstr "Profilul meu"
+
+#: website/app-templates/smarty/navbar-profile.tpl:18
+msgid "My inventory"
+msgstr "Inventarul meu"
+
+#: website/app-templates/smarty/navbar-profile.tpl:19
+msgid "My GeoKrety"
+msgstr "GeoKrety meu"
+
+#: website/app-templates/smarty/navbar-profile.tpl:22
+msgid "My recent moves"
+msgstr "Mutările mele recente"
+
+#: website/app-templates/smarty/navbar-profile.tpl:23
+msgid "Recent moves of my GeoKrety"
+msgstr "Mutări recente ale GeoKrety meu"
+
+#: website/app-templates/smarty/navbar-profile.tpl:25
+msgid "My photos"
+msgstr "Fotografiile mele"
+
+#: website/app-templates/smarty/navbar-profile.tpl:26
+msgid "Photos of my GeoKrety"
+msgstr "Fotografii ale GeoKrety meu"
+
+#: website/app-templates/smarty/navbar-profile.tpl:30
+msgid "Sign out"
+msgstr "Deconectare"
+
+#: website/app-templates/smarty/navbar-profile.tpl:48
+#: website/app-templates/smarty/dialog/login_simple.tpl:11
+#: website/app-templates/smarty/dialog/login.tpl:38
+#: website/app-templates/smarty/navbar.tpl:32
+#: website/app-templates/smarty/pages/registration_validated.tpl:13
+msgid "Sign in"
+msgstr "Autentificare"
+
+#: website/app-templates/smarty/navbar-profile.tpl:53
+msgid "Create account"
+msgstr "Creare cont"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
+msgid "Offer this GeoKret for adoption?"
+msgstr "Oferiti acest GeoKret pentru adoptie?"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
+msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
+msgstr "Acest lucru va permite unui alt utilizator care cunoaşte Codul de Urmărire şi Codul Proprietarului să devină noul proprietar al acestui GeoKret."
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:14
+msgid "Back to GeoKret page"
+msgstr "Înapoi la pagina GeoKret"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
+#: website/app-templates/smarty/dialog/user_update_password.tpl:50
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:65
+#: website/app-templates/smarty/dialog/picture_edit.tpl:45
+#: website/app-templates/smarty/dialog/picture_delete.tpl:14
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:20
+#: website/app-templates/smarty/dialog/user_contact.tpl:47
+#: website/app-templates/smarty/dialog/move_delete.tpl:22
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:14
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:33
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:32
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:53
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:20
+#: website/app-templates/smarty/dialog/news_subscription.tpl:23
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:25
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:13
+#: website/app-templates/smarty/dialog/user_update_email.tpl:51
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:13
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:32
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
+#: website/app-templates/smarty/pages/email_change.tpl:33
+#: website/app-templates/smarty/pages/email_change.tpl:37
+#: website/app-templates/smarty/pages/email_change_token.tpl:32
+#: website/app-templates/smarty/pages/email_change_token.tpl:36
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:65
+msgid "Dismiss"
+msgstr "Renunţaţi"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:17
+msgid "Generate an Owner Code"
+msgstr "Generează un cod de proprietar"
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
+msgid "Choose your preferred language"
+msgstr "Alegeți limba preferată"
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:40
+msgid "This will be the default language when you log in and the main language in the emails you may receive."
+msgstr "Aceasta va fi limba implicită atunci când vă autentificați și limba principală din e-mailurile pe care le puteți primi."
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:25
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:14
+#: website/app-templates/smarty/dialog/user_update_password.tpl:49
+#: website/app-templates/smarty/dialog/user_contact.tpl:46
+#: website/app-templates/smarty/dialog/user_update_email.tpl:50
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:64
+msgid "Back to user page"
+msgstr "Înapoi la pagina utilizatorului"
+
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:28
+#: website/app-templates/smarty/dialog/user_update_password.tpl:52
+#: website/app-templates/smarty/dialog/user_update_email.tpl:53
+#: website/app-templates/smarty/pages/password_change.tpl:56
+msgid "Change"
+msgstr "Schimbă"
+
+#: website/app-templates/smarty/dialog/info.tpl:13
+msgid "Acknowledge"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
+msgid "Refresh your secid?"
+msgstr "Reîmprospătați-vă secidul?"
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
+msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
+msgstr "Reîmprospătarea secidului va deconecta toate aplicațiile care au fost conectate la contul dvs. Va trebui să le reautentificați."
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:17
+msgid "Refresh"
+msgstr "Împrospătează"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:8
+#: website/app-templates/smarty/pages/password_change.tpl:3
+#: website/app-templates/smarty/pages/password_change.tpl:13
+msgid "Change your password"
+msgstr "Schimbă-ți parola"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:15
+msgid "Current password"
+msgstr "Parola curentă"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:17
+msgid "Old password"
+msgstr "Parola veche"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:22
+#: website/app-templates/smarty/dialog/user_update_password.tpl:24
+#: website/app-templates/smarty/pages/password_change.tpl:41
+#: website/app-templates/smarty/pages/password_change.tpl:43
+msgid "New password"
+msgstr "Parola noua"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:29
+#: website/app-templates/smarty/dialog/user_update_password.tpl:31
+#: website/app-templates/smarty/forms/registration.tpl:26
+#: website/app-templates/smarty/forms/registration.tpl:28
+#: website/app-templates/smarty/pages/password_change.tpl:48
+#: website/app-templates/smarty/pages/password_change.tpl:50
+msgid "Confirm password"
+msgstr "Confirmă parola"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:37
+msgid "Read more about choosing good passwords:"
+msgstr "Citește mai multe despre alegerea parolelor bune:"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:39
+msgid "Choosing Good Passwords -- A User Guide"
+msgstr "Alegerea parolelor bune -- Ghidul utilizatorului"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:40
+msgid "How to Write Good Passwords"
+msgstr "Cum să scrieți parole bune"
+
+#: website/app-templates/smarty/dialog/user_update_password.tpl:41
+msgid "Password strength"
+msgstr "Puterea parolei"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:3
+#: website/app-templates/smarty/forms/move.tpl:28
+msgid "Select GeoKrety from inventory"
+msgstr "Selectează GeoKrety din inventar"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:9
+msgid "Only %1 GeoKrety can be processed at a time."
+msgstr "Doar %1 GeoKrety poate fi procesat odată."
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
+msgid "Filter"
+msgstr "Filtrare"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
+msgid "Name or ID"
+msgstr "Nume sau ID"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
+#: website/app-templates/smarty/forms/geokret_label.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:17
+#: website/app-templates/smarty/pages/user_inventory.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:77
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
+msgid "Owner"
+msgstr "Proprietar"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
+msgid "Select all (but max %1)"
+msgstr "Selectează tot (dar maxim %1)"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:35
+msgid "Choose"
+msgstr "Alege"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:60
+msgid "Your inventory is empty."
+msgstr "Inventarul tău este gol."
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:67
+msgid "Select <span class=\"badge\">%1</span>"
+msgstr "Selectează <span class=\"badge\">%1</span>"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:6
+msgid "Manage picture"
+msgstr "Gestionare imagine"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:12
+msgid "Caption"
+msgstr "Legendă"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:24
+msgid "Remember caption"
+msgstr "Ține minte legenda"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:27
+msgid "Remember the caption for the next %1 minutes"
+msgstr "Amintește-ți legenda pentru următoarele %1 minute"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:46
+#: website/app-templates/smarty/forms/geokret.tpl:51
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:27
+msgid "Save"
+msgstr "Salvează"
+
+#: website/app-templates/smarty/dialog/picture_delete.tpl:4
+msgid "Do you really want to delete this picture?"
+msgstr "Sunteţi sigur că doriţi să ştergeţi această imagine?"
+
+#: website/app-templates/smarty/dialog/picture_delete.tpl:15
+#: website/app-templates/smarty/dialog/move_delete.tpl:23
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
+msgid "Delete"
+msgstr "Ștergere"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
+msgid "Commenting a GeoKret move"
+msgstr "Comentând o mutare GeoKret"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
+#: website/app-templates/smarty/pages/news_details.tpl:22
+msgid "Your comment"
+msgstr "Comentariu"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
+msgid "Declare missing"
+msgstr "Declară"
+
+#: website/app-templates/smarty/dialog/login_simple.tpl:5
+#: website/app-templates/smarty/dialog/login_simple.tpl:6
+#: website/app-templates/smarty/dialog/login.tpl:13
+#: website/app-templates/smarty/dialog/login.tpl:15
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:10
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:12
+#: website/app-templates/smarty/forms/registration.tpl:4
+#: website/app-templates/smarty/forms/registration.tpl:6
+#: website/app-templates/smarty/forms/move.tpl:239
+msgid "Username"
+msgstr "Nume"
+
+#: website/app-templates/smarty/dialog/login_simple.tpl:8
+#: website/app-templates/smarty/dialog/login_simple.tpl:9
+#: website/app-templates/smarty/dialog/login.tpl:19
+#: website/app-templates/smarty/dialog/login.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:19
+#: website/app-templates/smarty/forms/registration.tpl:21
+msgid "Password"
+msgstr "Parola"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:9
+msgid "Contact user"
+msgstr "Contactați utilizatorul"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:18
+msgid "%1 (speak %2)"
+msgstr "%1 (vorbește %2)"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:25
+msgid "Message subject"
+msgstr "Subiectul mesajului"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:30
+msgid "Message"
+msgstr "Mesaj"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:32
+msgid "Message to user"
+msgstr "Mesaj către utilizator"
+
+#: website/app-templates/smarty/dialog/user_contact.tpl:49
+msgid "Send message"
+msgstr "Trimite un mesaj"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:4
+msgid "Do you really want to delete this move?"
+msgstr "Eşti sigur că vrei să ştergi această mutare?"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:14
+msgid "Deleting this Move will delete attached pictures and the main avatar!"
+msgstr "Ștergerea acestei mutări va șterge imaginile atașate și avatarul principal!"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:16
+msgid "Deleting this Move will delete attached pictures!"
+msgstr "Ștergerea acestei mutări va șterge imaginile atașate!"
+
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:4
+msgid "Do you want to set this picture as main avatar?"
+msgstr "Doriți să setați această imagine ca avatar principal?"
+
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:67
+msgid "Define"
+msgstr "Definire"
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
+msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
+msgstr "Sunteți pe cale să detașați contul dvs. GeoKrety din contul dvs. %1 . Nu veți mai putea să vă conectați prin intermediul acestui furnizor."
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:8
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:26
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:8
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:24
+msgid "Detaching OAuth provider"
+msgstr "Detașare furnizor OAuth"
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:16
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:34
+msgid "Detach"
+msgstr "Detach"
+
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:2
+msgid "You are not connected to this OAuth provider."
+msgstr "Nu sunteți conectat la acest furnizor OAuth."
+
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:15
+msgid "Back to my profile"
+msgstr "Înapoi la profilul meu"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
+msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+msgstr "Acest document stabilește condițiile de utilizare a \"<a href=\"%1\">geokrety. rg</a>\" - un serviciu de geocaching pe internet operat voluntar disponibil la <a href=\"%1\">geokrety.org</a> (denumit în continuare \"Serviciu\"). Fiecare persoană care înregistrează un cont (denumit în continuare „utilizator”) acceptă respectarea acestor termeni și condiții, de la începutul procedurii de înregistrare."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
+msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
+msgstr "Serviciul este monitorizat și supravegheat de un grup de susținători voluntari, denumită în continuare „echipă GK”. Echipa GK nu este responsabilă pentru conținutul postat de utilizatori pe site sau pentru daunele rezultate din utilizarea informațiilor de la serviciu."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
+msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
+msgstr "Trebuie să vă asigurați că informațiile publicate de utilizator pe Serviciu <strong>nu trebuie să afecteze legea existentă</strong>. În special, conținutul publicat de utilizator nu poate încălca drepturile de autor ale terților. Tot conținutul (inclusiv descrierea GeoKrety, ilustrațiile și toate intrările lor în jurnale sunt puse la dispoziție prin publicarea lor în Serviciu de către Utilizatorul <strong>sunt licențiate sub Creative Commons</strong> BY-NC-SA versiunea 2. , al cărui conținut complet este disponibil online la adresa <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Conținutul domeniului public este de asemenea admis. Utilizatorul este responsabil direct față de deținătorul dreptului de autor pentru orice încălcare a legii."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
+msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+msgstr "Nu oferim nicio garanție sau garanție cu privire la exactitate, actualitate, performanță, integralitatea sau adecvarea informațiilor și a materialelor găsite sau oferite pe acest site în orice scop specific. Confirmaţi că astfel de informaţii şi materiale pot conţine inexactităţi sau erori şi excludem în mod expres răspunderea pentru astfel de inexactităţi sau erori în cea mai mare măsură permisă de lege."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
+msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
+msgstr "Conținutul publicat de dvs. pe site poate să nu conțină expresii vulgare, conținut abuziv sau ilegal."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:26
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:45
+#: website/app-templates/smarty/navbar.tpl:90
+msgid "Terms of use"
+msgstr "Termeni de utilizare"
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:35
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:54
+msgid "I agree with the terms"
+msgstr "Sunt de acord cu termenii"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:6
+msgid "Do you really want to unsubscribe from this news?"
+msgstr "Sigur doriți să vă dezabonați de la această știri?"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:8
+msgid "Subscribe to this news?"
+msgstr "Abonează-te la această știri?"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:26
+msgid "Unsubscribe"
+msgstr "Dezabonare"
+
+#: website/app-templates/smarty/dialog/news_subscription.tpl:28
+msgid "Subscribe"
+msgstr "Abonează-te"
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
+msgid "Mark this GeoKret as archived?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:10
+msgid "You are about the archive this GeoKret."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:11
+msgid "This is useful if you think this GeoKret has been destroyed."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:13
+msgid "It will not appear anymore in your active inventory."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:14
+msgid "It will not appear as present in a cache."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:16
+msgid "If someone discover it later, it will be automatically reactivated."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
+msgid "Archive"
+msgstr "Arhiva"
+
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
+msgid "Do you really want to delete this move comment?"
+msgstr "Sigur doriți să ștergeți acest comentariu mutare?"
+
+#: website/app-templates/smarty/dialog/login.tpl:28
+msgid "Remember me"
+msgstr "Retine-ma"
+
+#: website/app-templates/smarty/dialog/login.tpl:31
+msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
+msgstr "Folosim cookie-uri doar pentru a păstra sesiunea activă. Citește mai multe despre politica noastră privind <a href=\"%1\" target=\"_blank\">cookie-urile</a>."
+
+#: website/app-templates/smarty/dialog/login.tpl:39
+msgid "No account yet ? Register now!"
+msgstr "Niciun cont? Înregistrează-te acum!"
+
+#: website/app-templates/smarty/dialog/login.tpl:42
+msgid "Forgot your password?"
+msgstr "Ți-ai uitat parola?"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:4
+msgid "Update your email address"
+msgstr "Actualizează adresa ta de e-mail"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/dialog/user_update_email.tpl:12
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:18
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:20
+#: website/app-templates/smarty/forms/registration.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:13
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/pages/password_recovery.tpl:26
+msgid "Email address"
+msgstr "Adresa de e-mail"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:17
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:31
+#: website/app-templates/smarty/forms/registration.tpl:48
+msgid "Yes, I want to receive email alerts (sent once a day)."
+msgstr "Da, vreau să primesc alerte pe e-mail (trimise o dată pe zi)."
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:23
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:14
+msgid "The main purpose of collecting email is to permit password recovery."
+msgstr "Scopul principal al colectării de e-mail este să permitem recuperarea parolei."
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:27
+msgid "Email alerts may contain any of the following:"
+msgstr "Alertele prin e-mail pot conține oricare dintre următoarele:"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:29
+msgid "GeoKrety.org news"
+msgstr "GeoKrety.org știri"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:30
+msgid "Recent logs on:"
+msgstr "Jurnale recente pe:"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:32
+#: website/app-templates/smarty/dialog/user_update_email.tpl:38
+msgid "your own GeoKrety"
+msgstr "propria ta GeoKrety"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:33
+#: website/app-templates/smarty/dialog/user_update_email.tpl:39
+msgid "GeoKrety that you watch"
+msgstr "GeoKrety pe care îl vedeți"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:34
+msgid "any GeoKrety logged near your home location"
+msgstr "orice GeoKrety inregistrat in apropierea locatiei dumneavoastra"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:36
+msgid "Comments posted to any of the following:"
+msgstr "Comentarii postate în oricare dintre următoarele:"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:40
+msgid "your logs"
+msgstr "jurnalele tale"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:41
+msgid "your comments"
+msgstr "comentariile dumneavoastră"
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:42
+msgid "news posts you have are subscribed to"
+msgstr "postările de știri la care sunteți abonat"
+
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
+msgid "Do you really want to delete this news comment?"
+msgstr "Eşti sigur că vrei să ştergi acest comentariu?"
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:3
+msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "Ne pare rău, dar contul tău nu are niciun e-mail înregistrat. Nu vă veți putea recupera după o pierdere de parolă! De asemenea, nu veți primi notificări zilnice despre GeoKrety sau GeoKrety pe care le veți viziona."
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:4
+msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr "Vă rugăm să luați în considerare <a href=\"%1\">adăugarea unei adrese de e-mail</a> sau <a href=\"%2\">legați contul</a> cu un furnizor OAuth."
+
+#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
+msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
+msgstr "Ai un e-mail de validare în așteptare. Nu uitați să faceți clic pe link-ul prezent în e-mail pentru a finaliza procedura. Link-ul va expira %1!"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "Chiar dacă - deocamdată - nu este necesar - vă recomandăm să <a href=\"%1\">vă conectați</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
+msgstr "Nu ezita să <a href=\"%1\">creezi un cont</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "Atunci veţi putea să vă gestionaţi inventarul GeoKrety şi să încărcaţi poze, să vă editaţi jurnalele şi, desigur, să vă creaţi propriul GeoKrety!"
+
+#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
+msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
+msgstr "Ne pare rău, dar avem probleme cu trimiterea notificărilor prin e-mail. Este e-mailul tău încă valabil?"
+
+#: website/app-templates/smarty/banners/flash_messages.tpl:3
+#: website/app-templates/smarty/banners/contribute.tpl:2
+msgid "Close"
+msgstr "Inchide"
+
+#: website/app-templates/smarty/banners/is_not_prod.tpl:3
+msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr "Aceasta nu este o instanță de producție. Dacă nu sunteți un tester, atunci probabil mergeți la <a href=\"https://geokrety.org\">site-ul nostru de producție</a>."
+
+#: website/app-templates/smarty/banners/site_intro.tpl:3
+msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
+msgstr "GeoKrety este un serviciu online gratuit pentru urmărirea obiectelor în jocuri GPS precum geocaching sau opencaching. Poți urmări obiecte mici, cărți, monede, animale de companie sau oameni cu noi… <a href=\"%1\">citește mai mult</a>."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
+msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
+msgstr "Ai setat acest GeoKret disponibil pentru adoptare. Codul Proprietarului este: <strong>%1</strong>. Dă-l împreună cu codul de urmărire <strong>%2</strong> utilizatorului care va adopta GeoKret."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
+msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
+msgstr "Acest GeoKret este disponibil pentru adoptare. Dacă proprietarul curent v-a dat codul de urmărire plus codul proprietarului, atunci puteţi <a href=\"%1\">solicita</a> acest GeoKret."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
+msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+msgstr "Acest GeoKret este disponibil pentru adopție. Vă rugăm să <a href=\"%1\">vă autentificați</a> mai întâi."
+
+#: website/app-templates/smarty/banners/donate.tpl:2
+msgid "Enjoying GeoKrety.org?"
+msgstr "Îți place GeoKrety.org?"
+
+#: website/app-templates/smarty/banners/donate.tpl:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/donate.tpl:8
+msgid "Donate"
+msgstr ""
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:2
+msgid "Some statistics"
+msgstr "Câteva statistici"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:6
+msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
+msgstr "<strong>%1</strong> a înregistrat GeoKrety, <strong>%2</strong> GeoKrety ascuns de <strong>%3</strong> utilizatori."
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:13
+msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
+msgstr ""
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:21
+msgid "And that's thanks to you! Congratulation!"
+msgstr "Şi asta vă mulţumesc! Felicitări!"
+
+#: website/app-templates/smarty/banners/contribute.tpl:3
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "Această ramură 🥦 este dezvoltată activ 👨‍💻, dacă găsești bug-uri 🐛, vă rugăm să verificați 👀 <a href=\"%1\" target=\"_blank\">problemele existente ♻️ pe GitHub %2</a> și să nu ezitați să deschideți noi 🆕. (Sunu 1 bug per problemă te rugăm să 🙏)"
+
+#: website/app-templates/smarty/navbar.tpl:6
+msgid "Toggle navigation"
+msgstr "Comutare navigare"
+
+#: website/app-templates/smarty/navbar.tpl:16
+#: website/app-templates/smarty/navbar.tpl:51
+#: website/app-templates/smarty/navbar.tpl:58
+#: website/app-templates/smarty/pages/geokret_move.tpl:3
+msgid "Log a GeoKret"
+msgstr "Înregistrează un GeoKret"
+
+#: website/app-templates/smarty/navbar.tpl:47
+#: website/app-templates/smarty/footer.tpl:3
+msgid "Home"
+msgstr "Acasa"
+
+#: website/app-templates/smarty/navbar.tpl:48
+#: website/app-templates/smarty/footer.tpl:5
+#: website/app-templates/smarty/pages/news_list.tpl:3
+#: website/app-templates/smarty/pages/home.tpl:24
+msgid "News"
+msgstr "Noutati"
+
+#: website/app-templates/smarty/navbar.tpl:61
+#: website/app-templates/smarty/pages/geokret_claim.tpl:3
+#: website/app-templates/smarty/pages/geokret_claim.tpl:8
+msgid "Claim a GeoKret"
+msgstr "Claim a GeoKret"
+
+#: website/app-templates/smarty/navbar.tpl:64
+msgid "Advanced search"
+msgstr "Căutare avansată"
+
+#: website/app-templates/smarty/navbar.tpl:65
+msgid "Photo gallery"
+msgstr "Galerie foto"
+
+#: website/app-templates/smarty/navbar.tpl:68
+msgid "GeoKrety Map"
+msgstr "Hartă GeoKrety"
+
+#: website/app-templates/smarty/navbar.tpl:75
+msgid "Currently selected language"
+msgstr "Limba selectată în prezent"
+
+#: website/app-templates/smarty/navbar.tpl:86
+#: website/app-templates/smarty/navbar.tpl:88
+#: website/app-templates/smarty/pages/help.tpl:3
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:39
+msgid "Help"
+msgstr "Ajutor"
+
+#: website/app-templates/smarty/navbar.tpl:89
+msgid "Moleholes and GK hotels"
+msgstr "Moleholes și hoteluri GK"
+
+#: website/app-templates/smarty/navbar.tpl:91
+#: website/app-templates/smarty/pages/press_corner.tpl:3
+#: website/app-templates/smarty/pages/press_corner.tpl:9
+msgid "Press corner"
+msgstr "Apăsaţi colţ"
+
+#: website/app-templates/smarty/navbar.tpl:93
+msgid "GK interface / API"
+msgstr "Interfață GK / API"
+
+#: website/app-templates/smarty/navbar.tpl:97
+#: website/app-templates/smarty/pages/downloads.tpl:3
+msgid "Downloads"
+msgstr "Descărcări"
+
+#: website/app-templates/smarty/navbar.tpl:98
+msgid "GeoKrety Toolbox"
+msgstr "GeoKrety Toolbox"
+
+#: website/app-templates/smarty/navbar.tpl:99
+msgid "Waypoint resolver"
+msgstr "Rezolvare punct"
+
+#: website/app-templates/smarty/footer.tpl:4
+msgid "About"
+msgstr "Despre"
+
+#: website/app-templates/smarty/footer.tpl:6
+msgid "Contact"
+msgstr "Contact"
+
+#: website/app-templates/smarty/footer.tpl:10
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "Publicat sub <a id=\"footer-license\" href=\"%1\">licență MIT</a>"
+
+#: website/app-templates/smarty/footer.tpl:13
+msgid "Leave in-context translation"
+msgstr "Părăsește traducerea în context"
+
+#: website/app-templates/smarty/footer.tpl:15
+msgid "in-context translation"
+msgstr "Traducere în context"
+
+#: website/app-templates/smarty/footer.tpl:19
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr "Proiectat cu <abbr title=\"love\">💗</abbr> de <a id=\"footer-team\" href=\"%1\">Echipa GeoKrety</a>"
+
+#: website/app-templates/smarty/macros/pagination.tpl:5
+msgid "First"
+msgstr "Primul"
+
+#: website/app-templates/smarty/macros/pagination.tpl:17
+msgid "Last [%1]"
+msgstr "Ultimul [%1]"
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:5
+msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
+msgstr "Dacă dețineți deja un cont pe Geokrety. rg, te rog <a href=\"%2\">loghează-te</a> mai întâi, apoi asociază contul tău cu %1 din pagina de setări a utilizatorului. Altfel te rugăm să alegi un nume de utilizator pentru a continua."
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:32
+#: website/app-templates/smarty/forms/registration.tpl:49
+msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
+msgstr "Alertele prin e-mail pot conține, informații de călătorie despre GeoKrety, știri, comentarii…"
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:44
+#: website/app-templates/smarty/forms/registration.tpl:60
+msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
+msgstr "Da, accept <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">termenii de utilizare</a>."
+
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:61
+#: website/app-templates/smarty/forms/registration.tpl:77
+msgid "Register"
+msgstr "Inregistrare"
+
+#: website/app-templates/smarty/forms/geokret.tpl:4
+msgid "Edit a GeoKret"
+msgstr "Editează un GeoKret"
+
+#: website/app-templates/smarty/forms/geokret.tpl:13
+#: website/app-templates/smarty/forms/geokret.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:8
+#: website/app-templates/smarty/forms/geokret_label.tpl:10
+msgid "GeoKret name"
+msgstr "Numele GeoKret-ului"
+
+#: website/app-templates/smarty/forms/geokret.tpl:20
+msgid "GeoKret type"
+msgstr "GeoKret type"
+
+#: website/app-templates/smarty/forms/geokret.tpl:33
+#: website/app-templates/smarty/forms/geokret_label.tpl:38
+msgid "What is this GeoKret mission?"
+msgstr "Ce este această misiune GeoKret?"
+
+#: website/app-templates/smarty/forms/geokret.tpl:41
+msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
+msgstr "Aceasta va crea o prima mutare de tip \"dipped\" pentru GeoKret, marcând că este punctul de plecare."
+
+#: website/app-templates/smarty/forms/geokret.tpl:42
+msgid "Set my home coordinates as a starting point."
+msgstr "Setează coordonatele mele de acasă ca punct de plecare."
+
+#: website/app-templates/smarty/forms/geokret.tpl:51
+msgid "Create"
+msgstr "Crează"
+
+#: website/app-templates/smarty/forms/move.tpl:11
+msgid "Identify GeoKret"
+msgstr "Identifica GeoKret-ul"
+
+#: website/app-templates/smarty/forms/move.tpl:30
+msgid "Verify tracking code"
+msgstr "Verifică codul de urmărire"
+
+#: website/app-templates/smarty/forms/move.tpl:33
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "%1 caractere din <em>eticheta GeoKret</em>. <u>Nu utilizaţi codul începând cu 'GK' aici</u>"
+
+#: website/app-templates/smarty/forms/move.tpl:43
+#: website/app-templates/smarty/forms/move.tpl:118
+#: website/app-templates/smarty/forms/move.tpl:205
+msgid "Next"
+msgstr "Următoarea"
+
+#: website/app-templates/smarty/forms/move.tpl:54
+msgid "Log type"
+msgstr "Tip jurnal"
+
+#: website/app-templates/smarty/forms/move.tpl:66
+msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
+msgstr "Selectaţi tipul de acţiune pe care l-aţi făcut pe GeoKret. Pentru mai multe informaţii, consultaţi pagina de ajutor."
+
+#: website/app-templates/smarty/forms/move.tpl:77
+msgid "When you've left a GeoKret in a cache"
+msgstr "Când ai lăsat un GeoKret într-o geocutie"
+
+#: website/app-templates/smarty/forms/move.tpl:78
+msgid "I've dropped GeoKret"
+msgstr "Am depus un GeoKret"
+
+#: website/app-templates/smarty/forms/move.tpl:84
+msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
+msgstr "Când ai luat un GeoKret dintr-o geocutie şi nu îl vei pune într-o altă geocutie <i>curând</i>"
+
+#: website/app-templates/smarty/forms/move.tpl:85
+msgid "I've grabbed GeoKret"
+msgstr "Am luat un GeoKret"
+
+#: website/app-templates/smarty/forms/move.tpl:91
+msgid "When you've met a GeoKret in a cache but haven't taken it with you"
+msgstr "Când ai întâlnit un GeoKret într-o geocutie, dar nu l-ai luat cu tine"
+
+#: website/app-templates/smarty/forms/move.tpl:92
+msgid "I've met GeoKret"
+msgstr "Am vazut un GeoKret"
+
+#: website/app-templates/smarty/forms/move.tpl:98
+msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
+msgstr "Când luaţi un GeoKret pentru un cache-tur; este la fel ca o picătură şi apoi apuca - locaţia vizitată este înregistrată, dar GeoKret se află încă în inventarul tău"
+
+#: website/app-templates/smarty/forms/move.tpl:99
+msgid "I've dipped a GeoKret"
+msgstr "Am o scurtă GeoKret"
+
+#: website/app-templates/smarty/forms/move.tpl:105
+msgid "When you want to write a comment :)"
+msgstr "Când vrei să scrii un comentariu :)"
+
+#: website/app-templates/smarty/forms/move.tpl:129
+msgid "New location"
+msgstr "Locatie noua"
+
+#: website/app-templates/smarty/forms/move.tpl:139
+msgid "Waypoint"
+msgstr "Punct"
+
+#: website/app-templates/smarty/forms/move.tpl:142
+msgid "eg. GC1AQ2N"
+msgstr "eg. GC1AQ2N"
+
+#: website/app-templates/smarty/forms/move.tpl:147
+msgid "Lookup opencaching cache by name"
+msgstr "Caută cache-ul opencaching după nume"
+
+#: website/app-templates/smarty/forms/move.tpl:152
+msgid "eg.: GC1AQ2N, OP069B, OC033A…"
+msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
+
+#: website/app-templates/smarty/forms/move.tpl:164
+msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
+msgstr "Introdu numele geocutiei. <strong>Nu funcţionează pentru geocutiile GC</strong>"
+
+#: website/app-templates/smarty/forms/move.tpl:178
+msgid "Coordinates"
+msgstr "Coordonează"
+
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Additional data"
+msgstr "Date aditionale"
+
+#: website/app-templates/smarty/forms/move.tpl:224
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+msgid "Date"
+msgstr "Data"
+
+#: website/app-templates/smarty/forms/move.tpl:241
+msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
+msgstr "&quot;&quot; Acest lucru poate fi dvs.: <br /> - Geocaching / opencaching numele de utilizator <br /> - Porecla <br /> - Nume, etc"
+
+#: website/app-templates/smarty/forms/move.tpl:251
+msgid "It is always nice to receive a little message ;)"
+msgstr "Este întotdeauna frumos să primiți un mic mesaj ;)"
+
+#: website/app-templates/smarty/forms/move.tpl:274
+msgid "Post your log"
+msgstr "Postează-ți jurnalul"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:3
+msgid "Generate a GeoKret Label"
+msgstr "Generează o etichetă GeoKret"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:22
+#: website/app-templates/smarty/forms/geokret_label.tpl:29
+msgid "Reference numbers"
+msgstr "Numere de referință"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:43
+msgid "Label template"
+msgstr "Sablon eticheta"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:54
+msgid "Label help languages"
+msgstr "Eticheta de ajutor limbi"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:62
+msgid "Note1: not all label templates support this feature and when supported, english is always present."
+msgstr "Notă1: nu toate șabloanele de etichetă suportă această caracteristică și, atunci când sunt acceptate, limba engleză este întotdeauna prezentă."
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:69
+msgid "Generate as .png"
+msgstr "Generează ca .png"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:70
+msgid "Generate as .svg"
+msgstr "Generează ca .svg"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:71
+msgid "Generate as .pdf"
+msgstr "Genereaza ca .pdf"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:80
+#: website/app-templates/smarty/forms/geokret_label.tpl:83
+#: website/app-templates/smarty/forms/geokret_label.tpl:84
+msgid "GeoKret label preview"
+msgstr "Previzualizare eticheta GeoKret"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
+msgid "GeoKrety visiting the cache %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:20
+msgid "Name"
+msgstr "Numele"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
+msgid "Cache"
+msgstr "Geocutie"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:3
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:9
 msgid "%1's recent moves"
 msgstr "%1mutări recente"
 
-#: smarty/pages:21 smarty/pages:33 smarty/pages:22
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:38
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
 msgid "Spotted in"
 msgstr "Tăiat în"
 
-#: smarty/pages:23 smarty/pages:22 smarty/pages:35
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:23
+#: website/app-templates/smarty/pages/user_inventory.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:22
+#: website/app-templates/smarty/pages/home.tpl:40
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
 msgid "Last move"
 msgstr "Ultima mutare"
 
-#: smarty/pages:24 smarty/pages:34 smarty/pages:25
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
 msgid "Caches visited count"
 msgstr "Numărul geocutiilor vizitate"
 
-#: smarty/pages:38
-msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
-msgstr "Nu ai mutat încă nici o GeoKrety! Verifică harta <a href=\"%1\"></a> şi încearcă să găseşti GeoKrety lângă tine!"
-
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 nu a mutat încă nici un GeoKrety."
 
-#: smarty/pages:3 smarty/pages:12
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:12
 msgid "%1's Owned GeoKrety map"
 msgstr "%1este pe harta GeoKrety"
 
-#: smarty/pages:34
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
 msgid "Total visited caches"
 msgstr "Total geocutii vizitate"
 
-#: smarty/pages:38
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:38
 msgid "Last moved date"
 msgstr "Ultima dată mutată"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/news_details.tpl:3
 msgid "News: %1"
 msgstr ""
 
-#: smarty/pages:13
+#: website/app-templates/smarty/pages/news_details.tpl:13
 msgid "Leave a comment"
 msgstr "Lasă un comentariu"
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/news_details.tpl:30
 msgid "Subscribe to this news post"
 msgstr "Aboneaza-te la acest post de ştiri"
 
-#: smarty/pages:42
+#: website/app-templates/smarty/pages/news_details.tpl:42
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "Te rugăm să te <a href=\"%1\">autentifici</a> pentru a posta un comentariu"
 
-#: smarty/pages:47
+#: website/app-templates/smarty/pages/news_details.tpl:47
 msgid "Comments"
 msgstr "Comentarii"
 
-#: smarty/pages:51
+#: website/app-templates/smarty/pages/news_details.tpl:51
 msgid "There are no comments for this post."
 msgstr "Nu sunt comentarii pentru acest post."
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:9
 msgid "%1's GeoKrety recent moves"
 msgstr "%1este GeoKrety mutări recente"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:37
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "%1nu s-a mutat încă."
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/registration.tpl:3
 msgid "Registration"
 msgstr ""
 
-#: smarty/pages:14
+#: website/app-templates/smarty/pages/registration.tpl:14
 msgid "Create an account using %1"
 msgstr "Creează un cont folosind %1"
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/registration.tpl:16
 msgid "Create an account"
 msgstr "Creează un cont"
 
-#: smarty/pages:3 smarty/pages:10
+#: website/app-templates/smarty/pages/password_recovery.tpl:3
+#: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
 msgstr "Recuperare parolă"
 
-#: smarty/pages:19
+#: website/app-templates/smarty/pages/password_recovery.tpl:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Dacă ți-ai validat adresa de email în trecut, atunci poți să o recuperezi ușor. Altfel, va trebui să creezi un alt cont, scuze."
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/password_recovery.tpl:40
 msgid "Send me a recovery link"
 msgstr "Trimite-mi un link de recuperare"
 
-#: smarty/pages:18
+#: website/app-templates/smarty/pages/news_list.tpl:18
 msgid "There is no news yet"
 msgstr "Încă nu există știri"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
+#: website/app-templates/smarty/pages/email_change_token.tpl:3
 msgid "Confirm changing your email address"
 msgstr ""
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:8
+#: website/app-templates/smarty/pages/email_change_token.tpl:8
 msgid "Do you confirm changing your email address?"
 msgstr "Confirmaţi schimbarea adresei de e-mail?"
 
-#: smarty/pages:31 smarty/pages:32
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:31
+#: website/app-templates/smarty/pages/email_change.tpl:32
+#: website/app-templates/smarty/pages/email_change_token.tpl:31
 msgid "Back to your profile"
 msgstr "Înapoi la profilul tău"
 
-#: smarty/pages:35 smarty/pages:36
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:35
+#: website/app-templates/smarty/pages/email_change.tpl:36
+#: website/app-templates/smarty/pages/email_change_token.tpl:35
 msgid "Back to homepage"
 msgstr "Înapoi la pagina principală"
 
-#: smarty/pages:39
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:39
 msgid "I approve this change"
 msgstr "Aprob această schimbare"
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:40
 msgid "No, please revert to my old email address"
 msgstr "Nu, vă rugăm să reveniți la vechea mea adresă de e-mail"
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_inventory.tpl:3
+#: website/app-templates/smarty/pages/user_inventory.tpl:9
 msgid "%1's inventory"
 msgstr "Inventarul %1"
 
-#: smarty/pages:39
-msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr "Inventarul tău este gol. Bifați harta <a href=\"%1\"></a> și încercați să găsiți GeoKrety lângă dvs.! De asemenea, poți <a href=\"%2\">crea propriul tău GeoKrety</a> gratuit!"
-
-#: smarty/pages:41
+#: website/app-templates/smarty/pages/user_inventory.tpl:41
 msgid "%1's inventory is currently empty."
 msgstr "Inventarul %1este în prezent gol."
 
-#: smarty/pages:38
-msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr "Nu aţi creat încă nici o GeoKrety! Nu ezitaţi să <a href=\"%2\">creaţi propriul GeoKrety</a> gratuit!"
-
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:40
 msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 nu deţine nici un GeoKrety încă."
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:3
 msgid "Statpic background chooser"
 msgstr ""
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:8
 msgid "Select your preferred statpic background"
 msgstr "Selectaţi fundalul statpic preferat"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:37
 msgid "Your current statpic"
 msgstr "Staticpul tău curent"
 
-#: smarty/pages:22
+#: website/app-templates/smarty/pages/geokret_claim.tpl:22
 msgid "Owner Code"
 msgstr "Cod proprietar"
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/geokret_claim.tpl:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
 msgstr "Procesul necesită un \"Cod de urmărire\" scris în general pe eticheta GeoKret sau gravat pe o monedă plus un \"Cod Owner\" dat în general pe o foaie de hârtie."
 
-#: smarty/pages:35
+#: website/app-templates/smarty/pages/geokret_claim.tpl:35
 msgid "Adopt"
 msgstr "Adoptă"
 
-#: smarty/pages:11
+#: website/app-templates/smarty/pages/help_api.tpl:11
 msgid "Help API"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:8
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
 msgid "GeoKrety Toolbox - GKT"
 msgstr "GeoKrety Toolbox - GKT"
 
-#: smarty/pages:12
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:12
 msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
 msgstr "Afișează paginile cu obiecte călătoare GeoKrety pe <a href=\"%1\" target=\"_blank\">geocaching.com</a> şi facilitează plasarea obiectelor călătoare GeoKrety în geocaching."
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
 msgstr ""
 
-#: smarty/pages:18
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:18
 msgid "Available for:"
 msgstr "Disponibil pentru:"
 
-#: smarty/pages:22
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:22
 msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
 msgstr "<a href=\"%1\">Firefox</a> (necesită <a href=\"%2\">Tampermonkey add-on</a> sau <a href=\"%3\">greasemonkey add-on</a>)"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/geokrety_map.tpl:3
 msgid "Interactive map"
 msgstr ""
 
-#: smarty/pages:17
+#: website/app-templates/smarty/pages/geokrety_map.tpl:17
 msgid "GeoKrety interactive map"
 msgstr "GeoKrety hartă interactivă"
 
-#: smarty/pages:22 smarty/pages:18
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
+msgid "Waypoints statistics"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:36
+msgid "N/A"
+msgstr ""
+
+#: website/app-templates/smarty/pages/password_change.tpl:22
+#: website/app-templates/smarty/pages/email_change.tpl:18
 msgid "Please enter the verification token received by mail."
 msgstr "Vă rugăm să introduceți tokenul de verificare primit prin e-mail."
 
-#: smarty/pages:27 smarty/pages:29 smarty/pages:23 smarty/pages:25
+#: website/app-templates/smarty/pages/password_change.tpl:27
+#: website/app-templates/smarty/pages/password_change.tpl:29
+#: website/app-templates/smarty/pages/email_change.tpl:23
+#: website/app-templates/smarty/pages/email_change.tpl:25
 msgid "Verification Token"
 msgstr "Simbol de verificare"
 
-#: smarty/pages:36
+#: website/app-templates/smarty/pages/password_change.tpl:36
 msgid "Please define a new password."
 msgstr "Vă rugăm să definiți o parolă nouă."
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:9
 msgid "Pictures of %1's GeoKrety"
 msgstr "Imagini de la %1la GeoKrety"
 
-#: smarty/pages:3 smarty/pages:6
-msgid "🎉 Welcome to GeoKrety.org!"
-msgstr "🎉 Bine ai venit la GeoKrety.org!"
+#: website/app-templates/smarty/pages/home.tpl:3
+#: website/app-templates/smarty/pages/home.tpl:6
+msgid "Welcome to GeoKrety.org!"
+msgstr "Bun venit la GeoKrety.org!"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/home.tpl:31
 msgid "Latest moves"
 msgstr "Ultimele mutări"
 
-#: smarty/pages:50
+#: website/app-templates/smarty/pages/home.tpl:57
 msgid "Recent pictures"
 msgstr "Fotografii recente"
 
-#: smarty/pages:63
+#: website/app-templates/smarty/pages/home.tpl:70
 msgid "Recently created GeoKrety"
 msgstr "GeoKrety creat recent"
 
-#: smarty/pages:40
-msgid "You did not watch any GeoKrety yet."
-msgstr "Încă nu aţi vizionat niciun GeoKrety."
-
-#: smarty/pages:42
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:42
 msgid "%1 doesn't watch any GeoKrety yet."
 msgstr "%1 nu se uită la nici un GeoKrety încă."
 
-#: smarty/pages:10
+#: website/app-templates/smarty/pages/email_change.tpl:10
 msgid "Changing your email address."
 msgstr "Se schimbă adresa ta de e-mail."
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/email_change.tpl:40
 msgid "Check the token"
 msgstr "Verifică simbolul"
 
-#: smarty/pages:3 smarty/pages:6
+#: website/app-templates/smarty/pages/work_in_progress.tpl:3
+#: website/app-templates/smarty/pages/work_in_progress.tpl:6
 msgid "This page doesn't exists yet, but we're working on it!"
 msgstr "Această pagină nu există încă, dar lucrăm la ea!"
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/user_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_pictures.tpl:9
 msgid "%1's posted pictures"
 msgstr "%1poze postate"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/mole_hole.tpl:3
 msgid "GK mole-holes and GK hotels/motels"
 msgstr "GK gropi și hoteluri/moteluri GK"
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/mole_hole.tpl:8
 msgid "GeoKrety mole-hole-system"
 msgstr "Sistem geoKrety de gaură"
 
-#: smarty/pages:12
+#: website/app-templates/smarty/pages/mole_hole.tpl:12
 msgid "Draft for basic recommendations for the GeoKrety mole-hole-system:"
 msgstr "Proiect de recomandări de bază pentru sistemul de gropi geografice geografice:"
 
-#: smarty/pages:14
+#: website/app-templates/smarty/pages/mole_hole.tpl:14
 msgid "This subject <a href=\"%1\">is being discussed here</a>."
 msgstr "Acest subiect <a href=\"%1\">este discutat aici</a>."
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/mole_hole.tpl:16
 msgid "The system is based on mole-to-mole (peer-to-peer) tunnels. A mole-hole-cache should have a single dedicated destination. A dedicated destination doesn't mean a special cache - an arriving GeoKret may appear in any cache within the destination area."
 msgstr "Sistemul se bazează pe tuneluri de tip mole-to-mole (de la peer-to-peer). O geocutie groasă ar trebui să aibă o singură destinaţie dedicată. O destinaţie dedicată nu înseamnă o geocutie specială - un GeoKret care ajunge poate apărea în orice geocutie din zona de destinaţie."
 
-#: smarty/pages:17
+#: website/app-templates/smarty/pages/mole_hole.tpl:17
 msgid "The tunnel should work in both directions. It takes two GeoKrety friends to run a tunnel. Each partner is running a mole-hole-cache, collecting the GeoKrety and sending them over to the other partner, who is spreading the incoming GeoKrety in his homezone."
 msgstr "Tunelul trebuie să funcţioneze în ambele direcţii. Durează doi prieteni GeoKrety pentru a rula un tunel. Fiecare partener conduce o cache-gaură, colectând GeoKrety şi trimiţându-le celuilalt partener, cine răspândește GeoKrety care intră în zona sa de origine."
 
-#: smarty/pages:18
-msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least 500 km."
-msgstr "Tunelul ar trebui să traverseze o frontieră sau, în cazul în care se află într-o țară, distanța dintre găurile mucegaiurilor ar trebui să fie de cel puțin 500 km."
+#: website/app-templates/smarty/pages/mole_hole.tpl:18
+msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least %1."
+msgstr ""
 
-#: smarty/pages:19
+#: website/app-templates/smarty/pages/mole_hole.tpl:19
 msgid "GeoKrety in a mole-hole are impatient, so no GeoKrety should wait longer than two months for transportation."
 msgstr "GeoKrety dintr-un orificiu este nerăbdător, prin urmare GeoKrety nu ar trebui să aştepte mai mult de două luni pentru transport."
 
-#: smarty/pages:20
+#: website/app-templates/smarty/pages/mole_hole.tpl:20
 msgid "Each listing of a mole-hole-cache should include"
 msgstr "Fiecare listare a unei cutii pentru o mulțime ar trebui să includă"
 
-#: smarty/pages:22
+#: website/app-templates/smarty/pages/mole_hole.tpl:22
 msgid "a title \"Mole-hole (specific name where the cache is located)\" e.g. \"Mole-hole Pomeranczarnia\""
 msgstr "un titlu \"Uz Mole-hole (nume specific unde este localizată geocutia)\", de ex. \"Mole-hole Pomeranczarnia\""
 
-#: smarty/pages:23
+#: website/app-templates/smarty/pages/mole_hole.tpl:23
 msgid "a subtitle \"GeoKretExpress (departure area) - (destination area)\" e.g. \"GeoKretExpress Warszawa - Berlin\""
 msgstr "un subtitlu „GeoKretExpress (zona de plecare) - (zona de destinație)”, de exemplu „GeoKretExpress Warszawa - Berlin”"
 
-#: smarty/pages:24
+#: website/app-templates/smarty/pages/mole_hole.tpl:24
 msgid "a standard text, explaining the mole-hole-system (and maybe a link to <a href=\"%1\">%1</a>?)"
 msgstr "un text standard, care să explice sistemul de groapă (și poate un link către <a href=\"%1\">%1</a>?)"
 
-#: smarty/pages:25
+#: website/app-templates/smarty/pages/mole_hole.tpl:25
 msgid "some information about the end of the tunnel (destination area, partner, partner-mole-hole-cache)"
 msgstr "unele informații despre sfârșitul tunelului (zona de destinație, partener, partener-găură-colț-cache)"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/mole_hole.tpl:26
 msgid "And probably detailed information about the mole-hole-cache and the neighbourhood, how to get there, hint, spoiler and so on."
 msgstr "Şi probabil informaţii detaliate despre cache-ul groapă şi cartier, cum să ajungă acolo, indiciu, spoiler şi aşa mai departe."
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/mole_hole.tpl:30
 msgid "By <cite title=\"Original source\">%1</cite>"
 msgstr "Până la <cite title=\"Original source\">%1</cite>"
 
-#: smarty/pages:33
+#: website/app-templates/smarty/pages/mole_hole.tpl:33
 msgid "Current mole-holes"
 msgstr "Găuri de mmoli actuale"
 
-#: smarty/pages:39 smarty/pages:82
+#: website/app-templates/smarty/pages/mole_hole.tpl:39
+#: website/app-templates/smarty/pages/mole_hole.tpl:82
 msgid "Cache name"
 msgstr "Nume geocutie"
 
-#: smarty/pages:40 smarty/pages:83
+#: website/app-templates/smarty/pages/mole_hole.tpl:40
+#: website/app-templates/smarty/pages/mole_hole.tpl:83
 msgid "Cache type"
 msgstr "Cache type"
 
-#: smarty/pages:41 smarty/pages:84
+#: website/app-templates/smarty/pages/mole_hole.tpl:41
+#: website/app-templates/smarty/pages/mole_hole.tpl:84
 msgid "Country"
 msgstr "Ţară"
 
-#: smarty/pages:49
+#: website/app-templates/smarty/pages/mole_hole.tpl:49
 msgid "Status: ready for search"
 msgstr "Status: gata de căutare"
 
-#: smarty/pages:51 smarty/pages:94
+#: website/app-templates/smarty/pages/mole_hole.tpl:51
+#: website/app-templates/smarty/pages/mole_hole.tpl:94
 msgid "Status: not ready to search"
 msgstr "Status: nu este gata pentru căutare"
 
-#: smarty/pages:70
+#: website/app-templates/smarty/pages/mole_hole.tpl:70
 msgid "GeoKrety hotels / motels"
 msgstr "hoteluri GeoKrety / moteluri"
 
-#: smarty/pages:74
+#: website/app-templates/smarty/pages/mole_hole.tpl:74
 msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety. By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
 msgstr "Un hotel/motel GeoKrety este o geocutie uşor accesibilă, aproape de un aeroport/autostradă/staţie feroviară, suficient de mare pentru a găzdui câţiva GeoKrety. Cacherii pot prinde sau scăpa GeoKrety. Până acum, pe sistemul OC, ne-am înregistrat după GK (sau GK/TB) hoteluri/moteluri:"
 
-#: smarty/pages:76
+#: website/app-templates/smarty/pages/mole_hole.tpl:76
 msgid "Current GK-Hotels/Motels"
 msgstr "GK-Hotels/Motels curent"
 
-#: smarty/pages:92
+#: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
 msgstr "Status: Gata de căutare"
 
-#: smarty/pages:3 smarty/pages:8
+#: website/app-templates/smarty/pages/registration_validated.tpl:3
+#: website/app-templates/smarty/pages/registration_validated.tpl:8
 msgid "Welcome to the GeoKrety.org community!"
 msgstr "Bine ai venit la comunitatea GeoKrety.org !"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/registration_validated.tpl:10
+msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
+msgstr ""
+
+#: website/app-templates/smarty/pages/registration_validated.tpl:12
+msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
+msgstr ""
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:3
 msgid "Hall of fame"
 msgstr "Contribuitori"
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:8
 msgid "Developers"
 msgstr "Dezvoltatori"
 
-#: smarty/pages:11
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:11
 msgid "Current team:"
 msgstr "Echipa curentă:"
 
-#: smarty/pages:13
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:13
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
 msgstr "găzduire, cod, nou design, suport și <a href=\"%1\">planificare GK v2</a>"
 
-#: smarty/pages:14
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:14
 msgid "code, support, public relation and advertising"
 msgstr "cod, sprijin, relații publice și publicitate"
 
-#: smarty/pages:16
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:16
 msgid "Legacy team:"
 msgstr "Echipă moștenită:"
 
-#: smarty/pages:18
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:18
 msgid "idea, code and original design"
 msgstr "idee, cod și design original"
 
-#: smarty/pages:19
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:19
 msgid "visions into (legacy) code 😉"
 msgstr "viziuni în codul (legacy) 😉"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:26
 msgid "Support"
 msgstr "Suport"
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:30
 msgid "GK logo (the mole, different versions)"
 msgstr "Logo GK (alună, versiuni diferite)"
 
-#: smarty/pages:31
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:31
 msgid "MySQL support, sandwiches and more 😃"
 msgstr "Suport MySQL, sandwich-uri și multe altele 😃"
 
-#: smarty/pages:32
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:32
 msgid "GK maps"
 msgstr "Hărţi GK"
 
-#: smarty/pages:43
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:43
 msgid "betatesting, idea, public relation and advertising 😃"
 msgstr "betade, idee, relații publice și publicitate 😃"
 
-#: smarty/pages:44
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:44
 msgid "betatesting, language support"
 msgstr "pariuri, suport lingvistic"
 
-#: smarty/pages:45
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:45
 msgid "betatesting"
 msgstr "parazit"
 
-#: smarty/pages:46
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:46
 msgid "programming support"
 msgstr "suport pentru programare"
 
-#: smarty/pages:47
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:47
 msgid "coordinates parser"
 msgstr "coordinates parser"
 
-#: smarty/pages:48
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:48
 msgid "public relation and advertising"
 msgstr "relații publice și publicitate"
 
-#: smarty/pages:55
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:55
 msgid "Translations"
 msgstr "Traduceri"
 
-#: smarty/pages:84
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:84
 msgid "Global reviewers"
 msgstr "Recenzori globali"
 
-#: smarty/pages:91
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:91
 msgid "Credits"
 msgstr "Credite"
 
-#: smarty/pages:3 smarty/pages:9
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:3
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:9
 msgid "Pictures gallery"
 msgstr "Galerie de imagini"
 
-#: smarty/pages:8
+#: website/app-templates/smarty/pages/downloads.tpl:8
 msgid "Translation"
 msgstr "Traducere"
 
-#: smarty/pages:11
+#: website/app-templates/smarty/pages/downloads.tpl:11
 msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
 msgstr "Fișierele noastre de traducere sunt acum găzduite pe <a href=\"%1\">crowdin</a>. Puteți să vă alăturați comunității dacă doriți să contribuiți la traducerea Geokrety.org în limba dvs. sau să rezolvați probleme de traducere."
 
-#: smarty/pages:27
+#: website/app-templates/smarty/pages/downloads.tpl:17
+msgid "Map of caches for Garmin units"
+msgstr "Harta geocutiilor pentru unităţi de armină"
+
+#: website/app-templates/smarty/pages/downloads.tpl:20
+msgid "As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href=\"%2\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
+msgstr "Deoarece am colectat puncte de trecere pentru un număr semnificativ de geocutii (%1) în toată lumea (<a href=\"%2\">faceţi clic aici</a> pentru o listă de servicii suportate, am decis să generăm o hartă transparentă a acestor geocutii pentru unităţi garmin (format img). Acum poţi avea toate acele geocutii pe o hartă (de fapt: hartă)."
+
+#: website/app-templates/smarty/pages/downloads.tpl:21
+msgid "Read more and <a href=\"%1\">get the map</a>."
+msgstr "Citește mai mult și <a href=\"%1\">obține harta</a>."
+
+#: website/app-templates/smarty/pages/downloads.tpl:27
 msgid "Design resources"
 msgstr ""
 
-#: smarty/pages:30
+#: website/app-templates/smarty/pages/downloads.tpl:30
 msgid "GeoKrety logo"
 msgstr "GeoKrety logo-ul"
 
-#: smarty/pages:32
+#: website/app-templates/smarty/pages/downloads.tpl:32
 msgid "Basic GK logo: "
 msgstr "Logo GK de bază: "
 
-#: smarty/pages:33
+#: website/app-templates/smarty/pages/downloads.tpl:33
 msgid "The mole itself: "
 msgstr "Limba însăși: "
 
-#: smarty/pages:34
+#: website/app-templates/smarty/pages/downloads.tpl:34
 msgid "Other ressources: "
 msgstr "Alte surse: "
 
-#: smarty/pages:34
+#: website/app-templates/smarty/pages/downloads.tpl:34
 msgid "here"
 msgstr "aici"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/downloads.tpl:37
 msgid "Sample GeoKrety labels"
 msgstr "Exemplu de etichete GeoKrety"
 
-#: smarty/pages:38
+#: website/app-templates/smarty/pages/downloads.tpl:38
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
 msgstr "Rețineți că puteți crea automat o etichetă pentru GeoKrety dvs., făcând clic pe link-ul corespunzător de pe pagina GeoKret."
 
-#: smarty/pages:40 smarty/pages:41 smarty/pages:42 smarty/pages:43
+#: website/app-templates/smarty/pages/downloads.tpl:40
+#: website/app-templates/smarty/pages/downloads.tpl:41
+#: website/app-templates/smarty/pages/downloads.tpl:42
+#: website/app-templates/smarty/pages/downloads.tpl:43
 msgid "Sample label #%1: "
 msgstr "Exemplu de etichetă #%1: "
 
-#: smarty/pages:45
+#: website/app-templates/smarty/pages/downloads.tpl:45
 msgid "Old label design: "
 msgstr "Design etichetă veche: "
 
-#: smarty/pages:39
+#: website/app-templates/smarty/pages/email_change_token.tpl:39
 msgid "Yes, change my email address"
 msgstr "Da, schimbă adresa mea de e-mail"
 
-#: smarty/pages:40
+#: website/app-templates/smarty/pages/email_change_token.tpl:40
 msgid "No, abort this request"
 msgstr "Nu, anulează această cerere"
 
-#: smarty/pages:3 smarty/pages:6
+#: website/app-templates/smarty/pages/geokret_label.tpl:3
+#: website/app-templates/smarty/pages/geokret_label.tpl:6
 msgid "Label generator"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:8
+#: website/app-templates/smarty/pages/contact_us.tpl:3
+#: website/app-templates/smarty/pages/contact_us.tpl:8
 msgid "Contact us"
 msgstr "Contactați-ne"
 
-#: smarty/pages:13
+#: website/app-templates/smarty/pages/contact_us.tpl:13
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "Dacă aveţi vreo sugestie sau rapoarte de erori nu ezitaţi să ne scrieţi."
 
-#: smarty/pages:24
+#: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Or via the user profile"
 msgstr "Sau din profilul utilizatorului"
 
-#: smarty/pages:33
+#: website/app-templates/smarty/pages/contact_us.tpl:33
 msgid "IRC"
 msgstr "RIC"
 
-#: smarty/pages:41
+#: website/app-templates/smarty/pages/contact_us.tpl:41
 msgid "Twitter"
 msgstr "Twitter"
 
-#: smarty/pages:48
+#: website/app-templates/smarty/pages/contact_us.tpl:48
 msgid "Public forum"
 msgstr "Forum public"
 
-#: smarty/pages:56
+#: website/app-templates/smarty/pages/contact_us.tpl:56
 msgid "Wanna sign or encrypt your mails?"
 msgstr "Vrei să introduci semnul sau să criptezi mail-urile?"
 
-#: smarty/pages:58
+#: website/app-templates/smarty/pages/contact_us.tpl:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "Cheia noastră publică PGP/GPG <a href=\"%1\">este aici (%2)</a>"
 
-#: smarty/pages:3
+#: website/app-templates/smarty/pages/user_details.tpl:3
 msgid "%1's user profile"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:11
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
 msgid "Define your observation area"
 msgstr "Definiți zona de observație"
 
-#: smarty/pages:21 smarty/pages:22
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:21
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:22
 msgid "Home coordinates"
 msgstr "Coordonate acasă"
 
-#: smarty/pages:26
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:26
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Folosiți harta pentru a selecta o locație sau introduceți coordonatele manual."
 
-#: smarty/pages:28
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:28
 msgid "Other acceptable lat/lon formats"
 msgstr "Alte formate acceptabile lat/lon"
 
-#: smarty/pages:37
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:37
 msgid "Observation radius"
 msgstr "Raza de observație"
 
-#: smarty/pages:45
-msgid " km. Set it to 0 to disable the observation feature."
-msgstr " km. Setați-l la 0 pentru a dezactiva funcția de observare."
-
-#: smarty/pages:55
+#: website/app-templates/smarty/pages/user_update_observation_area.tpl:55
 msgid "Center the map on the zone to observe"
 msgstr "Centrează harta pe zonă pentru a observa"
 
@@ -2572,244 +3192,4 @@ msgstr "Țară:"
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:53
 msgid "Elevation:"
 msgstr "Crestere:"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-msgid "Congratulation 🎉"
-msgstr "Felicitări 🎉"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "Hi %1,"
-msgstr "Hi %1,"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-msgid "Your account on GeoKrety.org is now fully functional."
-msgstr "Contul dvs. de pe GeoKrety.org este acum complet funcțional."
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "Cu sinceritate,<br>Echipa GeoKrety"
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "Primești acest e-mail pentru că tocmai te-ai înscris pe site-ul nostru."
-
-#: website/app-templates/foundation-emails/dist/email-account-activated.html:1
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
-msgstr "Dacă nu ați creat niciodată un cont pe GeoKrety.org, vă rugăm <a href=\"mailto:%1?subject=%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">să ne contactați</a>."
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "Welcome to GeoKrety.org"
-msgstr "Bun venit la GeoKrety.org"
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
-msgstr "Tocmai v-ați înregistrat pe GeoKrety.org. <strong>Încă trebuie să vă activați contul înainte de a-l putea folosi.</strong> Vă rugăm să urmați link-ul de mai jos."
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "Activate your account"
-msgstr "Activează-ți contul"
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "This link expires %1."
-msgstr "Acest link expiră %1."
-
-#: website/app-templates/foundation-emails/dist/email-account-activation.html:1
-msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr "În cazul în care contul dvs. nu este activat în acel moment, acesta va fi șters automat."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-msgid "Your email address has been succesfully changed."
-msgstr "Adresa ta de e-mail a fost schimbată cu succes."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-new-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-msgid "You're getting this email because you've changed your email on our website."
-msgstr "Primești acest e-mail pentru că ți-ai schimbat e-mailul de pe site-ul nostru."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-msgid "Your email address has been succesfully changed to: %1."
-msgstr "Adresa ta de e-mail a fost schimbată cu succes la: %1."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "If you did not requested this, click the link below."
-msgstr "Dacă nu ați solicitat acest lucru, faceți clic pe link-ul de mai jos."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-msgid "Revert this change!"
-msgstr "Reveniți la această modificare!"
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "You should also consider changing your password immediatelly."
-msgstr "De asemenea, ar trebui să vă schimbați parola imediat."
-
-#: website/app-templates/foundation-emails/dist/email-address-changed-to-old-address.html:1
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "Change my password!"
-msgstr "Schimbă-mi parola!"
-
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "Hooray 🥳"
-msgstr "Hooray 🥳"
-
-#: website/app-templates/foundation-emails/dist/email-address-reverted.html:1
-msgid "Your email address has been succesfully reverted."
-msgstr "Adresa ta de e-mail a fost reversibilă cu succes."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr "Cineva, să sperăm, a solicitat schimbarea adresei tale de e-mail de contact GeoKrety"
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "Validate your new email address"
-msgstr "Validați noua adresă de e-mail"
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "This link is valid for %1."
-msgstr "Acest link este valid pentru %1."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
-msgstr "Dacă nu ați solicitat acest lucru și nu știți care sunt GeoKrety, vă rugăm să ignorați acest e-mail. Nu veți mai auzi niciodată despre noi!"
-
-#: website/app-templates/foundation-emails/dist/email-change-to-new-address.html:1
-msgid "You're getting this email because you've requested an email address change on our website."
-msgstr "Primiți acest e-mail deoarece ați solicitat schimbarea adresei de e-mail pe site-ul nostru."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr "Cineva, sperăm că dumneavoastră, a solicitat schimbarea adresei de e-mail pentru persoana de contact GeoKrety la: %1."
-
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "Do not change!"
-msgstr "Nu schimba!"
-
-#: website/app-templates/foundation-emails/dist/email-change-to-old-address.html:1
-msgid "You're getting this email because you've requested an email address change from our website."
-msgstr "Primiți acest e-mail deoarece ați solicitat schimbarea adresei de e-mail de pe site-ul nostru."
-
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "Good news, your GeoKret <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a> was just adopted by user <a href=\"%4\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%3</a>."
-msgstr "Vești bune, GeoKret <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a> a fost adoptat de utilizatorul <a href=\"%4\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%3</a>."
-
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "View GeoKret"
-msgstr "Vezi GeoKret"
-
-#: website/app-templates/foundation-emails/dist/email-geokret-adopted.html:1
-msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
-msgstr "Primiți acest e-mail pentru că unul dintre GeoKrety s-a schimbat de proprietar pe site-ul nostru."
-
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-msgid "Your password has been succesfully changed."
-msgstr "Parola ta a fost schimbată cu succes."
-
-#: website/app-templates/foundation-emails/dist/email-password-changed.html:1
-msgid "You're getting this email because you've changed your password on our website."
-msgstr "Primești acest e-mail pentru că ți-ai schimbat parola pe site-ul nostru."
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "Forgot Your Password?"
-msgstr "Ți-ai uitat parola?"
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "It happens. Click the link below to reset your password."
-msgstr "Se întâmplă. Faceţi clic pe link-ul de mai jos pentru a reseta parola."
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "Reset Password"
-msgstr "Resetare parolă"
-
-#: website/app-templates/foundation-emails/dist/email-password-recovery.html:1
-msgid "You're getting this email because you've requested a password recovery on our website."
-msgstr "Primiți acest e-mail deoarece ați solicitat recuperarea parolei pe site-ul nostru."
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Contact from a GeoKrety.org user"
-msgstr "Contactează de la un utilizator GeoKrety.org"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "This email was sent by user <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
-msgstr "Acest e-mail a fost trimis de utilizatorul <a href=\"%2\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">%1</a>."
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr "Dacă suspectezi un abuz, te rugăm să ne spui: %1"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Referer: %1"
-msgstr "Referer: %1"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Subject:"
-msgstr "Subiect:"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "Reply to %1"
-msgstr "Răspunde la %1"
-
-#: website/app-templates/foundation-emails/dist/email-user-contact.html:1
-msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
-msgstr "Primești acest e-mail pentru că unul dintre utilizatorii GeoKrety.org îți trimit un mesaj prin intermediul profilului tău de utilizator."
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "Welcome 👐"
-msgstr "Bun venit 👐"
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "You're now a GeoKrety.org community member, welcome!"
-msgstr "Acum eşti membru al comunităţii GeoKrety.org, bine ai venit!"
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "As a member you can now register GeoKrety moves, upload pictures and of course create your own GeoKrety for free!"
-msgstr "Ca membru, puteți acum să înregistrați mișcări GeoKrety și să încărcați imagini și, desigur, să creați propriul dvs. GeoKrety gratuit!"
-
-#: website/app-templates/foundation-emails/dist/email-welcome.html:1
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">contact us</a>."
-msgstr "Dacă nu ați creat niciodată un cont pe GeoKrety.org, vă rugăm <a href=\"mailto:%1\" style=\"Margin:0;color:#2ab2c2;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none\">să ne contactați</a>."
 
