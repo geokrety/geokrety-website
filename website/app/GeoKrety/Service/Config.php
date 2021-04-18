@@ -134,7 +134,6 @@ class Config extends \Prefab {
 
         // Smarty
         define('GK_SMARTY_TEMPLATES_DIR', getenv('GK_SMARTY_TEMPLATES_DIR') ?: '../app-templates/smarty/');
-        define('GK_SMARTY_FOUNDATION_TEMPLATES_DIR', getenv('GK_SMARTY_FOUNDATION_TEMPLATES_DIR') ?: '../app-templates/foundation-emails/dist/');
         define('GK_SMARTY_PLUGINS_DIR', getenv('GK_SMARTY_PLUGINS_DIR') ?: '../app-templates/smarty/plugins/');
         define('GK_SMARTY_COMPILE_DIR', getenv('GK_SMARTY_COMPILE_DIR') ?: '/tmp/smarty/compile/');
         define('GK_SMARTY_CACHE_DIR', getenv('GK_SMARTY_CACHE_DIR') ?: '/tmp/smarty/cache/');
