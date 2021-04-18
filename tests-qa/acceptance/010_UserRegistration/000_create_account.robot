@@ -60,8 +60,6 @@ Email activation confirmation received
     Location Should Be                  ${PAGE_DEV_MAILBOX_SECOND_MAIL_URL}
     Page Should Contain                 Your account on GeoKrety.org is now fully functional.
     Click Link With Text                Login
-    Location Should Be                  ${PAGE_SIGN_IN_URL}
-    Delete Second Mail in Mailbox
 
 Sign In user
     Depends on test                     Email activation confirmation received

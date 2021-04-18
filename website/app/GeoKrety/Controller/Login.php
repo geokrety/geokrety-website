@@ -114,7 +114,7 @@ class Login extends Base {
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
-            //echo $user->secid;
+            echo $user->secid;
             Event::instance()->emit('user.login.api2secid', $user);
             exit();
         }
