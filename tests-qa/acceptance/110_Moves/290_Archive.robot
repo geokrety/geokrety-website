@@ -145,6 +145,7 @@ Anonymous Cannot Deleted Any Archive
 
 Archived GeoKrety Can Still Be Discovered - wake up
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
+    Sleep    1s
     Post Move Request                               ${MOVE_DROP}     ${USER_1}
 
 Archived GeoKrety Are Visually Disabled
@@ -155,6 +156,7 @@ Archived GeoKrety Are Visually Disabled
 
 Awaken GeoKrety Are Not Visually Disabled
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
+    Sleep    1s
     Post Move Request                               ${MOVE_DROP}     ${USER_1}
     Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
     Element should not have class                   ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}       panel-body-default
@@ -162,6 +164,7 @@ Awaken GeoKrety Are Not Visually Disabled
 
 Awaken GeoKrety Show The Archive Button Again
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
+    Sleep    1s
     Post Move Request                               ${MOVE_DROP}     ${USER_1}
     Sign In ${USER_1.name} Fast
     Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
@@ -209,6 +212,7 @@ Archived Log Can Not Be Edited
 
 Deleting Last Archive Set The GeoKret As Awaken
     Post Move                                       ${MOVE_1}
+    Sleep    1s
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
 
     Sign In ${USER_1.name} Fast
