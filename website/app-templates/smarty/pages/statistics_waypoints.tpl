@@ -19,7 +19,7 @@
         <tbody>
         <tr>
             <td>GC</td>
-            <td>{GK_WAYPOINT_SERVICE_URL_GC|link:null:_blank nofilter}</td>
+            <td>{{GK_WAYPOINT_SERVICE_URL_GC}|link:null:_blank nofilter}</td>
             <td class="text-right">{$wpt_gc_count}</td>
             <td class="text-right"></td>
             <td class="text-right"></td>
