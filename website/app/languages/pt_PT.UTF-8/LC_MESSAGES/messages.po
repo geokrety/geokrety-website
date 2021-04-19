@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-18 17:41+0000\n"
-"PO-Revision-Date: 2021-04-19 10:34\n"
+"PO-Revision-Date: 2021-04-19 10:43\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -368,20 +368,20 @@ msgstr "O tamanho do waypoint é inválido. Deve estar entre %d e%d caracteres."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:16
 msgid "A confirmation email has been sent to your address."
-msgstr "Foi enviado um email de confirmação para o seu endereço."
+msgstr "Foi enviado um e-mail de confirmação para o seu endereço."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
 #: website/app/GeoKrety/Email/AccountActivation.php:47
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
-msgstr ""
+msgstr "<strong>Deve clicar na ligação fornecida no e-mail para activar a sua conta, antes de a poder usar.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
 #: website/app/GeoKrety/Email/AccountActivation.php:48
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "A ligação de confirmação expira em %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
@@ -390,16 +390,16 @@ msgstr "Bem-vindo ao GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "Your account seems to already exists."
-msgstr ""
+msgstr "Parece que a sua conta já existe."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
 #: website/app/GeoKrety/Email/AccountActivation.php:46
 msgid "The confirmation email was sent again to your mail address."
-msgstr ""
+msgstr "O e-mail de confirmação foi enviado novamente para o seu endereço."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:45
 msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
+msgstr "<strong>A sua conta ainda não está activa.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "Account activated"
@@ -412,7 +412,7 @@ msgstr "Ocorreu um erro ao enviar e-mail."
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
-msgstr ""
+msgstr "Lista de observação para %s"
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
 #: website/app/GeoKrety/Email/EmailChange.php:34
@@ -539,12 +539,12 @@ msgstr "Coordenadas em falta ou inválidas."
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Informação"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Unidade especificada inválida: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -764,17 +764,17 @@ msgstr "{0} tem que ser após o nascimento do GeoKret"
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Parabéns"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "O seu endereço de e-mail foi alterado com sucesso."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "O seu endereço de e-mail foi alterado com sucesso para: %1."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
 #: website/app-templates/smarty/emails/password-changed.tpl:12
@@ -806,7 +806,7 @@ msgstr "Este link expira em %1."
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
 msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
+msgstr "Se não solicitou uma alteração de palavra-passe, então também deve considerar mudá-la imediatamente."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:17
@@ -836,7 +836,7 @@ msgstr "Atenciosamente,<br>A equipe GeoKrety"
 
 #: website/app-templates/smarty/emails/base.tpl:45
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
+msgstr "Se nunca criou uma conta em GeoKrety.org, por favor <a href=\"mailto:%1?subject=%2\">entre em contacto connosco</a>."
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:3
 msgid "Forgot Your Password?"
@@ -844,7 +844,7 @@ msgstr "Esqueceu sua senha?"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Recuperar a sua palavra-passe."
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:8
 msgid "It happens. Click the link below to reset your password."
@@ -862,16 +862,16 @@ msgstr "Você está recebendo este e-mail porque alterou sua senha em nosso site
 #: website/app-templates/smarty/emails/password-changed.tpl:4
 #: website/app-templates/smarty/emails/account-activated.tpl:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "A sua conta em GeoKrety.org está agora activa."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "A sua palavra-passe foi alterada com sucesso."
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Algo errado aconteceu ao sincronizar dados do parceiro"
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
