@@ -4,6 +4,7 @@ Library         RequestsLibrary
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      login2secid    legacy
+Test Setup      Seed
 
 
 

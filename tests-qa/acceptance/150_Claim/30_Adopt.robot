@@ -36,7 +36,7 @@ On Adoption Mail Should Be Sent To Old Owner
     Sign In ${USER_2.name} Fast
     Claim GeoKret                                   ${GEOKRETY_1.tc}                    ${oc}
 
-    Element Text Should Be                          ${NAVBAR_DEV_MAILBOX_COUNTER}       1
+    Mailbox Should Contain 1 Messages
     Go To Url                                       ${PAGE_DEV_MAILBOX_URL}
     Element Should Contain                          ${DEV_MAILBOX_FIRST_MAIL_LINK}      🎉 Your GeoKret '${GEOKRETY_1.name}' has been adopted
     Go To Url                                       ${PAGE_DEV_MAILBOX_FIRST_MAIL_URL}

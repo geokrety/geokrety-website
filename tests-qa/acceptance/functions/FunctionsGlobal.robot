@@ -178,7 +178,7 @@ Empty Dev Mailbox Fast
 Empty Dev Mailbox
     Go To Url                         ${PAGE_DEV_MAILBOX_URL}
     Click Element                     ${DEV_MAILBOX_DELETE_ALL_MAILS_BUTTON}
-    Element Text Should Be            ${NAVBAR_DEV_MAILBOX_COUNTER}     0
+    Mailbox Should Contain 0 Messages
 
 Delete First Mail in Mailbox
     Go To Url                         ${PAGE_DEV_MAILBOX_URL}

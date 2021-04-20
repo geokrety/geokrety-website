@@ -17,7 +17,7 @@ Create first account
     Location Should Be                  ${PAGE_USER_1_PROFILE_URL}
     Page Should Not Contain             No such item!
     Page Should Contain                 A confirmation email has been sent to your address
-    Element Text Should Be              ${NAVBAR_DEV_MAILBOX_COUNTER}    1
+    Mailbox Should Contain 1 Messages
 
 User is not connected after registration
     Depends on test                     Create first account

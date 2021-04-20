@@ -23,7 +23,7 @@ Valid password change - page form
 Confirmation mail should be sent
     Valid password change - page form
 
-    Element Text Should Be                  ${NAVBAR_DEV_MAILBOX_COUNTER}       1
+    Mailbox Should Contain 1 Messages
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_DEV_MAILBOX_URL}
     ${rowCount}=                            Get Element Count                   ${DEV_MAILBOX_MAILS_TABLE_ROWS}

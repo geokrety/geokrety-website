@@ -11,7 +11,7 @@ Test Setup      Clear DB And Seed 1 users
 Wrong old password
     Fill Form Wrapper                       wrongpassword    newpass    newpass
     Flash message shown                     Your old password is invalid.
-    Element Text Should Be                  ${NAVBAR_DEV_MAILBOX_COUNTER}       0
+    Mailbox Should Contain 0 Messages
 
 New password does not match confirm
     Fill Form Wrapper                       password    newpass    newPASS
