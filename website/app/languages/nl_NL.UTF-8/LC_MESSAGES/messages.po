@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-18 17:41+0000\n"
-"PO-Revision-Date: 2021-04-18 17:53\n"
+"PO-Revision-Date: 2021-04-19 11:02\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -63,7 +63,7 @@ msgstr "Er ging iets mis tijdens het registreren van de adoptie."
 #: website/app/GeoKrety/Controller/GeokretClaim.php:72
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
-msgstr ""
+msgstr "Gefeliciteerd! Je bent nu eigenaar van %s."
 
 #: website/app/GeoKrety/Controller/GeokretCreate.php:39
 msgid "Born here"
@@ -109,15 +109,15 @@ msgstr "Selecteer een exporttype."
 
 #: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:28
 msgid "This GeoKret is already archived."
-msgstr ""
+msgstr "Deze GeoKret is al gearchiveerd."
 
 #: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:43
 msgid "Archiving GeoKret"
-msgstr ""
+msgstr "Archiveer GeoKret"
 
 #: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:49
 msgid "Failed to archive the GeoKret."
-msgstr ""
+msgstr "Archiveren van de GeoKret is mislukt."
 
 #: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
@@ -368,7 +368,7 @@ msgstr "Waypoint lengte is ongeldig. Het moet tussen %d en %d tekens lang zijn."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:16
 msgid "A confirmation email has been sent to your address."
-msgstr ""
+msgstr "Een bevestiging e-mail is naar jouw e-mail adres gestuurd."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
@@ -381,7 +381,7 @@ msgstr ""
 #: website/app/GeoKrety/Email/AccountActivation.php:48
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "De bevestigingslink verloopt over %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
@@ -390,7 +390,7 @@ msgstr "Welkom bij GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "Your account seems to already exists."
-msgstr ""
+msgstr "Jouw account lijkt al te bestaan."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
 #: website/app/GeoKrety/Email/AccountActivation.php:46
@@ -399,7 +399,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Email/AccountActivation.php:45
 msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
+msgstr "<strong>Het account is nog niet actief.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "Account activated"
@@ -412,7 +412,7 @@ msgstr "Fout opgetreden tijdens het verzenden van de e-mail."
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
-msgstr ""
+msgstr "Volglijst van %s"
 
 #: website/app/GeoKrety/Email/EmailChange.php:26
 #: website/app/GeoKrety/Email/EmailChange.php:34
@@ -539,12 +539,12 @@ msgstr "Ontbrekende of ongeldige coördinaten."
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Informatie"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Ongeldige eenheid opgegeven: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -764,17 +764,17 @@ msgstr "{0} moet na GeoKret geboorte zijn"
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Gefeliciteerd"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "Het e-mailadres is succesvol gewijzigd."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "Het e-mailadres is succesvol veranderd naar: %1."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
 #: website/app-templates/smarty/emails/password-changed.tpl:12
@@ -844,7 +844,7 @@ msgstr "Wachtwoord vergeten?"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Herstel wachtwoord"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:8
 msgid "It happens. Click the link below to reset your password."
@@ -862,16 +862,16 @@ msgstr "Je krijgt deze e-mail omdat je je wachtwoord op onze website hebt gewijz
 #: website/app-templates/smarty/emails/password-changed.tpl:4
 #: website/app-templates/smarty/emails/account-activated.tpl:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "Je account op GeoKrety.org is nu actief."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "Jouw wachtwoord is met succes gewijzigd."
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Er ging iets mis tijdens het synchroniseren van partnergegevens"
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
@@ -886,7 +886,7 @@ msgstr ""
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 msgid "Hooray"
-msgstr ""
+msgstr "Hoera"
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:8
@@ -895,7 +895,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "Een van jouw GeoKrety is geadopteerd."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
@@ -920,7 +920,7 @@ msgstr "Niet veranderen!"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
-msgstr ""
+msgstr "Een script is vergrendeld"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
@@ -932,11 +932,11 @@ msgstr "Bericht van een GeoKrety.org gebruiker"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Iemand heeft je een bericht gestuurd"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Deze e-mail is verzonden door gebruiker <a href=\"%2\">%1</a>."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -960,7 +960,7 @@ msgstr "Je krijgt deze e-mail omdat een GeoKrety.org gebruiker je een bericht vi
 
 #: website/app-templates/smarty/emails/account-activation.tpl:4
 msgid "One step left to use GeoKrety.org."
-msgstr ""
+msgstr "Nog één stap om GeoKrety.org te gebruiken."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
@@ -1013,7 +1013,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:5
 msgid "Your GeoKrety watchlist"
-msgstr ""
+msgstr "Jouw GeoKrety volglijst"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:8
 msgid "You're getting this email because you've choose to receive daily mail updates."
@@ -1021,15 +1021,15 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:9
 msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
+msgstr "Je kunt dit uitschakelen door <a href=\"%1\">je persoonlijke e-mailvoorkeuren</a> te veranderen."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:14
 msgid "Here is what changed recently."
-msgstr ""
+msgstr "Dit is wat de laatste tijd veranderd is."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:17
 msgid "Latest news"
-msgstr ""
+msgstr "Laatste nieuws"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:27
 msgid "GeoKrety dropped in your observation area"
@@ -1037,7 +1037,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Open interactive map"
-msgstr ""
+msgstr "Open interactieve kaart"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Observation area map"
@@ -1048,13 +1048,13 @@ msgstr ""
 #: website/app-templates/smarty/emails/daily-mail.tpl:125
 #: website/app-templates/smarty/emails/daily-mail.tpl:170
 msgid "GeoKret"
-msgstr ""
+msgstr "GeoKret"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:37
 #: website/app-templates/smarty/emails/daily-mail.tpl:80
 #: website/app-templates/smarty/emails/daily-mail.tpl:126
 msgid "Position"
-msgstr ""
+msgstr "Positie"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:38
 #: website/app-templates/smarty/emails/daily-mail.tpl:81
@@ -1078,7 +1078,7 @@ msgstr "Notitie"
 #: website/app-templates/smarty/emails/daily-mail.tpl:128
 #: website/app-templates/smarty/emails/daily-mail.tpl:172
 msgid "Author"
-msgstr ""
+msgstr "Auteur"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:40
 msgid "Home distance"
@@ -1231,11 +1231,11 @@ msgstr "Er zijn nog geen foto's."
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:20
 msgid "missing"
-msgstr ""
+msgstr "vermist"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "gearchiveerd"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:27
 #: website/app-templates/smarty/blocks/user/details.tpl:7
@@ -2179,7 +2179,7 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/donate.tpl:8
 msgid "Donate"
-msgstr ""
+msgstr "Doneren"
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:2
 msgid "Some statistics"
@@ -2919,11 +2919,11 @@ msgstr "Welkom bij de GeoKrety.org gemeenschap!"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:10
 msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
+msgstr "Je kunt nu <a href=\"%1\">verplaatsen</a> en <a href=\"%2\">je eigen GeoKrety maken</a> ."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
+msgstr "Je bent net klaar met registratie. Je kan nu inloggen en je eerste GeoKret verplaatsen."
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:3
 msgid "Hall of fame"
