@@ -222,6 +222,10 @@ Seed ${count} users without terms of use
     Go To Url                           ${PAGE_SEED_USER}/${count}/no-terms-of-use
     Empty Dev Mailbox Fast
 
+Seed ${count} users with status ${status}
+    Go To Url                           ${PAGE_SEED_USER}/${count}/status/${status}
+    Empty Dev Mailbox Fast
+
 Seed ${count} geokrety
     Go To Url                           ${PAGE_SEED_GEOKRETY}/${count}
 

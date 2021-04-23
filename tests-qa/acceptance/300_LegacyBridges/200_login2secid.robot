@@ -38,3 +38,40 @@ Test Form - invalid
     Click Button                          //button
     Page Should Not Contain               ${USER_1.secid}
     Page Should Contain                   Username and password doesn't match.
+
+Test Login - Invalid user
+    Clear Database
+    Seed 1 users with status 0
+    Go To Url                             ${GK_URL}/api-login2secid.php
+    Input Text                            //input[@name="login"]            ${USER_1.name}
+    Input Text                            //input[@name="password"]         password
+    Click Button                          //button
+    Page Should Not Contain               ${USER_1.secid}
+    Page Should Contain                   Your account is not valid
+    Go To Url                             ${PAGE_HOME_URL}
+    Mailbox Should Contain 1 Messages
+
+Test Login - Valid user
+    Clear Database
+    Seed 1 users with status 1
+    Go To Url                             ${GK_URL}/api-login2secid.php
+    Input Text                            //input[@name="login"]            ${USER_1.name}
+    Input Text                            //input[@name="password"]         password
+    Click Button                          //button
+    Page Should Contain                   ${USER_1.secid}
+
+Test Login - Imported user
+    Clear Database
+    Seed 1 users with status 2
+    Go To Url                             ${GK_URL}/api-login2secid.php
+    Input Text                            //input[@name="login"]            ${USER_1.name}
+    Input Text                            //input[@name="password"]         password
+    Click Button                          //button
+    Page Should Contain                   ${USER_1.secid}
+
+
+*** Keywords ***
+
+Seed
+    Clear DB And Seed 1 users
+    Sign Out Fast

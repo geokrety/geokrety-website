@@ -119,7 +119,7 @@ Validate XML - structure
     XML.Element Attribute Should Be       ${first_gk}                 places          1
     XML.Element Text Should Be            ${first_gk}                 ${GEOKRETY_1.name}
 
-
+# TODO check retrieve on invalid accounts
 *** Keywords ***
 
 Seed

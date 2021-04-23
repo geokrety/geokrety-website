@@ -22,7 +22,7 @@ SELECT throws_ok($$UPDATE "gk_password_tokens" SET token = 'TOKEN3' WHERE id = 3
 
 -- tokens are unique
 INSERT INTO "gk_password_tokens" ("id", "user", "requesting_ip", "token") VALUES (4, 1, '127.0.0.1', 'TOKEN3');
-SELECT throws_ok($$INSERT INTO "gk_password_tokens" ("id", "geokret", "requesting_ip", "token") VALUES (4, 1, '127.0.0.1', 'TOKEN3')$$);
+SELECT throws_ok($$INSERT INTO "gk_password_tokens" ("id", "geokret", "requesting_ip", "token") VALUES (5, 1, '127.0.0.1', 'TOKEN3')$$);
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

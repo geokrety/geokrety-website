@@ -32,8 +32,8 @@ class Login extends Base {
                 Session::setPersistent();
                 Session::setGKTCookie();
             }
-            if (!$user->isAccountValid()) {
-                $f3->reroute('@home');
+            if ($user->isAccountInvalid() && !$user->isAccountImported()) {
+                \Base::instance()->reroute('@home', false, true);
             }
             $this::connectUser($f3, $user, 'password');
         } else {
@@ -114,6 +114,11 @@ class Login extends Base {
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
+            if ($user->isAccountInvalid() && !$user->isAccountImported()) {
+                http_response_code(400); // TODO what is the most logical code ? probably not 400 neither 500
+                echo _('Your account is not valid.');
+                exit();
+            }
             echo $user->secid;
             Event::instance()->emit('user.login.api2secid', $user);
             exit();

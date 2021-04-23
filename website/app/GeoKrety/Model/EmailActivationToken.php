@@ -176,6 +176,16 @@ class EmailActivationToken extends Base {
         }
     }
 
+    public function loadUserActiveToken(User $user): bool {
+        return $this->load([
+            'user = ? AND used = ? AND created_on_datetime + cast(? as interval) >= NOW() ',
+            $user->id,
+            self::TOKEN_UNUSED,
+            GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
+        ]);
+    }
+
+    // TODO move this in postgres itself
     public static function disableOtherTokensForUser(User $user, $except = null): void { // TODO: move this to plpgsql
         $activation = new EmailActivationToken();
         $otherTokens = $activation->find(['user = ? AND used = ?', $user->id, self::TOKEN_UNUSED]);

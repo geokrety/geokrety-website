@@ -54,9 +54,9 @@ ${PAGE_USER_1_OBSERVATION_AREA_URL}     ${GK_URL}/en/users/1/observation-area
 ${PAGE_USER_CHANGE_PASSWORD_URL}        ${GK_URL}/en/user/update-password
 ${PAGE_USER_CHANGE_LANGUAGE_URL}        ${GK_URL}/en/user/preferred-language
 ${PAGE_USER_REFRESH_SECID_URL}          ${GK_URL}/en/user/refresh-secid
-${PAGE_USER_CHANGE_EMAIL_URL}           ${GK_URL}/en/user/update-email
+${PAGE_USER_CHANGE_EMAIL_URL}           ${GK_URL}/en/user/email/update
 
-${PAGE_USER_EMAIL_CHANGE_VALIDATE_URL}  ${GK_URL}/en/user/email-change/validate
+${PAGE_USER_EMAIL_CHANGE_VALIDATE_URL}  ${GK_URL}/en/user/email/change/validate
 
 ${PAGE_USER_CONTACT_URL}                ${GK_URL}/en/users/\${params.userid}/contact
 ${PAGE_USER_1_CONTACT_URL}              ${GK_URL}/en/users/1/contact

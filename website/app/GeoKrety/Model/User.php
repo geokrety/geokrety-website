@@ -5,7 +5,6 @@ namespace GeoKrety\Model;
 use DateTime;
 use DB\CortexCollection;
 use DB\SQL\Schema;
-use GeoKrety\Email\AccountActivation;
 use JsonSerializable;
 
 /**
@@ -40,6 +39,12 @@ class User extends Base implements JsonSerializable {
 
     const USER_ACCOUNT_INVALID = 0;
     const USER_ACCOUNT_VALID = 1;
+    const USER_ACCOUNT_IMPORTED = 2;
+
+    const USER_ACCOUNT_STATUS_INVALID = [
+        self::USER_ACCOUNT_INVALID,
+        self::USER_ACCOUNT_IMPORTED,
+    ];
     // TODO: there is more status: terms_of_use, `INVALID` is in fact `UNVALIDATED`…
 
     const USER_EMAIL_NO_ERROR = 0;
@@ -259,18 +264,16 @@ class User extends Base implements JsonSerializable {
         return !is_null($this->home_latitude) && !is_null($this->home_longitude);
     }
 
-    public function isAccountValid(): bool {
-        return $this->account_valid === User::USER_ACCOUNT_VALID;
+    public function isAccountInvalid(): bool {
+        return in_array($this->account_valid, self::USER_ACCOUNT_STATUS_INVALID);
     }
 
-    /**
-     * Check if user has validated it's account and resend activation email.
-     */
-    public function checkValidAccount() {
-        if (!$this->isAccountValid() && $this->activation) {
-            $smtp = new AccountActivation();
-            $smtp->sendActivationAgainOnLogin($this->activation);
-        }
+    public function isAccountValid(): bool {
+        return $this->account_valid === self::USER_ACCOUNT_VALID;
+    }
+
+    public function isAccountImported(): bool {
+        return $this->account_valid === self::USER_ACCOUNT_IMPORTED;
     }
 
     public function hasEmail(): bool {
@@ -300,22 +303,43 @@ class User extends Base implements JsonSerializable {
         return $f3->get('SESSION.CURRENT_USER') && $f3->get('SESSION.CURRENT_USER') === $this->id;
     }
 
-    protected function generateAccountActivation(): void {
+    public function sendAccountActivationEmail(): void {
+        if (is_null($this->email)) {
+            // skip sending mail
+            return;
+        }
+        $token = new AccountActivationToken();
+        $token->user = $this;
+        $token->save();
+        $smtp = new \GeoKrety\Email\AccountActivation();
+        $smtp->sendActivation($token);
+    }
+
+    public function resendAccountActivationEmail(): void {
         if (is_null($this->email)) {
             // skip sending mail
             return;
         }
 
-        if ($this->account_valid === self::USER_ACCOUNT_INVALID) {
-            $token = new AccountActivationToken();
+        if ($this->isAccountImported()) {
+            $token = new EmailRevalidateToken();
             $token->user = $this;
-            if ($token->validate()) {
+            $token->set_email($this->get_email());
+            $token->save();
+            $smtp = new \GeoKrety\Email\EmailRevalidate();
+            $smtp->sendRevalidation($token);
+
+            return;
+        }
+        if ($this->isAccountInvalid()) {
+            $token = new AccountActivationToken();
+            $token->loadUserActiveToken($this);
+            if ($token->dry()) {
+                $token->user = $this;
                 $token->save();
-                $smtp = new \GeoKrety\Email\AccountActivation();
-                $smtp->sendActivation($token);
-            } else {
-                \Flash::instance()->addMessage(_('An error occurred while sending the activation mail.'), 'danger');
             }
+            $smtp = new \GeoKrety\Email\AccountActivation();
+            $smtp->sendActivationAgainOnLogin($token);
 
             return;
         }
@@ -384,7 +408,7 @@ EOT;
         });
         $this->afterinsert(function ($self) {
             \Sugar\Event::instance()->emit('user.created', $this);
-            $self->generateAccountActivation();
+            $self->sendAccountActivationEmail();
         });
         $this->aftererase(function ($self) {
             \Sugar\Event::instance()->emit('user.deleted', $this);

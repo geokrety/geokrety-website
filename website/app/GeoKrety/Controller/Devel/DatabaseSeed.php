@@ -32,7 +32,7 @@ class DatabaseSeed extends Base {
                 $user->_email = sprintf('username%d+qa@geokrety.org', $i);
             }
             $user->preferred_language = 'en';
-            $user->account_valid = User::USER_ACCOUNT_VALID;
+            $user->account_valid = $f3->get('PARAMS.status') ?? User::USER_ACCOUNT_VALID;
             $user->_secid = sprintf('%s%d', str_repeat('x', 128 - strlen($i)), $i);
             if ($terms_of_use) {
                 $user->touch('terms_of_use_datetime');

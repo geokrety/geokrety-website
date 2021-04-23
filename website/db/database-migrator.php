@@ -95,7 +95,7 @@ $migrator->process();
 $mName = 'gk-users';
 $pName = 'gk_users';
 $mFields = ['userid', 'user', 'haslo2', 'email', 'email_invalid', 'joined', 'timestamp', 'wysylacmaile', 'ip', 'lang', 'lat', 'lon', 'promien', 'country', 'godzina', 'statpic', 'ostatni_mail', 'ostatni_login', 'secid'];
-$pFields = ['id', 'username', 'password', '_email', 'email_invalid', 'joined_on_datetime', 'updated_on_datetime', 'daily_mails', 'registration_ip', 'preferred_language', 'home_latitude', 'home_longitude', 'observation_area', 'home_country', 'daily_mails_hour', 'statpic_template', 'last_mail_datetime', 'last_login_datetime', '_secid'];
+$pFields = ['id', 'username', 'password', '_email', 'email_invalid', 'joined_on_datetime', 'updated_on_datetime', 'daily_mails', 'registration_ip', 'preferred_language', 'home_latitude', 'home_longitude', 'observation_area', 'home_country', 'daily_mails_hour', 'statpic_template', 'last_mail_datetime', 'last_login_datetime', '_secid', 'account_valid'];
 // // , 'pictures_count', 'avatar', 'terms_of_use_datetime', 'account_valid'
 $migrator = new UserMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
@@ -465,6 +465,7 @@ class UserMigrator extends BaseMigrator {
             $values[4] = 1; // USER_EMAIL_INVALID
             break;
         }
+        $values[] = 2; // Account Imported
     }
 
     // TODO users avatar

@@ -119,11 +119,22 @@ class AccountActivationToken extends Base {
         }
     }
 
+    public function loadUserActiveToken(User $user): bool {
+        return $this->load([
+            'user = ? AND used = ? AND created_on_datetime + cast(? as interval) >= NOW() ',
+            $user->id,
+            AccountActivationToken::TOKEN_UNUSED,
+            GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
+        ]);
+    }
+
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
             \Sugar\Event::instance()->emit('activation.token.created', $this);
+            // TODO move that into postgres
+            AccountActivationToken::invalidateOtherUserTokens($this->user);
         });
 
         $this->virtual('expire_on_datetime', function ($self) {

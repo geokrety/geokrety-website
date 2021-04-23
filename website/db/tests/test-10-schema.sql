@@ -1,6 +1,6 @@
 -- Start transaction and plan the tests.
 BEGIN;
-SELECT plan(30);
+SELECT plan(31);
 
 -- Run the tests.
 SELECT has_table( 'gk_moves' );
@@ -8,6 +8,7 @@ SELECT has_table( 'gk_users' );
 SELECT has_table( 'gk_account_activation' );
 SELECT has_table( 'gk_badges' );
 SELECT has_table( 'gk_email_activation' );
+SELECT has_table( 'gk_email_revalidate' );
 SELECT has_table( 'gk_geokrety' );
 SELECT has_table( 'gk_geokrety_rating' );
 SELECT has_table( 'gk_mails' );

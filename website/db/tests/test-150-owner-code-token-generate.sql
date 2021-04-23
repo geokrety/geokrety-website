@@ -26,8 +26,8 @@ SELECT lives_ok($$UPDATE "gk_owner_codes" SET token = 'TOKEN3' WHERE id = 3::big
 
 -- tokens are unique
 INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (4, 'test', 0);
-INSERT INTO "gk_owner_codes" ("id", "geokret", "token") VALUES (4, 4, 'TOKEN3');
-SELECT throws_ok($$INSERT INTO "gk_owner_codes" ("id", "geokret", "token") VALUES (4, 4, 'TOKEN3')$$);
+INSERT INTO "gk_owner_codes" ("id", "geokret", "token") VALUES (4, 4, 'TOKEN4');
+SELECT throws_ok($$INSERT INTO "gk_owner_codes" ("id", "geokret", "token") VALUES (5, 4, 'TOKEN4')$$);
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

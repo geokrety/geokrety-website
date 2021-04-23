@@ -1,8 +1,8 @@
 -- Start transaction and plan the tests.
 BEGIN;
 
-SELECT * FROM no_plan();
--- SELECT plan(29);
+-- SELECT * FROM no_plan();
+SELECT plan(55);
 
 -- Run the tests.
 SELECT is(valid_move_types(), '{0,1,2,3,4,5}'::smallint[], 'Check valid_move_types()');
@@ -12,6 +12,7 @@ SELECT is(valid_moves_comments_types(), '{0,1}'::smallint[], 'Check valid_moves_
 SELECT is(moves_types_markable_as_missing(), '{0,3}'::smallint[], 'Check moves_types_markable_as_missing()');
 SELECT is(moves_type_last_position(), '{0,1,3,4,5}'::smallint[], 'Check moves_type_last_position()');
 SELECT is(moves_type_hold(), '{1,5}'::smallint[], 'Check moves_type_hold()');
+SELECT is(valid_email_revalidate_used(), '{0,1,2,3}'::smallint[], 'Check validate_email_revalidate_used()');
 
 SELECT is(validate_move_types(0::smallint), TRUE, 'Check validate_move_types(0)');
 SELECT is(validate_move_types(1::smallint), TRUE, 'Check validate_move_types(1)');

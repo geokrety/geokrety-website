@@ -16,6 +16,7 @@ class Config extends \Prefab {
         define('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH') ?: 42);
         define('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY', getenv('GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY') ?: 5);
         define('GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY', getenv('GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY') ?: 31);
+        define('GK_SITE_EMAIL_REVALIDATE_CODE_DAYS_VALIDITY', getenv('GK_SITE_EMAIL_REVALIDATE_CODE_DAYS_VALIDITY') ?: 7);
         define('GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY', getenv('GK_SITE_NEWS_DISPLAY_DAYS_VALIDITY') ?: 31);
         define('GK_SITE_NEWS_EMAIL_DAYS_VALIDITY', getenv('GK_SITE_NEWS_EMAIL_DAYS_VALIDITY') ?: 31);
         define('GK_SITE_PASSWORD_RECOVERY_CODE_LENGTH', getenv('GK_SITE_PASSWORD_RECOVERY_CODE_LENGTH') ?: 42);
@@ -101,6 +102,7 @@ class Config extends \Prefab {
         define('GK_DB_DSN', getenv('GK_DB_DSN') ?: sprintf('%s:host=%s;dbname=%s;user=%s;password=%s', GK_DB_ENGINE, GK_DB_HOST, GK_DB_NAME, GK_DB_USER, GK_DB_PASSWORD));
 
         define('GK_DB_DATETIME_FORMAT', 'Y-m-d H:i:sP');
+        define('GK_DB_DATETIME_FORMAT_MICROSECONDS', 'Y-m-d H:i:s.uP');
         define('GK_DB_DATETIME_FORMAT_WITHOUT_TZ', 'Y-m-d H:i:s');
         define('GK_DB_DATETIME_FORMAT_AS_INT', 'YmdHis');
 
