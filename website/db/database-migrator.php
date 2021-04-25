@@ -48,7 +48,7 @@ try {
 }
 
 $pgsql->query('SET session_replication_role = replica;');
-$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_oc", "gk_waypoints_country", "gk_waypoints_sync", "gk_waypoints_types", "scripts" RESTART IDENTITY CASCADE';
+$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -67,13 +67,13 @@ $pFields = ['original', 'country'];
 $migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
-// ---------------------------------------------------------------------------------------------------------------------
-$mName = 'gk-waypointy-sync';
-$pName = 'gk_waypoints_sync';
-$mFields = ['service_id', 'last_update'];
-$pFields = ['service_id', 'revision'];
-$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
-$migrator->process();
+//// ---------------------------------------------------------------------------------------------------------------------
+//$mName = 'gk-waypointy-sync';
+//$pName = 'gk_waypoints_sync';
+//$mFields = ['service_id', 'last_update'];
+//$pFields = ['service_id', 'revision'];
+//$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+//$migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-waypointy-type';
@@ -84,12 +84,13 @@ $migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields)
 $migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
-$mName = 'gk-waypointy';
-$pName = 'gk_waypoints_oc';
-$mFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'typ', 'kraj', 'link', 'status', 'timestamp'];
-$pFields = ['waypoint', 'lat', 'lon', 'elevation', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
-$migrator = new WaypointMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
-$migrator->process();
+// Skip migrating this table, it's now fully populated using cron scripts
+//$mName = 'gk-waypointy';
+//$pName = 'gk_waypoints_oc';
+//$mFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'typ', 'kraj', 'link', 'status', 'timestamp'];
+//$pFields = ['waypoint', 'lat', 'lon', 'elevation', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
+//$migrator = new WaypointMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+//$migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-users';
@@ -251,8 +252,8 @@ $pgsql->query("SELECT SETVAL('geokrety.races_participants_id_seq', COALESCE(MAX(
 $pgsql->query("SELECT SETVAL('geokrety.scripts_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.scripts;");
 $pgsql->query("SELECT SETVAL('geokrety.users_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_users;");
 $pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_watched;");
-$pgsql->query("SELECT SETVAL('geokrety.waypoints_oc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_oc;");
-$pgsql->query("SELECT SETVAL('geokrety.waypoints_gc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_gc;");
+//$pgsql->query("SELECT SETVAL('geokrety.waypoints_oc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_oc;");
+//$pgsql->query("SELECT SETVAL('geokrety.waypoints_gc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_gc;");
 
 $pgsql->query('SELECT waypoints_gc_fill_from_moves();');
 
