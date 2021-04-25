@@ -23,7 +23,7 @@ class DailyMail extends BasePHPMailer {
      */
     public function sendDailyMail(User $user) {
         $this->setSubject(sprintf(_('Watchlist for %s'), Carbon::instance($this->since)->isoFormat('LL')), '🛩️');
-        $this->setTo($user, false, true);
+        $this->setTo($user, false, false);
         if ($this->sendEmail('emails/daily-mail.tpl')) {
             $user->touch('last_mail_datetime');
             $user->save();

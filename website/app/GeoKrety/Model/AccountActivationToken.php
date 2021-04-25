@@ -16,6 +16,7 @@ use DB\SQL\Schema;
  * @property string requesting_ip
  * @property string|null validating_ip
  * @property int used
+ * @property DateTime last_notification_datetime
  */
 class AccountActivationToken extends Base {
     use \Validation\Traits\CortexTrait;
@@ -75,35 +76,25 @@ class AccountActivationToken extends Base {
             'default' => self::TOKEN_UNUSED,
             'nullable' => false,
         ],
+        'last_notification_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
+            'validate' => 'is_date',
+        ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
-        return self::get_date_object($value);
-    }
+    public function __construct() {
+        parent::__construct();
+        $this->beforeinsert(function ($self) {
+            $self->requesting_ip = \Base::instance()->get('IP');
+            \Sugar\Event::instance()->emit('activation.token.created', $this);
+        });
 
-    public function get_used_on_datetime($value): ?DateTime {
-        return self::get_date_object($value);
-    }
+        $this->virtual('expire_on_datetime', function ($self) {
+            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new Datetime();
 
-    public function get_updated_on_datetime($value): ?DateTime {
-        return self::get_date_object($value);
-    }
-
-    // TODO call that from cron // TODO: move this to plpgsql
-    public static function expireOldTokens() {
-        $activation = new AccountActivationToken();
-        // TODO why is there 2 queries ??? bug or feature ?
-        $expiredTokens = $activation->find([
-            //'used = ? AND NOW() >= DATE_ADD(created_on_datetime, INTERVAL ? DAY)',
-            'used = ? AND created_on_datetime > NOW() - cast(? as interval)',
-            self::TOKEN_UNUSED,
-            GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
-        ]);
-        foreach ($expiredTokens ?: [] as $token) {
-            $token->used = self::TOKEN_EXPIRED;
-            $token->validating_ip = \Base::instance()->get('IP');
-            $token->save();
-        }
+            return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY)));
+        });
     }
 
     public static function invalidateOtherUserTokens(User $user) {
@@ -119,6 +110,22 @@ class AccountActivationToken extends Base {
         }
     }
 
+    public function get_created_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function get_used_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function get_updated_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function get_expire_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
     public function loadUserActiveToken(User $user): bool {
         return $this->load([
             'user = ? AND used = ? AND created_on_datetime + cast(? as interval) >= NOW() ',
@@ -126,22 +133,6 @@ class AccountActivationToken extends Base {
             AccountActivationToken::TOKEN_UNUSED,
             GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
         ]);
-    }
-
-    public function __construct() {
-        parent::__construct();
-        $this->beforeinsert(function ($self) {
-            $self->requesting_ip = \Base::instance()->get('IP');
-            \Sugar\Event::instance()->emit('activation.token.created', $this);
-            // TODO move that into postgres
-            AccountActivationToken::invalidateOtherUserTokens($this->user);
-        });
-
-        $this->virtual('expire_on_datetime', function ($self) {
-            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new Datetime();
-
-            return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY)));
-        });
     }
 
     public function jsonSerialize() {

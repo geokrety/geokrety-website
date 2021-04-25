@@ -26,6 +26,7 @@
         <div class="s-3"></div>
 
         <p class="text-3xl align-center text-center">{block name=title}{/block}</p>
+        <div class="s-6"></div>
         <p>{t username=$user->username}Hi %1,{/t}</p>
 
         <div class="s-3"></div>

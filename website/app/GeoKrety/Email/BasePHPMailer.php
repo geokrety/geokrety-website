@@ -44,6 +44,20 @@ abstract class BasePHPMailer extends PHPMailer {
         $this->setFrom(GK_SITE_EMAIL, 'Geokrety');
     }
 
+    /**
+     * @throws \Exception
+     */
+    public function send(): bool {
+        throw new Exception('send(): Please use sendEmail() instead.');
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function addAddress($address, $name = '') {
+        throw new Exception('addAddress(): Please use setTo() instead.');
+    }
+
     protected function sendEmail(string $template_name): bool {
         if (sizeof($this->recipients) === 0) {
             return false;
@@ -74,6 +88,16 @@ abstract class BasePHPMailer extends PHPMailer {
         return true;
     }
 
+    protected function getSubject(): string {
+        $values = $this->subject;
+
+        return sprintf('%s %s %s', $values[0], $values[1], _($values[2]));
+    }
+
+    protected function setSubject(string $subject, string $emoji = '', string $prefix = GK_EMAIL_SUBJECT_PREFIX) {
+        $this->subject = [$prefix, $emoji, $subject];
+    }
+
     private function store_in_local_session() {
         Base::instance()->push('SESSION.LOCAL_MAIL', [
             'smtp' => [
@@ -87,32 +111,30 @@ abstract class BasePHPMailer extends PHPMailer {
     }
 
     /**
-     * @throws \Exception
+     * @param bool $force         Force sending the mail, by user email validity check useful on registration
+     * @param bool $realRecipient Deliver the mail to the real address. Useful to prevent crons to send unsolicited mails, but allow users to tests features on staging. (Only relevant when not production
      */
-    public function send(): bool {
-        throw new Exception('send(): Please use sendEmail() instead.');
-    }
-
-    protected function setTo(User $user, bool $force = false, bool $prodOnly = false) {
+    protected function setTo(User $user, bool $force = false, bool $realRecipient = true) {
         if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
             $this->recipients[] = $user;
 
             return;
         }
-        if (!GK_IS_PRODUCTION and $prodOnly) {
+        if (!GK_IS_PRODUCTION) {
             foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
                 $_admin = $user->findone(['id = ?', $admin_id]);
                 $_user = clone $user;
                 $_user->email = $_admin->email;
+                $_user->username .= ' (admin)';
                 $this->recipients[] = $_user;
             }
-
-            return;
         }
-        if (!$user->hasEmail() or (!$user->isEmailValid() and !$force)) {
-            return;
+        if (GK_IS_PRODUCTION or $realRecipient) {
+            if (!$user->hasEmail() or (!$user->isEmailValid() and !$force)) {
+                return;
+            }
+            $this->recipients[] = $user;
         }
-        $this->recipients[] = $user;
     }
 
     protected function setToAdmins() {
@@ -123,26 +145,9 @@ abstract class BasePHPMailer extends PHPMailer {
     }
 
     /**
-     * @throws \Exception
-     */
-    public function addAddress($address, $name = '') {
-        throw new Exception('addAddress(): Please use setTo() instead.');
-    }
-
-    /**
      * @throws \PHPMailer\PHPMailer\Exception
      */
     protected function setFromSupport() {
         $this->setFrom(GK_SITE_EMAIL_SUPPORT, 'GeoKrety');
-    }
-
-    protected function setSubject(string $subject, string $emoji = '', string $prefix = GK_EMAIL_SUBJECT_PREFIX) {
-        $this->subject = [$prefix, $emoji, $subject];
-    }
-
-    protected function getSubject(): string {
-        $values = $this->subject;
-
-        return sprintf('%s %s %s', $values[0], $values[1], _($values[2]));
     }
 }

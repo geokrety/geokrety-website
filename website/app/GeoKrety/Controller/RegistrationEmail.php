@@ -9,6 +9,7 @@ use GeoKrety\Service\Smarty;
 
 class RegistrationEmail extends BaseRegistration {
     public function post(\Base $f3) {
+        $f3->get('DB')->begin();
         $user = $this->user;
 
         // Get form values
@@ -39,6 +40,7 @@ class RegistrationEmail extends BaseRegistration {
                 $f3->abort();
             }
             $smtp->sendActivationAgain($token);
+            $f3->get('DB')->rollback();
             exit();
         }
 
@@ -47,10 +49,12 @@ class RegistrationEmail extends BaseRegistration {
 
         // Save
         if (!$user->validate()) {
+            $f3->get('DB')->rollback();
             $this->get($f3);
             exit();
         }
         $user->save();
+        $f3->get('DB')->commit();
         $f3->reroute(\Multilang::instance()->alias('user_details', ['userid' => $user->id], $user->preferred_language));
     }
 

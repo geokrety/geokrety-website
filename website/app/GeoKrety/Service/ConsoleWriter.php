@@ -7,7 +7,7 @@ class ConsoleWriter {
     private int $lastLen = 0;
     private float $timer;
 
-    public function __construct(string $pattern, ?array $values = null) {
+    public function __construct(string $pattern = '%s', ?array $values = null) {
         $this->pattern = $pattern.' - %0.2fs - load: %s';
 
         if (!is_null($values)) {
@@ -15,6 +15,10 @@ class ConsoleWriter {
         }
 
         $this->timer = microtime(true);
+    }
+
+    public function setPattern(string $pattern): void {
+        $this->pattern = $pattern;
     }
 
     public function print(array $values, bool $line_break = false) {

@@ -110,7 +110,7 @@ class Config extends \Prefab {
         define('GK_DB_SECRET_KEY', getenv('GK_DB_SECRET_KEY') ?: 'secretkey');
 
         // SMTP config
-        define('GK_SMTP_HOST', getenv('GK_SMTP_HOST') ?: 'bootstrap-email');
+        define('GK_SMTP_HOST', getenv('GK_SMTP_HOST') ?: 'smtp-relay');
         define('GK_SMTP_PORT', getenv('GK_SMTP_PORT') ?: 25);
         define('GK_SMTP_SCHEME', getenv('GK_SMTP_SCHEME') ?: '');
         define('GK_SMTP_URI', getenv('GK_SMTP_URI') ?: sprintf('%s:%d', GK_SMTP_HOST, GK_SMTP_PORT));
