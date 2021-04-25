@@ -2,10 +2,12 @@
 
 namespace GeoKrety\Controller;
 
+use Flash;
 use GeoKrety\Email\AccountActivation;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
+use Sugar\Event;
 
 class RegistrationActivate extends Base {
     private AccountActivationToken $token;
@@ -17,7 +19,7 @@ class RegistrationActivate extends Base {
         $token = new AccountActivationToken();
         $token->load(['token = ? AND used = ? AND created_on_datetime + cast(? as interval) >= NOW() ', $f3->get('PARAMS.token'), AccountActivationToken::TOKEN_UNUSED, GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
         if ($token->dry()) {
-            \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
+            Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
             $f3->reroute('@home');
         }
 
@@ -48,8 +50,8 @@ class RegistrationActivate extends Base {
         if (!GK_DEVEL) {
             $f3->abort();
         }
-        \Sugar\Event::instance()->emit('user.activated', $this->token->user);
-        \Sugar\Event::instance()->emit('activation.token.used', $this->token);
+        Event::instance()->emit('user.activated', $this->token->user);
+        Event::instance()->emit('activation.token.used', $this->token);
         $smtp = new AccountActivation();
         $smtp->sendActivationConfirm($this->token);
     }

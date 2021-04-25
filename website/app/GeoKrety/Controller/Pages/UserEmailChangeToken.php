@@ -9,10 +9,7 @@ use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
 class UserEmailChangeToken extends Base {
-    /**
-     * @var EmailActivationToken
-     */
-    private $token;
+    private EmailActivationToken $token;
 
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
@@ -91,7 +88,7 @@ class UserEmailChangeToken extends Base {
         $this->token->_previous_email = $this->token->user->email;
 
         // Save the new email
-        $this->token->user->_email = $this->token->email;
+        $this->token->user->set_email($this->token->email);
         $this->token->user->email_invalid = 0;
 
         if (!$this->token->user->validate()) {
