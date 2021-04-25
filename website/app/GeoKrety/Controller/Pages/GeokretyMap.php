@@ -23,7 +23,7 @@ class GeokretyMap extends Base {
         //        $sql = <<<EOT
         //            SELECT json_build_object(
         //                'type', 'FeatureCollection',
-        //                'features', json_agg(public.ST_AsGeoJSON(t.*)::json)::jsonb
+        //                'features', COALESCE(json_agg(public.ST_AsGeoJSON(t.*)::json), '[]')::jsonb
         //            ) AS geojson
         //            FROM (
         //                SELECT position, gkid, name, waypoint, lat, lon, elevation, country, distance, author, author_username,
@@ -39,7 +39,7 @@ class GeokretyMap extends Base {
                 area AS (SELECT public.ST_Area(envelope.boundingBox) AS area, CASE WHEN public.ST_Area(envelope.boundingBox) > 150000 THEN 365 ELSE 730 END AS age FROM envelope)
             SELECT json_build_object(
                 'type', 'FeatureCollection',
-                'features',  coalesce(json_agg(public.ST_AsGeoJSON(t.*)::json)::jsonb, '[]'::jsonb)
+                'features',  COALESCE(json_agg(public.ST_AsGeoJSON(t.*)::json), '[]')::jsonb
             ) AS geojson
             FROM (
                 SELECT position, gkid, name, waypoint, lat, lon, elevation, country, distance, author, author_username,

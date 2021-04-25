@@ -19,7 +19,7 @@ class GeokretMovesGeojson extends Base {
         $sql = <<<EOT
             select json_build_object(
                 'type', 'FeatureCollection',
-                'features', json_agg(public.ST_AsGeoJSON(t.*)::json)::jsonb || json_agg(public.ST_AsGeoJSON(f.*)::json)::jsonb
+                'features', COALESCE(json_agg(public.ST_AsGeoJSON(t.*)::json), '[]')::jsonb || COALESCE(json_agg(public.ST_AsGeoJSON(f.*)::json), '[]')::jsonb
             ) AS geojson
             from (select waypoint, position, elevation, distance, country, step,
                 coalesce(TRUNC(EXTRACT(EPOCH FROM (moved_on_datetime - lag(moved_on_datetime) over (order by moved_on_datetime DESC)::timestamptz))/60), 0) AS minutes,

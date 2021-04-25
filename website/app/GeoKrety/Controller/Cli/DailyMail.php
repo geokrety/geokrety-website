@@ -232,7 +232,7 @@ SQL;
         $sql = <<<SQL
 SELECT json_build_object(
     'type', 'FeatureCollection',
-    'features', json_agg(public.ST_AsGeoJSON(t.*)::json)::jsonb
+    'features', COALESCE(json_agg(public.ST_AsGeoJSON(t.*)::json), '[]')::jsonb
 ) AS geojson
 FROM (
     SELECT position

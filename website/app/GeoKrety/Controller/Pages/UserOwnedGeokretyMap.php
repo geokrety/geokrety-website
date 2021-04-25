@@ -17,7 +17,7 @@ class UserOwnedGeokretyMap extends Base {
         $sql = <<<EOT
             SELECT json_build_object(
                 'type', 'FeatureCollection',
-                'features', json_agg(public.ST_AsGeoJSON(t.*)::json)::jsonb
+                'features', COALESCE(json_agg(public.ST_AsGeoJSON(t.*)::json), '[]')::jsonb
             ) AS geojson
             FROM (
                 SELECT position, gkid, name, waypoint, lat, lon, elevation, country, distance, author, author_username,
