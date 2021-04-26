@@ -5,29 +5,32 @@ namespace GeoKrety\Controller\Cli;
 use Base;
 use DateInterval;
 use DateTime;
+use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\DailyMail as EmailDailyMail;
 use GeoKrety\Model\GeokretNearHome;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
 use GeoKrety\Model\News;
 use GeoKrety\Model\User;
-use GeoKrety\Service\ConsoleWriter;
 use GeoKrety\Service\File;
 use GeoKrety\Service\Smarty;
 use PHPMailer\PHPMailer\Exception;
 
 class DailyMail {
+    use Script;
+
     private ?DateTime $since;
     private EmailDailyMail $email;
     private User $user;
     private int $updates_count = 0;
-    private ConsoleWriter $console_writer;
 
     public function __construct() {
-        $this->console_writer = new ConsoleWriter('%5d %20s => %14s');
+        $this->initScript();
+        $this->console_writer->setPattern('%5d %20s => %14s');
     }
 
     public function sendDaily() {
+        $this->start(__METHOD__);
         $sql = <<<'SQL'
 WITH gks AS (
     SELECT distinct(geokret) AS gkid
@@ -89,7 +92,7 @@ SQL;
         $since = new DateTime();
         $since->sub(new DateInterval('P1D'))->setTime(0, 0);
         $params = array_fill(0, 5, $since->format(GK_DB_DATETIME_FORMAT));
-        $this->console_writer->print(['sql', 'finding users', 'prepare']);
+        $this->console_writer->print(['sql', 'finding users', 'prepare'], true);
         $result = Base::instance()->get('DB')->exec($sql, $params);
         $this->user = new User();
         foreach ($result as $_userid) {
@@ -97,9 +100,11 @@ SQL;
             $this->console_writer->print([$this->user->id, $this->user->username, 'prepare']);
             $this->send();
         }
+        $this->end();
     }
 
     public function sendUser(Base $f3) {
+        $this->start(__METHOD__);
         $userid = $f3->get('PARAMS.userid');
         $this->console_writer->print([$userid, '', 'prepare']);
         $this->user = new User();
@@ -110,6 +115,7 @@ SQL;
             return;
         }
         $this->send();
+        $this->end();
     }
 
     protected function send() {

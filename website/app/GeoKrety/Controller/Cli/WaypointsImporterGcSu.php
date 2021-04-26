@@ -15,7 +15,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
     const GC_SU_CACHE_DETAIL_URL = 'https://geocaching.su/?pn=101&cid=%s';
 
     const SCRIPT_CODE = 'GC_SU';
-    const SCRIPT_NAME = 'waypoint_importer_gc_su';
+    protected string $class_name = __CLASS__;
 
     /**
      * Start gc.su import.

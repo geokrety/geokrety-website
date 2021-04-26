@@ -4,18 +4,25 @@ namespace GeoKrety\Controller\Cli\Traits;
 
 use Base;
 use DateTime;
+use DB\SQL;
 use Exception;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Service\ConsoleWriter;
+use function pcntl_async_signals;
+use function pcntl_signal;
 
 trait Script {
     protected DateTime $start_datetime;
     protected bool $_skip_saving_final_last_update = false;
-    protected $db;
-    private ConsoleWriter $console_writer;
+    protected SQL $db;
+    protected ConsoleWriter $console_writer;
     private string $script_name;
 
     public function __construct() {
+        $this->initScript();
+    }
+
+    public function initScript() {
         $this->start_datetime = new DateTime();
         $this->db = Base::instance()->get('DB');
         $this->db->log(false);
@@ -43,9 +50,16 @@ trait Script {
 
     /**
      * Start import functions.
+     *
+     * @throws \Exception
      */
-    protected function start($func) {
-        $this->script_name = $func;
+    protected function start(?string $func = null) {
+        if (!is_null($func)) {
+            $this->script_name = $func;
+        }
+        if (is_null($this->script_name)) {
+            throw new Exception('No script name passed');
+        }
         $this->lock();
         $this->db->begin();
         echo sprintf("* \e[0;32mStarting %s script processing at %s\e[0m", $func, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL;

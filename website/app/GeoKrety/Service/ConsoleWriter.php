@@ -38,9 +38,9 @@ class ConsoleWriter {
     }
 
     public function _print(array $values) {
-        $newString = vsprintf($this->pattern, $values); // no mb_vsprintf() exists
+        $newString = vsprintf($this->pattern, $values);
         $lenBefore = $this->lastLen;
-        $this->lastLen = mb_strlen($newString, 'UTF-8');
+        $this->lastLen = strlen($newString);
         echo $newString;
         $pad = $lenBefore - $this->lastLen;
         if ($pad > 0) {

@@ -2,19 +2,18 @@
 
 namespace GeoKrety\Controller\Cli;
 
+use GeoKrety\Model\Base;
 use GeoKrety\Model\Picture;
 use GeoKrety\PictureType;
 use GeoKrety\Service\S3Client;
 
 class PicturesImporter extends BaseCleaner {
-    private $transferPercent;
-    /**
-     * @var string
-     */
-    private $trafficWay;
-    private $downloadFilename;
+    private float $transferPercent;
+    private string $trafficWay;
+    private string $downloadFilename;
+    protected string $class_name = __CLASS__;
 
-    protected function getModel(): \GeoKrety\Model\Base {
+    protected function getModel(): Base {
         return new Picture();
     }
 
@@ -26,23 +25,19 @@ class PicturesImporter extends BaseCleaner {
         return $f3->get('PARAMS.pictureid');
     }
 
-    protected function getScriptName(): string {
-        return 'pictures_importer_legacy_to_s3';
-    }
-
-    protected function filterHook() {
+    protected function filterHook(): array {
         return ['bucket = ? AND key = ?', null, null];
     }
 
-    protected function orderHook() {
+    protected function orderHook(): array {
         return ['order' => 'created_on_datetime ASC'];
     }
 
-    protected function process(&$object): void {
+    protected function process($object): void {
         $this->downloadFilename = $object->filename;
-        $fileContent = $this->downloadFile("https://cdn.geokrety.org/images/obrazki/{$object->filename}");
+        $fileContent = $this->downloadFile("https://cdn.geokrety.org/images/obrazki/$object->filename");
         $this->uploadFile($object, $fileContent);
-        $this->processResult($object->id, true);
+        $this->processResult(true);
     }
 
     protected function downloadFile($url) {
@@ -60,7 +55,7 @@ class PicturesImporter extends BaseCleaner {
         return $filecontent;
     }
 
-    protected function uploadFile(\GeoKrety\Model\Base &$object, &$fileContent) {
+    protected function uploadFile(Base $object, $fileContent) {
         $uploader = null;
         $id = null;
 
@@ -77,7 +72,7 @@ class PicturesImporter extends BaseCleaner {
             $id = $object->move->id;
             $object->author = $object->move->author;
         } else {
-            exit('Should never happend');
+            exit('Should never happen');
         }
 
         $object->key = $uploader::generateKey($id);
@@ -89,14 +84,14 @@ class PicturesImporter extends BaseCleaner {
         $s3Client = S3Client::instance()->getS3();
         $cmd = $s3Client->getCommand('PutObject', [
             'Bucket' => GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER,
-            'Key' => $uploader::fullImgKey($object->key), //sprintf('%d.png', $user->id),
+            'Key' => $uploader::fullImgKey($object->key),
         ]);
         $request = $s3Client->createPresignedRequest($cmd, '+20 minutes');
         $presignedUrl = (string) $request->getUri();
         $this->_uploadFile($presignedUrl, $fileContent);
     }
 
-    private function _uploadFile($url, &$fileContent) {
+    private function _uploadFile($url, $fileContent) {
         $this->trafficWay = "\e[0;31m↑\e[0m";  // ↑↓
 
         $stream = fopen('php://memory', 'r+');
@@ -106,12 +101,11 @@ class PicturesImporter extends BaseCleaner {
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_PROGRESSFUNCTION, [$this, 'progress']);
         curl_setopt($curl, CURLOPT_NOPROGRESS, false); // needed to make progress function work
         curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_USERAGENT, sprintf('GeoKrety Pictures Importer %s', getenv('GIT_COMMIT') ?: 'undef')); // TODO right version
+        curl_setopt($curl, CURLOPT_USERAGENT, GK_SITE_USER_AGENT);
         curl_setopt($curl, CURLOPT_PUT, true);
         curl_setopt($curl, CURLOPT_INFILE, $stream);
         curl_setopt($curl, CURLOPT_INFILESIZE, $dataLength);
@@ -119,11 +113,11 @@ class PicturesImporter extends BaseCleaner {
         curl_close($curl);
     }
 
-    protected function getConsoleWriterPattern() {
+    protected function getConsoleWriterPattern(): string {
         return 'Importing pictures: %6.2f%% (%s/%d) [%s %s %6.2f%%]';
     }
 
-    private function progress($resource, $download_size, $downloaded, $upload_size, $uploaded) {
+    private function progress($download_size, $downloaded) {
         if ($download_size > 0) {
             $this->transferPercent = $downloaded / $download_size * 100;
         }
@@ -131,6 +125,6 @@ class PicturesImporter extends BaseCleaner {
     }
 
     protected function print(): void {
-        $this->consoleWriter->print([$this->percentProcessed, $this->counter, $this->total, $this->trafficWay, $this->downloadFilename, $this->transferPercent]);
+        $this->console_writer->print([$this->percentProcessed, $this->counter, $this->total, $this->trafficWay, $this->downloadFilename, $this->transferPercent]);
     }
 }

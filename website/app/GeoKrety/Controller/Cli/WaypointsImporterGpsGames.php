@@ -7,7 +7,7 @@ class WaypointsImporterGpsGames extends WaypointsImporterBaseTopografix {
     //const GPSG_CACHE_DETAIL_URL = 'http://geodashing.gpsgames.org/cgi-bin/dp.pl?dp=%s';
 
     const SCRIPT_CODE = 'GPS_GAMES';
-    const SCRIPT_NAME = 'waypoint_importer_gps_games';
+    protected string $class_name = __CLASS__;
 
     /**
      * @throws \Exception

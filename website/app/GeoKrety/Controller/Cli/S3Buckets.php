@@ -2,19 +2,16 @@
 
 namespace GeoKrety\Controller\Cli;
 
+use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Model\Picture as PictureModel;
 
 class S3Buckets {
-    public function pruneGeokretyAvatars(\Base $f3): void {
-        if ($f3->exists('LOCK.S3Buckets.pruneGeokretyAvatars')) {
-            echo "\e[0;31mAnother task is already running\e[0m".PHP_EOL;
-        }
+    use Script;
 
-        echo "\e[0;32mLaunch task\e[0m".PHP_EOL;
-        $f3->set('LOCK.S3Buckets.pruneGeokretyAvatars', 'true', 60);
+    public function prune(\Base $f3): void {
+        $this->start(__METHOD__);
         // TODO expire never uploaded pictures
         PictureModel::expireNeverUploaded();
-        $f3->clear('LOCK.S3Buckets.pruneGeokretyAvatars');
-        echo "\e[0;32mTask end\e[0m".PHP_EOL;
+        $this->end();
     }
 }

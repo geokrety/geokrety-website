@@ -8,7 +8,7 @@ class WaypointsImporterGcHu extends WaypointsImporterBaseTopografix {
     const GC_HU_API_ENDPOINT = 'https://www.geocaching.hu/caches.geo';
 
     const SCRIPT_CODE = 'GC_HU';
-    const SCRIPT_NAME = 'waypoint_importer_gc_hu';
+    protected string $class_name = __CLASS__;
 
     /**
      * @throws Exception

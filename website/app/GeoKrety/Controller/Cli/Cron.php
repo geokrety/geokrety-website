@@ -3,15 +3,16 @@
 namespace GeoKrety\Controller\Cli;
 
 use Base;
-use Exception;
+use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\CronError;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Model\User;
 
 class Cron {
-    const SCRIPT_NAME_REFRESH_MATERIALIZED_VIEW = 'refresh_materialized_view';
+    use Script;
 
     public function checkLockedScripts() {
+        $this->start(__METHOD__);
         $scripts = new Scripts();
         $sql = <<<'SQL'
        (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_datetime)))::integer/60) >= %d
@@ -26,21 +27,13 @@ SQL;
                 $mail->sendLockedScript($script);
             }
         }
+        $this->end();
     }
 
     public function refreshMaterializedView(Base $f3) {
+        $this->start(__METHOD__);
         $sql = 'REFRESH MATERIALIZED VIEW CONCURRENTLY gk_geokrety_in_caches;';
-
-        $script_lock = new Scripts();
-        $script_lock->load(['name = ?', static::SCRIPT_NAME_REFRESH_MATERIALIZED_VIEW]);
-        try {
-            $script_lock->lock(static::SCRIPT_NAME_REFRESH_MATERIALIZED_VIEW);
-        } catch (Exception $exception) {
-            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
-            exit();
-        }
-
         $f3->get('DB')->exec($sql);
-        $script_lock->unlock(static::SCRIPT_NAME_REFRESH_MATERIALIZED_VIEW);
+        $this->end();
     }
 }

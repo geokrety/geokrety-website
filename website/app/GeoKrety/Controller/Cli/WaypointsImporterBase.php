@@ -2,46 +2,24 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
-use DateTime;
 use Exception;
+use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\CronError;
-use GeoKrety\Model\Scripts;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\File;
 use GeoKrety\Service\HTMLPurifier;
-use function pcntl_async_signals;
-use function pcntl_signal;
 use SimpleXMLElement;
 
 abstract class WaypointsImporterBase {
-    protected DateTime $start_datetime;
+    use Script;
     protected \HTMLPurifier $purifier;
     protected bool $has_error = false;
     protected ?string $error = null;
-    protected bool $_skip_saving_final_last_update = false;
-    /**
-     * @var array|array[]|mixed|null
-     */
-    protected $db;
 
     public function __construct() {
-        $this->start_datetime = new DateTime();
+        $this->initScript();
         $this->purifier = HTMLPurifier::getPurifier();
-        $this->db = Base::instance()->get('DB');
-
-        // Disable database log profiler - it explode memory in big imports
-        Base::instance()->get('DB')->log(false);
-        $this->trap_sigint();
-    }
-
-    /**
-     * Enable signal trapping.
-     */
-    private function trap_sigint() {
-        pcntl_async_signals(true);
-        pcntl_signal(SIGINT, [$this, 'shutdown']);       // Catch SIGINT, run shutdown()
     }
 
     /**
@@ -50,7 +28,7 @@ abstract class WaypointsImporterBase {
      * @throws Exception
      */
     public function run() {
-        $this->start();
+        $this->start($this->class_name.'::'.__FUNCTION__);
         try {
             $this->process();
         } catch (Exception $exception) {
@@ -66,49 +44,11 @@ abstract class WaypointsImporterBase {
     }
 
     /**
-     * Start import functions.
-     */
-    protected function start() {
-        $this->lock();
-        $this->db->begin();
-        echo sprintf("* \e[0;32mStarting %s Waypoint synchronization at %s\e[0m", static::SCRIPT_CODE, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL;
-    }
-
-    /**
-     * Lock the script usage. Prevent running multiple times.
-     */
-    private function lock() {
-        $script_lock = new Scripts();
-        $script_lock->load(['name = ?', static::SCRIPT_NAME]);
-        try {
-            $script_lock->lock(static::SCRIPT_NAME);
-        } catch (Exception $exception) {
-            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
-            exit();
-        }
-    }
-
-    /**
      * The real work process.
      *
      * @throws Exception
      */
     abstract protected function process();
-
-    /**
-     * Process end actions.
-     */
-    protected function end() {
-        if ($this->db->inTransaction()) {
-            $this->db->commit();
-        }
-
-        if (!$this->_skip_saving_final_last_update) {
-            $this->save_last_update();
-        }
-        $this->unlock();
-        echo sprintf("* \e[0;32mEnd Waypoint synchronization: %s\e[0m", date('YmdHis')).PHP_EOL;
-    }
 
     /**
      * Store last script update.
@@ -139,25 +79,6 @@ abstract class WaypointsImporterBase {
         }
         $okapiSync->save();
         $this->error = null;
-    }
-
-    /**
-     * Unlock the script.
-     */
-    private function unlock() {
-        $script_lock = new Scripts();
-        $script_lock->load(['name = ?', static::SCRIPT_NAME]);
-        $script_lock->unlock(static::SCRIPT_NAME);
-    }
-
-    /**
-     * Callback used on signal trap.
-     */
-    public function shutdown() {
-        $this->db->rollback();
-        $this->unlock();
-        echo PHP_EOL.'Exiting…'.PHP_EOL;
-        exit();
     }
 
     /**
@@ -198,7 +119,7 @@ abstract class WaypointsImporterBase {
         if (is_null($text)) {
             return null;
         }
-        // TODO
+
         return trim(html_entity_decode($this->purifier->purify($text)));
     }
 

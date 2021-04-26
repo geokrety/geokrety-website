@@ -10,7 +10,7 @@ class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
     const WPG_API_ENDPOINT = 'http://wpg.alleycat.pl/allwps.php';
 
     const SCRIPT_CODE = 'WPG';
-    const SCRIPT_NAME = 'waypoint_importer_wpg';
+    protected string $class_name = __CLASS__;
 
     /**
      * @throws Exception

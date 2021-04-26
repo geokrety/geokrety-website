@@ -2,21 +2,23 @@
 
 namespace GeoKrety\Controller\Cli;
 
+use GeoKrety\Model\Base;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Picture;
 use GeoKrety\PictureType;
 
 class PicturesRecountGeokrety extends BaseCleaner {
-    private $pictureModel;
-    private $status;
-    private $currentGkid;
+    private Picture $pictureModel;
+    private string $status;
+    private string $currentGkid;
+    protected string $class_name = __CLASS__;
 
     public function __construct() {
         parent::__construct();
         $this->pictureModel = new Picture();
     }
 
-    protected function getModel(): \GeoKrety\Model\Base {
+    protected function getModel(): Base {
         return new Geokret();
     }
 
@@ -28,19 +30,15 @@ class PicturesRecountGeokrety extends BaseCleaner {
         return Geokret::gkid2id($f3->get('PARAMS.gkid'));
     }
 
-    protected function getScriptName(): string {
-        return 'pictures_recount_geokrety';
-    }
-
-    protected function filterHook() {
+    protected function filterHook(): array {
         return [];
     }
 
-    protected function orderHook() {
+    protected function orderHook(): array {
         return ['order' => 'created_on_datetime ASC'];
     }
 
-    protected function process(&$object): void {
+    protected function process($object): void {
         $picturesCount = $this->pictureModel->count(['geokret = ? AND type = ? AND uploaded_on_datetime != ?', $object->id, PictureType::PICTURE_GEOKRET_AVATAR, null]);
         $picturesCountOld = $this->pictureModel->pictures_count;
         $this->currentGkid = $object->gkid;
@@ -50,15 +48,15 @@ class PicturesRecountGeokrety extends BaseCleaner {
         $changed = $picturesCountOld === $picturesCount;
         $this->status = ($changed ? '👍' : '👌');
 
-        $this->processResult($object->id, $changed);
+        $this->processResult($changed);
         $this->print();
     }
 
     protected function print(): void {
-        $this->consoleWriter->print([$this->currentGkid, $this->percentProcessed, $this->counter, $this->total, $this->status]);
+        $this->console_writer->print([$this->currentGkid, $this->percentProcessed, $this->counter, $this->total, $this->status]);
     }
 
-    protected function getConsoleWriterPattern() {
+    protected function getConsoleWriterPattern(): string {
         return 'Re-counting GeoKrety pictures: %s %6.2f%% (%d/%d) %s';
     }
 }

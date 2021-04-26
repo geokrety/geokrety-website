@@ -6,7 +6,6 @@ use Exception;
 use GeoKrety\Email\CronError;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
-use GeoKrety\Service\ConsoleWriter;
 use GeoKrety\Service\File;
 
 class WaypointsImporterOKAPI extends WaypointsImporterBase {
@@ -14,7 +13,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
     const OKAPI_FULL_DUMP_ENDPOINT = '/okapi/services/replicate/fulldump';
 
     const SCRIPT_CODE = 'OKAPI';
-    const SCRIPT_NAME = 'waypoint_importer_okapi';
+    protected string $class_name = __CLASS__;
 
     public int $nTotal = 0;
     public int $nUpdated = 0;
@@ -22,12 +21,11 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
     public int $nSkipped = 0;
     public int $nError = 0;
     protected bool $_skip_saving_final_last_update = true;
-    private ConsoleWriter $console_writer;
     private string $mPart = 'n/a';
     private array $failingPartners = [];
 
     public function process() {
-        $this->console_writer = new ConsoleWriter('Importing %7s: %6.2f%% (%s/%d) - U:%d D:%d S:%d E:%d');
+        $this->console_writer->setPattern('Importing %7s: %6.2f%% (%s/%d) - U:%d D:%d S:%d E:%d');
         $this->db->commit(); // Terminate "general" transaction
         $this->has_error = false;
         foreach (GK_OKAPI_PARTNERS as $okapi => $params) {
@@ -122,6 +120,8 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
      *
      * @param string $okapi   Okapi service name
      * @param array  $changes The changes to be processed
+     *
+     * @throws \Exception
      */
     private function perform_incremental_update(string $okapi, array $changes) {
         $this->nTotal += sizeof($changes);
@@ -133,16 +133,15 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             }
             $id = $this->string_cleaner($change->object_key->code);
 
+            $wpt = new WaypointOC();
             if ($change->change_type == 'delete') {
                 //delete from DB
-                $wpt = new WaypointOC();
                 $wpt->erase(['waypoint = ?', $id]);
                 ++$this->nDeleted;
                 $this->print_stats();
                 continue;
             }
 
-            $wpt = new WaypointOC();
             $wpt->load(['waypoint = ?', $id]);
             $wpt->waypoint = $id;
             $wpt->provider = $okapi;

@@ -2,9 +2,12 @@
 
 namespace GeoKrety\Controller\Cli;
 
+use Base;
 use GeoKrety\Model\User;
 
 class UserBanner extends BaseCleaner {
+    protected string $class_name = __CLASS__;
+
     protected function getModel(): \GeoKrety\Model\Base {
         return new User();
     }
@@ -13,33 +16,29 @@ class UserBanner extends BaseCleaner {
         return 'Users';
     }
 
-    protected function getParamId(\Base $f3): int {
+    protected function getParamId(Base $f3): int {
         return $f3->get('PARAMS.userid');
     }
 
-    protected function getScriptName(): string {
-        return 'user_banners_generator';
-    }
-
-    protected function filterHook() {
+    protected function filterHook(): array {
         return [];
     }
 
-    protected function orderHook() {
+    protected function orderHook(): array {
         return ['order' => 'joined_on_datetime ASC'];
     }
 
-    protected function process(&$object): void {
+    protected function process($object): void {
         \GeoKrety\Service\UserBanner::generate($object);
-        $this->processResult($object->id, true);
+        $this->processResult(true);
         $this->print();
     }
 
     protected function print(): void {
-        $this->consoleWriter->print([$this->percentProcessed, $this->counter, $this->total]);
+        $this->console_writer->print([$this->percentProcessed, $this->counter, $this->total]);
     }
 
-    protected function getConsoleWriterPattern() {
+    protected function getConsoleWriterPattern(): string {
         return 'Generating users banners: %6.2f%% (%d/%d)';
     }
 }

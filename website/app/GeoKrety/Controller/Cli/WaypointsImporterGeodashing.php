@@ -13,10 +13,10 @@ class WaypointsImporterGeodashing extends WaypointsImporterBase {
     const GD_CACHE_DETAIL_URL = 'http://geodashing.gpsgames.org/cgi-bin/dp.pl?dp=%s';
 
     const SCRIPT_CODE = 'GEODASHING';
-    const SCRIPT_NAME = 'waypoint_importer_geodashing';
+    protected string $class_name = __CLASS__;
 
     public function process() {
-        echo sprintf("*** \e[0;33mRunning full import\e[0m").PHP_EOL;
+        echo "*** \e[0;33mRunning full import\e[0m".PHP_EOL;
         ob_flush();
 
         $tmp_file = tmpfile();
