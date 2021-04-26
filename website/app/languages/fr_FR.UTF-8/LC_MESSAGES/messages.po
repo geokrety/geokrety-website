@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-26 19:38+0000\n"
-"PO-Revision-Date: 2021-04-26 20:01\n"
+"PO-Revision-Date: 2021-04-26 20:11\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -442,7 +442,7 @@ msgstr "Nous aimerions vérifier que votre adresse mail est toujours valide."
 
 #: website/app/GeoKrety/Email/EmailChange.php:34
 msgid "An email has been sent to your registered address, please click the included link."
-msgstr ""
+msgstr "Un e-mail a été envoyé à l'adresse e-mail enregistrée dans votre compte, veuillez cliquer sur le lien qu'il contient."
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
 #: website/app/GeoKrety/Email/EmailChange.php:53
@@ -464,11 +464,11 @@ msgstr "Adresse e-mail restaurée"
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:21
 msgid "Please click the included link to confirm it's validity."
-msgstr ""
+msgstr "Veuillez cliquer sur le lien inclus pour confirmer sa validité."
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:27
 msgid "Account revalidation"
-msgstr ""
+msgstr "Revalidation du compte"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -907,27 +907,27 @@ msgstr "Votre mot de passe a été modifié avec succès."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
 msgid "Account has been deleted"
-msgstr ""
+msgstr "Le compte a été supprimé"
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
 msgid "Your account is now deleted."
-msgstr ""
+msgstr "Votre compte est maintenant supprimé."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
 msgid "The account you created %1 has never been activated."
-msgstr ""
+msgstr "Le compte %1 que vous avez créé n'a jamais été activé."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+msgstr "Notre politique est de supprimer les comptes non activés après %1 jours."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
 msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+msgstr "Nous sommes désolés de vous informer que votre compte a été définitivement effacé."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+msgstr "Le nom d'utilisateur que vous avez choisi lors de votre inscription est maintenant libéré et peut être librement réutilisé par quelqu'un d'autre."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
 #: website/app-templates/smarty/emails/account-activation.tpl:19
@@ -988,11 +988,11 @@ msgstr "Ne rien changer !"
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:4
 msgid "Some accounts will be deleted."
-msgstr ""
+msgstr "Certains comptes seront supprimés."
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:7
 msgid " delay=GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY}%1 account are still not activated after %2 days. They will now be deleted."
-msgstr ""
+msgstr "Le compte %1 n'a toujours pas été activé après %2 jours. Il va maintenant être supprimé."
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
@@ -1078,23 +1078,23 @@ msgstr "Vous recevez ce courriel car vous avez demandé un changement d'adresse 
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
 msgid "Account not yet active"
-msgstr ""
+msgstr "Ce compte n'est pas encore actif"
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
 msgid "Your account is about to be deleted."
-msgstr ""
+msgstr "Votre compte va être supprimé"
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
 msgid "The account you created %1 has not yet been activated."
-msgstr ""
+msgstr "Le compte %1 que vous avez créé n'a pas encore été activé."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
 msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
-msgstr ""
+msgstr "Si vous souhaitez conserver ce compte, vous devez le valider en cliquant sur le lien ci-dessous."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
 msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
+msgstr "Les comptes non activés sont automatiquement supprimés après %1 jours."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
@@ -1210,19 +1210,19 @@ msgstr "Derniers commentaires de déplacement"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
 msgid "Is this address still valid?"
-msgstr ""
+msgstr "Cette adresse est-elle toujours valide ?"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
 msgid "This is important in case of password loss."
-msgstr ""
+msgstr "Ceci est important en cas de perte de mot de passe."
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
 msgid "Validate your email address"
-msgstr ""
+msgstr "Validation de votre adresse e-mail"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr ""
+msgstr "Vous recevez cet e-mail parce que nous devons vérifier que votre adresse e-mail enregistrée sur notre site Web est toujours valide."
 
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:15
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
@@ -3031,7 +3031,7 @@ msgstr "Statut : prêt à la recherche"
 
 #: website/app-templates/smarty/pages/email_revalidate.tpl:10
 msgid "Email address revalidation."
-msgstr ""
+msgstr "Revalidation de l'adresse e-mail."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
