@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 17:41+0000\n"
-"PO-Revision-Date: 2021-04-19 13:42\n"
+"POT-Creation-Date: 2021-04-26 19:38+0000\n"
+"PO-Revision-Date: 2021-04-26 19:44\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -23,335 +23,344 @@ msgstr ""
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Várias contas compartilham o mesmo endereço de e-mail. Por favor <a href=\"%s\">entre em contato conosco</a>."
 
-#: website/app/GeoKrety/Controller/BaseExportXML.php:52
+#: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
 msgstr "O parâmetro \"userid\" deve ser um número válido."
 
-#: website/app/GeoKrety/Controller/BaseExportXML.php:75
+#: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr "O parâmetro \"gkid\" deve ser um número válido ou GKid (GKXXXXX)."
 
-#: website/app/GeoKrety/Controller/Base.php:69
-#: website/app/GeoKrety/Controller/MoveCreate.php:170
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:34
-#: website/app/GeoKrety/Controller/UserContact.php:71
+#: website/app/GeoKrety/Controller/Pages/Base.php:69
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:34
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:71
 msgid "reCaptcha failed!"
 msgstr "Falhou o reCaptcha!"
 
-#: website/app/GeoKrety/Controller/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:59
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:66
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:59
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:66
 msgid "Sorry but this mail address is already in use."
 msgstr "Este endereço de email já está em uso."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:24
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
 msgid "Sorry, the provided owner code and tracking code doesn't match."
 msgstr "Desculpe, mas os códigos de proprietário e de rastreamento fornecidos não correspondem."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:30
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
 msgid "You are already the owner."
 msgstr "Já é o proprietário."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:36
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:36
 msgid "Sorry, this owner code has already been used."
 msgstr "Desculpe, este código de proprietário já foi usado."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:68
 msgid "Something went wrong while registering the adoption."
 msgstr "Ocorreu um erro ao registar a adoção."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:72
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
 msgstr "Parabéns! Agora é o proprietário de %s."
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:39
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:39
 msgid "Born here"
 msgstr "Nascido aqui"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:45
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:45
 msgid "Failed to create the GeoKret initial move."
 msgstr "Falha ao criar o movimento inicial do GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:55
-#: website/app/GeoKrety/Controller/GeokretEdit.php:23
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:55
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:23
 msgid "Failed to create the GeoKret."
 msgstr "Falha ao criar o GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:57
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:57
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "O seu GeoKret foi criado. Pode agora querer <a href=\"%s\">imprimir-lhe</a> uma ótima etiqueta…"
 
-#: website/app/GeoKrety/Controller/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
 msgstr "O seu GeoKret foi atualizado."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:22
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
 msgstr "Desculpe, não tem permissão para imprimir uma etiqueta para este GeoKret porque nunca o descobriu!"
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
 msgid "This label template does not exists."
 msgstr "Este modelo de etiqueta não existe."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:49
 msgid "Something went wrong while saving the GeoKret preferred label template."
 msgstr "Algo deu errado ao guardar o modelo de etiqueta preferencial GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:64
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:64
 msgid "Some chosen languages are invalid."
 msgstr "Alguns idiomas escolhidos são inválidos."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:82
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:82
 msgid "Please select an export type."
 msgstr "Por favor, seleccione um tipo de exportação."
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:28
 msgid "This GeoKret is already archived."
 msgstr "Este GeoKret já está arquivado."
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:43
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:43
 msgid "Archiving GeoKret"
 msgstr "A arquivar GeoKret"
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:49
 msgid "Failed to archive the GeoKret."
 msgstr "Falha ao arquivar o GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
 msgstr "Deve ser o dono do GeoKret para gerar novo código de proprietário."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:28
 msgid "An Owner Code is already available for this GeoKret."
 msgstr "Já está disponível um Código de Proprietário para este GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:38
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:38
 msgid "Failed to create a new Owner Code."
 msgstr "Falha ao criar um novo Código de Proprietário."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:41
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:41
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
 msgstr "O código de proprietário (%s) foi gerado. Dê-o juntamente com o Código de Rastreamento (%s) a alguém para que ele possa adoptar o seu GeoKret."
 
-#: website/app/GeoKrety/Controller/HelpApi.php:50
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
 msgstr "secid errado"
 
-#: website/app/GeoKrety/Controller/HelpApi.php:51
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:51
 msgid "Wrong date or time"
 msgstr "Data ou hora errada"
 
-#: website/app/GeoKrety/Controller/LegacyRoutes.php:206
+#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
 msgstr "Deve fornecer um Ponto Adicional"
 
-#: website/app/GeoKrety/Controller/Login.php:40
-#: website/app/GeoKrety/Controller/Login.php:121
+#: website/app/GeoKrety/Controller/Pages/Login.php:40
+#: website/app/GeoKrety/Controller/Pages/Login.php:129
 msgid "Username and password doesn't match."
 msgstr "O nome de utilizador e a senha não correspondem."
 
-#: website/app/GeoKrety/Controller/Login.php:69
+#: website/app/GeoKrety/Controller/Pages/Login.php:69
 msgid "Welcome on board!"
 msgstr "Bem-vindo a bordo!"
 
-#: website/app/GeoKrety/Controller/Login.php:111
+#: website/app/GeoKrety/Controller/Pages/Login.php:114
 msgid "Please provide 'login' and 'password' parameters."
 msgstr "Por favor, forneça os parâmetros 'login' e 'senha'."
 
-#: website/app/GeoKrety/Controller/Login.php:133
-#: website/app/GeoKrety/Controller/Login.php:139
+#: website/app/GeoKrety/Controller/Pages/Login.php:122
+msgid "Your account is not valid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/Login.php:140
+#: website/app/GeoKrety/Controller/Pages/Login.php:146
 msgid "Invalid \"secid\""
 msgstr "\"Secid\" inválido"
 
-#: website/app/GeoKrety/Controller/Login.php:187
+#: website/app/GeoKrety/Controller/Pages/Login.php:195
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Sua conta já está vinculada com %s"
 
-#: website/app/GeoKrety/Controller/Login.php:192
+#: website/app/GeoKrety/Controller/Pages/Login.php:200
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Esta conta %s já está vinculada a outra conta GeoKrety."
 
-#: website/app/GeoKrety/Controller/Login.php:207
+#: website/app/GeoKrety/Controller/Pages/Login.php:215
 msgid "Auth request was canceled."
 msgstr "Solicitação de autenticação cancelada."
 
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:50
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:72
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:50
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:72
 msgid "Comment saved."
 msgstr "Comentário guardado."
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:26
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:26
 msgid "Comment removed."
 msgstr "Comentário removido."
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:28
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:28
 msgid "Failed to delete comment."
 msgstr "Falha ao apagar comentário."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:108
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:108
 msgid "The date time could not be parsed."
 msgstr "A data não pôde ser analisada."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:220
-#: website/app/GeoKrety/Controller/MoveCreateXML.php:57
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:220
+#: website/app/GeoKrety/Controller/Pages/MoveCreateXML.php:57
 msgid "Failed to save move."
 msgstr "Falha ao guardar o movimento."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:223
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:223
 msgid "Your move has been saved."
 msgstr "O seu movimento foi guardado."
 
-#: website/app/GeoKrety/Controller/MoveDelete.php:24
+#: website/app/GeoKrety/Controller/Pages/MoveDelete.php:24
 msgid "Move removed."
 msgstr "Movimento removido."
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:37
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:37
 msgid "Failed to record read datetime."
 msgstr "Falha ao registar a data e hora de leitura."
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:64
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:64
 msgid "Error while saving comment."
 msgstr "Erro ao guardar comentário."
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:66
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:66
 msgid "Your comment has been saved."
 msgstr "O seu comentário foi guardado."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:27
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:27
 msgid "Failed to update your subscriptions preferences."
 msgstr "Falha ao atualizar as suas preferências de subscrições."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:32
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:32
 msgid "You will now receive updates on new comments."
 msgstr "Irá agora receber actualizações sobre novos comentários."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:35
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:35
 msgid "You will not receive updates anymore."
 msgstr "Já não irá receber actualizações."
 
-#: website/app/GeoKrety/Controller/OAuthDetach.php:36
+#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:36
 #, php-format
 msgid "Something went wrong while detaching from your %s account. Please contact us."
 msgstr "Algo deu errado ao desconectar da sua conta %s . Por favor, entre em contato conosco."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:20
-#: website/app/GeoKrety/Controller/UserEmailChange.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:26
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:26
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:29
+#: website/app/GeoKrety/Controller/Pages/RegistrationActivate.php:22
+#: website/app/GeoKrety/Controller/Pages/UserEmailChange.php:19
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:26
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:23
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:28
 msgid "Sorry this token is not valid, already used or expired."
 msgstr "Este token não é válido, já foi usado ou expirou."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:60
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:44
 msgid "New passwords doesn't match."
 msgstr "As novas palavras-passe não coincidem."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:87
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:87
 msgid "Unexpected error occurred."
 msgstr "Ocorreu um erro inesperado."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:92
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:55
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:92
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:55
 msgid "Your password has been changed."
 msgstr "A sua palavra-passe foi alterada."
 
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:44
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:44
 msgid "Sorry no account using that email address."
 msgstr "Não há nenhuma conta a usar esse endereço de email."
 
-#: website/app/GeoKrety/Controller/PictureEdit.php:38
+#: website/app/GeoKrety/Controller/Pages/PictureEdit.php:38
 msgid "Picture caption saved."
 msgstr "Legenda da imagem guardada."
 
-#: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:35
+#: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:35
 msgid "Language preferences updated."
 msgstr "Preferências de idioma atualizadas."
 
-#: website/app/GeoKrety/Controller/UserContactByGeokret.php:24
+#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:24
 #, php-format
 msgid "GeoKret: %s (%s)"
 msgstr "GeoKret: %s (%s)"
 
-#: website/app/GeoKrety/Controller/UserContact.php:81
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:81
 msgid "Failed to save the mail."
 msgstr "Falha ao guardar o email."
 
-#: website/app/GeoKrety/Controller/UserContact.php:89
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:89
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "A sua mensagem para %s foi enviada."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:45
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:45
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:45
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:42
 msgid "Unexpected value."
 msgstr "Valor inesperado."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:61
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:59
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:61
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:56
 msgid "Something went wrong, operation aborted."
 msgstr "Alguma coisa não correu bem, operação abortada."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:71
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:71
 msgid "Perfect! Enjoy your new email address."
 msgstr "Perfeito! Aproveite o seu novo endereço de e-mail."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:75
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:75
 msgid "Your email address has been reverted."
 msgstr "O seu endereço de e-mail foi reposto para o anterior."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:70
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:67
 msgid "Your email address has been validated."
 msgstr "O seu endereço de correio eletrónico foi validado."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:79
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:76
 msgid "No change has been processed. This token is now revoked."
 msgstr "Não foi processada nenhuma alteração. Este token está agora revogado."
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:26
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:25
+msgid "You have successfully validated your email address."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:26
 msgid "Failed to refresh your secid."
 msgstr "Falha ao atualizar o seu secid."
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:29
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:29
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "O seu secid foi actualizado. Não se esqueça de re-autenticar outras aplicações ligadas à sua conta GeoKrety."
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:23
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:23
 msgid "Failed to save your preferred user banner template."
 msgstr "Falha ao guardar o seu modelo preferido de banner de utilizador."
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:26
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:26
 msgid "Your user banner template preference has been successfully saved."
 msgstr "A sua preferência de modelo de banner foi guardada com sucesso."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:37
 msgid "Your email preferences were saved."
 msgstr "As suas preferências foram guardadas."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:51
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:51
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "O email de confirmação foi novamente enviado para o seu novo endereço. Tem que clicar no link incluído no email para confirmar a alteração do seu endereço de email. O link de confirmação expira em %s."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:79
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:79
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "O email de confirmação foi enviado para o seu novo endereço. Tem que clicar no link incluído no email para confirmar a alteração do seu endereço de email. O link de confirmação expira em %s."
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:24
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:24
 msgid "Failed to save your home coordinates."
 msgstr "Falha ao guardas as suas coordenadas iniciais."
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:27
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:27
 msgid "Your home coordinates were successfully saved."
 msgstr "As suas coordenadas iniciais foram guardadas com sucesso."
 
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:37
 msgid "Your old password is invalid."
 msgstr "A sua palavra-chave antiga é inválida."
 
@@ -367,18 +376,20 @@ msgid "Waypoint length is invalid. It should be between %d and %d characters lon
 msgstr "O tamanho do waypoint é inválido. Deve estar entre %d e%d caracteres."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:16
+#: website/app/GeoKrety/Email/EmailRevalidate.php:20
 msgid "A confirmation email has been sent to your address."
 msgstr "Foi enviado um e-mail de confirmação para o seu endereço."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
-#: website/app/GeoKrety/Email/AccountActivation.php:47
+#: website/app/GeoKrety/Email/AccountActivation.php:55
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
 msgstr "<strong>Deve clicar na ligação fornecida no e-mail para activar a sua conta, antes de a poder usar.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
-#: website/app/GeoKrety/Email/AccountActivation.php:48
+#: website/app/GeoKrety/Email/AccountActivation.php:56
+#: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
 msgstr "A ligação de confirmação expira em %s."
@@ -393,19 +404,19 @@ msgid "Your account seems to already exists."
 msgstr "Parece que a sua conta já existe."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
-#: website/app/GeoKrety/Email/AccountActivation.php:46
+#: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "The confirmation email was sent again to your mail address."
 msgstr "O e-mail de confirmação foi enviado novamente para o seu endereço."
 
-#: website/app/GeoKrety/Email/AccountActivation.php:45
+#: website/app/GeoKrety/Email/AccountActivation.php:53
 msgid "<strong>Your account is not yet active.</strong>"
 msgstr "<strong>A sua conta ainda não está activa.</strong>"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:54
+#: website/app/GeoKrety/Email/AccountActivation.php:61
 msgid "Account activated"
 msgstr "Conta activada"
 
-#: website/app/GeoKrety/Email/BasePHPMailer.php:67
+#: website/app/GeoKrety/Email/BasePHPMailer.php:81
 msgid "An error occurred while sending mail."
 msgstr "Ocorreu um erro ao enviar e-mail."
 
@@ -414,22 +425,50 @@ msgstr "Ocorreu um erro ao enviar e-mail."
 msgid "Watchlist for %s"
 msgstr "Lista de observação para %s"
 
-#: website/app/GeoKrety/Email/EmailChange.php:26
+#: website/app/GeoKrety/Email/EmailChange.php:28
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
+msgid "Revalidate your email address"
+msgstr ""
+
+#: website/app/GeoKrety/Email/EmailChange.php:32
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
+msgid "Your account has been imported from GKv1."
+msgstr ""
+
+#: website/app/GeoKrety/Email/EmailChange.php:33
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
+msgid "We would like to verify that your mail address is still valid."
+msgstr ""
+
 #: website/app/GeoKrety/Email/EmailChange.php:34
+msgid "An email has been sent to your registered address, please click the included link."
+msgstr ""
+
+#: website/app/GeoKrety/Email/EmailChange.php:45
+#: website/app/GeoKrety/Email/EmailChange.php:53
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
 #: website/app-templates/smarty/pages/email_change.tpl:3
+#: website/app-templates/smarty/pages/email_revalidate.tpl:3
 msgid "Changing your email address"
 msgstr "A alterar o seu endereço de email"
 
-#: website/app/GeoKrety/Email/EmailChange.php:52
-#: website/app/GeoKrety/Email/EmailChange.php:60
+#: website/app/GeoKrety/Email/EmailChange.php:71
+#: website/app/GeoKrety/Email/EmailChange.php:79
 msgid "Email address changed"
 msgstr "Endereço de email alterado"
 
-#: website/app/GeoKrety/Email/EmailChange.php:66
+#: website/app/GeoKrety/Email/EmailChange.php:85
 msgid "Email address reverted"
 msgstr "Endereço de email reposto"
+
+#: website/app/GeoKrety/Email/EmailRevalidate.php:21
+msgid "Please click the included link to confirm it's validity."
+msgstr ""
+
+#: website/app/GeoKrety/Email/EmailRevalidate.php:27
+msgid "Account revalidation"
+msgstr ""
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -502,10 +541,6 @@ msgstr "mergulho"
 #: website/app-templates/smarty/pages/home.tpl:78
 msgid "Born"
 msgstr "Nascido"
-
-#: website/app/GeoKrety/Model/User.php:317
-msgid "An error occurred while sending the activation mail."
-msgstr "Ocorreu um erro ao enviar o e-mail de activação."
 
 #: website/app/GeoKrety/Model/UserSocialAuth.php:45
 #, php-format
@@ -799,6 +834,8 @@ msgstr "Reverter esta mudança!"
 #: website/app-templates/smarty/emails/password-recovery.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
 #: website/app-templates/smarty/emails/account-activation.tpl:13
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
 msgid "This link expires %1."
 msgstr "Este link expira em %1."
 
@@ -826,15 +863,15 @@ msgstr "Você está recebendo este e-mail porque alterou seu e-mail em nosso sit
 msgid "Open source item tracking for all geocaching platforms"
 msgstr "Rastreamento de item de código aberto para todas as plataformas de geocaching"
 
-#: website/app-templates/smarty/emails/base.tpl:29
+#: website/app-templates/smarty/emails/base.tpl:30
 msgid "Hi %1,"
 msgstr "Olá %1,"
 
-#: website/app-templates/smarty/emails/base.tpl:36
+#: website/app-templates/smarty/emails/base.tpl:37
 msgid "Sincerely,<br>The GeoKrety Team"
 msgstr "Atenciosamente,<br>A equipe GeoKrety"
 
-#: website/app-templates/smarty/emails/base.tpl:45
+#: website/app-templates/smarty/emails/base.tpl:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
 msgstr "Se nunca criou uma conta em GeoKrety.org, por favor <a href=\"mailto:%1?subject=%2\">entre em contacto connosco</a>."
 
@@ -867,6 +904,37 @@ msgstr "A sua conta em GeoKrety.org está agora activa."
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
 msgstr "A sua palavra-passe foi alterada com sucesso."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
+msgid "Account has been deleted"
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
+msgid "Your account is now deleted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
+msgid "The account you created %1 has never been activated."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
+msgid "Our policy is to delete unactivated accounts after %1 days."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
+msgid "We are sorry to inform you that your account has been permanently erased."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
+msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
+#: website/app-templates/smarty/emails/account-activation.tpl:19
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
+#: website/app-templates/smarty/emails/account-activated.tpl:19
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "Você está recebendo este e-mail porque se cadastrou em nosso site."
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
@@ -918,6 +986,14 @@ msgstr "Alguém, esperamos que você, solicitou uma mudança no seu endereço de
 msgid "Do not change!"
 msgstr "Não mude!"
 
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:4
+msgid "Some accounts will be deleted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:7
+msgid " delay=GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY}%1 account are still not activated after %2 days. They will now be deleted."
+msgstr ""
+
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
 msgstr "Um script está bloqueado"
@@ -967,17 +1043,14 @@ msgid "You have just registered on GeoKrety.org. <strong>You still have to activ
 msgstr "Você acabou de se registrar no GeoKrety.org. <strong>Você ainda precisa ativar sua conta antes de poder usá-la.</strong> Por favor, siga o link abaixo."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:10
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
 msgid "Activate your account"
 msgstr "Ativar a sua conta"
 
 #: website/app-templates/smarty/emails/account-activation.tpl:15
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:19
 msgid "If your account is not activated within that time, then it will be automatically deleted."
 msgstr "Se sua conta não for ativada dentro desse tempo, então ela será automaticamente excluída."
-
-#: website/app-templates/smarty/emails/account-activation.tpl:19
-#: website/app-templates/smarty/emails/account-activated.tpl:19
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "Você está recebendo este e-mail porque se cadastrou em nosso site."
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:4
 msgid "An exception occurred in a cron job"
@@ -1002,6 +1075,26 @@ msgstr "Se você não solicitou isso e não sabe o que é GeoKrety, por favor, i
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
 msgid "You're getting this email because you've requested an email address change on our website."
 msgstr "Você está recebendo este e-mail porque solicitou uma alteração de endereço de e-mail em nosso site."
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
+msgid "Account not yet active"
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
+msgid "Your account is about to be deleted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
+msgid "The account you created %1 has not yet been activated."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
+msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
+msgid "Unactivated accounts are automatically deleted after %1 days."
+msgstr ""
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
@@ -1114,6 +1207,22 @@ msgstr "Distância"
 #: website/app-templates/smarty/emails/daily-mail.tpl:165
 msgid "Latest move comments"
 msgstr "Comentários mais recentes dos movimentos"
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
+msgid "Is this address still valid?"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
+msgid "This is important in case of password loss."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
+msgid "Validate your email address"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
+msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+msgstr ""
 
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:15
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
@@ -1671,6 +1780,8 @@ msgstr "Voltar à página GeoKret"
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
 #: website/app-templates/smarty/pages/email_change.tpl:33
 #: website/app-templates/smarty/pages/email_change.tpl:37
+#: website/app-templates/smarty/pages/email_revalidate.tpl:33
+#: website/app-templates/smarty/pages/email_revalidate.tpl:37
 #: website/app-templates/smarty/pages/email_change_token.tpl:32
 #: website/app-templates/smarty/pages/email_change_token.tpl:36
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:65
@@ -2651,12 +2762,14 @@ msgstr "Você confirma a alteração do seu endereço de e-mail?"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:31
 #: website/app-templates/smarty/pages/email_change.tpl:32
+#: website/app-templates/smarty/pages/email_revalidate.tpl:32
 #: website/app-templates/smarty/pages/email_change_token.tpl:31
 msgid "Back to your profile"
 msgstr "Voltar ao seu perfil"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:35
 #: website/app-templates/smarty/pages/email_change.tpl:36
+#: website/app-templates/smarty/pages/email_revalidate.tpl:36
 #: website/app-templates/smarty/pages/email_change_token.tpl:35
 msgid "Back to homepage"
 msgstr "Voltar à página inicial"
@@ -2750,6 +2863,7 @@ msgstr "N/D"
 
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:18
+#: website/app-templates/smarty/pages/email_revalidate.tpl:18
 msgid "Please enter the verification token received by mail."
 msgstr "Por favor, insira o token de verificação recebido pelo correio."
 
@@ -2757,6 +2871,8 @@ msgstr "Por favor, insira o token de verificação recebido pelo correio."
 #: website/app-templates/smarty/pages/password_change.tpl:29
 #: website/app-templates/smarty/pages/email_change.tpl:23
 #: website/app-templates/smarty/pages/email_change.tpl:25
+#: website/app-templates/smarty/pages/email_revalidate.tpl:23
+#: website/app-templates/smarty/pages/email_revalidate.tpl:25
 msgid "Verification Token"
 msgstr "Token de Verificação"
 
@@ -2795,6 +2911,7 @@ msgid "Changing your email address."
 msgstr "Alterando seu endereço de e-mail."
 
 #: website/app-templates/smarty/pages/email_change.tpl:40
+#: website/app-templates/smarty/pages/email_revalidate.tpl:40
 msgid "Check the token"
 msgstr "Verifique o token"
 
@@ -2911,6 +3028,10 @@ msgstr "GK-Hotéis atuais/Motels"
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
 msgstr "Situação: Preparado para pesquisar"
+
+#: website/app-templates/smarty/pages/email_revalidate.tpl:10
+msgid "Email address revalidation."
+msgstr ""
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
