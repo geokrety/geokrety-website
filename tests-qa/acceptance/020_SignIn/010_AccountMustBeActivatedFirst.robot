@@ -7,15 +7,16 @@ Force Tags      Sign In
 
 *** Test Cases ***
 Create an account
-    [Documentation]         Create an account
+    [Documentation]                     Create an account
     Clear Database
-    Create User             ${USER_1.name}
+    Create User                         ${USER_1.name}
+    Page Should Contain                 You must click on the link provided in the email to activate your account before your can use it.
     Empty Dev Mailbox
     Sign Out Fast
 
 Account not active
     Depends on test                     Create an account
-    [Documentation]         Non activated accounts could not be used to login
+    [Documentation]                     Non activated accounts could not be used to login
     Go To Url                           ${PAGE_HOME_URL}
     Sign In User                        ${USER_1.name}
     Page Should Contain                 Your account is not yet active.

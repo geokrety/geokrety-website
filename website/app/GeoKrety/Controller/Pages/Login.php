@@ -33,7 +33,15 @@ class Login extends Base {
                 Session::setGKTCookie();
             }
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
-                \Base::instance()->reroute('@home', false, true);
+                if (GK_DEVEL) {
+                    $user->resendAccountActivationEmail();
+                    \Base::instance()->reroute('@home');
+                }
+                $user->resendAccountActivationEmail(true);
+                \Base::instance()->reroute('@home', false, false);
+                $f3->abort();
+                $user->resendAccountActivationEmail();
+                exit();
             }
             $this::connectUser($f3, $user, 'password');
         } else {
@@ -76,8 +84,13 @@ class Login extends Base {
             }
             $f3->reroute($url, false, false);
         }
+        if (GK_DEVEL) {
+            $user->resendAccountActivationEmail();
+            \Base::instance()->reroute('@home');
+        }
         $f3->abort();
         $user->resendAccountActivationEmail();
+        exit();
     }
 
     public function loginForm(\Base $f3) {

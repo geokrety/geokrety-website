@@ -67,7 +67,7 @@ class AccountActivation extends BasePHPMailer {
         $this->setFrom(GK_SITE_EMAIL_REGISTRATION, 'GeoKrety');
     }
 
-    private function flashMessage($token) {
+    public function flashMessage($token) {
         Flash::instance()->addMessage(sprintf(
             join(' ', $this->message['msg']),
             Carbon::instance($token->expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])
