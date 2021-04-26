@@ -315,7 +315,10 @@ class User extends Base implements JsonSerializable {
         $smtp->sendActivation($token);
     }
 
-    public function resendAccountActivationEmail(): void {
+    /**
+     * @param false $flash_msg_only get only messages, do not send mail
+     */
+    public function resendAccountActivationEmail($flash_msg_only = false): void {
         if (is_null($this->email)) {
             // skip sending mail
             return;
@@ -327,6 +330,12 @@ class User extends Base implements JsonSerializable {
             $token->set_email($this->get_email());
             $token->save();
             $smtp = new \GeoKrety\Email\EmailRevalidate();
+            if ($flash_msg_only) {
+                $smtp->prepareMessageSendRevalidation();
+                $smtp->flashMessage($token);
+
+                return;
+            }
             $smtp->sendRevalidation($token);
 
             return;
@@ -339,6 +348,12 @@ class User extends Base implements JsonSerializable {
                 $token->save();
             }
             $smtp = new \GeoKrety\Email\AccountActivation();
+            if ($flash_msg_only) {
+                $smtp->prepareMessageActivationAgainOnLogin();
+                $smtp->flashMessage($token);
+
+                return;
+            }
             $smtp->sendActivationAgainOnLogin($token);
 
             return;

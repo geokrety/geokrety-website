@@ -67,14 +67,17 @@ class Login extends Base {
         Session::setGKTCookie();
         LanguageService::changeLanguageTo($user->preferred_language);
         Flash::instance()->addMessage(_('Welcome on board!'), 'success');
+        $user->resendAccountActivationEmail(true);
         if ($redirect) {
             $url = Url::unserializeGoto($user->preferred_language);
             if (is_null($url)) {
                 $ml = \Multilang::instance();
                 $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
             }
-            $f3->reroute($url);
+            $f3->reroute($url, false, false);
         }
+        $f3->abort();
+        $user->resendAccountActivationEmail();
     }
 
     public function loginForm(\Base $f3) {
@@ -124,7 +127,6 @@ class Login extends Base {
             exit();
         }
         echo _('Username and password doesn\'t match.');
-        //$this->loginForm();
     }
 
     /**
@@ -184,7 +186,8 @@ class Login extends Base {
                 $this->current_user->save();
                 $f3->get('DB')->commit();
 
-                $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
+                $this::connectUser($f3, $user, 'oauth');
+                exit();
             }
 
             // This user is already connected to this social auth provider

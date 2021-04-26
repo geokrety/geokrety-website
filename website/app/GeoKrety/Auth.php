@@ -25,8 +25,6 @@ class Auth extends \Auth {
         if ($user->valid()) {
             $hasher = new PasswordHash(GK_PASSWORD_HASH_ROTATION, false);
             if ($hasher->CheckPassword($pw.GK_PASSWORD_HASH.GK_PASSWORD_SEED, (string) $user->password)) {
-                $user->resendAccountActivationEmail();
-
                 return $user;
             }
         }
@@ -43,8 +41,6 @@ class Auth extends \Auth {
         $user = new User();
         $user->load(['_secid_hash = public.digest(?, \'sha256\')', $secid]);
         if ($user->valid()) {
-            $user->resendAccountActivationEmail();
-
             return $user;
         }
 
@@ -74,8 +70,6 @@ class Auth extends \Auth {
         $user->has('social_auth.provider', ['name = ?', $provider]);
         $user->load();
         if ($user->valid()) {
-            $user->resendAccountActivationEmail();
-
             return $user;
         }
 
