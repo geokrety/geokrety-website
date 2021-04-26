@@ -33,7 +33,7 @@ class AccountActivation extends BasePHPMailer {
      */
     public function sendActivationAgain(AccountActivationToken $token) {
         $this->message['status'] = 'danger';
-        $this->message['msg'][] = _('Your account seems to already exists.');
+        $this->message['msg'][] = _('Your account seems to already exist.');
         $this->message['msg'][] = _('The confirmation email was sent again to your mail address.');
         $this->message['msg'][] = _('<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>');
         $this->message['msg'][] = _('The confirmation link expires in %s.');
