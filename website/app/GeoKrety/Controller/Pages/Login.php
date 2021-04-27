@@ -67,7 +67,7 @@ class Login extends Base {
             $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
             $f3->set('SESSION.IS_ADMIN', false);
         }
-
+        Smarty::assign('current_user', $user);
         Event::instance()->emit("user.login.$method", $user);
         if (in_array($method, self::NO_GRAPHIC_LOGIN)) {
             return;
@@ -83,14 +83,13 @@ class Login extends Base {
                 $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
             }
             $f3->reroute($url, false, false);
-        }
-        if (GK_DEVEL) {
             $user->resendAccountActivationEmail();
-            \Base::instance()->reroute('@home');
+            exit();
         }
-        $f3->abort();
+        if (!GK_DEVEL) {
+            $f3->abort();
+        }
         $user->resendAccountActivationEmail();
-        exit();
     }
 
     public function loginForm(\Base $f3) {
@@ -133,6 +132,10 @@ class Login extends Base {
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
                 http_response_code(400); // TODO what is the most logical code ? probably not 400 neither 500
                 echo _('Your account is not valid.');
+                if (!GK_DEVEL) {
+                    $f3->abort();
+                }
+                $user->resendAccountActivationEmail();
                 exit();
             }
             echo $user->secid;

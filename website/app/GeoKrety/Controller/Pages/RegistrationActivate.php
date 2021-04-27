@@ -29,7 +29,6 @@ class RegistrationActivate extends Base {
 
     public function get(\Base $f3) {
         $f3->get('DB')->begin();
-
         $this->token->used = AccountActivationToken::TOKEN_VALIDATED;
         $this->token->touch('used_on_datetime');
         $this->token->validating_ip = \Base::instance()->get('IP');
@@ -45,8 +44,8 @@ class RegistrationActivate extends Base {
         $this->token->save();
         $f3->get('DB')->commit();
 
-        Smarty::render('pages/registration_validated.tpl');
         // Let unit test run smoothly
+        Smarty::render('pages/registration_validated.tpl');
         if (!GK_DEVEL) {
             $f3->abort();
         }

@@ -12,8 +12,8 @@ Suite Setup     Seed
 Define Picture Caption
     Sign In ${USER_1.name} Fast
     Upload user avatar via button           ${PAGE_USER_1_PROFILE_URL}              ${CURDIR}/sample-picture.png
-    Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_PULLER_EDIT_BUTTON}
 
+    Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_PULLER_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Input Text                              ${USER_PROFILE_AVATAR_CAPTION_INPUT}    Bonjour
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
@@ -25,6 +25,7 @@ Define Picture Caption
     Capture Element                         ${USER_PROFILE_FIRST_IMAGE}             name=img1
 
     Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_PULLER_EDIT_BUTTON}
+    Wait Until Modal                        Manage picture
     Scroll Into View                        ${MODAL_DIALOG}
     Wait Until Element Is Visible           ${MODAL_DIALOG}
     Capture Element                         ${MODAL_DIALOG}                         name=img2

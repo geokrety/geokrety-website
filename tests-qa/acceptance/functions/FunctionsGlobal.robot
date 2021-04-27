@@ -306,6 +306,8 @@ Wait Until Modal
     [Arguments]    ${title}
     Wait Until Page Contains Element        ${MODAL_DIALOG}
     Wait Until Page Contains Element        ${MODAL_DIALOG_TITLE}
+    Wait Until Element Is Visible           ${MODAL_DIALOG}
+    Wait Until Element Is Visible           ${MODAL_DIALOG_TITLE}
     # Wait Until Page Contains Element        ${MODAL_DIALOG_SUBMIT_BUTTON}
     # Wait Until Page Contains Element        ${MODAL_DIALOG_DISMISS_BUTTON}
     Element Should Contain                  ${MODAL_DIALOG_TITLE}               ${title}
