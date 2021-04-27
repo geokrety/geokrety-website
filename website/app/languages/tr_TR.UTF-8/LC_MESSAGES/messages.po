@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-26 21:17+0000\n"
-"PO-Revision-Date: 2021-04-27 16:12\n"
+"PO-Revision-Date: 2021-04-27 16:22\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -25,11 +25,11 @@ msgstr "Birden fazla hesap aynı email adresini kullanıyor. Lütfen bizimle <a 
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "\"userid\" parametresi sayı olması gerekiyor."
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "\"gkid\" parametresi geçerli bir numara veya GKid (GKXXXXX) gerekmektedir."
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:69
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
@@ -101,7 +101,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:64
 msgid "Some chosen languages are invalid."
-msgstr ""
+msgstr "Bazı seçilen diller geçersiz."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:82
 msgid "Please select an export type."
@@ -117,7 +117,7 @@ msgstr "GeoKret arşivleniyor"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:49
 msgid "Failed to archive the GeoKret."
-msgstr ""
+msgstr "GeoKret arşivlenemedi."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
@@ -138,7 +138,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
-msgstr ""
+msgstr "Yanlış secid"
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:51
 msgid "Wrong date or time"
@@ -163,22 +163,22 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:135
 msgid "Your account is not valid."
-msgstr ""
+msgstr "Hesabınız geçerli değil."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:153
 #: website/app/GeoKrety/Controller/Pages/Login.php:159
 msgid "Invalid \"secid\""
-msgstr ""
+msgstr "Geçersiz \"secid\""
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:208
 #, php-format
 msgid "Your account is already linked with %s"
-msgstr ""
+msgstr "Bu hesap zaten %s ile bağlı"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:213
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
-msgstr ""
+msgstr "Bu %s hesap zaten başka bir GeoKrety hesabı ile bağlı."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:228
 msgid "Auth request was canceled."
@@ -308,7 +308,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:75
 msgid "Your email address has been reverted."
-msgstr ""
+msgstr "E-posta adresiniz geri döndürüldü."
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:67
 msgid "Your email address has been validated."
@@ -324,11 +324,11 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:26
 msgid "Failed to refresh your secid."
-msgstr ""
+msgstr "secid'niz yenilemedi"
 
 #: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:29
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
-msgstr ""
+msgstr "secid'niz yenilendi. GeoKrety hesabınıza bağlı başka herhangi bir uygulamayı yeniden doğrulamayı unutmayın."
 
 #: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:23
 msgid "Failed to save your preferred user banner template."
@@ -340,17 +340,17 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:37
 msgid "Your email preferences were saved."
-msgstr ""
+msgstr "E-Posta techileri kaydedildi."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:51
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
-msgstr ""
+msgstr "Yeni adresinize bir onay e-postası gönderildi. E-posta adresinizdeki değişiklikliği onaylamak için e-postada verilen bağlantıyı tıklamanız gerekir. Onay bağlantısı %s gün boyunca geçerlidir."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:79
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
-msgstr ""
+msgstr "Yeni adresinize bir onay e-postası gönderildi. E-posta adresinizdeki değişiklikliği onaylamak için e-postada verilen bağlantıyı tıklamanız gerekir. Onay bağlantısı %s gün boyunca geçerlidir."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:24
 msgid "Failed to save your home coordinates."
@@ -481,7 +481,7 @@ msgstr "Şifre sıfırlama isteği"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:19
 msgid "An email containing a validation link has been sent to the provided email address."
-msgstr ""
+msgstr "Doğrulama bağlantısı içeren e-posta verilen e-posta adresine gönderildi."
 
 #: website/app/GeoKrety/Email/PasswordChange.php:25
 msgid "Your password has been changed"
@@ -498,7 +498,7 @@ msgstr "Geleneksel"
 
 #: website/app/GeoKrety/GeokretyType.php:57
 msgid "A book/CD/DVD…"
-msgstr ""
+msgstr "Bir kitap/CD/DVD…"
 
 #: website/app/GeoKrety/GeokretyType.php:58
 msgid "A human"
