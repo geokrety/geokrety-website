@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-26 21:17+0000\n"
-"PO-Revision-Date: 2021-04-27 19:22\n"
+"PO-Revision-Date: 2021-04-27 19:32\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -410,7 +410,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Email/AccountActivation.php:53
 msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
+msgstr "<strong>Hesabınız aktif değil.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:61
 msgid "Account activated"
@@ -418,7 +418,7 @@ msgstr "Hesap etkinleştirildi."
 
 #: website/app/GeoKrety/Email/BasePHPMailer.php:81
 msgid "An error occurred while sending mail."
-msgstr ""
+msgstr "E-posta gönderilirken hata oluştu."
 
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
@@ -744,15 +744,15 @@ msgstr ""
 
 #: website/app/validators.php:13
 msgid "The {0} field cannot be empty"
-msgstr ""
+msgstr "{0} alanı boş bırakılamaz."
 
 #: website/app/validators.php:17
 msgid "The {0} field must be a valid date time"
-msgstr ""
+msgstr "{0} geçerli bir zaman olmalıdır"
 
 #: website/app/validators.php:21
 msgid "The GeoKret type is invalid"
-msgstr ""
+msgstr "GeoKret türü geçersiz"
 
 #: website/app/validators.php:25
 msgid "The move type is invalid"
@@ -792,7 +792,7 @@ msgstr "{0} gelecekte olamaz"
 
 #: website/app/validators.php:98
 msgid "{0} must be after GeoKret birth"
-msgstr ""
+msgstr "{0} GeoKret'in doğumundan sonra olmalıdır"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/password-changed.tpl:3
@@ -824,7 +824,7 @@ msgstr "Oturum Aç"
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
 msgid "If you did not requested this, click the link below."
-msgstr ""
+msgstr "Eğer bunu siz istemediyseniz, aşığıdaki linke tıklayın."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
 msgid "Revert this change!"
@@ -923,7 +923,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
 msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+msgstr "Hesabınızın kalıcı olarak silindiğinizi size bildirmekten üzgünüz."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
@@ -980,7 +980,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr ""
+msgstr "Birisi, umarız sizsiniz, GeoKrety iletişim e-posta adresini %1 'ne değiştirmeyi talep edindi."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
 msgid "Do not change!"
@@ -992,7 +992,7 @@ msgstr "Bazı hesaplar silenecek"
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:7
 msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
+msgstr "%1 tane hesap %2 gündür aktifleştirilmemiş. Şimdi silenecekler."
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
@@ -1012,7 +1012,7 @@ msgstr "Birisi size mesaj gönderdi"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Bu e-posta <a href=\"%2\">%1</a> tarafından gönderildi."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -3036,7 +3036,7 @@ msgstr ""
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
 msgid "Welcome to the GeoKrety.org community!"
-msgstr ""
+msgstr "GeoKrety.org topluluğuna hoş geldiniz!"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:10
 msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
@@ -3246,7 +3246,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/user_details.tpl:3
 msgid "%1's user profile"
-msgstr ""
+msgstr "%1'nin profili"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
