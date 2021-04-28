@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-27 22:07+0000\n"
-"PO-Revision-Date: 2021-04-28 16:02\n"
+"PO-Revision-Date: 2021-04-28 16:12\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -588,12 +588,12 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
-msgstr ""
+msgstr "Takip kodu \"%s\" çok kısa görünüyor. %d karakterlerinin burada olmasını bekliyoruz."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Takip kodu \"%s\" çok uzun görünüyor. %d karakterlerinin burada olmasını bekliyoruz."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -603,12 +603,12 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:49
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
-msgstr ""
+msgstr "Takip kodu \"%s\" geçersiz karakterler içeriyor."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:59
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
-msgstr ""
+msgstr "Üzgünüz, fakat Takip Kodu \"%s\" veri tabanında bulunamadı."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
 msgid "No Tracking Code provided."
@@ -772,11 +772,11 @@ msgstr ""
 
 #: website/app/validators.php:48
 msgid "Anonymous users must provide a value for {0}"
-msgstr ""
+msgstr "Anonim kullanıcılar {0} için bir değer ataması gerekiyor"
 
 #: website/app/validators.php:60
 msgid "Registered users must provide a value for {0}"
-msgstr ""
+msgstr "Kayıtlı kullanıcılar {0} için bir değer ataması gerekiyor"
 
 #: website/app/validators.php:71
 msgid "This logtype require valid {0} coordinates"
@@ -837,7 +837,7 @@ msgstr "Değişiklikleri geri al!"
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
 msgid "This link expires %1."
-msgstr ""
+msgstr "Bu bağlantı %1 tarihinde sona eriyor."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:15
@@ -911,11 +911,11 @@ msgstr "Hesap silindi"
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
 msgid "Your account is now deleted."
-msgstr ""
+msgstr "Hesabınız silindi."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
 msgid "The account you created %1 has never been activated."
-msgstr ""
+msgstr "Oluşturduğun hesap %1 aktif değil"
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
@@ -934,7 +934,7 @@ msgstr ""
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
 #: website/app-templates/smarty/emails/account-activated.tpl:19
 msgid "You're getting this email because you've just signed up on our website."
-msgstr ""
+msgstr "Bu e-postayı alma nedeni web sitemizde üye oldunuz."
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
@@ -967,7 +967,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
-msgstr ""
+msgstr "GeoKret'i görüntüle"
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:15
 msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
@@ -976,7 +976,7 @@ msgstr ""
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "E-posta adresi değişikliğini doğrulayın."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
@@ -1058,7 +1058,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr ""
+msgstr "Birisi, umarız sizsiniz, GeoKrety iletişim e-posta adresini sizin e-posta adresine değiştirmeyi talep etti."
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
 msgid "Validate your new email address"
@@ -1066,7 +1066,7 @@ msgstr "Yeni e-posta adresinizi doğrulayın"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
 msgid "This link is valid for %1."
-msgstr ""
+msgstr "Bu bağlantı %1 tarihine kadar geçerli."
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
 msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
@@ -1098,7 +1098,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
-msgstr ""
+msgstr "GeoKrety.org'daki hesabınız artık aktif."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:15
 msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
@@ -1118,7 +1118,7 @@ msgstr "Bunu <a href=\"%1\">kişisel e-posta tercihlerinizden</a> kapatabilirsin
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:14
 msgid "Here is what changed recently."
-msgstr ""
+msgstr "Son günlerde değişen şeyler."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:17
 msgid "Latest news"
@@ -1130,7 +1130,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Open interactive map"
-msgstr ""
+msgstr "İnteraktif haritayı aç"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Observation area map"
@@ -1344,17 +1344,17 @@ msgstr "eksik"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "arşivlendi"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:27
 #: website/app-templates/smarty/blocks/user/details.tpl:7
 msgid "Send a message to %1"
-msgstr ""
+msgstr "%1 kişisine bir mesaj gönder"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:32
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:6
 msgid "Edit GeoKret details"
-msgstr ""
+msgstr "GeoKret detaylarını düzenle"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:46
 #: website/app-templates/smarty/forms/geokret_label.tpl:24
@@ -1380,7 +1380,7 @@ msgstr "Ziyaret edilmiş yerler"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:58
 msgid "Social share"
-msgstr ""
+msgstr "Sosyal Platformda paylaş"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:60
 msgid "Share on Facebook"
