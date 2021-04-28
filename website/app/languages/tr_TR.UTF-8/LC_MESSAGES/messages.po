@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-27 22:07+0000\n"
-"PO-Revision-Date: 2021-04-28 16:12\n"
+"PO-Revision-Date: 2021-04-28 16:21\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -612,7 +612,7 @@ msgstr "Üzgünüz, fakat Takip Kodu \"%s\" veri tabanında bulunamadı."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
 msgid "No Tracking Code provided."
-msgstr ""
+msgstr "Takip kodu sağlanmamış."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:110
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
@@ -626,7 +626,7 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
 #, php-format
 msgid "Sorry, but username \"%s\" is already used. If that's your account, please <a href=\"%s\">login</a> first."
-msgstr ""
+msgstr "Üzgünüz, fakat kullanıcı adı \"%s\" zaten kullanılmış. Eğer bu sizin hesabınızsa, lütfen <a href=\"%s\">giriş yapın</a>"
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
@@ -1323,16 +1323,16 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:7
 msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr ""
+msgstr "Lütfen <abbr title=\"%1\">Takip Kodunu</abbr> buraya girin:"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:12
 msgid "Tracking code"
-msgstr ""
+msgstr "Takip kodu"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:15
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
 msgid "Log it!"
-msgstr ""
+msgstr "Günlüğe kaydet"
 
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
@@ -1500,7 +1500,7 @@ msgstr "Eylemler"
 #: website/app-templates/smarty/forms/geokret.tpl:31
 #: website/app-templates/smarty/forms/geokret_label.tpl:36
 msgid "Mission"
-msgstr ""
+msgstr "Görev"
 
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:15
 msgid "This GeoKret doesn't have a special mission…"
@@ -1543,11 +1543,11 @@ msgstr "E-posta"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:48
 msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr ""
+msgstr "Bekleyen e-posta doğrulaması, e-posta doğrulmasındaki linke tıklamayı unutmayın!"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:50
 msgid "No email address, please add one!"
-msgstr ""
+msgstr "E-posta adresi yok, lütfen bir tane ekleyin!"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:53
 msgid "Update email address"
@@ -1555,7 +1555,7 @@ msgstr "E-posta adresini güncelle"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:58
 msgid "Secid"
-msgstr ""
+msgstr "Secid"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:61
 msgid "Used to authenticate in other applications. Keep it secret!"
@@ -1604,7 +1604,7 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:17
 msgid "Disconnect from %1"
-msgstr ""
+msgstr "%1'den bağlantıyı kes"
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:18
 msgid "Disconnect"
@@ -2000,7 +2000,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:25
 msgid "Message subject"
-msgstr ""
+msgstr "Mesaj konusu"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:30
 msgid "Message"
@@ -2008,7 +2008,7 @@ msgstr "Mesaj"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:32
 msgid "Message to user"
-msgstr ""
+msgstr "Kullanıcıya mesaj at"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:49
 msgid "Send message"
@@ -2148,7 +2148,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/login.tpl:39
 msgid "No account yet ? Register now!"
-msgstr ""
+msgstr "Hesabınız yok mu? Şimdi kaydolun!"
 
 #: website/app-templates/smarty/dialog/login.tpl:42
 msgid "Forgot your password?"
@@ -3204,7 +3204,7 @@ msgstr "Evet, E-postamı değiştir"
 
 #: website/app-templates/smarty/pages/email_change_token.tpl:40
 msgid "No, abort this request"
-msgstr ""
+msgstr "Hayır, bu isteği iptal et"
 
 #: website/app-templates/smarty/pages/geokret_label.tpl:3
 #: website/app-templates/smarty/pages/geokret_label.tpl:6
@@ -3218,7 +3218,7 @@ msgstr "Bize ulaşın"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:13
 msgid "If you have any suggestion or bug reports feel free to write us."
-msgstr ""
+msgstr "Herhangi bir öneri veya hata raporlarınız varsa, bize yazmaktan çekinmeyin."
 
 #: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Or via the user profile"
