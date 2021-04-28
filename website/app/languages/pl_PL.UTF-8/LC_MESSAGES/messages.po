@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-27 22:07+0000\n"
-"PO-Revision-Date: 2021-04-28 07:02\n"
+"PO-Revision-Date: 2021-04-28 07:23\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -574,12 +574,12 @@ msgstr "Brak lub błędne współrzędne"
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Informacja"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Nieprawidłowy typ jednostki: %1"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -593,7 +593,7 @@ msgstr "Kod śledzenia „%s” wydaje się zbyt krótki. Spodziewamy się %d zn
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Kod śledzenia \"%s\" wydaje się zbyt długi. Oczekujemy tutaj %d znaków."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -639,7 +639,7 @@ msgstr "Zobacz <a href=\"%s\" target=\"_blank\">stronę kesza</a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "To jest skrzynka Geocaching.com, której nikt nie zalogował się jeszcze na GeoKrety.org. Aby zapewnić prawidłowe przemieszczanie się tego GeoKreta, skopiuj / wklej współrzędne skrzynki w polu \"Współrzędne\"."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -799,17 +799,17 @@ msgstr "{0} musi być po urodzinach GeoKreta"
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Gratulacje"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "Twój adres e-mail został pomyślnie zmieniony."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "Twój adres e-mail został pomyślnie zmieniony na %1."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
 #: website/app-templates/smarty/emails/password-changed.tpl:12
@@ -843,7 +843,7 @@ msgstr "Ten link wygasa %1."
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
 msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
+msgstr "Jeśli nie prosiłeś o zmianę hasła, powinieneś również rozważyć natychmiastową zmianę hasła."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:17
@@ -873,7 +873,7 @@ msgstr "Z poważaniem,<br>The GeoKrety Team"
 
 #: website/app-templates/smarty/emails/base.tpl:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
+msgstr "Jeżeli nigdy nie zakładałeś konta w serwisie Geokrety.org prosimy <a href=\"mailto:%1?subject=%2\">o kontakt</a>."
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:3
 msgid "Forgot Your Password?"
@@ -881,7 +881,7 @@ msgstr "Zapomniałeś hasła?"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Odzyskaj swoje hasło"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:8
 msgid "It happens. Click the link below to reset your password."
@@ -899,7 +899,7 @@ msgstr "Otrzymujesz tego e-maila, ponieważ poprosiłeś o zmianę hasła w nasz
 #: website/app-templates/smarty/emails/password-changed.tpl:4
 #: website/app-templates/smarty/emails/account-activated.tpl:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "Twoje konto na GeoKrety.org jest teraz aktywne."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
