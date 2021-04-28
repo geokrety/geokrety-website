@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 17:41+0000\n"
-"PO-Revision-Date: 2021-04-18 17:52\n"
+"POT-Creation-Date: 2021-04-27 22:07+0000\n"
+"PO-Revision-Date: 2021-04-27 22:12\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
@@ -23,335 +23,344 @@ msgstr ""
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Декілька облікових записів мають таку ж адресу електронної пошти. Будь ласка, <a href=\"%s\">зв'яжіться з нами</a>."
 
-#: website/app/GeoKrety/Controller/BaseExportXML.php:52
+#: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "Параметр \"userid\" має бути припустимим числом."
 
-#: website/app/GeoKrety/Controller/BaseExportXML.php:75
+#: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "Параметр \"gkid\" має бути дійсним числом або GKid (GKXXX)."
 
-#: website/app/GeoKrety/Controller/Base.php:69
-#: website/app/GeoKrety/Controller/MoveCreate.php:170
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:34
-#: website/app/GeoKrety/Controller/UserContact.php:71
+#: website/app/GeoKrety/Controller/Pages/Base.php:69
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:34
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:71
 msgid "reCaptcha failed!"
 msgstr "не вдалося виконати reCaptcha!"
 
-#: website/app/GeoKrety/Controller/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:59
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:66
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:59
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:66
 msgid "Sorry but this mail address is already in use."
 msgstr "Вибачте, але ця адреса електронної пошти вже використовується."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:24
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
 msgid "Sorry, the provided owner code and tracking code doesn't match."
 msgstr "Наданий код власника і код відстеження не збігаються."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:30
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
 msgid "You are already the owner."
 msgstr "Ви вже власник."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:36
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:36
 msgid "Sorry, this owner code has already been used."
 msgstr "На жаль, цей код власника вже використовується."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:68
 msgid "Something went wrong while registering the adoption."
 msgstr "Щось пішло не так під час реєстрації синовлення."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:72
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
-msgstr ""
+msgstr "Вітаємо! Ви - власник %s"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:39
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:39
 msgid "Born here"
 msgstr "Народився тут"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:45
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:45
 msgid "Failed to create the GeoKret initial move."
 msgstr "Не вдалося створити GeoKret початковий хід."
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:55
-#: website/app/GeoKrety/Controller/GeokretEdit.php:23
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:55
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:23
 msgid "Failed to create the GeoKret."
 msgstr "Не вдалося створити GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:57
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:57
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "Ваш GeoKret створено. Ви можете тепер забажати <a href=\"%s\">надрукувати</a> його велику мітку…"
 
-#: website/app/GeoKrety/Controller/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
 msgstr "GeoKret оновлено."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:22
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
 msgstr "Вибачте, у вас немає дозволу на друк позначки для цього GeoKret тому, що ви ніколи не виявили!"
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
 msgid "This label template does not exists."
 msgstr "Шаблон мітки не існує."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:49
 msgid "Something went wrong while saving the GeoKret preferred label template."
 msgstr "Щось пішло не так під час збереження GeoKret бажаного шаблону мітки."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:64
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:64
 msgid "Some chosen languages are invalid."
 msgstr "Деякі обрані мови недійсні."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:82
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:82
 msgid "Please select an export type."
 msgstr "Будь ласка, виберіть тип експорту."
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:28
 msgid "This GeoKret is already archived."
-msgstr ""
+msgstr "Цей GeoKret вже архівовано."
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:43
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:43
 msgid "Archiving GeoKret"
-msgstr ""
+msgstr "Архівування GeoKret"
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:49
 msgid "Failed to archive the GeoKret."
-msgstr ""
+msgstr "Не вдалося заархівувати GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
 msgstr "Ви повинні бути власником GeoKret для створення нового Коду власника."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:28
 msgid "An Owner Code is already available for this GeoKret."
 msgstr "Власник коду вже доступний для цього GeoKret."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:38
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:38
 msgid "Failed to create a new Owner Code."
 msgstr "Не вдалося створити новий код власника."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:41
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:41
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
 msgstr "Власний код (%s) був створений. Дайте йому разом з кодом відстеження (%s) комусь і він може прийняти ваш GeoKret."
 
-#: website/app/GeoKrety/Controller/HelpApi.php:50
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
 msgstr "Неправильний безпечний код"
 
-#: website/app/GeoKrety/Controller/HelpApi.php:51
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:51
 msgid "Wrong date or time"
 msgstr "Невірна дата або час"
 
-#: website/app/GeoKrety/Controller/LegacyRoutes.php:206
+#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
-msgstr ""
+msgstr "Необхідно вказати параметр шляхової точки."
 
-#: website/app/GeoKrety/Controller/Login.php:40
-#: website/app/GeoKrety/Controller/Login.php:121
+#: website/app/GeoKrety/Controller/Pages/Login.php:48
+#: website/app/GeoKrety/Controller/Pages/Login.php:145
 msgid "Username and password doesn't match."
 msgstr "Ім'я користувача та пароль не збігаються."
 
-#: website/app/GeoKrety/Controller/Login.php:69
+#: website/app/GeoKrety/Controller/Pages/Login.php:77
 msgid "Welcome on board!"
 msgstr "Ласкаво просимо!"
 
-#: website/app/GeoKrety/Controller/Login.php:111
+#: website/app/GeoKrety/Controller/Pages/Login.php:126
 msgid "Please provide 'login' and 'password' parameters."
-msgstr ""
+msgstr "Будь ласка, введіть параметри \"логін\" та \"пароль\"."
 
-#: website/app/GeoKrety/Controller/Login.php:133
-#: website/app/GeoKrety/Controller/Login.php:139
+#: website/app/GeoKrety/Controller/Pages/Login.php:134
+msgid "Your account is not valid."
+msgstr "Ваш аккаунт не активований."
+
+#: website/app/GeoKrety/Controller/Pages/Login.php:156
+#: website/app/GeoKrety/Controller/Pages/Login.php:162
 msgid "Invalid \"secid\""
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:187
+#: website/app/GeoKrety/Controller/Pages/Login.php:211
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Ваш обліковий запис вже пов'язаний з %s"
 
-#: website/app/GeoKrety/Controller/Login.php:192
+#: website/app/GeoKrety/Controller/Pages/Login.php:216
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Цей %s обліковий запис вже зв'язаний з іншим GeoKrety обліковим записом."
 
-#: website/app/GeoKrety/Controller/Login.php:207
+#: website/app/GeoKrety/Controller/Pages/Login.php:231
 msgid "Auth request was canceled."
 msgstr "Запит на авторизацію було скасовано."
 
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:50
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:72
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:50
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:72
 msgid "Comment saved."
 msgstr "Коментар збережено."
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:26
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:26
 msgid "Comment removed."
 msgstr "Коментар вилучено."
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:28
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:28
 msgid "Failed to delete comment."
 msgstr "Не вдалося видалити коментар."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:108
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:108
 msgid "The date time could not be parsed."
 msgstr "Не вдалося проаналізувати дату та час."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:220
-#: website/app/GeoKrety/Controller/MoveCreateXML.php:57
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:220
+#: website/app/GeoKrety/Controller/Pages/MoveCreateXML.php:57
 msgid "Failed to save move."
 msgstr "Не вдалося зберегти хід."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:223
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:223
 msgid "Your move has been saved."
 msgstr "Ваш хід збережено."
 
-#: website/app/GeoKrety/Controller/MoveDelete.php:24
+#: website/app/GeoKrety/Controller/Pages/MoveDelete.php:24
 msgid "Move removed."
 msgstr "Перемістити видалено."
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:37
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:37
 msgid "Failed to record read datetime."
 msgstr "Не вдалося записати дату читання."
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:64
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:64
 msgid "Error while saving comment."
 msgstr "Помилка при збереженні коментаря."
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:66
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:66
 msgid "Your comment has been saved."
 msgstr "Ваш коментар збережено."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:27
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:27
 msgid "Failed to update your subscriptions preferences."
 msgstr "Не вдалося оновити налаштування підписки."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:32
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:32
 msgid "You will now receive updates on new comments."
 msgstr "Тепер ви будете отримувати оновлення про нові коментарі."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:35
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:35
 msgid "You will not receive updates anymore."
 msgstr "Ви більше не будете отримувати оновлення."
 
-#: website/app/GeoKrety/Controller/OAuthDetach.php:36
+#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:36
 #, php-format
 msgid "Something went wrong while detaching from your %s account. Please contact us."
 msgstr "Щось пішло не так під час вилучення з вашого облікового запису %s . Зв'яжіться з нами."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:20
-#: website/app/GeoKrety/Controller/UserEmailChange.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:26
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:26
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:29
+#: website/app/GeoKrety/Controller/Pages/RegistrationActivate.php:22
+#: website/app/GeoKrety/Controller/Pages/UserEmailChange.php:19
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:26
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:23
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:28
 msgid "Sorry this token is not valid, already used or expired."
 msgstr "Вибачте, цей токен не є дійсним, вже був використаний або закінчився термін дії."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:60
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:44
 msgid "New passwords doesn't match."
 msgstr "Нові паролі не збігаються."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:87
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:87
 msgid "Unexpected error occurred."
 msgstr "Сталася неочікувана помилка."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:92
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:55
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:92
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:55
 msgid "Your password has been changed."
 msgstr "Ваш пароль було змінено."
 
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:44
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:44
 msgid "Sorry no account using that email address."
 msgstr "На жаль, немає облікового запису, використовуючи цю електронну адресу."
 
-#: website/app/GeoKrety/Controller/PictureEdit.php:38
+#: website/app/GeoKrety/Controller/Pages/PictureEdit.php:38
 msgid "Picture caption saved."
 msgstr "Заголовок зображення збережено."
 
-#: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:35
+#: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:35
 msgid "Language preferences updated."
 msgstr "Налаштування мови оновлено."
 
-#: website/app/GeoKrety/Controller/UserContactByGeokret.php:24
+#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:24
 #, php-format
 msgid "GeoKret: %s (%s)"
 msgstr "GeoKret: %s (%s)"
 
-#: website/app/GeoKrety/Controller/UserContact.php:81
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:81
 msgid "Failed to save the mail."
 msgstr "Не вдалося зберегти пошту."
 
-#: website/app/GeoKrety/Controller/UserContact.php:89
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:89
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "Ваше повідомлення для %s було надіслано."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:45
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:45
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:45
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:42
 msgid "Unexpected value."
 msgstr "Неочікуване значення."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:61
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:59
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:61
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:56
 msgid "Something went wrong, operation aborted."
 msgstr "Щось пішло не так, операція перервана."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:71
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:71
 msgid "Perfect! Enjoy your new email address."
 msgstr "Прекрасно! Насолоджуйтесь новою адресою електронної пошти."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:75
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:75
 msgid "Your email address has been reverted."
 msgstr "Вашу адресу електронної пошти було відновлено."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:70
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:67
 msgid "Your email address has been validated."
 msgstr "Перевірено адресу вашої електронної пошти."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:79
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:76
 msgid "No change has been processed. This token is now revoked."
 msgstr "Оброблена зміна поки що цей токен відкликаний."
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:26
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:25
+msgid "You have successfully validated your email address."
+msgstr "Ви успішно підтвердили адресу електронної пошти."
+
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:26
 msgid "Failed to refresh your secid."
 msgstr "Не вдалося оновити ваш секрет."
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:29
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:29
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "Ваш SecID був оновлений. Не забудьте повторно автентифікувати будь-яку іншу програму, підключену до вашого GeoKrety облікового запису."
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:23
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:23
 msgid "Failed to save your preferred user banner template."
 msgstr "Не вдалося зберегти бажаний шаблон банера."
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:26
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:26
 msgid "Your user banner template preference has been successfully saved."
 msgstr "Ваші налаштування шаблону банера успішно збережено."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:37
 msgid "Your email preferences were saved."
 msgstr "Ваші налаштування електронної пошти було збережено."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:51
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:51
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Підтвердження електронною поштою надіслано на вашу нову адресу. Ви повинні натиснути на посилання в електронному листі, щоб підтвердити зміну на Вашу електронну адресу. Термін дії посилання для підтвердження минає через %s."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:79
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:79
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Лист для підтвердження надіслано на нову адресу. Ви повинні натиснути на посилання в електронному листі, щоб підтвердити зміну на Вашу електронну адресу. Термін дії посилання для підтвердження минає через %s."
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:24
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:24
 msgid "Failed to save your home coordinates."
 msgstr "Не вдалося зберегти ваші домашні координати."
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:27
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:27
 msgid "Your home coordinates were successfully saved."
 msgstr "Координати вашого дому успішно збережено."
 
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:37
 msgid "Your old password is invalid."
 msgstr "Ваш старий пароль невірний."
 
@@ -367,21 +376,23 @@ msgid "Waypoint length is invalid. It should be between %d and %d characters lon
 msgstr "Неприпустима довжина шляхової точки. Вона має бути довжиною від %d до %d символів."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:16
+#: website/app/GeoKrety/Email/EmailRevalidate.php:20
 msgid "A confirmation email has been sent to your address."
-msgstr ""
+msgstr "Лист для підтвердження надіслано на Вашу електронну адресу."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
-#: website/app/GeoKrety/Email/AccountActivation.php:47
+#: website/app/GeoKrety/Email/AccountActivation.php:55
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
-msgstr ""
+msgstr "<strong>Ви повинні натиснути на посилання, вказане в електронному листі для того, щоб активувати акаунт, перш ніж зможете приступити до роботи.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
-#: website/app/GeoKrety/Email/AccountActivation.php:48
+#: website/app/GeoKrety/Email/AccountActivation.php:56
+#: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "Термін дії посилання для підтвердження минає через %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
@@ -389,47 +400,75 @@ msgid "Welcome to GeoKrety.org"
 msgstr "Ласкаво просимо до GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
-msgid "Your account seems to already exists."
-msgstr ""
+msgid "Your account seems to already exist."
+msgstr "Здається, такий обліковий запис вже існує."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
-#: website/app/GeoKrety/Email/AccountActivation.php:46
-msgid "The confirmation email was sent again to your mail address."
-msgstr ""
-
-#: website/app/GeoKrety/Email/AccountActivation.php:45
-msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
-
 #: website/app/GeoKrety/Email/AccountActivation.php:54
+msgid "The confirmation email was sent again to your mail address."
+msgstr "Лист для підтвердження було знову надіслано на Вашу електронну пошту."
+
+#: website/app/GeoKrety/Email/AccountActivation.php:53
+msgid "<strong>Your account is not yet active.</strong>"
+msgstr "<strong>Ваш обліковий запис ще не активовано.</strong>"
+
+#: website/app/GeoKrety/Email/AccountActivation.php:61
 msgid "Account activated"
 msgstr "Обліковий запис активовано"
 
-#: website/app/GeoKrety/Email/BasePHPMailer.php:67
+#: website/app/GeoKrety/Email/BasePHPMailer.php:81
 msgid "An error occurred while sending mail."
 msgstr "Сталася помилка під час відправлення пошти."
 
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
-msgstr ""
+msgstr "Список перегляду %s"
 
-#: website/app/GeoKrety/Email/EmailChange.php:26
+#: website/app/GeoKrety/Email/EmailChange.php:28
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
+msgid "Revalidate your email address"
+msgstr "Підтвердьте адресу електронної пошти знову"
+
+#: website/app/GeoKrety/Email/EmailChange.php:32
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
+msgid "Your account has been imported from GKv1."
+msgstr "Ваш обліковий запис було імпортовано з GKv1."
+
+#: website/app/GeoKrety/Email/EmailChange.php:33
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
+msgid "We would like to verify that your mail address is still valid."
+msgstr "Ми хотіли б переконатися, що ваша електронна пошта все ще дійсна."
+
 #: website/app/GeoKrety/Email/EmailChange.php:34
+msgid "An email has been sent to your registered address, please click the included link."
+msgstr "На вашу електронну адресу було надіслано лист, будь ласка, натисніть на отрмане посилання."
+
+#: website/app/GeoKrety/Email/EmailChange.php:45
+#: website/app/GeoKrety/Email/EmailChange.php:53
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
 #: website/app-templates/smarty/pages/email_change.tpl:3
+#: website/app-templates/smarty/pages/email_revalidate.tpl:3
 msgid "Changing your email address"
 msgstr "Зміна вашої адреси електронної пошти"
 
-#: website/app/GeoKrety/Email/EmailChange.php:52
-#: website/app/GeoKrety/Email/EmailChange.php:60
+#: website/app/GeoKrety/Email/EmailChange.php:71
+#: website/app/GeoKrety/Email/EmailChange.php:79
 msgid "Email address changed"
 msgstr "Адресу електронної пошти змінено"
 
-#: website/app/GeoKrety/Email/EmailChange.php:66
+#: website/app/GeoKrety/Email/EmailChange.php:85
 msgid "Email address reverted"
 msgstr "Адресу електронної пошти повернуто"
+
+#: website/app/GeoKrety/Email/EmailRevalidate.php:21
+msgid "Please click the included link to confirm it's validity."
+msgstr "Будь ласка, натисніть на отримане посилання, щоб підтвердити його дійсність."
+
+#: website/app/GeoKrety/Email/EmailRevalidate.php:27
+msgid "Account revalidation"
+msgstr "Перевірка облікового запису"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -503,10 +542,6 @@ msgstr "занурення"
 msgid "Born"
 msgstr "Народилося"
 
-#: website/app/GeoKrety/Model/User.php:317
-msgid "An error occurred while sending the activation mail."
-msgstr "Сталася помилка під час відправлення листа для активації."
-
 #: website/app/GeoKrety/Model/UserSocialAuth.php:45
 #, php-format
 msgid "Your may now use your %s account to authenticate on GeoKrety."
@@ -539,12 +574,12 @@ msgstr "Відсутній або неправильний координат."
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Інформація"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Задано некоректний об'єкт: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -558,7 +593,7 @@ msgstr "Код відстеження \"%s\" здається закоротки
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Код відстеження \"%s\" є занадто довгим. Ми очікуємо %d символів тут."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -764,17 +799,17 @@ msgstr "{0} має бути після народження GeoKret"
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Вітаємо"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "Ваша електронна пошта була успішно змінена."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "Ваша електронна пошта була успішно змінена: %1"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
 #: website/app-templates/smarty/emails/password-changed.tpl:12
@@ -799,6 +834,8 @@ msgstr "Скасувати цю зміну!"
 #: website/app-templates/smarty/emails/password-recovery.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
 #: website/app-templates/smarty/emails/account-activation.tpl:13
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
 msgid "This link expires %1."
 msgstr "Це посилання закінчується %1."
 
@@ -806,7 +843,7 @@ msgstr "Це посилання закінчується %1."
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
 msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
+msgstr "Якщо Ви не відправляли запиту на зміну пароля, то негайно змініть його."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:17
@@ -826,17 +863,17 @@ msgstr "Ви отримуєте цей лист, тому що ви змінил
 msgid "Open source item tracking for all geocaching platforms"
 msgstr "Відстеження елементів з відкритим вихідним кодом для всіх платформ геокешингу"
 
-#: website/app-templates/smarty/emails/base.tpl:29
+#: website/app-templates/smarty/emails/base.tpl:30
 msgid "Hi %1,"
 msgstr "Hi %1,"
 
-#: website/app-templates/smarty/emails/base.tpl:36
+#: website/app-templates/smarty/emails/base.tpl:37
 msgid "Sincerely,<br>The GeoKrety Team"
 msgstr "З повагою,<br>Команда GeoKrety"
 
-#: website/app-templates/smarty/emails/base.tpl:45
+#: website/app-templates/smarty/emails/base.tpl:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
+msgstr "Якщо ви ніколи не реєстрували акаунт на  GeoKrety.org, будь ласка, <a href=\"mailto:%1?subject=%2\">"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:3
 msgid "Forgot Your Password?"
@@ -844,7 +881,7 @@ msgstr "Забули пароль?"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Відновити пароль."
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:8
 msgid "It happens. Click the link below to reset your password."
@@ -862,40 +899,71 @@ msgstr "Ви отримуєте цю електронну пошту, тому �
 #: website/app-templates/smarty/emails/password-changed.tpl:4
 #: website/app-templates/smarty/emails/account-activated.tpl:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "Ваш обліковий запис на GeoKrety.org тепер активний."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "Ваш пароль було успішно змінено."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
+msgid "Account has been deleted"
+msgstr "Цей обліковий запис було видалено"
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
+msgid "Your account is now deleted."
+msgstr "Ваш обліковий запис видалено."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
+msgid "The account you created %1 has never been activated."
+msgstr "Аккаунт, який створив користувач %1  ніколи не було активовано."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
+msgid "Our policy is to delete unactivated accounts after %1 days."
+msgstr "Наші правила полягають в тому, щоб видалити неактивні акаунти через %1 днів."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
+msgid "We are sorry to inform you that your account has been permanently erased."
+msgstr "Вибачте, але ваш обліковий запис було видалено назавжди."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
+msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
+msgstr "Ім'я користувача, яке ви вибрали при реєстрації вже зайняте іншим користувачем."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
+#: website/app-templates/smarty/emails/account-activation.tpl:19
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
+#: website/app-templates/smarty/emails/account-activated.tpl:19
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "Ви отримуєте цей електронний лист, тому що просто зареєструвалися на нашому сайті."
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Щось пішло не так під час синхронізації даних партнерів"
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
 #: website/app-templates/smarty/emails/cron-exception.tpl:7
 msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
+msgstr "Щось пішло не так з планувальником завдань, будь ласка, перевірте журнали нижче."
 
 #: website/app-templates/smarty/emails/base-admin.tpl:4
 msgid "You're getting this email because you're one the website admins."
-msgstr ""
+msgstr "Ви отримали цей лист тому, що ви є одним з адміністраторів сайту."
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 msgid "Hooray"
-msgstr ""
+msgstr "Ура!"
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:8
 msgid "Your email address has been successfully reverted."
-msgstr ""
+msgstr "Ваш обліковий запис успішно підтверджено. "
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "Одна з ваших GeoKrety була прийнята."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
@@ -908,7 +976,7 @@ msgstr "Ви отримуєте цей електронний лист тому 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "Підтвердіть зміну вашої адреси електронної пошти."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
@@ -918,13 +986,21 @@ msgstr "хто-небудь, сподіваюся, ви запросили зм�
 msgid "Do not change!"
 msgstr "Не змінюйтеся!"
 
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:4
+msgid "Some accounts will be deleted."
+msgstr "Деякі облікові записи буде видалено."
+
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:7
+msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
+msgstr "%1 облікових записів ще не активовано після %2 днів. Вони будуть видалені."
+
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
 msgstr ""
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
+msgstr "Cron <strong>%1</strong> заблоковано з <strong>%2</strong>!"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:3
 msgid "Contact from a GeoKrety.org user"
@@ -932,11 +1008,11 @@ msgstr "Контакт з GeoKrety.org користувача"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Хтось надіслав вам особисте повідомлення."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Це повідомлення було відправлено користувачем <a href=\"%2\">%1</a>."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -960,24 +1036,21 @@ msgstr "Ви отримуєте цей електронний лист чере�
 
 #: website/app-templates/smarty/emails/account-activation.tpl:4
 msgid "One step left to use GeoKrety.org."
-msgstr ""
+msgstr "Залишився один крок до повноцінного використання GeoKrety.org."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
 msgstr "Ви зареєструвалися на GeoKrety.org. <strong>Вам все ще потрібно активувати свій обліковий запис, перед його використанням.</strong> Будь ласка, перейдіть за посиланням нижче."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:10
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
 msgid "Activate your account"
 msgstr "Активувати обліковий запис"
 
 #: website/app-templates/smarty/emails/account-activation.tpl:15
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:19
 msgid "If your account is not activated within that time, then it will be automatically deleted."
 msgstr "Якщо ваш обліковий запис не активовано протягом цього часу, його буде автоматично видалено."
-
-#: website/app-templates/smarty/emails/account-activation.tpl:19
-#: website/app-templates/smarty/emails/account-activated.tpl:19
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "Ви отримуєте цей електронний лист, тому що просто зареєструвалися на нашому сайті."
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:4
 msgid "An exception occurred in a cron job"
@@ -1003,6 +1076,26 @@ msgstr "Якщо ви не запитували цього і не знали, �
 msgid "You're getting this email because you've requested an email address change on our website."
 msgstr "Ви отримуєте цей лист, тому що ви запросили зміну адреси електронної пошти на нашому сайті."
 
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
+msgid "Account not yet active"
+msgstr "Акаунт ще не активний"
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
+msgid "Your account is about to be deleted."
+msgstr "Ваш обліковий запис незабаром буде видалено."
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
+msgid "The account you created %1 has not yet been activated."
+msgstr "Аккаунт, який створив користувач %1  ніколи не було активовано."
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
+msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+msgstr "Якщо ви хочете зберегти цей обліковий запис, вам все одно необхідно його підтвердити, натиснувши на посилання нижче."
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
+msgid "Unactivated accounts are automatically deleted after %1 days."
+msgstr "Неактивовані облікові записи автоматично видаляються через %1 днів."
+
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
 msgstr "Ваш обліковий запис на GeoKrety.org тепер повністю функціональний."
@@ -1017,19 +1110,19 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:8
 msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
+msgstr "Ви отримали цей лист, тому що ви підписались на щоденну розсилку новин."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:9
 msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
+msgstr "Ви можете вимкнути це, <a href=\"%1\"> у особистих налаштуваннях пошти. </a>."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:14
 msgid "Here is what changed recently."
-msgstr ""
+msgstr "Ось що змінилося останнім часом."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:17
 msgid "Latest news"
-msgstr ""
+msgstr "Останні новини"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:27
 msgid "GeoKrety dropped in your observation area"
@@ -1037,7 +1130,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Open interactive map"
-msgstr ""
+msgstr "Відкрити інтерактивну карту"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Observation area map"
@@ -1054,7 +1147,7 @@ msgstr ""
 #: website/app-templates/smarty/emails/daily-mail.tpl:80
 #: website/app-templates/smarty/emails/daily-mail.tpl:126
 msgid "Position"
-msgstr ""
+msgstr "Позиція"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:38
 #: website/app-templates/smarty/emails/daily-mail.tpl:81
@@ -1078,7 +1171,7 @@ msgstr "Комментировать"
 #: website/app-templates/smarty/emails/daily-mail.tpl:128
 #: website/app-templates/smarty/emails/daily-mail.tpl:172
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:40
 msgid "Home distance"
@@ -1095,7 +1188,7 @@ msgstr "Іконка"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:83
 msgid "Distance since last move"
-msgstr ""
+msgstr "Відстань з моменту останнього ходу"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:119
 msgid "Watched GeoKrety latest moves"
@@ -1114,6 +1207,22 @@ msgstr "Відстань"
 #: website/app-templates/smarty/emails/daily-mail.tpl:165
 msgid "Latest move comments"
 msgstr ""
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
+msgid "Is this address still valid?"
+msgstr "Ця адреса все ще дійсна?"
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
+msgid "This is important in case of password loss."
+msgstr "Це важливо у випадку втрати пароля."
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
+msgid "Validate your email address"
+msgstr "Підтвердьте адресу електронної пошти."
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
+msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+msgstr "Ви отримали цей лист, тому що нам потрібно переконатись, що зареєстрована адреса електронної пошти все ще є дійсною. "
 
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:15
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
@@ -1231,11 +1340,11 @@ msgstr "Фотографій поки немає."
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:20
 msgid "missing"
-msgstr ""
+msgstr "відсутній"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "архівовано"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:27
 #: website/app-templates/smarty/blocks/user/details.tpl:7
@@ -1362,7 +1471,7 @@ msgstr "Увійти, щоб претендувати на цю GeoKret"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:34
 msgid "Mark this GeoKret as archived"
-msgstr ""
+msgstr "Позначити це GeoKret як архівоване"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:34
 msgid "Archive this GeoKret"
@@ -1671,6 +1780,8 @@ msgstr "Повернутися на GeoKret сторінку"
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
 #: website/app-templates/smarty/pages/email_change.tpl:33
 #: website/app-templates/smarty/pages/email_change.tpl:37
+#: website/app-templates/smarty/pages/email_revalidate.tpl:33
+#: website/app-templates/smarty/pages/email_revalidate.tpl:37
 #: website/app-templates/smarty/pages/email_change_token.tpl:32
 #: website/app-templates/smarty/pages/email_change_token.tpl:36
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:65
@@ -2651,12 +2762,14 @@ msgstr "Ви підтверджуєте зміну адреси електрон
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:31
 #: website/app-templates/smarty/pages/email_change.tpl:32
+#: website/app-templates/smarty/pages/email_revalidate.tpl:32
 #: website/app-templates/smarty/pages/email_change_token.tpl:31
 msgid "Back to your profile"
 msgstr "Повернутися в профіль"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:35
 #: website/app-templates/smarty/pages/email_change.tpl:36
+#: website/app-templates/smarty/pages/email_revalidate.tpl:36
 #: website/app-templates/smarty/pages/email_change_token.tpl:35
 msgid "Back to homepage"
 msgstr "Повернутися на головну сторінку"
@@ -2750,6 +2863,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:18
+#: website/app-templates/smarty/pages/email_revalidate.tpl:18
 msgid "Please enter the verification token received by mail."
 msgstr "Будь ласка, введіть підтверджувальний маркер отриманий поштою."
 
@@ -2757,6 +2871,8 @@ msgstr "Будь ласка, введіть підтверджувальний �
 #: website/app-templates/smarty/pages/password_change.tpl:29
 #: website/app-templates/smarty/pages/email_change.tpl:23
 #: website/app-templates/smarty/pages/email_change.tpl:25
+#: website/app-templates/smarty/pages/email_revalidate.tpl:23
+#: website/app-templates/smarty/pages/email_revalidate.tpl:25
 msgid "Verification Token"
 msgstr "Токен перевірки"
 
@@ -2795,6 +2911,7 @@ msgid "Changing your email address."
 msgstr "Зміна вашої адреси електронної пошти."
 
 #: website/app-templates/smarty/pages/email_change.tpl:40
+#: website/app-templates/smarty/pages/email_revalidate.tpl:40
 msgid "Check the token"
 msgstr "Перевірте токен"
 
@@ -2911,6 +3028,10 @@ msgstr "Поточні GK-Hotels/Motels"
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
 msgstr "Статус: Готовий до пошуку"
+
+#: website/app-templates/smarty/pages/email_revalidate.tpl:10
+msgid "Email address revalidation."
+msgstr ""
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8

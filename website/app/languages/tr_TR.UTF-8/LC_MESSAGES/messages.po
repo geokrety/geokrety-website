@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 17:41+0000\n"
-"PO-Revision-Date: 2021-04-18 17:52\n"
+"POT-Creation-Date: 2021-04-27 22:07+0000\n"
+"PO-Revision-Date: 2021-04-28 17:31\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -21,339 +21,348 @@ msgstr ""
 #: website/app/GeoKrety/Auth.php:20
 #, php-format
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
-msgstr ""
+msgstr "Birden fazla hesap aynı email adresini kullanıyor. Lütfen bizimle <a href=\"%s\">iletişime geçin</a>"
 
-#: website/app/GeoKrety/Controller/BaseExportXML.php:52
+#: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "\"userid\" parametresi sayı olması gerekiyor."
 
-#: website/app/GeoKrety/Controller/BaseExportXML.php:75
+#: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "\"gkid\" parametresi geçerli bir numara veya GKid (GKXXXXX) gerekmektedir."
 
-#: website/app/GeoKrety/Controller/Base.php:69
-#: website/app/GeoKrety/Controller/MoveCreate.php:170
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:34
-#: website/app/GeoKrety/Controller/UserContact.php:71
+#: website/app/GeoKrety/Controller/Pages/Base.php:69
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:34
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:71
 msgid "reCaptcha failed!"
 msgstr "reCaptcha başarısız!"
 
-#: website/app/GeoKrety/Controller/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:59
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:66
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:59
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:66
 msgid "Sorry but this mail address is already in use."
-msgstr ""
+msgstr "Üzgünüz, bu e-posta adresi kullanımda."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:24
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
 msgid "Sorry, the provided owner code and tracking code doesn't match."
-msgstr ""
+msgstr "Üzgünüz, verilmiş sahip kodu ile takip kodu eşleşmiyor."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:30
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
 msgid "You are already the owner."
-msgstr ""
+msgstr "Zaten sahip sizsiniz."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:36
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:36
 msgid "Sorry, this owner code has already been used."
-msgstr ""
+msgstr "Üzgünüz, bu sahip kodu zaten kullanılmış."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:68
 msgid "Something went wrong while registering the adoption."
-msgstr ""
+msgstr "Sahiplenmekte bir sorun çıktı."
 
-#: website/app/GeoKrety/Controller/GeokretClaim.php:72
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
-msgstr ""
+msgstr "Tebrikler! Artık %s 'ın sahibisiniz"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:39
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:39
 msgid "Born here"
 msgstr "Burada doğdu"
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:45
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:45
 msgid "Failed to create the GeoKret initial move."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:55
-#: website/app/GeoKrety/Controller/GeokretEdit.php:23
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:55
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:23
 msgid "Failed to create the GeoKret."
-msgstr ""
+msgstr "GeoKret oluşturulamadı."
 
-#: website/app/GeoKrety/Controller/GeokretCreate.php:57
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:57
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
-msgstr ""
+msgstr "GeoKret güncellendi."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:22
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
 msgid "This label template does not exists."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:49
 msgid "Something went wrong while saving the GeoKret preferred label template."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:64
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:64
 msgid "Some chosen languages are invalid."
-msgstr ""
+msgstr "Bazı seçilen diller geçersiz."
 
-#: website/app/GeoKrety/Controller/GeokretLabel.php:82
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:82
 msgid "Please select an export type."
-msgstr ""
+msgstr "Lütfen dışarı aktarma türü seçin."
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:28
 msgid "This GeoKret is already archived."
-msgstr ""
+msgstr "Bu GeoKret zaten arşivlenmiş."
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:43
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:43
 msgid "Archiving GeoKret"
-msgstr ""
+msgstr "GeoKret arşivleniyor"
 
-#: website/app/GeoKrety/Controller/GeokretMarkAsArchived.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:49
 msgid "Failed to archive the GeoKret."
-msgstr ""
+msgstr "GeoKret arşivlenemedi."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
-msgstr ""
+msgstr "Yeni sahip kodu oluşturmak için GeoKret'in sahibi olmanız gerekir."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:28
 msgid "An Owner Code is already available for this GeoKret."
-msgstr ""
+msgstr "Zaten bu GeoKret'de sahip kodu var."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:38
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:38
 msgid "Failed to create a new Owner Code."
-msgstr ""
+msgstr "Yeni sahip kodu oluşturulması başarısız oldu."
 
-#: website/app/GeoKrety/Controller/GeokretOfferForAdoption.php:41
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:41
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
-msgstr ""
+msgstr "Sahip kodu (%s) oluşturuldu. Takip kodu (%s) ile beraber verin böylelikle GeoKret'inizi alabilir."
 
-#: website/app/GeoKrety/Controller/HelpApi.php:50
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
-msgstr ""
+msgstr "Yanlış secid"
 
-#: website/app/GeoKrety/Controller/HelpApi.php:51
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:51
 msgid "Wrong date or time"
 msgstr "Yanlış tarih veya saat"
 
-#: website/app/GeoKrety/Controller/LegacyRoutes.php:206
+#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:40
-#: website/app/GeoKrety/Controller/Login.php:121
+#: website/app/GeoKrety/Controller/Pages/Login.php:48
+#: website/app/GeoKrety/Controller/Pages/Login.php:145
 msgid "Username and password doesn't match."
 msgstr "Kullanıcı adı ve şifre uyuşmuyor."
 
-#: website/app/GeoKrety/Controller/Login.php:69
+#: website/app/GeoKrety/Controller/Pages/Login.php:77
 msgid "Welcome on board!"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:111
+#: website/app/GeoKrety/Controller/Pages/Login.php:126
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Login.php:133
-#: website/app/GeoKrety/Controller/Login.php:139
-msgid "Invalid \"secid\""
-msgstr ""
+#: website/app/GeoKrety/Controller/Pages/Login.php:134
+msgid "Your account is not valid."
+msgstr "Hesabınız geçerli değil."
 
-#: website/app/GeoKrety/Controller/Login.php:187
+#: website/app/GeoKrety/Controller/Pages/Login.php:156
+#: website/app/GeoKrety/Controller/Pages/Login.php:162
+msgid "Invalid \"secid\""
+msgstr "Geçersiz \"secid\""
+
+#: website/app/GeoKrety/Controller/Pages/Login.php:211
 #, php-format
 msgid "Your account is already linked with %s"
-msgstr ""
+msgstr "Bu hesap zaten %s ile bağlı"
 
-#: website/app/GeoKrety/Controller/Login.php:192
+#: website/app/GeoKrety/Controller/Pages/Login.php:216
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
-msgstr ""
+msgstr "Bu %s hesap zaten başka bir GeoKrety hesabı ile bağlı."
 
-#: website/app/GeoKrety/Controller/Login.php:207
+#: website/app/GeoKrety/Controller/Pages/Login.php:231
 msgid "Auth request was canceled."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:50
-#: website/app/GeoKrety/Controller/MoveCommentCreate.php:72
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:50
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:72
 msgid "Comment saved."
 msgstr "Yorum Kaydedildi."
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:26
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:26
 msgid "Comment removed."
 msgstr "Yorum kaldırıldı."
 
-#: website/app/GeoKrety/Controller/MoveCommentDelete.php:28
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:28
 msgid "Failed to delete comment."
 msgstr "Yorum silinemedi."
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:108
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:108
 msgid "The date time could not be parsed."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:220
-#: website/app/GeoKrety/Controller/MoveCreateXML.php:57
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:220
+#: website/app/GeoKrety/Controller/Pages/MoveCreateXML.php:57
 msgid "Failed to save move."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/MoveCreate.php:223
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:223
 msgid "Your move has been saved."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/MoveDelete.php:24
+#: website/app/GeoKrety/Controller/Pages/MoveDelete.php:24
 msgid "Move removed."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:37
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:37
 msgid "Failed to record read datetime."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:64
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:64
 msgid "Error while saving comment."
-msgstr ""
+msgstr "Yorum kaydedilirken hata oluştu."
 
-#: website/app/GeoKrety/Controller/NewsDetails.php:66
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:66
 msgid "Your comment has been saved."
 msgstr "Yorumun kaydedildi."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:27
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:27
 msgid "Failed to update your subscriptions preferences."
-msgstr ""
+msgstr "Üyelik tercihleri güncellenirken hata oluştu."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:32
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:32
 msgid "You will now receive updates on new comments."
-msgstr ""
+msgstr "Yeni yorumlar hakkında güncellemeler alacaksınız."
 
-#: website/app/GeoKrety/Controller/NewsSubscription.php:35
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:35
 msgid "You will not receive updates anymore."
-msgstr ""
+msgstr "Artık bizden e-posta almayacaksınız."
 
-#: website/app/GeoKrety/Controller/OAuthDetach.php:36
+#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:36
 #, php-format
 msgid "Something went wrong while detaching from your %s account. Please contact us."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:29
-#: website/app/GeoKrety/Controller/RegistrationActivate.php:20
-#: website/app/GeoKrety/Controller/UserEmailChange.php:18
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:26
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:26
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:29
+#: website/app/GeoKrety/Controller/Pages/RegistrationActivate.php:22
+#: website/app/GeoKrety/Controller/Pages/UserEmailChange.php:19
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:26
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:23
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:28
 msgid "Sorry this token is not valid, already used or expired."
-msgstr ""
+msgstr "Üzgünüz bu kod zaten kullanılmış veya tarihi geçmiş."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:60
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:44
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:44
 msgid "New passwords doesn't match."
 msgstr "Yeni parolalar uyuşmuyor."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:87
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:87
 msgid "Unexpected error occurred."
-msgstr ""
+msgstr "Beklenmeyen bir hata oluştu."
 
-#: website/app/GeoKrety/Controller/PasswordRecoveryChange.php:92
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:55
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:92
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:55
 msgid "Your password has been changed."
 msgstr "Şifreniz değiştirildi."
 
-#: website/app/GeoKrety/Controller/PasswordRecovery.php:44
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:44
 msgid "Sorry no account using that email address."
 msgstr "Üzgünüz hiç bir kayıtlı kullanıcı bu E-posta adresini kullanmıyor."
 
-#: website/app/GeoKrety/Controller/PictureEdit.php:38
+#: website/app/GeoKrety/Controller/Pages/PictureEdit.php:38
 msgid "Picture caption saved."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserChoosePreferedLanguage.php:35
+#: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:35
 msgid "Language preferences updated."
 msgstr "Dil tercihleri güncellendi."
 
-#: website/app/GeoKrety/Controller/UserContactByGeokret.php:24
+#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:24
 #, php-format
 msgid "GeoKret: %s (%s)"
-msgstr ""
+msgstr "GeoKret: %s(%s)"
 
-#: website/app/GeoKrety/Controller/UserContact.php:81
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:81
 msgid "Failed to save the mail."
 msgstr "Posta kaydedilemedi."
 
-#: website/app/GeoKrety/Controller/UserContact.php:89
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:89
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "Mesajınız gönderildi %s adlı kullanıcıya gönderildi."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:45
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:45
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:45
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:42
 msgid "Unexpected value."
 msgstr "Beklenmedik değer."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:61
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:59
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:61
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:56
 msgid "Something went wrong, operation aborted."
 msgstr "Bir şeyler ters gitti ve operasyon başarısız oldu."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:71
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:71
 msgid "Perfect! Enjoy your new email address."
-msgstr ""
+msgstr "Mükemmel! Yeni e-posta adresinizin keyfini çıkarın."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeRevertToken.php:75
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:75
 msgid "Your email address has been reverted."
-msgstr ""
+msgstr "E-posta adresiniz geri döndürüldü."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:70
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:67
 msgid "Your email address has been validated."
 msgstr "E-posta adresiniz doğrulandı."
 
-#: website/app/GeoKrety/Controller/UserEmailChangeToken.php:79
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:76
 msgid "No change has been processed. This token is now revoked."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:26
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:25
+msgid "You have successfully validated your email address."
+msgstr "E-posta adresinizi başarıyla doğruladınız."
+
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:26
 msgid "Failed to refresh your secid."
-msgstr ""
+msgstr "secid'niz yenilemedi"
 
-#: website/app/GeoKrety/Controller/UserRefreshSecid.php:29
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:29
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
-msgstr ""
+msgstr "secid'niz yenilendi. GeoKrety hesabınıza bağlı başka herhangi bir uygulamayı yeniden doğrulamayı unutmayın."
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:23
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:23
 msgid "Failed to save your preferred user banner template."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserTemplateChooser.php:26
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:26
 msgid "Your user banner template preference has been successfully saved."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:37
 msgid "Your email preferences were saved."
-msgstr ""
+msgstr "E-Posta techileri kaydedildi."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:51
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:51
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
-msgstr ""
+msgstr "Yeni adresinize bir onay e-postası gönderildi. E-posta adresinizdeki değişiklikliği onaylamak için e-postada verilen bağlantıyı tıklamanız gerekir. Onay bağlantısı %s gün boyunca geçerlidir."
 
-#: website/app/GeoKrety/Controller/UserUpdateEmail.php:79
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:79
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
-msgstr ""
+msgstr "Yeni adresinize bir onay e-postası gönderildi. E-posta adresinizdeki değişiklikliği onaylamak için e-postada verilen bağlantıyı tıklamanız gerekir. Onay bağlantısı %s gün boyunca geçerlidir."
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:24
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:24
 msgid "Failed to save your home coordinates."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserUpdateObservationArea.php:27
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:27
 msgid "Your home coordinates were successfully saved."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/UserUpdatePassword.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:37
 msgid "Your old password is invalid."
-msgstr ""
+msgstr "Eski şifre geçerli değil!"
 
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:50
@@ -367,18 +376,20 @@ msgid "Waypoint length is invalid. It should be between %d and %d characters lon
 msgstr ""
 
 #: website/app/GeoKrety/Email/AccountActivation.php:16
+#: website/app/GeoKrety/Email/EmailRevalidate.php:20
 msgid "A confirmation email has been sent to your address."
 msgstr ""
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
-#: website/app/GeoKrety/Email/AccountActivation.php:47
+#: website/app/GeoKrety/Email/AccountActivation.php:55
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
 msgstr ""
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
-#: website/app/GeoKrety/Email/AccountActivation.php:48
+#: website/app/GeoKrety/Email/AccountActivation.php:56
+#: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
 msgstr ""
@@ -386,50 +397,78 @@ msgstr ""
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
 msgid "Welcome to GeoKrety.org"
-msgstr ""
+msgstr "GeoKrety.org'a Hoşgeldiniz"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
-msgid "Your account seems to already exists."
-msgstr ""
+msgid "Your account seems to already exist."
+msgstr "Bu hesap zaten var."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
-#: website/app/GeoKrety/Email/AccountActivation.php:46
-msgid "The confirmation email was sent again to your mail address."
-msgstr ""
-
-#: website/app/GeoKrety/Email/AccountActivation.php:45
-msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
-
 #: website/app/GeoKrety/Email/AccountActivation.php:54
-msgid "Account activated"
-msgstr ""
+msgid "The confirmation email was sent again to your mail address."
+msgstr "E-posta adresinize yeniden bir onay e-postası gönderildi."
 
-#: website/app/GeoKrety/Email/BasePHPMailer.php:67
+#: website/app/GeoKrety/Email/AccountActivation.php:53
+msgid "<strong>Your account is not yet active.</strong>"
+msgstr "<strong>Hesabınız aktif değil.</strong>"
+
+#: website/app/GeoKrety/Email/AccountActivation.php:61
+msgid "Account activated"
+msgstr "Hesap etkinleştirildi."
+
+#: website/app/GeoKrety/Email/BasePHPMailer.php:81
 msgid "An error occurred while sending mail."
-msgstr ""
+msgstr "E-posta gönderilirken hata oluştu."
 
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
 msgstr ""
 
-#: website/app/GeoKrety/Email/EmailChange.php:26
+#: website/app/GeoKrety/Email/EmailChange.php:28
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
+msgid "Revalidate your email address"
+msgstr "E-posta adresinizi yeniden doğrulayın"
+
+#: website/app/GeoKrety/Email/EmailChange.php:32
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
+msgid "Your account has been imported from GKv1."
+msgstr ""
+
+#: website/app/GeoKrety/Email/EmailChange.php:33
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
+msgid "We would like to verify that your mail address is still valid."
+msgstr "E-posta adresinizin geçerli olduğunu doğrulamak istiyoruz."
+
 #: website/app/GeoKrety/Email/EmailChange.php:34
+msgid "An email has been sent to your registered address, please click the included link."
+msgstr ""
+
+#: website/app/GeoKrety/Email/EmailChange.php:45
+#: website/app/GeoKrety/Email/EmailChange.php:53
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
 #: website/app-templates/smarty/pages/email_change.tpl:3
+#: website/app-templates/smarty/pages/email_revalidate.tpl:3
 msgid "Changing your email address"
-msgstr ""
+msgstr "E-posta adresi değiştiriliyor"
 
-#: website/app/GeoKrety/Email/EmailChange.php:52
-#: website/app/GeoKrety/Email/EmailChange.php:60
+#: website/app/GeoKrety/Email/EmailChange.php:71
+#: website/app/GeoKrety/Email/EmailChange.php:79
 msgid "Email address changed"
+msgstr "E-posta adresi değişti"
+
+#: website/app/GeoKrety/Email/EmailChange.php:85
+msgid "Email address reverted"
+msgstr "E-posta adresi geri döndürüldü"
+
+#: website/app/GeoKrety/Email/EmailRevalidate.php:21
+msgid "Please click the included link to confirm it's validity."
 msgstr ""
 
-#: website/app/GeoKrety/Email/EmailChange.php:66
-msgid "Email address reverted"
-msgstr ""
+#: website/app/GeoKrety/Email/EmailRevalidate.php:27
+msgid "Account revalidation"
+msgstr "Hesap yeniden doğrulama"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -438,15 +477,15 @@ msgstr ""
 
 #: website/app/GeoKrety/Email/PasswordChange.php:17
 msgid "Password reset request"
-msgstr ""
+msgstr "Şifre sıfırlama isteği"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:19
 msgid "An email containing a validation link has been sent to the provided email address."
-msgstr ""
+msgstr "Doğrulama bağlantısı içeren e-posta verilen e-posta adresine gönderildi."
 
 #: website/app/GeoKrety/Email/PasswordChange.php:25
 msgid "Your password has been changed"
-msgstr ""
+msgstr "Şifreniz değiştirildi"
 
 #: website/app/GeoKrety/Email/UserContact.php:14
 #, php-format
@@ -459,7 +498,7 @@ msgstr "Geleneksel"
 
 #: website/app/GeoKrety/GeokretyType.php:57
 msgid "A book/CD/DVD…"
-msgstr ""
+msgstr "Bir kitap/CD/DVD…"
 
 #: website/app/GeoKrety/GeokretyType.php:58
 msgid "A human"
@@ -491,7 +530,7 @@ msgstr "met"
 
 #: website/app/GeoKrety/LogType.php:119
 msgid "archive"
-msgstr ""
+msgstr "Arşivle"
 
 #: website/app/GeoKrety/LogType.php:120
 msgid "dip"
@@ -501,10 +540,6 @@ msgstr "dip"
 #: website/app-templates/smarty/blocks/geokret/details.tpl:56
 #: website/app-templates/smarty/pages/home.tpl:78
 msgid "Born"
-msgstr ""
-
-#: website/app/GeoKrety/Model/User.php:317
-msgid "An error occurred while sending the activation mail."
 msgstr ""
 
 #: website/app/GeoKrety/Model/UserSocialAuth.php:45
@@ -519,7 +554,7 @@ msgstr ""
 
 #: website/app/GeoKrety/PictureType.php:58
 msgid "GeoKret avatar"
-msgstr ""
+msgstr "GeoKret avatarı"
 
 #: website/app/GeoKrety/PictureType.php:59
 msgid "GeoKret move"
@@ -527,7 +562,7 @@ msgstr ""
 
 #: website/app/GeoKrety/PictureType.php:60
 msgid "User avatar"
-msgstr ""
+msgstr "Kullanıcı avatarı"
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:233
 msgid "Bad coordinates or unknown format."
@@ -539,7 +574,7 @@ msgstr "Eksik veya geçersiz koordinatlar."
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Bilgiler"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
@@ -553,12 +588,12 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
-msgstr ""
+msgstr "Takip kodu \"%s\" çok kısa görünüyor. %d karakterlerinin burada olmasını bekliyoruz."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Takip kodu \"%s\" çok uzun görünüyor. %d karakterlerinin burada olmasını bekliyoruz."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -568,16 +603,16 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:49
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
-msgstr ""
+msgstr "Takip kodu \"%s\" geçersiz karakterler içeriyor."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:59
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
-msgstr ""
+msgstr "Üzgünüz, fakat Takip Kodu \"%s\" veri tabanında bulunamadı."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
 msgid "No Tracking Code provided."
-msgstr ""
+msgstr "Takip kodu sağlanmamış."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:110
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
@@ -591,7 +626,7 @@ msgstr ""
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
 #, php-format
 msgid "Sorry, but username \"%s\" is already used. If that's your account, please <a href=\"%s\">login</a> first."
-msgstr ""
+msgstr "Üzgünüz, fakat kullanıcı adı \"%s\" zaten kullanılmış. Eğer bu sizin hesabınızsa, lütfen <a href=\"%s\">giriş yapın</a>"
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
@@ -627,7 +662,7 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:35
 #, php-format
 msgid "Location: %s"
-msgstr ""
+msgstr "Lokasyon: %s"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:18
 msgid "has avatar icon"
@@ -644,11 +679,11 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.gklink.php:23
 #, php-format
 msgid "View %s's profile"
-msgstr ""
+msgstr "%s'nin profilini görüntüle"
 
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
-msgstr ""
+msgstr "Ayrıntıları Görüntüle"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:5
 #: website/app-templates/smarty/plugins/modifier.posicon.php:12
@@ -696,11 +731,11 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
 #, php-format
 msgid "%s's profile avatar"
-msgstr ""
+msgstr "%s'nin profil avatarı"
 
 #: website/app-templates/smarty/plugins/modifier.userlink.php:17
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonim"
 
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
 #, php-format
@@ -709,15 +744,15 @@ msgstr ""
 
 #: website/app/validators.php:13
 msgid "The {0} field cannot be empty"
-msgstr ""
+msgstr "{0} alanı boş bırakılamaz."
 
 #: website/app/validators.php:17
 msgid "The {0} field must be a valid date time"
-msgstr ""
+msgstr "{0} geçerli bir zaman olmalıdır"
 
 #: website/app/validators.php:21
 msgid "The GeoKret type is invalid"
-msgstr ""
+msgstr "GeoKret türü geçersiz"
 
 #: website/app/validators.php:25
 msgid "The move type is invalid"
@@ -725,11 +760,11 @@ msgstr ""
 
 #: website/app/validators.php:29
 msgid "The picture type is invalid"
-msgstr ""
+msgstr "Resim türü geçersiz"
 
 #: website/app/validators.php:33
 msgid "This language is not supported"
-msgstr ""
+msgstr "Bu dil desteklenmiyor!"
 
 #: website/app/validators.php:39
 msgid "The password must be ciphered"
@@ -737,11 +772,11 @@ msgstr ""
 
 #: website/app/validators.php:48
 msgid "Anonymous users must provide a value for {0}"
-msgstr ""
+msgstr "Anonim kullanıcılar {0} için bir değer ataması gerekiyor"
 
 #: website/app/validators.php:60
 msgid "Registered users must provide a value for {0}"
-msgstr ""
+msgstr "Kayıtlı kullanıcılar {0} için bir değer ataması gerekiyor"
 
 #: website/app/validators.php:71
 msgid "This logtype require valid {0} coordinates"
@@ -753,28 +788,28 @@ msgstr ""
 
 #: website/app/validators.php:90
 msgid "{0} cannot be in the future"
-msgstr ""
+msgstr "{0} gelecekte olamaz"
 
 #: website/app/validators.php:98
 msgid "{0} must be after GeoKret birth"
-msgstr ""
+msgstr "{0} GeoKret'in doğumundan sonra olmalıdır"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/password-changed.tpl:3
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Tebrikler"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "E-posta adresiniz başarıyla değiştirildi"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "E-posta adresiniz başarıyla değiştirildi: %1."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
 #: website/app-templates/smarty/emails/password-changed.tpl:12
@@ -789,62 +824,64 @@ msgstr "Oturum Aç"
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
 msgid "If you did not requested this, click the link below."
-msgstr ""
+msgstr "Eğer bunu siz istemediyseniz, aşığıdaki linke tıklayın."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
 msgid "Revert this change!"
-msgstr ""
+msgstr "Değişiklikleri geri al!"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:20
 #: website/app-templates/smarty/emails/password-recovery.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
 #: website/app-templates/smarty/emails/account-activation.tpl:13
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
 msgid "This link expires %1."
-msgstr ""
+msgstr "Bu bağlantı %1 tarihinde sona eriyor."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
 msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
+msgstr "Eğer parola değiştirme işleminde bulunmadıysanız, hemen parolanızı değiştirmenizi göz önünde bulundurun."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:17
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:22
 msgid "Change my password!"
-msgstr ""
+msgstr "Parolamı değiştir!"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:29
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:22
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:27
 msgid "You're getting this email because you've changed your email on our website."
-msgstr ""
+msgstr "Bu e-postayı alma nedeni e-postanızı web sitemizde değiştirdiniz."
 
 #: website/app-templates/smarty/emails/base.tpl:20
 #: website/app-templates/smarty/header.tpl:3
 msgid "Open source item tracking for all geocaching platforms"
 msgstr ""
 
-#: website/app-templates/smarty/emails/base.tpl:29
+#: website/app-templates/smarty/emails/base.tpl:30
 msgid "Hi %1,"
-msgstr ""
+msgstr "Merhaba %1,"
 
-#: website/app-templates/smarty/emails/base.tpl:36
+#: website/app-templates/smarty/emails/base.tpl:37
 msgid "Sincerely,<br>The GeoKrety Team"
-msgstr ""
+msgstr "Saygılarımızla, <br>GeoKrety Ekibi"
 
-#: website/app-templates/smarty/emails/base.tpl:45
+#: website/app-templates/smarty/emails/base.tpl:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
+msgstr "Eğer GeoKrety.org'da hiçbir zaman hesap oluşturmadıysanız, lütfen <a href=\"mailto:%1?subject=%2\">bizimle iletişime</a> geçin."
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:3
 msgid "Forgot Your Password?"
-msgstr ""
+msgstr "Şifrenizi mi unuttunuz?"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Şifrenizi kurtarın"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:8
 msgid "It happens. Click the link below to reset your password."
@@ -852,21 +889,52 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:12
 msgid "Reset Password"
-msgstr ""
+msgstr "Parolayı Sıfırla"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:19
 #: website/app-templates/smarty/emails/password-changed.tpl:17
 msgid "You're getting this email because you've changed your password on our website."
-msgstr ""
+msgstr "Bu e-postayı alma nedeni e-postanızı web sitemizde değiştirdiniz."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:4
 #: website/app-templates/smarty/emails/account-activated.tpl:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "GeoKrety.org'daki hesabınız aktif değil."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
+msgstr "Şifreniz başarıyla değiştirildi."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
+msgid "Account has been deleted"
+msgstr "Hesap silindi"
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
+msgid "Your account is now deleted."
+msgstr "Hesabınız silindi."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
+msgid "The account you created %1 has never been activated."
+msgstr "Oluşturduğun hesap %1 aktif değil"
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
+msgid "Our policy is to delete unactivated accounts after %1 days."
 msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
+msgid "We are sorry to inform you that your account has been permanently erased."
+msgstr "Hesabınızın kalıcı olarak silindiğinizi size bildirmekten üzgünüz."
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
+msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
+#: website/app-templates/smarty/emails/account-activation.tpl:19
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
+#: website/app-templates/smarty/emails/account-activated.tpl:19
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "Bu e-postayı alma nedeni web sitemizde üye oldunuz."
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
@@ -886,7 +954,7 @@ msgstr ""
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 msgid "Hooray"
-msgstr ""
+msgstr "Yaşasın"
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:8
@@ -899,7 +967,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
-msgstr ""
+msgstr "GeoKret'i görüntüle"
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:15
 msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
@@ -908,15 +976,23 @@ msgstr ""
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "E-posta adresi değişikliğini doğrulayın."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr ""
+msgstr "Birisi, umarız sizsiniz, GeoKrety iletişim e-posta adresini %1 'ne değiştirmeyi talep edindi."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
 msgid "Do not change!"
-msgstr ""
+msgstr "Değiştirme!"
+
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:4
+msgid "Some accounts will be deleted."
+msgstr "Bazı hesaplar silenecek"
+
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:7
+msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
+msgstr "%1 tane hesap %2 gündür aktifleştirilmemiş. Şimdi silenecekler."
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
@@ -932,11 +1008,11 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Birisi size mesaj gönderdi"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Bu e-posta <a href=\"%2\">%1</a> tarafından gönderildi."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -948,11 +1024,11 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/user-contact.tpl:18
 msgid "Subject:"
-msgstr ""
+msgstr "Konu:"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:23
 msgid "Reply to %1"
-msgstr ""
+msgstr "%1'ye cevapla"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:28
 msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
@@ -960,23 +1036,20 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/account-activation.tpl:4
 msgid "One step left to use GeoKrety.org."
-msgstr ""
+msgstr "GeoKrety.org'u kullanmaya bir adım kaldı."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
 msgstr ""
 
 #: website/app-templates/smarty/emails/account-activation.tpl:10
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
 msgid "Activate your account"
-msgstr ""
+msgstr "Hesabınızı Aktifleştirin"
 
 #: website/app-templates/smarty/emails/account-activation.tpl:15
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:19
 msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr ""
-
-#: website/app-templates/smarty/emails/account-activation.tpl:19
-#: website/app-templates/smarty/emails/account-activated.tpl:19
-msgid "You're getting this email because you've just signed up on our website."
 msgstr ""
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:4
@@ -985,27 +1058,47 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr ""
+msgstr "Birisi, umarız sizsiniz, GeoKrety iletişim e-posta adresini sizin e-posta adresine değiştirmeyi talep etti."
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
 msgid "Validate your new email address"
-msgstr ""
+msgstr "Yeni e-posta adresinizi doğrulayın"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
 msgid "This link is valid for %1."
-msgstr ""
+msgstr "Bu bağlantı %1 tarihine kadar geçerli."
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
 msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
-msgstr ""
+msgstr "Eğer bunu talep etmediyseniz veya GeoKrety'nin ne olduğunu bilmiyorsanız, bu e-postayı dikkate almayın. Bizi bir daha asla duymayacaksınız!"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
 msgid "You're getting this email because you've requested an email address change on our website."
+msgstr "Bu e-postayı alma nedeni e-postanızı web sitemizde değiştirdiniz."
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
+msgid "Account not yet active"
+msgstr "Hesap henüz aktif değil"
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
+msgid "Your account is about to be deleted."
+msgstr "Hesabınız silinecektir."
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
+msgid "The account you created %1 has not yet been activated."
+msgstr "Oluşturduğun hesap %1 aktif değil"
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
+msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
+msgid "Unactivated accounts are automatically deleted after %1 days."
 msgstr ""
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
-msgstr ""
+msgstr "GeoKrety.org'daki hesabınız artık aktif."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:15
 msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
@@ -1021,15 +1114,15 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:9
 msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
+msgstr "Bunu <a href=\"%1\">kişisel e-posta tercihlerinizden</a> kapatabilirsiniz."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:14
 msgid "Here is what changed recently."
-msgstr ""
+msgstr "Son günlerde değişen şeyler."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:17
 msgid "Latest news"
-msgstr ""
+msgstr "Son haberler"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:27
 msgid "GeoKrety dropped in your observation area"
@@ -1037,7 +1130,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Open interactive map"
-msgstr ""
+msgstr "İnteraktif haritayı aç"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Observation area map"
@@ -1048,13 +1141,13 @@ msgstr ""
 #: website/app-templates/smarty/emails/daily-mail.tpl:125
 #: website/app-templates/smarty/emails/daily-mail.tpl:170
 msgid "GeoKret"
-msgstr ""
+msgstr "GeoKret"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:37
 #: website/app-templates/smarty/emails/daily-mail.tpl:80
 #: website/app-templates/smarty/emails/daily-mail.tpl:126
 msgid "Position"
-msgstr ""
+msgstr "Pozisyon"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:38
 #: website/app-templates/smarty/emails/daily-mail.tpl:81
@@ -1078,7 +1171,7 @@ msgstr "Yorum"
 #: website/app-templates/smarty/emails/daily-mail.tpl:128
 #: website/app-templates/smarty/emails/daily-mail.tpl:172
 msgid "Author"
-msgstr ""
+msgstr "Yazar"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:40
 msgid "Home distance"
@@ -1115,6 +1208,22 @@ msgstr "Mesafe"
 msgid "Latest move comments"
 msgstr ""
 
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
+msgid "Is this address still valid?"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
+msgid "This is important in case of password loss."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
+msgid "Validate your email address"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
+msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+msgstr ""
+
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:15
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:20
@@ -1149,11 +1258,11 @@ msgstr "İşlem"
 
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:21
 msgid "Delete all mails"
-msgstr ""
+msgstr "Tüm mailleri sil"
 
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:39
 msgid "Delete mail"
-msgstr ""
+msgstr "Mail'i sil"
 
 #: website/app-templates/smarty/elements/move_comment.tpl:10
 #: website/app-templates/smarty/elements/news_comment.tpl:10
@@ -1166,11 +1275,11 @@ msgstr ""
 
 #: website/app-templates/smarty/elements/news.tpl:7
 msgid "Unsubscribe from news"
-msgstr ""
+msgstr "Haber aboneliğinden çık"
 
 #: website/app-templates/smarty/elements/news.tpl:11
 msgid "Subscribe to news"
-msgstr ""
+msgstr "Haber aboneliğine abone ol"
 
 #: website/app-templates/smarty/elements/move.tpl:7
 msgid "Show move on map"
@@ -1184,11 +1293,11 @@ msgstr "Kayıp olarak rapor et"
 #: website/app-templates/smarty/blocks/geokret/details.tpl:35
 #: website/app-templates/smarty/blocks/user/details.tpl:18
 msgid "Upload a picture"
-msgstr ""
+msgstr "Resim yükle"
 
 #: website/app-templates/smarty/elements/move.tpl:73
 msgid "Write a comment"
-msgstr ""
+msgstr "Yorum yaz"
 
 #: website/app-templates/smarty/elements/move.tpl:81
 msgid "Edit log"
@@ -1200,7 +1309,7 @@ msgstr "Kayıdı sil"
 
 #: website/app-templates/smarty/elements/credit.tpl:4
 msgid "%1 logo"
-msgstr ""
+msgstr "%1 logo"
 
 #: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:33
 #: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:30
@@ -1214,38 +1323,38 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:7
 msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr ""
+msgstr "Lütfen <abbr title=\"%1\">Takip Kodunu</abbr> buraya girin:"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:12
 msgid "Tracking code"
-msgstr ""
+msgstr "Takip kodu"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:15
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
 msgid "Log it!"
-msgstr ""
+msgstr "Günlüğe kaydet"
 
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
-msgstr ""
+msgstr "Henüz bir resim yok."
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:20
 msgid "missing"
-msgstr ""
+msgstr "eksik"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "arşivlendi"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:27
 #: website/app-templates/smarty/blocks/user/details.tpl:7
 msgid "Send a message to %1"
-msgstr ""
+msgstr "%1 kişisine bir mesaj gönder"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:32
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:6
 msgid "Edit GeoKret details"
-msgstr ""
+msgstr "GeoKret detaylarını düzenle"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:46
 #: website/app-templates/smarty/forms/geokret_label.tpl:24
@@ -1271,24 +1380,24 @@ msgstr "Ziyaret edilmiş yerler"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:58
 msgid "Social share"
-msgstr ""
+msgstr "Sosyal Platformda paylaş"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:60
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Facebook'ta Paylaş"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:61
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Twitter'da Paylaş"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:62
 msgid "Share on Instagram"
-msgstr ""
+msgstr "Instagram'da paylaş"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:63
 #: website/app-templates/smarty/blocks/user/statpic.tpl:8
 msgid "Copy link to page"
-msgstr ""
+msgstr "Linki kopyala"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:64
 #: website/app-templates/smarty/blocks/user/statpic.tpl:9
@@ -1313,7 +1422,7 @@ msgstr "Harita"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:8
 msgid "Caption:"
-msgstr ""
+msgstr "Başlık:"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:9
 msgid "start"
@@ -1325,7 +1434,7 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:11
 msgid "recently seen"
-msgstr ""
+msgstr "son görülme"
 
 #: website/app-templates/smarty/blocks/geokret/map.tpl:13
 msgid "Download the track as:"
@@ -1337,7 +1446,7 @@ msgstr "Bu geokret henüz başlamadı"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:2
 msgid "Watchers"
-msgstr ""
+msgstr "İzleyenler"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:6
 msgid "Log this GeoKret"
@@ -1370,7 +1479,7 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:40
 msgid "Email owner"
-msgstr ""
+msgstr "E-posta adresi"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:46
 msgid "Make this GeoKret available for adoption by another user"
@@ -1378,20 +1487,20 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:47
 msgid "Transfer ownership"
-msgstr ""
+msgstr "Sahipliği aktar"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:58
 #: website/app-templates/smarty/navbar.tpl:56
 #: website/app-templates/smarty/pages/user_inventory.tpl:25
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
 msgid "Actions"
-msgstr ""
+msgstr "Eylemler"
 
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:3
 #: website/app-templates/smarty/forms/geokret.tpl:31
 #: website/app-templates/smarty/forms/geokret_label.tpl:36
 msgid "Mission"
-msgstr ""
+msgstr "Görev"
 
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:15
 msgid "This GeoKret doesn't have a special mission…"
@@ -1407,7 +1516,7 @@ msgstr "RSS kanalına abone ol"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:15
 msgid "Password change"
-msgstr ""
+msgstr "Şifre değişikliği"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:29
 msgid "Joined us"
@@ -1421,11 +1530,11 @@ msgstr "Dil"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:33
 msgid "Nothing selected"
-msgstr ""
+msgstr "Hiçbir şey seçilmedi"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:36
 msgid "Choose preferred language"
-msgstr ""
+msgstr "Tercih edilen dili seç"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:43
 #: website/app-templates/smarty/pages/contact_us.tpl:17
@@ -1434,19 +1543,19 @@ msgstr "E-posta"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:48
 msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr ""
+msgstr "Bekleyen e-posta doğrulaması, e-posta doğrulmasındaki linke tıklamayı unutmayın!"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:50
 msgid "No email address, please add one!"
-msgstr ""
+msgstr "E-posta adresi yok, lütfen bir tane ekleyin!"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:53
 msgid "Update email address"
-msgstr ""
+msgstr "E-posta adresini güncelle"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:58
 msgid "Secid"
-msgstr ""
+msgstr "Secid"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:61
 msgid "Used to authenticate in other applications. Keep it secret!"
@@ -1454,15 +1563,15 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/details.tpl:62
 msgid "Generate a new secid"
-msgstr ""
+msgstr "Yeni bir secid oluştur"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:72
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr ""
+msgstr "Kullanıcı adını değiştirmek veya hesabını silmek için, <a href=\"%1\">bize e posta gönderin </a>!"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:3
 msgid "Awards"
-msgstr ""
+msgstr "Ödüller"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
@@ -1495,19 +1604,19 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:17
 msgid "Disconnect from %1"
-msgstr ""
+msgstr "%1'den bağlantıyı kes"
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:18
 msgid "Disconnect"
-msgstr ""
+msgstr "Bağlantıyı kes"
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:23
 msgid "Connect with %1"
-msgstr ""
+msgstr "%1 ile bağlan"
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:23
 msgid "Connect"
-msgstr ""
+msgstr "Bağlan"
 
 #: website/app-templates/smarty/blocks/user/badges.tpl:3
 msgid "Badges"
@@ -1568,15 +1677,15 @@ msgstr "Kullanıcı istatistikleri"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:5
 msgid "languages"
-msgstr ""
+msgstr "Diller"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:6
 msgid "platform"
-msgstr ""
+msgstr "platform"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:7
 msgid "group name"
-msgstr ""
+msgstr "grup adı"
 
 #: website/app-templates/smarty/chunks/geokrety_status.tpl:9
 msgid "Remove this GeoKret from the selection"
@@ -1588,20 +1697,20 @@ msgstr ""
 
 #: website/app-templates/smarty/navbar-profile.tpl:3
 msgid "Admin"
-msgstr ""
+msgstr "Yönetici"
 
 #: website/app-templates/smarty/navbar-profile.tpl:7
 #: website/app-templates/smarty/navbar-profile.tpl:16
 msgid "My profile"
-msgstr ""
+msgstr "Profilim"
 
 #: website/app-templates/smarty/navbar-profile.tpl:18
 msgid "My inventory"
-msgstr ""
+msgstr "Envanterim"
 
 #: website/app-templates/smarty/navbar-profile.tpl:19
 msgid "My GeoKrety"
-msgstr ""
+msgstr "Geokretlerim"
 
 #: website/app-templates/smarty/navbar-profile.tpl:22
 msgid "My recent moves"
@@ -1609,7 +1718,7 @@ msgstr ""
 
 #: website/app-templates/smarty/navbar-profile.tpl:23
 msgid "Recent moves of my GeoKrety"
-msgstr ""
+msgstr "Geokretlerimin son hareketleri"
 
 #: website/app-templates/smarty/navbar-profile.tpl:25
 msgid "My photos"
@@ -1617,11 +1726,11 @@ msgstr "Fotoğraflarım"
 
 #: website/app-templates/smarty/navbar-profile.tpl:26
 msgid "Photos of my GeoKrety"
-msgstr ""
+msgstr "Geokret'lerimin fotoğrafları"
 
 #: website/app-templates/smarty/navbar-profile.tpl:30
 msgid "Sign out"
-msgstr ""
+msgstr "Çıkış Yap"
 
 #: website/app-templates/smarty/navbar-profile.tpl:48
 #: website/app-templates/smarty/dialog/login_simple.tpl:11
@@ -1629,11 +1738,11 @@ msgstr ""
 #: website/app-templates/smarty/navbar.tpl:32
 #: website/app-templates/smarty/pages/registration_validated.tpl:13
 msgid "Sign in"
-msgstr ""
+msgstr "Giriş Yap"
 
 #: website/app-templates/smarty/navbar-profile.tpl:53
 msgid "Create account"
-msgstr ""
+msgstr "Hesap oluştur"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
 msgid "Offer this GeoKret for adoption?"
@@ -1645,7 +1754,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:14
 msgid "Back to GeoKret page"
-msgstr ""
+msgstr "GeoKret sayfasına geri dön"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
@@ -1671,11 +1780,13 @@ msgstr ""
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
 #: website/app-templates/smarty/pages/email_change.tpl:33
 #: website/app-templates/smarty/pages/email_change.tpl:37
+#: website/app-templates/smarty/pages/email_revalidate.tpl:33
+#: website/app-templates/smarty/pages/email_revalidate.tpl:37
 #: website/app-templates/smarty/pages/email_change_token.tpl:32
 #: website/app-templates/smarty/pages/email_change_token.tpl:36
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:65
 msgid "Dismiss"
-msgstr ""
+msgstr "Yoksay"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:17
 msgid "Generate an Owner Code"
@@ -1683,7 +1794,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
 msgid "Choose your preferred language"
-msgstr ""
+msgstr "Tercih edilen dili seç"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
 #: website/app-templates/smarty/forms/registration.tpl:40
@@ -1704,7 +1815,7 @@ msgstr ""
 #: website/app-templates/smarty/dialog/user_update_email.tpl:53
 #: website/app-templates/smarty/pages/password_change.tpl:56
 msgid "Change"
-msgstr ""
+msgstr "Değiştir"
 
 #: website/app-templates/smarty/dialog/info.tpl:13
 msgid "Acknowledge"
@@ -1720,17 +1831,17 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:17
 msgid "Refresh"
-msgstr ""
+msgstr "Yenile"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:8
 #: website/app-templates/smarty/pages/password_change.tpl:3
 #: website/app-templates/smarty/pages/password_change.tpl:13
 msgid "Change your password"
-msgstr ""
+msgstr "Parolanızı değiştirin"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:15
 msgid "Current password"
-msgstr ""
+msgstr "Şimdiki şifre"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:17
 msgid "Old password"
@@ -1750,7 +1861,7 @@ msgstr "Yeni parola"
 #: website/app-templates/smarty/pages/password_change.tpl:48
 #: website/app-templates/smarty/pages/password_change.tpl:50
 msgid "Confirm password"
-msgstr ""
+msgstr "Şifreyi Doğrula"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:37
 msgid "Read more about choosing good passwords:"
@@ -1762,11 +1873,11 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:40
 msgid "How to Write Good Passwords"
-msgstr ""
+msgstr "İyi Parola Nasıl Yapılır"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:41
 msgid "Password strength"
-msgstr ""
+msgstr "Şifre dayanıklılığı"
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:3
 #: website/app-templates/smarty/forms/move.tpl:28
@@ -1779,7 +1890,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:15
 msgid "Filter"
-msgstr ""
+msgstr "Filtre"
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
 msgid "Name or ID"
@@ -1800,11 +1911,11 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:35
 msgid "Choose"
-msgstr ""
+msgstr "Seç"
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:60
 msgid "Your inventory is empty."
-msgstr ""
+msgstr "Envanteriniz dolu."
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:67
 msgid "Select <span class=\"badge\">%1</span>"
@@ -1812,7 +1923,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:6
 msgid "Manage picture"
-msgstr ""
+msgstr "Resimi yönet"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:12
 msgid "Caption"
@@ -1834,14 +1945,14 @@ msgstr "Kaydet"
 
 #: website/app-templates/smarty/dialog/picture_delete.tpl:4
 msgid "Do you really want to delete this picture?"
-msgstr ""
+msgstr "Bu resmi gerçekten silmek istediğinizden emin misiniz?"
 
 #: website/app-templates/smarty/dialog/picture_delete.tpl:15
 #: website/app-templates/smarty/dialog/move_delete.tpl:23
 #: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:4
@@ -1889,7 +2000,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:25
 msgid "Message subject"
-msgstr ""
+msgstr "Mesaj konusu"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:30
 msgid "Message"
@@ -1897,7 +2008,7 @@ msgstr "Mesaj"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:32
 msgid "Message to user"
-msgstr ""
+msgstr "Kullanıcıya mesaj at"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:49
 msgid "Send message"
@@ -1922,7 +2033,7 @@ msgstr ""
 #: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:67
 msgid "Define"
-msgstr ""
+msgstr "Tanımla"
 
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
 msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
@@ -1946,7 +2057,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:15
 msgid "Back to my profile"
-msgstr ""
+msgstr "Profilime dön"
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:3
 msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
@@ -1977,7 +2088,7 @@ msgstr "Kullanım koşulları"
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:35
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:54
 msgid "I agree with the terms"
-msgstr ""
+msgstr "Koşulları kabul ediyorum"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:6
 msgid "Do you really want to unsubscribe from this news?"
@@ -1989,11 +2100,11 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:26
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Abonelikten ayrıl"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:28
 msgid "Subscribe"
-msgstr ""
+msgstr "Abone ol"
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
 msgid "Mark this GeoKret as archived?"
@@ -2037,15 +2148,15 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/login.tpl:39
 msgid "No account yet ? Register now!"
-msgstr ""
+msgstr "Hesabınız yok mu? Şimdi kaydolun!"
 
 #: website/app-templates/smarty/dialog/login.tpl:42
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Şifrenizi mi unuttunuz?"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:4
 msgid "Update your email address"
-msgstr ""
+msgstr "E-posta adresini güncelle"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:11
 #: website/app-templates/smarty/dialog/user_update_email.tpl:12
@@ -2056,7 +2167,7 @@ msgstr ""
 #: website/app-templates/smarty/pages/password_recovery.tpl:24
 #: website/app-templates/smarty/pages/password_recovery.tpl:26
 msgid "Email address"
-msgstr ""
+msgstr "Eposta adresi"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:17
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:31
@@ -2106,7 +2217,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:41
 msgid "your comments"
-msgstr ""
+msgstr "yorumlarınız"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:42
 msgid "news posts you have are subscribed to"
@@ -2147,7 +2258,7 @@ msgstr ""
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
 #: website/app-templates/smarty/banners/contribute.tpl:2
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: website/app-templates/smarty/banners/is_not_prod.tpl:3
 msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
@@ -2179,7 +2290,7 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/donate.tpl:8
 msgid "Donate"
-msgstr ""
+msgstr "Bağış Yapın"
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:2
 msgid "Some statistics"
@@ -2199,7 +2310,7 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/contribute.tpl:3
 msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr ""
+msgstr "Bu dal 🥦 aktif olarak geliştiriliyor 👨‍💻, eğer hata bulursanız 🐛, lütfen <a href=\"%1\" target=\"_blank\">diğer hataları ♻️ GitHub'dan kontrol edin %2</a> ve çekinmeden 🈚 yeni bir tane oluşturun 🆕. (Lütfen 1 hata başına bir issue olarak yayınlayın hataları 🙏)"
 
 #: website/app-templates/smarty/navbar.tpl:6
 msgid "Toggle navigation"
@@ -2232,7 +2343,7 @@ msgstr "Bu GeoKret'i al"
 
 #: website/app-templates/smarty/navbar.tpl:64
 msgid "Advanced search"
-msgstr ""
+msgstr "Gelişmiş arama"
 
 #: website/app-templates/smarty/navbar.tpl:65
 msgid "Photo gallery"
@@ -2240,11 +2351,11 @@ msgstr "Fotoğraf galerisi"
 
 #: website/app-templates/smarty/navbar.tpl:68
 msgid "GeoKrety Map"
-msgstr ""
+msgstr "GeoKrety Haritası"
 
 #: website/app-templates/smarty/navbar.tpl:75
 msgid "Currently selected language"
-msgstr ""
+msgstr "Seçili dil"
 
 #: website/app-templates/smarty/navbar.tpl:86
 #: website/app-templates/smarty/navbar.tpl:88
@@ -2270,7 +2381,7 @@ msgstr ""
 #: website/app-templates/smarty/navbar.tpl:97
 #: website/app-templates/smarty/pages/downloads.tpl:3
 msgid "Downloads"
-msgstr ""
+msgstr "İndirilenler"
 
 #: website/app-templates/smarty/navbar.tpl:98
 msgid "GeoKrety Toolbox"
@@ -2290,7 +2401,7 @@ msgstr "İletişim"
 
 #: website/app-templates/smarty/footer.tpl:10
 msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr ""
+msgstr "<a id=\"footer-license\" href=\"%1\">MIT lisansı</a> altında yayınlanmıştır"
 
 #: website/app-templates/smarty/footer.tpl:13
 msgid "Leave in-context translation"
@@ -2302,15 +2413,15 @@ msgstr ""
 
 #: website/app-templates/smarty/footer.tpl:19
 msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr ""
+msgstr "<a id=\"footer-team\" href=\"%1\">GeoKrety Ekibi</a> tarafından <abbr title=\"love\">💗</abbr> ile yapıldı"
 
 #: website/app-templates/smarty/macros/pagination.tpl:5
 msgid "First"
-msgstr ""
+msgstr "İlk"
 
 #: website/app-templates/smarty/macros/pagination.tpl:17
 msgid "Last [%1]"
-msgstr ""
+msgstr "Son [%1]"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
@@ -2329,11 +2440,11 @@ msgstr ""
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:61
 #: website/app-templates/smarty/forms/registration.tpl:77
 msgid "Register"
-msgstr ""
+msgstr "Kaydol"
 
 #: website/app-templates/smarty/forms/geokret.tpl:4
 msgid "Edit a GeoKret"
-msgstr ""
+msgstr "GeoKret'i düzenle"
 
 #: website/app-templates/smarty/forms/geokret.tpl:13
 #: website/app-templates/smarty/forms/geokret.tpl:15
@@ -2344,7 +2455,7 @@ msgstr "GeoKret adı"
 
 #: website/app-templates/smarty/forms/geokret.tpl:20
 msgid "GeoKret type"
-msgstr ""
+msgstr "GeoKret Türü"
 
 #: website/app-templates/smarty/forms/geokret.tpl:33
 #: website/app-templates/smarty/forms/geokret_label.tpl:38
@@ -2361,7 +2472,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/geokret.tpl:51
 msgid "Create"
-msgstr ""
+msgstr "Oluştur"
 
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
@@ -2369,7 +2480,7 @@ msgstr "GeoKret'i tanımla"
 
 #: website/app-templates/smarty/forms/move.tpl:30
 msgid "Verify tracking code"
-msgstr ""
+msgstr "Takip kodunu doğrula"
 
 #: website/app-templates/smarty/forms/move.tpl:33
 msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
@@ -2443,7 +2554,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/move.tpl:152
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
-msgstr ""
+msgstr "örneğin.: GC1AQ2N, OP069B, OC033A…"
 
 #: website/app-templates/smarty/forms/move.tpl:164
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
@@ -2468,7 +2579,7 @@ msgstr "Bu sizin: <br /> - geocaching / opencaching kullanıcı adı olabilir <b
 
 #: website/app-templates/smarty/forms/move.tpl:251
 msgid "It is always nice to receive a little message ;)"
-msgstr ""
+msgstr "Küçük bir mesaj almak her zaman güzeldir ;)"
 
 #: website/app-templates/smarty/forms/move.tpl:274
 msgid "Post your log"
@@ -2579,11 +2690,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/news_details.tpl:3
 msgid "News: %1"
-msgstr ""
+msgstr "Haberler: %1"
 
 #: website/app-templates/smarty/pages/news_details.tpl:13
 msgid "Leave a comment"
-msgstr ""
+msgstr "Yorum bırak"
 
 #: website/app-templates/smarty/pages/news_details.tpl:30
 msgid "Subscribe to this news post"
@@ -2591,7 +2702,7 @@ msgstr "Bu haber postasına abone ol"
 
 #: website/app-templates/smarty/pages/news_details.tpl:42
 msgid "Please <a href=\"%1\">login</a> to post a comment"
-msgstr ""
+msgstr "Lütfen yorum yapmak için<a href=\"%1\">giriş yapın</a>."
 
 #: website/app-templates/smarty/pages/news_details.tpl:47
 msgid "Comments"
@@ -2612,20 +2723,20 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/registration.tpl:3
 msgid "Registration"
-msgstr ""
+msgstr "Kaydol"
 
 #: website/app-templates/smarty/pages/registration.tpl:14
 msgid "Create an account using %1"
-msgstr ""
+msgstr "%1 kullanarak hesap oluşturun"
 
 #: website/app-templates/smarty/pages/registration.tpl:16
 msgid "Create an account"
-msgstr ""
+msgstr "Hesap oluştur"
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:3
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
-msgstr ""
+msgstr "Şifre Kurtarma"
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
@@ -2633,11 +2744,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:40
 msgid "Send me a recovery link"
-msgstr ""
+msgstr "Kurtarma linkini gönder"
 
 #: website/app-templates/smarty/pages/news_list.tpl:18
 msgid "There is no news yet"
-msgstr ""
+msgstr "Henüz haber yok"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
 #: website/app-templates/smarty/pages/email_change_token.tpl:3
@@ -2651,19 +2762,21 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:31
 #: website/app-templates/smarty/pages/email_change.tpl:32
+#: website/app-templates/smarty/pages/email_revalidate.tpl:32
 #: website/app-templates/smarty/pages/email_change_token.tpl:31
 msgid "Back to your profile"
-msgstr ""
+msgstr "Profiline dön"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:35
 #: website/app-templates/smarty/pages/email_change.tpl:36
+#: website/app-templates/smarty/pages/email_revalidate.tpl:36
 #: website/app-templates/smarty/pages/email_change_token.tpl:35
 msgid "Back to homepage"
-msgstr ""
+msgstr "Ana sayfaya dön"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:39
 msgid "I approve this change"
-msgstr ""
+msgstr "Bu değişikliği onaylıyorum"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:40
 msgid "No, please revert to my old email address"
@@ -2672,11 +2785,11 @@ msgstr ""
 #: website/app-templates/smarty/pages/user_inventory.tpl:3
 #: website/app-templates/smarty/pages/user_inventory.tpl:9
 msgid "%1's inventory"
-msgstr ""
+msgstr "%1'nin envanteri"
 
 #: website/app-templates/smarty/pages/user_inventory.tpl:41
 msgid "%1's inventory is currently empty."
-msgstr ""
+msgstr "%1'nin envanteri şuanlık boş."
 
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:40
 msgid "%1 doesn't own any GeoKrety yet."
@@ -2696,7 +2809,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:22
 msgid "Owner Code"
-msgstr ""
+msgstr "Sahip Kodu"
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
@@ -2729,15 +2842,15 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:22
 msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
-msgstr ""
+msgstr "<a href=\"%1\">Firefox</a> (<a href=\"%2\">Tampermonkey eklentisi</a> veya <a href=\"%3\">greasemonkey eklentisi</a> gerekiyor)"
 
 #: website/app-templates/smarty/pages/geokrety_map.tpl:3
 msgid "Interactive map"
-msgstr ""
+msgstr "İnteraktif harita"
 
 #: website/app-templates/smarty/pages/geokrety_map.tpl:17
 msgid "GeoKrety interactive map"
-msgstr ""
+msgstr "GeoKrety interaktif harita"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
@@ -2746,10 +2859,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:36
 msgid "N/A"
-msgstr ""
+msgstr "YOK"
 
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:18
+#: website/app-templates/smarty/pages/email_revalidate.tpl:18
 msgid "Please enter the verification token received by mail."
 msgstr ""
 
@@ -2757,6 +2871,8 @@ msgstr ""
 #: website/app-templates/smarty/pages/password_change.tpl:29
 #: website/app-templates/smarty/pages/email_change.tpl:23
 #: website/app-templates/smarty/pages/email_change.tpl:25
+#: website/app-templates/smarty/pages/email_revalidate.tpl:23
+#: website/app-templates/smarty/pages/email_revalidate.tpl:25
 msgid "Verification Token"
 msgstr ""
 
@@ -2795,18 +2911,19 @@ msgid "Changing your email address."
 msgstr ""
 
 #: website/app-templates/smarty/pages/email_change.tpl:40
+#: website/app-templates/smarty/pages/email_revalidate.tpl:40
 msgid "Check the token"
 msgstr ""
 
 #: website/app-templates/smarty/pages/work_in_progress.tpl:3
 #: website/app-templates/smarty/pages/work_in_progress.tpl:6
 msgid "This page doesn't exists yet, but we're working on it!"
-msgstr ""
+msgstr "Bu sayfa henüz yok, ama üzerinde çalışıyoruz!"
 
 #: website/app-templates/smarty/pages/user_pictures.tpl:3
 #: website/app-templates/smarty/pages/user_pictures.tpl:9
 msgid "%1's posted pictures"
-msgstr ""
+msgstr "%1'nin paylaşılan resimleri"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:3
 msgid "GK mole-holes and GK hotels/motels"
@@ -2822,7 +2939,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:14
 msgid "This subject <a href=\"%1\">is being discussed here</a>."
-msgstr ""
+msgstr "Bu konu <a href=\"%1\">burada tartışılıyor</a>."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:16
 msgid "The system is based on mole-to-mole (peer-to-peer) tunnels. A mole-hole-cache should have a single dedicated destination. A dedicated destination doesn't mean a special cache - an arriving GeoKret may appear in any cache within the destination area."
@@ -2866,7 +2983,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:30
 msgid "By <cite title=\"Original source\">%1</cite>"
-msgstr ""
+msgstr "<cite title=\"Original source\">%1</cite> tarafından"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:33
 msgid "Current mole-holes"
@@ -2912,10 +3029,14 @@ msgstr ""
 msgid "Status: Ready for search"
 msgstr ""
 
+#: website/app-templates/smarty/pages/email_revalidate.tpl:10
+msgid "Email address revalidation."
+msgstr "E-posta adresi yeniden doğrulama"
+
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
 msgid "Welcome to the GeoKrety.org community!"
-msgstr ""
+msgstr "GeoKrety.org topluluğuna hoş geldiniz!"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:10
 msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
@@ -2939,7 +3060,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:13
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
-msgstr ""
+msgstr "hosting, kod, yeni dizayn, destek ve <a href=\"%1\">planlama GK v2</a>"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:14
 msgid "code, support, public relation and advertising"
@@ -2979,15 +3100,15 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:44
 msgid "betatesting, language support"
-msgstr ""
+msgstr "betatesti, dil desteği"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:45
 msgid "betatesting"
-msgstr ""
+msgstr "betatesti"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:46
 msgid "programming support"
-msgstr ""
+msgstr "programlama desteği"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:47
 msgid "coordinates parser"
@@ -3012,15 +3133,15 @@ msgstr "Jenerik"
 #: website/app-templates/smarty/pages/pictures_gallery.tpl:3
 #: website/app-templates/smarty/pages/pictures_gallery.tpl:9
 msgid "Pictures gallery"
-msgstr ""
+msgstr "Resim Galerisi"
 
 #: website/app-templates/smarty/pages/downloads.tpl:8
 msgid "Translation"
-msgstr ""
+msgstr "Çeviri"
 
 #: website/app-templates/smarty/pages/downloads.tpl:11
 msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
-msgstr ""
+msgstr "Çeviri dosyalarımız <a href=\"%1\">crowdin</a>'dedir. Çekinmeden Geokrety.org'u kendi dilinize çevirebilirsiniz veya çeviri hatalarını düzeltebilirsiniz."
 
 #: website/app-templates/smarty/pages/downloads.tpl:17
 msgid "Map of caches for Garmin units"
@@ -3052,7 +3173,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/downloads.tpl:34
 msgid "Other ressources: "
-msgstr ""
+msgstr "Diğer kaynaklar: "
 
 #: website/app-templates/smarty/pages/downloads.tpl:34
 msgid "here"
@@ -3079,11 +3200,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/email_change_token.tpl:39
 msgid "Yes, change my email address"
-msgstr ""
+msgstr "Evet, E-postamı değiştir"
 
 #: website/app-templates/smarty/pages/email_change_token.tpl:40
 msgid "No, abort this request"
-msgstr ""
+msgstr "Hayır, bu isteği iptal et"
 
 #: website/app-templates/smarty/pages/geokret_label.tpl:3
 #: website/app-templates/smarty/pages/geokret_label.tpl:6
@@ -3097,7 +3218,7 @@ msgstr "Bize ulaşın"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:13
 msgid "If you have any suggestion or bug reports feel free to write us."
-msgstr ""
+msgstr "Herhangi bir öneri veya hata raporlarınız varsa, bize yazmaktan çekinmeyin."
 
 #: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Or via the user profile"
@@ -3109,11 +3230,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/contact_us.tpl:41
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:48
 msgid "Public forum"
-msgstr ""
+msgstr "Genel forum"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:56
 msgid "Wanna sign or encrypt your mails?"
@@ -3121,11 +3242,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/contact_us.tpl:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
-msgstr ""
+msgstr "PGP/GPG anahtarımız <a href=\"%1\">burada(%2)</a>"
 
 #: website/app-templates/smarty/pages/user_details.tpl:3
 msgid "%1's user profile"
-msgstr ""
+msgstr "%1'nin profili"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
@@ -3155,15 +3276,15 @@ msgstr ""
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:41
 msgid "Informations:"
-msgstr ""
+msgstr "Bilgiler:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:43
 msgid "Owner:"
-msgstr ""
+msgstr "Sahibi:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:44
 msgid "Distance:"
-msgstr ""
+msgstr "Mesafe:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:45
 msgid "Caches:"
@@ -3171,7 +3292,7 @@ msgstr ""
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:47
 msgid "Actual position:"
-msgstr ""
+msgstr "Gerçek konum:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:49
 msgid "Waypoint:"
@@ -3179,15 +3300,15 @@ msgstr ""
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:50
 msgid "Author:"
-msgstr ""
+msgstr "Yazar:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:51
 msgid "Date:"
-msgstr ""
+msgstr "Tarih:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:52
 msgid "Country:"
-msgstr ""
+msgstr "Ülke:"
 
 #: website/app-templates/smarty/js/geokrety_map.tpl.js:53
 msgid "Elevation:"
