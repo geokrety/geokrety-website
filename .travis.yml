@@ -72,7 +72,7 @@ jobs:
 
         # Other services
         - ${DOCKER_COMPOSE} pull website-base cdn redis minio svg-to-png
-        - ${DOCKER_COMPOSE} build website-base website > /dev/null
+        - ${DOCKER_COMPOSE} build website > /dev/null
         - ${DOCKER_COMPOSE} build pictures-processor pictures-downloader pictures-uploader > /dev/null
         - ${DOCKER_COMPOSE} up -d --no-build
         - docker ps -a
