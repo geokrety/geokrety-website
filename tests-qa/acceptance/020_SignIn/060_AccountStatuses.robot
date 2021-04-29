@@ -34,6 +34,7 @@ Imported accounts can login
     Go To Url                           ${PAGE_HOME_URL}
     Sign In User                        ${USER_1.name}
     Page Should Contain                 Welcome on board
+    Page Should Contain Element         //div[contains(@class, 'alert') and contains(string(), 'A confirmation email has been sent to your address')]    limit=1
 
     # Mailbox Should Contain 0 Messages
     Mailbox Should Contain 1 Messages

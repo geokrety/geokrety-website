@@ -75,7 +75,6 @@ class Login extends Base {
         Session::setGKTCookie();
         LanguageService::changeLanguageTo($user->preferred_language);
         Flash::instance()->addMessage(_('Welcome on board!'), 'success');
-        $user->resendAccountActivationEmail(true);
         if ($redirect) {
             $url = Url::unserializeGoto($user->preferred_language);
             if (is_null($url)) {
@@ -86,6 +85,7 @@ class Login extends Base {
             $user->resendAccountActivationEmail();
             exit();
         }
+        $user->resendAccountActivationEmail(true);
         if (!GK_DEVEL) {
             $f3->abort();
         }
