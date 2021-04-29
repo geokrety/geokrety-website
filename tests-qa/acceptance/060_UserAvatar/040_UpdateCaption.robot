@@ -22,18 +22,24 @@ Define Picture Caption
     Page Should Contain                     Picture caption saved.
     Scroll Into View                        ${USER_PROFILE_FIRST_IMAGE}
     Wait Until Element Is Visible           ${USER_PROFILE_FIRST_IMAGE}
+    # Workaround issue https://bugzilla.mozilla.org/show_bug.cgi?id=1708403
+    Execute JavaScript                      window.scrollTo(0, 0)
     Capture Element                         ${USER_PROFILE_FIRST_IMAGE}             name=img1
 
     Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_PULLER_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Scroll Into View                        ${MODAL_DIALOG}
     Wait Until Element Is Visible           ${MODAL_DIALOG}
+    # Workaround issue https://bugzilla.mozilla.org/show_bug.cgi?id=1708403
+    Execute JavaScript                      window.scrollTo(0, 0)
     Capture Element                         ${MODAL_DIALOG}                         name=img2
 
     Input Text                              ${USER_PROFILE_AVATAR_CAPTION_INPUT}    ${EMPTY}
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
     Scroll Into View                        ${USER_PROFILE_FIRST_IMAGE}
     Wait Until Element Is Visible           ${USER_PROFILE_FIRST_IMAGE}
+    # Workaround issue https://bugzilla.mozilla.org/show_bug.cgi?id=1708403
+    Execute JavaScript                      window.scrollTo(0, 0)
     Capture Element                         ${USER_PROFILE_FIRST_IMAGE}             name=img3
 
     Compare Images
