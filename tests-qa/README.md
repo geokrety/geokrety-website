@@ -20,6 +20,14 @@ Install `Robot Framework`, `geckodriver` and a recent Firefox version (Tested wi
 ```bash
 make install_robot-framework
 make download_geckodriver
+# Command `magick` need to be installed, use your package manager to install it
+apt-get install imagemagick
+```
+
+If you need while development to take manual step, the `Dialogs` module will need `thinker` library.
+
+```bash
+sudo apt-get install python3-tk
 ```
 
 ### From command line
