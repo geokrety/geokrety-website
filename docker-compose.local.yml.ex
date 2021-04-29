@@ -81,7 +81,7 @@ services:
 
   cdn:
     image: geokrety/cdn:new-theme
-    build: https://github.com/geokrety/GeoKrety-Static.git
+    build: https://github.com/geokrety/GeoKrety-Static.git#feature/new-theme
     ports:
       - 3002:80
 
