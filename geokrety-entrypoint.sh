@@ -16,6 +16,9 @@ EOF
 
 # first arg is `-f` or `--some-option`
 if [ "$1" = 'apache2-foreground' ]; then
+    # Install packages
+    make composer
+
     # Generate and optimize autoloader
     make composer-autoload
 
