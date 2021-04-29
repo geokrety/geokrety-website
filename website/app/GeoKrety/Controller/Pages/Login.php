@@ -8,11 +8,13 @@ use GeoKrety\AuthGroup;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
+use GeoKrety\Model\UserSocialAuth;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Url;
 use GeoKrety\Service\Xml\Error;
 use GeoKrety\Session;
+use Multilang;
 use Sugar\Event;
 
 class Login extends Base {
@@ -78,7 +80,7 @@ class Login extends Base {
         if ($redirect) {
             $url = Url::unserializeGoto($user->preferred_language);
             if (is_null($url)) {
-                $ml = \Multilang::instance();
+                $ml = Multilang::instance();
                 $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
             }
             $f3->reroute($url, false, false);
@@ -179,13 +181,13 @@ class Login extends Base {
             // Connect user/provider
             if ($user === false) {
                 $f3->get('DB')->begin();
-                $user_social_auth = new \GeoKrety\Model\UserSocialAuth();
+                $user_social_auth = new UserSocialAuth();
                 $user_social_auth->provider = SocialAuthProvider::getProvider($data['provider']);
                 $user_social_auth->user = $this->current_user;
                 $user_social_auth->uid = $data['uid'];
                 if (!$user_social_auth->validate()) {
                     $f3->get('DB')->rollback();
-                    $f3->reroute('@home', $die = true);
+                    $f3->reroute('@home');
                 }
                 $user_social_auth->save();
 
@@ -202,25 +204,25 @@ class Login extends Base {
                 $this->current_user->save();
                 $f3->get('DB')->commit();
 
-                $this::connectUser($f3, $user, 'oauth');
+                $this::connectUser($f3, $this->current_user, 'oauth');
                 exit();
             }
 
             // This user is already connected to this social auth provider
             if ($user->isCurrentUser()) {
                 Flash::instance()->addMessage(sprintf(_('Your account is already linked with %s'), $data['provider']), 'info');
-                $f3->reroute('@home', $die = true);
+                $f3->reroute('@home');
             }
 
             // This social account is already registered with *another* account
             Flash::instance()->addMessage(sprintf(_('This %s account is already linked with another GeoKrety account.'), $data['provider']), 'danger');
-            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
         }
 
         // Create a new user
         if ($user === false) {
             $f3->set('SESSION.social_auth_data', json_encode($data));
-            $f3->reroute('@registration_social', $die = true);
+            $f3->reroute('@registration_social');
         }
 
         // Log user in
