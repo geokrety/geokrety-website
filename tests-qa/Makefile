@@ -16,6 +16,10 @@ ROBOT_PARAMS := --variable browser:Firefox -v images_dir:visual_images  --debugf
 help: ## This help.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
+test-headless: ## Run tests headless mode
+	@echo "Run tests headless"
+	HEADLESS=True make test
+
 test: ## run robot framework tests (master env)
 	@echo "Run Tests"
 	time PATH=${PATH}:${PWD} robot --log log.html --output output.xml $(ROBOT_PARAMS)
