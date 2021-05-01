@@ -15,6 +15,11 @@ abstract class Base {
         'registration_social',
         'registration_activate',
         'terms_of_use',
+        'user_update_email_revalidate_token',
+        'devel_mail_list',
+        'devel_mail',
+        'devel_mail_delete',
+        'devel_mail_delete_all',
     ];
 
     /**

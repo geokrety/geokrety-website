@@ -30,17 +30,21 @@ Valid accounts can login
     Mailbox Should Contain 0 Messages
 
 Imported accounts can login
-    Seed 1 users with status 2
+    Seed 1 users without terms of use with status 2
     Go To Url                           ${PAGE_HOME_URL}
     Sign In User                        ${USER_1.name}
     Page Should Contain                 Welcome on board
     Page Should Contain Element         //div[contains(@class, 'alert') and contains(string(), 'A confirmation email has been sent to your address')]    limit=1
 
-    # Mailbox Should Contain 0 Messages
     Mailbox Should Contain 1 Messages
-
     Go To Url                           ${PAGE_DEV_MAILBOX_URL}
     Element Should Contain              ${DEV_MAILBOX_FIRST_MAIL_LINK}    Account revalidation
+
+    Go To Url                           ${PAGE_DEV_MAILBOX_FIRST_MAIL_URL}
+    Page Should Contain                 Your account has been imported from GKv1
+    Click Link With Text                Validate your email address
+    Location Should Be                  ${PAGE_TERMS_OF_USE_URL}
+    Page Should Contain                 You have successfully validated your email address.
 
 *** Keywords ***
 
