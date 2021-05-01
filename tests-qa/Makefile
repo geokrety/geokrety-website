@@ -40,7 +40,7 @@ install_robot-framework: ## Install robot framework
 	pip install -r requirements.txt
 
 download_geckodriver:  ## Download geckodriver
-	curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz | tar xf -
+	curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz | tar xzf -
 
 download_bslocal:  ## Download BrowserStack Local agent
 	curl -L https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip | busybox unzip -
