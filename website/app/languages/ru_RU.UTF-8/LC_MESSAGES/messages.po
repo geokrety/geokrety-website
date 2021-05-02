@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-02 15:29+0000\n"
-"PO-Revision-Date: 2021-05-02 15:33\n"
+"POT-Creation-Date: 2021-05-02 16:47+0000\n"
+"PO-Revision-Date: 2021-05-02 16:52\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -1274,45 +1274,6 @@ msgstr "Удалить почту"
 msgid "Delete comment"
 msgstr "Удалить комментарий"
 
-#: website/app-templates/smarty/elements/map_caption.tpl:9
-msgid "Last moved date"
-msgstr "Дата последнего перемещения"
-
-#: website/app-templates/smarty/elements/map_caption.tpl:22
-#: website/app-templates/smarty/elements/map_caption.tpl:30
-#: website/app-templates/smarty/elements/map_caption.tpl:38
-#: website/app-templates/smarty/elements/map_caption.tpl:46
-#: website/app-templates/smarty/elements/map_caption.tpl:54
-#: website/app-templates/smarty/elements/map_caption.tpl:62
-msgid "%1 days"
-msgstr ""
-
-#: website/app-templates/smarty/elements/map_caption.tpl:75
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-msgid "Total distance"
-msgstr "Пройдено всего"
-
-#: website/app-templates/smarty/elements/map_caption.tpl:138
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-msgid "Caches visited count"
-msgstr "Количество посещённых тайников"
-
-#: website/app-templates/smarty/elements/map_caption.tpl:139
-msgid "Total visited caches"
-msgstr "Всего посещенных тайников"
-
-#: website/app-templates/smarty/elements/map_caption.tpl:151
-#: website/app-templates/smarty/elements/map_caption.tpl:159
-#: website/app-templates/smarty/elements/map_caption.tpl:167
-#: website/app-templates/smarty/elements/map_caption.tpl:175
-#: website/app-templates/smarty/elements/map_caption.tpl:183
-msgid "%1 caches"
-msgstr ""
-
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
 msgstr "Развертано на %1"
@@ -1412,6 +1373,10 @@ msgstr "Номер"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
 msgid "Tracking Code"
 msgstr "Код отслеживания"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Total distance"
+msgstr "Пройдено всего"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:54
 msgid "Places visited"
@@ -2701,6 +2666,14 @@ msgstr "Был замечен в"
 msgid "Last move"
 msgstr "Последний ход"
 
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+msgid "Caches visited count"
+msgstr "Количество посещённых тайников"
+
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 еще не переместил GeoKrety."
@@ -3295,44 +3268,4 @@ msgstr "Радиус наблюдения"
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:55
 msgid "Center the map on the zone to observe"
 msgstr "Отцентровать карту на зоне наблюдения"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
-msgid "Informations:"
-msgstr "Информация:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
-msgid "Owner:"
-msgstr "владелец:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
-msgid "Distance:"
-msgstr "Расстояние:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
-msgid "Caches:"
-msgstr "Тайники:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:98
-msgid "Actual position:"
-msgstr "Текущее местоположение:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
-msgid "Waypoint:"
-msgstr "Путевая точка:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
-msgid "Author:"
-msgstr "Автор:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
-msgid "Date:"
-msgstr "Дата:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
-msgid "Country:"
-msgstr "Страна:"
-
-#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
-msgid "Elevation:"
-msgstr "Высота:"
 
