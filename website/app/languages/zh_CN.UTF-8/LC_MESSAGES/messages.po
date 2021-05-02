@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-02 16:47+0000\n"
-"PO-Revision-Date: 2021-05-02 16:52\n"
+"POT-Creation-Date: 2021-05-02 17:31+0000\n"
+"PO-Revision-Date: 2021-05-02 17:42\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -1274,6 +1274,45 @@ msgstr "删除邮件"
 msgid "Delete comment"
 msgstr "删除评论"
 
+#: website/app-templates/smarty/elements/map_caption.tpl:9
+msgid "Last moved date"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:22
+#: website/app-templates/smarty/elements/map_caption.tpl:30
+#: website/app-templates/smarty/elements/map_caption.tpl:38
+#: website/app-templates/smarty/elements/map_caption.tpl:46
+#: website/app-templates/smarty/elements/map_caption.tpl:54
+#: website/app-templates/smarty/elements/map_caption.tpl:62
+msgid "%1 days"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:75
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Total distance"
+msgstr "总里程"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:138
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+msgid "Caches visited count"
+msgstr "已访问的缓存"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:139
+msgid "Total visited caches"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:151
+#: website/app-templates/smarty/elements/map_caption.tpl:159
+#: website/app-templates/smarty/elements/map_caption.tpl:167
+#: website/app-templates/smarty/elements/map_caption.tpl:175
+#: website/app-templates/smarty/elements/map_caption.tpl:183
+msgid "%1 caches"
+msgstr ""
+
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
 msgstr "部署于 %1"
@@ -1373,10 +1412,6 @@ msgstr "参考编号"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
 msgid "Tracking Code"
 msgstr "跟踪代码"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-msgid "Total distance"
-msgstr "总里程"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:54
 msgid "Places visited"
@@ -2666,14 +2701,6 @@ msgstr "发现于"
 msgid "Last move"
 msgstr "上次移动"
 
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-msgid "Caches visited count"
-msgstr "已访问的缓存"
-
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 尚未移动任何GeoKrety。"
@@ -3268,4 +3295,44 @@ msgstr "观察半径"
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:55
 msgid "Center the map on the zone to observe"
 msgstr "将地图居中以观察区域"
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
+msgid "Informations:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
+msgid "Owner:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
+msgid "Distance:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
+msgid "Caches:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:98
+msgid "Actual position:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
+msgid "Waypoint:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
+msgid "Author:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
+msgid "Date:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
+msgid "Country:"
+msgstr ""
+
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
+msgid "Elevation:"
+msgstr ""
 
