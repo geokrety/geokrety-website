@@ -2,63 +2,8 @@
 
 {include file='js/_map_init.tpl.js'}
 map = initializeMap();
+{include file='js/map_geojson_loader.tpl.js'}
 
-let mode = 'individual';
-
-let markers = L.markerClusterGroup({
-    maxClusterRadius: 40,
-    spiderfyOnMaxZoom: true
-});
-
-function onEachFeature(feature, layer) {
-    // TODO properly escape strings (XSS)
-
-    let owner = feature.properties.owner_username;
-    if (feature.properties.owner !== null) {
-        let user_link = "{'user_details'|alias:'userid=%USERID%'}".replace('%USERID%', feature.properties.owner);
-        owner = `<a href="${ user_link }">${ owner }</a>`;
-    } else {
-        owner = `<em class="user-anonymous">${ owner }</em>`;
-    }
-
-    let author = feature.properties.author_username;
-    if (feature.properties.author !== null) {
-        let user_link = "{'user_details'|alias:'userid=%USERID%'}".replace('%USERID%', feature.properties.author);
-        author = `<a href="${ user_link }">${ author }</a>`;
-    } else {
-        author = `<em class="user-anonymous">${ author }</em>`;
-    }
-
-    let geokret_link = "{'geokret_details'|alias:'gkid=%GKID%'}".replace('%GKID%', feature.properties.gkid);
-    let picture_url;
-    let picture_element = '';
-    if (feature.properties.avatar_key !== null) {
-        picture_url = "{'picture_proxy_thumbnail'|alias:'key=%KEY%'}".replace('%KEY%', feature.properties.avatar_key);
-        picture_element = `<img src="${ picture_url }" width="100px" height="100px">`;
-    }
-    layer.bindPopup(`
-        <h4><a href="${ geokret_link }">${ feature.properties.name }</a></h4>
-        <h5>{t}Informations:{/t}</h5>
-        <dl class="dl-horizontal">
-            <dt>{t}Owner:{/t}</dt><dd>${ owner }</dd>
-            <dt>{t}Distance:{/t}</dt><dd>${ feature.properties.distance } km</dd>
-            <dt>{t}Caches:{/t}</dt><dd>${ feature.properties.caches_count }</dd>
-        </dl>
-        <h5>{t}Actual position:{/t}</h5>
-        <dl class="dl-horizontal">
-            <dt>{t}Waypoint:{/t}</dt><dd>${ feature.properties.waypoint === null ? feature.properties.lat + '/' + feature.properties.lon : feature.properties.waypoint }</dd>
-            <dt>{t}Author:{/t}</dt><dd>${ author }</dd>
-            <dt>{t}Date:{/t}</dt><dd title="${ moment.utc(feature.properties.moved_on_datetime).local() }">${ moment.utc(feature.properties.moved_on_datetime).local().fromNow() }</dd>
-            <dt>{t}Country:{/t}</dt><dd><span class="flag-icon flag-icon-${ feature.properties.country }" title="${ feature.properties.country }"></span></dd>
-            <dt>{t}Elevation:{/t}</dt><dd>${ feature.properties.elevation } m</dd>
-        </dl>
-        <div class="text-center">
-            ${ picture_element }
-        </div>
-    `);
-}
-
-// Load GeoKrety near home position
 function buildurl() {
     let bounds = map.getBounds();
     return "{'geokrety_map_geojson'|alias}"
@@ -68,42 +13,5 @@ function buildurl() {
         .replace('@ymax', bounds.getNorth());
 }
 
-let geoJsonLayer;
-retrieve();
-
-function retrieve() {
-    map.spin(true);
-    jQuery.ajax({
-        dataType: "json",
-        url: buildurl(),
-        success: function (data) {
-            if (map.hasLayer(geoJsonLayer)) {
-                map.removeLayer(geoJsonLayer);
-            }
-            if (mode === 'individual') {
-                geoJsonLayer = L.geoJson(data, {
-                    onEachFeature: onEachFeature,
-                    pointToLayer: pointToLayer,
-                });
-                geoJsonLayer.addTo(map);
-            } else if (mode === 'cluster') {
-                markers.addLayer(geoJsonLayer);
-                layer = map.addLayer(markers);
-            }
-            map.spin(false);
-        },
-        error: function () {
-            map.spin(false);
-        }
-    });
-}
-
-map.on('zoomend', function() {
-    retrieve();
-});
-
-map.on('dragend', function() {
-    retrieve();
-});
 
 // ----------------------------------- JQUERY - GKMAP - END

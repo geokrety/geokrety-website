@@ -11,18 +11,23 @@
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_SPIN_JS)}
 
 {block name=content}
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">{t}GeoKrety interactive map{/t}</div>
-            <div class="panel-body">
-                <div id="mapid" class="leaflet-container"></div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">{t}GeoKrety interactive map{/t}</div>
+                <div class="panel-body">
+                    <div id="mapid" class="leaflet-container-600"></div>
+                </div>
             </div>
         </div>
+        <div class="col-md-3">
+
+{include file='elements/map_caption.tpl'}
+
+        </div>
     </div>
-</div>
 {/block}
 
 {block name=javascript}
-{include file='js/geokrety_map.tpl.js'}
+    {include file='js/geokrety_map.tpl.js'}
 {/block}

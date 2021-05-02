@@ -2,6 +2,16 @@
 
 {include file='js/_map_init.tpl.js'}
 map = initializeMap();
+{include file='js/map_geojson_loader.tpl.js'}
+
+function buildurl() {
+    let bounds = map.getBounds();
+    return "{'user_geokrety_near_home_geojson'|alias}"
+        .replace('@xmin', bounds.getWest())
+        .replace('@ymin', bounds.getSouth())
+        .replace('@xmax', bounds.getEast())
+        .replace('@ymax', bounds.getNorth());
+}
 
 function onEachFeature(feature, layer) {
     let geokret_link = "{'geokret_details'|alias:'gkid=%GKID%'}".replace('%GKID%', feature.properties.gkid);
@@ -17,12 +27,5 @@ function onEachFeature(feature, layer) {
         maxWidth: "auto"
     });
 }
-
-// Load GeoKrety near home position
-let geoJsonLayer = new L.GeoJSON.AJAX("{'user_geokrety_near_home_geojson'|alias}", {
-    onEachFeature: onEachFeature,
-    pointToLayer: pointToLayer,
-});
-geoJsonLayer.addTo(map);
 
 // ----------------------------------- JQUERY - USER GEOKRET NEAR HOME MAP - END

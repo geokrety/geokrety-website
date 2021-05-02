@@ -19,20 +19,6 @@ class GeokretyMap extends Base {
         if (!(is_numeric($xmin) && is_numeric($ymin) && is_numeric($xmax) && is_numeric($ymax))) {
             exit();
         }
-
-        //        $sql = <<<EOT
-        //            SELECT json_build_object(
-        //                'type', 'FeatureCollection',
-        //                'features', COALESCE(json_agg(public.ST_AsGeoJSON(t.*)::json), '[]')::jsonb
-        //            ) AS geojson
-        //            FROM (
-        //                SELECT position, gkid, name, waypoint, lat, lon, elevation, country, distance, author, author_username,
-        //                    moved_on_datetime, caches_count, avatar_key,
-        //                    coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) AS days
-        //                FROM "gk_geokrety_in_caches"
-        //                WHERE position IS NOT NULL
-        //            ) as t;
-        //EOT;
         $sql = <<<EOT
             WITH
                 envelope AS (SELECT public.ST_MakeEnvelope(?, ?, ?, ?, 4326)::geometry AS boundingBox),
@@ -51,7 +37,6 @@ class GeokretyMap extends Base {
                 ORDER BY days DESC
             ) as t;
 EOT;
-//        echo $sql;
         $result = $f3->get('DB')->exec($sql, [$xmin, $ymin, $xmax, $ymax]);
         exit($result[0]['geojson']);
     }
