@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-01 12:25+0000\n"
-"PO-Revision-Date: 2021-05-01 12:32\n"
+"POT-Creation-Date: 2021-05-02 15:29+0000\n"
+"PO-Revision-Date: 2021-05-02 15:33\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "Language: nb_NO\n"
@@ -664,13 +664,18 @@ msgstr "Sted: %s flygning: %dm"
 msgid "Location: %s"
 msgstr "Posisjon: %s"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:18
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
 msgid "has avatar icon"
 msgstr "har avatar ikon"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:19
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
 msgid "GeoKret has an avatar"
 msgstr "GeoKret har en avatar"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
+#, php-format
+msgid "GeoKret \"%s\" by %s"
+msgstr ""
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
 msgid "GK type icon"
@@ -1269,6 +1274,45 @@ msgstr "Slett e-post"
 msgid "Delete comment"
 msgstr "Slett kommentar"
 
+#: website/app-templates/smarty/elements/map_caption.tpl:9
+msgid "Last moved date"
+msgstr "Sist flyttet dato"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:22
+#: website/app-templates/smarty/elements/map_caption.tpl:30
+#: website/app-templates/smarty/elements/map_caption.tpl:38
+#: website/app-templates/smarty/elements/map_caption.tpl:46
+#: website/app-templates/smarty/elements/map_caption.tpl:54
+#: website/app-templates/smarty/elements/map_caption.tpl:62
+msgid "%1 days"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:75
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Total distance"
+msgstr "Total avstand"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:138
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+msgid "Caches visited count"
+msgstr "Cacher besøkt antall"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:139
+msgid "Total visited caches"
+msgstr "Antall besøkte cacher"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:151
+#: website/app-templates/smarty/elements/map_caption.tpl:159
+#: website/app-templates/smarty/elements/map_caption.tpl:167
+#: website/app-templates/smarty/elements/map_caption.tpl:175
+#: website/app-templates/smarty/elements/map_caption.tpl:183
+msgid "%1 caches"
+msgstr ""
+
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
 msgstr "Utlevert %1"
@@ -1368,11 +1412,6 @@ msgstr "[ch:orange slip] Referansenummer"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
 msgid "Tracking Code"
 msgstr "Sporingskode for sporing"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:30
-msgid "Total distance"
-msgstr "Total avstand"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:54
 msgid "Places visited"
@@ -2662,31 +2701,14 @@ msgstr "Oppdaget i"
 msgid "Last move"
 msgstr "Siste trekk"
 
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-msgid "Caches visited count"
-msgstr "Cacher besøkt antall"
-
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 flyttet ikke noe GeoKrety ennå."
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:12
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
 msgid "%1's Owned GeoKrety map"
 msgstr "%1sitt egne GeoKrety kart"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-msgid "Total visited caches"
-msgstr "Antall besøkte cacher"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:38
-msgid "Last moved date"
-msgstr "Sist flyttet dato"
 
 #: website/app-templates/smarty/pages/news_details.tpl:3
 msgid "News: %1"
@@ -3274,43 +3296,43 @@ msgstr "Observasjons radius"
 msgid "Center the map on the zone to observe"
 msgstr "Sentrer kartet på sonen du vil observere"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:41
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
 msgstr "Informasjon"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:43
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
 msgid "Owner:"
 msgstr "Eier:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:44
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
 msgid "Distance:"
 msgstr "Avstand:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:45
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
 msgid "Caches:"
 msgstr "Cacher:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:47
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:98
 msgid "Actual position:"
 msgstr "Faktisk posisjon:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:49
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
 msgid "Waypoint:"
 msgstr "Veipunkt:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:50
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
 msgid "Author:"
 msgstr "Forfatter:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:51
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
 msgid "Date:"
 msgstr "Dato:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:52
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
 msgid "Country:"
 msgstr "Land:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:53
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
 msgid "Elevation:"
 msgstr "Forhøyning"
 
