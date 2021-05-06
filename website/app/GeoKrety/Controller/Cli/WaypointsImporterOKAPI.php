@@ -143,6 +143,11 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             }
 
             $wpt->load(['waypoint = ?', $id]);
+            if ($change->change_type == 'replace' and $wpt->dry()) {
+                // Waypoint is probably not published
+                continue;
+            }
+
             $wpt->waypoint = $id;
             $wpt->provider = $okapi;
 
