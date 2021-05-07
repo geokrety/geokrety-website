@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-02 17:31+0000\n"
-"PO-Revision-Date: 2021-05-02 17:43\n"
+"PO-Revision-Date: 2021-05-07 14:33\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -920,19 +920,19 @@ msgstr "Dein Konto ist jetzt gelöscht."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
 msgid "The account you created %1 has never been activated."
-msgstr ""
+msgstr "Das Konto, das du %1 erstellt hast, wurde noch nie aktiviert."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+msgstr "Unsere Richtlinie ist es, nicht aktivierte Konten nach %1 Tagen zu löschen."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
 msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+msgstr "Es tut uns leid, dir mitzuteilen, dass dein Konto dauerhaft gelöscht wurde."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+msgstr "Der Benutzername, den du bei der Registrierung gewählt hast, ist nun freigegeben und kann von jemand anderem genutzt werden."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
 #: website/app-templates/smarty/emails/account-activation.tpl:19
@@ -944,31 +944,31 @@ msgstr "Du erhältst diese E-Mail, weil du dich gerade auf unserer Website angem
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Beim Synchronisieren der Partner-Daten ist ein Fehler aufgetreten"
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
 #: website/app-templates/smarty/emails/cron-exception.tpl:7
 msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
+msgstr "Etwas ist mit einem Cron-Job schiefgelaufen, bitte überprüfe die folgenden Logs."
 
 #: website/app-templates/smarty/emails/base-admin.tpl:4
 msgid "You're getting this email because you're one the website admins."
-msgstr ""
+msgstr "Du erhältst diese E-Mail, weil du einer der Website-Administratoren bist."
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 msgid "Hooray"
-msgstr ""
+msgstr "Hurra"
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:8
 msgid "Your email address has been successfully reverted."
-msgstr ""
+msgstr "Deine E-Mail-Adresse wurde erfolgreich zurückgesetzt."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "Eine deiner GeoKrety wurde adoptiert."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
@@ -981,7 +981,7 @@ msgstr "Du bekommst diese E-Mail, da einer deiner GeoKrety den Besitzer auf unse
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "Bestätige die Änderung deiner E-Mail-Adresse."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
@@ -993,7 +993,7 @@ msgstr "Nicht ändern!"
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:4
 msgid "Some accounts will be deleted."
-msgstr ""
+msgstr "Einige Konten werden gelöscht."
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:7
 msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
@@ -1001,11 +1001,11 @@ msgstr "%1 Konten sind nach %2 Tagen noch nicht aktiviert. Diese werden jetzt ge
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
-msgstr ""
+msgstr "Ein Skript ist gesperrt"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
+msgstr "Cron <strong>%1</strong> ist seit <strong>%2</strong> gesperrt!"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:3
 msgid "Contact from a GeoKrety.org user"
@@ -1013,11 +1013,11 @@ msgstr "Kontakt von einem GeoKrety.org-Nutzer"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Jemand hat dir eine private Nachricht gesendet."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Diese E-Mail wurde von Benutzer <a href=\"%2\">%1</a> gesendet."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -1041,7 +1041,7 @@ msgstr "Du erhältst diese E-Mail, da dir ein GeoKrety.org-Nutzer eine Nachricht
 
 #: website/app-templates/smarty/emails/account-activation.tpl:4
 msgid "One step left to use GeoKrety.org."
-msgstr ""
+msgstr "Nur noch ein Schritt um GeoKrety.org zu verwenden."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
@@ -1059,7 +1059,7 @@ msgstr "Wenn du dein Benutzerkonto nicht innerhalb dieser Zeit aktivierst, wird 
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:4
 msgid "An exception occurred in a cron job"
-msgstr ""
+msgstr "Eine Ausnahme ist in einem Cron-Job aufgetreten"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
@@ -1083,23 +1083,23 @@ msgstr "Du erhältst diese E-Mail, da du eine Änderung der E-Mail-Adresse auf u
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
 msgid "Account not yet active"
-msgstr ""
+msgstr "Konto ist noch nicht aktiv"
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
 msgid "Your account is about to be deleted."
-msgstr ""
+msgstr "Dein Konto wird in Kürze gelöscht."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
 msgid "The account you created %1 has not yet been activated."
-msgstr ""
+msgstr "Das Konto, das du %1 erstellt hast, wurde noch nicht aktiviert."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
 msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
-msgstr ""
+msgstr "Wenn du dieses Konto behalten möchtest, musst du es noch durch Klicken auf den unten stehenden Link validieren."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
 msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
+msgstr "Nicht aktivierte Konten werden nach %1 Tagen automatisch gelöscht."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
