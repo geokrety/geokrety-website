@@ -880,6 +880,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     <label class="col-sm-2 control-label">'._('Waypoint').'</label>
     <div class="col-sm-2">
       <input type="text" name="wpt" value="'.$edit_waypoint.'" id="wpt" size="9" '.$disabled_wpt.' onchange="sprawdzWpt();" onkeyup="sprawdzWpt(event);" class="form-control" aria-describedby="helpBlockWaypoint">
+      '.((strlen($edit_waypoint) > 0) ? '<script>setTimeout(sprawdzWpt, 1000);</script>' : '').'
       <span id="helpBlockWaypoint" class="help-block">'.
         _('eg.: GC1AQ2N, OP069B, OC033A…')
       .' <a href="/'._('help.php#fullysupportedwaypoints').'"><img src="'.CONFIG_CDN_IMAGES.'/icons/help.png" alt="HELP" width="11" height="11" border="0" /></a>
