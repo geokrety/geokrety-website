@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-27 22:07+0000\n"
-"PO-Revision-Date: 2021-04-27 22:12\n"
+"POT-Creation-Date: 2021-05-02 17:31+0000\n"
+"PO-Revision-Date: 2021-06-14 20:15\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:69
+#: website/app/GeoKrety/Controller/Pages/Base.php:74
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
 #: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:71
@@ -148,39 +148,39 @@ msgstr "错误的日期或时间"
 msgid "Waypoint parameter must be provided."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:48
-#: website/app/GeoKrety/Controller/Pages/Login.php:145
+#: website/app/GeoKrety/Controller/Pages/Login.php:50
+#: website/app/GeoKrety/Controller/Pages/Login.php:147
 msgid "Username and password doesn't match."
 msgstr "用户名和密码不匹配。"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:77
+#: website/app/GeoKrety/Controller/Pages/Login.php:79
 msgid "Welcome on board!"
 msgstr "欢迎登陆！"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:126
+#: website/app/GeoKrety/Controller/Pages/Login.php:128
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:134
+#: website/app/GeoKrety/Controller/Pages/Login.php:136
 msgid "Your account is not valid."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:156
-#: website/app/GeoKrety/Controller/Pages/Login.php:162
+#: website/app/GeoKrety/Controller/Pages/Login.php:158
+#: website/app/GeoKrety/Controller/Pages/Login.php:164
 msgid "Invalid \"secid\""
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:211
+#: website/app/GeoKrety/Controller/Pages/Login.php:213
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "您的帐户已经与 %s 链接"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:216
+#: website/app/GeoKrety/Controller/Pages/Login.php:218
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "此 %s 帐户已经链接到另一个 GeoKrety 帐户。"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:231
+#: website/app/GeoKrety/Controller/Pages/Login.php:233
 msgid "Auth request was canceled."
 msgstr "认证请求已被取消。"
 
@@ -664,13 +664,18 @@ msgstr "位置: %s 高度: %d米"
 msgid "Location: %s"
 msgstr "位置： %s"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:18
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
 msgid "has avatar icon"
 msgstr "有头像图标"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:19
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
 msgid "GeoKret has an avatar"
 msgstr "GeoKret有头像"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
+#, php-format
+msgid "GeoKret \"%s\" by %s"
+msgstr ""
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
 msgid "GK type icon"
@@ -1269,6 +1274,45 @@ msgstr "删除邮件"
 msgid "Delete comment"
 msgstr "删除评论"
 
+#: website/app-templates/smarty/elements/map_caption.tpl:9
+msgid "Last moved date"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:22
+#: website/app-templates/smarty/elements/map_caption.tpl:30
+#: website/app-templates/smarty/elements/map_caption.tpl:38
+#: website/app-templates/smarty/elements/map_caption.tpl:46
+#: website/app-templates/smarty/elements/map_caption.tpl:54
+#: website/app-templates/smarty/elements/map_caption.tpl:62
+msgid "%1 days"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:75
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Total distance"
+msgstr "总里程"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:138
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+msgid "Caches visited count"
+msgstr "已访问的缓存"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:139
+msgid "Total visited caches"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:151
+#: website/app-templates/smarty/elements/map_caption.tpl:159
+#: website/app-templates/smarty/elements/map_caption.tpl:167
+#: website/app-templates/smarty/elements/map_caption.tpl:175
+#: website/app-templates/smarty/elements/map_caption.tpl:183
+msgid "%1 caches"
+msgstr ""
+
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
 msgstr "部署于 %1"
@@ -1368,11 +1412,6 @@ msgstr "参考编号"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
 msgid "Tracking Code"
 msgstr "跟踪代码"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:30
-msgid "Total distance"
-msgstr "总里程"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:54
 msgid "Places visited"
@@ -2662,31 +2701,14 @@ msgstr "发现于"
 msgid "Last move"
 msgstr "上次移动"
 
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-msgid "Caches visited count"
-msgstr "已访问的缓存"
-
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 尚未移动任何GeoKrety。"
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:12
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
 msgid "%1's Owned GeoKrety map"
 msgstr "%1拥有的 GeoKrety 地图"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-msgid "Total visited caches"
-msgstr "访问的缓存总数"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:38
-msgid "Last moved date"
-msgstr "最后移动日期"
 
 #: website/app-templates/smarty/pages/news_details.tpl:3
 msgid "News: %1"
@@ -3274,43 +3296,43 @@ msgstr "观察半径"
 msgid "Center the map on the zone to observe"
 msgstr "将地图居中以观察区域"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:41
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
-msgstr "信息:"
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:43
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
 msgid "Owner:"
-msgstr "所有者："
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:44
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
 msgid "Distance:"
-msgstr "距离："
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:45
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
 msgid "Caches:"
-msgstr "缓存："
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:47
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:98
 msgid "Actual position:"
-msgstr "实际位置："
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:49
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
 msgid "Waypoint:"
-msgstr "航点："
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:50
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
 msgid "Author:"
-msgstr "作者："
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:51
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
 msgid "Date:"
-msgstr "日期:"
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:52
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
 msgid "Country:"
-msgstr "国家："
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:53
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
 msgid "Elevation:"
-msgstr "高度："
+msgstr ""
 
