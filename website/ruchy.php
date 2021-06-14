@@ -870,6 +870,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
 
     // -------------------- 3 (new location)
     if ($show_location_step) {
+        $OGON .= strlen($edit_waypoint) > 0 ? '<script>setTimeout(sprawdzWpt, 1000);</script>' : '';
         $TRESC .= '
 <div id="locationToggle">
 <h3><span class="cyferki">'.$step_number++.'.</span>  '._('New location').'</h3>
