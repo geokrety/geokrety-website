@@ -16,7 +16,7 @@ while test $# -gt 0; do
         continue
     fi
 
-    for file in `find . -type f -not \( -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' -o -path './vendor/*' -o -path './website/vendor/*' \) \( -name '*.php' -o -name '*.js' -o -name '*.html' -o -name '*.txt' -o -name '*.css' -o -name '*.xml' \)` ; do
+    for file in `find . -type f -not \( -path './website/help/*' -o -path './website/szef/*' -o -path './website/templates/colorbox/*' -o -path './website/templates/compile/*' -o -path './website/templates/rating/*' -o -path './website/templates/jpgraph/*' -o -path './website/templates/htmlpurifier/*' -o -path './vendor/*' -o -path './website/vendor/*' \) \( -name '*.php' -o -name '*.js' -o -name '*.html' -o -name '*.txt' -o -name '*.css' -o -name '*.xml' \)` ; do
         RESULTS=`egrep -l " +$" "$file"`
 
         if [ -n "$RESULTS" ] ; then
