@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-27 22:07+0000\n"
-"PO-Revision-Date: 2021-04-27 22:13\n"
+"POT-Creation-Date: 2021-05-02 17:31+0000\n"
+"PO-Revision-Date: 2021-06-14 20:15\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -31,7 +31,7 @@ msgstr "Parameter \"userid\" muss eine gültige Zahl sein."
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr "Parameter \"gkid\" muss eine gültige Zahl oder GKid (GKXXXXX) sein."
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:69
+#: website/app/GeoKrety/Controller/Pages/Base.php:74
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
 #: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:71
@@ -148,39 +148,39 @@ msgstr "Datum oder Zeit ungültig"
 msgid "Waypoint parameter must be provided."
 msgstr "Der Wegpunkt-Parameter muss angegeben werden."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:48
-#: website/app/GeoKrety/Controller/Pages/Login.php:145
+#: website/app/GeoKrety/Controller/Pages/Login.php:50
+#: website/app/GeoKrety/Controller/Pages/Login.php:147
 msgid "Username and password doesn't match."
 msgstr "Benutzername und Passwort stimmen nicht überein."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:77
+#: website/app/GeoKrety/Controller/Pages/Login.php:79
 msgid "Welcome on board!"
 msgstr "Willkommen an Bord!"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:126
+#: website/app/GeoKrety/Controller/Pages/Login.php:128
 msgid "Please provide 'login' and 'password' parameters."
 msgstr "Bitte gib 'Login'- und 'Password'-Parameter an."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:134
+#: website/app/GeoKrety/Controller/Pages/Login.php:136
 msgid "Your account is not valid."
 msgstr "Dein Account ist nicht gültig."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:156
-#: website/app/GeoKrety/Controller/Pages/Login.php:162
+#: website/app/GeoKrety/Controller/Pages/Login.php:158
+#: website/app/GeoKrety/Controller/Pages/Login.php:164
 msgid "Invalid \"secid\""
 msgstr "Ungültige \"SecID\""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:211
+#: website/app/GeoKrety/Controller/Pages/Login.php:213
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Dein Konto ist bereits mit %s verknüpft"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:216
+#: website/app/GeoKrety/Controller/Pages/Login.php:218
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Dieses %s-Konto ist bereits mit einem anderen GeoKrety-Konto verknüpft."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:231
+#: website/app/GeoKrety/Controller/Pages/Login.php:233
 msgid "Auth request was canceled."
 msgstr "Authentisierungs-Anfrage wurde abgebrochen."
 
@@ -664,13 +664,18 @@ msgstr "Ort: %s Höhe: %dm"
 msgid "Location: %s"
 msgstr "Ort: %s"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:18
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
 msgid "has avatar icon"
 msgstr "hat ein Avatar-Symbol"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:19
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
 msgid "GeoKret has an avatar"
 msgstr "GeoKret hat einen Avatar"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
+#, php-format
+msgid "GeoKret \"%s\" by %s"
+msgstr "GeoKret \"%s\" von %s"
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
 msgid "GK type icon"
@@ -915,19 +920,19 @@ msgstr "Dein Konto ist jetzt gelöscht."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
 msgid "The account you created %1 has never been activated."
-msgstr ""
+msgstr "Das Konto, das du %1 erstellt hast, wurde noch nie aktiviert."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+msgstr "Unsere Richtlinie ist es, nicht aktivierte Konten nach %1 Tagen zu löschen."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
 msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+msgstr "Es tut uns leid, dir mitzuteilen, dass dein Konto dauerhaft gelöscht wurde."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+msgstr "Der Benutzername, den du bei der Registrierung gewählt hast, ist nun freigegeben und kann von jemand anderem genutzt werden."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
 #: website/app-templates/smarty/emails/account-activation.tpl:19
@@ -939,31 +944,31 @@ msgstr "Du erhältst diese E-Mail, weil du dich gerade auf unserer Website angem
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Beim Synchronisieren der Partner-Daten ist ein Fehler aufgetreten"
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
 #: website/app-templates/smarty/emails/cron-exception.tpl:7
 msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
+msgstr "Etwas ist mit einem Cron-Job schiefgelaufen, bitte überprüfe die folgenden Logs."
 
 #: website/app-templates/smarty/emails/base-admin.tpl:4
 msgid "You're getting this email because you're one the website admins."
-msgstr ""
+msgstr "Du erhältst diese E-Mail, weil du einer der Website-Administratoren bist."
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 msgid "Hooray"
-msgstr ""
+msgstr "Hurra"
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:8
 msgid "Your email address has been successfully reverted."
-msgstr ""
+msgstr "Deine E-Mail-Adresse wurde erfolgreich zurückgesetzt."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "Eine deiner GeoKrety wurde adoptiert."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
@@ -976,7 +981,7 @@ msgstr "Du bekommst diese E-Mail, da einer deiner GeoKrety den Besitzer auf unse
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "Bestätige die Änderung deiner E-Mail-Adresse."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
@@ -988,7 +993,7 @@ msgstr "Nicht ändern!"
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:4
 msgid "Some accounts will be deleted."
-msgstr ""
+msgstr "Einige Konten werden gelöscht."
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:7
 msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
@@ -996,11 +1001,11 @@ msgstr "%1 Konten sind nach %2 Tagen noch nicht aktiviert. Diese werden jetzt ge
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
-msgstr ""
+msgstr "Ein Skript ist gesperrt"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
+msgstr "Cron <strong>%1</strong> ist seit <strong>%2</strong> gesperrt!"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:3
 msgid "Contact from a GeoKrety.org user"
@@ -1008,11 +1013,11 @@ msgstr "Kontakt von einem GeoKrety.org-Nutzer"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Jemand hat dir eine private Nachricht gesendet."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Diese E-Mail wurde von Benutzer <a href=\"%2\">%1</a> gesendet."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -1036,7 +1041,7 @@ msgstr "Du erhältst diese E-Mail, da dir ein GeoKrety.org-Nutzer eine Nachricht
 
 #: website/app-templates/smarty/emails/account-activation.tpl:4
 msgid "One step left to use GeoKrety.org."
-msgstr ""
+msgstr "Nur noch ein Schritt um GeoKrety.org zu verwenden."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
@@ -1054,7 +1059,7 @@ msgstr "Wenn du dein Benutzerkonto nicht innerhalb dieser Zeit aktivierst, wird 
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:4
 msgid "An exception occurred in a cron job"
-msgstr ""
+msgstr "Eine Ausnahme ist in einem Cron-Job aufgetreten"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
@@ -1078,23 +1083,23 @@ msgstr "Du erhältst diese E-Mail, da du eine Änderung der E-Mail-Adresse auf u
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
 msgid "Account not yet active"
-msgstr ""
+msgstr "Konto ist noch nicht aktiv"
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
 msgid "Your account is about to be deleted."
-msgstr ""
+msgstr "Dein Konto wird in Kürze gelöscht."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
 msgid "The account you created %1 has not yet been activated."
-msgstr ""
+msgstr "Das Konto, das du %1 erstellt hast, wurde noch nicht aktiviert."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
 msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
-msgstr ""
+msgstr "Wenn du dieses Konto behalten möchtest, musst du es noch durch Klicken auf den unten stehenden Link validieren."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
 msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
+msgstr "Nicht aktivierte Konten werden nach %1 Tagen automatisch gelöscht."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
@@ -1102,52 +1107,52 @@ msgstr "Ihr Konto auf GeoKrety.org ist nun vollständig funktionsfähig."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:15
 msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
+msgstr "Als Mitglied kannst du jetzt <a href=\"%1\">GeoKrety Bewegungen</a> registrieren, Bilder hochladen und natürlich auch <a href=\"%2\">deine eigenen GeoKrety kostenlos erstellen</a>!"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:5
 msgid "Your GeoKrety watchlist"
-msgstr ""
+msgstr "Deine GeoKrety-Watchlist"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:8
 msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
+msgstr "Du erhältst diese E-Mail, weil du dich dafür entschieden hast, tägliche Mails zu erhalten."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:9
 msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
+msgstr "Du kannst dies hier <a href=\"%1\">durch die Änderung Deiner persönlichen Mail-Einstellungen</a> deaktivieren."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:14
 msgid "Here is what changed recently."
-msgstr ""
+msgstr "Hier ist das, was in letzter Zeit geändert wurde."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:17
 msgid "Latest news"
-msgstr ""
+msgstr "Aktuelle Neuigkeiten"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:27
 msgid "GeoKrety dropped in your observation area"
-msgstr ""
+msgstr "GeoKrety, die in deinem Beobachtungsgebiet abgelegt wurde"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Open interactive map"
-msgstr ""
+msgstr "Interaktive Karte anzeigen"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Observation area map"
-msgstr ""
+msgstr "Beobachtungsbereich der Karte"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:36
 #: website/app-templates/smarty/emails/daily-mail.tpl:79
 #: website/app-templates/smarty/emails/daily-mail.tpl:125
 #: website/app-templates/smarty/emails/daily-mail.tpl:170
 msgid "GeoKret"
-msgstr ""
+msgstr "GeoKret"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:37
 #: website/app-templates/smarty/emails/daily-mail.tpl:80
 #: website/app-templates/smarty/emails/daily-mail.tpl:126
 msgid "Position"
-msgstr ""
+msgstr "Ort"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:38
 #: website/app-templates/smarty/emails/daily-mail.tpl:81
@@ -1171,15 +1176,15 @@ msgstr "Kommentar"
 #: website/app-templates/smarty/emails/daily-mail.tpl:128
 #: website/app-templates/smarty/emails/daily-mail.tpl:172
 msgid "Author"
-msgstr ""
+msgstr "Ersteller"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:40
 msgid "Home distance"
-msgstr ""
+msgstr "Entfernung zum Heimatort"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:73
 msgid "My GeoKrety latest moves"
-msgstr ""
+msgstr "Neueste Bewegungen meiner GeoKrety"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:78
 #: website/app-templates/smarty/emails/daily-mail.tpl:124
@@ -1188,11 +1193,11 @@ msgstr "Symbol"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:83
 msgid "Distance since last move"
-msgstr ""
+msgstr "Entfernung seit der letzten Bewegung"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:119
 msgid "Watched GeoKrety latest moves"
-msgstr ""
+msgstr "Bewegungen der beobachteten GeoKrety"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:129
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
@@ -1206,23 +1211,23 @@ msgstr "Entfernung"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:165
 msgid "Latest move comments"
-msgstr ""
+msgstr "Kommentare der letzten Bewegung"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
 msgid "Is this address still valid?"
-msgstr ""
+msgstr "Ist diese Adresse noch korrekt?"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
 msgid "This is important in case of password loss."
-msgstr ""
+msgstr "Dies ist wichtig bei Verlust des Passworts."
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
 msgid "Validate your email address"
-msgstr ""
+msgstr "Bestätige Deine E-Mail-Adresse"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr ""
+msgstr "Du erhätlst diese E-Mail, da wir überprüfen müssen, ob Deine auf unserer Internetseite registrierte E--Mail noch gültig ist."
 
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:15
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
@@ -1268,6 +1273,45 @@ msgstr "E-Mail löschen"
 #: website/app-templates/smarty/elements/news_comment.tpl:10
 msgid "Delete comment"
 msgstr "Kommentar löschen"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:9
+msgid "Last moved date"
+msgstr "Letztes Bewegungsdatum"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:22
+#: website/app-templates/smarty/elements/map_caption.tpl:30
+#: website/app-templates/smarty/elements/map_caption.tpl:38
+#: website/app-templates/smarty/elements/map_caption.tpl:46
+#: website/app-templates/smarty/elements/map_caption.tpl:54
+#: website/app-templates/smarty/elements/map_caption.tpl:62
+msgid "%1 days"
+msgstr "%1 Tage"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:75
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Total distance"
+msgstr "Gesamtentfernung"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:138
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+msgid "Caches visited count"
+msgstr "Anzahl besuchter Caches"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:139
+msgid "Total visited caches"
+msgstr "Insgesamt besuchte Caches"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:151
+#: website/app-templates/smarty/elements/map_caption.tpl:159
+#: website/app-templates/smarty/elements/map_caption.tpl:167
+#: website/app-templates/smarty/elements/map_caption.tpl:175
+#: website/app-templates/smarty/elements/map_caption.tpl:183
+msgid "%1 caches"
+msgstr "%1 Caches"
 
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
@@ -1340,11 +1384,11 @@ msgstr "Es gibt noch keine Bilder."
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:20
 msgid "missing"
-msgstr ""
+msgstr "vermisst"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "archiviert"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:27
 #: website/app-templates/smarty/blocks/user/details.tpl:7
@@ -1368,11 +1412,6 @@ msgstr "Referenznummer"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
 msgid "Tracking Code"
 msgstr "Tracking-Code"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:30
-msgid "Total distance"
-msgstr "Gesamtentfernung"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:54
 msgid "Places visited"
@@ -1471,7 +1510,7 @@ msgstr "Einloggen, um diesen GeoKret zu übernehmen"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:34
 msgid "Mark this GeoKret as archived"
-msgstr ""
+msgstr "Diesen GeoKret als archiviert markieren"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:34
 msgid "Archive this GeoKret"
@@ -1575,11 +1614,11 @@ msgstr "Auszeichnungen"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
+msgstr "%1 hat <strong>%2</strong> GeoKrets angelegt, die insgesamt <strong>%3</strong> gereist sind."
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:17
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
+msgstr "%1 hat <strong>%2</strong> GeoKrets über eine Gesamtdistanz von <strong>%3</strong> bewegt."
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:10
 msgid "No home coordinates have been defined."
@@ -1819,7 +1858,7 @@ msgstr "Ändern"
 
 #: website/app-templates/smarty/dialog/info.tpl:13
 msgid "Acknowledge"
-msgstr ""
+msgstr "Bestätigen"
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
 msgid "Refresh your secid?"
@@ -2108,27 +2147,27 @@ msgstr "Abonnieren"
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
 msgid "Mark this GeoKret as archived?"
-msgstr ""
+msgstr "Diesen GeoKret als archiviert markieren?"
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:10
 msgid "You are about the archive this GeoKret."
-msgstr ""
+msgstr "Du bist dabei diesen GeoKret zu archivieren."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:11
 msgid "This is useful if you think this GeoKret has been destroyed."
-msgstr ""
+msgstr "Dies ist nützlich, wenn du denkst, dass dieser GeoKret zerstört wurde."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:13
 msgid "It will not appear anymore in your active inventory."
-msgstr ""
+msgstr "Es wird nicht mehr in Deinem aktiven Inventar erscheinen."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:14
 msgid "It will not appear as present in a cache."
-msgstr ""
+msgstr "Es wird nicht mehr als in einem Cache abgelegt angezeigt."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:16
 msgid "If someone discover it later, it will be automatically reactivated."
-msgstr ""
+msgstr "Wenn es jemand später entdeckt, wird es automatisch wieder aktiviert."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
 msgid "Archive"
@@ -2286,11 +2325,11 @@ msgstr "Gefällt dir GeoKrety.org?"
 
 #: website/app-templates/smarty/banners/donate.tpl:4
 msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr ""
+msgstr "Deine Spenden unterstützen die weitere Entwicklung und das Wachstum von <b>GeoKrety.org</b>."
 
 #: website/app-templates/smarty/banners/donate.tpl:8
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:2
 msgid "Some statistics"
@@ -2302,7 +2341,7 @@ msgstr "<strong>%1</strong> registrierte GeoKrety, <strong>%2</strong> GeoKrety 
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:13
 msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr ""
+msgstr "<strong>%1</strong> sind alle GeoKrety inzwischen insgesamt gereist (das ist %2 x die Entfernung von der Erde zum Mond, %3 x der Erdumfang am Äquator und %4 x die Entfernung der Erde zur Sonne 🌞)."
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:21
 msgid "And that's thanks to you! Congratulation!"
@@ -2662,31 +2701,14 @@ msgstr "Gesehen in"
 msgid "Last move"
 msgstr "Letzte Bewegung"
 
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-msgid "Caches visited count"
-msgstr "Anzahl besuchter Caches"
-
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 hat noch keine GeoKrety bewegt."
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:12
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
 msgid "%1's Owned GeoKrety map"
 msgstr "Karte von %1's eigenen GeoKrety"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-msgid "Total visited caches"
-msgstr "Insgesamt besuchte Caches"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:38
-msgid "Last moved date"
-msgstr "Letztes Bewegungsdatum"
 
 #: website/app-templates/smarty/pages/news_details.tpl:3
 msgid "News: %1"
@@ -2855,11 +2877,11 @@ msgstr "Interaktive GeoKrety-Karte"
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
 msgid "Waypoints statistics"
-msgstr ""
+msgstr "Wegpunkt-Statistik"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:36
 msgid "N/A"
-msgstr ""
+msgstr "k. A."
 
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:18
@@ -2951,7 +2973,7 @@ msgstr "Der Tunnel sollte in beide Richtungen funktionieren. Man benötigt zwei 
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:18
 msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least %1."
-msgstr ""
+msgstr "Der Tunnel sollte eine Grenze überschreiten oder, falls er innerhalb eines Landes liegt, eine Entfernung zwischen den Maulwurflöchern aufweisen von mindestens %1."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:19
 msgid "GeoKrety in a mole-hole are impatient, so no GeoKrety should wait longer than two months for transportation."
@@ -3031,7 +3053,7 @@ msgstr "Status: Bereit zum Suchen"
 
 #: website/app-templates/smarty/pages/email_revalidate.tpl:10
 msgid "Email address revalidation."
-msgstr ""
+msgstr "E-Mail-Adresse erneut bestätigen."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
@@ -3040,11 +3062,11 @@ msgstr "Willkommen in der GeoKrety.org Community!"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:10
 msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
+msgstr "Du kannst nun <a href=\"%1\">Bewegung</a> loggen und <a href=\"%2\">Deinen eigenen GeoKrety erstellen</a>."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
+msgstr "Du hast soeben Deine Registrierung abgeschlossen. Du kannst Dich jetzt anmelden und Deinen ersten GeoKret bewegen."
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:3
 msgid "Hall of fame"
@@ -3274,43 +3296,43 @@ msgstr "Beobachtungsradius"
 msgid "Center the map on the zone to observe"
 msgstr "Karte auf die Beobachtungszone zentrieren"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:41
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
 msgstr "Informationen:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:43
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
 msgid "Owner:"
-msgstr "Besitzer:"
+msgstr "Eigentümer: "
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:44
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
 msgid "Distance:"
 msgstr "Entfernung:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:45
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
 msgid "Caches:"
 msgstr "Caches:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:47
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:98
 msgid "Actual position:"
 msgstr "Aktuelle Position:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:49
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
 msgid "Waypoint:"
 msgstr "Wegpunkt:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:50
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
 msgid "Author:"
 msgstr "Autor: "
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:51
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
 msgid "Date:"
 msgstr "Datum:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:52
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
 msgid "Country:"
 msgstr "Land:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:53
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
 msgid "Elevation:"
 msgstr "Höhe:"
 
