@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-27 22:07+0000\n"
-"PO-Revision-Date: 2021-05-01 11:48\n"
+"POT-Creation-Date: 2021-05-02 17:31+0000\n"
+"PO-Revision-Date: 2021-06-14 20:15\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -31,7 +31,7 @@ msgstr "\"userid\" parametresi sayı olması gerekiyor."
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr "\"gkid\" parametresi geçerli bir numara veya GKid (GKXXXXX) gerekmektedir."
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:69
+#: website/app/GeoKrety/Controller/Pages/Base.php:74
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
 #: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:34
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:71
@@ -148,39 +148,39 @@ msgstr "Yanlış tarih veya saat"
 msgid "Waypoint parameter must be provided."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:48
-#: website/app/GeoKrety/Controller/Pages/Login.php:145
+#: website/app/GeoKrety/Controller/Pages/Login.php:50
+#: website/app/GeoKrety/Controller/Pages/Login.php:147
 msgid "Username and password doesn't match."
 msgstr "Kullanıcı adı ve şifre uyuşmuyor."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:77
+#: website/app/GeoKrety/Controller/Pages/Login.php:79
 msgid "Welcome on board!"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:126
+#: website/app/GeoKrety/Controller/Pages/Login.php:128
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:134
+#: website/app/GeoKrety/Controller/Pages/Login.php:136
 msgid "Your account is not valid."
 msgstr "Hesabınız geçerli değil."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:156
-#: website/app/GeoKrety/Controller/Pages/Login.php:162
+#: website/app/GeoKrety/Controller/Pages/Login.php:158
+#: website/app/GeoKrety/Controller/Pages/Login.php:164
 msgid "Invalid \"secid\""
 msgstr "Geçersiz \"secid\""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:211
+#: website/app/GeoKrety/Controller/Pages/Login.php:213
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Bu hesap zaten %s ile bağlı"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:216
+#: website/app/GeoKrety/Controller/Pages/Login.php:218
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Bu %s hesap zaten başka bir GeoKrety hesabı ile bağlı."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:231
+#: website/app/GeoKrety/Controller/Pages/Login.php:233
 msgid "Auth request was canceled."
 msgstr ""
 
@@ -392,7 +392,7 @@ msgstr ""
 #: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "Doğrulama kodu %s içinde sona eriyor."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
@@ -473,7 +473,7 @@ msgstr "Hesap yeniden doğrulama"
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
 msgid "Your GeoKret '%s' has been adopted"
-msgstr ""
+msgstr "GeoKretiniz '%s' sahiplenildi"
 
 #: website/app/GeoKrety/Email/PasswordChange.php:17
 msgid "Password reset request"
@@ -652,7 +652,7 @@ msgstr ""
 
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
-msgstr ""
+msgstr "Geocaching.com'da ara"
 
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:35
 #, php-format
@@ -664,12 +664,17 @@ msgstr ""
 msgid "Location: %s"
 msgstr "Lokasyon: %s"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:18
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
 msgid "has avatar icon"
 msgstr ""
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:19
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
 msgid "GeoKret has an avatar"
+msgstr ""
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
+#, php-format
+msgid "GeoKret \"%s\" by %s"
 msgstr ""
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
@@ -963,7 +968,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "GeoKretlerinizden biri sahiplenildi."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
@@ -1269,6 +1274,45 @@ msgstr "Mail'i sil"
 msgid "Delete comment"
 msgstr "Yorumu sil"
 
+#: website/app-templates/smarty/elements/map_caption.tpl:9
+msgid "Last moved date"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:22
+#: website/app-templates/smarty/elements/map_caption.tpl:30
+#: website/app-templates/smarty/elements/map_caption.tpl:38
+#: website/app-templates/smarty/elements/map_caption.tpl:46
+#: website/app-templates/smarty/elements/map_caption.tpl:54
+#: website/app-templates/smarty/elements/map_caption.tpl:62
+msgid "%1 days"
+msgstr "%1 gün"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:75
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Total distance"
+msgstr "Toplam mesafe"
+
+#: website/app-templates/smarty/elements/map_caption.tpl:138
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+msgid "Caches visited count"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:139
+msgid "Total visited caches"
+msgstr ""
+
+#: website/app-templates/smarty/elements/map_caption.tpl:151
+#: website/app-templates/smarty/elements/map_caption.tpl:159
+#: website/app-templates/smarty/elements/map_caption.tpl:167
+#: website/app-templates/smarty/elements/map_caption.tpl:175
+#: website/app-templates/smarty/elements/map_caption.tpl:183
+msgid "%1 caches"
+msgstr ""
+
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
 msgstr ""
@@ -1283,7 +1327,7 @@ msgstr "Haber aboneliğine abone ol"
 
 #: website/app-templates/smarty/elements/move.tpl:7
 msgid "Show move on map"
-msgstr ""
+msgstr "Haritada göster"
 
 #: website/app-templates/smarty/elements/move.tpl:64
 msgid "Report as missing"
@@ -1368,11 +1412,6 @@ msgstr "Referans numarası"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
 msgid "Tracking Code"
 msgstr "Takip Kodu"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:30
-msgid "Total distance"
-msgstr "Toplam mesafe"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:54
 msgid "Places visited"
@@ -1463,7 +1502,7 @@ msgstr "İstatistikler"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:25
 msgid "Adopt this GeoKret"
-msgstr ""
+msgstr "Bu GeoKret'i sahiplen"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:27
 msgid "Login to claim this GeoKret"
@@ -1641,7 +1680,7 @@ msgstr "Envanteri görüntüle"
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:3
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:9
 msgid "Owned GeoKrety"
-msgstr ""
+msgstr "Sahip Olunan GeoKrety'ler"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:20
 #: website/app-templates/smarty/navbar-profile.tpl:20
@@ -1660,7 +1699,7 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:32
 msgid "Posted pictures"
-msgstr ""
+msgstr "Paylaşılan resimler"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:36
 msgid "Owned GeoKrety pictures"
@@ -1714,7 +1753,7 @@ msgstr "Geokretlerim"
 
 #: website/app-templates/smarty/navbar-profile.tpl:22
 msgid "My recent moves"
-msgstr ""
+msgstr "Son hareketlerim"
 
 #: website/app-templates/smarty/navbar-profile.tpl:23
 msgid "Recent moves of my GeoKrety"
@@ -1790,7 +1829,7 @@ msgstr "Yoksay"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:17
 msgid "Generate an Owner Code"
-msgstr ""
+msgstr "Sahip Kodu oluştur"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
 msgid "Choose your preferred language"
@@ -1819,7 +1858,7 @@ msgstr "Değiştir"
 
 #: website/app-templates/smarty/dialog/info.tpl:13
 msgid "Acknowledge"
-msgstr ""
+msgstr "Kabul et"
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
 msgid "Refresh your secid?"
@@ -1882,7 +1921,7 @@ msgstr "Şifre dayanıklılığı"
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:3
 #: website/app-templates/smarty/forms/move.tpl:28
 msgid "Select GeoKrety from inventory"
-msgstr ""
+msgstr "GeoKrety'i envanterden seç"
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:9
 msgid "Only %1 GeoKrety can be processed at a time."
@@ -1967,7 +2006,7 @@ msgstr "Yorumunuz"
 
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
 msgid "Declare missing"
-msgstr ""
+msgstr "Kayıp Bildir"
 
 #: website/app-templates/smarty/dialog/login_simple.tpl:5
 #: website/app-templates/smarty/dialog/login_simple.tpl:6
@@ -1992,7 +2031,7 @@ msgstr "Parola"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:9
 msgid "Contact user"
-msgstr ""
+msgstr "Kullanıcıyla iletişime geçin"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:18
 msgid "%1 (speak %2)"
@@ -2061,7 +2100,7 @@ msgstr "Profilime dön"
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:3
 msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
-msgstr ""
+msgstr "Bu belge, <a href=\"%1\"> geokrety.org </a>adresinde bulunan ve gönüllü olarak işletilen bir İnternet yer önbellek hizmeti olan \"<a href=\"%1\"> geokrety.org </a>\" kullanım koşullarını belirler (bundan sonra \"Hizmet\" olarak anılacaktır). Kaydolan her kişi (bundan böyle \"Kullanıcı\" olarak anılacaktır), kayıt prosedürünün başından itibaren bu hüküm ve koşulların kurallarına uymayı kabul eder."
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:7
 msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
@@ -2096,7 +2135,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:8
 msgid "Subscribe to this news?"
-msgstr ""
+msgstr "Haberlere abone ol?"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:26
 msgid "Unsubscribe"
@@ -2502,7 +2541,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/move.tpl:77
 msgid "When you've left a GeoKret in a cache"
-msgstr ""
+msgstr "Cache'de bir GeoKret bıraktığınızda"
 
 #: website/app-templates/smarty/forms/move.tpl:78
 msgid "I've dropped GeoKret"
@@ -2526,7 +2565,7 @@ msgstr "GeoKret'le tanıştım."
 
 #: website/app-templates/smarty/forms/move.tpl:98
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
-msgstr ""
+msgstr "Bir GeoKret Bıraktım - cache turu için bir GeoKret almak, bırakıp geri almak ile aynı şeydir, GeoKret bu konumu ziyaret etmiş olur fakat yine de sizin envanterinizde kalır"
 
 #: website/app-templates/smarty/forms/move.tpl:99
 msgid "I've dipped a GeoKret"
@@ -2592,7 +2631,7 @@ msgstr ""
 #: website/app-templates/smarty/forms/geokret_label.tpl:22
 #: website/app-templates/smarty/forms/geokret_label.tpl:29
 msgid "Reference numbers"
-msgstr ""
+msgstr "Referans numaraları"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:43
 msgid "Label template"
@@ -2662,30 +2701,13 @@ msgstr ""
 msgid "Last move"
 msgstr ""
 
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-msgid "Caches visited count"
-msgstr ""
-
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:40
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr ""
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:12
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
 msgid "%1's Owned GeoKrety map"
-msgstr ""
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:34
-msgid "Total visited caches"
-msgstr ""
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:38
-msgid "Last moved date"
 msgstr ""
 
 #: website/app-templates/smarty/pages/news_details.tpl:3
@@ -2892,7 +2914,7 @@ msgstr "GeoKrety.org'a Hoşgeldiniz!"
 
 #: website/app-templates/smarty/pages/home.tpl:31
 msgid "Latest moves"
-msgstr ""
+msgstr "Son hareketler"
 
 #: website/app-templates/smarty/pages/home.tpl:57
 msgid "Recent pictures"
@@ -2908,7 +2930,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/email_change.tpl:10
 msgid "Changing your email address."
-msgstr ""
+msgstr "E-posta adresi değiştiriliyor."
 
 #: website/app-templates/smarty/pages/email_change.tpl:40
 #: website/app-templates/smarty/pages/email_revalidate.tpl:40
@@ -3006,7 +3028,7 @@ msgstr "Ülke"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:49
 msgid "Status: ready for search"
-msgstr ""
+msgstr "Durum: Aramaya hazır"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:51
 #: website/app-templates/smarty/pages/mole_hole.tpl:94
@@ -3027,7 +3049,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:92
 msgid "Status: Ready for search"
-msgstr ""
+msgstr "Durum: Aramaya hazır"
 
 #: website/app-templates/smarty/pages/email_revalidate.tpl:10
 msgid "Email address revalidation."
@@ -3056,7 +3078,7 @@ msgstr "Geliştiriciler"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:11
 msgid "Current team:"
-msgstr ""
+msgstr "Şu an ki Takım"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:13
 msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
@@ -3226,7 +3248,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/contact_us.tpl:33
 msgid "IRC"
-msgstr ""
+msgstr "IRC(internet sohbeti)"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:41
 msgid "Twitter"
@@ -3264,7 +3286,7 @@ msgstr "Bir yeri seçmek için haritayı kullanın veya el ile koordinatları gi
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:28
 msgid "Other acceptable lat/lon formats"
-msgstr ""
+msgstr "Diğer kabul edilebilir enlem/boylam biçimleri"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:37
 msgid "Observation radius"
@@ -3274,43 +3296,43 @@ msgstr ""
 msgid "Center the map on the zone to observe"
 msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:41
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
 msgstr "Bilgiler:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:43
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
 msgid "Owner:"
-msgstr "Sahibi:"
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:44
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
 msgid "Distance:"
 msgstr "Mesafe:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:45
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
 msgid "Caches:"
 msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:47
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:98
 msgid "Actual position:"
-msgstr "Gerçek konum:"
+msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:49
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
 msgid "Waypoint:"
 msgstr ""
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:50
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
 msgid "Author:"
 msgstr "Yazar:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:51
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
 msgid "Date:"
 msgstr "Tarih:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:52
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
 msgid "Country:"
 msgstr "Ülke:"
 
-#: website/app-templates/smarty/js/geokrety_map.tpl.js:53
+#: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
 msgid "Elevation:"
 msgstr ""
 
