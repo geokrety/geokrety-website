@@ -218,6 +218,17 @@ if ((empty($kret_login))) { //--------------------  if login is not set
     // ------------------------ jeśli są jakieś BŁĘDY ----------------
     if (!empty($error)) {
         $TRESC = defektoskop($error, true, '', '', 'adduser');
+    } elseif (array_key_exists('submit', $_POST)) {
+        sleep(1);
+        $TRESC .= '<div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">'._('Account successfully created').'</h3>
+          </div>
+          <div class="panel-body">
+            '._('An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)').'
+          </div>
+        </div>';
+        errory_add("New user: $login blocked", 8, 'NewUserBlocked');
     } else {
         // ------------------------ jeśli brak błędów ----------------
 
