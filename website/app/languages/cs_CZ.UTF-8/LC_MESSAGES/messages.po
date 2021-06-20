@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-02 17:31+0000\n"
-"PO-Revision-Date: 2021-06-20 08:41\n"
+"PO-Revision-Date: 2021-06-20 08:51\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -384,7 +384,7 @@ msgstr "Potvrzovací e-mail byl odeslán na vaší adresu."
 #: website/app/GeoKrety/Email/AccountActivation.php:38
 #: website/app/GeoKrety/Email/AccountActivation.php:55
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
-msgstr ""
+msgstr "<strong>Než budete moci svůj účet používat, musíte kliknout na odkaz uvedený v e-mailu.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
@@ -392,7 +392,7 @@ msgstr ""
 #: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "Potvrzovací odkaz vyprší za %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
@@ -401,16 +401,16 @@ msgstr "Vítejte na GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "Your account seems to already exist."
-msgstr ""
+msgstr "Zdá se, že váš účet již existuje."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
 #: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "The confirmation email was sent again to your mail address."
-msgstr ""
+msgstr "Na vaší e-mailovou adresu byl znovu odeslán potvrzující e-mail."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:53
 msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
+msgstr "<strong>Váš účet ještě není aktivní.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:61
 msgid "Account activated"
@@ -423,12 +423,12 @@ msgstr "Došlo k chybě při odesílání pošty."
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
-msgstr ""
+msgstr "Seznam sledovaných pro %s"
 
 #: website/app/GeoKrety/Email/EmailChange.php:28
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
 msgid "Revalidate your email address"
-msgstr ""
+msgstr "Potvrďte svou e-mailovou adresu"
 
 #: website/app/GeoKrety/Email/EmailChange.php:32
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
@@ -639,7 +639,7 @@ msgstr "Zobrazit <a href=\"%s\" target=\"_blank\">stránku keše</a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "Toto je keška Geocaching.com, která ještě nebyla přihlášena ke GeoKrety.org. Abyste zajistili správný pohyb tohoto GeoKrtka, zkopírujte / vložte souřadnice kešky do pole „Souřadnice“."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -675,7 +675,7 @@ msgstr "GeoKret má avatar"
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
 #, php-format
 msgid "GeoKret \"%s\" by %s"
-msgstr ""
+msgstr "GeoKrtek \"%s\" od %s"
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
 msgid "GK type icon"
@@ -804,17 +804,17 @@ msgstr "{0} musí být po narození GeoKrtka"
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Gratulujeme"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "Vaše e-mailová adresa byla úspěšně změněna."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "Vaše e-mailová adresa byla úspěšně změněna na: %1."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
 #: website/app-templates/smarty/emails/password-changed.tpl:12
