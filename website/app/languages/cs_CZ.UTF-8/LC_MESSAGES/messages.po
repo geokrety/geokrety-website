@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-02 17:31+0000\n"
-"PO-Revision-Date: 2021-06-20 09:01\n"
+"PO-Revision-Date: 2021-06-20 09:11\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -25,11 +25,11 @@ msgstr "Více účtů sdílí stejnou e-mailovou adresu. Prosím, <a href=\"%s\"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "Parametr \"userid\" musí být platné číslo."
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "Parametr \"gkid\" musí být platné číslo nebo GKid (GKXXXXX)."
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:74
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
@@ -146,7 +146,7 @@ msgstr "Špatné datum nebo čas"
 
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
-msgstr ""
+msgstr "Musí být uveden parametr trasového bodu."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:50
 #: website/app/GeoKrety/Controller/Pages/Login.php:147
@@ -159,16 +159,16 @@ msgstr "Vítejte na palubě!"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:128
 msgid "Please provide 'login' and 'password' parameters."
-msgstr ""
+msgstr "Uveďte prosím parametry 'login' a 'heslo'."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:136
 msgid "Your account is not valid."
-msgstr ""
+msgstr "Váš účet není platný."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:158
 #: website/app/GeoKrety/Controller/Pages/Login.php:164
 msgid "Invalid \"secid\""
-msgstr ""
+msgstr "Neplatný \"secid\""
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:213
 #, php-format
@@ -433,16 +433,16 @@ msgstr "Potvrďte svou e-mailovou adresu"
 #: website/app/GeoKrety/Email/EmailChange.php:32
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
 msgid "Your account has been imported from GKv1."
-msgstr ""
+msgstr "Váš účet byl importován z GKv1."
 
 #: website/app/GeoKrety/Email/EmailChange.php:33
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
 msgid "We would like to verify that your mail address is still valid."
-msgstr ""
+msgstr "Rádi bychom ověřili, že vaše e-mailová adresa je stále platná."
 
 #: website/app/GeoKrety/Email/EmailChange.php:34
 msgid "An email has been sent to your registered address, please click the included link."
-msgstr ""
+msgstr "Na vaši adresu byl odeslán e-mail, klikněte na přiložený odkaz."
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
 #: website/app/GeoKrety/Email/EmailChange.php:53
@@ -464,11 +464,11 @@ msgstr "E-mailová adresa byla vrácena"
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:21
 msgid "Please click the included link to confirm it's validity."
-msgstr ""
+msgstr "Klikněte prosím na přiložený odkaz pro potvrzení jeho platnosti."
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:27
 msgid "Account revalidation"
-msgstr ""
+msgstr "Obnovení platnosti účtu"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -574,12 +574,12 @@ msgstr "Chybějící nebo neplatné souřadnice."
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Informace"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Zadána neplatná jednotka: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -593,7 +593,7 @@ msgstr "Sledovací kód \"%s\" se zdá být příliš krátký. Očekáváme %d 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Sledovací kód \"%s\" se zdá být příliš dlouhý. Očekáváme zde %d znaků."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -997,15 +997,15 @@ msgstr "Některé účty budou odstraněny."
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:7
 msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
+msgstr "%1 účty stále nejsou aktivovány ani po %2 dnech. Nyní budou smazány."
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
-msgstr ""
+msgstr "Skript je uzamčen"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
+msgstr "Cron <strong>%1</strong> je uzamčen od <strong>%2</strong>!"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:3
 msgid "Contact from a GeoKrety.org user"
@@ -1013,7 +1013,7 @@ msgstr "Kontakt od uživatele GeoKrety.org"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Někdo vám poslal/a soukromou zprávu."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
