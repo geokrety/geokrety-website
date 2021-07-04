@@ -14,6 +14,9 @@
                 <th class="text-right">Revision</th>
                 <th class="text-right">Last error</th>
                 <th class="text-right">Error count</th>
+                {if $f3->get('SESSION.IS_ADMIN')}
+                <th class="text-right">Actions</th>
+                {/if}
             </tr>
         </thead>
         <tbody>
@@ -40,6 +43,15 @@
                 <td></td>
             {/if}
             <td class="text-right">{$item->error_count}</td>
+            {if $f3->get('SESSION.IS_ADMIN')}
+            <td class="text-right">
+                {if !is_null($item->revision)}
+                <a href="{'statistics_waypoints_restart'|alias:sprintf('@service_id=%s', $item->service_id)}" class="btn btn-warning" title="{t}Force complete synchronization{/t}">
+                    {fa icon="refresh"}
+                </a>
+                {/if}
+            </td>
+            {/if}
         </tr>
         {/foreach}
         {/if}

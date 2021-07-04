@@ -21,4 +21,14 @@ SQL;
 
         Smarty::render('pages/statistics_waypoints.tpl');
     }
+
+    public function force_complete_synchronization(\Base $f3) {
+        $wptSync = new WaypointSync();
+        $wptSync->load(['service_id = ?', $f3->get('PARAMS.service_id')]);
+        if(!$wptSync->dry()) {
+            $wptSync->revision = null;
+            $wptSync->save();
+        }
+        $f3->reroute('@statistics_waypoints');
+    }
 }
