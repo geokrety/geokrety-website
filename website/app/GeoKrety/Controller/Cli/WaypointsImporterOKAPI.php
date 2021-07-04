@@ -7,6 +7,7 @@ use GeoKrety\Email\CronError;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\File;
+use GeoKrety\Service\Metrics;
 
 class WaypointsImporterOKAPI extends WaypointsImporterBase {
     const OKAPI_CHANGELOG_ENDPOINT = '/okapi/services/replicate/changelog';
@@ -16,6 +17,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
     protected string $class_name = __CLASS__;
 
     public int $nTotal = 0;
+    public int $nAdded = 0;
     public int $nUpdated = 0;
     public int $nDeleted = 0;
     public int $nSkipped = 0;
@@ -25,7 +27,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
     private array $failingPartners = [];
 
     public function process() {
-        $this->console_writer->setPattern('Importing %7s: %6.2f%% (%s/%d) - U:%d D:%d S:%d E:%d');
+        $this->console_writer->setPattern('Importing %7s: %6.2f%% (%s/%d) - A:%d U:%d D:%d S:%d E:%d');
         $this->db->commit(); // Terminate "general" transaction
         $this->has_error = false;
         foreach (GK_OKAPI_PARTNERS as $okapi => $params) {
@@ -109,6 +111,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 $this->mPart = sprintf('%s/%d', $piece, $totalFiles);
                 $this->perform_incremental_update($okapi, $changes);
             }
+            $this->save_metrics($okapi);
             $this->save_last_update($okapi, $index->revision);
         } finally {
             File::deleteTree($tmpdir);
@@ -145,6 +148,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             $wpt->load(['waypoint = ?', $id]);
             if ($change->change_type == 'replace' and $wpt->dry()) {
                 // Waypoint is probably not published
+                ++$this->nSkipped;
                 continue;
             }
 
@@ -180,7 +184,11 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 continue;
             }
 
-            ++$this->nUpdated;
+            if ($wpt->dry()) {
+                ++$this->nAdded;
+            } else {
+                ++$this->nUpdated;
+            }
             $this->print_stats();
         }
         if ($this->nError > 0) {
@@ -189,9 +197,18 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
     }
 
     private function print_stats() {
-        $nProcessed = $this->nUpdated + $this->nDeleted + $this->nSkipped + $this->nError;
+        $nProcessed = $this->nAdded + $this->nUpdated + $this->nDeleted + $this->nSkipped + $this->nError;
         $nPercent = $nProcessed / $this->nTotal * 100;
-        $this->console_writer->print([$this->mPart, $nPercent, $nProcessed, $this->nTotal, $this->nUpdated, $this->nDeleted, $this->nSkipped, $this->nError]);
+        $this->console_writer->print([$this->mPart, $nPercent, $nProcessed, $this->nTotal, $this->nAdded, $this->nUpdated, $this->nDeleted, $this->nSkipped, $this->nError]);
+    }
+
+    private function save_metrics(string $okapi): void {
+        $gauge = Metrics::getOrRegisterGauge('waypoint_okapi_sync', 'OKAPI sync stats', ['provider', 'status']);
+        $gauge->set($this->nAdded, [$okapi, 'added']);
+        $gauge->set($this->nUpdated, [$okapi, 'updated']);
+        $gauge->set($this->nDeleted, [$okapi, 'deleted']);
+        $gauge->set($this->nSkipped, [$okapi, 'skipped']);
+        $gauge->set($this->nError, [$okapi, 'error']);
     }
 
     protected function status_to_id(string $status, ?string $subtype = null): ?int {
@@ -247,6 +264,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 $this->mPart = $json->revision;
                 $this->perform_incremental_update($okapi, $changes);
             }
+            $this->save_metrics($okapi);
             $revision = $json->revision;
             $more = $json->more;
             $this->save_last_update($okapi, $revision);

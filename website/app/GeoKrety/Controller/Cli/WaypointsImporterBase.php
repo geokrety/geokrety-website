@@ -9,6 +9,7 @@ use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\File;
 use GeoKrety\Service\HTMLPurifier;
+use GeoKrety\Service\Metrics;
 use SimpleXMLElement;
 
 abstract class WaypointsImporterBase {
@@ -53,8 +54,9 @@ abstract class WaypointsImporterBase {
     /**
      * Store last script update.
      *
-     * @param string|null $service  The service code
-     * @param int|null    $revision The eventual revision to store
+     * @param string|null $service The service code
+     * @param int|null $revision The eventual revision to store
+     * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     protected function save_last_update(?string $service = null, ?int $revision = null) {
         $svc = $service ?? static::SCRIPT_CODE;
@@ -77,6 +79,8 @@ abstract class WaypointsImporterBase {
             $okapiSync->wpt_count = $wpt_count;
             $okapiSync->last_success_datetime = $this->start_datetime->format(GK_DB_DATETIME_FORMAT);
         }
+        Metrics::getOrRegisterGauge('waypoint_sync_status', 'Waypoint sync cron status', ['provider'])
+            ->set(is_null($this->error), [$svc]);
         $okapiSync->save();
         $this->error = null;
     }

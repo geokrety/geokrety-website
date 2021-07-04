@@ -15,6 +15,7 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\File;
 use GeoKrety\Service\Smarty;
 use PHPMailer\PHPMailer\Exception;
+use Sugar\Event;
 
 class DailyMail {
     use Script;
@@ -121,11 +122,13 @@ SQL;
     protected function send() {
         if (!$this->user->hasEmail()) {
             $this->console_writer->print([$this->user->id, $this->user->username, '400 no email'], true);
+            Event::instance()->emit('cron.dailymail.nomail', $this->user);
 
             return;
         }
         if (!$this->user->daily_mails) {
             $this->console_writer->print([$this->user->id, $this->user->username, '403 don\'t want'], true);
+            Event::instance()->emit('cron.dailymail.deny', $this->user);
 
             return;
         }
@@ -142,6 +145,7 @@ SQL;
 
             if (!$this->updates_count) {
                 $this->console_writer->print([$this->user->id, $this->user->username, '204 empty'], true);
+                Event::instance()->emit('cron.dailymail.empty', $this->user);
 
                 return;
             }
@@ -151,10 +155,12 @@ SQL;
             $this->email->sendDailyMail($this->user);
         } catch (Exception $e) {
             $this->console_writer->print([$this->user->id, $this->user->username, sprintf('500 error: %s', $e->getMessage())], true);
+            Event::instance()->emit('cron.dailymail.error', $this->user);
 
             return;
         }
         $this->console_writer->print([$this->user->id, $this->user->username, '200 sent'], true);
+        Event::instance()->emit('cron.dailymail.sent', $this->user);
     }
 
     private function compute_since() {

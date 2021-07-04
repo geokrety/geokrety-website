@@ -7,6 +7,7 @@ use Exception;
 use Flash;
 use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
+use GeoKrety\Service\Metrics;
 use GeoKrety\Service\Smarty;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -63,6 +64,7 @@ abstract class BasePHPMailer extends PHPMailer {
             return false;
         }
         foreach ($this->recipients as $user) {
+            Metrics::counter('mail', 'Total number of sent email');
             $this->isHTML(true);
             Smarty::assign('user', $user);
             LanguageService::changeLanguageTo($user->preferred_language);

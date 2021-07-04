@@ -4,6 +4,7 @@ namespace GeoKrety\Service;
 
 use GeoKrety\LogType;
 use GeoKrety\Model\User;
+use Sugar\Event;
 
 /**
  * UserBanner.
@@ -67,5 +68,6 @@ class UserBanner {
             'Key' => sprintf('%d.png', $user->id),
             'Body' => $img->dump('png', 9),
         ]);
+        Event::instance()->emit('user.statpic.generated', $user);
     }
 }

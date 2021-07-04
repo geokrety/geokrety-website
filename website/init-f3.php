@@ -48,6 +48,17 @@ if (!is_null(GK_SENTRY_DSN)) {
     \Sentry\init(['dsn' => GK_SENTRY_DSN, 'environment' => GK_SENTRY_ENV, 'release' => GK_APP_VERSION]);
 }
 
+\Prometheus\Storage\Redis::setDefaultOptions(
+    [
+        'host' => GK_REDIS_HOST,
+        'port' => GK_REDIS_PORT,
+        'password' => null,
+        'timeout' => 0.1, // in seconds
+        'read_timeout' => '10', // in seconds
+        'persistent_connections' => false
+    ]
+);
+
 $f3->set('UI', GK_F3_UI);
 $f3->set('TMP', GK_F3_TMP);
 $f3->set('LOGS', GK_F3_LOGS);

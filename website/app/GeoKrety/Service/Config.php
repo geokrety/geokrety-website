@@ -30,6 +30,7 @@ class Config extends \Prefab {
         define('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE', getenv('GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE') ?: 12); // Mo
         define('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES', getenv('GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES') ?: 20);
         define('GK_SITE_CRON_LOCKED_MINUTES', getenv('GK_SITE_CRON_LOCKED_MINUTES') ?: 5);
+        define('GK_SYSTEM_PATH_ALLOWED_IPS', getenv('GK_SYSTEM_PATH_ALLOWED_IPS') ? explode(',', getenv('GK_SYSTEM_PATH_ALLOWED_IPS')) : ['127.0.0.1', '192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8']);
 
         // SITE EMAIL From
         define('GK_SITE_EMAIL', getenv('GK_SITE_EMAIL') ?: 'geokrety@gmail.com');
@@ -66,6 +67,7 @@ class Config extends \Prefab {
         // Admin services
         define('ADMIN_SERVICE_ADMINER_URL', getenv('ADMIN_SERVICE_ADMINER_URL') ?: GK_SITE_BASE_SERVER_URL.'/adminer');
         define('ADMIN_SERVICE_PGADMIN_URL', getenv('ADMIN_SERVICE_PGADMIN_URL') ?: GK_SITE_BASE_SERVER_URL.'/pgadmin');
+        define('ADMIN_SERVICE_GRAFANA_URL', getenv('ADMIN_SERVICE_GRAFANA_URL') ?: GK_SITE_BASE_SERVER_URL.'/grafana');
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
@@ -232,6 +234,12 @@ class Config extends \Prefab {
             'OC_US' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_US, 'url' => GK_WAYPOINT_SERVICE_URL_OC_US],
             'OC_NL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_NL, 'url' => GK_WAYPOINT_SERVICE_URL_OC_NL],
             'OC_RO' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_RO, 'url' => GK_WAYPOINT_SERVICE_URL_OC_RO],
+        ]);
+
+        define('GK_METRICS_EXCLUDE_PATH', [
+            '/cron',
+            '/health',
+            '/metrics',
         ]);
 
         // map api url
