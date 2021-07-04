@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-02 17:31+0000\n"
-"PO-Revision-Date: 2021-06-20 10:01\n"
+"POT-Creation-Date: 2021-07-04 13:56+0000\n"
+"PO-Revision-Date: 2021-07-04 14:01\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -416,7 +416,7 @@ msgstr "<strong>Váš účet ještě není aktivní.</strong>"
 msgid "Account activated"
 msgstr "Účet byl aktivován"
 
-#: website/app/GeoKrety/Email/BasePHPMailer.php:81
+#: website/app/GeoKrety/Email/BasePHPMailer.php:83
 msgid "An error occurred while sending mail."
 msgstr "Došlo k chybě při odesílání pošty."
 
@@ -672,7 +672,11 @@ msgstr "má ikonu avataru"
 msgid "GeoKret has an avatar"
 msgstr "GeoKret má avatar"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
+msgid "nobody"
+msgstr ""
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:32
 #, php-format
 msgid "GeoKret \"%s\" by %s"
 msgstr "GeoKrtek \"%s\" od %s"
@@ -2879,9 +2883,13 @@ msgstr "Interaktivní mapa GeoKrety"
 msgid "Waypoints statistics"
 msgstr "Statistiky trasových bodů"
 
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:36
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:39
 msgid "N/A"
 msgstr "N/A"
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:49
+msgid "Force complete synchronization"
+msgstr ""
 
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:18
