@@ -3,13 +3,12 @@
 use GeoKrety\Email\CronError;
 use GeoKrety\Service\Metrics;
 use IPTools\IP;
-use IPTools\Network;
 use IPTools\Range;
 
 require '../init-f3.php';
 $f3->config('../app/assets.ini');
 
-include __DIR__ . '/../app/middleware.php';
+include __DIR__.'/../app/middleware.php';
 
 if (preg_match('/^\/cron/', $f3->PATH)) {
     $f3->DEBUG = 2;

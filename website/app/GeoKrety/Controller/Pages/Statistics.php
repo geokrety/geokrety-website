@@ -25,7 +25,7 @@ SQL;
     public function force_complete_synchronization(\Base $f3) {
         $wptSync = new WaypointSync();
         $wptSync->load(['service_id = ?', $f3->get('PARAMS.service_id')]);
-        if(!$wptSync->dry()) {
+        if (!$wptSync->dry()) {
             $wptSync->revision = null;
             $wptSync->save();
         }

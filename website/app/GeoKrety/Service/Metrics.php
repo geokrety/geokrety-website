@@ -6,7 +6,6 @@ use Base;
 use Prefab;
 use Prometheus\CollectorRegistry;
 use Prometheus\Counter;
-use Prometheus\Exception\MetricsRegistrationException;
 use Prometheus\Gauge;
 
 class Metrics extends Prefab {
@@ -17,10 +16,6 @@ class Metrics extends Prefab {
     }
 
     /**
-     * @param string $name
-     * @param string $description
-     * @param array $labels
-     * @param array $labels_values
      * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     public static function counter(string $name, string $description, array $labels = [], array $labels_values = []) {
@@ -29,18 +24,11 @@ class Metrics extends Prefab {
             ->inc($labels_values);
     }
 
-    /**
-     * @return \Prometheus\CollectorRegistry
-     */
     public static function getCollectorRegistry(): CollectorRegistry {
         return self::instance()->collector;
     }
 
     /**
-     * @param string $name
-     * @param string $help
-     * @param string $sql
-     * @param array $labels
      * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     public static function gauge_set_sql(string $name, string $help, string $sql, array $labels = []): void {
@@ -50,18 +38,15 @@ class Metrics extends Prefab {
             //foreach ($results as $value) {
             //}
             $gauge->set($results[0]['count']);
+
             return;
         }
         foreach ($results as $value) {
-            $gauge->set($value['count'],  [$value['label']]);
+            $gauge->set($value['count'], [$value['label']]);
         }
     }
 
     /**
-     * @param string $name
-     * @param string $help
-     * @param array $labels
-     * @return \Prometheus\Counter
      * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     public static function getOrRegisterCounter(string $name, string $help, array $labels = []): Counter {
@@ -70,10 +55,6 @@ class Metrics extends Prefab {
     }
 
     /**
-     * @param string $name
-     * @param string $help
-     * @param array $labels
-     * @return \Prometheus\Gauge
      * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     public static function getOrRegisterGauge(string $name, string $help, array $labels = []): Gauge {

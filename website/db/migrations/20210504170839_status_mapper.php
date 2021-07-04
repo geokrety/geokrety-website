@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
@@ -9,7 +10,7 @@ final class StatusMapper extends AbstractMigration {
 CREATE FUNCTION geokrety.map_account_status(IN status smallint)
     RETURNS character varying
     LANGUAGE 'plpgsql'
-    
+
 AS $BODY$
 BEGIN
 
@@ -32,7 +33,7 @@ SQL);
 CREATE FUNCTION geokrety.map_geokrety_types(IN type smallint)
     RETURNS character varying
     LANGUAGE 'plpgsql'
-    
+
 AS $BODY$
 BEGIN
 
@@ -59,7 +60,7 @@ SQL);
 CREATE FUNCTION geokrety.map_move_types(IN type smallint)
     RETURNS character varying
     LANGUAGE 'plpgsql'
-    
+
 AS $BODY$
 BEGIN
 
@@ -88,7 +89,7 @@ SQL);
 CREATE FUNCTION geokrety.map_pictures_types(IN type smallint)
     RETURNS character varying
     LANGUAGE 'plpgsql'
-    
+
 AS $BODY$
 BEGIN
 
@@ -111,7 +112,7 @@ SQL);
 CREATE FUNCTION geokrety.map_move_comments_types(IN type smallint)
     RETURNS character varying
     LANGUAGE 'plpgsql'
-    
+
 AS $BODY$
 BEGIN
 
@@ -129,6 +130,7 @@ ALTER FUNCTION geokrety.map_move_comments_types(smallint)
     OWNER TO geokrety;
 SQL);
     }
+
     public function down(): void {
         $this->execute('DROP FUNCTION map_account_status');
         $this->execute('DROP FUNCTION map_geokrety_types');

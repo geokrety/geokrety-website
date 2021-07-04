@@ -251,7 +251,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             }
 
             $json = json_decode($raw);
-            if (property_exists($json,'error')) {
+            if (property_exists($json, 'error')) {
                 if (property_exists($json->error, 'developer_message')) {
                     throw new Exception(sprintf('%s: %s', $json->error->developer_message, $params['url']));
                 }

@@ -12,7 +12,7 @@ class Metrics extends Base {
         $renderer = new RenderTextFormat();
         $result = $renderer->render($registry->getMetricFamilySamples());
 
-        header('Content-type: ' . RenderTextFormat::MIME_TYPE);
+        header('Content-type: '.RenderTextFormat::MIME_TYPE);
         echo $result;
     }
 

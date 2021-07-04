@@ -54,8 +54,9 @@ abstract class WaypointsImporterBase {
     /**
      * Store last script update.
      *
-     * @param string|null $service The service code
-     * @param int|null $revision The eventual revision to store
+     * @param string|null $service  The service code
+     * @param int|null    $revision The eventual revision to store
+     *
      * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     protected function save_last_update(?string $service = null, ?int $revision = null) {

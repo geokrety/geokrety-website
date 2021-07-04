@@ -18,10 +18,10 @@ class File {
      * @param string|null $dir         Base directory under which to create temp dir.
      *                                 If null, the default system temp dir (sys_get_temp_dir()) will be
      *                                 used.
-     * @param string $prefix      string with which to prefix created dirs
-     * @param int $mode        Octal file permission mask for the newly-created dir.
+     * @param string      $prefix      string with which to prefix created dirs
+     * @param int         $mode        Octal file permission mask for the newly-created dir.
      *                                 Should begin with a 0.
-     * @param int $maxAttempts maximum attempts before giving up (to prevent
+     * @param int         $maxAttempts maximum attempts before giving up (to prevent
      *                                 endless loops)
      *
      * @return string|bool full path to newly-created dir, or false on failure
@@ -84,7 +84,7 @@ class File {
             $cparams = [
                 'http' => [
                     'ignore_errors' => $ignore_errors,
-                ]
+                ],
             ];
             $context = stream_context_create($cparams);
         }
