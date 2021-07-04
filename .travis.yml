@@ -47,6 +47,10 @@ jobs:
 
     - stage: test-qa
       php: 7.4
+      before_script:
+        # Use 1.27.4 as later versions have bug cloning git repo over TLS `version `OPENSSL_1_1_1' not found`
+        # https://stackoverflow.com/questions/66579446/error-executing-docker-compose-building-webserver-unable-to-prepare-context-un/67357899#67357899
+        - curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64 -o docker-compose && chmod a+x docker-compose
       if: env(TRAVIS_QA_TOKEN) AND type = 'push' AND branch NOT IN (l10n_master, l10n_new-theme)
       script:
         - export PGUSER=geokrety
@@ -54,7 +58,7 @@ jobs:
         - export PGDATABASE=geokrety
         - export PGHOST=localhost
         - export PGPORT=5433
-        - export DOCKER_COMPOSE="docker-compose -p gk -f docker-compose.local.yml"
+        - export DOCKER_COMPOSE="./docker-compose -p gk -f docker-compose.local.yml"
 
         # Retrieve huge file to initialize database
         - ./website/db/get_huge_dump_files.sh
