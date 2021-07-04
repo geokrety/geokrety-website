@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-02 17:31+0000\n"
-"PO-Revision-Date: 2021-06-14 20:15\n"
+"PO-Revision-Date: 2021-06-20 10:01\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -25,11 +25,11 @@ msgstr "Více účtů sdílí stejnou e-mailovou adresu. Prosím, <a href=\"%s\"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "Parametr \"userid\" musí být platné číslo."
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:75
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "Parametr \"gkid\" musí být platné číslo nebo GKid (GKXXXXX)."
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:74
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
@@ -63,7 +63,7 @@ msgstr "Při registraci adopce nastala chyba."
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
-msgstr ""
+msgstr "Gratulujeme! Nyní jste vlastníkem %s."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:39
 msgid "Born here"
@@ -109,15 +109,15 @@ msgstr "Vyberte prosím typ exportu."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:28
 msgid "This GeoKret is already archived."
-msgstr ""
+msgstr "Tento GeoKrtek je již archivován."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:43
 msgid "Archiving GeoKret"
-msgstr ""
+msgstr "Archivování Geokrtka"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:49
 msgid "Failed to archive the GeoKret."
-msgstr ""
+msgstr "Nepodařilo se archivovat GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
@@ -146,7 +146,7 @@ msgstr "Špatné datum nebo čas"
 
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:206
 msgid "Waypoint parameter must be provided."
-msgstr ""
+msgstr "Musí být uveden parametr trasového bodu."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:50
 #: website/app/GeoKrety/Controller/Pages/Login.php:147
@@ -159,16 +159,16 @@ msgstr "Vítejte na palubě!"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:128
 msgid "Please provide 'login' and 'password' parameters."
-msgstr ""
+msgstr "Uveďte prosím parametry 'login' a 'heslo'."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:136
 msgid "Your account is not valid."
-msgstr ""
+msgstr "Váš účet není platný."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:158
 #: website/app/GeoKrety/Controller/Pages/Login.php:164
 msgid "Invalid \"secid\""
-msgstr ""
+msgstr "Neplatný \"secid\""
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:213
 #, php-format
@@ -320,7 +320,7 @@ msgstr "Nebyla provedena žádná změna a tento token je nyní zrušen."
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:25
 msgid "You have successfully validated your email address."
-msgstr ""
+msgstr "Váš email byl úspěšně ověřen."
 
 #: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:26
 msgid "Failed to refresh your secid."
@@ -378,13 +378,13 @@ msgstr "Délka trasového bodu je neplatná. Měla by být mezi %d a %d znaky."
 #: website/app/GeoKrety/Email/AccountActivation.php:16
 #: website/app/GeoKrety/Email/EmailRevalidate.php:20
 msgid "A confirmation email has been sent to your address."
-msgstr ""
+msgstr "Potvrzovací e-mail byl odeslán na vaší adresu."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
 #: website/app/GeoKrety/Email/AccountActivation.php:55
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
-msgstr ""
+msgstr "<strong>Než budete moci svůj účet používat, musíte kliknout na odkaz uvedený v e-mailu.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
@@ -392,7 +392,7 @@ msgstr ""
 #: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "Potvrzovací odkaz vyprší za %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
@@ -401,16 +401,16 @@ msgstr "Vítejte na GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "Your account seems to already exist."
-msgstr ""
+msgstr "Zdá se, že váš účet již existuje."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
 #: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "The confirmation email was sent again to your mail address."
-msgstr ""
+msgstr "Na vaší e-mailovou adresu byl znovu odeslán potvrzující e-mail."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:53
 msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
+msgstr "<strong>Váš účet ještě není aktivní.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:61
 msgid "Account activated"
@@ -423,26 +423,26 @@ msgstr "Došlo k chybě při odesílání pošty."
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
-msgstr ""
+msgstr "Seznam sledovaných pro %s"
 
 #: website/app/GeoKrety/Email/EmailChange.php:28
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
 msgid "Revalidate your email address"
-msgstr ""
+msgstr "Potvrďte svou e-mailovou adresu"
 
 #: website/app/GeoKrety/Email/EmailChange.php:32
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
 msgid "Your account has been imported from GKv1."
-msgstr ""
+msgstr "Váš účet byl importován z GKv1."
 
 #: website/app/GeoKrety/Email/EmailChange.php:33
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
 msgid "We would like to verify that your mail address is still valid."
-msgstr ""
+msgstr "Rádi bychom ověřili, že vaše e-mailová adresa je stále platná."
 
 #: website/app/GeoKrety/Email/EmailChange.php:34
 msgid "An email has been sent to your registered address, please click the included link."
-msgstr ""
+msgstr "Na vaši adresu byl odeslán e-mail, klikněte na přiložený odkaz."
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
 #: website/app/GeoKrety/Email/EmailChange.php:53
@@ -464,11 +464,11 @@ msgstr "E-mailová adresa byla vrácena"
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:21
 msgid "Please click the included link to confirm it's validity."
-msgstr ""
+msgstr "Klikněte prosím na přiložený odkaz pro potvrzení jeho platnosti."
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:27
 msgid "Account revalidation"
-msgstr ""
+msgstr "Obnovení platnosti účtu"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -574,12 +574,12 @@ msgstr "Chybějící nebo neplatné souřadnice."
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Informace"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Zadána neplatná jednotka: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -593,7 +593,7 @@ msgstr "Sledovací kód \"%s\" se zdá být příliš krátký. Očekáváme %d 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Sledovací kód \"%s\" se zdá být příliš dlouhý. Očekáváme zde %d znaků."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
@@ -639,7 +639,7 @@ msgstr "Zobrazit <a href=\"%s\" target=\"_blank\">stránku keše</a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "Toto je keška Geocaching.com, která ještě nebyla přihlášena ke GeoKrety.org. Abyste zajistili správný pohyb tohoto GeoKrtka, zkopírujte / vložte souřadnice kešky do pole „Souřadnice“."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -675,7 +675,7 @@ msgstr "GeoKret má avatar"
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
 #, php-format
 msgid "GeoKret \"%s\" by %s"
-msgstr ""
+msgstr "GeoKrtek \"%s\" od %s"
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
 msgid "GK type icon"
@@ -804,17 +804,17 @@ msgstr "{0} musí být po narození GeoKrtka"
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Gratulujeme"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "Vaše e-mailová adresa byla úspěšně změněna."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "Vaše e-mailová adresa byla úspěšně změněna na: %1."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
 #: website/app-templates/smarty/emails/password-changed.tpl:12
@@ -848,7 +848,7 @@ msgstr "Platnost tohoto odkazu vyprší %1."
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
 msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
+msgstr "Pokud jste nepožádali o změnu hesla, měli byste také zvážit jeho okamžitou změnu."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:17
@@ -878,7 +878,7 @@ msgstr "S pozdravem,<br>GeoKrety tým"
 
 #: website/app-templates/smarty/emails/base.tpl:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
+msgstr "Pokud jste nikdy nevytvořili účet na GeoKrety.org, prosím <a href=\"mailto:%1?subject=%2\">kontaktujte nás</a>."
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:3
 msgid "Forgot Your Password?"
@@ -886,7 +886,7 @@ msgstr "Zapomněli jste heslo?"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Obnovit heslo."
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:8
 msgid "It happens. Click the link below to reset your password."
@@ -904,35 +904,35 @@ msgstr "Dostáváte tento e-mail, protože jste změnili své heslo na našich w
 #: website/app-templates/smarty/emails/password-changed.tpl:4
 #: website/app-templates/smarty/emails/account-activated.tpl:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "Váš účet na GeoKrety.org je nyní aktivní."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "Vaše heslo bylo úspěšně změněno."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
 msgid "Account has been deleted"
-msgstr ""
+msgstr "Účet byl smazán"
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
 msgid "Your account is now deleted."
-msgstr ""
+msgstr "Váš účet je nyní odstraněn."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
 msgid "The account you created %1 has never been activated."
-msgstr ""
+msgstr "Účet, který jste vytvořili %1, nebyl nikdy aktivován."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+msgstr "Naší zásadou je mazat neaktivní účty po %1 dnech."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
 msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+msgstr "Je nám líto, že vás o tom informujeme, ale váš účet byl trvale smazán."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+msgstr "Uživatelské jméno, které jste si vybrali při registraci, je teď volné a může ho libovolně používat někdo jiný."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
 #: website/app-templates/smarty/emails/account-activation.tpl:19
@@ -944,31 +944,31 @@ msgstr "Dostáváte tento e-mail, protože jste se právě zaregistrovali na na�
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Při synchronizaci partnerských dat se něco pokazilo"
 
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
 #: website/app-templates/smarty/emails/cron-exception.tpl:7
 msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
+msgstr "S úlohou cron se něco pokazilo, zkontrolujte protokoly níže."
 
 #: website/app-templates/smarty/emails/base-admin.tpl:4
 msgid "You're getting this email because you're one the website admins."
-msgstr ""
+msgstr "Dostáváte tento e-mail, protože jste jedním z administrátorů webových stránek."
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 msgid "Hooray"
-msgstr ""
+msgstr "Hurá"
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:8
 msgid "Your email address has been successfully reverted."
-msgstr ""
+msgstr "Vaše e-mailová adresa byla úspěšně obnovena."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "Jeden z vašich Geokrtků byl adoptován."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
@@ -981,7 +981,7 @@ msgstr "Dostáváš tento e-mail, protože jeden z tvých GeoKrety se změnil na
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "Potvrďte změnu své e-mailové adresy."
 
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
@@ -993,19 +993,19 @@ msgstr "Neměníte!"
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:4
 msgid "Some accounts will be deleted."
-msgstr ""
+msgstr "Některé účty budou odstraněny."
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:7
 msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
+msgstr "%1 účty stále nejsou aktivovány ani po %2 dnech. Nyní budou smazány."
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
-msgstr ""
+msgstr "Skript je uzamčen"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
+msgstr "Cron <strong>%1</strong> je uzamčen od <strong>%2</strong>!"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:3
 msgid "Contact from a GeoKrety.org user"
@@ -1013,11 +1013,11 @@ msgstr "Kontakt od uživatele GeoKrety.org"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Někdo vám poslal/a soukromou zprávu."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Tento e-mail byl odeslán uživatelem <a href=\"%2\">%1</a>."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -1041,7 +1041,7 @@ msgstr "Dostáváte tento e-mail, protože jeden z uživatelů GeoKrety.org vám
 
 #: website/app-templates/smarty/emails/account-activation.tpl:4
 msgid "One step left to use GeoKrety.org."
-msgstr ""
+msgstr "K použití GeoKrety.org zbývá jeden krok."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
@@ -1059,7 +1059,7 @@ msgstr "Pokud není váš účet v této době aktivován, bude automaticky smaz
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:4
 msgid "An exception occurred in a cron job"
-msgstr ""
+msgstr "V cron došlo k výjimce"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
@@ -1083,23 +1083,23 @@ msgstr "Dostáváte tento e-mail, protože jste požádali o změnu e-mailové a
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
 msgid "Account not yet active"
-msgstr ""
+msgstr "Účet ještě není aktivní"
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
 msgid "Your account is about to be deleted."
-msgstr ""
+msgstr "Váš účet bude brzy odstraněn."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
 msgid "The account you created %1 has not yet been activated."
-msgstr ""
+msgstr "Účet, který jste vytvořili %1, nebyl ještě nikdy aktivován."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
 msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
-msgstr ""
+msgstr "Chcete-li si tento účet ponechat, musíte jej stále ověřit kliknutím na odkaz níže."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
 msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
+msgstr "Neaktivované účty jsou automaticky mazány po %1 dnech."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
@@ -1107,52 +1107,52 @@ msgstr "Váš účet na GeoKrety.org je nyní plně funkční."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:15
 msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
+msgstr "Jako člen teď můžete <a href=\"%1\">registrovat pohyby Geokrtků</a>, nahrávat obrázky a samozřejmně <a href=\"%2\">si vytvořit Geokrtka</a> zdarma!"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:5
 msgid "Your GeoKrety watchlist"
-msgstr ""
+msgstr "Váš seznam sledovaných GeoKrtků"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:8
 msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
+msgstr "Tento e-mail jste obdrželi, protože jste se rozhodli dostávat denní e-mailové aktualizace."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:9
 msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
+msgstr "Můžete to zakázat <a href=\"%1\">změnou vašich osobních nastavení</a>."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:14
 msgid "Here is what changed recently."
-msgstr ""
+msgstr "Tady je to, co se změnilo."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:17
 msgid "Latest news"
-msgstr ""
+msgstr "Nejnovější zprávy"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:27
 msgid "GeoKrety dropped in your observation area"
-msgstr ""
+msgstr "Ve vaší pozorovací oblasti byli vypuštěni Geokrtci."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Open interactive map"
-msgstr ""
+msgstr "Otevřít interaktivní mapu"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Observation area map"
-msgstr ""
+msgstr "Mapa pozorovací oblasti"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:36
 #: website/app-templates/smarty/emails/daily-mail.tpl:79
 #: website/app-templates/smarty/emails/daily-mail.tpl:125
 #: website/app-templates/smarty/emails/daily-mail.tpl:170
 msgid "GeoKret"
-msgstr ""
+msgstr "GeoKrtek"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:37
 #: website/app-templates/smarty/emails/daily-mail.tpl:80
 #: website/app-templates/smarty/emails/daily-mail.tpl:126
 msgid "Position"
-msgstr ""
+msgstr "Pozice"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:38
 #: website/app-templates/smarty/emails/daily-mail.tpl:81
@@ -1176,15 +1176,15 @@ msgstr "Poznámka"
 #: website/app-templates/smarty/emails/daily-mail.tpl:128
 #: website/app-templates/smarty/emails/daily-mail.tpl:172
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:40
 msgid "Home distance"
-msgstr ""
+msgstr "Vzdálenost od domu"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:73
 msgid "My GeoKrety latest moves"
-msgstr ""
+msgstr "Poslední pohyby mých GeoKrtků"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:78
 #: website/app-templates/smarty/emails/daily-mail.tpl:124
@@ -1193,11 +1193,11 @@ msgstr "Ikonka"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:83
 msgid "Distance since last move"
-msgstr ""
+msgstr "Vzdálenost od posledního pohybu"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:119
 msgid "Watched GeoKrety latest moves"
-msgstr ""
+msgstr "Poslední pohyby sledovaných GeoKrtků"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:129
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
@@ -1211,23 +1211,23 @@ msgstr "Vzdálenost"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:165
 msgid "Latest move comments"
-msgstr ""
+msgstr "Nedávné komentáře"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
 msgid "Is this address still valid?"
-msgstr ""
+msgstr "Je tato adresa stále platná?"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
 msgid "This is important in case of password loss."
-msgstr ""
+msgstr "To je důležité v případě ztráty hesla."
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
 msgid "Validate your email address"
-msgstr ""
+msgstr "Ověřte Vaši e-mailovou adresu"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr ""
+msgstr "Tento e-mail jste obdrželi, protože musíme ověřit, zda je váš e-mail registrovaný na našem webu stále platný."
 
 #: website/app-templates/smarty/devel/pages/local_mails.tpl:15
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:26
@@ -1384,11 +1384,11 @@ msgstr "Zatím nejsou žádné obrázky."
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:20
 msgid "missing"
-msgstr ""
+msgstr "chybějící"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "archivovaný"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:27
 #: website/app-templates/smarty/blocks/user/details.tpl:7
@@ -1510,7 +1510,7 @@ msgstr "Přihlásit se uplatněním nároku na toto GeoKret"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:34
 msgid "Mark this GeoKret as archived"
-msgstr ""
+msgstr "Označit tohoto GeoKrtka jako archivovaného"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:34
 msgid "Archive this GeoKret"
@@ -1614,11 +1614,11 @@ msgstr "Ocenění"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
+msgstr "%1 vytvořil <strong>%2</strong> GeoKrtků, kteří nacestovali <strong>%3</strong>."
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:17
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
+msgstr "%1 přesunul <strong>%2</strong> GeoKrtky na celkovou vzdálenost <strong>%3</strong>."
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:10
 msgid "No home coordinates have been defined."
@@ -1858,7 +1858,7 @@ msgstr "Změnit"
 
 #: website/app-templates/smarty/dialog/info.tpl:13
 msgid "Acknowledge"
-msgstr ""
+msgstr "Potvrzení"
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
 msgid "Refresh your secid?"
@@ -2147,27 +2147,27 @@ msgstr "Odebírat"
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
 msgid "Mark this GeoKret as archived?"
-msgstr ""
+msgstr "Označit tohoto GeoKrtka jako archivovaného?"
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:10
 msgid "You are about the archive this GeoKret."
-msgstr ""
+msgstr "Chystáte se archivovat Geokrtka."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:11
 msgid "This is useful if you think this GeoKret has been destroyed."
-msgstr ""
+msgstr "Tohle je užitečné, když si myslíte, že byl tento GeoKrtek zničen."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:13
 msgid "It will not appear anymore in your active inventory."
-msgstr ""
+msgstr "Již se nebude zobrazovat v aktivním inventáři."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:14
 msgid "It will not appear as present in a cache."
-msgstr ""
+msgstr "Již se nebude zobrazovat jako přítomný v keši."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:16
 msgid "If someone discover it later, it will be automatically reactivated."
-msgstr ""
+msgstr "Pokud ho někdo později objeví, bude automaticky znovu aktivován."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
 msgid "Archive"
@@ -2317,7 +2317,7 @@ msgstr "Tento GeoKret je k dispozici k adopci. Pokud vám aktuální vlastník d
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:8
 msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr ""
+msgstr "Tento GeoKret je k dispozici k adopci. Prosím nejprve se <a href=\"%1\">přihlašte</a>."
 
 #: website/app-templates/smarty/banners/donate.tpl:2
 msgid "Enjoying GeoKrety.org?"
@@ -2325,11 +2325,11 @@ msgstr "Líbí se vám GeoKrety.org?"
 
 #: website/app-templates/smarty/banners/donate.tpl:4
 msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr ""
+msgstr "Vaše dary pomůžou financovat další vývoj a růst <b>GeoKrety.org</b>."
 
 #: website/app-templates/smarty/banners/donate.tpl:8
 msgid "Donate"
-msgstr ""
+msgstr "Darovat"
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:2
 msgid "Some statistics"
@@ -2341,7 +2341,7 @@ msgstr "<strong>%1</strong> registrovaný GeoKrety, <strong>%2</strong> GeoKrety
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:13
 msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr ""
+msgstr "Všichni Geokrtci nacestovali <strong>%1</strong> (to je jako <strong>%2 x</strong> vzdálenost od Země na Měsíc 🌛, <strong>%3</strong> x obvod rovníku 🌍 a jako <strong>%4</strong> x vzdálenost od Země ke Slunci 🌞)."
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:21
 msgid "And that's thanks to you! Congratulation!"
@@ -2666,7 +2666,7 @@ msgstr "Náhled štítku GeoKret"
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
 msgid "GeoKrety visiting the cache %1"
-msgstr ""
+msgstr "Geokrtci, kteří navštívili keš %1"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:20
 msgid "Name"
@@ -2678,7 +2678,7 @@ msgstr "Keš"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
-msgstr ""
+msgstr "Žádný GeoKrtek zatím nenavštívil keš %1."
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:3
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:9
@@ -2712,7 +2712,7 @@ msgstr "Mapa vlastněné GeoKrety %1"
 
 #: website/app-templates/smarty/pages/news_details.tpl:3
 msgid "News: %1"
-msgstr ""
+msgstr "Novinky: %1"
 
 #: website/app-templates/smarty/pages/news_details.tpl:13
 msgid "Leave a comment"
@@ -2745,7 +2745,7 @@ msgstr "GeoKrety %1se ještě nepřesunuly."
 
 #: website/app-templates/smarty/pages/registration.tpl:3
 msgid "Registration"
-msgstr ""
+msgstr "Registrace"
 
 #: website/app-templates/smarty/pages/registration.tpl:14
 msgid "Create an account using %1"
@@ -2775,7 +2775,7 @@ msgstr "Zatím nejsou žádné novinky"
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
 #: website/app-templates/smarty/pages/email_change_token.tpl:3
 msgid "Confirm changing your email address"
-msgstr ""
+msgstr "Potvrďte změnu své e-mailové adresy"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:8
 #: website/app-templates/smarty/pages/email_change_token.tpl:8
@@ -2819,7 +2819,7 @@ msgstr "%1 zatím nevlastní žádné GeoKrety."
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:3
 msgid "Statpic background chooser"
-msgstr ""
+msgstr "Výběr pozadí statistik"
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:8
 msgid "Select your preferred statpic background"
@@ -2843,7 +2843,7 @@ msgstr "Přijmout"
 
 #: website/app-templates/smarty/pages/help_api.tpl:11
 msgid "Help API"
-msgstr ""
+msgstr "Help API"
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
@@ -2868,7 +2868,7 @@ msgstr "<a href=\"%1\">Firefox</a> (potřebuje <a href=\"%2\">doplněk Tampermon
 
 #: website/app-templates/smarty/pages/geokrety_map.tpl:3
 msgid "Interactive map"
-msgstr ""
+msgstr "Interaktivní mapa"
 
 #: website/app-templates/smarty/pages/geokrety_map.tpl:17
 msgid "GeoKrety interactive map"
@@ -2877,11 +2877,11 @@ msgstr "Interaktivní mapa GeoKrety"
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
 msgid "Waypoints statistics"
-msgstr ""
+msgstr "Statistiky trasových bodů"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:36
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:18
@@ -2973,7 +2973,7 @@ msgstr "Tunel by měl fungovat v obou směrech. K provozu tunelu je zapotřebí 
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:18
 msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least %1."
-msgstr ""
+msgstr "Tunel musí překročit hranici, nebo pokud se nachází v zemi, vzdálenost mezi dvěma vchody musí být alespoň %1."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:19
 msgid "GeoKrety in a mole-hole are impatient, so no GeoKrety should wait longer than two months for transportation."
@@ -3053,7 +3053,7 @@ msgstr "Stav: Připraven k hledání"
 
 #: website/app-templates/smarty/pages/email_revalidate.tpl:10
 msgid "Email address revalidation."
-msgstr ""
+msgstr "Potvrzení e-mailové adresy"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
@@ -3062,11 +3062,11 @@ msgstr "Vítejte v komunitě GeoKrety.org!"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:10
 msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
+msgstr "Nyní jste schopni <a href=\"%1\">zalogovat přesun</a> a <a href=\"%2\">vytvořit vlastní GeoKrtky</a>."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
+msgstr "Právě jste dokončili registraci. Nyní se možná budete chtít přihlásit a posunout svůj první GeoKret."
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:3
 msgid "Hall of fame"
@@ -3179,7 +3179,7 @@ msgstr "Přečtěte si více a <a href=\"%1\">získejte mapu</a>."
 
 #: website/app-templates/smarty/pages/downloads.tpl:27
 msgid "Design resources"
-msgstr ""
+msgstr "Zdroje designu"
 
 #: website/app-templates/smarty/pages/downloads.tpl:30
 msgid "GeoKrety logo"
@@ -3231,7 +3231,7 @@ msgstr "Ne, přerušit tento požadavek"
 #: website/app-templates/smarty/pages/geokret_label.tpl:3
 #: website/app-templates/smarty/pages/geokret_label.tpl:6
 msgid "Label generator"
-msgstr ""
+msgstr "Generátor popisků"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:3
 #: website/app-templates/smarty/pages/contact_us.tpl:8
@@ -3268,7 +3268,7 @@ msgstr "Náš veřejný PGP/GPG klíč <a href=\"%1\">je zde (%2)</a>"
 
 #: website/app-templates/smarty/pages/user_details.tpl:3
 msgid "%1's user profile"
-msgstr ""
+msgstr "Uživatelský profil uživatele %1"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
