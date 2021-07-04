@@ -1,4 +1,4 @@
-<tr class="{if $move->geokret->missing}danger{/if}">
+<tr class="{$move->id}{if $move->geokret->missing}danger{/if}">
     <td>
         {$move|logicon nofilter}
     </td>

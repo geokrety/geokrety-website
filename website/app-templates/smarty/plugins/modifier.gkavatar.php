@@ -19,6 +19,7 @@ function smarty_modifier_gkavatar(GeoKrety\Model\Geokret $geokret): string {
     $iconUrl = GK_CDN_ICONS_URL.'/idcard.png';
     $alt = _('has avatar icon');
     $title = _('GeoKret has an avatar');
+    $author = is_null($geokret->avatar->author) ? _('nobody') : $geokret->avatar->author->username;
 
     $html = <<< EOT
 <a class="has-gk-avatar" href="{$geokret->avatar->url}" title="%s">
@@ -28,6 +29,6 @@ EOT;
 
     return sprintf(
         $html,
-        smarty_modifier_escape(sprintf(_('GeoKret "%s" by %s'), $geokret->name, $geokret->avatar->author->username)),
+        smarty_modifier_escape(sprintf(_('GeoKret "%s" by %s'), $geokret->name, $author)),
     );
 }
