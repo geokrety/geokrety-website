@@ -18,15 +18,15 @@ class File {
      * @param string|null $dir         Base directory under which to create temp dir.
      *                                 If null, the default system temp dir (sys_get_temp_dir()) will be
      *                                 used.
-     * @param string      $prefix      string with which to prefix created dirs
-     * @param int         $mode        Octal file permission mask for the newly-created dir.
+     * @param string $prefix      string with which to prefix created dirs
+     * @param int $mode        Octal file permission mask for the newly-created dir.
      *                                 Should begin with a 0.
-     * @param int         $maxAttempts maximum attempts before giving up (to prevent
+     * @param int $maxAttempts maximum attempts before giving up (to prevent
      *                                 endless loops)
      *
      * @return string|bool full path to newly-created dir, or false on failure
      */
-    public static function tmpdir($dir = null, $prefix = 'tmp_', $mode = 0700, $maxAttempts = 1000) {
+    public static function tmpdir(?string $dir = null, string $prefix = 'tmp_', int $mode = 0700, int $maxAttempts = 1000) {
         /* Use the system temp dir by default. */
         if (is_null($dir)) {
             $dir = sys_get_temp_dir();
@@ -72,15 +72,25 @@ class File {
      *
      * @throws Exception if something goes wrong
      */
-    public static function download(string $url, $output) {
-        set_error_handler(
-            function ($severity, $message, $file, $line) {
-                throw new Exception($message);
-            }
-        );
+    public static function download(string $url, $output, $ignore_errors = false) {
+        $context = null;
+        if (!$ignore_errors) {
+            set_error_handler(
+                function ($severity, $message, $file, $line) {
+                    throw new Exception($message);
+                }
+            );
+        } else {
+            $cparams = [
+                'http' => [
+                    'ignore_errors' => $ignore_errors,
+                ]
+            ];
+            $context = stream_context_create($cparams);
+        }
 
         try {
-            $readableStream = fopen($url, 'rb');
+            $readableStream = fopen($url, 'rb', false, $context);
         } finally {
             restore_error_handler();
         }

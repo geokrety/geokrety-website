@@ -227,13 +227,20 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 'consumer_key' => $params['key'],
                 'since' => $revision,
             ]);
-            File::download(sprintf('%s%s?%s', $params['url'], self::OKAPI_CHANGELOG_ENDPOINT, $url_params), $path);
+            File::download(sprintf('%s%s?%s', $params['url'], self::OKAPI_CHANGELOG_ENDPOINT, $url_params), $path, true);
             $raw = file_get_contents($path);
             if ($raw === false) {
-                throw new Exception(sprintf('Cannot get incremental dump data. Invalid key or `since` is too old, check full resync or try again: %s', $params['url']));
+                throw new Exception(sprintf('Response was empty: %s', $params['url']));
             }
 
             $json = json_decode($raw);
+            if (property_exists($json,'error')) {
+                if (property_exists($json->error, 'developer_message')) {
+                    throw new Exception(sprintf('%s: %s', $json->error->developer_message, $params['url']));
+                }
+                throw new Exception(sprintf('An unknown OKAPI error occurred: %s', $params['url']));
+            }
+
             $changes = $json->changelog;
 
             if (sizeof($changes) > 0) {
