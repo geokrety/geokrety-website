@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 22:45+0000\n"
-"PO-Revision-Date: 2020-11-14 15:11\n"
+"POT-Creation-Date: 2021-06-14 20:18+0000\n"
+"PO-Revision-Date: 2021-06-14 20:21\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
@@ -50,7 +50,7 @@ msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) whe
 msgstr "Так, я хочу отримувати оповіщення по електронній пошті (відправляється щодня в опівночі CET / Cesc), коли мої дивилися GeoKret або зміни його місцезнаходження."
 
 #: website/adduser.php:96 website/majluj.php:100 website/new_password.php:34
-#: website/ruchy.php:941
+#: website/ruchy.php:942
 msgid "Enter code"
 msgstr "Введіть код"
 
@@ -59,8 +59,8 @@ msgid "Language"
 msgstr "Мова"
 
 #: website/adduser.php:118 website/templates.php:117 website/templates.php:141
-#: website/termsofuse.php:11 website/templates/krety.html:151
-#: website/templates/krety.html:244
+#: website/termsofuse.php:11 website/templates/krety.html:152
+#: website/templates/krety.html:266
 msgid "Terms of use"
 msgstr "Умови використання"
 
@@ -91,8 +91,8 @@ msgstr "Пароль на короткі (повинна бути >= 5 симв�
 
 #: website/adduser.php:180
 #, php-format
-msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
-msgstr "Здається, що <A HREF = 'mypage.php? UserID = %s '> Ваш рахунок </ a> вже створений."
+msgid "It seems that <a href='/mypage.php?userid=%s'>your account</a> has already been created."
+msgstr ""
 
 #: website/adduser.php:181
 msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
@@ -126,11 +126,11 @@ msgstr "Неправильну адресу електронної пошти?"
 msgid "reCaptcha failed!"
 msgstr "не вдалося виконати reCaptcha!"
 
-#: website/adduser.php:264
+#: website/adduser.php:225 website/adduser.php:275
 msgid "Account successfully created"
 msgstr "Обліковий запис успішно створено"
 
-#: website/adduser.php:267
+#: website/adduser.php:228 website/adduser.php:278
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr "Електронної пошти, щоб підтвердити свою адресу електронної пошти було відправлено до вас. Коли ви підтвердите, ваша обліковий запис буде функціонувати в повному обсязі. До тих пір, ви не зможете отримати за електронною поштою щоденних зведень про хід вашого GeoKrety. Посилання дійсна протягом 5 днів. Тепер ви можете виконувати операції по GeoKrety. Ви можете увійти в систему і користуватися GeoKrety.org! :)"
 
@@ -300,7 +300,7 @@ msgstr "Монета"
 
 #: website/country_stat.php:28 website/templates.php:30
 #: website/templates.php:93 website/templates.php:219 website/templates.php:282
-#: website/templates/krety.html:139
+#: website/templates/krety.html:140
 msgid "Stats by country"
 msgstr "Статистика по країнам"
 
@@ -332,17 +332,17 @@ msgstr "Користувач спостерігає цю GeoKret"
 msgid "days ago"
 msgstr "минулого тижня"
 
-#: website/days_ago.php:15 website/ruchy.php:995
+#: website/days_ago.php:15 website/ruchy.php:996
 msgid "Yesterday"
 msgstr "Вчора"
 
-#: website/days_ago.php:17 website/ruchy.php:994
+#: website/days_ago.php:17 website/ruchy.php:995
 msgid "Today"
 msgstr "Сьогодні"
 
 #: website/download.php:9 website/krety.html.php:15 website/templates.php:36
 #: website/templates.php:99 website/templates.php:225 website/templates.php:288
-#: website/templates/krety.html:143
+#: website/templates/krety.html:144
 msgid "Download"
 msgstr "Завантаження"
 
@@ -360,14 +360,14 @@ msgstr "Запропонувати кращий переклад"
 
 #: website/download.php:19 website/templates.php:51 website/templates.php:123
 #: website/templates.php:240 website/templates.php:306
-#: website/templates/krety.html:157
+#: website/templates/krety.html:158
 msgid "Map of caches"
 msgstr "Карта схованок"
 
 #: website/download.php:22 website/geomapa.php:26
 #, php-format
-msgid "As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href=\"help.php#fullysupportedwaypoints\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
-msgstr "Як ми вже збирали шляхові точки значне число кешей ( %s ) кеш по всьому світу - <a href=\"help.php#fullysupportedwaypoints\"> натисніть тут </ a> для отримання списку підтримуваних послуг), ми вирішили створити прозору карту з тих, кеші для приладів Garmin (IMG формат). Тепер ви можете мати всі ці кеші на одній карті (насправді: mapset)."
+msgid "As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href=\"/help.php#fullysupportedwaypoints\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
+msgstr ""
 
 #: website/download.php:25
 msgid "Read more and get the map"
@@ -425,7 +425,7 @@ msgstr "Головна Координати"
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Використовуйте карту, щоб вибрати розташування або введіть координати вручну."
 
-#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:916
+#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:917
 #: website/szukaj.php:85 website/szukaj.php:93 website/szukaj.php:116
 msgid "eg."
 msgstr "напр."
@@ -499,7 +499,7 @@ msgstr "help.php#geokretytypes"
 #: website/edit.php:567 website/generatorek.php:140 website/konkret.php:292
 #: website/labels.php:83 website/recent_comments_fn.php:102
 #: website/recent_moves.php:99 website/register.php:61 website/ruchy.php:588
-#: website/ruchy.php:856 website/ruchy.php:1022
+#: website/ruchy.php:856 website/ruchy.php:1023
 msgid "Comment"
 msgstr "Комментировать"
 
@@ -519,7 +519,7 @@ msgstr "Помилки"
 
 #: website/galeria.php:10 website/geokret_gallery.php:72 website/index.php:228
 #: website/templates.php:21 website/templates.php:84 website/templates.php:210
-#: website/templates.php:273 website/templates/krety.html:135
+#: website/templates.php:273 website/templates/krety.html:136
 msgid "Photo gallery"
 msgstr "Фото галерея"
 
@@ -542,7 +542,7 @@ msgid "Photo by"
 msgstr "Фото"
 
 #: website/geokret_gallery.php:124 website/recent_moves.php:100
-#: website/recent_pictures.php:59 website/ruchy.php:985
+#: website/recent_pictures.php:59 website/ruchy.php:986
 msgid "Date"
 msgstr "Побачення"
 
@@ -618,7 +618,7 @@ msgstr "Показати групу"
 
 #: website/halloffame.php:11 website/templates.php:60 website/templates.php:132
 #: website/templates.php:249 website/templates.php:315
-#: website/templates/krety.html:200
+#: website/templates/krety.html:201
 msgid "Hall of fame"
 msgstr "Зал слави"
 
@@ -635,8 +635,8 @@ msgstr "Підтримка"
 #: website/templates.php:42 website/templates.php:48 website/templates.php:105
 #: website/templates.php:111 website/templates.php:231
 #: website/templates.php:237 website/templates.php:294
-#: website/templates.php:300 website/templates/krety.html:145
-#: website/templates/krety.html:147
+#: website/templates.php:300 website/templates/krety.html:146
+#: website/templates/krety.html:148
 msgid "Help"
 msgstr "Допомога"
 
@@ -728,7 +728,7 @@ msgstr "Запам'ятати опис для наступних %d хвилин
 
 #: website/index.php:37 website/krety.html.php:6 website/templates.php:6
 #: website/templates.php:69 website/templates.php:195 website/templates.php:258
-#: website/templates/krety.html:128
+#: website/templates/krety.html:129
 msgid "Home"
 msgstr "Будинок"
 
@@ -741,8 +741,8 @@ msgid "Welcome to GeoKrety.org!"
 msgstr "Ласкаво просимо на GeoKrety.org!"
 
 #: website/index.php:94 website/index.php:301
-msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
-msgstr "Ця служба схожа на TravelBug(TM) або GeoLutins і спрямована на відстеження речей, які ви поклали у контейнери geocache... <a href=\"help.php#about\">читати більше...</a>"
+msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"/help.php#about\">read more...</a>"
+msgstr ""
 
 #: website/index.php:100
 msgid "registered GeoKrets"
@@ -765,19 +765,19 @@ msgstr "<strong>%d км </STRONG> зробили все GeoKrets (це %.2f X в
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr "Якщо ви виявили GeoKret, введіть код відстеження тут:"
 
-#: website/index.php:111 website/ruchy.php:1036
+#: website/index.php:111 website/ruchy.php:1037
 msgid "Go!"
 msgstr "Go!"
 
 #: website/index.php:113 website/templates.php:12 website/templates.php:75
 #: website/templates.php:201 website/templates.php:264
-#: website/templates/krety.html:130
+#: website/templates/krety.html:131
 msgid "no need to register!"
 msgstr "не потрібно реєструватися!"
 
 #: website/index.php:152 website/krety.html.php:18 website/niusy.php:9
 #: website/templates.php:39 website/templates.php:102 website/templates.php:228
-#: website/templates.php:291 website/templates/krety.html:144
+#: website/templates.php:291 website/templates/krety.html:145
 msgid "News"
 msgstr "Новини"
 
@@ -879,8 +879,8 @@ msgstr "Напишіть записку"
 #: website/templates.php:27 website/templates.php:87 website/templates.php:90
 #: website/templates.php:213 website/templates.php:216
 #: website/templates.php:276 website/templates.php:279
-#: website/user_stat.php:196 website/templates/krety.html:136
-#: website/templates/krety.html:138
+#: website/user_stat.php:196 website/templates/krety.html:137
+#: website/templates/krety.html:139
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -1032,32 +1032,32 @@ msgstr "Операції по GeoKrety"
 
 #: website/krety.html.php:12 website/szukaj.php:10 website/templates.php:15
 #: website/templates.php:78 website/templates.php:204 website/templates.php:267
-#: website/templates/krety.html:134
+#: website/templates/krety.html:135
 msgid "Search"
 msgstr "Пошук"
 
 #: website/krety.html.php:21 website/templates.php:45 website/templates.php:108
 #: website/templates.php:234 website/templates.php:297
-#: website/templates/krety.html:147
+#: website/templates/krety.html:148
 msgid "help.php"
 msgstr "help.php"
 
 #: website/krety.html.php:27 website/templates.php:54 website/templates.php:126
 #: website/templates.php:243 website/templates.php:309
-#: website/templates/krety.html:199
+#: website/templates/krety.html:200
 msgid "help.php#about"
 msgstr "help.php#Про компанію"
 
 #: website/krety.html.php:30 website/templates.php:57 website/templates.php:129
 #: website/templates.php:246 website/templates.php:312
-#: website/templates/krety.html:199
+#: website/templates/krety.html:200
 msgid "About"
 msgstr "Про"
 
 #: website/krety.html.php:33 website/templates.php:63 website/templates.php:135
 #: website/templates.php:180 website/templates.php:252
 #: website/templates.php:318 website/templates.php:324
-#: website/templates/krety-m.html:44 website/templates/krety.html:244
+#: website/templates/krety-m.html:44 website/templates/krety.html:266
 msgid "contact"
 msgstr "контакт"
 
@@ -1141,7 +1141,7 @@ msgstr "Неправильний ідентифікатор SecID"
 
 #: website/lost.php:9 website/templates.php:33 website/templates.php:96
 #: website/templates.php:222 website/templates.php:285
-#: website/templates/krety.html:140
+#: website/templates/krety.html:141
 msgid "Probably lost geokrets"
 msgstr "Напевно, втратив geokrets"
 
@@ -1417,7 +1417,7 @@ msgid "Users watching this GeoKret:"
 msgstr "Користувач спостерігає цю GeoKret:"
 
 #: website/presscorner.php:10 website/templates.php:114
-#: website/templates/krety.html:150
+#: website/templates/krety.html:151
 msgid "Press corner"
 msgstr "Куточок преси"
 
@@ -1918,88 +1918,88 @@ msgstr "Я ближнього GeoKret"
 msgid "Identify GeoKret"
 msgstr "Визначити GeoKret"
 
-#: website/ruchy.php:875
+#: website/ruchy.php:876
 msgid "New location"
 msgstr "Нове місцезнаходження"
 
-#: website/ruchy.php:876
-msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
-msgstr "<a href=\"help.php#locationdlagc\">Дізнайтеся більше про приховування GeoKrety в GC кешах</a>"
+#: website/ruchy.php:877
+msgid "<a href=\"/help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
+msgstr ""
 
-#: website/ruchy.php:880
+#: website/ruchy.php:881
 msgid "Waypoint"
 msgstr "Шляхова Точка"
 
-#: website/ruchy.php:884
+#: website/ruchy.php:885
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/ruchy.php:885 website/ruchy.php:899
+#: website/ruchy.php:886 website/ruchy.php:900
 msgid "help.php#fullysupportedwaypoints"
 msgstr "help.php#fullysupportedwaypoints"
 
-#: website/ruchy.php:888
+#: website/ruchy.php:889
 msgid "or name of cache"
 msgstr "або ім'я кешу"
 
-#: website/ruchy.php:893
+#: website/ruchy.php:894
 msgid "Check"
 msgstr "Перевіряти"
 
-#: website/ruchy.php:896 website/szukaj-ajax.php:182
+#: website/ruchy.php:897 website/szukaj-ajax.php:182
 #, php-format
 msgid "Enter at least %d characters"
 msgstr "Введіть принаймні %d символи"
 
-#: website/ruchy.php:898
+#: website/ruchy.php:899
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr "Введіть назву кешу. Працює лише з мережею opencaching мережі."
 
-#: website/ruchy.php:910
+#: website/ruchy.php:911
 msgid "Coordinates"
 msgstr "Координати"
 
-#: website/ruchy.php:914
-msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
-msgstr "<a href=\"help.php#acceptableformats\" target=\"_blank\">Допустимі формати географічних координат</a>"
+#: website/ruchy.php:915
+msgid "<a href=\"/help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
+msgstr ""
 
-#: website/ruchy.php:926
+#: website/ruchy.php:927
 msgid "Logged using geolocation"
 msgstr "Авторизовано через геолокацію"
 
-#: website/ruchy.php:926
+#: website/ruchy.php:927
 msgid "Use geolocation"
 msgstr "Використовувати географічне місцезнаходження"
 
-#: website/ruchy.php:927
+#: website/ruchy.php:928
 msgid "Clear coordinates"
 msgstr "Очистити координати"
 
-#: website/ruchy.php:938
+#: website/ruchy.php:939
 msgid "Captcha verification"
 msgstr "Captcha перевірку"
 
-#: website/ruchy.php:975
+#: website/ruchy.php:976
 msgid "Additional data"
 msgstr "Додаткові дані"
 
-#: website/ruchy.php:996
+#: website/ruchy.php:997
 msgid "Two days ago"
 msgstr "Два дні тому"
 
-#: website/ruchy.php:1002
+#: website/ruchy.php:1003
 msgid "Time"
 msgstr "Час"
 
-#: website/ruchy.php:1015
+#: website/ruchy.php:1016
 msgid "now"
 msgstr "зараз"
 
-#: website/ruchy.php:1016
+#: website/ruchy.php:1017
 msgid "Enter exact time when You think it may be important"
 msgstr "Введіть точний час, коли Ви вважаєте, це може мати важливе значення"
 
-#: website/ruchy.php:1028
+#: website/ruchy.php:1029
 msgid "It is always nice to receive a little message ;)"
 msgstr "Завжди добре отримувати маленьке повідомлення ;)"
 
@@ -2121,19 +2121,19 @@ msgid "Operations on this GeoKret"
 msgstr "Операції з цього GeoKret"
 
 #: website/templates.php:9 website/templates.php:72 website/templates.php:198
-#: website/templates.php:261 website/templates/krety.html:129
+#: website/templates.php:261 website/templates/krety.html:130
 msgid "Log a GeoKret"
 msgstr "Вхід GeoKret"
 
 #: website/templates.php:66 website/templates.php:138 website/templates.php:183
 #: website/templates.php:255 website/templates.php:321
 #: website/templates.php:327 website/templates/krety-m.html:44
-#: website/templates/krety.html:244
+#: website/templates/krety.html:266
 msgid "Report abuse"
 msgstr "Повідомити про порушення"
 
 #: website/templates.php:120 website/templates.php:303
-#: website/templates/krety.html:155
+#: website/templates/krety.html:156
 msgid "Side products"
 msgstr "Побічна продукція"
 
@@ -2295,39 +2295,43 @@ msgstr "Великий фіналь — великий оркестр Різдв
 msgid "Normal day"
 msgstr "Нормальний день"
 
-#: website/templates/krety.html:201
+#: website/templates/krety.html:202
 msgid "Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode."
 msgstr "Допоможіть перекласти GeoKrety.org своєю мовою. Виберіть іншу мову для виходу з режиму перекладу."
 
-#: website/templates/krety.html:201
+#: website/templates/krety.html:202
 msgid "Fix translation"
 msgstr "Виправлення перекладу"
 
-#: website/templates/krety.html:202
+#: website/templates/krety.html:203
 msgid "Contact-us"
 msgstr "Контактна інформація"
 
-#: website/templates/krety.html:207
+#: website/templates/krety.html:208 website/templates/krety.html:249
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
 msgstr "Пропонований внесок становить 3€ , але будь-яка сума оцінюється. Пожертва не вимагається як GeoKrety. rg є і буде безкоштовним & відкритим вихідним кодом. Дякуємо за вашу підтримку"
 
-#: website/templates/krety.html:209
+#: website/templates/krety.html:210 website/templates/krety.html:251
 msgid "Enjoying GeoKrety.org?"
 msgstr "Подобається GeoKrety.org?"
 
-#: website/templates/krety.html:210
+#: website/templates/krety.html:211 website/templates/krety.html:252
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
 msgstr "Якщо ви використовуєте GeoKrety.org і вважаєте це корисним, подумайте про пожертвування"
 
-#: website/templates/krety.html:214
-msgid "Contribute"
-msgstr "Зробити свій внесок"
+#: website/templates/krety.html:215 website/templates/krety.html:257
+msgid "Donate"
+msgstr ""
 
-#: website/templates/krety.html:227
+#: website/templates/krety.html:228
 msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
 msgstr "Це не екземпляр продукції. Якщо Ви не є тестером, то, можливо, Ви перейдете на наш <a href=\"https://geokrety.org\">production веб-сайт</a>."
 
-#: website/templates/krety.html:244
+#: website/templates/krety.html:253
+msgid "Your donations help us pay for servers and other costs."
+msgstr ""
+
+#: website/templates/krety.html:266
 msgid "version"
 msgstr "версія"
 

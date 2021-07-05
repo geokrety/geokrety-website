@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 22:45+0000\n"
-"PO-Revision-Date: 2020-08-05 14:14\n"
+"POT-Creation-Date: 2021-06-14 20:18+0000\n"
+"PO-Revision-Date: 2021-06-14 20:22\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -50,7 +50,7 @@ msgid "Yes, I want to receive email alerts (sent daily at midnight CET/CESC) whe
 msgstr "Ναι, θέλω να λαμβάνετε email ειδοποιήσεις (που αποστέλλονται καθημερινά τα μεσάνυχτα CET / κινεζικού ΟΚΣ) ή όταν μου παρακολουθούσα GeoKret αλλαγές της θέσης της."
 
 #: website/adduser.php:96 website/majluj.php:100 website/new_password.php:34
-#: website/ruchy.php:941
+#: website/ruchy.php:942
 msgid "Enter code"
 msgstr "Εισάγετε τον κωδικό"
 
@@ -59,8 +59,8 @@ msgid "Language"
 msgstr "Γλώσσα"
 
 #: website/adduser.php:118 website/templates.php:117 website/templates.php:141
-#: website/termsofuse.php:11 website/templates/krety.html:151
-#: website/templates/krety.html:244
+#: website/termsofuse.php:11 website/templates/krety.html:152
+#: website/templates/krety.html:266
 msgid "Terms of use"
 msgstr "Όροι χρήσης"
 
@@ -96,8 +96,8 @@ msgstr "Κωδικός πρόσβασης στα σύντομα (θα πρέπε
 
 #: website/adduser.php:180
 #, php-format
-msgid "It seems that <a href='mypage.php?userid=%s'>your account</a> has already been created."
-msgstr "Φαίνεται ότι <a href='mypage.php?userid=%s'>ο λογαριασμός σας</a>δημιουργήθηκε ήδη."
+msgid "It seems that <a href='/mypage.php?userid=%s'>your account</a> has already been created."
+msgstr ""
 
 #: website/adduser.php:181
 msgid "In order to confirm your email address, a link was sent to you. You have to clic the link to get a fully operational account. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
@@ -131,11 +131,11 @@ msgstr "Λάθος διεύθυνση email;"
 msgid "reCaptcha failed!"
 msgstr "Το reCaptcha απέτυχε!"
 
-#: website/adduser.php:264
+#: website/adduser.php:225 website/adduser.php:275
 msgid "Account successfully created"
 msgstr "Επιτυχής δημιουργία λογαριασμού"
 
-#: website/adduser.php:267
+#: website/adduser.php:228 website/adduser.php:278
 msgid "An email to confirm your email address was sent to you. When you confirm, your account will be fully operational. Until then, you will not be able to receive emails with daily summaries of moves of your GeoKrety. The link is valid for 5 days. Now you can perform operations on GeoKrety. Feel free to log in and enjoy GeoKrety.org! :)"
 msgstr "Ένα email για να επιβεβαιώσετε τη διεύθυνση email σας στάλθηκε σε σας. Όταν επιβεβαιώσετε, ο λογαριασμός σας θα είναι πλήρως λειτουργικό. Μέχρι τότε, δεν θα μπορείτε να λαμβάνετε μηνύματα με καθημερινές περιλήψεις των κινήσεων των GeoKrety σας. Η σχέση αυτή ισχύει για 5 ημέρες. Τώρα μπορείτε να εκτελέσετε εργασίες για GeoKrety. Μπορείτε να συνδεθείτε και να απολαύσετε GeoKrety.org! :)"
 
@@ -305,7 +305,7 @@ msgstr "Ένα νόμισμα"
 
 #: website/country_stat.php:28 website/templates.php:30
 #: website/templates.php:93 website/templates.php:219 website/templates.php:282
-#: website/templates/krety.html:139
+#: website/templates/krety.html:140
 msgid "Stats by country"
 msgstr "Στατιστικά ανά χώρα"
 
@@ -337,17 +337,17 @@ msgstr "Οι χρήστες παρακολουθούν αυτό το GeoKret"
 msgid "days ago"
 msgstr "μέρες πριν"
 
-#: website/days_ago.php:15 website/ruchy.php:995
+#: website/days_ago.php:15 website/ruchy.php:996
 msgid "Yesterday"
 msgstr "Εχθές"
 
-#: website/days_ago.php:17 website/ruchy.php:994
+#: website/days_ago.php:17 website/ruchy.php:995
 msgid "Today"
 msgstr "Σήμερα"
 
 #: website/download.php:9 website/krety.html.php:15 website/templates.php:36
 #: website/templates.php:99 website/templates.php:225 website/templates.php:288
-#: website/templates/krety.html:143
+#: website/templates/krety.html:144
 msgid "Download"
 msgstr "Λήψη"
 
@@ -365,14 +365,14 @@ msgstr "Προτείνετε μια καλύτερη μετάφραση"
 
 #: website/download.php:19 website/templates.php:51 website/templates.php:123
 #: website/templates.php:240 website/templates.php:306
-#: website/templates/krety.html:157
+#: website/templates/krety.html:158
 msgid "Map of caches"
 msgstr "Χάρτης των caches"
 
 #: website/download.php:22 website/geomapa.php:26
 #, php-format
-msgid "As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href=\"help.php#fullysupportedwaypoints\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
-msgstr "Καθώς συλλέγουμε σημεία από σημαντικό αριθμό κρυπτών (%s) κρυπτών σε όλο τον κόσμο - <a href=\"help.php#fullysupportedwaypoints\">κάντε κλικ εδώ</a> για μια λίστα υποστηριζόμενων υπηρεσιών) αποφασίσαμε να δημιουργήσουμε έναν διαφανή χάρτη αυτών των κρυπτών για συσκευές garmin (σε μορφή img). Τώρα μπορείτε να έχετε όλες αυτές τις κρύπτες σε ένα χάρτη ( για την ακρίβεια: mapset)."
+msgid "As we have been collecting waypoints of significant number of caches (%s) caches around the world - <a href=\"/help.php#fullysupportedwaypoints\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
+msgstr ""
 
 #: website/download.php:25
 msgid "Read more and get the map"
@@ -430,7 +430,7 @@ msgstr "Αρχική συντεταγμένες"
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Χρησιμοποιείστε τον χάρτη για να επιλέξετε μια τοποθεσία ή εισάγετε συντεταγμένες χειροκίνητα."
 
-#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:916
+#: website/edit.php:329 website/race_join.php:41 website/ruchy.php:917
 #: website/szukaj.php:85 website/szukaj.php:93 website/szukaj.php:116
 msgid "eg."
 msgstr "π.χ.."
@@ -504,7 +504,7 @@ msgstr "help.php#geokretytypes"
 #: website/edit.php:567 website/generatorek.php:140 website/konkret.php:292
 #: website/labels.php:83 website/recent_comments_fn.php:102
 #: website/recent_moves.php:99 website/register.php:61 website/ruchy.php:588
-#: website/ruchy.php:856 website/ruchy.php:1022
+#: website/ruchy.php:856 website/ruchy.php:1023
 msgid "Comment"
 msgstr "Σχόλιο"
 
@@ -524,7 +524,7 @@ msgstr "σφάλματα"
 
 #: website/galeria.php:10 website/geokret_gallery.php:72 website/index.php:228
 #: website/templates.php:21 website/templates.php:84 website/templates.php:210
-#: website/templates.php:273 website/templates/krety.html:135
+#: website/templates.php:273 website/templates/krety.html:136
 msgid "Photo gallery"
 msgstr "Άλμπουμ φωτογραφιών"
 
@@ -547,7 +547,7 @@ msgid "Photo by"
 msgstr "Φωτογραφία από"
 
 #: website/geokret_gallery.php:124 website/recent_moves.php:100
-#: website/recent_pictures.php:59 website/ruchy.php:985
+#: website/recent_pictures.php:59 website/ruchy.php:986
 msgid "Date"
 msgstr "Ημερομηνία"
 
@@ -623,7 +623,7 @@ msgstr "Εμφάνιση ομάδα"
 
 #: website/halloffame.php:11 website/templates.php:60 website/templates.php:132
 #: website/templates.php:249 website/templates.php:315
-#: website/templates/krety.html:200
+#: website/templates/krety.html:201
 msgid "Hall of fame"
 msgstr "Hall of Fame"
 
@@ -640,8 +640,8 @@ msgstr "Υποστήριξη"
 #: website/templates.php:42 website/templates.php:48 website/templates.php:105
 #: website/templates.php:111 website/templates.php:231
 #: website/templates.php:237 website/templates.php:294
-#: website/templates.php:300 website/templates/krety.html:145
-#: website/templates/krety.html:147
+#: website/templates.php:300 website/templates/krety.html:146
+#: website/templates/krety.html:148
 msgid "Help"
 msgstr "Βοήθεια"
 
@@ -733,7 +733,7 @@ msgstr "Θυμηθείτε την περιγραφή για το επόμενο%
 
 #: website/index.php:37 website/krety.html.php:6 website/templates.php:6
 #: website/templates.php:69 website/templates.php:195 website/templates.php:258
-#: website/templates/krety.html:128
+#: website/templates/krety.html:129
 msgid "Home"
 msgstr "Σπίτι"
 
@@ -746,8 +746,8 @@ msgid "Welcome to GeoKrety.org!"
 msgstr "Καλώς ήρθατε στο GeoKrety.org!"
 
 #: website/index.php:94 website/index.php:301
-msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"help.php#about\">read more...</a>"
-msgstr "Η υπηρεσία αυτή είναι παρόμοια με τα TravelBug (TM) ή τα GeoLutins και στοχεύει στην παρακολούθηση αντικειμένων που αφήνετε στις γεωκρύπτες... <a href=\"help.php#about\">διαβάστε περισσότερα...</a>"
+msgid "This service is similar to TravelBug(TM) or GeoLutins and aims at tracking things you put to geocache containers... <a href=\"/help.php#about\">read more...</a>"
+msgstr ""
 
 #: website/index.php:100
 msgid "registered GeoKrets"
@@ -770,19 +770,19 @@ msgstr "<strong>%d χιλιόμετρα </strong> γίνεται από όλα �
 msgid "If you found a GeoKret, enter the tracking code here:"
 msgstr "Αν βρήκατε ένα GeoKret, εισάγετε τον κωδικό ανίχνευσης εδώ:"
 
-#: website/index.php:111 website/ruchy.php:1036
+#: website/index.php:111 website/ruchy.php:1037
 msgid "Go!"
 msgstr "Πήγαινε!"
 
 #: website/index.php:113 website/templates.php:12 website/templates.php:75
 #: website/templates.php:201 website/templates.php:264
-#: website/templates/krety.html:130
+#: website/templates/krety.html:131
 msgid "no need to register!"
 msgstr "Δεν χρειάζεται να εγγραφείτε!"
 
 #: website/index.php:152 website/krety.html.php:18 website/niusy.php:9
 #: website/templates.php:39 website/templates.php:102 website/templates.php:228
-#: website/templates.php:291 website/templates/krety.html:144
+#: website/templates.php:291 website/templates/krety.html:145
 msgid "News"
 msgstr "Ειδήσεις"
 
@@ -884,8 +884,8 @@ msgstr "Γράψτε μια σημείωση"
 #: website/templates.php:27 website/templates.php:87 website/templates.php:90
 #: website/templates.php:213 website/templates.php:216
 #: website/templates.php:276 website/templates.php:279
-#: website/user_stat.php:196 website/templates/krety.html:136
-#: website/templates/krety.html:138
+#: website/user_stat.php:196 website/templates/krety.html:137
+#: website/templates/krety.html:139
 msgid "Statistics"
 msgstr "Στατιστικά"
 
@@ -1037,32 +1037,32 @@ msgstr "Πράξεις για GeoKrety"
 
 #: website/krety.html.php:12 website/szukaj.php:10 website/templates.php:15
 #: website/templates.php:78 website/templates.php:204 website/templates.php:267
-#: website/templates/krety.html:134
+#: website/templates/krety.html:135
 msgid "Search"
 msgstr "Αναζήτηση"
 
 #: website/krety.html.php:21 website/templates.php:45 website/templates.php:108
 #: website/templates.php:234 website/templates.php:297
-#: website/templates/krety.html:147
+#: website/templates/krety.html:148
 msgid "help.php"
 msgstr "help.php"
 
 #: website/krety.html.php:27 website/templates.php:54 website/templates.php:126
 #: website/templates.php:243 website/templates.php:309
-#: website/templates/krety.html:199
+#: website/templates/krety.html:200
 msgid "help.php#about"
 msgstr "help.php#about"
 
 #: website/krety.html.php:30 website/templates.php:57 website/templates.php:129
 #: website/templates.php:246 website/templates.php:312
-#: website/templates/krety.html:199
+#: website/templates/krety.html:200
 msgid "About"
 msgstr "Σχετικά"
 
 #: website/krety.html.php:33 website/templates.php:63 website/templates.php:135
 #: website/templates.php:180 website/templates.php:252
 #: website/templates.php:318 website/templates.php:324
-#: website/templates/krety-m.html:44 website/templates/krety.html:244
+#: website/templates/krety-m.html:44 website/templates/krety.html:266
 msgid "contact"
 msgstr "επαφή"
 
@@ -1146,7 +1146,7 @@ msgstr "Λάθος αναγνωριστικό secid"
 
 #: website/lost.php:9 website/templates.php:33 website/templates.php:96
 #: website/templates.php:222 website/templates.php:285
-#: website/templates/krety.html:140
+#: website/templates/krety.html:141
 msgid "Probably lost geokrets"
 msgstr "Μάλλον έχασε geokrets"
 
@@ -1422,7 +1422,7 @@ msgid "Users watching this GeoKret:"
 msgstr "Οι χρήστες παρακολουθούν αυτό το GeoKret:"
 
 #: website/presscorner.php:10 website/templates.php:114
-#: website/templates/krety.html:150
+#: website/templates/krety.html:151
 msgid "Press corner"
 msgstr "Πατήστε γωνιά"
 
@@ -1923,88 +1923,88 @@ msgstr "Έχω φανοί ένα GeoKret"
 msgid "Identify GeoKret"
 msgstr "Εντοπισμός GeoKret"
 
-#: website/ruchy.php:875
+#: website/ruchy.php:876
 msgid "New location"
 msgstr "Νέα θέση"
 
-#: website/ruchy.php:876
-msgid "<a href=\"help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
-msgstr "<a href=\"help.php#locationdlagc\">Μάθετε περισσότερα για να κρύβετε GeoKrety στις κρύπτες στο GC</a>"
+#: website/ruchy.php:877
+msgid "<a href=\"/help.php#locationdlagc\">Learn more about hiding GeoKrety in GC caches</a>"
+msgstr ""
 
-#: website/ruchy.php:880
+#: website/ruchy.php:881
 msgid "Waypoint"
 msgstr "Σημείο αναφοράς"
 
-#: website/ruchy.php:884
+#: website/ruchy.php:885
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "π.χ.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/ruchy.php:885 website/ruchy.php:899
+#: website/ruchy.php:886 website/ruchy.php:900
 msgid "help.php#fullysupportedwaypoints"
 msgstr "help.php#fullysupportedwaypoints"
 
-#: website/ruchy.php:888
+#: website/ruchy.php:889
 msgid "or name of cache"
 msgstr "ή το όνομα της κρύπτης"
 
-#: website/ruchy.php:893
+#: website/ruchy.php:894
 msgid "Check"
 msgstr "Έλεγχος"
 
-#: website/ruchy.php:896 website/szukaj-ajax.php:182
+#: website/ruchy.php:897 website/szukaj-ajax.php:182
 #, php-format
 msgid "Enter at least %d characters"
 msgstr "Εισάγετε τουλάχιστον %d χαρακτήρες"
 
-#: website/ruchy.php:898
+#: website/ruchy.php:899
 msgid "Enter cache name. Works only with opencaching networks."
 msgstr "Εισάγετε το όνομα της κρύπτης. Λειτουργεί μόνο στα δίκτυα του opencaching."
 
-#: website/ruchy.php:910
+#: website/ruchy.php:911
 msgid "Coordinates"
 msgstr "Συντεταγμένες"
 
-#: website/ruchy.php:914
-msgid "<a href=\"help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
-msgstr "<a href=\"help.php#acceptableformats\" target=\"_blank\">Αποδεκτές μορφές γεωγραφικών συντεταγμένων</a>"
+#: website/ruchy.php:915
+msgid "<a href=\"/help.php#acceptableformats\" target=\"_blank\">Acceptable geographic coordinate formats</a>"
+msgstr ""
 
-#: website/ruchy.php:926
+#: website/ruchy.php:927
 msgid "Logged using geolocation"
 msgstr "Καταγραφή με χρήση γεωεντοπισμού"
 
-#: website/ruchy.php:926
+#: website/ruchy.php:927
 msgid "Use geolocation"
 msgstr "Χρήση γεωεντοπισμού"
 
-#: website/ruchy.php:927
+#: website/ruchy.php:928
 msgid "Clear coordinates"
 msgstr "Διαγραφή συντεταγμένων"
 
-#: website/ruchy.php:938
+#: website/ruchy.php:939
 msgid "Captcha verification"
 msgstr "Captcha επαλήθευση"
 
-#: website/ruchy.php:975
+#: website/ruchy.php:976
 msgid "Additional data"
 msgstr "Πρόσθετα στοιχεία"
 
-#: website/ruchy.php:996
+#: website/ruchy.php:997
 msgid "Two days ago"
 msgstr "Πριν από δύο ημέρες"
 
-#: website/ruchy.php:1002
+#: website/ruchy.php:1003
 msgid "Time"
 msgstr "Χρόνος"
 
-#: website/ruchy.php:1015
+#: website/ruchy.php:1016
 msgid "now"
 msgstr "τώρα"
 
-#: website/ruchy.php:1016
+#: website/ruchy.php:1017
 msgid "Enter exact time when You think it may be important"
 msgstr "Εισάγετε την ακριβή ώρα, όταν νομίζετε ότι μπορεί να είναι σημαντικό"
 
-#: website/ruchy.php:1028
+#: website/ruchy.php:1029
 msgid "It is always nice to receive a little message ;)"
 msgstr "Είναι πάντα ωραίο να λαμβάνεις ένα μηνυματάκι ;)"
 
@@ -2126,19 +2126,19 @@ msgid "Operations on this GeoKret"
 msgstr "Πράξεις σχετικά με αυτό το GeoKret"
 
 #: website/templates.php:9 website/templates.php:72 website/templates.php:198
-#: website/templates.php:261 website/templates/krety.html:129
+#: website/templates.php:261 website/templates/krety.html:130
 msgid "Log a GeoKret"
 msgstr "Καταχωρείστε ένα GeoKret"
 
 #: website/templates.php:66 website/templates.php:138 website/templates.php:183
 #: website/templates.php:255 website/templates.php:321
 #: website/templates.php:327 website/templates/krety-m.html:44
-#: website/templates/krety.html:244
+#: website/templates/krety.html:266
 msgid "Report abuse"
 msgstr "Αναφορά κακοποίησης"
 
 #: website/templates.php:120 website/templates.php:303
-#: website/templates/krety.html:155
+#: website/templates/krety.html:156
 msgid "Side products"
 msgstr "Παράπλευρα προϊόντα"
 
@@ -2300,39 +2300,43 @@ msgstr "Το μεγάλο φινάλε - Η μεγάλη Ορχήστρα για
 msgid "Normal day"
 msgstr "Μια κανονική μέρα"
 
-#: website/templates/krety.html:201
+#: website/templates/krety.html:202
 msgid "Help translate GeoKrety.org in your language. Select another language in the selector to exit translation mode."
 msgstr "Βοηθήστε στη μετάφραση του GeoKrety.org στη γλώσσα σας. Επιλέξτε μια άλλη γλώσσα στον επιλογέα για να βγείτε από τη λειτουργία μετάφρασης."
 
-#: website/templates/krety.html:201
+#: website/templates/krety.html:202
 msgid "Fix translation"
 msgstr "Διόρθωση μετάφρασης"
 
-#: website/templates/krety.html:202
+#: website/templates/krety.html:203
 msgid "Contact-us"
 msgstr "Επικοινωνήστε μαζί μας"
 
-#: website/templates/krety.html:207
+#: website/templates/krety.html:208 website/templates/krety.html:249
 msgid "The suggested contribution is 3€ but any amount is appreciated. Donation is not required as GeoKrety.org is and will stay free & open-source. Thank you for your support"
 msgstr "Η προτεινόμενη συνεισφορά είναι €3 αλλά κάθε ποσό είναι ευπρόσδεκτο. Η δωρεά δεν είναι υποχρεωτική αφού το GeoKrety.org είναι και θα παραμείνει δωρεάν και ανοιχτού κώδικα. Ευχαριστούμε για την υποστήριξή σας"
 
-#: website/templates/krety.html:209
+#: website/templates/krety.html:210 website/templates/krety.html:251
 msgid "Enjoying GeoKrety.org?"
 msgstr "Σας αρέσει το GeoKrety.org;"
 
-#: website/templates/krety.html:210
+#: website/templates/krety.html:211 website/templates/krety.html:252
 msgid "If you use GeoKrety.org and have found it helpful, please consider donating"
 msgstr "Αν χρησιμοποιείτε το GeoKrety.org και το βρήκατε χρήσιμο, παρακαλούμε σκεφτείτε μια δωρεά"
 
-#: website/templates/krety.html:214
-msgid "Contribute"
-msgstr "Συμβολή"
+#: website/templates/krety.html:215 website/templates/krety.html:257
+msgid "Donate"
+msgstr ""
 
-#: website/templates/krety.html:227
+#: website/templates/krety.html:228
 msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
 msgstr "Αυτό δεν είναι περίπτωση παραγωγής. Αν δεν κάνετε δοκιμή, τότε πιθανώς θέλετε να πάτε στο <a href=\"https://geokrety.org\">ιστοσελίδα παραγωγής</a> μας."
 
-#: website/templates/krety.html:244
+#: website/templates/krety.html:253
+msgid "Your donations help us pay for servers and other costs."
+msgstr ""
+
+#: website/templates/krety.html:266
 msgid "version"
 msgstr "έκδοση"
 
