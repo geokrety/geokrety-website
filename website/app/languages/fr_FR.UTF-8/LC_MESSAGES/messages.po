@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-02 17:31+0000\n"
-"PO-Revision-Date: 2021-06-14 20:14\n"
+"POT-Creation-Date: 2021-07-04 13:56+0000\n"
+"PO-Revision-Date: 2021-07-04 22:11\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -416,7 +416,7 @@ msgstr "<strong>Votre compte n'est pas encore actif.</strong>"
 msgid "Account activated"
 msgstr "Compte activé"
 
-#: website/app/GeoKrety/Email/BasePHPMailer.php:81
+#: website/app/GeoKrety/Email/BasePHPMailer.php:83
 msgid "An error occurred while sending mail."
 msgstr "Une erreur s'est produite lors de l'envoi du courriel."
 
@@ -672,7 +672,11 @@ msgstr "icône : possède un avatar"
 msgid "GeoKret has an avatar"
 msgstr "Ce GeoKret a un avatar"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:31
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
+msgid "nobody"
+msgstr "personne"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:32
 #, php-format
 msgid "GeoKret \"%s\" by %s"
 msgstr "GeoKret \"%s\" de %s"
@@ -2879,9 +2883,13 @@ msgstr "Carte interactive des GeoKrety"
 msgid "Waypoints statistics"
 msgstr "Statistiques des waypoints"
 
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:36
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:39
 msgid "N/A"
 msgstr "N/A"
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:49
+msgid "Force complete synchronization"
+msgstr "Forcer une synchronisation complète"
 
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_change.tpl:18
