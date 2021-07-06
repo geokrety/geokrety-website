@@ -13,7 +13,7 @@ class Home extends Base {
     public function get() {
         // Load statistics
         $siteStats = new SiteStats();
-        $result = $siteStats->find(['name LIKE ?', 'stat_%']);
+        $result = $siteStats->find(['name LIKE ?', 'stat_%'], null, GK_SITE_CACHE_TTL_STATS);
         $statistics = [];
         foreach ($result ?: [] as $item) {
             $statistics[$item['name']] = $item['value'];
@@ -29,17 +29,21 @@ class Home extends Base {
 
         // Load latest moves
         $move = new Move();
-        $moves = $move->find(null, ['order' => 'moved_on_datetime DESC, moved_on_datetime DESC', 'limit' => GK_HOME_COUNT_MOVES], GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY);
+        $filter = ["moved_on_datetime >= now() - cast(? as interval)", '10'.' DAY'];
+        $moves = $move->find($filter, ['order' => 'moved_on_datetime DESC', 'limit' => GK_HOME_COUNT_MOVES], GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY);
         Smarty::assign('moves', $moves);
+        $f3=\Base::instance();
 
         // Load latest GeoKrety
         $geokret = new Geokret();
-        $geokrety = $geokret->find(null, ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_RECENT_GEOKRETY], GK_SITE_CACHE_TTL_LATEST_GEOKRETY);
+        $filter = ["created_on_datetime >= now() - cast(? as interval)", '10'.' DAY'];
+        $geokrety = $geokret->find($filter, ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_RECENT_GEOKRETY], GK_SITE_CACHE_TTL_LATEST_GEOKRETY);
         Smarty::assign('geokrety', $geokrety);
 
         // Load latest pictures
         $picture = new Picture();
-        $pictures = $picture->find(['uploaded_on_datetime != ?', null], ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_RECENT_PICTURES], GK_SITE_CACHE_TTL_LATEST_PICTURES);
+        $filter = ["uploaded_on_datetime != ? AND uploaded_on_datetime >= now() - cast(? as interval)", null, '30'.' DAY'];
+        $pictures = $picture->find($filter, ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_RECENT_PICTURES], GK_SITE_CACHE_TTL_LATEST_PICTURES);
         Smarty::assign('pictures', $pictures);
 
         Smarty::render('pages/home.tpl');

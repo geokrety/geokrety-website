@@ -40,7 +40,7 @@ class Smarty extends \Prefab {
         $smarty->assign('javascript', []); // Store dynamic javascript filename to load
         $smarty->assign('isSuperUser', false);
         $smarty->registerClass('Carbon', '\Carbon\Carbon');
-        $smarty->caching = 0; // caching is off
+        $smarty->caching = \SmartyBC::CACHING_OFF; // caching is off
 
         $this->smarty = $smarty;
     }

@@ -191,19 +191,23 @@ class Picture extends Base {
         if (is_null($this->bucket)) {
             return sprintf('https://cdn.geokrety.org/images/obrazki/%s', $this->filename);
         }
-        $s3 = S3Client::instance()->getS3Public();
 
-        return $s3->getObjectUrl($this->type->getBucketName(), $this->key);
+        return sprintf('%s/%s/%s', GK_MINIO_SERVER_URL_EXTERNAL, $this->type->getBucketName(), $this->key);
+        // Not as performant as above ~5-10ms
+        //$s3 = S3Client::instance()->getS3Public();
+        //return $s3->getObjectUrl($this->type->getBucketName(), $this->key);
     }
 
     public function get_thumbnail_url(): string {
         if (is_null($this->bucket)) {
             return sprintf('https://cdn.geokrety.org/images/obrazki-male/%s', $this->filename);
         }
-        $s3 = S3Client::instance()->getS3Public();
-        $bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
 
-        return $s3->getObjectUrl($bucketName, $this->key);
+        return sprintf('%s/%s-thumbnails/%s', GK_MINIO_SERVER_URL_EXTERNAL, $this->type->getBucketName(), $this->key);
+        // Not as performant as above ~5-10ms
+        //$s3 = S3Client::instance()->getS3Public();
+        //$bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
+        //return $s3->getObjectUrl($bucketName, $this->key);
     }
 
     public function __construct() {
