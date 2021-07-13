@@ -90,7 +90,7 @@ class File {
         }
 
         try {
-            # fopen() doesn't throw exception on url open errors
+            // fopen() doesn't throw exception on url open errors
             $readableStream = @fopen($url, 'rb', false, $context);
             if ($readableStream === false) {
                 throw new Exception(sprintf('Fail to open url: %s', $url));
