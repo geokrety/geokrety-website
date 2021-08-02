@@ -37,7 +37,7 @@ class MoleHoles extends Base {
             'OU036C', 'OU02CC', 'OU02D5', 'OU02DD', 'OU0349', 'OU02C3',
             'OU01BD', 'OU035B', 'OU024C', 'OU0318', 'OB1466', 'TR17200',
             'TR22853', 'TR22854', 'TR17299', 'TR17436', 'TR17479', 'TR18111',
-            'TR18165',
+            'TR18165', 'TR20406',
         ];
 
         $gkhotels = [];
