@@ -187,6 +187,7 @@ if ($longin_status['plain'] == null) {
             $TRESC = sprintf(_('Sorry, but you have to wait %d minutes before you can send another message.'), $config['mail_rate_limit']);
         }
     } else {
+        include_once 'defektoskop.php';
         $TRESC = defektoskop(_('reCaptcha failed!'), true, '', '', 'adduser');
     }
 } //if all required variables are set
