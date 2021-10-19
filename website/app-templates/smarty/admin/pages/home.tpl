@@ -53,6 +53,9 @@
                         <li>
                             <a href="{'admin_s3_prune_pictures'|alias}">Prune never uploaded pictures</a>
                         </li>
+                        <li>
+                            <a href="{'admin_scripts'|alias}">Manage scripts</a>
+                        </li>
                     </ul>
                 </div>
             </div>
