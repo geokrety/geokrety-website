@@ -19,7 +19,7 @@ class Scripts extends Base {
     }
 
     public function unlock(\Base $f3) {
-        $script_id = $f3->get('PARAMS.script_id');
+        $script_id = $f3->get('PARAMS.scriptid');
         $script = new Script();
         $script->load(['id = ?', $script_id]);
         if ($script->dry()) {
