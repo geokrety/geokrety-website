@@ -25,7 +25,7 @@
                     <td class="text-right">{if !is_null($item->locked_datetime)}{$item->locked_datetime|print_date nofilter}{/if}</td>
                     <td class="text-right">
                         {if !is_null($item->locked_datetime)}
-                            <a href="{'admin_scripts_unlock'|alias:sprintf('@script_id=%d', $item->id)}" class="btn btn-warning" title="{t}Unlock script{/t}">
+                            <a href="{'admin_scripts_unlock'|alias:sprintf('@scriptid=%d', $item->id)}" class="btn btn-warning" title="{t}Unlock script{/t}">
                                 {fa icon="lock"}
                             </a>
                         {/if}
