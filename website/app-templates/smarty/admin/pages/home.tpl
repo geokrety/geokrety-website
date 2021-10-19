@@ -56,6 +56,9 @@
                         <li>
                             <a href="{'admin_scripts'|alias}">Manage scripts</a>
                         </li>
+                        <li>
+                            <a href="{'admin_users_list'|alias}">Manage users</a>
+                        </li>
                     </ul>
                 </div>
             </div>
