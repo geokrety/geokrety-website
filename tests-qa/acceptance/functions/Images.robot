@@ -9,7 +9,7 @@ Upload user avatar via button
     Go To                                   ${user_profile_url}
     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_PICTURE_UPLOAD_BUTTON}    timeout=30
     Choose File    	                        //*[@type="file"]    ${file}
-    Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSING_SUFFIX}    timeout=30
+    # Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSING_SUFFIX}    timeout=30  ## Errors caused by invalid syntax, timeouts, or fatal exceptions are not caught by this keyword.
     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSED_SUFFIX}     timeout=30
 
 Upload user avatar via Drag/Drop - same page
@@ -17,7 +17,7 @@ Upload user avatar via Drag/Drop - same page
     Go To                                   ${user_profile_url}
     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_PICTURE_UPLOAD_BUTTON}    timeout=30
     Drag And Drop                           ${source}    ${USER_PROFILE_DROPZONE}
-    Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSING_SUFFIX}    timeout=30
+    # Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSING_SUFFIX}    timeout=30  ## Errors caused by invalid syntax, timeouts, or fatal exceptions are not caught by this keyword.
     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSED_SUFFIX}     timeout=30
 
 Click Picture Action
@@ -33,7 +33,7 @@ Upload picture via button
     Wait Until Page Contains Element        ${dropzone}
     Scroll Into View                        ${dropzone}
     Choose File    	                        ${dropzone}//*[@type="file"]       ${file}
-    Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSING_SUFFIX}    timeout=5
+    # Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSING_SUFFIX}    timeout=5  ## Errors caused by invalid syntax, timeouts, or fatal exceptions are not caught by this keyword.
     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSED_SUFFIX}     timeout=5
 
 Upload picture via via Drag/Drop - same page
@@ -41,7 +41,7 @@ Upload picture via via Drag/Drop - same page
     Wait Until Page Contains Element        ${dropzone}
     Scroll Into View                        ${dropzone}
     Drag And Drop                           ${source}    ${dropzone}
-    Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSING_SUFFIX}    timeout=5
+    # Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSING_SUFFIX}    timeout=5  ## Errors caused by invalid syntax, timeouts, or fatal exceptions are not caught by this keyword.
     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSED_SUFFIX}     timeout=5
 
 
