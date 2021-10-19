@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd08dc538627313acf9592ea4ebeb909",
+    "content-hash": "825f6f5d9560efdf1f0c5c66576f753a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -808,6 +808,57 @@
             "time": "2020-11-11T10:22:58+00:00"
         },
         {
+            "name": "ekinhbayar/hautelook-phpass",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ekinhbayar/hautelook-phpass.git",
+                "reference": "739a0953da4612923bf2a6041531a1348c54d1f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ekinhbayar/hautelook-phpass/zipball/739a0953da4612923bf2a6041531a1348c54d1f5",
+                "reference": "739a0953da4612923bf2a6041531a1348c54d1f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "replace": {
+                "hautelook/phpass": "1.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Hautelook": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Public Domain"
+            ],
+            "authors": [
+                {
+                    "name": "Solar Designer",
+                    "email": "solar@openwall.com",
+                    "homepage": "http://openwall.com/phpass/"
+                }
+            ],
+            "description": "Portable PHP password hashing framework",
+            "homepage": "http://github.com/hautelook/phpass/",
+            "keywords": [
+                "blowfish",
+                "crypt",
+                "password",
+                "security"
+            ],
+            "support": {
+                "issues": "https://github.com/ekinhbayar/hautelook-phpass/issues",
+                "source": "https://github.com/ekinhbayar/hautelook-phpass/tree/1.1.0"
+            },
+            "time": "2012-08-31T00:00:00+00:00"
+        },
+        {
             "name": "erusev/parsedown",
             "version": "1.8.0-beta-7",
             "source": {
@@ -1194,54 +1245,6 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.7.0"
             },
             "time": "2020-09-30T07:37:11+00:00"
-        },
-        {
-            "name": "hautelook/phpass",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hautelook/phpass.git",
-                "reference": "b2daca28508000d1dd126e93ec472d771626a774"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/phpass/zipball/b2daca28508000d1dd126e93ec472d771626a774",
-                "reference": "b2daca28508000d1dd126e93ec472d771626a774",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Hautelook": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Public Domain"
-            ],
-            "authors": [
-                {
-                    "name": "Solar Designer",
-                    "email": "solar@openwall.com",
-                    "homepage": "http://openwall.com/phpass/"
-                }
-            ],
-            "description": "Portable PHP password hashing framework",
-            "homepage": "http://github.com/hautelook/phpass/",
-            "keywords": [
-                "blowfish",
-                "crypt",
-                "password",
-                "security"
-            ],
-            "support": {
-                "issues": "https://github.com/hautelook/phpass/issues",
-                "source": "https://github.com/hautelook/phpass/tree/master"
-            },
-            "time": "2012-08-31T00:00:00+00:00"
         },
         {
             "name": "http-interop/http-factory-guzzle",
@@ -9198,5 +9201,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
