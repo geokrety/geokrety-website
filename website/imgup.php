@@ -8,9 +8,9 @@ require_once 'smarty_start.php';
 
 require_once 'czysc.php';
 
-$max_file_size = 110000;
-$max_width = 800;
-$max_height = 700;
+$max_file_size = 550000;
+$max_width = 1024;
+$max_height = 1024;
 $allow_types = ['image/jpeg', 'image/pjpeg', 'image/png', 'image/gif'];
 $save_desc_cookie_period = 15; // minutes
 $save_desc_cookie_name = 'gk_imgup0';
