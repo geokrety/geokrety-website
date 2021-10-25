@@ -15,7 +15,7 @@ trait UserLoader {
     public function loadUser(Base $f3) {
         $user = new User();
         $this->user = $user;
-        $user->filter('badges', null, ['order' => 'awarded_on_datetime ASC']);
+        $user->filter('awards', null, ['order' => 'awarded_on_datetime ASC']);
         $user->filter('avatars', ['uploaded_on_datetime != ?', null]);
         $user->filter('email_activation', ['used = ?', EmailActivationToken::TOKEN_UNUSED]);
         $this->filterHook();

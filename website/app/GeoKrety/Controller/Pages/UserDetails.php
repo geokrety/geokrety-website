@@ -4,7 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\LogType;
 use GeoKrety\Model\SocialAuthProvider;
-use GeoKrety\Service\AwardGenerator;
+use GeoKrety\Service\MedalsGenerator;
 use GeoKrety\Service\Smarty;
 use UserLoader;
 
@@ -19,8 +19,8 @@ class UserDetails extends Base {
                 $f3->get('PARAMS.userid'),
             ]
         );
-        $awardsGeoKretyOwned = AwardGenerator::getGrantedAwards($geokretyOwned[0]['count']);
-        Smarty::assign('awardsGeoKretyOwned', $awardsGeoKretyOwned);
+        $medalsGeoKretyOwned = MedalsGenerator::getGrantedMedals($geokretyOwned[0]['count']);
+        Smarty::assign('medalsGeoKretyOwned', $medalsGeoKretyOwned);
         Smarty::assign('geokretyOwned', $geokretyOwned[0]);
 
         // GeoKrety moved stats
@@ -32,8 +32,8 @@ class UserDetails extends Base {
                 LogType::LOG_TYPE_ARCHIVED,
             ]
         );
-        $awardsGeoKretyMoved = AwardGenerator::getGrantedAwards($geokretyMoved[0]['count']);
-        Smarty::assign('awardsGeoKretyMoved', $awardsGeoKretyMoved);
+        $medalsGeoKretyMoved = MedalsGenerator::getGrantedMedals($geokretyMoved[0]['count']);
+        Smarty::assign('medalsGeoKretyMoved', $medalsGeoKretyMoved);
         Smarty::assign('geokretyMoved', $geokretyMoved[0]);
 
         // Load Social auth providers

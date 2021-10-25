@@ -22,8 +22,8 @@
                 {include file='blocks/user/details.tpl'}
                 {include file='blocks/user/pictures.tpl'}
             </div>
+            {include file='blocks/user/medals.tpl'}
             {include file='blocks/user/awards.tpl'}
-            {include file='blocks/user/badges.tpl'}
         </div>
         <div class="col-xs-12 col-md-3">
             {include file='blocks/user/actions.tpl'}

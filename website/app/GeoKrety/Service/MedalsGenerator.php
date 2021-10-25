@@ -3,9 +3,9 @@
 namespace GeoKrety\Service;
 
 /**
- * AwardGenerator : Generate array of awards.
+ * MedalsGenerator : Generate array of awards.
  */
-class AwardGenerator {
+class MedalsGenerator {
     /**
      * Determine granted awards given GeoKrety count.
      *
@@ -13,7 +13,7 @@ class AwardGenerator {
      *               index key: award title suffix
      *               value: award image names
      */
-    public static function getGrantedAwards($count) {
+    public static function getGrantedMedals($count): array {
         $awards = [];
         if ($count >= 1) {
             $awards['1'] = 'medal-1-1.png';

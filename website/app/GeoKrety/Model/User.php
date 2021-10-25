@@ -217,8 +217,8 @@ class User extends Base implements JsonSerializable {
         'watched_geokrety' => [
             'has-many' => ['\GeoKrety\Model\Watched', 'user'],
         ],
-        'badges' => [
-            'has-many' => ['\GeoKrety\Model\Badge', 'holder'],
+        'awards' => [
+            'has-many' => ['\GeoKrety\Model\AwardsWon', 'holder'],
         ],
         'activation' => [
             'has-one' => ['\GeoKrety\Model\AccountActivationToken', 'user'],
