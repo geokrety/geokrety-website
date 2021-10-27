@@ -441,6 +441,13 @@ class WaypointMigrator extends BaseMigrator {
 class UserMigrator extends BaseMigrator {
     protected function prepareData() {
         $this->mPdo->query('UPDATE `gk-users` SET joined = timestamp WHERE joined IS NULL LIMIT 3');
+        // Enable functions as we need email and secid to be cyphered
+        $this->pPdo->query('SET session_replication_role = DEFAULT;');
+    }
+
+    protected function postProcessData() {
+        // Disable functions again
+        $this->pPdo->query('SET session_replication_role = replica;');
     }
 
     protected function cleanerHook(&$values) {
