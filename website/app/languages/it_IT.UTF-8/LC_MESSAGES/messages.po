@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-20 11:38+0000\n"
-"PO-Revision-Date: 2021-10-20 11:44\n"
+"PO-Revision-Date: 2021-10-25 05:21\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -35,12 +35,12 @@ msgstr "Più account condividono lo stesso indirizzo email. Per favore <a href=\
 #: website/app/GeoKrety/Controller/Admin/Scripts.php:26
 #, php-format
 msgid "No such script %d found"
-msgstr ""
+msgstr "Nessuno script %d trovato"
 
 #: website/app/GeoKrety/Controller/Admin/Scripts.php:31
 #, php-format
 msgid "Script \"%s\" has been unlocked"
-msgstr ""
+msgstr "Lo script \"%s\" è stato sbloccato"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
@@ -82,7 +82,7 @@ msgstr "Qualcosa è andato storto durante la registrazione dell'adozione."
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
-msgstr ""
+msgstr "Congratulazioni! Ora sei il proprietario di %s."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:39
 msgid "Born here"
@@ -128,15 +128,15 @@ msgstr "Seleziona un tipo di esportazione."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:28
 msgid "This GeoKret is already archived."
-msgstr ""
+msgstr "Questo GeoKret è già archiviato."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:43
 msgid "Archiving GeoKret"
-msgstr ""
+msgstr "Archiviazione GeoKret"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:49
 msgid "Failed to archive the GeoKret."
-msgstr ""
+msgstr "Archiviazione del GeoKret non riuscita."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:22
 msgid "You must be the GeoKret owner to generate new Owner Code."
@@ -182,7 +182,7 @@ msgstr "Per favore fornisci i parametri \"login\" e \"password\"."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:136
 msgid "Your account is not valid."
-msgstr ""
+msgstr "Il tuo account non è valido."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:158
 #: website/app/GeoKrety/Controller/Pages/Login.php:164
@@ -339,7 +339,7 @@ msgstr "Nessuna modifica è stata elaborata. Questo token è stato revocato."
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:25
 msgid "You have successfully validated your email address."
-msgstr ""
+msgstr "Il tuo indirizzo di mail è stato verificato."
 
 #: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:26
 msgid "Failed to refresh your secid."
@@ -397,13 +397,13 @@ msgstr "La lunghezza del Waypoint non è valida. Dovrebbe essere compresa tra %d
 #: website/app/GeoKrety/Email/AccountActivation.php:16
 #: website/app/GeoKrety/Email/EmailRevalidate.php:20
 msgid "A confirmation email has been sent to your address."
-msgstr ""
+msgstr "Una email di conferma è stata inviata al tuo indirizzo"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
 #: website/app/GeoKrety/Email/AccountActivation.php:55
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
-msgstr ""
+msgstr "<strong>Devi cliccare sul link fornito nell'email per attivare il tuo account prima di poterlo utilizzare.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
@@ -411,7 +411,7 @@ msgstr ""
 #: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "Il link di conferma scade in %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24 smarty/emails:3
 msgid "Welcome to GeoKrety.org"
@@ -419,16 +419,16 @@ msgstr "Benvenuto in GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "Your account seems to already exist."
-msgstr ""
+msgstr "Il tuo account sembra già esistente."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
 #: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "The confirmation email was sent again to your mail address."
-msgstr ""
+msgstr "L'email di conferma è stata nuovamente inviata al tuo indirizzo email."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:53
 msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
+msgstr "<strong>Il tuo account non è ancora attivo.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:61
 msgid "Account activated"
@@ -441,23 +441,23 @@ msgstr "Si è verificato un errore durante l'invio della mail."
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
-msgstr ""
+msgstr "Watchlist per %s"
 
 #: website/app/GeoKrety/Email/EmailChange.php:28 smarty/emails:3
 msgid "Revalidate your email address"
-msgstr ""
+msgstr "Verifica nuovamente il tuo indirizzo email"
 
 #: website/app/GeoKrety/Email/EmailChange.php:32 smarty/emails:8
 msgid "Your account has been imported from GKv1."
-msgstr ""
+msgstr "Il tuo account è stato importato da GKv1."
 
 #: website/app/GeoKrety/Email/EmailChange.php:33 smarty/emails:9
 msgid "We would like to verify that your mail address is still valid."
-msgstr ""
+msgstr "Vorremmo verificare che il tuo indirizzo email sia ancora valido."
 
 #: website/app/GeoKrety/Email/EmailChange.php:34
 msgid "An email has been sent to your registered address, please click the included link."
-msgstr ""
+msgstr "Una email è stata inviata al tuo indirizzo registrato, clicca sul link incluso."
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
 #: website/app/GeoKrety/Email/EmailChange.php:53 smarty/emails:3 smarty/pages:3
@@ -475,11 +475,11 @@ msgstr "Indirizzo email ripristinato"
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:21
 msgid "Please click the included link to confirm it's validity."
-msgstr ""
+msgstr "Clicca sul link incluso per confermare la sua validità."
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:27
 msgid "Account revalidation"
-msgstr ""
+msgstr "Convalida account"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -584,12 +584,12 @@ msgstr "Coordinate mancanti o non valide"
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Informazione"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Unità specificata non valida: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -684,12 +684,12 @@ msgstr "GeoKret ha un avatar"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
 msgid "nobody"
-msgstr ""
+msgstr "nessuno"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:32
 #, php-format
 msgid "GeoKret \"%s\" by %s"
-msgstr ""
+msgstr "GeoKret \"%s\" di %s"
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:13
 msgid "GK type icon"
@@ -815,15 +815,15 @@ msgstr "{0} deve essere dopo la nascita del GeoKret"
 
 #: smarty/emails:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Congratulazioni"
 
 #: smarty/emails:4 smarty/emails:8
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "Il tuo indirizzo e-mail è stato cambiato con successo"
 
 #: smarty/emails:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "Il tuo indirizzo email è stato modificato con successo in: %1."
 
 #: smarty/emails:12 smarty/dialog:2 smarty/dialog:7
 msgid "Login"
@@ -844,7 +844,7 @@ msgstr "Questo link scade %1."
 
 #: smarty/emails:22 smarty/emails:15 smarty/emails:20
 msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
+msgstr "Se non hai richiesto un cambio di password, dovresti anche considerare di cambiare subito la tua password."
 
 #: smarty/emails:24 smarty/emails:17 smarty/emails:22
 msgid "Change my password!"
@@ -868,7 +868,7 @@ msgstr "Cordialmente,<br>Il Team GeoKrety"
 
 #: smarty/emails:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
+msgstr "Se non hai mai creato un account su GeoKrety.org, per favore <a href=\"mailto:%1?subject=%2\">contattaci</a>."
 
 #: smarty/emails:3
 msgid "Forgot Your Password?"
@@ -876,7 +876,7 @@ msgstr "Password Dimenticata?"
 
 #: smarty/emails:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Recupera la tua password"
 
 #: smarty/emails:8
 msgid "It happens. Click the link below to reset your password."
@@ -892,35 +892,35 @@ msgstr "Stai ricevendo questa email perché hai cambiato la tua password sul nos
 
 #: smarty/emails:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "Il tuo account su GeoKrety.org è ora attivo."
 
 #: smarty/emails:8
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "La tua password è stata cambiata con successo."
 
 #: smarty/emails:3
 msgid "Account has been deleted"
-msgstr ""
+msgstr "L'account è stato cancellato"
 
 #: smarty/emails:4
 msgid "Your account is now deleted."
-msgstr ""
+msgstr "Il tuo account è stato cancellato."
 
 #: smarty/emails:8
 msgid "The account you created %1 has never been activated."
-msgstr ""
+msgstr "L'account creato %1 non è mai stato attivato."
 
 #: smarty/emails:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+msgstr "La nostra politica è quella di eliminare gli account non attivati entro %1 giorni."
 
 #: smarty/emails:13
 msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+msgstr "Ci dispiace informarti che il tuo account è stato cancellato in modo permanente."
 
 #: smarty/emails:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+msgstr "Il nome utente che hai scelto per la registrazione è ora rilasciato e può essere liberamente utilizzato da qualcun altro."
 
 #: smarty/emails:19 smarty/emails:23
 msgid "You're getting this email because you've just signed up on our website."
@@ -928,31 +928,31 @@ msgstr "Stai ricevendo questa email perché ti sei appena iscritto sul nostro si
 
 #: smarty/emails:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Qualcosa è andato storto durante la sincronizzazione dei dati dei partner"
 
 #: smarty/emails:7
 msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
+msgstr "Qualcosa è andato storto con un cron job, si prega di controllare i log qui sotto."
 
 #: smarty/emails:4
 msgid "You're getting this email because you're one the website admins."
-msgstr ""
+msgstr "Stai ricevendo questa email perché sei uno degli amministratori del sito web."
 
 #: smarty/emails:3
 msgid "Hooray"
-msgstr ""
+msgstr "Evviva"
 
 #: smarty/emails:4 smarty/emails:8
 msgid "Your email address has been successfully reverted."
-msgstr ""
+msgstr "Il tuo indirizzo email è stato ripristinato con successo."
 
 #: smarty/emails:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "Uno dei tuoi GeoKrety è stato adottato."
 
 #: smarty/emails:7
 msgid "Good news, your GeoKret <a href=\"%2\">%1</a> was just adopted by user <a href=\"%4\">%3</a>."
-msgstr ""
+msgstr "Buone notizie, il tuo GeoKret <a href=\"%2\">%1</a> è stato appena adottato dall'utente <a href=\"%4\">%3</a>."
 
 #: smarty/emails:10
 msgid "View GeoKret"
@@ -964,7 +964,7 @@ msgstr "Stai ricevendo questa email perché uno dei tuoi GeoKrety è cambiato pr
 
 #: smarty/emails:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "Conferma la modifica del tuo indirizzo email."
 
 #: smarty/emails:8
 msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
@@ -976,15 +976,15 @@ msgstr "Non cambiare!"
 
 #: smarty/emails:4
 msgid "Some accounts will be deleted."
-msgstr ""
+msgstr "Alcuni account verranno eliminati."
 
 #: smarty/emails:7
 msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
+msgstr "%1 account non sono ancora attivati dopo %2 giorni. Ora verranno eliminati."
 
 #: smarty/emails:4
 msgid "A script is locked"
-msgstr ""
+msgstr "Uno script è bloccato"
 
 #: smarty/emails:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
@@ -1969,7 +1969,7 @@ msgstr ""
 
 #: smarty/dialog:10
 msgid "You are about the archive this GeoKret."
-msgstr ""
+msgstr "Stai per archiviare questo GeoKret."
 
 #: smarty/dialog:11
 msgid "This is useful if you think this GeoKret has been destroyed."
