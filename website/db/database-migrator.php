@@ -261,7 +261,6 @@ $pgsql->query('UPDATE gk_pictures SET bucket = gkp2.bucket, "key" = gkp2.key FRO
 $pgsql->query('DROP TABLE gk_pictures2;');
 
 $pgsql->query('SET session_replication_role = DEFAULT;');
-$pgsql->query('UPDATE gk_users SET _email = _email, _secid = _secid;');
 
 $pgsql->query('CREATE INDEX gk_moves_country_index ON geokrety.gk_moves USING btree (country);');
 $pgsql->query('CREATE INDEX gk_moves_type_index ON geokrety.gk_moves USING btree (move_type);');
