@@ -69,7 +69,7 @@ class AwardsWon extends Base {
     }
 
     public function get_url(): string {
-        return GK_CDN_IMAGES_URL . '/badges/' . $this->award->filename;
+        return GK_CDN_IMAGES_URL.'/badges/'.$this->award->filename;
     }
 
     public function jsonSerialize() {

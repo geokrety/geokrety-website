@@ -7,11 +7,13 @@
  * Type:     modifier
  * Name:     award
  * Purpose:  outputs a award image
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
+ *
  * @param \GeoKrety\Model\Awards|\GeoKrety\Model\AwardsWon $award
+ *
  * @throws \SmartyException
  */
-function smarty_modifier_award($award, bool $ImageOnly = True): string {
+function smarty_modifier_award($award, bool $ImageOnly = true): string {
     if ($ImageOnly) {
         $template_string = <<<'EOT'
 <img src="{$award->url}" title="{$award->description}" />
@@ -27,7 +29,8 @@ EOT;
 
     $smarty = clone GeoKrety\Service\Smarty::getSmarty();
     $smarty->assign('award', $award);
-    $html = $smarty->fetch('string:' . $template_string);
+    $html = $smarty->fetch('string:'.$template_string);
     $smarty->clearAssign(['award']);
+
     return $html;
 }
