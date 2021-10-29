@@ -447,6 +447,8 @@ class UserMigrator extends BaseMigrator {
     protected function postProcessData() {
         // Disable functions again
         $this->pPdo->query('SET session_replication_role = replica;');
+        // Reset stat table as function will fill it
+        $this->pPdo->query('TRUNCATE "gk_statistics_counters" RESTART IDENTITY CASCADE;');
     }
 
     protected function cleanerHook(&$values) {
