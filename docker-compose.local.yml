@@ -111,13 +111,18 @@ services:
     command:
       - "server"
       - "/data"
+      - "--console-address"
+      - ":9001"
     environment:
-      MINIO_ACCESS_KEY: access_key
-      MINIO_SECRET_KEY: secret_key
+      MINIO_ROOT_USER: access_key
+      MINIO_ROOT_PASSWORD: secret_key
+      CONSOLE_SECURE_TLS_REDIRECT: "off"
+      MINIO_BROWSER_REDIRECT_URL: "http://localhost:3004"
     tmpfs:
       - /data
     ports:
       - 3003:9000
+      - 3004:9001
     depends_on:
       - pictures-uploader
 
