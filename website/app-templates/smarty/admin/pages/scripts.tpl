@@ -12,23 +12,21 @@
             <th class="text-right">Last run</th>
             <th class="text-right">Last page</th>
             <th class="text-right">Locked</th>
+            <th class="text-right">Acked</th>
             <th class="text-right">Actions</th>
         </tr>
         </thead>
         <tbody>
             {foreach from=$scripts item=item}
-                <tr class="{if !is_null($item->locked_on_datetime)}danger{/if}">
+                <tr class="{if $item->is_locked()}danger{/if}">
                     <td>{$item->id}</td>
                     <td>{$item->name}</td>
                     <td class="text-right">{if !is_null($item->last_run_datetime)}{$item->last_run_datetime|print_date nofilter}{/if}</td>
                     <td class="text-right">{if is_null($item->last_page)}{$item->last_page}{/if}</td>
-                    <td class="text-right">{if !is_null($item->locked_on_datetime)}{$item->locked_on_datetime|print_date nofilter}{/if}</td>
+                    <td class="text-right">{if $item->is_locked()}{$item->locked_on_datetime|print_date nofilter}{/if}</td>
+                    <td class="text-right">{if $item->is_acked()}{$item->acked_on_datetime|print_date nofilter}{/if}</td>
                     <td class="text-right">
-                        {if !is_null($item->locked_datetime)}
-                            <a href="{'admin_scripts_unlock'|alias:sprintf('@scriptid=%d', $item->id)}" class="btn btn-warning" title="{t}Unlock script{/t}">
-                                {fa icon="lock"}
-                            </a>
-                        {/if}
+                        {block user_actions}{/block}
                     </td>
                 </tr>
             {/foreach}
@@ -36,5 +34,20 @@
     </table>
 {/block}
 
+{block user_actions}
+<div class="btn-group" role="group" aria-label="...">
+    {if $item->is_locked()}
+        <button type="button" class="btn btn-warning btn-xs" title="{t}Unlock script{/t}" data-toggle="modal" data-target="#modal" data-type="admin-script-unlock" data-script-id="{$item->id}">
+            {fa icon="lock"}
+        </button>
+        <button type="button" class="btn btn-success btn-xs" title="{t}Ack{/t}" data-toggle="modal" data-target="#modal" data-type="admin-script-ack" data-script-id="{$item->id}" {if $item->is_acked()}disabled{/if}>
+            {fa icon="check"}
+        </button>
+    {/if}
+</div>
+{/block}
+
 {block name=javascript}
+// Bind modal
+{include 'js/dialogs/dialog_admin_script_actions.tpl.js'}
 {/block}

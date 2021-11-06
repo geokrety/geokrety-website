@@ -135,13 +135,25 @@ SQL,
         );
 
         \GeoKrety\Service\Metrics::gauge_set_sql(
-            'cron_locked_scripts',
-            'Count of locked script',
+            'scripts',
+            'Total number of scripts status',
             sprintf(<<<'SQL'
-SELECT COUNT(*) AS count
+SELECT 'locks' as label, COUNT(*) AS count
 FROM "scripts"
 WHERE (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_on_datetime)))::integer/60) >= %d
 SQL, GK_SITE_CRON_LOCKED_MINUTES),
+            ['status']
+        );
+
+        \GeoKrety\Service\Metrics::gauge_set_sql(
+            'scripts',
+            'Total number of scripts status',
+            <<<'SQL'
+SELECT 'acks' as label, COUNT(*) AS count
+FROM "scripts"
+WHERE acked_on_datetime IS NOT NULL
+SQL,
+            ['status']
         );
     }
 }

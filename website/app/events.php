@@ -245,3 +245,11 @@ $events->on('awarded.deleted', function (GeoKrety\Model\AwardsWon $award) {
     audit('awarded.deleted', $award);
     Metrics::counter('award_deleted', 'Total number of awards awarded', ['award'], ['deleted']);
 });
+$events->on('scripts.unlocked', function (GeoKrety\Model\Scripts $script) {
+    audit('scripts.unlocked', $script);
+    Metrics::counter('scripts', 'Total number of scripts status', ['status'], ['unlocks']);
+});
+$events->on('scripts.acked', function (GeoKrety\Model\Scripts $script) {
+    audit('scripts.acked', $script);
+    // Metric will be handled by cron script
+});

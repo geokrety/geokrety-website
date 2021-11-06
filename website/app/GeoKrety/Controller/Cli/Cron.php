@@ -17,8 +17,14 @@ class Cron {
         $sql = <<<'SQL'
        (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_on_datetime)))::integer/60) >= %d
 AND MOD(EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_on_datetime)))::integer/60, %d) = 0
+AND acked_on_datetime != ?
 SQL;
-        $locked_scripts = $scripts->find([sprintf($sql, GK_SITE_CRON_LOCKED_MINUTES, GK_SITE_CRON_LOCKED_MINUTES)]);
+        $locked_scripts = $scripts->find([sprintf(
+            $sql,
+            GK_SITE_CRON_LOCKED_MINUTES,
+            GK_SITE_CRON_LOCKED_MINUTES,
+            null,
+        )]);
         $locked_scripts = $locked_scripts ?: [];
         $user = new User();
         foreach ($locked_scripts as $script) {

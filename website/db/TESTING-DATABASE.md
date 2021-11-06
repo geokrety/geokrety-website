@@ -33,6 +33,7 @@ CREATE EXTENSION pgcrypto WITH SCHEMA public;
 \i secure-schema.sql
 \i geokrety-schema.sql
 
+$ wget https://srtm.geokrety.org/public-data.tar.bz2
 $ pg_restore -U geokrety -W --host "localhost" --dbname "tests" --data-only --disable-triggers --verbose --schema "public" public-data.tar
 ```
 

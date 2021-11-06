@@ -13,6 +13,7 @@ use Validation\Traits\CortexTrait;
  * @property DateTime|null last_run_datetime
  * @property int|null      $last_page
  * @property DateTime|null $locked_on_datetime
+ * @property DateTime|null $acked_on_datetime
  */
 class Scripts extends Base {
     use CortexTrait;
@@ -40,6 +41,11 @@ class Scripts extends Base {
             'validate' => 'is_date',
             'nullable' => true,
         ],
+        'acked_on_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'validate' => 'is_date',
+            'nullable' => true,
+        ],
     ];
 
     public function get_last_run_datetime($value): ?DateTime {
@@ -50,8 +56,16 @@ class Scripts extends Base {
         return self::get_date_object($value);
     }
 
+    public function get_acked_on_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
     public function is_locked(): bool {
         return !is_null($this->locked_on_datetime);
+    }
+
+    public function is_acked(): bool {
+        return !is_null($this->acked_on_datetime);
     }
 
     /**
@@ -69,7 +83,7 @@ class Scripts extends Base {
     }
 
     /**
-     * @param string $script_name The script name to mack as unlocked
+     * @param string $script_name The script name to mark as unlocked
      */
     public function unlock(string $script_name) {
         $this->name = $script_name;
