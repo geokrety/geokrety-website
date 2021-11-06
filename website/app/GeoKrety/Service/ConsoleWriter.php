@@ -56,7 +56,7 @@ class ConsoleWriter {
     public function loadAvgSleeper(): array {
         $load = sys_getloadavg()[0];
         $loadStr = sprintf('%0.2f', $load);
-        if ($load > 8.00) {
+        if ($load > 6.00) {
             return ["\e[41m$loadStr\e[0m", 5];
         }
 

@@ -17,6 +17,15 @@ class PicturesImporter extends BaseCleaner {
         return new Picture();
     }
 
+    /**
+     * Disable transaction for this, as minio webhook
+     * need status recorder here
+     * @return bool
+     */
+    public function useTransation(): bool {
+        return false;
+    }
+
     protected function getModelName(): string {
         return 'Pictures';
     }

@@ -8,8 +8,7 @@ $f3 = \Base::instance();
 \GeoKrety\Service\Config::instance();
 // Our dynamic routes will use it
 $f3->route('POST @s3_file_uploaded: /s3/file-uploaded', '\GeoKrety\Controller\GeokretAvatarUploadWebhook->post');
-$f3->route('HEAD @s3_file_uploaded: /s3/file-uploaded', function () {
-});
+$f3->route('HEAD @s3_file_uploaded: /s3/file-uploaded', function () {});
 $f3->config(__DIR__.'/app/config.ini');
 $f3->config(__DIR__.'/app/routes.ini');
 $f3->config(__DIR__.'/app/routes-legacy.ini', true);

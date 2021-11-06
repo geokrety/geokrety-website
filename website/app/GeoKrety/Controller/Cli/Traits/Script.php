@@ -61,7 +61,9 @@ trait Script {
             throw new Exception('No script name passed');
         }
         $this->lock();
-        $this->db->begin();
+        if ($this->useTransation()) {
+            $this->db->begin();
+        }
         echo sprintf("* \e[0;32mStarting %s script processing at %s\e[0m", $func, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL;
     }
 
@@ -97,5 +99,9 @@ trait Script {
         $script_lock = new Scripts();
         $script_lock->load(['name = ?', $this->script_name]);
         $script_lock->unlock($this->script_name);
+    }
+
+    public function useTransation(): bool {
+        return true;
     }
 }
