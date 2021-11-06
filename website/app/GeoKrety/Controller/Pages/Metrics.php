@@ -140,7 +140,7 @@ SQL,
             sprintf(<<<'SQL'
 SELECT COUNT(*) AS count
 FROM "scripts"
-WHERE (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_datetime)))::integer/60) >= %d
+WHERE (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_on_datetime)))::integer/60) >= %d
 SQL, GK_SITE_CRON_LOCKED_MINUTES),
         );
     }

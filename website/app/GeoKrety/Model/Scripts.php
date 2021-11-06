@@ -12,7 +12,7 @@ use Validation\Traits\CortexTrait;
  * @property string name
  * @property DateTime|null last_run_datetime
  * @property int|null      $last_page
- * @property DateTime|null $locked_datetime
+ * @property DateTime|null $locked_on_datetime
  */
 class Scripts extends Base {
     use CortexTrait;
@@ -35,7 +35,7 @@ class Scripts extends Base {
             'validate' => 'int',
             'nullable' => true,
         ],
-        'locked_datetime' => [
+        'locked_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'validate' => 'is_date',
             'nullable' => true,
@@ -46,12 +46,12 @@ class Scripts extends Base {
         return self::get_date_object($value);
     }
 
-    public function get_locked_datetime($value): ?DateTime {
+    public function get_locked_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
     public function is_locked(): bool {
-        return !is_null($this->locked_datetime);
+        return !is_null($this->locked_on_datetime);
     }
 
     /**
@@ -64,7 +64,7 @@ class Scripts extends Base {
             throw new Exception(sprintf('Script \'%s\' is already running', $script_name));
         }
         $this->name = $script_name;
-        $this->touch('locked_datetime');
+        $this->touch('locked_on_datetime');
         $this->save();
     }
 
@@ -73,7 +73,7 @@ class Scripts extends Base {
      */
     public function unlock(string $script_name) {
         $this->name = $script_name;
-        $this->locked_datetime = null;
+        $this->locked_on_datetime = null;
         $this->touch('last_run_datetime');
         $this->save();
     }

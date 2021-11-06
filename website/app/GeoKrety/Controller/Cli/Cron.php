@@ -15,8 +15,8 @@ class Cron {
         $this->start(__METHOD__);
         $scripts = new Scripts();
         $sql = <<<'SQL'
-       (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_datetime)))::integer/60) >= %d
-AND MOD(EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_datetime)))::integer/60, %d) = 0
+       (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_on_datetime)))::integer/60) >= %d
+AND MOD(EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_on_datetime)))::integer/60, %d) = 0
 SQL;
         $locked_scripts = $scripts->find([sprintf($sql, GK_SITE_CRON_LOCKED_MINUTES, GK_SITE_CRON_LOCKED_MINUTES)]);
         $locked_scripts = $locked_scripts ?: [];
