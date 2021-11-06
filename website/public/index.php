@@ -23,11 +23,13 @@ if (preg_match('/^\/cron/', $f3->PATH)) {
 
 // Not counting pages in metrics
 // No ACLs
-// No session
 foreach (GK_METRICS_EXCLUDE_PATH as $path) {
     if (strpos($f3->PATH, $path) !== false) {
         foreach (GK_SYSTEM_PATH_ALLOWED_IPS as $range) {
             if (empty($f3->get('IP')) or Range::parse($range)->contains(new IP($f3->get('IP')))) {
+                // We have to enable session else, sessions files ends up in /tmp folder
+                ini_set('session.gc_maxlifetime', 5);
+                new Session(); // Use a different backend: cache
                 $f3->run();
                 exit();
             }
@@ -37,7 +39,6 @@ foreach (GK_METRICS_EXCLUDE_PATH as $path) {
     }
 }
 
-// Start session on all route except those below
 ini_set('session.gc_maxlifetime', GK_SITE_SESSION_REMEMBER);
 new \GeoKrety\Session($f3->get('DB'));
 
