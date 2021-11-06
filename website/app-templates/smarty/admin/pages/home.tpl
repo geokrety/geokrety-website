@@ -17,6 +17,9 @@
                             <a href="{GK_MINIO_SERVER_URL_EXTERNAL}" target="_blank">Minio</a>
                         </li>
                         <li>
+                            <a href="{ADMIN_SERVICE_PROMETHEUS_URL}" target="_blank">Prometheus</a>
+                        </li>
+                        <li>
                             <a href="{ADMIN_SERVICE_GRAFANA_URL}" target="_blank">Grafana</a>
                         </li>
                     </ul>

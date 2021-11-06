@@ -68,6 +68,7 @@ class Config extends \Prefab {
         define('ADMIN_SERVICE_ADMINER_URL', getenv('ADMIN_SERVICE_ADMINER_URL') ?: GK_SITE_BASE_SERVER_URL.'/adminer');
         define('ADMIN_SERVICE_PGADMIN_URL', getenv('ADMIN_SERVICE_PGADMIN_URL') ?: GK_SITE_BASE_SERVER_URL.'/pgadmin');
         define('ADMIN_SERVICE_GRAFANA_URL', getenv('ADMIN_SERVICE_GRAFANA_URL') ?: GK_SITE_BASE_SERVER_URL.'/grafana');
+        define('ADMIN_SERVICE_PROMETHEUS_URL', getenv('ADMIN_SERVICE_PROMETHEUS_URL') ?: GK_SITE_BASE_SERVER_URL.'/prometheus');
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
