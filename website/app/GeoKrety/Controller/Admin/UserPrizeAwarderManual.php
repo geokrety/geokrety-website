@@ -25,7 +25,7 @@ class UserPrizeAwarderManual extends Base {
 
     public function post(\Base $f3) {
         if ($this->award->dry()) {
-            \Flash::instance()->addMessage(_('This award dos not exists'), 'danger');
+            \Flash::instance()->addMessage(_('This award does not exists'), 'danger');
             $params = [
                 'search' => $this->user->username,
             ];
