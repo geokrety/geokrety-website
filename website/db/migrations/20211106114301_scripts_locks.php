@@ -19,8 +19,13 @@ CREATE OR REPLACE FUNCTION geokrety.scripts_manage_ack()
 AS $BODY$
 BEGIN
 
--- ON unloack also unack
-IF (NEW.locked_on_datetime IS NOT NULL) THEN
+-- cannot ack non locked script
+IF (OLD.acked_on_datetime IS NULL AND NEW.acked_on_datetime IS NOT NULL AND NEW.locked_on_datetime IS NULL) THEN
+    RAISE EXCEPTION 'cannot ack non locked script';
+END IF;
+
+-- ON unlock also unack
+IF (NEW.locked_on_datetime IS NULL) THEN
     NEW.acked_on_datetime = NULL;
 END IF;
 
