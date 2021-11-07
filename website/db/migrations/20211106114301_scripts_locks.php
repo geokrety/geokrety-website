@@ -7,8 +7,7 @@ use Phinx\Migration\AbstractMigration;
 final class ScriptsLocks extends AbstractMigration {
     public function up(): void {
         $table_scripts = $this->table('scripts');
-        $table_scripts->renameColumn('locked_datetime', 'locked_on_datetime')
-            ->addColumn('acked_on_datetime', 'timestamp', ['null' => true, 'default' => null, 'timezone' => true])
+        $table_scripts->addColumn('acked_on_datetime', 'timestamp', ['null' => true, 'default' => null, 'timezone' => true])
             ->save();
 
         $this->execute(<<<'SQL'
@@ -49,8 +48,7 @@ DROP FUNCTION scripts_manage_ack
 SQL);
 
         $table_scripts = $this->table('scripts');
-        $table_scripts->renameColumn('locked_on_datetime', 'locked_datetime')
-            ->removeColumn('acked_on_datetime')
+        $table_scripts->removeColumn('acked_on_datetime')
             ->save();
     }
 }
