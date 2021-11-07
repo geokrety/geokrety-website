@@ -9,7 +9,7 @@ use Exception;
  */
 class DatabaseReset extends Base {
     const TABLES = [
-        'gk_account_activation', 'gk_audit_logs', 'gk_badges', 'gk_email_activation',
+        'gk_account_activation', 'gk_audit_logs', 'gk_awards_won', 'gk_email_activation',
         'gk_geokrety', 'gk_geokrety_rating', 'gk_labels', 'gk_mails',
         'gk_moves', 'gk_moves_comments', 'gk_news', 'gk_news_comments',
         'gk_news_comments_access', 'gk_owner_codes', 'gk_password_tokens', 'gk_pictures',

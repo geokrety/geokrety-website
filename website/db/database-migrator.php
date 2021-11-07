@@ -48,7 +48,7 @@ try {
 }
 
 $pgsql->query('SET session_replication_role = replica;');
-$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_badges", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts" RESTART IDENTITY CASCADE';
+$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_awards_won", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -127,9 +127,9 @@ $migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-badges';
-$pName = 'gk_badges';
-$mFields = ['id', 'userid', 'timestamp', 'desc', 'file'];
-$pFields = ['id', 'holder', 'awarded_on_datetime', 'description', 'filename', 'updated_on_datetime'];
+$pName = 'gk_awards_won';
+$mFields = ['userid', 'timestamp', 'desc', 'file'];
+$pFields = ['holder', 'awarded_on_datetime', 'description', 'award', 'updated_on_datetime'];
 $migrator = new BadgesMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
@@ -232,7 +232,7 @@ $migrator->process();
 //// ---------------------------------------------------------------------------------------------------------------------
 
 $pgsql->query("SELECT SETVAL('geokrety.account_activation_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_account_activation;");
-$pgsql->query("SELECT SETVAL('geokrety.badges_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_badges;");
+$pgsql->query("SELECT SETVAL('geokrety.badges_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_awards_won;");
 $pgsql->query("SELECT SETVAL('geokrety.email_activation_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_email_activation;");
 $pgsql->query("SELECT SETVAL('geokrety.geokrety_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_geokrety;");
 $pgsql->query("SELECT SETVAL('geokrety.geokrety_rating_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_geokrety_rating;");
@@ -521,12 +521,14 @@ class BadgesMigrator extends BaseMigrator {
     }
 
     protected function cleanerHook(&$values) {
-        $values[5] = $values[2];  // updated_on_datetime
+        $values[4] = $values[1];  // updated_on_datetime
+        $stmt = $this->pPdo->query('SELECT id FROM gk_awards WHERE filename=\''.$values[3].'\';');
+        $values[3] = $stmt->fetch()['id'];
     }
 
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
-        $this->pPdo->query('DELETE FROM gk_badges WHERE holder NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        $this->pPdo->query('DELETE FROM gk_awards_won WHERE holder NOT IN (SELECT DISTINCT(id) FROM gk_users);');
     }
 }
 
