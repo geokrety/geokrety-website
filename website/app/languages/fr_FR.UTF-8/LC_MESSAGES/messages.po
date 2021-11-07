@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 11:38+0000\n"
-"PO-Revision-Date: 2021-10-21 06:01\n"
+"POT-Creation-Date: 2021-11-07 08:56+0000\n"
+"PO-Revision-Date: 2021-11-07 09:02\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-10-20 11:38+0000\n"
+"POT-Creation-Date: 2021-11-07 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -32,15 +32,23 @@ msgstr ""
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Plusieurs comptes partagent cette même adresse e-mail. Veuillez <a href=\"%s\">nous contacter</a>."
 
-#: website/app/GeoKrety/Controller/Admin/Scripts.php:26
+#: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
-msgid "No such script %d found"
-msgstr "Script %d introuvable"
+msgid "Script \"%s\" has been acked"
+msgstr ""
 
-#: website/app/GeoKrety/Controller/Admin/Scripts.php:31
+#: website/app/GeoKrety/Controller/Admin/ScriptsUnlock.php:20
 #, php-format
 msgid "Script \"%s\" has been unlocked"
 msgstr "Le script \"%s\" a été déverrouillé"
+
+#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:28
+msgid "This award dos not exists"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:40
+msgid "The prize has been awarded"
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
@@ -434,6 +442,10 @@ msgstr "<strong>Votre compte n'est pas encore actif.</strong>"
 msgid "Account activated"
 msgstr "Compte activé"
 
+#: website/app/GeoKrety/Email/Awards.php:16 smarty/emails:3
+msgid "You have received an Award"
+msgstr ""
+
 #: website/app/GeoKrety/Email/BasePHPMailer.php:83
 msgid "An error occurred while sending mail."
 msgstr "Une erreur s'est produite lors de l'envoi du courriel."
@@ -655,11 +667,6 @@ msgstr "Ceci est une cache Geocaching.com que personne n'a encore logué sur Geo
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "Désolé, mais ce waypoint n'est pas (encore) dans notre base de données. Existe-t-il vraiment ?"
 
-#: website/app-templates/smarty/plugins/modifier.award.php:14
-#, php-format
-msgid "Award for %s GeoKrety"
-msgstr "Prix pour %s GeoKrety"
-
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
 msgstr "Rechercher sur geocaching.com"
@@ -699,6 +706,11 @@ msgstr "Icône de type"
 #, php-format
 msgid "View %s's profile"
 msgstr "Voir le profil de %s"
+
+#: website/app-templates/smarty/plugins/modifier.medal.php:14
+#, php-format
+msgid "Award for %s GeoKrety"
+msgstr "Prix pour %s GeoKrety"
 
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
@@ -870,6 +882,22 @@ msgstr "Sincèrement,<br>L'équipe GeoKrety"
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
 msgstr "Si vous n'avez jamais créé de compte sur GeoKrety.org, veuillez <a href=\"mailto:%1?subject=%2\">nous contacter</a>."
 
+#: smarty/emails:4
+msgid "New Award received"
+msgstr ""
+
+#: smarty/emails:7
+msgid "We're proud to inform that you have received a new Award badge."
+msgstr ""
+
+#: smarty/emails:13
+msgid "Please look at this new pretty badge on your GeoKrety profile."
+msgstr ""
+
+#: smarty/emails:15
+msgid "Check my profile"
+msgstr ""
+
 #: smarty/emails:3
 msgid "Forgot Your Password?"
 msgstr "Mot de passe oublié ?"
@@ -990,7 +1018,7 @@ msgstr "Un script est verrouillé"
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
 msgstr "La tâche de cron <strong>%1</strong> est verrouillée depuis <strong>%2</strong> !"
 
-#: smarty/emails:10 smarty/admin/pages:28
+#: smarty/emails:10 smarty/admin/pages:40
 msgid "Unlock script"
 msgstr "Déverrouiller le script"
 
@@ -1291,6 +1319,30 @@ msgstr "logo %1"
 msgid "Move this GeoKret"
 msgstr "Déplacer ce GeoKret"
 
+#: smarty/blocks:5
+msgid "Start by finding users:"
+msgstr "Commencez par rechercher des utilisateurs :"
+
+#: smarty/blocks:9
+msgid "Username or email or ID"
+msgstr "Nom d'utilisateur ou email ou ID"
+
+#: smarty/blocks:11
+msgid "Search"
+msgstr "Recherche"
+
+#: smarty/blocks:27
+msgid "false"
+msgstr "faux"
+
+#: smarty/blocks:27
+msgid "true"
+msgstr "vrai"
+
+#: smarty/blocks:37
+msgid "No users match the current request."
+msgstr "Aucun utilisateur trouvé pour cette recherche."
+
 #: smarty/blocks:3
 msgid "Found a GeoKret?"
 msgstr "Vous avez trouvé un GeoKret ?"
@@ -1496,17 +1548,13 @@ msgstr "Générer un nouveau secid"
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
 msgstr "Pour changer votre nom d'utilisateur ou supprimer votre compte ? Envoyez-nous <a href=\"%1\">un courriel</a> !"
 
-#: smarty/blocks/user:3
+#: smarty/blocks/user:4
 msgid "Awards"
 msgstr "Récompenses"
 
-#: smarty/blocks/user:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr "%1 a créé <strong>%2</strong> GeoKrety, qui ont voyagé <strong>%3</strong>."
-
-#: smarty/blocks/user:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr "%1 a déplacé <strong>%2</strong> GeoKrety sur une distance totale de <strong>%3</strong>."
+#: smarty/blocks/user:10
+msgid "No award received yet."
+msgstr ""
 
 #: smarty/blocks/user:10
 msgid "No home coordinates have been defined."
@@ -1545,12 +1593,16 @@ msgid "Connect"
 msgstr "Connecter"
 
 #: smarty/blocks/user:3
-msgid "Badges"
-msgstr "Badges"
+msgid "Medals"
+msgstr ""
 
-#: smarty/blocks/user:9
-msgid "No badge received yet."
-msgstr "Aucun badge reçu pour l'instant."
+#: smarty/blocks/user:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr "%1 a créé <strong>%2</strong> GeoKrety, qui ont voyagé <strong>%3</strong>."
+
+#: smarty/blocks/user:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr "%1 a déplacé <strong>%2</strong> GeoKrety sur une distance totale de <strong>%3</strong>."
 
 #: smarty/blocks/user:3 smarty:60 smarty/forms:6 smarty/pages:3
 msgid "Create a new GeoKret"
@@ -1676,12 +1728,12 @@ msgstr "Cela permettra à un autre utilisateur qui connaît le Tracking Code et 
 msgid "Back to GeoKret page"
 msgstr "Retour à la page du GeoKret"
 
-#: smarty/dialog:15 smarty/dialog:26 smarty/dialog:50 smarty/dialog:65
-#: smarty/dialog:45 smarty/dialog:14 smarty/dialog:20 smarty/dialog:47
-#: smarty/dialog:22 smarty/dialog:33 smarty/dialog:32 smarty/dialog:11
-#: smarty/dialog:53 smarty/dialog:23 smarty/dialog:25 smarty/dialog:13
-#: smarty/dialog:51 smarty/pages:32 smarty/pages:36 smarty/pages:33
-#: smarty/pages:37 smarty/pages:65
+#: smarty/dialog:15 smarty/dialog:26 smarty/dialog:36 smarty/dialog:50
+#: smarty/dialog:65 smarty/dialog:45 smarty/dialog:14 smarty/dialog:20
+#: smarty/dialog:47 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
+#: smarty/dialog:32 smarty/dialog:11 smarty/dialog:53 smarty/dialog:23
+#: smarty/dialog:25 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
+#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:65
 msgid "Dismiss"
 msgstr "Annuler"
 
@@ -1705,6 +1757,14 @@ msgstr "Retour à la page de l'utilisateur"
 #: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
 msgid "Change"
 msgstr "Changer"
+
+#: smarty/dialog:4
+msgid "Award %1 with:"
+msgstr ""
+
+#: smarty/dialog:13 smarty/dialog:37
+msgid "Award"
+msgstr ""
 
 #: smarty/dialog:13
 msgid "Acknowledge"
@@ -1872,6 +1932,18 @@ msgid "Send message"
 msgstr "Envoyer le message"
 
 #: smarty/dialog:4
+msgid "Do you really want to ack this script locking alert?"
+msgstr ""
+
+#: smarty/dialog:9
+msgid "\"%1\" locked since %2"
+msgstr ""
+
+#: smarty/dialog:13 smarty/admin/pages:43
+msgid "Ack"
+msgstr ""
+
+#: smarty/dialog:4
 msgid "Do you really want to delete this move?"
 msgstr "Voulez-vous vraiment supprimer ce mouvement ?"
 
@@ -1946,6 +2018,14 @@ msgstr "Conditions d'utilisation"
 #: smarty/dialog:35 smarty/dialog:54
 msgid "I agree with the terms"
 msgstr "J'accepte les termes d'utilisation"
+
+#: smarty/dialog:4
+msgid "Do you really want to unlock this script?"
+msgstr ""
+
+#: smarty/dialog:13
+msgid "Unlock"
+msgstr ""
 
 #: smarty/dialog:6
 msgid "Do you really want to unsubscribe from this news?"
@@ -2076,37 +2156,17 @@ msgstr "Voulez-vous vraiment supprimer ce commentaire sur cette actualité ?"
 msgid "Scripts management"
 msgstr "Gestion des scripts"
 
-#: smarty/admin/pages:3 smarty/admin/pages:7
+#: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
 msgstr "Actions d'administration des utilisateurs"
 
-#: smarty/admin/pages:34
-msgid "false"
-msgstr "faux"
-
-#: smarty/admin/pages:34
-msgid "true"
-msgstr "vrai"
-
-#: smarty/admin/pages:37
+#: smarty/admin/pages:17
 msgid "Invalidate user's email"
 msgstr "Dévalider l'email de l'utilisateur"
 
-#: smarty/admin/pages:48
-msgid "No users match the current request."
-msgstr "Aucun utilisateur trouvé pour cette recherche."
-
-#: smarty/admin/pages:56
-msgid "Start by finding users:"
-msgstr "Commencez par rechercher des utilisateurs :"
-
-#: smarty/admin/pages:60
-msgid "Username or email or ID"
-msgstr "Nom d'utilisateur ou email ou ID"
-
-#: smarty/admin/pages:62
-msgid "Search"
-msgstr "Recherche"
+#: smarty/admin/pages:20
+msgid "Award prize"
+msgstr ""
 
 #: smarty/banners:3
 msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
