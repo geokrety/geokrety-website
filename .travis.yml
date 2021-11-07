@@ -81,15 +81,15 @@ jobs:
         - ${DOCKER_COMPOSE} up -d --no-build
         - docker ps -a
 
-        # Test the database
-        - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl -qq > /dev/null
-        - psql -c "CREATE DATABASE tests WITH TEMPLATE $PGDATABASE OWNER $PGUSER;"
-        - PGDATABASE=tests PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -ot website/db/tests/test*.sql
-
         # Wait for webserver
         - set -e
         - for i in $(seq 60); do httping -sGc1 -o 200,302 http://localhost:3001/ && { echo OK; break; } || ${DOCKER_COMPOSE} logs website ; sleep 1 ; done || exit 1
         - set +e
+
+        # Test the database
+        - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl -qq > /dev/null
+        - psql -c "CREATE DATABASE tests WITH TEMPLATE $PGDATABASE OWNER $PGUSER;"
+        - PGDATABASE=tests PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -ot website/db/tests/test*.sql
 
 #        # Seed database with initial values
 #        - ${DOCKER_COMPOSE} exec website make composer-install-dev
