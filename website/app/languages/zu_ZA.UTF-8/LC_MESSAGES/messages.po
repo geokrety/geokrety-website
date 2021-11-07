@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 11:38+0000\n"
-"PO-Revision-Date: 2021-10-20 11:44\n"
+"POT-Creation-Date: 2021-11-07 08:56+0000\n"
+"PO-Revision-Date: 2021-11-07 09:02\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-10-20 11:38+0000\n"
+"POT-Creation-Date: 2021-11-07 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -32,15 +32,23 @@ msgstr ""
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "crwdns18582:0%scrwdne18582:0"
 
-#: website/app/GeoKrety/Controller/Admin/Scripts.php:26
+#: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
-msgid "No such script %d found"
-msgstr "crwdns18991:0%dcrwdne18991:0"
+msgid "Script \"%s\" has been acked"
+msgstr "crwdns19041:0%scrwdne19041:0"
 
-#: website/app/GeoKrety/Controller/Admin/Scripts.php:31
+#: website/app/GeoKrety/Controller/Admin/ScriptsUnlock.php:20
 #, php-format
 msgid "Script \"%s\" has been unlocked"
 msgstr "crwdns18993:0%scrwdne18993:0"
+
+#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:28
+msgid "This award dos not exists"
+msgstr "crwdns19043:0crwdne19043:0"
+
+#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:40
+msgid "The prize has been awarded"
+msgstr "crwdns19045:0crwdne19045:0"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
@@ -434,6 +442,10 @@ msgstr "crwdns18726:0crwdne18726:0"
 msgid "Account activated"
 msgstr "crwdns16450:0crwdne16450:0"
 
+#: website/app/GeoKrety/Email/Awards.php:16 smarty/emails:3
+msgid "You have received an Award"
+msgstr "crwdns19047:0crwdne19047:0"
+
 #: website/app/GeoKrety/Email/BasePHPMailer.php:83
 msgid "An error occurred while sending mail."
 msgstr "crwdns18482:0crwdne18482:0"
@@ -655,11 +667,6 @@ msgstr "crwdns18698:0crwdne18698:0"
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "crwdns16206:0crwdne16206:0"
 
-#: website/app-templates/smarty/plugins/modifier.award.php:14
-#, php-format
-msgid "Award for %s GeoKrety"
-msgstr "crwdns15716:0%scrwdne15716:0"
-
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
 msgstr "crwdns18494:0crwdne18494:0"
@@ -699,6 +706,11 @@ msgstr "crwdns18592:0crwdne18592:0"
 #, php-format
 msgid "View %s's profile"
 msgstr "crwdns15722:0%scrwdne15722:0"
+
+#: website/app-templates/smarty/plugins/modifier.medal.php:14
+#, php-format
+msgid "Award for %s GeoKrety"
+msgstr "crwdns15716:0%scrwdne15716:0"
 
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
@@ -870,6 +882,22 @@ msgstr "crwdns16306:0crwdne16306:0"
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
 msgstr "crwdns18742:0%1crwdnd18742:0%2crwdne18742:0"
 
+#: smarty/emails:4
+msgid "New Award received"
+msgstr "crwdns19049:0crwdne19049:0"
+
+#: smarty/emails:7
+msgid "We're proud to inform that you have received a new Award badge."
+msgstr "crwdns19051:0crwdne19051:0"
+
+#: smarty/emails:13
+msgid "Please look at this new pretty badge on your GeoKrety profile."
+msgstr "crwdns19053:0crwdne19053:0"
+
+#: smarty/emails:15
+msgid "Check my profile"
+msgstr "crwdns19055:0crwdne19055:0"
+
 #: smarty/emails:3
 msgid "Forgot Your Password?"
 msgstr "crwdns16254:0crwdne16254:0"
@@ -990,7 +1018,7 @@ msgstr "crwdns18764:0crwdne18764:0"
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
 msgstr "crwdns18766:0%1crwdnd18766:0%2crwdne18766:0"
 
-#: smarty/emails:10 smarty/admin/pages:28
+#: smarty/emails:10 smarty/admin/pages:40
 msgid "Unlock script"
 msgstr "crwdns18997:0crwdne18997:0"
 
@@ -1291,6 +1319,30 @@ msgstr "crwdns15936:0%1crwdne15936:0"
 msgid "Move this GeoKret"
 msgstr "crwdns15934:0crwdne15934:0"
 
+#: smarty/blocks:5
+msgid "Start by finding users:"
+msgstr "crwdns19025:0crwdne19025:0"
+
+#: smarty/blocks:9
+msgid "Username or email or ID"
+msgstr "crwdns19027:0crwdne19027:0"
+
+#: smarty/blocks:11
+msgid "Search"
+msgstr "crwdns19029:0crwdne19029:0"
+
+#: smarty/blocks:27
+msgid "false"
+msgstr "crwdns19017:0crwdne19017:0"
+
+#: smarty/blocks:27
+msgid "true"
+msgstr "crwdns19019:0crwdne19019:0"
+
+#: smarty/blocks:37
+msgid "No users match the current request."
+msgstr "crwdns19023:0crwdne19023:0"
+
 #: smarty/blocks:3
 msgid "Found a GeoKret?"
 msgstr "crwdns14662:0crwdne14662:0"
@@ -1496,17 +1548,13 @@ msgstr "crwdns14702:0crwdne14702:0"
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
 msgstr "crwdns16198:0%1crwdne16198:0"
 
-#: smarty/blocks/user:3
+#: smarty/blocks/user:4
 msgid "Awards"
 msgstr "crwdns15794:0crwdne15794:0"
 
-#: smarty/blocks/user:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr "crwdns18834:0%1crwdnd18834:0%2crwdnd18834:0%3crwdne18834:0"
-
-#: smarty/blocks/user:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr "crwdns18836:0%1crwdnd18836:0%2crwdnd18836:0%3crwdne18836:0"
+#: smarty/blocks/user:10
+msgid "No award received yet."
+msgstr "crwdns19057:0crwdne19057:0"
 
 #: smarty/blocks/user:10
 msgid "No home coordinates have been defined."
@@ -1545,12 +1593,16 @@ msgid "Connect"
 msgstr "crwdns18644:0crwdne18644:0"
 
 #: smarty/blocks/user:3
-msgid "Badges"
-msgstr "crwdns14608:0crwdne14608:0"
+msgid "Medals"
+msgstr "crwdns19059:0crwdne19059:0"
 
-#: smarty/blocks/user:9
-msgid "No badge received yet."
-msgstr "crwdns14610:0crwdne14610:0"
+#: smarty/blocks/user:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr "crwdns18834:0%1crwdnd18834:0%2crwdnd18834:0%3crwdne18834:0"
+
+#: smarty/blocks/user:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr "crwdns18836:0%1crwdnd18836:0%2crwdnd18836:0%3crwdne18836:0"
 
 #: smarty/blocks/user:3 smarty:60 smarty/forms:6 smarty/pages:3
 msgid "Create a new GeoKret"
@@ -1676,12 +1728,12 @@ msgstr "crwdns16154:0crwdne16154:0"
 msgid "Back to GeoKret page"
 msgstr "crwdns15818:0crwdne15818:0"
 
-#: smarty/dialog:15 smarty/dialog:26 smarty/dialog:50 smarty/dialog:65
-#: smarty/dialog:45 smarty/dialog:14 smarty/dialog:20 smarty/dialog:47
-#: smarty/dialog:22 smarty/dialog:33 smarty/dialog:32 smarty/dialog:11
-#: smarty/dialog:53 smarty/dialog:23 smarty/dialog:25 smarty/dialog:13
-#: smarty/dialog:51 smarty/pages:32 smarty/pages:36 smarty/pages:33
-#: smarty/pages:37 smarty/pages:65
+#: smarty/dialog:15 smarty/dialog:26 smarty/dialog:36 smarty/dialog:50
+#: smarty/dialog:65 smarty/dialog:45 smarty/dialog:14 smarty/dialog:20
+#: smarty/dialog:47 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
+#: smarty/dialog:32 smarty/dialog:11 smarty/dialog:53 smarty/dialog:23
+#: smarty/dialog:25 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
+#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:65
 msgid "Dismiss"
 msgstr "crwdns14738:0crwdne14738:0"
 
@@ -1705,6 +1757,14 @@ msgstr "crwdns15090:0crwdne15090:0"
 #: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
 msgid "Change"
 msgstr "crwdns14766:0crwdne14766:0"
+
+#: smarty/dialog:4
+msgid "Award %1 with:"
+msgstr "crwdns19061:0%1crwdne19061:0"
+
+#: smarty/dialog:13 smarty/dialog:37
+msgid "Award"
+msgstr "crwdns19063:0crwdne19063:0"
 
 #: smarty/dialog:13
 msgid "Acknowledge"
@@ -1872,6 +1932,18 @@ msgid "Send message"
 msgstr "crwdns13910:0crwdne13910:0"
 
 #: smarty/dialog:4
+msgid "Do you really want to ack this script locking alert?"
+msgstr "crwdns19065:0crwdne19065:0"
+
+#: smarty/dialog:9
+msgid "\"%1\" locked since %2"
+msgstr "crwdns19067:0%1crwdnd19067:0%2crwdne19067:0"
+
+#: smarty/dialog:13 smarty/admin/pages:43
+msgid "Ack"
+msgstr "crwdns19069:0crwdne19069:0"
+
+#: smarty/dialog:4
 msgid "Do you really want to delete this move?"
 msgstr "crwdns15812:0crwdne15812:0"
 
@@ -1946,6 +2018,14 @@ msgstr "crwdns14500:0crwdne14500:0"
 #: smarty/dialog:35 smarty/dialog:54
 msgid "I agree with the terms"
 msgstr "crwdns16428:0crwdne16428:0"
+
+#: smarty/dialog:4
+msgid "Do you really want to unlock this script?"
+msgstr "crwdns19071:0crwdne19071:0"
+
+#: smarty/dialog:13
+msgid "Unlock"
+msgstr "crwdns19073:0crwdne19073:0"
 
 #: smarty/dialog:6
 msgid "Do you really want to unsubscribe from this news?"
@@ -2076,37 +2156,17 @@ msgstr "crwdns14796:0crwdne14796:0"
 msgid "Scripts management"
 msgstr "crwdns19013:0crwdne19013:0"
 
-#: smarty/admin/pages:3 smarty/admin/pages:7
+#: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
 msgstr "crwdns19015:0crwdne19015:0"
 
-#: smarty/admin/pages:34
-msgid "false"
-msgstr "crwdns19017:0crwdne19017:0"
-
-#: smarty/admin/pages:34
-msgid "true"
-msgstr "crwdns19019:0crwdne19019:0"
-
-#: smarty/admin/pages:37
+#: smarty/admin/pages:17
 msgid "Invalidate user's email"
 msgstr "crwdns19021:0crwdne19021:0"
 
-#: smarty/admin/pages:48
-msgid "No users match the current request."
-msgstr "crwdns19023:0crwdne19023:0"
-
-#: smarty/admin/pages:56
-msgid "Start by finding users:"
-msgstr "crwdns19025:0crwdne19025:0"
-
-#: smarty/admin/pages:60
-msgid "Username or email or ID"
-msgstr "crwdns19027:0crwdne19027:0"
-
-#: smarty/admin/pages:62
-msgid "Search"
-msgstr "crwdns19029:0crwdne19029:0"
+#: smarty/admin/pages:20
+msgid "Award prize"
+msgstr "crwdns19075:0crwdne19075:0"
 
 #: smarty/banners:3
 msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
