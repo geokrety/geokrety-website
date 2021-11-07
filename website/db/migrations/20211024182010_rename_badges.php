@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
@@ -18,7 +19,6 @@ final class RenameBadges extends AbstractMigration {
         $this->execute('CREATE TYPE action_type AS ENUM (\'manual\', \'automatic\')');
         $this->execute('ALTER TABLE gk_awards ADD COLUMN type action_type NOT NULL');
 
-
         $table_awards_won = $this->table('gk_badges');
         $table_awards_won->rename('gk_awards_won')
             ->addColumn('award', 'biginteger', ['null' => true])
@@ -33,22 +33,21 @@ final class RenameBadges extends AbstractMigration {
             ['name' => 'First Donor', 'description' => 'First person who donate to GeoKrety', 'filename' => 'donor-first.svg', 'end_on_datetime' => '2018-04-17 18:48:29+00', 'type' => 'manual'],
             ['name' => 'Donor', 'description' => 'Has donated to GeoKrety', 'filename' => 'donor.svg', 'type' => 'manual'],
         ]);
-        for ($i = 2009; $i <= 2020; $i++) {
+        for ($i = 2009; $i <= 2020; ++$i) {
             $table_awards->insert([
-                    ['name' => sprintf('Top 10 mover %d', $i), 'description' => sprintf('Top 10 mover %d', $i), 'filename' => sprintf('top10-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i+1), 'type' => 'automatic'],
-                    ['name' => sprintf('Top 100 mover %d', $i), 'description' => sprintf('Top 100 mover %d', $i), 'filename' => sprintf('top100-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i+1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 10 mover %d', $i), 'description' => sprintf('Top 10 mover %d', $i), 'filename' => sprintf('top10-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 100 mover %d', $i), 'description' => sprintf('Top 100 mover %d', $i), 'filename' => sprintf('top100-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
                 ]
             );
         }
-        for ($i = 2021; $i <= date('Y'); $i++) {
+        for ($i = 2021; $i <= date('Y'); ++$i) {
             $table_awards->insert([
-                    ['name' => sprintf('Top 10 mover %d', $i), 'description' => sprintf('Top 10 mover %d', $i), 'filename' => sprintf('top10-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i+1), 'type' => 'automatic'],
-                    ['name' => sprintf('Top 100 mover %d', $i), 'description' => sprintf('Top 100 mover %d', $i), 'filename' => sprintf('top100-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i+1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 10 mover %d', $i), 'description' => sprintf('Top 10 mover %d', $i), 'filename' => sprintf('top10-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 100 mover %d', $i), 'description' => sprintf('Top 100 mover %d', $i), 'filename' => sprintf('top100-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
                 ]
             );
         }
         $table_awards->save();
-
 
         $this->execute('UPDATE gk_awards_won AS gkaw set award=(SELECT id FROM gk_awards WHERE filename=gkaw.filename)');
         $table_awards_won->changeColumn('award', 'biginteger', ['null' => false])
@@ -57,7 +56,6 @@ final class RenameBadges extends AbstractMigration {
     }
 
     public function down(): void {
-
         $table_awards_won = $this->table('gk_awards_won');
         $table_awards_won->addColumn('filename', 'string', ['null' => true, 'limit' => 128])
             ->save();
@@ -67,7 +65,6 @@ final class RenameBadges extends AbstractMigration {
         $table_awards_won->rename('gk_badges')
             ->removeColumn('award')
             ->save();
-
 
         $table_awards = $this->table('gk_awards');
         $table_awards->drop()
