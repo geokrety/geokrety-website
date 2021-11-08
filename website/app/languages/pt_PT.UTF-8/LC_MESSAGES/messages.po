@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:21+0000\n"
-"PO-Revision-Date: 2021-11-08 07:52\n"
+"PO-Revision-Date: 2021-11-08 10:16\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -73,7 +73,7 @@ msgstr "Este endereço de email já está em uso."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
 msgid "Sorry, the provided owner code and tracking code doesn't match."
-msgstr "Desculpe, mas os códigos de proprietário e de rastreamento fornecidos não correspondem."
+msgstr "Desculpe, mas os códigos de proprietário e de rastreio fornecidos não correspondem."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
 msgid "You are already the owner."
@@ -161,7 +161,7 @@ msgstr "Falha ao criar um novo Código de Proprietário."
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:41
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
-msgstr "O código de proprietário (%s) foi gerado. Dê-o juntamente com o Código de Rastreamento (%s) a alguém para que ele possa adoptar o seu GeoKret."
+msgstr "O Código de Proprietário (%s) foi gerado. Dê-o juntamente com o Código de Rastreio (%s) a alguém para que ele possa adoptar o seu GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
@@ -605,45 +605,45 @@ msgstr "Unidade especificada inválida: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
-msgstr "<tspan font-weight=\"bold\"> Manual de utilizador: </ strong> <tspan font-weight=\"bold\"> 1 </ strong>. Levar este GeoKret. Anote o seu código de seguimento. <tspan font-weight=\"bold\"> 2. </ strong> Esconda-o noutra cache. <tspan font-weight=\"bold\"> 3.</ strong> Registe a viagem em https://geokrety.org/"
+msgstr "<tspan font-weight=\"bold\"> Manual de utilizador: </ strong> <tspan font-weight=\"bold\"> 1 </ strong>. Levar este GeoKret. Anote o seu Código de Rastreio. <tspan font-weight=\"bold\"> 2. </ strong> Esconda-o noutra cache. <tspan font-weight=\"bold\"> 3.</ strong> Registe a viagem em https://geokrety.org/"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
-msgstr "O Código de seguimento \"%s\" parece ser muito curto. Esperamos %d caracteres aqui."
+msgstr "O Código de Rastreio \"%s\" parece ser muito curto. Esperamos %d caracteres aqui."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr "O Código de Seguimento \"%s\" parece ser muito longo. São esperados %d caracteres aqui."
+msgstr "O Código de Rastreio \"%s\" parece ser muito longo. São esperados %d caracteres aqui."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
 #, php-format
 msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't starts with 'GK' 😉"
-msgstr "Parece ter usado o identificador público GeoKret \"%s\". Precisamos do código privado (código de seguimento) aqui. Dica: ele não começa com 'GK' <unk>"
+msgstr "Parece ter usado o identificador público GeoKret \"%s\". Precisamos do código privado (Código de Rastreio) aqui. Dica: ele não começa com 'GK' <unk>"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:49
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
-msgstr "O Código de seguimento \"%s\" contém caracteres inválidos."
+msgstr "O Código de Rastreio \"%s\" contém caracteres inválidos."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:59
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
-msgstr "Desculpe, mas o código de seguimento \"%s\" não foi encontrado na nossa base de dados."
+msgstr "Desculpe, mas o Código de Rastreio \"%s\" não foi encontrado na nossa base de dados."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
 msgid "No Tracking Code provided."
-msgstr "Nenhum código de seguimento fornecido."
+msgstr "Nenhum Código de Rastreio fornecido."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:110
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
-msgstr "Utilizadores anónimos não podem verificar vários códigos de seguimento de uma vez. Por favor, faça o login primeiro."
+msgstr "Utilizadores anónimos não podem verificar vários Códigos de Rastreio de uma vez. Por favor, inicie sessão primeiro."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
-msgstr "Apenas %d códigos de seguimento podem ser especificados de uma vez, existem %d seleccionados."
+msgstr "Apenas %d Códigos de Rastreio podem ser especificados de uma vez, existem %d seleccionados."
 
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
 #, php-format
