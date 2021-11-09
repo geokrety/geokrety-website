@@ -8,7 +8,7 @@ class ConsoleWriter {
     private float $timer;
 
     public function __construct(string $pattern = '%s', ?array $values = null) {
-        $this->pattern = $pattern.' - %0.2fs - load: %s';
+        $this->setPattern($pattern);
 
         if (!is_null($values)) {
             $this->print($values);
@@ -18,7 +18,7 @@ class ConsoleWriter {
     }
 
     public function setPattern(string $pattern): void {
-        $this->pattern = $pattern;
+        $this->pattern = $pattern.' - %0.2fs - load: %s';
     }
 
     public function print(array $values, bool $line_break = false) {
