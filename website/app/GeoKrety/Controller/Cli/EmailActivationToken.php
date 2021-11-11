@@ -9,8 +9,8 @@ class EmailActivationToken {
     use Script;
 
     public function prune(\Base $f3) {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         EmailActivationTokenModel::expireOldTokens();
-        $this->end();
+        $this->script_end();
     }
 }

@@ -11,7 +11,7 @@ class AccountActivationToken {
     use Script;
 
     public function deleteNeverActivatedAccounts() {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $this->console_writer->print(['Finding expiring accounts']);
         $activation = new AccountActivationTokenModel();
         $expiringTokens = $activation->find([
@@ -21,7 +21,7 @@ class AccountActivationToken {
         ]);
         if ($expiringTokens === false) {
             $this->console_writer->print(['No account to remove'], true);
-            $this->end();
+            $this->script_end();
         }
         $smtp = new ExpiringAccounts();
         $this->console_writer->print(['Send notifications to admins']);
@@ -35,38 +35,38 @@ class AccountActivationToken {
         }
         $this->console_writer->setPattern('%d %s');
         $this->console_writer->print([sizeof($expiringTokens), 'Accounts deleted'], true);
-        $this->end();
+        $this->script_end();
     }
 
     public function renotifyUnactivatedAccounts1Days() {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $this->_renotifyUnactivatedAccounts(1);
-        $this->end();
+        $this->script_end();
     }
 
     public function renotifyUnactivatedAccounts3Days() {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $this->_renotifyUnactivatedAccounts(3);
-        $this->end();
+        $this->script_end();
     }
 
     public function renotifyUnactivatedAccounts7Days() {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $this->_renotifyUnactivatedAccounts(7);
-        $this->end();
+        $this->script_end();
     }
 
     public function renotifyUnactivatedAccounts(Base $f3) {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $days = $f3->get('PARAMS.days');
         $this->_renotifyUnactivatedAccounts($days);
-        $this->end();
+        $this->script_end();
     }
 
     protected function _renotifyUnactivatedAccounts($days) {
         if (!ctype_digit("$days")) {
             $this->console_writer->print(['"days" parameter must be integer'], true);
-            $this->end();
+            $this->script_end();
             exit(1);
         }
         $this->console_writer->print([sprintf('Finding accounts expiring in %d days', $days)]);
@@ -92,7 +92,7 @@ SQL;
 
         if ($expiringTokens === false) {
             $this->console_writer->print(['No accounts need to be notified'], true);
-            $this->end();
+            $this->script_end();
         }
         $smtp = new ExpiringAccounts();
         $this->console_writer->print(['Send notifications to users']);
@@ -103,6 +103,6 @@ SQL;
         }
         $this->console_writer->setPattern('%d %s');
         $this->console_writer->print([sizeof($expiringTokens), 'Accounts notified'], true);
-        $this->end();
+        $this->script_end();
     }
 }

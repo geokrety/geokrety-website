@@ -29,7 +29,7 @@ abstract class WaypointsImporterBase {
      * @throws Exception
      */
     public function run() {
-        $this->start($this->class_name.'::'.__FUNCTION__);
+        $this->script_start($this->class_name.'::'.__FUNCTION__);
         try {
             $this->process();
             $this->console_writer->flush();
@@ -39,10 +39,10 @@ abstract class WaypointsImporterBase {
             $this->error = $exception->getMessage();
             echo $this->console_writer->sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
             echo $exception->getTraceAsString().PHP_EOL;
-            $this->end();
+            $this->script_end();
             throw $exception;
         }
-        $this->end();
+        $this->script_end();
     }
 
     /**
