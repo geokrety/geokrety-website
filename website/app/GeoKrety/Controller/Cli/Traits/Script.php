@@ -64,7 +64,8 @@ trait Script {
         if ($this->useTransation()) {
             $this->db->begin();
         }
-        echo sprintf("* \e[0;32mStarting %s script processing at %s\e[0m", $func, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL;
+        echo $this->console_writer->sprintf("* \e[0;32mStarting %s script processing at %s\e[0m", $func, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL;
+        $this->console_writer->flush();
     }
 
     private function lock() {
@@ -73,7 +74,7 @@ trait Script {
         try {
             $script_lock->lock($this->script_name);
         } catch (Exception $exception) {
-            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
+            echo $this->console_writer->sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
             exit();
         }
     }
@@ -91,7 +92,7 @@ trait Script {
             $this->save_last_update();
         }
         $this->unlock();
-        echo sprintf("* \e[0;32mEnd script processing: %s\e[0m", date('YmdHis')).PHP_EOL;
+        echo $this->console_writer->sprintf("* \e[0;32mEnd script processing: %s\e[0m", date('YmdHis')).PHP_EOL;
         exit($exit);
     }
 

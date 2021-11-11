@@ -41,10 +41,10 @@ abstract class BaseCleaner {
         $model = $this->getModel();
         $this->total = $model->count($filter);
         if (!$this->total) {
-            echo sprintf("\e[0;32mNo %s found\e[0m", $this->getModelName()).PHP_EOL;
+            echo $this->console_writer->sprintf("\e[0;32mNo %s found\e[0m", $this->getModelName()).PHP_EOL;
             $this->end();
         }
-        echo sprintf('%d %s to proceed', $this->total, $this->getModelName()).PHP_EOL;
+        echo $this->console_writer->sprintf('%d %s to proceed', $this->total, $this->getModelName()).PHP_EOL;
 
         // Paginate the table resultset as it may blow ram!
         $start_page = 0;
@@ -59,7 +59,8 @@ abstract class BaseCleaner {
                 $this->process($object);
             }
         }
-        echo sprintf(PHP_EOL."\e[0;32mRecomputed %d %s. %d Fixed (%0.2f%%)\e[0m", $this->counter, $this->getModelName(), $this->counterFixed, $this->percentErrors).PHP_EOL;
+        $this->console_writer->flush();
+        echo $this->console_writer->sprintf(PHP_EOL."\e[0;32mRecomputed %d %s. %d Fixed (%0.2f%%)\e[0m", $this->counter, $this->getModelName(), $this->counterFixed, $this->percentErrors).PHP_EOL;
         $this->end();
     }
 
@@ -80,7 +81,7 @@ abstract class BaseCleaner {
         $model = $this->getModel();
         $model->load(['id = ?', $this->getParamId($f3)]);
         if ($model->dry()) {
-            echo sprintf("\e[0;32mNo such %s found\e[0m", $this->getModelName()).PHP_EOL;
+            echo $this->console_writer->sprintf("\e[0;32mNo such %s found\e[0m", $this->getModelName()).PHP_EOL;
 
             return;
         }

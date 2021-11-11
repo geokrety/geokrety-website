@@ -32,11 +32,12 @@ abstract class WaypointsImporterBase {
         $this->start($this->class_name.'::'.__FUNCTION__);
         try {
             $this->process();
+            $this->console_writer->flush();
         } catch (Exception $exception) {
             $this->has_error = true;
             $this->db->rollback();
             $this->error = $exception->getMessage();
-            echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
+            echo $this->console_writer->sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
             echo $exception->getTraceAsString().PHP_EOL;
             $this->end();
             throw $exception;
