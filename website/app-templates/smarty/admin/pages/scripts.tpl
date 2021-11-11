@@ -3,7 +3,12 @@
 {block name=title}{t}Scripts management{/t}{/block}
 
 {block name=content}
-    <h1>{t}Scripts management{/t}</h1>
+    <h1>
+        {t}Scripts management{/t}
+        <a href="{'admin_scripts'|alias}" class="btn btn-success" title="{t}Refresh{/t}">
+            {fa icon="refresh"}
+        </a>
+    </h1>
     <table class="table table-striped table-hover">
         <thead>
         <tr>
