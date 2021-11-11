@@ -34,6 +34,6 @@
     </table>
     {call pagination pg=$pg anchor='users-list'}
 {elseif isset($search) and !empty($search)}
-    <em>{t escape=no}No users match the current request.{/t}</em>
+    <em>{t}No users match the current request.{/t}</em>
 {/if}
 {/block}

@@ -34,7 +34,7 @@
         {call pagination pg=$pg anchor='recent-moves'}
         {else}
 
-        <em>{t escape=no username=$user->username}%1's GeoKrety didn't moved yet.{/t}</em>
+        <em>{t escape=no username=$user|userlink}%1's GeoKrety didn't moved yet.{/t}</em>
 
         {/if}
 

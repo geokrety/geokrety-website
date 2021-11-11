@@ -5,7 +5,7 @@
 
 {block name=content}
   <p class="text-justify">
-    {t escape=no username=$mail->from_user->username url={'user_details'|alias:sprintf('@userid=%d', $mail->from_user->id)}}This email was sent by user <a href="%2">%1</a>.{/t}
+    {t escape=no username=$mail->from_user->username|escape url={'user_details'|alias:sprintf('@userid=%d', $mail->from_user->id)}}This email was sent by user <a href="%2">%1</a>.{/t}
   </p>
   <div class="s-3"></div>
   <p>
@@ -20,7 +20,7 @@
   <hr />
   <div class="s-3"></div>
   <div class="text-center">
-    <a class="btn btn-success btn-lg" href="{'mail_to_user'|alias:sprintf('@userid=%d', $mail->from_user->id)}">{t escape=no username=$mail->from_user->username}Reply to %1{/t}</a>
+    <a class="btn btn-success btn-lg" href="{'mail_to_user'|alias:sprintf('@userid=%d', $mail->from_user->id)}">{t escape=no username=$mail->from_user->username|escape}Reply to %1{/t}</a>
   </div>
 {/block}
 

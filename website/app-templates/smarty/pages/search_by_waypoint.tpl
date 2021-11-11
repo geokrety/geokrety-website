@@ -34,7 +34,7 @@
         {call pagination pg=$pg anchor='search-by-waypoint'}
         {else}
 
-        <em>{t escape=no waypoint=$waypoint}No GeoKrety has visited cache %1 yet.{/t}</em>
+        <em>{t waypoint=$waypoint}No GeoKrety has visited cache %1 yet.{/t}</em>
         {/if}
 
     </div>

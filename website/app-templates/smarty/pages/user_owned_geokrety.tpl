@@ -37,7 +37,7 @@
         {if $user->isCurrentUser()}
         <em>{t escape=no url_map={'geokrety_map'|alias} url_create={'geokret_create'|alias}}You did not created any GeoKrety yet. Don't hesitate to <a href="%2">create your own GeoKrety</a> for free!{/t}</em>
         {else}
-        <em>{t escape=no username=$user->username}%1 doesn't own any GeoKrety yet.{/t}</em>
+        <em>{t escape=no username=$user|userlink}%1 doesn't own any GeoKrety yet.{/t}</em>
         {/if}
 
         {/if}
