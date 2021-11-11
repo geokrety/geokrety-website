@@ -15,7 +15,7 @@ abstract class WaypointsImporterBaseTopografix extends WaypointsImporterBase {
      * @throws Exception
      */
     protected function perform_topografix_incremental_update(string $api_endpoint, string $url_params = '') {
-        echo sprintf("*** \e[0;33mRunning full import\e[0m").PHP_EOL;
+        echo $this->console_writer->sprintf("*** \e[0;33mRunning full import\e[0m").PHP_EOL;
         ob_flush();
 
         $nUpdated = 0;

@@ -23,7 +23,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
      * @throws Exception
      */
     public function process() {
-        echo "** \e[0;32mProcessing gc.su\e[0m".PHP_EOL;
+        echo $this->console_writer->sprintf("** \e[0;32mProcessing gc.su\e[0m").PHP_EOL;
         ob_flush();
 
         $okapiSync = new WaypointSync();
@@ -40,7 +40,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
      * @throws Exception
      */
     private function perform_incremental_update(string $since) {
-        echo sprintf("*** \e[0;33mRunning import since: %s\e[0m", $since).PHP_EOL;
+        echo $this->console_writer->sprintf("*** \e[0;33mRunning import since: %s\e[0m", $since).PHP_EOL;
 
         $tmp_file = tmpfile();
         $path = stream_get_meta_data($tmp_file)['uri'];

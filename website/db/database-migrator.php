@@ -296,7 +296,7 @@ class BaseMigrator {
     private $processedRecords = 0;
     private $totalPages;
 
-    private $writer;
+    private $console_writer;
     protected $purifier;
 
     public function __construct(PDO $mPdo, PDO $pPdo, string $mName, string $pName, array $mFields, array $pFields) {
@@ -318,7 +318,7 @@ class BaseMigrator {
 
         $this->count();
         $this->purifier = GeoKrety\Service\HTMLPurifier::getPurifier();
-        $this->writer = new ConsoleWriter("Importing {$this->pName}: %6.2f%% (%s/%d)");
+        $this->console_writer = new ConsoleWriter("Importing {$this->pName}: %6.2f%% (%s/%d)");
 
 //        $this->pPdo->query('SET session_replication_role = replica;');
     }
@@ -380,6 +380,7 @@ class BaseMigrator {
             $results = $select->fetchAll(PDO::FETCH_NUM);
             $this->_process($insert, $results, $paginate);
         }
+        $this->console_writer->flush();
         echo PHP_EOL;
         $this->postProcessData();
     }
@@ -419,7 +420,7 @@ class BaseMigrator {
         }
 
         $this->processedRecords += $chunkSize;
-        $this->writer->print([$this->processedRecords / $this->totalRecords * 100, $this->processedRecords, $this->totalRecords]);
+        $this->console_writer->print([$this->processedRecords / $this->totalRecords * 100, $this->processedRecords, $this->totalRecords]);
         $this->pPdo->commit();
     }
 }

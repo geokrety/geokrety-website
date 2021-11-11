@@ -295,7 +295,7 @@ GEOJSON;
             $img_string = stream_get_contents($fp);
             fclose($fp);
         } catch (\Exception $e) {
-            echo sprintf('E: Download static maps image failed: %s', $e->getMessage());
+            echo $this->console_writer->sprintf('E: Download static maps image failed: %s', $e->getMessage());
 
             return;
         }

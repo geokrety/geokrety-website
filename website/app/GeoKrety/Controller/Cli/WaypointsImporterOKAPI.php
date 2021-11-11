@@ -41,7 +41,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 $this->error = str_replace($params['key'], 'xxx', $exception->getMessage());
                 $this->failingPartners[$okapi][] = $this->error;
                 $this->save_last_update($okapi);
-                echo sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
+                echo $this->console_writer->sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
                 continue;
             }
             $this->db->commit();
@@ -68,7 +68,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
      * @throws Exception
      */
     private function process_okapi(string $okapi, array $params) {
-        echo sprintf("** \e[0;32mProcessing OKAPI: %s\e[0m", $okapi).PHP_EOL;
+        echo $this->console_writer->sprintf("** \e[0;32mProcessing OKAPI: %s\e[0m", $okapi).PHP_EOL;
 
         $okapiSync = new WaypointSync();
         $okapiSync->load(['service_id = ?', $okapi]);
@@ -232,7 +232,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
      * @throws Exception When something goes wrong
      */
     private function process_okapi_incremental(string $okapi, int $revision, array $params) {
-        echo sprintf("*** \e[0;33mRunning Incremental Import from: %d\e[0m", $revision).PHP_EOL;
+        echo $this->console_writer->sprintf("*** \e[0;33mRunning Incremental Import from: %d\e[0m", $revision).PHP_EOL;
         ob_flush();
         $tmp_file = tmpfile();
         $path = stream_get_meta_data($tmp_file)['uri'];
