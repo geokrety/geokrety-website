@@ -53,7 +53,7 @@ trait Script {
      *
      * @throws \Exception
      */
-    protected function start(?string $func = null) {
+    protected function script_start(?string $func = null) {
         if (!is_null($func)) {
             $this->script_name = $func;
         }
@@ -82,7 +82,7 @@ trait Script {
     /**
      * Process end actions.
      */
-    protected function end(?int $exit = 0) {
+    protected function script_end(?int $exit = 0) {
         if ($this->db->inTransaction()) {
             $this->db->commit();
         }

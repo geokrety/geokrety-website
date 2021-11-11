@@ -31,7 +31,7 @@ class DailyMail {
     }
 
     public function sendDaily() {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $sql = <<<'SQL'
 WITH gks AS (
     SELECT distinct(geokret) AS gkid
@@ -101,11 +101,11 @@ SQL;
             $this->console_writer->print([$this->user->id, $this->user->username, 'prepare']);
             $this->send();
         }
-        $this->end();
+        $this->script_end();
     }
 
     public function sendUser(Base $f3) {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $userid = $f3->get('PARAMS.userid');
         $this->console_writer->print([$userid, '', 'prepare']);
         $this->user = new User();
@@ -116,7 +116,7 @@ SQL;
             return;
         }
         $this->send();
-        $this->end();
+        $this->script_end();
     }
 
     protected function send() {

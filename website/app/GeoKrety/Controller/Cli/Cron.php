@@ -12,7 +12,7 @@ class Cron {
     use Script;
 
     public function checkLockedScripts() {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $scripts = new Scripts();
         $sql = <<<'SQL'
        (EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', locked_on_datetime)))::integer/60) >= %d
@@ -34,13 +34,13 @@ SQL;
                 $mail->sendLockedScript($script);
             }
         }
-        $this->end();
+        $this->script_end();
     }
 
     public function refreshMaterializedView(Base $f3) {
-        $this->start(__METHOD__);
+        $this->script_start(__METHOD__);
         $sql = 'REFRESH MATERIALIZED VIEW CONCURRENTLY gk_geokrety_in_caches;';
         $f3->get('DB')->exec($sql);
-        $this->end();
+        $this->script_end();
     }
 }

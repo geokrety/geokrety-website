@@ -35,14 +35,17 @@ abstract class BaseCleaner {
         return 'Processing records: %6.2f%% (%s/%d - fixed: %6.2f%%)';
     }
 
+    /**
+     * @throws \Exception
+     */
     public function processAll(Base $f3) {
-        $this->start($this->class_name.'::'.__FUNCTION__);
+        $this->script_start($this->class_name.'::'.__FUNCTION__);
         $filter = $this->filterHook();
         $model = $this->getModel();
         $this->total = $model->count($filter);
         if (!$this->total) {
             echo $this->console_writer->sprintf("\e[0;32mNo %s found\e[0m", $this->getModelName()).PHP_EOL;
-            $this->end();
+            $this->script_end();
         }
         echo $this->console_writer->sprintf('%d %s to proceed', $this->total, $this->getModelName()).PHP_EOL;
 
@@ -61,7 +64,7 @@ abstract class BaseCleaner {
         }
         $this->console_writer->flush();
         echo $this->console_writer->sprintf(PHP_EOL."\e[0;32mRecomputed %d %s. %d Fixed (%0.2f%%)\e[0m", $this->counter, $this->getModelName(), $this->counterFixed, $this->percentErrors).PHP_EOL;
-        $this->end();
+        $this->script_end();
     }
 
     abstract protected function getModelName(): string;
@@ -77,7 +80,7 @@ abstract class BaseCleaner {
     abstract protected function process($object): void;
 
     public function processById(Base $f3) {
-        $this->start($this->class_name.'::'.__FUNCTION__);
+        $this->script_start($this->class_name.'::'.__FUNCTION__);
         $model = $this->getModel();
         $model->load(['id = ?', $this->getParamId($f3)]);
         if ($model->dry()) {
@@ -87,7 +90,7 @@ abstract class BaseCleaner {
         }
         $this->total = 1;
         $this->process($model);
-        $this->end();
+        $this->script_end();
     }
 
     abstract protected function getParamId(Base $f3): int;
