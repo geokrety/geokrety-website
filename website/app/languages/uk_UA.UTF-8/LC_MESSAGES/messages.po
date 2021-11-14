@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:21+0000\n"
-"PO-Revision-Date: 2021-11-07 11:22\n"
+"POT-Creation-Date: 2021-11-14 19:24+0000\n"
+"PO-Revision-Date: 2021-11-14 19:32\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-07 11:22+0000\n"
+"POT-Creation-Date: 2021-11-14 19:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -667,6 +667,11 @@ msgstr ""
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "Вибачте, але ця точка (поки що) не існує в нашій базі даних. Чи дійсно вона існує?"
 
+#: website/app-templates/smarty/plugins/modifier.awardlink.php:16
+#: website/app-templates/smarty/plugins/modifier.userlink.php:17
+msgid "Anonymous"
+msgstr "Анонімний"
+
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
 msgstr "Пошук на geocaching.com"
@@ -763,10 +768,6 @@ msgstr "Баннер статистики користувача: %s"
 #, php-format
 msgid "%s's profile avatar"
 msgstr "%s's profile avatar"
-
-#: website/app-templates/smarty/plugins/modifier.userlink.php:17
-msgid "Anonymous"
-msgstr "Анонімний"
 
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
 #, php-format
@@ -887,14 +888,14 @@ msgid "New Award received"
 msgstr ""
 
 #: smarty/emails:7
-msgid "We're proud to inform that you have received a new Award badge."
+msgid "We're proud to inform you that you have received a new Award badge."
 msgstr ""
 
-#: smarty/emails:13
+#: smarty/emails:16
 msgid "Please look at this new pretty badge on your GeoKrety profile."
 msgstr ""
 
-#: smarty/emails:15
+#: smarty/emails:18
 msgid "Check my profile"
 msgstr ""
 
@@ -1018,7 +1019,7 @@ msgstr ""
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
 msgstr "Cron <strong>%1</strong> заблоковано з <strong>%2</strong>!"
 
-#: smarty/emails:10 smarty/admin/pages:40
+#: smarty/emails:10 smarty/admin/pages:45
 msgid "Unlock script"
 msgstr ""
 
@@ -1476,7 +1477,8 @@ msgstr "Зробити це GeoKret доступним для входу інш�
 msgid "Transfer ownership"
 msgstr "Змінити відповідального"
 
-#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:26
+#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:18
+#: smarty/pages:26
 msgid "Actions"
 msgstr "Дії"
 
@@ -1778,7 +1780,7 @@ msgstr "Оновити свій розділ?"
 msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
 msgstr "Оновлення вашого безпечного профілю відключить всі додатки, які були під'єднані до вашого облікового запису. Вам доведеться їх ще раз."
 
-#: smarty/dialog:17
+#: smarty/dialog:17 smarty/admin/pages:8
 msgid "Refresh"
 msgstr "Оновити"
 
@@ -1939,7 +1941,7 @@ msgstr ""
 msgid "\"%1\" locked since %2"
 msgstr ""
 
-#: smarty/dialog:13 smarty/admin/pages:43
+#: smarty/dialog:13 smarty/admin/pages:48
 msgid "Ack"
 msgstr ""
 
@@ -2152,7 +2154,7 @@ msgstr "Новинні повідомлення, Ви підписалися н�
 msgid "Do you really want to delete this news comment?"
 msgstr "Ви дійсно бажаєте видалити цей коментар новин?"
 
-#: smarty/admin/pages:3 smarty/admin/pages:6
+#: smarty/admin/pages:3 smarty/admin/pages:7
 msgid "Scripts management"
 msgstr ""
 
@@ -2201,8 +2203,8 @@ msgid "Close"
 msgstr "Закрити"
 
 #: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr "Це не екземпляр продукції. Якщо Ви не є тестером, то, можливо, Ви перейдете на наш <a href=\"https://geokrety.org\">production веб-сайт</a>."
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr ""
 
 #: smarty/banners:3
 msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
@@ -2304,15 +2306,19 @@ msgstr "Інтерфейс GK / API"
 msgid "Statistics"
 msgstr "Статистика"
 
-#: smarty:97 smarty/pages:3
+#: smarty:96
+msgid "Yearly rankings"
+msgstr ""
+
+#: smarty:98 smarty/pages:3
 msgid "Downloads"
 msgstr "Завантажень"
 
-#: smarty:98
+#: smarty:99
 msgid "GeoKrety Toolbox"
 msgstr "GeoKrety інструменти"
 
-#: smarty:99
+#: smarty:100
 msgid "Waypoint resolver"
 msgstr "Розв'язувач точок"
 
@@ -2572,6 +2578,18 @@ msgstr ""
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 не перемістив жодного GeoKrety ще."
 
+#: smarty/pages:3 smarty/pages:6
+msgid "Top %1"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Rank"
+msgstr "Ранг"
+
+#: smarty/pages:43 smarty/pages:18
+msgid "No attributed awards yet."
+msgstr ""
+
 #: smarty/pages:3 smarty/pages:15
 msgid "%1's Owned GeoKrety map"
 msgstr "Заснована GeoKrety карта %1"
@@ -2738,6 +2756,34 @@ msgstr "GeoKrety інтерактивна карта"
 
 #: smarty/pages:3 smarty/pages:6
 msgid "Waypoints statistics"
+msgstr ""
+
+#: smarty/pages:10
+msgid "Service code"
+msgstr ""
+
+#: smarty/pages:11
+msgid "Service url"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Waypoint count"
+msgstr ""
+
+#: smarty/pages:13
+msgid "Last synchronization"
+msgstr ""
+
+#: smarty/pages:14
+msgid "Revision"
+msgstr ""
+
+#: smarty/pages:15
+msgid "Last error"
+msgstr ""
+
+#: smarty/pages:16
+msgid "Error count"
 msgstr ""
 
 #: smarty/pages:39
@@ -3131,6 +3177,10 @@ msgstr ""
 #: smarty/pages:55
 msgid "Center the map on the zone to observe"
 msgstr "Відцентруйте карту на зоні, щоб спостерігати"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "All yearly rankings"
+msgstr ""
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
