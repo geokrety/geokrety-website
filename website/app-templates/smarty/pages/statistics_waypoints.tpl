@@ -7,15 +7,15 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>Service code</th>
-                <th>Service url</th>
-                <th class="text-right">Waypoint count</th>
-                <th class="text-right">Last synchronization</th>
-                <th class="text-right">Revision</th>
-                <th class="text-right">Last error</th>
-                <th class="text-right">Error count</th>
+                <th>{t}Service code{/t}</th>
+                <th>{t}Service url{/t}</th>
+                <th class="text-right">{t}Waypoint count{/t}</th>
+                <th class="text-right">{t}Last synchronization{/t}</th>
+                <th class="text-right">{t}Revision{/t}</th>
+                <th class="text-right">{t}Last error{/t}</th>
+                <th class="text-right">{t}Error count{/t}</th>
                 {if $f3->get('SESSION.IS_ADMIN')}
-                <th class="text-right">Actions</th>
+                <th class="text-right">{t}Actions{/t}</th>
                 {/if}
             </tr>
         </thead>

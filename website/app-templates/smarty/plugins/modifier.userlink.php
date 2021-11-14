@@ -8,7 +8,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * File:     modifier.userlink.php
  * Type:     modifier
  * Name:     userlink
- * Purpose:  outputs a geokret link
+ * Purpose:  outputs a user link
  * -------------------------------------------------------------
  */
 function smarty_modifier_userlink(?GeoKrety\Model\User $user, ?string $alternative_name = null, ?string $target = null): string {

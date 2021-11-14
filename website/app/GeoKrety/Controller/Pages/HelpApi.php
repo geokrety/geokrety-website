@@ -61,7 +61,7 @@ class HelpApi extends Base {
         $geokrety = [];
         foreach ($gkIds as $gkid) {
             $geokret = new GeokretWithDetails();
-            $geokret->load(['id = ?', $gkid]);
+            $geokret->load(['gkid = ?', $gkid]);
             $this->checkGK($geokret);
             $geokrety[] = $geokret;
         }

@@ -5,6 +5,7 @@ namespace GeoKrety\Model;
 use DateTime;
 use DB\SQL\Schema;
 use Sugar\Event;
+use Validation\Traits\CortexTrait;
 
 /**
  * @property int|null id
@@ -16,7 +17,7 @@ use Sugar\Event;
  * @property string url
  */
 class AwardsWon extends Base {
-    use \Validation\Traits\CortexTrait;
+    use CortexTrait;
 
     protected $db = 'DB';
     protected $table = 'gk_awards_won';

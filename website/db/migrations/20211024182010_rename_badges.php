@@ -36,10 +36,17 @@ final class RenameBadges extends AbstractMigration {
             ['name' => 'Donor', 'description' => 'Has donated to GeoKrety', 'filename' => 'donor.svg', 'type' => 'manual'],
         ]);
         $migration_year = date('Y');
-        for ($i = 2009; $i <= $migration_year; ++$i) {
+        for ($i = 2009; $i <= 2020; ++$i) {
             $table_awards->insert([
                     ['name' => sprintf('Top 10 movers %d', $i), 'description' => sprintf('Top 10 movers %d', $i), 'filename' => sprintf('top10-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
                     ['name' => sprintf('Top 100 movers %d', $i), 'description' => sprintf('Top 100 movers %d', $i), 'filename' => sprintf('top100-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                ]
+            );
+        }
+        for ($i = 2021; $i <= $migration_year; ++$i) {
+            $table_awards->insert([
+                    ['name' => sprintf('Top 10 movers %d', $i), 'description' => sprintf('Top 10 movers %d', $i), 'filename' => sprintf('top10-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 100 movers %d', $i), 'description' => sprintf('Top 100 movers %d', $i), 'filename' => sprintf('top100-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
                 ]
             );
             $table_awards->insert([
