@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:21+0000\n"
-"PO-Revision-Date: 2021-11-08 11:42\n"
+"POT-Creation-Date: 2021-11-14 19:24+0000\n"
+"PO-Revision-Date: 2021-11-14 19:32\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-07 11:22+0000\n"
+"POT-Creation-Date: 2021-11-14 19:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -667,6 +667,11 @@ msgstr "Esta é uma cache de Geocaching.com que ainda ninguém registou em GeoKr
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "Desculpe, mas este ponto não está (ainda) na nossa base de dados. Será que existe realmente?"
 
+#: website/app-templates/smarty/plugins/modifier.awardlink.php:16
+#: website/app-templates/smarty/plugins/modifier.userlink.php:17
+msgid "Anonymous"
+msgstr "Anónimo"
+
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
 msgstr "Pesquisar em geocaching.com"
@@ -763,10 +768,6 @@ msgstr "Banner de estatísticas do usuário: %s"
 #, php-format
 msgid "%s's profile avatar"
 msgstr "avatar do perfil de %s"
-
-#: website/app-templates/smarty/plugins/modifier.userlink.php:17
-msgid "Anonymous"
-msgstr "Anónimo"
 
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
 #, php-format
@@ -887,14 +888,14 @@ msgid "New Award received"
 msgstr "Novo Prémio recebido"
 
 #: smarty/emails:7
-msgid "We're proud to inform that you have received a new Award badge."
-msgstr "Temos orgulho em informar que recebeu um novo emblema como Prémio."
+msgid "We're proud to inform you that you have received a new Award badge."
+msgstr ""
 
-#: smarty/emails:13
+#: smarty/emails:16
 msgid "Please look at this new pretty badge on your GeoKrety profile."
 msgstr "Veja o novo distintivo adicionado ao seu perfil do GeoKrety."
 
-#: smarty/emails:15
+#: smarty/emails:18
 msgid "Check my profile"
 msgstr "Verificar o meu perfil"
 
@@ -1018,7 +1019,7 @@ msgstr "Um script está bloqueado"
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
 msgstr "O trabalho cron <strong>%1</strong> está bloqueado desde <strong>%2</strong>!"
 
-#: smarty/emails:10 smarty/admin/pages:40
+#: smarty/emails:10 smarty/admin/pages:45
 msgid "Unlock script"
 msgstr "Desbloquear script"
 
@@ -1476,7 +1477,8 @@ msgstr "Disponibilizar este GeoKret para adopção por outro utilizador"
 msgid "Transfer ownership"
 msgstr "Transferir propriedade"
 
-#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:26
+#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:18
+#: smarty/pages:26
 msgid "Actions"
 msgstr "Acções"
 
@@ -1778,7 +1780,7 @@ msgstr "Actualizar o secid?"
 msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
 msgstr "Actualizar o seu secid irá desconectar todos os aplicativos ligados à sua conta. Terá que voltar a autenticá-los."
 
-#: smarty/dialog:17
+#: smarty/dialog:17 smarty/admin/pages:8
 msgid "Refresh"
 msgstr "Actualizar"
 
@@ -1939,7 +1941,7 @@ msgstr "Tem a certeza que pretende remover este alerta de bloqueio de script?"
 msgid "\"%1\" locked since %2"
 msgstr "\"%1\" bloqueado desde %2"
 
-#: smarty/dialog:13 smarty/admin/pages:43
+#: smarty/dialog:13 smarty/admin/pages:48
 msgid "Ack"
 msgstr "ACK"
 
@@ -2152,7 +2154,7 @@ msgstr "publicações de notícias que subscreveu"
 msgid "Do you really want to delete this news comment?"
 msgstr "Deseja realmente apagar este comentário de notícias?"
 
-#: smarty/admin/pages:3 smarty/admin/pages:6
+#: smarty/admin/pages:3 smarty/admin/pages:7
 msgid "Scripts management"
 msgstr "Gestor de scripts"
 
@@ -2201,8 +2203,8 @@ msgid "Close"
 msgstr "Fechar"
 
 #: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr "Esta não é a instância de produção. Se não é um testador, provavelmente quererá aceder ao nosso <a href=\"https://geokrety.org\">site de produção</a>."
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr ""
 
 #: smarty/banners:3
 msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
@@ -2304,15 +2306,19 @@ msgstr "Interface GK / API"
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: smarty:97 smarty/pages:3
+#: smarty:96
+msgid "Yearly rankings"
+msgstr ""
+
+#: smarty:98 smarty/pages:3
 msgid "Downloads"
 msgstr "Downloads"
 
-#: smarty:98
+#: smarty:99
 msgid "GeoKrety Toolbox"
 msgstr "Caixa de ferramentas"
 
-#: smarty:99
+#: smarty:100
 msgid "Waypoint resolver"
 msgstr "Resolvedor de Waypoint"
 
@@ -2572,6 +2578,18 @@ msgstr "Ainda não moveu nenhum GeoKrety. Verifique <a href=\"%1\">o mapa</a> e 
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 não moveu nenhum GeoKrety ainda."
 
+#: smarty/pages:3 smarty/pages:6
+msgid "Top %1"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Rank"
+msgstr "Classificação"
+
+#: smarty/pages:43 smarty/pages:18
+msgid "No attributed awards yet."
+msgstr ""
+
 #: smarty/pages:3 smarty/pages:15
 msgid "%1's Owned GeoKrety map"
 msgstr "%1possui um mapa GeoKrety"
@@ -2739,6 +2757,34 @@ msgstr "Krety mapa interativo"
 #: smarty/pages:3 smarty/pages:6
 msgid "Waypoints statistics"
 msgstr "Estatísticas dos Pontos Adicionais"
+
+#: smarty/pages:10
+msgid "Service code"
+msgstr ""
+
+#: smarty/pages:11
+msgid "Service url"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Waypoint count"
+msgstr ""
+
+#: smarty/pages:13
+msgid "Last synchronization"
+msgstr ""
+
+#: smarty/pages:14
+msgid "Revision"
+msgstr ""
+
+#: smarty/pages:15
+msgid "Last error"
+msgstr ""
+
+#: smarty/pages:16
+msgid "Error count"
+msgstr ""
 
 #: smarty/pages:39
 msgid "N/A"
@@ -3131,6 +3177,10 @@ msgstr ". Defina como 0 para desactivar o recurso de observação."
 #: smarty/pages:55
 msgid "Center the map on the zone to observe"
 msgstr "Centralizar o mapa na zona para observar"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "All yearly rankings"
+msgstr ""
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
