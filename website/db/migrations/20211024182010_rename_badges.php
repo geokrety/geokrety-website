@@ -22,10 +22,12 @@ final class RenameBadges extends AbstractMigration {
         $table_awards_won = $this->table('gk_badges');
         $table_awards_won->rename('gk_awards_won')
             ->addColumn('award', 'biginteger', ['null' => true])
+            ->changeColumn('holder', 'biginteger', ['null' => true])
             ->addForeignKey('award', 'gk_awards', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
             ->save();
         $table_awards_won = $this->table('gk_awards_won');
         $this->execute('SELECT SETVAL(\'badges_id_seq\', COALESCE(MAX(id), 1) ) FROM gk_awards_won;');
+        $this->execute('ALTER TABLE "gk_awards_won" ADD CONSTRAINT "gk_awards_won_holder_award" UNIQUE ("holder", "award");');
 
         $table_awards->insert([
             ['name' => 'GK Founder', 'description' => 'GK Founder', 'filename' => 'founder.png', 'end_on_datetime' => '2013-01-12 19:02:50+00', 'type' => 'manual'],
@@ -33,23 +35,27 @@ final class RenameBadges extends AbstractMigration {
             ['name' => 'First Donor', 'description' => 'First person who donate to GeoKrety', 'filename' => 'donor-first.svg', 'end_on_datetime' => '2018-04-17 18:48:29+00', 'type' => 'manual'],
             ['name' => 'Donor', 'description' => 'Has donated to GeoKrety', 'filename' => 'donor.svg', 'type' => 'manual'],
         ]);
-        for ($i = 2009; $i <= 2020; ++$i) {
+        $migration_year = date('Y');
+        for ($i = 2009; $i <= $migration_year; ++$i) {
             $table_awards->insert([
-                    ['name' => sprintf('Top 10 mover %d', $i), 'description' => sprintf('Top 10 mover %d', $i), 'filename' => sprintf('top10-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
-                    ['name' => sprintf('Top 100 mover %d', $i), 'description' => sprintf('Top 100 mover %d', $i), 'filename' => sprintf('top100-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 10 movers %d', $i), 'description' => sprintf('Top 10 movers %d', $i), 'filename' => sprintf('top10-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 100 movers %d', $i), 'description' => sprintf('Top 100 movers %d', $i), 'filename' => sprintf('top100-mover-%d.png', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
                 ]
             );
-        }
-        for ($i = 2021; $i <= date('Y'); ++$i) {
             $table_awards->insert([
-                    ['name' => sprintf('Top 10 mover %d', $i), 'description' => sprintf('Top 10 mover %d', $i), 'filename' => sprintf('top10-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
-                    ['name' => sprintf('Top 100 mover %d', $i), 'description' => sprintf('Top 100 mover %d', $i), 'filename' => sprintf('top100-mover-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 10 spreaders %d', $i), 'description' => sprintf('Top 10 spreaders %d', $i), 'filename' => sprintf('top10-spreaders-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 100 spreaders %d', $i), 'description' => sprintf('Top 100 spreaders %d', $i), 'filename' => sprintf('top100-spreaders-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                ]
+            );
+            $table_awards->insert([
+                    ['name' => sprintf('Top 10 squirrels %d', $i), 'description' => sprintf('Top 10 squirrels %d', $i), 'filename' => sprintf('top10-lamers-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
+                    ['name' => sprintf('Top 100 squirrels %d', $i), 'description' => sprintf('Top 100 squirrels %d', $i), 'filename' => sprintf('top100-lamers-%d.svg', $i), 'start_on_datetime' => sprintf('%d-01-01 00:00:00', $i), 'end_on_datetime' => sprintf('%d-01-01 00:00:00', $i + 1), 'type' => 'automatic'],
                 ]
             );
         }
         $table_awards->save();
 
-        $this->execute('UPDATE gk_awards_won AS gkaw set award=(SELECT id FROM gk_awards WHERE filename=gkaw.filename)');
+        $this->execute('UPDATE gk_awards_won AS gkaw SET award=(SELECT id FROM gk_awards WHERE filename=gkaw.filename)');
         $table_awards_won->changeColumn('award', 'biginteger', ['null' => false])
             ->removeColumn('filename')
             ->save();

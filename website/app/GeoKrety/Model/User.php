@@ -220,6 +220,9 @@ class User extends Base implements JsonSerializable {
         'awards' => [
             'has-many' => ['\GeoKrety\Model\AwardsWon', 'holder'],
         ],
+        'yearly_ranks' => [
+            'has-many' => ['\GeoKrety\Model\YearlyRanking', 'user'],
+        ],
         'activation' => [
             'has-one' => ['\GeoKrety\Model\AccountActivationToken', 'user'],
         ],

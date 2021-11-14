@@ -48,7 +48,7 @@ try {
 }
 
 $pgsql->query('SET session_replication_role = replica;');
-$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_awards_won", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts" RESTART IDENTITY CASCADE';
+$sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_awards_won", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts", "gk_yearly_ranking" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -517,8 +517,17 @@ class NewsCommentsAccessMigrator extends BaseMigrator {
 }
 
 class BadgesMigrator extends BaseMigrator {
+    // M: 'userid', 'timestamp', 'desc', 'file']
+    // P: 'holder', 'awarded_on_datetime', 'description', 'award', 'updated_on_datetime'
     protected function prepareData() {
         $this->mPdo->query('UPDATE `gk-badges` SET timestamp = "2019-12-30 23:25:00" WHERE id = 1056 LIMIT 1');
+        $sql = <<<'EOL'
+INSERT INTO "gk_awards_won" ("holder", "description", "awarded_on_datetime", "updated_on_datetime", "award") VALUES
+(NULL, 'Top ten droppers in 2011 (65, rank #78)', '2013-01-12 20:17:36+00', '2013-01-12 20:17:36+00', 10),
+(NULL, 'Top ten droppers in 2013 (176, rank #94)', '2014-02-20 13:49:24+00', '2014-02-20 13:49:24+00', 14),
+(NULL, 'Top ten droppers in 2014 (1109, rank #19)', '2017-10-08 15:32:22+00', '2017-10-08 15:32:22+00', 16)
+EOL;
+        $this->pPdo->query($sql);
     }
 
     protected function cleanerHook(&$values) {
@@ -530,6 +539,71 @@ class BadgesMigrator extends BaseMigrator {
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
         $this->pPdo->query('DELETE FROM gk_awards_won WHERE holder NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        $this->pPdo->query('UPDATE "gk_awards" SET name=REPLACE(name, \'mover \', \'movers \') WHERE description LIKE \'%mover %\';');
+        $this->clear_outofbound_ranking();
+        $this->fill_yearly_badges();
+    }
+
+    protected function clear_outofbound_ranking() {
+        // Drop badges where rank > 100 ; sorry guys
+        $sql = <<<'EOL'
+DELETE FROM "gk_awards_won"
+WHERE description LIKE '% rank %'
+AND REGEXP_REPLACE(description, '.*\(.*, rank #(.*)\)', '\1')::int > 100
+EOL;
+        $this->pPdo->query($sql);
+
+        // re-rank description
+        $sql = <<<'EOL'
+UPDATE "gk_awards_won" AS gkaw
+SET description=REGEXP_REPLACE(REPLACE(description, 'droppers', 'movers'), '(.*)\((.*), rank #.*\)', '\1(total \2 drops, rank #'||rank||')')
+FROM gk_yearly_ranking AS gkyr
+WHERE gkaw.id = gkyr.award
+AND "rank" IS NOT NULL
+AND description LIKE '% droppers %'
+AND description NOT LIKE '% droppers %total%'
+EOL;
+        $this->pPdo->query($sql);
+    }
+
+    protected function fill_yearly_badges() {
+        $this->pPdo->query("SELECT SETVAL('geokrety.gk_yearly_ranking_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_yearly_ranking;");
+        $migration_year = date('Y');
+        // Defining ranks
+        for ($i = 2009; $i <= $migration_year; ++$i) {
+            $ids = $this->pPdo->query("SELECT id FROM gk_awards WHERE name LIKE 'Top % movers $i';");
+            $ids = join(',', $ids->fetchAll(PDO::FETCH_COLUMN, 0));
+
+            if (strlen($ids)) {
+                $sql = <<<EOL
+WITH cte as (
+     SELECT id, RANK() OVER ( ORDER BY REGEXP_REPLACE(description, '.*in [0-9]{4} \(([0-9]+), rank #.*\)', '\\1')::int DESC, REGEXP_REPLACE(description, '.*in [0-9]{4} \([0-9]+, rank #(.*)\)', '\\1')::int ASC) AS rnk
+     FROM gk_awards_won
+     WHERE award IN ($ids)
+)
+
+INSERT INTO gk_yearly_ranking
+
+SELECT
+nextval('gk_yearly_ranking_id_seq'),
+REGEXP_REPLACE(description, '.*in ([0-9]{4}) \\(.*', '\\1')::int AS year,
+holder AS "user",
+cte.rnk AS rank,
+'movers' AS type,
+NULL AS distance,
+REGEXP_REPLACE(description, '.*in [0-9]{4} \\(([0-9]+), .*', '\\1')::int AS count,
+cte.id AS award,
+awarded_on_datetime,
+updated_on_datetime
+
+FROM "gk_awards_won" AS gkaw
+RIGHT JOIN cte ON gkaw.id = cte.id
+ORDER BY rank
+LIMIT 100
+EOL;
+                $this->pPdo->query($sql);
+            }
+        }
     }
 }
 

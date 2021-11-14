@@ -14,7 +14,9 @@ use DB\SQL\Schema;
  * @property DateTime|null end_on_datetime
  * @property string description
  * @property string filename
+ * @property string type
  * @property string url
+ * @property int|\GeoKrety\Model\AwardsGroup|null group;
  */
 class Awards extends Base {
     use \Validation\Traits\CortexTrait;
@@ -62,8 +64,16 @@ class Awards extends Base {
             'nullable' => false,
             'filter' => 'trim',
         ],
+        'type' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => false,
+            'filter' => 'trim',
+        ],
         'holders' => [
             'has-many' => ['\GeoKrety\Model\AwardsWon', 'award'],
+        ],
+        'group' => [
+            'belongs-to-one' => '\GeoKrety\Model\AwardsGroup',
         ],
     ];
 

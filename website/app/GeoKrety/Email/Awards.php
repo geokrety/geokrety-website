@@ -12,7 +12,7 @@ class Awards extends BasePHPMailer {
 
     public function sendAwardReceived(AwardsWon $award) {
         Smarty::assign('award', $award);
-        $this->setTo($award->holder);
+        $this->setTo($award->holder, false, false);
         $this->setSubject(_('You have received an Award'), '🏆');
         $this->sendEmail('emails/award-awarded.tpl');
     }

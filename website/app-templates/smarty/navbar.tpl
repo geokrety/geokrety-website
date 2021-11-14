@@ -93,6 +93,7 @@
                         <li><a id="navbar-help-api" href="{'help_api'|alias}">{fa icon="cog"} {t}GK interface / API{/t}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a id="navbar-stats" href="{'statistics_waypoints'|alias}">{fa icon="bar-chart"} {t}Statistics{/t}</a></li>
+                        <li><a id="navbar-stats" href="{'statistics_awards_ranking_index'|alias}">{fa icon="line-chart"} {t}Yearly rankings{/t}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a id="navbar-downloads" href="{'downloads'|alias}">{fa icon="download"} {t}Downloads{/t}</a></li>
                         <li><a id="navbar-toolbox" href="{'geokrety_toolbox'|alias}">{fa icon="cog"} {t}GeoKrety Toolbox{/t}</a></li>
