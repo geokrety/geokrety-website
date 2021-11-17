@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:21+0000\n"
-"PO-Revision-Date: 2021-11-07 11:22\n"
+"POT-Creation-Date: 2021-11-14 20:52+0000\n"
+"PO-Revision-Date: 2021-11-14 21:01\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-07 11:22+0000\n"
+"POT-Creation-Date: 2021-11-14 20:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -667,6 +667,11 @@ msgstr "crwdns18698:0crwdne18698:0"
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "crwdns16206:0crwdne16206:0"
 
+#: website/app-templates/smarty/plugins/modifier.awardlink.php:16
+#: website/app-templates/smarty/plugins/modifier.userlink.php:17
+msgid "Anonymous"
+msgstr "crwdns15728:0crwdne15728:0"
+
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
 msgstr "crwdns18494:0crwdne18494:0"
@@ -763,10 +768,6 @@ msgstr "crwdns18594:0%scrwdne18594:0"
 #, php-format
 msgid "%s's profile avatar"
 msgstr "crwdns16368:0%scrwdne16368:0"
-
-#: website/app-templates/smarty/plugins/modifier.userlink.php:17
-msgid "Anonymous"
-msgstr "crwdns15728:0crwdne15728:0"
 
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
 #, php-format
@@ -887,14 +888,14 @@ msgid "New Award received"
 msgstr "crwdns19049:0crwdne19049:0"
 
 #: smarty/emails:7
-msgid "We're proud to inform that you have received a new Award badge."
-msgstr "crwdns19051:0crwdne19051:0"
+msgid "We're proud to inform you that you have received a new Award badge."
+msgstr "crwdns19079:0crwdne19079:0"
 
-#: smarty/emails:13
+#: smarty/emails:16
 msgid "Please look at this new pretty badge on your GeoKrety profile."
 msgstr "crwdns19053:0crwdne19053:0"
 
-#: smarty/emails:15
+#: smarty/emails:18
 msgid "Check my profile"
 msgstr "crwdns19055:0crwdne19055:0"
 
@@ -1018,7 +1019,7 @@ msgstr "crwdns18764:0crwdne18764:0"
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
 msgstr "crwdns18766:0%1crwdnd18766:0%2crwdne18766:0"
 
-#: smarty/emails:10 smarty/admin/pages:40
+#: smarty/emails:10 smarty/admin/pages:45
 msgid "Unlock script"
 msgstr "crwdns18997:0crwdne18997:0"
 
@@ -1476,7 +1477,8 @@ msgstr "crwdns15782:0crwdne15782:0"
 msgid "Transfer ownership"
 msgstr "crwdns15784:0crwdne15784:0"
 
-#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:26
+#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:18
+#: smarty/pages:26
 msgid "Actions"
 msgstr "crwdns14606:0crwdne14606:0"
 
@@ -1778,7 +1780,7 @@ msgstr "crwdns14734:0crwdne14734:0"
 msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
 msgstr "crwdns14736:0crwdne14736:0"
 
-#: smarty/dialog:17
+#: smarty/dialog:17 smarty/admin/pages:8
 msgid "Refresh"
 msgstr "crwdns14740:0crwdne14740:0"
 
@@ -1939,7 +1941,7 @@ msgstr "crwdns19065:0crwdne19065:0"
 msgid "\"%1\" locked since %2"
 msgstr "crwdns19067:0%1crwdnd19067:0%2crwdne19067:0"
 
-#: smarty/dialog:13 smarty/admin/pages:43
+#: smarty/dialog:13 smarty/admin/pages:48
 msgid "Ack"
 msgstr "crwdns19069:0crwdne19069:0"
 
@@ -2152,7 +2154,7 @@ msgstr "crwdns16152:0crwdne16152:0"
 msgid "Do you really want to delete this news comment?"
 msgstr "crwdns14796:0crwdne14796:0"
 
-#: smarty/admin/pages:3 smarty/admin/pages:6
+#: smarty/admin/pages:3 smarty/admin/pages:7
 msgid "Scripts management"
 msgstr "crwdns19013:0crwdne19013:0"
 
@@ -2201,8 +2203,8 @@ msgid "Close"
 msgstr "crwdns14912:0crwdne14912:0"
 
 #: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr "crwdns14910:0crwdne14910:0"
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr "crwdns19081:0crwdne19081:0"
 
 #: smarty/banners:3
 msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
@@ -2301,18 +2303,22 @@ msgid "GK interface / API"
 msgstr "crwdns14886:0crwdne14886:0"
 
 #: smarty:95
-msgid "Statistics"
-msgstr "crwdns18830:0crwdne18830:0"
+msgid "Waypoints synchronization status"
+msgstr "crwdns19107:0crwdne19107:0"
 
-#: smarty:97 smarty/pages:3
+#: smarty:96
+msgid "Yearly rankings"
+msgstr "crwdns19083:0crwdne19083:0"
+
+#: smarty:98 smarty/pages:3
 msgid "Downloads"
 msgstr "crwdns14888:0crwdne14888:0"
 
-#: smarty:98
+#: smarty:99
 msgid "GeoKrety Toolbox"
 msgstr "crwdns14890:0crwdne14890:0"
 
-#: smarty:99
+#: smarty:100
 msgid "Waypoint resolver"
 msgstr "crwdns14892:0crwdne14892:0"
 
@@ -2572,6 +2578,18 @@ msgstr "crwdns19031:0%1crwdne19031:0"
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "crwdns15890:0%1crwdne15890:0"
 
+#: smarty/pages:3 smarty/pages:6
+msgid "Top %1"
+msgstr "crwdns19085:0%1crwdne19085:0"
+
+#: smarty/pages:12
+msgid "Rank"
+msgstr "crwdns19087:0crwdne19087:0"
+
+#: smarty/pages:43 smarty/pages:18
+msgid "No attributed awards yet."
+msgstr "crwdns19089:0crwdne19089:0"
+
 #: smarty/pages:3 smarty/pages:15
 msgid "%1's Owned GeoKrety map"
 msgstr "crwdns18506:0%1crwdne18506:0"
@@ -2739,6 +2757,34 @@ msgstr "crwdns15894:0crwdne15894:0"
 #: smarty/pages:3 smarty/pages:6
 msgid "Waypoints statistics"
 msgstr "crwdns18864:0crwdne18864:0"
+
+#: smarty/pages:10
+msgid "Service code"
+msgstr "crwdns19091:0crwdne19091:0"
+
+#: smarty/pages:11
+msgid "Service url"
+msgstr "crwdns19093:0crwdne19093:0"
+
+#: smarty/pages:12
+msgid "Waypoint count"
+msgstr "crwdns19095:0crwdne19095:0"
+
+#: smarty/pages:13
+msgid "Last synchronization"
+msgstr "crwdns19097:0crwdne19097:0"
+
+#: smarty/pages:14
+msgid "Revision"
+msgstr "crwdns19099:0crwdne19099:0"
+
+#: smarty/pages:15
+msgid "Last error"
+msgstr "crwdns19101:0crwdne19101:0"
+
+#: smarty/pages:16
+msgid "Error count"
+msgstr "crwdns19103:0crwdne19103:0"
 
 #: smarty/pages:39
 msgid "N/A"
@@ -3131,6 +3177,10 @@ msgstr "crwdns19039:0crwdne19039:0"
 #: smarty/pages:55
 msgid "Center the map on the zone to observe"
 msgstr "crwdns15088:0crwdne15088:0"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "All yearly rankings"
+msgstr "crwdns19105:0crwdne19105:0"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:21+0000\n"
-"PO-Revision-Date: 2021-11-07 12:02\n"
+"POT-Creation-Date: 2021-11-14 20:52+0000\n"
+"PO-Revision-Date: 2021-11-14 22:41\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-07 11:22+0000\n"
+"POT-Creation-Date: 2021-11-14 20:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -35,7 +35,7 @@ msgstr "Mehrere Konten teilen sich die gleiche E-Mail-Adresse. Bitte <a href=\"%
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
 msgid "Script \"%s\" has been acked"
-msgstr ""
+msgstr "Skript \"%s\" wurde entsperrt"
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsUnlock.php:20
 #, php-format
@@ -48,7 +48,7 @@ msgstr "Diese Auszeichnung existiert nicht"
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:40
 msgid "The prize has been awarded"
-msgstr "Die Auszeichnung  wurde vergeben"
+msgstr "Der Preis wurde vergeben"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
@@ -667,6 +667,11 @@ msgstr "Dies ist ein Cache von geocaching.com, den bislang keiner auf GeoKrety.o
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "Leider ist dieser Wegpunkt (noch) nicht in unserer Datenbank. Gibt es ihn wirklich?"
 
+#: website/app-templates/smarty/plugins/modifier.awardlink.php:16
+#: website/app-templates/smarty/plugins/modifier.userlink.php:17
+msgid "Anonymous"
+msgstr "Anonym"
+
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
 msgstr "Abfrage auf geocaching.com"
@@ -763,10 +768,6 @@ msgstr "Benutzer-Statistik Banner: %s"
 #, php-format
 msgid "%s's profile avatar"
 msgstr "%s's Profilbild"
-
-#: website/app-templates/smarty/plugins/modifier.userlink.php:17
-msgid "Anonymous"
-msgstr "Anonym"
 
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
 #, php-format
@@ -884,17 +885,17 @@ msgstr "Wenn du niemals ein Konto auf GeoKretx.org erstellt hast, <a href=\"mail
 
 #: smarty/emails:4
 msgid "New Award received"
-msgstr "Eine neue Auszeichnung wurde erhalten"
+msgstr "Neue Auszeichnung erhalten"
 
 #: smarty/emails:7
-msgid "We're proud to inform that you have received a new Award badge."
-msgstr "Wir freuen uns, Ihnen mitteilen zu können, dass Sie ein neues Prämienabzeichen erhalten haben."
+msgid "We're proud to inform you that you have received a new Award badge."
+msgstr "Wir freuen uns, dir mitzuteilen, dass du ein neues Auszeichnungsabzeichen erhalten hast."
 
-#: smarty/emails:13
+#: smarty/emails:16
 msgid "Please look at this new pretty badge on your GeoKrety profile."
-msgstr "Bitte schaue dir dieses neue hübsche Abzeichen auf deinem GeoKrety Profil an."
+msgstr "Bitte schaue dir dieses neue hübsche Abzeichen auf deinem GeoKrety-Profil an."
 
-#: smarty/emails:15
+#: smarty/emails:18
 msgid "Check my profile"
 msgstr "Mein Profil überprüfen"
 
@@ -1018,7 +1019,7 @@ msgstr "Ein Skript ist gesperrt"
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
 msgstr "Cron <strong>%1</strong> ist seit <strong>%2</strong> gesperrt!"
 
-#: smarty/emails:10 smarty/admin/pages:40
+#: smarty/emails:10 smarty/admin/pages:45
 msgid "Unlock script"
 msgstr "Skript entsperren"
 
@@ -1144,7 +1145,7 @@ msgstr "Aktuelle Neuigkeiten"
 
 #: smarty/emails:27
 msgid "GeoKrety dropped in your observation area"
-msgstr "GeoKrety, die in deinem Beobachtungsgebiet abgelegt wurde"
+msgstr "GeoKrety, die in deinem Beobachtungsgebiet abgelegt wurden"
 
 #: smarty/emails:30
 msgid "Open interactive map"
@@ -1170,7 +1171,7 @@ msgstr "Kommentar"
 
 #: smarty/emails:39 smarty/emails:82 smarty/emails:128 smarty/emails:172
 msgid "Author"
-msgstr "Ersteller"
+msgstr "Autor"
 
 #: smarty/emails:40
 msgid "Home distance"
@@ -1214,7 +1215,7 @@ msgstr "Bestätige Deine E-Mail-Adresse"
 
 #: smarty/emails:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr "Du erhätlst diese E-Mail, da wir überprüfen müssen, ob Deine auf unserer Internetseite registrierte E--Mail noch gültig ist."
+msgstr "Du erhältst diese E-Mail, da wir überprüfen müssen, ob Deine auf unserer Internetseite registrierte E--Mail noch gültig ist."
 
 #: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:37
 #: smarty/pages:76 smarty/pages:38 smarty/pages:81
@@ -1476,7 +1477,8 @@ msgstr "GeoKret für die Adoption durch einen anderen Benutzer verfügbar machen
 msgid "Transfer ownership"
 msgstr "Besitz übertragen"
 
-#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:26
+#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:18
+#: smarty/pages:26
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -1598,11 +1600,11 @@ msgstr "Medaillen"
 
 #: smarty/blocks/user:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr "%1 hat <strong>%2</strong> GeoKrets angelegt, die insgesamt <strong>%3</strong> gereist sind."
+msgstr "%1 hat <strong>%2</strong> GeoKrety angelegt, die insgesamt <strong>%3</strong> gereist sind."
 
 #: smarty/blocks/user:17
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr "%1 hat <strong>%2</strong> GeoKrets über eine Gesamtdistanz von <strong>%3</strong> bewegt."
+msgstr "%1 hat <strong>%2</strong> GeoKrety über eine Gesamtdistanz von <strong>%3</strong> bewegt."
 
 #: smarty/blocks/user:3 smarty:60 smarty/forms:6 smarty/pages:3
 msgid "Create a new GeoKret"
@@ -1778,7 +1780,7 @@ msgstr "Deine SecID erneuern?"
 msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
 msgstr "Die Erneuerung deiner SecID wird alle Anwendungen, die mit deinem Konto verbunden sind, trennen. Du musst diese neu autorisieren."
 
-#: smarty/dialog:17
+#: smarty/dialog:17 smarty/admin/pages:8
 msgid "Refresh"
 msgstr "Erneuern"
 
@@ -1933,15 +1935,15 @@ msgstr "Nachricht senden"
 
 #: smarty/dialog:4
 msgid "Do you really want to ack this script locking alert?"
-msgstr ""
+msgstr "Möchtest du wirklich die Sperrbenachrichtigung dieses Skripts bestätigen?"
 
 #: smarty/dialog:9
 msgid "\"%1\" locked since %2"
 msgstr "\"%1\" ist seit %2 gesperrt"
 
-#: smarty/dialog:13 smarty/admin/pages:43
+#: smarty/dialog:13 smarty/admin/pages:48
 msgid "Ack"
-msgstr ""
+msgstr "Bestätigen"
 
 #: smarty/dialog:4
 msgid "Do you really want to delete this move?"
@@ -2057,7 +2059,7 @@ msgstr "Dies ist nützlich, wenn du denkst, dass dieser GeoKret zerstört wurde.
 
 #: smarty/dialog:13
 msgid "It will not appear anymore in your active inventory."
-msgstr "Es wird nicht mehr in Deinem aktiven Inventar erscheinen."
+msgstr "Es wird nicht mehr in deinem aktiven Inventar erscheinen."
 
 #: smarty/dialog:14
 msgid "It will not appear as present in a cache."
@@ -2152,7 +2154,7 @@ msgstr "Nachrichten-Beiträgen, die du abonniert hast"
 msgid "Do you really want to delete this news comment?"
 msgstr "Möchtest du diesen Nachrichten-Kommentar wirklich löschen?"
 
-#: smarty/admin/pages:3 smarty/admin/pages:6
+#: smarty/admin/pages:3 smarty/admin/pages:7
 msgid "Scripts management"
 msgstr "Skript-Verwaltung"
 
@@ -2201,7 +2203,7 @@ msgid "Close"
 msgstr "Schließen"
 
 #: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably whish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
 msgstr "Dies ist nicht die Produktions-Webseite. Falls du kein Tester bist, möchtest du wahrscheinlich auf unsere <a href=\"https://geokrety.org\">Produktions-Webseite</a>."
 
 #: smarty/banners:3
@@ -2242,7 +2244,7 @@ msgstr "<strong>%1</strong> registrierte GeoKrety, <strong>%2</strong> GeoKrety 
 
 #: smarty/banners:13
 msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr "<strong>%1</strong> sind alle GeoKrety inzwischen insgesamt gereist (das ist %2 x die Entfernung von der Erde zum Mond, %3 x der Erdumfang am Äquator und %4 x die Entfernung der Erde zur Sonne 🌞)."
+msgstr "<strong>%1</strong> sind alle GeoKrety inzwischen insgesamt gereist (das ist <strong>%2</strong>x die Entfernung von der Erde zum Mond 🌛, <strong>%3</strong>x der Erdumfang 🌍 am Äquator und <strong>%4</strong>x die Entfernung der Erde zur Sonne 🌞)."
 
 #: smarty/banners:21
 msgid "And that's thanks to you! Congratulation!"
@@ -2301,18 +2303,22 @@ msgid "GK interface / API"
 msgstr "GK-Schnittstelle / API"
 
 #: smarty:95
-msgid "Statistics"
-msgstr "Statistik"
+msgid "Waypoints synchronization status"
+msgstr "Wegpunkt-Synchronisationsstatus"
 
-#: smarty:97 smarty/pages:3
+#: smarty:96
+msgid "Yearly rankings"
+msgstr "Jährliche Ranglisten"
+
+#: smarty:98 smarty/pages:3
 msgid "Downloads"
 msgstr "Downloads"
 
-#: smarty:98
+#: smarty:99
 msgid "GeoKrety Toolbox"
 msgstr "GeoKrety Toolbox"
 
-#: smarty:99
+#: smarty:100
 msgid "Waypoint resolver"
 msgstr "Wegpunkt-Solver"
 
@@ -2572,6 +2578,18 @@ msgstr "Du hast noch keine GeoKrety bewegt. Schaue dir <a href=\"%1\">die Karte<
 msgid "%1 didn't moved any GeoKrety yet."
 msgstr "%1 hat noch keine GeoKrety bewegt."
 
+#: smarty/pages:3 smarty/pages:6
+msgid "Top %1"
+msgstr "Top %1"
+
+#: smarty/pages:12
+msgid "Rank"
+msgstr "Rang"
+
+#: smarty/pages:43 smarty/pages:18
+msgid "No attributed awards yet."
+msgstr "Noch keine zugewiesenen Auszeichnungen."
+
 #: smarty/pages:3 smarty/pages:15
 msgid "%1's Owned GeoKrety map"
 msgstr "Karte von %1's eigenen GeoKrety"
@@ -2738,7 +2756,35 @@ msgstr "Interaktive GeoKrety-Karte"
 
 #: smarty/pages:3 smarty/pages:6
 msgid "Waypoints statistics"
-msgstr "Wegpunkt-Statistik"
+msgstr "Wegpunkt-Statistiken"
+
+#: smarty/pages:10
+msgid "Service code"
+msgstr "Service-Code"
+
+#: smarty/pages:11
+msgid "Service url"
+msgstr "Service-URL"
+
+#: smarty/pages:12
+msgid "Waypoint count"
+msgstr "Wegpunkt-Zähler"
+
+#: smarty/pages:13
+msgid "Last synchronization"
+msgstr "Letzte Synchronisierung"
+
+#: smarty/pages:14
+msgid "Revision"
+msgstr "Revision"
+
+#: smarty/pages:15
+msgid "Last error"
+msgstr "Letzter Fehler"
+
+#: smarty/pages:16
+msgid "Error count"
+msgstr "Fehleranzahl"
 
 #: smarty/pages:39
 msgid "N/A"
@@ -3131,6 +3177,10 @@ msgstr ". Setze es auf 0 um die Beobachtungsfunktion zu deaktivieren."
 #: smarty/pages:55
 msgid "Center the map on the zone to observe"
 msgstr "Karte auf die Beobachtungszone zentrieren"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "All yearly rankings"
+msgstr "Alle jährlichen Ranglisten"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
