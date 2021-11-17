@@ -16,12 +16,12 @@
 function smarty_modifier_award($award, bool $ImageOnly = true): string {
     if ($ImageOnly) {
         $template_string = <<<'EOT'
-<img src="{$award->url}" title="{$award->description}" />
+<img src="{$award->url}" title="{$award->description}" class="award-badge" />
 EOT;
     } else {
         $template_string = <<<'EOT'
 <figure>
-    <img src="{$award->url}" alt="{$award->filename}" class="img-thumbnail">
+    <img src="{$award->url}" alt="{$award->filename}" class="img-thumbnail award-badge">
     <figcaption>{$award->description}</figcaption>
 </figure>
 EOT;
