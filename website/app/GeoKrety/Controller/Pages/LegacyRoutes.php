@@ -185,6 +185,7 @@ EOT;
     // https://new-theme.staging.geokrety.org/georss.php?userid=26988
     public function georss(\Base $f3) {
         echo 'TODO';
+        http_response_code(404);
     }
 
     // https://new-theme.staging.geokrety.org/api-login2secid.php
@@ -206,5 +207,15 @@ EOT;
             exit(_('Waypoint parameter must be provided.'));
         }
         $f3->reroute(['search_by_waypoint', ['waypoint' => $waypoint]], $permanent = true, $die = true);
+    }
+
+    // http://geokrety.org/m/qr.php?nr=<TRACKING_CODE>
+    public function qr(\Base $f3) {
+        $tracking_code = $f3->get('GET.nr');
+        if (is_null($tracking_code)) {
+            http_response_code(400);
+            exit(_('"nr" parameter must be provided.'));
+        }
+        $f3->reroute(sprintf('@move_create?%s', http_build_query(['tracking_code' => $tracking_code])));
     }
 }
