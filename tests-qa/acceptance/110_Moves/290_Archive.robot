@@ -182,9 +182,12 @@ Archived GeoKrety Do Not Appear Present In Cache
 
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
 
+    # Delay the check a bit as, sometimes trigger function in db were not yet finished
+    Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
+
     Create Session                        gk        ${GK_URL}
     ${resp} =    GET On Session           gk        url=/gkt/search_v3.php?lat=${MOVE_1.lat}&lon=${MOVE_1.lon}
-    ${json} =    Convert String to JSON 	          ${resp.content}
+    ${json} =    Convert String to JSON 	        ${resp.content}
     ${value} =   Get Value From Json                ${json}          $[0]
     Length Should Be                                ${value}         0
 
