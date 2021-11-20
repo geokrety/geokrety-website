@@ -92,7 +92,7 @@ trait Script {
             $this->save_last_update();
         }
         $this->unlock();
-        echo $this->console_writer->sprintf("* \e[0;32mEnd script processing: %s\e[0m", date('YmdHis')).PHP_EOL;
+        echo $this->console_writer->sprintf("* \e[0;%dmEnd script processing: %s\e[0m", ($exit > 0 ? 31 : 32), date('YmdHis')).PHP_EOL;
         exit($exit);
     }
 

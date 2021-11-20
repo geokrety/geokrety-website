@@ -77,11 +77,11 @@ class Awards extends Base {
         ],
     ];
 
-    public function start_on_datetime($value): ?DateTime {
+    public function get_start_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
-    public function end_on_datetime($value): ?DateTime {
+    public function get_end_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
