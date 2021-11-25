@@ -158,7 +158,7 @@ window.Parsley.addValidator('dateaftergkbirth', {
     priority: 256,
 });
 
-// Show selection in pannel header
+// Show selection in panel header
 $('#logType0').parsley().on('field:success', function() {
     var selectedLogType = $("input[type=radio][name='logtype']:checked").val();
     var selectedLogTypeText = logTypeToText(selectedLogType);

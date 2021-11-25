@@ -62,6 +62,9 @@
                         <li>
                             <a href="{'admin_users_list'|alias}">Manage users</a>
                         </li>
+                        <li>
+                            <a href="{'admin_geokrety_generator'|alias}">GeoKrety generator</a>
+                        </li>
                     </ul>
                 </div>
             </div>
