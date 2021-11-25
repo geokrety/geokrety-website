@@ -2,7 +2,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(55);
+SELECT plan(86);
 
 -- Run the tests.
 SELECT is(valid_move_types(), '{0,1,2,3,4,5}'::smallint[], 'Check valid_move_types()');
@@ -69,6 +69,38 @@ SELECT is(coords2position(43.68579, 6.87647), '0101000020E610000053B3075A81811B4
 SELECT is(position2coords('0101000020E610000053B3075A81811B4040F67AF7C7D74540'), ROW(43.68579::double precision, 6.87647::double precision), 'Check conversion position to coordinates');
 
 SELECT ok(LENGTH(generate_tracking_code()) = 6, 'Secret id size');
+SELECT ok(LENGTH(generate_tracking_code(10)) = 10, 'Secret id size');
+
+SELECT is(is_tracking_code_valid('123456'), TRUE);
+SELECT is(is_tracking_code_valid('ABCDEF'), TRUE);
+SELECT is(is_tracking_code_valid('ABC123'), TRUE);
+SELECT is(is_tracking_code_valid(''), FALSE);
+SELECT is(is_tracking_code_valid('1'), FALSE);
+SELECT is(is_tracking_code_valid('12345'), FALSE);
+SELECT is(is_tracking_code_valid('GK'), FALSE);
+SELECT is(is_tracking_code_valid('GC'), FALSE);
+SELECT is(is_tracking_code_valid('OP'), FALSE);
+SELECT is(is_tracking_code_valid('OK'), FALSE);
+SELECT is(is_tracking_code_valid('GE'), FALSE);
+SELECT is(is_tracking_code_valid('OZ'), FALSE);
+SELECT is(is_tracking_code_valid('OU'), FALSE);
+SELECT is(is_tracking_code_valid('ON'), FALSE);
+SELECT is(is_tracking_code_valid('OL'), FALSE);
+SELECT is(is_tracking_code_valid('OJ'), FALSE);
+SELECT is(is_tracking_code_valid('OS'), FALSE);
+SELECT is(is_tracking_code_valid('GD'), FALSE);
+SELECT is(is_tracking_code_valid('GA'), FALSE);
+SELECT is(is_tracking_code_valid('VI'), FALSE);
+SELECT is(is_tracking_code_valid('MS'), FALSE);
+SELECT is(is_tracking_code_valid('TR'), FALSE);
+SELECT is(is_tracking_code_valid('EX'), FALSE);
+SELECT is(is_tracking_code_valid('GR'), FALSE);
+SELECT is(is_tracking_code_valid('RH'), FALSE);
+SELECT is(is_tracking_code_valid('OX'), FALSE);
+SELECT is(is_tracking_code_valid('OB'), FALSE);
+SELECT is(is_tracking_code_valid('OR'), FALSE);
+SELECT is(is_tracking_code_valid('LT'), FALSE);
+SELECT is(is_tracking_code_valid('LV'), FALSE);
 
 SELECT ok(fresher_than('2020-04-07 00:00:00+00'::timestamp with time zone, 100, 'YEAR') = TRUE, 'Older than 100 years');
 
