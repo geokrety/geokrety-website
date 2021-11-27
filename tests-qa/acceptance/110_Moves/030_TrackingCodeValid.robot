@@ -30,6 +30,15 @@ Fill Tracking Code With Reference Number
     GK001
     GK0001
 
+Fill Tracking Code With TC Starting By GK
+    Seed special geokrety with tracking code starting with GK owned by 1
+    Go To Url                               ${PAGE_MOVES_URL}
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_STARTING_WITH_GK.tc}
+    Wait Until Page Contains Element        ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}
+    Element Should Be Visible               ${MOVE_TRACKING_CODE_RESULT_LIST}
+    Element Should Contain                  ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}     ${GEOKRETY_STARTING_WITH_GK.name} by ${USER_1.name}
+    Element Should Contain                  ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}     Never moved
+
 Fill Multiple Tracking Code Is Not Possible For Anonymous
     Go To Url                               ${PAGE_MOVES_URL}
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc},${GEOKRETY_2.tc}

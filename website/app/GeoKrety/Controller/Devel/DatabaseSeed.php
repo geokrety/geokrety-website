@@ -68,12 +68,39 @@ class DatabaseSeed extends Base {
                 $geokret->name = sprintf('geokrety%02d', $geokret->id);
                 $geokret->tracking_code = sprintf('TC%04X', $geokret->id);
                 $geokret->save();
-                echo sprintf("Create GeoKret: %s %s\n", $geokret->gkid, $geokret->tracking_code);
+                echo sprintf("Created GeoKret: %s %s\n", $geokret->gkid, $geokret->tracking_code);
             } else {
                 echo sprintf("Error creating GeoKret: %s\n", $geokret->name);
                 foreach (\Flash::instance()->getMessages() as $msg) {
                     echo sprintf("Reason: %s\n\n", $msg['text']);
                 }
+            }
+        }
+
+        echo 'OK';
+    }
+
+    public function geokrety_tracking_code_starting_with_gk(\Base $f3) {
+        header('Content-Type: text');
+        $geokret = new Geokret();
+        $geokret->name = 'geokrety starting with GK';
+        $geokret->type = GeokretyType::GEOKRETY_TYPE_TRADITIONAL;
+        $geokret->created_on_datetime = '2021-11-27 09:31:17';
+        if ($f3->exists('PARAMS.userid')) {
+            $geokret->owner = $f3->get('PARAMS.userid');
+        }
+        $geokret->tracking_code = 'GK1234'; // We want to check some legacy TC starting with GK
+        if ($geokret->validate()) {
+            // Database will not allow us to do so, so hacking something
+            $db = $f3->get('DB');
+            $db->exec('ALTER TABLE gk_geokrety DISABLE TRIGGER before_20_manage_tracking_code');
+            $geokret->save();
+            $db->exec('ALTER TABLE gk_geokrety ENABLE TRIGGER before_20_manage_tracking_code');
+            echo sprintf("Created GeoKret: %s %s\n", $geokret->gkid, $geokret->tracking_code);
+        } else {
+            echo sprintf("Error creating GeoKret: %s\n", $geokret->name);
+            foreach (\Flash::instance()->getMessages() as $msg) {
+                echo sprintf("Reason: %s\n\n", $msg['text']);
             }
         }
 

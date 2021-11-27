@@ -236,6 +236,9 @@ Seed ${count} geokrety
 Seed ${count} geokrety owned by ${userid}
     Go To Url                           ${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}
 
+Seed special geokrety with tracking code starting with GK owned by ${userid}
+    Go To Url                           ${GK_URL}/devel/db/users/${userid}/geokrety/tc-starting-with-gk
+
 Seed ${count} waypoints OC
     Go To Url                           ${PAGE_SEED_WAYPOINT_OC}/${count}
 

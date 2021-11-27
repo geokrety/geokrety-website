@@ -26,6 +26,9 @@
                             <a href="{'devel_seed_geokrety'|alias:sprintf('@count=%d', 1)}">Seed "1" GeoKret</a>
                         </li>
                         <li>
+                            <a href="{'devel_seed_geokrety_tc_starting_with_gk_user'|alias:sprintf('userid=%d', 1)}">Seed "1" GeoKret starting with GK Owned By user "1"</a>
+                        </li>
+                        <li>
                             <a href="{'devel_seed_geokrety_move'|alias:sprintf('gkid=%d,move_type=%d,@count=%d', 1, 0, 1)}">Seed "1" Drop For GeoKret "1"</a>
                         </li>
                         <li>

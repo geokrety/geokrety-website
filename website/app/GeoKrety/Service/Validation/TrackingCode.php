@@ -34,6 +34,14 @@ class TrackingCode {
 
     private function isGKNumber($trackingCode) {
         if (substr($trackingCode, 0, 2) === 'GK') {
+            if (strlen($trackingCode) >= GK_SITE_TRACKING_CODE_LENGTH) {
+                $geokret = new Geokret();
+                $geokret->load(['tracking_code = ?', $trackingCode]);
+
+                if (!$geokret->dry()) {
+                    return true;
+                }
+            }
             array_push($this->errors, sprintf(_('You seems to have used the GeoKret public identifier "%s". We need the private code (Tracking Code) here. Hint: it doesn\'t starts with \'GK\' 😉'), $trackingCode));
 
             return false;

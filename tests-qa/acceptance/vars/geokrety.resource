@@ -18,4 +18,7 @@ Documentation     Variables for users definitions
 &{GEOKRETY_14}     name=geokrety14    ref=GK000E    tc=TC000E    id=14   type=0    mission=${EMPTY}
 &{GEOKRETY_15}     name=geokrety15    ref=GK000F    tc=TC000F    id=15   type=0    mission=${EMPTY}
 
+
+&{GEOKRETY_STARTING_WITH_GK}     name=geokrety starting with GK    ref=N/A    tc=GK1234    id=16   type=0    mission=${EMPTY}
+
 ${TC_INVALID}      ABCDEF
