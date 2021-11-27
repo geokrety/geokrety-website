@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-27 09:30+0000\n"
-"PO-Revision-Date: 2021-11-27 09:51\n"
+"PO-Revision-Date: 2021-11-27 10:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -56,11 +56,11 @@ msgstr "Kein solcher Benutzer gefunden."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
 msgid "The \"start at\" value is invalid."
-msgstr "Der \"Start bei\"-Wert ist ungültig."
+msgstr "Der \"Starte bei\"-Wert ist ungültig."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
 msgid "The \"TCPrefix\" value is invalid."
-msgstr ""
+msgstr "Der \"TCPrefix\"-Wert ist ungültig."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
 #, php-format
@@ -116,7 +116,7 @@ msgstr "Diese E-Mail-Adresse wird leider bereits verwendet."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
-msgstr ""
+msgstr "Der angegebene Besitzer-Code und der Tracking-Code passen leider nicht zueinander."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
 msgid "You are already the owner."
@@ -656,7 +656,7 @@ msgstr "<tspan font-weight=\"bold\">Anleitung:</tspan> <tspan font-weight=\"bold
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
-msgstr ""
+msgstr "Fehler beim Generieren des Tracking-Codes"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
@@ -2212,39 +2212,39 @@ msgstr "Skript-Verwaltung"
 
 #: smarty/admin/pages:3
 msgid "GeoKrety generator result"
-msgstr ""
+msgstr "GeoKrety-Generator Ergebnis"
 
 #: smarty/admin/pages:10
 msgid "There is no results."
-msgstr ""
+msgstr "Es gibt keine Ergebnisse."
 
 #: smarty/admin/pages:3 smarty/admin/pages:9
 msgid "GeoKrety generator"
-msgstr ""
+msgstr "GeoKrety-Generator"
 
 #: smarty/admin/pages:14
 msgid "General details"
-msgstr ""
+msgstr "Allgemeine Details"
 
 #: smarty/admin/pages:19
 msgid "How many GeoKrety to create"
-msgstr ""
+msgstr "Wie viele GeoKrety sind zu erstellen"
 
 #: smarty/admin/pages:22
 msgid "From 1 to %1."
-msgstr ""
+msgstr "Von 1 bis %1."
 
 #: smarty/admin/pages:27
 msgid "Owner ID"
-msgstr ""
+msgstr "Besitzer-ID"
 
 #: smarty/admin/pages:30
 msgid "Leave empty or set 0 to not set any owner."
-msgstr ""
+msgstr "Leer lassen oder 0 setzen, um keinen Besitzer zu setzen."
 
 #: smarty/admin/pages:35
 msgid "GeoKrety name template"
-msgstr ""
+msgstr "GeoKrety-Namensvorlage"
 
 #: smarty/admin/pages:37 smarty/forms:13 smarty/forms:15 smarty/forms:8
 #: smarty/forms:10
@@ -2254,11 +2254,11 @@ msgstr "Name des GeoKret"
 #: smarty/admin/pages:38
 #, php-format
 msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
-msgstr ""
+msgstr "Benutze php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> Formatspezifikatoren, um den Inkrement zu ersetzen: z.B. \"%02d\""
 
 #: smarty/admin/pages:41
 msgid "Start at"
-msgstr ""
+msgstr "Starte bei"
 
 #: smarty/admin/pages:48 smarty/forms:20
 msgid "GeoKret type"
@@ -2274,19 +2274,19 @@ msgstr "Bilder"
 
 #: smarty/admin/pages:82
 msgid "Tracking Code prefix"
-msgstr ""
+msgstr "Tracking-Code Präfix"
 
 #: smarty/admin/pages:89
 msgid "Tracking Code length"
-msgstr ""
+msgstr "Tracking-Code Länge"
 
 #: smarty/admin/pages:96
 msgid "Tracking Code Alphabet"
-msgstr ""
+msgstr "Tracking-Code Alphabet"
 
 #: smarty/admin/pages:103
 msgid "Tracking Code suffix"
-msgstr ""
+msgstr "Tracking-Code Endung"
 
 #: smarty/admin/pages:114 smarty/pages:22
 msgid "Owner Code"
@@ -2294,23 +2294,23 @@ msgstr "Besitzer-Code"
 
 #: smarty/admin/pages:119
 msgid "Owner Code prefix"
-msgstr ""
+msgstr "Besitzer-Code Präfix"
 
 #: smarty/admin/pages:126
 msgid "Owner Code length"
-msgstr ""
+msgstr "Besitzer-Code Länge"
 
 #: smarty/admin/pages:133
 msgid "Owner Code Alphabet"
-msgstr ""
+msgstr "Besitzer-Code Alphabet"
 
 #: smarty/admin/pages:140
 msgid "Owner Code suffix"
-msgstr ""
+msgstr "Besitzer-Code Endung"
 
 #: smarty/admin/pages:151
 msgid "Generate"
-msgstr ""
+msgstr "Erzeugen"
 
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
@@ -2546,7 +2546,7 @@ msgstr "GeoKret identifizieren"
 
 #: smarty/forms:30
 msgid "Verify Tracking Code"
-msgstr ""
+msgstr "Tracking-Code prüfen"
 
 #: smarty/forms:33
 msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
