@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-20 16:11+0000\n"
-"PO-Revision-Date: 2021-11-20 16:22\n"
+"POT-Creation-Date: 2021-11-27 09:06+0000\n"
+"PO-Revision-Date: 2021-11-27 09:12\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-20 16:11+0000\n"
+"POT-Creation-Date: 2021-11-27 09:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -31,6 +31,49 @@ msgstr ""
 #, php-format
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Декілька облікових записів мають таку ж адресу електронної пошти. Будь ласка, <a href=\"%s\">зв'яжіться з нами</a>."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+msgid "Something went wrong while generating GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "Transaction aborted."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+msgid "There are duplicated tracking codes."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:85
+msgid "The number of instances to be created is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:96
+msgid "No such user found."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
+msgid "The \"start at\" value is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+msgid "The \"TCPrefix\" value is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+#, php-format
+msgid "It must not be in list \"%s\"."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:119
+msgid "The \"TCPrefix\" + \"TCSuffix\" length is greater than \"TCLength\"."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "No more Tracking Code available using this pattern."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
@@ -611,6 +654,10 @@ msgstr "Задано некоректний об'єкт: %s"
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 msgstr "<tspan font-weight=\"bold\">Посібник користувача:</tspan> <tspan font-weight=\"bold\">1.</tspan> Візьміть цю GeoKret. <tspan font-weight=\"bold\">Будь-ласка, зверніть увагу на його код відстеження.</tspan> <tspan font-weight=\"bold\">2.</tspan> Сховати інший кеш. <tspan font-weight=\"bold\">3.</tspan> Реєстрація поїздки на <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 
+#: website/app/GeoKrety/Service/SecretCode.php:33
+msgid "Failed to generate tracking code"
+msgstr ""
+
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
@@ -621,30 +668,30 @@ msgstr "Код відстеження \"%s\" здається закоротки
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
 msgstr "Код відстеження \"%s\" є занадто довгим. Ми очікуємо %d символів тут."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
 #, php-format
 msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't starts with 'GK' 😉"
 msgstr "Здається, ви використали GeoKret публічний ідентифікатор \"%s. Нам потрібен приватний код (код відстеження). Підказка: він не починається з 'GK' 😉"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:49
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:57
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
 msgstr "Код відстеження \"%s\" містить неприпустимі символи."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:59
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:67
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
 msgstr "Вибачте, але код відстеження \"%s\" не знайдений в нашій базі даних."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
 msgid "No Tracking Code provided."
 msgstr "Немає код відстеження."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:110
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:118
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
 msgstr "Анонімні користувачі не можуть одночасно перевірити кілька кодів відстеження. Спочатку увійдіть."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:122
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "Тільки %d Коди відстеження можуть бути вказані одночасно, вибрано %d."
@@ -1396,8 +1443,8 @@ msgstr "Редагувати GeoKret деталі"
 msgid "Reference number"
 msgstr "Номер для посилань"
 
-#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/forms:21
-#: smarty/forms:31 smarty/pages:15
+#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/admin/pages:77
+#: smarty/forms:21 smarty/forms:31 smarty/pages:15
 msgid "Tracking Code"
 msgstr "Код відстеження"
 
@@ -1486,7 +1533,8 @@ msgstr "Змінити відповідального"
 msgid "Actions"
 msgstr "Дії"
 
-#: smarty/blocks/geokret:3 smarty/forms:31 smarty/forms:36
+#: smarty/blocks/geokret:3 smarty/admin/pages:59 smarty/forms:31
+#: smarty/forms:36
 msgid "Mission"
 msgstr "Місія"
 
@@ -2162,6 +2210,108 @@ msgstr "Ви дійсно бажаєте видалити цей комента�
 msgid "Scripts management"
 msgstr ""
 
+#: smarty/admin/pages:3
+msgid "GeoKrety generator result"
+msgstr ""
+
+#: smarty/admin/pages:10
+msgid "There is no results."
+msgstr ""
+
+#: smarty/admin/pages:3 smarty/admin/pages:9
+msgid "GeoKrety generator"
+msgstr ""
+
+#: smarty/admin/pages:14
+msgid "General details"
+msgstr ""
+
+#: smarty/admin/pages:19
+msgid "How many GeoKrety to create"
+msgstr ""
+
+#: smarty/admin/pages:22
+msgid "From 1 to %1."
+msgstr ""
+
+#: smarty/admin/pages:27
+msgid "Owner ID"
+msgstr ""
+
+#: smarty/admin/pages:30
+msgid "Leave empty or set 0 to not set any owner."
+msgstr ""
+
+#: smarty/admin/pages:35
+msgid "GeoKrety name template"
+msgstr ""
+
+#: smarty/admin/pages:37 smarty/forms:13 smarty/forms:15 smarty/forms:8
+#: smarty/forms:10
+msgid "GeoKret name"
+msgstr "GeoKret ім'я"
+
+#: smarty/admin/pages:38
+#, php-format
+msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
+msgstr ""
+
+#: smarty/admin/pages:41
+msgid "Start at"
+msgstr ""
+
+#: smarty/admin/pages:48 smarty/forms:20
+msgid "GeoKret type"
+msgstr "GeoKret type"
+
+#: smarty/admin/pages:61 smarty/forms:33 smarty/forms:38
+msgid "What is this GeoKret mission?"
+msgstr "Що це за GeoKret місія?"
+
+#: smarty/admin/pages:66
+msgid "Pictures"
+msgstr "Малюнки"
+
+#: smarty/admin/pages:82
+msgid "Tracking Code prefix"
+msgstr ""
+
+#: smarty/admin/pages:89
+msgid "Tracking Code length"
+msgstr ""
+
+#: smarty/admin/pages:96
+msgid "Tracking Code Alphabet"
+msgstr ""
+
+#: smarty/admin/pages:103
+msgid "Tracking Code suffix"
+msgstr ""
+
+#: smarty/admin/pages:114 smarty/pages:22
+msgid "Owner Code"
+msgstr "Код власника"
+
+#: smarty/admin/pages:119
+msgid "Owner Code prefix"
+msgstr ""
+
+#: smarty/admin/pages:126
+msgid "Owner Code length"
+msgstr ""
+
+#: smarty/admin/pages:133
+msgid "Owner Code Alphabet"
+msgstr ""
+
+#: smarty/admin/pages:140
+msgid "Owner Code suffix"
+msgstr ""
+
+#: smarty/admin/pages:151
+msgid "Generate"
+msgstr ""
+
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
 msgstr ""
@@ -2377,18 +2527,6 @@ msgstr "Зареєструватися"
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "Редагувати GeoKret"
-
-#: smarty/forms:13 smarty/forms:15 smarty/forms:8 smarty/forms:10
-msgid "GeoKret name"
-msgstr "GeoKret ім'я"
-
-#: smarty/forms:20
-msgid "GeoKret type"
-msgstr "GeoKret type"
-
-#: smarty/forms:33 smarty/forms:38
-msgid "What is this GeoKret mission?"
-msgstr "Що це за GeoKret місія?"
 
 #: smarty/forms:41
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
@@ -2713,10 +2851,6 @@ msgstr "Виберіть бажане тло statpic"
 #: smarty/pages:37
 msgid "Your current statpic"
 msgstr "Ваш поточний statpic"
-
-#: smarty/pages:22
-msgid "Owner Code"
-msgstr "Код власника"
 
 #: smarty/pages:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
