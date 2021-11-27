@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-27 09:30+0000\n"
-"PO-Revision-Date: 2021-11-27 09:32\n"
+"PO-Revision-Date: 2021-11-27 21:25\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -34,29 +34,29 @@ msgstr "Plusieurs comptes partagent cette même adresse e-mail. Veuillez <a href
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
 msgid "Something went wrong while generating GeoKrety."
-msgstr ""
+msgstr "Une erreur s'est produite lors de la génération du GeoKrety."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
 msgid "Transaction aborted."
-msgstr ""
+msgstr "Transaction interrompue."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
 msgid "There are duplicated tracking codes."
-msgstr ""
+msgstr "Il y a des codes de suivi en double."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:85
 msgid "The number of instances to be created is invalid."
-msgstr ""
+msgstr "Le nombre d'instances à créer n'est pas valide."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:96
 msgid "No such user found."
-msgstr ""
+msgstr "Utilisateur introuvable."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
 msgid "The \"start at\" value is invalid."
-msgstr ""
+msgstr "La valeur \"Débuter à\" n'est pas valide."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
 msgid "The \"TCPrefix\" value is invalid."
@@ -65,7 +65,7 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
 #, php-format
 msgid "It must not be in list \"%s\"."
-msgstr ""
+msgstr "Il ne doit pas être présent dans la liste \"%s\"."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:119
 msgid "The \"TCPrefix\" + \"TCSuffix\" length is greater than \"TCLength\"."
@@ -73,7 +73,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
 msgid "No more Tracking Code available using this pattern."
-msgstr ""
+msgstr "Il n'a plus de code de suivi pour ce motif."
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
@@ -2212,11 +2212,11 @@ msgstr "Gestion des scripts"
 
 #: smarty/admin/pages:3
 msgid "GeoKrety generator result"
-msgstr ""
+msgstr "Résultat du générateur de GeoKrety"
 
 #: smarty/admin/pages:10
 msgid "There is no results."
-msgstr ""
+msgstr "Il n'y a aucun résultat."
 
 #: smarty/admin/pages:3 smarty/admin/pages:9
 msgid "GeoKrety generator"
@@ -2224,19 +2224,19 @@ msgstr ""
 
 #: smarty/admin/pages:14
 msgid "General details"
-msgstr ""
+msgstr "Détails généraux"
 
 #: smarty/admin/pages:19
 msgid "How many GeoKrety to create"
-msgstr ""
+msgstr "Combien de GeoKrety créer"
 
 #: smarty/admin/pages:22
 msgid "From 1 to %1."
-msgstr ""
+msgstr "De 1 à %1."
 
 #: smarty/admin/pages:27
 msgid "Owner ID"
-msgstr ""
+msgstr "ID du propriétaire"
 
 #: smarty/admin/pages:30
 msgid "Leave empty or set 0 to not set any owner."
@@ -2258,7 +2258,7 @@ msgstr ""
 
 #: smarty/admin/pages:41
 msgid "Start at"
-msgstr ""
+msgstr "Débuter à"
 
 #: smarty/admin/pages:48 smarty/forms:20
 msgid "GeoKret type"
@@ -2310,7 +2310,7 @@ msgstr ""
 
 #: smarty/admin/pages:151
 msgid "Generate"
-msgstr ""
+msgstr "Générer"
 
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
