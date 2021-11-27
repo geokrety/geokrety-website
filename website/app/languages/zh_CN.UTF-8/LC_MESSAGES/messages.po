@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-20 16:11+0000\n"
-"PO-Revision-Date: 2021-11-20 16:22\n"
+"POT-Creation-Date: 2021-11-27 09:06+0000\n"
+"PO-Revision-Date: 2021-11-27 09:12\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-20 16:11+0000\n"
+"POT-Creation-Date: 2021-11-27 09:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -31,6 +31,49 @@ msgstr ""
 #, php-format
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "多个帐户共享相同的电子邮件地址。请 <a href=\"%s\">联系我们</a>。"
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+msgid "Something went wrong while generating GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "Transaction aborted."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+msgid "There are duplicated tracking codes."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:85
+msgid "The number of instances to be created is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:96
+msgid "No such user found."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
+msgid "The \"start at\" value is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+msgid "The \"TCPrefix\" value is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+#, php-format
+msgid "It must not be in list \"%s\"."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:119
+msgid "The \"TCPrefix\" + \"TCSuffix\" length is greater than \"TCLength\"."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "No more Tracking Code available using this pattern."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
@@ -611,6 +654,10 @@ msgstr ""
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 msgstr "<tspan font-weight=\"bold\">用户手册：</tspan> <tspan font-weight=\"bold\">1.</tspan> 带走这个GeoKret。 <tspan font-weight=\"bold\">请注意他的追踪代码。</tspan> <tspan font-weight=\"bold\">2,</tspan> 隐藏在另一个缓存中。 <tspan font-weight=\"bold\">3</tspan> 注册此行 <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 
+#: website/app/GeoKrety/Service/SecretCode.php:33
+msgid "Failed to generate tracking code"
+msgstr ""
+
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
@@ -621,30 +668,30 @@ msgstr "跟踪代码 \"%s似乎太短。我们期望这里有 %d 个字符。"
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
 #, php-format
 msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't starts with 'GK' 😉"
 msgstr "您似乎使用了GeoKret 公开标识符“%s”。 我们在这里需要私有代码(Tracking Code)。提示：它不以“GK”:winking_face 开头："
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:49
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:57
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
 msgstr "跟踪代码%s包含无效字符。"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:59
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:67
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
 msgstr "对不起，我们的数据库中没有找到跟踪代码 \"%s。"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
 msgid "No Tracking Code provided."
 msgstr "没有提供跟踪代码。"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:110
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:118
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
 msgstr "匿名用户不能同时检查多个追踪代码。请先登录。"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:122
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "一次只能指定 %d 个追踪码，选中 %d。"
@@ -1396,8 +1443,8 @@ msgstr "编辑 GeoKret 详细信息"
 msgid "Reference number"
 msgstr "参考编号"
 
-#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/forms:21
-#: smarty/forms:31 smarty/pages:15
+#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/admin/pages:77
+#: smarty/forms:21 smarty/forms:31 smarty/pages:15
 msgid "Tracking Code"
 msgstr "跟踪代码"
 
@@ -1486,7 +1533,8 @@ msgstr "转让所有权"
 msgid "Actions"
 msgstr "行动"
 
-#: smarty/blocks/geokret:3 smarty/forms:31 smarty/forms:36
+#: smarty/blocks/geokret:3 smarty/admin/pages:59 smarty/forms:31
+#: smarty/forms:36
 msgid "Mission"
 msgstr "任务"
 
@@ -2162,6 +2210,108 @@ msgstr "您真的想要删除这条新闻评论吗？"
 msgid "Scripts management"
 msgstr ""
 
+#: smarty/admin/pages:3
+msgid "GeoKrety generator result"
+msgstr ""
+
+#: smarty/admin/pages:10
+msgid "There is no results."
+msgstr ""
+
+#: smarty/admin/pages:3 smarty/admin/pages:9
+msgid "GeoKrety generator"
+msgstr ""
+
+#: smarty/admin/pages:14
+msgid "General details"
+msgstr ""
+
+#: smarty/admin/pages:19
+msgid "How many GeoKrety to create"
+msgstr ""
+
+#: smarty/admin/pages:22
+msgid "From 1 to %1."
+msgstr ""
+
+#: smarty/admin/pages:27
+msgid "Owner ID"
+msgstr ""
+
+#: smarty/admin/pages:30
+msgid "Leave empty or set 0 to not set any owner."
+msgstr ""
+
+#: smarty/admin/pages:35
+msgid "GeoKrety name template"
+msgstr ""
+
+#: smarty/admin/pages:37 smarty/forms:13 smarty/forms:15 smarty/forms:8
+#: smarty/forms:10
+msgid "GeoKret name"
+msgstr "GeoKret名称"
+
+#: smarty/admin/pages:38
+#, php-format
+msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
+msgstr ""
+
+#: smarty/admin/pages:41
+msgid "Start at"
+msgstr ""
+
+#: smarty/admin/pages:48 smarty/forms:20
+msgid "GeoKret type"
+msgstr "GeoKret type"
+
+#: smarty/admin/pages:61 smarty/forms:33 smarty/forms:38
+msgid "What is this GeoKret mission?"
+msgstr "这个GeoKret 任务是什么？"
+
+#: smarty/admin/pages:66
+msgid "Pictures"
+msgstr "图片"
+
+#: smarty/admin/pages:82
+msgid "Tracking Code prefix"
+msgstr ""
+
+#: smarty/admin/pages:89
+msgid "Tracking Code length"
+msgstr ""
+
+#: smarty/admin/pages:96
+msgid "Tracking Code Alphabet"
+msgstr ""
+
+#: smarty/admin/pages:103
+msgid "Tracking Code suffix"
+msgstr ""
+
+#: smarty/admin/pages:114 smarty/pages:22
+msgid "Owner Code"
+msgstr "所有者代码"
+
+#: smarty/admin/pages:119
+msgid "Owner Code prefix"
+msgstr ""
+
+#: smarty/admin/pages:126
+msgid "Owner Code length"
+msgstr ""
+
+#: smarty/admin/pages:133
+msgid "Owner Code Alphabet"
+msgstr ""
+
+#: smarty/admin/pages:140
+msgid "Owner Code suffix"
+msgstr ""
+
+#: smarty/admin/pages:151
+msgid "Generate"
+msgstr ""
+
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
 msgstr ""
@@ -2377,18 +2527,6 @@ msgstr "注册"
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "编辑GeoKret"
-
-#: smarty/forms:13 smarty/forms:15 smarty/forms:8 smarty/forms:10
-msgid "GeoKret name"
-msgstr "GeoKret名称"
-
-#: smarty/forms:20
-msgid "GeoKret type"
-msgstr "GeoKret type"
-
-#: smarty/forms:33 smarty/forms:38
-msgid "What is this GeoKret mission?"
-msgstr "这个GeoKret 任务是什么？"
 
 #: smarty/forms:41
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
@@ -2713,10 +2851,6 @@ msgstr "选择您首选的状态背景"
 #: smarty/pages:37
 msgid "Your current statpic"
 msgstr "您当前的状态"
-
-#: smarty/pages:22
-msgid "Owner Code"
-msgstr "所有者代码"
 
 #: smarty/pages:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
