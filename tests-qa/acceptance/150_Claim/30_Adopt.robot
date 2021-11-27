@@ -77,4 +77,4 @@ Invalid Input
     Sign In ${USER_1.name} Fast
     Offer GeoKret For Adoption                      gkid=${1}
     Claim GeoKret                                   ${tc}                               ${oc}
-    Page Should Contain                             Sorry, the provided owner code and tracking code doesn't match.
+    Page Should Contain                             Sorry, the provided Owner Code and Tracking Code doesn't match.

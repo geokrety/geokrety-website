@@ -30,7 +30,7 @@ class SecretCode {
         $geokret = new Geokret();
         do {
             if (++$i === GK_TRACKING_CODE_GENERATE_MAX_TRIES) {
-                throw new \Exception(_('Failed to generate tracking code'));
+                throw new \Exception(_('Failed to generate the Tracking Code'));
             }
             $tracking_code = self::generate(
                 strtoupper($alphabet),

@@ -42,7 +42,7 @@
             </li>
             <li>
                 {'pl'|country nofilter}
-                […] <i>GeoKrety, które posiadają przyczepioną etykietę z numerem, nazwą, Nickiem właściciela i kodem identyfikacyjnym, tzw. tracking code’m. Zadaniem uczestnika, który pokusi się o zabranie takiego przedmiotu jest zarejestrowanie tego zdarzenia na stronie geokrety.org i przeniesienie go do innej skrzynki. W ten sposób goekret „wędruje” po świecie, często nawet kilka czy kilkanaście tysięcy kilometrów</i> (za <a href="http://www.wiadomosci24.pl/artykul/geocaching_poszukiwacze_sa_wsrod_nas_217570-2--1-d.html" name="wiadomosci24.pl">wiadomosci24.pl</a>)
+                […] <i>GeoKrety, które posiadają przyczepioną etykietę z numerem, nazwą, Nickiem właściciela i kodem identyfikacyjnym, tzw. Tracking Code’m. Zadaniem uczestnika, który pokusi się o zabranie takiego przedmiotu jest zarejestrowanie tego zdarzenia na stronie geokrety.org i przeniesienie go do innej skrzynki. W ten sposób goekret „wędruje” po świecie, często nawet kilka czy kilkanaście tysięcy kilometrów</i> (za <a href="http://www.wiadomosci24.pl/artykul/geocaching_poszukiwacze_sa_wsrod_nas_217570-2--1-d.html" name="wiadomosci24.pl">wiadomosci24.pl</a>)
             </li>
         </ul>
 

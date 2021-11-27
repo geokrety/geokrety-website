@@ -250,7 +250,7 @@ var_dump($gk);
                 The same but with <code>secid</code> secret user's identification<br />
 
                 <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?secid=xxx&inventory=1</pre>
-                this request returns also the secret tracking codes
+                this request returns also the secret Tracking Codes
                 (the <b>nr</b> variable) for all GeoKrety in user's inventory.
             </li>
         </ul>
@@ -341,7 +341,7 @@ var_dump($gk);
             <dd>authentication string - see <a href="#secid">above</a></dd>
 
             <dt><code>nr</code></dt>
-            <dd>GeoKret's tracking code (ex: <code>GH68MA</code>)</dd>
+            <dd>GeoKret's Tracking Code (ex: <code>GH68MA</code>)</dd>
 
             <dt><code>formname</code></dt>
             <dd><b>must</b> have value of <code>ruchy</code></dd>

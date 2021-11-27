@@ -21,7 +21,7 @@ class GeokretClaim extends Base {
         $ownerCode->load(['token = ?', $f3->get('POST.oc')]);
 
         if ($ownerCode->dry()) {
-            Flash::instance()->addMessage(_('Sorry, the provided owner code and tracking code doesn\'t match.'), 'danger');
+            Flash::instance()->addMessage(_('Sorry, the provided Owner Code and Tracking Code doesn\'t match.'), 'danger');
             $this->get();
             exit();
         }
