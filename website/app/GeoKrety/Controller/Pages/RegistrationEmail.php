@@ -35,11 +35,11 @@ class RegistrationEmail extends BaseRegistration {
         if ($token->valid()) {
             $f3->reroute(sprintf('@user_details(@userid=%d)', $token->user->id), false, false);
             $smtp = new AccountActivation();
+            $smtp->sendActivationAgain($token);
             if (!GK_DEVEL) {
                 // Let unit test run smoothly
                 $f3->abort();
             }
-            $smtp->sendActivationAgain($token);
             $f3->get('DB')->rollback();
             exit();
         }
