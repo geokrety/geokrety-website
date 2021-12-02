@@ -12,6 +12,9 @@
                 {fa icon="rss"}
             </a>
             {if $user->isCurrentUser()}
+            <a id="usernameChangeButton" class="btn btn-info btn-xs" href="{'user_update_username'|alias}" title="{t}Username change{/t}">
+                {fa icon="address-card"}
+            </a>
             <a id="userPasswordChangeButton" class="btn btn-info btn-xs" href="#" title="{t}Password change{/t}" data-toggle="modal" data-target="#modal" data-type="user-update-password">
                 {fa icon="key"}
             </a>

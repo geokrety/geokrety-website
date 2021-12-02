@@ -15,7 +15,7 @@ ${MODAL_DIALOG_DISMISS_BUTTON}      ${MODAL_DIALOG}//div[contains(@class, "modal
 ${MODAL_PANEL}                      //div[contains(@class, "panel")]
 ${MODAL_PANEL_TITLE}                ${MODAL_PANEL}//*[@id="modalLabel"]
 ${MODAL_PANEL_SUBMIT_BUTTON}        ${MODAL_PANEL}//div[contains(@class, "modal-footer")]/button[@type="submit"]
-${MODAL_PANEL_DISMISS_BUTTON}       ${MODAL_DIALOG}//div[contains(@class, "modal-footer")]/button[@data-dismiss="modal"]
+${MODAL_PANEL_DISMISS_BUTTON}       ${MODAL_PANEL}//div[contains(@class, "modal-footer")]/button[@data-dismiss="modal"]
 
 ${DROPDOWN_LANG}     //*[@id="navbar-lang"]
 ${DROPDOWN_LANG_EN}  //*[@id="navbar-lang-en"]
@@ -303,6 +303,11 @@ ${USER_EMAIL_VALIDATION_REFUSE_BUTTON}          //*[@id="emailChangeRefuseButton
 ${USER_EMAIL_VALIDATION_ACCEPT_BUTTON}          //*[@id="emailChangeAcceptButton"]
 ${USER_EMAIL_VALIDATION_DISMISS_BUTTON}         //*[@id="emailChangeDismissButton"]
 
+################
+# USER USERNAME CHANGE
+################
+
+${USER_CHANGE_USERNAME_INPUT}                   //*[@id="inputNewUsername"]
 
 ################
 # USER RECENT MOVES PAGE

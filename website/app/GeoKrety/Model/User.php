@@ -58,7 +58,7 @@ class User extends Base implements JsonSerializable {
     protected $fieldConf = [
         'username' => [
             'type' => Schema::DT_VARCHAR128,
-            'validate' => 'required|unique|min_len,'.GK_SITE_USERNAME_MIN_LENGTH.'|max_len,'.GK_SITE_USERNAME_MAX_LENGTH,
+            'validate' => 'required|username_unique|min_len,'.GK_SITE_USERNAME_MIN_LENGTH.'|max_len,'.GK_SITE_USERNAME_MAX_LENGTH,
             'nullable' => false,
             'unique' => true,
         ],

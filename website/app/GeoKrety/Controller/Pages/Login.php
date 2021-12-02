@@ -106,13 +106,19 @@ class Login extends Base {
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         self::disconnectUser($f3);
         Event::instance()->emit('user.logout', $user);
-        $f3->reroute('@home');
+        $f3->reroute('@home', false);
     }
 
     public static function disconnectUser(\Base $f3) {
+        if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
+            $local_mail = $f3->get('SESSION.LOCAL_MAIL');
+        }
         $f3->clear('SESSION');
         $f3->clear('COOKIE.PHPSESSID');
         $f3->clear('COOKIE.gkt_on_behalf');
+        if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
+            $f3->set('SESSION.LOCAL_MAIL', $local_mail);
+        }
     }
 
     public function login2Secid() {

@@ -32,6 +32,9 @@ class DatabaseSeed extends Base {
             if (!$f3->exists('GET.noemail') || !filter_var($f3->get('GET.noemail'), FILTER_VALIDATE_BOOLEAN)) {
                 $user->_email = sprintf('username%d+qa@geokrety.org', $i);
             }
+            if ($f3->exists('GET.email_invalid')) {
+                $user->email_invalid = $f3->get('GET.email_invalid');
+            }
             $user->preferred_language = 'en';
             $user->account_valid = $f3->get('PARAMS.status') ?? User::USER_ACCOUNT_VALID;
             $user->_secid = sprintf('%s%d', str_repeat('x', 128 - strlen($i)), $i);

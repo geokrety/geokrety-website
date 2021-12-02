@@ -38,6 +38,13 @@ $validator->addValidator('ciphered_password', function ($field, $input, $param =
     return substr($input[$field], 0, 7) === $expectedPasswordPrefix;
 }, _('The password must be ciphered'));
 
+$validator->addValidator('username_unique', function ($field, $input, $param = null) {
+    $user = new \GeoKrety\Model\User();
+    $user->load([$field.' = ? AND id != ?', $input[$field], $input['_id']]);
+
+    return $user->dry();
+}, _('This username is already used'));
+
 $validator->addValidator('anonymous_only_required', function ($field, $input, $param = null) {
     $f3 = \Base::instance();
     if (!$f3->get('SESSION.CURRENT_USER') && \GeoKrety\Validation\Base::isEmpty($input[$field])) {

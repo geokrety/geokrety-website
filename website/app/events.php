@@ -19,6 +19,13 @@ $events->on('user.created', function (GeoKrety\Model\User $user) {
     \GeoKrety\Service\UserBanner::generate($user);
     Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['created']);
 });
+$events->on('user.renamed', function (GeoKrety\Model\User $user, $context) {  // context => $oldUserName
+    audit('user.renamed', array_merge($user->jsonSerialize(), $context));
+    \GeoKrety\Service\UserBanner::generate($user);
+    Metrics::counter('users_renames', 'Total number of renamed accounts', ['verb'], ['renamed']);
+    $mail = new \GeoKrety\Email\UsernameChange();
+    $mail->sendUsernameChangedNotification($user);
+});
 $events->on('user.activated', function (GeoKrety\Model\User $user) {
     audit('user.activated', $user);
     Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['activated']);
