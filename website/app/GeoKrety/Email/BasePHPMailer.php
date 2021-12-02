@@ -116,7 +116,10 @@ abstract class BasePHPMailer extends PHPMailer {
      * @param bool $force         Force sending the mail, by user email validity check useful on registration
      * @param bool $realRecipient Deliver the mail to the real address. Useful to prevent crons to send unsolicited mails, but allow users to tests features on staging. (Only relevant when not production
      */
-    protected function setTo(User $user, bool $force = false, bool $realRecipient = true) {
+    protected function setTo(?User $user, bool $force = false, bool $realRecipient = true) {
+        if (is_null($user)) {
+            return;
+        }
         if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
             $this->recipients[] = $user;
 

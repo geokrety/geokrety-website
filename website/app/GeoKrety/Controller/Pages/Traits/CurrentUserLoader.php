@@ -4,10 +4,7 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 trait CurrentUserLoader {
-    /**
-     * @var User
-     */
-    protected $currentUser;
+    protected User $currentUser;
 
     public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
