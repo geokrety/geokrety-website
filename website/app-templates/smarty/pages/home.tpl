@@ -2,6 +2,8 @@
 
 {block name=title}🎉 {t}Welcome to GeoKrety.org!{/t}{/block}
 
+{\Assets::instance()->addCss(GK_CDN_ANIMATE_CSS)}
+
 {block name=content}
 <h2>🎉 {t}Welcome to GeoKrety.org!{/t}</h2>
 
@@ -11,13 +13,13 @@
     {include file='banners/intro_stats.tpl'}
   </div>
   <div class="col-md-3">
-    {include file='blocks/found_geokret.tpl'}
+    {include file='banners/donate.tpl'}
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-3 col-md-push-9">
-    {include file='banners/donate.tpl'}
+    {include file='blocks/found_geokret.tpl'}
   </div>
   <div class="col-md-9 col-md-pull-3">
     {if $news}

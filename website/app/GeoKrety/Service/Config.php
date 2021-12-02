@@ -394,6 +394,8 @@ class Config extends \Prefab {
 
         define('GK_CDN_MAGNIFIC_POPUP_JS', getenv('GK_CDN_MAGNIFIC_POPUP_JS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/jquery.magnific-popup.min.js');
         define('GK_CDN_MAGNIFIC_POPUP_CSS', getenv('GK_CDN_MAGNIFIC_POPUP_CSS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/magnific-popup.css');
+
+        define('GK_CDN_ANIMATE_CSS', getenv('GK_CDN_ANIMATE_CSS') ?: GK_CDN_LIBRARIES_URL.'/animate.css/4.1.1/animate.min.css');
     }
 
     public static function printEnvironements() {
