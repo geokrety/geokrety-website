@@ -1,7 +1,7 @@
 
 {\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
 {\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
-{if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}
+{include file='macros/recaptcha.tpl'}
 
 {block name=modal_content}
 <div class="modal-header alert-info">
@@ -33,13 +33,7 @@
             </div>
         </div>
 
-        {if GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}
-        <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-                <div class="g-recaptcha" data-sitekey="{GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}" id="recaptcha_wrapper"></div>
-            </div>
-        </div>
-        {/if}
+        {call recaptcha}
 
     </div>
     <div class="modal-footer">

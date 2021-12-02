@@ -10,7 +10,7 @@
 {\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS)}
 {\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
 {\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS)}
-{if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}
+{include file='macros/recaptcha.tpl'}
 
 {block name=content}
 {include file='banners/geokret_anonymous_log.tpl'}

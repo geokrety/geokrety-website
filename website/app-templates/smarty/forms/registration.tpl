@@ -63,14 +63,7 @@
         </div>
     </div>
 
-    {if GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}
-    <hr>
-    <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-            <div class="g-recaptcha" data-sitekey="{GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}" id="recaptcha_wrapper"></div>
-        </div>
-    </div>
-    {/if}
+    {call recaptcha}
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

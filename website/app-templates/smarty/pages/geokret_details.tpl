@@ -6,7 +6,7 @@
 {\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
 {\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
 {\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
-{if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}
+{include file='macros/recaptcha.tpl'}
 
 {block name=content}
 {include file='banners/geokret_adopt.tpl'}
