@@ -52,7 +52,11 @@ class GeokretClaim extends Base {
         $move->username = GK_BOT_USERNAME;
         $move->geokret = $ownerCode->geokret;
         $move->move_type = LogType::LOG_TYPE_COMMENT;
-        $move->comment = sprintf('🙌 Owner change. From: [%s](%s) to: [%s](%s) /GK Team/', $oldOwner->username, $f3->alias('user_details', '@userid='.$oldOwner->id), $ownerCode->adopter->username, $f3->alias('user_details', '@userid='.$ownerCode->adopter->id));
+        if (is_null($oldOwner)) {
+            $move->comment = sprintf('🙌 Owner change. From: <em>no one</em> to: [%s](%s) /GK Team/', $ownerCode->adopter->username, $f3->alias('user_details', '@userid='.$ownerCode->adopter->id));
+        } else {
+            $move->comment = sprintf('🙌 Owner change. From: [%s](%s) to: [%s](%s) /GK Team/', $oldOwner->username, $f3->alias('user_details', '@userid='.$oldOwner->id), $ownerCode->adopter->username, $f3->alias('user_details', '@userid='.$ownerCode->adopter->id));
+        }
         $move->app = GK_APP_NAME;
         $move->app_ver = GK_APP_VERSION;
         $move->touch('moved_on_datetime');

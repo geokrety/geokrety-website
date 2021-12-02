@@ -7,6 +7,7 @@ use GeoKrety\GeokretyType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\News;
+use GeoKrety\Model\OwnerCode;
 use GeoKrety\Model\Picture;
 use GeoKrety\Model\User;
 use GeoKrety\Model\WaypointGC;
@@ -105,6 +106,25 @@ class DatabaseSeed extends Base {
         }
 
         echo 'OK';
+    }
+
+    public function geokrety_owner_code(\Base $f3) {
+        header('Content-Type: text');
+        $geokret = new Geokret();
+        $geokret->load(['id = ?', $f3->get('PARAMS.geokretid')]);
+        if ($geokret->dry()) {
+            echo sprintf("Error loading GeoKret: %d\n", $f3->get('PARAMS.geokretid'));
+            exit();
+        }
+
+        $ownercode = new OwnerCode();
+        $ownercode->geokret = $geokret->id;
+        $ownercode->token = $f3->get('PARAMS.ownercode');
+        if (!$ownercode->validate()) {
+            echo sprintf("Error creating new Owner Code \"%s\" for GeoKret: %d\n", $ownercode->token, $ownercode->geokret->id);
+            exit();
+        }
+        $ownercode->save();
     }
 
     public function waypointOC(\Base $f3) {

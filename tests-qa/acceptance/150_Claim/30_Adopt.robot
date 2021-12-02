@@ -53,6 +53,14 @@ Adoption Code Already Used
     Claim GeoKret                                   ${GEOKRETY_1.tc}                    ${oc}
     Page Should Contain                             Sorry, this owner code has already been used.
 
+Check Adoption For GeoKrety non having an owner
+    Clear DB And Seed 1 users
+    Seed 1 geokrety
+    Seed owner code 123456 for geokret ${GEOKRETY_1.id}
+    Sign In ${USER_1.name} Fast
+    Claim GeoKret                                   ${GEOKRETY_1.tc}                    123456
+    Flash message shown                             You are now the owner of ${GEOKRETY_1.name}
+
 Invalid Input
     [Template]    Invalid Input
     TC0001      000000

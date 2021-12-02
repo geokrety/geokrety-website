@@ -125,10 +125,10 @@ Page WaitForFooterHome
 
 Go To Url
     [Arguments]    ${url}    &{params}
-    Got To Url With Param    ${url}    &{params}
+    Go To Url With Param    ${url}    &{params}
     Page WithoutWarningOrFailure
 
-Got To Url With Param
+Go To Url With Param
     [Arguments]    ${url}    &{params}
     ${url_} =       Replace Variables    ${url}
     Go To           ${url_}
@@ -238,6 +238,10 @@ Seed ${count} geokrety owned by ${userid}
 
 Seed special geokrety with tracking code starting with GK owned by ${userid}
     Go To Url                           ${GK_URL}/devel/db/users/${userid}/geokrety/tc-starting-with-gk
+
+Seed owner code ${ownercode} for geokret ${geokretid}
+    Go To Url                           ${PAGE_SEED_OWNERCODE}    geokretid=${geokretid}    ownercode=${ownercode}
+    Page Should Not Contain             Error
 
 Seed ${count} waypoints OC
     Go To Url                           ${PAGE_SEED_WAYPOINT_OC}/${count}

@@ -8,6 +8,7 @@ ${PAGE_SEED_WAYPOINT_OC}                ${GK_URL}/devel/db/waypoint/oc
 ${PAGE_SEED_WAYPOINT_GC}                ${GK_URL}/devel/db/waypoint/gc
 ${PAGE_SEED_NEWS}                       ${GK_URL}/devel/db/news/seed
 ${PAGE_SEED_PICTURE_AVATAR}             ${GK_URL}/devel/db/users/1/avatar/1
+${PAGE_SEED_OWNERCODE}                  ${GK_URL}/devel/db/ownercode/geokrety/\${params.geokretid}/ownercode/\${params.ownercode}/seed
 
 ${PAGE_LOGIN_USER}                      ${GK_URL}/devel/users/\${params.username}/login
 
