@@ -2,6 +2,9 @@
 
 use GeoKrety\Service\Metrics;
 
+/**
+ * @param JsonSerializable|array $newObjectModel
+ */
 function audit(string $event, $newObjectModel) {
     $log = new \GeoKrety\Model\AuditLog();
     $log->event = $event;
@@ -12,8 +15,8 @@ function audit(string $event, $newObjectModel) {
 // Listen Events
 $events = \Sugar\Event::instance();
 $events->on('user.created', function (GeoKrety\Model\User $user) {
-    \GeoKrety\Service\UserBanner::generate($user);
     audit('user.created', $user);
+    \GeoKrety\Service\UserBanner::generate($user);
     Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['created']);
 });
 $events->on('user.activated', function (GeoKrety\Model\User $user) {
@@ -21,7 +24,7 @@ $events->on('user.activated', function (GeoKrety\Model\User $user) {
     Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['activated']);
 });
 $events->on('user.deleted', function (GeoKrety\Model\User $user) {
-    audit('user.deleted', $user->id);
+    audit('user.deleted', ['id' => $user->id]);
     Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['deleted']);
 });
 $events->on('activation.token.created', function (GeoKrety\Model\AccountActivationToken $token) {
@@ -194,12 +197,12 @@ $events->on('geokret.owner_code.created', function (GeoKrety\Model\OwnerCode $ow
     audit('geokret.owner_code.created', $ownerCode);
     Metrics::counter('geokrety_owner_code_created_total', 'Total number of GeoKrety owner code created');
 });
-$events->on('geokret.claimed', function (GeoKrety\Model\Geokret $geokret, $context) {  // context => $oldUser, $newUser
+$events->on('geokret.claimed', function (GeoKrety\Model\Geokret $geokret, $context) {
     \GeoKrety\Service\UserBanner::generate($context['newUser']);
     if (!is_null($context['oldUser'])) {
         \GeoKrety\Service\UserBanner::generate($context['oldUser']);
     }
-    audit('geokret.claimed', $geokret); // TODO: context
+    audit('geokret.claimed', array_merge($geokret->jsonSerialize(), $context));
     Metrics::counter('geokrety_claimed_total', 'Total number of GeoKrety claimed');
 });
 $events->on('user.statpic.template.changed', function (GeoKrety\Model\User $user) {

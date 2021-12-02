@@ -9,8 +9,7 @@ use DB\SQL\Schema;
  * @property int|DateTime log_datetime
  * @property int author
  * @property string event
- * @property string|null old_value
- * @property string|null new_value
+ * @property string|null context
  */
 class AuditLog extends Base {
     use \Validation\Traits\CortexTrait;
@@ -37,16 +36,10 @@ class AuditLog extends Base {
             'type' => Schema::DT_VARCHAR256,
             'nullable' => false,
         ],
-//        'old_value' => [
-////            'type' => Schema::DT_JSON,
-//            'nullable' => true,
-//            'validate' => 'is_date',
-//        ],
-//        'new_value' => [
-////            'type' => Schema::DT_JSON,
-//            'nullable' => true,
-//            'filter' => 'trim|HTMLPurifier',
-//        ],
+        //'context' => [
+        //    //'type' => Schema::DT_j,
+        //    'nullable' => true,
+        //],
     ];
 
     public function get_log_datetime($value): ?DateTime {
