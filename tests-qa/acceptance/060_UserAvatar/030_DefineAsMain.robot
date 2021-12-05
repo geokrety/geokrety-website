@@ -17,10 +17,10 @@ Set image as main avatar
     Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}         ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
 
     Wait Until Modal                        Do you want to set this picture as main avatar?
-    # Workaround issue https://bugzilla.mozilla.org/show_bug.cgi?id=1708403
-    Execute JavaScript                      window.scrollTo(0, 0)
     Capture Element                         ${MODAL_DIALOG}    name=img1
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
+    # Workaround issue https://bugzilla.mozilla.org/show_bug.cgi?id=1708403
+    Execute JavaScript                      window.scrollTo(0, 0)
     Capture Element                         ${USER_PROFILE_AVATAR_GALLERY}    name=img2
 
     Compare Images
