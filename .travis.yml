@@ -117,7 +117,7 @@ jobs:
 #        - ./BrowserStackLocal --key "${BS_TOKEN}" --verbose --daemon start --local-identifier "${BS_LOCAL_ID}" --force-local
 
         # Download geckodriver
-        - curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz | tar xzf - -C tests-qa
+        - cd tests-qa && make download_geckodriver && cd ..
         - sudo apt-get install -y ttf-bitstream-vera fonts-urw-base35 -qq > /dev/null
 
         # Wait for services to be reachable

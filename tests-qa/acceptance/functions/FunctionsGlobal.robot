@@ -49,7 +49,7 @@ Global TearDown
     ${dc}   Evaluate    sys.modules['selenium.webdriver'].DesiredCapabilities.FIREFOX  sys, selenium.webdriver
     Set To Dictionary   ${dc}      strictFileInteractability=${FALSE}
     Set To Dictionary   ${dc}      timezone=UTC-05:00
-    Create Webdriver    Firefox    firefox_options=${firefox options}    desired_capabilities=${dc}
+    Create Webdriver    Firefox    options=${firefox options}    desired_capabilities=${dc}
 
 !Open GeoKrety Browser Chrome
     Log    Open Browser Chrome
