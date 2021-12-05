@@ -182,7 +182,9 @@ Archived GeoKrety Do Not Appear Present In Cache
 
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
 
-    # Delay the check a bit as, sometimes trigger function in db were not yet finished
+    # HACK: Delay the check a bit as, sometimes trigger function in db were not yet finished
+    Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
     Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
 
     Create Session                        gk        ${GK_URL}
