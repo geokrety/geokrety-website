@@ -48,7 +48,7 @@ class PictureDefineAsMainAvatar extends Base {
     private function define_user(\Base $f3) {
         $this->picture->user->avatar = $this->picture;
         $this->picture->user->save();
-        $f3->reroute(['user_details', ['userid' => $this->picture->user->id]], '#user-avatars-list');
+        $f3->reroute(['user_details', ['userid' => $this->picture->user->id], '#user-avatars-list']);
     }
 
     private function define_picture(\Base $f3) {

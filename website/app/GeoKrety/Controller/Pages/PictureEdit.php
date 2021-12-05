@@ -65,7 +65,7 @@ class PictureEdit extends Base {
     }
 
     private function post_user(\Base $f3) {
-        $f3->reroute(['user_details', ['userid' => $this->picture->user->id]], '#user-avatars-list');
+        $f3->reroute(['user_details', ['userid' => $this->picture->user->id], '#user-avatars-list']);
     }
 
     private function post_move(\Base $f3) {
