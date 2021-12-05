@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 09:30+0000\n"
-"PO-Revision-Date: 2021-11-27 09:32\n"
+"POT-Creation-Date: 2021-12-05 17:18+0000\n"
+"PO-Revision-Date: 2021-12-05 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-27 09:30+0000\n"
+"POT-Creation-Date: 2021-12-05 17:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -126,11 +126,11 @@ msgstr "Вы уже являетесь владельцем."
 msgid "Sorry, this owner code has already been used."
 msgstr "К сожалению, этот код владельца уже был использован."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 msgid "Something went wrong while registering the adoption."
 msgstr "Что-то пошло не так при регистрации заимствования."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:76
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
 msgstr ""
@@ -223,7 +223,7 @@ msgid "\"nr\" parameter must be provided."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:50
-#: website/app/GeoKrety/Controller/Pages/Login.php:147
+#: website/app/GeoKrety/Controller/Pages/Login.php:153
 msgid "Username and password doesn't match."
 msgstr "Имя пользователя и пароль не совпадают."
 
@@ -231,30 +231,30 @@ msgstr "Имя пользователя и пароль не совпадают.
 msgid "Welcome on board!"
 msgstr "Добро пожаловать!"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:128
+#: website/app/GeoKrety/Controller/Pages/Login.php:134
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:136
+#: website/app/GeoKrety/Controller/Pages/Login.php:142
 msgid "Your account is not valid."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:158
 #: website/app/GeoKrety/Controller/Pages/Login.php:164
+#: website/app/GeoKrety/Controller/Pages/Login.php:170
 msgid "Invalid \"secid\""
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:213
+#: website/app/GeoKrety/Controller/Pages/Login.php:219
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Ваша учетная запись уже связана с %s"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:218
+#: website/app/GeoKrety/Controller/Pages/Login.php:224
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Этот %s аккаунт уже привязан к другому аккаунту GeoKrety."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:233
+#: website/app/GeoKrety/Controller/Pages/Login.php:239
 msgid "Auth request was canceled."
 msgstr "Запрос аутентификации был отменен."
 
@@ -438,6 +438,14 @@ msgstr "Ваши домашние координаты были успешно �
 msgid "Your old password is invalid."
 msgstr "Ваш старый пароль недействителен."
 
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
+msgid "Username changed. Please login again."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:49
+msgid "Sorry, to use this feature, you must have a valid registered email address."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:50
 msgid "Waypoint seems empty."
@@ -562,6 +570,10 @@ msgstr "Ваш пароль был изменен"
 msgid "Contact from user %s"
 msgstr "Контакт от пользователя %s"
 
+#: website/app/GeoKrety/Email/UsernameChange.php:15
+msgid "Your username has been changed"
+msgstr ""
+
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
 msgstr "Традиционный"
@@ -607,7 +619,7 @@ msgid "dip"
 msgstr "погрузить"
 
 #: website/app/GeoKrety/LogType.php:121 smarty/blocks/geokret:56
-#: smarty/pages:78
+#: smarty/pages:80
 msgid "Born"
 msgstr "Создать"
 
@@ -696,9 +708,15 @@ msgstr "Анонимные пользователи не могут сразу �
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "Только %d коды отслеживания могут быть заданы одновременно, отмечены %d."
 
-#: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:32
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
 #, php-format
-msgid "Sorry, but username \"%s\" is already used. If that's your account, please <a href=\"%s\">login</a> first."
+msgid "Sorry, but username \"%s\" is already used."
+msgstr "Извините, но имя пользователя \"%s\" уже используется."
+
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
+#, php-format
+msgid "If that's your account, please <a href=\"%s\">login</a> first."
 msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
@@ -853,29 +871,57 @@ msgstr "Этот язык не поддерживается"
 msgid "The password must be ciphered"
 msgstr "Пароль должен быть зашифрован"
 
-#: website/app/validators.php:48
+#: website/app/validators.php:46
+msgid "This username is already used"
+msgstr ""
+
+#: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
 msgstr "Анонимные пользователи должны указать значение для {0}"
 
-#: website/app/validators.php:60
+#: website/app/validators.php:67
 msgid "Registered users must provide a value for {0}"
 msgstr "Зарегистрированные пользователи должны указать значение для {0}"
 
-#: website/app/validators.php:71
+#: website/app/validators.php:78
 msgid "This logtype require valid {0} coordinates"
 msgstr "Этот тип журнала требует правильных координат {0}"
 
-#: website/app/validators.php:82
+#: website/app/validators.php:89
 msgid "Something already exists at the same datetime \"{0}\""
 msgstr "Что-то уже существует в том же временном промежутке\"{0}\""
 
-#: website/app/validators.php:90
+#: website/app/validators.php:97
 msgid "{0} cannot be in the future"
 msgstr "{0} не может быть в будущем"
 
-#: website/app/validators.php:98
+#: website/app/validators.php:105
 msgid "{0} must be after GeoKret birth"
 msgstr "{0} должен быть после создания GeoKret"
+
+#: smarty/emails:3
+msgid "Username changed"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your username on GeoKrety.org has been changed."
+msgstr ""
+
+#: smarty/emails:8
+msgid "."
+msgstr ""
+
+#: smarty/emails:9
+msgid "Please enjoy your new username!"
+msgstr ""
+
+#: smarty/emails:13 smarty/emails:12 smarty/dialog:2 smarty/dialog:7
+msgid "Login"
+msgstr "Войти"
+
+#: smarty/emails:18
+msgid "You're getting this email because you've changed your username on our website."
+msgstr ""
 
 #: smarty/emails:3
 msgid "Congratulation"
@@ -888,10 +934,6 @@ msgstr ""
 #: smarty/emails:8
 msgid "Your email address has been successfully changed to: %1."
 msgstr ""
-
-#: smarty/emails:12 smarty/dialog:2 smarty/dialog:7
-msgid "Login"
-msgstr "Войти"
 
 #: smarty/emails:15 smarty/emails:13
 msgid "If you did not requested this, click the link below."
@@ -1216,7 +1258,7 @@ msgstr ""
 
 #: smarty/emails:38 smarty/emails:81 smarty/emails:127 smarty/emails:171
 #: smarty/dialog:21 smarty/dialog:19 smarty/forms:106 smarty/forms:247
-#: smarty/pages:22 smarty/pages:20 smarty/pages:37 smarty/pages:39
+#: smarty/pages:22 smarty/pages:20 smarty/pages:37 smarty/pages:41
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -1244,7 +1286,7 @@ msgstr ""
 msgid "Watched GeoKrety latest moves"
 msgstr ""
 
-#: smarty/emails:129 smarty/pages:24 smarty/pages:23 smarty/pages:41
+#: smarty/emails:129 smarty/pages:24 smarty/pages:23 smarty/pages:43
 msgid "Distance"
 msgstr "Расстояние"
 
@@ -1268,8 +1310,8 @@ msgstr ""
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
 msgstr ""
 
-#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:37
-#: smarty/pages:76 smarty/pages:38 smarty/pages:81
+#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:39
+#: smarty/pages:78 smarty/pages:38 smarty/pages:81
 msgid "ID"
 msgstr "ID"
 
@@ -1347,7 +1389,7 @@ msgstr "Показать перемещение на карте"
 msgid "Report as missing"
 msgstr "Сообщить о пропаже"
 
-#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:18
+#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:21
 msgid "Upload a picture"
 msgstr "Загрузить изображение"
 
@@ -1551,54 +1593,58 @@ msgid "Subscribe to RSS channel"
 msgstr "Подписаться на RSS канал"
 
 #: smarty/blocks/user:15
+msgid "Username change"
+msgstr ""
+
+#: smarty/blocks/user:18
 msgid "Password change"
 msgstr "Изменение пароля"
 
-#: smarty/blocks/user:29
+#: smarty/blocks/user:32
 msgid "Joined us"
 msgstr "Присоединился к нам"
 
-#: smarty/blocks/user:31 smarty/dialog:11 smarty/forms:33
+#: smarty/blocks/user:34 smarty/dialog:11 smarty/forms:33
 msgid "Language"
 msgstr "Язык"
 
-#: smarty/blocks/user:33
+#: smarty/blocks/user:36
 msgid "Nothing selected"
 msgstr "Ничего не выбрано"
 
-#: smarty/blocks/user:36
+#: smarty/blocks/user:39
 msgid "Choose preferred language"
 msgstr "Выберите предпочитаемый язык"
 
-#: smarty/blocks/user:43 smarty/pages:17
+#: smarty/blocks/user:46 smarty/pages:17
 msgid "Email"
 msgstr "E-mail"
 
-#: smarty/blocks/user:48
+#: smarty/blocks/user:51
 msgid "Pending email validation, don't forget to click the link in validation mail!"
 msgstr "Ожидание подтверждения электронной почты, не забудьте нажать на ссылку из письма!"
 
-#: smarty/blocks/user:50
+#: smarty/blocks/user:53
 msgid "No email address, please add one!"
 msgstr "Адрес электронной почты отсутствует, пожалуйста, добавьте его!"
 
-#: smarty/blocks/user:53
+#: smarty/blocks/user:56
 msgid "Update email address"
 msgstr "Обновить адрес электронной почты"
 
-#: smarty/blocks/user:58
+#: smarty/blocks/user:61
 msgid "Secid"
 msgstr "Secid"
 
-#: smarty/blocks/user:61
+#: smarty/blocks/user:64
 msgid "Used to authenticate in other applications. Keep it secret!"
 msgstr "Используется для аутентификации в других приложениях. Сохраните этот секрет!"
 
-#: smarty/blocks/user:62
+#: smarty/blocks/user:65
 msgid "Generate a new secid"
 msgstr "Создать новый secid"
 
-#: smarty/blocks/user:72
+#: smarty/blocks/user:75
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
 msgstr "Хотите изменить имя пользователя или удалить свой аккаунт? Отправьте нам <a href=\"%1\">письмо</a>!"
 
@@ -1784,10 +1830,11 @@ msgstr "Вернуться на страницу GeoKret"
 
 #: smarty/dialog:15 smarty/dialog:26 smarty/dialog:36 smarty/dialog:50
 #: smarty/dialog:65 smarty/dialog:45 smarty/dialog:14 smarty/dialog:20
-#: smarty/dialog:47 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
+#: smarty/dialog:41 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
 #: smarty/dialog:32 smarty/dialog:11 smarty/dialog:53 smarty/dialog:23
 #: smarty/dialog:25 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
-#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:65
+#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:29
+#: smarty/pages:65
 msgid "Dismiss"
 msgstr "Прекратить"
 
@@ -1803,12 +1850,13 @@ msgstr "Выберите предпочитаемый язык"
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
 msgstr "Это будет язык по умолчанию, когда Вы войдете в систему и основной язык в письмах, которые Вы можете получить."
 
-#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:46
-#: smarty/dialog:50 smarty/pages:64
+#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:40
+#: smarty/dialog:50 smarty/pages:28 smarty/pages:64
 msgid "Back to user page"
 msgstr "Вернуться на страницу пользователя"
 
 #: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
+#: smarty/pages:31
 msgid "Change"
 msgstr "Изменить"
 
@@ -1890,7 +1938,7 @@ msgid "Name or ID"
 msgstr "Имя или ID"
 
 #: smarty/dialog:27 smarty/forms:15 smarty/forms:17 smarty/pages:21
-#: smarty/pages:77
+#: smarty/pages:79
 msgid "Owner"
 msgstr "Владелец"
 
@@ -1981,7 +2029,7 @@ msgstr "Сообщение"
 msgid "Message to user"
 msgstr "Сообщение пользователю"
 
-#: smarty/dialog:49
+#: smarty/dialog:43
 msgid "Send message"
 msgstr "Отослать сообщение"
 
@@ -2349,8 +2397,8 @@ msgid "You then will be able to manage your GeoKrety inventory, upload pictures,
 msgstr "После этого Вы сможете управлять инвентарем GeoKrety, загружать фотографии, редактировать журналы и, конечно, создать свой собственный GeoKrety!"
 
 #: smarty/banners:3
-msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
-msgstr "Извините, но у нас возникли проблемы с отправкой уведомлений на Ваш электронный почтовый ящик. Этот почтовый ящик действующий?"
+msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+msgstr ""
 
 #: smarty/banners:3 smarty/banners:2
 msgid "Close"
@@ -2420,7 +2468,7 @@ msgstr "Отметить ГеоКрота"
 msgid "Home"
 msgstr "Главная"
 
-#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:24
+#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:26
 msgid "News"
 msgstr "Новости"
 
@@ -2520,7 +2568,7 @@ msgstr "Уведомления по электронной почте могут
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
 msgstr "Да, я принимаю условия использования <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\"></a>."
 
-#: smarty/forms:61 smarty/forms:77
+#: smarty/forms:54 smarty/forms:70
 msgid "Register"
 msgstr "Регистрация"
 
@@ -2704,11 +2752,11 @@ msgstr ""
 msgid "%1's recent moves"
 msgstr "%1'с недавних шагов"
 
-#: smarty/pages:21 smarty/pages:38 smarty/pages:22
+#: smarty/pages:21 smarty/pages:40 smarty/pages:22
 msgid "Spotted in"
 msgstr "Был замечен в"
 
-#: smarty/pages:23 smarty/pages:22 smarty/pages:40
+#: smarty/pages:23 smarty/pages:22 smarty/pages:42
 msgid "Last move"
 msgstr "Последний ход"
 
@@ -2788,7 +2836,7 @@ msgstr "Забыли пароль?"
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Если вы уже подтвердили адрес Вашей электронной почты, то Вы можете восстановить его легко. В противном случае, Вам придется создать другую учётную запись, извините."
 
-#: smarty/pages:40
+#: smarty/pages:34
 msgid "Send me a recovery link"
 msgstr "Отправить мне ссылку для восстановления"
 
@@ -2948,19 +2996,19 @@ msgstr "Пожалуйста, укажите новый пароль."
 msgid "Pictures of %1's GeoKrety"
 msgstr "Фотографии GeoKrety %1"
 
-#: smarty/pages:3 smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "Welcome to GeoKrety.org!"
 msgstr "Добро пожаловать на GeoKrety.org!"
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "Latest moves"
 msgstr "Последние шаги"
 
-#: smarty/pages:57
+#: smarty/pages:59
 msgid "Recent pictures"
 msgstr "Недавние картинки"
 
-#: smarty/pages:70
+#: smarty/pages:72
 msgid "Recently created GeoKrety"
 msgstr "Недавно созданный GeoKrety"
 
@@ -3102,6 +3150,26 @@ msgstr ""
 
 #: smarty/pages:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
+msgstr ""
+
+#: smarty/pages:3
+msgid "Change username"
+msgstr ""
+
+#: smarty/pages:9
+msgid "Change your username"
+msgstr ""
+
+#: smarty/pages:16
+msgid "Once your username is changed, you will need to reconnect."
+msgstr ""
+
+#: smarty/pages:20
+msgid "Desired username"
+msgstr ""
+
+#: smarty/pages:21
+msgid "New username"
 msgstr ""
 
 #: smarty/pages:3
