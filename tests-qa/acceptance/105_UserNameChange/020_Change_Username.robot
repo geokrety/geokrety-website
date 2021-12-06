@@ -22,6 +22,10 @@ Changing username success
     Page Should Contain Element             ${NAVBAR_SIGN_IN_LINK}
     Page Should Contain                     Username changed. Please login again.
 
+    Sign In User                            foobar
+    Location Should Be                      ${PAGE_HOME_URL}
+    Element Should Contain                  ${NAVBAR_PROFILE_LINK}    foobar
+
 Username already used
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_CHANGE_USERNAME_URL}
