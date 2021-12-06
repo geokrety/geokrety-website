@@ -63,6 +63,18 @@ Confirmation mail should be sent
     Go To Url                               ${PAGE_DEV_MAILBOX_FIRST_MAIL_URL}
     Page Should Contain                     Someone, hopefully you, has requested a change on your GeoKrety username to: foobar.
 
+Cannot use a username in pending state
+    Go To Url                               ${PAGE_SEED_USER}/1/status/0?i\=3
+    Sign In ${USER_1.name} Fast
+    Change username                         ${USER_3.name}
+    Input validation has error              ${USER_CHANGE_USERNAME_INPUT}
+    Input validation has error help         ${USER_CHANGE_USERNAME_INPUT}       Sorry, but username "${USER_3.name}" is already used.
+
+Invalid accounts cannot proceed to username change
+    Go To Url                               ${PAGE_SEED_USER}/1/status/2?i\=3
+    Sign In ${USER_3.name} Fast
+    Go To Url                               ${PAGE_USER_CHANGE_USERNAME_URL}
+    Page Should Contain                     Sorry, to use this feature, you must have a valid registered email address.
 
 *** Keywords ***
 
