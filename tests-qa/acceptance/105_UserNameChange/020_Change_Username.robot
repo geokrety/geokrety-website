@@ -1,6 +1,5 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         Dialogs
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      Users Details    Username
