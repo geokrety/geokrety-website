@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-14 20:52+0000\n"
-"PO-Revision-Date: 2021-11-15 23:22\n"
+"POT-Creation-Date: 2021-12-05 17:18+0000\n"
+"PO-Revision-Date: 2021-12-05 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-14 20:52+0000\n"
+"POT-Creation-Date: 2021-12-05 17:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -31,6 +31,49 @@ msgstr ""
 #, php-format
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Più account condividono lo stesso indirizzo email. Per favore <a href=\"%s\">contattaci</a>."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+msgid "Something went wrong while generating GeoKrety."
+msgstr "Qualcosa è andato storto durante la generazione di GeoKrety."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "Transaction aborted."
+msgstr "Transazione interrotta."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+msgid "There are duplicated tracking codes."
+msgstr "Ci sono codici di tracciamento duplicati."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:85
+msgid "The number of instances to be created is invalid."
+msgstr "Il numero di istanze da creare non è valido."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:96
+msgid "No such user found."
+msgstr "Nessun utente trovato."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
+msgid "The \"start at\" value is invalid."
+msgstr "Il valore \"start at\" non è valido."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+msgid "The \"TCPrefix\" value is invalid."
+msgstr "Il valore \"TCPrefix\" non è valido."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+#, php-format
+msgid "It must not be in list \"%s\"."
+msgstr "Non deve essere nella lista \"%s\"."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:119
+msgid "The \"TCPrefix\" + \"TCSuffix\" length is greater than \"TCLength\"."
+msgstr "La lunghezza \"TCPrefix\" + \"TCSuffix\" è maggiore di \"TCLength\"."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "No more Tracking Code available using this pattern."
+msgstr "Nessun altro codice di tracciamento disponibile utilizzando questo modello."
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
@@ -72,8 +115,8 @@ msgid "Sorry but this mail address is already in use."
 msgstr "Siamo spiacenti, ma questo indirizzo email è già in uso."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
-msgid "Sorry, the provided owner code and tracking code doesn't match."
-msgstr "Spiacenti, il codice proprietario e il codice di tracking fornito non corrispondono."
+msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
+msgstr "Siamo spiacenti, il codice proprietario e il codice di monitoraggio forniti non corrispondono."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
 msgid "You are already the owner."
@@ -83,11 +126,11 @@ msgstr "Sei già il proprietario."
 msgid "Sorry, this owner code has already been used."
 msgstr "Spiacenti, questo codice proprietario è già stato utilizzato."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 msgid "Something went wrong while registering the adoption."
 msgstr "Qualcosa è andato storto durante la registrazione dell'adozione."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:76
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
 msgstr "Congratulazioni! Ora sei il proprietario di %s."
@@ -171,12 +214,16 @@ msgstr "Secid errato"
 msgid "Wrong date or time"
 msgstr "Data o ora errata"
 
-#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:206
+#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:207
 msgid "Waypoint parameter must be provided."
 msgstr "Il parametro \"waypoint\" è necessario."
 
+#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:217
+msgid "\"nr\" parameter must be provided."
+msgstr "Il parametro \"nr\" deve essere fornito."
+
 #: website/app/GeoKrety/Controller/Pages/Login.php:50
-#: website/app/GeoKrety/Controller/Pages/Login.php:147
+#: website/app/GeoKrety/Controller/Pages/Login.php:153
 msgid "Username and password doesn't match."
 msgstr "Nome utente e password non corrispondono."
 
@@ -184,30 +231,30 @@ msgstr "Nome utente e password non corrispondono."
 msgid "Welcome on board!"
 msgstr "Benvenuto a bordo!"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:128
+#: website/app/GeoKrety/Controller/Pages/Login.php:134
 msgid "Please provide 'login' and 'password' parameters."
 msgstr "Per favore fornisci i parametri \"login\" e \"password\"."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:136
+#: website/app/GeoKrety/Controller/Pages/Login.php:142
 msgid "Your account is not valid."
 msgstr "Il tuo account non è valido."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:158
 #: website/app/GeoKrety/Controller/Pages/Login.php:164
+#: website/app/GeoKrety/Controller/Pages/Login.php:170
 msgid "Invalid \"secid\""
 msgstr "Parametro \"secid\" non valido."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:213
+#: website/app/GeoKrety/Controller/Pages/Login.php:219
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Il tuo account è già collegato con %s"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:218
+#: website/app/GeoKrety/Controller/Pages/Login.php:224
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Questo account %s è già collegato con un altro account GeoKrety."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:233
+#: website/app/GeoKrety/Controller/Pages/Login.php:239
 msgid "Auth request was canceled."
 msgstr "Richiesta di autenticazione annullata."
 
@@ -391,6 +438,14 @@ msgstr "Le tue coordinate home sono state salvate con successo."
 msgid "Your old password is invalid."
 msgstr "La vecchia password non è valida."
 
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
+msgid "Username changed. Please login again."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:49
+msgid "Sorry, to use this feature, you must have a valid registered email address."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:50
 msgid "Waypoint seems empty."
@@ -515,6 +570,10 @@ msgstr "La tua password è stata modificata"
 msgid "Contact from user %s"
 msgstr "Contatto da parte dell'utente %s"
 
+#: website/app/GeoKrety/Email/UsernameChange.php:15
+msgid "Your username has been changed"
+msgstr ""
+
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
 msgstr "Tradizionale"
@@ -560,7 +619,7 @@ msgid "dip"
 msgstr "passato di qui"
 
 #: website/app/GeoKrety/LogType.php:121 smarty/blocks/geokret:56
-#: smarty/pages:78
+#: smarty/pages:80
 msgid "Born"
 msgstr "Nato"
 
@@ -607,6 +666,10 @@ msgstr "Unità specificata non valida: %s"
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 msgstr "<tspan font-weight=\"bold\">Manuale dell'utente:</tspan> <tspan font-weight=\"bold\">1.</tspan> Prendi questo GeoKret. <tspan font-weight=\"bold\">Si prega di notare il suo codice di tracciamento.</tspan> <tspan font-weight=\"bold\">2.</tspan> Nascondi in un'altra cache. <tspan font-weight=\"bold\">3.</tspan> Registra il viaggio su <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 
+#: website/app/GeoKrety/Service/SecretCode.php:33
+msgid "Failed to generate the Tracking Code"
+msgstr "Generazione del codice di tracciamento non riuscita"
+
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
@@ -617,38 +680,44 @@ msgstr "Codice di tracciamento \"%s\" sembra troppo breve. Ci aspettiamo %d cara
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
 msgstr "Il codice di tracking \"%s\" sembra troppo lungo. Ci aspettiamo %d caratteri."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
 #, php-format
 msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't starts with 'GK' 😉"
 msgstr "Sembra che tu abbia usato l'identificatore pubblico GeoKret \"%s\". Abbiamo bisogno del codice privato (codice di tracciamento) qui. Suggerimento: non inizia con 'GK' 😉"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:49
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:57
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
 msgstr "Il codice di tracciamento \"%s\" contiene caratteri non validi."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:59
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:67
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
 msgstr "Siamo spiacenti, ma il codice di tracciamento \"%s\" non è stato trovato nel nostro database."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
 msgid "No Tracking Code provided."
 msgstr "Nessun codice di tracciamento fornito."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:110
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:118
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
 msgstr "Gli utenti anonimi non possono controllare più codici di tracciamento contemporaneamente. Effettua prima il login."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:122
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "Possono essere specificati solo %d codici di tracciamento contemporaneamente, ci sono %d selezionati."
 
-#: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:32
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
 #, php-format
-msgid "Sorry, but username \"%s\" is already used. If that's your account, please <a href=\"%s\">login</a> first."
-msgstr "Siamo spiacenti, ma il nome utente \"%s\" è già utilizzato. Se è il tuo account, <a href=\"%s\">prima accedi</a>."
+msgid "Sorry, but username \"%s\" is already used."
+msgstr "Siamo spiacenti, ma il nome utente \"%s\" è già utilizzato."
+
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
+#, php-format
+msgid "If that's your account, please <a href=\"%s\">login</a> first."
+msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
@@ -802,29 +871,57 @@ msgstr "Questa lingua non è supportata"
 msgid "The password must be ciphered"
 msgstr "La password deve essere cifrata"
 
-#: website/app/validators.php:48
+#: website/app/validators.php:46
+msgid "This username is already used"
+msgstr ""
+
+#: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
 msgstr "Gli utenti anonimi devono fornire un valore per {0}"
 
-#: website/app/validators.php:60
+#: website/app/validators.php:67
 msgid "Registered users must provide a value for {0}"
 msgstr "Gli utenti registrati devono fornire un valore per {0}"
 
-#: website/app/validators.php:71
+#: website/app/validators.php:78
 msgid "This logtype require valid {0} coordinates"
 msgstr "Questo tipo di log richiede coordinate {0} valide"
 
-#: website/app/validators.php:82
+#: website/app/validators.php:89
 msgid "Something already exists at the same datetime \"{0}\""
 msgstr "C'è già qualcosa allo stesso datetime \"{0}\""
 
-#: website/app/validators.php:90
+#: website/app/validators.php:97
 msgid "{0} cannot be in the future"
 msgstr "{0} non può essere nel futuro"
 
-#: website/app/validators.php:98
+#: website/app/validators.php:105
 msgid "{0} must be after GeoKret birth"
 msgstr "{0} deve essere dopo la nascita del GeoKret"
+
+#: smarty/emails:3
+msgid "Username changed"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your username on GeoKrety.org has been changed."
+msgstr ""
+
+#: smarty/emails:8
+msgid "."
+msgstr ""
+
+#: smarty/emails:9
+msgid "Please enjoy your new username!"
+msgstr ""
+
+#: smarty/emails:13 smarty/emails:12 smarty/dialog:2 smarty/dialog:7
+msgid "Login"
+msgstr "Login"
+
+#: smarty/emails:18
+msgid "You're getting this email because you've changed your username on our website."
+msgstr ""
 
 #: smarty/emails:3
 msgid "Congratulation"
@@ -837,10 +934,6 @@ msgstr "Il tuo indirizzo e-mail è stato cambiato con successo"
 #: smarty/emails:8
 msgid "Your email address has been successfully changed to: %1."
 msgstr "Il tuo indirizzo email è stato modificato con successo in: %1."
-
-#: smarty/emails:12 smarty/dialog:2 smarty/dialog:7
-msgid "Login"
-msgstr "Login"
 
 #: smarty/emails:15 smarty/emails:13
 msgid "If you did not requested this, click the link below."
@@ -1165,7 +1258,7 @@ msgstr "Posizione"
 
 #: smarty/emails:38 smarty/emails:81 smarty/emails:127 smarty/emails:171
 #: smarty/dialog:21 smarty/dialog:19 smarty/forms:106 smarty/forms:247
-#: smarty/pages:22 smarty/pages:20 smarty/pages:37 smarty/pages:39
+#: smarty/pages:22 smarty/pages:20 smarty/pages:37 smarty/pages:41
 msgid "Comment"
 msgstr "Commento"
 
@@ -1193,7 +1286,7 @@ msgstr "Distanza dall'ultima mossa"
 msgid "Watched GeoKrety latest moves"
 msgstr "Le ultime mosse del GeoKrety sotto osservazione"
 
-#: smarty/emails:129 smarty/pages:24 smarty/pages:23 smarty/pages:41
+#: smarty/emails:129 smarty/pages:24 smarty/pages:23 smarty/pages:43
 msgid "Distance"
 msgstr "Distanza"
 
@@ -1217,8 +1310,8 @@ msgstr "Convalida il tuo indirizzo email"
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
 msgstr "Stai ricevendo questa email perché dobbiamo verificare che la tua email registrata sul nostro sito web sia ancora valida."
 
-#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:37
-#: smarty/pages:76 smarty/pages:38 smarty/pages:81
+#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:39
+#: smarty/pages:78 smarty/pages:38 smarty/pages:81
 msgid "ID"
 msgstr "ID"
 
@@ -1296,7 +1389,7 @@ msgstr "Mostra spostamenti sulla mappa"
 msgid "Report as missing"
 msgstr "Segnala come scomparso"
 
-#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:18
+#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:21
 msgid "Upload a picture"
 msgstr "Carica una immagine"
 
@@ -1392,8 +1485,8 @@ msgstr "Modifica i dettagli del GeoKret"
 msgid "Reference number"
 msgstr "Numero di riferimento"
 
-#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/forms:21
-#: smarty/forms:31 smarty/pages:15
+#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/admin/pages:77
+#: smarty/forms:21 smarty/forms:31 smarty/pages:15
 msgid "Tracking Code"
 msgstr "Codice di tracking"
 
@@ -1482,7 +1575,8 @@ msgstr "Trasferisci proprietà"
 msgid "Actions"
 msgstr "Azioni"
 
-#: smarty/blocks/geokret:3 smarty/forms:31 smarty/forms:36
+#: smarty/blocks/geokret:3 smarty/admin/pages:59 smarty/forms:31
+#: smarty/forms:36
 msgid "Mission"
 msgstr "Missione"
 
@@ -1499,54 +1593,58 @@ msgid "Subscribe to RSS channel"
 msgstr "Iscriviti al canale RSS"
 
 #: smarty/blocks/user:15
+msgid "Username change"
+msgstr ""
+
+#: smarty/blocks/user:18
 msgid "Password change"
 msgstr "Modifica password"
 
-#: smarty/blocks/user:29
+#: smarty/blocks/user:32
 msgid "Joined us"
 msgstr "Iscritto/a dal"
 
-#: smarty/blocks/user:31 smarty/dialog:11 smarty/forms:33
+#: smarty/blocks/user:34 smarty/dialog:11 smarty/forms:33
 msgid "Language"
 msgstr "Lingua"
 
-#: smarty/blocks/user:33
+#: smarty/blocks/user:36
 msgid "Nothing selected"
 msgstr "Nessuna selezione"
 
-#: smarty/blocks/user:36
+#: smarty/blocks/user:39
 msgid "Choose preferred language"
 msgstr "Scegli la lingua preferita"
 
-#: smarty/blocks/user:43 smarty/pages:17
+#: smarty/blocks/user:46 smarty/pages:17
 msgid "Email"
 msgstr "E-mail"
 
-#: smarty/blocks/user:48
+#: smarty/blocks/user:51
 msgid "Pending email validation, don't forget to click the link in validation mail!"
 msgstr "In attesa di convalida email, non dimenticare di fare clic sul link nella mail di convalida!"
 
-#: smarty/blocks/user:50
+#: smarty/blocks/user:53
 msgid "No email address, please add one!"
 msgstr "Nessun indirizzo email, aggiungine uno!"
 
-#: smarty/blocks/user:53
+#: smarty/blocks/user:56
 msgid "Update email address"
 msgstr "Aggiorna indirizzo email"
 
-#: smarty/blocks/user:58
+#: smarty/blocks/user:61
 msgid "Secid"
 msgstr "Secid"
 
-#: smarty/blocks/user:61
+#: smarty/blocks/user:64
 msgid "Used to authenticate in other applications. Keep it secret!"
 msgstr "Usato per autenticarsi in altre applicazioni. Mantenerlo segreto!"
 
-#: smarty/blocks/user:62
+#: smarty/blocks/user:65
 msgid "Generate a new secid"
 msgstr "Genera un nuovo secid"
 
-#: smarty/blocks/user:72
+#: smarty/blocks/user:75
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
 msgstr "Per cambiare il tuo nome utente o rimuovere il tuo account? Inviaci <a href=\"%1\">un'email</a>!"
 
@@ -1732,10 +1830,11 @@ msgstr "Torna alla pagina GeoKret"
 
 #: smarty/dialog:15 smarty/dialog:26 smarty/dialog:36 smarty/dialog:50
 #: smarty/dialog:65 smarty/dialog:45 smarty/dialog:14 smarty/dialog:20
-#: smarty/dialog:47 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
+#: smarty/dialog:41 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
 #: smarty/dialog:32 smarty/dialog:11 smarty/dialog:53 smarty/dialog:23
 #: smarty/dialog:25 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
-#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:65
+#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:29
+#: smarty/pages:65
 msgid "Dismiss"
 msgstr "Ignora"
 
@@ -1751,12 +1850,13 @@ msgstr "Scegli la tua lingua preferita"
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
 msgstr "Questa sarà la lingua predefinita quando accedi e la lingua principale nelle email che puoi ricevere."
 
-#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:46
-#: smarty/dialog:50 smarty/pages:64
+#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:40
+#: smarty/dialog:50 smarty/pages:28 smarty/pages:64
 msgid "Back to user page"
 msgstr "Torna alla pagina utente"
 
 #: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
+#: smarty/pages:31
 msgid "Change"
 msgstr "Cambia"
 
@@ -1838,7 +1938,7 @@ msgid "Name or ID"
 msgstr "Nome o ID"
 
 #: smarty/dialog:27 smarty/forms:15 smarty/forms:17 smarty/pages:21
-#: smarty/pages:77
+#: smarty/pages:79
 msgid "Owner"
 msgstr "Proprietario"
 
@@ -1929,7 +2029,7 @@ msgstr "Messaggio"
 msgid "Message to user"
 msgstr "Messaggio all'utente"
 
-#: smarty/dialog:49
+#: smarty/dialog:43
 msgid "Send message"
 msgstr "Invia un messaggio"
 
@@ -2158,6 +2258,108 @@ msgstr "Vuoi davvero eliminare questo commento di news?"
 msgid "Scripts management"
 msgstr "Gestione script"
 
+#: smarty/admin/pages:3
+msgid "GeoKrety generator result"
+msgstr "Risultato del generatore GeoKrety"
+
+#: smarty/admin/pages:10
+msgid "There is no results."
+msgstr "Non ci sono risultati."
+
+#: smarty/admin/pages:3 smarty/admin/pages:9
+msgid "GeoKrety generator"
+msgstr "Generatore di GeoKrety"
+
+#: smarty/admin/pages:14
+msgid "General details"
+msgstr "Dettagli generali"
+
+#: smarty/admin/pages:19
+msgid "How many GeoKrety to create"
+msgstr "Quanti GeoKrety creare"
+
+#: smarty/admin/pages:22
+msgid "From 1 to %1."
+msgstr "Da 1 a %1."
+
+#: smarty/admin/pages:27
+msgid "Owner ID"
+msgstr "ID Proprietario"
+
+#: smarty/admin/pages:30
+msgid "Leave empty or set 0 to not set any owner."
+msgstr "Lasciare vuoto o impostare a 0 per non impostare alcun proprietario."
+
+#: smarty/admin/pages:35
+msgid "GeoKrety name template"
+msgstr "Modello di nome GeoKrety"
+
+#: smarty/admin/pages:37 smarty/forms:13 smarty/forms:15 smarty/forms:8
+#: smarty/forms:10
+msgid "GeoKret name"
+msgstr "Nome del GeoKret"
+
+#: smarty/admin/pages:38
+#, php-format
+msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
+msgstr "Usa gli specificatori di formato php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> per sostituire l'incremento. es.: \"%02d\""
+
+#: smarty/admin/pages:41
+msgid "Start at"
+msgstr "Inizia da"
+
+#: smarty/admin/pages:48 smarty/forms:20
+msgid "GeoKret type"
+msgstr "GeoKret type"
+
+#: smarty/admin/pages:61 smarty/forms:33 smarty/forms:38
+msgid "What is this GeoKret mission?"
+msgstr "Che cos'è questa missione GeoKret?"
+
+#: smarty/admin/pages:66
+msgid "Pictures"
+msgstr "Immagini"
+
+#: smarty/admin/pages:82
+msgid "Tracking Code prefix"
+msgstr "Prefisso codice di tracciamento"
+
+#: smarty/admin/pages:89
+msgid "Tracking Code length"
+msgstr "Lunghezza codice di tracciamento"
+
+#: smarty/admin/pages:96
+msgid "Tracking Code Alphabet"
+msgstr "Alfabeto Codice di tracciamento"
+
+#: smarty/admin/pages:103
+msgid "Tracking Code suffix"
+msgstr "Suffisso codice di tracciamento"
+
+#: smarty/admin/pages:114 smarty/pages:22
+msgid "Owner Code"
+msgstr "Codice proprietario"
+
+#: smarty/admin/pages:119
+msgid "Owner Code prefix"
+msgstr "Prefisso codice proprietario"
+
+#: smarty/admin/pages:126
+msgid "Owner Code length"
+msgstr "Lunghezza codice proprietario"
+
+#: smarty/admin/pages:133
+msgid "Owner Code Alphabet"
+msgstr "Alfabeto Codice Proprietario"
+
+#: smarty/admin/pages:140
+msgid "Owner Code suffix"
+msgstr "Suffisso del codice del proprietario"
+
+#: smarty/admin/pages:151
+msgid "Generate"
+msgstr "Genera"
+
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
 msgstr "Azioni di amministrazione sugli utenti"
@@ -2195,8 +2397,8 @@ msgid "You then will be able to manage your GeoKrety inventory, upload pictures,
 msgstr "Sarai quindi in grado di gestire il tuo inventario GeoKrety, caricare immagini, modificare i registri e, naturalmente, creare il tuo GeoKrety!"
 
 #: smarty/banners:3
-msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
-msgstr "Siamo spiacenti, ma abbiamo problemi nell'inviare le tue notifiche email. La tua email è ancora valida?"
+msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+msgstr ""
 
 #: smarty/banners:3 smarty/banners:2
 msgid "Close"
@@ -2266,7 +2468,7 @@ msgstr "Logga un Geokret"
 msgid "Home"
 msgstr "Home"
 
-#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:24
+#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:26
 msgid "News"
 msgstr "Notizie"
 
@@ -2366,25 +2568,13 @@ msgstr "Gli avvisi di posta elettronica possono contenere, informazioni di viagg
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
 msgstr "Sì, accetto i <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">termini di utilizzo</a>."
 
-#: smarty/forms:61 smarty/forms:77
+#: smarty/forms:54 smarty/forms:70
 msgid "Register"
 msgstr "Registrati"
 
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "Modifica un GeoKret"
-
-#: smarty/forms:13 smarty/forms:15 smarty/forms:8 smarty/forms:10
-msgid "GeoKret name"
-msgstr "Nome del GeoKret"
-
-#: smarty/forms:20
-msgid "GeoKret type"
-msgstr "GeoKret type"
-
-#: smarty/forms:33 smarty/forms:38
-msgid "What is this GeoKret mission?"
-msgstr "Che cos'è questa missione GeoKret?"
 
 #: smarty/forms:41
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
@@ -2403,8 +2593,8 @@ msgid "Identify GeoKret"
 msgstr "Identifica il GeoKret"
 
 #: smarty/forms:30
-msgid "Verify tracking code"
-msgstr "Verifica codice di tracciamento"
+msgid "Verify Tracking Code"
+msgstr "Verifica il codice di tracciamento"
 
 #: smarty/forms:33
 msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
@@ -2562,11 +2752,11 @@ msgstr "Nessun GeoKrety ha ancora visitato il cache %1."
 msgid "%1's recent moves"
 msgstr "%1mosse recenti"
 
-#: smarty/pages:21 smarty/pages:38 smarty/pages:22
+#: smarty/pages:21 smarty/pages:40 smarty/pages:22
 msgid "Spotted in"
 msgstr "Spotted in"
 
-#: smarty/pages:23 smarty/pages:22 smarty/pages:40
+#: smarty/pages:23 smarty/pages:22 smarty/pages:42
 msgid "Last move"
 msgstr "Ultima mossa"
 
@@ -2646,7 +2836,7 @@ msgstr "Recupero password"
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Se hai convalidato il tuo indirizzo email in passato, puoi recuperarlo facilmente. Altrimenti, dovrai creare un altro account, mi dispiace."
 
-#: smarty/pages:40
+#: smarty/pages:34
 msgid "Send me a recovery link"
 msgstr "Inviami un link di recupero"
 
@@ -2709,10 +2899,6 @@ msgstr "Seleziona lo sfondo statico preferito"
 #: smarty/pages:37
 msgid "Your current statpic"
 msgstr "La tua statpic attuale"
-
-#: smarty/pages:22
-msgid "Owner Code"
-msgstr "Codice proprietario"
 
 #: smarty/pages:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
@@ -2810,19 +2996,19 @@ msgstr "Definisci una nuova password."
 msgid "Pictures of %1's GeoKrety"
 msgstr "Immagini di GeoKrety di %1"
 
-#: smarty/pages:3 smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "Welcome to GeoKrety.org!"
 msgstr "Benvenuti su GeoKrety.org!"
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "Latest moves"
 msgstr "Ultime mosse"
 
-#: smarty/pages:57
+#: smarty/pages:59
 msgid "Recent pictures"
 msgstr "Immagini recenti"
 
-#: smarty/pages:70
+#: smarty/pages:72
 msgid "Recently created GeoKrety"
 msgstr "GeoKrety creato di recente"
 
@@ -2965,6 +3151,26 @@ msgstr "Ora sei in grado di <a href=\"%1\">postare un movimento</a> e <a href=\"
 #: smarty/pages:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
 msgstr "Hai appena completato la registrazione. Ora potresti voler effettuare il login e spostare il tuo primo GeoKret."
+
+#: smarty/pages:3
+msgid "Change username"
+msgstr ""
+
+#: smarty/pages:9
+msgid "Change your username"
+msgstr ""
+
+#: smarty/pages:16
+msgid "Once your username is changed, you will need to reconnect."
+msgstr ""
+
+#: smarty/pages:20
+msgid "Desired username"
+msgstr ""
+
+#: smarty/pages:21
+msgid "New username"
+msgstr ""
 
 #: smarty/pages:3
 msgid "Hall of fame"

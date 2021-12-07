@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-14 20:52+0000\n"
-"PO-Revision-Date: 2021-11-14 21:01\n"
+"POT-Creation-Date: 2021-12-05 17:18+0000\n"
+"PO-Revision-Date: 2021-12-05 17:21\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-11-14 20:52+0000\n"
+"POT-Creation-Date: 2021-12-05 17:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -31,6 +31,49 @@ msgstr ""
 #, php-format
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Více účtů sdílí stejnou e-mailovou adresu. Prosím, <a href=\"%s\">kontaktujte nás</a>."
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+msgid "Something went wrong while generating GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "Transaction aborted."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
+msgid "There are duplicated tracking codes."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:85
+msgid "The number of instances to be created is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:96
+msgid "No such user found."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
+msgid "The \"start at\" value is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+msgid "The \"TCPrefix\" value is invalid."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
+#, php-format
+msgid "It must not be in list \"%s\"."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:119
+msgid "The \"TCPrefix\" + \"TCSuffix\" length is greater than \"TCLength\"."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
+msgid "No more Tracking Code available using this pattern."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
 #, php-format
@@ -72,8 +115,8 @@ msgid "Sorry but this mail address is already in use."
 msgstr "Omlouváme se, ale tato e-mailová adresa je již registrovaná."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
-msgid "Sorry, the provided owner code and tracking code doesn't match."
-msgstr "Zadaný kód majitele a trackovací kód bohužel nesouhlasí."
+msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
 msgid "You are already the owner."
@@ -83,11 +126,11 @@ msgstr "Již jste vlastníkem."
 msgid "Sorry, this owner code has already been used."
 msgstr "Lituji, tento kód majitele už byl použit."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:68
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
 msgid "Something went wrong while registering the adoption."
 msgstr "Při registraci adopce nastala chyba."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:76
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
 msgstr "Gratulujeme! Nyní jste vlastníkem %s."
@@ -171,12 +214,16 @@ msgstr "Špatný secid"
 msgid "Wrong date or time"
 msgstr "Špatné datum nebo čas"
 
-#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:206
+#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:207
 msgid "Waypoint parameter must be provided."
 msgstr "Musí být uveden parametr trasového bodu."
 
+#: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:217
+msgid "\"nr\" parameter must be provided."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/Pages/Login.php:50
-#: website/app/GeoKrety/Controller/Pages/Login.php:147
+#: website/app/GeoKrety/Controller/Pages/Login.php:153
 msgid "Username and password doesn't match."
 msgstr "Uživatelské jméno a heslo nesouhlasí."
 
@@ -184,30 +231,30 @@ msgstr "Uživatelské jméno a heslo nesouhlasí."
 msgid "Welcome on board!"
 msgstr "Vítejte na palubě!"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:128
+#: website/app/GeoKrety/Controller/Pages/Login.php:134
 msgid "Please provide 'login' and 'password' parameters."
 msgstr "Uveďte prosím parametry 'login' a 'heslo'."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:136
+#: website/app/GeoKrety/Controller/Pages/Login.php:142
 msgid "Your account is not valid."
 msgstr "Váš účet není platný."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:158
 #: website/app/GeoKrety/Controller/Pages/Login.php:164
+#: website/app/GeoKrety/Controller/Pages/Login.php:170
 msgid "Invalid \"secid\""
 msgstr "Neplatný \"secid\""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:213
+#: website/app/GeoKrety/Controller/Pages/Login.php:219
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Váš účet je již propojen s %s"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:218
+#: website/app/GeoKrety/Controller/Pages/Login.php:224
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Tento účet %s je již propojen s jiným GeoKrety účtem."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:233
+#: website/app/GeoKrety/Controller/Pages/Login.php:239
 msgid "Auth request was canceled."
 msgstr "Požadavek na ověření byl zrušen."
 
@@ -391,6 +438,14 @@ msgstr "Vaše domovské souřadnice byly úspěšně uloženy."
 msgid "Your old password is invalid."
 msgstr "Vaše staré heslo je neplatné."
 
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
+msgid "Username changed. Please login again."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:49
+msgid "Sorry, to use this feature, you must have a valid registered email address."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:50
 msgid "Waypoint seems empty."
@@ -515,6 +570,10 @@ msgstr "Vaše heslo bylo změněno"
 msgid "Contact from user %s"
 msgstr "Kontakt od uživatele %s"
 
+#: website/app/GeoKrety/Email/UsernameChange.php:15
+msgid "Your username has been changed"
+msgstr ""
+
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
 msgstr "Tradiční"
@@ -560,7 +619,7 @@ msgid "dip"
 msgstr "protáhnout"
 
 #: website/app/GeoKrety/LogType.php:121 smarty/blocks/geokret:56
-#: smarty/pages:78
+#: smarty/pages:80
 msgid "Born"
 msgstr "Narozen"
 
@@ -607,6 +666,10 @@ msgstr "Zadána neplatná jednotka: %s"
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 msgstr "<tspan font-weight=\"bold\">Uživatelská příručka:</tspan> <tspan font-weight=\"bold\">1.</tspan> Vezměte tento GeoKret. <tspan font-weight=\"bold\">Vezměte prosím na vědomí jeho Sledovací kód.</tspan> <tspan font-weight=\"bold\">2.</tspan> Skryjte v jiné keši. <tspan font-weight=\"bold\">3.</tspan> Zaregistrujte cestu na <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 
+#: website/app/GeoKrety/Service/SecretCode.php:33
+msgid "Failed to generate the Tracking Code"
+msgstr ""
+
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
@@ -617,38 +680,44 @@ msgstr "Sledovací kód \"%s\" se zdá být příliš krátký. Očekáváme %d 
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
 msgstr "Sledovací kód \"%s\" se zdá být příliš dlouhý. Očekáváme zde %d znaků."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:37
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
 #, php-format
 msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't starts with 'GK' 😉"
 msgstr "Zdá se, že jste použili veřejný identifikátor GeoKret \"%s\". Zde potřebujeme soukromý kód (Tracking Code). Tip: nezačíná s 'GK' 😉"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:49
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:57
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
 msgstr "Sledovací kód \"%s\" obsahuje neplatné znaky."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:59
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:67
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
 msgstr "Omlouváme se, ale kód sledování \"%s\" nebyl nalezen v naší databázi."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:106
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
 msgid "No Tracking Code provided."
 msgstr "Nebyl zadán žádný sledovací kód."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:110
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:118
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
 msgstr "Anonymní uživatelé nemohou zkontrolovat více sledovacích kódů najednou. Nejprve se přihlaste."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:122
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "Pouze %d sledovacích kódů může být zadáno najednou, je vybráno %d."
 
-#: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:32
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
 #, php-format
-msgid "Sorry, but username \"%s\" is already used. If that's your account, please <a href=\"%s\">login</a> first."
-msgstr "Omlouváme se, ale uživatelské jméno \"%s\" se již používá. Pokud je to váš účet, nejprve se <a href=\"%s\">přihlaste</a>."
+msgid "Sorry, but username \"%s\" is already used."
+msgstr "Omlouváme se, ale uživatelské jméno \"%s\" se již používá."
+
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
+#, php-format
+msgid "If that's your account, please <a href=\"%s\">login</a> first."
+msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
@@ -802,29 +871,57 @@ msgstr "Tento jazyk není podporován"
 msgid "The password must be ciphered"
 msgstr "Heslo musí být šifrováno"
 
-#: website/app/validators.php:48
+#: website/app/validators.php:46
+msgid "This username is already used"
+msgstr ""
+
+#: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
 msgstr "Anonymní uživatelé musí poskytnout hodnotu pro {0}"
 
-#: website/app/validators.php:60
+#: website/app/validators.php:67
 msgid "Registered users must provide a value for {0}"
 msgstr "Registrovaní uživatelé musí poskytnout hodnotu pro {0}"
 
-#: website/app/validators.php:71
+#: website/app/validators.php:78
 msgid "This logtype require valid {0} coordinates"
 msgstr "Tento typ logu vyžaduje platné souřadnice {0}"
 
-#: website/app/validators.php:82
+#: website/app/validators.php:89
 msgid "Something already exists at the same datetime \"{0}\""
 msgstr "Něco již existuje ke stejnému datu a času \"{0}\""
 
-#: website/app/validators.php:90
+#: website/app/validators.php:97
 msgid "{0} cannot be in the future"
 msgstr "{0} nemůže být v budoucnu"
 
-#: website/app/validators.php:98
+#: website/app/validators.php:105
 msgid "{0} must be after GeoKret birth"
 msgstr "{0} musí být po narození GeoKrtka"
+
+#: smarty/emails:3
+msgid "Username changed"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your username on GeoKrety.org has been changed."
+msgstr ""
+
+#: smarty/emails:8
+msgid "."
+msgstr ""
+
+#: smarty/emails:9
+msgid "Please enjoy your new username!"
+msgstr ""
+
+#: smarty/emails:13 smarty/emails:12 smarty/dialog:2 smarty/dialog:7
+msgid "Login"
+msgstr "Přihlášení"
+
+#: smarty/emails:18
+msgid "You're getting this email because you've changed your username on our website."
+msgstr ""
 
 #: smarty/emails:3
 msgid "Congratulation"
@@ -837,10 +934,6 @@ msgstr "Vaše e-mailová adresa byla úspěšně změněna."
 #: smarty/emails:8
 msgid "Your email address has been successfully changed to: %1."
 msgstr "Vaše e-mailová adresa byla úspěšně změněna na: %1."
-
-#: smarty/emails:12 smarty/dialog:2 smarty/dialog:7
-msgid "Login"
-msgstr "Přihlášení"
 
 #: smarty/emails:15 smarty/emails:13
 msgid "If you did not requested this, click the link below."
@@ -1165,7 +1258,7 @@ msgstr "Pozice"
 
 #: smarty/emails:38 smarty/emails:81 smarty/emails:127 smarty/emails:171
 #: smarty/dialog:21 smarty/dialog:19 smarty/forms:106 smarty/forms:247
-#: smarty/pages:22 smarty/pages:20 smarty/pages:37 smarty/pages:39
+#: smarty/pages:22 smarty/pages:20 smarty/pages:37 smarty/pages:41
 msgid "Comment"
 msgstr "Poznámka"
 
@@ -1193,7 +1286,7 @@ msgstr "Vzdálenost od posledního pohybu"
 msgid "Watched GeoKrety latest moves"
 msgstr "Poslední pohyby sledovaných GeoKrtků"
 
-#: smarty/emails:129 smarty/pages:24 smarty/pages:23 smarty/pages:41
+#: smarty/emails:129 smarty/pages:24 smarty/pages:23 smarty/pages:43
 msgid "Distance"
 msgstr "Vzdálenost"
 
@@ -1217,8 +1310,8 @@ msgstr "Ověřte Vaši e-mailovou adresu"
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
 msgstr "Tento e-mail jste obdrželi, protože musíme ověřit, zda je váš e-mail registrovaný na našem webu stále platný."
 
-#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:37
-#: smarty/pages:76 smarty/pages:38 smarty/pages:81
+#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:39
+#: smarty/pages:78 smarty/pages:38 smarty/pages:81
 msgid "ID"
 msgstr "ID"
 
@@ -1296,7 +1389,7 @@ msgstr "Zobrazit posun na mapě"
 msgid "Report as missing"
 msgstr "Nahlásit jako chybějící"
 
-#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:18
+#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:21
 msgid "Upload a picture"
 msgstr "Nahrát obrázek"
 
@@ -1392,8 +1485,8 @@ msgstr "Upravit podrobnosti GeoKrtka"
 msgid "Reference number"
 msgstr "Referenční číslo"
 
-#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/forms:21
-#: smarty/forms:31 smarty/pages:15
+#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/admin/pages:77
+#: smarty/forms:21 smarty/forms:31 smarty/pages:15
 msgid "Tracking Code"
 msgstr "Identifikační kód"
 
@@ -1482,7 +1575,8 @@ msgstr "Převést vlastnictví"
 msgid "Actions"
 msgstr "Akce"
 
-#: smarty/blocks/geokret:3 smarty/forms:31 smarty/forms:36
+#: smarty/blocks/geokret:3 smarty/admin/pages:59 smarty/forms:31
+#: smarty/forms:36
 msgid "Mission"
 msgstr "Úkoly"
 
@@ -1499,54 +1593,58 @@ msgid "Subscribe to RSS channel"
 msgstr "Odebírat RSS"
 
 #: smarty/blocks/user:15
+msgid "Username change"
+msgstr ""
+
+#: smarty/blocks/user:18
 msgid "Password change"
 msgstr "Změna hesla"
 
-#: smarty/blocks/user:29
+#: smarty/blocks/user:32
 msgid "Joined us"
 msgstr "Připojen jako"
 
-#: smarty/blocks/user:31 smarty/dialog:11 smarty/forms:33
+#: smarty/blocks/user:34 smarty/dialog:11 smarty/forms:33
 msgid "Language"
 msgstr "Jazyk"
 
-#: smarty/blocks/user:33
+#: smarty/blocks/user:36
 msgid "Nothing selected"
 msgstr "Nic nebylo vybráno"
 
-#: smarty/blocks/user:36
+#: smarty/blocks/user:39
 msgid "Choose preferred language"
 msgstr "Vyberte preferovaný jazyk"
 
-#: smarty/blocks/user:43 smarty/pages:17
+#: smarty/blocks/user:46 smarty/pages:17
 msgid "Email"
 msgstr "E-mail"
 
-#: smarty/blocks/user:48
+#: smarty/blocks/user:51
 msgid "Pending email validation, don't forget to click the link in validation mail!"
 msgstr "Nevyřízené ověření e-mailu, nezapomeňte v potvrzovacím e-mailu kliknout na odkaz!"
 
-#: smarty/blocks/user:50
+#: smarty/blocks/user:53
 msgid "No email address, please add one!"
 msgstr "Žádná e-mailová adresa, prosím přidejte!"
 
-#: smarty/blocks/user:53
+#: smarty/blocks/user:56
 msgid "Update email address"
 msgstr "Aktualizovat e-mailovou adresu"
 
-#: smarty/blocks/user:58
+#: smarty/blocks/user:61
 msgid "Secid"
 msgstr "Secid"
 
-#: smarty/blocks/user:61
+#: smarty/blocks/user:64
 msgid "Used to authenticate in other applications. Keep it secret!"
 msgstr "Používá se k autentizaci v jiných aplikacích. Uchovávejte ho v tajnosti!"
 
-#: smarty/blocks/user:62
+#: smarty/blocks/user:65
 msgid "Generate a new secid"
 msgstr "Vygenerovat nový secid"
 
-#: smarty/blocks/user:72
+#: smarty/blocks/user:75
 msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
 msgstr "Chcete-li změnit své uživatelské jméno nebo odstranit svůj účet? Pošlete nám <a href=\"%1\">e-mail</a>!"
 
@@ -1732,10 +1830,11 @@ msgstr "Zpět na stránku GeoKrtka"
 
 #: smarty/dialog:15 smarty/dialog:26 smarty/dialog:36 smarty/dialog:50
 #: smarty/dialog:65 smarty/dialog:45 smarty/dialog:14 smarty/dialog:20
-#: smarty/dialog:47 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
+#: smarty/dialog:41 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
 #: smarty/dialog:32 smarty/dialog:11 smarty/dialog:53 smarty/dialog:23
 #: smarty/dialog:25 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
-#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:65
+#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:29
+#: smarty/pages:65
 msgid "Dismiss"
 msgstr "Odmítnout"
 
@@ -1751,12 +1850,13 @@ msgstr "Vyberte preferovaný jazyk"
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
 msgstr "Toto bude výchozí jazyk, když se přihlásíte a hlavní jazyk e-mailů, které můžete obdržet."
 
-#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:46
-#: smarty/dialog:50 smarty/pages:64
+#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:40
+#: smarty/dialog:50 smarty/pages:28 smarty/pages:64
 msgid "Back to user page"
 msgstr "Zpět na stránku uživatele"
 
 #: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
+#: smarty/pages:31
 msgid "Change"
 msgstr "Změnit"
 
@@ -1838,7 +1938,7 @@ msgid "Name or ID"
 msgstr "Jméno nebo ID"
 
 #: smarty/dialog:27 smarty/forms:15 smarty/forms:17 smarty/pages:21
-#: smarty/pages:77
+#: smarty/pages:79
 msgid "Owner"
 msgstr "Majitel"
 
@@ -1929,7 +2029,7 @@ msgstr "Zprávy"
 msgid "Message to user"
 msgstr "Zpráva uživateli"
 
-#: smarty/dialog:49
+#: smarty/dialog:43
 msgid "Send message"
 msgstr "Poslat zprávu"
 
@@ -2158,6 +2258,108 @@ msgstr "Opravdu chcete odstranit tento komentář?"
 msgid "Scripts management"
 msgstr ""
 
+#: smarty/admin/pages:3
+msgid "GeoKrety generator result"
+msgstr ""
+
+#: smarty/admin/pages:10
+msgid "There is no results."
+msgstr ""
+
+#: smarty/admin/pages:3 smarty/admin/pages:9
+msgid "GeoKrety generator"
+msgstr ""
+
+#: smarty/admin/pages:14
+msgid "General details"
+msgstr ""
+
+#: smarty/admin/pages:19
+msgid "How many GeoKrety to create"
+msgstr ""
+
+#: smarty/admin/pages:22
+msgid "From 1 to %1."
+msgstr ""
+
+#: smarty/admin/pages:27
+msgid "Owner ID"
+msgstr ""
+
+#: smarty/admin/pages:30
+msgid "Leave empty or set 0 to not set any owner."
+msgstr ""
+
+#: smarty/admin/pages:35
+msgid "GeoKrety name template"
+msgstr ""
+
+#: smarty/admin/pages:37 smarty/forms:13 smarty/forms:15 smarty/forms:8
+#: smarty/forms:10
+msgid "GeoKret name"
+msgstr "Jméno GeoKrtka"
+
+#: smarty/admin/pages:38
+#, php-format
+msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
+msgstr ""
+
+#: smarty/admin/pages:41
+msgid "Start at"
+msgstr ""
+
+#: smarty/admin/pages:48 smarty/forms:20
+msgid "GeoKret type"
+msgstr "GeoKret type"
+
+#: smarty/admin/pages:61 smarty/forms:33 smarty/forms:38
+msgid "What is this GeoKret mission?"
+msgstr "Co je tato GeoKrtková mise?"
+
+#: smarty/admin/pages:66
+msgid "Pictures"
+msgstr "Obrázky"
+
+#: smarty/admin/pages:82
+msgid "Tracking Code prefix"
+msgstr ""
+
+#: smarty/admin/pages:89
+msgid "Tracking Code length"
+msgstr ""
+
+#: smarty/admin/pages:96
+msgid "Tracking Code Alphabet"
+msgstr ""
+
+#: smarty/admin/pages:103
+msgid "Tracking Code suffix"
+msgstr ""
+
+#: smarty/admin/pages:114 smarty/pages:22
+msgid "Owner Code"
+msgstr "Kód vlastníka"
+
+#: smarty/admin/pages:119
+msgid "Owner Code prefix"
+msgstr ""
+
+#: smarty/admin/pages:126
+msgid "Owner Code length"
+msgstr ""
+
+#: smarty/admin/pages:133
+msgid "Owner Code Alphabet"
+msgstr ""
+
+#: smarty/admin/pages:140
+msgid "Owner Code suffix"
+msgstr ""
+
+#: smarty/admin/pages:151
+msgid "Generate"
+msgstr ""
+
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
 msgstr ""
@@ -2195,8 +2397,8 @@ msgid "You then will be able to manage your GeoKrety inventory, upload pictures,
 msgstr "Pak budete moci spravovat svůj inventář GeoKrety, nahrát obrázky, upravit logy a samozřejmě vytvořit vlastní GeoKrety!"
 
 #: smarty/banners:3
-msgid "Sorry, but we have troubles sending your email notifications. Is your email still valid?"
-msgstr "Litujeme, ale máme problém s odeslání mailu. Je váš e-mail stále platný?"
+msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+msgstr ""
 
 #: smarty/banners:3 smarty/banners:2
 msgid "Close"
@@ -2266,7 +2468,7 @@ msgstr "Zapiš Geokrtka"
 msgid "Home"
 msgstr "Domů"
 
-#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:24
+#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:26
 msgid "News"
 msgstr "Novinky"
 
@@ -2366,25 +2568,13 @@ msgstr "E-mailová upozornění mohou obsahovat, cestovní informace o vašem Ge
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
 msgstr "Ano, souhlasím s <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">podmínkami používání</a>."
 
-#: smarty/forms:61 smarty/forms:77
+#: smarty/forms:54 smarty/forms:70
 msgid "Register"
 msgstr "Registrovat se"
 
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "Upravit GeoKret"
-
-#: smarty/forms:13 smarty/forms:15 smarty/forms:8 smarty/forms:10
-msgid "GeoKret name"
-msgstr "Jméno GeoKrtka"
-
-#: smarty/forms:20
-msgid "GeoKret type"
-msgstr "GeoKret type"
-
-#: smarty/forms:33 smarty/forms:38
-msgid "What is this GeoKret mission?"
-msgstr "Co je tato GeoKrtková mise?"
 
 #: smarty/forms:41
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
@@ -2403,8 +2593,8 @@ msgid "Identify GeoKret"
 msgstr "Identifikovat GeoKrtka"
 
 #: smarty/forms:30
-msgid "Verify tracking code"
-msgstr "Ověřit sledovací kód"
+msgid "Verify Tracking Code"
+msgstr ""
 
 #: smarty/forms:33
 msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
@@ -2562,11 +2752,11 @@ msgstr "Žádný GeoKrtek zatím nenavštívil keš %1."
 msgid "%1's recent moves"
 msgstr "Nedávné tahy uživatele %1"
 
-#: smarty/pages:21 smarty/pages:38 smarty/pages:22
+#: smarty/pages:21 smarty/pages:40 smarty/pages:22
 msgid "Spotted in"
 msgstr "Spotted in"
 
-#: smarty/pages:23 smarty/pages:22 smarty/pages:40
+#: smarty/pages:23 smarty/pages:22 smarty/pages:42
 msgid "Last move"
 msgstr "Poslední tah"
 
@@ -2646,7 +2836,7 @@ msgstr "Obnovení hesla"
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
 msgstr "Pokud jste ověřili svou e-mailovou adresu v minulosti, pak ji můžete snadno obnovit. Jinak si budeš muset vytvořit jiný účet, omlouváme se."
 
-#: smarty/pages:40
+#: smarty/pages:34
 msgid "Send me a recovery link"
 msgstr "Pošlete mi odkaz na obnovení"
 
@@ -2709,10 +2899,6 @@ msgstr "Vyberte preferované statické pozadí"
 #: smarty/pages:37
 msgid "Your current statpic"
 msgstr "Vaše aktuální statika"
-
-#: smarty/pages:22
-msgid "Owner Code"
-msgstr "Kód vlastníka"
 
 #: smarty/pages:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
@@ -2810,19 +2996,19 @@ msgstr "Zadejte prosím nové heslo."
 msgid "Pictures of %1's GeoKrety"
 msgstr "Obrázky %1GeoKrety"
 
-#: smarty/pages:3 smarty/pages:6
+#: smarty/pages:3 smarty/pages:8
 msgid "Welcome to GeoKrety.org!"
 msgstr "Vítejte na GeoKrety.org!"
 
-#: smarty/pages:31
+#: smarty/pages:33
 msgid "Latest moves"
 msgstr "Poslední tahy"
 
-#: smarty/pages:57
+#: smarty/pages:59
 msgid "Recent pictures"
 msgstr "Nedávné obrázky"
 
-#: smarty/pages:70
+#: smarty/pages:72
 msgid "Recently created GeoKrety"
 msgstr "Nedávno vytvořené GeoKrety"
 
@@ -2965,6 +3151,26 @@ msgstr "Nyní jste schopni <a href=\"%1\">zalogovat přesun</a> a <a href=\"%2\"
 #: smarty/pages:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
 msgstr "Právě jste dokončili registraci. Nyní se možná budete chtít přihlásit a posunout svůj první GeoKret."
+
+#: smarty/pages:3
+msgid "Change username"
+msgstr ""
+
+#: smarty/pages:9
+msgid "Change your username"
+msgstr ""
+
+#: smarty/pages:16
+msgid "Once your username is changed, you will need to reconnect."
+msgstr ""
+
+#: smarty/pages:20
+msgid "Desired username"
+msgstr ""
+
+#: smarty/pages:21
+msgid "New username"
+msgstr ""
 
 #: smarty/pages:3
 msgid "Hall of fame"
