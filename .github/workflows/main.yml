@@ -1,0 +1,126 @@
+name: Semantic release
+
+on:
+  push:
+    branches:
+      - feature/new-theme
+
+jobs:
+  release:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # setting up Node
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      # disable package-lock.json to stop it being created
+      - name: Disable package-lock.json
+        run: npm config set package-lock false
+
+      # Installing package dependencies
+      - name: Install dependencies
+        run: |
+          npm i -D js-yaml@4.1.0 conventional-changelog-conventionalcommits semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/exec @semantic-release/changelog @semantic-release/github @semantic-release/git
+      - name: Install jq
+        run: |
+          sudo apt-get install jq -y
+
+      - name: New tag
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIT_AUTHOR_NAME: geokrety-bot
+          GIT_AUTHOR_EMAIL: geokrety-bot@users.noreply.github.com
+          GIT_COMMITTER_NAME: geokrety-bot
+          GIT_COMMITTER_EMAIL: geokrety-bot@users.noreply.github.com
+        run: |
+          cat > .releaserc.json <<EOF
+            {
+              "branches": ["semver", "feature/new-theme"],
+              "debug": "true",
+              "plugins": [
+                ["@semantic-release/commit-analyzer",{
+                  "preset": "angular",
+                  "releaseRules": [
+                      {"breaking": true, "release": "major"},
+                      {"type": "feat", "release": "minor"},
+                      {"type": "fix", "release": "patch"},
+                      {"type": "docs", "release": false},
+                      {"type": "style", "release": "patch"},
+                      {"type": "refactor", "release": "patch"},
+                      {"type": "perf", "release": "patch"},
+                      {"type": "test", "release": false},
+                      {"type": "chore", "release": "patch"},
+                      {"type": "dependencies", "release": "patch"},
+                      {"type": "revert", "release": "patch"},
+                      {"type": "ci", "release": false}
+                    ],
+                    "parserOpts": {
+                      "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
+                    }
+                }],
+                ["@semantic-release/release-notes-generator",{
+                  "preset": "conventionalCommits",
+                  "parserOpts": {
+                    "noteKeywords": [
+                      "BREAKING CHANGE",
+                      "BREAKING CHANGES"
+                    ]
+                  },
+                  "presetConfig": {
+                    "types": [
+                      {
+                        "type": "feat",
+                        "section": "Features"
+                      },
+                      {
+                        "type": "fix",
+                        "section": "Bug Fixes"
+                      },
+                      {
+                        "type": "perf",
+                        "section": "Performance Improvements"
+                      },
+                      {
+                        "type": "revert",
+                        "section": "Reverts"
+                      },
+                      {
+                        "type": "refactor",
+                        "section": "Code Refactoring"
+                      },
+                      {
+                        "type": "style",
+                        "section": "Style"
+                      },
+                      {
+                        "type": "dependencies",
+                        "section": "Dependencies",
+                        "hidden": false
+                      },
+                      {
+                        "type": "chore",
+                        "section": "Chores",
+                        "hidden": false
+                      }
+                    ]
+                  }
+                }],
+                "@semantic-release/changelog",
+                "@semantic-release/github",
+                [
+                  "@semantic-release/git",
+                  {
+                    "assets": "CHANGELOG.md",
+                    "message": "ci(release): \${nextRelease.version}\n\n\${nextRelease.notes}"
+                  }
+                ]
+              ]
+            }
+          EOF
+          npx semantic-release@v17.4.2
