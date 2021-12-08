@@ -1,0 +1,21 @@
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - master
+      - l10n_smaster
+
+jobs:
+
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install php-cs-fixer
+        run: curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer.phar && sudo chmod a+x php-cs-fixer.phar && sudo mv php-cs-fixer.phar /usr/local/bin/php-cs-fixer
+      - name: Install hadolint
+        run: curl -L "https://github.com/hadolint/hadolint/releases/download/v1.17.6/hadolint-$(uname -s)-$(uname -m)" -o hadolint && sudo chmod a+x hadolint && ls -la $HOME && sudo mv hadolint /usr/local/bin/
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: pre-commit/action@v2.0.3
