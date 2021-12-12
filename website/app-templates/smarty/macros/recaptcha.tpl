@@ -3,7 +3,9 @@
     {if GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}
         <hr>
         <div class="{$class}">
-            <div class="g-recaptcha" data-sitekey="{GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}" id="recaptcha_wrapper"></div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="g-recaptcha" data-sitekey="{GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}" id="recaptcha_wrapper"></div>
+            </div>
         </div>
     {/if}
 {/function}

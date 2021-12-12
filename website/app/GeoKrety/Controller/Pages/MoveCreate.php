@@ -162,13 +162,10 @@ class MoveCreate extends Base {
         // We use the first move to retrieve other fields (date, author etc)
         Smarty::assign('move', $moves[0]);
 
-        // reCaptcha
-        if (!$f3->get('SESSION.CURRENT_USER') && GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
-            $recaptcha = new ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
-            $resp = $recaptcha->verify($f3->get('POST.g-recaptcha-response'), $f3->get('IP'));
-            if (!$resp->isSuccess()) {
-                $errors = array_merge($errors, [_('reCaptcha failed!')]);
-            }
+        // reCaptcha only for anonymous users
+        if (!$f3->get('SESSION.CURRENT_USER')) {
+            $captcha_errors = $this->checkCaptcha(null);
+            $errors = array_merge($errors, !is_null($captcha_errors) ? [$captcha_errors] : []);
         }
 
         // Check for errors

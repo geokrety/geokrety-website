@@ -27,15 +27,7 @@ class PasswordRecovery extends Base {
 
     public function post(\Base $f3) {
         // reCaptcha
-        if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
-            $recaptcha = new ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
-            $resp = $recaptcha->verify($f3->get('POST.g-recaptcha-response'), $f3->get('IP'));
-            if (!$resp->isSuccess()) {
-                Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
-                $this->get();
-                exit();
-            }
-        }
+        $this->checkCaptcha();
 
         // Check database for provided email
         $user = $this->user;

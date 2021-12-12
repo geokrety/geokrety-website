@@ -66,16 +66,22 @@ abstract class Base {
 //        \Flash::instance()->addMessage('<pre>'.$f3->get('DB')->log().'</pre>', 'warning');
 //    }
 
-    public function checkCaptcha(string $func = 'get') {
+    public function checkCaptcha(?string $func = 'get'): ?string {
         if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
             $recaptcha = new \ReCaptcha\ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
             $resp = $recaptcha->verify($this->f3->get('POST.g-recaptcha-response'), $this->f3->get('IP'));
             if (!$resp->isSuccess()) {
-                \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
+                $error = _('reCaptcha failed!');
+                if (is_null($func)) {
+                    return $error;
+                }
+                \Flash::instance()->addMessage($error, 'danger');
                 $this->$func($this->f3);
                 exit();
             }
         }
+
+        return null;
     }
 
     protected function checkCsrf(?string $func = 'get'): ?string {

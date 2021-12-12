@@ -64,15 +64,7 @@ class UserContact extends Base {
         Smarty::assign('mail', $mail);
 
         // reCaptcha
-        if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
-            $recaptcha = new \ReCaptcha\ReCaptcha(GK_GOOGLE_RECAPTCHA_SECRET_KEY);
-            $resp = $recaptcha->verify($f3->get('POST.g-recaptcha-response'), $f3->get('IP'));
-            if (!$resp->isSuccess()) {
-                \Flash::instance()->addMessage(_('reCaptcha failed!'), 'danger');
-                $this->get($f3);
-                exit();
-            }
-        }
+        $this->checkCaptcha();
 
         if ($mail->validate()) {
             $mail->save();
