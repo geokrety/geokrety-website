@@ -28,6 +28,9 @@ class RegistrationEmail extends BaseRegistration {
         // reCaptcha
         $this->checkCaptcha();
 
+        // Check CSRF
+        $this->checkCsrf();
+
         // Resend validation
         $token = new AccountActivationModel();
         $token->has('user', ['lower(username) = lower(?) AND _email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.username'), $f3->get('POST.email')]);

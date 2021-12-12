@@ -1,6 +1,7 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         DependencyLibrary
+Library         RequestsLibrary
 Resource        ../functions/PageRegistration.robot
 Suite Setup     Clear Database
 Force Tags      CreateAccount
@@ -79,3 +80,12 @@ Sign Out user
     Location Should Be                  ${PAGE_HOME_URL}
     Page Should Not Contain Element     ${NAVBAR_PROFILE_LINK}
     Page Should Contain Element         ${NAVBAR_SIGN_IN_LINK}
+
+Check csrf
+    ${params.newsid}    Set Variable        ${1}
+    Create Session                          gk      ${GK_URL}
+    ${auth} =           GET On Session      gk      /devel/
+    ${resp} =           POST On Session     gk      url=${PAGE_REGISTER_URL}?skip_csrf=False    expected_status=200
+    ${body} =           Convert To String   ${resp.content}
+    Should Contain                          ${body}    CSRF error, please try again.
+    Delete All Sessions

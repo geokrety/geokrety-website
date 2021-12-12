@@ -32,6 +32,7 @@ class RegistrationOAuth extends BaseRegistration {
         }
 
         $this->checkCaptcha();
+        $this->checkCsrf();
         $this->checkUniqueEmail();
 
         // Save
