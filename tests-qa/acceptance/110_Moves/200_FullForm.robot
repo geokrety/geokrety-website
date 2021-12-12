@@ -67,6 +67,16 @@ Found It Log It From GeoKret Page
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
     Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
 
+Check csrf
+    Create Session                          gk      ${GK_URL}
+    ${auth} =           GET On Session      gk      /devel/
+    ${auth} =           GET On Session      gk      /devel/users/${USER_1.name}/login
+    ${resp} =           POST On Session     gk      url=/en/moves?skip_csrf=False       expected_status=200
+    ${body} =           Convert To String   ${resp.content}
+    Should Contain                          ${body}    CSRF error, please try again.
+    Delete All Sessions
+
+
 
     # TODO Check log on GK page
     # TODO Check log on Home page

@@ -119,7 +119,6 @@ Textfield Should Not Contain
     ${text} =    Get Value    ${locator}
     Should Not Be Equal As Strings    ${not_expected}    ${text}
 
-
 Page WaitForFooterHome
     Wait Until Page Contains Element  ${FOOTER_HOME}
 

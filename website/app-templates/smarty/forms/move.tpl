@@ -265,6 +265,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-3 col-sm-offset-2">
+                            {call csrf}
                             <button type="button" id="submitButton" class="btn btn-primary btn-block">{t}Post your log{/t}</button>
                         </div>
                     </div>

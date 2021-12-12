@@ -11,6 +11,7 @@
 {\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
 {\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS)}
 {include file='macros/recaptcha.tpl'}
+{include file='macros/csrf.tpl'}
 
 {block name=content}
 {include file='banners/geokret_anonymous_log.tpl'}

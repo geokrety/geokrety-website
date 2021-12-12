@@ -39,6 +39,10 @@ class MoveCreateXML extends MoveCreate {
         if (!$f3->exists('POST.tracking_code')) {
             $f3->copy('POST.nr', 'POST.tracking_code');
         }
+        // We don't want to break existing clients
+        if (!$f3->exists('POST.csrf_token')) {
+            $f3->copy('SESSION.csrf', 'POST.csrf_token');
+        }
         $this->post_api_xml($f3);
     }
 

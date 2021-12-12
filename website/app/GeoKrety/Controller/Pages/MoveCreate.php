@@ -157,6 +157,10 @@ class MoveCreate extends Base {
         // We use the first move to retrieve other fields (date, author etc)
         Smarty::assign('move', $moves[0]);
 
+        // Check Csrf
+        $csrf_errors = $this->checkCsrf(null);
+        $errors = array_merge($errors, !is_null($csrf_errors) ? [$csrf_errors] : []);
+
         // reCaptcha only for anonymous users
         if (!$f3->get('SESSION.CURRENT_USER')) {
             $captcha_errors = $this->checkCaptcha(null);
