@@ -25,6 +25,8 @@ class GeokretCreate extends Base {
         $geokret->holder = $this->currentUser;
         $geokret->touch('created_on_datetime');
 
+        $this->checkCsrf();
+
         if ($geokret->validate()) {
             $geokret->save();
 

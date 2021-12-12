@@ -48,6 +48,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
+                    {call csrf}
                     <button type="submit" id="createOrUpdateSubmitButton" class="btn btn-primary">{if isset($geokret) && $geokret->gkid()}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
                 </div>
             </div>
