@@ -12,7 +12,6 @@ use GeoKrety\Service\Validation\Coordinates as CoordinatesValidation;
 use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
 use GeoKrety\Service\Validation\Waypoint as WaypointValidation;
 use ReCaptcha\ReCaptcha;
-use Sugar\Event;
 
 class MoveCreate extends Base {
     private Move $move;
@@ -77,7 +76,6 @@ class MoveCreate extends Base {
     public function post(\Base $f3) {
         $errors = [];
         $move = $this->move;
-        $isEdit = !is_null($move->id);
 
         $move->move_type = $f3->get('POST.logtype');
         if ($f3->get('SESSION.CURRENT_USER')) {
@@ -171,11 +169,6 @@ class MoveCreate extends Base {
         // Save the moves
         foreach ($moves as $_move) {
             $_move->save();
-            if ($isEdit) {
-                Event::instance()->emit('move.updated', $_move);
-            } else {
-                Event::instance()->emit('move.created', $_move);
-            }
         }
 
         $this->render($moves);
