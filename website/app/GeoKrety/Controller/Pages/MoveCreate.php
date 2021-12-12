@@ -15,10 +15,7 @@ use ReCaptcha\ReCaptcha;
 use Sugar\Event;
 
 class MoveCreate extends Base {
-    /**
-     * @var Move
-     */
-    private $move;
+    private Move $move;
 
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
@@ -184,7 +181,7 @@ class MoveCreate extends Base {
         $this->render($moves);
     }
 
-    protected function _checkErrors(array &$errors, $moves) {
+    protected function _checkErrors(array &$errors, $moves): bool {
         $hasError = sizeof($errors) > 0;
         foreach ($moves as $_move) {
             if (!$_move->validate()) {

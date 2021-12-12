@@ -13,6 +13,7 @@ use GeoKrety\Service\HTMLPurifier;
  * @property string content
  * @property DateTime created_on_datetime
  * @property DateTime|null updated_on_datetime
+ * @property int $icon
  */
 class NewsComment extends Base {
     use \Validation\Traits\CortexTrait;
