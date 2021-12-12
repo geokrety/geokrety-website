@@ -51,6 +51,9 @@ class NewsDetails extends Base {
         $subscription = $this->loadSubscription($f3);
         $subscription->subscribed = filter_var($f3->get('POST.subscribe'), FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
 
+        // Check Csrf
+        $this->checkCsrf();
+
         // Validate
         if ($comment->validate()) {
             // Save

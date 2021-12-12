@@ -4,6 +4,7 @@
 
 {\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
 {\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
+{include file='macros/csrf.tpl'}
 
 {block name=content}
 {include 'elements/news.tpl' item=$news}
@@ -34,6 +35,7 @@
             </div>
 
             <div class="modal-footer">
+                {call csrf}
                 <button type="submit" class="btn btn-primary">{t}Comment{/t}</button>
             </div>
 

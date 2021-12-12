@@ -1,5 +1,6 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
+Library         RequestsLibrary
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      News    News Details    News Subscription
@@ -97,6 +98,17 @@ Delete Comment Leave Subscription
     Wait Until Modal                                Do you really want to delete this news comment?
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
     Element Attribute Should Be                     ${NEWS_SUBSCRIPTION_BUTTON}         data-subscribed         1
+
+Check csrf
+    ${params.newsid}    Set Variable        ${1}
+    Create Session                          gk      ${GK_URL}
+    ${auth} =           GET On Session      gk      /devel/
+    ${auth} =           GET On Session      gk      /devel/users/${USER_1.name}/login
+    ${url_} =           Replace Variables   ${PAGE_NEWS_URL}
+    ${resp} =           POST On Session     gk      url=${url_}?skip_csrf=False    expected_status=200
+    ${body} =           Convert To String   ${resp.content}
+    Should Contain                          ${body}    CSRF error, please try again.
+    Delete All Sessions
 
 
 *** Keywords ***
