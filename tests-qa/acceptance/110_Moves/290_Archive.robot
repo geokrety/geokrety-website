@@ -40,26 +40,26 @@ Anonymous Cannot Archive Any GeoKret
     Create Session    gk                            ${GK_URL}
     # Init Session
     ${auth} =         GET On Session     gk         /
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_1.ref}/archive     expected_status=401
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_2.ref}/archive     expected_status=401
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True     expected_status=401
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_2.ref}/archive?skip_csrf=True     expected_status=401
     Delete All Sessions
 
 Owner Can Archive Its Own GeoKrety
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_1.ref}/archive     expected_status=200
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True     expected_status=200
     Delete All Sessions
 
 Owner Cannot Archive Others GeoKrety
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_2.ref}/archive     expected_status=403
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_2.ref}/archive?skip_csrf=True     expected_status=403
     Delete All Sessions
 
 Custom Message Can Be Provided
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_1.ref}/archive     expected_status=200
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True     expected_status=200
 
     Delete All Sessions
     Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
@@ -68,7 +68,7 @@ Custom Message Can Be Provided
 Default Message If None Provided
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_1.ref}/archive     data=&{CUSTOM_POST_FORM_DATA}    expected_status=200
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True     data=&{CUSTOM_POST_FORM_DATA}    expected_status=200
 
     Delete All Sessions
     Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
@@ -77,8 +77,8 @@ Default Message If None Provided
 Archive Not Authorized If Last Move Is Already Archive
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_1.ref}/archive     expected_status=200
-    ${resp} =         POST On Session    gk         /en/geokrety/${GEOKRETY_1.ref}/archive     expected_status=400
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True     expected_status=200
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True     expected_status=400
     Delete All Sessions
 
 If Last Move Is Already Archive Then Archive Button Is Hidden
@@ -125,7 +125,7 @@ Owner Can Delete Archive Status - direct link
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         /en/moves/1/delete     expected_status=200
+    ${resp} =         POST On Session    gk         url=/en/moves/1/delete?skip_csrf=True     expected_status=200
     Delete All Sessions
 
 
@@ -133,14 +133,14 @@ Archive Cannot Be Deleted On Others GeoKrety
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_2.name}/login
-    ${resp} =         POST On Session    gk         /en/moves/1/delete     expected_status=403
+    ${resp} =         POST On Session    gk         url=/en/moves/1/delete?skip_csrf=True     expected_status=403
     Delete All Sessions
 
 Anonymous Cannot Deleted Any Archive
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/logout
-    ${resp} =         POST On Session    gk         /en/moves/1/delete     expected_status=401
+    ${resp} =         POST On Session    gk         url=/en/moves/1/delete?skip_csrf=True     expected_status=401
     Delete All Sessions
 
 Archived GeoKrety Can Still Be Discovered - wake up
@@ -213,7 +213,7 @@ Archived Log Can Not Be Edited
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         /en/moves/1/edit    expected_status=403
+    ${resp} =         POST On Session    gk         url=/en/moves/1/edit?skip_csrf=True    expected_status=403
 
 Deleting Last Archive Set The GeoKret As Awaken
     Post Move                                       ${MOVE_1}
@@ -270,7 +270,7 @@ Archive GeoKret
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/
     ${auth} =         GET On Session     gk         /devel/users/${user.name}/login
-    ${resp} =         POST On Session    gk         /en/geokrety/${geokret.ref}/archive     expected_status=${expect}
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${geokret.ref}/archive?skip_csrf=True     expected_status=${expect}
     Delete All Sessions
 
 Post Move Request
@@ -278,5 +278,5 @@ Post Move Request
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/
     ${auth} =         GET On Session     gk         /devel/users/${user.name}/login
-    ${resp} =         POST On Session    gk         /en/moves    data=${move}     expected_status=${expect}
+    ${resp} =         POST On Session    gk         url=/en/moves?skip_csrf=True    data=${move}     expected_status=${expect}
     Delete All Sessions

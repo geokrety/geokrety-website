@@ -40,7 +40,12 @@ foreach (GK_METRICS_EXCLUDE_PATH as $path) {
 }
 
 ini_set('session.gc_maxlifetime', GK_SITE_SESSION_REMEMBER);
-new \GeoKrety\Session($f3->get('DB'));
+$session = new \GeoKrety\Session($f3->get('DB'));
+// Create a per session based CSRF token
+if (!$f3->exists('SESSION.csrf') or empty($f3->get('SESSION.csrf'))) {
+    $f3->CSRF = $session->csrf();
+    $f3->copy('CSRF', 'SESSION.csrf');
+}
 
 // Authorizations
 $access = \Access::instance();

@@ -15,7 +15,7 @@ Click Move Type
 Post Move
     [Arguments]    ${move}
     Create Session    gk        ${GK_URL}
-    ${resp}=          POST On Session    gk    /devel/db/geokrety/move/seed    data=${move}    headers=${CONTENT_TYPE_FORM_URLENCODED}
+    ${resp}=          POST On Session    gk    url=/devel/db/geokrety/move/seed    data=${move}    headers=${CONTENT_TYPE_FORM_URLENCODED}
     Request Should Be Successful     ${resp}
  # 200ms    Click Element    ${action}/parent::label
 

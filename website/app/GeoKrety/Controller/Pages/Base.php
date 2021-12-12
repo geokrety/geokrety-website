@@ -77,4 +77,25 @@ abstract class Base {
             }
         }
     }
+
+    protected function checkCsrf(?string $func = 'get'): ?string {
+        if (!GK_DEVEL or (
+            !\Base::instance()->exists('GET.skip_csrf') or
+            !filter_var(\Base::instance()->get('GET.skip_csrf'), FILTER_VALIDATE_BOOLEAN)
+            )) { // Allow skip tests only on DEVEL
+            $token = $this->f3->get('POST.csrf_token');
+            $csrf = $this->f3->get('SESSION.csrf');
+            if (empty($token) || empty($csrf) || $token !== $csrf) {
+                $error = _('CSRF error, please try again.');
+                if (is_null($func)) {
+                    return $error;
+                }
+                \Flash::instance()->addMessage($error, 'danger');
+                $this->$func($this->f3);
+                exit();
+            }
+        }
+
+        return null;
+    }
 }

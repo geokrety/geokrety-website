@@ -155,7 +155,7 @@ class MoveCreate extends Base {
         }
 
         // We use the first move to retrieve other fields (date, author etc)
-        // Permit to display again on form error.
+        // Permit displaying again on form error.
         if (sizeof($moves) < 1) {
             $moves[] = clone $move;
         }
