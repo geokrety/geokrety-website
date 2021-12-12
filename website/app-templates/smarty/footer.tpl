@@ -9,6 +9,8 @@
     <p class="text-center">
         {t escape=no url="https://github.com/geokrety/geokrety-website/blob/master/LICENSE"}Released under <a id="footer-license" href="%1">MIT license</a>{/t}
         |
+        <a href="{GK_CROWDIN_URL}" target="_blank">{t}Contribute to translation{/t}</a>
+        |
 {if \Multilang::instance()->current === 'inline-translation'}
         <a id="footer-inlinetranslate" href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), \Multilang::instance()->primary)}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}">{t}Leave in-context translation{/t}</a>
 {else}
