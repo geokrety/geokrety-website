@@ -25,6 +25,7 @@ class GeokretLabel extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $f3->get('DB')->begin();
 
         // Load the selected template

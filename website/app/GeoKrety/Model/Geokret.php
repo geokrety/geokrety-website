@@ -208,7 +208,7 @@ class Geokret extends Base {
         // TODO, speedup this using a special automanaged table
         $move = new Move();
 
-        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED]) > 0;
+        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0) > 0;
     }
 
     /**

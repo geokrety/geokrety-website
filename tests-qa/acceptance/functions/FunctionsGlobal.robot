@@ -122,15 +122,20 @@ Textfield Should Not Contain
 Page WaitForFooterHome
     Wait Until Page Contains Element  ${FOOTER_HOME}
 
+Go To Page
+    [Arguments]    ${url}    &{params}
+    Go To Url               ${url}    &{params}
+    Page NavbarIsPresent
+
 Go To Url
     [Arguments]    ${url}    &{params}
     Go To Url With Param    ${url}    &{params}
-    Page WithoutWarningOrFailure
 
 Go To Url With Param
     [Arguments]    ${url}    &{params}
     ${url_} =       Replace Variables    ${url}
     Go To           ${url_}
+    Page WithoutWarningOrFailure
 
 Go To User ${id} url
     Go To Url                       ${GK_URL}/en/users/${id}
@@ -167,6 +172,9 @@ Page ShouldShow FooterElements
     Wait Until Page Contains Element  ${FOOTER_TWITTER}
     Wait Until Page Contains Element  ${FOOTER_INSTAGRAM}
     # TODO FOOTER_APPVERSION
+
+Page NavbarIsPresent
+    Page Should Contain Element       ${NAVBAR}
 
 Mailbox Should Contain ${count} Messages
     Element Text Should Be            ${NAVBAR_DEV_MAILBOX_COUNTER}     ${count}

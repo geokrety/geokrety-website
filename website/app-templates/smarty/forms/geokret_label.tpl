@@ -66,6 +66,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
+                    {call csrf}
                     <button type="submit" class="btn btn-primary" id="generateAsPng" name="generateAsPng">{t}Generate as .png{/t}</button>
                     <button type="submit" class="btn btn-primary" id="generateAsSvg" name="generateAsSvg">{t}Generate as .svg{/t}</button>
                     <button type="submit" class="btn btn-primary" id="generateAsPdf" name="generateAsPdf">{t}Generate as .pdf{/t}</button>

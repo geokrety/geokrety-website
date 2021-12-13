@@ -76,6 +76,8 @@ ${PAGE_GEOKRETY_1_DETAILS_URL}          ${GK_URL}/en/geokrety/GK0001
 ${PAGE_GEOKRETY_2_DETAILS_URL}          ${GK_URL}/en/geokrety/GK0002
 ${PAGE_GEOKRETY_3_DETAILS_URL}          ${GK_URL}/en/geokrety/GK0003
 
+${PAGE_GEOKRETY_LABEL_URL}              ${GK_URL}/en/geokrety/\${params.gkid}/label
+
 ${PAGE_GEOKRETY_DETAILS_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/\${params.gkid}/contact-owner
 ${PAGE_GEOKRETY_DETAILS_1_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0001/contact-owner
 ${PAGE_GEOKRETY_DETAILS_2_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0002/contact-owner

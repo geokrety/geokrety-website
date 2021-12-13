@@ -55,6 +55,7 @@ ${HOME_NEWS_PANELS}                         //*[@data-gk-type="news"]
 ################
 # NAVBAR
 ################
+${NAVBAR}                                   //body/nav
 ${NAVBAR_SIGN_IN_LINK}                      //*[@id="navbar-profile-login"]
 ${NAVBAR_REGISTER_LINK}                     //*[@id="navbar-profile-register"]
 ${NAVBAR_MOVE_LINK}                         //*[@id="navbar-move"]
