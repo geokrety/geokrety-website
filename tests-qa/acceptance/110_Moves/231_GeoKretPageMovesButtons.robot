@@ -1,5 +1,4 @@
 *** Settings ***
-Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot

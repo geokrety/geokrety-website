@@ -1,7 +1,7 @@
 *** Settings ***
 Resource   ComponentsLocator.robot
 Resource   Urls.robot
-Library    SeleniumLibrary
+Library  SeleniumLibrary  timeout=10  implicit_wait=0
 Library    Collections
 # doc: http://robotframework.org/Selenium2Library/Selenium2Library.html
 #      http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html

@@ -1,5 +1,4 @@
 *** Settings ***
-Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RequestsLibrary
 Resource        ../functions/FunctionsGlobal.robot
 # Resource        ../vars/moves.resource

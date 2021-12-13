@@ -1,5 +1,4 @@
 *** Settings ***
-Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RequestsLibrary
 Resource        ../functions/FunctionsGlobal.robot
 Force Tags      Redirect    legacy    login

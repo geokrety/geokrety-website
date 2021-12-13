@@ -1,5 +1,4 @@
 *** Settings ***
-Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Force Tags      Moves    Log Type

@@ -1,5 +1,4 @@
 *** Settings ***
-Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RequestsLibrary
 Library         JSONLibrary
 Resource        ../functions/FunctionsGlobal.robot

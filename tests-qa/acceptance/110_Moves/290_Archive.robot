@@ -1,5 +1,4 @@
 *** Settings ***
-Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RequestsLibrary
 Library         JSONLibrary
 Library         String
@@ -176,7 +175,7 @@ Archived GeoKrety Do Not Appear Present In Cache
 
     Create Session                        gk        ${GK_URL}
     ${resp} =    GET On Session           gk        url=/gkt/search_v3.php?lat=${MOVE_1.lat}&lon=${MOVE_1.lon}
-    ${json} =    Convert String to JSON 	          ${resp.content}
+    ${json} =    Convert String to JSON             ${resp.content}
     ${value} =   Get Value From Json                ${json}          $[0]
     Length Should Be                                ${value}         1
 
@@ -189,7 +188,7 @@ Archived GeoKrety Do Not Appear Present In Cache
 
     Create Session                        gk        ${GK_URL}
     ${resp} =    GET On Session           gk        url=/gkt/search_v3.php?lat=${MOVE_1.lat}&lon=${MOVE_1.lon}
-    ${json} =    Convert String to JSON 	        ${resp.content}
+    ${json} =    Convert String to JSON             ${resp.content}
     ${value} =   Get Value From Json                ${json}          $[0]
     Length Should Be                                ${value}         0
 
@@ -228,7 +227,7 @@ Deleting Last Archive Set The GeoKret As Awaken
 
     Create Session                        gk        ${GK_URL}
     ${resp} =    GET On Session           gk        url=/gkt/search_v3.php?lat=${MOVE_1.lat}&lon=${MOVE_1.lon}
-    ${json} =    Convert String to JSON 	          ${resp.content}
+    ${json} =    Convert String to JSON             ${resp.content}
     ${value} =   Get Value From Json                ${json}          $[0]
     Length Should Be                                ${value}         1
 
