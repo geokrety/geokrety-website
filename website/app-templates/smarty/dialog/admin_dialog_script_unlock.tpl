@@ -1,3 +1,4 @@
+{include file='macros/csrf.tpl'}
 {block name=content}
 <div class="modal-header alert-warning">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -9,6 +10,7 @@
         {t escape=no script=$script->name since=$script->locked_on_datetime|print_date}"%1" locked since %2{/t}
     </div>
     <div class="modal-footer">
+        {call csrf}
         <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
         <button type="submit" class="btn btn-warning">{t}Unlock{/t}</button>
     </div>
