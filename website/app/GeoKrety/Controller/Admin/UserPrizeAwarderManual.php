@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller\Admin;
 
 use AwardLoader;
+use Flash;
 use GeoKrety\Controller\Base;
 use GeoKrety\Model\AwardsWon;
 use GeoKrety\Service\Smarty;
@@ -24,11 +25,17 @@ class UserPrizeAwarderManual extends Base {
     }
 
     public function post(\Base $f3) {
+        $params = [
+            'search' => $this->user->username,
+        ];
+
+        $this->checkCsrf(function ($error) use ($f3, $params) {
+            Flash::instance()->addMessage($error, 'danger');
+            $f3->reroute(sprintf('@admin_users_list?%s', http_build_query($params)));
+        });
+
         if ($this->award->dry()) {
             \Flash::instance()->addMessage(_('This award does not exists'), 'danger');
-            $params = [
-                'search' => $this->user->username,
-            ];
             $f3->reroute(sprintf('@admin_users_list?%s', http_build_query($params)));
         }
 
