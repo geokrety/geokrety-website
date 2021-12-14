@@ -2,6 +2,7 @@
 
 namespace GeoKrety\Controller;
 
+use Flash;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
@@ -75,7 +76,7 @@ abstract class Base {
                 if (is_null($func)) {
                     return $error;
                 }
-                \Flash::instance()->addMessage($error, 'danger');
+                Flash::instance()->addMessage($error, 'danger');
                 $this->$func($this->f3);
                 exit();
             }
@@ -84,10 +85,13 @@ abstract class Base {
         return null;
     }
 
-    protected function checkCsrf(?string $func = 'get'): ?string {
+    /**
+     * @param string|\Closure|null $func
+     */
+    protected function checkCsrf($func = 'get', array $options = []): ?string {
         if (!GK_DEVEL or (
-            !\Base::instance()->exists('GET.skip_csrf') or
-            !filter_var(\Base::instance()->get('GET.skip_csrf'), FILTER_VALIDATE_BOOLEAN)
+                !\Base::instance()->exists('GET.skip_csrf') or
+                !filter_var(\Base::instance()->get('GET.skip_csrf'), FILTER_VALIDATE_BOOLEAN)
             )) { // Allow skip tests only on DEVEL
             $token = $this->f3->get('POST.csrf_token');
             $csrf = $this->f3->get('SESSION.csrf');
@@ -96,8 +100,12 @@ abstract class Base {
                 if (is_null($func)) {
                     return $error;
                 }
-                \Flash::instance()->addMessage($error, 'danger');
-                $this->$func($this->f3);
+                if (is_string($func) && method_exists($this, $func)) {
+                    Flash::instance()->addMessage($error, 'danger');
+                    $this->$func($this->f3);
+                } else {
+                    call_user_func($func, $error, $options);
+                }
                 exit();
             }
         }
