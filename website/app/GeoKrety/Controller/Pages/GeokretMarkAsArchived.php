@@ -30,11 +30,16 @@ class GeokretMarkAsArchived extends Base {
         }
     }
 
+    public function get(\Base $f3) {
+        Smarty::render('extends:full_screen_modal.tpl|dialog/geokret_mark_as_archived.tpl');
+    }
+
     public function get_ajax(\Base $f3) {
-        Smarty::render('dialog/geokret_mark_as_archived.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/geokret_mark_as_archived.tpl');
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $move = new Move();
         $move->geokret = $this->geokret;
         $move->geokret = $this->geokret;
