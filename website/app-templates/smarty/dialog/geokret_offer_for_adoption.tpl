@@ -1,3 +1,4 @@
+{include file='macros/csrf.tpl'}
 {block name=modal_content}
 <div class="modal-header alert-info">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -11,6 +12,7 @@
 
     </div>
     <div class="modal-footer">
+        {call csrf}
         <a class="btn btn-default" href="{'geokret_details'|alias}" title="{t}Back to GeoKret page{/t}" data-dismiss="modal">
             {t}Dismiss{/t}
         </a>
