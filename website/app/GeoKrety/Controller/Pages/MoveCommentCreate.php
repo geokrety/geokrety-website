@@ -36,6 +36,7 @@ class MoveCommentCreate extends Base {
     }
 
     public function post_comment(\Base $f3) {
+        $this->checkCsrf('get_comment');
         $gkid = $this->move->geokret->gkid;
         $comment = new MoveComment();
         $comment->move = $this->move;
@@ -58,6 +59,7 @@ class MoveCommentCreate extends Base {
     }
 
     public function post_missing(\Base $f3) {
+        $this->checkCsrf('get_missing');
         $gkid = $this->move->geokret->gkid;
         $comment = new MoveComment();
         $comment->move = $this->move;
