@@ -27,6 +27,7 @@ class Login extends Base {
     }
 
     public function login(\Base $f3) {
+        $this->checkCsrf('loginForm');
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
@@ -129,6 +130,10 @@ class Login extends Base {
      * @return void True if authentication succeed
      */
     public function login2Secid_post(\Base $f3) {
+        // No Check Csrf here else it will break legacy clients
+        //$this->checkCsrf(function ($error) {
+        //    echo $error;
+        //});
         if (is_null($f3->get('POST.login')) or is_null($f3->get('POST.password'))) {
             http_response_code(400);
             echo _('Please provide \'login\' and \'password\' parameters.');
