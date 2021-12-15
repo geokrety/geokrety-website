@@ -4,8 +4,8 @@ namespace GeoKrety\Controller;
 
 use CurrentUserLoader;
 use Flash;
-use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Session;
 use Sugar\Event;
 
 class UserUpdateUsername extends Base {
@@ -34,7 +34,8 @@ class UserUpdateUsername extends Base {
         $this->currentUser->save();
         $f3->get('DB')->commit();
         Event::instance()->emit('user.renamed', $this->currentUser, $context);
-        (new Login())->disconnectUser($f3, false); // TODO: close all other sessions for this user?
+        (new Login())->disconnectUser($f3);
+        Session::closeAllSessionsForUser($this->currentUser);
         Flash::instance()->addMessage(_('Username changed. Please login again.'), 'success');
         $f3->reroute('@home');
     }

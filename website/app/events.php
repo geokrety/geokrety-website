@@ -1,6 +1,7 @@
 <?php
 
 use GeoKrety\Service\Metrics;
+use GeoKrety\Session;
 
 /**
  * @param JsonSerializable|array $newObjectModel
@@ -44,18 +45,22 @@ $events->on('activation.token.used', function (GeoKrety\Model\AccountActivationT
 });
 $events->on('user.login.password', function (GeoKrety\Model\User $user) {
     audit('user.login.password', $user);
+    Session::setUserId($user);
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['password']);
 });
 $events->on('user.login.secid', function (GeoKrety\Model\User $user) {
     audit('user.login.secid', $user);
+    Session::setUserId($user);
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['secid']);
 });
 $events->on('user.login.oauth', function (GeoKrety\Model\User $user) {
     audit('user.login.oauth', $user);
+    Session::setUserId($user);
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['oauth']);
 });
 $events->on('user.login.devel', function (GeoKrety\Model\User $user) {
     audit('user.login.devel', $user);
+    Session::setUserId($user);
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['devel']);
 });
 $events->on('user.login.registration.oauth', function (GeoKrety\Model\User $user) {
