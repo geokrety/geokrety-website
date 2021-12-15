@@ -9,16 +9,17 @@ class NewsSubscription extends Base {
     public function subscription(\Base $f3) {
         $subscription = $this->loadSubscription($f3);
         Smarty::assign('subscription', $subscription);
-        Smarty::render('extends:base.tpl|dialog/news_subscription.tpl');
+        Smarty::render('extends:full_screen_modal.tpl|dialog/news_subscription.tpl');
     }
 
     public function subscriptionFragment(\Base $f3) {
         $subscription = $this->loadSubscription($f3);
         Smarty::assign('subscription', $subscription);
-        Smarty::render('dialog/news_subscription.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/news_subscription.tpl');
     }
 
     public function subscriptionToggle(\Base $f3) {
+        $this->checkCsrf('subscription');
         $subscription = $this->loadSubscription($f3);
         $subscription->subscribed = abs((int) $subscription->subscribed - 1);
         $subscription->save();
