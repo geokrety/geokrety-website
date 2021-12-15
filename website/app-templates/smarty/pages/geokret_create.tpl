@@ -4,7 +4,6 @@
 
 {\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
 {\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
-{include file='macros/csrf.tpl'}
 
 {block name=content}
 {include 'forms/geokret.tpl'}

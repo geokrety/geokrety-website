@@ -5,7 +5,6 @@
 {\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS)}
 {\Assets::instance()->addJs(GK_CDN_STRENGTHIFY_JS)}
 {include file='macros/recaptcha.tpl'}
-{include file='macros/csrf.tpl'}
 
 {block name=content}
 

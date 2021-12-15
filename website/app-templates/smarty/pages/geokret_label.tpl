@@ -1,7 +1,6 @@
 {extends file='base.tpl'}
 
 {block name=title}{t}Label generator{/t}{/block}
-{include file='macros/csrf.tpl'}
 
 {block name=content}
 <h1>{t}Label generator{/t}</h1>

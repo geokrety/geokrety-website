@@ -1,4 +1,3 @@
-{include file='macros/csrf.tpl'}
 {block name=content}
 <div class="modal-header alert-success">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

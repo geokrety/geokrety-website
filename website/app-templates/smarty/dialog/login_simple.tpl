@@ -1,6 +1,5 @@
 {block name=title}API login 2 secid{/block}
 
-{include file='macros/csrf.tpl'}
 {block name=content}
     {foreach from=\Flash::instance()->getMessages() item=msg}
         <div class="alert alert-{$msg.status} alert-dismissible flash-message" role="alert">

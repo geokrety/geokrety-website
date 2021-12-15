@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 {include file='head.tpl'}
+{include file='macros/csrf.tpl'}
 <body>
 {include file='header.tpl'}
     <div class="container">
