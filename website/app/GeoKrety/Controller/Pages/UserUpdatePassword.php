@@ -22,6 +22,7 @@ class UserUpdatePassword extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $password_old = $f3->get('POST.password_old');
         $password_new = $f3->get('POST.password_new');
         $password_new_confirm = $f3->get('POST.password_new_confirm');
