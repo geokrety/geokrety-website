@@ -22,6 +22,7 @@
 
     </div>
     <div class="modal-footer">
+        {call csrf}
         <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $currentUser->id)}" title="{t}Back to user page{/t}" data-dismiss="modal">
             {t}Dismiss{/t}
         </a>

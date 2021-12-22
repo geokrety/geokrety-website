@@ -20,8 +20,9 @@ class UserChoosePreferedLanguage extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $user = $this->currentUser;
-        $oldlanguage = $user->preferred_language;
+        $oldLanguage = $user->preferred_language;
         $user->preferred_language = $f3->get('POST.language');
 
         if (!$user->validate()) {
@@ -30,7 +31,7 @@ class UserChoosePreferedLanguage extends Base {
         }
 
         $user->save();
-        $context = ['oldlanguage' => $oldlanguage];
+        $context = ['oldlanguage' => $oldLanguage];
         Event::instance()->emit('user.language.changed', $user, $context);
         Flash::instance()->addMessage(_('Language preferences updated.'), 'success');
 
