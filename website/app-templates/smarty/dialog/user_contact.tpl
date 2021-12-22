@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <label for="inputUsername" class="col-sm-2 control-label">{t}Message{/t}</label>
+            <label for="message" class="col-sm-2 control-label">{t}Message{/t}</label>
             <div class="col-sm-10">
                 <textarea class="form-control maxl" rows="5" id="message" name="message" placeholder="{t}Message to user{/t}" maxlength="5120" required>{$mail->content}</textarea>
             </div>
@@ -37,6 +37,7 @@
 
     </div>
     <div class="modal-footer">
+        {call csrf}
         <a class="btn btn-default" href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to user page{/t}" data-dismiss="modal">
             {t}Dismiss{/t}
         </a>

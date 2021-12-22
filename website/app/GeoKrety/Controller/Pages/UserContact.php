@@ -57,6 +57,7 @@ class UserContact extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $this->loadToUser($f3);
         $mail = $this->mail;
         $mail->subject = $f3->get('POST.subject');
