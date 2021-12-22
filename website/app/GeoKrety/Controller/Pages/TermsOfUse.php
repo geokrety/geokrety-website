@@ -5,7 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Smarty;
 
 class TermsOfUse extends Base {
-    public function get($f3) {
+    public function get(\Base $f3) {
         Smarty::render('extends:base.tpl|dialog/terms_of_use.tpl');
     }
 
@@ -14,6 +14,7 @@ class TermsOfUse extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $f3->get('DB')->begin();
         $user = $this->current_user;
 

@@ -31,6 +31,7 @@
     {if isset($current_user) && !$current_user->hasAcceptedThetermsOfUse}
         <div class="panel-footer">
             <form method="POST">
+                {call csrf}
                 <input type="hidden" id="terms_of_use" name="terms_of_use" value="true">
                 <button type="submit" id="termsOfUseAcceptButton" class="btn btn-primary center-block">{t}I agree with the terms{/t}</button>
             </form>
@@ -50,6 +51,7 @@
 </div>
 
 <div class="modal-footer">
+    {call csrf}
     <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
     <button type="submit" id="termsOfUseAcceptButton" class="btn btn-primary">{t}I agree with the terms{/t}</button>
 </div>
