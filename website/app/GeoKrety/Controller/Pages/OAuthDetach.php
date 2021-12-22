@@ -9,7 +9,7 @@ use OAuthProviderLoader;
 class OAuthDetach extends Base {
     use OAuthProviderLoader;
 
-    public $template = 'dialog/oauth_disconnect.tpl';
+    public string $template = 'dialog/oauth_disconnect.tpl';
 
     public function get($f3) {
         $this->_get($f3);
@@ -18,8 +18,6 @@ class OAuthDetach extends Base {
 
     protected function _get(\Base $f3) {
         if (!$this->current_user->isConnectedWithProvider($this->oauthProvider)) {
-            $this->template = 'dialog/oauth_not_connected_to_provider.tpl';
-        } elseif (!$this->current_user->isConnectedWithProvider($this->oauthProvider)) {
             $this->template = 'dialog/oauth_not_connected_to_provider.tpl';
         }
     }
@@ -30,6 +28,7 @@ class OAuthDetach extends Base {
     }
 
     public function post($f3) {
+        $this->checkCsrf();
         $userSocialAuth = new UserSocialAuth();
         $userSocialAuth->load(['user = ? AND provider = ?', $this->current_user->id,  $this->oauthProvider->id]);
         if ($userSocialAuth->dry() or !$userSocialAuth->erase()) {

@@ -13,6 +13,7 @@
         {if isset($current_user) && !$current_user->hasAcceptedThetermsOfUse}
             <div class="panel-footer">
                 <form method="POST" action="{'opauth_detach'|alias:sprintf('strategy', $oauth_provider->name)}">
+                    {call csrf}
                     <button type="submit" id="detachProviderButton" class="btn btn-danger center-block">{t}Detach{/t}</button>
                 </form>
             </div>
@@ -30,6 +31,7 @@
     </div>
     <div class="modal-footer">
         <form method="POST" action="{'opauth_detach'|alias:sprintf('strategy', $oauth_provider->name)}">
+            {call csrf}
             <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
             <button type="submit" id="detachProviderButton" class="btn btn-danger">{t}Detach{/t}</button>
         </form>
