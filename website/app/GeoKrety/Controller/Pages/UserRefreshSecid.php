@@ -16,6 +16,7 @@ class UserRefreshSecid extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $user = $this->currentUser;
         $user->_secid = '';
 
