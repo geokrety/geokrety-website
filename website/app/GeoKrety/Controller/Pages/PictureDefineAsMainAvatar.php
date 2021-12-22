@@ -40,18 +40,21 @@ class PictureDefineAsMainAvatar extends Base {
     }
 
     private function define_geokret(\Base $f3) {
+        $this->checkCsrf();
         $this->picture->geokret->avatar = $this->picture;
         $this->picture->geokret->save();
         $f3->reroute(['geokret_details', ['gkid' => $this->picture->geokret->gkid], '#gk-avatars-list']);
     }
 
     private function define_user(\Base $f3) {
+        $this->checkCsrf();
         $this->picture->user->avatar = $this->picture;
         $this->picture->user->save();
         $f3->reroute(['user_details', ['userid' => $this->picture->user->id], '#user-avatars-list']);
     }
 
     private function define_picture(\Base $f3) {
+        $this->checkCsrf();
         $this->picture->move->geokret->avatar = $this->picture;
         $this->picture->move->geokret->save();
         $f3->reroute(['geokret_details', ['gkid' => $this->picture->move->geokret->gkid], '#log'.$this->picture->move->id]);
