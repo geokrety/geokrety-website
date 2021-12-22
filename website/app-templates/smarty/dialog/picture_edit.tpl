@@ -42,6 +42,7 @@
             </div>
         </div>
         <div class="modal-footer">
+            {call csrf}
             <button type="button" class="btn btn-default" data-dismiss="modal">{t}Dismiss{/t}</button>
             <button type="submit" class="btn btn-info">{t}Save{/t}</button>
         </div>

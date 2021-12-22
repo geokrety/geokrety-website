@@ -29,6 +29,7 @@ class PictureEdit extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $this->_get($f3);
         $this->picture->caption = $f3->get('POST.caption');
 
