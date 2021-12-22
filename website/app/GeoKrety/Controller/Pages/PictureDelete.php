@@ -17,6 +17,7 @@ class PictureDelete extends Base {
     }
 
     public function delete(\Base $f3) {
+        $this->checkCsrf();
         $this->picture->erase();
         \Sugar\Event::instance()->emit('picture.deleted', $this->picture);
 
