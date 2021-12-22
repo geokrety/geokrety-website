@@ -22,6 +22,7 @@ class UserUpdateEmail extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $f3->get('DB')->begin();
         $user = $this->currentUser;
         $daily_mail = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN);
