@@ -16,6 +16,7 @@ class GeokretClaim extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $ownerCode = new OwnerCode();
         $ownerCode->has('geokret', ['tracking_code = ?', $f3->get('POST.tc')]);
         $ownerCode->load(['token = ?', $f3->get('POST.oc')]);

@@ -32,6 +32,7 @@
             </div>
 
             <div class="modal-footer">
+                {call csrf}
                 <button type="submit" class="btn btn-primary">{t}Adopt{/t}</button>
             </div>
 
