@@ -17,6 +17,7 @@ class UserUpdateObservationArea extends Base {
         $user->observation_area = $f3->get('POST.observation_area');
         $user->home_latitude = $coordinate->getLatitude();
         $user->home_longitude = $coordinate->getLongitude();
+        $this->checkCsrf();
         if ($user->validate()) {
             $user->save();
 
