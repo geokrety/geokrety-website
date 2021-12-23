@@ -31,6 +31,7 @@ class UserEmailChangeToken extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $f3->get('DB')->begin();
 
         // Check the wanted action

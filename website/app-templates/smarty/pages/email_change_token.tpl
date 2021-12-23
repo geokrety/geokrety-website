@@ -27,6 +27,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
+                    {call csrf}
                     {if $f3->get('SESSION.CURRENT_USER')}
                     <a class="btn btn-default" id="emailChangeDismissButton" href="{'user_details'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to your profile{/t}">
                         {t}Dismiss{/t}
