@@ -9,10 +9,7 @@ use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
 class UserEmailChangeRevertToken extends Base {
-    /**
-     * @var EmailActivationToken
-     */
-    private $token;
+    private EmailActivationToken $token;
 
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
@@ -34,6 +31,7 @@ class UserEmailChangeRevertToken extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         $f3->get('DB')->begin();
 
         // Check the wanted action

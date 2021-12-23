@@ -26,6 +26,7 @@
             </div>
 
             <div class="form-group">
+                {call csrf}
                 <div class="col-sm-offset-2 col-sm-10">
                     {if $f3->get('SESSION.CURRENT_USER')}
                     <a class="btn btn-default" href="{'user_details'|alias:sprintf('@userid=%d', $f3->get('SESSION.CURRENT_USER'))}" title="{t}Back to your profile{/t}">
