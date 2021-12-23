@@ -44,6 +44,7 @@ class PasswordRecoveryChange extends Base {
     }
 
     public function post(\Base $f3) {
+        $this->checkCsrf();
         // Don't execute post if token is not valid
         $token = $this->token;
         if ($token->dry()) {

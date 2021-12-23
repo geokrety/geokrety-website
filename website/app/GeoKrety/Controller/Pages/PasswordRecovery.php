@@ -28,6 +28,7 @@ class PasswordRecovery extends Base {
     public function post(\Base $f3) {
         // reCaptcha
         $this->checkCaptcha();
+        $this->checkCsrf();
 
         // Check database for provided email
         $user = $this->user;
