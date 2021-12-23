@@ -10,6 +10,15 @@ class UserEmailRevalidateToken extends Base {
     public function get(\Base $f3) {
         $token = new EmailRevalidateToken();
         $_token = $f3->get('PARAMS.token') ?? ($f3->get('POST.token') ?? null);
+        Smarty::assign('token', $token);
+
+        if ($f3->exists('POST.token')) {
+            $this->checkCsrf(function ($error) {
+                Flash::instance()->addMessage($error, 'danger');
+                Smarty::render('pages/email_revalidate.tpl');
+                exit();
+            });
+        }
 
         if ($_token) {
             $token->load([
@@ -29,7 +38,6 @@ class UserEmailRevalidateToken extends Base {
             $token->token = $_token;
         }
 
-        Smarty::assign('token', $token);
         Smarty::render('pages/email_revalidate.tpl');
     }
 }
