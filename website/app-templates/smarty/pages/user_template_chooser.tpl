@@ -24,6 +24,7 @@
 
             <div class="modal-footer">
                 <div class="col-sm-offset-2 col-sm-10">
+                    {call csrf}
                     <button id="bannerTemplateSubmitButton" type="submit" class="btn btn-primary">{t}Save{/t}</button>
                 </div>
             </div>

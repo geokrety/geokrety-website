@@ -16,6 +16,7 @@ class UserTemplateChooser extends Base {
         $user = $this->currentUser;
         $user->statpic_template = $f3->get('POST.statpic');
 
+        $this->checkCsrf();
         if ($user->validate()) {
             $user->save();
 
