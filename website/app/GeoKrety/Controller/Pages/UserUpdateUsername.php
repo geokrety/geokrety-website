@@ -22,6 +22,7 @@ class UserUpdateUsername extends Base {
 
         // reCaptcha
         $this->checkCaptcha();
+        $this->checkCsrf();
 
         // Check
         if (!$this->currentUser->validate()) {
