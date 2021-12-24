@@ -1,0 +1,91 @@
+name: Integration tests on Robot Framework
+
+on:
+  push:
+
+env:
+  PGUSER: geokrety
+  PGPASSWORD: geokrety
+  PGDATABASE: geokrety
+  PGHOST: localhost
+  PGPORT: 5433
+  DOCKER_COMPOSE: ./docker-compose -p gk -f docker-compose.local.yml
+
+jobs:
+  robot-framework:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set output
+        id: vars
+        run: |
+          echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+          ls -l
+          pwd
+          ls -l ./website/db/dumps/
+
+
+        # Use 1.27.4 as later versions have bug cloning git repo over TLS `version `OPENSSL_1_1_1' not found`
+        # https://stackoverflow.com/questions/66579446/error-executing-docker-compose-building-webserver-unable-to-prepare-context-un/67357899#67357899
+      - name: Workaround docker-compose bug
+        run: |
+          curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64 -o docker-compose
+          chmod a+x docker-compose
+
+      - name: Install tools
+        run: |
+          sudo apt-get install -y git httping postgresql-client-12 postgis libtap-parser-sourcehandler-pgtap-perl
+
+      - name: Pull/Start postgres
+        run: |
+          ./website/db/get_huge_dump_files.sh
+          ${DOCKER_COMPOSE} pull postgres > /dev/null
+          ${DOCKER_COMPOSE} up -d --no-build postgres
+          timeout 60s bash -c "while ! pg_isready; do sleep 1; done || { docker ps -a;  ${DOCKER_COMPOSE} logs postgres; false; }"
+
+      - name: Import SRTM data
+        run: |
+          ./website/db/tests-srtm-import.sh
+          psql -c "SELECT count(*) FROM public.srtm"
+          psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
+          psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
+
+      - name: Pull/Build images
+        run: |
+          ${DOCKER_COMPOSE} pull website-base cdn redis minio svg-to-png > /dev/null
+          ${DOCKER_COMPOSE} build website
+          ${DOCKER_COMPOSE} build pictures-processor pictures-downloader pictures-uploader
+
+      - name: Start the whole stack
+        run: |
+          ${DOCKER_COMPOSE} up -d --no-build
+          docker ps -a
+          sleep 5
+          for i in $(seq 60); do
+            httping -sGc1 -o 200,302 http://localhost:3001/ && { echo OK; break; } || { ${DOCKER_COMPOSE} logs website; sleep 1; }
+          done || exit 1
+          ${DOCKER_COMPOSE} exec -T website make test-health
+
+      - name: Run database tests
+        run: |
+          PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -ot website/db/tests/test*.sql
+
+      - name: Ensure available fonts on system for Robot Framework/Firefox
+        run: |
+          sudo apt-get install -y  ttf-bitstream-vera fonts-urw-base35
+
+      - name: Install Robot Framework
+        run: |
+          pip3 install -r tests-qa/requirements.txt
+          cd tests-qa && make download_geckodriver && cd ..
+
+      - name: Run Robot Framework tests
+        env:
+          GEOKRETY_URL: http://localhost:3001/
+        run: |
+          make test-qa-headless
+
+# TODO push reports

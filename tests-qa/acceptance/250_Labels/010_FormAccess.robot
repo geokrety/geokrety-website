@@ -6,7 +6,6 @@ Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Force Tags      GeoKrety Label
 Test Setup     Seed
-Library    Dialogs
 
 *** Test Cases ***
 

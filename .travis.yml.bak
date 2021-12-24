@@ -1,12 +1,6 @@
 os: linux
 dist: focal
 language: php
-cache:
-  directories:
-    - vendor
-    - $HOME/.composer/cache
-    - $HOME/.php-cs-fixer
-    - $HOME/.cache/pre-commit
 
 services:
   - docker
@@ -24,38 +18,13 @@ branches:
 
 jobs:
   include:
-    - stage: syntax check
-      php: 7.4
-      before_script:
-        - curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer.phar && chmod a+x php-cs-fixer.phar
-        - curl -L https://github.com/pre-commit/pre-commit/releases/download/v2.9.3/pre-commit-2.9.3.pyz -o pre-commit && chmod a+x pre-commit
-        - curl -L "https://github.com/hadolint/hadolint/releases/download/v1.17.6/hadolint-$(uname -s)-$(uname -m)" -o hadolint && chmod a+x hadolint && ls -la $HOME && cp hadolint $HOME/bin/
-      script:
-        - phpenv config-rm xdebug.ini || return 0
-        # Check against non utf-8 files
-        - scripts/check-utf8.sh .
-        - ./pre-commit run --all-files
-
-    - stage: translations
-      php: 7.4
-      if: branch IN (master, boly38, feature/new-theme) AND type = 'push'
-      before_script:
-        - wget https://getcomposer.org/composer-2.phar
-        - php composer-2.phar install --ignore-platform-reqs --dev --no-interaction
-      script:
-        # Crowdin
-        - wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
-        - sudo dpkg -i crowdin.deb
-        - sudo apt update && sudo apt install -y moreutils gettext
-        - scripts/export-translations-to-crowdin.sh
-
     - stage: test-qa
       php: 7.4
       before_script:
         # Use 1.27.4 as later versions have bug cloning git repo over TLS `version `OPENSSL_1_1_1' not found`
         # https://stackoverflow.com/questions/66579446/error-executing-docker-compose-building-webserver-unable-to-prepare-context-un/67357899#67357899
         - curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64 -o docker-compose && chmod a+x docker-compose
-      if: env(TRAVIS_QA_TOKEN) AND type = 'push' AND branch NOT IN (l10n_master, l10n_new-theme) AND TRAVIS_TAG = ''
+      if: type = 'push' AND branch NOT IN (master, l10n_master, l10n_new-theme)
       script:
         - export PGUSER=geokrety
         - export PGPASSWORD=geokrety
@@ -140,13 +109,3 @@ jobs:
           git commit -m "Update QA tests" &&
           git push -fq origin
         - echo QA Tests report is available at https://geokrety.github.io/geokrety-website-qa/${TRAVIS_BRANCH}/report.html
-
-notifications:
-  # doc: https://docs.travis-ci.com/user/notifications/#configuring-irc-notifications
-  irc:
-    channels:
-      - "chat.freenode.net#geokrety"
-    on_success: always
-    on_failure: always
-    template:
-      - "%{build_url} WEBSITE %{build_number} | %{branch} - %{commit} | %{result}"

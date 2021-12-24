@@ -1,0 +1,64 @@
+name: Upload translations strings to Crowdin
+
+on:
+  push:
+    branches:
+      - master
+      - feature/new-theme
+      - boly38
+
+jobs:
+  crowdin:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set output
+        id: vars
+        run: |
+          echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+          TMP=$(mktemp -d)
+          echo ::set-output name=tmp_dir::${TMP}
+
+      - name: Setup PHP with composer v2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer:v2
+
+      # Installing package dependencies
+      - name: Installing package dependencies
+        run: |
+          composer install --ignore-platform-reqs --no-interaction
+          sudo apt-get install -y gettext moreutils
+          wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+          sudo dpkg -i crowdin.deb
+          rm crowdin.deb
+
+      # Build file list to proceed
+      - name: Build file list to proceed
+        run: |
+          find ./website/ -type f -name '*.php' -not -path './website/old/*' -not -path './website/vendor/*' -not -path './website/templates/*' | sort > ${{ steps.vars.outputs.tmp_dir }}/input-files-for-xgettext
+          cat ${{ steps.vars.outputs.tmp_dir }}/input-files-for-xgettext
+
+      # Generate po file
+      - name: Generate po file
+        run: |
+          xgettext --from-code=UTF-8 -o ${{ steps.vars.outputs.tmp_dir }}/messages.pot --language=PHP -f ${{ steps.vars.outputs.tmp_dir }}/input-files-for-xgettext
+
+      # Extract strings from smarty templates
+      - name: Extract strings from smarty templates
+        run: |
+          ./vendor/bin/tsmarty2c.php -o ${{ steps.vars.outputs.tmp_dir }}/smarty.pot ./website/app-templates ./website/app-templates/smarty/js/*.js
+
+      # Concatenate po files
+      - name: Concatenate po files
+        run: |
+          msgcat -o website/app/languages/messages.po.txt ${{ steps.vars.outputs.tmp_dir }}/messages.pot ${{ steps.vars.outputs.tmp_dir }}/smarty.pot
+
+      # Upload to crowdin
+      - name: Upload to crowdin
+        run: |
+          crowdin upload --branch ${{ steps.vars.outputs.short_ref }}

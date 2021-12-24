@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 tmp_dir=$(mktemp -d -p $DIR -t srtm-XXXXXXXXXX)
