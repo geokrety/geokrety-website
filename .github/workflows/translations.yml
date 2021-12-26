@@ -7,6 +7,14 @@ on:
       - feature/new-theme
       - boly38
 
+  workflow_dispatch:
+    inputs:
+      upload:
+        type: boolean
+        description: 'Push to crowdin?'
+        required: true
+        default: 'true'
+
 jobs:
   crowdin:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
@@ -18,7 +26,7 @@ jobs:
       - name: Set output
         id: vars
         run: |
-          echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+          echo "::set-output name=short_ref::${GITHUB_REF#refs/*/}" | tr '/' '.'
           TMP=$(mktemp -d)
           echo ::set-output name=tmp_dir::${TMP}
 
@@ -33,9 +41,6 @@ jobs:
         run: |
           composer install --ignore-platform-reqs --no-interaction
           sudo apt-get install -y gettext moreutils
-          wget --no-verbose https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
-          sudo dpkg -i crowdin.deb
-          rm crowdin.deb
 
       # Build file list to proceed
       - name: Build file list to proceed
@@ -58,7 +63,13 @@ jobs:
         run: |
           msgcat -o website/app/languages/messages.po.txt ${{ steps.vars.outputs.tmp_dir }}/messages.pot ${{ steps.vars.outputs.tmp_dir }}/smarty.pot
 
-      # Upload to crowdin
-      - name: Upload to crowdin
-        run: |
-          crowdin upload --branch ${{ steps.vars.outputs.short_ref }}
+      - name: crowdin action
+        uses: crowdin/github-action@1.4.4
+        with:
+          config: crowdin.yml
+          project_id: 260106
+          token: ${{ secrets.CROWDIN_API_KEY }}
+          upload_sources: true
+          upload_sources_args: --branch ${{ steps.vars.outputs.short_ref }}
+          upload_translations: false
+          download_translations: false
