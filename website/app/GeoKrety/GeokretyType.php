@@ -3,13 +3,13 @@
 namespace GeoKrety;
 
 class GeokretyType {
-    const GEOKRETY_TYPE_TRADITIONAL = 0;
-    const GEOKRETY_TYPE_BOOK_CD_DVD = 1;
-    const GEOKRETY_TYPE_HUMAN = 2;
-    const GEOKRETY_TYPE_COIN = 3;
-    const GEOKRETY_TYPE_KRETYPOST = 4;
+    public const GEOKRETY_TYPE_TRADITIONAL = 0;
+    public const GEOKRETY_TYPE_BOOK_CD_DVD = 1;
+    public const GEOKRETY_TYPE_HUMAN = 2;
+    public const GEOKRETY_TYPE_COIN = 3;
+    public const GEOKRETY_TYPE_KRETYPOST = 4;
 
-    const GEOKRETY_TYPES = [
+    public const GEOKRETY_TYPES = [
         self::GEOKRETY_TYPE_TRADITIONAL,
         self::GEOKRETY_TYPE_BOOK_CD_DVD,
         self::GEOKRETY_TYPE_HUMAN,

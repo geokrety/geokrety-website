@@ -3,10 +3,10 @@
 namespace GeoKrety\Controller\Cli;
 
 class WaypointsImporterGpsGames extends WaypointsImporterBaseTopografix {
-    const GPSG_API_ENDPOINT = 'http://geocaching.gpsgames.org/cgi-bin/ge.pl';
+    public const GPSG_API_ENDPOINT = 'http://geocaching.gpsgames.org/cgi-bin/ge.pl';
     //const GPSG_CACHE_DETAIL_URL = 'http://geodashing.gpsgames.org/cgi-bin/dp.pl?dp=%s';
 
-    const SCRIPT_CODE = 'GPS_GAMES';
+    public const SCRIPT_CODE = 'GPS_GAMES';
     protected string $class_name = __CLASS__;
 
     /**

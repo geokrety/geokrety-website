@@ -5,8 +5,8 @@ namespace GeoKrety\Service;
 use Exception;
 
 class DistanceFormatter {
-    const SUPPORTED_UNITS = ['metric' => 1, 'imperial' => 0.62137];
-    const UNITS = ['metric' => 'km', 'imperial' => 'mi'];
+    public const SUPPORTED_UNITS = ['metric' => 1, 'imperial' => 0.62137];
+    public const UNITS = ['metric' => 'km', 'imperial' => 'mi'];
 
     /**
      * Format distance according to user preferences.

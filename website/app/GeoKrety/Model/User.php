@@ -37,20 +37,20 @@ use JsonSerializable;
 class User extends Base implements JsonSerializable {
     // Validation occurs in validate() for this class
 
-    const USER_ACCOUNT_INVALID = 0;
-    const USER_ACCOUNT_VALID = 1;
-    const USER_ACCOUNT_IMPORTED = 2;
+    public const USER_ACCOUNT_INVALID = 0;
+    public const USER_ACCOUNT_VALID = 1;
+    public const USER_ACCOUNT_IMPORTED = 2;
 
-    const USER_ACCOUNT_STATUS_INVALID = [
+    public const USER_ACCOUNT_STATUS_INVALID = [
         self::USER_ACCOUNT_INVALID,
         self::USER_ACCOUNT_IMPORTED,
     ];
     // TODO: there is more status: terms_of_use, `INVALID` is in fact `UNVALIDATED`…
 
-    const USER_EMAIL_NO_ERROR = 0;
-    const USER_EMAIL_INVALID = 1;
-    const USER_EMAIL_UNCONFIRMED = 2;
-    const USER_EMAIL_MISSING = 3;
+    public const USER_EMAIL_NO_ERROR = 0;
+    public const USER_EMAIL_INVALID = 1;
+    public const USER_EMAIL_UNCONFIRMED = 2;
+    public const USER_EMAIL_MISSING = 3;
 
     protected $db = 'DB';
     protected $table = 'gk_users';

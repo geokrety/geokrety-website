@@ -8,7 +8,7 @@ use Exception;
  * Class DatabaseReset.
  */
 class DatabaseReset extends Base {
-    const TABLES = [
+    public const TABLES = [
         'gk_account_activation', 'gk_audit_logs', 'gk_awards_won', 'gk_email_activation',
         'gk_geokrety', 'gk_geokrety_rating', 'gk_mails',
         'gk_moves', 'gk_moves_comments', 'gk_news', 'gk_news_comments',
@@ -19,7 +19,7 @@ class DatabaseReset extends Base {
         'gk_waypoints_oc', 'gk_waypoints_sync', 'sessions',
     ];
 
-    const SEQUENCES = [
+    public const SEQUENCES = [
         'account_activation_id_seq', 'badges_id_seq', 'email_activation_id_seq',
         'geokrety_id_seq', 'geokrety_rating_id_seq',
         'gk_statistics_counters_id_seq',

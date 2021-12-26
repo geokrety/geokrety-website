@@ -10,8 +10,8 @@ use Sugar\Event;
  * UserBanner.
  */
 class UserBanner {
-    const TEXT_SIZE_BIG = 13;
-    const TEXT_SIZE_SMALL = 9;
+    public const TEXT_SIZE_BIG = 13;
+    public const TEXT_SIZE_SMALL = 9;
 
     public static function get_banner_url(User $user) {
         return sprintf('%s/%s/%d.png', GK_MINIO_SERVER_URL_EXTERNAL, GK_BUCKET_NAME_STATPIC, $user->id);

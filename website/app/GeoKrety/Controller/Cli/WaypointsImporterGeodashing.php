@@ -9,10 +9,10 @@ use League\Csv\Reader;
 use PDOException;
 
 class WaypointsImporterGeodashing extends WaypointsImporterBase {
-    const GD_API_ENDPOINT = 'http://geodashing.gpsgames.org/Games/dashpoints_csv.zip';
-    const GD_CACHE_DETAIL_URL = 'http://geodashing.gpsgames.org/cgi-bin/dp.pl?dp=%s';
+    public const GD_API_ENDPOINT = 'http://geodashing.gpsgames.org/Games/dashpoints_csv.zip';
+    public const GD_CACHE_DETAIL_URL = 'http://geodashing.gpsgames.org/cgi-bin/dp.pl?dp=%s';
 
-    const SCRIPT_CODE = 'GEODASHING';
+    public const SCRIPT_CODE = 'GEODASHING';
     protected string $class_name = __CLASS__;
 
     public function process() {

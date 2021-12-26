@@ -3,14 +3,14 @@
 namespace GeoKrety;
 
 class LogType {
-    const LOG_TYPE_DROPPED = 0;
-    const LOG_TYPE_GRABBED = 1;
-    const LOG_TYPE_COMMENT = 2;
-    const LOG_TYPE_SEEN = 3;
-    const LOG_TYPE_ARCHIVED = 4;
-    const LOG_TYPE_DIPPED = 5;
+    public const LOG_TYPE_DROPPED = 0;
+    public const LOG_TYPE_GRABBED = 1;
+    public const LOG_TYPE_COMMENT = 2;
+    public const LOG_TYPE_SEEN = 3;
+    public const LOG_TYPE_ARCHIVED = 4;
+    public const LOG_TYPE_DIPPED = 5;
 
-    const LOG_TYPES = [
+    public const LOG_TYPES = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_COMMENT,
@@ -19,31 +19,31 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     ];
 
-    const LOG_TYPES_ALIVE = [
+    public const LOG_TYPES_ALIVE = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
     ];
 
-    const LOG_TYPES_REQUIRING_COORDINATES = [
+    public const LOG_TYPES_REQUIRING_COORDINATES = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
     ];
 
-    const LOG_TYPES_COUNT_KILOMETERS = [
+    public const LOG_TYPES_COUNT_KILOMETERS = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
     ];
 
-    const LOG_TYPES_THEORICALLY_IN_CACHE = [
+    public const LOG_TYPES_THEORICALLY_IN_CACHE = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
     ];
 
-    const LOG_TYPES_LAST_POSITION = [
+    public const LOG_TYPES_LAST_POSITION = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_SEEN,
@@ -51,14 +51,14 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     ];
 
-    const LOG_TYPES_USER_TOUCHED = [
+    public const LOG_TYPES_USER_TOUCHED = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
     ];
 
-    const LOG_TYPES_EDITABLE = [
+    public const LOG_TYPES_EDITABLE = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_GRABBED,
         self::LOG_TYPE_COMMENT,

@@ -7,9 +7,9 @@ use GeoKrety\Service\File;
 use SimpleXMLElement;
 
 class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
-    const WPG_API_ENDPOINT = 'http://wpg.alleycat.pl/allwps.php';
+    public const WPG_API_ENDPOINT = 'http://wpg.alleycat.pl/allwps.php';
 
-    const SCRIPT_CODE = 'WPG';
+    public const SCRIPT_CODE = 'WPG';
     protected string $class_name = __CLASS__;
 
     /**

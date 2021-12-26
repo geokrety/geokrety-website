@@ -3,7 +3,7 @@
 namespace GeoKrety\Service;
 
 class Url extends \Prefab {
-    const NO_REDIRECT_URLS = [
+    public const NO_REDIRECT_URLS = [
         'login',
         'logout',
         'registration',

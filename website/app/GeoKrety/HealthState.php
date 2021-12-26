@@ -3,10 +3,10 @@
 namespace GeoKrety;
 
 class HealthState {
-    const HEALTH_STATE_OK = 'ok';
-    const HEALTH_STATE_KO = 'ko';
+    public const HEALTH_STATE_OK = 'ok';
+    public const HEALTH_STATE_KO = 'ko';
 
-    const HEALTH_STATES_VALID = [self::HEALTH_STATE_OK, self::HEALTH_STATE_KO];
+    public const HEALTH_STATES_VALID = [self::HEALTH_STATE_OK, self::HEALTH_STATE_KO];
 
     public $state = null;
     public $dependencies = [];

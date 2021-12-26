@@ -6,10 +6,10 @@ namespace GeoKrety\Service;
  * WaypointInfo : Some waypoint helpers.
  */
 class WaypointInfo {
-    const PREFIX_OC = ['OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR', 'LT', 'LV'];
-    const PREFIX_GC = ['GC']; // Geocaching
-    const PREFIX_OTHER_1 = ['N']; // Navicache
-    const PREFIX_OTHER_3 = ['WPG'];
+    public const PREFIX_OC = ['OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR', 'LT', 'LV'];
+    public const PREFIX_GC = ['GC']; // Geocaching
+    public const PREFIX_OTHER_1 = ['N']; // Navicache
+    public const PREFIX_OTHER_3 = ['WPG'];
 
     public static function isOC($waypoint) {
         return in_array(substr(strtoupper($waypoint), 0, 2), self::PREFIX_OC);

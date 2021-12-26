@@ -8,7 +8,7 @@ use TCPDF;
 class Pdf extends TCPDF {
     use Traits\Languages;
 
-    const LABEL_OUTPUT_DPI = 300;
+    public const LABEL_OUTPUT_DPI = 300;
 
     private $geokrety = [];
 

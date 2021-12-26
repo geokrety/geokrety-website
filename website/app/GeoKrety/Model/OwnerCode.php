@@ -19,9 +19,9 @@ use JsonSerializable;
 class OwnerCode extends Base implements JsonSerializable {
     use \Validation\Traits\CortexTrait;
 
-    const TOKEN_UNUSED = 0;
-    const TOKEN_USED = 1;
-    const TOKEN_CANCELLED = 2;
+    public const TOKEN_UNUSED = 0;
+    public const TOKEN_USED = 1;
+    public const TOKEN_CANCELLED = 2;
 
     protected $db = 'DB';
     protected $table = 'gk_owner_codes';

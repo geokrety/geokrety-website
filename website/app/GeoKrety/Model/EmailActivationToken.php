@@ -26,24 +26,24 @@ use DB\SQL\Schema;
 class EmailActivationToken extends Base {
     // Validation occurs in validate() for this
 
-    const TOKEN_UNUSED = 0;
-    const TOKEN_CHANGED = 1;
-    const TOKEN_REFUSED = 2;
-    const TOKEN_EXPIRED = 3;
-    const TOKEN_DISABLED = 4;
-    const TOKEN_VALIDATED = 5;
-    const TOKEN_REVERTED = 6;
+    public const TOKEN_UNUSED = 0;
+    public const TOKEN_CHANGED = 1;
+    public const TOKEN_REFUSED = 2;
+    public const TOKEN_EXPIRED = 3;
+    public const TOKEN_DISABLED = 4;
+    public const TOKEN_VALIDATED = 5;
+    public const TOKEN_REVERTED = 6;
 
-    const TOKEN_NEED_PREVIOUS_EMAIL_FIELD = [
+    public const TOKEN_NEED_PREVIOUS_EMAIL_FIELD = [
         self::TOKEN_CHANGED,
         self::TOKEN_VALIDATED,
         self::TOKEN_REVERTED,
     ];
-    const TOKEN_NEED_UPDATE = [
+    public const TOKEN_NEED_UPDATE = [
         self::TOKEN_CHANGED,
         self::TOKEN_REFUSED,
     ];
-    const TOKEN_NEED_REVERT = [
+    public const TOKEN_NEED_REVERT = [
         self::TOKEN_VALIDATED,
         self::TOKEN_REVERTED,
     ];

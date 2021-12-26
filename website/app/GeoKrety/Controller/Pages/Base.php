@@ -9,7 +9,7 @@ use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
 
 abstract class Base {
-    const NO_TERMS_OF_USE_REDIRECT_URLS = [
+    public const NO_TERMS_OF_USE_REDIRECT_URLS = [
         'login',
         'logout',
         'registration',

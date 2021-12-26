@@ -19,9 +19,9 @@ use DB\SQL\Schema;
 class PasswordToken extends Base {
     use \Validation\Traits\CortexTrait;
 
-    const TOKEN_UNUSED = 0;
-    const TOKEN_VALIDATED = 1;
-    const TOKEN_EXPIRED = 2;
+    public const TOKEN_UNUSED = 0;
+    public const TOKEN_VALIDATED = 1;
+    public const TOKEN_EXPIRED = 2;
 
     protected $db = 'DB';
     protected $table = 'gk_password_tokens';

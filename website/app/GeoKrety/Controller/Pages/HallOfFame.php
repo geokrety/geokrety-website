@@ -6,7 +6,7 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class HallOfFame extends Base {
-    const CONTRIBUTORS_IDS = ['kumy', 'BSLLM', 'filips', 'simor', 'Thathanka', 'moose', 'YvesProvence', 'Quinto', 'harrieklomp', 'Lineflyer'];
+    public const CONTRIBUTORS_IDS = ['kumy', 'BSLLM', 'filips', 'simor', 'Thathanka', 'moose', 'YvesProvence', 'Quinto', 'harrieklomp', 'Lineflyer'];
 
     public function get() {
         $contributors = [];

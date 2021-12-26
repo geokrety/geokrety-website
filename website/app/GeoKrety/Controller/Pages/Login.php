@@ -18,7 +18,7 @@ use Multilang;
 use Sugar\Event;
 
 class Login extends Base {
-    const NO_GRAPHIC_LOGIN = [
+    public const NO_GRAPHIC_LOGIN = [
         'secid',
     ];
 

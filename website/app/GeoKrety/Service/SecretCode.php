@@ -5,7 +5,7 @@ namespace GeoKrety\Service;
 use GeoKrety\Model\Geokret;
 
 class SecretCode {
-    const EXCLUDED_PREFIXES = ['GK', ...WaypointInfo::PREFIX_GC, ...WaypointInfo::PREFIX_OC];
+    public const EXCLUDED_PREFIXES = ['GK', ...WaypointInfo::PREFIX_GC, ...WaypointInfo::PREFIX_OC];
     public array $generated_in_transaction = [];
 
     public static function generateSecId(int $len = GK_SITE_SECID_CODE_LENGTH): string {

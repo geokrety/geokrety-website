@@ -11,10 +11,10 @@ use GeoKrety\Service\File;
 use PDOException;
 
 class WaypointsImporterGcSu extends WaypointsImporterBase {
-    const GC_SU_API_ENDPOINT = 'https://geocaching.su/rss/geokrety/api.php';
-    const GC_SU_CACHE_DETAIL_URL = 'https://geocaching.su/?pn=101&cid=%s';
+    public const GC_SU_API_ENDPOINT = 'https://geocaching.su/rss/geokrety/api.php';
+    public const GC_SU_CACHE_DETAIL_URL = 'https://geocaching.su/?pn=101&cid=%s';
 
-    const SCRIPT_CODE = 'GC_SU';
+    public const SCRIPT_CODE = 'GC_SU';
     protected string $class_name = __CLASS__;
 
     /**

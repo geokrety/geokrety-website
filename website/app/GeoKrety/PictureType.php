@@ -3,17 +3,17 @@
 namespace GeoKrety;
 
 class PictureType {
-    const PICTURE_GEOKRET_AVATAR = 0;
-    const PICTURE_GEOKRET_MOVE = 1;
-    const PICTURE_USER_AVATAR = 2;
+    public const PICTURE_GEOKRET_AVATAR = 0;
+    public const PICTURE_GEOKRET_MOVE = 1;
+    public const PICTURE_USER_AVATAR = 2;
 
-    const PICTURE_TYPES = [
+    public const PICTURE_TYPES = [
         self::PICTURE_GEOKRET_AVATAR,
         self::PICTURE_GEOKRET_MOVE,
         self::PICTURE_USER_AVATAR,
     ];
 
-    const BUCKET_MAP = [
+    public const BUCKET_MAP = [
         self::PICTURE_GEOKRET_AVATAR => GK_BUCKET_NAME_GEOKRETY_AVATARS,
         self::PICTURE_GEOKRET_MOVE => GK_BUCKET_NAME_MOVES_PICTURES,
         self::PICTURE_USER_AVATAR => GK_BUCKET_NAME_USERS_AVATARS,

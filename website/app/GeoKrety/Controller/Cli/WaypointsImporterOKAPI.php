@@ -10,10 +10,10 @@ use GeoKrety\Service\File;
 use GeoKrety\Service\Metrics;
 
 class WaypointsImporterOKAPI extends WaypointsImporterBase {
-    const OKAPI_CHANGELOG_ENDPOINT = '/okapi/services/replicate/changelog';
-    const OKAPI_FULL_DUMP_ENDPOINT = '/okapi/services/replicate/fulldump';
+    public const OKAPI_CHANGELOG_ENDPOINT = '/okapi/services/replicate/changelog';
+    public const OKAPI_FULL_DUMP_ENDPOINT = '/okapi/services/replicate/fulldump';
 
-    const SCRIPT_CODE = 'OKAPI';
+    public const SCRIPT_CODE = 'OKAPI';
     protected string $class_name = __CLASS__;
 
     public int $nTotal = 0;

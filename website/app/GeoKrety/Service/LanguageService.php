@@ -9,15 +9,15 @@ namespace GeoKrety\Service;
  * /usr/share/i18n/SUPPORTED
  */
 class LanguageService extends \Prefab {
-    const DEFAULT_LANGUAGE_CODE = 'en';
-    const SUPPORTED_LANGUAGES = [
+    public const DEFAULT_LANGUAGE_CODE = 'en';
+    public const SUPPORTED_LANGUAGES = [
         'en', 'fr', 'de', 'ru', 'nl', 'pl',
         'bg', 'ca', 'da', 'el', 'es', 'et',
         'fi', 'cs', 'hu', 'it', 'ja', 'nb',
         'se', 'nn', 'pt', 'zh', 'ro', 'sk',
         'sq', 'sr', 'sv', 'th', 'tr', 'uk',
     ];
-    const SUPPORTED_LANGUAGES_LOCAL_NAME = [
+    public const SUPPORTED_LANGUAGES_LOCAL_NAME = [
         'en' => 'English',
         'bg' => 'Български',
         'ca' => 'Català',

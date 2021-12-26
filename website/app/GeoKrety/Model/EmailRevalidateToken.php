@@ -14,10 +14,10 @@ use GeoKrety\Model\Traits\EmailField;
 class EmailRevalidateToken extends Base {
     use EmailField;
 
-    const TOKEN_UNUSED = 0;
-    const TOKEN_VALIDATED = 1;
-    const TOKEN_EXPIRED = 2;
-    const TOKEN_DISABLED = 3;
+    public const TOKEN_UNUSED = 0;
+    public const TOKEN_VALIDATED = 1;
+    public const TOKEN_EXPIRED = 2;
+    public const TOKEN_DISABLED = 3;
 
     protected $db = 'DB';
     protected $table = 'gk_email_revalidate';

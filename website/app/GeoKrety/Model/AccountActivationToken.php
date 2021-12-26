@@ -21,12 +21,12 @@ use DB\SQL\Schema;
 class AccountActivationToken extends Base {
     use \Validation\Traits\CortexTrait;
 
-    const TOKEN_UNUSED = 0;
-    const TOKEN_VALIDATED = 1;
-    const TOKEN_EXPIRED = 2;
-    const TOKEN_DISABLED = 3;
+    public const TOKEN_UNUSED = 0;
+    public const TOKEN_VALIDATED = 1;
+    public const TOKEN_EXPIRED = 2;
+    public const TOKEN_DISABLED = 3;
 
-    const TOKEN_NEED_VALIDATE = [
+    public const TOKEN_NEED_VALIDATE = [
         self::TOKEN_VALIDATED,
     ];
 
