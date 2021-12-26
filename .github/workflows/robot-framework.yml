@@ -95,7 +95,7 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
+          deploy_key: ${{ secrets.QA_TEST_DEPLOY_KEY }}
           external_repository: geokrety/geokrety-website-qa
           publish_branch: gh-pages
           publish_dir: ./tests-qa/docs/${{ steps.vars.outputs.short_ref }}
