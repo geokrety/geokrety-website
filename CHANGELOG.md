@@ -1,3 +1,15 @@
+## [2.10.0](https://github.com/geokrety/geokrety-website/compare/v2.9.0...v2.10.0) (2021-12-26)
+
+
+### Features
+
+* Create manual action for crowdin upload ([05b02b9](https://github.com/geokrety/geokrety-website/commit/05b02b9c07123a07b10b219b2692a467f61cbfd5))
+
+
+### Chores
+
+* Drop duplicated release from Changelog ([ca8a1f2](https://github.com/geokrety/geokrety-website/commit/ca8a1f2d9a19e0f81cfb5a42d4e42a9592448146))
+
 ## [2.9.0](https://github.com/geokrety/geokrety-website/compare/v2.8.1...v2.9.0) (2021-12-26)
 
 
