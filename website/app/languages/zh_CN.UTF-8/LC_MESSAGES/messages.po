@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-05 17:18+0000\n"
-"PO-Revision-Date: 2021-12-05 17:21\n"
+"POT-Creation-Date: 2021-12-26 13:50+0000\n"
+"PO-Revision-Date: 2021-12-26 13:52\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-12-05 17:19+0000\n"
+"POT-Creation-Date: 2021-12-26 13:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -26,6 +26,113 @@ msgstr ""
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /feature.new-theme/messages.po\n"
 "X-Crowdin-File-ID: 40\n"
+
+#: website/app-templates/smarty/plugins/modifier.awardlink.php:16
+#: website/app-templates/smarty/plugins/modifier.userlink.php:17
+msgid "Anonymous"
+msgstr "匿名的"
+
+#: website/app-templates/smarty/plugins/modifier.cachelink.php:29
+msgid "Search on geocaching.com"
+msgstr "在 geocaching.com 上搜索"
+
+#: website/app-templates/smarty/plugins/modifier.cachelink.php:35
+#, php-format
+msgid "Location: %s Elevation: %dm"
+msgstr "位置: %s 高度: %d米"
+
+#: website/app-templates/smarty/plugins/modifier.cachelink.php:35
+#, php-format
+msgid "Location: %s"
+msgstr "位置： %s"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
+msgid "has avatar icon"
+msgstr "有头像图标"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
+msgid "GeoKret has an avatar"
+msgstr "GeoKret有头像"
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
+msgid "nobody"
+msgstr ""
+
+#: website/app-templates/smarty/plugins/modifier.gkavatar.php:32
+#, php-format
+msgid "GeoKret \"%s\" by %s"
+msgstr ""
+
+#: website/app-templates/smarty/plugins/modifier.gkicon.php:13
+msgid "GK type icon"
+msgstr "GK 类型图标"
+
+#: website/app-templates/smarty/plugins/modifier.gklink.php:23
+#, php-format
+msgid "View %s's profile"
+msgstr "查看 %s的个人资料"
+
+#: website/app-templates/smarty/plugins/modifier.medal.php:14
+#, php-format
+msgid "Award for %s GeoKrety"
+msgstr "%s GeoKrety 获奖"
+
+#: website/app-templates/smarty/plugins/modifier.movelink.php:22
+msgid "View move details"
+msgstr "查看移动详情"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:5
+#: website/app-templates/smarty/plugins/modifier.posicon.php:12
+msgid "Inside a cache"
+msgstr "内部高速缓存"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:6
+#: website/app-templates/smarty/plugins/modifier.posicon.php:13
+msgid "Travelling"
+msgstr "旅游"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:7
+#: website/app-templates/smarty/plugins/modifier.posicon.php:14
+msgid "Still in a cache"
+msgstr "仍处于高速缓存"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:8
+#: website/app-templates/smarty/plugins/modifier.posicon.php:15
+msgid "Probably lost"
+msgstr "也许失去了"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:9
+#: website/app-templates/smarty/plugins/modifier.posicon.php:16
+msgid "Visiting"
+msgstr "访问"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:10
+msgid "In the owner hands"
+msgstr "在所有者手中"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:11
+#: website/app-templates/smarty/plugins/modifier.posicon.php:17
+msgid "Freshman mole"
+msgstr "大一痣"
+
+#: website/app-templates/smarty/plugins/modifier.posicon.php:54
+msgid "status icon"
+msgstr "状态图标"
+
+#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:13
+#, php-format
+msgid "User statistics banner: %s"
+msgstr "用户统计横幅： %s"
+
+#: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
+#, php-format
+msgid "%s's profile avatar"
+msgstr "%s的头像"
+
+#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
+#, php-format
+msgid "%s's statpic"
+msgstr "%s的状态"
 
 #: website/app/GeoKrety/Auth.php:20
 #, php-format
@@ -75,22 +182,30 @@ msgstr ""
 msgid "No more Tracking Code available using this pattern."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:19
+#: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:24
 #, php-format
 msgid "Script \"%s\" has been acked"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Admin/ScriptsUnlock.php:20
+#: website/app/GeoKrety/Controller/Admin/ScriptsUnlock.php:25
 #, php-format
 msgid "Script \"%s\" has been unlocked"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:28
+#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:38
 msgid "This award does not exists"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:40
+#: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:47
 msgid "The prize has been awarded"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/Base.php:75
+msgid "reCaptcha failed!"
+msgstr "reCaptcha 失败！"
+
+#: website/app/GeoKrety/Controller/Pages/Base.php:99
+msgid "CSRF error, please try again."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
@@ -101,54 +216,47 @@ msgstr ""
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:74
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:170
-#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:34
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:71
-msgid "reCaptcha failed!"
-msgstr "reCaptcha 失败！"
-
 #: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:59
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:66
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
 msgid "Sorry but this mail address is already in use."
 msgstr "对不起，此邮件地址已被使用。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:24
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:30
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:31
 msgid "You are already the owner."
 msgstr "你已经是所有者。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:36
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:37
 msgid "Sorry, this owner code has already been used."
 msgstr "对不起，此所有者代码已被使用。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:72
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:73
 msgid "Something went wrong while registering the adoption."
 msgstr "注册通过时出了错。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:76
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:77
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:39
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:41
 msgid "Born here"
 msgstr "出生于这里"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:45
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
 msgid "Failed to create the GeoKret initial move."
 msgstr "创建 GeoKret 初始移动失败。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:55
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:57
 #: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:23
 msgid "Failed to create the GeoKret."
 msgstr "创建 GeoKret失败。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:57
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:59
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "您的 GeoKret 已经创建。您现在可能想要 <a href=\"%s\">打印</a> 它是一个伟大的标签…"
@@ -161,19 +269,19 @@ msgstr "您的 GeoKret 已更新。"
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
 msgstr "对不起，你没有权限打印这个GeoKret的标签，因为你从未发现它！"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:35
 msgid "This label template does not exists."
 msgstr "此标签模板不存在。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:50
 msgid "Something went wrong while saving the GeoKret preferred label template."
 msgstr "保存 GeoKret 首选标签模板时出了错。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:64
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:65
 msgid "Some chosen languages are invalid."
 msgstr "某些选择的语言是无效的。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:82
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:83
 msgid "Please select an export type."
 msgstr "请选择导出类型。"
 
@@ -181,27 +289,27 @@ msgstr "请选择导出类型。"
 msgid "This GeoKret is already archived."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:43
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:48
 msgid "Archiving GeoKret"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:54
 msgid "Failed to archive the GeoKret."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:23
 msgid "You must be the GeoKret owner to generate new Owner Code."
 msgstr "您必须是GeoKret 所有者才能生成新的代码。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:29
 msgid "An Owner Code is already available for this GeoKret."
 msgstr "此 GeoKret已经有一个所有者代码。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:38
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:39
 msgid "Failed to create a new Owner Code."
 msgstr "创建新的所有者代码失败。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:41
+#: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:42
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
 msgstr "所有者代码 (%s) 已经生成。 将它和追踪代码 (%s)一起提供给某人，以便他可以通过你的 GeoKret。"
@@ -222,73 +330,73 @@ msgstr ""
 msgid "\"nr\" parameter must be provided."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:50
-#: website/app/GeoKrety/Controller/Pages/Login.php:153
+#: website/app/GeoKrety/Controller/Pages/Login.php:51
+#: website/app/GeoKrety/Controller/Pages/Login.php:158
 msgid "Username and password doesn't match."
 msgstr "用户名和密码不匹配。"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:79
+#: website/app/GeoKrety/Controller/Pages/Login.php:80
 msgid "Welcome on board!"
 msgstr "欢迎登陆！"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:134
+#: website/app/GeoKrety/Controller/Pages/Login.php:139
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:142
+#: website/app/GeoKrety/Controller/Pages/Login.php:147
 msgid "Your account is not valid."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:164
-#: website/app/GeoKrety/Controller/Pages/Login.php:170
+#: website/app/GeoKrety/Controller/Pages/Login.php:169
+#: website/app/GeoKrety/Controller/Pages/Login.php:175
 msgid "Invalid \"secid\""
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:219
+#: website/app/GeoKrety/Controller/Pages/Login.php:224
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "您的帐户已经与 %s 链接"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:224
+#: website/app/GeoKrety/Controller/Pages/Login.php:229
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "此 %s 帐户已经链接到另一个 GeoKrety 帐户。"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:239
+#: website/app/GeoKrety/Controller/Pages/Login.php:244
 msgid "Auth request was canceled."
 msgstr "认证请求已被取消。"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:50
-#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:72
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:51
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:74
 msgid "Comment saved."
 msgstr "评论已保存。"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:26
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:31
 msgid "Comment removed."
 msgstr "评论已删除。"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:28
+#: website/app/GeoKrety/Controller/Pages/MoveCommentDelete.php:33
 msgid "Failed to delete comment."
 msgstr "删除评论失败。"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:108
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:103
 msgid "The date time could not be parsed."
 msgstr "无法解析日期。"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:220
-#: website/app/GeoKrety/Controller/Pages/MoveCreateXML.php:57
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:211
+#: website/app/GeoKrety/Controller/Pages/MoveCreateXML.php:61
 msgid "Failed to save move."
 msgstr "保存移动失败。"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:223
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:214
 msgid "Your move has been saved."
 msgstr "您的移动已保存。"
 
-#: website/app/GeoKrety/Controller/Pages/MoveDelete.php:24
+#: website/app/GeoKrety/Controller/Pages/MoveDelete.php:29
 msgid "Move removed."
 msgstr "移除."
 
-#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:37
+#: website/app/GeoKrety/Controller/Pages/NewsDetails.php:34
 msgid "Failed to record read datetime."
 msgstr "无法录制读取的日期时间。"
 
@@ -300,149 +408,149 @@ msgstr "保存评论时出错。"
 msgid "Your comment has been saved."
 msgstr "您的评论已保存。"
 
-#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:27
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:28
 msgid "Failed to update your subscriptions preferences."
 msgstr "更新您的订阅首选项失败。"
 
-#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:32
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:33
 msgid "You will now receive updates on new comments."
 msgstr "您现在将收到关于新评论的更新。"
 
-#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:35
+#: website/app/GeoKrety/Controller/Pages/NewsSubscription.php:36
 msgid "You will not receive updates anymore."
 msgstr "您将不再收到更新。"
 
-#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:36
+#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:35
 #, php-format
 msgid "Something went wrong while detaching from your %s account. Please contact us."
 msgstr "脱离您的 %s 帐户时出了错。请联系我们。"
 
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:29
-#: website/app/GeoKrety/Controller/Pages/RegistrationActivate.php:22
-#: website/app/GeoKrety/Controller/Pages/UserEmailChange.php:19
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:26
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:23
-#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:28
-msgid "Sorry this token is not valid, already used or expired."
-msgstr "对不起，此令牌无效，已经使用或过期。"
-
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:60
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:44
-msgid "New passwords doesn't match."
-msgstr "新密码不匹配。"
-
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:87
-msgid "Unexpected error occurred."
-msgstr "发生意外错误。"
-
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:92
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:55
-msgid "Your password has been changed."
-msgstr "您的密码已更改。"
-
-#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:44
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:37
 msgid "Sorry no account using that email address."
 msgstr "对不起，没有使用该电子邮件地址的账户。"
 
-#: website/app/GeoKrety/Controller/Pages/PictureEdit.php:38
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:29
+#: website/app/GeoKrety/Controller/Pages/RegistrationActivate.php:22
+#: website/app/GeoKrety/Controller/Pages/UserEmailChange.php:25
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:23
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:23
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:37
+msgid "Sorry this token is not valid, already used or expired."
+msgstr "对不起，此令牌无效，已经使用或过期。"
+
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:61
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:45
+msgid "New passwords doesn't match."
+msgstr "新密码不匹配。"
+
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:88
+msgid "Unexpected error occurred."
+msgstr "发生意外错误。"
+
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:93
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:56
+msgid "Your password has been changed."
+msgstr "您的密码已更改。"
+
+#: website/app/GeoKrety/Controller/Pages/PictureEdit.php:39
 msgid "Picture caption saved."
 msgstr "图片捕获已保存。"
 
-#: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:35
+#: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:36
 msgid "Language preferences updated."
 msgstr "语言首选项已更新。"
+
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:74
+msgid "Failed to save the mail."
+msgstr "无法保存邮件。"
+
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:82
+#, php-format
+msgid "Your message to %s has been sent."
+msgstr "您给 %s 的消息已发送。"
 
 #: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:24
 #, php-format
 msgid "GeoKret: %s (%s)"
 msgstr "GeoKret: %s (%s)"
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:81
-msgid "Failed to save the mail."
-msgstr "无法保存邮件。"
-
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:89
-#, php-format
-msgid "Your message to %s has been sent."
-msgstr "您给 %s 的消息已发送。"
-
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:45
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:42
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:43
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:43
 msgid "Unexpected value."
 msgstr "意外的值。"
 
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:61
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:56
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:59
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:57
 msgid "Something went wrong, operation aborted."
 msgstr "出了错，操作中止。"
 
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:71
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:69
 msgid "Perfect! Enjoy your new email address."
 msgstr "完美！享受您的新电子邮件地址。"
 
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:75
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:73
 msgid "Your email address has been reverted."
 msgstr "您的电子邮件地址已被还原。"
 
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:67
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:68
 msgid "Your email address has been validated."
 msgstr "您的电子邮件地址已被验证。"
 
-#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:76
+#: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:77
 msgid "No change has been processed. This token is now revoked."
 msgstr "未处理任何更改。此令牌现在已被撤销。"
 
-#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:25
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:34
 msgid "You have successfully validated your email address."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:26
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:27
 msgid "Failed to refresh your secid."
 msgstr "刷新您的安全隐藏失败。"
 
-#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:29
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:30
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "您的秘密已经刷新。别忘了重新认证与GeoKrety帐户相关联的任何其他应用程序。"
 
-#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:23
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:24
 msgid "Failed to save your preferred user banner template."
 msgstr "保存您首选的用户横幅模板失败。"
 
-#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:26
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:27
 msgid "Your user banner template preference has been successfully saved."
 msgstr "您的用户广告模板首选项已成功保存。"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:38
 msgid "Your email preferences were saved."
 msgstr "您的电子邮件首选项已保存。"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:51
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:52
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "确认邮件再次发送到您的新地址。 您必须点击电子邮件中提供的链接来确认您的电子邮件地址的更改。 确认链接在 %s 过期。"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:79
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:80
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "一封确认邮件已发送到您的新地址。 您必须点击电子邮件中提供的链接来确认您的电子邮件地址的更改。 确认链接在 %s 过期。"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:24
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:25
 msgid "Failed to save your home coordinates."
 msgstr "保存您的家庭坐标失败。"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:27
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:28
 msgid "Your home coordinates were successfully saved."
 msgstr "您的家坐标已成功保存。"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:38
 msgid "Your old password is invalid."
 msgstr "您的旧密码无效。"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:40
 msgid "Username changed. Please login again."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:49
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:51
 msgid "Sorry, to use this feature, you must have a valid registered email address."
 msgstr ""
 
@@ -527,7 +635,7 @@ msgid "An email has been sent to your registered address, please click the inclu
 msgstr ""
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
-#: website/app/GeoKrety/Email/EmailChange.php:53 smarty/emails:3 smarty/pages:3
+#: website/app/GeoKrety/Email/EmailChange.php:53 smarty/pages:3 smarty/emails:3
 msgid "Changing your email address"
 msgstr "更改您的电子邮件地址"
 
@@ -618,8 +726,8 @@ msgstr "存档"
 msgid "dip"
 msgstr "跳转"
 
-#: website/app/GeoKrety/LogType.php:121 smarty/blocks/geokret:56
-#: smarty/pages:80
+#: website/app/GeoKrety/LogType.php:121 smarty/pages:80
+#: smarty/blocks/geokret:56
 msgid "Born"
 msgstr "出生日期"
 
@@ -736,113 +844,6 @@ msgstr ""
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
 msgstr "对不起，这个航点在我们的数据库中不存在(尚未存在)。它真的存在吗？"
 
-#: website/app-templates/smarty/plugins/modifier.awardlink.php:16
-#: website/app-templates/smarty/plugins/modifier.userlink.php:17
-msgid "Anonymous"
-msgstr "匿名的"
-
-#: website/app-templates/smarty/plugins/modifier.cachelink.php:29
-msgid "Search on geocaching.com"
-msgstr "在 geocaching.com 上搜索"
-
-#: website/app-templates/smarty/plugins/modifier.cachelink.php:35
-#, php-format
-msgid "Location: %s Elevation: %dm"
-msgstr "位置: %s 高度: %d米"
-
-#: website/app-templates/smarty/plugins/modifier.cachelink.php:35
-#, php-format
-msgid "Location: %s"
-msgstr "位置： %s"
-
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
-msgid "has avatar icon"
-msgstr "有头像图标"
-
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
-msgid "GeoKret has an avatar"
-msgstr "GeoKret有头像"
-
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
-msgid "nobody"
-msgstr ""
-
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:32
-#, php-format
-msgid "GeoKret \"%s\" by %s"
-msgstr ""
-
-#: website/app-templates/smarty/plugins/modifier.gkicon.php:13
-msgid "GK type icon"
-msgstr "GK 类型图标"
-
-#: website/app-templates/smarty/plugins/modifier.gklink.php:23
-#, php-format
-msgid "View %s's profile"
-msgstr "查看 %s的个人资料"
-
-#: website/app-templates/smarty/plugins/modifier.medal.php:14
-#, php-format
-msgid "Award for %s GeoKrety"
-msgstr "%s GeoKrety 获奖"
-
-#: website/app-templates/smarty/plugins/modifier.movelink.php:22
-msgid "View move details"
-msgstr "查看移动详情"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:5
-#: website/app-templates/smarty/plugins/modifier.posicon.php:12
-msgid "Inside a cache"
-msgstr "内部高速缓存"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:6
-#: website/app-templates/smarty/plugins/modifier.posicon.php:13
-msgid "Travelling"
-msgstr "旅游"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:7
-#: website/app-templates/smarty/plugins/modifier.posicon.php:14
-msgid "Still in a cache"
-msgstr "仍处于高速缓存"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:8
-#: website/app-templates/smarty/plugins/modifier.posicon.php:15
-msgid "Probably lost"
-msgstr "也许失去了"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:9
-#: website/app-templates/smarty/plugins/modifier.posicon.php:16
-msgid "Visiting"
-msgstr "访问"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:10
-msgid "In the owner hands"
-msgstr "在所有者手中"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:11
-#: website/app-templates/smarty/plugins/modifier.posicon.php:17
-msgid "Freshman mole"
-msgstr "大一痣"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:54
-msgid "status icon"
-msgstr "状态图标"
-
-#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:13
-#, php-format
-msgid "User statistics banner: %s"
-msgstr "用户统计横幅： %s"
-
-#: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
-#, php-format
-msgid "%s's profile avatar"
-msgstr "%s的头像"
-
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
-#, php-format
-msgid "%s's statpic"
-msgstr "%s的状态"
-
 #: website/app/validators.php:13
 msgid "The {0} field cannot be empty"
 msgstr "{0} 字段不能为空"
@@ -899,1364 +900,13 @@ msgstr "{0} 不能在将来使用"
 msgid "{0} must be after GeoKret birth"
 msgstr "{0} 必须在 GeoKret 出生后"
 
-#: smarty/emails:3
-msgid "Username changed"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Your username on GeoKrety.org has been changed."
-msgstr ""
-
-#: smarty/emails:8
-msgid "."
-msgstr ""
-
-#: smarty/emails:9
-msgid "Please enjoy your new username!"
-msgstr ""
-
-#: smarty/emails:13 smarty/emails:12 smarty/dialog:2 smarty/dialog:7
-msgid "Login"
-msgstr "登录"
-
-#: smarty/emails:18
-msgid "You're getting this email because you've changed your username on our website."
-msgstr ""
-
-#: smarty/emails:3
-msgid "Congratulation"
-msgstr ""
-
-#: smarty/emails:4 smarty/emails:8
-msgid "Your email address has been successfully changed."
-msgstr ""
-
-#: smarty/emails:8
-msgid "Your email address has been successfully changed to: %1."
-msgstr ""
-
-#: smarty/emails:15 smarty/emails:13
-msgid "If you did not requested this, click the link below."
-msgstr "如果您没有请求，请点击下面的链接。"
-
-#: smarty/emails:17
-msgid "Revert this change!"
-msgstr "还原此更改！"
-
-#: smarty/emails:20 smarty/emails:15 smarty/emails:18 smarty/emails:13
-#: smarty/emails:17
-msgid "This link expires %1."
-msgstr "此链接已过期 %1。"
-
-#: smarty/emails:22 smarty/emails:15 smarty/emails:20
-msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
-
-#: smarty/emails:24 smarty/emails:17 smarty/emails:22
-msgid "Change my password!"
-msgstr "更改我的密码 ！"
-
-#: smarty/emails:29 smarty/emails:22 smarty/emails:17 smarty/emails:27
-msgid "You're getting this email because you've changed your email on our website."
-msgstr "您正在收到这封电子邮件，因为您已经在我们的网站上更改了您的电子邮件。"
-
-#: smarty/emails:20 smarty:3
-msgid "Open source item tracking for all geocaching platforms"
-msgstr "所有地理藏宝平台的开源项目跟踪"
-
-#: smarty/emails:30
-msgid "Hi %1,"
-msgstr "Hi %1,"
-
-#: smarty/emails:37
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "真诚，<br>GeoKrety 团队"
-
-#: smarty/emails:46
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
-
-#: smarty/emails:4
-msgid "New Award received"
-msgstr ""
-
-#: smarty/emails:7
-msgid "We're proud to inform you that you have received a new Award badge."
-msgstr ""
-
-#: smarty/emails:16
-msgid "Please look at this new pretty badge on your GeoKrety profile."
-msgstr ""
-
-#: smarty/emails:18
-msgid "Check my profile"
-msgstr ""
-
-#: smarty/emails:3
-msgid "Forgot Your Password?"
-msgstr "忘记密码？"
-
-#: smarty/emails:4
-msgid "Recover your password."
-msgstr ""
-
-#: smarty/emails:8
-msgid "It happens. Click the link below to reset your password."
-msgstr "发生这种情况。点击下面的链接重置您的密码。"
-
-#: smarty/emails:12
-msgid "Reset Password"
-msgstr "重置密码"
-
-#: smarty/emails:19 smarty/emails:17
-msgid "You're getting this email because you've changed your password on our website."
-msgstr "您收到这封邮件是因为您在我们的网站上更改了您的密码。"
-
-#: smarty/emails:4
-msgid "Your account on GeoKrety.org is now active."
-msgstr ""
-
-#: smarty/emails:8
-msgid "Your password has been successfully changed."
-msgstr ""
-
-#: smarty/emails:3
-msgid "Account has been deleted"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Your account is now deleted."
-msgstr ""
-
-#: smarty/emails:8
-msgid "The account you created %1 has never been activated."
-msgstr ""
-
-#: smarty/emails:9
-msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
-
-#: smarty/emails:13
-msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
-
-#: smarty/emails:14
-msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
-
-#: smarty/emails:19 smarty/emails:23
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "您收到这封电子邮件是因为您刚刚在我们的网站上注册。"
-
-#: smarty/emails:4
-msgid "Something went wrong while synchronizing partners data"
-msgstr ""
-
-#: smarty/emails:7
-msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
-
-#: smarty/emails:4
-msgid "You're getting this email because you're one the website admins."
-msgstr ""
-
-#: smarty/emails:3
-msgid "Hooray"
-msgstr ""
-
-#: smarty/emails:4 smarty/emails:8
-msgid "Your email address has been successfully reverted."
-msgstr ""
-
-#: smarty/emails:4
-msgid "One of your GeoKrety has been adopted."
-msgstr ""
-
-#: smarty/emails:7
-msgid "Good news, your GeoKret <a href=\"%2\">%1</a> was just adopted by user <a href=\"%4\">%3</a>."
-msgstr ""
-
-#: smarty/emails:10
-msgid "View GeoKret"
-msgstr "查看 GeoKret"
-
-#: smarty/emails:15
-msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
-msgstr "您正在收到这封电子邮件，因为您的GeoKrety 之一已经改变了我们网站的所有者。"
-
-#: smarty/emails:4
-msgid "Confirm your email address change."
-msgstr ""
-
-#: smarty/emails:8
-msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr "有人希望您已经请求更改您的 GeoKrety 联系人电子邮件地址到: %1。"
-
-#: smarty/emails:15
-msgid "Do not change!"
-msgstr "不要改变！"
-
-#: smarty/emails:4
-msgid "Some accounts will be deleted."
-msgstr ""
-
-#: smarty/emails:7
-msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
-
-#: smarty/emails:4
-msgid "A script is locked"
-msgstr ""
-
-#: smarty/emails:7
-msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
-
-#: smarty/emails:10 smarty/admin/pages:45
-msgid "Unlock script"
-msgstr ""
-
-#: smarty/emails:3
-msgid "Contact from a GeoKrety.org user"
-msgstr "来自GeoKrety.org用户的联系人"
-
-#: smarty/emails:4
-msgid "Someone sent you a private message."
-msgstr ""
-
-#: smarty/emails:8
-msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
-
-#: smarty/emails:12
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr "如果您怀疑有滥用行为，请告诉我们： %1"
-
-#: smarty/emails:13
-msgid "Referer: %1"
-msgstr "参考者： %1"
-
-#: smarty/emails:18
-msgid "Subject:"
-msgstr "主题："
-
-#: smarty/emails:23
-msgid "Reply to %1"
-msgstr "回复 %1"
-
-#: smarty/emails:28
-msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
-msgstr "您正在收到这封电子邮件，因为有一个GeoKrety.org用户通过您的用户资料向您发送了消息。"
-
-#: smarty/emails:4
-msgid "One step left to use GeoKrety.org."
-msgstr ""
-
-#: smarty/emails:7
-msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
-msgstr "您刚刚在 GeoKrety.org 注册。 <strong>您仍然必须先激活您的帐户才能使用它。</strong> 请点击下面的链接。"
-
-#: smarty/emails:10 smarty/emails:14
-msgid "Activate your account"
-msgstr "激活您的帐户"
-
-#: smarty/emails:15 smarty/emails:19
-msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr "如果您的帐户未在此时间内激活，它将被自动删除。"
-
-#: smarty/emails:4
-msgid "An exception occurred in a cron job"
-msgstr ""
-
-#: smarty/emails:8
-msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr "有人希望您已经请求将它的 GeoKrety 联系人地址更改为您的电子邮件。"
-
-#: smarty/emails:12
-msgid "Validate your new email address"
-msgstr "验证您的新电子邮件地址"
-
-#: smarty/emails:15
-msgid "This link is valid for %1."
-msgstr "此链接对 %1 有效。"
-
-#: smarty/emails:17
-msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
-msgstr "如果您没有提出此请求并且不知道GeoKrety是什么，请忽略这封电子邮件。您将永远不会再听到关于我们的消息！"
-
-#: smarty/emails:21
-msgid "You're getting this email because you've requested an email address change on our website."
-msgstr "您正在收到这封电子邮件，因为您已请求更改我们网站的电子邮件地址。"
-
-#: smarty/emails:3
-msgid "Account not yet active"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Your account is about to be deleted."
-msgstr ""
-
-#: smarty/emails:8
-msgid "The account you created %1 has not yet been activated."
-msgstr ""
-
-#: smarty/emails:9
-msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
-msgstr ""
-
-#: smarty/emails:10
-msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
-
-#: smarty/emails:8
-msgid "Your account on GeoKrety.org is now fully functional."
-msgstr "您在 GeoKrety.org 上的帐户现已完全运行。"
-
-#: smarty/emails:15
-msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
-
-#: smarty/emails:5
-msgid "Your GeoKrety watchlist"
-msgstr ""
-
-#: smarty/emails:8
-msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
-
-#: smarty/emails:9
-msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
-
-#: smarty/emails:14
-msgid "Here is what changed recently."
-msgstr ""
-
-#: smarty/emails:17
-msgid "Latest news"
-msgstr ""
-
-#: smarty/emails:27
-msgid "GeoKrety dropped in your observation area"
-msgstr ""
-
-#: smarty/emails:30
-msgid "Open interactive map"
-msgstr ""
-
-#: smarty/emails:30
-msgid "Observation area map"
-msgstr ""
-
-#: smarty/emails:36 smarty/emails:79 smarty/emails:125 smarty/emails:170
-msgid "GeoKret"
-msgstr ""
-
-#: smarty/emails:37 smarty/emails:80 smarty/emails:126
-msgid "Position"
-msgstr ""
-
-#: smarty/emails:38 smarty/emails:81 smarty/emails:127 smarty/emails:171
-#: smarty/dialog:21 smarty/dialog:19 smarty/forms:106 smarty/forms:247
-#: smarty/pages:22 smarty/pages:20 smarty/pages:37 smarty/pages:41
-msgid "Comment"
-msgstr "评论"
-
-#: smarty/emails:39 smarty/emails:82 smarty/emails:128 smarty/emails:172
-msgid "Author"
-msgstr ""
-
-#: smarty/emails:40
-msgid "Home distance"
-msgstr ""
-
-#: smarty/emails:73
-msgid "My GeoKrety latest moves"
-msgstr ""
-
-#: smarty/emails:78 smarty/emails:124
-msgid "Icon"
-msgstr "图标"
-
-#: smarty/emails:83
-msgid "Distance since last move"
-msgstr ""
-
-#: smarty/emails:119
-msgid "Watched GeoKrety latest moves"
-msgstr ""
-
-#: smarty/emails:129 smarty/pages:24 smarty/pages:23 smarty/pages:43
-msgid "Distance"
-msgstr "距离"
-
-#: smarty/emails:165
-msgid "Latest move comments"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Is this address still valid?"
-msgstr ""
-
-#: smarty/emails:10
-msgid "This is important in case of password loss."
-msgstr ""
-
-#: smarty/emails:14
-msgid "Validate your email address"
-msgstr ""
-
-#: smarty/emails:21
-msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr ""
-
-#: smarty/devel/pages:15 smarty/dialog:26 smarty/pages:20 smarty/pages:39
-#: smarty/pages:78 smarty/pages:38 smarty/pages:81
-msgid "ID"
-msgstr "ID"
-
-#: smarty/devel/pages:16 smarty/dialog:23
-msgid "Subject"
-msgstr "题目"
-
-#: smarty/devel/pages:17
-msgid "From"
-msgstr "自"
-
-#: smarty/devel/pages:18 smarty/dialog:16
-msgid "To"
-msgstr "至"
-
-#: smarty/devel/pages:20
-msgid "Action"
-msgstr "行 动"
-
-#: smarty/devel/pages:21
-msgid "Delete all mails"
-msgstr "删除所有邮件"
-
-#: smarty/devel/pages:39
-msgid "Delete mail"
-msgstr "删除邮件"
-
-#: smarty/elements:10
-msgid "Delete comment"
-msgstr "删除评论"
-
-#: smarty/elements:9
-msgid "Last moved date"
-msgstr ""
-
-#: smarty/elements:22 smarty/elements:30 smarty/elements:38 smarty/elements:46
-#: smarty/elements:54 smarty/elements:62
-msgid "%1 days"
-msgstr ""
-
-#: smarty/elements:75 smarty/blocks/geokret:52
-msgid "Total distance"
-msgstr "总里程"
-
-#: smarty/elements:138 smarty/pages:24 smarty/pages:25
-msgid "Caches visited count"
-msgstr "已访问的缓存"
-
-#: smarty/elements:139
-msgid "Total visited caches"
-msgstr ""
-
-#: smarty/elements:151 smarty/elements:159 smarty/elements:167
-#: smarty/elements:175 smarty/elements:183
-msgid "%1 caches"
-msgstr ""
-
-#: smarty/elements:3
-msgid "Deployed on %1"
-msgstr "部署于 %1"
-
-#: smarty/elements:7
-msgid "Unsubscribe from news"
-msgstr "取消订阅新闻"
-
-#: smarty/elements:11
-msgid "Subscribe to news"
-msgstr "订阅新闻"
-
-#: smarty/elements:7
-msgid "Show move on map"
-msgstr "在地图上显示移动"
-
-#: smarty/elements:64
-msgid "Report as missing"
-msgstr "失踪的报告"
-
-#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:21
-msgid "Upload a picture"
-msgstr "上传图片"
-
-#: smarty/elements:73
-msgid "Write a comment"
-msgstr "撰写评论"
-
-#: smarty/elements:81
-msgid "Edit log"
-msgstr "编辑日志"
-
-#: smarty/elements:85
-msgid "Delete log"
-msgstr "删除日志"
-
-#: smarty/elements:4
-msgid "%1 logo"
-msgstr "%1 徽标"
-
-#: smarty/elements:33 smarty/elements:30 smarty/elements:36
-msgid "Move this GeoKret"
-msgstr "移动这个GeoKret"
-
-#: smarty/blocks:5
-msgid "Start by finding users:"
-msgstr ""
-
-#: smarty/blocks:9
-msgid "Username or email or ID"
-msgstr ""
-
-#: smarty/blocks:11
-msgid "Search"
-msgstr "搜索"
-
-#: smarty/blocks:27
-msgid "false"
-msgstr ""
-
-#: smarty/blocks:27
-msgid "true"
-msgstr ""
-
-#: smarty/blocks:37
-msgid "No users match the current request."
-msgstr ""
-
-#: smarty/blocks:3
-msgid "Found a GeoKret?"
-msgstr "找到 GeoKret？"
-
-#: smarty/blocks:7
-msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "请在这里输入 <abbr title=\"%1\">追踪代码</abbr>："
-
-#: smarty/blocks:12
-msgid "Tracking code"
-msgstr "跟踪代码"
-
-#: smarty/blocks:15 smarty/blocks/geokret:14
-msgid "Log it!"
-msgstr "登陆！"
-
-#: smarty/blocks:10
-msgid "There is no pictures yet."
-msgstr "还没有图片。"
-
-#: smarty/blocks/geokret:9
-msgid "%1 <small>(%2)</small> by %3"
-msgstr ""
-
-#: smarty/blocks/geokret:15
-msgid "%1 <small>(%2)</small> - <a href=\"%3\">Ready for adoption</a>"
-msgstr ""
-
-#: smarty/blocks/geokret:20
-msgid "missing"
-msgstr ""
-
-#: smarty/blocks/geokret:22
-msgid "archived"
-msgstr ""
-
-#: smarty/blocks/geokret:27 smarty/blocks/user:7
-msgid "Send a message to %1"
-msgstr "发送一条消息给 %1"
-
-#: smarty/blocks/geokret:32 smarty/blocks/geokret:6
-msgid "Edit GeoKret details"
-msgstr "编辑 GeoKret 详细信息"
-
-#: smarty/blocks/geokret:46 smarty/forms:24
-msgid "Reference number"
-msgstr "参考编号"
-
-#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/admin/pages:77
-#: smarty/forms:21 smarty/forms:31 smarty/pages:15
-msgid "Tracking Code"
-msgstr "跟踪代码"
-
-#: smarty/blocks/geokret:54
-msgid "Places visited"
-msgstr "曾到过的地方"
-
-#: smarty/blocks/geokret:3
-msgid "Found it? Log it!"
-msgstr "找到了吗？请登录！"
-
-#: smarty/blocks/geokret:11
-msgid "Please enter the Tracking Code here"
-msgstr "请在此处输入跟踪代码"
-
-#: smarty/blocks/geokret:3
-msgid "Map"
-msgstr "地图"
-
-#: smarty/blocks/geokret:8
-msgid "Caption:"
-msgstr "标题："
-
-#: smarty/blocks/geokret:9
-msgid "start"
-msgstr "开始"
-
-#: smarty/blocks/geokret:10
-msgid "trip points"
-msgstr "行程点"
-
-#: smarty/blocks/geokret:11
-msgid "recently seen"
-msgstr "最近已查看"
-
-#: smarty/blocks/geokret:13
-msgid "Download the track as:"
-msgstr "下载曲目为："
-
-#: smarty/blocks/geokret:17
-msgid "This geokret has not started yet"
-msgstr "这geokret尚未开始"
-
-#: smarty/blocks/geokret:2
-msgid "Watchers"
-msgstr "观看者"
-
-#: smarty/blocks/geokret:6
-msgid "Log this GeoKret"
-msgstr "记录此GeoKret"
-
-#: smarty/blocks/geokret:11
-msgid "Print a label for this GeoKret"
-msgstr "打印此GeoKret 的标签"
-
-#: smarty/blocks/geokret:25
-msgid "Adopt this GeoKret"
-msgstr "通过这个GeoKret"
-
-#: smarty/blocks/geokret:27
-msgid "Login to claim this GeoKret"
-msgstr "登录要求这GeoKret"
-
-#: smarty/blocks/geokret:34
-msgid "Mark this GeoKret as archived"
-msgstr ""
-
-#: smarty/blocks/geokret:34
-msgid "Archive this GeoKret"
-msgstr "存档这个GeoKret"
-
-#: smarty/blocks/geokret:40
-msgid "Email owner"
-msgstr "电子邮件所有者"
-
-#: smarty/blocks/geokret:46
-msgid "Make this GeoKret available for adoption by another user"
-msgstr "让这个GeoKret 可供其他用户使用"
-
-#: smarty/blocks/geokret:47
-msgid "Transfer ownership"
-msgstr "转让所有权"
-
-#: smarty/blocks/geokret:58 smarty:56 smarty/pages:25 smarty/pages:18
-#: smarty/pages:26
-msgid "Actions"
-msgstr "行动"
-
-#: smarty/blocks/geokret:3 smarty/admin/pages:59 smarty/forms:31
-#: smarty/forms:36
-msgid "Mission"
-msgstr "任务"
-
-#: smarty/blocks/geokret:15
-msgid "This GeoKret doesn't have a special mission…"
-msgstr "这个GeoKret 没有特殊任务…"
-
-#: smarty/blocks/user:13
-msgid "Choose statpic"
-msgstr "选择statpic"
-
-#: smarty/blocks/user:11
-msgid "Subscribe to RSS channel"
-msgstr "RSS订阅"
-
-#: smarty/blocks/user:15
-msgid "Username change"
-msgstr ""
-
-#: smarty/blocks/user:18
-msgid "Password change"
-msgstr "更改密码"
-
-#: smarty/blocks/user:32
-msgid "Joined us"
-msgstr "加入时间"
-
-#: smarty/blocks/user:34 smarty/dialog:11 smarty/forms:33
-msgid "Language"
-msgstr "语言"
-
-#: smarty/blocks/user:36
-msgid "Nothing selected"
-msgstr "未选择"
-
-#: smarty/blocks/user:39
-msgid "Choose preferred language"
-msgstr "选择首选语言"
-
-#: smarty/blocks/user:46 smarty/pages:17
-msgid "Email"
-msgstr "邮箱"
-
-#: smarty/blocks/user:51
-msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr "等待电子邮件验证，不要忘记点击验证邮件中的链接！"
-
-#: smarty/blocks/user:53
-msgid "No email address, please add one!"
-msgstr "没有电子邮件地址，请添加一个！"
-
-#: smarty/blocks/user:56
-msgid "Update email address"
-msgstr "更新电子邮件地址"
-
-#: smarty/blocks/user:61
-msgid "Secid"
-msgstr "Secid"
-
-#: smarty/blocks/user:64
-msgid "Used to authenticate in other applications. Keep it secret!"
-msgstr "用于其他应用程序的身份验证。请保密！"
-
-#: smarty/blocks/user:65
-msgid "Generate a new secid"
-msgstr "生成一个新的Secid"
-
-#: smarty/blocks/user:75
-msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr ""
-
-#: smarty/blocks/user:4
-msgid "Awards"
-msgstr "奖项"
-
-#: smarty/blocks/user:10
-msgid "No award received yet."
-msgstr ""
-
-#: smarty/blocks/user:10
-msgid "No home coordinates have been defined."
-msgstr "没有定义家庭坐标。"
-
-#: smarty/blocks/user:13 smarty/blocks/user:21
-msgid "Update home coordinates and obervation area"
-msgstr "更新家居坐标和承载区域"
-
-#: smarty/blocks/user:14
-msgid "Define your home coordinates"
-msgstr "定义您的家坐标"
-
-#: smarty/blocks/user:20
-msgid "GeoKrety near home"
-msgstr "家附近的GeoKrety"
-
-#: smarty/blocks/user:4
-msgid "OAuth Connections"
-msgstr "OAuth 连接"
-
-#: smarty/blocks/user:17
-msgid "Disconnect from %1"
-msgstr "断开 %1"
-
-#: smarty/blocks/user:18
-msgid "Disconnect"
-msgstr "断开连接"
-
-#: smarty/blocks/user:23
-msgid "Connect with %1"
-msgstr "与 %1 连接"
-
-#: smarty/blocks/user:23
-msgid "Connect"
-msgstr "连接"
-
-#: smarty/blocks/user:3
-msgid "Medals"
-msgstr ""
-
-#: smarty/blocks/user:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
-
-#: smarty/blocks/user:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
-
-#: smarty/blocks/user:3 smarty:60 smarty/forms:6 smarty/pages:3
-msgid "Create a new GeoKret"
-msgstr "创建一个新的 GeoKret"
-
-#: smarty/blocks/user:12
-msgid "View inventory"
-msgstr "查看物品栏"
-
-#: smarty/blocks/user:16 smarty/pages:3 smarty/pages:9
-msgid "Owned GeoKrety"
-msgstr "拥有GeoKrety"
-
-#: smarty/blocks/user:20 smarty:20 smarty/pages:3 smarty/pages:9
-msgid "Watched GeoKrety"
-msgstr "已观看GeoKrety"
-
-#: smarty/blocks/user:24
-msgid "Recently posted moves"
-msgstr "最近发布的动作"
-
-#: smarty/blocks/user:28
-msgid "Moves of owned GeoKrety"
-msgstr "拥有GeoKrety的移动"
-
-#: smarty/blocks/user:32
-msgid "Posted pictures"
-msgstr "已发布的图片"
-
-#: smarty/blocks/user:36
-msgid "Owned GeoKrety pictures"
-msgstr "拥有GeoKrety图片"
-
-#: smarty/blocks/user:40 smarty:28
-msgid "Where are my GeoKrety?"
-msgstr "我的 GeoKrett 在哪里？"
-
-#: smarty/chunks:5
-msgid "languages"
-msgstr "语言"
-
-#: smarty/chunks:6
-msgid "platform"
-msgstr "平台"
-
-#: smarty/chunks:7
-msgid "group name"
-msgstr "群组名称"
-
-#: smarty/chunks:9
-msgid "Remove this GeoKret from the selection"
-msgstr "从选区中删除这个GeoKret"
-
-#: smarty/chunks:10
-msgid " %1 %2 by %3"
-msgstr ""
-
-#: smarty/chunks:13
-msgid "Never moved"
-msgstr "从未移动"
-
-#: smarty/chunks:15
-msgid "%1 %2 %3 by %4"
-msgstr ""
-
-#: smarty/chunks:17
-msgid "%1 %2"
-msgstr ""
-
-#: smarty:3
-msgid "Admin"
-msgstr "管理员"
-
-#: smarty:7 smarty:16
-msgid "My profile"
-msgstr "我的个人资料"
-
-#: smarty:18
-msgid "My inventory"
-msgstr "我的背包"
-
-#: smarty:19
-msgid "My GeoKrety"
-msgstr "我的 GeoKrety"
-
-#: smarty:22
-msgid "My recent moves"
-msgstr "我最近的动作"
-
-#: smarty:23
-msgid "Recent moves of my GeoKrety"
-msgstr "我的 GeoKrety 最近移动"
-
-#: smarty:25
-msgid "My photos"
-msgstr "我的照片"
-
-#: smarty:26
-msgid "Photos of my GeoKrety"
-msgstr "我的GeoKrety 的照片"
-
-#: smarty:30
-msgid "Sign out"
-msgstr "登出"
-
-#: smarty:48 smarty/dialog:11 smarty/dialog:38 smarty:32 smarty/pages:13
-msgid "Sign in"
-msgstr "登录"
-
-#: smarty:53
-msgid "Create account"
-msgstr "创建帐户"
-
-#: smarty/dialog:4
-msgid "Offer this GeoKret for adoption?"
-msgstr "提供此 GeoKret 供收养？"
-
-#: smarty/dialog:10
-msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "这将允许另一个了解追踪代码和所有者代码的用户成为这个GeoKret的新拥有者。"
-
-#: smarty/dialog:14
-msgid "Back to GeoKret page"
-msgstr "返回GeoKret 页面"
-
-#: smarty/dialog:15 smarty/dialog:26 smarty/dialog:36 smarty/dialog:50
-#: smarty/dialog:65 smarty/dialog:45 smarty/dialog:14 smarty/dialog:20
-#: smarty/dialog:41 smarty/dialog:12 smarty/dialog:22 smarty/dialog:33
-#: smarty/dialog:32 smarty/dialog:11 smarty/dialog:53 smarty/dialog:23
-#: smarty/dialog:25 smarty/dialog:13 smarty/dialog:51 smarty/pages:32
-#: smarty/pages:36 smarty/pages:33 smarty/pages:37 smarty/pages:29
-#: smarty/pages:65
-msgid "Dismiss"
-msgstr "关闭"
-
-#: smarty/dialog:17
-msgid "Generate an Owner Code"
-msgstr "生成一个所有者代码"
-
-#: smarty/dialog:4
-msgid "Choose your preferred language"
-msgstr "选择您喜欢的语言"
-
-#: smarty/dialog:21 smarty/forms:40
-msgid "This will be the default language when you log in and the main language in the emails you may receive."
-msgstr "这将是您登录时的默认语言和您可能收到的电子邮件中的主要语言。"
-
-#: smarty/dialog:25 smarty/dialog:14 smarty/dialog:49 smarty/dialog:40
-#: smarty/dialog:50 smarty/pages:28 smarty/pages:64
-msgid "Back to user page"
-msgstr "返回用户页面"
-
-#: smarty/dialog:28 smarty/dialog:52 smarty/dialog:53 smarty/pages:56
-#: smarty/pages:31
-msgid "Change"
-msgstr "更改"
-
-#: smarty/dialog:4
-msgid "Award %1 with:"
-msgstr ""
-
-#: smarty/dialog:13 smarty/dialog:37
-msgid "Award"
-msgstr ""
-
-#: smarty/dialog:13
-msgid "Acknowledge"
-msgstr ""
-
-#: smarty/dialog:4
-msgid "Refresh your secid?"
-msgstr "刷新您的节点？"
-
-#: smarty/dialog:10
-msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr "刷新您的秘密将断开所有连接到您帐户的应用程序。您必须重新验证它们。"
-
-#: smarty/dialog:17 smarty/admin/pages:8
-msgid "Refresh"
-msgstr "刷新"
-
-#: smarty/dialog:8 smarty/pages:3 smarty/pages:13
-msgid "Change your password"
-msgstr "更改您的密码"
-
-#: smarty/dialog:15
-msgid "Current password"
-msgstr "当前密码"
-
-#: smarty/dialog:17
-msgid "Old password"
-msgstr "原密码"
-
-#: smarty/dialog:22 smarty/dialog:24 smarty/pages:41 smarty/pages:43
-msgid "New password"
-msgstr "新密码"
-
-#: smarty/dialog:29 smarty/dialog:31 smarty/forms:26 smarty/forms:28
-#: smarty/pages:48 smarty/pages:50
-msgid "Confirm password"
-msgstr "确认密码"
-
-#: smarty/dialog:37
-msgid "Read more about choosing good passwords:"
-msgstr "阅读更多关于选择好密码的信息："
-
-#: smarty/dialog:39
-msgid "Choosing Good Passwords -- A User Guide"
-msgstr "选择好的密码 -- 用户指南"
-
-#: smarty/dialog:40
-msgid "How to Write Good Passwords"
-msgstr "如何写好密码"
-
-#: smarty/dialog:41
-msgid "Password strength"
-msgstr "密码强度"
-
-#: smarty/dialog:3 smarty/forms:28
-msgid "Select GeoKrety from inventory"
-msgstr "从背包中选择 GeoKrety"
-
-#: smarty/dialog:9
-msgid "Only %1 GeoKrety can be processed at a time."
-msgstr "一次只能处理 %1 GeoKrety"
-
-#: smarty/dialog:15
-msgid "Filter"
-msgstr "筛选器"
-
-#: smarty/dialog:16
-msgid "Name or ID"
-msgstr "名称或ID"
-
-#: smarty/dialog:27 smarty/forms:15 smarty/forms:17 smarty/pages:21
-#: smarty/pages:79
-msgid "Owner"
-msgstr "拥有者"
-
-#: smarty/dialog:28
-msgid "Select all (but max %1)"
-msgstr "选择所有 (但最大 %1)"
-
-#: smarty/dialog:35
-msgid "Choose"
-msgstr "选择"
-
-#: smarty/dialog:60
-msgid "Your inventory is empty."
-msgstr "您的库存是空的。"
-
-#: smarty/dialog:67
-msgid "Select <span class=\"badge\">%1</span>"
-msgstr "选择 <span class=\"badge\">%1</span>"
-
-#: smarty/dialog:6
-msgid "Manage picture"
-msgstr "管理图片"
-
-#: smarty/dialog:12
-msgid "Caption"
-msgstr "标题"
-
-#: smarty/dialog:24
-msgid "Remember caption"
-msgstr "记住标题"
-
-#: smarty/dialog:27
-msgid "Remember the caption for the next %1 minutes"
-msgstr "记住下一个 %1 分钟的标题"
-
-#: smarty/dialog:46 smarty/forms:51 smarty/pages:27
-msgid "Save"
-msgstr "保存"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this picture?"
-msgstr "您真的想要删除此图片吗？"
-
-#: smarty/dialog:15 smarty/dialog:23 smarty/dialog:14
-msgid "Delete"
-msgstr "删除"
-
-#: smarty/dialog:4
-msgid "Commenting a GeoKret move"
-msgstr "评论GeoKret 移动"
-
-#: smarty/dialog:14 smarty/pages:22
-msgid "Your comment"
-msgstr "您的评论"
-
-#: smarty/dialog:21
-msgid "Declare missing"
-msgstr "声明丢失"
-
-#: smarty/dialog:5 smarty/dialog:6 smarty/dialog:13 smarty/dialog:15
-#: smarty/forms:10 smarty/forms:12 smarty/forms:4 smarty/forms:6
-#: smarty/forms:239
-msgid "Username"
-msgstr "用户名"
-
-#: smarty/dialog:8 smarty/dialog:9 smarty/dialog:19 smarty/dialog:21
-#: smarty/forms:19 smarty/forms:21
-msgid "Password"
-msgstr "密码"
-
-#: smarty/dialog:9
-msgid "Contact user"
-msgstr "联系用户"
-
-#: smarty/dialog:18
-msgid "%1 (speak %2)"
-msgstr "%1 (语音 %2)"
-
-#: smarty/dialog:25
-msgid "Message subject"
-msgstr "消息主题"
-
-#: smarty/dialog:30
-msgid "Message"
-msgstr "message"
-
-#: smarty/dialog:32
-msgid "Message to user"
-msgstr "给用户的消息"
-
-#: smarty/dialog:43
-msgid "Send message"
-msgstr "发送消息"
-
-#: smarty/dialog:4
-msgid "Do you really want to ack this script locking alert?"
-msgstr ""
-
-#: smarty/dialog:9
-msgid "\"%1\" locked since %2"
-msgstr ""
-
-#: smarty/dialog:13 smarty/admin/pages:48
-msgid "Ack"
-msgstr ""
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this move?"
-msgstr "您真的想要删除这个移动吗？"
-
-#: smarty/dialog:14
-msgid "Deleting this Move will delete attached pictures and the main avatar!"
-msgstr "删除此移动将删除附加图片和主头像！"
-
-#: smarty/dialog:16
-msgid "Deleting this Move will delete attached pictures!"
-msgstr "删除此移动将删除所附图片！"
-
-#: smarty/dialog:4
-msgid "Do you want to set this picture as main avatar?"
-msgstr "您想要将此图片设置为主头像吗？"
-
-#: smarty/dialog:15 smarty/pages:67
-msgid "Define"
-msgstr "定义"
-
-#: smarty/dialog:2
-msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
-msgstr "您将要从您的 %1 帐户中分离您的 GeoKrety 帐户。您将无法通过此提供商登录。"
-
-#: smarty/dialog:8 smarty/dialog:26 smarty/dialog:24
-msgid "Detaching OAuth provider"
-msgstr "分离OAuth 提供商"
-
-#: smarty/dialog:16 smarty/dialog:34
-msgid "Detach"
-msgstr "Detach"
-
-#: smarty/dialog:2
-msgid "You are not connected to this OAuth provider."
-msgstr "您没有连接到此 OAuth 提供商。"
-
-#: smarty/dialog:15
-msgid "Back to my profile"
-msgstr "返回我的个人资料"
-
-#: smarty/dialog:4
-msgid "Do you really want to invalidate this user's email?"
-msgstr ""
-
-#: smarty/dialog:12
-msgid "Invalidate"
-msgstr ""
-
-#: smarty/dialog:3
-msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
-msgstr "此文档设置了“<a href=\"%1\">geokrety”的使用条件。 rg</a>— 一种自愿运作的互联网地理藏匿服务，地址是： <a href=\"%1\">geokrety.org</a> (下称“服务”)。 注册帐户的每个人（以下称“用户”）同意遵守这些条款和条件的规则。 从登记程序开始开始。"
-
-#: smarty/dialog:7
-msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr "该服务由一群志愿支持者（以下简称“GK小组”）监测和监督。 GK 团队不负责用户在网站上张贴的内容或使用服务信息造成的损害。"
-
-#: smarty/dialog:11
-msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr ""
-
-#: smarty/dialog:15
-msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "我们没有对准确性、及时性、性能和性能提供任何保证或保证。 在本网站上发现或提供的用于任何特定目的的信息和材料是否完整或合适。 你承认，这些资料和材料可能含有不准确或错误，我们明确排除了对任何这种不准确或错误的赔偿责任，但必须在法律允许的最大限度内这样做。"
-
-#: smarty/dialog:19
-msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
-msgstr "您在网站上发布的内容不能包含阴极表达式、滥用或非法内容。"
-
-#: smarty/dialog:26 smarty/dialog:45 smarty:90
-msgid "Terms of use"
-msgstr "使用条款"
-
-#: smarty/dialog:35 smarty/dialog:54
-msgid "I agree with the terms"
-msgstr "我同意条款"
-
-#: smarty/dialog:4
-msgid "Do you really want to unlock this script?"
-msgstr ""
-
-#: smarty/dialog:13
-msgid "Unlock"
-msgstr ""
-
-#: smarty/dialog:6
-msgid "Do you really want to unsubscribe from this news?"
-msgstr "您真的想要取消订阅此消息吗？"
-
-#: smarty/dialog:8
-msgid "Subscribe to this news?"
-msgstr "订阅此消息？"
-
-#: smarty/dialog:26
-msgid "Unsubscribe"
-msgstr "取消订阅"
-
-#: smarty/dialog:28
-msgid "Subscribe"
-msgstr "订阅"
-
-#: smarty/dialog:4
-msgid "Mark this GeoKret as archived?"
-msgstr ""
-
-#: smarty/dialog:10
-msgid "You are about the archive this GeoKret."
-msgstr ""
-
-#: smarty/dialog:11
-msgid "This is useful if you think this GeoKret has been destroyed."
-msgstr ""
-
-#: smarty/dialog:13
-msgid "It will not appear anymore in your active inventory."
-msgstr ""
-
-#: smarty/dialog:14
-msgid "It will not appear as present in a cache."
-msgstr ""
-
-#: smarty/dialog:16
-msgid "If someone discover it later, it will be automatically reactivated."
-msgstr ""
-
-#: smarty/dialog:26
-msgid "Archive"
-msgstr "档案"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this move comment?"
-msgstr "您真的想要删除此移动评论吗？"
-
-#: smarty/dialog:28
-msgid "Remember me"
-msgstr "记住我"
-
-#: smarty/dialog:31
-msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr "我们正在使用 cookie 来保持您的会话活动。请阅读更多关于我们的 <a href=\"%1\" target=\"_blank\">cookie 策略</a>。"
-
-#: smarty/dialog:39
-msgid "No account yet ? Register now!"
-msgstr "还没有帐户？现在注册！"
-
-#: smarty/dialog:42
-msgid "Forgot your password?"
-msgstr "忘记密码？"
-
-#: smarty/dialog:4
-msgid "Update your email address"
-msgstr "更新您的电子邮件地址"
-
-#: smarty/dialog:11 smarty/dialog:12 smarty/forms:11 smarty/forms:13
-#: smarty/pages:24 smarty/pages:26
-msgid "Email address"
-msgstr "电子邮件地址"
-
-#: smarty/dialog:17 smarty/forms:31 smarty/forms:48
-msgid "Yes, I want to receive email alerts (sent once a day)."
-msgstr "是的，我想接收电子邮件通知 (每天发送一次)。"
-
-#: smarty/dialog:23 smarty/forms:14
-msgid "The main purpose of collecting email is to permit password recovery."
-msgstr "收集电子邮件的主要目的是允许密码恢复。"
-
-#: smarty/dialog:27
-msgid "Email alerts may contain any of the following:"
-msgstr "电子邮件提醒可以包含以下任一内容："
-
-#: smarty/dialog:29
-msgid "GeoKrety.org news"
-msgstr "GeoKrety.org新闻"
-
-#: smarty/dialog:30
-msgid "Recent logs on:"
-msgstr "最近日志于："
-
-#: smarty/dialog:32 smarty/dialog:38
-msgid "your own GeoKrety"
-msgstr "你自己的 GeoKrety"
-
-#: smarty/dialog:33 smarty/dialog:39
-msgid "GeoKrety that you watch"
-msgstr "您观看的 GeoKrety"
-
-#: smarty/dialog:34
-msgid "any GeoKrety logged near your home location"
-msgstr "任意GeoKrety 登录在您的家的位置"
-
-#: smarty/dialog:36
-msgid "Comments posted to any of the following:"
-msgstr "发表于下列任何一处的评论："
-
-#: smarty/dialog:40
-msgid "your logs"
-msgstr "您的日志"
-
-#: smarty/dialog:41
-msgid "your comments"
-msgstr "您的评论"
-
-#: smarty/dialog:42
-msgid "news posts you have are subscribed to"
-msgstr "您订阅的新闻帖子"
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this news comment?"
-msgstr "您真的想要删除这条新闻评论吗？"
-
-#: smarty/admin/pages:3 smarty/admin/pages:7
-msgid "Scripts management"
-msgstr ""
+#: smarty/macros:5
+msgid "First"
+msgstr "第一页"
+
+#: smarty/macros:17
+msgid "Last [%1]"
+msgstr "最后 [%1]"
 
 #: smarty/admin/pages:3
 msgid "GeoKrety generator result"
@@ -2264,6 +914,34 @@ msgstr ""
 
 #: smarty/admin/pages:10
 msgid "There is no results."
+msgstr ""
+
+#: smarty/admin/pages:3 smarty/admin/pages:6
+msgid "Admin actions on users"
+msgstr ""
+
+#: smarty/admin/pages:17
+msgid "Invalidate user's email"
+msgstr ""
+
+#: smarty/admin/pages:20
+msgid "Award prize"
+msgstr ""
+
+#: smarty/admin/pages:3 smarty/admin/pages:7
+msgid "Scripts management"
+msgstr ""
+
+#: smarty/admin/pages:8 smarty/dialog:18
+msgid "Refresh"
+msgstr "刷新"
+
+#: smarty/admin/pages:45 smarty/emails:10
+msgid "Unlock script"
+msgstr ""
+
+#: smarty/admin/pages:48 smarty/dialog:14
+msgid "Ack"
 msgstr ""
 
 #: smarty/admin/pages:3 smarty/admin/pages:9
@@ -2294,8 +972,8 @@ msgstr ""
 msgid "GeoKrety name template"
 msgstr ""
 
-#: smarty/admin/pages:37 smarty/forms:13 smarty/forms:15 smarty/forms:8
-#: smarty/forms:10
+#: smarty/admin/pages:37 smarty/forms:8 smarty/forms:10 smarty/forms:13
+#: smarty/forms:15
 msgid "GeoKret name"
 msgstr "GeoKret名称"
 
@@ -2312,13 +990,23 @@ msgstr ""
 msgid "GeoKret type"
 msgstr "GeoKret type"
 
-#: smarty/admin/pages:61 smarty/forms:33 smarty/forms:38
+#: smarty/admin/pages:59 smarty/forms:36 smarty/forms:31
+#: smarty/blocks/geokret:3
+msgid "Mission"
+msgstr "任务"
+
+#: smarty/admin/pages:61 smarty/forms:38 smarty/forms:33
 msgid "What is this GeoKret mission?"
 msgstr "这个GeoKret 任务是什么？"
 
 #: smarty/admin/pages:66
 msgid "Pictures"
 msgstr "图片"
+
+#: smarty/admin/pages:77 smarty/forms:31 smarty/forms:21 smarty/pages:15
+#: smarty/blocks/geokret:49 smarty/blocks/geokret:9
+msgid "Tracking Code"
+msgstr "跟踪代码"
 
 #: smarty/admin/pages:82
 msgid "Tracking Code prefix"
@@ -2360,221 +1048,111 @@ msgstr ""
 msgid "Generate"
 msgstr ""
 
-#: smarty/admin/pages:3 smarty/admin/pages:6
-msgid "Admin actions on users"
-msgstr ""
+#: smarty/forms:4 smarty/forms:6 smarty/forms:10 smarty/forms:12
+#: smarty/forms:239 smarty/dialog:10 smarty/dialog:11 smarty/dialog:13
+#: smarty/dialog:15
+msgid "Username"
+msgstr "用户名"
 
-#: smarty/admin/pages:17
-msgid "Invalidate user's email"
-msgstr ""
+#: smarty/forms:11 smarty/forms:13 smarty/pages:24 smarty/pages:26
+#: smarty/dialog:11 smarty/dialog:12
+msgid "Email address"
+msgstr "电子邮件地址"
 
-#: smarty/admin/pages:20
-msgid "Award prize"
-msgstr ""
+#: smarty/forms:14 smarty/dialog:23
+msgid "The main purpose of collecting email is to permit password recovery."
+msgstr "收集电子邮件的主要目的是允许密码恢复。"
 
-#: smarty/banners:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "对不起，您的帐户没有注册电子邮件。 您将无法从密码丢失中恢复！另外，您将不会收到您的GeoKrety或观看GeoKrety的每日通知。"
+#: smarty/forms:19 smarty/forms:21 smarty/dialog:13 smarty/dialog:14
+#: smarty/dialog:19 smarty/dialog:21
+msgid "Password"
+msgstr "密码"
 
-#: smarty/banners:4
-msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr "请考虑 <a href=\"%1\">添加一个电子邮件地址</a> 或 <a href=\"%2\">将您的帐户</a> 链接到一些OAuth 提供商。"
+#: smarty/forms:26 smarty/forms:28 smarty/pages:48 smarty/pages:50
+#: smarty/dialog:29 smarty/dialog:31
+msgid "Confirm password"
+msgstr "确认密码"
 
-#: smarty/banners:3
-msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "您有待验证的电子邮件。 别忘了点击电子邮件中存在的链接来完成程序。链接将过期 %1！"
+#: smarty/forms:33 smarty/dialog:11 smarty/blocks/user:34
+msgid "Language"
+msgstr "语言"
 
-#: smarty/banners:3
-msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr "即使是现在不需要它，我们建议您 <a href=\"%1\">登录</a>。"
+#: smarty/forms:40 smarty/dialog:21
+msgid "This will be the default language when you log in and the main language in the emails you may receive."
+msgstr "这将是您登录时的默认语言和您可能收到的电子邮件中的主要语言。"
 
-#: smarty/banners:4
-msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
-msgstr "请不要犹豫 <a href=\"%1\">创建帐户</a>。"
+#: smarty/forms:48 smarty/forms:31 smarty/dialog:17
+msgid "Yes, I want to receive email alerts (sent once a day)."
+msgstr "是的，我想接收电子邮件通知 (每天发送一次)。"
 
-#: smarty/banners:5
-msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr "然后，您将能够管理您的 GeoKrety 库存，上传图片，编辑您的日志，当然还能创建您自己的 GeoKret！"
+#: smarty/forms:49 smarty/forms:32
+msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
+msgstr "电子邮件提醒可能包含您GeoKrety的旅行信息，新闻，评论…"
 
-#: smarty/banners:3
-msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
-msgstr ""
+#: smarty/forms:60 smarty/forms:44
+msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
+msgstr "是的，我接受 <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">个使用条款</a>。"
 
-#: smarty/banners:3 smarty/banners:2
-msgid "Close"
-msgstr "关闭"
-
-#: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr ""
-
-#: smarty/banners:3
-msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
-msgstr "GeoKrety 是一个免费的在线服务，用于在 GPS 游戏中跟踪对象，如地理藏匿或置顶。 你可以跟我们一起追踪小项目、 书籍、 硬币、 宠物或人类… <a href=\"%1\">阅读更多</a>"
-
-#: smarty/banners:4
-msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "您已设置此 GeoKret 可供通过。所有者代码为： <strong>%1</strong>。 与追踪代码 <strong>%2</strong> 一起提供给将通过你的 GeoKret的用户。"
-
-#: smarty/banners:6
-msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
-msgstr ""
-
-#: smarty/banners:8
-msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr "此 GeoKret 可用来通过。请先 <a href=\"%1\">登录</a>。"
-
-#: smarty/banners:2
-msgid "Enjoying GeoKrety.org?"
-msgstr "喜欢GeoKrety.org吗？"
-
-#: smarty/banners:4
-msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr ""
-
-#: smarty/banners:8
-msgid "Donate"
-msgstr ""
-
-#: smarty/banners:2
-msgid "Some statistics"
-msgstr "某些统计"
-
-#: smarty/banners:6
-msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "<strong>%1</strong> 注册的 GeoKrety, <strong>%2</strong> GeoKrety 隐藏由 <strong>%3</strong> 用户。"
-
-#: smarty/banners:13
-msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr ""
-
-#: smarty/banners:21
-msgid "And that's thanks to you! Congratulation!"
-msgstr "这感谢你！恭喜！"
-
-#: smarty/banners:3
-msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "这个分支 🥦 正在积极开发 👨‍💻如果你发现bug:, 请检查 👀 <a href=\"%1\" target=\"_blank\">现有问题 ♻️ on GitHub %2</a> 并随意打开新的 :NEW_buton:。 (每个问题请🙏)"
-
-#: smarty:6
-msgid "Toggle navigation"
-msgstr "切换导航"
-
-#: smarty:16 smarty:51 smarty:58 smarty/pages:3
-msgid "Log a GeoKret"
-msgstr "记录GeoKret"
-
-#: smarty:47 smarty:3
-msgid "Home"
-msgstr "首页"
-
-#: smarty:48 smarty:5 smarty/pages:3 smarty/pages:26
-msgid "News"
-msgstr "新闻"
-
-#: smarty:61 smarty/pages:3 smarty/pages:8
-msgid "Claim a GeoKret"
-msgstr "Claim a GeoKret"
-
-#: smarty:64
-msgid "Advanced search"
-msgstr "高级搜索"
-
-#: smarty:65
-msgid "Photo gallery"
-msgstr "照片廊"
-
-#: smarty:68
-msgid "GeoKrety Map"
-msgstr "GeoKrety 地图"
-
-#: smarty:75
-msgid "Currently selected language"
-msgstr "当前选中的语言"
-
-#: smarty:86 smarty:88 smarty/pages:3 smarty/pages:39
-msgid "Help"
-msgstr "帮助"
-
-#: smarty:91 smarty/pages:3 smarty/pages:9
-msgid "Press corner"
-msgstr "新闻专栏"
-
-#: smarty:93
-msgid "GK interface / API"
-msgstr "GK 接口 / API"
-
-#: smarty:95
-msgid "Waypoints synchronization status"
-msgstr ""
-
-#: smarty:96
-msgid "Yearly rankings"
-msgstr ""
-
-#: smarty:98 smarty/pages:3
-msgid "Downloads"
-msgstr "下载"
-
-#: smarty:99
-msgid "GeoKrety Toolbox"
-msgstr "GeoKrety 工具箱"
-
-#: smarty:100
-msgid "Waypoint resolver"
-msgstr "航点解析器"
-
-#: smarty:4
-msgid "About"
-msgstr "关于"
-
-#: smarty:6
-msgid "Contact"
-msgstr "联系人"
-
-#: smarty:10
-msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr "在 <a id=\"footer-license\" href=\"%1\">MIT 许可证下发布</a>"
-
-#: smarty:13
-msgid "Leave in-context translation"
-msgstr "离开上下文翻译"
-
-#: smarty:15
-msgid "in-context translation"
-msgstr "上下文翻译"
-
-#: smarty:19
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr ""
-
-#: smarty/macros:5
-msgid "First"
-msgstr "第一页"
-
-#: smarty/macros:17
-msgid "Last [%1]"
-msgstr "最后 [%1]"
+#: smarty/forms:71 smarty/forms:55
+msgid "Register"
+msgstr "注册"
 
 #: smarty/forms:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
 msgstr ""
 
-#: smarty/forms:32 smarty/forms:49
-msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
-msgstr "电子邮件提醒可能包含您GeoKrety的旅行信息，新闻，评论…"
+#: smarty/forms:3
+msgid "Generate a GeoKret Label"
+msgstr "生成 GeoKret 标签"
 
-#: smarty/forms:44 smarty/forms:60
-msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr "是的，我接受 <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">个使用条款</a>。"
+#: smarty/forms:15 smarty/forms:17 smarty/pages:79 smarty/pages:21
+#: smarty/dialog:27
+msgid "Owner"
+msgstr "拥有者"
 
-#: smarty/forms:54 smarty/forms:70
-msgid "Register"
-msgstr "注册"
+#: smarty/forms:22 smarty/forms:29
+msgid "Reference numbers"
+msgstr "参考编号"
+
+#: smarty/forms:24 smarty/blocks/geokret:46
+msgid "Reference number"
+msgstr "参考编号"
+
+#: smarty/forms:43
+msgid "Label template"
+msgstr "标签模板"
+
+#: smarty/forms:54
+msgid "Label help languages"
+msgstr "标签帮助语言"
+
+#: smarty/forms:62
+msgid "Note1: not all label templates support this feature and when supported, english is always present."
+msgstr "注1：并非所有标签模板都支持此功能，如果支持此功能，英语将始终存在。"
+
+#: smarty/forms:70
+msgid "Generate as .png"
+msgstr "生成为 .png"
+
+#: smarty/forms:71
+msgid "Generate as .svg"
+msgstr "生成为 .svg"
+
+#: smarty/forms:72
+msgid "Generate as .pdf"
+msgstr "生成为.pdf"
+
+#: smarty/forms:81 smarty/forms:84 smarty/forms:85
+msgid "GeoKret label preview"
+msgstr "GeoKret 标签预览"
 
 #: smarty/forms:4
 msgid "Edit a GeoKret"
 msgstr "编辑GeoKret"
+
+#: smarty/forms:6 smarty/pages:3 smarty/blocks/user:3 smarty:60
+msgid "Create a new GeoKret"
+msgstr "创建一个新的 GeoKret"
 
 #: smarty/forms:41
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
@@ -2584,13 +1162,21 @@ msgstr "这将为你的 GeoKret创建第一个\"跳过\"移动, 标记它的起�
 msgid "Set my home coordinates as a starting point."
 msgstr "将我的家座标设置为起点。"
 
-#: smarty/forms:51
+#: smarty/forms:52 smarty/pages:28 smarty/dialog:47
+msgid "Save"
+msgstr "保存"
+
+#: smarty/forms:52
 msgid "Create"
 msgstr "创建"
 
 #: smarty/forms:11
 msgid "Identify GeoKret"
 msgstr "确定GeoKret"
+
+#: smarty/forms:28 smarty/dialog:3
+msgid "Select GeoKrety from inventory"
+msgstr "从背包中选择 GeoKrety"
 
 #: smarty/forms:30
 msgid "Verify Tracking Code"
@@ -2648,6 +1234,12 @@ msgstr "我蘸GeoKret"
 msgid "When you want to write a comment :)"
 msgstr "当你想写一个评论 :)"
 
+#: smarty/forms:106 smarty/forms:247 smarty/pages:20 smarty/pages:38
+#: smarty/pages:22 smarty/pages:41 smarty/dialog:22 smarty/dialog:19
+#: smarty/emails:38 smarty/emails:81 smarty/emails:127 smarty/emails:171
+msgid "Comment"
+msgstr "评论"
+
 #: smarty/forms:129
 msgid "New location"
 msgstr "新的地点"
@@ -2692,245 +1284,144 @@ msgstr "“”这可能是你的： <br /> - 寻宝/ opencaching用户名<br /> 
 msgid "It is always nice to receive a little message ;)"
 msgstr "收到一点消息总是很好的；)"
 
-#: smarty/forms:274
+#: smarty/forms:269
 msgid "Post your log"
 msgstr "发布您的日志"
 
-#: smarty/forms:3
-msgid "Generate a GeoKret Label"
-msgstr "生成 GeoKret 标签"
+#: smarty/elements:10
+msgid "Delete comment"
+msgstr "删除评论"
 
-#: smarty/forms:22 smarty/forms:29
-msgid "Reference numbers"
-msgstr "参考编号"
+#: smarty/elements:7
+msgid "Unsubscribe from news"
+msgstr "取消订阅新闻"
 
-#: smarty/forms:43
-msgid "Label template"
-msgstr "标签模板"
+#: smarty/elements:11
+msgid "Subscribe to news"
+msgstr "订阅新闻"
 
-#: smarty/forms:54
-msgid "Label help languages"
-msgstr "标签帮助语言"
+#: smarty/elements:3
+msgid "Deployed on %1"
+msgstr "部署于 %1"
 
-#: smarty/forms:62
-msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr "注1：并非所有标签模板都支持此功能，如果支持此功能，英语将始终存在。"
+#: smarty/elements:33 smarty/elements:36 smarty/elements:30
+msgid "Move this GeoKret"
+msgstr "移动这个GeoKret"
 
-#: smarty/forms:69
-msgid "Generate as .png"
-msgstr "生成为 .png"
+#: smarty/elements:4
+msgid "%1 logo"
+msgstr "%1 徽标"
 
-#: smarty/forms:70
-msgid "Generate as .svg"
-msgstr "生成为 .svg"
-
-#: smarty/forms:71
-msgid "Generate as .pdf"
-msgstr "生成为.pdf"
-
-#: smarty/forms:80 smarty/forms:83 smarty/forms:84
-msgid "GeoKret label preview"
-msgstr "GeoKret 标签预览"
-
-#: smarty/pages:3 smarty/pages:9
-msgid "GeoKrety visiting the cache %1"
+#: smarty/elements:9
+msgid "Last moved date"
 msgstr ""
 
-#: smarty/pages:20
-msgid "Name"
-msgstr "名称"
-
-#: smarty/pages:21
-msgid "Cache"
-msgstr "高速缓存"
-
-#: smarty/pages:37
-msgid "No GeoKrety has visited cache %1 yet."
+#: smarty/elements:22 smarty/elements:30 smarty/elements:38 smarty/elements:46
+#: smarty/elements:54 smarty/elements:62
+msgid "%1 days"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:9
-msgid "%1's recent moves"
-msgstr "%1最近的动作"
+#: smarty/elements:75 smarty/blocks/geokret:52
+msgid "Total distance"
+msgstr "总里程"
 
-#: smarty/pages:21 smarty/pages:40 smarty/pages:22
-msgid "Spotted in"
-msgstr "发现于"
+#: smarty/elements:138 smarty/pages:24 smarty/pages:25
+msgid "Caches visited count"
+msgstr "已访问的缓存"
 
-#: smarty/pages:23 smarty/pages:22 smarty/pages:42
-msgid "Last move"
-msgstr "上次移动"
-
-#: smarty/pages:38
-msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
+#: smarty/elements:139
+msgid "Total visited caches"
 msgstr ""
 
-#: smarty/pages:40
-msgid "%1 didn't moved any GeoKrety yet."
-msgstr "%1 尚未移动任何GeoKrety。"
-
-#: smarty/pages:3 smarty/pages:6
-msgid "Top %1"
+#: smarty/elements:151 smarty/elements:159 smarty/elements:167
+#: smarty/elements:175 smarty/elements:183
+msgid "%1 caches"
 msgstr ""
 
-#: smarty/pages:12
-msgid "Rank"
-msgstr "等级"
+#: smarty/elements:7
+msgid "Show move on map"
+msgstr "在地图上显示移动"
 
-#: smarty/pages:43 smarty/pages:18
-msgid "No attributed awards yet."
+#: smarty/elements:64
+msgid "Report as missing"
+msgstr "失踪的报告"
+
+#: smarty/elements:69 smarty/blocks/user:21 smarty/blocks/geokret:35
+msgid "Upload a picture"
+msgstr "上传图片"
+
+#: smarty/elements:73
+msgid "Write a comment"
+msgstr "撰写评论"
+
+#: smarty/elements:81
+msgid "Edit log"
+msgstr "编辑日志"
+
+#: smarty/elements:85
+msgid "Delete log"
+msgstr "删除日志"
+
+#: smarty/chunks:9
+msgid "Remove this GeoKret from the selection"
+msgstr "从选区中删除这个GeoKret"
+
+#: smarty/chunks:10
+msgid " %1 %2 by %3"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:15
-msgid "%1's Owned GeoKrety map"
-msgstr "%1拥有的 GeoKrety 地图"
+#: smarty/chunks:13
+msgid "Never moved"
+msgstr "从未移动"
 
-#: smarty/pages:3
-msgid "News: %1"
+#: smarty/chunks:15
+msgid "%1 %2 %3 by %4"
 msgstr ""
 
-#: smarty/pages:13
-msgid "Leave a comment"
-msgstr "留下评论"
-
-#: smarty/pages:30
-msgid "Subscribe to this news post"
-msgstr "订阅这个消息后"
-
-#: smarty/pages:42
-msgid "Please <a href=\"%1\">login</a> to post a comment"
-msgstr "请 <a href=\"%1\">登录</a> 以发表评论"
-
-#: smarty/pages:47
-msgid "Comments"
-msgstr "备注"
-
-#: smarty/pages:51
-msgid "There are no comments for this post."
-msgstr "有没有对这篇文章的评论。"
-
-#: smarty/pages:3 smarty/pages:9
-msgid "%1's GeoKrety recent moves"
-msgstr "%1的 GeoKrety 最近移动"
-
-#: smarty/pages:37
-msgid "%1's GeoKrety didn't moved yet."
-msgstr "%1的 GeoKrety 尚未移动。"
-
-#: smarty/pages:3
-msgid "Registration"
+#: smarty/chunks:17
+msgid "%1 %2"
 msgstr ""
 
-#: smarty/pages:14
-msgid "Create an account using %1"
-msgstr "使用 %1 创建帐户"
+#: smarty/chunks:5
+msgid "languages"
+msgstr "语言"
 
-#: smarty/pages:16
-msgid "Create an account"
-msgstr "创建帐户"
+#: smarty/chunks:6
+msgid "platform"
+msgstr "平台"
 
-#: smarty/pages:3 smarty/pages:10
-msgid "Password recovery"
-msgstr "密码恢复"
+#: smarty/chunks:7
+msgid "group name"
+msgstr "群组名称"
 
-#: smarty/pages:19
-msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
-msgstr "如果你在过去验证了你的邮件地址，那么你可以轻松恢复它。其他的，你必须创建另一个帐户，抱歉。"
+#: smarty/devel/pages:15 smarty/pages:20 smarty/pages:38 smarty/pages:81
+#: smarty/pages:39 smarty/pages:78 smarty/dialog:26
+msgid "ID"
+msgstr "ID"
 
-#: smarty/pages:34
-msgid "Send me a recovery link"
-msgstr "给我发送恢复链接"
+#: smarty/devel/pages:16 smarty/dialog:23
+msgid "Subject"
+msgstr "题目"
 
-#: smarty/pages:18
-msgid "There is no news yet"
-msgstr "还没有新闻"
+#: smarty/devel/pages:17
+msgid "From"
+msgstr "自"
 
-#: smarty/pages:3
-msgid "Confirm changing your email address"
-msgstr ""
+#: smarty/devel/pages:18 smarty/dialog:16
+msgid "To"
+msgstr "至"
 
-#: smarty/pages:8
-msgid "Do you confirm changing your email address?"
-msgstr "您确认更改您的电子邮件地址吗？"
+#: smarty/devel/pages:20
+msgid "Action"
+msgstr "行 动"
 
-#: smarty/pages:31 smarty/pages:32
-msgid "Back to your profile"
-msgstr "回到您的个人资料"
+#: smarty/devel/pages:21
+msgid "Delete all mails"
+msgstr "删除所有邮件"
 
-#: smarty/pages:35 smarty/pages:36
-msgid "Back to homepage"
-msgstr "返回主页"
-
-#: smarty/pages:39
-msgid "I approve this change"
-msgstr "我批准这个更改"
-
-#: smarty/pages:40
-msgid "No, please revert to my old email address"
-msgstr "不，请回到我的旧电子邮件地址"
-
-#: smarty/pages:3 smarty/pages:9
-msgid "%1's inventory"
-msgstr "%1的背包"
-
-#: smarty/pages:39
-msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
-
-#: smarty/pages:41
-msgid "%1's inventory is currently empty."
-msgstr "%1的库存目前是空的。"
-
-#: smarty/pages:38
-msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
-
-#: smarty/pages:40
-msgid "%1 doesn't own any GeoKrety yet."
-msgstr "%1 尚未拥有任何GeoKrety"
-
-#: smarty/pages:3
-msgid "Statpic background chooser"
-msgstr ""
-
-#: smarty/pages:8
-msgid "Select your preferred statpic background"
-msgstr "选择您首选的状态背景"
-
-#: smarty/pages:37
-msgid "Your current statpic"
-msgstr "您当前的状态"
-
-#: smarty/pages:30
-msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
-msgstr "这个过程需要一个通常写在GeoKret 标签上的“追踪代码”，或在硬币上雕刻，加上一个纸张上通常提供的“所有者代码”。"
-
-#: smarty/pages:35
-msgid "Adopt"
-msgstr "通过"
-
-#: smarty/pages:11
-msgid "Help API"
-msgstr ""
-
-#: smarty/pages:3 smarty/pages:8
-msgid "GeoKrety Toolbox - GKT"
-msgstr "GeoKrety 工具箱 - GKT"
-
-#: smarty/pages:12
-msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
-msgstr "在 <a href=\"%1\" target=\"_blank\">geocaching.com</a> 缓存页面上显示GeoKrety Trackables 并便利将 GeoKrety Tracks 丢弃到地理缓存中。"
-
-#: smarty/pages:16
-msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr "这个脚本是为了在最受欢迎的 <a href=\"%1\">地理捕捉之间架起桥梁的。 om</a> 站点 <a href=\"%2\">geokrety.org</a>。它有两个功能。 一旦您在 <a href=\"%1\">地理位置缓存页面输入特定缓存页面。 om</a> 它将自动检查是否存在任何GeoKrety (追踪到 <a href=\"%2\">geokrety的项目)。 rg</a>) 在该缓存中，并在屏幕右侧的盘存部分显示结果(低于现有的Travugs和Geocoins列表)。 如果您在 <a href=\"%2\">gookrety 上有一个帐户。 rg</a> 您也可以轻松将GeoKrety 拖放到 <a href=\"%1\">Geocach</a> caches ，因为航点代码和坐标会自动复制到日志表单 <a href=\"%2\">geokrety。 rg</a>"
-
-#: smarty/pages:18
-msgid "Available for:"
-msgstr "可用："
-
-#: smarty/pages:22
-msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
-msgstr "<a href=\"%1\">Firefox</a> (需要 <a href=\"%2\">Tampermonkey 附加组件</a> 或 <a href=\"%3\">greasemonkey 附加组件</a>)"
+#: smarty/devel/pages:39
+msgid "Delete mail"
+msgstr "删除邮件"
 
 #: smarty/pages:3
 msgid "Interactive map"
@@ -2940,45 +1431,59 @@ msgstr ""
 msgid "GeoKrety interactive map"
 msgstr "GeoKrety 交互式地图"
 
-#: smarty/pages:3 smarty/pages:6
-msgid "Waypoints statistics"
-msgstr ""
-
-#: smarty/pages:10
-msgid "Service code"
-msgstr ""
-
 #: smarty/pages:11
-msgid "Service url"
+msgid "Help API"
 msgstr ""
 
-#: smarty/pages:12
-msgid "Waypoint count"
+#: smarty/pages:3 smarty/pages:8 smarty:61
+msgid "Claim a GeoKret"
+msgstr "Claim a GeoKret"
+
+#: smarty/pages:30
+msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
+msgstr "这个过程需要一个通常写在GeoKret 标签上的“追踪代码”，或在硬币上雕刻，加上一个纸张上通常提供的“所有者代码”。"
+
+#: smarty/pages:36
+msgid "Adopt"
+msgstr "通过"
+
+#: smarty/pages:3
+msgid "Confirm changing your email address"
 msgstr ""
 
-#: smarty/pages:13
-msgid "Last synchronization"
-msgstr ""
+#: smarty/pages:8
+msgid "Do you confirm changing your email address?"
+msgstr "您确认更改您的电子邮件地址吗？"
 
-#: smarty/pages:14
-msgid "Revision"
-msgstr ""
+#: smarty/pages:32 smarty/pages:33
+msgid "Back to your profile"
+msgstr "回到您的个人资料"
 
-#: smarty/pages:15
-msgid "Last error"
-msgstr ""
+#: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:66
+#: smarty/pages:34 smarty/pages:38 smarty/dialog:21 smarty/dialog:35
+#: smarty/dialog:15 smarty/dialog:51 smarty/dialog:14 smarty/dialog:23
+#: smarty/dialog:65 smarty/dialog:16 smarty/dialog:12 smarty/dialog:37
+#: smarty/dialog:42 smarty/dialog:13 smarty/dialog:27 smarty/dialog:46
+#: smarty/dialog:32 smarty/dialog:26 smarty/dialog:52 smarty/dialog:55
+#: smarty/dialog:24
+msgid "Dismiss"
+msgstr "关闭"
 
-#: smarty/pages:16
-msgid "Error count"
-msgstr ""
+#: smarty/pages:36 smarty/pages:37
+msgid "Back to homepage"
+msgstr "返回主页"
 
-#: smarty/pages:39
-msgid "N/A"
-msgstr ""
+#: smarty/pages:40
+msgid "I approve this change"
+msgstr "我批准这个更改"
 
-#: smarty/pages:49
-msgid "Force complete synchronization"
-msgstr ""
+#: smarty/pages:41
+msgid "No, please revert to my old email address"
+msgstr "不，请回到我的旧电子邮件地址"
+
+#: smarty/pages:3 smarty/pages:13 smarty/dialog:8
+msgid "Change your password"
+msgstr "更改您的密码"
 
 #: smarty/pages:22 smarty/pages:18
 msgid "Please enter the verification token received by mail."
@@ -2992,49 +1497,138 @@ msgstr "验证令牌"
 msgid "Please define a new password."
 msgstr "请定义一个新密码。"
 
+#: smarty/pages:41 smarty/pages:43 smarty/dialog:22 smarty/dialog:24
+msgid "New password"
+msgstr "新密码"
+
+#: smarty/pages:57 smarty/pages:32 smarty/dialog:53 smarty/dialog:29
+#: smarty/dialog:54
+msgid "Change"
+msgstr "更改"
+
+#: smarty/pages:3 smarty/pages:8
+msgid "Welcome to the GeoKrety.org community!"
+msgstr "欢迎使用 GeoKrety.org 社区！"
+
+#: smarty/pages:10
+msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
+msgstr ""
+
+#: smarty/pages:12
+msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
+msgstr ""
+
+#: smarty/pages:13 smarty:48 smarty/dialog:17 smarty/dialog:39 smarty:32
+msgid "Sign in"
+msgstr "登录"
+
 #: smarty/pages:3 smarty/pages:9
 msgid "Pictures of %1's GeoKrety"
 msgstr "%1的 GeoKrety 图片"
 
-#: smarty/pages:3 smarty/pages:8
-msgid "Welcome to GeoKrety.org!"
-msgstr "欢迎使用 GeoKrety.org ！"
+#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:16
+msgid "Owned GeoKrety"
+msgstr "拥有GeoKrety"
 
-#: smarty/pages:33
-msgid "Latest moves"
-msgstr "最近的动作"
+#: smarty/pages:21 smarty/pages:40 smarty/pages:22
+msgid "Spotted in"
+msgstr "发现于"
 
-#: smarty/pages:59
-msgid "Recent pictures"
-msgstr "最近图片"
+#: smarty/pages:22 smarty/pages:23 smarty/pages:42
+msgid "Last move"
+msgstr "上次移动"
 
-#: smarty/pages:72
-msgid "Recently created GeoKrety"
-msgstr "最近创建的 GeoKrety"
+#: smarty/pages:23 smarty/pages:43 smarty/pages:24 smarty/emails:129
+msgid "Distance"
+msgstr "距离"
 
-#: smarty/pages:40
-msgid "You did not watch any GeoKrety yet."
+#: smarty/pages:38
+msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr ""
 
-#: smarty/pages:42
-msgid "%1 doesn't watch any GeoKrety yet."
-msgstr "%1 尚未观看任何GeoKrety"
+#: smarty/pages:40
+msgid "%1 doesn't own any GeoKrety yet."
+msgstr "%1 尚未拥有任何GeoKrety"
 
-#: smarty/pages:10
-msgid "Changing your email address."
-msgstr "更改您的电子邮件地址。"
+#: smarty/pages:3
+msgid "News: %1"
+msgstr ""
+
+#: smarty/pages:13
+msgid "Leave a comment"
+msgstr "留下评论"
+
+#: smarty/pages:22 smarty/dialog:14
+msgid "Your comment"
+msgstr "您的评论"
+
+#: smarty/pages:30
+msgid "Subscribe to this news post"
+msgstr "订阅这个消息后"
+
+#: smarty/pages:43
+msgid "Please <a href=\"%1\">login</a> to post a comment"
+msgstr "请 <a href=\"%1\">登录</a> 以发表评论"
+
+#: smarty/pages:48
+msgid "Comments"
+msgstr "备注"
+
+#: smarty/pages:52
+msgid "There are no comments for this post."
+msgstr "有没有对这篇文章的评论。"
+
+#: smarty/pages:3 smarty/pages:9
+msgid "%1's recent moves"
+msgstr "%1最近的动作"
+
+#: smarty/pages:38
+msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
+msgstr ""
 
 #: smarty/pages:40
-msgid "Check the token"
-msgstr "检查令牌"
+msgid "%1 didn't moved any GeoKrety yet."
+msgstr "%1 尚未移动任何GeoKrety。"
 
 #: smarty/pages:3 smarty/pages:6
 msgid "This page doesn't exists yet, but we're working on it!"
 msgstr "这个页面还不存在，但我们正在工作！"
 
-#: smarty/pages:3 smarty/pages:9
-msgid "%1's posted pictures"
-msgstr "%1的已发布图片"
+#: smarty/pages:3 smarty/pages:8
+msgid "Contact us"
+msgstr "联系我们"
+
+#: smarty/pages:13
+msgid "If you have any suggestion or bug reports feel free to write us."
+msgstr "如果您有任何建议或错误报告，请随时编写我们。"
+
+#: smarty/pages:17 smarty/blocks/user:46
+msgid "Email"
+msgstr "邮箱"
+
+#: smarty/pages:24
+msgid "Or via the user profile"
+msgstr "或通过用户资料"
+
+#: smarty/pages:33
+msgid "IRC"
+msgstr "IRC"
+
+#: smarty/pages:41
+msgid "Twitter"
+msgstr "推特"
+
+#: smarty/pages:48
+msgid "Public forum"
+msgstr "公共论坛"
+
+#: smarty/pages:56
+msgid "Wanna sign or encrypt your mails?"
+msgstr "想要签名或加密您的邮件吗？"
+
+#: smarty/pages:58
+msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
+msgstr "我们的 PGP/GPG 密钥 <a href=\"%1\">在这里 (%2)</a>"
 
 #: smarty/pages:3
 msgid "GK mole-holes and GK hotels/motels"
@@ -3136,22 +1730,6 @@ msgstr "当前的GK酒店/火车"
 msgid "Status: Ready for search"
 msgstr "状态：准备搜索"
 
-#: smarty/pages:10
-msgid "Email address revalidation."
-msgstr ""
-
-#: smarty/pages:3 smarty/pages:8
-msgid "Welcome to the GeoKrety.org community!"
-msgstr "欢迎使用 GeoKrety.org 社区！"
-
-#: smarty/pages:10
-msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
-
-#: smarty/pages:12
-msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
-
 #: smarty/pages:3
 msgid "Change username"
 msgstr ""
@@ -3171,6 +1749,308 @@ msgstr ""
 #: smarty/pages:21
 msgid "New username"
 msgstr ""
+
+#: smarty/pages:29 smarty/pages:65 smarty/dialog:50 smarty/dialog:15
+#: smarty/dialog:41 smarty/dialog:26 smarty/dialog:51
+msgid "Back to user page"
+msgstr "返回用户页面"
+
+#: smarty/pages:10
+msgid "Email address revalidation."
+msgstr ""
+
+#: smarty/pages:40 smarty/pages:41
+msgid "Check the token"
+msgstr "检查令牌"
+
+#: smarty/pages:3 smarty/pages:8
+msgid "Welcome to GeoKrety.org!"
+msgstr "欢迎使用 GeoKrety.org ！"
+
+#: smarty/pages:26 smarty/pages:3 smarty:48 smarty:5
+msgid "News"
+msgstr "新闻"
+
+#: smarty/pages:33
+msgid "Latest moves"
+msgstr "最近的动作"
+
+#: smarty/pages:59
+msgid "Recent pictures"
+msgstr "最近图片"
+
+#: smarty/pages:72
+msgid "Recently created GeoKrety"
+msgstr "最近创建的 GeoKrety"
+
+#: smarty/pages:3
+msgid "%1's user profile"
+msgstr ""
+
+#: smarty/pages:3
+msgid "Statpic background chooser"
+msgstr ""
+
+#: smarty/pages:8
+msgid "Select your preferred statpic background"
+msgstr "选择您首选的状态背景"
+
+#: smarty/pages:38
+msgid "Your current statpic"
+msgstr "您当前的状态"
+
+#: smarty/pages:3 smarty/pages:9 smarty:20 smarty/blocks/user:20
+msgid "Watched GeoKrety"
+msgstr "已观看GeoKrety"
+
+#: smarty/pages:26 smarty/pages:25 smarty/pages:18 smarty/blocks/geokret:58
+#: smarty:56
+msgid "Actions"
+msgstr "行动"
+
+#: smarty/pages:40
+msgid "You did not watch any GeoKrety yet."
+msgstr ""
+
+#: smarty/pages:42
+msgid "%1 doesn't watch any GeoKrety yet."
+msgstr "%1 尚未观看任何GeoKrety"
+
+#: smarty/pages:3 smarty/pages:15
+msgid "%1's Owned GeoKrety map"
+msgstr "%1拥有的 GeoKrety 地图"
+
+#: smarty/pages:3
+msgid "Registration"
+msgstr ""
+
+#: smarty/pages:14
+msgid "Create an account using %1"
+msgstr "使用 %1 创建帐户"
+
+#: smarty/pages:16
+msgid "Create an account"
+msgstr "创建帐户"
+
+#: smarty/pages:3 smarty/pages:39 smarty:86 smarty:88
+msgid "Help"
+msgstr "帮助"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "Top %1"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Rank"
+msgstr "等级"
+
+#: smarty/pages:43 smarty/pages:18
+msgid "No attributed awards yet."
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:11
+msgid "Define your observation area"
+msgstr "定义您的观察区域"
+
+#: smarty/pages:21 smarty/pages:22
+msgid "Home coordinates"
+msgstr "首页坐标"
+
+#: smarty/pages:26
+msgid "Use the map to select a location or enter coordinates manually."
+msgstr "在地图上选择一个位置，或手动输入坐标。"
+
+#: smarty/pages:28
+msgid "Other acceptable lat/lon formats"
+msgstr "其他可接受的lat/lon 格式"
+
+#: smarty/pages:37
+msgid "Observation radius"
+msgstr "观察半径"
+
+#: smarty/pages:45
+msgid ". Set it to 0 to disable the observation feature."
+msgstr ""
+
+#: smarty/pages:55
+msgid "Center the map on the zone to observe"
+msgstr "将地图居中以观察区域"
+
+#: smarty/pages:68 smarty/dialog:16
+msgid "Define"
+msgstr "定义"
+
+#: smarty/pages:3 smarty/pages:10
+msgid "Password recovery"
+msgstr "密码恢复"
+
+#: smarty/pages:19
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr "如果你在过去验证了你的邮件地址，那么你可以轻松恢复它。其他的，你必须创建另一个帐户，抱歉。"
+
+#: smarty/pages:35
+msgid "Send me a recovery link"
+msgstr "给我发送恢复链接"
+
+#: smarty/pages:3 smarty/pages:9
+msgid "%1's inventory"
+msgstr "%1的背包"
+
+#: smarty/pages:39
+msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
+msgstr ""
+
+#: smarty/pages:41
+msgid "%1's inventory is currently empty."
+msgstr "%1的库存目前是空的。"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "Label generator"
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:9
+msgid "%1's GeoKrety recent moves"
+msgstr "%1的 GeoKrety 最近移动"
+
+#: smarty/pages:37
+msgid "%1's GeoKrety didn't moved yet."
+msgstr "%1的 GeoKrety 尚未移动。"
+
+#: smarty/pages:3 smarty:98
+msgid "Downloads"
+msgstr "下载"
+
+#: smarty/pages:8
+msgid "Translation"
+msgstr "翻译"
+
+#: smarty/pages:11
+msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
+msgstr "我们的翻译文件现在托管在 <a href=\"%1\">crowdin</a>。 如果您想以您的语言翻译Geokrety.org，或者解决一些翻译问题，请随时加入社区。"
+
+#: smarty/pages:27
+msgid "Design resources"
+msgstr ""
+
+#: smarty/pages:30
+msgid "GeoKrety logo"
+msgstr "GeoKrety标志"
+
+#: smarty/pages:32
+msgid "Basic GK logo: "
+msgstr "基本GK 标志： "
+
+#: smarty/pages:33
+msgid "The mole itself: "
+msgstr "摩尔本身： "
+
+#: smarty/pages:34
+msgid "Other ressources: "
+msgstr "其他转源： "
+
+#: smarty/pages:34
+msgid "here"
+msgstr "在这里"
+
+#: smarty/pages:37
+msgid "Sample GeoKrety labels"
+msgstr "GeoKrety 标签示例"
+
+#: smarty/pages:38
+msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
+msgstr "请注意，您可以通过点击GeoKret页面上的相应链接自动创建您的 GeoKrety 标签。"
+
+#: smarty/pages:40 smarty/pages:41 smarty/pages:42 smarty/pages:43
+msgid "Sample label #%1: "
+msgstr "示例标签 #%1: "
+
+#: smarty/pages:45
+msgid "Old label design: "
+msgstr "旧标签设计： "
+
+#: smarty/pages:10
+msgid "Changing your email address."
+msgstr "更改您的电子邮件地址。"
+
+#: smarty/pages:3 smarty/pages:8
+msgid "GeoKrety Toolbox - GKT"
+msgstr "GeoKrety 工具箱 - GKT"
+
+#: smarty/pages:12
+msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
+msgstr "在 <a href=\"%1\" target=\"_blank\">geocaching.com</a> 缓存页面上显示GeoKrety Trackables 并便利将 GeoKrety Tracks 丢弃到地理缓存中。"
+
+#: smarty/pages:16
+msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
+msgstr "这个脚本是为了在最受欢迎的 <a href=\"%1\">地理捕捉之间架起桥梁的。 om</a> 站点 <a href=\"%2\">geokrety.org</a>。它有两个功能。 一旦您在 <a href=\"%1\">地理位置缓存页面输入特定缓存页面。 om</a> 它将自动检查是否存在任何GeoKrety (追踪到 <a href=\"%2\">geokrety的项目)。 rg</a>) 在该缓存中，并在屏幕右侧的盘存部分显示结果(低于现有的Travugs和Geocoins列表)。 如果您在 <a href=\"%2\">gookrety 上有一个帐户。 rg</a> 您也可以轻松将GeoKrety 拖放到 <a href=\"%1\">Geocach</a> caches ，因为航点代码和坐标会自动复制到日志表单 <a href=\"%2\">geokrety。 rg</a>"
+
+#: smarty/pages:18
+msgid "Available for:"
+msgstr "可用："
+
+#: smarty/pages:22
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
+msgstr "<a href=\"%1\">Firefox</a> (需要 <a href=\"%2\">Tampermonkey 附加组件</a> 或 <a href=\"%3\">greasemonkey 附加组件</a>)"
+
+#: smarty/pages:3 smarty/pages:9 smarty:91
+msgid "Press corner"
+msgstr "新闻专栏"
+
+#: smarty/pages:3 smarty:16 smarty:51 smarty:58
+msgid "Log a GeoKret"
+msgstr "记录GeoKret"
+
+#: smarty/pages:18
+msgid "There is no news yet"
+msgstr "还没有新闻"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "Waypoints statistics"
+msgstr ""
+
+#: smarty/pages:10
+msgid "Service code"
+msgstr ""
+
+#: smarty/pages:11
+msgid "Service url"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Waypoint count"
+msgstr ""
+
+#: smarty/pages:13
+msgid "Last synchronization"
+msgstr ""
+
+#: smarty/pages:14
+msgid "Revision"
+msgstr ""
+
+#: smarty/pages:15
+msgid "Last error"
+msgstr ""
+
+#: smarty/pages:16
+msgid "Error count"
+msgstr ""
+
+#: smarty/pages:39
+msgid "N/A"
+msgstr ""
+
+#: smarty/pages:49
+msgid "Force complete synchronization"
+msgstr ""
+
+#: smarty/pages:40
+msgid "Yes, change my email address"
+msgstr "是的，更改我的电子邮件地址"
+
+#: smarty/pages:41
+msgid "No, abort this request"
+msgstr "不，中止此请求"
 
 #: smarty/pages:3
 msgid "Hall of fame"
@@ -3256,136 +2136,1261 @@ msgstr "全球审评员"
 msgid "Credits"
 msgstr "致谢"
 
+#: smarty/pages:3 smarty/pages:6
+msgid "All yearly rankings"
+msgstr ""
+
 #: smarty/pages:3 smarty/pages:9
 msgid "Pictures gallery"
 msgstr "图片库"
 
-#: smarty/pages:8
-msgid "Translation"
-msgstr "翻译"
+#: smarty/pages:3 smarty/pages:9
+msgid "%1's posted pictures"
+msgstr "%1的已发布图片"
 
-#: smarty/pages:11
-msgid "Our translation files are now hosted on <a href=\"%1\">crowdin</a>. Feel free to join the community if you wish to contribute in translating Geokrety.org in your language or fix some translation issues."
-msgstr "我们的翻译文件现在托管在 <a href=\"%1\">crowdin</a>。 如果您想以您的语言翻译Geokrety.org，或者解决一些翻译问题，请随时加入社区。"
-
-#: smarty/pages:27
-msgid "Design resources"
+#: smarty/pages:3 smarty/pages:9
+msgid "GeoKrety visiting the cache %1"
 msgstr ""
 
-#: smarty/pages:30
-msgid "GeoKrety logo"
-msgstr "GeoKrety标志"
+#: smarty/pages:20
+msgid "Name"
+msgstr "名称"
 
-#: smarty/pages:32
-msgid "Basic GK logo: "
-msgstr "基本GK 标志： "
-
-#: smarty/pages:33
-msgid "The mole itself: "
-msgstr "摩尔本身： "
-
-#: smarty/pages:34
-msgid "Other ressources: "
-msgstr "其他转源： "
-
-#: smarty/pages:34
-msgid "here"
-msgstr "在这里"
+#: smarty/pages:21
+msgid "Cache"
+msgstr "高速缓存"
 
 #: smarty/pages:37
-msgid "Sample GeoKrety labels"
-msgstr "GeoKrety 标签示例"
-
-#: smarty/pages:38
-msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
-msgstr "请注意，您可以通过点击GeoKret页面上的相应链接自动创建您的 GeoKrety 标签。"
-
-#: smarty/pages:40 smarty/pages:41 smarty/pages:42 smarty/pages:43
-msgid "Sample label #%1: "
-msgstr "示例标签 #%1: "
-
-#: smarty/pages:45
-msgid "Old label design: "
-msgstr "旧标签设计： "
-
-#: smarty/pages:39
-msgid "Yes, change my email address"
-msgstr "是的，更改我的电子邮件地址"
-
-#: smarty/pages:40
-msgid "No, abort this request"
-msgstr "不，中止此请求"
-
-#: smarty/pages:3 smarty/pages:6
-msgid "Label generator"
+msgid "No GeoKrety has visited cache %1 yet."
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:8
-msgid "Contact us"
-msgstr "联系我们"
+#: smarty:3
+msgid "Admin"
+msgstr "管理员"
 
-#: smarty/pages:13
-msgid "If you have any suggestion or bug reports feel free to write us."
-msgstr "如果您有任何建议或错误报告，请随时编写我们。"
+#: smarty:7 smarty:16
+msgid "My profile"
+msgstr "我的个人资料"
 
-#: smarty/pages:24
-msgid "Or via the user profile"
-msgstr "或通过用户资料"
+#: smarty:18
+msgid "My inventory"
+msgstr "我的背包"
 
-#: smarty/pages:33
-msgid "IRC"
-msgstr "IRC"
+#: smarty:19
+msgid "My GeoKrety"
+msgstr "我的 GeoKrety"
 
-#: smarty/pages:41
-msgid "Twitter"
-msgstr "推特"
+#: smarty:22
+msgid "My recent moves"
+msgstr "我最近的动作"
 
-#: smarty/pages:48
-msgid "Public forum"
-msgstr "公共论坛"
+#: smarty:23
+msgid "Recent moves of my GeoKrety"
+msgstr "我的 GeoKrety 最近移动"
 
-#: smarty/pages:56
-msgid "Wanna sign or encrypt your mails?"
-msgstr "想要签名或加密您的邮件吗？"
+#: smarty:25
+msgid "My photos"
+msgstr "我的照片"
 
-#: smarty/pages:58
-msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
-msgstr "我们的 PGP/GPG 密钥 <a href=\"%1\">在这里 (%2)</a>"
+#: smarty:26
+msgid "Photos of my GeoKrety"
+msgstr "我的GeoKrety 的照片"
 
-#: smarty/pages:3
-msgid "%1's user profile"
+#: smarty:28 smarty/blocks/user:40
+msgid "Where are my GeoKrety?"
+msgstr "我的 GeoKrett 在哪里？"
+
+#: smarty:30
+msgid "Sign out"
+msgstr "登出"
+
+#: smarty:53
+msgid "Create account"
+msgstr "创建帐户"
+
+#: smarty:3 smarty/emails:20
+msgid "Open source item tracking for all geocaching platforms"
+msgstr "所有地理藏宝平台的开源项目跟踪"
+
+#: smarty/dialog:4
+msgid "Commenting a GeoKret move"
+msgstr "评论GeoKret 移动"
+
+#: smarty/dialog:2
+msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
+msgstr "您将要从您的 %1 帐户中分离您的 GeoKrety 帐户。您将无法通过此提供商登录。"
+
+#: smarty/dialog:8 smarty/dialog:27 smarty/dialog:24
+msgid "Detaching OAuth provider"
+msgstr "分离OAuth 提供商"
+
+#: smarty/dialog:17 smarty/dialog:36
+msgid "Detach"
+msgstr "Detach"
+
+#: smarty/dialog:4
+msgid "Do you want to set this picture as main avatar?"
+msgstr "您想要将此图片设置为主头像吗？"
+
+#: smarty/dialog:22
+msgid "Declare missing"
+msgstr "声明丢失"
+
+#: smarty/dialog:15
+msgid "Current password"
+msgstr "当前密码"
+
+#: smarty/dialog:17
+msgid "Old password"
+msgstr "原密码"
+
+#: smarty/dialog:37
+msgid "Read more about choosing good passwords:"
+msgstr "阅读更多关于选择好密码的信息："
+
+#: smarty/dialog:39
+msgid "Choosing Good Passwords -- A User Guide"
+msgstr "选择好的密码 -- 用户指南"
+
+#: smarty/dialog:40
+msgid "How to Write Good Passwords"
+msgstr "如何写好密码"
+
+#: smarty/dialog:41
+msgid "Password strength"
+msgstr "密码强度"
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this news comment?"
+msgstr "您真的想要删除这条新闻评论吗？"
+
+#: smarty/dialog:15 smarty/dialog:24 smarty/dialog:16
+msgid "Delete"
+msgstr "删除"
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this move?"
+msgstr "您真的想要删除这个移动吗？"
+
+#: smarty/dialog:14
+msgid "Deleting this Move will delete attached pictures and the main avatar!"
+msgstr "删除此移动将删除附加图片和主头像！"
+
+#: smarty/dialog:16
+msgid "Deleting this Move will delete attached pictures!"
+msgstr "删除此移动将删除所附图片！"
+
+#: smarty/dialog:9
+msgid "Only %1 GeoKrety can be processed at a time."
+msgstr "一次只能处理 %1 GeoKrety"
+
+#: smarty/dialog:15
+msgid "Filter"
+msgstr "筛选器"
+
+#: smarty/dialog:16
+msgid "Name or ID"
+msgstr "名称或ID"
+
+#: smarty/dialog:28
+msgid "Select all (but max %1)"
+msgstr "选择所有 (但最大 %1)"
+
+#: smarty/dialog:35
+msgid "Choose"
+msgstr "选择"
+
+#: smarty/dialog:60
+msgid "Your inventory is empty."
+msgstr "您的库存是空的。"
+
+#: smarty/dialog:67
+msgid "Select <span class=\"badge\">%1</span>"
+msgstr "选择 <span class=\"badge\">%1</span>"
+
+#: smarty/dialog:4
+msgid "Refresh your secid?"
+msgstr "刷新您的节点？"
+
+#: smarty/dialog:10
+msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
+msgstr "刷新您的秘密将断开所有连接到您帐户的应用程序。您必须重新验证它们。"
+
+#: smarty/dialog:4
+msgid "Do you really want to invalidate this user's email?"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:11
-msgid "Define your observation area"
-msgstr "定义您的观察区域"
-
-#: smarty/pages:21 smarty/pages:22
-msgid "Home coordinates"
-msgstr "首页坐标"
-
-#: smarty/pages:26
-msgid "Use the map to select a location or enter coordinates manually."
-msgstr "在地图上选择一个位置，或手动输入坐标。"
-
-#: smarty/pages:28
-msgid "Other acceptable lat/lon formats"
-msgstr "其他可接受的lat/lon 格式"
-
-#: smarty/pages:37
-msgid "Observation radius"
-msgstr "观察半径"
-
-#: smarty/pages:45
-msgid ". Set it to 0 to disable the observation feature."
+#: smarty/dialog:13
+msgid "Invalidate"
 msgstr ""
 
-#: smarty/pages:55
-msgid "Center the map on the zone to observe"
-msgstr "将地图居中以观察区域"
+#: smarty/dialog:13
+msgid "Acknowledge"
+msgstr ""
 
-#: smarty/pages:3 smarty/pages:6
-msgid "All yearly rankings"
+#: smarty/dialog:4
+msgid "Award %1 with:"
+msgstr ""
+
+#: smarty/dialog:13 smarty/dialog:38
+msgid "Award"
+msgstr ""
+
+#: smarty/dialog:9
+msgid "Contact user"
+msgstr "联系用户"
+
+#: smarty/dialog:18
+msgid "%1 (speak %2)"
+msgstr "%1 (语音 %2)"
+
+#: smarty/dialog:25
+msgid "Message subject"
+msgstr "消息主题"
+
+#: smarty/dialog:30
+msgid "Message"
+msgstr "message"
+
+#: smarty/dialog:32
+msgid "Message to user"
+msgstr "给用户的消息"
+
+#: smarty/dialog:44
+msgid "Send message"
+msgstr "发送消息"
+
+#: smarty/dialog:4
+msgid "Do you really want to ack this script locking alert?"
+msgstr ""
+
+#: smarty/dialog:9
+msgid "\"%1\" locked since %2"
+msgstr ""
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this move comment?"
+msgstr "您真的想要删除此移动评论吗？"
+
+#: smarty/dialog:4
+msgid "Choose your preferred language"
+msgstr "选择您喜欢的语言"
+
+#: smarty/dialog:6
+msgid "Manage picture"
+msgstr "管理图片"
+
+#: smarty/dialog:12
+msgid "Caption"
+msgstr "标题"
+
+#: smarty/dialog:24
+msgid "Remember caption"
+msgstr "记住标题"
+
+#: smarty/dialog:27
+msgid "Remember the caption for the next %1 minutes"
+msgstr "记住下一个 %1 分钟的标题"
+
+#: smarty/dialog:2
+msgid "You are not connected to this OAuth provider."
+msgstr "您没有连接到此 OAuth 提供商。"
+
+#: smarty/dialog:15
+msgid "Back to my profile"
+msgstr "返回我的个人资料"
+
+#: smarty/dialog:4
+msgid "Mark this GeoKret as archived?"
+msgstr ""
+
+#: smarty/dialog:10
+msgid "You are about the archive this GeoKret."
+msgstr ""
+
+#: smarty/dialog:11
+msgid "This is useful if you think this GeoKret has been destroyed."
+msgstr ""
+
+#: smarty/dialog:13
+msgid "It will not appear anymore in your active inventory."
+msgstr ""
+
+#: smarty/dialog:14
+msgid "It will not appear as present in a cache."
+msgstr ""
+
+#: smarty/dialog:16
+msgid "If someone discover it later, it will be automatically reactivated."
+msgstr ""
+
+#: smarty/dialog:27
+msgid "Archive"
+msgstr "档案"
+
+#: smarty/dialog:4
+msgid "Update your email address"
+msgstr "更新您的电子邮件地址"
+
+#: smarty/dialog:27
+msgid "Email alerts may contain any of the following:"
+msgstr "电子邮件提醒可以包含以下任一内容："
+
+#: smarty/dialog:29
+msgid "GeoKrety.org news"
+msgstr "GeoKrety.org新闻"
+
+#: smarty/dialog:30
+msgid "Recent logs on:"
+msgstr "最近日志于："
+
+#: smarty/dialog:32 smarty/dialog:38
+msgid "your own GeoKrety"
+msgstr "你自己的 GeoKrety"
+
+#: smarty/dialog:33 smarty/dialog:39
+msgid "GeoKrety that you watch"
+msgstr "您观看的 GeoKrety"
+
+#: smarty/dialog:34
+msgid "any GeoKrety logged near your home location"
+msgstr "任意GeoKrety 登录在您的家的位置"
+
+#: smarty/dialog:36
+msgid "Comments posted to any of the following:"
+msgstr "发表于下列任何一处的评论："
+
+#: smarty/dialog:40
+msgid "your logs"
+msgstr "您的日志"
+
+#: smarty/dialog:41
+msgid "your comments"
+msgstr "您的评论"
+
+#: smarty/dialog:42
+msgid "news posts you have are subscribed to"
+msgstr "您订阅的新闻帖子"
+
+#: smarty/dialog:3
+msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+msgstr "此文档设置了“<a href=\"%1\">geokrety”的使用条件。 rg</a>— 一种自愿运作的互联网地理藏匿服务，地址是： <a href=\"%1\">geokrety.org</a> (下称“服务”)。 注册帐户的每个人（以下称“用户”）同意遵守这些条款和条件的规则。 从登记程序开始开始。"
+
+#: smarty/dialog:7
+msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
+msgstr "该服务由一群志愿支持者（以下简称“GK小组”）监测和监督。 GK 团队不负责用户在网站上张贴的内容或使用服务信息造成的损害。"
+
+#: smarty/dialog:11
+msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
+msgstr ""
+
+#: smarty/dialog:15
+msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+msgstr "我们没有对准确性、及时性、性能和性能提供任何保证或保证。 在本网站上发现或提供的用于任何特定目的的信息和材料是否完整或合适。 你承认，这些资料和材料可能含有不准确或错误，我们明确排除了对任何这种不准确或错误的赔偿责任，但必须在法律允许的最大限度内这样做。"
+
+#: smarty/dialog:19
+msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
+msgstr "您在网站上发布的内容不能包含阴极表达式、滥用或非法内容。"
+
+#: smarty/dialog:26 smarty/dialog:46 smarty:90
+msgid "Terms of use"
+msgstr "使用条款"
+
+#: smarty/dialog:36 smarty/dialog:56
+msgid "I agree with the terms"
+msgstr "我同意条款"
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this picture?"
+msgstr "您真的想要删除此图片吗？"
+
+#: smarty/dialog:6
+msgid "Do you really want to unsubscribe from this news?"
+msgstr "您真的想要取消订阅此消息吗？"
+
+#: smarty/dialog:8
+msgid "Subscribe to this news?"
+msgstr "订阅此消息？"
+
+#: smarty/dialog:27
+msgid "Unsubscribe"
+msgstr "取消订阅"
+
+#: smarty/dialog:29
+msgid "Subscribe"
+msgstr "订阅"
+
+#: smarty/dialog:4
+msgid "Offer this GeoKret for adoption?"
+msgstr "提供此 GeoKret 供收养？"
+
+#: smarty/dialog:10
+msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
+msgstr "这将允许另一个了解追踪代码和所有者代码的用户成为这个GeoKret的新拥有者。"
+
+#: smarty/dialog:15
+msgid "Back to GeoKret page"
+msgstr "返回GeoKret 页面"
+
+#: smarty/dialog:18
+msgid "Generate an Owner Code"
+msgstr "生成一个所有者代码"
+
+#: smarty/dialog:2 smarty/dialog:7 smarty/emails:12 smarty/emails:13
+msgid "Login"
+msgstr "登录"
+
+#: smarty/dialog:28
+msgid "Remember me"
+msgstr "记住我"
+
+#: smarty/dialog:31
+msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
+msgstr "我们正在使用 cookie 来保持您的会话活动。请阅读更多关于我们的 <a href=\"%1\" target=\"_blank\">cookie 策略</a>。"
+
+#: smarty/dialog:40
+msgid "No account yet ? Register now!"
+msgstr "还没有帐户？现在注册！"
+
+#: smarty/dialog:43
+msgid "Forgot your password?"
+msgstr "忘记密码？"
+
+#: smarty/dialog:4
+msgid "Do you really want to unlock this script?"
+msgstr ""
+
+#: smarty/dialog:14
+msgid "Unlock"
+msgstr ""
+
+#: smarty/blocks/user:12
+msgid "View inventory"
+msgstr "查看物品栏"
+
+#: smarty/blocks/user:24
+msgid "Recently posted moves"
+msgstr "最近发布的动作"
+
+#: smarty/blocks/user:28
+msgid "Moves of owned GeoKrety"
+msgstr "拥有GeoKrety的移动"
+
+#: smarty/blocks/user:32
+msgid "Posted pictures"
+msgstr "已发布的图片"
+
+#: smarty/blocks/user:36
+msgid "Owned GeoKrety pictures"
+msgstr "拥有GeoKrety图片"
+
+#: smarty/blocks/user:7 smarty/blocks/geokret:27
+msgid "Send a message to %1"
+msgstr "发送一条消息给 %1"
+
+#: smarty/blocks/user:11
+msgid "Subscribe to RSS channel"
+msgstr "RSS订阅"
+
+#: smarty/blocks/user:15
+msgid "Username change"
+msgstr ""
+
+#: smarty/blocks/user:18
+msgid "Password change"
+msgstr "更改密码"
+
+#: smarty/blocks/user:32
+msgid "Joined us"
+msgstr "加入时间"
+
+#: smarty/blocks/user:36
+msgid "Nothing selected"
+msgstr "未选择"
+
+#: smarty/blocks/user:39
+msgid "Choose preferred language"
+msgstr "选择首选语言"
+
+#: smarty/blocks/user:51
+msgid "Pending email validation, don't forget to click the link in validation mail!"
+msgstr "等待电子邮件验证，不要忘记点击验证邮件中的链接！"
+
+#: smarty/blocks/user:53
+msgid "No email address, please add one!"
+msgstr "没有电子邮件地址，请添加一个！"
+
+#: smarty/blocks/user:56
+msgid "Update email address"
+msgstr "更新电子邮件地址"
+
+#: smarty/blocks/user:61
+msgid "Secid"
+msgstr "Secid"
+
+#: smarty/blocks/user:64
+msgid "Used to authenticate in other applications. Keep it secret!"
+msgstr "用于其他应用程序的身份验证。请保密！"
+
+#: smarty/blocks/user:65
+msgid "Generate a new secid"
+msgstr "生成一个新的Secid"
+
+#: smarty/blocks/user:75
+msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
+msgstr ""
+
+#: smarty/blocks/user:4
+msgid "OAuth Connections"
+msgstr "OAuth 连接"
+
+#: smarty/blocks/user:17
+msgid "Disconnect from %1"
+msgstr "断开 %1"
+
+#: smarty/blocks/user:18
+msgid "Disconnect"
+msgstr "断开连接"
+
+#: smarty/blocks/user:23
+msgid "Connect with %1"
+msgstr "与 %1 连接"
+
+#: smarty/blocks/user:23
+msgid "Connect"
+msgstr "连接"
+
+#: smarty/blocks/user:3
+msgid "Medals"
+msgstr ""
+
+#: smarty/blocks/user:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr ""
+
+#: smarty/blocks/user:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr ""
+
+#: smarty/blocks/user:13
+msgid "Choose statpic"
+msgstr "选择statpic"
+
+#: smarty/blocks/user:4
+msgid "Awards"
+msgstr "奖项"
+
+#: smarty/blocks/user:10
+msgid "No award received yet."
+msgstr ""
+
+#: smarty/blocks/user:10
+msgid "No home coordinates have been defined."
+msgstr "没有定义家庭坐标。"
+
+#: smarty/blocks/user:13 smarty/blocks/user:21
+msgid "Update home coordinates and obervation area"
+msgstr "更新家居坐标和承载区域"
+
+#: smarty/blocks/user:14
+msgid "Define your home coordinates"
+msgstr "定义您的家坐标"
+
+#: smarty/blocks/user:20
+msgid "GeoKrety near home"
+msgstr "家附近的GeoKrety"
+
+#: smarty/blocks:3
+msgid "Found a GeoKret?"
+msgstr "找到 GeoKret？"
+
+#: smarty/blocks:7
+msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
+msgstr "请在这里输入 <abbr title=\"%1\">追踪代码</abbr>："
+
+#: smarty/blocks:12
+msgid "Tracking code"
+msgstr "跟踪代码"
+
+#: smarty/blocks:15 smarty/blocks/geokret:14
+msgid "Log it!"
+msgstr "登陆！"
+
+#: smarty/blocks:5
+msgid "Start by finding users:"
+msgstr ""
+
+#: smarty/blocks:9
+msgid "Username or email or ID"
+msgstr ""
+
+#: smarty/blocks:11
+msgid "Search"
+msgstr "搜索"
+
+#: smarty/blocks:27
+msgid "false"
+msgstr ""
+
+#: smarty/blocks:27
+msgid "true"
+msgstr ""
+
+#: smarty/blocks:37
+msgid "No users match the current request."
+msgstr ""
+
+#: smarty/blocks/geokret:2
+msgid "Watchers"
+msgstr "观看者"
+
+#: smarty/blocks/geokret:6
+msgid "Log this GeoKret"
+msgstr "记录此GeoKret"
+
+#: smarty/blocks/geokret:11
+msgid "Print a label for this GeoKret"
+msgstr "打印此GeoKret 的标签"
+
+#: smarty/blocks/geokret:25
+msgid "Adopt this GeoKret"
+msgstr "通过这个GeoKret"
+
+#: smarty/blocks/geokret:27
+msgid "Login to claim this GeoKret"
+msgstr "登录要求这GeoKret"
+
+#: smarty/blocks/geokret:34
+msgid "Mark this GeoKret as archived"
+msgstr ""
+
+#: smarty/blocks/geokret:34
+msgid "Archive this GeoKret"
+msgstr "存档这个GeoKret"
+
+#: smarty/blocks/geokret:40
+msgid "Email owner"
+msgstr "电子邮件所有者"
+
+#: smarty/blocks/geokret:46
+msgid "Make this GeoKret available for adoption by another user"
+msgstr "让这个GeoKret 可供其他用户使用"
+
+#: smarty/blocks/geokret:47
+msgid "Transfer ownership"
+msgstr "转让所有权"
+
+#: smarty/blocks/geokret:9
+msgid "%1 <small>(%2)</small> by %3"
+msgstr ""
+
+#: smarty/blocks/geokret:15
+msgid "%1 <small>(%2)</small> - <a href=\"%3\">Ready for adoption</a>"
+msgstr ""
+
+#: smarty/blocks/geokret:20
+msgid "missing"
+msgstr ""
+
+#: smarty/blocks/geokret:22
+msgid "archived"
+msgstr ""
+
+#: smarty/blocks/geokret:32 smarty/blocks/geokret:6
+msgid "Edit GeoKret details"
+msgstr "编辑 GeoKret 详细信息"
+
+#: smarty/blocks/geokret:54
+msgid "Places visited"
+msgstr "曾到过的地方"
+
+#: smarty/blocks/geokret:3
+msgid "Map"
+msgstr "地图"
+
+#: smarty/blocks/geokret:8
+msgid "Caption:"
+msgstr "标题："
+
+#: smarty/blocks/geokret:9
+msgid "start"
+msgstr "开始"
+
+#: smarty/blocks/geokret:10
+msgid "trip points"
+msgstr "行程点"
+
+#: smarty/blocks/geokret:11
+msgid "recently seen"
+msgstr "最近已查看"
+
+#: smarty/blocks/geokret:13
+msgid "Download the track as:"
+msgstr "下载曲目为："
+
+#: smarty/blocks/geokret:17
+msgid "This geokret has not started yet"
+msgstr "这geokret尚未开始"
+
+#: smarty/blocks/geokret:3
+msgid "Found it? Log it!"
+msgstr "找到了吗？请登录！"
+
+#: smarty/blocks/geokret:11
+msgid "Please enter the Tracking Code here"
+msgstr "请在此处输入跟踪代码"
+
+#: smarty/blocks/geokret:15
+msgid "This GeoKret doesn't have a special mission…"
+msgstr "这个GeoKret 没有特殊任务…"
+
+#: smarty/blocks:10
+msgid "There is no pictures yet."
+msgstr "还没有图片。"
+
+#: smarty/banners:2
+msgid "Enjoying GeoKrety.org?"
+msgstr "喜欢GeoKrety.org吗？"
+
+#: smarty/banners:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr ""
+
+#: smarty/banners:8
+msgid "Donate"
+msgstr ""
+
+#: smarty/banners:3
+msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+msgstr ""
+
+#: smarty/banners:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "即使是现在不需要它，我们建议您 <a href=\"%1\">登录</a>。"
+
+#: smarty/banners:4
+msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
+msgstr "请不要犹豫 <a href=\"%1\">创建帐户</a>。"
+
+#: smarty/banners:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "然后，您将能够管理您的 GeoKrety 库存，上传图片，编辑您的日志，当然还能创建您自己的 GeoKret！"
+
+#: smarty/banners:3
+msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
+msgstr "您有待验证的电子邮件。 别忘了点击电子邮件中存在的链接来完成程序。链接将过期 %1！"
+
+#: smarty/banners:3
+msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "对不起，您的帐户没有注册电子邮件。 您将无法从密码丢失中恢复！另外，您将不会收到您的GeoKrety或观看GeoKrety的每日通知。"
+
+#: smarty/banners:4
+msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr "请考虑 <a href=\"%1\">添加一个电子邮件地址</a> 或 <a href=\"%2\">将您的帐户</a> 链接到一些OAuth 提供商。"
+
+#: smarty/banners:4
+msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
+msgstr "您已设置此 GeoKret 可供通过。所有者代码为： <strong>%1</strong>。 与追踪代码 <strong>%2</strong> 一起提供给将通过你的 GeoKret的用户。"
+
+#: smarty/banners:6
+msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
+msgstr ""
+
+#: smarty/banners:8
+msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+msgstr "此 GeoKret 可用来通过。请先 <a href=\"%1\">登录</a>。"
+
+#: smarty/banners:3
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr ""
+
+#: smarty/banners:2
+msgid "Some statistics"
+msgstr "某些统计"
+
+#: smarty/banners:6
+msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
+msgstr "<strong>%1</strong> 注册的 GeoKrety, <strong>%2</strong> GeoKrety 隐藏由 <strong>%3</strong> 用户。"
+
+#: smarty/banners:13
+msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
+msgstr ""
+
+#: smarty/banners:21
+msgid "And that's thanks to you! Congratulation!"
+msgstr "这感谢你！恭喜！"
+
+#: smarty/banners:3
+msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
+msgstr "GeoKrety 是一个免费的在线服务，用于在 GPS 游戏中跟踪对象，如地理藏匿或置顶。 你可以跟我们一起追踪小项目、 书籍、 硬币、 宠物或人类… <a href=\"%1\">阅读更多</a>"
+
+#: smarty/banners:3 smarty/banners:2
+msgid "Close"
+msgstr "关闭"
+
+#: smarty/banners:3
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "这个分支 🥦 正在积极开发 👨‍💻如果你发现bug:, 请检查 👀 <a href=\"%1\" target=\"_blank\">现有问题 ♻️ on GitHub %2</a> 并随意打开新的 :NEW_buton:。 (每个问题请🙏)"
+
+#: smarty:6
+msgid "Toggle navigation"
+msgstr "切换导航"
+
+#: smarty:47 smarty:3
+msgid "Home"
+msgstr "首页"
+
+#: smarty:64
+msgid "Advanced search"
+msgstr "高级搜索"
+
+#: smarty:65
+msgid "Photo gallery"
+msgstr "照片廊"
+
+#: smarty:68
+msgid "GeoKrety Map"
+msgstr "GeoKrety 地图"
+
+#: smarty:75
+msgid "Currently selected language"
+msgstr "当前选中的语言"
+
+#: smarty:93
+msgid "GK interface / API"
+msgstr "GK 接口 / API"
+
+#: smarty:95
+msgid "Waypoints synchronization status"
+msgstr ""
+
+#: smarty:96
+msgid "Yearly rankings"
+msgstr ""
+
+#: smarty:99
+msgid "GeoKrety Toolbox"
+msgstr "GeoKrety 工具箱"
+
+#: smarty:100
+msgid "Waypoint resolver"
+msgstr "航点解析器"
+
+#: smarty/emails:4
+msgid "Some accounts will be deleted."
+msgstr ""
+
+#: smarty/emails:7
+msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
+msgstr ""
+
+#: smarty/emails:30
+msgid "Hi %1,"
+msgstr "Hi %1,"
+
+#: smarty/emails:37
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr "真诚，<br>GeoKrety 团队"
+
+#: smarty/emails:46
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
+msgstr ""
+
+#: smarty/emails:4
+msgid "An exception occurred in a cron job"
+msgstr ""
+
+#: smarty/emails:7
+msgid "Something went wrong with a cron job, please check the logs below."
+msgstr ""
+
+#: smarty/emails:4
+msgid "You're getting this email because you're one the website admins."
+msgstr ""
+
+#: smarty/emails:4
+msgid "Confirm your email address change."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
+msgstr "有人希望您已经请求更改您的 GeoKrety 联系人电子邮件地址到: %1。"
+
+#: smarty/emails:13 smarty/emails:15
+msgid "If you did not requested this, click the link below."
+msgstr "如果您没有请求，请点击下面的链接。"
+
+#: smarty/emails:15
+msgid "Do not change!"
+msgstr "不要改变！"
+
+#: smarty/emails:18 smarty/emails:13 smarty/emails:17 smarty/emails:20
+#: smarty/emails:15
+msgid "This link expires %1."
+msgstr "此链接已过期 %1。"
+
+#: smarty/emails:20 smarty/emails:22 smarty/emails:15
+msgid "If you did not requested a password change, then you should also consider changing your password immediately."
+msgstr ""
+
+#: smarty/emails:22 smarty/emails:24 smarty/emails:17
+msgid "Change my password!"
+msgstr "更改我的密码 ！"
+
+#: smarty/emails:27 smarty/emails:29 smarty/emails:22 smarty/emails:17
+msgid "You're getting this email because you've changed your email on our website."
+msgstr "您正在收到这封电子邮件，因为您已经在我们的网站上更改了您的电子邮件。"
+
+#: smarty/emails:3
+msgid "Congratulation"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your account on GeoKrety.org is now active."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr "您在 GeoKrety.org 上的帐户现已完全运行。"
+
+#: smarty/emails:15
+msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
+msgstr ""
+
+#: smarty/emails:19 smarty/emails:23
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "您收到这封电子邮件是因为您刚刚在我们的网站上注册。"
+
+#: smarty/emails:4
+msgid "One step left to use GeoKrety.org."
+msgstr ""
+
+#: smarty/emails:7
+msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
+msgstr "您刚刚在 GeoKrety.org 注册。 <strong>您仍然必须先激活您的帐户才能使用它。</strong> 请点击下面的链接。"
+
+#: smarty/emails:10 smarty/emails:14
+msgid "Activate your account"
+msgstr "激活您的帐户"
+
+#: smarty/emails:15 smarty/emails:19
+msgid "If your account is not activated within that time, then it will be automatically deleted."
+msgstr "如果您的帐户未在此时间内激活，它将被自动删除。"
+
+#: smarty/emails:4
+msgid "Something went wrong while synchronizing partners data"
+msgstr ""
+
+#: smarty/emails:4
+msgid "A script is locked"
+msgstr ""
+
+#: smarty/emails:7
+msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
+msgstr ""
+
+#: smarty/emails:3
+msgid "Account has been deleted"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your account is now deleted."
+msgstr ""
+
+#: smarty/emails:8
+msgid "The account you created %1 has never been activated."
+msgstr ""
+
+#: smarty/emails:9
+msgid "Our policy is to delete unactivated accounts after %1 days."
+msgstr ""
+
+#: smarty/emails:13
+msgid "We are sorry to inform you that your account has been permanently erased."
+msgstr ""
+
+#: smarty/emails:14
+msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: smarty/emails:17 smarty/emails:19
+msgid "You're getting this email because you've changed your password on our website."
+msgstr "您收到这封邮件是因为您在我们的网站上更改了您的密码。"
+
+#: smarty/emails:4
+msgid "New Award received"
+msgstr ""
+
+#: smarty/emails:7
+msgid "We're proud to inform you that you have received a new Award badge."
+msgstr ""
+
+#: smarty/emails:16
+msgid "Please look at this new pretty badge on your GeoKrety profile."
+msgstr ""
+
+#: smarty/emails:18
+msgid "Check my profile"
+msgstr ""
+
+#: smarty/emails:8
+msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
+msgstr "有人希望您已经请求将它的 GeoKrety 联系人地址更改为您的电子邮件。"
+
+#: smarty/emails:12
+msgid "Validate your new email address"
+msgstr "验证您的新电子邮件地址"
+
+#: smarty/emails:15
+msgid "This link is valid for %1."
+msgstr "此链接对 %1 有效。"
+
+#: smarty/emails:17
+msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
+msgstr "如果您没有提出此请求并且不知道GeoKrety是什么，请忽略这封电子邮件。您将永远不会再听到关于我们的消息！"
+
+#: smarty/emails:21
+msgid "You're getting this email because you've requested an email address change on our website."
+msgstr "您正在收到这封电子邮件，因为您已请求更改我们网站的电子邮件地址。"
+
+#: smarty/emails:3
+msgid "Account not yet active"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your account is about to be deleted."
+msgstr ""
+
+#: smarty/emails:8
+msgid "The account you created %1 has not yet been activated."
+msgstr ""
+
+#: smarty/emails:9
+msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+msgstr ""
+
+#: smarty/emails:10
+msgid "Unactivated accounts are automatically deleted after %1 days."
+msgstr ""
+
+#: smarty/emails:4
+msgid "Is this address still valid?"
+msgstr ""
+
+#: smarty/emails:10
+msgid "This is important in case of password loss."
+msgstr ""
+
+#: smarty/emails:14
+msgid "Validate your email address"
+msgstr ""
+
+#: smarty/emails:21
+msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+msgstr ""
+
+#: smarty/emails:3
+msgid "Contact from a GeoKrety.org user"
+msgstr "来自GeoKrety.org用户的联系人"
+
+#: smarty/emails:4
+msgid "Someone sent you a private message."
+msgstr ""
+
+#: smarty/emails:8
+msgid "This email was sent by user <a href=\"%2\">%1</a>."
+msgstr ""
+
+#: smarty/emails:12
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr "如果您怀疑有滥用行为，请告诉我们： %1"
+
+#: smarty/emails:13
+msgid "Referer: %1"
+msgstr "参考者： %1"
+
+#: smarty/emails:18
+msgid "Subject:"
+msgstr "主题："
+
+#: smarty/emails:23
+msgid "Reply to %1"
+msgstr "回复 %1"
+
+#: smarty/emails:28
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
+msgstr "您正在收到这封电子邮件，因为有一个GeoKrety.org用户通过您的用户资料向您发送了消息。"
+
+#: smarty/emails:4 smarty/emails:8
+msgid "Your email address has been successfully changed."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Your email address has been successfully changed to: %1."
+msgstr ""
+
+#: smarty/emails:17
+msgid "Revert this change!"
+msgstr "还原此更改！"
+
+#: smarty/emails:3
+msgid "Username changed"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your username on GeoKrety.org has been changed."
+msgstr ""
+
+#: smarty/emails:8
+msgid "."
+msgstr ""
+
+#: smarty/emails:9
+msgid "Please enjoy your new username!"
+msgstr ""
+
+#: smarty/emails:18
+msgid "You're getting this email because you've changed your username on our website."
+msgstr ""
+
+#: smarty/emails:3
+msgid "Forgot Your Password?"
+msgstr "忘记密码？"
+
+#: smarty/emails:4
+msgid "Recover your password."
+msgstr ""
+
+#: smarty/emails:8
+msgid "It happens. Click the link below to reset your password."
+msgstr "发生这种情况。点击下面的链接重置您的密码。"
+
+#: smarty/emails:12
+msgid "Reset Password"
+msgstr "重置密码"
+
+#: smarty/emails:5
+msgid "Your GeoKrety watchlist"
+msgstr ""
+
+#: smarty/emails:8
+msgid "You're getting this email because you've choose to receive daily mail updates."
+msgstr ""
+
+#: smarty/emails:9
+msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
+msgstr ""
+
+#: smarty/emails:14
+msgid "Here is what changed recently."
+msgstr ""
+
+#: smarty/emails:17
+msgid "Latest news"
+msgstr ""
+
+#: smarty/emails:27
+msgid "GeoKrety dropped in your observation area"
+msgstr ""
+
+#: smarty/emails:30
+msgid "Open interactive map"
+msgstr ""
+
+#: smarty/emails:30
+msgid "Observation area map"
+msgstr ""
+
+#: smarty/emails:36 smarty/emails:79 smarty/emails:125 smarty/emails:170
+msgid "GeoKret"
+msgstr ""
+
+#: smarty/emails:37 smarty/emails:80 smarty/emails:126
+msgid "Position"
+msgstr ""
+
+#: smarty/emails:39 smarty/emails:82 smarty/emails:128 smarty/emails:172
+msgid "Author"
+msgstr ""
+
+#: smarty/emails:40
+msgid "Home distance"
+msgstr ""
+
+#: smarty/emails:73
+msgid "My GeoKrety latest moves"
+msgstr ""
+
+#: smarty/emails:78 smarty/emails:124
+msgid "Icon"
+msgstr "图标"
+
+#: smarty/emails:83
+msgid "Distance since last move"
+msgstr ""
+
+#: smarty/emails:119
+msgid "Watched GeoKrety latest moves"
+msgstr ""
+
+#: smarty/emails:165
+msgid "Latest move comments"
+msgstr ""
+
+#: smarty/emails:3
+msgid "Hooray"
+msgstr ""
+
+#: smarty/emails:4
+msgid "One of your GeoKrety has been adopted."
+msgstr ""
+
+#: smarty/emails:7
+msgid "Good news, your GeoKret <a href=\"%2\">%1</a> was just adopted by user <a href=\"%4\">%3</a>."
+msgstr ""
+
+#: smarty/emails:10
+msgid "View GeoKret"
+msgstr "查看 GeoKret"
+
+#: smarty/emails:15
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
+msgstr "您正在收到这封电子邮件，因为您的GeoKrety 之一已经改变了我们网站的所有者。"
+
+#: smarty/emails:4 smarty/emails:8
+msgid "Your email address has been successfully reverted."
+msgstr ""
+
+#: smarty:4
+msgid "About"
+msgstr "关于"
+
+#: smarty:6
+msgid "Contact"
+msgstr "联系人"
+
+#: smarty:10
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "在 <a id=\"footer-license\" href=\"%1\">MIT 许可证下发布</a>"
+
+#: smarty:12
+msgid "Contribute to translation"
+msgstr ""
+
+#: smarty:15
+msgid "Leave in-context translation"
+msgstr "离开上下文翻译"
+
+#: smarty:17
+msgid "in-context translation"
+msgstr "上下文翻译"
+
+#: smarty:21
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
 msgstr ""
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
