@@ -1,3 +1,10 @@
+### [2.10.1](https://github.com/geokrety/geokrety-website/compare/v2.10.0...v2.10.1) (2021-12-26)
+
+
+### Bug Fixes
+
+* Fix new php-cs-issues since upgrade to 3.4 ([f931e7f](https://github.com/geokrety/geokrety-website/commit/f931e7fa7719bd0d4cd87169d3a6f9959e7b676b))
+
 ## [2.10.0](https://github.com/geokrety/geokrety-website/compare/v2.9.0...v2.10.0) (2021-12-26)
 
 
