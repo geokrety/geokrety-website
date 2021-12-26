@@ -88,4 +88,16 @@ jobs:
         run: |
           make test-qa-headless
 
-# TODO push reports
+      - name: Deploy
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          external_repository: geokrety/geokrety-website-qa
+          publish_branch: gh-pages
+          publish_dir: ./tests-qa/docs/${{ steps.vars.outputs.short_ref }}
+
+      - name: Show report URL
+        if: always()
+        run: |
+          echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html
