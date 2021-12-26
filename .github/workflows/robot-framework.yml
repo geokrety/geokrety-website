@@ -93,12 +93,20 @@ jobs:
 
       - name: Deploy
         if: always()
+        env:
+          GIT_BRANCH: ${{ steps.vars.outputs.short_ref }}
         uses: peaceiris/actions-gh-pages@v3
         with:
+#          force_orphan: true  ## see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-keeping-existing-files-keep_files
+          keep_files: true
           deploy_key: ${{ secrets.QA_TEST_DEPLOY_KEY }}
           external_repository: geokrety/geokrety-website-qa
           publish_branch: gh-pages
           publish_dir: ./tests-qa/docs/${{ steps.vars.outputs.short_ref }}
+          destination_dir: ${{ steps.vars.outputs.short_ref }}
+          user_name: geokrety-bot
+          commit_message: "docs: Update QA tests results"
+
 
       - name: Show report URL
         if: always()
