@@ -4,7 +4,7 @@ base_path:
 preserve_hierarchy: true
 pull_request_labels:
   - Translation
-commit_message: "[skip travis]"
+commit_message: "[skip translate]"
 files:
   - source: /website/app/languages/messages.po.txt
     translation: /website/app/languages/%locale_with_underscore%.UTF-8/LC_MESSAGES/messages.po

@@ -16,7 +16,7 @@ env:
 
 jobs:
   robot-framework:
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    if: "!contains(github.event.head_commit.message, 'skip ci') && !contains(github.event.head_commit.message, 'skip translate')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
