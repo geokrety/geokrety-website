@@ -1,4 +1,4 @@
-{block name=content}
+{block name=modal_content}
 <div class="modal-header alert-success">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="modalLabel">{t username=$user->username}Award %1 with:{/t}</h4>

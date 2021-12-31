@@ -11,7 +11,7 @@ class UserEmailInvalidate extends Base {
     use UserLoader;
 
     public function get() {
-        Smarty::render('dialog/admin_users_email_invalidate.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/admin_users_email_invalidate.tpl');
     }
 
     public function post(\Base $f3) {

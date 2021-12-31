@@ -14,6 +14,6 @@ class GeokretSelectFromInventory extends Base {
         $geokrety = $geokret->find($filter, $option);
         Smarty::assign('geokrety', $geokrety);
 
-        Smarty::render('dialog/geokret_move_select_from_inventory.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/geokret_move_select_from_inventory.tpl');
     }
 }

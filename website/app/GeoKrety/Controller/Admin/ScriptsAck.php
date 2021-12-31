@@ -11,7 +11,7 @@ class ScriptsAck extends Base {
     use ScriptLoader;
 
     public function get() {
-        Smarty::render('dialog/admin_dialog_script_ack.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/admin_dialog_script_ack.tpl');
     }
 
     public function post(\Base $f3) {

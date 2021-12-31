@@ -21,7 +21,7 @@ class UserPrizeAwarderManual extends Base {
     }
 
     public function get(\Base $f3) {
-        Smarty::render('dialog/admin_users_prize_awarder_manual.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/admin_users_prize_awarder_manual.tpl');
     }
 
     public function post(\Base $f3) {

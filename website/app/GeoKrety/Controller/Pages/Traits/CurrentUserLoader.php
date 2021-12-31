@@ -11,7 +11,7 @@ trait CurrentUserLoader {
 
         if (!$f3->get('SESSION.IS_LOGGED_IN')) {
             // TODO auth first
-            Smarty::render('dialog/login.tpl');
+            Smarty::render('extends:base_modal.tpl|dialog/login.tpl');
             exit();
         }
 

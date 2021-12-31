@@ -1,3 +1,4 @@
+{block name=modal_content}
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="modalLabel">{t}Select GeoKrety from inventory{/t}</h4>
@@ -67,3 +68,4 @@
     <button type="submit" class="btn btn-primary" id="modalInventorySelectButton">{t escape=no count=0}Select <span class="badge">%1</span>{/t}</button>
 {/if}
 </div>
+{/block}

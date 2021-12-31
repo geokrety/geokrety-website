@@ -11,7 +11,7 @@ class ScriptsUnlock extends Base {
     use ScriptLoader;
 
     public function get() {
-        Smarty::render('dialog/admin_dialog_script_unlock.tpl');
+        Smarty::render('extends:base_modal.tpl|dialog/admin_dialog_script_unlock.tpl');
     }
 
     public function post(\Base $f3) {
