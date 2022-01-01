@@ -29,6 +29,7 @@ class StaticPages extends Base {
     }
 
     public function app_version(\Base $f3) {
+        header('Content-Type: application/json; charset=utf-8');
         echo json_encode(['version' => GK_APP_VERSION], JSON_UNESCAPED_UNICODE);
     }
 
