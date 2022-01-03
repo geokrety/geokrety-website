@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-03 15:15+0000\n"
-"PO-Revision-Date: 2022-01-03 21:31\n"
+"PO-Revision-Date: 2022-01-03 21:52\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -291,7 +291,7 @@ msgstr "Veuillez sélectionner un type d'export."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
 msgid "You cannot archive someone else GeoKret."
-msgstr ""
+msgstr "Vous ne pouvez archiver que votre propre GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:26
 msgid "This GeoKret is already archived."
@@ -376,7 +376,7 @@ msgstr "La demande d'authentification a été annulée."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:22
 msgid "Missing status can only be added to current GeoKret position."
-msgstr ""
+msgstr "Le statut manquant ne peut être ajouté qu'à la position actuelle du GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:49
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:72
@@ -402,11 +402,11 @@ msgstr "Ce déplacement n'existe pas"
 #: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:22
 #: website/app/GeoKrety/Controller/Pages/Traits/PictureLoader.php:31
 msgid "This action is reserved to the author."
-msgstr ""
+msgstr "Cette action est réservée l'auteur."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:42
 msgid "This move is not editable."
-msgstr ""
+msgstr "Ce déplacement n'est pas modifiable."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:97
 msgid "The date time could not be parsed."
@@ -492,12 +492,12 @@ msgstr "Ce classement n'existe pas."
 #: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:13
 #: website/public/index.php:24
 msgid "Please login first."
-msgstr ""
+msgstr "Veuillez d’abord vous connecter."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:19
 #: website/public/index.php:32
 msgid "This page doesn't exists."
-msgstr ""
+msgstr "Cette page n'existe pas."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:26
 msgid "This GeoKret does not exist."
@@ -510,7 +510,7 @@ msgstr "Ce commentaire n'existe pas."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:31
 msgid "Your are not allowed to edit this move."
-msgstr ""
+msgstr "Vous n'êtes pas autorisé à modifier ce déplacement."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/OAuthProviderLoader.php:15
 msgid "This provider does not exist."
@@ -972,7 +972,7 @@ msgstr "{0} doit être postérieur la naissance du GeoKret"
 
 #: website/public/index.php:28
 msgid "You are not allowed to access this page."
-msgstr ""
+msgstr "Vous n'êtes pas autorisé à accéder à cette page."
 
 #: smarty/macros:5
 msgid "First"
