@@ -1,3 +1,5 @@
+### [2.11.2](https://github.com/geokrety/geokrety-website/compare/v2.11.1...v2.11.2) (2022-01-03)
+
 ### [2.11.1](https://github.com/geokrety/geokrety-website/compare/v2.11.0...v2.11.1) (2022-01-03)
 
 
