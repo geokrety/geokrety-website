@@ -1,3 +1,17 @@
+## [2.11.0](https://github.com/geokrety/geokrety-website/compare/v2.10.1...v2.11.0) (2022-01-03)
+
+
+### Features
+
+* Redirect or display useful errors on 401/403/404 ([624031f](https://github.com/geokrety/geokrety-website/commit/624031f4b98dd0937bee77e78358c1c7f493bc1c))
+
+
+### Bug Fixes
+
+* Don't alert on locked script if they are acked ([5e5f6ba](https://github.com/geokrety/geokrety-website/commit/5e5f6ba9927de7a256fd6739510a4ce7cb9fca5c))
+* Fix some corrupted modals ([68560ef](https://github.com/geokrety/geokrety-website/commit/68560ef5f998beb710f91860bfb58b6a8fedf606))
+* Output /app-version as json ([6f144dc](https://github.com/geokrety/geokrety-website/commit/6f144dc6c101f38bded4e8e3dfd0ebeaa3de844a))
+
 ### [2.10.1](https://github.com/geokrety/geokrety-website/compare/v2.10.0...v2.10.1) (2021-12-26)
 
 
