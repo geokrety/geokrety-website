@@ -18,7 +18,7 @@ trait MoveLoader {
         $this->filterHook();
         $move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($move->dry()) {
-            $f3->error(404, _('This move does not exists.'));
+            $f3->error(404, _('This move does not exist.'));
         }
 
         $this->checkAuthor($move);

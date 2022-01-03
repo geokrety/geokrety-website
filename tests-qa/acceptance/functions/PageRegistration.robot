@@ -11,7 +11,7 @@ Create User
     ...                               ${language}    ${daily_mail}   ${terms_of_use}
     Click Button                      ${REGISTRATION_REGISTER_BUTTON}
     Location Should Contain           ${GK_URL}/${language}/users/
-    Page Should Not Contain           This user does not exists
+    Page Should Not Contain           This user does not exist
 
 
 Activate user account

@@ -15,7 +15,7 @@ Create first account
     Fill Registration Form              admin
     Click Button                        ${REGISTRATION_REGISTER_BUTTON}
     Location Should Be                  ${PAGE_USER_1_PROFILE_URL}
-    Page Should Not Contain             This user does not exists
+    Page Should Not Contain             This user does not exist
     Page Should Contain                 A confirmation email has been sent to your address
     Mailbox Should Contain 1 Messages
 

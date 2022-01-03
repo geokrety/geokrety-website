@@ -36,14 +36,14 @@ EOT;
         $award_top10 = new Awards();
         $award_top10->load(['name = ?', sprintf('Top 10 movers %d', $year)]);
         if ($award_top10->dry()) {
-            throw new Exception(sprintf('"Top 10 movers %d" award does not exists', $year));
+            throw new Exception(sprintf('"Top 10 movers %d" award does not exist', $year));
         }
         $this->check_overdue($award_top10, $year);
 
         $award_top100 = new Awards();
         $award_top100->load(['name = ?', sprintf('Top 100 movers %d', $year)]);
         if ($award_top100->dry()) {
-            throw new Exception(sprintf('"Top 100 movers %d" award does not exists', $year));
+            throw new Exception(sprintf('"Top 100 movers %d" award does not exist', $year));
         }
 
         $award_top10_size = sizeof($result) > 10 ? 10 : sizeof($result);

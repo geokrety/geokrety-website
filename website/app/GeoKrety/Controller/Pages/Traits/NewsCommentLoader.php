@@ -16,7 +16,7 @@ trait NewsCommentLoader {
         $this->comment = $comment;
         $comment->load(['id = ?', $f3->get('PARAMS.newscommentid')]);
         if ($comment->dry()) {
-            $f3->error(404, _('This comment does not exists.'));
+            $f3->error(404, _('This comment does not exist.'));
         }
         if (!$comment->isAuthor()) {
             $f3->error(403, _('This action is reserved to the author.'));

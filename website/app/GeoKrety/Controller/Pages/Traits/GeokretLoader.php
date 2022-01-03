@@ -23,7 +23,7 @@ trait GeokretLoader {
         $this->filterHook();
         $geokret->load(['gkid = ?', $gkid]);
         if ($geokret->dry()) {
-            $f3->error(404, _('This GeoKret does not exists.'));
+            $f3->error(404, _('This GeoKret does not exist.'));
         }
         Smarty::assign('geokret', $geokret);
     }

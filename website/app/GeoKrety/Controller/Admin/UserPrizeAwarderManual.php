@@ -35,7 +35,7 @@ class UserPrizeAwarderManual extends Base {
         });
 
         if ($this->award->dry()) {
-            \Flash::instance()->addMessage(_('This award does not exists'), 'danger');
+            \Flash::instance()->addMessage(_('This award does not exist'), 'danger');
             $f3->reroute(sprintf('@admin_users_list?%s', http_build_query($params)));
         }
 

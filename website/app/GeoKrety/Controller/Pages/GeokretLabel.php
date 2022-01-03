@@ -32,7 +32,7 @@ class GeokretLabel extends Base {
         $label = new Label();
         $label->load(['template = ?', $f3->get('POST.labelTemplate')], null, GK_SITE_CACHE_TTL_LABELS_LOOKUP);
         if ($label->dry()) {
-            Flash::instance()->addMessage(_('This label template does not exists.'), 'danger');
+            Flash::instance()->addMessage(_('This label template does not exist.'), 'danger');
             $f3->reroute('@geokret_label');
         }
 

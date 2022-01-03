@@ -18,7 +18,7 @@ trait ScriptLoader {
         $this->filterHook();
         $script->load(['id = ?', $script_id]);
         if ($script->dry()) {
-            $f3->error(404, _('This script does not exists.'));
+            $f3->error(404, _('This script does not exist.'));
         }
         Smarty::assign('script', $script);
     }

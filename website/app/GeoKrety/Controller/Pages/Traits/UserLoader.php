@@ -21,7 +21,7 @@ trait UserLoader {
         $this->filterHook();
         $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {
-            $f3->error(404, _('This user does not exists.'));
+            $f3->error(404, _('This user does not exist.'));
         }
         Smarty::assign('user', $user);
     }

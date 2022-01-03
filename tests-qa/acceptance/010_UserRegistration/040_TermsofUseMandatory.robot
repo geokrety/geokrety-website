@@ -21,4 +21,4 @@ Terms of use checked
     Input validation has success  ${REGISTRATION_TERMS_OF_USE_CHECKBOX}
     Click Button                  ${REGISTRATION_REGISTER_BUTTON}
     Location Should Contain       ${GK_URL}/en/users/
-    Page Should Not Contain       This user does not exists
+    Page Should Not Contain       This user does not exist

@@ -19,7 +19,7 @@ class StatisticsYearlyRanking extends Base {
         $awardGroup = new AwardsGroup();
         $awardGroup->load(['name = ?', $f3->get('PARAMS.award')]);
         if ($awardGroup->dry()) {
-            $f3->error(404, _('This ranking does not exists.'));
+            $f3->error(404, _('This ranking does not exist.'));
         }
         Smarty::assign('award_group', $awardGroup);
 

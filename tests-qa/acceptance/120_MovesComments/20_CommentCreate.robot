@@ -15,7 +15,7 @@ ${COMMENT} =    Some comment !
 Not Existent Move Cannot Be Commented
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_COMMENT_URL}    moveid=666
-    Page Should Contain                     This move does not exists
+    Page Should Contain                     This move does not exist
 
 Move Comment Url Only For Authenticated
     [Tags]     TODO

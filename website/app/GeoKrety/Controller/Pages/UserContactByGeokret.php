@@ -27,7 +27,7 @@ class UserContactByGeokret extends UserContact {
         $geokret = new Geokret();
         $geokret->load(['gkid = ?', hexdec(substr($f3->get('PARAMS.gkid'), 2))]);
         if ($geokret->dry()) {
-            $f3->error(404, _('This user does not exists.'));
+            $f3->error(404, _('This user does not exist.'));
         }
         $this->geokret = $geokret;
         $this->mail->to_user = $geokret->owner;

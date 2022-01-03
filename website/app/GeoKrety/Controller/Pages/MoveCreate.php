@@ -31,7 +31,7 @@ class MoveCreate extends Base {
 
         $this->move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($this->move->dry()) {
-            $f3->error(404, _('This move does not exists.'));
+            $f3->error(404, _('This move does not exist.'));
         }
 
         if (!$this->move->isAuthor()) {

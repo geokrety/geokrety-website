@@ -15,7 +15,7 @@ trait MoveCommentLoader {
         $comment = new MoveComment();
         $comment->load(['id = ?', $f3->get('PARAMS.movecommentid')]);
         if ($comment->dry()) {
-            $f3->error(404, _('This comment does not exists.'));
+            $f3->error(404, _('This comment does not exist.'));
         }
         if (!$comment->isAuthor()) {
             $f3->error(403, _('This action is reserved to the author.'));

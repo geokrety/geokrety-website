@@ -17,7 +17,7 @@ trait PictureLoader {
         $picture = new Picture();
         $picture->load(['key = ?', $key]);
         if ($picture->dry()) {
-            $f3->error(404, _('This picture does not exists.'));
+            $f3->error(404, _('This picture does not exist.'));
         }
 
         $this->checkAuthor($picture);

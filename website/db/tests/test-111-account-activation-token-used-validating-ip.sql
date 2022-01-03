@@ -22,7 +22,7 @@ SELECT throws_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requestin
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (4, 'test 4', '127.0.0.1');
 SELECT  lives_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting_ip", "used", "validating_ip") VALUES (4, 4, '127.0.0.1', 1::smallint, '127.0.0.1')$$);
 
--- type does not exists
+-- type does not exist
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (5, 'test 5', '127.0.0.1');
 SELECT throws_ok($$INSERT INTO "gk_account_activation" ("id", "user", "requesting_ip", "used", "validating_ip") VALUES (5, 5, '127.0.0.1', 2::smallint, NULL)$$);
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (6, 'test 6', '127.0.0.1');
