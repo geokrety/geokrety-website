@@ -1,3 +1,10 @@
+### [2.11.1](https://github.com/geokrety/geokrety-website/compare/v2.11.0...v2.11.1) (2022-01-03)
+
+
+### Bug Fixes
+
+* Fix typo in many strings ([90d427e](https://github.com/geokrety/geokrety-website/commit/90d427e6dfe7fd650a6da46f1ca6bd673edef3bb))
+
 ## [2.11.0](https://github.com/geokrety/geokrety-website/compare/v2.10.1...v2.11.0) (2022-01-03)
 
 
