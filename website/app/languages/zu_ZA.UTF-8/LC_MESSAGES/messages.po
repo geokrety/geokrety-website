@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-26 13:50+0000\n"
-"PO-Revision-Date: 2021-12-26 13:52\n"
+"POT-Creation-Date: 2022-01-03 13:14+0000\n"
+"PO-Revision-Date: 2022-01-03 13:23\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-12-26 13:50+0000\n"
+"POT-Creation-Date: 2022-01-03 13:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -192,6 +192,10 @@ msgstr "crwdns19041:0%scrwdne19041:0"
 msgid "Script \"%s\" has been unlocked"
 msgstr "crwdns18993:0%scrwdne18993:0"
 
+#: website/app/GeoKrety/Controller/Admin/Traits/ScriptLoader.php:21
+msgid "This script does not exists."
+msgstr "crwdns28963:0crwdne28963:0"
+
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:38
 msgid "This award does not exists"
 msgstr "crwdns19077:0crwdne19077:0"
@@ -285,15 +289,19 @@ msgstr "crwdns18460:0crwdne18460:0"
 msgid "Please select an export type."
 msgstr "crwdns18462:0crwdne18462:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
+msgid "You cannot archive someone else GeoKret."
+msgstr "crwdns28965:0crwdne28965:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:26
 msgid "This GeoKret is already archived."
 msgstr "crwdns18710:0crwdne18710:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:48
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:46
 msgid "Archiving GeoKret"
 msgstr "crwdns18712:0crwdne18712:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:54
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:52
 msgid "Failed to archive the GeoKret."
 msgstr "crwdns18714:0crwdne18714:0"
 
@@ -366,8 +374,12 @@ msgstr "crwdns18624:0%scrwdne18624:0"
 msgid "Auth request was canceled."
 msgstr "crwdns18588:0crwdne18588:0"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:51
-#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:74
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:22
+msgid "Missing status can only be added to current GeoKret position."
+msgstr "crwdns28967:0crwdne28967:0"
+
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:49
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:72
 msgid "Comment saved."
 msgstr "crwdns15614:0crwdne15614:0"
 
@@ -379,16 +391,33 @@ msgstr "crwdns15616:0crwdne15616:0"
 msgid "Failed to delete comment."
 msgstr "crwdns15618:0crwdne15618:0"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:103
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:34
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:21
+msgid "This move does not exists."
+msgstr "crwdns28969:0crwdne28969:0"
+
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:38
+#: website/app/GeoKrety/Controller/Pages/PictureDefineAsMainAvatar.php:14
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveCommentLoader.php:21
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:22
+#: website/app/GeoKrety/Controller/Pages/Traits/PictureLoader.php:31
+msgid "This action is reserved to the author."
+msgstr "crwdns28971:0crwdne28971:0"
+
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:42
+msgid "This move is not editable."
+msgstr "crwdns28973:0crwdne28973:0"
+
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:97
 msgid "The date time could not be parsed."
 msgstr "crwdns18464:0crwdne18464:0"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:211
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:205
 #: website/app/GeoKrety/Controller/Pages/MoveCreateXML.php:61
 msgid "Failed to save move."
 msgstr "crwdns15598:0crwdne15598:0"
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:214
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:208
 msgid "Your move has been saved."
 msgstr "crwdns15600:0crwdne15600:0"
 
@@ -456,20 +485,61 @@ msgstr "crwdns15672:0crwdne15672:0"
 msgid "Picture caption saved."
 msgstr "crwdns18468:0crwdne18468:0"
 
+#: website/app/GeoKrety/Controller/Pages/StatisticsYearlyRanking.php:22
+msgid "This ranking does not exists."
+msgstr "crwdns28975:0crwdne28975:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:13
+#: website/public/index.php:24
+msgid "Please login first."
+msgstr "crwdns28977:0crwdne28977:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:19
+#: website/public/index.php:32
+msgid "This page doesn't exists."
+msgstr "crwdns28979:0crwdne28979:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:26
+msgid "This GeoKret does not exists."
+msgstr "crwdns28981:0crwdne28981:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveCommentLoader.php:18
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:19
+msgid "This comment does not exists."
+msgstr "crwdns28983:0crwdne28983:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:31
+msgid "Your are not allowed to edit this move."
+msgstr "crwdns28985:0crwdne28985:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/OAuthProviderLoader.php:15
+msgid "This provider does not exists."
+msgstr "crwdns28987:0crwdne28987:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/PictureLoader.php:20
+msgid "This picture does not exists."
+msgstr "crwdns28989:0crwdne28989:0"
+
+#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:24
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:37
+#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:30
+msgid "This user does not exists."
+msgstr "crwdns28991:0crwdne28991:0"
+
 #: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:36
 msgid "Language preferences updated."
 msgstr "crwdns16126:0crwdne16126:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:74
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:72
 msgid "Failed to save the mail."
 msgstr "crwdns15636:0crwdne15636:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:82
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:80
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "crwdns15638:0%scrwdne15638:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:24
+#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:23
 #, php-format
 msgid "GeoKret: %s (%s)"
 msgstr "crwdns15634:0%scrwdnd15634:0%scrwdne15634:0"
@@ -900,6 +970,10 @@ msgstr "crwdns15750:0{0}crwdne15750:0"
 msgid "{0} must be after GeoKret birth"
 msgstr "crwdns15752:0{0}crwdne15752:0"
 
+#: website/public/index.php:28
+msgid "You are not allowed to access this page."
+msgstr "crwdns28993:0crwdne28993:0"
+
 #: smarty/macros:5
 msgid "First"
 msgstr "crwdns16202:0crwdne16202:0"
@@ -940,7 +1014,7 @@ msgstr "crwdns14740:0crwdne14740:0"
 msgid "Unlock script"
 msgstr "crwdns18997:0crwdne18997:0"
 
-#: smarty/admin/pages:48 smarty/dialog:14
+#: smarty/admin/pages:48 smarty/dialog:15
 msgid "Ack"
 msgstr "crwdns19069:0crwdne19069:0"
 
@@ -1106,7 +1180,7 @@ msgid "Generate a GeoKret Label"
 msgstr "crwdns18518:0crwdne18518:0"
 
 #: smarty/forms:15 smarty/forms:17 smarty/pages:79 smarty/pages:21
-#: smarty/dialog:27
+#: smarty/dialog:28
 msgid "Owner"
 msgstr "crwdns14178:0crwdne14178:0"
 
@@ -1174,7 +1248,7 @@ msgstr "crwdns15128:0crwdne15128:0"
 msgid "Identify GeoKret"
 msgstr "crwdns15208:0crwdne15208:0"
 
-#: smarty/forms:28 smarty/dialog:3
+#: smarty/forms:28 smarty/dialog:4
 msgid "Select GeoKrety from inventory"
 msgstr "crwdns15210:0crwdne15210:0"
 
@@ -1395,7 +1469,7 @@ msgid "group name"
 msgstr "crwdns15928:0crwdne15928:0"
 
 #: smarty/devel/pages:15 smarty/pages:20 smarty/pages:38 smarty/pages:81
-#: smarty/pages:39 smarty/pages:78 smarty/dialog:26
+#: smarty/pages:39 smarty/pages:78 smarty/dialog:27
 msgid "ID"
 msgstr "crwdns14590:0crwdne14590:0"
 
@@ -1462,10 +1536,9 @@ msgstr "crwdns16288:0crwdne16288:0"
 #: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:66
 #: smarty/pages:34 smarty/pages:38 smarty/dialog:21 smarty/dialog:35
 #: smarty/dialog:15 smarty/dialog:51 smarty/dialog:14 smarty/dialog:23
-#: smarty/dialog:65 smarty/dialog:16 smarty/dialog:12 smarty/dialog:37
-#: smarty/dialog:42 smarty/dialog:13 smarty/dialog:27 smarty/dialog:46
-#: smarty/dialog:32 smarty/dialog:26 smarty/dialog:52 smarty/dialog:55
-#: smarty/dialog:24
+#: smarty/dialog:66 smarty/dialog:16 smarty/dialog:12 smarty/dialog:37
+#: smarty/dialog:42 smarty/dialog:27 smarty/dialog:46 smarty/dialog:32
+#: smarty/dialog:26 smarty/dialog:52 smarty/dialog:55 smarty/dialog:24
 msgid "Dismiss"
 msgstr "crwdns14738:0crwdne14738:0"
 
@@ -2280,31 +2353,31 @@ msgstr "crwdns18544:0crwdne18544:0"
 msgid "Deleting this Move will delete attached pictures!"
 msgstr "crwdns18546:0crwdne18546:0"
 
-#: smarty/dialog:9
+#: smarty/dialog:10
 msgid "Only %1 GeoKrety can be processed at a time."
 msgstr "crwdns14784:0%1crwdne14784:0"
 
-#: smarty/dialog:15
+#: smarty/dialog:16
 msgid "Filter"
 msgstr "crwdns15824:0crwdne15824:0"
 
-#: smarty/dialog:16
+#: smarty/dialog:17
 msgid "Name or ID"
 msgstr "crwdns15826:0crwdne15826:0"
 
-#: smarty/dialog:28
+#: smarty/dialog:29
 msgid "Select all (but max %1)"
 msgstr "crwdns15828:0%1crwdne15828:0"
 
-#: smarty/dialog:35
+#: smarty/dialog:36
 msgid "Choose"
 msgstr "crwdns16168:0crwdne16168:0"
 
-#: smarty/dialog:60
+#: smarty/dialog:61
 msgid "Your inventory is empty."
 msgstr "crwdns16490:0crwdne16490:0"
 
-#: smarty/dialog:67
+#: smarty/dialog:68
 msgid "Select <span class=\"badge\">%1</span>"
 msgstr "crwdns14786:0%1crwdne14786:0"
 
@@ -2364,7 +2437,7 @@ msgstr "crwdns13910:0crwdne13910:0"
 msgid "Do you really want to ack this script locking alert?"
 msgstr "crwdns19065:0crwdne19065:0"
 
-#: smarty/dialog:9
+#: smarty/dialog:10
 msgid "\"%1\" locked since %2"
 msgstr "crwdns19067:0%1crwdnd19067:0%2crwdne19067:0"
 
@@ -2560,7 +2633,7 @@ msgstr "crwdns14996:0crwdne14996:0"
 msgid "Do you really want to unlock this script?"
 msgstr "crwdns19071:0crwdne19071:0"
 
-#: smarty/dialog:14
+#: smarty/dialog:15
 msgid "Unlock"
 msgstr "crwdns19073:0crwdne19073:0"
 
