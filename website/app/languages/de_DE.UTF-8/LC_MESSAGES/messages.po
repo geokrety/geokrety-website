@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-26 13:50+0000\n"
-"PO-Revision-Date: 2021-12-26 13:52\n"
+"POT-Creation-Date: 2022-01-03 15:15+0000\n"
+"PO-Revision-Date: 2022-01-03 16:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-12-26 13:50+0000\n"
+"POT-Creation-Date: 2022-01-03 15:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -192,9 +192,13 @@ msgstr "Skript \"%s\" wurde entsperrt"
 msgid "Script \"%s\" has been unlocked"
 msgstr "Skript \"%s\" wurde entsperrt"
 
+#: website/app/GeoKrety/Controller/Admin/Traits/ScriptLoader.php:21
+msgid "This script does not exist."
+msgstr "Dieses Skript existiert nicht."
+
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:38
-msgid "This award does not exists"
-msgstr "Diese Auszeichnung existiert nicht"
+msgid "This award does not exist"
+msgstr "Diese Auszeichnung existiert nicht."
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:47
 msgid "The prize has been awarded"
@@ -206,7 +210,7 @@ msgstr "reCaptcha schlug fehl!"
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:99
 msgid "CSRF error, please try again."
-msgstr ""
+msgstr "CSRF-Fehler, bitte versuche es erneut."
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:52
 msgid "Parameter \"userid\" must be a valid number."
@@ -270,7 +274,7 @@ msgid "Sorry you don't have the permission to print a label for this GeoKret as 
 msgstr "Leider hast du nicht die Berechtigung ein Etikett für diesen GeoKret zu drucken, da du diesen nie discovert hast!"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:35
-msgid "This label template does not exists."
+msgid "This label template does not exist."
 msgstr "Diese Etikett-Vorlage existiert nicht."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:50
@@ -285,15 +289,19 @@ msgstr "Einige ausgewählte Sprachen sind ungültig."
 msgid "Please select an export type."
 msgstr "Bitte wähle einen Exporttyp aus."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
+msgid "You cannot archive someone else GeoKret."
+msgstr "Du kannst keinen GeoKret archivieren, der jemand anderem gehört."
+
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:26
 msgid "This GeoKret is already archived."
 msgstr "Dieser GeoKret ist bereits archiviert."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:48
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:46
 msgid "Archiving GeoKret"
 msgstr "GeoKret archivieren"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:54
+#: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:52
 msgid "Failed to archive the GeoKret."
 msgstr "GeoKret konnte nicht archiviert werden."
 
@@ -366,8 +374,12 @@ msgstr "Dieses %s-Konto ist bereits mit einem anderen GeoKrety-Konto verknüpft.
 msgid "Auth request was canceled."
 msgstr "Authentisierungs-Anfrage wurde abgebrochen."
 
-#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:51
-#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:74
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:22
+msgid "Missing status can only be added to current GeoKret position."
+msgstr "Ein fehlender Status kann nur zur aktuellen GeoKret-Position hinzugefügt werden."
+
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:49
+#: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:72
 msgid "Comment saved."
 msgstr "Kommentar gespeichert."
 
@@ -379,16 +391,33 @@ msgstr "Kommentar entfernt."
 msgid "Failed to delete comment."
 msgstr "Fehler beim Löschen des Kommentars."
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:103
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:34
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:21
+msgid "This move does not exist."
+msgstr "Diese Bewegung existiert nicht."
+
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:38
+#: website/app/GeoKrety/Controller/Pages/PictureDefineAsMainAvatar.php:14
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveCommentLoader.php:21
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:22
+#: website/app/GeoKrety/Controller/Pages/Traits/PictureLoader.php:31
+msgid "This action is reserved to the author."
+msgstr "Diese Aktion ist dem Autor vorbehalten."
+
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:42
+msgid "This move is not editable."
+msgstr "Diese Bewegung ist nicht editierbar."
+
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:97
 msgid "The date time could not be parsed."
 msgstr "Datum / Uhrzeit konnten nicht ermittelt werden."
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:211
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:205
 #: website/app/GeoKrety/Controller/Pages/MoveCreateXML.php:61
 msgid "Failed to save move."
 msgstr "Speichern der Bewegung fehlgeschlagen."
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:214
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:208
 msgid "Your move has been saved."
 msgstr "Deine Bewegung wurde gespeichert."
 
@@ -456,20 +485,61 @@ msgstr "Dein Passwort wurde geändert."
 msgid "Picture caption saved."
 msgstr "Bildunterschrift gespeichert."
 
+#: website/app/GeoKrety/Controller/Pages/StatisticsYearlyRanking.php:22
+msgid "This ranking does not exist."
+msgstr "Diese Rangliste existiert nicht."
+
+#: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:13
+#: website/public/index.php:24
+msgid "Please login first."
+msgstr "Bitte zuerst anmelden."
+
+#: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:19
+#: website/public/index.php:32
+msgid "This page doesn't exists."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:26
+msgid "This GeoKret does not exist."
+msgstr "Dieser GeoKret existiert nicht."
+
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveCommentLoader.php:18
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:19
+msgid "This comment does not exist."
+msgstr "Dieser Kommentar existiert nicht."
+
+#: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:31
+msgid "Your are not allowed to edit this move."
+msgstr "Du bist nicht berechtigt, diese Bewegung zu bearbeiten."
+
+#: website/app/GeoKrety/Controller/Pages/Traits/OAuthProviderLoader.php:15
+msgid "This provider does not exist."
+msgstr "Dieser Anbieter existiert nicht."
+
+#: website/app/GeoKrety/Controller/Pages/Traits/PictureLoader.php:20
+msgid "This picture does not exist."
+msgstr "Dieses Bild existiert nicht."
+
+#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:24
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:37
+#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:30
+msgid "This user does not exist."
+msgstr "Dieser Benutzer existiert nicht."
+
 #: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:36
 msgid "Language preferences updated."
 msgstr "Spracheinstellungen aktualisiert."
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:74
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:72
 msgid "Failed to save the mail."
 msgstr "Konnte die E-Mail nicht speichern."
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:82
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:80
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "Deine Nachricht an %s wurde gesendet."
 
-#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:24
+#: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:23
 #, php-format
 msgid "GeoKret: %s (%s)"
 msgstr "GeoKret: %s (%s)"
@@ -900,6 +970,10 @@ msgstr "{0} kann nicht in der Zukunft liegen"
 msgid "{0} must be after GeoKret birth"
 msgstr "{0} muss nach der Geburt des GeoKret sein"
 
+#: website/public/index.php:28
+msgid "You are not allowed to access this page."
+msgstr "Du bist nicht berechtigt auf diese Seite zuzugreifen."
+
 #: smarty/macros:5
 msgid "First"
 msgstr "Erste"
@@ -940,7 +1014,7 @@ msgstr "Erneuern"
 msgid "Unlock script"
 msgstr "Skript entsperren"
 
-#: smarty/admin/pages:48 smarty/dialog:14
+#: smarty/admin/pages:48 smarty/dialog:15
 msgid "Ack"
 msgstr "Bestätigen"
 
@@ -1106,7 +1180,7 @@ msgid "Generate a GeoKret Label"
 msgstr "GeoKret-Etikett generieren"
 
 #: smarty/forms:15 smarty/forms:17 smarty/pages:79 smarty/pages:21
-#: smarty/dialog:27
+#: smarty/dialog:28
 msgid "Owner"
 msgstr "Besitzer"
 
@@ -1174,7 +1248,7 @@ msgstr "Erstellen"
 msgid "Identify GeoKret"
 msgstr "GeoKret identifizieren"
 
-#: smarty/forms:28 smarty/dialog:3
+#: smarty/forms:28 smarty/dialog:4
 msgid "Select GeoKrety from inventory"
 msgstr "GeoKrety aus dem Inventar auswählen"
 
@@ -1395,7 +1469,7 @@ msgid "group name"
 msgstr "Gruppenname"
 
 #: smarty/devel/pages:15 smarty/pages:20 smarty/pages:38 smarty/pages:81
-#: smarty/pages:39 smarty/pages:78 smarty/dialog:26
+#: smarty/pages:39 smarty/pages:78 smarty/dialog:27
 msgid "ID"
 msgstr "ID"
 
@@ -1462,10 +1536,9 @@ msgstr "Zurück zu deinem Profil"
 #: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:66
 #: smarty/pages:34 smarty/pages:38 smarty/dialog:21 smarty/dialog:35
 #: smarty/dialog:15 smarty/dialog:51 smarty/dialog:14 smarty/dialog:23
-#: smarty/dialog:65 smarty/dialog:16 smarty/dialog:12 smarty/dialog:37
-#: smarty/dialog:42 smarty/dialog:13 smarty/dialog:27 smarty/dialog:46
-#: smarty/dialog:32 smarty/dialog:26 smarty/dialog:52 smarty/dialog:55
-#: smarty/dialog:24
+#: smarty/dialog:66 smarty/dialog:16 smarty/dialog:12 smarty/dialog:37
+#: smarty/dialog:42 smarty/dialog:27 smarty/dialog:46 smarty/dialog:32
+#: smarty/dialog:26 smarty/dialog:52 smarty/dialog:55 smarty/dialog:24
 msgid "Dismiss"
 msgstr "Verwerfen"
 
@@ -1732,7 +1805,7 @@ msgstr "Status: Bereit zum Suchen"
 
 #: smarty/pages:3
 msgid "Change username"
-msgstr "Benutzernamen ändern"
+msgstr "Benutzername ändern"
 
 #: smarty/pages:9
 msgid "Change your username"
@@ -2280,31 +2353,31 @@ msgstr "Wenn du diese Bewegung löschst, wird das angehängte Bild und der Haupt
 msgid "Deleting this Move will delete attached pictures!"
 msgstr "Das Löschen der Bewegung wird das angehängte Bild löschen!"
 
-#: smarty/dialog:9
+#: smarty/dialog:10
 msgid "Only %1 GeoKrety can be processed at a time."
 msgstr "Nur %1 GeoKrety können zu einer Zeit verarbeitet werden."
 
-#: smarty/dialog:15
+#: smarty/dialog:16
 msgid "Filter"
 msgstr "Filter"
 
-#: smarty/dialog:16
+#: smarty/dialog:17
 msgid "Name or ID"
 msgstr "Name oder ID"
 
-#: smarty/dialog:28
+#: smarty/dialog:29
 msgid "Select all (but max %1)"
 msgstr "Alles auswählen (aber max. %1)"
 
-#: smarty/dialog:35
+#: smarty/dialog:36
 msgid "Choose"
 msgstr "Wählen"
 
-#: smarty/dialog:60
+#: smarty/dialog:61
 msgid "Your inventory is empty."
 msgstr "Dein Inventar ist leer."
 
-#: smarty/dialog:67
+#: smarty/dialog:68
 msgid "Select <span class=\"badge\">%1</span>"
 msgstr "Wähle <span class=\"badge\">%1</span>"
 
@@ -2364,7 +2437,7 @@ msgstr "Nachricht senden"
 msgid "Do you really want to ack this script locking alert?"
 msgstr "Möchtest du wirklich die Sperrbenachrichtigung dieses Skripts bestätigen?"
 
-#: smarty/dialog:9
+#: smarty/dialog:10
 msgid "\"%1\" locked since %2"
 msgstr "\"%1\" ist seit %2 gesperrt"
 
@@ -2560,7 +2633,7 @@ msgstr "Dein Passwort vergessen?"
 msgid "Do you really want to unlock this script?"
 msgstr "Möchten Sie dieses Skript wirklich entsperren?"
 
-#: smarty/dialog:14
+#: smarty/dialog:15
 msgid "Unlock"
 msgstr "Entsperren"
 
@@ -3379,7 +3452,7 @@ msgstr "Veröffentlicht unter <a id=\"footer-license\" href=\"%1\">MIT-Lizenz</a
 
 #: smarty:12
 msgid "Contribute to translation"
-msgstr ""
+msgstr "An der Übersetzung mitwirken"
 
 #: smarty:15
 msgid "Leave in-context translation"
