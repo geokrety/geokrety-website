@@ -9,12 +9,12 @@ Suite Setup     Seed
 Anonymous users should not access form
     Sign Out Fast
     Go To Url                               ${PAGE_USER_CHANGE_USERNAME_URL}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 User himself can access form - Form
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_CHANGE_USERNAME_URL}
-    Page Should Not Contain                 Unauthorized
+    Page Should Not Contain                 ${UNAUTHORIZED}
     Wait Until Panel                        Change your username
 
 *** Keywords ***

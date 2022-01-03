@@ -13,14 +13,14 @@ Suite Setup     Seed
 Anonymous users are refused
     Sign Out Fast
     Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 # In fact it update currently connected user, whatever the url is
 Users cannot edit other user observation area
     [Tags]    TODO
     Sign In ${USER_2.name} Fast
     Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
     Sign Out Fast
 
 

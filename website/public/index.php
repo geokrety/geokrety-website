@@ -10,6 +10,45 @@ $f3->config('../app/assets.ini');
 
 include __DIR__.'/../app/middleware.php';
 
+if (!$f3->get('CLI') and !$f3->get('AJAX')) {
+    $f3->ONERROR = function (Base $f3) {
+        $eol = "\n";
+        $error = array_diff_key(
+            $f3->get('ERROR'),
+            $f3->get('DEBUG') ?
+                [] :
+                ['trace' => 1]
+        );
+
+        if ($error['code'] === 401) {
+            Flash::instance()->addMessage(_('Please login first.'), 'danger');
+            $f3->reroute('@login');
+        }
+        if ($error['code'] === 403) {
+            Flash::instance()->addMessage(_('You are not allowed to access this page.'), 'danger');
+            $f3->reroute('@home');
+        }
+        if ($error['code'] === 404) {
+            Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exists.'), 'danger');
+            $f3->reroute('@home');
+        }
+        $header = $f3->status($error['code']);
+        $req = $f3->get('VERB').' '.$f3->get('PATH');
+        echo '<!DOCTYPE html>'.$eol.
+                    '<html>'.$eol.
+                    '<head>'.
+                        '<title>'.$error['code'].' '.$header.'</title>'.
+                    '</head>'.$eol.
+                    '<body>'.$eol.
+                        '<h1>'.$header.'</h1>'.$eol.
+                        '<p>'.$f3->encode($error['text'] ?: $req).'</p>'.$eol.
+                        ($f3->get('DEBUG') ? ('<pre>'.$error['trace'].'</pre>'.$eol) : '').
+                    '</body>'.$eol.
+                    '</html>';
+        exit(1);
+    };
+}
+
 if (preg_match('/^\/cron/', $f3->PATH)) {
     $f3->DEBUG = 2;
     $f3->ONERROR = function ($f3) {

@@ -10,13 +10,13 @@ Suite Setup     Seed
 Anonymous users are refused
     Sign Out Fast
     Go To                                   ${PAGE_USER_1_BANER_TEMPLATE_URL}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 Users cannot edit other user banner
     [Tags]    TODO
     Sign In ${USER_2.name} Fast
     Go To                                   ${PAGE_USER_1_BANER_TEMPLATE_URL}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 ## template expansion don't work here see:
 ## https://github.com/jz-jess/RobotEyes/issues/67

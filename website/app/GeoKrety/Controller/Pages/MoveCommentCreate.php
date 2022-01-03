@@ -19,9 +19,7 @@ class MoveCommentCreate extends Base {
 
     private function _get_missing(\Base $f3) {
         if (!$this->move->isGeoKretLastPosition()) {
-            http_response_code(403);
-            Smarty::render('dialog/alert_403.tpl');
-            exit();
+            $f3->error(403, _('Missing status can only be added to current GeoKret position.'));
         }
     }
 

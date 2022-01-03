@@ -18,9 +18,7 @@ class GeokretMarkAsArchived extends Base {
 
         // Check if we're the owner
         if (!$this->geokret->isOwner()) {
-            http_response_code(403);
-            Smarty::render('dialog/alert_403.tpl');
-            exit();
+            $f3->error(403, _('You cannot archive someone else GeoKret.'));
         }
 
         if ($this->geokret->isArchived()) {

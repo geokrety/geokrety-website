@@ -39,8 +39,10 @@ Anonymous Cannot Archive Any GeoKret
     Create Session    gk                            ${GK_URL}
     # Init Session
     ${auth} =         GET On Session     gk         /
-    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True     expected_status=401
-    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_2.ref}/archive?skip_csrf=True     expected_status=401
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_1.ref}/archive?skip_csrf=True
+    Should Be Equal As Strings                      ${PAGE_SIGN_IN_URL}         ${resp.url}
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_2.ref}/archive?skip_csrf=True
+    Should Be Equal As Strings                      ${PAGE_SIGN_IN_URL}         ${resp.url}
     Delete All Sessions
 
 Owner Can Archive Its Own GeoKrety
@@ -52,7 +54,8 @@ Owner Can Archive Its Own GeoKrety
 Owner Cannot Archive Others GeoKrety
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_2.ref}/archive?skip_csrf=True     expected_status=403
+    ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_2.ref}/archive?skip_csrf=True
+    Should Be Equal As Strings                      ${PAGE_HOME_URL}         ${resp.url}
     Delete All Sessions
 
 Custom Message Can Be Provided
@@ -132,14 +135,16 @@ Archive Cannot Be Deleted On Others GeoKrety
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_2.name}/login
-    ${resp} =         POST On Session    gk         url=/en/moves/1/delete?skip_csrf=True     expected_status=403
+    ${resp} =         POST On Session    gk         url=/en/moves/1/delete?skip_csrf=True
+    Should Be Equal As Strings                      ${PAGE_HOME_URL}         ${resp.url}
     Delete All Sessions
 
 Anonymous Cannot Deleted Any Archive
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/logout
-    ${resp} =         POST On Session    gk         url=/en/moves/1/delete?skip_csrf=True     expected_status=401
+    ${resp} =         POST On Session    gk         url=/en/moves/1/delete?skip_csrf=True
+    Should Be Equal As Strings                      ${PAGE_SIGN_IN_URL}         ${resp.url}
     Delete All Sessions
 
 Archived GeoKrety Can Still Be Discovered - wake up
@@ -212,7 +217,8 @@ Archived Log Can Not Be Edited
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
-    ${resp} =         POST On Session    gk         url=/en/moves/1/edit?skip_csrf=True    expected_status=403
+    ${resp} =         POST On Session    gk         url=/en/moves/1/edit?skip_csrf=True
+    Should Be Equal As Strings                      ${PAGE_HOME_URL}         ${resp.url}
 
 Deleting Last Archive Set The GeoKret As Awaken
     Post Move                                       ${MOVE_1}

@@ -10,18 +10,13 @@ trait CurrentUserLoader {
         parent::beforeRoute($f3);
 
         if (!$f3->get('SESSION.IS_LOGGED_IN')) {
-            // TODO auth first
-            Smarty::render('extends:base_modal.tpl|dialog/login.tpl');
-            exit();
+            $f3->error(401, _('Please login first.'));
         }
 
         $user = new User();
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         if ($user->dry()) {
-            // TODO:
-            http_response_code(404);
-            Smarty::render('dialog/alert_404.tpl');
-            exit();
+            $f3->error(404, _('This page doesn\'t exists.'));
         }
         $this->currentUser = $user;
         Smarty::assign('currentUser', $this->currentUser);

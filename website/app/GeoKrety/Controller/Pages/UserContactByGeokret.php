@@ -3,7 +3,6 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
-use GeoKrety\Service\Smarty;
 
 class UserContactByGeokret extends UserContact {
     /**
@@ -28,9 +27,7 @@ class UserContactByGeokret extends UserContact {
         $geokret = new Geokret();
         $geokret->load(['gkid = ?', hexdec(substr($f3->get('PARAMS.gkid'), 2))]);
         if ($geokret->dry()) {
-            http_response_code(404);
-            Smarty::render('dialog/alert_404.tpl');
-            exit();
+            $f3->error(404, _('This user does not exists.'));
         }
         $this->geokret = $geokret;
         $this->mail->to_user = $geokret->owner;

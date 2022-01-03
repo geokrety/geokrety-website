@@ -9,19 +9,19 @@ Suite Setup     Seed
 Anonymous users should not access form
     Sign Out Fast
     Go To Url                               ${PAGE_USER_CHANGE_EMAIL_URL}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 User himself can access form - Form
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_CHANGE_EMAIL_URL}
-    Page Should Not Contain                 Unauthorized
+    Page Should Not Contain                 ${UNAUTHORIZED}
     Wait Until Panel                        Update your email address
 
 User himself can access form - Modal
     Sign In ${USER_1.name} Fast
     Go To User 1 url
     Click Button                            ${USER_PROFILE_EMAIL_EDIT_BUTTON}
-    Page Should Not Contain                 Unauthorized
+    Page Should Not Contain                 ${UNAUTHORIZED}
     Wait Until Modal                        Update your email address
 
 Expired session ask to login

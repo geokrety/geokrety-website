@@ -11,12 +11,12 @@ Suite Setup     Seed
 Anonymous Cannot Acces Form - via user
     Sign Out Fast
     Go To Url                                       ${PAGE_USER_1_CONTACT_URL}
-    Page Should Contain                             Unauthorized
+    Page Should Contain                             ${UNAUTHORIZED}
 
 Anonymous Cannot Acces Form - via geokret
     Sign Out Fast
     Go To Url                                       ${PAGE_GEOKRETY_DETAILS_1_CONTACT_OWNER_URL}
-    Page Should Contain                             Unauthorized
+    Page Should Contain                             ${UNAUTHORIZED}
 
 Authenticated Users Can Access Form
     [Template]    Is Authorized
@@ -58,7 +58,7 @@ Is Authorized
     [Arguments]    ${username}=${USER_1.name}
     Sign In ${username} Fast
     Go To Url                                       ${PAGE_USER_1_CONTACT_URL}
-    Page Should Not Contain                         Unauthorized
+    Page Should Not Contain                         ${UNAUTHORIZED}
     Wait Until Panel                                Contact user
     Page Should Contain Element                     ${USER_CONTACT_SUBJECT_INPUT}
     Page Should Contain Element                     ${USER_CONTACT_MESSAGE_INPUT}

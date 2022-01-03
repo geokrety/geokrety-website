@@ -13,7 +13,7 @@ Forbidden for anonymous users
     Go To Url                               ${PAGE_GEOKRETY_DETAILS_URL}    gkid=${GEOKRETY_1.id}
     Page Should Not Contain Element         ${GEOKRET_DETAILS_PRINT_LABEL_LINK}
     Go To Url                               ${PAGE_GEOKRETY_LABEL_URL}      gkid=${GEOKRETY_1.id}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 Owner himself can access labels form
     Sign In ${USER_1.name} Fast

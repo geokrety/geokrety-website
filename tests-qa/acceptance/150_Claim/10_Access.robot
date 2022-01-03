@@ -11,12 +11,12 @@ Anonymous Cannot Acces Form
     [Tags]    TODO
     Sign Out Fast
     Go To Url                                       ${PAGE_GEOKRETY_CLAIM_URL}
-    Page Should Contain                             Unauthorized
+    Page Should Contain                             ${UNAUTHORIZED}
 
 Authenticated Users Can Access Form
     Sign In ${USER_1.name} Fast
     Go To Url                                       ${PAGE_GEOKRETY_CLAIM_URL}
-    Page Should Not Contain                         Unauthorized
+    Page Should Not Contain                         ${UNAUTHORIZED}
     Wait Until Panel                                Claim a GeoKret
     Page Should Contain Element                     ${CLAIM_TRACKING_CODE_INPUT}
     Page Should Contain Element                     ${CLAIM_OWNER_CODE_INPUT}

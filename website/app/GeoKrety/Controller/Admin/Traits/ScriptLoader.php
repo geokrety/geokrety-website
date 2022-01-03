@@ -18,9 +18,7 @@ trait ScriptLoader {
         $this->filterHook();
         $script->load(['id = ?', $script_id]);
         if ($script->dry()) {
-            http_response_code(404);
-            Smarty::render('dialog/alert_404.tpl');
-            exit();
+            $f3->error(404, _('This script does not exists.'));
         }
         Smarty::assign('script', $script);
     }

@@ -11,6 +11,9 @@ ${RESOLUTION}        1280x1024
 ${BS_CONFIG}         browserstack.local:${BS_LOCAL},browserstack.localIdentifier:${BS_LOCAL_ID},project:${PROJECT_NAME},browserstack.autoWait:0,browserstack.resolution:${RESOLUTION}
 ${BROWSER_START_PAGE}    about:blank
 
+${FORBIDEN}             You are not allowed to access this page
+${UNAUTHORIZED}         Please login first
+
 ##############
 # BrowserStack desired capabilities
 # https://www.browserstack.com/automate/capabilities

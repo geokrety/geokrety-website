@@ -68,7 +68,7 @@ Missing Button Only For Some Types - Dip
 Direct Link To Not Last Position Is Forbidden
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_COMMENT_MISSING_URL}           moveid=1
-    Page Should Contain                     This is forbidden!
+    Page Should Contain                     ${FORBIDEN}
 
 Multiple Missing Report Allowed
     Sign In ${USER_1.name} Fast

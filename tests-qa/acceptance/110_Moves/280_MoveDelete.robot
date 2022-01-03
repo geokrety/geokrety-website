@@ -12,17 +12,17 @@ Suite Setup     Seed
 Anonymous Cannot Delete Moves
     Sign Out Fast
     Go To Url                                       ${PAGE_MOVES_DELETE_URL}    moveid=1
-    Page Should Contain                             Unauthorized
+    Page Should Contain                             ${UNAUTHORIZED}
 
 Author Can Delete It's Moves
     Sign In ${USER_1.name} Fast
     Go To Url                                       ${PAGE_MOVES_DELETE_URL}    moveid=1
-    Page Should Not Contain                         This is forbidden!
+    Page Should Not Contain                         ${FORBIDEN}
 
 Other Users Cannot Delete Others Moves
     Sign In ${USER_2.name} Fast
     Go To Url                                       ${PAGE_MOVES_DELETE_URL}    moveid=1
-    Page Should Contain                             This is forbidden!
+    Page Should Contain                             ${FORBIDEN}
 
 Delete Move
     Sign In ${USER_1.name} Fast

@@ -9,19 +9,19 @@ Suite Setup     Seed
 Anonymous users should not access form
     Sign Out Fast
     Go To Url                               ${PAGE_USER_CHANGE_LANGUAGE_URL}
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 User himself can access form - Form
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_CHANGE_LANGUAGE_URL}
-    Page Should Not Contain                 Unauthorized
+    Page Should Not Contain                 ${UNAUTHORIZED}
     Wait Until Panel                        Choose your preferred language
 
 User himself can access form - Modal
     Sign In ${USER_1.name} Fast
     Go To User 1 url
     Click Button                            ${USER_PROFILE_LANGUAGE_EDIT_BUTTON}
-    Page Should Not Contain                 Unauthorized
+    Page Should Not Contain                 ${UNAUTHORIZED}
     Wait Until Modal                        Choose your preferred language
 
 Expired session ask to login

@@ -11,9 +11,7 @@ class PictureDefineAsMainAvatar extends Base {
 
     protected function checkAuthor(Picture $picture) {
         if (!$picture->hasPermissionOnParent()) {
-            http_response_code(403);
-            Smarty::render('dialog/alert_403.tpl');
-            exit();
+            \Base::instance()->error(403, _('This action is reserved to the author.'));
         }
     }
 

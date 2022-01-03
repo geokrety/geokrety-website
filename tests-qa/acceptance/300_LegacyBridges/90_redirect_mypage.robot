@@ -17,8 +17,8 @@ Authenticated access to mypage redirects to user details
     Location Should Be                    ${PAGE_USER_1_PROFILE_URL}
 
 Can acces any user page
-    Go To Url                             url=${GK_URL}/mypage.php?userid=26422
-    Location With Param Should Be         ${PAGE_USER_X_PROFILE_URL}            userid=26422
+    Go To Url                             url=${GK_URL}/mypage.php?userid=2
+    Location With Param Should Be         ${PAGE_USER_X_PROFILE_URL}            userid=2
 
 User page details - param 0
     Go To Url                             url=${GK_URL}/mypage.php?userid=1&co=0

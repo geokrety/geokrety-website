@@ -10,7 +10,7 @@ Create GeoKret
     Fill Creation Form                ${gk}
     Click Button                      ${GEOKRET_CREATE_CREATE_BUTTON}
     Location Should Contain           ${GK_URL}/en/geokrety/
-    Page Should Not Contain           No such item!
+    Page Should Not Contain           This geokret does not exists
 
 
 Page Should Show Creation Form

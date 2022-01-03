@@ -17,17 +17,17 @@ ${NEW_COMMENT} =    THANKS!!!!
 Anonymous Cannot Edit Moves
     Sign Out Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
-    Page Should Contain                     Unauthorized
+    Page Should Contain                     ${UNAUTHORIZED}
 
 Author Can Edit It's Moves
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
-    Page Should Not Contain                 This is forbidden!
+    Page Should Not Contain                 ${FORBIDEN}
 
 Other Users Cannot Edit Others Moves
     Sign In ${USER_2.name} Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
-    Page Should Contain                     This is forbidden!
+    Page Should Contain                     ${FORBIDEN}
 
 Information Should Be Loaded
     Sign In ${USER_1.name} Fast

@@ -18,9 +18,7 @@ trait MoveLoader {
         $this->filterHook();
         $move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($move->dry()) {
-            http_response_code(404);
-            Smarty::render('dialog/alert_404.tpl');
-            exit();
+            $f3->error(404, _('This move does not exists.'));
         }
 
         $this->checkAuthor($move);
@@ -30,9 +28,7 @@ trait MoveLoader {
 
     protected function checkAuthor(Move $move) {
         if (!$move->isAuthor()) {
-            http_response_code(403);
-            Smarty::render('dialog/alert_403.tpl');
-            exit();
+            \Base::instance()->error(403, _('Your are not allowed to edit this move.'));
         }
     }
 

@@ -47,7 +47,7 @@ Is Authorized
     [Arguments]    ${username}=${USER_1.name}
     Sign In ${username} Fast
     Go To Url                                       ${PAGE_GEOKRETY_DETAILS_1_CONTACT_OWNER_URL}
-    Page Should Not Contain                         Unauthorized
+    Page Should Not Contain                         ${UNAUTHORIZED}
     Wait Until Panel                                Contact user
     Page Should Contain Element                     ${USER_CONTACT_SUBJECT_INPUT}
     Page Should Contain Element                     ${USER_CONTACT_MESSAGE_INPUT}
