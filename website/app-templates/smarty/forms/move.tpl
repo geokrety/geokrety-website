@@ -253,9 +253,8 @@
                         </div>
                     </div>
 
-                    {call recaptcha}
-
 {if !$f3->get('SESSION.CURRENT_USER')}
+                    {call recaptcha}
                     <div class="form-group">
                         <div class="col-sm-10 col-sm-offset-2">
                             {include file='banners/geokret_anonymous_log.tpl'}
