@@ -54,7 +54,6 @@ EOL;
             ->save();
 
         $this->execute('DROP TRIGGER after_10_update_username ON gk_users;');
-
         $this->execute('DROP FUNCTION user_record_username_history;');
     }
 }
