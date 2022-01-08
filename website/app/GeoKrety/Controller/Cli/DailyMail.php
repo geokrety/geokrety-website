@@ -7,6 +7,7 @@ use DateInterval;
 use DateTime;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\DailyMail as EmailDailyMail;
+use GeoKrety\Model\Geokret;
 use GeoKrety\Model\GeokretNearHome;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
@@ -87,12 +88,14 @@ UNION DISTINCT
 SELECT distinct(c_user_id) AS userid
 FROM gk_geokrety_near_users_homes
 WHERE moved_on_datetime >= ?
+AND missing = ?
 ;
 SQL;
 
         $since = new DateTime();
         $since->sub(new DateInterval('P1D'))->setTime(0, 0);
         $params = array_fill(0, 5, $since->format(GK_DB_DATETIME_FORMAT));
+        $params[] = Geokret::GEOKRETY_PRESENT_IN_CACHE;
         $this->console_writer->print(['sql', 'finding users', 'prepare'], true);
         $result = Base::instance()->get('DB')->exec($sql, $params);
         $this->user = new User();
@@ -251,11 +254,12 @@ FROM (
     FROM gk_geokrety_near_users_homes
     WHERE c_user_id = ?
     AND moved_on_datetime >= ?
+    AND missing = ?
     LIMIT 500
 ) as t;
 SQL;
         $this->console_writer->print([$this->user->id, $this->user->username, 'load dropped - geojson']);
-        $result = Base::instance()->get('DB')->exec($sql, [$this->user->id, $this->since->format(GK_DB_DATETIME_FORMAT)]);
+        $result = Base::instance()->get('DB')->exec($sql, [$this->user->id, $this->since->format(GK_DB_DATETIME_FORMAT), Geokret::GEOKRETY_PRESENT_IN_CACHE]);
         $geojson = ($result[0]['geojson']);
 
         $home = <<<'GEOJSON'
