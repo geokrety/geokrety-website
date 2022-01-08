@@ -13,10 +13,16 @@ class UserUpdateObservationArea extends Base {
 
     public function post(\Base $f3) {
         $user = $this->currentUser;
-        $coordinate = new Coordinate($f3->get('POST.coordinates'));
         $user->observation_area = $f3->get('POST.observation_area');
-        $user->home_latitude = $coordinate->getLatitude();
-        $user->home_longitude = $coordinate->getLongitude();
+        $coordinates_ = trim($f3->get('POST.coordinates'));
+        if (empty($coordinates_)) {
+            $user->home_latitude = null;
+            $user->home_longitude = null;
+        } else {
+            $coordinate = new Coordinate($coordinates_);
+            $user->home_latitude = $coordinate->getLatitude();
+            $user->home_longitude = $coordinate->getLongitude();
+        }
         $this->checkCsrf();
         if ($user->validate()) {
             $user->save();
