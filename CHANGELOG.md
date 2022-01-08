@@ -1,3 +1,10 @@
+### [2.12.1](https://github.com/geokrety/geokrety-website/compare/v2.12.0...v2.12.1) (2022-01-08)
+
+
+### Translations
+
+* New Crowdin updates ([#703](https://github.com/geokrety/geokrety-website/issues/703)) ([9b84fa8](https://github.com/geokrety/geokrety-website/commit/9b84fa8bbacc6177492ac36969d1f5a276399aee))
+
 ## [2.12.0](https://github.com/geokrety/geokrety-website/compare/v2.11.3...v2.12.0) (2022-01-08)
 
 
