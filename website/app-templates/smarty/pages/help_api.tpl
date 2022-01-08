@@ -80,7 +80,7 @@
             <li><code>4</code> = Archived</li>
             <li><code>5</code> = Visiting</li>
         </ul>
-        <p>Please refer to the <a href="help.php#Chooselogtype">help page</a> for more details about each logtype.</p>
+        <p>Please refer to the <a href="{'help'|alias}#Chooselogtype">help page</a> for more details about each logtype.</p>
     </div>
 </div>
 
@@ -96,7 +96,7 @@
             <li><code>3</code> = A coin</li>
             <li><code>4</code> = KretyPost</li>
         </ul>
-        <p>Please refer to the <a href="help.php#GeoKretytypes">help page</a> for more details about each type.</p>
+        <p>Please refer to the <a href="{'help'|alias}#GeoKretytypes">help page</a> for more details about each type.</p>
     </div>
 </div>
 
@@ -380,7 +380,7 @@ var_dump($gk);
             <dd>description</dd>
 
             <dt><code>latlon</code></dt>
-            <dd><a href="help.php#acceptableformats">latitude and longitude</a> (ex: <code>52.1534 21.0539</code>)</dd>
+            <dd><a href="{'help'|alias}#acceptableformats">latitude and longitude</a> (ex: <code>52.1534 21.0539</code>)</dd>
 
             <dt><code>wpt</code></dt>
             <dd>the waypoint (ex: <code>OP05E5</code>)</dd>

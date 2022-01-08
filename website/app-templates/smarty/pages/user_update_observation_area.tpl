@@ -25,7 +25,7 @@
                         <p>
                             <em>{t}Use the map to select a location or enter coordinates manually.{/t}</em>
                             {fa icon="question-circle"}
-                            <a href="help.php#acceptableformats">{t}Other acceptable lat/lon formats{/t}</a>
+                            <a href="{'help'|alias}#acceptableformats">{t}Other acceptable lat/lon formats{/t}</a>
                         </p>
                         <pre class="small">
 eg. 52.1534 21.0539
