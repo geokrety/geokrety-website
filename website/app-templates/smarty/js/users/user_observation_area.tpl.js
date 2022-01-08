@@ -26,6 +26,11 @@ map.on("moveend", function() {
 function setRadius(radius) {
     if (radius >= 0 && radius <= {GK_USER_OBSERVATION_AREA_MAX_KM}) {
         circle.setRadius(parseInt(radius) * 1000);
+        if (radius <=0) {
+            circle.setStyle({ color: 'red' })
+        } else {
+            circle.setStyle({ color: 'green' })
+        }
     } else {
         inputRadius.val(5);
         setRadius(5);
