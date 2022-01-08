@@ -16,6 +16,15 @@
             <div class="modal-body">
 
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {t}When you define your home location, the mini-map on your profile will display GeoKrety dropped around you.{/t}
+                            {t}If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences).{/t}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputCoordinates">{t}Home coordinates{/t}</label>

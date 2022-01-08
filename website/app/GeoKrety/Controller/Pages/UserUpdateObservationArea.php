@@ -32,6 +32,9 @@ class UserUpdateObservationArea extends Base {
             } else {
                 Event::instance()->emit('user.home_location.changed', $user);
                 Flash::instance()->addMessage(_('Your home coordinates were successfully saved.'), 'success');
+                if (!is_null($user->home_latitude) and !is_null($user->home_longitude) and $user->observation_area === 0) {
+                    Flash::instance()->addMessage(_('Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails.'), 'info');
+                }
             }
         } else {
             $this->get($f3);

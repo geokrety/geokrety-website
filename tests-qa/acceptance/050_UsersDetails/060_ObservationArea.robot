@@ -88,6 +88,7 @@ Save Observation Area Preferences
     Fill form                               ${COORDS_NEW_YORK}    10
     Click Button                            ${USER_OBSERVATION_AREA_SUBMIT}
     Wait Until Page Contains                Your home coordinates were successfully saved.
+    Page Should Not Contain                 No home coordinates have been defined
 
     Go To                                   ${PAGE_USER_1_PROFILE_URL}
     Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30
@@ -97,6 +98,23 @@ Save Observation Area Preferences
     Wait Until Element Is Visible           ${USER_PROFILE_MINI_MAP_PANEL}
     Capture Element                         ${USER_PROFILE_MINI_MAP_PANEL}
     Compare Images
+
+Empty Coordinates Clear User's Home Location
+    Sign In ${USER_1.name} Fast
+    Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL}
+    Fill form                               ${COORDS_NEW_YORK}    ${EMPTY}
+    Input Text                              ${USER_OBSERVATION_AREA_COORDINATES_INPUT}      ${EMPTY}
+    Simulate Event                          ${USER_OBSERVATION_AREA_COORDINATES_INPUT}      blur
+    Click Button                            ${USER_OBSERVATION_AREA_SUBMIT}
+    Wait Until Page Contains                Your home coordinates were successfully saved.
+    Page Should Contain                     No home coordinates have been defined
+
+Observation area to 0 show message on save
+    Sign In ${USER_1.name} Fast
+    Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL}
+    Fill form                               ${COORDS_NEW_YORK}    0
+    Click Button                            ${USER_OBSERVATION_AREA_SUBMIT}
+    Page Should Contain                     Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails
 
 *** Keywords ***
 
