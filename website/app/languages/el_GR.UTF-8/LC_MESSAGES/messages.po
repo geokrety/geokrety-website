@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-03 15:15+0000\n"
-"PO-Revision-Date: 2022-01-03 15:17\n"
+"POT-Creation-Date: 2022-01-08 17:49+0000\n"
+"PO-Revision-Date: 2022-01-08 17:52\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-03 15:15+0000\n"
+"POT-Creation-Date: 2022-01-08 17:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -604,13 +604,17 @@ msgstr "Το email επιβεβαίωσης έχει σταλεί ξανά στ�
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Ένα email επιβεβαίωσης έχει σταλεί ξανά στην καινούρια σας διεύθυνση. Κάντε κλικ στον σύνδεσμο που υπάρχει στο email για να επιβεβαιώσετε την αλλαγή της διεύθυνσής σας. Ο σύνδεσμος λήγει σε %s."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:25
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:31
 msgid "Failed to save your home coordinates."
 msgstr "Αποτυχία αποθήκευσης των συντεταγμένων του σπιτιού σας."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:28
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:34
 msgid "Your home coordinates were successfully saved."
 msgstr "Οι συντεταγμένες του σπιτιού σας αποθηκεύτηκαν επιτυχώς."
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:36
+msgid "Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:38
 msgid "Your old password is invalid."
@@ -1358,7 +1362,7 @@ msgstr "&quot;&quot; Αυτό μπορεί να σας: <br /> - Geocaching / op
 msgid "It is always nice to receive a little message ;)"
 msgstr "Είναι πάντα ωραίο να λαμβάνεις ένα μηνυματάκι ;)"
 
-#: smarty/forms:269
+#: smarty/forms:268
 msgid "Post your log"
 msgstr ""
 
@@ -1533,7 +1537,7 @@ msgstr ""
 msgid "Back to your profile"
 msgstr ""
 
-#: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:66
+#: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:75
 #: smarty/pages:34 smarty/pages:38 smarty/dialog:21 smarty/dialog:35
 #: smarty/dialog:15 smarty/dialog:51 smarty/dialog:14 smarty/dialog:23
 #: smarty/dialog:66 smarty/dialog:16 smarty/dialog:12 smarty/dialog:37
@@ -1823,7 +1827,7 @@ msgstr ""
 msgid "New username"
 msgstr ""
 
-#: smarty/pages:29 smarty/pages:65 smarty/dialog:50 smarty/dialog:15
+#: smarty/pages:29 smarty/pages:74 smarty/dialog:50 smarty/dialog:15
 #: smarty/dialog:41 smarty/dialog:26 smarty/dialog:51
 msgid "Back to user page"
 msgstr ""
@@ -1925,31 +1929,39 @@ msgstr ""
 msgid "Define your observation area"
 msgstr ""
 
-#: smarty/pages:21 smarty/pages:22
+#: smarty/pages:21
+msgid "When you define your home location, the mini-map on your profile will display GeoKrety dropped around you."
+msgstr ""
+
+#: smarty/pages:22
+msgid "If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences)."
+msgstr ""
+
+#: smarty/pages:30 smarty/pages:31
 msgid "Home coordinates"
 msgstr "Αρχική συντεταγμένες"
 
-#: smarty/pages:26
+#: smarty/pages:35
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Χρησιμοποιείστε τον χάρτη για να επιλέξετε μια τοποθεσία ή εισάγετε συντεταγμένες χειροκίνητα."
 
-#: smarty/pages:28
+#: smarty/pages:37
 msgid "Other acceptable lat/lon formats"
 msgstr ""
 
-#: smarty/pages:37
+#: smarty/pages:46
 msgid "Observation radius"
 msgstr ""
 
-#: smarty/pages:45
+#: smarty/pages:54
 msgid ". Set it to 0 to disable the observation feature."
 msgstr ""
 
-#: smarty/pages:55
+#: smarty/pages:64
 msgid "Center the map on the zone to observe"
 msgstr ""
 
-#: smarty/pages:68 smarty/dialog:16
+#: smarty/pages:77 smarty/dialog:16
 msgid "Define"
 msgstr ""
 
