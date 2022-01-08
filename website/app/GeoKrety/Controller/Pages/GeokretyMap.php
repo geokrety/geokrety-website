@@ -2,6 +2,7 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 
 class GeokretyMap extends Base {
@@ -34,10 +35,11 @@ class GeokretyMap extends Base {
                 FROM "gk_geokrety_in_caches", envelope, area
                 WHERE public.ST_Intersects(position::geometry, envelope.boundingBox)
                 AND coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) < area.age
+                AND missing = ?
                 ORDER BY days DESC
             ) as t;
 EOT;
-        $result = $f3->get('DB')->exec($sql, [$xmin, $ymin, $xmax, $ymax]);
+        $result = $f3->get('DB')->exec($sql, [$xmin, $ymin, $xmax, $ymax, Geokret::GEOKRETY_PRESENT_IN_CACHE]);
         exit($result[0]['geojson']);
     }
 }

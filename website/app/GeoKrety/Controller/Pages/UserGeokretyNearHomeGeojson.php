@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller;
 
 use CurrentUserLoader;
+use GeoKrety\Model\Geokret;
 
 class UserGeokretyNearHomeGeojson extends Base {
     use CurrentUserLoader;
@@ -20,11 +21,12 @@ class UserGeokretyNearHomeGeojson extends Base {
                     coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) AS days
                 FROM "gk_geokrety_near_users_homes"
                 WHERE "c_user_id" = ?
+                AND missing = ?
                 ORDER BY days DESC, home_distance ASC
                 LIMIT 500
             ) as t;
 EOT;
-        $result = $f3->get('DB')->exec($sql, [$this->current_user->id]);
+        $result = $f3->get('DB')->exec($sql, [$this->current_user->id, Geokret::GEOKRETY_PRESENT_IN_CACHE]);
         exit($result[0]['geojson']);
     }
 }

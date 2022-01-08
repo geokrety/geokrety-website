@@ -30,6 +30,9 @@ use GeoKrety\LogType;
 class Geokret extends Base {
     use \Validation\Traits\CortexTrait;
 
+    public const GEOKRETY_PRESENT_IN_CACHE = 0;
+    public const GEOKRETY_MISSING_IN_CACHE = 1;
+
     protected $db = 'DB';
     protected $table = 'gk_geokrety';
 
