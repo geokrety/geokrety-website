@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-03 15:15+0000\n"
-"PO-Revision-Date: 2022-01-03 20:43\n"
+"POT-Creation-Date: 2022-01-08 17:49+0000\n"
+"PO-Revision-Date: 2022-01-08 18:11\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-03 15:15+0000\n"
+"POT-Creation-Date: 2022-01-08 17:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -604,13 +604,17 @@ msgstr "L'email di conferma è stata nuovamente inviata al tuo nuovo indirizzo. 
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Una email di conferma è stata inviata al tuo nuovo indirizzo. Devi cliccare sul link fornito nell'email per confermare la modifica al tuo indirizzo email. Il link di conferma scade in %s."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:25
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:31
 msgid "Failed to save your home coordinates."
 msgstr "Impossibile salvare le coordinate della tua casa."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:28
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:34
 msgid "Your home coordinates were successfully saved."
 msgstr "Le tue coordinate home sono state salvate con successo."
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:36
+msgid "Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails."
+msgstr "L'area di osservazione è disabilitata, eventuali GeoKrety lasciati vicino alla tua posizione non saranno inclusi nelle tue email giornaliere."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:38
 msgid "Your old password is invalid."
@@ -1358,7 +1362,7 @@ msgstr "Può essere il tuo: <br/> - nome utente geocaching / opencaching <br /> 
 msgid "It is always nice to receive a little message ;)"
 msgstr "È sempre bello ricevere un piccolo messaggio ;)"
 
-#: smarty/forms:269
+#: smarty/forms:268
 msgid "Post your log"
 msgstr "Pubblica il tuo log"
 
@@ -1533,7 +1537,7 @@ msgstr "Confermi di cambiare il tuo indirizzo e-mail?"
 msgid "Back to your profile"
 msgstr "Torna al tuo profilo"
 
-#: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:66
+#: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:75
 #: smarty/pages:34 smarty/pages:38 smarty/dialog:21 smarty/dialog:35
 #: smarty/dialog:15 smarty/dialog:51 smarty/dialog:14 smarty/dialog:23
 #: smarty/dialog:66 smarty/dialog:16 smarty/dialog:12 smarty/dialog:37
@@ -1823,7 +1827,7 @@ msgstr ""
 msgid "New username"
 msgstr ""
 
-#: smarty/pages:29 smarty/pages:65 smarty/dialog:50 smarty/dialog:15
+#: smarty/pages:29 smarty/pages:74 smarty/dialog:50 smarty/dialog:15
 #: smarty/dialog:41 smarty/dialog:26 smarty/dialog:51
 msgid "Back to user page"
 msgstr "Torna alla pagina utente"
@@ -1925,31 +1929,39 @@ msgstr "Ancora nessun premio attribuito."
 msgid "Define your observation area"
 msgstr "Definisci l'area di osservazione"
 
-#: smarty/pages:21 smarty/pages:22
+#: smarty/pages:21
+msgid "When you define your home location, the mini-map on your profile will display GeoKrety dropped around you."
+msgstr "Quando definisci la posizione di casa tua, la mini-mappa sul tuo profilo ti mostrerà i GeoKrety vicino a te."
+
+#: smarty/pages:22
+msgid "If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences)."
+msgstr "Se si imposta l'area di osservazione a un valore maggiore di 0, quando un GeoKrety sarà lasciato vicino a te sarà incluso nelle tue mail giornaliere (in base alle tue preferenze globali)."
+
+#: smarty/pages:30 smarty/pages:31
 msgid "Home coordinates"
 msgstr "Coordinate di casa"
 
-#: smarty/pages:26
+#: smarty/pages:35
 msgid "Use the map to select a location or enter coordinates manually."
 msgstr "Usa la mappa per selezionare una posizione o inserisci le coordinate a mano."
 
-#: smarty/pages:28
+#: smarty/pages:37
 msgid "Other acceptable lat/lon formats"
 msgstr "Altri formati lat/lon accettabili"
 
-#: smarty/pages:37
+#: smarty/pages:46
 msgid "Observation radius"
 msgstr "Raggio di osservazione"
 
-#: smarty/pages:45
+#: smarty/pages:54
 msgid ". Set it to 0 to disable the observation feature."
 msgstr ". Impostare a 0 per disabilitare la funzione di osservazione."
 
-#: smarty/pages:55
+#: smarty/pages:64
 msgid "Center the map on the zone to observe"
 msgstr "Centra la mappa sulla zona da osservare"
 
-#: smarty/pages:68 smarty/dialog:16
+#: smarty/pages:77 smarty/dialog:16
 msgid "Define"
 msgstr "Definisci"
 
