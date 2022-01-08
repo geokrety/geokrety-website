@@ -1,3 +1,21 @@
+## [2.12.0](https://github.com/geokrety/geokrety-website/compare/v2.11.3...v2.12.0) (2022-01-08)
+
+
+### Features
+
+* Relates [#701](https://github.com/geokrety/geokrety-website/issues/701): manage home position in database ([9eca851](https://github.com/geokrety/geokrety-website/commit/9eca851d062787386b4346b0ae8e8b884c569fe0))
+* Use logical colors to show observation area ([b9d1d0d](https://github.com/geokrety/geokrety-website/commit/b9d1d0d51e551bee43303e7d07b472052831c937))
+
+
+### Bug Fixes
+
+* Display message when observation area is disabled ([5a122f8](https://github.com/geokrety/geokrety-website/commit/5a122f8a4a0f983b9c09875c8af93e6e26149775))
+* Fix links to help page ([11aca08](https://github.com/geokrety/geokrety-website/commit/11aca087e9897a970cda17bf162f8e049159e552))
+* Hide missing GeoKrety from daily mails ([8cc9928](https://github.com/geokrety/geokrety-website/commit/8cc99284ee2880f5cc43c19d7883803d38e7e351))
+* Hide missing GeoKrety from maps ([4b88bf0](https://github.com/geokrety/geokrety-website/commit/4b88bf0a9e381caa4b31d202166a2a1c0799de0e))
+* Show move captcha only for unauthenticated users ([db9fde5](https://github.com/geokrety/geokrety-website/commit/db9fde56ca564236287ae53fa137128e3d94889e))
+* User's home coordinates can be removed from account ([acff471](https://github.com/geokrety/geokrety-website/commit/acff471b2e61495bf2f96b79918b9920afc2921b)), closes [#701](https://github.com/geokrety/geokrety-website/issues/701)
+
 ### [2.11.3](https://github.com/geokrety/geokrety-website/compare/v2.11.2...v2.11.3) (2022-01-05)
 
 ### [2.11.2](https://github.com/geokrety/geokrety-website/compare/v2.11.1...v2.11.2) (2022-01-03)
