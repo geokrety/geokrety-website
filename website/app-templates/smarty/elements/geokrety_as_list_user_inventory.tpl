@@ -1,6 +1,7 @@
 <tr class="{if $geokret->missing}danger{/if}">
     <td>
         {$geokret|posicon nofilter}
+        {if $geokret->missing}<span title="{t}Declared as missing{/t}"><i class="fa fa-exclamation-triangle"></i></span>{/if}
     </td>
     <td>
         {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />

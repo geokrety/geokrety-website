@@ -1,4 +1,4 @@
-<tr class="{if $move->id === $move->geokret->last_position->id}success{/if}">
+<tr class="{if $move->geokret->missing}danger{elseif $move->id === $move->geokret->last_position->id}success{/if}">
     <td>{$move|logicon nofilter}</td>
     <td>
         {$move->geokret|gklink nofilter} {$move->geokret|gkavatar nofilter}<br />
