@@ -1,31 +1,29 @@
 <?php
 
-function getPosIcon($id) {
+use GeoKrety\GeokretyType;
+use GeoKrety\LogType;
+use GeoKrety\Model\Geokret;
+
+function getPosIcon($id): string {
     switch ($id) {
-        case '00': return _('Inside a cache');
-        case '01': return _('Travelling');
-        case '03': return _('Still in a cache');
-        case '04': return _('Probably lost');
-        case '05': return _('Visiting');
-        case '08': return _('In the owner hands');
-        case '09': return _('Freshman mole');
-        case '10': return _('Inside a cache');
-        case '11': return _('Travelling');
-        case '13': return _('Still in a cache');
-        case '14': return _('Probably lost');
-        case '15': return _('Visiting');
-        case '19': return _('Freshman mole');
+        case 0: return _('Inside a cache');
+        case 1: return _('Travelling');
+        case 3: return _('Still in a cache');
+        case 4: return _('Probably lost');
+        case 5: return _('Visiting');
+        case 8: return _('In the owner hands');
+        case 9: return _('Never Travelled');
     }
 
     return '';
 }
 
-function computeLogType($locationType, $lastUserId, $currentUser) {
-    if ($locationType == '') {
-        return '9';
+function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId, ?int $currentUser) {
+    if (is_null($locationType)) {
+        return 9;
     }
-    if ((($locationType == '1' or $locationType == '5') or $lastUserId == $currentUser) and $locationType != '4') {
-        return '8';
+    if ((($locationType === LogType::LOG_TYPE_GRABBED or $locationType === LogType::LOG_TYPE_DIPPED) and $lastUserId === (is_null($geokret->owner) ? null : $geokret->owner->id)) and $locationType !== LogType::LOG_TYPE_ARCHIVED and !$geokret->type->isType(GeokretyType::GEOKRETY_TYPE_HUMAN)) {
+        return 8;
     }
 
     return $locationType;
@@ -45,11 +43,11 @@ function computeLocationType($logType) {
  * -------------------------------------------------------------
  */
 function smarty_modifier_posicon(GeoKrety\Model\Geokret $geokret) {
-    $lastLocationType = $geokret->last_position ? $geokret->last_position->move_type->getLogTypeId() : '';
-    $lastUserId = ($geokret->last_position && !is_null($geokret->last_position->author)) ? $geokret->last_position->author->id : 0;
+    $lastLocationType = $geokret->last_position ? $geokret->last_position->move_type->getLogTypeId() : null;
+    $lastUserId = ($geokret->last_position && !is_null($geokret->last_position->author)) ? $geokret->last_position->author->id : null;
 
-    $iconClass = computelogtype($lastLocationType, $lastUserId, \Base::instance()->get('SESSION.CURRENT_USER'));
-    $message = getPosIcon($geokret->type->getTypeId().$iconClass);
+    $iconClass = computelogtype($geokret, $lastLocationType, $lastUserId, \Base::instance()->get('SESSION.CURRENT_USER'));
+    $message = getPosIcon($iconClass);
 
     return '<img src="'.GK_CDN_IMAGES_URL.'/log-icons/'.$geokret->type->getTypeId().'/1'.$iconClass.'.png" alt="'._('status icon').'" title="'.$message.'" width="37" height="37" border="0" />';
 }
