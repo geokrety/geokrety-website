@@ -18,7 +18,7 @@ class GKTSearch extends BaseGKT {
 
         $this->setFilter(
             'public.ST_Intersects(position, public.ST_Buffer(public.ST_SetSRID(public.ST_MakePoint((?),(?)), 4326), ?)) AND missing = ? AND move_type IN ? AND type != ?',
-            floatval($lon), floatval($lat), GK_GKT_SEARCH_DISTANCE_LIMIT / 10000, false, LogType::LOG_TYPES_THEORICALLY_IN_CACHE, GeokretyType::GEOKRETY_TYPE_HUMAN,
+            floatval($lon), floatval($lat), GK_GKT_SEARCH_DISTANCE_LIMIT / 10000, false, LogType::LOG_TYPES_THEORETICALLY_IN_CACHE, GeokretyType::GEOKRETY_TYPE_HUMAN,
         );
 
         $this->loadGeokrety();

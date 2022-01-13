@@ -38,7 +38,7 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     ];
 
-    public const LOG_TYPES_THEORICALLY_IN_CACHE = [
+    public const LOG_TYPES_THEORETICALLY_IN_CACHE = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
     ];
@@ -103,7 +103,7 @@ class LogType {
     }
 
     public function isTheoricallyInCache() {
-        return !is_null($this->logtype) && in_array($this->logtype, self::LOG_TYPES_THEORICALLY_IN_CACHE);
+        return !is_null($this->logtype) && in_array($this->logtype, self::LOG_TYPES_THEORETICALLY_IN_CACHE);
     }
 
     public function isEditable() {
