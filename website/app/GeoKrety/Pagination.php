@@ -15,7 +15,7 @@ class Pagination extends \Pagination {
         $f3 = \Base::instance();
         $routeKey = $this->getRouteKey();
         $routeKeyPrefix = $this->getRouteKeyPrefix();
-        $route = $f3->get('PARAMS.0');
+        $route = $f3->get('PATH');
         $route = preg_replace('@'.preg_quote($routeKeyPrefix.$f3->get('PARAMS.'.$routeKey)).'$@', '', $route);
 
         return $route;
