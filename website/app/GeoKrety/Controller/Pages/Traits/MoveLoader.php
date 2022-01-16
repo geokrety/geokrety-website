@@ -4,10 +4,7 @@ use GeoKrety\Model\Move;
 use GeoKrety\Service\Smarty;
 
 trait MoveLoader {
-    /**
-     * @var Move
-     */
-    protected $move;
+    protected Move $move;
 
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);

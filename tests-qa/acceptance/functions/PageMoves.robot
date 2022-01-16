@@ -106,3 +106,10 @@ Check Search By Waypoint
     Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    4    ${move.comment}
     # Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    5    <datetime>
     Table Cell Should Contain               ${SEARCH_BY_WAYPOINT_TABLE}    ${row + 1}    6    ${distance} km
+
+
+Check Search By GeoKrety
+    [Arguments]    ${row}    ${gk}
+    # TODO check status icon
+    Table Cell Should Contain               ${SEARCH_BY_GEOKRETY_TABLE}    ${row + 1}    2    ${gk.name}
+    Table Cell Should Contain               ${SEARCH_BY_GEOKRETY_TABLE}    ${row + 1}    2    ${gk.ref}

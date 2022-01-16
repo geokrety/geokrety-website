@@ -272,6 +272,8 @@ class Config extends \Prefab {
         define('GK_PAGINATION_USER_PICTURES_GALLERY', getenv('GK_PAGINATION_USER_PICTURES_GALLERY') ?: 24);
         define('GK_PAGINATION_USER_OWNED_PICTURES_GALLERY', getenv('GK_PAGINATION_USER_OWNED_PICTURES_GALLERY') ?: 24);
         define('GK_PAGINATION_PICTURES_GALLERY', getenv('GK_PAGINATION_PICTURES_GALLERY') ?: 36);
+        define('GK_PAGINATION_SEARCH_BY_GEOKRET', getenv('GK_PAGINATION_SEARCH_BY_GEOKRET') ?: 25);
+        define('GK_PAGINATION_SEARCH_BY_USER', getenv('GK_PAGINATION_SEARCH_BY_USER') ?: 20);
         define('GK_PAGINATION_SEARCH_BY_WAYPOINT', getenv('GK_PAGINATION_SEARCH_BY_WAYPOINT') ?: 50);
         define('GK_PAGINATION_ADMIN_USER_SEARCH', getenv('GK_PAGINATION_ADMIN_USER_SEARCH') ?: 10);
 
@@ -399,6 +401,9 @@ class Config extends \Prefab {
         define('GK_CDN_MAGNIFIC_POPUP_CSS', getenv('GK_CDN_MAGNIFIC_POPUP_CSS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/magnific-popup.css');
 
         define('GK_CDN_ANIMATE_CSS', getenv('GK_CDN_ANIMATE_CSS') ?: GK_CDN_LIBRARIES_URL.'/animate.css/4.1.1/animate.min.css');
+
+        define('GK_CDN_SELECT2_JS', getenv('GK_CDN_SELECT2_JS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/js/select2.min.js');
+        define('GK_CDN_SELECT2_CSS', getenv('GK_CDN_SELECT2_CSS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/css/select2.min.css');
     }
 
     public static function printEnvironements() {

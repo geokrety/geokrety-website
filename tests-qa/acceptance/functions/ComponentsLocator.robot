@@ -461,10 +461,16 @@ ${NEWS_COMMENT_FIRST_COMMENT}                   ${NEWS_COMMENTS}\[1]
 ${NEWS_COMMENT_SECOND_COMMENT}                  ${NEWS_COMMENTS}\[2]
 ${NEWS_COMMENT_THIRD_COMMENT}                   ${NEWS_COMMENTS}\[3]
 
-#
+################
+# SEARCH
+################
 
-################
-# SEARCH BY WAYPOINT PAGE
-################
+${SEARCH_NAVBAR_FORM}                          //nav//form[@id="formSearchAdvanced"]
+${SEARCH_NAVBAR_INPUT}                         //nav//input[@id="inputSearchAdvanced"]
+${SEARCH_NAVBAR_SUBMIT}                        //nav//button[@id="buttonSearchAdvancedType"]
 
 ${SEARCH_BY_WAYPOINT_TABLE}                    //*[@id="searchByWaypointTable"]
+${SEARCH_BY_USER_TABLE}                        //*[@id="searchByUserTable"]
+${SEARCH_BY_GEOKRETY_TABLE}                    //*[@id="searchByGeokretyTable"]
+
+${SEARCH_NAVBAR_INPUT_TYPEAHEAD}               ${SEARCH_NAVBAR_FORM}//ul[contains(@class, "typeahead")]

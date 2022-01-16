@@ -83,7 +83,10 @@ ${PAGE_GEOKRETY_DETAILS_1_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK00
 ${PAGE_GEOKRETY_DETAILS_2_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0002/contact-owner
 ${PAGE_GEOKRETY_DETAILS_3_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0003/contact-owner
 
+${PAGE_ADVANCED_SEARCH_URL}             ${GK_URL}/en/search/advanced
 ${PAGE_SEARCH_BY_WAYPOINT_URL}          ${GK_URL}/en/search/waypoint/\${params.waypoint}
+${PAGE_SEARCH_BY_USERNAME_URL}          ${GK_URL}/en/search/user/\${params.username}
+${PAGE_SEARCH_BY_GEOKRETY_URL}          ${GK_URL}/en/search/geokret/\${params.geokret}
 
 ${PAGE_LEGACY_INDEX_URL}                ${GK_URL}/index.php
 ${PAGE_LEGACY_LONGIN_URL}               ${GK_URL}/longin.php

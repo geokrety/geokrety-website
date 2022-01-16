@@ -143,7 +143,10 @@ class Geokret extends Base {
             return \intval($gkid);
         }
         if (strtoupper(substr($gkid, 0, 2)) === 'GK') {
-            return hexdec(substr($gkid, 2));
+            $id_ = substr($gkid, 2);
+            if (trim($id_, '0..9A..Fa..f') === '') {
+                return hexdec($id_);
+            }
         }
 
         return null;

@@ -20,13 +20,17 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
                 ['trace' => 1]
         );
 
+        if ($error['code'] === 403) {
+            if ($f3->get('SESSION.user.group') === AuthGroup::AUTH_LEVEL_ANONYMOUS) {
+                $error['code'] = 401;
+            } else {
+                Flash::instance()->addMessage(_('You are not allowed to access this page.'), 'danger');
+                $f3->reroute('@home');
+            }
+        }
         if ($error['code'] === 401) {
             Flash::instance()->addMessage(_('Please login first.'), 'danger');
             $f3->reroute('@login');
-        }
-        if ($error['code'] === 403) {
-            Flash::instance()->addMessage(_('You are not allowed to access this page.'), 'danger');
-            $f3->reroute('@home');
         }
         if ($error['code'] === 404) {
             Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exists.'), 'danger');

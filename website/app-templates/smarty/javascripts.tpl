@@ -10,6 +10,7 @@
 {\Assets::instance()->addJs(GK_CDN_SPIN_JS)}
 {\Assets::instance()->addJs(GK_CDN_DROPZONE_JS)}
 {\Assets::instance()->addJs(GK_CDN_MAGNIFIC_POPUP_JS)}
+{\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS)}
 
 {\Assets::instance()->renderGroup(\Assets::instance()->getAssets('footer')) nofilter}
 <script type="text/javascript">
@@ -22,6 +23,7 @@
 {include file='js/tooltips.tpl.js'}
 {include file='js/magnificPopup.tpl.js'}
 {include file='js/dialogs/dialog_login.tpl.js'}{*load js/dialogs/dialog_login all the time as it may be necessary when user leave it's session open too long*}
+{include file='js/search_advanced.tpl.js'}
 
 {block name=javascript_modal}{/block}
 {block name=javascript}{/block}

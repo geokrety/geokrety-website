@@ -5,8 +5,12 @@ Resource        ../vars/moves.resource
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Resource        ../vars/waypoints.resource
-Force Tags      Moves    Owned
+Force Tags      Search    Waypoint
 Suite Setup     Seed
+
+*** Variables ***
+
+${PERCENT} =          %25
 
 *** Test Cases ***
 
@@ -18,10 +22,19 @@ Moves Should Be Shown
     Wait until page contains element        ${SEARCH_BY_WAYPOINT_TABLE}/tbody/tr[1][not(contains(@class, "success"))]    timeout=2
     Wait until page contains element        ${SEARCH_BY_WAYPOINT_TABLE}/tbody/tr[2][contains(@class, "success")]        timeout=2
 
+Wildcard Search Is Disabled
+    Go To Url                               ${PAGE_SEARCH_BY_WAYPOINT_URL}              waypoint=GC${PERCENT}
+    Element Count Should Be                 ${SEARCH_BY_USER_TABLE}/tbody/tr        0
+    Page Should Contain                     No GeoKrety has visited cache GC% yet.
+
 Waypoint Without Moves
     Go To Url                               ${PAGE_SEARCH_BY_WAYPOINT_URL}              waypoint=${INVALID_GC_WPT}
     Element Count Should Be                 ${SEARCH_BY_WAYPOINT_TABLE}/tbody/tr        0
     Page Should Contain                     No GeoKrety has visited cache ${INVALID_GC_WPT} yet.
+
+Empty Request
+    Go To Url                               ${PAGE_SEARCH_BY_WAYPOINT_URL}              waypoint=${EMPTY}
+    Location Should Be                      ${PAGE_ADVANCED_SEARCH_URL}
 
 *** Keywords ***
 

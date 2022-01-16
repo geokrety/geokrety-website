@@ -29,6 +29,30 @@ Private Information Not Visible - authenticated - not owned
     Has Not Private Information         ${PAGE_GEOKRETY_2_DETAILS_URL}
     Sign Out Fast
 
+Access GeoKrety By Id
+    Sign In ${USER_1.name} Fast
+    Go To GeoKrety ${GEOKRETY_1.id} url
+    Location Should Be    ${GK_URL}/en/geokrety/1
+    Sign Out Fast
+
+Access GeoKrety By GkId
+    Sign In ${USER_1.name} Fast
+    Go To GeoKrety ${GEOKRETY_1.ref} url
+    Location Should Be    ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Sign Out Fast
+
+Access GeoKrety By Not Hex GkId
+    Sign In ${USER_1.name} Fast
+    Go To GeoKrety ${GEOKRETY_1.ref}ZZ url
+    Location Should Be    ${PAGE_HOME_URL}
+    Sign Out Fast
+
+Access GeoKrety By Not An Id
+    Sign In ${USER_1.name} Fast
+    Go To GeoKrety FooBar url
+    Location Should Be    ${PAGE_HOME_URL}
+    Sign Out Fast
+
 
 *** Keywords ***
 
