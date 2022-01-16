@@ -68,7 +68,7 @@ Missing Button Only For Some Types - Dip
 Direct Link To Not Last Position Is Forbidden
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_COMMENT_MISSING_URL}           moveid=1
-    Page Should Contain                     ${FORBIDEN}
+    Page Should Contain                     Missing status can only be added to current GeoKret position
 
 Multiple Missing Report Allowed
     Sign In ${USER_1.name} Fast

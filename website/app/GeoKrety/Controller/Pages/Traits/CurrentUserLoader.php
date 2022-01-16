@@ -10,7 +10,7 @@ trait CurrentUserLoader {
         parent::beforeRoute($f3);
 
         if (!$f3->get('SESSION.IS_LOGGED_IN')) {
-            $f3->error(401, _('Please login first.'));
+            $f3->error(401);
         }
 
         $user = new User();

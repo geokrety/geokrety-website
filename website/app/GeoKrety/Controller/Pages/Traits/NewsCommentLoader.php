@@ -4,10 +4,7 @@ use GeoKrety\Model\NewsComment;
 use GeoKrety\Service\Smarty;
 
 trait NewsCommentLoader {
-    /**
-     * @var NewsComment
-     */
-    protected $comment;
+    protected NewsComment $comment;
 
     public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
@@ -19,6 +16,7 @@ trait NewsCommentLoader {
             $f3->error(404, _('This comment does not exist.'));
         }
         if (!$comment->isAuthor()) {
+            $f3->set('ERROR_REDIRECT', $this->comment->news->url);
             $f3->error(403, _('This action is reserved to the author.'));
         }
 

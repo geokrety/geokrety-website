@@ -27,7 +27,7 @@ Author Can Edit It's Moves
 Other Users Cannot Edit Others Moves
     Sign In ${USER_2.name} Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
-    Page Should Contain                     ${FORBIDEN}
+    Page Should Contain                     This action is reserved to the author
 
 Information Should Be Loaded
     Sign In ${USER_1.name} Fast

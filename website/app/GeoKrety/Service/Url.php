@@ -15,8 +15,8 @@ class Url extends \Prefab {
      * @param string            $alias  The alias to build url
      * @param string|array|null $params The params for the built url
      *
-     * @return string The wanted url, with encoded query string to rebuild the current url. Needed to recompuse url
-     *                according the the user preferred language.
+     * @return string The wanted url, with encoded query string to rebuild the current url. Needed to recompute url
+     *                according to the user preferred language.
      */
 //    public static function getGoto(string $alias = 'home', string|array $params) { // php 8.0 will support `union-types`
     public static function serializeGoto(string $alias = 'home', $params = null): string {

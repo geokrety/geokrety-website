@@ -20,20 +20,25 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
                 ['trace' => 1]
         );
 
-        if ($error['code'] === 403) {
-            if ($f3->get('SESSION.user.group') === AuthGroup::AUTH_LEVEL_ANONYMOUS) {
-                $error['code'] = 401;
-            } else {
-                Flash::instance()->addMessage(_('You are not allowed to access this page.'), 'danger');
-                $f3->reroute('@home');
-            }
+        if ($error['code'] === 400) {
+            Flash::instance()->addMessage($error['text'] ?: _('Your request seems invalid.'), 'danger');
+            $f3->set('SESSION.HTTP_RETURN_CDOE', 400);
+            $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 401) {
             Flash::instance()->addMessage(_('Please login first.'), 'danger');
             $f3->reroute('@login');
         }
+        if ($error['code'] === 403) {
+            Flash::instance()->addMessage($error['text'] ?: _('You are not allowed to access this page.'), 'danger');
+            $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
+        }
         if ($error['code'] === 404) {
             Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exists.'), 'danger');
+            $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
+        }
+        if ($error['code'] === 500) {
+            Flash::instance()->addMessage(_('We are sorry, something unexpected happened.'), 'danger');
             $f3->reroute('@home');
         }
         $header = $f3->status($error['code']);
@@ -90,14 +95,17 @@ if (!$f3->exists('SESSION.csrf') or empty($f3->get('SESSION.csrf'))) {
     $f3->copy('CSRF', 'SESSION.csrf');
 }
 
-// Authorizations
-$access = \Access::instance();
-$access->authorize($f3->get('SESSION.user.group'));
-
 // Assets building
 \Assets::instance();
 \Assets\Sass::instance()->init();
 
 Metrics::getOrRegisterCounter('total_requests', 'Total number of served requests', ['verb'])
     ->inc([$f3->get('VERB')]);
+
+// Force HTTP_RETURN_CDOE
+if ($f3->exists('SESSION.HTTP_RETURN_CDOE')) {
+    http_response_code($f3->get('SESSION.HTTP_RETURN_CDOE'));
+    $f3->clear('SESSION.HTTP_RETURN_CDOE');
+}
+
 $f3->run();

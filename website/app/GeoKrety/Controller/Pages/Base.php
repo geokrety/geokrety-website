@@ -23,15 +23,16 @@ abstract class Base {
         'devel_mail_delete_all',
     ];
 
-    /**
-     * @var User|null Currently logged in user
-     */
     protected ?User $current_user = null;
 
     protected ?\Base $f3;
 
     public function beforeRoute(\Base $f3) {
         $this->f3 = $f3;
+
+        // Authorizations
+        $access = \Access::instance();
+        $access->authorize($f3->get('SESSION.user.group'));
 
         // Load supported languages
         Smarty::assign('languages', LanguageService::getSupportedLanguages(true));

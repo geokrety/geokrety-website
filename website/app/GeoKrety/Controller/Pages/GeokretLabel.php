@@ -19,10 +19,6 @@ class GeokretLabel extends Base {
     public function beforeRoute(\Base $f3) {
         $this->beforeRouteGeoKret($f3);
 
-        if (!$f3->get('SESSION.IS_LOGGED_IN')) {
-            $f3->error(401, _('Please login first.'));
-        }
-
         if (!$this->geokret->hasTouchedInThePast()) {
             Flash::instance()->addMessage(_('Sorry you don\'t have the permission to print a label for this GeoKret as you never discovered it!'), 'danger');
             $f3->reroute('@geokret_details');

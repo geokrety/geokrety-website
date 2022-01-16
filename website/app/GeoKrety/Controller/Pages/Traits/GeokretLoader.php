@@ -6,10 +6,7 @@ use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 
 trait GeokretLoader {
-    /**
-     * @var Geokret
-     */
-    protected $geokret;
+    protected Geokret $geokret;
 
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);

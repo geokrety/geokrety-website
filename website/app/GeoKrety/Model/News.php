@@ -10,6 +10,7 @@ use Validation\Traits\CortexTrait;
  * @property int|null id
  * @property string title
  * @property string content
+ * @property string url
  * @property string|null author_name
  * @property int|User|null author
  * @property int comments_count
@@ -67,6 +68,10 @@ class News extends Base {
 
     public function get_last_commented_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
+    }
+
+    public function get_url(): string {
+        return \Base::instance()->alias('news_details', '@newsid='.$this->id);
     }
 
     public function isSubscribed(): bool {

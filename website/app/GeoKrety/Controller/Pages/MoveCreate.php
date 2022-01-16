@@ -35,10 +35,12 @@ class MoveCreate extends Base {
         }
 
         if (!$this->move->isAuthor()) {
+            $f3->set('ERROR_REDIRECT', $this->move->reroute_url);
             $f3->error(403, _('This action is reserved to the author.'));
         }
 
         if (!$this->move->move_type->isEditable()) {
+            $f3->set('ERROR_REDIRECT', $this->move->reroute_url);
             $f3->error(403, _('This move is not editable.'));
         }
     }

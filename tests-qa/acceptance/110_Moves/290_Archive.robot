@@ -55,7 +55,7 @@ Owner Cannot Archive Others GeoKrety
     Create Session    gk                            ${GK_URL}
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
     ${resp} =         POST On Session    gk         url=/en/geokrety/${GEOKRETY_2.ref}/archive?skip_csrf=True
-    Should Be Equal As Strings                      ${PAGE_HOME_URL}         ${resp.url}
+    Should Be Equal As Strings                      ${PAGE_GEOKRETY_2_DETAILS_URL}         ${resp.url}
     Delete All Sessions
 
 Custom Message Can Be Provided
@@ -218,7 +218,7 @@ Archived Log Can Not Be Edited
     ${auth} =         GET On Session     gk         /devel/
     ${auth} =         GET On Session     gk         /devel/users/${USER_1.name}/login
     ${resp} =         POST On Session    gk         url=/en/moves/1/edit?skip_csrf=True
-    Should Be Equal As Strings                      ${PAGE_HOME_URL}         ${resp.url}
+    Should Be Equal As Strings                      ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1#log1         ${resp.url}
 
 Deleting Last Archive Set The GeoKret As Awaken
     Post Move                                       ${MOVE_1}

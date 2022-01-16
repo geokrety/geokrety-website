@@ -25,7 +25,7 @@ trait MoveLoader {
 
     protected function checkAuthor(Move $move) {
         if (!$move->isAuthor()) {
-            \Base::instance()->error(403, _('Your are not allowed to edit this move.'));
+            \Base::instance()->error(403, _('You are not allowed to edit this move.'));
         }
     }
 

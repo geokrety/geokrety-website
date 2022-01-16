@@ -4,7 +4,6 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\LogType;
 use GeoKrety\Model\Move;
-use GeoKrety\Service\Dialog\Info;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Traits\GeokretLoader;
 
@@ -18,13 +17,13 @@ class GeokretMarkAsArchived extends Base {
 
         // Check if we're the owner
         if (!$this->geokret->isOwner()) {
+            $f3->set('ERROR_REDIRECT', $this->geokret->url);
             $f3->error(403, _('You cannot archive someone else GeoKret.'));
         }
 
         if ($this->geokret->isArchived()) {
-            http_response_code(400);
-            Info::message(_('This GeoKret is already archived.'));
-            exit();
+            $f3->set('ERROR_REDIRECT', $this->geokret->url);
+            $f3->error(400, _('This GeoKret is already archived.'));
         }
     }
 

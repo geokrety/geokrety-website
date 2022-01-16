@@ -22,7 +22,7 @@ Author Can Delete It's Moves
 Other Users Cannot Delete Others Moves
     Sign In ${USER_2.name} Fast
     Go To Url                                       ${PAGE_MOVES_DELETE_URL}    moveid=1
-    Page Should Contain                             ${FORBIDEN}
+    Page Should Contain                             You are not allowed to edit this move
 
 Delete Move
     Sign In ${USER_1.name} Fast

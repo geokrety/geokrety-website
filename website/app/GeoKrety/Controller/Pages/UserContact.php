@@ -10,10 +10,7 @@ use GeoKrety\Service\Smarty;
 class UserContact extends Base {
     use \CurrentUserLoader;
 
-    /**
-     * @var Mail
-     */
-    protected $mail;
+    protected Mail $mail;
 
     public function _beforeRoute(\Base $f3) {
         $mail = new Mail();

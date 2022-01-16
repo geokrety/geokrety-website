@@ -12,6 +12,7 @@ use GeoKrety\LogType;
  * @property string gkid
  * @property string tracking_code
  * @property string name
+ * @property string url
  * @property string|null mission
  * @property int|User|null owner
  * @property int distance
@@ -199,6 +200,10 @@ class Geokret extends Base {
 
     public function get_updated_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
+    }
+
+    public function get_url(): string {
+        return \Base::instance()->alias('geokret_details', '@gkid='.$this->gkid);
     }
 
     public function hasTouchedInThePast(): bool {
