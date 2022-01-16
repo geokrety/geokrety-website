@@ -2,6 +2,8 @@
 
 namespace GeoKrety\Service;
 
+use Base;
+
 class Config extends \Prefab {
     public function __construct() {
         // SITE CONFIG
@@ -404,14 +406,36 @@ class Config extends \Prefab {
 
         define('GK_CDN_SELECT2_JS', getenv('GK_CDN_SELECT2_JS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/js/select2.min.js');
         define('GK_CDN_SELECT2_CSS', getenv('GK_CDN_SELECT2_CSS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/css/select2.min.css');
+
+        $this->clearEnvironments();
     }
 
-    public static function printEnvironements() {
+    public static function printEnvironments() {
         $text = '';
         foreach ($_ENV as $key => $value) {
             $text .= "* **$key** -> $value\n";
         }
         echo \Markdown::instance()->convert($text);
+    }
+
+    public function clearEnvironments() {
+        $f3 = Base::instance();
+        foreach ($_ENV as $key => $value) {
+            if (substr($key, 0, 3) !== 'GK_') {
+                continue;
+            }
+            $this->_clearEnvironment($f3, $key);
+        }
+        $to_clean = ['MINIO_ACCESS_KEY', 'MINIO_SECRET_KEY', 'GPG_KEYS'];
+        foreach ($to_clean as $key) {
+            $this->_clearEnvironment($f3, $key);
+        }
+        $f3->sync('ENV');
+    }
+
+    private function _clearEnvironment(Base $f3, string $key) {
+        putenv($key);
+        $f3->clear('ENV.'.$key);
     }
 
     public function isValid() {
