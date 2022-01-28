@@ -6,7 +6,7 @@ function initializeMap() {
     let map = L.map('mapid', {
         worldCopyJump: true
     });
-    let osmUrl = {literal}'https://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png';{/literal}
+    let osmUrl = {literal}'https://tile.openstreetmap.org/{z}/{x}/{y}.png';{/literal}
     let osmAttrib = 'Map data © <a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors';
     let osm = new L.TileLayer(osmUrl, {
       minZoom: 0,
