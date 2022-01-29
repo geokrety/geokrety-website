@@ -13,7 +13,7 @@
         {if $geokrety.subset}
         {call pagination pg=$pg anchor='watched'}
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table id="userWatchedTable" class="table table-striped">
                 <thead>
                     <tr>
                         <th></th>

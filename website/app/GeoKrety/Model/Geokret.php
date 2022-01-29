@@ -231,6 +231,16 @@ class Geokret extends Base {
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->owner) && $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
     }
 
+    /**
+     * Check if the current logged in user is watching this GeoKret.
+     */
+    public function isWatching(): bool {
+        $f3 = \Base::instance();
+        $watch = new Watched();
+
+        return $watch->count(['user = ? AND geokret = ?', $f3->get('SESSION.CURRENT_USER'), $this->id], null, 0);
+    }
+
     public function isHolder(): bool {
         $f3 = \Base::instance();
 

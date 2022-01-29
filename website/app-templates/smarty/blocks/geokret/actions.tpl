@@ -1,5 +1,35 @@
 {function watchers}
-<div class="col-md-4">{fa icon="archive"} <a id="geokretDetailsWatchersLink" href="#">{t}Watchers{/t}</a></div>
+<div class="col-md-4">
+    {fa icon="eye"}
+    <a id="geokretDetailsWatchersLink" href="{'geokret_watchers'|alias:sprintf('@gkid=%s', $geokret->gkid)}" title="{t}Who is watching this Geokret?{/t}">
+        {t}Watchers{/t}
+        <span class="badge">{$geokret->count_watchers|default:0}</span>
+    </a>
+</div>
+{/function}
+
+{function watch}
+<div class="col-md-4">
+    {fa icon="eye"}
+    <a id="geokretDetailsWatchLink" href="{'geokret_watch'|alias:sprintf('@gkid=%s', $geokret->gkid)}" title="{t}Add this geokret to your watch list{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-watch" data-id="{$geokret->gkid}">
+        {t}Watch{/t}
+    </a>
+    <a id="geokretDetailsWatchersLink" href="{'geokret_watchers'|alias:sprintf('@gkid=%s', $geokret->gkid)}" title="{t}Who is watching this Geokret?{/t}">
+        <span class="badge">{$geokret->count_watchers|default:0}</span>
+    </a>
+</div>
+{/function}
+
+{function unwatch}
+<div class="col-md-4">
+    {fa icon="eye"}
+    <a id="geokretDetailsUnwatchLink" href="{'geokret_unwatch'|alias:sprintf('@gkid=%s', $geokret->gkid)}" title="{t}Remove this geokret from your watch list{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-unwatch" data-id="{$geokret->gkid}">
+        {t}Unwatch{/t}
+    </a>
+    <a id="geokretDetailsWatchersLink" href="{'geokret_watchers'|alias:sprintf('@gkid=%s', $geokret->gkid)}" title="{t}Who is watching this Geokret?{/t}">
+        <span class="badge">{$geokret->count_watchers|default:0}</span>
+    </a>
+</div>
 {/function}
 
 {function log}
@@ -77,7 +107,7 @@
         </div>
         {else}
         <div class="row">
-            {watchers}
+            {if $geokret->isWatching()}{unwatch}{else}{watch}{/if}
             {if $geokret->hasTouchedInThePast()}{log}{else}{empty}{/if}
             {email}
         </div>

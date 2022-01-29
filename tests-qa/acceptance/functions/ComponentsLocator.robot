@@ -148,7 +148,10 @@ ${GEOKRET_DETAILS_MISSION}                      //*[@id="geokretyMissionPanel"]/
 ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}       //*[@id="tracking_code"]
 ${GEOKRET_DETAILS_FOUND_IT_BUTTON}              //*[@id="foundItLogItButton"]
 
+${GEOKRET_DETAILS_WATCH_LINK}                   //*[@id="geokretDetailsWatchLink"]
+${GEOKRET_DETAILS_UNWATCH_LINK}                 //*[@id="geokretDetailsUnwatchLink"]
 ${GEOKRET_DETAILS_WATCHERS_LINK}                //*[@id="geokretDetailsWatchersLink"]
+${GEOKRET_DETAILS_WATCHERS_COUNT_BADGE}         ${GEOKRET_DETAILS_WATCHERS_LINK}//span[contains(@class, "badge")]
 ${GEOKRET_DETAILS_LOG_THIS_GEOKRET_LINK}        //*[@id="geokretDetailsLogThisGeokretLink"]
 ${GEOKRET_DETAILS_TRANSFER_OWNERSHIP_LINK}      //*[@id="geokretDetailsOfferAdoptionLink"]
 ${GEOKRET_DETAILS_PRINT_LABEL_LINK}             //*[@id="geokretDetailsPrintLabelLink"]
@@ -322,6 +325,16 @@ ${USER_RECENT_MOVES_TABLE}                      //*[@id="userRecentMovesTable"]
 ################
 
 ${USER_INVENTORY_TABLE}                         //*[@id="userInventoryTable"]
+
+
+################
+# WATCH
+################
+
+${USER_WATCHERS_TABLE}                          //table[@id="geokretWatchersTable"]
+${USER_WATCHED_TABLE}                           //table[@id="userWatchedTable"]
+${USER_WATCHED_ROW_1_MOVE_LINK}                 ${USER_WATCHED_TABLE}//tbody//tr[1]//a[contains(@class, "move-link")]
+${USER_WATCHED_ROW_1_UNWATCH_LINK}              ${USER_WATCHED_TABLE}//tbody//tr[1]//a[contains(@class, "unwatch-link")]
 
 
 ################

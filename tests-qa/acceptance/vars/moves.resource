@@ -4,6 +4,8 @@ Documentation     Variables for users definitions
 *** Variables ***
 
 @{REQUIRE_COORDINATES}    ${0}    ${3}    ${5}
+# DROP
+&{MOVE_EMPTY}     gkid=${EMPTY}    move_type=${EMPTY}    author=${EMPTY}    waypoint=${EMPTY}      lat=${EMPTY}    lon=${EMPTY}     comment=${EMPTY}    app=robotframework    app_ver=3.2.1
 
 ### Moves by Author 1
 # DROP

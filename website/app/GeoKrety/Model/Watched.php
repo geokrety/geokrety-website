@@ -54,7 +54,7 @@ class Watched extends Base {
     public function jsonSerialize() {
         return [
             'id' => $this->id,
-            // 'user' => $this->user->id,
+            'user' => $this->user->id,
             'geokret' => $this->geokret->id,
             // 'created_on_datetime' => $this->created_on_datetime,
             // 'updated_on_datetime' => $this->updated_on_datetime,

@@ -70,6 +70,9 @@ ${PAGE_PASSWORD_RECOVERY_RESET_PASSWORD_URL}      ${GK_URL}/en/recover-password/
 
 ${PAGE_GEOKRETY_CREATE_URL}             ${GK_URL}/en/geokrety/create
 ${PAGE_GEOKRETY_CLAIM_URL}              ${GK_URL}/en/geokrety/claim
+${PAGE_GEOKRETY_WATCH_URL}              ${GK_URL}/en/geokrety/\${params.gkid}/watch
+${PAGE_GEOKRETY_UNWATCH_URL}            ${GK_URL}/en/geokrety/\${params.gkid}/unwatch
+${PAGE_GEOKRETY_WATCHERS_URL}           ${GK_URL}/en/geokrety/\${params.gkid}/watchers
 
 ${PAGE_GEOKRETY_DETAILS_URL}            ${GK_URL}/en/geokrety/\${params.gkid}
 ${PAGE_GEOKRETY_1_DETAILS_URL}          ${GK_URL}/en/geokrety/GK0001

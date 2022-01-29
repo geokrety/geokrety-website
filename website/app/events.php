@@ -217,6 +217,14 @@ $events->on('geokret.claimed', function (GeoKrety\Model\Geokret $geokret, $conte
     audit('geokret.claimed', array_merge($geokret->jsonSerialize(), $context));
     Metrics::counter('geokrety_claimed_total', 'Total number of GeoKrety claimed');
 });
+$events->on('geokret.watch.created', function (GeoKrety\Model\Watched $watched) {
+    audit('geokret.watch.created', $watched);
+    Metrics::counter('geokrety_watch_created_total', 'Total number of GeoKrety watch created');
+});
+$events->on('geokret.watch.deleted', function (GeoKrety\Model\Watched $watched) {
+    audit('geokret.watch.deleted', $watched);
+    Metrics::counter('geokrety_watch_deleted_total', 'Total number of GeoKrety watch deleted');
+});
 $events->on('user.statpic.template.changed', function (GeoKrety\Model\User $user) {
     \GeoKrety\Service\UserBanner::generate($user);
     audit('user.statpic.template.changed', $user);
