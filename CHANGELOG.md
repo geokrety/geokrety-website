@@ -1,3 +1,25 @@
+## [2.13.0](https://github.com/geokrety/geokrety-website/compare/v2.12.1...v2.13.0) (2022-01-29)
+
+
+### Features
+
+* Implemented search in navbar ([dccf8e0](https://github.com/geokrety/geokrety-website/commit/dccf8e0b941488c26a1770e5a12c7f5e5d133d9d)), closes [#364](https://github.com/geokrety/geokrety-website/issues/364)
+
+
+### Bug Fixes
+
+* Clear sensible env vars ([c66230b](https://github.com/geokrety/geokrety-website/commit/c66230b4f373d158bb8cadbdf2af19282c4d6e70))
+* Display 404 instead of 403 ([6a2fc8a](https://github.com/geokrety/geokrety-website/commit/6a2fc8a56e226fc2c63358ba621c536156d0f9db))
+* Fix highlight missing GeoKrety in lists ([bad359c](https://github.com/geokrety/geokrety-website/commit/bad359cd8e603531adfa9a3a505e950188b8f535))
+* Fix pagination when param is % ([5866f32](https://github.com/geokrety/geokrety-website/commit/5866f325f7836ee296ca8f394fe7682f9e67c513))
+* Fix posicon in lists ([647da55](https://github.com/geokrety/geokrety-website/commit/647da55c536996f41d4087deb89997f75d86629e))
+* Use classic osm tiles ([73acd0a](https://github.com/geokrety/geokrety-website/commit/73acd0ab53b590f3a6575a317265484b2aedac00))
+
+
+### Dependencies
+
+* Upgrade xfra35/f3-access to v1.2.2 ([a3463f0](https://github.com/geokrety/geokrety-website/commit/a3463f0ba32fb08614967f236f5a97d368c8d87c))
+
 ### [2.12.1](https://github.com/geokrety/geokrety-website/compare/v2.12.0...v2.12.1) (2022-01-08)
 
 
