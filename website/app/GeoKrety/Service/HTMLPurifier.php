@@ -3,9 +3,9 @@
 namespace GeoKrety\Service;
 
 class HTMLPurifier extends \Prefab {
-    private $purifier;
+    private \HTMLPurifier $purifier;
 
-    public static function getPurifier() {
+    public static function getPurifier(): \HTMLPurifier {
         return HTMLPurifier::instance()->purifier;
     }
 
@@ -14,10 +14,11 @@ class HTMLPurifier extends \Prefab {
             exit(sprintf('Fail to create \'%s\' directory', GK_HTMLPURIFIER_CACHE_DIR));
         }
 
-        $HTMLPurifierconfig_conf = \HTMLPurifier_Config::createDefault();
-        $HTMLPurifierconfig_conf->set('Cache.SerializerPath', GK_HTMLPURIFIER_CACHE_DIR);
-        $HTMLPurifierconfig_conf->set('HTML.Allowed', '');
-        $HTMLPurifier = new \HTMLPurifier($HTMLPurifierconfig_conf);
+        $HTMLPurifierConfig_conf = \HTMLPurifier_Config::createDefault();
+        $HTMLPurifierConfig_conf->set('Cache.SerializerPath', GK_HTMLPURIFIER_CACHE_DIR);
+        $HTMLPurifierConfig_conf->set('HTML.Allowed', '');
+
+        $HTMLPurifier = new \HTMLPurifier($HTMLPurifierConfig_conf);
 
         $this->purifier = $HTMLPurifier;
     }

@@ -746,7 +746,7 @@ class MoveCommentsMigrator extends BaseMigrator {
     }
 
     protected function cleanerHook(&$values) {
-        $values[4] = trim(html_entity_decode($this->purifier->purify($values[4])));  // content
+        $values[4] = trim(html_entity_decode(Markdown::toFormattedMarkdown($values[4])));  // content
     }
 
     protected function postProcessData() {
