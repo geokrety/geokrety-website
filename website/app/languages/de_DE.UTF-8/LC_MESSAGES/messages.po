@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-29 12:07+0000\n"
-"PO-Revision-Date: 2022-01-29 12:12\n"
+"POT-Creation-Date: 2022-01-30 16:15+0000\n"
+"PO-Revision-Date: 2022-01-30 16:22\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-29 12:07+0000\n"
+"POT-Creation-Date: 2022-01-30 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -316,6 +316,27 @@ msgstr "Fehler beim Erstellen eines neuen Besitzer-Codes."
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
 msgstr "Der Besitzer-Code (%s) wurde generiert. Gib ihn zusammen mit dem Tracking-Code (%s) an jemanden, damit er deinen GeoKret adoptieren kann."
 
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:19
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:19
+msgid "You cannot watch your own GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:35
+msgid "This GeoKret is not your watch list."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:42
+msgid "This GeoKret has been removed from your watch list."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:35
+msgid "This GeoKret is already in your watch list."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:44
+msgid "This GeoKret has been added to your watch list."
+msgstr ""
+
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
 msgstr "Ungültige SecID"
@@ -488,7 +509,7 @@ msgstr "Diese Rangliste existiert nicht."
 msgid "This page doesn't exists."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:23
+#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:24
 msgid "This GeoKret does not exist."
 msgstr "Dieser GeoKret existiert nicht."
 
@@ -994,9 +1015,10 @@ msgstr "Das Löschen der Bewegung wird das angehängte Bild löschen!"
 #: smarty/dialog:23 smarty/dialog:14 smarty/dialog:32 smarty/dialog:12
 #: smarty/dialog:55 smarty/dialog:66 smarty/dialog:15 smarty/dialog:27
 #: smarty/dialog:35 smarty/dialog:21 smarty/dialog:26 smarty/dialog:52
-#: smarty/dialog:37 smarty/dialog:51 smarty/dialog:24 smarty/dialog:46
-#: smarty/dialog:16 smarty/dialog:42 smarty/pages:30 smarty/pages:33
-#: smarty/pages:37 smarty/pages:75 smarty/pages:34 smarty/pages:38
+#: smarty/dialog:13 smarty/dialog:37 smarty/dialog:51 smarty/dialog:24
+#: smarty/dialog:46 smarty/dialog:16 smarty/dialog:42 smarty/pages:30
+#: smarty/pages:33 smarty/pages:37 smarty/pages:75 smarty/pages:34
+#: smarty/pages:38
 msgid "Dismiss"
 msgstr "Verwerfen"
 
@@ -1087,7 +1109,7 @@ msgstr "Wir geben keinerlei Gewährleistung oder Garantie bezüglich der Genauig
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
 msgstr "Vom Nutzer auf der Website veröffentlichte Inhalte dürfen keine vulgäre Ausdrücke, missbräuchliche oder rechtswidrige Inhalte enthalten."
 
-#: smarty/dialog:26 smarty/dialog:46 smarty:90
+#: smarty/dialog:26 smarty/dialog:46 smarty:45
 msgid "Terms of use"
 msgstr "Nutzungsbedingungen"
 
@@ -1291,6 +1313,18 @@ msgid "news posts you have are subscribed to"
 msgstr "Nachrichten-Beiträgen, die du abonniert hast"
 
 #: smarty/dialog:4
+msgid "Add this GeoKret to your watch list?"
+msgstr ""
+
+#: smarty/dialog:9
+msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
+msgstr ""
+
+#: smarty/dialog:14 smarty/blocks/geokret:15
+msgid "Watch"
+msgstr ""
+
+#: smarty/dialog:4
 msgid "Do you really want to unlock this script?"
 msgstr "Möchten Sie dieses Skript wirklich entsperren?"
 
@@ -1380,6 +1414,18 @@ msgid "Save"
 msgstr "Speichern"
 
 #: smarty/dialog:4
+msgid "Remove this GeoKret from your watch list?"
+msgstr ""
+
+#: smarty/dialog:9
+msgid "You will no longer receive updates of its journey in your daily mails."
+msgstr ""
+
+#: smarty/dialog:14 smarty/blocks/geokret:27
+msgid "Unwatch"
+msgstr ""
+
+#: smarty/dialog:4
 msgid "Refresh your secid?"
 msgstr "Deine SecID erneuern?"
 
@@ -1451,82 +1497,9 @@ msgstr "Willst du dieses Bild wirklich löschen?"
 msgid "Toggle navigation"
 msgstr "Navigation an-/ausschalten"
 
-#: smarty:16 smarty:51 smarty:58 smarty/pages:3
+#: smarty:16 smarty:6 smarty:13 smarty/pages:3
 msgid "Log a GeoKret"
 msgstr "Einen GeoKret loggen"
-
-#: smarty:47 smarty:3
-msgid "Home"
-msgstr "Startseite"
-
-#: smarty:48 smarty/pages:3 smarty/pages:26 smarty:5
-msgid "News"
-msgstr "Neuigkeiten"
-
-#: smarty:56 smarty/pages:26 smarty/pages:25 smarty/pages:18
-#: smarty/blocks/geokret:58
-msgid "Actions"
-msgstr "Aktionen"
-
-#: smarty:60 smarty/pages:3 smarty/forms:6 smarty/blocks/user:3
-msgid "Create a new GeoKret"
-msgstr "Einen neuen GeoKret erstellen"
-
-#: smarty:61 smarty/pages:3 smarty/pages:8
-msgid "Claim a GeoKret"
-msgstr "Einen Geokret übernehmen"
-
-#: smarty:64 smarty/pages:3 smarty/pages:8
-msgid "Advanced search"
-msgstr "Erweiterte Suche"
-
-#: smarty:65
-msgid "Photo gallery"
-msgstr "Fotogalerie"
-
-#: smarty:68
-msgid "GeoKrety Map"
-msgstr "GeoKrety-Karte"
-
-#: smarty:75
-msgid "Currently selected language"
-msgstr "Aktuell gewählte Sprache"
-
-#: smarty:86 smarty:88 smarty/pages:39 smarty/pages:3
-msgid "Help"
-msgstr "Hilfe"
-
-#: smarty:91 smarty/pages:3 smarty/pages:9
-msgid "Press corner"
-msgstr "Presse-Ecke"
-
-#: smarty:93
-msgid "GK interface / API"
-msgstr "GK-Schnittstelle / API"
-
-#: smarty:95
-msgid "Waypoints synchronization status"
-msgstr "Wegpunkt-Synchronisationsstatus"
-
-#: smarty:96
-msgid "Yearly rankings"
-msgstr "Jährliche Ranglisten"
-
-#: smarty:98 smarty/pages:3
-msgid "Downloads"
-msgstr "Downloads"
-
-#: smarty:99
-msgid "GeoKrety Toolbox"
-msgstr "GeoKrety Toolbox"
-
-#: smarty:100
-msgid "Waypoint resolver"
-msgstr "Wegpunkt-Solver"
-
-#: smarty:136
-msgid "Search…"
-msgstr ""
 
 #: smarty/elements:10
 msgid "Delete comment"
@@ -1535,6 +1508,14 @@ msgstr "Kommentar löschen"
 #: smarty/elements:36 smarty/elements:33 smarty/elements:31
 msgid "Move this GeoKret"
 msgstr "Diesen GeoKret bewegen"
+
+#: smarty/elements:39 smarty/blocks/geokret:26
+msgid "Remove this geokret from your watch list"
+msgstr ""
+
+#: smarty/elements:40
+msgid "❌"
+msgstr ""
 
 #: smarty/elements:4
 msgid "%1 logo"
@@ -1721,6 +1702,75 @@ msgstr "Plattform"
 #: smarty/chunks:7
 msgid "group name"
 msgstr "Gruppenname"
+
+#: smarty:2 smarty:3
+msgid "Home"
+msgstr "Startseite"
+
+#: smarty:3 smarty/pages:3 smarty/pages:26 smarty:5
+msgid "News"
+msgstr "Neuigkeiten"
+
+#: smarty:11 smarty/pages:26 smarty/pages:25 smarty/pages:18
+#: smarty/blocks/geokret:88
+msgid "Actions"
+msgstr "Aktionen"
+
+#: smarty:15 smarty/pages:3 smarty/forms:6 smarty/blocks/user:3
+msgid "Create a new GeoKret"
+msgstr "Einen neuen GeoKret erstellen"
+
+#: smarty:16 smarty/pages:3 smarty/pages:8
+msgid "Claim a GeoKret"
+msgstr "Einen Geokret übernehmen"
+
+#: smarty:19 smarty/pages:3 smarty/pages:8
+msgid "Advanced search"
+msgstr "Erweiterte Suche"
+
+#: smarty:20
+msgid "Photo gallery"
+msgstr "Fotogalerie"
+
+#: smarty:23
+msgid "GeoKrety Map"
+msgstr "GeoKrety-Karte"
+
+#: smarty:30
+msgid "Currently selected language"
+msgstr "Aktuell gewählte Sprache"
+
+#: smarty:41 smarty:43 smarty/pages:39 smarty/pages:3
+msgid "Help"
+msgstr "Hilfe"
+
+#: smarty:46 smarty/pages:3 smarty/pages:9
+msgid "Press corner"
+msgstr "Presse-Ecke"
+
+#: smarty:48
+msgid "GK interface / API"
+msgstr "GK-Schnittstelle / API"
+
+#: smarty:50
+msgid "Waypoints synchronization status"
+msgstr "Wegpunkt-Synchronisationsstatus"
+
+#: smarty:51
+msgid "Yearly rankings"
+msgstr "Jährliche Ranglisten"
+
+#: smarty:53 smarty/pages:3
+msgid "Downloads"
+msgstr "Downloads"
+
+#: smarty:54
+msgid "GeoKrety Toolbox"
+msgstr "GeoKrety Toolbox"
+
+#: smarty:55
+msgid "Waypoint resolver"
+msgstr "Wegpunkt-Solver"
 
 #: smarty/pages:3
 msgid "Change username"
@@ -2074,6 +2124,18 @@ msgstr "Globale Reviewer"
 #: smarty/pages:91
 msgid "Credits"
 msgstr "Danksagung"
+
+#: smarty/pages:3
+msgid "GeoKret watchers"
+msgstr ""
+
+#: smarty/pages:9
+msgid "Those users are watching GeoKret %1 moves"
+msgstr ""
+
+#: smarty/pages:34
+msgid "No users are watching GeoKret %1"
+msgstr ""
 
 #: smarty/pages:3
 msgid "Search GeoKrety"
@@ -2803,6 +2865,10 @@ msgstr "Alle E-Mails löschen"
 msgid "Delete mail"
 msgstr "E-Mail löschen"
 
+#: smarty:5
+msgid "Search…"
+msgstr ""
+
 #: smarty:3
 msgid "Admin"
 msgstr "Admin"
@@ -3248,43 +3314,51 @@ msgstr "Bitte gib hier den Tracking-Code ein"
 msgid "Log it!"
 msgstr "Loggen!"
 
-#: smarty/blocks/geokret:2
+#: smarty/blocks/geokret:4 smarty/blocks/geokret:17 smarty/blocks/geokret:29
+msgid "Who is watching this Geokret?"
+msgstr ""
+
+#: smarty/blocks/geokret:5
 msgid "Watchers"
 msgstr "Beobachter"
 
-#: smarty/blocks/geokret:6
+#: smarty/blocks/geokret:14
+msgid "Add this geokret to your watch list"
+msgstr ""
+
+#: smarty/blocks/geokret:36
 msgid "Log this GeoKret"
 msgstr "Diesen GeoKret loggen"
 
-#: smarty/blocks/geokret:11
+#: smarty/blocks/geokret:41
 msgid "Print a label for this GeoKret"
 msgstr "Etikett für diesen GeoKret drucken"
 
-#: smarty/blocks/geokret:25
+#: smarty/blocks/geokret:55
 msgid "Adopt this GeoKret"
 msgstr "Diesen GeoKret adoptieren"
 
-#: smarty/blocks/geokret:27
+#: smarty/blocks/geokret:57
 msgid "Login to claim this GeoKret"
 msgstr "Einloggen, um diesen GeoKret zu übernehmen"
 
-#: smarty/blocks/geokret:34
+#: smarty/blocks/geokret:64
 msgid "Mark this GeoKret as archived"
 msgstr "Diesen GeoKret als archiviert markieren"
 
-#: smarty/blocks/geokret:34
+#: smarty/blocks/geokret:64
 msgid "Archive this GeoKret"
 msgstr "Diesen GeoKret archivieren"
 
-#: smarty/blocks/geokret:40
+#: smarty/blocks/geokret:70
 msgid "Email owner"
 msgstr "E-Mail an Besitzer"
 
-#: smarty/blocks/geokret:46
+#: smarty/blocks/geokret:76
 msgid "Make this GeoKret available for adoption by another user"
 msgstr "GeoKret für die Adoption durch einen anderen Benutzer verfügbar machen"
 
-#: smarty/blocks/geokret:47
+#: smarty/blocks/geokret:77
 msgid "Transfer ownership"
 msgstr "Besitz übertragen"
 
