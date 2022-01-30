@@ -7,11 +7,6 @@ use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Markdown;
 use GeoKrety\Service\SecretCode;
 
-require '../init-f3.php';
-
-// Get PDO object
-$pgsql = $f3->get('DB')->pdo();
-
 $dsn = 'mysql:host=db;dbname=prod';
 $username = getenv('GK_DB_ORIG_USER');
 $password = getenv('GK_DB_ORIG_PASSWORD');
@@ -20,6 +15,11 @@ $options = [
 ];
 
 $mysql = new PDO($dsn, $username, $password, $options);
+
+require '../init-f3.php';
+
+// Get PDO object
+$pgsql = $f3->get('DB')->pdo();
 
 define('DEFAULT_PAGINATION', 1000);
 
