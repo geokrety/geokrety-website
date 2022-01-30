@@ -1,3 +1,17 @@
+## [2.14.0](https://github.com/geokrety/geokrety-website/compare/v2.13.1...v2.14.0) (2022-01-30)
+
+
+### Features
+
+* Implement GeoKrety watch/unwatch/watchers ([62ecf71](https://github.com/geokrety/geokrety-website/commit/62ecf71c66f4c9e19a7869c8f233a0eb80ab7d91)), closes [#706](https://github.com/geokrety/geokrety-website/issues/706)
+
+
+### Bug Fixes
+
+* Fix database-migrator bug introduced by c66230b4 ([9415982](https://github.com/geokrety/geokrety-website/commit/9415982b7653475e7007069bef5926f2ac919dd7))
+* Fix displaying some navbar items on mobile ([d9601a8](https://github.com/geokrety/geokrety-website/commit/d9601a81d32e1ca42b2b16f2010bc9b8097635b5))
+* Fix importing move comments with links ([fa8752c](https://github.com/geokrety/geokrety-website/commit/fa8752c0bb67c519ef792bfa1b0e394d191514f6))
+
 ### [2.13.1](https://github.com/geokrety/geokrety-website/compare/v2.13.0...v2.13.1) (2022-01-29)
 
 
