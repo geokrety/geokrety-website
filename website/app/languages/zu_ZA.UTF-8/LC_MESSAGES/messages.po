@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-29 12:07+0000\n"
-"PO-Revision-Date: 2022-01-29 12:12\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
+"PO-Revision-Date: 2022-01-31 19:33\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-29 12:07+0000\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -214,11 +214,10 @@ msgstr "crwdns18686:0crwdne18686:0"
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr "crwdns18688:0crwdne18688:0"
 
-#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
-msgid "Sorry but this mail address is already in use."
-msgstr "crwdns15656:0crwdne15656:0"
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:24
+#, php-format
+msgid "Sorry but this mail address is already in use. Do you want to <a href=\"%s\">reset your password</a>?"
+msgstr "crwdns29091:0%scrwdne29091:0"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
@@ -315,6 +314,27 @@ msgstr "crwdns15606:0crwdne15606:0"
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
 msgstr "crwdns15608:0%scrwdnd15608:0%scrwdne15608:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:19
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:19
+msgid "You cannot watch your own GeoKrety."
+msgstr "crwdns29055:0crwdne29055:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:35
+msgid "This GeoKret is not your watch list."
+msgstr "crwdns29057:0crwdne29057:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:42
+msgid "This GeoKret has been removed from your watch list."
+msgstr "crwdns29059:0crwdne29059:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:35
+msgid "This GeoKret is already in your watch list."
+msgstr "crwdns29061:0crwdne29061:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:44
+msgid "This GeoKret has been added to your watch list."
+msgstr "crwdns29063:0crwdne29063:0"
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
@@ -488,7 +508,7 @@ msgstr "crwdns29003:0crwdne29003:0"
 msgid "This page doesn't exists."
 msgstr "crwdns28979:0crwdne28979:0"
 
-#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:23
+#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:24
 msgid "This GeoKret does not exist."
 msgstr "crwdns29005:0crwdne29005:0"
 
@@ -587,6 +607,11 @@ msgstr "crwdns15654:0crwdne15654:0"
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "crwdns16348:0%scrwdne16348:0"
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
+msgid "Sorry but this mail address is already in use."
+msgstr "crwdns15656:0crwdne15656:0"
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:80
 #, php-format
@@ -994,9 +1019,10 @@ msgstr "crwdns18546:0crwdne18546:0"
 #: smarty/dialog:23 smarty/dialog:14 smarty/dialog:32 smarty/dialog:12
 #: smarty/dialog:55 smarty/dialog:66 smarty/dialog:15 smarty/dialog:27
 #: smarty/dialog:35 smarty/dialog:21 smarty/dialog:26 smarty/dialog:52
-#: smarty/dialog:37 smarty/dialog:51 smarty/dialog:24 smarty/dialog:46
-#: smarty/dialog:16 smarty/dialog:42 smarty/pages:30 smarty/pages:33
-#: smarty/pages:37 smarty/pages:75 smarty/pages:34 smarty/pages:38
+#: smarty/dialog:13 smarty/dialog:37 smarty/dialog:51 smarty/dialog:24
+#: smarty/dialog:46 smarty/dialog:16 smarty/dialog:42 smarty/pages:30
+#: smarty/pages:33 smarty/pages:37 smarty/pages:75 smarty/pages:34
+#: smarty/pages:38
 msgid "Dismiss"
 msgstr "crwdns14738:0crwdne14738:0"
 
@@ -1087,7 +1113,7 @@ msgstr "crwdns15892:0crwdne15892:0"
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
 msgstr "crwdns14934:0crwdne14934:0"
 
-#: smarty/dialog:26 smarty/dialog:46 smarty:90
+#: smarty/dialog:26 smarty/dialog:46 smarty:45
 msgid "Terms of use"
 msgstr "crwdns14500:0crwdne14500:0"
 
@@ -1291,6 +1317,18 @@ msgid "news posts you have are subscribed to"
 msgstr "crwdns16152:0crwdne16152:0"
 
 #: smarty/dialog:4
+msgid "Add this GeoKret to your watch list?"
+msgstr "crwdns29065:0crwdne29065:0"
+
+#: smarty/dialog:9
+msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
+msgstr "crwdns29067:0crwdne29067:0"
+
+#: smarty/dialog:14 smarty/blocks/geokret:15
+msgid "Watch"
+msgstr "crwdns29069:0crwdne29069:0"
+
+#: smarty/dialog:4
 msgid "Do you really want to unlock this script?"
 msgstr "crwdns19071:0crwdne19071:0"
 
@@ -1380,6 +1418,18 @@ msgid "Save"
 msgstr "crwdns15054:0crwdne15054:0"
 
 #: smarty/dialog:4
+msgid "Remove this GeoKret from your watch list?"
+msgstr "crwdns29071:0crwdne29071:0"
+
+#: smarty/dialog:9
+msgid "You will no longer receive updates of its journey in your daily mails."
+msgstr "crwdns29073:0crwdne29073:0"
+
+#: smarty/dialog:14 smarty/blocks/geokret:27
+msgid "Unwatch"
+msgstr "crwdns29075:0crwdne29075:0"
+
+#: smarty/dialog:4
 msgid "Refresh your secid?"
 msgstr "crwdns14734:0crwdne14734:0"
 
@@ -1451,82 +1501,9 @@ msgstr "crwdns18548:0crwdne18548:0"
 msgid "Toggle navigation"
 msgstr "crwdns14874:0crwdne14874:0"
 
-#: smarty:16 smarty:51 smarty:58 smarty/pages:3
+#: smarty:16 smarty:6 smarty:13 smarty/pages:3
 msgid "Log a GeoKret"
 msgstr "crwdns14460:0crwdne14460:0"
-
-#: smarty:47 smarty:3
-msgid "Home"
-msgstr "crwdns14130:0crwdne14130:0"
-
-#: smarty:48 smarty/pages:3 smarty/pages:26 smarty:5
-msgid "News"
-msgstr "crwdns14164:0crwdne14164:0"
-
-#: smarty:56 smarty/pages:26 smarty/pages:25 smarty/pages:18
-#: smarty/blocks/geokret:58
-msgid "Actions"
-msgstr "crwdns14606:0crwdne14606:0"
-
-#: smarty:60 smarty/pages:3 smarty/forms:6 smarty/blocks/user:3
-msgid "Create a new GeoKret"
-msgstr "crwdns14876:0crwdne14876:0"
-
-#: smarty:61 smarty/pages:3 smarty/pages:8
-msgid "Claim a GeoKret"
-msgstr "crwdns13876:0crwdne13876:0"
-
-#: smarty:64 smarty/pages:3 smarty/pages:8
-msgid "Advanced search"
-msgstr "crwdns14878:0crwdne14878:0"
-
-#: smarty:65
-msgid "Photo gallery"
-msgstr "crwdns14026:0crwdne14026:0"
-
-#: smarty:68
-msgid "GeoKrety Map"
-msgstr "crwdns14560:0crwdne14560:0"
-
-#: smarty:75
-msgid "Currently selected language"
-msgstr "crwdns15572:0crwdne15572:0"
-
-#: smarty:86 smarty:88 smarty/pages:39 smarty/pages:3
-msgid "Help"
-msgstr "crwdns14074:0crwdne14074:0"
-
-#: smarty:91 smarty/pages:3 smarty/pages:9
-msgid "Press corner"
-msgstr "crwdns14292:0crwdne14292:0"
-
-#: smarty:93
-msgid "GK interface / API"
-msgstr "crwdns14886:0crwdne14886:0"
-
-#: smarty:95
-msgid "Waypoints synchronization status"
-msgstr "crwdns19107:0crwdne19107:0"
-
-#: smarty:96
-msgid "Yearly rankings"
-msgstr "crwdns19083:0crwdne19083:0"
-
-#: smarty:98 smarty/pages:3
-msgid "Downloads"
-msgstr "crwdns14888:0crwdne14888:0"
-
-#: smarty:99
-msgid "GeoKrety Toolbox"
-msgstr "crwdns14890:0crwdne14890:0"
-
-#: smarty:100
-msgid "Waypoint resolver"
-msgstr "crwdns14892:0crwdne14892:0"
-
-#: smarty:136
-msgid "Search…"
-msgstr "crwdns29029:0crwdne29029:0"
 
 #: smarty/elements:10
 msgid "Delete comment"
@@ -1535,6 +1512,10 @@ msgstr "crwdns14154:0crwdne14154:0"
 #: smarty/elements:36 smarty/elements:33 smarty/elements:31
 msgid "Move this GeoKret"
 msgstr "crwdns15934:0crwdne15934:0"
+
+#: smarty/elements:39 smarty/blocks/geokret:26
+msgid "Remove this geokret from your watch list"
+msgstr "crwdns29077:0crwdne29077:0"
 
 #: smarty/elements:4
 msgid "%1 logo"
@@ -1721,6 +1702,75 @@ msgstr "crwdns16264:0crwdne16264:0"
 #: smarty/chunks:7
 msgid "group name"
 msgstr "crwdns15928:0crwdne15928:0"
+
+#: smarty:2 smarty:3
+msgid "Home"
+msgstr "crwdns14130:0crwdne14130:0"
+
+#: smarty:3 smarty/pages:3 smarty/pages:26 smarty:5
+msgid "News"
+msgstr "crwdns14164:0crwdne14164:0"
+
+#: smarty:11 smarty/pages:26 smarty/pages:25 smarty/pages:18
+#: smarty/blocks/geokret:88
+msgid "Actions"
+msgstr "crwdns14606:0crwdne14606:0"
+
+#: smarty:15 smarty/pages:3 smarty/forms:6 smarty/blocks/user:3
+msgid "Create a new GeoKret"
+msgstr "crwdns14876:0crwdne14876:0"
+
+#: smarty:16 smarty/pages:3 smarty/pages:8
+msgid "Claim a GeoKret"
+msgstr "crwdns13876:0crwdne13876:0"
+
+#: smarty:19 smarty/pages:3 smarty/pages:8
+msgid "Advanced search"
+msgstr "crwdns14878:0crwdne14878:0"
+
+#: smarty:20
+msgid "Photo gallery"
+msgstr "crwdns14026:0crwdne14026:0"
+
+#: smarty:23
+msgid "GeoKrety Map"
+msgstr "crwdns14560:0crwdne14560:0"
+
+#: smarty:30
+msgid "Currently selected language"
+msgstr "crwdns15572:0crwdne15572:0"
+
+#: smarty:41 smarty:43 smarty/pages:39 smarty/pages:3
+msgid "Help"
+msgstr "crwdns14074:0crwdne14074:0"
+
+#: smarty:46 smarty/pages:3 smarty/pages:9
+msgid "Press corner"
+msgstr "crwdns14292:0crwdne14292:0"
+
+#: smarty:48
+msgid "GK interface / API"
+msgstr "crwdns14886:0crwdne14886:0"
+
+#: smarty:50
+msgid "Waypoints synchronization status"
+msgstr "crwdns19107:0crwdne19107:0"
+
+#: smarty:51
+msgid "Yearly rankings"
+msgstr "crwdns19083:0crwdne19083:0"
+
+#: smarty:53 smarty/pages:3
+msgid "Downloads"
+msgstr "crwdns14888:0crwdne14888:0"
+
+#: smarty:54
+msgid "GeoKrety Toolbox"
+msgstr "crwdns14890:0crwdne14890:0"
+
+#: smarty:55
+msgid "Waypoint resolver"
+msgstr "crwdns14892:0crwdne14892:0"
 
 #: smarty/pages:3
 msgid "Change username"
@@ -2074,6 +2124,18 @@ msgstr "crwdns15046:0crwdne15046:0"
 #: smarty/pages:91
 msgid "Credits"
 msgstr "crwdns15048:0crwdne15048:0"
+
+#: smarty/pages:3
+msgid "GeoKret watchers"
+msgstr "crwdns29081:0crwdne29081:0"
+
+#: smarty/pages:9
+msgid "Those users are watching GeoKret %1 moves"
+msgstr "crwdns29083:0%1crwdne29083:0"
+
+#: smarty/pages:34
+msgid "No users are watching GeoKret %1"
+msgstr "crwdns29085:0%1crwdne29085:0"
 
 #: smarty/pages:3
 msgid "Search GeoKrety"
@@ -2803,6 +2865,10 @@ msgstr "crwdns16474:0crwdne16474:0"
 msgid "Delete mail"
 msgstr "crwdns16464:0crwdne16464:0"
 
+#: smarty:5
+msgid "Search…"
+msgstr "crwdns29029:0crwdne29029:0"
+
 #: smarty:3
 msgid "Admin"
 msgstr "crwdns13852:0crwdne13852:0"
@@ -3248,43 +3314,51 @@ msgstr "crwdns15790:0crwdne15790:0"
 msgid "Log it!"
 msgstr "crwdns15792:0crwdne15792:0"
 
-#: smarty/blocks/geokret:2
+#: smarty/blocks/geokret:4 smarty/blocks/geokret:17 smarty/blocks/geokret:29
+msgid "Who is watching this Geokret?"
+msgstr "crwdns29087:0crwdne29087:0"
+
+#: smarty/blocks/geokret:5
 msgid "Watchers"
 msgstr "crwdns15780:0crwdne15780:0"
 
-#: smarty/blocks/geokret:6
+#: smarty/blocks/geokret:14
+msgid "Add this geokret to your watch list"
+msgstr "crwdns29089:0crwdne29089:0"
+
+#: smarty/blocks/geokret:36
 msgid "Log this GeoKret"
 msgstr "crwdns14188:0crwdne14188:0"
 
-#: smarty/blocks/geokret:11
+#: smarty/blocks/geokret:41
 msgid "Print a label for this GeoKret"
 msgstr "crwdns14596:0crwdne14596:0"
 
-#: smarty/blocks/geokret:25
+#: smarty/blocks/geokret:55
 msgid "Adopt this GeoKret"
 msgstr "crwdns14598:0crwdne14598:0"
 
-#: smarty/blocks/geokret:27
+#: smarty/blocks/geokret:57
 msgid "Login to claim this GeoKret"
 msgstr "crwdns14600:0crwdne14600:0"
 
-#: smarty/blocks/geokret:34
+#: smarty/blocks/geokret:64
 msgid "Mark this GeoKret as archived"
 msgstr "crwdns18832:0crwdne18832:0"
 
-#: smarty/blocks/geokret:34
+#: smarty/blocks/geokret:64
 msgid "Archive this GeoKret"
 msgstr "crwdns14602:0crwdne14602:0"
 
-#: smarty/blocks/geokret:40
+#: smarty/blocks/geokret:70
 msgid "Email owner"
 msgstr "crwdns14604:0crwdne14604:0"
 
-#: smarty/blocks/geokret:46
+#: smarty/blocks/geokret:76
 msgid "Make this GeoKret available for adoption by another user"
 msgstr "crwdns15782:0crwdne15782:0"
 
-#: smarty/blocks/geokret:47
+#: smarty/blocks/geokret:77
 msgid "Transfer ownership"
 msgstr "crwdns15784:0crwdne15784:0"
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-29 12:07+0000\n"
-"PO-Revision-Date: 2022-01-29 12:11\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
+"PO-Revision-Date: 2022-01-31 19:32\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-29 12:07+0000\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -214,11 +214,10 @@ msgstr "Параметр \"userid\" має бути припустимим чи�
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr "Параметр \"gkid\" має бути дійсним числом або GKid (GKXXX)."
 
-#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
-msgid "Sorry but this mail address is already in use."
-msgstr "Вибачте, але ця адреса електронної пошти вже використовується."
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:24
+#, php-format
+msgid "Sorry but this mail address is already in use. Do you want to <a href=\"%s\">reset your password</a>?"
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
@@ -315,6 +314,27 @@ msgstr "Не вдалося створити новий код власника.
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
 msgstr "Власний код (%s) був створений. Дайте йому разом з кодом відстеження (%s) комусь і він може прийняти ваш GeoKret."
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:19
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:19
+msgid "You cannot watch your own GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:35
+msgid "This GeoKret is not your watch list."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:42
+msgid "This GeoKret has been removed from your watch list."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:35
+msgid "This GeoKret is already in your watch list."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:44
+msgid "This GeoKret has been added to your watch list."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
@@ -488,7 +508,7 @@ msgstr ""
 msgid "This page doesn't exists."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:23
+#: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:24
 msgid "This GeoKret does not exist."
 msgstr ""
 
@@ -587,6 +607,11 @@ msgstr "Ваші налаштування електронної пошти бу
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Підтвердження електронною поштою надіслано на вашу нову адресу. Ви повинні натиснути на посилання в електронному листі, щоб підтвердити зміну на Вашу електронну адресу. Термін дії посилання для підтвердження минає через %s."
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
+msgid "Sorry but this mail address is already in use."
+msgstr "Вибачте, але ця адреса електронної пошти вже використовується."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:80
 #, php-format
@@ -994,9 +1019,10 @@ msgstr "Видалення цього переміщення призведе д
 #: smarty/dialog:23 smarty/dialog:14 smarty/dialog:32 smarty/dialog:12
 #: smarty/dialog:55 smarty/dialog:66 smarty/dialog:15 smarty/dialog:27
 #: smarty/dialog:35 smarty/dialog:21 smarty/dialog:26 smarty/dialog:52
-#: smarty/dialog:37 smarty/dialog:51 smarty/dialog:24 smarty/dialog:46
-#: smarty/dialog:16 smarty/dialog:42 smarty/pages:30 smarty/pages:33
-#: smarty/pages:37 smarty/pages:75 smarty/pages:34 smarty/pages:38
+#: smarty/dialog:13 smarty/dialog:37 smarty/dialog:51 smarty/dialog:24
+#: smarty/dialog:46 smarty/dialog:16 smarty/dialog:42 smarty/pages:30
+#: smarty/pages:33 smarty/pages:37 smarty/pages:75 smarty/pages:34
+#: smarty/pages:38
 msgid "Dismiss"
 msgstr "Відхилити"
 
@@ -1087,7 +1113,7 @@ msgstr "Ми не надаємо жодних гарантій чи гарант
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
 msgstr "Вміст, опублікований вами на сайті, не може містити вульгарних виразів, образливих і незаконних змістів."
 
-#: smarty/dialog:26 smarty/dialog:46 smarty:90
+#: smarty/dialog:26 smarty/dialog:46 smarty:45
 msgid "Terms of use"
 msgstr "Умови використання"
 
@@ -1291,6 +1317,18 @@ msgid "news posts you have are subscribed to"
 msgstr "Новинні повідомлення, Ви підписалися на"
 
 #: smarty/dialog:4
+msgid "Add this GeoKret to your watch list?"
+msgstr ""
+
+#: smarty/dialog:9
+msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
+msgstr ""
+
+#: smarty/dialog:14 smarty/blocks/geokret:15
+msgid "Watch"
+msgstr ""
+
+#: smarty/dialog:4
 msgid "Do you really want to unlock this script?"
 msgstr ""
 
@@ -1380,6 +1418,18 @@ msgid "Save"
 msgstr "Зберегти"
 
 #: smarty/dialog:4
+msgid "Remove this GeoKret from your watch list?"
+msgstr ""
+
+#: smarty/dialog:9
+msgid "You will no longer receive updates of its journey in your daily mails."
+msgstr ""
+
+#: smarty/dialog:14 smarty/blocks/geokret:27
+msgid "Unwatch"
+msgstr ""
+
+#: smarty/dialog:4
 msgid "Refresh your secid?"
 msgstr "Оновити свій розділ?"
 
@@ -1451,82 +1501,9 @@ msgstr "Ви дійсно хочете видалити це зображенн�
 msgid "Toggle navigation"
 msgstr "Переключити навігацію"
 
-#: smarty:16 smarty:51 smarty:58 smarty/pages:3
+#: smarty:16 smarty:6 smarty:13 smarty/pages:3
 msgid "Log a GeoKret"
 msgstr "Вхід GeoKret"
-
-#: smarty:47 smarty:3
-msgid "Home"
-msgstr "Будинок"
-
-#: smarty:48 smarty/pages:3 smarty/pages:26 smarty:5
-msgid "News"
-msgstr "Новини"
-
-#: smarty:56 smarty/pages:26 smarty/pages:25 smarty/pages:18
-#: smarty/blocks/geokret:58
-msgid "Actions"
-msgstr "Дії"
-
-#: smarty:60 smarty/pages:3 smarty/forms:6 smarty/blocks/user:3
-msgid "Create a new GeoKret"
-msgstr "Створити новий GeoKret"
-
-#: smarty:61 smarty/pages:3 smarty/pages:8
-msgid "Claim a GeoKret"
-msgstr "Claim a GeoKret"
-
-#: smarty:64 smarty/pages:3 smarty/pages:8
-msgid "Advanced search"
-msgstr "Розширений пошук"
-
-#: smarty:65
-msgid "Photo gallery"
-msgstr "Фото галерея"
-
-#: smarty:68
-msgid "GeoKrety Map"
-msgstr "GeoKrety карта"
-
-#: smarty:75
-msgid "Currently selected language"
-msgstr "Зараз вибрана мова"
-
-#: smarty:86 smarty:88 smarty/pages:39 smarty/pages:3
-msgid "Help"
-msgstr "Допомога"
-
-#: smarty:91 smarty/pages:3 smarty/pages:9
-msgid "Press corner"
-msgstr "Куточок преси"
-
-#: smarty:93
-msgid "GK interface / API"
-msgstr "Інтерфейс GK / API"
-
-#: smarty:95
-msgid "Waypoints synchronization status"
-msgstr ""
-
-#: smarty:96
-msgid "Yearly rankings"
-msgstr ""
-
-#: smarty:98 smarty/pages:3
-msgid "Downloads"
-msgstr "Завантажень"
-
-#: smarty:99
-msgid "GeoKrety Toolbox"
-msgstr "GeoKrety інструменти"
-
-#: smarty:100
-msgid "Waypoint resolver"
-msgstr "Розв'язувач точок"
-
-#: smarty:136
-msgid "Search…"
-msgstr ""
 
 #: smarty/elements:10
 msgid "Delete comment"
@@ -1535,6 +1512,10 @@ msgstr "Видалити коментар"
 #: smarty/elements:36 smarty/elements:33 smarty/elements:31
 msgid "Move this GeoKret"
 msgstr "Перемістити це GeoKret"
+
+#: smarty/elements:39 smarty/blocks/geokret:26
+msgid "Remove this geokret from your watch list"
+msgstr ""
 
 #: smarty/elements:4
 msgid "%1 logo"
@@ -1721,6 +1702,75 @@ msgstr "платформа"
 #: smarty/chunks:7
 msgid "group name"
 msgstr "назва групи"
+
+#: smarty:2 smarty:3
+msgid "Home"
+msgstr "Будинок"
+
+#: smarty:3 smarty/pages:3 smarty/pages:26 smarty:5
+msgid "News"
+msgstr "Новини"
+
+#: smarty:11 smarty/pages:26 smarty/pages:25 smarty/pages:18
+#: smarty/blocks/geokret:88
+msgid "Actions"
+msgstr "Дії"
+
+#: smarty:15 smarty/pages:3 smarty/forms:6 smarty/blocks/user:3
+msgid "Create a new GeoKret"
+msgstr "Створити новий GeoKret"
+
+#: smarty:16 smarty/pages:3 smarty/pages:8
+msgid "Claim a GeoKret"
+msgstr "Claim a GeoKret"
+
+#: smarty:19 smarty/pages:3 smarty/pages:8
+msgid "Advanced search"
+msgstr "Розширений пошук"
+
+#: smarty:20
+msgid "Photo gallery"
+msgstr "Фото галерея"
+
+#: smarty:23
+msgid "GeoKrety Map"
+msgstr "GeoKrety карта"
+
+#: smarty:30
+msgid "Currently selected language"
+msgstr "Зараз вибрана мова"
+
+#: smarty:41 smarty:43 smarty/pages:39 smarty/pages:3
+msgid "Help"
+msgstr "Допомога"
+
+#: smarty:46 smarty/pages:3 smarty/pages:9
+msgid "Press corner"
+msgstr "Куточок преси"
+
+#: smarty:48
+msgid "GK interface / API"
+msgstr "Інтерфейс GK / API"
+
+#: smarty:50
+msgid "Waypoints synchronization status"
+msgstr ""
+
+#: smarty:51
+msgid "Yearly rankings"
+msgstr ""
+
+#: smarty:53 smarty/pages:3
+msgid "Downloads"
+msgstr "Завантажень"
+
+#: smarty:54
+msgid "GeoKrety Toolbox"
+msgstr "GeoKrety інструменти"
+
+#: smarty:55
+msgid "Waypoint resolver"
+msgstr "Розв'язувач точок"
 
 #: smarty/pages:3
 msgid "Change username"
@@ -2074,6 +2124,18 @@ msgstr "Глобальні рецензенти"
 #: smarty/pages:91
 msgid "Credits"
 msgstr "Подяки"
+
+#: smarty/pages:3
+msgid "GeoKret watchers"
+msgstr ""
+
+#: smarty/pages:9
+msgid "Those users are watching GeoKret %1 moves"
+msgstr ""
+
+#: smarty/pages:34
+msgid "No users are watching GeoKret %1"
+msgstr ""
 
 #: smarty/pages:3
 msgid "Search GeoKrety"
@@ -2803,6 +2865,10 @@ msgstr "Видалити всі листи"
 msgid "Delete mail"
 msgstr "Видалити пошту"
 
+#: smarty:5
+msgid "Search…"
+msgstr ""
+
 #: smarty:3
 msgid "Admin"
 msgstr "Адмін"
@@ -3248,43 +3314,51 @@ msgstr "Будь ласка, введіть код відстеження"
 msgid "Log it!"
 msgstr "Увійти!"
 
-#: smarty/blocks/geokret:2
+#: smarty/blocks/geokret:4 smarty/blocks/geokret:17 smarty/blocks/geokret:29
+msgid "Who is watching this Geokret?"
+msgstr ""
+
+#: smarty/blocks/geokret:5
 msgid "Watchers"
 msgstr "Спостерігати"
 
-#: smarty/blocks/geokret:6
+#: smarty/blocks/geokret:14
+msgid "Add this geokret to your watch list"
+msgstr ""
+
+#: smarty/blocks/geokret:36
 msgid "Log this GeoKret"
 msgstr "Вхід цьому GeoKret"
 
-#: smarty/blocks/geokret:11
+#: smarty/blocks/geokret:41
 msgid "Print a label for this GeoKret"
 msgstr "Друк етикетки для цього GeoKret"
 
-#: smarty/blocks/geokret:25
+#: smarty/blocks/geokret:55
 msgid "Adopt this GeoKret"
 msgstr "Прийняти цього GeoKret"
 
-#: smarty/blocks/geokret:27
+#: smarty/blocks/geokret:57
 msgid "Login to claim this GeoKret"
 msgstr "Увійти, щоб претендувати на цю GeoKret"
 
-#: smarty/blocks/geokret:34
+#: smarty/blocks/geokret:64
 msgid "Mark this GeoKret as archived"
 msgstr "Позначити це GeoKret як архівоване"
 
-#: smarty/blocks/geokret:34
+#: smarty/blocks/geokret:64
 msgid "Archive this GeoKret"
 msgstr "Архів цього GeoKret"
 
-#: smarty/blocks/geokret:40
+#: smarty/blocks/geokret:70
 msgid "Email owner"
 msgstr "Власник електронної пошти"
 
-#: smarty/blocks/geokret:46
+#: smarty/blocks/geokret:76
 msgid "Make this GeoKret available for adoption by another user"
 msgstr "Зробити це GeoKret доступним для входу іншого користувача"
 
-#: smarty/blocks/geokret:47
+#: smarty/blocks/geokret:77
 msgid "Transfer ownership"
 msgstr "Змінити відповідального"
 
