@@ -40,7 +40,7 @@ $validator->addValidator('ciphered_password', function ($field, $input, $param =
 
 $validator->addValidator('username_unique', function ($field, $input, $param = null) {
     $user = new \GeoKrety\Model\User();
-    $user->load([$field.' = ? AND id != ?', $input[$field], $input['_id']]);
+    $user->load([sprintf('lower(%s) = lower(?) AND id != ?', $field), $input[$field], $input['_id']]);
 
     return $user->dry();
 }, _('This username is already used'));
