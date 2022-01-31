@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-30 16:15+0000\n"
-"PO-Revision-Date: 2022-01-30 16:21\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
+"PO-Revision-Date: 2022-01-31 19:32\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Nynorsk\n"
 "Language: nn_NO\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-30 16:15+0000\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -214,10 +214,9 @@ msgstr ""
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
-msgid "Sorry but this mail address is already in use."
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:24
+#, php-format
+msgid "Sorry but this mail address is already in use. Do you want to <a href=\"%s\">reset your password</a>?"
 msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
@@ -607,6 +606,11 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:52
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
+msgid "Sorry but this mail address is already in use."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:80
@@ -1511,10 +1515,6 @@ msgstr ""
 
 #: smarty/elements:39 smarty/blocks/geokret:26
 msgid "Remove this geokret from your watch list"
-msgstr ""
-
-#: smarty/elements:40
-msgid "❌"
 msgstr ""
 
 #: smarty/elements:4
