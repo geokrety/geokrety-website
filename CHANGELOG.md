@@ -1,3 +1,12 @@
+### [2.14.1](https://github.com/geokrety/geokrety-website/compare/v2.14.0...v2.14.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* Add password reset link on registration error ([468dff1](https://github.com/geokrety/geokrety-website/commit/468dff13cbf782a6391b32a355a6ae6544c90a0d))
+* No need to translate emoji strings ([063c0b4](https://github.com/geokrety/geokrety-website/commit/063c0b4ea6fea1adfd62190491f10950dbbe6234))
+* Social registration does not check for duplicate username ([92bb2ac](https://github.com/geokrety/geokrety-website/commit/92bb2accc8f62dc3ff789bcb8f70c3d813e134b5)), closes [#707](https://github.com/geokrety/geokrety-website/issues/707)
+
 ## [2.14.0](https://github.com/geokrety/geokrety-website/compare/v2.13.1...v2.14.0) (2022-01-30)
 
 
