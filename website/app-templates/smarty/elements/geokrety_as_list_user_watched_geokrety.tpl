@@ -36,9 +36,7 @@
         <a class="btn btn-default btn-xs move-link" href="{'move_create'|alias}?tracking_code={$geokret->tracking_code}" title="{t}Move this GeoKret{/t}">🛩️</a>
         {/if}
         {if $f3->get('SESSION.CURRENT_USER') == $f3->get('PARAMS.userid')}
-        <a class="btn btn-default btn-xs unwatch-link" href="{'geokret_unwatch'|alias:sprintf('@gkid=%s', $geokret->gkid)}" title="{t}Remove this geokret from your watch list{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-unwatch" data-id="{$geokret->gkid}">
-            {t}❌{/t}
-        </a>
+        <a class="btn btn-default btn-xs unwatch-link" href="{'geokret_unwatch'|alias:sprintf('@gkid=%s', $geokret->gkid)}" title="{t}Remove this geokret from your watch list{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-unwatch" data-id="{$geokret->gkid}">❌</a>
         {/if}
     </td>
 </tr>
