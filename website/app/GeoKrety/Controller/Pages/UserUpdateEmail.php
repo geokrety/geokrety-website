@@ -54,7 +54,7 @@ class UserUpdateEmail extends Base {
                 $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
             }
 
-            // Someone else wish to use this address
+            // Someone else wishes to use this address
             $token->load(['user != ? AND _email_hash = public.digest(lower(?), \'sha256\') AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $user->id, $f3->get('POST.email'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
             if ($token->valid()) {
                 Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
