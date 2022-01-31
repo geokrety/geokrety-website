@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-30 16:15+0000\n"
-"PO-Revision-Date: 2022-01-30 17:11\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
+"PO-Revision-Date: 2022-01-31 19:33\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-30 16:15+0000\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -214,11 +214,10 @@ msgstr "Parameter \"userid\" muss eine gültige Zahl sein."
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr "Parameter \"gkid\" muss eine gültige Zahl oder GKid (GKXXXXX) sein."
 
-#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
-msgid "Sorry but this mail address is already in use."
-msgstr "Diese E-Mail-Adresse wird leider bereits verwendet."
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:24
+#, php-format
+msgid "Sorry but this mail address is already in use. Do you want to <a href=\"%s\">reset your password</a>?"
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
@@ -608,6 +607,11 @@ msgstr "Deine E-Mail-Einstellungen wurden gespeichert."
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Eine Bestätigungsmail wurde erneut an deine neue Adresse gesendet. Du musst den darin befindlichen Link anklicken, um die Änderung deiner E-Mail-Adresse zu bestätigen. Der Bestätigungslink läuft ab in %s."
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
+msgid "Sorry but this mail address is already in use."
+msgstr "Diese E-Mail-Adresse wird leider bereits verwendet."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:80
 #, php-format
@@ -1512,10 +1516,6 @@ msgstr "Diesen GeoKret bewegen"
 #: smarty/elements:39 smarty/blocks/geokret:26
 msgid "Remove this geokret from your watch list"
 msgstr "Diesen GeoKret von deiner Beobachtungsliste entfernen"
-
-#: smarty/elements:40
-msgid "❌"
-msgstr "❌"
 
 #: smarty/elements:4
 msgid "%1 logo"
