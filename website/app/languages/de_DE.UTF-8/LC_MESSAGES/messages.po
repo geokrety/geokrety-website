@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-31 19:30+0000\n"
-"PO-Revision-Date: 2022-01-31 19:51\n"
+"PO-Revision-Date: 2022-01-31 20:02\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -839,7 +839,7 @@ msgstr "GeoKret-Bewegung"
 
 #: website/app/GeoKrety/PictureType.php:60
 msgid "User avatar"
-msgstr "Benutzeravatar"
+msgstr "Nutzer-Avatar"
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:233
 msgid "Bad coordinates or unknown format."
@@ -897,7 +897,7 @@ msgstr "Kein Tracking-Code angegeben."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:118
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
-msgstr "Anonyme Benutzer können nicht mehrere Tracking-Codes gleichzeitig überprüfen. Bitte melde dich zuerst an."
+msgstr "Anonyme Nutzer können nicht mehrere Tracking-Codes gleichzeitig überprüfen. Bitte melde dich zuerst an."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:122
 #, php-format
@@ -908,7 +908,7 @@ msgstr "Es können nur %d Tracking-Codes gleichzeitig angegeben werden, es wurde
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
 #, php-format
 msgid "Sorry, but username \"%s\" is already used."
-msgstr "Der Benutzername \"%s\" wird leider bereits genutzt."
+msgstr "Der Nutzername \"%s\" wird leider bereits genutzt."
 
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
 #, php-format
@@ -966,11 +966,11 @@ msgstr "Dieser Benutzername wird bereits verwendet"
 
 #: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
-msgstr "Anonyme Benutzer müssen einen Wert für {0} angeben"
+msgstr "Anonyme Nutzer müssen einen Wert für {0} angeben"
 
 #: website/app/validators.php:67
 msgid "Registered users must provide a value for {0}"
-msgstr "Registrierte Benutzer müssen einen Wer für {0} angeben"
+msgstr "Registrierte Nutzer müssen einen Wer für {0} angeben"
 
 #: website/app/validators.php:78
 msgid "This logtype require valid {0} coordinates"
@@ -1198,7 +1198,7 @@ msgstr "Dies wird die Standardsprache sein, wenn du dich anmeldest und die Haupt
 #: smarty/dialog:26 smarty/dialog:51 smarty/dialog:50 smarty/dialog:15
 #: smarty/dialog:41 smarty/pages:29 smarty/pages:74
 msgid "Back to user page"
-msgstr "Zurück zur Benutzerseite"
+msgstr "Zurück zur Nutzerseite"
 
 #: smarty/dialog:29 smarty/dialog:54 smarty/dialog:53 smarty/pages:32
 #: smarty/pages:57
@@ -1371,7 +1371,7 @@ msgstr "Lies mehr über die Auswahl guter Passwörter:"
 
 #: smarty/dialog:39
 msgid "Choosing Good Passwords -- A User Guide"
-msgstr "Gute Passwörter auswählen - Ein Benutzerhandbuch"
+msgstr "Gute Passwörter auswählen - Ein Nutzerhandbuch"
 
 #: smarty/dialog:40
 msgid "How to Write Good Passwords"
@@ -1443,7 +1443,7 @@ msgstr "Erneuern"
 
 #: smarty/dialog:9
 msgid "Contact user"
-msgstr "Benutzer kontaktieren"
+msgstr "Nutzer kontaktieren"
 
 #: smarty/dialog:16 smarty/devel/pages:18
 msgid "To"
@@ -1467,7 +1467,7 @@ msgstr "Nachricht"
 
 #: smarty/dialog:32
 msgid "Message to user"
-msgstr "Nachricht an Benutzer"
+msgstr "Nachricht an Nutzer"
 
 #: smarty/dialog:44
 msgid "Send message"
@@ -1479,7 +1479,7 @@ msgstr "Diesen GeoKret zur Adoption anbieten?"
 
 #: smarty/dialog:10
 msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "Dies erlaubt es einem anderen Benutzer, der den Tracking-Code und den Besitzer-Code kennt, der neue Besitzer dieses GeoKret zu werden."
+msgstr "Dies erlaubt es einem anderen Nutzer, der den Tracking-Code und den Besitzer-Code kennt, der neue Besitzer dieses GeoKret zu werden."
 
 #: smarty/dialog:15
 msgid "Back to GeoKret page"
@@ -1601,7 +1601,7 @@ msgstr "Dieser Bereich 🥦 wird gerade aktiv weiterentwickelt 👨‍💻, wenn
 
 #: smarty/banners:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "Du hast diesen GeoKret zur Adoption freigegeben. Der Besitzer-Code lautet: <strong>%1</strong>. Gib ihn zusammen mit dem Tracking-Code <strong>%2</strong> an Benutzer, die deinen GeoKret adoptieren wollen."
+msgstr "Du hast diesen GeoKret zur Adoption freigegeben. Der Besitzer-Code lautet: <strong>%1</strong>. Gib ihn zusammen mit dem Tracking-Code <strong>%2</strong> an Nutzer, die deinen GeoKret adoptieren wollen."
 
 #: smarty/banners:6
 msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
@@ -1613,7 +1613,7 @@ msgstr "Dieser GeoKret steht zur Adoption zur Verfügung. Bitte vorher <a href=\
 
 #: smarty/banners:3
 msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "Zu deinem Benutzerkonto ist leider keine E-Mail-Adresse hinterlegt. Du kannst daher dein Passwort im Fall des Verlusts nicht zurücksetzen! Des weiteren erhältst du keine täglichen Benachrichtigungen zu deinen und beobachteten GeoKrety."
+msgstr "Zu deinem Nutzerkonto ist leider keine E-Mail-Adresse hinterlegt. Du kannst daher dein Passwort im Fall des Verlusts nicht zurücksetzen! Des weiteren erhältst du keine täglichen Benachrichtigungen zu deinen und beobachteten GeoKrety."
 
 #: smarty/banners:4
 msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
@@ -1625,7 +1625,7 @@ msgstr "Einige Statistiken"
 
 #: smarty/banners:6
 msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "<strong>%1</strong> registrierte GeoKrety, <strong>%2</strong> GeoKrety versteckt durch <strong>%3</strong> Benutzer."
+msgstr "<strong>%1</strong> registrierte GeoKrety, <strong>%2</strong> GeoKrety versteckt durch <strong>%3</strong> Nutzer."
 
 #: smarty/banners:13
 msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
@@ -1774,23 +1774,23 @@ msgstr "Wegpunkt-Solver"
 
 #: smarty/pages:3
 msgid "Change username"
-msgstr "Benutzername ändern"
+msgstr "Nutzername ändern"
 
 #: smarty/pages:9
 msgid "Change your username"
-msgstr "Ändere deinen Benutzernamen"
+msgstr "Ändere deinen Nutzernamen"
 
 #: smarty/pages:16
 msgid "Once your username is changed, you will need to reconnect."
-msgstr "Nachdem dein Benutzername geändert wurde, musst du dich erneut verbinden."
+msgstr "Nachdem dein Nutzername geändert wurde, musst du dich erneut verbinden."
 
 #: smarty/pages:20
 msgid "Desired username"
-msgstr "Gewünschter Benutzername"
+msgstr "Gewünschter Nutzername"
 
 #: smarty/pages:21
 msgid "New username"
-msgstr "Neuer Benutzername"
+msgstr "Neuer Nutzername"
 
 #: smarty/pages:3 smarty/pages:9
 msgid "GeoKrety visiting the cache %1"
@@ -1983,15 +1983,15 @@ msgstr "Hilfe API"
 
 #: smarty/pages:3
 msgid "Search users"
-msgstr "Benutzer suchen"
+msgstr "Nutzer suchen"
 
 #: smarty/pages:9
 msgid "Found users matching: %1"
-msgstr "Übereinstimmende Benutzer gefunden: %1"
+msgstr "Übereinstimmende Nutzer gefunden: %1"
 
 #: smarty/pages:34
 msgid "No users matching: %1"
-msgstr "Keine übereinstimmenden Benutzer gefunden: %1"
+msgstr "Keine übereinstimmenden Nutzer gefunden: %1"
 
 #: smarty/pages:3
 msgid "Statpic background chooser"
@@ -2131,11 +2131,11 @@ msgstr "GeoKret-Beobachter"
 
 #: smarty/pages:9
 msgid "Those users are watching GeoKret %1 moves"
-msgstr "Diese Benutzer beobachten die Bewegungen des GeoKret %1"
+msgstr "Diese Nutzer beobachten die Bewegungen des GeoKret %1"
 
 #: smarty/pages:34
 msgid "No users are watching GeoKret %1"
-msgstr "Keine Benutzer beobachten GeoKret %1"
+msgstr "Keine Nutzer beobachten GeoKret %1"
 
 #: smarty/pages:3
 msgid "Search GeoKrety"
@@ -2299,7 +2299,7 @@ msgstr "E-Mail"
 
 #: smarty/pages:24
 msgid "Or via the user profile"
-msgstr "Oder über das Benutzerprofil"
+msgstr "Oder über das Nutzerprofil"
 
 #: smarty/pages:33
 msgid "IRC"
@@ -2459,7 +2459,7 @@ msgstr "Zeigt GeoKrety-Trackables auf <a href=\"%1\" target=\"_blank\">geocachin
 
 #: smarty/pages:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr "Dieses Skript wurden geschrieben um eine Brücke zwischen der sehr beliebten <a href=\"%1\">geocaching.com</a>-Seite und <a href=\"%2\">geokrety.org</a> zu bilden. Es hat zwei Funktionen. Wenn du eine bestimmte Cache-Seite auf <a href=\"%1\">geocaching.com</a> aufrufst, prüft es automatisch, ob es irgendwelche GeoKrety (auf <a href=\"%2\">geokrety.org</a> verfolgte Gegenstände) in diesem Cache gibt und das Ergebnis im Inventar-Bereich auf der rechten Seite des Bildschirms (unterhalb der existierenden Liste von Travelbugs und Geocoins) anzeigen. Wenn du ein Benutzerkonto auf <a href=\"%2\">geokrety.org</a> hast, kannst du auch auf einfache Weise GeoKrety in <a href=\"%1\">Geocaching</a> caches ablegen, da der Wegpunkt-Code und die Koordinaten automatisch auf die Log-Seite von <a href=\"%2\">geokrety.org</a> kopiert werden."
+msgstr "Dieses Skript wurden geschrieben um eine Brücke zwischen der sehr beliebten <a href=\"%1\">geocaching.com</a>-Seite und <a href=\"%2\">geokrety.org</a> zu bilden. Es hat zwei Funktionen. Wenn du eine bestimmte Cache-Seite auf <a href=\"%1\">geocaching.com</a> aufrufst, prüft es automatisch, ob es irgendwelche GeoKrety (auf <a href=\"%2\">geokrety.org</a> verfolgte Gegenstände) in diesem Cache gibt und das Ergebnis im Inventar-Bereich auf der rechten Seite des Bildschirms (unterhalb der existierenden Liste von Travelbugs und Geocoins) anzeigen. Wenn du ein Nutzerkonto auf <a href=\"%2\">geokrety.org</a> hast, kannst du auch auf einfache Weise GeoKrety in <a href=\"%1\">Geocaching</a> caches ablegen, da der Wegpunkt-Code und die Koordinaten automatisch auf die Log-Seite von <a href=\"%2\">geokrety.org</a> kopiert werden."
 
 #: smarty/pages:18
 msgid "Available for:"
@@ -2475,7 +2475,7 @@ msgstr "Passwort zurücksetzen"
 
 #: smarty/pages:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
-msgstr "Wenn du in der Vergangenheit deine E-Mail Adresse bestätigt hast, kannst du es einfach wiederherstellen. Ansonsten musst du leider ein neues Benutzerkonto erstellen."
+msgstr "Wenn du in der Vergangenheit deine E-Mail Adresse bestätigt hast, kannst du es einfach wiederherstellen. Ansonsten musst du leider ein neues Nutzerkonto erstellen."
 
 #: smarty/pages:35
 msgid "Send me a recovery link"
@@ -2499,7 +2499,7 @@ msgstr "Karte von %1's eigenen GeoKrety"
 
 #: smarty/pages:3
 msgid "%1's user profile"
-msgstr "Benutzerprofil von %1"
+msgstr "Nutzerprofil von %1"
 
 #: smarty:4
 msgid "About"
@@ -2531,7 +2531,7 @@ msgstr "Entwickelt mit <abbr title=\"love\">💗</abbr> vom <a id=\"footer-team\
 
 #: smarty/forms:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
-msgstr "Wenn du bereits ein Konto bei Geokrety.org besitzt, bitte <a href=\"%2\">logge dich zuerst ein</a> und verknüpfe dein Konto mit %1 in den Benutzereinstellungen. Ansonsten wähle bitte einen Benutzernamen aus, um fortzufahren."
+msgstr "Wenn du bereits ein Konto bei Geokrety.org besitzt, bitte <a href=\"%2\">logge dich zuerst ein</a> und verknüpfe dein Konto mit %1 in den Nutzereinstellungen. Ansonsten wähle bitte einen Nutzernamen aus, um fortzufahren."
 
 #: smarty/forms:32 smarty/forms:49
 msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
@@ -2639,7 +2639,7 @@ msgstr "Zusätzliche Daten"
 
 #: smarty/forms:241
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
-msgstr "Das kann z.B. dein<br />- Geocaching/Opencaching Benutzername<br />- Spitzname<br />- richtiger Name etc. sein."
+msgstr "Das kann z.B. dein<br />- Geocaching/Opencaching-Nutzername<br />- Spitzname<br />- richtiger Name etc. sein."
 
 #: smarty/forms:251
 msgid "It is always nice to receive a little message ;)"
@@ -2762,11 +2762,11 @@ msgstr "Es gibt keine Ergebnisse."
 
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
-msgstr "Admin-Aktionen bei Benutzern"
+msgstr "Admin-Aktionen bei Nutzern"
 
 #: smarty/admin/pages:17
 msgid "Invalidate user's email"
-msgstr "E-Mailadresse des Benutzers ungültig machen"
+msgstr "E-Mailadresse des Nutzers ungültig machen"
 
 #: smarty/admin/pages:20
 msgid "Award prize"
@@ -2948,7 +2948,7 @@ msgstr "Diese Link läuft ab %1."
 
 #: smarty/emails:19 smarty/emails:15
 msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr "Wenn du dein Benutzerkonto nicht innerhalb dieser Zeit aktivierst, wird es automatisch gelöscht."
+msgstr "Wenn du dein Nutzerkonto nicht innerhalb dieser Zeit aktivierst, wird es automatisch gelöscht."
 
 #: smarty/emails:23 smarty/emails:19
 msgid "You're getting this email because you've just signed up on our website."
@@ -2976,11 +2976,11 @@ msgstr "Du erhältst diese E-Mail, da du dein Passwort auf unserer Webseite geä
 
 #: smarty/emails:3
 msgid "Username changed"
-msgstr "Benutzername wurde geändert"
+msgstr "Nutzername wurde geändert"
 
 #: smarty/emails:4
 msgid "Your username on GeoKrety.org has been changed."
-msgstr "Dein Benutzername auf GeoKrety.org wurde geändert."
+msgstr "Dein Nutzername auf GeoKrety.org wurde geändert."
 
 #: smarty/emails:8
 msgid "."
@@ -2988,7 +2988,7 @@ msgstr "."
 
 #: smarty/emails:9
 msgid "Please enjoy your new username!"
-msgstr "Viel Spaß mit deinem neuen Benutzernamen!"
+msgstr "Viel Spaß mit deinem neuen Nutzernamen!"
 
 #: smarty/emails:18
 msgid "You're getting this email because you've changed your username on our website."
