@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-30 16:15+0000\n"
-"PO-Revision-Date: 2022-01-30 16:22\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
+"PO-Revision-Date: 2022-01-31 19:33\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-01-30 16:15+0000\n"
+"POT-Creation-Date: 2022-01-31 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -214,11 +214,10 @@ msgstr "crwdns18686:0crwdne18686:0"
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
 msgstr "crwdns18688:0crwdne18688:0"
 
-#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:25
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
-msgid "Sorry but this mail address is already in use."
-msgstr "crwdns15656:0crwdne15656:0"
+#: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:24
+#, php-format
+msgid "Sorry but this mail address is already in use. Do you want to <a href=\"%s\">reset your password</a>?"
+msgstr "crwdns29091:0%scrwdne29091:0"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
@@ -608,6 +607,11 @@ msgstr "crwdns15654:0crwdne15654:0"
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "crwdns16348:0%scrwdne16348:0"
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
+msgid "Sorry but this mail address is already in use."
+msgstr "crwdns15656:0crwdne15656:0"
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:80
 #, php-format
@@ -1512,10 +1516,6 @@ msgstr "crwdns15934:0crwdne15934:0"
 #: smarty/elements:39 smarty/blocks/geokret:26
 msgid "Remove this geokret from your watch list"
 msgstr "crwdns29077:0crwdne29077:0"
-
-#: smarty/elements:40
-msgid "❌"
-msgstr "crwdns29079:0crwdne29079:0"
 
 #: smarty/elements:4
 msgid "%1 logo"
