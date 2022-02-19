@@ -882,7 +882,11 @@ class WatchedMigrator extends BaseMigrator {
 
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
-        $this->pPdo->query('UPDATE gk_watched SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_watched.geokret = gk_geokrety.gkid');
+        $this->pPdo->query('CREATE TABLE gk_watched_tmp AS SELECT * FROM gk_watched;');
+        $this->pPdo->query('UPDATE gk_watched_tmp SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_watched_tmp.geokret = gk_geokrety.gkid;');
+        $this->pPdo->query('TRUNCATE gk_watched;');
+        $this->pPdo->query('INSERT INTO gk_watched SELECT * FROM gk_watched_tmp;');
+        $this->pPdo->query('DROP TABLE gk_watched_tmp;');
     }
 }
 
