@@ -1,3 +1,15 @@
+### [2.14.4](https://github.com/geokrety/geokrety-website/compare/v2.14.3...v2.14.4) (2022-02-19)
+
+
+### Bug Fixes
+
+* Fix DB migrator duplicates on gk_watched ([8230803](https://github.com/geokrety/geokrety-website/commit/823080394874def3fcd38608e080adad82760a24))
+
+
+### Dependencies
+
+* replace sentry/sdk by latest sentry/sentry ([be4cce3](https://github.com/geokrety/geokrety-website/commit/be4cce3d5de3463ae0abce48aff7ea850f7f6a68))
+
 ### [2.14.3](https://github.com/geokrety/geokrety-website/compare/v2.14.2...v2.14.3) (2022-02-17)
 
 
