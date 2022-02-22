@@ -74,7 +74,7 @@ require_once 'smarty_start.php';
         $sql = "SELECT `desc` , `file` FROM `gk-badges` WHERE `userid` = '$kret_userid' ORDER BY `timestamp`";
         $result = mysqli_query($link, $sql);
         while ($row = mysqli_fetch_array($result)) {
-            $badges .= "<img src='".CONFIG_CDN_IMAGES."/badges/$row[1]' title='$row[0]' alt='badge' /> ";
+            $badges .= "<img src='".CONFIG_CDN_IMAGES."/badges/$row[1]' title='$row[0]' alt='badge' width='100' height='50' /> ";
         }
 
         mysqli_free_result($result);
