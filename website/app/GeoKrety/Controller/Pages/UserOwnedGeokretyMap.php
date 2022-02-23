@@ -21,7 +21,7 @@ class UserOwnedGeokretyMap extends Base {
             ) AS geojson
             FROM (
                 SELECT position, gkid, name, waypoint, lat, lon, elevation, country, distance, author, author_username,
-                    moved_on_datetime, caches_count, avatar_key,
+                    moved_on_datetime, caches_count, avatar_key, owner, owner, owner_username,
                     coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) AS days
                 FROM "gk_geokrety_in_caches"
                 WHERE owner = ?
