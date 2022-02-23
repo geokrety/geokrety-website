@@ -1,3 +1,10 @@
+### [2.14.6](https://github.com/geokrety/geokrety-website/compare/v2.14.5...v2.14.6) (2022-02-23)
+
+
+### Dependencies
+
+* Update composer.lock ([205fa72](https://github.com/geokrety/geokrety-website/commit/205fa72926dcacf41797bd196f5d6a164072acf9))
+
 ### [2.14.5](https://github.com/geokrety/geokrety-website/compare/v2.14.4...v2.14.5) (2022-02-23)
 
 
