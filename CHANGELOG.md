@@ -1,3 +1,10 @@
+### [2.14.5](https://github.com/geokrety/geokrety-website/compare/v2.14.4...v2.14.5) (2022-02-23)
+
+
+### Bug Fixes
+
+* Fix dependency for sentry/sentry ([551cfeb](https://github.com/geokrety/geokrety-website/commit/551cfeb8612ea61d92f18558985f961d217897c1))
+
 ### [2.14.4](https://github.com/geokrety/geokrety-website/compare/v2.14.3...v2.14.4) (2022-02-19)
 
 
