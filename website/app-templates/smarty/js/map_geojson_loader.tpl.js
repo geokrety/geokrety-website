@@ -124,12 +124,10 @@ function retrieve() {
                     pointToLayer: pointToLayer,
                 });
                 geoJsonLayer.addTo(map);
-                geoJsonLayer.on('data:loaded', function () {
-                  if (!bounded) {
+                if (!bounded && geoJsonLayer.getLayers().length) {
                     map.fitBounds(geoJsonLayer.getBounds(), { padding: [50, 50] });
                     bounded = true;
-                  }
-                });
+                }
             } else if (mode === 'cluster') {
                 markers.addLayer(geoJsonLayer);
                 layer = map.addLayer(markers);

@@ -2,7 +2,7 @@
 let PARIS = new L.LatLng(48.85, 2.35);
 let map;
 
-function initializeMap() {
+function initializeMap(center = PARIS, zoom = 5) {
     let map = L.map('mapid', {
         worldCopyJump: true
     });
@@ -16,12 +16,9 @@ function initializeMap() {
     osm.on('load', function () { setTimeout(function () { $("#mapid").attr({ 'data-map-loaded': true }); }) });
     osm.on('loading', function () { $("#mapid").attr({ 'data-map-loaded': false }); });
 
-    {if !isset($current_user) or is_null($current_user->home_latitude) or is_null($current_user->home_longitude)}
-        let center = PARIS;
-        let zoom = 5;
-    {else}
-        let center = new L.LatLng({$current_user->home_latitude}, {$current_user->home_longitude});
-        let zoom = 10;
+    {if isset($current_user) and not (is_null($current_user->home_latitude) or is_null($current_user->home_longitude))}
+        center = new L.LatLng({$current_user->home_latitude}, {$current_user->home_longitude});
+        zoom = 10;
     {/if}
 
     // start the map
