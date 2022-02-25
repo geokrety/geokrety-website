@@ -2,14 +2,14 @@
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.country.php
  * Type:     modifier
  * Name:     country
  * Purpose:  outputs a flag for a country
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 /**
  * @throws \Exception

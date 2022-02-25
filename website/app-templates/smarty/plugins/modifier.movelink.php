@@ -2,14 +2,14 @@
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.movelink.php
  * Type:     modifier
  * Name:     movelink
  * Purpose:  outputs a move link
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_modifier_movelink(GeoKrety\Model\Move $move, ?string $textString = null, ?string $target = null): string {
     $text = is_null($textString) ? $move->geokret->gkid : $textString;

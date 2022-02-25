@@ -2,14 +2,16 @@
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.url_picture.php
  * Type:     modifier
  * Name:     picture
  * Purpose:  outputs a picture from an url string
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
+ *
+ * @throws \SmartyException
  */
 function smarty_modifier_url_picture(string $pictureUrl, string $thumbnailUrl = null) {
     $template_string = <<<'EOT'

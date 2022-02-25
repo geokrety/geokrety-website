@@ -4,14 +4,16 @@ use GeoKrety\Model\Picture;
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.picture.php
  * Type:     modifier
  * Name:     picture
  * Purpose:  outputs a picture
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
+ *
+ * @throws \SmartyException
  */
 function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true, ?bool $showItemLink = false, ?bool $showPictureType = false) {
     if (is_null($picture)) {

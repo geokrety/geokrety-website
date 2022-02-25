@@ -1,14 +1,14 @@
 <?php
 
 const FA_ICON_SIZES = ['lg', '2x', '3x', '4x', '5x'];
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     function.fa.php
  * Type:     function
  * Name:     fa
  * Purpose:  outputs a font awsome icon
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_function_fa(array $params, Smarty_Internal_Template $template) {
     if (!in_array('icon', array_keys($params)) || empty($params['icon'])) {

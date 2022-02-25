@@ -1,13 +1,13 @@
 <?php
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.logicon.php
  * Type:     modifier
  * Name:     logicon
  * Purpose:  outputs a position icon
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_modifier_logicon(?GeoKrety\Model\Move $move, bool $showSmall = false) {
     if (is_null($move)) {

@@ -2,14 +2,14 @@
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.gklink.php
  * Type:     modifier
  * Name:     gklink
  * Purpose:  outputs a geokret link
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_modifier_gklink(GeoKrety\Model\Geokret $geokret, ?string $textString = null, ?string $target = null): string {
     $text = is_null($textString) ? $geokret->name : $textString;

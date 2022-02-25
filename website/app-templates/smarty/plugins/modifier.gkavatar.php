@@ -2,14 +2,14 @@
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.gkavatar.php
  * Type:     modifier
  * Name:     gkavatar
  * Purpose:  outputs a geokrety icon based if the GK has an avatar
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_modifier_gkavatar(GeoKrety\Model\Geokret $geokret): string {
     if (!$geokret->avatar) {

@@ -2,14 +2,14 @@
 
 require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.awardlink.php
  * Type:     modifier
  * Name:     awardlink
  * Purpose:  outputs a link to the award ranking
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_modifier_awardlink(?GeoKrety\Model\Awards $award, ?string $alternative_name = null, ?string $target = null): string {
     if (is_null($award) || $award->type !== 'automatic') {

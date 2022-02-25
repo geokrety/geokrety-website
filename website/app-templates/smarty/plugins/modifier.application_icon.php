@@ -13,14 +13,14 @@ const SUPPORTED_APP = [
     'php_post' => '16/php_post.png',
     ];
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.application_icon.php
  * Type:     modifier
  * Name:     application_icon
  * Purpose:  outputs an icon for an application
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_modifier_application_icon(GeoKrety\Model\Move $move): string {
     if (empty($move->app) || !array_key_exists($move->app, SUPPORTED_APP)) {

@@ -33,14 +33,14 @@ function computeLocationType($logType) {
     return $logType == '' ? '9' : $logType;
 }
 
-/*
+/**
  * Smarty plugin
  * -------------------------------------------------------------
  * File:     modifier.posicon.php
  * Type:     modifier
  * Name:     posicon
  * Purpose:  outputs a position icon
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
 function smarty_modifier_posicon(GeoKrety\Model\Geokret $geokret) {
     $lastLocationType = $geokret->last_position ? $geokret->last_position->move_type->getLogTypeId() : null;
