@@ -97,7 +97,7 @@ EOT;
     $smarty->assign('allowSetAsMainAvatar', $allowSetAsMainAvatar);
     $smarty->assign('showPictureType', $showPictureType);
     $smarty->assign('showItemLink', $showItemLink);
-    $html = $smarty->display('string:'.$template_string);
+    $html = $smarty->fetch('string:'.$template_string);
     $smarty->clearAssign(['picture', 'showMainAvatarMedal']);
 
     return $html;

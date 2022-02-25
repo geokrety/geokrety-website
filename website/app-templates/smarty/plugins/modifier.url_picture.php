@@ -36,7 +36,7 @@ EOT;
     $smarty = GeoKrety\Service\Smarty::getSmarty();
     $smarty->assign('pictureUrl', $pictureUrl);
     $smarty->assign('thumbnailUrl', $thumbnailUrl);
-    $html = $smarty->display('string:'.$template_string);
+    $html = $smarty->fetch('string:'.$template_string);
     $smarty->clearAssign(['pictureUrl', 'thumbnailUrl']);
 
     return $html;
