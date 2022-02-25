@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
-"PO-Revision-Date: 2022-02-19 09:44\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
+"PO-Revision-Date: 2022-02-25 17:34\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "GeoKret \"%s\" by %s"
 msgstr ""
 
-#: website/app-templates/smarty/plugins/modifier.gkicon.php:13
+#: website/app-templates/smarty/plugins/modifier.gkicon.php:17
 msgid "GK type icon"
 msgstr "GK 类型图标"
 
@@ -80,6 +80,11 @@ msgstr "%s GeoKrety 获奖"
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
 msgstr "查看移动详情"
+
+#: website/app-templates/smarty/plugins/modifier.newslink.php:19
+#: smarty/pages:48
+msgid "Comments"
+msgstr "备注"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:9
 msgid "Inside a cache"
@@ -109,21 +114,16 @@ msgstr "在所有者手中"
 msgid "Never Travelled"
 msgstr ""
 
-#: website/app-templates/smarty/plugins/modifier.posicon.php:52
+#: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
 msgstr "状态图标"
 
-#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:13
+#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:16
 #, php-format
 msgid "User statistics banner: %s"
 msgstr "用户统计横幅： %s"
 
-#: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
-#, php-format
-msgid "%s's profile avatar"
-msgstr "%s的头像"
-
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
+#: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
 #, php-format
 msgid "%s's statpic"
 msgstr "%s的状态"
@@ -2216,10 +2216,6 @@ msgstr "订阅这个消息后"
 #: smarty/pages:43
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "请 <a href=\"%1\">登录</a> 以发表评论"
-
-#: smarty/pages:48
-msgid "Comments"
-msgstr "备注"
 
 #: smarty/pages:52
 msgid "There are no comments for this post."
