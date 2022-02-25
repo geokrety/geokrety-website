@@ -115,7 +115,7 @@ class EmailRevalidateToken extends Base {
         });
 
         $this->virtual('validate_expire_on_datetime', function ($self): DateTime {
-            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
+            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVALIDATE_CODE_DAYS_VALIDITY)));
         });

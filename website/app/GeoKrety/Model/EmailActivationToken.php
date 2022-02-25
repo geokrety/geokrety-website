@@ -256,13 +256,13 @@ EOT;
         // });
 
         $this->virtual('update_expire_on_datetime', function ($self): DateTime {
-            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
+            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY)));
         });
 
         $this->virtual('revert_expire_on_datetime', function ($self): DateTime {
-            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
+            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY)));
         });
