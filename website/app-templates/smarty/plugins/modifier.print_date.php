@@ -12,5 +12,10 @@ use Carbon\Carbon;
  * -------------------------------------------------------------.
  */
 function smarty_modifier_print_date(DateTime $date, string $format = 'c'): string {
-    return '<span data-datetime="'.$date->format($format).'" title="'.$date->format($format).'">'.Carbon::parse($date->format('c'))->diffForHumans().'</span>';
+    return sprintf(
+        '<span data-datetime="%s" title="%s">%s</span>',
+        $date->format($format),
+        $date->format($format),
+        Carbon::parse($date->format('c'))->diffForHumans()
+    );
 }

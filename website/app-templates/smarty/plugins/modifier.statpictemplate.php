@@ -9,6 +9,10 @@
  * Purpose:  outputs a geokret link
  * -------------------------------------------------------------.
  */
-function smarty_modifier_statpictemplate(int $statpic_template) {
-    return '<img src="/app-ui/statpics/templates/'.$statpic_template.'.png" class="img-responsive center-block"  alt="'.sprintf(_('User statistics banner: %s'), $statpic_template).'" />';
+function smarty_modifier_statpictemplate(int $statpic_template): string {
+    return sprintf(
+        '<img src="/app-ui/statpics/templates/%d.png" class="img-responsive center-block"  alt="%s" />',
+        $statpic_template,
+        sprintf(_('User statistics banner: %s'), $statpic_template)
+    );
 }

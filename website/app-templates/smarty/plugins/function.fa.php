@@ -31,5 +31,9 @@ function smarty_function_fa(array $params, Smarty_Internal_Template $template): 
         $title = $params['title'];
     }
 
-    return '<i class="fa '.$class.'"'.(isset($title) ? ' title="'.$title.'"' : '').'></i>';
+    return sprintf(
+        '<i class="fa %s"%s></i>',
+        $class,
+        isset($title) ? sprintf(' title="%s"', $title) : ''
+    );
 }

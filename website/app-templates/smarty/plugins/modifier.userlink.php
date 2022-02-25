@@ -19,7 +19,7 @@ function smarty_modifier_userlink(?GeoKrety\Model\User $user, ?string $alternati
             $username = smarty_modifier_escape($alternative_name);
         }
 
-        return '<em class="user-anonymous">'.$username.'</em>';
+        return sprintf('<em class="user-anonymous">%s</em>', $username);
     }
 
     return sprintf(

@@ -49,5 +49,12 @@ function smarty_modifier_posicon(GeoKrety\Model\Geokret $geokret): string {
     $iconClass = computelogtype($geokret, $lastLocationType, $lastUserId, \Base::instance()->get('SESSION.CURRENT_USER'));
     $message = getPosIcon($iconClass);
 
-    return '<img src="'.GK_CDN_IMAGES_URL.'/log-icons/'.$geokret->type->getTypeId().'/1'.$iconClass.'.png" alt="'._('status icon').'" title="'.$message.'" width="37" height="37" border="0" />';
+    return sprintf(
+        '<img src="%s/log-icons/%s/1%d.png" alt="%s" title="%s" width="37" height="37" border="0" />',
+        GK_CDN_IMAGES_URL,
+        $geokret->type->getTypeId(),
+        $iconClass,
+        _('status icon'),
+        $message
+    );
 }

@@ -14,5 +14,10 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * -------------------------------------------------------------.
  */
 function smarty_modifier_userstatpic(GeoKrety\Model\User $user): string {
-    return '<img id="statPic" src="'.UserBanner::get_banner_url($user).'" class="img-responsive center-block" title="'.sprintf(_('%s\'s statpic'), smarty_modifier_escape($user->username)).'" />';
+    return sprintf(
+        '<img id="statPic" src="%s" class="img-responsive center-block" title="%s" />',
+        UserBanner::get_banner_url($user),
+        sprintf(_('%s\'s statpic'),
+            smarty_modifier_escape($user->username))
+    );
 }
