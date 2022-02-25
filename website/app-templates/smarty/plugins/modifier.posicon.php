@@ -18,7 +18,7 @@ function getPosIcon($id): string {
     return '';
 }
 
-function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId, ?int $currentUser) {
+function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId, ?int $currentUser): int {
     if (is_null($locationType)) {
         return 9;
     }
@@ -29,7 +29,7 @@ function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId, 
     return $locationType;
 }
 
-function computeLocationType($logType) {
+function computeLocationType($logType): string {
     return $logType == '' ? '9' : $logType;
 }
 
@@ -42,7 +42,7 @@ function computeLocationType($logType) {
  * Purpose:  outputs a position icon
  * -------------------------------------------------------------.
  */
-function smarty_modifier_posicon(GeoKrety\Model\Geokret $geokret) {
+function smarty_modifier_posicon(GeoKrety\Model\Geokret $geokret): string {
     $lastLocationType = $geokret->last_position ? $geokret->last_position->move_type->getLogTypeId() : null;
     $lastUserId = ($geokret->last_position && !is_null($geokret->last_position->author)) ? $geokret->last_position->author->id : null;
 

@@ -9,7 +9,7 @@
  * Purpose:  return the url of the given alias
  * -------------------------------------------------------------.
  */
-function smarty_modifier_alias($string, $params = null, $query = null, $fragment = null) {
+function smarty_modifier_alias($string, $params = null, $query = null, $fragment = null): string {
     if (!is_null($fragment) && substr($fragment, 0, 1) !== '#') {
         $fragment = '#'.$fragment;
     }

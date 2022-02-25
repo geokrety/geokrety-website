@@ -9,7 +9,7 @@
  * Purpose:  outputs a medal icon
  * -------------------------------------------------------------.
  */
-function smarty_modifier_medal(string $filename, string $count) {
+function smarty_modifier_medal(string $filename, string $count): string {
     $url = GK_CDN_IMAGES_URL.'/medals/'.$filename;
     $title = sprintf(_('Award for %s GeoKrety'), $count);
 

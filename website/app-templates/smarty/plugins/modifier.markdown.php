@@ -11,7 +11,7 @@ use GeoKrety\Service\Markdown;
  * Purpose:  markdown to html
  * -------------------------------------------------------------.
  */
-function smarty_modifier_markdown(string $string, ?string $mode = 'html') {
+function smarty_modifier_markdown(string $string, ?string $mode = 'html'): string {
     if ($mode === 'html') {
         return Markdown::toHtml($string);
     }

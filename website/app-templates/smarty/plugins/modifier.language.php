@@ -9,6 +9,9 @@
  * Purpose:  outputs a language name based on ISO code
  * -------------------------------------------------------------.
  */
-function smarty_modifier_language(string $lang, bool $asLocale = false) {
-    return \GeoKrety\Service\LanguageService::getLanguageByAlpha2($lang, $asLocale);
+
+use GeoKrety\Service\LanguageService;
+
+function smarty_modifier_language(string $lang, bool $asLocale = false): string {
+    return LanguageService::getLanguageByAlpha2($lang, $asLocale);
 }

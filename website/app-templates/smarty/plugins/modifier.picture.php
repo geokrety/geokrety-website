@@ -15,7 +15,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  *
  * @throws \SmartyException
  */
-function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true, ?bool $showItemLink = false, ?bool $showPictureType = false) {
+function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true, ?bool $showItemLink = false, ?bool $showPictureType = false): string {
     if (is_null($picture)) {
         return '';
     }

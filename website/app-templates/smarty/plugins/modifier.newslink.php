@@ -7,9 +7,9 @@
  * Type:     modifier
  * Name:     newslink
  * Purpose:  outputs a news link
- * -------------------------------------------------------------
+ * -------------------------------------------------------------.
  */
-function smarty_modifier_newslink(GeoKrety\Model\News $news) {
+function smarty_modifier_newslink(GeoKrety\Model\News $news): string {
     return sprintf(
         '<span class="badge">%d</span> <a href="%s%s" ="news-link" data-id="%d">%s</a>',
         $news->comments_count,

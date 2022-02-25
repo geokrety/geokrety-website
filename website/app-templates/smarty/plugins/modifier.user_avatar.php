@@ -18,7 +18,7 @@ require_once 'modifier.url_picture.php';
  *
  * @throws \SmartyException
  */
-function smarty_modifier_user_avatar(User $user) {
+function smarty_modifier_user_avatar(User $user): string {
     $identifier = $user->email ?: $user->username;
     $title = sprintf(_('%s\'s profile avatar'), $user->username);
     $size = 100;

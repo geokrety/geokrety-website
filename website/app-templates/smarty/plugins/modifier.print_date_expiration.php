@@ -12,6 +12,6 @@ use Carbon\Carbon;
  * Doc:      https://carbon.nesbot.com/docs/#api-humandiff
  * -------------------------------------------------------------.
  */
-function smarty_modifier_print_date_expiration(DateTime $date, int $parts = 3) {
+function smarty_modifier_print_date_expiration(DateTime $date, int $parts = 3): string {
     return Carbon::instance($date)->diffForHumans(['parts' => $parts, 'join' => true]);
 }
