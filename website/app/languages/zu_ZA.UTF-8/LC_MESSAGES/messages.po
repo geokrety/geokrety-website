@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
-"PO-Revision-Date: 2022-02-19 09:44\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
+"PO-Revision-Date: 2022-02-25 17:34\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -63,7 +63,7 @@ msgstr "crwdns18988:0crwdne18988:0"
 msgid "GeoKret \"%s\" by %s"
 msgstr "crwdns18940:0%scrwdnd18940:0%scrwdne18940:0"
 
-#: website/app-templates/smarty/plugins/modifier.gkicon.php:13
+#: website/app-templates/smarty/plugins/modifier.gkicon.php:17
 msgid "GK type icon"
 msgstr "crwdns18592:0crwdne18592:0"
 
@@ -80,6 +80,11 @@ msgstr "crwdns15716:0%scrwdne15716:0"
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
 msgstr "crwdns18500:0crwdne18500:0"
+
+#: website/app-templates/smarty/plugins/modifier.newslink.php:19
+#: smarty/pages:48
+msgid "Comments"
+msgstr "crwdns14266:0crwdne14266:0"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:9
 msgid "Inside a cache"
@@ -109,21 +114,16 @@ msgstr "crwdns15724:0crwdne15724:0"
 msgid "Never Travelled"
 msgstr "crwdns29021:0crwdne29021:0"
 
-#: website/app-templates/smarty/plugins/modifier.posicon.php:52
+#: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
 msgstr "crwdns15726:0crwdne15726:0"
 
-#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:13
+#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:16
 #, php-format
 msgid "User statistics banner: %s"
 msgstr "crwdns18594:0%scrwdne18594:0"
 
-#: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
-#, php-format
-msgid "%s's profile avatar"
-msgstr "crwdns16368:0%scrwdne16368:0"
-
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
+#: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
 #, php-format
 msgid "%s's statpic"
 msgstr "crwdns15730:0%scrwdne15730:0"
@@ -2216,10 +2216,6 @@ msgstr "crwdns15062:0crwdne15062:0"
 #: smarty/pages:43
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "crwdns16186:0%1crwdne16186:0"
-
-#: smarty/pages:48
-msgid "Comments"
-msgstr "crwdns14266:0crwdne14266:0"
 
 #: smarty/pages:52
 msgid "There are no comments for this post."
