@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
-"PO-Revision-Date: 2022-02-19 09:42\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
+"PO-Revision-Date: 2022-02-25 17:33\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -63,7 +63,7 @@ msgstr "nessuno"
 msgid "GeoKret \"%s\" by %s"
 msgstr "GeoKret \"%s\" di %s"
 
-#: website/app-templates/smarty/plugins/modifier.gkicon.php:13
+#: website/app-templates/smarty/plugins/modifier.gkicon.php:17
 msgid "GK type icon"
 msgstr "Icona tipo GK"
 
@@ -80,6 +80,11 @@ msgstr "Premio per %s GeoKrety"
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
 msgstr "Visualizza dettagli di spostamento"
+
+#: website/app-templates/smarty/plugins/modifier.newslink.php:19
+#: smarty/pages:48
+msgid "Comments"
+msgstr "Commenti"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:9
 msgid "Inside a cache"
@@ -109,21 +114,16 @@ msgstr "Nelle mani del proprietario"
 msgid "Never Travelled"
 msgstr "Mai Viaggiato"
 
-#: website/app-templates/smarty/plugins/modifier.posicon.php:52
+#: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
 msgstr "icona di stato"
 
-#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:13
+#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:16
 #, php-format
 msgid "User statistics banner: %s"
 msgstr "Banner statistiche utente: %s"
 
-#: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
-#, php-format
-msgid "%s's profile avatar"
-msgstr "avatar profilo di %s"
-
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
+#: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
 #, php-format
 msgid "%s's statpic"
 msgstr "%s's statpic"
@@ -2216,10 +2216,6 @@ msgstr "Iscriviti a queste news"
 #: smarty/pages:43
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "Per favore <a href=\"%1\">accedi</a> per postare un commento"
-
-#: smarty/pages:48
-msgid "Comments"
-msgstr "Commenti"
 
 #: smarty/pages:52
 msgid "There are no comments for this post."
