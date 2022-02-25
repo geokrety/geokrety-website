@@ -23,6 +23,7 @@ use function Sentry\captureMessage;
  * @property DateTime|null uploaded_on_datetime
  * @property int|PictureType type
  * @property int pictures_count
+ * @property string url
  */
 class Picture extends Base {
     use \Validation\Traits\CortexTrait;
