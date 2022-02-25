@@ -28,7 +28,7 @@ function smarty_modifier_application_icon(GeoKrety\Model\Move $move): string {
     }
 
     $title = $move->app;
-    if (!is_null($move->app_ver) && !empty($move->app_ver)) {
+    if (!empty($move->app_ver)) {
         $title .= ' '.$move->app_ver;
     }
 
