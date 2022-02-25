@@ -1,3 +1,32 @@
+## [2.15.0](https://github.com/geokrety/geokrety-website/compare/v2.14.6...v2.15.0) (2022-02-25)
+
+
+### Features
+
+* Find libravatar url asynchronously ([a3dc1a9](https://github.com/geokrety/geokrety-website/commit/a3dc1a9f4f35c239d91d71ef401355ecb88e1f66))
+
+
+### Bug Fixes
+
+* Create missing index on moves table ([efb6e73](https://github.com/geokrety/geokrety-website/commit/efb6e7376bd07ac201d8e6ae78443aa70455fda1))
+* Fix centering map on Where are my Geokrety page ([ea986d8](https://github.com/geokrety/geokrety-website/commit/ea986d8d7f6ac350528d8b7fdb8fc0e72a1d5912))
+* Fix display owner in Owned Geokrety Map popups ([25da79a](https://github.com/geokrety/geokrety-website/commit/25da79a0003b6ad563873eb2b00a2f09c0fa3e2d))
+* Fix string translation ([1e1b031](https://github.com/geokrety/geokrety-website/commit/1e1b0312dba276c46557030468c470d0598e3db1))
+* Use smarty fetch instead of display to return string ([e73d5aa](https://github.com/geokrety/geokrety-website/commit/e73d5aa8e3c5cbbccdfaaf3962a457e56622f490))
+
+
+### Style
+
+* Define function return types ([a81c926](https://github.com/geokrety/geokrety-website/commit/a81c92692406e7f1ab866880d6268377ac7ce4f5))
+* Remove unnecessary null check ([4e96b13](https://github.com/geokrety/geokrety-website/commit/4e96b135e1fd9763629da14491d04c19e99c1994))
+* Use sprintf instead of concatenation ([4c20ec8](https://github.com/geokrety/geokrety-website/commit/4c20ec8f8c0ec33dabd3d01fb9ef8ac7b6e62936))
+
+
+### Chores
+
+* Correct docstrings format ([9fc5bf0](https://github.com/geokrety/geokrety-website/commit/9fc5bf0279deb0078c82df7ed4a17b323c285eef))
+* Format fix from phpcs ([f0285b2](https://github.com/geokrety/geokrety-website/commit/f0285b22056f5952703b91129e3937739ab7e999))
+
 ### [2.14.6](https://github.com/geokrety/geokrety-website/compare/v2.14.5...v2.14.6) (2022-02-23)
 
 
