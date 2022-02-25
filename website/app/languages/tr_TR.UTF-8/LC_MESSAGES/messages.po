@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
-"PO-Revision-Date: 2022-02-19 09:44\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
+"PO-Revision-Date: 2022-02-25 17:34\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-02-19 09:33+0000\n"
+"POT-Creation-Date: 2022-02-25 17:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -63,7 +63,7 @@ msgstr "hiçkimse"
 msgid "GeoKret \"%s\" by %s"
 msgstr ""
 
-#: website/app-templates/smarty/plugins/modifier.gkicon.php:13
+#: website/app-templates/smarty/plugins/modifier.gkicon.php:17
 msgid "GK type icon"
 msgstr ""
 
@@ -80,6 +80,11 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
 msgstr "Ayrıntıları Görüntüle"
+
+#: website/app-templates/smarty/plugins/modifier.newslink.php:19
+#: smarty/pages:48
+msgid "Comments"
+msgstr "Yorumlar"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:9
 msgid "Inside a cache"
@@ -109,21 +114,16 @@ msgstr ""
 msgid "Never Travelled"
 msgstr ""
 
-#: website/app-templates/smarty/plugins/modifier.posicon.php:52
+#: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
 msgstr "durum simgesi"
 
-#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:13
+#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:16
 #, php-format
 msgid "User statistics banner: %s"
 msgstr ""
 
-#: website/app-templates/smarty/plugins/modifier.user_avatar.php:21
-#, php-format
-msgid "%s's profile avatar"
-msgstr "%s'nin profil avatarı"
-
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:17
+#: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
 #, php-format
 msgid "%s's statpic"
 msgstr ""
@@ -2216,10 +2216,6 @@ msgstr "Bu haber postasına abone ol"
 #: smarty/pages:43
 msgid "Please <a href=\"%1\">login</a> to post a comment"
 msgstr "Lütfen yorum yapmak için<a href=\"%1\">giriş yapın</a>."
-
-#: smarty/pages:48
-msgid "Comments"
-msgstr "Yorumlar"
 
 #: smarty/pages:52
 msgid "There are no comments for this post."
