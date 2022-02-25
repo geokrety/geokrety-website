@@ -16,6 +16,6 @@ function smarty_modifier_newslink(GeoKrety\Model\News $news): string {
         GK_SITE_BASE_SERVER_URL,
         \Base::instance()->alias('news_details', 'newsid='.$news->id),
         $news->id,
-        ('Comments')
+        _('Comments')
     );
 }
