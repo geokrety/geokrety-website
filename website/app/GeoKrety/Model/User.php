@@ -22,7 +22,7 @@ use JsonSerializable;
  * @property int|null observation_area
  * @property string|null home_country
  * @property int daily_mails_hour
- * @property int|null avatar
+ * @property Picture|null avatar
  * @property int pictures_count
  * @property DateTime|null last_mail_datetime
  * @property DateTime|null last_login_datetime
