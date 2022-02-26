@@ -3,7 +3,7 @@ upstream php {
     server website:9000;
 }
 
-log_format timed_combined '$host $http_x_forwarded_for - $upstream_cache_status [$time_local] '
+log_format timed_combined '$http_x_forwarded_for - $remote_user [$time_local] '
     '"$request" $status $body_bytes_sent '
     '"$http_referer" "$http_user_agent" '
     '$request_time $upstream_response_time $pipe';
