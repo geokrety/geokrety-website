@@ -421,6 +421,10 @@ class Config extends \Prefab {
 
     public function clearEnvironments() {
         $f3 = Base::instance();
+        if (preg_match('/^\/cron/', $f3->PATH)) {
+            // Skip cleaning env in cron context
+            return;
+        }
         foreach ($_ENV as $key => $value) {
             if (substr($key, 0, 3) !== 'GK_') {
                 continue;
