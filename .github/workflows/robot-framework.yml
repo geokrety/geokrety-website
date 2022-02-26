@@ -45,7 +45,7 @@ jobs:
       - name: Pull/Start postgres
         run: |
           ./website/db/get_huge_dump_files.sh
-          ${DOCKER_COMPOSE} pull postgres > /dev/null
+          ${DOCKER_COMPOSE} pull -q postgres
           ${DOCKER_COMPOSE} up -d --no-build postgres
           timeout 60s bash -c "while ! pg_isready; do sleep 1; done || { docker ps -a;  ${DOCKER_COMPOSE} logs postgres; false; }"
 
@@ -58,11 +58,14 @@ jobs:
 
       - name: Pull images
         run: |
-          ${DOCKER_COMPOSE} pull website-base cdn redis minio svg-to-png &> /dev/null
+          ${DOCKER_COMPOSE} pull -q website-base cdn redis minio svg-to-png \
+                            pictures-processor
 
       - name: Build images website-base
         run: |
-          ${DOCKER_COMPOSE} build website-base
+          docker build -t geokrety/website-legacy-base:php74 \
+            --cache-from geokrety/website-legacy-base:php74 \
+            https://github.com/geokrety/geokrety-website-docker-base.git#php74
 
       - name: Build images website
         run: |
@@ -70,7 +73,11 @@ jobs:
 
       - name: Build images picture-processor
         run: |
-          ${DOCKER_COMPOSE} build pictures-processor pictures-downloader pictures-uploader
+          docker build -t geokrety/pictures-processor-base:latest \
+            -f Dockerfile.base \
+            --cache-from geokrety/pictures-processor-base:latest \
+            https://github.com/geokrety/geokrety-pictures-processor.git
+          ${DOCKER_COMPOSE} build pictures-downloader pictures-uploader
 
       - name: Start the whole stack
         run: |
