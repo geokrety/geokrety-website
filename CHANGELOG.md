@@ -1,3 +1,11 @@
+### [2.16.1](https://github.com/geokrety/geokrety-website/compare/v2.16.0...v2.16.1) (2022-02-26)
+
+
+### Bug Fixes
+
+* Fix docker-compose configuration ([95bd135](https://github.com/geokrety/geokrety-website/commit/95bd135c42bb5fe0657a3ea7dbbc40f843bea71e))
+* Nginx has only 2 php files allowed ([d96fcd1](https://github.com/geokrety/geokrety-website/commit/d96fcd1333c0c4be3b47804c46895b0d297de656))
+
 ## [2.16.0](https://github.com/geokrety/geokrety-website/compare/v2.15.2...v2.16.0) (2022-02-26)
 
 
