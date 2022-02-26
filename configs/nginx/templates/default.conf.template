@@ -1,0 +1,47 @@
+
+upstream php {
+    server website:9000;
+}
+
+log_format timed_combined '$host $http_x_forwarded_for - $upstream_cache_status [$time_local] '
+    '"$request" $status $body_bytes_sent '
+    '"$http_referer" "$http_user_agent" '
+    '$request_time $upstream_response_time $pipe';
+
+server {
+
+    listen 80 default_server;
+
+    server_name ${GK_SITE_BASE_SERVER_URL};
+
+    root /var/www/html;
+
+    access_log /dev/stdout timed_combined;
+    error_log  /dev/stderr;
+
+    # Disable all methods besides HEAD, GET, POST, OPTION.
+    if ($request_method !~ ^(GET|POST|OPTION|HEAD)$ ) {
+        return 444;
+    }
+
+    location = /favicon.ico {
+        try_files /favicon.ico =204;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+
+        return 200 "User-agent: *\nAllow: /\n";
+    }
+
+    location / {
+        index index.php index.html index.htm;
+        try_files $uri /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_pass;
+    }
+}

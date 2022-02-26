@@ -1,0 +1,13 @@
+root                 /var/www/geokrety/website/public;
+
+fastcgi_index        index.php;
+include              fastcgi_params;
+fastcgi_param        SCRIPT_FILENAME        $document_root$fastcgi_script_name;
+
+fastcgi_read_timeout 300;
+fastcgi_pass         php;
+
+
+proxy_set_header     X-Real-IP $remote_addr;
+proxy_set_header     Host $host;
+proxy_set_header     X-Forwarded-For $proxy_add_x_forwarded_for;

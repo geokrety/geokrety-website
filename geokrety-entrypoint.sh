@@ -15,7 +15,7 @@ cat <<'EOF'
 EOF
 
 # first arg is `-f` or `--some-option`
-if [ "$1" = 'apache2-foreground' ]; then
+if [ "$1" = 'docker-php-entrypoint' ]; then
     # Generate and optimize autoloader
     make composer-autoload
 
@@ -33,7 +33,7 @@ if [ "$1" = 'apache2-foreground' ]; then
     chown -R www-data.www-data /var/www/geokrety/website/public/assets/compressed
 
     echo "DEBUG: Launch $@"
-    exec "$@" &
+    $@ --nodaemonize &
 
     # Create buckets
     make buckets
