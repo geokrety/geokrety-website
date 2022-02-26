@@ -59,6 +59,7 @@ jobs:
       - name: Pull/Build images
         run: |
           ${DOCKER_COMPOSE} pull website-base cdn redis minio svg-to-png > /dev/null
+          ${DOCKER_COMPOSE} build website-base
           ${DOCKER_COMPOSE} build website
           ${DOCKER_COMPOSE} build pictures-processor pictures-downloader pictures-uploader
 
