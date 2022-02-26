@@ -4,6 +4,7 @@ version: '2.4'
 x-variables: &variables
   environment:
     TIMEZONE: "GMT"
+    GK_SITE_BASE_SERVER_FQDN: "localhost:3001"
     GK_SITE_BASE_SERVER_URL: "http://localhost:3001"
     GK_CDN_SERVER_URL: "http://localhost:3002"
 
@@ -54,6 +55,21 @@ services:
     command:
       - "/bin/true"
 
+  nginx:
+    image: nginx
+    <<: *variables
+    volumes:
+      - ./configs/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./configs/nginx/fastcgi_pass:/etc/nginx/fastcgi_pass:ro
+      - ./configs/nginx/templates:/etc/nginx/templates:ro
+      - ./website/public:/var/www/html:ro
+    ports:
+      - "3001:80"
+    depends_on:
+      - website
+    healthcheck:
+      disable: true
+
   website:
     image: geokrety/website-legacy:new-theme
     build:
@@ -64,8 +80,6 @@ services:
 #    ## You may wish to enable local mount on your local machine
 #    volumes:
 #      - .:/var/www/geokrety/
-    ports:
-      - "3001:80"
     dns:
       - 8.8.8.8
     depends_on:
@@ -132,8 +146,6 @@ services:
     build:
       context: https://github.com/geokrety/geokrety-pictures-processor.git
       dockerfile: Dockerfile.base
-      args:
-        BASE_TAG: php74
     command:
       - "/bin/true"
 

@@ -12,7 +12,7 @@ server {
 
     listen 80 default_server;
 
-    server_name ${GK_SITE_BASE_SERVER_URL};
+    server_name ${GK_SITE_BASE_SERVER_FQDN};
 
     root /var/www/html;
 
