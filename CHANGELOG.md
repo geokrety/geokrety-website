@@ -1,3 +1,10 @@
+### [2.15.2](https://github.com/geokrety/geokrety-website/compare/v2.15.1...v2.15.2) (2022-02-26)
+
+
+### Bug Fixes
+
+* Fix cron environment variables ([3a2c367](https://github.com/geokrety/geokrety-website/commit/3a2c367bccb6e7502123d276545f62eba260438d))
+
 ### [2.15.1](https://github.com/geokrety/geokrety-website/compare/v2.15.0...v2.15.1) (2022-02-25)
 
 
