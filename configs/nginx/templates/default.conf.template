@@ -41,7 +41,11 @@ server {
         try_files $uri /index.php?$query_string;
     }
 
-    location ~ \.php$ {
+    location /index.php {
+        include fastcgi_pass;
+    }
+
+    location /go2geo/index.php {
         include fastcgi_pass;
     }
 }
