@@ -56,20 +56,32 @@ jobs:
           psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
           psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
 
-      - name: Pull/Build images
+      - name: Pull images
         run: |
-          ${DOCKER_COMPOSE} pull website-base cdn redis minio svg-to-png > /dev/null
+          ${DOCKER_COMPOSE} pull website-base cdn redis minio svg-to-png &> /dev/null
+
+      - name: Build images website-base
+        run: |
           ${DOCKER_COMPOSE} build website-base
+
+      - name: Build images website
+        run: |
           ${DOCKER_COMPOSE} build website
+
+      - name: Build images picture-processor
+        run: |
           ${DOCKER_COMPOSE} build pictures-processor pictures-downloader pictures-uploader
 
       - name: Start the whole stack
         run: |
           ${DOCKER_COMPOSE} up -d --no-build
+
+      - name: Check the stack has started
+        run: |
           docker ps -a
           sleep 5
           for i in $(seq 60); do
-            httping -sGc1 -o 200,302 http://localhost:3001/health && { echo OK; break; } || { ${DOCKER_COMPOSE} logs website; ${DOCKER_COMPOSE} ps; sleep 1; }
+            httping -sGc1 -o 200,302 http://localhost:3001/health && { echo OK; break; } || { ${DOCKER_COMPOSE} logs website; ${DOCKER_COMPOSE} logs nginx; ${DOCKER_COMPOSE} ps; sleep 1; }
           done || exit 1
           ${DOCKER_COMPOSE} exec -T website make test-health
 
