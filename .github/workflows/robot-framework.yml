@@ -68,7 +68,7 @@ jobs:
           docker ps -a
           sleep 5
           for i in $(seq 60); do
-            httping -sGc1 -o 200,302 http://localhost:3001/ && { echo OK; break; } || { ${DOCKER_COMPOSE} logs website; sleep 1; }
+            httping -sGc1 -o 200,302 http://localhost:3001/health && { echo OK; break; } || { ${DOCKER_COMPOSE} logs website; ${DOCKER_COMPOSE} ps; sleep 1; }
           done || exit 1
           ${DOCKER_COMPOSE} exec -T website make test-health
 
