@@ -1,3 +1,10 @@
+## [2.16.0](https://github.com/geokrety/geokrety-website/compare/v2.15.2...v2.16.0) (2022-02-26)
+
+
+### Features
+
+* Initial migration to php-fpm ([8783a12](https://github.com/geokrety/geokrety-website/commit/8783a12ef614123a3ce04b59660c7881675c74bd))
+
 ### [2.15.2](https://github.com/geokrety/geokrety-website/compare/v2.15.1...v2.15.2) (2022-02-26)
 
 
