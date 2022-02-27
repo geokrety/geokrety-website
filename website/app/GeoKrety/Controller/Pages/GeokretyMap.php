@@ -22,7 +22,7 @@ class GeokretyMap extends Base {
         }
         $sql = <<<EOT
             WITH
-                envelope AS (SELECT public.ST_MakeEnvelope(?, ?, ?, ?, 4326)::geometry AS boundingBox),
+                envelope AS (SELECT public.ST_MakeEnvelope(?, ?, ?, ?, 4326) AS boundingBox),
                 area AS (SELECT public.ST_Area(envelope.boundingBox) AS area, CASE WHEN public.ST_Area(envelope.boundingBox) > 150000 THEN 365 ELSE 730 END AS age FROM envelope)
             SELECT json_build_object(
                 'type', 'FeatureCollection',
@@ -33,7 +33,7 @@ class GeokretyMap extends Base {
                     moved_on_datetime, caches_count, avatar_key, area.area, area.age, owner, owner_username,
                     coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) AS days
                 FROM "gk_geokrety_in_caches", envelope, area
-                WHERE public.ST_Intersects(position::geometry, envelope.boundingBox)
+                WHERE public.ST_CoveredBy(position, envelope.boundingBox)
                 AND coalesce(TRUNC(EXTRACT(EPOCH FROM (NOW() - moved_on_datetime))/86400), 0) < area.age
                 AND missing = ?
                 ORDER BY days DESC
