@@ -63,6 +63,7 @@ services:
       - ./configs/nginx/fastcgi_pass:/etc/nginx/fastcgi_pass:ro
       - ./configs/nginx/templates:/etc/nginx/templates:ro
       - ./website/public:/var/www/html:ro
+      - shared-assets-volume:/var/www/html/assets/compressed:ro
     ports:
       - "3001:80"
     depends_on:
@@ -77,9 +78,10 @@ services:
       args:
         BASE_TAG: php74
     <<: *variables
+    volumes:
 #    ## You may wish to enable local mount on your local machine
-#    volumes:
 #      - .:/var/www/geokrety/
+      - shared-assets-volume:/var/www/geokrety/website/public/assets/compressed:rw
     dns:
       - 8.8.8.8
     depends_on:
@@ -173,3 +175,6 @@ services:
   svg-to-png:
     image: geokrety/svg-to-png:new-theme
     build: https://github.com/geokrety/geokrety-svg-to-png.git
+
+volumes:
+  shared-assets-volume:
