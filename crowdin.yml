@@ -5,7 +5,8 @@ preserve_hierarchy: true
 pull_request_title: "translation: New Crowdin updates"
 pull_request_labels:
   - Translation
-commit_message: "[skip translate]"
+commit_message: "translation: New translations [skip translate]"
+append_commit_message: false
 files:
   - source: /website/app/languages/messages.po.txt
     translation: /website/app/languages/%locale_with_underscore%.UTF-8/LC_MESSAGES/messages.po
