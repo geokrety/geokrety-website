@@ -1,3 +1,13 @@
+### [2.16.2](https://github.com/geokrety/geokrety-website/compare/v2.16.1...v2.16.2) (2022-03-06)
+
+
+### Bug Fixes
+
+* Create missing index on gk_geokrety_in_caches view ([9e9d4fb](https://github.com/geokrety/geokrety-website/commit/9e9d4fb81bc793b55040b58a8bc8a7a45961a964))
+* Fix database-migrator timeout on gk-moves postProcess ([438174c](https://github.com/geokrety/geokrety-website/commit/438174c9fec407e707733150c4d722f80e8c599a))
+* remove host from nginx logs ([7237fbc](https://github.com/geokrety/geokrety-website/commit/7237fbc42ac862d0a32650c2d2a97585466e9e23))
+* Speedup Geokrety Map geojson ([c4229b6](https://github.com/geokrety/geokrety-website/commit/c4229b61b1c52ff0a5259b1a78baf3be60acc8ad))
+
 ### [2.16.1](https://github.com/geokrety/geokrety-website/compare/v2.16.0...v2.16.1) (2022-02-26)
 
 
