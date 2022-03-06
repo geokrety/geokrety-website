@@ -24,7 +24,7 @@ $pgsql = $f3->get('DB')->pdo();
 define('DEFAULT_PAGINATION', 1000);
 
 try {
-    $pgsql->query('DROP INDEX gk_moves_country_index;');
+    //$pgsql->query('DROP INDEX gk_moves_country_index;');
     $pgsql->query('DROP INDEX gk_moves_type_index;');
     $pgsql->query('DROP INDEX id_type_position;');
     $pgsql->query('DROP INDEX idx_21034_kret_id;');
@@ -262,7 +262,7 @@ $pgsql->query('DROP TABLE gk_pictures2;');
 
 $pgsql->query('SET session_replication_role = DEFAULT;');
 
-$pgsql->query('CREATE INDEX gk_moves_country_index ON geokrety.gk_moves USING btree (country);');
+//$pgsql->query('CREATE INDEX gk_moves_country_index ON geokrety.gk_moves USING btree (country);');
 $pgsql->query('CREATE INDEX gk_moves_type_index ON geokrety.gk_moves USING btree (move_type);');
 $pgsql->query('CREATE INDEX id_type_position ON geokrety.gk_moves USING btree (move_type, id, "position");');
 $pgsql->query('CREATE INDEX idx_21034_kret_id ON geokrety.gk_moves_comments USING btree (geokret);');
@@ -726,9 +726,23 @@ class MovesMigrator extends BaseMigrator {
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
         // TODO find -> Move date time can not be before GeoKret birth (2007-10-26 20:12:28+00)
-        $this->pPdo->query('DELETE FROM gk_moves WHERE geokret NOT IN (SELECT DISTINCT(gkid) FROM gk_geokrety);');
-        $this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
-        $this->pPdo->query('UPDATE gk_moves SET author = NULL, username = \'Deleted user\' WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        $sql = <<<'EOL'
+CREATE TEMP TABLE temp_gk_moves
+AS SELECT * FROM gk_moves;
+
+DELETE FROM temp_gk_moves WHERE geokret NOT IN (SELECT DISTINCT(gkid) FROM gk_geokrety);
+
+UPDATE temp_gk_moves SET geokret = gk_geokrety.id
+FROM gk_geokrety WHERE temp_gk_moves.geokret = gk_geokrety.gkid;
+
+UPDATE temp_gk_moves SET author = NULL, username = 'Deleted user'
+WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);
+
+TRUNCATE gk_moves CASCADE;
+
+INSERT INTO gk_moves SELECT * FROM  temp_gk_moves;
+EOL;
+        $this->pPdo->exec($sql);
     }
 
     // TODO: recompute distance
