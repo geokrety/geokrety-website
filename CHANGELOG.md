@@ -1,3 +1,31 @@
+## [2.17.0](https://github.com/geokrety/geokrety-website/compare/v2.16.2...v2.17.0) (2022-03-10)
+
+
+### Features
+
+* Add request limits on endpoints ([fae4f3a](https://github.com/geokrety/geokrety-website/commit/fae4f3ad3a1b306d883ef9174f4586df098de116)), closes [#12](https://github.com/geokrety/geokrety-website/issues/12) [#421](https://github.com/geokrety/geokrety-website/issues/421)
+
+
+### Bug Fixes
+
+* Another database-migrator fix ([00d38d2](https://github.com/geokrety/geokrety-website/commit/00d38d2819a6978193a4848272d5388d14feb414))
+* Try to fix map autobound one more time ([90f951b](https://github.com/geokrety/geokrety-website/commit/90f951b1d969b8ca6cbddcf3aafc451fd02e27f4))
+
+
+### Performance Improvements
+
+* Enhance a geojson database query ([6096976](https://github.com/geokrety/geokrety-website/commit/6096976bb8fdb8982d70d584222c2b9141235ce6))
+
+
+### Code Refactoring
+
+* Symplify a test condition ([fb10d89](https://github.com/geokrety/geokrety-website/commit/fb10d89f7393c6d0b959e024b19b51ce3df8ae60))
+
+
+### Style
+
+* Migrate go2geo to bootstrap ([bf2c221](https://github.com/geokrety/geokrety-website/commit/bf2c221dd0ce06e33d1089373972f53c5c1b2716))
+
 ### [2.16.2](https://github.com/geokrety/geokrety-website/compare/v2.16.1...v2.16.2) (2022-03-06)
 
 
