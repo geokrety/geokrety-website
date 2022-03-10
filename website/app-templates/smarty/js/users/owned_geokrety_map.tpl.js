@@ -1,6 +1,7 @@
 // ----------------------------------- JQUERY - USER OWNED GEOKRET MAP - BEGIN
 
 {include file='js/_map_init.tpl.js'}
+fitBound = true;
 map = initializeMap();
 {include file='js/map_geojson_loader.tpl.js'}
 

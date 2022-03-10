@@ -1,6 +1,7 @@
 // ----------------------------------- JQUERY - MAP INIT - BEGIN
 let PARIS = new L.LatLng(48.85, 2.35);
 let map;
+let fitBound = false;
 
 function initializeMap(center = PARIS, zoom = 5) {
     let map = L.map('mapid', {

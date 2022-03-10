@@ -124,7 +124,7 @@ function retrieve() {
                     pointToLayer: pointToLayer,
                 });
                 geoJsonLayer.addTo(map);
-                if (!bounded && geoJsonLayer.getLayers().length) {
+                if (fitBound && !bounded && geoJsonLayer.getLayers().length) {
                     map.fitBounds(geoJsonLayer.getBounds(), { padding: [50, 50] });
                     bounded = true;
                 }

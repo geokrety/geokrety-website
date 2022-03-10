@@ -1,6 +1,7 @@
 // ----------------------------------- JQUERY - GEOKRET DETAILS MAP - BEGIN
 
 {include file='js/_map_init.tpl.js'}
+fitBound = true;
 map = initializeMap();
 let geoJsonLayer;
 
