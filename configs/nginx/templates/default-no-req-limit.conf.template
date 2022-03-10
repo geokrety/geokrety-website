@@ -1,0 +1,74 @@
+upstream php {
+    server website:9000;
+}
+
+log_format timed_combined '$remote_addr - $http_x_forwarded_for - $remote_user [$time_local] '
+    '"$request" $status $body_bytes_sent '
+    '"$http_referer" "$http_user_agent" '
+    '$request_time $upstream_response_time $pipe';
+
+server {
+
+    listen 80 default_server;
+
+    server_name ${GK_SITE_BASE_SERVER_FQDN};
+
+    root /var/www/html;
+    index index.php;
+
+    access_log /dev/stdout timed_combined;
+    error_log  /dev/stderr;
+
+    # Disable all methods besides HEAD, GET, POST, OPTION.
+    if ($request_method !~ ^(GET|POST|OPTION|HEAD)$ ) {
+        return 444;
+    }
+
+    location = /favicon.ico {
+        try_files /favicon.ico =204;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+        try_files $uri /robots-files/${GK_SITE_BASE_SERVER_FQDN}.txt /robots-files/default.txt;
+    }
+
+    location = /index.php {
+        include fastcgi_pass;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location /app-ui/ {
+        try_files $uri =404;
+    }
+
+    location /assets/ {
+        try_files $uri =404;
+    }
+
+    location /gkt/ {
+        try_files $uri =404;
+    }
+
+    location /gkt/v3 {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ "^/gkt/(search|inventory)_v3\.php$" {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location /go2geo/ {
+        try_files $uri $uri/ /go2geo/index.php?$query_string;
+    }
+
+    location ~* /go2geo/(index|help)\.php$ {
+        include fastcgi_pass;
+    }
+
+}

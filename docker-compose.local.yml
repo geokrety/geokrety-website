@@ -61,7 +61,9 @@ services:
     volumes:
       - ./configs/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./configs/nginx/fastcgi_pass:/etc/nginx/fastcgi_pass:ro
-      - ./configs/nginx/templates:/etc/nginx/templates:ro
+      - ./configs/nginx/templates/default-no-req-limit.conf.template:/etc/nginx/templates/default.conf.template:ro
+      # - ./configs/nginx/templates:/etc/nginx/templates:ro
+      # - ./configs/nginx/no_req_limit.conf:/etc/nginx/no_req_limit.conf:ro
       - ./website/public:/var/www/html:ro
       - shared-assets-volume:/var/www/html/assets/compressed:ro
     ports:
