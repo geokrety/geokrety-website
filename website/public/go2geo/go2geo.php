@@ -1,8 +1,5 @@
 <?php
 
-require '../__sentry.php';   // Error catching
-require_once '../templates/konfig.php';
-
 function go2geo($waypoint) {
     // ------------------------------------------------------------------------ 2 characters
 
@@ -19,7 +16,7 @@ function go2geo($waypoint) {
     $prefiksy['2']['GA'] = 'http://geocaching.com.au/cache/';
 
     // geocaching.com
-    $prefiksy['2']['GC'] = CACHE_WPT_LINK_GC;
+    $prefiksy['2']['GC'] = 'https://www.geocaching.com/seek/cache_details.aspx?wp=';
 
     // terra http://www.terracaching.com/viewcache.cgi?C=TCCWU
     $prefiksy['2']['TC'] = 'http://www.terracaching.com/viewcache.cgi?C=';
