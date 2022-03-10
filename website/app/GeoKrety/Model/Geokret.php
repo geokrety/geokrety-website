@@ -248,7 +248,7 @@ class Geokret extends Base {
     }
 
     public function isArchived(): bool {
-        return is_null($this->last_position) ? false : $this->last_position->move_type->isType(LogType::LOG_TYPE_ARCHIVED);
+        return !is_null($this->last_position) && $this->last_position->move_type->isType(LogType::LOG_TYPE_ARCHIVED);
     }
 
     public function isMissing(): bool {
