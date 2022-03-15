@@ -29,21 +29,21 @@ $ psql -U geokrety -W tests -h localhost
 CREATE EXTENSION postgis WITH SCHEMA public;
 CREATE EXTENSION postgis_raster WITH SCHEMA public;
 CREATE EXTENSION pgcrypto WITH SCHEMA public;
-\i public-schema.sql
-\i secure-schema.sql
-\i geokrety-schema.sql
+\i 10_public-schema.sql
+\i 15_secure-schema.sql
+\i 20_geokrety-schema.sql
 
 $ wget https://srtm.geokrety.org/public-data.tar.bz2
 $ pg_restore -U geokrety -W --host "localhost" --dbname "tests" --data-only --disable-triggers --verbose --schema "public" public-data.tar
 ```
-
-Refer to the main DB doc and generate a GPG key pair.
 
 ### Create schema for pgtap functions
 ```sql
 CREATE SCHEMA pgtap;
 CREATE EXTENSION pgtap WITH SCHEMA pgtap;
 ```
+
+Refer to the main DB doc and generate a GPG key pair.
 
 ## Copy databases
 It may be convenient to write database migration on main `geokrety` database
