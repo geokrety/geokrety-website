@@ -5,6 +5,7 @@ namespace GeoKrety\Model;
 use DateTime;
 use DB\CortexCollection;
 use DB\SQL\Schema;
+use GeoKrety\Email\AccountActivation;
 use JsonSerializable;
 
 /**
@@ -307,22 +308,19 @@ class User extends Base implements JsonSerializable {
     }
 
     public function sendAccountActivationEmail(): void {
-        if (is_null($this->email)) {
+        if (is_null($this->email) or $this->isAccountValid()) {
             // skip sending mail
             return;
         }
         $token = new AccountActivationToken();
         $token->user = $this;
         $token->save();
-        $smtp = new \GeoKrety\Email\AccountActivation();
+        $smtp = new AccountActivation();
         $smtp->sendActivation($token);
     }
 
-    /**
-     * @param false $flash_msg_only get only messages, do not send mail
-     */
-    public function resendAccountActivationEmail($flash_msg_only = false): void {
-        if (is_null($this->email)) {
+    public function resendAccountActivationEmail(): void {
+        if (is_null($this->email) or $this->isEmailValid()) {
             // skip sending mail
             return;
         }
@@ -333,12 +331,6 @@ class User extends Base implements JsonSerializable {
             $token->set_email($this->get_email());
             $token->save();
             $smtp = new \GeoKrety\Email\EmailRevalidate();
-            if ($flash_msg_only) {
-                $smtp->prepareMessageSendRevalidation();
-                $smtp->flashMessage($token);
-
-                return;
-            }
             $smtp->sendRevalidation($token);
 
             return;
@@ -350,16 +342,8 @@ class User extends Base implements JsonSerializable {
                 $token->user = $this;
                 $token->save();
             }
-            $smtp = new \GeoKrety\Email\AccountActivation();
-            if ($flash_msg_only) {
-                $smtp->prepareMessageActivationAgainOnLogin();
-                $smtp->flashMessage($token);
-
-                return;
-            }
+            $smtp = new AccountActivation();
             $smtp->sendActivationAgainOnLogin($token);
-
-            return;
         }
     }
 

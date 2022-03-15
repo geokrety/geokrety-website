@@ -88,10 +88,6 @@ class Login extends Base {
             $user->resendAccountActivationEmail();
             exit();
         }
-        $user->resendAccountActivationEmail(true);
-        if (!GK_DEVEL) {
-            $f3->abort();
-        }
         $user->resendAccountActivationEmail();
     }
 
