@@ -1,3 +1,11 @@
+### [2.17.1](https://github.com/geokrety/geokrety-website/compare/v2.17.0...v2.17.1) (2022-03-17)
+
+
+### Bug Fixes
+
+* Fix create account via OAuth2 ([ee6bf1b](https://github.com/geokrety/geokrety-website/commit/ee6bf1b6b9a6abec4e218e9f77840e9e9f91da6c))
+* Fix the import script in some places ([c96bd93](https://github.com/geokrety/geokrety-website/commit/c96bd93b4090ef0b61737c2635f4f830465910e3))
+
 ## [2.17.0](https://github.com/geokrety/geokrety-website/compare/v2.16.2...v2.17.0) (2022-03-10)
 
 
