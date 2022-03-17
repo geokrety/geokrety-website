@@ -1,3 +1,10 @@
+### [2.17.2](https://github.com/geokrety/geokrety-website/compare/v2.17.1...v2.17.2) (2022-03-17)
+
+
+### Bug Fixes
+
+* Fix small bug introduced by ee6bf1b6 ([6d1d61c](https://github.com/geokrety/geokrety-website/commit/6d1d61c055a9e4c93eceab0716f8ddcd0ba4ade9))
+
 ### [2.17.1](https://github.com/geokrety/geokrety-website/compare/v2.17.0...v2.17.1) (2022-03-17)
 
 
