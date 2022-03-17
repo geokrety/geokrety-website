@@ -34,6 +34,11 @@ use JsonSerializable;
  * @property int account_valid
  * @property AccountActivationToken activation
  * @property CortexCollection social_auth
+ * @property CortexCollection moves
+ * @property CortexCollection moves_comments
+ * @property CortexCollection geokrety_owned
+ * @property CortexCollection geokrety_held
+ * @property CortexCollection yearly_ranks
  */
 class User extends Base implements JsonSerializable {
     // Validation occurs in validate() for this class
@@ -320,7 +325,7 @@ class User extends Base implements JsonSerializable {
     }
 
     public function resendAccountActivationEmail(): void {
-        if (is_null($this->email) or $this->isEmailValid()) {
+        if (is_null($this->email)) {
             // skip sending mail
             return;
         }
@@ -335,6 +340,7 @@ class User extends Base implements JsonSerializable {
 
             return;
         }
+
         if ($this->isAccountInvalid()) {
             $token = new AccountActivationToken();
             $token->loadUserActiveToken($this);
