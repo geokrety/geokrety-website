@@ -21,6 +21,9 @@ require '../init-f3.php';
 // Get PDO object
 $pgsql = $f3->get('DB')->pdo();
 
+echo 'Disable replication'.PHP_EOL;
+$pgsql->query('SET session_replication_role = replica;');
+
 define('DEFAULT_PAGINATION', 1000);
 
 try {
@@ -44,14 +47,16 @@ try {
 } catch (Exception $e) {
 }
 
+echo 'Saving pictures table'.PHP_EOL;
 $pgsql->query('DROP TABLE IF EXISTS gk_pictures2;');
 $pgsql->query('CREATE TABLE gk_pictures2 AS SELECT filename, bucket, key FROM gk_pictures;');
 $pgsql->query('CREATE INDEX tmp_idx_pictures_filename ON geokrety.gk_pictures2 USING btree (filename);');
 
-$pgsql->query('SET session_replication_role = replica;');
+echo 'Truncating tables'.PHP_EOL;
 $sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_awards_won", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts", "gk_yearly_ranking" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
 
+echo 'Start import data'.PHP_EOL;
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-waypointy-gc';
 $pName = 'gk_waypoints_gc';
@@ -231,7 +236,9 @@ $migrator = new WatchedMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFiel
 $migrator->process();
 
 //// ---------------------------------------------------------------------------------------------------------------------
+echo 'Finished data import'.PHP_EOL;
 
+echo 'Resetting sequences'.PHP_EOL;
 $pgsql->query("SELECT SETVAL('geokrety.account_activation_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_account_activation;");
 $pgsql->query("SELECT SETVAL('geokrety.badges_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_awards_won;");
 $pgsql->query("SELECT SETVAL('geokrety.email_activation_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_email_activation;");
@@ -256,13 +263,17 @@ $pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) F
 //$pgsql->query("SELECT SETVAL('geokrety.waypoints_oc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_oc;");
 //$pgsql->query("SELECT SETVAL('geokrety.waypoints_gc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_gc;");
 
+echo 'Extracting GC waypoints from moves'.PHP_EOL;
 $pgsql->query('SELECT waypoints_gc_fill_from_moves();');
 
-$pgsql->query('UPDATE gk_pictures SET bucket = gkp2.bucket, "key" = gkp2.key FROM gk_pictures2 AS gkp2 WHERE gk_pictures.filename = gkp2.filename;');
+echo 'Reusing old pictures tables buckets/keys'.PHP_EOL;
+$pgsql->query('UPDATE gk_pictures SET bucket = gkp2.bucket, "key" = gkp2.key FROM gk_pictures2 AS gkp2 WHERE gk_pictures.filename = gkp2.filename AND gkp2.bucket IS NOT NULL;');
 $pgsql->query('DROP TABLE gk_pictures2;');
 
+echo 'Re-enable replication'.PHP_EOL;
 $pgsql->query('SET session_replication_role = DEFAULT;');
 
+echo 'Re-creating indexes'.PHP_EOL;
 $pgsql->query('CREATE INDEX gk_moves_country_index ON geokrety.gk_moves USING btree (country);');
 $pgsql->query('CREATE INDEX gk_moves_type_index ON geokrety.gk_moves USING btree (move_type);');
 $pgsql->query('CREATE INDEX id_type_position ON geokrety.gk_moves USING btree (move_type, id, "position");');
@@ -281,6 +292,7 @@ $pgsql->query('CREATE INDEX idx_moves_geokret ON geokrety.gk_moves USING btree (
 $pgsql->query('CREATE INDEX idx_moves_id ON geokrety.gk_moves USING btree (id);');
 $pgsql->query('CREATE INDEX idx_moves_type_id ON geokrety.gk_moves USING btree (move_type, id);');
 
+echo 'Refresh materialized views'.PHP_EOL;
 $pgsql->query('REFRESH MATERIALIZED VIEW gk_geokrety_in_caches;');
 
 class BaseMigrator {
@@ -726,24 +738,42 @@ class MovesMigrator extends BaseMigrator {
 
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
+        //$this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
         // TODO find -> Move date time can not be before GeoKret birth (2007-10-26 20:12:28+00)
-        $sql = <<<'EOL'
-CREATE TEMP TABLE temp_gk_moves
-AS SELECT * FROM gk_moves;
+        echo '* Begin transaction'.PHP_EOL;
+        $this->pPdo->beginTransaction();
+        echo '* Disable foreign keys'.PHP_EOL;
+        $this->pPdo->query('ALTER TABLE "gk_pictures" DROP CONSTRAINT "gk_pictures_move_fkey";');
+        $this->pPdo->query('ALTER TABLE "gk_moves_comments" DROP CONSTRAINT "gk_moves_comments_move_fkey";');
+        $this->pPdo->query('ALTER TABLE "gk_geokrety" DROP CONSTRAINT "gk_geokrety_last_position_fkey";');
+        $this->pPdo->query('ALTER TABLE "gk_geokrety" DROP CONSTRAINT "gk_geokrety_last_log_fkey";');
+        $this->pPdo->query('ALTER TABLE gk_moves DISABLE TRIGGER ALL;');
 
-DELETE FROM temp_gk_moves WHERE geokret NOT IN (SELECT DISTINCT(gkid) FROM gk_geokrety);
+        echo '* Delete orphan moves'.PHP_EOL;
+        $this->pPdo->query('DELETE FROM gk_moves WHERE geokret NOT IN (SELECT DISTINCT(gkid) FROM gk_geokrety);');
+        echo '* Anonymize orphaned user moves'.PHP_EOL;
+        $this->pPdo->query("UPDATE gk_moves SET author = NULL, username = 'Deleted user' WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);");
+        echo '* Create temp table'.PHP_EOL;
+        $this->pPdo->query('CREATE TABLE gk_moves_tmp AS SELECT m.id, g.id AS geokret, lat, lon, elevation, country, m.distance, waypoint, author, comment, m.pictures_count, comments_count, username, app, app_ver, m.created_on_datetime, moved_on_datetime, m.updated_on_datetime, move_type, position FROM gk_moves AS m LEFT JOIN gk_geokrety AS g ON m.geokret = g.gkid;');
+        echo '* Truncate old table'.PHP_EOL;
+        $this->pPdo->query('TRUNCATE gk_moves CASCADE;');
+        echo '* Import data back into table'.PHP_EOL;
+        $this->pPdo->query('INSERT INTO gk_moves SELECT * FROM gk_moves_tmp;');
+        echo '* Drop temp table'.PHP_EOL;
+        $this->pPdo->query('DROP TABLE gk_moves_tmp;');
 
-UPDATE temp_gk_moves SET geokret = gk_geokrety.id
-FROM gk_geokrety WHERE temp_gk_moves.geokret = gk_geokrety.gkid;
-
-UPDATE temp_gk_moves SET author = NULL, username = 'Deleted user'
-WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);
-
-TRUNCATE gk_moves CASCADE;
-
-INSERT INTO gk_moves SELECT * FROM  temp_gk_moves;
-EOL;
-        $this->pPdo->exec($sql);
+        echo '* Enable foreign keys moves'.PHP_EOL;
+        $this->pPdo->query('ALTER TABLE gk_moves ENABLE TRIGGER ALL;');
+        echo '* Enable foreign keys pictures'.PHP_EOL;
+        $this->pPdo->query('ALTER TABLE "gk_pictures" ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE CASCADE ON UPDATE CASCADE;');
+        echo '* Enable foreign keys moves comments'.PHP_EOL;
+        $this->pPdo->query('ALTER TABLE "gk_moves_comments" ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;');
+        echo '* Enable foreign keys geokrety last pos'.PHP_EOL;
+        $this->pPdo->query('ALTER TABLE "gk_geokrety" ADD FOREIGN KEY ("last_position") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;');
+        echo '* Enable foreign keys geokrety last log'.PHP_EOL;
+        $this->pPdo->query('ALTER TABLE "gk_geokrety" ADD FOREIGN KEY ("last_log") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;');
+        echo '* Commit transaction'.PHP_EOL;
+        $this->pPdo->commit();
     }
 
     // TODO: recompute distance
@@ -899,7 +929,7 @@ class WatchedMigrator extends BaseMigrator {
         echo 'Post processing'.PHP_EOL;
         $this->pPdo->query('CREATE TABLE gk_watched_tmp AS SELECT * FROM gk_watched;');
         $this->pPdo->query('UPDATE gk_watched_tmp SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_watched_tmp.geokret = gk_geokrety.gkid;');
-        $this->pPdo->query('TRUNCATE gk_watched;');
+        $this->pPdo->query('TRUNCATE gk_watched RESTART IDENTITY;');
         $this->pPdo->query('INSERT INTO gk_watched SELECT * FROM gk_watched_tmp;');
         $this->pPdo->query('DROP TABLE gk_watched_tmp;');
     }
