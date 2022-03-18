@@ -2,6 +2,7 @@
 
 {include file='js/_map_init.tpl.js'}
 map = initializeMap();
+map.scrollWheelZoom.enable();
 {include file='js/map_geojson_loader.tpl.js'}
 
 function buildurl() {
