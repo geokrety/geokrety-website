@@ -27,11 +27,17 @@
         </div>
         <div class="col-xs-12 col-md-3">
             {include file='blocks/user/actions.tpl'}
+            {if !$user->isConnectedWithProvider()}
             {include file='blocks/user/oauth.tpl'}
+            {/if}
             {if $user->isCurrentUser()}
                 {include file='blocks/user/map_home.tpl'}
             {/if}
             {include file='blocks/user/statpic.tpl'}
+            {if $user->isConnectedWithProvider()}
+            {include file='blocks/user/oauth.tpl'}
+            {/if}
+            {include file='blocks/user/danger_zone.tpl'}
         </div>
     </div>
 {/block}

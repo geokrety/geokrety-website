@@ -297,10 +297,13 @@ class User extends Base implements JsonSerializable {
         return !is_null($this->terms_of_use_datetime);
     }
 
-    public function isConnectedWithProvider(SocialAuthProvider $provider): bool {
+    public function isConnectedWithProvider(?SocialAuthProvider $provider = null): bool {
         if (is_null($this->social_auth)) {
             return false;
+        } elseif (is_null($provider)) {
+            return true;
         }
+
         $prov_ids = $this->social_auth->getAll('provider', true);
 
         return in_array($provider->id, $prov_ids);

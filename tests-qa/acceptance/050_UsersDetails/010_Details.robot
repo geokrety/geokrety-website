@@ -59,8 +59,9 @@ Has Private Information
     Element Should Contain              ${USER_PROFILE_EMAIL}                   ${user.email}
     Page Should Contain Element         ${USER_PROFILE_SECID_LABEL}
     Textfield Should Not Contain        ${USER_PROFILE_SECID}                   ${EMPTY}
-    Page Should Contain                 To change your username or remove your account?
     Page Should Contain Element         ${USER_PROFILE_MINI_MAP_PANEL}
+    Page Should Contain Element         ${USER_PROFILE_DANGER_ZONE_PANEL}
+    Page Should Contain Element         ${USER_PROFILE_DELETE_ACCOUNT_BUTTON}
 
 Has Not Private Information
     [Arguments]             ${url}
@@ -69,5 +70,6 @@ Has Not Private Information
     Page Should Not Contain Element     ${USER_PROFILE_EMAIL}
     Page Should Not Contain Element     ${USER_PROFILE_SECID_LABEL}
     Page Should Not Contain Element     ${USER_PROFILE_SECID}
-    Page Should Not Contain             To change your username or remove your account?
     Page Should Not Contain Element     ${USER_PROFILE_MINI_MAP_PANEL}
+    Page Should Not Contain Element     ${USER_PROFILE_DANGER_ZONE_PANEL}
+    Page Should Not Contain Element     ${USER_PROFILE_DELETE_ACCOUNT_BUTTON}

@@ -248,6 +248,9 @@ class Config extends \Prefab {
             '/metrics',
         ]);
 
+        // User
+        define('GK_USER_DELETED_USERNAME', getenv('GK_USER_DELETED_USERNAME') ?: 'Deleted user');
+
         // map api url
         define('GK_MAP_URL', getenv('GK_MAP_URL') ?: 'https://api.geokretymap.org');
         define('GK_MAP_DEFAULT_ZOOM', getenv('GK_MAP_DEFAULT_ZOOM') ?: 4);

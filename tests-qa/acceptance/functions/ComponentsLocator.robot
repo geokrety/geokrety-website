@@ -175,6 +175,8 @@ ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}             //li[@data-type="move-commen
 ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}        //li[@data-type="move-comment" and @data-move-comment-id="1"]
 ${GEOKRET_DETAILS_MOVES_COMMENTS_SECOND_ITEM}       //li[@data-type="move-comment" and @data-move-comment-id="2"]
 ${GEOKRET_DETAILS_MOVES_COMMENTS_DELETE_BUTTON}     //li[@data-type="move-comment" and @data-move-comment-id="\${commentid}"]//button[@data-type="move-comment-delete"]
+${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_AUTHOR}      //li[@data-type="move-comment" and @data-move-comment-id="1"]//*[contains(@class, "author")]
+${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_COMMENT}     //li[@data-type="move-comment" and @data-move-comment-id="1"]/div/span[@class="move-comment"]
 
 ${GEOKRET_MOVE_COMMENT_PANEL}                       //div[@data-gk-type="move"]
 ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}               //*[@id="comment"]
@@ -210,6 +212,7 @@ ${USER_PROFILE_BADGES_PANEL}                    //*[@id="userBadgesPanel"]
 ${USER_PROFILE_ACTIONS_PANEL}                   //*[@id="userActionsPanel"]
 ${USER_PROFILE_MINI_MAP_PANEL}                  //*[@id="userMiniMapPanel"]
 ${USER_PROFILE_STATPIC_PANEL}                   //*[@id="userStatpicPanel"]
+${USER_PROFILE_DANGER_ZONE_PANEL}               //*[@id="userDangerZonePanel"]
 
 ${USER_PROFILE_DROPZONE}                        //*[@id="userAvatar" and contains(@class, "dropzone")]
 ${USER_PROFILE_DROPZONE_IMAGE}                  //*[@id="userPicturesList"]//div[@class="gallery"]/div[@class="gallery"]
@@ -241,6 +244,10 @@ ${USER_PROFILE_GAINED_MOVED_AWARDS}             ${USER_PROFILE_AWARDS_PANEL}//sp
 
 ${USER_PROFILE_AVATAR_GALLERY}                  ${USER_PROFILE_DETAILS_PANEL}//div[contains(@class, "gallery")]
 ${USER_PROFILE_STATPIC_IMAGE}                   ${USER_PROFILE_STATPIC_PANEL}//img
+
+${USER_PROFILE_DELETE_ACCOUNT_BUTTON}                      ${USER_PROFILE_DANGER_ZONE_PANEL}//*[@id="userAccountDeleteButton"]
+${USER_PROFILE_DELETE_ACCOUNT_OPERATION_RESULT_INPUT}      //*[@id="operationInputResult"]
+${USER_PROFILE_DELETE_ACCOUNT_REMOVE_CONTENT_CHECKBOX}     //*[@id="removeCommentContentCheckbox"]
 
 ${USER_PROFILE_LANGUAGE_EDIT_BUTTON}            //*[@id="userLanguageUpdateButton"]
 ${USER_PROFILE_EMAIL_EDIT_BUTTON}               //*[@id="userEmailUpdateButton"]

@@ -1,7 +1,7 @@
 <li class="list-group-item list-group-item-{if $comment->type === 0}info{else}danger{/if}" data-type="move-comment" data-move-comment-id="{$comment->id}" data-move-id="{$comment->move->id}">
     <div class="pull-left">
         {if $comment->type === 0}{fa icon="comment"}{else}{fa icon="exclamation-triangle"}{/if}
-        {$comment->author|userlink nofilter}:
+        {$comment->author|userlink:"{t}{GK_USER_DELETED_USERNAME}{/t}" nofilter}:
         <span class="move-comment">{$comment->content}</span>
     </div>
     <div class="pull-right">

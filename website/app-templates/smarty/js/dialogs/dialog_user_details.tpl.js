@@ -19,5 +19,9 @@ $('#modal').on('shown.bs.modal', function(event) {
         });
     } else if (typeName === 'user-refresh-secid') {
         modalLoad("{'user_refresh_secid'|alias}");
+    } else if (typeName === 'user-delete-account') {
+        modalLoad("{'user_delete_account'|alias}", function() {
+            $('#user-delete-account-form').parsley();
+        });
     }
 });

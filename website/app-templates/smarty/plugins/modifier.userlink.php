@@ -19,11 +19,11 @@ function smarty_modifier_userlink(?GeoKrety\Model\User $user, ?string $alternati
             $username = smarty_modifier_escape($alternative_name);
         }
 
-        return sprintf('<em class="user-anonymous">%s</em>', $username);
+        return sprintf('<em class="author user-anonymous">%s</em>', $username);
     }
 
     return sprintf(
-        '<a href="%s%s" data-gk-link="user" data-gk-id="%d" title="%s"%s>%s</a>',
+        '<a href="%s%s" class="author" data-gk-link="user" data-gk-id="%d" title="%s"%s>%s</a>',
         GK_SITE_BASE_SERVER_URL,
         \Base::instance()->alias('user_details', 'userid='.$user->id),
         $user->id,
