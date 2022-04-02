@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 15:52+0000\n"
-"PO-Revision-Date: 2022-03-17 15:55\n"
+"POT-Creation-Date: 2022-04-02 15:52+0000\n"
+"PO-Revision-Date: 2022-04-02 16:01\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Nynorsk\n"
 "Language: nn_NO\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-03-17 15:52+0000\n"
+"POT-Creation-Date: 2022-04-02 15:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -551,6 +551,18 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:23
 #, php-format
 msgid "GeoKret: %s (%s)"
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:17
+msgid "Wrong operation result."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:31
+msgid "Something went wrong. If the error persist, please contact us."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:40
+msgid "Your account is now deleted. Thanks for playing with us."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:43
@@ -1508,6 +1520,38 @@ msgstr ""
 
 #: smarty/dialog:13 smarty/dialog:38
 msgid "Award"
+msgstr ""
+
+#: smarty/dialog:4
+msgid "Do you really want to delete your account?"
+msgstr ""
+
+#: smarty/dialog:10
+msgid "All your logs and comments will appear posted from \"%1\""
+msgstr ""
+
+#: smarty/dialog:11
+msgid "All your GeoKrety will be automatically archived"
+msgstr ""
+
+#: smarty/dialog:12
+msgid "Your avatar pictures will be deleted"
+msgstr ""
+
+#: smarty/dialog:14
+msgid "Warning!!! This will permanently delete your account."
+msgstr ""
+
+#: smarty/dialog:16
+msgid "Please solve this operation: %1 + %2 = ?"
+msgstr ""
+
+#: smarty/dialog:21
+msgid "Also remove all my comments content"
+msgstr ""
+
+#: smarty/dialog:28 smarty/blocks/user:12
+msgid "Delete my account"
 msgstr ""
 
 #: smarty/dialog:4
@@ -3033,10 +3077,6 @@ msgstr ""
 msgid "Generate a new secid"
 msgstr ""
 
-#: smarty/blocks/user:75
-msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr ""
-
 #: smarty/blocks/user:12
 msgid "View inventory"
 msgstr ""
@@ -3111,6 +3151,18 @@ msgstr ""
 
 #: smarty/blocks/user:13
 msgid "Choose statpic"
+msgstr ""
+
+#: smarty/blocks/user:5
+msgid "Danger zone"
+msgstr ""
+
+#: smarty/blocks/user:8
+msgid "Be careful, actions in this section are irreversible."
+msgstr ""
+
+#: smarty/blocks/user:11
+msgid "Delete your account"
 msgstr ""
 
 #: smarty/macros:5
