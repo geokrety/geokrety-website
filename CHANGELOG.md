@@ -1,3 +1,21 @@
+## [2.18.0](https://github.com/geokrety/geokrety-website/compare/v2.17.3...v2.18.0) (2022-04-02)
+
+
+### Features
+
+* Add link to releases changelogs ([df21b77](https://github.com/geokrety/geokrety-website/commit/df21b771eb3759177734fde8a5be37e616483cad))
+* Allow users to deleted their account ([811d715](https://github.com/geokrety/geokrety-website/commit/811d715fbe7c40d3addfe32fa54a8cf31b74e2f9))
+
+
+### Bug Fixes
+
+* Disable map mouse scroll except for Geokrety map ([9aab37e](https://github.com/geokrety/geokrety-website/commit/9aab37e71aaabde7539847f8d7b677985e91d246))
+
+
+### Chores
+
+* Clean comment ([2dd1e44](https://github.com/geokrety/geokrety-website/commit/2dd1e4455e26e838e37dc62ad5e311d5b2e96d8d))
+
 ### [2.17.3](https://github.com/geokrety/geokrety-website/compare/v2.17.2...v2.17.3) (2022-03-17)
 
 
