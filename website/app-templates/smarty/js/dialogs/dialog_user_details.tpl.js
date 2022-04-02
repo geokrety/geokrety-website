@@ -6,7 +6,6 @@ $('#modal').on('shown.bs.modal', function(event) {
 
     if (typeName === 'user-choose-language') {
         modalLoad("{'user_language_chooser'|alias}");
-        // $(this).find('.modal-content').load("{'user_language_chooser'|alias}");
     } else if (typeName === 'user-update-email') {
         modalLoad("{'user_update_email'|alias}", function() {
             $('#update-email').parsley();
