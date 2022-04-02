@@ -5,6 +5,9 @@ Resource        FunctionsGlobal.robot
 *** Variables ***
 &{CONTENT_TYPE_FORM_URLENCODED}    Content-Type=application/x-www-form-urlencoded
 
+${COMMENT_1} =        Some comment !
+${COMMENT_2} =        Another one
+
 *** Keywords ***
 
 Click Move Type
@@ -84,16 +87,16 @@ Check GeoKrety Inventory
 Check Move Comment
     [Arguments]    ${element}    ${author}=username1    ${comment}=${EMPTY}
     ${_element} =      Replace Variables    ${element}
-    Wait Until Element Contains             ${_element}/div/a[@data-gk-link="user"]    ${author}
-    Wait Until Element Contains             ${_element}/div/span[@class="move-comment"]    ${comment.strip()}
+    Element Should Contain                  ${_element}/div/a[@data-gk-link="user"]    ${author}
+    Element Should Contain                  ${_element}/div/span[@class="move-comment"]    ${comment.strip()}
     Element should have class               ${_element}    list-group-item-info
 
 
 Check Move Comment Missing
     [Arguments]    ${element}    ${author}=username1    ${comment}=${EMPTY}
     ${_element} =      Replace Variables    ${element}
-    Wait Until Element Contains             ${_element}/div/a[@data-gk-link="user"]    ${author}
-    Wait Until Element Contains             ${_element}/div/span[@class="move-comment"]    ${comment.strip()}
+    Element Should Contain                  ${_element}/div/a[@data-gk-link="user"]    ${author}
+    Element Should Contain                  ${_element}/div/span[@class="move-comment"]    ${comment.strip()}
     Element should have class               ${_element}    list-group-item-danger
 
 

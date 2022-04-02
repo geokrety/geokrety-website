@@ -7,10 +7,6 @@ Resource        ../vars/geokrety.resource
 Force Tags      Moves    GeoKret Details    Move Comment    Missing
 Test Setup      Seed
 
-*** Variables ***
-${COMMENT_1} =        Some comment !
-${COMMENT_2} =        Another one
-
 *** Test Cases ***
 
 Anonymous Cannot Report Missing

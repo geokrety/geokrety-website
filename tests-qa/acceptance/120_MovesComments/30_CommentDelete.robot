@@ -7,10 +7,6 @@ Resource        ../vars/geokrety.resource
 Force Tags      Moves    GeoKret Details    Move Comment
 Test Setup     Seed
 
-*** Variables ***
-${COMMENT_1} =        Some comment !
-${COMMENT_2} =        Another one
-
 *** Test Cases ***
 
 Comment Is Shown In Modal
