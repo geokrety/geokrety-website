@@ -30,11 +30,10 @@ trailing: ## run file check : check trailing spaces
 	bash ./scripts/check-trailing-spaces.sh .
 utf8: ## run file check : utf8
 	bash ./scripts/check-utf8.sh .
-test: ## run PHPUnit tests
-	php ./vendor/bin/phpunit --stderr
 check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, utf8, test
+
 test-db: ## run pgtap tests
-	PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -ot website/db/tests/test*.sql
+	PGPASSWORD=geokrety PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -ot website/db/tests/test*.sql
 test-qa: ## run qa tests
 	cd tests-qa && make test || make rerun-failed-tests
 test-qa-headless: ## run qa tests in headless mode
