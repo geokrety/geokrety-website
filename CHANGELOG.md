@@ -1,3 +1,10 @@
+### [2.18.2](https://github.com/geokrety/geokrety-website/compare/v2.18.1...v2.18.2) (2022-04-03)
+
+
+### Bug Fixes
+
+* Reformat delete user modal content ([cb9a1d5](https://github.com/geokrety/geokrety-website/commit/cb9a1d5392214c249193f2a8d370ed0355e747d8))
+
 ### [2.18.1](https://github.com/geokrety/geokrety-website/compare/v2.18.0...v2.18.1) (2022-04-03)
 
 
