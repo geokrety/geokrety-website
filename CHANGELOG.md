@@ -1,3 +1,10 @@
+### [2.18.1](https://github.com/geokrety/geokrety-website/compare/v2.18.0...v2.18.1) (2022-04-03)
+
+
+### Bug Fixes
+
+* Activate recaptcha properly on user delete modal ([60e22fa](https://github.com/geokrety/geokrety-website/commit/60e22fa924b00506472ef252882ecd0e24a3b62c))
+
 ## [2.18.0](https://github.com/geokrety/geokrety-website/compare/v2.17.3...v2.18.0) (2022-04-02)
 
 
