@@ -1,3 +1,6 @@
+
+{include file='macros/recaptcha.tpl'}
+
 {block name=modal_content}
 <div class="modal-header alert-danger">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -21,6 +24,9 @@
                 <input id="removeCommentContentCheckbox" type="checkbox" name="removeCommentContentCheckbox"> {t}Also remove all my comments content{/t}
             </label>
         </div>
+
+        {call recaptcha}
+
     </div>
     <div class="modal-footer">
         {call csrf}

@@ -61,4 +61,8 @@
     {include 'js/dialogs/dialog_contact_user.tpl.js'}
     {include 'js/dialogs/dialog_picture_actions.tpl.js'}
     {include 'js/dialogs/dialog_oauth_disconnect.tpl.js'}
+
+$('#modal').on('hide.bs.modal', function(event) {
+    $('#recaptcha_wrapper').empty();
+});
 {/block}

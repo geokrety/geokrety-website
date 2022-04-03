@@ -12,10 +12,6 @@ $('#modal').on('show.bs.modal', function(event) {
     }
 });
 
-$('#modal').on('hide.bs.modal', function(event) {
-    $('#recaptcha_wrapper').empty();
-});
-
 function bindControls() {
     $('#user-contact').parsley();
     // Bind SimpleMDE editor

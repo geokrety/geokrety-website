@@ -22,6 +22,10 @@ $('#modal').on('shown.bs.modal', function(event) {
     } else if (typeName === 'user-delete-account') {
         modalLoad("{'user_delete_account'|alias}", function() {
             $('#user-delete-account-form').parsley();
+            grecaptcha.render("recaptcha_wrapper", {
+                sitekey: "{GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}",
+                theme: "light"
+            });
         });
     }
 });
