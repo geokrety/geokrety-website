@@ -7,7 +7,7 @@
     <h4 class="modal-title" id="modalLabel">{t}Do you really want to delete your account?{/t}</h4>
 </div>
 
-<form id="user-delete-account-form" name="userDeleteAccountForm" action="{'user_delete_account'|alias}" method="post" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
+<form id="user-delete-account-form" class="form-horizontal" name="userDeleteAccountForm" action="{'user_delete_account'|alias}" method="post" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
     <div class="modal-body">
         <ul>
             <li>{t user=GK_USER_DELETED_USERNAME}All your logs and comments will appear posted from "%1"{/t}</li>
@@ -16,14 +16,20 @@
         </ul>
         <div class="alert alert-danger" role="alert">{t}Warning!!! This will permanently delete your account.{/t}</div>
         <div class="form-group">
-            <label for="operationInputResult">{t number1=$number1 number2=$number2}Please solve this operation: %1 + %2 = ?{/t}</label>
-            <input type="number" class="form-control" id="operationInputResult" name="operation_result" min="0" placeholder="Result" required>
+            <label for="operationInputResult" class="col-sm-6 control-label">{t number1=$number1 number2=$number2}Please solve this operation: %1 + %2 = ?{/t}</label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" id="operationInputResult" name="operation_result" min="0" placeholder="Result" required>
+            </div>
         </div>
-        <div class="checkbox">
-            <label>
-                <input id="removeCommentContentCheckbox" type="checkbox" name="removeCommentContentCheckbox"> {t}Also remove all my comments content{/t}
-            </label>
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="checkbox">
+                <label>
+                    <input id="removeCommentContentCheckbox" type="checkbox" name="removeCommentContentCheckbox"> {t}Also remove all my comments content{/t}
+                </label>
+            </div>
         </div>
+    </div>
 
         {call recaptcha}
 
