@@ -1,3 +1,10 @@
+### [2.20.1](https://github.com/geokrety/geokrety-website/compare/v2.20.0...v2.20.1) (2022-04-09)
+
+
+### Bug Fixes
+
+* Fix GeoKrety create CSRF ([f892114](https://github.com/geokrety/geokrety-website/commit/f8921147e4aa19c0cedc78b042e5a44165834ca1))
+
 ## [2.20.0](https://github.com/geokrety/geokrety-website/compare/v2.19.0...v2.20.0) (2022-04-09)
 
 
