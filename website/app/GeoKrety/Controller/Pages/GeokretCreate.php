@@ -40,6 +40,8 @@ class GeokretCreate extends Base {
         $this->geokret->holder = $this->currentUser;
         $this->geokret->touch('created_on_datetime');
 
+        $this->checkCsrf();
+
         // Load the selected template
         $label = new Label();
         $label->load(['template = ?', $f3->get('POST.label_template')], null, GK_SITE_CACHE_TTL_LABELS_LOOKUP);
@@ -48,13 +50,8 @@ class GeokretCreate extends Base {
             $this->get($f3);
             exit();
         }
-
         $this->geokret->label_template = $label;
-
-        \Flash::instance()->addMessage($this->geokret->label_template, 'info');
         $f3->set('COOKIE.default_label_template', strval($this->geokret->label_template->id));
-
-        $this->checkCsrf();
 
         if ($this->geokret->validate()) {
             $this->geokret->save();

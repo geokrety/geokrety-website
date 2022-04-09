@@ -1,7 +1,7 @@
 *** Settings ***
 Resource   ComponentsLocator.robot
 Resource   Urls.robot
-Library  SeleniumLibrary  timeout=10  implicit_wait=0    run_on_failure=Capture Full Page Screenshot
+Library  SeleniumLibrary  timeout=10  implicit_wait=0
 Library    Collections
 # doc: http://robotframework.org/Selenium2Library/Selenium2Library.html
 #      http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
@@ -27,9 +27,6 @@ ${DC_Win10Chrome}	 "os:Windows,os_version:10,browser:Chrome,browser_version:84.0
 ${DC_Win10Firefox}	 "os:Windows,os_version:10,browser:Firefox,browser_version:79.0,${BS_CONFIG}"
 
 *** Keywords ***
-
-Capture Full Page Screenshot
-    Capture Page Screenshot     full_screen=True
 
 Clear Database
     Go To Url               ${PAGE_DEV_RESET_DB_URL}
