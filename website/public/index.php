@@ -22,7 +22,7 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
 
         if ($error['code'] === 400) {
             Flash::instance()->addMessage($error['text'] ?: _('Your request seems invalid.'), 'danger');
-            $f3->set('SESSION.HTTP_RETURN_CDOE', 400);
+            $f3->set('SESSION.HTTP_RETURN_CODE', 400);
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 401) {
@@ -102,10 +102,10 @@ if (!$f3->exists('SESSION.csrf') or empty($f3->get('SESSION.csrf'))) {
 Metrics::getOrRegisterCounter('total_requests', 'Total number of served requests', ['verb'])
     ->inc([$f3->get('VERB')]);
 
-// Force HTTP_RETURN_CDOE
-if ($f3->exists('SESSION.HTTP_RETURN_CDOE')) {
-    http_response_code($f3->get('SESSION.HTTP_RETURN_CDOE'));
-    $f3->clear('SESSION.HTTP_RETURN_CDOE');
+// Force HTTP_RETURN_CODE
+if ($f3->exists('SESSION.HTTP_RETURN_CODE')) {
+    http_response_code($f3->get('SESSION.HTTP_RETURN_CODE'));
+    $f3->clear('SESSION.HTTP_RETURN_CODE');
 }
 
 $f3->run();
