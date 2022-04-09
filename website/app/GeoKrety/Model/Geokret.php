@@ -231,8 +231,9 @@ class Geokret extends Base {
         return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0) > 0;
     }
 
-    public function addFilterHasTouchedInThePast(User $user) {
-        $this->has('moves', ['author = ? AND move_type IN ?', $user->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0);
+    public function addFilterHasTouchedInThePast(User $user, array $gk_list) {
+        // TODO, speedup this using a special automanaged table
+        $this->orHas('moves', ['author = ? AND move_type IN ? AND geokret IN ?', $user->id, LogType::LOG_TYPES_USER_TOUCHED, $gk_list]);
     }
 
     /**

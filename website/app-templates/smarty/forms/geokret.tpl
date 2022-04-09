@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        {if isset($geokret) && $geokret->gkid()}
+        {if isset($geokret) and $geokret->gkid()}
             <h3 class="panel-title">{t}Edit a GeoKret{/t}</h3>
         {else}
             <h3 class="panel-title">{t}Create a new GeoKret{/t}</h3>
@@ -21,7 +21,7 @@
                 <div class="col-sm-10">
                     <select class="form-control" id="inputGeokretType" name="type">
                         {foreach \GeoKrety\GeokretyType::getTypes() as $key => $gktype}
-                            <option value="{$key}" {if isset($geokret) && $geokret->type->isType($key)} selected{/if} required>{$gktype}</option>
+                            <option value="{$key}" {if isset($geokret) and $geokret->type->isType($key)} selected{/if} required>{$gktype}</option>
                         {/foreach}
                     </select>
                 </div>
@@ -47,12 +47,33 @@
             {/if}
 
             <div class="form-group">
+                <label for="inputLabelTemplate" class="col-sm-2 control-label">{t}Label template{/t}</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="inputLabelTemplate" name="label_template">
+                        {foreach $templates as $template}
+                        <option value="{$template->template}" {if isset($geokret) and $geokret->label_template and $geokret->label_template->id === $template->id} selected{/if}>{$template->title}</option>
+                        {/foreach}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     {call csrf}
-                    <button type="submit" id="createOrUpdateSubmitButton" class="btn btn-primary">{if isset($geokret) && $geokret->gkid()}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
+                    <button type="submit" id="createOrUpdateSubmitButton" class="btn btn-primary">{if isset($geokret) and $geokret->gkid()}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
                 </div>
             </div>
 
         </form>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <h3 class="panel-title">{t}GeoKret label preview{/t}</h3>
+    </div>
+    <div class="panel-body">
+        <a id="geokretLabelPreviewLink" href="" class="picture-link" title="{t}GeoKret label preview{/t}">
+            <img id="geokretLabelPreview" class="img-responsive center-block" alt="{t}GeoKret label preview{/t}">
+        </a>
     </div>
 </div>

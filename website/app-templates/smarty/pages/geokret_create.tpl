@@ -27,4 +27,32 @@ var inscrybmde = new InscrybMDE({
 {* used by Tests-qa in Robot  Framework *}
 $("#inputMission").data({ editor: inscrybmde });
 {/if}
+
+    let preview = $('#geokretLabelPreview');
+    let previewLink = $('#geokretLabelPreviewLink');
+    let template = $("#inputLabelTemplate").val();
+
+    // Load on page load
+    labelPreview();
+
+    $('#inputLabelTemplate').on('change', function(){
+        labelPreview();
+    });
+
+    $('#geokretLabelPreviewLink').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		zoom: {
+			enabled: true,
+			duration: 300
+		}
+	});
+
+    function labelPreview() {
+        let template = $("#inputLabelTemplate").val();
+        let url = "{GK_CDN_LABELS_SCREENSHOTS_URL}/"+template+".png";
+        preview.attr("src", url);
+        previewLink.attr("href", url);
+    }
+
 {/block}

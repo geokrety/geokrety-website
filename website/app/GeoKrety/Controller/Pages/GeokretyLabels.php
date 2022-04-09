@@ -27,8 +27,9 @@ class GeokretyLabels extends Base {
         $gk_list = array_filter($gk_list, 'strlen');
 
         $geokret = new Geokret();
-        $geokret->addFilterHasTouchedInThePast($this->current_user);
-        $geokrety = $geokret->find(['gkid IN ?', $gk_list], ['limit' => GK_LABELS_GENERATE_MAX]);
+        $geokret->addFilterHasTouchedInThePast($this->current_user, $gk_list);
+        $geokrety = $geokret->find(['owner = ? AND gkid IN ?', $this->current_user->id, $gk_list], ['limit' => GK_LABELS_GENERATE_MAX]);
+
         if ($geokrety === false) {
             Flash::instance()->addMessage(_('The list contains only unknown Tracking Codes or never touched GeoKrety'), 'danger');
             $f3->reroute('@geokrety_labels');

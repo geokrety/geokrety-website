@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="inputLabelTemplate" class="col-sm-2 control-label">{t}Label template{/t}</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="inputLabelTemplate" name="labelTemplate">
+                    <select class="form-control" id="inputLabelTemplate" name="label_template">
                         {foreach $templates as $template}
                         <option value="{$template->template}" {if $geokret->label_template && $geokret->label_template->id === $template->id} selected{/if}>{$template->title}</option>
                         {/foreach}
