@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 11:26+0000\n"
-"PO-Revision-Date: 2022-04-03 11:33\n"
+"POT-Creation-Date: 2022-04-09 13:43+0000\n"
+"PO-Revision-Date: 2022-04-09 13:52\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-04-03 11:26+0000\n"
+"POT-Creation-Date: 2022-04-09 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -336,6 +336,10 @@ msgstr ""
 msgid "This GeoKret has been added to your watch list."
 msgstr ""
 
+#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:33
+msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
+msgstr ""
+
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:50
 msgid "Wrong secid"
 msgstr "Неправильный secid"
@@ -352,39 +356,39 @@ msgstr ""
 msgid "\"nr\" parameter must be provided."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:51
-#: website/app/GeoKrety/Controller/Pages/Login.php:154
+#: website/app/GeoKrety/Controller/Pages/Login.php:50
+#: website/app/GeoKrety/Controller/Pages/Login.php:153
 msgid "Username and password doesn't match."
 msgstr "Имя пользователя и пароль не совпадают."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:80
+#: website/app/GeoKrety/Controller/Pages/Login.php:79
 msgid "Welcome on board!"
 msgstr "Добро пожаловать!"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:135
+#: website/app/GeoKrety/Controller/Pages/Login.php:134
 msgid "Please provide 'login' and 'password' parameters."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:143
+#: website/app/GeoKrety/Controller/Pages/Login.php:142
 msgid "Your account is not valid."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:165
-#: website/app/GeoKrety/Controller/Pages/Login.php:171
+#: website/app/GeoKrety/Controller/Pages/Login.php:164
+#: website/app/GeoKrety/Controller/Pages/Login.php:170
 msgid "Invalid \"secid\""
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:220
+#: website/app/GeoKrety/Controller/Pages/Login.php:219
 #, php-format
 msgid "Your account is already linked with %s"
 msgstr "Ваша учетная запись уже связана с %s"
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:225
+#: website/app/GeoKrety/Controller/Pages/Login.php:224
 #, php-format
 msgid "This %s account is already linked with another GeoKrety account."
 msgstr "Этот %s аккаунт уже привязан к другому аккаунту GeoKrety."
 
-#: website/app/GeoKrety/Controller/Pages/Login.php:240
+#: website/app/GeoKrety/Controller/Pages/Login.php:239
 msgid "Auth request was canceled."
 msgstr "Запрос аутентификации был отменен."
 
@@ -735,7 +739,7 @@ msgid "An email has been sent to your registered address, please click the inclu
 msgstr ""
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
-#: website/app/GeoKrety/Email/EmailChange.php:53 smarty/pages:3 smarty/emails:3
+#: website/app/GeoKrety/Email/EmailChange.php:53 smarty/emails:3 smarty/pages:3
 msgid "Changing your email address"
 msgstr "Изменение адреса электронной почты"
 
@@ -826,8 +830,8 @@ msgstr "архив"
 msgid "dip"
 msgstr "погрузить"
 
-#: website/app/GeoKrety/LogType.php:121 smarty/pages:80
-#: smarty/blocks/geokret:56
+#: website/app/GeoKrety/LogType.php:121 smarty/blocks/geokret:56
+#: smarty/pages:80
 msgid "Born"
 msgstr "Создать"
 
@@ -903,15 +907,15 @@ msgstr "Код отслеживания \"%s\" содержит недопуст
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
 msgstr "Извините, но код отслеживания \"%s\" не найден в нашей базе данных."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:114
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:119
 msgid "No Tracking Code provided."
 msgstr "Код отслеживания не указан."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:118
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:123
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
 msgstr "Анонимные пользователи не могут сразу проверить несколько кодов отслеживания. Пожалуйста, сначала авторизируйтесь."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:122
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:127
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "Только %d коды отслеживания могут быть заданы одновременно, отмечены %d."
@@ -1013,203 +1017,879 @@ msgid "You are not allowed to access this page."
 msgstr ""
 
 #: website/public/index.php:41
+msgid "Method not allowed."
+msgstr ""
+
+#: website/public/index.php:45
 msgid "We are sorry, something unexpected happened."
 msgstr ""
 
-#: smarty:2 smarty:3
-msgid "Home"
-msgstr "Главная"
+#: smarty/banners:2
+msgid "Some statistics"
+msgstr "Некоторые статистические данные"
 
-#: smarty:3 smarty/pages:3 smarty/pages:26 smarty:5
-msgid "News"
-msgstr "Новости"
+#: smarty/banners:6
+msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
+msgstr "<strong>%1</strong> зарегистрирован GeoKrety, <strong>%2</strong> GeoKrety спрятан <strong>%3</strong> пользователями."
 
-#: smarty:6 smarty:13 smarty/pages:3 smarty:16
-msgid "Log a GeoKret"
-msgstr "Отметить ГеоКрота"
-
-#: smarty:11 smarty/pages:25 smarty/pages:26 smarty/pages:18
-#: smarty/blocks/geokret:88
-msgid "Actions"
-msgstr "Действия"
-
-#: smarty:15 smarty/pages:3 smarty/forms:6 smarty/blocks/user:3
-msgid "Create a new GeoKret"
-msgstr "Создать нового ГеоКрота"
-
-#: smarty:16 smarty/pages:3 smarty/pages:8
-msgid "Claim a GeoKret"
-msgstr "Принять Геокрота"
-
-#: smarty:19 smarty/pages:3 smarty/pages:8
-msgid "Advanced search"
-msgstr "Расширенный поиск"
-
-#: smarty:20
-msgid "Photo gallery"
-msgstr "Фотогалерея"
-
-#: smarty:23
-msgid "GeoKrety Map"
-msgstr "Карта ГеоКротов"
-
-#: smarty:30
-msgid "Currently selected language"
-msgstr "Выбранный язык"
-
-#: smarty:41 smarty:43 smarty/pages:39 smarty/pages:3
-msgid "Help"
-msgstr "Помощь"
-
-#: smarty:45 smarty/dialog:26 smarty/dialog:46
-msgid "Terms of use"
-msgstr "Условия использования"
-
-#: smarty:46 smarty/pages:3 smarty/pages:9
-msgid "Press corner"
-msgstr "Пресса"
-
-#: smarty:48
-msgid "GK interface / API"
-msgstr "GK интерфейс / API"
-
-#: smarty:50
-msgid "Waypoints synchronization status"
+#: smarty/banners:13
+msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
 msgstr ""
 
-#: smarty:51
-msgid "Yearly rankings"
+#: smarty/banners:21
+msgid "And that's thanks to you! Congratulation!"
+msgstr "И спасибо Вам! Поздравляем!"
+
+#: smarty/banners:3
+msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
+msgstr "У вас есть ожидающая подтверждения электронная почта. Не забудьте нажать на ссылку, которая будет указана в письме, чтобы завершить процедуру. Ссылка истечет %1!"
+
+#: smarty/banners:3
+msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
 msgstr ""
 
-#: smarty:53 smarty/pages:3
-msgid "Downloads"
-msgstr "Загрузки"
+#: smarty/banners:2
+msgid "Enjoying GeoKrety.org?"
+msgstr "Вам нравятся ГеоКроты?"
 
-#: smarty:54
-msgid "GeoKrety Toolbox"
-msgstr "Инструмент GeoKrety"
+#: smarty/banners:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr ""
 
-#: smarty:55
-msgid "Waypoint resolver"
-msgstr "Разборщик точек"
+#: smarty/banners:8
+msgid "Donate"
+msgstr ""
 
-#: smarty/dialog:4
-msgid "Do you really want to delete this news comment?"
-msgstr "Вы действительно хотите удалить этот комментарий?"
+#: smarty/banners:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "Даже если это - на данный момент - не обязательно, мы рекомендуем Вам <a href=\"%1\">войти</a>."
 
-#: smarty/dialog:14 smarty/dialog:24 smarty/dialog:16 smarty/dialog:21
-#: smarty/dialog:46 smarty/dialog:27 smarty/dialog:15 smarty/dialog:42
-#: smarty/dialog:51 smarty/dialog:23 smarty/dialog:52 smarty/dialog:35
-#: smarty/dialog:32 smarty/dialog:12 smarty/dialog:55 smarty/dialog:66
-#: smarty/dialog:13 smarty/dialog:37 smarty/dialog:39 smarty/dialog:26
-#: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:34
-#: smarty/pages:38 smarty/pages:75
-msgid "Dismiss"
-msgstr "Прекратить"
+#: smarty/banners:4
+msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
+msgstr "Не стесняйтесь <a href=\"%1\">создать учетную запись</a>."
 
-#: smarty/dialog:15 smarty/dialog:16 smarty/dialog:24
-msgid "Delete"
-msgstr "Удалить"
+#: smarty/banners:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "После этого Вы сможете управлять инвентарем GeoKrety, загружать фотографии, редактировать журналы и, конечно, создать свой собственный GeoKrety!"
 
-#: smarty/dialog:6
-msgid "Do you really want to unsubscribe from this news?"
-msgstr "Вы действительно хотите отписаться от этой новости?"
+#: smarty/banners:3
+msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "Извините, но к Вашей учётной записи не зарегистрирован почтовый адрес. Вы не сможете восстановить пароль к учётной записи! Также вы не будете получать ежедневные уведомления о ваших GeoKrety или просмотреть GeoKrety."
 
-#: smarty/dialog:8
-msgid "Subscribe to this news?"
-msgstr "Подписаться на эту новость?"
+#: smarty/banners:4
+msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr "Пожалуйста, подумайте <a href=\"%1\">добавить адрес электронной почты</a> или <a href=\"%2\">связать ваш аккаунт</a> с некоторыми OAuth провайдером."
 
-#: smarty/dialog:27
-msgid "Unsubscribe"
-msgstr "Отписаться"
+#: smarty/banners:3
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr ""
 
-#: smarty/dialog:29
-msgid "Subscribe"
-msgstr "Подписаться"
+#: smarty/banners:4
+msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
+msgstr "Вы установили этот GeoKret доступен для принятия. Код владельца: <strong>%1</strong>. Дайте его вместе с кодом отслеживания <strong>%2</strong> пользователю, который примет ваш GeoKret."
 
-#: smarty/dialog:4
-msgid "Offer this GeoKret for adoption?"
-msgstr "Предложить этот GeoKret для принятия?"
+#: smarty/banners:6
+msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
+msgstr "Этот GeoKret доступен для принятия. Если текущий владелец дал вам код отслеживания плюс код владельца, то Вы можете <a href=\"%1\">претендовать</a> на этого GeoKret."
 
-#: smarty/dialog:10
-msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "Это позволит другому пользователю, который знает код отслеживания и код владельца стать новым владельцем этого GeoKret."
+#: smarty/banners:8
+msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+msgstr "Этот GeoKret доступен для принятия. Пожалуйста, <a href=\"%1\">войдите</a> сначала."
 
-#: smarty/dialog:15
-msgid "Back to GeoKret page"
-msgstr "Вернуться на страницу GeoKret"
+#: smarty/banners:2 smarty/banners:3
+msgid "Close"
+msgstr "Закрыть"
 
-#: smarty/dialog:18
-msgid "Generate an Owner Code"
-msgstr "Создать код владельца"
+#: smarty/banners:3
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "Эта ветка 🥦 активно развивается 👨‍💻, если вы нашли ошибки 🐛, пожалуйста, проверьте 👀 <a href=\"%1\" target=\"_blank\">среди существующих проблем ♻ на GitHub %2</a> и не стесняйтесь 🈚 чтобы открыть новый 🆕. (Одна 1 ошибка на вопрос, пожалуйста 🙏)"
 
-#: smarty/dialog:4
-msgid "Commenting a GeoKret move"
-msgstr "Комментарий к ходу GeoKret"
+#: smarty/banners:3
+msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
+msgstr "GeoKrety - бесплатная онлайн-служба для отслеживания объектов в GPS-играх, таких как geocaching или opencaching. Вы можете отслеживать небольшие предметы, книги, монеты, домашних животных или людей с нами… <a href=\"%1\">читать больше</a>."
 
-#: smarty/dialog:14 smarty/pages:22
-msgid "Your comment"
-msgstr "Ваш комментарий"
+#: smarty:5
+msgid "Search…"
+msgstr ""
 
-#: smarty/dialog:22 smarty/dialog:19 smarty/pages:22 smarty/pages:20
-#: smarty/pages:38 smarty/pages:41 smarty/forms:106 smarty/forms:247
+#: smarty/emails:4
+msgid "A script is locked"
+msgstr ""
+
+#: smarty/emails:7
+msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
+msgstr ""
+
+#: smarty/emails:10 smarty/admin/pages:45
+msgid "Unlock script"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Some accounts will be deleted."
+msgstr ""
+
+#: smarty/emails:7
+msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
+msgstr ""
+
+#: smarty/emails:4
+msgid "Confirm your email address change."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
+msgstr "Кто-то, надеюсь что Вы, попросил изменить адрес электронной почты GeoKrety на Ваш."
+
+#: smarty/emails:12
+msgid "Validate your new email address"
+msgstr "Подтвердить новый адрес электронной почты"
+
+#: smarty/emails:15
+msgid "This link is valid for %1."
+msgstr "Эта ссылка действительна для %1."
+
+#: smarty/emails:17
+msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
+msgstr "Если вы не запросили это и не знаете, что такое GeoKrety, пожалуйста, проигнорируйте это письмо. Вы никогда не будете слышать о нас снова!"
+
+#: smarty/emails:21
+msgid "You're getting this email because you've requested an email address change on our website."
+msgstr "Вы получаете это письмо, потому что запросили изменение адреса электронной почты на нашем сайте."
+
+#: smarty/emails:3
+msgid "Forgot Your Password?"
+msgstr "Забыли пароль?"
+
+#: smarty/emails:4
+msgid "Recover your password."
+msgstr ""
+
+#: smarty/emails:8
+msgid "It happens. Click the link below to reset your password."
+msgstr "Бывает. Нажмите на ссылку ниже, чтобы сбросить пароль."
+
+#: smarty/emails:12
+msgid "Reset Password"
+msgstr "Сбросить пароль"
+
+#: smarty/emails:15 smarty/emails:13 smarty/emails:18 smarty/emails:17
+#: smarty/emails:20
+msgid "This link expires %1."
+msgstr "Срок действия ссылки истекает %1."
+
+#: smarty/emails:19 smarty/emails:17
+msgid "You're getting this email because you've changed your password on our website."
+msgstr "Вы получили это письмо, потому что изменили свой пароль на нашем сайте."
+
+#: smarty/emails:4
+msgid "One step left to use GeoKrety.org."
+msgstr ""
+
+#: smarty/emails:7
+msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
+msgstr "Вы только что зарегистрировались на GeoKrety.org. <strong>Вы все еще должны активировать свою учетную запись, прежде чем Вы можете использовать её.</strong> Пожалуйста, перейдите по ссылке ниже."
+
+#: smarty/emails:10 smarty/emails:14
+msgid "Activate your account"
+msgstr "Активировать Ваш аккаунт"
+
+#: smarty/emails:15 smarty/emails:19
+msgid "If your account is not activated within that time, then it will be automatically deleted."
+msgstr "Если Ваша учетная запись не будет активирована в течение этого времени, то она будет автоматически удалена."
+
+#: smarty/emails:19 smarty/emails:23
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "Вы получили это письмо, потому что только что вошли на наш сайт."
+
+#: smarty/emails:8
+msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
+msgstr "Кто-то, надеюсь что Вы, запросил изменения Вашего адреса электронной почты GeoKrety на: %1."
+
+#: smarty/emails:13 smarty/emails:15
+msgid "If you did not requested this, click the link below."
+msgstr "Если Вы не запрашивали изменения, нажмите на ссылку ниже."
+
+#: smarty/emails:15
+msgid "Do not change!"
+msgstr "Не изменять!"
+
+#: smarty/emails:20 smarty/emails:15 smarty/emails:22
+msgid "If you did not requested a password change, then you should also consider changing your password immediately."
+msgstr ""
+
+#: smarty/emails:22 smarty/emails:17 smarty/emails:24
+msgid "Change my password!"
+msgstr "Изменить пароль!"
+
+#: smarty/emails:27 smarty/emails:22 smarty/emails:29 smarty/emails:17
+msgid "You're getting this email because you've changed your email on our website."
+msgstr "Вы получили это письмо, потому что был изменён адрес Вашей электронной почты на нашем сайте."
+
+#: smarty/emails:4
+msgid "An exception occurred in a cron job"
+msgstr ""
+
+#: smarty/emails:7
+msgid "Something went wrong with a cron job, please check the logs below."
+msgstr ""
+
+#: smarty/emails:4
+msgid "Is this address still valid?"
+msgstr ""
+
+#: smarty/emails:10
+msgid "This is important in case of password loss."
+msgstr ""
+
+#: smarty/emails:14
+msgid "Validate your email address"
+msgstr ""
+
+#: smarty/emails:21
+msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+msgstr ""
+
+#: smarty/emails:3
+msgid "Hooray"
+msgstr ""
+
+#: smarty/emails:4 smarty/emails:8
+msgid "Your email address has been successfully reverted."
+msgstr ""
+
+#: smarty/emails:12 smarty/emails:13 smarty/dialog:2 smarty/dialog:7
+msgid "Login"
+msgstr "Войти"
+
+#: smarty/emails:4
+msgid "One of your GeoKrety has been adopted."
+msgstr ""
+
+#: smarty/emails:7
+msgid "Good news, your GeoKret <a href=\"%2\">%1</a> was just adopted by user <a href=\"%4\">%3</a>."
+msgstr ""
+
+#: smarty/emails:10
+msgid "View GeoKret"
+msgstr "Просмотр GeoKret"
+
+#: smarty/emails:15
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
+msgstr "Вы получаете это письмо, потому что один из ваших GeoKrety изменил владельца на нашем сайте."
+
+#: smarty/emails:3
+msgid "Account not yet active"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your account is about to be deleted."
+msgstr ""
+
+#: smarty/emails:8
+msgid "The account you created %1 has not yet been activated."
+msgstr ""
+
+#: smarty/emails:9
+msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+msgstr ""
+
+#: smarty/emails:10
+msgid "Unactivated accounts are automatically deleted after %1 days."
+msgstr ""
+
+#: smarty/emails:20 smarty:3
+msgid "Open source item tracking for all geocaching platforms"
+msgstr "Отслеживание элементов с открытым исходным кодом для всех платформ геокэширования"
+
+#: smarty/emails:30
+msgid "Hi %1,"
+msgstr "Привет %1,"
+
+#: smarty/emails:37
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr "С Уважением,<br>Команда GeoKrety"
+
+#: smarty/emails:46
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
+msgstr ""
+
+#: smarty/emails:3
+msgid "Username changed"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your username on GeoKrety.org has been changed."
+msgstr ""
+
+#: smarty/emails:8
+msgid "."
+msgstr ""
+
+#: smarty/emails:9
+msgid "Please enjoy your new username!"
+msgstr ""
+
+#: smarty/emails:18
+msgid "You're getting this email because you've changed your username on our website."
+msgstr ""
+
+#: smarty/emails:4
+msgid "Something went wrong while synchronizing partners data"
+msgstr ""
+
+#: smarty/emails:3
+msgid "Contact from a GeoKrety.org user"
+msgstr "Контакт пользователя GeoKrety.org"
+
+#: smarty/emails:4
+msgid "Someone sent you a private message."
+msgstr ""
+
+#: smarty/emails:8
+msgid "This email was sent by user <a href=\"%2\">%1</a>."
+msgstr ""
+
+#: smarty/emails:12
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr "Если вы подозреваете злоупотребление, пожалуйста, сообщите нам: %1"
+
+#: smarty/emails:13
+msgid "Referer: %1"
+msgstr "Реферер: %1"
+
+#: smarty/emails:18
+msgid "Subject:"
+msgstr "Тема:"
+
+#: smarty/emails:23
+msgid "Reply to %1"
+msgstr "Ответ на %1"
+
+#: smarty/emails:28
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
+msgstr "Вы получаете это письмо, потому что один из пользователей GeoKrety.org отправил Вам сообщение через Ваш профиль пользователя."
+
+#: smarty/emails:3
+msgid "Congratulation"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your account on GeoKrety.org is now active."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: smarty/emails:5
+msgid "Your GeoKrety watchlist"
+msgstr ""
+
+#: smarty/emails:8
+msgid "You're getting this email because you've choose to receive daily mail updates."
+msgstr ""
+
+#: smarty/emails:9
+msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
+msgstr ""
+
+#: smarty/emails:14
+msgid "Here is what changed recently."
+msgstr ""
+
+#: smarty/emails:17
+msgid "Latest news"
+msgstr ""
+
+#: smarty/emails:27
+msgid "GeoKrety dropped in your observation area"
+msgstr ""
+
+#: smarty/emails:30
+msgid "Open interactive map"
+msgstr ""
+
+#: smarty/emails:30
+msgid "Observation area map"
+msgstr ""
+
+#: smarty/emails:36 smarty/emails:79 smarty/emails:125 smarty/emails:170
+#: smarty/forms:5
+msgid "GeoKret"
+msgstr ""
+
+#: smarty/emails:37 smarty/emails:80 smarty/emails:126
+msgid "Position"
+msgstr ""
+
 #: smarty/emails:38 smarty/emails:81 smarty/emails:127 smarty/emails:171
+#: smarty/dialog:22 smarty/dialog:19 smarty/pages:22 smarty/pages:41
+#: smarty/pages:20 smarty/pages:38 smarty/forms:106 smarty/forms:247
 msgid "Comment"
 msgstr "Комментарий"
 
-#: smarty/dialog:6
-msgid "Manage picture"
-msgstr "Управление картинкой"
+#: smarty/emails:39 smarty/emails:82 smarty/emails:128 smarty/emails:172
+msgid "Author"
+msgstr ""
 
-#: smarty/dialog:12
-msgid "Caption"
-msgstr "Подпись"
+#: smarty/emails:40
+msgid "Home distance"
+msgstr ""
 
-#: smarty/dialog:24
-msgid "Remember caption"
-msgstr "Запомнить заголовок"
+#: smarty/emails:73
+msgid "My GeoKrety latest moves"
+msgstr ""
 
-#: smarty/dialog:27
-msgid "Remember the caption for the next %1 minutes"
-msgstr "Запомнить заголовок на следующие %1 минут"
+#: smarty/emails:78 smarty/emails:124
+msgid "Icon"
+msgstr "Иконка"
 
-#: smarty/dialog:47 smarty/pages:28 smarty/forms:52
-msgid "Save"
-msgstr "Сохранить"
+#: smarty/emails:83
+msgid "Distance since last move"
+msgstr ""
 
-#: smarty/dialog:4
-msgid "Do you really want to delete this move comment?"
-msgstr "Вы действительно хотите удалить комментарий для хода?"
+#: smarty/emails:119
+msgid "Watched GeoKrety latest moves"
+msgstr ""
 
-#: smarty/dialog:4
-msgid "Choose your preferred language"
-msgstr "Выберите предпочитаемый язык"
+#: smarty/emails:129 smarty/pages:23 smarty/pages:24 smarty/pages:43
+msgid "Distance"
+msgstr "Расстояние"
 
-#: smarty/dialog:11 smarty/forms:33 smarty/blocks/user:34
+#: smarty/emails:165
+msgid "Latest move comments"
+msgstr ""
+
+#: smarty/emails:3
+msgid "Account has been deleted"
+msgstr ""
+
+#: smarty/emails:4
+msgid "Your account is now deleted."
+msgstr ""
+
+#: smarty/emails:8
+msgid "The account you created %1 has never been activated."
+msgstr ""
+
+#: smarty/emails:9
+msgid "Our policy is to delete unactivated accounts after %1 days."
+msgstr ""
+
+#: smarty/emails:13
+msgid "We are sorry to inform you that your account has been permanently erased."
+msgstr ""
+
+#: smarty/emails:14
+msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr "Ваш аккаунт на GeoKrety.org теперь полностью функциональный."
+
+#: smarty/emails:15
+msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
+msgstr ""
+
+#: smarty/emails:4
+msgid "You're getting this email because you're one the website admins."
+msgstr ""
+
+#: smarty/emails:4
+msgid "New Award received"
+msgstr ""
+
+#: smarty/emails:7
+msgid "We're proud to inform you that you have received a new Award badge."
+msgstr ""
+
+#: smarty/emails:16
+msgid "Please look at this new pretty badge on your GeoKrety profile."
+msgstr ""
+
+#: smarty/emails:18
+msgid "Check my profile"
+msgstr ""
+
+#: smarty/emails:4 smarty/emails:8
+msgid "Your email address has been successfully changed."
+msgstr ""
+
+#: smarty/emails:8
+msgid "Your email address has been successfully changed to: %1."
+msgstr ""
+
+#: smarty/emails:17
+msgid "Revert this change!"
+msgstr "Вернуть это изменение!"
+
+#: smarty/blocks/geokret:9
+msgid "%1 <small>(%2)</small> by %3"
+msgstr ""
+
+#: smarty/blocks/geokret:15
+msgid "%1 <small>(%2)</small> - <a href=\"%3\">Ready for adoption</a>"
+msgstr ""
+
+#: smarty/blocks/geokret:20
+msgid "missing"
+msgstr ""
+
+#: smarty/blocks/geokret:22
+msgid "archived"
+msgstr ""
+
+#: smarty/blocks/geokret:27 smarty/blocks/user:7
+msgid "Send a message to %1"
+msgstr "Отправить сообщение %1"
+
+#: smarty/blocks/geokret:32 smarty/blocks/geokret:6
+msgid "Edit GeoKret details"
+msgstr "Редактировать детали GeoKret"
+
+#: smarty/blocks/geokret:35 smarty/blocks/user:21 smarty/elements:69
+msgid "Upload a picture"
+msgstr "Загрузить изображение"
+
+#: smarty/blocks/geokret:46 smarty/forms:24
+msgid "Reference number"
+msgstr "Номер"
+
+#: smarty/blocks/geokret:49 smarty/blocks/geokret:9 smarty/pages:15
+#: smarty/admin/pages:77 smarty/forms:22 smarty/forms:21 smarty/forms:31
+msgid "Tracking Code"
+msgstr "Код отслеживания"
+
+#: smarty/blocks/geokret:52 smarty/elements:75
+msgid "Total distance"
+msgstr "Пройдено всего"
+
+#: smarty/blocks/geokret:54
+msgid "Places visited"
+msgstr "Посетил мест"
+
+#: smarty/blocks/geokret:3
+msgid "Found it? Log it!"
+msgstr "Найдено? Запиши!"
+
+#: smarty/blocks/geokret:11
+msgid "Please enter the Tracking Code here"
+msgstr "Пожалуйста, введите код отслеживания"
+
+#: smarty/blocks/geokret:14 smarty/blocks:15
+msgid "Log it!"
+msgstr "Запиши!"
+
+#: smarty/blocks/geokret:3 smarty/admin/pages:59 smarty/forms:31
+#: smarty/forms:36
+msgid "Mission"
+msgstr "Миссия"
+
+#: smarty/blocks/geokret:15
+msgid "This GeoKret doesn't have a special mission…"
+msgstr "Этот GeoKret не имеет специальной миссии…"
+
+#: smarty/blocks/geokret:3
+msgid "Map"
+msgstr "Карта"
+
+#: smarty/blocks/geokret:8
+msgid "Caption:"
+msgstr "Заголовок:"
+
+#: smarty/blocks/geokret:9
+msgid "start"
+msgstr "начало"
+
+#: smarty/blocks/geokret:10
+msgid "trip points"
+msgstr "точки путешествия"
+
+#: smarty/blocks/geokret:11
+msgid "recently seen"
+msgstr "последний раз замечен"
+
+#: smarty/blocks/geokret:13
+msgid "Download the track as:"
+msgstr "Загрузить трек как:"
+
+#: smarty/blocks/geokret:17
+msgid "This geokret has not started yet"
+msgstr "Это крот-домосед :("
+
+#: smarty/blocks/geokret:4 smarty/blocks/geokret:17 smarty/blocks/geokret:29
+msgid "Who is watching this Geokret?"
+msgstr ""
+
+#: smarty/blocks/geokret:5
+msgid "Watchers"
+msgstr "Наблюдатели"
+
+#: smarty/blocks/geokret:14
+msgid "Add this geokret to your watch list"
+msgstr ""
+
+#: smarty/blocks/geokret:15 smarty/dialog:14
+msgid "Watch"
+msgstr ""
+
+#: smarty/blocks/geokret:26 smarty/elements:39
+msgid "Remove this geokret from your watch list"
+msgstr ""
+
+#: smarty/blocks/geokret:27 smarty/dialog:14
+msgid "Unwatch"
+msgstr ""
+
+#: smarty/blocks/geokret:36
+msgid "Log this GeoKret"
+msgstr "Отметить ГеоКрота"
+
+#: smarty/blocks/geokret:41
+msgid "Print a label for this GeoKret"
+msgstr "Распечатать метку для этого GeoKret"
+
+#: smarty/blocks/geokret:55
+msgid "Adopt this GeoKret"
+msgstr "Принять этот GeoKret"
+
+#: smarty/blocks/geokret:57
+msgid "Login to claim this GeoKret"
+msgstr "Авторизуйтесь, чтобы принять Геокрота"
+
+#: smarty/blocks/geokret:64
+msgid "Mark this GeoKret as archived"
+msgstr ""
+
+#: smarty/blocks/geokret:64
+msgid "Archive this GeoKret"
+msgstr "Архивировать этот GeoKret"
+
+#: smarty/blocks/geokret:70
+msgid "Email owner"
+msgstr "Отправить письмо владелецу"
+
+#: smarty/blocks/geokret:76
+msgid "Make this GeoKret available for adoption by another user"
+msgstr "Сделать этот GeoKret доступным для принятия другим пользователем"
+
+#: smarty/blocks/geokret:77
+msgid "Transfer ownership"
+msgstr "Передача прав собственности"
+
+#: smarty/blocks/geokret:88 smarty/pages:25 smarty/pages:18 smarty/pages:26
+#: smarty:11
+msgid "Actions"
+msgstr "Действия"
+
+#: smarty/blocks:10
+msgid "There is no pictures yet."
+msgstr "Пока нет изображений."
+
+#: smarty/blocks:27
+msgid "false"
+msgstr ""
+
+#: smarty/blocks:27
+msgid "true"
+msgstr ""
+
+#: smarty/blocks:37
+msgid "No users match the current request."
+msgstr ""
+
+#: smarty/blocks/user:4
+msgid "Awards"
+msgstr "Награды"
+
+#: smarty/blocks/user:10
+msgid "No award received yet."
+msgstr ""
+
+#: smarty/blocks/user:11
+msgid "Subscribe to RSS channel"
+msgstr "Подписаться на RSS канал"
+
+#: smarty/blocks/user:15
+msgid "Username change"
+msgstr ""
+
+#: smarty/blocks/user:18
+msgid "Password change"
+msgstr "Изменение пароля"
+
+#: smarty/blocks/user:32
+msgid "Joined us"
+msgstr "Присоединился к нам"
+
+#: smarty/blocks/user:34 smarty/dialog:11 smarty/forms:33
 msgid "Language"
 msgstr "Язык"
 
-#: smarty/dialog:21 smarty/forms:40
-msgid "This will be the default language when you log in and the main language in the emails you may receive."
-msgstr "Это будет язык по умолчанию, когда Вы войдете в систему и основной язык в письмах, которые Вы можете получить."
+#: smarty/blocks/user:36
+msgid "Nothing selected"
+msgstr "Ничего не выбрано"
 
-#: smarty/dialog:26 smarty/dialog:41 smarty/dialog:50 smarty/dialog:51
-#: smarty/dialog:15 smarty/pages:29 smarty/pages:74
-msgid "Back to user page"
-msgstr "Вернуться на страницу пользователя"
+#: smarty/blocks/user:39
+msgid "Choose preferred language"
+msgstr "Выберите предпочитаемый язык"
 
-#: smarty/dialog:29 smarty/dialog:53 smarty/dialog:54 smarty/pages:32
-#: smarty/pages:57
-msgid "Change"
-msgstr "Изменить"
+#: smarty/blocks/user:46 smarty/pages:17
+msgid "Email"
+msgstr "E-mail"
 
-#: smarty/dialog:4
-msgid "Do you want to set this picture as main avatar?"
-msgstr "Вы хотите установить это изображение в качестве главного аватара?"
+#: smarty/blocks/user:51
+msgid "Pending email validation, don't forget to click the link in validation mail!"
+msgstr "Ожидание подтверждения электронной почты, не забудьте нажать на ссылку из письма!"
 
-#: smarty/dialog:16 smarty/pages:77
-msgid "Define"
-msgstr "Задать"
+#: smarty/blocks/user:53
+msgid "No email address, please add one!"
+msgstr "Адрес электронной почты отсутствует, пожалуйста, добавьте его!"
+
+#: smarty/blocks/user:56
+msgid "Update email address"
+msgstr "Обновить адрес электронной почты"
+
+#: smarty/blocks/user:61
+msgid "Secid"
+msgstr "Secid"
+
+#: smarty/blocks/user:64
+msgid "Used to authenticate in other applications. Keep it secret!"
+msgstr "Используется для аутентификации в других приложениях. Сохраните этот секрет!"
+
+#: smarty/blocks/user:65
+msgid "Generate a new secid"
+msgstr "Создать новый secid"
+
+#: smarty/blocks/user:10
+msgid "No home coordinates have been defined."
+msgstr "Домашние координаты не указаны."
+
+#: smarty/blocks/user:13 smarty/blocks/user:21
+msgid "Update home coordinates and obervation area"
+msgstr "Обновить домашние координаты и область наблюдения"
+
+#: smarty/blocks/user:14
+msgid "Define your home coordinates"
+msgstr "Определите Ваши домашние координаты"
+
+#: smarty/blocks/user:20
+msgid "GeoKrety near home"
+msgstr "GeoKrety рядом с домом"
+
+#: smarty/blocks/user:4
+msgid "OAuth Connections"
+msgstr "Соединения OAuth"
+
+#: smarty/blocks/user:17
+msgid "Disconnect from %1"
+msgstr "Отключиться от %1"
+
+#: smarty/blocks/user:18
+msgid "Disconnect"
+msgstr "Отключиться"
+
+#: smarty/blocks/user:23
+msgid "Connect with %1"
+msgstr "Связаться с %1"
+
+#: smarty/blocks/user:23
+msgid "Connect"
+msgstr "Подключиться"
+
+#: smarty/blocks/user:13
+msgid "Choose statpic"
+msgstr "Выбрать картинку"
+
+#: smarty/blocks/user:3
+msgid "Medals"
+msgstr ""
+
+#: smarty/blocks/user:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr ""
+
+#: smarty/blocks/user:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr ""
+
+#: smarty/blocks/user:5
+msgid "Danger zone"
+msgstr ""
+
+#: smarty/blocks/user:8
+msgid "Be careful, actions in this section are irreversible."
+msgstr ""
+
+#: smarty/blocks/user:11
+msgid "Delete your account"
+msgstr ""
+
+#: smarty/blocks/user:12 smarty/dialog:40
+msgid "Delete my account"
+msgstr ""
+
+#: smarty/blocks/user:3 smarty/pages:3 smarty:15 smarty/forms:6
+msgid "Create a new GeoKret"
+msgstr "Создать нового ГеоКрота"
+
+#: smarty/blocks/user:12
+msgid "View inventory"
+msgstr "Просмотр инвентаря"
+
+#: smarty/blocks/user:16 smarty/pages:3 smarty/pages:9
+msgid "Owned GeoKrety"
+msgstr "Мои ГеоКроты"
+
+#: smarty/blocks/user:20 smarty/pages:3 smarty/pages:9 smarty:20
+msgid "Watched GeoKrety"
+msgstr "Отслеживаемые GeoKrety"
+
+#: smarty/blocks/user:24
+msgid "Recently posted moves"
+msgstr "Недавно опубликованные шаги"
+
+#: smarty/blocks/user:28
+msgid "Moves of owned GeoKrety"
+msgstr "Перемещения моих ГеоКротов"
+
+#: smarty/blocks/user:32
+msgid "Posted pictures"
+msgstr "Размещенные фотографии"
+
+#: smarty/blocks/user:36
+msgid "Owned GeoKrety pictures"
+msgstr "Фотографии принадлежащего GeoKrety"
+
+#: smarty/blocks/user:40 smarty:28
+msgid "Where are my GeoKrety?"
+msgstr "Где мои ГеоКроты?"
+
+#: smarty/blocks:5
+msgid "Start by finding users:"
+msgstr ""
+
+#: smarty/blocks:9
+msgid "Username or email or ID"
+msgstr ""
+
+#: smarty/blocks:11
+msgid "Search"
+msgstr "Поиск"
+
+#: smarty/blocks:3
+msgid "Found a GeoKret?"
+msgstr "Нашёл GeoKret?"
+
+#: smarty/blocks:7
+msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
+msgstr "Пожалуйста, введите код отслеживания <abbr title=\"%1\"></abbr> сюда:"
+
+#: smarty/blocks:12
+msgid "Tracking code"
+msgstr "Код отслеживания"
 
 #: smarty/dialog:9
 msgid "Contact user"
@@ -1239,9 +1919,143 @@ msgstr "Сообщение"
 msgid "Message to user"
 msgstr "Сообщение пользователю"
 
+#: smarty/dialog:41 smarty/dialog:15 smarty/dialog:50 smarty/dialog:51
+#: smarty/dialog:26 smarty/pages:29 smarty/pages:74
+msgid "Back to user page"
+msgstr "Вернуться на страницу пользователя"
+
+#: smarty/dialog:42 smarty/dialog:32 smarty/dialog:14 smarty/dialog:23
+#: smarty/dialog:12 smarty/dialog:15 smarty/dialog:46 smarty/dialog:55
+#: smarty/dialog:16 smarty/dialog:51 smarty/dialog:21 smarty/dialog:13
+#: smarty/dialog:35 smarty/dialog:52 smarty/dialog:37 smarty/dialog:27
+#: smarty/dialog:24 smarty/dialog:39 smarty/dialog:26 smarty/dialog:66
+#: smarty/pages:33 smarty/pages:37 smarty/pages:34 smarty/pages:38
+#: smarty/pages:30 smarty/pages:75
+msgid "Dismiss"
+msgstr "Прекратить"
+
 #: smarty/dialog:44
 msgid "Send message"
 msgstr "Отослать сообщение"
+
+#: smarty/dialog:2
+msgid "You are not connected to this OAuth provider."
+msgstr "Вы не подключены к этому поставщику OAuth."
+
+#: smarty/dialog:8 smarty/dialog:24 smarty/dialog:27
+msgid "Detaching OAuth provider"
+msgstr "Провайдер отбора OAuth"
+
+#: smarty/dialog:15
+msgid "Back to my profile"
+msgstr "Назад к моему профилю"
+
+#: smarty/dialog:4
+msgid "Do you really want to ack this script locking alert?"
+msgstr ""
+
+#: smarty/dialog:10
+msgid "\"%1\" locked since %2"
+msgstr ""
+
+#: smarty/dialog:15 smarty/admin/pages:48
+msgid "Ack"
+msgstr ""
+
+#: smarty/dialog:10 smarty/dialog:11 smarty/dialog:13 smarty/dialog:15
+#: smarty/pages:19 smarty/forms:4 smarty/forms:6 smarty/forms:10
+#: smarty/forms:12 smarty/forms:239 smarty/forms:17 smarty/forms:19
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: smarty/dialog:13 smarty/dialog:14 smarty/dialog:19 smarty/dialog:21
+#: smarty/forms:19 smarty/forms:21
+msgid "Password"
+msgstr "Пароль"
+
+#: smarty/dialog:17 smarty/dialog:39 smarty/pages:13 smarty:48 smarty:32
+msgid "Sign in"
+msgstr "Войти"
+
+#: smarty/dialog:4
+msgid "Do you really want to invalidate this user's email?"
+msgstr ""
+
+#: smarty/dialog:13
+msgid "Invalidate"
+msgstr ""
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this picture?"
+msgstr "Вы действительно хотите удалить это изображение?"
+
+#: smarty/dialog:16 smarty/dialog:15 smarty/dialog:24
+msgid "Delete"
+msgstr "Удалить"
+
+#: smarty/dialog:6
+msgid "Manage picture"
+msgstr "Управление картинкой"
+
+#: smarty/dialog:12
+msgid "Caption"
+msgstr "Подпись"
+
+#: smarty/dialog:24
+msgid "Remember caption"
+msgstr "Запомнить заголовок"
+
+#: smarty/dialog:27
+msgid "Remember the caption for the next %1 minutes"
+msgstr "Запомнить заголовок на следующие %1 минут"
+
+#: smarty/dialog:47 smarty/pages:28 smarty/forms:52
+msgid "Save"
+msgstr "Сохранить"
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this news comment?"
+msgstr "Вы действительно хотите удалить этот комментарий?"
+
+#: smarty/dialog:3
+msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+msgstr "Этот документ устанавливает условия использования \"<a href=\"%1\">geokrety.org</a>\" - добровольно управляемая служба интернет-геокеширования, доступной на сайте <a href=\"%1\">geokrety.org</a> (далее именуется \"Сервис\"). Каждый человек, регистрирующий учетную запись (далее именуемый \"Пользователь\"), соглашается соблюдать правила этих условий, начиная с начала процедуры регистрации."
+
+#: smarty/dialog:7
+msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
+msgstr "Служба контролируется группой добровольцев, именуемых далее как Группа GK. Группа GK не несет ответственности за содержание, размещенное пользователями на Сайте, или за ущерб, причиненный в результате использования информации от Службы."
+
+#: smarty/dialog:11
+msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
+msgstr "Вы должны убедиться, что информация, опубликованная Пользователем на Сервисе <strong>, не должна влиять на существующий закон</strong>. В частности, содержание, опубликованное Пользователем, не может нарушать авторские права третьих лиц. Все материалы (включая описания GeoKrety, иллюстрации и все их записей в журналах) доступны, публикуя их на Сервисе пользователем <strong>лицензированы в Creative Commons</strong> BY-NC-SA версии 2.5, полный контент которого доступен в режиме онлайн на сайте <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Также допускается содержание публичного домена. Пользователь несет ответственность непосредственно держателю авторских прав за любые нарушения."
+
+#: smarty/dialog:15
+msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+msgstr "Ни мы, ни третьи стороны не предоставляем никаких гарантий или гарантий относительно точности, своевременности, производительности, полноты или пригодности информации и материалов, найденных или предлагаемых в Сервисе, для какой-либо конкретной цели. Вы признаете, что такая информация и материалы могут содержать неточности или ошибки, и мы прямо исключаем ответственность за любые такие неточности или ошибки в максимально возможной степени, разрешенной законом."
+
+#: smarty/dialog:19
+msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
+msgstr "Содержимое, опубликованное Вами на сайте, не может содержать вульгарные выражения, оскорбительные или незаконные материалы."
+
+#: smarty/dialog:26 smarty/dialog:46 smarty:46
+msgid "Terms of use"
+msgstr "Условия использования"
+
+#: smarty/dialog:36 smarty/dialog:56
+msgid "I agree with the terms"
+msgstr "Я согласен с условиями"
+
+#: smarty/dialog:4
+msgid "Refresh your secid?"
+msgstr "Обновить ваш secid?"
+
+#: smarty/dialog:10
+msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
+msgstr "Обновление secid разъединит все приложения, подключенные к Вашей учетной записи. Вам придется повторно авторизовать их."
+
+#: smarty/dialog:18 smarty/admin/pages:8
+msgid "Refresh"
+msgstr "Обновить"
 
 #: smarty/dialog:8 smarty/pages:3 smarty/pages:13
 msgid "Change your password"
@@ -1280,17 +2094,38 @@ msgstr "Как написать хорошие пароли"
 msgid "Password strength"
 msgstr "Надёжность пароля"
 
+#: smarty/dialog:53 smarty/dialog:54 smarty/dialog:29 smarty/pages:32
+#: smarty/pages:57
+msgid "Change"
+msgstr "Изменить"
+
 #: smarty/dialog:4
-msgid "Do you really want to ack this script locking alert?"
+msgid "Commenting a GeoKret move"
+msgstr "Комментарий к ходу GeoKret"
+
+#: smarty/dialog:14 smarty/pages:22
+msgid "Your comment"
+msgstr "Ваш комментарий"
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this move comment?"
+msgstr "Вы действительно хотите удалить комментарий для хода?"
+
+#: smarty/dialog:4
+msgid "Remove this GeoKret from your watch list?"
 msgstr ""
 
-#: smarty/dialog:10
-msgid "\"%1\" locked since %2"
+#: smarty/dialog:9
+msgid "You will no longer receive updates of its journey in your daily mails."
 msgstr ""
 
-#: smarty/dialog:15 smarty/admin/pages:48
-msgid "Ack"
-msgstr ""
+#: smarty/dialog:2
+msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
+msgstr "Вы собираетесь удалить свой аккаунт GeoKrety из вашей учетной записи %1 . Вы больше не сможете войти через этого провайдера."
+
+#: smarty/dialog:17 smarty/dialog:36
+msgid "Detach"
+msgstr "Detach"
 
 #: smarty/dialog:4
 msgid "Update your email address"
@@ -1301,7 +2136,7 @@ msgstr "Обновить адрес электронной почты"
 msgid "Email address"
 msgstr "Адрес электронной почты"
 
-#: smarty/dialog:17 smarty/forms:31 smarty/forms:48
+#: smarty/dialog:17 smarty/forms:48 smarty/forms:31
 msgid "Yes, I want to receive email alerts (sent once a day)."
 msgstr "Да, я хочу получать уведомления по электронной почте (отправляется один раз в день)."
 
@@ -1349,169 +2184,12 @@ msgstr "ваши комментарии"
 msgid "news posts you have are subscribed to"
 msgstr "новостные сообщения, на которые Вы подписаны"
 
-#: smarty/dialog:2 smarty/dialog:7 smarty/emails:12 smarty/emails:13
-msgid "Login"
-msgstr "Войти"
-
-#: smarty/dialog:13 smarty/dialog:15 smarty/dialog:10 smarty/dialog:11
-#: smarty/pages:19 smarty/forms:10 smarty/forms:12 smarty/forms:4
-#: smarty/forms:6 smarty/forms:239 smarty/forms:17 smarty/forms:19
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: smarty/dialog:19 smarty/dialog:21 smarty/dialog:13 smarty/dialog:14
-#: smarty/forms:19 smarty/forms:21
-msgid "Password"
-msgstr "Пароль"
-
-#: smarty/dialog:28
-msgid "Remember me"
-msgstr "Запомнить меня"
-
-#: smarty/dialog:31
-msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr "Мы используем файлы cookie только для поддержания вашего сеанса. Подробнее о нашей политике <a href=\"%1\" target=\"_blank\">cookies</a>."
-
-#: smarty/dialog:39 smarty/dialog:17 smarty/pages:13 smarty:32 smarty:48
-msgid "Sign in"
-msgstr "Войти"
-
-#: smarty/dialog:40
-msgid "No account yet ? Register now!"
-msgstr "Нет учетной записи? Зарегистрироваться!"
-
-#: smarty/dialog:43
-msgid "Forgot your password?"
-msgstr "Забыли пароль?"
-
-#: smarty/dialog:2
-msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
-msgstr "Вы собираетесь удалить свой аккаунт GeoKrety из вашей учетной записи %1 . Вы больше не сможете войти через этого провайдера."
-
-#: smarty/dialog:8 smarty/dialog:27 smarty/dialog:24
-msgid "Detaching OAuth provider"
-msgstr "Провайдер отбора OAuth"
-
-#: smarty/dialog:17 smarty/dialog:36
-msgid "Detach"
-msgstr "Detach"
-
-#: smarty/dialog:2
-msgid "You are not connected to this OAuth provider."
-msgstr "Вы не подключены к этому поставщику OAuth."
+#: smarty/dialog:4
+msgid "Do you really want to unlock this script?"
+msgstr ""
 
 #: smarty/dialog:15
-msgid "Back to my profile"
-msgstr "Назад к моему профилю"
-
-#: smarty/dialog:22
-msgid "Declare missing"
-msgstr "Объявить пропажу"
-
-#: smarty/dialog:4
-msgid "Do you really want to invalidate this user's email?"
-msgstr ""
-
-#: smarty/dialog:13
-msgid "Invalidate"
-msgstr ""
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this picture?"
-msgstr "Вы действительно хотите удалить это изображение?"
-
-#: smarty/dialog:3
-msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
-msgstr "Этот документ устанавливает условия использования \"<a href=\"%1\">geokrety.org</a>\" - добровольно управляемая служба интернет-геокеширования, доступной на сайте <a href=\"%1\">geokrety.org</a> (далее именуется \"Сервис\"). Каждый человек, регистрирующий учетную запись (далее именуемый \"Пользователь\"), соглашается соблюдать правила этих условий, начиная с начала процедуры регистрации."
-
-#: smarty/dialog:7
-msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr "Служба контролируется группой добровольцев, именуемых далее как Группа GK. Группа GK не несет ответственности за содержание, размещенное пользователями на Сайте, или за ущерб, причиненный в результате использования информации от Службы."
-
-#: smarty/dialog:11
-msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr "Вы должны убедиться, что информация, опубликованная Пользователем на Сервисе <strong>, не должна влиять на существующий закон</strong>. В частности, содержание, опубликованное Пользователем, не может нарушать авторские права третьих лиц. Все материалы (включая описания GeoKrety, иллюстрации и все их записей в журналах) доступны, публикуя их на Сервисе пользователем <strong>лицензированы в Creative Commons</strong> BY-NC-SA версии 2.5, полный контент которого доступен в режиме онлайн на сайте <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Также допускается содержание публичного домена. Пользователь несет ответственность непосредственно держателю авторских прав за любые нарушения."
-
-#: smarty/dialog:15
-msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "Ни мы, ни третьи стороны не предоставляем никаких гарантий или гарантий относительно точности, своевременности, производительности, полноты или пригодности информации и материалов, найденных или предлагаемых в Сервисе, для какой-либо конкретной цели. Вы признаете, что такая информация и материалы могут содержать неточности или ошибки, и мы прямо исключаем ответственность за любые такие неточности или ошибки в максимально возможной степени, разрешенной законом."
-
-#: smarty/dialog:19
-msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
-msgstr "Содержимое, опубликованное Вами на сайте, не может содержать вульгарные выражения, оскорбительные или незаконные материалы."
-
-#: smarty/dialog:36 smarty/dialog:56
-msgid "I agree with the terms"
-msgstr "Я согласен с условиями"
-
-#: smarty/dialog:4
-msgid "Refresh your secid?"
-msgstr "Обновить ваш secid?"
-
-#: smarty/dialog:10
-msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr "Обновление secid разъединит все приложения, подключенные к Вашей учетной записи. Вам придется повторно авторизовать их."
-
-#: smarty/dialog:18 smarty/admin/pages:8
-msgid "Refresh"
-msgstr "Обновить"
-
-#: smarty/dialog:4 smarty/forms:28
-msgid "Select GeoKrety from inventory"
-msgstr "Выберите GeoKrety из инвентаря"
-
-#: smarty/dialog:10
-msgid "Only %1 GeoKrety can be processed at a time."
-msgstr "Только %1 GeoKrety может быть обработан за один раз."
-
-#: smarty/dialog:16
-msgid "Filter"
-msgstr "Фильтр"
-
-#: smarty/dialog:17
-msgid "Name or ID"
-msgstr "Имя или ID"
-
-#: smarty/dialog:27 smarty/pages:38 smarty/pages:81 smarty/pages:20
-#: smarty/pages:39 smarty/pages:78 smarty/devel/pages:15
-msgid "ID"
-msgstr "ID"
-
-#: smarty/dialog:28 smarty/pages:21 smarty/pages:79 smarty/forms:15
-#: smarty/forms:17
-msgid "Owner"
-msgstr "Владелец"
-
-#: smarty/dialog:29
-msgid "Select all (but max %1)"
-msgstr "Выбрать все (но макс. %1)"
-
-#: smarty/dialog:36
-msgid "Choose"
-msgstr "Выбрать"
-
-#: smarty/dialog:61
-msgid "Your inventory is empty."
-msgstr "Ваш инвентарь пуст."
-
-#: smarty/dialog:68
-msgid "Select <span class=\"badge\">%1</span>"
-msgstr "Выберите <span class=\"badge\">%1</span>"
-
-#: smarty/dialog:4
-msgid "Add this GeoKret to your watch list?"
-msgstr ""
-
-#: smarty/dialog:9
-msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
-msgstr ""
-
-#: smarty/dialog:14 smarty/blocks/geokret:15
-msgid "Watch"
-msgstr ""
-
-#: smarty/dialog:13
-msgid "Acknowledge"
+msgid "Unlock"
 msgstr ""
 
 #: smarty/dialog:4
@@ -1521,6 +2199,62 @@ msgstr ""
 #: smarty/dialog:13 smarty/dialog:38
 msgid "Award"
 msgstr ""
+
+#: smarty/dialog:4
+msgid "Do you want to set this picture as main avatar?"
+msgstr "Вы хотите установить это изображение в качестве главного аватара?"
+
+#: smarty/dialog:16 smarty/pages:77
+msgid "Define"
+msgstr "Задать"
+
+#: smarty/dialog:4
+msgid "Choose your preferred language"
+msgstr "Выберите предпочитаемый язык"
+
+#: smarty/dialog:21 smarty/forms:40
+msgid "This will be the default language when you log in and the main language in the emails you may receive."
+msgstr "Это будет язык по умолчанию, когда Вы войдете в систему и основной язык в письмах, которые Вы можете получить."
+
+#: smarty/dialog:6
+msgid "Do you really want to unsubscribe from this news?"
+msgstr "Вы действительно хотите отписаться от этой новости?"
+
+#: smarty/dialog:8
+msgid "Subscribe to this news?"
+msgstr "Подписаться на эту новость?"
+
+#: smarty/dialog:27
+msgid "Unsubscribe"
+msgstr "Отписаться"
+
+#: smarty/dialog:29
+msgid "Subscribe"
+msgstr "Подписаться"
+
+#: smarty/dialog:28
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: smarty/dialog:31
+msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
+msgstr "Мы используем файлы cookie только для поддержания вашего сеанса. Подробнее о нашей политике <a href=\"%1\" target=\"_blank\">cookies</a>."
+
+#: smarty/dialog:40
+msgid "No account yet ? Register now!"
+msgstr "Нет учетной записи? Зарегистрироваться!"
+
+#: smarty/dialog:43
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#: smarty/dialog:13
+msgid "Acknowledge"
+msgstr ""
+
+#: smarty/dialog:22
+msgid "Declare missing"
+msgstr "Объявить пропажу"
 
 #: smarty/dialog:7
 msgid "Do you really want to delete your account?"
@@ -1550,42 +2284,6 @@ msgstr ""
 msgid "Also remove all my comments content"
 msgstr ""
 
-#: smarty/dialog:40 smarty/blocks/user:12
-msgid "Delete my account"
-msgstr ""
-
-#: smarty/dialog:4
-msgid "Do you really want to unlock this script?"
-msgstr ""
-
-#: smarty/dialog:15
-msgid "Unlock"
-msgstr ""
-
-#: smarty/dialog:4
-msgid "Remove this GeoKret from your watch list?"
-msgstr ""
-
-#: smarty/dialog:9
-msgid "You will no longer receive updates of its journey in your daily mails."
-msgstr ""
-
-#: smarty/dialog:14 smarty/blocks/geokret:27
-msgid "Unwatch"
-msgstr ""
-
-#: smarty/dialog:4
-msgid "Do you really want to delete this move?"
-msgstr "Вы действительно хотите удалить этот ход?"
-
-#: smarty/dialog:14
-msgid "Deleting this Move will delete attached pictures and the main avatar!"
-msgstr "Удаление этого перемещения удалит прикрепленные изображения и главный аватар!"
-
-#: smarty/dialog:16
-msgid "Deleting this Move will delete attached pictures!"
-msgstr "Удаление этого перемещения удалит вложенные изображения!"
-
 #: smarty/dialog:4
 msgid "Mark this GeoKret as archived?"
 msgstr ""
@@ -1614,95 +2312,95 @@ msgstr ""
 msgid "Archive"
 msgstr "Архив"
 
-#: smarty/elements:36 smarty/elements:33 smarty/elements:31
-msgid "Move this GeoKret"
-msgstr "Переместить этот GeoKret"
+#: smarty/dialog:4
+msgid "Offer this GeoKret for adoption?"
+msgstr "Предложить этот GeoKret для принятия?"
 
-#: smarty/elements:39 smarty/blocks/geokret:26
-msgid "Remove this geokret from your watch list"
+#: smarty/dialog:10
+msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
+msgstr "Это позволит другому пользователю, который знает код отслеживания и код владельца стать новым владельцем этого GeoKret."
+
+#: smarty/dialog:15
+msgid "Back to GeoKret page"
+msgstr "Вернуться на страницу GeoKret"
+
+#: smarty/dialog:18
+msgid "Generate an Owner Code"
+msgstr "Создать код владельца"
+
+#: smarty/dialog:4
+msgid "Do you really want to delete this move?"
+msgstr "Вы действительно хотите удалить этот ход?"
+
+#: smarty/dialog:14
+msgid "Deleting this Move will delete attached pictures and the main avatar!"
+msgstr "Удаление этого перемещения удалит прикрепленные изображения и главный аватар!"
+
+#: smarty/dialog:16
+msgid "Deleting this Move will delete attached pictures!"
+msgstr "Удаление этого перемещения удалит вложенные изображения!"
+
+#: smarty/dialog:4
+msgid "Add this GeoKret to your watch list?"
 msgstr ""
 
-#: smarty/elements:3
-msgid "Deployed on %1"
-msgstr "Развертано на %1"
-
-#: smarty/elements:4
-msgid "%1 logo"
-msgstr "Логотип %1"
-
-#: smarty/elements:10
-msgid "Delete comment"
-msgstr "Удалить комментарий"
-
-#: smarty/elements:9
-msgid "Last moved date"
+#: smarty/dialog:9
+msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
 msgstr ""
 
-#: smarty/elements:22 smarty/elements:30 smarty/elements:38 smarty/elements:46
-#: smarty/elements:54 smarty/elements:62
-msgid "%1 days"
+#: smarty/dialog:4 smarty/forms:29 smarty/forms:28
+msgid "Select GeoKrety from inventory"
+msgstr "Выберите GeoKrety из инвентаря"
+
+#: smarty/dialog:10
+msgid "Only %1 GeoKrety can be processed at a time."
+msgstr "Только %1 GeoKrety может быть обработан за один раз."
+
+#: smarty/dialog:16
+msgid "Filter"
+msgstr "Фильтр"
+
+#: smarty/dialog:17
+msgid "Name or ID"
+msgstr "Имя или ID"
+
+#: smarty/dialog:27 smarty/pages:20 smarty/pages:38 smarty/pages:81
+#: smarty/pages:39 smarty/pages:78 smarty/devel/pages:15
+msgid "ID"
+msgstr "ID"
+
+#: smarty/dialog:28 smarty/pages:21 smarty/pages:79 smarty/forms:15
+#: smarty/forms:17
+msgid "Owner"
+msgstr "Владелец"
+
+#: smarty/dialog:29
+msgid "Select all (but max %1)"
+msgstr "Выбрать все (но макс. %1)"
+
+#: smarty/dialog:36
+msgid "Choose"
+msgstr "Выбрать"
+
+#: smarty/dialog:61
+msgid "Your inventory is empty."
+msgstr "Ваш инвентарь пуст."
+
+#: smarty/dialog:68
+msgid "Select <span class=\"badge\">%1</span>"
+msgstr "Выберите <span class=\"badge\">%1</span>"
+
+#: smarty/pages:10
+msgid "Email address revalidation."
 msgstr ""
 
-#: smarty/elements:75 smarty/blocks/geokret:52
-msgid "Total distance"
-msgstr "Пройдено всего"
+#: smarty/pages:18 smarty/pages:22
+msgid "Please enter the verification token received by mail."
+msgstr "Пожалуйста, введите токен подтверждения, полученный по почте."
 
-#: smarty/elements:138 smarty/pages:24 smarty/pages:25
-msgid "Caches visited count"
-msgstr "Количество посещённых тайников"
-
-#: smarty/elements:139
-msgid "Total visited caches"
-msgstr ""
-
-#: smarty/elements:151 smarty/elements:159 smarty/elements:167
-#: smarty/elements:175 smarty/elements:183
-msgid "%1 caches"
-msgstr ""
-
-#: smarty/elements:7
-msgid "Unsubscribe from news"
-msgstr "Отписаться от новостей"
-
-#: smarty/elements:11
-msgid "Subscribe to news"
-msgstr "Подписаться на новости"
-
-#: smarty/elements:4
-msgid "Declared as missing"
-msgstr ""
-
-#: smarty/elements:7
-msgid "Show move on map"
-msgstr "Показать перемещение на карте"
-
-#: smarty/elements:64
-msgid "Report as missing"
-msgstr "Сообщить о пропаже"
-
-#: smarty/elements:69 smarty/blocks/geokret:35 smarty/blocks/user:21
-msgid "Upload a picture"
-msgstr "Загрузить изображение"
-
-#: smarty/elements:73
-msgid "Write a comment"
-msgstr "Написать комментарий"
-
-#: smarty/elements:81
-msgid "Edit log"
-msgstr "Редактировать запись"
-
-#: smarty/elements:85
-msgid "Delete log"
-msgstr "Удалить запись"
-
-#: smarty/pages:3
-msgid "Confirm changing your email address"
-msgstr ""
-
-#: smarty/pages:8
-msgid "Do you confirm changing your email address?"
-msgstr "Подтвердите изменение адреса электронной почты?"
+#: smarty/pages:23 smarty/pages:25 smarty/pages:27 smarty/pages:29
+msgid "Verification Token"
+msgstr "Токен для проверки"
 
 #: smarty/pages:32 smarty/pages:33
 msgid "Back to your profile"
@@ -1712,17 +2410,249 @@ msgstr "Вернуться к Вашему профилю"
 msgid "Back to homepage"
 msgstr "Вернуться на главную страницу"
 
-#: smarty/pages:40
-msgid "Yes, change my email address"
-msgstr "Да, изменить мой адрес электронной почты"
+#: smarty/pages:40 smarty/pages:41
+msgid "Check the token"
+msgstr "Проверить токен"
+
+#: smarty/pages:10
+msgid "Changing your email address."
+msgstr "Изменение адреса электронной почты."
+
+#: smarty/pages:3 smarty/pages:8
+msgid "Welcome to the GeoKrety.org community!"
+msgstr "Добро пожаловать в сообщество GeoKrety.org!"
+
+#: smarty/pages:10
+msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
+msgstr ""
+
+#: smarty/pages:12
+msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:10
+msgid "Password recovery"
+msgstr "Забыли пароль?"
+
+#: smarty/pages:19
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr "Если вы уже подтвердили адрес Вашей электронной почты, то Вы можете восстановить его легко. В противном случае, Вам придется создать другую учётную запись, извините."
+
+#: smarty/pages:35
+msgid "Send me a recovery link"
+msgstr "Отправить мне ссылку для восстановления"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "Top %1"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Rank"
+msgstr "Рейтинг"
+
+#: smarty/pages:43 smarty/pages:18
+msgid "No attributed awards yet."
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:15
+msgid "%1's Owned GeoKrety map"
+msgstr "Карта ГеоКротов %1"
+
+#: smarty/pages:3 smarty/pages:9
+msgid "%1's inventory"
+msgstr "%1's инвентарь"
+
+#: smarty/pages:22 smarty/pages:23 smarty/pages:42
+msgid "Last move"
+msgstr "Последний ход"
+
+#: smarty/pages:24 smarty/pages:25 smarty/elements:138
+msgid "Caches visited count"
+msgstr "Количество посещённых тайников"
+
+#: smarty/pages:39
+msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
+msgstr ""
 
 #: smarty/pages:41
-msgid "No, abort this request"
-msgstr "Нет, прервать этот запрос"
+msgid "%1's inventory is currently empty."
+msgstr "%1's инвентарь в настоящее время пуст."
+
+#: smarty/pages:3 smarty:6 smarty:13 smarty:16
+msgid "Log a GeoKret"
+msgstr "Отметить ГеоКрота"
+
+#: smarty/pages:3
+msgid "Registration"
+msgstr "Регистрация"
+
+#: smarty/pages:14
+msgid "Create an account using %1"
+msgstr "Создать учетную запись, используя %1"
+
+#: smarty/pages:16
+msgid "Create an account"
+msgstr "Создать учетную запись"
+
+#: smarty/pages:3 smarty/pages:9
+msgid "Pictures gallery"
+msgstr "Галерея изображений"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "Mass label generator"
+msgstr ""
+
+#: smarty/pages:3
+msgid "Interactive map"
+msgstr "Карта"
+
+#: smarty/pages:17
+msgid "GeoKrety interactive map"
+msgstr "Интерактивная карта ГеоКротов"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "Waypoints statistics"
+msgstr ""
+
+#: smarty/pages:10
+msgid "Service code"
+msgstr ""
 
 #: smarty/pages:11
-msgid "Help API"
-msgstr "Помощь по API"
+msgid "Service url"
+msgstr ""
+
+#: smarty/pages:12
+msgid "Waypoint count"
+msgstr ""
+
+#: smarty/pages:13
+msgid "Last synchronization"
+msgstr ""
+
+#: smarty/pages:14
+msgid "Revision"
+msgstr ""
+
+#: smarty/pages:15
+msgid "Last error"
+msgstr ""
+
+#: smarty/pages:16
+msgid "Error count"
+msgstr ""
+
+#: smarty/pages:39
+msgid "N/A"
+msgstr ""
+
+#: smarty/pages:49
+msgid "Force complete synchronization"
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:6
+msgid "This page doesn't exists yet, but we're working on it!"
+msgstr "Эта страница еще не существует, но мы работаем над ней!"
+
+#: smarty/pages:3 smarty/pages:39 smarty:42 smarty:44
+msgid "Help"
+msgstr "Помощь"
+
+#: smarty/pages:3 smarty/pages:26 smarty:3 smarty:5
+msgid "News"
+msgstr "Новости"
+
+#: smarty/pages:18
+msgid "There is no news yet"
+msgstr "Пока нет новостей"
+
+#: smarty/pages:3 smarty/pages:8 smarty:16
+msgid "Claim a GeoKret"
+msgstr "Принять Геокрота"
+
+#: smarty/pages:22 smarty/admin/pages:114
+msgid "Owner Code"
+msgstr "Код владельца"
+
+#: smarty/pages:30
+msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
+msgstr "Процесс требует \"Код отслеживания\", как правило, написанный на этикетке GeoKret или выгравированный на монете плюс \"Код владельца\", обычно указан на бумажной листе."
+
+#: smarty/pages:36
+msgid "Adopt"
+msgstr "Принять"
+
+#: smarty/pages:3 smarty/pages:9
+msgid "%1's recent moves"
+msgstr "%1'с недавних шагов"
+
+#: smarty/pages:21 smarty/pages:40 smarty/pages:22
+msgid "Spotted in"
+msgstr "Был замечен в"
+
+#: smarty/pages:38
+msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
+msgstr ""
+
+#: smarty/pages:40
+msgid "%1 didn't moved any GeoKrety yet."
+msgstr "%1 еще не переместил GeoKrety."
+
+#: smarty/pages:3
+msgid "Search GeoKrety"
+msgstr ""
+
+#: smarty/pages:9
+msgid "Found GeoKrety matching: %1"
+msgstr ""
+
+#: smarty/pages:19 smarty/pages:20
+msgid "Name"
+msgstr "Имя"
+
+#: smarty/pages:32
+msgid "No GeoKrety matching: %1"
+msgstr ""
+
+#: smarty/pages:3 smarty/pages:9
+msgid "Pictures of %1's GeoKrety"
+msgstr "Фотографии GeoKrety %1"
+
+#: smarty/pages:3 smarty/pages:9 smarty:47
+msgid "Press corner"
+msgstr "Пресса"
+
+#: smarty/pages:3 smarty/pages:8
+msgid "Contact us"
+msgstr "Связаться с нами"
+
+#: smarty/pages:13
+msgid "If you have any suggestion or bug reports feel free to write us."
+msgstr "Если у вас есть какие-либо предложения или сообщения об ошибках, напишите нам."
+
+#: smarty/pages:24
+msgid "Or via the user profile"
+msgstr "Или через профиль пользователя"
+
+#: smarty/pages:33
+msgid "IRC"
+msgstr "IRC"
+
+#: smarty/pages:41
+msgid "Twitter"
+msgstr "Twitter"
+
+#: smarty/pages:48
+msgid "Public forum"
+msgstr "Публичный форум"
+
+#: smarty/pages:56
+msgid "Wanna sign or encrypt your mails?"
+msgstr "Хотите подписать или шифровать ваши письма?"
+
+#: smarty/pages:58
+msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
+msgstr "Наш публичный ключ PGP/GPG <a href=\"%1\">здесь (%2)</a>"
 
 #: smarty/pages:3
 msgid "Hall of fame"
@@ -1808,46 +2738,6 @@ msgstr "Глобальные эксперты по рассмотрению"
 msgid "Credits"
 msgstr "Благодарности"
 
-#: smarty/pages:3 smarty/pages:9
-msgid "Pictures gallery"
-msgstr "Галерея изображений"
-
-#: smarty/pages:3 smarty/pages:8
-msgid "Contact us"
-msgstr "Связаться с нами"
-
-#: smarty/pages:13
-msgid "If you have any suggestion or bug reports feel free to write us."
-msgstr "Если у вас есть какие-либо предложения или сообщения об ошибках, напишите нам."
-
-#: smarty/pages:17 smarty/blocks/user:46
-msgid "Email"
-msgstr "E-mail"
-
-#: smarty/pages:24
-msgid "Or via the user profile"
-msgstr "Или через профиль пользователя"
-
-#: smarty/pages:33
-msgid "IRC"
-msgstr "IRC"
-
-#: smarty/pages:41
-msgid "Twitter"
-msgstr "Twitter"
-
-#: smarty/pages:48
-msgid "Public forum"
-msgstr "Публичный форум"
-
-#: smarty/pages:56
-msgid "Wanna sign or encrypt your mails?"
-msgstr "Хотите подписать или шифровать ваши письма?"
-
-#: smarty/pages:58
-msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
-msgstr "Наш публичный ключ PGP/GPG <a href=\"%1\">здесь (%2)</a>"
-
 #: smarty/pages:3
 msgid "Change username"
 msgstr ""
@@ -1867,6 +2757,50 @@ msgstr ""
 #: smarty/pages:21
 msgid "New username"
 msgstr ""
+
+#: smarty/pages:3 smarty/pages:9
+msgid "GeoKrety visiting the cache %1"
+msgstr ""
+
+#: smarty/pages:21
+msgid "Cache"
+msgstr "Тайник"
+
+#: smarty/pages:23 smarty/forms:224
+msgid "Date"
+msgstr "Дата"
+
+#: smarty/pages:37
+msgid "No GeoKrety has visited cache %1 yet."
+msgstr ""
+
+#: smarty/pages:3
+msgid "Confirm changing your email address"
+msgstr ""
+
+#: smarty/pages:8
+msgid "Do you confirm changing your email address?"
+msgstr "Подтвердите изменение адреса электронной почты?"
+
+#: smarty/pages:40
+msgid "Yes, change my email address"
+msgstr "Да, изменить мой адрес электронной почты"
+
+#: smarty/pages:41
+msgid "No, abort this request"
+msgstr "Нет, прервать этот запрос"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "All yearly rankings"
+msgstr ""
+
+#: smarty/pages:38
+msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
+msgstr ""
+
+#: smarty/pages:40
+msgid "%1 doesn't own any GeoKrety yet."
+msgstr "%1 пока не владеет GeoKrety."
 
 #: smarty/pages:3
 msgid "GK mole-holes and GK hotels/motels"
@@ -1968,61 +2902,101 @@ msgstr "Текущие GK-Отели/Мотели"
 msgid "Status: Ready for search"
 msgstr "Статус: Готов к поиску"
 
+#: smarty/pages:3 smarty/pages:11
+msgid "Define your observation area"
+msgstr "Определите область наблюдения"
+
+#: smarty/pages:21
+msgid "When you define your home location, the mini-map on your profile will display GeoKrety dropped around you."
+msgstr ""
+
+#: smarty/pages:22
+msgid "If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences)."
+msgstr ""
+
+#: smarty/pages:30 smarty/pages:31
+msgid "Home coordinates"
+msgstr "Домашние координаты"
+
+#: smarty/pages:35
+msgid "Use the map to select a location or enter coordinates manually."
+msgstr "Используйте карту, чтобы выбрать местоположение или введите координаты вручную."
+
+#: smarty/pages:37
+msgid "Other acceptable lat/lon formats"
+msgstr "Другие приемлемые форматы координат"
+
+#: smarty/pages:46
+msgid "Observation radius"
+msgstr "Радиус наблюдения"
+
+#: smarty/pages:54
+msgid ". Set it to 0 to disable the observation feature."
+msgstr ""
+
+#: smarty/pages:64
+msgid "Center the map on the zone to observe"
+msgstr "Отцентровать карту на зоне наблюдения"
+
 #: smarty/pages:3
-msgid "Search users"
+msgid "%1's user profile"
 msgstr ""
 
-#: smarty/pages:9
-msgid "Found users matching: %1"
-msgstr ""
+#: smarty/pages:3 smarty/pages:8
+msgid "GeoKrety Toolbox - GKT"
+msgstr "GeoKrety Toolbox - GKT"
 
-#: smarty/pages:34
-msgid "No users matching: %1"
-msgstr ""
+#: smarty/pages:12
+msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
+msgstr "Показывает треки GeoKrety на сайте <a href=\"%1\" target=\"_blank\">geocaching.com</a> на страницах тайников и позволяет оставлять GeoKrety в тайниках Geocaching."
 
-#: smarty/pages:10
-msgid "Changing your email address."
-msgstr "Изменение адреса электронной почты."
-
-#: smarty/pages:18 smarty/pages:22
-msgid "Please enter the verification token received by mail."
-msgstr "Пожалуйста, введите токен подтверждения, полученный по почте."
-
-#: smarty/pages:23 smarty/pages:25 smarty/pages:27 smarty/pages:29
-msgid "Verification Token"
-msgstr "Токен для проверки"
-
-#: smarty/pages:41 smarty/pages:40
-msgid "Check the token"
-msgstr "Проверить токен"
-
-#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:16
-msgid "Owned GeoKrety"
-msgstr "Мои ГеоКроты"
-
-#: smarty/pages:21 smarty/pages:40 smarty/pages:22
-msgid "Spotted in"
-msgstr "Был замечен в"
-
-#: smarty/pages:22 smarty/pages:23 smarty/pages:42
-msgid "Last move"
-msgstr "Последний ход"
-
-#: smarty/pages:23 smarty/pages:43 smarty/pages:24 smarty/emails:129
-msgid "Distance"
-msgstr "Расстояние"
-
-#: smarty/pages:38
-msgid "You did not created any GeoKrety yet. Don't hesitate to <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
-
-#: smarty/pages:40
-msgid "%1 doesn't own any GeoKrety yet."
-msgstr "%1 пока не владеет GeoKrety."
+#: smarty/pages:16
+msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
+msgstr "Этот скрипт был написан для построения моста между наиболее популярным <a href=\"%1\">geocaching.com</a> сайтом и <a href=\"%2\">geokrety.org</a>. Он имеет две функции. После того, как Вы введете страницу тайника на сайте <a href=\"%1\">geocaching.com</a>, он автоматически проверяет наличие какой-либо GeoKrety (предметы, отслеживаемые на <a href=\"%2\">geokrety.org</a>) внутри этого тайника и показывает результат в разделе инвентаря с правой стороны экрана (ниже существующего списка Travelbugs и Geocoins). Если у вас есть аккаунт на <a href=\"%2\">geokrety.org</a> Вы также можете легко перетащить GeoKrety в тайник <a href=\"%1\">Geocaching</a> из-за того, что код путевой точки и координаты автоматически копируются в форму записи на <a href=\"%2\">geokrety.org</a>."
 
 #: smarty/pages:18
-msgid "There is no news yet"
-msgstr "Пока нет новостей"
+msgid "Available for:"
+msgstr "Доступно для:"
+
+#: smarty/pages:22
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
+msgstr "<a href=\"%1\">Firefox</a> (нужно <a href=\"%2\">дополнение к Tampermonkey</a> или <a href=\"%3\">дополнение для greasemonkey</a>)"
+
+#: smarty/pages:3 smarty/pages:8
+msgid "Welcome to GeoKrety.org!"
+msgstr "Добро пожаловать на GeoKrety.org!"
+
+#: smarty/pages:33
+msgid "Latest moves"
+msgstr "Последние шаги"
+
+#: smarty/pages:59
+msgid "Recent pictures"
+msgstr "Недавние картинки"
+
+#: smarty/pages:72
+msgid "Recently created GeoKrety"
+msgstr "Недавно созданный GeoKrety"
+
+#: smarty/pages:3 smarty/pages:6
+msgid "Label generator"
+msgstr ""
+
+#: smarty/pages:11
+msgid "Help API"
+msgstr "Помощь по API"
+
+#: smarty/pages:40
+msgid "You did not watch any GeoKrety yet."
+msgstr ""
+
+#: smarty/pages:42
+msgid "%1 doesn't watch any GeoKrety yet."
+msgstr "%1 пока не отслеживает GeoKrety."
+
+#: smarty/pages:3 smarty:54
+msgid "Downloads"
+msgstr "Загрузки"
 
 #: smarty/pages:8
 msgid "Translation"
@@ -2072,178 +3046,17 @@ msgstr "Образец метки #%1: "
 msgid "Old label design: "
 msgstr "Старый дизайн метки: "
 
-#: smarty/pages:3 smarty/pages:9
-msgid "%1's inventory"
-msgstr "%1's инвентарь"
-
-#: smarty/pages:39
-msgid "Your inventory is empty. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you! You can also <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
-
-#: smarty/pages:41
-msgid "%1's inventory is currently empty."
-msgstr "%1's инвентарь в настоящее время пуст."
-
-#: smarty/pages:3 smarty/pages:6
-msgid "All yearly rankings"
-msgstr ""
-
-#: smarty/pages:18 smarty/pages:43
-msgid "No attributed awards yet."
-msgstr ""
-
 #: smarty/pages:36
 msgid "Please define a new password."
 msgstr "Пожалуйста, укажите новый пароль."
 
-#: smarty/pages:3 smarty/pages:8
-msgid "GeoKrety Toolbox - GKT"
-msgstr "GeoKrety Toolbox - GKT"
-
-#: smarty/pages:12
-msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
-msgstr "Показывает треки GeoKrety на сайте <a href=\"%1\" target=\"_blank\">geocaching.com</a> на страницах тайников и позволяет оставлять GeoKrety в тайниках Geocaching."
-
-#: smarty/pages:16
-msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr "Этот скрипт был написан для построения моста между наиболее популярным <a href=\"%1\">geocaching.com</a> сайтом и <a href=\"%2\">geokrety.org</a>. Он имеет две функции. После того, как Вы введете страницу тайника на сайте <a href=\"%1\">geocaching.com</a>, он автоматически проверяет наличие какой-либо GeoKrety (предметы, отслеживаемые на <a href=\"%2\">geokrety.org</a>) внутри этого тайника и показывает результат в разделе инвентаря с правой стороны экрана (ниже существующего списка Travelbugs и Geocoins). Если у вас есть аккаунт на <a href=\"%2\">geokrety.org</a> Вы также можете легко перетащить GeoKrety в тайник <a href=\"%1\">Geocaching</a> из-за того, что код путевой точки и координаты автоматически копируются в форму записи на <a href=\"%2\">geokrety.org</a>."
-
-#: smarty/pages:18
-msgid "Available for:"
-msgstr "Доступно для:"
-
-#: smarty/pages:22
-msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
-msgstr "<a href=\"%1\">Firefox</a> (нужно <a href=\"%2\">дополнение к Tampermonkey</a> или <a href=\"%3\">дополнение для greasemonkey</a>)"
-
-#: smarty/pages:3
-msgid "GeoKret watchers"
-msgstr ""
-
-#: smarty/pages:9
-msgid "Those users are watching GeoKret %1 moves"
-msgstr ""
-
-#: smarty/pages:34
-msgid "No users are watching GeoKret %1"
-msgstr ""
-
-#: smarty/pages:3 smarty/pages:11
-msgid "Define your observation area"
-msgstr "Определите область наблюдения"
-
-#: smarty/pages:21
-msgid "When you define your home location, the mini-map on your profile will display GeoKrety dropped around you."
-msgstr ""
-
-#: smarty/pages:22
-msgid "If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences)."
-msgstr ""
-
-#: smarty/pages:30 smarty/pages:31
-msgid "Home coordinates"
-msgstr "Домашние координаты"
-
-#: smarty/pages:35
-msgid "Use the map to select a location or enter coordinates manually."
-msgstr "Используйте карту, чтобы выбрать местоположение или введите координаты вручную."
-
-#: smarty/pages:37
-msgid "Other acceptable lat/lon formats"
-msgstr "Другие приемлемые форматы координат"
-
-#: smarty/pages:46
-msgid "Observation radius"
-msgstr "Радиус наблюдения"
-
-#: smarty/pages:54
-msgid ". Set it to 0 to disable the observation feature."
-msgstr ""
-
-#: smarty/pages:64
-msgid "Center the map on the zone to observe"
-msgstr "Отцентровать карту на зоне наблюдения"
-
-#: smarty/pages:3 smarty/pages:9
-msgid "Pictures of %1's GeoKrety"
-msgstr "Фотографии GeoKrety %1"
-
-#: smarty/pages:3 smarty/pages:9
-msgid "%1's recent moves"
-msgstr "%1'с недавних шагов"
-
-#: smarty/pages:38
-msgid "You did not moved any GeoKrety yet. Check <a href=\"%1\">the map</a> and try to find GeoKrety near you!"
-msgstr ""
-
 #: smarty/pages:40
-msgid "%1 didn't moved any GeoKrety yet."
-msgstr "%1 еще не переместил GeoKrety."
+msgid "I approve this change"
+msgstr "Я утверждаю это изменение"
 
-#: smarty/pages:3 smarty/pages:6
-msgid "This page doesn't exists yet, but we're working on it!"
-msgstr "Эта страница еще не существует, но мы работаем над ней!"
-
-#: smarty/pages:3 smarty/pages:9
-msgid "%1's posted pictures"
-msgstr "%1опубликовал фотографии"
-
-#: smarty/pages:15 smarty/admin/pages:77 smarty/forms:21 smarty/forms:31
-#: smarty/blocks/geokret:49 smarty/blocks/geokret:9
-msgid "Tracking Code"
-msgstr "Код отслеживания"
-
-#: smarty/pages:22 smarty/admin/pages:114
-msgid "Owner Code"
-msgstr "Код владельца"
-
-#: smarty/pages:30
-msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
-msgstr "Процесс требует \"Код отслеживания\", как правило, написанный на этикетке GeoKret или выгравированный на монете плюс \"Код владельца\", обычно указан на бумажной листе."
-
-#: smarty/pages:36
-msgid "Adopt"
-msgstr "Принять"
-
-#: smarty/pages:3
-msgid "Statpic background chooser"
-msgstr ""
-
-#: smarty/pages:8
-msgid "Select your preferred statpic background"
-msgstr "Выберите ваш фон для статистики"
-
-#: smarty/pages:38
-msgid "Your current statpic"
-msgstr "Ваша текущая статистика"
-
-#: smarty/pages:3
-msgid "Search GeoKrety"
-msgstr ""
-
-#: smarty/pages:9
-msgid "Found GeoKrety matching: %1"
-msgstr ""
-
-#: smarty/pages:19 smarty/pages:20
-msgid "Name"
-msgstr "Имя"
-
-#: smarty/pages:32
-msgid "No GeoKrety matching: %1"
-msgstr ""
-
-#: smarty/pages:3 smarty/pages:8
-msgid "Welcome to the GeoKrety.org community!"
-msgstr "Добро пожаловать в сообщество GeoKrety.org!"
-
-#: smarty/pages:10
-msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
-
-#: smarty/pages:12
-msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
+#: smarty/pages:41
+msgid "No, please revert to my old email address"
+msgstr "Нет, пожалуйста, вернитесь к моему старому адресу электронной почты"
 
 #: smarty/pages:3
 msgid "News: %1"
@@ -2265,29 +3078,21 @@ msgstr "Пожалуйста, <a href=\"%1\">войдите</a> для отпр�
 msgid "There are no comments for this post."
 msgstr "Нет комментариев"
 
-#: smarty/pages:3 smarty/pages:6
-msgid "Top %1"
+#: smarty/pages:3
+msgid "Statpic background chooser"
 msgstr ""
 
-#: smarty/pages:12
-msgid "Rank"
-msgstr "Рейтинг"
+#: smarty/pages:8
+msgid "Select your preferred statpic background"
+msgstr "Выберите ваш фон для статистики"
 
-#: smarty/pages:3 smarty/pages:8
-msgid "Welcome to GeoKrety.org!"
-msgstr "Добро пожаловать на GeoKrety.org!"
+#: smarty/pages:38
+msgid "Your current statpic"
+msgstr "Ваша текущая статистика"
 
-#: smarty/pages:33
-msgid "Latest moves"
-msgstr "Последние шаги"
-
-#: smarty/pages:59
-msgid "Recent pictures"
-msgstr "Недавние картинки"
-
-#: smarty/pages:72
-msgid "Recently created GeoKrety"
-msgstr "Недавно созданный GeoKrety"
+#: smarty/pages:3 smarty/pages:8 smarty:19
+msgid "Advanced search"
+msgstr "Расширенный поиск"
 
 #: smarty/pages:3 smarty/pages:9
 msgid "%1's GeoKrety recent moves"
@@ -2297,137 +3102,147 @@ msgstr "%1'с недавние шаги GeoKrety"
 msgid "%1's GeoKrety didn't moved yet."
 msgstr "ГеоКроты %1еще не перемещены."
 
-#: smarty/pages:3 smarty/pages:10
-msgid "Password recovery"
-msgstr "Забыли пароль?"
-
-#: smarty/pages:19
-msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
-msgstr "Если вы уже подтвердили адрес Вашей электронной почты, то Вы можете восстановить его легко. В противном случае, Вам придется создать другую учётную запись, извините."
-
-#: smarty/pages:35
-msgid "Send me a recovery link"
-msgstr "Отправить мне ссылку для восстановления"
-
 #: smarty/pages:3 smarty/pages:9
-msgid "GeoKrety visiting the cache %1"
+msgid "%1's posted pictures"
+msgstr "%1опубликовал фотографии"
+
+#: smarty/pages:3
+msgid "GeoKret watchers"
 msgstr ""
 
-#: smarty/pages:21
-msgid "Cache"
-msgstr "Тайник"
+#: smarty/pages:9
+msgid "Those users are watching GeoKret %1 moves"
+msgstr ""
 
-#: smarty/pages:23 smarty/forms:224
-msgid "Date"
-msgstr "Дата"
-
-#: smarty/pages:37
-msgid "No GeoKrety has visited cache %1 yet."
+#: smarty/pages:34
+msgid "No users are watching GeoKret %1"
 msgstr ""
 
 #: smarty/pages:3
-msgid "%1's user profile"
+msgid "Search users"
 msgstr ""
 
-#: smarty/pages:3
-msgid "Registration"
-msgstr "Регистрация"
-
-#: smarty/pages:14
-msgid "Create an account using %1"
-msgstr "Создать учетную запись, используя %1"
-
-#: smarty/pages:16
-msgid "Create an account"
-msgstr "Создать учетную запись"
-
-#: smarty/pages:3 smarty/pages:15
-msgid "%1's Owned GeoKrety map"
-msgstr "Карта ГеоКротов %1"
-
-#: smarty/pages:3 smarty/pages:9 smarty/blocks/user:20 smarty:20
-msgid "Watched GeoKrety"
-msgstr "Отслеживаемые GeoKrety"
-
-#: smarty/pages:40
-msgid "You did not watch any GeoKrety yet."
+#: smarty/pages:9
+msgid "Found users matching: %1"
 msgstr ""
 
-#: smarty/pages:42
-msgid "%1 doesn't watch any GeoKrety yet."
-msgstr "%1 пока не отслеживает GeoKrety."
-
-#: smarty/pages:10
-msgid "Email address revalidation."
+#: smarty/pages:34
+msgid "No users matching: %1"
 msgstr ""
 
-#: smarty/pages:3 smarty/pages:6
-msgid "Waypoints statistics"
+#: smarty/elements:4
+msgid "Declared as missing"
 msgstr ""
 
-#: smarty/pages:10
-msgid "Service code"
+#: smarty/elements:31 smarty/elements:33 smarty/elements:36
+msgid "Move this GeoKret"
+msgstr "Переместить этот GeoKret"
+
+#: smarty/elements:4
+msgid "%1 logo"
+msgstr "Логотип %1"
+
+#: smarty/elements:7
+msgid "Unsubscribe from news"
+msgstr "Отписаться от новостей"
+
+#: smarty/elements:11
+msgid "Subscribe to news"
+msgstr "Подписаться на новости"
+
+#: smarty/elements:10
+msgid "Delete comment"
+msgstr "Удалить комментарий"
+
+#: smarty/elements:3
+msgid "Deployed on %1"
+msgstr "Развертано на %1"
+
+#: smarty/elements:7
+msgid "Show move on map"
+msgstr "Показать перемещение на карте"
+
+#: smarty/elements:64
+msgid "Report as missing"
+msgstr "Сообщить о пропаже"
+
+#: smarty/elements:73
+msgid "Write a comment"
+msgstr "Написать комментарий"
+
+#: smarty/elements:81
+msgid "Edit log"
+msgstr "Редактировать запись"
+
+#: smarty/elements:85
+msgid "Delete log"
+msgstr "Удалить запись"
+
+#: smarty/elements:9
+msgid "Last moved date"
 msgstr ""
 
-#: smarty/pages:11
-msgid "Service url"
+#: smarty/elements:22 smarty/elements:30 smarty/elements:38 smarty/elements:46
+#: smarty/elements:54 smarty/elements:62
+msgid "%1 days"
 msgstr ""
 
-#: smarty/pages:12
-msgid "Waypoint count"
+#: smarty/elements:139
+msgid "Total visited caches"
 msgstr ""
 
-#: smarty/pages:13
-msgid "Last synchronization"
+#: smarty/elements:151 smarty/elements:159 smarty/elements:167
+#: smarty/elements:175 smarty/elements:183
+msgid "%1 caches"
 msgstr ""
 
-#: smarty/pages:14
-msgid "Revision"
+#: smarty/devel/pages:17
+msgid "From"
+msgstr "От"
+
+#: smarty/devel/pages:20
+msgid "Action"
+msgstr "Действие"
+
+#: smarty/devel/pages:21
+msgid "Delete all mails"
+msgstr "Удалить все письма"
+
+#: smarty/devel/pages:39
+msgid "Delete mail"
+msgstr "Удалить почту"
+
+#: smarty/chunks:9
+msgid "Remove this GeoKret from the selection"
+msgstr "Удалить GeoKret из выбранного"
+
+#: smarty/chunks:10
+msgid " %1 %2 by %3"
 msgstr ""
 
-#: smarty/pages:15
-msgid "Last error"
+#: smarty/chunks:13
+msgid "Never moved"
+msgstr "Никогда не перемещено"
+
+#: smarty/chunks:15
+msgid "%1 %2 %3 by %4"
 msgstr ""
 
-#: smarty/pages:16
-msgid "Error count"
+#: smarty/chunks:17
+msgid "%1 %2"
 msgstr ""
 
-#: smarty/pages:39
-msgid "N/A"
-msgstr ""
+#: smarty/chunks:5
+msgid "languages"
+msgstr "языки"
 
-#: smarty/pages:49
-msgid "Force complete synchronization"
-msgstr ""
+#: smarty/chunks:6
+msgid "platform"
+msgstr "платформа"
 
-#: smarty/pages:3 smarty/pages:6
-msgid "Label generator"
-msgstr ""
-
-#: smarty/pages:3
-msgid "Interactive map"
-msgstr "Карта"
-
-#: smarty/pages:17
-msgid "GeoKrety interactive map"
-msgstr "Интерактивная карта ГеоКротов"
-
-#: smarty/pages:40
-msgid "I approve this change"
-msgstr "Я утверждаю это изменение"
-
-#: smarty/pages:41
-msgid "No, please revert to my old email address"
-msgstr "Нет, пожалуйста, вернитесь к моему старому адресу электронной почты"
-
-#: smarty:6
-msgid "Toggle navigation"
-msgstr "Переключить навигацию"
-
-#: smarty:3 smarty/emails:20
-msgid "Open source item tracking for all geocaching platforms"
-msgstr "Отслеживание элементов с открытым исходным кодом для всех платформ геокэширования"
+#: smarty/chunks:7
+msgid "group name"
+msgstr "наименование группы"
 
 #: smarty/admin/pages:3 smarty/admin/pages:6
 msgid "Admin actions on users"
@@ -2439,6 +3254,18 @@ msgstr ""
 
 #: smarty/admin/pages:20
 msgid "Award prize"
+msgstr ""
+
+#: smarty/admin/pages:3
+msgid "GeoKrety generator result"
+msgstr ""
+
+#: smarty/admin/pages:10
+msgid "There is no results."
+msgstr ""
+
+#: smarty/admin/pages:3 smarty/admin/pages:7
+msgid "Scripts management"
 msgstr ""
 
 #: smarty/admin/pages:3 smarty/admin/pages:9
@@ -2487,11 +3314,6 @@ msgstr ""
 msgid "GeoKret type"
 msgstr "Тип GeoKret"
 
-#: smarty/admin/pages:59 smarty/forms:31 smarty/forms:36
-#: smarty/blocks/geokret:3
-msgid "Mission"
-msgstr "Миссия"
-
 #: smarty/admin/pages:61 smarty/forms:33 smarty/forms:38
 msgid "What is this GeoKret mission?"
 msgstr "Какая миссия у GeoKret?"
@@ -2536,101 +3358,169 @@ msgstr ""
 msgid "Generate"
 msgstr ""
 
-#: smarty/admin/pages:3
-msgid "GeoKrety generator result"
+#: smarty:2 smarty:3
+msgid "Home"
+msgstr "Главная"
+
+#: smarty:20
+msgid "Photo gallery"
+msgstr "Фотогалерея"
+
+#: smarty:21
+msgid "Mass labelling"
 msgstr ""
 
-#: smarty/admin/pages:10
-msgid "There is no results."
+#: smarty:24
+msgid "GeoKrety Map"
+msgstr "Карта ГеоКротов"
+
+#: smarty:31
+msgid "Currently selected language"
+msgstr "Выбранный язык"
+
+#: smarty:49
+msgid "GK interface / API"
+msgstr "GK интерфейс / API"
+
+#: smarty:51
+msgid "Waypoints synchronization status"
 msgstr ""
 
-#: smarty/admin/pages:3 smarty/admin/pages:7
-msgid "Scripts management"
+#: smarty:52
+msgid "Yearly rankings"
 msgstr ""
 
-#: smarty/admin/pages:45 smarty/emails:10
-msgid "Unlock script"
+#: smarty:55
+msgid "GeoKrety Toolbox"
+msgstr "Инструмент GeoKrety"
+
+#: smarty:56
+msgid "Waypoint resolver"
+msgstr "Разборщик точек"
+
+#: smarty:3
+msgid "Admin"
+msgstr "Админ"
+
+#: smarty:7 smarty:16
+msgid "My profile"
+msgstr "Мой профиль"
+
+#: smarty:18
+msgid "My inventory"
+msgstr "Мой инвентарь"
+
+#: smarty:19
+msgid "My GeoKrety"
+msgstr "Мой GeoKrety"
+
+#: smarty:22
+msgid "My recent moves"
+msgstr "Мои недавние шаги"
+
+#: smarty:23
+msgid "Recent moves of my GeoKrety"
+msgstr "Последние шаги моего GeoKrety"
+
+#: smarty:25
+msgid "My photos"
+msgstr "Мои фотографии"
+
+#: smarty:26
+msgid "Photos of my GeoKrety"
+msgstr "Фотографии моего GeoKrety"
+
+#: smarty:30
+msgid "Sign out"
+msgstr "Выйти"
+
+#: smarty:53
+msgid "Create account"
+msgstr "Создать аккаунт"
+
+#: smarty:6
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: smarty:4
+msgid "About"
+msgstr "О проекте"
+
+#: smarty:6
+msgid "Contact"
+msgstr "Контакты"
+
+#: smarty:10
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "Выпущено под лицензией <a id=\"footer-license\" href=\"%1\">MIT</a>"
+
+#: smarty:12
+msgid "Contribute to translation"
 msgstr ""
 
-#: smarty/chunks:5
-msgid "languages"
-msgstr "языки"
+#: smarty:15
+msgid "Leave in-context translation"
+msgstr "Оставить в контекстном переводе"
 
-#: smarty/chunks:6
-msgid "platform"
-msgstr "платформа"
+#: smarty:17
+msgid "in-context translation"
+msgstr "перевод в контекст"
 
-#: smarty/chunks:7
-msgid "group name"
-msgstr "наименование группы"
+#: smarty:21
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr "Создан с <abbr title=\"love\">💗</abbr> <a id=\"footer-team\" href=\"%1\">командой GeoKrety</a>"
 
-#: smarty/chunks:9
-msgid "Remove this GeoKret from the selection"
-msgstr "Удалить GeoKret из выбранного"
+#: smarty/forms:49 smarty/forms:32
+msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
+msgstr "Уведомления по электронной почте могут содержать информацию о перемещениях Вашего GeoKrety, новости, комментарии…"
 
-#: smarty/chunks:10
-msgid " %1 %2 by %3"
-msgstr ""
+#: smarty/forms:60 smarty/forms:44
+msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
+msgstr "Да, я принимаю условия использования <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\"></a>."
 
-#: smarty/chunks:13
-msgid "Never moved"
-msgstr "Никогда не перемещено"
-
-#: smarty/chunks:15
-msgid "%1 %2 %3 by %4"
-msgstr ""
-
-#: smarty/chunks:17
-msgid "%1 %2"
-msgstr ""
-
-#: smarty:5
-msgid "Search…"
-msgstr ""
-
-#: smarty/forms:4
-msgid "Edit a GeoKret"
-msgstr "Редактировать GeoKret"
-
-#: smarty/forms:41
-msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
-msgstr "Это создаст первый ход для вашего GeoKret, указав его стартовую точку."
-
-#: smarty/forms:42
-msgid "Set my home coordinates as a starting point."
-msgstr "Установить мои домашние координаты в качестве отправной точки."
-
-#: smarty/forms:52
-msgid "Create"
-msgstr "Создать"
+#: smarty/forms:71 smarty/forms:55
+msgid "Register"
+msgstr "Регистрация"
 
 #: smarty/forms:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
 msgstr "Если у вас уже есть аккаунт на Geokrety. rg, пожалуйста, <a href=\"%2\">войдите</a> и свяжите свою учетную запись с %1 со страницы пользовательских настроек. Иначе выберите имя пользователя для продолжения."
 
-#: smarty/forms:32 smarty/forms:49
-msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
-msgstr "Уведомления по электронной почте могут содержать информацию о перемещениях Вашего GeoKrety, новости, комментарии…"
+#: smarty/forms:3
+msgid "Generate multiple GeoKrety labels"
+msgstr ""
 
-#: smarty/forms:44 smarty/forms:60
-msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr "Да, я принимаю условия использования <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\"></a>."
+#: smarty/forms:11
+msgid "The current number of labels to be created at once: %1."
+msgstr ""
 
-#: smarty/forms:55 smarty/forms:71
-msgid "Register"
-msgstr "Регистрация"
+#: smarty/forms:12
+msgid "Only your own GeoKrety of the ones you already touched can be used here."
+msgstr ""
+
+#: smarty/forms:13
+msgid "Label preferred template is used if defined."
+msgstr ""
+
+#: smarty/forms:14
+msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
+msgstr ""
+
+#: smarty/forms:31 smarty/forms:30
+msgid "Verify Tracking Code"
+msgstr ""
+
+#: smarty/forms:34 smarty/forms:33
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "%1 символов с метки <em>GeoKret label</em>. <u>Не используйте код, начинающийся с 'GK'</u>"
+
+#: smarty/forms:44 smarty/forms:72
+msgid "Generate as .pdf"
+msgstr "Создать как .pdf"
 
 #: smarty/forms:11
 msgid "Identify GeoKret"
 msgstr "Выберите ГеоКрота"
-
-#: smarty/forms:30
-msgid "Verify Tracking Code"
-msgstr ""
-
-#: smarty/forms:33
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "%1 символов с метки <em>GeoKret label</em>. <u>Не используйте код, начинающийся с 'GK'</u>"
 
 #: smarty/forms:43 smarty/forms:118 smarty/forms:205
 msgid "Next"
@@ -2724,18 +3614,21 @@ msgstr "Всегда приятно получать небольшое сооб
 msgid "Post your log"
 msgstr "Отправить Вашу запись"
 
-#: smarty/forms:5 smarty/emails:36 smarty/emails:79 smarty/emails:125
-#: smarty/emails:170
-msgid "GeoKret"
-msgstr ""
+#: smarty/forms:4
+msgid "Edit a GeoKret"
+msgstr "Редактировать GeoKret"
 
-#: smarty/forms:7
-msgid "GeoKret name or id"
-msgstr ""
+#: smarty/forms:41
+msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
+msgstr "Это создаст первый ход для вашего GeoKret, указав его стартовую точку."
 
-#: smarty/forms:10 smarty/forms:22 smarty/forms:34
-msgid "Find"
-msgstr ""
+#: smarty/forms:42
+msgid "Set my home coordinates as a starting point."
+msgstr "Установить мои домашние координаты в качестве отправной точки."
+
+#: smarty/forms:52
+msgid "Create"
+msgstr "Создать"
 
 #: smarty/forms:3
 msgid "Generate a GeoKret Label"
@@ -2744,10 +3637,6 @@ msgstr "Генерировать метку ГеоКрота"
 #: smarty/forms:22 smarty/forms:29
 msgid "Reference numbers"
 msgstr "Артикулы"
-
-#: smarty/forms:24 smarty/blocks/geokret:46
-msgid "Reference number"
-msgstr "Номер"
 
 #: smarty/forms:43
 msgid "Label template"
@@ -2769,400 +3658,16 @@ msgstr "Создать как .png"
 msgid "Generate as .svg"
 msgstr "Создать как .svg"
 
-#: smarty/forms:72
-msgid "Generate as .pdf"
-msgstr "Создать как .pdf"
-
 #: smarty/forms:81 smarty/forms:84 smarty/forms:85
 msgid "GeoKret label preview"
 msgstr "Просмотр метки ГеоКрота"
 
-#: smarty/banners:3
-msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+#: smarty/forms:7
+msgid "GeoKret name or id"
 msgstr ""
 
-#: smarty/banners:2 smarty/banners:3
-msgid "Close"
-msgstr "Закрыть"
-
-#: smarty/banners:3
-msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "Эта ветка 🥦 активно развивается 👨‍💻, если вы нашли ошибки 🐛, пожалуйста, проверьте 👀 <a href=\"%1\" target=\"_blank\">среди существующих проблем ♻ на GitHub %2</a> и не стесняйтесь 🈚 чтобы открыть новый 🆕. (Одна 1 ошибка на вопрос, пожалуйста 🙏)"
-
-#: smarty/banners:3
-msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "У вас есть ожидающая подтверждения электронная почта. Не забудьте нажать на ссылку, которая будет указана в письме, чтобы завершить процедуру. Ссылка истечет %1!"
-
-#: smarty/banners:3
-msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
-msgstr "GeoKrety - бесплатная онлайн-служба для отслеживания объектов в GPS-играх, таких как geocaching или opencaching. Вы можете отслеживать небольшие предметы, книги, монеты, домашних животных или людей с нами… <a href=\"%1\">читать больше</a>."
-
-#: smarty/banners:4
-msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "Вы установили этот GeoKret доступен для принятия. Код владельца: <strong>%1</strong>. Дайте его вместе с кодом отслеживания <strong>%2</strong> пользователю, который примет ваш GeoKret."
-
-#: smarty/banners:6
-msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
-msgstr "Этот GeoKret доступен для принятия. Если текущий владелец дал вам код отслеживания плюс код владельца, то Вы можете <a href=\"%1\">претендовать</a> на этого GeoKret."
-
-#: smarty/banners:8
-msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr "Этот GeoKret доступен для принятия. Пожалуйста, <a href=\"%1\">войдите</a> сначала."
-
-#: smarty/banners:2
-msgid "Some statistics"
-msgstr "Некоторые статистические данные"
-
-#: smarty/banners:6
-msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "<strong>%1</strong> зарегистрирован GeoKrety, <strong>%2</strong> GeoKrety спрятан <strong>%3</strong> пользователями."
-
-#: smarty/banners:13
-msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr ""
-
-#: smarty/banners:21
-msgid "And that's thanks to you! Congratulation!"
-msgstr "И спасибо Вам! Поздравляем!"
-
-#: smarty/banners:3
-msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr "Даже если это - на данный момент - не обязательно, мы рекомендуем Вам <a href=\"%1\">войти</a>."
-
-#: smarty/banners:4
-msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
-msgstr "Не стесняйтесь <a href=\"%1\">создать учетную запись</a>."
-
-#: smarty/banners:5
-msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr "После этого Вы сможете управлять инвентарем GeoKrety, загружать фотографии, редактировать журналы и, конечно, создать свой собственный GeoKrety!"
-
-#: smarty/banners:2
-msgid "Enjoying GeoKrety.org?"
-msgstr "Вам нравятся ГеоКроты?"
-
-#: smarty/banners:4
-msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr ""
-
-#: smarty/banners:8
-msgid "Donate"
-msgstr ""
-
-#: smarty/banners:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "Извините, но к Вашей учётной записи не зарегистрирован почтовый адрес. Вы не сможете восстановить пароль к учётной записи! Также вы не будете получать ежедневные уведомления о ваших GeoKrety или просмотреть GeoKrety."
-
-#: smarty/banners:4
-msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr "Пожалуйста, подумайте <a href=\"%1\">добавить адрес электронной почты</a> или <a href=\"%2\">связать ваш аккаунт</a> с некоторыми OAuth провайдером."
-
-#: smarty/banners:3
-msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr ""
-
-#: smarty/blocks/geokret:3
-msgid "Map"
-msgstr "Карта"
-
-#: smarty/blocks/geokret:8
-msgid "Caption:"
-msgstr "Заголовок:"
-
-#: smarty/blocks/geokret:9
-msgid "start"
-msgstr "начало"
-
-#: smarty/blocks/geokret:10
-msgid "trip points"
-msgstr "точки путешествия"
-
-#: smarty/blocks/geokret:11
-msgid "recently seen"
-msgstr "последний раз замечен"
-
-#: smarty/blocks/geokret:13
-msgid "Download the track as:"
-msgstr "Загрузить трек как:"
-
-#: smarty/blocks/geokret:17
-msgid "This geokret has not started yet"
-msgstr "Это крот-домосед :("
-
-#: smarty/blocks/geokret:9
-msgid "%1 <small>(%2)</small> by %3"
-msgstr ""
-
-#: smarty/blocks/geokret:15
-msgid "%1 <small>(%2)</small> - <a href=\"%3\">Ready for adoption</a>"
-msgstr ""
-
-#: smarty/blocks/geokret:20
-msgid "missing"
-msgstr ""
-
-#: smarty/blocks/geokret:22
-msgid "archived"
-msgstr ""
-
-#: smarty/blocks/geokret:27 smarty/blocks/user:7
-msgid "Send a message to %1"
-msgstr "Отправить сообщение %1"
-
-#: smarty/blocks/geokret:32 smarty/blocks/geokret:6
-msgid "Edit GeoKret details"
-msgstr "Редактировать детали GeoKret"
-
-#: smarty/blocks/geokret:54
-msgid "Places visited"
-msgstr "Посетил мест"
-
-#: smarty/blocks/geokret:4 smarty/blocks/geokret:17 smarty/blocks/geokret:29
-msgid "Who is watching this Geokret?"
-msgstr ""
-
-#: smarty/blocks/geokret:5
-msgid "Watchers"
-msgstr "Наблюдатели"
-
-#: smarty/blocks/geokret:14
-msgid "Add this geokret to your watch list"
-msgstr ""
-
-#: smarty/blocks/geokret:36
-msgid "Log this GeoKret"
-msgstr "Отметить ГеоКрота"
-
-#: smarty/blocks/geokret:41
-msgid "Print a label for this GeoKret"
-msgstr "Распечатать метку для этого GeoKret"
-
-#: smarty/blocks/geokret:55
-msgid "Adopt this GeoKret"
-msgstr "Принять этот GeoKret"
-
-#: smarty/blocks/geokret:57
-msgid "Login to claim this GeoKret"
-msgstr "Авторизуйтесь, чтобы принять Геокрота"
-
-#: smarty/blocks/geokret:64
-msgid "Mark this GeoKret as archived"
-msgstr ""
-
-#: smarty/blocks/geokret:64
-msgid "Archive this GeoKret"
-msgstr "Архивировать этот GeoKret"
-
-#: smarty/blocks/geokret:70
-msgid "Email owner"
-msgstr "Отправить письмо владелецу"
-
-#: smarty/blocks/geokret:76
-msgid "Make this GeoKret available for adoption by another user"
-msgstr "Сделать этот GeoKret доступным для принятия другим пользователем"
-
-#: smarty/blocks/geokret:77
-msgid "Transfer ownership"
-msgstr "Передача прав собственности"
-
-#: smarty/blocks/geokret:15
-msgid "This GeoKret doesn't have a special mission…"
-msgstr "Этот GeoKret не имеет специальной миссии…"
-
-#: smarty/blocks/geokret:3
-msgid "Found it? Log it!"
-msgstr "Найдено? Запиши!"
-
-#: smarty/blocks/geokret:11
-msgid "Please enter the Tracking Code here"
-msgstr "Пожалуйста, введите код отслеживания"
-
-#: smarty/blocks/geokret:14 smarty/blocks:15
-msgid "Log it!"
-msgstr "Запиши!"
-
-#: smarty/blocks:10
-msgid "There is no pictures yet."
-msgstr "Пока нет изображений."
-
-#: smarty/blocks:27
-msgid "false"
-msgstr ""
-
-#: smarty/blocks:27
-msgid "true"
-msgstr ""
-
-#: smarty/blocks:37
-msgid "No users match the current request."
-msgstr ""
-
-#: smarty/blocks:3
-msgid "Found a GeoKret?"
-msgstr "Нашёл GeoKret?"
-
-#: smarty/blocks:7
-msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "Пожалуйста, введите код отслеживания <abbr title=\"%1\"></abbr> сюда:"
-
-#: smarty/blocks:12
-msgid "Tracking code"
-msgstr "Код отслеживания"
-
-#: smarty/blocks:5
-msgid "Start by finding users:"
-msgstr ""
-
-#: smarty/blocks:9
-msgid "Username or email or ID"
-msgstr ""
-
-#: smarty/blocks:11
-msgid "Search"
-msgstr "Поиск"
-
-#: smarty/blocks/user:4
-msgid "Awards"
-msgstr "Награды"
-
-#: smarty/blocks/user:10
-msgid "No award received yet."
-msgstr ""
-
-#: smarty/blocks/user:11
-msgid "Subscribe to RSS channel"
-msgstr "Подписаться на RSS канал"
-
-#: smarty/blocks/user:15
-msgid "Username change"
-msgstr ""
-
-#: smarty/blocks/user:18
-msgid "Password change"
-msgstr "Изменение пароля"
-
-#: smarty/blocks/user:32
-msgid "Joined us"
-msgstr "Присоединился к нам"
-
-#: smarty/blocks/user:36
-msgid "Nothing selected"
-msgstr "Ничего не выбрано"
-
-#: smarty/blocks/user:39
-msgid "Choose preferred language"
-msgstr "Выберите предпочитаемый язык"
-
-#: smarty/blocks/user:51
-msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr "Ожидание подтверждения электронной почты, не забудьте нажать на ссылку из письма!"
-
-#: smarty/blocks/user:53
-msgid "No email address, please add one!"
-msgstr "Адрес электронной почты отсутствует, пожалуйста, добавьте его!"
-
-#: smarty/blocks/user:56
-msgid "Update email address"
-msgstr "Обновить адрес электронной почты"
-
-#: smarty/blocks/user:61
-msgid "Secid"
-msgstr "Secid"
-
-#: smarty/blocks/user:64
-msgid "Used to authenticate in other applications. Keep it secret!"
-msgstr "Используется для аутентификации в других приложениях. Сохраните этот секрет!"
-
-#: smarty/blocks/user:65
-msgid "Generate a new secid"
-msgstr "Создать новый secid"
-
-#: smarty/blocks/user:12
-msgid "View inventory"
-msgstr "Просмотр инвентаря"
-
-#: smarty/blocks/user:24
-msgid "Recently posted moves"
-msgstr "Недавно опубликованные шаги"
-
-#: smarty/blocks/user:28
-msgid "Moves of owned GeoKrety"
-msgstr "Перемещения моих ГеоКротов"
-
-#: smarty/blocks/user:32
-msgid "Posted pictures"
-msgstr "Размещенные фотографии"
-
-#: smarty/blocks/user:36
-msgid "Owned GeoKrety pictures"
-msgstr "Фотографии принадлежащего GeoKrety"
-
-#: smarty/blocks/user:40 smarty:28
-msgid "Where are my GeoKrety?"
-msgstr "Где мои ГеоКроты?"
-
-#: smarty/blocks/user:10
-msgid "No home coordinates have been defined."
-msgstr "Домашние координаты не указаны."
-
-#: smarty/blocks/user:13 smarty/blocks/user:21
-msgid "Update home coordinates and obervation area"
-msgstr "Обновить домашние координаты и область наблюдения"
-
-#: smarty/blocks/user:14
-msgid "Define your home coordinates"
-msgstr "Определите Ваши домашние координаты"
-
-#: smarty/blocks/user:20
-msgid "GeoKrety near home"
-msgstr "GeoKrety рядом с домом"
-
-#: smarty/blocks/user:3
-msgid "Medals"
-msgstr ""
-
-#: smarty/blocks/user:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
-
-#: smarty/blocks/user:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
-
-#: smarty/blocks/user:4
-msgid "OAuth Connections"
-msgstr "Соединения OAuth"
-
-#: smarty/blocks/user:17
-msgid "Disconnect from %1"
-msgstr "Отключиться от %1"
-
-#: smarty/blocks/user:18
-msgid "Disconnect"
-msgstr "Отключиться"
-
-#: smarty/blocks/user:23
-msgid "Connect with %1"
-msgstr "Связаться с %1"
-
-#: smarty/blocks/user:23
-msgid "Connect"
-msgstr "Подключиться"
-
-#: smarty/blocks/user:13
-msgid "Choose statpic"
-msgstr "Выбрать картинку"
-
-#: smarty/blocks/user:5
-msgid "Danger zone"
-msgstr ""
-
-#: smarty/blocks/user:8
-msgid "Be careful, actions in this section are irreversible."
-msgstr ""
-
-#: smarty/blocks/user:11
-msgid "Delete your account"
+#: smarty/forms:10 smarty/forms:22 smarty/forms:34
+msgid "Find"
 msgstr ""
 
 #: smarty/macros:5
@@ -3172,475 +3677,6 @@ msgstr "Первая"
 #: smarty/macros:17
 msgid "Last [%1]"
 msgstr "Последняя [%1]"
-
-#: smarty:4
-msgid "About"
-msgstr "О проекте"
-
-#: smarty:6
-msgid "Contact"
-msgstr "Контакты"
-
-#: smarty:10
-msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr "Выпущено под лицензией <a id=\"footer-license\" href=\"%1\">MIT</a>"
-
-#: smarty:12
-msgid "Contribute to translation"
-msgstr ""
-
-#: smarty:15
-msgid "Leave in-context translation"
-msgstr "Оставить в контекстном переводе"
-
-#: smarty:17
-msgid "in-context translation"
-msgstr "перевод в контекст"
-
-#: smarty:21
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr "Создан с <abbr title=\"love\">💗</abbr> <a id=\"footer-team\" href=\"%1\">командой GeoKrety</a>"
-
-#: smarty/emails:30
-msgid "Hi %1,"
-msgstr "Привет %1,"
-
-#: smarty/emails:37
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "С Уважением,<br>Команда GeoKrety"
-
-#: smarty/emails:46
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
-
-#: smarty/emails:4
-msgid "Something went wrong while synchronizing partners data"
-msgstr ""
-
-#: smarty/emails:7
-msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
-
-#: smarty/emails:4
-msgid "Some accounts will be deleted."
-msgstr ""
-
-#: smarty/emails:7
-msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
-
-#: smarty/emails:5
-msgid "Your GeoKrety watchlist"
-msgstr ""
-
-#: smarty/emails:8
-msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
-
-#: smarty/emails:9
-msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
-
-#: smarty/emails:14
-msgid "Here is what changed recently."
-msgstr ""
-
-#: smarty/emails:17
-msgid "Latest news"
-msgstr ""
-
-#: smarty/emails:27
-msgid "GeoKrety dropped in your observation area"
-msgstr ""
-
-#: smarty/emails:30
-msgid "Open interactive map"
-msgstr ""
-
-#: smarty/emails:30
-msgid "Observation area map"
-msgstr ""
-
-#: smarty/emails:37 smarty/emails:80 smarty/emails:126
-msgid "Position"
-msgstr ""
-
-#: smarty/emails:39 smarty/emails:82 smarty/emails:128 smarty/emails:172
-msgid "Author"
-msgstr ""
-
-#: smarty/emails:40
-msgid "Home distance"
-msgstr ""
-
-#: smarty/emails:73
-msgid "My GeoKrety latest moves"
-msgstr ""
-
-#: smarty/emails:78 smarty/emails:124
-msgid "Icon"
-msgstr "Иконка"
-
-#: smarty/emails:83
-msgid "Distance since last move"
-msgstr ""
-
-#: smarty/emails:119
-msgid "Watched GeoKrety latest moves"
-msgstr ""
-
-#: smarty/emails:165
-msgid "Latest move comments"
-msgstr ""
-
-#: smarty/emails:3
-msgid "Congratulation"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Your account on GeoKrety.org is now active."
-msgstr ""
-
-#: smarty/emails:8
-msgid "Your password has been successfully changed."
-msgstr ""
-
-#: smarty/emails:17 smarty/emails:19
-msgid "You're getting this email because you've changed your password on our website."
-msgstr "Вы получили это письмо, потому что изменили свой пароль на нашем сайте."
-
-#: smarty/emails:3
-msgid "Account not yet active"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Your account is about to be deleted."
-msgstr ""
-
-#: smarty/emails:8
-msgid "The account you created %1 has not yet been activated."
-msgstr ""
-
-#: smarty/emails:9
-msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
-msgstr ""
-
-#: smarty/emails:10
-msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
-
-#: smarty/emails:14 smarty/emails:10
-msgid "Activate your account"
-msgstr "Активировать Ваш аккаунт"
-
-#: smarty/emails:17 smarty/emails:15 smarty/emails:18 smarty/emails:20
-#: smarty/emails:13
-msgid "This link expires %1."
-msgstr "Срок действия ссылки истекает %1."
-
-#: smarty/emails:19 smarty/emails:15
-msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr "Если Ваша учетная запись не будет активирована в течение этого времени, то она будет автоматически удалена."
-
-#: smarty/emails:23 smarty/emails:19
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "Вы получили это письмо, потому что только что вошли на наш сайт."
-
-#: smarty/emails:8
-msgid "Your account on GeoKrety.org is now fully functional."
-msgstr "Ваш аккаунт на GeoKrety.org теперь полностью функциональный."
-
-#: smarty/emails:15
-msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Is this address still valid?"
-msgstr ""
-
-#: smarty/emails:10
-msgid "This is important in case of password loss."
-msgstr ""
-
-#: smarty/emails:14
-msgid "Validate your email address"
-msgstr ""
-
-#: smarty/emails:21
-msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr ""
-
-#: smarty/emails:3
-msgid "Contact from a GeoKrety.org user"
-msgstr "Контакт пользователя GeoKrety.org"
-
-#: smarty/emails:4
-msgid "Someone sent you a private message."
-msgstr ""
-
-#: smarty/emails:8
-msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
-
-#: smarty/emails:12
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr "Если вы подозреваете злоупотребление, пожалуйста, сообщите нам: %1"
-
-#: smarty/emails:13
-msgid "Referer: %1"
-msgstr "Реферер: %1"
-
-#: smarty/emails:18
-msgid "Subject:"
-msgstr "Тема:"
-
-#: smarty/emails:23
-msgid "Reply to %1"
-msgstr "Ответ на %1"
-
-#: smarty/emails:28
-msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
-msgstr "Вы получаете это письмо, потому что один из пользователей GeoKrety.org отправил Вам сообщение через Ваш профиль пользователя."
-
-#: smarty/emails:3
-msgid "Forgot Your Password?"
-msgstr "Забыли пароль?"
-
-#: smarty/emails:4
-msgid "Recover your password."
-msgstr ""
-
-#: smarty/emails:8
-msgid "It happens. Click the link below to reset your password."
-msgstr "Бывает. Нажмите на ссылку ниже, чтобы сбросить пароль."
-
-#: smarty/emails:12
-msgid "Reset Password"
-msgstr "Сбросить пароль"
-
-#: smarty/emails:3
-msgid "Username changed"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Your username on GeoKrety.org has been changed."
-msgstr ""
-
-#: smarty/emails:8
-msgid "."
-msgstr ""
-
-#: smarty/emails:9
-msgid "Please enjoy your new username!"
-msgstr ""
-
-#: smarty/emails:18
-msgid "You're getting this email because you've changed your username on our website."
-msgstr ""
-
-#: smarty/emails:4
-msgid "You're getting this email because you're one the website admins."
-msgstr ""
-
-#: smarty/emails:4
-msgid "An exception occurred in a cron job"
-msgstr ""
-
-#: smarty/emails:4 smarty/emails:8
-msgid "Your email address has been successfully changed."
-msgstr ""
-
-#: smarty/emails:17 smarty/emails:27 smarty/emails:29 smarty/emails:22
-msgid "You're getting this email because you've changed your email on our website."
-msgstr "Вы получили это письмо, потому что был изменён адрес Вашей электронной почты на нашем сайте."
-
-#: smarty/emails:4
-msgid "A script is locked"
-msgstr ""
-
-#: smarty/emails:7
-msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Confirm your email address change."
-msgstr ""
-
-#: smarty/emails:8
-msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr "Кто-то, надеюсь что Вы, запросил изменения Вашего адреса электронной почты GeoKrety на: %1."
-
-#: smarty/emails:13 smarty/emails:15
-msgid "If you did not requested this, click the link below."
-msgstr "Если Вы не запрашивали изменения, нажмите на ссылку ниже."
-
-#: smarty/emails:15
-msgid "Do not change!"
-msgstr "Не изменять!"
-
-#: smarty/emails:20 smarty/emails:22 smarty/emails:15
-msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
-
-#: smarty/emails:22 smarty/emails:24 smarty/emails:17
-msgid "Change my password!"
-msgstr "Изменить пароль!"
-
-#: smarty/emails:8
-msgid "Your email address has been successfully changed to: %1."
-msgstr ""
-
-#: smarty/emails:17
-msgid "Revert this change!"
-msgstr "Вернуть это изменение!"
-
-#: smarty/emails:3
-msgid "Account has been deleted"
-msgstr ""
-
-#: smarty/emails:4
-msgid "Your account is now deleted."
-msgstr ""
-
-#: smarty/emails:8
-msgid "The account you created %1 has never been activated."
-msgstr ""
-
-#: smarty/emails:9
-msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
-
-#: smarty/emails:13
-msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
-
-#: smarty/emails:14
-msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
-
-#: smarty/emails:4
-msgid "New Award received"
-msgstr ""
-
-#: smarty/emails:7
-msgid "We're proud to inform you that you have received a new Award badge."
-msgstr ""
-
-#: smarty/emails:16
-msgid "Please look at this new pretty badge on your GeoKrety profile."
-msgstr ""
-
-#: smarty/emails:18
-msgid "Check my profile"
-msgstr ""
-
-#: smarty/emails:3
-msgid "Hooray"
-msgstr ""
-
-#: smarty/emails:4
-msgid "One of your GeoKrety has been adopted."
-msgstr ""
-
-#: smarty/emails:7
-msgid "Good news, your GeoKret <a href=\"%2\">%1</a> was just adopted by user <a href=\"%4\">%3</a>."
-msgstr ""
-
-#: smarty/emails:10
-msgid "View GeoKret"
-msgstr "Просмотр GeoKret"
-
-#: smarty/emails:15
-msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
-msgstr "Вы получаете это письмо, потому что один из ваших GeoKrety изменил владельца на нашем сайте."
-
-#: smarty/emails:8
-msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr "Кто-то, надеюсь что Вы, попросил изменить адрес электронной почты GeoKrety на Ваш."
-
-#: smarty/emails:12
-msgid "Validate your new email address"
-msgstr "Подтвердить новый адрес электронной почты"
-
-#: smarty/emails:15
-msgid "This link is valid for %1."
-msgstr "Эта ссылка действительна для %1."
-
-#: smarty/emails:17
-msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
-msgstr "Если вы не запросили это и не знаете, что такое GeoKrety, пожалуйста, проигнорируйте это письмо. Вы никогда не будете слышать о нас снова!"
-
-#: smarty/emails:21
-msgid "You're getting this email because you've requested an email address change on our website."
-msgstr "Вы получаете это письмо, потому что запросили изменение адреса электронной почты на нашем сайте."
-
-#: smarty/emails:4
-msgid "One step left to use GeoKrety.org."
-msgstr ""
-
-#: smarty/emails:7
-msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
-msgstr "Вы только что зарегистрировались на GeoKrety.org. <strong>Вы все еще должны активировать свою учетную запись, прежде чем Вы можете использовать её.</strong> Пожалуйста, перейдите по ссылке ниже."
-
-#: smarty/emails:4 smarty/emails:8
-msgid "Your email address has been successfully reverted."
-msgstr ""
-
-#: smarty/devel/pages:17
-msgid "From"
-msgstr "От"
-
-#: smarty/devel/pages:20
-msgid "Action"
-msgstr "Действие"
-
-#: smarty/devel/pages:21
-msgid "Delete all mails"
-msgstr "Удалить все письма"
-
-#: smarty/devel/pages:39
-msgid "Delete mail"
-msgstr "Удалить почту"
-
-#: smarty:3
-msgid "Admin"
-msgstr "Админ"
-
-#: smarty:7 smarty:16
-msgid "My profile"
-msgstr "Мой профиль"
-
-#: smarty:18
-msgid "My inventory"
-msgstr "Мой инвентарь"
-
-#: smarty:19
-msgid "My GeoKrety"
-msgstr "Мой GeoKrety"
-
-#: smarty:22
-msgid "My recent moves"
-msgstr "Мои недавние шаги"
-
-#: smarty:23
-msgid "Recent moves of my GeoKrety"
-msgstr "Последние шаги моего GeoKrety"
-
-#: smarty:25
-msgid "My photos"
-msgstr "Мои фотографии"
-
-#: smarty:26
-msgid "Photos of my GeoKrety"
-msgstr "Фотографии моего GeoKrety"
-
-#: smarty:30
-msgid "Sign out"
-msgstr "Выйти"
-
-#: smarty:53
-msgid "Create account"
-msgstr "Создать аккаунт"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
