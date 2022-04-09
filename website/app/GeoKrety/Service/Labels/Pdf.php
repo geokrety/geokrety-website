@@ -103,6 +103,7 @@ class Pdf extends TCPDF {
         $image = new Image();
         $image->setLanguages($this->languages);
 
+        $imgPrevH = 0;
         for ($i = 0; $i < sizeof($this->geokrety); ++$i) {
             $labelPNGData = $image->png($this->geokrety[$i]);
 
@@ -113,7 +114,7 @@ class Pdf extends TCPDF {
 
             if ($posX + $imgW > $this->getPageWidth() - $startLeft) {
                 $posX = $startLeft;
-                $posY += $imgH;
+                $posY += $imgPrevH;
             }
 
             if ($posY + $imgH > $this->getPageHeight() - $startTop) {
@@ -123,7 +124,9 @@ class Pdf extends TCPDF {
 
 //            $this->ImageSVG($file='@'.$labelSVGData, $x=PDF_MARGIN_LEFT, $y=$pos, $w=$imgW, $h=$imgH, $link='', $align='', $palign='', $border=1, $fitonpage=false);
             $this->Image('@'.$labelPNGData, $x = $posX, $y = $posY, $w = $imgW, $h = $imgH, 'PNG', $link = '', '', true, self::LABEL_OUTPUT_DPI, '', false, false, 1, false, false, false);
+
             $posX += $imgW;
+            $imgPrevH = max($imgH, $imgPrevH);
         }
 
         // ---------------------------------------------------------

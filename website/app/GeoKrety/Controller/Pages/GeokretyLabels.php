@@ -2,32 +2,41 @@
 
 namespace GeoKrety\Controller;
 
+use Flash;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Labels\Pdf;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\Validation\TrackingCode;
 
 class GeokretyLabels extends Base {
-//    public function get() {
-//        // Todo check if tracking code is known
-//        Smarty::render('pages/geokret_label.tpl');
-//    }
-//
-//    public function post() {
-//        $this->get();
-//    }
+    public array $languages = ['fr', 'de', 'pl', 'ru'];
 
-    public function pdf() {
-        $gklist = ['GKD99B', 'GKB65C', 'GK10000', 'GK10001', 'GK10002', 'GK10003', '13256', 66184];
-        for ($i = 66185; $i < 66207; ++$i) {
-            $gklist[] = $i;
+    public function get(\Base $f3) {
+        Smarty::render('pages/geokrety_labels.tpl');
+    }
+
+    public function pdf(\Base $f3) {
+        $this->checkCsrf(function ($error) use ($f3) {
+            Flash::instance()->addMessage($error, 'danger');
+            $f3->reroute('@geokrety_labels');
+        });
+
+        $tracking_codes = TrackingCode::split_tracking_codes($f3->get('POST.tracking_code'));
+
+        $gk_list = array_map(['\GeoKrety\Model\Geokret', 'tracking_code_to_id'], $tracking_codes);
+        $gk_list = array_filter($gk_list, 'strlen');
+
+        $geokret = new Geokret();
+        $geokret->addFilterHasTouchedInThePast($this->current_user);
+        $geokrety = $geokret->find(['gkid IN ?', $gk_list], ['limit' => GK_LABELS_GENERATE_MAX]);
+        if ($geokrety === false) {
+            Flash::instance()->addMessage(_('The list contains only unknown Tracking Codes or never touched GeoKrety'), 'danger');
+            $f3->reroute('@geokrety_labels');
         }
-        $gklist = array_map(['\GeoKrety\Model\Geokret', 'gkid2id'], $gklist);
 
         $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-        $geokret = new Geokret();
-        $geokrety = $geokret->find(['gkid IN ?', $gklist]);
-        // TODO filter owner or already touched
-        $pdf->addGeokrety(...$geokrety);
+        $pdf->addGeokrety(...(array) $geokrety);
+        $pdf->setLanguages($this->languages);
         $pdf->render();
     }
 }

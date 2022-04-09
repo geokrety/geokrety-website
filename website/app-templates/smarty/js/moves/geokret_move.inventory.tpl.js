@@ -1,5 +1,10 @@
 // ----------------------------------- JQUERY - RUCHY INVENTORY - BEGIN
 
+// bind nrSearchButton
+$("#nrSearchButton").bind("click", function() {
+    $("#nr").parsley().validate();
+});
+
 // change header checkbox
 $("body").on('change', "#geokretySelectAll", function() {
     var checked = $(this).is(":checked");

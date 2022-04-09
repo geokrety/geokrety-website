@@ -18,6 +18,7 @@
             <li role="separator" class="divider"></li>
             <li><a id="navbar-actions-search" href="{'advanced_search'|alias}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> {t}Advanced search{/t}</a></li>
             <li><a id="navbar-actions-gallery" href="{'photo_gallery'|alias}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> {t}Photo gallery{/t}</a></li>
+            <li><a id="navbar-new" href="{'geokrety_labels'|alias}">{fa icon="tag"} {t}Mass labelling{/t}</a></li>
         </ul>
     </li>
     <li><a id="navbar-map" href="{'geokrety_map'|alias}">{fa icon="map"} {t}GeoKrety Map{/t}</a></li>

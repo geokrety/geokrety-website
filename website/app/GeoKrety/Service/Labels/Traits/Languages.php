@@ -3,7 +3,7 @@
 namespace GeoKrety\Service\Labels\Traits;
 
 trait Languages {
-    public $languages = [];
+    public array $languages = [];
 
     public function setLanguages(?array $languages) {
         if (empty($languages)) {

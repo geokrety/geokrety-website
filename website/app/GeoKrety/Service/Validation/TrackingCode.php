@@ -100,14 +100,19 @@ class TrackingCode {
         return $response;
     }
 
-    public function validate($trackingCodeString) {
-        $f3 = \Base::instance();
-
+    public static function split_tracking_codes(?string $trackingCodeString): array {
         $trackingCodeArray = explode(',', $trackingCodeString);
         $trackingCodeArray = array_map('strtoupper', $trackingCodeArray);
         $trackingCodeArray = array_map('trim', $trackingCodeArray);
         $trackingCodeArray = array_filter($trackingCodeArray);
-        $trackingCodeArray = array_unique($trackingCodeArray);
+
+        return array_unique($trackingCodeArray);
+    }
+
+    public function validate($trackingCodeString) {
+        $f3 = \Base::instance();
+
+        $trackingCodeArray = self::split_tracking_codes($trackingCodeString);
 
         $trackingCodeCount = sizeof($trackingCodeArray);
         if ($trackingCodeCount === 0) {

@@ -153,6 +153,7 @@ class Config extends \Prefab {
         define('GK_LABELS_SVG2PNG_HOST', getenv('GK_LABELS_SVG2PNG_HOST') ?: 'svg-to-png');
         define('GK_LABELS_SVG2PNG_PORT', getenv('GK_LABELS_SVG2PNG_PORT') ?: '8080');
         define('GK_LABELS_SVG2PNG_URL', getenv('GK_LABELS_SVG2PNG_URL') ?: sprintf('%s://%s:%s/', GK_LABELS_SVG2PNG_SCHEME, GK_LABELS_SVG2PNG_HOST, GK_LABELS_SVG2PNG_PORT));
+        define('GK_LABELS_GENERATE_MAX', getenv('GK_LABELS_GENERATE_MAX') ?: 10);
 
         // Phinx
         define('GK_DB_MIGRATIONS_DIR', getenv('GK_DB_MIGRATIONS_DIR') ?: './db/migrations/');

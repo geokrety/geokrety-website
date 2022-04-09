@@ -273,11 +273,6 @@ $("#submitButton").on('click', function() {
     }
 });
 
-// bind nrSearchButton
-$("#nrSearchButton").bind("click", function() {
-    $("#nr").parsley().validate();
-});
-
 // bind coordinatesSearchButton
 $("#coordinatesSearchButton").bind("click", function() {
     $("#latlon").parsley().validate();

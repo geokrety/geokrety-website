@@ -153,6 +153,15 @@ class Geokret extends Base {
         return null;
     }
 
+    public static function tracking_code_to_id($tracking_code): ?int {
+        $resp = \Base::instance()->get('DB')->exec('SELECT gkid FROM gk_geokrety WHERE tracking_code = ?', [$tracking_code]);
+        if (!sizeof($resp)) {
+            return null;
+        }
+
+        return $resp[0]['gkid'];
+    }
+
     public static function generate(): void {
         $faker = \Faker\Factory::create();
 
@@ -220,6 +229,10 @@ class Geokret extends Base {
         $move = new Move();
 
         return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0) > 0;
+    }
+
+    public function addFilterHasTouchedInThePast(User $user) {
+        $this->has('moves', ['author = ? AND move_type IN ?', $user->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0);
     }
 
     /**

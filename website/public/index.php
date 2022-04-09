@@ -37,6 +37,10 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
             Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exists.'), 'danger');
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
+        if ($error['code'] === 405) {
+            Flash::instance()->addMessage($error['text'] ?: _('Method not allowed.'), 'danger');
+            $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
+        }
         if ($error['code'] === 500) {
             Flash::instance()->addMessage(_('We are sorry, something unexpected happened.'), 'danger');
             $f3->reroute('@home');
