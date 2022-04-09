@@ -1,3 +1,15 @@
+## [2.20.0](https://github.com/geokrety/geokrety-website/compare/v2.19.0...v2.20.0) (2022-04-09)
+
+
+### Features
+
+* Allow to choose default GeoKret template on creation ([0edc11f](https://github.com/geokrety/geokrety-website/commit/0edc11f57fd8696a659f35a26022744883eea7e7))
+
+
+### Translations
+
+* New translations ([d7b65d4](https://github.com/geokrety/geokrety-website/commit/d7b65d4683155a7fb020dac2c35d78915ffabe2c))
+
 ## [2.19.0](https://github.com/geokrety/geokrety-website/compare/v2.18.2...v2.19.0) (2022-04-09)
 
 
