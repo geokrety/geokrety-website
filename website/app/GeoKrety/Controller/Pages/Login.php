@@ -31,10 +31,6 @@ class Login extends Base {
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
-            if ($f3->get('POST.remember')) {
-                Session::setPersistent();
-                Session::setGKTCookie();
-            }
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
                 if (GK_DEVEL) {
                     $user->resendAccountActivationEmail();
@@ -45,6 +41,9 @@ class Login extends Base {
                 $f3->abort();
                 $user->resendAccountActivationEmail();
                 exit();
+            }
+            if ($f3->get('POST.remember')) {
+                Session::setPersistent();
             }
             $this::connectUser($f3, $user, 'password');
         } else {
