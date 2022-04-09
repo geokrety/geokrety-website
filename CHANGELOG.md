@@ -1,3 +1,25 @@
+## [2.19.0](https://github.com/geokrety/geokrety-website/compare/v2.18.2...v2.19.0) (2022-04-09)
+
+
+### Features
+
+* Finish mass label generator ([8236a3a](https://github.com/geokrety/geokrety-website/commit/8236a3a1d100125ba08da23ed0ba03d9662e51bb)), closes [#581](https://github.com/geokrety/geokrety-website/issues/581)
+
+
+### Bug Fixes
+
+* persist sessions only when really authenticated ([9cabda1](https://github.com/geokrety/geokrety-website/commit/9cabda139aa29deb9a7a70fb7143c11524a1f191))
+
+
+### Style
+
+* Fix typo ([653722b](https://github.com/geokrety/geokrety-website/commit/653722b53e2d6bfb9b384866ac535cf1eeb7c20d))
+
+
+### Translations
+
+* New translations ([2b86ff3](https://github.com/geokrety/geokrety-website/commit/2b86ff34df131e92d7e48ae0871534863d535f22))
+
 ### [2.18.2](https://github.com/geokrety/geokrety-website/compare/v2.18.1...v2.18.2) (2022-04-03)
 
 
