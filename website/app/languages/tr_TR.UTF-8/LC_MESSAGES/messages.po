@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 15:52+0000\n"
-"PO-Revision-Date: 2022-03-17 15:56\n"
+"POT-Creation-Date: 2022-04-03 11:26+0000\n"
+"PO-Revision-Date: 2022-04-03 11:33\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-03-17 15:52+0000\n"
+"POT-Creation-Date: 2022-04-03 11:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -192,7 +192,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:38
 msgid "This award does not exist"
-msgstr ""
+msgstr "Bu ödül mevcut değil"
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:47
 msgid "The prize has been awarded"
@@ -284,7 +284,7 @@ msgstr "Lütfen dışarı aktarma türü seçin."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
 msgid "You cannot archive someone else GeoKret."
-msgstr ""
+msgstr "Başka birinin GeoKret'ini arşivleyemezsin."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:26
 msgid "This GeoKret is already archived."
@@ -318,7 +318,7 @@ msgstr "Sahip kodu (%s) oluşturuldu. Takip kodu (%s) ile beraber verin böyleli
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:19
 #: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:19
 msgid "You cannot watch your own GeoKrety."
-msgstr ""
+msgstr "Kendi GeoKret'inizi izleyemezsiniz."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:35
 msgid "This GeoKret is not your watch list."
@@ -408,7 +408,7 @@ msgstr "Yorum silinemedi."
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:34
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:18
 msgid "This move does not exist."
-msgstr ""
+msgstr "Bu hareket mevcut değil."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:39
 #: website/app/GeoKrety/Controller/Pages/PictureDefineAsMainAvatar.php:14
@@ -506,7 +506,7 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:19
 #: website/public/index.php:37
 msgid "This page doesn't exists."
-msgstr ""
+msgstr "Bu sayfa mevcut değil."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:24
 msgid "This GeoKret does not exist."
@@ -515,11 +515,11 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveCommentLoader.php:15
 #: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:16
 msgid "This comment does not exist."
-msgstr ""
+msgstr "Böyle bir yorum yok!"
 
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:28
 msgid "You are not allowed to edit this move."
-msgstr ""
+msgstr "Bu hareketi düzenleme izniniz yok."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/OAuthProviderLoader.php:15
 msgid "This provider does not exist."
@@ -533,7 +533,7 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:34
 #: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:30
 msgid "This user does not exist."
-msgstr ""
+msgstr "Bu kullanıcı mevcut değil."
 
 #: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:36
 msgid "Language preferences updated."
@@ -552,6 +552,18 @@ msgstr "Mesajınız gönderildi %s adlı kullanıcıya gönderildi."
 #, php-format
 msgid "GeoKret: %s (%s)"
 msgstr "GeoKret: %s(%s)"
+
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:17
+msgid "Wrong operation result."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:31
+msgid "Something went wrong. If the error persist, please contact us."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:40
+msgid "Your account is now deleted. Thanks for playing with us."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:43
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:43
@@ -636,7 +648,7 @@ msgstr "Eski şifre geçerli değil!"
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:40
 msgid "Username changed. Please login again."
-msgstr ""
+msgstr "Kullanıcı adı değiştirildi. Lütfen yeniden giriş yapın."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:51
 msgid "Sorry, to use this feature, you must have a valid registered email address."
@@ -695,7 +707,7 @@ msgstr "Hesap etkinleştirildi."
 
 #: website/app/GeoKrety/Email/Awards.php:16 smarty/emails:3
 msgid "You have received an Award"
-msgstr ""
+msgstr "Bir ödül aldınız"
 
 #: website/app/GeoKrety/Email/BasePHPMailer.php:83
 msgid "An error occurred while sending mail."
@@ -768,7 +780,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Email/UsernameChange.php:15
 msgid "Your username has been changed"
-msgstr ""
+msgstr "Kullanıcı adınız değiştirilmiştir."
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -962,7 +974,7 @@ msgstr ""
 
 #: website/app/validators.php:46
 msgid "This username is already used"
-msgstr ""
+msgstr "Bu kullanıcı adı zaten kullanılıyor"
 
 #: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
@@ -1002,7 +1014,7 @@ msgstr ""
 
 #: website/public/index.php:41
 msgid "We are sorry, something unexpected happened."
-msgstr ""
+msgstr "Özür dileriz, beklenmedik bir şey oldu."
 
 #: smarty:2 smarty:3
 msgid "Home"
@@ -1089,9 +1101,9 @@ msgstr ""
 #: smarty/dialog:46 smarty/dialog:27 smarty/dialog:15 smarty/dialog:42
 #: smarty/dialog:51 smarty/dialog:23 smarty/dialog:52 smarty/dialog:35
 #: smarty/dialog:32 smarty/dialog:12 smarty/dialog:55 smarty/dialog:66
-#: smarty/dialog:13 smarty/dialog:37 smarty/dialog:26 smarty/pages:33
-#: smarty/pages:37 smarty/pages:30 smarty/pages:34 smarty/pages:38
-#: smarty/pages:75
+#: smarty/dialog:13 smarty/dialog:37 smarty/dialog:39 smarty/dialog:26
+#: smarty/pages:33 smarty/pages:37 smarty/pages:30 smarty/pages:34
+#: smarty/pages:38 smarty/pages:75
 msgid "Dismiss"
 msgstr "Yoksay"
 
@@ -1184,7 +1196,7 @@ msgstr ""
 #: smarty/dialog:26 smarty/dialog:41 smarty/dialog:50 smarty/dialog:51
 #: smarty/dialog:15 smarty/pages:29 smarty/pages:74
 msgid "Back to user page"
-msgstr ""
+msgstr "Kullanıcı sayfasına dön"
 
 #: smarty/dialog:29 smarty/dialog:53 smarty/dialog:54 smarty/pages:32
 #: smarty/pages:57
@@ -1472,7 +1484,7 @@ msgstr "Sahibi"
 
 #: smarty/dialog:29
 msgid "Select all (but max %1)"
-msgstr ""
+msgstr "Hepsini seç (maksimum %1)"
 
 #: smarty/dialog:36
 msgid "Choose"
@@ -1510,6 +1522,38 @@ msgstr ""
 msgid "Award"
 msgstr "Ödül"
 
+#: smarty/dialog:7
+msgid "Do you really want to delete your account?"
+msgstr ""
+
+#: smarty/dialog:13
+msgid "All your logs and comments will appear posted from \"%1\""
+msgstr ""
+
+#: smarty/dialog:14
+msgid "All your GeoKrety will be automatically archived"
+msgstr ""
+
+#: smarty/dialog:15
+msgid "Your avatar pictures will be deleted"
+msgstr ""
+
+#: smarty/dialog:17
+msgid "Warning!!! This will permanently delete your account."
+msgstr ""
+
+#: smarty/dialog:19
+msgid "Please solve this operation: %1 + %2 = ?"
+msgstr ""
+
+#: smarty/dialog:28
+msgid "Also remove all my comments content"
+msgstr ""
+
+#: smarty/dialog:40 smarty/blocks/user:12
+msgid "Delete my account"
+msgstr ""
+
 #: smarty/dialog:4
 msgid "Do you really want to unlock this script?"
 msgstr ""
@@ -1532,7 +1576,7 @@ msgstr ""
 
 #: smarty/dialog:4
 msgid "Do you really want to delete this move?"
-msgstr ""
+msgstr "Bu hareketi silmek istediğinize emin misiniz?"
 
 #: smarty/dialog:14
 msgid "Deleting this Move will delete attached pictures and the main avatar!"
@@ -1814,7 +1858,7 @@ msgstr "Kullanıcı adını değiştir"
 
 #: smarty/pages:16
 msgid "Once your username is changed, you will need to reconnect."
-msgstr ""
+msgstr "Kullanıcı adınız değiştirildiğinde, yeniden bağlanmanız lazım."
 
 #: smarty/pages:20
 msgid "Desired username"
@@ -1906,7 +1950,7 @@ msgstr "Durum: Aramaya hazır"
 
 #: smarty/pages:51 smarty/pages:94
 msgid "Status: not ready to search"
-msgstr ""
+msgstr "Durum: Aramaya hazır değil"
 
 #: smarty/pages:70
 msgid "GeoKrety hotels / motels"
@@ -2042,7 +2086,7 @@ msgstr "%1'nin envanteri şuanlık boş."
 
 #: smarty/pages:3 smarty/pages:6
 msgid "All yearly rankings"
-msgstr ""
+msgstr "Tüm yıllık sıralamalar"
 
 #: smarty/pages:18 smarty/pages:43
 msgid "No attributed awards yet."
@@ -2082,7 +2126,7 @@ msgstr ""
 
 #: smarty/pages:34
 msgid "No users are watching GeoKret %1"
-msgstr ""
+msgstr "Hiçbir kullanıcı GeoKret %1'i izlemiyor"
 
 #: smarty/pages:3 smarty/pages:11
 msgid "Define your observation area"
@@ -2175,7 +2219,7 @@ msgstr ""
 
 #: smarty/pages:3
 msgid "Search GeoKrety"
-msgstr ""
+msgstr "GeoKrety ara"
 
 #: smarty/pages:9
 msgid "Found GeoKrety matching: %1"
@@ -2303,7 +2347,7 @@ msgstr ""
 
 #: smarty/pages:3 smarty/pages:9 smarty/blocks/user:20 smarty:20
 msgid "Watched GeoKrety"
-msgstr ""
+msgstr "Takip edilen Geokrety"
 
 #: smarty/pages:40
 msgid "You did not watch any GeoKrety yet."
@@ -2311,7 +2355,7 @@ msgstr "Henüz herhangi bir GeoKrety izlemediniz."
 
 #: smarty/pages:42
 msgid "%1 doesn't watch any GeoKrety yet."
-msgstr ""
+msgstr "%1 herhangi bir GeoKrety'i izlemiyor."
 
 #: smarty/pages:10
 msgid "Email address revalidation."
@@ -2335,7 +2379,7 @@ msgstr "Yol noktası sayısı"
 
 #: smarty/pages:13
 msgid "Last synchronization"
-msgstr ""
+msgstr "Son senkronizasyon"
 
 #: smarty/pages:14
 msgid "Revision"
@@ -2411,7 +2455,7 @@ msgstr ""
 
 #: smarty/admin/pages:22
 msgid "From 1 to %1."
-msgstr ""
+msgstr "1'den %1'e"
 
 #: smarty/admin/pages:27
 msgid "Owner ID"
@@ -2437,7 +2481,7 @@ msgstr ""
 
 #: smarty/admin/pages:41
 msgid "Start at"
-msgstr ""
+msgstr "Başlangıç"
 
 #: smarty/admin/pages:48 smarty/forms:20
 msgid "GeoKret type"
@@ -2498,7 +2542,7 @@ msgstr ""
 
 #: smarty/admin/pages:10
 msgid "There is no results."
-msgstr ""
+msgstr "Hiç sonuç yok."
 
 #: smarty/admin/pages:3 smarty/admin/pages:7
 msgid "Scripts management"
@@ -2678,7 +2722,7 @@ msgstr "Küçük bir mesaj almak her zaman güzeldir ;)"
 
 #: smarty/forms:268
 msgid "Post your log"
-msgstr ""
+msgstr "Günlük kaydını paylaş"
 
 #: smarty/forms:5 smarty/emails:36 smarty/emails:79 smarty/emails:125
 #: smarty/emails:170
@@ -3033,10 +3077,6 @@ msgstr ""
 msgid "Generate a new secid"
 msgstr "Yeni bir secid oluştur"
 
-#: smarty/blocks/user:75
-msgid "To change your username or remove your account? Send us <a href=\"%1\">an email</a>!"
-msgstr "Kullanıcı adını değiştirmek veya hesabını silmek için, <a href=\"%1\">bize e posta gönderin </a>!"
-
 #: smarty/blocks/user:12
 msgid "View inventory"
 msgstr "Envanteri görüntüle"
@@ -3091,7 +3131,7 @@ msgstr ""
 
 #: smarty/blocks/user:4
 msgid "OAuth Connections"
-msgstr ""
+msgstr "OAuth Bağlantıları"
 
 #: smarty/blocks/user:17
 msgid "Disconnect from %1"
@@ -3112,6 +3152,18 @@ msgstr "Bağlan"
 #: smarty/blocks/user:13
 msgid "Choose statpic"
 msgstr "Statpik seç"
+
+#: smarty/blocks/user:5
+msgid "Danger zone"
+msgstr ""
+
+#: smarty/blocks/user:8
+msgid "Be careful, actions in this section are irreversible."
+msgstr ""
+
+#: smarty/blocks/user:11
+msgid "Delete your account"
+msgstr ""
 
 #: smarty/macros:5
 msgid "First"
@@ -3135,7 +3187,7 @@ msgstr "<a id=\"footer-license\" href=\"%1\">MIT lisansı</a> altında yayınlan
 
 #: smarty:12
 msgid "Contribute to translation"
-msgstr ""
+msgstr "Çeviriye katkıda bulunun"
 
 #: smarty:15
 msgid "Leave in-context translation"
@@ -3275,7 +3327,7 @@ msgstr ""
 
 #: smarty/emails:10
 msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
+msgstr "Etkinleştirilmemiş hesaplar %1 gün sonra otomatik olarak siliniyor."
 
 #: smarty/emails:14 smarty/emails:10
 msgid "Activate your account"
@@ -3312,7 +3364,7 @@ msgstr ""
 
 #: smarty/emails:14
 msgid "Validate your email address"
-msgstr ""
+msgstr "E-posta adresinizi doğrulayın"
 
 #: smarty/emails:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
@@ -3456,7 +3508,7 @@ msgstr "Oluşturduğun hesap %1 aktif değil"
 
 #: smarty/emails:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+msgstr "Politikamız, etkinleştirilmemiş hesapları %1 gün sonra silmektir."
 
 #: smarty/emails:13
 msgid "We are sorry to inform you that your account has been permanently erased."
@@ -3532,7 +3584,7 @@ msgstr ""
 
 #: smarty/emails:4 smarty/emails:8
 msgid "Your email address has been successfully reverted."
-msgstr ""
+msgstr "E-posta adresiniz başarıyla geri döndürüldü."
 
 #: smarty/devel/pages:17
 msgid "From"
@@ -3632,7 +3684,7 @@ msgstr ""
 
 #: website/app-templates/smarty/js/search_advanced.tpl.js:2
 msgid "GeoKrety"
-msgstr ""
+msgstr "GeoKrety"
 
 #: website/app-templates/smarty/js/search_advanced.tpl.js:3
 msgid "Users"
@@ -3640,5 +3692,5 @@ msgstr "Kullanıcılar"
 
 #: website/app-templates/smarty/js/search_advanced.tpl.js:4
 msgid "Waypoints"
-msgstr ""
+msgstr "Varış noktaları"
 
