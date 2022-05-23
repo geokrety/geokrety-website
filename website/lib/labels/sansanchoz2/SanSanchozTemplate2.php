@@ -17,8 +17,8 @@ class SanSanchozTemplate2 extends PngTemplate {
         ImgUtils::writeCenteredText($img, 50, 0, 460, 1430, $black, $font, $gkName);
         ImgUtils::writeCenteredText($img, 35, 0, 460, 2360, $black, $fontOwner, 'by '.$owner);
 
-        imagettftext($img, 55, 0, 70, 1130, $black, $font, $trackingCode);
-        imagettftext($img, 50, 180, 410, 470, $black, $font, $gkId);
+        imagettftext($img, 55, 0, 70, 1130, $black, $font, $gkId);
+        imagettftext($img, 50, 180, 410, 470, $black, $font, $trackingCode);
 
         // Insert QR code
         $qr = $this->getQrCode($trackingCode);
