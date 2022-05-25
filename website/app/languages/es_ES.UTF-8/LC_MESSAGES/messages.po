@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-09 13:43+0000\n"
-"PO-Revision-Date: 2022-04-09 13:52\n"
+"POT-Creation-Date: 2022-04-09 15:24+0000\n"
+"PO-Revision-Date: 2022-04-09 15:33\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-04-09 13:43+0000\n"
+"POT-Creation-Date: 2022-04-09 15:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -240,20 +240,25 @@ msgstr "Algo salió mal al registrar la adopción."
 msgid "Congratulation! You are now the owner of %s."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:41
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:49
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
+msgid "This label template does not exist."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:67
 msgid "Born here"
 msgstr "Nacido aquí"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:73
 msgid "Failed to create the GeoKret initial move."
 msgstr "Error al crear el movimiento inicial del GeoKret."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:57
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:83
 #: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:23
 msgid "Failed to create the GeoKret."
 msgstr "Error al crear el GeoKret."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:59
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:85
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "Tu GeoKret ha sido creado. Ahora puede que quieras imprimirle <a href=\"%s\"></a> una gran etiqueta…"
@@ -265,10 +270,6 @@ msgstr "Tu GeoKret ha sido actualizado."
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:23
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
 msgstr "¡Lo sentimos, no tienes permiso para imprimir una etiqueta para este GeoKret como nunca lo has descubierto!"
-
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
-msgid "This label template does not exist."
-msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:51
 msgid "Something went wrong while saving the GeoKret preferred label template."
@@ -336,7 +337,7 @@ msgstr ""
 msgid "This GeoKret has been added to your watch list."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:33
+#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:34
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
 msgstr ""
 
@@ -2009,7 +2010,7 @@ msgstr "Recordar título"
 msgid "Remember the caption for the next %1 minutes"
 msgstr "Recuerda el título durante los próximos %1 minutos"
 
-#: smarty/dialog:47 smarty/pages:28 smarty/forms:52
+#: smarty/dialog:47 smarty/pages:28 smarty/forms:63
 msgid "Save"
 msgstr "Guardar"
 
@@ -3626,9 +3627,18 @@ msgstr "Esto creará un primer movimiento \"sumergido\" para tu GeoKret, marcand
 msgid "Set my home coordinates as a starting point."
 msgstr "Establecer las coordenadas de mi casa como punto de partida."
 
-#: smarty/forms:52
+#: smarty/forms:50 smarty/forms:43
+msgid "Label template"
+msgstr "Plantilla de etiqueta"
+
+#: smarty/forms:63
 msgid "Create"
 msgstr "Crear"
+
+#: smarty/forms:72 smarty/forms:75 smarty/forms:76 smarty/forms:81
+#: smarty/forms:84 smarty/forms:85
+msgid "GeoKret label preview"
+msgstr "Vista previa de la etiqueta GeoKret"
 
 #: smarty/forms:3
 msgid "Generate a GeoKret Label"
@@ -3637,10 +3647,6 @@ msgstr "Generar una etiqueta GeoKret"
 #: smarty/forms:22 smarty/forms:29
 msgid "Reference numbers"
 msgstr "Número de referencia"
-
-#: smarty/forms:43
-msgid "Label template"
-msgstr "Plantilla de etiqueta"
 
 #: smarty/forms:54
 msgid "Label help languages"
@@ -3657,10 +3663,6 @@ msgstr "Generar como .png"
 #: smarty/forms:71
 msgid "Generate as .svg"
 msgstr "Generar como .svg"
-
-#: smarty/forms:81 smarty/forms:84 smarty/forms:85
-msgid "GeoKret label preview"
-msgstr "Vista previa de la etiqueta GeoKret"
 
 #: smarty/forms:7
 msgid "GeoKret name or id"
