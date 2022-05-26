@@ -3,7 +3,7 @@
 namespace GeoKrety\Service;
 
 class Smarty extends \Prefab {
-    private $smarty;
+    private \SmartyBC $smarty;
 
     public static function getSmarty() {
         return Smarty::instance()->smarty;

@@ -8,10 +8,7 @@ use GeoKrety\Service\S3Client;
 use Sugar\Event;
 
 abstract class AbstractPictureUpload extends Base {
-    /**
-     * @var string
-     */
-    private $imgKey;
+    private string $imgKey;
 
     public function request_s3_file_signature(\Base $f3) {
         header('Content-Type: application/json; charset=utf-8');

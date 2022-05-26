@@ -21,7 +21,7 @@ class Image {
      *
      * @return string The generated image
      */
-    private function fetch(Geokret $geokret, $type = 'svg') {
+    private function fetch(Geokret $geokret, string $type = 'svg') {
         Smarty::assign('geokret', $geokret);
 
         // Localized Help

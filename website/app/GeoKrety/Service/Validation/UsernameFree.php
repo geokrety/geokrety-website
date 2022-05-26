@@ -6,7 +6,7 @@ use Base;
 use GeoKrety\Model\User;
 
 class UsernameFree {
-    private $errors = [];
+    private array $errors = [];
     private $username = null;
 
     public function getUsername() {

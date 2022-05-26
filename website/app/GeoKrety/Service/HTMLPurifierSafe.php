@@ -3,7 +3,7 @@
 namespace GeoKrety\Service;
 
 class HTMLPurifierSafe extends \Prefab {
-    private $purifier;
+    private \HTMLPurifier $purifier;
 
     public static function getPurifier() {
         return HTMLPurifierSafe::instance()->purifier;

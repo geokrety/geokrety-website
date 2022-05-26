@@ -66,19 +66,17 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     ];
 
-    private $logtype;
+    private ?int $logtype;
 
-    public function __construct($logtype = null) {
-        if (!is_null($logtype)) {
-            $this->logtype = (int) $logtype;
-        }
+    public function __construct(?int $logtype = null) {
+        $this->logtype = $logtype;
     }
 
-    public function getLogTypeId() {
+    public function getLogTypeId(): ?int {
         return $this->logtype;
     }
 
-    public function isType($logtype) {
+    public function isType($logtype): bool {
         if (is_null($this->logtype)) {
             return false;
         }

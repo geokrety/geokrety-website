@@ -9,10 +9,7 @@ use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
 class PasswordRecoveryChange extends Base {
-    /**
-     * @var PasswordToken
-     */
-    private $token;
+    private PasswordToken $token;
 
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);

@@ -8,7 +8,7 @@ use GeoKrety\Service\Config;
 use GeoKrety\Service\S3Client;
 
 class HealthCheck extends Base {
-    protected $state;
+    protected HealthState $state;
 
     public function __construct() {
         $this->state = new HealthState();

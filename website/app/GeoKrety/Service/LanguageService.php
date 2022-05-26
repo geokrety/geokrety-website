@@ -51,7 +51,7 @@ class LanguageService extends \Prefab {
         'uk' => 'Українська',
         'inline-translation' => 'Translation mode',
     ];
-    private $isoCodesFactory = null;
+    private ?\Sokil\IsoCodes\IsoCodesFactory $isoCodesFactory = null;
 
     public function __construct() {
         $this->isoCodesFactory = new \Sokil\IsoCodes\IsoCodesFactory();

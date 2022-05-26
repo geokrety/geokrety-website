@@ -4,10 +4,7 @@ use GeoKrety\Model\Picture;
 use GeoKrety\Service\Smarty;
 
 trait PictureLoader {
-    /**
-     * @var Picture
-     */
-    protected $picture;
+    protected Picture $picture;
 
     public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);

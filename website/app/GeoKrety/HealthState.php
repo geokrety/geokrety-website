@@ -9,7 +9,7 @@ class HealthState {
     public const HEALTH_STATES_VALID = [self::HEALTH_STATE_OK, self::HEALTH_STATE_KO];
 
     public $state = null;
-    public $dependencies = [];
+    public array $dependencies = [];
 
     public function isOk() {
         return $this->state === self::HEALTH_STATE_OK;

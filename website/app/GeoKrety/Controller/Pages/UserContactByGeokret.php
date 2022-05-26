@@ -5,10 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Geokret;
 
 class UserContactByGeokret extends UserContact {
-    /**
-     * @var Geokret
-     */
-    private $geokret;
+    private Geokret $geokret;
 
     public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_by_geokret');

@@ -5,9 +5,9 @@ namespace GeoKrety\Service\Validation;
 use GeoKrety\Service\CoordinatesConverter;
 
 class Coordinates {
-    private $errors = [];
-    private $lat = null;
-    private $lon = null;
+    private array $errors = [];
+    private ?float $lat = null;
+    private ?float $lon = null;
     private $format = null;
 
     public function validate($coords) {
@@ -15,8 +15,8 @@ class Coordinates {
         if ($coords_parse['error'] != '') {
             $this->errors[] = $coords_parse['error'];
         }
-        $this->lat = $coords_parse[0];
-        $this->lon = $coords_parse[1];
+        $this->lat = (float) $coords_parse[0];
+        $this->lon = (float) $coords_parse[1];
         $this->format = $coords_parse['format'];
 
         return sizeof($this->errors) === 0;

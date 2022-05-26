@@ -3,7 +3,7 @@
 namespace GeoKrety\Service;
 
 class Markdown extends \Prefab {
-    private $parser = null;
+    private ?\Parsedown $parser = null;
 
     public static function getParser() {
         return Markdown::instance()->parser;

@@ -5,8 +5,8 @@ namespace GeoKrety\Service;
 use Aws\S3\S3Client as AWSS3Client;
 
 class S3Client extends \Prefab {
-    private $s3;
-    private $s3_public;
+    private AWSS3Client $s3;
+    private AWSS3Client $s3_public;
 
     public function getS3(): AWSS3Client {
         return $this->s3;

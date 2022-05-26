@@ -6,12 +6,13 @@ use DateTime;
 use XMLWriter;
 
 abstract class Base {
-    protected $xml;
+    protected XMLWriter $xml;
     protected $stream;
-    private $compress;
+    private string $compress;
 
     public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
         $this->stream = fopen('php://output', 'w');
+        $this->compress = $compress ?? '';
         if ($streamXML === true) {
             // No output buffer while streaming
             ob_end_flush();

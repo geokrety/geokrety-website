@@ -8,7 +8,7 @@ use GeoKrety\Service\CoordinatesConverter;
 use GeoKrety\Service\WaypointInfo;
 
 class Waypoint {
-    private $errors = [];
+    private array $errors = [];
     private $waypoint = null;
 
     public function validate($waypoint, $coordinates = null) {

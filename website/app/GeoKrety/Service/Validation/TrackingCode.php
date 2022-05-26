@@ -6,8 +6,8 @@ use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 
 class TrackingCode {
-    private $errors = [];
-    private $geokrety = [];
+    private array $errors = [];
+    private array $geokrety = [];
 
     public function getGeokrety() {
         return $this->geokrety;
