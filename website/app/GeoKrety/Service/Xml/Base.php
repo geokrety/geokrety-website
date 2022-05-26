@@ -33,26 +33,7 @@ abstract class Base {
                 header('Content-Type: application/xml; charset=UTF-8');
             }
         }
-
-        $xml = new XMLWriter();
-        $xml->openMemory();
-        $xml->startDocument('1.0', 'UTF-8');
-
-        $xml->startElement('gkxml');
-
-        $xml->startAttribute('version');
-        $xml->text('1.0');
-        $xml->endAttribute();
-
-        $xml->startAttribute('date');
-        $xml->text(date('Y-m-d H:i:s'));
-        $xml->endAttribute();
-
-        $xml->startAttribute('date_Iso8601');
-        $xml->text(date(DateTime::ATOM));
-        $xml->endAttribute();
-
-        $this->xml = $xml;
+        $this->xml = self::getGeoKretyBaseXmlWriter();
     }
 
     public function end() {
@@ -81,5 +62,27 @@ abstract class Base {
             copy(stream_get_meta_data($this->stream)['uri'], 'compress.zlib://'.stream_get_meta_data($tmpFile)['uri']);
             stream_copy_to_stream($tmpFile, fopen('php://output', 'w'));
         }
+    }
+
+    public static function getGeoKretyBaseXmlWriter() {
+        $xml = new XMLWriter();
+        $xml->openMemory();
+        $xml->startDocument('1.0', 'UTF-8');
+
+        $xml->startElement('gkxml');
+
+        $xml->startAttribute('version');
+        $xml->text('1.0');
+        $xml->endAttribute();
+
+        $xml->startAttribute('date');
+        $xml->text(date('Y-m-d H:i:s'));
+        $xml->endAttribute();
+
+        $xml->startAttribute('date_Iso8601');
+        $xml->text(date(DateTime::ATOM));
+        $xml->endAttribute();
+
+        return $xml;
     }
 }
