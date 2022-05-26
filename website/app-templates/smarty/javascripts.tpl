@@ -11,6 +11,11 @@
 {\Assets::instance()->addJs(GK_CDN_DROPZONE_JS) && ''}
 {\Assets::instance()->addJs(GK_CDN_MAGNIFIC_POPUP_JS) && ''}
 {\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS) && ''}
+{\Assets::instance()->addJs(GK_CDN_D3_JS) && ''}
+{*{\Assets::instance()->addJs(GK_CDN_D3_QUEUE_JS) && ''}*}
+{*{\Assets::instance()->addJs(GK_CDN_D3_PLOT_JS) && ''}*}
+{*{\Assets::instance()->addJs(GK_CDN_D3_PATH_JS) && ''}*}
+{*{\Assets::instance()->addJs(GK_CDN_D3_SHAPE_JS) && ''}*}
 
 {\Assets::instance()->renderGroup(\Assets::instance()->getAssets('footer')) nofilter}
 <script type="text/javascript">

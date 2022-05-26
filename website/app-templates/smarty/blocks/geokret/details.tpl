@@ -41,7 +41,7 @@
     </div>
     <div class="panel-body {if $geokret->isMissing()}panel-body-danger{elseif $geokret->isArchived()}panel-body-default{/if}">
         <div class="row">
-            <div class="col-xs-12 col-md-9">
+            <div class="col-xs-12 col-md-8">
                 <dl class="dl-horizontal pull-left">
                     <dt>{t}Reference number{/t}</dt>
                     <dd title="id:{$geokret->id} gkid{$geokret->gkid()}" class="geokret-id">{$geokret->gkid}</dd>
@@ -69,12 +69,12 @@
                     </dd>
                 </dl>
             </div>
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-4">
                 <div class="pull-right picturesList">
                     {if $geokret->avatar}
                         {$geokret->avatar|picture:true:false:false nofilter}
                     {/if}
-                    {* TODO: {'/assets/images/placeholder-graph.png'|url_picture:'/assets/images/placeholder-graph.png' nofilter} *}
+                    {null|url_picture:null:'chart':null:'alt-profile' nofilter}
                 </div>
             </div>
         </div>

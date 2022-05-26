@@ -135,7 +135,7 @@ class Move extends Base {
             'validate' => 'is_date',
         ],
         'move_type' => [
-            'type' => Schema::DT_VARCHAR128,
+            'type' => Schema::DT_SMALLINT,
             'nullable' => true,
             'validate' => 'log_type',
         ],
@@ -251,11 +251,11 @@ class Move extends Base {
         return [
             'id' => $this->id,
             'geokret' => $this->geokret->id,
-            // 'lat' => $this->lat,
-            // 'lon' => $this->lon,
-            // 'elevation' => $this->elevation,
-            // 'country' => $this->country,
-            // 'distance' => $this->distance,
+             'lat' => $this->lat,
+             'lon' => $this->lon,
+             'elevation' => $this->elevation,
+             'country' => $this->country,
+             'distance' => $this->distance,
             // 'waypoint' => $this->waypoint,
             // 'author' => $this->author->id ?? null,
             // 'comment' => $this->comment,
@@ -265,9 +265,10 @@ class Move extends Base {
             // 'app' => $this->app,
             // 'app_ver' => $this->app_ver,
             // 'created_on_datetime' => $this->created_on_datetime,
-            // 'moved_on_datetime' => $this->moved_on_datetime,
+             'moved_on_datetime' => $this->moved_on_datetime->format('c'),
             // 'updated_on_datetime' => $this->updated_on_datetime,
             'move_type' => $this->move_type->getLogTypeId(),
+            'move_type_name' => $this->move_type->getLogTypeString(),
             // 'position' => $this->position,
         ];
     }

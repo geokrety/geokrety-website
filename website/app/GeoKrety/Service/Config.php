@@ -475,6 +475,12 @@ class Config extends \Prefab {
         define('GK_CDN_SELECT2_JS', getenv('GK_CDN_SELECT2_JS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/js/select2.min.js');
         define('GK_CDN_SELECT2_CSS', getenv('GK_CDN_SELECT2_CSS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/css/select2.min.css');
 
+        define('GK_CDN_D3_JS', getenv('GK_CDN_D3_JS') ?: GK_CDN_LIBRARIES_URL.'/d3/v7.4.3/d3.min.js');
+        define('GK_CDN_D3_QUEUE_JS', getenv('GK_CDN_D3_QUEUE_JS') ?: GK_CDN_LIBRARIES_URL.'/d3-queue/v3.0.7/d3-queue.min.js');
+        define('GK_CDN_D3_PLOT_JS', getenv('GK_CDN_D3_PLOT_JS') ?: GK_CDN_LIBRARIES_URL.'/d3-plot/v0.4.3/plot.umd.min.js');
+        define('GK_CDN_D3_PATH_JS', getenv('GK_CDN_D3_PATH_JS') ?: GK_CDN_LIBRARIES_URL.'/d3-path/v3.0.1/d3-path.js');
+        define('GK_CDN_D3_SHAPE_JS', getenv('GK_CDN_D3_SHAPE_JS') ?: GK_CDN_LIBRARIES_URL.'/d3-shape/v3.1.0/d3-shape.js');
+
         $this->clearEnvironments();
     }
 

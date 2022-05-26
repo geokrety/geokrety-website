@@ -49,5 +49,5 @@ $("#mapid").data({ map: map });
 {include 'js/geokrety/geokret_avatar_upload.tpl.js'}
 {/if}
 {include 'js/moves/move_picture_upload.tpl.js'}
-
+{include 'js/d3/altitude_profile_lowres.js'}
 {/block}

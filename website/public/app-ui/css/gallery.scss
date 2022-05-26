@@ -17,6 +17,19 @@ div.gallery {
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 
+    figure.alt-profile {
+        width: auto;
+        min-width: 112px;
+        div.parent {
+            width: auto;
+            min-width: 110px;
+            .image-container {
+                width: auto;
+                min-width: 100px;
+            }
+        }
+    }
+
     figure {
         border: 1px solid silver;
         width: 112px;
@@ -70,6 +83,7 @@ div.gallery {
         height: 51px;
         padding-left: 5px;
         padding-right: 5px;
+        text-align: center;
     }
 
     figcaption > p {
