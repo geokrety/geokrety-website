@@ -44,7 +44,6 @@
                 <a href="#retrieveinfo">Retrieving information</a>
                 <ol>
                     <li><a href="#export2"><code>export2.php</code> Retrieve GeoKrety using some filters</a></li>
-                    <li><a href="#tripexport">Retrieve GeoKrety moves</a></li>
                 </ol>
             </li>
         </ol>
@@ -260,29 +259,6 @@ var_dump($gk);
             <li>adding <code>gzip=1</code> swich makes output compressed with
                 gzip
                 <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?userid=1&inventory=1&gzip=1</pre>
-            </li>
-        </ul>
-
-    </div>
-</div>
-
-
-<a class="anchor" id="tripexport"></a>
-<div class="panel panel-default">
-    <div class="panel-heading">Retrieve GeoKrety moves</div>
-    <div class="panel-body">
-        <ul>
-            <li>
-                <code>format=json</code> - list latest 1000 trip steps for a given GeoKrety as JSON, eg:<br />
-                <pre>{GK_SITE_BASE_SERVER_URL}/rest/konkret/trip/read.php?id=67914&format=json</pre>
-            </li>
-            <li>
-                <code>format=csv</code> - list latest 1000 trip steps for a given GeoKrety as CSV, eg:<br />
-                <pre>{GK_SITE_BASE_SERVER_URL}/rest/konkret/trip/read.php?id=67914&format=csv</pre>
-            </li>
-            <li>
-                <code>format=gpx</code> - list latest 1000 trip steps for a given GeoKrety as GPX, eg:<br />
-                <pre>{GK_SITE_BASE_SERVER_URL}/rest/konkret/trip/read.php?id=67914&format=gpx</pre>
             </li>
         </ul>
 
