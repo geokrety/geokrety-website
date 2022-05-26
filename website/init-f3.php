@@ -12,6 +12,7 @@ $f3->route('HEAD @s3_file_uploaded: /s3/file-uploaded', function () {});
 $f3->config(__DIR__.'/app/config.ini');
 $f3->config(__DIR__.'/app/routes.ini');
 $f3->config(__DIR__.'/app/routes-legacy.ini', true);
+$f3->config(__DIR__.'/app/routes-api.ini');
 $f3->config(__DIR__.'/app/cli.ini');
 $f3->config(__DIR__.'/app/admin.ini');
 $f3->config(__DIR__.'/app/authorizations.ini');
