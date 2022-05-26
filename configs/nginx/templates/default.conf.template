@@ -2,9 +2,10 @@
 limit_req_zone $req_limit_zone zone=standard_one_per_sec:10m rate=1r/s;
 limit_req_zone $req_limit_zone zone=req_limit_heavy_load:10m rate=1r/m;
 limit_req_zone $req_limit_zone zone=req_limit_auth:10m rate=5r/m;
-limit_req_zone $req_limit_zone zone=req_limit_validates:10m rate=1r/s;
+limit_req_zone $req_limit_zone zone=req_limit_validates:10m rate=30r/m;
 limit_req_zone $req_limit_zone zone=req_limit_geojson:10m rate=1r/s;
 limit_req_zone $req_limit_zone zone=req_limit_api_export:10m rate=1r/m;
+limit_req_zone $req_limit_zone zone=req_limit_api_export2:10m rate=1r/s;
 limit_req_zone $req_limit_zone zone=req_limit_gkt:10m rate=15r/m;
 limit_req_zone $req_limit_zone zone=req_limit_search:1m rate=30r/m;
 
@@ -95,7 +96,7 @@ server {
 
     location ~ "^/.{2}/validate/" {
         try_files $uri /index.php?$query_string;
-        limit_req zone=req_limit_validates burst=5 delay=2;
+        limit_req zone=req_limit_validates burst=2 delay=5;
     }
 
     location ~ "^(/login|/api/v1/login/secid|/registration|/password-recovery|/geokrety/claim)" {
@@ -113,7 +114,12 @@ server {
         limit_req zone=req_limit_heavy_load burst=5 delay=2;
     }
 
-    location ~ "^/api/v1/(export|export2|export_oc)$" {
+    location = "/api/v1/export2" {
+        try_files $uri /index.php?$query_string;
+        limit_req zone=req_limit_api_export2 burst=5 delay=2;
+    }
+
+    location ~ "^/api/v1/(export|export_oc)$" {
         try_files $uri /index.php?$query_string;
         limit_req zone=req_limit_api_export burst=5 delay=2;
     }
