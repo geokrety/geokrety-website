@@ -50,6 +50,8 @@ Force Tags      xml    legacy    ruchy
 # Timezone (generator create GK at 2020-08-22 15:30:42)
 &{move_41}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30                       wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
 &{move_42}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=31    tz=Europe/Paris    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_43}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30    tz=UTC             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_44}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=32                       wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
 
 *** Test Cases ***
 
@@ -74,6 +76,7 @@ Test Invalid Cases
     [Template]    Post Return Error
     ${move_1}     Invalid "secid"
     ${move_2}     Invalid "secid"
+    ${move_41}    Move date (2020-08-22 13:30:00+00) time can not be before GeoKret birth (2020-08-22 15:30:00+00)
 
 
 Test Valid Cases
@@ -89,8 +92,9 @@ Test Valid Cases
     ${move_32}    ${GEOKRETY_1}    ${GEOKRETY_2}    ${GEOKRETY_3}    ${GEOKRETY_4}    ${GEOKRETY_5}    ${GEOKRETY_6}    ${GEOKRETY_7}    ${GEOKRETY_8}    ${GEOKRETY_9}    ${GEOKRETY_10}
     ${move_34}    ${GEOKRETY_1}
     ${move_35}    ${GEOKRETY_1}    ${GEOKRETY_2}
-    ${move_41}    ${GEOKRETY_1}
     ${move_42}    ${GEOKRETY_1}
+    ${move_43}    ${GEOKRETY_1}
+    ${move_44}    ${GEOKRETY_1}
 
 *** Keywords ***
 

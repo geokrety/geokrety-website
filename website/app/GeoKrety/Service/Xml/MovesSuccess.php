@@ -4,7 +4,7 @@ namespace GeoKrety\Service\Xml;
 
 use GeoKrety\Model\Move;
 
-class Success extends Base {
+class MovesSuccess extends Base {
     public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
         parent::__construct($streamXML, $compress, $filename);
         $this->xml->startElement('geokrety');
@@ -36,7 +36,7 @@ class Success extends Base {
     public static function buildSuccess(bool $stream, $moves) {
         //public static function buildError(bool $stream, array|Move $moves) { // need php 8.0
         $moves = gettype($moves) === 'GeoKrety\Model\Move' ? [$moves] : $moves;
-        $xml = new \GeoKrety\Service\Xml\Success($stream);
+        $xml = new \GeoKrety\Service\Xml\MovesSuccess($stream);
         $xml->addMoves($moves);
         $xml->end();
         $xml->finish(); // may return raw gzipped data

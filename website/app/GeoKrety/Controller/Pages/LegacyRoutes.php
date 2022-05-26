@@ -2,11 +2,25 @@
 
 namespace GeoKrety\Controller;
 
+use Exception;
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Model\Move;
 use GeoKrety\Model\Picture;
+use GeoKrety\Service\Moves as MovesService;
+use GeoKrety\Service\Xml\Error;
+use GeoKrety\Service\Xml\MovesSuccess;
 
 class LegacyRoutes {
+    public const LEGACY_MOVE_CREATE_FIELDS_MAP = [
+        'wpt' => 'waypoint',
+        'latlon' => 'coordinates',
+        'nr' => 'tracking_code',
+        'data' => 'date',
+        'godzina' => 'hour',
+        'minuta' => 'minute',
+    ];
+
     // https://new-theme.staging.geokrety.org/konkret.php?id=8426
     // https://new-theme.staging.geokrety.org/konkret.php?gk=GK20EA
     public function konkret(\Base $f3) {
@@ -134,8 +148,42 @@ class LegacyRoutes {
 
     // https://new-theme.staging.geokrety.org/ruchy.php POST
     public function ruchy_post(\Base $f3) {
-        $move = new MoveCreateXML();
-        $move->post_api_xml_legacy($f3);
+        // Translate from legacy names
+        foreach (self::LEGACY_MOVE_CREATE_FIELDS_MAP as $old => $new) {
+            if (!$f3->exists("POST.$new")) {
+                $f3->copy("POST.$old", "POST.$new");
+                $f3->clear("POST.$old");
+            }
+        }
+        if (!$f3->exists('POST.tz')) {
+            // Set default to Europe/Paris as compatibility with legacy GKv1 API
+            // See https://github.com/cgeo/cgeo/issues/9496
+            $f3->set('POST.tz', 'Europe/Paris');
+        }
+
+        $login = new Login();
+        $login->secidAuth($f3, $f3->get('POST.secid'));
+
+        $move_data = MovesService::postToArray($f3);
+        $move_service = new MovesService();
+        [$moves, $errors] = $move_service->toMoves($move_data, new Move());
+
+        if (sizeof($errors) > 0) {
+            Error::buildError(true, $errors);
+            exit();
+        }
+
+        // Save the moves
+        try {
+            foreach ($moves as $_move) {
+                /* @var $_move Move */
+                $_move->save();
+            }
+        } catch (Exception $e) {
+            Error::buildError(true, $e->getMessage());
+            exit();
+        }
+        MovesSuccess::buildSuccess(true, $moves);
     }
 
     // https://new-theme.staging.geokrety.org/templates/medal-pi.png

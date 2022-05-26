@@ -2,16 +2,14 @@
 
 namespace GeoKrety\Controller;
 
-use DateTime;
+use Exception;
 use Flash;
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
+use GeoKrety\Service\Moves as MovesService;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Validation\Coordinates as CoordinatesValidation;
-use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
-use GeoKrety\Service\Validation\Waypoint as WaypointValidation;
-use ReCaptcha\ReCaptcha;
 
 class MoveCreate extends Base {
     private Move $move;
@@ -28,7 +26,6 @@ class MoveCreate extends Base {
         }
 
         // From there we are editing a move
-
         $this->move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($this->move->dry()) {
             $f3->error(404, _('This move does not exist.'));
@@ -70,88 +67,13 @@ class MoveCreate extends Base {
     }
 
     public function post(\Base $f3) {
-        $errors = [];
-        $move = $this->move;
+        $move_data = MovesService::postToArray($f3);
 
-        $move->move_type = $f3->get('POST.logtype');
-        if ($f3->get('SESSION.CURRENT_USER')) {
-            $move->author = $f3->get('SESSION.CURRENT_USER');
-        } else {
-            $move->username = $f3->get('POST.username');
-        }
-        $move->comment = $f3->get('POST.comment');
-        $move->app = $f3->get('POST.app');
-        $move->app_ver = $f3->get('POST.app_ver');
-
-        if (!$f3->exists('POST.date') and !$f3->exists('POST.hour') and !$f3->exists('POST.minute')) {
-            // Assume current if not provided
-            $move->touch('moved_on_datetime');
-        } else {
-            // Datetime parser
-            $date = DateTime::createFromFormat('Y-m-d H:i:s T', sprintf(
-                    '%s %s:%s:00 %s',
-                    $f3->get('POST.date'),
-                    str_pad($f3->get('POST.hour'), 2, '0', STR_PAD_LEFT),
-                    str_pad($f3->get('POST.minute'), 2, '0', STR_PAD_LEFT),
-                    $f3->get('POST.tz') ?? 'UTC'
-            ));
-            if ($date === false) {
-                $errors = array_merge($errors, [_('The date time could not be parsed.')]);
-            } else {
-                $move->moved_on_datetime = $date->format(GK_DB_DATETIME_FORMAT);
-            }
-        }
-
-        if ($move->move_type->isCoordinatesRequired()) {
-            // Waypoint validation
-            $waypointChecker = new WaypointValidation();
-            if ($waypointChecker->validate($f3->get('POST.waypoint'), $f3->get('POST.coordinates'))) {
-                $move->waypoint = $waypointChecker->getWaypoint()->waypoint;
-                $move->lat = $waypointChecker->getWaypoint()->lat;
-                $move->lon = $waypointChecker->getWaypoint()->lon;
-            } else {
-                $errors = array_merge($errors, $waypointChecker->getErrors());
-            }
-
-            // Coordinates validation
-            // Allow for coordinates override
-            $coordChecker = new CoordinatesValidation();
-            if ($coordChecker->validate($f3->get('POST.coordinates'))) {
-                if ($move->lat != $coordChecker->getLat() || $move->lon != $coordChecker->getLon()) {
-                    $move->lat = $coordChecker->getLat();
-                    $move->lon = $coordChecker->getLon();
-                }
-            } else {
-                $errors = array_merge($errors, $coordChecker->getErrors());
-            }
-        } else {
-            // Reset values if no coordinates are required, else the validator will complain
-            // Note, in any case, they will be overwritten in Model hook 😆
-            $move->waypoint = null;
-            $move->lat = null;
-            $move->lon = null;
-        }
-
-        // Tracking Code parser
-        $moves = [];
-        $trackingCodeChecker = new TrackingCodeValidation();
-        if ($trackingCodeChecker->validate($f3->get('POST.tracking_code'))) {
-            foreach ($trackingCodeChecker->getGeokrety() as $geokret) {
-                $move_ = clone $move;
-                $move_->geokret = $geokret->id;
-                $moves[] = $move_;
-            }
-        } else {
-            $errors = array_merge($errors, $trackingCodeChecker->getErrors());
-        }
+        $move_service = new MovesService();
+        [$moves, $errors] = $move_service->toMoves($move_data, $this->move);
 
         // We use the first move to retrieve other fields (date, author etc)
-        // Permit displaying again on form error.
-        if (sizeof($moves) < 1) {
-            $moves[] = clone $move;
-        }
-        // We use the first move to retrieve other fields (date, author etc)
-        Smarty::assign('move', $moves[0]);
+        Smarty::assign('move', sizeof($moves) ? $moves[0] : new Move());
 
         // Check Csrf
         $csrf_errors = $this->checkCsrf(null);
@@ -164,51 +86,33 @@ class MoveCreate extends Base {
         }
 
         // Check for errors
-        $this->renderErrors($errors, $moves);
+        $this->renderErrors($moves, $errors);
 
         // Save the moves
-        foreach ($moves as $_move) {
-            $_move->save();
-        }
-
-        $this->render($moves);
-    }
-
-    protected function _checkErrors(array &$errors, $moves): bool {
-        $hasError = sizeof($errors) > 0;
-        foreach ($moves as $_move) {
-            if (!$_move->validate()) {
-                $hasError = true;
+        try {
+            foreach ($moves as $_move) {
+                /* @var Move $_move */
+                $_move->save();
             }
-        }
-        if ($hasError and $this->f3->exists('validation.error')) {
-            $errors = array_merge($errors, $this->f3->get('validation.error'));
+        } catch (Exception $e) {
+            $this->renderErrors($moves, [$e->getMessage()]);
         }
 
-        return $hasError;
+        Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
+        $this->f3->reroute($moves[0]->reroute_url);
     }
 
-    protected function renderErrors(array $errors, $moves) {
-        $hasError = $this->_checkErrors($errors, $moves);
+    protected function renderErrors(array $moves, array $errors) {
+        if (sizeof($errors) < 1) {
+            return;
+        }
+        $msg = '<ul>';
         foreach ($errors as $err) {
-            Flash::instance()->addMessage($err, 'danger');
+            $msg .= "<li>$err</li>";
         }
-        // Display the form again if some errors are present
-        if ($hasError) {
-            $this->get($this->f3);
-            exit();
-        }
-    }
-
-    protected function render($moves) {
-        $f3 = $this->f3;
-        // Do we have some errors while saving to database?
-        if ($f3->get('ERROR')) {
-            Flash::instance()->addMessage(_('Failed to save move.'), 'danger');
-            $this->get($f3);
-        } else {
-            Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
-            $f3->reroute($moves[0]->reroute_url);
-        }
+        $msg .= '</ul>';
+        Flash::instance()->addMessage($msg, 'danger');
+        $this->get($this->f3);
+        exit();
     }
 }

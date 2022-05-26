@@ -26,6 +26,24 @@ abstract class Base extends \DB\Cortex implements JsonSerializable {
         return $response;
     }
 
+    /**
+     * @return \DB\Cortex|\DB\Cursor|false|mixed
+     *
+     * @throws \Exception
+     */
+    public function save() {
+        try {
+            return parent::save();
+        } catch (\PDOException $e) {
+            // SQLSTATE[P0001]: Raise exception: 7 ERROR:  Move date (2020-08-22 13:30:00+00) time can not be before GeoKret birth (2020-08-22 15:30:00+00)
+            // CONTEXT:  PL/pgSQL function moves_moved_on_datetime_checker() line 12 at RAISE
+            if (preg_match('/SQLSTATE\[\w+\]: .*ERROR:\W+(.*)\W*\n.*/', $e->getMessage(), $matches) !== false) {
+                throw new \Exception($matches[1]);
+            }
+            throw new \Exception($e->getMessage());
+        }
+    }
+
     public static function now() {
         return (new DateTime('now', new \DateTimeZone('UTC')))->format(GK_DB_DATETIME_FORMAT);
     }
