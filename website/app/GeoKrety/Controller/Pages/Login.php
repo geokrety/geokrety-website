@@ -157,9 +157,9 @@ class Login extends Base {
      * @param string|null $secid     The secid token
      * @param bool        $streamXML Prepare to render as xml output
      *
-     * @return void True if authentication succeed
+     * @return User Connected user authentication succeed
      */
-    public function secidAuth(\Base $f3, ?string $secid, bool $streamXML = true) {
+    public function secidAuth(\Base $f3, ?string $secid, bool $streamXML = true): User {
         if (strlen($secid) !== 128) {
             Error::buildError($streamXML, _('Invalid "secid"'));
             exit();
@@ -171,6 +171,8 @@ class Login extends Base {
             exit();
         }
         Login::connectUser($f3, $user, 'secid');
+
+        return $user;
     }
 
     public function socialAuthSuccess(array $data) {

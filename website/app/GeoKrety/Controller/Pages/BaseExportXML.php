@@ -25,7 +25,14 @@ class BaseExportXML extends BaseExport {
             return;
         }
         $login = new Login();
-        $login->secidAuth($this->f3, $this->f3->get('GET.secid'));
+        $user = $login->secidAuth($this->f3, $this->f3->get('GET.secid'));
+
+        if (filter_var($this->f3->get('GET.inventory'), FILTER_VALIDATE_BOOLEAN)) {
+            $this->disable_filter_modifiedsince_limit = true;
+            if (!$this->f3->exists('GET.userid')) {
+                $this->f3->set('GET.userid', $user->id);
+            }
+        }
     }
 
     /**
