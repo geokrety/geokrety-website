@@ -31,6 +31,10 @@ class DatabaseReset extends Base {
         'users_id_seq', 'watched_id_seq', 'waypoints_oc_id_seq', 'waypoints_gc_id_seq',
     ];
 
+    public const MATERIALIZED_VIEWS = [
+        'gk_geokrety_in_caches',
+    ];
+
     /**
      * Reset the database only if in debug mode.
      *
@@ -44,6 +48,9 @@ class DatabaseReset extends Base {
         }
         foreach (self::SEQUENCES as $table) {
             $db->exec(sprintf('ALTER SEQUENCE "%s" RESTART WITH 1', $table));
+        }
+        foreach (self::MATERIALIZED_VIEWS as $view) {
+            $db->exec(sprintf('REFRESH MATERIALIZED VIEW CONCURRENTLY %s', $view));
         }
         echo 'OK';
     }
