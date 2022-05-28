@@ -76,7 +76,7 @@ if (preg_match('/^\/cron/', $f3->PATH)) {
 // Not counting pages in metrics
 // No ACLs
 foreach (GK_METRICS_EXCLUDE_PATH as $path) {
-    if (strpos($f3->PATH, $path) !== false) {
+    if (strpos($f3->PATH, $path) === 0) {
         foreach (GK_SYSTEM_PATH_ALLOWED_IPS as $range) {
             if (empty($f3->get('IP')) or Range::parse($range)->contains(new IP($f3->get('IP')))) {
                 // We have to enable session else, sessions files ends up in /tmp folder

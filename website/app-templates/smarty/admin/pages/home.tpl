@@ -32,6 +32,9 @@
                 <div class="panel-body">
                     <ul>
                         <li>
+                            <a href="{'admin_metrics'|alias}">/metrics</a>
+                        </li>
+                        <li>
                             <a href="{'admin_s3_prune_pictures'|alias}">Prune never uploaded pictures</a>
                         </li>
                     </ul>
