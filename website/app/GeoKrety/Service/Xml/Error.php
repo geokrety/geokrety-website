@@ -20,7 +20,7 @@ class Error extends Base {
     }
 
     /**
-     * Create an xml response from an array of errors.
+     * Create xml response from an array of errors.
      *
      * @param bool         $stream Prepare to render as xml output
      * @param array|string $errors The errors to format

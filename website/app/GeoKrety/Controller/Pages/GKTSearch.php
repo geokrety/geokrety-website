@@ -4,9 +4,12 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\GeokretyType;
 use GeoKrety\LogType;
+use GeoKrety\Service\RateLimit;
 
 class GKTSearch extends BaseGKT {
     public function get(\Base $f3) {
+        RateLimit::check_rate_limit_raw('API_GKT_V3_SEARCH');
+
         if (!$f3->exists('GET.lat') or !$f3->exists('GET.lon')) {
             return;
         }

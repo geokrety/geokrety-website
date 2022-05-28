@@ -2,6 +2,7 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\Xml\GeokretyExport2;
 
 class Export2XML extends BaseExportXML {
@@ -14,6 +15,7 @@ class Export2XML extends BaseExportXML {
     }
 
     public function get(\Base $f3) {
+        RateLimit::check_rate_limit_xml('API_V1_EXPORT2', $this->f3->get('GET.secid'));
         $xml = $this->xml;
         $this->loadGeokretyPaginated();
 

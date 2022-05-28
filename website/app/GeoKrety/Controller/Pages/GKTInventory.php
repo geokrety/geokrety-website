@@ -2,6 +2,8 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Service\RateLimit;
+
 class GKTInventory extends BaseGKT {
     /**
      * @var mixed
@@ -28,6 +30,8 @@ class GKTInventory extends BaseGKT {
     }
 
     public function get(\Base $f3) {
+        RateLimit::check_rate_limit_raw('API_GKT_V3_INVENTORY');
+
         if ($this->isLoggedIn()) {
             $this->setFilter(
                 'holder = ?',

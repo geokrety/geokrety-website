@@ -10,6 +10,7 @@ use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
 use GeoKrety\Model\UserSocialAuth;
 use GeoKrety\Service\LanguageService;
+use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Url;
 use GeoKrety\Service\Xml\Error;
@@ -125,6 +126,8 @@ class Login extends Base {
      * @return void True if authentication succeed
      */
     public function login2Secid_post(\Base $f3) {
+        RateLimit::check_rate_limit_raw('API_V1_LOGIN_2_SECID');
+
         // No Check Csrf here else it will break legacy clients
         //$this->checkCsrf(function ($error) {
         //    echo $error;

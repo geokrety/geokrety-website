@@ -37,8 +37,12 @@ abstract class Base {
         $this->xml = self::getGeoKretyBaseXmlWriter();
     }
 
-    public function end() {
+    public function endElement() {
         $this->xml->endElement();
+    }
+
+    public function end() {
+        $this->endElement();
     }
 
     public function asXMLPretty() {

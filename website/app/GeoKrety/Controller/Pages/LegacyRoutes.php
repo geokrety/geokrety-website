@@ -8,6 +8,7 @@ use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\Picture;
 use GeoKrety\Service\Moves as MovesService;
+use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\Xml\Error;
 use GeoKrety\Service\Xml\MovesSuccess;
 
@@ -148,6 +149,8 @@ class LegacyRoutes {
 
     // https://new-theme.staging.geokrety.org/ruchy.php POST
     public function ruchy_post(\Base $f3) {
+        RateLimit::check_rate_limit_xml('API_LEGACY_MOVE_POST', $f3->get('POST.secid'));
+
         // Translate from legacy names
         foreach (self::LEGACY_MOVE_CREATE_FIELDS_MAP as $old => $new) {
             if (!$f3->exists("POST.$new")) {
@@ -203,6 +206,8 @@ class LegacyRoutes {
 
     // https://new-theme.staging.geokrety.org/obrazki/1512592236mg2p5.jpg
     public function obrazki(\Base $f3) {
+        RateLimit::check_rate_limit_xml('API_LEGACY_PICTURE_PROXY', $f3->get('GET.secid'));
+
         $picture = new Picture();
         $picture->load(['filename = :file or key = :file', ':file' => $f3->get('PARAMS.picture')]);
         if ($picture->valid()) {

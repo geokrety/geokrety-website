@@ -68,6 +68,9 @@
                         <li>
                             <a href="{'admin_geokrety_generator'|alias}">GeoKrety generator</a>
                         </li>
+                        <li>
+                            <a href="{'admin_api_rate_limits'|alias}">Show API current rate limits</a>
+                        </li>
                     </ul>
                 </div>
             </div>

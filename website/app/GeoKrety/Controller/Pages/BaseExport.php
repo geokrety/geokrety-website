@@ -5,13 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\GeokretWithDetails;
 use GeoKrety\Model\Move;
 
-abstract class BaseExport {
-    protected \Base $f3;
-
-    public function beforeRoute(\Base $f3) {
-        $this->f3 = $f3;
-    }
-
+abstract class BaseExport extends BaseXML {
     /**
      * @var array The filter to apply
      */
