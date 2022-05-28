@@ -176,15 +176,17 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
             return;
         }
         // Parse datetime
+        $dateTime = false;
         try {
-            $dateTime = Carbon::createFromFormat('YmdHis', $this->f3->get('GET.modifiedsince'), $timezone)->timezone('UTC');
-            $this->modifiedSince = $dateTime;
+            if ($this->f3->exists('GET.modifiedsince')) {
+                $dateTime = Carbon::parse($this->f3->get('GET.modifiedsince'), $timezone)->timezone('UTC');
+                $this->modifiedSince = $dateTime;
+            }
         } catch (InvalidArgumentException $exp) {
-            $dateTime = false;
         }
 
         // Report datetime parsing errors
-        if ($dateTime === false) {
+        if ($dateTime === false or !$dateTime->isValid()) {
             http_response_code(400);
             $eg = Carbon::now($timezone)->subHours(2)->format('YmdHis');
             echo _('The \'modifiedsince\' parameter is missing or incorrect. It should be in YYYYMMDDhhmmss format.');
