@@ -9,6 +9,17 @@ limit_req_zone $req_limit_zone zone=req_limit_api_export2:10m rate=1r/s;
 limit_req_zone $req_limit_zone zone=req_limit_gkt:10m rate=15r/m;
 limit_req_zone $req_limit_zone zone=req_limit_search:1m rate=30r/m;
 
+# api
+limit_req_zone $req_limit_zone zone=one_per_sec:10m rate=1r/s;
+limit_req_zone $req_limit_zone zone=one_every_min:1m rate=1r/m;
+
+proxy_cache_path /var/cache/nginx/geokretyimgcache levels=1:2 keys_zone=geokretyimgcache:1m max_size=3072m inactive=60m;
+proxy_cache_valid 200 10m;
+fastcgi_cache_path /var/cache/nginx/geokretycache levels=1:2 keys_zone=geokretycache:10m max_size=3072m inactive=15m;
+fastcgi_cache_key $host$uri$is_args$args;
+
+
+
 # Restrictions rate limiting
 geo $http_x_forwarded_for $whitelist {
    default 0;
@@ -133,4 +144,100 @@ server {
         try_files $uri /index.php?$query_string;
         limit_req zone=req_limit_search burst=5 delay=2;
     }
+}
+
+
+server {
+
+    listen 80;
+
+    server_name api.${GK_SITE_BASE_SERVER_FQDN};
+
+    #root /var/www/html;
+    #index index.php;
+
+    access_log /dev/stdout timed_combined;
+    error_log  /dev/stderr;
+
+    # Disable all methods besides HEAD, GET, POST, OPTION.
+    if ($request_method !~ ^(GET|POST|OPTION|HEAD)$ ) {
+        return 444;
+    }
+
+    location = /favicon.ico {
+        try_files /favicon.ico =204;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+        return 200 "User-agent: *\nDisallow: /\n";
+    }
+
+
+    ###
+    ### proxy access to some basic lookups
+    ###
+
+    # lookup by GKID or ID
+    location ~ ^/([gG][kK][0-9A-Fa-f]+|[0-9]+)/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/geokrety/$1;
+        #return 301 https://geokrety.org/go2geo/$1;
+    }
+
+    # proxy cache GeoKrety Images
+    location /gkimage {
+        limit_req           zone=one_per_sec  burst=5 nodelay;
+        proxy_pass          https://${GK_SITE_BASE_SERVER_FQDN}/obrazki;
+        proxy_cache         geokretyimgcache;
+        add_header          X-Cache-Status $upstream_cache_status;
+    }
+
+
+    # Some pretty rewrites
+
+    location ~ ^/gk/([gG][kK][0-9A-Fa-f]+|[0-9]+)/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?gkid=$1;
+    }
+
+    location ~ ^/gk/([gG][kK][0-9A-Fa-f]+|[0-9]+)/details/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?gkid=$1&details=1;
+    }
+
+    location ~ ^/gk/details/(\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.*)/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?modifiedsince=$1;
+    }
+
+    location ~ ^/wpt/([a-zA-Z0-9]+)/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?wpt=$1;
+    }
+
+    location ~ ^/wpt/([a-zA-Z0-9]+)/details/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?wpt=$1&details=1;
+    }
+
+    location ~ ^/owner(name)?/([0-9]+)/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?userid=$2;
+    }
+
+    location ~ ^/holder(name)?/([0-9]+)/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?userid=$2&inventory=1;
+    }
+
+
+    ###
+    ### Rules for compatibility (before 2016-07)
+    ###
+
+    # export2
+    location = /export2.php {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?$args;
+    }
+
+    # detailed GK info
+    location = /export-details.php {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?gkid=$arg_gkid&details=1;
+    }
+
 }
