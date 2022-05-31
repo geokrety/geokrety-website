@@ -23,6 +23,7 @@ abstract class BaseExport extends BaseXML {
     protected function loadGeokretyPaginated() {
         // Find GeoKrety
         $geokret = new GeokretWithDetails();
+        $geokret->filter('moves', null, ['order' => 'moved_on_datetime DESC', 'limit' => GK_API_EXPORT_GEOKRET_DETAILS_MOVES_LIMIT]);
         $subset_position = 0;
         do {
             $subset = $geokret->paginate($subset_position, 1000, $this->getFilter(), null, 0);

@@ -303,6 +303,7 @@ class Config extends \Prefab {
         define('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT', getenv('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT') ?: 'geokrety');
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);
         define('GK_API_EXPORT_SURFACE_LIMIT', getenv('GK_API_EXPORT_SURFACE_LIMIT') ?: 252000);
+        define('GK_API_EXPORT_GEOKRET_DETAILS_MOVES_LIMIT', getenv('GK_GKT_SEARCH_DISTANCE_LIMITGK_API_EXPORT_GEOKRET_DETAILS_MOVES_LIMIT') ?: 10);
         define('GK_GKT_SEARCH_DISTANCE_LIMIT', getenv('GK_GKT_SEARCH_DISTANCE_LIMIT') ?: 30); // meters around the original position
 
         // ITEMS LIMITS

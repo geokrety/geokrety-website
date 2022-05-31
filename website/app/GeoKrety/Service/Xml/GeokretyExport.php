@@ -43,7 +43,7 @@ class GeokretyExport extends GeokretyBaseExport {
         $xml->writeElement('datecreated', $geokret->created_on_datetime->format('Y-m-d H:i:s'));
         $xml->writeElement('datecreated_Iso8601', $geokret->created_on_datetime->format(DateTime::ATOM));
 
-        $xml->writeElement('distancetravelled', $geokret->distance);
+        $xml->writeElement('distancetraveled', $geokret->distance);
         if (!is_null($geokret->last_position)) {
             $xml->writeElement('state', $geokret->move_type->getLogTypeId());
         }

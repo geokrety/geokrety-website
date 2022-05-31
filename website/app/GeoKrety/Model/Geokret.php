@@ -15,12 +15,15 @@ use GeoKrety\LogType;
  * @property string url
  * @property string|null mission
  * @property int|User|null owner
+ * @property string|null owner_username
  * @property int distance
  * @property int caches_count
  * @property int pictures_count
+ * @property Move[]|null moves
  * @property int|Move|null last_position
  * @property int|Move|null last_log
  * @property int|User|null holder
+ * @property string|null holder_username
  * @property int|Picture|null avatar
  * @property DateTime created_on_datetime
  * @property DateTime updated_on_datetime

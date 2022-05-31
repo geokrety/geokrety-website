@@ -14,7 +14,7 @@ use GeoKrety\Service\HTMLPurifier;
  * @property string content
  * @property DateTime created_on_datetime
  * @property DateTime updated_on_datetime
- * @property int move_type
+ * @property int type
  */
 class MoveComment extends Base {
     use \Validation\Traits\CortexTrait;
