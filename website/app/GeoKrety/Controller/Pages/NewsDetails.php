@@ -29,8 +29,9 @@ class NewsDetails extends Base {
         if ($f3->get('SESSION.CURRENT_USER')) {
             $subscription = $this->loadSubscription($f3);
             $subscription->touch('last_read_datetime');
-            $subscription->save();
-            if ($f3->get('ERROR')) {
+            try {
+                $subscription->save();
+            } catch (\Exception $e) {
                 \Flash::instance()->addMessage(_('Failed to record read datetime.'), 'danger');
             }
             Smarty::assign('news_last_read_datetime', $subscription->last_read_datetime);

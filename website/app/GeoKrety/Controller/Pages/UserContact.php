@@ -63,19 +63,19 @@ class UserContact extends Base {
         $this->checkCaptcha();
 
         if ($mail->validate()) {
-            $mail->save();
-
-            if ($f3->get('ERROR')) {
+            try {
+                $mail->save();
+            } catch (\Exception $e) {
                 \Flash::instance()->addMessage(_('Failed to save the mail.'), 'danger');
                 $this->get($f3);
                 exit();
-            } else {
-                $mail->load(['_id = ?', $mail->getMapper()->get('_id')]);
-                $smtp = new EmailUserContact();
-                $smtp->sendUserMessage($mail);
-                \Sugar\Event::instance()->emit('contact.created', $mail);
-                \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to_user->username), 'success');
             }
+
+            $mail->load(['_id = ?', $mail->getMapper()->get('_id')]);
+            $smtp = new EmailUserContact();
+            $smtp->sendUserMessage($mail);
+            \Sugar\Event::instance()->emit('contact.created', $mail);
+            \Flash::instance()->addMessage(sprintf(_('Your message to %s has been sent.'), $mail->to_user->username), 'success');
         }
 
         $f3->reroute($this->getPostRedirectUrl());

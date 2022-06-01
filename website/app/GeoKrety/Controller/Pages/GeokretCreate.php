@@ -54,7 +54,13 @@ class GeokretCreate extends Base {
         $f3->set('COOKIE.default_label_template', strval($this->geokret->label_template->id));
 
         if ($this->geokret->validate()) {
-            $this->geokret->save();
+            try {
+                $this->geokret->save();
+            } catch (\Exception $e) {
+                \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
+                $this->get($f3);
+                exit();
+            }
 
             if ($this->currentUser->hasHomeCoordinates() && filter_var($f3->get('POST.log_at_home'), FILTER_VALIDATE_BOOLEAN)) {
                 $move = new Move();
@@ -67,26 +73,29 @@ class GeokretCreate extends Base {
                 $move->comment = _('Born here');
                 $move->app = GK_APP_NAME;
                 $move->app_ver = GK_APP_VERSION;
-                if ($move->validate()) {
+                if (!$move->validate()) {
+                    $this->create_initial_move_error($f3);
+                }
+                try {
                     $move->save();
-                } else {
-                    \Flash::instance()->addMessage(_('Failed to create the GeoKret initial move.'), 'danger');
-                    $f3->get('DB')->rollback();
-                    $this->geokret->resetFields(['gkid']);  // https://github.com/ikkez/f3-cortex/issues/90
-                    $this->get($f3);
-                    exit();
+                } catch (\Exception $e) {
+                    $this->create_initial_move_error($f3);
                 }
             }
             $f3->get('DB')->commit();
 
-            if ($f3->get('ERROR')) {
-                \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
-            } else {
-                \Flash::instance()->addMessage(sprintf(_('Your GeoKret has been created. You may now wish to <a href="%s">print</a> it a great label…'), $f3->alias('geokret_label', '@gkid='.$this->geokret->gkid)), 'success');
-                $f3->reroute('@geokret_details(@gkid='.$this->geokret->gkid.')');
-            }
+            \Flash::instance()->addMessage(sprintf(_('Your GeoKret has been created. You may now wish to <a href="%s">print</a> it a great label…'), $f3->alias('geokret_label', '@gkid='.$this->geokret->gkid)), 'success');
+            $f3->reroute('@geokret_details(@gkid='.$this->geokret->gkid.')');
         }
 
         $this->get($f3);
+    }
+
+    private function create_initial_move_error(\Base $f3): void {
+        \Flash::instance()->addMessage(_('Failed to create the GeoKret initial move.'), 'danger');
+        $f3->get('DB')->rollback();
+        $this->geokret->resetFields(['gkid']);  // https://github.com/ikkez/f3-cortex/issues/90
+        $this->get($f3);
+        exit();
     }
 }

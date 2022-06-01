@@ -77,11 +77,11 @@ class PasswordRecoveryChange extends Base {
             $this->get($f3);
             exit();
         }
-        $token->save();
-        Event::instance()->emit('password.token.used', $token);
-
-        // Check for eventual error
-        if ($f3->get('ERROR')) {
+        try {
+            $token->save();
+            Event::instance()->emit('password.token.used', $token);
+        } catch (\Exception $e) {
+            $f3->get('DB')->rollback();
             Flash::instance()->addMessage(_('Unexpected error occurred.'), 'danger');
             $this->get($f3);
             exit();

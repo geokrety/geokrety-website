@@ -22,18 +22,17 @@ class NewsSubscription extends Base {
         $this->checkCsrf('subscription');
         $subscription = $this->loadSubscription($f3);
         $subscription->subscribed = abs((int) $subscription->subscribed - 1);
-        $subscription->save();
-
-        if ($f3->get('ERROR')) {
+        try {
+            $subscription->save();
+            if ($subscription->subscribed) {
+                \Sugar\Event::instance()->emit('news.subscribed', $subscription->news);
+                \Flash::instance()->addMessage(_('You will now receive updates on new comments.'), 'success');
+            } else {
+                \Sugar\Event::instance()->emit('news.unsubscribed', $subscription->news);
+                \Flash::instance()->addMessage(_('You will not receive updates anymore.'), 'success');
+            }
+        } catch (\Exception $e) {
             \Flash::instance()->addMessage(_('Failed to update your subscriptions preferences.'), 'danger');
-        }
-
-        if ($subscription->subscribed) {
-            \Sugar\Event::instance()->emit('news.subscribed', $subscription->news);
-            \Flash::instance()->addMessage(_('You will now receive updates on new comments.'), 'success');
-        } else {
-            \Sugar\Event::instance()->emit('news.unsubscribed', $subscription->news);
-            \Flash::instance()->addMessage(_('You will not receive updates anymore.'), 'success');
         }
         $f3->reroute('@news_details', 'newsid='.$f3->get('PARAMS.newsid'));
     }

@@ -61,8 +61,9 @@ abstract class AbstractPictureUpload extends Base {
             exit();
         }
 
-        $picture->save();
-        if ($f3->get('ERROR')) {
+        try {
+            $picture->save();
+        } catch (\Exception $e) {
             $f3->get('DB')->rollback();
             http_response_code(400);
             $response = [

@@ -13,9 +13,6 @@ use GeoKrety\Service\DistanceFormatter;
 abstract class PrizeAwarderBase {
     use Script;
 
-    /**
-     * @throws \Exception
-     */
     public function process(Base $f3) {
         $this->console_writer->setPattern('Awarding badge:"%s" user:%6d:%-25s rank:%3d for %5d moves');
         $this->_pre_check($f3);
@@ -39,9 +36,6 @@ abstract class PrizeAwarderBase {
 
     abstract protected function _process(Base $f3);
 
-    /**
-     * @throws \Exception
-     */
     protected function award(array $result, Awards $awardBase, string $description, int $year, int $rank) {
         $award = new AwardsWon();
         $award->holder = $result['user_id'];

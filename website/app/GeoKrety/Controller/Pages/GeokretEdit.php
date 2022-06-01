@@ -17,13 +17,12 @@ class GeokretEdit extends Base {
         $geokret->copyFrom('POST');
 
         if ($geokret->validate()) {
-            $geokret->save();
-
-            if ($f3->get('ERROR')) {
-                \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
-            } else {
+            try {
+                $geokret->save();
                 \Flash::instance()->addMessage(_('Your GeoKret has been updated.'), 'success');
                 $f3->reroute('@geokret_details(@gkid='.$geokret->gkid.')');
+            } catch (\Exception $e) {
+                \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
             }
         }
 

@@ -81,8 +81,6 @@ trait Script {
 
     /**
      * Process end actions.
-     *
-     * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     protected function script_end(?int $exit = 0) {
         if ($this->db->inTransaction()) {

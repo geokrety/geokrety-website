@@ -65,14 +65,10 @@ class GeokretClaim extends Base {
         if ($ownerCode->validate() && $ownerCode->geokret->validate() && $move->validate()) {
             $ownerCode->save();
             $ownerCode->geokret->save();
-            // Reload OwnerCode so all linked objects are up to date
+            // Reload OwnerCode so all linked objects are up-to-date
             $ownerCode->load(['id = ?', $ownerCode->id]);
-            $move->save();
-
-            if ($f3->get('ERROR')) {
-                Flash::instance()->addMessage(_('Something went wrong while registering the adoption.'), 'danger');
-                $f3->get('DB')->rollback();
-            } else {
+            try {
+                $move->save();
                 $f3->get('DB')->commit();
                 Flash::instance()->addMessage(sprintf('🎉 '._('Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
                 $f3->reroute('@geokret_details(@gkid='.$ownerCode->geokret->gkid.')', false, false);
@@ -91,6 +87,9 @@ class GeokretClaim extends Base {
                 $smtp->sendClaimedNotification($ownerCode->geokret, $oldOwner);
 
                 return;
+            } catch (\Exception $e) {
+                $f3->get('DB')->rollback();
+                Flash::instance()->addMessage(_('Something went wrong while registering the adoption.'), 'danger');
             }
         }
 

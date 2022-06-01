@@ -33,13 +33,12 @@ class GeokretOfferForAdoption extends Base {
         $ownerCode->geokret = $this->geokret;
 
         if ($ownerCode->validate()) {
-            $ownerCode->save();
-
-            if ($f3->get('ERROR')) {
-                \Flash::instance()->addMessage(_('Failed to create a new Owner Code.'), 'danger');
-            } else {
+            try {
+                $ownerCode->save();
                 \Sugar\Event::instance()->emit('geokret.owner_code.created', $ownerCode);
                 \Flash::instance()->addMessage(sprintf(_('The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret.'), $ownerCode->token, $ownerCode->geokret->tracking_code), 'success');
+            } catch (\Exception $e) {
+                \Flash::instance()->addMessage(_('Failed to create a new Owner Code.'), 'danger');
             }
         }
 

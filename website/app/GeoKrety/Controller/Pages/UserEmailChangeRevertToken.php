@@ -52,10 +52,11 @@ class UserEmailChangeRevertToken extends Base {
             exit();
         }
 
-        $this->token->user->save();
-        $this->token->save();
-
-        if ($f3->get('ERROR')) {
+        try {
+            $this->token->user->save();
+            $this->token->save();
+        } catch (\Exception $e) {
+            $f3->get('DB')->rollback();
             Flash::instance()->addMessage(_('Something went wrong, operation aborted.'), 'danger');
             $this->get($f3);
             exit();
