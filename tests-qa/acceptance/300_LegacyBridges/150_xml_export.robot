@@ -70,8 +70,12 @@ Validate XML - structure
     ${datecreated} =                      Get Element Text            ${first_gk} 	  datecreated
     ${datecreated_Iso8601} =              Get Element Text            ${first_gk} 	  datecreated_Iso8601
 
+    # legacy bug compatibility
     ${distancetravelled} =                Get Element 	              ${first_gk} 	  distancetravelled
     XML.Element Text Should Be            ${distancetravelled}        0
+
+    ${distancetraveled} =                Get Element 	                ${first_gk} 	  distancetraveled
+    XML.Element Text Should Be            ${distancetraveled}         0
 
     ${state} =                            Get Element 	              ${first_gk} 	  state
     XML.Element Text Should Be            ${state}                    0
