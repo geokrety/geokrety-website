@@ -50,7 +50,7 @@ class DatabaseReset extends Base {
             $db->exec(sprintf('ALTER SEQUENCE "%s" RESTART WITH 1', $table));
         }
         foreach (self::MATERIALIZED_VIEWS as $view) {
-            $db->exec(sprintf('REFRESH MATERIALIZED VIEW CONCURRENTLY %s', $view));
+            $db->exec(sprintf('REFRESH MATERIALIZED VIEW %s', $view));
         }
         echo 'OK';
     }
