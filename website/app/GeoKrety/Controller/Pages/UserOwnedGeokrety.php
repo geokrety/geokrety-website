@@ -3,24 +3,23 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
-use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
 use UserLoader;
 
-class UserOwnedGeokrety extends Base {
+class UserOwnedGeokrety extends BaseDatatableGeokrety {
     use UserLoader;
 
-    public function get($f3) {
-        // Load owned GeoKrety
+    public function get() {
         $geokret = new Geokret();
-        $filter = ['owner = ?', $this->user->id];
-        $option = ['order' => 'updated_on_datetime DESC'];
-        $subset = $geokret->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_USER_OWNED_GEOKRETY, $filter, $option);
-        Smarty::assign('geokrety', $subset);
-        // Paginate
-        $pages = new Pagination($subset['total'], $subset['limit']);
-        Smarty::assign('pg', $pages);
-
+        Smarty::assign('geokrety_count', $geokret->count($this->getFilter()));
         Smarty::render('pages/user_owned_geokrety.tpl');
+    }
+
+    protected function getFilter(): array {
+        return ['owner = ?', $this->user->id];
+    }
+
+    protected function getTemplate(): string {
+        return 'elements/geokrety_as_list_user_owned_geokrety.tpl';
     }
 }

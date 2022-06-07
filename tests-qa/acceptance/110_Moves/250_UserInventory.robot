@@ -12,6 +12,7 @@ Suite Setup     Seed
 
 Moves Should Be Shown On User Inventory Page
     Go To Url                               ${PAGE_USER_INVENTORY_URL}              userid=${USER_1.id}
+    Wait Until Page Contains Element        ${USER_INVENTORY_TABLE}/tbody/tr
     Element Count Should Be                 ${USER_INVENTORY_TABLE}/tbody/tr        1
     Check GeoKrety Inventory                ${1}    ${GEOKRETY_1}    ${USER_2}      ${MOVE_6}    last_mover=${USER_1}     distance=28    caches=3
 

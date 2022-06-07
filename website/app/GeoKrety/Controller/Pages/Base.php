@@ -36,6 +36,7 @@ abstract class Base {
 
         // Load supported languages
         Smarty::assign('languages', LanguageService::getSupportedLanguages(true));
+        Smarty::assign('datatable_language_url', LanguageService::getDatatableCurrentLanguageUrl());
 
         // Load current user
         $this->loadCurrentUser();

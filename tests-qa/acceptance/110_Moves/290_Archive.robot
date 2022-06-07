@@ -242,6 +242,7 @@ Archived GeoKrety Have Archive Icon In Owned Page
     Sign In ${USER_1.name} Fast
 
     Go To Url                                       ${PAGE_USER_OWNED_GEOKRETY_URL}           userid=${MOVE_2.author}
+    Wait Until Page Contains Element                ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr
     Element Count Should Be                         ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr     1
     ${img_src} =    Get Element Attribute           ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr[1]/td[1]/img    src
     ${img} =        Fetch From Right                ${img_src}    /
@@ -250,6 +251,7 @@ Archived GeoKrety Have Archive Icon In Owned Page
     Archive GeoKret                                 ${GEOKRETY_1}    ${USER_1}
 
     Go To Url                                       ${PAGE_USER_OWNED_GEOKRETY_URL}           userid=${MOVE_2.author}
+    Wait Until Page Contains Element                ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr
     Element Count Should Be                         ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr     1
     ${img_src} =    Get Element Attribute           ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr[1]/td[1]/img    src
     ${img} =        Fetch From Right                ${img_src}    /

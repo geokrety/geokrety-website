@@ -11,6 +11,7 @@ Suite Setup     Seed
 
 GeoKrety Should Be Shown On User Owned GeoKrety Page
     Go To Url                               ${PAGE_USER_OWNED_GEOKRETY_URL}             userid=${USER_2.id}
+    Wait Until Page Contains Element        ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr
     Element Count Should Be                 ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr       1
     Check GeoKrety Owned                    ${1}    ${GEOKRETY_1}    ${MOVE_6}          last_mover=${USER_1}     distance=28    caches=3
 

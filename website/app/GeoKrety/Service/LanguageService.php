@@ -17,6 +17,11 @@ class LanguageService extends \Prefab {
         'se', 'nn', 'pt', 'zh', 'ro', 'sk',
         'sq', 'sr', 'sv', 'th', 'tr', 'uk',
     ];
+    public const DATATABLES_MAPPING = [
+        'en' => 'en-GB', 'fr' => 'fr-FR', 'de' => 'de-DE', 'nl' => 'nl-NL',
+        'it' => 'it-IT', 'nb' => 'no-NB', 'se' => 'sv-SE', 'pt' => 'pt-PT',
+        'sv' => 'sv-SE',
+    ];
     public const SUPPORTED_LANGUAGES_LOCAL_NAME = [
         'en' => 'English',
         'bg' => 'Български',
@@ -125,5 +130,18 @@ class LanguageService extends \Prefab {
     public static function restoreLanguageToCurrentChosen() {
         \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[\Multilang::instance()->current]);
         \Carbon\Carbon::setLocale(\Multilang::instance()->current);
+    }
+
+    public static function getDatatableCurrentLanguage(): string {
+        $current = \Multilang::instance()->current;
+        if (array_key_exists($current, self::DATATABLES_MAPPING)) {
+            return self::DATATABLES_MAPPING[$current];
+        }
+
+        return $current;
+    }
+
+    public static function getDatatableCurrentLanguageUrl(): string {
+        return sprintf(GK_CDN_DATATABLE_I18N, self::getDatatableCurrentLanguage());
     }
 }

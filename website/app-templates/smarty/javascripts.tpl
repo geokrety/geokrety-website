@@ -16,7 +16,7 @@
 <script type="text/javascript">
     Dropzone.autoDiscover = false;
     (function($) {
-        $( document ).ready( function () {
+        $(document).ready(function() {
 
 {include file='js/modal.tpl.js'}
 {include file='js/maxlenght.tpl.js'}

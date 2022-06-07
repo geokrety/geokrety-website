@@ -1,5 +1,8 @@
+{if $geokrety.subset}
+{foreach from=$geokrety.subset item=geokret}
 <tr class="{if $geokret->missing}danger{/if}">
     <td>
+        <span class="hidden">{$geokret->gkid}</span>
         {$geokret|posicon nofilter}
     </td>
     <td>
@@ -34,3 +37,5 @@
         {/if}
     </td>
 </tr>
+{/foreach}
+{/if}

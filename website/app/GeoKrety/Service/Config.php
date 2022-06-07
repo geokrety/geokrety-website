@@ -191,13 +191,13 @@ class Config extends \Prefab {
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
         define('GK_SERVICE_GC_SEARCH_NEAREST_URL', getenv('GK_SERVICE_GC_SEARCH_NEAREST_URL') ?: 'https://www.geocaching.com/seek/nearest.aspx?origin_lat=%f&origin_long=%f&dist=1');
 
-        //// Waypoint services
-        //define('OC_PL', 'OC_PL');
-        //define('OC_DE', 'OC_DE');
-        //define('OC_UK', 'OC_UK');
-        //define('OC_US', 'OC_US');
-        //define('OC_NL', 'OC_NL');
-        //define('OC_RO', 'OC_RO');
+        // // Waypoint services
+        // define('OC_PL', 'OC_PL');
+        // define('OC_DE', 'OC_DE');
+        // define('OC_UK', 'OC_UK');
+        // define('OC_US', 'OC_US');
+        // define('OC_NL', 'OC_NL');
+        // define('OC_RO', 'OC_RO');
 
         define('GK_WAYPOINT_SYNC_SEND_WAYPOINT_ERRORS', getenv('GK_WAYPOINT_SYNC_SEND_WAYPOINT_ERRORS') ?: false);
 
@@ -235,7 +235,7 @@ class Config extends \Prefab {
         define('GK_OKAPI_CONSUMER_KEY_OC_RO', getenv('GK_OKAPI_CONSUMER_KEY_OC_RO') ?: null);
 
         define('GK_OKAPI_PARTNERS', [
-            //'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_WAYPOINT_SERVICE_URL_OC_DE],
+            // 'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_WAYPOINT_SERVICE_URL_OC_DE],
             'OC_PL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_PL, 'url' => GK_WAYPOINT_SERVICE_URL_OC_PL],
             'OC_UK' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_UK, 'url' => GK_WAYPOINT_SERVICE_URL_OC_UK],
             'OC_US' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_US, 'url' => GK_WAYPOINT_SERVICE_URL_OC_US],
@@ -415,6 +415,10 @@ class Config extends \Prefab {
         define('GK_CDN_ZXCVBN_JS', getenv('GK_CDN_ZXCVBN_JS') ?: GK_CDN_LIBRARIES_URL.'/zxcvbn/4.4.2/zxcvbn.min.js');
         define('GK_CDN_STRENGTHIFY_JS', getenv('GK_CDN_STRENGTHIFY_JS') ?: GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/jquery.strengthify.min.js');
         define('GK_CDN_STRENGTHIFY_CSS', getenv('GK_CDN_STRENGTHIFY_CSS') ?: GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/strengthify.min.css');
+
+        define('GK_CDN_DATATABLE_JS', getenv('GK_CDN_DATATABLE_JS') ?: GK_CDN_LIBRARIES_URL.'/datatables/1.12.1/datatables.js');
+        define('GK_CDN_DATATABLE_CSS', getenv('GK_CDN_DATATABLE_CSS') ?: GK_CDN_LIBRARIES_URL.'/datatables/1.12.1/datatables.css');
+        define('GK_CDN_DATATABLE_I18N', getenv('GK_CDN_DATATABLE_I18N') ?: GK_CDN_LIBRARIES_URL.'/datatables/1.12.1/i18n/%s.json');
 
         define('GK_CDN_DROPZONE_JS', getenv('GK_CDN_DROPZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/dropzone/5.5.1/dropzone.js');
 
