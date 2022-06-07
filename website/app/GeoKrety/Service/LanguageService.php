@@ -2,6 +2,10 @@
 
 namespace GeoKrety\Service;
 
+// To get translation percentages
+// https://github.com/crowdin/crowdin-api-client-php
+// https://support.crowdin.com/api/v2/#operation/api.projects.languages.files.progress.getMany
+
 /**
  * LanguageService : manage languages.
  *
