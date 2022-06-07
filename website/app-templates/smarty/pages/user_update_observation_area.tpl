@@ -2,8 +2,8 @@
 
 {block name=title}{t}Define your observation area{/t}{/block}
 
-{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
-{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS) && ''}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS) && ''}
 
 {block name=content}
 <div class="panel panel-default">

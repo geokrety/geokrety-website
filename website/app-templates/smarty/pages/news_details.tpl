@@ -2,8 +2,8 @@
 
 {block name=title}{t title=$news->title}News: %1{/t}{/block}
 
-{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
-{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
+{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL) && ''}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL) && ''}
 
 {block name=content}
 {include 'elements/news.tpl' item=$news}

@@ -2,14 +2,14 @@
 
 {block name=title}{t}Log a GeoKret{/t}{/block}
 
-{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
-{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
-{\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS)}
-{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
-{\Assets::instance()->addJs(GK_CDN_LATINIZE_JS)}
-{\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS)}
-{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
-{\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS)}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS) && ''}
+{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL) && ''}
+{\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS) && ''}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS) && ''}
+{\Assets::instance()->addJs(GK_CDN_LATINIZE_JS) && ''}
+{\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS) && ''}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL) && ''}
+{\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS) && ''}
 {include file='macros/recaptcha.tpl'}
 
 {block name=content}

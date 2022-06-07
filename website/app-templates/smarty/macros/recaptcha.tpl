@@ -1,4 +1,4 @@
-{if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL)}{/if}
+{if GK_GOOGLE_RECAPTCHA_JS_URL}{\Assets::instance()->addJs(GK_GOOGLE_RECAPTCHA_JS_URL) && ''}{/if}
 {function recaptcha class="form-group"}
     {if GK_GOOGLE_RECAPTCHA_PUBLIC_KEY}
         <hr>

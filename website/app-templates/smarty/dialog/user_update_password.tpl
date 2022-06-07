@@ -1,6 +1,6 @@
 
-{\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS)}
-{\Assets::instance()->addJs(GK_CDN_STRENGTHIFY_JS)}
+{\Assets::instance()->addCss(GK_CDN_STRENGTHIFY_CSS) && ''}
+{\Assets::instance()->addJs(GK_CDN_STRENGTHIFY_JS) && ''}
 
 {block name=modal_content}
 <div class="modal-header alert-info">

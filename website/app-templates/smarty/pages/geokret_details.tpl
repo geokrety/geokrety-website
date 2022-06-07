@@ -2,10 +2,10 @@
 
 {block name=title}{$geokret->gkid} - {$geokret->name}{/block}
 
-{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS)}
-{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL)}
-{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS)}
-{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL)}
+{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS) && ''}
+{\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL) && ''}
+{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS) && ''}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL) && ''}
 {include file='macros/recaptcha.tpl'}
 
 {block name=content}

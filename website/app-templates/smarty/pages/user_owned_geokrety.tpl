@@ -2,6 +2,9 @@
 
 {block name=title}🧺 {t}Owned GeoKrety{/t}{/block}
 
+{\Assets::instance()->addCss(GK_CDN_DATATABLE_CSS) && ''}
+{\Assets::instance()->addJs(GK_CDN_DATATABLE_JS) && ''}
+
 {block name=content}
 {include file='macros/pagination.tpl'}
 <a class="anchor" id="owned"></a>

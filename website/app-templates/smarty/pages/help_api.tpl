@@ -10,10 +10,10 @@
 
 {block name=title}{t}Help API{/t}{/block}
 
-{\Assets::instance()->addCss(GK_CDN_LIBRARIES_PRISM_CSS_URL)}
-{\Assets::instance()->addJs(GK_CDN_LIBRARIES_PRISM_JS_URL)}
-{\Assets::instance()->addJs(GK_CDN_LIBRARIES_PRISM_PHP_JS_URL)}
-{\Assets::instance()->addJs(GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL)}
+{\Assets::instance()->addCss(GK_CDN_LIBRARIES_PRISM_CSS_URL) && ''}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_PRISM_JS_URL) && ''}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_PRISM_PHP_JS_URL) && ''}
+{\Assets::instance()->addJs(GK_CDN_LIBRARIES_MARKUP_TEMPLATING_JS_URL) && ''}
 
 {block name=content}
 <ol class="breadcrumb">

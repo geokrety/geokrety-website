@@ -4,12 +4,12 @@
     <title>GeoKrety: {block name=title}{/block}</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_CSS)}
-    {\Assets::instance()->addCss(GK_CDN_FONT_AWESOME_CSS)}
-    {\Assets::instance()->addCss(GK_CDN_FLAG_ICON_CSS)}
-    {\Assets::instance()->addCss(GK_CDN_LIBRARIES_PARSLEY_CSS_URL)}
-    {\Assets::instance()->addCss(GK_CDN_MAGNIFIC_POPUP_CSS)}
-    {\Assets::instance()->addCss('css/app.scss')}
+    {\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_CSS) && ''}
+    {\Assets::instance()->addCss(GK_CDN_FONT_AWESOME_CSS) && ''}
+    {\Assets::instance()->addCss(GK_CDN_FLAG_ICON_CSS) && ''}
+    {\Assets::instance()->addCss(GK_CDN_LIBRARIES_PARSLEY_CSS_URL) && ''}
+    {\Assets::instance()->addCss(GK_CDN_MAGNIFIC_POPUP_CSS) && ''}
+    {\Assets::instance()->addCss('css/app.scss') && ''}
     {\Assets::instance()->renderGroup(\Assets::instance()->getAssets('head')) nofilter}
 
     <link rel="apple-touch-icon" sizes="180x180" href="{GK_CDN_IMAGES_URL}/favicon/apple-touch-icon.png" />
