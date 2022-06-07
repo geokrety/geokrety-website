@@ -3,7 +3,7 @@
 namespace GeoKrety\Service;
 
 class Smarty extends \Prefab {
-    private \SmartyBC $smarty;
+    private \Smarty $smarty;
 
     public static function getSmarty() {
         return Smarty::instance()->smarty;
@@ -19,6 +19,13 @@ class Smarty extends \Prefab {
         $smarty->display($template);
     }
 
+    /**
+     * @param false|string $template
+     *
+     * @return string
+     *
+     * @throws \SmartyException
+     */
     public static function fetch(string $template) {
         $smarty = self::getSmarty();
 
@@ -26,7 +33,7 @@ class Smarty extends \Prefab {
     }
 
     public function __construct() {
-        $smarty = new \SmartyBC();
+        $smarty = new \Smarty();
         $smarty->escape_html = true;
         $smarty->setTemplateDir([
             'main' => GK_SMARTY_TEMPLATES_DIR,
@@ -40,7 +47,7 @@ class Smarty extends \Prefab {
         $smarty->assign('javascript', []); // Store dynamic javascript filename to load
         $smarty->assign('isSuperUser', false);
         $smarty->registerClass('Carbon', '\Carbon\Carbon');
-        $smarty->caching = \SmartyBC::CACHING_OFF; // caching is off
+        $smarty->caching = \Smarty::CACHING_OFF; // caching is off
 
         $this->smarty = $smarty;
     }
