@@ -136,8 +136,9 @@ services:
       MINIO_ROOT_PASSWORD: secret_key
       CONSOLE_SECURE_TLS_REDIRECT: "off"
       MINIO_BROWSER_REDIRECT_URL: "http://localhost:3004"
-    tmpfs:
-      - /data
+#    # tmpfs is not working anymore on Minio :(
+#    tmpfs:
+#      - /data
     ports:
       - "3003:9000"
       - "3004:9001"
