@@ -14,5 +14,17 @@ function smarty_modifier_alias($string, $params = null, $query = null, $fragment
         $fragment = '#'.$fragment;
     }
 
-    return GK_SITE_BASE_SERVER_URL.\Base::instance()->alias($string, $params, $query).$fragment;
+    $f3 = \Base::instance();
+    // Workaround for https://github.com/bcosca/fatfree-core/issues/345
+    if (!$f3->exists('__WORKAROUND_1__')) {
+        foreach ($f3->get('PARAMS') as $k => $v) {
+            if ($k === 0) {
+                continue;
+            }
+            $f3->set("PARAMS.$k", urlencode($v));
+        }
+        $f3->set('__WORKAROUND_1__', true);
+    }
+
+    return GK_SITE_BASE_SERVER_URL.$f3->alias($string, $params, $query).$fragment;
 }
