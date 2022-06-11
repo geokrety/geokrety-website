@@ -30,7 +30,7 @@ class Home extends Base {
         // Load latest moves
         $move = new Move();
         $filter = ['created_on_datetime >= now() - cast(? as interval)', '10'.' DAY'];
-        $moves = $move->find($filter, ['order' => 'moved_on_datetime DESC', 'limit' => GK_HOME_COUNT_MOVES], GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY);
+        $moves['subset'] = $move->find($filter, ['order' => 'moved_on_datetime DESC', 'limit' => GK_HOME_COUNT_MOVES], GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY);
         Smarty::assign('moves', $moves);
 
         // Load latest GeoKrety

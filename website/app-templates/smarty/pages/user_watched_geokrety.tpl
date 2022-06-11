@@ -5,7 +5,6 @@
 {\Assets::instance()->addCss(GK_CDN_DATATABLE_CSS) && ''}
 {\Assets::instance()->addJs(GK_CDN_DATATABLE_JS) && ''}
 
-{include file='macros/pagination.tpl'}
 {block name=content}
 <a class="anchor" id="watched"></a>
 

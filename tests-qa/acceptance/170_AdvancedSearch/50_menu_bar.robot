@@ -29,6 +29,7 @@ Default Search Is By GeoKrety
     Click Button                            ${SEARCH_NAVBAR_SUBMIT}
     Location With Param Should Be           ${PAGE_SEARCH_BY_GEOKRETY_URL}              geokret=${GEOKRETY_1.name}
 
+    Wait Until Page Contains Element        ${SEARCH_BY_GEOKRETY_TABLE}/tbody/tr
     Element Count Should Be                 ${SEARCH_BY_GEOKRETY_TABLE}/tbody/tr        1
     Check Search By GeoKrety                ${1}    ${GEOKRETY_1}
 
@@ -83,4 +84,5 @@ Preselect Type Is Effectivelly Used
     Click Element                           ${SEARCH_NAVBAR_INPUT}
     Input Text                              ${SEARCH_NAVBAR_INPUT}                      ${search}
     Click Button                            ${SEARCH_NAVBAR_SUBMIT}
+    Wait Until Page Contains Element        ${responseTable}/tbody/tr
     Element Count Should Be                 ${responseTable}/tbody/tr                   1

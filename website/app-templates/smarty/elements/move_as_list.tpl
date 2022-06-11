@@ -1,3 +1,5 @@
+{if $move.subset}
+{foreach from=$move.subset item=move}
 <tr class="{$move->id}{if $move->geokret->missing}danger{/if}">
     <td>
         {$move|logicon nofilter}
@@ -18,3 +20,5 @@
     </td>
     <td class="text-right">{if $move->move_type && $move->move_type->isCountingKilometers()}{$move->distance|distance}{/if}</td>
 </tr>
+{/foreach}
+{/if}

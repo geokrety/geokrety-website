@@ -2,16 +2,17 @@
 
 {block name=title}🛩️ {t username=$user->username}%1's GeoKrety recent moves{/t}{/block}
 
+{\Assets::instance()->addCss(GK_CDN_DATATABLE_CSS) && ''}
+{\Assets::instance()->addJs(GK_CDN_DATATABLE_JS) && ''}
+
 {block name=content}
-{include file='macros/pagination.tpl'}
 <a class="anchor" id="recent-moves"></a>
 
 <h2>🛩️ {t username=$user->username}%1's GeoKrety recent moves{/t}</h2>
 <div class="row">
     <div class="col-xs-12 col-md-9">
 
-        {if $moves.subset}
-        {call pagination pg=$pg anchor='recent-moves'}
+        {if $moves_count}
         <div class="table-responsive">
             <table id="userOwnedGeoKretyRecentMovesTable" class="table table-striped">
                 <thead>
@@ -24,14 +25,9 @@
                         <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/2caches.png" title="{t}Caches visited count{/t}" /></th>
                     </tr>
                 </thead>
-                <tbody>
-                    {foreach from=$moves.subset item=item}
-                    {include file='elements/move_as_list.tpl' move=$item}
-                    {/foreach}
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
-        {call pagination pg=$pg anchor='recent-moves'}
         {else}
 
         <em>{t escape=no username=$user|userlink}%1's GeoKrety didn't moved yet.{/t}</em>
@@ -44,4 +40,20 @@
     </div>
 </div>
 
+{/block}
+
+{include file='macros/datatable.tpl'}
+{block name=javascript}
+$('#userOwnedGeoKretyRecentMovesTable').dataTable({
+    {call common alias='user_owned_recent_moves'}
+    "order": [[ 0, 'desc' ]],
+    "columns": [
+        { "name": "id" },
+        { "name": "geokret" },
+        { "name": "waypoint" },
+        { "searchable": false, "orderable": false },
+        { "name": "moved_on_datetime" },
+        { "name": "distance" },
+    ],
+});
 {/block}

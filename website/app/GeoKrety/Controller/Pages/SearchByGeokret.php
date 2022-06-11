@@ -3,35 +3,37 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
-use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
 
-class SearchByGeokret extends Base {
+class SearchByGeokret extends BaseDatatableGeokrety {
     public function post(\Base $f3) {
         $f3->copy('POST.geokret', 'PARAMS.geokret');
         $this->get($f3);
     }
 
-    public function get(\Base $f3) {
-        $search_geokrety = $f3->get('PARAMS.geokret');
+    public function get() {
+        $geokret = new Geokret();
+        Smarty::assign('geokrety_count', $geokret->count($this->getFilter()));
+        Smarty::render('pages/search_by_geokret.tpl');
+    }
+
+    protected function getFilter(): array {
+        $search_geokrety = \Base::instance()->get('PARAMS.geokret');
         Smarty::assign('search_geokrety', $search_geokrety);
 
-        $geokret = new Geokret();
         $filter = ['lower(name) like lower(?) OR upper(tracking_code) = upper(?)', sprintf('%%%s%%', $search_geokrety), $search_geokrety];
-        $option = ['order' => 'name ASC'];
 
         $gkid = Geokret::gkid2id($search_geokrety);
         if (is_numeric($gkid)) {
             $filter[0] .= ' OR gkid = ?';
             $filter[] = $gkid;
         }
+        $filter[0] = "($filter[0])"; // Add () as we can mix with datable search
 
-        $subset = $geokret->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_SEARCH_BY_USER, $filter, $option);
-        Smarty::assign('geokrety', $subset);
-        // Paginate
-        $pages = new Pagination($subset['total'], $subset['limit']);
-        Smarty::assign('pg', $pages);
+        return $filter;
+    }
 
-        Smarty::render('pages/search_by_geokret.tpl');
+    protected function getTemplate(): string {
+        return 'elements/geokrety_as_list_user_inventory.tpl';
     }
 }

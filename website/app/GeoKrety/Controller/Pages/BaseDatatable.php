@@ -4,11 +4,8 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 abstract class BaseDatatable extends Base {
-    use UserLoader;
-
     public function asDataTable(\Base $f3) {
         $response = [
             'draw' => (int) $f3->get('GET.draw'),
@@ -24,6 +21,7 @@ abstract class BaseDatatable extends Base {
         $filter = $this->getFilter();
         $this->getHas($object);
         $filter = $this->datatable_build_search($f3, $this->getSearchable(), $filter);
+
         $option = ['order' => $this->datatable_build_order($f3)];
 
         $start = $f3->get('GET.start') / $f3->get('GET.length');

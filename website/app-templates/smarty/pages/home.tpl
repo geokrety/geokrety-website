@@ -44,9 +44,7 @@
           </tr>
         </thead>
         <tbody>
-    {foreach from=$moves item=item}
-    {include file='elements/move_as_list.tpl' move=$item}
-    {/foreach}
+          {include file='elements/move_as_list.tpl' move=$moves}
         </tbody>
       </table>
     </div>
