@@ -56,7 +56,7 @@ abstract class BaseDatatable extends Base {
         if (!ctype_digit($start) or $start < 0) {
             return sprintf($error_str, 'start');
         }
-        if (!ctype_digit($length) or $length < 0 or $length > 25) {
+        if (!ctype_digit($length) or $length < 0 or $length > 100) {
             return sprintf($error_str, 'length');
         }
         if (!is_array($order)) {
