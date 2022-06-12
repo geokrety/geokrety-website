@@ -1,3 +1,10 @@
+## [2.21.1](https://github.com/geokrety/geokrety-website/compare/v2.21.0...v2.21.1) (2022-06-12)
+
+
+### Bug Fixes
+
+* Prevent error in export details ([cb355a6](https://github.com/geokrety/geokrety-website/commit/cb355a66678d0a6041e0be99900a22596dc07a04))
+
 ## [2.21.0](https://github.com/geokrety/geokrety-website/compare/v2.20.2...v2.21.0) (2022-06-12)
 
 
