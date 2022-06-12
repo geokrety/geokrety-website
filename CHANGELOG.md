@@ -1,3 +1,58 @@
+## [2.21.0](https://github.com/geokrety/geokrety-website/compare/v2.20.2...v2.21.0) (2022-06-12)
+
+
+### Features
+
+* Add admin endpoint to see raw prometheus exporter ([d728d22](https://github.com/geokrety/geokrety-website/commit/d728d222bd5b8e7a5c9d241863b331e9da1b2817))
+* Add export2 with details ([2872e36](https://github.com/geokrety/geokrety-website/commit/2872e3606dfc98bf04380ed7e28e45036e731e0d))
+* Add other images to XML export2 details ([5c81ce0](https://github.com/geokrety/geokrety-website/commit/5c81ce0deb42c30e52edd5b906105524e7bc6704)), closes [#611](https://github.com/geokrety/geokrety-website/issues/611)
+* Add rate limit per api call ([9833cc0](https://github.com/geokrety/geokrety-website/commit/9833cc04b87b5579a5248938740e142eaff85ff0))
+* Add support for legacy GKM api endpoints ([8e388ae](https://github.com/geokrety/geokrety-website/commit/8e388ae7237206b291ff04d9f9637f6b83b79063))
+* Allow GeoKrety list ordering ([8151953](https://github.com/geokrety/geokrety-website/commit/8151953a9bb2520d9ab659c487e0e116d9493e5d)), closes [#605](https://github.com/geokrety/geokrety-website/issues/605)
+* Allow more datetime formats in xml exporters ([60b1752](https://github.com/geokrety/geokrety-website/commit/60b1752448322a0091e3ed21abe2305643977fb3))
+* Allow Moves list ordering ([fed6ee2](https://github.com/geokrety/geokrety-website/commit/fed6ee2288f9bf968e80081e3a9b4bcf75c81ad8)), closes [#605](https://github.com/geokrety/geokrety-website/issues/605)
+
+
+### Bug Fixes
+
+* Add an export2 with details example ([209ddb0](https://github.com/geokrety/geokrety-website/commit/209ddb04d6812fb91aa5e931e1da4d4294318a07))
+* Adjust rate limits ([e52c0c0](https://github.com/geokrety/geokrety-website/commit/e52c0c0c702a3a18736e98959a8eae183cae74bf))
+* Allow showing 100 element in datatables ([faba4a9](https://github.com/geokrety/geokrety-website/commit/faba4a9a178227a2e29529f129d6a4ecfc3419f7))
+* Don't refresh materialized concurrently on dev reset ([fbb8b51](https://github.com/geokrety/geokrety-website/commit/fbb8b5156dd0562040cda31d98f7664e510e7e03))
+* Fix export* get inventory ([dfb3e03](https://github.com/geokrety/geokrety-website/commit/dfb3e03f4eece6cca62fd6be8f18a22508d89203))
+* Fix htmlentities breaking change in php 8.1 ([8ef27ba](https://github.com/geokrety/geokrety-website/commit/8ef27bafee2336d6024a07068cce89831b015c04))
+* Fix posting move on legacy endpoint ([b4166b3](https://github.com/geokrety/geokrety-website/commit/b4166b36908a723e436c084c409642eb7732a8d7))
+* Fix some php 8.1 issues ([a50ce04](https://github.com/geokrety/geokrety-website/commit/a50ce04ee532fbb78d6747506c8704e6bae37eac))
+* Leave an xml entry with the legacy typo ([37a14b5](https://github.com/geokrety/geokrety-website/commit/37a14b5b6f5f84a5b0b2c0df13c7d9dd8bbf23b4))
+* Redefine rate limit for export2 endpoint ([74d071e](https://github.com/geokrety/geokrety-website/commit/74d071ea6917fd308be58f104460d1a4ab730d1f))
+* Refresh materialized views during tests ([d71d864](https://github.com/geokrety/geokrety-website/commit/d71d864c22e918ed61cdf425a8b8d50d067100dd))
+* Update some dependencies ([b070d55](https://github.com/geokrety/geokrety-website/commit/b070d55903503ec1250149f9b990836fdc54b4a6))
+* Workaround bcosca/fatfree-core/issues[#345](https://github.com/geokrety/geokrety-website/issues/345) ([05ad4d9](https://github.com/geokrety/geokrety-website/commit/05ad4d9933a73821bfab046f8a6f3bce12d67355))
+
+
+### Performance Improvements
+
+* Greatly improve move save time ([891855a](https://github.com/geokrety/geokrety-website/commit/891855a6338fba8ac247c7cf9779fc897834e16a))
+
+
+### Style
+
+* Add some type hints ([40bce9d](https://github.com/geokrety/geokrety-website/commit/40bce9d0fca526100a10bde62a3284b908184496))
+* Move api endpoints to dedicated file ([aa112bb](https://github.com/geokrety/geokrety-website/commit/aa112bb83927026434b9ceec25c62e85e6ebe96c))
+
+
+### Code Refactoring
+
+* Don't use ERROR from hive ([54862f7](https://github.com/geokrety/geokrety-website/commit/54862f793aa94bd460151c0f8582253774437b0d))
+* Move code into dedicated function ([22718a4](https://github.com/geokrety/geokrety-website/commit/22718a4dd8a29801f28c66ef8e4cc16525b18137))
+
+
+### Chores
+
+* Disable download gk track ([ea16ff0](https://github.com/geokrety/geokrety-website/commit/ea16ff042345be231fb5becd54c1755ff12360c2))
+* Reindent composer.json ([2de86ab](https://github.com/geokrety/geokrety-website/commit/2de86abc04ed188936a38216315c85d07f3c005e))
+* Save some useful links ([bba087f](https://github.com/geokrety/geokrety-website/commit/bba087f95ff46bf6ee16d9df0f1afe108b5b2fa4))
+
 ### [2.20.2](https://github.com/geokrety/geokrety-website/compare/v2.20.1...v2.20.2) (2022-05-25)
 
 
