@@ -1,8 +1,8 @@
 
-limit_req_zone $req_limit_zone zone=standard_one_per_sec:10m rate=1r/s;
+limit_req_zone $req_limit_zone zone=req_limit_standard:10m rate=10r/s;
 limit_req_zone $req_limit_zone zone=req_limit_heavy_load:10m rate=1r/m;
 limit_req_zone $req_limit_zone zone=req_limit_auth:10m rate=5r/m;
-limit_req_zone $req_limit_zone zone=req_limit_validates:10m rate=30r/m;
+limit_req_zone $req_limit_zone zone=req_limit_validates:10m rate=1r/s;
 limit_req_zone $req_limit_zone zone=req_limit_geojson:10m rate=1r/s;
 limit_req_zone $req_limit_zone zone=req_limit_api_export:10m rate=1r/m;
 limit_req_zone $req_limit_zone zone=req_limit_api_export2:10m rate=1r/s;
@@ -81,7 +81,7 @@ server {
     }
 
     location / {
-        limit_req zone=standard_one_per_sec burst=10 delay=5;
+        limit_req zone=req_limit_standard burst=10 delay=5;
         try_files $uri $uri/ /index.php?$query_string;
     }
 
@@ -107,7 +107,7 @@ server {
 
     location ~ "^/.{2}/validate/" {
         try_files $uri /index.php?$query_string;
-        limit_req zone=req_limit_validates burst=2 delay=5;
+        limit_req zone=req_limit_validates burst=7 nodelay;
     }
 
     location ~ "^(/login|/api/v1/login/secid|/registration|/password-recovery|/geokrety/claim)" {
