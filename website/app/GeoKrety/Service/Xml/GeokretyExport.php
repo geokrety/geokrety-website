@@ -110,15 +110,7 @@ class GeokretyExport extends GeokretyBaseExport {
         $xml->writeAttribute('edited', $move->updated_on_datetime->format(DateTime::ATOM));
         $xml->endElement(); // date
 
-        $xml->startElement('user');
-        if (!is_null($move->author)) {
-            $xml->writeAttribute('id', $move->author->id);
-            $xml->writeCdata($move->author->username);
-        } else {
-            $xml->writeAttribute('id', null);
-            $xml->writeCdata($move->username);
-        }
-        $xml->endElement(); // user
+        $this->addUser($move);
 
         $xml->startElement('comment');
         $xml->writeCdata(Markdown::toText($move->comment));

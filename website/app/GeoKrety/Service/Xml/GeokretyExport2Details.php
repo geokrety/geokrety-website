@@ -116,10 +116,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
             $xml->writeAttribute('moved_Iso8601', $move->moved_on_datetime->format(DateTimeInterface::ATOM));
             $xml->endElement(); // date
 
-            $xml->startElement('user');
-            $xml->writeAttribute('id', $move->author->id);
-            $xml->writeCdata($move->author->username);
-            $xml->endElement(); // user
+            $this->addUser($move);
 
             $xml->startElement('application');
             $xml->writeAttribute('name', $move->app);
