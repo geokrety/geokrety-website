@@ -109,6 +109,7 @@ class LegacyRoutes {
             'latNE' => $f3->get('GET.latNE'),
             'secid' => $f3->get('GET.secid'),
             'inventory' => $f3->get('GET.inventory'),
+            'details' => $f3->get('GET.details'),
         ];
         $url_params = $this->_export_query_params($f3, $others);
         $f3->reroute(sprintf('@api_v1_export2?%s', $url_params), $permanent = false, $die = true);

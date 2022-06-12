@@ -13,6 +13,8 @@ class HelpApi extends Base {
 
         // Load specified GeoKrety on production else first two created
         [$geokret, $geokret2] = $this->loadGK(GK_HELP_GEOKRETY_EXAMPLE_LIST);
+        Smarty::assign('gk_example_1', $geokret->gkid());
+        Smarty::assign('gk_example_2', $geokret2->gkid());
 
         // Render ruchy saved
         $xml = new Xml\GeokretyRuchy();
@@ -45,6 +47,12 @@ class HelpApi extends Base {
         $xml->end();
         Smarty::assign('gk_xml_export2', $xml->asXMLPretty());
 
+        // Render export2.php?details=1
+        $xml = new Xml\GeokretyExport2Details();
+        $xml->addGeokret($geokret2);
+        $xml->end();
+        Smarty::assign('gk_xml_export2_details', $xml->asXMLPretty());
+
         // Render ruchy error
         $xml = new \GeoKrety\Service\Xml\Error();
         $xml->addError(_('Wrong secid'));
@@ -57,6 +65,11 @@ class HelpApi extends Base {
         Smarty::render('pages/help_api.tpl');
     }
 
+    /**
+     * @param int[] $gkIds
+     *
+     * @return \GeoKrety\Model\Geokret[]
+     */
     private function loadGK(array $gkIds): array {
         $geokrety = [];
         foreach ($gkIds as $gkid) {

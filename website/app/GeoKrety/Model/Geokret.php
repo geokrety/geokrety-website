@@ -179,7 +179,7 @@ class Geokret extends Base {
         $geokret->save();
     }
 
-    public function gkid(): string {
+    public function gkid(): int {
         return hexdec(substr($this->gkid, 2));
     }
 

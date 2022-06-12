@@ -204,6 +204,11 @@ var_dump($gk);
             </ul>
         </p>
 
+        <h4>Sample output (with details)</h4>
+        <code>{GK_SITE_BASE_SERVER_URL}/export2.php?gkid={$gk_example_1}&details=1</code>
+        <!-- HTML generated using hilite.me -->
+        <pre><code class="language-xml">{$gk_xml_export2_details}</code></pre>
+
         <h3>General purpose swiches</h3>
         <ul>
             <li>
@@ -229,6 +234,9 @@ var_dump($gk);
                 It can be used to show GeoKrety in caches with defined waypoint's prefix; eg
                 to show all GeoKrety in romanian caches (prefix GR), just enter:<br />
                 <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?wpt=GR</pre>
+            </li>
+            <li><code>details</code> - show GeoKrety details, including moves and pictures. (compatible with GeoKretyMap)
+                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?gkid=141&details=1</pre>
             </li>
         </ul>
 
