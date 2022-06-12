@@ -43,4 +43,11 @@ SQL;
         $f3->get('DB')->exec($sql);
         $this->script_end();
     }
+
+    public function refreshSiteStats(Base $f3) {
+        $this->script_start(__METHOD__);
+        $sql = 'SELECT moves_stats_updater();';
+        $f3->get('DB')->exec($sql);
+        $this->script_end();
+    }
 }
