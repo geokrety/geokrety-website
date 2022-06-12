@@ -1,4 +1,5 @@
 *** Settings ***
+Library         DateTime
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/users.resource
@@ -28,9 +29,13 @@ Fill Form Naturally
     Input Text                              ${MOVE_ADDITIONAL_DATA_USERNAME_INPUT}      ${USER_1.name}
     Input Inscrybmde                        \#comment                                   TEST
     Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
-    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
 
+    ${before}=    Get Current Date    result_format=epoch
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
     Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
+    ${after}=       Get Current Date    result_format=epoch
+    Should be True    ${after} - ${before} < 0.5     msg=The total page load time was more than 500ms!
+
 
 Found It Log It From Home Page
     Sign Out Fast
@@ -75,14 +80,6 @@ Check csrf
     Should Contain                          ${body}    CSRF error, please try again.
     Delete All Sessions
 
-
-
-    # TODO Check log on GK page
-    # TODO Check log on Home page
-    # TODO Check user inventory
-    # TODO Check user owned
-    # TODO Check user moves owned
-    # TODO Check user moves
 
 
 *** Keywords ***
