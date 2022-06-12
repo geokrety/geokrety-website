@@ -26,6 +26,7 @@ use GeoKrety\LogType;
  * @property string|null holder_username
  * @property int|Picture|null avatar
  * @property DateTime created_on_datetime
+ * @property Picture[]|null avatars
  * @property DateTime updated_on_datetime
  * @property bool missing
  * @property int|GeokretyType type

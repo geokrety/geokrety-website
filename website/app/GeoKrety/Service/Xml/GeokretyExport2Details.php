@@ -92,6 +92,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
             $xml->writeCdata($geokret->avatar_key);
             $xml->endElement(); // image
         }
+        $this->addPictures($geokret);
 
         $this->addMoves($geokret);
 
