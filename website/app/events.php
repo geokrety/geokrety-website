@@ -15,6 +15,18 @@ function audit(string $event, $newObjectModel) {
 
 // Listen Events
 $events = \Sugar\Event::instance();
+$events->on('rate-limit.success', function (array $context) {
+    // audit('rate-limit.exceeded', $context);
+    Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['success']);
+});
+$events->on('rate-limit.exceeded', function (array $context) {
+    audit('rate-limit.exceeded', $context);
+    Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['exceeded']);
+});
+$events->on('rate-limit.skip', function (array $context) {
+    audit('rate-limit.skip', $context);
+    Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['skip']);
+});
 $events->on('user.created', function (GeoKrety\Model\User $user) {
     audit('user.created', $user);
     \GeoKrety\Service\UserBanner::generate($user);

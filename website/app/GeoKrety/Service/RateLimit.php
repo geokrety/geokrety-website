@@ -5,6 +5,7 @@ namespace GeoKrety\Service;
 use Exception;
 use GeoKrety\Service\Xml\Error;
 use Prefab;
+use Sugar\Event;
 
 /**
  * Exception thrown if a rate limit is reached.
@@ -65,6 +66,13 @@ class RateLimit extends Prefab {
         } catch (StorageException $e) {
             // Let users pass if redis is failing
             // TODO log error, notify admin?
+            Event::instance()->emit('rate-limit.skip', [
+                'name' => $name,
+                'total_user_calls' => '?',
+                'limit' => GK_RATE_LIMITS[$name][0],
+                'period' => GK_RATE_LIMITS[$name][1],
+                ]);
+
             return;
         }
 
@@ -74,7 +82,7 @@ class RateLimit extends Prefab {
         } else {
             $rate_key .= \Base::instance()->get('IP');
         }
-
+        $total_user_calls = 1;
         if (!$redis->exists($rate_key)) {
             $redis->set($rate_key, 1);
             $redis->expire($rate_key, GK_RATE_LIMITS[$name][1]);
@@ -83,9 +91,21 @@ class RateLimit extends Prefab {
             $total_user_calls = $redis->get($rate_key);
             if ($total_user_calls > GK_RATE_LIMITS[$name][0]) {
                 // TODO notify admin?
+                Event::instance()->emit('rate-limit.exceeded', [
+                    'name' => $name,
+                    'total_user_calls' => $total_user_calls,
+                    'limit' => GK_RATE_LIMITS[$name][0],
+                    'period' => GK_RATE_LIMITS[$name][1],
+                    ]);
                 throw new RateLimitExceeded();
             }
         }
+        Event::instance()->emit('rate-limit.success', [
+            'name' => $name,
+            'total_user_calls' => $total_user_calls,
+            'limit' => GK_RATE_LIMITS[$name][0],
+            'period' => GK_RATE_LIMITS[$name][1],
+            ]);
     }
 
     /**
