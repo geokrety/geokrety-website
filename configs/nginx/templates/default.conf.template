@@ -1,3 +1,5 @@
+limit_req_status 429;
+limit_conn_status 429;
 
 limit_req_zone $req_limit_zone zone=req_limit_standard:10m rate=10r/s;
 limit_req_zone $req_limit_zone zone=req_limit_heavy_load:10m rate=1r/m;
