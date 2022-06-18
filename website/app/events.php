@@ -27,6 +27,10 @@ $events->on('rate-limit.skip', function (array $context) {
     audit('rate-limit.skip', $context);
     Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['skip']);
 });
+$events->on('rate-limit.reset', function (array $context) {
+    audit('rate-limit.reset', $context);
+    Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['reset']);
+});
 $events->on('user.created', function (GeoKrety\Model\User $user) {
     audit('user.created', $user);
     \GeoKrety\Service\UserBanner::generate($user);

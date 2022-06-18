@@ -41,18 +41,13 @@
 
 {block user_actions}
 <div class="btn-group" role="group" aria-label="...">
-{*    {if $item->is_locked()}*}
-{*        <button type="button" class="btn btn-warning btn-xs" title="{t}Unlock script{/t}" data-toggle="modal" data-target="#modal" data-type="admin-script-unlock" data-script-id="{$item->id}">*}
-{*            {fa icon="lock"}*}
-{*        </button>*}
-{*        <button type="button" class="btn btn-success btn-xs" title="{t}Ack{/t}" data-toggle="modal" data-target="#modal" data-type="admin-script-ack" data-script-id="{$item->id}" {if $item->is_acked()}disabled{/if}>*}
-{*            {fa icon="check"}*}
-{*        </button>*}
-{*    {/if}*}
+    <button type="button" class="btn btn-warning btn-xs" title="{t}Reset{/t}" data-toggle="modal" data-target="#modal" data-type="admin-rate-limit-reset" data-key="{$key}" data-NAME="{$group}">
+        {fa icon="refresh"}
+    </button>
 </div>
 {/block}
 
 {block name=javascript}
 // Bind modal
-{*{include 'js/dialogs/dialog_admin_script_actions.tpl.js'}*}
+{include 'js/dialogs/dialog_admin_rate_limits_actions.tpl.js'}
 {/block}

@@ -55,6 +55,17 @@ class RateLimit extends Prefab {
     /**
      * @param string      $name Limit name
      * @param string|null $key  User identifier
+     */
+    public static function reset(string $name, string $key) {
+        $redis = Redis::instance();
+        $redis->ensureOpenConnection();
+        $key = sprintf('%s__%s__%s', self::RATE_KEY, $name, $key);
+        $redis->del($key);
+    }
+
+    /**
+     * @param string      $name Limit name
+     * @param string|null $key  User identifier
      *
      * @throws \GeoKrety\Service\RateLimitExceeded
      */

@@ -6,7 +6,7 @@ use GeoKrety\Controller\Base;
 use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\Smarty;
 
-class ApiRateLimits extends Base {
+class RateLimits extends Base {
     public function render_results(\Base $f3) {
         $current = RateLimit::get_rates_limits_usage();
         Smarty::assign('current', $current);
