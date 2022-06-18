@@ -1,3 +1,12 @@
+## [2.22.2](https://github.com/geokrety/geokrety-website/compare/v2.22.1...v2.22.2) (2022-06-18)
+
+
+### Bug Fixes
+
+* Add missing legacy redirect registration route ([e1431f1](https://github.com/geokrety/geokrety-website/commit/e1431f171731135362411ff735ad5bb72c355930))
+* Do not hide php errors on dev ([a50a801](https://github.com/geokrety/geokrety-website/commit/a50a801278d8757cef110250026bec4c754e9c34))
+* xml export header already sent ([ec52f0b](https://github.com/geokrety/geokrety-website/commit/ec52f0b245550734874d9996c5a736c0f7ae9761))
+
 ## [2.22.1](https://github.com/geokrety/geokrety-website/compare/v2.22.0...v2.22.1) (2022-06-18)
 
 
