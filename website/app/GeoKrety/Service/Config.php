@@ -250,6 +250,7 @@ class Config extends \Prefab {
         ]);
 
         // Audit logs
+        define('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS', !GK_IS_PRODUCTION && filter_var(getenv('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS'), FILTER_VALIDATE_BOOLEAN));
         define('GK_AUDIT_LOGS_EXCLUDE_PATH', [
             '/auth',
             '/login',
