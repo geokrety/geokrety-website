@@ -42,7 +42,7 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
             session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage($error['text'] ?: _('Method not allowed.'), 'danger');
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
-        if ($error['code'] === 500) {
+        if ($error['code'] === 500 && !GK_DEBUG) {
             session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage(_('We are sorry, something unexpected happened.'), 'danger');
             $f3->reroute('@home');
         }
