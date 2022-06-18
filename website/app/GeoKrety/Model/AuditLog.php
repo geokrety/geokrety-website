@@ -15,8 +15,9 @@ use DB\SQL\Schema;
 class AuditLog extends Base {
     use \Validation\Traits\CortexTrait;
 
+    /** @var \DB\SQL|string db */
     protected $db = 'DB';
-    protected $table = 'gk_audit_logs';
+    protected $table = 'audit.actions_logs';
 
     protected $fieldConf = [
         'log_datetime' => [
@@ -53,6 +54,11 @@ class AuditLog extends Base {
             $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
             $self->ip = \Base::instance()->get('IP') ?: null;
         });
+    }
+
+    public function expungeOld() {
+        $sql = sprintf('DELETE FROM %s where log_datetime < NOW() - cast(? as interval)', $this->table);
+        $this->db->exec($sql, [GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS.' DAY']);
     }
 
     public function jsonSerialize() {

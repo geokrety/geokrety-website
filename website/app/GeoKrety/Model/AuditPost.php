@@ -15,8 +15,9 @@ use DB\SQL\Schema;
 class AuditPost extends Base {
     use \Validation\Traits\CortexTrait;
 
+    /** @var \DB\SQL|string db */
     protected $db = 'DB';
-    protected $table = 'gk_audit_posts';
+    protected $table = 'audit.posts';
 
     protected $fieldConf = [
         'created_on_datetime' => [
@@ -53,6 +54,11 @@ class AuditPost extends Base {
             $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
             $self->ip = \Base::instance()->get('IP') ?: null;
         });
+    }
+
+    public function expungeOld() {
+        $sql = sprintf('DELETE FROM %s where created_on_datetime < NOW() - cast(? as interval)', $this->table);
+        $f3->get('DB')->exec($sql, [GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS.' DAY']);
     }
 
     public function jsonSerialize(): array {

@@ -5,6 +5,8 @@ namespace GeoKrety\Controller\Cli;
 use Base;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\CronError;
+use GeoKrety\Model\AuditLog;
+use GeoKrety\Model\AuditPost;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Model\User;
 
@@ -53,15 +55,15 @@ SQL;
 
     public function expungeAudiLogs(Base $f3) {
         $this->script_start(__METHOD__);
-        $sql = 'DELETE FROM gk_audit_logs where log_datetime < NOW() - cast(? as interval)';
-        $f3->get('DB')->exec($sql, [GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS.' DAY']);
+        $audit = new AuditLog();
+        $audit->expungeOld();
         $this->script_end();
     }
 
     public function expungeAudiPosts(Base $f3) {
         $this->script_start(__METHOD__);
-        $sql = 'DELETE FROM gk_audit_posts where created_on_datetime < NOW() - cast(? as interval)';
-        $f3->get('DB')->exec($sql, [GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS.' DAY']);
+        $audit = new AuditPost();
+        $audit->expungeOld();
         $this->script_end();
     }
 }

@@ -6,7 +6,7 @@ use Phinx\Migration\AbstractMigration;
 
 final class AuditMoves extends AbstractMigration {
     public function change(): void {
-        $table = $this->table('gk_audit_posts');
+        $table = $this->table('audit.posts');
         $table
             ->addColumn('author', 'biginteger', ['null' => true])
             ->addColumn('ip', 'inet', ['null' => false])
