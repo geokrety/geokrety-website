@@ -112,6 +112,11 @@ jobs:
         run: |
           make test-qa-headless
 
+      - name: Get php logs
+        if: ${{ failure() }}
+        run: ${DOCKER_COMPOSE} logs website
+
+
       - name: Deploy
         if: always()
         uses: peaceiris/actions-gh-pages@v3
