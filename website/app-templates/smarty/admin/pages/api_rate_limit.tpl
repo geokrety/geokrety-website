@@ -28,7 +28,7 @@
                     <td>{$group} ({$RATES_LIMITS[$group][1]})</td>
                     <td>{$key}</td>
                     <td class="text-right">{$value}</td>
-                    <td>/ {$RATES_LIMITS[$group][0]}</td>
+                    <td>/{$RATES_LIMITS[$group][0]}</td>
                     <td class="text-right">
                         {block user_actions}{/block}
                     </td>
