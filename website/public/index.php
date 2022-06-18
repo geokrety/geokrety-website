@@ -128,6 +128,7 @@ if (sizeof($f3->get('POST'))) {
         $audit->payload = json_encode($f3->get('POST'));
         try {
             $audit->save();
+            $f3->set('SESSION.AUDIT_POST_ID', $audit->id);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

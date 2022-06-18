@@ -9,6 +9,7 @@ use DB\SQL\Schema;
  * @property int|DateTime created_on_datetime
  * @property string route
  * @property string payload
+ * @property string errors
  * @property string ip
  * @property int|null author
  */
@@ -58,7 +59,22 @@ class AuditPost extends Base {
 
     public function expungeOld() {
         $sql = sprintf('DELETE FROM %s where created_on_datetime < NOW() - cast(? as interval)', $this->table);
-        $f3->get('DB')->exec($sql, [GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS.' DAY']);
+        \Base::instance()->get('DB')->exec($sql, [GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS.' DAY']);
+    }
+
+    /**
+     * @param mixed $data
+     */
+    public static function AmendAuditPostWithErrors($data) {
+        $f3 = \Base::instance();
+        if ($f3->exists('SESSION.AUDIT_POST_ID')) {
+            $audit = new \GeoKrety\Model\AuditPost();
+            $audit->load(['id = ?', $f3->get('SESSION.AUDIT_POST_ID')]);
+            if (!$audit->dry()) {
+                $audit->errors = json_encode($data);
+                $audit->save();
+            }
+        }
     }
 
     public function jsonSerialize(): array {

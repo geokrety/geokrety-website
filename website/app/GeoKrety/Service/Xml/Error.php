@@ -2,6 +2,8 @@
 
 namespace GeoKrety\Service\Xml;
 
+use GeoKrety\Model\AuditPost;
+
 class Error extends Base {
     public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
         parent::__construct($streamXML, $compress, $filename);
@@ -26,7 +28,7 @@ class Error extends Base {
      * @param array|string $errors The errors to format
      */
     public static function buildError(bool $stream, $errors) {
-        //public static function buildError(bool $stream, array|string $errors) { // need php 8.0
+        // public static function buildError(bool $stream, array|string $errors) { // need php 8.0
         $errors = gettype($errors) === 'string' ? [$errors] : $errors;
         $xml = new \GeoKrety\Service\Xml\Error($stream);
         foreach ($errors as $err) {
@@ -34,5 +36,7 @@ class Error extends Base {
         }
         $xml->end();
         $xml->finish(); // may return raw gzipped data
+
+        AuditPost::AmendAuditPostWithErrors($errors);
     }
 }

@@ -3,6 +3,7 @@
 namespace GeoKrety\Service;
 
 use Exception;
+use GeoKrety\Model\AuditPost;
 use GeoKrety\Service\Xml\Error;
 use Prefab;
 use Sugar\Event;
@@ -48,6 +49,7 @@ class RateLimit extends Prefab {
         } catch (RateLimitExceeded $e) {
             Error::buildError(false, [_('Rate limit exceeded')]);
             http_response_code(429);
+            AuditPost::AmendAuditPostWithErrors('Rate limit exceeded');
             exit();
         }
     }
@@ -101,7 +103,6 @@ class RateLimit extends Prefab {
             $redis->incr($rate_key);
             $total_user_calls = $redis->get($rate_key);
             if ($total_user_calls > GK_RATE_LIMITS[$name][0]) {
-                // TODO notify admin?
                 Event::instance()->emit('rate-limit.exceeded', [
                     'name' => $name,
                     'total_user_calls' => $total_user_calls,
