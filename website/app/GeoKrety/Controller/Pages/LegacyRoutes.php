@@ -189,8 +189,8 @@ class LegacyRoutes {
             Error::buildError(true, $e->getMessage());
             exit();
         }
-        MovesSuccess::buildSuccess(true, $moves);
         Login::disconnectUser($f3);
+        MovesSuccess::buildSuccess(true, $moves);
     }
 
     // https://new-theme.staging.geokrety.org/templates/medal-pi.png
