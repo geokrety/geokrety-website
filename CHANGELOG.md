@@ -1,3 +1,10 @@
+## [2.22.1](https://github.com/geokrety/geokrety-website/compare/v2.22.0...v2.22.1) (2022-06-18)
+
+
+### Bug Fixes
+
+* Save sessiongid in audit logs ([1c27c54](https://github.com/geokrety/geokrety-website/commit/1c27c54eb69370e927e48ea7660897dce256a71a))
+
 ## [2.22.0](https://github.com/geokrety/geokrety-website/compare/v2.21.2...v2.22.0) (2022-06-18)
 
 
