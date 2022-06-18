@@ -20,7 +20,7 @@ Should Redirect To New Url
 Post To Old Url Dont Redirect
     Create Session     geokrety          ${GK_URL}
     ${resp} =                            POST On Session    geokrety          url=/api-login2secid.php         expected_status=400  allow_redirects=${false}
-    Should Be Equal As Strings           Please provide 'login' and 'password' parameters.    ${resp.content}
+    Should Be Equal As Strings           error 3 Please provide 'login' and 'password' parameters.    ${resp.content}
     Delete All Sessions
 
 Test Form - valid

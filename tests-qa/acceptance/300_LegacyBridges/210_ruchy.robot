@@ -74,8 +74,8 @@ Required Parameters
 
 Test Invalid Cases
     [Template]    Post Return Error
-    ${move_1}     Invalid "secid"
-    ${move_2}     Invalid "secid"
+    ${move_1}     Invalid "secid" length
+    ${move_2}     This "secid" does not exists
     ${move_41}    Move date (2020-08-22 13:30:00+00) time can not be before GeoKret birth (2020-08-22 15:30:00+00)
 
 
