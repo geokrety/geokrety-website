@@ -93,6 +93,7 @@ ${PAGE_SEARCH_BY_USERNAME_URL}          ${GK_URL}/en/search/user/\${params.usern
 ${PAGE_SEARCH_BY_GEOKRETY_URL}          ${GK_URL}/en/search/geokret/\${params.geokret}
 
 ${PAGE_LEGACY_INDEX_URL}                ${GK_URL}/index.php
+${PAGE_LEGACY_REGISTRATION_URL}         ${GK_URL}/adduser.php
 ${PAGE_LEGACY_LONGIN_URL}               ${GK_URL}/longin.php
 ${PAGE_LEGACY_SEARCH_BY_WAYPOINT_URL}   ${GK_URL}/szukaj.php
 ${PAGE_LEGACY_GKT_INVENTORY_URL}        ${GK_URL}/gkt/v3/inventory

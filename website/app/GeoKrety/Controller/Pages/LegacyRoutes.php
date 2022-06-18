@@ -234,6 +234,11 @@ EOT;
         $f3->reroute(['home'], $permanent = false, $die = true);
     }
 
+    // https://new-theme.staging.geokrety.org/adduser.php
+    public function adduser(\Base $f3) {
+        $f3->reroute(['registration'], $permanent = false, $die = true);
+    }
+
     // https://new-theme.staging.geokrety.org/longin.php
     public function longin(\Base $f3) {
         $f3->reroute(['login'], $permanent = false, $die = true);
