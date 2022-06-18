@@ -9,6 +9,7 @@ require '../init-f3.php';
 $f3->config('../app/assets.ini');
 
 include __DIR__.'/../app/middleware.php';
+header('X-GK-Version: '.GK_SITE_USER_AGENT);
 
 if (!$f3->get('CLI') and !$f3->get('AJAX')) {
     $f3->ONERROR = function (Base $f3) {
