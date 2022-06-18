@@ -27,7 +27,7 @@ class Login extends Base {
     private const SECID_TOKEN_NOT_EXISTING_ERROR = 2;
     public const NO_GRAPHIC_LOGIN = [
         'secid',
-    ];
+        ];
 
     public function loginFormFragment() {
         Smarty::render('extends:base_modal.tpl|dialog/login.tpl');
@@ -105,16 +105,18 @@ class Login extends Base {
     }
 
     public function logout(\Base $f3) {
-        $user = new User();
-        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         self::disconnectUser($f3);
-        Event::instance()->emit('user.logout', $user);
         $f3->reroute('@home', false);
     }
 
     public static function disconnectUser(\Base $f3) {
         if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
             $local_mail = $f3->get('SESSION.LOCAL_MAIL');
+        }
+        $user = new User();
+        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
+        if (!$user->dry()) {
+            Event::instance()->emit('user.logout', $user);
         }
         $f3->clear('SESSION');
         $f3->clear('COOKIE.PHPSESSID');
@@ -161,6 +163,7 @@ class Login extends Base {
                     'error' => self::API2SECID_INVALID_ACCOUNT_ERROR,
                     'error_message' => 'Your account is not valid.',
                     ]);
+                Login::disconnectUser($f3);
                 if (!GK_DEVEL) {
                     $f3->abort();
                 }
@@ -169,8 +172,10 @@ class Login extends Base {
             }
             echo $user->secid;
             Event::instance()->emit('user.login.api2secid', $user);
+            Login::disconnectUser($f3);
             exit();
         }
+        Login::disconnectUser($f3);
         Event::instance()->emit('user.login.api2secid-failure', [
             'username' => $f3->get('POST.login'),
             'error' => self::API2SECID_CREDENTIALS_FAILS_ERROR,

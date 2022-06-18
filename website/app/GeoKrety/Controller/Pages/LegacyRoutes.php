@@ -172,6 +172,7 @@ class LegacyRoutes {
         $move_service = new MovesService();
         [$moves, $errors] = $move_service->toMoves($move_data, new Move());
 
+        Login::disconnectUser($f3);
         if (sizeof($errors) > 0) {
             Error::buildError(true, $errors);
             exit();

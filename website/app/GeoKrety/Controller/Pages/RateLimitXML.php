@@ -35,6 +35,7 @@ class RateLimitXML extends BaseXML {
             if (!is_null($user)) {
                 $keys[] = $user->secid;
             }
+            Login::disconnectUser($f3);
 
             $usages = [];
             foreach ($keys as $key) {

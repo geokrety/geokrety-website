@@ -27,6 +27,9 @@ abstract class Base {
 
     protected ?\Base $f3;
 
+    public function afterRoute() {
+    }
+
     public function beforeRoute(\Base $f3) {
         $this->f3 = $f3;
 
@@ -113,5 +116,10 @@ abstract class Base {
         }
 
         return null;
+    }
+
+    public function exit($status = '') {
+        $this->afterRoute();
+        exit($status);
     }
 }

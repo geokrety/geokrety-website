@@ -35,7 +35,7 @@ class UserDelete extends Base {
         $f3->get('DB')->commit();
 
         Event::instance()->emit('user.deleted', $this->currentUser, $context);
-        (new Login())->disconnectUser($f3);
+        Login::disconnectUser($f3);
         Session::closeAllSessionsForUser($this->currentUser);
         Flash::instance()->addMessage(_('Your account is now deleted. Thanks for playing with us.'), 'success');
         $f3->reroute('@home');

@@ -21,28 +21,28 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
         );
 
         if ($error['code'] === 400) {
-            Flash::instance()->addMessage($error['text'] ?: _('Your request seems invalid.'), 'danger');
+            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage($error['text'] ?: _('Your request seems invalid.'), 'danger');
             $f3->set('SESSION.HTTP_RETURN_CODE', 400);
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 401) {
-            Flash::instance()->addMessage(_('Please login first.'), 'danger');
+            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage(_('Please login first.'), 'danger');
             $f3->reroute('@login');
         }
         if ($error['code'] === 403) {
-            Flash::instance()->addMessage($error['text'] ?: _('You are not allowed to access this page.'), 'danger');
+            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage($error['text'] ?: _('You are not allowed to access this page.'), 'danger');
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 404) {
-            Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exists.'), 'danger');
+            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exists.'), 'danger');
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 405) {
-            Flash::instance()->addMessage($error['text'] ?: _('Method not allowed.'), 'danger');
+            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage($error['text'] ?: _('Method not allowed.'), 'danger');
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 500) {
-            Flash::instance()->addMessage(_('We are sorry, something unexpected happened.'), 'danger');
+            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage(_('We are sorry, something unexpected happened.'), 'danger');
             $f3->reroute('@home');
         }
         $header = $f3->status($error['code']);
