@@ -158,12 +158,12 @@ SQL;
             $this->email->sendDailyMail($this->user);
         } catch (Exception $e) {
             $this->console_writer->print([$this->user->id, $this->user->username, sprintf('500 error: %s', $e->getMessage())], true);
-            Event::instance()->emit('cron.dailymail.error', $this->user);
+            Event::instance()->emit('cron.dailymail.error', $this->email);
 
             return;
         }
         $this->console_writer->print([$this->user->id, $this->user->username, '200 sent'], true);
-        Event::instance()->emit('cron.dailymail.sent', $this->user);
+        Event::instance()->emit('cron.dailymail.sent', $this->email);
     }
 
     private function compute_since() {
@@ -281,14 +281,14 @@ GEOJSON;
         array_unshift($geojson->features, json_decode($home, true));
 
         $img_url_params = http_build_query([
-            //'center' => sprintf('%s,%s', $this->user->home_longitude, $this->user->home_latitude),
+            // 'center' => sprintf('%s,%s', $this->user->home_longitude, $this->user->home_latitude),
             'arrows' => true,
             'geojson' => json_encode($geojson),
             'width' => 640,
             'height' => 480,
             'oxipng' => true,
             'maxZoom' => 13,
-            //'zoom' => 11,
+            // 'zoom' => 11,
             'markerIconOptions' => sprintf('{"iconUrl": "%s/pins/green.png", iconAnchor: [6, 20]}', GK_CDN_ICONS_URL),
         ]);
         $this->console_writer->print([$this->user->id, $this->user->username, 'load dropped - image']);

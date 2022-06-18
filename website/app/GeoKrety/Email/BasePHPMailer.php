@@ -11,7 +11,7 @@ use GeoKrety\Service\Metrics;
 use GeoKrety\Service\Smarty;
 use PHPMailer\PHPMailer\PHPMailer;
 
-abstract class BasePHPMailer extends PHPMailer {
+abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     public array $recipients = [];
     private array $subject = [];
 
@@ -33,7 +33,7 @@ abstract class BasePHPMailer extends PHPMailer {
         $this->SMTPAuth = (bool) GK_SMTP_USER;
         $this->Username = GK_SMTP_USER;
         $this->Password = GK_SMTP_PASSWORD;
-        //$this->SMTPDebug = SMTP::DEBUG_SERVER;
+        // $this->SMTPDebug = SMTP::DEBUG_SERVER;
         $this->CharSet = self::CHARSET_UTF8;
         $this->Body = $body;
     }
@@ -133,8 +133,7 @@ abstract class BasePHPMailer extends PHPMailer {
                 $_user->username .= ' (admin)';
                 $this->recipients[] = $_user;
             }
-        }
-        if (GK_IS_PRODUCTION or $realRecipient) {
+        } elseif ($realRecipient) {
             if (!$user->hasEmail() or (!$user->isEmailValid() and !$force)) {
                 return;
             }
@@ -154,5 +153,18 @@ abstract class BasePHPMailer extends PHPMailer {
      */
     protected function setFromSupport() {
         $this->setFrom(GK_SITE_EMAIL_SUPPORT, 'GeoKrety');
+    }
+
+    public function jsonSerialize(): array {
+        $to = [];
+        foreach ($this->getToAddresses() as $address) {
+            var_dump($address);
+            $to[] = $address;
+        }
+
+        return [
+            'to' => $to,
+            'subject' => $this->getSubject(),
+        ];
     }
 }

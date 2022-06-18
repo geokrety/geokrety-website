@@ -246,12 +246,12 @@ $events->on('cron.dailymail.empty', function (GeoKrety\Model\User $user) {
     audit('cron.dailymail.empty', $user);
     Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['empty']);
 });
-$events->on('cron.dailymail.error', function (GeoKrety\Model\User $user) {
-    audit('cron.dailymail.error', $user);
+$events->on('cron.dailymail.error', function (GeoKrety\Email\DailyMail $email) {
+    audit('cron.dailymail.error', $email);
     Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['error']);
 });
-$events->on('cron.dailymail.sent', function (GeoKrety\Model\User $user) {
-    audit('cron.dailymail.sent', $user);
+$events->on('cron.dailymail.sent', function (GeoKrety\Email\DailyMail $email) {
+    audit('cron.dailymail.sent', $email);
     Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['sent']);
 });
 $events->on('awarded.created', function (GeoKrety\Model\AwardsWon $award) {
