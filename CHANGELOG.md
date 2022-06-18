@@ -1,3 +1,28 @@
+## [2.22.0](https://github.com/geokrety/geokrety-website/compare/v2.21.2...v2.22.0) (2022-06-18)
+
+
+### Features
+
+* Allow admin to reset rate-limits ([d89f47f](https://github.com/geokrety/geokrety-website/commit/d89f47ff1905aed1277f1c5a2fa4b011b6f0068e))
+* Audit log move parameters ([9174008](https://github.com/geokrety/geokrety-website/commit/9174008e235cd106c6225e89d4d1b3ed1defb0a2))
+* Set GeoKrety version in headers and rate limits ([94d2dfb](https://github.com/geokrety/geokrety-website/commit/94d2dfb3f2ae65f77a8c5c4f4e2aedd25db8529f))
+
+
+### Bug Fixes
+
+* Adapt tests to new messages ([12cb096](https://github.com/geokrety/geokrety-website/commit/12cb09649f09e62d805e4c11bdfe16d6a8f5e1e7))
+* Add a dev option to force logs all posts values ([f667831](https://github.com/geokrety/geokrety-website/commit/f6678312ae6fee8cc0514f2ae41b6b0c89f03fda))
+* Add email subject to audit logs ([a8b02b6](https://github.com/geokrety/geokrety-website/commit/a8b02b6923582695145f829f3662ea0e692ff50c))
+* Add missing event listener ([c1aa17f](https://github.com/geokrety/geokrety-website/commit/c1aa17f0708ed7696918b8cf155448fb39bae977))
+* ADd new schema in copy scripts ([880c08c](https://github.com/geokrety/geokrety-website/commit/880c08cdb2d1e83e417656125e0fd36090972e2d))
+* Add rate-limit audi logs ([a1b3140](https://github.com/geokrety/geokrety-website/commit/a1b3140fd346d6d58cd7880dd468e7c0606178d0))
+* Audit log xml errors objects ([e4a7f7c](https://github.com/geokrety/geokrety-website/commit/e4a7f7c6861489d2098c0f2e4349d16b8ec5d481))
+* Close session after using secid ([b2081f7](https://github.com/geokrety/geokrety-website/commit/b2081f74d3fe2d438844f52df93982c3df8c818e))
+* Fix refresh secid ([4981c08](https://github.com/geokrety/geokrety-website/commit/4981c08d5a29d6f20fd697f4d683027736ea72ff))
+* Move audit tables to audit schema ([6dfbdeb](https://github.com/geokrety/geokrety-website/commit/6dfbdeb7a462f0906597d5dfbcae389164c8ddb0))
+* nginx now returns 429 on rate limit excess ([abe26b6](https://github.com/geokrety/geokrety-website/commit/abe26b67578c8954b02e84fdf2bd54de825ac3b9))
+* Prevent line wrap ([91e6c86](https://github.com/geokrety/geokrety-website/commit/91e6c86cf11ebf0246cc40762f6b660f6e00126b))
+
 ## [2.21.2](https://github.com/geokrety/geokrety-website/compare/v2.21.1...v2.21.2) (2022-06-12)
 
 
