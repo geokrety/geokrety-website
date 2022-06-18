@@ -1,3 +1,10 @@
+## [2.22.4](https://github.com/geokrety/geokrety-website/compare/v2.22.3...v2.22.4) (2022-06-18)
+
+
+### Bug Fixes
+
+* Move audit sequence to audit schema ([273ec37](https://github.com/geokrety/geokrety-website/commit/273ec37d9956b50c310114efd72a7ff66ecdc098))
+
 ## [2.22.3](https://github.com/geokrety/geokrety-website/compare/v2.22.2...v2.22.3) (2022-06-18)
 
 
