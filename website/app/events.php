@@ -53,6 +53,15 @@ $events->on('user.login.secid', function (GeoKrety\Model\User $user) {
     Session::setUserId($user);
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['secid']);
 });
+$events->on('user.login.api2secid', function (GeoKrety\Model\User $user) {
+    audit('user.login.api2secid', $user);
+    Session::setUserId($user);
+    Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['api2secid']);
+});
+$events->on('user.login.api2secid-failure', function (array $context) {
+    audit('user.login.api2secid-failure', $context);
+    Metrics::counter('logged_in_failure_total', 'Total number of connections failures', ['type'], ['api2secid']);
+});
 $events->on('user.login.oauth', function (GeoKrety\Model\User $user) {
     audit('user.login.oauth', $user);
     Session::setUserId($user);

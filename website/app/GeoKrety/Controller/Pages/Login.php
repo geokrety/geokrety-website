@@ -19,6 +19,12 @@ use Multilang;
 use Sugar\Event;
 
 class Login extends Base {
+    private const LEGACY_API2SECID_ERROR_STRING = 'error %d ';
+    private const API2SECID_CREDENTIALS_FAILS_ERROR = 1;
+    private const API2SECID_INVALID_ACCOUNT_ERROR = 2;
+    private const API2SECID_EMPTY_CREDENTIALS_ERROR = 3;
+    private const SECID_TOKEN_INVALID_LENGTH_ERROR = 1;
+    private const SECID_TOKEN_NOT_EXISTING_ERROR = 2;
     public const NO_GRAPHIC_LOGIN = [
         'secid',
     ];
@@ -129,12 +135,18 @@ class Login extends Base {
         RateLimit::check_rate_limit_raw('API_V1_LOGIN_2_SECID');
 
         // No Check Csrf here else it will break legacy clients
-        //$this->checkCsrf(function ($error) {
+        // $this->checkCsrf(function ($error) {
         //    echo $error;
-        //});
+        // });
         if (is_null($f3->get('POST.login')) or is_null($f3->get('POST.password'))) {
             http_response_code(400);
+            echo $this->getApi2SecidLegacyError(self::API2SECID_EMPTY_CREDENTIALS_ERROR);
             echo _('Please provide \'login\' and \'password\' parameters.');
+            Event::instance()->emit('user.login.api2secid-failure', [
+                    'username' => $f3->get('POST.login'),
+                    'error' => self::API2SECID_EMPTY_CREDENTIALS_ERROR,
+                    'error_message' => 'Please provide \'login\' and \'password\' parameters.',
+                    ]);
             exit();
         }
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
@@ -142,7 +154,13 @@ class Login extends Base {
         if ($user !== false) {
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
                 http_response_code(400); // TODO what is the most logical code ? probably not 400 neither 500
+                echo $this->getApi2SecidLegacyError(self::API2SECID_INVALID_ACCOUNT_ERROR);
                 echo _('Your account is not valid.');
+                Event::instance()->emit('user.login.api2secid-failure', [
+                    'username' => $f3->get('POST.login'),
+                    'error' => self::API2SECID_INVALID_ACCOUNT_ERROR,
+                    'error_message' => 'Your account is not valid.',
+                    ]);
                 if (!GK_DEVEL) {
                     $f3->abort();
                 }
@@ -153,6 +171,12 @@ class Login extends Base {
             Event::instance()->emit('user.login.api2secid', $user);
             exit();
         }
+        Event::instance()->emit('user.login.api2secid-failure', [
+            'username' => $f3->get('POST.login'),
+            'error' => self::API2SECID_CREDENTIALS_FAILS_ERROR,
+            'error_message' => 'Username and password doesn\'t match.',
+            ]);
+        echo $this->getApi2SecidLegacyError(self::API2SECID_CREDENTIALS_FAILS_ERROR);
         echo _('Username and password doesn\'t match.');
     }
 
@@ -163,14 +187,24 @@ class Login extends Base {
      * @return User Connected user authentication succeed
      */
     public function secidAuth(\Base $f3, ?string $secid, bool $streamXML = true): User {
-        if (strlen($secid) !== 128) {
-            Error::buildError($streamXML, _('Invalid "secid"'));
+        if (strlen($secid) !== GK_SITE_SECID_CODE_LENGTH) {
+            Error::buildError($streamXML, _('Invalid "secid" length'));
+            Event::instance()->emit('user.login.secid-failure', [
+                'secid' => $secid,
+                'error' => self::SECID_TOKEN_INVALID_LENGTH_ERROR,
+                'error_message' => 'Invalid "secid" length',
+                ]);
             exit();
         }
         $auth = new Auth('secid');
         $user = $auth->login($secid, null);
         if ($user === false) {
-            Error::buildError($streamXML, _('Invalid "secid"'));
+            Error::buildError($streamXML, _('Invalid "secid2"'));
+            Event::instance()->emit('user.login.secid-failure', [
+                'secid' => $secid,
+                'error' => self::SECID_TOKEN_NOT_EXISTING_ERROR,
+                'error_message' => 'This secid doesn\'t exists',
+                ]);
             exit();
         }
         Login::connectUser($f3, $user, 'secid');
@@ -243,5 +277,9 @@ class Login extends Base {
     public function socialAuthAbort(array $data) {
         Flash::instance()->addMessage(_('Auth request was canceled.'), 'danger');
         \Base::instance()->reroute('@home');
+    }
+
+    private function getApi2SecidLegacyError(int $error): string {
+        return sprintf(self::LEGACY_API2SECID_ERROR_STRING, $error);
     }
 }
