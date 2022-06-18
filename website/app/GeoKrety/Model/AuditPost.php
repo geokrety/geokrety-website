@@ -6,44 +6,44 @@ use DateTime;
 use DB\SQL\Schema;
 
 /**
- * @property int|DateTime log_datetime
- * @property int author
- * @property string event
- * @property string|null context
+ * @property int|DateTime created_on_datetime
+ * @property string route
+ * @property string payload
  * @property string ip
+ * @property int|null author
  */
-class AuditLog extends Base {
+class AuditPost extends Base {
     use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
-    protected $table = 'gk_audit_logs';
+    protected $table = 'gk_audit_posts';
 
     protected $fieldConf = [
-        'log_datetime' => [
+        'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],
-        'author' => [
-            'type' => Schema::DT_BIGINT,
-            'nullable' => false,
-        ],
-        'event' => [
+        'route' => [
             'type' => Schema::DT_VARCHAR256,
             'nullable' => false,
         ],
+        // 'payload' => [
+        //    //'type' => Schema::DT_j,
+        //    'nullable' => true,
+        // ],
         'ip' => [
             'type' => Schema::DT_VARCHAR256,
             'nullable' => false,
         ],
-        // 'context' => [
-        //    //'type' => Schema::DT_j,
-        //    'nullable' => true,
-        // ],
+        'author' => [
+            'type' => Schema::DT_BIGINT,
+            'nullable' => false,
+        ],
     ];
 
-    public function get_log_datetime($value): ?DateTime {
+    public function get_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
 
@@ -55,10 +55,10 @@ class AuditLog extends Base {
         });
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): array {
         return [
-            'log_datetime' => $this->log_datetime,
-            'event' => $this->event,
+            'datetime' => $this->created_on_datetime,
+            'route' => $this->route,
         ];
     }
 }

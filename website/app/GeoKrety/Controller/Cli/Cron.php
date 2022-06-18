@@ -50,4 +50,18 @@ SQL;
         $f3->get('DB')->exec($sql);
         $this->script_end();
     }
+
+    public function expungeAudiLogs(Base $f3) {
+        $this->script_start(__METHOD__);
+        $sql = 'DELETE FROM gk_audit_logs where log_datetime < NOW() - cast(? as interval)';
+        $f3->get('DB')->exec($sql, [GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS.' DAY']);
+        $this->script_end();
+    }
+
+    public function expungeAudiPosts(Base $f3) {
+        $this->script_start(__METHOD__);
+        $sql = 'DELETE FROM gk_audit_posts where created_on_datetime < NOW() - cast(? as interval)';
+        $f3->get('DB')->exec($sql, [GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS.' DAY']);
+        $this->script_end();
+    }
 }

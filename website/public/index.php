@@ -112,4 +112,23 @@ if ($f3->exists('SESSION.HTTP_RETURN_CODE')) {
     $f3->clear('SESSION.HTTP_RETURN_CODE');
 }
 
+// Audit POST logs
+if (sizeof($f3->get('POST'))) {
+    $has_route_match = 0;
+    foreach (GK_AUDIT_LOGS_EXCLUDE_PATH as $path) {
+        if (strpos($f3->PATH, $path) !== false) {
+            ++$has_route_match;
+        }
+    }
+    if ($has_route_match === 0) {
+        $audit = new \GeoKrety\Model\AuditPost();
+        $audit->route = $f3->PATH;
+        $audit->payload = json_encode($f3->get('POST'));
+        try {
+            $audit->save();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+}
 $f3->run();

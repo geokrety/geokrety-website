@@ -249,6 +249,17 @@ class Config extends \Prefab {
             '/metrics',
         ]);
 
+        // Audit logs
+        define('GK_AUDIT_LOGS_EXCLUDE_PATH', [
+            '/auth',
+            '/login',
+            '/api-login2secid',
+            '/update-password',
+            '/recover-password/',
+        ]);
+        define('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS') ?: 90);
+        define('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS') ?: 90);
+
         // User
         define('GK_USER_DELETED_USERNAME', getenv('GK_USER_DELETED_USERNAME') ?: 'Deleted user');
 
