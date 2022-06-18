@@ -30,13 +30,12 @@ class Error extends Base {
     public static function buildError(bool $stream, $errors) {
         // public static function buildError(bool $stream, array|string $errors) { // need php 8.0
         $errors = gettype($errors) === 'string' ? [$errors] : $errors;
+        AuditPost::AmendAuditPostWithErrors($errors);
         $xml = new \GeoKrety\Service\Xml\Error($stream);
         foreach ($errors as $err) {
             $xml->addError($err);
         }
         $xml->end();
         $xml->finish(); // may return raw gzipped data
-
-        AuditPost::AmendAuditPostWithErrors($errors);
     }
 }

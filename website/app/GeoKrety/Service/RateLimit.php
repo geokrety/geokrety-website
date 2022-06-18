@@ -47,9 +47,9 @@ class RateLimit extends Prefab {
         try {
             self::incr($name, $key);
         } catch (RateLimitExceeded $e) {
+            AuditPost::AmendAuditPostWithErrors('Rate limit exceeded');
             Error::buildError(false, [_('Rate limit exceeded')]);
             http_response_code(429);
-            AuditPost::AmendAuditPostWithErrors('Rate limit exceeded');
             exit();
         }
     }

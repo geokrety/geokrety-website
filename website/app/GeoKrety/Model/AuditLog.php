@@ -11,6 +11,7 @@ use DB\SQL\Schema;
  * @property string event
  * @property string|null context
  * @property string ip
+ * @property string session
  */
 class AuditLog extends Base {
     use \Validation\Traits\CortexTrait;
@@ -42,6 +43,10 @@ class AuditLog extends Base {
         //    //'type' => Schema::DT_j,
         //    'nullable' => true,
         // ],
+        'session' => [
+            'type' => Schema::DT_VARCHAR256,
+            'nullable' => false,
+        ],
     ];
 
     public function get_log_datetime($value): ?DateTime {
@@ -51,6 +56,7 @@ class AuditLog extends Base {
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
+            $self->session = session_id();
             $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
             $self->ip = \Base::instance()->get('IP') ?: null;
         });

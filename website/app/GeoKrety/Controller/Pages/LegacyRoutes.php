@@ -172,8 +172,8 @@ class LegacyRoutes {
         $move_service = new MovesService();
         [$moves, $errors] = $move_service->toMoves($move_data, new Move());
 
-        Login::disconnectUser($f3);
         if (sizeof($errors) > 0) {
+            Login::disconnectUser($f3);
             Error::buildError(true, $errors);
             exit();
         }
@@ -185,10 +185,12 @@ class LegacyRoutes {
                 $_move->save();
             }
         } catch (Exception $e) {
+            Login::disconnectUser($f3);
             Error::buildError(true, $e->getMessage());
             exit();
         }
         MovesSuccess::buildSuccess(true, $moves);
+        Login::disconnectUser($f3);
     }
 
     // https://new-theme.staging.geokrety.org/templates/medal-pi.png

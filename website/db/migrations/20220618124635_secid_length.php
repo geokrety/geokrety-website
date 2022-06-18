@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class SecidLenght extends AbstractMigration {
+final class SecidLength extends AbstractMigration {
     public function up(): void {
         $sql = <<<'EOL'
 CREATE OR REPLACE FUNCTION geokrety.generate_secid(IN size integer DEFAULT 128)

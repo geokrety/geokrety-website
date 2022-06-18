@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use Exception;
 use Flash;
 use GeoKrety\LogType;
+use GeoKrety\Model\AuditPost;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Service\Moves as MovesService;
@@ -106,6 +107,7 @@ class MoveCreate extends Base {
         if (sizeof($errors) < 1) {
             return;
         }
+        AuditPost::AmendAuditPostWithErrors($errors);
         $msg = '<ul>';
         foreach ($errors as $err) {
             $msg .= "<li>$err</li>";

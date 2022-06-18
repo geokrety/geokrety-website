@@ -11,6 +11,7 @@ use DB\SQL\Schema;
  * @property string payload
  * @property string errors
  * @property string ip
+ * @property string session
  * @property int|null author
  */
 class AuditPost extends Base {
@@ -43,6 +44,10 @@ class AuditPost extends Base {
             'type' => Schema::DT_BIGINT,
             'nullable' => false,
         ],
+        'session' => [
+            'type' => Schema::DT_VARCHAR256,
+            'nullable' => false,
+        ],
     ];
 
     public function get_datetime($value): ?DateTime {
@@ -52,6 +57,7 @@ class AuditPost extends Base {
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {
+            $self->session = session_id();
             $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
             $self->ip = \Base::instance()->get('IP') ?: null;
         });
@@ -67,9 +73,9 @@ class AuditPost extends Base {
      */
     public static function AmendAuditPostWithErrors($data) {
         $f3 = \Base::instance();
-        if ($f3->exists('SESSION.AUDIT_POST_ID')) {
+        if ($f3->exists('AUDIT_POST_ID')) {
             $audit = new \GeoKrety\Model\AuditPost();
-            $audit->load(['id = ?', $f3->get('SESSION.AUDIT_POST_ID')]);
+            $audit->load(['id = ?', $f3->get('AUDIT_POST_ID')]);
             if (!$audit->dry()) {
                 $audit->errors = json_encode($data);
                 $audit->save();
