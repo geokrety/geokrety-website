@@ -1,3 +1,10 @@
+## [2.22.6](https://github.com/geokrety/geokrety-website/compare/v2.22.5...v2.22.6) (2022-06-19)
+
+
+### Bug Fixes
+
+* Fix reset development database ([10a15fa](https://github.com/geokrety/geokrety-website/commit/10a15fa37f93628ae2b419fcf66ff1a122cc8eb5))
+
 ## [2.22.5](https://github.com/geokrety/geokrety-website/compare/v2.22.4...v2.22.5) (2022-06-19)
 
 
