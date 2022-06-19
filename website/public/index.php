@@ -99,6 +99,7 @@ if (!$f3->exists('SESSION.csrf') or empty($f3->get('SESSION.csrf'))) {
     $f3->CSRF = $session->csrf();
     $f3->copy('CSRF', 'SESSION.csrf');
 }
+$f3->set('CURRENT_USER', $f3->get('SESSION.CURRENT_USER'));
 
 // Assets building
 \Assets::instance();
