@@ -52,6 +52,7 @@ ${PAGE_USER_OWNED_GEOKRETY_PICTURES_URL}        ${GK_URL}/en/users/\${params.use
 
 ${PAGE_USER_1_BANER_TEMPLATE_URL}       ${GK_URL}/en/users/1/choose-statpic-template
 ${PAGE_USER_1_OBSERVATION_AREA_URL}     ${GK_URL}/en/users/1/observation-area
+${PAGE_USER_1_OBSERVATION_AREA_URL_FR}     ${GK_URL}/fr/users/1/observation-area
 ${PAGE_USER_CHANGE_PASSWORD_URL}        ${GK_URL}/en/user/update-password
 ${PAGE_USER_CHANGE_LANGUAGE_URL}        ${GK_URL}/en/user/preferred-language
 ${PAGE_USER_REFRESH_SECID_URL}          ${GK_URL}/en/user/refresh-secid

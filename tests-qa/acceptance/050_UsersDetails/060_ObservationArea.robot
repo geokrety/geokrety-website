@@ -116,6 +116,18 @@ Observation area to 0 show message on save
     Click Button                            ${USER_OBSERVATION_AREA_SUBMIT}
     Page Should Contain                     Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails
 
+# Bug https://github.com/geokrety/geokrety-website/issues/728
+Save Coordinates With French Language
+    Sign In ${USER_1.name} Fast
+    Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL_FR}
+    Page Should Contain                     Définir votre zone d'observation
+    Page Should Not Contain                 Define your observation area
+    Fill form                               ${COORDS_NEW_YORK}    10
+    Click Button                            ${USER_OBSERVATION_AREA_SUBMIT}
+    Page Should Not Contain                 doit être une valeur décimale
+
+
+
 *** Keywords ***
 
 Seed
