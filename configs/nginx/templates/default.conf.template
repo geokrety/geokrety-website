@@ -207,8 +207,12 @@ server {
         return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?gkid=$1&details=1;
     }
 
-    location ~ ^/gk/details/(\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.*)/?$ {
+    location ~ ^/gk/(\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.*)/?$ {
         return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?modifiedsince=$1;
+    }
+
+    location ~ ^/gk/details/(\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.*)/?$ {
+        return 301 https://${GK_SITE_BASE_SERVER_FQDN}/api/v1/export2?modifiedsince=$1&details=1;
     }
 
     location ~ ^/wpt/([a-zA-Z0-9]+)/?$ {
