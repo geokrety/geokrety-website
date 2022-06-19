@@ -1,3 +1,15 @@
+## [2.22.5](https://github.com/geokrety/geokrety-website/compare/v2.22.4...v2.22.5) (2022-06-19)
+
+
+### Bug Fixes
+
+* Fix move audit sequence to audit schema ([2f1a94b](https://github.com/geokrety/geokrety-website/commit/2f1a94bc058d0eb6685cb2632ed113c6f19fe56d))
+
+
+### Translations
+
+* New Crowdin updates ([#729](https://github.com/geokrety/geokrety-website/issues/729)) ([b45761e](https://github.com/geokrety/geokrety-website/commit/b45761eced092c8ed8794759de68697dfa165833))
+
 ## [2.22.4](https://github.com/geokrety/geokrety-website/compare/v2.22.3...v2.22.4) (2022-06-18)
 
 
