@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller\Devel;
 
 use Exception;
+use GeoKrety\Service\RateLimit;
 
 /**
  * Class DatabaseReset.
@@ -52,6 +53,7 @@ class DatabaseReset extends Base {
         foreach (self::MATERIALIZED_VIEWS as $view) {
             $db->exec(sprintf('REFRESH MATERIALIZED VIEW %s', $view));
         }
+        RateLimit::resetAll();
         echo 'OK';
     }
 }

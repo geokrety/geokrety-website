@@ -65,6 +65,15 @@ class RateLimit extends Prefab {
         $redis->del($key);
     }
 
+    public static function resetAll() {
+        $redis = Redis::instance();
+        $redis->ensureOpenConnection();
+        $allKeys = $redis->keys(sprintf('%s__*', self::RATE_KEY));
+        foreach ($allKeys as $key) {
+            $redis->del($key);
+        }
+    }
+
     /**
      * @param string      $name Limit name
      * @param string|null $key  User identifier
