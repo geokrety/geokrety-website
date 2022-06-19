@@ -221,7 +221,7 @@ class Geokret extends Base {
 
     public function hasTouchedInThePast(): bool {
         $f3 = \Base::instance();
-        if (!$f3->get('SESSION.CURRENT_USER')) {
+        if (!$f3->get('CURRENT_USER')) {
             return false;
         }
 
@@ -232,7 +232,7 @@ class Geokret extends Base {
         // TODO, speedup this using a special automanaged table
         $move = new Move();
 
-        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('SESSION.CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0) > 0;
+        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0) > 0;
     }
 
     public function addFilterHasTouchedInThePast(User $user, array $gk_list) {
@@ -246,7 +246,7 @@ class Geokret extends Base {
     public function isOwner(): bool {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->owner) && $f3->get('SESSION.CURRENT_USER') === $this->owner->id;
+        return $f3->get('CURRENT_USER') && !is_null($this->owner) && $f3->get('CURRENT_USER') === $this->owner->id;
     }
 
     /**
@@ -256,13 +256,13 @@ class Geokret extends Base {
         $f3 = \Base::instance();
         $watch = new Watched();
 
-        return $watch->count(['user = ? AND geokret = ?', $f3->get('SESSION.CURRENT_USER'), $this->id], null, 0);
+        return $watch->count(['user = ? AND geokret = ?', $f3->get('CURRENT_USER'), $this->id], null, 0);
     }
 
     public function isHolder(): bool {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->holder) && $f3->get('SESSION.CURRENT_USER') === $this->holder->id;
+        return $f3->get('CURRENT_USER') && !is_null($this->holder) && $f3->get('CURRENT_USER') === $this->holder->id;
     }
 
     public function isArchived(): bool {

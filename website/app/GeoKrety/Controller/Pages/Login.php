@@ -66,6 +66,7 @@ class Login extends Base {
      * @param bool        $redirect Redirect to GOTO url
      */
     public static function connectUser(\Base $f3, User $user, ?string $method = null, bool $redirect = true) {
+        $f3->set('CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USERNAME', $user->username);
         $f3->set('SESSION.IS_LOGGED_IN', true);
@@ -118,6 +119,7 @@ class Login extends Base {
         if (!$user->dry()) {
             Event::instance()->emit('user.logout', $user);
         }
+        $f3->set('CURRENT_USER', $user->id);
         $f3->clear('SESSION');
         $f3->clear('COOKIE.PHPSESSID');
         $f3->clear('COOKIE.gkt_on_behalf');

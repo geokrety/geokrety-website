@@ -52,12 +52,12 @@ class GeokretWithDetails extends Geokret {
             'nullable' => true,
             'validate' => 'is_not_false',
         ],
-        //'owner' => [
+        // 'owner' => [
         //    'belongs-to-one' => '\GeoKrety\Model\User',
-        //],
-        //'holder' => [
+        // ],
+        // 'holder' => [
         //    'belongs-to-one' => '\GeoKrety\Model\User',
-        //],
+        // ],
         'moves' => [
             'has-many' => ['\GeoKrety\Model\Move', 'geokret'],
         ],
@@ -74,12 +74,12 @@ class GeokretWithDetails extends Geokret {
         'avatars' => [
             'has-many' => ['\GeoKrety\Model\Picture', 'geokret'],
         ],
-        //'last_position' => [
+        // 'last_position' => [
         //    'belongs-to-one' => '\GeoKrety\Model\Move',
-        //],
-        //'last_log' => [
+        // ],
+        // 'last_log' => [
         //    'belongs-to-one' => '\GeoKrety\Model\Move',
-        //],
+        // ],
         'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
             'default' => 'CURRENT_TIMESTAMP',
@@ -113,12 +113,12 @@ class GeokretWithDetails extends Geokret {
     public function isOwner(): bool {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->owner) && $f3->get('SESSION.CURRENT_USER') === $this->owner;
+        return $f3->get('CURRENT_USER') && !is_null($this->owner) && $f3->get('CURRENT_USER') === $this->owner;
     }
 
     public function isHolder(): bool {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->holder) && $f3->get('SESSION.CURRENT_USER') === $this->holder;
+        return $f3->get('CURRENT_USER') && !is_null($this->holder) && $f3->get('CURRENT_USER') === $this->holder;
     }
 }

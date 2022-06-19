@@ -14,6 +14,7 @@ abstract class BaseExport extends BaseXML {
     protected function loadGeokrety() {
         $geokret = new GeokretWithDetails();
         $res = $geokret->find($this->getFilter());
+        $this->processPreHook();
         foreach ($res ?: [] as $object) {
             $this->processAddGeokret($object);
         }
@@ -25,6 +26,7 @@ abstract class BaseExport extends BaseXML {
         $geokret = new GeokretWithDetails();
         $geokret->filter('moves', null, ['order' => 'moved_on_datetime DESC', 'limit' => GK_API_EXPORT_GEOKRET_DETAILS_MOVES_LIMIT]);
         $subset_position = 0;
+        $this->processPreHook();
         do {
             $subset = $geokret->paginate($subset_position, 1000, $this->getFilter(), null, 0);
             $subset_total = $subset['count'];
@@ -41,6 +43,12 @@ abstract class BaseExport extends BaseXML {
     abstract protected function processAddMove(&$move);
 
     abstract protected function processPostHook();
+
+    protected function processPreHook() {
+        if ($this->f3->exists('GET.secid')) {
+            Login::disconnectUser($this->f3);
+        }
+    }
 
     protected function getFilter() {
         if (sizeof($this->filter[0]) === 0) {
@@ -71,6 +79,7 @@ abstract class BaseExport extends BaseXML {
         // Find Moves
         $move = new Move();
         $subset_position = 0;
+        $this->processPreHook();
         do {
             $subset = $move->paginate($subset_position, 1000, $this->getFilter());
             $subset_total = $subset['count'];

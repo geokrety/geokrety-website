@@ -56,7 +56,7 @@ class BaseExportXML extends BaseExport {
             $userid = null;
         } elseif (!ctype_digit($userid)) {
             http_response_code(400);
-            $this->exit(_('Parameter "userid" must be a valid number.'));
+            exit(_('Parameter "userid" must be a valid number.'));
         }
 
         // Add the filter
@@ -79,7 +79,7 @@ class BaseExportXML extends BaseExport {
         $gkid = $this->f3->get('GET.gkid');
         if (!ctype_digit($gkid) and strtoupper(substr($gkid, 0, 2)) !== 'GK') {
             http_response_code(400);
-            $this->exit(_('Parameter "gkid" must be a valid number or GKid (GKXXXXX).'));
+            exit(_('Parameter "gkid" must be a valid number or GKid (GKXXXXX).'));
         }
 
         $id = Geokret::gkid2id($gkid);
@@ -114,7 +114,7 @@ class BaseExportXML extends BaseExport {
         if (!$this->hasFilter() and !$this->modifiedSinceRestrictionBypass()) {
             http_response_code(400);
             echo sprintf('At least one filter is required. For more information, see %s', GK_SITE_BASE_SERVER_URL.$this->f3->alias('help_api'));
-            $this->exit();
+            exit();
         }
     }
 
@@ -150,7 +150,7 @@ SELECT public.ST_Area(public.ST_MakeEnvelope(cast(? as float), cast(? as float),
 EOT;  // `* 0.3048 ^ 2` for sqm?
         $result = $this->f3->get('DB')->exec($sql, [...$coords]);
         if ($result[0]['surface'] > GK_API_EXPORT_SURFACE_LIMIT and !$this->adminRestrictionBypass()) {
-            $this->exit(sprintf(_('Request surface limit exceeded: %0.3f (max: %d)'), $result[0]['surface'], GK_API_EXPORT_SURFACE_LIMIT));
+            exit(sprintf(_('Request surface limit exceeded: %0.3f (max: %d)'), $result[0]['surface'], GK_API_EXPORT_SURFACE_LIMIT));
         }
 
         $this->setFilter(
@@ -169,7 +169,7 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
         $timezone = $this->f3->get('GET.timezone') ?: 'UTC';
         if (!in_array($timezone, DateTimeZone::listIdentifiers())) {
             http_response_code(400);
-            $this->exit(sprintf(_('The selected timezone is invalid "%s"'), $timezone));
+            exit(sprintf(_('The selected timezone is invalid "%s"'), $timezone));
         }
 
         if (!$this->f3->exists('GET.modifiedsince') and $this->modifiedSinceRestrictionBypass()) {
@@ -199,14 +199,14 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
                 echo _('Info: Using timezone UTC.');
             }
             echo '</p>';
-            $this->exit();
+            exit();
         }
 
         // Check days limit
         $timeElapsed = $dateTime->floatDiffInDays(null, false);
         if ($timeElapsed < 0) {
             echo sprintf(_('The requested period is %.2f days in the future.'), -$timeElapsed);
-            $this->exit();
+            exit();
         }
         if (!$this->modifiedSinceRestrictionBypass()) {
             $timeLimitExceeded = $timeElapsed >= GK_API_EXPORT_LIMIT_DAYS;
@@ -215,7 +215,7 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
                 echo sprintf(_('The requested period exceeds the %d days limit (you requested data for the past %.2f days).'), GK_API_EXPORT_LIMIT_DAYS, $timeElapsed);
                 echo '<br>';
                 echo sprintf(_('Please download a static version of the XML. For more information, see %s.'), GK_SITE_BASE_SERVER_URL.$this->f3->alias('help_api'));
-                $this->exit();
+                exit();
             }
         }
 
