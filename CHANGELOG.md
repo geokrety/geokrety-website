@@ -1,3 +1,11 @@
+## [2.22.7](https://github.com/geokrety/geokrety-website/compare/v2.22.6...v2.22.7) (2022-06-19)
+
+
+### Bug Fixes
+
+* Disconnect early in xml exports ([009dfd2](https://github.com/geokrety/geokrety-website/commit/009dfd2c25fcf0e454cc31b541ddb56a4fdc3959))
+* Reset rate limits in integration tests ([f560a90](https://github.com/geokrety/geokrety-website/commit/f560a90804d5f94f6603c4e68cdc8ccafc1ee741))
+
 ## [2.22.6](https://github.com/geokrety/geokrety-website/compare/v2.22.5...v2.22.6) (2022-06-19)
 
 
