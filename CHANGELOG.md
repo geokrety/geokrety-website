@@ -1,3 +1,10 @@
+## [2.22.9](https://github.com/geokrety/geokrety-website/compare/v2.22.8...v2.22.9) (2022-06-19)
+
+
+### Bug Fixes
+
+* Change observation area when locale numeric separator is not a . ([73d52f1](https://github.com/geokrety/geokrety-website/commit/73d52f17b98fe293a824faf2a865b13c17e71e13)), closes [#728](https://github.com/geokrety/geokrety-website/issues/728)
+
 ## [2.22.8](https://github.com/geokrety/geokrety-website/compare/v2.22.7...v2.22.8) (2022-06-19)
 
 
