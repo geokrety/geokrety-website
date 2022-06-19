@@ -112,10 +112,17 @@ jobs:
         run: |
           make test-qa-headless
 
+      - name: Get nginx logs
+        if: ${{ failure() }}
+        run: ${DOCKER_COMPOSE} logs nginx
+
       - name: Get php logs
         if: ${{ failure() }}
         run: ${DOCKER_COMPOSE} logs website
 
+      - name: Get postgres logs
+        if: ${{ failure() }}
+        run: ${DOCKER_COMPOSE} logs postgres
 
       - name: Deploy
         if: always()
