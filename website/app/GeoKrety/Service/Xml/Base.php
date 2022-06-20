@@ -10,18 +10,27 @@ abstract class Base {
     protected $stream;
     private string $compress;
 
-    public function __construct(bool $streamXML = false, ?string $compress = null, $filename = 'out.xml') {
+    public const COMPRESSION_NONE = '';
+    public const COMPRESSION_GZIP = 'gzip';
+    public const COMPRESSION_BZIP2 = 'bzip2';
+    public const ALLOWED_COMPRESSION_METHODS = [
+        self::COMPRESSION_NONE,
+        self::COMPRESSION_GZIP,
+        self::COMPRESSION_BZIP2,
+    ];
+
+    public function __construct(bool $streamXML = false, ?string $compress = self::COMPRESSION_NONE, $filename = 'out.xml') {
         $this->stream = fopen('php://output', 'w');
         $this->compress = $compress ?? '';
         if ($streamXML === true) {
             // No output buffer while streaming
             ob_end_flush();
             ob_implicit_flush();
-            if (strtolower($compress) === 'bzip2') {
+            if (strtolower($compress) === self::COMPRESSION_BZIP2) {
                 header('Content-Disposition: attachment; filename='.$filename.'.bz2');
                 header('Content-type: application/x-bzip2');
                 stream_filter_append($this->stream, 'bzip2.compress', STREAM_FILTER_WRITE);
-            } elseif (strtolower($compress) === 'gzip') {
+            } elseif (strtolower($compress) === self::COMPRESSION_GZIP) {
                 // Unfortunately, gzip require header and trailer, which are not handled by stream-filter, so
                 // we need to rely on temporary files :( The header is easy to implement, however, trailer require
                 // checksum and length or the **original** data, which is not stored in the filter (implementing a

@@ -28,6 +28,10 @@ class ConsoleWriter {
         $this->is_interactive_shell = (defined('STDOUT') and posix_isatty(STDOUT));
     }
 
+    public function setInteractive(bool $interactive): void {
+        $this->is_interactive_shell = $interactive;
+    }
+
     public function IsInteractive(): bool {
         return $this->is_interactive_shell;
     }
@@ -56,7 +60,7 @@ class ConsoleWriter {
 
     public function flush(): void {
         if (isset($this->last_message)) {
-            echo $this->escapeAnsiColors($this->last_message);
+            fwrite(STDERR, $this->escapeAnsiColors($this->last_message));
         }
         if (ob_get_level() > 0) {
             ob_flush();

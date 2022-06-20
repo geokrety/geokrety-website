@@ -3,10 +3,11 @@
 namespace GeoKrety\Service\Xml;
 
 use DateTime;
+use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Markdown;
 
 class GeokretyExport extends GeokretyBaseExport {
-    public function addGeokret(\GeoKrety\Model\Geokret &$geokret) {
+    public function addGeokret(Geokret &$geokret) {
         $xml = $this->xml;
 
         $xml->startElement('geokret');
@@ -79,8 +80,11 @@ class GeokretyExport extends GeokretyBaseExport {
         $xml->writeAttribute('id', $move->id);
 
         $xml->startElement('geokret');
-        $xml->writeAttribute('id', $move->geokret->id);
-        $xml->writeCdata($move->geokret->name);
+        // Not following relation prevent a memory leak bug
+        $geokret = new Geokret();
+        $geokret->load(['id = ?', $move->getRaw('geokret')]);
+        $xml->writeAttribute('id', $geokret->id);
+        $xml->writeCdata($geokret->name);
         $xml->endElement(); // geokret
 
         $xml->startElement('position');

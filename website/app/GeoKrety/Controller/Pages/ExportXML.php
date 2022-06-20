@@ -8,10 +8,9 @@ use GeoKrety\Service\Xml\GeokretyExport;
 class ExportXML extends BaseExportXML {
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
-        //$this->addOneOfRequiredFilter(['userid', 'gkid', 'wpt']);
-
         $this->checkRequiredFilter();
-        $this->xml = new GeokretyExport(true, $this->f3->get('GET.compress'));
+        $this->filtersHook();
+        $this->xml = new GeokretyExport(true, $this->getCompressionMethod());
     }
 
     public function get(\Base $f3) {

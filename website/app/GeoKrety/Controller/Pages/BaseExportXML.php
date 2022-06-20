@@ -234,4 +234,16 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
     protected function processPostHook() {
         $this->xml->flush(true);
     }
+
+    protected function filtersHook() {
+    }
+
+    protected function getCompressionMethod(): string {
+        $method = $this->f3->get('GET.compress');
+        if (is_null($method) || !in_array($method, \GeoKrety\Service\Xml\Base::ALLOWED_COMPRESSION_METHODS)) {
+            return \GeoKrety\Service\Xml\Base::COMPRESSION_NONE;
+        }
+
+        return $method;
+    }
 }

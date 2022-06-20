@@ -44,7 +44,7 @@ trait Script {
     public function shutdown() {
         $this->db->rollback();
         $this->unlock();
-        echo PHP_EOL.'Exiting…'.PHP_EOL;
+        fwrite(STDERR, PHP_EOL.'Exiting…'.PHP_EOL);
         exit();
     }
 
@@ -64,7 +64,7 @@ trait Script {
         if ($this->useTransation()) {
             $this->db->begin();
         }
-        echo $this->console_writer->sprintf("* \e[0;32mStarting %s script processing at %s\e[0m", $func, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL;
+        fwrite(STDERR, $this->console_writer->sprintf("* \e[0;32mStarting %s script processing at %s\e[0m", $func, $this->start_datetime->format('Y-m-d H:i:s')).PHP_EOL);
         $this->console_writer->flush();
     }
 
@@ -74,7 +74,7 @@ trait Script {
         try {
             $script_lock->lock($this->script_name);
         } catch (Exception $exception) {
-            echo $this->console_writer->sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL;
+            fwrite(STDERR, $this->console_writer->sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL);
             exit();
         }
     }
@@ -92,7 +92,7 @@ trait Script {
             $this->save_last_update();
         }
         $this->unlock();
-        echo $this->console_writer->sprintf("* \e[0;%dmEnd script processing: %s\e[0m", ($exit > 0 ? 31 : 32), date('YmdHis')).PHP_EOL;
+        fwrite(STDERR, $this->console_writer->sprintf("\n* \e[0;%dmEnd script processing: %s\e[0m", ($exit > 0 ? 31 : 32), date('YmdHis')).PHP_EOL);
         exit($exit);
     }
 

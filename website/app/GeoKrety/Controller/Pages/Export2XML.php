@@ -10,12 +10,12 @@ class Export2XML extends BaseExportXML {
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
         $this->addOneOfRequiredFilter(['userid', 'gkid', 'wpt', 'coordinates']);
-
         $this->checkRequiredFilter();
+        $this->filtersHook();
         if (filter_var($f3->get('GET.details'), FILTER_VALIDATE_BOOLEAN)) {
-            $this->xml = new GeokretyExport2Details(true, $this->f3->get('GET.compress'));
+            $this->xml = new GeokretyExport2Details(true, $this->getCompressionMethod());
         } else {
-            $this->xml = new GeokretyExport2(true, $this->f3->get('GET.compress'));
+            $this->xml = new GeokretyExport2(true, $this->getCompressionMethod());
         }
     }
 
