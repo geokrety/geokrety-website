@@ -1,3 +1,10 @@
+## [2.23.1](https://github.com/geokrety/geokrety-website/compare/v2.23.0...v2.23.1) (2022-06-25)
+
+
+### Bug Fixes
+
+* Also add DELETE support for local dev in docker-compose ([07082e7](https://github.com/geokrety/geokrety-website/commit/07082e7b30afef657426f59c783266bdaa216822))
+
 ## [2.23.0](https://github.com/geokrety/geokrety-website/compare/v2.22.9...v2.23.0) (2022-06-25)
 
 
