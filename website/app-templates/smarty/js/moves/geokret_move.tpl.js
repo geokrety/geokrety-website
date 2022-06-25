@@ -22,6 +22,7 @@ $("#datetimepicker").datetimepicker({
 var inscrybmde = new InscrybMDE({
     element: $("#comment")[0],
     hideIcons: ['side-by-side', 'fullscreen', 'quote'],
+    autoDownloadFontAwesome: false,
     forceSync: true,
     promptURLs: true,
     spellChecker: false,

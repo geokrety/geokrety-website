@@ -18,6 +18,7 @@ function bindControls() {
     inscrybmde = new InscrybMDE({
         element: $("#message")[0],
         hideIcons: ['side-by-side', 'fullscreen', 'quote', 'image'],
+        autoDownloadFontAwesome: false,
         promptURLs: true,
         spellChecker: false,
         status: false,

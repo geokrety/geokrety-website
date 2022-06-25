@@ -14,6 +14,7 @@
 var inscrybmde = new InscrybMDE({
     element: $("#inputMission")[0],
     hideIcons: ['side-by-side', 'fullscreen', 'quote'],
+    autoDownloadFontAwesome: false,
     promptURLs: true,
     spellChecker: false,
     status: false,
