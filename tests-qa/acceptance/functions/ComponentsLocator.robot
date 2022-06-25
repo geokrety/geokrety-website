@@ -423,7 +423,7 @@ ${MOVE_NEW_LOCATION_MAP_COORDINATES_SEARCH_BUTTON}      //*[@id="coordinatesSear
 ${MOVE_NEW_LOCATION_MAP_COORDINATES_HELP_BUTTON}        //*[@id="geolocationButton"]
 ${MOVE_NEW_LOCATION_MAP_MAP}                            //*[@id="mapid"]
 
-${MOVE_ADDITIONAL_DATA_PANEL}                       //*[@id="panelMoveAdditionalData"]
+${MOVE_ADDITIONAL_DATA_PANEL}                       //*[@id="additionalDataPanel"]
 ${MOVE_ADDITIONAL_DATA_PANEL_HEADER}                //*[@id="headingMessage"]
 ${MOVE_ADDITIONAL_DATA_PANEL_HEADER_TEXT}           //*[@id="additionalDataHeader"]
 ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}               //*[@id="submitButton"]

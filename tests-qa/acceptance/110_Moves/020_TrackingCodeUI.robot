@@ -34,16 +34,14 @@ Blur Trigger Validation On 6th Character
 Next Trigger Validation - Valid
     Go To Url                               ${PAGE_MOVES_URL}
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
-    Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
-    Panel validation has success            ${MOVE_TRACKING_CODE_PANEL}
-    Panel Is Collapsed                      ${MOVE_TRACKING_CODE_PANEL}
+    Click Button And Check Panel Validation Has Success
 
 Next Trigger Validation - Invalid
     Go To Url                               ${PAGE_MOVES_URL}
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ABCDEF
     Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
     Panel validation has error              ${MOVE_TRACKING_CODE_PANEL}
-    Panel Is Collapsed                      ${MOVE_TRACKING_CODE_PANEL}
+    Panel Is Open                           ${MOVE_TRACKING_CODE_PANEL}
 
 *** Keywords ***
 
@@ -58,3 +56,8 @@ Button Trigger Validation With Wrong TC
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${tc}
     Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
     Panel validation has error              ${MOVE_TRACKING_CODE_PANEL}
+
+Click Button And Check Panel Validation Has Success
+    Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
+    Panel validation has success            ${MOVE_TRACKING_CODE_PANEL}
+    Panel Is Collapsed                      ${MOVE_TRACKING_CODE_PANEL}

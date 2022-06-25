@@ -172,19 +172,6 @@ Seed
     Seed 1 waypoints GC
     Sign Out Fast
 
-Fill Coordinates
-    [Arguments]    ${wpt}    ${coords}
-    Go To Url                               ${PAGE_MOVES_URL}
-    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
-    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${wpt}
-    Simulate Event                          ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         blur
-    Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
-
-    Click Element                           ${MOVE_NEW_LOCATION_MAP_PANEL_HEADER}
-    Element Should Be Visible               ${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}
-    Input Text                              ${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}  ${coords}
-    Click Button                            ${MOVE_NEW_LOCATION_MAP_COORDINATES_SEARCH_BUTTON}
-
 Fill Valid Waypoint Validate The Form
     [Arguments]    ${wpt}    ${coords}
     Go To Url                               ${PAGE_MOVES_URL}

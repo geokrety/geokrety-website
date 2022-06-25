@@ -5,18 +5,6 @@ var isValidLatlon = false;
 var isWaypointFound = false;
 var birthdate = null
 
-$('input[type=radio][name=logtype]').change(function() {
-    // // scroll to top
-    // $([document.documentElement, document.body]).animate({
-    //     scrollTop: $("#infoLogtypeFormGroup").offset().top - 100
-    // }, 250);
-
-    // Force validate
-    $("#moveForm").parsley().whenValidate({
-        group: "logtype"
-    });
-});
-
 // Convert GeoKret date to moment object
 function geokretDateToMoment(data) {
     movedGeokret = data.map(function (geokret) {
@@ -68,7 +56,7 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
     // Force revalidate date
     revalidateMoveDate();
     return valid;
-}, '{'validate_tracking_code'|alias}');
+}, '{'validate_tracking_code'|alias}')
 
 // Validate Waypoint
 window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
@@ -105,7 +93,7 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
     }
     isWaypointFound = valid;
     return valid;
-}, '{'validate_waypoint'|alias}');
+}, '{'validate_waypoint'|alias}')
 
 // Validate Coordinates
 window.Parsley.addAsyncValidator('checkCoordinates', function(xhr) {
@@ -119,7 +107,7 @@ window.Parsley.addAsyncValidator('checkCoordinates', function(xhr) {
         this.addError('errorLatlon', { message: data.error })
     }
     return valid;
-}, '{'validate_coordinates'|alias}');
+}, '{'validate_coordinates'|alias}')
 
 window.Parsley.addValidator('datebeforenow', {
     validateString: function(value, format) {
@@ -158,10 +146,20 @@ window.Parsley.addValidator('dateaftergkbirth', {
     priority: 256,
 });
 
+$("input[type=radio][name='logtype']").change(function() {
+    // Force validate
+    $("#moveForm").parsley().whenValidate({
+        group: "logtype"
+    }).done(function() {
+        if (isPanelGroupValid($("input[type=radio][name='logtype']"))) {
+            toggleLocationSubfrom();
+        }
+    });
+});
+
 // Show selection in panel header
 $('#logType0').parsley().on('field:success', function() {
-    var selectedLogType = $("input[type=radio][name='logtype']:checked").val();
-    var selectedLogTypeText = logTypeToText(selectedLogType);
+    var selectedLogTypeText = logTypeToText($("input[type=radio][name='logtype']:checked").val());
     $("#logTypeHeader").html(selectedLogTypeText);
     colorizeParentPanel($('#logType0'), true);
 }).on('field:error', function() {
@@ -170,10 +168,11 @@ $('#logType0').parsley().on('field:success', function() {
 
 // Events for NR
 $('#nr').parsley().on('field:success', function() {
-    if ($('#nr').val().length == 6) {
+    let $nr = $('#nr');
+    if ($nr.val().length === 6) {
         $(':focus').blur();
     }
-    colorizeParentPanel($('#nr'), true);
+    colorizeParentPanel($nr, true);
 }).on('field:error', function() {
     colorizeParentPanel($('#nr'), false);
 });
@@ -187,35 +186,34 @@ $('#wpt').parsley().on('field:success', function() {
     if (wptHomeButtonToggled) {
         $("#locationHeader").html('<i>{t}My home position{/t}</i>');
     } else {
-        colorizeParentPanel($('#wpt'), true);
-        $("#locationHeader").html($('#wpt').val().toUpperCase());
+        let $wpt = $('#wpt');
+        $("#locationHeader").html($wpt.val().toUpperCase());
+        colorizeParentPanel($wpt, true);
     }
 }).on('field:validate', function() {
     // Disable check when we're in log at home
-    if (wptHomeButtonToggled) {
-        return true;
-    }
-    return false;
+    return wptHomeButtonToggled;
 }).on('field:error', function() {
-    colorizeParentPanel($('#wpt'), false);
     $("#locationHeader").html('');
+    colorizeParentPanel($('#wpt'), false);
 });
 
 // Events for LATLON
 $('#latlon').parsley().on('field:success', function() {
-    colorizeParentPanel($('#wpt'), true);
     isValidLatlon = true;
     showMarker($("#latlon").val().split(' '));
+    colorizeParentPanel($('#wpt'), true);
 }).on('field:validated', function() {
     if (!isWaypointFound) {
-        $("#wpt").parsley().reset();
-        $("#wpt").parsley().validate();
+        let $wpt_parsley = $('#wpt').parsley();
+        $wpt_parsley.reset();
+        $wpt_parsley.validate();
     }
 }).on('field:error', function() {
-    colorizeParentPanel($('#wpt'), false);
     $("#locationHeader").html('');
     isValidLatlon = false;
     dropMarker();
+    colorizeParentPanel($('#wpt'), false);
 });
 
 // Events for DATE
@@ -256,19 +254,10 @@ function validateGroupAdditionalData() {
 $('#nrNextButton').on('click', function() {
     $("#moveForm").parsley().whenValidate({
         group: "trackingCode"
-    });
-});
-
-// Special case when location is not necessary
-// Click on next validate group
-$("#logtypeNextButton").on('click', function() {
-    if (isLocationNeeded()) {
-        $('#collapseLocation').collapse('show');
-    } else {
-        $('#collapseMessage').collapse('show');
-    }
-    $("#moveForm").parsley().whenValidate({
-        group: "logtype"
+    }).done(function() {
+        if (isPanelGroupValid($('#nrNextButton'))) {
+            $('#collapseLogtype').collapse('show');
+        }
     });
 });
 
@@ -277,6 +266,10 @@ $("#logtypeNextButton").on('click', function() {
 $('#locationNextButton').on('click', function() {
     $("#moveForm").parsley().whenValidate({
         group: "location"
+    }).done(function() {
+        if (isPanelGroupValid($('#locationNextButton'))) {
+            $('#collapseMessage').collapse('show');
+        }
     });
 });
 

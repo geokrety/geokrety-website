@@ -13,14 +13,30 @@ ${COMMENT_2} =        Another one
 Click Move Type
     [Arguments]    ${action}
     # let activate retry as sometimes the ToolTip is still over element
-    Wait Until Keyword Succeeds    2x    200ms    Click Element    ${action}/parent::label
+    Wait Until Keyword Succeeds    5x    200ms    Click Element    ${action}/parent::label
+
+Fill Coordinates Only
+    [Arguments]    ${coords}
+    Click Element                           ${MOVE_NEW_LOCATION_MAP_PANEL_HEADER}
+    Element Should Be Visible               ${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}
+    Input Text                              ${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}  ${coords}
+    Click Button                            ${MOVE_NEW_LOCATION_MAP_COORDINATES_SEARCH_BUTTON}
+
+Fill Coordinates
+    [Arguments]    ${wpt}    ${coords}
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${wpt}
+    Simulate Event                          ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         blur
+    Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
+
+    Fill Coordinates Only                   ${coords}
 
 Post Move
     [Arguments]    ${move}
     Create Session    gk        ${GK_URL}
     ${resp}=          POST On Session    gk    url=/devel/db/geokrety/move/seed    data=${move}    headers=${CONTENT_TYPE_FORM_URLENCODED}
     Request Should Be Successful     ${resp}
- # 200ms    Click Element    ${action}/parent::label
 
 Post Move Comment
     [Arguments]    ${moveid}=1    ${comment}=${EMPTY}

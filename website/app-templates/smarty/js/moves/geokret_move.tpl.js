@@ -198,16 +198,21 @@ function colorizeParentPanel(element, valid) {
             .removeClass("panel-default")
             .removeClass("panel-success");
     }
-};
+}
+
+function isPanelGroupValid(element) {
+    var panel = element.closest(".panel");
+    return panel.hasClass("panel-success");
+}
 
 // Check if Waypoint is GC
 function isWaypointGC() {
-    return ($("#wpt").val().substring(0, 2).toUpperCase() != 'GC');
+    return ($("#wpt").val().substring(0, 2).toUpperCase() !== 'GC');
 }
 
 // Check if a move type require coordinates
 function isLocationNeeded() {
-    var logtype = $('input[name=logtype]:checked', '#moveForm').val();
+    var logtype = $("input[type=radio][name='logtype']:checked", '#moveForm').val();
     return logtype === undefined ? true : ['0', '3', '5'].includes(logtype);
 }
 
@@ -235,17 +240,21 @@ function logTypeToText(logtype) {
 // Toggle location panel based on move type requirement
 function toggleLocationSubfrom() {
     if (isLocationNeeded()) {
+        $('#additionalDataNumber').html('4');
         $("#panelLocation").show();
         if (!wptHomeButtonToggled) {
             $("#panelLocation input").each(function() {
                 $(this).prop('disabled', false);
             })
         }
+        $('#collapseLocation').collapse('show');
     } else {
         $("#panelLocation").hide();
+        $('#additionalDataNumber').html('3');
         $("#panelLocation input").each(function() {
             $(this).prop('disabled', true);
         })
+        $('#collapseMessage').collapse('show');
     }
 }
 
@@ -266,17 +275,6 @@ function toggleHomeCoordinatesButton() {
         $("#wptHomeButton").show();
     }
 }
-
-// bind radio buttons
-$("#moveForm input[name='logtype']").change(function() {
-    toggleLocationSubfrom();
-});
-
-// bind radio buttons
-$("#moveForm label:has(input[name='logtype'])").on('dblclick', function() {
-    console.log('click');
-    $("#logtypeNextButton").click();
-});
 
 // bind on submit
 $("#submitButton").on('click', function() {
@@ -377,7 +375,7 @@ if ($('#nr').val().length > 0) {
 }
 
 // Initialize logtype
-if ($('input[name=logtype]:checked', '#moveForm').val() != undefined) {
+if ($("input[type=radio][name='logtype']:checked", '#moveForm').val() != undefined) {
     $("#logType0").trigger("change");
 }
 

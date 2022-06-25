@@ -8,7 +8,7 @@
 
         <div id="panelMoveGeoKret" class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingGeokret" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">
-                {t}Identify GeoKret{/t}
+                1. {t}Identify GeoKret{/t}
                 <div class="pull-right" id="geokretHeader"></div>
                 <div class="clearfix"></div>
             </div>
@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="form-group top-buffer">
                             <div class="col-sm-3 col-sm-offset-2">
-                                <button type="button" class="btn btn-primary btn-block" id="nrNextButton" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">{t}Next{/t}</button>
+                                <button type="button" class="btn btn-primary btn-block" id="nrNextButton">{t}Validate{/t}</button>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
 
         <div id="panelMoveLogType" class="panel panel-default">
             <div class="panel-heading collapsed" role="tab" id="headingLogtype" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLogtype" aria-expanded="true" aria-controls="collapseLogtype">
-                {t}Log type{/t}
+                2. {t}Log type{/t}
                 <div class="pull-right" id="logTypeHeader"></div>
                 <div class="clearfix"></div>
             </div>
@@ -112,21 +112,13 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-3 col-sm-offset-2">
-                                <button type="button" class="btn btn-primary btn-block" id="logtypeNextButton">{t}Next{/t}</button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
 
         <div id="panelLocation" class="panel panel-default">
             <div class="panel-heading collapsed" role="tab" id="headingLocation" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseLocation" aria-expanded="true" aria-controls="collapseLocation">
-                {t}New location{/t}
+                3 {t}New location{/t}
                 <div class="pull-right" id="locationHeader"></div>
                 <div class="clearfix"></div>
             </div>
@@ -202,7 +194,7 @@
                     <div class="row">
                         <div class="form-group top-buffer">
                             <div class="col-sm-3 col-sm-offset-2">
-                                <button type="button" class="btn btn-primary btn-block" id="locationNextButton" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">{t}Next{/t}</button>
+                                <button type="button" class="btn btn-primary btn-block" id="locationNextButton" >{t}Validate{/t}</button>
                             </div>
                         </div>
                     </div>
@@ -211,9 +203,9 @@
             </div>
         </div>
 
-        <div id="panelMoveAdditionalData" class="panel panel-default" id="additionalDataPanel">
+        <div id="additionalDataPanel" class="panel panel-default">
             <div class="panel-heading collapsed" role="tab" id="headingMessage" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseMessage" aria-expanded="true" aria-controls="collapseMessage">
-                {t}Additional data{/t}
+                <span id="additionalDataNumber">4</span>. {t}Additional data{/t}
                 <div class="pull-right" id="additionalDataHeader"></div>
                 <div class="clearfix"></div>
             </div>
@@ -253,26 +245,26 @@
                         </div>
                     </div>
 
-{if !$f3->get('SESSION.CURRENT_USER')}
-                    {call recaptcha}
-                    <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-2">
-                            {include file='banners/geokret_anonymous_log.tpl'}
-                        </div>
-                    </div>
-{/if}
-
-                    <div class="form-group">
-                        <div class="col-sm-3 col-sm-offset-2">
-                            {call csrf}
-                            <button type="button" id="submitButton" class="btn btn-primary btn-block">{t}Post your log{/t}</button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
 
+    </div>
+
+    {if !$f3->get('SESSION.CURRENT_USER')}
+        {call recaptcha}
+        <div class="form-group">
+            <div class="col-sm-12">
+                {include file='banners/geokret_anonymous_log.tpl'}
+            </div>
+        </div>
+    {/if}
+
+    <div class="form-group">
+        <div class="col-sm-3 col-sm-offset-2">
+            {call csrf}
+            <button type="button" id="submitButton" class="btn btn-primary btn-block">{t}Post your log{/t}</button>
+        </div>
     </div>
 
 </form>

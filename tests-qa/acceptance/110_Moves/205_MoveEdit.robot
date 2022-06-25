@@ -65,7 +65,12 @@ Change Location
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
     Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
-    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}             ${WPT_GC_2.id}
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         GC
+    Simulate Event                          ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         blur
+    Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}                  timeout=120
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${WPT_GC_2.id}
+    Fill Coordinates Only                   ${WPT_GC_2.coords}
+    Panel validation has success            ${MOVE_NEW_LOCATION_PANEL}
     Open Panel                              ${MOVE_ADDITIONAL_DATA_PANEL}
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
     Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1

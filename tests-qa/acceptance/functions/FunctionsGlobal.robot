@@ -286,25 +286,30 @@ Element should not have class
     Page Should Not Contain Element    ${element}\[contains(@class, "${className}")]
 
 Panel validation has success
-    [Arguments]  ${element}
-    Wait until page contains element    ${element}\[contains(@class, "panel-success")]    timeout=3
+    [Arguments]  ${element}     ${timeout}=3
+    Wait until page contains element    ${element}\[contains(@class, "panel-success")]    timeout=${timeout}
     # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-success")]    timeout=2
 
 Panel validation has error
-    [Arguments]  ${element}
-    Wait until page contains element    ${element}\[contains(@class, "panel-danger")]    timeout=3
+    [Arguments]  ${element}     ${timeout}=3
+    Wait until page contains element    ${element}\[contains(@class, "panel-danger")]    timeout=${timeout}
     # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-danger")]    timeout=2
 
 Panel Is Collapsed
-    [Arguments]  ${element}
-    Page Should Contain Element         ${element}/div[contains(@class, "panel-heading") and contains(@class, "collapsed")]
+    [Arguments]  ${element}     ${timeout}=3
+    Wait until page contains element    ${element}/div[contains(@class, "panel-heading") and contains(@class, "collapsed")]    timeout=${timeout}
+
+Panel Is Open
+    [Arguments]  ${element}     ${timeout}=3
+    Wait until page contains element    ${element}/div[contains(@class, "panel-heading") and not(contains(@class, "collapsed"))]    timeout=${timeout}
+
 
 Open Panel
     [Arguments]                     ${element}
-    ${status}    ${value} =         Run Keyword And Ignore Error    Panel Is Collapsed    ${element}
+    ${status}    ${value} =         Run Keyword And Ignore Error    Panel Is Collapsed    ${element}     timeout=1
     Run Keyword If                  '${status}' == 'PASS'
     ...                             Click Element                   ${element}/div[contains(@class, "panel-heading")]
-    Page Should Contain Element     ${element}/div[contains(@class, "panel-heading") and not(contains(@class, "collapsed"))]
+    Panel Is Open                   ${element}
 
 Flash message shown
     [Arguments]  ${message}
