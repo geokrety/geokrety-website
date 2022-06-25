@@ -72,7 +72,7 @@
                     {if $geokret->avatar}
                         {$geokret->avatar|picture:true:false:false nofilter}
                     {/if}
-                    {'/assets/images/placeholder-graph.png'|url_picture:'/assets/images/placeholder-graph.png' nofilter}{* TODO: Altitude profile *}
+                    {* TODO: {'/assets/images/placeholder-graph.png'|url_picture:'/assets/images/placeholder-graph.png' nofilter} *}
                 </div>
             </div>
         </div>
