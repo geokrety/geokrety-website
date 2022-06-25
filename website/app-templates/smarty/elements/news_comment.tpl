@@ -1,4 +1,4 @@
-<div class="panel panel-{if isset($news_last_read_datetime) && $comment->updated_on_datetime >= $news_last_read_datetime}info{else}default{/if}" data-gk-type="news-comment" data-id="{$comment->id}">
+<div class="news-comment panel panel-{if isset($news_last_read_datetime) && $comment->updated_on_datetime >= $news_last_read_datetime}info{else}default{/if}" data-gk-type="news-comment" data-id="{$comment->id}">
     <div class="panel-heading">
         <div class="pull-left">
             {fa icon="file-text-o"}
