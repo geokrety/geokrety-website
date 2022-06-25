@@ -1,3 +1,11 @@
+## [2.23.2](https://github.com/geokrety/geokrety-website/compare/v2.23.1...v2.23.2) (2022-06-25)
+
+
+### Bug Fixes
+
+* Don't let inscrybmde autoload resources from external ([3e5c6b0](https://github.com/geokrety/geokrety-website/commit/3e5c6b084af292cc5408dea4035c712f15aafcfc))
+* Fix move comment lenght validation ([6bcf92d](https://github.com/geokrety/geokrety-website/commit/6bcf92d6d1371276740a4607408c84955678f1a4))
+
 ## [2.23.1](https://github.com/geokrety/geokrety-website/compare/v2.23.0...v2.23.1) (2022-06-25)
 
 
