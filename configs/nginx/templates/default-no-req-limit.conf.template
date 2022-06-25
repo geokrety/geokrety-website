@@ -19,8 +19,8 @@ server {
     access_log /dev/stdout timed_combined;
     error_log  /dev/stderr;
 
-    # Disable all methods besides HEAD, GET, POST, OPTION.
-    if ($request_method !~ ^(GET|POST|OPTION|HEAD)$ ) {
+    # Disable all methods besides HEAD, GET, POST, OPTION, DELETE.
+    if ($request_method !~ ^(GET|POST|OPTION|HEAD|DELETE)$ ) {
         return 444;
     }
 
