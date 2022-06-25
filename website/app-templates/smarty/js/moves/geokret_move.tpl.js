@@ -22,11 +22,24 @@ $("#datetimepicker").datetimepicker({
 var inscrybmde = new InscrybMDE({
     element: $("#comment")[0],
     hideIcons: ['side-by-side', 'fullscreen', 'quote'],
+    forceSync: true,
     promptURLs: true,
     spellChecker: false,
 	renderingConfig: {
 		singleLineBreaks: false,
 	},
+    status: ["lines", "words", {
+		className: "characters",
+		defaultValue: function(el) {
+			el.innerHTML = 0;
+		},
+		onUpdate: function(el) {
+			el.innerHTML = $("#comment").val().length;
+		}
+	}],
+});
+inscrybmde.codemirror.on("change", function(){
+    $("#comment").parsley().validate();
 });
 
 // Automatic scroll on panel open

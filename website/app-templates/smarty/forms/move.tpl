@@ -246,7 +246,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">{t}Comment{/t}</label>
                         <div class="col-sm-10">
-                            <textarea id="comment" name="comment" rows="12" maxlength="5120" class="form-control" aria-describedby="helpBlockComment" data-parsley-group="additionalData" data-parsley-trigger="input focusout">{$move->comment}</textarea>
+                            <textarea id="comment" name="comment" rows="12" maxlength="{GK_MOVE_COMMENT_MAX_LENGTH}" class="form-control" aria-describedby="helpBlockComment" data-parsley-group="additionalData" data-parsley-trigger="input focusout">{$move->comment}</textarea>
                             <p id="helpBlockComment" class="help-block">
                                 {t}It is always nice to receive a little message ;){/t}
                             </p>

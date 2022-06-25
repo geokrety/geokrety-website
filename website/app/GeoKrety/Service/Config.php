@@ -332,6 +332,7 @@ class Config extends \Prefab {
         define('GK_USERNAME_MIN_LENGTH', getenv('GK_USERNAME_MIN_LENGTH') ?: 3);
         define('GK_USERNAME_MAX_LENGTH', getenv('GK_USERNAME_MAX_LENGTH') ?: 20);
         define('GK_PICTURE_CAPTION_MAX_LENGTH', getenv('GK_PICTURE_CAPTION_MAX_LENGTH') ?: 50);
+        define('GK_MOVE_COMMENT_MAX_LENGTH', getenv('GK_MOVE_COMMENT_MAX_LENGTH') ?: 5120);
 
         // GeoKrety generator
         define('GK_GENERATOR_MAX_COUNT', getenv('GK_GENERATOR_MAX_COUNT') ?: 100);

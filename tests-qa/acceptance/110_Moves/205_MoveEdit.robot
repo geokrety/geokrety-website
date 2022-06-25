@@ -36,7 +36,6 @@ Information Should Be Loaded
     Radio Button Should Be Set To           ${MOVE_LOG_TYPE_RADIO_GROUP}                    ${MOVE_1.move_type}
     Textfield Value Should Be               ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}             ${MOVE_1.waypoint}
     Textfield Value Should Be               ${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}      ${MOVE_1.lat} ${MOVE_1.lon}
-    Inscrybmde To Textarea                  \#comment
     Textarea Value Should Be                ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}           ${MOVE_1.comment}
     Input Value Should Be                   ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         Sat, Aug 22, 2020 6:30 PM
     Input Value Should Be                   ${MOVE_ADDITIONAL_DATA_DATE_HIDDEN_INPUT}       2020-08-22

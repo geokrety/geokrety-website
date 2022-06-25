@@ -1,4 +1,5 @@
 *** Settings ***
+Library         String
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/users.resource
@@ -120,9 +121,27 @@ Fill Comment
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_ADDITIONAL_DATA_PANEL}
     Input Inscrybmde                        \#comment                                   TEST
-    Inscrybmde To Textarea                  \#comment
     Textarea Value Should Be                ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}       TEST
-#
+
+# Test issue https://github.com/geokrety/geokrety-website/issues/741
+Fill Comment Over Limit
+    Sign Out Fast
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_ADDITIONAL_DATA_PANEL}
+    ${text} =    Generate Random String     length=5120
+
+    Input Inscrybmde                        \#comment                                   ${text}
+    Textarea Value Should Be                ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}       ${text}
+    Input validation has success            ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}
+
+    Input Inscrybmde                        \#comment                                   A${text}
+    Textarea Value Should Be                ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}       A${text}
+    Input validation has error              ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}
+
+    Input Inscrybmde                        \#comment                                   ${text}
+    Textarea Value Should Be                ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}       ${text}
+    Input validation has success            ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}
+
 Click Next Without Filling Values Should Trigger Error As Anonymous
     Sign Out Fast
     Go To Url                               ${PAGE_MOVES_URL}

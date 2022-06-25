@@ -84,6 +84,7 @@ class Move extends Base {
         ],
         'comments' => [
             'has-many' => ['\GeoKrety\Model\MoveComment', 'move'],
+            'validate' => 'max_len,'.GK_MOVE_COMMENT_MAX_LENGTH,
         ],
         'pictures_count' => [
             'type' => Schema::DT_SMALLINT,
