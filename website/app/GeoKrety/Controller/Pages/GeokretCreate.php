@@ -2,33 +2,17 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
-use GeoKrety\Model\Label;
 use GeoKrety\Model\Move;
 use GeoKrety\Service\Smarty;
 
-class GeokretCreate extends Base {
+class GeokretCreate extends GeokretFormBase {
     use \CurrentUserLoader;
-
-    private Geokret $geokret;
 
     public function _beforeRoute(\Base $f3) {
         $this->geokret = new Geokret();
         Smarty::assign('geokret', $this->geokret);
-    }
-
-    public function get(\Base $f3) {
-        $label = new Label();
-        $templates = $label->find(null, ['order' => 'title'], GK_SITE_CACHE_TTL_LABELS_LIST);
-        Smarty::assign('templates', $templates);
-
-        if ($f3->exists('COOKIE.default_label_template')) {
-            $this->geokret->label_template = json_decode($f3->get('COOKIE.default_label_template'));
-        }
-
-        Smarty::render('pages/geokret_create.tpl');
     }
 
     public function post(\Base $f3) {
@@ -41,17 +25,7 @@ class GeokretCreate extends Base {
         $this->geokret->touch('created_on_datetime');
 
         $this->checkCsrf();
-
-        // Load the selected template
-        $label = new Label();
-        $label->load(['template = ?', $f3->get('POST.label_template')], null, GK_SITE_CACHE_TTL_LABELS_LOOKUP);
-        if ($label->dry()) {
-            Flash::instance()->addMessage(_('This label template does not exist.'), 'danger');
-            $this->get($f3);
-            exit();
-        }
-        $this->geokret->label_template = $label;
-        $f3->set('COOKIE.default_label_template', strval($this->geokret->label_template->id));
+        $this->loadSelectedTemplate($f3);
 
         if ($this->geokret->validate()) {
             try {

@@ -71,6 +71,7 @@ ${PAGE_PASSWORD_RECOVERY_URL}                     ${GK_URL}/en/password-recovery
 ${PAGE_PASSWORD_RECOVERY_RESET_PASSWORD_URL}      ${GK_URL}/en/recover-password/
 
 ${PAGE_GEOKRETY_CREATE_URL}             ${GK_URL}/en/geokrety/create
+${PAGE_GEOKRETY_EDIT_URL}               ${GK_URL}/en/geokrety/1/edit
 ${PAGE_GEOKRETY_CLAIM_URL}              ${GK_URL}/en/geokrety/claim
 ${PAGE_GEOKRETY_WATCH_URL}              ${GK_URL}/en/geokrety/\${params.gkid}/watch
 ${PAGE_GEOKRETY_UNWATCH_URL}            ${GK_URL}/en/geokrety/\${params.gkid}/unwatch
