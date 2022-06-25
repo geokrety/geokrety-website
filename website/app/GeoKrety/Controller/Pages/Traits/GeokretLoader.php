@@ -24,6 +24,10 @@ trait GeokretLoader {
             $f3->error(404, _('This GeoKret does not exist.'));
         }
         Smarty::assign('geokret', $geokret);
+
+        if (method_exists($this, '_beforeRoute')) {
+            $this->_beforeRoute($f3);
+        }
     }
 
     protected function filterHook() {

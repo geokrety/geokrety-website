@@ -7,6 +7,13 @@ use GeoKrety\Traits\GeokretLoader;
 class GeokretEdit extends GeokretFormBase {
     use GeokretLoader;
 
+    public function _beforeRoute(\Base $f3) {
+        if (!$this->geokret->isOwner()) {
+            \Flash::instance()->addMessage(_('Only the owner can edit his GeoKrety.'), 'danger');
+            $f3->reroute('@geokret_details(@gkid='.$this->geokret->gkid.')');
+        }
+    }
+
     public function post($f3) {
         $geokret = $this->geokret;
         $geokret->copyFrom('POST');

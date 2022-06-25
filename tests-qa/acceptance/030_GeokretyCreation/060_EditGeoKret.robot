@@ -9,7 +9,25 @@ Suite Setup     Seed
 *** Test Cases ***
 
 
+Anonymous can access form
+    Sign Out Fast
+    Go To Url                               ${PAGE_GEOKRETY_EDIT_URL}
+    Page Should Contain                     ${UNAUTHORIZED}
+
+Owner can access form
+    Sign In ${USER_1.name} Fast
+    Go To Url                               ${PAGE_GEOKRETY_EDIT_URL}
+    Page Should Contain                     GeoKret label preview
+
+Cannot edit someone else GeoKret
+    Sign In ${USER_2.name} Fast
+    Go To Url                               ${PAGE_GEOKRETY_EDIT_URL}
+    Page Should Contain                     Only the owner can edit his GeoKrety
+    Page Should Not Contain                 GeoKret label preview
+
+
 Edit A GeoKret
+    Sign In ${USER_1.name} Fast
     Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
     ${selected_template} =    Get Selected List Value    ${GEOKRET_CREATE_LABEL_TEMPLATE_SELECT}
     Should Be Equal                     ${selected_template}                default
@@ -34,6 +52,5 @@ Edit A GeoKret
 
 Seed
     Clear Database
-    Seed 1 users
+    Seed 2 users
     Seed 1 geokrety owned by 1
-    Sign In ${USER_1.name} Fast
