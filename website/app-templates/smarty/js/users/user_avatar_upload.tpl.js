@@ -13,6 +13,10 @@ $("div#userAvatar").dropzone({
     previewsContainer: "#userPicturesList div.panel-body > div.gallery",
     hiddenInputContainer: "div#userAvatar",
 
+    error: function (file, message) {
+        alert(message);
+        this.removeFile(file);
+    },
     accept: function (file, done) {
         file.postData = [];
         $.ajax({
@@ -82,8 +86,11 @@ $("div#userAvatar").dropzone({
                 $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
                     $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
                     $("#userPicturesList .panel-body > div.gallery").append(data);
+                    setTimeout(function(){ refresh(fileKey) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
+                }).fail(function() {
+                    $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
+                    alert("{t}Image processing failed. This image type is probably not supported{/t}");
                 });
-                setTimeout(function(){ refresh(fileKey) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
             }
         });
 

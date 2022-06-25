@@ -3,7 +3,6 @@ this.on("drop", function (event) {
     console.log(event.dataTransfer);
     let dropzone = this;
     let imageUrl = event.dataTransfer.getData('URL');
-    console.log(imageUrl);
     let fileName = imageUrl.split('/').pop();
 
     // set the effectAllowed for the drag item

@@ -18,6 +18,10 @@ $('div.enable-dropzone').each(function() {
         hiddenInputContainer: baseSelector + " .dropzone",
 
 
+        error: function (file, message) {
+            alert(message);
+            this.removeFile(file);
+        },
         accept: function (file, done) {
             file.postData = [];
             $.ajax({
@@ -80,16 +84,19 @@ $('div.enable-dropzone').each(function() {
                     refresh(file.s3Key);
                 });
 
-            function refresh(fileKey) {
-                if ($("#"+fileKey+" div span.picture-message").length === 0) {
-                    return;
+                function refresh(fileKey) {
+                    if ($("#"+fileKey+" div span.picture-message").length === 0) {
+                        return;
+                    }
+                    $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
+                        $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
+                        $(baseSelector + " .move-pictures div.row > div.gallery").append(data);
+                        setTimeout(function(){ refresh(fileKey) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
+                    }).fail(function() {
+                        $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
+                        alert("{t}Image processing failed. This image type is probably not supported{/t}");
+                    });
                 }
-                $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
-                    $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
-                    $(baseSelector + " .move-pictures div.row > div.gallery").append(data);
-                });
-                setTimeout(function(){ refresh(fileKey) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
-            }
             });
 
             this.on("error", function (file, errorMessage, xhr) {
@@ -119,7 +126,7 @@ function parseS3UploadError(errorMessage, xhr) {
             return "{t}Invalid according to Policy: Policy Condition failed.{/t}";
         }
     }
-    console.log('This error message is not catched:', errorMessage);
+    console.log('This error message is not caught:', errorMessage);
     return errorMessage;
 }
 

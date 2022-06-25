@@ -10,7 +10,7 @@ class PictureHtmlTemplate extends Base {
 
     public function get() {
         $smarty = \GeoKrety\Service\Smarty::getSmarty();
-        echo $smarty->display('string:{$picture|picture:true nofilter}');
+        $smarty->display('string:{$picture|picture:true nofilter}');
     }
 
     protected function checkAuthor(Picture $picture) {
