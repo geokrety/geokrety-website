@@ -1,3 +1,15 @@
+## [2.23.0](https://github.com/geokrety/geokrety-website/compare/v2.22.9...v2.23.0) (2022-06-25)
+
+
+### Features
+
+* Implement full exports ([852666f](https://github.com/geokrety/geokrety-website/commit/852666faa5931b5d6c274300d2d30e77e042a1f2))
+
+
+### Bug Fixes
+
+* Repair image processing failure detection ([0f6d9f6](https://github.com/geokrety/geokrety-website/commit/0f6d9f62e2bfac2d0f5605eefb84b24761f43694)), closes [#742](https://github.com/geokrety/geokrety-website/issues/742)
+
 ## [2.22.9](https://github.com/geokrety/geokrety-website/compare/v2.22.8...v2.22.9) (2022-06-19)
 
 
