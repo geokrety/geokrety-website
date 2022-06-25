@@ -40,6 +40,14 @@ Upload images to different moves
     Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}/figure    1
     Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_MOVE_IMAGES}/figure    1
 
+# See bug https://github.com/geokrety/geokrety-website/issues/742
+Upload invalid image
+    Sign In ${USER_1.name} Fast
+    Go To GeoKrety ${1} url
+    Upload picture via button base                  ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_DROPZONE}    ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}    ${CURDIR}/pulp_loose.webp
+    Alert Should Be Present                         text=Image processing failed. This image type is probably not supported
+    Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_MOVE_IMAGES}/figure    0
+
 *** Keywords ***
 
 Seed

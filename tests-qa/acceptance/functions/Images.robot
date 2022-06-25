@@ -28,11 +28,15 @@ Click Picture Action
     Mouse Over                              ${image}${button}
     Click Button                            ${image}${button}
 
-Upload picture via button
+Upload picture via button base
     [Arguments]    ${dropzone}    ${results}    ${file}    ${position}=1
     Wait Until Page Contains Element        ${dropzone}
     Scroll Into View                        ${dropzone}
     Choose File    	                        ${dropzone}//*[@type="file"]       ${file}
+
+Upload picture via button
+    [Arguments]    ${dropzone}    ${results}    ${file}    ${position}=1
+    Upload picture via button base          ${dropzone}    ${results}    ${file}    ${position}
     # Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSING_SUFFIX}    timeout=5  ## Errors caused by invalid syntax, timeouts, or fatal exceptions are not caught by this keyword.
     Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSED_SUFFIX}     timeout=5
 
