@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Email\AccountActivation;
 use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
 use GeoKrety\Model\User;
+use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
 
 class RegistrationEmail extends BaseRegistration {
@@ -20,6 +21,8 @@ class RegistrationEmail extends BaseRegistration {
         $user->password = $f3->get('POST.password');
         $user->email_invalid = User::USER_EMAIL_UNCONFIRMED;
         $user->account_valid = User::USER_ACCOUNT_INVALID;
+
+        LanguageService::changeLanguageTo($user->preferred_language);
 
         if (filter_var($f3->get('POST.terms_of_use'), FILTER_VALIDATE_BOOLEAN)) {
             $user->touch('terms_of_use_datetime');

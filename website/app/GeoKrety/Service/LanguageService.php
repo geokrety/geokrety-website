@@ -123,7 +123,7 @@ class LanguageService extends \Prefab {
     }
 
     public static function changeLanguageTo($langAlpha2) {
-        if (is_null($langAlpha2)) {
+        if (is_null($langAlpha2) || !self::isLanguageSupported($langAlpha2)) {
             $langAlpha2 = self::DEFAULT_LANGUAGE_CODE;
         }
 

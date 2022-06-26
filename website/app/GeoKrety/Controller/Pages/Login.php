@@ -38,6 +38,7 @@ class Login extends Base {
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
+            LanguageService::changeLanguageTo($user->preferred_language);
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
                 if (GK_DEVEL) {
                     $user->resendAccountActivationEmail();
@@ -165,11 +166,8 @@ class Login extends Base {
                     'error' => self::API2SECID_INVALID_ACCOUNT_ERROR,
                     'error_message' => 'Your account is not valid.',
                     ]);
-                Login::disconnectUser($f3);
-                if (!GK_DEVEL) {
-                    $f3->abort();
-                }
                 $user->resendAccountActivationEmail();
+                Login::disconnectUser($f3);
                 exit();
             }
             echo $user->secid;

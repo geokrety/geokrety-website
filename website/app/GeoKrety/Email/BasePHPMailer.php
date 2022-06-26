@@ -24,7 +24,6 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
      */
     public function __construct(?bool $exceptions = true, string $body = '') {
         parent::__construct($exceptions);
-        LanguageService::changeLanguageTo('en'); // So all string are prepared in English
         $this->setFromDefault();
         $this->addCustomHeader('Errors-To', GK_SITE_EMAIL);
         $this->addCustomHeader('X-GKPHPMailer', 'true');
