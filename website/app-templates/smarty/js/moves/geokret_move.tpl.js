@@ -1,6 +1,6 @@
 // ----------------------------------- JQUERY - RUCHY - BEGIN
 
-moment.locale('en'); // TODO: load from user settings
+moment.locale('{\Multilang::instance()->current}')
 
 // Bind tooltip on NR field: Display label example
 $(".tooltip_large").tooltip({
