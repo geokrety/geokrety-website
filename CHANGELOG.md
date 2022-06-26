@@ -1,3 +1,10 @@
+## [2.23.4](https://github.com/geokrety/geokrety-website/compare/v2.23.3...v2.23.4) (2022-06-26)
+
+
+### Bug Fixes
+
+* Clear css on startup so they are regenerated ([fdf1d2e](https://github.com/geokrety/geokrety-website/commit/fdf1d2e423e24c1be8d9aea792e2634ac63eaa26))
+
 ## [2.23.3](https://github.com/geokrety/geokrety-website/compare/v2.23.2...v2.23.3) (2022-06-26)
 
 
