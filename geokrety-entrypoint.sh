@@ -31,6 +31,7 @@ if [ "$1" = 'docker-php-entrypoint' ]; then
 
     # give permission to webserver to write css files
     chown -R www-data.www-data /var/www/geokrety/website/public/assets/compressed
+    rm -f /var/www/geokrety/website/public/assets/compressed/*.css
 
     echo "DEBUG: Launch $@"
     $@ --nodaemonize &
