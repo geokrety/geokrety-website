@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputUsername" name="username" placeholder="{t}Username{/t}" required>
+                    <input type="text" class="form-control" id="inputUsername" name="username" placeholder="{t}Username{/t}" minlength="{GK_USERNAME_MIN_LENGTH}" maxlength="{GK_USERNAME_MAX_LENGTH}" required>
                 </div>
                 <div class="col-sm-2">
                     <button type="submit" class="btn btn-primary btn-block" id="buttonUsernameSubmit" name="buttonUsernameSubmit">{t}Find{/t}</button>
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label for="inputWaypoint" class="col-sm-2 control-label">{t}Waypoint{/t}</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputWaypoint" name="waypoint" placeholder="{t}Waypoint{/t}" required>
+                    <input type="text" class="form-control" id="inputWaypoint" name="waypoint" placeholder="{t}Waypoint{/t}" minlength="{GK_CHECK_WAYPOINT_MIN_LENGTH}" maxlength="{GK_CHECK_WAYPOINT_MAX_LENGTH}" required>
                 </div>
                 <div class="col-sm-2">
                     <button type="submit" class="btn btn-primary btn-block" id="buttonWaypointSubmit" name="buttonWaypointSubmit">{t}Find{/t}</button>
