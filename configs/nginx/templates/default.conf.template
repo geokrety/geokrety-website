@@ -70,6 +70,21 @@ server {
         try_files $uri /robots-files/${GK_SITE_BASE_SERVER_FQDN}.txt /robots-files/default.txt;
     }
 
+    error_page 400 /errors/400-error.html;
+    error_page 401 /errors/401-error.html;
+    error_page 403 /errors/403-error.html;
+    error_page 404 /errors/404-error.html;
+    error_page 414 /errors/414-error.html;
+    error_page 429 /errors/429-error.html;
+    error_page 500 /errors/500-error.html;
+    error_page 503 /errors/503-error.html;
+    error_page 504 /errors/504-error.html;
+
+    location ~ /errors/*-error.html {
+            try_files $uri $1-error.html;
+            internal;
+    }
+
     location = /index.php {
         include fastcgi_pass;
     }
