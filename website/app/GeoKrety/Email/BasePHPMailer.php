@@ -113,8 +113,10 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     }
 
     /**
-     * @param bool $force         Force sending the mail, by user email validity check useful on registration
-     * @param bool $realRecipient Deliver the mail to the real address. Useful to prevent crons to send unsolicited mails, but allow users to tests features on staging. (Only relevant when not production
+     * @param bool $force         Force sending the mail, bypass user email validity check, useful on registration
+     * @param bool $realRecipient Deliver the mail to the real address. Useful to prevent crons to send unsolicited
+     *                            mails, but allow users to tests features on staging.
+     *                            (Only relevant when not production)
      */
     protected function setTo(?User $user, bool $force = false, bool $realRecipient = true) {
         if (is_null($user)) {
@@ -133,7 +135,8 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
                 $_user->username .= ' (admin)';
                 $this->recipients[] = $_user;
             }
-        } elseif ($realRecipient) {
+        }
+        if ($realRecipient) {
             if (!$user->hasEmail() or (!$user->isEmailValid() and !$force)) {
                 return;
             }

@@ -6,6 +6,7 @@ use DateTime;
 use DB\CortexCollection;
 use DB\SQL\Schema;
 use GeoKrety\Email\AccountActivation;
+use GeoKrety\Email\EmailRevalidate;
 use JsonSerializable;
 
 /**
@@ -338,7 +339,7 @@ class User extends Base implements JsonSerializable {
             $token->user = $this;
             $token->set_email($this->get_email());
             $token->save();
-            $smtp = new \GeoKrety\Email\EmailRevalidate();
+            $smtp = new EmailRevalidate();
             $smtp->sendRevalidation($token);
 
             return;
