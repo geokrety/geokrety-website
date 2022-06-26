@@ -31,7 +31,7 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
     var data = $.parseJSON(xhr.responseText);
     this.removeError('errorNr');
     if (valid) {
-        var data = $.parseJSON(xhr.responseText);
+        data = $.parseJSON(xhr.responseText);
         // Display fetched GK infos
         var result = '';
         var header = '';
