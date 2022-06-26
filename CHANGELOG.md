@@ -1,3 +1,10 @@
+## [2.23.6](https://github.com/geokrety/geokrety-website/compare/v2.23.5...v2.23.6) (2022-06-26)
+
+
+### Bug Fixes
+
+* Message for email revalidation was not localized ([63c7906](https://github.com/geokrety/geokrety-website/commit/63c7906b89ca51bbd4d70ac521f98c4509bde0c1)), closes [#739](https://github.com/geokrety/geokrety-website/issues/739)
+
 ## [2.23.5](https://github.com/geokrety/geokrety-website/compare/v2.23.4...v2.23.5) (2022-06-26)
 
 
