@@ -1,3 +1,15 @@
+## [2.23.3](https://github.com/geokrety/geokrety-website/compare/v2.23.2...v2.23.3) (2022-06-26)
+
+
+### Bug Fixes
+
+* Define bootstrap style for images added as inline in markdown ([de61b21](https://github.com/geokrety/geokrety-website/commit/de61b218187fb57d02490757d8b1ac7cd3c9df93)), closes [#735](https://github.com/geokrety/geokrety-website/issues/735)
+* Fix editing GK ([0385090](https://github.com/geokrety/geokrety-website/commit/03850909f867ec00c0577e09119f6458126af5b6))
+* Only owner can edit his GeoKrety ([f2bbd9a](https://github.com/geokrety/geokrety-website/commit/f2bbd9ab2b233650bfe4f20fc79735c58a3eefd6))
+* Remove altitude profile placeholder as not really implemented ([08df211](https://github.com/geokrety/geokrety-website/commit/08df21147b381e82532a766e0e43004c005d3125)), closes [#737](https://github.com/geokrety/geokrety-website/issues/737)
+* Remove external images from user to user messages ([72cbfd9](https://github.com/geokrety/geokrety-website/commit/72cbfd91bc4cfdcc3aab12aad24e7ffa29775163))
+* Stay on current step while data are invalid ([2930209](https://github.com/geokrety/geokrety-website/commit/2930209a1566325cd3904a2f5081b21872501c85)), closes [#731](https://github.com/geokrety/geokrety-website/issues/731) [#732](https://github.com/geokrety/geokrety-website/issues/732) [#733](https://github.com/geokrety/geokrety-website/issues/733)
+
 ## [2.23.2](https://github.com/geokrety/geokrety-website/compare/v2.23.1...v2.23.2) (2022-06-25)
 
 
