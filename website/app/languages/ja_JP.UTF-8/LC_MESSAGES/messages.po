@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 10:18+0000\n"
-"PO-Revision-Date: 2022-06-25 10:33\n"
+"POT-Creation-Date: 2022-06-26 13:57+0000\n"
+"PO-Revision-Date: 2022-06-26 14:02\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -250,32 +250,39 @@ msgstr ""
 msgid "Something went wrong while registering the adoption."
 msgstr "採用登録中に問題が発生しました。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:49
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
-msgid "This label template does not exist."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:60
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:34
 msgid "Failed to create the GeoKret."
 msgstr "GeoKretの作成に失敗しました。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:73
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
 msgid "Born here"
 msgstr "ここで生まれ"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:87
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:61
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "GeoKret が作成されました。 <a href=\"%s\">ラベルを</a> 印刷してください…"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:95
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:69
 msgid "Failed to create the GeoKret initial move."
 msgstr "GeoKret の最初の動きを作成できませんでした。"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:12
+msgid "Only the owner can edit his GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
 msgstr "GeoKret が更新されました。"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:28
+msgid "Failed to edit the GeoKret."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
+msgid "This label template does not exist."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:23
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
@@ -1252,7 +1259,7 @@ msgstr ""
 #: website/app-templates/smarty/forms/advanced_search.tpl:19
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:10
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
-#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/forms/move.tpl:231
 msgid "Username"
 msgstr "ユーザー名"
 
@@ -1454,12 +1461,12 @@ msgstr "キャッシュ"
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:22
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
 #: website/app-templates/smarty/forms/move.tpl:106
-#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/forms/move.tpl:239
 msgid "Comment"
 msgstr "コメント"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:224
+#: website/app-templates/smarty/forms/move.tpl:216
 msgid "Date"
 msgstr "日付"
 
@@ -3809,7 +3816,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:139
+#: website/app-templates/smarty/forms/move.tpl:131
 msgid "Waypoint"
 msgstr "通過点"
 
@@ -3912,10 +3919,9 @@ msgid "Identify GeoKret"
 msgstr "Identify GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:43
-#: website/app-templates/smarty/forms/move.tpl:118
-#: website/app-templates/smarty/forms/move.tpl:205
-msgid "Next"
-msgstr "次へ"
+#: website/app-templates/smarty/forms/move.tpl:197
+msgid "Validate"
+msgstr ""
 
 #: website/app-templates/smarty/forms/move.tpl:54
 msgid "Log type"
@@ -3961,43 +3967,43 @@ msgstr "GeoKret を傾けた"
 msgid "When you want to write a comment :)"
 msgstr "コメントを書きたい時 :)"
 
-#: website/app-templates/smarty/forms/move.tpl:129
+#: website/app-templates/smarty/forms/move.tpl:121
 msgid "New location"
 msgstr "新しい場所"
 
-#: website/app-templates/smarty/forms/move.tpl:142
+#: website/app-templates/smarty/forms/move.tpl:134
 msgid "eg. GC1AQ2N"
 msgstr "eg. GC1AQ2N"
 
-#: website/app-templates/smarty/forms/move.tpl:147
+#: website/app-templates/smarty/forms/move.tpl:139
 msgid "Lookup opencaching cache by name"
 msgstr "キャッシュを名前でルックアップする"
 
-#: website/app-templates/smarty/forms/move.tpl:152
+#: website/app-templates/smarty/forms/move.tpl:144
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/app-templates/smarty/forms/move.tpl:164
+#: website/app-templates/smarty/forms/move.tpl:156
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
 msgstr "キャッシュ名を入力してください。 <strong>GC キャッシュでは動作しません</strong>"
 
-#: website/app-templates/smarty/forms/move.tpl:178
+#: website/app-templates/smarty/forms/move.tpl:170
 msgid "Coordinates"
 msgstr "座標"
 
-#: website/app-templates/smarty/forms/move.tpl:216
+#: website/app-templates/smarty/forms/move.tpl:208
 msgid "Additional data"
 msgstr "追加データ"
 
-#: website/app-templates/smarty/forms/move.tpl:241
+#: website/app-templates/smarty/forms/move.tpl:233
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "これはあなたのものかもしれません:<br />- geocaching/opencaching username<br />- nickname<br />- nameなど。"
 
-#: website/app-templates/smarty/forms/move.tpl:251
+#: website/app-templates/smarty/forms/move.tpl:243
 msgid "It is always nice to receive a little message ;)"
 msgstr "それは常に小さなメッセージを受け取ることは素晴らしいです ;)"
 
-#: website/app-templates/smarty/forms/move.tpl:268
+#: website/app-templates/smarty/forms/move.tpl:266
 msgid "Post your log"
 msgstr "ログを投稿"
 
