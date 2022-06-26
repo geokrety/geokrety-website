@@ -1,3 +1,10 @@
+## [2.23.10](https://github.com/geokrety/geokrety-website/compare/v2.23.9...v2.23.10) (2022-06-26)
+
+
+### Bug Fixes
+
+* Prevent horizontal scroll with datatable ([628ad20](https://github.com/geokrety/geokrety-website/commit/628ad205d3454ae6af6a0a6e5da047922ddbb261))
+
 ## [2.23.9](https://github.com/geokrety/geokrety-website/compare/v2.23.8...v2.23.9) (2022-06-26)
 
 
