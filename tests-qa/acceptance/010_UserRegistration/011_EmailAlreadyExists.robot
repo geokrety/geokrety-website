@@ -15,7 +15,7 @@ Email is already taken
     Click Button    ${REGISTRATION_REGISTER_BUTTON}
 
     Location Should Be    ${PAGE_REGISTER_URL}
-    Page Should Contain    Sorry but this mail address is already in use.
+    Page Should Contain    Désolé, cette adresse e-mail est déjà utilisée.
 
 Form content keeped
     Depends on test         Email is already taken
