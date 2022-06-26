@@ -1,3 +1,11 @@
+## [2.23.7](https://github.com/geokrety/geokrety-website/compare/v2.23.6...v2.23.7) (2022-06-26)
+
+
+### Bug Fixes
+
+* Fix datetime format in create move form ([f27ce13](https://github.com/geokrety/geokrety-website/commit/f27ce13ab48eb4f8932126542214755cb0cfefb2)), closes [#740](https://github.com/geokrety/geokrety-website/issues/740)
+* js variable redefinition ([f9d66b3](https://github.com/geokrety/geokrety-website/commit/f9d66b3fd508221a19794edb12339bc9e3eb9e83))
+
 ## [2.23.6](https://github.com/geokrety/geokrety-website/compare/v2.23.5...v2.23.6) (2022-06-26)
 
 
