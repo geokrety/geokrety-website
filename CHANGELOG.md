@@ -1,3 +1,11 @@
+## [2.23.8](https://github.com/geokrety/geokrety-website/compare/v2.23.7...v2.23.8) (2022-06-26)
+
+
+### Bug Fixes
+
+* Create initial custom error pages ([8ca64c0](https://github.com/geokrety/geokrety-website/commit/8ca64c0d9081aa00ea5362e0a865d8cdba0f9774)), closes [#734](https://github.com/geokrety/geokrety-website/issues/734)
+* Define quick search input max length ([296ce64](https://github.com/geokrety/geokrety-website/commit/296ce6476eabee0a39fe72ac7a49a9338f073c33)), closes [#734](https://github.com/geokrety/geokrety-website/issues/734)
+
 ## [2.23.7](https://github.com/geokrety/geokrety-website/compare/v2.23.6...v2.23.7) (2022-06-26)
 
 
