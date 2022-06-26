@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 10:18+0000\n"
-"PO-Revision-Date: 2022-06-25 10:32\n"
+"POT-Creation-Date: 2022-06-26 13:57+0000\n"
+"PO-Revision-Date: 2022-06-26 14:02\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -250,32 +250,39 @@ msgstr "crwdns18708:0%scrwdne18708:0"
 msgid "Something went wrong while registering the adoption."
 msgstr "crwdns15578:0crwdne15578:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:49
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
-msgid "This label template does not exist."
-msgstr "crwdns28999:0crwdne28999:0"
-
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:60
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:34
 msgid "Failed to create the GeoKret."
 msgstr "crwdns15590:0crwdne15590:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:73
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
 msgid "Born here"
 msgstr "crwdns15586:0crwdne15586:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:87
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:61
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "crwdns15592:0%scrwdne15592:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:95
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:69
 msgid "Failed to create the GeoKret initial move."
 msgstr "crwdns15588:0crwdne15588:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:12
+msgid "Only the owner can edit his GeoKrety."
+msgstr "crwdns29188:0crwdne29188:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
 msgstr "crwdns15594:0crwdne15594:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:28
+msgid "Failed to edit the GeoKret."
+msgstr "crwdns29190:0crwdne29190:0"
+
+#: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
+msgid "This label template does not exist."
+msgstr "crwdns28999:0crwdne28999:0"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:23
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
@@ -1252,7 +1259,7 @@ msgstr "crwdns29035:0%1crwdne29035:0"
 #: website/app-templates/smarty/forms/advanced_search.tpl:19
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:10
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
-#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/forms/move.tpl:231
 msgid "Username"
 msgstr "crwdns14976:0crwdne14976:0"
 
@@ -1454,12 +1461,12 @@ msgstr "crwdns18704:0crwdne18704:0"
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:22
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
 #: website/app-templates/smarty/forms/move.tpl:106
-#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/forms/move.tpl:239
 msgid "Comment"
 msgstr "crwdns14028:0crwdne14028:0"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:224
+#: website/app-templates/smarty/forms/move.tpl:216
 msgid "Date"
 msgstr "crwdns14038:0crwdne14038:0"
 
@@ -3809,7 +3816,7 @@ msgstr "crwdns29047:0crwdne29047:0"
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:139
+#: website/app-templates/smarty/forms/move.tpl:131
 msgid "Waypoint"
 msgstr "crwdns15242:0crwdne15242:0"
 
@@ -3912,10 +3919,9 @@ msgid "Identify GeoKret"
 msgstr "crwdns15208:0crwdne15208:0"
 
 #: website/app-templates/smarty/forms/move.tpl:43
-#: website/app-templates/smarty/forms/move.tpl:118
-#: website/app-templates/smarty/forms/move.tpl:205
-msgid "Next"
-msgstr "crwdns15216:0crwdne15216:0"
+#: website/app-templates/smarty/forms/move.tpl:197
+msgid "Validate"
+msgstr "crwdns29192:0crwdne29192:0"
 
 #: website/app-templates/smarty/forms/move.tpl:54
 msgid "Log type"
@@ -3961,43 +3967,43 @@ msgstr "crwdns15236:0crwdne15236:0"
 msgid "When you want to write a comment :)"
 msgstr "crwdns15238:0crwdne15238:0"
 
-#: website/app-templates/smarty/forms/move.tpl:129
+#: website/app-templates/smarty/forms/move.tpl:121
 msgid "New location"
 msgstr "crwdns15240:0crwdne15240:0"
 
-#: website/app-templates/smarty/forms/move.tpl:142
+#: website/app-templates/smarty/forms/move.tpl:134
 msgid "eg. GC1AQ2N"
 msgstr "crwdns15940:0crwdne15940:0"
 
-#: website/app-templates/smarty/forms/move.tpl:147
+#: website/app-templates/smarty/forms/move.tpl:139
 msgid "Lookup opencaching cache by name"
 msgstr "crwdns15244:0crwdne15244:0"
 
-#: website/app-templates/smarty/forms/move.tpl:152
+#: website/app-templates/smarty/forms/move.tpl:144
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "crwdns15246:0crwdne15246:0"
 
-#: website/app-templates/smarty/forms/move.tpl:164
+#: website/app-templates/smarty/forms/move.tpl:156
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
 msgstr "crwdns15248:0crwdne15248:0"
 
-#: website/app-templates/smarty/forms/move.tpl:178
+#: website/app-templates/smarty/forms/move.tpl:170
 msgid "Coordinates"
 msgstr "crwdns15250:0crwdne15250:0"
 
-#: website/app-templates/smarty/forms/move.tpl:216
+#: website/app-templates/smarty/forms/move.tpl:208
 msgid "Additional data"
 msgstr "crwdns15252:0crwdne15252:0"
 
-#: website/app-templates/smarty/forms/move.tpl:241
+#: website/app-templates/smarty/forms/move.tpl:233
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "crwdns15254:0crwdne15254:0"
 
-#: website/app-templates/smarty/forms/move.tpl:251
+#: website/app-templates/smarty/forms/move.tpl:243
 msgid "It is always nice to receive a little message ;)"
 msgstr "crwdns15256:0crwdne15256:0"
 
-#: website/app-templates/smarty/forms/move.tpl:268
+#: website/app-templates/smarty/forms/move.tpl:266
 msgid "Post your log"
 msgstr "crwdns15258:0crwdne15258:0"
 
