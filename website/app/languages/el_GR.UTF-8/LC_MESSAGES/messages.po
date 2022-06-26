@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 10:18+0000\n"
-"PO-Revision-Date: 2022-06-25 10:33\n"
+"POT-Creation-Date: 2022-06-26 13:57+0000\n"
+"PO-Revision-Date: 2022-06-26 14:01\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -250,32 +250,39 @@ msgstr ""
 msgid "Something went wrong while registering the adoption."
 msgstr "Κάτι πήγε στραβά κατά την καταγραφή της υιοθεσίας."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:49
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
-msgid "This label template does not exist."
-msgstr ""
-
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:60
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:34
 msgid "Failed to create the GeoKret."
 msgstr "Αποτυχία δημιουργίας του GeoKret."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:73
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
 msgid "Born here"
 msgstr "Εδώ γεννήθηκε"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:87
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:61
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "Το GeoKret σας δημιουργήθηκε. Ίσως τώρα να θέλετε να <a href=\"%s\">τυπώσετε</a> μια ωραία ετικέτα…"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:95
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:69
 msgid "Failed to create the GeoKret initial move."
 msgstr "Αποτυχία δημιουργίας της αρχικής κίνησης του GeoKret."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:22
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:12
+msgid "Only the owner can edit his GeoKrety."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
 msgstr "Το GeoKret σας έχει ενημερωθεί."
+
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:28
+msgid "Failed to edit the GeoKret."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
+msgid "This label template does not exist."
+msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:23
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
@@ -1252,7 +1259,7 @@ msgstr ""
 #: website/app-templates/smarty/forms/advanced_search.tpl:19
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:10
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
-#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/forms/move.tpl:231
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
@@ -1454,12 +1461,12 @@ msgstr "Κρύπτη"
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:22
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
 #: website/app-templates/smarty/forms/move.tpl:106
-#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/forms/move.tpl:239
 msgid "Comment"
 msgstr "Σχόλιο"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:224
+#: website/app-templates/smarty/forms/move.tpl:216
 msgid "Date"
 msgstr "Ημερομηνία"
 
@@ -3809,7 +3816,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:139
+#: website/app-templates/smarty/forms/move.tpl:131
 msgid "Waypoint"
 msgstr "Σημείο αναφοράς"
 
@@ -3912,9 +3919,8 @@ msgid "Identify GeoKret"
 msgstr "Εντοπισμός GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:43
-#: website/app-templates/smarty/forms/move.tpl:118
-#: website/app-templates/smarty/forms/move.tpl:205
-msgid "Next"
+#: website/app-templates/smarty/forms/move.tpl:197
+msgid "Validate"
 msgstr ""
 
 #: website/app-templates/smarty/forms/move.tpl:54
@@ -3961,43 +3967,43 @@ msgstr "Έχω φανοί ένα GeoKret"
 msgid "When you want to write a comment :)"
 msgstr "Όταν θέλετε να γράψετε ένα σχόλιο :)"
 
-#: website/app-templates/smarty/forms/move.tpl:129
+#: website/app-templates/smarty/forms/move.tpl:121
 msgid "New location"
 msgstr "Νέα θέση"
 
-#: website/app-templates/smarty/forms/move.tpl:142
+#: website/app-templates/smarty/forms/move.tpl:134
 msgid "eg. GC1AQ2N"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:147
+#: website/app-templates/smarty/forms/move.tpl:139
 msgid "Lookup opencaching cache by name"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:152
+#: website/app-templates/smarty/forms/move.tpl:144
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "π.χ.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/app-templates/smarty/forms/move.tpl:164
+#: website/app-templates/smarty/forms/move.tpl:156
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:178
+#: website/app-templates/smarty/forms/move.tpl:170
 msgid "Coordinates"
 msgstr "Συντεταγμένες"
 
-#: website/app-templates/smarty/forms/move.tpl:216
+#: website/app-templates/smarty/forms/move.tpl:208
 msgid "Additional data"
 msgstr "Πρόσθετα στοιχεία"
 
-#: website/app-templates/smarty/forms/move.tpl:241
+#: website/app-templates/smarty/forms/move.tpl:233
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "&quot;&quot; Αυτό μπορεί να σας: <br /> - Geocaching / opencaching όνομα χρήστη <br /> - Ψευδώνυμο <br /> - Το όνομα, κλπ."
 
-#: website/app-templates/smarty/forms/move.tpl:251
+#: website/app-templates/smarty/forms/move.tpl:243
 msgid "It is always nice to receive a little message ;)"
 msgstr "Είναι πάντα ωραίο να λαμβάνεις ένα μηνυματάκι ;)"
 
-#: website/app-templates/smarty/forms/move.tpl:268
+#: website/app-templates/smarty/forms/move.tpl:266
 msgid "Post your log"
 msgstr ""
 
