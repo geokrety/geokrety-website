@@ -15,7 +15,7 @@
 
         {if $geokrety_count}
         <div class="table-responsive">
-            <table id="userOwnedGeoKretyTable" class="table table-striped">
+            <table id="userOwnedGeoKretyTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>{t}ID{/t}</th>

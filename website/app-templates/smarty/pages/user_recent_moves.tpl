@@ -14,7 +14,7 @@
 
         {if $moves_count}
         <div class="table-responsive">
-            <table id="userRecentMovesTable" class="table table-striped">
+            <table id="userRecentMovesTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>{t}ID{/t}</th>
