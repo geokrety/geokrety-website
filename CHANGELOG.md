@@ -1,3 +1,10 @@
+## [2.23.5](https://github.com/geokrety/geokrety-website/compare/v2.23.4...v2.23.5) (2022-06-26)
+
+
+### Bug Fixes
+
+* Allow non production and non dev instances to send emails ([1c01e4d](https://github.com/geokrety/geokrety-website/commit/1c01e4d97c2ec4b22f5401b43fb6a8c3a72e9c56)), closes [#738](https://github.com/geokrety/geokrety-website/issues/738)
+
 ## [2.23.4](https://github.com/geokrety/geokrety-website/compare/v2.23.3...v2.23.4) (2022-06-26)
 
 
