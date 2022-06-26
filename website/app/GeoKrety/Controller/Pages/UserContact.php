@@ -12,22 +12,22 @@ class UserContact extends Base {
 
     protected Mail $mail;
 
-    public function _beforeRoute(\Base $f3) {
+    protected function _beforeRoute(\Base $f3) {
         $mail = new Mail();
         $this->mail = $mail;
         $this->mail->from_user = $this->currentUser->id;
         Smarty::assign('mail', $this->mail);
     }
 
-    public function getPostUrl(\Base $f3) {
+    protected function getPostUrl(\Base $f3) {
         return $f3->alias('mail_to_user');
     }
 
-    public function getPostRedirectUrl() {
+    protected function getPostRedirectUrl() {
         return sprintf('@user_details(@userid=%d)', $this->mail->to_user->id);
     }
 
-    public function loadToUser(\Base $f3) {
+    protected function loadToUser(\Base $f3) {
         $user = new User();
         $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {

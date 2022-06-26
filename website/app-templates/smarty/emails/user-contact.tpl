@@ -16,7 +16,7 @@
   <hr />
   <div class="s-3"></div>
   <p>{t}Subject:{/t} {$mail->subject}</p>
-    {$mail->content|markdown nofilter}
+    {$mail->content|markdown_no_images nofilter}
   <hr />
   <div class="s-3"></div>
   <div class="text-center">

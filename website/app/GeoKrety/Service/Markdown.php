@@ -2,16 +2,25 @@
 
 namespace GeoKrety\Service;
 
+use Erusev\Parsedown\Configurables\SafeMode;
+use Erusev\Parsedown\Configurables\StrictMode;
+use Erusev\Parsedown\Parsedown;
+use Erusev\Parsedown\State;
+
 class Markdown extends \Prefab {
-    private ?\Parsedown $parser = null;
+    protected ?Parsedown $parser = null;
 
     public static function getParser() {
-        return Markdown::instance()->parser;
+        return self::instance()->parser;
     }
 
     public function __construct() {
-        $this->parser = new \Parsedown();
-        $this->parser->setStrictMode(true);
+        $state = new State([
+            new SafeMode(true),
+            new StrictMode(true),
+        ]);
+
+        $this->parser = new Parsedown($state);
     }
 
     public static function toText($string) {
@@ -19,7 +28,7 @@ class Markdown extends \Prefab {
     }
 
     public static function toHtml($string) {
-        $html = self::getParser()->text($string);
+        $html = self::getParser()->toHtml($string);
 
         return HTMLPurifierSafe::getPurifier()->purify($html);
     }
