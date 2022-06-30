@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-26 15:13+0000\n"
-"PO-Revision-Date: 2022-06-26 16:03\n"
+"PO-Revision-Date: 2022-06-30 12:53\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -165,7 +165,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
 msgid "No more Tracking Code available using this pattern."
-msgstr ""
+msgstr "Não há mais Códigos de Rastreio disponíveis usando este padrão."
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:26
 msgid "Rate limit has been reset"
@@ -203,18 +203,18 @@ msgstr "Erro CSRF, por favor, tente novamente."
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:31
 msgid "This query is invalid"
-msgstr ""
+msgstr "Esta consulta é inválida"
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:55
 #, php-format
 msgid "invalid value for \"%s\" parameter"
-msgstr ""
+msgstr "valor inválido para o parâmetro \"%s\""
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:63
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:67
 #, php-format
 msgid "\"%s\" must be an array"
-msgstr ""
+msgstr "\"%s\" deve ser uma sequência de caracteres"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:59
 msgid "Parameter \"userid\" must be a valid number."
@@ -231,7 +231,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
-msgstr ""
+msgstr "Desculpe, mas o Código de Proprietário e o Código de Rastreio fornecidos não correspondem."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:31
 msgid "You are already the owner."
@@ -356,7 +356,7 @@ msgstr "Este GeoKret foi adicionado à sua lista de observação."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:34
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
-msgstr ""
+msgstr "A lista contém apenas Código de Rastreio desconhecidos ou GeoKrety que nunca foram tocados"
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:58
 msgid "Wrong secid"
@@ -397,7 +397,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:207
 msgid "This \"secid\" does not exists"
-msgstr ""
+msgstr "Este utilizador não existe"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:263
 #, php-format
@@ -911,7 +911,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
-msgstr ""
+msgstr "Falha ao gerar o Código de Rastreio"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
@@ -1179,15 +1179,15 @@ msgstr "Nossos arquivos de tradução agora estão hospedados no <a href=\"%1\">
 
 #: website/app-templates/smarty/pages/downloads.tpl:17
 msgid "Map of caches for Garmin units"
-msgstr ""
+msgstr "Mapa de caches para dispositivos Garmin"
 
 #: website/app-templates/smarty/pages/downloads.tpl:20
 msgid "As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href=\"%2\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
-msgstr ""
+msgstr "Como temos vindo a reunir um conjunto de pontos de um número significativo de caches (%1) em todo o mundo (<a href=\"%2\">clique aqui</a> para uma lista dos serviços suportados) decidimos gerar um mapa transparente com essas caches para dispositivos garmin (formato img). Agora pode ter todas essas caches no mesmo mapa (na realidade: mapset)."
 
 #: website/app-templates/smarty/pages/downloads.tpl:21
 msgid "Read more and <a href=\"%1\">get the map</a>."
-msgstr ""
+msgstr "Leia mais e <a href=\"%1\">obtenha o mapa</a>."
 
 #: website/app-templates/smarty/pages/downloads.tpl:27
 msgid "Design resources"
@@ -2933,19 +2933,19 @@ msgstr "Imagens"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:82
 msgid "Tracking Code prefix"
-msgstr ""
+msgstr "Prefixo do Código de Rastreio"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:89
 msgid "Tracking Code length"
-msgstr ""
+msgstr "Comprimento do Código de Rastreio"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:96
 msgid "Tracking Code Alphabet"
-msgstr ""
+msgstr "Alfabeto do Código de Rastreio"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:103
 msgid "Tracking Code suffix"
-msgstr ""
+msgstr "Sufixo do Código de Rastreio"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:119
 msgid "Owner Code prefix"
@@ -2965,7 +2965,7 @@ msgstr ""
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:151
 msgid "Generate"
-msgstr ""
+msgstr "Gerar"
 
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
@@ -2975,7 +2975,7 @@ msgstr ""
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
 msgid "Reset"
-msgstr ""
+msgstr "Restabelecer"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
 msgid "GeoKrety generator result"
@@ -2991,7 +2991,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
 msgid "Name=%1 ID=%2"
-msgstr ""
+msgstr "Nome=%1 ID=%2"
 
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
 msgid "Award %1 with:"
@@ -3513,29 +3513,29 @@ msgstr "Locais visitados"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:58
 msgid "Social share"
-msgstr ""
+msgstr "Partilha social"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:60
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Partilhar no Facebook"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:61
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Partilhar no Twitter"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:62
 msgid "Share on Instagram"
-msgstr ""
+msgstr "Partilhar no Instagram"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:63
 #: website/app-templates/smarty/blocks/user/statpic.tpl:8
 msgid "Copy link to page"
-msgstr ""
+msgstr "Copiar ligação para a página"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:64
 #: website/app-templates/smarty/blocks/user/statpic.tpl:9
 msgid "Copy to page as bbcode"
-msgstr ""
+msgstr "Copiar para a página como \"bbcode\""
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:66
 msgid "Country track"
@@ -3714,7 +3714,7 @@ msgstr "Onde estão os meus GeoKrety?"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:45
 msgid "User stats"
-msgstr "Estatísticas do usuário"
+msgstr "Estatísticas do utilizador"
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:4
 msgid "OAuth Connections"
@@ -3882,7 +3882,7 @@ msgstr "Gerar como .pdf"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:3
 msgid "Generate multiple GeoKrety labels"
-msgstr ""
+msgstr "Gerar várias etiquetas GeoKrety"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:11
 msgid "The current number of labels to be created at once: %1."
@@ -3903,7 +3903,7 @@ msgstr ""
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:31
 #: website/app-templates/smarty/forms/move.tpl:30
 msgid "Verify Tracking Code"
-msgstr ""
+msgstr "Verificar Código de Rastreio"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:34
 #: website/app-templates/smarty/forms/move.tpl:33
