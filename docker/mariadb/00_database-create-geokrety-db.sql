@@ -1,4 +1,6 @@
 -- Adminer 4.7.1 MySQL dump
+CREATE database `geokrety-db`;
+USE `geokrety-db`;
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -80,16 +82,16 @@ CREATE TABLE `gk-geokrety` (
   `opis` text COLLATE utf8_polish_ci,
   `owner` int(10) unsigned DEFAULT NULL,
   `data` datetime DEFAULT NULL,
-  `droga` int(10) unsigned NOT NULL,
-  `skrzynki` smallint(5) unsigned NOT NULL,
+  `droga` int(10) unsigned NOT NULL DEFAULT 0,
+  `skrzynki` smallint(5) unsigned NOT NULL DEFAULT 0,
   `zdjecia` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `ost_pozycja_id` int(10) unsigned NOT NULL,
-  `ost_log_id` int(10) unsigned NOT NULL,
+  `ost_pozycja_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `ost_log_id` int(10) unsigned NOT NULL DEFAULT 0,
   `hands_of` int(10) DEFAULT NULL COMMENT 'In the hands of user',
   `missing` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `typ` enum('0','1','2','3','4') COLLATE utf8_polish_ci NOT NULL,
-  `avatarid` int(10) unsigned NOT NULL,
-  `timestamp_oc` datetime NOT NULL,
+  `avatarid` int(10) unsigned NOT NULL DEFAULT 0,
+  `timestamp_oc` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`nr`) USING BTREE,

@@ -33,6 +33,8 @@ Now local instance should be up and running and available at http://localhost:80
 
 Empty database with proper schema was initialized and exposed on local port `13306`.
 
+Then in order be able to create new user, comment out line with `Wrong email address` in `adduser.php`.
+
 Errors are logged in `gk-errory` table in the database
 
 ## How to install contributors tools
