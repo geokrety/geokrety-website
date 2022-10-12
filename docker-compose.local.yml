@@ -6,8 +6,8 @@ services:
         ports:
             - "8000:80"
         volumes:
-            - ${PWD}/website/:/var/www/html/:rw
-            - ${PWD}/configs/ssmtp.tmpl.conf:/etc/ssmtp/ssmtp.conf:ro
+            - ./website/:/var/www/html/:rw
+            - ./configs/ssmtp.tmpl.conf:/etc/ssmtp/ssmtp.conf:ro
         depends_on:
             - db
         environment:
@@ -22,7 +22,7 @@ services:
         volumes:
             - ./db_data:/var/lib/mysql
             # Initial DB schema structure
-            - ${PWD}/docker/mariadb:/tmp/database
+            - ./docker/mariadb:/tmp/database
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: ge0krety
