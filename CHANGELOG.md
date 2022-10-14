@@ -1,3 +1,10 @@
+## [2.23.14](https://github.com/geokrety/geokrety-website/compare/v2.23.13...v2.23.14) (2022-10-14)
+
+
+### Bug Fixes
+
+* Fix way to set mino bucket public ([#751](https://github.com/geokrety/geokrety-website/issues/751)) ([cea1ad4](https://github.com/geokrety/geokrety-website/commit/cea1ad4ae0b98fd8b96443df6c32fd5b2b5a7bf1))
+
 ## [2.23.13](https://github.com/geokrety/geokrety-website/compare/v2.23.12...v2.23.13) (2022-10-14)
 
 
