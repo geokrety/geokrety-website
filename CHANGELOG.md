@@ -1,3 +1,10 @@
+## [2.23.16](https://github.com/geokrety/geokrety-website/compare/v2.23.15...v2.23.16) (2022-10-14)
+
+
+### Translations
+
+* New Crowdin updates ([#753](https://github.com/geokrety/geokrety-website/issues/753)) ([cf22659](https://github.com/geokrety/geokrety-website/commit/cf2265935fb5b9a9b8ea557fd58f51057c46079b))
+
 ## [2.23.15](https://github.com/geokrety/geokrety-website/compare/v2.23.14...v2.23.15) (2022-10-14)
 
 
