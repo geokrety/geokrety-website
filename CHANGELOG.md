@@ -1,3 +1,10 @@
+## [2.23.12](https://github.com/geokrety/geokrety-website/compare/v2.23.11...v2.23.12) (2022-10-14)
+
+
+### Bug Fixes
+
+* Fix expurge job ([#749](https://github.com/geokrety/geokrety-website/issues/749)) ([9adc93f](https://github.com/geokrety/geokrety-website/commit/9adc93ff3c1ca8774d07c77ce24019b1b59d39a1))
+
 ## [2.23.11](https://github.com/geokrety/geokrety-website/compare/v2.23.10...v2.23.11) (2022-09-18)
 
 
