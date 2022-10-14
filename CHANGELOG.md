@@ -1,3 +1,10 @@
+## [2.23.15](https://github.com/geokrety/geokrety-website/compare/v2.23.14...v2.23.15) (2022-10-14)
+
+
+### Bug Fixes
+
+* Fix Visual images in QA Tests ([c869c1f](https://github.com/geokrety/geokrety-website/commit/c869c1fec742712c2454f367a3c06ca3df68b8bb))
+
 ## [2.23.14](https://github.com/geokrety/geokrety-website/compare/v2.23.13...v2.23.14) (2022-10-14)
 
 
