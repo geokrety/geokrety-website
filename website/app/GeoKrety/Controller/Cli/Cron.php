@@ -53,14 +53,14 @@ SQL;
         $this->script_end();
     }
 
-    public function expungeAudiLogs() {
+    public function expungeAuditLogs() {
         $this->script_start(__METHOD__);
         $audit = new AuditLog();
         $audit->expungeOld();
         $this->script_end();
     }
 
-    public function expungeAudiPosts() {
+    public function expungeAuditPosts() {
         $this->script_start(__METHOD__);
         $audit = new AuditPost();
         $audit->expungeOld();
