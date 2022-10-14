@@ -39,6 +39,10 @@ if [ "$1" = 'docker-php-entrypoint' ]; then
     # Create buckets
     make buckets
 
+    echo "#############################"
+    echo "###  GeoKrety.org is READY"
+    echo "#############################"
+
     wait
 
 else

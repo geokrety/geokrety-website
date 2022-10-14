@@ -42,13 +42,13 @@ mc mb "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER}"
 mc mb "minio/${GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER}"
 
 
-mc policy set public "minio/${GK_BUCKET_NAME_STATPIC}"
-mc policy set public "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}"
-mc policy set public "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}-thumbnails"
-mc policy set public "minio/${GK_BUCKET_NAME_USERS_AVATARS}"
-mc policy set public "minio/${GK_BUCKET_NAME_USERS_AVATARS}-thumbnails"
-mc policy set public "minio/${GK_BUCKET_NAME_MOVES_PICTURES}"
-mc policy set public "minio/${GK_BUCKET_NAME_MOVES_PICTURES}-thumbnails"
+mc anonymous set public "minio/${GK_BUCKET_NAME_STATPIC}"
+mc anonymous set public "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}"
+mc anonymous set public "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}-thumbnails"
+mc anonymous set public "minio/${GK_BUCKET_NAME_USERS_AVATARS}"
+mc anonymous set public "minio/${GK_BUCKET_NAME_USERS_AVATARS}-thumbnails"
+mc anonymous set public "minio/${GK_BUCKET_NAME_MOVES_PICTURES}"
+mc anonymous set public "minio/${GK_BUCKET_NAME_MOVES_PICTURES}-thumbnails"
 
 mc admin user add minio "${GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY}" "${GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY}"
 
