@@ -31,13 +31,21 @@ class UserUpdatePassword extends Base {
         $user = new User();
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
 
-        // Check old password
-        $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
-        $check_result = $auth->login($user->username, $password_old);
-        if (!$check_result) {
-            Flash::instance()->addMessage(_('Your old password is invalid.'), 'danger');
-            $this->get();
-            exit();
+        // Check old password needed?
+        if ($user->hasPassword()) {
+            if (is_null($password_old)) {
+                Flash::instance()->addMessage(_('Please enter your old password.'), 'danger');
+                $this->get();
+                exit();
+            }
+            // Check old password
+            $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
+            $check_result = $auth->login($user->username, $password_old);
+            if (!$check_result) {
+                Flash::instance()->addMessage(_('Your old password is invalid.'), 'danger');
+                $this->get();
+                exit();
+            }
         }
 
         // Check passwords are equals

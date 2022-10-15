@@ -294,6 +294,10 @@ class User extends Base implements JsonSerializable {
         return $this->email_invalid === self::USER_EMAIL_NO_ERROR;
     }
 
+    public function hasPassword(): bool {
+        return !is_null($this->password);
+    }
+
     public function hasAcceptedTheTermsOfUse(): bool {
         return !is_null($this->terms_of_use_datetime);
     }
@@ -302,7 +306,7 @@ class User extends Base implements JsonSerializable {
         if (is_null($this->social_auth)) {
             return false;
         } elseif (is_null($provider)) {
-            return true;
+            return $this->social_auth->count() > 0;
         }
 
         $prov_ids = $this->social_auth->getAll('provider', true);
