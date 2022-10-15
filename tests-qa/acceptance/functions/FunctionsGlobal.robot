@@ -325,6 +325,7 @@ Open Panel
 
 Flash message shown
     [Arguments]  ${message}
+    Page WithoutWarningOrFailure
     Wait until page contains element    //div[contains(@class, "flash-message") and text()[contains(., "${message}")]]
 
 Check Image
@@ -342,6 +343,7 @@ Scroll Into View
 
 Wait Until Modal
     [Arguments]    ${title}
+    Page WithoutWarningOrFailure
     Wait Until Page Contains Element        ${MODAL_DIALOG}
     Wait Until Page Contains Element        ${MODAL_DIALOG_TITLE}
     Wait Until Element Is Visible           ${MODAL_DIALOG}
@@ -355,6 +357,7 @@ Wait Until Modal Close
 
 Wait Until Panel
     [Arguments]    ${title}
+    Page WithoutWarningOrFailure
     Wait Until Page Contains Element        ${MODAL_PANEL}
     Wait Until Page Contains Element        ${MODAL_PANEL_TITLE}
     # Wait Until Page Contains Element        ${MODAL_PANEL_SUBMIT_BUTTON}
@@ -369,6 +372,7 @@ Element Count Should Be
 
 Wait For Text To Not Appear
     [Arguments]    ${expect}    ${timeout}=1
+    Page WithoutWarningOrFailure
     Run Keyword And Expect Error    not seen    Wait Until Page Contains    ${expect}    timeout=${timeout}    error=not seen
 
 Input Value Should Be
