@@ -1,3 +1,11 @@
+## [2.23.17](https://github.com/geokrety/geokrety-website/compare/v2.23.16...v2.23.17) (2022-10-15)
+
+
+### Bug Fixes
+
+* Account created via OAuth have no password ([db9e851](https://github.com/geokrety/geokrety-website/commit/db9e851857081a5e27c03a0306d08a23d6af4fc7)), closes [#755](https://github.com/geokrety/geokrety-website/issues/755)
+* Add dev link to create social auth connect users ([ede3e21](https://github.com/geokrety/geokrety-website/commit/ede3e21bbbfbeaf7688202d9265862fb95fbd0ac))
+
 ## [2.23.16](https://github.com/geokrety/geokrety-website/compare/v2.23.15...v2.23.16) (2022-10-14)
 
 
