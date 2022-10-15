@@ -11,6 +11,7 @@
 <form id="update-password" name="update-password" action="{'user_update_password'|alias}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
     <div class="modal-body">
 
+        {if $current_user->hasPassword()}
         <div class="form-group">
             <label for="inputPasswordOld" class="col-sm-2 control-label">{t}Current password{/t}</label>
             <div class="col-sm-8">
@@ -18,6 +19,7 @@
             </div>
         </div>
         <hr />
+        {/if}
         <div class="form-group">
             <label for="inputPasswordNew" class="col-sm-2 control-label">{t}New password{/t}</label>
             <div class="col-sm-8">

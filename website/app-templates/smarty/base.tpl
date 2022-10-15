@@ -10,6 +10,7 @@
         {include file='banners/user_email_missing.tpl'}
         {include file='banners/user_email_invalid.tpl'}
         {include file='banners/user_email_pending_validation.tpl'}
+        {include file='banners/user_password_missing.tpl'}
         {include file='banners/flash_messages.tpl'}
         {block name=content}{/block}
         <div id ="spinner-center" style="top:30%;left:50%;z-index: 3000000000;"></div>
