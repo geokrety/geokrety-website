@@ -20,6 +20,12 @@
                             <a href="{'devel_seed_users_status'|alias:sprintf('@count=%d,@status=%d', 1, GeoKrety\Model\User::USER_ACCOUNT_IMPORTED)}">Seed "1" user with status 'imported'</a>
                         </li>
                         <li>
+                            <a href="{'devel_seed_users'|alias:sprintf('@count=%d', 1)}?social_auth_provider_id=1">Seed "1" user with social_auth_provider_id '1'</a>
+                        </li>
+                        <li>
+                            <a href="{'devel_seed_users'|alias:sprintf('@count=%d', 1)}?without_password=true&social_auth_provider_id=1">Seed "1" user without password with social_auth_provider_id '1'</a>
+                        </li>
+                        <li>
                             <a href="{'devel_seed_geokrety_user'|alias:sprintf('@count=%d,userid=%d', 1, 1)}">Seed "1" GeoKret Owned By user "1"</a>
                         </li>
                         <li>
