@@ -11,7 +11,6 @@ Banner not visible for logged out users
     Page Should Not Contain                 Sorry, but we have troubles sending you email notifications. Is your email still valid?
     Page Should Not Contain                 Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety.
 
-
 User with valid email doesn't see the banner
     Seed 1 users
     Sign In ${USER_1.name} Fast
