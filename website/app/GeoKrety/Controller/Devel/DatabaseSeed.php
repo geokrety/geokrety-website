@@ -28,7 +28,9 @@ class DatabaseSeed extends Base {
         for ($i = $start_i; $i < $f3->get('PARAMS.count') + $start_i; ++$i) {
             $user = new User();
             $user->username = sprintf('username%d', $i);
-            $user->password = 'password';
+            if (!filter_var($f3->get('GET.without_password'), FILTER_VALIDATE_BOOLEAN)) {
+                $user->password = 'password';
+            }
             if (!$f3->exists('GET.noemail') || !filter_var($f3->get('GET.noemail'), FILTER_VALIDATE_BOOLEAN)) {
                 $user->_email = sprintf('username%d+qa@geokrety.org', $i);
             }
@@ -44,6 +46,15 @@ class DatabaseSeed extends Base {
             if ($user->validate()) {
                 $user->save();
                 echo sprintf("Create user: %s\n", $user->username);
+                if (!is_null($f3->get('GET.social_auth_provider_id'))) {
+                    // Store social auth token
+                    $social_auth = new \GeoKrety\Model\UserSocialAuth();
+                    $social_auth->user = $user;
+                    $social_auth->uid = sprintf('UID_%d', $i);
+                    $social_auth->provider = $f3->get('GET.social_auth_provider_id');
+                    $social_auth->save();
+                    echo sprintf("Social auth connected. user:%s social_auth_provider_id:%d\n", $user->username, $f3->get('GET.social_auth_provider_id'));
+                }
             } else {
                 echo sprintf("Error creating user: %s\n", $user->username);
                 foreach (\Flash::instance()->getMessages() as $msg) {
