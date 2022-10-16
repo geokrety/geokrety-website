@@ -1,3 +1,10 @@
+## [2.24.0](https://github.com/geokrety/geokrety-website/compare/v2.23.19...v2.24.0) (2022-10-16)
+
+
+### Features
+
+* Add GeoKrety "Country Track" ([07822f4](https://github.com/geokrety/geokrety-website/commit/07822f441c68b0382fa104da6f3b1c8e49663a92)), closes [#608](https://github.com/geokrety/geokrety-website/issues/608)
+
 ## [2.23.19](https://github.com/geokrety/geokrety-website/compare/v2.23.18...v2.23.19) (2022-10-16)
 
 
