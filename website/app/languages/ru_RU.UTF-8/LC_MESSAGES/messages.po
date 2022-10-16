@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-14 14:03+0000\n"
-"PO-Revision-Date: 2022-10-14 14:40\n"
+"POT-Creation-Date: 2022-10-16 09:23+0000\n"
+"PO-Revision-Date: 2022-10-16 09:31\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -498,7 +498,7 @@ msgid "Sorry this token is not valid, already used or expired."
 msgstr "Извините, этот токен недействителен, уже использован или истек."
 
 #: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:58
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:45
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:53
 msgid "New passwords doesn't match."
 msgstr "Новые пароли не совпадают."
 
@@ -507,7 +507,7 @@ msgid "Unexpected error occurred."
 msgstr "Произошла непредвиденная ошибка."
 
 #: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:90
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:56
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:64
 msgid "Your password has been changed."
 msgstr "Ваш пароль был изменен."
 
@@ -658,7 +658,11 @@ msgstr "Ваши домашние координаты были успешно �
 msgid "Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:38
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:37
+msgid "Please enter your old password."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:45
 msgid "Your old password is invalid."
 msgstr "Ваш старый пароль недействителен."
 
@@ -1673,7 +1677,7 @@ msgid "Also remove all my comments content"
 msgstr ""
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:39
-#: website/app-templates/smarty/dialog/user_update_password.tpl:51
+#: website/app-templates/smarty/dialog/user_update_password.tpl:53
 #: website/app-templates/smarty/dialog/geokret_unwatch.tpl:13
 #: website/app-templates/smarty/dialog/news_subscription.tpl:24
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
@@ -1721,23 +1725,23 @@ msgstr "Прекратить"
 msgid "Change your password"
 msgstr "Сменить пароль"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:15
+#: website/app-templates/smarty/dialog/user_update_password.tpl:16
 msgid "Current password"
 msgstr "Текущий пароль"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:17
+#: website/app-templates/smarty/dialog/user_update_password.tpl:18
 msgid "Old password"
 msgstr "Старый пароль"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:22
 #: website/app-templates/smarty/dialog/user_update_password.tpl:24
+#: website/app-templates/smarty/dialog/user_update_password.tpl:26
 #: website/app-templates/smarty/pages/password_change.tpl:41
 #: website/app-templates/smarty/pages/password_change.tpl:43
 msgid "New password"
 msgstr "Новый пароль"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:29
 #: website/app-templates/smarty/dialog/user_update_password.tpl:31
+#: website/app-templates/smarty/dialog/user_update_password.tpl:33
 #: website/app-templates/smarty/forms/registration.tpl:26
 #: website/app-templates/smarty/forms/registration.tpl:28
 #: website/app-templates/smarty/pages/password_change.tpl:48
@@ -1745,23 +1749,23 @@ msgstr "Новый пароль"
 msgid "Confirm password"
 msgstr "Подтвердить пароль"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:37
+#: website/app-templates/smarty/dialog/user_update_password.tpl:39
 msgid "Read more about choosing good passwords:"
 msgstr "Подробнее о выборе хороших паролей:"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:39
+#: website/app-templates/smarty/dialog/user_update_password.tpl:41
 msgid "Choosing Good Passwords -- A User Guide"
 msgstr "Выбор хороших паролей -- Руководство пользователя"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:40
+#: website/app-templates/smarty/dialog/user_update_password.tpl:42
 msgid "How to Write Good Passwords"
 msgstr "Как написать хорошие пароли"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:41
+#: website/app-templates/smarty/dialog/user_update_password.tpl:43
 msgid "Password strength"
 msgstr "Надёжность пароля"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:50
+#: website/app-templates/smarty/dialog/user_update_password.tpl:52
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/user_update_email.tpl:51
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
@@ -1771,7 +1775,7 @@ msgstr "Надёжность пароля"
 msgid "Back to user page"
 msgstr "Вернуться на страницу пользователя"
 
-#: website/app-templates/smarty/dialog/user_update_password.tpl:53
+#: website/app-templates/smarty/dialog/user_update_password.tpl:55
 #: website/app-templates/smarty/dialog/user_update_email.tpl:54
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:29
 #: website/app-templates/smarty/pages/password_change.tpl:57
@@ -2384,6 +2388,14 @@ msgstr ""
 #: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
 msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
 msgstr "У вас есть ожидающая подтверждения электронная почта. Не забудьте нажать на ссылку, которая будет указана в письме, чтобы завершить процедуру. Ссылка истечет %1!"
+
+#: website/app-templates/smarty/banners/user_password_missing.tpl:3
+msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
+msgstr ""
+
+#: website/app-templates/smarty/banners/user_password_missing.tpl:4
+msgid "Please consider <a href=\"%1\">setting a password</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr ""
 
 #: website/app-templates/smarty/navbar-right.tpl:5
 msgid "Search…"
