@@ -1,3 +1,10 @@
+## [2.23.18](https://github.com/geokrety/geokrety-website/compare/v2.23.17...v2.23.18) (2022-10-16)
+
+
+### Bug Fixes
+
+* Warkaround map pins issue with multiple pages ([1499551](https://github.com/geokrety/geokrety-website/commit/1499551c7f4c4ca7fb479f871339187331207c46))
+
 ## [2.23.17](https://github.com/geokrety/geokrety-website/compare/v2.23.16...v2.23.17) (2022-10-15)
 
 
