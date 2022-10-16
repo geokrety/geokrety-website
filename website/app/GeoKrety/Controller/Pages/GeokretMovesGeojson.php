@@ -49,7 +49,7 @@ t AS (
                 FROM waypoints
             ) as f;
 EOT;
-        $result = $f3->get('DB')->exec($sql, [$this->geokret->id, 10000, $start]);
+        $result = $f3->get('DB')->exec($sql, [$this->geokret->id, 500, $start]);
         exit($result[0]['geojson']);
     }
 }
