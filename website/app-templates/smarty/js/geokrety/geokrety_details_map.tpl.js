@@ -80,7 +80,7 @@ function onEachFeature(feature, layer) {
 
 jQuery.ajax({
     dataType: "json",
-    url: "{'geokret_moves_geojson_paginate'|alias:sprintf('@gkid=%s,@page=%d', $geokret->gkid, $f3->get('PARAMS.page'))}",
+    url: "{'geokret_moves_geojson_paginate'|alias:sprintf('@gkid=%s,@page=%d', $geokret->gkid, 1)}",
     success: function (data) {
         geoJsonLayer = L.geoJson(data, {
             onEachFeature: onEachFeature,
