@@ -62,9 +62,11 @@
                         {fa icon="instagram" title="{t}Share on Instagram{/t}"}
                         {fa icon="link" title="{t}Copy link to page{/t}"}
                         {fa icon="forumbee" title="{t}Copy to page as bbcode{/t}"}
-                    </dd>
+                    </dd>*}
                     <dt>{t}Country track{/t}</dt>
-                    <dd>{country_track items=$country_track}</dd>*}
+                    <dd>
+                        {$geokret|country_track nofilter}
+                    </dd>
                 </dl>
             </div>
             <div class="col-xs-12 col-md-3">
