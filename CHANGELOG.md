@@ -1,3 +1,10 @@
+## [2.23.19](https://github.com/geokrety/geokrety-website/compare/v2.23.18...v2.23.19) (2022-10-16)
+
+
+### Bug Fixes
+
+* Limit geojson moves to 500 results ([cc37a2f](https://github.com/geokrety/geokrety-website/commit/cc37a2fe074202e6241e5fd235573206154b6ce9))
+
 ## [2.23.18](https://github.com/geokrety/geokrety-website/compare/v2.23.17...v2.23.18) (2022-10-16)
 
 
