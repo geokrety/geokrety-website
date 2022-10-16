@@ -273,6 +273,32 @@ class Geokret extends Base {
         return $this->missing;
     }
 
+    public function countryTrack(): array {
+        $sql = <<<'SQL'
+SELECT geokret,
+       Max(moved_on_datetime) AS last_datetime_in_country,
+       country,
+       Count(*) As move_count
+FROM   (SELECT t.*,
+               row_number()
+                 over (
+                   PARTITION BY geokret
+                   ORDER BY moved_on_datetime) - row_number()
+                                     over (
+                                       PARTITION BY geokret, country
+                                       ORDER BY moved_on_datetime) AS seq
+        FROM gk_moves as t
+        WHERE geokret = ?
+        AND country IS NOT NULL) s
+GROUP  BY geokret,
+          country,
+          seq
+ORDER  BY geokret, last_datetime_in_country
+SQL;
+
+        return \Base::instance()->get('DB')->exec($sql, [$this->id]);
+    }
+
     public function jsonSerialize() {
         return [
             'id' => $this->id,
