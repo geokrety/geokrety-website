@@ -39,7 +39,7 @@ trait XMLDumper {
     }
 
     protected function getMem($current) {
-        $mem = memory_get_peak_usage() - 68078656;
+        $mem = memory_get_peak_usage();
         $maxmem = max($this->maxmem, $mem);
         if ($maxmem != $this->maxmem && $current > 1) {
             fwrite(STDERR, "\n");
