@@ -23,6 +23,7 @@ $events->on('rate-limit.success', function (array $context) {
 $events->on('rate-limit.exceeded', function (array $context) {
     audit('rate-limit.exceeded', $context);
     header('X-GK-Rate-Limit-Exeeced: true');
+    header(sprintf('X-GK-Rate-Limit: %s %d/%d (%d)', $context['name'], $context['total_user_calls'], $context['limit'], $context['period']));
     Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['exceeded']);
 });
 $events->on('rate-limit.skip', function (array $context) {
