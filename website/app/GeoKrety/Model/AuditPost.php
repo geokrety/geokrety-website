@@ -48,6 +48,7 @@ class AuditPost extends Base {
             'type' => Schema::DT_VARCHAR256,
             'nullable' => false,
         ],
+        // "error" column?
     ];
 
     public function get_datetime($value): ?DateTime {
