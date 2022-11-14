@@ -129,7 +129,7 @@ class BaseExportXML extends BaseExport {
      * @return bool True if bypass password is valid
      */
     private function adminRestrictionBypass(): bool {
-        return $this->f3->get('GET.bypass_password') === GK_API_EXPORT_PASSWORD_BYPASS_LIMIT;
+        return $this->f3->get('GET.bypass_password') === GK_API_EXPORT_PASSWORD_BYPASS_LIMIT_DAYS;
     }
 
     protected function _check_geographic_zone() {
