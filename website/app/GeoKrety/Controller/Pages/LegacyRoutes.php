@@ -111,6 +111,9 @@ class LegacyRoutes {
             'inventory' => $f3->get('GET.inventory'),
             'details' => $f3->get('GET.details'),
         ];
+        if ($f3->exists('GET.rate_limits_bypass')) {
+            $others['rate_limits_bypass'] = $f3->get('GET.rate_limits_bypass');
+        }
         $url_params = $this->_export_query_params($f3, $others);
         $f3->reroute(sprintf('@api_v1_export2?%s', $url_params), $permanent = false, $die = true);
     }

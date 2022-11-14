@@ -18,7 +18,7 @@ class RateLimit extends Prefab {
     private const RATE_KEY = 'RATE_LIMIT_API';
 
     /**
-     * Count requests and report error as GKXML Error.
+     * Count requests and report error as simple string.
      *
      * @param string      $name Limit name
      * @param string|null $key  User identifier
@@ -29,6 +29,7 @@ class RateLimit extends Prefab {
         try {
             self::incr($name, $key);
         } catch (RateLimitExceeded $e) {
+            AuditPost::AmendAuditPostWithErrors('Rate limit exceeded');
             echo _('Rate limit exceeded');
             http_response_code(429);
             exit();
@@ -81,6 +82,10 @@ class RateLimit extends Prefab {
      * @throws \GeoKrety\Service\RateLimitExceeded
      */
     public static function incr(string $name, ?string $key = null) {
+        $f3 = \Base::instance();
+        if ($f3->exists('GET.rate_limits_bypass') && $f3->get('GET.rate_limits_bypass') === GK_RATE_LIMITS_BYPASS) {
+            return;
+        }
         /** @var \GeoKrety\Service\Redis $redis */
         $redis = Redis::instance();
         try {

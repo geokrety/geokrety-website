@@ -345,6 +345,7 @@ class Config extends \Prefab {
         define('GK_GENERATOR_CACHE_RESULT_TTL', getenv('GK_GENERATOR_CACHE_RESULT_TTL') ?: 60);
 
         // Rate Limits
+        define('GK_RATE_LIMITS_BYPASS', getenv('GK_RATE_LIMITS_BYPASS') ?: 'geokrety');
         define('GK_RATE_LIMITS', [
             'API_LEGACY_MOVE_POST' => [1500, 60 * 60 * 24], // 1500/day
             'API_LEGACY_PICTURE_PROXY' => [5000, 60 * 60 * 24], // 5000/day
