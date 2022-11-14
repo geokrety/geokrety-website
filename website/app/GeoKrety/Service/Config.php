@@ -257,6 +257,7 @@ class Config extends \Prefab {
             '/api-login2secid',
             '/update-password',
             '/recover-password/',
+            '/registration/',
         ]);
         define('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS') ?: 90);
         define('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS') ?: 90);

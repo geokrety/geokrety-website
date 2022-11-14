@@ -118,7 +118,7 @@ if ($f3->exists('SESSION.HTTP_RETURN_CODE')) {
 if (sizeof($f3->get('POST'))) {
     $has_route_match = 0;
     if (GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS !== true) {
-        foreach (GK_AUDIT_LOGS_EXCLUDE_PATH as $path) {
+        foreach (GK_AUDIT_LOGS_EXCLUDE_PATH as $path) { // use?: !in_array()
             if (strpos($f3->PATH, $path) !== false) {
                 ++$has_route_match;
             }
@@ -127,7 +127,7 @@ if (sizeof($f3->get('POST'))) {
     if ($has_route_match === 0 || GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS) {
         $audit = new \GeoKrety\Model\AuditPost();
         $audit->route = $f3->PATH;
-        $audit->payload = json_encode($f3->get('POST'));
+        $audit->payload = json_encode($f3->get('POST')); // As safety guard, replace any *password* but placeholder (what about other patterns?)
         try {
             $audit->save();
             $f3->set('AUDIT_POST_ID', $audit->id);
