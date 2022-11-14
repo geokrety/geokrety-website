@@ -6,6 +6,6 @@ tmp_dir=$(mktemp -d -p $DIR -t srtm-XXXXXXXXXX)
 
 echo Getting SRTM Files
 wget -4 -q -i $DIR/tests-srtm-import.txt -P $tmp_dir
-raster2pgsql $tmp_dir/*.zip -F -I -e public.srtm | psql -U ${PGUSER:-geokrety}
+raster2pgsql $tmp_dir/*.zip -F -I -e public.srtm | psql -h 127.0.0.1 -U ${PGUSER:-geokrety}
 
 rm -rf $tmp_dir
