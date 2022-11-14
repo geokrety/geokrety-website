@@ -140,7 +140,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
             if ($move->comments_count) {
                 $xml->startElement('comments');
                 /** @var \GeoKrety\Model\MoveComment $comment */
-                foreach ($move->comments as $comment) {
+                foreach ($move->comments ?? [] as $comment) {
                     $xml->startElement('comment');
                     $xml->writeAttribute('type', $comment->type == 0 ? 'comment' : 'missing');
 
