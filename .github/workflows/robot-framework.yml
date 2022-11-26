@@ -98,7 +98,7 @@ jobs:
 
       - name: Ensure available fonts on system for Robot Framework/Firefox
         run: |
-          sudo apt-get install -y  ttf-bitstream-vera fonts-urw-base35
+          sudo apt-get install -y firefox ttf-bitstream-vera fonts-urw-base35
 
       - name: Install Robot Framework
         run: |
