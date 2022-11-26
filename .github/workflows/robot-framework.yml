@@ -51,6 +51,11 @@ jobs:
 
       - name: Import SRTM data
         run: |
+          # Prevent DNS issue with new GH Runner on Ubuntu 22.04
+          for i in $(seq 60); do
+            httping -sGc1 -o 200,302 https://srtm.geokrety.org/Eurasia/N52E021.hgt.zip && { echo OK; break; } || { sleep 1; }
+          done || exit 1
+
           ./website/db/tests-srtm-import.sh
           psql -c "SELECT count(*) FROM public.srtm"
           psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
