@@ -1,3 +1,29 @@
+## [2.25.0](https://github.com/geokrety/geokrety-website/compare/v2.24.1...v2.25.0) (2022-11-26)
+
+
+### Features
+
+* Allow bypass API count rate limiting ([0568444](https://github.com/geokrety/geokrety-website/commit/0568444b125949d394ac0a09a05e84a586dfd50a))
+* No rate limit /s for internal communication ([132dbcc](https://github.com/geokrety/geokrety-website/commit/132dbcc65aec7704b123aff2d26e7921506db32c))
+
+
+### Bug Fixes
+
+* [cli] continue on error when a userbanne cannot be generated ([e50c9d6](https://github.com/geokrety/geokrety-website/commit/e50c9d6978f86ebe7d80c4984a529e4e837df39d))
+* Also show current Rate-Limit when RL reached ([f9ea0dc](https://github.com/geokrety/geokrety-website/commit/f9ea0dc5dae11bd81296b48b7fbb525e6f72ea2c))
+* Change admin menu color ([5a50293](https://github.com/geokrety/geokrety-website/commit/5a502934a33e005121264a879c29f1be1a469570))
+* Exclude registration form from POST audit logs ([5f43e96](https://github.com/geokrety/geokrety-website/commit/5f43e96179c805b9c3dd82945baf88517fdae610))
+* Fix user delete cascade ([aa62d02](https://github.com/geokrety/geokrety-website/commit/aa62d02d44b4ae11d50c7d77dad770b946bb8e8c))
+* memory limit exception for "heavy" users ([7b900c5](https://github.com/geokrety/geokrety-website/commit/7b900c5dd8c62e58542f57d2014673dfe6e6a575)), closes [#761](https://github.com/geokrety/geokrety-website/issues/761)
+* Prevent an export error when no comment added ([ecf6f85](https://github.com/geokrety/geokrety-website/commit/ecf6f85418fa19fe0f27cb4f5f884002a1ca6ac3))
+* PrizeAwarderTopMovers restrict by move_type "alive" ([997c8df](https://github.com/geokrety/geokrety-website/commit/997c8df1eb5ab80443a7bd9165f69f39e27cc71d))
+* Remove debug code ([16da80b](https://github.com/geokrety/geokrety-website/commit/16da80b896b1a04ff12bb54b75e7357af0dc8696))
+
+
+### Code Refactoring
+
+* rename constant ([deb7c48](https://github.com/geokrety/geokrety-website/commit/deb7c48bef153e2929b8bb184b2d9d7cc48615b4))
+
 ## [2.24.1](https://github.com/geokrety/geokrety-website/compare/v2.24.0...v2.24.1) (2022-10-16)
 
 
