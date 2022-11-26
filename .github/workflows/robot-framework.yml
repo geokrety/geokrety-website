@@ -40,7 +40,7 @@ jobs:
 
       - name: Install tools
         run: |
-          sudo apt-get install -y git httping postgresql-client-12 postgis libtap-parser-sourcehandler-pgtap-perl
+          sudo apt-get install -y git httping postgresql-client postgis libtap-parser-sourcehandler-pgtap-perl
 
       - name: Pull/Start postgres
         run: |
