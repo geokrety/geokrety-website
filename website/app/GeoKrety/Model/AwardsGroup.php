@@ -29,9 +29,11 @@ class AwardsGroup extends Base {
         ],
         'awards' => [
             'has-many' => ['\GeoKrety\Model\Awards', 'group'],
+            'validate_level' => 3,
         ],
         'rankings' => [
             'has-many' => ['\GeoKrety\Model\YearlyRanking', 'group'],
+            'validate_level' => 3,
         ],
     ];
 

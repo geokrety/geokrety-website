@@ -84,7 +84,8 @@ class Move extends Base {
         ],
         'comments' => [
             'has-many' => ['\GeoKrety\Model\MoveComment', 'move'],
-            'validate' => 'max_len,'.GK_MOVE_COMMENT_MAX_LENGTH,
+            'validate' => 'max_len,'.GK_MOVE_COMMENT_MAX_LENGTH, // TODO <--- does this makes sense?
+            'validate_level' => 3,
         ],
         'pictures_count' => [
             'type' => Schema::DT_SMALLINT,
@@ -92,6 +93,7 @@ class Move extends Base {
         ],
         'pictures' => [
             'has-many' => ['\GeoKrety\Model\Picture', 'move'],
+            'validate_level' => 3,
         ],
         'comments_count' => [
             'type' => Schema::DT_INT,
