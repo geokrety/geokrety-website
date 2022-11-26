@@ -87,31 +87,40 @@ class Geokret extends Base {
         ],
         'owner' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
+            'validate_level' => 3,
         ],
         'holder' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
+            'validate_level' => 3,
         ],
         'moves' => [
             'has-many' => ['\GeoKrety\Model\Move', 'geokret'],
+            'validate_level' => 3,
         ],
         'owner_codes' => [
             'has-many' => ['\GeoKrety\Model\OwnerCode', 'geokret'],
+            'validate_level' => 3,
         ],
         'watchers' => [
             'has-many' => ['\GeoKrety\Model\Watched', 'geokret'],
+            'validate_level' => 3,
         ],
         'avatar' => [
             'belongs-to-one' => '\GeoKrety\Model\Picture',
             'nullable' => true,
+            'validate_level' => 3,
         ],
         'avatars' => [
             'has-many' => ['\GeoKrety\Model\Picture', 'geokret'],
+            'validate_level' => 3,
         ],
         'last_position' => [
             'belongs-to-one' => '\GeoKrety\Model\Move',
+            'validate_level' => 3,
         ],
         'last_log' => [
             'belongs-to-one' => '\GeoKrety\Model\Move',
+            'validate_level' => 3,
         ],
         'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,

@@ -41,9 +41,11 @@ class News extends Base {
         ],
         'comments' => [
             'has-many' => ['\GeoKrety\Model\NewsComment', 'news'],
+            'validate_level' => 3,
         ],
         'subscriptions' => [
             'has-many' => ['\GeoKrety\Model\NewsSubscription', 'news'],
+            'validate_level' => 3,
         ],
         'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,

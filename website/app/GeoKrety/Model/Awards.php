@@ -71,6 +71,7 @@ class Awards extends Base {
         ],
         'holders' => [
             'has-many' => ['\GeoKrety\Model\AwardsWon', 'award'],
+            'validate_level' => 3,
         ],
         'group' => [
             'belongs-to-one' => '\GeoKrety\Model\AwardsGroup',

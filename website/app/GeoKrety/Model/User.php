@@ -196,45 +196,58 @@ class User extends Base implements JsonSerializable {
 
         'avatars' => [
             'has-many' => ['\GeoKrety\Model\Picture', 'user'],
+            'validate_level' => 3,
         ],
         'email_activation' => [
             'has-many' => ['\GeoKrety\Model\EmailActivationToken', 'user'],
+            'validate_level' => 3,
         ],
         'news' => [
             'has-many' => ['\GeoKrety\Model\News', 'author'],
+            'validate_level' => 3,
         ],
         'news_comments' => [
             'has-many' => ['\GeoKrety\Model\NewsComment', 'author'],
+            'validate_level' => 3,
         ],
         'moves' => [
             'has-many' => ['\GeoKrety\Model\MoveComment', 'author'],
+            'validate_level' => 3,
         ],
         'moves_comments' => [
             'has-many' => ['\GeoKrety\Model\NewsComment', 'author'],
+            'validate_level' => 3,
         ],
         'news_subscription' => [
             'has-many' => ['\GeoKrety\Model\NewsSubscription', 'author'],
+            'validate_level' => 3,
         ],
         'geokrety_owned' => [
             'has-many' => ['\GeoKrety\Model\Geokret', 'owner'],
+            'validate_level' => 3,
         ],
         'geokrety_held' => [
             'has-many' => ['\GeoKrety\Model\Geokret', 'holder'],
+            'validate_level' => 3,
         ],
         'watched_geokrety' => [
             'has-many' => ['\GeoKrety\Model\Watched', 'user'],
+            'validate_level' => 3,
         ],
         'awards' => [
             'has-many' => ['\GeoKrety\Model\AwardsWon', 'holder'],
+            'validate_level' => 3,
         ],
         'yearly_ranks' => [
             'has-many' => ['\GeoKrety\Model\YearlyRanking', 'user'],
+            'validate_level' => 3,
         ],
         'activation' => [
             'has-one' => ['\GeoKrety\Model\AccountActivationToken', 'user'],
         ],
         'social_auth' => [
             'has-many' => ['\GeoKrety\Model\UserSocialAuth', 'user'],
+            'validate_level' => 3,
         ],
     ];
 

@@ -60,12 +60,15 @@ class GeokretWithDetails extends Geokret {
         // ],
         'moves' => [
             'has-many' => ['\GeoKrety\Model\Move', 'geokret'],
+            'validate_level' => 3,
         ],
         'owner_codes' => [
             'has-many' => ['\GeoKrety\Model\OwnerCode', 'geokret'],
+            'validate_level' => 3,
         ],
         'watchers' => [
             'has-many' => ['\GeoKrety\Model\Watched', 'geokret'],
+            'validate_level' => 3,
         ],
         'avatar' => [
             'belongs-to-one' => '\GeoKrety\Model\Picture',
@@ -73,6 +76,7 @@ class GeokretWithDetails extends Geokret {
         ],
         'avatars' => [
             'has-many' => ['\GeoKrety\Model\Picture', 'geokret'],
+            'validate_level' => 3,
         ],
         // 'last_position' => [
         //    'belongs-to-one' => '\GeoKrety\Model\Move',
