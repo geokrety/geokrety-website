@@ -29,7 +29,7 @@ SELECT isnt(token, NULL, 'Not null') FROM gk_account_activation WHERE id = 3::bi
 
 -- ip is mandatory
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (4, 'test 4', '127.0.0.1');
-SELECT throws_ok($$INSERT INTO "gk_account_activation" ("id", "user", "used") VALUES (4, 4, 0::smallint)$$, 'null value in column "requesting_ip" violates not-null constraint');
+SELECT throws_ok($$INSERT INTO "gk_account_activation" ("id", "user", "used") VALUES (4, 4, 0::smallint)$$, 23502, 'null value in column "requesting_ip" of relation "gk_account_activation" violates not-null constraint');
 
 -- only **one** token per user
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (5, 'test 5', '127.0.0.1');

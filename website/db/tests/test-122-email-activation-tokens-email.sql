@@ -15,8 +15,8 @@ SELECT is(gkdecrypt(_email_crypt, 'secretkey'::character varying, 'geokrety'::ch
 
 -- Cannot be null
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (2, 'test 2', '127.0.0.1');
-SELECT throws_ok($$INSERT INTO "gk_email_activation" ("id", "user", "_email", "requesting_ip") VALUES (2, 2, '', '127.0.0.1')$$, 'null value in column "_email_crypt" violates not-null constraint');
-SELECT throws_ok($$INSERT INTO "gk_email_activation" ("id", "user", "_email", "requesting_ip") VALUES (3, 2, NULL, '127.0.0.1')$$, 'null value in column "_email_crypt" violates not-null constraint');
+SELECT throws_ok($$INSERT INTO "gk_email_activation" ("id", "user", "_email", "requesting_ip") VALUES (2, 2, '', '127.0.0.1')$$, 23502, 'null value in column "_email_crypt" of relation "gk_email_activation" violates not-null constraint');
+SELECT throws_ok($$INSERT INTO "gk_email_activation" ("id", "user", "_email", "requesting_ip") VALUES (3, 2, NULL, '127.0.0.1')$$, 23502, 'null value in column "_email_crypt" of relation "gk_email_activation" violates not-null constraint');
 
 -- Update other untouched
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (3, 'test 3', '127.0.0.1');
