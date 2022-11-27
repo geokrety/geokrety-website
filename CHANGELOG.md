@@ -1,3 +1,15 @@
+## [2.25.1](https://github.com/geokrety/geokrety-website/compare/v2.25.0...v2.25.1) (2022-11-27)
+
+
+### Bug Fixes
+
+* Bump to postgres 14 ([56c2e29](https://github.com/geokrety/geokrety-website/commit/56c2e29887c50c392185e60cea1a65a0a45fee9d))
+
+
+### Chores
+
+* Fix typo ([54b0995](https://github.com/geokrety/geokrety-website/commit/54b099514ac426f13af84e9254b5cb0e4f046626))
+
 ## [2.25.0](https://github.com/geokrety/geokrety-website/compare/v2.24.1...v2.25.0) (2022-11-26)
 
 
