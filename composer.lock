@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6be9da3b6d72b30508a4661d873f3fed",
+    "content-hash": "69fc599369c99c41c186a8669c1a331f",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -719,6 +719,54 @@
                 "source": "https://github.com/cakephp/utility"
             },
             "time": "2022-05-20T04:16:49+00:00"
+        },
+        {
+            "name": "caxy/basex-client-php",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caxy/basex-client-php.git",
+                "reference": "e060fd414b7b27cce5e2f524cf7ac347e4ee547e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caxy/basex-client-php/zipball/e060fd414b7b27cce5e2f524cf7ac347e4ee547e",
+                "reference": "e060fd414b7b27cce5e2f524cf7ac347e4ee547e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Caxy\\BaseX\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Schroeder",
+                    "email": "jschroeder@caxy.com"
+                }
+            ],
+            "description": "BaseX PHP Client",
+            "keywords": [
+                "basex",
+                "client",
+                "database",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/caxy/basex-client-php/issues",
+                "source": "https://github.com/caxy/basex-client-php/tree/v0.0.2"
+            },
+            "time": "2022-10-25T04:18:42+00:00"
         },
         {
             "name": "clue/stream-filter",

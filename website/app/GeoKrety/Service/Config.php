@@ -45,6 +45,12 @@ class Config extends \Prefab {
         define('GK_SENTRY_DSN', getenv('GK_SENTRY_DSN') ?: null);
         define('GK_SENTRY_ENV', getenv('GK_SENTRY_ENV') ?: 'dev');
 
+        // BaseX
+        define('GK_BASEX_HOST', getenv('GK_BASEX_HOST') ?: null);
+        define('GK_BASEX_PORT', getenv('GK_BASEX_PORT') ?: null);
+        define('GK_BASEX_USER', getenv('GK_BASEX_USER') ?: null);
+        define('GK_BASEX_PASSWORD', getenv('GK_BASEX_PASSWORD') ?: null);
+
         // Minio
         define('GK_MINIO_HOST', getenv('GK_MINIO_HOST') ?: 'minio');
         define('GK_MINIO_PORT', getenv('GK_MINIO_PORT') ?: '9000');
