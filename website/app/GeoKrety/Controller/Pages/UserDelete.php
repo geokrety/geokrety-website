@@ -23,12 +23,13 @@ class UserDelete extends Base {
 
         $f3->get('DB')->begin();
         $anonymize_comments = filter_var($f3->get('POST.removeCommentContentCheckbox'), FILTER_VALIDATE_BOOLEAN);
-        $sql = 'SELECT delete_user(?, ?)';
+        $sql = 'SELECT delete_user(?, ?)'; // TODO: Could this be a database trigger?
         $result = $f3->get('DB')->exec($sql, [$this->currentUser->id, $anonymize_comments]);
+        // TODO: Archive user's GeoKrety
 
         if ($result === false) {
             $f3->get('DB')->rollback();
-            Flash::instance()->addMessage(_('Something went wrong. If the error persist, please contact us.'), 'danger');
+            Flash::instance()->addMessage(_('Something went wrong. If the problem persists, please contact us.'), 'danger');
             $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
         }
 
