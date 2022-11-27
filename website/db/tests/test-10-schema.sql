@@ -7,7 +7,7 @@ SELECT has_schema('audit');
 SELECT has_schema('geokrety');
 SELECT has_schema('public');
 SELECT has_schema('secure');
-SELECT schemas_are(ARRAY[ 'audit', 'geokrety', 'public', 'secure' ]);
+SELECT schemas_are(ARRAY[ 'audit', 'geokrety', 'public', 'secure', 'notify_queues' ]);
 
 SELECT has_table( 'gk_moves' );
 SELECT has_table( 'gk_users' );
