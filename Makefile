@@ -49,6 +49,9 @@ seed: ## generate random data
 buckets: ## create buckets
 	${PTY_PREFIX} bash -c "./minio/init.sh"
 
+basex: ## Create BaseX databases
+	cd website/public && php index.php /cli/basex/initdb
+
 phinx-migrate: ## play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
 db-migrator: ## play migration
