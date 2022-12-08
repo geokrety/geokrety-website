@@ -14,5 +14,4 @@ cf. [INSTALL.md](INSTALL.md) and [CONTRIBUTING.md](CONTRIBUTING.md) readme files
 
 # Credits
 
-<img src="https://cdn.geokrety.org/images/logos/f3.svg" alt="powered by f3" width="130px">\
-Powered by [Fat-Free Framework](https://fatfreeframework.com)
+<img src="https://cdn.geokrety.org/images/logos/f3.svg" alt="powered by f3" width="130px">Powered by [Fat-Free Framework](https://fatfreeframework.com)
