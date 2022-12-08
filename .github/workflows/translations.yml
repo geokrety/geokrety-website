@@ -64,7 +64,7 @@ jobs:
           msgcat -o website/app/languages/messages.po.txt ${{ steps.vars.outputs.tmp_dir }}/messages.pot ${{ steps.vars.outputs.tmp_dir }}/smarty.pot
 
       - name: crowdin action
-        uses: crowdin/github-action@1.4.4
+        uses: crowdin/github-action@1.5.1
         with:
           config: crowdin.yml
           project_id: 260106
