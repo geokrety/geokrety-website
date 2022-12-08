@@ -1,3 +1,10 @@
+## [2.25.13](https://github.com/geokrety/geokrety-website/compare/v2.25.12...v2.25.13) (2022-12-08)
+
+
+### Translations
+
+* New translations messages.po (Italian) [skip translate] ([#779](https://github.com/geokrety/geokrety-website/issues/779)) ([6fbed67](https://github.com/geokrety/geokrety-website/commit/6fbed67ba4ac6d14a816bf083f9982c3036e695e))
+
 ## [2.25.12](https://github.com/geokrety/geokrety-website/compare/v2.25.11...v2.25.12) (2022-12-08)
 
 
