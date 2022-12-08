@@ -1,3 +1,10 @@
+## [2.25.8](https://github.com/geokrety/geokrety-website/compare/v2.25.7...v2.25.8) (2022-12-08)
+
+
+### Bug Fixes
+
+* dummy commit to trigger workflows ([3b216b7](https://github.com/geokrety/geokrety-website/commit/3b216b7382990aec028d1ba415a20ebb1ad2aa52))
+
 ## [2.25.7](https://github.com/geokrety/geokrety-website/compare/v2.25.6...v2.25.7) (2022-12-08)
 
 
