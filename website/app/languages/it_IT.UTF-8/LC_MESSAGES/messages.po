@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-08 18:11+0000\n"
-"PO-Revision-Date: 2022-12-08 18:40\n"
+"POT-Creation-Date: 2022-12-08 20:08+0000\n"
+"PO-Revision-Date: 2022-12-08 20:53\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -107,7 +107,7 @@ msgstr "Mai Viaggiato"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
-msgstr "icona di stato"
+msgstr "Icona di stato"
 
 #: website/app-templates/smarty/plugins/modifier.statpictemplate.php:16
 #, php-format
@@ -117,7 +117,7 @@ msgstr "Banner statistiche utente: %s"
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
 #, php-format
 msgid "%s's statpic"
-msgstr ""
+msgstr "Statpic di %s"
 
 #: website/app/GeoKrety/Auth.php:20
 #, php-format
@@ -148,7 +148,7 @@ msgstr "Nessun utente trovato."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
 msgid "The \"start at\" value is invalid."
-msgstr "Il valore \"start at\" non è valido."
+msgstr "Il valore \"parti da\" non è valido."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
 msgid "The \"TCPrefix\" value is invalid."
@@ -183,11 +183,11 @@ msgstr "Lo script \"%s\" è stato sbloccato"
 
 #: website/app/GeoKrety/Controller/Admin/Traits/ScriptLoader.php:21
 msgid "This script does not exist."
-msgstr ""
+msgstr "Questo script non esiste."
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:38
 msgid "This award does not exist"
-msgstr ""
+msgstr "Questo premio non esiste"
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:47
 msgid "The prize has been awarded"
@@ -252,7 +252,7 @@ msgstr "Qualcosa è andato storto durante la registrazione dell'adozione."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:34
 msgid "Failed to create the GeoKret."
-msgstr "Impossibile creare il GeoKret."
+msgstr "La creazione del Geokret non è andata a buon fine."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
 msgid "Born here"
@@ -265,7 +265,7 @@ msgstr "Il tuo GeoKret è stato creato. Ora puoi <a href=\"%s\">stampare</a> una
 
 #: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:69
 msgid "Failed to create the GeoKret initial move."
-msgstr "Impossibile creare la mossa iniziale del GeoKret."
+msgstr "Impossibile creare il movimento iniziale del GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:12
 msgid "Only the owner can edit his GeoKrety."
@@ -282,15 +282,15 @@ msgstr "Impossibile modificare il GeoKret."
 #: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:34
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
 msgid "This label template does not exist."
-msgstr ""
+msgstr "Questo modello di etichetta non esiste."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:23
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
-msgstr "Mi dispiace di non avere il permesso di stampare un'etichetta per questo GeoKret come non l'hai mai scoperta!"
+msgstr "Mi dispiace ma non hai il permesso di stampare un'etichetta per questo GeoKret che non hai mai trovato!"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:51
 msgid "Something went wrong while saving the GeoKret preferred label template."
-msgstr "Qualcosa è andato storto durante il salvataggio del modello di etichetta preferito GeoKret."
+msgstr "Qualcosa è andato storto durante il salvataggio del modello di etichetta preferito per questo GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:66
 msgid "Some chosen languages are invalid."
@@ -327,7 +327,7 @@ msgstr "Un codice proprietario è già disponibile per questo GeoKret."
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:39
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
-msgstr "Il codice proprietario (%s) è stato generato. Fornirlo insieme al codice di monitoraggio (%s) a qualcuno in modo che possa adottare il tuo GeoKret."
+msgstr "Il codice proprietario (%s) è stato generato. È necessario firnirlo insieme al codice di monitoraggio (%s) a qualcuno in modo che possa adottare il tuo GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:41
 msgid "Failed to create a new Owner Code."
@@ -368,11 +368,11 @@ msgstr "Data o ora errata"
 
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:272
 msgid "Waypoint parameter must be provided."
-msgstr "Il parametro \"waypoint\" è necessario."
+msgstr "È necessario fornire il parametro waypoint."
 
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:282
 msgid "\"nr\" parameter must be provided."
-msgstr "Il parametro \"nr\" deve essere fornito."
+msgstr "\"È necessario fornire il parametro \"nr\"."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:58
 #: website/app/GeoKrety/Controller/Pages/Login.php:185
@@ -396,7 +396,7 @@ msgid "Invalid \"secid\" length"
 msgstr "Lunghezza \"secid\" non valida"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:207
-msgid "This \"secid\" does not exists"
+msgid "This \"secid\" does not exist"
 msgstr "Questo \"secid\" non esiste"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:263
@@ -433,7 +433,7 @@ msgstr "Impossibile eliminare il commento."
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:32
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:18
 msgid "This move does not exist."
-msgstr ""
+msgstr "Questo movimento non esiste."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:37
 #: website/app/GeoKrety/Controller/Pages/PictureDefineAsMainAvatar.php:14
@@ -517,7 +517,7 @@ msgstr "Didascalia salvata."
 
 #: website/app/GeoKrety/Controller/Pages/StatisticsYearlyRanking.php:22
 msgid "This ranking does not exist."
-msgstr ""
+msgstr "Questa classifica non esiste."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:19
 #: website/public/index.php:38
@@ -526,7 +526,7 @@ msgstr "Questa pagina non esiste."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:24
 msgid "This GeoKret does not exist."
-msgstr ""
+msgstr "Questo Geokret non esiste."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveCommentLoader.php:15
 #: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:16
