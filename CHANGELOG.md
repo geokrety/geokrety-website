@@ -1,3 +1,10 @@
+## [2.25.10](https://github.com/geokrety/geokrety-website/compare/v2.25.9...v2.25.10) (2022-12-08)
+
+
+### Bug Fixes
+
+* Fix typos ([0d30efb](https://github.com/geokrety/geokrety-website/commit/0d30efb8e02e0ec4fc2f81d356c050d8672dfd17))
+
 ## [2.25.9](https://github.com/geokrety/geokrety-website/compare/v2.25.8...v2.25.9) (2022-12-08)
 
 
