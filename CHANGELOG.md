@@ -1,3 +1,18 @@
+## [2.25.4](https://github.com/geokrety/geokrety-website/compare/v2.25.3...v2.25.4) (2022-12-08)
+
+
+### Translations
+
+* New translations help.html (Chinese Simplified) [skip translate] ([cf4fb4c](https://github.com/geokrety/geokrety-website/commit/cf4fb4c363c662ca7f7d9750b127bb3987b59c5a))
+* New translations help.html (Dutch) [skip translate] ([25ec404](https://github.com/geokrety/geokrety-website/commit/25ec404464a2812c6ad12486ffd1506042c4dc26))
+* New translations help.html (French) [skip translate] ([faecec7](https://github.com/geokrety/geokrety-website/commit/faecec710c0c81c08cb7d7d69a3dc98e438861ce))
+* New translations help.html (Italian) [skip translate] ([921bd09](https://github.com/geokrety/geokrety-website/commit/921bd0957ef2b33c1a5a5fdecdbdc6cdbde25e04))
+* New translations help.html (Japanese) [skip translate] ([235beab](https://github.com/geokrety/geokrety-website/commit/235beab36538df4601ec94387202483e539e3108))
+* New translations help.html (Polish) [skip translate] ([3b31212](https://github.com/geokrety/geokrety-website/commit/3b31212e167a22e43f5acbcf739465bb17f5a908))
+* New translations help.html (Portuguese) [skip translate] ([07bae69](https://github.com/geokrety/geokrety-website/commit/07bae693f974d419b846dd5d63fce8cad327f8d6))
+* New translations help.html (Spanish) [skip translate] ([bbf7a40](https://github.com/geokrety/geokrety-website/commit/bbf7a402c6847636c25bb17f4592de5676298ae6))
+* New translations help.html (Thai) [skip translate] ([24b3e0f](https://github.com/geokrety/geokrety-website/commit/24b3e0f990df250ddcca55498569b6128c7965e1))
+
 ## [2.25.3](https://github.com/geokrety/geokrety-website/compare/v2.25.2...v2.25.3) (2022-12-07)
 
 
