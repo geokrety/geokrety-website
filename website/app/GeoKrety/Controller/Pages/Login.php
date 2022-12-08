@@ -204,7 +204,7 @@ class Login extends Base {
         $auth = new Auth('secid');
         $user = $auth->login($secid, null);
         if ($user === false) {
-            Error::buildError($streamXML, _('This "secid" does not exists'));
+            Error::buildError($streamXML, _('This "secid" does not exist'));
             Event::instance()->emit('user.login.secid-failure', [
                 'secid' => $secid,
                 'error' => self::SECID_TOKEN_NOT_EXISTING_ERROR,
