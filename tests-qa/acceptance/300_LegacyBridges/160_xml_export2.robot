@@ -49,7 +49,7 @@ Search By UserId And Inventory
 
 Search By UserId + Invalid SecId
     Go To Url                             url=${GK_URL}/export2.php?userid=${USER_1.id}&secid=invalidxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1
-    Page Should Contain                   This "secid" does not exists
+    Page Should Contain                   This "secid" does not exist
 
 Search By UserId + SecId
     Count GeoKrety Element                /export2.php?userid=${USER_1.id}&secid=${USER_1.secid}    3

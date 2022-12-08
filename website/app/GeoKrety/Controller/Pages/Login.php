@@ -208,7 +208,7 @@ class Login extends Base {
             Event::instance()->emit('user.login.secid-failure', [
                 'secid' => $secid,
                 'error' => self::SECID_TOKEN_NOT_EXISTING_ERROR,
-                'error_message' => 'This "secid" does not exists',
+                'error_message' => 'This "secid" does not exist',
                 ]);
             exit();
         }
