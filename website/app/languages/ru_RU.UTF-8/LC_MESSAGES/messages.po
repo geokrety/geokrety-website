@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 12:06+0000\n"
-"PO-Revision-Date: 2022-11-27 12:17\n"
+"POT-Creation-Date: 2022-12-08 18:11+0000\n"
+"PO-Revision-Date: 2022-12-08 18:40\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -47,12 +47,12 @@ msgstr "У GeoKret есть аватар"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
 msgid "nobody"
-msgstr ""
+msgstr "никого"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:32
 #, php-format
 msgid "GeoKret \"%s\" by %s"
-msgstr ""
+msgstr "ГеоКрот \"%s\" от %s"
 
 #: website/app-templates/smarty/plugins/modifier.gkicon.php:17
 msgid "GK type icon"
@@ -103,7 +103,7 @@ msgstr "В руках владельца"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:15
 msgid "Never Travelled"
-msgstr ""
+msgstr "Никогда не путешествовал"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
@@ -126,72 +126,72 @@ msgstr "Несколько учетных записей имеют одинак
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
 msgid "Something went wrong while generating GeoKrety."
-msgstr ""
+msgstr "Что-то пошло не так при генерировании ГеоКрота."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:44
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
 msgid "Transaction aborted."
-msgstr ""
+msgstr "Транзакция отклонена."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
 msgid "There are duplicated tracking codes."
-msgstr ""
+msgstr "Имеются дубликаты кодов отслеживания."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:85
 msgid "The number of instances to be created is invalid."
-msgstr ""
+msgstr "Неверное количество созданных экземпляров."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:96
 msgid "No such user found."
-msgstr ""
+msgstr "Пользователь не найден."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:104
 msgid "The \"start at\" value is invalid."
-msgstr ""
+msgstr "Недопустимое значение параметра \"start at\"."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
 msgid "The \"TCPrefix\" value is invalid."
-msgstr ""
+msgstr "Недопустимое значение параметра \"TCPrefix\"."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:111
 #, php-format
 msgid "It must not be in list \"%s\"."
-msgstr ""
+msgstr "Он не должен находиться в списке \"%s\"."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:119
 msgid "The \"TCPrefix\" + \"TCSuffix\" length is greater than \"TCLength\"."
-msgstr ""
+msgstr "Длина \"TCPrefix\" + \"TCSuffix\" превышает длину \"TCLength\"."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
 msgid "No more Tracking Code available using this pattern."
-msgstr ""
+msgstr "Код отслеживания, использующий этот шаблон, больше не существует."
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:26
 msgid "Rate limit has been reset"
-msgstr ""
+msgstr "Предел скорости был сброшен"
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:24
 #, php-format
 msgid "Script \"%s\" has been acked"
-msgstr ""
+msgstr "Поврежден скрипт  \"%s\" "
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsUnlock.php:25
 #, php-format
 msgid "Script \"%s\" has been unlocked"
-msgstr ""
+msgstr "Разблокирован скрипт \"%s\""
 
 #: website/app/GeoKrety/Controller/Admin/Traits/ScriptLoader.php:21
 msgid "This script does not exist."
-msgstr ""
+msgstr "Скрипт не существует."
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:38
 msgid "This award does not exist"
-msgstr ""
+msgstr "Награда не существует"
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:47
 msgid "The prize has been awarded"
-msgstr ""
+msgstr "Приз вручен"
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:80
 msgid "reCaptcha failed!"
@@ -199,39 +199,39 @@ msgstr "reCaptcha не удалась!"
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:104
 msgid "CSRF error, please try again."
-msgstr ""
+msgstr "Ошибка CSRF, попробуйте еще раз."
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:31
 msgid "This query is invalid"
-msgstr ""
+msgstr "Недопустимый запрос"
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:55
 #, php-format
 msgid "invalid value for \"%s\" parameter"
-msgstr ""
+msgstr "недопустимое значение параметра \"%s\""
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:63
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:67
 #, php-format
 msgid "\"%s\" must be an array"
-msgstr ""
+msgstr "параметр \"%s\" должен быть массивом"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:59
 msgid "Parameter \"userid\" must be a valid number."
-msgstr ""
+msgstr "Параметр \"userid\" должен быть действительным числом."
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:82
 msgid "Parameter \"gkid\" must be a valid number or GKid (GKXXXXX)."
-msgstr ""
+msgstr "Параметр \"gkid\" должен быть действительным числом или GKid (GKXXXXX)."
 
 #: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:24
 #, php-format
 msgid "Sorry but this mail address is already in use. Do you want to <a href=\"%s\">reset your password</a>?"
-msgstr ""
+msgstr "К сожалению, этот адрес электронной почты уже используется. Хотите <a href=\"%s\">выполнить сброс пароля</a>?"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
-msgstr ""
+msgstr "К сожалению, указанный код владельца и код отслеживания не совпадают."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:31
 msgid "You are already the owner."
@@ -244,7 +244,7 @@ msgstr "К сожалению, этот код владельца уже был 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:73
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
-msgstr ""
+msgstr "Поздравляем! Теперь Вы являетесь владельцем %s."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:92
 msgid "Something went wrong while registering the adoption."
@@ -269,7 +269,7 @@ msgstr "Не удалось создать первоначальный ход G
 
 #: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:12
 msgid "Only the owner can edit his GeoKrety."
-msgstr ""
+msgstr "Только владелец может редактировать своих ГеоКротов."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
 msgid "Your GeoKret has been updated."
@@ -277,12 +277,12 @@ msgstr "Ваш ГеоКрот был обновлен."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:28
 msgid "Failed to edit the GeoKret."
-msgstr ""
+msgstr "Не удалось создать ГеоКрота."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:34
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:36
 msgid "This label template does not exist."
-msgstr ""
+msgstr "Этот шаблон метки не существует."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:23
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
@@ -302,19 +302,19 @@ msgstr "Пожалуйста, выберите тип экспорта."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
 msgid "You cannot archive someone else GeoKret."
-msgstr ""
+msgstr "Вы не можете архивировать чужих ГеоКротов."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:26
 msgid "This GeoKret is already archived."
-msgstr ""
+msgstr "Этот ГеоКрот уже заархивирован."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:45
 msgid "Archiving GeoKret"
-msgstr ""
+msgstr "Идет архивирование ГеоКротов"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:51
 msgid "Failed to archive the GeoKret."
-msgstr ""
+msgstr "Не удалось выполнить архивирование ГеоКрота"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:23
 msgid "You must be the GeoKret owner to generate new Owner Code."
@@ -336,27 +336,27 @@ msgstr "Не удалось создать новый код владельца.
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:19
 #: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:19
 msgid "You cannot watch your own GeoKrety."
-msgstr ""
+msgstr "Вы не можете просмотреть своих ГеоКротов."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:35
 msgid "This GeoKret is not your watch list."
-msgstr ""
+msgstr "Этот ГеоКрот не входит в ваш список отслеживания."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:42
 msgid "This GeoKret has been removed from your watch list."
-msgstr ""
+msgstr "Этот ГеоКротt удален из вашего списка отслеживания."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:35
 msgid "This GeoKret is already in your watch list."
-msgstr ""
+msgstr "Этот ГеоКрот уже есть в вашем списке отслеживания."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:44
 msgid "This GeoKret has been added to your watch list."
-msgstr ""
+msgstr "Этот ГеоКрот добавлен в ваш список отслеживания."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:34
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
-msgstr ""
+msgstr "Список содержит только неизвестные коды отслеживания или ГеоКротов, к которым никто не прикасался."
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:58
 msgid "Wrong secid"
@@ -368,11 +368,11 @@ msgstr "Неверная дата или время"
 
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:272
 msgid "Waypoint parameter must be provided."
-msgstr ""
+msgstr "Необходимо указать параметр путевой точки."
 
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:282
 msgid "\"nr\" parameter must be provided."
-msgstr ""
+msgstr "Необходимо указать параметр \"nr\"."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:58
 #: website/app/GeoKrety/Controller/Pages/Login.php:185
@@ -385,19 +385,19 @@ msgstr "Добро пожаловать!"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:149
 msgid "Please provide 'login' and 'password' parameters."
-msgstr ""
+msgstr "Пожалуйста, укажите параметры 'login' и 'password'."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:163
 msgid "Your account is not valid."
-msgstr ""
+msgstr "Ваш аккаунт недействителен."
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:196
 msgid "Invalid \"secid\" length"
-msgstr ""
+msgstr "Недопустимая длина параметра \"secid\""
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:207
 msgid "This \"secid\" does not exists"
-msgstr ""
+msgstr "Этот параметр \"secid\" не существует"
 
 #: website/app/GeoKrety/Controller/Pages/Login.php:263
 #, php-format
@@ -415,7 +415,7 @@ msgstr "Запрос аутентификации был отменен."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:23
 msgid "Missing status can only be added to current GeoKret position."
-msgstr ""
+msgstr "Отсутствующий статус можно добавить только в текущую позицию ГеоКрота."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:50
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:73
@@ -433,7 +433,7 @@ msgstr "Не удалось удалить комментарий."
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:32
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:18
 msgid "This move does not exist."
-msgstr ""
+msgstr "Это перемещение не существует."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:37
 #: website/app/GeoKrety/Controller/Pages/PictureDefineAsMainAvatar.php:14
@@ -441,11 +441,11 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:20
 #: website/app/GeoKrety/Controller/Pages/Traits/PictureLoader.php:28
 msgid "This action is reserved to the author."
-msgstr ""
+msgstr "Это действие зарезервировано для автора."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:42
 msgid "This move is not editable."
-msgstr ""
+msgstr "Это перемещение нельзя отредактировать."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCreate.php:102
 msgid "Your move has been saved."
@@ -517,39 +517,39 @@ msgstr "Подпись изображения сохранена."
 
 #: website/app/GeoKrety/Controller/Pages/StatisticsYearlyRanking.php:22
 msgid "This ranking does not exist."
-msgstr ""
+msgstr "Этот рейтинг не существует."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:19
 #: website/public/index.php:38
 msgid "This page doesn't exists."
-msgstr ""
+msgstr "Эта страница не существует."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/GeokretLoader.php:24
 msgid "This GeoKret does not exist."
-msgstr ""
+msgstr "Этот ГеоКрот не существует."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveCommentLoader.php:15
 #: website/app/GeoKrety/Controller/Pages/Traits/NewsCommentLoader.php:16
 msgid "This comment does not exist."
-msgstr ""
+msgstr "Этот комментарий не существует."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/MoveLoader.php:28
 msgid "You are not allowed to edit this move."
-msgstr ""
+msgstr "Вы не можете редактировать это перемещение."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/OAuthProviderLoader.php:15
 msgid "This provider does not exist."
-msgstr ""
+msgstr "Этот провайдер не существует."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/PictureLoader.php:17
 msgid "This picture does not exist."
-msgstr ""
+msgstr "Это изображение не существует."
 
 #: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:24
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:34
 #: website/app/GeoKrety/Controller/Pages/UserContactByGeokret.php:27
 msgid "This user does not exist."
-msgstr ""
+msgstr "Этот пользователь не существует."
 
 #: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:36
 msgid "Language preferences updated."
@@ -571,15 +571,15 @@ msgstr "ГеоКрот: %s (%s)"
 
 #: website/app/GeoKrety/Controller/Pages/UserDelete.php:17
 msgid "Wrong operation result."
-msgstr ""
+msgstr "Неверный результат операции."
 
 #: website/app/GeoKrety/Controller/Pages/UserDelete.php:32
 msgid "Something went wrong. If the problem persists, please contact us."
-msgstr ""
+msgstr "Что-то пошло не так. Свяжитесь с нами, если ошибка повторится."
 
 #: website/app/GeoKrety/Controller/Pages/UserDelete.php:41
 msgid "Your account is now deleted. Thanks for playing with us."
-msgstr ""
+msgstr "Ваша учетная запись удалена. Спасибо за то, что играете с нами."
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:43
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:43
@@ -609,7 +609,7 @@ msgstr "Изменение не было обработано. Этот токе
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:34
 msgid "You have successfully validated your email address."
-msgstr ""
+msgstr "Ваш адрес электронной почты успешно подтвержден."
 
 #: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:27
 msgid "Failed to refresh your secid."
@@ -634,7 +634,7 @@ msgstr "Настройки электронной почты сохранены.
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:52
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
-msgstr "Письмо с подтверждением было отправлено еще раз на Ваш новый электронный адрес. Вы должны нажать на ссылку, указанную в письме, чтобы подтвердить изменение адреса Вашей электронной почты. Ссылка подтверждения истекает через %s."
+msgstr "Письмо с подтверждением было отправлено еще раз на ваш новый адрес электронной почты. Вам нужно еще раз нажать на указанную в письме ссылку, чтобы подтвердить изменение адреса вашей электронной почты. Ссылка подтверждения истекает через %s."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:60
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:67
@@ -644,7 +644,7 @@ msgstr "Извините, но этот адрес электронной поч
 #: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:80
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
-msgstr "Письмо с подтверждением было отправлено на Ваш новыйэлектронный адрес. Вы должны нажать на ссылку, указанную в письме, чтобы подтвердить изменение Вашего адреса электронной почты. Ссылка подтверждения истекает через %s."
+msgstr "Письмо с подтверждением было отправлено на Ваш новый электронный адрес. Вы должны нажать на ссылку, указанную в письме, чтобы подтвердить изменение Вашего адреса электронной почты. Ссылка подтверждения истекает через %s."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:31
 msgid "Failed to save your home coordinates."
@@ -656,11 +656,11 @@ msgstr "Ваши домашние координаты были успешно �
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:36
 msgid "Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails."
-msgstr ""
+msgstr "Область наблюдения отключена, оставленные рядом с вами ГеоКроты не будут включены в вашу ежедневную рассылку."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:37
 msgid "Please enter your old password."
-msgstr ""
+msgstr "Пожалуйста, введите старый пароль."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:45
 msgid "Your old password is invalid."
@@ -668,11 +668,11 @@ msgstr "Ваш старый пароль недействителен."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:40
 msgid "Username changed. Please login again."
-msgstr ""
+msgstr "Имя пользователя изменено. Пожалуйста, войдите снова."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:51
 msgid "Sorry, to use this feature, you must have a valid registered email address."
-msgstr ""
+msgstr "К сожалению, чтобы использовать эту функцию, вы должны иметь действительный зарегистрированный адрес электронной почты."
 
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:50
@@ -688,13 +688,13 @@ msgstr "Недопустимая длина точки. Длина точки д
 #: website/app/GeoKrety/Email/AccountActivation.php:16
 #: website/app/GeoKrety/Email/EmailRevalidate.php:20
 msgid "A confirmation email has been sent to your address."
-msgstr ""
+msgstr "Письмо с подтверждением отправлено на вашу электронную почту."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:17
 #: website/app/GeoKrety/Email/AccountActivation.php:38
 #: website/app/GeoKrety/Email/AccountActivation.php:55
 msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
-msgstr ""
+msgstr "<strong>Вам необходимо нажать на указанную в письме ссылку, чтобы активировать свою учетную запись перед ее использованием.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:18
 #: website/app/GeoKrety/Email/AccountActivation.php:39
@@ -702,7 +702,7 @@ msgstr ""
 #: website/app/GeoKrety/Email/EmailRevalidate.php:22
 #, php-format
 msgid "The confirmation link expires in %s."
-msgstr ""
+msgstr "Время работы ссылки для подтверждения истечет через %s."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
@@ -711,16 +711,16 @@ msgstr "Добро пожаловать на GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "Your account seems to already exist."
-msgstr ""
+msgstr "Похоже, ваша учетная запись уже существует."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:37
 #: website/app/GeoKrety/Email/AccountActivation.php:54
 msgid "The confirmation email was sent again to your mail address."
-msgstr ""
+msgstr "Письмо с подтверждением повторно отправлено на вашу электронную почту."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:53
 msgid "<strong>Your account is not yet active.</strong>"
-msgstr ""
+msgstr "<strong>Ваша учетная запись еще не активна.</strong>"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:61
 msgid "Account activated"
@@ -729,7 +729,7 @@ msgstr "Учётная запись активирована"
 #: website/app/GeoKrety/Email/Awards.php:16
 #: website/app-templates/smarty/emails/award-awarded.tpl:3
 msgid "You have received an Award"
-msgstr ""
+msgstr "Вы получили награду"
 
 #: website/app/GeoKrety/Email/BasePHPMailer.php:82
 msgid "An error occurred while sending mail."
@@ -738,26 +738,26 @@ msgstr "При отправке письма произошла ошибка."
 #: website/app/GeoKrety/Email/DailyMail.php:25
 #, php-format
 msgid "Watchlist for %s"
-msgstr ""
+msgstr "Список наблюдения для %s"
 
 #: website/app/GeoKrety/Email/EmailChange.php:28
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
 msgid "Revalidate your email address"
-msgstr ""
+msgstr "Подтвердите еще раз ваш адрес электронной почты"
 
 #: website/app/GeoKrety/Email/EmailChange.php:32
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
 msgid "Your account has been imported from GKv1."
-msgstr ""
+msgstr "Ваша учетная запись импортирована из GKv1."
 
 #: website/app/GeoKrety/Email/EmailChange.php:33
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
 msgid "We would like to verify that your mail address is still valid."
-msgstr ""
+msgstr "Мы хотели бы убедиться, что ваш адрес электронной почты еще действительный."
 
 #: website/app/GeoKrety/Email/EmailChange.php:34
 msgid "An email has been sent to your registered address, please click the included link."
-msgstr ""
+msgstr "Письмо отправлено на ваш зарегистрированный адрес электронной почты, пожалуйста, нажмите на  ссылку в письме."
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
 #: website/app/GeoKrety/Email/EmailChange.php:53
@@ -779,11 +779,11 @@ msgstr "Адрес электронной почты возвращен"
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:21
 msgid "Please click the included link to confirm it's validity."
-msgstr ""
+msgstr "Пожалуйста, нажмите на включенную ссылку для ее подтверждения."
 
 #: website/app/GeoKrety/Email/EmailRevalidate.php:27
 msgid "Account revalidation"
-msgstr ""
+msgstr "Повторное подтверждение учетной записи."
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -809,7 +809,7 @@ msgstr "Контакт от пользователя %s"
 
 #: website/app/GeoKrety/Email/UsernameChange.php:15
 msgid "Your username has been changed"
-msgstr ""
+msgstr "Ваше имя пользователя было изменено."
 
 #: website/app/GeoKrety/GeokretyType.php:56
 msgid "Traditional"
@@ -833,11 +833,11 @@ msgstr "КротоПочта"
 
 #: website/app/GeoKrety/LogType.php:113
 msgid "drop"
-msgstr "бросить"
+msgstr "drop"
 
 #: website/app/GeoKrety/LogType.php:114
 msgid "grab"
-msgstr "взять"
+msgstr "grab"
 
 #: website/app/GeoKrety/LogType.php:115
 msgid "comment"
@@ -845,7 +845,7 @@ msgstr "комментарий"
 
 #: website/app/GeoKrety/LogType.php:116
 msgid "met"
-msgstr "встретил"
+msgstr "met"
 
 #: website/app/GeoKrety/LogType.php:117
 msgid "archive"
@@ -853,7 +853,7 @@ msgstr "архив"
 
 #: website/app/GeoKrety/LogType.php:118
 msgid "dip"
-msgstr "погрузить"
+msgstr "dip"
 
 #: website/app/GeoKrety/LogType.php:119
 #: website/app-templates/smarty/pages/home.tpl:78
@@ -893,12 +893,12 @@ msgstr "Отсутствуют или неправильные координа�
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
-msgstr ""
+msgstr "Информация"
 
 #: website/app/GeoKrety/Service/DistanceFormatter.php:28
 #, php-format
 msgid "Invalid unit specified: %s"
-msgstr ""
+msgstr "Указана недопустимая единица: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
@@ -911,11 +911,11 @@ msgstr "Не удалось проанализировать время даты
 #: website/app/GeoKrety/Service/RateLimit.php:33
 #: website/app/GeoKrety/Service/RateLimit.php:52
 msgid "Rate limit exceeded"
-msgstr ""
+msgstr "Превышен лимит скорости"
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
-msgstr ""
+msgstr "Не удалось сгенерировать код отслеживания"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
@@ -925,7 +925,7 @@ msgstr "Код отслеживания \"%s\" слишком короткий. 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
-msgstr ""
+msgstr "Код отслеживания \"%s\" слишком длинный. Он должен содержать не более %d символов."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
 #, php-format
@@ -964,7 +964,7 @@ msgstr "Извините, но имя пользователя \"%s\" уже и�
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
 #, php-format
 msgid "If that's your account, please <a href=\"%s\">login</a> first."
-msgstr ""
+msgstr "Если это ваша учетная запись, пожалуйста, сначала <a href=\"%s\">войдите</a> в учетную запись."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
@@ -977,7 +977,7 @@ msgstr "Посмотреть страницу кэша <a href=\"%s\" target=\"_
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "Это тайник с веб-сайта Geocaching.com, который еще не зарегистрирован на веб-сайте GeoKrety.org. Чтобы обеспечить правильное передвижение ГеоКрота, скопируйте и вставьте координаты тайника в поле \"Coordinates\" (Координаты)."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -1013,7 +1013,7 @@ msgstr "Пароль должен быть зашифрован"
 
 #: website/app/validators.php:46
 msgid "This username is already used"
-msgstr ""
+msgstr "Это имя пользователя уже используется."
 
 #: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
@@ -1041,23 +1041,23 @@ msgstr "{0} должен быть после создания GeoKret"
 
 #: website/public/index.php:25
 msgid "Your request seems invalid."
-msgstr ""
+msgstr "Ваш запрос некорректен"
 
 #: website/public/index.php:30
 msgid "Please login first."
-msgstr ""
+msgstr "Пожалуйста, сначала авторизуйтесь"
 
 #: website/public/index.php:34
 msgid "You are not allowed to access this page."
-msgstr ""
+msgstr "У вас нет доступа к этой странице."
 
 #: website/public/index.php:42
 msgid "Method not allowed."
-msgstr ""
+msgstr "Способ недопустим."
 
 #: website/public/index.php:46
 msgid "We are sorry, something unexpected happened."
-msgstr ""
+msgstr "К сожалению, произошло нечто неожиданное."
 
 #: website/app-templates/smarty/header.tpl:3
 #: website/app-templates/smarty/emails/base.tpl:20
@@ -1090,7 +1090,7 @@ msgstr "Выпущено под лицензией <a id=\"footer-license\" href
 
 #: website/app-templates/smarty/footer.tpl:12
 msgid "Contribute to translation"
-msgstr ""
+msgstr "Внести свой вклад в перевод"
 
 #: website/app-templates/smarty/footer.tpl:15
 msgid "Leave in-context translation"
@@ -1147,7 +1147,7 @@ msgstr "Удалить почту"
 
 #: website/app-templates/smarty/banners/is_not_prod.tpl:3
 msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr ""
+msgstr "Это не рабочий веб-сайт! Если вы не тестировщик, то, скорее всего, хотели перейти на <a href=\"https://geokrety.org\">рабочий веб-сайт</a>."
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
@@ -1163,11 +1163,11 @@ msgstr "Этот GeoKret доступен для принятия. Пожалу�
 
 #: website/app-templates/smarty/banners/user_password_missing.tpl:3
 msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
-msgstr ""
+msgstr "К сожалению, ваша учетная запись не зарегистрирована и не подключена к протоколу OAuth. <b>Вы не сможете повторно войти в учетную запись!</b>"
 
 #: website/app-templates/smarty/banners/user_password_missing.tpl:4
 msgid "Please consider <a href=\"%1\">setting a password</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr ""
+msgstr "Пожалуйста, придумайте и <a href=\"%1\">установите пароль</a> или <a href=\"%2\">привяжите вашу   учетную запись</a> к какому-либо провайдеру OAuth."
 
 #: website/app-templates/smarty/banners/contribute.tpl:2
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
@@ -1188,7 +1188,7 @@ msgstr "<strong>%1</strong> зарегистрирован GeoKrety, <strong>%2<
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:13
 msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr ""
+msgstr "<strong>%1</strong> км пройдено всеми ГеоКротами (это <strong>%2</strong> x расстояние от Земли до Луны 🌛, <strong>%3</strong> x окружность Земли по экватору 🌍 и <strong>%4</strong> x расстояние от Земли до Солнца 🌞)."
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:21
 msgid "And that's thanks to you! Congratulation!"
@@ -1196,7 +1196,7 @@ msgstr "И спасибо Вам! Поздравляем!"
 
 #: website/app-templates/smarty/banners/user_email_invalid.tpl:3
 msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
-msgstr ""
+msgstr "К сожалению, у нас возникли проблемы с отправкой вам уведомлений по электронной почте. Ваш адрес электронной почты все еще действует?"
 
 #: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
 msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
@@ -1216,11 +1216,11 @@ msgstr "Вам нравятся ГеоКроты?"
 
 #: website/app-templates/smarty/banners/donate.tpl:4
 msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr ""
+msgstr "Ваши пожертвования помогают финансировать дальнейшее развитие и рост <b>GeoKrety.org</b>."
 
 #: website/app-templates/smarty/banners/donate.tpl:8
 msgid "Donate"
-msgstr ""
+msgstr "Сделать пожертвование"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
@@ -1248,27 +1248,27 @@ msgstr "С Уважением,<br>Команда GeoKrety"
 
 #: website/app-templates/smarty/emails/base.tpl:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
+msgstr "Если вы еще создавали учетную запись на GeoKrety.org, пожалуйста, <a href=\"mailto:%1?subject=%2\">свяжитесь с нами</a>."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
 msgid "Account not yet active"
-msgstr ""
+msgstr "Учётная запись ещё не активирована."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
 msgid "Your account is about to be deleted."
-msgstr ""
+msgstr "Ваша учетная запись скоро будет удалена."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
 msgid "The account you created %1 has not yet been activated."
-msgstr ""
+msgstr "Учетная запись, которую вы создали %1,  еще не активирована."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
 msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
-msgstr ""
+msgstr "Если вы хотите сохранить эту учетную запись, вам необходимо подтвердить ее, нажав на указанную ниже ссылку."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
 msgid "Unactivated accounts are automatically deleted after %1 days."
-msgstr ""
+msgstr "Не активированные учетные записи автоматически удаляются через %1 дней."
 
 #: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
 #: website/app-templates/smarty/emails/account-activation.tpl:10
@@ -1301,12 +1301,12 @@ msgstr "Вы получили это письмо, потому что толь�
 #: website/app-templates/smarty/emails/password-changed.tpl:3
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
 msgid "Congratulation"
-msgstr ""
+msgstr "Поздравляем!"
 
 #: website/app-templates/smarty/emails/account-activated.tpl:4
 #: website/app-templates/smarty/emails/password-changed.tpl:4
 msgid "Your account on GeoKrety.org is now active."
-msgstr ""
+msgstr "Ваша учетная запись на GeoKrety.org теперь активна."
 
 #: website/app-templates/smarty/emails/account-activated.tpl:8
 msgid "Your account on GeoKrety.org is now fully functional."
@@ -1325,12 +1325,12 @@ msgstr "Войти"
 
 #: website/app-templates/smarty/emails/account-activated.tpl:15
 msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
-msgstr ""
+msgstr "Как участник вы теперь можете <a href=\"%1\">регистрировать перемещения ГеоКрота </a>, загружать фотографии и, конечно же, <a href=\"%2\">создать свое собственного ГеоКрота</a> бесплатно!"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
 msgid "Confirm your email address change."
-msgstr ""
+msgstr "Подтвердите изменение адреса электронной почты."
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
@@ -1354,33 +1354,33 @@ msgstr "Вы получаете это письмо, потому что зап�
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:4
 msgid "Some accounts will be deleted."
-msgstr ""
+msgstr "Некоторые учетные записи будут удалены."
 
 #: website/app-templates/smarty/emails/expiring-accounts.tpl:7
 msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
+msgstr "%1 учетных записей все еще не активированы по истечении %2 дней. Они будут удалены."
 
 #: website/app-templates/smarty/emails/username-changed.tpl:3
 msgid "Username changed"
-msgstr ""
+msgstr "Изменено имя пользователя."
 
 #: website/app-templates/smarty/emails/username-changed.tpl:4
 msgid "Your username on GeoKrety.org has been changed."
-msgstr ""
+msgstr "Ваше имя пользователя на GeoKrety.org было изменено."
 
 #: website/app-templates/smarty/emails/username-changed.tpl:9
 msgid "Please enjoy your new username!"
-msgstr ""
+msgstr "Наслаждайтесь новым именем пользователя!"
 
 #: website/app-templates/smarty/emails/username-changed.tpl:18
 msgid "You're getting this email because you've changed your username on our website."
-msgstr ""
+msgstr "Вы получили это письмо, потому что изменили свой пароль на нашем сайте."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 msgid "Your email address has been successfully changed."
-msgstr ""
+msgstr "Ваш адрес электронной почты успешно изменен."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:22
@@ -1392,11 +1392,11 @@ msgstr "Вы получили это письмо, потому что был и
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 msgid "Hooray"
-msgstr ""
+msgstr "Ура!"
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:4
 msgid "One of your GeoKrety has been adopted."
-msgstr ""
+msgstr "Один из ваших ГеоКротов принят."
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:10
 msgid "View GeoKret"
@@ -1409,13 +1409,13 @@ msgstr "Вы получаете это письмо, потому что оди�
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:8
 msgid "Your email address has been successfully reverted."
-msgstr ""
+msgstr "Ваш адрес электронной почты успешно изменен."
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:15
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
 msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
+msgstr "Если вы не запрашивали смену пароля, вам также необходимо немедленно изменить свой пароль."
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:17
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
@@ -1425,7 +1425,7 @@ msgstr "Изменить пароль!"
 
 #: website/app-templates/smarty/emails/account-activation.tpl:4
 msgid "One step left to use GeoKrety.org."
-msgstr ""
+msgstr "Остался один шаг до использования GeoKrety.org."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
@@ -1437,11 +1437,11 @@ msgstr "Контакт пользователя GeoKrety.org"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:4
 msgid "Someone sent you a private message."
-msgstr ""
+msgstr "Кто-то отправил вам личное сообщение."
 
 #: website/app-templates/smarty/emails/user-contact.tpl:8
 msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
+msgstr "Это письмо отправлено пользователем <a href=\"%2\">%1</a>"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:12
 msgid "If you suspect an abuse, please let us know: %1"
@@ -1465,23 +1465,23 @@ msgstr "Вы получаете это письмо, потому что оди�
 
 #: website/app-templates/smarty/emails/award-awarded.tpl:4
 msgid "New Award received"
-msgstr ""
+msgstr "Получена новая награда"
 
 #: website/app-templates/smarty/emails/award-awarded.tpl:7
 msgid "We're proud to inform you that you have received a new Award badge."
-msgstr ""
+msgstr "Рады сообщить вам, что вы получили новый значок награды."
 
 #: website/app-templates/smarty/emails/award-awarded.tpl:16
 msgid "Please look at this new pretty badge on your GeoKrety profile."
-msgstr ""
+msgstr "Посмотрите на этот новый значок в вашем профиле ГеоКрота."
 
 #: website/app-templates/smarty/emails/award-awarded.tpl:18
 msgid "Check my profile"
-msgstr ""
+msgstr "Проверить мой профиль"
 
 #: website/app-templates/smarty/emails/password-changed.tpl:8
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "Ваш пароль успешно изменен."
 
 #: website/app-templates/smarty/emails/password-changed.tpl:17
 #: website/app-templates/smarty/emails/password-recovery.tpl:19
@@ -1490,7 +1490,7 @@ msgstr "Вы получили это письмо, потому что изме�
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
 msgid "Your email address has been successfully changed to: %1."
-msgstr ""
+msgstr "Ваш адрес электронной почты успешно изменен на: %1."
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
@@ -1511,45 +1511,45 @@ msgstr "Не изменять!"
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:4
 msgid "An exception occurred in a cron job"
-msgstr ""
+msgstr "В задании cron возникло исключение"
 
 #: website/app-templates/smarty/emails/cron-exception.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
 msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
+msgstr "Что-то пошло не так в задании cron, пожалуйста, проверьте лог-файлы."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:5
 msgid "Your GeoKrety watchlist"
-msgstr ""
+msgstr "Ваш список отслеживания ГеоКротов"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:8
 msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
+msgstr "Вы получили это письмо, потому что согласились получать ежедневные обновления по почте."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:9
 msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
+msgstr "Вы можете отключить эту функцию, <a href=\"%1\">изменив настройки электронной почты</a>."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:14
 msgid "Here is what changed recently."
-msgstr ""
+msgstr "Вот что изменилось в последнее время."
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:17
 msgid "Latest news"
-msgstr ""
+msgstr "Последние новости"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:27
 msgid "GeoKrety dropped in your observation area"
-msgstr ""
+msgstr "ГеоКроты сброшены в вашу зону наблюдения"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Open interactive map"
-msgstr ""
+msgstr "Открыть интерактивную карту"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:30
 msgid "Observation area map"
-msgstr ""
+msgstr "Карта зоны наблюдения"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:36
 #: website/app-templates/smarty/emails/daily-mail.tpl:79
@@ -1557,13 +1557,13 @@ msgstr ""
 #: website/app-templates/smarty/emails/daily-mail.tpl:170
 #: website/app-templates/smarty/forms/advanced_search.tpl:5
 msgid "GeoKret"
-msgstr ""
+msgstr "ГеоКрот"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:37
 #: website/app-templates/smarty/emails/daily-mail.tpl:80
 #: website/app-templates/smarty/emails/daily-mail.tpl:126
 msgid "Position"
-msgstr ""
+msgstr "Положение"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:38
 #: website/app-templates/smarty/emails/daily-mail.tpl:81
@@ -1587,15 +1587,15 @@ msgstr "Комментарий"
 #: website/app-templates/smarty/emails/daily-mail.tpl:128
 #: website/app-templates/smarty/emails/daily-mail.tpl:172
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:40
 msgid "Home distance"
-msgstr ""
+msgstr "Расстояние до дома"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:73
 msgid "My GeoKrety latest moves"
-msgstr ""
+msgstr "Последние передвижения моего ГеоКрота"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:78
 #: website/app-templates/smarty/emails/daily-mail.tpl:124
@@ -1604,11 +1604,11 @@ msgstr "Иконка"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:83
 msgid "Distance since last move"
-msgstr ""
+msgstr "Расстояние с момента последнего передвижения"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:119
 msgid "Watched GeoKrety latest moves"
-msgstr ""
+msgstr "Просмотренные последние передвижения ГеоКрота"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:129
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:24
@@ -1623,20 +1623,20 @@ msgstr "Расстояние"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:165
 msgid "Latest move comments"
-msgstr ""
+msgstr "Комментарии к последним передвижениям"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:4
 msgid "A script is locked"
-msgstr ""
+msgstr "Скрипт заблокирован"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
+msgstr "Cron <strong>%1</strong> заблокирован с <strong>%2</strong>!"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:10
 #: website/app-templates/smarty/admin/pages/scripts.tpl:45
 msgid "Unlock script"
-msgstr ""
+msgstr "Скрипт разблокировки"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:3
 msgid "Forgot Your Password?"
@@ -1644,7 +1644,7 @@ msgstr "Забыли пароль?"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:4
 msgid "Recover your password."
-msgstr ""
+msgstr "Восстановить пароль"
 
 #: website/app-templates/smarty/emails/password-recovery.tpl:8
 msgid "It happens. Click the link below to reset your password."
@@ -1657,51 +1657,51 @@ msgstr "Сбросить пароль"
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 msgid "Something went wrong while synchronizing partners data"
-msgstr ""
+msgstr "Что-то пошло не так при синхронизации данных партнеров"
 
 #: website/app-templates/smarty/emails/base-admin.tpl:4
 msgid "You're getting this email because you're one the website admins."
-msgstr ""
+msgstr "Вы получили это письмо, потому что вы один из администраторов веб-сайта."
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
 msgid "Is this address still valid?"
-msgstr ""
+msgstr "Этот адрес все еще действует?"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
 msgid "This is important in case of password loss."
-msgstr ""
+msgstr "Это важно в случае потери пароля."
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
 msgid "Validate your email address"
-msgstr ""
+msgstr "Подтвердите ваш адрес электронной почты"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr ""
+msgstr "Вы получили это письмо, потому что нам нужно удостовериться, что ваша электронная почта, зарегистрированная на нашем сайте, является действительной."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
 msgid "Account has been deleted"
-msgstr ""
+msgstr "Учетная запись удалена"
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
 msgid "Your account is now deleted."
-msgstr ""
+msgstr "Ваша учетная запись удалена."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
 msgid "The account you created %1 has never been activated."
-msgstr ""
+msgstr "Созданная вами учетная запись %1 не была активирована."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
 msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+msgstr "Наша политика предусматривает удаление не активированных аккаунтов через  %1 дней."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
 msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+msgstr "К сожалению, ваша учетная запись удалена навсегда."
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+msgstr "Имя пользователя, которое вы выбрали при регистрации, теперь свободно, и его может взять кто-то другой."
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:3
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:11
@@ -1751,12 +1751,12 @@ msgstr "%1 еще не переместил GeoKrety."
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:3
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:6
 msgid "All yearly rankings"
-msgstr ""
+msgstr "Все годовые рейтинги"
 
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:18
 #: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:43
 msgid "No attributed awards yet."
-msgstr ""
+msgstr "Пока нет привязанных наград."
 
 #: website/app-templates/smarty/pages/user_owned_pictures.tpl:3
 #: website/app-templates/smarty/pages/user_owned_pictures.tpl:9
@@ -1765,11 +1765,11 @@ msgstr "Фотографии GeoKrety %1"
 
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:3
 msgid "Search GeoKrety"
-msgstr ""
+msgstr "Найти ГеоКрота"
 
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:11
 msgid "Found GeoKrety matching: %1"
-msgstr ""
+msgstr "Найдено совпадение ГеоКрота: %1"
 
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:22
 #: website/app-templates/smarty/pages/home.tpl:77
@@ -1793,7 +1793,7 @@ msgstr "Действия"
 
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:34
 msgid "No GeoKrety matching: %1"
-msgstr ""
+msgstr "ГеоКрот не совпадает: %1"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:3
 msgid "GK mole-holes and GK hotels/motels"
@@ -1821,7 +1821,7 @@ msgstr "Туннель должен работать в обоих направ�
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:18
 msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least %1."
-msgstr ""
+msgstr "Туннель должен пересекать границу или, если он находится в пределах страны, расстояние между \"кротовыми норами\" должно быть не менее 1 км."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:19
 msgid "GeoKrety in a mole-hole are impatient, so no GeoKrety should wait longer than two months for transportation."
@@ -1902,7 +1902,7 @@ msgstr "Статус: Готов к поиску"
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
 msgid "GeoKrety visiting the cache %1"
-msgstr ""
+msgstr "ГеоКроты, побывавшие в тайнике %1"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
 msgid "Cache"
@@ -1915,11 +1915,11 @@ msgstr "Дата"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
-msgstr ""
+msgstr "ГеоКроты еще не побывали в тайнике %1."
 
 #: website/app-templates/smarty/pages/user_details.tpl:3
 msgid "%1's user profile"
-msgstr ""
+msgstr "Профиль пользователя %1"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
@@ -1928,11 +1928,11 @@ msgstr "Добро пожаловать в сообщество GeoKrety.org!"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:10
 msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
+msgstr "Теперь вы можете <a href=\"%1\">опубликовать сообщение о перемещении</a> и <a href=\"%2\">создать своего собственного ГеоКрота</a>."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
+msgstr "Вы закончили регистрацию. Теперь вы можете войти в систему и переместить своего первого ГеоКрота."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:13
 #: website/app-templates/smarty/navbar-profile.tpl:48
@@ -1982,11 +1982,11 @@ msgstr "Нет комментариев"
 
 #: website/app-templates/smarty/pages/search_by_user.tpl:3
 msgid "Search users"
-msgstr ""
+msgstr "Поиск пользователей"
 
 #: website/app-templates/smarty/pages/search_by_user.tpl:9
 msgid "Found users matching: %1"
-msgstr ""
+msgstr "Найдены совпадения пользователей: %1"
 
 #: website/app-templates/smarty/pages/search_by_user.tpl:19
 #: website/app-templates/smarty/pages/geokret_watchers.tpl:19
@@ -2006,7 +2006,7 @@ msgstr "Имя пользователя"
 
 #: website/app-templates/smarty/pages/search_by_user.tpl:34
 msgid "No users matching: %1"
-msgstr ""
+msgstr "Совпадения пользователей не найдены: %1"
 
 #: website/app-templates/smarty/pages/home.tpl:3
 #: website/app-templates/smarty/pages/home.tpl:8
@@ -2043,11 +2043,11 @@ msgstr "Определите область наблюдения"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:21
 msgid "When you define your home location, the mini-map on your profile will display GeoKrety dropped around you."
-msgstr ""
+msgstr "При определении местоположения вашего дома мини-карта в вашем профиле отобразит ГеоКротов, которые находятся рядом с вами."
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:22
 msgid "If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences)."
-msgstr ""
+msgstr "Если вы установите для области наблюдения значение больше 0, оставленные вокруг вас ГеоКроты будут включены в вашу ежедневную рассылку на электронную почту (в соответствии с вашими общими предпочтениями)."
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:30
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:31
@@ -2131,7 +2131,7 @@ msgstr "Задать"
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
 #: website/app-templates/smarty/pages/email_change_token.tpl:3
 msgid "Confirm changing your email address"
-msgstr ""
+msgstr "Подтвердите изменение адреса электронной почты"
 
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:8
 #: website/app-templates/smarty/pages/email_change_token.tpl:8
@@ -2201,60 +2201,60 @@ msgstr "Наш публичный ключ PGP/GPG <a href=\"%1\">здесь (%2
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
 msgid "Waypoints statistics"
-msgstr ""
+msgstr "Статистика путевых точек"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:10
 msgid "Service code"
-msgstr ""
+msgstr "Код услуги"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:11
 msgid "Service url"
-msgstr ""
+msgstr "Url-адрес услуги"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:12
 msgid "Waypoint count"
-msgstr ""
+msgstr "Количество путевых точек"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:13
 msgid "Last synchronization"
-msgstr ""
+msgstr "Последняя синхронизация"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:14
 msgid "Revision"
-msgstr ""
+msgstr "Редакция"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:15
 msgid "Last error"
-msgstr ""
+msgstr "Последняя ошибка"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:16
 msgid "Error count"
-msgstr ""
+msgstr "Количество ошибок"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:39
 msgid "N/A"
-msgstr ""
+msgstr "Нет данных"
 
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:49
 msgid "Force complete synchronization"
-msgstr ""
+msgstr "Принудительная полная синхронизация"
 
 #: website/app-templates/smarty/pages/geokret_label.tpl:3
 #: website/app-templates/smarty/pages/geokret_label.tpl:6
 msgid "Label generator"
-msgstr ""
+msgstr "Генератор меток"
 
 #: website/app-templates/smarty/pages/geokret_watchers.tpl:3
 msgid "GeoKret watchers"
-msgstr ""
+msgstr "Наблюдатели ГеоКротов"
 
 #: website/app-templates/smarty/pages/geokret_watchers.tpl:9
 msgid "Those users are watching GeoKret %1 moves"
-msgstr ""
+msgstr "Эти пользователи просматривают передвижения ГеоКрота %1 "
 
 #: website/app-templates/smarty/pages/geokret_watchers.tpl:34
 msgid "No users are watching GeoKret %1"
-msgstr ""
+msgstr "Никто из пользователей не просматривает ГеоКрота %1"
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
@@ -2280,7 +2280,7 @@ msgstr "<a href=\"%1\">Firefox</a> (нужно <a href=\"%2\">дополнени
 #: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:3
 #: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:6
 msgid "Top %1"
-msgstr ""
+msgstr "Топ %1"
 
 #: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:12
 msgid "Rank"
@@ -2360,19 +2360,19 @@ msgstr "Наши файлы переводов теперь размещены �
 
 #: website/app-templates/smarty/pages/downloads.tpl:17
 msgid "Map of caches for Garmin units"
-msgstr ""
+msgstr "Карта тайников для устройств Garmin"
 
 #: website/app-templates/smarty/pages/downloads.tpl:20
 msgid "As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href=\"%2\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
-msgstr ""
+msgstr "Поскольку мы уже собирали путевые точкидля  значительного количества тайников (%1)по всему миру - <a href=\"\">нажмите здесь</a> для получения списка поддерживаемых услуг), мы решили создать понятную карту тайников для навигационных устройств Garmin (в формате img). Теперь вы сможете просматривать все эти тайники на одной карте (фактически, как при использовании функции mapset)."
 
 #: website/app-templates/smarty/pages/downloads.tpl:21
 msgid "Read more and <a href=\"%1\">get the map</a>."
-msgstr ""
+msgstr "Прочтите подробности и <a href=\"%1\">получите карту</a>."
 
 #: website/app-templates/smarty/pages/downloads.tpl:27
 msgid "Design resources"
-msgstr ""
+msgstr "Ресурсы проектирования"
 
 #: website/app-templates/smarty/pages/downloads.tpl:30
 msgid "GeoKrety logo"
@@ -2443,7 +2443,7 @@ msgstr "Интерактивная карта ГеоКротов"
 #: website/app-templates/smarty/pages/geokrety_labels.tpl:3
 #: website/app-templates/smarty/pages/geokrety_labels.tpl:6
 msgid "Mass label generator"
-msgstr ""
+msgstr "Генератор массовых меток "
 
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
 #: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
@@ -2452,23 +2452,23 @@ msgstr "Карта ГеоКротов %1"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:3
 msgid "Change username"
-msgstr ""
+msgstr "Изменить имя пользователя"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:9
 msgid "Change your username"
-msgstr ""
+msgstr "Измените ваше имя пользователя"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:16
 msgid "Once your username is changed, you will need to reconnect."
-msgstr ""
+msgstr "Как только ваше имя пользователя будет изменено, вам нужно будет повторно подключиться."
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:20
 msgid "Desired username"
-msgstr ""
+msgstr "Желаемое имя пользователя"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:21
 msgid "New username"
-msgstr ""
+msgstr "Новое имя пользователя"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:32
 #: website/app-templates/smarty/pages/password_change.tpl:57
@@ -2501,7 +2501,7 @@ msgstr "Галерея изображений"
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:3
 msgid "Statpic background chooser"
-msgstr ""
+msgstr "Средство выбора фона Statpic"
 
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:8
 msgid "Select your preferred statpic background"
@@ -2585,7 +2585,7 @@ msgstr "Принять"
 
 #: website/app-templates/smarty/pages/email_revalidate.tpl:10
 msgid "Email address revalidation."
-msgstr ""
+msgstr "Повторное подтверждение адреса электронной почты."
 
 #: website/app-templates/smarty/pages/press_corner.tpl:3
 #: website/app-templates/smarty/pages/press_corner.tpl:9
@@ -2765,15 +2765,15 @@ msgstr "Развертано на %1"
 #: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:41
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:26
 msgid "Remove this geokret from your watch list"
-msgstr ""
+msgstr "Удалить этого ГеоКрота из вашего списка наблюдения"
 
 #: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:7
 msgid "Declared as missing"
-msgstr ""
+msgstr "Объявлен пропавшим"
 
 #: website/app-templates/smarty/elements/map_caption.tpl:9
 msgid "Last moved date"
-msgstr ""
+msgstr "Дата последнего перемещения"
 
 #: website/app-templates/smarty/elements/map_caption.tpl:22
 #: website/app-templates/smarty/elements/map_caption.tpl:30
@@ -2782,7 +2782,7 @@ msgstr ""
 #: website/app-templates/smarty/elements/map_caption.tpl:54
 #: website/app-templates/smarty/elements/map_caption.tpl:62
 msgid "%1 days"
-msgstr ""
+msgstr "%1 дней"
 
 #: website/app-templates/smarty/elements/map_caption.tpl:75
 #: website/app-templates/smarty/blocks/geokret/details.tpl:52
@@ -2791,7 +2791,7 @@ msgstr "Пройдено всего"
 
 #: website/app-templates/smarty/elements/map_caption.tpl:139
 msgid "Total visited caches"
-msgstr ""
+msgstr "Всего посещенных тайников"
 
 #: website/app-templates/smarty/elements/map_caption.tpl:151
 #: website/app-templates/smarty/elements/map_caption.tpl:159
@@ -2799,7 +2799,7 @@ msgstr ""
 #: website/app-templates/smarty/elements/map_caption.tpl:175
 #: website/app-templates/smarty/elements/map_caption.tpl:183
 msgid "%1 caches"
-msgstr ""
+msgstr "%1 тайников"
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:5
 msgid "languages"
@@ -2823,23 +2823,23 @@ msgstr "Никогда не перемещено"
 
 #: website/app-templates/smarty/blocks/user_finder_list.tpl:27
 msgid "false"
-msgstr ""
+msgstr "команда false"
 
 #: website/app-templates/smarty/blocks/user_finder_list.tpl:27
 msgid "true"
-msgstr ""
+msgstr "команда true"
 
 #: website/app-templates/smarty/blocks/user_finder_list.tpl:37
 msgid "No users match the current request."
-msgstr ""
+msgstr "Нет пользователей, соответствующих текущему запросу."
 
 #: website/app-templates/smarty/blocks/user_finder.tpl:5
 msgid "Start by finding users:"
-msgstr ""
+msgstr "Начните с поиска пользователей:"
 
 #: website/app-templates/smarty/blocks/user_finder.tpl:9
 msgid "Username or email or ID"
-msgstr ""
+msgstr "Имя пользователя или адрес электронной почты или ID"
 
 #: website/app-templates/smarty/blocks/user_finder.tpl:11
 msgid "Search"
@@ -2873,7 +2873,7 @@ msgstr "Подписаться на RSS канал"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:15
 msgid "Username change"
-msgstr ""
+msgstr "Изменение имени пользователя"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:18
 msgid "Password change"
@@ -2923,15 +2923,15 @@ msgstr "Создать новый secid"
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:3
 msgid "Medals"
-msgstr ""
+msgstr "Медали"
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
+msgstr "%1 создал <strong>%2</strong> ГеоКротов, которые проехали <strong>%3</strong> км."
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:17
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
+msgstr "%1 переместил <strong>%2</strong> ГеоКротов на общую дистанцию <strong>%3</strong>."
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:4
 msgid "Awards"
@@ -2939,7 +2939,7 @@ msgstr "Награды"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:10
 msgid "No award received yet."
-msgstr ""
+msgstr "Награды пока не получены."
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:4
 msgid "OAuth Connections"
@@ -2963,20 +2963,20 @@ msgstr "Подключиться"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:5
 msgid "Danger zone"
-msgstr ""
+msgstr "Опасная зона"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:8
 msgid "Be careful, actions in this section are irreversible."
-msgstr ""
+msgstr "Будьте осторожны, действия в этом разделе необратимы."
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:11
 msgid "Delete your account"
-msgstr ""
+msgstr "Удалить учетную запись"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:40
 msgid "Delete my account"
-msgstr ""
+msgstr "Удалить мою учетную запись"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:12
 msgid "View inventory"
@@ -3027,12 +3027,12 @@ msgstr "GeoKrety рядом с домом"
 #: website/app-templates/smarty/blocks/user/statpic.tpl:8
 #: website/app-templates/smarty/blocks/geokret/details.tpl:63
 msgid "Copy link to page"
-msgstr ""
+msgstr "Скопировать ссылку на страницу"
 
 #: website/app-templates/smarty/blocks/user/statpic.tpl:9
 #: website/app-templates/smarty/blocks/geokret/details.tpl:64
 msgid "Copy to page as bbcode"
-msgstr ""
+msgstr "Скопировать на страницу как bbcode"
 
 #: website/app-templates/smarty/blocks/user/statpic.tpl:13
 msgid "Choose statpic"
@@ -3044,11 +3044,11 @@ msgstr "Пока нет изображений."
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:20
 msgid "missing"
-msgstr ""
+msgstr "отсутствует"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "в архиве"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:32
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:6
@@ -3066,19 +3066,19 @@ msgstr "Посетил мест"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:58
 msgid "Social share"
-msgstr ""
+msgstr "Публикация в соцсетях"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:60
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Поделиться на Facebook"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:61
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Поделиться в Twitter"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:62
 msgid "Share on Instagram"
-msgstr ""
+msgstr "Поделиться в Instagram"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:66
 msgid "Country track"
@@ -3123,7 +3123,7 @@ msgstr "Это крот-домосед :("
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:17
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:29
 msgid "Who is watching this Geokret?"
-msgstr ""
+msgstr "Кто просматривает этого ГеоКрота?"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:5
 msgid "Watchers"
@@ -3131,17 +3131,17 @@ msgstr "Наблюдатели"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:14
 msgid "Add this geokret to your watch list"
-msgstr ""
+msgstr "Добавить этого ГеоКрота в ваш список наблюдения"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:15
 #: website/app-templates/smarty/dialog/geokret_watch.tpl:14
 msgid "Watch"
-msgstr ""
+msgstr "Просматривать"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:27
 #: website/app-templates/smarty/dialog/geokret_unwatch.tpl:14
 msgid "Unwatch"
-msgstr ""
+msgstr "Не просматривать"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:36
 msgid "Log this GeoKret"
@@ -3165,7 +3165,7 @@ msgstr "Авторизуйтесь, чтобы принять Геокрота"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:64
 msgid "Mark this GeoKret as archived"
-msgstr ""
+msgstr "Пометить ГеоКрота как архивированный"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:64
 msgid "Archive this GeoKret"
@@ -3193,7 +3193,7 @@ msgstr "Пожалуйста, введите код отслеживания"
 
 #: website/app-templates/smarty/navbar-right.tpl:5
 msgid "Search…"
-msgstr ""
+msgstr "Поиск…"
 
 #: website/app-templates/smarty/navbar-profile.tpl:3
 msgid "Admin"
@@ -3242,7 +3242,7 @@ msgstr "Фотогалерея"
 
 #: website/app-templates/smarty/navbar-left.tpl:21
 msgid "Mass labelling"
-msgstr ""
+msgstr "Установка массовых меток"
 
 #: website/app-templates/smarty/navbar-left.tpl:24
 msgid "GeoKrety Map"
@@ -3254,7 +3254,7 @@ msgstr "Выбранный язык"
 
 #: website/app-templates/smarty/navbar-left.tpl:45
 msgid "Moleholes and GK hotels"
-msgstr ""
+msgstr "Кротовые норы и отели GK"
 
 #: website/app-templates/smarty/navbar-left.tpl:46
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:26
@@ -3268,11 +3268,11 @@ msgstr "GK интерфейс / API"
 
 #: website/app-templates/smarty/navbar-left.tpl:51
 msgid "Waypoints synchronization status"
-msgstr ""
+msgstr "Состояние синхронизации путевых точек"
 
 #: website/app-templates/smarty/navbar-left.tpl:52
 msgid "Yearly rankings"
-msgstr ""
+msgstr "Годовой рейтинг"
 
 #: website/app-templates/smarty/navbar-left.tpl:55
 msgid "GeoKrety Toolbox"
@@ -3284,17 +3284,17 @@ msgstr "Разборщик точек"
 
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:4
 msgid "Do you really want to ack this script locking alert?"
-msgstr ""
+msgstr "Вы действительно хотите подтвердить это предупреждение о блокировке скрипта?"
 
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:10
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:10
 msgid "\"%1\" locked since %2"
-msgstr ""
+msgstr "\"%1\" заблокирован с %2"
 
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:15
 #: website/app-templates/smarty/admin/pages/scripts.tpl:48
 msgid "Ack"
-msgstr ""
+msgstr "Подтвердить"
 
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:4
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
@@ -3334,20 +3334,20 @@ msgstr "Провайдер отбора OAuth"
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:17
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:36
 msgid "Detach"
-msgstr "Detach"
+msgstr ""
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:4
 msgid "Do you really want to reset this rate-limit?"
-msgstr ""
+msgstr "Вы действительно хотите сбросить это ограничение скорости?"
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
 msgid "Name=%1 ID=%2"
-msgstr ""
+msgstr "Название=%1 ID=%2"
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
 msgid "Reset"
-msgstr ""
+msgstr "Сбросить"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:16
 msgid "Current password"
@@ -3383,19 +3383,19 @@ msgstr "Объявить пропажу"
 
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:4
 msgid "Do you really want to unlock this script?"
-msgstr ""
+msgstr "Вы действительно хотите разблокировать этот скрипт?"
 
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:15
 msgid "Unlock"
-msgstr ""
+msgstr "Разблокировать"
 
 #: website/app-templates/smarty/dialog/geokret_unwatch.tpl:4
 msgid "Remove this GeoKret from your watch list?"
-msgstr ""
+msgstr "Удалить этого ГеоКрота из вашего списка наблюдения?"
 
 #: website/app-templates/smarty/dialog/geokret_unwatch.tpl:9
 msgid "You will no longer receive updates of its journey in your daily mails."
-msgstr ""
+msgstr "Вы больше не будете получать обновления о маршрутах перемещения в ежедневной рассылке на электронную почту."
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:6
 msgid "Manage picture"
@@ -3468,7 +3468,7 @@ msgstr "Последние записи для:"
 #: website/app-templates/smarty/dialog/user_update_email.tpl:32
 #: website/app-templates/smarty/dialog/user_update_email.tpl:38
 msgid "your own GeoKrety"
-msgstr "ваши ГеоКроты"
+msgstr "ваш собственный GeoKrety"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:33
 #: website/app-templates/smarty/dialog/user_update_email.tpl:39
@@ -3554,7 +3554,7 @@ msgstr "Это будет язык по умолчанию, когда Вы во
 
 #: website/app-templates/smarty/dialog/info.tpl:13
 msgid "Acknowledge"
-msgstr ""
+msgstr "Подтвердить"
 
 #: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
 msgid "Do you really want to delete this move comment?"
@@ -3596,11 +3596,11 @@ msgstr "Выберите <span class=\"badge\">%1</span>"
 
 #: website/app-templates/smarty/dialog/geokret_watch.tpl:4
 msgid "Add this GeoKret to your watch list?"
-msgstr ""
+msgstr "Добавить этого ГеоКрота в ваш список наблюдения?"
 
 #: website/app-templates/smarty/dialog/geokret_watch.tpl:9
 msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
-msgstr ""
+msgstr "Добавив в свой список наблюдения ГеоКрота, вы будете получать новости о его маршрутах перемещения в ежедневной рассылке на электронную почту."
 
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
 msgid "Do you really want to delete this news comment?"
@@ -3608,27 +3608,27 @@ msgstr "Вы действительно хотите удалить этот к�
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
 msgid "Mark this GeoKret as archived?"
-msgstr ""
+msgstr "Пометить ГеоКрота архивированным?"
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:10
 msgid "You are about the archive this GeoKret."
-msgstr ""
+msgstr "Вы находитесь в архиве этого ГеоКрота."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:11
 msgid "This is useful if you think this GeoKret has been destroyed."
-msgstr ""
+msgstr "Это полезная функция, если вы думаете, что этот ГеоКрот был уничтожен."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:13
 msgid "It will not appear anymore in your active inventory."
-msgstr ""
+msgstr "Он больше не появится в вашем активном инвентаре."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:14
 msgid "It will not appear as present in a cache."
-msgstr ""
+msgstr "Он не будет отображаться как присутствующий в тайнике."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:16
 msgid "If someone discover it later, it will be automatically reactivated."
-msgstr ""
+msgstr "Если кто-то обнаружит его позже, он будет автоматически повторно активирован."
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:27
 msgid "Archive"
@@ -3636,11 +3636,11 @@ msgstr "Архив"
 
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
 msgid "Do you really want to invalidate this user's email?"
-msgstr ""
+msgstr "Вы действительно хотите аннулировать адрес электронной почты этого пользователя?"
 
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:13
 msgid "Invalidate"
-msgstr ""
+msgstr "Аннулировать"
 
 #: website/app-templates/smarty/dialog/login.tpl:28
 msgid "Remember me"
@@ -3688,12 +3688,12 @@ msgstr "Вы действительно хотите удалить это из�
 
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
 msgid "Award %1 with:"
-msgstr ""
+msgstr "Наградить %1 в размере:"
 
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:13
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:38
 msgid "Award"
-msgstr ""
+msgstr "Награда"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
 msgid "Offer this GeoKret for adoption?"
@@ -3713,31 +3713,31 @@ msgstr "Создать код владельца"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:7
 msgid "Do you really want to delete your account?"
-msgstr ""
+msgstr "Вы действительно хотите удалить свою учетную запись?"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:13
 msgid "All your logs and comments will appear posted from \"%1\""
-msgstr ""
+msgstr "Все ваши журналы и комментарии будут отображаться опубликованными из \"%1\""
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:14
 msgid "All your GeoKrety will be automatically archived"
-msgstr ""
+msgstr "Все ГеоКроты будут автоматически заархивированы"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:15
 msgid "Your avatar pictures will be deleted"
-msgstr ""
+msgstr "Ваши аватарки будут удалены"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:17
 msgid "Warning!!! This will permanently delete your account."
-msgstr ""
+msgstr "Предупреждение!!! Это действие окончательно удалит вашу учетную запись."
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:19
 msgid "Please solve this operation: %1 + %2 = ?"
-msgstr ""
+msgstr "Пожалуйста, выполните эту операцию: %1 + %2 = ?"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:28
 msgid "Also remove all my comments content"
-msgstr ""
+msgstr "Также удалить все мои комментарии"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
@@ -3765,7 +3765,7 @@ msgstr "Выберите ГеоКрота"
 #: website/app-templates/smarty/forms/move.tpl:30
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:31
 msgid "Verify Tracking Code"
-msgstr ""
+msgstr "Проверить код отслеживания"
 
 #: website/app-templates/smarty/forms/move.tpl:33
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:34
@@ -3775,7 +3775,7 @@ msgstr "%1 символов с метки <em>GeoKret label</em>. <u>Не исп
 #: website/app-templates/smarty/forms/move.tpl:43
 #: website/app-templates/smarty/forms/move.tpl:197
 msgid "Validate"
-msgstr ""
+msgstr "Утвердить"
 
 #: website/app-templates/smarty/forms/move.tpl:54
 msgid "Log type"
@@ -3927,33 +3927,33 @@ msgstr "Просмотр метки ГеоКрота"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:3
 msgid "Generate multiple GeoKrety labels"
-msgstr ""
+msgstr "Сгенерировать несколько меток для ГеоКротов"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:11
 msgid "The current number of labels to be created at once: %1."
-msgstr ""
+msgstr "Текущее количество меток, которые будут созданы одновременно:%1."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:12
 msgid "Only your own GeoKrety of the ones you already touched can be used here."
-msgstr ""
+msgstr "Здесь можно использовать только свои собственных ГеоКротов из тех, к которым вы уже прикасались."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:13
 msgid "Label preferred template is used if defined."
-msgstr ""
+msgstr "Используется предпочтительный шаблон метки, если он определен."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:14
 msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
-msgstr ""
+msgstr "Миссия ГеоКрота будет использоваться, как есть. Не вмещающийся текст обычно удаляется."
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:7
 msgid "GeoKret name or id"
-msgstr ""
+msgstr "Название или ID ГеоКрота"
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:10
 #: website/app-templates/smarty/forms/advanced_search.tpl:22
 #: website/app-templates/smarty/forms/advanced_search.tpl:34
 msgid "Find"
-msgstr ""
+msgstr "Найти"
 
 #: website/app-templates/smarty/forms/geokret.tpl:4
 msgid "Edit a GeoKret"
@@ -3983,39 +3983,39 @@ msgstr "Переключить навигацию"
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:3
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:9
 msgid "GeoKrety generator"
-msgstr ""
+msgstr "Генератор ГеоКротов"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:14
 msgid "General details"
-msgstr ""
+msgstr "Общая информация"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:19
 msgid "How many GeoKrety to create"
-msgstr ""
+msgstr "Сколько ГеоКротов создать"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:22
 msgid "From 1 to %1."
-msgstr ""
+msgstr "From 1 to %1."
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:27
 msgid "Owner ID"
-msgstr ""
+msgstr "ID владельца"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:30
 msgid "Leave empty or set 0 to not set any owner."
-msgstr ""
+msgstr "Оставьте пустым или укажите 0, если хотите, чтобы владелец отсутствовал."
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:35
 msgid "GeoKrety name template"
-msgstr ""
+msgstr "Шаблон названия ГеоКрота"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:38
 msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
-msgstr ""
+msgstr "Используйте спецификаторы формата php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> для замены инкремента. Пример: \"%02d\""
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:41
 msgid "Start at"
-msgstr ""
+msgstr "Начать с"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:66
 msgid "Pictures"
@@ -4023,120 +4023,120 @@ msgstr "Изображения"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:82
 msgid "Tracking Code prefix"
-msgstr ""
+msgstr "Префикс кода отслеживания"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:89
 msgid "Tracking Code length"
-msgstr ""
+msgstr "Длина кода отслеживания"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:96
 msgid "Tracking Code Alphabet"
-msgstr ""
+msgstr "Алфавит кода отслеживания"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:103
 msgid "Tracking Code suffix"
-msgstr ""
+msgstr "Суффикс кода отслеживания"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:119
 msgid "Owner Code prefix"
-msgstr ""
+msgstr "Префикс кода владельца"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:126
 msgid "Owner Code length"
-msgstr ""
+msgstr "Длина кода владельца"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:133
 msgid "Owner Code Alphabet"
-msgstr ""
+msgstr "Алфавит кода владельца"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:140
 msgid "Owner Code suffix"
-msgstr ""
+msgstr "Суффикс кода владельца"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:151
 msgid "Generate"
-msgstr ""
+msgstr "Сгенерировать"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
 msgid "GeoKrety generator result"
-msgstr ""
+msgstr "Результат генерации ГеоКрота"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:10
 msgid "There is no results."
-msgstr ""
+msgstr "Результаты отсутствуют."
 
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
 msgid "Api Rate Limits"
-msgstr ""
+msgstr "Ограничения скорости Api"
 
 #: website/app-templates/smarty/admin/pages/user_actions.tpl:3
 #: website/app-templates/smarty/admin/pages/user_actions.tpl:6
 msgid "Admin actions on users"
-msgstr ""
+msgstr "Действия администратора в отношении пользователей"
 
 #: website/app-templates/smarty/admin/pages/user_actions.tpl:17
 msgid "Invalidate user's email"
-msgstr ""
+msgstr "Аннулировать электронную почту пользователя"
 
 #: website/app-templates/smarty/admin/pages/user_actions.tpl:20
 msgid "Award prize"
-msgstr ""
+msgstr "Вручить приз"
 
 #: website/app-templates/smarty/admin/pages/scripts.tpl:3
 #: website/app-templates/smarty/admin/pages/scripts.tpl:7
 msgid "Scripts management"
-msgstr ""
+msgstr "Управление скриптами"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
-msgstr ""
+msgstr "Данные:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
 msgid "Owner:"
-msgstr ""
+msgstr "Владелец:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
 msgid "Distance:"
-msgstr ""
+msgstr "Расстояние:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
 msgid "Caches:"
-msgstr ""
+msgstr "Тайники:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:98
 msgid "Actual position:"
-msgstr ""
+msgstr "Текущее местоположение:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
 msgid "Waypoint:"
-msgstr ""
+msgstr "Путевая точка:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
 msgid "Author:"
-msgstr ""
+msgstr "Автор:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
 msgid "Date:"
-msgstr ""
+msgstr "Дата:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
 msgid "Country:"
-msgstr ""
+msgstr "Страна:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
 msgid "Elevation:"
-msgstr ""
+msgstr "Подъем:"
 
 #: website/app-templates/smarty/js/search_advanced.tpl.js:2
 msgid "GeoKrety"
-msgstr ""
+msgstr "ГеоКроты"
 
 #: website/app-templates/smarty/js/search_advanced.tpl.js:3
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: website/app-templates/smarty/js/search_advanced.tpl.js:4
 msgid "Waypoints"
-msgstr ""
+msgstr "Путевые точки"
 

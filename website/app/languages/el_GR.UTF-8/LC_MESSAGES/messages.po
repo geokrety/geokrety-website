@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 12:06+0000\n"
-"PO-Revision-Date: 2022-11-27 12:16\n"
+"POT-Creation-Date: 2022-12-08 18:11+0000\n"
+"PO-Revision-Date: 2022-12-08 18:40\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.awardlink.php:16
 #: website/app-templates/smarty/plugins/modifier.userlink.php:17
 msgid "Anonymous"
-msgstr ""
+msgstr "Ανώνυμος"
 
 #: website/app-templates/smarty/plugins/modifier.cachelink.php:29
 msgid "Search on geocaching.com"
@@ -39,11 +39,11 @@ msgstr ""
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
 msgid "has avatar icon"
-msgstr ""
+msgstr "έχει εικόνα άβαταρ"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
 msgid "GeoKret has an avatar"
-msgstr ""
+msgstr "Το GeoKret έχει ένα άβαταρ"
 
 #: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
 msgid "nobody"
@@ -61,12 +61,12 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.gklink.php:23
 #, php-format
 msgid "View %s's profile"
-msgstr ""
+msgstr "Δείτε το προφίλ του/της %s"
 
 #: website/app-templates/smarty/plugins/modifier.medal.php:14
 #, php-format
 msgid "Award for %s GeoKrety"
-msgstr ""
+msgstr "Επιβράβευση για %s GeoKrety"
 
 #: website/app-templates/smarty/plugins/modifier.movelink.php:22
 msgid "View move details"
@@ -99,7 +99,7 @@ msgstr "Επισκέπτης"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:14
 msgid "In the owner hands"
-msgstr ""
+msgstr "Στα χέρια του ιδιοκτήτη"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:15
 msgid "Never Travelled"
@@ -107,7 +107,7 @@ msgstr ""
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
-msgstr ""
+msgstr "εικονίδιο κατάστασης"
 
 #: website/app-templates/smarty/plugins/modifier.statpictemplate.php:16
 #, php-format
@@ -117,7 +117,7 @@ msgstr ""
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
 #, php-format
 msgid "%s's statpic"
-msgstr ""
+msgstr "Εικόνα στατιστικών του/της %s"
 
 #: website/app/GeoKrety/Auth.php:20
 #, php-format
@@ -195,7 +195,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:80
 msgid "reCaptcha failed!"
-msgstr "Αποτυχία reCaptcha!"
+msgstr "Το reCaptcha απέτυχε!"
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:104
 msgid "CSRF error, please try again."
@@ -677,13 +677,13 @@ msgstr ""
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:15
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:50
 msgid "Waypoint seems empty."
-msgstr ""
+msgstr "Το σημείο δείχνει άδειο."
 
 #: website/app/GeoKrety/Controller/Validation/WaypointName.php:20
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:55
 #, php-format
 msgid "Waypoint length is invalid. It should be between %d and %d characters long."
-msgstr ""
+msgstr "Το μήκος του σημείου δεν είναι έγκυρο. Πρέπει να έχει μεταξύ %d και %d χαρακτήρες."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:16
 #: website/app/GeoKrety/Email/EmailRevalidate.php:20
@@ -707,7 +707,7 @@ msgstr ""
 #: website/app/GeoKrety/Email/AccountActivation.php:24
 #: website/app-templates/smarty/emails/account-activation.tpl:3
 msgid "Welcome to GeoKrety.org"
-msgstr ""
+msgstr "Καλώς ήρθατε στο GeoKrety.org"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:36
 msgid "Your account seems to already exist."
@@ -889,7 +889,7 @@ msgstr "Κακές συντεταγμένες ή άγνωστη μορφή."
 
 #: website/app/GeoKrety/Service/CoordinatesConverter.php:235
 msgid "Missing or invalid coordinates."
-msgstr "Οι συντεταγμένες λείπουν ή είναι λανθασμένες."
+msgstr "Λειψές ή μη έγκυρες συντεταγμένες."
 
 #: website/app/GeoKrety/Service/Dialog/Info.php:9
 msgid "Information"
@@ -944,16 +944,16 @@ msgstr "Λυπούμαστε, αλλά ο Κωδικός Ανίχνευσης \"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:119
 msgid "No Tracking Code provided."
-msgstr ""
+msgstr "Δεν δόθηκε Κωδικός Ανίχνευσης."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:123
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
-msgstr ""
+msgstr "Οι ανώνυμοι χρήστες δεν μπορούν να τσεκάρουν πολλαπλούς Κωδικούς Ανίχνευσης ταυτόχρονα. Παρακαλώ συνδεθείτε πρώτα."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:127
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
-msgstr ""
+msgstr "Μόνο %d Κωδικοί Ανίχνευσης μπορούν να οριστούν ταυτόχρονα, έχουν επιλεγεί %d."
 
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:32
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
@@ -973,7 +973,7 @@ msgstr "Το σημείο περιέχει μη έγκυρους χαρακτή�
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:92
 #, php-format
 msgid "View the <a href=\"%s\" target=\"_blank\">cache page</a>."
-msgstr ""
+msgstr "Δείτε την<a href=\"%s\" target=\"_blank\">σελίδα κρύπτης</a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
@@ -981,11 +981,11 @@ msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
-msgstr ""
+msgstr "Λυπούμαστε, αλλά αυτό το σημείο δεν βρίσκεται (ακόμη) στη βάση δεδομένων μας. Υπάρχει στ' αλήθεια;"
 
 #: website/app/validators.php:13
 msgid "The {0} field cannot be empty"
-msgstr ""
+msgstr "Το πεδίο {0} δεν μπορεί να παραμείνει κενό"
 
 #: website/app/validators.php:17
 msgid "The {0} field must be a valid date time"
@@ -993,11 +993,11 @@ msgstr ""
 
 #: website/app/validators.php:21
 msgid "The GeoKret type is invalid"
-msgstr ""
+msgstr "Ο τύπος του GeoKrety δεν είναι έγκυρος"
 
 #: website/app/validators.php:25
 msgid "The move type is invalid"
-msgstr ""
+msgstr "Ο τύπος της κίνησης δεν είναι έγκυρος"
 
 #: website/app/validators.php:29
 msgid "The picture type is invalid"
@@ -1005,11 +1005,11 @@ msgstr ""
 
 #: website/app/validators.php:33
 msgid "This language is not supported"
-msgstr ""
+msgstr "Αυτή η γλώσσα δεν υποστηρίζεται"
 
 #: website/app/validators.php:39
 msgid "The password must be ciphered"
-msgstr ""
+msgstr "Ο κωδικός πρόβασης πρέπει να είναι κρυπτογραφημένος"
 
 #: website/app/validators.php:46
 msgid "This username is already used"
@@ -1017,27 +1017,27 @@ msgstr ""
 
 #: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
-msgstr ""
+msgstr "Οι ανώνυμοι χρήστες πρέπει να δίνουν μια αξία για το {0}"
 
 #: website/app/validators.php:67
 msgid "Registered users must provide a value for {0}"
-msgstr ""
+msgstr "Οι καταγεγραμμένοι χρήστες πρέπει να δίνουν μια αξία για το {0}"
 
 #: website/app/validators.php:78
 msgid "This logtype require valid {0} coordinates"
-msgstr ""
+msgstr "Αυτός ο τύπος καταχώρισης απαιτεί έγκυρες {0} συντεταγμένες"
 
 #: website/app/validators.php:89
 msgid "Something already exists at the same datetime \"{0}\""
-msgstr ""
+msgstr "Υπάρχει ήδη κάτι στον ίδιο χρόνο \"{0}\""
 
 #: website/app/validators.php:97
 msgid "{0} cannot be in the future"
-msgstr ""
+msgstr "{0} δν μπορεί να είναι στο μέλλον"
 
 #: website/app/validators.php:105
 msgid "{0} must be after GeoKret birth"
-msgstr ""
+msgstr "{0} πρέπε να είναι μετά τη δημιουργία του GeoKret"
 
 #: website/public/index.php:25
 msgid "Your request seems invalid."
@@ -1159,7 +1159,7 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:8
 msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr ""
+msgstr "Αυτό το GeoKret διατίθεται για υιοθεσία. Παρακαλούμε <a href=\"%1\">συνδεθείτε</a> πρώτα."
 
 #: website/app-templates/smarty/banners/user_password_missing.tpl:3
 msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
@@ -1453,7 +1453,7 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/user-contact.tpl:18
 msgid "Subject:"
-msgstr ""
+msgstr "Θέμα:"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:23
 msgid "Reply to %1"
@@ -2167,7 +2167,7 @@ msgstr "Επικοινωνείστε μαζί μας"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:13
 msgid "If you have any suggestion or bug reports feel free to write us."
-msgstr ""
+msgstr "Αν έχετε οποιαδήποτε πρόταση ή αναφορές σφαλμάτων διστάσετε να μας γράψετε."
 
 #: website/app-templates/smarty/pages/contact_us.tpl:17
 #: website/app-templates/smarty/blocks/user/details.tpl:46
@@ -2811,7 +2811,7 @@ msgstr ""
 
 #: website/app-templates/smarty/chunks/social_groups.tpl:7
 msgid "group name"
-msgstr ""
+msgstr "όνομα ομάδας"
 
 #: website/app-templates/smarty/chunks/geokrety_status.tpl:9
 msgid "Remove this GeoKret from the selection"
@@ -3027,12 +3027,12 @@ msgstr ""
 #: website/app-templates/smarty/blocks/user/statpic.tpl:8
 #: website/app-templates/smarty/blocks/geokret/details.tpl:63
 msgid "Copy link to page"
-msgstr ""
+msgstr "Αντιγραφή συνδέσμου σε σελίδα"
 
 #: website/app-templates/smarty/blocks/user/statpic.tpl:9
 #: website/app-templates/smarty/blocks/geokret/details.tpl:64
 msgid "Copy to page as bbcode"
-msgstr ""
+msgstr "Αντιγραφή σε σελίδα ως bbcode"
 
 #: website/app-templates/smarty/blocks/user/statpic.tpl:13
 msgid "Choose statpic"
@@ -3048,7 +3048,7 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
-msgstr ""
+msgstr "αρχείο"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:32
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:6
@@ -3066,19 +3066,19 @@ msgstr "Χώροι επισκέφθηκε"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:58
 msgid "Social share"
-msgstr ""
+msgstr "Κοινοποίηση στα κοινωνικά δίκτυα"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:60
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Κοινοποίηση στο Facebook"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:61
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Κοινοποίηση στο Twitter"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:62
 msgid "Share on Instagram"
-msgstr ""
+msgstr "Κοινοποίηση στο Instagram"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:66
 msgid "Country track"
@@ -3970,7 +3970,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/geokret.tpl:42
 msgid "Set my home coordinates as a starting point."
-msgstr ""
+msgstr "Ορισμός των συντεταγμένων οικίας ως σημείο εκκίνησης."
 
 #: website/app-templates/smarty/forms/geokret.tpl:63
 msgid "Create"
@@ -4094,11 +4094,11 @@ msgstr ""
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:94
 msgid "Owner:"
-msgstr ""
+msgstr "Κάτοχος:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:95
 msgid "Distance:"
-msgstr ""
+msgstr "Απόσταση:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:96
 msgid "Caches:"
@@ -4110,7 +4110,7 @@ msgstr ""
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
 msgid "Waypoint:"
-msgstr ""
+msgstr "Σημείο αναφοράς:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
 msgid "Author:"
@@ -4118,11 +4118,11 @@ msgstr ""
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:102
 msgid "Date:"
-msgstr ""
+msgstr "Ημερομηνία:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:103
 msgid "Country:"
-msgstr ""
+msgstr "Χώρα:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:104
 msgid "Elevation:"
