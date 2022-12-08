@@ -1,3 +1,10 @@
+## [2.25.6](https://github.com/geokrety/geokrety-website/compare/v2.25.5...v2.25.6) (2022-12-08)
+
+
+### Reverts
+
+* Revert "ci: Change crowdin pull request title" ([0882472](https://github.com/geokrety/geokrety-website/commit/088247254e26e9bd6257a71781281345776bd2c2))
+
 ## [2.25.5](https://github.com/geokrety/geokrety-website/compare/v2.25.4...v2.25.5) (2022-12-08)
 
 
