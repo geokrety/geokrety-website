@@ -1,3 +1,10 @@
+## [2.25.9](https://github.com/geokrety/geokrety-website/compare/v2.25.8...v2.25.9) (2022-12-08)
+
+
+### Bug Fixes
+
+* Bump crowdin action ([c9723ec](https://github.com/geokrety/geokrety-website/commit/c9723ec3c4b36c4ea49694e8c1631fe00a831319))
+
 ## [2.25.8](https://github.com/geokrety/geokrety-website/compare/v2.25.7...v2.25.8) (2022-12-08)
 
 
