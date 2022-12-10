@@ -35,8 +35,11 @@ SQL;
         $max_gkid = $result[0]['max_gkid'] ?? 1;
 
         $sql = <<<'SQL'
-INSERT INTO notify_queues.geokrety_changes ("channel", "action", "payload")
-VALUES ('gk_geokrety', 'UPDATE', ?);
+SELECT amqp.publish(1, 'geokrety', '', json_build_object(
+		'id', ?::text,
+		'op', 'UPDATE',
+		'kind', 'gk_geokrety'
+	)::text);
 SQL;
         for ($i = 1; $i <= $max_gkid; ++$i) {
             $f3->get('DB')->exec($sql, [$i]);

@@ -23,6 +23,8 @@ EOF
 cat << EOF | psql -U geokrety -h localhost tests
 BEGIN;
 
+CREATE EXTENSION IF NOT EXISTS amqp;
+
 DROP SCHEMA IF EXISTS pgtap CASCADE;
 CREATE SCHEMA pgtap;
 CREATE EXTENSION IF NOT EXISTS pgtap WITH SCHEMA pgtap;
