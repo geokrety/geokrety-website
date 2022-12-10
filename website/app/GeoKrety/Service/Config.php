@@ -51,6 +51,13 @@ class Config extends \Prefab {
         define('GK_BASEX_USER', getenv('GK_BASEX_USER') ?: null);
         define('GK_BASEX_PASSWORD', getenv('GK_BASEX_PASSWORD') ?: null);
 
+        // RabbitMQ
+        define('GK_RABBITMQ_HOST', getenv('GK_RABBITMQ_HOST') ?: null);
+        define('GK_RABBITMQ_PORT', getenv('GK_RABBITMQ_PORT') ?: null);
+        define('GK_RABBITMQ_USER', getenv('GK_RABBITMQ_USER') ?: null);
+        define('GK_RABBITMQ_PASS', getenv('GK_RABBITMQ_PASSWORD') ?: null);
+        define('GK_RABBITMQ_VHOST', getenv('GK_RABBITMQ_VHOST') ?: null);
+
         // Minio
         define('GK_MINIO_HOST', getenv('GK_MINIO_HOST') ?: 'minio');
         define('GK_MINIO_PORT', getenv('GK_MINIO_PORT') ?: '9000');
