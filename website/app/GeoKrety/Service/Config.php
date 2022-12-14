@@ -12,7 +12,6 @@ class Config extends \Prefab {
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '26422'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
         define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
-        define('GK_SITE_TRACKING_CODE_LENGTH', intval(getenv('GK_SITE_TRACKING_CODE_LENGTH')) ?: 6);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH') ?: 42);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY') ?: 15);
         define('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH') ?: 42);
@@ -328,6 +327,8 @@ class Config extends \Prefab {
         define('GK_CHECK_WAYPOINT_NAME_COUNT', getenv('GK_CHECK_WAYPOINT_NAME_COUNT') ?: 10);
 
         // SIZES
+        define('GK_SITE_TRACKING_CODE_MIN_LENGTH', (int) getenv('GK_SITE_TRACKING_CODE_MIN_LENGTH') ?: 6);
+        define('GK_SITE_TRACKING_CODE_MAX_LENGTH', (int) getenv('GK_SITE_TRACKING_CODE_MAX_LENGTH') ?: 7);
         define('GK_GEOKRET_NAME_MIN_LENGTH', getenv('GK_GEOKRET_NAME_MIN_LENGTH') ?: 4);
         define('GK_GEOKRET_NAME_MAX_LENGTH', getenv('GK_GEOKRET_NAME_MAX_LENGTH') ?: 75);
         define('GK_USERNAME_MIN_LENGTH', getenv('GK_USERNAME_MIN_LENGTH') ?: 3);

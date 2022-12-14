@@ -64,9 +64,9 @@ Required Parameters
     ${move_15}    Missing or invalid coordinates.    View the <a href="https://geokrety.org/go2geo/?wpt=${move_15.wpt}" target="_blank">cache page</a>.     Sorry, but this waypoint is not (yet) in our database. Does it really exist?
     ${move_16}    Moved_on_datetime cannot be in the future
     ${move_17}    Moved_on_datetime must be after GeoKret birth
-    ${move_18}    Tracking Code "${move_18.nr}" seems too short. We expect 6 characters here.
+    ${move_18}    Tracking Code "${move_18.nr}" seems too short. We expect at least 6 characters here.
     ${move_19}    Sorry, but Tracking Code "${move_19.nr}" was not found in our database.
-    ${move_20}    Tracking Code "${move_20.nr}" seems too long. We expect 6 characters here.
+    ${move_20}    Tracking Code "${move_20.nr}" seems too long. We expect 7 characters maximum here.
     ${move_27}    The move type is invalid
     ${move_33}    Only 10 Tracking Codes may be specified at once, there are 11 selected.
     ${move_36}    Sorry, but Tracking Code "TC000C" was not found in our database.

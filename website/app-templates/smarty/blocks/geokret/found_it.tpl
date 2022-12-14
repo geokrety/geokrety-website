@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="tracking_code" class="col-sm-2 control-label">{t}Tracking Code{/t}</label>
                 <div class="col-sm-8">
-                    <input class="form-control" type="text" name="tracking_code" id="tracking_code"{if $geokret->hasTouchedInThePast()} value="{$geokret->tracking_code}"{/if} size="{GK_SITE_TRACKING_CODE_LENGTH}" maxlength="{GK_SITE_TRACKING_CODE_LENGTH}" placeholder="{t}Please enter the Tracking Code here{/t}">
+                    <input class="form-control tcmaxl" type="text" name="tracking_code" id="tracking_code"{if $geokret->hasTouchedInThePast()} value="{$geokret->tracking_code}"{/if} size="{GK_SITE_TRACKING_CODE_MAX_LENGTH}" minlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" tcminlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" maxlength="{GK_SITE_TRACKING_CODE_MAX_LENGTH}" placeholder="{t}Please enter the Tracking Code here{/t}">
                 </div>
                 <div class="col-sm-2">
                     <button type="submit" id="foundItLogItButton" class="btn btn-success btn-block">{t}Log it!{/t}</button>

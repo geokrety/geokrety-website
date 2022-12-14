@@ -88,7 +88,7 @@
                 <div class="form-group">
                     <label for="inputTCLength" class="col-sm-3 control-label">{t}Tracking Code length{/t}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputTCLength" name="TCLength" step="1" pattern="\d+" min="{GK_SITE_TRACKING_CODE_LENGTH}" value="{if isset($TCLength)}{$TCLength}{else}6{/if}" required>
+                        <input type="number" class="form-control" id="inputTCLength" name="TCLength" step="1" pattern="\d+" min="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" max="{GK_SITE_TRACKING_CODE_MAX_LENGTH}" value="{if isset($TCLength)}{$TCLength}{else}6{/if}" required>
                     </div>
                 </div>
 
