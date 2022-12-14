@@ -35,7 +35,7 @@ class Home extends Base {
 
         // Load latest GeoKrety
         $geokret = new Geokret();
-        $filter = ['created_on_datetime >= now() - cast(? as interval)', '10'.' DAY'];
+        $filter = ['created_on_datetime >= now() - cast(? as interval) AND owner != ?', '10'.' DAY', null];
         $geokrety = $geokret->find($filter, ['order' => 'created_on_datetime DESC', 'limit' => GK_HOME_COUNT_RECENT_GEOKRETY], GK_SITE_CACHE_TTL_LATEST_GEOKRETY);
         Smarty::assign('geokrety', $geokrety);
 
