@@ -1,3 +1,10 @@
+## [2.25.16](https://github.com/geokrety/geokrety-website/compare/v2.25.15...v2.25.16) (2022-12-14)
+
+
+### Bug Fixes
+
+* Show on home page the newly created GK with an owner ([a844dc5](https://github.com/geokrety/geokrety-website/commit/a844dc5845ea0b895184873c950e4f2b6df7faf4))
+
 ## [2.25.15](https://github.com/geokrety/geokrety-website/compare/v2.25.14...v2.25.15) (2022-12-14)
 
 
