@@ -197,7 +197,7 @@ function sprawdzGK(e) {
   var poleOut = document.getElementById('wynikNr');
 
   //if(poleInValue.length == 6)
-  if (/^[a-zA-Z0-9]{6}(\.[a-zA-Z0-9]{6})*$/.test(poleInValue)) {
+  if (/^[a-zA-Z0-9]{6,7}(\.[a-zA-Z0-9]{6,7})*$/.test(poleInValue)) {
     poleOut.innerHTML = 'Retrieving...';
     $.get('szukaj-ajax.php', {
       'skad': 'ajax',

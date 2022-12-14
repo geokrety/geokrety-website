@@ -99,10 +99,10 @@ function waypointLinkLabel($waypoint, $name) {
             $where = '';
             $nr = $_REQUEST['nr'];
 
-            if (preg_match('/^[a-zA-Z0-9]{6}$/', $nr)) {
+            if (preg_match('/^[a-zA-Z0-9]{6,7}$/', $nr)) {
                 $where = "WHERE gk.nr = '$nr' LIMIT 1";
             } else {
-                if (preg_match("/^[a-zA-Z0-9]{6}(\.[a-zA-Z0-9]{6})*$/", $nr)) {
+                if (preg_match("/^[a-zA-Z0-9]{6,7}(\.[a-zA-Z0-9]{6,7})*$/", $nr)) {
                     $nr = str_replace('.', "','", $nr);
                     $where = "WHERE gk.nr IN ('$nr')";
                 }
