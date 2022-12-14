@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-14 19:16+0000\n"
-"PO-Revision-Date: 2022-12-14 19:23\n"
+"PO-Revision-Date: 2022-12-14 20:23\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -136,7 +136,7 @@ msgstr "Operação cancelada."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:50
 msgid "There are duplicated tracking codes."
-msgstr "Existem códigos de rastreio duplicados."
+msgstr "Existem códigos de seguimento duplicados."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:85
 msgid "The number of instances to be created is invalid."
@@ -165,7 +165,7 @@ msgstr "O comprimento \"TCPrefix\" + \"TCSuffix\" é maior que \"TCLength\"."
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:145
 msgid "No more Tracking Code available using this pattern."
-msgstr "Não há mais Códigos de Rastreio disponíveis usando este padrão."
+msgstr "Não há mais Códigos de Seguimento disponíveis usando este padrão."
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:26
 msgid "Rate limit has been reset"
@@ -231,7 +231,7 @@ msgstr "Desculpe, mas este endereço de e-mail já está em uso. Deseja <a href=
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:25
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
-msgstr "Desculpe, mas o Código de Proprietário e o Código de Rastreio fornecidos não correspondem."
+msgstr "Desculpe, mas o Código de Proprietário e o Código de Seguimento que forneceu não correspondem."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:31
 msgid "You are already the owner."
@@ -327,7 +327,7 @@ msgstr "Já está disponível um Código de Proprietário para este GeoKret."
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:39
 #, php-format
 msgid "The Owner Code (%s) has been generated. Give it along with the Tracking Code (%s) to someone so he can adopt your GeoKret."
-msgstr "O Código de Proprietário (%s) foi gerado. Dê-o juntamente com o Código de Rastreio (%s) a alguém para que ele possa adoptar o seu GeoKret."
+msgstr "O Código de Proprietário (%s) foi gerado. Dê-o juntamente com o Código de Seguimento (%s) a alguém para que essa pessoa possa adoptar o seu GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretOfferForAdoption.php:41
 msgid "Failed to create a new Owner Code."
@@ -356,7 +356,7 @@ msgstr "Este GeoKret foi adicionado à sua lista de observação."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:34
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
-msgstr "A lista contém apenas Código de Rastreio desconhecidos ou GeoKrety que nunca foram tocados"
+msgstr "A lista contém apenas Códigos de Seguimento desconhecidos ou GeoKrety que nunca foram tocados"
 
 #: website/app/GeoKrety/Controller/Pages/HelpApi.php:58
 msgid "Wrong secid"
@@ -902,7 +902,7 @@ msgstr "Unidade especificada inválida: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:29
 msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
-msgstr "<tspan font-weight=\"bold\"> Manual de utilizador: </ strong> <tspan font-weight=\"bold\"> 1 </ strong>. Levar este GeoKret. Anote o seu Código de Rastreio. <tspan font-weight=\"bold\"> 2. </ strong> Esconda-o noutra cache. <tspan font-weight=\"bold\"> 3.</ strong> Registe a viagem em https://geokrety.org/"
+msgstr "<tspan font-weight=\"bold\"> Manual de utilizador: </ strong> <tspan font-weight=\"bold\"> 1 </ strong>. Levar este GeoKret. Anote o seu Código de Seguimento. <tspan font-weight=\"bold\"> 2. </ strong> Esconda-o noutra cache. <tspan font-weight=\"bold\"> 3.</ strong> Registe a viagem em https://geokrety.org/"
 
 #: website/app/GeoKrety/Service/Moves.php:65
 msgid "The date time could not be parsed."
@@ -915,45 +915,45 @@ msgstr ""
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
-msgstr "Falha ao gerar o Código de Rastreio"
+msgstr "Falha ao gerar o Código de Seguimento"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
 msgid "Tracking Code \"%s\" seems too short. We expect at least %d characters here."
-msgstr ""
+msgstr "O Código de Seguimento \"%s\" parece ser muito curto. Esperamos pelo menos %d caracteres aqui."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
 msgid "Tracking Code \"%s\" seems too long. We expect %d characters maximum here."
-msgstr ""
+msgstr "O Código de Seguimento \"%s\" parece ser muito longo. São esperados %d caracteres aqui, no máximo."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
 #, php-format
 msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't starts with 'GK' 😉"
-msgstr "Parece ter usado o identificador público GeoKret \"%s\". Precisamos do código privado (Código de Rastreio) aqui. Dica: ele não começa com 'GK' <unk>"
+msgstr "Parece ter usado o identificador público GeoKret \"%s\". Precisamos do código privado (Código de Seguimento) aqui. Dica: ele não começa com 'GK' <unk>"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:57
 #, php-format
 msgid "Tracking Code \"%s\" contains invalid characters."
-msgstr "O Código de Rastreio \"%s\" contém caracteres inválidos."
+msgstr "O Código de Seguimento \"%s\" contém caracteres inválidos."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:67
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
-msgstr "Desculpe, mas o Código de Rastreio \"%s\" não foi encontrado na nossa base de dados."
+msgstr "Desculpe, mas o Código de Seguimento \"%s\" não foi encontrado na nossa base de dados."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:119
 msgid "No Tracking Code provided."
-msgstr "Nenhum Código de Rastreio fornecido."
+msgstr "Nenhum Código de Seguimento fornecido."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:123
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
-msgstr "Utilizadores anónimos não podem verificar vários Códigos de Rastreio de uma vez. Por favor, inicie sessão primeiro."
+msgstr "Utilizadores anónimos não podem verificar vários Códigos de Seguimento de uma vez. Por favor, inicie sessão primeiro."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:127
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
-msgstr "Apenas %d Códigos de Rastreio podem ser especificados de uma vez, existem %d seleccionados."
+msgstr "Apenas %d Códigos de Seguimento podem ser especificados de uma vez, existem %d seleccionados."
 
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:32
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:34
@@ -1062,7 +1062,7 @@ msgstr "Pedimos desculpa, algo inesperado aconteceu."
 #: website/app-templates/smarty/header.tpl:3
 #: website/app-templates/smarty/emails/base.tpl:20
 msgid "Open source item tracking for all geocaching platforms"
-msgstr "Rastreio de item de código aberto para todas as plataformas de geocaching"
+msgstr "Código aberto para o seguimento de item, para todas as plataformas de geocaching"
 
 #: website/app-templates/smarty/footer.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:2
@@ -2568,7 +2568,7 @@ msgstr "Claim a GeoKret"
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:22
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:77
 msgid "Tracking Code"
-msgstr "Código de Rastreio"
+msgstr "Código de Seguimento"
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:22
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:114
@@ -2577,7 +2577,7 @@ msgstr "Código do Proprietário"
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
-msgstr "O processo requer um \"Código de Rastreio\", geralmente escrito na etiqueta do GeoKret ou gravado na moeda, mais um \"Código de Proprietário\", geralmente dado numa folha de papel."
+msgstr "O processo requer um \"Código de Seguimento\", geralmente escrito na etiqueta do GeoKret ou gravado na moeda, mais um \"Código de Proprietário\", geralmente dado numa folha de papel."
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:36
 msgid "Adopt"
@@ -2851,11 +2851,11 @@ msgstr "Encontrou um GeoKret?"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:7
 msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "Por favor, introduza o <abbr title=\"%1\">Código de seguimento</abbr> aqui:"
+msgstr "Por favor, introduza o <abbr title=\"%1\">Código de Seguimento</abbr> aqui:"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:12
 msgid "Tracking code"
-msgstr "Código de Rastreio"
+msgstr "Código de Seguimento"
 
 #: website/app-templates/smarty/blocks/found_geokret.tpl:15
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
@@ -2963,20 +2963,20 @@ msgstr "Conectar"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:5
 msgid "Danger zone"
-msgstr ""
+msgstr "Zona de perigo"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:8
 msgid "Be careful, actions in this section are irreversible."
-msgstr ""
+msgstr "Tenha cuidado, as acções nesta secção são irreversíveis."
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:11
 msgid "Delete your account"
-msgstr ""
+msgstr "Eliminar a sua conta"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:40
 msgid "Delete my account"
-msgstr ""
+msgstr "Eliminar a minha conta"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:12
 msgid "View inventory"
@@ -3189,7 +3189,7 @@ msgstr "Encontrou? Registe-o!"
 
 #: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
 msgid "Please enter the Tracking Code here"
-msgstr "Introduza o código de seguimento aqui"
+msgstr "Introduza o Código de Seguimento aqui"
 
 #: website/app-templates/smarty/navbar-right.tpl:5
 msgid "Search…"
@@ -3701,7 +3701,7 @@ msgstr "Oferecer este GeoKret para adopção?"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
 msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "Isso permitirá que outro utilizador, que conheça o código de seguimento e o código do proprietário, se torne o novo proprietário deste GeoKret."
+msgstr "Isso permitirá que outro utilizador, que conheça o Código de Seguimento e o Código do Proprietário, se torne o novo proprietário deste GeoKret."
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
 msgid "Back to GeoKret page"
@@ -3765,7 +3765,7 @@ msgstr "Identifique o GeoKret"
 #: website/app-templates/smarty/forms/move.tpl:30
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:31
 msgid "Verify Tracking Code"
-msgstr "Verificar Código de Rastreio"
+msgstr "Verificar Código de Seguimento"
 
 #: website/app-templates/smarty/forms/move.tpl:33
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:34
@@ -4023,19 +4023,19 @@ msgstr "Imagens"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:82
 msgid "Tracking Code prefix"
-msgstr "Prefixo do Código de Rastreio"
+msgstr "Prefixo do Código de Seguimento"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:89
 msgid "Tracking Code length"
-msgstr "Comprimento do Código de Rastreio"
+msgstr "Tamanho do Código de Seguimento"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:96
 msgid "Tracking Code Alphabet"
-msgstr "Alfabeto do Código de Rastreio"
+msgstr "Alfabeto do Código de Seguimento"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:103
 msgid "Tracking Code suffix"
-msgstr "Sufixo do Código de Rastreio"
+msgstr "Sufixo do Código de Seguimento"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:119
 msgid "Owner Code prefix"
