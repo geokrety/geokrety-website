@@ -25,7 +25,7 @@ class SecretCode {
      *
      * @throws \Exception
      */
-    public function generateTrackingCode(string $alphabet = GK_GENERATOR_TRACKING_CODE_ALPHABET, int $len = GK_SITE_TRACKING_CODE_LENGTH, ?string $prefix = null, ?string $suffix = null): string {
+    public function generateTrackingCode(string $alphabet = GK_GENERATOR_TRACKING_CODE_ALPHABET, int $len = GK_SITE_TRACKING_CODE_MIN_LENGTH, ?string $prefix = null, ?string $suffix = null): string {
         $i = 0;
         $geokret = new Geokret();
         do {
@@ -48,7 +48,7 @@ class SecretCode {
         return $tracking_code;
     }
 
-    public static function generate(string $alphabet, int $len = GK_SITE_TRACKING_CODE_LENGTH, ?string $prefix = null, ?string $suffix = null): string {
+    public static function generate(string $alphabet, int $len = GK_SITE_TRACKING_CODE_MIN_LENGTH, ?string $prefix = null, ?string $suffix = null): string {
         $seed = str_split(str_repeat($alphabet, 42));
         shuffle($seed);
 

@@ -18,13 +18,13 @@ class TrackingCode {
     }
 
     private function checkLength($trackingCode) {
-        if (strlen($trackingCode) < GK_SITE_TRACKING_CODE_LENGTH) {
-            array_push($this->errors, sprintf(_('Tracking Code "%s" seems too short. We expect %d characters here.'), $trackingCode, GK_SITE_TRACKING_CODE_LENGTH));
+        if (strlen($trackingCode) < GK_SITE_TRACKING_CODE_MIN_LENGTH) {
+            array_push($this->errors, sprintf(_('Tracking Code "%s" seems too short. We expect at least %d characters here.'), $trackingCode, GK_SITE_TRACKING_CODE_MIN_LENGTH));
 
             return false;
         }
-        if (strlen($trackingCode) > GK_SITE_TRACKING_CODE_LENGTH) {
-            array_push($this->errors, sprintf(_('Tracking Code "%s" seems too long. We expect %d characters here.'), $trackingCode, GK_SITE_TRACKING_CODE_LENGTH));
+        if (strlen($trackingCode) > GK_SITE_TRACKING_CODE_MAX_LENGTH) {
+            array_push($this->errors, sprintf(_('Tracking Code "%s" seems too long. We expect %d characters maximum here.'), $trackingCode, GK_SITE_TRACKING_CODE_MAX_LENGTH));
 
             return false;
         }
@@ -34,7 +34,7 @@ class TrackingCode {
 
     private function isGKNumber($trackingCode) {
         if (substr($trackingCode, 0, 2) === 'GK') {
-            if (strlen($trackingCode) >= GK_SITE_TRACKING_CODE_LENGTH) {
+            if (strlen($trackingCode) >= GK_SITE_TRACKING_CODE_MIN_LENGTH) {
                 $geokret = new Geokret();
                 $geokret->load(['tracking_code = ?', $trackingCode]);
 
