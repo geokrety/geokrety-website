@@ -121,7 +121,7 @@ Observation area to 0 show message on save
 Save Coordinates With French Language
     Sign In ${USER_1.name} Fast
     Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL_FR}
-    Page Should Contain                     Définissez votre zone d’observation
+    Page Should Contain                     Définissez votre zone d'observation
     Page Should Not Contain                 Define your observation area
     Fill form                               ${COORDS_NEW_YORK}    10
     Click Button                            ${USER_OBSERVATION_AREA_SUBMIT}
