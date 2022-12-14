@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 18:00+0000\n"
-"PO-Revision-Date: 2022-12-14 18:40\n"
+"POT-Creation-Date: 2022-12-14 19:16+0000\n"
+"PO-Revision-Date: 2022-12-14 19:23\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -761,10 +761,10 @@ msgstr ""
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
 #: website/app/GeoKrety/Email/EmailChange.php:53
-#: website/app-templates/smarty/pages/email_revalidate.tpl:3
-#: website/app-templates/smarty/pages/email_change.tpl:3
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
+#: website/app-templates/smarty/pages/email_change.tpl:3
+#: website/app-templates/smarty/pages/email_revalidate.tpl:3
 msgid "Changing your email address"
 msgstr "更改您的电子邮件地址"
 
@@ -856,8 +856,8 @@ msgid "dip"
 msgstr "跳转"
 
 #: website/app/GeoKrety/LogType.php:119
-#: website/app-templates/smarty/blocks/geokret/details.tpl:56
 #: website/app-templates/smarty/pages/home.tpl:78
+#: website/app-templates/smarty/blocks/geokret/details.tpl:56
 msgid "Born"
 msgstr "出生日期"
 
@@ -919,12 +919,12 @@ msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
-msgid "Tracking Code \"%s\" seems too short. We expect %d characters here."
-msgstr "跟踪代码 \"%s似乎太短。我们期望这里有 %d 个字符。"
+msgid "Tracking Code \"%s\" seems too short. We expect at least %d characters here."
+msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:27
 #, php-format
-msgid "Tracking Code \"%s\" seems too long. We expect %d characters here."
+msgid "Tracking Code \"%s\" seems too long. We expect %d characters maximum here."
 msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
@@ -1059,627 +1059,740 @@ msgstr ""
 msgid "We are sorry, something unexpected happened."
 msgstr ""
 
-#: website/app-templates/smarty/chunks/social_groups.tpl:5
-msgid "languages"
-msgstr "语言"
+#: website/app-templates/smarty/header.tpl:3
+#: website/app-templates/smarty/emails/base.tpl:20
+msgid "Open source item tracking for all geocaching platforms"
+msgstr "所有地理藏宝平台的开源项目跟踪"
 
-#: website/app-templates/smarty/chunks/social_groups.tpl:6
-msgid "platform"
-msgstr "平台"
+#: website/app-templates/smarty/footer.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:2
+msgid "Home"
+msgstr "首页"
 
-#: website/app-templates/smarty/chunks/social_groups.tpl:7
-msgid "group name"
-msgstr "群组名称"
+#: website/app-templates/smarty/footer.tpl:4
+msgid "About"
+msgstr "关于"
 
-#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
-msgid "Remove this GeoKret from the selection"
-msgstr "从选区中删除这个GeoKret"
+#: website/app-templates/smarty/footer.tpl:5
+#: website/app-templates/smarty/pages/home.tpl:26
+#: website/app-templates/smarty/pages/news_list.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:3
+msgid "News"
+msgstr "新闻"
 
-#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
-msgid "Never moved"
-msgstr "从未移动"
+#: website/app-templates/smarty/footer.tpl:6
+msgid "Contact"
+msgstr "联系人"
 
-#: website/app-templates/smarty/navbar.tpl:6
-msgid "Toggle navigation"
-msgstr "切换导航"
+#: website/app-templates/smarty/footer.tpl:10
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "在 <a id=\"footer-license\" href=\"%1\">MIT 许可证下发布</a>"
 
-#: website/app-templates/smarty/navbar.tpl:16
-#: website/app-templates/smarty/pages/geokret_move.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:6
-#: website/app-templates/smarty/navbar-left.tpl:13
-msgid "Log a GeoKret"
-msgstr "记录GeoKret"
+#: website/app-templates/smarty/footer.tpl:12
+msgid "Contribute to translation"
+msgstr ""
 
-#: website/app-templates/smarty/navbar.tpl:32
-#: website/app-templates/smarty/pages/registration_validated.tpl:13
-#: website/app-templates/smarty/navbar-profile.tpl:48
-#: website/app-templates/smarty/dialog/login_simple.tpl:17
-#: website/app-templates/smarty/dialog/login.tpl:39
-msgid "Sign in"
+#: website/app-templates/smarty/footer.tpl:15
+msgid "Leave in-context translation"
+msgstr "离开上下文翻译"
+
+#: website/app-templates/smarty/footer.tpl:17
+msgid "in-context translation"
+msgstr "上下文翻译"
+
+#: website/app-templates/smarty/footer.tpl:21
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr ""
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:15
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:20
+#: website/app-templates/smarty/pages/mole_hole.tpl:38
+#: website/app-templates/smarty/pages/mole_hole.tpl:81
+#: website/app-templates/smarty/pages/home.tpl:39
+#: website/app-templates/smarty/pages/home.tpl:76
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
+#: website/app-templates/smarty/pages/user_inventory.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
+msgid "ID"
+msgstr ""
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:16
+#: website/app-templates/smarty/dialog/user_contact.tpl:23
+msgid "Subject"
+msgstr "题目"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:17
+msgid "From"
+msgstr "自"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:18
+#: website/app-templates/smarty/dialog/user_contact.tpl:16
+msgid "To"
+msgstr "至"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:20
+msgid "Action"
+msgstr "行 动"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:21
+msgid "Delete all mails"
+msgstr "删除所有邮件"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:39
+msgid "Delete mail"
+msgstr "删除邮件"
+
+#: website/app-templates/smarty/banners/is_not_prod.tpl:3
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
+msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
+msgstr "您已设置此 GeoKret 可供通过。所有者代码为： <strong>%1</strong>。 与追踪代码 <strong>%2</strong> 一起提供给将通过你的 GeoKret的用户。"
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
+msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
+msgstr ""
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
+msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+msgstr "此 GeoKret 可用来通过。请先 <a href=\"%1\">登录</a>。"
+
+#: website/app-templates/smarty/banners/user_password_missing.tpl:3
+msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
+msgstr ""
+
+#: website/app-templates/smarty/banners/user_password_missing.tpl:4
+msgid "Please consider <a href=\"%1\">setting a password</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr ""
+
+#: website/app-templates/smarty/banners/contribute.tpl:2
+#: website/app-templates/smarty/banners/flash_messages.tpl:3
+msgid "Close"
+msgstr "关闭"
+
+#: website/app-templates/smarty/banners/contribute.tpl:3
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "这个分支 🥦 正在积极开发 👨‍💻如果你发现bug:, 请检查 👀 <a href=\"%1\" target=\"_blank\">现有问题 ♻️ on GitHub %2</a> 并随意打开新的 :NEW_buton:。 (每个问题请🙏)"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:2
+msgid "Some statistics"
+msgstr "某些统计"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:6
+msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
+msgstr "<strong>%1</strong> 注册的 GeoKrety, <strong>%2</strong> GeoKrety 隐藏由 <strong>%3</strong> 用户。"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:13
+msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
+msgstr ""
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:21
+msgid "And that's thanks to you! Congratulation!"
+msgstr "这感谢你！恭喜！"
+
+#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
+msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+msgstr ""
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "即使是现在不需要它，我们建议您 <a href=\"%1\">登录</a>。"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
+msgstr "请不要犹豫 <a href=\"%1\">创建帐户</a>。"
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "然后，您将能够管理您的 GeoKrety 库存，上传图片，编辑您的日志，当然还能创建您自己的 GeoKret！"
+
+#: website/app-templates/smarty/banners/donate.tpl:2
+msgid "Enjoying GeoKrety.org?"
+msgstr "喜欢GeoKrety.org吗？"
+
+#: website/app-templates/smarty/banners/donate.tpl:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/donate.tpl:8
+msgid "Donate"
+msgstr ""
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:3
+msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "对不起，您的帐户没有注册电子邮件。 您将无法从密码丢失中恢复！另外，您将不会收到您的GeoKrety或观看GeoKrety的每日通知。"
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:4
+msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr "请考虑 <a href=\"%1\">添加一个电子邮件地址</a> 或 <a href=\"%2\">将您的帐户</a> 链接到一些OAuth 提供商。"
+
+#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
+msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
+msgstr "您有待验证的电子邮件。 别忘了点击电子邮件中存在的链接来完成程序。链接将过期 %1！"
+
+#: website/app-templates/smarty/banners/site_intro.tpl:3
+msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
+msgstr "GeoKrety 是一个免费的在线服务，用于在 GPS 游戏中跟踪对象，如地理藏匿或置顶。 你可以跟我们一起追踪小项目、 书籍、 硬币、 宠物或人类… <a href=\"%1\">阅读更多</a>"
+
+#: website/app-templates/smarty/emails/base.tpl:30
+msgid "Hi %1,"
+msgstr ""
+
+#: website/app-templates/smarty/emails/base.tpl:37
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr "真诚，<br>GeoKrety 团队"
+
+#: website/app-templates/smarty/emails/base.tpl:46
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
+msgid "Account not yet active"
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
+msgid "Your account is about to be deleted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
+msgid "The account you created %1 has not yet been activated."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
+msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
+msgid "Unactivated accounts are automatically deleted after %1 days."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
+#: website/app-templates/smarty/emails/account-activation.tpl:10
+msgid "Activate your account"
+msgstr "激活您的帐户"
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
+#: website/app-templates/smarty/emails/account-activation.tpl:13
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:20
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
+#: website/app-templates/smarty/emails/password-recovery.tpl:15
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
+msgid "This link expires %1."
+msgstr "此链接已过期 %1。"
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:19
+#: website/app-templates/smarty/emails/account-activation.tpl:15
+msgid "If your account is not activated within that time, then it will be automatically deleted."
+msgstr "如果您的帐户未在此时间内激活，它将被自动删除。"
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
+#: website/app-templates/smarty/emails/account-activated.tpl:19
+#: website/app-templates/smarty/emails/account-activation.tpl:19
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "您收到这封电子邮件是因为您刚刚在我们的网站上注册。"
+
+#: website/app-templates/smarty/emails/account-activated.tpl:3
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
+#: website/app-templates/smarty/emails/password-changed.tpl:3
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
+msgid "Congratulation"
+msgstr ""
+
+#: website/app-templates/smarty/emails/account-activated.tpl:4
+#: website/app-templates/smarty/emails/password-changed.tpl:4
+msgid "Your account on GeoKrety.org is now active."
+msgstr ""
+
+#: website/app-templates/smarty/emails/account-activated.tpl:8
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr "您在 GeoKrety.org 上的帐户现已完全运行。"
+
+#: website/app-templates/smarty/emails/account-activated.tpl:12
+#: website/app-templates/smarty/emails/username-changed.tpl:13
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:12
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:12
+#: website/app-templates/smarty/emails/password-changed.tpl:12
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
+#: website/app-templates/smarty/dialog/login.tpl:2
+#: website/app-templates/smarty/dialog/login.tpl:7
+msgid "Login"
 msgstr "登录"
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:3
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:9
-msgid "GeoKrety generator"
+#: website/app-templates/smarty/emails/account-activated.tpl:15
+msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:14
-msgid "General details"
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
+msgid "Confirm your email address change."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:19
-msgid "How many GeoKrety to create"
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
+msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
+msgstr "有人希望您已经请求将它的 GeoKrety 联系人地址更改为您的电子邮件。"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
+msgid "Validate your new email address"
+msgstr "验证您的新电子邮件地址"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
+msgid "This link is valid for %1."
+msgstr "此链接对 %1 有效。"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
+msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
+msgstr "如果您没有提出此请求并且不知道GeoKrety是什么，请忽略这封电子邮件。您将永远不会再听到关于我们的消息！"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
+msgid "You're getting this email because you've requested an email address change on our website."
+msgstr "您正在收到这封电子邮件，因为您已请求更改我们网站的电子邮件地址。"
+
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:4
+msgid "Some accounts will be deleted."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:22
-msgid "From 1 to %1."
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:7
+msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:27
-msgid "Owner ID"
+#: website/app-templates/smarty/emails/username-changed.tpl:3
+msgid "Username changed"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:30
-msgid "Leave empty or set 0 to not set any owner."
+#: website/app-templates/smarty/emails/username-changed.tpl:4
+msgid "Your username on GeoKrety.org has been changed."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:35
-msgid "GeoKrety name template"
+#: website/app-templates/smarty/emails/username-changed.tpl:9
+msgid "Please enjoy your new username!"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:37
-#: website/app-templates/smarty/forms/geokret.tpl:13
-#: website/app-templates/smarty/forms/geokret.tpl:15
-#: website/app-templates/smarty/forms/geokret_label.tpl:8
-#: website/app-templates/smarty/forms/geokret_label.tpl:10
-msgid "GeoKret name"
-msgstr "GeoKret名称"
-
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:38
-msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
+#: website/app-templates/smarty/emails/username-changed.tpl:18
+msgid "You're getting this email because you've changed your username on our website."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:41
-msgid "Start at"
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
+msgid "Your email address has been successfully changed."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:48
-#: website/app-templates/smarty/forms/geokret.tpl:20
-msgid "GeoKret type"
-msgstr "GeoKret type"
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:22
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:29
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:27
+msgid "You're getting this email because you've changed your email on our website."
+msgstr "您正在收到这封电子邮件，因为您已经在我们的网站上更改了您的电子邮件。"
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
-#: website/app-templates/smarty/forms/geokret.tpl:31
-#: website/app-templates/smarty/forms/geokret_label.tpl:36
-msgid "Mission"
-msgstr "任务"
-
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
-#: website/app-templates/smarty/forms/geokret.tpl:33
-#: website/app-templates/smarty/forms/geokret_label.tpl:38
-msgid "What is this GeoKret mission?"
-msgstr "这个GeoKret 任务是什么？"
-
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:66
-msgid "Pictures"
-msgstr "图片"
-
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:77
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
-#: website/app-templates/smarty/blocks/geokret/details.tpl:49
-#: website/app-templates/smarty/pages/geokret_claim.tpl:15
-#: website/app-templates/smarty/forms/geokret_label.tpl:31
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:22
-#: website/app-templates/smarty/forms/move.tpl:21
-msgid "Tracking Code"
-msgstr "跟踪代码"
-
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:82
-msgid "Tracking Code prefix"
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:3
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:3
+msgid "Hooray"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:89
-msgid "Tracking Code length"
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:4
+msgid "One of your GeoKrety has been adopted."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:96
-msgid "Tracking Code Alphabet"
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:10
+msgid "View GeoKret"
+msgstr "查看 GeoKret"
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:15
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
+msgstr "您正在收到这封电子邮件，因为您的GeoKrety 之一已经改变了我们网站的所有者。"
+
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:4
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:8
+msgid "Your email address has been successfully reverted."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:103
-msgid "Tracking Code suffix"
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:15
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
+msgid "If you did not requested a password change, then you should also consider changing your password immediately."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:114
-#: website/app-templates/smarty/pages/geokret_claim.tpl:22
-msgid "Owner Code"
-msgstr "所有者代码"
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:17
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:22
+msgid "Change my password!"
+msgstr "更改我的密码 ！"
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:119
-msgid "Owner Code prefix"
+#: website/app-templates/smarty/emails/account-activation.tpl:4
+msgid "One step left to use GeoKrety.org."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:126
-msgid "Owner Code length"
+#: website/app-templates/smarty/emails/account-activation.tpl:7
+msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
+msgstr "您刚刚在 GeoKrety.org 注册。 <strong>您仍然必须先激活您的帐户才能使用它。</strong> 请点击下面的链接。"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:3
+msgid "Contact from a GeoKrety.org user"
+msgstr "来自GeoKrety.org用户的联系人"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:4
+msgid "Someone sent you a private message."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:133
-msgid "Owner Code Alphabet"
+#: website/app-templates/smarty/emails/user-contact.tpl:8
+msgid "This email was sent by user <a href=\"%2\">%1</a>."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:140
-msgid "Owner Code suffix"
+#: website/app-templates/smarty/emails/user-contact.tpl:12
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr "如果您怀疑有滥用行为，请告诉我们： %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:13
+msgid "Referer: %1"
+msgstr "参考者： %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:18
+msgid "Subject:"
+msgstr "主题："
+
+#: website/app-templates/smarty/emails/user-contact.tpl:23
+msgid "Reply to %1"
+msgstr "回复 %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:28
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
+msgstr "您正在收到这封电子邮件，因为有一个GeoKrety.org用户通过您的用户资料向您发送了消息。"
+
+#: website/app-templates/smarty/emails/award-awarded.tpl:4
+msgid "New Award received"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:151
-msgid "Generate"
+#: website/app-templates/smarty/emails/award-awarded.tpl:7
+msgid "We're proud to inform you that you have received a new Award badge."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
-msgid "GeoKrety generator result"
+#: website/app-templates/smarty/emails/award-awarded.tpl:16
+msgid "Please look at this new pretty badge on your GeoKrety profile."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:10
-msgid "There is no results."
+#: website/app-templates/smarty/emails/award-awarded.tpl:18
+msgid "Check my profile"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
-msgid "Api Rate Limits"
+#: website/app-templates/smarty/emails/password-changed.tpl:8
+msgid "Your password has been successfully changed."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:9
-#: website/app-templates/smarty/admin/pages/scripts.tpl:8
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:18
-msgid "Refresh"
-msgstr "刷新"
+#: website/app-templates/smarty/emails/password-changed.tpl:17
+#: website/app-templates/smarty/emails/password-recovery.tpl:19
+msgid "You're getting this email because you've changed your password on our website."
+msgstr "您收到这封邮件是因为您在我们的网站上更改了您的密码。"
 
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
-msgid "Reset"
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
+msgid "Your email address has been successfully changed to: %1."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:3
-#: website/app-templates/smarty/admin/pages/scripts.tpl:7
-msgid "Scripts management"
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
+msgid "If you did not requested this, click the link below."
+msgstr "如果您没有请求，请点击下面的链接。"
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
+msgid "Revert this change!"
+msgstr "还原此更改！"
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
+msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
+msgstr "有人希望您已经请求更改您的 GeoKrety 联系人电子邮件地址到: %1。"
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
+msgid "Do not change!"
+msgstr "不要改变！"
+
+#: website/app-templates/smarty/emails/cron-exception.tpl:4
+msgid "An exception occurred in a cron job"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:45
+#: website/app-templates/smarty/emails/cron-exception.tpl:7
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
+msgid "Something went wrong with a cron job, please check the logs below."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:5
+msgid "Your GeoKrety watchlist"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:8
+msgid "You're getting this email because you've choose to receive daily mail updates."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:9
+msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:14
+msgid "Here is what changed recently."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:17
+msgid "Latest news"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:27
+msgid "GeoKrety dropped in your observation area"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Open interactive map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Observation area map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:36
+#: website/app-templates/smarty/emails/daily-mail.tpl:79
+#: website/app-templates/smarty/emails/daily-mail.tpl:125
+#: website/app-templates/smarty/emails/daily-mail.tpl:170
+#: website/app-templates/smarty/forms/advanced_search.tpl:5
+msgid "GeoKret"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:37
+#: website/app-templates/smarty/emails/daily-mail.tpl:80
+#: website/app-templates/smarty/emails/daily-mail.tpl:126
+msgid "Position"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:38
+#: website/app-templates/smarty/emails/daily-mail.tpl:81
+#: website/app-templates/smarty/emails/daily-mail.tpl:127
+#: website/app-templates/smarty/emails/daily-mail.tpl:171
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:23
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:22
+#: website/app-templates/smarty/pages/news_details.tpl:20
+#: website/app-templates/smarty/pages/news_details.tpl:38
+#: website/app-templates/smarty/pages/home.tpl:41
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:23
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:22
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
+#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:239
+msgid "Comment"
+msgstr "评论"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:39
+#: website/app-templates/smarty/emails/daily-mail.tpl:82
+#: website/app-templates/smarty/emails/daily-mail.tpl:128
+#: website/app-templates/smarty/emails/daily-mail.tpl:172
+msgid "Author"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:40
+msgid "Home distance"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:73
+msgid "My GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:78
+#: website/app-templates/smarty/emails/daily-mail.tpl:124
+msgid "Icon"
+msgstr "图标"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:83
+msgid "Distance since last move"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:119
+msgid "Watched GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:129
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:24
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
+#: website/app-templates/smarty/pages/home.tpl:43
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+#: website/app-templates/smarty/pages/user_inventory.tpl:25
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
+msgid "Distance"
+msgstr "距离"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:165
+msgid "Latest move comments"
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-locked.tpl:4
+msgid "A script is locked"
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-locked.tpl:7
+msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
+msgstr ""
+
 #: website/app-templates/smarty/emails/cron-locked.tpl:10
+#: website/app-templates/smarty/admin/pages/scripts.tpl:45
 msgid "Unlock script"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:48
-#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:15
-msgid "Ack"
+#: website/app-templates/smarty/emails/password-recovery.tpl:3
+msgid "Forgot Your Password?"
+msgstr "忘记密码？"
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:4
+msgid "Recover your password."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:3
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:6
-msgid "Admin actions on users"
+#: website/app-templates/smarty/emails/password-recovery.tpl:8
+msgid "It happens. Click the link below to reset your password."
+msgstr "发生这种情况。点击下面的链接重置您的密码。"
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:12
+msgid "Reset Password"
+msgstr "重置密码"
+
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
+msgid "Something went wrong while synchronizing partners data"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:17
-msgid "Invalidate user's email"
+#: website/app-templates/smarty/emails/base-admin.tpl:4
+msgid "You're getting this email because you're one the website admins."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:20
-msgid "Award prize"
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
+msgid "Is this address still valid?"
 msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
-msgid "Found it? Log it!"
-msgstr "找到了吗？请登录！"
-
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
-msgid "Please enter the Tracking Code here"
-msgstr "请在此处输入跟踪代码"
-
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
-#: website/app-templates/smarty/blocks/found_geokret.tpl:15
-msgid "Log it!"
-msgstr "登陆！"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:3
-msgid "Map"
-msgstr "地图"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:8
-msgid "Caption:"
-msgstr "标题："
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:9
-msgid "start"
-msgstr "开始"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:10
-msgid "trip points"
-msgstr "行程点"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:11
-msgid "recently seen"
-msgstr "最近已查看"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:15
-msgid "This geokret has not started yet"
-msgstr "这geokret尚未开始"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:4
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:17
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:29
-msgid "Who is watching this Geokret?"
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
+msgid "This is important in case of password loss."
 msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:5
-msgid "Watchers"
-msgstr "观看者"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:14
-msgid "Add this geokret to your watch list"
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
+msgid "Validate your email address"
 msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:15
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:14
-msgid "Watch"
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
+msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
 msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:26
-#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:41
-msgid "Remove this geokret from your watch list"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
+msgid "Account has been deleted"
 msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:27
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:14
-msgid "Unwatch"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
+msgid "Your account is now deleted."
 msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:36
-msgid "Log this GeoKret"
-msgstr "记录此GeoKret"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:41
-msgid "Print a label for this GeoKret"
-msgstr "打印此GeoKret 的标签"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:48
-msgid "Statistics"
-msgstr "状态"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:55
-msgid "Adopt this GeoKret"
-msgstr "通过这个GeoKret"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:57
-msgid "Login to claim this GeoKret"
-msgstr "登录要求这GeoKret"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
-msgid "Mark this GeoKret as archived"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
+msgid "The account you created %1 has never been activated."
 msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
-msgid "Archive this GeoKret"
-msgstr "存档这个GeoKret"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
+msgid "Our policy is to delete unactivated accounts after %1 days."
+msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:70
-msgid "Email owner"
-msgstr "电子邮件所有者"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
+msgid "We are sorry to inform you that your account has been permanently erased."
+msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:76
-msgid "Make this GeoKret available for adoption by another user"
-msgstr "让这个GeoKret 可供其他用户使用"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
+msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
+msgstr ""
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:77
-msgid "Transfer ownership"
-msgstr "转让所有权"
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:3
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:11
+msgid "%1's recent moves"
+msgstr "%1最近的动作"
 
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:88
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:27
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:27
-#: website/app-templates/smarty/pages/user_inventory.tpl:27
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:21
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:20
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
+#: website/app-templates/smarty/pages/user_inventory.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:22
+msgid "Name"
+msgstr "名称"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
+#: website/app-templates/smarty/pages/home.tpl:40
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:23
+msgid "Spotted in"
+msgstr "发现于"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
+#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+msgid "Last move"
+msgstr "上次移动"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:25
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:25
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
+#: website/app-templates/smarty/pages/user_inventory.tpl:26
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
+#: website/app-templates/smarty/elements/map_caption.tpl:138
+msgid "Caches visited count"
+msgstr "已访问的缓存"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:36
+msgid "%1 didn't moved any GeoKrety yet."
+msgstr "%1 尚未移动任何GeoKrety。"
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:3
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:6
+msgid "All yearly rankings"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:18
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:43
+msgid "No attributed awards yet."
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:9
+msgid "Pictures of %1's GeoKrety"
+msgstr "%1的 GeoKrety 图片"
+
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:3
+msgid "Search GeoKrety"
+msgstr ""
+
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:11
+msgid "Found GeoKrety matching: %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:22
+#: website/app-templates/smarty/pages/home.tpl:77
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
+#: website/app-templates/smarty/pages/user_inventory.tpl:23
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
+#: website/app-templates/smarty/forms/geokret_label.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:17
+msgid "Owner"
+msgstr "拥有者"
+
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:26
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:27
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
+#: website/app-templates/smarty/pages/user_inventory.tpl:27
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:27
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:88
 #: website/app-templates/smarty/navbar-left.tpl:11
 msgid "Actions"
 msgstr "行动"
 
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
-#: website/app-templates/smarty/blocks/geokret/details.tpl:32
-msgid "Edit GeoKret details"
-msgstr "编辑 GeoKret 详细信息"
-
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
-msgid "This GeoKret doesn't have a special mission…"
-msgstr "这个GeoKret 没有特殊任务…"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:20
-msgid "missing"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:22
-msgid "archived"
-msgstr "存档"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:27
-#: website/app-templates/smarty/blocks/user/details.tpl:7
-msgid "Send a message to %1"
-msgstr "发送一条消息给 %1"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:35
-#: website/app-templates/smarty/blocks/user/details.tpl:21
-#: website/app-templates/smarty/elements/move.tpl:69
-msgid "Upload a picture"
-msgstr "上传图片"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:46
-#: website/app-templates/smarty/forms/geokret_label.tpl:24
-msgid "Reference number"
-msgstr "参考编号"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-#: website/app-templates/smarty/elements/map_caption.tpl:75
-msgid "Total distance"
-msgstr "总里程"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:54
-msgid "Places visited"
-msgstr "曾到过的地方"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:58
-msgid "Social share"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:60
-msgid "Share on Facebook"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:61
-msgid "Share on Twitter"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:62
-msgid "Share on Instagram"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:63
-#: website/app-templates/smarty/blocks/user/statpic.tpl:8
-msgid "Copy link to page"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:64
-#: website/app-templates/smarty/blocks/user/statpic.tpl:9
-msgid "Copy to page as bbcode"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:66
-msgid "Country track"
-msgstr "国家轨道"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:10
-msgid "No home coordinates have been defined."
-msgstr "没有定义家庭坐标。"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:13
-#: website/app-templates/smarty/blocks/user/map_home.tpl:21
-msgid "Update home coordinates and obervation area"
-msgstr "更新家居坐标和承载区域"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:14
-msgid "Define your home coordinates"
-msgstr "定义您的家坐标"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:20
-msgid "GeoKrety near home"
-msgstr "家附近的GeoKrety"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:4
-msgid "OAuth Connections"
-msgstr "OAuth 连接"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:17
-msgid "Disconnect from %1"
-msgstr "断开 %1"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:18
-msgid "Disconnect"
-msgstr "断开连接"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:23
-msgid "Connect with %1"
-msgstr "与 %1 连接"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:23
-msgid "Connect"
-msgstr "连接"
-
-#: website/app-templates/smarty/blocks/user/awards.tpl:4
-msgid "Awards"
-msgstr "奖项"
-
-#: website/app-templates/smarty/blocks/user/awards.tpl:10
-msgid "No award received yet."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:3
-#: website/app-templates/smarty/pages/geokret_create.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:15
-#: website/app-templates/smarty/forms/geokret.tpl:6
-msgid "Create a new GeoKret"
-msgstr "创建一个新的 GeoKret"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:12
-msgid "View inventory"
-msgstr "查看物品栏"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:16
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:12
-msgid "Owned GeoKrety"
-msgstr "拥有GeoKrety"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:20
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:3
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:11
-#: website/app-templates/smarty/navbar-profile.tpl:20
-msgid "Watched GeoKrety"
-msgstr "已观看GeoKrety"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:24
-msgid "Recently posted moves"
-msgstr "最近发布的动作"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:28
-msgid "Moves of owned GeoKrety"
-msgstr "拥有GeoKrety的移动"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:32
-msgid "Posted pictures"
-msgstr "已发布的图片"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:36
-msgid "Owned GeoKrety pictures"
-msgstr "拥有GeoKrety图片"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:40
-#: website/app-templates/smarty/navbar-profile.tpl:28
-msgid "Where are my GeoKrety?"
-msgstr "我的 GeoKrett 在哪里？"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:45
-msgid "User stats"
-msgstr "用户统计"
-
-#: website/app-templates/smarty/blocks/user/medals.tpl:3
-msgid "Medals"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/medals.tpl:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/medals.tpl:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:5
-msgid "Danger zone"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:8
-msgid "Be careful, actions in this section are irreversible."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:11
-msgid "Delete your account"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:40
-msgid "Delete my account"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/details.tpl:11
-msgid "Subscribe to RSS channel"
-msgstr "RSS订阅"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:15
-msgid "Username change"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/details.tpl:18
-msgid "Password change"
-msgstr "更改密码"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:32
-msgid "Joined us"
-msgstr "加入时间"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:34
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:33
-msgid "Language"
-msgstr "语言"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:36
-msgid "Nothing selected"
-msgstr "未选择"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:39
-msgid "Choose preferred language"
-msgstr "选择首选语言"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:46
-#: website/app-templates/smarty/pages/contact_us.tpl:17
-msgid "Email"
-msgstr "邮箱"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:51
-msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr "等待电子邮件验证，不要忘记点击验证邮件中的链接！"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:53
-msgid "No email address, please add one!"
-msgstr "没有电子邮件地址，请添加一个！"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:56
-msgid "Update email address"
-msgstr "更新电子邮件地址"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:61
-msgid "Secid"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/details.tpl:64
-msgid "Used to authenticate in other applications. Keep it secret!"
-msgstr "用于其他应用程序的身份验证。请保密！"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:65
-msgid "Generate a new secid"
-msgstr "生成一个新的Secid"
-
-#: website/app-templates/smarty/blocks/user/statpic.tpl:13
-msgid "Choose statpic"
-msgstr "选择statpic"
-
-#: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
-msgid "There is no pictures yet."
-msgstr "还没有图片。"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:3
-msgid "Found a GeoKret?"
-msgstr "找到 GeoKret？"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:7
-msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "请在这里输入 <abbr title=\"%1\">追踪代码</abbr>："
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:12
-msgid "Tracking code"
-msgstr "跟踪代码"
-
-#: website/app-templates/smarty/blocks/user_finder.tpl:5
-msgid "Start by finding users:"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder.tpl:9
-msgid "Username or email or ID"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder.tpl:11
-msgid "Search"
-msgstr "搜索"
-
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
-msgid "false"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
-msgid "true"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:37
-msgid "No users match the current request."
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:34
+msgid "No GeoKrety matching: %1"
 msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:3
@@ -1746,21 +1859,6 @@ msgstr "由 <cite title=\"Original source\">%1</cite>"
 msgid "Current mole-holes"
 msgstr "当前分子孔数"
 
-#: website/app-templates/smarty/pages/mole_hole.tpl:38
-#: website/app-templates/smarty/pages/mole_hole.tpl:81
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
-#: website/app-templates/smarty/pages/home.tpl:39
-#: website/app-templates/smarty/pages/home.tpl:76
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
-#: website/app-templates/smarty/pages/user_inventory.tpl:21
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:20
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:15
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
-msgid "ID"
-msgstr ""
-
 #: website/app-templates/smarty/pages/mole_hole.tpl:39
 #: website/app-templates/smarty/pages/mole_hole.tpl:82
 msgid "Cache name"
@@ -1801,63 +1899,142 @@ msgstr "当前的GK酒店/火车"
 msgid "Status: Ready for search"
 msgstr "状态：准备搜索"
 
-#: website/app-templates/smarty/pages/user_pictures.tpl:3
-#: website/app-templates/smarty/pages/user_pictures.tpl:9
-msgid "%1's posted pictures"
-msgstr "%1的已发布图片"
-
-#: website/app-templates/smarty/pages/geokrety_map.tpl:3
-msgid "Interactive map"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
+msgid "GeoKrety visiting the cache %1"
 msgstr ""
 
-#: website/app-templates/smarty/pages/geokrety_map.tpl:17
-msgid "GeoKrety interactive map"
-msgstr "GeoKrety 交互式地图"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
+msgid "Cache"
+msgstr "高速缓存"
 
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
-msgid "GeoKrety Toolbox - GKT"
-msgstr "GeoKrety 工具箱 - GKT"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Date"
+msgstr "日期"
 
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:12
-msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
-msgstr "在 <a href=\"%1\" target=\"_blank\">geocaching.com</a> 缓存页面上显示GeoKrety Trackables 并便利将 GeoKrety Tracks 丢弃到地理缓存中。"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
+msgid "No GeoKrety has visited cache %1 yet."
+msgstr ""
 
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
-msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr "这个脚本是为了在最受欢迎的 <a href=\"%1\">地理捕捉之间架起桥梁的。 om</a> 站点 <a href=\"%2\">geokrety.org</a>。它有两个功能。 一旦您在 <a href=\"%1\">地理位置缓存页面输入特定缓存页面。 om</a> 它将自动检查是否存在任何GeoKrety (追踪到 <a href=\"%2\">geokrety的项目)。 rg</a>) 在该缓存中，并在屏幕右侧的盘存部分显示结果(低于现有的Travugs和Geocoins列表)。 如果您在 <a href=\"%2\">gookrety 上有一个帐户。 rg</a> 您也可以轻松将GeoKrety 拖放到 <a href=\"%1\">Geocach</a> caches ，因为航点代码和坐标会自动复制到日志表单 <a href=\"%2\">geokrety。 rg</a>"
+#: website/app-templates/smarty/pages/user_details.tpl:3
+msgid "%1's user profile"
+msgstr ""
 
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:18
-msgid "Available for:"
-msgstr "可用："
+#: website/app-templates/smarty/pages/registration_validated.tpl:3
+#: website/app-templates/smarty/pages/registration_validated.tpl:8
+msgid "Welcome to the GeoKrety.org community!"
+msgstr "欢迎使用 GeoKrety.org 社区！"
 
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:22
-msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
-msgstr "<a href=\"%1\">Firefox</a> (需要 <a href=\"%2\">Tampermonkey 附加组件</a> 或 <a href=\"%3\">greasemonkey 附加组件</a>)"
+#: website/app-templates/smarty/pages/registration_validated.tpl:10
+msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
+msgstr ""
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:3
-#: website/app-templates/smarty/pages/password_recovery.tpl:10
-msgid "Password recovery"
-msgstr "密码恢复"
+#: website/app-templates/smarty/pages/registration_validated.tpl:12
+msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
+msgstr ""
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:19
-msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
-msgstr "如果你在过去验证了你的邮件地址，那么你可以轻松恢复它。其他的，你必须创建另一个帐户，抱歉。"
+#: website/app-templates/smarty/pages/registration_validated.tpl:13
+#: website/app-templates/smarty/navbar-profile.tpl:48
+#: website/app-templates/smarty/dialog/login_simple.tpl:17
+#: website/app-templates/smarty/dialog/login.tpl:39
+#: website/app-templates/smarty/navbar.tpl:32
+msgid "Sign in"
+msgstr "登录"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:24
-#: website/app-templates/smarty/pages/password_recovery.tpl:26
-#: website/app-templates/smarty/dialog/user_update_email.tpl:11
-#: website/app-templates/smarty/dialog/user_update_email.tpl:12
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:18
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:20
-#: website/app-templates/smarty/forms/registration.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:13
-msgid "Email address"
-msgstr "电子邮件地址"
+#: website/app-templates/smarty/pages/registration.tpl:3
+msgid "Registration"
+msgstr ""
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:35
-msgid "Send me a recovery link"
-msgstr "给我发送恢复链接"
+#: website/app-templates/smarty/pages/registration.tpl:14
+msgid "Create an account using %1"
+msgstr "使用 %1 创建帐户"
+
+#: website/app-templates/smarty/pages/registration.tpl:16
+msgid "Create an account"
+msgstr "创建帐户"
+
+#: website/app-templates/smarty/pages/news_details.tpl:3
+msgid "News: %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/news_details.tpl:13
+msgid "Leave a comment"
+msgstr "留下评论"
+
+#: website/app-templates/smarty/pages/news_details.tpl:22
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
+msgid "Your comment"
+msgstr "您的评论"
+
+#: website/app-templates/smarty/pages/news_details.tpl:30
+msgid "Subscribe to this news post"
+msgstr "订阅这个消息后"
+
+#: website/app-templates/smarty/pages/news_details.tpl:43
+msgid "Please <a href=\"%1\">login</a> to post a comment"
+msgstr "请 <a href=\"%1\">登录</a> 以发表评论"
+
+#: website/app-templates/smarty/pages/news_details.tpl:52
+msgid "There are no comments for this post."
+msgstr "有没有对这篇文章的评论。"
+
+#: website/app-templates/smarty/pages/search_by_user.tpl:3
+msgid "Search users"
+msgstr ""
+
+#: website/app-templates/smarty/pages/search_by_user.tpl:9
+msgid "Found users matching: %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/search_by_user.tpl:19
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:19
+#: website/app-templates/smarty/dialog/login_simple.tpl:10
+#: website/app-templates/smarty/dialog/login_simple.tpl:11
+#: website/app-templates/smarty/dialog/login.tpl:13
+#: website/app-templates/smarty/dialog/login.tpl:15
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:10
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:12
+#: website/app-templates/smarty/forms/registration.tpl:4
+#: website/app-templates/smarty/forms/registration.tpl:6
+#: website/app-templates/smarty/forms/move.tpl:231
+#: website/app-templates/smarty/forms/advanced_search.tpl:17
+#: website/app-templates/smarty/forms/advanced_search.tpl:19
+msgid "Username"
+msgstr "用户名"
+
+#: website/app-templates/smarty/pages/search_by_user.tpl:34
+msgid "No users matching: %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/home.tpl:3
+#: website/app-templates/smarty/pages/home.tpl:8
+msgid "Welcome to GeoKrety.org!"
+msgstr "欢迎使用 GeoKrety.org ！"
+
+#: website/app-templates/smarty/pages/home.tpl:33
+msgid "Latest moves"
+msgstr "最近的动作"
+
+#: website/app-templates/smarty/pages/home.tpl:57
+msgid "Recent pictures"
+msgstr "最近图片"
+
+#: website/app-templates/smarty/pages/home.tpl:70
+msgid "Recently created GeoKrety"
+msgstr "最近创建的 GeoKrety"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:11
+#: website/app-templates/smarty/blocks/user/actions.tpl:20
+#: website/app-templates/smarty/navbar-profile.tpl:20
+msgid "Watched GeoKrety"
+msgstr "已观看GeoKrety"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
+msgid "%1 doesn't watch any GeoKrety yet."
+msgstr "%1 尚未观看任何GeoKrety"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
@@ -1896,53 +2073,53 @@ msgstr "将地图居中以观察区域"
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:74
 #: website/app-templates/smarty/pages/user_update_username.tpl:29
 #: website/app-templates/smarty/dialog/user_update_password.tpl:52
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/user_contact.tpl:41
 #: website/app-templates/smarty/dialog/user_update_email.tpl:51
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
 msgid "Back to user page"
 msgstr "返回用户页面"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:75
-#: website/app-templates/smarty/pages/email_change_token.tpl:33
-#: website/app-templates/smarty/pages/email_change_token.tpl:37
-#: website/app-templates/smarty/pages/email_revalidate.tpl:33
-#: website/app-templates/smarty/pages/email_revalidate.tpl:37
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:33
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:37
 #: website/app-templates/smarty/pages/email_change.tpl:34
 #: website/app-templates/smarty/pages/email_change.tpl:38
+#: website/app-templates/smarty/pages/email_change_token.tpl:33
+#: website/app-templates/smarty/pages/email_change_token.tpl:37
 #: website/app-templates/smarty/pages/user_update_username.tpl:30
-#: website/app-templates/smarty/dialog/user_update_password.tpl:53
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:55
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:16
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:37
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:16
-#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
-#: website/app-templates/smarty/dialog/user_contact.tpl:42
+#: website/app-templates/smarty/pages/email_revalidate.tpl:33
+#: website/app-templates/smarty/pages/email_revalidate.tpl:37
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:14
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:23
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:13
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
+#: website/app-templates/smarty/dialog/move_delete.tpl:23
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:35
-#: website/app-templates/smarty/dialog/picture_edit.tpl:46
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:66
-#: website/app-templates/smarty/dialog/user_update_email.tpl:52
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:39
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
+#: website/app-templates/smarty/dialog/user_update_password.tpl:53
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:14
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:23
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:13
+#: website/app-templates/smarty/dialog/picture_edit.tpl:46
+#: website/app-templates/smarty/dialog/user_contact.tpl:42
+#: website/app-templates/smarty/dialog/user_update_email.tpl:52
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:16
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:55
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:27
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:66
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:13
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
-#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:32
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:13
-#: website/app-templates/smarty/dialog/picture_delete.tpl:15
-#: website/app-templates/smarty/dialog/move_delete.tpl:23
-#: website/app-templates/smarty/dialog/news_subscription.tpl:24
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:12
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:32
+#: website/app-templates/smarty/dialog/news_subscription.tpl:24
+#: website/app-templates/smarty/dialog/picture_delete.tpl:15
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:37
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:16
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:39
 msgid "Dismiss"
 msgstr "关闭"
 
@@ -1951,305 +2128,37 @@ msgstr "关闭"
 msgid "Define"
 msgstr "定义"
 
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:3
-msgid "GeoKret watchers"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:9
-msgid "Those users are watching GeoKret %1 moves"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:19
-#: website/app-templates/smarty/pages/search_by_user.tpl:19
-#: website/app-templates/smarty/dialog/login_simple.tpl:10
-#: website/app-templates/smarty/dialog/login_simple.tpl:11
-#: website/app-templates/smarty/dialog/login.tpl:13
-#: website/app-templates/smarty/dialog/login.tpl:15
-#: website/app-templates/smarty/forms/advanced_search.tpl:17
-#: website/app-templates/smarty/forms/advanced_search.tpl:19
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:10
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:12
-#: website/app-templates/smarty/forms/move.tpl:231
-#: website/app-templates/smarty/forms/registration.tpl:4
-#: website/app-templates/smarty/forms/registration.tpl:6
-msgid "Username"
-msgstr "用户名"
-
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:34
-msgid "No users are watching GeoKret %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_label.tpl:3
-#: website/app-templates/smarty/pages/geokret_label.tpl:6
-msgid "Label generator"
-msgstr ""
-
-#: website/app-templates/smarty/pages/advanced_search.tpl:3
-#: website/app-templates/smarty/pages/advanced_search.tpl:8
-#: website/app-templates/smarty/navbar-left.tpl:19
-msgid "Advanced search"
-msgstr "高级搜索"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:3
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:11
-msgid "%1's recent moves"
-msgstr "%1最近的动作"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:22
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:20
-#: website/app-templates/smarty/pages/user_inventory.tpl:22
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:21
-msgid "Name"
-msgstr "名称"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
-#: website/app-templates/smarty/pages/home.tpl:40
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:23
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
-msgid "Spotted in"
-msgstr "发现于"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:23
-#: website/app-templates/smarty/pages/home.tpl:41
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:22
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:23
-#: website/app-templates/smarty/pages/news_details.tpl:20
-#: website/app-templates/smarty/pages/news_details.tpl:38
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:22
-#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
-#: website/app-templates/smarty/forms/move.tpl:106
-#: website/app-templates/smarty/forms/move.tpl:239
-#: website/app-templates/smarty/emails/daily-mail.tpl:38
-#: website/app-templates/smarty/emails/daily-mail.tpl:81
-#: website/app-templates/smarty/emails/daily-mail.tpl:127
-#: website/app-templates/smarty/emails/daily-mail.tpl:171
-msgid "Comment"
-msgstr "评论"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/home.tpl:42
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
-msgid "Last move"
-msgstr "上次移动"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:25
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
-#: website/app-templates/smarty/pages/user_inventory.tpl:26
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:25
-#: website/app-templates/smarty/elements/map_caption.tpl:138
-msgid "Caches visited count"
-msgstr "已访问的缓存"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:36
-msgid "%1 didn't moved any GeoKrety yet."
-msgstr "%1 尚未移动任何GeoKrety。"
-
-#: website/app-templates/smarty/pages/press_corner.tpl:3
-#: website/app-templates/smarty/pages/press_corner.tpl:9
-#: website/app-templates/smarty/navbar-left.tpl:47
-msgid "Press corner"
-msgstr "新闻专栏"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:3
-msgid "Hall of fame"
-msgstr "名人堂"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:8
-msgid "Developers"
-msgstr "开发者"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:11
-msgid "Current team:"
-msgstr "当前团队："
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:13
-msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
-msgstr "主机、 代码、 新设计、支持和 <a href=\"%1\">规划 GK v2</a>"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:14
-msgid "code, support, public relation and advertising"
-msgstr "代码、支持、公共关系和广告"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:16
-msgid "Legacy team:"
-msgstr "旧团队："
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:18
-msgid "idea, code and original design"
-msgstr "想法、 代码和原始设计"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:19
-msgid "visions into (legacy) code 😉"
-msgstr "视野进入(法理) 代码 :winking_face："
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:26
-msgid "Support"
-msgstr "支持"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:30
-msgid "GK logo (the mole, different versions)"
-msgstr "GK 徽标(摩尔，不同版本)"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:31
-msgid "MySQL support, sandwiches and more 😃"
-msgstr "MySQL 支持、 sandwiches 和更多 :grinning_face_with_big_eyes："
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:32
-msgid "GK maps"
-msgstr "GK 地图"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:39
-#: website/app-templates/smarty/pages/help.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:42
-#: website/app-templates/smarty/navbar-left.tpl:44
-msgid "Help"
-msgstr "帮助"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:43
-msgid "betatesting, idea, public relation and advertising 😃"
-msgstr "测试、理念、公共关系和广告 :grinning_face_with_big_eyes："
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:44
-msgid "betatesting, language support"
-msgstr "测试，语言支持"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:45
-msgid "betatesting"
-msgstr "测试测试"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:46
-msgid "programming support"
-msgstr "方案支助"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:47
-msgid "coordinates parser"
-msgstr ""
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:48
-msgid "public relation and advertising"
-msgstr "公共关系和广告"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:55
-msgid "Translations"
-msgstr "翻译"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:84
-msgid "Global reviewers"
-msgstr "全球审评员"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:91
-msgid "Credits"
-msgstr "致谢"
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:3
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:6
-msgid "All yearly rankings"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:18
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:43
-msgid "No attributed awards yet."
-msgstr ""
-
-#: website/app-templates/smarty/pages/user_owned_pictures.tpl:3
-#: website/app-templates/smarty/pages/user_owned_pictures.tpl:9
-msgid "Pictures of %1's GeoKrety"
-msgstr "%1的 GeoKrety 图片"
-
-#: website/app-templates/smarty/pages/email_change_token.tpl:3
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
+#: website/app-templates/smarty/pages/email_change_token.tpl:3
 msgid "Confirm changing your email address"
 msgstr ""
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:8
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:8
+#: website/app-templates/smarty/pages/email_change_token.tpl:8
 msgid "Do you confirm changing your email address?"
 msgstr "您确认更改您的电子邮件地址吗？"
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:32
-#: website/app-templates/smarty/pages/email_revalidate.tpl:32
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:32
 #: website/app-templates/smarty/pages/email_change.tpl:33
+#: website/app-templates/smarty/pages/email_change_token.tpl:32
+#: website/app-templates/smarty/pages/email_revalidate.tpl:32
 msgid "Back to your profile"
 msgstr "回到您的个人资料"
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:36
-#: website/app-templates/smarty/pages/email_revalidate.tpl:36
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
 #: website/app-templates/smarty/pages/email_change.tpl:37
+#: website/app-templates/smarty/pages/email_change_token.tpl:36
+#: website/app-templates/smarty/pages/email_revalidate.tpl:36
 msgid "Back to homepage"
 msgstr "返回主页"
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:40
-msgid "Yes, change my email address"
-msgstr "是的，更改我的电子邮件地址"
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:40
+msgid "I approve this change"
+msgstr "我批准这个更改"
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:41
-msgid "No, abort this request"
-msgstr "不，中止此请求"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
-msgid "%1's Owned GeoKrety map"
-msgstr "%1拥有的 GeoKrety 地图"
-
-#: website/app-templates/smarty/pages/pictures_gallery.tpl:3
-#: website/app-templates/smarty/pages/pictures_gallery.tpl:9
-msgid "Pictures gallery"
-msgstr "图片库"
-
-#: website/app-templates/smarty/pages/home.tpl:3
-#: website/app-templates/smarty/pages/home.tpl:8
-msgid "Welcome to GeoKrety.org!"
-msgstr "欢迎使用 GeoKrety.org ！"
-
-#: website/app-templates/smarty/pages/home.tpl:26
-#: website/app-templates/smarty/pages/news_list.tpl:3
-#: website/app-templates/smarty/footer.tpl:5
-#: website/app-templates/smarty/navbar-left.tpl:3
-msgid "News"
-msgstr "新闻"
-
-#: website/app-templates/smarty/pages/home.tpl:33
-msgid "Latest moves"
-msgstr "最近的动作"
-
-#: website/app-templates/smarty/pages/home.tpl:43
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:24
-#: website/app-templates/smarty/emails/daily-mail.tpl:129
-msgid "Distance"
-msgstr "距离"
-
-#: website/app-templates/smarty/pages/home.tpl:57
-msgid "Recent pictures"
-msgstr "最近图片"
-
-#: website/app-templates/smarty/pages/home.tpl:70
-msgid "Recently created GeoKrety"
-msgstr "最近创建的 GeoKrety"
-
-#: website/app-templates/smarty/pages/home.tpl:77
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
-#: website/app-templates/smarty/pages/user_inventory.tpl:23
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:22
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
-#: website/app-templates/smarty/forms/geokret_label.tpl:15
-#: website/app-templates/smarty/forms/geokret_label.tpl:17
-msgid "Owner"
-msgstr "拥有者"
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:41
+msgid "No, please revert to my old email address"
+msgstr "不，请回到我的旧电子邮件地址"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:3
 #: website/app-templates/smarty/pages/contact_us.tpl:8
@@ -2259,6 +2168,11 @@ msgstr "联系我们"
 #: website/app-templates/smarty/pages/contact_us.tpl:13
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "如果您有任何建议或错误报告，请随时编写我们。"
+
+#: website/app-templates/smarty/pages/contact_us.tpl:17
+#: website/app-templates/smarty/blocks/user/details.tpl:46
+msgid "Email"
+msgstr "邮箱"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Or via the user profile"
@@ -2284,67 +2198,152 @@ msgstr "想要签名或加密您的邮件吗？"
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "我们的 PGP/GPG 密钥 <a href=\"%1\">在这里 (%2)</a>"
 
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
-msgid "%1 doesn't watch any GeoKrety yet."
-msgstr "%1 尚未观看任何GeoKrety"
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
+msgid "Waypoints statistics"
+msgstr ""
 
-#: website/app-templates/smarty/pages/password_change.tpl:3
-#: website/app-templates/smarty/pages/password_change.tpl:13
-#: website/app-templates/smarty/dialog/user_update_password.tpl:8
-msgid "Change your password"
-msgstr "更改您的密码"
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:10
+msgid "Service code"
+msgstr ""
 
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:11
+msgid "Service url"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:12
+msgid "Waypoint count"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:13
+msgid "Last synchronization"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:14
+msgid "Revision"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:15
+msgid "Last error"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:16
+msgid "Error count"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:39
+msgid "N/A"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:49
+msgid "Force complete synchronization"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_label.tpl:3
+#: website/app-templates/smarty/pages/geokret_label.tpl:6
+msgid "Label generator"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:3
+msgid "GeoKret watchers"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:9
+msgid "Those users are watching GeoKret %1 moves"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:34
+msgid "No users are watching GeoKret %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
+msgid "GeoKrety Toolbox - GKT"
+msgstr "GeoKrety 工具箱 - GKT"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:12
+msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
+msgstr "在 <a href=\"%1\" target=\"_blank\">geocaching.com</a> 缓存页面上显示GeoKrety Trackables 并便利将 GeoKrety Tracks 丢弃到地理缓存中。"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
+msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
+msgstr "这个脚本是为了在最受欢迎的 <a href=\"%1\">地理捕捉之间架起桥梁的。 om</a> 站点 <a href=\"%2\">geokrety.org</a>。它有两个功能。 一旦您在 <a href=\"%1\">地理位置缓存页面输入特定缓存页面。 om</a> 它将自动检查是否存在任何GeoKrety (追踪到 <a href=\"%2\">geokrety的项目)。 rg</a>) 在该缓存中，并在屏幕右侧的盘存部分显示结果(低于现有的Travugs和Geocoins列表)。 如果您在 <a href=\"%2\">gookrety 上有一个帐户。 rg</a> 您也可以轻松将GeoKrety 拖放到 <a href=\"%1\">Geocach</a> caches ，因为航点代码和坐标会自动复制到日志表单 <a href=\"%2\">geokrety。 rg</a>"
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:18
+msgid "Available for:"
+msgstr "可用："
+
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:22
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
+msgstr "<a href=\"%1\">Firefox</a> (需要 <a href=\"%2\">Tampermonkey 附加组件</a> 或 <a href=\"%3\">greasemonkey 附加组件</a>)"
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:3
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:6
+msgid "Top %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:12
+msgid "Rank"
+msgstr "等级"
+
+#: website/app-templates/smarty/pages/user_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_pictures.tpl:9
+msgid "%1's posted pictures"
+msgstr "%1的已发布图片"
+
+#: website/app-templates/smarty/pages/user_inventory.tpl:3
+#: website/app-templates/smarty/pages/user_inventory.tpl:12
+msgid "%1's inventory"
+msgstr "%1的背包"
+
+#: website/app-templates/smarty/pages/user_inventory.tpl:38
+msgid "%1's inventory is currently empty."
+msgstr "%1的库存目前是空的。"
+
+#: website/app-templates/smarty/pages/work_in_progress.tpl:3
+#: website/app-templates/smarty/pages/work_in_progress.tpl:6
+msgid "This page doesn't exists yet, but we're working on it!"
+msgstr "这个页面还不存在，但我们正在工作！"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:11
+msgid "%1's GeoKrety recent moves"
+msgstr "%1的 GeoKrety 最近移动"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:33
+msgid "%1's GeoKrety didn't moved yet."
+msgstr "%1的 GeoKrety 尚未移动。"
+
+#: website/app-templates/smarty/pages/help.tpl:3
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:39
+#: website/app-templates/smarty/navbar-left.tpl:42
+#: website/app-templates/smarty/navbar-left.tpl:44
+msgid "Help"
+msgstr "帮助"
+
+#: website/app-templates/smarty/pages/email_change.tpl:10
+msgid "Changing your email address."
+msgstr "更改您的电子邮件地址。"
+
+#: website/app-templates/smarty/pages/email_change.tpl:18
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_revalidate.tpl:18
-#: website/app-templates/smarty/pages/email_change.tpl:18
 msgid "Please enter the verification token received by mail."
 msgstr "请输入邮件接收的验证令牌。"
 
+#: website/app-templates/smarty/pages/email_change.tpl:23
+#: website/app-templates/smarty/pages/email_change.tpl:25
 #: website/app-templates/smarty/pages/password_change.tpl:27
 #: website/app-templates/smarty/pages/password_change.tpl:29
 #: website/app-templates/smarty/pages/email_revalidate.tpl:23
 #: website/app-templates/smarty/pages/email_revalidate.tpl:25
-#: website/app-templates/smarty/pages/email_change.tpl:23
-#: website/app-templates/smarty/pages/email_change.tpl:25
 msgid "Verification Token"
 msgstr "验证令牌"
 
-#: website/app-templates/smarty/pages/password_change.tpl:36
-msgid "Please define a new password."
-msgstr "请定义一个新密码。"
-
-#: website/app-templates/smarty/pages/password_change.tpl:41
-#: website/app-templates/smarty/pages/password_change.tpl:43
-#: website/app-templates/smarty/dialog/user_update_password.tpl:24
-#: website/app-templates/smarty/dialog/user_update_password.tpl:26
-msgid "New password"
-msgstr "新密码"
-
-#: website/app-templates/smarty/pages/password_change.tpl:48
-#: website/app-templates/smarty/pages/password_change.tpl:50
-#: website/app-templates/smarty/dialog/user_update_password.tpl:31
-#: website/app-templates/smarty/dialog/user_update_password.tpl:33
-#: website/app-templates/smarty/forms/registration.tpl:26
-#: website/app-templates/smarty/forms/registration.tpl:28
-msgid "Confirm password"
-msgstr "确认密码"
-
-#: website/app-templates/smarty/pages/password_change.tpl:57
-#: website/app-templates/smarty/pages/user_update_username.tpl:32
-#: website/app-templates/smarty/dialog/user_update_password.tpl:55
-#: website/app-templates/smarty/dialog/user_update_email.tpl:54
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:29
-msgid "Change"
-msgstr "更改"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:38
-msgid "%1 doesn't own any GeoKrety yet."
-msgstr "%1 尚未拥有任何GeoKrety"
-
-#: website/app-templates/smarty/pages/geokrety_labels.tpl:3
-#: website/app-templates/smarty/pages/geokrety_labels.tpl:6
-msgid "Mass label generator"
-msgstr ""
+#: website/app-templates/smarty/pages/email_change.tpl:41
+#: website/app-templates/smarty/pages/email_revalidate.tpl:40
+msgid "Check the token"
+msgstr "检查令牌"
 
 #: website/app-templates/smarty/pages/downloads.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:54
@@ -2414,204 +2413,42 @@ msgstr "示例标签 #%1: "
 msgid "Old label design: "
 msgstr "旧标签设计： "
 
-#: website/app-templates/smarty/pages/work_in_progress.tpl:3
-#: website/app-templates/smarty/pages/work_in_progress.tpl:6
-msgid "This page doesn't exists yet, but we're working on it!"
-msgstr "这个页面还不存在，但我们正在工作！"
+#: website/app-templates/smarty/pages/news_list.tpl:18
+msgid "There is no news yet"
+msgstr "还没有新闻"
 
-#: website/app-templates/smarty/pages/search_by_user.tpl:3
-msgid "Search users"
+#: website/app-templates/smarty/pages/email_change_token.tpl:40
+msgid "Yes, change my email address"
+msgstr "是的，更改我的电子邮件地址"
+
+#: website/app-templates/smarty/pages/email_change_token.tpl:41
+msgid "No, abort this request"
+msgstr "不，中止此请求"
+
+#: website/app-templates/smarty/pages/geokret_move.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:6
+#: website/app-templates/smarty/navbar-left.tpl:13
+#: website/app-templates/smarty/navbar.tpl:16
+msgid "Log a GeoKret"
+msgstr "记录GeoKret"
+
+#: website/app-templates/smarty/pages/geokrety_map.tpl:3
+msgid "Interactive map"
 msgstr ""
 
-#: website/app-templates/smarty/pages/search_by_user.tpl:9
-msgid "Found users matching: %1"
+#: website/app-templates/smarty/pages/geokrety_map.tpl:17
+msgid "GeoKrety interactive map"
+msgstr "GeoKrety 交互式地图"
+
+#: website/app-templates/smarty/pages/geokrety_labels.tpl:3
+#: website/app-templates/smarty/pages/geokrety_labels.tpl:6
+msgid "Mass label generator"
 msgstr ""
 
-#: website/app-templates/smarty/pages/search_by_user.tpl:34
-msgid "No users matching: %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:3
-#: website/app-templates/smarty/pages/geokret_claim.tpl:8
-#: website/app-templates/smarty/navbar-left.tpl:16
-msgid "Claim a GeoKret"
-msgstr "Claim a GeoKret"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:30
-msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
-msgstr "这个过程需要一个通常写在GeoKret 标签上的“追踪代码”，或在硬币上雕刻，加上一个纸张上通常提供的“所有者代码”。"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:36
-msgid "Adopt"
-msgstr "通过"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
-msgid "GeoKrety visiting the cache %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
-msgid "Cache"
-msgstr "高速缓存"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:216
-msgid "Date"
-msgstr "日期"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
-msgid "No GeoKrety has visited cache %1 yet."
-msgstr ""
-
-#: website/app-templates/smarty/pages/email_revalidate.tpl:10
-msgid "Email address revalidation."
-msgstr ""
-
-#: website/app-templates/smarty/pages/email_revalidate.tpl:40
-#: website/app-templates/smarty/pages/email_change.tpl:41
-msgid "Check the token"
-msgstr "检查令牌"
-
-#: website/app-templates/smarty/pages/user_inventory.tpl:3
-#: website/app-templates/smarty/pages/user_inventory.tpl:12
-msgid "%1's inventory"
-msgstr "%1的背包"
-
-#: website/app-templates/smarty/pages/user_inventory.tpl:38
-msgid "%1's inventory is currently empty."
-msgstr "%1的库存目前是空的。"
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
-msgid "Waypoints statistics"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:10
-msgid "Service code"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:11
-msgid "Service url"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:12
-msgid "Waypoint count"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:13
-msgid "Last synchronization"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:14
-msgid "Revision"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:15
-msgid "Last error"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:16
-msgid "Error count"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:39
-msgid "N/A"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:49
-msgid "Force complete synchronization"
-msgstr ""
-
-#: website/app-templates/smarty/pages/help_api.tpl:11
-msgid "Help API"
-msgstr ""
-
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:40
-msgid "I approve this change"
-msgstr "我批准这个更改"
-
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:41
-msgid "No, please revert to my old email address"
-msgstr "不，请回到我的旧电子邮件地址"
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:3
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:6
-msgid "Top %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:12
-msgid "Rank"
-msgstr "等级"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:11
-msgid "%1's GeoKrety recent moves"
-msgstr "%1的 GeoKrety 最近移动"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:33
-msgid "%1's GeoKrety didn't moved yet."
-msgstr "%1的 GeoKrety 尚未移动。"
-
-#: website/app-templates/smarty/pages/email_change.tpl:10
-msgid "Changing your email address."
-msgstr "更改您的电子邮件地址。"
-
-#: website/app-templates/smarty/pages/registration_validated.tpl:3
-#: website/app-templates/smarty/pages/registration_validated.tpl:8
-msgid "Welcome to the GeoKrety.org community!"
-msgstr "欢迎使用 GeoKrety.org 社区！"
-
-#: website/app-templates/smarty/pages/registration_validated.tpl:10
-msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
-
-#: website/app-templates/smarty/pages/registration_validated.tpl:12
-msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
-
-#: website/app-templates/smarty/pages/news_details.tpl:3
-msgid "News: %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/news_details.tpl:13
-msgid "Leave a comment"
-msgstr "留下评论"
-
-#: website/app-templates/smarty/pages/news_details.tpl:22
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
-msgid "Your comment"
-msgstr "您的评论"
-
-#: website/app-templates/smarty/pages/news_details.tpl:30
-msgid "Subscribe to this news post"
-msgstr "订阅这个消息后"
-
-#: website/app-templates/smarty/pages/news_details.tpl:43
-msgid "Please <a href=\"%1\">login</a> to post a comment"
-msgstr "请 <a href=\"%1\">登录</a> 以发表评论"
-
-#: website/app-templates/smarty/pages/news_details.tpl:52
-msgid "There are no comments for this post."
-msgstr "有没有对这篇文章的评论。"
-
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:3
-msgid "Statpic background chooser"
-msgstr ""
-
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:8
-msgid "Select your preferred statpic background"
-msgstr "选择您首选的状态背景"
-
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:28
-#: website/app-templates/smarty/dialog/picture_edit.tpl:47
-#: website/app-templates/smarty/forms/geokret.tpl:63
-msgid "Save"
-msgstr "保存"
-
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:38
-msgid "Your current statpic"
-msgstr "您当前的状态"
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
+msgid "%1's Owned GeoKrety map"
+msgstr "%1拥有的 GeoKrety 地图"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:3
 msgid "Change username"
@@ -2633,173 +2470,249 @@ msgstr ""
 msgid "New username"
 msgstr ""
 
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:3
-msgid "Search GeoKrety"
+#: website/app-templates/smarty/pages/user_update_username.tpl:32
+#: website/app-templates/smarty/pages/password_change.tpl:57
+#: website/app-templates/smarty/dialog/user_update_password.tpl:55
+#: website/app-templates/smarty/dialog/user_update_email.tpl:54
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:29
+msgid "Change"
+msgstr "更改"
+
+#: website/app-templates/smarty/pages/advanced_search.tpl:3
+#: website/app-templates/smarty/pages/advanced_search.tpl:8
+#: website/app-templates/smarty/navbar-left.tpl:19
+msgid "Advanced search"
+msgstr "高级搜索"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:12
+#: website/app-templates/smarty/blocks/user/actions.tpl:16
+msgid "Owned GeoKrety"
+msgstr "拥有GeoKrety"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:38
+msgid "%1 doesn't own any GeoKrety yet."
+msgstr "%1 尚未拥有任何GeoKrety"
+
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:3
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:9
+msgid "Pictures gallery"
+msgstr "图片库"
+
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:3
+msgid "Statpic background chooser"
 msgstr ""
 
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:11
-msgid "Found GeoKrety matching: %1"
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:8
+msgid "Select your preferred statpic background"
+msgstr "选择您首选的状态背景"
+
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:28
+#: website/app-templates/smarty/dialog/picture_edit.tpl:47
+#: website/app-templates/smarty/forms/geokret.tpl:63
+msgid "Save"
+msgstr "保存"
+
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:38
+msgid "Your current statpic"
+msgstr "您当前的状态"
+
+#: website/app-templates/smarty/pages/help_api.tpl:11
+msgid "Help API"
 msgstr ""
 
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:34
-msgid "No GeoKrety matching: %1"
+#: website/app-templates/smarty/pages/geokret_create.tpl:3
+#: website/app-templates/smarty/blocks/user/actions.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:15
+#: website/app-templates/smarty/forms/geokret.tpl:6
+msgid "Create a new GeoKret"
+msgstr "创建一个新的 GeoKret"
+
+#: website/app-templates/smarty/pages/password_change.tpl:3
+#: website/app-templates/smarty/pages/password_change.tpl:13
+#: website/app-templates/smarty/dialog/user_update_password.tpl:8
+msgid "Change your password"
+msgstr "更改您的密码"
+
+#: website/app-templates/smarty/pages/password_change.tpl:36
+msgid "Please define a new password."
+msgstr "请定义一个新密码。"
+
+#: website/app-templates/smarty/pages/password_change.tpl:41
+#: website/app-templates/smarty/pages/password_change.tpl:43
+#: website/app-templates/smarty/dialog/user_update_password.tpl:24
+#: website/app-templates/smarty/dialog/user_update_password.tpl:26
+msgid "New password"
+msgstr "新密码"
+
+#: website/app-templates/smarty/pages/password_change.tpl:48
+#: website/app-templates/smarty/pages/password_change.tpl:50
+#: website/app-templates/smarty/dialog/user_update_password.tpl:31
+#: website/app-templates/smarty/dialog/user_update_password.tpl:33
+#: website/app-templates/smarty/forms/registration.tpl:26
+#: website/app-templates/smarty/forms/registration.tpl:28
+msgid "Confirm password"
+msgstr "确认密码"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:3
+#: website/app-templates/smarty/pages/geokret_claim.tpl:8
+#: website/app-templates/smarty/navbar-left.tpl:16
+msgid "Claim a GeoKret"
+msgstr "Claim a GeoKret"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:15
+#: website/app-templates/smarty/blocks/geokret/details.tpl:49
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+#: website/app-templates/smarty/forms/move.tpl:21
+#: website/app-templates/smarty/forms/geokret_label.tpl:31
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:22
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:77
+msgid "Tracking Code"
+msgstr "跟踪代码"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:22
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:114
+msgid "Owner Code"
+msgstr "所有者代码"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:30
+msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
+msgstr "这个过程需要一个通常写在GeoKret 标签上的“追踪代码”，或在硬币上雕刻，加上一个纸张上通常提供的“所有者代码”。"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:36
+msgid "Adopt"
+msgstr "通过"
+
+#: website/app-templates/smarty/pages/email_revalidate.tpl:10
+msgid "Email address revalidation."
 msgstr ""
 
-#: website/app-templates/smarty/pages/user_details.tpl:3
-msgid "%1's user profile"
+#: website/app-templates/smarty/pages/press_corner.tpl:3
+#: website/app-templates/smarty/pages/press_corner.tpl:9
+#: website/app-templates/smarty/navbar-left.tpl:47
+msgid "Press corner"
+msgstr "新闻专栏"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:3
+msgid "Hall of fame"
+msgstr "名人堂"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:8
+msgid "Developers"
+msgstr "开发者"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:11
+msgid "Current team:"
+msgstr "当前团队："
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:13
+msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
+msgstr "主机、 代码、 新设计、支持和 <a href=\"%1\">规划 GK v2</a>"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:14
+msgid "code, support, public relation and advertising"
+msgstr "代码、支持、公共关系和广告"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:16
+msgid "Legacy team:"
+msgstr "旧团队："
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:18
+msgid "idea, code and original design"
+msgstr "想法、 代码和原始设计"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:19
+msgid "visions into (legacy) code 😉"
+msgstr "视野进入(法理) 代码 :winking_face："
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:26
+msgid "Support"
+msgstr "支持"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:30
+msgid "GK logo (the mole, different versions)"
+msgstr "GK 徽标(摩尔，不同版本)"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:31
+msgid "MySQL support, sandwiches and more 😃"
+msgstr "MySQL 支持、 sandwiches 和更多 :grinning_face_with_big_eyes："
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:32
+msgid "GK maps"
+msgstr "GK 地图"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:43
+msgid "betatesting, idea, public relation and advertising 😃"
+msgstr "测试、理念、公共关系和广告 :grinning_face_with_big_eyes："
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:44
+msgid "betatesting, language support"
+msgstr "测试，语言支持"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:45
+msgid "betatesting"
+msgstr "测试测试"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:46
+msgid "programming support"
+msgstr "方案支助"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:47
+msgid "coordinates parser"
 msgstr ""
 
-#: website/app-templates/smarty/pages/news_list.tpl:18
-msgid "There is no news yet"
-msgstr "还没有新闻"
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:48
+msgid "public relation and advertising"
+msgstr "公共关系和广告"
 
-#: website/app-templates/smarty/pages/registration.tpl:3
-msgid "Registration"
-msgstr ""
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:55
+msgid "Translations"
+msgstr "翻译"
 
-#: website/app-templates/smarty/pages/registration.tpl:14
-msgid "Create an account using %1"
-msgstr "使用 %1 创建帐户"
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:84
+msgid "Global reviewers"
+msgstr "全球审评员"
 
-#: website/app-templates/smarty/pages/registration.tpl:16
-msgid "Create an account"
-msgstr "创建帐户"
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:91
+msgid "Credits"
+msgstr "致谢"
 
-#: website/app-templates/smarty/footer.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:2
-msgid "Home"
-msgstr "首页"
+#: website/app-templates/smarty/pages/password_recovery.tpl:3
+#: website/app-templates/smarty/pages/password_recovery.tpl:10
+msgid "Password recovery"
+msgstr "密码恢复"
 
-#: website/app-templates/smarty/footer.tpl:4
-msgid "About"
-msgstr "关于"
+#: website/app-templates/smarty/pages/password_recovery.tpl:19
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr "如果你在过去验证了你的邮件地址，那么你可以轻松恢复它。其他的，你必须创建另一个帐户，抱歉。"
 
-#: website/app-templates/smarty/footer.tpl:6
-msgid "Contact"
-msgstr "联系人"
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/pages/password_recovery.tpl:26
+#: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/dialog/user_update_email.tpl:12
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:18
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:20
+#: website/app-templates/smarty/forms/registration.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:13
+msgid "Email address"
+msgstr "电子邮件地址"
 
-#: website/app-templates/smarty/footer.tpl:10
-msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr "在 <a id=\"footer-license\" href=\"%1\">MIT 许可证下发布</a>"
+#: website/app-templates/smarty/pages/password_recovery.tpl:35
+msgid "Send me a recovery link"
+msgstr "给我发送恢复链接"
 
-#: website/app-templates/smarty/footer.tpl:12
-msgid "Contribute to translation"
-msgstr ""
+#: website/app-templates/smarty/macros/pagination.tpl:5
+msgid "First"
+msgstr "第一页"
 
-#: website/app-templates/smarty/footer.tpl:15
-msgid "Leave in-context translation"
-msgstr "离开上下文翻译"
+#: website/app-templates/smarty/macros/pagination.tpl:17
+msgid "Last [%1]"
+msgstr "最后 [%1]"
 
-#: website/app-templates/smarty/footer.tpl:17
-msgid "in-context translation"
-msgstr "上下文翻译"
-
-#: website/app-templates/smarty/footer.tpl:21
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr ""
-
-#: website/app-templates/smarty/navbar-right.tpl:5
-msgid "Search…"
-msgstr ""
-
-#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
-msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "您有待验证的电子邮件。 别忘了点击电子邮件中存在的链接来完成程序。链接将过期 %1！"
-
-#: website/app-templates/smarty/banners/user_email_missing.tpl:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "对不起，您的帐户没有注册电子邮件。 您将无法从密码丢失中恢复！另外，您将不会收到您的GeoKrety或观看GeoKrety的每日通知。"
-
-#: website/app-templates/smarty/banners/user_email_missing.tpl:4
-msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr "请考虑 <a href=\"%1\">添加一个电子邮件地址</a> 或 <a href=\"%2\">将您的帐户</a> 链接到一些OAuth 提供商。"
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
-msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr "即使是现在不需要它，我们建议您 <a href=\"%1\">登录</a>。"
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
-msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
-msgstr "请不要犹豫 <a href=\"%1\">创建帐户</a>。"
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
-msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr "然后，您将能够管理您的 GeoKrety 库存，上传图片，编辑您的日志，当然还能创建您自己的 GeoKret！"
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
-msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "您已设置此 GeoKret 可供通过。所有者代码为： <strong>%1</strong>。 与追踪代码 <strong>%2</strong> 一起提供给将通过你的 GeoKret的用户。"
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
-msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
-msgstr ""
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
-msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
-msgstr "此 GeoKret 可用来通过。请先 <a href=\"%1\">登录</a>。"
-
-#: website/app-templates/smarty/banners/is_not_prod.tpl:3
-msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
-msgstr ""
-
-#: website/app-templates/smarty/banners/user_password_missing.tpl:3
-msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
-msgstr ""
-
-#: website/app-templates/smarty/banners/user_password_missing.tpl:4
-msgid "Please consider <a href=\"%1\">setting a password</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr ""
-
-#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
-msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
-msgstr ""
-
-#: website/app-templates/smarty/banners/flash_messages.tpl:3
-#: website/app-templates/smarty/banners/contribute.tpl:2
-msgid "Close"
-msgstr "关闭"
-
-#: website/app-templates/smarty/banners/site_intro.tpl:3
-msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
-msgstr "GeoKrety 是一个免费的在线服务，用于在 GPS 游戏中跟踪对象，如地理藏匿或置顶。 你可以跟我们一起追踪小项目、 书籍、 硬币、 宠物或人类… <a href=\"%1\">阅读更多</a>"
-
-#: website/app-templates/smarty/banners/contribute.tpl:3
-msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "这个分支 🥦 正在积极开发 👨‍💻如果你发现bug:, 请检查 👀 <a href=\"%1\" target=\"_blank\">现有问题 ♻️ on GitHub %2</a> 并随意打开新的 :NEW_buton:。 (每个问题请🙏)"
-
-#: website/app-templates/smarty/banners/donate.tpl:2
-msgid "Enjoying GeoKrety.org?"
-msgstr "喜欢GeoKrety.org吗？"
-
-#: website/app-templates/smarty/banners/donate.tpl:4
-msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr ""
-
-#: website/app-templates/smarty/banners/donate.tpl:8
-msgid "Donate"
-msgstr ""
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:2
-msgid "Some statistics"
-msgstr "某些统计"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:6
-msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "<strong>%1</strong> 注册的 GeoKrety, <strong>%2</strong> GeoKrety 隐藏由 <strong>%3</strong> 用户。"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:13
-msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr ""
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:21
-msgid "And that's thanks to you! Congratulation!"
-msgstr "这感谢你！恭喜！"
-
-#: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:36
-#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:38
-#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:34
-msgid "Move this GeoKret"
-msgstr "移动这个GeoKret"
+#: website/app-templates/smarty/elements/move_comment.tpl:10
+#: website/app-templates/smarty/elements/news_comment.tpl:10
+msgid "Delete comment"
+msgstr "删除评论"
 
 #: website/app-templates/smarty/elements/news.tpl:7
 msgid "Unsubscribe from news"
@@ -2809,18 +2722,54 @@ msgstr "取消订阅新闻"
 msgid "Subscribe to news"
 msgstr "订阅新闻"
 
-#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:7
-msgid "Declared as missing"
-msgstr ""
+#: website/app-templates/smarty/elements/move.tpl:7
+msgid "Show move on map"
+msgstr "在地图上显示移动"
 
-#: website/app-templates/smarty/elements/news_comment.tpl:10
-#: website/app-templates/smarty/elements/move_comment.tpl:10
-msgid "Delete comment"
-msgstr "删除评论"
+#: website/app-templates/smarty/elements/move.tpl:64
+msgid "Report as missing"
+msgstr "失踪的报告"
+
+#: website/app-templates/smarty/elements/move.tpl:69
+#: website/app-templates/smarty/blocks/user/details.tpl:21
+#: website/app-templates/smarty/blocks/geokret/details.tpl:35
+msgid "Upload a picture"
+msgstr "上传图片"
+
+#: website/app-templates/smarty/elements/move.tpl:73
+msgid "Write a comment"
+msgstr "撰写评论"
+
+#: website/app-templates/smarty/elements/move.tpl:81
+msgid "Edit log"
+msgstr "编辑日志"
+
+#: website/app-templates/smarty/elements/move.tpl:85
+msgid "Delete log"
+msgstr "删除日志"
+
+#: website/app-templates/smarty/elements/credit.tpl:4
+msgid "%1 logo"
+msgstr "%1 徽标"
+
+#: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:36
+#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:38
+#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:34
+msgid "Move this GeoKret"
+msgstr "移动这个GeoKret"
 
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
 msgstr "部署于 %1"
+
+#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:41
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:26
+msgid "Remove this geokret from your watch list"
+msgstr ""
+
+#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:7
+msgid "Declared as missing"
+msgstr ""
 
 #: website/app-templates/smarty/elements/map_caption.tpl:9
 msgid "Last moved date"
@@ -2835,6 +2784,11 @@ msgstr ""
 msgid "%1 days"
 msgstr ""
 
+#: website/app-templates/smarty/elements/map_caption.tpl:75
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+msgid "Total distance"
+msgstr "总里程"
+
 #: website/app-templates/smarty/elements/map_caption.tpl:139
 msgid "Total visited caches"
 msgstr ""
@@ -2847,60 +2801,440 @@ msgstr ""
 msgid "%1 caches"
 msgstr ""
 
-#: website/app-templates/smarty/elements/credit.tpl:4
-msgid "%1 logo"
-msgstr "%1 徽标"
+#: website/app-templates/smarty/chunks/social_groups.tpl:5
+msgid "languages"
+msgstr "语言"
 
-#: website/app-templates/smarty/elements/move.tpl:7
-msgid "Show move on map"
-msgstr "在地图上显示移动"
+#: website/app-templates/smarty/chunks/social_groups.tpl:6
+msgid "platform"
+msgstr "平台"
 
-#: website/app-templates/smarty/elements/move.tpl:64
-msgid "Report as missing"
-msgstr "失踪的报告"
+#: website/app-templates/smarty/chunks/social_groups.tpl:7
+msgid "group name"
+msgstr "群组名称"
 
-#: website/app-templates/smarty/elements/move.tpl:73
-msgid "Write a comment"
-msgstr "撰写评论"
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
+msgid "Remove this GeoKret from the selection"
+msgstr "从选区中删除这个GeoKret"
 
-#: website/app-templates/smarty/elements/move.tpl:81
-msgid "Edit log"
-msgstr "编辑日志"
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
+msgid "Never moved"
+msgstr "从未移动"
 
-#: website/app-templates/smarty/elements/move.tpl:85
-msgid "Delete log"
-msgstr "删除日志"
+#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
+msgid "false"
+msgstr ""
 
-#: website/app-templates/smarty/header.tpl:3
-#: website/app-templates/smarty/emails/base.tpl:20
-msgid "Open source item tracking for all geocaching platforms"
-msgstr "所有地理藏宝平台的开源项目跟踪"
+#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
+msgid "true"
+msgstr ""
 
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:16
-#: website/app-templates/smarty/dialog/user_contact.tpl:23
-msgid "Subject"
-msgstr "题目"
+#: website/app-templates/smarty/blocks/user_finder_list.tpl:37
+msgid "No users match the current request."
+msgstr ""
 
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:17
-msgid "From"
-msgstr "自"
+#: website/app-templates/smarty/blocks/user_finder.tpl:5
+msgid "Start by finding users:"
+msgstr ""
 
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:18
-#: website/app-templates/smarty/dialog/user_contact.tpl:16
-msgid "To"
-msgstr "至"
+#: website/app-templates/smarty/blocks/user_finder.tpl:9
+msgid "Username or email or ID"
+msgstr ""
 
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:20
-msgid "Action"
-msgstr "行 动"
+#: website/app-templates/smarty/blocks/user_finder.tpl:11
+msgid "Search"
+msgstr "搜索"
 
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:21
-msgid "Delete all mails"
-msgstr "删除所有邮件"
+#: website/app-templates/smarty/blocks/found_geokret.tpl:3
+msgid "Found a GeoKret?"
+msgstr "找到 GeoKret？"
 
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:39
-msgid "Delete mail"
-msgstr "删除邮件"
+#: website/app-templates/smarty/blocks/found_geokret.tpl:7
+msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
+msgstr "请在这里输入 <abbr title=\"%1\">追踪代码</abbr>："
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:12
+msgid "Tracking code"
+msgstr "跟踪代码"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:15
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
+msgid "Log it!"
+msgstr "登陆！"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:7
+#: website/app-templates/smarty/blocks/geokret/details.tpl:27
+msgid "Send a message to %1"
+msgstr "发送一条消息给 %1"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:11
+msgid "Subscribe to RSS channel"
+msgstr "RSS订阅"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:15
+msgid "Username change"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/details.tpl:18
+msgid "Password change"
+msgstr "更改密码"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:32
+msgid "Joined us"
+msgstr "加入时间"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:34
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:33
+msgid "Language"
+msgstr "语言"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:36
+msgid "Nothing selected"
+msgstr "未选择"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:39
+msgid "Choose preferred language"
+msgstr "选择首选语言"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:51
+msgid "Pending email validation, don't forget to click the link in validation mail!"
+msgstr "等待电子邮件验证，不要忘记点击验证邮件中的链接！"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:53
+msgid "No email address, please add one!"
+msgstr "没有电子邮件地址，请添加一个！"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:56
+msgid "Update email address"
+msgstr "更新电子邮件地址"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:61
+msgid "Secid"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/details.tpl:64
+msgid "Used to authenticate in other applications. Keep it secret!"
+msgstr "用于其他应用程序的身份验证。请保密！"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:65
+msgid "Generate a new secid"
+msgstr "生成一个新的Secid"
+
+#: website/app-templates/smarty/blocks/user/medals.tpl:3
+msgid "Medals"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/medals.tpl:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/medals.tpl:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:4
+msgid "Awards"
+msgstr "奖项"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:10
+msgid "No award received yet."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:4
+msgid "OAuth Connections"
+msgstr "OAuth 连接"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:17
+msgid "Disconnect from %1"
+msgstr "断开 %1"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:18
+msgid "Disconnect"
+msgstr "断开连接"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect with %1"
+msgstr "与 %1 连接"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect"
+msgstr "连接"
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:5
+msgid "Danger zone"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:8
+msgid "Be careful, actions in this section are irreversible."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:11
+msgid "Delete your account"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:40
+msgid "Delete my account"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:12
+msgid "View inventory"
+msgstr "查看物品栏"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:24
+msgid "Recently posted moves"
+msgstr "最近发布的动作"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:28
+msgid "Moves of owned GeoKrety"
+msgstr "拥有GeoKrety的移动"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:32
+msgid "Posted pictures"
+msgstr "已发布的图片"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:36
+msgid "Owned GeoKrety pictures"
+msgstr "拥有GeoKrety图片"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:40
+#: website/app-templates/smarty/navbar-profile.tpl:28
+msgid "Where are my GeoKrety?"
+msgstr "我的 GeoKrett 在哪里？"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "User stats"
+msgstr "用户统计"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:10
+msgid "No home coordinates have been defined."
+msgstr "没有定义家庭坐标。"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:13
+#: website/app-templates/smarty/blocks/user/map_home.tpl:21
+msgid "Update home coordinates and obervation area"
+msgstr "更新家居坐标和承载区域"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:14
+msgid "Define your home coordinates"
+msgstr "定义您的家坐标"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:20
+msgid "GeoKrety near home"
+msgstr "家附近的GeoKrety"
+
+#: website/app-templates/smarty/blocks/user/statpic.tpl:8
+#: website/app-templates/smarty/blocks/geokret/details.tpl:63
+msgid "Copy link to page"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/statpic.tpl:9
+#: website/app-templates/smarty/blocks/geokret/details.tpl:64
+msgid "Copy to page as bbcode"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/statpic.tpl:13
+msgid "Choose statpic"
+msgstr "选择statpic"
+
+#: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
+msgid "There is no pictures yet."
+msgstr "还没有图片。"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:20
+msgid "missing"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:22
+msgid "archived"
+msgstr "存档"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:32
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
+msgid "Edit GeoKret details"
+msgstr "编辑 GeoKret 详细信息"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:46
+#: website/app-templates/smarty/forms/geokret_label.tpl:24
+msgid "Reference number"
+msgstr "参考编号"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:54
+msgid "Places visited"
+msgstr "曾到过的地方"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:58
+msgid "Social share"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:60
+msgid "Share on Facebook"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:61
+msgid "Share on Twitter"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:62
+msgid "Share on Instagram"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:66
+msgid "Country track"
+msgstr "国家轨道"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
+#: website/app-templates/smarty/forms/geokret_label.tpl:36
+#: website/app-templates/smarty/forms/geokret.tpl:31
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
+msgid "Mission"
+msgstr "任务"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
+msgid "This GeoKret doesn't have a special mission…"
+msgstr "这个GeoKret 没有特殊任务…"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:3
+msgid "Map"
+msgstr "地图"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:8
+msgid "Caption:"
+msgstr "标题："
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:9
+msgid "start"
+msgstr "开始"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:10
+msgid "trip points"
+msgstr "行程点"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:11
+msgid "recently seen"
+msgstr "最近已查看"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:15
+msgid "This geokret has not started yet"
+msgstr "这geokret尚未开始"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:4
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:17
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:29
+msgid "Who is watching this Geokret?"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:5
+msgid "Watchers"
+msgstr "观看者"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:14
+msgid "Add this geokret to your watch list"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:15
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:14
+msgid "Watch"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:27
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:14
+msgid "Unwatch"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:36
+msgid "Log this GeoKret"
+msgstr "记录此GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:41
+msgid "Print a label for this GeoKret"
+msgstr "打印此GeoKret 的标签"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:48
+msgid "Statistics"
+msgstr "状态"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:55
+msgid "Adopt this GeoKret"
+msgstr "通过这个GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:57
+msgid "Login to claim this GeoKret"
+msgstr "登录要求这GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
+msgid "Mark this GeoKret as archived"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
+msgid "Archive this GeoKret"
+msgstr "存档这个GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:70
+msgid "Email owner"
+msgstr "电子邮件所有者"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:76
+msgid "Make this GeoKret available for adoption by another user"
+msgstr "让这个GeoKret 可供其他用户使用"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:77
+msgid "Transfer ownership"
+msgstr "转让所有权"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
+msgid "Found it? Log it!"
+msgstr "找到了吗？请登录！"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
+msgid "Please enter the Tracking Code here"
+msgstr "请在此处输入跟踪代码"
+
+#: website/app-templates/smarty/navbar-right.tpl:5
+msgid "Search…"
+msgstr ""
+
+#: website/app-templates/smarty/navbar-profile.tpl:3
+msgid "Admin"
+msgstr "管理员"
+
+#: website/app-templates/smarty/navbar-profile.tpl:7
+#: website/app-templates/smarty/navbar-profile.tpl:16
+msgid "My profile"
+msgstr "我的个人资料"
+
+#: website/app-templates/smarty/navbar-profile.tpl:18
+msgid "My inventory"
+msgstr "我的背包"
+
+#: website/app-templates/smarty/navbar-profile.tpl:19
+msgid "My GeoKrety"
+msgstr "我的 GeoKrety"
+
+#: website/app-templates/smarty/navbar-profile.tpl:22
+msgid "My recent moves"
+msgstr "我最近的动作"
+
+#: website/app-templates/smarty/navbar-profile.tpl:23
+msgid "Recent moves of my GeoKrety"
+msgstr "我的 GeoKrety 最近移动"
+
+#: website/app-templates/smarty/navbar-profile.tpl:25
+msgid "My photos"
+msgstr "我的照片"
+
+#: website/app-templates/smarty/navbar-profile.tpl:26
+msgid "Photos of my GeoKrety"
+msgstr "我的GeoKrety 的照片"
+
+#: website/app-templates/smarty/navbar-profile.tpl:30
+msgid "Sign out"
+msgstr "登出"
+
+#: website/app-templates/smarty/navbar-profile.tpl:53
+msgid "Create account"
+msgstr "创建帐户"
 
 #: website/app-templates/smarty/navbar-left.tpl:20
 msgid "Photo gallery"
@@ -2948,63 +3282,72 @@ msgstr "GeoKrety 工具箱"
 msgid "Waypoint resolver"
 msgstr "航点解析器"
 
-#: website/app-templates/smarty/navbar-profile.tpl:3
-msgid "Admin"
-msgstr "管理员"
+#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:4
+msgid "Do you really want to ack this script locking alert?"
+msgstr ""
 
-#: website/app-templates/smarty/navbar-profile.tpl:7
-#: website/app-templates/smarty/navbar-profile.tpl:16
-msgid "My profile"
-msgstr "我的个人资料"
+#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:10
+#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:10
+msgid "\"%1\" locked since %2"
+msgstr ""
 
-#: website/app-templates/smarty/navbar-profile.tpl:18
-msgid "My inventory"
-msgstr "我的背包"
+#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:15
+#: website/app-templates/smarty/admin/pages/scripts.tpl:48
+msgid "Ack"
+msgstr ""
 
-#: website/app-templates/smarty/navbar-profile.tpl:19
-msgid "My GeoKrety"
-msgstr "我的 GeoKrety"
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
+msgid "Commenting a GeoKret move"
+msgstr "评论GeoKret 移动"
 
-#: website/app-templates/smarty/navbar-profile.tpl:22
-msgid "My recent moves"
-msgstr "我最近的动作"
+#: website/app-templates/smarty/dialog/move_delete.tpl:4
+msgid "Do you really want to delete this move?"
+msgstr "您真的想要删除这个移动吗？"
 
-#: website/app-templates/smarty/navbar-profile.tpl:23
-msgid "Recent moves of my GeoKrety"
-msgstr "我的 GeoKrety 最近移动"
+#: website/app-templates/smarty/dialog/move_delete.tpl:14
+msgid "Deleting this Move will delete attached pictures and the main avatar!"
+msgstr "删除此移动将删除附加图片和主头像！"
 
-#: website/app-templates/smarty/navbar-profile.tpl:25
-msgid "My photos"
-msgstr "我的照片"
+#: website/app-templates/smarty/dialog/move_delete.tpl:16
+msgid "Deleting this Move will delete attached pictures!"
+msgstr "删除此移动将删除所附图片！"
 
-#: website/app-templates/smarty/navbar-profile.tpl:26
-msgid "Photos of my GeoKrety"
-msgstr "我的GeoKrety 的照片"
+#: website/app-templates/smarty/dialog/move_delete.tpl:24
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:15
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:15
+#: website/app-templates/smarty/dialog/picture_delete.tpl:16
+msgid "Delete"
+msgstr "删除"
 
-#: website/app-templates/smarty/navbar-profile.tpl:30
-msgid "Sign out"
-msgstr "登出"
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
+msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
+msgstr "您将要从您的 %1 帐户中分离您的 GeoKrety 帐户。您将无法通过此提供商登录。"
 
-#: website/app-templates/smarty/navbar-profile.tpl:53
-msgid "Create account"
-msgstr "创建帐户"
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:8
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:27
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:8
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:24
+msgid "Detaching OAuth provider"
+msgstr "分离OAuth 提供商"
 
-#: website/app-templates/smarty/macros/pagination.tpl:5
-msgid "First"
-msgstr "第一页"
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:17
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:36
+msgid "Detach"
+msgstr ""
 
-#: website/app-templates/smarty/macros/pagination.tpl:17
-msgid "Last [%1]"
-msgstr "最后 [%1]"
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:4
+msgid "Do you really want to reset this rate-limit?"
+msgstr ""
 
-#: website/app-templates/smarty/dialog/login_simple.tpl:13
-#: website/app-templates/smarty/dialog/login_simple.tpl:14
-#: website/app-templates/smarty/dialog/login.tpl:19
-#: website/app-templates/smarty/dialog/login.tpl:21
-#: website/app-templates/smarty/forms/registration.tpl:19
-#: website/app-templates/smarty/forms/registration.tpl:21
-msgid "Password"
-msgstr "密码"
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
+msgid "Name=%1 ID=%2"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
+msgid "Reset"
+msgstr ""
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:16
 msgid "Current password"
@@ -3030,67 +3373,45 @@ msgstr "如何写好密码"
 msgid "Password strength"
 msgstr "密码强度"
 
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
-msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
-msgstr "此文档设置了“<a href=\"%1\">geokrety”的使用条件。 rg</a>— 一种自愿运作的互联网地理藏匿服务，地址是： <a href=\"%1\">geokrety.org</a> (下称“服务”)。 注册帐户的每个人（以下称“用户”）同意遵守这些条款和条件的规则。 从登记程序开始开始。"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
-msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr "该服务由一群志愿支持者（以下简称“GK小组”）监测和监督。 GK 团队不负责用户在网站上张贴的内容或使用服务信息造成的损害。"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
-msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr ""
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
-msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "我们没有对准确性、及时性、性能和性能提供任何保证或保证。 在本网站上发现或提供的用于任何特定目的的信息和材料是否完整或合适。 你承认，这些资料和材料可能含有不准确或错误，我们明确排除了对任何这种不准确或错误的赔偿责任，但必须在法律允许的最大限度内这样做。"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
-msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
-msgstr "您在网站上发布的内容不能包含阴极表达式、滥用或非法内容。"
-
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:36
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:56
-msgid "I agree with the terms"
-msgstr "我同意条款"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
-msgid "Offer this GeoKret for adoption?"
-msgstr "提供此 GeoKret 供收养？"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
-msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "这将允许另一个了解追踪代码和所有者代码的用户成为这个GeoKret的新拥有者。"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
-msgid "Back to GeoKret page"
-msgstr "返回GeoKret 页面"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:18
-msgid "Generate an Owner Code"
-msgstr "生成一个所有者代码"
-
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
-msgid "Award %1 with:"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:13
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:38
-msgid "Award"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
-msgid "Refresh your secid?"
-msgstr "刷新您的节点？"
-
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
-msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr "刷新您的秘密将断开所有连接到您帐户的应用程序。您必须重新验证它们。"
-
 #: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:4
 msgid "Do you want to set this picture as main avatar?"
 msgstr "您想要将此图片设置为主头像吗？"
+
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:22
+msgid "Declare missing"
+msgstr "声明丢失"
+
+#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:4
+msgid "Do you really want to unlock this script?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:15
+msgid "Unlock"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:4
+msgid "Remove this GeoKret from your watch list?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:9
+msgid "You will no longer receive updates of its journey in your daily mails."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:6
+msgid "Manage picture"
+msgstr "管理图片"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:12
+msgid "Caption"
+msgstr "标题"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:24
+msgid "Remember caption"
+msgstr "记住标题"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:27
+msgid "Remember the caption for the next %1 minutes"
+msgstr "记住下一个 %1 分钟的标题"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:9
 msgid "Contact user"
@@ -3115,89 +3436,6 @@ msgstr "给用户的消息"
 #: website/app-templates/smarty/dialog/user_contact.tpl:44
 msgid "Send message"
 msgstr "发送消息"
-
-#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:4
-msgid "Do you really want to ack this script locking alert?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:10
-#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:10
-msgid "\"%1\" locked since %2"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:4
-msgid "Add this GeoKret to your watch list?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:9
-msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
-msgstr ""
-
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
-msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
-msgstr "您将要从您的 %1 帐户中分离您的 GeoKrety 帐户。您将无法通过此提供商登录。"
-
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:8
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:27
-#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:8
-#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:24
-msgid "Detaching OAuth provider"
-msgstr "分离OAuth 提供商"
-
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:17
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:36
-msgid "Detach"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:6
-msgid "Manage picture"
-msgstr "管理图片"
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:12
-msgid "Caption"
-msgstr "标题"
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:24
-msgid "Remember caption"
-msgstr "记住标题"
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:27
-msgid "Remember the caption for the next %1 minutes"
-msgstr "记住下一个 %1 分钟的标题"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:4
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:29
-#: website/app-templates/smarty/forms/move.tpl:28
-msgid "Select GeoKrety from inventory"
-msgstr "从背包中选择 GeoKrety"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:10
-msgid "Only %1 GeoKrety can be processed at a time."
-msgstr "一次只能处理 %1 GeoKrety"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
-msgid "Filter"
-msgstr "筛选器"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:17
-msgid "Name or ID"
-msgstr "名称或ID"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:29
-msgid "Select all (but max %1)"
-msgstr "选择所有 (但最大 %1)"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:36
-msgid "Choose"
-msgstr "选择"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:61
-msgid "Your inventory is empty."
-msgstr "您的库存是空的。"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:68
-msgid "Select <span class=\"badge\">%1</span>"
-msgstr "选择 <span class=\"badge\">%1</span>"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:4
 msgid "Update your email address"
@@ -3257,83 +3495,53 @@ msgstr "您的评论"
 msgid "news posts you have are subscribed to"
 msgstr "您订阅的新闻帖子"
 
-#: website/app-templates/smarty/dialog/login.tpl:2
-#: website/app-templates/smarty/dialog/login.tpl:7
-#: website/app-templates/smarty/emails/account-activated.tpl:12
-#: website/app-templates/smarty/emails/password-changed.tpl:12
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:12
-#: website/app-templates/smarty/emails/username-changed.tpl:13
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:12
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
-msgid "Login"
-msgstr "登录"
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
+msgid "Refresh your secid?"
+msgstr "刷新您的节点？"
 
-#: website/app-templates/smarty/dialog/login.tpl:28
-msgid "Remember me"
-msgstr "记住我"
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
+msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
+msgstr "刷新您的秘密将断开所有连接到您帐户的应用程序。您必须重新验证它们。"
 
-#: website/app-templates/smarty/dialog/login.tpl:31
-msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr "我们正在使用 cookie 来保持您的会话活动。请阅读更多关于我们的 <a href=\"%1\" target=\"_blank\">cookie 策略</a>。"
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:18
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:9
+#: website/app-templates/smarty/admin/pages/scripts.tpl:8
+msgid "Refresh"
+msgstr "刷新"
 
-#: website/app-templates/smarty/dialog/login.tpl:40
-msgid "No account yet ? Register now!"
-msgstr "还没有帐户？现在注册！"
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
+msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+msgstr "此文档设置了“<a href=\"%1\">geokrety”的使用条件。 rg</a>— 一种自愿运作的互联网地理藏匿服务，地址是： <a href=\"%1\">geokrety.org</a> (下称“服务”)。 注册帐户的每个人（以下称“用户”）同意遵守这些条款和条件的规则。 从登记程序开始开始。"
 
-#: website/app-templates/smarty/dialog/login.tpl:43
-msgid "Forgot your password?"
-msgstr "忘记密码？"
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
+msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
+msgstr "该服务由一群志愿支持者（以下简称“GK小组”）监测和监督。 GK 团队不负责用户在网站上张贴的内容或使用服务信息造成的损害。"
 
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
-msgid "Do you really want to delete this move comment?"
-msgstr "您真的想要删除此移动评论吗？"
-
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:15
-#: website/app-templates/smarty/dialog/news_comment_delete.tpl:15
-#: website/app-templates/smarty/dialog/picture_delete.tpl:16
-#: website/app-templates/smarty/dialog/move_delete.tpl:24
-msgid "Delete"
-msgstr "删除"
-
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:7
-msgid "Do you really want to delete your account?"
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
+msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:13
-msgid "All your logs and comments will appear posted from \"%1\""
-msgstr ""
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
+msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+msgstr "我们没有对准确性、及时性、性能和性能提供任何保证或保证。 在本网站上发现或提供的用于任何特定目的的信息和材料是否完整或合适。 你承认，这些资料和材料可能含有不准确或错误，我们明确排除了对任何这种不准确或错误的赔偿责任，但必须在法律允许的最大限度内这样做。"
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:14
-msgid "All your GeoKrety will be automatically archived"
-msgstr ""
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
+msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
+msgstr "您在网站上发布的内容不能包含阴极表达式、滥用或非法内容。"
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:15
-msgid "Your avatar pictures will be deleted"
-msgstr ""
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:36
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:56
+msgid "I agree with the terms"
+msgstr "我同意条款"
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:17
-msgid "Warning!!! This will permanently delete your account."
-msgstr ""
-
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:19
-msgid "Please solve this operation: %1 + %2 = ?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:28
-msgid "Also remove all my comments content"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:4
-msgid "Do you really want to unlock this script?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:15
-msgid "Unlock"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/info.tpl:13
-msgid "Acknowledge"
-msgstr ""
+#: website/app-templates/smarty/dialog/login_simple.tpl:13
+#: website/app-templates/smarty/dialog/login_simple.tpl:14
+#: website/app-templates/smarty/dialog/login.tpl:19
+#: website/app-templates/smarty/dialog/login.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:19
+#: website/app-templates/smarty/forms/registration.tpl:21
+msgid "Password"
+msgstr "密码"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
 msgid "Choose your preferred language"
@@ -3344,10 +3552,55 @@ msgstr "选择您喜欢的语言"
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
 msgstr "这将是您登录时的默认语言和您可能收到的电子邮件中的主要语言。"
 
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
-msgid "Commenting a GeoKret move"
-msgstr "评论GeoKret 移动"
+#: website/app-templates/smarty/dialog/info.tpl:13
+msgid "Acknowledge"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
+msgid "Do you really want to delete this move comment?"
+msgstr "您真的想要删除此移动评论吗？"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:4
+#: website/app-templates/smarty/forms/move.tpl:28
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:29
+msgid "Select GeoKrety from inventory"
+msgstr "从背包中选择 GeoKrety"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:10
+msgid "Only %1 GeoKrety can be processed at a time."
+msgstr "一次只能处理 %1 GeoKrety"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
+msgid "Filter"
+msgstr "筛选器"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:17
+msgid "Name or ID"
+msgstr "名称或ID"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:29
+msgid "Select all (but max %1)"
+msgstr "选择所有 (但最大 %1)"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:36
+msgid "Choose"
+msgstr "选择"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:61
+msgid "Your inventory is empty."
+msgstr "您的库存是空的。"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:68
+msgid "Select <span class=\"badge\">%1</span>"
+msgstr "选择 <span class=\"badge\">%1</span>"
+
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:4
+msgid "Add this GeoKret to your watch list?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:9
+msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
+msgstr ""
 
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
 msgid "Do you really want to delete this news comment?"
@@ -3381,6 +3634,30 @@ msgstr ""
 msgid "Archive"
 msgstr "档案"
 
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
+msgid "Do you really want to invalidate this user's email?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:13
+msgid "Invalidate"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/login.tpl:28
+msgid "Remember me"
+msgstr "记住我"
+
+#: website/app-templates/smarty/dialog/login.tpl:31
+msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
+msgstr "我们正在使用 cookie 来保持您的会话活动。请阅读更多关于我们的 <a href=\"%1\" target=\"_blank\">cookie 策略</a>。"
+
+#: website/app-templates/smarty/dialog/login.tpl:40
+msgid "No account yet ? Register now!"
+msgstr "还没有帐户？现在注册！"
+
+#: website/app-templates/smarty/dialog/login.tpl:43
+msgid "Forgot your password?"
+msgstr "忘记密码？"
+
 #: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:2
 msgid "You are not connected to this OAuth provider."
 msgstr "您没有连接到此 OAuth 提供商。"
@@ -3388,30 +3665,6 @@ msgstr "您没有连接到此 OAuth 提供商。"
 #: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:15
 msgid "Back to my profile"
 msgstr "返回我的个人资料"
-
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:4
-msgid "Remove this GeoKret from your watch list?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:9
-msgid "You will no longer receive updates of its journey in your daily mails."
-msgstr ""
-
-#: website/app-templates/smarty/dialog/picture_delete.tpl:4
-msgid "Do you really want to delete this picture?"
-msgstr "您真的想要删除此图片吗？"
-
-#: website/app-templates/smarty/dialog/move_delete.tpl:4
-msgid "Do you really want to delete this move?"
-msgstr "您真的想要删除这个移动吗？"
-
-#: website/app-templates/smarty/dialog/move_delete.tpl:14
-msgid "Deleting this Move will delete attached pictures and the main avatar!"
-msgstr "删除此移动将删除附加图片和主头像！"
-
-#: website/app-templates/smarty/dialog/move_delete.tpl:16
-msgid "Deleting this Move will delete attached pictures!"
-msgstr "删除此移动将删除所附图片！"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:6
 msgid "Do you really want to unsubscribe from this news?"
@@ -3429,139 +3682,62 @@ msgstr "取消订阅"
 msgid "Subscribe"
 msgstr "订阅"
 
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:22
-msgid "Declare missing"
-msgstr "声明丢失"
+#: website/app-templates/smarty/dialog/picture_delete.tpl:4
+msgid "Do you really want to delete this picture?"
+msgstr "您真的想要删除此图片吗？"
 
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:4
-msgid "Do you really want to reset this rate-limit?"
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
+msgid "Award %1 with:"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
-msgid "Name=%1 ID=%2"
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:13
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:38
+msgid "Award"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
-msgid "Do you really want to invalidate this user's email?"
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
+msgid "Offer this GeoKret for adoption?"
+msgstr "提供此 GeoKret 供收养？"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
+msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
+msgstr "这将允许另一个了解追踪代码和所有者代码的用户成为这个GeoKret的新拥有者。"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
+msgid "Back to GeoKret page"
+msgstr "返回GeoKret 页面"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:18
+msgid "Generate an Owner Code"
+msgstr "生成一个所有者代码"
+
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:7
+msgid "Do you really want to delete your account?"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:13
-msgid "Invalidate"
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:13
+msgid "All your logs and comments will appear posted from \"%1\""
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:4
-msgid "Edit a GeoKret"
-msgstr "编辑GeoKret"
-
-#: website/app-templates/smarty/forms/geokret.tpl:41
-msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
-msgstr "这将为你的 GeoKret创建第一个\"跳过\"移动, 标记它的起始点。"
-
-#: website/app-templates/smarty/forms/geokret.tpl:42
-msgid "Set my home coordinates as a starting point."
-msgstr "将我的家座标设置为起点。"
-
-#: website/app-templates/smarty/forms/geokret.tpl:50
-#: website/app-templates/smarty/forms/geokret_label.tpl:43
-msgid "Label template"
-msgstr "标签模板"
-
-#: website/app-templates/smarty/forms/geokret.tpl:63
-msgid "Create"
-msgstr "创建"
-
-#: website/app-templates/smarty/forms/geokret.tpl:72
-#: website/app-templates/smarty/forms/geokret.tpl:75
-#: website/app-templates/smarty/forms/geokret.tpl:76
-#: website/app-templates/smarty/forms/geokret_label.tpl:81
-#: website/app-templates/smarty/forms/geokret_label.tpl:84
-#: website/app-templates/smarty/forms/geokret_label.tpl:85
-msgid "GeoKret label preview"
-msgstr "GeoKret 标签预览"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:3
-msgid "Generate a GeoKret Label"
-msgstr "生成 GeoKret 标签"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:22
-#: website/app-templates/smarty/forms/geokret_label.tpl:29
-msgid "Reference numbers"
-msgstr "参考编号"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:54
-msgid "Label help languages"
-msgstr "标签帮助语言"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:62
-msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr "注1：并非所有标签模板都支持此功能，如果支持此功能，英语将始终存在。"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:70
-msgid "Generate as .png"
-msgstr "生成为 .png"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:71
-msgid "Generate as .svg"
-msgstr "生成为 .svg"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:72
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:44
-msgid "Generate as .pdf"
-msgstr "生成为.pdf"
-
-#: website/app-templates/smarty/forms/advanced_search.tpl:5
-#: website/app-templates/smarty/emails/daily-mail.tpl:36
-#: website/app-templates/smarty/emails/daily-mail.tpl:79
-#: website/app-templates/smarty/emails/daily-mail.tpl:125
-#: website/app-templates/smarty/emails/daily-mail.tpl:170
-msgid "GeoKret"
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:14
+msgid "All your GeoKrety will be automatically archived"
 msgstr ""
 
-#: website/app-templates/smarty/forms/advanced_search.tpl:7
-msgid "GeoKret name or id"
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:15
+msgid "Your avatar pictures will be deleted"
 msgstr ""
 
-#: website/app-templates/smarty/forms/advanced_search.tpl:10
-#: website/app-templates/smarty/forms/advanced_search.tpl:22
-#: website/app-templates/smarty/forms/advanced_search.tpl:34
-msgid "Find"
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:17
+msgid "Warning!!! This will permanently delete your account."
 msgstr ""
 
-#: website/app-templates/smarty/forms/advanced_search.tpl:29
-#: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:131
-msgid "Waypoint"
-msgstr "航点"
-
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:3
-msgid "Generate multiple GeoKrety labels"
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:19
+msgid "Please solve this operation: %1 + %2 = ?"
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:11
-msgid "The current number of labels to be created at once: %1."
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:28
+msgid "Also remove all my comments content"
 msgstr ""
-
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:12
-msgid "Only your own GeoKrety of the ones you already touched can be used here."
-msgstr ""
-
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:13
-msgid "Label preferred template is used if defined."
-msgstr ""
-
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:14
-msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
-msgstr ""
-
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:30
-msgid "Verify Tracking Code"
-msgstr ""
-
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
-#: website/app-templates/smarty/forms/move.tpl:33
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "来自 <em>GeoKret 标签</em>的%1 个字符。 <u>不要在此使用以 'GK ' 开头的代码</u>"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
@@ -3585,6 +3761,16 @@ msgstr "注册"
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
 msgstr "确定GeoKret"
+
+#: website/app-templates/smarty/forms/move.tpl:30
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:31
+msgid "Verify Tracking Code"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:33
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "来自 <em>GeoKret 标签</em>的%1 个字符。 <u>不要在此使用以 'GK ' 开头的代码</u>"
 
 #: website/app-templates/smarty/forms/move.tpl:43
 #: website/app-templates/smarty/forms/move.tpl:197
@@ -3639,6 +3825,12 @@ msgstr "当你想写一个评论 :)"
 msgid "New location"
 msgstr "新的地点"
 
+#: website/app-templates/smarty/forms/move.tpl:131
+#: website/app-templates/smarty/forms/advanced_search.tpl:29
+#: website/app-templates/smarty/forms/advanced_search.tpl:31
+msgid "Waypoint"
+msgstr "航点"
+
 #: website/app-templates/smarty/forms/move.tpl:134
 msgid "eg. GC1AQ2N"
 msgstr ""
@@ -3675,418 +3867,226 @@ msgstr "收到一点消息总是很好的；)"
 msgid "Post your log"
 msgstr "发布您的日志"
 
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
-msgid "Confirm your email address change."
+#: website/app-templates/smarty/forms/geokret_label.tpl:3
+msgid "Generate a GeoKret Label"
+msgstr "生成 GeoKret 标签"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:8
+#: website/app-templates/smarty/forms/geokret_label.tpl:10
+#: website/app-templates/smarty/forms/geokret.tpl:13
+#: website/app-templates/smarty/forms/geokret.tpl:15
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:37
+msgid "GeoKret name"
+msgstr "GeoKret名称"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:22
+#: website/app-templates/smarty/forms/geokret_label.tpl:29
+msgid "Reference numbers"
+msgstr "参考编号"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:38
+#: website/app-templates/smarty/forms/geokret.tpl:33
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
+msgid "What is this GeoKret mission?"
+msgstr "这个GeoKret 任务是什么？"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:43
+#: website/app-templates/smarty/forms/geokret.tpl:50
+msgid "Label template"
+msgstr "标签模板"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:54
+msgid "Label help languages"
+msgstr "标签帮助语言"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:62
+msgid "Note1: not all label templates support this feature and when supported, english is always present."
+msgstr "注1：并非所有标签模板都支持此功能，如果支持此功能，英语将始终存在。"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:70
+msgid "Generate as .png"
+msgstr "生成为 .png"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:71
+msgid "Generate as .svg"
+msgstr "生成为 .svg"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:72
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:44
+msgid "Generate as .pdf"
+msgstr "生成为.pdf"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:81
+#: website/app-templates/smarty/forms/geokret_label.tpl:84
+#: website/app-templates/smarty/forms/geokret_label.tpl:85
+#: website/app-templates/smarty/forms/geokret.tpl:72
+#: website/app-templates/smarty/forms/geokret.tpl:75
+#: website/app-templates/smarty/forms/geokret.tpl:76
+msgid "GeoKret label preview"
+msgstr "GeoKret 标签预览"
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:3
+msgid "Generate multiple GeoKrety labels"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
-msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr "有人希望您已经请求更改您的 GeoKrety 联系人电子邮件地址到: %1。"
-
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
-msgid "If you did not requested this, click the link below."
-msgstr "如果您没有请求，请点击下面的链接。"
-
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
-msgid "Do not change!"
-msgstr "不要改变！"
-
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
-#: website/app-templates/smarty/emails/password-recovery.tpl:15
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:20
-#: website/app-templates/smarty/emails/account-activation.tpl:13
-msgid "This link expires %1."
-msgstr "此链接已过期 %1。"
-
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:15
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
-msgid "If you did not requested a password change, then you should also consider changing your password immediately."
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:11
+msgid "The current number of labels to be created at once: %1."
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:22
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:17
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
-msgid "Change my password!"
-msgstr "更改我的密码 ！"
-
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:27
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:22
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:29
-msgid "You're getting this email because you've changed your email on our website."
-msgstr "您正在收到这封电子邮件，因为您已经在我们的网站上更改了您的电子邮件。"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:3
-msgid "Contact from a GeoKrety.org user"
-msgstr "来自GeoKrety.org用户的联系人"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:4
-msgid "Someone sent you a private message."
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:12
+msgid "Only your own GeoKrety of the ones you already touched can be used here."
 msgstr ""
 
-#: website/app-templates/smarty/emails/user-contact.tpl:8
-msgid "This email was sent by user <a href=\"%2\">%1</a>."
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:13
+msgid "Label preferred template is used if defined."
 msgstr ""
 
-#: website/app-templates/smarty/emails/user-contact.tpl:12
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr "如果您怀疑有滥用行为，请告诉我们： %1"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:13
-msgid "Referer: %1"
-msgstr "参考者： %1"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:18
-msgid "Subject:"
-msgstr "主题："
-
-#: website/app-templates/smarty/emails/user-contact.tpl:23
-msgid "Reply to %1"
-msgstr "回复 %1"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:28
-msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
-msgstr "您正在收到这封电子邮件，因为有一个GeoKrety.org用户通过您的用户资料向您发送了消息。"
-
-#: website/app-templates/smarty/emails/base-admin.tpl:4
-msgid "You're getting this email because you're one the website admins."
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:14
+msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
 msgstr ""
 
-#: website/app-templates/smarty/emails/cron-locked.tpl:4
-msgid "A script is locked"
+#: website/app-templates/smarty/forms/advanced_search.tpl:7
+msgid "GeoKret name or id"
 msgstr ""
 
-#: website/app-templates/smarty/emails/cron-locked.tpl:7
-msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
+#: website/app-templates/smarty/forms/advanced_search.tpl:10
+#: website/app-templates/smarty/forms/advanced_search.tpl:22
+#: website/app-templates/smarty/forms/advanced_search.tpl:34
+msgid "Find"
 msgstr ""
 
-#: website/app-templates/smarty/emails/account-activated.tpl:3
-#: website/app-templates/smarty/emails/password-changed.tpl:3
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
-msgid "Congratulation"
+#: website/app-templates/smarty/forms/geokret.tpl:4
+msgid "Edit a GeoKret"
+msgstr "编辑GeoKret"
+
+#: website/app-templates/smarty/forms/geokret.tpl:20
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:48
+msgid "GeoKret type"
+msgstr "GeoKret type"
+
+#: website/app-templates/smarty/forms/geokret.tpl:41
+msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
+msgstr "这将为你的 GeoKret创建第一个\"跳过\"移动, 标记它的起始点。"
+
+#: website/app-templates/smarty/forms/geokret.tpl:42
+msgid "Set my home coordinates as a starting point."
+msgstr "将我的家座标设置为起点。"
+
+#: website/app-templates/smarty/forms/geokret.tpl:63
+msgid "Create"
+msgstr "创建"
+
+#: website/app-templates/smarty/navbar.tpl:6
+msgid "Toggle navigation"
+msgstr "切换导航"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:3
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:9
+msgid "GeoKrety generator"
 msgstr ""
 
-#: website/app-templates/smarty/emails/account-activated.tpl:4
-#: website/app-templates/smarty/emails/password-changed.tpl:4
-msgid "Your account on GeoKrety.org is now active."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:14
+msgid "General details"
 msgstr ""
 
-#: website/app-templates/smarty/emails/account-activated.tpl:8
-msgid "Your account on GeoKrety.org is now fully functional."
-msgstr "您在 GeoKrety.org 上的帐户现已完全运行。"
-
-#: website/app-templates/smarty/emails/account-activated.tpl:15
-msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:19
+msgid "How many GeoKrety to create"
 msgstr ""
 
-#: website/app-templates/smarty/emails/account-activated.tpl:19
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
-#: website/app-templates/smarty/emails/account-activation.tpl:19
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "您收到这封电子邮件是因为您刚刚在我们的网站上注册。"
-
-#: website/app-templates/smarty/emails/password-recovery.tpl:3
-msgid "Forgot Your Password?"
-msgstr "忘记密码？"
-
-#: website/app-templates/smarty/emails/password-recovery.tpl:4
-msgid "Recover your password."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:22
+msgid "From 1 to %1."
 msgstr ""
 
-#: website/app-templates/smarty/emails/password-recovery.tpl:8
-msgid "It happens. Click the link below to reset your password."
-msgstr "发生这种情况。点击下面的链接重置您的密码。"
-
-#: website/app-templates/smarty/emails/password-recovery.tpl:12
-msgid "Reset Password"
-msgstr "重置密码"
-
-#: website/app-templates/smarty/emails/password-recovery.tpl:19
-#: website/app-templates/smarty/emails/password-changed.tpl:17
-msgid "You're getting this email because you've changed your password on our website."
-msgstr "您收到这封邮件是因为您在我们的网站上更改了您的密码。"
-
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
-msgid "Account not yet active"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:27
+msgid "Owner ID"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
-msgid "Your account is about to be deleted."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:30
+msgid "Leave empty or set 0 to not set any owner."
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
-msgid "The account you created %1 has not yet been activated."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:35
+msgid "GeoKrety name template"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
-msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:38
+msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
-msgid "Unactivated accounts are automatically deleted after %1 days."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:41
+msgid "Start at"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
-#: website/app-templates/smarty/emails/account-activation.tpl:10
-msgid "Activate your account"
-msgstr "激活您的帐户"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:66
+msgid "Pictures"
+msgstr "图片"
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:19
-#: website/app-templates/smarty/emails/account-activation.tpl:15
-msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr "如果您的帐户未在此时间内激活，它将被自动删除。"
-
-#: website/app-templates/smarty/emails/award-awarded.tpl:4
-msgid "New Award received"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:82
+msgid "Tracking Code prefix"
 msgstr ""
 
-#: website/app-templates/smarty/emails/award-awarded.tpl:7
-msgid "We're proud to inform you that you have received a new Award badge."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:89
+msgid "Tracking Code length"
 msgstr ""
 
-#: website/app-templates/smarty/emails/award-awarded.tpl:16
-msgid "Please look at this new pretty badge on your GeoKrety profile."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:96
+msgid "Tracking Code Alphabet"
 msgstr ""
 
-#: website/app-templates/smarty/emails/award-awarded.tpl:18
-msgid "Check my profile"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:103
+msgid "Tracking Code suffix"
 msgstr ""
 
-#: website/app-templates/smarty/emails/password-changed.tpl:8
-msgid "Your password has been successfully changed."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:119
+msgid "Owner Code prefix"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
-msgid "Account has been deleted"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:126
+msgid "Owner Code length"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
-msgid "Your account is now deleted."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:133
+msgid "Owner Code Alphabet"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
-msgid "The account you created %1 has never been activated."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:140
+msgid "Owner Code suffix"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
-msgid "Our policy is to delete unactivated accounts after %1 days."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:151
+msgid "Generate"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
-msgid "We are sorry to inform you that your account has been permanently erased."
+#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
+msgid "GeoKrety generator result"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
-msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
+#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:10
+msgid "There is no results."
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
-msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr "有人希望您已经请求将它的 GeoKrety 联系人地址更改为您的电子邮件。"
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
-msgid "Validate your new email address"
-msgstr "验证您的新电子邮件地址"
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
-msgid "This link is valid for %1."
-msgstr "此链接对 %1 有效。"
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
-msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
-msgstr "如果您没有提出此请求并且不知道GeoKrety是什么，请忽略这封电子邮件。您将永远不会再听到关于我们的消息！"
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
-msgid "You're getting this email because you've requested an email address change on our website."
-msgstr "您正在收到这封电子邮件，因为您已请求更改我们网站的电子邮件地址。"
-
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
-msgid "Is this address still valid?"
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
+msgid "Api Rate Limits"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
-msgid "This is important in case of password loss."
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:3
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:6
+msgid "Admin actions on users"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
-msgid "Validate your email address"
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:17
+msgid "Invalidate user's email"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
-msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:20
+msgid "Award prize"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:3
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:3
-msgid "Hooray"
+#: website/app-templates/smarty/admin/pages/scripts.tpl:3
+#: website/app-templates/smarty/admin/pages/scripts.tpl:7
+msgid "Scripts management"
 msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:4
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:8
-msgid "Your email address has been successfully reverted."
-msgstr ""
-
-#: website/app-templates/smarty/emails/username-changed.tpl:3
-msgid "Username changed"
-msgstr ""
-
-#: website/app-templates/smarty/emails/username-changed.tpl:4
-msgid "Your username on GeoKrety.org has been changed."
-msgstr ""
-
-#: website/app-templates/smarty/emails/username-changed.tpl:9
-msgid "Please enjoy your new username!"
-msgstr ""
-
-#: website/app-templates/smarty/emails/username-changed.tpl:18
-msgid "You're getting this email because you've changed your username on our website."
-msgstr ""
-
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:4
-msgid "One of your GeoKrety has been adopted."
-msgstr ""
-
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:10
-msgid "View GeoKret"
-msgstr "查看 GeoKret"
-
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:15
-msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
-msgstr "您正在收到这封电子邮件，因为您的GeoKrety 之一已经改变了我们网站的所有者。"
-
-#: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
-#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
-msgid "Something went wrong while synchronizing partners data"
-msgstr ""
-
-#: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
-#: website/app-templates/smarty/emails/cron-exception.tpl:7
-#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
-msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
-
-#: website/app-templates/smarty/emails/cron-exception.tpl:4
-msgid "An exception occurred in a cron job"
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
-msgid "Your email address has been successfully changed."
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
-msgid "Your email address has been successfully changed to: %1."
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
-msgid "Revert this change!"
-msgstr "还原此更改！"
-
-#: website/app-templates/smarty/emails/base.tpl:30
-msgid "Hi %1,"
-msgstr ""
-
-#: website/app-templates/smarty/emails/base.tpl:37
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "真诚，<br>GeoKrety 团队"
-
-#: website/app-templates/smarty/emails/base.tpl:46
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:5
-msgid "Your GeoKrety watchlist"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:8
-msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:9
-msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:14
-msgid "Here is what changed recently."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:17
-msgid "Latest news"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:27
-msgid "GeoKrety dropped in your observation area"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:30
-msgid "Open interactive map"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:30
-msgid "Observation area map"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:37
-#: website/app-templates/smarty/emails/daily-mail.tpl:80
-#: website/app-templates/smarty/emails/daily-mail.tpl:126
-msgid "Position"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:39
-#: website/app-templates/smarty/emails/daily-mail.tpl:82
-#: website/app-templates/smarty/emails/daily-mail.tpl:128
-#: website/app-templates/smarty/emails/daily-mail.tpl:172
-msgid "Author"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:40
-msgid "Home distance"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:73
-msgid "My GeoKrety latest moves"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:78
-#: website/app-templates/smarty/emails/daily-mail.tpl:124
-msgid "Icon"
-msgstr "图标"
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:83
-msgid "Distance since last move"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:119
-msgid "Watched GeoKrety latest moves"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:165
-msgid "Latest move comments"
-msgstr ""
-
-#: website/app-templates/smarty/emails/expiring-accounts.tpl:4
-msgid "Some accounts will be deleted."
-msgstr ""
-
-#: website/app-templates/smarty/emails/expiring-accounts.tpl:7
-msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
-msgstr ""
-
-#: website/app-templates/smarty/emails/account-activation.tpl:4
-msgid "One step left to use GeoKrety.org."
-msgstr ""
-
-#: website/app-templates/smarty/emails/account-activation.tpl:7
-msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
-msgstr "您刚刚在 GeoKrety.org 注册。 <strong>您仍然必须先激活您的帐户才能使用它。</strong> 请点击下面的链接。"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
