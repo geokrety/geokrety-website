@@ -1,3 +1,11 @@
+## [2.25.15](https://github.com/geokrety/geokrety-website/compare/v2.25.14...v2.25.15) (2022-12-14)
+
+
+### Translations
+
+* New translations messages.po (French) [skip translate] ([#789](https://github.com/geokrety/geokrety-website/issues/789)) ([3857716](https://github.com/geokrety/geokrety-website/commit/3857716c8d10cb421abe7827787f8d3d7b47c557))
+* New translations messages.po (Portuguese) [skip translate] ([#786](https://github.com/geokrety/geokrety-website/issues/786)) ([8c218e3](https://github.com/geokrety/geokrety-website/commit/8c218e3f9e2ab0be62f1494e1a645e22cc946e1a))
+
 ## [2.25.14](https://github.com/geokrety/geokrety-website/compare/v2.25.13...v2.25.14) (2022-12-10)
 
 
