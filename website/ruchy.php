@@ -657,7 +657,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
     <label class="col-sm-2 control-label">'._('Tracking Code').'</label>
     <div class="col-sm-6 nr">
       <input type="text" name="nr" id="nr" size="11" tcminlen="6" maxlength="7" required '.$disabled_nr.' onkeyup="sprawdzGK(event); validateTC(event);" value="'.$edit_nr.'" onblur="validateTC();" class="form-control tt_large" aria-describedby="helpBlockTrackingCode" data-toggle="tooltip" title="<img src=\'https://cdn.geokrety.org/images/labels/screenshots/label-screenshot.svg\' style=\'width:100%\' />" data-html="true"><span id="nr_img"></span>
-      <span id="helpBlockTrackingCode" class="help-block">ssss'._('6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with \'GK\' here</u>.').'</span>
+      <span id="helpBlockTrackingCode" class="help-block">'._('6 characters from GeoKret label, eg. XF3ACS. <u>Do not use the code starting with \'GK\' here</u>.').'</span>
     </div>
     <div class="col-sm-4">
       <div id="wynikNr"></div>
