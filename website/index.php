@@ -78,6 +78,7 @@ $(function () {
   $('#nr[maxlength]').maxlength({
     warningClass: \"label label-danger\",
     limitReachedClass: \"label label-success\",
+    customMaxAttribute: \"tcminlen\",
   });
 })
 </script>\n";
@@ -107,7 +108,7 @@ $(function () {
       <div class="panel-body">
         <strong>'._('If you found a GeoKret, enter the tracking code here:').'</strong>
         <form name="formularz" action="ruchy.php" method="get">
-          <input type="text" name="nr" id="nr" size="6" maxlength="6">
+          <input type="text" name="nr" id="nr" size="7" tcminlen="6" maxlength="7">
           <input type="submit" value="'._('Go!').'" id="welcome_go">
         </form>
         <span class="male">('._('no need to register!').')</span>
