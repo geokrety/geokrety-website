@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 19:16+0000\n"
-"PO-Revision-Date: 2022-12-14 19:23\n"
+"POT-Creation-Date: 2022-12-16 11:49+0000\n"
+"PO-Revision-Date: 2022-12-16 12:08\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "Language: fi_FI\n"
@@ -761,10 +761,10 @@ msgstr ""
 
 #: website/app/GeoKrety/Email/EmailChange.php:45
 #: website/app/GeoKrety/Email/EmailChange.php:53
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
-#: website/app-templates/smarty/pages/email_change.tpl:3
 #: website/app-templates/smarty/pages/email_revalidate.tpl:3
+#: website/app-templates/smarty/pages/email_change.tpl:3
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
 msgid "Changing your email address"
 msgstr "Sähköpostiosoitteen vaihtaminen"
 
@@ -856,8 +856,8 @@ msgid "dip"
 msgstr "dip"
 
 #: website/app/GeoKrety/LogType.php:119
-#: website/app-templates/smarty/pages/home.tpl:78
 #: website/app-templates/smarty/blocks/geokret/details.tpl:56
+#: website/app-templates/smarty/pages/home.tpl:78
 msgid "Born"
 msgstr "Syntynyt"
 
@@ -1059,740 +1059,627 @@ msgstr ""
 msgid "We are sorry, something unexpected happened."
 msgstr ""
 
-#: website/app-templates/smarty/header.tpl:3
-#: website/app-templates/smarty/emails/base.tpl:20
-msgid "Open source item tracking for all geocaching platforms"
-msgstr "Avoimen lähdekoodin nimikkeiden seuranta kaikilla geokätköilyalustoilla"
+#: website/app-templates/smarty/chunks/social_groups.tpl:5
+msgid "languages"
+msgstr "kielet"
 
-#: website/app-templates/smarty/footer.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:2
-msgid "Home"
-msgstr "Pääsivu"
+#: website/app-templates/smarty/chunks/social_groups.tpl:6
+msgid "platform"
+msgstr "alusta"
 
-#: website/app-templates/smarty/footer.tpl:4
-msgid "About"
-msgstr "Tietoja"
+#: website/app-templates/smarty/chunks/social_groups.tpl:7
+msgid "group name"
+msgstr "ryhmän nimi"
 
-#: website/app-templates/smarty/footer.tpl:5
-#: website/app-templates/smarty/pages/home.tpl:26
-#: website/app-templates/smarty/pages/news_list.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:3
-msgid "News"
-msgstr "Uutisia"
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
+msgid "Remove this GeoKret from the selection"
+msgstr "Poista tämä GeoKret valinnasta"
 
-#: website/app-templates/smarty/footer.tpl:6
-msgid "Contact"
-msgstr "Yhteydenotto"
+#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
+msgid "Never moved"
+msgstr "Ei koskaan siirretty"
 
-#: website/app-templates/smarty/footer.tpl:10
-msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr "Julkaistu <a id=\"footer-license\" href=\"%1\">MIT lisenssillä</a>"
+#: website/app-templates/smarty/navbar.tpl:6
+msgid "Toggle navigation"
+msgstr "Vaihda navigointia"
 
-#: website/app-templates/smarty/footer.tpl:12
-msgid "Contribute to translation"
+#: website/app-templates/smarty/navbar.tpl:16
+#: website/app-templates/smarty/pages/geokret_move.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:6
+#: website/app-templates/smarty/navbar-left.tpl:13
+msgid "Log a GeoKret"
+msgstr "Kirjaa GeoKret"
+
+#: website/app-templates/smarty/navbar.tpl:32
+#: website/app-templates/smarty/pages/registration_validated.tpl:13
+#: website/app-templates/smarty/navbar-profile.tpl:48
+#: website/app-templates/smarty/dialog/login_simple.tpl:17
+#: website/app-templates/smarty/dialog/login.tpl:39
+msgid "Sign in"
+msgstr "Kirjaudu sisään"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:3
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:9
+msgid "GeoKrety generator"
 msgstr ""
 
-#: website/app-templates/smarty/footer.tpl:15
-msgid "Leave in-context translation"
-msgstr "Poistu kontekstin käännöksestä"
-
-#: website/app-templates/smarty/footer.tpl:17
-msgid "in-context translation"
-msgstr "kontekstin käännös"
-
-#: website/app-templates/smarty/footer.tpl:21
-msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr "Suunnitellut <abbr title=\"love\">💗</abbr> <a id=\"footer-team\" href=\"%1\">GeoKrety Tiimi</a>"
-
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:15
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:20
-#: website/app-templates/smarty/pages/mole_hole.tpl:38
-#: website/app-templates/smarty/pages/mole_hole.tpl:81
-#: website/app-templates/smarty/pages/home.tpl:39
-#: website/app-templates/smarty/pages/home.tpl:76
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
-#: website/app-templates/smarty/pages/user_inventory.tpl:21
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
-msgid "ID"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:14
+msgid "General details"
 msgstr ""
 
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:16
-#: website/app-templates/smarty/dialog/user_contact.tpl:23
-msgid "Subject"
-msgstr "Aihe"
-
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:17
-msgid "From"
-msgstr "Keneltä"
-
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:18
-#: website/app-templates/smarty/dialog/user_contact.tpl:16
-msgid "To"
-msgstr "Kenelle"
-
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:20
-msgid "Action"
-msgstr "Toiminto"
-
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:21
-msgid "Delete all mails"
-msgstr "Poista kaikki viestit"
-
-#: website/app-templates/smarty/devel/pages/local_mails.tpl:39
-msgid "Delete mail"
-msgstr "Poista sähköposti"
-
-#: website/app-templates/smarty/banners/is_not_prod.tpl:3
-msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:19
+msgid "How many GeoKrety to create"
 msgstr ""
 
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
-msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr "Olet asettanut tämän GeoKretin hyväksyttäväksi. Omistajan koodi on: <strong>%1</strong>. Anna se yhdessä seurantakoodin <strong>%2</strong> kanssa käyttäjälle, joka hyväksyy GeoKretin."
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
-msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
-msgstr "Tämä GeoKret on käytettävissä hyväksyttäväksi. Jos nykyinen omistaja antoi sinulle seurantakoodin sekä omistajan koodin, voit <a href=\"%1\">lunastaa</a> tämän GeoKret."
-
-#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
-msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:22
+msgid "From 1 to %1."
 msgstr ""
 
-#: website/app-templates/smarty/banners/user_password_missing.tpl:3
-msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:27
+msgid "Owner ID"
 msgstr ""
 
-#: website/app-templates/smarty/banners/user_password_missing.tpl:4
-msgid "Please consider <a href=\"%1\">setting a password</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:30
+msgid "Leave empty or set 0 to not set any owner."
 msgstr ""
 
-#: website/app-templates/smarty/banners/contribute.tpl:2
-#: website/app-templates/smarty/banners/flash_messages.tpl:3
-msgid "Close"
-msgstr "Sulje"
-
-#: website/app-templates/smarty/banners/contribute.tpl:3
-msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
-msgstr "Tämä haara 🥦 kehitetään aktiivisesti 👨‍💻, jos löydät bugeja 🐛, Tarkista 👀 <a href=\"%1\" target=\"_blank\">olemassa olevat ongelmat ♻️ GitHubissa %2</a> ja avaa vapaasti 🆕. (Yksi virhe per ongelma 🙏)"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:2
-msgid "Some statistics"
-msgstr "Joitakin tilastoja"
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:6
-msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr "<strong>%1</strong> rekisteröity GeoKrety, <strong>%2</strong> GeoKrety piilotettu <strong>%3</strong> käyttäjää."
-
-#: website/app-templates/smarty/banners/intro_stats.tpl:13
-msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:35
+msgid "GeoKrety name template"
 msgstr ""
 
-#: website/app-templates/smarty/banners/intro_stats.tpl:21
-msgid "And that's thanks to you! Congratulation!"
-msgstr "Ja se kiitos sinulle! Onnittelut!"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:37
+#: website/app-templates/smarty/forms/geokret.tpl:13
+#: website/app-templates/smarty/forms/geokret.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:8
+#: website/app-templates/smarty/forms/geokret_label.tpl:10
+msgid "GeoKret name"
+msgstr "GeoKretyn nimi"
 
-#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
-msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:38
+msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
 msgstr ""
 
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
-msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
-msgstr "Vaikka se on - nyt - ei tarvita, suosittelemme <a href=\"%1\">kirjautua</a>."
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
-msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
-msgstr "Älä epäröi <a href=\"%1\">luoda tiliä</a>."
-
-#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
-msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr "Silloin voit hallita GeoKretyn tavaraluetteloasi, ladata kuvia, muokata lokejasi ja luoda tietenkin oman GeoKretyn!"
-
-#: website/app-templates/smarty/banners/donate.tpl:2
-msgid "Enjoying GeoKrety.org?"
-msgstr "Pidätkö GeoKrety.orgista?"
-
-#: website/app-templates/smarty/banners/donate.tpl:4
-msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:41
+msgid "Start at"
 msgstr ""
 
-#: website/app-templates/smarty/banners/donate.tpl:8
-msgid "Donate"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:48
+#: website/app-templates/smarty/forms/geokret.tpl:20
+msgid "GeoKret type"
+msgstr "GeoKret-tyyppi"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
+#: website/app-templates/smarty/forms/geokret.tpl:31
+#: website/app-templates/smarty/forms/geokret_label.tpl:36
+msgid "Mission"
+msgstr "Tehtävä"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
+#: website/app-templates/smarty/forms/geokret.tpl:33
+#: website/app-templates/smarty/forms/geokret_label.tpl:38
+msgid "What is this GeoKret mission?"
+msgstr "Mikä on GeoKretin tehtävä?"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:66
+msgid "Pictures"
+msgstr "Kuvat"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:77
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+#: website/app-templates/smarty/blocks/geokret/details.tpl:49
+#: website/app-templates/smarty/pages/geokret_claim.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:31
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:22
+#: website/app-templates/smarty/forms/move.tpl:21
+msgid "Tracking Code"
+msgstr "Seurantakoodi"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:82
+msgid "Tracking Code prefix"
 msgstr ""
 
-#: website/app-templates/smarty/banners/user_email_missing.tpl:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "Anteeksi, mutta tilisi ei ole rekisteröitynyt. Et voi palauttaa salasanan menetyksestä! Et myöskään saa päivittäisiä ilmoituksia GeoKretystäsi tai katseli GeoKretyä."
-
-#: website/app-templates/smarty/banners/user_email_missing.tpl:4
-msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr "Harkitse <a href=\"%1\">lisäämällä sähköpostiosoitteen</a> tai <a href=\"%2\">linkitä tilisi</a> jollekin OAuth-palveluntarjoajalle."
-
-#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
-msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr "Sinulla on odottava sähköpostivahvistus. Älä unohda klikata sähköpostin linkkiä lopettaaksesi menettelyn. Linkki vanhenee %1!"
-
-#: website/app-templates/smarty/banners/site_intro.tpl:3
-msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
-msgstr "GeoKrety on ilmainen online-palvelu kohteiden seurantaan GPS-peleissä, kuten geokätköily tai opencaching. Voit seurata pieniä esineitä, kirjoja, kolikoita, lemmikkejä tai ihmisiä kanssamme… <a href=\"%1\">Lue lisää</a>."
-
-#: website/app-templates/smarty/emails/base.tpl:30
-msgid "Hi %1,"
-msgstr "Hei %1,"
-
-#: website/app-templates/smarty/emails/base.tpl:37
-msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "Ystävällisin terveisin,<br>GeoKrety Tiimi"
-
-#: website/app-templates/smarty/emails/base.tpl:46
-msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:89
+msgid "Tracking Code length"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
-msgid "Account not yet active"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:96
+msgid "Tracking Code Alphabet"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
-msgid "Your account is about to be deleted."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:103
+msgid "Tracking Code suffix"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
-msgid "The account you created %1 has not yet been activated."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:114
+#: website/app-templates/smarty/pages/geokret_claim.tpl:22
+msgid "Owner Code"
+msgstr "Omistajan Koodi"
+
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:119
+msgid "Owner Code prefix"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
-msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:126
+msgid "Owner Code length"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
-msgid "Unactivated accounts are automatically deleted after %1 days."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:133
+msgid "Owner Code Alphabet"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
-#: website/app-templates/smarty/emails/account-activation.tpl:10
-msgid "Activate your account"
-msgstr "Aktivoi tilisi"
-
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
-#: website/app-templates/smarty/emails/account-activation.tpl:13
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:20
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
-#: website/app-templates/smarty/emails/password-recovery.tpl:15
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
-msgid "This link expires %1."
-msgstr "Tämä linkki vanhenee %1."
-
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:19
-#: website/app-templates/smarty/emails/account-activation.tpl:15
-msgid "If your account is not activated within that time, then it will be automatically deleted."
-msgstr "Jos tilisi ei ole aktivoitu kyseisen ajan kuluessa, se poistetaan automaattisesti."
-
-#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
-#: website/app-templates/smarty/emails/account-activated.tpl:19
-#: website/app-templates/smarty/emails/account-activation.tpl:19
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
-msgid "You're getting this email because you've just signed up on our website."
-msgstr "Saat tämän sähköpostiviestin, koska olet juuri rekisteröitynyt nettisivuillemme."
-
-#: website/app-templates/smarty/emails/account-activated.tpl:3
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
-#: website/app-templates/smarty/emails/password-changed.tpl:3
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
-msgid "Congratulation"
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:140
+msgid "Owner Code suffix"
 msgstr ""
 
-#: website/app-templates/smarty/emails/account-activated.tpl:4
-#: website/app-templates/smarty/emails/password-changed.tpl:4
-msgid "Your account on GeoKrety.org is now active."
+#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:151
+msgid "Generate"
 msgstr ""
 
-#: website/app-templates/smarty/emails/account-activated.tpl:8
-msgid "Your account on GeoKrety.org is now fully functional."
-msgstr "Tilisi GeoKrety.orgissa on nyt täysin toimiva."
-
-#: website/app-templates/smarty/emails/account-activated.tpl:12
-#: website/app-templates/smarty/emails/username-changed.tpl:13
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:12
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:12
-#: website/app-templates/smarty/emails/password-changed.tpl:12
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
-#: website/app-templates/smarty/dialog/login.tpl:2
-#: website/app-templates/smarty/dialog/login.tpl:7
-msgid "Login"
-msgstr "Kirjaudu"
-
-#: website/app-templates/smarty/emails/account-activated.tpl:15
-msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
+#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
+msgid "GeoKrety generator result"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
-msgid "Confirm your email address change."
+#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:10
+msgid "There is no results."
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
-msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr "Joku, toivottavasti olet, on pyytänyt muuttaa GeoKrety yhteystiedot sähköpostiosoitteesi sinulle."
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
-msgid "Validate your new email address"
-msgstr "Vahvista uusi sähköpostiosoitteesi"
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
-msgid "This link is valid for %1."
-msgstr "Tämä linkki on voimassa %1."
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
-msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
-msgstr "Jos et pyytänyt tätä etkä tiedä mitä GeoKrety on, jätä tämä sähköposti huomiotta. Et koskaan kuule meistä uudelleen!"
-
-#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
-msgid "You're getting this email because you've requested an email address change on our website."
-msgstr "Saat tämän sähköpostiviestin, koska olet pyytänyt sähköpostiosoitteen muutosta verkkosivuillamme."
-
-#: website/app-templates/smarty/emails/expiring-accounts.tpl:4
-msgid "Some accounts will be deleted."
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
+msgid "Api Rate Limits"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts.tpl:7
-msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:9
+#: website/app-templates/smarty/admin/pages/scripts.tpl:8
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:18
+msgid "Refresh"
+msgstr "Päivitä"
+
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
+msgid "Reset"
 msgstr ""
 
-#: website/app-templates/smarty/emails/username-changed.tpl:3
-msgid "Username changed"
+#: website/app-templates/smarty/admin/pages/scripts.tpl:3
+#: website/app-templates/smarty/admin/pages/scripts.tpl:7
+msgid "Scripts management"
 msgstr ""
 
-#: website/app-templates/smarty/emails/username-changed.tpl:4
-msgid "Your username on GeoKrety.org has been changed."
-msgstr ""
-
-#: website/app-templates/smarty/emails/username-changed.tpl:9
-msgid "Please enjoy your new username!"
-msgstr ""
-
-#: website/app-templates/smarty/emails/username-changed.tpl:18
-msgid "You're getting this email because you've changed your username on our website."
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
-msgid "Your email address has been successfully changed."
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:22
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:29
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:27
-msgid "You're getting this email because you've changed your email on our website."
-msgstr "Saat tämän sähköpostiviestin, koska olet muuttanut sähköpostiasi verkkosivuillamme."
-
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:3
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:3
-msgid "Hooray"
-msgstr ""
-
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:4
-msgid "One of your GeoKrety has been adopted."
-msgstr ""
-
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:10
-msgid "View GeoKret"
-msgstr "Näytä GeoKret"
-
-#: website/app-templates/smarty/emails/geokret-adopted.tpl:15
-msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
-msgstr "Saat tämän sähköpostiviestin, koska yksi GeoKrety on muuttanut omistajaa nettisivuillamme."
-
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:4
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:8
-msgid "Your email address has been successfully reverted."
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:15
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
-msgid "If you did not requested a password change, then you should also consider changing your password immediately."
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-reverted.tpl:17
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:22
-msgid "Change my password!"
-msgstr "Vaihda salasanani!"
-
-#: website/app-templates/smarty/emails/account-activation.tpl:4
-msgid "One step left to use GeoKrety.org."
-msgstr ""
-
-#: website/app-templates/smarty/emails/account-activation.tpl:7
-msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
-msgstr "Olet juuri rekisteröitynyt osoitteeseen GeoKrety.org. <strong>Sinun täytyy vielä aktivoida tilisi ennen kuin voit käyttää sitä.</strong> Seuraa linkkiä."
-
-#: website/app-templates/smarty/emails/user-contact.tpl:3
-msgid "Contact from a GeoKrety.org user"
-msgstr "Ota yhteyttä GeoKrety.org käyttäjältä"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:4
-msgid "Someone sent you a private message."
-msgstr ""
-
-#: website/app-templates/smarty/emails/user-contact.tpl:8
-msgid "This email was sent by user <a href=\"%2\">%1</a>."
-msgstr ""
-
-#: website/app-templates/smarty/emails/user-contact.tpl:12
-msgid "If you suspect an abuse, please let us know: %1"
-msgstr "Jos epäilet väärinkäyttöä, ota meihin yhteyttä: %1"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:13
-msgid "Referer: %1"
-msgstr "Viitteet: %1"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:18
-msgid "Subject:"
-msgstr "Aihe:"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:23
-msgid "Reply to %1"
-msgstr "Vastaa %1"
-
-#: website/app-templates/smarty/emails/user-contact.tpl:28
-msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
-msgstr "Saat tämän sähköpostin koska yksi GeoKrety.org-käyttäjistä lähettää sinulle viestin käyttäjäprofiilisi kautta."
-
-#: website/app-templates/smarty/emails/award-awarded.tpl:4
-msgid "New Award received"
-msgstr ""
-
-#: website/app-templates/smarty/emails/award-awarded.tpl:7
-msgid "We're proud to inform you that you have received a new Award badge."
-msgstr ""
-
-#: website/app-templates/smarty/emails/award-awarded.tpl:16
-msgid "Please look at this new pretty badge on your GeoKrety profile."
-msgstr ""
-
-#: website/app-templates/smarty/emails/award-awarded.tpl:18
-msgid "Check my profile"
-msgstr ""
-
-#: website/app-templates/smarty/emails/password-changed.tpl:8
-msgid "Your password has been successfully changed."
-msgstr ""
-
-#: website/app-templates/smarty/emails/password-changed.tpl:17
-#: website/app-templates/smarty/emails/password-recovery.tpl:19
-msgid "You're getting this email because you've changed your password on our website."
-msgstr "Saat tämän sähköpostiviestin, koska olet muuttanut salasanaasi verkkosivuillamme."
-
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
-msgid "Your email address has been successfully changed to: %1."
-msgstr ""
-
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
-msgid "If you did not requested this, click the link below."
-msgstr "Jos et pyytänyt tätä, klikkaa alla olevaa linkkiä."
-
-#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
-msgid "Revert this change!"
-msgstr "Peru tämä muutos!"
-
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
-msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
-msgstr "Joku, toivottavasti olet, on pyytänyt muutosta GeoKretyn yhteystietosi sähköpostiosoitteeseen: %1."
-
-#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
-msgid "Do not change!"
-msgstr "Älä muuta!"
-
-#: website/app-templates/smarty/emails/cron-exception.tpl:4
-msgid "An exception occurred in a cron job"
-msgstr ""
-
-#: website/app-templates/smarty/emails/cron-exception.tpl:7
-#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
-#: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
-msgid "Something went wrong with a cron job, please check the logs below."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:5
-msgid "Your GeoKrety watchlist"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:8
-msgid "You're getting this email because you've choose to receive daily mail updates."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:9
-msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:14
-msgid "Here is what changed recently."
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:17
-msgid "Latest news"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:27
-msgid "GeoKrety dropped in your observation area"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:30
-msgid "Open interactive map"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:30
-msgid "Observation area map"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:36
-#: website/app-templates/smarty/emails/daily-mail.tpl:79
-#: website/app-templates/smarty/emails/daily-mail.tpl:125
-#: website/app-templates/smarty/emails/daily-mail.tpl:170
-#: website/app-templates/smarty/forms/advanced_search.tpl:5
-msgid "GeoKret"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:37
-#: website/app-templates/smarty/emails/daily-mail.tpl:80
-#: website/app-templates/smarty/emails/daily-mail.tpl:126
-msgid "Position"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:38
-#: website/app-templates/smarty/emails/daily-mail.tpl:81
-#: website/app-templates/smarty/emails/daily-mail.tpl:127
-#: website/app-templates/smarty/emails/daily-mail.tpl:171
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:23
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:22
-#: website/app-templates/smarty/pages/news_details.tpl:20
-#: website/app-templates/smarty/pages/news_details.tpl:38
-#: website/app-templates/smarty/pages/home.tpl:41
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:23
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:22
-#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
-#: website/app-templates/smarty/forms/move.tpl:106
-#: website/app-templates/smarty/forms/move.tpl:239
-msgid "Comment"
-msgstr "Kommentti"
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:39
-#: website/app-templates/smarty/emails/daily-mail.tpl:82
-#: website/app-templates/smarty/emails/daily-mail.tpl:128
-#: website/app-templates/smarty/emails/daily-mail.tpl:172
-msgid "Author"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:40
-msgid "Home distance"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:73
-msgid "My GeoKrety latest moves"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:78
-#: website/app-templates/smarty/emails/daily-mail.tpl:124
-msgid "Icon"
-msgstr "Kuvake"
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:83
-msgid "Distance since last move"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:119
-msgid "Watched GeoKrety latest moves"
-msgstr ""
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:129
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:24
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
-#: website/app-templates/smarty/pages/home.tpl:43
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
-#: website/app-templates/smarty/pages/user_inventory.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
-msgid "Distance"
-msgstr "Etäisyys"
-
-#: website/app-templates/smarty/emails/daily-mail.tpl:165
-msgid "Latest move comments"
-msgstr ""
-
-#: website/app-templates/smarty/emails/cron-locked.tpl:4
-msgid "A script is locked"
-msgstr ""
-
-#: website/app-templates/smarty/emails/cron-locked.tpl:7
-msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
-
-#: website/app-templates/smarty/emails/cron-locked.tpl:10
 #: website/app-templates/smarty/admin/pages/scripts.tpl:45
+#: website/app-templates/smarty/emails/cron-locked.tpl:10
 msgid "Unlock script"
 msgstr ""
 
-#: website/app-templates/smarty/emails/password-recovery.tpl:3
-msgid "Forgot Your Password?"
-msgstr "Unohditko salasanasi?"
-
-#: website/app-templates/smarty/emails/password-recovery.tpl:4
-msgid "Recover your password."
+#: website/app-templates/smarty/admin/pages/scripts.tpl:48
+#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:15
+msgid "Ack"
 msgstr ""
 
-#: website/app-templates/smarty/emails/password-recovery.tpl:8
-msgid "It happens. Click the link below to reset your password."
-msgstr "Se tapahtuu. Klikkaa alla olevaa linkkiä nollataksesi salasanasi."
-
-#: website/app-templates/smarty/emails/password-recovery.tpl:12
-msgid "Reset Password"
-msgstr "Nollaa salasana"
-
-#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
-#: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
-msgid "Something went wrong while synchronizing partners data"
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:3
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:6
+msgid "Admin actions on users"
 msgstr ""
 
-#: website/app-templates/smarty/emails/base-admin.tpl:4
-msgid "You're getting this email because you're one the website admins."
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:17
+msgid "Invalidate user's email"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
-msgid "Is this address still valid?"
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:20
+msgid "Award prize"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
-msgid "This is important in case of password loss."
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
+msgid "Found it? Log it!"
+msgstr "Löytynyt? Kirjaudu se!"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
+msgid "Please enter the Tracking Code here"
+msgstr "Syötä seurantakoodi tähän"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
+#: website/app-templates/smarty/blocks/found_geokret.tpl:15
+msgid "Log it!"
+msgstr "Kirjaa se!"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:3
+msgid "Map"
+msgstr "Kartta"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:8
+msgid "Caption:"
+msgstr "Kuvateksti:"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:9
+msgid "start"
+msgstr "aloita"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:10
+msgid "trip points"
+msgstr "matkan pisteet"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:11
+msgid "recently seen"
+msgstr "äskettäin nähty"
+
+#: website/app-templates/smarty/blocks/geokret/map.tpl:15
+msgid "This geokret has not started yet"
+msgstr "Tämä geokret ei ole vielä alkanut"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:4
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:17
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:29
+msgid "Who is watching this Geokret?"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
-msgid "Validate your email address"
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:5
+msgid "Watchers"
+msgstr "Tarkkailijat"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:14
+msgid "Add this geokret to your watch list"
 msgstr ""
 
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
-msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:15
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:14
+msgid "Watch"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
-msgid "Account has been deleted"
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:26
+#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:41
+msgid "Remove this geokret from your watch list"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
-msgid "Your account is now deleted."
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:27
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:14
+msgid "Unwatch"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
-msgid "The account you created %1 has never been activated."
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:36
+msgid "Log this GeoKret"
+msgstr "Kirjaa tämä GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:41
+msgid "Print a label for this GeoKret"
+msgstr "Tulosta etiketti tälle GeoKretille"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:48
+msgid "Statistics"
+msgstr "Tilastot"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:55
+msgid "Adopt this GeoKret"
+msgstr "Adoptoi tämä GeoKret"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:57
+msgid "Login to claim this GeoKret"
+msgstr "Kirjaudu sisään lunastaaksesi tämän GeoKretin"
+
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
+msgid "Mark this GeoKret as archived"
 msgstr ""
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
-msgid "Our policy is to delete unactivated accounts after %1 days."
-msgstr ""
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
+msgid "Archive this GeoKret"
+msgstr "Arkistoi tämä GeoKret"
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
-msgid "We are sorry to inform you that your account has been permanently erased."
-msgstr ""
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:70
+msgid "Email owner"
+msgstr "Sähköpostin omistaja"
 
-#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
-msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:76
+msgid "Make this GeoKret available for adoption by another user"
+msgstr "Aseta tämä GeoKret saataville hyväksyttäväksi toinen käyttäjä"
 
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:3
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:11
-msgid "%1's recent moves"
-msgstr "%1n viimeaikaiset siirrot"
+#: website/app-templates/smarty/blocks/geokret/actions.tpl:77
+msgid "Transfer ownership"
+msgstr "Siirrä omistajuus"
 
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:21
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:20
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
-#: website/app-templates/smarty/pages/user_inventory.tpl:22
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:22
-msgid "Name"
-msgstr "Nimi"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
-#: website/app-templates/smarty/pages/home.tpl:40
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:23
-msgid "Spotted in"
-msgstr "Spotted sisään"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
-#: website/app-templates/smarty/pages/home.tpl:42
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-msgid "Last move"
-msgstr "Viimeisin siirto"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:25
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:25
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
-#: website/app-templates/smarty/pages/user_inventory.tpl:26
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
-#: website/app-templates/smarty/elements/map_caption.tpl:138
-msgid "Caches visited count"
-msgstr "Kätköjen määrä"
-
-#: website/app-templates/smarty/pages/user_recent_moves.tpl:36
-msgid "%1 didn't moved any GeoKrety yet."
-msgstr "%1 ei siirtänyt vielä yhtään GeoKretya."
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:3
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:6
-msgid "All yearly rankings"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:18
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:43
-msgid "No attributed awards yet."
-msgstr ""
-
-#: website/app-templates/smarty/pages/user_owned_pictures.tpl:3
-#: website/app-templates/smarty/pages/user_owned_pictures.tpl:9
-msgid "Pictures of %1's GeoKrety"
-msgstr "Kuvia %1n GeoKretysta"
-
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:3
-msgid "Search GeoKrety"
-msgstr ""
-
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:11
-msgid "Found GeoKrety matching: %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:22
-#: website/app-templates/smarty/pages/home.tpl:77
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
-#: website/app-templates/smarty/pages/user_inventory.tpl:23
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
-#: website/app-templates/smarty/forms/geokret_label.tpl:15
-#: website/app-templates/smarty/forms/geokret_label.tpl:17
-msgid "Owner"
-msgstr "Omistaja"
-
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:26
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:27
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
-#: website/app-templates/smarty/pages/user_inventory.tpl:27
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:27
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:88
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:27
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:27
+#: website/app-templates/smarty/pages/user_inventory.tpl:27
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:26
 #: website/app-templates/smarty/navbar-left.tpl:11
 msgid "Actions"
 msgstr "Toiminnot"
 
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:34
-msgid "No GeoKrety matching: %1"
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
+#: website/app-templates/smarty/blocks/geokret/details.tpl:32
+msgid "Edit GeoKret details"
+msgstr "Muokkaa GeoKretin tietoja"
+
+#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
+msgid "This GeoKret doesn't have a special mission…"
+msgstr "Tällä GeoKretillä ei ole erityistä tehtävää…"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:20
+msgid "missing"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:22
+msgid "archived"
+msgstr "arkistoidut"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:27
+#: website/app-templates/smarty/blocks/user/details.tpl:7
+msgid "Send a message to %1"
+msgstr "Lähetä viesti henkilölle %1"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:35
+#: website/app-templates/smarty/blocks/user/details.tpl:21
+#: website/app-templates/smarty/elements/move.tpl:69
+msgid "Upload a picture"
+msgstr "Lataa kuva"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:46
+#: website/app-templates/smarty/forms/geokret_label.tpl:24
+msgid "Reference number"
+msgstr "Viitenumero"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:52
+#: website/app-templates/smarty/elements/map_caption.tpl:75
+msgid "Total distance"
+msgstr "Kokonaisetäisyys"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:54
+msgid "Places visited"
+msgstr "Vierailtuja paikkoja"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:58
+msgid "Social share"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:60
+msgid "Share on Facebook"
+msgstr "Jaa Facebookissa"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:61
+msgid "Share on Twitter"
+msgstr "Jaa Twitterissä"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:62
+msgid "Share on Instagram"
+msgstr "Jaa Instagramissa"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:63
+#: website/app-templates/smarty/blocks/user/statpic.tpl:8
+msgid "Copy link to page"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:64
+#: website/app-templates/smarty/blocks/user/statpic.tpl:9
+msgid "Copy to page as bbcode"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:66
+msgid "Country track"
+msgstr "Seurattava maa"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:10
+msgid "No home coordinates have been defined."
+msgstr "Koti koordinaatteja ei ole määritelty."
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:13
+#: website/app-templates/smarty/blocks/user/map_home.tpl:21
+msgid "Update home coordinates and obervation area"
+msgstr "Päivitä koti koordinaatit ja obervation alue"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:14
+msgid "Define your home coordinates"
+msgstr "Määritä kotisi koordinaatit"
+
+#: website/app-templates/smarty/blocks/user/map_home.tpl:20
+msgid "GeoKrety near home"
+msgstr "GeoKrety lähellä kotia"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:4
+msgid "OAuth Connections"
+msgstr "Oauth Yhteydet"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:17
+msgid "Disconnect from %1"
+msgstr "Katkaise yhteys %1"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:18
+msgid "Disconnect"
+msgstr "Katkaise"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect with %1"
+msgstr "Yhdistä sovellukseen %1"
+
+#: website/app-templates/smarty/blocks/user/oauth.tpl:23
+msgid "Connect"
+msgstr "Yhdistä"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:4
+msgid "Awards"
+msgstr "Palkinnot"
+
+#: website/app-templates/smarty/blocks/user/awards.tpl:10
+msgid "No award received yet."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:3
+#: website/app-templates/smarty/pages/geokret_create.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:15
+#: website/app-templates/smarty/forms/geokret.tpl:6
+msgid "Create a new GeoKret"
+msgstr "Luo uusi GeoKret"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:12
+msgid "View inventory"
+msgstr "Näytä tavaraluettelo"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:16
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:12
+msgid "Owned GeoKrety"
+msgstr "Omistettu GeoKrety"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:20
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:3
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:11
+#: website/app-templates/smarty/navbar-profile.tpl:20
+msgid "Watched GeoKrety"
+msgstr "Katseltu GeoKrety"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:24
+msgid "Recently posted moves"
+msgstr "Äskettäin julkaistut siirrot"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:28
+msgid "Moves of owned GeoKrety"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:32
+msgid "Posted pictures"
+msgstr "Lähetetyt kuvat"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:36
+msgid "Owned GeoKrety pictures"
+msgstr "Omistetut GeoKretyn kuvat"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:40
+#: website/app-templates/smarty/navbar-profile.tpl:28
+msgid "Where are my GeoKrety?"
+msgstr "Missä minun GeoKretyni on?"
+
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "User stats"
+msgstr "Käyttäjän tilastot"
+
+#: website/app-templates/smarty/blocks/user/medals.tpl:3
+msgid "Medals"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/medals.tpl:8
+msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/medals.tpl:17
+msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:5
+msgid "Danger zone"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:8
+msgid "Be careful, actions in this section are irreversible."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:11
+msgid "Delete your account"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:40
+msgid "Delete my account"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/details.tpl:11
+msgid "Subscribe to RSS channel"
+msgstr "Tilaa RSS-syöte"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:15
+msgid "Username change"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/details.tpl:18
+msgid "Password change"
+msgstr "Salasanan vaihto"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:32
+msgid "Joined us"
+msgstr "Meihin liittyneet"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:34
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:33
+msgid "Language"
+msgstr "Kieli"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:36
+msgid "Nothing selected"
+msgstr "Mitään ei ole valittu"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:39
+msgid "Choose preferred language"
+msgstr "Valitse ensisijainen kieli"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:46
+#: website/app-templates/smarty/pages/contact_us.tpl:17
+msgid "Email"
+msgstr "Sähköposti"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:51
+msgid "Pending email validation, don't forget to click the link in validation mail!"
+msgstr "Odottaa sähköpostin validointia, älä unohda klikata vahvistussähköpostin linkkiä!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:53
+msgid "No email address, please add one!"
+msgstr "Ei sähköpostiosoitetta, lisää sellainen!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:56
+msgid "Update email address"
+msgstr "Päivitä sähköpostiosoite"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:61
+msgid "Secid"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user/details.tpl:64
+msgid "Used to authenticate in other applications. Keep it secret!"
+msgstr "Käytetään tunnistautumiseen muissa sovelluksissa. Pidä se salassa!"
+
+#: website/app-templates/smarty/blocks/user/details.tpl:65
+msgid "Generate a new secid"
+msgstr "Luo uusi seos"
+
+#: website/app-templates/smarty/blocks/user/statpic.tpl:13
+msgid "Choose statpic"
+msgstr "Valitse tilastokaavio"
+
+#: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
+msgid "There is no pictures yet."
+msgstr "Kuvia ei ole vielä."
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:3
+msgid "Found a GeoKret?"
+msgstr "Löysitkö GeoKredin?"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:7
+msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
+msgstr "Syötä <abbr title=\"%1\">seurantakoodi</abbr> tähän:"
+
+#: website/app-templates/smarty/blocks/found_geokret.tpl:12
+msgid "Tracking code"
+msgstr "Seurantakoodi"
+
+#: website/app-templates/smarty/blocks/user_finder.tpl:5
+msgid "Start by finding users:"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user_finder.tpl:9
+msgid "Username or email or ID"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user_finder.tpl:11
+msgid "Search"
+msgstr "Haku"
+
+#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
+msgid "false"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
+msgid "true"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/user_finder_list.tpl:37
+msgid "No users match the current request."
 msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:3
@@ -1859,6 +1746,21 @@ msgstr "Tekijä <cite title=\"Original source\">%1</cite>"
 msgid "Current mole-holes"
 msgstr "Virtaukselliset reiät"
 
+#: website/app-templates/smarty/pages/mole_hole.tpl:38
+#: website/app-templates/smarty/pages/mole_hole.tpl:81
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:20
+#: website/app-templates/smarty/pages/home.tpl:39
+#: website/app-templates/smarty/pages/home.tpl:76
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
+#: website/app-templates/smarty/pages/user_inventory.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:20
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:15
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:27
+msgid "ID"
+msgstr ""
+
 #: website/app-templates/smarty/pages/mole_hole.tpl:39
 #: website/app-templates/smarty/pages/mole_hole.tpl:82
 msgid "Cache name"
@@ -1899,142 +1801,63 @@ msgstr "Nykyiset GK-hotellit/Motels"
 msgid "Status: Ready for search"
 msgstr "Tila: valmis hakuun"
 
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
-msgid "GeoKrety visiting the cache %1"
+#: website/app-templates/smarty/pages/user_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_pictures.tpl:9
+msgid "%1's posted pictures"
+msgstr "%1on lähetetty kuvia"
+
+#: website/app-templates/smarty/pages/geokrety_map.tpl:3
+msgid "Interactive map"
 msgstr ""
 
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
-msgid "Cache"
-msgstr "Välimuisti"
+#: website/app-templates/smarty/pages/geokrety_map.tpl:17
+msgid "GeoKrety interactive map"
+msgstr "GeoKretyn interaktiivinen kartta"
 
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:216
-msgid "Date"
-msgstr "Päiväys"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
-msgid "No GeoKrety has visited cache %1 yet."
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
+msgid "GeoKrety Toolbox - GKT"
 msgstr ""
 
-#: website/app-templates/smarty/pages/user_details.tpl:3
-msgid "%1's user profile"
-msgstr ""
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:12
+msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
+msgstr "Näyttää GeoKrety trackables <a href=\"%1\" target=\"_blank\">geocaching.com</a> välimuistisivuilla ja helpottaa GeoKrety trackables putoamista kätköihin."
 
-#: website/app-templates/smarty/pages/registration_validated.tpl:3
-#: website/app-templates/smarty/pages/registration_validated.tpl:8
-msgid "Welcome to the GeoKrety.org community!"
-msgstr "Tervetuloa GeoKrety.org -yhteisöön!"
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
+msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
+msgstr "Tämä käsikirjoitus on kirjoitettu rakentamaan silta suosituin <a href=\"%1\">geokätköilyä. om</a> sivusto ja <a href=\"%2\">geokrety.org</a>. Sillä on kaksi toimintoa. Kun syötät tietyn kätkön sivulle <a href=\"%1\">geokätköilyä. om</a> se tarkistaa automaattisesti, onko mitään GeoKrety (kohteita, joita seurataan <a href=\"%2\">geokretyssä). rg</a>) välimuistin sisällä ja näyttää lopputuloksen näytön oikealla puolella olevassa tavaraluettelon osiossa (alla oleva luettelo Travelbugs and Geocoins). Jos sinulla on tili <a href=\"%2\">geokrety. rg</a> voit myös helposti pudottaa GeoKretyn <a href=\"%1\">Geocaching</a> kätköihin, koska reittipistekoodi ja koordinaatit kopioidaan automaattisesti kirjauslomakkeeseen <a href=\"%2\">geokrety. rg</a>."
 
-#: website/app-templates/smarty/pages/registration_validated.tpl:10
-msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:18
+msgid "Available for:"
+msgstr "Käytetään:"
 
-#: website/app-templates/smarty/pages/registration_validated.tpl:12
-msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
-msgstr ""
+#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:22
+msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
+msgstr "<a href=\"%1\">Firefox</a> (tarvitsee <a href=\"%2\">Tampermonkey lisäosan</a> tai <a href=\"%3\">greasemonkey lisäosan</a>)"
 
-#: website/app-templates/smarty/pages/registration_validated.tpl:13
-#: website/app-templates/smarty/navbar-profile.tpl:48
-#: website/app-templates/smarty/dialog/login_simple.tpl:17
-#: website/app-templates/smarty/dialog/login.tpl:39
-#: website/app-templates/smarty/navbar.tpl:32
-msgid "Sign in"
-msgstr "Kirjaudu sisään"
+#: website/app-templates/smarty/pages/password_recovery.tpl:3
+#: website/app-templates/smarty/pages/password_recovery.tpl:10
+msgid "Password recovery"
+msgstr "Salasanan palautus"
 
-#: website/app-templates/smarty/pages/registration.tpl:3
-msgid "Registration"
-msgstr ""
+#: website/app-templates/smarty/pages/password_recovery.tpl:19
+msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
+msgstr "Jos olet vahvistanut sähköpostiosoitteesi aiemmin, voit palauttaa sen helposti. Muuten, sinun täytyy luoda toinen tili, anteeksi."
 
-#: website/app-templates/smarty/pages/registration.tpl:14
-msgid "Create an account using %1"
-msgstr "Luo tili käyttäen %1"
+#: website/app-templates/smarty/pages/password_recovery.tpl:24
+#: website/app-templates/smarty/pages/password_recovery.tpl:26
+#: website/app-templates/smarty/dialog/user_update_email.tpl:11
+#: website/app-templates/smarty/dialog/user_update_email.tpl:12
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:18
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:20
+#: website/app-templates/smarty/forms/registration.tpl:11
+#: website/app-templates/smarty/forms/registration.tpl:13
+msgid "Email address"
+msgstr "Sähköpostiosoite"
 
-#: website/app-templates/smarty/pages/registration.tpl:16
-msgid "Create an account"
-msgstr "Luo tili"
-
-#: website/app-templates/smarty/pages/news_details.tpl:3
-msgid "News: %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/news_details.tpl:13
-msgid "Leave a comment"
-msgstr "Jätä kommentti"
-
-#: website/app-templates/smarty/pages/news_details.tpl:22
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
-msgid "Your comment"
-msgstr "Kommenttisi"
-
-#: website/app-templates/smarty/pages/news_details.tpl:30
-msgid "Subscribe to this news post"
-msgstr "Tilaa tämä uutinen viesti"
-
-#: website/app-templates/smarty/pages/news_details.tpl:43
-msgid "Please <a href=\"%1\">login</a> to post a comment"
-msgstr "Ole hyvä ja <a href=\"%1\">kirjaudu</a> kirjoittaaksesi kommentin"
-
-#: website/app-templates/smarty/pages/news_details.tpl:52
-msgid "There are no comments for this post."
-msgstr "Tähän viestiin ei ole kommentteja."
-
-#: website/app-templates/smarty/pages/search_by_user.tpl:3
-msgid "Search users"
-msgstr ""
-
-#: website/app-templates/smarty/pages/search_by_user.tpl:9
-msgid "Found users matching: %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/search_by_user.tpl:19
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:19
-#: website/app-templates/smarty/dialog/login_simple.tpl:10
-#: website/app-templates/smarty/dialog/login_simple.tpl:11
-#: website/app-templates/smarty/dialog/login.tpl:13
-#: website/app-templates/smarty/dialog/login.tpl:15
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:10
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:12
-#: website/app-templates/smarty/forms/registration.tpl:4
-#: website/app-templates/smarty/forms/registration.tpl:6
-#: website/app-templates/smarty/forms/move.tpl:231
-#: website/app-templates/smarty/forms/advanced_search.tpl:17
-#: website/app-templates/smarty/forms/advanced_search.tpl:19
-msgid "Username"
-msgstr "Käyttäjätunnus"
-
-#: website/app-templates/smarty/pages/search_by_user.tpl:34
-msgid "No users matching: %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/home.tpl:3
-#: website/app-templates/smarty/pages/home.tpl:8
-msgid "Welcome to GeoKrety.org!"
-msgstr "Tervetuloa GeoKrety.orgiin!"
-
-#: website/app-templates/smarty/pages/home.tpl:33
-msgid "Latest moves"
-msgstr "Viimeisimmät siirrot"
-
-#: website/app-templates/smarty/pages/home.tpl:57
-msgid "Recent pictures"
-msgstr "Viimeisimmät kuvat"
-
-#: website/app-templates/smarty/pages/home.tpl:70
-msgid "Recently created GeoKrety"
-msgstr "Äskettäin luotu GeoKrety"
-
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:3
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:11
-#: website/app-templates/smarty/blocks/user/actions.tpl:20
-#: website/app-templates/smarty/navbar-profile.tpl:20
-msgid "Watched GeoKrety"
-msgstr "Katseltu GeoKrety"
-
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
-msgid "%1 doesn't watch any GeoKrety yet."
-msgstr "%1 ei katso mitään GeoKretyä vielä."
+#: website/app-templates/smarty/pages/password_recovery.tpl:35
+msgid "Send me a recovery link"
+msgstr "Lähetä minulle palautuslinkki"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
@@ -2073,53 +1896,53 @@ msgstr "Keskitä alueen kartta tarkkailemaan sitä"
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:74
 #: website/app-templates/smarty/pages/user_update_username.tpl:29
 #: website/app-templates/smarty/dialog/user_update_password.tpl:52
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/user_contact.tpl:41
 #: website/app-templates/smarty/dialog/user_update_email.tpl:51
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
 msgid "Back to user page"
 msgstr "Takaisin käyttäjän sivulle"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:75
+#: website/app-templates/smarty/pages/email_change_token.tpl:33
+#: website/app-templates/smarty/pages/email_change_token.tpl:37
+#: website/app-templates/smarty/pages/email_revalidate.tpl:33
+#: website/app-templates/smarty/pages/email_revalidate.tpl:37
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:33
 #: website/app-templates/smarty/pages/email_change_revert_token.tpl:37
 #: website/app-templates/smarty/pages/email_change.tpl:34
 #: website/app-templates/smarty/pages/email_change.tpl:38
-#: website/app-templates/smarty/pages/email_change_token.tpl:33
-#: website/app-templates/smarty/pages/email_change_token.tpl:37
 #: website/app-templates/smarty/pages/user_update_username.tpl:30
-#: website/app-templates/smarty/pages/email_revalidate.tpl:33
-#: website/app-templates/smarty/pages/email_revalidate.tpl:37
+#: website/app-templates/smarty/dialog/user_update_password.tpl:53
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:55
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:16
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:37
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:16
+#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
+#: website/app-templates/smarty/dialog/user_contact.tpl:42
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:14
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:23
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
-#: website/app-templates/smarty/dialog/move_delete.tpl:23
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:13
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:35
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
-#: website/app-templates/smarty/dialog/user_update_password.tpl:53
-#: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
+#: website/app-templates/smarty/dialog/picture_edit.tpl:46
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:66
+#: website/app-templates/smarty/dialog/user_update_email.tpl:52
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:39
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:14
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:23
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:13
-#: website/app-templates/smarty/dialog/picture_edit.tpl:46
-#: website/app-templates/smarty/dialog/user_contact.tpl:42
-#: website/app-templates/smarty/dialog/user_update_email.tpl:52
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:16
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:55
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:27
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:14
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:66
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:13
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:21
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
-#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:12
 #: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:32
-#: website/app-templates/smarty/dialog/news_subscription.tpl:24
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:13
 #: website/app-templates/smarty/dialog/picture_delete.tpl:15
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:37
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:16
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:39
+#: website/app-templates/smarty/dialog/move_delete.tpl:23
+#: website/app-templates/smarty/dialog/news_subscription.tpl:24
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:12
 msgid "Dismiss"
 msgstr "Hylkää"
 
@@ -2128,37 +1951,305 @@ msgstr "Hylkää"
 msgid "Define"
 msgstr "Määritä"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:3
+msgid "GeoKret watchers"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:9
+msgid "Those users are watching GeoKret %1 moves"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:19
+#: website/app-templates/smarty/pages/search_by_user.tpl:19
+#: website/app-templates/smarty/dialog/login_simple.tpl:10
+#: website/app-templates/smarty/dialog/login_simple.tpl:11
+#: website/app-templates/smarty/dialog/login.tpl:13
+#: website/app-templates/smarty/dialog/login.tpl:15
+#: website/app-templates/smarty/forms/advanced_search.tpl:17
+#: website/app-templates/smarty/forms/advanced_search.tpl:19
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:10
+#: website/app-templates/smarty/forms/registration_social_auth.tpl:12
+#: website/app-templates/smarty/forms/move.tpl:231
+#: website/app-templates/smarty/forms/registration.tpl:4
+#: website/app-templates/smarty/forms/registration.tpl:6
+msgid "Username"
+msgstr "Käyttäjätunnus"
+
+#: website/app-templates/smarty/pages/geokret_watchers.tpl:34
+msgid "No users are watching GeoKret %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_label.tpl:3
+#: website/app-templates/smarty/pages/geokret_label.tpl:6
+msgid "Label generator"
+msgstr ""
+
+#: website/app-templates/smarty/pages/advanced_search.tpl:3
+#: website/app-templates/smarty/pages/advanced_search.tpl:8
+#: website/app-templates/smarty/navbar-left.tpl:19
+msgid "Advanced search"
+msgstr "Tarkennettu haku"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:3
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:11
+msgid "%1's recent moves"
+msgstr "%1n viimeaikaiset siirrot"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:21
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:21
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:22
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:20
+#: website/app-templates/smarty/pages/user_inventory.tpl:22
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:21
+msgid "Name"
+msgstr "Nimi"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:22
+#: website/app-templates/smarty/pages/home.tpl:40
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:22
+msgid "Spotted in"
+msgstr "Spotted sisään"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:23
+#: website/app-templates/smarty/pages/home.tpl:41
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:22
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:23
+#: website/app-templates/smarty/pages/news_details.tpl:20
+#: website/app-templates/smarty/pages/news_details.tpl:38
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:22
+#: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
+#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/emails/daily-mail.tpl:38
+#: website/app-templates/smarty/emails/daily-mail.tpl:81
+#: website/app-templates/smarty/emails/daily-mail.tpl:127
+#: website/app-templates/smarty/emails/daily-mail.tpl:171
+msgid "Comment"
+msgstr "Kommentti"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:24
+#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
+msgid "Last move"
+msgstr "Viimeisin siirto"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:25
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
+#: website/app-templates/smarty/pages/user_inventory.tpl:26
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:25
+#: website/app-templates/smarty/elements/map_caption.tpl:138
+msgid "Caches visited count"
+msgstr "Kätköjen määrä"
+
+#: website/app-templates/smarty/pages/user_recent_moves.tpl:36
+msgid "%1 didn't moved any GeoKrety yet."
+msgstr "%1 ei siirtänyt vielä yhtään GeoKretya."
+
+#: website/app-templates/smarty/pages/press_corner.tpl:3
+#: website/app-templates/smarty/pages/press_corner.tpl:9
+#: website/app-templates/smarty/navbar-left.tpl:47
+msgid "Press corner"
+msgstr "Paina kulmaa"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:3
+msgid "Hall of fame"
+msgstr "Sali fame"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:8
+msgid "Developers"
+msgstr "Kehittäjät"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:11
+msgid "Current team:"
+msgstr "Nykyinen tiimi:"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:13
+msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
+msgstr "isännöinti, koodi, uusi suunnittelu, tuki ja <a href=\"%1\">suunnittelu GK v2</a>"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:14
+msgid "code, support, public relation and advertising"
+msgstr "koodi, tuki, suhdetoiminta ja mainonta"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:16
+msgid "Legacy team:"
+msgstr "Vanha tiimi:"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:18
+msgid "idea, code and original design"
+msgstr "idea, koodi ja alkuperäinen rakenne"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:19
+msgid "visions into (legacy) code 😉"
+msgstr "visioita (legacy) koodiin 😉"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:26
+msgid "Support"
+msgstr "Tuki"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:30
+msgid "GK logo (the mole, different versions)"
+msgstr "GK logo (mooli, eri versiot)"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:31
+msgid "MySQL support, sandwiches and more 😃"
+msgstr "MySQL tuki, voileipiä ja paljon muuta 😃"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:32
+msgid "GK maps"
+msgstr "GK kartat"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:39
+#: website/app-templates/smarty/pages/help.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:42
+#: website/app-templates/smarty/navbar-left.tpl:44
+msgid "Help"
+msgstr "Apua"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:43
+msgid "betatesting, idea, public relation and advertising 😃"
+msgstr "betatestaus, idea, julkinen suhde ja mainonta 😃"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:44
+msgid "betatesting, language support"
+msgstr "betatestaus, kielituki"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:45
+msgid "betatesting"
+msgstr "betatestaus"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:46
+msgid "programming support"
+msgstr "ohjelmoinnin tuki"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:47
+msgid "coordinates parser"
+msgstr ""
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:48
+msgid "public relation and advertising"
+msgstr "julkisuussuhteet ja mainonta"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:55
+msgid "Translations"
+msgstr "Käännökset"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:84
+msgid "Global reviewers"
+msgstr "Globaalit arvioijat"
+
+#: website/app-templates/smarty/pages/hall_of_fame.tpl:91
+msgid "Credits"
+msgstr "Tekijät"
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:3
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:6
+msgid "All yearly rankings"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:18
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:43
+msgid "No attributed awards yet."
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:3
+#: website/app-templates/smarty/pages/user_owned_pictures.tpl:9
+msgid "Pictures of %1's GeoKrety"
+msgstr "Kuvia %1n GeoKretysta"
+
 #: website/app-templates/smarty/pages/email_change_token.tpl:3
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:3
 msgid "Confirm changing your email address"
 msgstr ""
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:8
 #: website/app-templates/smarty/pages/email_change_token.tpl:8
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:8
 msgid "Do you confirm changing your email address?"
 msgstr "Vahvistatko sinä sähköpostiosoitteesi muuttamista?"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:32
-#: website/app-templates/smarty/pages/email_change.tpl:33
 #: website/app-templates/smarty/pages/email_change_token.tpl:32
 #: website/app-templates/smarty/pages/email_revalidate.tpl:32
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:32
+#: website/app-templates/smarty/pages/email_change.tpl:33
 msgid "Back to your profile"
 msgstr "Takaisin profiiliisi"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
-#: website/app-templates/smarty/pages/email_change.tpl:37
 #: website/app-templates/smarty/pages/email_change_token.tpl:36
 #: website/app-templates/smarty/pages/email_revalidate.tpl:36
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:36
+#: website/app-templates/smarty/pages/email_change.tpl:37
 msgid "Back to homepage"
 msgstr "Takaisin kotisivulle"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:40
-msgid "I approve this change"
-msgstr "Hyväksyn tämän muutoksen"
+#: website/app-templates/smarty/pages/email_change_token.tpl:40
+msgid "Yes, change my email address"
+msgstr "Kyllä, vaihda sähköpostiosoitteeni"
 
-#: website/app-templates/smarty/pages/email_change_revert_token.tpl:41
-msgid "No, please revert to my old email address"
-msgstr "Ei, ole hyvä ja palaa vanhaan sähköpostiosoitteeseen"
+#: website/app-templates/smarty/pages/email_change_token.tpl:41
+msgid "No, abort this request"
+msgstr "Ei, keskeytä tämä pyyntö"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
+msgid "%1's Owned GeoKrety map"
+msgstr ""
+
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:3
+#: website/app-templates/smarty/pages/pictures_gallery.tpl:9
+msgid "Pictures gallery"
+msgstr "Kuvia galleria"
+
+#: website/app-templates/smarty/pages/home.tpl:3
+#: website/app-templates/smarty/pages/home.tpl:8
+msgid "Welcome to GeoKrety.org!"
+msgstr "Tervetuloa GeoKrety.orgiin!"
+
+#: website/app-templates/smarty/pages/home.tpl:26
+#: website/app-templates/smarty/pages/news_list.tpl:3
+#: website/app-templates/smarty/footer.tpl:5
+#: website/app-templates/smarty/navbar-left.tpl:3
+msgid "News"
+msgstr "Uutisia"
+
+#: website/app-templates/smarty/pages/home.tpl:33
+msgid "Latest moves"
+msgstr "Viimeisimmät siirrot"
+
+#: website/app-templates/smarty/pages/home.tpl:43
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:25
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:24
+#: website/app-templates/smarty/emails/daily-mail.tpl:129
+msgid "Distance"
+msgstr "Etäisyys"
+
+#: website/app-templates/smarty/pages/home.tpl:57
+msgid "Recent pictures"
+msgstr "Viimeisimmät kuvat"
+
+#: website/app-templates/smarty/pages/home.tpl:70
+msgid "Recently created GeoKrety"
+msgstr "Äskettäin luotu GeoKrety"
+
+#: website/app-templates/smarty/pages/home.tpl:77
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
+#: website/app-templates/smarty/pages/user_inventory.tpl:23
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:22
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
+#: website/app-templates/smarty/forms/geokret_label.tpl:15
+#: website/app-templates/smarty/forms/geokret_label.tpl:17
+msgid "Owner"
+msgstr "Omistaja"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:3
 #: website/app-templates/smarty/pages/contact_us.tpl:8
@@ -2168,11 +2259,6 @@ msgstr "Ota yhteyttä"
 #: website/app-templates/smarty/pages/contact_us.tpl:13
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "Jos sinulla on ehdotuksia tai vikailmoituksia, voit kirjoittaa meille."
-
-#: website/app-templates/smarty/pages/contact_us.tpl:17
-#: website/app-templates/smarty/blocks/user/details.tpl:46
-msgid "Email"
-msgstr "Sähköposti"
 
 #: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Or via the user profile"
@@ -2198,152 +2284,67 @@ msgstr "Haluatko allekirjoittaa tai salata sähköpostiasi?"
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "Julkinen PGP/GPG-avaimemme <a href=\"%1\">on täällä (%2)</a>"
 
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
-msgid "Waypoints statistics"
-msgstr ""
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
+msgid "%1 doesn't watch any GeoKrety yet."
+msgstr "%1 ei katso mitään GeoKretyä vielä."
 
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:10
-msgid "Service code"
-msgstr ""
+#: website/app-templates/smarty/pages/password_change.tpl:3
+#: website/app-templates/smarty/pages/password_change.tpl:13
+#: website/app-templates/smarty/dialog/user_update_password.tpl:8
+msgid "Change your password"
+msgstr "Vaihda salasanasi"
 
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:11
-msgid "Service url"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:12
-msgid "Waypoint count"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:13
-msgid "Last synchronization"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:14
-msgid "Revision"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:15
-msgid "Last error"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:16
-msgid "Error count"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:39
-msgid "N/A"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_waypoints.tpl:49
-msgid "Force complete synchronization"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_label.tpl:3
-#: website/app-templates/smarty/pages/geokret_label.tpl:6
-msgid "Label generator"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:3
-msgid "GeoKret watchers"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:9
-msgid "Those users are watching GeoKret %1 moves"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokret_watchers.tpl:34
-msgid "No users are watching GeoKret %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:3
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:8
-msgid "GeoKrety Toolbox - GKT"
-msgstr ""
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:12
-msgid "Shows GeoKrety trackables on <a href=\"%1\" target=\"_blank\">geocaching.com</a> cache pages and facilitates dropping GeoKrety trackables into Geocaching caches."
-msgstr "Näyttää GeoKrety trackables <a href=\"%1\" target=\"_blank\">geocaching.com</a> välimuistisivuilla ja helpottaa GeoKrety trackables putoamista kätköihin."
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
-msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr "Tämä käsikirjoitus on kirjoitettu rakentamaan silta suosituin <a href=\"%1\">geokätköilyä. om</a> sivusto ja <a href=\"%2\">geokrety.org</a>. Sillä on kaksi toimintoa. Kun syötät tietyn kätkön sivulle <a href=\"%1\">geokätköilyä. om</a> se tarkistaa automaattisesti, onko mitään GeoKrety (kohteita, joita seurataan <a href=\"%2\">geokretyssä). rg</a>) välimuistin sisällä ja näyttää lopputuloksen näytön oikealla puolella olevassa tavaraluettelon osiossa (alla oleva luettelo Travelbugs and Geocoins). Jos sinulla on tili <a href=\"%2\">geokrety. rg</a> voit myös helposti pudottaa GeoKretyn <a href=\"%1\">Geocaching</a> kätköihin, koska reittipistekoodi ja koordinaatit kopioidaan automaattisesti kirjauslomakkeeseen <a href=\"%2\">geokrety. rg</a>."
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:18
-msgid "Available for:"
-msgstr "Käytetään:"
-
-#: website/app-templates/smarty/pages/geokrety_toolbox.tpl:22
-msgid "<a href=\"%1\">Firefox</a> (needs <a href=\"%2\">Tampermonkey add-on</a> or <a href=\"%3\">greasemonkey add-on</a>)"
-msgstr "<a href=\"%1\">Firefox</a> (tarvitsee <a href=\"%2\">Tampermonkey lisäosan</a> tai <a href=\"%3\">greasemonkey lisäosan</a>)"
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:3
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:6
-msgid "Top %1"
-msgstr ""
-
-#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:12
-msgid "Rank"
-msgstr "Sija"
-
-#: website/app-templates/smarty/pages/user_pictures.tpl:3
-#: website/app-templates/smarty/pages/user_pictures.tpl:9
-msgid "%1's posted pictures"
-msgstr "%1on lähetetty kuvia"
-
-#: website/app-templates/smarty/pages/user_inventory.tpl:3
-#: website/app-templates/smarty/pages/user_inventory.tpl:12
-msgid "%1's inventory"
-msgstr "%1n tavaraluettelo"
-
-#: website/app-templates/smarty/pages/user_inventory.tpl:38
-msgid "%1's inventory is currently empty."
-msgstr "%1n tavaraluettelo on tällä hetkellä tyhjä."
-
-#: website/app-templates/smarty/pages/work_in_progress.tpl:3
-#: website/app-templates/smarty/pages/work_in_progress.tpl:6
-msgid "This page doesn't exists yet, but we're working on it!"
-msgstr "Tätä sivua ei ole vielä olemassa, mutta työskentelemme sen parissa!"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:11
-msgid "%1's GeoKrety recent moves"
-msgstr "%1n GeoKrety viimeaikaiset siirrot"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:33
-msgid "%1's GeoKrety didn't moved yet."
-msgstr "%1n GeoKrety ei vielä siirtynyt."
-
-#: website/app-templates/smarty/pages/help.tpl:3
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:39
-#: website/app-templates/smarty/navbar-left.tpl:42
-#: website/app-templates/smarty/navbar-left.tpl:44
-msgid "Help"
-msgstr "Apua"
-
-#: website/app-templates/smarty/pages/email_change.tpl:10
-msgid "Changing your email address."
-msgstr "Muuttaa sähköpostiosoitettasi."
-
-#: website/app-templates/smarty/pages/email_change.tpl:18
 #: website/app-templates/smarty/pages/password_change.tpl:22
 #: website/app-templates/smarty/pages/email_revalidate.tpl:18
+#: website/app-templates/smarty/pages/email_change.tpl:18
 msgid "Please enter the verification token received by mail."
 msgstr "Ole hyvä ja syötä sähköpostilla vastaanotettu vahvistusmerkki."
 
-#: website/app-templates/smarty/pages/email_change.tpl:23
-#: website/app-templates/smarty/pages/email_change.tpl:25
 #: website/app-templates/smarty/pages/password_change.tpl:27
 #: website/app-templates/smarty/pages/password_change.tpl:29
 #: website/app-templates/smarty/pages/email_revalidate.tpl:23
 #: website/app-templates/smarty/pages/email_revalidate.tpl:25
+#: website/app-templates/smarty/pages/email_change.tpl:23
+#: website/app-templates/smarty/pages/email_change.tpl:25
 msgid "Verification Token"
 msgstr "Vahvistusmerkki"
 
-#: website/app-templates/smarty/pages/email_change.tpl:41
-#: website/app-templates/smarty/pages/email_revalidate.tpl:40
-msgid "Check the token"
-msgstr "Tarkista tunnus"
+#: website/app-templates/smarty/pages/password_change.tpl:36
+msgid "Please define a new password."
+msgstr "Määritä uusi salasana."
+
+#: website/app-templates/smarty/pages/password_change.tpl:41
+#: website/app-templates/smarty/pages/password_change.tpl:43
+#: website/app-templates/smarty/dialog/user_update_password.tpl:24
+#: website/app-templates/smarty/dialog/user_update_password.tpl:26
+msgid "New password"
+msgstr "Uusi salasana"
+
+#: website/app-templates/smarty/pages/password_change.tpl:48
+#: website/app-templates/smarty/pages/password_change.tpl:50
+#: website/app-templates/smarty/dialog/user_update_password.tpl:31
+#: website/app-templates/smarty/dialog/user_update_password.tpl:33
+#: website/app-templates/smarty/forms/registration.tpl:26
+#: website/app-templates/smarty/forms/registration.tpl:28
+msgid "Confirm password"
+msgstr "Vahvista salasana"
+
+#: website/app-templates/smarty/pages/password_change.tpl:57
+#: website/app-templates/smarty/pages/user_update_username.tpl:32
+#: website/app-templates/smarty/dialog/user_update_password.tpl:55
+#: website/app-templates/smarty/dialog/user_update_email.tpl:54
+#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:29
+msgid "Change"
+msgstr "Muuta"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:38
+msgid "%1 doesn't own any GeoKrety yet."
+msgstr "%1 ei omista vielä yhtään GeoKretyä."
+
+#: website/app-templates/smarty/pages/geokrety_labels.tpl:3
+#: website/app-templates/smarty/pages/geokrety_labels.tpl:6
+msgid "Mass label generator"
+msgstr ""
 
 #: website/app-templates/smarty/pages/downloads.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:54
@@ -2413,42 +2414,204 @@ msgstr "Näytteen etiketti #%1: "
 msgid "Old label design: "
 msgstr "Vanha tarramalli: "
 
-#: website/app-templates/smarty/pages/news_list.tpl:18
-msgid "There is no news yet"
-msgstr "Ei ole vielä uutisia"
+#: website/app-templates/smarty/pages/work_in_progress.tpl:3
+#: website/app-templates/smarty/pages/work_in_progress.tpl:6
+msgid "This page doesn't exists yet, but we're working on it!"
+msgstr "Tätä sivua ei ole vielä olemassa, mutta työskentelemme sen parissa!"
 
-#: website/app-templates/smarty/pages/email_change_token.tpl:40
-msgid "Yes, change my email address"
-msgstr "Kyllä, vaihda sähköpostiosoitteeni"
-
-#: website/app-templates/smarty/pages/email_change_token.tpl:41
-msgid "No, abort this request"
-msgstr "Ei, keskeytä tämä pyyntö"
-
-#: website/app-templates/smarty/pages/geokret_move.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:6
-#: website/app-templates/smarty/navbar-left.tpl:13
-#: website/app-templates/smarty/navbar.tpl:16
-msgid "Log a GeoKret"
-msgstr "Kirjaa GeoKret"
-
-#: website/app-templates/smarty/pages/geokrety_map.tpl:3
-msgid "Interactive map"
+#: website/app-templates/smarty/pages/search_by_user.tpl:3
+msgid "Search users"
 msgstr ""
 
-#: website/app-templates/smarty/pages/geokrety_map.tpl:17
-msgid "GeoKrety interactive map"
-msgstr "GeoKretyn interaktiivinen kartta"
-
-#: website/app-templates/smarty/pages/geokrety_labels.tpl:3
-#: website/app-templates/smarty/pages/geokrety_labels.tpl:6
-msgid "Mass label generator"
+#: website/app-templates/smarty/pages/search_by_user.tpl:9
+msgid "Found users matching: %1"
 msgstr ""
 
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety_map.tpl:15
-msgid "%1's Owned GeoKrety map"
+#: website/app-templates/smarty/pages/search_by_user.tpl:34
+msgid "No users matching: %1"
 msgstr ""
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:3
+#: website/app-templates/smarty/pages/geokret_claim.tpl:8
+#: website/app-templates/smarty/navbar-left.tpl:16
+msgid "Claim a GeoKret"
+msgstr "Claim a GeoKret"
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:30
+msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
+msgstr "Prosessi edellyttää \"Seurantakoodi\", joka on yleensä kirjoitettu GeoKretin etiketissä tai kaiverrettu kolikkoon ja \"Omistaja koodi\" yleensä annetaan paperilevyllä."
+
+#: website/app-templates/smarty/pages/geokret_claim.tpl:36
+msgid "Adopt"
+msgstr "Hyväksy"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:3
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:9
+msgid "GeoKrety visiting the cache %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
+msgid "Cache"
+msgstr "Välimuisti"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Date"
+msgstr "Päiväys"
+
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
+msgid "No GeoKrety has visited cache %1 yet."
+msgstr ""
+
+#: website/app-templates/smarty/pages/email_revalidate.tpl:10
+msgid "Email address revalidation."
+msgstr ""
+
+#: website/app-templates/smarty/pages/email_revalidate.tpl:40
+#: website/app-templates/smarty/pages/email_change.tpl:41
+msgid "Check the token"
+msgstr "Tarkista tunnus"
+
+#: website/app-templates/smarty/pages/user_inventory.tpl:3
+#: website/app-templates/smarty/pages/user_inventory.tpl:12
+msgid "%1's inventory"
+msgstr "%1n tavaraluettelo"
+
+#: website/app-templates/smarty/pages/user_inventory.tpl:38
+msgid "%1's inventory is currently empty."
+msgstr "%1n tavaraluettelo on tällä hetkellä tyhjä."
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:3
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:6
+msgid "Waypoints statistics"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:10
+msgid "Service code"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:11
+msgid "Service url"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:12
+msgid "Waypoint count"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:13
+msgid "Last synchronization"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:14
+msgid "Revision"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:15
+msgid "Last error"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:16
+msgid "Error count"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:39
+msgid "N/A"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_waypoints.tpl:49
+msgid "Force complete synchronization"
+msgstr ""
+
+#: website/app-templates/smarty/pages/help_api.tpl:11
+msgid "Help API"
+msgstr ""
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:40
+msgid "I approve this change"
+msgstr "Hyväksyn tämän muutoksen"
+
+#: website/app-templates/smarty/pages/email_change_revert_token.tpl:41
+msgid "No, please revert to my old email address"
+msgstr "Ei, ole hyvä ja palaa vanhaan sähköpostiosoitteeseen"
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:3
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:6
+msgid "Top %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:12
+msgid "Rank"
+msgstr "Sija"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:3
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:11
+msgid "%1's GeoKrety recent moves"
+msgstr "%1n GeoKrety viimeaikaiset siirrot"
+
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:33
+msgid "%1's GeoKrety didn't moved yet."
+msgstr "%1n GeoKrety ei vielä siirtynyt."
+
+#: website/app-templates/smarty/pages/email_change.tpl:10
+msgid "Changing your email address."
+msgstr "Muuttaa sähköpostiosoitettasi."
+
+#: website/app-templates/smarty/pages/registration_validated.tpl:3
+#: website/app-templates/smarty/pages/registration_validated.tpl:8
+msgid "Welcome to the GeoKrety.org community!"
+msgstr "Tervetuloa GeoKrety.org -yhteisöön!"
+
+#: website/app-templates/smarty/pages/registration_validated.tpl:10
+msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
+msgstr ""
+
+#: website/app-templates/smarty/pages/registration_validated.tpl:12
+msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
+msgstr ""
+
+#: website/app-templates/smarty/pages/news_details.tpl:3
+msgid "News: %1"
+msgstr ""
+
+#: website/app-templates/smarty/pages/news_details.tpl:13
+msgid "Leave a comment"
+msgstr "Jätä kommentti"
+
+#: website/app-templates/smarty/pages/news_details.tpl:22
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:14
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:14
+msgid "Your comment"
+msgstr "Kommenttisi"
+
+#: website/app-templates/smarty/pages/news_details.tpl:30
+msgid "Subscribe to this news post"
+msgstr "Tilaa tämä uutinen viesti"
+
+#: website/app-templates/smarty/pages/news_details.tpl:43
+msgid "Please <a href=\"%1\">login</a> to post a comment"
+msgstr "Ole hyvä ja <a href=\"%1\">kirjaudu</a> kirjoittaaksesi kommentin"
+
+#: website/app-templates/smarty/pages/news_details.tpl:52
+msgid "There are no comments for this post."
+msgstr "Tähän viestiin ei ole kommentteja."
+
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:3
+msgid "Statpic background chooser"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:8
+msgid "Select your preferred statpic background"
+msgstr "Valitse ensisijainen tilastollinen tausta"
+
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:28
+#: website/app-templates/smarty/dialog/picture_edit.tpl:47
+#: website/app-templates/smarty/forms/geokret.tpl:63
+msgid "Save"
+msgstr "Tallenna"
+
+#: website/app-templates/smarty/pages/user_template_chooser.tpl:38
+msgid "Your current statpic"
+msgstr "Nykyinen tilasi"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:3
 msgid "Change username"
@@ -2470,249 +2633,173 @@ msgstr ""
 msgid "New username"
 msgstr ""
 
-#: website/app-templates/smarty/pages/user_update_username.tpl:32
-#: website/app-templates/smarty/pages/password_change.tpl:57
-#: website/app-templates/smarty/dialog/user_update_password.tpl:55
-#: website/app-templates/smarty/dialog/user_update_email.tpl:54
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:29
-msgid "Change"
-msgstr "Muuta"
-
-#: website/app-templates/smarty/pages/advanced_search.tpl:3
-#: website/app-templates/smarty/pages/advanced_search.tpl:8
-#: website/app-templates/smarty/navbar-left.tpl:19
-msgid "Advanced search"
-msgstr "Tarkennettu haku"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:3
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:12
-#: website/app-templates/smarty/blocks/user/actions.tpl:16
-msgid "Owned GeoKrety"
-msgstr "Omistettu GeoKrety"
-
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:38
-msgid "%1 doesn't own any GeoKrety yet."
-msgstr "%1 ei omista vielä yhtään GeoKretyä."
-
-#: website/app-templates/smarty/pages/pictures_gallery.tpl:3
-#: website/app-templates/smarty/pages/pictures_gallery.tpl:9
-msgid "Pictures gallery"
-msgstr "Kuvia galleria"
-
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:3
-msgid "Statpic background chooser"
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:3
+msgid "Search GeoKrety"
 msgstr ""
 
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:8
-msgid "Select your preferred statpic background"
-msgstr "Valitse ensisijainen tilastollinen tausta"
-
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:28
-#: website/app-templates/smarty/dialog/picture_edit.tpl:47
-#: website/app-templates/smarty/forms/geokret.tpl:63
-msgid "Save"
-msgstr "Tallenna"
-
-#: website/app-templates/smarty/pages/user_template_chooser.tpl:38
-msgid "Your current statpic"
-msgstr "Nykyinen tilasi"
-
-#: website/app-templates/smarty/pages/help_api.tpl:11
-msgid "Help API"
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:11
+msgid "Found GeoKrety matching: %1"
 msgstr ""
 
-#: website/app-templates/smarty/pages/geokret_create.tpl:3
-#: website/app-templates/smarty/blocks/user/actions.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:15
-#: website/app-templates/smarty/forms/geokret.tpl:6
-msgid "Create a new GeoKret"
-msgstr "Luo uusi GeoKret"
-
-#: website/app-templates/smarty/pages/password_change.tpl:3
-#: website/app-templates/smarty/pages/password_change.tpl:13
-#: website/app-templates/smarty/dialog/user_update_password.tpl:8
-msgid "Change your password"
-msgstr "Vaihda salasanasi"
-
-#: website/app-templates/smarty/pages/password_change.tpl:36
-msgid "Please define a new password."
-msgstr "Määritä uusi salasana."
-
-#: website/app-templates/smarty/pages/password_change.tpl:41
-#: website/app-templates/smarty/pages/password_change.tpl:43
-#: website/app-templates/smarty/dialog/user_update_password.tpl:24
-#: website/app-templates/smarty/dialog/user_update_password.tpl:26
-msgid "New password"
-msgstr "Uusi salasana"
-
-#: website/app-templates/smarty/pages/password_change.tpl:48
-#: website/app-templates/smarty/pages/password_change.tpl:50
-#: website/app-templates/smarty/dialog/user_update_password.tpl:31
-#: website/app-templates/smarty/dialog/user_update_password.tpl:33
-#: website/app-templates/smarty/forms/registration.tpl:26
-#: website/app-templates/smarty/forms/registration.tpl:28
-msgid "Confirm password"
-msgstr "Vahvista salasana"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:3
-#: website/app-templates/smarty/pages/geokret_claim.tpl:8
-#: website/app-templates/smarty/navbar-left.tpl:16
-msgid "Claim a GeoKret"
-msgstr "Claim a GeoKret"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:15
-#: website/app-templates/smarty/blocks/geokret/details.tpl:49
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
-#: website/app-templates/smarty/forms/move.tpl:21
-#: website/app-templates/smarty/forms/geokret_label.tpl:31
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:22
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:77
-msgid "Tracking Code"
-msgstr "Seurantakoodi"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:22
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:114
-msgid "Owner Code"
-msgstr "Omistajan Koodi"
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:30
-msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
-msgstr "Prosessi edellyttää \"Seurantakoodi\", joka on yleensä kirjoitettu GeoKretin etiketissä tai kaiverrettu kolikkoon ja \"Omistaja koodi\" yleensä annetaan paperilevyllä."
-
-#: website/app-templates/smarty/pages/geokret_claim.tpl:36
-msgid "Adopt"
-msgstr "Hyväksy"
-
-#: website/app-templates/smarty/pages/email_revalidate.tpl:10
-msgid "Email address revalidation."
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:34
+msgid "No GeoKrety matching: %1"
 msgstr ""
 
-#: website/app-templates/smarty/pages/press_corner.tpl:3
-#: website/app-templates/smarty/pages/press_corner.tpl:9
-#: website/app-templates/smarty/navbar-left.tpl:47
-msgid "Press corner"
-msgstr "Paina kulmaa"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:3
-msgid "Hall of fame"
-msgstr "Sali fame"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:8
-msgid "Developers"
-msgstr "Kehittäjät"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:11
-msgid "Current team:"
-msgstr "Nykyinen tiimi:"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:13
-msgid "hosting, code, new design, support and <a href=\"%1\">planning GK v2</a>"
-msgstr "isännöinti, koodi, uusi suunnittelu, tuki ja <a href=\"%1\">suunnittelu GK v2</a>"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:14
-msgid "code, support, public relation and advertising"
-msgstr "koodi, tuki, suhdetoiminta ja mainonta"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:16
-msgid "Legacy team:"
-msgstr "Vanha tiimi:"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:18
-msgid "idea, code and original design"
-msgstr "idea, koodi ja alkuperäinen rakenne"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:19
-msgid "visions into (legacy) code 😉"
-msgstr "visioita (legacy) koodiin 😉"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:26
-msgid "Support"
-msgstr "Tuki"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:30
-msgid "GK logo (the mole, different versions)"
-msgstr "GK logo (mooli, eri versiot)"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:31
-msgid "MySQL support, sandwiches and more 😃"
-msgstr "MySQL tuki, voileipiä ja paljon muuta 😃"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:32
-msgid "GK maps"
-msgstr "GK kartat"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:43
-msgid "betatesting, idea, public relation and advertising 😃"
-msgstr "betatestaus, idea, julkinen suhde ja mainonta 😃"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:44
-msgid "betatesting, language support"
-msgstr "betatestaus, kielituki"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:45
-msgid "betatesting"
-msgstr "betatestaus"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:46
-msgid "programming support"
-msgstr "ohjelmoinnin tuki"
-
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:47
-msgid "coordinates parser"
+#: website/app-templates/smarty/pages/user_details.tpl:3
+msgid "%1's user profile"
 msgstr ""
 
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:48
-msgid "public relation and advertising"
-msgstr "julkisuussuhteet ja mainonta"
+#: website/app-templates/smarty/pages/news_list.tpl:18
+msgid "There is no news yet"
+msgstr "Ei ole vielä uutisia"
 
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:55
-msgid "Translations"
-msgstr "Käännökset"
+#: website/app-templates/smarty/pages/registration.tpl:3
+msgid "Registration"
+msgstr ""
 
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:84
-msgid "Global reviewers"
-msgstr "Globaalit arvioijat"
+#: website/app-templates/smarty/pages/registration.tpl:14
+msgid "Create an account using %1"
+msgstr "Luo tili käyttäen %1"
 
-#: website/app-templates/smarty/pages/hall_of_fame.tpl:91
-msgid "Credits"
-msgstr "Tekijät"
+#: website/app-templates/smarty/pages/registration.tpl:16
+msgid "Create an account"
+msgstr "Luo tili"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:3
-#: website/app-templates/smarty/pages/password_recovery.tpl:10
-msgid "Password recovery"
-msgstr "Salasanan palautus"
+#: website/app-templates/smarty/footer.tpl:3
+#: website/app-templates/smarty/navbar-left.tpl:2
+msgid "Home"
+msgstr "Pääsivu"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:19
-msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
-msgstr "Jos olet vahvistanut sähköpostiosoitteesi aiemmin, voit palauttaa sen helposti. Muuten, sinun täytyy luoda toinen tili, anteeksi."
+#: website/app-templates/smarty/footer.tpl:4
+msgid "About"
+msgstr "Tietoja"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:24
-#: website/app-templates/smarty/pages/password_recovery.tpl:26
-#: website/app-templates/smarty/dialog/user_update_email.tpl:11
-#: website/app-templates/smarty/dialog/user_update_email.tpl:12
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:18
-#: website/app-templates/smarty/forms/registration_social_auth.tpl:20
-#: website/app-templates/smarty/forms/registration.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:13
-msgid "Email address"
-msgstr "Sähköpostiosoite"
+#: website/app-templates/smarty/footer.tpl:6
+msgid "Contact"
+msgstr "Yhteydenotto"
 
-#: website/app-templates/smarty/pages/password_recovery.tpl:35
-msgid "Send me a recovery link"
-msgstr "Lähetä minulle palautuslinkki"
+#: website/app-templates/smarty/footer.tpl:10
+msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
+msgstr "Julkaistu <a id=\"footer-license\" href=\"%1\">MIT lisenssillä</a>"
 
-#: website/app-templates/smarty/macros/pagination.tpl:5
-msgid "First"
-msgstr "Ensimmäinen"
+#: website/app-templates/smarty/footer.tpl:12
+msgid "Contribute to translation"
+msgstr ""
 
-#: website/app-templates/smarty/macros/pagination.tpl:17
-msgid "Last [%1]"
-msgstr "Viimeinen [%1]"
+#: website/app-templates/smarty/footer.tpl:15
+msgid "Leave in-context translation"
+msgstr "Poistu kontekstin käännöksestä"
 
-#: website/app-templates/smarty/elements/move_comment.tpl:10
-#: website/app-templates/smarty/elements/news_comment.tpl:10
-msgid "Delete comment"
-msgstr "Poista kommentti"
+#: website/app-templates/smarty/footer.tpl:17
+msgid "in-context translation"
+msgstr "kontekstin käännös"
+
+#: website/app-templates/smarty/footer.tpl:21
+msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr "Suunnitellut <abbr title=\"love\">💗</abbr> <a id=\"footer-team\" href=\"%1\">GeoKrety Tiimi</a>"
+
+#: website/app-templates/smarty/navbar-right.tpl:5
+msgid "Search…"
+msgstr ""
+
+#: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
+msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
+msgstr "Sinulla on odottava sähköpostivahvistus. Älä unohda klikata sähköpostin linkkiä lopettaaksesi menettelyn. Linkki vanhenee %1!"
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:3
+msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "Anteeksi, mutta tilisi ei ole rekisteröitynyt. Et voi palauttaa salasanan menetyksestä! Et myöskään saa päivittäisiä ilmoituksia GeoKretystäsi tai katseli GeoKretyä."
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:4
+msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr "Harkitse <a href=\"%1\">lisäämällä sähköpostiosoitteen</a> tai <a href=\"%2\">linkitä tilisi</a> jollekin OAuth-palveluntarjoajalle."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:3
+msgid "Even if it is - for now - not required, we recommend you to <a href=\"%1\">login</a>."
+msgstr "Vaikka se on - nyt - ei tarvita, suosittelemme <a href=\"%1\">kirjautua</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:4
+msgid "Do not hesitate to <a href=\"%1\">create an account</a>."
+msgstr "Älä epäröi <a href=\"%1\">luoda tiliä</a>."
+
+#: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
+msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
+msgstr "Silloin voit hallita GeoKretyn tavaraluetteloasi, ladata kuvia, muokata lokejasi ja luoda tietenkin oman GeoKretyn!"
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:4
+msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
+msgstr "Olet asettanut tämän GeoKretin hyväksyttäväksi. Omistajan koodi on: <strong>%1</strong>. Anna se yhdessä seurantakoodin <strong>%2</strong> kanssa käyttäjälle, joka hyväksyy GeoKretin."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:6
+msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
+msgstr "Tämä GeoKret on käytettävissä hyväksyttäväksi. Jos nykyinen omistaja antoi sinulle seurantakoodin sekä omistajan koodin, voit <a href=\"%1\">lunastaa</a> tämän GeoKret."
+
+#: website/app-templates/smarty/banners/geokret_adopt.tpl:8
+msgid "This GeoKret is available for adoption. Please <a href=\"%1\">login</a> first."
+msgstr ""
+
+#: website/app-templates/smarty/banners/is_not_prod.tpl:3
+msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/user_password_missing.tpl:3
+msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
+msgstr ""
+
+#: website/app-templates/smarty/banners/user_password_missing.tpl:4
+msgid "Please consider <a href=\"%1\">setting a password</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
+msgstr ""
+
+#: website/app-templates/smarty/banners/user_email_invalid.tpl:3
+msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
+msgstr ""
+
+#: website/app-templates/smarty/banners/flash_messages.tpl:3
+#: website/app-templates/smarty/banners/contribute.tpl:2
+msgid "Close"
+msgstr "Sulje"
+
+#: website/app-templates/smarty/banners/site_intro.tpl:3
+msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
+msgstr "GeoKrety on ilmainen online-palvelu kohteiden seurantaan GPS-peleissä, kuten geokätköily tai opencaching. Voit seurata pieniä esineitä, kirjoja, kolikoita, lemmikkejä tai ihmisiä kanssamme… <a href=\"%1\">Lue lisää</a>."
+
+#: website/app-templates/smarty/banners/contribute.tpl:3
+msgid "This branch 🥦 is actively developped 👨‍💻, if you find bugs 🐛, please check 👀 <a href=\"%1\" target=\"_blank\">existing issues ♻️ on GitHub %2</a> and feel free 🈚 to open new 🆕. (One 1 bug per issue please 🙏)"
+msgstr "Tämä haara 🥦 kehitetään aktiivisesti 👨‍💻, jos löydät bugeja 🐛, Tarkista 👀 <a href=\"%1\" target=\"_blank\">olemassa olevat ongelmat ♻️ GitHubissa %2</a> ja avaa vapaasti 🆕. (Yksi virhe per ongelma 🙏)"
+
+#: website/app-templates/smarty/banners/donate.tpl:2
+msgid "Enjoying GeoKrety.org?"
+msgstr "Pidätkö GeoKrety.orgista?"
+
+#: website/app-templates/smarty/banners/donate.tpl:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr ""
+
+#: website/app-templates/smarty/banners/donate.tpl:8
+msgid "Donate"
+msgstr ""
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:2
+msgid "Some statistics"
+msgstr "Joitakin tilastoja"
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:6
+msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
+msgstr "<strong>%1</strong> rekisteröity GeoKrety, <strong>%2</strong> GeoKrety piilotettu <strong>%3</strong> käyttäjää."
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:13
+msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
+msgstr ""
+
+#: website/app-templates/smarty/banners/intro_stats.tpl:21
+msgid "And that's thanks to you! Congratulation!"
+msgstr "Ja se kiitos sinulle! Onnittelut!"
+
+#: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:36
+#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:38
+#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:34
+msgid "Move this GeoKret"
+msgstr "Siirrä tämä GeoKreeta"
 
 #: website/app-templates/smarty/elements/news.tpl:7
 msgid "Unsubscribe from news"
@@ -2722,54 +2809,18 @@ msgstr "Peruuta uutisten tilaus"
 msgid "Subscribe to news"
 msgstr "Tilaa uutisia"
 
-#: website/app-templates/smarty/elements/move.tpl:7
-msgid "Show move on map"
-msgstr "Näytä siirto kartalla"
-
-#: website/app-templates/smarty/elements/move.tpl:64
-msgid "Report as missing"
-msgstr "Raportti puuttuu"
-
-#: website/app-templates/smarty/elements/move.tpl:69
-#: website/app-templates/smarty/blocks/user/details.tpl:21
-#: website/app-templates/smarty/blocks/geokret/details.tpl:35
-msgid "Upload a picture"
-msgstr "Lataa kuva"
-
-#: website/app-templates/smarty/elements/move.tpl:73
-msgid "Write a comment"
-msgstr "Kirjoita kommentti"
-
-#: website/app-templates/smarty/elements/move.tpl:81
-msgid "Edit log"
-msgstr "Muokkaa lokia"
-
-#: website/app-templates/smarty/elements/move.tpl:85
-msgid "Delete log"
-msgstr "Poista loki"
-
-#: website/app-templates/smarty/elements/credit.tpl:4
-msgid "%1 logo"
+#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:7
+msgid "Declared as missing"
 msgstr ""
 
-#: website/app-templates/smarty/elements/geokrety_as_list_user_owned_geokrety.tpl:36
-#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:38
-#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:34
-msgid "Move this GeoKret"
-msgstr "Siirrä tämä GeoKreeta"
+#: website/app-templates/smarty/elements/news_comment.tpl:10
+#: website/app-templates/smarty/elements/move_comment.tpl:10
+msgid "Delete comment"
+msgstr "Poista kommentti"
 
 #: website/app-templates/smarty/elements/version.tpl:3
 msgid "Deployed on %1"
 msgstr "Käyttöönotettu %1"
-
-#: website/app-templates/smarty/elements/geokrety_as_list_user_watched_geokrety.tpl:41
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:26
-msgid "Remove this geokret from your watch list"
-msgstr ""
-
-#: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:7
-msgid "Declared as missing"
-msgstr ""
 
 #: website/app-templates/smarty/elements/map_caption.tpl:9
 msgid "Last moved date"
@@ -2784,11 +2835,6 @@ msgstr ""
 msgid "%1 days"
 msgstr ""
 
-#: website/app-templates/smarty/elements/map_caption.tpl:75
-#: website/app-templates/smarty/blocks/geokret/details.tpl:52
-msgid "Total distance"
-msgstr "Kokonaisetäisyys"
-
 #: website/app-templates/smarty/elements/map_caption.tpl:139
 msgid "Total visited caches"
 msgstr ""
@@ -2801,440 +2847,60 @@ msgstr ""
 msgid "%1 caches"
 msgstr ""
 
-#: website/app-templates/smarty/chunks/social_groups.tpl:5
-msgid "languages"
-msgstr "kielet"
-
-#: website/app-templates/smarty/chunks/social_groups.tpl:6
-msgid "platform"
-msgstr "alusta"
-
-#: website/app-templates/smarty/chunks/social_groups.tpl:7
-msgid "group name"
-msgstr "ryhmän nimi"
-
-#: website/app-templates/smarty/chunks/geokrety_status.tpl:9
-msgid "Remove this GeoKret from the selection"
-msgstr "Poista tämä GeoKret valinnasta"
-
-#: website/app-templates/smarty/chunks/geokrety_status.tpl:13
-msgid "Never moved"
-msgstr "Ei koskaan siirretty"
-
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
-msgid "false"
+#: website/app-templates/smarty/elements/credit.tpl:4
+msgid "%1 logo"
 msgstr ""
 
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:27
-msgid "true"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:37
-msgid "No users match the current request."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder.tpl:5
-msgid "Start by finding users:"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder.tpl:9
-msgid "Username or email or ID"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user_finder.tpl:11
-msgid "Search"
-msgstr "Haku"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:3
-msgid "Found a GeoKret?"
-msgstr "Löysitkö GeoKredin?"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:7
-msgid "Please enter the <abbr title=\"%1\">Tracking Code</abbr> here:"
-msgstr "Syötä <abbr title=\"%1\">seurantakoodi</abbr> tähän:"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:12
-msgid "Tracking code"
-msgstr "Seurantakoodi"
-
-#: website/app-templates/smarty/blocks/found_geokret.tpl:15
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
-msgid "Log it!"
-msgstr "Kirjaa se!"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:7
-#: website/app-templates/smarty/blocks/geokret/details.tpl:27
-msgid "Send a message to %1"
-msgstr "Lähetä viesti henkilölle %1"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:11
-msgid "Subscribe to RSS channel"
-msgstr "Tilaa RSS-syöte"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:15
-msgid "Username change"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/details.tpl:18
-msgid "Password change"
-msgstr "Salasanan vaihto"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:32
-msgid "Joined us"
-msgstr "Meihin liittyneet"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:34
-#: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:33
-msgid "Language"
-msgstr "Kieli"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:36
-msgid "Nothing selected"
-msgstr "Mitään ei ole valittu"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:39
-msgid "Choose preferred language"
-msgstr "Valitse ensisijainen kieli"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:51
-msgid "Pending email validation, don't forget to click the link in validation mail!"
-msgstr "Odottaa sähköpostin validointia, älä unohda klikata vahvistussähköpostin linkkiä!"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:53
-msgid "No email address, please add one!"
-msgstr "Ei sähköpostiosoitetta, lisää sellainen!"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:56
-msgid "Update email address"
-msgstr "Päivitä sähköpostiosoite"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:61
-msgid "Secid"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/details.tpl:64
-msgid "Used to authenticate in other applications. Keep it secret!"
-msgstr "Käytetään tunnistautumiseen muissa sovelluksissa. Pidä se salassa!"
-
-#: website/app-templates/smarty/blocks/user/details.tpl:65
-msgid "Generate a new secid"
-msgstr "Luo uusi seos"
-
-#: website/app-templates/smarty/blocks/user/medals.tpl:3
-msgid "Medals"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/medals.tpl:8
-msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/medals.tpl:17
-msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/awards.tpl:4
-msgid "Awards"
-msgstr "Palkinnot"
-
-#: website/app-templates/smarty/blocks/user/awards.tpl:10
-msgid "No award received yet."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:4
-msgid "OAuth Connections"
-msgstr "Oauth Yhteydet"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:17
-msgid "Disconnect from %1"
-msgstr "Katkaise yhteys %1"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:18
-msgid "Disconnect"
-msgstr "Katkaise"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:23
-msgid "Connect with %1"
-msgstr "Yhdistä sovellukseen %1"
-
-#: website/app-templates/smarty/blocks/user/oauth.tpl:23
-msgid "Connect"
-msgstr "Yhdistä"
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:5
-msgid "Danger zone"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:8
-msgid "Be careful, actions in this section are irreversible."
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:11
-msgid "Delete your account"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:40
-msgid "Delete my account"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:12
-msgid "View inventory"
-msgstr "Näytä tavaraluettelo"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:24
-msgid "Recently posted moves"
-msgstr "Äskettäin julkaistut siirrot"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:28
-msgid "Moves of owned GeoKrety"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:32
-msgid "Posted pictures"
-msgstr "Lähetetyt kuvat"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:36
-msgid "Owned GeoKrety pictures"
-msgstr "Omistetut GeoKretyn kuvat"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:40
-#: website/app-templates/smarty/navbar-profile.tpl:28
-msgid "Where are my GeoKrety?"
-msgstr "Missä minun GeoKretyni on?"
-
-#: website/app-templates/smarty/blocks/user/actions.tpl:45
-msgid "User stats"
-msgstr "Käyttäjän tilastot"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:10
-msgid "No home coordinates have been defined."
-msgstr "Koti koordinaatteja ei ole määritelty."
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:13
-#: website/app-templates/smarty/blocks/user/map_home.tpl:21
-msgid "Update home coordinates and obervation area"
-msgstr "Päivitä koti koordinaatit ja obervation alue"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:14
-msgid "Define your home coordinates"
-msgstr "Määritä kotisi koordinaatit"
-
-#: website/app-templates/smarty/blocks/user/map_home.tpl:20
-msgid "GeoKrety near home"
-msgstr "GeoKrety lähellä kotia"
-
-#: website/app-templates/smarty/blocks/user/statpic.tpl:8
-#: website/app-templates/smarty/blocks/geokret/details.tpl:63
-msgid "Copy link to page"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/statpic.tpl:9
-#: website/app-templates/smarty/blocks/geokret/details.tpl:64
-msgid "Copy to page as bbcode"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/user/statpic.tpl:13
-msgid "Choose statpic"
-msgstr "Valitse tilastokaavio"
-
-#: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
-msgid "There is no pictures yet."
-msgstr "Kuvia ei ole vielä."
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:20
-msgid "missing"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:22
-msgid "archived"
-msgstr "arkistoidut"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:32
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:6
-msgid "Edit GeoKret details"
-msgstr "Muokkaa GeoKretin tietoja"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:46
-#: website/app-templates/smarty/forms/geokret_label.tpl:24
-msgid "Reference number"
-msgstr "Viitenumero"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:54
-msgid "Places visited"
-msgstr "Vierailtuja paikkoja"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:58
-msgid "Social share"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:60
-msgid "Share on Facebook"
-msgstr "Jaa Facebookissa"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:61
-msgid "Share on Twitter"
-msgstr "Jaa Twitterissä"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:62
-msgid "Share on Instagram"
-msgstr "Jaa Instagramissa"
-
-#: website/app-templates/smarty/blocks/geokret/details.tpl:66
-msgid "Country track"
-msgstr "Seurattava maa"
-
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:3
-#: website/app-templates/smarty/forms/geokret_label.tpl:36
-#: website/app-templates/smarty/forms/geokret.tpl:31
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
-msgid "Mission"
-msgstr "Tehtävä"
-
-#: website/app-templates/smarty/blocks/geokret/mission.tpl:15
-msgid "This GeoKret doesn't have a special mission…"
-msgstr "Tällä GeoKretillä ei ole erityistä tehtävää…"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:3
-msgid "Map"
-msgstr "Kartta"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:8
-msgid "Caption:"
-msgstr "Kuvateksti:"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:9
-msgid "start"
-msgstr "aloita"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:10
-msgid "trip points"
-msgstr "matkan pisteet"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:11
-msgid "recently seen"
-msgstr "äskettäin nähty"
-
-#: website/app-templates/smarty/blocks/geokret/map.tpl:15
-msgid "This geokret has not started yet"
-msgstr "Tämä geokret ei ole vielä alkanut"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:4
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:17
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:29
-msgid "Who is watching this Geokret?"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:5
-msgid "Watchers"
-msgstr "Tarkkailijat"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:14
-msgid "Add this geokret to your watch list"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:15
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:14
-msgid "Watch"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:27
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:14
-msgid "Unwatch"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:36
-msgid "Log this GeoKret"
-msgstr "Kirjaa tämä GeoKret"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:41
-msgid "Print a label for this GeoKret"
-msgstr "Tulosta etiketti tälle GeoKretille"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:48
-msgid "Statistics"
-msgstr "Tilastot"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:55
-msgid "Adopt this GeoKret"
-msgstr "Adoptoi tämä GeoKret"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:57
-msgid "Login to claim this GeoKret"
-msgstr "Kirjaudu sisään lunastaaksesi tämän GeoKretin"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
-msgid "Mark this GeoKret as archived"
-msgstr ""
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:64
-msgid "Archive this GeoKret"
-msgstr "Arkistoi tämä GeoKret"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:70
-msgid "Email owner"
-msgstr "Sähköpostin omistaja"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:76
-msgid "Make this GeoKret available for adoption by another user"
-msgstr "Aseta tämä GeoKret saataville hyväksyttäväksi toinen käyttäjä"
-
-#: website/app-templates/smarty/blocks/geokret/actions.tpl:77
-msgid "Transfer ownership"
-msgstr "Siirrä omistajuus"
-
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:3
-msgid "Found it? Log it!"
-msgstr "Löytynyt? Kirjaudu se!"
-
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
-msgid "Please enter the Tracking Code here"
-msgstr "Syötä seurantakoodi tähän"
-
-#: website/app-templates/smarty/navbar-right.tpl:5
-msgid "Search…"
-msgstr ""
-
-#: website/app-templates/smarty/navbar-profile.tpl:3
-msgid "Admin"
-msgstr "Ylläpitäjä"
-
-#: website/app-templates/smarty/navbar-profile.tpl:7
-#: website/app-templates/smarty/navbar-profile.tpl:16
-msgid "My profile"
-msgstr "Profiilini"
-
-#: website/app-templates/smarty/navbar-profile.tpl:18
-msgid "My inventory"
-msgstr "Minun tavaraluetteloni"
-
-#: website/app-templates/smarty/navbar-profile.tpl:19
-msgid "My GeoKrety"
-msgstr "Omat GeoKretyt"
-
-#: website/app-templates/smarty/navbar-profile.tpl:22
-msgid "My recent moves"
-msgstr "Viimeaikaiset siirrot"
-
-#: website/app-templates/smarty/navbar-profile.tpl:23
-msgid "Recent moves of my GeoKrety"
-msgstr "Viimeaikaiset siirrot minun GeoKrety"
-
-#: website/app-templates/smarty/navbar-profile.tpl:25
-msgid "My photos"
-msgstr "Omat kuvat"
-
-#: website/app-templates/smarty/navbar-profile.tpl:26
-msgid "Photos of my GeoKrety"
-msgstr "Kuvia minun GeoKrety"
-
-#: website/app-templates/smarty/navbar-profile.tpl:30
-msgid "Sign out"
-msgstr "Kirjaudu ulos"
-
-#: website/app-templates/smarty/navbar-profile.tpl:53
-msgid "Create account"
-msgstr "Luo tili"
+#: website/app-templates/smarty/elements/move.tpl:7
+msgid "Show move on map"
+msgstr "Näytä siirto kartalla"
+
+#: website/app-templates/smarty/elements/move.tpl:64
+msgid "Report as missing"
+msgstr "Raportti puuttuu"
+
+#: website/app-templates/smarty/elements/move.tpl:73
+msgid "Write a comment"
+msgstr "Kirjoita kommentti"
+
+#: website/app-templates/smarty/elements/move.tpl:81
+msgid "Edit log"
+msgstr "Muokkaa lokia"
+
+#: website/app-templates/smarty/elements/move.tpl:85
+msgid "Delete log"
+msgstr "Poista loki"
+
+#: website/app-templates/smarty/header.tpl:3
+#: website/app-templates/smarty/emails/base.tpl:20
+msgid "Open source item tracking for all geocaching platforms"
+msgstr "Avoimen lähdekoodin nimikkeiden seuranta kaikilla geokätköilyalustoilla"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:16
+#: website/app-templates/smarty/dialog/user_contact.tpl:23
+msgid "Subject"
+msgstr "Aihe"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:17
+msgid "From"
+msgstr "Keneltä"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:18
+#: website/app-templates/smarty/dialog/user_contact.tpl:16
+msgid "To"
+msgstr "Kenelle"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:20
+msgid "Action"
+msgstr "Toiminto"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:21
+msgid "Delete all mails"
+msgstr "Poista kaikki viestit"
+
+#: website/app-templates/smarty/devel/pages/local_mails.tpl:39
+msgid "Delete mail"
+msgstr "Poista sähköposti"
 
 #: website/app-templates/smarty/navbar-left.tpl:20
 msgid "Photo gallery"
@@ -3282,72 +2948,63 @@ msgstr "GeoKrety Työkalupakki"
 msgid "Waypoint resolver"
 msgstr "Reittipisteen resolveri"
 
-#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:4
-msgid "Do you really want to ack this script locking alert?"
-msgstr ""
+#: website/app-templates/smarty/navbar-profile.tpl:3
+msgid "Admin"
+msgstr "Ylläpitäjä"
 
-#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:10
-#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:10
-msgid "\"%1\" locked since %2"
-msgstr ""
+#: website/app-templates/smarty/navbar-profile.tpl:7
+#: website/app-templates/smarty/navbar-profile.tpl:16
+msgid "My profile"
+msgstr "Profiilini"
 
-#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:15
-#: website/app-templates/smarty/admin/pages/scripts.tpl:48
-msgid "Ack"
-msgstr ""
+#: website/app-templates/smarty/navbar-profile.tpl:18
+msgid "My inventory"
+msgstr "Minun tavaraluetteloni"
 
-#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
-msgid "Commenting a GeoKret move"
-msgstr "Kommentoi GeoKretin siirtoa"
+#: website/app-templates/smarty/navbar-profile.tpl:19
+msgid "My GeoKrety"
+msgstr "Omat GeoKretyt"
 
-#: website/app-templates/smarty/dialog/move_delete.tpl:4
-msgid "Do you really want to delete this move?"
-msgstr "Haluatko varmasti poistaa tämän liikkeen?"
+#: website/app-templates/smarty/navbar-profile.tpl:22
+msgid "My recent moves"
+msgstr "Viimeaikaiset siirrot"
 
-#: website/app-templates/smarty/dialog/move_delete.tpl:14
-msgid "Deleting this Move will delete attached pictures and the main avatar!"
-msgstr "Tämän siirron poistaminen poistaa liitetyt kuvat ja pääavatarin!"
+#: website/app-templates/smarty/navbar-profile.tpl:23
+msgid "Recent moves of my GeoKrety"
+msgstr "Viimeaikaiset siirrot minun GeoKrety"
 
-#: website/app-templates/smarty/dialog/move_delete.tpl:16
-msgid "Deleting this Move will delete attached pictures!"
-msgstr "Tämän siirron poistaminen poistaa liitetyt kuvat!"
+#: website/app-templates/smarty/navbar-profile.tpl:25
+msgid "My photos"
+msgstr "Omat kuvat"
 
-#: website/app-templates/smarty/dialog/move_delete.tpl:24
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:15
-#: website/app-templates/smarty/dialog/news_comment_delete.tpl:15
-#: website/app-templates/smarty/dialog/picture_delete.tpl:16
-msgid "Delete"
-msgstr "Poista"
+#: website/app-templates/smarty/navbar-profile.tpl:26
+msgid "Photos of my GeoKrety"
+msgstr "Kuvia minun GeoKrety"
 
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
-msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
-msgstr "Olet nyt irrottamassa GeoKrety tilisi %1 -tililtäsi. Et voi kirjautua sisään enää tämän palveluntarjoajan kautta."
+#: website/app-templates/smarty/navbar-profile.tpl:30
+msgid "Sign out"
+msgstr "Kirjaudu ulos"
 
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:8
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:27
-#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:8
-#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:24
-msgid "Detaching OAuth provider"
-msgstr "OAuthin palveluntarjoajan irrottaminen"
+#: website/app-templates/smarty/navbar-profile.tpl:53
+msgid "Create account"
+msgstr "Luo tili"
 
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:17
-#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:36
-msgid "Detach"
-msgstr ""
+#: website/app-templates/smarty/macros/pagination.tpl:5
+msgid "First"
+msgstr "Ensimmäinen"
 
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:4
-msgid "Do you really want to reset this rate-limit?"
-msgstr ""
+#: website/app-templates/smarty/macros/pagination.tpl:17
+msgid "Last [%1]"
+msgstr "Viimeinen [%1]"
 
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
-msgid "Name=%1 ID=%2"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
-msgid "Reset"
-msgstr ""
+#: website/app-templates/smarty/dialog/login_simple.tpl:13
+#: website/app-templates/smarty/dialog/login_simple.tpl:14
+#: website/app-templates/smarty/dialog/login.tpl:19
+#: website/app-templates/smarty/dialog/login.tpl:21
+#: website/app-templates/smarty/forms/registration.tpl:19
+#: website/app-templates/smarty/forms/registration.tpl:21
+msgid "Password"
+msgstr "Salasana"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:16
 msgid "Current password"
@@ -3373,45 +3030,67 @@ msgstr "Miten kirjoittaa hyviä salasanoja"
 msgid "Password strength"
 msgstr "Salasanan vahvuus"
 
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
+msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
+msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
+msgstr "Palvelua valvoo ja valvoo ryhmä vapaaehtoisia tukijoita, jäljempänä ’GK Team’. GK Team ei ole vastuussa sivuston käyttäjien lähettämästä sisällöstä tai Palvelun tietojen käytöstä aiheutuvista vahingoista."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
+msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
+msgstr "Sinun on varmistettava, että Käyttäjän Palvelussa <strong>julkaisemat tiedot eivät saa vaikuttaa voimassa olevaan lakiin</strong>. Erityisesti käyttäjän julkaisema sisältö ei saa loukata kolmansien osapuolten tekijänoikeuksia. Kaikki sisältö (mukaan lukien GeoKretyn kuvaukset, kuvitukset ja kaikki niiden merkinnät lokeissa ovat saatavilla julkaisemalla ne Palvelussa Käyttäjä <strong>on lisensoitu Creative Commons</strong> BY-NC-SA -versiossa 2. , jonka koko sisältö on saatavilla verkossa <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Myös julkinen verkkotunnus on hyväksytty. Käyttäjä on suoraan vastuussa tekijänoikeuden haltijalle kaikista rikkomuksista."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
+msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+msgstr "Emme anna mitään takuuta tai takuita tarkkuudesta, ajantasaisuudesta, suorituskyvystä, verkkosivustolla löydettyjen tai tarjottavien tietojen ja materiaalien täydellisyys tai soveltuvuus mihin tahansa tiettyyn tarkoitukseen. Ymmärrät, että tällaiset tiedot ja materiaalit voivat sisältää epätarkkuuksia tai virheitä, ja suljemme nimenomaisesti pois vastuun tällaisista epätarkkuuksista tai virheistä siinä määrin kuin laki sallii."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
+msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
+msgstr "Sivuston julkaisema sisältö ei saa sisältää karkeita ilmaisuja, väärinkäytöksiä tai laitonta sisältöä."
+
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:36
+#: website/app-templates/smarty/dialog/terms_of_use.tpl:56
+msgid "I agree with the terms"
+msgstr "Hyväksyn ehdot"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
+msgid "Offer this GeoKret for adoption?"
+msgstr "Tarjoa tätä GeoKret hyväksyttäväksi?"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
+msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
+msgstr "Tämä antaa toiselle käyttäjälle, joka tuntee seurantakoodin ja omistajakoodin, tulla tämän GeoKretin uusi omistaja."
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
+msgid "Back to GeoKret page"
+msgstr "Takaisin GeoKret sivulle"
+
+#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:18
+msgid "Generate an Owner Code"
+msgstr "Luo omistajakoodi"
+
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
+msgid "Award %1 with:"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:13
+#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:38
+msgid "Award"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
+msgid "Refresh your secid?"
+msgstr "Virkistetäänkö secid?"
+
+#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
+msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
+msgstr "Sapin päivittäminen katkaisee yhteyden kaikkiin sovelluksiin, jotka olivat yhteydessä tiliisi. Sinun täytyy todentaa ne."
+
 #: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:4
 msgid "Do you want to set this picture as main avatar?"
 msgstr "Haluatko asettaa tämän kuvan pääkäyttäjäksi?"
-
-#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:22
-msgid "Declare missing"
-msgstr "Declare puuttuu"
-
-#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:4
-msgid "Do you really want to unlock this script?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:15
-msgid "Unlock"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:4
-msgid "Remove this GeoKret from your watch list?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:9
-msgid "You will no longer receive updates of its journey in your daily mails."
-msgstr ""
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:6
-msgid "Manage picture"
-msgstr "Hallitse kuvaa"
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:12
-msgid "Caption"
-msgstr "Kuvateksti"
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:24
-msgid "Remember caption"
-msgstr "Muista kuvateksti"
-
-#: website/app-templates/smarty/dialog/picture_edit.tpl:27
-msgid "Remember the caption for the next %1 minutes"
-msgstr "Muista otsikko seuraavaksi %1 minuutiksi"
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:9
 msgid "Contact user"
@@ -3436,6 +3115,89 @@ msgstr "Viesti käyttäjälle"
 #: website/app-templates/smarty/dialog/user_contact.tpl:44
 msgid "Send message"
 msgstr "Lähetä viesti"
+
+#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:4
+msgid "Do you really want to ack this script locking alert?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:10
+#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:10
+msgid "\"%1\" locked since %2"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:4
+msgid "Add this GeoKret to your watch list?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_watch.tpl:9
+msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
+msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
+msgstr "Olet nyt irrottamassa GeoKrety tilisi %1 -tililtäsi. Et voi kirjautua sisään enää tämän palveluntarjoajan kautta."
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:8
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:27
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:8
+#: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:24
+msgid "Detaching OAuth provider"
+msgstr "OAuthin palveluntarjoajan irrottaminen"
+
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:17
+#: website/app-templates/smarty/dialog/oauth_disconnect.tpl:36
+msgid "Detach"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:6
+msgid "Manage picture"
+msgstr "Hallitse kuvaa"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:12
+msgid "Caption"
+msgstr "Kuvateksti"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:24
+msgid "Remember caption"
+msgstr "Muista kuvateksti"
+
+#: website/app-templates/smarty/dialog/picture_edit.tpl:27
+msgid "Remember the caption for the next %1 minutes"
+msgstr "Muista otsikko seuraavaksi %1 minuutiksi"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:4
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:29
+#: website/app-templates/smarty/forms/move.tpl:28
+msgid "Select GeoKrety from inventory"
+msgstr "Valitse GeoKrety tavaraluettelosta"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:10
+msgid "Only %1 GeoKrety can be processed at a time."
+msgstr "Vain %1 GeoKrety voidaan käsitellä kerrallaan."
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
+msgid "Filter"
+msgstr "Suodatin"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:17
+msgid "Name or ID"
+msgstr "Nimi tai ID"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:29
+msgid "Select all (but max %1)"
+msgstr "Valitse kaikki (maksimissaan %1)"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:36
+msgid "Choose"
+msgstr "Valitse"
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:61
+msgid "Your inventory is empty."
+msgstr "Tavaraluettelosi on tyhjä."
+
+#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:68
+msgid "Select <span class=\"badge\">%1</span>"
+msgstr "Valitse <span class=\"badge\">%1</span>"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:4
 msgid "Update your email address"
@@ -3495,53 +3257,83 @@ msgstr "kommenttisi"
 msgid "news posts you have are subscribed to"
 msgstr "uutiset viestit, jotka olet tilannut"
 
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:4
-msgid "Refresh your secid?"
-msgstr "Virkistetäänkö secid?"
+#: website/app-templates/smarty/dialog/login.tpl:2
+#: website/app-templates/smarty/dialog/login.tpl:7
+#: website/app-templates/smarty/emails/account-activated.tpl:12
+#: website/app-templates/smarty/emails/password-changed.tpl:12
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:12
+#: website/app-templates/smarty/emails/username-changed.tpl:13
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:12
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:12
+msgid "Login"
+msgstr "Kirjaudu"
 
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
-msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr "Sapin päivittäminen katkaisee yhteyden kaikkiin sovelluksiin, jotka olivat yhteydessä tiliisi. Sinun täytyy todentaa ne."
+#: website/app-templates/smarty/dialog/login.tpl:28
+msgid "Remember me"
+msgstr "Muista minut"
 
-#: website/app-templates/smarty/dialog/user_refresh_secid.tpl:18
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:9
-#: website/app-templates/smarty/admin/pages/scripts.tpl:8
-msgid "Refresh"
-msgstr "Päivitä"
+#: website/app-templates/smarty/dialog/login.tpl:31
+msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
+msgstr "Käytämme evästeitä vain pitääksemme istuntosi aktiivisena. Lue lisää <a href=\"%1\" target=\"_blank\">evästekäytännöstämme</a>."
 
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:3
-msgid "This document sets the conditions of use of \"<a href=\"%1\">geokrety.org</a>\" - a voluntarily operated Internet geocaching service available at <a href=\"%1\">geokrety.org</a> (hereinafter referred to as the \"Service\"). Each person registering an account (hereinafter called a \"User\") agrees to observe the rules of these terms and conditions, starting from the beginning of the registration procedure."
+#: website/app-templates/smarty/dialog/login.tpl:40
+msgid "No account yet ? Register now!"
+msgstr "Ei vielä tunnusta? Rekisteröidy nyt!"
+
+#: website/app-templates/smarty/dialog/login.tpl:43
+msgid "Forgot your password?"
+msgstr "Unohditko salasanasi?"
+
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
+msgid "Do you really want to delete this move comment?"
+msgstr "Haluatko varmasti poistaa tämän siirtokommentin?"
+
+#: website/app-templates/smarty/dialog/move_comment_delete.tpl:15
+#: website/app-templates/smarty/dialog/news_comment_delete.tpl:15
+#: website/app-templates/smarty/dialog/picture_delete.tpl:16
+#: website/app-templates/smarty/dialog/move_delete.tpl:24
+msgid "Delete"
+msgstr "Poista"
+
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:7
+msgid "Do you really want to delete your account?"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:7
-msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr "Palvelua valvoo ja valvoo ryhmä vapaaehtoisia tukijoita, jäljempänä ’GK Team’. GK Team ei ole vastuussa sivuston käyttäjien lähettämästä sisällöstä tai Palvelun tietojen käytöstä aiheutuvista vahingoista."
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:13
+msgid "All your logs and comments will appear posted from \"%1\""
+msgstr ""
 
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:11
-msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr "Sinun on varmistettava, että Käyttäjän Palvelussa <strong>julkaisemat tiedot eivät saa vaikuttaa voimassa olevaan lakiin</strong>. Erityisesti käyttäjän julkaisema sisältö ei saa loukata kolmansien osapuolten tekijänoikeuksia. Kaikki sisältö (mukaan lukien GeoKretyn kuvaukset, kuvitukset ja kaikki niiden merkinnät lokeissa ovat saatavilla julkaisemalla ne Palvelussa Käyttäjä <strong>on lisensoitu Creative Commons</strong> BY-NC-SA -versiossa 2. , jonka koko sisältö on saatavilla verkossa <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Myös julkinen verkkotunnus on hyväksytty. Käyttäjä on suoraan vastuussa tekijänoikeuden haltijalle kaikista rikkomuksista."
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:14
+msgid "All your GeoKrety will be automatically archived"
+msgstr ""
 
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:15
-msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr "Emme anna mitään takuuta tai takuita tarkkuudesta, ajantasaisuudesta, suorituskyvystä, verkkosivustolla löydettyjen tai tarjottavien tietojen ja materiaalien täydellisyys tai soveltuvuus mihin tahansa tiettyyn tarkoitukseen. Ymmärrät, että tällaiset tiedot ja materiaalit voivat sisältää epätarkkuuksia tai virheitä, ja suljemme nimenomaisesti pois vastuun tällaisista epätarkkuuksista tai virheistä siinä määrin kuin laki sallii."
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:15
+msgid "Your avatar pictures will be deleted"
+msgstr ""
 
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:19
-msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
-msgstr "Sivuston julkaisema sisältö ei saa sisältää karkeita ilmaisuja, väärinkäytöksiä tai laitonta sisältöä."
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:17
+msgid "Warning!!! This will permanently delete your account."
+msgstr ""
 
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:36
-#: website/app-templates/smarty/dialog/terms_of_use.tpl:56
-msgid "I agree with the terms"
-msgstr "Hyväksyn ehdot"
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:19
+msgid "Please solve this operation: %1 + %2 = ?"
+msgstr ""
 
-#: website/app-templates/smarty/dialog/login_simple.tpl:13
-#: website/app-templates/smarty/dialog/login_simple.tpl:14
-#: website/app-templates/smarty/dialog/login.tpl:19
-#: website/app-templates/smarty/dialog/login.tpl:21
-#: website/app-templates/smarty/forms/registration.tpl:19
-#: website/app-templates/smarty/forms/registration.tpl:21
-msgid "Password"
-msgstr "Salasana"
+#: website/app-templates/smarty/dialog/user_delete_account.tpl:28
+msgid "Also remove all my comments content"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:4
+msgid "Do you really want to unlock this script?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:15
+msgid "Unlock"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/info.tpl:13
+msgid "Acknowledge"
+msgstr ""
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:4
 msgid "Choose your preferred language"
@@ -3552,55 +3344,10 @@ msgstr "Valitse haluamasi kieli"
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
 msgstr "Tämä on oletuskieli, kun kirjaudut sisään ja pääkieli sähköposteissa, joita voit vastaanottaa."
 
-#: website/app-templates/smarty/dialog/info.tpl:13
-msgid "Acknowledge"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/move_comment_delete.tpl:4
-msgid "Do you really want to delete this move comment?"
-msgstr "Haluatko varmasti poistaa tämän siirtokommentin?"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:4
-#: website/app-templates/smarty/forms/move.tpl:28
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:29
-msgid "Select GeoKrety from inventory"
-msgstr "Valitse GeoKrety tavaraluettelosta"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:10
-msgid "Only %1 GeoKrety can be processed at a time."
-msgstr "Vain %1 GeoKrety voidaan käsitellä kerrallaan."
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:16
-msgid "Filter"
-msgstr "Suodatin"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:17
-msgid "Name or ID"
-msgstr "Nimi tai ID"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:29
-msgid "Select all (but max %1)"
-msgstr "Valitse kaikki (maksimissaan %1)"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:36
-msgid "Choose"
-msgstr "Valitse"
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:61
-msgid "Your inventory is empty."
-msgstr "Tavaraluettelosi on tyhjä."
-
-#: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:68
-msgid "Select <span class=\"badge\">%1</span>"
-msgstr "Valitse <span class=\"badge\">%1</span>"
-
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:4
-msgid "Add this GeoKret to your watch list?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/geokret_watch.tpl:9
-msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
-msgstr ""
+#: website/app-templates/smarty/dialog/move_comment_create.tpl:4
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
+msgid "Commenting a GeoKret move"
+msgstr "Kommentoi GeoKretin siirtoa"
 
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
 msgid "Do you really want to delete this news comment?"
@@ -3634,30 +3381,6 @@ msgstr ""
 msgid "Archive"
 msgstr "Arkisto"
 
-#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
-msgid "Do you really want to invalidate this user's email?"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:13
-msgid "Invalidate"
-msgstr ""
-
-#: website/app-templates/smarty/dialog/login.tpl:28
-msgid "Remember me"
-msgstr "Muista minut"
-
-#: website/app-templates/smarty/dialog/login.tpl:31
-msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr "Käytämme evästeitä vain pitääksemme istuntosi aktiivisena. Lue lisää <a href=\"%1\" target=\"_blank\">evästekäytännöstämme</a>."
-
-#: website/app-templates/smarty/dialog/login.tpl:40
-msgid "No account yet ? Register now!"
-msgstr "Ei vielä tunnusta? Rekisteröidy nyt!"
-
-#: website/app-templates/smarty/dialog/login.tpl:43
-msgid "Forgot your password?"
-msgstr "Unohditko salasanasi?"
-
 #: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:2
 msgid "You are not connected to this OAuth provider."
 msgstr "Et ole yhteydessä tähän OAuth-palveluntarjoajaan."
@@ -3665,6 +3388,30 @@ msgstr "Et ole yhteydessä tähän OAuth-palveluntarjoajaan."
 #: website/app-templates/smarty/dialog/oauth_not_connected_to_provider.tpl:15
 msgid "Back to my profile"
 msgstr "Takaisin profiiliini"
+
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:4
+msgid "Remove this GeoKret from your watch list?"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/geokret_unwatch.tpl:9
+msgid "You will no longer receive updates of its journey in your daily mails."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/picture_delete.tpl:4
+msgid "Do you really want to delete this picture?"
+msgstr "Haluatko varmasti poistaa tämän kuvan?"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:4
+msgid "Do you really want to delete this move?"
+msgstr "Haluatko varmasti poistaa tämän liikkeen?"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:14
+msgid "Deleting this Move will delete attached pictures and the main avatar!"
+msgstr "Tämän siirron poistaminen poistaa liitetyt kuvat ja pääavatarin!"
+
+#: website/app-templates/smarty/dialog/move_delete.tpl:16
+msgid "Deleting this Move will delete attached pictures!"
+msgstr "Tämän siirron poistaminen poistaa liitetyt kuvat!"
 
 #: website/app-templates/smarty/dialog/news_subscription.tpl:6
 msgid "Do you really want to unsubscribe from this news?"
@@ -3682,62 +3429,139 @@ msgstr "Peruuta tilaus"
 msgid "Subscribe"
 msgstr "Tilaa"
 
-#: website/app-templates/smarty/dialog/picture_delete.tpl:4
-msgid "Do you really want to delete this picture?"
-msgstr "Haluatko varmasti poistaa tämän kuvan?"
+#: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:22
+msgid "Declare missing"
+msgstr "Declare puuttuu"
 
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
-msgid "Award %1 with:"
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:4
+msgid "Do you really want to reset this rate-limit?"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:13
-#: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:38
-msgid "Award"
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
+msgid "Name=%1 ID=%2"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
-msgid "Offer this GeoKret for adoption?"
-msgstr "Tarjoa tätä GeoKret hyväksyttäväksi?"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
-msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr "Tämä antaa toiselle käyttäjälle, joka tuntee seurantakoodin ja omistajakoodin, tulla tämän GeoKretin uusi omistaja."
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
-msgid "Back to GeoKret page"
-msgstr "Takaisin GeoKret sivulle"
-
-#: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:18
-msgid "Generate an Owner Code"
-msgstr "Luo omistajakoodi"
-
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:7
-msgid "Do you really want to delete your account?"
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
+msgid "Do you really want to invalidate this user's email?"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:13
-msgid "All your logs and comments will appear posted from \"%1\""
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:13
+msgid "Invalidate"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:14
-msgid "All your GeoKrety will be automatically archived"
+#: website/app-templates/smarty/forms/geokret.tpl:4
+msgid "Edit a GeoKret"
+msgstr "Muokkaa GeoKretiä"
+
+#: website/app-templates/smarty/forms/geokret.tpl:41
+msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
+msgstr "Tämä luo ensimmäisen \"dipped\" liikkua GeoKretissä, merkintä se on lähtökohta."
+
+#: website/app-templates/smarty/forms/geokret.tpl:42
+msgid "Set my home coordinates as a starting point."
+msgstr "Aseta kotini koordinaatit lähtöpisteeksi."
+
+#: website/app-templates/smarty/forms/geokret.tpl:50
+#: website/app-templates/smarty/forms/geokret_label.tpl:43
+msgid "Label template"
+msgstr "Lappumalli"
+
+#: website/app-templates/smarty/forms/geokret.tpl:63
+msgid "Create"
+msgstr "Luo"
+
+#: website/app-templates/smarty/forms/geokret.tpl:72
+#: website/app-templates/smarty/forms/geokret.tpl:75
+#: website/app-templates/smarty/forms/geokret.tpl:76
+#: website/app-templates/smarty/forms/geokret_label.tpl:81
+#: website/app-templates/smarty/forms/geokret_label.tpl:84
+#: website/app-templates/smarty/forms/geokret_label.tpl:85
+msgid "GeoKret label preview"
+msgstr "GeoKretin otsikon esikatselu"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:3
+msgid "Generate a GeoKret Label"
+msgstr "Luo GeoKretin tunnus"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:22
+#: website/app-templates/smarty/forms/geokret_label.tpl:29
+msgid "Reference numbers"
+msgstr "Viitenumerot"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:54
+msgid "Label help languages"
+msgstr "Tunnisteen ohjekielet"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:62
+msgid "Note1: not all label templates support this feature and when supported, english is always present."
+msgstr "Huomautus: Kaikki tarramallit eivät tue tätä ominaisuutta, ja tuettuina englanti on aina läsnä."
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:70
+msgid "Generate as .png"
+msgstr "Luo .png"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:71
+msgid "Generate as .svg"
+msgstr "Luo .svg:nä"
+
+#: website/app-templates/smarty/forms/geokret_label.tpl:72
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:44
+msgid "Generate as .pdf"
+msgstr "Luo .pdf"
+
+#: website/app-templates/smarty/forms/advanced_search.tpl:5
+#: website/app-templates/smarty/emails/daily-mail.tpl:36
+#: website/app-templates/smarty/emails/daily-mail.tpl:79
+#: website/app-templates/smarty/emails/daily-mail.tpl:125
+#: website/app-templates/smarty/emails/daily-mail.tpl:170
+msgid "GeoKret"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:15
-msgid "Your avatar pictures will be deleted"
+#: website/app-templates/smarty/forms/advanced_search.tpl:7
+msgid "GeoKret name or id"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:17
-msgid "Warning!!! This will permanently delete your account."
+#: website/app-templates/smarty/forms/advanced_search.tpl:10
+#: website/app-templates/smarty/forms/advanced_search.tpl:22
+#: website/app-templates/smarty/forms/advanced_search.tpl:34
+msgid "Find"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:19
-msgid "Please solve this operation: %1 + %2 = ?"
+#: website/app-templates/smarty/forms/advanced_search.tpl:29
+#: website/app-templates/smarty/forms/advanced_search.tpl:31
+#: website/app-templates/smarty/forms/move.tpl:131
+msgid "Waypoint"
+msgstr "Reittipiste"
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:3
+msgid "Generate multiple GeoKrety labels"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_delete_account.tpl:28
-msgid "Also remove all my comments content"
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:11
+msgid "The current number of labels to be created at once: %1."
 msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:12
+msgid "Only your own GeoKrety of the ones you already touched can be used here."
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:13
+msgid "Label preferred template is used if defined."
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:14
+msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:31
+#: website/app-templates/smarty/forms/move.tpl:30
+msgid "Verify Tracking Code"
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
+#: website/app-templates/smarty/forms/move.tpl:33
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "%1 merkkiä <em>GeoKretin etiketistä</em>. <u>Älä käytä koodia, joka alkaa 'GK' tästä</u>"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
@@ -3761,16 +3585,6 @@ msgstr "Rekisteröidy"
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
 msgstr "Tunnista GeoKrety"
-
-#: website/app-templates/smarty/forms/move.tpl:30
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:31
-msgid "Verify Tracking Code"
-msgstr ""
-
-#: website/app-templates/smarty/forms/move.tpl:33
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "%1 merkkiä <em>GeoKretin etiketistä</em>. <u>Älä käytä koodia, joka alkaa 'GK' tästä</u>"
 
 #: website/app-templates/smarty/forms/move.tpl:43
 #: website/app-templates/smarty/forms/move.tpl:197
@@ -3825,12 +3639,6 @@ msgstr "Kun haluat kirjoittaa kommentin :)"
 msgid "New location"
 msgstr "Uusi sijainti"
 
-#: website/app-templates/smarty/forms/move.tpl:131
-#: website/app-templates/smarty/forms/advanced_search.tpl:29
-#: website/app-templates/smarty/forms/advanced_search.tpl:31
-msgid "Waypoint"
-msgstr "Reittipiste"
-
 #: website/app-templates/smarty/forms/move.tpl:134
 msgid "eg. GC1AQ2N"
 msgstr ""
@@ -3867,226 +3675,418 @@ msgstr "On aina mukava saada pieni viesti ;)"
 msgid "Post your log"
 msgstr "Lähetä loki"
 
-#: website/app-templates/smarty/forms/geokret_label.tpl:3
-msgid "Generate a GeoKret Label"
-msgstr "Luo GeoKretin tunnus"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:8
-#: website/app-templates/smarty/forms/geokret_label.tpl:10
-#: website/app-templates/smarty/forms/geokret.tpl:13
-#: website/app-templates/smarty/forms/geokret.tpl:15
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:37
-msgid "GeoKret name"
-msgstr "GeoKretyn nimi"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:22
-#: website/app-templates/smarty/forms/geokret_label.tpl:29
-msgid "Reference numbers"
-msgstr "Viitenumerot"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:38
-#: website/app-templates/smarty/forms/geokret.tpl:33
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
-msgid "What is this GeoKret mission?"
-msgstr "Mikä on GeoKretin tehtävä?"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:43
-#: website/app-templates/smarty/forms/geokret.tpl:50
-msgid "Label template"
-msgstr "Lappumalli"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:54
-msgid "Label help languages"
-msgstr "Tunnisteen ohjekielet"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:62
-msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr "Huomautus: Kaikki tarramallit eivät tue tätä ominaisuutta, ja tuettuina englanti on aina läsnä."
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:70
-msgid "Generate as .png"
-msgstr "Luo .png"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:71
-msgid "Generate as .svg"
-msgstr "Luo .svg:nä"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:72
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:44
-msgid "Generate as .pdf"
-msgstr "Luo .pdf"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:81
-#: website/app-templates/smarty/forms/geokret_label.tpl:84
-#: website/app-templates/smarty/forms/geokret_label.tpl:85
-#: website/app-templates/smarty/forms/geokret.tpl:72
-#: website/app-templates/smarty/forms/geokret.tpl:75
-#: website/app-templates/smarty/forms/geokret.tpl:76
-msgid "GeoKret label preview"
-msgstr "GeoKretin otsikon esikatselu"
-
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:3
-msgid "Generate multiple GeoKrety labels"
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:4
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:4
+msgid "Confirm your email address change."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:11
-msgid "The current number of labels to be created at once: %1."
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:8
+msgid "Someone, hopefully you, has requested a change on your GeoKrety contact email address to: %1."
+msgstr "Joku, toivottavasti olet, on pyytänyt muutosta GeoKretyn yhteystietosi sähköpostiosoitteeseen: %1."
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:13
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:15
+msgid "If you did not requested this, click the link below."
+msgstr "Jos et pyytänyt tätä, klikkaa alla olevaa linkkiä."
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:15
+msgid "Do not change!"
+msgstr "Älä muuta!"
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:18
+#: website/app-templates/smarty/emails/password-recovery.tpl:15
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:17
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:17
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:20
+#: website/app-templates/smarty/emails/account-activation.tpl:13
+msgid "This link expires %1."
+msgstr "Tämä linkki vanhenee %1."
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:20
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:15
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:22
+msgid "If you did not requested a password change, then you should also consider changing your password immediately."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:12
-msgid "Only your own GeoKrety of the ones you already touched can be used here."
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:22
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:17
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:24
+msgid "Change my password!"
+msgstr "Vaihda salasanani!"
+
+#: website/app-templates/smarty/emails/email-change-to-old-address.tpl:27
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:22
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:17
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:29
+msgid "You're getting this email because you've changed your email on our website."
+msgstr "Saat tämän sähköpostiviestin, koska olet muuttanut sähköpostiasi verkkosivuillamme."
+
+#: website/app-templates/smarty/emails/user-contact.tpl:3
+msgid "Contact from a GeoKrety.org user"
+msgstr "Ota yhteyttä GeoKrety.org käyttäjältä"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:4
+msgid "Someone sent you a private message."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:13
-msgid "Label preferred template is used if defined."
+#: website/app-templates/smarty/emails/user-contact.tpl:8
+msgid "This email was sent by user <a href=\"%2\">%1</a>."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:14
-msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
+#: website/app-templates/smarty/emails/user-contact.tpl:12
+msgid "If you suspect an abuse, please let us know: %1"
+msgstr "Jos epäilet väärinkäyttöä, ota meihin yhteyttä: %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:13
+msgid "Referer: %1"
+msgstr "Viitteet: %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:18
+msgid "Subject:"
+msgstr "Aihe:"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:23
+msgid "Reply to %1"
+msgstr "Vastaa %1"
+
+#: website/app-templates/smarty/emails/user-contact.tpl:28
+msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
+msgstr "Saat tämän sähköpostin koska yksi GeoKrety.org-käyttäjistä lähettää sinulle viestin käyttäjäprofiilisi kautta."
+
+#: website/app-templates/smarty/emails/base-admin.tpl:4
+msgid "You're getting this email because you're one the website admins."
 msgstr ""
 
-#: website/app-templates/smarty/forms/advanced_search.tpl:7
-msgid "GeoKret name or id"
+#: website/app-templates/smarty/emails/cron-locked.tpl:4
+msgid "A script is locked"
 msgstr ""
 
-#: website/app-templates/smarty/forms/advanced_search.tpl:10
-#: website/app-templates/smarty/forms/advanced_search.tpl:22
-#: website/app-templates/smarty/forms/advanced_search.tpl:34
-msgid "Find"
+#: website/app-templates/smarty/emails/cron-locked.tpl:7
+msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:4
-msgid "Edit a GeoKret"
-msgstr "Muokkaa GeoKretiä"
-
-#: website/app-templates/smarty/forms/geokret.tpl:20
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:48
-msgid "GeoKret type"
-msgstr "GeoKret-tyyppi"
-
-#: website/app-templates/smarty/forms/geokret.tpl:41
-msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
-msgstr "Tämä luo ensimmäisen \"dipped\" liikkua GeoKretissä, merkintä se on lähtökohta."
-
-#: website/app-templates/smarty/forms/geokret.tpl:42
-msgid "Set my home coordinates as a starting point."
-msgstr "Aseta kotini koordinaatit lähtöpisteeksi."
-
-#: website/app-templates/smarty/forms/geokret.tpl:63
-msgid "Create"
-msgstr "Luo"
-
-#: website/app-templates/smarty/navbar.tpl:6
-msgid "Toggle navigation"
-msgstr "Vaihda navigointia"
-
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:3
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:9
-msgid "GeoKrety generator"
+#: website/app-templates/smarty/emails/account-activated.tpl:3
+#: website/app-templates/smarty/emails/password-changed.tpl:3
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:3
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
+msgid "Congratulation"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:14
-msgid "General details"
+#: website/app-templates/smarty/emails/account-activated.tpl:4
+#: website/app-templates/smarty/emails/password-changed.tpl:4
+msgid "Your account on GeoKrety.org is now active."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:19
-msgid "How many GeoKrety to create"
+#: website/app-templates/smarty/emails/account-activated.tpl:8
+msgid "Your account on GeoKrety.org is now fully functional."
+msgstr "Tilisi GeoKrety.orgissa on nyt täysin toimiva."
+
+#: website/app-templates/smarty/emails/account-activated.tpl:15
+msgid "As a member you can now <a href=\"%1\">register GeoKrety moves</a>, upload pictures and of course <a href=\"%2\">create your own GeoKrety</a> for free!"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:22
-msgid "From 1 to %1."
+#: website/app-templates/smarty/emails/account-activated.tpl:19
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:23
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:19
+#: website/app-templates/smarty/emails/account-activation.tpl:19
+msgid "You're getting this email because you've just signed up on our website."
+msgstr "Saat tämän sähköpostiviestin, koska olet juuri rekisteröitynyt nettisivuillemme."
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:3
+msgid "Forgot Your Password?"
+msgstr "Unohditko salasanasi?"
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:4
+msgid "Recover your password."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:27
-msgid "Owner ID"
+#: website/app-templates/smarty/emails/password-recovery.tpl:8
+msgid "It happens. Click the link below to reset your password."
+msgstr "Se tapahtuu. Klikkaa alla olevaa linkkiä nollataksesi salasanasi."
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:12
+msgid "Reset Password"
+msgstr "Nollaa salasana"
+
+#: website/app-templates/smarty/emails/password-recovery.tpl:19
+#: website/app-templates/smarty/emails/password-changed.tpl:17
+msgid "You're getting this email because you've changed your password on our website."
+msgstr "Saat tämän sähköpostiviestin, koska olet muuttanut salasanaasi verkkosivuillamme."
+
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:3
+msgid "Account not yet active"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:30
-msgid "Leave empty or set 0 to not set any owner."
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:4
+msgid "Your account is about to be deleted."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:35
-msgid "GeoKrety name template"
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:8
+msgid "The account you created %1 has not yet been activated."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:38
-msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:9
+msgid "If you would like to keep that account, you still have to validate it by clicking on the link below."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:41
-msgid "Start at"
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:10
+msgid "Unactivated accounts are automatically deleted after %1 days."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:66
-msgid "Pictures"
-msgstr "Kuvat"
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:14
+#: website/app-templates/smarty/emails/account-activation.tpl:10
+msgid "Activate your account"
+msgstr "Aktivoi tilisi"
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:82
-msgid "Tracking Code prefix"
+#: website/app-templates/smarty/emails/expiring-accounts-renotify.tpl:19
+#: website/app-templates/smarty/emails/account-activation.tpl:15
+msgid "If your account is not activated within that time, then it will be automatically deleted."
+msgstr "Jos tilisi ei ole aktivoitu kyseisen ajan kuluessa, se poistetaan automaattisesti."
+
+#: website/app-templates/smarty/emails/award-awarded.tpl:4
+msgid "New Award received"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:89
-msgid "Tracking Code length"
+#: website/app-templates/smarty/emails/award-awarded.tpl:7
+msgid "We're proud to inform you that you have received a new Award badge."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:96
-msgid "Tracking Code Alphabet"
+#: website/app-templates/smarty/emails/award-awarded.tpl:16
+msgid "Please look at this new pretty badge on your GeoKrety profile."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:103
-msgid "Tracking Code suffix"
+#: website/app-templates/smarty/emails/award-awarded.tpl:18
+msgid "Check my profile"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:119
-msgid "Owner Code prefix"
+#: website/app-templates/smarty/emails/password-changed.tpl:8
+msgid "Your password has been successfully changed."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:126
-msgid "Owner Code length"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:3
+msgid "Account has been deleted"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:133
-msgid "Owner Code Alphabet"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:4
+msgid "Your account is now deleted."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:140
-msgid "Owner Code suffix"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:8
+msgid "The account you created %1 has never been activated."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:151
-msgid "Generate"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:9
+msgid "Our policy is to delete unactivated accounts after %1 days."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
-msgid "GeoKrety generator result"
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:13
+msgid "We are sorry to inform you that your account has been permanently erased."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:10
-msgid "There is no results."
+#: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
+msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
-msgid "Api Rate Limits"
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
+msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
+msgstr "Joku, toivottavasti olet, on pyytänyt muuttaa GeoKrety yhteystiedot sähköpostiosoitteesi sinulle."
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
+msgid "Validate your new email address"
+msgstr "Vahvista uusi sähköpostiosoitteesi"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
+msgid "This link is valid for %1."
+msgstr "Tämä linkki on voimassa %1."
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:17
+msgid "If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!"
+msgstr "Jos et pyytänyt tätä etkä tiedä mitä GeoKrety on, jätä tämä sähköposti huomiotta. Et koskaan kuule meistä uudelleen!"
+
+#: website/app-templates/smarty/emails/email-change-to-new-address.tpl:21
+msgid "You're getting this email because you've requested an email address change on our website."
+msgstr "Saat tämän sähköpostiviestin, koska olet pyytänyt sähköpostiosoitteen muutosta verkkosivuillamme."
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
+msgid "Is this address still valid?"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:3
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:6
-msgid "Admin actions on users"
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
+msgid "This is important in case of password loss."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:17
-msgid "Invalidate user's email"
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:14
+msgid "Validate your email address"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:20
-msgid "Award prize"
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
+msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:3
-#: website/app-templates/smarty/admin/pages/scripts.tpl:7
-msgid "Scripts management"
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:3
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:3
+msgid "Hooray"
 msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:4
+#: website/app-templates/smarty/emails/email-address-reverted.tpl:8
+msgid "Your email address has been successfully reverted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/username-changed.tpl:3
+msgid "Username changed"
+msgstr ""
+
+#: website/app-templates/smarty/emails/username-changed.tpl:4
+msgid "Your username on GeoKrety.org has been changed."
+msgstr ""
+
+#: website/app-templates/smarty/emails/username-changed.tpl:9
+msgid "Please enjoy your new username!"
+msgstr ""
+
+#: website/app-templates/smarty/emails/username-changed.tpl:18
+msgid "You're getting this email because you've changed your username on our website."
+msgstr ""
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:4
+msgid "One of your GeoKrety has been adopted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:10
+msgid "View GeoKret"
+msgstr "Näytä GeoKret"
+
+#: website/app-templates/smarty/emails/geokret-adopted.tpl:15
+msgid "You're getting this email because one of your GeoKrety has changed of owner on our website."
+msgstr "Saat tämän sähköpostiviestin, koska yksi GeoKrety on muuttanut omistajaa nettisivuillamme."
+
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
+msgid "Something went wrong while synchronizing partners data"
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-partner-failure.tpl:7
+#: website/app-templates/smarty/emails/cron-exception.tpl:7
+#: website/app-templates/smarty/emails/cron-partner-fatal.tpl:7
+msgid "Something went wrong with a cron job, please check the logs below."
+msgstr ""
+
+#: website/app-templates/smarty/emails/cron-exception.tpl:4
+msgid "An exception occurred in a cron job"
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
+#: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:8
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
+msgid "Your email address has been successfully changed."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:8
+msgid "Your email address has been successfully changed to: %1."
+msgstr ""
+
+#: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:17
+msgid "Revert this change!"
+msgstr "Peru tämä muutos!"
+
+#: website/app-templates/smarty/emails/base.tpl:30
+msgid "Hi %1,"
+msgstr "Hei %1,"
+
+#: website/app-templates/smarty/emails/base.tpl:37
+msgid "Sincerely,<br>The GeoKrety Team"
+msgstr "Ystävällisin terveisin,<br>GeoKrety Tiimi"
+
+#: website/app-templates/smarty/emails/base.tpl:46
+msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:5
+msgid "Your GeoKrety watchlist"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:8
+msgid "You're getting this email because you've choose to receive daily mail updates."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:9
+msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:14
+msgid "Here is what changed recently."
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:17
+msgid "Latest news"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:27
+msgid "GeoKrety dropped in your observation area"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Open interactive map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:30
+msgid "Observation area map"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:37
+#: website/app-templates/smarty/emails/daily-mail.tpl:80
+#: website/app-templates/smarty/emails/daily-mail.tpl:126
+msgid "Position"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:39
+#: website/app-templates/smarty/emails/daily-mail.tpl:82
+#: website/app-templates/smarty/emails/daily-mail.tpl:128
+#: website/app-templates/smarty/emails/daily-mail.tpl:172
+msgid "Author"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:40
+msgid "Home distance"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:73
+msgid "My GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:78
+#: website/app-templates/smarty/emails/daily-mail.tpl:124
+msgid "Icon"
+msgstr "Kuvake"
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:83
+msgid "Distance since last move"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:119
+msgid "Watched GeoKrety latest moves"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-mail.tpl:165
+msgid "Latest move comments"
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:4
+msgid "Some accounts will be deleted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/expiring-accounts.tpl:7
+msgid "%1 accounts are still not activated after %2 days. They will now be deleted."
+msgstr ""
+
+#: website/app-templates/smarty/emails/account-activation.tpl:4
+msgid "One step left to use GeoKrety.org."
+msgstr ""
+
+#: website/app-templates/smarty/emails/account-activation.tpl:7
+msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
+msgstr "Olet juuri rekisteröitynyt osoitteeseen GeoKrety.org. <strong>Sinun täytyy vielä aktivoida tilisi ennen kuin voit käyttää sitä.</strong> Seuraa linkkiä."
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
