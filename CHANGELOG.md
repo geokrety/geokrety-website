@@ -1,3 +1,15 @@
+## [2.26.1](https://github.com/geokrety/geokrety-website/compare/v2.26.0...v2.26.1) (2022-12-16)
+
+
+### Bug Fixes
+
+* Add rabbitmq link into admin ([a194a9f](https://github.com/geokrety/geokrety-website/commit/a194a9fec7c661cca2189f90d7031d148dc05eda))
+
+
+### Translations
+
+* New Crowdin updates ([#794](https://github.com/geokrety/geokrety-website/issues/794)) ([96c81b9](https://github.com/geokrety/geokrety-website/commit/96c81b957891bd466b63e54bc520adb68f4e231e))
+
 ## [2.26.0](https://github.com/geokrety/geokrety-website/compare/v2.25.17...v2.26.0) (2022-12-16)
 
 
