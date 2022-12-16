@@ -1,3 +1,12 @@
+## [2.26.0](https://github.com/geokrety/geokrety-website/compare/v2.25.17...v2.26.0) (2022-12-16)
+
+
+### Features
+
+* Add necessary material to synchronize a BaseX copy ([223c13b](https://github.com/geokrety/geokrety-website/commit/223c13b896d4bdd728491ab1b07d094ff7ffa5d9))
+* Add Postgres notifyQueues ([35a4eb1](https://github.com/geokrety/geokrety-website/commit/35a4eb1270d80c35c3f2b1770db1f4eb33dc7f36))
+* Linking to RabbitMQ ([eacae70](https://github.com/geokrety/geokrety-website/commit/eacae70ef5e4bf2760d0275a1e6c22d240752122))
+
 ## [2.25.17](https://github.com/geokrety/geokrety-website/compare/v2.25.16...v2.25.17) (2022-12-16)
 
 
