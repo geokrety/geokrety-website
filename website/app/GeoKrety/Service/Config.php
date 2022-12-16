@@ -9,6 +9,7 @@ class Config extends \Prefab {
         // SITE CONFIG
         define('HOSTNAME', getenv('HOSTNAME') ?: 'localhost');
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
+        define('GK_SITE_BASE_SERVER_FQDN', getenv('GK_SITE_BASE_SERVER_FQDN') ?: 'geokrety.org');
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '26422'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
         define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
@@ -86,6 +87,7 @@ class Config extends \Prefab {
         define('ADMIN_SERVICE_PGADMIN_URL', getenv('ADMIN_SERVICE_PGADMIN_URL') ?: GK_SITE_BASE_SERVER_URL.'/pgadmin');
         define('ADMIN_SERVICE_GRAFANA_URL', getenv('ADMIN_SERVICE_GRAFANA_URL') ?: GK_SITE_BASE_SERVER_URL.'/grafana');
         define('ADMIN_SERVICE_PROMETHEUS_URL', getenv('ADMIN_SERVICE_PROMETHEUS_URL') ?: GK_SITE_BASE_SERVER_URL.'/prometheus');
+        define('ADMIN_SERVICE_RABBIT_MQ_URL', getenv('ADMIN_SERVICE_RABBIT_MQ_URL') ?: 'https://rabbitmq.'.GK_SITE_BASE_SERVER_FQDN);
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');

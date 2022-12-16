@@ -22,6 +22,9 @@
                         <li>
                             <a href="{ADMIN_SERVICE_GRAFANA_URL}" target="_blank">Grafana</a>
                         </li>
+                        <li>
+                            <a href="{ADMIN_SERVICE_RABBIT_MQ_URL}" target="_blank">Rabbitmq</a>
+                        </li>
                     </ul>
                 </div>
             </div>
