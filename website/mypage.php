@@ -312,7 +312,7 @@ require_once 'smarty_start.php';
 </tr>
 <tr>
   <td class="tresc1">
-      '._('To change your username or remove your account, send us <a href="/kontakt.php">an email</a>.').'<br />
+      '._('To change your username or remove your account please create a ticket on our <a href="/kontakt.php">help desk portal</a>.').'<br />
       '._('Joined us').': '.$timestamp.'<br />
       '._('Language').": $config_jezyk_nazwa[$lang]  $edit_lang <br />$email $edit".'<br />
       '.$coords.'<br />'.$secid_pole.'<br />
