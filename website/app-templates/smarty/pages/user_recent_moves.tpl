@@ -21,7 +21,7 @@
                         <th>{t}Name{/t}</th>
                         <th class="text-center">{t}Spotted in{/t}</th>
                         <th>{t}Comment{/t}</th>
-                        <th class="text-right">{t}Last move{/t}</th>
+                        <th class="text-right">{t}Date{/t}</th>
                         <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/2caches.png" title="{t}Caches visited count{/t}" /></th>
                     </tr>
                 </thead>
