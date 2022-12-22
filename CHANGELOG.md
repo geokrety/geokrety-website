@@ -1,3 +1,10 @@
+## [2.26.4](https://github.com/geokrety/geokrety-website/compare/v2.26.3...v2.26.4) (2022-12-22)
+
+
+### Bug Fixes
+
+* Rename columns name ([67e6154](https://github.com/geokrety/geokrety-website/commit/67e61548c949160d7033936ce284db55d75939de))
+
 ## [2.26.3](https://github.com/geokrety/geokrety-website/compare/v2.26.2...v2.26.3) (2022-12-22)
 
 
