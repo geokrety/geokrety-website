@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-16 11:49+0000\n"
-"PO-Revision-Date: 2022-12-16 12:09\n"
+"PO-Revision-Date: 2022-12-18 23:33\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -977,7 +977,7 @@ msgstr ""
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr ""
+msgstr "Bu, GeoKrety.org'da henüz kimsenin kaydetmediği bir Geocaching.com önbelleğidir. Bu GeoKret'in doğru seyahatini sağlamak için, lütfen önbellek koordinatlarını \"Koordinatlar\" alanına kopyalayıp yapıştırın."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
@@ -1700,19 +1700,19 @@ msgstr "Bu konu <a href=\"%1\">burada tartışılıyor</a>."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:16
 msgid "The system is based on mole-to-mole (peer-to-peer) tunnels. A mole-hole-cache should have a single dedicated destination. A dedicated destination doesn't mean a special cache - an arriving GeoKret may appear in any cache within the destination area."
-msgstr ""
+msgstr "Sistem köstebekten köstebeğe (eşler arası) tünellere dayanmaktadır. Bir köstebek deliği önbelleğinin tek bir özel hedefi olmalıdır. Özel bir hedef, özel bir önbellek anlamına gelmez - gelen bir GeoKret, hedef alan içindeki herhangi bir önbellekte görünebilir."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:17
 msgid "The tunnel should work in both directions. It takes two GeoKrety friends to run a tunnel. Each partner is running a mole-hole-cache, collecting the GeoKrety and sending them over to the other partner, who is spreading the incoming GeoKrety in his homezone."
-msgstr ""
+msgstr "Tünel her iki yönde de çalışmalıdır. Bir tüneli çalıştırmak için iki GeoKrety arkadaşı gerekir. Her ortak bir köstebek deliği önbelleği çalıştırıyor, GeoKrety'leri topluyor ve gelen GeoKrety'leri kendi bölgesinde yayan diğer ortağa gönderiyor."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:18
 msgid "The tunnel should cross a border or, if it is within a country, the distance between the mole-holes should be at least %1."
-msgstr ""
+msgstr "Tünel bir sınırı geçmeli veya bir ülke içindeyse, köstebek delikleri arasındaki mesafe en az %1 olmalıdır."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:19
 msgid "GeoKrety in a mole-hole are impatient, so no GeoKrety should wait longer than two months for transportation."
-msgstr ""
+msgstr "Köstebek yuvasındaki GeoKrety sabırsızdır, bu nedenle hiçbir GeoKrety nakliye için iki aydan fazla beklememelidir."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:20
 msgid "Each listing of a mole-hole-cache should include"
@@ -1736,7 +1736,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:26
 msgid "And probably detailed information about the mole-hole-cache and the neighbourhood, how to get there, hint, spoiler and so on."
-msgstr ""
+msgstr "Ve muhtemelen köstebek deliği önbelleği ve mahalle hakkında ayrıntılı bilgi, oraya nasıl gidileceği, ipucu, spoiler vb."
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:30
 msgid "By <cite title=\"Original source\">%1</cite>"
@@ -1791,7 +1791,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:74
 msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety. By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
-msgstr ""
+msgstr "GeoKrety oteli/oteli, havaalanı/otoyol/demiryolu istasyonuna yakın, GeoKrety'ye ev sahipliği yapabilecek kadar büyük, ulaşılması kolay bir önbellektir. Arayıcılar GeoKrety'yi alabilir veya bırakabilir. Şimdiye kadar OC sisteminde aşağıdaki GK (veya GK/TB) otellerini/motellerini kaydettik:"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:76
 msgid "Current GK-Hotels/Motels"
@@ -1825,7 +1825,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:16
 msgid "This script was written to build a bridge between the most popular <a href=\"%1\">geocaching.com</a> site and <a href=\"%2\">geokrety.org</a>. It has two functions. Once you enter a particular cache page on <a href=\"%1\">geocaching.com</a> it will automatically check if there are any GeoKrety (items tracked on <a href=\"%2\">geokrety.org</a>) inside that cache and show the result in the inventory section on the right hand side of the screen (below the existing list of Travelbugs and Geocoins). If you have an account on <a href=\"%2\">geokrety.org</a> you can also easily drop GeoKrety into <a href=\"%1\">Geocaching</a> caches because the waypoint code and coordinates are automatically copied over onto the logging form on <a href=\"%2\">geokrety.org</a>."
-msgstr ""
+msgstr "Bu betik, en popüler <a href=\"%1\">geocaching.com</a> sitesi ile <a href=\"%2\">geokrety.org</a> arasında bir köprü oluşturmak için yazılmıştır. İki işlevi vardır. <a href=\"%1\">geocaching.com</a>'da belirli bir önbellek sayfasına girdiğinizde, bu önbellekte herhangi bir GeoKrety (<a href=\"%2\">geokrety.org</a>'da izlenen öğeler) olup olmadığını otomatik olarak kontrol edecek ve sonucu ekranın sağ tarafındaki envanter bölümünde (mevcut Travelbugs ve Geocoins listesinin altında) gösterecektir. Eğer <a href=\"%2\">geokrety.org</a>'da bir hesabınız varsa GeoKrety'yi <a href=\"%1\">Geocaching</a> önbelleklerine de kolayca bırakabilirsiniz çünkü yol noktası kodu ve koordinatlar otomatik olarak <a href=\"%2\">geokrety.org</a>'daki kayıt formuna kopyalanır."
 
 #: website/app-templates/smarty/pages/geokrety_toolbox.tpl:18
 msgid "Available for:"
@@ -1842,7 +1842,7 @@ msgstr "Şifre Kurtarma"
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:19
 msgid "If you have validated your mail address in the past, then you can recover it easily. Else, you'll have to create another account, sorry."
-msgstr ""
+msgstr "Geçmişte posta adresinizi doğruladıysanız, kolayca kurtarabilirsiniz. Aksi takdirde, başka bir hesap oluşturmanız gerekecek, üzgünüm."
 
 #: website/app-templates/smarty/pages/password_recovery.tpl:24
 #: website/app-templates/smarty/pages/password_recovery.tpl:26
@@ -1866,11 +1866,11 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:21
 msgid "When you define your home location, the mini-map on your profile will display GeoKrety dropped around you."
-msgstr ""
+msgstr "Ev konumunuzu tanımladığınızda, profilinizdeki mini harita çevrenizde düşen GeoKrety'yi gösterecektir."
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:22
 msgid "If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences)."
-msgstr ""
+msgstr "Gözlem alanını 0'dan büyük bir değere ayarlarsanız, çevrenizde bırakılan GeoKrety günlük postalarınıza dahil edilecektir (küresel tercihlerinize göre)."
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:30
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:31
@@ -2365,7 +2365,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/downloads.tpl:20
 msgid "As we have been collecting waypoints of significant number of caches (%1) caches around the world (<a href=\"%2\">click here</a> for a list of supported services) we decided to generate a transparent map of those caches for garmin units (img format). Now you can have all those caches on one map (actually: mapset)."
-msgstr ""
+msgstr "Dünyanın dört bir yanındaki önemli sayıda önbellek (%1) önbelleklerinin yol noktalarını topladığımız için (<a href=\"%2\">desteklenen hizmetlerin listesi için buraya tıklayın</a>), garmin birimleri için bu önbelleklerin şeffaf bir haritasını oluşturmaya karar verdik (img formatı). Artık tüm bu önbelleklere tek bir haritada (aslında: mapset) sahip olabilirsiniz."
 
 #: website/app-templates/smarty/pages/downloads.tpl:21
 msgid "Read more and <a href=\"%1\">get the map</a>."
@@ -2401,7 +2401,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/downloads.tpl:38
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
-msgstr ""
+msgstr "GeoKret'in sayfasındaki uygun bağlantıya tıklayarak GeoKret'iniz için otomatik olarak bir etiket oluşturabileceğinizi lütfen unutmayın."
 
 #: website/app-templates/smarty/pages/downloads.tpl:40
 #: website/app-templates/smarty/pages/downloads.tpl:41
@@ -2439,7 +2439,7 @@ msgstr "Bu GeoKret'i al"
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:30
 msgid "The process require a \"Tracking Code\" generally written on the GeoKret label or engraved on the coin plus an \"Owner Code\" generally given on a paper sheet."
-msgstr ""
+msgstr "Süreç, genellikle GeoKret etiketine yazılan veya madeni paranın üzerine kazınan bir \"İzleme Kodu\" ve genellikle bir kağıt kağıda verilen bir \"Sahip Kodu\" gerektirir."
 
 #: website/app-templates/smarty/pages/geokret_claim.tpl:36
 msgid "Adopt"
@@ -2704,11 +2704,11 @@ msgstr "Ara…"
 
 #: website/app-templates/smarty/banners/user_email_pending_validation.tpl:3
 msgid "You have a pending email validation. Don't forget to click on the link present in the email to finish the procedure. The link will expire %1!"
-msgstr ""
+msgstr "Bekleyen bir e-posta doğrulamanız var. İşlemi tamamlamak için e-postada bulunan bağlantıya tıklamayı unutmayın. Bağlantının süresi %1 dolacak!"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr ""
+msgstr "Üzgünüz, ancak hesabınızda kayıtlı e-posta yok. Şifre kaybından kurtulmanız mümkün olmayacaktır! Ayrıca, GeoKrety'niz veya izlenen GeoKrety'niz hakkında günlük bildirimler almayacaksınız."
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:4
 msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
@@ -2724,11 +2724,11 @@ msgstr "<a href=\"%1\"> Hesap oluşturmaktan</a> çekinmeyin."
 
 #: website/app-templates/smarty/banners/geokret_anonymous_log.tpl:5
 msgid "You then will be able to manage your GeoKrety inventory, upload pictures, edit your logs and of course create your own GeoKrety!"
-msgstr ""
+msgstr "Daha sonra GeoKrety envanterinizi yönetebilecek, resim yükleyebilecek, günlüklerinizi düzenleyebilecek ve tabii ki kendi GeoKrety'nizi oluşturabileceksiniz!"
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
-msgstr ""
+msgstr "Bu GeoKret'i evlat edinmek için uygun hale getirdiniz. Sahip kodu şu şekildedir: <strong>%1</strong>. GeoKret'inizi benimseyecek kullanıcıya <strong>%2</strong> İzleme kodu ile birlikte verin."
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:6
 msgid "This GeoKret is available for adoption. If the current owner gave you the Tracking code plus the Owner code, then you can <a href=\"%1\">claim</a> this GeoKret."
@@ -2744,7 +2744,7 @@ msgstr ""
 
 #: website/app-templates/smarty/banners/user_password_missing.tpl:3
 msgid "Sorry, but your account has no password registered and no OAuth connection. <b>You will not be able to login again!</b>"
-msgstr ""
+msgstr "Üzgünüz, ancak hesabınızda kayıtlı şifre ve OAuth bağlantısı yok. <b>Tekrar giriş yapamayacaksınız!</b>"
 
 #: website/app-templates/smarty/banners/user_password_missing.tpl:4
 msgid "Please consider <a href=\"%1\">setting a password</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
@@ -3036,15 +3036,15 @@ msgstr "Bu belge, <a href=\"%1\"> geokrety.org </a>adresinde bulunan ve gönüll
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:7
 msgid "The service is monitored and supervised by a group of volunteer supporters, hereinafter referred to as GK Team. GK Team is not responsible for the content posted by users on the Site or for damages resulting from the use of information from the Service."
-msgstr ""
+msgstr "Hizmet, bundan böyle GK Ekibi olarak anılacak olan bir grup gönüllü destekçi tarafından izlenmekte ve denetlenmektedir. GK Ekibi, kullanıcılar tarafından Sitede yayınlanan içerikten veya Hizmetten alınan bilgilerin kullanımından kaynaklanan zararlardan sorumlu değildir."
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:11
 msgid "You must ensure that information published by the User on the Service <strong>must not affect the existing law</strong>. In particular, the content published by the User may not violate the copyright of third parties. All content (including descriptions of the GeoKrety, illustrations and all their entries in the logs) are made available by publishing them on the Service by the User <strong>are licensed under Creative Commons</strong> BY-NC-SA version 2.5, whose complete content is available online at <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a>. Public domain content is also admitted. The User is responsible directly to the copyright holder for any violations."
-msgstr ""
+msgstr "Kullanıcı tarafından Hizmet üzerinde yayınlanan bilgilerin <strong>mevcut yasaları</strong> etkilememesini sağlamalısınız. Özellikle, Kullanıcı tarafından yayınlanan içerik üçüncü tarafların telif haklarını ihlal edemez. Tüm içerik (GeoKrety'nin açıklamaları, resimler ve günlüklerdeki tüm girişleri dahil) Kullanıcı tarafından Hizmette yayınlanarak kullanıma sunulur <strong>tüm içeriği <a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\">https://creativecommons.org/licenses/by-nc-sa/2.5/</a> adresinde çevrimiçi olarak bulunan Creative Commons</strong> BY-NC-SA sürüm 2.5 kapsamında lisanslanmıştır. Kamu malı içerik de kabul edilmektedir. Kullanıcı, herhangi bir ihlalden doğrudan telif hakkı sahibine karşı sorumludur."
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:15
 msgid "We don't provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-msgstr ""
+msgstr "Bu web sitesinde bulunan veya sunulan bilgi ve materyallerin doğruluğu, güncelliği, performansı, eksiksizliği veya belirli bir amaç için uygunluğu konusunda herhangi bir garanti veya garanti vermiyoruz. Bu tür bilgi ve materyallerin yanlışlıklar veya hatalar içerebileceğini ve bu tür yanlışlıklar veya hatalar için yasaların izin verdiği en geniş ölçüde sorumluluğu açıkça hariç tuttuğumuzu kabul edersiniz."
 
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:19
 msgid "Content published by you on the site may not contain vulgar expressions, abusive, or illegal content."
@@ -3061,7 +3061,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:10
 msgid "This will permit another user who knows the Tracking Code and the Owner Code to become the new owner of this GeoKret."
-msgstr ""
+msgstr "Bu, İzleme Kodunu ve Sahip Kodunu bilen başka bir kullanıcının bu GeoKret'in yeni sahibi olmasına izin verecektir."
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:15
 msgid "Back to GeoKret page"
@@ -3086,7 +3086,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:10
 msgid "Refreshing your secid will disconnect all applications which were connected to your account. You'll have to reauthenticate them."
-msgstr ""
+msgstr "Secid'inizi yenilemek, hesabınıza bağlı olan tüm uygulamaların bağlantısını kesecektir. Onları yeniden doğrulamanız gerekecektir."
 
 #: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:4
 msgid "Do you want to set this picture as main avatar?"
@@ -3131,7 +3131,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/geokret_watch.tpl:9
 msgid "By adding the GeoKret to your watch list, you will receive updates of its journey in your daily mails."
-msgstr ""
+msgstr "GeoKret'i izleme listenize eklediğinizde, yolculuğuyla ilgili güncellemeleri günlük postalarınızda alacaksınız."
 
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:2
 msgid "You are about to detach your GeoKrety account from your %1 account. You'll not be able to login via this provider anymore."
@@ -3274,7 +3274,7 @@ msgstr "Beni hatırla"
 
 #: website/app-templates/smarty/dialog/login.tpl:31
 msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
-msgstr ""
+msgstr "Çerezleri yalnızca oturumunuzu etkin tutmak için kullanıyoruz. <a href=\"%1\" target=\"_blank\">çerez politikamız</a> hakkında daha fazla bilgi edinin."
 
 #: website/app-templates/smarty/dialog/login.tpl:40
 msgid "No account yet ? Register now!"
@@ -3342,7 +3342,7 @@ msgstr "Tercih edilen dili seç"
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
 #: website/app-templates/smarty/forms/registration.tpl:40
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
-msgstr ""
+msgstr "Bu, oturum açtığınızda varsayılan dil ve alabileceğiniz e-postalardaki ana dil olacaktır."
 
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:4
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:4
@@ -3565,7 +3565,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
-msgstr ""
+msgstr "Geokrety.org'da zaten bir hesabınız varsa, lütfen önce <a href=\"%2\">giriş</a> yapın, ardından kullanıcı ayarları sayfasından hesabınızı %1 ile ilişkilendirin. Aksi takdirde lütfen devam etmek için bir kullanıcı adı seçin."
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:32
 #: website/app-templates/smarty/forms/registration.tpl:49
@@ -3575,7 +3575,7 @@ msgstr ""
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:44
 #: website/app-templates/smarty/forms/registration.tpl:60
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr ""
+msgstr "Evet, <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">kullanım şartlarını</a> kabul ediyorum."
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:55
 #: website/app-templates/smarty/forms/registration.tpl:71
@@ -3609,7 +3609,7 @@ msgstr "GeoKret'i bıraktım"
 
 #: website/app-templates/smarty/forms/move.tpl:84
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
-msgstr ""
+msgstr "Bir önbellekten GeoKret aldığınızda ve <i>yakın zamanda</i> başka bir önbelleğe koymayacaksanız"
 
 #: website/app-templates/smarty/forms/move.tpl:85
 msgid "I've grabbed GeoKret"
@@ -3617,7 +3617,7 @@ msgstr "GeoKret'i aldım"
 
 #: website/app-templates/smarty/forms/move.tpl:91
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
-msgstr ""
+msgstr "Bir önbellekte bir GeoKret ile karşılaştığınızda ancak onu yanınıza almadığınızda"
 
 #: website/app-templates/smarty/forms/move.tpl:92
 msgid "I've met GeoKret"
@@ -3751,7 +3751,7 @@ msgstr "%1'ye cevapla"
 
 #: website/app-templates/smarty/emails/user-contact.tpl:28
 msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
-msgstr ""
+msgstr "Bu e-postayı alıyorsunuz çünkü GeoKrety.org kullanıcılarından biri size kullanıcı profiliniz üzerinden bir mesaj gönderdi."
 
 #: website/app-templates/smarty/emails/base-admin.tpl:4
 msgid "You're getting this email because you're one the website admins."
@@ -3885,7 +3885,7 @@ msgstr "Hesabınızın kalıcı olarak silindiğinizi size bildirmekten üzgün�
 
 #: website/app-templates/smarty/emails/expiring-accounts-deleted.tpl:14
 msgid "The username you have chosen on registration is now released and can be freely taken by someone else."
-msgstr ""
+msgstr "Kayıt sırasında seçtiğiniz kullanıcı adı artık serbesttir ve başka biri tarafından serbestçe alınabilir."
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
@@ -3921,7 +3921,7 @@ msgstr "E-posta adresinizi doğrulayın"
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
-msgstr ""
+msgstr "Bu e-postayı alıyorsunuz çünkü web sitemizde kayıtlı e-postanızın hala geçerli olduğunu doğrulamamız gerekiyor."
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
@@ -4086,7 +4086,7 @@ msgstr "GeoKrety.org'u kullanmaya bir adım kaldı."
 
 #: website/app-templates/smarty/emails/account-activation.tpl:7
 msgid "You have just registered on GeoKrety.org. <strong>You still have to activate your account before your can use it.</strong> Please follow the link bellow."
-msgstr ""
+msgstr "GeoKrety.org'a yeni kayıt oldunuz. <strong>Hesabınızı kullanabilmeniz için hala hesabınızı etkinleştirmeniz gerekiyor.</strong> Lütfen aşağıdaki bağlantıyı takip edin."
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
