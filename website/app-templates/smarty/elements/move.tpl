@@ -1,5 +1,5 @@
 <a class="anchor" id="log{$move->id}"></a>
-<div class="panel panel-default{if $move->isAuthor()} enable-dropzone{/if}" id="move-{$move->id}" data-gk-type="move" data-id="{$move->id}">
+<div class="panel panel-default{if $move->isAuthor()} enable-dropzone dropzone{/if}" id="move-{$move->id}" data-gk-type="move" data-id="{$move->id}">
     <div class="panel-body{if $move->isAuthor()} dropzone{/if}">
 
         <div class="row">
