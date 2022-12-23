@@ -1,3 +1,10 @@
+## [2.26.5](https://github.com/geokrety/geokrety-website/compare/v2.26.4...v2.26.5) (2022-12-23)
+
+
+### Bug Fixes
+
+* Shorten navbar links ([8c07795](https://github.com/geokrety/geokrety-website/commit/8c077951fcbdf154d8fd0f4771e117f654368e88))
+
 ## [2.26.4](https://github.com/geokrety/geokrety-website/compare/v2.26.3...v2.26.4) (2022-12-22)
 
 
