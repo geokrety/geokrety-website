@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-16 11:49+0000\n"
-"PO-Revision-Date: 2022-12-16 12:09\n"
+"POT-Creation-Date: 2022-12-22 22:32+0000\n"
+"PO-Revision-Date: 2022-12-23 00:14\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -2030,19 +2030,16 @@ msgid "Comment"
 msgstr "crwdns35375:0crwdne35375:0"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/home.tpl:42
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
-msgid "Last move"
-msgstr "crwdns35437:0crwdne35437:0"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Date"
+msgstr "crwdns35513:0crwdne35513:0"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:25
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_inventory.tpl:26
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:25
 #: website/app-templates/smarty/elements/map_caption.tpl:138
 msgid "Caches visited count"
@@ -2222,12 +2219,17 @@ msgstr "crwdns35159:0crwdne35159:0"
 msgid "Latest moves"
 msgstr "crwdns35555:0crwdne35555:0"
 
+#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
+msgid "Last move"
+msgstr "crwdns35437:0crwdne35437:0"
+
 #: website/app-templates/smarty/pages/home.tpl:43
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
 #: website/app-templates/smarty/pages/user_inventory.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:24
 #: website/app-templates/smarty/emails/daily-mail.tpl:129
 msgid "Distance"
@@ -2283,6 +2285,12 @@ msgstr "crwdns35613:0crwdne35613:0"
 #: website/app-templates/smarty/pages/contact_us.tpl:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "crwdns35615:0%1crwdnd35615:0%2crwdne35615:0"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+msgid "Last update"
+msgstr "crwdns36509:0crwdne36509:0"
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
 msgid "%1 doesn't watch any GeoKrety yet."
@@ -2453,11 +2461,6 @@ msgstr "crwdns35509:0%1crwdne35509:0"
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
 msgid "Cache"
 msgstr "crwdns35511:0crwdne35511:0"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:216
-msgid "Date"
-msgstr "crwdns35513:0crwdne35513:0"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
