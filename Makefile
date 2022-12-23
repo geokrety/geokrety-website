@@ -49,12 +49,16 @@ seed: ## generate random data
 buckets: ## create buckets
 	${PTY_PREFIX} bash -c "./minio/init.sh"
 
-basex: ## Create BaseX databases
+basex-init-db: ## Create BaseX databases (destructive)
 	cd website/public && php index.php /cli/basex/initdb
 
-phinx-migrate: ## play migration
+phinx-migrate: ## DB play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
-db-migrator: ## play migration
+phinx-rollback: ## DB rollback migration
+	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx rollback"
+phinx-rollback: ## DB migration status
+	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx status"
+db-migrator: ## import GKv1 database as GKv2 (destructive)
 	${PTY_PREFIX} bash -c "cd website/db && runuser -u www-data php database-migrator.php"
 
 compile-all-templates: ## compile all smarty templates
