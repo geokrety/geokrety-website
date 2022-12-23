@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-16 11:49+0000\n"
-"PO-Revision-Date: 2022-12-16 12:08\n"
+"POT-Creation-Date: 2022-12-22 22:32+0000\n"
+"PO-Revision-Date: 2022-12-23 00:13\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -2030,19 +2030,16 @@ msgid "Comment"
 msgstr "Σχόλιο"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/home.tpl:42
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
-msgid "Last move"
-msgstr "Τελευταία κίνηση"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Date"
+msgstr "Ημερομηνία"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:25
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_inventory.tpl:26
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:25
 #: website/app-templates/smarty/elements/map_caption.tpl:138
 msgid "Caches visited count"
@@ -2222,12 +2219,17 @@ msgstr "Ειδήσεις"
 msgid "Latest moves"
 msgstr "Τελευταίες κινήσεις"
 
+#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
+msgid "Last move"
+msgstr "Τελευταία κίνηση"
+
 #: website/app-templates/smarty/pages/home.tpl:43
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
 #: website/app-templates/smarty/pages/user_inventory.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:24
 #: website/app-templates/smarty/emails/daily-mail.tpl:129
 msgid "Distance"
@@ -2283,6 +2285,12 @@ msgstr "Θέλετε να υπογράψετε ή να κρυπτογραφήσ�
 #: website/app-templates/smarty/pages/contact_us.tpl:58
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "Το δημόσιο μας κλειδί PGP/GPG <a href=\"%1\">είναι εδώ (%2)</a>"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+msgid "Last update"
+msgstr ""
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
 msgid "%1 doesn't watch any GeoKrety yet."
@@ -2453,11 +2461,6 @@ msgstr "GeoKrety επισκέπτεται την προσωρινή μνήμη %
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
 msgid "Cache"
 msgstr "Κρύπτη"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:216
-msgid "Date"
-msgstr "Ημερομηνία"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
