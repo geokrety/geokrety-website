@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav">
-    <li><a id="navbar-home" href="{'home'|alias}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {t}Home{/t}</a></li>
-    <li><a id="navbar-new" href="{'news_list'|alias}">{fa icon="newspaper-o"} {t}News{/t}</a></li>
+    <li><a id="navbar-home" href="{'home'|alias}" title="{t}Home{/t}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+    <li><a id="navbar-new" href="{'news_list'|alias}" title="{t}News{/t}">{fa icon="newspaper-o"}</a></li>
     <li>
         <p class="navbar-btn">
             <a id="navbar-move" href="{'move_create'|alias}" class="btn btn-success btn-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a>
@@ -21,25 +21,26 @@
             <li><a id="navbar-new" href="{'geokrety_labels'|alias}">{fa icon="tag"} {t}Mass labelling{/t}</a></li>
         </ul>
     </li>
-    <li><a id="navbar-map" href="{'geokrety_map'|alias}">{fa icon="map"} {t}GeoKrety Map{/t}</a></li>
+    <li><a id="navbar-map" href="{'geokrety_map'|alias}" title="{t}GeoKrety Map{/t}">{fa icon="map"}</a></li>
 </ul>
 
 <ul class="nav navbar-nav">
     <li class="dropdown">
         <a id="navbar-lang" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <img src="{GK_CDN_ICONS_URL}/language.svg" width="14" />
-            <span title="{t}Currently selected language{/t}">{\Multilang::instance()->current|language:true}</span>
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
             {foreach $languages as $code => $lang}
-                <li><a id="navbar-lang-{$code}" href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), $code)}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}">{$lang}</a></li>
+                <li>
+                    <a id="navbar-lang-{$code}" href="{\Multilang::instance()->alias($f3->get('ALIAS'), $f3->get('PARAMS'), $code)}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}" class="{if \Multilang::instance()->current == $code}bold{/if}">{$lang}</a>
+                </li>
             {/foreach}
         </ul>
     </li>
 
     <li class="dropdown">
-        <a id="navbar-help" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{fa icon="support"} {t}Help{/t} <span class="caret"></span></a>
+        <a id="navbar-help" title="{t}Help{/t}" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{fa icon="support"}<span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a id="navbar-help-help" href="{'help'|alias}">{fa icon="support"} {t}Help{/t}</a></li>
             {*                        <li><a id="navbar-help-holes" href="{'mole_holes'|alias}">{fa icon="bed"} {t}Moleholes and GK hotels{/t}</a></li>*}
