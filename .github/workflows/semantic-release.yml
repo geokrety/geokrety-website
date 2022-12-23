@@ -3,7 +3,7 @@ name: Semantic release
 on:
   push:
     branches:
-      - feature/new-theme
+      - main
 
 jobs:
   release:
@@ -27,9 +27,6 @@ jobs:
       - name: Install dependencies
         run: |
           npm i -D js-yaml@4.1.0 conventional-changelog-conventionalcommits semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/exec @semantic-release/changelog @semantic-release/github @semantic-release/git
-      - name: Install jq
-        run: |
-          sudo apt-get install jq -y
 
       - name: New tag
         env:
