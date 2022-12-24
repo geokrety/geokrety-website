@@ -1,3 +1,10 @@
+## [2.26.14](https://github.com/geokrety/geokrety-website/compare/v2.26.13...v2.26.14) (2022-12-24)
+
+
+### Bug Fixes
+
+* Ci workflow adjustments ([991aa85](https://github.com/geokrety/geokrety-website/commit/991aa85873151048f15d93f7f72c8ba94392ae2d))
+
 ## [2.26.13](https://github.com/geokrety/geokrety-website/compare/v2.26.12...v2.26.13) (2022-12-24)
 
 
