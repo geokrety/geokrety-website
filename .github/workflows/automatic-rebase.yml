@@ -1,0 +1,37 @@
+name: Automatic Rebase
+
+on:
+  push:
+    tags:
+      - '2.*'
+
+  workflow_dispatch:
+
+jobs:
+  rebase:
+    name: Rebase branch feature/new-theme
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout the latest code
+        uses: actions/checkout@v3
+        with:
+          ref: feature/new-theme
+
+      - name: Configure git
+        run: |
+          git config user.name geokrety-bot
+          git config user.email geokrety-bot@users.noreply.github.com
+
+      - name: Fetch other branches
+        run: |
+          git fetch
+          git remote -v
+
+      - name: Rebase branch on main
+        run: |
+          git rebase origin/main -X ours
+
+      - name: Push branch feature/new-theme
+        run: |
+          git push --force
