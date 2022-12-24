@@ -56,7 +56,7 @@ phinx-migrate: ## DB play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
 phinx-rollback: ## DB rollback migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx rollback"
-phinx-rollback: ## DB migration status
+phinx-status: ## DB migration status
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx status"
 db-migrator: ## import GKv1 database as GKv2 (destructive)
 	${PTY_PREFIX} bash -c "cd website/db && runuser -u www-data php database-migrator.php"
