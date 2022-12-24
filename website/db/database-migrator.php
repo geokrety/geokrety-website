@@ -456,9 +456,11 @@ class UserMigrator extends BaseMigrator {
         $this->mPdo->query('UPDATE `gk-users` SET joined = timestamp WHERE joined IS NULL LIMIT 3');
         // Enable functions as we need email and secid to be cyphered
         $this->pPdo->query('SET session_replication_role = DEFAULT;');
+        $this->pPdo->query('ALTER TABLE geokrety.gk_users DISABLE TRIGGER after_99_notify_amqp;');
     }
 
     protected function postProcessData() {
+        $this->pPdo->query('ALTER TABLE geokrety.gk_users ENABLE TRIGGER after_99_notify_amqp;');
         // Disable functions again
         $this->pPdo->query('SET session_replication_role = replica;');
         // Reset stat table as function will fill it
