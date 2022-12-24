@@ -1,3 +1,10 @@
+## [2.26.16](https://github.com/geokrety/geokrety-website/compare/v2.26.15...v2.26.16) (2022-12-24)
+
+
+### Bug Fixes
+
+* Crowdin as tag major ([7aa82f9](https://github.com/geokrety/geokrety-website/commit/7aa82f91a4d60049d8ef39a04578bd81366e001b))
+
 ## [2.26.15](https://github.com/geokrety/geokrety-website/compare/v2.26.14...v2.26.15) (2022-12-24)
 
 
