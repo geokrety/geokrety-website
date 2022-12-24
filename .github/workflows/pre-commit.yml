@@ -2,6 +2,10 @@ name: pre-commit
 
 on:
   pull_request:
+    branches-ignore:
+      - master
+      - l10n_master
+      - l10n_new-theme
   push:
     branches-ignore:
       - master
