@@ -1,3 +1,16 @@
+## [2.26.8](https://github.com/geokrety/geokrety-website/compare/v2.26.7...v2.26.8) (2022-12-24)
+
+
+### Bug Fixes
+
+* Prevent error when no script were run yet ([c83be03](https://github.com/geokrety/geokrety-website/commit/c83be033c933ccf330cf17d5c406d811f1528c7e))
+
+
+### Chores
+
+* Add link in admin home to wpt stats ([fff9062](https://github.com/geokrety/geokrety-website/commit/fff906267d2ccdc7fd471b8e8b6a082cc6428af8))
+* Drop obsolete link in admin ([541c3ce](https://github.com/geokrety/geokrety-website/commit/541c3ce67f9fce11af8d6d9b0d2d039d26c3e9cd))
+
 ## [2.26.7](https://github.com/geokrety/geokrety-website/compare/v2.26.6...v2.26.7) (2022-12-24)
 
 
