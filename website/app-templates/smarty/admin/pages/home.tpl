@@ -38,7 +38,7 @@
                             <a href="{'admin_metrics'|alias}">/metrics</a>
                         </li>
                         <li>
-                            <a href="{'admin_s3_prune_pictures'|alias}">Prune never uploaded pictures</a>
+                            <a id="navbar-stats" href="{'statistics_waypoints'|alias}">{fa icon="bar-chart"} {t}Waypoints synchronization status{/t}</a>
                         </li>
                     </ul>
                     <div class="alert alert-info" role="warning">If the service is scaled more than 1, then actions will reach only one instance at a time.</div>
