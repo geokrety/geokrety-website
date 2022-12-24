@@ -1,3 +1,18 @@
+## [2.26.6](https://github.com/geokrety/geokrety-website/compare/v2.26.5...v2.26.6) (2022-12-24)
+
+
+### Bug Fixes
+
+* Declare server IP in no req limits ([cf64d03](https://github.com/geokrety/geokrety-website/commit/cf64d03375e0f368a0c1b0b057390793624ca252))
+* Declare whole ip range as not rate limited ([d84e08d](https://github.com/geokrety/geokrety-website/commit/d84e08d3ef4b44f8e8f048508c55734dff4752f6))
+* Finish updating footer colors ([bbd28d3](https://github.com/geokrety/geokrety-website/commit/bbd28d3ba0610290bf7c280d1fee5daf1a4b0e72))
+* Update support mail address ([8e556b0](https://github.com/geokrety/geokrety-website/commit/8e556b0d1a8569848b4736d21c31a7427a2b8b75))
+
+
+### Chores
+
+* Rename some Makefile entries ([52e9809](https://github.com/geokrety/geokrety-website/commit/52e98099262f9aac7695388ad69f5761e275d40a))
+
 ## [2.26.5](https://github.com/geokrety/geokrety-website/compare/v2.26.4...v2.26.5) (2022-12-23)
 
 
