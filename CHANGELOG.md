@@ -1,3 +1,16 @@
+## [2.26.7](https://github.com/geokrety/geokrety-website/compare/v2.26.6...v2.26.7) (2022-12-24)
+
+
+### Bug Fixes
+
+* Disable amqp trigger while importing users ([09b4891](https://github.com/geokrety/geokrety-website/commit/09b489165a4e6fb9f65c1f7d3f6c9d7a985161c6))
+
+
+### Chores
+
+* Fix makefile entry ([ed9fc29](https://github.com/geokrety/geokrety-website/commit/ed9fc29c06c3ac360a619f99acede635b9b94b06))
+* Reformat file ([dfb4e4d](https://github.com/geokrety/geokrety-website/commit/dfb4e4da173da3973aa9941325c3a2b22dcca33b))
+
 ## [2.26.6](https://github.com/geokrety/geokrety-website/compare/v2.26.5...v2.26.6) (2022-12-24)
 
 
