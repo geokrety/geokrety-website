@@ -38,7 +38,7 @@ jobs:
         run: |
           cat > .releaserc.json <<EOF
             {
-              "branches": ["semver", "feature/new-theme"],
+              "branches": ["semver", "main"],
               "debug": "true",
               "plugins": [
                 ["@semantic-release/commit-analyzer",{
