@@ -2,8 +2,9 @@ name: Upload translations strings to Crowdin
 
 on:
   push:
-    tags:
-      - '*'
+    branch:
+      - master
+      - main
 
   workflow_dispatch:
     inputs:
