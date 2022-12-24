@@ -1,3 +1,10 @@
+## [2.26.9](https://github.com/geokrety/geokrety-website/compare/v2.26.8...v2.26.9) (2022-12-24)
+
+
+### Bug Fixes
+
+* Fix an function call ([5e2c3aa](https://github.com/geokrety/geokrety-website/commit/5e2c3aa64e52531a13e7e3f5d11be8e6b4b4e334))
+
 ## [2.26.8](https://github.com/geokrety/geokrety-website/compare/v2.26.7...v2.26.8) (2022-12-24)
 
 
