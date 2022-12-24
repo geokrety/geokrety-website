@@ -73,13 +73,13 @@ $pFields = ['original', 'country'];
 $migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
-//// ---------------------------------------------------------------------------------------------------------------------
-//$mName = 'gk-waypointy-sync';
-//$pName = 'gk_waypoints_sync';
-//$mFields = ['service_id', 'last_update'];
-//$pFields = ['service_id', 'revision'];
-//$migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
-//$migrator->process();
+// // ---------------------------------------------------------------------------------------------------------------------
+// $mName = 'gk-waypointy-sync';
+// $pName = 'gk_waypoints_sync';
+// $mFields = ['service_id', 'last_update'];
+// $pFields = ['service_id', 'revision'];
+// $migrator = new BaseMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+// $migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-waypointy-type';
@@ -91,12 +91,12 @@ $migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Skip migrating this table, it's now fully populated using cron scripts
-//$mName = 'gk-waypointy';
-//$pName = 'gk_waypoints_oc';
-//$mFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'typ', 'kraj', 'link', 'status', 'timestamp'];
-//$pFields = ['waypoint', 'lat', 'lon', 'elevation', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
-//$migrator = new WaypointMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
-//$migrator->process();
+// $mName = 'gk-waypointy';
+// $pName = 'gk_waypoints_oc';
+// $mFields = ['waypoint', 'lat', 'lon', 'alt', 'country', 'name', 'owner', 'typ', 'kraj', 'link', 'status', 'timestamp'];
+// $pFields = ['waypoint', 'lat', 'lon', 'elevation', 'country', 'name', 'owner', 'type', 'country_name', 'link', 'status', 'added_on_datetime'];
+// $migrator = new WaypointMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
+// $migrator->process();
 
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-users';
@@ -235,7 +235,7 @@ $pFields = ['user', 'geokret'];
 $migrator = new WatchedMigrator($mysql, $pgsql, $mName, $pName, $mFields, $pFields);
 $migrator->process();
 
-//// ---------------------------------------------------------------------------------------------------------------------
+// // ---------------------------------------------------------------------------------------------------------------------
 echo 'Finished data import'.PHP_EOL;
 
 echo 'Resetting sequences'.PHP_EOL;
@@ -260,8 +260,8 @@ $pgsql->query("SELECT SETVAL('geokrety.races_participants_id_seq', COALESCE(MAX(
 $pgsql->query("SELECT SETVAL('geokrety.scripts_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.scripts;");
 $pgsql->query("SELECT SETVAL('geokrety.users_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_users;");
 $pgsql->query("SELECT SETVAL('geokrety.watched_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_watched;");
-//$pgsql->query("SELECT SETVAL('geokrety.waypoints_oc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_oc;");
-//$pgsql->query("SELECT SETVAL('geokrety.waypoints_gc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_gc;");
+// $pgsql->query("SELECT SETVAL('geokrety.waypoints_oc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_oc;");
+// $pgsql->query("SELECT SETVAL('geokrety.waypoints_gc_id_seq', COALESCE(MAX(id), 1) ) FROM geokrety.gk_waypoints_gc;");
 
 echo 'Extracting GC waypoints from moves'.PHP_EOL;
 $pgsql->query('SELECT waypoints_gc_fill_from_moves();');
@@ -482,7 +482,7 @@ class UserMigrator extends BaseMigrator {
         $values[18] = $values[18] ?: SecretCode::generateSecId();  // secid
         switch ($values[4]) { // email_invalid
           case 0:
-            $values[4] = is_null($values[3]) ? 3 : 0; //USER_EMAIL_MISSING / USER_EMAIL_NO_ERROR
+            $values[4] = is_null($values[3]) ? 3 : 0; // USER_EMAIL_MISSING / USER_EMAIL_NO_ERROR
             break;
           case 1:
             $values[4] = 1; // USER_EMAIL_INVALID
@@ -738,7 +738,7 @@ class MovesMigrator extends BaseMigrator {
 
     protected function postProcessData() {
         echo 'Post processing'.PHP_EOL;
-        //$this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
+        // $this->pPdo->query('UPDATE gk_moves SET geokret = gk_geokrety.id FROM gk_geokrety WHERE gk_moves.geokret = gk_geokrety.gkid;');
         // TODO find -> Move date time can not be before GeoKret birth (2007-10-26 20:12:28+00)
         echo '* Begin transaction'.PHP_EOL;
         $this->pPdo->beginTransaction();
@@ -935,162 +935,162 @@ class WatchedMigrator extends BaseMigrator {
     }
 }
 
-//// Check integrity
-//ALTER TABLE "gk_account_activation"
-//DROP CONSTRAINT "gk_account_activation_user_fkey",
-//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// // Check integrity
+// ALTER TABLE "gk_account_activation"
+// DROP CONSTRAINT "gk_account_activation_user_fkey",
+// ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_badges"
-//DROP CONSTRAINT "gk_badges_holder_fkey",
-//ADD FOREIGN KEY ("holder") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_badges"
+// DROP CONSTRAINT "gk_badges_holder_fkey",
+// ADD FOREIGN KEY ("holder") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_geokrety"
-//DROP CONSTRAINT "gk_geokrety_owner_fkey",
-//ADD FOREIGN KEY ("owner") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_geokrety"
+// DROP CONSTRAINT "gk_geokrety_owner_fkey",
+// ADD FOREIGN KEY ("owner") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_geokrety"
-//DROP CONSTRAINT "gk_geokrety_last_position_fkey",
-//ADD FOREIGN KEY ("last_position") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_geokrety"
+// DROP CONSTRAINT "gk_geokrety_last_position_fkey",
+// ADD FOREIGN KEY ("last_position") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_geokrety"
-//DROP CONSTRAINT "gk_geokrety_last_log_fkey",
-//ADD FOREIGN KEY ("last_log") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_geokrety"
+// DROP CONSTRAINT "gk_geokrety_last_log_fkey",
+// ADD FOREIGN KEY ("last_log") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_geokrety"
-//DROP CONSTRAINT "gk_geokrety_holder_fkey",
-//ADD FOREIGN KEY ("holder") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_geokrety"
+// DROP CONSTRAINT "gk_geokrety_holder_fkey",
+// ADD FOREIGN KEY ("holder") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_geokrety"
-//DROP CONSTRAINT "gk_geokrety_avatar_fkey",
-//ADD FOREIGN KEY ("avatar") REFERENCES "gk_pictures" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_geokrety"
+// DROP CONSTRAINT "gk_geokrety_avatar_fkey",
+// ADD FOREIGN KEY ("avatar") REFERENCES "gk_pictures" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_geokrety_rating"
-//DROP CONSTRAINT "gk_geokrety_rating_geokret_fkey",
-//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_geokrety_rating"
+// DROP CONSTRAINT "gk_geokrety_rating_geokret_fkey",
+// ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_geokrety_rating"
-//DROP CONSTRAINT "gk_geokrety_rating_author_fkey",
-//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_geokrety_rating"
+// DROP CONSTRAINT "gk_geokrety_rating_author_fkey",
+// ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_mails"
-//DROP CONSTRAINT "gk_mails_from_user_fkey",
-//ADD FOREIGN KEY ("from_user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_mails"
+// DROP CONSTRAINT "gk_mails_from_user_fkey",
+// ADD FOREIGN KEY ("from_user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_mails"
-//DROP CONSTRAINT "gk_mails_to_user_fkey",
-//ADD FOREIGN KEY ("to_user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_mails"
+// DROP CONSTRAINT "gk_mails_to_user_fkey",
+// ADD FOREIGN KEY ("to_user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_moves_comments"
-//DROP CONSTRAINT "gk_moves_comments_move_fkey",
-//ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_moves_comments"
+// DROP CONSTRAINT "gk_moves_comments_move_fkey",
+// ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_moves_comments"
-//DROP CONSTRAINT "gk_moves_comments_geokret_fkey",
-//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_moves_comments"
+// DROP CONSTRAINT "gk_moves_comments_geokret_fkey",
+// ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_moves_comments"
-//DROP CONSTRAINT "gk_moves_comments_author_fkey",
-//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_moves_comments"
+// DROP CONSTRAINT "gk_moves_comments_author_fkey",
+// ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_moves"
-//DROP CONSTRAINT "gk_moves_author_fkey",
-//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_moves"
+// DROP CONSTRAINT "gk_moves_author_fkey",
+// ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_moves"
-//DROP CONSTRAINT "gk_moves_geokret_fkey",
-//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_moves"
+// DROP CONSTRAINT "gk_moves_geokret_fkey",
+// ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_news"
-//DROP CONSTRAINT "gk_news_author_fkey",
-//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_news"
+// DROP CONSTRAINT "gk_news_author_fkey",
+// ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_news_comments"
-//DROP CONSTRAINT "gk_news_comments_news_fkey",
-//ADD FOREIGN KEY ("news") REFERENCES "gk_news" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_news_comments"
+// DROP CONSTRAINT "gk_news_comments_news_fkey",
+// ADD FOREIGN KEY ("news") REFERENCES "gk_news" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_news_comments"
-//DROP CONSTRAINT "gk_news_comments_author_fkey",
-//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_news_comments"
+// DROP CONSTRAINT "gk_news_comments_author_fkey",
+// ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_news_comments_access"
-//DROP CONSTRAINT "gk_news_comments_access_news_fkey",
-//ADD FOREIGN KEY ("news") REFERENCES "gk_news" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_news_comments_access"
+// DROP CONSTRAINT "gk_news_comments_access_news_fkey",
+// ADD FOREIGN KEY ("news") REFERENCES "gk_news" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_news_comments_access"
-//DROP CONSTRAINT "gk_news_comments_access_author_fkey",
-//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_news_comments_access"
+// DROP CONSTRAINT "gk_news_comments_access_author_fkey",
+// ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_owner_codes"
-//DROP CONSTRAINT "gk_owner_codes_geokret_fkey",
-//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_owner_codes"
+// DROP CONSTRAINT "gk_owner_codes_geokret_fkey",
+// ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_owner_codes"
-//DROP CONSTRAINT "gk_owner_codes_user_fkey",
-//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_owner_codes"
+// DROP CONSTRAINT "gk_owner_codes_user_fkey",
+// ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_password_tokens"
-//DROP CONSTRAINT "gk_password_tokens_user_fkey",
-//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_password_tokens"
+// DROP CONSTRAINT "gk_password_tokens_user_fkey",
+// ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_pictures"
-//DROP CONSTRAINT "gk_pictures_move_fkey",
-//ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_pictures"
+// DROP CONSTRAINT "gk_pictures_move_fkey",
+// ADD FOREIGN KEY ("move") REFERENCES "gk_moves" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_pictures"
-//DROP CONSTRAINT "gk_pictures_geokret_fkey",
-//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_pictures"
+// DROP CONSTRAINT "gk_pictures_geokret_fkey",
+// ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_pictures"
-//DROP CONSTRAINT "gk_pictures_user_fkey",
-//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_pictures"
+// DROP CONSTRAINT "gk_pictures_user_fkey",
+// ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_pictures"
-//DROP CONSTRAINT "gk_pictures_author_fkey",
-//ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_pictures"
+// DROP CONSTRAINT "gk_pictures_author_fkey",
+// ADD FOREIGN KEY ("author") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_races"
-//DROP CONSTRAINT "gk_races_organizer_fkey",
-//ADD FOREIGN KEY ("organizer") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_races"
+// DROP CONSTRAINT "gk_races_organizer_fkey",
+// ADD FOREIGN KEY ("organizer") REFERENCES "gk_users" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_races_participants"
-//DROP CONSTRAINT "gk_races_participants_race_fkey",
-//ADD FOREIGN KEY ("race") REFERENCES "gk_races" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_races_participants"
+// DROP CONSTRAINT "gk_races_participants_race_fkey",
+// ADD FOREIGN KEY ("race") REFERENCES "gk_races" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_races_participants"
-//DROP CONSTRAINT "gk_races_participants_geokret_fkey",
-//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_races_participants"
+// DROP CONSTRAINT "gk_races_participants_geokret_fkey",
+// ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_users"
-//DROP CONSTRAINT "gk_users_avatar_fkey",
-//ADD FOREIGN KEY ("avatar") REFERENCES "gk_pictures" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
+// ALTER TABLE "gk_users"
+// DROP CONSTRAINT "gk_users_avatar_fkey",
+// ADD FOREIGN KEY ("avatar") REFERENCES "gk_pictures" ("id") ON DELETE SET NULL ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_watched"
-//DROP CONSTRAINT "gk_watched_user_fkey",
-//ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_watched"
+// DROP CONSTRAINT "gk_watched_user_fkey",
+// ADD FOREIGN KEY ("user") REFERENCES "gk_users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-//ALTER TABLE "gk_watched"
-//DROP CONSTRAINT "gk_watched_geokret_fkey",
-//ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+// ALTER TABLE "gk_watched"
+// DROP CONSTRAINT "gk_watched_geokret_fkey",
+// ADD FOREIGN KEY ("geokret") REFERENCES "gk_geokrety" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 //
-////// Reset all sequence
-//SELECT 'SELECT SETVAL(' ||
-//quote_literal(quote_ident(PGT.schemaname) || '.' || quote_ident(S.relname)) ||
-//', COALESCE(MAX(' ||quote_ident(C.attname)|| '), 1) ) FROM ' ||
-//quote_ident(PGT.schemaname)|| '.'||quote_ident(T.relname)|| ';'
-//FROM pg_class AS S,
+// //// Reset all sequence
+// SELECT 'SELECT SETVAL(' ||
+// quote_literal(quote_ident(PGT.schemaname) || '.' || quote_ident(S.relname)) ||
+// ', COALESCE(MAX(' ||quote_ident(C.attname)|| '), 1) ) FROM ' ||
+// quote_ident(PGT.schemaname)|| '.'||quote_ident(T.relname)|| ';'
+// FROM pg_class AS S,
 //     pg_depend AS D,
 //     pg_class AS T,
 //     pg_attribute AS C,
 //     pg_tables AS PGT
-//WHERE S.relkind = 'S'
-//AND S.oid = D.objid
-//AND D.refobjid = T.oid
-//AND D.refobjid = C.attrelid
-//AND D.refobjsubid = C.attnum
-//AND T.relname = PGT.tablename
-//ORDER BY S.relname;
+// WHERE S.relkind = 'S'
+// AND S.oid = D.objid
+// AND D.refobjid = T.oid
+// AND D.refobjid = C.attrelid
+// AND D.refobjsubid = C.attnum
+// AND T.relname = PGT.tablename
+// ORDER BY S.relname;
 
-//UPDATE "gk_moves" SET
-//"country" = LOWER(iso_a2)
-//from gk_countries
-//where ST_Contains(geom, ST_GeomFromText('point(' || lon || ' ' || lat || ')'));
+// UPDATE "gk_moves" SET
+// "country" = LOWER(iso_a2)
+// from gk_countries
+// where ST_Contains(geom, ST_GeomFromText('point(' || lon || ' ' || lat || ')'));
