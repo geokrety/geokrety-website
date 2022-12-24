@@ -1,3 +1,10 @@
+## [2.27.0](https://github.com/geokrety/geokrety-website/compare/v2.26.16...v2.27.0) (2022-12-24)
+
+
+### Features
+
+* Dump basex exports ([cd1d294](https://github.com/geokrety/geokrety-website/commit/cd1d294082c56df13416f48664515c4d5a75c1f0))
+
 ## [2.26.16](https://github.com/geokrety/geokrety-website/compare/v2.26.15...v2.26.16) (2022-12-24)
 
 
