@@ -2,9 +2,8 @@ name: Upload translations strings to Crowdin
 
 on:
   push:
-    branch:
-      - master
-      - main
+    tags:
+      - '*'
 
   workflow_dispatch:
     inputs:
@@ -25,7 +24,8 @@ jobs:
       - name: Set output
         id: vars
         run: |
-          echo "::set-output name=short_ref::${GITHUB_REF#refs/*/}" | tr '/' '.'
+          major_version=$(cut -d '.' -f 1 <<< ${{ github.ref_name }})
+          echo "::set-output name=major_version::${major_version}"
           TMP=$(mktemp -d)
           echo ::set-output name=tmp_dir::${TMP}
 
@@ -69,6 +69,6 @@ jobs:
           project_id: 260106
           token: ${{ secrets.CROWDIN_API_KEY }}
           upload_sources: true
-          upload_sources_args: --branch ${{ steps.vars.outputs.short_ref }}
+          upload_sources_args: --branch ${{ steps.vars.outputs.major_version }}
           upload_translations: false
           download_translations: false
