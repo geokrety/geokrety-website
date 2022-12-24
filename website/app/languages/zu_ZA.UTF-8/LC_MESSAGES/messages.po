@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-16 11:49+0000\n"
-"PO-Revision-Date: 2022-12-16 12:09\n"
+"POT-Creation-Date: 2022-12-24 13:51+0000\n"
+"PO-Revision-Date: 2022-12-24 14:08\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -1083,14 +1083,14 @@ msgstr "crwdns35883:0crwdne35883:0"
 msgid "Toggle navigation"
 msgstr "crwdns36425:0crwdne36425:0"
 
-#: website/app-templates/smarty/navbar.tpl:16
+#: website/app-templates/smarty/navbar.tpl:15
 #: website/app-templates/smarty/pages/geokret_move.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:6
 #: website/app-templates/smarty/navbar-left.tpl:13
 msgid "Log a GeoKret"
 msgstr "crwdns35719:0crwdne35719:0"
 
-#: website/app-templates/smarty/navbar.tpl:32
+#: website/app-templates/smarty/navbar.tpl:31
 #: website/app-templates/smarty/pages/registration_validated.tpl:13
 #: website/app-templates/smarty/navbar-profile.tpl:48
 #: website/app-templates/smarty/dialog/login_simple.tpl:17
@@ -1216,6 +1216,11 @@ msgstr "crwdns36461:0crwdne36461:0"
 msgid "Generate"
 msgstr "crwdns36463:0crwdne36463:0"
 
+#: website/app-templates/smarty/admin/pages/home.tpl:41
+#: website/app-templates/smarty/navbar-left.tpl:52
+msgid "Waypoints synchronization status"
+msgstr "crwdns36097:0crwdne36097:0"
+
 #: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
 msgid "GeoKrety generator result"
 msgstr "crwdns36465:0crwdne36465:0"
@@ -1245,12 +1250,12 @@ msgstr "crwdns36131:0crwdne36131:0"
 msgid "Scripts management"
 msgstr "crwdns36477:0crwdne36477:0"
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:45
+#: website/app-templates/smarty/admin/pages/scripts.tpl:47
 #: website/app-templates/smarty/emails/cron-locked.tpl:10
 msgid "Unlock script"
 msgstr "crwdns35397:0crwdne35397:0"
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:48
+#: website/app-templates/smarty/admin/pages/scripts.tpl:50
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:15
 msgid "Ack"
 msgstr "crwdns36109:0crwdne36109:0"
@@ -1610,7 +1615,7 @@ msgid "Choose preferred language"
 msgstr "crwdns35919:0crwdne35919:0"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:46
-#: website/app-templates/smarty/pages/contact_us.tpl:17
+#: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Email"
 msgstr "crwdns35603:0crwdne35603:0"
 
@@ -2030,19 +2035,16 @@ msgid "Comment"
 msgstr "crwdns35375:0crwdne35375:0"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/home.tpl:42
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
-msgid "Last move"
-msgstr "crwdns35437:0crwdne35437:0"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Date"
+msgstr "crwdns35513:0crwdne35513:0"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:25
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_inventory.tpl:26
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:25
 #: website/app-templates/smarty/elements/map_caption.tpl:138
 msgid "Caches visited count"
@@ -2054,7 +2056,7 @@ msgstr "crwdns35441:0%1crwdne35441:0"
 
 #: website/app-templates/smarty/pages/press_corner.tpl:3
 #: website/app-templates/smarty/pages/press_corner.tpl:9
-#: website/app-templates/smarty/navbar-left.tpl:47
+#: website/app-templates/smarty/navbar-left.tpl:48
 msgid "Press corner"
 msgstr "crwdns35781:0crwdne35781:0"
 
@@ -2108,8 +2110,8 @@ msgstr "crwdns35805:0crwdne35805:0"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:39
 #: website/app-templates/smarty/pages/help.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:42
-#: website/app-templates/smarty/navbar-left.tpl:44
+#: website/app-templates/smarty/navbar-left.tpl:43
+#: website/app-templates/smarty/navbar-left.tpl:45
 msgid "Help"
 msgstr "crwdns35671:0crwdne35671:0"
 
@@ -2222,12 +2224,17 @@ msgstr "crwdns35159:0crwdne35159:0"
 msgid "Latest moves"
 msgstr "crwdns35555:0crwdne35555:0"
 
+#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
+msgid "Last move"
+msgstr "crwdns35437:0crwdne35437:0"
+
 #: website/app-templates/smarty/pages/home.tpl:43
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
 #: website/app-templates/smarty/pages/user_inventory.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:24
 #: website/app-templates/smarty/emails/daily-mail.tpl:129
 msgid "Distance"
@@ -2260,29 +2267,43 @@ msgstr "crwdns35599:0crwdne35599:0"
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "crwdns35601:0crwdne35601:0"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:24
+#: website/app-templates/smarty/pages/contact_us.tpl:17
+msgid "Helpdesk"
+msgstr "crwdns36511:0crwdne36511:0"
+
+#: website/app-templates/smarty/pages/contact_us.tpl:19
+msgid "Helpdesk portal"
+msgstr "crwdns36513:0crwdne36513:0"
+
+#: website/app-templates/smarty/pages/contact_us.tpl:31
 msgid "Or via the user profile"
 msgstr "crwdns35605:0crwdne35605:0"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:33
+#: website/app-templates/smarty/pages/contact_us.tpl:40
 msgid "IRC"
 msgstr "crwdns35607:0crwdne35607:0"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:41
+#: website/app-templates/smarty/pages/contact_us.tpl:48
 msgid "Twitter"
 msgstr "crwdns35609:0crwdne35609:0"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:48
+#: website/app-templates/smarty/pages/contact_us.tpl:55
 msgid "Public forum"
 msgstr "crwdns35611:0crwdne35611:0"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:56
+#: website/app-templates/smarty/pages/contact_us.tpl:63
 msgid "Wanna sign or encrypt your mails?"
 msgstr "crwdns35613:0crwdne35613:0"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:58
+#: website/app-templates/smarty/pages/contact_us.tpl:65
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "crwdns35615:0%1crwdnd35615:0%2crwdne35615:0"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+msgid "Last update"
+msgstr "crwdns36509:0crwdne36509:0"
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
 msgid "%1 doesn't watch any GeoKrety yet."
@@ -2347,7 +2368,7 @@ msgid "Mass label generator"
 msgstr "crwdns35725:0crwdne35725:0"
 
 #: website/app-templates/smarty/pages/downloads.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:54
+#: website/app-templates/smarty/navbar-left.tpl:55
 msgid "Downloads"
 msgstr "crwdns35681:0crwdne35681:0"
 
@@ -2453,11 +2474,6 @@ msgstr "crwdns35509:0%1crwdne35509:0"
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
 msgid "Cache"
 msgstr "crwdns35511:0crwdne35511:0"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:216
-msgid "Date"
-msgstr "crwdns35513:0crwdne35513:0"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
@@ -2914,37 +2930,29 @@ msgstr "crwdns36085:0crwdne36085:0"
 msgid "GeoKrety Map"
 msgstr "crwdns36087:0crwdne36087:0"
 
-#: website/app-templates/smarty/navbar-left.tpl:31
-msgid "Currently selected language"
-msgstr "crwdns36089:0crwdne36089:0"
-
-#: website/app-templates/smarty/navbar-left.tpl:45
+#: website/app-templates/smarty/navbar-left.tpl:46
 msgid "Moleholes and GK hotels"
 msgstr "crwdns36091:0crwdne36091:0"
 
-#: website/app-templates/smarty/navbar-left.tpl:46
+#: website/app-templates/smarty/navbar-left.tpl:47
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:26
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:46
 msgid "Terms of use"
 msgstr "crwdns36093:0crwdne36093:0"
 
-#: website/app-templates/smarty/navbar-left.tpl:49
+#: website/app-templates/smarty/navbar-left.tpl:50
 msgid "GK interface / API"
 msgstr "crwdns36095:0crwdne36095:0"
 
-#: website/app-templates/smarty/navbar-left.tpl:51
-msgid "Waypoints synchronization status"
-msgstr "crwdns36097:0crwdne36097:0"
-
-#: website/app-templates/smarty/navbar-left.tpl:52
+#: website/app-templates/smarty/navbar-left.tpl:53
 msgid "Yearly rankings"
 msgstr "crwdns36099:0crwdne36099:0"
 
-#: website/app-templates/smarty/navbar-left.tpl:55
+#: website/app-templates/smarty/navbar-left.tpl:56
 msgid "GeoKrety Toolbox"
 msgstr "crwdns36101:0crwdne36101:0"
 
-#: website/app-templates/smarty/navbar-left.tpl:56
+#: website/app-templates/smarty/navbar-left.tpl:57
 msgid "Waypoint resolver"
 msgstr "crwdns36103:0crwdne36103:0"
 
