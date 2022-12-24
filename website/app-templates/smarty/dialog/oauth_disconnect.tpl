@@ -10,7 +10,7 @@
         <div class="panel-body">
             {call text}
         </div>
-        {if isset($current_user) && !$current_user->hasAcceptedThetermsOfUse}
+        {if isset($current_user) && !$current_user->hasAcceptedTheTermsOfUse()}
             <div class="panel-footer">
                 <form method="POST" action="{'opauth_detach'|alias:sprintf('strategy', $oauth_provider->name)}">
                     {call csrf}

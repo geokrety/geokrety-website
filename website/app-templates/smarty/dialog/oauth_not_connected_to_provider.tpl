@@ -10,7 +10,7 @@
     <div class="panel-body">
         {call text}
     </div>
-    {if isset($current_user) && !$current_user->hasAcceptedThetermsOfUse}
+    {if isset($current_user) && !$current_user->hasAcceptedTheTermsOfUse()}
         <div class="panel-footer">
             <a href="{'user_details'|alias:sprintf('userid=%d', $current_user->id)}" class="btn btn-default" title="{t}Back to my profile{/t}">{t}Back to my profile{/t}</a>
         </div>
