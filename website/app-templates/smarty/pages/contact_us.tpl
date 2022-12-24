@@ -14,9 +14,16 @@
         </p>
 
         <div class="row">
+            <label class="col-sm-2 control-label">{t}Helpdesk{/t}</label>
+            <div class="col-sm-6">
+                <a href="https://support.geokrety.org" alt="{t}Helpdesk portal{/t}" >{t}Helpdesk portal{/t}</a>
+            </div>
+        </div>
+
+        <div class="row">
             <label class="col-sm-2 control-label">{t}Email{/t}</label>
             <div class="col-sm-6">
-                <img src="{GK_CDN_IMAGES_URL}/emailowy_adres.png" alt="mail" class="img-responsive" />
+                <img src="{GK_CDN_IMAGES_URL}/support-email.svg" alt="mail" class="img-responsive" />
             </div>
         </div>
 
