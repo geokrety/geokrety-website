@@ -2,8 +2,8 @@ name: Automatic Rebase branch feature/new-theme
 
 on:
   push:
-    tags:
-      - 'v2.*'
+    tags-ignore:
+      - v1.*
 
   workflow_dispatch:
 
