@@ -22,6 +22,7 @@
         </tr>
         </thead>
         <tbody>
+            {if $scripts}
             {foreach from=$scripts item=item}
                 <tr class="{if $item->is_locked()}danger{/if}">
                     <td>{$item->id}</td>
@@ -35,6 +36,7 @@
                     </td>
                 </tr>
             {/foreach}
+            {/if}
         </tbody>
     </table>
 {/block}
