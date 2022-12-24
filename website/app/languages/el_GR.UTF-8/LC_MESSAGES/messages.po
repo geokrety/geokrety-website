@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-16 11:49+0000\n"
-"PO-Revision-Date: 2022-12-16 12:08\n"
+"POT-Creation-Date: 2022-12-24 13:51+0000\n"
+"PO-Revision-Date: 2022-12-24 14:08\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -1083,14 +1083,14 @@ msgstr "Ποτέ δεν μετακινήθηκε"
 msgid "Toggle navigation"
 msgstr "Εναλλαγή πλοήγησης"
 
-#: website/app-templates/smarty/navbar.tpl:16
+#: website/app-templates/smarty/navbar.tpl:15
 #: website/app-templates/smarty/pages/geokret_move.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:6
 #: website/app-templates/smarty/navbar-left.tpl:13
 msgid "Log a GeoKret"
 msgstr "Καταχωρείστε ένα GeoKret"
 
-#: website/app-templates/smarty/navbar.tpl:32
+#: website/app-templates/smarty/navbar.tpl:31
 #: website/app-templates/smarty/pages/registration_validated.tpl:13
 #: website/app-templates/smarty/navbar-profile.tpl:48
 #: website/app-templates/smarty/dialog/login_simple.tpl:17
@@ -1216,6 +1216,11 @@ msgstr "Επίθημα κώδικα ιδιοκτήτη"
 msgid "Generate"
 msgstr "Δημιουργία"
 
+#: website/app-templates/smarty/admin/pages/home.tpl:41
+#: website/app-templates/smarty/navbar-left.tpl:52
+msgid "Waypoints synchronization status"
+msgstr "Κατάσταση συγχρονισμού σημείων"
+
 #: website/app-templates/smarty/admin/pages/geokrety_generator_result.tpl:3
 msgid "GeoKrety generator result"
 msgstr "Αποτέλεσμα γεννήτριας GeoKrety"
@@ -1245,12 +1250,12 @@ msgstr "Reset"
 msgid "Scripts management"
 msgstr "Διαχείριση σεναρίων"
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:45
+#: website/app-templates/smarty/admin/pages/scripts.tpl:47
 #: website/app-templates/smarty/emails/cron-locked.tpl:10
 msgid "Unlock script"
 msgstr "Σενάριο ξεκλειδώματος"
 
-#: website/app-templates/smarty/admin/pages/scripts.tpl:48
+#: website/app-templates/smarty/admin/pages/scripts.tpl:50
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:15
 msgid "Ack"
 msgstr "Ack"
@@ -1610,7 +1615,7 @@ msgid "Choose preferred language"
 msgstr "Επιλογή προτιμώμενης γλώσσας"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:46
-#: website/app-templates/smarty/pages/contact_us.tpl:17
+#: website/app-templates/smarty/pages/contact_us.tpl:24
 msgid "Email"
 msgstr "Email"
 
@@ -2030,19 +2035,16 @@ msgid "Comment"
 msgstr "Σχόλιο"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:24
-#: website/app-templates/smarty/pages/home.tpl:42
-#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
-#: website/app-templates/smarty/pages/user_inventory.tpl:24
-#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
-msgid "Last move"
-msgstr "Τελευταία κίνηση"
+#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/forms/move.tpl:216
+msgid "Date"
+msgstr "Ημερομηνία"
 
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:25
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:26
 #: website/app-templates/smarty/pages/user_inventory.tpl:26
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:25
 #: website/app-templates/smarty/elements/map_caption.tpl:138
 msgid "Caches visited count"
@@ -2054,7 +2056,7 @@ msgstr "%1 δεν μετακινήθηκε ακόμα κάποιο GeoKrety."
 
 #: website/app-templates/smarty/pages/press_corner.tpl:3
 #: website/app-templates/smarty/pages/press_corner.tpl:9
-#: website/app-templates/smarty/navbar-left.tpl:47
+#: website/app-templates/smarty/navbar-left.tpl:48
 msgid "Press corner"
 msgstr "Πατήστε γωνιά"
 
@@ -2108,8 +2110,8 @@ msgstr "Χάρτες GK"
 
 #: website/app-templates/smarty/pages/hall_of_fame.tpl:39
 #: website/app-templates/smarty/pages/help.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:42
-#: website/app-templates/smarty/navbar-left.tpl:44
+#: website/app-templates/smarty/navbar-left.tpl:43
+#: website/app-templates/smarty/navbar-left.tpl:45
 msgid "Help"
 msgstr "Βοήθεια"
 
@@ -2222,12 +2224,17 @@ msgstr "Ειδήσεις"
 msgid "Latest moves"
 msgstr "Τελευταίες κινήσεις"
 
+#: website/app-templates/smarty/pages/home.tpl:42
+#: website/app-templates/smarty/pages/search_by_geokret.tpl:23
+msgid "Last move"
+msgstr "Τελευταία κίνηση"
+
 #: website/app-templates/smarty/pages/home.tpl:43
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:25
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
 #: website/app-templates/smarty/pages/user_inventory.tpl:25
-#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:25
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:24
 #: website/app-templates/smarty/emails/daily-mail.tpl:129
 msgid "Distance"
@@ -2260,29 +2267,43 @@ msgstr "Επικοινωνείστε μαζί μας"
 msgid "If you have any suggestion or bug reports feel free to write us."
 msgstr "Αν έχετε οποιαδήποτε πρόταση ή αναφορές σφαλμάτων διστάσετε να μας γράψετε."
 
-#: website/app-templates/smarty/pages/contact_us.tpl:24
+#: website/app-templates/smarty/pages/contact_us.tpl:17
+msgid "Helpdesk"
+msgstr ""
+
+#: website/app-templates/smarty/pages/contact_us.tpl:19
+msgid "Helpdesk portal"
+msgstr ""
+
+#: website/app-templates/smarty/pages/contact_us.tpl:31
 msgid "Or via the user profile"
 msgstr "Ή μέσω του προφίλ χρήστη"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:33
+#: website/app-templates/smarty/pages/contact_us.tpl:40
 msgid "IRC"
 msgstr "IRC"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:41
+#: website/app-templates/smarty/pages/contact_us.tpl:48
 msgid "Twitter"
 msgstr "Twitter"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:48
+#: website/app-templates/smarty/pages/contact_us.tpl:55
 msgid "Public forum"
 msgstr "Δημόσιο φόρουμ"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:56
+#: website/app-templates/smarty/pages/contact_us.tpl:63
 msgid "Wanna sign or encrypt your mails?"
 msgstr "Θέλετε να υπογράψετε ή να κρυπτογραφήσετε τα μηνύματά σας?"
 
-#: website/app-templates/smarty/pages/contact_us.tpl:58
+#: website/app-templates/smarty/pages/contact_us.tpl:65
 msgid "Our public PGP/GPG key <a href=\"%1\">is here (%2)</a>"
 msgstr "Το δημόσιο μας κλειδί PGP/GPG <a href=\"%1\">είναι εδώ (%2)</a>"
+
+#: website/app-templates/smarty/pages/user_watched_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_owned_geokrety.tpl:24
+#: website/app-templates/smarty/pages/user_inventory.tpl:24
+msgid "Last update"
+msgstr ""
 
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:38
 msgid "%1 doesn't watch any GeoKrety yet."
@@ -2347,7 +2368,7 @@ msgid "Mass label generator"
 msgstr "Γεννήτρια μαζικών ετικετών"
 
 #: website/app-templates/smarty/pages/downloads.tpl:3
-#: website/app-templates/smarty/navbar-left.tpl:54
+#: website/app-templates/smarty/navbar-left.tpl:55
 msgid "Downloads"
 msgstr "Λήψεις"
 
@@ -2453,11 +2474,6 @@ msgstr "GeoKrety επισκέπτεται την προσωρινή μνήμη %
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:21
 msgid "Cache"
 msgstr "Κρύπτη"
-
-#: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
-#: website/app-templates/smarty/forms/move.tpl:216
-msgid "Date"
-msgstr "Ημερομηνία"
 
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:37
 msgid "No GeoKrety has visited cache %1 yet."
@@ -2914,37 +2930,29 @@ msgstr "Επισήμανση μάζας"
 msgid "GeoKrety Map"
 msgstr "Χάρτης GeoKrety"
 
-#: website/app-templates/smarty/navbar-left.tpl:31
-msgid "Currently selected language"
-msgstr "Τρέχουσα επιλεγμένη γλώσσα"
-
-#: website/app-templates/smarty/navbar-left.tpl:45
+#: website/app-templates/smarty/navbar-left.tpl:46
 msgid "Moleholes and GK hotels"
 msgstr "Ξενοδοχεία Moleholes και GK"
 
-#: website/app-templates/smarty/navbar-left.tpl:46
+#: website/app-templates/smarty/navbar-left.tpl:47
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:26
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:46
 msgid "Terms of use"
 msgstr "Όροι χρήσης"
 
-#: website/app-templates/smarty/navbar-left.tpl:49
+#: website/app-templates/smarty/navbar-left.tpl:50
 msgid "GK interface / API"
 msgstr "Διεπαφή GK / API"
 
-#: website/app-templates/smarty/navbar-left.tpl:51
-msgid "Waypoints synchronization status"
-msgstr "Κατάσταση συγχρονισμού σημείων"
-
-#: website/app-templates/smarty/navbar-left.tpl:52
+#: website/app-templates/smarty/navbar-left.tpl:53
 msgid "Yearly rankings"
 msgstr "Ετήσια κατάταξη"
 
-#: website/app-templates/smarty/navbar-left.tpl:55
+#: website/app-templates/smarty/navbar-left.tpl:56
 msgid "GeoKrety Toolbox"
 msgstr "Εργαλειοθήκη GeoKrety"
 
-#: website/app-templates/smarty/navbar-left.tpl:56
+#: website/app-templates/smarty/navbar-left.tpl:57
 msgid "Waypoint resolver"
 msgstr "Αναλυτής σημείου διαδρομής"
 
