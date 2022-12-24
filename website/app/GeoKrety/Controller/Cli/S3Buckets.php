@@ -10,7 +10,6 @@ class S3Buckets {
 
     public function prune(\Base $f3): void {
         $this->script_start(__METHOD__);
-        // TODO expire never uploaded pictures
         PictureModel::expireNeverUploaded();
         $this->script_end();
     }
