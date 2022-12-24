@@ -1,3 +1,10 @@
+## [2.26.11](https://github.com/geokrety/geokrety-website/compare/v2.26.10...v2.26.11) (2022-12-24)
+
+
+### Bug Fixes
+
+* Adjust tag name in workflow ([a67b5a8](https://github.com/geokrety/geokrety-website/commit/a67b5a8a06249aad8f2fd8eae85da7f5ed6c8e76))
+
 ## [2.26.10](https://github.com/geokrety/geokrety-website/compare/v2.26.9...v2.26.10) (2022-12-24)
 
 
