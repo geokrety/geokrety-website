@@ -1,3 +1,10 @@
+## [2.26.13](https://github.com/geokrety/geokrety-website/compare/v2.26.12...v2.26.13) (2022-12-24)
+
+
+### Bug Fixes
+
+* automatic branch rebase again ([f098b1e](https://github.com/geokrety/geokrety-website/commit/f098b1e2b95f3980bb75425386943fa7fd84a216))
+
 ## [2.26.12](https://github.com/geokrety/geokrety-website/compare/v2.26.11...v2.26.12) (2022-12-24)
 
 
