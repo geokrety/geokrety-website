@@ -1,3 +1,17 @@
+## [2.26.10](https://github.com/geokrety/geokrety-website/compare/v2.26.9...v2.26.10) (2022-12-24)
+
+
+### Translations
+
+* New Crowdin updates ([#797](https://github.com/geokrety/geokrety-website/issues/797)) ([#800](https://github.com/geokrety/geokrety-website/issues/800)) ([d96a74d](https://github.com/geokrety/geokrety-website/commit/d96a74dc71dc9f7569e4b0831e7868bfd3ebfe47))
+* New Crowdin updates ([#805](https://github.com/geokrety/geokrety-website/issues/805)) ([1b248a3](https://github.com/geokrety/geokrety-website/commit/1b248a323f40b2d3396a3985fb4ac68194e73e9c))
+
+
+### Chores
+
+* **deps:** bump guzzlehttp/guzzle from 7.4.3 to 7.5.0 ([#799](https://github.com/geokrety/geokrety-website/issues/799)) ([12bbeb6](https://github.com/geokrety/geokrety-website/commit/12bbeb6062b13694e391d45f2dc3d23be699583f))
+* **deps:** bump smarty/smarty from 4.1.1 to 4.2.1 ([#798](https://github.com/geokrety/geokrety-website/issues/798)) ([3f44c62](https://github.com/geokrety/geokrety-website/commit/3f44c62f4e58b018150506c6d63960fae9893e19))
+
 ## [2.26.9](https://github.com/geokrety/geokrety-website/compare/v2.26.8...v2.26.9) (2022-12-24)
 
 
