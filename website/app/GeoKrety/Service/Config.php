@@ -51,6 +51,7 @@ class Config extends \Prefab {
         define('GK_BASEX_PORT', getenv('GK_BASEX_PORT') ?: null);
         define('GK_BASEX_USER', getenv('GK_BASEX_USER') ?: null);
         define('GK_BASEX_PASSWORD', getenv('GK_BASEX_PASSWORD') ?: null);
+        define('GK_BASEX_EXPORTS_PATH', getenv('GK_BASEX_EXPORTS_PATH') ?: '/srv/basex/exports/');
 
         // RabbitMQ
         define('GK_RABBITMQ_HOST', getenv('GK_RABBITMQ_HOST') ?: null);

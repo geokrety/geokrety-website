@@ -11,7 +11,7 @@ class BaseX {
     /**
      * @throws \Exception
      */
-    public function initDB(\Base $f3): void {
+    public function initDB(): void {
         $this->script_start(__METHOD__);
         $basex = BaseXClient::instance()->getSession();
         $basex->create('geokrety', '<gkxml><geokrety/></gkxml>');
@@ -45,5 +45,20 @@ SQL;
             $f3->get('DB')->exec($sql, [$i]);
         }
         $this->script_end();
+    }
+
+    public function exportAll() {
+        $basex = BaseXClient::instance()->getSession();
+        $export_path = GK_BASEX_EXPORTS_PATH;
+
+        $query = <<<XQUERY
+xquery db:export("geokrety", "$export_path", map { "method": "xml", "cdata-section-elements": "description name owner user waypoint application comment message"})
+XQUERY;
+        $basex->execute($query);
+
+        $query = <<<XQUERY
+xquery db:export("geokrety-details", "$export_path", map { "method": "xml", "cdata-section-elements": "description name owner user waypoint application comment message"})
+XQUERY;
+        $basex->execute($query);
     }
 }
