@@ -1,3 +1,10 @@
+## [2.26.15](https://github.com/geokrety/geokrety-website/compare/v2.26.14...v2.26.15) (2022-12-24)
+
+
+### Bug Fixes
+
+* Upload crowding translation files on branchs not tags ([611dfa2](https://github.com/geokrety/geokrety-website/commit/611dfa2077209c425f6177da5535e9639464ab2a))
+
 ## [2.26.14](https://github.com/geokrety/geokrety-website/compare/v2.26.13...v2.26.14) (2022-12-24)
 
 
