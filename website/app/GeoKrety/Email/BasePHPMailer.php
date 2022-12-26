@@ -134,7 +134,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         }
         if (!GK_IS_PRODUCTION) {
             foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
-                $_admin = $user->findone(['id = ?', $admin_id]);
+                $_admin = $user->findone(['id = ?', $admin_id], null, 60);
                 $_user = clone $user;
                 $_user->email = $_admin->email;
                 $_user->username .= ' (admin)';
