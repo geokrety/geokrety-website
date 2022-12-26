@@ -1,3 +1,19 @@
+## [2.27.1](https://github.com/geokrety/geokrety-website/compare/v2.27.0...v2.27.1) (2022-12-26)
+
+
+### Bug Fixes
+
+* Audit log for sent mails ([ff93340](https://github.com/geokrety/geokrety-website/commit/ff933407b8aa5af8adef29fd7b0149fac1a7d9df))
+* Database integrety with deleted users on gk moves comments ([fbb510c](https://github.com/geokrety/geokrety-website/commit/fbb510c72caaf07116f0263aab49aabccc801cc9))
+* Database integrity with deleted users on gk moves comments access ([f0cfb53](https://github.com/geokrety/geokrety-website/commit/f0cfb536d6fb7a6c033f250f6efe1fc1190a6007))
+* Declare intenal IP ([22e5e6a](https://github.com/geokrety/geokrety-website/commit/22e5e6a3ee07a6d13ce66f86bbd884cfbc6e18ef))
+* Prevent error when a picture have no author ([1e5772d](https://github.com/geokrety/geokrety-website/commit/1e5772d6bb1b85176c7d175adc2d66b3408b58d8))
+
+
+### Performance Improvements
+
+* Cache admin query info ([c7cb1bb](https://github.com/geokrety/geokrety-website/commit/c7cb1bb0e9fa2b5c6682cd7f6aeb380af609d807))
+
 ## [2.27.0](https://github.com/geokrety/geokrety-website/compare/v2.26.16...v2.27.0) (2022-12-24)
 
 
