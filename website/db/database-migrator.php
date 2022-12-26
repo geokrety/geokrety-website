@@ -523,11 +523,8 @@ class NewsCommentsMigrator extends BaseMigrator {
 }
 
 class NewsCommentsAccessMigrator extends BaseMigrator {
-    protected function postProcessData() {
-        $this->pPdo->query('DELETE FROM gk_news_comments WHERE author NOT IN (SELECT DISTINCT(id) FROM gk_users);');
-    }
-
-    protected function cleanerHook(&$values) {
+    protected function prepareData() {
+        $this->mPdo->query('DELETE FROM `gk-news-comments-access` WHERE user_id NOT IN (SELECT DISTINCT(userid) FROM `gk-users`);');
     }
 }
 
