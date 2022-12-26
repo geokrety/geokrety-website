@@ -282,6 +282,14 @@ $events->on('cron.dailymail.sent', function (GeoKrety\Email\DailyMail $email) {
     audit('cron.dailymail.sent', $email);
     Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['sent']);
 });
+$events->on('mail.error', function (GeoKrety\Email\BasePHPMailer $email) {
+    audit('mail.error', $email);
+    Metrics::counter('mails', 'Total number of mails notification', ['status'], ['error']);
+});
+$events->on('mail.sent', function (GeoKrety\Email\BasePHPMailer $email) {
+    audit('mail.sent', $email);
+    Metrics::counter('mails', 'Total number of mails notification', ['status'], ['sent']);
+});
 $events->on('awarded.created', function (GeoKrety\Model\AwardsWon $award) {
     audit('awarded.created', $award);
     Metrics::counter('award_awarded', 'Total number of awards awarded', ['award'], ['created']);

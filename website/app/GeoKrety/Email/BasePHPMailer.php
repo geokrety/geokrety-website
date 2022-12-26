@@ -10,6 +10,7 @@ use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Metrics;
 use GeoKrety\Service\Smarty;
 use PHPMailer\PHPMailer\PHPMailer;
+use Sugar\Event;
 
 abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     public array $recipients = [];
@@ -62,6 +63,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         if (sizeof($this->recipients) === 0) {
             return false;
         }
+        $return = true;
         foreach ($this->recipients as $user) {
             Metrics::counter('mail', 'Total number of sent email');
             $this->isHTML(true);
@@ -73,20 +75,24 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
             parent::addAddress($user->email, $user->username);
             if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
                 $this->store_in_local_session();
+                Event::instance()->emit('mail.sent', $this);
                 continue;
             }
             if (!parent::send()) {
+                $return = false;
+                Event::instance()->emit('mail.error', $this);
                 if (PHP_SAPI === 'cli') {
                     echo 'An error occurred while sending mail.';
                 } else {
                     Flash::instance()->addMessage(_('An error occurred while sending mail.'), 'danger');
                 }
             }
+            Event::instance()->emit('mail.sent', $this);
         }
         $this->recipients = [];
         LanguageService::restoreLanguageToCurrentChosen();
 
-        return true;
+        return $return;
     }
 
     protected function getSubject(): string {
@@ -160,8 +166,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     public function jsonSerialize(): array {
         $to = [];
         foreach ($this->getToAddresses() as $address) {
-            var_dump($address);
-            $to[] = $address;
+            $to[] = [mask_email($address[0]), $address[1]];
         }
 
         return [
@@ -169,4 +174,23 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
             'subject' => $this->getSubject(),
         ];
     }
+}
+
+// Function from: https://stackoverflow.com/a/45944844/944936
+function mask($str, $first, $last) {
+    $len = strlen($str);
+    $toShow = $first + $last;
+
+    return substr($str, 0, $len <= $toShow ? 0 : $first).str_repeat('*', $len - ($len <= $toShow ? 0 : $toShow)).substr($str, $len - $last, $len <= $toShow ? 0 : $last);
+}
+// Function from: https://stackoverflow.com/a/45944844/944936
+function mask_email($email) {
+    $mail_parts = explode('@', $email);
+    $domain_parts = explode('.', $mail_parts[1]);
+
+    $mail_parts[0] = mask($mail_parts[0], 2, 1); // show first 2 letters and last 1 letter
+    $domain_parts[0] = mask($domain_parts[0], 2, 1); // same here
+    $mail_parts[1] = implode('.', $domain_parts);
+
+    return implode('@', $mail_parts);
 }
