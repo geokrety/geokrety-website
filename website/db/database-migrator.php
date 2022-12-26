@@ -789,7 +789,8 @@ class MoveCommentsMigrator extends BaseMigrator {
     // $pFields = ['move', 'geokret', 'author', 'created_on_datetime', 'content', 'type', 'updated_on_datetime'];
 
     protected function prepareData() {
-        $this->mPdo->query('DELETE FROM `gk-ruchy-comments` WHERE user_id NOT IN (SELECT DISTINCT(userid) FROM `gk-users`) OR kret_id NOT IN (SELECT DISTINCT(id) FROM `gk-geokrety`) OR ruch_id NOT IN (SELECT DISTINCT(ruch_id) FROM `gk-ruchy`);');
+        $this->mPdo->query('UPDATE `gk-ruchy-comments` SET user_id=NULL WHERE user_id NOT IN (SELECT DISTINCT(userid) FROM `gk-users`);');
+        $this->mPdo->query('DELETE FROM `gk-ruchy-comments` WHERE kret_id NOT IN (SELECT DISTINCT(id) FROM `gk-geokrety`) OR ruch_id NOT IN (SELECT DISTINCT(ruch_id) FROM `gk-ruchy`);');
     }
 
     protected function cleanerHook(&$values) {
