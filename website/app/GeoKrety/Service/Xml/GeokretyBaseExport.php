@@ -42,8 +42,10 @@ abstract class GeokretyBaseExport extends Base {
             $xml->writeAttribute('id', $picture->id);
             $xml->writeAttribute('type_id', $picture->type->getTypeId());
             $xml->writeAttribute('type', $picture->type->getTypeString());
-            $xml->writeAttribute('author_id', $picture->author->id);
-            $xml->writeAttribute('author', $picture->author->username);
+            if ($picture->getRaw('author')) {
+                $xml->writeAttribute('author_id', $picture->author->id);
+                $xml->writeAttribute('author', $picture->author->username);
+            }
             $xml->writeAttribute('url', $picture->url);
             $xml->writeAttribute('thumbnail_url', $picture->thumbnail_url);
             if ($picture->isMainAvatar()) {
