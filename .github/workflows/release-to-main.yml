@@ -3,8 +3,8 @@ name: Release to main
 on:
   workflow_dispatch:
     inputs:
-      upload:
-        type: base_rebase_branch
+      base_rebase_branch:
+        type: string
         description: 'Which branch to release?'
         required: true
         default: 'feature/new-theme'
@@ -32,7 +32,7 @@ jobs:
 
       - name: Rebase branch on main
         run: |
-          git rebase ${{ inputs.base_rebase_branch }}
+          git rebase origin/${{ inputs.base_rebase_branch }}
 
       - name: Push branch main
         run: |
