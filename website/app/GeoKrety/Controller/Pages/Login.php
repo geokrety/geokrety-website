@@ -5,7 +5,6 @@ namespace GeoKrety\Controller;
 use Flash;
 use GeoKrety\Auth;
 use GeoKrety\AuthGroup;
-use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
 use GeoKrety\Model\UserSocialAuth;
@@ -248,7 +247,6 @@ class Login extends Base {
                     // Update account with received email, and mark it as valid
                     $this->current_user->email = $data['info']['email'];
                     $this->current_user->email_invalid = User::USER_EMAIL_NO_ERROR;
-                    AccountActivationToken::invalidateOtherUserTokens($this->current_user);
                 }
                 $this->current_user->save();
                 $f3->get('DB')->commit();

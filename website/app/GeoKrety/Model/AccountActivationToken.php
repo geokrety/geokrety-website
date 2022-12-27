@@ -97,19 +97,6 @@ class AccountActivationToken extends Base {
         });
     }
 
-    public static function invalidateOtherUserTokens(User $user) {
-        $activation = new AccountActivationToken();
-        $invalidateTokens = $activation->find([
-            'user = ? AND used = ?',
-            $user->id,
-            self::TOKEN_UNUSED,
-        ]);
-        foreach ($invalidateTokens ?: [] as $token) {
-            $token->used = self::TOKEN_DISABLED;
-            $token->save();
-        }
-    }
-
     public function get_created_on_datetime($value): ?DateTime {
         return self::get_date_object($value);
     }
