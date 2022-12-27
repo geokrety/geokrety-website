@@ -1,3 +1,10 @@
+## [2.27.3](https://github.com/geokrety/geokrety-website/compare/v2.27.2...v2.27.3) (2022-12-27)
+
+
+### Bug Fixes
+
+* Sent mail in foreground during unit tests ([95ecdeb](https://github.com/geokrety/geokrety-website/commit/95ecdebf818c9b6ca1b99f82740fad7a03fa60c0))
+
 ## [2.27.2](https://github.com/geokrety/geokrety-website/compare/v2.27.1...v2.27.2) (2022-12-27)
 
 
