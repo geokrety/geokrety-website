@@ -3,8 +3,11 @@
 namespace GeoKrety;
 
 use Flash;
+use GeoKrety\Email\AccountActivation;
+use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\User;
 use Hautelook\Phpass\PasswordHash;
+use Sugar\Event;
 
 class Auth extends \Auth {
     /**
@@ -70,6 +73,14 @@ class Auth extends \Auth {
         $user->has('social_auth.provider', ['name = ?', $provider]);
         $user->load();
         if ($user->valid()) {
+            // Send Welcome email
+            $activation_token = new AccountActivationToken();
+            if ($activation_token->loadUserActiveToken($user)) {
+                Event::instance()->emit('user.activated', $activation_token->user);
+                // TODO: This needs to be moved in it's own micro service, data channel would be rabbitmq
+                $smtp = new AccountActivation();
+                $smtp->sendActivationConfirm($activation_token);
+            }
             // Set account as verified
             $user->account_valid = User::USER_ACCOUNT_VALID;
             $user->save();
