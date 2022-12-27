@@ -1,0 +1,39 @@
+name: Automatic Rebase branch main on feature/new-theme
+
+on:
+  workflow_dispatch:
+    inputs:
+      upload:
+        type: base_rebase_branch
+        description: 'Which branch to release?'
+        required: true
+        default: 'feature/new-theme'
+
+jobs:
+  rebase:
+    name: Rebase branch main on ${{ inputs.base_rebase_branch }}
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout the latest code
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Configure git
+        run: |
+          git config user.name geokrety-bot
+          git config user.email geokrety-bot@users.noreply.github.com
+
+      - name: Fetch other branches
+        run: |
+          git fetch
+          git remote -v
+
+      - name: Rebase branch on main
+        run: |
+          git rebase ${{ inputs.base_rebase_branch }}
+
+      - name: Push branch main
+        run: |
+          git push
