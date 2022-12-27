@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: feature/new-theme
+          # If enabled, the workflow will trigger other workflows
+          # ssh-key: "${{ secrets.COMMIT_KEY }}"
 
       - name: Configure git
         run: |
