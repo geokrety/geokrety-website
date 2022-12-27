@@ -43,8 +43,13 @@ class AccountActivation extends BasePHPMailer {
     /**
      * To be used on login.
      */
-    public function sendActivationAgainOnLogin(AccountActivationToken $token) {
+    public function sendActivationAgainOnLogin(AccountActivationToken $token, bool $notif_only = false) {
         $this->prepareMessageActivationAgainOnLogin();
+        if ($notif_only) {
+            $this->flashMessage($token);
+
+            return;
+        }
         $this->_sendActivation($token);
     }
 

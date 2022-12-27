@@ -92,7 +92,9 @@ class Login extends Base {
                 $ml = Multilang::instance();
                 $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
             }
+            $user->resendAccountActivationEmail(true);
             $f3->reroute($url, false, false);
+            $f3->abort();
             $user->resendAccountActivationEmail();
             exit();
         }

@@ -10,8 +10,13 @@ use GeoKrety\Service\Smarty;
 class EmailRevalidate extends BasePHPMailer {
     private array $message = [];
 
-    public function sendRevalidation(EmailRevalidateToken $token) {
+    public function sendRevalidation(EmailRevalidateToken $token, bool $notif_only = false) {
         $this->prepareMessageSendRevalidation();
+        if ($notif_only) {
+            $this->flashMessage($token);
+
+            return;
+        }
         $this->_sendRevalidation($token);
     }
 

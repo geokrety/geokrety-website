@@ -345,7 +345,7 @@ class User extends Base implements JsonSerializable {
         $smtp->sendActivation($token);
     }
 
-    public function resendAccountActivationEmail(): void {
+    public function resendAccountActivationEmail(bool $notif_only = false): void {
         if (is_null($this->email)) {
             // skip sending mail
             return;
@@ -357,7 +357,7 @@ class User extends Base implements JsonSerializable {
             $token->set_email($this->get_email());
             $token->save();
             $smtp = new EmailRevalidate();
-            $smtp->sendRevalidation($token);
+            $smtp->sendRevalidation($token, $notif_only);
 
             return;
         }
@@ -370,7 +370,7 @@ class User extends Base implements JsonSerializable {
                 $token->save();
             }
             $smtp = new AccountActivation();
-            $smtp->sendActivationAgainOnLogin($token);
+            $smtp->sendActivationAgainOnLogin($token, $notif_only);
         }
     }
 
