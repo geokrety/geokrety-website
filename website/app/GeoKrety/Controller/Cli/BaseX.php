@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller\Cli;
 
 use GeoKrety\Controller\Cli\Traits\Script;
+use GeoKrety\Model\Geokret;
 use GeoKrety\Service\BaseXClient;
 
 class BaseX {
@@ -24,6 +25,7 @@ class BaseX {
      * @throws \Exception
      */
     public function importAll(\Base $f3): void {
+        $this->console_writer->setPattern('Publishing %7s update status [%6d/%6d] - %3.2f%%');
         $this->script_start(__METHOD__);
 
         $sql_max_gk = <<<'SQL'
@@ -41,7 +43,9 @@ SELECT amqp.publish(1, 'geokrety', '', json_build_object(
 		'kind', 'gk_geokrety'
 	)::text);
 SQL;
-        for ($i = 1; $i <= $max_gkid; ++$i) {
+        for ($i = $max_gkid; $i > 0; --$i) {
+            $j = $max_gkid - $i + 1;
+            $this->console_writer->print([Geokret::id2gkid($i), $j, $max_gkid, $j / $max_gkid * 100]);
             $f3->get('DB')->exec($sql, [$i]);
         }
         $this->script_end();
