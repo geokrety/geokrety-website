@@ -67,6 +67,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         foreach ($this->recipients as $user) {
             Metrics::counter('mail', 'Total number of sent email');
             $this->isHTML(true);
+            $this->addReplyTo(GK_SITE_EMAIL_NOREPLY);
             Smarty::assign('user', $user);
             LanguageService::changeLanguageTo($user->preferred_language);
             $this->Subject = $this->getSubject();

@@ -36,6 +36,7 @@ class Config extends \Prefab {
 
         // SITE EMAIL From
         define('GK_SITE_EMAIL', getenv('GK_SITE_EMAIL') ?: 'geokrety@gmail.com');
+        define('GK_SITE_EMAIL_NOREPLY', getenv('GK_SITE_EMAIL_NOREPLY') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_SUPPORT', getenv('GK_SITE_EMAIL_SUPPORT') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_REGISTRATION', getenv('GK_SITE_EMAIL_REGISTRATION') ?: GK_SITE_EMAIL);
         define('GK_SITE_EMAIL_DAILY_MAIL', getenv('GK_SITE_EMAIL_DAILY_MAIL') ?: GK_SITE_EMAIL);
