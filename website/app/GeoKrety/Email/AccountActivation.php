@@ -25,6 +25,8 @@ class AccountActivation extends BasePHPMailer {
         $this->setTo($token->user, true);
         if ($this->sendEmail('emails/account-activation.tpl')) {
             $this->flashMessage($token);
+            $token->touch('last_notification_datetime');
+            $token->save();
         }
     }
 
