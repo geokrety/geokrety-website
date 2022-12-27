@@ -70,6 +70,10 @@ class Auth extends \Auth {
         $user->has('social_auth.provider', ['name = ?', $provider]);
         $user->load();
         if ($user->valid()) {
+            // Set account as verified
+            $user->account_valid = User::USER_ACCOUNT_VALID;
+            $user->save();
+
             return $user;
         }
 
