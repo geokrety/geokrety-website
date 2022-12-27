@@ -1,3 +1,20 @@
+## [2.27.2](https://github.com/geokrety/geokrety-website/compare/v2.27.1...v2.27.2) (2022-12-27)
+
+
+### Bug Fixes
+
+* Move invalidate Account Activation to the database ([3431459](https://github.com/geokrety/geokrety-website/commit/3431459155673782c0f146cf56f146217ebd104e))
+* Save the last sent account renotification datetime ([5b0d6b1](https://github.com/geokrety/geokrety-website/commit/5b0d6b1b6c41171f493174ae3dbd0165b150d30c))
+* Send account activation mails in background ([9ccb63e](https://github.com/geokrety/geokrety-website/commit/9ccb63e562abb80590f445eb987bd2459cbb141e))
+* Send welcome email on oauth login ([965bf1c](https://github.com/geokrety/geokrety-website/commit/965bf1cde1798faa398afb560b17109e83d28f30))
+* Set reply-to to noreply on sent mails ([56f6ad9](https://github.com/geokrety/geokrety-website/commit/56f6ad981cee7fa31e032e3ecf67cb1528660c84))
+* Validate account while signin using OAuth ([01e5f31](https://github.com/geokrety/geokrety-website/commit/01e5f3107ac09d891cf42c2d2df81f6d7b4b2261))
+
+
+### Code Refactoring
+
+* Declare a function argument type ([8bb3786](https://github.com/geokrety/geokrety-website/commit/8bb3786653baf4e4355f6abc204c9c678ed580ed))
+
 ## [2.27.1](https://github.com/geokrety/geokrety-website/compare/v2.27.0...v2.27.1) (2022-12-26)
 
 
