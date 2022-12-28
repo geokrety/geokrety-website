@@ -49,8 +49,12 @@ seed: ## generate random data
 buckets: ## create buckets
 	${PTY_PREFIX} bash -c "./minio/init.sh"
 
-basex-init-db: ## Create BaseX databases (destructive)
+basex-init-db: ## Create empty BaseX databases (destructive)
 	cd website/public && php index.php /cli/basex/initdb
+basex-import-all: ## Insert all GeoKrety IDs in rabbitmq for reprocessing
+	cd website/public && php index.php /cli/basex/importAll
+basex-export-all: ## Request BaseX to export it's data on disk
+	cd website/public && php index.php /cli/basex/exportAll
 
 phinx-migrate: ## DB play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
@@ -58,6 +62,7 @@ phinx-rollback: ## DB rollback migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx rollback"
 phinx-status: ## DB migration status
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx status"
+
 db-migrator: ## import GKv1 database as GKv2 (destructive)
 	${PTY_PREFIX} bash -c "cd website/db && runuser -u www-data php database-migrator.php"
 
