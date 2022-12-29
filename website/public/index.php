@@ -108,6 +108,24 @@ $f3->set('CURRENT_USER', $f3->get('SESSION.CURRENT_USER'));
 Metrics::getOrRegisterCounter('total_requests', 'Total number of served requests', ['verb'])
     ->inc([$f3->get('VERB')]);
 
+// Piwik
+if (GK_PIWIK_ENABLED) {
+    if (!\GeoKrety\Service\UserSettings::getForCurrentUser('TRACKING_OPT_OUT')) {
+        try {
+            $matomoTracker = new \GeoKrety\Service\MatomoTracker(GK_PIWIK_SITE_ID, GK_PIWIK_URL);
+            $matomoTracker->setTokenAuth(GK_PIWIK_TOKEN);
+            $matomoTracker->setIp($f3->get('IP'));
+            $matomoTracker->setVisitorId(substr(md5($f3->get('IP').session_id()), 0, 16));
+            $matomoTracker->doTrackPageView(\Base::instance()->PATH);
+            \Sugar\Event::instance()->emit('tracker.success');
+        } catch (RuntimeException $e) {
+            \Sugar\Event::instance()->emit('tracker.timeout');
+        }
+    } else {
+        \Sugar\Event::instance()->emit('tracker.skipped');
+    }
+}
+
 // Force HTTP_RETURN_CODE
 if ($f3->exists('SESSION.HTTP_RETURN_CODE')) {
     http_response_code($f3->get('SESSION.HTTP_RETURN_CODE'));

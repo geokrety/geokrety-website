@@ -323,6 +323,7 @@ class Config extends \Prefab {
         define('GK_SITE_CACHE_TTL_LABELS_LIST', getenv('GK_SITE_CACHE_TTL_LABELS_LIST') ?: (GK_DEVEL ? 0 : 600));
         define('GK_SITE_CACHE_TTL_LABELS_LOOKUP', getenv('GK_SITE_CACHE_TTL_LABELS_LOOKUP') ?: (GK_DEVEL ? 0 : 600));
         define('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS', getenv('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_SITE_DEFAULT_SETTINGS', getenv('GK_SITE_CACHE_TTL_SITE_DEFAULT_SETTINGS') ?: (GK_DEVEL ? 0 : 600));
 
         // JS TIMEOUTS
         define('GK_OBSERVATION_AREA_RADIUS_TIMEOUT', getenv('GK_OBSERVATION_AREA_RADIUS_TIMEOUT') ?: (GK_DEVEL ? 500 : 100));
@@ -376,6 +377,13 @@ class Config extends \Prefab {
             'API_GKT_V3_SEARCH' => [10000, 60 * 60 * 24], // 10000/day
             'API_GKT_V3_INVENTORY' => [1500, 60 * 60 * 24], // 1500/day
         ]);
+
+        // PIWIK
+        define('GK_PIWIK_URL', getenv('GK_PIWIK_URL') ?: null);
+        define('GK_PIWIK_SITE_ID', (int) getenv('GK_PIWIK_SITE_ID') ?: null);
+        define('GK_PIWIK_TOKEN', getenv('GK_PIWIK_TOKEN') ?: null);
+        define('GK_PIWIK_CONNECT_TIMEOUT_MS', getenv('GK_PIWIK_CONNECT_TIMEOUT_MS') ?: 400);
+        define('GK_PIWIK_ENABLED', !empty(GK_PIWIK_URL) && !empty(GK_PIWIK_SITE_ID) && !empty(GK_PIWIK_TOKEN) && (GK_DEBUG || !filter_var(\Base::instance()->get('HEADERS.Dnt'), FILTER_VALIDATE_BOOLEAN)));
 
         // CDN
         define('GK_CDN_SERVER_URL', getenv('GK_CDN_SERVER_URL') ?: 'https://cdn.geokrety.org');

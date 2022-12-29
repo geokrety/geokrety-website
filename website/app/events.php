@@ -144,6 +144,14 @@ $events->on('user.password.changed', function (GeoKrety\Model\User $user) {
     audit('user.password.changed', $user);
     Metrics::counter('user_password_changed_total', 'Total number of password changed');
 });
+$events->on('user.setting.save.success', function (GeoKrety\Model\UsersSettings $settings) {
+    audit('user.setting.save.success', $settings);
+    Metrics::counter('user_settings_save_success_total', 'Total number of successfull saved settings');
+});
+$events->on('user.setting.save.failed', function (GeoKrety\Model\UsersSettings $user) {
+    audit('user.setting.save.failed', $user);
+    Metrics::counter('user_settings_save_failed_total', 'Total number of failure saving settings');
+});
 $events->on('password.token.generated', function (GeoKrety\Model\PasswordToken $token) {
     audit('password.token.generated', $token);
     Metrics::counter('password_token_created_total', 'Total number of password token generated');
@@ -311,4 +319,13 @@ $events->on('scripts.unlocked', function (GeoKrety\Model\Scripts $script) {
 $events->on('scripts.acked', function (GeoKrety\Model\Scripts $script) {
     audit('scripts.acked', $script);
     // Metric will be handled by cron script
+});
+$events->on('tracker.timeout', function () {
+    Metrics::counter('tracker', 'Tracker stats', ['status'], ['timeout']);
+});
+$events->on('tracker.success', function () {
+    Metrics::counter('tracker', 'Tracker stats', ['status'], ['success']);
+});
+$events->on('tracker.skipped', function () {
+    Metrics::counter('tracker', 'Tracker stats', ['status'], ['skipped']);
 });

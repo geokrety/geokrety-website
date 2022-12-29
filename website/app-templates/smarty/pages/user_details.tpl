@@ -37,6 +37,7 @@
             {if $user->isConnectedWithProvider()}
             {include file='blocks/user/oauth.tpl'}
             {/if}
+            {include file='blocks/user/tracking.tpl'}
             {include file='blocks/user/danger_zone.tpl'}
         </div>
     </div>
@@ -61,6 +62,7 @@
     {include 'js/dialogs/dialog_contact_user.tpl.js'}
     {include 'js/dialogs/dialog_picture_actions.tpl.js'}
     {include 'js/dialogs/dialog_oauth_disconnect.tpl.js'}
+    {include 'js/users/settings_tracking.tpl.js'}
 
 $('#modal').on('hide.bs.modal', function(event) {
     $('#recaptcha_wrapper').empty();
