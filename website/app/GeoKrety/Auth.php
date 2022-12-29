@@ -81,9 +81,6 @@ class Auth extends \Auth {
                 $smtp = new AccountActivation();
                 $smtp->sendActivationConfirm($activation_token);
             }
-            // Set account as verified
-            $user->account_valid = User::USER_ACCOUNT_VALID;
-            $user->save();
 
             return $user;
         }
