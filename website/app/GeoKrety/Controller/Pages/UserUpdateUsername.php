@@ -49,7 +49,14 @@ class UserUpdateUsername extends Base {
     private function check_account_status(\Base $f3): void {
         if (!$this->current_user->isEmailValid() or !$this->current_user->hasEmail() or $this->current_user->isAccountInvalid()) {
             Flash::instance()->addMessage(_('Sorry, to use this feature, you must have a valid registered email address.'), 'danger');
-            $f3->reroute(['user_details', ['userid' => $this->current_user->id]]);
+            if (GK_DEVEL) {
+                $this->current_user->resendAccountActivationEmail();
+                $f3->reroute(['user_details', ['userid' => $this->current_user->id]]);
+            }
+            $this->current_user->resendAccountActivationEmail(true);
+            $f3->reroute(['user_details', ['userid' => $this->current_user->id]], false, false);
+            $f3->abort();
+            $this->current_user->resendAccountActivationEmail();
         }
     }
 }
