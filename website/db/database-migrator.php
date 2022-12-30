@@ -56,6 +56,10 @@ echo 'Truncating tables'.PHP_EOL;
 $sql = 'TRUNCATE "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_awards_won", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts", "gk_yearly_ranking" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
 
+echo 'Drop new tables tables'.PHP_EOL;
+$sql = 'DROP TABLE IF EXISTS "gk_users_settings", "gk_users_settings_parameters" CASCADE';
+$pgsql->query($sql);
+
 echo 'Start import data'.PHP_EOL;
 // ---------------------------------------------------------------------------------------------------------------------
 $mName = 'gk-waypointy-gc';
