@@ -32,6 +32,32 @@ function moveTypeText(move_type) {
     }
 }
 
+function isFirstMove(feature) {
+    return feature.properties.step === feature.properties.min_step;
+}
+
+function isLastMove(feature) {
+    return feature.properties.step === feature.properties.max_step;
+}
+
+function previousMoveButton(feature) {
+    let disabled = isFirstMove(feature) ? 'disabled' : '';
+    return `
+<button type="button" class="btn btn-default btn-xs popup-move-navigate" title="{t}Previous move{/t}" data-id="${ feature.properties.previous_step }" ${ disabled }>
+    {fa icon="arrow-left"}
+</button>
+`;
+}
+
+function nextMoveButton(feature) {
+    let disabled = isLastMove(feature) ? 'disabled' : '';
+    return `
+<button type="button" class="btn btn-default btn-xs popup-move-navigate" title="{t}Next move{/t}" data-id="${ feature.properties.next_step }" ${ disabled }>
+    {fa icon="arrow-right"}
+</button>
+`;
+}
+
 function OpenPopupForStep(step) {
     geoJsonLayer.eachLayer(function (feature){
         if (feature.feature.properties.step == step) {
@@ -58,10 +84,10 @@ var greenIcon = new GKMapIcon({ iconUrl: "https://cdn.geokrety.org/images/icons/
 
 // create marker
 function getPlotIcon(feature) {
-    if (feature.properties.step === 1) {
+    if (isFirstMove(feature)) {
         return redIcon;
     }
-    if (feature.properties.step === feature.properties.next_step) {
+    if (isLastMove(feature)) {
         return greenIcon;
     }
     return yellowIcon;
@@ -92,15 +118,11 @@ function onEachFeature(feature, layer) {
         </dl>
         <div class="text-center">
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default btn-xs popup-move-navigate" title="{t}Previous move{/t}" data-id="${ feature.properties.previous_step }">
-                    {fa icon="arrow-left"}
-                </button>
-                <a href="#log${ feature.properties.move_id }" class="btn btn-default btn-xs popup-move-navigate" title="{t}Show move{/t}" data-id="${ feature.properties.step +1 }">
+                ${ previousMoveButton(feature) }
+                <a href="#log${ feature.properties.move_id }" class="btn btn-default btn-xs popup-move-navigate" title="{t}Show move{/t}" data-id="${ feature.properties.step }">
                     {t}Show move{/t}
                 </a>
-                <button type="button" class="btn btn-default btn-xs popup-move-navigate" title="{t}Next move{/t}" data-id="${ feature.properties.next_step }">
-                    {fa icon="arrow-right"}
-                </button>
+                ${ nextMoveButton(feature) }
             </div>
         </div>
         <div class="text-center">
@@ -119,7 +141,7 @@ function filterExcludeLineString(feature) {
 
 jQuery.ajax({
     dataType: "json",
-    url: "{'geokret_moves_geojson_paginate'|alias:sprintf('@gkid=%s,@page=%d', $geokret->gkid, 1)}",
+    url: "{'geokret_moves_geojson_paginate'|alias:sprintf('@gkid=%s,@page=%d', $geokret->gkid, $pg->getCurrent())}",
     success: function (data) {
         // Insert the markers
         geoJsonLayer = L.geoJson(data, {
@@ -138,8 +160,8 @@ jQuery.ajax({
             geoJsonLineLayer.getLayers().forEach(function (geoJsonLine) {
                 let points = geoJsonLine.getLatLngs().reverse();
                 L.hotline(points, {
-                    min: 0,
-                    max: points.length,
+                    min: Math.min.apply(Math, points.map(function(o) { return o.alt; })),
+                    max: Math.max.apply(Math, points.map(function(o) { return o.alt; })),
                     weight: 3,
                     palette: { 0.0: 'red', 0.5: 'yellow', 1.0: 'green' }
                 }).addTo(map);
