@@ -23,7 +23,6 @@ WITH waypoints AS (
     FROM gk_moves
     LEFT JOIN gk_users ON author = gk_users.id
     WHERE geokret=?
-    AND position is not NULL
     ORDER BY moved_on_datetime DESC
     LIMIT ?
     OFFSET ?
@@ -40,6 +39,7 @@ t1 AS (
         COALESCE (lag(step) over (order by moved_on_datetime DESC), step) AS next_step,
         COALESCE (lag(step) over (order by moved_on_datetime ASC), step) AS previous_step
     FROM waypoints
+    WHERE position is not NULL
 ),
 t AS (
     select public.ST_AsGeoJSON(t1.*) AS step
@@ -58,6 +58,7 @@ f AS (
     )
     AS line
     FROM waypoints
+    WHERE position is not NULL
 ),
 features AS (
         SELECT t.step AS feat
