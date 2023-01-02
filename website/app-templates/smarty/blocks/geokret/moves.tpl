@@ -11,9 +11,9 @@
 {else}
 
 {if $geokret->isOwner()}
-TODO: Hey! This GeoKret has not moved it. blablabla
+    {t}This GeoKret has not moved yet.{/t}
 {else}
-TODO: Did you found this GeoKret? Log it!
+    {t}Did you found this GeoKret? Log it!{/t}
 {/if}
 
 {/if}
