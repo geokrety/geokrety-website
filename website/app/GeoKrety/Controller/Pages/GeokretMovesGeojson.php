@@ -28,8 +28,9 @@ WITH waypoints AS (
     LIMIT ?
     OFFSET ?
 ),
-t AS (
-    select waypoint, position, elevation, distance, country, step,
+t1 AS (
+    select
+        waypoint, position, elevation, distance, country, step,
         COALESCE(TRUNC(EXTRACT(EPOCH FROM (moved_on_datetime - lag(moved_on_datetime) over (order by moved_on_datetime DESC)::timestamptz))/60), 0) AS minutes,
         lat, lon,
         moved_on_datetime,
@@ -39,15 +40,27 @@ t AS (
         COALESCE (lag(step) over (order by moved_on_datetime DESC), step) AS next_step,
         COALESCE (lag(step) over (order by moved_on_datetime ASC), step) AS previous_step
     from waypoints
+),
+t AS (
+    select public.ST_AsGeoJSON(t1.*) AS step
+    from t1
+),
+f AS (
+    SELECT public.ST_AsGeoJSON(public.ST_MakeLine(position::public.geometry)) AS line
+    FROM waypoints
+),
+features AS (
+        SELECT t.step AS feat
+        FROM t
+        UNION
+        SELECT f.line
+        FROM f
 )
-            select json_build_object(
-                'type', 'FeatureCollection',
-                'features', COALESCE(json_agg(public.ST_AsGeoJSON(t.*)::json), '[]')::jsonb || COALESCE(json_agg(public.ST_AsGeoJSON(f.*)::json), '[]')::jsonb
-            ) AS geojson
-            from t,
-            (SELECT public.ST_MakeLine(position::public.geometry) As geom
-                FROM waypoints
-            ) as f;
+    SELECT json_build_object(
+        'type', 'FeatureCollection',
+        'features', COALESCE(json_agg(features.feat::json), '[]')::jsonb
+    ) AS geojson
+    FROM features
 EOT;
         $result = $f3->get('DB')->exec($sql, [$this->geokret->id, 500, $start]);
         exit($result[0]['geojson']);
