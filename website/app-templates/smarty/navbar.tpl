@@ -8,6 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand visible-xs-inline" id="navbar-brand" href="{'home'|alias}">GeoKrety.org</a>
 
             <div class="pull-right hidden-sm hidden-md hidden-lg">
                 {if $f3->get('SESSION.IS_LOGGED_IN')}

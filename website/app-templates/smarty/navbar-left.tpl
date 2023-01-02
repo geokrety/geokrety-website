@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav">
-    <li><a id="navbar-home" href="{'home'|alias}" title="{t}Home{/t}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-    <li><a id="navbar-new" href="{'news_list'|alias}" title="{t}News{/t}">{fa icon="newspaper-o"}</a></li>
+    <li><a id="navbar-home" href="{'home'|alias}" title="{t}Home{/t}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="visible-xs-inline"> {t}Home{/t}</span></a></li>
+    <li><a id="navbar-new" href="{'news_list'|alias}" title="{t}News{/t}">{fa icon="newspaper-o"}<span class="visible-xs-inline"> {t}News{/t}</span></a></li>
     <li>
         <p class="navbar-btn">
             <a id="navbar-move" href="{'move_create'|alias}" class="btn btn-success btn-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {t}Log a GeoKret{/t}</a>
@@ -21,13 +21,13 @@
             <li><a id="navbar-new" href="{'geokrety_labels'|alias}">{fa icon="tag"} {t}Mass labelling{/t}</a></li>
         </ul>
     </li>
-    <li><a id="navbar-map" href="{'geokrety_map'|alias}" title="{t}GeoKrety Map{/t}">{fa icon="map"}</a></li>
+    <li><a id="navbar-map" href="{'geokrety_map'|alias}" title="{t}GeoKrety Map{/t}">{fa icon="map"}<span class="visible-xs-inline"> {t}GeoKrety Map{/t}</span></a></li>
 </ul>
 
 <ul class="nav navbar-nav">
     <li class="dropdown">
         <a id="navbar-lang" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <img src="{GK_CDN_ICONS_URL}/language.svg" width="14" />
+            <img src="{GK_CDN_ICONS_URL}/language.svg" width="14" /><span class="visible-xs-inline" title="{t}Currently selected language{/t}"> {\Multilang::instance()->current|language:true}</span>
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
@@ -40,7 +40,7 @@
     </li>
 
     <li class="dropdown">
-        <a id="navbar-help" title="{t}Help{/t}" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{fa icon="support"}<span class="caret"></span></a>
+        <a id="navbar-help" title="{t}Help{/t}" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{fa icon="support"}<span class="visible-xs-inline"> {t}Help{/t}</span><span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a id="navbar-help-help" href="{'help'|alias}">{fa icon="support"} {t}Help{/t}</a></li>
             {*                        <li><a id="navbar-help-holes" href="{'mole_holes'|alias}">{fa icon="bed"} {t}Moleholes and GK hotels{/t}</a></li>*}
