@@ -395,6 +395,7 @@ class Config extends \Prefab {
         define('GK_CDN_IMAGES_URL', getenv('GK_CDN_IMAGES_URL') ?: GK_CDN_SERVER_URL.'/images');
         define('GK_CDN_ICONS_URL', getenv('GK_CDN_ICONS_URL') ?: GK_CDN_IMAGES_URL.'/icons');
         define('GK_CDN_LOGOS_URL', getenv('GK_CDN_LOGOS_URL') ?: GK_CDN_IMAGES_URL.'/logos');
+        define('GK_CDN_PINS_ICONS_URL', getenv('GK_CDN_PINS_ICONS_URL') ?: GK_CDN_IMAGES_URL.'/icons/pins');
         define('GK_CDN_LABELS_SCREENSHOTS_URL', getenv('GK_CDN_LABELS_SCREENSHOTS_URL') ?: GK_CDN_IMAGES_URL.'/labels/screenshots');
         define('GK_AVATAR_DEFAULT_URL', getenv('GK_AVATAR_DEFAULT_URL') ?: '/assets/images/the-mole-grey.svg');
 

@@ -40,7 +40,42 @@ function OpenPopupForStep(step) {
     });
 }
 
+var GKMapIcon = L.Icon.extend({
+    options: {
+        //iconUrl: '{GK_CDN_PINS_ICONS_URL}/green.png',
+        iconSize: [12, 20],
+        iconAnchor: [6, 20],
+        popupAnchor: [0, -20]
+    }
+});
+
+// start
+var redIcon = new GKMapIcon({ iconUrl: "https://cdn.geokrety.org/images/icons/pins/red.png" });
+// trip points
+var yellowIcon = new GKMapIcon({ iconUrl: "https://cdn.geokrety.org/images/icons/pins/yellow.png" });
+// recently seen
+var greenIcon = new GKMapIcon({ iconUrl: "https://cdn.geokrety.org/images/icons/pins/green.png" });
+
+// create marker
+function getPlotIcon(feature) {
+    if (feature.properties.step === 1) {
+        return redIcon;
+    }
+    if (feature.properties.step === feature.properties.next_step) {
+        return greenIcon;
+    }
+    return yellowIcon;
+}
+
+function pointToLayer(feature, latlng) {
+    return L.marker(latlng, { icon: getPlotIcon(feature)});
+}
+
 function onEachFeature(feature, layer) {
+    if (feature.type !== 'Feature') {
+        return;
+    }
+
     let author = feature.properties.author_username;
     if (feature.properties.author !== null) {
         let user_link = "{'user_details'|alias:'userid=%USERID%'}".replace('%USERID%', feature.properties.author);
@@ -84,6 +119,7 @@ jQuery.ajax({
     success: function (data) {
         geoJsonLayer = L.geoJson(data, {
             onEachFeature: onEachFeature,
+            pointToLayer: pointToLayer,
         });
         geoJsonLayer.addTo(map);
         map.fitBounds(geoJsonLayer.getBounds(), { padding: [50, 50] });
