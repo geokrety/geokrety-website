@@ -5,10 +5,10 @@
         </div>
         <div class="panel-body">
             <p>
-                Manage the accounts you have linked to your GeoKrety account.
+                {t}Manage the accounts you have linked to your GeoKrety account.{/t}
             </p>
             <p>
-                These connections give you an opportunity to log in to our service with only one click.
+                {t}These connections give you an opportunity to log in to our service with only one click.{/t}
             </p>
             <div class="row">
                 {foreach from=$socialProviders item=provider}
