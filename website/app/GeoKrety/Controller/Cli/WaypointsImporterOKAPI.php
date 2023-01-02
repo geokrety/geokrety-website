@@ -94,7 +94,6 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
         $tmp_file = tmpfile();
         $path = stream_get_meta_data($tmp_file)['uri'];
         $tmpdir = File::tmpdir();
-        //$tmpdir = '/tmp/tmp_1396280926';
 
         try {
             $url_params = http_build_query([
@@ -138,7 +137,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
 
             $wpt = new WaypointOC();
             if ($change->change_type == 'delete') {
-                //delete from DB
+                // delete from DB
                 $wpt->erase(['waypoint = ?', $id]);
                 ++$this->nDeleted;
                 $this->print_stats();
@@ -146,7 +145,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             }
 
             $wpt->load(['waypoint = ?', $id]);
-            if ($change->change_type == 'replace' and $wpt->dry()) {
+            if ($change->change_type == 'replace' and !$wpt->dry()) {
                 // Waypoint is probably not published
                 ++$this->nSkipped;
                 continue;
@@ -175,6 +174,12 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             if (isset($change->data->status)) {
                 $wpt->status = $this->status_to_id($change->data->status);
             }
+
+            if ($wpt->dry()) {
+                ++$this->nAdded;
+            } else {
+                ++$this->nUpdated;
+            }
             if ($wpt->validate()) {
                 $wpt->save();
             } else {
@@ -182,12 +187,6 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 $this->print_stats();
                 $this->failingPartners[$okapi][] = sprintf('Waypoint is not valid %s', $wpt->waypoint);
                 continue;
-            }
-
-            if ($wpt->dry()) {
-                ++$this->nAdded;
-            } else {
-                ++$this->nUpdated;
             }
             $this->print_stats();
         }
