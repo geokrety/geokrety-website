@@ -74,6 +74,8 @@ build-translations: ## build translation files
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/gettext/build-translations"
 clear-assets: ## clear generated assets
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/assets/clear"
+clean: clear-all-templates clear-assets build-translations compile-all-templates## Clean all
+	@echo
 
 geokrety-pictures-re-count: ## recount all geokrety pictures
 	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/geokrety/pictures/re-count"
