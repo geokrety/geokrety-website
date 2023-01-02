@@ -4,7 +4,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
 
 const SUPPORTED_APP = [
     'robotframework' => 'svg/robot-framework.svg',
-    'c:geo' => '16/c:geo.png',
+    'c:geo' => 'svg/cgeo.svg',
     'GeoKretyLogger' => '16/GeoKrety Logger.png',
     'GeoKrety Logger' => '16/GeoKrety Logger.png',
     'GeoLog' => '16/GeoLog.png',
