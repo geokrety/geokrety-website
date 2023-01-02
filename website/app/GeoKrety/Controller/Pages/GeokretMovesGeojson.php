@@ -29,7 +29,7 @@ WITH waypoints AS (
     OFFSET ?
 ),
 t1 AS (
-    select
+    SELECT
         waypoint, position, elevation, distance, country, step,
         COALESCE(TRUNC(EXTRACT(EPOCH FROM (moved_on_datetime - lag(moved_on_datetime) over (order by moved_on_datetime DESC)::timestamptz))/60), 0) AS minutes,
         lat, lon,
@@ -39,14 +39,24 @@ t1 AS (
         author, author_username,
         COALESCE (lag(step) over (order by moved_on_datetime DESC), step) AS next_step,
         COALESCE (lag(step) over (order by moved_on_datetime ASC), step) AS previous_step
-    from waypoints
+    FROM waypoints
 ),
 t AS (
     select public.ST_AsGeoJSON(t1.*) AS step
     from t1
 ),
 f AS (
-    SELECT public.ST_AsGeoJSON(public.ST_MakeLine(position::public.geometry)) AS line
+    SELECT
+    public.ST_AsGeoJSON(
+        public.ST_MakeLine(
+            public.ST_MakePoint(
+                public.ST_X(public.ST_AsEWKT(waypoints.position::public.geometry)),
+                public.ST_Y(public.ST_AsEWKT(waypoints.position::public.geometry)),
+                step
+            )
+        )
+    )
+    AS line
     FROM waypoints
 ),
 features AS (

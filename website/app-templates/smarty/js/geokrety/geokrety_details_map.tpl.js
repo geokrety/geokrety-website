@@ -72,10 +72,6 @@ function pointToLayer(feature, latlng) {
 }
 
 function onEachFeature(feature, layer) {
-    if (feature.type !== 'Feature') {
-        return;
-    }
-
     let author = feature.properties.author_username;
     if (feature.properties.author !== null) {
         let user_link = "{'user_details'|alias:'userid=%USERID%'}".replace('%USERID%', feature.properties.author);
@@ -113,16 +109,42 @@ function onEachFeature(feature, layer) {
     `);
 }
 
+function filterOnlyLineString(feature) {
+    return feature.type === 'LineString';
+}
+
+function filterExcludeLineString(feature) {
+    return !filterOnlyLineString(feature);
+}
+
 jQuery.ajax({
     dataType: "json",
     url: "{'geokret_moves_geojson_paginate'|alias:sprintf('@gkid=%s,@page=%d', $geokret->gkid, 1)}",
     success: function (data) {
+        // Insert the markers
         geoJsonLayer = L.geoJson(data, {
             onEachFeature: onEachFeature,
             pointToLayer: pointToLayer,
+            filter: filterExcludeLineString,
         });
         geoJsonLayer.addTo(map);
         map.fitBounds(geoJsonLayer.getBounds(), { padding: [50, 50] });
+
+        // Insert the line
+        let geoJsonLineLayer = L.geoJson(data, {
+            filter: filterOnlyLineString,
+        });
+        if (geoJsonLineLayer.getLayers()) {
+            geoJsonLineLayer.getLayers().forEach(function (geoJsonLine) {
+                let points = geoJsonLine.getLatLngs().reverse();
+                L.hotline(points, {
+                    min: 0,
+                    max: points.length,
+                    weight: 3,
+                    palette: { 0.0: 'red', 0.5: 'yellow', 1.0: 'green' }
+                }).addTo(map);
+            });
+        }
     }
 });
 

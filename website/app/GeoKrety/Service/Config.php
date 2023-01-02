@@ -447,6 +447,7 @@ class Config extends \Prefab {
         define('GK_CDN_LEAFLET_SPIN_JS', getenv('GK_CDN_LEAFLET_SPIN_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet.spin.js/leaflet.spin.js');
         define('GK_CDN_LEAFLET_FULLSCREEN_JS', getenv('GK_CDN_LEAFLET_FULLSCREEN_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js');
         define('GK_CDN_LEAFLET_FULLSCREEN_CSS', getenv('GK_CDN_LEAFLET_FULLSCREEN_CSS') ?: GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
+        define('GK_CDN_LEAFLET_HOTLINE_JS', getenv('GK_CDN_LEAFLET_HOTLINE_JS') ?: GK_CDN_LIBRARIES_URL.'/Leaflet.hotline/0.4.0/leaflet.hotline.js');
 
         define('GK_CDN_SPIN_JS', getenv('GK_CDN_SPIN_JS') ?: GK_CDN_LIBRARIES_URL.'/spin.js/2.3.2/spin.min.js');
 
