@@ -1,3 +1,45 @@
+## [2.28.0](https://github.com/geokrety/geokrety-website/compare/v2.27.3...v2.28.0) (2023-01-02)
+
+
+### Features
+
+* Initial piwik integration ([5cc1dbe](https://github.com/geokrety/geokrety-website/commit/5cc1dbedffb505e78f2136f6e9490aaef3684f36))
+* Render to GeoKrety travel line as gradient ([f793915](https://github.com/geokrety/geokrety-website/commit/f7939158afc29b5782992e797dec9214a9ac9f07))
+
+
+### Bug Fixes
+
+* Add new string to translation ([47076de](https://github.com/geokrety/geokrety-website/commit/47076de38d8da5f6eef48aef97b01c41af0a09cc))
+* Add some Makefile commands ([7fdff08](https://github.com/geokrety/geokrety-website/commit/7fdff08bb07e82d037324877cabf46d37867defd))
+* Align map markers with legend ([fbe737e](https://github.com/geokrety/geokrety-website/commit/fbe737e9e75b230c337066902335d56e0cb5356b)), closes [#808](https://github.com/geokrety/geokrety-website/issues/808)
+* Disable GeoDashing synchronization ([ca7224a](https://github.com/geokrety/geokrety-website/commit/ca7224a526e40302aa239167891057ab49ea3c2f)), closes [#811](https://github.com/geokrety/geokrety-website/issues/811)
+* Drop new tables in the db-migrator script ([11d3064](https://github.com/geokrety/geokrety-website/commit/11d30647d5809e6ce2ec665b6748347d22112d81))
+* Fix first/last step detection on GeoKret details map ([8f6e385](https://github.com/geokrety/geokrety-website/commit/8f6e3853e48d37ca07a6dea2e04b8dd2dc20bc06))
+* Fix moves numbering for "Show move on map" button ([55bf661](https://github.com/geokrety/geokrety-website/commit/55bf661062e70a83eea56abd037a1ad2f0aa4fef))
+* Fix OKAPI importer ([b5f46cc](https://github.com/geokrety/geokrety-website/commit/b5f46ccd0668d695bf2ad042186825dd2bb570c1))
+* Include MarkerLine only once in GeoJson ([28a5342](https://github.com/geokrety/geokrety-website/commit/28a5342af6eb3cacd4dfe6c898724b4ab0b22439)), closes [#808](https://github.com/geokrety/geokrety-website/issues/808)
+* Resend Activation email if to update username and account not valid ([2e4e6d3](https://github.com/geokrety/geokrety-website/commit/2e4e6d375f02074c702310e69863005ec22f76cc))
+* Review menu on mobile ([5598d78](https://github.com/geokrety/geokrety-website/commit/5598d78d386e1eca15993556c000151846b9f034))
+* Rework users profile menu ([4a6af8c](https://github.com/geokrety/geokrety-website/commit/4a6af8ce378d85c4c3826b38228af9cb57da3883)), closes [#809](https://github.com/geokrety/geokrety-website/issues/809)
+* Show the tracking opt-out on current user's profile only ([b5501e4](https://github.com/geokrety/geokrety-website/commit/b5501e4dee1ec7ac5d7ff15ed2d18dfee1400bc9))
+* Use console writer in basex import All cli ([9df83c6](https://github.com/geokrety/geokrety-website/commit/9df83c6b61e1c8bb664ec59751568ce5fe204cb9))
+* Use new c:geo logo in logbook ([7673d40](https://github.com/geokrety/geokrety-website/commit/7673d40b324e76b366d37ebb3eb13baf91e7b8cd)), closes [#810](https://github.com/geokrety/geokrety-website/issues/810)
+
+
+### Reverts
+
+* Revert "fix: Validate account while signin using OAuth" ([8ea9b99](https://github.com/geokrety/geokrety-website/commit/8ea9b99a85b0b508ddfc13b1d7ce438ac15df81f))
+
+
+### Translations
+
+* Add forgotten strings from translation ([42523d2](https://github.com/geokrety/geokrety-website/commit/42523d20a17ec1b642970c0f92088cc0ccce9822))
+
+
+### Chores
+
+* Add new Makefile entry to clean all ([01aa50e](https://github.com/geokrety/geokrety-website/commit/01aa50e5d14af81e8ab62014e986ed31baa86bbb))
+
 ## [2.27.3](https://github.com/geokrety/geokrety-website/compare/v2.27.2...v2.27.3) (2022-12-27)
 
 
