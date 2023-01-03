@@ -1,8 +1,16 @@
 name: Integration tests on Robot Framework
 
 on:
-  push:
+  pull_request:
     branches-ignore:
+      - master
+      - l10n_master
+      - l10n_new-theme
+  push:
+    tags:
+      - 'v2.*'
+    branches-ignore:
+      - main
       - l10n_master
       - l10n_new-theme
 
