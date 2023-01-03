@@ -1,3 +1,12 @@
+## [2.28.1](https://github.com/geokrety/geokrety-website/compare/v2.28.0...v2.28.1) (2023-01-03)
+
+
+### Bug Fixes
+
+* Add option to disable site analytics on registration ([0339b72](https://github.com/geokrety/geokrety-website/commit/0339b7209452ee27c30971813425e09a25e0c7a6))
+* Disable OC RO sync temporarily ([7e4dae2](https://github.com/geokrety/geokrety-website/commit/7e4dae2b04b6359f96633f8c86dbb64313f4cb08))
+* Restore table on db import ([91b85d4](https://github.com/geokrety/geokrety-website/commit/91b85d4812e27b07a4c009d7a5a755a7537a0431))
+
 ## [2.28.0](https://github.com/geokrety/geokrety-website/compare/v2.27.3...v2.28.0) (2023-01-02)
 
 
