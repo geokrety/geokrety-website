@@ -256,7 +256,7 @@ class Config extends \Prefab {
             'OC_UK' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_UK, 'url' => GK_WAYPOINT_SERVICE_URL_OC_UK],
             'OC_US' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_US, 'url' => GK_WAYPOINT_SERVICE_URL_OC_US],
             'OC_NL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_NL, 'url' => GK_WAYPOINT_SERVICE_URL_OC_NL],
-            'OC_RO' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_RO, 'url' => GK_WAYPOINT_SERVICE_URL_OC_RO],
+            // 'OC_RO' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_RO, 'url' => GK_WAYPOINT_SERVICE_URL_OC_RO],
         ]);
 
         define('GK_METRICS_EXCLUDE_PATH', [
