@@ -40,6 +40,7 @@ use JsonSerializable;
  * @property CortexCollection geokrety_owned
  * @property CortexCollection geokrety_held
  * @property CortexCollection yearly_ranks
+ * @property CortexCollection settings
  */
 class User extends Base implements JsonSerializable {
     // Validation occurs in validate() for this class
@@ -247,6 +248,10 @@ class User extends Base implements JsonSerializable {
         ],
         'social_auth' => [
             'has-many' => ['\GeoKrety\Model\UserSocialAuth', 'user'],
+            'validate_level' => 3,
+        ],
+        'settings' => [
+            'has-many' => ['\GeoKrety\Model\UsersSettings', 'user'],
             'validate_level' => 3,
         ],
     ];

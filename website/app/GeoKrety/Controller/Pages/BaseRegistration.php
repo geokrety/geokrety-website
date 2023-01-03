@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use Flash;
 use GeoKrety\Model\User;
+use GeoKrety\Model\UsersSettings;
 use GeoKrety\Service\Smarty;
 
 class BaseRegistration extends Base {
@@ -25,6 +26,17 @@ class BaseRegistration extends Base {
                 'danger');
             $this->$func($this->f3);
             exit();
+        }
+    }
+
+    protected function saveTrackingSettings() {
+        // Analytics
+        if (GK_PIWIK_ENABLED && !filter_var($f3->get('POST.tracking_opt_in'), FILTER_VALIDATE_BOOLEAN)) {
+            $trackingOptout = new UsersSettings();
+            $trackingOptout->name = 'TRACKING_OPT_OUT';
+            $trackingOptout->value = true;
+            $trackingOptout->user = $this->user;
+            $trackingOptout->save();
         }
     }
 }

@@ -52,6 +52,20 @@
         </div>
     </div>
 
+    {if GK_PIWIK_ENABLED}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="trackingOptInInput" name="tracking_opt_in">
+                    {t}Opt-in to site usage analytics.{/t}
+                    <span id="dailyMailsHelpBlock" class="help-block">{t}We collect site usage analytics, this help us understanding how the site is used and how to enhance it.{/t}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    {/if}
+
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">

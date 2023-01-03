@@ -60,6 +60,8 @@ class RegistrationEmail extends BaseRegistration {
             exit();
         }
         $user->save();
+        $this->saveTrackingSettings();
+
         $f3->get('DB')->commit();
         $f3->reroute(\Multilang::instance()->alias('user_details', ['userid' => $user->id], $user->preferred_language));
     }

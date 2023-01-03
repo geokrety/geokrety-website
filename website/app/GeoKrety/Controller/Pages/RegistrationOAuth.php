@@ -54,6 +54,8 @@ class RegistrationOAuth extends BaseRegistration {
         }
         $social_auth->save();
 
+        $this->saveTrackingSettings();
+
         Login::connectUser($f3, $user, 'registration.oauth');
     }
 
