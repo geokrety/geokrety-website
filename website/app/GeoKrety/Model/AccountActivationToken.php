@@ -113,6 +113,10 @@ class AccountActivationToken extends Base {
         return self::get_date_object($value);
     }
 
+    public function get_last_notification_datetime($value): ?DateTime {
+        return self::get_date_object($value);
+    }
+
     public function loadUserActiveToken(User $user): bool {
         return $this->load([
             'user = ? AND used = ? AND created_on_datetime + cast(? as interval) >= NOW() ',
