@@ -1,3 +1,13 @@
+## [2.28.2](https://github.com/geokrety/geokrety-website/compare/v2.28.1...v2.28.2) (2023-01-03)
+
+
+### Bug Fixes
+
+* Add site stats refresh to cli ([2cca0a7](https://github.com/geokrety/geokrety-website/commit/2cca0a7340367c63b035de9be296de7246d5f87a))
+* Enable OC DE waypoint sync ([0036c64](https://github.com/geokrety/geokrety-website/commit/0036c6400f40d59d0f404c4ac9be4e195dec4601))
+* FIx a class not found error ([de941fe](https://github.com/geokrety/geokrety-website/commit/de941fec953b3b1fab4948a4f68f409dbc4472e0))
+* Fix account activation link ([425fd99](https://github.com/geokrety/geokrety-website/commit/425fd99690a7b3df58c01cd166f0de08f5c69f79))
+
 ## [2.28.1](https://github.com/geokrety/geokrety-website/compare/v2.28.0...v2.28.1) (2023-01-03)
 
 
