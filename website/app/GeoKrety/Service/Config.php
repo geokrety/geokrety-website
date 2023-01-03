@@ -251,7 +251,7 @@ class Config extends \Prefab {
         define('GK_OKAPI_CONSUMER_KEY_OC_RO', getenv('GK_OKAPI_CONSUMER_KEY_OC_RO') ?: null);
 
         define('GK_OKAPI_PARTNERS', [
-            // 'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_WAYPOINT_SERVICE_URL_OC_DE],
+            'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_WAYPOINT_SERVICE_URL_OC_DE],
             'OC_PL' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_PL, 'url' => GK_WAYPOINT_SERVICE_URL_OC_PL],
             'OC_UK' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_UK, 'url' => GK_WAYPOINT_SERVICE_URL_OC_UK],
             'OC_US' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_US, 'url' => GK_WAYPOINT_SERVICE_URL_OC_US],
