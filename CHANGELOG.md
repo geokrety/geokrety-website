@@ -1,3 +1,10 @@
+## [2.28.3](https://github.com/geokrety/geokrety-website/compare/v2.28.2...v2.28.3) (2023-01-04)
+
+
+### Bug Fixes
+
+* Stop truncating setting table in db-migrator ([86b7ba5](https://github.com/geokrety/geokrety-website/commit/86b7ba540d80ed15328a60def95eb2f276f38f3b))
+
 ## [2.28.2](https://github.com/geokrety/geokrety-website/compare/v2.28.1...v2.28.2) (2023-01-03)
 
 
