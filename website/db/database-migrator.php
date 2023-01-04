@@ -53,7 +53,7 @@ $pgsql->query('CREATE TABLE gk_pictures2 AS SELECT filename, bucket, key FROM gk
 $pgsql->query('CREATE INDEX tmp_idx_pictures_filename ON geokrety.gk_pictures2 USING btree (filename);');
 
 echo 'Truncating tables'.PHP_EOL;
-$sql = 'TRUNCATE "gk_users_settings", "gk_users_settings_parameters", "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_awards_won", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts", "gk_yearly_ranking" RESTART IDENTITY CASCADE';
+$sql = 'TRUNCATE "gk_users_settings", "gk_waypoints_gc", "gk_statistics_counters", "gk_statistics_daily_counters", "gk_account_activation", "gk_awards_won", "gk_email_activation", "gk_geokrety", "gk_geokrety_rating", "gk_mails", "gk_moves_comments", "gk_moves", "gk_news", "gk_news_comments", "gk_news_comments_access", "gk_owner_codes", "gk_password_tokens", "gk_pictures", "gk_races", "gk_races_participants", "gk_users", "gk_watched", "gk_waypoints_country", "gk_waypoints_types", "scripts", "gk_yearly_ranking" RESTART IDENTITY CASCADE';
 $pgsql->query($sql);
 
 echo 'Start import data'.PHP_EOL;
