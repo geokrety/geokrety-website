@@ -1,3 +1,10 @@
+## [2.28.4](https://github.com/geokrety/geokrety-website/compare/v2.28.3...v2.28.4) (2023-01-04)
+
+
+### Bug Fixes
+
+* Hide "active dev" banner on prod ([ad868ea](https://github.com/geokrety/geokrety-website/commit/ad868eaaea9176ef4bc6575a7b486ae630a685c2))
+
 ## [2.28.3](https://github.com/geokrety/geokrety-website/compare/v2.28.2...v2.28.3) (2023-01-04)
 
 
