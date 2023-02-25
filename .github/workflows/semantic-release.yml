@@ -19,24 +19,24 @@ jobs:
 
       # setting up Node
       - name: Setup Node.js
-        if: !startsWith(github.ref, 'refs/tags/v')
+        if: "!startsWith(github.ref, 'refs/tags/v')"
         uses: actions/setup-node@v2
         with:
           node-version: 14
 
       # disable package-lock.json to stop it being created
       - name: Disable package-lock.json
-        if: !startsWith(github.ref, 'refs/tags/v')
+        if: "!startsWith(github.ref, 'refs/tags/v')"
         run: npm config set package-lock false
 
       # Installing package dependencies
       - name: Install dependencies
-        if: !startsWith(github.ref, 'refs/tags/v')
+        if: "!startsWith(github.ref, 'refs/tags/v')"
         run: |
           npm i -D js-yaml@4.1.0 conventional-changelog-conventionalcommits semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/exec @semantic-release/changelog @semantic-release/github @semantic-release/git
 
       - name: New tag
-        if: !startsWith(github.ref, 'refs/tags/v')
+        if: "!startsWith(github.ref, 'refs/tags/v')"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIT_AUTHOR_NAME: geokrety-bot
@@ -136,7 +136,7 @@ jobs:
           npx semantic-release@v17.4.2
 
       - name: Create Sentry release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: "startsWith(github.ref, 'refs/tags/v')"
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
