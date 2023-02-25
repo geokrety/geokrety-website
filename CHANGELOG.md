@@ -1,3 +1,10 @@
+## [2.28.7](https://github.com/geokrety/geokrety-website/compare/v2.28.6...v2.28.7) (2023-02-25)
+
+
+### Bug Fixes
+
+* Use github.ref to create sentry release ([251d07f](https://github.com/geokrety/geokrety-website/commit/251d07fef4ed967a5ee8fcbf34624646f8db1ae1))
+
 ## [2.28.6](https://github.com/geokrety/geokrety-website/compare/v2.28.5...v2.28.6) (2023-02-25)
 
 
