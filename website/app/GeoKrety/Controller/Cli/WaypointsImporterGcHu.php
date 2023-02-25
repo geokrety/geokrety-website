@@ -25,7 +25,6 @@ class WaypointsImporterGcHu extends WaypointsImporterBaseTopografix {
             'compression' => 'default',
             'submit_waypoints' => 'Download',
             'no_poi' => 'i',
-            'id' => 'geomap',
         ]);
         $this->perform_topografix_incremental_update(self::GC_HU_API_ENDPOINT, $url_params);
     }
