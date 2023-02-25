@@ -1,3 +1,10 @@
+## [2.28.10](https://github.com/geokrety/geokrety-website/compare/v2.28.9...v2.28.10) (2023-02-25)
+
+
+### Chores
+
+* Fix pre-commit check ([d365677](https://github.com/geokrety/geokrety-website/commit/d36567732cfb54fe3697cef220b50223d760b742))
+
 ## [2.28.9](https://github.com/geokrety/geokrety-website/compare/v2.28.8...v2.28.9) (2023-02-25)
 
 
