@@ -1,3 +1,10 @@
+## [2.28.6](https://github.com/geokrety/geokrety-website/compare/v2.28.5...v2.28.6) (2023-02-25)
+
+
+### Bug Fixes
+
+* Force create a new sentry release on new tags ([60b4ef1](https://github.com/geokrety/geokrety-website/commit/60b4ef11f2e40afbd004a11e3ed006a81328d61e))
+
 ## [2.28.5](https://github.com/geokrety/geokrety-website/compare/v2.28.4...v2.28.5) (2023-02-25)
 
 
