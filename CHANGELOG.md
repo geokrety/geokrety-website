@@ -1,3 +1,11 @@
+## [2.28.8](https://github.com/geokrety/geokrety-website/compare/v2.28.7...v2.28.8) (2023-02-25)
+
+
+### Bug Fixes
+
+* correct workflow syntax ([71183b1](https://github.com/geokrety/geokrety-website/commit/71183b1a2a2a2bb19b321454c3f75f167e25b17d))
+* create Sentry release on new tag ([ad5f2e4](https://github.com/geokrety/geokrety-website/commit/ad5f2e4a7b5526cacf866a302873709b860383d3))
+
 ## [2.28.7](https://github.com/geokrety/geokrety-website/compare/v2.28.6...v2.28.7) (2023-02-25)
 
 
