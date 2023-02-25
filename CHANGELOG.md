@@ -1,3 +1,10 @@
+## [2.28.9](https://github.com/geokrety/geokrety-website/compare/v2.28.8...v2.28.9) (2023-02-25)
+
+
+### Bug Fixes
+
+* Split release workflows ([3a368fa](https://github.com/geokrety/geokrety-website/commit/3a368fa712bc1901702a3e1e75ab1e5fe49fb186))
+
 ## [2.28.8](https://github.com/geokrety/geokrety-website/compare/v2.28.7...v2.28.8) (2023-02-25)
 
 
