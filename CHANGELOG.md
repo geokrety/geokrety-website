@@ -1,3 +1,15 @@
+## [2.28.5](https://github.com/geokrety/geokrety-website/compare/v2.28.4...v2.28.5) (2023-02-25)
+
+
+### Bug Fixes
+
+* id parameter no more accepted by GcHu export form ([6f60284](https://github.com/geokrety/geokrety-website/commit/6f6028402e9bc0b79f4e7acb51494375175ba28b))
+
+
+### Translations
+
+* New Crowdin updates ([#813](https://github.com/geokrety/geokrety-website/issues/813)) ([4267a0b](https://github.com/geokrety/geokrety-website/commit/4267a0be6822bf5758113c2bc8430de69145b829))
+
 ## [2.28.4](https://github.com/geokrety/geokrety-website/compare/v2.28.3...v2.28.4) (2023-01-04)
 
 
