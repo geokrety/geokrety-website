@@ -247,6 +247,11 @@ EOT;
         $f3->reroute(['login'], $permanent = false, $die = true);
     }
 
+    // https://new-theme.staging.geokrety.org/claim.php
+    public function claim(\Base $f3) {
+        $f3->reroute(['geokret_claim'], $permanent = false, $die = true);
+    }
+
     // https://new-theme.staging.geokrety.org/georss.php?userid=26988
     public function georss(\Base $f3) {
         echo 'TODO';

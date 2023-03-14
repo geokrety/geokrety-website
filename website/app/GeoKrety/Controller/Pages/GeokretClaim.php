@@ -11,6 +11,8 @@ use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
 class GeokretClaim extends Base {
+    use \CurrentUserLoader;
+
     public function get() {
         Smarty::render('pages/geokret_claim.tpl');
     }
