@@ -9,6 +9,8 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Validation\TrackingCode;
 
 class GeokretyLabels extends Base {
+    use \CurrentUserLoader;
+
     public array $languages = ['fr', 'de', 'pl', 'ru'];
 
     public function get(\Base $f3) {
