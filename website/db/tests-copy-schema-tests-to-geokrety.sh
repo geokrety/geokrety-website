@@ -22,7 +22,7 @@ DROP SCHEMA IF EXISTS notify_queues CASCADE;
 
 DROP SCHEMA IF EXISTS geokrety CASCADE;
 \i $tmp_dir/geokrety-schema.sql
-CREATE EXTENSION quantile WITH SCHEMA geokrety;
+CREATE EXTENSION quantile WITH SCHEMA public;
 END;
 EOF
 pg_restore -U geokrety --host "localhost" --dbname "geokrety" --data-only --disable-triggers --schema "geokrety" $tmp_dir/geokrety-data.tar

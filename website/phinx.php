@@ -21,7 +21,7 @@ return [
             // Database name
             'name' => GK_DB_NAME,
             'connection' => $pdo,
-            'schema' => GK_DB_NAME,
+            'schema' => GK_DB_SCHEMA,
         ],
     ],
 ];
