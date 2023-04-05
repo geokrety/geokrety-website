@@ -1,3 +1,25 @@
+## [2.28.11](https://github.com/geokrety/geokrety-website/compare/v2.28.10...v2.28.11) (2023-04-05)
+
+
+### Bug Fixes
+
+* Adjust field length in mass label generator ([d986e03](https://github.com/geokrety/geokrety-website/commit/d986e036503fc749509a79ab84ee2095598c9026))
+* claim page need users to be authenticated ([a54e582](https://github.com/geokrety/geokrety-website/commit/a54e58263df053f8a4b70ddc684b576fe08ae21f))
+* Hide mass labelling menu from unauthenticated users ([2f36369](https://github.com/geokrety/geokrety-website/commit/2f363693d619dc053542c159eefdb03136e5e0dc))
+* Mass labelling page only available to authenticated users ([456f307](https://github.com/geokrety/geokrety-website/commit/456f30747d16f558612f5ab7be48d2af0c360f56))
+
+
+### Translations
+
+* New translations help.html (Portuguese) [skip translate] ([#817](https://github.com/geokrety/geokrety-website/issues/817)) ([136409d](https://github.com/geokrety/geokrety-website/commit/136409d4168713dcc70216145985feb8b22daac9))
+
+
+### Chores
+
+* move quantile to public schema ([8e7d06c](https://github.com/geokrety/geokrety-website/commit/8e7d06c31a325062afad90884f109500a76c1bd1))
+* **deps:** bump cakephp/database from 4.4.0 to 4.4.10 ([#816](https://github.com/geokrety/geokrety-website/issues/816)) ([c7a01cc](https://github.com/geokrety/geokrety-website/commit/c7a01ccfd7a1bfc8098d8418f3d147f5f912c01a))
+* Bump Sentry library version ([c34dbd9](https://github.com/geokrety/geokrety-website/commit/c34dbd916ddbb956982905ea4b77c9f9c3177577))
+
 ## [2.28.10](https://github.com/geokrety/geokrety-website/compare/v2.28.9...v2.28.10) (2023-02-25)
 
 
