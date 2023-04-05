@@ -6,7 +6,7 @@ use Phinx\Migration\AbstractMigration;
 
 final class NotifyQueues extends AbstractMigration {
     public function up(): void {
-        $this->execute('CREATE SCHEMA notify_queues AUTHORIZATION geokrety');
+        $this->execute('CREATE SCHEMA notify_queues;');
 
         $this->table('notify_queues.geokrety_changes', ['primary_key' => 'id'])
             ->addColumn('channel', \Phinx\Util\Literal::from('CHARACTER VARYING(64)'), ['null' => false])
