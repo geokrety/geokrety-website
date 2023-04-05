@@ -39,7 +39,7 @@ CREATE OR REPLACE VIEW public.srtm_metadata
            FROM srtm) foo;
 
 ALTER TABLE public.srtm_metadata
-    OWNER TO geokrety;
+   ;
 ```
 
 Notes:

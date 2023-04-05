@@ -26,7 +26,7 @@ SET row_security = off;
 CREATE SCHEMA IF NOT EXISTS public;
 
 
-ALTER SCHEMA public OWNER TO geokrety;
+ALTER SCHEMA public;
 
 --
 -- TOC entry 5711 (class 0 OID 0)
@@ -53,7 +53,7 @@ CREATE TABLE public.countries (
 );
 
 
-ALTER TABLE public.countries OWNER TO geokrety;
+ALTER TABLE public.countries;
 
 --
 -- TOC entry 233 (class 1259 OID 17995)
@@ -69,7 +69,7 @@ CREATE SEQUENCE public.gk_countries_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.gk_countries_id_seq OWNER TO geokrety;
+ALTER TABLE public.gk_countries_id_seq;
 
 --
 -- TOC entry 5712 (class 0 OID 0)
@@ -92,7 +92,7 @@ CREATE TABLE public.srtm (
 );
 
 
-ALTER TABLE public.srtm OWNER TO geokrety;
+ALTER TABLE public.srtm;
 
 --
 -- TOC entry 235 (class 1259 OID 18003)
@@ -116,7 +116,7 @@ CREATE VIEW public.srtm_metadata AS
            FROM public.srtm) foo;
 
 
-ALTER TABLE public.srtm_metadata OWNER TO geokrety;
+ALTER TABLE public.srtm_metadata;
 
 --
 -- TOC entry 236 (class 1259 OID 18007)
@@ -132,7 +132,7 @@ CREATE SEQUENCE public.srtm_rid_seq
     CACHE 1;
 
 
-ALTER TABLE public.srtm_rid_seq OWNER TO geokrety;
+ALTER TABLE public.srtm_rid_seq;
 
 --
 -- TOC entry 5713 (class 0 OID 0)
@@ -155,7 +155,7 @@ CREATE TABLE public.timezones (
 );
 
 
-ALTER TABLE public.timezones OWNER TO geokrety;
+ALTER TABLE public.timezones;
 
 --
 -- TOC entry 240 (class 1259 OID 510528)
@@ -171,7 +171,7 @@ CREATE SEQUENCE public.timezones_gid_seq
     CACHE 1;
 
 
-ALTER TABLE public.timezones_gid_seq OWNER TO geokrety;
+ALTER TABLE public.timezones_gid_seq;
 
 --
 -- TOC entry 5714 (class 0 OID 0)

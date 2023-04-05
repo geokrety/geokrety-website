@@ -30,8 +30,7 @@ BEGIN
 END;
 $BODY$;
 
-ALTER FUNCTION notify_queues.channel_notify()
-    OWNER TO geokrety;
+ALTER FUNCTION notify_queues.channel_notify();
 EOL;
         $this->execute($sql);
 
@@ -56,8 +55,7 @@ BEGIN
 END;
 $BODY$;
 
-ALTER FUNCTION notify_queues.new_handle()
-    OWNER TO geokrety;
+ALTER FUNCTION notify_queues.new_handle();
 EOL;
         $this->execute($sql);
 

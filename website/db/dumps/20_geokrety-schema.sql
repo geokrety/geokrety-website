@@ -26,7 +26,7 @@ SET row_security = off;
 CREATE SCHEMA geokrety;
 
 
-ALTER SCHEMA geokrety OWNER TO geokrety;
+ALTER SCHEMA geokrety;
 
 --
 -- TOC entry 2515 (class 1255 OID 19057)
@@ -49,7 +49,7 @@ END;
 $$;
 
 
-ALTER FUNCTION geokrety.account_activation_check_validating_ip(validating_ip inet, used smallint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.account_activation_check_validating_ip(validating_ip inet, used smallint);
 
 --
 -- TOC entry 2516 (class 1255 OID 19058)
@@ -70,7 +70,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.account_activation_token_generate() OWNER TO geokrety;
+ALTER FUNCTION geokrety.account_activation_token_generate();
 
 --
 -- TOC entry 2517 (class 1255 OID 19059)
@@ -82,7 +82,7 @@ CREATE FUNCTION geokrety.coords2position(lat double precision, lon double precis
     AS $$SELECT public.ST_SetSRID(public.ST_MakePoint(lon, lat), srid)::public.geography as position;$$;
 
 
-ALTER FUNCTION geokrety.coords2position(lat double precision, lon double precision, OUT "position" public.geography, srid integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.coords2position(lat double precision, lon double precision, OUT "position" public.geography, srid integer);
 
 --
 -- TOC entry 2518 (class 1255 OID 19060)
@@ -101,7 +101,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.email_activation_check_email_already_used() OWNER TO geokrety;
+ALTER FUNCTION geokrety.email_activation_check_email_already_used();
 
 --
 -- TOC entry 2519 (class 1255 OID 19061)
@@ -120,7 +120,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.email_activation_check_only_one_active_per_user() OWNER TO geokrety;
+ALTER FUNCTION geokrety.email_activation_check_only_one_active_per_user();
 
 --
 -- TOC entry 2520 (class 1255 OID 19062)
@@ -153,7 +153,7 @@ RETURN FALSE;
 END;$$;
 
 
-ALTER FUNCTION geokrety.email_activation_check_used_ip_datetime(used smallint, updating_ip inet, used_on_datetime timestamp with time zone, reverting_ip inet, reverted_on_datetime timestamp with time zone) OWNER TO geokrety;
+ALTER FUNCTION geokrety.email_activation_check_used_ip_datetime(used smallint, updating_ip inet, used_on_datetime timestamp with time zone, reverting_ip inet, reverted_on_datetime timestamp with time zone);
 
 --
 -- TOC entry 2521 (class 1255 OID 19063)
@@ -176,7 +176,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.email_activation_token_generate() OWNER TO geokrety;
+ALTER FUNCTION geokrety.email_activation_token_generate();
 
 --
 -- TOC entry 2588 (class 1255 OID 19992)
@@ -214,7 +214,7 @@ END;
 $$;
 
 
-ALTER FUNCTION geokrety.email_revalidate_validated_on_datetime_updater() OWNER TO geokrety;
+ALTER FUNCTION geokrety.email_revalidate_validated_on_datetime_updater();
 
 --
 -- TOC entry 2522 (class 1255 OID 19064)
@@ -228,7 +228,7 @@ CREATE FUNCTION geokrety.fresher_than(datetime timestamp with time zone, duratio
 END;$$;
 
 
-ALTER FUNCTION geokrety.fresher_than(datetime timestamp with time zone, duration integer, unit character varying) OWNER TO geokrety;
+ALTER FUNCTION geokrety.fresher_than(datetime timestamp with time zone, duration integer, unit character varying);
 
 --
 -- TOC entry 2523 (class 1255 OID 19065)
@@ -240,7 +240,7 @@ CREATE FUNCTION geokrety.generate_adoption_token(size integer DEFAULT 5) RETURNS
     AS $$SELECT array_to_string(array(select substr('0123456789',((random()*(10-1)+1)::integer),1) from generate_series(1,size)),'');$$;
 
 
-ALTER FUNCTION geokrety.generate_adoption_token(size integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.generate_adoption_token(size integer);
 
 --
 -- TOC entry 2524 (class 1255 OID 19066)
@@ -252,7 +252,7 @@ CREATE FUNCTION geokrety.generate_password_token(size integer DEFAULT 42) RETURN
     AS $$SELECT array_to_string(array(select substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz',((random()*(62-1)+1)::integer),1) from generate_series(1,size)),'');$$;
 
 
-ALTER FUNCTION geokrety.generate_password_token(size integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.generate_password_token(size integer);
 
 --
 -- TOC entry 2525 (class 1255 OID 19067)
@@ -264,7 +264,7 @@ CREATE FUNCTION geokrety.generate_secid(size integer DEFAULT 42) RETURNS charact
     AS $$SELECT array_to_string(array(select substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz',((random()*(62-1)+1)::integer),1) from generate_series(1,size)),'');$$;
 
 
-ALTER FUNCTION geokrety.generate_secid(size integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.generate_secid(size integer);
 
 --
 -- TOC entry 2526 (class 1255 OID 19068)
@@ -289,7 +289,7 @@ END;
 $$;
 
 
-ALTER FUNCTION geokrety.generate_tracking_code(size integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.generate_tracking_code(size integer);
 
 --
 -- TOC entry 2527 (class 1255 OID 19069)
@@ -301,7 +301,7 @@ CREATE FUNCTION geokrety.generate_verification_token(size integer DEFAULT 42) RE
     AS $$SELECT array_to_string(array(select substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz',((random()*(62-1)+1)::integer),1) from generate_series(1,size)),'');$$;
 
 
-ALTER FUNCTION geokrety.generate_verification_token(size integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.generate_verification_token(size integer);
 
 --
 -- TOC entry 2528 (class 1255 OID 19070)
@@ -317,7 +317,7 @@ AND "type" = 1;
 $$;
 
 
-ALTER FUNCTION geokrety.geokret_compute_missing(lastposition_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokret_compute_missing(lastposition_id bigint);
 
 --
 -- TOC entry 2529 (class 1255 OID 19071)
@@ -343,7 +343,7 @@ RETURN total;
 END;$$;
 
 
-ALTER FUNCTION geokrety.geokret_compute_total_distance(geokret_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokret_compute_total_distance(geokret_id bigint);
 
 --
 -- TOC entry 2530 (class 1255 OID 19072)
@@ -369,7 +369,7 @@ RETURN total;
 END;$$;
 
 
-ALTER FUNCTION geokrety.geokret_compute_total_places_visited(geokret_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokret_compute_total_places_visited(geokret_id bigint);
 
 --
 -- TOC entry 2531 (class 1255 OID 19073)
@@ -390,7 +390,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.geokret_gkid() OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokret_gkid();
 
 --
 -- TOC entry 2589 (class 1255 OID 20139)
@@ -412,7 +412,7 @@ END;
 $$;
 
 
-ALTER FUNCTION geokrety.geokret_manage_holder() OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokret_manage_holder();
 
 --
 -- TOC entry 2532 (class 1255 OID 19075)
@@ -442,7 +442,7 @@ END;
 $$;
 
 
-ALTER FUNCTION geokrety.geokret_tracking_code() OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokret_tracking_code();
 
 --
 -- TOC entry 2533 (class 1255 OID 19076)
@@ -458,7 +458,7 @@ ORDER BY moved_on_datetime DESC
 LIMIT 1;$$;
 
 
-ALTER FUNCTION geokrety.geokrety_compute_last_log(geokret_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokrety_compute_last_log(geokret_id bigint);
 
 --
 -- TOC entry 2534 (class 1255 OID 19077)
@@ -499,7 +499,7 @@ RETURN ARRAY[var_last_log, var_last_position];
 END;$$;
 
 
-ALTER FUNCTION geokrety.geokrety_compute_last_log_and_last_position(geokret_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokrety_compute_last_log_and_last_position(geokret_id bigint);
 
 --
 -- TOC entry 2535 (class 1255 OID 19078)
@@ -516,7 +516,7 @@ ORDER BY moved_on_datetime DESC
 LIMIT 1;$$;
 
 
-ALTER FUNCTION geokrety.geokrety_compute_last_position(geokret_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.geokrety_compute_last_position(geokret_id bigint);
 
 --
 -- TOC entry 2536 (class 1255 OID 19079)
@@ -543,7 +543,7 @@ RETURN public.pgp_pub_decrypt(val::bytea, gpg_key, psw);
 END;$$;
 
 
-ALTER FUNCTION geokrety.gkdecrypt(val bytea, secret character varying, psw character varying, key_id integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.gkdecrypt(val bytea, secret character varying, psw character varying, key_id integer);
 
 --
 -- TOC entry 2537 (class 1255 OID 19080)
@@ -566,7 +566,7 @@ RETURN public.pgp_pub_encrypt(val, gpg_key);
 END;$$;
 
 
-ALTER FUNCTION geokrety.gkencrypt(val text, key_id integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.gkencrypt(val text, key_id integer);
 
 --
 -- TOC entry 2538 (class 1255 OID 19081)
@@ -591,7 +591,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.mails_token_generate() OWNER TO geokrety;
+ALTER FUNCTION geokrety.mails_token_generate();
 
 --
 -- TOC entry 2539 (class 1255 OID 19082)
@@ -624,7 +624,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.manage_email() OWNER TO geokrety;
+ALTER FUNCTION geokrety.manage_email();
 
 --
 -- TOC entry 2540 (class 1255 OID 19083)
@@ -654,7 +654,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.manage_previous_email() OWNER TO geokrety;
+ALTER FUNCTION geokrety.manage_previous_email();
 
 --
 -- TOC entry 2541 (class 1255 OID 19084)
@@ -666,7 +666,7 @@ CREATE FUNCTION geokrety.move_counting_kilometers() RETURNS smallint[]
     AS $$SELECT '{0,3,5}'::smallint[]$$;
 
 
-ALTER FUNCTION geokrety.move_counting_kilometers() OWNER TO geokrety;
+ALTER FUNCTION geokrety.move_counting_kilometers();
 
 --
 -- TOC entry 2542 (class 1255 OID 19085)
@@ -721,7 +721,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.move_or_moves_comments_manage_geokret_missing() OWNER TO geokrety;
+ALTER FUNCTION geokrety.move_or_moves_comments_manage_geokret_missing();
 
 --
 -- TOC entry 2543 (class 1255 OID 19086)
@@ -733,7 +733,7 @@ CREATE FUNCTION geokrety.move_requiring_coordinates() RETURNS smallint[]
     AS $$SELECT '{0,3,5}'::smallint[]$$;
 
 
-ALTER FUNCTION geokrety.move_requiring_coordinates() OWNER TO geokrety;
+ALTER FUNCTION geokrety.move_requiring_coordinates();
 
 --
 -- TOC entry 2544 (class 1255 OID 19087)
@@ -752,7 +752,7 @@ CREATE FUNCTION geokrety.move_type_count_kilometers(move_type smallint) RETURNS 
 END;$$;
 
 
-ALTER FUNCTION geokrety.move_type_count_kilometers(move_type smallint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.move_type_count_kilometers(move_type smallint);
 
 --
 -- TOC entry 2545 (class 1255 OID 19088)
@@ -771,7 +771,7 @@ CREATE FUNCTION geokrety.move_type_require_coordinates(move_type smallint) RETUR
 END;$$;
 
 
-ALTER FUNCTION geokrety.move_type_require_coordinates(move_type smallint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.move_type_require_coordinates(move_type smallint);
 
 --
 -- TOC entry 2546 (class 1255 OID 19089)
@@ -792,7 +792,7 @@ RETURN FALSE;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_check_author_username(author_id bigint, username character varying) OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_check_author_username(author_id bigint, username character varying);
 
 --
 -- TOC entry 2547 (class 1255 OID 19090)
@@ -813,7 +813,7 @@ RAISE 'waypoint must be be null for move_type %', move_type;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_check_waypoint(move_type smallint, waypoint character varying) OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_check_waypoint(move_type smallint, waypoint character varying);
 
 --
 -- TOC entry 2548 (class 1255 OID 19091)
@@ -838,7 +838,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_comments_count_on_move_update() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_comments_count_on_move_update();
 
 --
 -- TOC entry 2549 (class 1255 OID 19092)
@@ -858,7 +858,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_comments_manage_geokret() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_comments_manage_geokret();
 
 --
 -- TOC entry 2550 (class 1255 OID 19093)
@@ -880,7 +880,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_comments_missing_only_on_last_position() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_comments_missing_only_on_last_position();
 
 --
 -- TOC entry 2551 (class 1255 OID 19094)
@@ -907,7 +907,7 @@ RETURN total;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_count_comments(move_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_count_comments(move_id bigint);
 
 --
 -- TOC entry 2552 (class 1255 OID 19095)
@@ -941,7 +941,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_distances_after() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_distances_after();
 
 --
 -- TOC entry 2553 (class 1255 OID 19096)
@@ -967,7 +967,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_distances_before() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_distances_before();
 
 --
 -- TOC entry 5977 (class 0 OID 0)
@@ -1013,7 +1013,7 @@ RETURN _page;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_get_on_page(move_id bigint, per_page bigint, geokret_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_get_on_page(move_id bigint, per_page bigint, geokret_id bigint);
 
 --
 -- TOC entry 2555 (class 1255 OID 19098)
@@ -1073,7 +1073,7 @@ END;
 $$;
 
 
-ALTER FUNCTION geokrety.moves_gis_updates() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_gis_updates();
 
 --
 -- TOC entry 2556 (class 1255 OID 19099)
@@ -1100,7 +1100,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_log_type_and_position() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_log_type_and_position();
 
 --
 -- TOC entry 2557 (class 1255 OID 19100)
@@ -1133,7 +1133,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_moved_on_datetime_checker() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_moved_on_datetime_checker();
 
 --
 -- TOC entry 2558 (class 1255 OID 19101)
@@ -1151,7 +1151,7 @@ CREATE FUNCTION geokrety.moves_moved_on_datetime_updater() RETURNS trigger
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_moved_on_datetime_updater() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_moved_on_datetime_updater();
 
 --
 -- TOC entry 2559 (class 1255 OID 19102)
@@ -1171,7 +1171,7 @@ CREATE FUNCTION geokrety.moves_type_change() RETURNS trigger
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_type_change() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_type_change();
 
 --
 -- TOC entry 2560 (class 1255 OID 19103)
@@ -1183,7 +1183,7 @@ CREATE FUNCTION geokrety.moves_type_last_position() RETURNS smallint[]
     AS $$SELECT '{0,1,3,4,5}'::smallint[]$$;
 
 
-ALTER FUNCTION geokrety.moves_type_last_position() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_type_last_position();
 
 --
 -- TOC entry 2561 (class 1255 OID 19104)
@@ -1202,7 +1202,7 @@ RETURN TRUE;
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_type_waypoint(move_type smallint, waypoint character varying) OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_type_waypoint(move_type smallint, waypoint character varying);
 
 --
 -- TOC entry 2562 (class 1255 OID 19105)
@@ -1214,7 +1214,7 @@ CREATE FUNCTION geokrety.moves_types_markable_as_missing() RETURNS smallint[]
     AS $$SELECT '{0,3}'::smallint[]$$;
 
 
-ALTER FUNCTION geokrety.moves_types_markable_as_missing() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_types_markable_as_missing();
 
 --
 -- TOC entry 2563 (class 1255 OID 19106)
@@ -1229,7 +1229,7 @@ CREATE FUNCTION geokrety.moves_waypoint_uppercase() RETURNS trigger
 END;$$;
 
 
-ALTER FUNCTION geokrety.moves_waypoint_uppercase() OWNER TO geokrety;
+ALTER FUNCTION geokrety.moves_waypoint_uppercase();
 
 --
 -- TOC entry 2564 (class 1255 OID 19107)
@@ -1254,7 +1254,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.news_comments_count_on_news_update() OWNER TO geokrety;
+ALTER FUNCTION geokrety.news_comments_count_on_news_update();
 
 --
 -- TOC entry 2565 (class 1255 OID 19108)
@@ -1271,7 +1271,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.news_comments_counts_override() OWNER TO geokrety;
+ALTER FUNCTION geokrety.news_comments_counts_override();
 
 --
 -- TOC entry 2566 (class 1255 OID 19109)
@@ -1298,7 +1298,7 @@ RETURN total;
 END;$$;
 
 
-ALTER FUNCTION geokrety.news_compute_news_comments_count(news_id bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.news_compute_news_comments_count(news_id bigint);
 
 --
 -- TOC entry 2567 (class 1255 OID 19110)
@@ -1310,7 +1310,7 @@ CREATE FUNCTION geokrety.on_update_current_timestamp() RETURNS trigger
     AS $$BEGIN NEW.updated_on_datetime = now(); RETURN NEW; END;$$;
 
 
-ALTER FUNCTION geokrety.on_update_current_timestamp() OWNER TO geokrety;
+ALTER FUNCTION geokrety.on_update_current_timestamp();
 
 --
 -- TOC entry 2568 (class 1255 OID 19111)
@@ -1329,7 +1329,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.owner_code_check_only_one_active_per_geokret() OWNER TO geokrety;
+ALTER FUNCTION geokrety.owner_code_check_only_one_active_per_geokret();
 
 --
 -- TOC entry 2569 (class 1255 OID 19112)
@@ -1350,7 +1350,7 @@ RETURN FALSE;
 END;$$;
 
 
-ALTER FUNCTION geokrety.owner_code_check_validating_ip(validating_ip inet, used smallint, claimed_on_datetime timestamp with time zone, "user" bigint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.owner_code_check_validating_ip(validating_ip inet, used smallint, claimed_on_datetime timestamp with time zone, "user" bigint);
 
 --
 -- TOC entry 2570 (class 1255 OID 19113)
@@ -1371,7 +1371,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.owner_code_token_generate() OWNER TO geokrety;
+ALTER FUNCTION geokrety.owner_code_token_generate();
 
 --
 -- TOC entry 2571 (class 1255 OID 19114)
@@ -1392,7 +1392,7 @@ RETURN FALSE;
 END;$$;
 
 
-ALTER FUNCTION geokrety.password_check_validating_ip(validating_ip inet, used smallint, used_on_datetime timestamp with time zone) OWNER TO geokrety;
+ALTER FUNCTION geokrety.password_check_validating_ip(validating_ip inet, used smallint, used_on_datetime timestamp with time zone);
 
 --
 -- TOC entry 2572 (class 1255 OID 19115)
@@ -1413,7 +1413,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.password_token_generate() OWNER TO geokrety;
+ALTER FUNCTION geokrety.password_token_generate();
 
 --
 -- TOC entry 2573 (class 1255 OID 19116)
@@ -1455,7 +1455,7 @@ RAISE 'DEAD CODE `picture_type_to_table_name()`';
 END;$$;
 
 
-ALTER FUNCTION geokrety.picture_type_to_table_name(geokret bigint, move bigint, "user" bigint, OUT table_name character varying, OUT id bigint, OUT type smallint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.picture_type_to_table_name(geokret bigint, move bigint, "user" bigint, OUT table_name character varying, OUT id bigint, OUT type smallint);
 
 --
 -- TOC entry 2574 (class 1255 OID 19117)
@@ -1540,7 +1540,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.pictures_counter() OWNER TO geokrety;
+ALTER FUNCTION geokrety.pictures_counter();
 
 --
 -- TOC entry 2575 (class 1255 OID 19118)
@@ -1570,7 +1570,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.pictures_type_updater() OWNER TO geokrety;
+ALTER FUNCTION geokrety.pictures_type_updater();
 
 --
 -- TOC entry 2576 (class 1255 OID 19119)
@@ -1583,7 +1583,7 @@ CREATE FUNCTION geokrety.position2coords("position" public.geography, OUT lat do
        public.ST_X(position::public.geometry) as lon;$$;
 
 
-ALTER FUNCTION geokrety.position2coords("position" public.geography, OUT lat double precision, OUT lon double precision, srid integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.position2coords("position" public.geography, OUT lat double precision, OUT lon double precision, srid integer);
 
 --
 -- TOC entry 2577 (class 1255 OID 19120)
@@ -1597,7 +1597,7 @@ CREATE FUNCTION geokrety.random_between(low integer, high integer) RETURNS integ
 END;$$;
 
 
-ALTER FUNCTION geokrety.random_between(low integer, high integer) OWNER TO geokrety;
+ALTER FUNCTION geokrety.random_between(low integer, high integer);
 
 --
 -- TOC entry 2578 (class 1255 OID 19121)
@@ -1626,7 +1626,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.save_gc_waypoints() OWNER TO geokrety;
+ALTER FUNCTION geokrety.save_gc_waypoints();
 
 --
 -- TOC entry 2579 (class 1255 OID 19122)
@@ -1669,7 +1669,7 @@ RETURN NULL;
 END;$$;
 
 
-ALTER FUNCTION geokrety.update_next_move_distance(geokret_id bigint, move_id bigint, exclude_current boolean) OWNER TO geokrety;
+ALTER FUNCTION geokrety.update_next_move_distance(geokret_id bigint, move_id bigint, exclude_current boolean);
 
 --
 -- TOC entry 2580 (class 1255 OID 19123)
@@ -1700,7 +1700,7 @@ RETURN NEW;
 END;$$;
 
 
-ALTER FUNCTION geokrety.user_secid_generate() OWNER TO geokrety;
+ALTER FUNCTION geokrety.user_secid_generate();
 
 --
 -- TOC entry 2581 (class 1255 OID 19124)
@@ -1712,7 +1712,7 @@ CREATE FUNCTION geokrety.valid_move_types() RETURNS smallint[]
     AS $$SELECT '{0,1,2,3,4,5}'::smallint[]$$;
 
 
-ALTER FUNCTION geokrety.valid_move_types() OWNER TO geokrety;
+ALTER FUNCTION geokrety.valid_move_types();
 
 --
 -- TOC entry 2582 (class 1255 OID 19125)
@@ -1724,7 +1724,7 @@ CREATE FUNCTION geokrety.valid_moves_comments_types() RETURNS smallint[]
     AS $$SELECT '{0,1}'::smallint[]$$;
 
 
-ALTER FUNCTION geokrety.valid_moves_comments_types() OWNER TO geokrety;
+ALTER FUNCTION geokrety.valid_moves_comments_types();
 
 --
 -- TOC entry 2583 (class 1255 OID 19126)
@@ -1738,7 +1738,7 @@ CREATE FUNCTION geokrety.validate_move_types(move_type smallint) RETURNS boolean
 END;$$;
 
 
-ALTER FUNCTION geokrety.validate_move_types(move_type smallint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.validate_move_types(move_type smallint);
 
 --
 -- TOC entry 2584 (class 1255 OID 19127)
@@ -1757,7 +1757,7 @@ RETURN TRUE;
 END;$$;
 
 
-ALTER FUNCTION geokrety.validate_moves_comments_missing(move_type smallint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.validate_moves_comments_missing(move_type smallint);
 
 --
 -- TOC entry 2585 (class 1255 OID 19128)
@@ -1771,7 +1771,7 @@ CREATE FUNCTION geokrety.validate_moves_comments_type(comment_type smallint) RET
 END;$$;
 
 
-ALTER FUNCTION geokrety.validate_moves_comments_type(comment_type smallint) OWNER TO geokrety;
+ALTER FUNCTION geokrety.validate_moves_comments_type(comment_type smallint);
 
 SET default_tablespace = '';
 
@@ -1800,7 +1800,7 @@ CREATE TABLE geokrety.gk_pictures (
 );
 
 
-ALTER TABLE geokrety.gk_pictures OWNER TO geokrety;
+ALTER TABLE geokrety.gk_pictures;
 
 --
 -- TOC entry 5978 (class 0 OID 0)
@@ -1839,7 +1839,7 @@ RAISE 'Move `type` does not match the specified arguments.' USING ERRCODE = 'dat
 END;$$;
 
 
-ALTER FUNCTION geokrety.validate_picture_type_against_parameters(row_p geokrety.gk_pictures) OWNER TO geokrety;
+ALTER FUNCTION geokrety.validate_picture_type_against_parameters(row_p geokrety.gk_pictures);
 
 --
 -- TOC entry 2587 (class 1255 OID 19139)
@@ -1864,7 +1864,7 @@ ORDER BY "waypoint" ASC;
 END;$$;
 
 
-ALTER FUNCTION geokrety.waypoints_gc_fill_from_moves() OWNER TO geokrety;
+ALTER FUNCTION geokrety.waypoints_gc_fill_from_moves();
 
 --
 -- TOC entry 236 (class 1259 OID 19140)
@@ -1886,7 +1886,7 @@ CREATE TABLE geokrety.gk_account_activation (
 );
 
 
-ALTER TABLE geokrety.gk_account_activation OWNER TO geokrety;
+ALTER TABLE geokrety.gk_account_activation;
 
 --
 -- TOC entry 5979 (class 0 OID 0)
@@ -1910,7 +1910,7 @@ CREATE SEQUENCE geokrety.account_activation_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.account_activation_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.account_activation_id_seq;
 
 --
 -- TOC entry 5980 (class 0 OID 0)
@@ -1934,7 +1934,7 @@ CREATE SEQUENCE geokrety.audit_logs_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.audit_logs_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.audit_logs_id_seq;
 
 --
 -- TOC entry 239 (class 1259 OID 19155)
@@ -1951,7 +1951,7 @@ CREATE TABLE geokrety.gk_badges (
 );
 
 
-ALTER TABLE geokrety.gk_badges OWNER TO geokrety;
+ALTER TABLE geokrety.gk_badges;
 
 --
 -- TOC entry 240 (class 1259 OID 19160)
@@ -1966,7 +1966,7 @@ CREATE SEQUENCE geokrety.badges_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.badges_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.badges_id_seq;
 
 --
 -- TOC entry 5981 (class 0 OID 0)
@@ -2007,7 +2007,7 @@ CREATE TABLE geokrety.gk_email_activation (
 );
 
 
-ALTER TABLE geokrety.gk_email_activation OWNER TO geokrety;
+ALTER TABLE geokrety.gk_email_activation;
 
 --
 -- TOC entry 5982 (class 0 OID 0)
@@ -2046,7 +2046,7 @@ CREATE SEQUENCE geokrety.email_activation_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.email_activation_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.email_activation_id_seq;
 
 --
 -- TOC entry 5984 (class 0 OID 0)
@@ -2084,7 +2084,7 @@ CREATE TABLE geokrety.gk_geokrety (
 );
 
 
-ALTER TABLE geokrety.gk_geokrety OWNER TO geokrety;
+ALTER TABLE geokrety.gk_geokrety;
 
 --
 -- TOC entry 5985 (class 0 OID 0)
@@ -2135,7 +2135,7 @@ CREATE SEQUENCE geokrety.geokrety_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.geokrety_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.geokrety_id_seq;
 
 --
 -- TOC entry 5989 (class 0 OID 0)
@@ -2161,7 +2161,7 @@ CREATE TABLE geokrety.gk_geokrety_rating (
 );
 
 
-ALTER TABLE geokrety.gk_geokrety_rating OWNER TO geokrety;
+ALTER TABLE geokrety.gk_geokrety_rating;
 
 --
 -- TOC entry 5990 (class 0 OID 0)
@@ -2185,7 +2185,7 @@ CREATE SEQUENCE geokrety.geokrety_rating_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.geokrety_rating_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.geokrety_rating_id_seq;
 
 --
 -- TOC entry 5991 (class 0 OID 0)
@@ -2211,7 +2211,7 @@ CREATE TABLE geokrety.gk_audit_logs (
 );
 
 
-ALTER TABLE geokrety.gk_audit_logs OWNER TO geokrety;
+ALTER TABLE geokrety.gk_audit_logs;
 
 --
 -- TOC entry 290 (class 1259 OID 19967)
@@ -2222,7 +2222,7 @@ CREATE TABLE geokrety.gk_email_revalidate (
 );
 
 
-ALTER TABLE geokrety.gk_email_revalidate OWNER TO geokrety;
+ALTER TABLE geokrety.gk_email_revalidate;
 
 --
 -- TOC entry 248 (class 1259 OID 19206)
@@ -2257,7 +2257,7 @@ CREATE TABLE geokrety.gk_moves (
 );
 
 
-ALTER TABLE geokrety.gk_moves OWNER TO geokrety;
+ALTER TABLE geokrety.gk_moves;
 
 --
 -- TOC entry 5992 (class 0 OID 0)
@@ -2351,7 +2351,7 @@ CREATE TABLE geokrety.gk_users (
 );
 
 
-ALTER TABLE geokrety.gk_users OWNER TO geokrety;
+ALTER TABLE geokrety.gk_users;
 
 --
 -- TOC entry 5998 (class 0 OID 0)
@@ -2442,7 +2442,7 @@ CREATE VIEW geokrety.gk_geokrety_with_details AS
      LEFT JOIN geokrety.gk_pictures g_avatar ON ((gk_geokrety.avatar = g_avatar.id)));
 
 
-ALTER TABLE geokrety.gk_geokrety_with_details OWNER TO geokrety;
+ALTER TABLE geokrety.gk_geokrety_with_details;
 
 --
 -- TOC entry 251 (class 1259 OID 19242)
@@ -2484,7 +2484,7 @@ CREATE MATERIALIZED VIEW geokrety.gk_geokrety_in_caches AS
   WITH NO DATA;
 
 
-ALTER TABLE geokrety.gk_geokrety_in_caches OWNER TO geokrety;
+ALTER TABLE geokrety.gk_geokrety_in_caches;
 
 --
 -- TOC entry 291 (class 1259 OID 20121)
@@ -2530,7 +2530,7 @@ CREATE VIEW geokrety.gk_geokrety_near_users_homes AS
   ORDER BY (public.st_distance(gk_geokrety_in_caches."position", geokrety.coords2position(c_user.home_latitude, c_user.home_longitude)) < ((c_user.observation_area * 1000))::double precision);
 
 
-ALTER TABLE geokrety.gk_geokrety_near_users_homes OWNER TO geokrety;
+ALTER TABLE geokrety.gk_geokrety_near_users_homes;
 
 --
 -- TOC entry 252 (class 1259 OID 19264)
@@ -2549,7 +2549,7 @@ CREATE TABLE geokrety.gk_mails (
 );
 
 
-ALTER TABLE geokrety.gk_mails OWNER TO geokrety;
+ALTER TABLE geokrety.gk_mails;
 
 --
 -- TOC entry 253 (class 1259 OID 19271)
@@ -2569,7 +2569,7 @@ CREATE TABLE geokrety.gk_moves_comments (
 );
 
 
-ALTER TABLE geokrety.gk_moves_comments OWNER TO geokrety;
+ALTER TABLE geokrety.gk_moves_comments;
 
 --
 -- TOC entry 6003 (class 0 OID 0)
@@ -2597,7 +2597,7 @@ CREATE TABLE geokrety.gk_news (
 );
 
 
-ALTER TABLE geokrety.gk_news OWNER TO geokrety;
+ALTER TABLE geokrety.gk_news;
 
 --
 -- TOC entry 255 (class 1259 OID 19288)
@@ -2614,7 +2614,7 @@ CREATE TABLE geokrety.gk_news_comments (
 );
 
 
-ALTER TABLE geokrety.gk_news_comments OWNER TO geokrety;
+ALTER TABLE geokrety.gk_news_comments;
 
 --
 -- TOC entry 256 (class 1259 OID 19296)
@@ -2630,7 +2630,7 @@ CREATE TABLE geokrety.gk_news_comments_access (
 );
 
 
-ALTER TABLE geokrety.gk_news_comments_access OWNER TO geokrety;
+ALTER TABLE geokrety.gk_news_comments_access;
 
 --
 -- TOC entry 257 (class 1259 OID 19300)
@@ -2649,7 +2649,7 @@ CREATE TABLE geokrety.gk_owner_codes (
 );
 
 
-ALTER TABLE geokrety.gk_owner_codes OWNER TO geokrety;
+ALTER TABLE geokrety.gk_owner_codes;
 
 --
 -- TOC entry 6004 (class 0 OID 0)
@@ -2680,7 +2680,7 @@ CREATE TABLE geokrety.gk_password_tokens (
 );
 
 
-ALTER TABLE geokrety.gk_password_tokens OWNER TO geokrety;
+ALTER TABLE geokrety.gk_password_tokens;
 
 --
 -- TOC entry 6005 (class 0 OID 0)
@@ -2719,7 +2719,7 @@ CREATE TABLE geokrety.gk_races (
 );
 
 
-ALTER TABLE geokrety.gk_races OWNER TO geokrety;
+ALTER TABLE geokrety.gk_races;
 
 --
 -- TOC entry 6006 (class 0 OID 0)
@@ -2815,7 +2815,7 @@ CREATE TABLE geokrety.gk_races_participants (
 );
 
 
-ALTER TABLE geokrety.gk_races_participants OWNER TO geokrety;
+ALTER TABLE geokrety.gk_races_participants;
 
 --
 -- TOC entry 261 (class 1259 OID 19336)
@@ -2829,7 +2829,7 @@ CREATE TABLE geokrety.gk_statistics_counters (
 );
 
 
-ALTER TABLE geokrety.gk_statistics_counters OWNER TO geokrety;
+ALTER TABLE geokrety.gk_statistics_counters;
 
 --
 -- TOC entry 262 (class 1259 OID 19339)
@@ -2845,7 +2845,7 @@ CREATE SEQUENCE geokrety.gk_statistics_counters_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.gk_statistics_counters_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.gk_statistics_counters_id_seq;
 
 --
 -- TOC entry 6014 (class 0 OID 0)
@@ -2876,7 +2876,7 @@ CREATE TABLE geokrety.gk_statistics_daily_counters (
 );
 
 
-ALTER TABLE geokrety.gk_statistics_daily_counters OWNER TO geokrety;
+ALTER TABLE geokrety.gk_statistics_daily_counters;
 
 --
 -- TOC entry 264 (class 1259 OID 19344)
@@ -2892,7 +2892,7 @@ CREATE SEQUENCE geokrety.gk_statistics_daily_counters_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.gk_statistics_daily_counters_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.gk_statistics_daily_counters_id_seq;
 
 --
 -- TOC entry 6015 (class 0 OID 0)
@@ -2917,7 +2917,7 @@ CREATE TABLE geokrety.gk_watched (
 );
 
 
-ALTER TABLE geokrety.gk_watched OWNER TO geokrety;
+ALTER TABLE geokrety.gk_watched;
 
 --
 -- TOC entry 266 (class 1259 OID 19351)
@@ -2930,7 +2930,7 @@ CREATE TABLE geokrety.gk_waypoints_country (
 );
 
 
-ALTER TABLE geokrety.gk_waypoints_country OWNER TO geokrety;
+ALTER TABLE geokrety.gk_waypoints_country;
 
 --
 -- TOC entry 267 (class 1259 OID 19354)
@@ -2945,7 +2945,7 @@ CREATE SEQUENCE geokrety.waypoints_gc_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.waypoints_gc_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.waypoints_gc_id_seq;
 
 --
 -- TOC entry 268 (class 1259 OID 19356)
@@ -2963,7 +2963,7 @@ CREATE TABLE geokrety.gk_waypoints_gc (
 );
 
 
-ALTER TABLE geokrety.gk_waypoints_gc OWNER TO geokrety;
+ALTER TABLE geokrety.gk_waypoints_gc;
 
 --
 -- TOC entry 269 (class 1259 OID 19363)
@@ -2989,7 +2989,7 @@ CREATE TABLE geokrety.gk_waypoints_oc (
 );
 
 
-ALTER TABLE geokrety.gk_waypoints_oc OWNER TO geokrety;
+ALTER TABLE geokrety.gk_waypoints_oc;
 
 --
 -- TOC entry 6016 (class 0 OID 0)
@@ -3029,7 +3029,7 @@ CREATE TABLE geokrety.gk_waypoints_sync (
 );
 
 
-ALTER TABLE geokrety.gk_waypoints_sync OWNER TO geokrety;
+ALTER TABLE geokrety.gk_waypoints_sync;
 
 --
 -- TOC entry 6019 (class 0 OID 0)
@@ -3051,7 +3051,7 @@ CREATE TABLE geokrety.gk_waypoints_types (
 );
 
 
-ALTER TABLE geokrety.gk_waypoints_types OWNER TO geokrety;
+ALTER TABLE geokrety.gk_waypoints_types;
 
 --
 -- TOC entry 272 (class 1259 OID 19383)
@@ -3066,7 +3066,7 @@ CREATE SEQUENCE geokrety.mails_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.mails_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.mails_id_seq;
 
 --
 -- TOC entry 6020 (class 0 OID 0)
@@ -3090,7 +3090,7 @@ CREATE SEQUENCE geokrety.move_comments_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.move_comments_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.move_comments_id_seq;
 
 --
 -- TOC entry 6021 (class 0 OID 0)
@@ -3114,7 +3114,7 @@ CREATE SEQUENCE geokrety.moves_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.moves_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.moves_id_seq;
 
 --
 -- TOC entry 6022 (class 0 OID 0)
@@ -3138,7 +3138,7 @@ CREATE SEQUENCE geokrety.news_comments_access_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.news_comments_access_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.news_comments_access_id_seq;
 
 --
 -- TOC entry 6023 (class 0 OID 0)
@@ -3162,7 +3162,7 @@ CREATE SEQUENCE geokrety.news_comments_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.news_comments_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.news_comments_id_seq;
 
 --
 -- TOC entry 6024 (class 0 OID 0)
@@ -3186,7 +3186,7 @@ CREATE SEQUENCE geokrety.news_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.news_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.news_id_seq;
 
 --
 -- TOC entry 6025 (class 0 OID 0)
@@ -3210,7 +3210,7 @@ CREATE SEQUENCE geokrety.owner_codes_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.owner_codes_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.owner_codes_id_seq;
 
 --
 -- TOC entry 6026 (class 0 OID 0)
@@ -3234,7 +3234,7 @@ CREATE SEQUENCE geokrety.password_tokens_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.password_tokens_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.password_tokens_id_seq;
 
 --
 -- TOC entry 6027 (class 0 OID 0)
@@ -3259,7 +3259,7 @@ CREATE TABLE geokrety.phinxlog (
 );
 
 
-ALTER TABLE geokrety.phinxlog OWNER TO geokrety;
+ALTER TABLE geokrety.phinxlog;
 
 --
 -- TOC entry 281 (class 1259 OID 19406)
@@ -3274,7 +3274,7 @@ CREATE SEQUENCE geokrety.pictures_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.pictures_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.pictures_id_seq;
 
 --
 -- TOC entry 6028 (class 0 OID 0)
@@ -3298,7 +3298,7 @@ CREATE SEQUENCE geokrety.races_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.races_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.races_id_seq;
 
 --
 -- TOC entry 6029 (class 0 OID 0)
@@ -3322,7 +3322,7 @@ CREATE SEQUENCE geokrety.races_participants_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.races_participants_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.races_participants_id_seq;
 
 --
 -- TOC entry 6030 (class 0 OID 0)
@@ -3346,7 +3346,7 @@ CREATE TABLE geokrety.scripts (
 );
 
 
-ALTER TABLE geokrety.scripts OWNER TO geokrety;
+ALTER TABLE geokrety.scripts;
 
 --
 -- TOC entry 285 (class 1259 OID 19415)
@@ -3361,7 +3361,7 @@ CREATE SEQUENCE geokrety.scripts_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.scripts_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.scripts_id_seq;
 
 --
 -- TOC entry 6031 (class 0 OID 0)
@@ -3386,7 +3386,7 @@ CREATE TABLE geokrety.sessions (
 );
 
 
-ALTER TABLE geokrety.sessions OWNER TO geokrety;
+ALTER TABLE geokrety.sessions;
 
 --
 -- TOC entry 287 (class 1259 OID 19424)
@@ -3401,7 +3401,7 @@ CREATE SEQUENCE geokrety.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.users_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.users_id_seq;
 
 --
 -- TOC entry 6032 (class 0 OID 0)
@@ -3425,7 +3425,7 @@ CREATE SEQUENCE geokrety.watched_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.watched_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.watched_id_seq;
 
 --
 -- TOC entry 6033 (class 0 OID 0)
@@ -3449,7 +3449,7 @@ CREATE SEQUENCE geokrety.waypoints_id_seq
     CACHE 1;
 
 
-ALTER TABLE geokrety.waypoints_id_seq OWNER TO geokrety;
+ALTER TABLE geokrety.waypoints_id_seq;
 
 --
 -- TOC entry 6034 (class 0 OID 0)
@@ -5153,4 +5153,3 @@ ALTER TABLE ONLY geokrety.gk_watched
 --
 -- PostgreSQL database dump complete
 --
-

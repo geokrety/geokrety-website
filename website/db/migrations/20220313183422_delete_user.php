@@ -56,8 +56,7 @@ RETURN OLD;
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.user_delete_anonymize()
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.user_delete_anonymize();
 
 COMMENT ON FUNCTION geokrety.user_delete_anonymize()
     IS 'Set username as deleted user.';
@@ -95,8 +94,7 @@ WHERE id = user_id;
 END;
 $BODY$;
 
-ALTER FUNCTION delete_user(bigint, boolean)
-    OWNER TO geokrety;
+ALTER FUNCTION delete_user(bigint, boolean);
 EOL;
         $this->execute($sql);
     }

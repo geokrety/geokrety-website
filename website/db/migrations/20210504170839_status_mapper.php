@@ -26,8 +26,7 @@ RAISE 'Unknown account status';
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.map_account_status(smallint)
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.map_account_status(smallint);
 SQL);
         $this->execute(<<<'SQL'
 CREATE FUNCTION geokrety.map_geokrety_types(IN type smallint)
@@ -53,8 +52,7 @@ RAISE 'Unknown GeoKrety type';
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.map_geokrety_types(smallint)
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.map_geokrety_types(smallint);
 SQL);
         $this->execute(<<<'SQL'
 CREATE FUNCTION geokrety.map_move_types(IN type smallint)
@@ -82,8 +80,7 @@ RAISE 'Unknown Move type';
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.map_move_types(smallint)
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.map_move_types(smallint);
 SQL);
         $this->execute(<<<'SQL'
 CREATE FUNCTION geokrety.map_pictures_types(IN type smallint)
@@ -105,8 +102,7 @@ RAISE 'Unknown Picture type';
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.map_pictures_types(smallint)
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.map_pictures_types(smallint);
 SQL);
         $this->execute(<<<'SQL'
 CREATE FUNCTION geokrety.map_move_comments_types(IN type smallint)
@@ -126,8 +122,7 @@ RAISE 'Unknown Move Comment type';
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.map_move_comments_types(smallint)
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.map_move_comments_types(smallint);
 SQL);
     }
 

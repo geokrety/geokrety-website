@@ -26,7 +26,7 @@ SET row_security = off;
 CREATE SCHEMA IF NOT EXISTS secure;
 
 
-ALTER SCHEMA secure OWNER TO geokrety;
+ALTER SCHEMA secure;
 
 SET default_tablespace = '';
 
@@ -44,7 +44,7 @@ CREATE TABLE secure.gpg_keys (
 );
 
 
-ALTER TABLE secure.gpg_keys OWNER TO geokrety;
+ALTER TABLE secure.gpg_keys;
 
 --
 -- TOC entry 242 (class 1259 OID 511635)
@@ -60,7 +60,7 @@ CREATE SEQUENCE secure.gpg_keys_id_seq
     CACHE 1;
 
 
-ALTER TABLE secure.gpg_keys_id_seq OWNER TO geokrety;
+ALTER TABLE secure.gpg_keys_id_seq;
 
 --
 -- TOC entry 5673 (class 0 OID 0)

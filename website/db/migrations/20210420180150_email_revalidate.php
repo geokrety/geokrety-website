@@ -49,8 +49,7 @@ AS $BODY$
 SELECT \'{0,1,2,3}\'::smallint[]
 $BODY$;
 
-ALTER FUNCTION geokrety.valid_email_revalidate_used()
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.valid_email_revalidate_used();
 ');
             $this->execute('
 ALTER TABLE geokrety.gk_email_revalidate
@@ -74,8 +73,7 @@ RETURN NEW;
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.email_revalidate_check_only_one_active_per_user()
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.email_revalidate_check_only_one_active_per_user();
 ');
             $this->execute('
 CREATE TRIGGER before_40_only_one_at_a_time

@@ -33,8 +33,7 @@ RETURN NEW;
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.account_activation_check_only_one_active_per_user()
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.account_activation_check_only_one_active_per_user();
 EOL);
 
         $this->execute(<<<'EOL'
@@ -65,8 +64,7 @@ RETURN NEW;
 END;
 $BODY$;
 
-ALTER FUNCTION geokrety.account_activation_check_only_one_active_per_user()
-    OWNER TO geokrety;
+ALTER FUNCTION geokrety.account_activation_check_only_one_active_per_user();
 EOL);
 
         $this->execute(<<<'EOL'
