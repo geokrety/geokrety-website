@@ -646,6 +646,8 @@ class GeokretyMigrator extends BaseMigrator {
         echo 'Post processing'.PHP_EOL;
         $this->pPdo->query('UPDATE gk_geokrety SET owner = NULL WHERE owner NOT IN (SELECT DISTINCT(id) FROM gk_users);');
         $this->pPdo->query('UPDATE gk_geokrety SET holder = NULL WHERE holder NOT IN (SELECT DISTINCT(id) FROM gk_users);');
+        // Reset stat table as function will fill it
+        $this->pPdo->query('TRUNCATE "gk_statistics_counters" RESTART IDENTITY CASCADE;');
     }
 
     protected function prepareInsertValues(int $chunkSize): string {
