@@ -1,3 +1,11 @@
+## [2.28.12](https://github.com/geokrety/geokrety-website/compare/v2.28.11...v2.28.12) (2023-04-05)
+
+
+### Bug Fixes
+
+* Remove static owner in create table ([9084166](https://github.com/geokrety/geokrety-website/commit/908416600fd3e705b0913ccd276986dfc21b2569))
+* use env variable to select db in db-migrator ([62d87c7](https://github.com/geokrety/geokrety-website/commit/62d87c7525caf1a0cce91a18313f0aadff4bf17d))
+
 ## [2.28.11](https://github.com/geokrety/geokrety-website/compare/v2.28.10...v2.28.11) (2023-04-05)
 
 
