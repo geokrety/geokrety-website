@@ -1,3 +1,11 @@
+## [2.28.14](https://github.com/geokrety/geokrety-website/compare/v2.28.13...v2.28.14) (2023-04-05)
+
+
+### Bug Fixes
+
+* Force truncate table in database-migrator ([d356e32](https://github.com/geokrety/geokrety-website/commit/d356e32c2510cfc9e4a259bdef4f8aa721ec95c1))
+* Remove authorization in create schema ([c3b433d](https://github.com/geokrety/geokrety-website/commit/c3b433d64fc40d84acfa4c6befd6539e94ee3370))
+
 ## [2.28.13](https://github.com/geokrety/geokrety-website/compare/v2.28.12...v2.28.13) (2023-04-05)
 
 
