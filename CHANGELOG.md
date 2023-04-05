@@ -1,3 +1,10 @@
+## [2.28.13](https://github.com/geokrety/geokrety-website/compare/v2.28.12...v2.28.13) (2023-04-05)
+
+
+### Bug Fixes
+
+* Completely remove static owner in postgres ([4f09afe](https://github.com/geokrety/geokrety-website/commit/4f09afeb484fe3a7c5dbb7ba752fa387909d77d0))
+
 ## [2.28.12](https://github.com/geokrety/geokrety-website/compare/v2.28.11...v2.28.12) (2023-04-05)
 
 
