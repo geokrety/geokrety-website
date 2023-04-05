@@ -48,8 +48,6 @@ CREATE FUNCTION geokrety.valid_email_revalidate_used()
 AS $BODY$
 SELECT \'{0,1,2,3}\'::smallint[]
 $BODY$;
-
-ALTER FUNCTION geokrety.valid_email_revalidate_used();
 ');
             $this->execute('
 ALTER TABLE geokrety.gk_email_revalidate
@@ -72,8 +70,6 @@ AND id != NEW.id;
 RETURN NEW;
 END;
 $BODY$;
-
-ALTER FUNCTION geokrety.email_revalidate_check_only_one_active_per_user();
 ');
             $this->execute('
 CREATE TRIGGER before_40_only_one_at_a_time

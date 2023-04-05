@@ -32,8 +32,6 @@ END IF;
 RETURN NEW;
 END;
 $BODY$;
-
-ALTER FUNCTION geokrety.account_activation_check_only_one_active_per_user();
 EOL);
 
         $this->execute(<<<'EOL'
@@ -63,8 +61,6 @@ AND used = 0;
 RETURN NEW;
 END;
 $BODY$;
-
-ALTER FUNCTION geokrety.account_activation_check_only_one_active_per_user();
 EOL);
 
         $this->execute(<<<'EOL'

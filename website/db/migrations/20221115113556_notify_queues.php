@@ -29,8 +29,6 @@ BEGIN
     RETURN NEW;
 END;
 $BODY$;
-
-ALTER FUNCTION notify_queues.channel_notify();
 EOL;
         $this->execute($sql);
 
@@ -54,8 +52,6 @@ BEGIN
     RETURN NEW;
 END;
 $BODY$;
-
-ALTER FUNCTION notify_queues.new_handle();
 EOL;
         $this->execute($sql);
 
