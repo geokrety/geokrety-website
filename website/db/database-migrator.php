@@ -7,7 +7,7 @@ use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Markdown;
 use GeoKrety\Service\SecretCode;
 
-$dsn = 'mysql:host='.getenv('GK_DB_ORIG_HOST').'db;dbname='.getenv('GK_DB_ORIG_DB_NAME');
+$dsn = 'mysql:host='.getenv('GK_DB_ORIG_HOST').';dbname='.getenv('GK_DB_ORIG_DB_NAME');
 $username = getenv('GK_DB_ORIG_USER');
 $password = getenv('GK_DB_ORIG_PASSWORD');
 $options = [
