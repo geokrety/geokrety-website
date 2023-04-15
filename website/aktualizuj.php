@@ -175,7 +175,7 @@ function aktualizuj_skrzynki($id) {
     $link = DBConnect();
 
     $sql7 = "UPDATE `gk-geokrety` gk SET skrzynki =
-		(SELECT count(distinct(concat(ru3.lat,ru3.lon))) FROM `gk-ruchy` ru3 WHERE ru3.id='$id' AND (ru3.logtype='0' OR ru3.logtype='3' OR ru3.logtype='5'))
+		(SELECT count(distinct ru3.lat, ru3.lon) FROM `gk-ruchy` ru3 WHERE ru3.id='$id' AND (ru3.logtype='0' OR ru3.logtype='3' OR ru3.logtype='5'))
 		WHERE id='$id'";
     $result7 = mysqli_query($link, $sql7);
 }
