@@ -1,3 +1,10 @@
+## [2.28.15](https://github.com/geokrety/geokrety-website/compare/v2.28.14...v2.28.15) (2023-04-17)
+
+
+### Bug Fixes
+
+* Fix database address ([52b61d6](https://github.com/geokrety/geokrety-website/commit/52b61d66a9f1b9320897622ab468c481cc349783))
+
 ## [2.28.14](https://github.com/geokrety/geokrety-website/compare/v2.28.13...v2.28.14) (2023-04-05)
 
 
