@@ -1,5 +1,9 @@
 <?php
 
+function is_ascii( $string = '' ) {
+    return ( bool ) ! preg_match( '/[\\x80-\\xff]+/' , $string );
+}
+
 function longlinewrap($str, $maxLength = 45, $char = ' ') {
     $wordEndChars = [' ', "\n", "\r", "\f", "\v", "\0"];
     $count = 0;
@@ -18,7 +22,7 @@ function longlinewrap($str, $maxLength = 45, $char = ' ') {
         }
 
         if (!$openTag) {
-            if (!in_array($str[$i], $wordEndChars)) {
+            if (!in_array($str[$i], $wordEndChars) and is_ascii($str[$i])) {
                 //If not word ending char
                 ++$count;
                 if ($count == $maxLength) {
