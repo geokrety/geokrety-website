@@ -235,13 +235,13 @@ if ($result) {
             $new_comment_link = '';
         }
 
-        if ($ruch_userid == $userid_longin) {
+        if ($userid_longin > 0 && $ruch_userid == $userid_longin) {
             $edytuj_link = '&nbsp;<a href="/imgup.php?typ=1&amp;id='.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/image.png" alt="[Add_photo]" title="'._('Add photo').'" width="16" height="16" border="0" /></a>&nbsp;<a href="/ruchy.php?edit=1&amp;ruchid='.$ruch_id.'"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/edit.png" alt="[Edit_log]" title="'._('Edit log').'" width="16" height="16" border="0" /></a>';
         } else {
             $edytuj_link = '';
         }
 
-        if (($userid == $userid_longin) or ($ruch_userid == $userid_longin)) {
+        if ($userid_longin > 0 && ($userid == $userid_longin or $ruch_userid == $userid_longin)) {
             $skasuj_link = '&nbsp;<a href="javascript:void(0)" title="'._('Delete log').'" onClick="if (CzySkasowac(this, \'this log?\')) window.location.href = \'\\edit.php?delete='.$ruch_id.'&confirmed=1\';"><img class="textalign16" src="'.CONFIG_CDN_ICONS.'/delete.png" alt="[Delete_log]" width="16" height="16" border="0" /></a>';
         } else {
             $skasuj_link = '';
