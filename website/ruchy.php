@@ -102,6 +102,16 @@ $g_data = substr($_GET['data'], 0, 10);
 $g_godzina = (int) $_GET['godzina'];
 $g_minuta = (int) $_GET['minuta'];
 
+function xml_no_error($kretid) {
+  $kretid = ctype_digit($kretid) ? $kretid : 0;
+  $now = date('Y-m-d H:i:s');
+  echo '<?xml version="1.0"?>'."\n";
+  echo '<gkxml version="1.0" date="'.$now.'">'."\n";
+  echo "<errors><error></error></errors>\n";
+  echo "<geokrety><geokret id=\"$kretid\" /></geokrety>\n";
+  echo '</gkxml>';
+}
+
 //  EDIT MODE edycja ruchów
 // this goes before everything else because it checks if this user can edit this log and then sets the EDIT variable
 if (isset($g_edit, $g_ruchid) and ($longin_status['plain'] != null) and ctype_digit($g_ruchid)) {
@@ -237,6 +247,10 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
         include_once 'smarty.php';
         exit;
     } elseif (isset($errors) and $longin_status['mobile_mode'] == 1) {
+        if (getenv('HTTP_X_FORWARDED_FOR') == '185.243.55.91') {
+          xml_no_error($kret_id);
+          exit();
+        }
         if (!defined(a2xml)) {
             include_once 'fn_a2xml.php';
         }
@@ -275,6 +289,10 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
             include_once 'smarty.php';
             exit;
         } elseif (isset($errors) and $longin_status['mobile_mode'] == 1) {
+            if (getenv('HTTP_X_FORWARDED_FOR') == '185.243.55.91') {
+              xml_no_error($kretid);
+              exit();
+            }
             if (!defined(a2xml)) {
                 include_once 'fn_a2xml.php';
             }
@@ -389,6 +407,10 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
             include_once 'smarty.php';
             exit;
         } elseif (isset($errors) and $longin_status['mobile_mode'] == 1) {
+            if (getenv('HTTP_X_FORWARDED_FOR') == '185.243.55.91') {
+              xml_no_error($kretid);
+              exit();
+            }
             if (!defined(a2xml)) {
                 include_once 'fn_a2xml.php';
             }
