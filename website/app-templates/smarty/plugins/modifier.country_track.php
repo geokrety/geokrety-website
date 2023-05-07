@@ -23,7 +23,7 @@ function smarty_modifier_country_track(?Geokret $geokret): string {
     $template_string = <<<'EOT'
 {foreach $country_track as $country name=loop1}
     {$country.country|country nofilter}
-    <small>({$country.move_count}){if not $smarty.foreach.loop1.last} 🠖 {/if}</small>
+    <small>({$country.move_count}){if not $smarty.foreach.loop1.last} &rarr; {/if}</small>
 {/foreach}
 EOT;
 
