@@ -1,3 +1,10 @@
+## [2.28.16](https://github.com/geokrety/geokrety-website/compare/v2.28.15...v2.28.16) (2023-05-07)
+
+
+### Bug Fixes
+
+* Wrong character in country track ([81c9c11](https://github.com/geokrety/geokrety-website/commit/81c9c1177e85f7ce5d032520fa1dfb95c80b6fd4))
+
 ## [2.28.15](https://github.com/geokrety/geokrety-website/compare/v2.28.14...v2.28.15) (2023-04-17)
 
 
