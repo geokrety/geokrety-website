@@ -55,7 +55,7 @@ jobs:
           ./website/db/get_huge_dump_files.sh
           ${DOCKER_COMPOSE} pull -q postgres
           ${DOCKER_COMPOSE} up -d --no-build postgres
-          timeout 60s bash -c "while ! pg_isready; do sleep 1; done || { docker ps -a;  ${DOCKER_COMPOSE} logs postgres; false; }"
+          timeout 60s bash -c "while ! pg_isready; do sleep 1; done" || { docker ps -a;  ${DOCKER_COMPOSE} logs postgres; false; }
 
       - name: Import SRTM data
         run: |
