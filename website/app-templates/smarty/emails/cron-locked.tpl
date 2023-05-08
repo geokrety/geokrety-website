@@ -7,6 +7,6 @@
 <p class="text-justify">{t escape=no script=$script->name since={$script->locked_on_datetime|print_date_long_absolute_diff_for_humans}}Cron <strong>%1</strong> is locked since <strong>%2</strong>!{/t}</p>
 <div class="s-3"></div>
 <div class="text-center">
-  <a class="btn btn-warning btn-lg" href="{'admin_scripts_unlock'|alias:sprintf('@scriptid=%d', $script->id)}">{t}Unlock script{/t}</a>
+  <a class="btn btn-warning btn-lg" href="{'admin_scripts'|alias}">{t}Unlock script{/t}</a>
 </div>
 {/block}
