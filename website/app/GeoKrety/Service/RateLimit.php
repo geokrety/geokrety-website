@@ -3,7 +3,6 @@
 namespace GeoKrety\Service;
 
 use Exception;
-use GeoKrety\Model\AuditPost;
 use GeoKrety\Service\Xml\Error;
 use Prefab;
 use Sugar\Event;
@@ -29,7 +28,7 @@ class RateLimit extends Prefab {
         try {
             self::incr($name, $key);
         } catch (RateLimitExceeded $e) {
-            AuditPost::AmendAuditPostWithErrors('Rate limit exceeded');
+            register_shutdown_function('GeoKrety\Model\AuditPost::AmendAuditPostWithErrors', 'Rate limit exceeded');
             echo _('Rate limit exceeded');
             http_response_code(429);
             exit();
@@ -48,7 +47,7 @@ class RateLimit extends Prefab {
         try {
             self::incr($name, $key);
         } catch (RateLimitExceeded $e) {
-            AuditPost::AmendAuditPostWithErrors('Rate limit exceeded');
+            register_shutdown_function('GeoKrety\Model\AuditPost::AmendAuditPostWithErrors', 'Rate limit exceeded');
             Error::buildError(false, [_('Rate limit exceeded')]);
             http_response_code(429);
             exit();

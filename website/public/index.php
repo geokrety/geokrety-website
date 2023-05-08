@@ -92,6 +92,9 @@ foreach (GK_METRICS_EXCLUDE_PATH as $path) {
     }
 }
 
+// Register shutdown functions
+include __DIR__.'/../app/shutdown.php';
+
 ini_set('session.gc_maxlifetime', GK_SITE_SESSION_REMEMBER);
 $session = new \GeoKrety\Session($f3->get('DB'));
 // Create a per session based CSRF token
@@ -105,53 +108,10 @@ $f3->set('CURRENT_USER', $f3->get('SESSION.CURRENT_USER'));
 \Assets::instance();
 \Assets\Sass::instance()->init();
 
-Metrics::getOrRegisterCounter('total_requests', 'Total number of served requests', ['verb'])
-    ->inc([$f3->get('VERB')]);
-
-// Piwik
-if (GK_PIWIK_ENABLED) {
-    if (!\GeoKrety\Service\UserSettings::getForCurrentUser('TRACKING_OPT_OUT')) {
-        try {
-            $matomoTracker = new \GeoKrety\Service\MatomoTracker(GK_PIWIK_SITE_ID, GK_PIWIK_URL);
-            $matomoTracker->setTokenAuth(GK_PIWIK_TOKEN);
-            $matomoTracker->setIp($f3->get('IP'));
-            $matomoTracker->setVisitorId(substr(md5($f3->get('IP').session_id()), 0, 16));
-            $matomoTracker->doTrackPageView(\Base::instance()->PATH);
-            \Sugar\Event::instance()->emit('tracker.success');
-        } catch (RuntimeException $e) {
-            \Sugar\Event::instance()->emit('tracker.timeout');
-        }
-    } else {
-        \Sugar\Event::instance()->emit('tracker.skipped');
-    }
-}
-
 // Force HTTP_RETURN_CODE
 if ($f3->exists('SESSION.HTTP_RETURN_CODE')) {
     http_response_code($f3->get('SESSION.HTTP_RETURN_CODE'));
     $f3->clear('SESSION.HTTP_RETURN_CODE');
 }
 
-// Audit POST logs
-if (sizeof($f3->get('POST'))) {
-    $has_route_match = 0;
-    if (GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS !== true) {
-        foreach (GK_AUDIT_LOGS_EXCLUDE_PATH as $path) { // use?: !in_array()
-            if (strpos($f3->PATH, $path) !== false) {
-                ++$has_route_match;
-            }
-        }
-    }
-    if ($has_route_match === 0 || GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS) {
-        $audit = new \GeoKrety\Model\AuditPost();
-        $audit->route = $f3->PATH;
-        $audit->payload = json_encode($f3->get('POST')); // As safety guard, replace any *password* but placeholder (what about other patterns?)
-        try {
-            $audit->save();
-            $f3->set('AUDIT_POST_ID', $audit->id);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
-}
 $f3->run();
