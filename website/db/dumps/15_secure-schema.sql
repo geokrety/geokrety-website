@@ -26,8 +26,6 @@ SET row_security = off;
 CREATE SCHEMA IF NOT EXISTS secure;
 
 
-ALTER SCHEMA secure;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -44,8 +42,6 @@ CREATE TABLE secure.gpg_keys (
 );
 
 
-ALTER TABLE secure.gpg_keys;
-
 --
 -- TOC entry 242 (class 1259 OID 511635)
 -- Name: gpg_keys_id_seq; Type: SEQUENCE; Schema: secure; Owner: geokrety
@@ -59,8 +55,6 @@ CREATE SEQUENCE secure.gpg_keys_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE secure.gpg_keys_id_seq;
 
 --
 -- TOC entry 5673 (class 0 OID 0)
