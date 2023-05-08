@@ -21,7 +21,7 @@ function shutdown_piwik(Base $f3) {
             $matomoTracker = new \GeoKrety\Service\MatomoTracker(GK_PIWIK_SITE_ID, GK_PIWIK_URL);
             $matomoTracker->setTokenAuth(GK_PIWIK_TOKEN);
             $matomoTracker->setIp($f3->get('IP'));
-            $matomoTracker->setVisitorId(substr(md5($f3->get('IP').session_id()), 0, 16));
+            $matomoTracker->setVisitorId(substr(md5($f3->get('IP').$f3->get('AGENT').$f3->get('CURRENT_USER')), 0, 16));
             $matomoTracker->doTrackPageView(\Base::instance()->PATH);
             \Sugar\Event::instance()->emit('tracker.success');
         } catch (RuntimeException $e) {
