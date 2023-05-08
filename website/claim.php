@@ -112,7 +112,14 @@ if (ctype_alnum($p_oc) && ctype_alnum($p_tc)) {
 </tr>
 
 <tr >
-<td colspan="2" style="padding:5px 0 12px 10px">To claim a GeoKret, please provide its Tracking Code and Owner Code:</td>
+    <td colspan="2" style="padding:5px 0 12px 10px">
+        This page allows you to become the new owner of a GeoKret.
+        If you want to post a move, please use the <a href="/ruchy.php">Log a GeoKret</a> form.
+    </td>
+</tr>
+
+<tr >
+<td colspan="2" style="padding:5px 0 12px 10px">To claim a GeoKret, please provide its Tracking Code and Owner Code (you should have received them from the old owner):</td>
 </tr>
 
 <tr style="height:2em"><td class="right" style="width:16%"><b>Tracking code:</b></td><td><input type="text" name="tc"></td></tr>
