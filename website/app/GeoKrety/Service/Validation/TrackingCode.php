@@ -42,7 +42,7 @@ class TrackingCode {
                     return true;
                 }
             }
-            array_push($this->errors, sprintf(_('You seems to have used the GeoKret public identifier "%s". We need the private code (Tracking Code) here. Hint: it doesn\'t starts with \'GK\' 😉'), $trackingCode));
+            array_push($this->errors, sprintf(_('You seems to have used the GeoKret public identifier "%s". We need the private code (Tracking Code) here. Hint: it doesn\'t start with \'GK\' 😉'), $trackingCode));
 
             return false;
         }
