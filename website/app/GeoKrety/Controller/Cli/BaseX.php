@@ -51,7 +51,7 @@ SQL;
         $this->script_end();
     }
 
-    public function exportAll() {
+    public function exportBasic() {
         $basex = BaseXClient::instance()->getSession();
         $export_path = GK_BASEX_EXPORTS_PATH;
 
@@ -59,10 +59,20 @@ SQL;
 xquery db:export("geokrety", "$export_path", map { "method": "xml", "cdata-section-elements": "description name owner user waypoint application comment message"})
 XQUERY;
         $basex->execute($query);
+    }
+
+    public function exportDetails() {
+        $basex = BaseXClient::instance()->getSession();
+        $export_path = GK_BASEX_EXPORTS_PATH;
 
         $query = <<<XQUERY
 xquery db:export("geokrety-details", "$export_path", map { "method": "xml", "cdata-section-elements": "description name owner user waypoint application comment message"})
 XQUERY;
         $basex->execute($query);
+    }
+
+    public function exportAll() {
+        $this->exportBasic();
+        $this->exportDetails();
     }
 }

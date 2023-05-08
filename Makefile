@@ -53,8 +53,12 @@ basex-init-db: ## Create empty BaseX databases (destructive)
 	cd website/public && php index.php /cli/basex/initdb
 basex-import-all: ## Insert all GeoKrety IDs in rabbitmq for reprocessing
 	cd website/public && php index.php /cli/basex/importAll
-basex-export-all: ## Request BaseX to export it's data on disk
+basex-export-all: ## Request BaseX to export all it's data on disk
 	cd website/public && php index.php /cli/basex/exportAll
+basex-export-basic: ## Request BaseX to export it's Basic GK data on disk
+	cd website/public && php index.php /cli/basex/exportBasic
+basex-export-details: ## Request BaseX to export it's Detailed GK data on disk
+	cd website/public && php index.php /cli/basex/exportDetails
 
 phinx-migrate: ## DB play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
