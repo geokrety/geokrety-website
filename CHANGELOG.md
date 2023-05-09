@@ -1,3 +1,10 @@
+## [2.29.1](https://github.com/geokrety/geokrety-website/compare/v2.29.0...v2.29.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* Fix cookie secure for GKT in CI tests ([664c3a7](https://github.com/geokrety/geokrety-website/commit/664c3a71ad5ee88be9af387cce675f25af95c5ac))
+
 ## [2.29.0](https://github.com/geokrety/geokrety-website/compare/v2.28.16...v2.29.0) (2023-05-09)
 
 
