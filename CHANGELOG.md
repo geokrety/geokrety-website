@@ -1,3 +1,10 @@
+## [2.30.2](https://github.com/geokrety/geokrety-website/compare/v2.30.1...v2.30.2) (2023-05-09)
+
+
+### Bug Fixes
+
+* smarty warning Using php-function "constant" as a modifier is deprecated ([6b33844](https://github.com/geokrety/geokrety-website/commit/6b33844931e05deb5189c7f2b9fcfab4078bc27c))
+
 ## [2.30.1](https://github.com/geokrety/geokrety-website/compare/v2.30.0...v2.30.1) (2023-05-09)
 
 
