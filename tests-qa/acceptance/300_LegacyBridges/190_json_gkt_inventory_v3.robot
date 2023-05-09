@@ -21,7 +21,7 @@ Unauthenticated See Empty Results
     # Init session COOKIE
     ${auth} =     GET On Session            geokrety                    url=/
 
-    ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php
+    ${resp} =     GET On Session            geokrety                    url=/gkt/v3/inventory
     Should Not Be Empty    ${resp.content}
     ${json} =     Convert String to JSON                                ${resp.content}
 
@@ -39,12 +39,15 @@ Authenticated User See His Inventory - User 1 - Empty inventory
     ${auth} =     GET On Session            geokrety                    url=/
 
     GET On Session                          geokrety                    url=/devel/users/${USER_1.name}/login
-    ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php
+    ${resp} =     GET On Session            geokrety                    url=/gkt/v3/inventory
     Should Not Be Empty    ${resp.content}
     ${json} =     Convert String to JSON                                ${resp.content}
 
     ${value} =    Get Value From Json       ${json}                     $.loggedin
     Should Be Equal                         ${value[0]}                 ${TRUE}
+
+    ${value} =    Get Value From Json       ${json}                     $.list
+    Length Should Be                        ${value[0]}                 0
     Delete All Sessions
 
 
@@ -54,7 +57,7 @@ Authenticated User See His Inventory - User 2 - Owned 2 Inventory 1
     ${auth} =     GET On Session            geokrety                    url=/
 
     ${auth} =     GET On Session            geokrety                    url=/devel/users/${USER_2.name}/login
-    ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php
+    ${resp} =     GET On Session            geokrety                    url=/gkt/v3/inventory
     Should Not Be Empty    ${resp.content}
     ${json} =     Convert String to JSON                                ${resp.content}
 
@@ -72,7 +75,7 @@ Authenticated User See His Inventory - User 3 - Owned 4 Inventory 4
     ${auth} =     GET On Session            geokrety                    url=/
 
     ${auth} =     GET On Session            geokrety                    url=/devel/users/${USER_3.name}/login
-    ${resp} =     GET On Session            geokrety                    url=/gkt/inventory_v3.php
+    ${resp} =     GET On Session            geokrety                    url=/gkt/v3/inventory
     Should Not Be Empty    ${resp.content}
     ${json} =     Convert String to JSON                                ${resp.content}
 
