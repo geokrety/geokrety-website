@@ -6,7 +6,7 @@ map = initializeMap();
 let geoJsonLayer;
 
 function moveTypeIcon(move_type) {
-    return '<img src="{'GK_CDN_IMAGES_URL'|constant}/log-icons/{$geokret->type->getTypeId()}/'+move_type+'.png" title="'+moveTypeText(move_type)+'">';
+    return '<img src="{constant('GK_CDN_IMAGES_URL')}/log-icons/{$geokret->type->getTypeId()}/'+move_type+'.png" title="'+moveTypeText(move_type)+'">';
 }
 
 function moveTypeText(move_type) {
