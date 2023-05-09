@@ -22,6 +22,8 @@
             <li>{t escape=no url1="https://raw.githubusercontent.com/geokrety/GeoKrety-Toolbox/master/GeoKrety.Toolbox.user.js" url2="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/" url3="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/"}<a href="%1">Firefox</a> (needs <a href="%2">Tampermonkey add-on</a> or <a href="%3">greasemonkey add-on</a>){/t}</li>
         </ul>
 
+        <p>{t}Note: the "Drop a GK in this cache" feature will probably require you to disable "Cookie tracking protection" otherwise the addon will not detect your authentication on GeoKrety.org{/t}</p>
+
     </div>
 </div>
 {/block}
