@@ -29,7 +29,7 @@ class Session extends SQL\Session {
         if (sizeof($result) > 0) {
             $f3->set('JAR.path', $f3->alias('gkt_v3_inventory'));
             $f3->set('JAR.samesite', 'None');
-            $f3->set('JAR.secure', true);
+            $f3->set('JAR.secure', $f3->get('SCHEME') === 'https');
             $f3->set('JAR.httponly', false);
             $f3->set('COOKIE.gkt_on_behalf', $result[0]['on_behalf']);
         }
