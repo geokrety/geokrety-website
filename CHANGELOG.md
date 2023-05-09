@@ -1,3 +1,11 @@
+## [2.30.1](https://github.com/geokrety/geokrety-website/compare/v2.30.0...v2.30.1) (2023-05-09)
+
+
+### Chores
+
+* **deps:** bump guzzlehttp/psr7 from 2.4.3 to 2.5.0 ([1ea5612](https://github.com/geokrety/geokrety-website/commit/1ea56129cc04d2e6aaea2fb31caf393bbd76505a))
+* **deps:** bump smarty/smarty from 4.2.1 to 4.3.1 ([3557c62](https://github.com/geokrety/geokrety-website/commit/3557c62254e7bfa53ba71ff1f2afc5f6ee6a0748))
+
 ## [2.30.0](https://github.com/geokrety/geokrety-website/compare/v2.29.1...v2.30.0) (2023-05-09)
 
 
