@@ -25,8 +25,9 @@ class GKTInventory extends BaseGKT {
             return false;
         }
         session_decode($result[0]['data']);
+        $this->current_user_id = $_SESSION['CURRENT_USER'];
 
-        return $this->current_user_id = $_SESSION['CURRENT_USER'];
+        return true;
     }
 
     public function get(\Base $f3) {

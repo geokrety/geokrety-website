@@ -27,10 +27,11 @@ class Session extends SQL\Session {
 
         $result = $f3->get('DB')->exec('SELECT on_behalf FROM sessions WHERE session_id = ?', [$id]);
         if (sizeof($result) > 0) {
-            $samesite = $f3->get('JAR.samesite');
+            $f3->set('JAR.path', $f3->alias('gkt_v3_inventory'));
             $f3->set('JAR.samesite', 'None');
+            $f3->set('JAR.secure', true);
+            $f3->set('JAR.httponly', false);
             $f3->set('COOKIE.gkt_on_behalf', $result[0]['on_behalf']);
-            $f3->set('JAR.samesite', $samesite);
         }
     }
 

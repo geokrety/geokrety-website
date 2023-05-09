@@ -9,7 +9,6 @@ function addCorsHeaders(Base $f3) {
     $origin = $f3->get('HEADERS.Origin');
     if (in_array($origin, ALLOWED_ORIGINS)) {
         $f3->copy('HEADERS.Origin', 'CORS.origin');
-        $f3->set('CORS.credentials', true);
     }
 }
 
