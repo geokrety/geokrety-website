@@ -1,3 +1,25 @@
+## [2.29.0](https://github.com/geokrety/geokrety-website/compare/v2.28.16...v2.29.0) (2023-05-09)
+
+
+### Features
+
+* Export BaseX data more often ([3a83496](https://github.com/geokrety/geokrety-website/commit/3a83496c3392db445f38c73507767129ce541426))
+
+
+### Bug Fixes
+
+* change visitorId construction ([6bf88a6](https://github.com/geokrety/geokrety-website/commit/6bf88a6057932a27d742d246043ce010ccd04a19))
+* Correct a bad link in locked script email ([eef07ed](https://github.com/geokrety/geokrety-website/commit/eef07ed43be1053dc0a7614654c7b331d6ff6a5b))
+* Make cron email subjects translatable ([209cad5](https://github.com/geokrety/geokrety-website/commit/209cad5eaace5325f2497c5108b242b68e8f117b))
+* Review GKT cookie parameters ([6e6cfd1](https://github.com/geokrety/geokrety-website/commit/6e6cfd19c6ee1801ae9ec08fb3efcc57c3c6f702))
+* Speedup by moving code to shutdown_function ([5b2ebf8](https://github.com/geokrety/geokrety-website/commit/5b2ebf8ec8d6dd74a41b5e6e93736af21415ce2f))
+
+
+### Chores
+
+* Fix typo ([7dd900a](https://github.com/geokrety/geokrety-website/commit/7dd900ae656fc510530175c4908255949e836e39))
+* GKT drop require disabling "Cookie tracking protection" ([3a2de12](https://github.com/geokrety/geokrety-website/commit/3a2de12ba0f5406c82d50e0d51f6c3f0992eeaee))
+
 ## [2.28.16](https://github.com/geokrety/geokrety-website/compare/v2.28.15...v2.28.16) (2023-05-07)
 
 
