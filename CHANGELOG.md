@@ -1,3 +1,15 @@
+## [2.30.0](https://github.com/geokrety/geokrety-website/compare/v2.29.1...v2.30.0) (2023-05-09)
+
+
+### Features
+
+* Initial altitude profile graphic ([9e1a7c2](https://github.com/geokrety/geokrety-website/commit/9e1a7c243c03903949fe98f5c4afa5a269b2d9ed)), closes [#624](https://github.com/geokrety/geokrety-website/issues/624)
+
+
+### Translations
+
+* New translations help.html (French) [skip translate] ([26650ef](https://github.com/geokrety/geokrety-website/commit/26650ef4b10a22e01e28c918392798c47583e8ae))
+
 ## [2.29.1](https://github.com/geokrety/geokrety-website/compare/v2.29.0...v2.29.1) (2023-05-09)
 
 
