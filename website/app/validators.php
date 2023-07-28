@@ -124,6 +124,10 @@ $validator->addValidator('is_not_false', function ($field, $input, $param = null
     return $input[$field] !== false;
 }, 'Invalid value for {0}');
 
+$validator->addValidator('valid_authentication_method', function ($field, $input, $param = null) {
+    return \GeoKrety\Model\UsersAuthenticationHistory::is_valid_method($input[$field]);
+}, 'Invalid value for {0}');
+
 $validator->addFilter('HTMLPurifier', function ($value, $params = null) {
     return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value);
 });
