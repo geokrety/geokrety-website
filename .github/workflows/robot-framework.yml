@@ -157,3 +157,4 @@ jobs:
         if: always()
         run: |
           echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html
+          echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html
