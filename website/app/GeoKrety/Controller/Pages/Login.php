@@ -19,6 +19,8 @@ use Sugar\Event;
 
 class Login extends Base {
     private const LEGACY_API2SECID_ERROR_STRING = 'error %d ';
+    private const PASSWORD_CREDENTIALS_FAILS_ERROR = 1;
+    private const PASSWORD_INVALID_ACCOUNT_ERROR = 2;
     private const API2SECID_CREDENTIALS_FAILS_ERROR = 1;
     private const API2SECID_INVALID_ACCOUNT_ERROR = 2;
     private const API2SECID_EMPTY_CREDENTIALS_ERROR = 3;
@@ -37,8 +39,14 @@ class Login extends Base {
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
+            Event::instance()->emit('user.login.password', $user);
             LanguageService::changeLanguageTo($user->preferred_language);
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
+                Event::instance()->emit('user.login.password-failure', [
+                    'username' => $f3->get('POST.login'),
+                    'error' => self::PASSWORD_INVALID_ACCOUNT_ERROR,
+                    'error_message' => 'Your account is not valid.',
+                ]);
                 if (GK_DEVEL) {
                     $user->resendAccountActivationEmail();
                     \Base::instance()->reroute('@home');
@@ -54,6 +62,11 @@ class Login extends Base {
             }
             $this::connectUser($f3, $user, 'password');
         } else {
+            Event::instance()->emit('user.login.password-failure', [
+                'username' => $f3->get('POST.login'),
+                'error' => self::PASSWORD_CREDENTIALS_FAILS_ERROR,
+                'error_message' => 'Username and password doesn\'t match.',
+            ]);
             Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
         }
         $this->loginForm($f3);
@@ -78,7 +91,7 @@ class Login extends Base {
             $f3->set('SESSION.IS_ADMIN', false);
         }
         Smarty::assign('current_user', $user);
-        Event::instance()->emit("user.login.$method", $user);
+        Event::instance()->emit("user.login.$method-effective", $user);
         if (in_array($method, self::NO_GRAPHIC_LOGIN)) {
             return;
         }
@@ -162,6 +175,7 @@ class Login extends Base {
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
         if ($user !== false) {
+            Event::instance()->emit('user.login.api2secid', $user);
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
                 http_response_code(400); // TODO what is the most logical code ? probably not 400 neither 500
                 echo $this->getApi2SecidLegacyError(self::API2SECID_INVALID_ACCOUNT_ERROR);
@@ -176,7 +190,7 @@ class Login extends Base {
                 exit();
             }
             echo $user->secid;
-            Event::instance()->emit('user.login.api2secid', $user);
+            Event::instance()->emit('user.login.api2secid.effective', $user);
             Login::disconnectUser($f3);
             exit();
         }
@@ -217,6 +231,7 @@ class Login extends Base {
                 ]);
             exit();
         }
+        Event::instance()->emit('user.login.secid', $user);
         Login::connectUser($f3, $user, 'secid');
 
         return $user;

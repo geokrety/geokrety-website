@@ -64,32 +64,104 @@ $events->on('activation.token.used', function (GeoKrety\Model\AccountActivationT
 });
 $events->on('user.login.password', function (GeoKrety\Model\User $user) {
     audit('user.login.password', $user);
-    Session::setUserId($user);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $user->username,
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_PASSWORD,
+        $user,
+    );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['password']);
+});
+$events->on('user.login.password-effective', function (GeoKrety\Model\User $user) {
+    audit('user.login.password-effective', $user);
+    Session::setUserId($user);
+    Metrics::counter('logged_in_users_effective_total', 'Total number of effective connections', ['type'], ['password']);
+});
+$events->on('user.login.password-failure', function (array $context) {
+    audit('user.login.password-failure', $context);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $context['username'],
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_PASSWORD,
+        null,
+        false,
+        $context['error_message'],
+    );
+    Metrics::counter('logged_in_failure_total', 'Total number of connections failures', ['type'], ['password']);
 });
 $events->on('user.login.secid', function (GeoKrety\Model\User $user) {
     audit('user.login.secid', $user);
-    Session::setUserId($user);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $user->username,
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_SECID,
+        $user,
+    );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['secid']);
+});
+$events->on('user.login.secid-effective', function (GeoKrety\Model\User $user) {
+    audit('user.login.secid-effective', $user);
+    Session::setUserId($user);
+    Metrics::counter('logged_in_users_effective_total', 'Total number of effective connections', ['type'], ['secid']);
+});
+$events->on('user.login.secid-failure', function (array $context) {
+    audit('user.login.secid-failure', $context);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $context['username'],
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_SECID,
+        null,
+        false,
+        $context['error_message'],
+    );
+    Metrics::counter('logged_in_failure_total', 'Total number of connections failures', ['type'], ['secid']);
 });
 $events->on('user.login.api2secid', function (GeoKrety\Model\User $user) {
     audit('user.login.api2secid', $user);
-    Session::setUserId($user);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $user->username,
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID,
+        $user,
+    );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['api2secid']);
+});
+$events->on('user.login.api2secid-effective', function (GeoKrety\Model\User $user) {
+    audit('user.login.api2secid-effective', $user);
+    Session::setUserId($user);
+    Metrics::counter('logged_in_users_effective_total', 'Total number of effective connections', ['type'], ['api2secid']);
+    save_authentication_history($user, \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID);
 });
 $events->on('user.login.api2secid-failure', function (array $context) {
     audit('user.login.api2secid-failure', $context);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $context['username'],
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID,
+        null,
+        false,
+        $context['error_message'],
+    );
     Metrics::counter('logged_in_failure_total', 'Total number of connections failures', ['type'], ['api2secid']);
 });
-$events->on('user.login.oauth', function (GeoKrety\Model\User $user) {
-    audit('user.login.oauth', $user);
+$events->on('user.login.oauth-effective', function (GeoKrety\Model\User $user) {
+    audit('user.login.oauth-effective', $user);
     Session::setUserId($user);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $user->username,
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_OAUTH,
+        $user,
+    );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['oauth']);
+    Metrics::counter('logged_in_users_effective_total', 'Total number of effective connections', ['type'], ['oauth']);
 });
 $events->on('user.login.devel', function (GeoKrety\Model\User $user) {
     audit('user.login.devel', $user);
-    Session::setUserId($user);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+        $user->username,
+        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_DEVEL,
+        $user,
+    );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['devel']);
+});
+$events->on('user.login.devel-effective', function (GeoKrety\Model\User $user) {
+    audit('user.login.devel-effective', $user);
+    Session::setUserId($user);
+    Metrics::counter('logged_in_users_effective_total', 'Total number of effective connections', ['type'], ['devel']);
 });
 $events->on('user.login.registration.oauth', function (GeoKrety\Model\User $user) {
     audit('user.login.registration.oauth', $user);
