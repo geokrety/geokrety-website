@@ -12,4 +12,11 @@ abstract class BaseDatatableMoves extends BaseDatatable {
     protected function getObjectName(): string {
         return 'move';
     }
+
+    /**
+     * @return string[]
+     */
+    protected function getSearchable(): array {
+        return ['gkid', 'name'];
+    }
 }

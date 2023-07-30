@@ -2,21 +2,21 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\Geokret;
+use GeoKrety\Model\UsersAuthenticationHistory;
 
-abstract class BaseDatatableGeokrety extends BaseDatatable {
+abstract class BaseDatatableUserAuthenticationHistory extends BaseDatatable {
     protected function getObject(): \GeoKrety\Model\Base {
-        return new Geokret();
+        return new UsersAuthenticationHistory();
     }
 
     protected function getObjectName(): string {
-        return 'geokrety';
+        return 'authentications';
     }
 
     /**
      * @return string[]
      */
     protected function getSearchable(): array {
-        return ['gkid', 'name'];
+        return [];
     }
 }

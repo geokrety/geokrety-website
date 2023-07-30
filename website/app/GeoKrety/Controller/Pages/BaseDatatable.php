@@ -5,7 +5,17 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 
+/**
+ * Render a database query in datatable compatible JSON format.
+ */
 abstract class BaseDatatable extends Base {
+    /**
+     * Display results as json.
+     *
+     * @return void
+     *
+     * @throws \SmartyException
+     */
     public function asDataTable(\Base $f3) {
         $response = [
             'draw' => (int) $f3->get('GET.draw'),
@@ -28,6 +38,7 @@ abstract class BaseDatatable extends Base {
         try {
             $subset = $object->paginate($start, $f3->get('GET.length'), $filter, $option);
         } catch (\PDOException $e) {
+            \Sentry\captureException($e);
             $response['error'] = _('This query is invalid');
             echo json_encode($response);
             exit();
@@ -77,6 +88,11 @@ abstract class BaseDatatable extends Base {
         return false;
     }
 
+    /**
+     * Build the sql "ORDER BY" query part.
+     *
+     * @return string The sql "ORDER BY" query part
+     */
     protected function datatable_build_order(\Base $f3): string {
         $orders = $f3->get('GET.order');
         $columns = $f3->get('GET.columns');
@@ -88,25 +104,45 @@ abstract class BaseDatatable extends Base {
         return join(', ', $order);
     }
 
+    /**
+     * Build the sql "WHERE" query part.
+     *
+     * @param array $searchable The allowed columns to be searchable
+     * @param array $filter     A custom static filter to also apply
+     *
+     * @return array The sql "WHERE" query part, and an array with the values
+     */
     protected function datatable_build_search(\Base $f3, array $searchable, array $filter = []): array {
         $search = $f3->get('GET.search.value');
         if (empty($search)) {
             return $filter;
         }
         $searches = [];
-        $searches_values = array_fill(0, sizeof($searchable), "%$search%");
+        $searches_values = [];
         // Special case if the first column is "gkid"
         if ($searchable[0] === 'gkid') {
             $s = array_shift($searchable);
             $gkid = Geokret::gkid2id($search);
             if (!is_null($gkid)) {
                 $searches[] = "$s = ?";
-                $searches_values[0] = $gkid;
-            } else {
-                array_shift($searches_values);
+                $searches_values[] = $gkid;
             }
         }
         foreach ($searchable as $s) {
+            if (is_array($s)) {
+                $searches[] = "$s[0] $s[1] ?";
+                $searches_values[] = "$search";
+                continue;
+            } elseif (str_ends_with($s, '_datetime')) {
+                // Not easy to implement properly
+                // so never allow search by datetime
+                continue;
+            } elseif ($s === 'ip') {
+                $searches[] = "TEXT($s) like ?";
+                $searches_values[] = "%$search%";
+                continue;
+            }
+            $searches_values[] = "%$search%";
             $searches[] = "$s like ?";
         }
         $filters = sizeof($filter) ? [array_shift($filter)] : [];
@@ -116,23 +152,50 @@ abstract class BaseDatatable extends Base {
         return [$query, ...(array_merge($filter, $searches_values))];
     }
 
+    /**
+     * An optional static filter to apply.
+     *
+     * @return array The sql "WHERE" query part, and an array with the values
+     */
     protected function getFilter(): array {
         return [];
     }
 
+    /**
+     * An optional static "HAS" filter to apply.
+     *
+     * @return array The sql "WHERE" query part, and an array with the values
+     */
     protected function getHas(\GeoKrety\Model\Base $object): void {
     }
 
     /**
-     * @return string[]
+     * An array of searchable columns.
+     *
+     * @return string[] Searchable columns
      */
     protected function getSearchable(): array {
-        return ['gkid', 'name'];
+        return [];
     }
 
+    /**
+     * Must return a new instance of the Model object to query.
+     *
+     * @return \GeoKrety\Model\Base The model object
+     */
     abstract protected function getObject(): \GeoKrety\Model\Base;
 
+    /**
+     * The name of the variable that will contain the results in Smarty.
+     *
+     * @return string smarty variable name
+     */
     abstract protected function getObjectName(): string;
 
+    /**
+     * The smarty template name to apply on each row result.
+     *
+     * @return string smarty template name
+     */
     abstract protected function getTemplate(): string;
 }

@@ -130,6 +130,18 @@ class UsersAuthenticationHistory extends Base {
         $history->save();
     }
 
+    public static function has_failed_attempts(string $username): int {
+        $sql = <<<'EOT'
+SELECT COUNT(*) as failed_count
+FROM previous_failed_logins(?)
+EOT;
+        $result = \Base::instance()->get('DB')->exec($sql, [
+            $username,
+        ]);
+
+        return $result[0]['failed_count'];
+    }
+
     public function jsonSerialize() {
         return [
             'user' => $this->getRaw('user'),

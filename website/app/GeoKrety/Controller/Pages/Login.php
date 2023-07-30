@@ -7,6 +7,7 @@ use GeoKrety\Auth;
 use GeoKrety\AuthGroup;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
+use GeoKrety\Model\UsersAuthenticationHistory;
 use GeoKrety\Model\UserSocialAuth;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\RateLimit;
@@ -98,6 +99,17 @@ class Login extends Base {
         Session::setGKTCookie();
         LanguageService::changeLanguageTo($user->preferred_language);
         Flash::instance()->addMessage(_('Welcome on board!'), 'success');
+        $failed_count = UsersAuthenticationHistory::has_failed_attempts($user->username);
+        if ($failed_count) {
+            Flash::instance()->addMessage(
+                sprintf(
+                    _('There was %d failed login attempts on your account, please review <a href="%s">login activity</a>'),
+                    $failed_count,
+                    $f3->alias('user_authentication_history'),
+                ),
+                'warning'
+            );
+        }
         if ($redirect) {
             $url = Url::unserializeGoto($user->preferred_language);
             if (is_null($url)) {
