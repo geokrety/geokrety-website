@@ -8,12 +8,15 @@
     ajax: {
         "url": '{$alias|alias}',
         "dataSrc": function(json) {
-            var data = []
-            var i = 0
+            // Convert html table rows to json object array
+            // (loosing td attributes and styles)
+            var data = [];
+            var i = 0;
             $(json.data).find('tr').each(function() {
-                data.push([]);
+                data.push({ "DT_RowClass": $(this).attr('class') });
+                var j = 0;
                 $(this).find('td').each(function() {
-                    data[i].push($(this).html());
+                    data[i][j++] = $(this).html();
                 })
                 i++;
             })
