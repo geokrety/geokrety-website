@@ -1,3 +1,10 @@
+## [2.30.3](https://github.com/geokrety/geokrety-website/compare/v2.30.2...v2.30.3) (2023-07-31)
+
+
+### Translations
+
+* New translations ([cd4bb2e](https://github.com/geokrety/geokrety-website/commit/cd4bb2ef81dd95a094dc2a5cb11a48b115a53f06))
+
 ## [2.30.2](https://github.com/geokrety/geokrety-website/compare/v2.30.1...v2.30.2) (2023-05-09)
 
 
