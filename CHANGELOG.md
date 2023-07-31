@@ -1,3 +1,23 @@
+## [2.31.0](https://github.com/geokrety/geokrety-website/compare/v2.30.3...v2.31.0) (2023-07-31)
+
+
+### Features
+
+* Add a page to view last authentications attempts ([dbf3b43](https://github.com/geokrety/geokrety-website/commit/dbf3b43b572e0ee6aac575d563f4238e42534139))
+* Store valid and failed login attempts ([286d875](https://github.com/geokrety/geokrety-website/commit/286d875c86261b5772531f18cdd8ef73fce41937)), closes [#814](https://github.com/geokrety/geokrety-website/issues/814)
+
+
+### Bug Fixes
+
+* Fix user profile picture caption + alt profile translation ([e41da61](https://github.com/geokrety/geokrety-website/commit/e41da61e7e50f719d6948ec22dc75e588915f320))
+* Move iframe outside p tag ([07a1e39](https://github.com/geokrety/geokrety-website/commit/07a1e39dda997e252e71467e249b799804b30e61))
+* upgrade robot framework libraries and geckodriver ([c5b8b9d](https://github.com/geokrety/geokrety-website/commit/c5b8b9d86f20dbd45b4c5e6e2724f048999db37c))
+
+
+### Translations
+
+* Fix translation issue ([6721c01](https://github.com/geokrety/geokrety-website/commit/6721c01dd48607020095ce0f6fa36f4e0ecd8000))
+
 ## [2.30.3](https://github.com/geokrety/geokrety-website/compare/v2.30.2...v2.30.3) (2023-07-31)
 
 
