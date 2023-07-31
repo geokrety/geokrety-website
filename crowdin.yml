@@ -1,12 +1,12 @@
 project_identifier: geokrety
 api_key_env: CROWDIN_API_KEY
 base_path:
-preserve_hierarchy: true
-pull_request_title: "translation: New Crowdin updates"
+preserve_hierarchy: 1
+pull_request_title: 'translation: New Crowdin updates'
 pull_request_labels:
   - Translation
-commit_message: "translation: New translations %original_file_name% (%language%) [skip translate]"
-append_commit_message: false
+commit_message: 'translation: New translations %original_file_name% (%language%) [skip translate]'
+append_commit_message:
 files:
   - source: /website/app/languages/messages.po.txt
     translation: /website/app/languages/%locale_with_underscore%.UTF-8/LC_MESSAGES/messages.po
