@@ -74,7 +74,7 @@
                     {if $geokret->avatar}
                         {$geokret->avatar|picture:true:false:false nofilter}
                     {/if}
-                    {null|url_picture:null:'chart':null:'alt-profile' nofilter}
+                    {null|url_picture:null:'chart':_('Altitude profile'):'alt-profile' nofilter}
                 </div>
             </div>
         </div>

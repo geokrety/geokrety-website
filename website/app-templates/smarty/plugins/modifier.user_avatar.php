@@ -21,7 +21,7 @@ function smarty_modifier_user_avatar(User $user): string {
     if (!$user->avatar) {
         $url = \Base::instance()->alias('user_avatar');
 
-        return smarty_modifier_url_picture($url);
+        return smarty_modifier_url_picture($url, null, null, _('Profile avatar'));
     }
 
     return smarty_modifier_picture($user->avatar, true);

@@ -41,7 +41,7 @@ EOT;
     $smarty->assign('pictureUrl', $pictureUrl);
     $smarty->assign('thumbnailUrl', $thumbnailUrl);
     $smarty->assign('canvasDivId', $canvasDivId);
-    $smarty->assign('caption', $caption ?? _('Altitude profile'));
+    $smarty->assign('caption', $caption);
     $smarty->assign('class', $class);
     $html = $smarty->fetch('string:'.$template_string);
     $smarty->clearAssign(['pictureUrl', 'thumbnailUrl', 'canvasDivId', 'caption', 'class']);
