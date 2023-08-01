@@ -8,13 +8,13 @@
         {$authentication->method}
     </td>
     <td>
-        {$authentication->created_on_datetime|print_date_iso_format nofilter}
-    </td>
-    <td>
         {$authentication->ip}
     </td>
     <td>
         {$authentication->user_agent}
+    </td>
+    <td>
+        {$authentication->created_on_datetime|print_date nofilter}
     </td>
 </tr>
 {/foreach}

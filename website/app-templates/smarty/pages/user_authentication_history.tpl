@@ -20,9 +20,9 @@
                     <tr>
                         <th>{t}Status{/t}</th>
                         <th>{t}Method{/t}</th>
-                        <th>{t}Date{/t}</th>
                         <th>{t}IP Address{/t}</th>
                         <th>{t}User-Agent{/t}</th>
+                        <th>{t}Date{/t}</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
