@@ -59,6 +59,7 @@ ${PAGE_USER_REFRESH_SECID_URL}          ${GK_URL}/en/user/refresh-secid
 ${PAGE_USER_CHANGE_EMAIL_URL}           ${GK_URL}/en/user/email/update
 ${PAGE_USER_CHANGE_USERNAME_URL}        ${GK_URL}/en/user/username/update
 ${PAGE_USER_DELETE_ACCOUNT_URL}         ${GK_URL}/en/user/delete
+${PAGE_USER_AUTHENTICATION_HISTORY_URL}     ${GK_URL}/en/user/authentication-history
 
 ${PAGE_USER_EMAIL_CHANGE_VALIDATE_URL}  ${GK_URL}/en/user/email/change/validate
 

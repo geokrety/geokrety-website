@@ -363,6 +363,12 @@ ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}       //*[@id="userOwnedGeoKretyRecent
 
 
 ################
+# USER AUTHENTICATION HISTORY PAGE
+################
+
+${USER_AUTHENTICATION_HISTORY_TABLE}            //*[@id="userAuthenticationHistory"]
+
+################
 # USER CONTACT
 ################
 
