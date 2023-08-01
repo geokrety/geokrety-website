@@ -8,7 +8,7 @@ use DB\SQL\Schema;
 /**
  * @property int|null id
  * @property int|User user Authentication attempt for user
- * @property string username Entered username
+ * @property string|null username Entered username
  * @property string|null user_agent
  * @property string ip
  * @property string method
@@ -117,7 +117,7 @@ class UsersAuthenticationHistory extends Base {
     /**
      * @throws \Exception
      */
-    public static function save_authentication_history(string $username, $method, ?User $user = null, bool $succeed = true, string $comment = null) {
+    public static function save_authentication_history(?string $username, $method, ?User $user = null, bool $succeed = true, string $comment = null) {
         if (!self::is_valid_method($method)) {
             throw new Exception('Invalid Authentication Method');
         }
