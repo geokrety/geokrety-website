@@ -224,6 +224,8 @@ ${USER_PROFILE_SECOND_IMAGE}                    //*[@id="userPicturesList"]//div
 
 ${USER_PROFILE_CREATE_GEOKRET_BUTTON}           //*[@id="userProfileCreateGeokretButton"]
 
+${USER_PROFILE_USERNAME_HEADER_BUTTONS}         ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-heading"]//div[@class="btn-group]/div[@class="btn-group]/*[@id="btn"]
+
 ${USER_PROFILE_ICON_IMAGE}                      ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-heading"]/img[@data-gk-type]
 
 ${USER_PROFILE_USERNAME}                        ${USER_PROFILE_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="user"]
@@ -250,16 +252,17 @@ ${USER_PROFILE_DELETE_ACCOUNT_BUTTON}                      ${USER_PROFILE_DANGER
 ${USER_PROFILE_DELETE_ACCOUNT_OPERATION_RESULT_INPUT}      //*[@id="operationInputResult"]
 ${USER_PROFILE_DELETE_ACCOUNT_REMOVE_CONTENT_CHECKBOX}     //*[@id="removeCommentContentCheckbox"]
 
-${USER_PROFILE_LANGUAGE_EDIT_BUTTON}            //*[@id="userLanguageUpdateButton"]
-${USER_PROFILE_EMAIL_EDIT_BUTTON}               //*[@id="userEmailUpdateButton"]
-${USER_PROFILE_SECID_REFRESH_BUTTON}            //*[@id="userSecidUpdateButton"]
-${USER_PROFILE_RSS_FEED_BUTTON}                 //*[@id="userRssFeedButton"]
-${USER_PROFILE_CONTACT_BUTTON}                  //*[@id="userContactButton"]
-${USER_PROFILE_PASSWORD_EDIT_BUTTON}            //*[@id="userPasswordChangeButton"]
-${USER_PROFILE_PICTURE_UPLOAD_BUTTON}           //*[@id="userAvatarUploadButton"]
-${USER_PROFILE_BANNER_EDIT_BUTTON}              //*[@id="userBannerChangeButton"]
-${USER_PROFILE_HOME_POSITION_EDIT_BUTTON}       //*[@id="userHomePositionEditButton"]
-${USER_PROFILE_HOME_POSITION_EDIT_BUTTON_MINIMAP}    //*[@id="userHomePositionEditButtonMinimap"]
+${USER_PROFILE_LANGUAGE_EDIT_BUTTON}                    //*[@id="userLanguageUpdateButton"]
+${USER_PROFILE_EMAIL_EDIT_BUTTON}                       //*[@id="userEmailUpdateButton"]
+${USER_PROFILE_SECID_REFRESH_BUTTON}                    //*[@id="userSecidUpdateButton"]
+${USER_PROFILE_RSS_FEED_BUTTON}                         //*[@id="userRssFeedButton"]
+${USER_PROFILE_AUTHENTICATION_HISTORY_BUTTON}           //*[@id="userAuthenticationHistoryButton"]
+${USER_PROFILE_CONTACT_BUTTON}                          //*[@id="userContactButton"]
+${USER_PROFILE_PASSWORD_EDIT_BUTTON}                    //*[@id="userPasswordChangeButton"]
+${USER_PROFILE_PICTURE_UPLOAD_BUTTON}                   //*[@id="userAvatarUploadButton"]
+${USER_PROFILE_BANNER_EDIT_BUTTON}                      //*[@id="userBannerChangeButton"]
+${USER_PROFILE_HOME_POSITION_EDIT_BUTTON}               //*[@id="userHomePositionEditButton"]
+${USER_PROFILE_HOME_POSITION_EDIT_BUTTON_MINIMAP}       //*[@id="userHomePositionEditButtonMinimap"]
 
 ${USER_PROFILE_AVATAR_CAPTION_INPUT}            //*[@id="caption"]
 

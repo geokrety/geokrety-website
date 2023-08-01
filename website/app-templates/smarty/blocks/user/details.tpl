@@ -12,6 +12,9 @@
 {*                {fa icon="rss"}*}
 {*            </a>*}
             {if $user->isCurrentUser()}
+            <a id="userAuthenticationHistoryButton" class="btn btn-info btn-xs" href="{'user_authentication_history'|alias}" title="{t}View authentication history{/t}">
+                {fa icon="history"}
+            </a>
             <a id="usernameChangeButton" class="btn btn-info btn-xs" href="{'user_update_username'|alias}" title="{t}Username change{/t}">
                 {fa icon="address-card"}
             </a>
