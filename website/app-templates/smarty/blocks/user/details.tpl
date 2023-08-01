@@ -8,9 +8,9 @@
                 {fa icon="envelope"}
             </button>
             {/if}
-            <a id="userRssFeedButton" class="btn btn-warning btn-xs" href="{'user_georss'|alias}" title="{t}Subscribe to RSS channel{/t}">
-                {fa icon="rss"}
-            </a>
+{*            <a id="userRssFeedButton" class="btn btn-warning btn-xs" href="{'user_georss'|alias}" title="{t}Subscribe to RSS channel{/t}">*}
+{*                {fa icon="rss"}*}
+{*            </a>*}
             {if $user->isCurrentUser()}
             <a id="usernameChangeButton" class="btn btn-info btn-xs" href="{'user_update_username'|alias}" title="{t}Username change{/t}">
                 {fa icon="address-card"}
