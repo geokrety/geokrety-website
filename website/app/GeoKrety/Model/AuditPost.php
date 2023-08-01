@@ -13,6 +13,7 @@ use DB\SQL\Schema;
  * @property string ip
  * @property string session
  * @property int|null author
+ * @property string|null user_agent
  */
 class AuditPost extends Base {
     use \Validation\Traits\CortexTrait;
@@ -48,6 +49,10 @@ class AuditPost extends Base {
             'type' => Schema::DT_VARCHAR256,
             'nullable' => false,
         ],
+        'user_agent' => [
+            'type' => Schema::DT_TEXT,
+            'nullable' => true,
+        ],
         // "error" column?
     ];
 
@@ -61,6 +66,7 @@ class AuditPost extends Base {
             $self->session = session_id();
             $self->author = \Base::instance()->get('SESSION.CURRENT_USER');
             $self->ip = \Base::instance()->get('IP') ?: null;
+            $self->user_agent = \Base::instance()->get('AGENT') ?: null;
         });
     }
 
