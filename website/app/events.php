@@ -104,7 +104,7 @@ $events->on('user.login.secid-effective', function (GeoKrety\Model\User $user) {
 $events->on('user.login.secid-failure', function (array $context) {
     audit('user.login.secid-failure', $context);
     \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
-        $context['username'],
+        $context['secid'],
         \GeoKrety\Model\UsersAuthenticationHistory::METHOD_SECID,
         null,
         false,
