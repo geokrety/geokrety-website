@@ -278,6 +278,7 @@ class Config extends \Prefab {
         ]);
         define('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS') ?: 90);
         define('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS') ?: 90);
+        define('GK_USER_AUTHENTICATION_HISTORY_RETENTION_DAYS', getenv('GK_USER_AUTHENTICATION_HISTORY_RETENTION_DAYS') ?: 120);
 
         // User
         define('GK_USER_DELETED_USERNAME', getenv('GK_USER_DELETED_USERNAME') ?: 'Deleted user');

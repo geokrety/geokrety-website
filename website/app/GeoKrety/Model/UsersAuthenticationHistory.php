@@ -142,6 +142,11 @@ EOT;
         return $result[0]['failed_count'];
     }
 
+    public function expungeOld() {
+        $sql = sprintf('DELETE FROM %s where created_on_datetime < NOW() - cast(? as interval)', $this->table);
+        \Base::instance()->get('DB')->exec($sql, [GK_USER_AUTHENTICATION_HISTORY_RETENTION_DAYS.' DAY']);
+    }
+
     public function jsonSerialize() {
         return [
             'user' => $this->getRaw('user'),

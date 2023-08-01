@@ -9,6 +9,7 @@ use GeoKrety\Model\AuditLog;
 use GeoKrety\Model\AuditPost;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Model\User;
+use GeoKrety\Model\UsersAuthenticationHistory;
 
 class Cron {
     use Script;
@@ -63,6 +64,13 @@ SQL;
     public function expungeAuditPosts() {
         $this->script_start(__METHOD__);
         $audit = new AuditPost();
+        $audit->expungeOld();
+        $this->script_end();
+    }
+
+    public function expungeUserAuthenticationHistory() {
+        $this->script_start(__METHOD__);
+        $audit = new UsersAuthenticationHistory();
         $audit->expungeOld();
         $this->script_end();
     }
