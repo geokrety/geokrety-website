@@ -11,7 +11,7 @@
 
 <h2>🙋 {t}Authentication history{/t}</h2>
 <div class="row">
-    <div class="col-xs-12 col-md-9">
+    <div class="col-xs-12">
 
         {if $authentications_count}
         <div class="table-responsive">
@@ -34,9 +34,6 @@
 
         {/if}
 
-    </div>
-    <div class="col-xs-12 col-md-3">
-{*        {include file='blocks/user/actions.tpl'}*}
     </div>
 </div>
 
