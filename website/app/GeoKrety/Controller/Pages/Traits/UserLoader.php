@@ -4,6 +4,9 @@ use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
+/**
+ * Load the currently displayed user into `user` variable in php and smarty.
+ */
 trait UserLoader {
     protected User $user;
 

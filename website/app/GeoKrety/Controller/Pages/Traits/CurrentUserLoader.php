@@ -3,6 +3,9 @@
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
+/**
+ * Load the currently connected user into `currentUser` variable in php and smarty.
+ */
 trait CurrentUserLoader {
     protected User $currentUser;
 
