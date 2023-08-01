@@ -114,18 +114,13 @@ $events->on('user.login.secid-failure', function (array $context) {
 });
 $events->on('user.login.api2secid', function (GeoKrety\Model\User $user) {
     audit('user.login.api2secid', $user);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
-        $user->username,
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID,
-        $user,
-    );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['api2secid']);
 });
 $events->on('user.login.api2secid-effective', function (GeoKrety\Model\User $user) {
     audit('user.login.api2secid-effective', $user);
     Session::setUserId($user);
     Metrics::counter('logged_in_users_effective_total', 'Total number of effective connections', ['type'], ['api2secid']);
-    save_authentication_history($user, \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID);
+    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history($user->username, \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID, $user);
 });
 $events->on('user.login.api2secid-failure', function (array $context) {
     audit('user.login.api2secid-failure', $context);

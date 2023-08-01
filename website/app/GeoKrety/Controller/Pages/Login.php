@@ -202,7 +202,7 @@ class Login extends Base {
                 exit();
             }
             echo $user->secid;
-            Event::instance()->emit('user.login.api2secid.effective', $user);
+            Event::instance()->emit('user.login.api2secid-effective', $user);
             Login::disconnectUser($f3);
             exit();
         }
