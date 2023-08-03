@@ -1,3 +1,26 @@
+## [2.32.0](https://github.com/geokrety/geokrety-website/compare/v2.31.1...v2.32.0) (2023-08-03)
+
+
+### Features
+
+* Automatic User Authentication History expunge ([53a2218](https://github.com/geokrety/geokrety-website/commit/53a22188708c0da2a8238676695bd2aa5347d301))
+
+
+### Bug Fixes
+
+* Add a button to access the authentication history page ([374c606](https://github.com/geokrety/geokrety-website/commit/374c606afd3aab9651c67499db4d4995c6ef0664))
+* Add UserAgent column to audit posts ([0004fba](https://github.com/geokrety/geokrety-website/commit/0004fba7310adcbcd26a922212bafb930f5d2103))
+* Allow the user to be empty in authentication history ([c53478d](https://github.com/geokrety/geokrety-website/commit/c53478db3e95b3a5ee6e5927949047b31c832dcd))
+* Fix save_authentication_history() for secid auth ([e04652f](https://github.com/geokrety/geokrety-website/commit/e04652fd3ffc8b205e3d9a1d556dd2737a5247bd))
+* Fix save_authentication_history() for secid login ([1299e2f](https://github.com/geokrety/geokrety-website/commit/1299e2f4d53435a73a594154ce840199a8ea48ee))
+
+
+### Chores
+
+* Disable not implemented georss button ([08cf0e6](https://github.com/geokrety/geokrety-website/commit/08cf0e6d634e190517a97a21c87a69556645538d))
+* Make the table full width in authentication history ([f33d2fb](https://github.com/geokrety/geokrety-website/commit/f33d2fb7908e2c760eca04111d97e14a859cf785))
+* Move date column in authentication history ([173eac2](https://github.com/geokrety/geokrety-website/commit/173eac26d051610c4dee474e05244d519555d99f))
+
 ## [2.31.1](https://github.com/geokrety/geokrety-website/compare/v2.31.0...v2.31.1) (2023-08-01)
 
 
