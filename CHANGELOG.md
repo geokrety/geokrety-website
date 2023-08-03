@@ -1,3 +1,10 @@
+## [2.33.0](https://github.com/geokrety/geokrety-website/compare/v2.32.0...v2.33.0) (2023-08-03)
+
+
+### Features
+
+* Create initial privacy Statement page ([1fe38c8](https://github.com/geokrety/geokrety-website/commit/1fe38c83711a0f56c4f87a8842fa894a4ca01585)), closes [#84](https://github.com/geokrety/geokrety-website/issues/84)
+
 ## [2.32.0](https://github.com/geokrety/geokrety-website/compare/v2.31.1...v2.32.0) (2023-08-03)
 
 
