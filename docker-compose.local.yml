@@ -8,6 +8,9 @@ x-variables: &variables
     GK_SITE_BASE_SERVER_URL: "http://localhost:3001"
     GK_CDN_SERVER_URL: "http://localhost:3002"
 
+    GK_SENTRY_DSN: "${SENTRY_DSN}"
+    GK_SENTRY_ENV: "${SENTRY_ENV}"
+
     GK_MINIO_SERVER_URL_EXTERNAL: "http://localhost:3003"
     MINIO_ACCESS_KEY: "access_key"
     MINIO_SECRET_KEY: "secret_key"
@@ -53,15 +56,6 @@ services:
     environment:
       ADMINER_DEFAULT_SERVER: postgres
 
-  # used to build image only
-  website-base:
-    image: geokrety/website-legacy-base:php74
-    build:
-      context: https://github.com/geokrety/geokrety-website-docker-base.git#php74
-      dockerfile: Dockerfile
-    command:
-      - "/bin/true"
-
   nginx:
     image: nginx
     <<: *variables
@@ -81,11 +75,12 @@ services:
       disable: true
 
   website:
-    image: geokrety/website-legacy:new-theme
+    image: geokrety/website:devel
     build:
       context: ./
       args:
-        BASE_TAG: php74
+        BASE_IMAGE: geokrety/website-base
+        BASE_TAG: main
     <<: *variables
     volumes:
 #    ## You may wish to enable local mount on your local machine
@@ -105,13 +100,13 @@ services:
       disable: true
 
   cdn:
-    image: geokrety/cdn:new-theme
-    build: https://github.com/geokrety/GeoKrety-Static.git#feature/new-theme
+    image: geokrety/cdn:main
+    build: https://github.com/geokrety/GeoKrety-Static.git#main
     ports:
       - "3002:80"
 
   postgres:
-    image: geokrety/postgres:new-theme
+    image: geokrety/postgres:main
     build: https://github.com/geokrety/geokrety-postgres.git
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -154,7 +149,7 @@ services:
 
   # used to build image only
   pictures-processor:
-    image: geokrety/pictures-processor-base:latest
+    image: geokrety/pictures-processor-base:main
     build:
       context: https://github.com/geokrety/geokrety-pictures-processor.git
       dockerfile: Dockerfile.base
@@ -162,28 +157,36 @@ services:
       - "/bin/true"
 
   pictures-downloader:
-    image: geokrety/pictures-processor-downloader:new-theme
+    image: geokrety/pictures-processor-downloader:main
     build:
       context: https://github.com/geokrety/geokrety-pictures-processor.git
       dockerfile: Dockerfile.downloader
+      args:
+        BASE_TAG: main
     environment:
       GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY: pp_access_key
       GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY: pp_secret_key
       GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_DOWNLOADER: "token2"
       GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST: "token4"
+      SENTRY_DSN: "${SENTRY_DSN}"
+      SENTRY_ENV: "${SENTRY_ENV}"
 
   pictures-uploader:
-    image: geokrety/pictures-processor-uploader:new-theme
+    image: geokrety/pictures-processor-uploader:main
     build:
       context: https://github.com/geokrety/geokrety-pictures-processor.git
       dockerfile: Dockerfile.uploader
+      args:
+        BASE_TAG: main
     environment:
       MINIO_ACCESS_KEY: access_key
       MINIO_SECRET_KEY: secret_key
       GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_UPLOADER: token3
+      SENTRY_DSN: "${SENTRY_DSN}"
+      SENTRY_ENV: "${SENTRY_ENV}"
 
   svg-to-png:
-    image: geokrety/svg-to-png:new-theme
+    image: geokrety/svg-to-png:main
     build: https://github.com/geokrety/geokrety-svg-to-png.git
 
 volumes:

@@ -1,0 +1,130 @@
+{
+  "branches": [
+    "main"
+  ],
+  "debug": "true",
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "parserOpts": {
+          "noteKeywords": [
+            "BREAKING CHANGE",
+            "BREAKING CHANGES"
+          ]
+        },
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "breaking": true,
+            "release": "major"
+          },
+          {
+            "release": "minor",
+            "type": "feat"
+          },
+          {
+            "release": "patch",
+            "type": "fix"
+          },
+          {
+            "release": false,
+            "type": "docs"
+          },
+          {
+            "release": "patch",
+            "type": "style"
+          },
+          {
+            "release": "patch",
+            "type": "refactor"
+          },
+          {
+            "release": "patch",
+            "type": "perf"
+          },
+          {
+            "release": false,
+            "type": "test"
+          },
+          {
+            "release": "patch",
+            "type": "chore"
+          },
+          {
+            "release": "patch",
+            "type": "dependencies"
+          },
+          {
+            "release": "patch",
+            "type": "revert"
+          },
+          {
+            "release": "patch",
+            "type": "translation"
+          },
+          {
+            "release": "patch",
+            "type": "ci"
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "parserOpts": {
+          "noteKeywords": [
+            "BREAKING CHANGE",
+            "BREAKING CHANGES"
+          ]
+        },
+        "preset": "conventionalCommits",
+        "presetConfig": {
+          "types": [
+            {
+              "section": "Features",
+              "type": "feat"
+            },
+            {
+              "section": "Bug Fixes",
+              "type": "fix"
+            },
+            {
+              "section": "Performance Improvements",
+              "type": "perf"
+            },
+            {
+              "section": "Reverts",
+              "type": "revert"
+            },
+            {
+              "section": "Translations",
+              "type": "translation"
+            },
+            {
+              "section": "Code Refactoring",
+              "type": "refactor"
+            },
+            {
+              "section": "Style",
+              "type": "style"
+            },
+            {
+              "hidden": false,
+              "section": "Dependencies",
+              "type": "dependencies"
+            },
+            {
+              "hidden": false,
+              "section": "Chores",
+              "type": "chore"
+            }
+          ]
+        }
+      }
+    ],
+    "@semantic-release/changelog",
+    "@semantic-release/github"
+  ]
+}

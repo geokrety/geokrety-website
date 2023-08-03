@@ -19,15 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set output
         id: vars
         run: |
           major_version=$(cut -d '.' -f 1 <<< ${{ github.ref_name }})
-          echo "::set-output name=major_version::${major_version}"
+          echo "major_version=${major_version}" >> $GITHUB_OUTPUT
+
           TMP=$(mktemp -d)
-          echo ::set-output name=tmp_dir::${TMP}
+          echo "tmp_dir=${TMP}" >> $GITHUB_OUTPUT
 
       - name: Setup PHP with composer v2
         uses: shivammathur/setup-php@v2
@@ -35,35 +36,30 @@ jobs:
           php-version: '7.4'
           tools: composer:v2
 
-      # Installing package dependencies
       - name: Installing package dependencies
         run: |
           composer install --ignore-platform-reqs --no-interaction
           sudo apt-get install -y gettext moreutils
 
-      # Build file list to proceed
       - name: Build file list to proceed
         run: |
           find ./website/ -type f -name '*.php' -not -path './website/old/*' -not -path './website/vendor/*' -not -path './website/templates/*' | sort > ${{ steps.vars.outputs.tmp_dir }}/input-files-for-xgettext
           cat ${{ steps.vars.outputs.tmp_dir }}/input-files-for-xgettext
 
-      # Generate po file
       - name: Generate po file
         run: |
           xgettext --from-code=UTF-8 -o ${{ steps.vars.outputs.tmp_dir }}/messages.pot --language=PHP -f ${{ steps.vars.outputs.tmp_dir }}/input-files-for-xgettext
 
-      # Extract strings from smarty templates
       - name: Extract strings from smarty templates
         run: |
           ./vendor/bin/tsmarty2c.php -o ${{ steps.vars.outputs.tmp_dir }}/smarty.pot ./website/app-templates ./website/app-templates/smarty/js/*.js
 
-      # Concatenate po files
       - name: Concatenate po files
         run: |
           msgcat -o website/app/languages/messages.po.txt ${{ steps.vars.outputs.tmp_dir }}/messages.pot ${{ steps.vars.outputs.tmp_dir }}/smarty.pot
 
       - name: crowdin action
-        uses: crowdin/github-action@1.5.1
+        uses: crowdin/github-action@v1
         with:
           config: crowdin.yml
           project_id: 260106

@@ -4,6 +4,7 @@ on:
   pull_request:
     branches-ignore:
       - master
+      - l10n_main
       - l10n_master
       - l10n_new-theme
   push:
@@ -11,6 +12,7 @@ on:
       - 'v2.*'
     branches-ignore:
       - main
+      - l10n_main
       - l10n_master
       - l10n_new-theme
 
@@ -20,7 +22,7 @@ env:
   PGDATABASE: geokrety
   PGHOST: localhost
   PGPORT: 5433
-  DOCKER_COMPOSE: ./docker-compose -p gk -f docker-compose.local.yml
+  DOCKER_COMPOSE: docker compose -p gk -f docker-compose.local.yml --progress quiet
 
 jobs:
   robot-framework:
@@ -28,26 +30,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set output
         id: vars
         run: |
-          echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-          ls -l
-          pwd
-          ls -l ./website/db/dumps/
+          echo "short_ref=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
 
-
-        # Use 1.27.4 as later versions have bug cloning git repo over TLS `version `OPENSSL_1_1_1' not found`
-        # https://stackoverflow.com/questions/66579446/error-executing-docker-compose-building-webserver-unable-to-prepare-context-un/67357899#67357899
-      - name: Workaround docker-compose bug
+      - name: Configure Sentry
         run: |
-          curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64 -o docker-compose
-          chmod a+x docker-compose
+          echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
+          echo "SENTRY_ENV=dev.githubaction" >> .env
 
       - name: Install tools
         run: |
+          sudo apt-get update
           sudo apt-get install -y git httping postgresql-client postgis libtap-parser-sourcehandler-pgtap-perl
 
       - name: Pull/Start postgres
@@ -69,32 +66,14 @@ jobs:
           psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
           psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
 
-      - name: Pull images
-        run: |
-          ${DOCKER_COMPOSE} pull -q website-base cdn redis minio svg-to-png \
-                            pictures-processor
-
-      - name: Build images website-base
-        run: |
-          docker build -t geokrety/website-legacy-base:php74 \
-            --cache-from geokrety/website-legacy-base:php74 \
-            https://github.com/geokrety/geokrety-website-docker-base.git#php74
-
       - name: Build images website
         run: |
-          ${DOCKER_COMPOSE} build website
-
-      - name: Build images picture-processor
-        run: |
-          docker build -t geokrety/pictures-processor-base:latest \
-            -f Dockerfile.base \
-            --cache-from geokrety/pictures-processor-base:latest \
-            https://github.com/geokrety/geokrety-pictures-processor.git
-          ${DOCKER_COMPOSE} build pictures-downloader pictures-uploader
+          ${DOCKER_COMPOSE} build website --build-arg GIT_COMMIT=${{ steps.vars.outputs.short_ref }}
 
       - name: Start the whole stack
         run: |
-          ${DOCKER_COMPOSE} up -d --no-build
+          cat .env
+          ${DOCKER_COMPOSE} --env-file .env up -d --no-build
 
       - name: Check the stack has started
         run: |
@@ -111,7 +90,7 @@ jobs:
 
       - name: Ensure available fonts on system for Robot Framework/Firefox
         run: |
-          sudo apt-get install -y firefox ttf-bitstream-vera fonts-urw-base35
+          sudo apt-get install -y ttf-bitstream-vera fonts-urw-base35
 
       - name: Install Robot Framework
         run: |
@@ -126,31 +105,36 @@ jobs:
           make test-qa-headless
 
       - name: Get nginx logs
-        if: ${{ failure() }}
+        if: failure()
         run: ${DOCKER_COMPOSE} logs nginx
 
       - name: Get php logs
-        if: ${{ failure() }}
+        if: failure()
         run: ${DOCKER_COMPOSE} logs website
 
       - name: Get postgres logs
-        if: ${{ failure() }}
+        if: failure()
         run: ${DOCKER_COMPOSE} logs postgres
 
       - name: Get pictures-downloader logs
-        if: ${{ failure() }}
-        run: ${DOCKER_COMPOSE} logs pictures-downloader
+        if: failure()
+        run: |
+          ${DOCKER_COMPOSE} logs pictures-downloader
+          echo "---------- /tmp/headers ------------"
+          cat /tmp/headers || true
+          echo "---------- /tmp/body ------------"
+          cat /tmp/body || true
 
       - name: Get pictures-uploader logs
-        if: ${{ failure() }}
+        if: failure()
         run: ${DOCKER_COMPOSE} logs pictures-uploader
 
       - name: Get svg-to-png logs
-        if: ${{ failure() }}
+        if: failure()
         run: ${DOCKER_COMPOSE} logs svg-to-png
 
       - name: Get minio logs
-        if: ${{ failure() }}
+        if: failure()
         run: ${DOCKER_COMPOSE} logs minio
 
       - name: Deploy

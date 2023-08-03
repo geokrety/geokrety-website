@@ -35,12 +35,8 @@ jobs:
           curl -L "https://github.com/hadolint/hadolint/releases/download/v1.17.6/hadolint-$(uname -s)-$(uname -m)" -o hadolint
           sudo chmod a+x hadolint && ls -la $HOME
           sudo mv hadolint /usr/local/bin/
+      - uses: actions/checkout@v3
 
-      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
 
-      - uses: actions/setup-python@v2
-
-      - name: Check utf8
-        run: scripts/check-utf8.sh .
-
-      - uses: pre-commit/action@v2.0.3
+      - uses: pre-commit/action@v3.0.0
