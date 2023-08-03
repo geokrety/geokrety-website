@@ -113,9 +113,8 @@ class RateLimit extends Prefab {
             $redis->set($rate_key, 1);
             $redis->expire($rate_key, GK_RATE_LIMITS[$name][1]);
         } else {
-            $redis->incr($rate_key);
             $total_user_calls = $redis->get($rate_key);
-            if ($total_user_calls > GK_RATE_LIMITS[$name][0]) {
+            if ($total_user_calls >= GK_RATE_LIMITS[$name][0]) {
                 Event::instance()->emit('rate-limit.exceeded', [
                     'name' => $name,
                     'total_user_calls' => $total_user_calls,
@@ -124,6 +123,7 @@ class RateLimit extends Prefab {
                     ]);
                 throw new RateLimitExceeded();
             }
+            $redis->incr($rate_key);
         }
         Event::instance()->emit('rate-limit.success', [
             'name' => $name,
