@@ -31,9 +31,9 @@ class GKTInventory extends BaseGKT {
     }
 
     public function get(\Base $f3) {
-        RateLimit::check_rate_limit_raw('API_GKT_V3_INVENTORY');
-
         if ($this->isLoggedIn()) {
+            RateLimit::check_rate_limit_raw('API_GKT_V3_INVENTORY', $this->current_user_id);
+
             $this->setFilter(
                 'holder = ?',
                 $this->current_user_id,
