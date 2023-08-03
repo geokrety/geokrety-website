@@ -137,6 +137,22 @@ jobs:
         if: ${{ failure() }}
         run: ${DOCKER_COMPOSE} logs postgres
 
+      - name: Get pictures-downloader logs
+        if: ${{ failure() }}
+        run: ${DOCKER_COMPOSE} logs pictures-downloader
+
+      - name: Get pictures-uploader logs
+        if: ${{ failure() }}
+        run: ${DOCKER_COMPOSE} logs pictures-uploader
+
+      - name: Get svg-to-png logs
+        if: ${{ failure() }}
+        run: ${DOCKER_COMPOSE} logs svg-to-png
+
+      - name: Get minio logs
+        if: ${{ failure() }}
+        run: ${DOCKER_COMPOSE} logs minio
+
       - name: Deploy
         if: always()
         uses: peaceiris/actions-gh-pages@v3
