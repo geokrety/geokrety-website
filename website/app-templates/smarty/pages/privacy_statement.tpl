@@ -91,7 +91,7 @@
             </li>
             <li>
                 <p>
-                    {t escape=no 1={GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS} 2={GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS} 3={', '|implode:GK_AUDIT_LOGS_EXCLUDE_PATH}}
+                    {t escape=no 1={GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS} 2={GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS} 3={', '|array_string:GK_AUDIT_LOGS_EXCLUDE_PATH}}
                         Audit logs (for %1 days) and audit posts (for
                         %2 days) are kept to monitor data send to our servers in order
                         to detect Platform attacks or help dignose issues. This excludes posts for pages requiring user's
