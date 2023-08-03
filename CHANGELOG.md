@@ -1,3 +1,10 @@
+## [2.33.1](https://github.com/geokrety/geokrety-website/compare/v2.33.0...v2.33.1) (2023-08-03)
+
+
+### Bug Fixes
+
+* Use a smarty plugin instead of direct php method ([b8bbcd0](https://github.com/geokrety/geokrety-website/commit/b8bbcd0c618981491b3a5c70f1cb2dfba80f42be))
+
 ## [2.33.0](https://github.com/geokrety/geokrety-website/compare/v2.32.0...v2.33.0) (2023-08-03)
 
 
