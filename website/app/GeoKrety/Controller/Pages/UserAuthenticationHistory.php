@@ -16,7 +16,7 @@ class UserAuthenticationHistory extends BaseDatatableUserAuthenticationHistory {
     }
 
     protected function getFilter(): array {
-        return ['username = ?', $this->currentUser->username];
+        return ['username = ? OR user = ?', $this->currentUser->username, $this->currentUser->id];
     }
 
     protected function getTemplate(): string {

@@ -20,6 +20,7 @@
                     <tr>
                         <th>{t}Status{/t}</th>
                         <th>{t}Method{/t}</th>
+                        <th>{t}Username{/t}</th>
                         <th>{t}IP Address{/t}</th>
                         <th>{t}User-Agent{/t}</th>
                         <th>{t}Date{/t}</th>
@@ -44,10 +45,11 @@
 $('#userAuthenticationHistory').dataTable({
     {call common alias='user_authentication_history'}
     "searching": false,
-    "order": [[ 2, 'desc' ]],
+    "order": [[ 3, 'desc' ]],
     "columns": [
         { "name": "succeed" },
         { "name": "method" },
+        { "name": "username" },
         { "name": "created_on_datetime" },
         { "name": "ip" },
         { "name": "user_agent" }

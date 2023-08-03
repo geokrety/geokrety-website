@@ -8,6 +8,9 @@
         {$authentication->method}
     </td>
     <td>
+        {$authentication->username}
+    </td>
+    <td>
         {$authentication->ip}
     </td>
     <td>
