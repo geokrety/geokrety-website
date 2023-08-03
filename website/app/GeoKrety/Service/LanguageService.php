@@ -129,11 +129,13 @@ class LanguageService extends \Prefab {
 
         \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[$langAlpha2]);
         \Carbon\Carbon::setLocale($langAlpha2);
+        \Carbon\CarbonInterval::setLocale($langAlpha2);
     }
 
     public static function restoreLanguageToCurrentChosen() {
         \Base::instance()->set('LANGUAGE', \Multilang::instance()->locales()[\Multilang::instance()->current]);
         \Carbon\Carbon::setLocale(\Multilang::instance()->current);
+        \Carbon\CarbonInterval::setLocale(\Multilang::instance()->current);
     }
 
     public static function getDatatableCurrentLanguage(): string {

@@ -71,6 +71,7 @@ if (GK_F3_DEBUG) {
 // Language
 $ml = \Multilang::instance();
 \Carbon\Carbon::setLocale($ml->current);
+\Carbon\CarbonInterval::setLocale($ml->current);
 setlocale(LC_NUMERIC, 'en_US.UTF-8');
 bindtextdomain('messages', GK_GETTEXT_BINDTEXTDOMAIN_PATH);
 bind_textdomain_codeset('messages', 'UTF-8');

@@ -24,6 +24,10 @@ class StaticPages extends Base {
         Smarty::render('pages/contact_us.tpl');
     }
 
+    public function privacy_statement(\Base $f3) {
+        Smarty::render('pages/privacy_statement.tpl');
+    }
+
     public function work_in_progress(\Base $f3) {
         Smarty::render('pages/work_in_progress.tpl');
     }
