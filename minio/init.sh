@@ -52,8 +52,8 @@ mc anonymous set public "minio/${GK_BUCKET_NAME_MOVES_PICTURES}-thumbnails"
 
 mc admin user add minio "${GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY}" "${GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY}"
 
-mc admin policy add minio pictures-processor-downloader_write minio/pictures-processor-downloader_write.json
-mc admin policy set minio pictures-processor-downloader_write user="${GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY}"
+mc admin policy create minio pictures-processor-downloader_write minio/pictures-processor-downloader_write.json
+mc admin policy attach minio pictures-processor-downloader_write --user "${GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY}"
 
 MINIO_RESTART=false
 
