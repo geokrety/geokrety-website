@@ -1,5 +1,4 @@
 *** Settings ***
-Library         Dialogs
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      Login       AUDIT
