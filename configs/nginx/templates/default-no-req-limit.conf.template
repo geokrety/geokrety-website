@@ -14,7 +14,7 @@ server {
     server_name ${GK_SITE_BASE_SERVER_FQDN};
 
     root /var/www/html;
-    index index.php;
+    index geokrety.php;
 
     access_log /dev/stdout timed_combined;
     error_log  /dev/stderr;
@@ -29,18 +29,25 @@ server {
     }
 
     location = /robots.txt {
-        allow all;
-        log_not_found off;
-        access_log off;
-        try_files $uri /robots-files/${GK_SITE_BASE_SERVER_FQDN}.txt /robots-files/default.txt;
+        rewrite ^ /robots-files/${GK_SITE_BASE_SERVER_FQDN}.txt last;
     }
 
-    location = /index.php {
+    location = /robots-files/${GK_SITE_BASE_SERVER_FQDN}.txt {
+        try_files $uri /robots-files/default.txt;
+        internal;
+    }
+
+    location = /robots-files/default.txt {
+        internal;
+    }
+
+    location = /geokrety.php {
+        internal;
         include fastcgi_pass;
     }
 
     location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        try_files $uri $uri/ /geokrety.php?$query_string;
     }
 
     location /app-ui/ {
@@ -55,16 +62,16 @@ server {
         try_files $uri =404;
     }
 
-    location /gkt/v3 {
-        try_files $uri $uri/ /index.php?$query_string;
+    location ~ "^/gkt/(search|inventory)_v3\.php$" {
+        try_files $uri /geokrety.php?$query_string;
     }
 
-    location ~ "^/gkt/(search|inventory)_v3\.php$" {
-        try_files $uri $uri/ /index.php?$query_string;
+    location ~ ^/gkt/v3/(search|inventory)$ {
+        try_files $uri /geokrety.php?$query_string;
     }
 
     location /go2geo/ {
-        try_files $uri $uri/ /go2geo/index.php?$query_string;
+        rewrite ^/go2geo/(.*)$ /go2geo/index.php?wpt=$1 last;
     }
 
     location ~* /go2geo/(index|help)\.php$ {

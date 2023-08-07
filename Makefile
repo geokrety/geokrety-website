@@ -41,7 +41,7 @@ test-qa-headless: ## run qa tests in headless mode
 test-qa-rerun-failed: ## run qa tests in headless mode
 	cd tests-qa && HEADLESS=True make rerun-failed-tests
 test-health: ## Check if website health
-	cd website/public && php index.php /health
+	cd website/public && php geokrety.php /health
 
 seed: ## generate random data
 	cd website && ../vendor/bin/phinx seed:run
@@ -50,15 +50,15 @@ buckets: ## create buckets
 	${PTY_PREFIX} bash -c "./minio/init.sh"
 
 basex-init-db: ## Create empty BaseX databases (destructive)
-	cd website/public && php index.php /cli/basex/initdb
+	cd website/public && php geokrety.php /cli/basex/initdb
 basex-import-all: ## Insert all GeoKrety IDs in rabbitmq for reprocessing
-	cd website/public && php index.php /cli/basex/importAll
+	cd website/public && php geokrety.php /cli/basex/importAll
 basex-export-all: ## Request BaseX to export all it's data on disk
-	cd website/public && php index.php /cli/basex/exportAll
+	cd website/public && php geokrety.php /cli/basex/exportAll
 basex-export-basic: ## Request BaseX to export it's Basic GK data on disk
-	cd website/public && php index.php /cli/basex/exportBasic
+	cd website/public && php geokrety.php /cli/basex/exportBasic
 basex-export-details: ## Request BaseX to export it's Detailed GK data on disk
-	cd website/public && php index.php /cli/basex/exportDetails
+	cd website/public && php geokrety.php /cli/basex/exportDetails
 
 phinx-migrate: ## DB play migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx migrate"
@@ -71,31 +71,31 @@ db-migrator: ## import GKv1 database as GKv2 (destructive)
 	${PTY_PREFIX} bash -c "cd website/db && runuser -u www-data php database-migrator.php"
 
 compile-all-templates: ## compile all smarty templates
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/smarty/compile-all-templates"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/smarty/compile-all-templates"
 clear-all-templates: ## drop all generated smarty templates
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/smarty/clear-compiled-templates"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/smarty/clear-compiled-templates"
 build-translations: ## build translation files
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/gettext/build-translations"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/gettext/build-translations"
 clear-assets: ## clear generated assets
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/assets/clear"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/assets/clear"
 clean: clear-all-templates clear-assets build-translations compile-all-templates## Clean all
 	@echo
 
 geokrety-pictures-re-count: ## recount all geokrety pictures
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/geokrety/pictures/re-count"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/geokrety/pictures/re-count"
 moves-pictures-re-count: ## recount all moves pictures
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/moves/pictures/re-count"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/moves/pictures/re-count"
 users-pictures-re-count: ## recount all users profile pictures
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/users/pictures/re-count"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/users/pictures/re-count"
 users-banner-regenerate-all: ## regenerate all users banners
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/user/banner/generate-all"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/user/banner/generate-all"
 
 move-clean: ## moves cleaner
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/moves/content/clean"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/moves/content/clean"
 move-comment-clean: ## moves comments cleaner
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/move-comments/content/clean"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/move-comments/content/clean"
 pictures-import-legacy-to-s3: ## Automatically fetch pictures from legacy urls
-	${PTY_PREFIX} bash -c "cd website/public && php index.php /cli/pictures/import/legacy-to-s3"
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/pictures/import/legacy-to-s3"
 
 ## DEV Local instance of geokrety
 #	mkdir -p ./website/templates
