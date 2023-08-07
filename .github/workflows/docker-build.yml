@@ -36,6 +36,11 @@ jobs:
             type=semver,pattern={{version}}
             type=sha
 
+      - name: Get GIT version
+        id: gitversion
+        run: |
+          echo "git_commit=$(git describe --tags)" >> $GITHUB_OUTPUT
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -57,4 +62,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args:
-            GIT_COMMIT=${{ steps.meta.outputs.version }}
+            GIT_COMMIT=${{ steps.gitversion.outputs.git_commit }}
