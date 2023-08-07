@@ -79,7 +79,7 @@ if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
           </form>
 
           <p class="text-center text-secondary text-opacity-25 pt-5">
-            <i class="bi bi-chevron-down" style="font-size:90px;"></i>
+            <a href="#help" class="text-secondary text-opacity-25 pt-5"><i class="bi bi-chevron-down" style="font-size:90px;"></i></a>
           </p>
 
         </div>
@@ -87,7 +87,7 @@ if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
 
       <hr>
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" id="help">
         <div class="col-12 col-md-12">
           To be redirected to the apropriate page, just type:
           <b><?php echo "${_SERVER['REQUEST_SCHEME']}://${_SERVER['HTTP_HOST']}"; ?>/go2geo/</b> and <b>waypoint name</b>, eg:
