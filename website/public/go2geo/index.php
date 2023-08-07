@@ -63,7 +63,7 @@ if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
         <div class="col-12 col-sm-6 col-md-4" style="height: 100vh;">
 
           <a href="<?php echo "${_SERVER['REQUEST_SCHEME']}://${_SERVER['HTTP_HOST']}"; ?>">
-            <img src="https://cdn.<?php echo $_SERVER['HTTP_HOST']; ?>/images/the-mole-with-name.svg" class="mx-auto d-block">
+            <img src="<?php echo getenv('GK_CDN_SERVER_URL'); ?>/images/the-mole-with-name.svg" class="mx-auto d-block">
           </a>
           <h5 class="text-center pb-3">Waypoint resolver</h5>
           <form>
