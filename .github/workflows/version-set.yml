@@ -1,0 +1,12 @@
+name: Update version-set
+
+on:
+  push:
+    tags:
+      - "v2.*.*"
+
+jobs:
+  update-version-set:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/version-set.yml@main
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}

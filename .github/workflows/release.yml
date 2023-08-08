@@ -1,0 +1,25 @@
+name: Automatic release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pre-commit:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/pre-commit_php.yml@main
+
+  docker:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/docker-build.yml@main
+    needs: pre-commit
+    with:
+      image_name: geokrety/website
+      dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
+    secrets:
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  build-release:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/semantic-release.yml@main
+    needs: docker
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
