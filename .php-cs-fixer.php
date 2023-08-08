@@ -15,11 +15,16 @@ if (class_exists('PhpCsFixer\Finder')) {
             '@Symfony' => true,
             'no_closing_tag' => true,
             'yoda_style' => false,
-            'braces' => [
-                'allow_single_line_closure' => true,
-                'position_after_functions_and_oop_constructs' => 'same',
-                'position_after_anonymous_constructs' => 'same',
-                'position_after_control_structures' => 'same',
+            'curly_braces_position' => [
+                'allow_single_line_anonymous_functions' => true,
+                'functions_opening_brace' => 'same_line',
+                'anonymous_functions_opening_brace' => 'same_line',
+                'classes_opening_brace' => 'same_line',
+                'anonymous_classes_opening_brace' => 'same_line',
+            ],
+            // 'statement_indentation' => false,
+            'nullable_type_declaration_for_default_null_value' => [
+                'use_nullable_type_declaration' => true,
             ],
         ])
         ->setFinder($finder);
