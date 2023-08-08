@@ -4,18 +4,21 @@ on:
   schedule:
     - cron: "0 10 * * *"
   push:
-    branches:
-      - "!main"
+    branches-ignore:
+      - main
+      - master
+      - l10n_master
+      - l10n_new-theme
     tags:
       - "v2.*.*"
   pull_request:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/docker-build
-        with:
-          dockerhub_username: "${{ vars.DOCKERHUB_USERNAME }}"
-          dockerhub_token: "${{ secrets.DOCKERHUB_TOKEN }}"
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/docker-build.yml@main
+    with:
+      image_name: geokrety/website
+      dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
+      dockerfile: Dockerfile
+    secrets:
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
