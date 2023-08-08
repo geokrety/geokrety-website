@@ -22,3 +22,9 @@ jobs:
       dockerfile: Dockerfile
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  update-version-set:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/version-set.yml@main
+    needs: docker
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
