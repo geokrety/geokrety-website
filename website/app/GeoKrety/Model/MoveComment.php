@@ -12,8 +12,8 @@ use GeoKrety\Service\HTMLPurifier;
  * @property int|Geokret|null geokret
  * @property int|User|null author
  * @property string content
- * @property DateTime created_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
  * @property int type
  */
 class MoveComment extends Base {
@@ -61,11 +61,11 @@ class MoveComment extends Base {
         return HTMLPurifier::getPurifier()->purify($value);
     }
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

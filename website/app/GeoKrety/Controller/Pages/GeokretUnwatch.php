@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Model\Watched;
 use GeoKrety\Traits\GeokretLoader;
 use Sugar\Event;
@@ -16,7 +15,7 @@ class GeokretUnwatch extends BaseDialog {
         $this->beforeRouteGeoKret($f3);
 
         if ($this->geokret->isOwner()) {
-            Flash::instance()->addMessage(_('You cannot watch your own GeoKrety.'), 'warning');
+            \Flash::instance()->addMessage(_('You cannot watch your own GeoKrety.'), 'warning');
             $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
         }
     }
@@ -32,14 +31,14 @@ class GeokretUnwatch extends BaseDialog {
         $watch->load(['user = ? AND geokret = ?', $this->current_user->id, $this->geokret->id]);
 
         if ($watch->dry()) {
-            Flash::instance()->addMessage(_('This GeoKret is not your watch list.'), 'warning');
+            \Flash::instance()->addMessage(_('This GeoKret is not your watch list.'), 'warning');
             $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
         }
 
         $watch->erase();
 
         Event::instance()->emit('geokret.watch.deleted', $watch);
-        Flash::instance()->addMessage(_('This GeoKret has been removed from your watch list.'), 'success');
+        \Flash::instance()->addMessage(_('This GeoKret has been removed from your watch list.'), 'success');
 
         $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
     }

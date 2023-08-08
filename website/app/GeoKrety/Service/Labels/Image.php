@@ -2,11 +2,9 @@
 
 namespace GeoKrety\Service\Labels;
 
-use CURLFile;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
-use Web;
 
 class Image {
     use Traits\Languages;
@@ -40,7 +38,7 @@ class Image {
         $url = GK_LABELS_SVG2PNG_URL.'?'.$type;
 
         $postVars = [
-            'file' => new CURLFile($stream, 'image/svg+xml', 'label.svg'),
+            'file' => new \CURLFile($stream, 'image/svg+xml', 'label.svg'),
             'qrcode' => sprintf(
                 '%s%s?tracking_code=%s',
                 GK_SITE_BASE_SERVER_URL,
@@ -53,7 +51,7 @@ class Image {
             'method' => 'POST',
             'content' => $postVars,
         ];
-        $result = Web::instance()->request($url, $options);
+        $result = \Web::instance()->request($url, $options);
 
         return $result['body'];
     }

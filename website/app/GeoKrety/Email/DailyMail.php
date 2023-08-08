@@ -3,19 +3,18 @@
 namespace GeoKrety\Email;
 
 use Carbon\Carbon;
-use DateTime;
 use GeoKrety\Model\User;
 
 class DailyMail extends BasePHPMailer {
-    private DateTime $since;
+    private \DateTime $since;
 
-    public function setSince(DateTime $since): void {
+    public function setSince(\DateTime $since): void {
         $this->since = $since;
     }
 
     public function __construct(?bool $exceptions = true) {
         parent::__construct($exceptions);
-        $this->since = new DateTime();
+        $this->since = new \DateTime();
     }
 
     /**

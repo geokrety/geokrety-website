@@ -25,7 +25,7 @@ class TermsOfUse extends Base {
         // Save
         if (!$user->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
         $user->save();
 

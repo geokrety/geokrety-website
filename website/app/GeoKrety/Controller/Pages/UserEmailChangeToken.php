@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Email\EmailChange;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Service\Smarty;
@@ -20,7 +19,7 @@ class UserEmailChangeToken extends Base {
         if ($f3->exists('PARAMS.token')) {
             $token->load(['token = ? AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $f3->get('PARAMS.token'), EmailActivationToken::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
             if ($token->dry()) {
-                Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
+                \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
                 $f3->reroute('@user_update_email_validate');
             }
             $token->token = $f3->get('PARAMS.token');
@@ -40,23 +39,23 @@ class UserEmailChangeToken extends Base {
         } elseif ($f3->get('POST.validate') === 'false') {
             $this->refuse();
         } else {
-            Flash::instance()->addMessage(_('Unexpected value.'), 'danger');
+            \Flash::instance()->addMessage(_('Unexpected value.'), 'danger');
             $this->get($f3);
-            exit();
+            exit;
         }
 
         if (!$this->token->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
 
         $this->token->user->save();
         $this->token->save();
 
         if ($f3->get('ERROR')) {
-            Flash::instance()->addMessage(_('Something went wrong, operation aborted.'), 'danger');
+            \Flash::instance()->addMessage(_('Something went wrong, operation aborted.'), 'danger');
             $this->get($f3);
-            exit();
+            exit;
         }
 
         $f3->get('DB')->commit();
@@ -65,16 +64,16 @@ class UserEmailChangeToken extends Base {
         // Notifications
         if ($f3->get('POST.validate') === 'true') {
             Event::instance()->emit('user.email.changed', $this->token->user);
-            Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
+            \Flash::instance()->addMessage(_('Your email address has been validated.'), 'success');
             $f3->reroute(sprintf('@user_details(@userid=%d)', $this->token->user->id), false, false);
             if (!GK_DEVEL) {
                 $f3->abort(); // Send response to client now
             }
             $smtp = new EmailChange();
             $smtp->sendEmailChangedNotification($this->token);
-            exit();
+            exit;
         } else {
-            Flash::instance()->addMessage(_('No change has been processed. This token is now revoked.'), 'warning');
+            \Flash::instance()->addMessage(_('No change has been processed. This token is now revoked.'), 'warning');
         }
 
         $f3->reroute(sprintf('@user_details(@userid=%d)', $this->token->user->id));
@@ -94,7 +93,7 @@ class UserEmailChangeToken extends Base {
 
         if (!$this->token->user->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
     }
 

@@ -6,7 +6,7 @@ use DateTime;
 use DB\SQL\Schema;
 
 /**
- * @property int|DateTime log_datetime
+ * @property int|\DateTime log_datetime
  * @property int author
  * @property string event
  * @property string|null context
@@ -49,7 +49,7 @@ class AuditLog extends Base {
         ],
     ];
 
-    public function get_log_datetime($value): ?DateTime {
+    public function get_log_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

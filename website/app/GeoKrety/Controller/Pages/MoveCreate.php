@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Exception;
-use Flash;
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
@@ -94,11 +92,11 @@ class MoveCreate extends Base {
                 /* @var Move $_move */
                 $_move->save();
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->renderErrors($moves, [$e->getMessage()]);
         }
 
-        Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
+        \Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
         $this->f3->reroute($moves[0]->reroute_url);
     }
 
@@ -112,8 +110,8 @@ class MoveCreate extends Base {
             $msg .= "<li>$err</li>";
         }
         $msg .= '</ul>';
-        Flash::instance()->addMessage($msg, 'danger');
+        \Flash::instance()->addMessage($msg, 'danger');
         $this->get($this->f3);
-        exit();
+        exit;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Service\Xml;
 
-use DateTime;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Markdown;
 
@@ -42,7 +41,7 @@ class GeokretyExport extends GeokretyBaseExport {
         }
 
         $xml->writeElement('datecreated', $geokret->created_on_datetime->format('Y-m-d H:i:s'));
-        $xml->writeElement('datecreated_Iso8601', $geokret->created_on_datetime->format(DateTime::ATOM));
+        $xml->writeElement('datecreated_Iso8601', $geokret->created_on_datetime->format(\DateTime::ATOM));
 
         $xml->writeElement('distancetravelled', $geokret->distance);
         $xml->writeAttribute('note', 'legacy bug compatibility');
@@ -109,9 +108,9 @@ class GeokretyExport extends GeokretyBaseExport {
         $xml->endElement(); // date
 
         $xml->startElement('date_Iso8601');
-        $xml->writeAttribute('moved', $move->moved_on_datetime->format(DateTime::ATOM));
-        $xml->writeAttribute('logged', $move->created_on_datetime->format(DateTime::ATOM));
-        $xml->writeAttribute('edited', $move->updated_on_datetime->format(DateTime::ATOM));
+        $xml->writeAttribute('moved', $move->moved_on_datetime->format(\DateTime::ATOM));
+        $xml->writeAttribute('logged', $move->created_on_datetime->format(\DateTime::ATOM));
+        $xml->writeAttribute('edited', $move->updated_on_datetime->format(\DateTime::ATOM));
         $xml->endElement(); // date
 
         $this->addUser($move);

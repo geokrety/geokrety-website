@@ -34,7 +34,7 @@ class MovesSuccess extends Base {
      * @param array|Move $moves  The Move to format
      */
     public static function buildSuccess(bool $stream, $moves) {
-        //public static function buildError(bool $stream, array|Move $moves) { // need php 8.0
+        // public static function buildError(bool $stream, array|Move $moves) { // need php 8.0
         $moves = gettype($moves) === 'GeoKrety\Model\Move' ? [$moves] : $moves;
         $xml = new \GeoKrety\Service\Xml\MovesSuccess($stream);
         $xml->addMoves($moves);

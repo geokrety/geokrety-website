@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Email\AccountActivation;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\User;
@@ -19,7 +18,7 @@ class RegistrationActivate extends Base {
         $token = new AccountActivationToken();
         $token->load(['token = ? AND used = ? AND created_on_datetime + cast(? as interval) >= NOW() ', $f3->get('PARAMS.token'), AccountActivationToken::TOKEN_UNUSED, GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
         if ($token->dry()) {
-            Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
+            \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
             $f3->reroute('@home');
         }
 

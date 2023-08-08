@@ -84,11 +84,11 @@ foreach (GK_METRICS_EXCLUDE_PATH as $path) {
                 ini_set('session.gc_maxlifetime', 5);
                 new Session(); // Use a different backend: cache
                 $f3->run();
-                exit();
+                exit;
             }
         }
         http_response_code(403);
-        exit();
+        exit;
     }
 }
 

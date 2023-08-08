@@ -13,7 +13,7 @@ final class MovesIndexes extends AbstractMigration {
         $this->execute('CREATE INDEX "gk_moves_country" ON "gk_moves" ("country")');
         $this->execute('CREATE INDEX "gk_moves_move_type" ON "gk_moves" ("move_type")');
         $this->execute('CREATE INDEX "gk_moves_move_type_id_position" ON "gk_moves" ("move_type", "id", "position")');
-        //$this->execute('CREATE INDEX "gk_moves_move_type_distance" ON "gk_moves" ("move_type", "distance")');
+        // $this->execute('CREATE INDEX "gk_moves_move_type_distance" ON "gk_moves" ("move_type", "distance")');
         $this->execute('CREATE INDEX "gk_moves_elevation" ON "gk_moves" ("elevation")');
         $this->execute('CREATE INDEX "gk_moves_lat" ON "gk_moves" ("lat")');
         $this->execute('CREATE INDEX "gk_moves_lon" ON "gk_moves" ("lon")');
@@ -30,7 +30,7 @@ final class MovesIndexes extends AbstractMigration {
         $this->execute('DROP INDEX "gk_moves_country"');
         $this->execute('DROP INDEX "gk_moves_move_type"');
         $this->execute('DROP INDEX "gk_moves_move_type_id_position"');
-        //$this->execute('DROP INDEX "gk_moves_move_type_distance"');
+        // $this->execute('DROP INDEX "gk_moves_move_type_distance"');
         $this->execute('DROP INDEX "gk_moves_elevation"');
         $this->execute('DROP INDEX "gk_moves_lat"');
         $this->execute('DROP INDEX "gk_moves_lon"');

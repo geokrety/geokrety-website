@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Devel;
 
-use Exception;
 use GeoKrety\Service\RateLimit;
 
 /**
@@ -39,7 +38,7 @@ class DatabaseReset extends Base {
     /**
      * Reset the database only if in debug mode.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function get(\Base $f3) {
         header('Content-Type: text');

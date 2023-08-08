@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Exception;
-use Flash;
 use GeoKrety\Model\Label;
 use GeoKrety\Service\Labels\Image;
 use GeoKrety\Service\Labels\Pdf;
@@ -20,7 +18,7 @@ class GeokretLabel extends Base {
         $this->beforeRouteGeoKret($f3);
 
         if (!$this->geokret->hasTouchedInThePast()) {
-            Flash::instance()->addMessage(_('Sorry you don\'t have the permission to print a label for this GeoKret as you never discovered it!'), 'danger');
+            \Flash::instance()->addMessage(_('Sorry you don\'t have the permission to print a label for this GeoKret as you never discovered it!'), 'danger');
             $f3->reroute('@geokret_details');
         }
     }
@@ -33,7 +31,7 @@ class GeokretLabel extends Base {
         $label = new Label();
         $label->load(['template = ?', $f3->get('POST.label_template')], null, GK_SITE_CACHE_TTL_LABELS_LOOKUP);
         if ($label->dry()) {
-            Flash::instance()->addMessage(_('This label template does not exist.'), 'danger');
+            \Flash::instance()->addMessage(_('This label template does not exist.'), 'danger');
             $f3->reroute('@geokret_label');
         }
 
@@ -45,13 +43,13 @@ class GeokretLabel extends Base {
                 if (!$this->geokret->validate()) {
                     $f3->get('DB')->rollback();
                     $this->get($f3);
-                    exit();
+                    exit;
                 }
-            } catch (Exception $e) {
-                Flash::instance()->addMessage(_('Something went wrong while saving the GeoKret preferred label template.'), 'danger');
+            } catch (\Exception $e) {
+                \Flash::instance()->addMessage(_('Something went wrong while saving the GeoKret preferred label template.'), 'danger');
                 $f3->get('DB')->rollback();
                 $this->get($f3);
-                exit();
+                exit;
             }
             $this->geokret->save();
             $f3->get('DB')->commit();
@@ -63,25 +61,25 @@ class GeokretLabel extends Base {
         $this->geokret->mission = $f3->get('POST.mission');
 
         if (!empty($f3->get('POST.helpLanguages')) && !LanguageService::areLanguageSupported($f3->get('POST.helpLanguages'))) {
-            Flash::instance()->addMessage(_('Some chosen languages are invalid.'), 'danger');
+            \Flash::instance()->addMessage(_('Some chosen languages are invalid.'), 'danger');
             $this->get($f3);
-            exit();
+            exit;
         }
         $f3->set('COOKIE.helpLanguages', json_encode($f3->get('POST.helpLanguages')));
 
         // Export type
         if ($f3->exists('POST.generateAsPng')) {
             $this->png();
-            exit();
+            exit;
         } elseif ($f3->exists('POST.generateAsSvg')) {
             $this->svg();
-            exit();
+            exit;
         } elseif ($f3->exists('POST.generateAsPdf')) {
             $this->pdf();
-            exit();
+            exit;
         }
 
-        Flash::instance()->addMessage(_('Please select an export type.'), 'danger');
+        \Flash::instance()->addMessage(_('Please select an export type.'), 'danger');
         $this->get($f3);
     }
 

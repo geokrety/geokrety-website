@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Devel;
 
-use DateTime;
 use GeoKrety\GeokretyType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
@@ -128,7 +127,7 @@ class DatabaseSeed extends Base {
         $geokret->load(['id = ?', $f3->get('PARAMS.geokretid')]);
         if ($geokret->dry()) {
             echo sprintf("Error loading GeoKret: %d\n", $f3->get('PARAMS.geokretid'));
-            exit();
+            exit;
         }
 
         $ownercode = new OwnerCode();
@@ -136,7 +135,7 @@ class DatabaseSeed extends Base {
         $ownercode->token = $f3->get('PARAMS.ownercode');
         if (!$ownercode->validate()) {
             echo sprintf("Error creating new Owner Code \"%s\" for GeoKret: %d\n", $ownercode->token, $ownercode->geokret->id);
-            exit();
+            exit;
         }
         $ownercode->save();
     }
@@ -300,7 +299,7 @@ class DatabaseSeed extends Base {
             $news->content = "News $i content";
             $news->title = "News $i title";
             if ($f3->exists('GET.publish_date')) {
-                $news->created_on_datetime = DateTime::createFromFormat('Y-m-d\TH:i:sT', $f3->get('GET.publish_date'))->format(GK_DB_DATETIME_FORMAT);
+                $news->created_on_datetime = \DateTime::createFromFormat('Y-m-d\TH:i:sT', $f3->get('GET.publish_date'))->format(GK_DB_DATETIME_FORMAT);
             } else {
                 $news->touch('created_on_datetime');
             }

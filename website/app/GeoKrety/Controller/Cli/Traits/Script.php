@@ -2,17 +2,12 @@
 
 namespace GeoKrety\Controller\Cli\Traits;
 
-use Base;
-use DateTime;
 use DB\SQL;
-use Exception;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Service\ConsoleWriter;
-use function pcntl_async_signals;
-use function pcntl_signal;
 
 trait Script {
-    protected DateTime $start_datetime;
+    protected \DateTime $start_datetime;
     protected bool $_skip_saving_final_last_update = false;
     protected SQL $db;
     protected ConsoleWriter $console_writer;
@@ -23,8 +18,8 @@ trait Script {
     }
 
     public function initScript() {
-        $this->start_datetime = new DateTime();
-        $this->db = Base::instance()->get('DB');
+        $this->start_datetime = new \DateTime();
+        $this->db = \Base::instance()->get('DB');
         $this->db->log(false);
         $this->console_writer = new ConsoleWriter();
         $this->trap_sigint();
@@ -34,8 +29,8 @@ trait Script {
      * Enable signal trapping.
      */
     private function trap_sigint() {
-        pcntl_async_signals(true);
-        pcntl_signal(SIGINT, [$this, 'shutdown']);       // Catch SIGINT, run shutdown()
+        \pcntl_async_signals(true);
+        \pcntl_signal(SIGINT, [$this, 'shutdown']);       // Catch SIGINT, run shutdown()
     }
 
     /**
@@ -45,7 +40,7 @@ trait Script {
         $this->db->rollback();
         $this->unlock();
         fwrite(STDERR, PHP_EOL.'Exiting…'.PHP_EOL);
-        exit();
+        exit;
     }
 
     /**
@@ -58,7 +53,7 @@ trait Script {
             $this->script_name = $func;
         }
         if (is_null($this->script_name)) {
-            throw new Exception('No script name passed');
+            throw new \Exception('No script name passed');
         }
         $this->lock();
         if ($this->useTransation()) {
@@ -73,9 +68,9 @@ trait Script {
         $script_lock->load(['name = ?', $this->script_name]);
         try {
             $script_lock->lock($this->script_name);
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             fwrite(STDERR, $this->console_writer->sprintf("\e[0;31mE: %s\e[0m", $exception->getMessage()).PHP_EOL);
-            exit();
+            exit;
         }
     }
 
@@ -92,7 +87,7 @@ trait Script {
             $this->save_last_update();
         }
         $this->unlock();
-        fwrite(STDERR, $this->console_writer->sprintf("\n* \e[0;%dmEnd script processing: %s\e[0m", ($exit > 0 ? 31 : 32), date('YmdHis')).PHP_EOL);
+        fwrite(STDERR, $this->console_writer->sprintf("\n* \e[0;%dmEnd script processing: %s\e[0m", $exit > 0 ? 31 : 32, date('YmdHis')).PHP_EOL);
         exit($exit);
     }
 

@@ -8,7 +8,7 @@ class HealthState {
 
     public const HEALTH_STATES_VALID = [self::HEALTH_STATE_OK, self::HEALTH_STATE_KO];
 
-    public $state = null;
+    public $state;
     public array $dependencies = [];
 
     public function isOk() {

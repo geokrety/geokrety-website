@@ -51,7 +51,7 @@ class MoveCommentCreate extends Base {
         } else {
             Smarty::assign('comment', $comment);
             $this->get_comment($f3);
-            exit();
+            exit;
         }
 
         $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $gkid, $comment->move->getMoveOnPage(), $comment->move->id));
@@ -74,7 +74,7 @@ class MoveCommentCreate extends Base {
         } else {
             Smarty::assign('comment', $comment);
             $this->get_missing($f3);
-            exit();
+            exit;
         }
 
         $f3->reroute("@geokret_details(@gkid=$gkid)#log".$comment->move->id);

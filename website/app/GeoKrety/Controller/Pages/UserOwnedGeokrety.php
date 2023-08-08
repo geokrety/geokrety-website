@@ -4,10 +4,9 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 class UserOwnedGeokrety extends BaseDatatableGeokrety {
-    use UserLoader;
+    use \UserLoader;
 
     public function get() {
         $geokret = new Geokret();

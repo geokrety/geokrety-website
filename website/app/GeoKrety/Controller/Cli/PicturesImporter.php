@@ -88,7 +88,7 @@ class PicturesImporter extends BaseCleaner {
         $object->uploaded_on_datetime = null;
         $object->update();
 
-        //Creating a presigned URL
+        // Creating a presigned URL
         $s3Client = S3Client::instance()->getS3();
         $cmd = $s3Client->getCommand('PutObject', [
             'Bucket' => GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER,

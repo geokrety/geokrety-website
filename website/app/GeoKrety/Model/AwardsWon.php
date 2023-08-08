@@ -10,8 +10,8 @@ use Validation\Traits\CortexTrait;
 /**
  * @property int|null id
  * @property int|User holder
- * @property DateTime awarded_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime awarded_on_datetime
+ * @property \DateTime updated_on_datetime
  * @property string description
  * @property int|\GeoKrety\Model\Awards award
  * @property string url
@@ -61,11 +61,11 @@ class AwardsWon extends Base {
         });
     }
 
-    public function get_awarded_on_datetime($value): ?DateTime {
+    public function get_awarded_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

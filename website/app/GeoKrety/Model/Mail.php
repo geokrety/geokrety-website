@@ -12,7 +12,7 @@ use DB\SQL\Schema;
  * @property int|User|null to_user
  * @property string subject
  * @property string content
- * @property DateTime sent_on_datetime
+ * @property \DateTime sent_on_datetime
  * @property string ip
  */
 class Mail extends Base {
@@ -57,7 +57,7 @@ class Mail extends Base {
         ],
     ];
 
-    public function get_sent_on_datetime($value): ?DateTime {
+    public function get_sent_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

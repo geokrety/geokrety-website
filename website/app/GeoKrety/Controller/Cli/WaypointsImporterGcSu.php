@@ -2,13 +2,10 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use DateTime;
-use Exception;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\ConsoleWriter;
 use GeoKrety\Service\File;
-use PDOException;
 
 class WaypointsImporterGcSu extends WaypointsImporterBase {
     public const GC_SU_API_ENDPOINT = 'https://geocaching.su/rss/geokrety/api.php';
@@ -20,7 +17,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
     /**
      * Start gc.su import.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function process() {
         echo $this->console_writer->sprintf("** \e[0;32mProcessing gc.su\e[0m").PHP_EOL;
@@ -29,7 +26,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
         $okapiSync = new WaypointSync();
         $okapiSync->load(['service_id = ?', self::SCRIPT_CODE]);
         $since = '20y';
-        $now = new DateTime();
+        $now = new \DateTime();
         if ($okapiSync->valid() and !is_null($okapiSync->revision)) {
             $since = sprintf('%dm', ceil(($now->getTimestamp() - $okapiSync->get_last_update_as_datetime()->getTimestamp()) / 60));
         }
@@ -37,7 +34,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     private function perform_incremental_update(string $since) {
         echo $this->console_writer->sprintf("*** \e[0;33mRunning import since: %s\e[0m", $since).PHP_EOL;
@@ -71,7 +68,7 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
                 $wpt->status = $this->status_to_id($cache->status, $cache->subtype);
                 try {
                     $wpt->save();
-                } catch (PDOException $exception) {
+                } catch (\PDOException $exception) {
                     ++$nError;
                     continue;
                 }

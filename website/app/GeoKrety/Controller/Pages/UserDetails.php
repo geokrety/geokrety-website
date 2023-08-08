@@ -6,10 +6,9 @@ use GeoKrety\LogType;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Service\MedalsGenerator;
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 class UserDetails extends Base {
-    use UserLoader;
+    use \UserLoader;
 
     public function get(\Base $f3) {
         // GeoKrety owned stats

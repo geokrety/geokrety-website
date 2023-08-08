@@ -8,7 +8,7 @@ class Coordinates {
     private array $errors = [];
     private ?float $lat = null;
     private ?float $lon = null;
-    private $format = null;
+    private $format;
 
     public function validate($coords) {
         $coords_parse = CoordinatesConverter::parse($coords);

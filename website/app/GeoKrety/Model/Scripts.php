@@ -4,16 +4,15 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
-use Exception;
 use Validation\Traits\CortexTrait;
 
 /**
  * @property int|null id
  * @property string name
- * @property DateTime|null last_run_datetime
- * @property int|null      $last_page
- * @property DateTime|null $locked_on_datetime
- * @property DateTime|null $acked_on_datetime
+ * @property \DateTime|null last_run_datetime
+ * @property int|null       $last_page
+ * @property \DateTime|null $locked_on_datetime
+ * @property \DateTime|null $acked_on_datetime
  */
 class Scripts extends Base {
     use CortexTrait;
@@ -48,15 +47,15 @@ class Scripts extends Base {
         ],
     ];
 
-    public function get_last_run_datetime($value): ?DateTime {
+    public function get_last_run_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_locked_on_datetime($value): ?DateTime {
+    public function get_locked_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_acked_on_datetime($value): ?DateTime {
+    public function get_acked_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
@@ -71,11 +70,11 @@ class Scripts extends Base {
     /**
      * @param string $script_name The script name to mark as locked
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function lock(string $script_name) {
         if ($this->valid() and $this->is_locked()) {
-            throw new Exception(sprintf('Script \'%s\' is already running', $script_name));
+            throw new \Exception(sprintf('Script \'%s\' is already running', $script_name));
         }
         $this->name = $script_name;
         $this->touch('locked_on_datetime');

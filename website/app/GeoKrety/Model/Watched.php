@@ -9,8 +9,8 @@ use DB\SQL\Schema;
  * @property int|null id
  * @property int|User user
  * @property int|Geokret geokret
- * @property DateTime created_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
  */
 class Watched extends Base {
     protected $db = 'DB';
@@ -37,11 +37,11 @@ class Watched extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

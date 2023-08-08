@@ -9,7 +9,7 @@ use DB\SQL\Schema;
  * @property int|null id
  * @property int|News news
  * @property int|User author
- * @property DateTime last_read_datetime
+ * @property \DateTime last_read_datetime
  * @property bool subscribed
  */
 class NewsSubscription extends Base {
@@ -38,7 +38,7 @@ class NewsSubscription extends Base {
         ],
     ];
 
-    public function get_last_read_datetime($value): DateTime {
+    public function get_last_read_datetime($value): \DateTime {
         return self::get_date_object($value);
     }
 

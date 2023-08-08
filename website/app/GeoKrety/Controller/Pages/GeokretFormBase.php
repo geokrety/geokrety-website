@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Label;
 use GeoKrety\Service\Smarty;
@@ -31,9 +30,9 @@ class GeokretFormBase extends Base {
         echo $f3->get('POST.label_template');
         $label->load(['template = ?', $f3->get('POST.label_template')], null, GK_SITE_CACHE_TTL_LABELS_LOOKUP);
         if ($label->dry()) {
-            Flash::instance()->addMessage(_('This label template does not exist.'), 'danger');
+            \Flash::instance()->addMessage(_('This label template does not exist.'), 'danger');
             $this->get($f3);
-            exit();
+            exit;
         }
         $this->geokret->label_template = $label->id;
         $f3->set('COOKIE.default_label_template', strval($this->geokret->label_template->id));

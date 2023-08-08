@@ -11,8 +11,8 @@ use DB\SQL\Schema;
  * @property string type
  * @property string country_name
  * @property string link
- * @property DateTime added_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime added_on_datetime
+ * @property \DateTime updated_on_datetime
  * @property int status
  * @property string position
  * @property string|null provider
@@ -90,11 +90,11 @@ class WaypointOC extends BaseWaypoint {
         ],
     ];
 
-    public function get_added_on_datetime($value): ?DateTime {
+    public function get_added_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

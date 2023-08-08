@@ -5,15 +5,14 @@
 namespace GeoKrety\Service;
 
 use Exception;
-use Prefab;
 
 /**
  * Exception thrown if an error occurs during metrics storage.
  */
-class StorageException extends Exception {
+class StorageException extends \Exception {
 }
 
-class Redis extends Prefab {
+class Redis extends \Prefab {
     private \Redis $redis;
 
     private array $options = [
@@ -29,8 +28,6 @@ class Redis extends Prefab {
 
     /**
      * Redis constructor.
-     *
-     * @param array $options
      */
     public function __construct() {
         $this->redis = new \Redis();

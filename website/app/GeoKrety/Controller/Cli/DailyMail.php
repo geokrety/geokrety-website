@@ -2,9 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
-use DateInterval;
-use DateTime;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\DailyMail as EmailDailyMail;
 use GeoKrety\Model\Geokret;
@@ -21,7 +18,7 @@ use Sugar\Event;
 class DailyMail {
     use Script;
 
-    private ?DateTime $since;
+    private ?\DateTime $since;
     private EmailDailyMail $email;
     private User $user;
     private int $updates_count = 0;
@@ -92,12 +89,12 @@ AND missing = ?
 ;
 SQL;
 
-        $since = new DateTime();
-        $since->sub(new DateInterval('P1D'))->setTime(0, 0);
+        $since = new \DateTime();
+        $since->sub(new \DateInterval('P1D'))->setTime(0, 0);
         $params = array_fill(0, 5, $since->format(GK_DB_DATETIME_FORMAT));
         $params[] = Geokret::GEOKRETY_PRESENT_IN_CACHE;
         $this->console_writer->print(['sql', 'finding users', 'prepare'], true);
-        $result = Base::instance()->get('DB')->exec($sql, $params);
+        $result = \Base::instance()->get('DB')->exec($sql, $params);
         $this->user = new User();
         foreach ($result as $_userid) {
             $this->user->load(['id = ?', $_userid['userid']]);
@@ -107,7 +104,7 @@ SQL;
         $this->script_end();
     }
 
-    public function sendUser(Base $f3) {
+    public function sendUser(\Base $f3) {
         $this->script_start(__METHOD__);
         $userid = $f3->get('PARAMS.userid');
         $this->console_writer->print([$userid, '', 'prepare']);
@@ -168,9 +165,9 @@ SQL;
 
     private function compute_since() {
         $this->since = $this->user->last_mail_datetime;
-        if (is_null($this->since) or $this->since->diff(new DateTime('now'))->format('%a') > 1) {
-            $this->since = new DateTime();
-            $this->since->sub(new DateInterval('P1D'));
+        if (is_null($this->since) or $this->since->diff(new \DateTime('now'))->format('%a') > 1) {
+            $this->since = new \DateTime();
+            $this->since->sub(new \DateInterval('P1D'));
         }
         $this->email->setSince($this->since);
     }
@@ -259,8 +256,8 @@ FROM (
 ) as t;
 SQL;
         $this->console_writer->print([$this->user->id, $this->user->username, 'load dropped - geojson']);
-        $result = Base::instance()->get('DB')->exec($sql, [$this->user->id, $this->since->format(GK_DB_DATETIME_FORMAT), Geokret::GEOKRETY_PRESENT_IN_CACHE]);
-        $geojson = ($result[0]['geojson']);
+        $result = \Base::instance()->get('DB')->exec($sql, [$this->user->id, $this->since->format(GK_DB_DATETIME_FORMAT), Geokret::GEOKRETY_PRESENT_IN_CACHE]);
+        $geojson = $result[0]['geojson'];
 
         $home = <<<'GEOJSON'
 {

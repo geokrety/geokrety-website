@@ -2,12 +2,11 @@
 
 namespace GeoKrety\Controller;
 
-use CurrentUserLoader;
 use GeoKrety\Model\UsersAuthenticationHistory;
 use GeoKrety\Service\Smarty;
 
 class UserAuthenticationHistory extends BaseDatatableUserAuthenticationHistory {
-    use CurrentUserLoader;
+    use \CurrentUserLoader;
 
     public function get(\Base $f3) {
         $authentications_count = new UsersAuthenticationHistory();

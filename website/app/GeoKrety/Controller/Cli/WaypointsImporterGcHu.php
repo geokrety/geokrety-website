@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Exception;
-
 class WaypointsImporterGcHu extends WaypointsImporterBaseTopografix {
     public const GC_HU_API_ENDPOINT = 'https://www.geocaching.hu/caches.geo';
 
@@ -11,7 +9,7 @@ class WaypointsImporterGcHu extends WaypointsImporterBaseTopografix {
     protected string $class_name = __CLASS__;
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function process() {
         $url_params = http_build_query([

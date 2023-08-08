@@ -12,10 +12,10 @@ use DB\SQL\Schema;
  * @property int|User user
  * @property string _previous_email
  * @property string email
- * @property DateTime created_on_datetime
- * @property DateTime updated_on_datetime
- * @property DateTime|null used_on_datetime
- * @property DateTime|null reverted_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
+ * @property \DateTime|null used_on_datetime
+ * @property \DateTime|null reverted_on_datetime
  * @property string requesting_ip
  * @property string|null updating_ip
  * @property string|null reverting_ip
@@ -146,19 +146,19 @@ class EmailActivationToken extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_used_on_datetime($value): ?DateTime {
+    public function get_used_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_reverted_on_datetime($value): ?DateTime {
+    public function get_reverted_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
@@ -255,13 +255,13 @@ EOT;
         // $this->beforeupdate(function ($self) {
         // });
 
-        $this->virtual('update_expire_on_datetime', function ($self): DateTime {
+        $this->virtual('update_expire_on_datetime', function ($self): \DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY)));
         });
 
-        $this->virtual('revert_expire_on_datetime', function ($self): DateTime {
+        $this->virtual('revert_expire_on_datetime', function ($self): \DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY)));

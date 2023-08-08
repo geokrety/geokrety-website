@@ -2,11 +2,8 @@
 
 namespace GeoKrety\Service\Xml;
 
-use DateTime;
-use XMLWriter;
-
 abstract class Base {
-    protected XMLWriter $xml;
+    protected \XMLWriter $xml;
     protected $stream;
     private string $compress;
 
@@ -79,7 +76,7 @@ abstract class Base {
     }
 
     public static function getGeoKretyBaseXmlWriter() {
-        $xml = new XMLWriter();
+        $xml = new \XMLWriter();
         $xml->openMemory();
         $xml->startDocument('1.0', 'UTF-8');
 
@@ -94,7 +91,7 @@ abstract class Base {
         $xml->endAttribute();
 
         $xml->startAttribute('date_Iso8601');
-        $xml->text(date(DateTime::ATOM));
+        $xml->text(date(\DateTime::ATOM));
         $xml->endAttribute();
 
         return $xml;

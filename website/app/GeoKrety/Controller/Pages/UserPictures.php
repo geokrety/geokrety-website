@@ -5,10 +5,9 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Picture;
 use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 class UserPictures extends Base {
-    use UserLoader;
+    use \UserLoader;
 
     public function get($f3) {
         // Load Pictures

@@ -56,23 +56,23 @@ EOL;
         $this->execute($sql);
 
         // It was a prototype, it works, but we'll be using rabbit for current needs
-//        $sql = <<<'EOL'
-// CREATE TRIGGER after_99_notify
-//    AFTER INSERT OR DELETE OR UPDATE OF username
-//    ON geokrety.gk_users
-//    FOR EACH ROW
-//    EXECUTE FUNCTION notify_queues.new_handle();
-// EOL;
-//        $this->execute($sql);
-//
-//        $sql = <<<'EOL'
-// CREATE TRIGGER after_99_notify
-//    AFTER INSERT OR DELETE OR UPDATE OF name, owner, distance, type, caches_count
-//    ON geokrety.gk_geokrety
-//    FOR EACH ROW
-//    EXECUTE FUNCTION notify_queues.new_handle();
-// EOL;
-//        $this->execute($sql);
+        //        $sql = <<<'EOL'
+        // CREATE TRIGGER after_99_notify
+        //    AFTER INSERT OR DELETE OR UPDATE OF username
+        //    ON geokrety.gk_users
+        //    FOR EACH ROW
+        //    EXECUTE FUNCTION notify_queues.new_handle();
+        // EOL;
+        //        $this->execute($sql);
+        //
+        //        $sql = <<<'EOL'
+        // CREATE TRIGGER after_99_notify
+        //    AFTER INSERT OR DELETE OR UPDATE OF name, owner, distance, type, caches_count
+        //    ON geokrety.gk_geokrety
+        //    FOR EACH ROW
+        //    EXECUTE FUNCTION notify_queues.new_handle();
+        // EOL;
+        //        $this->execute($sql);
     }
 
     public function down(): void {

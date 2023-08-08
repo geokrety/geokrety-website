@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use CurrentUserLoader;
-use Flash;
 use GeoKrety\Auth;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\User;
@@ -11,7 +9,7 @@ use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
 class UserUpdatePassword extends Base {
-    use CurrentUserLoader;
+    use \CurrentUserLoader;
 
     public function get() {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_password.tpl');
@@ -34,25 +32,25 @@ class UserUpdatePassword extends Base {
         // Check old password needed?
         if ($user->hasPassword()) {
             if (is_null($password_old)) {
-                Flash::instance()->addMessage(_('Please enter your old password.'), 'danger');
+                \Flash::instance()->addMessage(_('Please enter your old password.'), 'danger');
                 $this->get();
-                exit();
+                exit;
             }
             // Check old password
             $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
             $check_result = $auth->login($user->username, $password_old);
             if (!$check_result) {
-                Flash::instance()->addMessage(_('Your old password is invalid.'), 'danger');
+                \Flash::instance()->addMessage(_('Your old password is invalid.'), 'danger');
                 $this->get();
-                exit();
+                exit;
             }
         }
 
         // Check passwords are equals
         if ($password_new !== $password_new_confirm) {
-            Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
+            \Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
             $this->get();
-            exit();
+            exit;
         }
 
         // Save new password
@@ -61,7 +59,7 @@ class UserUpdatePassword extends Base {
             $user->save();
 
             Event::instance()->emit('user.password.changed', $user);
-            Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
+            \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
 
             // Send email
             $smtp = new PasswordChangeEmail();

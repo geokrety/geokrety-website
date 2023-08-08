@@ -2,7 +2,6 @@
 
 namespace GeoKrety;
 
-use Flash;
 use GeoKrety\Email\AccountActivation;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\User;
@@ -20,7 +19,7 @@ class Auth extends \Auth {
         $user = new User();
         if ($user->count(['lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')', $id, $id]) > 1) {
             $f3 = \Base::instance();
-            Flash::instance()->addMessage(sprintf(_('Multiple accounts share the same email address. Please <a href="%s">contact us</a>.'), $f3->alias('contact_us')), 'danger');
+            \Flash::instance()->addMessage(sprintf(_('Multiple accounts share the same email address. Please <a href="%s">contact us</a>.'), $f3->alias('contact_us')), 'danger');
             $f3->reroute('@home');
         }
         $user->load(['lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')', $id, $id]);

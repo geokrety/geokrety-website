@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Exception;
 use GeoKrety\Email\CronError;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Model\WaypointSync;
@@ -35,7 +34,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             $this->db->begin();
             try {
                 $this->process_okapi($okapi, $params);
-            } catch (Exception $exception) {
+            } catch (\Exception $exception) {
                 $this->db->rollback();
                 $this->has_error = true;
                 $this->error = str_replace($params['key'], 'xxx', $exception->getMessage());
@@ -65,7 +64,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
      * @param string $okapi  Okapi service name
      * @param array  $params Okapi parameters
      *
-     * @throws Exception
+     * @throws \Exception
      */
     private function process_okapi(string $okapi, array $params) {
         echo $this->console_writer->sprintf("** \e[0;32mProcessing OKAPI: %s\e[0m", $okapi).PHP_EOL;
@@ -86,7 +85,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
      * @param string $okapi  Okapi service name
      * @param array  $params Okapi parameters
      *
-     * @throws Exception
+     * @throws \Exception
      */
     private function process_okapi_full(string $okapi, array $params) {
         echo "*** \e[0;33mRunning Full Import\e[0m".PHP_EOL;
@@ -228,7 +227,7 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
      * @param int    $revision The last know revision
      * @param array  $params   Provider parameters
      *
-     * @throws Exception When something goes wrong
+     * @throws \Exception When something goes wrong
      */
     private function process_okapi_incremental(string $okapi, int $revision, array $params) {
         echo $this->console_writer->sprintf("*** \e[0;33mRunning Incremental Import from: %d\e[0m", $revision).PHP_EOL;
@@ -246,18 +245,18 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
             File::download(sprintf('%s%s?%s', $params['url'], self::OKAPI_CHANGELOG_ENDPOINT, $url_params), $path, true);
             $raw = file_get_contents($path);
             if ($raw === false) {
-                throw new Exception(sprintf('Response was empty: %s', $params['url']));
+                throw new \Exception(sprintf('Response was empty: %s', $params['url']));
             }
 
             $json = json_decode($raw);
             if (is_null($json)) {
-                throw new Exception('Response expected to be JSON but it\'s not.');
+                throw new \Exception('Response expected to be JSON but it\'s not.');
             }
             if (property_exists($json, 'error')) {
                 if (property_exists($json->error, 'developer_message')) {
-                    throw new Exception(sprintf('%s: %s', $json->error->developer_message, $params['url']));
+                    throw new \Exception(sprintf('%s: %s', $json->error->developer_message, $params['url']));
                 }
-                throw new Exception(sprintf('An unknown OKAPI error occurred: %s', $params['url']));
+                throw new \Exception(sprintf('An unknown OKAPI error occurred: %s', $params['url']));
             }
 
             $changes = $json->changelog;

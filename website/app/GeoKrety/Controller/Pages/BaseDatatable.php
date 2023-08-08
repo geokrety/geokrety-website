@@ -26,7 +26,7 @@ abstract class BaseDatatable extends Base {
         if ($error !== false) {
             $response['error'] = $error;
             echo json_encode($response);
-            exit();
+            exit;
         }
         $filter = $this->getFilter();
         $this->getHas($object);
@@ -41,7 +41,7 @@ abstract class BaseDatatable extends Base {
             \Sentry\captureException($e);
             $response['error'] = _('This query is invalid');
             echo json_encode($response);
-            exit();
+            exit;
         }
         Smarty::assign($this->getObjectName(), $subset);
 
@@ -149,7 +149,7 @@ abstract class BaseDatatable extends Base {
         $filters[] = sizeof($searches) ? '('.join(' OR ', $searches).')' : [];
         $query = join(' AND ', $filters);
 
-        return [$query, ...(array_merge($filter, $searches_values))];
+        return [$query, ...array_merge($filter, $searches_values)];
     }
 
     /**

@@ -11,14 +11,14 @@ class GeokretyMap extends Base {
     }
 
     public function geojson($f3) {
-//        header('Content-Type: application/json; charset=utf-8');
+        //        header('Content-Type: application/json; charset=utf-8');
         $xmin = $f3->get('PARAMS.xmin');
         $ymin = $f3->get('PARAMS.ymin');
         $xmax = $f3->get('PARAMS.xmax');
         $ymax = $f3->get('PARAMS.ymax');
 
         if (!(is_numeric($xmin) && is_numeric($ymin) && is_numeric($xmax) && is_numeric($ymax))) {
-            exit();
+            exit;
         }
         $sql = <<<EOT
             WITH

@@ -5,9 +5,6 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\RateLimit;
 
 class GKTInventory extends BaseGKT {
-    /**
-     * @var mixed
-     */
     private $current_user_id;
 
     public function beforeRoute(\Base $f3) {

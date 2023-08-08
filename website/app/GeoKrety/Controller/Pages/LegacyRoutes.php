@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Exception;
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
@@ -178,7 +177,7 @@ class LegacyRoutes {
         if (sizeof($errors) > 0) {
             Login::disconnectUser($f3);
             Error::buildError(true, $errors);
-            exit();
+            exit;
         }
 
         // Save the moves
@@ -187,10 +186,10 @@ class LegacyRoutes {
                 /* @var $_move Move */
                 $_move->save();
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             Login::disconnectUser($f3);
             Error::buildError(true, $e->getMessage());
-            exit();
+            exit;
         }
         Login::disconnectUser($f3);
         MovesSuccess::buildSuccess(true, $moves);

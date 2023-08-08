@@ -2,12 +2,11 @@
 
 namespace GeoKrety\Service\Validation;
 
-use Base;
 use GeoKrety\Model\User;
 
 class UsernameFree {
     private array $errors = [];
-    private $username = null;
+    private $username;
 
     public function getUsername() {
         return $this->username;
@@ -24,12 +23,12 @@ class UsernameFree {
     }
 
     private function lookupUsername($username, $email) {
-        $f3 = Base::instance();
+        $f3 = \Base::instance();
         $user = new User();
         $username = trim(preg_replace('/(\pZ\pC)+/u', ' ', $username));
         if ($user->count(['lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')', $username, $username], null, 0) > 0) {
             if (is_null($email)) {
-                array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.'), $username, ));
+                array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.'), $username));
             } else {
                 array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.').' '._('If that\'s your account, please <a href="%s">login</a> first.'), $username, $f3->alias('login')));
             }

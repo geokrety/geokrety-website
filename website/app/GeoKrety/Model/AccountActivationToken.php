@@ -9,14 +9,14 @@ use DB\SQL\Schema;
  * @property int|null id
  * @property string|null token
  * @property int|User user
- * @property DateTime created_on_datetime
- * @property DateTime|null used_on_datetime
- * @property DateTime updated_on_datetime
- * @property DateTime expire_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime|null used_on_datetime
+ * @property \DateTime updated_on_datetime
+ * @property \DateTime expire_on_datetime
  * @property string requesting_ip
  * @property string|null validating_ip
  * @property int used
- * @property DateTime last_notification_datetime
+ * @property \DateTime last_notification_datetime
  */
 class AccountActivationToken extends Base {
     use \Validation\Traits\CortexTrait;
@@ -91,29 +91,29 @@ class AccountActivationToken extends Base {
         });
 
         $this->virtual('expire_on_datetime', function ($self) {
-            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new Datetime();
+            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY)));
         });
     }
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_used_on_datetime($value): ?DateTime {
+    public function get_used_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_expire_on_datetime($value): ?DateTime {
+    public function get_expire_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_last_notification_datetime($value): ?DateTime {
+    public function get_last_notification_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

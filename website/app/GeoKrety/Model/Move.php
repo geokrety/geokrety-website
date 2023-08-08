@@ -23,9 +23,9 @@ use GeoKrety\Service\HTMLPurifier;
  * @property string|null username
  * @property string|null app
  * @property string|null app_ver
- * @property DateTime created_on_datetime
- * @property DateTime moved_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime moved_on_datetime
+ * @property \DateTime updated_on_datetime
  * @property int|LogType move_type
  * @property string|null position
  * @property string|null reroute_url
@@ -173,15 +173,15 @@ class Move extends Base {
         return [$this->lat, $this->lon];
     }
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_moved_on_datetime($value): ?DateTime {
+    public function get_moved_on_datetime($value): ?\DateTime {
         return is_null($value) ? null : self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

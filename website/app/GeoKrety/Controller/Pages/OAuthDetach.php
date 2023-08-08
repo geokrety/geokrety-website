@@ -4,10 +4,9 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Model\UserSocialAuth;
 use GeoKrety\Service\Smarty;
-use OAuthProviderLoader;
 
 class OAuthDetach extends Base {
-    use OAuthProviderLoader;
+    use \OAuthProviderLoader;
 
     public string $template = 'dialog/oauth_disconnect.tpl';
 

@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Service;
 
-use Base;
 use DateTime;
 use GeoKrety\Model\Move;
 use GeoKrety\Service\Validation\Coordinates as CoordinatesValidation;
@@ -10,13 +9,13 @@ use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
 use GeoKrety\Service\Validation\Waypoint as WaypointValidation;
 
 class Moves {
-    private Base $f3;
+    private \Base $f3;
 
     public function __construct() {
-        $this->f3 = Base::instance();
+        $this->f3 = \Base::instance();
     }
 
-    public static function postToArray(Base $f3): array {
+    public static function postToArray(\Base $f3): array {
         return [
             'app' => $f3->get('POST.app'),
             'app_ver' => $f3->get('POST.app_ver'),
@@ -54,12 +53,12 @@ class Moves {
             $move->touch('moved_on_datetime');
         } else {
             // Datetime parser
-            $date = DateTime::createFromFormat('Y-m-d H:i:s T', sprintf(
-                    '%s %s:%s:00 %s',
-                    $move_data['date'],
-                    str_pad($move_data['hour'], 2, '0', STR_PAD_LEFT),
-                    str_pad($move_data['minute'], 2, '0', STR_PAD_LEFT),
-                    $move_data['tz'] ?? 'UTC'
+            $date = \DateTime::createFromFormat('Y-m-d H:i:s T', sprintf(
+                '%s %s:%s:00 %s',
+                $move_data['date'],
+                str_pad($move_data['hour'], 2, '0', STR_PAD_LEFT),
+                str_pad($move_data['minute'], 2, '0', STR_PAD_LEFT),
+                $move_data['tz'] ?? 'UTC'
             ));
             if ($date === false) {
                 $errors = array_merge($errors, [_('The date time could not be parsed.')]);

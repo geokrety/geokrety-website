@@ -8,10 +8,10 @@ use DB\SQL\Schema;
 /**
  * @property int|null id
  * @property string name
- * @property DateTime created_on_datetime
- * @property DateTime updated_on_datetime
- * @property DateTime|null start_on_datetime
- * @property DateTime|null end_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
+ * @property \DateTime|null start_on_datetime
+ * @property \DateTime|null end_on_datetime
  * @property string description
  * @property string filename
  * @property string type
@@ -78,15 +78,15 @@ class Awards extends Base {
         ],
     ];
 
-    public function get_start_on_datetime($value): ?DateTime {
+    public function get_start_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_end_on_datetime($value): ?DateTime {
+    public function get_end_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Picture;
+
 use function Sentry\captureMessage;
 
 class PictureUploadDrop extends Base {
@@ -21,7 +22,7 @@ class PictureUploadDrop extends Base {
         if ($picture->dry()) {
             captureMessage('GeokretAvatarUploadDrop: No such Picture in db');
             http_response_code(404);
-            exit();
+            exit;
         }
 
         captureMessage('GeokretAvatarUploadDrop: Picture erased');

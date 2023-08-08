@@ -333,12 +333,12 @@ class BaseMigrator {
         $this->purifier = GeoKrety\Service\HTMLPurifier::getPurifier();
         $this->console_writer = new ConsoleWriter("Importing {$this->pName}: %6.2f%% (%s/%d)");
 
-//        $this->pPdo->query('SET session_replication_role = replica;');
+        //        $this->pPdo->query('SET session_replication_role = replica;');
     }
 
-//    public function __destruct() {
-//        $this->pPdo->query('SET session_replication_role = DEFAULT;');
-//    }
+    //    public function __destruct() {
+    //        $this->pPdo->query('SET session_replication_role = DEFAULT;');
+    //    }
 
     protected function prepareData() {
         // Empty
@@ -429,7 +429,7 @@ class BaseMigrator {
             echo join(', ', $this->pFields).PHP_EOL;
             echo join(', ', $combine).PHP_EOL;
             print_r($insert->errorInfo());
-            exit();
+            exit;
         }
 
         $this->processedRecords += $chunkSize;
@@ -468,7 +468,7 @@ class UserMigrator extends BaseMigrator {
     }
 
     protected function cleanerHook(&$values) {
-//        parent::cleanerHook($values);
+        //        parent::cleanerHook($values);
         $values[5] = $values[5] === '0000-00-00 00:00:00' ? null : $values[5];  // joined_on_datetime
         $values[16] = $values[16] === '0000-00-00 00:00:00' ? null : $values[16];  // last_mail_datetime
         $values[17] = $values[17] === '0000-00-00 00:00:00' ? null : $values[17];  // last_login_datetime
@@ -483,12 +483,12 @@ class UserMigrator extends BaseMigrator {
         $values[13] = $values[13] ? trim($values[13]) : null;  // home_country
         $values[18] = $values[18] ?: SecretCode::generateSecId();  // secid
         switch ($values[4]) { // email_invalid
-          case 0:
-            $values[4] = is_null($values[3]) ? 3 : 0; // USER_EMAIL_MISSING / USER_EMAIL_NO_ERROR
-            break;
-          case 1:
-            $values[4] = 1; // USER_EMAIL_INVALID
-            break;
+            case 0:
+                $values[4] = is_null($values[3]) ? 3 : 0; // USER_EMAIL_MISSING / USER_EMAIL_NO_ERROR
+                break;
+            case 1:
+                $values[4] = 1; // USER_EMAIL_INVALID
+                break;
         }
         $values[] = 2; // Account Imported
     }
@@ -504,7 +504,7 @@ class NewsMigrator extends BaseMigrator {
         $values[5] = $values[5] ?: null;  // author
         $values[7] = $values[7] ?: null;  // last_commented_on_datetime
         $values[2] = Markdown::toFormattedMarkdown($values[2]);  // title
-//        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // content // TODO will need deeper migration path
+        //        $values[3] = Markdown::toFormattedMarkdown($values[3]);  // content // TODO will need deeper migration path
     }
 
     // TODO: Recompute comments count
@@ -902,13 +902,13 @@ class WaypointGCMigrator extends BaseMigrator {
     }
 
     // $this->mPdo->query('DELETE FROM `gk-waypointy-gc` WHERE wpt = "GC1K14H	";');
-//    protected function cleanerHook(&$values) {
-//        $lon = $values[3];
-//        $lat = $values[4];
-//        array_pop($values); // drop lon
-//        $values[] = $lon;
-//        $values[] = $lat;
-//    }
+    //    protected function cleanerHook(&$values) {
+    //        $lon = $values[3];
+    //        $lat = $values[4];
+    //        array_pop($values); // drop lon
+    //        $values[] = $lon;
+    //        $values[] = $lat;
+    //    }
 
     protected function prepareInsertValues(int $chunkSize): string {
         $value = array_fill(0, sizeof($this->pFields) - 1, '?');

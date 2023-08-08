@@ -69,10 +69,10 @@ EOL;
 
         // ## This is not possible to apply because of actual values in DB
         //        $sql = <<<'EOL'
-        //ALTER TABLE IF EXISTS geokrety.gk_geokrety
+        // ALTER TABLE IF EXISTS geokrety.gk_geokrety
         //    ADD CONSTRAINT tracking_code CHECK (is_tracking_code_valid(tracking_code))
         //    NOT VALID;
-        //EOL;
+        // EOL;
         //        $this->execute($sql);
 
         $sql = <<<'EOL'
@@ -104,9 +104,9 @@ EOL;
     public function down(): void {
         // ## This is not possible to apply because of actual values in DB
         //        $sql = <<<'EOL'
-        //ALTER TABLE IF EXISTS geokrety.gk_geokrety
+        // ALTER TABLE IF EXISTS geokrety.gk_geokrety
         //    DROP CONSTRAINT tracking_code;
-        //EOL;
+        // EOL;
         //        $this->execute($sql);
 
         $sql = <<<'EOL'

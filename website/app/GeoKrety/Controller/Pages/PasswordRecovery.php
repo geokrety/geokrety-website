@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\PasswordToken;
 use GeoKrety\Model\User;
@@ -34,9 +33,9 @@ class PasswordRecovery extends Base {
         $user = $this->user;
         $user->load(['_email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.email')]);
         if ($user->dry()) {
-            Flash::instance()->addMessage(_('Sorry no account using that email address.'), 'danger');
+            \Flash::instance()->addMessage(_('Sorry no account using that email address.'), 'danger');
             $this->get();
-            exit();
+            exit;
         }
 
         // Generate a new token
@@ -44,7 +43,7 @@ class PasswordRecovery extends Base {
         $token->user = $user;
         if (!$token->validate()) {
             $this->get();
-            exit();
+            exit;
         }
 
         $token->save();

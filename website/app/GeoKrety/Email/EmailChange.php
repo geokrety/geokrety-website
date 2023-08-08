@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Email;
 
-use Flash;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
@@ -27,7 +26,7 @@ class EmailChange extends BasePHPMailer {
         $this->setTo($token->user);
         $this->setSubject(_('Revalidate your email address'), '⁉️');
         if ($this->sendEmail('emails/email-revalidate-address.tpl')) {
-            Flash::instance()->addMessage(sprintf(
+            \Flash::instance()->addMessage(sprintf(
                 join(' ', [
                     _('Your account has been imported from GKv1.'),
                     _('We would like to verify that your mail address is still valid.'),

@@ -3,14 +3,13 @@
 namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
-use Exception;
 
 /**
  * @property int id
  * @property string name provider name
  */
 class SocialAuthProvider extends Base implements \JsonSerializable {
-//    use \Validation\Traits\CortexTrait;
+    //    use \Validation\Traits\CortexTrait;
 
     protected $db = 'DB';
     protected $table = 'gk_social_auth_providers';
@@ -25,13 +24,13 @@ class SocialAuthProvider extends Base implements \JsonSerializable {
     /**
      * @param string $name The provider name
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public static function getProvider(string $name): SocialAuthProvider {
         $provider = new SocialAuthProvider();
         $provider->load(['name = ?', $name], null, GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS);
         if ($provider->dry()) {
-            throw new Exception('Unsupported social auth provider');
+            throw new \Exception('Unsupported social auth provider');
         }
 
         return $provider;

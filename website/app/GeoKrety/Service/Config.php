@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Service;
 
-use Base;
-
 class Config extends \Prefab {
     public function __construct() {
         // SITE CONFIG
@@ -430,7 +428,7 @@ class Config extends \Prefab {
         define('GK_CDN_BOOTSTRAP_MAXLENGTH_JS', getenv('GK_CDN_BOOTSTRAP_MAXLENGTH_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js');
         define('GK_CDN_PREVIEW_IMAGE_JQUERY_JS', getenv('GK_CDN_PREVIEW_IMAGE_JQUERY_JS') ?: GK_CDN_LIBRARIES_URL.'/preview-image-jquery/1.0/preview-image.min.js');
 
-//        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.22.0/moment.min.js');
+        //        define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.22.0/moment.min.js');
         define('GK_CDN_MOMENT_JS', getenv('GK_CDN_MOMENT_JS') ?: GK_CDN_LIBRARIES_URL.'/moment.js/2.24.0/moment-with-locales.min.js');
         define('GK_CDN_MOMENT_TIMEZONE_JS', getenv('GK_CDN_MOMENT_TIMEZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/moment-timezone/0.5.31/moment-timezone-with-data.min.js');
         define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
@@ -495,7 +493,7 @@ class Config extends \Prefab {
     }
 
     public function clearEnvironments() {
-        $f3 = Base::instance();
+        $f3 = \Base::instance();
         if (preg_match('/^\/cron/', $f3->PATH)) {
             // Skip cleaning env in cron context
             return;
@@ -513,7 +511,7 @@ class Config extends \Prefab {
         $f3->sync('ENV');
     }
 
-    private function _clearEnvironment(Base $f3, string $key) {
+    private function _clearEnvironment(\Base $f3, string $key) {
         putenv($key);
         $f3->clear('ENV.'.$key);
     }

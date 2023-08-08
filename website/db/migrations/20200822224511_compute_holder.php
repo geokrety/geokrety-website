@@ -100,7 +100,7 @@ RETURN NEW;
 END;
 $BODY$;');
 
-        //before_30_manage_holder
+        // before_30_manage_holder
         $this->execute('CREATE TRIGGER before_30_manage_holder
     BEFORE INSERT OR UPDATE OF holder
     ON geokrety.gk_geokrety

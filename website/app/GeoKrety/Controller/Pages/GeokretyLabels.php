@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Labels\Pdf;
 use GeoKrety\Service\Smarty;
@@ -19,7 +18,7 @@ class GeokretyLabels extends Base {
 
     public function pdf(\Base $f3) {
         $this->checkCsrf(function ($error) use ($f3) {
-            Flash::instance()->addMessage($error, 'danger');
+            \Flash::instance()->addMessage($error, 'danger');
             $f3->reroute('@geokrety_labels');
         });
 
@@ -33,7 +32,7 @@ class GeokretyLabels extends Base {
         $geokrety = $geokret->find(['owner = ? AND gkid IN ?', $this->current_user->id, $gk_list], ['limit' => GK_LABELS_GENERATE_MAX]);
 
         if ($geokrety === false) {
-            Flash::instance()->addMessage(_('The list contains only unknown Tracking Codes or never touched GeoKrety'), 'danger');
+            \Flash::instance()->addMessage(_('The list contains only unknown Tracking Codes or never touched GeoKrety'), 'danger');
             $f3->reroute('@geokrety_labels');
         }
 

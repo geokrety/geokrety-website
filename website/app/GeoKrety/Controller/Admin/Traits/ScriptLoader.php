@@ -2,14 +2,13 @@
 
 namespace GeoKrety\Controller\Admin\Traits;
 
-use Base;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Service\Smarty;
 
 trait ScriptLoader {
     protected Scripts $script;
 
-    public function beforeRoute(Base $f3) {
+    public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
         $script_id = $f3->get('PARAMS.scriptid');
 

@@ -4,7 +4,6 @@ namespace GeoKrety\Controller;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidArgumentException;
-use DateTimeZone;
 use GeoKrety\Model\Geokret;
 
 /**
@@ -114,7 +113,7 @@ class BaseExportXML extends BaseExport {
         if (!$this->hasFilter() and !$this->modifiedSinceRestrictionBypass()) {
             http_response_code(400);
             echo sprintf('At least one filter is required. For more information, see %s', GK_SITE_BASE_SERVER_URL.$this->f3->alias('help_api'));
-            exit();
+            exit;
         }
     }
 
@@ -133,10 +132,10 @@ class BaseExportXML extends BaseExport {
     }
 
     protected function _check_geographic_zone() {
-        if (!($this->f3->exists('GET.latNE') and
-            $this->f3->exists('GET.latSW') and
-            $this->f3->exists('GET.lonNE') and
-            $this->f3->exists('GET.lonSW'))) {
+        if (!($this->f3->exists('GET.latNE')
+            and $this->f3->exists('GET.latSW')
+            and $this->f3->exists('GET.lonNE')
+            and $this->f3->exists('GET.lonSW'))) {
             return;
         }
         $coords = [
@@ -167,7 +166,7 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
     public function _check_modifiedsince() {
         // Check timezone
         $timezone = $this->f3->get('GET.timezone') ?: 'UTC';
-        if (!in_array($timezone, DateTimeZone::listIdentifiers())) {
+        if (!in_array($timezone, \DateTimeZone::listIdentifiers())) {
             http_response_code(400);
             exit(sprintf(_('The selected timezone is invalid "%s"'), $timezone));
         }
@@ -199,14 +198,14 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
                 echo _('Info: Using timezone UTC.');
             }
             echo '</p>';
-            exit();
+            exit;
         }
 
         // Check days limit
         $timeElapsed = $dateTime->floatDiffInDays(null, false);
         if ($timeElapsed < 0) {
             echo sprintf(_('The requested period is %.2f days in the future.'), -$timeElapsed);
-            exit();
+            exit;
         }
         if (!$this->modifiedSinceRestrictionBypass()) {
             $timeLimitExceeded = $timeElapsed >= GK_API_EXPORT_LIMIT_DAYS;
@@ -215,7 +214,7 @@ EOT;  // `* 0.3048 ^ 2` for sqm?
                 echo sprintf(_('The requested period exceeds the %d days limit (you requested data for the past %.2f days).'), GK_API_EXPORT_LIMIT_DAYS, $timeElapsed);
                 echo '<br>';
                 echo sprintf(_('Please download a static version of the XML. For more information, see %s.'), GK_SITE_BASE_SERVER_URL.$this->f3->alias('help_api'));
-                exit();
+                exit;
             }
         }
 

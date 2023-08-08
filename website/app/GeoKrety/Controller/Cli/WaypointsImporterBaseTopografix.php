@@ -2,17 +2,14 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Exception;
 use GeoKrety\Model\WaypointOC;
 use GeoKrety\Service\ConsoleWriter;
-use PDOException;
-use SimpleXMLElement;
 
 abstract class WaypointsImporterBaseTopografix extends WaypointsImporterBase {
     /**
      * Handle topografix gpx format.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     protected function perform_topografix_incremental_update(string $api_endpoint, string $url_params = '') {
         echo $this->console_writer->sprintf("*** \e[0;33mRunning full import\e[0m").PHP_EOL;
@@ -41,7 +38,7 @@ abstract class WaypointsImporterBaseTopografix extends WaypointsImporterBase {
                 $wpt->status = $this->status_to_id($cache->status);
                 try {
                     $wpt->save();
-                } catch (PDOException $exception) {
+                } catch (\PDOException $exception) {
                     ++$nError;
                     continue;
                 }
@@ -57,7 +54,7 @@ abstract class WaypointsImporterBaseTopografix extends WaypointsImporterBase {
      *
      * @return string The extracted waypoint
      */
-    protected function _wpt_extractor(?SimpleXMLElement $cache): string {
+    protected function _wpt_extractor(?\SimpleXMLElement $cache): string {
         return $this->string_cleaner($cache->name);
     }
 
@@ -66,7 +63,7 @@ abstract class WaypointsImporterBaseTopografix extends WaypointsImporterBase {
      *
      * @return mixed
      */
-    protected function _name_extractor(?SimpleXMLElement $cache): string {
+    protected function _name_extractor(?\SimpleXMLElement $cache): string {
         return $this->string_cleaner($cache->desc);
     }
 }

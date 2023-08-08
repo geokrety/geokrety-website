@@ -3,18 +3,17 @@
 namespace GeoKrety\Model;
 
 use DateTime;
-use DateTimeZone;
 use DB\SQL\Schema;
 
 /**
  * @property string service_id
- * @property int|null      $revision
- * @property DateTime      $updated_on_datetime
- * @property DateTime|null $last_success_datetime
- * @property DateTime|null $last_error_datetime
- * @property int           $error_count
- * @property int           $wpt_count
- * @property string|null   $last_error
+ * @property int|null       $revision
+ * @property \DateTime      $updated_on_datetime
+ * @property \DateTime|null $last_success_datetime
+ * @property \DateTime|null $last_error_datetime
+ * @property int            $error_count
+ * @property int            $wpt_count
+ * @property string|null    $last_error
  */
 class WaypointSync extends BaseWaypoint {
     protected $table = 'gk_waypoints_sync';
@@ -61,28 +60,28 @@ class WaypointSync extends BaseWaypoint {
         ],
     ];
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
     /**
-     * @return DateTime|false
+     * @return \DateTime|false
      */
     public function get_last_update_as_datetime() {
-        return DateTime::createFromFormat(GK_DB_DATETIME_FORMAT_AS_INT, $this->revision, new DateTimeZone('UTC'));
+        return \DateTime::createFromFormat(GK_DB_DATETIME_FORMAT_AS_INT, $this->revision, new \DateTimeZone('UTC'));
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function get_last_success_datetime($value): ?DateTime {
+    public function get_last_success_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function get_last_error_datetime($value): ?DateTime {
+    public function get_last_error_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

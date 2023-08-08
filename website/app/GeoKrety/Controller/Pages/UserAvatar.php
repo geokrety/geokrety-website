@@ -3,16 +3,15 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Libravatar;
-use UserLoader;
 
 class UserAvatar extends Base {
-    use UserLoader;
+    use \UserLoader;
 
     public function get() {
         if ($this->user->avatar) {
             $url = $this->user->avatar->url;
             header("Location: $url");
-            exit();
+            exit;
         }
 
         $identifier = $this->user->email ?: $this->user->username;

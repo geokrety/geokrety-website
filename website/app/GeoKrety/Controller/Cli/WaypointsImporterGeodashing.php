@@ -6,7 +6,6 @@ use GeoKrety\Model\WaypointOC;
 use GeoKrety\Service\ConsoleWriter;
 use GeoKrety\Service\File;
 use League\Csv\Reader;
-use PDOException;
 
 class WaypointsImporterGeodashing extends WaypointsImporterBase {
     public const GD_API_ENDPOINT = 'http://geodashing.gpsgames.org/Games/dashpoints_csv.zip';
@@ -46,7 +45,7 @@ class WaypointsImporterGeodashing extends WaypointsImporterBase {
                 $wpt->type = 'Dashpoint';
                 try {
                     $wpt->save();
-                } catch (PDOException $exception) {
+                } catch (\PDOException $exception) {
                     ++$nError;
                     continue;
                 }

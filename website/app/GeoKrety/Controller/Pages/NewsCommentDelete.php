@@ -3,10 +3,9 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
-use NewsCommentLoader;
 
 class NewsCommentDelete extends Base {
-    use NewsCommentLoader;
+    use \NewsCommentLoader;
 
     public function get(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/news_comment_delete.tpl');

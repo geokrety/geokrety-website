@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
@@ -68,9 +67,9 @@ abstract class Base {
         return !is_null($this->current_user);
     }
 
-//    public function afterRoute($f3) {
-//        \Flash::instance()->addMessage('<pre>'.$f3->get('DB')->log().'</pre>', 'warning');
-//    }
+    //    public function afterRoute($f3) {
+    //        \Flash::instance()->addMessage('<pre>'.$f3->get('DB')->log().'</pre>', 'warning');
+    //    }
 
     public function checkCaptcha(?string $func = 'get'): ?string {
         if (GK_GOOGLE_RECAPTCHA_SECRET_KEY) {
@@ -81,9 +80,9 @@ abstract class Base {
                 if (is_null($func)) {
                     return $error;
                 }
-                Flash::instance()->addMessage($error, 'danger');
+                \Flash::instance()->addMessage($error, 'danger');
                 $this->$func($this->f3);
-                exit();
+                exit;
             }
         }
 
@@ -95,9 +94,9 @@ abstract class Base {
      */
     protected function checkCsrf($func = 'get', array $options = []): ?string {
         if (!GK_DEVEL or (
-                !\Base::instance()->exists('GET.skip_csrf') or
-                !filter_var(\Base::instance()->get('GET.skip_csrf'), FILTER_VALIDATE_BOOLEAN)
-            )) { // Allow skip tests only on DEVEL
+            !\Base::instance()->exists('GET.skip_csrf')
+            or !filter_var(\Base::instance()->get('GET.skip_csrf'), FILTER_VALIDATE_BOOLEAN)
+        )) { // Allow skip tests only on DEVEL
             $token = $this->f3->get('POST.csrf_token');
             $csrf = $this->f3->get('SESSION.csrf');
             if (empty($token) || empty($csrf) || $token !== $csrf) {
@@ -106,12 +105,12 @@ abstract class Base {
                     return $error;
                 }
                 if (is_string($func) && method_exists($this, $func)) {
-                    Flash::instance()->addMessage($error, 'danger');
+                    \Flash::instance()->addMessage($error, 'danger');
                     $this->$func($this->f3);
                 } else {
                     call_user_func($func, $error, $options);
                 }
-                exit();
+                exit;
             }
         }
 

@@ -33,7 +33,7 @@ class GeokretCreate extends GeokretFormBase {
             } catch (\Exception $e) {
                 \Flash::instance()->addMessage(_('Failed to create the GeoKret.'), 'danger');
                 $this->get($f3);
-                exit();
+                exit;
             }
 
             if ($this->currentUser->hasHomeCoordinates() && filter_var($f3->get('POST.log_at_home'), FILTER_VALIDATE_BOOLEAN)) {
@@ -70,6 +70,6 @@ class GeokretCreate extends GeokretFormBase {
         $f3->get('DB')->rollback();
         $this->geokret->resetFields(['gkid']);  // https://github.com/ikkez/f3-cortex/issues/90
         $this->get($f3);
-        exit();
+        exit;
     }
 }

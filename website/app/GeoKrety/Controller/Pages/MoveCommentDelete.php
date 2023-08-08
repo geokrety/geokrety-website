@@ -2,13 +2,11 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Service\Smarty;
-use MoveCommentLoader;
 use Sugar\Event;
 
 class MoveCommentDelete extends Base {
-    use MoveCommentLoader;
+    use \MoveCommentLoader;
 
     public function get(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/move_comment_delete.tpl');
@@ -28,9 +26,9 @@ class MoveCommentDelete extends Base {
         if ($comment->valid()) {
             $comment->erase();
             Event::instance()->emit('move-comment.deleted', $comment);
-            Flash::instance()->addMessage(_('Comment removed.'), 'success');
+            \Flash::instance()->addMessage(_('Comment removed.'), 'success');
         } else {
-            Flash::instance()->addMessage(_('Failed to delete comment.'), 'danger');
+            \Flash::instance()->addMessage(_('Failed to delete comment.'), 'danger');
         }
         $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $gkid, $page, $move_id));
     }

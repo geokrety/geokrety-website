@@ -58,7 +58,7 @@ abstract class AbstractPictureUpload extends Base {
                 'text' => $f3->get('validation.error'),
             ];
             echo json_encode($response);
-            exit();
+            exit;
         }
 
         try {
@@ -71,7 +71,7 @@ abstract class AbstractPictureUpload extends Base {
                 'text' => 'Failed to store upload url into database.',
             ];
             echo json_encode($response);
-            exit();
+            exit;
         }
 
         Event::instance()->emit(sprintf('%s.presigned_request', $this->getEventNameBase()), $picture, $response);

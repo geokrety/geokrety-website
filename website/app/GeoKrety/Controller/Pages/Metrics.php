@@ -158,5 +158,5 @@ SQL,
     }
 }
 
-//Metrics::getOrRegisterGauge('cron_locked_scripts', 'Count of locked script')
+// Metrics::getOrRegisterGauge('cron_locked_scripts', 'Count of locked script')
 //    ->set(sizeof($locked_scripts));

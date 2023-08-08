@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\ExpiringAccounts;
 use GeoKrety\Model\AccountActivationToken as AccountActivationTokenModel;
@@ -56,7 +55,7 @@ class AccountActivationToken {
         $this->script_end();
     }
 
-    public function renotifyUnactivatedAccounts(Base $f3) {
+    public function renotifyUnactivatedAccounts(\Base $f3) {
         $this->script_start(__METHOD__);
         $days = $f3->get('PARAMS.days');
         $this->_renotifyUnactivatedAccounts($days);

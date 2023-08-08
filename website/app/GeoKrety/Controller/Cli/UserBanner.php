@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
-use Exception;
 use GeoKrety\Model\User;
 
 class UserBanner extends BaseCleaner {
@@ -17,7 +15,7 @@ class UserBanner extends BaseCleaner {
         return 'Users';
     }
 
-    protected function getParamId(Base $f3): int {
+    protected function getParamId(\Base $f3): int {
         return $f3->get('PARAMS.userid');
     }
 
@@ -32,7 +30,7 @@ class UserBanner extends BaseCleaner {
     protected function process($object): void {
         try {
             \GeoKrety\Service\UserBanner::generate($object);
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
         }
         $this->processResult(true);
         $this->print();

@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\LogType;
 
@@ -98,7 +97,7 @@ class GeokretWithDetails extends Geokret {
         ],
     ];
 
-    public function get_moved_on_datetime($value): ?DateTime {
+    public function get_moved_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

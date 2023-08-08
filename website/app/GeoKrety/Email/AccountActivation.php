@@ -3,7 +3,6 @@
 namespace GeoKrety\Email;
 
 use Carbon\Carbon;
-use Flash;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Service\Smarty;
 
@@ -75,7 +74,7 @@ class AccountActivation extends BasePHPMailer {
     }
 
     public function flashMessage(AccountActivationToken $token) {
-        Flash::instance()->addMessage(sprintf(
+        \Flash::instance()->addMessage(sprintf(
             join(' ', $this->message['msg']),
             Carbon::instance($token->expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])
         ), $this->message['status']);

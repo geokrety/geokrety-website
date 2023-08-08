@@ -2,9 +2,7 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Exception;
 use GeoKrety\Service\File;
-use SimpleXMLElement;
 
 class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
     public const WPG_API_ENDPOINT = 'http://wpg.alleycat.pl/allwps.php';
@@ -13,7 +11,7 @@ class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
     protected string $class_name = __CLASS__;
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function process() {
         $this->perform_topografix_incremental_update(self::WPG_API_ENDPOINT);
@@ -24,7 +22,7 @@ class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
      *
      * @return string The extracted waypoint
      */
-    protected function _wpt_extractor(?SimpleXMLElement $cache): string {
+    protected function _wpt_extractor(?\SimpleXMLElement $cache): string {
         $name = $this->string_cleaner($cache->name);
 
         return sprintf('WPG%s', substr(explode(' ', $name)[0], 3));
@@ -35,7 +33,7 @@ class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
      *
      * @return mixed
      */
-    protected function _name_extractor(?SimpleXMLElement $cache): string {
+    protected function _name_extractor(?\SimpleXMLElement $cache): string {
         return $this->string_cleaner($cache->name);
     }
 
@@ -46,9 +44,9 @@ class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
      *
      * @return \SimpleXMLElement The parsed xml
      *
-     * @throws Exception
+     * @throws \Exception
      */
-    protected function download_xml(string $url): SimpleXMLElement {
+    protected function download_xml(string $url): \SimpleXMLElement {
         $tmp_file = tmpfile();
         $path = stream_get_meta_data($tmp_file)['uri'];
         File::download($url, $path);

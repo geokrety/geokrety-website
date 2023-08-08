@@ -37,7 +37,7 @@ $supported['trackable'][] = ['https://www.geocaching.com/track/travelbugs.aspx',
 
 // if get wpt value is set then: redirect
 if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
-    $wpt = substr((strip_tags($_GET['wpt'])), 0, 20);
+    $wpt = substr(strip_tags($_GET['wpt']), 0, 20);
     include_once 'go2geo.php';
     $link = go2geo($wpt);
     if (!is_null($link)) {

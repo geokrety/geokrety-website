@@ -15,8 +15,8 @@ use Validation\Traits\CortexTrait;
  * @property int|null distance
  * @property int count
  * @property int|\GeoKrety\Model\Awards award
- * @property DateTime awarded_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime awarded_on_datetime
+ * @property \DateTime updated_on_datetime
  * @property int|\GeoKrety\Model\AwardsGroup|null group;
  */
 class YearlyRanking extends Base {
@@ -67,7 +67,7 @@ class YearlyRanking extends Base {
         ],
     ];
 
-    //public function __construct() {
+    // public function __construct() {
     //    parent::__construct();
     //    $this->afterinsert(function ($self) {
     //    });
@@ -75,13 +75,13 @@ class YearlyRanking extends Base {
     //    });
     //    $this->aftererase(function ($self) {
     //    });
-    //}
+    // }
 
-    public function get_awarded_on_datetime($value): ?DateTime {
+    public function get_awarded_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

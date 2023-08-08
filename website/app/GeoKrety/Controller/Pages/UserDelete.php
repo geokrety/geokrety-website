@@ -2,19 +2,17 @@
 
 namespace GeoKrety\Controller;
 
-use CurrentUserLoader;
-use Flash;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Session;
 use Sugar\Event;
 
 class UserDelete extends Base {
-    use CurrentUserLoader;
+    use \CurrentUserLoader;
 
     public function post(\Base $f3) {
         $operation_result = array_sum($f3->get('SESSION.delete_account_operation_numbers'));
         if (is_null($operation_result) || $f3->get('POST.operation_result') != $operation_result) {
-            Flash::instance()->addMessage(_('Wrong operation result.'), 'danger');
+            \Flash::instance()->addMessage(_('Wrong operation result.'), 'danger');
             $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
         }
 
@@ -29,7 +27,7 @@ class UserDelete extends Base {
 
         if ($result === false) {
             $f3->get('DB')->rollback();
-            Flash::instance()->addMessage(_('Something went wrong. If the problem persists, please contact us.'), 'danger');
+            \Flash::instance()->addMessage(_('Something went wrong. If the problem persists, please contact us.'), 'danger');
             $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
         }
 
@@ -38,7 +36,7 @@ class UserDelete extends Base {
         Event::instance()->emit('user.deleted', $this->currentUser, $context);
         Login::disconnectUser($f3);
         Session::closeAllSessionsForUser($this->currentUser);
-        Flash::instance()->addMessage(_('Your account is now deleted. Thanks for playing with us.'), 'success');
+        \Flash::instance()->addMessage(_('Your account is now deleted. Thanks for playing with us.'), 'success');
         $f3->reroute('@home');
     }
 

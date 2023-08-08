@@ -14,8 +14,8 @@ use Validation\Traits\CortexTrait;
  * @property string|null author_name
  * @property int|User|null author
  * @property int comments_count
- * @property DateTime created_on_datetime
- * @property DateTime|null last_commented_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime|null last_commented_on_datetime
  */
 class News extends Base {
     use CortexTrait;
@@ -64,11 +64,11 @@ class News extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_last_commented_on_datetime($value): ?DateTime {
+    public function get_last_commented_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

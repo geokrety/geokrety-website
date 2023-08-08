@@ -6,6 +6,7 @@ use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\PictureType;
 use GeoKrety\Service\S3Client;
+
 use function Sentry\captureMessage;
 
 /**
@@ -18,9 +19,9 @@ use function Sentry\captureMessage;
  * @property int|User|null user
  * @property string|null filename
  * @property string|null caption
- * @property DateTime created_on_datetime
- * @property DateTime|null used_on_datetime
- * @property DateTime|null uploaded_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime|null used_on_datetime
+ * @property \DateTime|null uploaded_on_datetime
  * @property int|PictureType type
  * @property int pictures_count
  * @property string url
@@ -124,15 +125,15 @@ class Picture extends Base {
         return new \GeoKrety\PictureType($value);
     }
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_uploaded_on_datetime($value): ?DateTime {
+    public function get_uploaded_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
@@ -195,8 +196,8 @@ class Picture extends Base {
 
         return sprintf('%s/%s/%s', GK_MINIO_SERVER_URL_EXTERNAL, $this->type->getBucketName(), $this->key);
         // Not as performant as above ~5-10ms
-        //$s3 = S3Client::instance()->getS3Public();
-        //return $s3->getObjectUrl($this->type->getBucketName(), $this->key);
+        // $s3 = S3Client::instance()->getS3Public();
+        // return $s3->getObjectUrl($this->type->getBucketName(), $this->key);
     }
 
     public function get_thumbnail_url(): string {
@@ -206,9 +207,9 @@ class Picture extends Base {
 
         return sprintf('%s/%s-thumbnails/%s', GK_MINIO_SERVER_URL_EXTERNAL, $this->type->getBucketName(), $this->key);
         // Not as performant as above ~5-10ms
-        //$s3 = S3Client::instance()->getS3Public();
-        //$bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
-        //return $s3->getObjectUrl($bucketName, $this->key);
+        // $s3 = S3Client::instance()->getS3Public();
+        // $bucketName = S3Client::getThumbnailBucketName($this->type->getBucketName());
+        // return $s3->getObjectUrl($bucketName, $this->key);
     }
 
     public function __construct() {

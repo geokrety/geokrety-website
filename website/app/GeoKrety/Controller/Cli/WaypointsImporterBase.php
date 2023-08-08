@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Exception;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\CronError;
 use GeoKrety\Model\WaypointOC;
@@ -11,7 +10,6 @@ use GeoKrety\Service\File;
 use GeoKrety\Service\HTMLPurifier;
 use GeoKrety\Service\Metrics;
 use Prometheus\Exception\MetricsRegistrationException;
-use SimpleXMLElement;
 
 abstract class WaypointsImporterBase {
     use Script;
@@ -27,14 +25,14 @@ abstract class WaypointsImporterBase {
     /**
      * Start the import process.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function run() {
         $this->script_start($this->class_name.'::'.__FUNCTION__);
         try {
             $this->process();
             $this->console_writer->flush();
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             $this->has_error = true;
             $this->db->rollback();
             $this->error = $exception->getMessage();
@@ -49,7 +47,7 @@ abstract class WaypointsImporterBase {
     /**
      * The real work process.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     abstract protected function process();
 
@@ -87,7 +85,7 @@ abstract class WaypointsImporterBase {
         }
         try {
             $okapiSync->save();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
         }
         $this->error = null;
     }
@@ -139,11 +137,11 @@ abstract class WaypointsImporterBase {
      *
      * @param $url string The url to download from
      *
-     * @return SimpleXMLElement The parsed xml
+     * @return \SimpleXMLElement The parsed xml
      *
-     * @throws Exception
+     * @throws \Exception
      */
-    protected function download_xml(string $url): SimpleXMLElement {
+    protected function download_xml(string $url): \SimpleXMLElement {
         $tmp_file = tmpfile();
         $path = stream_get_meta_data($tmp_file)['uri'];
         File::download($url, $path);

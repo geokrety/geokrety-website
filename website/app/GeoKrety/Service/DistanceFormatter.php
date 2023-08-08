@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Service;
 
-use Exception;
-
 class DistanceFormatter {
     public const SUPPORTED_UNITS = ['metric' => 1, 'imperial' => 0.62137];
     public const UNITS = ['metric' => 'km', 'imperial' => 'mi'];
@@ -16,7 +14,7 @@ class DistanceFormatter {
      *
      * @return string The formatted distance
      *
-     * @throws Exception On invalid requested unit
+     * @throws \Exception On invalid requested unit
      */
     public static function format(float $distance, string $in_unit = 'metric'): string {
         // Right now, there is not users preferences configuration
@@ -25,7 +23,7 @@ class DistanceFormatter {
         $out_unit = 'metric';
 
         if (!array_key_exists($in_unit, self::SUPPORTED_UNITS)) {
-            throw new Exception(sprintf(_('Invalid unit specified: %s'), $in_unit));
+            throw new \Exception(sprintf(_('Invalid unit specified: %s'), $in_unit));
         }
 
         return sprintf('%d %s', $distance * self::SUPPORTED_UNITS[$in_unit], self::UNITS[$out_unit]);

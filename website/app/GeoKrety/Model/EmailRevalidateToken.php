@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\Model\Traits\EmailField;
 
@@ -38,8 +37,8 @@ class EmailRevalidateToken extends Base {
         'email' => [
             'type' => Schema::DT_VARCHAR128,
             // Validation occurs in validate() for this
-            //'filter' => 'trim',
-            //'validate' => 'required|valid_email|email_host',
+            // 'filter' => 'trim',
+            // 'validate' => 'required|valid_email|email_host',
         ],
         '_email_crypt' => [
             'type' => Schema::DT_VARCHAR256,
@@ -83,30 +82,30 @@ class EmailRevalidateToken extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_validated_on_datetime($value): ?DateTime {
+    public function get_validated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_expired_on_datetime($value): ?DateTime {
+    public function get_expired_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_disabled_on_datetime($value): ?DateTime {
+    public function get_disabled_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
     public function __construct() {
         parent::__construct();
-        //$this->beforeinsert(function ($self) {
-        //});
+        // $this->beforeinsert(function ($self) {
+        // });
 
         $this->beforeupdate(function ($self) {
             if ($self->used == self::TOKEN_VALIDATED) {
@@ -114,16 +113,13 @@ class EmailRevalidateToken extends Base {
             }
         });
 
-        $this->virtual('validate_expire_on_datetime', function ($self): DateTime {
+        $this->virtual('validate_expire_on_datetime', function ($self): \DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVALIDATE_CODE_DAYS_VALIDITY)));
         });
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function jsonSerialize() {
         // TODO: Implement jsonSerialize() method.
     }

@@ -3,7 +3,6 @@
 namespace GeoKrety\Email;
 
 use Carbon\Carbon;
-use Flash;
 use GeoKrety\Model\EmailRevalidateToken;
 use GeoKrety\Service\Smarty;
 
@@ -37,7 +36,7 @@ class EmailRevalidate extends BasePHPMailer {
     }
 
     public function flashMessage($token) {
-        Flash::instance()->addMessage(sprintf(
+        \Flash::instance()->addMessage(sprintf(
             join(' ', $this->message['msg']),
             Carbon::instance($token->validate_expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])
         ), $this->message['status']);

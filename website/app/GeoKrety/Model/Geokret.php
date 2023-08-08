@@ -25,9 +25,9 @@ use GeoKrety\LogType;
  * @property int|User|null holder
  * @property string|null holder_username
  * @property int|Picture|null avatar
- * @property DateTime created_on_datetime
+ * @property \DateTime created_on_datetime
  * @property Picture[]|null avatars
- * @property DateTime updated_on_datetime
+ * @property \DateTime updated_on_datetime
  * @property bool missing
  * @property int|GeokretyType type
  * @property int|Label label_template
@@ -216,11 +216,11 @@ class Geokret extends Base {
         return new \GeoKrety\GeokretyType($value);
     }
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

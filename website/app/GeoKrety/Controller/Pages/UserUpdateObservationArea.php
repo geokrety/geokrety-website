@@ -2,14 +2,12 @@
 
 namespace GeoKrety\Controller;
 
-use CurrentUserLoader;
-use Flash;
 use GeoKrety\Service\Smarty;
 use League\Geotools\Coordinate\Coordinate;
 use Sugar\Event;
 
 class UserUpdateObservationArea extends Base {
-    use CurrentUserLoader;
+    use \CurrentUserLoader;
 
     public function post(\Base $f3) {
         $user = $this->currentUser;
@@ -28,17 +26,17 @@ class UserUpdateObservationArea extends Base {
             $user->save();
 
             if ($f3->get('ERROR')) {
-                Flash::instance()->addMessage(_('Failed to save your home coordinates.'), 'danger');
+                \Flash::instance()->addMessage(_('Failed to save your home coordinates.'), 'danger');
             } else {
                 Event::instance()->emit('user.home_location.changed', $user);
-                Flash::instance()->addMessage(_('Your home coordinates were successfully saved.'), 'success');
+                \Flash::instance()->addMessage(_('Your home coordinates were successfully saved.'), 'success');
                 if (!is_null($user->home_latitude) and !is_null($user->home_longitude) and $user->observation_area === 0) {
-                    Flash::instance()->addMessage(_('Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails.'), 'info');
+                    \Flash::instance()->addMessage(_('Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails.'), 'info');
                 }
             }
         } else {
             $this->get($f3);
-            exit();
+            exit;
         }
 
         $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));

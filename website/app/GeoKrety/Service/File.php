@@ -55,8 +55,8 @@ class File {
         do {
             $path = sprintf('%s%s%s%s', $dir, DIRECTORY_SEPARATOR, $prefix, mt_rand(100000, mt_getrandmax()));
         } while (
-            !mkdir($path, $mode) &&
-            $attempts++ < $maxAttempts
+            !mkdir($path, $mode)
+            && $attempts++ < $maxAttempts
         );
 
         return $path;
@@ -67,17 +67,17 @@ class File {
      *
      * @see https://stackoverflow.com/a/3406181/944936
      *
-     * @param $url string path to source file or URL
+     * @param $url    string path to source file or URL
      * @param $output string|resource path to output file or stream
      *
-     * @throws Exception if something goes wrong
+     * @throws \Exception if something goes wrong
      */
     public static function download(string $url, $output, $ignore_errors = false) {
         $context = null;
         if (!$ignore_errors) {
             set_error_handler(
                 function ($severity, $message, $file, $line) {
-                    throw new Exception($message);
+                    throw new \Exception($message);
                 }
             );
         } else {
@@ -93,7 +93,7 @@ class File {
             // fopen() doesn't throw exception on url open errors
             $readableStream = @fopen($url, 'rb', false, $context);
             if ($readableStream === false) {
-                throw new Exception(sprintf('Fail to open url: %s', $url));
+                throw new \Exception(sprintf('Fail to open url: %s', $url));
             }
         } finally {
             restore_error_handler();
@@ -101,7 +101,7 @@ class File {
         if (is_string($output)) {
             $writableStream = fopen($output, 'wb');
             if (!$writableStream) {
-                throw new Exception(sprintf('Failed to create file: %s', $url));
+                throw new \Exception(sprintf('Failed to create file: %s', $url));
             }
             stream_copy_to_stream($readableStream, $writableStream);
             fclose($writableStream);
@@ -116,7 +116,7 @@ class File {
      * @param string $path The file to extract
      * @param string $dest The destination directory
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public static function extract_tar(string $path, string $dest) {
         $result_code = null;
@@ -125,7 +125,7 @@ class File {
         if ($result_code === 0) {
             return;
         }
-        throw new Exception(sprintf('Failed to extract file: %s', $output));
+        throw new \Exception(sprintf('Failed to extract file: %s', $output));
     }
 
     /**
@@ -135,7 +135,7 @@ class File {
      *
      * @return void
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public static function deleteTree(string $directory) {
         if (empty($directory) or !$directory) {
@@ -147,7 +147,7 @@ class File {
         foreach ($files as $file) {
             $file_ = realpath("$directory/$file");
             if (strncmp($file_, $directory, $pathLength) !== 0) {
-                throw new Exception("Deleting file '$file' would have gone out of base directory ('$directory') => '$file_'.");
+                throw new \Exception("Deleting file '$file' would have gone out of base directory ('$directory') => '$file_'.");
             }
             (is_dir($file_)) ? self::deleteTree($file_) : unlink($file_);
         }
@@ -160,7 +160,7 @@ class File {
      * @param string $path The file to extract
      * @param string $dest The destination directory
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public static function extract_zip(string $path, string $dest) {
         $result_code = null;
@@ -169,6 +169,6 @@ class File {
         if ($result_code === 0) {
             return;
         }
-        throw new Exception(sprintf('Failed to unzip file: %s', $output));
+        throw new \Exception(sprintf('Failed to unzip file: %s', $output));
     }
 }

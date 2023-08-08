@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Email\CronError;
 use GeoKrety\Model\AuditLog;
@@ -40,14 +39,14 @@ SQL;
         $this->script_end();
     }
 
-    public function refreshMaterializedView(Base $f3) {
+    public function refreshMaterializedView(\Base $f3) {
         $this->script_start(__METHOD__);
         $sql = 'REFRESH MATERIALIZED VIEW CONCURRENTLY gk_geokrety_in_caches;';
         $f3->get('DB')->exec($sql);
         $this->script_end();
     }
 
-    public function refreshSiteStats(Base $f3) {
+    public function refreshSiteStats(\Base $f3) {
         $this->script_start(__METHOD__);
         $sql = 'SELECT moves_stats_updater();';
         $f3->get('DB')->exec($sql);

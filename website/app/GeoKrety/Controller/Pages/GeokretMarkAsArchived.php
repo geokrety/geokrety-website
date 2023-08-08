@@ -49,7 +49,7 @@ class GeokretMarkAsArchived extends Base {
             $move->save();
         } else {
             \Flash::instance()->addMessage(_('Failed to archive the GeoKret.'), 'danger');
-            exit();
+            exit;
         }
 
         $f3->reroute($move->reroute_url);

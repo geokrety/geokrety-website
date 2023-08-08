@@ -15,7 +15,6 @@ class UserSettings extends \Prefab {
      * Create or update a user personal setting.
      *
      * @param \GeoKrety\Model\User|int $user
-     * @param $value
      *
      * @throws \Exception
      */
@@ -60,7 +59,6 @@ class UserSettings extends \Prefab {
      * Get a user custom setting or the default site value.
      *
      * @param \GeoKrety\Model\User|int|null $user
-     * @param $value
      *
      * @return string|int|bool|null
      */
@@ -107,8 +105,6 @@ class UserSettings extends \Prefab {
 
     /**
      * Load custom user's settings.
-     *
-     * @param int $user
      */
     protected function loadUserSettings(int $user_id): void {
         // Declare settings as loaded

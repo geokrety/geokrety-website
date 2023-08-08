@@ -2,13 +2,11 @@
 
 namespace GeoKrety\Service;
 
-use Base;
-use Prefab;
 use Prometheus\CollectorRegistry;
 use Prometheus\Counter;
 use Prometheus\Gauge;
 
-class Metrics extends Prefab {
+class Metrics extends \Prefab {
     private CollectorRegistry $collector;
 
     public function __construct() {
@@ -32,11 +30,11 @@ class Metrics extends Prefab {
      * @throws \Prometheus\Exception\MetricsRegistrationException
      */
     public static function gauge_set_sql(string $name, string $help, string $sql, array $labels = []): void {
-        $results = Base::instance()->get('DB')->exec($sql);
+        $results = \Base::instance()->get('DB')->exec($sql);
         $gauge = self::getOrRegisterGauge($name, $help, $labels);
         if (sizeof($labels) === 0) {
-            //foreach ($results as $value) {
-            //}
+            // foreach ($results as $value) {
+            // }
             $gauge->set($results[0]['count']);
 
             return;

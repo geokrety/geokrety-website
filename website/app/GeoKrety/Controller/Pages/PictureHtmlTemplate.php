@@ -3,10 +3,9 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Picture;
-use PictureLoader;
 
 class PictureHtmlTemplate extends Base {
-    use PictureLoader;
+    use \PictureLoader;
 
     public function get() {
         $smarty = \GeoKrety\Service\Smarty::getSmarty();

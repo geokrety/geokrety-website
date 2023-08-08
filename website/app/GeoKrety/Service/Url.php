@@ -18,7 +18,7 @@ class Url extends \Prefab {
      * @return string The wanted url, with encoded query string to rebuild the current url. Needed to recompute url
      *                according to the user preferred language.
      */
-//    public static function getGoto(string $alias = 'home', string|array $params) { // php 8.0 will support `union-types`
+    //    public static function getGoto(string $alias = 'home', string|array $params) { // php 8.0 will support `union-types`
     public static function serializeGoto(string $alias = 'home', $params = null): string {
         $f3 = \Base::instance();
         $query = [

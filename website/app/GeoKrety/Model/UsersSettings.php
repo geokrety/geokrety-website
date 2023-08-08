@@ -10,8 +10,8 @@ use DB\SQL\Schema;
  * @property int|User user Connected user
  * @property string|UsersSettingsParameters name
  * @property string value
- * @property DateTime created_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
  */
 class UsersSettings extends Base {
     use \Validation\Traits\CortexTrait;
@@ -49,11 +49,11 @@ class UsersSettings extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
@@ -82,8 +82,6 @@ class UsersSettings extends Base {
 
     /**
      * Convert the setting name on the fly.
-     *
-     * @param string|UsersSettingsParameters $value
      *
      * @return \GeoKrety\Model\UsersSettingsParameters|null
      *

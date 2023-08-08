@@ -9,7 +9,7 @@ use GeoKrety\Service\WaypointInfo;
 
 class Waypoint {
     private array $errors = [];
-    private $waypoint = null;
+    private $waypoint;
 
     public function validate($waypoint, $coordinates = null) {
         if (!$this->checkLength($waypoint, $coordinates)) {

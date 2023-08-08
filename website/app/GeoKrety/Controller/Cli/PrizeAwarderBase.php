@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
-use Exception;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Model\Awards;
 use GeoKrety\Model\AwardsWon;
@@ -13,7 +11,7 @@ use GeoKrety\Service\DistanceFormatter;
 abstract class PrizeAwarderBase {
     use Script;
 
-    public function process(Base $f3) {
+    public function process(\Base $f3) {
         $this->console_writer->setPattern('Awarding badge:"%s" user:%6d:%-25s rank:%3d for %5d moves');
         $this->_pre_check($f3);
         $exit = 0;
@@ -32,9 +30,9 @@ abstract class PrizeAwarderBase {
         $this->console_writer->print([$award->name, $values['user_id'], $values['username'], $rank, $values['total']], true, true);
     }
 
-    abstract protected function _pre_check(Base $f3);
+    abstract protected function _pre_check(\Base $f3);
 
-    abstract protected function _process(Base $f3);
+    abstract protected function _process(\Base $f3);
 
     protected function award(array $result, Awards $awardBase, string $description, int $year, int $rank) {
         $award = new AwardsWon();
@@ -66,10 +64,10 @@ abstract class PrizeAwarderBase {
         $year = date('Y');
 
         if ($award->start_on_datetime->format('Y') < $year) {
-            throw new Exception(sprintf('Badge is already expired "%s"', $award->name));
+            throw new \Exception(sprintf('Badge is already expired "%s"', $award->name));
         }
         if ($award->start_on_datetime->format('Y') > $year) {
-            throw new Exception(sprintf('Badge not yet available "%s"', $award->name));
+            throw new \Exception(sprintf('Badge not yet available "%s"', $award->name));
         }
     }
 }

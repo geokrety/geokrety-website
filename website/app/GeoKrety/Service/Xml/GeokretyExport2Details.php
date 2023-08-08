@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Service\Xml;
 
-use DateTimeInterface;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Markdown;
 
@@ -39,7 +38,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
         $xml->endElement(); // datecreated
 
         $xml->startElement('datecreated_Iso8601');
-        $xml->writeCData($geokret->created_on_datetime->format(DateTimeInterface::ATOM));
+        $xml->writeCData($geokret->created_on_datetime->format(\DateTimeInterface::ATOM));
         $xml->endElement(); // datecreated_Iso8601
 
         $xml->startElement('dateupdated');
@@ -47,7 +46,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
         $xml->endElement(); // dateupdated
 
         $xml->startElement('datecreated_Iso8601');
-        $xml->writeCData($geokret->updated_on_datetime->format(DateTimeInterface::ATOM));
+        $xml->writeCData($geokret->updated_on_datetime->format(\DateTimeInterface::ATOM));
         $xml->endElement(); // datecreated_Iso8601
 
         $xml->startElement('distancetraveled');
@@ -113,7 +112,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
 
             $xml->startElement('date');
             $xml->writeAttribute('moved', $move->moved_on_datetime->format('Y-m-d H:i:s'));
-            $xml->writeAttribute('moved_Iso8601', $move->moved_on_datetime->format(DateTimeInterface::ATOM));
+            $xml->writeAttribute('moved_Iso8601', $move->moved_on_datetime->format(\DateTimeInterface::ATOM));
             $xml->endElement(); // date
 
             $this->addUser($move);
@@ -155,7 +154,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
 
                     $xml->startElement('date');
                     $xml->writeAttribute('commented', $comment->created_on_datetime->format('Y-m-d H:i:s'));
-                    $xml->writeAttribute('commented_Iso8601', $comment->created_on_datetime->format(DateTimeInterface::ATOM));
+                    $xml->writeAttribute('commented_Iso8601', $comment->created_on_datetime->format(\DateTimeInterface::ATOM));
                     $xml->endElement(); // date
 
                     $xml->endElement(); // comment

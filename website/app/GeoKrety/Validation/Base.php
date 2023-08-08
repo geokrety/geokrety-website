@@ -5,7 +5,7 @@ namespace GeoKrety\Validation;
 class Base {
     protected bool $hasErrors = false;
 
-    protected function flash(string $default, string $message = null, string $level = 'danger') {
+    protected function flash(string $default, ?string $message = null, string $level = 'danger') {
         \Flash::instance()->addMessage($message ?? $default, $level);
     }
 

@@ -3,9 +3,8 @@
 namespace GeoKrety\Service\Labels;
 
 use GeoKrety\Model\Geokret;
-use TCPDF;
 
-class Pdf extends TCPDF {
+class Pdf extends \TCPDF {
     use Traits\Languages;
 
     public const LABEL_OUTPUT_DPI = 300;
@@ -43,7 +42,7 @@ class Pdf extends TCPDF {
 
         // set image scale factor
         $this->setImageScale(PDF_IMAGE_SCALE_RATIO);
-//        $this->setRasterizeVectorImages(true);
+        //        $this->setRasterizeVectorImages(true);
 
         // set default font subsetting mode
         $this->setFontSubsetting(true);
@@ -59,28 +58,28 @@ class Pdf extends TCPDF {
         $this->AddPage();
     }
 
-    //Page header
+    // Page header
     public function Header() {        // Set font
         $this->SetY(8);
         $this->SetFont('helvetica', 'B', 16);
         // Title
         $this->Cell(0, 15, 'GeoKrety Labels', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 
-//        // Position at 15 mm from bottom
-//        $this->SetY(5);
-//        // Set font
-//        $this->SetFont('helvetica', 'I', 8);
-//        // Page number
-//        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'R', 0, '', 0, false, 'T', 'M');
+        //        // Position at 15 mm from bottom
+        //        $this->SetY(5);
+        //        // Set font
+        //        $this->SetFont('helvetica', 'I', 8);
+        //        // Page number
+        //        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'R', 0, '', 0, false, 'T', 'M');
 
-//        // Logo
-//        $image_file = 'https://cdn.geokrety.org/images/banners/logo-puste.png';
-//        $this->Image($image_file, $this->original_lMargin, 5, 45, '', 'PNG', '', 'M', false, 300, '', false, false, 0, false, false, false);
+        //        // Logo
+        //        $image_file = 'https://cdn.geokrety.org/images/banners/logo-puste.png';
+        //        $this->Image($image_file, $this->original_lMargin, 5, 45, '', 'PNG', '', 'M', false, 300, '', false, false, 0, false, false, false);
 
-//        $this->SetLineStyle(array('width' => 0.85 / $this->k, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => '#f00'));
-//        $this->SetY(15);
-//        $this->SetX($this->original_lMargin);
-//        $this->Cell(($this->w - $this->original_lMargin - $this->original_rMargin), 0, '', 'T', 0, 'C');
+        //        $this->SetLineStyle(array('width' => 0.85 / $this->k, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => '#f00'));
+        //        $this->SetY(15);
+        //        $this->SetX($this->original_lMargin);
+        //        $this->Cell(($this->w - $this->original_lMargin - $this->original_rMargin), 0, '', 'T', 0, 'C');
     }
 
     // Page footer
@@ -122,7 +121,7 @@ class Pdf extends TCPDF {
                 $this->AddPage();
             }
 
-//            $this->ImageSVG($file='@'.$labelSVGData, $x=PDF_MARGIN_LEFT, $y=$pos, $w=$imgW, $h=$imgH, $link='', $align='', $palign='', $border=1, $fitonpage=false);
+            //            $this->ImageSVG($file='@'.$labelSVGData, $x=PDF_MARGIN_LEFT, $y=$pos, $w=$imgW, $h=$imgH, $link='', $align='', $palign='', $border=1, $fitonpage=false);
             $this->Image('@'.$labelPNGData, $x = $posX, $y = $posY, $w = $imgW, $h = $imgH, 'PNG', $link = '', '', true, self::LABEL_OUTPUT_DPI, '', false, false, 1, false, false, false);
 
             $posX += $imgW;

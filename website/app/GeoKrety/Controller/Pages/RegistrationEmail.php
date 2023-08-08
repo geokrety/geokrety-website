@@ -47,7 +47,7 @@ class RegistrationEmail extends BaseRegistration {
                 $f3->abort();
             }
             $f3->get('DB')->rollback();
-            exit();
+            exit;
         }
 
         // Check email unicity over users table
@@ -57,7 +57,7 @@ class RegistrationEmail extends BaseRegistration {
         if (!$user->validate()) {
             $f3->get('DB')->rollback();
             $this->get($f3);
-            exit();
+            exit;
         }
         $user->save();
         $this->saveTrackingSettings();

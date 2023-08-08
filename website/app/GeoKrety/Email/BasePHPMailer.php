@@ -2,9 +2,6 @@
 
 namespace GeoKrety\Email;
 
-use Base;
-use Exception;
-use Flash;
 use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Metrics;
@@ -49,14 +46,14 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
      * @throws \Exception
      */
     public function send(): bool {
-        throw new Exception('send(): Please use sendEmail() instead.');
+        throw new \Exception('send(): Please use sendEmail() instead.');
     }
 
     /**
      * @throws \Exception
      */
     public function addAddress($address, $name = '') {
-        throw new Exception('addAddress(): Please use setTo() instead.');
+        throw new \Exception('addAddress(): Please use setTo() instead.');
     }
 
     protected function sendEmail(string $template_name): bool {
@@ -85,7 +82,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
                 if (PHP_SAPI === 'cli') {
                     echo 'An error occurred while sending mail.';
                 } else {
-                    Flash::instance()->addMessage(_('An error occurred while sending mail.'), 'danger');
+                    \Flash::instance()->addMessage(_('An error occurred while sending mail.'), 'danger');
                 }
             }
             Event::instance()->emit('mail.sent', $this);
@@ -107,7 +104,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     }
 
     private function store_in_local_session() {
-        Base::instance()->push('SESSION.LOCAL_MAIL', [
+        \Base::instance()->push('SESSION.LOCAL_MAIL', [
             'smtp' => [
                 'subject' => $this->getSubject(),
                 'from' => $this->From,

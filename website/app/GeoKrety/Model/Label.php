@@ -11,7 +11,7 @@ use Validation\Traits\CortexTrait;
  * @property string template
  * @property string title
  * @property string author
- * @property DateTime|null created_on_datetime
+ * @property \DateTime|null created_on_datetime
  */
 class Label extends Base {
     use CortexTrait;
@@ -39,7 +39,7 @@ class Label extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

@@ -18,7 +18,7 @@ use Carbon\Carbon;
  *
  * @throws \Exception
  */
-function smarty_modifier_print_date_iso_format($date, string $isoFormat = 'lll', string $format = 'c', string $input_format = null): string {
+function smarty_modifier_print_date_iso_format($date, string $isoFormat = 'lll', string $format = 'c', ?string $input_format = null): string {
     if (is_string($date)) {
         if (empty($input_format)) {
             throw new Exception('When date is a string, input_format must be specified');

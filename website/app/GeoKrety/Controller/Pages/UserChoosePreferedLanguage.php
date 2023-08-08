@@ -2,14 +2,11 @@
 
 namespace GeoKrety\Controller;
 
-use CurrentUserLoader;
-use Flash;
 use GeoKrety\Service\Smarty;
-use Multilang;
 use Sugar\Event;
 
 class UserChoosePreferedLanguage extends Base {
-    use CurrentUserLoader;
+    use \CurrentUserLoader;
 
     public function get(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_choose_preferred_language.tpl');
@@ -27,15 +24,15 @@ class UserChoosePreferedLanguage extends Base {
 
         if (!$user->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
 
         $user->save();
         $context = ['oldlanguage' => $oldLanguage];
         Event::instance()->emit('user.language.changed', $user, $context);
-        Flash::instance()->addMessage(_('Language preferences updated.'), 'success');
+        \Flash::instance()->addMessage(_('Language preferences updated.'), 'success');
 
-        $ml = Multilang::instance();
+        $ml = \Multilang::instance();
         $f3->reroute($ml->alias('user_details', ['userid' => $user->id], $user->preferred_language));
     }
 }

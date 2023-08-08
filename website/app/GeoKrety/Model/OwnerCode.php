@@ -4,19 +4,18 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
-use JsonSerializable;
 
 /**
  * @property int|null id
  * @property int|Geokret geokret
  * @property string|null token
- * @property DateTime generated_on_datetime
- * @property DateTime|null claimed_on_datetime
+ * @property \DateTime generated_on_datetime
+ * @property \DateTime|null claimed_on_datetime
  * @property int|User|null adopter
  * @property string|null validating_ip
  * @property int used
  */
-class OwnerCode extends Base implements JsonSerializable {
+class OwnerCode extends Base implements \JsonSerializable {
     use \Validation\Traits\CortexTrait;
 
     public const TOKEN_UNUSED = 0;
@@ -63,11 +62,11 @@ class OwnerCode extends Base implements JsonSerializable {
         ],
     ];
 
-    public function get_generated_on_datetime($value): ?DateTime {
+    public function get_generated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_claimed_on_datetime($value): ?DateTime {
+    public function get_claimed_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

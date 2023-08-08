@@ -3,10 +3,9 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Picture;
-use PictureLoader;
 
 class PictureProxy extends Base {
-    use PictureLoader;
+    use \PictureLoader;
 
     public function get(\Base $f3) {
         $f3->reroute($this->picture->get_url());

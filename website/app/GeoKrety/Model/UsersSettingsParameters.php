@@ -11,8 +11,8 @@ use DB\SQL\Schema;
  * @property string type
  * @property string default
  * @property string description
- * @property DateTime created_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
  */
 class UsersSettingsParameters extends Base {
     use \Validation\Traits\CortexTrait;
@@ -56,11 +56,11 @@ class UsersSettingsParameters extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

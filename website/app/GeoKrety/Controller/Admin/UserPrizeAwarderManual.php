@@ -2,16 +2,13 @@
 
 namespace GeoKrety\Controller\Admin;
 
-use AwardLoader;
-use Flash;
 use GeoKrety\Controller\Base;
 use GeoKrety\Model\AwardsWon;
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 class UserPrizeAwarderManual extends Base {
-    use AwardLoader;
-    use UserLoader;
+    use \AwardLoader;
+    use \UserLoader;
 
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
@@ -30,7 +27,7 @@ class UserPrizeAwarderManual extends Base {
         ];
 
         $this->checkCsrf(function ($error) use ($f3, $params) {
-            Flash::instance()->addMessage($error, 'danger');
+            \Flash::instance()->addMessage($error, 'danger');
             $f3->reroute(sprintf('@admin_users_list?%s', http_build_query($params)));
         });
 

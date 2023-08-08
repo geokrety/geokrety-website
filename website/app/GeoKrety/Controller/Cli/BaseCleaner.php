@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
 use GeoKrety\Controller\Cli\Traits\Script;
 use GeoKrety\Service\HTMLPurifier;
 
@@ -38,7 +37,7 @@ abstract class BaseCleaner {
     /**
      * @throws \Exception
      */
-    public function processAll(Base $f3) {
+    public function processAll(\Base $f3) {
         $this->script_start($this->class_name.'::'.__FUNCTION__);
         $filter = $this->filterHook();
         $model = $this->getModel();
@@ -52,9 +51,9 @@ abstract class BaseCleaner {
         // Paginate the table resultset as it may blow ram!
         $start_page = 0;
         $total_pages = ceil($this->total / PER_PAGE);
-        $this->counter = ($start_page) * PER_PAGE;
+        $this->counter = $start_page * PER_PAGE;
         $this->counterFixed = 0;
-        Base::instance()->get('DB')->log(false);
+        \Base::instance()->get('DB')->log(false);
 
         for ($i = $start_page; $i < $total_pages; ++$i) {
             $subset = $model->paginate($i, PER_PAGE, $filter, $this->orderHook());
@@ -79,7 +78,7 @@ abstract class BaseCleaner {
 
     abstract protected function process($object): void;
 
-    public function processById(Base $f3) {
+    public function processById(\Base $f3) {
         $this->script_start($this->class_name.'::'.__FUNCTION__);
         $model = $this->getModel();
         $model->load(['id = ?', $this->getParamId($f3)]);
@@ -93,7 +92,7 @@ abstract class BaseCleaner {
         $this->script_end();
     }
 
-    abstract protected function getParamId(Base $f3): int;
+    abstract protected function getParamId(\Base $f3): int;
 
     protected function processResult(bool $fixed): void {
         ++$this->counter;

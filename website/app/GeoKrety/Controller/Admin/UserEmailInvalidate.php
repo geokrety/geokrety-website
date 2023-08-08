@@ -2,13 +2,11 @@
 
 namespace GeoKrety\Controller\Admin;
 
-use Flash;
 use GeoKrety\Controller\Base;
 use GeoKrety\Service\Smarty;
-use UserLoader;
 
 class UserEmailInvalidate extends Base {
-    use UserLoader;
+    use \UserLoader;
 
     public function get() {
         Smarty::render('extends:base_modal.tpl|dialog/admin_users_email_invalidate.tpl');
@@ -20,7 +18,7 @@ class UserEmailInvalidate extends Base {
         ];
 
         $this->checkCsrf(function ($error) use ($f3, $params) {
-            Flash::instance()->addMessage($error, 'danger');
+            \Flash::instance()->addMessage($error, 'danger');
             $f3->reroute(sprintf('@admin_users_list?%s', http_build_query($params)));
         });
 

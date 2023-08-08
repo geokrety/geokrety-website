@@ -13,7 +13,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  *
  * @throws \SmartyException
  */
-function smarty_modifier_url_picture(?string $pictureUrl, ?string $thumbnailUrl = null, string $canvasDivId = null, string $caption = null, string $class = null): string {
+function smarty_modifier_url_picture(?string $pictureUrl, ?string $thumbnailUrl = null, ?string $canvasDivId = null, ?string $caption = null, ?string $class = null): string {
     $template_string = <<<'EOT'
 <div class="gallery">
     <figure class="{$class}">

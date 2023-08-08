@@ -15,8 +15,8 @@ use DB\SQL\Schema;
  * @property string session
  * @property bool succeed
  * @property string|null comment
- * @property DateTime created_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
  */
 class UsersAuthenticationHistory extends Base {
     use \Validation\Traits\CortexTrait;
@@ -93,11 +93,11 @@ class UsersAuthenticationHistory extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
@@ -117,7 +117,7 @@ class UsersAuthenticationHistory extends Base {
     /**
      * @throws \Exception
      */
-    public static function save_authentication_history(?string $username, $method, ?User $user = null, bool $succeed = true, string $comment = null) {
+    public static function save_authentication_history(?string $username, $method, ?User $user = null, bool $succeed = true, ?string $comment = null) {
         if (!self::is_valid_method($method)) {
             throw new Exception('Invalid Authentication Method');
         }

@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\PasswordToken;
 use GeoKrety\Service\Smarty;
@@ -23,7 +22,7 @@ class PasswordRecoveryChange extends Base {
         if ($f3->exists('PARAMS.token')) {
             $token->load(['token = ? AND used = ? AND created_on_datetime > NOW() - cast(? as interval)', $f3->get('PARAMS.token'), PasswordToken::TOKEN_UNUSED, GK_SITE_PASSWORD_RECOVERY_CODE_DAYS_VALIDITY.' DAY']);
             if ($token->dry()) {
-                Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
+                \Flash::instance()->addMessage(_('Sorry this token is not valid, already used or expired.'), 'danger');
             }
             $token->token = $f3->get('PARAMS.token');
         }
@@ -46,7 +45,7 @@ class PasswordRecoveryChange extends Base {
         $token = $this->token;
         if ($token->dry()) {
             $this->get($f3);
-            exit();
+            exit;
         }
 
         $user = $token->user;
@@ -55,9 +54,9 @@ class PasswordRecoveryChange extends Base {
 
         // Check passwords are equals
         if ($password_new !== $password_new_confirm) {
-            Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
+            \Flash::instance()->addMessage(_('New passwords doesn\'t match.'), 'danger');
             $this->get($f3);
-            exit();
+            exit;
         }
 
         $f3->get('DB')->begin();
@@ -66,7 +65,7 @@ class PasswordRecoveryChange extends Base {
         $user->password = $password_new;
         if (!$user->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
         $user->save();
 
@@ -75,19 +74,19 @@ class PasswordRecoveryChange extends Base {
         $token->touch('used_on_datetime');
         if (!$token->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
         try {
             $token->save();
             Event::instance()->emit('password.token.used', $token);
         } catch (\Exception $e) {
             $f3->get('DB')->rollback();
-            Flash::instance()->addMessage(_('Unexpected error occurred.'), 'danger');
+            \Flash::instance()->addMessage(_('Unexpected error occurred.'), 'danger');
             $this->get($f3);
-            exit();
+            exit;
         }
 
-        Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
+        \Flash::instance()->addMessage(_('Your password has been changed.'), 'success');
         $f3->get('DB')->commit();
 
         Event::instance()->emit('user.password.changed', $user);

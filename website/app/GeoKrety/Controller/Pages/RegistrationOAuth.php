@@ -38,7 +38,7 @@ class RegistrationOAuth extends BaseRegistration {
         // Save
         if (!$user->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
 
         $user->save();
@@ -50,7 +50,7 @@ class RegistrationOAuth extends BaseRegistration {
         $social_auth->provider = SocialAuthProvider::getProvider($social_data->provider);
         if (!$social_auth->validate()) {
             $this->get($f3);
-            exit();
+            exit;
         }
         $social_auth->save();
 

@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller\Cli;
 
-use Base;
-use Exception;
 use GeoKrety\LogType;
 use GeoKrety\Model\Awards;
 use GeoKrety\Model\AwardsWon;
@@ -12,14 +10,14 @@ class PrizeAwarderTopSpreaders extends PrizeAwarderBase {
     /**
      * @throws \Exception
      */
-    protected function _process(Base $f3) {
+    protected function _process(\Base $f3) {
         $this->topSpreader($f3);
     }
 
     /**
      * @throws \Exception
      */
-    private function topSpreader(Base $f3) {
+    private function topSpreader(\Base $f3) {
         $this->script_start(__METHOD__);
         $year = $f3->get('PARAMS.year');
         $sql = <<<'EOT'
@@ -38,14 +36,14 @@ EOT;
         $award_top10 = new Awards();
         $award_top10->load(['name = ?', sprintf('Top 10 spreaders %d', $year)]);
         if ($award_top10->dry()) {
-            throw new Exception(sprintf('"Top 10 spreaders %d" award does not exist', $year));
+            throw new \Exception(sprintf('"Top 10 spreaders %d" award does not exist', $year));
         }
         $this->check_overdue($award_top10, $year);
 
         $award_top100 = new Awards();
         $award_top100->load(['name = ?', sprintf('Top 100 spreaders %d', $year)]);
         if ($award_top100->dry()) {
-            throw new Exception(sprintf('"Top 100 spreaders %d" award does not exist', $year));
+            throw new \Exception(sprintf('"Top 100 spreaders %d" award does not exist', $year));
         }
 
         $award_top10_size = sizeof($result) > 10 ? 10 : sizeof($result);
@@ -74,7 +72,7 @@ EOT;
         }
     }
 
-    protected function _pre_check(Base $f3) {
+    protected function _pre_check(\Base $f3) {
         $awardWon = new AwardsWon();
         $awardWon->has('award', ['name = ?', sprintf('Top 10 spreaders %d', $year)]);
         $awardWon->load();

@@ -6,7 +6,7 @@ use DateTime;
 use DB\SQL\Schema;
 
 /**
- * @property int|DateTime created_on_datetime
+ * @property int|\DateTime created_on_datetime
  * @property string route
  * @property string payload
  * @property string errors
@@ -56,7 +56,7 @@ class AuditPost extends Base {
         // "error" column?
     ];
 
-    public function get_datetime($value): ?DateTime {
+    public function get_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
@@ -75,9 +75,6 @@ class AuditPost extends Base {
         \Base::instance()->get('DB')->exec($sql, [GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS.' DAY']);
     }
 
-    /**
-     * @param mixed $data
-     */
     public static function AmendAuditPostWithErrors($data) {
         $f3 = \Base::instance();
         if ($f3->exists('AUDIT_POST_ID')) {

@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use CurrentUserLoader;
-use Flash;
 use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\RateLimitExceeded;
 use GeoKrety\Service\Smarty;
@@ -11,7 +9,7 @@ use GeoKrety\Session;
 use Sugar\Event;
 
 class UserUpdateUsername extends Base {
-    use CurrentUserLoader;
+    use \CurrentUserLoader;
 
     public function post(\Base $f3) {
         $this->check_account_status($f3);
@@ -30,16 +28,16 @@ class UserUpdateUsername extends Base {
         if (!$this->currentUser->validate()) {
             $f3->get('DB')->rollback();
             $this->get($f3);
-            exit();
+            exit;
         }
         try {
             RateLimit::incr('USERNAME_CHANGE', $this->currentUser->id);
         } catch (RateLimitExceeded $e) {
             register_shutdown_function('GeoKrety\Model\AuditPost::AmendAuditPostWithErrors', 'Rate limit exceeded');
-            Flash::instance()->addMessage(sprintf(_('You can only change your username %d times per month'), GK_RATE_LIMITS['USERNAME_CHANGE'][0]), 'danger');
+            \Flash::instance()->addMessage(sprintf(_('You can only change your username %d times per month'), GK_RATE_LIMITS['USERNAME_CHANGE'][0]), 'danger');
             $f3->get('DB')->rollback();
             $this->get($f3);
-            exit();
+            exit;
         }
 
         // Save
@@ -48,7 +46,7 @@ class UserUpdateUsername extends Base {
         Event::instance()->emit('user.renamed', $this->currentUser, $context);
         Login::disconnectUser($f3);
         Session::closeAllSessionsForUser($this->currentUser);
-        Flash::instance()->addMessage(_('Username changed. Please login again.'), 'success');
+        \Flash::instance()->addMessage(_('Username changed. Please login again.'), 'success');
         $f3->reroute('@home');
     }
 
@@ -59,7 +57,7 @@ class UserUpdateUsername extends Base {
 
     private function check_account_status(\Base $f3): void {
         if (!$this->current_user->isEmailValid() or !$this->current_user->hasEmail() or $this->current_user->isAccountInvalid()) {
-            Flash::instance()->addMessage(_('Sorry, to use this feature, you must have a valid registered email address.'), 'danger');
+            \Flash::instance()->addMessage(_('Sorry, to use this feature, you must have a valid registered email address.'), 'danger');
             if (GK_DEVEL) {
                 $this->current_user->resendAccountActivationEmail();
                 $f3->reroute(['user_details', ['userid' => $this->current_user->id]]);

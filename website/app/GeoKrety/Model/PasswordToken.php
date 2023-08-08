@@ -9,9 +9,9 @@ use DB\SQL\Schema;
  * @property int|null id
  * @property string|null token
  * @property int|User user
- * @property DateTime created_on_datetime
- * @property DateTime|null used_on_datetime
- * @property DateTime|null updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime|null used_on_datetime
+ * @property \DateTime|null updated_on_datetime
  * @property string requesting_ip
  * @property int used
  * @property string|null validating_ip
@@ -67,15 +67,15 @@ class PasswordToken extends Base {
         ],
     ];
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_used_on_datetime($value): ?DateTime {
+    public function get_used_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

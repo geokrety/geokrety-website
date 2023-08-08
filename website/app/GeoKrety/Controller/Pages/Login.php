@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Auth;
 use GeoKrety\AuthGroup;
 use GeoKrety\Model\SocialAuthProvider;
@@ -15,7 +14,6 @@ use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Url;
 use GeoKrety\Service\Xml\Error;
 use GeoKrety\Session;
-use Multilang;
 use Sugar\Event;
 
 class Login extends Base {
@@ -56,7 +54,7 @@ class Login extends Base {
                 \Base::instance()->reroute('@home', false, false);
                 $f3->abort();
                 $user->resendAccountActivationEmail();
-                exit();
+                exit;
             }
             if ($f3->get('POST.remember')) {
                 Session::setPersistent();
@@ -68,7 +66,7 @@ class Login extends Base {
                 'error' => self::PASSWORD_CREDENTIALS_FAILS_ERROR,
                 'error_message' => 'Username and password doesn\'t match.',
             ]);
-            Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
+            \Flash::instance()->addMessage(_('Username and password doesn\'t match.'), 'danger');
         }
         $this->loginForm($f3);
     }
@@ -98,10 +96,10 @@ class Login extends Base {
         }
         Session::setGKTCookie();
         LanguageService::changeLanguageTo($user->preferred_language);
-        Flash::instance()->addMessage(_('Welcome on board!'), 'success');
+        \Flash::instance()->addMessage(_('Welcome on board!'), 'success');
         $failed_count = UsersAuthenticationHistory::has_failed_attempts($user->username);
         if ($failed_count) {
-            Flash::instance()->addMessage(
+            \Flash::instance()->addMessage(
                 sprintf(
                     _('There was %d failed login attempts on your account, please review <a href="%s">login activity</a>'),
                     $failed_count,
@@ -113,7 +111,7 @@ class Login extends Base {
         if ($redirect) {
             $url = Url::unserializeGoto($user->preferred_language);
             if (is_null($url)) {
-                $ml = Multilang::instance();
+                $ml = \Multilang::instance();
                 $url = $ml->alias('user_details', ['userid' => $user->id], $user->preferred_language);
             }
             if (GK_DEVEL) {
@@ -124,7 +122,7 @@ class Login extends Base {
             $f3->reroute($url, false, false);
             $f3->abort();
             $user->resendAccountActivationEmail();
-            exit();
+            exit;
         }
         $user->resendAccountActivationEmail();
     }
@@ -182,7 +180,7 @@ class Login extends Base {
                     'error' => self::API2SECID_EMPTY_CREDENTIALS_ERROR,
                     'error_message' => 'Please provide \'login\' and \'password\' parameters.',
                     ]);
-            exit();
+            exit;
         }
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
         $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
@@ -199,12 +197,12 @@ class Login extends Base {
                     ]);
                 $user->resendAccountActivationEmail();
                 Login::disconnectUser($f3);
-                exit();
+                exit;
             }
             echo $user->secid;
             Event::instance()->emit('user.login.api2secid-effective', $user);
             Login::disconnectUser($f3);
-            exit();
+            exit;
         }
         Login::disconnectUser($f3);
         Event::instance()->emit('user.login.api2secid-failure', [
@@ -230,7 +228,7 @@ class Login extends Base {
                 'error' => self::SECID_TOKEN_INVALID_LENGTH_ERROR,
                 'error_message' => 'Invalid "secid" length',
                 ]);
-            exit();
+            exit;
         }
         $auth = new Auth('secid');
         $user = $auth->login($secid, null);
@@ -241,7 +239,7 @@ class Login extends Base {
                 'error' => self::SECID_TOKEN_NOT_EXISTING_ERROR,
                 'error_message' => 'This "secid" does not exist',
                 ]);
-            exit();
+            exit;
         }
         Event::instance()->emit('user.login.secid', $user);
         Login::connectUser($f3, $user, 'secid');
@@ -286,17 +284,17 @@ class Login extends Base {
                 $f3->get('DB')->commit();
 
                 $this::connectUser($f3, $this->current_user, 'oauth');
-                exit();
+                exit;
             }
 
             // This user is already connected to this social auth provider
             if ($user->isCurrentUser()) {
-                Flash::instance()->addMessage(sprintf(_('Your account is already linked with %s'), $data['provider']), 'info');
+                \Flash::instance()->addMessage(sprintf(_('Your account is already linked with %s'), $data['provider']), 'info');
                 $f3->reroute('@home');
             }
 
             // This social account is already registered with *another* account
-            Flash::instance()->addMessage(sprintf(_('This %s account is already linked with another GeoKrety account.'), $data['provider']), 'danger');
+            \Flash::instance()->addMessage(sprintf(_('This %s account is already linked with another GeoKrety account.'), $data['provider']), 'danger');
             $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
         }
 
@@ -311,7 +309,7 @@ class Login extends Base {
     }
 
     public function socialAuthAbort(array $data) {
-        Flash::instance()->addMessage(_('Auth request was canceled.'), 'danger');
+        \Flash::instance()->addMessage(_('Auth request was canceled.'), 'danger');
         \Base::instance()->reroute('@home');
     }
 

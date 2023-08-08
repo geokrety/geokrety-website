@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use Flash;
 use GeoKrety\Email\GeokretClaim as GeokretClaimEmail;
 use GeoKrety\LogType;
 use GeoKrety\Model\Move;
@@ -24,21 +23,21 @@ class GeokretClaim extends Base {
         $ownerCode->load(['token = ?', $f3->get('POST.oc')]);
 
         if ($ownerCode->dry()) {
-            Flash::instance()->addMessage(_('Sorry, the provided Owner Code and Tracking Code doesn\'t match.'), 'danger');
+            \Flash::instance()->addMessage(_('Sorry, the provided Owner Code and Tracking Code doesn\'t match.'), 'danger');
             $this->get();
-            exit();
+            exit;
         }
 
         if ($ownerCode->geokret->isOwner()) {
-            Flash::instance()->addMessage(_('You are already the owner.'), 'danger');
+            \Flash::instance()->addMessage(_('You are already the owner.'), 'danger');
             $this->get();
-            exit();
+            exit;
         }
 
         if ($ownerCode->used !== OwnerCode::TOKEN_UNUSED) {
-            Flash::instance()->addMessage(_('Sorry, this owner code has already been used.'), 'danger');
+            \Flash::instance()->addMessage(_('Sorry, this owner code has already been used.'), 'danger');
             $this->get();
-            exit();
+            exit;
         }
 
         $oldOwner = $ownerCode->geokret->owner;
@@ -72,7 +71,7 @@ class GeokretClaim extends Base {
             try {
                 $move->save();
                 $f3->get('DB')->commit();
-                Flash::instance()->addMessage(sprintf('🎉 '._('Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
+                \Flash::instance()->addMessage(sprintf('🎉 '._('Congratulation! You are now the owner of %s.'), $ownerCode->geokret->name), 'success');
                 $f3->reroute('@geokret_details(@gkid='.$ownerCode->geokret->gkid.')', false, false);
                 if (!GK_DEVEL) {
                     $f3->abort(); // Send response to client now
@@ -91,7 +90,7 @@ class GeokretClaim extends Base {
                 return;
             } catch (\Exception $e) {
                 $f3->get('DB')->rollback();
-                Flash::instance()->addMessage(_('Something went wrong while registering the adoption.'), 'danger');
+                \Flash::instance()->addMessage(_('Something went wrong while registering the adoption.'), 'danger');
             }
         }
 

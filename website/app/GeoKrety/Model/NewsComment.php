@@ -11,8 +11,8 @@ use GeoKrety\Service\HTMLPurifier;
  * @property int|News news
  * @property int|User|null author
  * @property string content
- * @property DateTime created_on_datetime
- * @property DateTime|null updated_on_datetime
+ * @property \DateTime created_on_datetime
+ * @property \DateTime|null updated_on_datetime
  * @property int $icon
  */
 class NewsComment extends Base {
@@ -53,11 +53,11 @@ class NewsComment extends Base {
         return HTMLPurifier::getPurifier()->purify($value);
     }
 
-    public function get_created_on_datetime($value): ?DateTime {
+    public function get_created_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

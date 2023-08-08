@@ -68,7 +68,7 @@ class UserContact extends Base {
             } catch (\Exception $e) {
                 \Flash::instance()->addMessage(_('Failed to save the mail.'), 'danger');
                 $this->get($f3);
-                exit();
+                exit;
             }
 
             $mail->load(['_id = ?', $mail->getMapper()->get('_id')]);

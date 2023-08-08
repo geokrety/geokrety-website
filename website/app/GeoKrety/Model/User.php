@@ -7,15 +7,14 @@ use DB\CortexCollection;
 use DB\SQL\Schema;
 use GeoKrety\Email\AccountActivation;
 use GeoKrety\Email\EmailRevalidate;
-use JsonSerializable;
 
 /**
  * @property int|null id
  * @property string username
  * @property string|null password
  * @property string|null email
- * @property DateTime joined_on_datetime
- * @property DateTime updated_on_datetime
+ * @property \DateTime joined_on_datetime
+ * @property \DateTime updated_on_datetime
  * @property bool daily_mails
  * @property string registration_ip
  * @property string|null preferred_language
@@ -26,9 +25,9 @@ use JsonSerializable;
  * @property int daily_mails_hour
  * @property Picture|null avatar
  * @property int pictures_count
- * @property DateTime|null last_mail_datetime
- * @property DateTime|null last_login_datetime
- * @property DateTime|null terms_of_use_datetime
+ * @property \DateTime|null last_mail_datetime
+ * @property \DateTime|null last_login_datetime
+ * @property \DateTime|null terms_of_use_datetime
  * @property string|null secid
  * @property int statpic_template
  * @property int email_invalid
@@ -42,7 +41,7 @@ use JsonSerializable;
  * @property CortexCollection yearly_ranks
  * @property CortexCollection settings
  */
-class User extends Base implements JsonSerializable {
+class User extends Base implements \JsonSerializable {
     // Validation occurs in validate() for this class
 
     public const USER_ACCOUNT_INVALID = 0;
@@ -264,23 +263,23 @@ class User extends Base implements JsonSerializable {
         return html_entity_decode($value);
     }
 
-    public function get_joined_on_datetime($value): ?DateTime {
+    public function get_joined_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_updated_on_datetime($value): ?DateTime {
+    public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_last_mail_datetime($value): ?DateTime {
+    public function get_last_mail_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_last_login_datetime($value): ?DateTime {
+    public function get_last_login_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    public function get_terms_of_use_datetime($value): ?DateTime {
+    public function get_terms_of_use_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

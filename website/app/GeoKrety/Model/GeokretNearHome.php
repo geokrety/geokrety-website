@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
 use DB\SQL\Schema;
 
 class GeokretNearHome extends Geokret {
@@ -83,7 +82,7 @@ class GeokretNearHome extends Geokret {
         parent::__construct();
     }
 
-    public function get_moved_on_datetime($value): ?DateTime {
+    public function get_moved_on_datetime($value): ?\DateTime {
         return is_null($value) ? null : self::get_date_object($value);
     }
 }
