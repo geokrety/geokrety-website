@@ -15,7 +15,7 @@ on:
 
 jobs:
   crowdin:
-    if: "!contains(github.event.head_commit.message, 'skip ci') && !contains(github.event.head_commit.message, 'skip translate')"
+    if: "!contains(github.event.head_commit.message, 'skip translate')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
