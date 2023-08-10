@@ -28,3 +28,11 @@ jobs:
     needs: docker
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  deploy:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/trigger-staging-deploy.yml@main
+    needs: docker
+    secrets:
+      DEPLOY_HEADER_NAME: ${{ secrets.DEPLOY_HEADER_NAME }}
+      DEPLOY_HEADER_VALUE: ${{ secrets.DEPLOY_HEADER_VALUE }}
+      DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
