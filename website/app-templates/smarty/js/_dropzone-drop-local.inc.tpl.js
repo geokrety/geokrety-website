@@ -1,6 +1,5 @@
 // https://stackoverflow.com/a/43041683/944936
 this.on("drop", function (event) {
-    console.log(event.dataTransfer);
     let dropzone = this;
     let imageUrl = event.dataTransfer.getData('URL');
     let fileName = imageUrl.split('/').pop();

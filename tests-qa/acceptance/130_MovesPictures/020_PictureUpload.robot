@@ -40,12 +40,25 @@ Upload images to different moves
     Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}/figure    1
     Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_MOVE_IMAGES}/figure    1
 
-# See bug https://github.com/geokrety/geokrety-website/issues/742
+Upload webp image
+    Sign In ${USER_1.name} Fast
+    Go To GeoKrety ${1} url
+    Upload picture via button                       ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_DROPZONE}    ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}    ${CURDIR}/pulp_loose.webp
+    Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}/figure    1
+    Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_MOVE_IMAGES}/figure    0
+
 Upload invalid image
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1} url
-    Upload picture via button base                  ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_DROPZONE}    ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}    ${CURDIR}/pulp_loose.webp
+    Upload picture via button base                  ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_DROPZONE}    ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}    ${CURDIR}/not-an-image.jpg
     Alert Should Be Present                         text=Image processing failed. This image type is probably not supported
+    Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_MOVE_IMAGES}/figure    0
+
+Upload invalid image - EntityTooSmall
+    Sign In ${USER_1.name} Fast
+    Go To GeoKrety ${1} url
+    Upload picture via button base                  ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_DROPZONE}    ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}    ${CURDIR}/not-an-image2.jpg
+    Alert Should Be Present                         text=Your upload does not meet the minimum allowed size.
     Element Count Should Be                         ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_MOVE_IMAGES}/figure    0
 
 *** Keywords ***

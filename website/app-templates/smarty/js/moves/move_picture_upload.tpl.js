@@ -17,9 +17,8 @@ $('div.enable-dropzone').each(function() {
         previewsContainer: baseSelector + " .move-pictures div.gallery",
         hiddenInputContainer: baseSelector + " .dropzone",
 
-
-        error: function (file, message) {
-            alert(message);
+        error: function (file, errorMessage, xhr) {
+            alert(parseS3UploadError(errorMessage, xhr));
             this.removeFile(file);
         },
         accept: function (file, done) {
@@ -99,35 +98,11 @@ $('div.enable-dropzone').each(function() {
                 }
             });
 
-            this.on("error", function (file, errorMessage, xhr) {
-                file.previewElement.querySelector("div.dz-error-message span").innerHTML = parseS3UploadError(errorMessage, xhr);
-            });
-
             {include 'js/_dropzone-drop-local.inc.tpl.js'}
         },
-
     });
 });
 
-// TODO: Move this in a global space
-function parseS3UploadError(errorMessage, xhr) {
-    let response = $($.parseXML(errorMessage));
-    let code = response.find("Code").text();
-    if (xhr.status === 400) {
-        if (code === 'EntityTooLarge') {
-            return "{t}Your upload exceeds the maximum allowed object size.{/t}";
-        }
-        if (code === 'EntityTooSmall') {
-            return "{t}Your upload exceeds the maximum allowed object size.{/t}";
-        }
-    }
-    if (xhr.status === 403) {
-        if (code === 'AccessDenied') {
-            return "{t}Invalid according to Policy: Policy Condition failed.{/t}";
-        }
-    }
-    console.log('This error message is not caught:', errorMessage);
-    return errorMessage;
-}
+{include 'js/_dropzone-local.inc.tpl.js'}
 
 // ----------------------------------- JQUERY - MOVE PICTURE UPLOAD - END
