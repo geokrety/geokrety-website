@@ -1,4 +1,4 @@
-{if GK_PIWIK_ENABLED and $user->isCurrentUser()}
+{if !is_null(GK_PIWIK_URL) and $user->isCurrentUser()}
     <div class="panel panel-default">
         <div class="panel-heading">
             {t}Tracking{/t}
