@@ -169,9 +169,11 @@ jobs:
           user_email: geokrety-bot@geokrety.org
           commit_message: "docs: Update QA tests results"
 
-
       - name: Show report URL
         if: always()
         run: |
           echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html
           echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html
+          echo '### Robot Framework reports' >> $GITHUB_STEP_SUMMARY
+          echo '* [report](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html)' >> $GITHUB_STEP_SUMMARY
+          echo '* [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html)' >> $GITHUB_STEP_SUMMARY
