@@ -26,5 +26,5 @@ function smarty_modifier_alias($string, $params = null, $query = null, $fragment
         $f3->set('__WORKAROUND_1__', true);
     }
 
-    return GK_SITE_BASE_SERVER_URL.$f3->alias($string, $params, $query).$fragment;
+    return GK_SITE_BASE_SERVER_URL.$f3->alias($string, $params ?? [], $query).$fragment;
 }

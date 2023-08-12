@@ -23,11 +23,11 @@ abstract class Base {
             // No output buffer while streaming
             ob_end_flush();
             ob_implicit_flush();
-            if (strtolower($compress) === self::COMPRESSION_BZIP2) {
+            if (strtolower($compress ?? '') === self::COMPRESSION_BZIP2) {
                 header('Content-Disposition: attachment; filename='.$filename.'.bz2');
                 header('Content-type: application/x-bzip2');
                 stream_filter_append($this->stream, 'bzip2.compress', STREAM_FILTER_WRITE);
-            } elseif (strtolower($compress) === self::COMPRESSION_GZIP) {
+            } elseif (strtolower($compress ?? '') === self::COMPRESSION_GZIP) {
                 // Unfortunately, gzip require header and trailer, which are not handled by stream-filter, so
                 // we need to rely on temporary files :( The header is easy to implement, however, trailer require
                 // checksum and length or the **original** data, which is not stored in the filter (implementing a

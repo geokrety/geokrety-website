@@ -29,11 +29,11 @@ class GeokretyExport2 extends GeokretyBaseExport {
 
         if ($geokret->owner) {
             $xml->writeAttribute('owner_id', $geokret->owner);
-            $xml->writeAttribute('ownername', $geokret->owner_username);
+            $xml->writeAttribute('ownername', $geokret->owner_username ?? '');
         }
         if ($geokret->holder) {
             $xml->writeAttribute('holder_id', $geokret->holder);
-            $xml->writeAttribute('holdername', $geokret->holder_username);
+            $xml->writeAttribute('holdername', $geokret->holder_username ?? '');
         }
         $xml->writeAttribute('dist', $geokret->distance);
         if (!is_null($geokret->position)) {

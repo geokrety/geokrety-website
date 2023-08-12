@@ -27,7 +27,7 @@ class Url extends \Prefab {
             'query' => base64_encode($f3->serialize($f3->get('GET'))),
         ];
 
-        return \Base::instance()->alias($alias, $params, $query);
+        return \Base::instance()->alias($alias, $params ?? [], $query);
     }
 
     /**

@@ -189,7 +189,7 @@ class Geokret extends Base {
     }
 
     public function gkid(): int {
-        return hexdec(substr($this->gkid, 2));
+        return hexdec(substr($this->gkid ?? '', 2));
     }
 
     public function get_gkid($value): ?string {
@@ -205,11 +205,11 @@ class Geokret extends Base {
     }
 
     public function get_name($value): string {
-        return html_entity_decode($value);
+        return html_entity_decode($value ?? '');
     }
 
     public function get_tracking_code($value): string {
-        return strtoupper($value);
+        return strtoupper($value ?? '');
     }
 
     public function get_type($value): GeokretyType {

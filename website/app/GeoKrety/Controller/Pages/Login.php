@@ -221,7 +221,7 @@ class Login extends Base {
      * @return User Connected user authentication succeed
      */
     public function secidAuth(\Base $f3, ?string $secid, bool $streamXML = true): User {
-        if (strlen($secid) !== GK_SITE_SECID_CODE_LENGTH) {
+        if (strlen($secid ?? '') !== GK_SITE_SECID_CODE_LENGTH) {
             Error::buildError($streamXML, _('Invalid "secid" length'));
             Event::instance()->emit('user.login.secid-failure', [
                 'secid' => $secid,

@@ -260,7 +260,7 @@ class User extends Base implements \JsonSerializable {
     }
 
     public function get_username($value): string {
-        return html_entity_decode($value);
+        return html_entity_decode($value ?? '');
     }
 
     public function get_joined_on_datetime($value): ?\DateTime {
