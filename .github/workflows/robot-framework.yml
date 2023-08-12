@@ -27,7 +27,7 @@ env:
 
 jobs:
   robot-framework:
-    if: "!contains(github.event.head_commit.message, 'skip translate') && !contains(github.event.head_commit.message, 'skip test-qa')"
+    if: "${{ !contains(github.event.head_commit.message, 'skip translate') && !contains(github.event.head_commit.message, 'skip test-qa') }}"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -69,19 +69,19 @@ jobs:
 
 
       - name: Check for existing website-base image for current branch
-        if: "!startsWith(github.ref, 'refs/tags/v')"
+        if: "${{ !startsWith(github.ref, 'refs/tags/v') }}"
         id: existing-image
         run: |
-          if docker pull geokrety/website-base:${GITHUB_REF_NAME}; then
+          if docker pull geokrety/website-base:${{ github.ref_name }}; then
             echo "exists=true" >>  $GITHUB_OUTPUT
           else
             echo "exists=false" >>  $GITHUB_OUTPUT
           fi
 
       - name: Override base image tag from branch name
-        if: "!startsWith(github.ref, 'refs/tags/v') && ${{ steps.existing-image.outputs.exists == 'true' }}"
+        if: "${{ !startsWith(github.ref, 'refs/tags/v') && steps.existing-image.outputs.exists == 'true' }}"
         run: |
-          sed -i "s/^ARG BASE_TAG=.*$/ARG BASE_TAG=${GITHUB_REF_NAME}/" Dockerfile
+          sed -i "s/^ARG BASE_TAG=.*$/ARG BASE_TAG=${{ github.ref_name }}/" Dockerfile
 
       - name: Build images website
         run: |
