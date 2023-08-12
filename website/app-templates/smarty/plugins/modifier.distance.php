@@ -15,7 +15,7 @@ use GeoKrety\Service\DistanceFormatter;
 /**
  * @throws \Exception
  */
-function smarty_modifier_distance(?int $distance, $unit = 'metric'): string {
+function smarty_modifier_distance(?float $distance, $unit = 'metric'): string {
     if (is_null($distance)) {
         return '';
     }
