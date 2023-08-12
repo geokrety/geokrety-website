@@ -67,6 +67,22 @@ jobs:
           psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
           psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
 
+
+      - name: Check for existing website-base image for current branch
+        if: "!startsWith(github.ref, 'refs/tags/v')"
+        id: existing-image
+        run: |
+          if docker pull geokrety/website-base:${GITHUB_REF_NAME}; then
+            echo "exists=true" >>  $GITHUB_OUTPUT
+          else
+            echo "exists=false" >>  $GITHUB_OUTPUT
+          fi
+
+      - name: Override base image tag from branch name
+        if: "!startsWith(github.ref, 'refs/tags/v') && ${{ steps.existing-image.outputs.exists == 'true' }}"
+        run: |
+          sed -i "s/^ARG BASE_TAG=.*$/ARG BASE_TAG=${GITHUB_REF_NAME}/" Dockerfile
+
       - name: Build images website
         run: |
           ${DOCKER_COMPOSE} build website --build-arg GIT_COMMIT=${{ steps.vars.outputs.short_ref }}

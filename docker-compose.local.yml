@@ -74,9 +74,6 @@ services:
     image: geokrety/website:devel
     build:
       context: ./
-      args:
-        BASE_IMAGE: geokrety/website-base
-        BASE_TAG: main
     <<: *variables
     volumes:
 #    ## You may wish to enable local mount on your local machine

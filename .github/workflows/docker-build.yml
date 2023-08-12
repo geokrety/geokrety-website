@@ -15,13 +15,32 @@ on:
 
 jobs:
   docker:
-    uses: geokrety/geokrety-gha-workflows/.github/workflows/docker-build.yml@main
-    with:
-      image_name: geokrety/website
-      dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
-      dockerfile: Dockerfile
-    secrets:
-      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check for existing website-base image for current branch
+        if: "!startsWith(github.ref, 'refs/tags/v')"
+        id: existing-image
+        run: |
+          if docker pull geokrety/website-base:${GITHUB_REF_NAME}; then
+            echo "exists=true" >>  $GITHUB_OUTPUT
+          else
+            echo "exists=false" >>  $GITHUB_OUTPUT
+          fi
+
+      - name: Override base image tag from branch name
+        if: "!startsWith(github.ref, 'refs/tags/v') && ${{ steps.existing-image.outputs.exists == 'true' }}"
+        run: |
+          sed -i "s/^ARG BASE_TAG=.*$/ARG BASE_TAG=${GITHUB_REF_NAME}/" Dockerfile
+
+      - uses: geokrety/geokrety-gha-workflows/.github/actions/docker-build@main
+        with:
+          image_name: geokrety/website
+          dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
+          dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
   update-version-set:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/version-set.yml@main
