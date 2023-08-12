@@ -23,6 +23,9 @@ if [ "$1" = 'docker-php-entrypoint' ]; then
     while ! pg_isready -h ${GK_DB_HOST:-postgres}; do sleep 1; done
     runuser -u www-data make phinx-migrate
 
+    # Force new assets to be generated
+    runuser -u www-data make clear-assets
+
     # build templates
     runuser -u www-data make compile-all-templates
 
