@@ -21,7 +21,8 @@ class SearchByGeokret extends BaseDatatableGeokrety {
         $search_geokrety = \Base::instance()->get('PARAMS.geokret');
         Smarty::assign('search_geokrety', $search_geokrety);
 
-        $filter = ['lower(name) like lower(?) OR upper(tracking_code) = upper(?)', sprintf('%%%s%%', $search_geokrety), $search_geokrety];
+        $search_wildcard = str_contains($search_geokrety, '%') ? '%s' : '%%%s%%';
+        $filter = ['lower(name) like lower(?) OR upper(tracking_code) = upper(?)', sprintf($search_wildcard, $search_geokrety), $search_geokrety];
 
         $gkid = Geokret::gkid2id($search_geokrety);
         if (is_numeric($gkid)) {

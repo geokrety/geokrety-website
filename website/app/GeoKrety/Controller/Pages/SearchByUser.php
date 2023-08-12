@@ -17,7 +17,8 @@ class SearchByUser extends Base {
         Smarty::assign('search_user', $search_user);
 
         $user = new User();
-        $filter = ['lower(username) like lower(?)', sprintf('%%%s%%', $search_user)];
+        $search_wildcard = str_contains($search_user, '%') ? '%s' : '%%%s%%';
+        $filter = ['lower(username) like lower(?)', sprintf($search_wildcard, $search_user)];
         $option = ['order' => 'username ASC'];
         $subset = $user->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_SEARCH_BY_USER, $filter, $option);
         Smarty::assign('users', $subset);
