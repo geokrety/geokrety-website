@@ -11,8 +11,6 @@ endif
 help: ## This help.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-GIT_COMMIT := $(shell git rev-parse --short HEAD)
-
 ## DEV Tools
 composer: ## run composer install locally
 	composer 2>/dev/null 1>&2 || { echo "composer is required : composer install guide at https://getcomposer.org"; exit 1; }
