@@ -16,8 +16,7 @@
                     {t}Log a GeoKret{/t}
                 </a>
                 {else}
-                <p class="navbar-btn">
-                <div class="btn-group" role="group">
+                <div class="btn-group navbar-btn" role="group">
                     {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
                         <a id="navbar-facebookauth-sm" href="/auth/facebook" class="btn btn-primary">
                             {fa icon="facebook"}
@@ -32,7 +31,6 @@
                         {fa icon="sign-in"} {t}Sign in{/t}
                     </a>
                 </div>
-                </p>
                 {/if}
                 &nbsp;
             </div>
