@@ -247,7 +247,7 @@ class Move extends Base {
         });
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'geokret' => $this->geokret->id,

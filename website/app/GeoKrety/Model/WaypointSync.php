@@ -95,7 +95,7 @@ class WaypointSync extends BaseWaypoint {
         ];
     }
 
-    public function jsonSerialize(): array {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'service_id' => $this->service_id,

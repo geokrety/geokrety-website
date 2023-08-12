@@ -73,7 +73,7 @@ class AwardsWon extends Base {
         return GK_CDN_IMAGES_URL.'/badges/'.$this->award->filename;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'holder' => $this->holder->id,

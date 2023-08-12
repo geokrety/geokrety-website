@@ -36,7 +36,7 @@ class SocialAuthProvider extends Base implements \JsonSerializable {
         return $provider;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'name' => $this->name,

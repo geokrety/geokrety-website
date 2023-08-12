@@ -95,7 +95,7 @@ class UsersSettings extends Base {
         return $this->name;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'user' => $this->getRaw('user'),
             'name' => $this->name->name,

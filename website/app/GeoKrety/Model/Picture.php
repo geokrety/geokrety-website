@@ -228,7 +228,7 @@ class Picture extends Base {
         });
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             // 'author' => $this->author->id ?? null,

@@ -85,7 +85,7 @@ class YearlyRanking extends Base {
         return self::get_date_object($value);
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'user' => ($this->user ?? $this->user->id),

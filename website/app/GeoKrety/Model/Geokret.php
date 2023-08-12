@@ -308,7 +308,7 @@ SQL;
         return \Base::instance()->get('DB')->exec($sql, [$this->id]);
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'gkid' => $this->gkid,

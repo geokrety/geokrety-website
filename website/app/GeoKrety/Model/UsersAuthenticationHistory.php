@@ -147,7 +147,7 @@ EOT;
         \Base::instance()->get('DB')->exec($sql, [GK_USER_AUTHENTICATION_HISTORY_RETENTION_DAYS.' DAY']);
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'user' => $this->getRaw('user'),
             'ip' => $this->ip,

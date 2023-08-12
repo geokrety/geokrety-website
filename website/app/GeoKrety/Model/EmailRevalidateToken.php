@@ -120,7 +120,10 @@ class EmailRevalidateToken extends Base {
         });
     }
 
-    public function jsonSerialize() {
-        // TODO: Implement jsonSerialize() method.
+    public function jsonSerialize(): mixed {
+        return [
+            'id' => $this->id,
+            'used' => $this->used,
+        ];
     }
 }

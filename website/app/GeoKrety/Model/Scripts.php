@@ -91,7 +91,7 @@ class Scripts extends Base {
         $this->save();
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'name' => $this->name,

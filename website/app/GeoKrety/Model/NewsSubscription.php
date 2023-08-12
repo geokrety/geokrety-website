@@ -42,7 +42,7 @@ class NewsSubscription extends Base {
         return self::get_date_object($value);
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'news' => $this->news->id,

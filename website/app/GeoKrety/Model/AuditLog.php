@@ -67,7 +67,7 @@ class AuditLog extends Base {
         $this->db->exec($sql, [GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS.' DAY']);
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'log_datetime' => $this->log_datetime,
             'event' => $this->event,

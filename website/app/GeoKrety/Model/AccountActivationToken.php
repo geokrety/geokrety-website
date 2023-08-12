@@ -126,7 +126,7 @@ class AccountActivationToken extends Base {
         ]);
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             // 'token' => $this->token,

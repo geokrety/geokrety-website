@@ -117,7 +117,7 @@ class WaypointOC extends BaseWaypoint {
         ];
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'waypoint' => $this->waypoint,

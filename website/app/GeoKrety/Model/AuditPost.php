@@ -87,7 +87,7 @@ class AuditPost extends Base {
         }
     }
 
-    public function jsonSerialize(): array {
+    public function jsonSerialize(): mixed {
         return [
             'datetime' => $this->created_on_datetime,
             'route' => $this->route,
