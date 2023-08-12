@@ -23,4 +23,7 @@
             return data
         }
     },
+    "drawCallback" : function(settings) {
+        bind_gk_avatars_buttons()
+    },
 {/function}

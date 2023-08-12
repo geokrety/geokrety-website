@@ -11,3 +11,15 @@ $('.gallery').each(function() {
         }
     });
 });
+
+function bind_gk_avatars_buttons() {
+    $('a.has-gk-avatar').each(function() {
+        $(this).magnificPopup({
+            type: 'image',
+            image: {
+              titleSrc: 'title'
+            }
+        });
+    });
+}
+bind_gk_avatars_buttons()
