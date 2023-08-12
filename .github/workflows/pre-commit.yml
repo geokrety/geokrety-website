@@ -17,3 +17,5 @@ on:
 jobs:
   lint:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/pre-commit_php.yml@main
+    with:
+      php_version: 8.2
