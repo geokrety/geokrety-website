@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c55d841f6dc191ab4ca6b8aa5988b2e6",
+    "content-hash": "04febae04433c8115314a6ef06d9d5f3",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -1690,17 +1690,11 @@
         },
         {
             "name": "ikkez/f3-opauth",
-            "version": "v1.0.1",
+            "version": "dev-php82",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ikkez/f3-opauth.git",
-                "reference": "2f76ad82507202353de804a6885db8e58ccc6106"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ikkez/f3-opauth/zipball/2f76ad82507202353de804a6885db8e58ccc6106",
-                "reference": "2f76ad82507202353de804a6885db8e58ccc6106",
-                "shasum": ""
+                "url": "https://github.com/kumy/f3-opauth.git",
+                "reference": "2e9bf69f7a4b468a71e005781f434052f73ee0c7"
             },
             "type": "library",
             "autoload": {
@@ -1708,25 +1702,20 @@
                     "lib/opauth/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0"
             ],
             "description": "Opauth Plugin for PHP Fat-Free Framework",
             "homepage": "https://github.com/ikkez/f3-opauth",
             "keywords": [
-                "Authentication",
                 "F3",
-                "OPAuth",
                 "auth",
+                "authentication",
                 "fatfree",
-                "oauth"
+                "oauth",
+                "opauth"
             ],
-            "support": {
-                "issues": "https://github.com/ikkez/f3-opauth/issues",
-                "source": "https://github.com/ikkez/f3-opauth/tree/v1.0.1"
-            },
-            "time": "2019-05-02T07:00:55+00:00"
+            "time": "2023-08-11T09:40:57+00:00"
         },
         {
             "name": "ikkez/f3-pagination",
@@ -7364,10 +7353,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
     "stability-flags": {
         "benhall14/php-pagination": 20,
-        "erusev/parsedown": 10,
+        "ikkez/f3-opauth": 20,
         "league/geotools": 0,
         "s1lentium/iptools": 20
     },
