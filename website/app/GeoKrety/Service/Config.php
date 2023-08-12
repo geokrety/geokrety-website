@@ -465,7 +465,7 @@ class Config extends \Prefab {
         define('GK_CDN_DATATABLE_CSS', getenv('GK_CDN_DATATABLE_CSS') ?: GK_CDN_LIBRARIES_URL.'/datatables/1.12.1/datatables.css');
         define('GK_CDN_DATATABLE_I18N', getenv('GK_CDN_DATATABLE_I18N') ?: GK_CDN_LIBRARIES_URL.'/datatables/1.12.1/i18n/%s.json');
 
-        define('GK_CDN_DROPZONE_JS', getenv('GK_CDN_DROPZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/dropzone/5.5.1/dropzone.js');
+        define('GK_CDN_DROPZONE_JS', getenv('GK_CDN_DROPZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/dropzone/5.9.3/dropzone.js');
 
         define('GK_CDN_MAGNIFIC_POPUP_JS', getenv('GK_CDN_MAGNIFIC_POPUP_JS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/jquery.magnific-popup.min.js');
         define('GK_CDN_MAGNIFIC_POPUP_CSS', getenv('GK_CDN_MAGNIFIC_POPUP_CSS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/magnific-popup.css');
