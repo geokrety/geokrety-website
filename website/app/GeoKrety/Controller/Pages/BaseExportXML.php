@@ -6,13 +6,11 @@ use Carbon\Carbon;
 use Carbon\Exceptions\InvalidArgumentException;
 use GeoKrety\Model\Geokret;
 
-/**
- * @property Carbon|false modifiedSince
- */
 class BaseExportXML extends BaseExport {
     protected \GeoKrety\Service\Xml\GeokretyBaseExport $xml;
     private array $filter_require_one_of = [];
     private bool $disable_filter_modifiedsince_limit = false;
+    private Carbon|false $modifiedSince;
 
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
