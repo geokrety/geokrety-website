@@ -58,17 +58,15 @@ class UserSettings extends \Prefab {
     /**
      * Get a user custom setting or the default site value.
      *
-     * @param \GeoKrety\Model\User|int|null $user
-     *
      * @return string|int|bool|null
      */
-    public function get($user, string $setting_name) {
+    public function get(User|int|null $user, string $setting_name) {
         if (is_null($user)) {
             return $this->getDefault($setting_name);
         }
         $f3 = \Base::instance();
         if (!$f3->exists('SESSION.SETTINGS')) {
-            $this->loadUserSettings(gettype($user) === 'GeoKrety\Model\User' ? $user->id : $user);
+            $this->loadUserSettings($user);
         }
         if ($f3->exists('SESSION.SETTINGS.'.$setting_name)) {
             return $f3->get('SESSION.SETTINGS.'.$setting_name);
@@ -96,7 +94,7 @@ class UserSettings extends \Prefab {
      */
     public function getDefault(string $setting_name) {
         $users_settings_parameters = new UsersSettingsParameters();
-        if (!$users_settings_parameters->load(['name = ?', $setting_name], null, GK_SITE_CACHE_TTL_SITE_DEFAULT_SETTINGS)) {
+        if (!$users_settings_parameters->load(['name = ?', $setting_name], null, 0)) {
             throw new \GeoKrety\Model\NoSuchSettingException("Setting '$setting_name' doesn't exist");
         }
 
@@ -106,12 +104,12 @@ class UserSettings extends \Prefab {
     /**
      * Load custom user's settings.
      */
-    protected function loadUserSettings(int $user_id): void {
+    protected function loadUserSettings(User|int|null $user): void {
         // Declare settings as loaded
         $f3 = \Base::instance();
         $f3->set('SESSION.SETTINGS', []);
         $users_settings = new UsersSettings();
-        $settings = $users_settings->find(['user = ?', $user_id]);
+        $settings = $users_settings->find(['user = ?', gettype($user) === 'GeoKrety\Model\User' ? $user->id : $user]);
         if (!$settings) {
             return;
         }
