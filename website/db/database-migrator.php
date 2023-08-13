@@ -376,7 +376,7 @@ class BaseMigrator {
     }
 
     protected function cleanerHook(&$values) {
-        array_walk($values, function (&$value) { $value = trim($value); });
+        array_walk($values, function (&$value) { $value = is_null($value) ? $value : trim($value); });
     }
 
     public function process($paginate = DEFAULT_PAGINATION) {
@@ -898,6 +898,8 @@ class WaypointGCMigrator extends BaseMigrator {
     // TODO clean spaces
     protected function prepareData() {
         $this->mPdo->query('DELETE FROM `gk-waypointy-gc`;');
+        $this->mPdo->query('ALTER TABLE `gk-waypointy-gc` CHANGE `country` `country` varchar(3) NULL AFTER `lon`;');
+        $this->mPdo->query('ALTER TABLE `gk-waypointy-gc` CHANGE `wpt` `wpt` varchar(10) NOT NULL FIRST;');
         $this->mPdo->query('INSERT INTO `gk-waypointy-gc` SELECT waypoint, lat, lon, country, alt FROM `gk-ruchy` WHERE waypoint like \'GC%\' GROUP BY waypoint;');
     }
 
