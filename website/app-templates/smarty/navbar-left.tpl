@@ -77,9 +77,9 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuSignInFast">
-                            <li><a href="{'devel_login_user'|login_link:sprintf('username=%s', username1)}">User 1</a></li>
-                            <li><a href="{'devel_login_user'|login_link:sprintf('username=%s', username2)}">User 2</a></li>
-                            <li><a href="{'devel_login_user'|login_link:sprintf('username=%s', username3)}">User 3</a></li>
+                            <li><a href="{'devel_login_user'|login_link:'username=username 1'}">User 1</a></li>
+                            <li><a href="{'devel_login_user'|login_link:'username=username 2'}">User 2</a></li>
+                            <li><a href="{'devel_login_user'|login_link:'username=username 3'}">User 3</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{'devel_logout_user'|alias}">Sign Out</a></li>
                         </ul>

@@ -26,7 +26,7 @@ class DatabaseSeed extends Base {
         $start_i = $f3->get('GET.i') ?? 1;
         for ($i = $start_i; $i < $f3->get('PARAMS.count') + $start_i; ++$i) {
             $user = new User();
-            $user->username = sprintf('username%d', $i);
+            $user->username = sprintf('username %d', $i);
             if (!filter_var($f3->get('GET.without_password'), FILTER_VALIDATE_BOOLEAN)) {
                 $user->password = 'password';
             }

@@ -29,4 +29,9 @@ class LocalMail extends Base {
         $f3->clear('SESSION.LOCAL_MAIL');
         $f3->reroute('@devel_mail_list');
     }
+
+    public function delete_all_fast(\Base $f3) {
+        $f3->clear('SESSION.LOCAL_MAIL');
+        echo 'OK';
+    }
 }
