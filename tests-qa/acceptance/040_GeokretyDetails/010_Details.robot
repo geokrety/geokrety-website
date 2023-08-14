@@ -1,10 +1,11 @@
 *** Settings ***
-Library         DependencyLibrary
-Resource        ../functions/PageGeoKretyCreate.robot
-Resource        ../vars/users.resource
-Resource        ../vars/geokrety.resource
-Force Tags      GeoKrety Details
-Suite Setup     Seed
+Library         RequestsLibrary
+Resource        ../ressources/Authentication.robot
+Resource        ../ressources/Geokrety.robot
+Variables       ../ressources/vars/users.yml
+Variables       ../ressources/vars/geokrety.yml
+Suite Setup     Suite Setup
+Test Setup      Test Setup
 
 *** Test Cases ***
 
@@ -17,50 +18,45 @@ Private Information Not Visible - anonymous
 Public Information Visible - authenticated
     Sign In ${USER_1.name} Fast
     Has Public Information Visible - all geokrety
-    Sign Out Fast
 
 Private Information Visible - authenticated - owned
     Sign In ${USER_1.name} Fast
     Has Private Information             ${PAGE_GEOKRETY_1_DETAILS_URL}      ${GEOKRETY_1}
-    Sign Out Fast
 
 Private Information Not Visible - authenticated - not owned
     Sign In ${USER_1.name} Fast
     Has Not Private Information         ${PAGE_GEOKRETY_2_DETAILS_URL}
-    Sign Out Fast
 
 Access GeoKrety By Id
-    Sign In ${USER_1.name} Fast
-    Go To GeoKrety ${GEOKRETY_1.id} url
-    Location Should Be    ${GK_URL}/en/geokrety/1
-    Sign Out Fast
+    Go To GeoKrety ${GEOKRETY_1.id}
+    Location Should Be                  ${PAGE_HOME_URL_EN}/geokrety/1
 
 Access GeoKrety By GkId
-    Sign In ${USER_1.name} Fast
-    Go To GeoKrety ${GEOKRETY_1.ref} url
-    Location Should Be    ${PAGE_GEOKRETY_1_DETAILS_URL}
-    Sign Out Fast
+    Go To GeoKrety ${GEOKRETY_1.ref}
+    Location Should Be                  ${PAGE_GEOKRETY_1_DETAILS_URL}
 
 Access GeoKrety By Not Hex GkId
-    Sign In ${USER_1.name} Fast
-    Go To GeoKrety ${GEOKRETY_1.ref}ZZ url
-    Location Should Be    ${PAGE_HOME_URL}
-    Sign Out Fast
+    Go To GeoKrety GKZZZZ               redirect=${PAGE_HOME_URL}
+    Flash message shown                 This GeoKret does not exist.
 
 Access GeoKrety By Not An Id
-    Sign In ${USER_1.name} Fast
-    Go To GeoKrety FooBar url
-    Location Should Be    ${PAGE_HOME_URL}
-    Sign Out Fast
+    Go To GeoKrety FooBar               redirect=${PAGE_HOME_URL}
+    Flash message shown                 This GeoKret does not exist.
+
+Access GeoKrety Move List Page By not An Id
+    Go To Url                           ${PAGE_GEOKRETY_1_DETAILS_URL}/page/FOOBAR
 
 
 *** Keywords ***
 
-Seed
+Suite Setup
     Clear Database
-    Seed 2 users
-    Seed 1 geokrety owned by 1
-    Seed 1 geokrety owned by 2
+    Seed ${2} users
+    Seed ${1} geokrety owned by ${1}
+    Seed ${1} geokrety owned by ${2}
+
+Test Setup
+    Sign Out Fast
 
 Has Public Information Visible - all geokrety
     Has Public Information              ${PAGE_GEOKRETY_1_DETAILS_URL}      ${GEOKRETY_1}      ${USER_1}

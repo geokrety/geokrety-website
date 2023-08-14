@@ -1,8 +1,8 @@
 *** Settings ***
-Resource        ../functions/PageRegistration.robot
-Resource        ../vars/users.resource
-Force Tags      CreateAccount
-Suite Setup     Seed
+Library         RequestsLibrary
+Resource        ../ressources/Authentication.robot
+Variables       ../ressources/vars/users.yml
+Test Setup      Test Setup
 
 *** Test Cases ***
 
@@ -15,10 +15,11 @@ Check username
     ${USER_1.email}    Sorry, but username "${USER_1.email}" is already used.
 
 *** Keywords ***
-Seed
 
-    [Documentation]         Seed an account
+Test Setup
     Clear Database
+    Sign Out Fast
+    Empty Dev Mailbox Fast
     Seed 1 users
 
 Fill username

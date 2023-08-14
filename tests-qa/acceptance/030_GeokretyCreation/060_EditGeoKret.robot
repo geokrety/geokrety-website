@@ -1,17 +1,18 @@
 *** Settings ***
 Library         RequestsLibrary
-Resource        ../functions/PageGeoKretyCreate.robot
-Resource        ../vars/users.resource
-Resource        ../vars/geokrety.resource
-Force Tags      Create GeoKrety
-Suite Setup     Seed
+Resource        ../ressources/Authentication.robot
+Resource        ../ressources/Geokrety.robot
+Variables       ../ressources/vars/users.yml
+Variables       ../ressources/vars/geokrety.yml
+Test Setup      Test Setup
 
 *** Test Cases ***
 
 
-Anonymous can access form
+Anonymous cannot access form
     Sign Out Fast
-    Go To Url                               ${PAGE_GEOKRETY_EDIT_URL}
+    Go To Url                               ${PAGE_GEOKRETY_EDIT_URL}    redirect=${PAGE_SIGN_IN_URL}
+    Flash message shown                     ${UNAUTHORIZED}
     Page Should Contain                     ${UNAUTHORIZED}
 
 Owner can access form
@@ -21,8 +22,8 @@ Owner can access form
 
 Cannot edit someone else GeoKret
     Sign In ${USER_2.name} Fast
-    Go To Url                               ${PAGE_GEOKRETY_EDIT_URL}
-    Page Should Contain                     Only the owner can edit his GeoKrety
+    Go To Url                               ${PAGE_GEOKRETY_EDIT_URL}    redirect=${PAGE_GEOKRETY_1_DETAILS_URL}
+    Flash message shown                     Only the owner can edit his GeoKrety
     Page Should Not Contain                 GeoKret label preview
 
 
@@ -50,7 +51,6 @@ Edit A GeoKret
 
 *** Keywords ***
 
-Seed
-    Clear Database
-    Seed 2 users
-    Seed 1 geokrety owned by 1
+Test Setup
+    Clear Database And Seed ${2} users
+    Seed ${1} geokrety owned by ${1}

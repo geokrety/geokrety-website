@@ -1,10 +1,10 @@
 *** Settings ***
-Library         DependencyLibrary
-Resource        ../functions/PageGeoKretyCreate.robot
-Resource        ../vars/users.resource
-Resource        ../vars/geokrety.resource
-Force Tags      Create GeoKrety
-Suite Setup     Seed
+Library         RequestsLibrary
+Resource        ../ressources/Authentication.robot
+Resource        ../ressources/Geokrety.robot
+Variables       ../ressources/vars/users.yml
+Variables       ../ressources/vars/geokrety.yml
+Test Setup      Test Setup
 
 *** Test Cases ***
 
@@ -14,12 +14,13 @@ Name invalid
     ${SPACE}            This value is required.
     ${SPACE}            This value length is invalid. It should be between 4 and 75 characters long.
     ${SPACE*4}          This value is required.
+    ${SPACE*1}A         This value length is invalid. It should be between 4 and 75 characters long.
+    ${SPACE*2}A         This value length is invalid. It should be between 4 and 75 characters long.
 
 Name invalid (check after submit)
-    [Tags]    TODO
     [Template]          Name raise error after submit
-    ${SPACE*3}A         The Name field needs to be at least 4 characters
-    A${SPACE*3}A        The Name field needs to be at least 4 characters
+    ${SPACE*3}A         The Name field needs to be at least '4' characters
+    ${SPACE*4}A         The Name field needs to be at least '4' characters
 
 Name valid
     [Template]          GeoKret is created
@@ -34,9 +35,8 @@ Name valid
 
 *** Keywords ***
 
-Seed
-    Clear Database
-    Seed 1 users
+Test Setup
+    Clear Database And Seed ${1} users
     Sign In ${USER_1.name} Fast
 
 GeoKret is created

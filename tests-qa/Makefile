@@ -6,7 +6,7 @@ ifeq (Windows_NT, ${OS})
 endif
 
 GIT_BRANCH ?= local
-ROBOT_PARAMS := --variable browser:Firefox -v images_dir:visual_images  --debugfile debugfile.log --report report.html --xunit xUnit.xml -d docs/$(GIT_BRANCH) -V acceptance/vars/robot-vars.py -e TODO acceptance
+ROBOT_PARAMS := --debugfile debugfile.log --report report.html -d docs/$(GIT_BRANCH) -V acceptance/ressources/robot-vars.py acceptance
 
 # HELP
 # This will output the help for each task
@@ -16,9 +16,16 @@ ROBOT_PARAMS := --variable browser:Firefox -v images_dir:visual_images  --debugf
 help: ## This help.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
+echo-run-command:
+	@echo robot --log log.html --output output.xml $(ROBOT_PARAMS)
+
 test-headless: ## Run tests headless mode
 	@echo "Run tests headless"
 	HEADLESS=True make test
+
+rerun-failed-tests-headless: ## rerun robot framework failed tests headless mode
+	@echo "Run rerun-failed-tests headless"
+	HEADLESS=True make rerun-failed-tests
 
 test: ## run robot framework tests (master env)
 	@echo "Run Tests"

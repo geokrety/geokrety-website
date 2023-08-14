@@ -1,14 +1,10 @@
 *** Settings ***
-Library         DependencyLibrary
-Resource        ../functions/PageRegistration.robot
-Resource        ../vars/users.resource
-Force Tags      CreateAccount
+Library         RequestsLibrary
+Resource        ../ressources/Authentication.robot
+Variables       ../ressources/vars/users.yml
+Suite Setup     Suite Setup
 
 *** Test Cases ***
-Seed an account
-    [Documentation]         Seed an account
-    Clear Database
-    Seed 1 users
 
 Check Valid Username
     [Template]    Check Valid Username
@@ -28,6 +24,12 @@ Check Invalid Username
 
 
 *** Keywords ***
+
+Suite Setup
+    Clear Database
+    Sign Out Fast
+    Seed 1 users
+
 Check Valid Username
     [Arguments]    ${username}
     Fill username                    ${username}
