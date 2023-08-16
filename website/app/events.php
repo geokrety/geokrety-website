@@ -244,14 +244,32 @@ $events->on('news-comment.deleted', function (GeoKrety\Model\NewsComment $commen
     Metrics::counter('news_comment_deleted_total', 'Total number of news comment deleted');
 });
 $events->on('move.created', function (GeoKrety\Model\Move $move) {
+    if (!is_null($move->geokret->owner)) {
+        \GeoKrety\Service\UserBanner::generate($move->geokret->owner);
+    }
+    if (!is_null($move->author) && !is_null($move->geokret->owner) && $move->geokret->owner === $move->author) {
+        \GeoKrety\Service\UserBanner::generate($move->author);
+    }
     audit('move.created', $move);
     Metrics::counter('move_created_total', 'Total number of move created');
 });
 $events->on('move.updated', function (GeoKrety\Model\Move $move) {
+    if (!is_null($move->geokret->owner)) {
+        \GeoKrety\Service\UserBanner::generate($move->geokret->owner);
+    }
+    if (!is_null($move->author) && !is_null($move->geokret->owner) && $move->geokret->owner !== $move->author) {
+        \GeoKrety\Service\UserBanner::generate($move->author);
+    }
     audit('move.updated', $move);
     Metrics::counter('move_updated_total', 'Total number of move updated');
 });
 $events->on('move.deleted', function (GeoKrety\Model\Move $move) {
+    if (!is_null($move->geokret?->owner)) {
+        \GeoKrety\Service\UserBanner::generate($move->geokret->owner);
+    }
+    if (!is_null($move->author) && !is_null($move->geokret->owner) && $move->geokret->owner !== $move->author) {
+        \GeoKrety\Service\UserBanner::generate($move->author);
+    }
     audit('move.deleted', $move);
     Metrics::counter('move_deleted_total', 'Total number of move deleted');
 });
