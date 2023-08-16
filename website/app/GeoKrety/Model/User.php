@@ -304,7 +304,7 @@ class User extends Base implements \JsonSerializable {
     }
 
     public function hasEmail(): bool {
-        return !is_null($this->get_email());
+        return !is_null($this->_email_hash);
     }
 
     public function isEmailValid(): bool {
@@ -338,7 +338,7 @@ class User extends Base implements \JsonSerializable {
     }
 
     public function sendAccountActivationEmail(): void {
-        if (is_null($this->email) or $this->isAccountValid()) {
+        if (!$this->hasEmail() or $this->isAccountValid()) {
             // skip sending mail
             return;
         }
@@ -350,7 +350,7 @@ class User extends Base implements \JsonSerializable {
     }
 
     public function resendAccountActivationEmail(bool $notif_only = false): void {
-        if (is_null($this->email)) {
+        if (!$this->hasEmail()) {
             // skip sending mail
             return;
         }
