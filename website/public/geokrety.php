@@ -35,7 +35,7 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 404) {
-            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exists.'), 'danger');
+            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage($error['text'] ?: _('This page doesn\'t exist.'), 'danger');
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 405) {
