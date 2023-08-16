@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(11);
+SELECT plan(13);
 
 \set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set paris '\'0101000020E610000066666666666602406666666666664840\''
@@ -37,6 +37,12 @@ SELECT is(distance, (680+877+524+1150)::bigint, 'Nice/Paris/Berlin/Warsaw/Moscow
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (6, 1, 1, :tokyo, '2020-04-07 05:00:00+00', 0);
 SELECT is(distance, (680+877+524+1150+7491)::bigint, 'Nice/Paris/Berlin/Warsaw/Moscow/Tokyo') FROM gk_geokrety WHERE id = 1::bigint;
 
+-- Delete
+DELETE FROM "gk_moves" WHERE id = 6::bigint;
+SELECT is(distance, (680+877+524+1150)::bigint, 'Nice/Paris/Berlin/Warsaw/Moscow') FROM gk_geokrety WHERE id = 1::bigint;
+
+INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (6, 1, 1, :tokyo, '2020-04-07 05:00:00+00', 0);
+SELECT is(distance, (680+877+524+1150+7491)::bigint, 'Nice/Paris/Berlin/Warsaw/Moscow/Tokyo') FROM gk_geokrety WHERE id = 1::bigint;
 
 -- test move_type as comment
 UPDATE "gk_moves" SET move_type=2, position=null WHERE id=5;
