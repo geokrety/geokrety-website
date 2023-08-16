@@ -37,6 +37,10 @@ class UserContact extends Base {
         if ($user->dry()) {
             $f3->error(404, _('This user does not exist.'));
         }
+        if (!$user->isEmailValid()) {
+            Danger::message_full_screen(_('This user has no valid email'), _('Action is not possible'));
+            exit;
+        }
         $this->mail->to_user = $user;
     }
 
