@@ -304,6 +304,19 @@ class DatabaseSeed extends Base {
         echo 'OK';
     }
 
+    public function move_delete(\Base $f3) {
+        header('Content-Type: text');
+        $move = new Move();
+        $_move = $move->findone(['id = ?', $f3->get('PARAMS.moveid')]);
+        if ($_move === false) {
+            echo 'Error loading move: '.$f3->get('PARAMS.moveid');
+            $f3->error(400);
+            exit;
+        }
+        $_move->erase();
+        echo 'done!';
+    }
+
     public function news(\Base $f3) {
         header('Content-Type: text');
         $start_i = $f3->get('GET.i') ?? 1;
