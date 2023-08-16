@@ -3,7 +3,6 @@ Library         RequestsLibrary
 Resource        ../ressources/Authentication.robot
 Variables       ../ressources/vars/users.yml
 Test Setup      Test Setup
-Library    Dialogs
 
 *** Variables ***
 

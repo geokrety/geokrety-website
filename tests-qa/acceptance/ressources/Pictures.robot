@@ -7,6 +7,7 @@ Library 	      OperatingSystem
 
 *** Variables ***
 
+${PICTURES_DIR}      ${CURDIR}/pictures
 ${CAPTION_INPUT}     //*[@id="caption"]
 
 ${PICTURE_PULLER}    //div[contains(@class, "pictures-actions-pull")]
@@ -49,13 +50,8 @@ Check Image
     Capture Element                         ${element}    name=${name}
     Compare Images
 
-# Post User Avatar
-#     Sign In ${USER_1.name} Fast
-#     Go To User ${1} url
-#     Upload picture via button                       ${USER_PROFILE_DROPZONE}                ${USER_PROFILE_DROPZONE_IMAGE}      ${CURDIR}/sample-picture1.jpg
-
 Post GeoKret Avatar
-    [Arguments]    ${file}=${CURDIR}/sample-picture.jpg    ${position}=1
+    [Arguments]    ${file}=pictures/sample-picture.jpg    ${position}=1
     Location Should Contain                 ${PAGE_HOME_URL_EN}/geokrety/
     Upload picture via button               ${GEOKRET_DETAILS_AVATAR_DROPZONE}
     ...                                     ${GEOKRET_DETAILS_AVATAR_IMAGES}
@@ -65,46 +61,71 @@ Post GeoKret Avatar
 Post GeoKret Avatar Via Drag/Drop
     [Arguments]    ${source}    ${position}=1
     Location Should Contain                 ${PAGE_HOME_URL_EN}/geokrety/
-    Upload picture via via Drag/Drop        ${GEOKRET_DETAILS_AVATAR_DROPZONE}
+    Upload picture via Drag/Drop            ${GEOKRET_DETAILS_AVATAR_DROPZONE}
     ...                                     ${GEOKRET_DETAILS_AVATAR_IMAGES}
     ...                                     ${source}
     ...                                     ${position}
+
+Post User Avatar
+    [Arguments]    ${file}=pictures/sample-picture.jpg    ${position}=1
+    Location Should Contain                 ${PAGE_HOME_URL_EN}/users/
+    Upload picture via button               ${USER_PROFILE_DROPZONE}
+    ...                                     ${USER_PROFILE_DROPZONE_IMAGE}
+    ...                                     ${file}
+    ...                                     ${position}
+
+Post User Avatar Via Drag/Drop
+    [Arguments]    ${source}    ${position}=1
+    Location Should Contain                 ${PAGE_HOME_URL_EN}/users/
+    Upload picture via Drag/Drop            ${USER_PROFILE_DROPZONE}
+    ...                                     ${USER_PROFILE_DROPZONE_IMAGE}
+    ...                                     ${source}
+    ...                                     ${position}
+
+
+Post Move Picture
+    [Arguments]    ${file}=pictures/sample-picture.jpg    ${move_number}=1    ${position}=1
+    Location Should Contain                 ${PAGE_HOME_URL_EN}/geokrety/
+    ${move} =    Get Move ${move_number} XPath
+    Upload picture via button               ${move}${GEOKRET_MOVE_DROPZONE}
+    ...                                     ${move}${GEOKRET_MOVE_IMAGES}
+    ...                                     ${file}
+    ...                                     ${position}
+
 
 # Post Move Picture
 #     Post Move                                       ${MOVE_1}
 #     Sign In ${USER_1.name} Fast
 #     Go To GeoKrety ${1} url
-#     Upload picture via button                       ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_DROPZONE}    ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}    ${CURDIR}/sample-picture4.jpg
+#     Upload picture via button                       ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_DROPZONE}    ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}    pictures/sample-picture4.jpg
 
-# Upload user avatar via button
-#     [Arguments]    ${user_profile_url}    ${file}    ${count}=1
-#     Go To                                   ${user_profile_url}
-#     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_PICTURE_UPLOAD_BUTTON}    timeout=30
-#     Choose File    	                        //*[@type="file"]    ${file}
-#     # Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSING_SUFFIX}    timeout=30  ## Errors caused by invalid syntax, timeouts, or fatal exceptions are not caught by this keyword.
-#     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSED_SUFFIX}     timeout=30
-
-# Upload user avatar via Drag/Drop - same page
-#     [Arguments]    ${user_profile_url}    ${source}    ${count}=1
-#     Go To                                   ${user_profile_url}
-#     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_PICTURE_UPLOAD_BUTTON}    timeout=30
-#     Drag And Drop                           ${source}    ${USER_PROFILE_DROPZONE}
-#     # Run Keyword And Continue On Failure     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSING_SUFFIX}    timeout=30  ## Errors caused by invalid syntax, timeouts, or fatal exceptions are not caught by this keyword.
-#     Wait Until Page Contains Element        ${USER_PROFILE_DROPZONE_IMAGE}\[${count}]${DROPZONE_PROCESSED_SUFFIX}     timeout=30
-
-Upload picture via button
-    [Arguments]    ${dropzone}    ${results}    ${file}    ${position}=1
+Upload Picture Via Button Base
+    [Arguments]    ${dropzone}    ${results}    ${file}
     Wait Until Page Contains Element        ${dropzone}
     Scroll Into View                        ${dropzone}
     Choose File    	                        ${dropzone}//*[@type="file"]       ${file}
-    Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSED_SUFFIX}     timeout=5
 
-Upload picture via via Drag/Drop
+Upload Picture Via Button
+    [Arguments]    ${dropzone}    ${results}    ${file}    ${position}=1
+    Upload Picture via Button Base    ${dropzone}    ${results}    ${file}
+    TRY
+        Wait Until Page Contains Element        ${results}\[${position}]//span[@class="picture-message"]     timeout=1
+    EXCEPT
+        No Operation
+    END
+    Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSED_SUFFIX}     timeout=10
+
+Upload Picture Via Drag/Drop
     [Arguments]    ${dropzone}    ${results}    ${source}    ${position}=1
     Wait Until Page Contains Element        ${dropzone}
     Scroll Into View                        ${dropzone}
     Drag And Drop                           ${source}    ${dropzone}
-    Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSED_SUFFIX}     timeout=5
+    TRY
+        Wait Until Page Contains Element        ${results}\[${position}]//span[@class="picture-message"]     timeout=1
+    EXCEPT
+        No Operation
+    END
+    Wait Until Page Contains Element        ${results}\[${position}]${DROPZONE_PROCESSED_SUFFIX}     timeout=10
 
 Drag And Drop
     [Arguments]     ${src}    ${tgt}

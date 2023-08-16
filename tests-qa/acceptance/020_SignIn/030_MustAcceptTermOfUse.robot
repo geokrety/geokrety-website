@@ -14,7 +14,7 @@ Seeded are fully valid
 
 Freshly created accounts are fully valid
     [Documentation]                     No TermsOfUse question for fresh users
-    Register User                       &{USER_1}
+    Register User                       ${USER_1}
     Activate user account
     Sign Out Fast
     Sign In User                        ${USER_2.name}

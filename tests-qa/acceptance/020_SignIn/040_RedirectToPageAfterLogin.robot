@@ -6,7 +6,6 @@ Variables       ../ressources/vars/users.yml
 *** Test Cases ***
 
 No redirect urls
-    [Documentation]                     Redirect back to
     [Template]    Redirect to
     ${PAGE_NEWS_LIST_URL}                               ${PAGE_NEWS_LIST_URL}
     ${PAGE_MOVES_URL}                                   ${PAGE_MOVES_URL}

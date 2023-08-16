@@ -9,6 +9,7 @@ Library           RequestsLibrary
 *** Keywords ***
 
 Clear Database
-    ${resp} =         GET    ${PAGE_DEV_RESET_DB_URL}
-    ${body} =         Convert To String     ${resp.content}
-    Should Contain                          ${body}    OK
+    Go To Url Fast    ${PAGE_DEV_RESET_DB_URL}
+    # ${resp} =         GET    ${PAGE_DEV_RESET_DB_URL}
+    # ${body} =         Convert To String     ${resp.content}
+    # Should Contain                          ${body}    OK

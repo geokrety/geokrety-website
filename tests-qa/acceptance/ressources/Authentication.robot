@@ -38,26 +38,30 @@ ${REGISTRATION_TERMS_OF_USE_CHECKBOX}       //*[@id="termsOfUseInput"]
 ################
 # SIGN IN FORM
 ################
-${SIGN_IN_FORM_USERNAME_INPUT}              //div[@class="modal-dialog"]//form//input[@name="login"]
-${SIGN_IN_FORM_PASSWORD_INPUT}              //div[@class="modal-dialog"]//form//input[@name="password"]
-${SIGN_IN_FORM_REMEMBER_ME_CHECKBOX}        //div[@class="modal-dialog"]//form//input[@name="remember"]
-${SIGN_IN_FORM_SIGN_IN_BUTTON}              //div[@class="modal-dialog"]//form//button[@type="submit"]
+${SIGN_IN_FORM_USERNAME_INPUT}              //form//input[@name="username"]
+${SIGN_IN_FORM_PASSWORD_INPUT}              //form//input[@name="password"]
+${SIGN_IN_FORM_REMEMBER_ME_CHECKBOX}        //form//input[@name="remember"]
+${SIGN_IN_FORM_SIGN_IN_BUTTON}              //form//button[@type="submit" and contains(@class, "btn-primary")]
 
 *** Keywords ***
 
 Sign In User
-    [Arguments]     ${username}     ${password}=password
+    [Arguments]     ${username}     ${password}=password    ${base}=${EMPTY}
     Go To Home
-    Sign In User From Here              ${username}     ${password}
+    Sign In User From Here              ${username}     ${password}    ${base}
 
 Sign In User From Here
-    [Arguments]     ${username}     ${password}=password
+    [Arguments]     ${username}     ${password}=password    ${base}=${MODAL_DIALOG}
     Page Should Contain Link            ${NAVBAR_SIGN_IN_LINK}
     Click Element                       ${NAVBAR_SIGN_IN_LINK}
     Wait Until Modal                    Login
-    Input Text                          ${SIGN_IN_FORM_USERNAME_INPUT}    ${username}
-    Input Text                          ${SIGN_IN_FORM_PASSWORD_INPUT}    ${password}
-    Click Button                        ${SIGN_IN_FORM_SIGN_IN_BUTTON}
+    Sign In Fill Form                   ${username}     ${password}    ${base}
+    Click Button                        ${base}${SIGN_IN_FORM_SIGN_IN_BUTTON}
+
+Sign In Fill Form
+    [Arguments]     ${username}     ${password}=password    ${base}=${EMPTY}
+    Input Text                          ${base}${SIGN_IN_FORM_USERNAME_INPUT}    ${username}
+    Input Text                          ${base}${SIGN_IN_FORM_PASSWORD_INPUT}    ${password}
 
 Sign In ${username} Fast
     [Documentation]     Login user using special url (doesn't use login form)
@@ -73,7 +77,7 @@ Sign Out Fast
     Go To Url                           ${PAGE_LOGOUT_USER}
 
 Register User
-    [Arguments]     &{user}
+    [Arguments]     ${user}    ${userid}=1
     Go To Url                           ${PAGE_REGISTER_URL}
     Location Should Be                  ${PAGE_REGISTER_URL}
 
@@ -86,9 +90,12 @@ Register User
     ...                                 terms_of_use=${user.terms_of_use}
     Click Button                        ${REGISTRATION_REGISTER_BUTTON}
 
-    Location Should Be                  ${PAGE_USER_1_PROFILE_URL}
-    Page Should Not Contain             This user does not exist
-    Page Should Contain                 A confirmation email has been sent to your address
+    Location Should Be                  ${GK_URL}/${user.language}/users/${userid}
+    IF    "${user.language}" == "fr"
+        Page Should Contain             Un courriel de confirmation a été envoyé à votre adresse.
+    ELSE
+        Page Should Contain             A confirmation email has been sent to your address
+    END
     Mailbox Should Contain 1 Messages
 
 Activate user account

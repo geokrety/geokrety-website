@@ -16,7 +16,7 @@ Link is present
 
 Create first account
     ${passed} =    Run Keyword And Return Status
-    ...            Register User        &{USER_1}
+    ...            Register User        ${USER_1}
     Run Keyword If    not ${passed}     Fatal Error    Failed to create an initial user
     User Is Not Connected
     Mailbox Should Contain 1 Messages

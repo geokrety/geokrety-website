@@ -18,3 +18,9 @@ Page WithoutWarningOrFailure
     Page Should Not Contain    Warning:
     Page Should Not Contain    Failed
     Page Should Not Contain    Internal Server Error
+
+Variable Without Warning Or Failure
+    [Arguments]    ${body}
+    Should Not Contain         ${body}    Warning:
+    Should Not Contain         ${body}    Failed
+    Should Not Contain         ${body}    Internal Server Error

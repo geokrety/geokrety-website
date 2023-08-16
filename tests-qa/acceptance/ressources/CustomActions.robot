@@ -4,6 +4,8 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 
 *** Variables ***
 
+${SUBMIT_BUTTON}                    //div[contains(@class, "modal-footer")]/button[@type="submit"]
+
 ${MODAL_DIALOG}                     //div[@class="modal-dialog"]
 ${MODAL_DIALOG_TITLE}               ${MODAL_DIALOG}//*[@id="modalLabel"]
 ${MODAL_DIALOG_SUBMIT_BUTTON}       ${MODAL_DIALOG}//div[contains(@class, "modal-footer")]/button[@type="submit"]

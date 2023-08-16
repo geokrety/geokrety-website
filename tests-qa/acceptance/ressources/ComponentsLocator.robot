@@ -5,6 +5,8 @@ Library           SeleniumLibrary  timeout=10  implicit_wait=0
 
 ${GK_LOGO_LINK}     //*[@id="home-logo"]
 
+${PAGINATOR}        //ul[@data-gk-type="paginator"]
+
 ################
 # NAVBAR
 ################
@@ -79,17 +81,6 @@ ${GEOKRET_DETAILS_ARCHIVE_LINK}                 //*[@id="geokretDetailsArchiveLi
 
 ${GEOKRET_DETAILS_MAP_PANEL}                    //*[@id="geokretyDetailsMapPanel"]
 ${GEOKRET_DETAILS_MAP}                          //*[@id="mapid"]
-${GEOKRET_DETAILS_MOVES}                        //div[@data-gk-type="move"]
-${GEOKRET_DETAILS_MOVE_1}                       //div[@data-gk-type="move" and @data-id="1"]
-${GEOKRET_DETAILS_MOVE_2}                       //div[@data-gk-type="move" and @data-id="2"]
-${GEOKRET_DETAILS_MOVE_3}                       //div[@data-gk-type="move" and @data-id="3"]
-
-${GEOKRET_DETAILS_MOVES_EDIT_BUTTONS}               //a[@data-type="move-edit"]
-${GEOKRET_DETAILS_MOVES_DELETE_BUTTONS}             //button[@data-type="move-delete"]
-${GEOKRET_DETAILS_MOVES_PICTURE_UPLOAD_BUTTONS}     //button[@data-type="move-picture-upload"]
-${GEOKRET_DETAILS_MOVES_COMMENT_BUTTONS}            //button[@data-type="move-comment" and @data-move-comment-type="comment"]
-${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}             //button[@data-type="move-comment" and @data-move-comment-type="missing"]
-
 ${GEOKRET_DETAILS_MOVES_COMMENTS_ALL_ITEMS}         //li[@data-type="move-comment"]
 ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}             //li[@data-type="move-comment" and @data-move-comment-id="\${commentid}"]
 ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}        //li[@data-type="move-comment" and @data-move-comment-id="1"]

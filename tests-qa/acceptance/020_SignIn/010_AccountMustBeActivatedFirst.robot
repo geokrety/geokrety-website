@@ -7,7 +7,7 @@ Test Setup      Test Setup
 *** Test Cases ***
 
 User cannot connect as account is not yet active
-    Register User                       &{USER_1}
+    Register User                       ${USER_1}
     Sign In User                        ${USER_1.name}    ${USER_1.password}
     Page Should Contain                 Your account is not yet active.
     User Is Not Connected
@@ -15,13 +15,13 @@ User cannot connect as account is not yet active
     Location Should Be                  ${PAGE_HOME_URL_EN}
 
 Activate account via email
-    Register User                       &{USER_1}
+    Register User                       ${USER_1}
     Activate user account
     User Is Connected
     Mailbox Should Contain 2 Messages
 
 After activation a confirmation mail is sent
-    Register User                       &{USER_1}
+    Register User                       ${USER_1}
     Activate user account
     Sign Out Fast
     Mailbox Open Message ${2}
@@ -30,7 +30,7 @@ After activation a confirmation mail is sent
     Location Should Be                  ${PAGE_SIGN_IN_URL}
 
 Confirmation mail sent again
-    Register User                       &{USER_1}
+    Register User                       ${USER_1}
     Mailbox Should Contain 1 Messages
     Sign In User                        ${USER_1.name}
     Mailbox Should Contain 2 Messages

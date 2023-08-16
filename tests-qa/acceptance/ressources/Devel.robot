@@ -84,60 +84,65 @@ Delete Mail ${mail_id} in Mailbox
     Click Element                       //*[@id="mailsTable"]/tbody/tr/td[@class="mail_id" and text()="${mail_id}"]/parent::tr//a[contains(@class, "deleteMailLink")]
 
 Seed ${count} users
-    Go To Url                           ${PAGE_SEED_USER}    count=${count}
-    Page Should Contain                 done!
+    Go To Url Fast                      ${PAGE_SEED_USER}?    count=${count}
+
+    # ${resp} =    GET                    ${GK_URL}/devel/db/users/seed/${count}
+    # ${body} =    Convert To String      ${resp.content}
+    # Should Contain                      ${body}    done!
+
+    # Go To Url                           ${PAGE_SEED_USER}    count=${count}
+    # Page Should Contain                 done!
     Empty Dev Mailbox Fast
 
 Seed ${count} users without password
-    Go To Url                           url=${PAGE_SEED_USER}/${count}?without_password=true
-    Page Should Contain                 done!
+    Go To Url Fast                      ${PAGE_SEED_USER}?without_password\=true    count=${count}
+    Empty Dev Mailbox Fast
+
+Seed ${count} users without email
+    [Arguments]    ${start_at}=1
+    Go To Url Fast                      ${PAGE_SEED_USER}?noemail\=true&i\=${start_at}    count=${count}
     Empty Dev Mailbox Fast
 
 Seed ${count} users without terms of use
-    Go To Url                           ${PAGE_SEED_USER}/no-terms-of-use    count=${count}
-    Page Should Contain                 done!
+    Go To Url Fast                      ${PAGE_SEED_USER}/no-terms-of-use    count=${count}
     Empty Dev Mailbox Fast
 
 Seed ${count} users with status ${status}
-    Go To Url                           ${PAGE_SEED_USER}/status/${status}    count=${count}
-    Page Should Contain                 done!
+    [Arguments]    ${start_at}=1
+    Go To Url Fast                      ${PAGE_SEED_USER}/status/${status}?i\=${start_at}    count=${count}
+    Empty Dev Mailbox Fast
+
+Seed ${count} users with email status ${email_status}
+    [Arguments]    ${start_at}=1
+    Go To Url Fast                      ${PAGE_SEED_USER}?email_invalid\=${email_status}&i\=${start_at}    count=${count}
     Empty Dev Mailbox Fast
 
 Seed ${count} users without terms of use with status ${status}
-    Go To Url                           ${PAGE_SEED_USER}/status/${status}/no-terms-of-use    count=${count}
-    Page Should Contain                 done!
+    Go To Url Fast                      ${PAGE_SEED_USER}/status/${status}/no-terms-of-use    count=${count}
     Empty Dev Mailbox Fast
 
 Seed ${count} users with social_auth_provider_id ${social_auth_provider_id}
-    Go To Url                           url=${PAGE_SEED_USER}?social_auth_provider_id=${social_auth_provider_id}    count=${count}
-    Page Should Contain                 done!
+    Go To Url Fast                      ${PAGE_SEED_USER}?social_auth_provider_id\=${social_auth_provider_id}    count=${count}
     Empty Dev Mailbox Fast
 
 Seed ${count} users without password with social_auth_provider_id ${social_auth_provider_id}
-    Go To Url                           url=${PAGE_SEED_USER}?without_password=true&social_auth_provider_id=${social_auth_provider_id}    count=${count}
-    Page Should Contain                 done!
+    Go To Url Fast                      ${PAGE_SEED_USER}?without_password\=true&social_auth_provider_id\=${social_auth_provider_id}    count=${count}
     Empty Dev Mailbox Fast
 
 Seed ${count} geokrety
-    Go To Url                           ${PAGE_SEED_GEOKRETY}/${count}
-    Page Should Contain                 OK
+    Go To Url Fast                      ${PAGE_SEED_GEOKRETY}/${count}
 
 Seed ${count} geokrety owned by ${userid}
-    Go To Url                           ${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}
-    Page Should Contain                 OK
+    Go To Url Fast                      ${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}
 
 Seed special geokrety with tracking code starting with GK owned by ${userid}
-    Go To Url                           ${GK_URL}/devel/db/users/${userid}/geokrety/tc-starting-with-gk
-    Page Should Contain                 OK
+    Go To Url Fast                      ${GK_URL}/devel/db/users/${userid}/geokrety/tc-starting-with-gk
 
 Seed owner code ${ownercode} for geokret ${geokretid}
-    Go To Url                           ${PAGE_SEED_OWNERCODE}    geokretid=${geokretid}    ownercode=${ownercode}
-    Page Should Contain                 OK
+    Go To Url Fast                      ${PAGE_SEED_OWNERCODE}    geokretid=${geokretid}    ownercode=${ownercode}
 
 Seed ${count} waypoints OC
-    Go To Url                           ${PAGE_SEED_WAYPOINT_OC}/${count}
-    Page Should Contain                 OK
+    Go To Url Fast                      ${PAGE_SEED_WAYPOINT_OC}/${count}
 
 Seed ${count} waypoints GC
-    Go To Url                           ${PAGE_SEED_WAYPOINT_GC}/${count}
-    Page Should Contain                 OK
+    Go To Url Fast                      ${PAGE_SEED_WAYPOINT_GC}/${count}
