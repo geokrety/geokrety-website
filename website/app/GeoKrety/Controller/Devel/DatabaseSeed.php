@@ -73,7 +73,7 @@ class DatabaseSeed extends Base {
             $geokret->name = 'geokrety%02d';
             $geokret->type = GeokretyType::GEOKRETY_TYPE_TRADITIONAL;
             $geokret->created_on_datetime = '2020-08-22 15:30:42';
-            if ($f3->exists('PARAMS.userid')) {
+            if ($f3->exists('PARAMS.userid') && $f3->get('PARAMS.userid') > 0) {
                 $geokret->owner = $f3->get('PARAMS.userid');
             }
             if ($geokret->validate()) {
