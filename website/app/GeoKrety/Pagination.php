@@ -24,4 +24,11 @@ class Pagination extends \Pagination {
     public function getPath() {
         return $this->getRoute().$this->getRouteKeyPrefix();
     }
+
+    /**
+     * Ensure we're returning an integer.
+     */
+    public static function findCurrentPage($key = 'page') {
+        return intval(parent::findCurrentPage($key));
+    }
 }
