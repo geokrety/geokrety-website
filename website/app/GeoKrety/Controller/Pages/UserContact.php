@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Email\UserContact as EmailUserContact;
 use GeoKrety\Model\Mail;
 use GeoKrety\Model\User;
+use GeoKrety\Service\Dialog\Danger;
 use GeoKrety\Service\Smarty;
 
 class UserContact extends Base {
@@ -45,16 +46,31 @@ class UserContact extends Base {
     }
 
     public function get(\Base $f3) {
+        if (!$this->currentUser->isEmailValid()) {
+            Danger::message_full_screen(_('Your email address must be validated before you can contact other players.'), _('Action is not possible'));
+        }
         $this->_get($f3);
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_contact.tpl');
     }
 
     public function get_ajax(\Base $f3) {
+        if (!$this->currentUser->isEmailValid()) {
+            Danger::message(_('Your email address must be validated before you can contact other players.'), _('Action is not possible'));
+            exit;
+        }
         $this->_get($f3);
         Smarty::render('extends:base_modal.tpl|dialog/user_contact.tpl');
     }
 
     public function post(\Base $f3) {
+        if (!$this->currentUser->isEmailValid()) {
+            Danger::message(_('Your email address must be validated before you can contact other players.'), _('Action is not possible'));
+            exit;
+        }
+        if (!$this->currentUser->isEmailValid()) {
+            \Flash::instance()->addMessage(_('Your email address must be validated before you can contact other players.'), 'danger');
+            $f3->reroute($this->getPostRedirectUrl(), die: true);
+        }
         $this->checkCsrf();
         $this->loadToUser($f3);
         $mail = $this->mail;
