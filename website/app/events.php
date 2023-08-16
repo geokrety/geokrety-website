@@ -183,7 +183,7 @@ $events->on('user.language.changed', function (GeoKrety\Model\User $user, $conte
     Metrics::counter('preference_change_total', 'Total number of preference change', ['type'], ['language']);
 });  // context => $oldLanguage
 $events->on('user.home_location.changed', function (GeoKrety\Model\User $user) {
-    audit('user.created', $user);
+    audit('user.home_location.changed', $user);
     Metrics::counter('preference_change_total', 'Total number of preference change', ['type'], ['home_location']);
 });
 
