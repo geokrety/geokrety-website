@@ -22,7 +22,7 @@ class UserChoosePreferedLanguage extends Base {
         $oldLanguage = $user->preferred_language;
         $user->preferred_language = $f3->get('POST.language');
 
-        if (!$user->validate()) {
+        if (!$user->validate(level: 1)) {
             $this->get($f3);
             exit;
         }
