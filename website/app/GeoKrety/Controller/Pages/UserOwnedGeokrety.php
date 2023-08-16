@@ -10,7 +10,7 @@ class UserOwnedGeokrety extends BaseDatatableGeokrety {
 
     public function get() {
         $geokret = new Geokret();
-        Smarty::assign('geokrety_count', $geokret->count($this->getFilter()));
+        Smarty::assign('geokrety_count', $geokret->count($this->getFilter(), ttl: 0));
         Smarty::render('pages/user_owned_geokrety.tpl');
     }
 

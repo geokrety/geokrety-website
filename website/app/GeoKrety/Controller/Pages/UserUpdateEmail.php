@@ -61,7 +61,7 @@ class UserUpdateEmail extends Base {
             }
 
             // Check email unicity over users table
-            if ($user->count(['_email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.email')], null, 0)) { // no cache
+            if ($user->count(['_email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.email')], ttl: 0)) { // no cache
                 \Flash::instance()->addMessage(_('Sorry but this mail address is already in use.'), 'danger');
                 $this->get($f3);
                 exit;

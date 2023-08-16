@@ -10,7 +10,7 @@ class UserRecentMoves extends BaseDatatableMoves {
 
     public function get($f3) {
         $move = new Move();
-        Smarty::assign('moves_count', $move->count($this->getFilter()));
+        Smarty::assign('moves_count', $move->count($this->getFilter(), ttl: 0));
         Smarty::render('pages/user_recent_moves.tpl');
     }
 

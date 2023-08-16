@@ -78,7 +78,7 @@ class News extends Base {
 
     public function isSubscribed(): bool {
         // Note: Cache count() for 1 second
-        return $this->has('subscriptions', ['news = ? AND author = ? AND subscribed = ?', $this->id, \Base::instance()->get('SESSION.CURRENT_USER'), '1'])->count(null, null, 0) === 1;
+        return $this->has('subscriptions', ['news = ? AND author = ? AND subscribed = ?', $this->id, \Base::instance()->get('SESSION.CURRENT_USER'), '1'])->count(ttl: 0) === 1;
     }
 
     public function jsonSerialize(): mixed {

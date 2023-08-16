@@ -408,7 +408,7 @@ EOT;
     public function isEmailUnique(?string $email = null): bool {
         $email = $email ?? $this->email;
 
-        return $this->count(['_email_hash = public.digest(lower(?), \'sha256\')', $email], null, 0) > 0; // Do not cache request
+        return $this->count(['_email_hash = public.digest(lower(?), \'sha256\')', $email], ttl: 0) > 0; // Do not cache request
     }
 
     public function get_secid(): ?string {

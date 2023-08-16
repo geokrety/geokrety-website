@@ -26,7 +26,7 @@ class UsernameFree {
         $f3 = \Base::instance();
         $user = new User();
         $username = trim(preg_replace('/(\pZ\pC)+/u', ' ', $username));
-        if ($user->count(['lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')', $username, $username], null, 0) > 0) {
+        if ($user->count(['lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')', $username, $username], ttl: 0) > 0) {
             if (is_null($email)) {
                 array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.'), $username));
             } else {

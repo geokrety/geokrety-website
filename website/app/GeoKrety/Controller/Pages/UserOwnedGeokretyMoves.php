@@ -11,7 +11,7 @@ class UserOwnedGeokretyMoves extends BaseDatatableMoves {
     public function get($f3) {
         $move = new Move();
         $this->getHas($move);
-        Smarty::assign('moves_count', $move->count($this->getFilter()));
+        Smarty::assign('moves_count', $move->count($this->getFilter(), ttl: 0));
         Smarty::render('pages/user_owned_geokrety_moves.tpl');
     }
 

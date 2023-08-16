@@ -10,7 +10,7 @@ class UserAuthenticationHistory extends BaseDatatableUserAuthenticationHistory {
 
     public function get(\Base $f3) {
         $authentications_count = new UsersAuthenticationHistory();
-        Smarty::assign('authentications_count', $authentications_count->count($this->getFilter(), null, 0));
+        Smarty::assign('authentications_count', $authentications_count->count($this->getFilter(), ttl: 0));
         Smarty::render('pages/user_authentication_history.tpl');
     }
 

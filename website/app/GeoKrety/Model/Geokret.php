@@ -241,7 +241,7 @@ class Geokret extends Base {
         // TODO, speedup this using a special automanaged table
         $move = new Move();
 
-        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED], null, 0) > 0;
+        return $move->count(['author = ? AND geokret = ? AND move_type IN ?', $f3->get('CURRENT_USER'), $this->id, LogType::LOG_TYPES_USER_TOUCHED], ttl: 0) > 0;
     }
 
     public function addFilterHasTouchedInThePast(User $user, array $gk_list) {
@@ -265,7 +265,7 @@ class Geokret extends Base {
         $f3 = \Base::instance();
         $watch = new Watched();
 
-        return $watch->count(['user = ? AND geokret = ?', $f3->get('CURRENT_USER'), $this->id], null, 0);
+        return $watch->count(['user = ? AND geokret = ?', $f3->get('CURRENT_USER'), $this->id], ttl: 0);
     }
 
     public function isHolder(): bool {

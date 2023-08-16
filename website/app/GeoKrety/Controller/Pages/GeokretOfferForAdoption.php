@@ -25,7 +25,7 @@ class GeokretOfferForAdoption extends Base {
         }
 
         $ownerCode = new OwnerCode();
-        if ($ownerCode->count(['geokret = ? AND adopter = ?', $this->geokret->id, null], null, 0)) {
+        if ($ownerCode->count(['geokret = ? AND adopter = ?', $this->geokret->id, null], ttl: 0)) {
             \Flash::instance()->addMessage(_('An Owner Code is already available for this GeoKret.'), 'warning');
             $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
         }
