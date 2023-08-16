@@ -35,6 +35,9 @@ class LegacyRoutes {
         }
         if ($f3->exists('GET.gk')) {
             $gkid = strtoupper($f3->get('GET.gk'));
+            if (is_numeric($gkid)) {
+                $gkid = Geokret::id2gkid($gkid);
+            }
         }
 
         if (is_null($gkid)) {
