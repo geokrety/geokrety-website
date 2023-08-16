@@ -36,13 +36,13 @@ class Login extends Base {
     public function login(\Base $f3) {
         $this->checkCsrf('loginForm');
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
-        $user = $auth->login($f3->get('POST.login'), $f3->get('POST.password'));
+        $user = $auth->login($f3->get('POST.username'), $f3->get('POST.password'));
         if ($user !== false) {
             Event::instance()->emit('user.login.password', $user);
             LanguageService::changeLanguageTo($user->preferred_language);
             if ($user->isAccountInvalid() && !$user->isAccountImported()) {
                 Event::instance()->emit('user.login.password-failure', [
-                    'username' => $f3->get('POST.login'),
+                    'username' => $f3->get('POST.username'),
                     'error' => self::PASSWORD_INVALID_ACCOUNT_ERROR,
                     'error_message' => 'Your account is not valid.',
                 ]);
@@ -62,7 +62,7 @@ class Login extends Base {
             $this::connectUser($f3, $user, 'password');
         } else {
             Event::instance()->emit('user.login.password-failure', [
-                'username' => $f3->get('POST.login'),
+                'username' => $f3->get('POST.username'),
                 'error' => self::PASSWORD_CREDENTIALS_FAILS_ERROR,
                 'error_message' => 'Username and password doesn\'t match.',
             ]);

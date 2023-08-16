@@ -12,7 +12,7 @@
         <div class="form-group">
             <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputUsername" name="login" placeholder="{t}Username{/t}" maxlength="30" value="{if isset($smarty.post.login)}{$smarty.post.login}{/if}" required autofocus>
+                <input type="text" class="form-control" id="inputUsername" name="username" placeholder="{t}Username{/t}" maxlength="30" value="{if isset($smarty.post.username)}{$smarty.post.username}{/if}" required autofocus>
             </div>
         </div>
         <div class="form-group">
