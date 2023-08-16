@@ -8,10 +8,15 @@ trait AwardLoader {
     protected DB\CortexCollection $awards;
 
     public function loadAward(Base $f3) {
+        if (!is_numeric($f3->get('POST.award_id'))) {
+            $f3->error(404, _('This award does not exist.'));
+        }
+
         $award = new Awards();
         $this->award = $award;
-        if ($f3->exists('POST.award_id')) {
-            $award->load(['id = ?', $f3->get('POST.award_id')]);
+        $award->load(['id = ?', $f3->get('POST.award_id')]);
+        if ($award->dry()) {
+            $f3->error(404, _('This award does not exist.'));
         }
 
         Smarty::assign('award', $this->award);

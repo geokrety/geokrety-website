@@ -28,6 +28,9 @@ class UserContact extends Base {
     }
 
     protected function loadToUser(\Base $f3) {
+        if (!is_numeric($f3->get('PARAMS.userid'))) {
+            $f3->error(404, _('This user does not exist.'));
+        }
         $user = new User();
         $user->load(['id = ?', $f3->get('PARAMS.userid')]);
         if ($user->dry()) {

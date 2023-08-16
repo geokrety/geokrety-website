@@ -9,6 +9,10 @@ trait MoveCommentLoader {
     public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
 
+        if (!is_numeric($f3->get('PARAMS.movecommentid'))) {
+            $f3->error(404, _('This comment does not exist.'));
+        }
+
         $comment = new MoveComment();
         $comment->load(['id = ?', $f3->get('PARAMS.movecommentid')]);
         if ($comment->dry()) {

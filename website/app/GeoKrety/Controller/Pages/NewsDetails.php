@@ -19,10 +19,17 @@ class NewsDetails extends Base {
     }
 
     public function get(\Base $f3) {
+        if (!is_numeric($f3->get('PARAMS.newsid'))) {
+            $f3->error(404, _('This news does not exist.'));
+        }
+
         // Load news
         $news = new News();
         $news->filter('comments', null, ['order' => 'id DESC']);
         $news->load(['id = ?', $f3->get('PARAMS.newsid')]);
+        if ($news->dry()) {
+            $f3->error(404, _('This news does not exist.'));
+        }
         Smarty::assign('news', $news);
 
         // Save last view

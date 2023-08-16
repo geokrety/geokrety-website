@@ -16,6 +16,9 @@ trait UserLoader {
     }
 
     public function loadUser(Base $f3) {
+        if (!is_numeric($f3->get('PARAMS.userid'))) {
+            $f3->error(404, _('This user does not exist.'));
+        }
         $user = new User();
         $this->user = $user;
         $user->filter('awards', null, ['order' => 'awarded_on_datetime ASC']);

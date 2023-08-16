@@ -9,6 +9,10 @@ trait MoveLoader {
     public function beforeRoute($f3) {
         parent::beforeRoute($f3);
 
+        if (!is_numeric($f3->get('PARAMS.moveid'))) {
+            $f3->error(404, _('This move does not exist.'));
+        }
+
         $move = new Move();
         $this->move = $move;
         $this->move->filter('pictures', ['uploaded_on_datetime != ?', null]);

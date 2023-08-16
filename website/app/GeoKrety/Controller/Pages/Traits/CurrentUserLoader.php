@@ -19,7 +19,7 @@ trait CurrentUserLoader {
         $user = new User();
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
         if ($user->dry()) {
-            $f3->error(404, _('This page doesn\'t exists.'));
+            $f3->error(404, _('This user does not exist.'));
         }
         $this->currentUser = $user;
         Smarty::assign('currentUser', $this->currentUser);

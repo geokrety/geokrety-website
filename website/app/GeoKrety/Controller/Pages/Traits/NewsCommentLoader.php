@@ -9,6 +9,10 @@ trait NewsCommentLoader {
     public function beforeRoute(Base $f3) {
         parent::beforeRoute($f3);
 
+        if (!is_numeric($f3->get('PARAMS.newscommentid'))) {
+            $f3->error(404, _('This comment does not exist.'));
+        }
+
         $comment = new NewsComment();
         $this->comment = $comment;
         $comment->load(['id = ?', $f3->get('PARAMS.newscommentid')]);

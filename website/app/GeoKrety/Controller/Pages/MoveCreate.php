@@ -23,6 +23,10 @@ class MoveCreate extends Base {
             return;
         }
 
+        if (!is_numeric($f3->get('PARAMS.moveid'))) {
+            $f3->error(404, _('This move does not exist.'));
+        }
+
         // From there we are editing a move
         $this->move->load(['id = ?', $f3->get('PARAMS.moveid')]);
         if ($this->move->dry()) {
