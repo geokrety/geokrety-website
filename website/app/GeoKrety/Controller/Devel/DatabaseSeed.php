@@ -236,6 +236,13 @@ class DatabaseSeed extends Base {
         echo 'OK';
     }
 
+    /**
+     * Create a new move from raw input.
+     *
+     * @return void
+     *
+     * @throws \Exception
+     */
     public function move_post(\Base $f3) {
         header('Content-Type: text');
         $geokret = new Geokret();
@@ -292,8 +299,8 @@ class DatabaseSeed extends Base {
                 error_log(sprintf('Reason: %s', $msg['text']));
             }
             $f3->error(400);
+            exit;
         }
-
         echo 'OK';
     }
 
