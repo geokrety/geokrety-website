@@ -2,10 +2,10 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\Geokret;
+use GeoKrety\Traits\GeokretLoader;
 
 class UserContactByGeokret extends UserContact {
-    private Geokret $geokret;
+    use GeokretLoader;
 
     public function getPostUrl(\Base $f3) {
         return $f3->alias('mail_by_geokret');
@@ -21,12 +21,6 @@ class UserContactByGeokret extends UserContact {
     }
 
     public function loadToUser(\Base $f3) {
-        $geokret = new Geokret();
-        $geokret->load(['gkid = ?', hexdec(substr($f3->get('PARAMS.gkid'), 2))]);
-        if ($geokret->dry()) {
-            $f3->error(404, _('This user does not exist.'));
-        }
-        $this->geokret = $geokret;
-        $this->mail->to_user = $geokret->owner;
+        $this->mail->to_user = $this->geokret->owner;
     }
 }
