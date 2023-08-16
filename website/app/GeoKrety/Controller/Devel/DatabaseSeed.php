@@ -123,6 +123,11 @@ class DatabaseSeed extends Base {
 
     public function geokrety_owner_code(\Base $f3) {
         header('Content-Type: text');
+
+        if (!is_numeric($f3->get('PARAMS.geokretid'))) {
+            echo sprintf("Error geokretid must be an integer: %d\n", $f3->get('PARAMS.geokretid'));
+        }
+
         $geokret = new Geokret();
         $geokret->load(['id = ?', $f3->get('PARAMS.geokretid')]);
         if ($geokret->dry()) {
@@ -138,6 +143,8 @@ class DatabaseSeed extends Base {
             exit;
         }
         $ownercode->save();
+
+        echo 'OK';
     }
 
     public function waypointOC(\Base $f3) {
