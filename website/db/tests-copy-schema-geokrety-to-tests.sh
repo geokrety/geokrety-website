@@ -49,7 +49,8 @@ DROP SCHEMA IF EXISTS secure CASCADE;
 DROP SCHEMA IF EXISTS geokrety CASCADE;
 \i $tmp_dir/geokrety-schema.sql
 
-CREATE EXTENSION IF NOT EXISTS quantile WITH SCHEMA geokrety;
+CREATE EXTENSION IF NOT EXISTS quantile WITH SCHEMA public;
+
 REFRESH MATERIALIZED VIEW "geokrety"."gk_geokrety_in_caches";
 END;
 EOF
