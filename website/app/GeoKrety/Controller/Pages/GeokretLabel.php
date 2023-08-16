@@ -19,7 +19,7 @@ class GeokretLabel extends Base {
 
         if (!$this->geokret->hasTouchedInThePast()) {
             \Flash::instance()->addMessage(_('Sorry you don\'t have the permission to print a label for this GeoKret as you never discovered it!'), 'danger');
-            $f3->reroute('@geokret_details');
+            $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
         }
     }
 
