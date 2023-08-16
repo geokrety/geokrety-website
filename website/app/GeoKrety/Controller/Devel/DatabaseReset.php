@@ -43,15 +43,15 @@ class DatabaseReset extends Base {
     public function get(\Base $f3) {
         header('Content-Type: text');
         $db = $f3->get('DB');
-        foreach (self::TABLES as $table) {
-            $db->exec(sprintf('TRUNCATE %s CASCADE', $table));
-        }
+        $db->begin();
+        $db->exec(sprintf('TRUNCATE %s CASCADE', join(', ', self::TABLES)));
         foreach (self::SEQUENCES as $table) {
             $db->exec(sprintf('ALTER SEQUENCE %s RESTART WITH 1', $table));
         }
         foreach (self::MATERIALIZED_VIEWS as $view) {
             $db->exec(sprintf('REFRESH MATERIALIZED VIEW %s', $view));
         }
+        $db->commit();
         RateLimit::resetAll();
         echo 'OK';
     }
