@@ -28,8 +28,8 @@ class GeokretyExport2Details extends GeokretyExport2 {
         }
         if ($geokret->holder) {
             $xml->startElement('holder');
-            $xml->writeAttribute('id', $geokret->holder);
-            $xml->writeCData($geokret->holder_username);
+            $xml->writeAttribute('id', $geokret->holder ?? '');
+            $xml->writeCData($geokret->holder_username ?? '');
             $xml->endElement(); // holder
         }
 
@@ -133,7 +133,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
 
             $xml->startElement('distancetraveled');
             $xml->writeAttribute('unit', 'km');
-            $xml->writeCdata($move->distance);
+            $xml->writeCdata($move->distance ?? 0);
             $xml->endElement(); // distancetraveled
 
             if ($move->comments_count) {

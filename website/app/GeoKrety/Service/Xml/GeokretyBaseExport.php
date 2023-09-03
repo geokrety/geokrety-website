@@ -25,7 +25,7 @@ abstract class GeokretyBaseExport extends Base {
             $xml->writeAttribute('id', $user->id);
             $xml->writeCdata($user->username);
         } else {
-            $xml->writeAttribute('id', null);
+            $xml->writeAttribute('id', '');
             $xml->writeCdata($move->username);
         }
         $xml->endElement(); // user
