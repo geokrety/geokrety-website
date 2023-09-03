@@ -295,6 +295,9 @@ $pgsql->query('CREATE INDEX idx_moves_type_id ON geokrety.gk_moves USING btree (
 echo 'Refresh materialized views'.PHP_EOL;
 $pgsql->query('REFRESH MATERIALIZED VIEW gk_geokrety_in_caches;');
 
+echo 'Update GeoKrety places counts and distance'.PHP_EOL;
+$pgsql->query('SELECT geokret_compute_total_places_visited(id), geokret_compute_total_distance(id) FROM geokrety.gk_geokrety;');
+
 class BaseMigrator {
     private $debug = false;
     private $mName;

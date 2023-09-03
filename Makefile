@@ -79,6 +79,8 @@ clear-assets: ## clear generated assets
 clean: clear-all-templates clear-assets build-translations compile-all-templates## Clean all
 	@echo
 
+geokrety-places-re-count: ## recount all geokrety places
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/geokrety/places/re-count"
 geokrety-pictures-re-count: ## recount all geokrety pictures
 	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/geokrety/pictures/re-count"
 moves-pictures-re-count: ## recount all moves pictures
