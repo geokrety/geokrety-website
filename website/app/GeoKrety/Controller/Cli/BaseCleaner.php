@@ -10,18 +10,18 @@ define('PER_PAGE', 1000);
 abstract class BaseCleaner {
     use Script;
 
-    protected int $total;
-    protected int $counter;
+    protected int $total = 0;
+    protected int $counter = 0;
     protected \HTMLPurifier $purifier;
-    private int $counterFixed;
+    private int $counterFixed = 0;
     /**
      * @var float|int
      */
-    protected $percentProcessed;
+    protected $percentProcessed = 0.0;
     /**
      * @var float|int
      */
-    protected $percentErrors;
+    protected $percentErrors = 0.0;
     protected string $class_name = __CLASS__;
 
     public function __construct() {
@@ -81,9 +81,12 @@ abstract class BaseCleaner {
     public function processById(\Base $f3) {
         $this->script_start($this->class_name.'::'.__FUNCTION__);
         $model = $this->getModel();
-        $model->load(['id = ?', $this->getParamId($f3)]);
+        $model->load(['gkid = ?', $this->getParamId($f3)]);
         if ($model->dry()) {
-            echo $this->console_writer->sprintf("\e[0;32mNo such %s found\e[0m", $this->getModelName()).PHP_EOL;
+            echo $this->console_writer->sprintf("\e[0;32mNo such %s found\e[0m", $this->getModelName());
+            $this->console_writer->flush();
+
+            $this->script_end();
 
             return;
         }
