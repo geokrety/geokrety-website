@@ -118,8 +118,8 @@ class GeokretyExport2Details extends GeokretyExport2 {
             $this->addUser($move);
 
             $xml->startElement('application');
-            $xml->writeAttribute('name', $move->app);
-            $xml->writeAttribute('version', $move->app_ver);
+            $xml->writeAttribute('name', $move->app ?? '');
+            $xml->writeAttribute('version', $move->app_ver ?? '');
             $xml->endElement(); // application
 
             $xml->startElement('comment');
