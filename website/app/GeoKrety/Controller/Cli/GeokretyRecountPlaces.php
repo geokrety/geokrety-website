@@ -6,7 +6,6 @@ use GeoKrety\Model\Base;
 use GeoKrety\Model\Geokret;
 
 class GeokretyRecountPlaces extends BaseCleaner {
-    private string $status;
     private string $currentGkid;
     protected string $class_name = __CLASS__;
 
