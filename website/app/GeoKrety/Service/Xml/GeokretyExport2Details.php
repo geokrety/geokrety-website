@@ -59,9 +59,9 @@ class GeokretyExport2Details extends GeokretyExport2 {
         $xml->endElement(); // places
 
         $xml->startElement('state');
-        $xml->writeAttribute('last_pos_id', $geokret->last_position);
-        $xml->writeAttribute('last_log_id', $geokret->last_log);
-        $xml->writeCData($geokret->move_type->getLogTypeId());
+        $xml->writeAttribute('last_pos_id', $geokret->last_position ?? '');
+        $xml->writeAttribute('last_log_id', $geokret->last_log ?? '');
+        $xml->writeCData($geokret->move_type?->getLogTypeId() ?? '');
         $xml->endElement(); // state
 
         $xml->startElement('missing');
