@@ -30,7 +30,7 @@ class BaseRegistration extends Base {
 
     protected function saveTrackingSettings() {
         // Analytics
-        if (GK_PIWIK_ENABLED && !filter_var($f3->get('POST.tracking_opt_in'), FILTER_VALIDATE_BOOLEAN)) {
+        if (GK_PIWIK_ENABLED && !filter_var(\Base::instance()->get('POST.tracking_opt_in'), FILTER_VALIDATE_BOOLEAN)) {
             $trackingOptout = new UsersSettings();
             $trackingOptout->name = 'TRACKING_OPT_OUT';
             $trackingOptout->value = true;
