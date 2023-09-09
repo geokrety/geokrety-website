@@ -84,10 +84,8 @@ function go2geo($waypoint) {
         $prefiks = substr($waypoint, 0, $cut);
         $sufiks = substr($waypoint, $cut, 256);
 
-        // if(is_numeric($sufiks)) echo "is numeric ";
-
-        $link = $prefiksy[$cut][$prefiks];
-        if ($link != null) {      // if link exists in prefiks table
+        if (array_key_exists($prefiks, $prefiksy[$cut])) {      // if link exists in prefiks table
+            $link = $prefiksy[$cut][$prefiks];
             $id = $waypoint;
 
             // if hex need to be converted to dec
@@ -105,10 +103,5 @@ function go2geo($waypoint) {
             return $link;
             exit;
         }
-    }
-
-    // if above rules didn't work...
-    if ($link == null) {
-        return null;
     }
 }
