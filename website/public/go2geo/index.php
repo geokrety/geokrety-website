@@ -64,7 +64,7 @@ if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
       <div class="row justify-content-center">
         <div class="col-12 col-sm-6 col-md-4" style="height: 100vh;">
 
-          <a href="<?php echo "${_SERVER['REQUEST_SCHEME']}://${_SERVER['HTTP_HOST']}"; ?>">
+          <a href="<?php echo "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}"; ?>">
             <img src="<?php echo getenv('GK_CDN_SERVER_URL'); ?>/images/the-mole-with-name.svg" class="mx-auto d-block">
           </a>
           <h5 class="text-center pb-3">Waypoint resolver</h5>
@@ -92,8 +92,8 @@ if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
       <div class="row justify-content-center" id="help">
         <div class="col-12 col-md-12">
           To be redirected to the apropriate page, just type:
-          <b><?php echo "${_SERVER['REQUEST_SCHEME']}://${_SERVER['HTTP_HOST']}"; ?>/go2geo/</b> and <b>waypoint name</b>, eg:
-          <pre><?php echo "${_SERVER['REQUEST_SCHEME']}://${_SERVER['HTTP_HOST']}"; ?>/go2geo/op05e5</pre>
+          <b><?php echo "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}"; ?>/go2geo/</b> and <b>waypoint name</b>, eg:
+          <pre><?php echo "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}"; ?>/go2geo/op05e5</pre>
 
 
 <?php
@@ -117,7 +117,7 @@ EOF;
 <tr>
   <td><a href="$linia[0]">$linia[1]</a></td>
   <td>$linia[2]</td>
-  <td><a href="${_SERVER['REQUEST_SCHEME']}://${_SERVER['HTTP_HOST']}/go2geo/$linia[3]">try it with $linia[3]</a></td>
+  <td><a href="{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}/go2geo/$linia[3]">try it with $linia[3]</a></td>
 </tr>
 EOF;
     }
