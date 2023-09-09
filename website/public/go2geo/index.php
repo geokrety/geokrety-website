@@ -35,6 +35,8 @@ $supported['games'][] = ['https://trigpointinguk.com/', 'TrigpointingUK', 'TPXXX
 $supported['trackable'][] = ['https://geokrety.org/', 'geokrety.org', 'GK', 'GK05E5'];
 $supported['trackable'][] = ['https://www.geocaching.com/track/travelbugs.aspx', 'travelbugs', 'TB', 'TB2771P'];
 
+$error = '';
+
 // if get wpt value is set then: redirect
 if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
     $wpt = substr(strip_tags($_GET['wpt']), 0, 20);
