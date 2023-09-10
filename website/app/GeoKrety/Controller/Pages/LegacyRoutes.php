@@ -117,7 +117,7 @@ class LegacyRoutes {
             $others['rate_limits_bypass'] = $f3->get('GET.rate_limits_bypass');
         }
         if ($f3->exists('GET.short_lived_session_token')) {
-            $others['GET.short_lived_session_token'] = $f3->get('GET.short_lived_session_token');
+            $others['short_lived_session_token'] = $f3->get('GET.short_lived_session_token');
         }
         $url_params = $this->_export_query_params($f3, $others);
         $f3->reroute(sprintf('@api_v1_export2?%s', $url_params), $permanent = false, $die = true);
