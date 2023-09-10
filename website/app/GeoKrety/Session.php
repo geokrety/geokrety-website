@@ -45,4 +45,13 @@ class Session extends SQL\Session {
         $f3 = \Base::instance();
         $f3->get('DB')->exec('DELETE FROM sessions WHERE "user" = ?', [$user->id]);
     }
+
+    public static function closeCurrentSession() {
+        $sessid = session_id();
+        if ($sessid === false) {
+            return;
+        }
+        $f3 = \Base::instance();
+        $f3->get('DB')->exec('DELETE FROM sessions WHERE "session_id" = ?', [$sessid]);
+    }
 }

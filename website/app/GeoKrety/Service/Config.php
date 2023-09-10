@@ -11,6 +11,7 @@ class Config extends \Prefab {
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '26422'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
         define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
+        define('GK_SITE_SESSION_SHORT_LIVED_TOKEN', getenv('GK_SITE_SESSION_SHORT_LIVED_TOKEN') ?: substr(str_shuffle(md5(microtime())), 0, 10));
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH') ?: 42);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY') ?: 15);
         define('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_EMAIL_ACTIVATION_CODE_LENGTH') ?: 42);

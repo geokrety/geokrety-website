@@ -3,6 +3,7 @@
 register_shutdown_function('shutdown_force_send_response_to_client', $f3);
 register_shutdown_function('shutdown_prometheus_metrics', $f3);
 register_shutdown_function('shutdown_audit_post', $f3);
+register_shutdown_function('shutdown_short_lived_sessions', $f3);
 
 // Piwik
 if (GK_PIWIK_ENABLED) {
@@ -12,6 +13,13 @@ if (GK_PIWIK_ENABLED) {
 function shutdown_force_send_response_to_client(Base $f3) {
     if (!headers_sent()) {
         $f3->abort();
+    }
+}
+
+function shutdown_short_lived_sessions(Base $f3) {
+    $token = $f3->get('GET.short_lived_session_token');
+    if ($token === GK_SITE_SESSION_SHORT_LIVED_TOKEN) {
+        \GeoKrety\Session::closeCurrentSession();
     }
 }
 
