@@ -9,7 +9,11 @@ use GeoKrety\Session;
 function audit(string $event, $newObjectModel) {
     $log = new \GeoKrety\Model\AuditLog();
     $log->event = $event;
-    $log->context = json_encode($newObjectModel);
+    try {
+        $log->context = json_encode($newObjectModel);
+    } catch (Exception $e) {
+        $log->context = 'json_encode failed';
+    }
     $log->save();
 }
 
