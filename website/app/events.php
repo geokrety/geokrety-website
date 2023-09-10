@@ -34,6 +34,10 @@ $events->on('rate-limit.reset', function (array $context) {
     audit('rate-limit.reset', $context);
     Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['reset']);
 });
+$events->on('user.create-spam', function (array $data) {
+    audit('user.create-spam', $data);
+    Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['spam']);
+});
 $events->on('user.created', function (GeoKrety\Model\User $user) {
     audit('user.created', $user);
     \GeoKrety\Service\UserBanner::generate($user);

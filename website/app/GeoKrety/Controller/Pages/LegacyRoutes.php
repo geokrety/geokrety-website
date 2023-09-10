@@ -241,7 +241,13 @@ EOT;
 
     // https://new-theme.staging.geokrety.org/adduser.php
     public function adduser(\Base $f3) {
-        $f3->reroute(['registration'], $permanent = false, $die = true);
+        // Keep old spammer away
+        if ($f3->exists('POST.submit')) {
+            \Sugar\Event::instance()->emit('user.create-spam', $f3->get('POST'));
+            \Flash::instance()->addMessage('Account successfully created', 'success');
+            $f3->reroute('@home', die: true);
+        }
+        $f3->reroute(['registration'], die: true);
     }
 
     // https://new-theme.staging.geokrety.org/longin.php
