@@ -8,8 +8,8 @@ use GeoKrety\PictureType;
 use GeoKrety\Service\S3Client;
 
 class PicturesImporter extends BaseCleaner {
-    private float $transferPercent;
-    private string $trafficWay;
+    private float $transferPercent = 0;
+    private string $trafficWay = '';
     private string $downloadFilename;
     protected string $class_name = __CLASS__;
 
