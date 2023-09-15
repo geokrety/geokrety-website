@@ -21,6 +21,4 @@
 <div class="clearfix"></div>
 {/if}{/function}
 
-{function build_url base='' page=null anchor=''}
-{$base}{$page}{if $f3->get('GET')}?{foreach from=$f3->get('GET') item=get}{$get@key}={$get|escape:'url'}{/foreach}{/if}#{$anchor}
-{/function}
+{function build_url base='' page=null anchor=''}{$base}{$page}{if $f3->get('GET')}?{foreach from=$f3->get('GET') item=get}{$get@key}={$get|escape:'url'}{/foreach}{/if}#{$anchor}{/function}
