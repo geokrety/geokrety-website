@@ -51,7 +51,7 @@ class BaseExportXML extends BaseExport {
         $userid = $this->f3->get('GET.userid');
         if (strtoupper($userid) === 'NULL') {
             $userid = null;
-        } elseif (!ctype_digit($userid)) {
+        } elseif (!ctype_digit("$userid")) {
             http_response_code(400);
             exit(_('Parameter "userid" must be a valid number.'));
         }
