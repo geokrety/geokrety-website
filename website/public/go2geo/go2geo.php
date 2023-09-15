@@ -59,6 +59,11 @@ function go2geo($waypoint) {
     $prefiksy['3']['MS/'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['3']['TR/'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['3']['EX/'] = 'https://www.geocaching.su/?pn=101&cid=';
+    $prefiksy['2']['GE'] = 'https://www.geocaching.su/?pn=101&cid=';
+    $prefiksy['2']['VI'] = 'https://www.geocaching.su/?pn=101&cid=';
+    $prefiksy['2']['MS'] = 'https://www.geocaching.su/?pn=101&cid=';
+    $prefiksy['2']['TR'] = 'https://www.geocaching.su/?pn=101&cid=';
+    $prefiksy['2']['EX'] = 'https://www.geocaching.su/?pn=101&cid=';
 
     // ------------------------------------------------------------------------ 1 character
     // navicache
@@ -90,6 +95,9 @@ function go2geo($waypoint) {
 
             // if hex need to be converted to dec
             if (in_array($prefiks, $prefiksy_dec) == true) {
+                if (!ctype_xdigit($sufiks)) {
+                    continue;
+                }
                 $id = hexdec($sufiks);
             }
 
