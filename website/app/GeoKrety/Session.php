@@ -8,6 +8,28 @@ use GeoKrety\Model\User;
 class Session extends SQL\Session {
     // SQL schema update is in db/migration/session_persist
 
+    /*
+     * Prevent reading a session from database if it's 'deleted'
+     */
+    public function read($id) {
+        if ($id === 'deleted') {
+            return '';
+        }
+
+        return parent::read($id);
+    }
+
+    /*
+     * Prevent writing a session to database if it's 'deleted'
+     */
+    public function write($id, $data) {
+        if ($id === 'deleted' || empty($this->_agent)) {
+            return true;
+        }
+
+        return parent::write($id, $data);
+    }
+
     public function cleanup($max) {
         $this->erase(['stamp + ? < ? AND persistent = FALSE OR stamp + ? < ? AND persistent = TRUE', $max, time(), GK_SITE_SESSION_LIFETIME_REMEMBER, time()]);
 
