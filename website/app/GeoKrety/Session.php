@@ -63,12 +63,15 @@ class Session extends SQL\Session {
         if ($this->persistent === true) {
             return GK_SITE_SESSION_LIFETIME_REMEMBER;
         } elseif ($this->isBot()) {
-            return GK_SITE_SESSION_SHORT_LIVED_REMEMBER;
+            return GK_SITE_SESSION_NON_LIVED_REMEMBER;
         } elseif (\Base::instance()->get('GET.short_lived_session_token') === GK_SITE_SESSION_SHORT_LIVED_TOKEN) {
-            return GK_SITE_SESSION_SHORT_LIVED_REMEMBER;
+            return GK_SITE_SESSION_NON_LIVED_REMEMBER;
+        } elseif (!is_null($this->user)) {
+            return GK_SITE_SESSION_REMEMBER;
         }
 
-        return GK_SITE_SESSION_REMEMBER;
+        // mostly scripts
+        return GK_SITE_SESSION_SHORT_LIVED_REMEMBER;
     }
 
     public static function cleanExpired() {
