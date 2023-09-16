@@ -387,7 +387,16 @@ class Config extends \Prefab {
         define('GK_PIWIK_SITE_ID', (int) getenv('GK_PIWIK_SITE_ID') ?: null);
         define('GK_PIWIK_TOKEN', getenv('GK_PIWIK_TOKEN') ?: null);
         define('GK_PIWIK_CONNECT_TIMEOUT_MS', getenv('GK_PIWIK_CONNECT_TIMEOUT_MS') ?: 400);
-        define('GK_PIWIK_ENABLED', !empty(GK_PIWIK_URL) && !empty(GK_PIWIK_SITE_ID) && !empty(GK_PIWIK_TOKEN) && (GK_DEBUG || !filter_var(\Base::instance()->get('HEADERS.Dnt'), FILTER_VALIDATE_BOOLEAN)));
+        define('GK_PIWIK_ENABLED',
+            !empty(GK_PIWIK_URL)
+            && !empty(GK_PIWIK_SITE_ID)
+            && !empty(GK_PIWIK_TOKEN)
+            && (
+                GK_DEBUG
+                || !filter_var(\Base::instance()->get('HEADERS.Dnt'), FILTER_VALIDATE_BOOLEAN)
+                || !filter_var(\Base::instance()->get('GET.DNT'), FILTER_VALIDATE_BOOLEAN)
+            )
+        );
 
         // CDN
         define('GK_CDN_SERVER_URL', getenv('GK_CDN_SERVER_URL') ?: 'https://cdn.geokrety.org');
