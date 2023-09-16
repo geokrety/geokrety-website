@@ -95,7 +95,7 @@ foreach (GK_METRICS_EXCLUDE_PATH as $path) {
 // Register shutdown functions
 include __DIR__.'/../app/shutdown.php';
 
-ini_set('session.gc_maxlifetime', GK_SITE_SESSION_REMEMBER);
+ini_set('session.gc_probability', 0);
 $session = new \GeoKrety\Session($f3->get('DB'));
 // Create a per session based CSRF token
 if (!$f3->exists('SESSION.csrf') or empty($f3->get('SESSION.csrf'))) {

@@ -9,9 +9,16 @@ use GeoKrety\Model\AuditPost;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Model\User;
 use GeoKrety\Model\UsersAuthenticationHistory;
+use GeoKrety\Session;
 
 class Cron {
     use Script;
+
+    public function cleanExpiredSessions() {
+        $this->script_start(__METHOD__);
+        Session::cleanExpired();
+        $this->script_end();
+    }
 
     public function checkLockedScripts() {
         $this->script_start(__METHOD__);
