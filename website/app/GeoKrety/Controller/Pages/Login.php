@@ -149,9 +149,10 @@ class Login extends Base {
             Event::instance()->emit('user.logout', $user);
         }
         $f3->set('CURRENT_USER', $user->id);
-        $f3->clear('SESSION');
         $f3->clear('COOKIE.PHPSESSID');
+        Session::configure_jar_for_gkt($f3);
         $f3->clear('COOKIE.gkt_on_behalf');
+        $f3->clear('SESSION');
         if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
             $f3->set('SESSION.LOCAL_MAIL', $local_mail);
         }

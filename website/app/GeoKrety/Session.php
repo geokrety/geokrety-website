@@ -49,12 +49,17 @@ class Session extends SQL\Session {
 
         $result = $f3->get('DB')->exec('SELECT on_behalf FROM sessions WHERE session_id = ?', [$id]);
         if (sizeof($result) > 0) {
-            $f3->set('JAR.path', $f3->alias('gkt_v3_inventory'));
-            $f3->set('JAR.samesite', 'None');
-            $f3->set('JAR.secure', $f3->get('SCHEME') === 'https');
-            $f3->set('JAR.httponly', false);
+            self::configure_jar_for_gkt($f3);
+            $f3->set('JAR.expires', $result[0]['stamp']);
             $f3->set('COOKIE.gkt_on_behalf', $result[0]['on_behalf']);
         }
+    }
+
+    public static function configure_jar_for_gkt(\Base $f3) {
+        $f3->set('JAR.path', $f3->alias('gkt_v3_inventory'));
+        $f3->set('JAR.samesite', 'None');
+        $f3->set('JAR.secure', $f3->get('SCHEME') === 'https');
+        $f3->set('JAR.httponly', false);
     }
 
     public static function setUserId(User $user) {
