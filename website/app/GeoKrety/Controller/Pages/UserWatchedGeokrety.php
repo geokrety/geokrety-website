@@ -17,7 +17,7 @@ class UserWatchedGeokrety extends BaseDatatableGeokrety {
 
     protected function getHas(\GeoKrety\Model\Base $object): void {
         // Hack to order by rel field, tip from https://github.com/ikkez/f3-cortex/issues/104#issuecomment-657283337
-        $object->has('last_position', ['id > 0']);
+        $object->has('last_position', ['1 = 1']);
         $object->has('watchers', ['user = ?', $this->user->id]);
     }
 
