@@ -77,7 +77,21 @@ abstract class BaseDatatable extends Base {
             if (!is_array($v)) {
                 return sprintf(_('"%s" must be an array'), 'order');
             }
-            if (!ctype_digit($v['column']) or $v['column'] < 0 or !$obj->exists($columns[$v['column']]['name'])) {
+            if (!ctype_digit($v['column']) or $v['column'] < 0) {
+                return sprintf($error_str, 'order');
+            }
+            // Relation ordering
+            if (strpos($columns[$v['column']]['name'], '__') !== false) {
+                try {
+                    $matches = explode('__', $columns[$v['column']]['name']);
+                    $matches = explode('.', $matches[1]);
+                    if (!$obj->rel($matches[0])->exists($matches[1])) {
+                        return sprintf($error_str, 'order');
+                    }
+                } catch (\Exception $e) {
+                    return sprintf($error_str, 'order');
+                }
+            } elseif (!$obj->exists($columns[$v['column']]['name'])) {
                 return sprintf($error_str, 'order');
             }
             if ($v['dir'] !== 'asc' and $v['dir'] !== 'desc') {

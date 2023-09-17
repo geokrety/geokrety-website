@@ -21,7 +21,7 @@
                         <th>{t}ID{/t}</th>
                         <th>{t}Name{/t}</th>
                         <th class="text-center">{t}Spotted in{/t}</th>
-                        <th class="text-center">{t}Last update{/t}</th>
+                        <th class="text-center">{t}Last log{/t}</th>
                         <th class="text-right">📏 {t}Distance{/t}</th>
                         <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/2caches.png" title="{t}Caches visited count{/t}" /></th>
                         <th class="text-center" title="{t}Actions{/t}">🔧</th>
@@ -57,7 +57,7 @@ $('#userOwnedGeoKretyTable').dataTable({
         { "name": "id" },
         { "name": "name" },
         { "searchable": false, "orderable": false },
-        { "searchable": false, "name": "updated_on_datetime" },
+        { "searchable": false, "name": "last_log" },
         { "searchable": false, "name": "distance" },
         { "searchable": false, "name": "caches_count" },
         { "searchable": false, "orderable": false }

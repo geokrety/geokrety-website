@@ -21,7 +21,7 @@
                         <th>{t}Name{/t}</th>
                         <th class="text-center">{t}Owner{/t}</th>
                         <th class="text-center">{t}Spotted in{/t}</th>
-                        <th class="text-center">{t}Last update{/t}</th>
+                        <th class="text-center">{t}Last log{/t}</th>
                         <th class="text-right">📏 {t}Distance{/t}</th>
                         <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/2caches.png" title="{t}Caches visited count{/t}" /></th>
                         <th class="text-center" title="{t}Actions{/t}">🔧</th>
@@ -52,16 +52,16 @@
 {block name=javascript}
 $('#userWatchedTable').dataTable({
     {call common alias='user_watched'}
-    "order": [[ 3, 'desc' ], [ 1, 'asc' ]],
+    "order": [[ 4, 'desc' ], [ 1, 'asc' ]],
     "columns": [
         { "name": "id" },
         { "name": "name" },
-        { "searchable": false, "orderable": false },
-        { "searchable": false, "name": "updated_on_datetime" },
+        { "searchable": false, "name": "owner", "orderable": false },
+        { "searchable": false, "name": "last waypoint", "orderable": false },
+        { "searchable": false, "name": "gk_moves__last_position.moved_on_datetime" },
         { "searchable": false, "name": "distance" },
         { "searchable": false, "name": "caches_count" },
         { "searchable": false, "orderable": false },
-        { "searchable": false, "orderable": false }
     ],
 });
 {/block}
