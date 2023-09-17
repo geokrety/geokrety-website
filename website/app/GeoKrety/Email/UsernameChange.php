@@ -7,7 +7,7 @@ use GeoKrety\Service\Smarty;
 
 class UsernameChange extends BasePHPMailer {
     protected function setFromDefault() {
-        $this->setFromSupport();
+        $this->setFromNotif();
     }
 
     public function sendUsernameChangedNotification(User $user) {

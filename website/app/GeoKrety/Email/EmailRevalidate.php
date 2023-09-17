@@ -43,6 +43,6 @@ class EmailRevalidate extends BasePHPMailer {
     }
 
     protected function setFromDefault() {
-        $this->setFrom(GK_SITE_EMAIL_SUPPORT, 'GeoKrety');
+        $this->setFrom(GK_SITE_EMAIL_REGISTRATION, 'GeoKrety');
     }
 }

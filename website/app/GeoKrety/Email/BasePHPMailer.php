@@ -157,8 +157,8 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     /**
      * @throws \PHPMailer\PHPMailer\Exception
      */
-    protected function setFromSupport() {
-        $this->setFrom(GK_SITE_EMAIL_SUPPORT, 'GeoKrety');
+    protected function setFromNotif() {
+        $this->setFrom(GK_SITE_EMAIL_NOTIF, 'GeoKrety');
     }
 
     public function jsonSerialize(): array {

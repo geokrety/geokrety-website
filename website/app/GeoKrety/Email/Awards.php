@@ -7,7 +7,7 @@ use GeoKrety\Service\Smarty;
 
 class Awards extends BasePHPMailer {
     protected function setFromDefault() {
-        $this->setFromSupport();
+        $this->setFromNotif();
     }
 
     public function sendAwardReceived(AwardsWon $award) {

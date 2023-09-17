@@ -10,7 +10,7 @@ class GeokretClaim extends BasePHPMailer {
     public function sendClaimedNotification(Geokret $geokret, ?User $user) {
         $this->setTo($user);
         $this->setSubject(sprintf(_('Your GeoKret \'%s\' has been adopted'), $geokret->name), '🎉');
-        $this->setFromSupport();
+        $this->setFromNotif();
         Smarty::assign('geokret', $geokret);
         Smarty::assign('user', $user);
         $this->sendEmail('emails/geokret-adopted.tpl');

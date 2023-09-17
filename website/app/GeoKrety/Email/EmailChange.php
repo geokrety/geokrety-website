@@ -8,7 +8,7 @@ use GeoKrety\Service\Smarty;
 
 class EmailChange extends BasePHPMailer {
     protected function setFromDefault() {
-        $this->setFromSupport();
+        $this->setFromNotif();
     }
 
     public function sendEmailChangeNotification(EmailActivationToken $token) {

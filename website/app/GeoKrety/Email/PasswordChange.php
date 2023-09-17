@@ -8,7 +8,7 @@ use GeoKrety\Service\Smarty;
 
 class PasswordChange extends BasePHPMailer {
     protected function setFromDefault() {
-        $this->setFromSupport();
+        $this->setFromNotif();
     }
 
     public function sendPasswordChangeToken(PasswordToken $token) {

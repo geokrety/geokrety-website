@@ -6,7 +6,7 @@ use GeoKrety\Model\Mail;
 
 class UserContact extends BasePHPMailer {
     protected function setFromDefault() {
-        $this->setFromSupport();
+        $this->setFromNotif();
     }
 
     public function sendUserMessage(Mail $mail) {
