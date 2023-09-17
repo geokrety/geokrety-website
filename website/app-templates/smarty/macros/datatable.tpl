@@ -2,7 +2,7 @@
     language: {
         url: '{$datatable_language_url}',
     },
-    lengthMenu: [10, 25, 50, 100],
+    lengthMenu: [10, 25, 50, 100, 500, 1000],
     serverSide: true,
     processing: true,
     ajax: {
