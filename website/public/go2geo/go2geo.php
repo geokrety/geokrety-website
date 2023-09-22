@@ -76,7 +76,7 @@ function go2geo($waypoint) {
     $prefiksy_dec = ['N', 'SH', 'T'];
 
     // waypoints, that need waypoint (number) without prefix
-    $prefiksy_sufiksy = ['GE/', 'VI/', 'MS/', 'TR/', 'EX/', 'GR', 'RH', 'TP'];
+    $prefiksy_sufiksy = ['GE/', 'VI/', 'MS/', 'TR/', 'EX/', 'GE', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'TP'];
 
     // --- order of chceking:
     $check_order = [2, 3, 1];
