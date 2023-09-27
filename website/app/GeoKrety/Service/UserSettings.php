@@ -94,7 +94,7 @@ class UserSettings extends \Prefab {
      */
     public function getDefault(string $setting_name) {
         $users_settings_parameters = new UsersSettingsParameters();
-        if (!$users_settings_parameters->load(['name = ?', $setting_name], null, 0)) {
+        if (!$users_settings_parameters->load(['name = ?', $setting_name], ttl: 0)) {
             throw new \GeoKrety\Model\NoSuchSettingException("Setting '$setting_name' doesn't exist");
         }
 

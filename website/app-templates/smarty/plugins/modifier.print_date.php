@@ -12,6 +12,15 @@ use Carbon\Carbon;
  * -------------------------------------------------------------.
  */
 function smarty_modifier_print_date(DateTime $date, string $format = 'c'): string {
+    if (\GeoKrety\Service\UserSettings::getForCurrentUser('DISPLAY_ABSOLUTE_DATE')) {
+        return sprintf(
+            '<span data-datetime="%s" title="%s">%s</span>',
+            $date->format($format),
+            $date->format($format),
+            Carbon::parse($date->format('c'))->isoFormat('LLLL')
+        );
+    }
+
     return sprintf(
         '<span data-datetime="%s" title="%s">%s</span>',
         $date->format($format),
