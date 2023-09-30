@@ -19,7 +19,8 @@ trait UserSearchLoader {
         if (!empty($search)) {
             $user = new User();
             $filter = [
-                'lower(username) like lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')',
+                'lower(username) like lower(?) OR _email_hash = public.digest(lower(?), \'sha256\') OR _secid_hash = public.digest(?, \'sha256\')',
+                $search,
                 $search,
                 $search,
             ];
@@ -28,7 +29,7 @@ trait UserSearchLoader {
                 $filter[] = $search;
             }
             $options = [
-                'order' => 'username',
+                'order' => 'id',
             ];
             $subset = $user->paginate(Pagination::findCurrentPage() - 1, GK_PAGINATION_ADMIN_USER_SEARCH, $filter, $options);
             Smarty::assign('users', $subset);
