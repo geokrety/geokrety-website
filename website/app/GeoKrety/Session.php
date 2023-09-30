@@ -17,6 +17,9 @@ class Session extends SQL\Session {
         }
         $this->load(['session_id=? AND stamp >= ?', $this->sid = $id, time()]);
         if ($this->dry()) {
+            $f3 = \Base::instance();
+            $f3->get('DB')->exec('DELETE FROM sessions WHERE session_id=? AND stamp < ?', [$this->sid, time()]);
+
             return '';
         }
         if ($this->get('ip') != $this->_ip || $this->get('agent') != $this->_agent) {
