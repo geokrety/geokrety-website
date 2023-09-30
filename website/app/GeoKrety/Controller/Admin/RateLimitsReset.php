@@ -13,6 +13,9 @@ class RateLimitsReset extends Base {
         Smarty::render('extends:base_modal.tpl|dialog/admin_dialog_rate_limit_reset.tpl');
     }
 
+    /**
+     * @throws \GeoKrety\Service\StorageException
+     */
     public function post(\Base $f3) {
         $this->checkCsrf(function ($error) use ($f3) {
             \Flash::instance()->addMessage($error, 'danger');
@@ -21,7 +24,8 @@ class RateLimitsReset extends Base {
 
         $name = $f3->get('PARAMS.name');
         $key = $f3->get('PARAMS.key');
-        RateLimit::reset($name, $key);
+        $rateLimiter = new RateLimit($name, $key);
+        $rateLimiter->reset();
         \Flash::instance()->addMessage(_('Rate limit has been reset'), 'success');
         \Sugar\Event::instance()->emit('rate-limit.reset', ['name' => $name, 'key' => $key]);
         $f3->reroute('@admin_api_rate_limits');

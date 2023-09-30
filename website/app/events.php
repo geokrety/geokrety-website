@@ -21,12 +21,27 @@ function audit(string $event, $newObjectModel) {
 $events = \Sugar\Event::instance();
 $events->on('rate-limit.success', function (array $context) {
     // audit('rate-limit.exceeded', $context);
+    header('X-GK-Rate-Limit-Exeeced: false');
+    header('x-ratelimit-limit: '.$context['limit']);
+    header('x-ratelimit-remaining: '.$context['remaining_attempts']);
+    header('x-ratelimit-used: '.$context['total_user_calls']);
+    header('x-ratelimit-resource: '.$context['name']);
+    header('x-ratelimit-period: '.$context['period']);
+    header('x-ratelimit-algorithm: Token Bucket Algorithm');
+
     header(sprintf('X-GK-Rate-Limit: %s %d/%d (%d)', $context['name'], $context['total_user_calls'], $context['limit'], $context['period']));
     Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['success']);
 });
 $events->on('rate-limit.exceeded', function (array $context) {
     audit('rate-limit.exceeded', $context);
     header('X-GK-Rate-Limit-Exeeced: true');
+    header('x-ratelimit-limit: '.$context['limit']);
+    header('x-ratelimit-remaining: '.$context['remaining_attempts']);
+    header('x-ratelimit-used: '.$context['total_user_calls']);
+    header('x-ratelimit-resource: '.$context['name']);
+    header('x-ratelimit-period: '.$context['period']);
+    header('x-ratelimit-algorithm: Token Bucket Algorithm');
+
     header(sprintf('X-GK-Rate-Limit: %s %d/%d (%d)', $context['name'], $context['total_user_calls'], $context['limit'], $context['period']));
     Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['exceeded']);
 });
