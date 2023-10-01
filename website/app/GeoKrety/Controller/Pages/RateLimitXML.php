@@ -28,7 +28,6 @@ class RateLimitXML extends BaseXML {
     public function get(\Base $f3) {
         RateLimit::check_rate_limit_xml('API_V1_CHECK_RATE_LIMIT', $this->f3->get('GET.secid'));
         $xml = $this->xml;
-
         try {
             $keys = [\Base::instance()->get('IP')];
             $user = $this->authenticate();
@@ -39,7 +38,7 @@ class RateLimitXML extends BaseXML {
 
             $usages = [];
             foreach ($keys as $key) {
-                $usages = array_merge_recursive($usages, RateLimit::get_rates_limits_usage(sprintf('*__%s*', $key)));
+                $usages = array_merge_recursive($usages, RateLimit::get_rates_limits_usage(sprintf('*__:%s:allow', $key)));
             }
             foreach (GK_RATE_LIMITS as $name => $values) {
                 $this->xml->addLimit($name, $values[0], $values[1]);
