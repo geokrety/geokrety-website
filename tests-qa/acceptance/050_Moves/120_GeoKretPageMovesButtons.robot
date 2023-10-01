@@ -12,19 +12,26 @@ Moves By User Should Show Edit Button
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_EDIT_BUTTONS}       3
-    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_EDIT_BUTTONS}       3
 
 Moves By User Should Show Delete Button
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
-    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_DELETE_BUTTONS}     3
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_DELETE_BUTTONS}     3
 
 Moves By User Should Show Upload Picture Button
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_PICTURE_UPLOAD_BUTTONS}       3
-    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_PICTURE_UPLOAD_BUTTONS}       3
+
+Owner Should Show Edit Button On All Moves
+    Sign In ${USER_2.name} Fast
+    Go To GeoKrety ${1}
+    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_EDIT_BUTTONS}       2
+
+Owner Should Show Delete Button On All Moves
+    Sign In ${USER_2.name} Fast
+    Go To GeoKrety ${1}
+    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES_DELETE_BUTTONS}     6
 
 All Moves Should Show Comment Button
     Sign In ${USER_1.name} Fast

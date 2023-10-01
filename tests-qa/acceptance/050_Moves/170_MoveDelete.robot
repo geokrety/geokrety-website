@@ -17,9 +17,14 @@ Author Can Delete It's Moves
     Page Should Not Contain                         ${FORBIDEN}
 
 Other Users Cannot Delete Others Moves
-    Sign In ${USER_2.name} Fast
+    Sign In ${USER_3.name} Fast
     Go To Url                                       ${PAGE_MOVES_DELETE_URL}    moveid=1    redirect=${PAGE_HOME_URL_EN}
     Flash message shown                             You are not allowed to edit this move
+
+Owner Can Delete Moves On It's GeoKrety
+    Sign In ${USER_2.name} Fast
+    Go To Url                                       ${PAGE_MOVES_DELETE_URL}    moveid=1
+    Page Should Not Contain                         ${FORBIDEN}
 
 Delete Move
     Sign In ${USER_1.name} Fast
@@ -35,7 +40,7 @@ Delete Move
 *** Keywords ***
 
 Suite Setup
-    Clear Database And Seed ${2} users
+    Clear Database And Seed ${3} users
     Seed ${1} geokrety owned by ${2}
     Sign Out Fast
     Post Move                               ${MOVE_1}

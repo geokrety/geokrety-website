@@ -28,7 +28,7 @@ trait MoveLoader {
     }
 
     protected function checkAuthor(Move $move) {
-        if (!$move->isAuthor()) {
+        if (!($move->isAuthor() || $move->geokret->isOwner())) {
             \Base::instance()->error(403, _('You are not allowed to edit this move.'));
         }
     }
