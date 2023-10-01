@@ -100,16 +100,16 @@ pictures-import-legacy-to-s3: ## Automatically fetch pictures from legacy urls
 ## DEV Local instance of geokrety
 #	mkdir -p ./website/templates
 build: ## build local docker compose
-	docker-compose -f ${LOCAL_COMPOSE} build --build-arg GIT_COMMIT=local
-start: ## run local docker compose of geokrety containers
-	docker-compose -f ${LOCAL_COMPOSE} up -d && echo "geokety is available at http://localhost:8000"
-stop: ## stop local docker compose of geokrety containers
-	docker-compose -f ${LOCAL_COMPOSE} down
+	docker compose -f ${LOCAL_COMPOSE} build --build-arg GIT_COMMIT=local
+up: ## run local docker compose of geokrety containers
+	docker compose -f ${LOCAL_COMPOSE} -p gkdev up -d && echo "GeoKety is available at http://localhost:3001"
+down: ## stop local docker compose of geokrety containers
+	docker compose -f ${LOCAL_COMPOSE} -p gkdev down
 ps: ## list geokrety docker containers and names, status, and ids
-	docker ps -a --filter "name=geokrety" --format "table {{.Names}}\t{{.Status}}\t{{.ID}}"
+	docker compose -f ${LOCAL_COMPOSE} -p gkdev ps
 logs: ## get local webapp containers logs
-	docker logs geokrety-website_web_1
+	docker logs gkdev-website-1
 tail: ## tail local webapp containers log
-	docker logs -f geokrety-website_web_1
-sh: ## sh webapp containers
-	${PTY_PREFIX} docker exec -ti geokrety-website_web_1 bash
+	docker logs -f gkdev-website-1
+shell: ## sh webapp containers
+	${PTY_PREFIX} docker exec -ti gkdev-website-1 bash
