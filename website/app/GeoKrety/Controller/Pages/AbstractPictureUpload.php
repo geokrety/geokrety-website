@@ -16,8 +16,6 @@ abstract class AbstractPictureUpload extends Base {
         $s3 = S3Client::instance()->getS3Public();
 
         $formInputs = [
-            'acl' => 'private',
-            's3Key' => $this->getImgKey(),
             'key' => $this->getFullImgKey(),
         ];
 
@@ -25,7 +23,6 @@ abstract class AbstractPictureUpload extends Base {
         // https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html
         // https://docs.aws.amazon.com/AmazonS3/latest/dev/HTTPPOSTForms.html#HTTPPOSTConstructPolicy
         $options = [
-            ['acl' => 'private'],
             ['bucket' => GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER],
             ['eq', '$key', $this->getFullImgKey()],
             ['content-length-range', 1024, 1024 * 1024 * GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE],
@@ -46,6 +43,7 @@ abstract class AbstractPictureUpload extends Base {
             [
                 'success' => true,
                 'uploadUrl' => $formAttributes['action'],
+                's3Key' => $this->getImgKey(),
             ],
             $formInputs
         );

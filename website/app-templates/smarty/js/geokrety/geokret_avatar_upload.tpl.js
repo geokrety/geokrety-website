@@ -57,7 +57,8 @@ $("div#geokretAvatar").dropzone({
     },
 
     sending: function (file, xhr, formData) {
-        for (let key in file.postData) {
+        let includes = ['key', 'X-Amz-Credential', 'X-Amz-Algorithm', 'X-Amz-Date', 'Policy', 'X-Amz-Signature'];
+        for (let key of includes) {
             if (file.postData.hasOwnProperty(key)) {
                 formData.append(key, file.postData[key]);
             }
