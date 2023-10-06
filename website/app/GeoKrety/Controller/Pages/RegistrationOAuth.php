@@ -22,7 +22,7 @@ class RegistrationOAuth extends BaseRegistration {
             $user->email_invalid = User::USER_EMAIL_NO_ERROR;
         }
 
-        if (isset($social_data->raw->locale)) {
+        if (isset($social_data->raw->locale) && strlen($social_data->raw->locale) <= 2) {
             $this->user->preferred_language = $social_data->raw->locale;
         }
 
