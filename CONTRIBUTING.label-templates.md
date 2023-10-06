@@ -52,7 +52,7 @@ in order to have it well placed on the label template, we need to use placeholde
 having the fixed id `placeholderQR`. During the label rendering, the placeholder will be replaced by the QRCode image.
 Please take care to have it in a "good size" to have it scanned by most devices.
 
- Check other templates at https://github.com/geokrety/geokrety-website/tree/picture-s3-wip/website/app-templates/smarty/labels/
+ Check other templates at https://github.com/geokrety/geokrety-website/tree/main/website/app-templates/smarty/labels/
  to find examples.
 
  The simplest way is to copy/paste the placeholder from one of the other templates.
