@@ -21,18 +21,18 @@
                 <input type="password" class="form-control" id="inputPassword" name="password" placeholder="{t}Password{/t}" maxlength="80" required>
             </div>
         </div>
-        <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <div class="checkbox">
-                <label>
-                    <input id="rememberMeCheckbox" name="remember" type="checkbox"> {t}Remember me{/t}
-                </label>
-                <p class="help-block">
-                    {t escape=no url={'help'|alias:null:null:'#cookies'}}We are using cookies only to keep your session active. Read more about our <a href="%1" target="_blank">cookies policy</a>.{/t}
-                </p>
-            </div>
-        </div>
-    </div>
+{*        <div class="form-group">*}
+{*            <div class="col-sm-offset-2 col-sm-10">*}
+{*                <div class="checkbox">*}
+{*                    <label>*}
+{*                        <input id="rememberMeCheckbox" name="remember" type="checkbox"> {t}Remember me{/t}*}
+{*                    </label>*}
+{*                    <p class="help-block">*}
+{*                        {t escape=no url={'help'|alias:null:null:'#cookies'}}We are using cookies only to keep your session active. Read more about our <a href="%1" target="_blank">cookies policy</a>.{/t}*}
+{*                    </p>*}
+{*                </div>*}
+{*            </div>*}
+{*        </div>*}
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 {call csrf}
