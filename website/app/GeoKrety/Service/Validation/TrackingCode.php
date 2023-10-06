@@ -51,7 +51,7 @@ class TrackingCode {
     }
 
     protected function checkCharacters($trackingCode) {
-        if (!preg_match('/[^A-Za-z0-9]+/', $trackingCode)) {
+        if (!is_null($trackingCode) && !preg_match('/[^A-Za-z0-9]+/', $trackingCode)) {
             return true;
         }
         $this->errors[] = sprintf(_('Tracking Code "%s" contains invalid characters.'), $trackingCode);

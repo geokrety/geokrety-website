@@ -61,7 +61,7 @@ class Waypoint {
     }
 
     protected function checkCharacters($waypoint) {
-        if (!preg_match('/[^A-Za-z0-9]+/', $waypoint)) {
+        if (!is_null($waypoint) && !preg_match('/[^A-Za-z0-9]+/', $waypoint)) {
             return true;
         }
         $this->errors[] = _('Waypoint contains invalid characters.');
