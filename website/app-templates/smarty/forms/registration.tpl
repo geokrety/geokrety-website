@@ -82,6 +82,8 @@
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             {call csrf}
+            <input type="hidden" id="username2" name="username2" value="">
+            <input type="hidden" id="username3" name="username3" value="">
             <button id="registerButton" type="submit" class="btn btn-primary">{t}Register{/t}</button>
         </div>
     </div>
