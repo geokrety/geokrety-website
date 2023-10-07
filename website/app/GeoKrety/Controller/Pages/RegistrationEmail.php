@@ -34,6 +34,14 @@ class RegistrationEmail extends BaseRegistration {
         // Check CSRF
         $this->checkCsrf();
 
+        // Check Js Content
+        if (empty($f3->get('POST.username2'))) {
+            $f3->get('DB')->rollback();
+            \Sugar\Event::instance()->emit('user.create-spam.js', $f3->get('POST'));
+            \Flash::instance()->addMessage('Account successfully created', 'success');
+            $f3->reroute('@home', die: true);
+        }
+
         // Resend validation
         $token = new AccountActivationModel();
         $token->has('user', ['lower(username) = lower(?) AND _email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.username'), $f3->get('POST.email')]);

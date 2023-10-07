@@ -246,7 +246,7 @@ EOT;
     public function adduser(\Base $f3) {
         // Keep old spammer away
         if ($f3->exists('POST.submit')) {
-            \Sugar\Event::instance()->emit('user.create-spam', $f3->get('POST'));
+            \Sugar\Event::instance()->emit('user.create-spam.gkv1', $f3->get('POST'));
             \Flash::instance()->addMessage('Account successfully created', 'success');
             $f3->reroute('@home', die: true);
         }
