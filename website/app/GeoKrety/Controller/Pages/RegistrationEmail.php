@@ -37,8 +37,10 @@ class RegistrationEmail extends BaseRegistration {
         // Check Js Content
         if (empty($f3->get('POST.username2'))) {
             $f3->get('DB')->rollback();
+            $f3->get('DB')->begin();
             \Sugar\Event::instance()->emit('user.create-spam.js', $f3->get('POST'));
             \Flash::instance()->addMessage('Account successfully created', 'success');
+            $f3->get('DB')->commit();
             $f3->reroute('@home', die: true);
         }
 
