@@ -51,7 +51,32 @@ function shutdown_audit_post(Base $f3) {
         if ($has_route_match === 0 || GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS) {
             $audit = new \GeoKrety\Model\AuditPost();
             $audit->route = $f3->PATH;
-            $audit->payload = json_encode($f3->get('POST')); // As safety guard, replace any *password* but placeholder (what about other patterns?)
+            // As safety guard, replace any *password* but placeholder
+            $data = $f3->get('POST');
+
+            if (array_key_exists('password', $data)) {
+                $data['password'] = \GeoKrety\Service\Mask::mask($data['password'], 0, 0);
+            }
+            if (array_key_exists('password_confirm', $data)) {
+                $data['password_confirm'] = \GeoKrety\Service\Mask::mask($data['password_confirm'], 0, 0);
+            }
+            if (array_key_exists('password_old', $data)) {
+                $data['password_old'] = \GeoKrety\Service\Mask::mask($data['password_old'], 0, 0);
+            }
+            if (array_key_exists('password_new', $data)) {
+                $data['password_new'] = \GeoKrety\Service\Mask::mask($data['password_new'], 0, 0);
+            }
+            if (array_key_exists('password_new_confirm', $data)) {
+                $data['password_new_confirm'] = \GeoKrety\Service\Mask::mask($data['password_new_confirm'], 0, 0);
+            }
+            if (array_key_exists('secid', $data)) {
+                $data['secid'] = \GeoKrety\Service\Mask::mask($data['secid'], 3, 3);
+            }
+            if (array_key_exists('email', $data)) {
+                $data['email'] = \GeoKrety\Service\Mask::mask_email($data['email']);
+            }
+
+            $audit->payload = json_encode($data);
             try {
                 $audit->save();
                 $f3->set('AUDIT_POST_ID', $audit->id);

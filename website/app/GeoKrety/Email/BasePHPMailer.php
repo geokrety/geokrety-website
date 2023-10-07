@@ -4,6 +4,7 @@ namespace GeoKrety\Email;
 
 use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
+use GeoKrety\Service\Mask;
 use GeoKrety\Service\Metrics;
 use GeoKrety\Service\Smarty;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -164,7 +165,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     public function jsonSerialize(): array {
         $to = [];
         foreach ($this->getToAddresses() as $address) {
-            $to[] = [mask_email($address[0]), $address[1]];
+            $to[] = [Mask::mask_email($address[0]), $address[1]];
         }
 
         return [
@@ -172,23 +173,4 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
             'subject' => $this->getSubject(),
         ];
     }
-}
-
-// Function from: https://stackoverflow.com/a/45944844/944936
-function mask($str, $first, $last) {
-    $len = strlen($str);
-    $toShow = $first + $last;
-
-    return substr($str, 0, $len <= $toShow ? 0 : $first).str_repeat('*', $len - ($len <= $toShow ? 0 : $toShow)).substr($str, $len - $last, $len <= $toShow ? 0 : $last);
-}
-// Function from: https://stackoverflow.com/a/45944844/944936
-function mask_email($email) {
-    $mail_parts = explode('@', $email);
-    $domain_parts = explode('.', $mail_parts[1]);
-
-    $mail_parts[0] = mask($mail_parts[0], 2, 1); // show first 2 letters and last 1 letter
-    $domain_parts[0] = mask($domain_parts[0], 2, 1); // same here
-    $mail_parts[1] = implode('.', $domain_parts);
-
-    return implode('@', $mail_parts);
 }

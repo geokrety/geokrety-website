@@ -272,11 +272,6 @@ class Config extends \Prefab {
         define('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS', !GK_IS_PRODUCTION && filter_var(getenv('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS'), FILTER_VALIDATE_BOOLEAN));
         define('GK_AUDIT_LOGS_EXCLUDE_PATH', [
             '/auth',
-            '/login',
-            '/api-login2secid',
-            '/update-password',
-            '/recover-password/',
-            '/registration/',
         ]);
         define('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_LOGS_EXCLUDE_RETENTION_DAYS') ?: 90);
         define('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS', getenv('GK_AUDIT_POST_EXCLUDE_RETENTION_DAYS') ?: 90);
