@@ -13,6 +13,9 @@ class Mask {
 
     // Function from: https://stackoverflow.com/a/45944844/944936
     public static function mask_email($email) {
+        if (strpos($email, '@') === false) {
+            return self::mask($email, 2, 1);
+        }
         $mail_parts = explode('@', $email);
         $domain_parts = explode('.', $mail_parts[1]);
 
