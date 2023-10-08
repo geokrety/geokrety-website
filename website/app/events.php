@@ -53,8 +53,12 @@ $events->on('rate-limit.reset', function (array $context) {
     audit('rate-limit.reset', $context);
     Metrics::counter('rate_limit', 'Total number of rate_limit usages', ['type'], ['reset']);
 });
-$events->on('user.create-spam', function (array $data) {
-    audit('user.create-spam', $data);
+$events->on('user.create-spam.js', function (array $data) {
+    audit('user.create-spam.js', $data);
+    Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['spam']);
+});
+$events->on('user.create-spam.gkv1', function (array $data) {
+    audit('user.create-spam.gkv1', $data);
     Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['spam']);
 });
 $events->on('user.created', function (GeoKrety\Model\User $user) {
