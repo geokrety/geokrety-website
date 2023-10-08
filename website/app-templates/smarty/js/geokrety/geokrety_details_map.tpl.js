@@ -105,6 +105,9 @@ function onEachFeature(feature, layer) {
     } else {
         author = `<em class="user-anonymous">${ author }</em>`;
     }
+    let move_link = "{'geokret_details_by_move_id'|alias:'gkid=%GKID%,moveid=%MOVEID%'}"
+        .replace('%MOVEID%', feature.properties.move_id)
+        .replace('%GKID%', "{$geokret->gkid}");
     layer.bindPopup(`
         <h4>${ moveTypeIcon(feature.properties.move_type) } ${ moveTypeText(feature.properties.move_type) }</h4>
         <h5>{t}Move details:{/t}</h5>
@@ -119,7 +122,7 @@ function onEachFeature(feature, layer) {
         <div class="text-center">
             <div class="btn-group" role="group">
                 ${ previousMoveButton(feature) }
-                <a href="#log${ feature.properties.move_id }" class="btn btn-default btn-xs popup-move-navigate" title="{t}Show move{/t}" data-id="${ feature.properties.step }">
+                <a href="${ move_link }" class="btn btn-default btn-xs popup-move-navigate" title="{t}Show move{/t}" data-id="${ feature.properties.step }">
                     {t}Show move{/t}
                 </a>
                 ${ nextMoveButton(feature) }

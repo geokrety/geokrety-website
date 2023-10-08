@@ -27,4 +27,19 @@ class GeokretDetails extends Base {
 
         // TODO check if GeoKret has already been discovered, and display Tracking Code
     }
+
+    public function geokret_details_by_move_id(\Base $f3) {
+        $move_id = $f3->get('PARAMS.moveid');
+        if (!ctype_digit($move_id)) {
+            \Flash::instance()->addMessage(_('Invalid log_id'), 'danger');
+            $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
+        }
+        $move = new Move();
+        $move->load(['id = ?', $move_id]);
+        if ($move->dry()) {
+            \Flash::instance()->addMessage(_('Invalid log_id'), 'danger');
+            $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
+        }
+        $f3->reroute(sprintf('@geokret_details_paginate(@gkid=%s,@page=%d)#log%d', $this->geokret->gkid, $move->getMoveOnPage(), $move_id));
+    }
 }
