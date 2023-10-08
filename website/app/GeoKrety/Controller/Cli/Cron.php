@@ -9,6 +9,7 @@ use GeoKrety\Model\AuditPost;
 use GeoKrety\Model\Scripts;
 use GeoKrety\Model\User;
 use GeoKrety\Model\UsersAuthenticationHistory;
+use GeoKrety\Service\RateLimit;
 use GeoKrety\Session;
 
 class Cron {
@@ -78,6 +79,12 @@ SQL;
         $this->script_start(__METHOD__);
         $audit = new UsersAuthenticationHistory();
         $audit->expungeOld();
+        $this->script_end();
+    }
+
+    public function purgeRateLimitFull() {
+        $this->script_start(__METHOD__);
+        RateLimit::purge();
         $this->script_end();
     }
 }

@@ -185,4 +185,29 @@ class RateLimit {
             $redis->del($key);
         }
     }
+
+    /**
+     * @throws \GeoKrety\Service\StorageException
+     */
+    public static function purge(): array {
+        $query = '*';
+        /** @var \GeoKrety\Service\Redis $redis */
+        $redis = Redis::instance();
+        $redis->ensureOpenConnection();
+        $allKeys = $redis->keys(sprintf('%s__%s', self::RATE_KEY, $query));
+        $response = [];
+        foreach ($allKeys as $key) {
+            if (preg_match('/^'.self::RATE_KEY.'__(.*)__:(.*):allow$/', $key, $matches) === 0) {
+                continue;
+            }
+            $adapter = new RedisAdapter($redis->getRedis());
+            $key = self::RATE_KEY."__{$matches[1]}__";
+            $rateLimit = new RateLimiter($key, GK_RATE_LIMITS[$matches[1]][0], GK_RATE_LIMITS[$matches[1]][1], $adapter);
+            if (GK_RATE_LIMITS[$matches[1]][0] <= $rateLimit->getAllowance($matches[2])) {
+                $rateLimit->purge($matches[2]);
+            }
+        }
+
+        return $response;
+    }
 }
