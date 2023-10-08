@@ -165,7 +165,11 @@ class EmailActivationToken extends Base {
     public static function expireOldTokens(): void { // TODO: move this to plpgsql
         $activation = new EmailActivationToken();
         $expiredTokens = $activation->find([
-            'used = ? AND (created_on_datetime > NOW() - cast(? as interval) OR used_on_datetime > NOW() - cast(? as interval))',
+            'used = ? AND (
+                created_on_datetime + cast(? as interval) <= NOW()
+                OR
+                used_on_datetime + cast(? as interval) <= NOW()
+            )',
             self::TOKEN_UNUSED,
             GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY',
             GK_SITE_EMAIL_REVERT_CODE_DAYS_VALIDITY.' DAY',
