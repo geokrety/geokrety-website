@@ -140,7 +140,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
             $this->recipients[] = $_user;
         }
         // }
-        if ($realRecipient) {
+        if ($realRecipient or GK_IS_PRODUCTION) {
             if (!$user->hasEmail() or (!$user->isEmailValid() and !$force)) {
                 return;
             }
