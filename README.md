@@ -25,7 +25,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or need to report security issues, please contact us directly at [contact@geokretymap.org](mailto:contact@geokretymap.org).
+If you have any questions or need to report security issues, please contact us directly at [geokrety gmail com](mailto:geokrety@gmail.com).
 
 # Credits
 
