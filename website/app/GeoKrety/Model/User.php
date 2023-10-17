@@ -48,6 +48,12 @@ class User extends Base implements \JsonSerializable {
     public const USER_ACCOUNT_VALID = 1;
     public const USER_ACCOUNT_IMPORTED = 2;
 
+    public const ACCOUNT_STATUS_TEXT = [
+        self::USER_ACCOUNT_INVALID => 'Non-Activated',
+        self::USER_ACCOUNT_VALID => 'Fully activated',
+        self::USER_ACCOUNT_IMPORTED => 'Imported',
+    ];
+
     public const USER_ACCOUNT_STATUS_INVALID = [
         self::USER_ACCOUNT_INVALID,
         self::USER_ACCOUNT_IMPORTED,
@@ -301,6 +307,10 @@ class User extends Base implements \JsonSerializable {
 
     public function isAccountImported(): bool {
         return $this->account_valid === self::USER_ACCOUNT_IMPORTED;
+    }
+
+    public function status_text(): string {
+        return self::ACCOUNT_STATUS_TEXT[$this->account_valid];
     }
 
     public function hasEmail(): bool {

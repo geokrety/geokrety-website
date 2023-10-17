@@ -4,6 +4,7 @@ namespace GeoKrety\Model;
 
 use DB\SQL\Schema;
 use GeoKrety\Model\Traits\EmailField;
+use Sugar\Event;
 
 /**
  * @property string token
@@ -111,6 +112,10 @@ class EmailRevalidateToken extends Base {
             if ($self->used == self::TOKEN_VALIDATED) {
                 $self->validating_ip = \Base::instance()->get('IP');
             }
+        });
+
+        $this->afterinsert(function ($self) {
+            Event::instance()->emit('email-revalidation.token.generated', $self);
         });
 
         $this->virtual('validate_expire_on_datetime', function ($self): \DateTime {
