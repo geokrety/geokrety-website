@@ -4,6 +4,7 @@ namespace GeoKrety\Model;
 
 use DateTime;
 use DB\SQL\Schema;
+use Sugar\Event;
 
 /**
  * @property int|null id
@@ -258,6 +259,10 @@ EOT;
 
         // $this->beforeupdate(function ($self) {
         // });
+
+        $this->afterinsert(function ($self) {
+            Event::instance()->emit('email.token.generated', $self);
+        });
 
         $this->virtual('update_expire_on_datetime', function ($self): \DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();

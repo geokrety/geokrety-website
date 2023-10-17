@@ -224,11 +224,23 @@ $events->on('user.email.changed', function (GeoKrety\Model\User $user) {
 });
 $events->on('email.token.generated', function (GeoKrety\Model\EmailActivationToken $token) {
     audit('email.token.generated', $token);
-    Metrics::counter('email_validation_token_created_total', 'Total number of email validation token created');
+    Metrics::counter('email_validation_token_total', 'Total number of email validation token created', ['verb'], ['created']);
 });
 $events->on('email.token.used', function (GeoKrety\Model\EmailActivationToken $token) {
     audit('email.token.used', $token);
-    Metrics::counter('email_validation_token_used_total', 'Total number of email validation token used');
+    Metrics::counter('email_validation_token_total', 'Total number of email validation token used', ['verb'], ['used']);
+});
+$events->on('email-revalidation.token.generated', function (GeoKrety\Model\EmailRevalidateToken $token) {
+    audit('email-revalidation.token.generated', $token);
+    Metrics::counter('email_revalidation_token_total', 'Total number of email re-validation token created', ['verb'], ['generated']);
+});
+$events->on('email-revalidation.token.used', function (GeoKrety\Model\EmailRevalidateToken $token) {
+    audit('email-revalidation.token.used', $token);
+    Metrics::counter('email_revalidation_token_total', 'Total number of email re-validation token used', ['verb'], ['used']);
+});
+$events->on('email-revalidation.token.error', function (GeoKrety\Model\EmailRevalidateToken $token) {
+    audit('email-revalidation.token.error', $token);
+    Metrics::counter('email_revalidation_token_total', 'Total number of email re-validation token error', ['verb'], ['error']);
 });
 $events->on('user.secid.changed', function (GeoKrety\Model\User $user) {
     audit('user.secid.changed', $user);
