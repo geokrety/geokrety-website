@@ -37,13 +37,10 @@ If you have any questions or need to report security issues, please contact us d
 We welcome contributions from the community of individuals of all expertise levels. If you'd like to contribute to GeoKrety.org, please review our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
 
 <h2 align="center"><b>Contributors</b></h2>
-   
+
 <p align="center">
 <a href="https://github.com/geokrety/geokrety-website/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=geokrety/geokrety-website" />
 </a>
 
 Happy coding!
-
-
-
