@@ -13,6 +13,7 @@
             <th class="text-right">Join date</th>
             <th class="text-right">Last login</th>
             <th class="text-right">Email valid</th>
+            <th class="text-right">Status</th>
             <th class="text-right">Actions</th>
         </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td class="text-right">{if !is_null($user->joined_on_datetime)}{$user->joined_on_datetime|print_date nofilter}{/if}</td>
                 <td class="text-right">{if !is_null($user->last_login_datetime)}{$user->last_login_datetime|print_date nofilter}{/if}</td>
                 <td class="text-right">{if $user->email_invalid}{t}false{/t}{else}{t}true{/t}{/if}</td>
+                <td class="text-right">{$user->status_text()}</td>
                 <td class="text-right">
                     {block user_actions}{/block}
                 </td>
