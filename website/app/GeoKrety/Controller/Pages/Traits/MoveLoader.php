@@ -22,13 +22,15 @@ trait MoveLoader {
             $f3->error(404, _('This move does not exist.'));
         }
 
-        $this->checkAuthor($move);
-
         Smarty::assign('move', $this->move);
     }
 
+    protected function hasWritePermission(Move $move) {
+        return $move->isAuthor() || $move->geokret->isOwner();
+    }
+
     protected function checkAuthor(Move $move) {
-        if (!($move->isAuthor() || $move->geokret->isOwner())) {
+        if (!$this->hasWritePermission($move)) {
             \Base::instance()->error(403, _('You are not allowed to edit this move.'));
         }
     }

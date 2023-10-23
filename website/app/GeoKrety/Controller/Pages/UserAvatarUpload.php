@@ -31,4 +31,16 @@ class UserAvatarUpload extends AbstractPictureUpload {
     public function setRelationships(Picture $picture): void {
         $picture->user = $this->user;
     }
+
+    /**
+     * Check if the current user has permission on this object.
+     *
+     * @throws UploadPermissionException
+     */
+    protected function check_permission(\Base $f3): void {
+        if ($this->user->isCurrentUser()) {
+            return;
+        }
+        throw new UploadPermissionException(_('This is not your profile'));
+    }
 }

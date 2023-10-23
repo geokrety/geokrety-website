@@ -31,4 +31,16 @@ class MoveAvatarUpload extends AbstractPictureUpload {
     public function setRelationships(Picture $picture): void {
         $picture->move = $this->move;
     }
+
+    /**
+     * Check if the current user has permission on this object.
+     *
+     * @throws UploadPermissionException
+     */
+    protected function check_permission(\Base $f3): void {
+        if ($this->hasWritePermission($this->move)) {
+            return;
+        }
+        throw new UploadPermissionException(_('You have no write permission on this move'));
+    }
 }

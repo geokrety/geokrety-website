@@ -374,6 +374,7 @@ class Config extends \Prefab {
             'API_V1_EXPORT2' => [1500, 60 * 60 * 24], // 1500/day
             'API_V1_EXPORT' => [12, 60], // 12/minute
             'API_V1_EXPORT_OC' => [12, 60], // 12/minute
+            'API_V1_REQUEST_S3_FILE_SIGNATURE' => [50, 60 * 60 * 24], // 50/day
             'API_GKT_V3_SEARCH' => [10000, 60 * 60 * 24], // 10000/day
             'API_GKT_V3_INVENTORY' => [1500, 60 * 60 * 24], // 1500/day
             'USERNAME_CHANGE' => [3, 60 * 60 * 24 * 28], // 3/month

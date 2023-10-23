@@ -32,4 +32,16 @@ class GeokretAvatarUpload extends AbstractPictureUpload {
     public function setRelationships(Picture $picture): void {
         $picture->geokret = $this->geokret->id;
     }
+
+    /**
+     * Check if the current user has permission on this object.
+     *
+     * @throws UploadPermissionException
+     */
+    protected function check_permission(\Base $f3): void {
+        if ($this->geokret->isOwner()) {
+            return;
+        }
+        throw new UploadPermissionException(_('You are not the GeoKret owner'));
+    }
 }
