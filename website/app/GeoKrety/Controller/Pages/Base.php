@@ -63,9 +63,9 @@ abstract class Base {
         }
     }
 
-    public function authenticate_via_secid(\Base $f3) {
+    public function authenticate_via_secid() {
         $login = new Login();
-        $user = $login->secidAuth($this->f3, $this->f3->get('REQUEST.secid'));
+        $login->secidAuth($this->f3, $this->f3->get('REQUEST.secid'));
     }
 
     public function isLoggedIn(): bool {

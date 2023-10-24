@@ -38,7 +38,7 @@ class GeokretAvatarUpload extends AbstractPictureUpload {
      *
      * @throws UploadPermissionException
      */
-    protected function check_permission(\Base $f3): void {
+    protected function check_permission(): void {
         if ($this->geokret->isOwner()) {
             return;
         }

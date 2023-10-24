@@ -49,7 +49,7 @@ abstract class AbstractPictureUpload extends Base {
      */
     public function request_s3_file_signature_api(\Base $f3) {
         $this->set_response_content_type($f3);
-        $this->authenticate_via_secid($f3);
+        $this->authenticate_via_secid();
         RateLimit::check_rate_limit_raw('API_V1_REQUEST_S3_FILE_SIGNATURE', $this->f3->get('REQUEST.secid'));
         $data = $this->request_s3_file_signature($f3);
         // Remove some dropzone internal headers on the public API
@@ -75,7 +75,7 @@ abstract class AbstractPictureUpload extends Base {
 
     private function request_s3_file_signature(\Base $f3) {
         try {
-            $this->check_permission($f3);
+            $this->check_permission();
         } catch (UploadPermissionException $e) {
             http_response_code(403);
             Error::buildError(true, [$e->getMessage()]);
@@ -193,5 +193,5 @@ abstract class AbstractPictureUpload extends Base {
      *
      * @throws UploadPermissionException
      */
-    abstract protected function check_permission(\Base $f3);
+    abstract protected function check_permission();
 }

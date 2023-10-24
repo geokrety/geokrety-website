@@ -36,9 +36,9 @@ class Generic extends Base {
                     $xml->addItem($k, $v);
                 }
                 $xml->xml->endElement();
-            } else {
-                $xml->addItem($key, $value);
+                continue;
             }
+            $xml->addItem($key, $value);
         }
         $xml->end();
         $xml->finish(); // may return raw gzipped data
