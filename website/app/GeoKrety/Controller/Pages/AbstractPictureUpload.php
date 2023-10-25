@@ -4,14 +4,83 @@ namespace GeoKrety\Controller;
 
 use Aws\S3\PostObjectV4;
 use GeoKrety\Model\Picture;
+use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\S3Client;
+use GeoKrety\Service\Xml\Error;
+use GeoKrety\Service\Xml\Generic;
 use Sugar\Event;
+
+class UploadPermissionException extends \Exception {
+}
 
 abstract class AbstractPictureUpload extends Base {
     private string $imgKey;
 
-    public function request_s3_file_signature(\Base $f3) {
-        header('Content-Type: application/json; charset=utf-8');
+    public const CONTENT_TYPE_JSON = 'Content-Type: application/json; charset=utf-8';
+    public const CONTENT_TYPE_XML = 'Content-Type: application/xml; charset=utf-8';
+
+    private function wanted_response_content_type(\Base $f3) {
+        // Requests having secid are known to be XML
+        if ($f3->exists('REQUEST.secid')) {
+            return self::CONTENT_TYPE_XML;
+        }
+
+        // Default client is dropzone and is talking json
+        return self::CONTENT_TYPE_JSON;
+    }
+
+    private function set_response_content_type(\Base $f3) {
+        header($this->wanted_response_content_type($f3));
+    }
+
+    private function render_response(\Base $f3, array $response) {
+        if ($this->wanted_response_content_type($f3) === self::CONTENT_TYPE_XML) {
+            return Generic::buildGeneric(true, 'image-upload', $response);
+        }
+        // Default is Json
+        return json_encode($response);
+    }
+
+    /**
+     * Request a presigned url from the xml api
+     * Authentication is done by using a secid.
+     *
+     * @return void
+     */
+    public function request_s3_file_signature_api(\Base $f3) {
+        $this->set_response_content_type($f3);
+        $this->authenticate_via_secid();
+        RateLimit::check_rate_limit_raw('API_V1_REQUEST_S3_FILE_SIGNATURE', $this->f3->get('REQUEST.secid'));
+        $data = $this->request_s3_file_signature($f3);
+        // Remove some dropzone internal headers on the public API
+        foreach (['success', 'uploadUrl', 's3Key'] as $key) {
+            $response[$key] = $data[$key];
+            unset($data[$key]);
+        }
+        $response = array_merge($response, ['headers' => $data]);
+        echo $this->render_response($f3, $response);
+    }
+
+    /**
+     * Request a presigned url from dropzone
+     * Authentication is done by the framework.
+     *
+     * @return void
+     */
+    public function request_s3_file_signature_ajax(\Base $f3) {
+        $this->set_response_content_type($f3);
+        $response = $this->request_s3_file_signature($f3);
+        echo $this->render_response($f3, $response);
+    }
+
+    private function request_s3_file_signature(\Base $f3) {
+        try {
+            $this->check_permission();
+        } catch (UploadPermissionException $e) {
+            http_response_code(403);
+            Error::buildError(true, [$e->getMessage()]);
+            exit;
+        }
 
         $s3 = S3Client::instance()->getS3Public();
 
@@ -55,8 +124,8 @@ abstract class AbstractPictureUpload extends Base {
                 'success' => 0,
                 'text' => $f3->get('validation.error'),
             ];
-            echo json_encode($response);
-            exit;
+
+            return $response;
         }
 
         try {
@@ -68,13 +137,13 @@ abstract class AbstractPictureUpload extends Base {
                 'success' => 0,
                 'text' => 'Failed to store upload url into database.',
             ];
-            echo json_encode($response);
-            exit;
+
+            return $response;
         }
 
         Event::instance()->emit(sprintf('%s.presigned_request', $this->getEventNameBase()), $picture, $response);
 
-        echo json_encode($response);
+        return $response;
     }
 
     public function getImgKey() {
@@ -116,4 +185,13 @@ abstract class AbstractPictureUpload extends Base {
     abstract public function getPictureType(): int;
 
     abstract public function setRelationships(Picture $picture): void;
+
+    /**
+     * Check if the current user has permission on this object.
+     *
+     * @return void
+     *
+     * @throws UploadPermissionException
+     */
+    abstract protected function check_permission();
 }

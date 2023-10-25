@@ -6,7 +6,14 @@ use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
 class MoveDelete extends Base {
-    use \MoveLoader;
+    use \MoveLoader {
+        beforeRoute as protected traitBeforeRoute;
+    }
+
+    public function beforeRoute(\Base $f3) {
+        $this->traitBeforeRoute($f3);
+        $this->checkAuthor($this->move);
+    }
 
     public function get(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/move_delete.tpl');
