@@ -216,6 +216,11 @@ class LegacyRoutes {
         $f3->reroute(sprintf('%s/statpic/%s', GK_MINIO_SERVER_URL_EXTERNAL, $f3->get('PARAMS.statpic')), $permanent = true, $die = true);
     }
 
+    // https://new-theme.staging.geokrety.org/statystyczka-lata.php?rok=2022
+    public function statystyczka_lata(\Base $f3) {
+        $f3->reroute('@statistics_awards_ranking_index', $permanent = true, $die = true);
+    }
+
     // https://new-theme.staging.geokrety.org/obrazki/1512592236mg2p5.jpg
     public function obrazki(\Base $f3) {
         RateLimit::check_rate_limit_xml('API_LEGACY_PICTURE_PROXY', $f3->get('GET.secid'));
