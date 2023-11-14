@@ -21,6 +21,7 @@
             <div id="userAvatar" class="{if $user->isCurrentUser()}dropzone{/if}">
                 {include file='blocks/user/details.tpl'}
                 {include file='blocks/user/pictures.tpl'}
+                <div class="dz-message"></div>
             </div>
             {include file='blocks/user/medals.tpl'}
             {include file='blocks/user/awards.tpl'}

@@ -14,6 +14,7 @@
     <div id="geokretAvatar" class="{if $geokret->isOwner()}dropzone{/if}">
 {include file='blocks/geokret/details.tpl'}
 {include file='blocks/geokret/pictures.tpl'}
+<div class="dz-message"></div>
     </div>
 {include file='blocks/geokret/mission.tpl'}
 {include file='blocks/geokret/found_it.tpl'}

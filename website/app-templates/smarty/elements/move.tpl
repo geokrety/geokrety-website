@@ -51,6 +51,7 @@
                     {/if}
                 </div>
             </div>
+            <div class="dz-message"></div>
         </div>
 
         {if !(isset($hide_actions) && hide_actions) && $f3->get('SESSION.CURRENT_USER')}
