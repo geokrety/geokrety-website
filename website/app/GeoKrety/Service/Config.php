@@ -296,7 +296,7 @@ class Config extends \Prefab {
         define('GK_HOME_COUNT_RECENT_PICTURES', getenv('GK_HOME_COUNT_RECENT_PICTURES') ?: 18);
 
         // PAGINATION LIMITS
-        define('GK_PAGINATION_NEWS', getenv('GK_PAGINATION_NEWS') ?: 2);
+        define('GK_PAGINATION_NEWS', getenv('GK_PAGINATION_NEWS') ?: 10);
         define('GK_PAGINATION_GEOKRET_MOVES', getenv('GK_PAGINATION_GEOKRET_MOVES') ?: 10);
         define('GK_PAGINATION_GEOKRET_MOVES_MAP', getenv('GK_PAGINATION_GEOKRET_MOVES_MAP') ?: 500);
         define('GK_PAGINATION_USER_INVENTORY', getenv('GK_PAGINATION_USER_INVENTORY') ?: 10);
