@@ -24,9 +24,6 @@ jobs:
       - name: Set output
         id: vars
         run: |
-          major_version=$(cut -d '.' -f 1 <<< ${{ github.ref_name }})
-          echo "major_version=${major_version}" >> $GITHUB_OUTPUT
-
           TMP=$(mktemp -d)
           echo "tmp_dir=${TMP}" >> $GITHUB_OUTPUT
 
@@ -65,6 +62,6 @@ jobs:
           project_id: 260106
           token: ${{ secrets.CROWDIN_API_KEY }}
           upload_sources: true
-          upload_sources_args: --branch ${{ steps.vars.outputs.major_version }}
+          upload_sources_args: --branch main
           upload_translations: false
           download_translations: false
