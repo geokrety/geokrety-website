@@ -12,6 +12,6 @@
 
 use GeoKrety\Service\LanguageService;
 
-function smarty_modifier_language(string $lang, bool $asLocale = false): string {
-    return LanguageService::getLanguageByAlpha2($lang, $asLocale);
+function smarty_modifier_language(?string $lang, bool $asLocale = false): string {
+    return LanguageService::getLanguageByAlpha2($lang ?? 'en', $asLocale);
 }
