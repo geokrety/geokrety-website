@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Email\EmailChange;
 use GeoKrety\Model\EmailActivationToken;
+use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
@@ -89,7 +90,7 @@ class UserEmailChangeToken extends Base {
 
         // Save the new email
         $this->token->user->set_email($this->token->email);
-        $this->token->user->email_invalid = 0;
+        $this->token->user->email_invalid = User::USER_EMAIL_NO_ERROR;
 
         if (!$this->token->user->validate()) {
             $this->get($f3);
