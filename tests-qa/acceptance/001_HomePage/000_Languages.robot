@@ -58,7 +58,7 @@ Welcome ShouldShow FoundGeokretLogIt
   Page should contain button    ${HOME_FOUND_GK_TRACKING_CODE_BUTTON}
 
 Welcome ShouldShow WelcomeToGeokretyFR
-  Page Should Contain   Bienvenue sur GeoKrety.org !
+  Page Should Contain   Bienvenue sur GeoKrety
 Welcome ShouldShow SomeStatisticsFR
   Page should contain   Quelques statistiques
 Welcome ShouldShow LatestMovesFR

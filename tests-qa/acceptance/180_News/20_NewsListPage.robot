@@ -17,12 +17,12 @@ News Should Be SHown
     Element Count Should Be                         ${HOME_NEWS_PANELS}         1
 
 News Should Be Paginated
-    Go To Url                                       ${PAGE_SEED_NEWS}/4
+    Go To Url                                       ${PAGE_SEED_NEWS}/20
     Go To Url                                       ${PAGE_NEWS_LIST_URL}
     Element Count Should Be                         ${HOME_NEWS_PANELS}         2
 
 Paginator Should Count Pages
-    Go To Url                                       ${PAGE_SEED_NEWS}/4
+    Go To Url                                       ${PAGE_SEED_NEWS}/20
     Go To Url                                       ${PAGE_NEWS_LIST_URL}
     Element Attribute Should Be                     ${PAGINATOR}\[1]    data-page-total    2
 

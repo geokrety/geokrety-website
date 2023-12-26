@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <p>
-                        {t}We collect swite usage analytics, this help us understanding how the site is used and how to enhance it.{/t}
+                        {t}We collect site usage analytics, this help us understanding how the site is used and how to enhance it.{/t}
                     </p>
                 </div>
             </div>
