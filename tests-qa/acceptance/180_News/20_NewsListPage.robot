@@ -19,7 +19,7 @@ News Should Be SHown
 News Should Be Paginated
     Go To Url                                       ${PAGE_SEED_NEWS}/20
     Go To Url                                       ${PAGE_NEWS_LIST_URL}
-    Element Count Should Be                         ${HOME_NEWS_PANELS}         2
+    Element Count Should Be                         ${HOME_NEWS_PANELS}         10
 
 Paginator Should Count Pages
     Go To Url                                       ${PAGE_SEED_NEWS}/20
