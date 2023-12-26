@@ -94,7 +94,7 @@ class TrackingCode {
             // 'avatarCaption' => $geokret->avatarCaption,
             'lastPositionId' => $geokret->last_position ? $geokret->last_position->id : null,
             'lastLogId' => $geokret->last_log ? $geokret->last_log->id : null,
-            'missing' => $geokret->missing,
+            'missing' => $geokret->isMissing(),
         ];
 
         return $response;

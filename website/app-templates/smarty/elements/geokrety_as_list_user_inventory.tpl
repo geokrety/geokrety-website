@@ -1,10 +1,10 @@
 {if $geokrety.subset}
 {foreach from=$geokrety.subset item=geokret}
-<tr class="{if $geokret->missing}danger{elseif $geokret->isArchived()}danger{/if}">
+<tr class="{if $geokret->isMissing()}danger{elseif $geokret->isArchived()}danger{/if}">
     <td>
         <span class="hidden">{$geokret->gkid}</span>
         {$geokret|posicon nofilter}
-        {if $geokret->missing}<span title="{t}Declared as missing{/t}"><i class="fa fa-exclamation-triangle"></i></span>{/if}
+        {if $geokret->isMissing()}<span title="{t}Declared as missing{/t}"><i class="fa fa-exclamation-triangle"></i></span>{/if}
     </td>
     <td>
         {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />

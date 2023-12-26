@@ -174,7 +174,7 @@
         </thead>
         <tbody>
         {foreach from=$comments item=comment}
-            <tr class="{if $comment->geokret->missing}table-danger{/if}">
+            <tr class="{if $comment->geokret->isMissing()}table-danger{/if}">
                 <td nowrap>
                     {if $comment->type === 0}📄{else}❗{/if}
                     {$comment->geokret|gklink nofilter}<br>

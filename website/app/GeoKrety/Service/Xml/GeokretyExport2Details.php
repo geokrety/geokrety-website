@@ -65,7 +65,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
         $xml->endElement(); // state
 
         $xml->startElement('missing');
-        $xml->writeCData((int) $geokret->missing);
+        $xml->writeCData((int) $geokret->isMissing());
         $xml->endElement(); // missing
 
         if (!is_null($geokret->waypoint)) {

@@ -23,8 +23,8 @@ class GeokretyExport2 extends GeokretyBaseExport {
         if ($geokret->hasTouchedInThePast()) {
             $xml->writeAttribute('nr', $geokret->tracking_code);
         }
-        if ($geokret->missing) {
-            $xml->writeAttribute('missing', $geokret->missing);
+        if ($geokret->isMissing()) {
+            $xml->writeAttribute('missing', $geokret->isMissing());
         }
 
         if ($geokret->owner) {

@@ -49,7 +49,7 @@ class GeokretyExport extends GeokretyBaseExport {
         if (!is_null($geokret->last_position)) {
             $xml->writeElement('state', $geokret->move_type->getLogTypeId());
         }
-        $xml->writeElement('missing', (int) $geokret->missing);
+        $xml->writeElement('missing', (int) $geokret->isMissing());
 
         $xml->startElement('position');
         if (!is_null($geokret->last_position)) {
