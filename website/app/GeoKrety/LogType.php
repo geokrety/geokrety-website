@@ -84,6 +84,10 @@ class LogType {
         return $logtype == $this->logtype;
     }
 
+    public function isArchive() {
+        return $this->isType(self::LOG_TYPE_ARCHIVED);
+    }
+
     public static function isValid($logtype) {
         return in_array($logtype, self::LOG_TYPES, true);
     }

@@ -1,6 +1,6 @@
 {if $move.subset}
 {foreach from=$move.subset item=move}
-<tr class="{$move->id}{if $move->geokret->missing}danger{/if}">
+<tr class="{$move->id} {if $move->geokret->isMissing()}danger{elseif $move->move_type->isArchive()}danger{/if}">
     <td>
         {$move|logicon nofilter}
     </td>
