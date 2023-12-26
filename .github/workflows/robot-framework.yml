@@ -1,12 +1,14 @@
 name: Integration tests on Robot Framework
 
 on:
-  pull_request:
+  pull_request_target:
     branches-ignore:
       - master
       - l10n_main
       - l10n_master
       - l10n_new-theme
+    types:
+      - closed
   push:
     branches-ignore:
       - master
@@ -25,11 +27,11 @@ env:
 
 jobs:
   robot-framework:
-    if: "${{ !contains(github.event.head_commit.message, 'skip translate') && !contains(github.event.head_commit.message, 'skip test-qa') }}"
+    if: "${{ (github.event_name == 'push' || github.event.pull_request.merged == true) && !contains(github.event.head_commit.message, 'skip tests-qa') }}"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set output
         id: vars
