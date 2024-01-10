@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-26 11:13+0000\n"
-"PO-Revision-Date: 2023-12-26 11:57\n"
+"POT-Creation-Date: 2024-01-10 21:01+0000\n"
+"PO-Revision-Date: 2024-01-10 21:05\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "Language: nb_NO\n"
@@ -1343,6 +1343,7 @@ msgstr "Tilbake til brukersiden"
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:35
 #: website/app-templates/smarty/dialog/move_delete.tpl:23
 #: website/app-templates/smarty/dialog/user_update_password.tpl:53
+#: website/app-templates/smarty/dialog/geokret_legacy_mission.tpl:11
 #: website/app-templates/smarty/dialog/user_contact.tpl:42
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:55
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
@@ -1462,7 +1463,7 @@ msgid "Remember the caption for the next %1 minutes"
 msgstr "Husk underteksten for de neste %1 minuttene"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
-#: website/app-templates/smarty/forms/geokret.tpl:63
+#: website/app-templates/smarty/forms/geokret.tpl:70
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 msgid "Save"
 msgstr "Lagre"
@@ -1733,6 +1734,10 @@ msgstr "Slik skriver du gode passord"
 #: website/app-templates/smarty/dialog/user_update_password.tpl:43
 msgid "Password strength"
 msgstr "Password strength"
+
+#: website/app-templates/smarty/dialog/geokret_legacy_mission.tpl:4
+msgid "Here is the old mission content from GKv1"
+msgstr ""
 
 #: website/app-templates/smarty/dialog/user_contact.tpl:9
 msgid "Contact user"
@@ -2102,20 +2107,20 @@ msgid "Reference number"
 msgstr "[ch:orange slip] Referansenummer"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:36
-#: website/app-templates/smarty/forms/geokret.tpl:31
+#: website/app-templates/smarty/forms/geokret.tpl:37
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:3
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
 msgid "Mission"
 msgstr "Oppdrag"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:38
-#: website/app-templates/smarty/forms/geokret.tpl:33
+#: website/app-templates/smarty/forms/geokret.tpl:40
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 msgid "What is this GeoKret mission?"
 msgstr "Hva er dette GeoKret oppdraget?"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:43
-#: website/app-templates/smarty/forms/geokret.tpl:50
+#: website/app-templates/smarty/forms/geokret.tpl:57
 msgid "Label template"
 msgstr "Etikett mal"
 
@@ -2136,14 +2141,14 @@ msgid "Generate as .svg"
 msgstr "Generer som .svg"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:81
-#: website/app-templates/smarty/forms/geokret.tpl:72
+#: website/app-templates/smarty/forms/geokret.tpl:79
 msgid "Sample GeoKret label preview"
 msgstr ""
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:84
 #: website/app-templates/smarty/forms/geokret_label.tpl:85
-#: website/app-templates/smarty/forms/geokret.tpl:75
-#: website/app-templates/smarty/forms/geokret.tpl:76
+#: website/app-templates/smarty/forms/geokret.tpl:82
+#: website/app-templates/smarty/forms/geokret.tpl:83
 msgid "GeoKret label preview"
 msgstr "GeoKret etikett forhåndsvisning"
 
@@ -2156,15 +2161,19 @@ msgstr "Rediger en GeoKret"
 msgid "GeoKret type"
 msgstr "GeoKret type"
 
-#: website/app-templates/smarty/forms/geokret.tpl:41
+#: website/app-templates/smarty/forms/geokret.tpl:33
+msgid "View legacy mission"
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokret.tpl:48
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
 msgstr "Dette vil opprette et første \"delt\" trekk til GeoKret, som markerer startpunktet ditt."
 
-#: website/app-templates/smarty/forms/geokret.tpl:42
+#: website/app-templates/smarty/forms/geokret.tpl:49
 msgid "Set my home coordinates as a starting point."
 msgstr "Angi mine hjemmekoordinater som startpunkt."
 
-#: website/app-templates/smarty/forms/geokret.tpl:63
+#: website/app-templates/smarty/forms/geokret.tpl:70
 msgid "Create"
 msgstr "Opprett"
 
