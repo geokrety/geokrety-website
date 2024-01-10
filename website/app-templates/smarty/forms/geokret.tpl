@@ -28,7 +28,14 @@
             </div>
 
             <div class="form-group">
-                <label for="inputMission" class="col-sm-2 control-label">{t}Mission{/t}</label>
+                <label for="inputMission" class="col-sm-2 control-label">
+                    {if isset($geokret) and $geokret->gkid()}
+                    <a type="button" class="btn btn-xs" title="{t}View legacy mission{/t}" data-toggle="modal" data-target="#modal" data-type="geokret-legacy-mission" data-id="{$geokret->gkid()}">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                    {/if}
+                    {t}Mission{/t}
+                </label>
                 <div class="col-sm-10">
                     <textarea class="form-control maxl" rows="5" id="inputMission" name="mission" placeholder="{t}What is this GeoKret mission?{/t}" maxlength="5120">{if isset($geokret)}{$geokret->mission}{/if}</textarea>
                 </div>

@@ -14,6 +14,7 @@ use GeoKrety\LogType;
  * @property string name
  * @property string url
  * @property string|null mission
+ * @property string|null legacy_mission
  * @property int|User|null owner
  * @property string|null owner_username
  * @property int distance
@@ -62,6 +63,10 @@ class Geokret extends Base {
         'mission' => [
             'type' => Schema::DT_TEXT,
             'filter' => 'HTMLPurifier',
+            'nullable' => true,
+        ],
+        'legacy_mission' => [
+            'type' => Schema::DT_TEXT,
             'nullable' => true,
         ],
         'distance' => [

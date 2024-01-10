@@ -56,4 +56,7 @@ $("#inputMission").data({ editor: inscrybmde });
         previewLink.attr("href", url);
     }
 
+    // Bind modal
+    {include 'js/dialogs/dialog_view_geokrety_legacy_mission.tpl.js'}
+
 {/block}
