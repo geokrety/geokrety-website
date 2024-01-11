@@ -63,7 +63,7 @@ abstract class PrizeAwarderBase {
     protected function check_overdue(Awards $award) {
         $year = date('Y');
 
-        if ($award->start_on_datetime->format('Y') < $year) {
+        if ($award->start_on_datetime->format('Y') < $year - 1) {
             throw new \Exception(sprintf('Badge is already expired "%s"', $award->name));
         }
         if ($award->start_on_datetime->format('Y') > $year) {

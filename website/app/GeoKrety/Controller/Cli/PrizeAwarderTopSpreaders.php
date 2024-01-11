@@ -73,6 +73,7 @@ EOT;
     }
 
     protected function _pre_check(\Base $f3) {
+        $year = $f3->get('PARAMS.year');
         $awardWon = new AwardsWon();
         $awardWon->has('award', ['name = ?', sprintf('Top 10 spreaders %d', $year)]);
         $awardWon->load();
