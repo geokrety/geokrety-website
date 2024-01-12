@@ -18,7 +18,7 @@
         {foreach from=$news item=item}
             <div class="s-3"></div>
             <h6>{$item->title}</h6>
-            <p class="text-sm">{$item->content nofilter}</p>
+            <p class="text-sm">{$item->content|markdown nofilter}</p>
         {/foreach}
     {/if}
 

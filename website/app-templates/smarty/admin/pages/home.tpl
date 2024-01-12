@@ -71,6 +71,9 @@
                         <li>
                             <a href="{'admin_api_rate_limits'|alias}">Show API current rate limits</a>
                         </li>
+                        <li>
+                            <a href="{'admin_news_list'|alias}">Manage News</a>
+                        </li>
                     </ul>
                 </div>
             </div>

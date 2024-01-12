@@ -23,5 +23,7 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="panel-body">{$news->content nofilter}</div>
+    <div class="panel-body">
+        {$news->content|markdown nofilter}
+    </div>
 </div>
