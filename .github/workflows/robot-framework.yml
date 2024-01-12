@@ -8,7 +8,7 @@ on:
       - l10n_master
       - l10n_new-theme
     types:
-      - closed
+      - opened
   push:
     branches-ignore:
       - master
@@ -16,6 +16,7 @@ on:
       - l10n_master
       - l10n_new-theme
       - deployment/docker-tag/**
+      - feature/new-theme
 
 env:
   PGUSER: geokrety
