@@ -11,7 +11,10 @@ use GeoKrety\Service\MarkdownNoImages;
  * Purpose:  markdown to html
  * -------------------------------------------------------------.
  */
-function smarty_modifier_markdown_no_images(string $string, ?string $mode = 'html'): string {
+function smarty_modifier_markdown_no_images(?string $string, ?string $mode = 'html'): string {
+    if (is_null($string)) {
+        return '';
+    }
     if ($mode === 'html') {
         return MarkdownNoImages::toHtml($string);
     }

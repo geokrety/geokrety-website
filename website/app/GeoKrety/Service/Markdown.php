@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Service;
 
-use Erusev\Parsedown\Configurables\SafeMode;
 use Erusev\Parsedown\Configurables\StrictMode;
 use Erusev\Parsedown\Parsedown;
 use Erusev\Parsedown\State;
@@ -16,7 +15,6 @@ class Markdown extends \Prefab {
 
     public function __construct() {
         $state = new State([
-            new SafeMode(true),
             new StrictMode(true),
         ]);
 

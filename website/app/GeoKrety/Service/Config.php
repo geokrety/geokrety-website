@@ -349,6 +349,7 @@ class Config extends \Prefab {
         define('GK_SITE_TRACKING_CODE_MAX_LENGTH', (int) getenv('GK_SITE_TRACKING_CODE_MAX_LENGTH') ?: 7);
         define('GK_GEOKRET_NAME_MIN_LENGTH', getenv('GK_GEOKRET_NAME_MIN_LENGTH') ?: 4);
         define('GK_GEOKRET_NAME_MAX_LENGTH', getenv('GK_GEOKRET_NAME_MAX_LENGTH') ?: 75);
+        define('GK_NEWS_TITLE_MAX_LENGTH', getenv('GK_NEWS_TITLE_MAX_LENGTH') ?: 128);
         define('GK_USERNAME_MIN_LENGTH', getenv('GK_USERNAME_MIN_LENGTH') ?: 3);
         define('GK_USERNAME_MAX_LENGTH', getenv('GK_USERNAME_MAX_LENGTH') ?: 80);
         define('GK_PICTURE_CAPTION_MAX_LENGTH', getenv('GK_PICTURE_CAPTION_MAX_LENGTH') ?: 50);
