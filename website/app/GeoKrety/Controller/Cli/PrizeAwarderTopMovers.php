@@ -59,7 +59,7 @@ EOT;
             $this->award(
                 $result[$i],
                 $award_top10,
-                'Top 10 movers in %d (total %d drops, %s, rank #%d)',
+                'Top 10 movers in %d (total %d logs, %s, rank #%d)',
                 $year,
                 $i + 1,
             );
@@ -70,7 +70,7 @@ EOT;
             $this->award(
                 $result[$i],
                 $award_top100,
-                'Top 100 movers in %d (total %d drops, %s, rank #%d)',
+                'Top 100 movers in %d (total %d logs, %s, rank #%d)',
                 $year,
                 $i + 1,
             );
