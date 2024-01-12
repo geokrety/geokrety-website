@@ -4,15 +4,11 @@ on:
   schedule:
     - cron: "0 10 * * *"
   push:
-    branches-ignore:
+    branches:
       - main
-      - master
-      - l10n_master
-      - l10n_new-theme
-      - l10n_main
+      - feature/new-theme
     tags:
       - "v2.*.*"
-  pull_request:
 
 jobs:
   docker:
