@@ -6,18 +6,18 @@ use GeoKrety\LogType;
 use GeoKrety\Model\Awards;
 use GeoKrety\Model\AwardsWon;
 
-class PrizeAwarderTopMovers extends PrizeAwarderBase {
+class PrizeAwarderTopLoggers extends PrizeAwarderBase {
     /**
      * @throws \Exception
      */
     protected function _process(\Base $f3) {
-        $this->topMovers($f3);
+        $this->topLoggers($f3);
     }
 
     /**
      * @throws \Exception
      */
-    private function topMovers(\Base $f3) {
+    private function topLoggers(\Base $f3) {
         $this->script_start(__METHOD__);
         $year = $f3->get('PARAMS.year');
         $sql = <<<'EOT'
@@ -39,16 +39,16 @@ EOT;
         $result = $f3->get('DB')->exec($sql, [$year, ...LogType::LOG_TYPES_ALIVE]);
 
         $award_top10 = new Awards();
-        $award_top10->load(['name = ?', sprintf('Top 10 movers %d', $year)]);
+        $award_top10->load(['name = ?', sprintf('Top 10 loggers %d', $year)]);
         if ($award_top10->dry()) {
-            throw new \Exception(sprintf('"Top 10 movers %d" award does not exist', $year));
+            throw new \Exception(sprintf('"Top 10 loggers %d" award does not exist', $year));
         }
         $this->check_overdue($award_top10, $year);
 
         $award_top100 = new Awards();
-        $award_top100->load(['name = ?', sprintf('Top 100 movers %d', $year)]);
+        $award_top100->load(['name = ?', sprintf('Top 100 loggers %d', $year)]);
         if ($award_top100->dry()) {
-            throw new \Exception(sprintf('"Top 100 movers %d" award does not exist', $year));
+            throw new \Exception(sprintf('"Top 100 loggers %d" award does not exist', $year));
         }
 
         $award_top10_size = sizeof($result) > 10 ? 10 : sizeof($result);
@@ -59,7 +59,7 @@ EOT;
             $this->award(
                 $result[$i],
                 $award_top10,
-                'Top 10 movers in %d (total %d logs, %s, rank #%d)',
+                'Top 10 loggers in %d (total %d logs, %s, rank #%d)',
                 $year,
                 $i + 1,
             );
@@ -70,7 +70,7 @@ EOT;
             $this->award(
                 $result[$i],
                 $award_top100,
-                'Top 100 movers in %d (total %d logs, %s, rank #%d)',
+                'Top 100 loggers in %d (total %d logs, %s, rank #%d)',
                 $year,
                 $i + 1,
             );
@@ -80,10 +80,10 @@ EOT;
     protected function _pre_check(\Base $f3) {
         $year = $f3->get('PARAMS.year');
         $award = new AwardsWon();
-        $award->has('award', ['name = ?', sprintf('Top 10 movers %d', $year)]);
+        $award->has('award', ['name = ?', sprintf('Top 10 loggers %d', $year)]);
         $award->load();
         if (!$award->dry()) {
-            echo $this->console_writer->sprintf("\e[0;31mAward '%s' already exists for year %d\e[0m", 'movers', $year).PHP_EOL;
+            echo $this->console_writer->sprintf("\e[0;31mAward '%s' already exists for year %d\e[0m", 'loggers', $year).PHP_EOL;
             exit(1);
         }
     }
