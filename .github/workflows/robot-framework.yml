@@ -1,22 +1,15 @@
 name: Integration tests on Robot Framework
 
 on:
-  pull_request_target:
+  pull_request:
     branches-ignore:
       - master
       - l10n_main
       - l10n_master
       - l10n_new-theme
-    types:
-      - opened
   push:
-    branches-ignore:
-      - master
-      - l10n_main
-      - l10n_master
-      - l10n_new-theme
-      - deployment/docker-tag/**
-      - feature/new-theme
+    branches:
+      - main
 
 env:
   PGUSER: geokrety
