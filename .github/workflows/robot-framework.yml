@@ -3,13 +3,17 @@ name: Integration tests on Robot Framework
 on:
   pull_request:
     branches-ignore:
+      - main
       - master
       - l10n_main
       - l10n_master
       - l10n_new-theme
   push:
-    branches:
-      - main
+    branches-ignore:
+      - master
+      - l10n_main
+      - l10n_master
+      - l10n_new-theme
 
 env:
   PGUSER: geokrety
@@ -18,8 +22,15 @@ env:
   PGHOST: localhost
   PGPORT: 5433
   DOCKER_COMPOSE: docker compose -p gk -f docker-compose.local.yml --progress quiet
+  APT_INSTALL: sudo apt-get -qq install -qq -o=Dpkg::Use-Pty=0 -y
 
 jobs:
+#  debug:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Debug
+#        uses: raven-actions/debug@v1
+
   robot-framework:
     if: "${{ (github.event_name == 'push' || github.event.pull_request.merged == true) && !contains(github.event.head_commit.message, 'skip tests-qa') }}"
     runs-on: ubuntu-latest
@@ -31,6 +42,7 @@ jobs:
         id: vars
         run: |
           echo "short_ref=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+          git status
 
       - name: Configure Sentry
         run: |
@@ -40,27 +52,56 @@ jobs:
       - name: Install tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y git httping postgresql-client postgis libtap-parser-sourcehandler-pgtap-perl
+          ${APT_INSTALL} postgresql-client postgis httping
+
+      - name: Cache PUBLIC data
+        uses: actions/cache@v3
+        with:
+          path: ./website/db/dumps/11_public-data.sql
+          key: public-data-cache
+          restore-keys: |
+            public-data-cache
+
+      - name: Cache SRTM data
+        uses: actions/cache@v3
+        with:
+          path: ./website/db/srtm/*.zip
+          key: srtm-cache
+          restore-keys: |
+            srtm-cache
 
       - name: Pull/Start postgres
+        id: db-start
         run: |
           ./website/db/get_huge_dump_files.sh
+          # Create srtm dir now, so it gets right permissions
+          mkdir ./website/db/srtm || ls -la ./website/db/srtm
+          echo "Getting postgres docker image…"
           ${DOCKER_COMPOSE} pull -q postgres
+          echo "Starting postgres…"
           ${DOCKER_COMPOSE} up -d --no-build postgres
+          echo "Wait postgres to become available…"
           timeout 60s bash -c "while ! pg_isready; do sleep 1; done" || { docker ps -a;  ${DOCKER_COMPOSE} logs postgres; false; }
 
-      - name: Import SRTM data
+      - name: Get postgres logs on failure
+        if: "${{ failure() && steps.db-start.outcome == 'failure' }}"
+        run: ${DOCKER_COMPOSE} logs postgres
+
+      - name: Prevent DNS issue with new GH Runner on Ubuntu 22.04
         run: |
-          # Prevent DNS issue with new GH Runner on Ubuntu 22.04
           for i in $(seq 60); do
             httping -sGc1 -o 200,302 https://srtm.geokrety.org/Eurasia/N52E021.hgt.zip && { echo OK; break; } || { sleep 1; }
           done || exit 1
 
+      - name: Import SRTM data
+        run: |
           ./website/db/tests-srtm-import.sh
+
+      - name: Test SRTM data
+        run: |
           psql -c "SELECT count(*) FROM public.srtm"
           psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
-          psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
-
+          psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) LIMIT 2;"
 
       - name: Check for existing website-base image for current branch
         if: "${{ !startsWith(github.ref, 'refs/tags/v') }}"
@@ -83,30 +124,65 @@ jobs:
 
       - name: Start the whole stack
         run: |
-          cat .env
           ${DOCKER_COMPOSE} --env-file .env up -d --no-build
 
       - name: Check the stack has started
+        id: start-stack
         run: |
-          docker ps -a
+          ${DOCKER_COMPOSE} ps -a
           sleep 5
+          ${DOCKER_COMPOSE} logs website; ${DOCKER_COMPOSE} logs nginx;
+
           for i in $(seq 60); do
-            httping -sGc1 -o 200,302 http://localhost:3001/health && { echo OK; break; } || { ${DOCKER_COMPOSE} logs website; ${DOCKER_COMPOSE} logs nginx; ${DOCKER_COMPOSE} ps; sleep 1; }
+            httping -sGc1 -o 200,302 http://localhost:3001/health && { echo OK; break; } || { ${DOCKER_COMPOSE} ps; sleep 1; }
           done || exit 1
           ${DOCKER_COMPOSE} exec -T website make test-health
 
+      - name: Get nginx logs on failure
+        if: "${{ failure() && steps.start-stack.outcome == 'failure' }}"
+        run: ${DOCKER_COMPOSE} logs nginx
+
+      - name: Get php logs on failure
+        if: "${{ failure() && steps.start-stack.outcome == 'failure' }}"
+        run: ${DOCKER_COMPOSE} logs website
+
       - name: Run database tests
+        id: db-unit-tests
         run: |
+          # Tests need the website to be up, as it needs db migrations
+          env | grep PG
+          ${APT_INSTALL} libtap-parser-sourcehandler-pgtap-perl
           PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -ot website/db/tests/test*.sql
+
+      - name: Get postgres logs on failure
+        if: "${{ failure() && steps.db-unit-tests.outcome == 'failure' }}"
+        run: ${DOCKER_COMPOSE} logs postgres
+
+      - name: Install Firefox
+        run: |
+          if command -v firefox; then
+            echo "Already available. Skip install…"
+            exit 0
+          fi
+          sudo tee -a "/etc/apt/preferences.d/mozilla-firefox" > /dev/null << EOF
+          Package: *
+          Pin: release o=LP-PPA-mozillateam
+          Pin-Priority: 1001
+          EOF
+          sudo add-apt-repository -y ppa:mozillateam/ppa
+          sudo apt update
 
       - name: Ensure available fonts on system for Robot Framework/Firefox
         run: |
-          sudo apt-get install -y ttf-bitstream-vera fonts-urw-base35
+          ${APT_INSTALL} firefox ttf-bitstream-vera fonts-urw-base35
+
+      - name: Install geckodriver
+        run: |
+          (cd tests-qa && make download_geckodriver)
 
       - name: Install Robot Framework
         run: |
           pip3 install -r tests-qa/requirements.txt
-          cd tests-qa && make download_geckodriver && cd ..
 
       - name: Run Robot Framework tests
         env:
@@ -115,41 +191,42 @@ jobs:
         run: |
           make test-qa-headless
 
-      - name: Get nginx logs
-        if: failure()
-        run: ${DOCKER_COMPOSE} logs nginx
-
-      - name: Get php logs
-        if: failure()
-        run: ${DOCKER_COMPOSE} logs website
-
-      - name: Get postgres logs
-        if: failure()
-        run: ${DOCKER_COMPOSE} logs postgres
-
-      - name: Get pictures-downloader logs
-        if: failure()
-        run: |
-          ${DOCKER_COMPOSE} logs pictures-downloader
-          echo "---------- /tmp/headers ------------"
-          cat /tmp/headers || true
-          echo "---------- /tmp/body ------------"
-          cat /tmp/body || true
-
-      - name: Get pictures-uploader logs
-        if: failure()
-        run: ${DOCKER_COMPOSE} logs pictures-uploader
-
-      - name: Get svg-to-png logs
-        if: failure()
-        run: ${DOCKER_COMPOSE} logs svg-to-png
-
-      - name: Get minio logs
-        if: failure()
-        run: ${DOCKER_COMPOSE} logs minio
+#      - name: Get geckodriver.log
+#        if: failure()
+#        run: |
+#          cat tests-qa/geckodriver.log
+#
+#      - name: Get geckodriver.log
+#        if: failure()
+#        run: |
+#          cat tests-qa/docs/debugfile.log
+#
+#      - name: Get pictures-downloader logs
+#        if: failure()
+#        run: |
+#          ${DOCKER_COMPOSE} logs pictures-downloader
+#          echo "---------- /tmp/headers ------------"
+#          cat /tmp/headers || true
+#          echo "---------- /tmp/body ------------"
+#          cat /tmp/body || true
+#
+#      - name: Get pictures-uploader logs
+#        if: failure()
+#        run: ${DOCKER_COMPOSE} logs pictures-uploader
+#
+#      - name: Get svg-to-png logs
+#        if: failure()
+#        run: ${DOCKER_COMPOSE} logs svg-to-png
+#
+#      - name: Get minio logs
+#        if: failure()
+#        run: ${DOCKER_COMPOSE} logs minio
 
       - name: Deploy
-        if: always()
+        env:
+          super_secret: ${{ secrets.QA_TEST_DEPLOY_KEY }}
+        if: "${{ always() && env.QA_TEST_DEPLOY_KEY != '' }}"
+        continue-on-error: true
         uses: peaceiris/actions-gh-pages@v3
         with:
 #          force_orphan: true  ## see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-keeping-existing-files-keep_files
@@ -164,10 +241,19 @@ jobs:
           commit_message: "docs: Update QA tests results"
 
       - name: Show report URL
-        if: always()
+        env:
+          super_secret: ${{ secrets.QA_TEST_DEPLOY_KEY }}
+        if: "${{ always() && env.QA_TEST_DEPLOY_KEY != '' }}"
+        continue-on-error: true
         run: |
           echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html
           echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html
           echo '### Robot Framework reports' >> $GITHUB_STEP_SUMMARY
           echo '* [report](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html)' >> $GITHUB_STEP_SUMMARY
           echo '* [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html)' >> $GITHUB_STEP_SUMMARY
+
+      - name: Stop the docker stack
+        if: always()
+        continue-on-error: true
+        run: |
+          ${DOCKER_COMPOSE} down

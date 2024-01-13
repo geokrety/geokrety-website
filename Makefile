@@ -38,6 +38,8 @@ test-qa-headless: ## run qa tests in headless mode
 	HEADLESS=True make test-qa
 test-qa-rerun-failed: ## run qa tests in headless mode
 	cd tests-qa && HEADLESS=True make rerun-failed-tests
+test-workflow-act: ## run qa tests locally as on GitHub using 'act'
+	time act push -W .github/workflows/robot-framework.yml
 test-health: ## Check if website health
 	cd website/public && php geokrety.php /health
 

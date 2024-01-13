@@ -104,6 +104,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./website/db/dumps/:/docker-entrypoint-initdb.d/
+      - ./website/db/srtm/:/srtm/
     tmpfs:
       - /var/lib/postgresql/data
     ports:
