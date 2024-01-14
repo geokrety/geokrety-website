@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-10 21:01+0000\n"
-"PO-Revision-Date: 2024-01-10 21:05\n"
+"POT-Creation-Date: 2024-01-14 11:55+0000\n"
+"PO-Revision-Date: 2024-01-14 12:02\n"
 "Last-Translator: \n"
 "Language-Team: Latvian\n"
 "Language: lv_LV\n"
@@ -169,6 +169,22 @@ msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:141
 msgid "No more Tracking Code available using this pattern."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:29
+msgid "Failed to create the News."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:35
+msgid "Your News has been created."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/NewsEdit.php:19
+msgid "Failed to update the News."
+msgstr ""
+
+#: website/app/GeoKrety/Controller/Admin/NewsEdit.php:25
+msgid "Your News has been updated."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:29
@@ -481,6 +497,8 @@ msgstr "Pārvietošana noņemta."
 
 #: website/app/GeoKrety/Controller/Pages/NewsDetails.php:23
 #: website/app/GeoKrety/Controller/Pages/NewsDetails.php:31
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsLoader.php:15
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsLoader.php:21
 msgid "This news does not exist."
 msgstr ""
 
@@ -1349,6 +1367,7 @@ msgstr ""
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
 #: website/app-templates/smarty/dialog/picture_delete.tpl:15
 #: website/app-templates/smarty/dialog/user_update_email.tpl:52
+#: website/app-templates/smarty/dialog/admin_news_view.tpl:11
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:12
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
@@ -1464,6 +1483,7 @@ msgstr ""
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
 #: website/app-templates/smarty/forms/geokret.tpl:70
+#: website/app-templates/smarty/forms/admin_news.tpl:25
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 msgid "Save"
 msgstr ""
@@ -2177,6 +2197,29 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
+#: website/app-templates/smarty/forms/admin_news.tpl:3
+#: website/app-templates/smarty/admin/pages/news_create.tpl:3
+#: website/app-templates/smarty/admin/pages/news_list.tpl:7
+msgid "Create News"
+msgstr ""
+
+#: website/app-templates/smarty/forms/admin_news.tpl:8
+#: website/app-templates/smarty/forms/admin_news.tpl:10
+msgid "Title"
+msgstr ""
+
+#: website/app-templates/smarty/forms/admin_news.tpl:15
+msgid "Content"
+msgstr ""
+
+#: website/app-templates/smarty/forms/admin_news.tpl:17
+msgid "Write the News here"
+msgstr ""
+
+#: website/app-templates/smarty/forms/admin_news.tpl:26
+msgid "Save as Draft"
+msgstr ""
+
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
 msgstr "Identificçjiet GeoKret"
@@ -2754,7 +2797,7 @@ msgid "Rank"
 msgstr ""
 
 #: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:43
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:18
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:26
 msgid "No attributed awards yet."
 msgstr ""
 
@@ -3472,6 +3515,14 @@ msgstr ""
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:3
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:6
 msgid "All yearly rankings"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:10
+msgid "Since 2024, legacy badge \"top droppers\" has been renamed to \"top movers\" as it best match the underlying query."
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:11
+msgid "Since 2024, new \"top spreads\" badge appeared. It only counts \"drop\" movements."
 msgstr ""
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
@@ -4254,6 +4305,10 @@ msgstr ""
 msgid "Search"
 msgstr "Meklçt"
 
+#: website/app-templates/smarty/blocks/news_list.tpl:33
+msgid "No news match the current request."
+msgstr ""
+
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
 msgstr ""
@@ -4458,6 +4513,19 @@ msgstr ""
 #: website/app-templates/smarty/admin/pages/scripts.tpl:7
 msgid "Scripts management"
 msgstr ""
+
+#: website/app-templates/smarty/admin/pages/news_list.tpl:3
+#: website/app-templates/smarty/admin/pages/news_list.tpl:6
+msgid "Admin actions on News"
+msgstr ""
+
+#: website/app-templates/smarty/admin/pages/news_list.tpl:16
+msgid "View"
+msgstr ""
+
+#: website/app-templates/smarty/admin/pages/news_list.tpl:19
+msgid "Edit"
+msgstr "Edit"
 
 #: website/app-templates/smarty/js/_dropzone-local.inc.tpl.js:6
 msgid "Your upload exceeds the maximum allowed size."
