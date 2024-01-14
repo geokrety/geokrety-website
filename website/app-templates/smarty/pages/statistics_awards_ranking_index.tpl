@@ -7,7 +7,7 @@
 
     <div class="alert alert-info" role="alert">
         <ul>
-            <li>{t}Since 2024, legacy badge "top droppers" has been renamed to "top movers" as it best match the underlying query.{/t}</li>
+            <li>{t}Since 2024, legacy badge "top droppers" has been renamed to "top loggers" as it best match the underlying query.{/t}</li>
             <li>{t}Since 2024, new "top spreads" badge appeared. It only counts "drop" movements.{/t}</li>
         </ul>
     </div>
