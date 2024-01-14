@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-14 13:04+0000\n"
-"PO-Revision-Date: 2024-01-14 13:25\n"
+"PO-Revision-Date: 2024-01-14 17:08\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -173,19 +173,19 @@ msgstr "Não há mais Códigos de Seguimento disponíveis usando este padrão."
 
 #: website/app/GeoKrety/Controller/Admin/NewsCreate.php:29
 msgid "Failed to create the News."
-msgstr ""
+msgstr "Falha ao criar as Notícias."
 
 #: website/app/GeoKrety/Controller/Admin/NewsCreate.php:35
 msgid "Your News has been created."
-msgstr ""
+msgstr "A sua página Notícias foi criada."
 
 #: website/app/GeoKrety/Controller/Admin/NewsEdit.php:19
 msgid "Failed to update the News."
-msgstr ""
+msgstr "Falha ao actualizar Notícias."
 
 #: website/app/GeoKrety/Controller/Admin/NewsEdit.php:25
 msgid "Your News has been updated."
-msgstr ""
+msgstr "A sua página de Notícias foi actualizada."
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:29
 msgid "Rate limit has been reset"
@@ -936,7 +936,7 @@ msgstr "KretyPost"
 
 #: website/app/GeoKrety/LogType.php:117
 msgid "drop"
-msgstr "derrubar"
+msgstr "largar"
 
 #: website/app/GeoKrety/LogType.php:118
 msgid "grab"
@@ -2201,24 +2201,24 @@ msgstr "Crio"
 #: website/app-templates/smarty/admin/pages/news_create.tpl:3
 #: website/app-templates/smarty/admin/pages/news_list.tpl:7
 msgid "Create News"
-msgstr ""
+msgstr "Criar Notícias"
 
 #: website/app-templates/smarty/forms/admin_news.tpl:8
 #: website/app-templates/smarty/forms/admin_news.tpl:10
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: website/app-templates/smarty/forms/admin_news.tpl:15
 msgid "Content"
-msgstr ""
+msgstr "Conteúdo"
 
 #: website/app-templates/smarty/forms/admin_news.tpl:17
 msgid "Write the News here"
-msgstr ""
+msgstr "Escreva as Notícias aqui"
 
 #: website/app-templates/smarty/forms/admin_news.tpl:26
 msgid "Save as Draft"
-msgstr ""
+msgstr "Gravar como Rascunho"
 
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
@@ -2243,7 +2243,7 @@ msgstr "Quando você sair de um GeoKret em um cache"
 
 #: website/app-templates/smarty/forms/move.tpl:78
 msgid "I've dropped GeoKret"
-msgstr "Deixou um GeoKret"
+msgstr "Deixei um GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:84
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
@@ -2263,7 +2263,7 @@ msgstr "Conheceu um GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:98
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
-msgstr "Quando você participa de um GeoKret para um tour-cache; isto é o mesmo que fazer uma queda e depois agarrar - a localização visitada é registrada, mas GeoKret ainda está em seu inventário"
+msgstr "Quando leva um GeoKret para um passeio de caches; isto é o mesmo que largar e depois recolher- a localização visitada é registada, mas o GeoKret ainda está no seu inventário"
 
 #: website/app-templates/smarty/forms/move.tpl:99
 msgid "I've dipped a GeoKret"
@@ -3528,11 +3528,11 @@ msgstr "Todas as classificações anuais"
 
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:10
 msgid "Since 2024, legacy badge \"top droppers\" has been renamed to \"top loggers\" as it best match the underlying query."
-msgstr ""
+msgstr "Desde 2024, o distintivo antigo \"top de distribuidores\" foi renomeado para \"top de registadores\", por melhor corresponder à consulta subjacente."
 
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:11
 msgid "Since 2024, new \"top spreads\" badge appeared. It only counts \"drop\" movements."
-msgstr ""
+msgstr "Desde 2024, surgiu a nova medalha \"top de distribuidores\" . Apenas conta movimentos \"largado\"."
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
@@ -3545,7 +3545,7 @@ msgstr "Quando definir a localização da sua casa, o mini-mapa no seu perfil ir
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:22
 msgid "If you set the observation area to a value greater than 0, then GeoKrety dropped around you will be included in your daily mails (according to your global preferences)."
-msgstr "Se definir a área de observação para um valor maior que 0, então os GeoKrety deixados perto de si serão incluídos nos seus e-mails diários (de acordo com as suas preferências globais)."
+msgstr "Se definir a área de observação para um valor maior que 0, então os GeoKrety deixados perto de si serão incluídos nos seus e-mails diários (conforme as suas preferências globais)."
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:30
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:31
@@ -3677,7 +3677,7 @@ msgstr "Hotéis / motels do GeoKrety"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:74
 msgid "A GeoKrety hotel/motel is an easy-to-reach cache, close to an airport/motorway/railroad station, big enough to host some GeoKrety. Cachers may grab or drop GeoKrety. By now, on the OC system, we have registered following GK (or GK/TB) hotels/motels:"
-msgstr "Um hotel/motel GeoKrety é um cache fácil de alcançar, perto de um aeroporto/auto-estrada/estação ferroviária, grande o suficiente para hospedar algum GeoKrety. O Cachers pode pegar ou soltar GeoKrety. Por enquanto, no sistema OC, nós nos registramos seguindo hotéis GK (ou GK/TB):"
+msgstr "Um hotel/motel GK é uma cache de fácil acesso, perto de um aeroporto/autoestrada/estação de comboio, suficientemente grande para alojar alguns GeoKrety. GeoCachers podem recolher ou largar GeoKrety. Por enquanto, no sistema OC, registámos os seguintes hotéis GK (ou GK/TB):"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:76
 msgid "Current GK-Hotels/Motels"
@@ -4316,7 +4316,7 @@ msgstr "Pesquisa"
 
 #: website/app-templates/smarty/blocks/news_list.tpl:33
 msgid "No news match the current request."
-msgstr ""
+msgstr "Nenhuma notícia corresponde ao pedido actual."
 
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
@@ -4526,11 +4526,11 @@ msgstr "Gestor de scripts"
 #: website/app-templates/smarty/admin/pages/news_list.tpl:3
 #: website/app-templates/smarty/admin/pages/news_list.tpl:6
 msgid "Admin actions on News"
-msgstr ""
+msgstr "Acções de administrador em Notícias"
 
 #: website/app-templates/smarty/admin/pages/news_list.tpl:16
 msgid "View"
-msgstr ""
+msgstr "Ver"
 
 #: website/app-templates/smarty/admin/pages/news_list.tpl:19
 msgid "Edit"
