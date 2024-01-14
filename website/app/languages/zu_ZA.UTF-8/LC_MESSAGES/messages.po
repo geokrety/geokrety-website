@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-10 21:01+0000\n"
-"PO-Revision-Date: 2024-01-10 21:05\n"
+"POT-Creation-Date: 2024-01-14 11:55+0000\n"
+"PO-Revision-Date: 2024-01-14 12:02\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -170,6 +170,22 @@ msgstr "crwdns53209:0crwdne53209:0"
 #: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:141
 msgid "No more Tracking Code available using this pattern."
 msgstr "crwdns53211:0crwdne53211:0"
+
+#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:29
+msgid "Failed to create the News."
+msgstr "crwdns64976:0crwdne64976:0"
+
+#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:35
+msgid "Your News has been created."
+msgstr "crwdns64978:0crwdne64978:0"
+
+#: website/app/GeoKrety/Controller/Admin/NewsEdit.php:19
+msgid "Failed to update the News."
+msgstr "crwdns64980:0crwdne64980:0"
+
+#: website/app/GeoKrety/Controller/Admin/NewsEdit.php:25
+msgid "Your News has been updated."
+msgstr "crwdns64982:0crwdne64982:0"
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:29
 msgid "Rate limit has been reset"
@@ -481,6 +497,8 @@ msgstr "crwdns53347:0crwdne53347:0"
 
 #: website/app/GeoKrety/Controller/Pages/NewsDetails.php:23
 #: website/app/GeoKrety/Controller/Pages/NewsDetails.php:31
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsLoader.php:15
+#: website/app/GeoKrety/Controller/Pages/Traits/NewsLoader.php:21
 msgid "This news does not exist."
 msgstr "crwdns62181:0crwdne62181:0"
 
@@ -1349,6 +1367,7 @@ msgstr "crwdns54057:0crwdne54057:0"
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
 #: website/app-templates/smarty/dialog/picture_delete.tpl:15
 #: website/app-templates/smarty/dialog/user_update_email.tpl:52
+#: website/app-templates/smarty/dialog/admin_news_view.tpl:11
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:12
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
@@ -1464,6 +1483,7 @@ msgstr "crwdns54147:0%1crwdne54147:0"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
 #: website/app-templates/smarty/forms/geokret.tpl:70
+#: website/app-templates/smarty/forms/admin_news.tpl:25
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 msgid "Save"
 msgstr "crwdns53771:0crwdne53771:0"
@@ -2177,6 +2197,29 @@ msgstr "crwdns53769:0crwdne53769:0"
 msgid "Create"
 msgstr "crwdns53773:0crwdne53773:0"
 
+#: website/app-templates/smarty/forms/admin_news.tpl:3
+#: website/app-templates/smarty/admin/pages/news_create.tpl:3
+#: website/app-templates/smarty/admin/pages/news_list.tpl:7
+msgid "Create News"
+msgstr "crwdns64984:0crwdne64984:0"
+
+#: website/app-templates/smarty/forms/admin_news.tpl:8
+#: website/app-templates/smarty/forms/admin_news.tpl:10
+msgid "Title"
+msgstr "crwdns64986:0crwdne64986:0"
+
+#: website/app-templates/smarty/forms/admin_news.tpl:15
+msgid "Content"
+msgstr "crwdns64988:0crwdne64988:0"
+
+#: website/app-templates/smarty/forms/admin_news.tpl:17
+msgid "Write the News here"
+msgstr "crwdns64990:0crwdne64990:0"
+
+#: website/app-templates/smarty/forms/admin_news.tpl:26
+msgid "Save as Draft"
+msgstr "crwdns64992:0crwdne64992:0"
+
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
 msgstr "crwdns53677:0crwdne53677:0"
@@ -2754,7 +2797,7 @@ msgid "Rank"
 msgstr "crwdns54539:0crwdne54539:0"
 
 #: website/app-templates/smarty/pages/statistics_awards_ranking.tpl:43
-#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:18
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:26
 msgid "No attributed awards yet."
 msgstr "crwdns54541:0crwdne54541:0"
 
@@ -3473,6 +3516,14 @@ msgstr "crwdns54635:0crwdne54635:0"
 #: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:6
 msgid "All yearly rankings"
 msgstr "crwdns54627:0crwdne54627:0"
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:10
+msgid "Since 2024, legacy badge \"top droppers\" has been renamed to \"top movers\" as it best match the underlying query."
+msgstr "crwdns64994:0crwdne64994:0"
+
+#: website/app-templates/smarty/pages/statistics_awards_ranking_index.tpl:11
+msgid "Since 2024, new \"top spreads\" badge appeared. It only counts \"drop\" movements."
+msgstr "crwdns64996:0crwdne64996:0"
 
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:3
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:11
@@ -4254,6 +4305,10 @@ msgstr "crwdns53901:0crwdne53901:0"
 msgid "Search"
 msgstr "crwdns53903:0crwdne53903:0"
 
+#: website/app-templates/smarty/blocks/news_list.tpl:33
+msgid "No news match the current request."
+msgstr "crwdns64998:0crwdne64998:0"
+
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
 msgstr "crwdns54017:0crwdne54017:0"
@@ -4458,6 +4513,19 @@ msgstr "crwdns55003:0crwdne55003:0"
 #: website/app-templates/smarty/admin/pages/scripts.tpl:7
 msgid "Scripts management"
 msgstr "crwdns55011:0crwdne55011:0"
+
+#: website/app-templates/smarty/admin/pages/news_list.tpl:3
+#: website/app-templates/smarty/admin/pages/news_list.tpl:6
+msgid "Admin actions on News"
+msgstr "crwdns65000:0crwdne65000:0"
+
+#: website/app-templates/smarty/admin/pages/news_list.tpl:16
+msgid "View"
+msgstr "crwdns65002:0crwdne65002:0"
+
+#: website/app-templates/smarty/admin/pages/news_list.tpl:19
+msgid "Edit"
+msgstr "crwdns65004:0crwdne65004:0"
 
 #: website/app-templates/smarty/js/_dropzone-local.inc.tpl.js:6
 msgid "Your upload exceeds the maximum allowed size."
