@@ -16,7 +16,7 @@ return [
     'mark_generated_migration' => true,
     'migration_base_class' => \Phinx\Migration\AbstractMigration::class,
     'environments' => [
-        'default_database' => 'local',
+        'default_environment' => 'local',
         'local' => [
             // Database name
             'name' => GK_DB_NAME,
