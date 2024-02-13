@@ -91,6 +91,7 @@ class UserEmailChangeToken extends Base {
         // Save the new email
         $this->token->user->set_email($this->token->email);
         $this->token->user->email_invalid = User::USER_EMAIL_NO_ERROR;
+        $this->token->user->account_valid = User::USER_ACCOUNT_VALID;
 
         if (!$this->token->user->validate()) {
             $this->get($f3);

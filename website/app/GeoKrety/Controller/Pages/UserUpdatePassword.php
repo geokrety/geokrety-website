@@ -56,6 +56,7 @@ class UserUpdatePassword extends Base {
         // Save new password
         $user->password = $password_new;
         $user->email_invalid = User::USER_EMAIL_NO_ERROR;
+        $user->account_valid = User::USER_ACCOUNT_VALID;
         if ($user->validate()) {
             $user->save();
 
