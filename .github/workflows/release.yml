@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   pre-commit:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/pre-commit_php.yml@main
