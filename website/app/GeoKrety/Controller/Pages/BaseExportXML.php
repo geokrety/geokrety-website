@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidArgumentException;
+use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
 
 class BaseExportXML extends BaseExport {
@@ -93,6 +94,8 @@ class BaseExportXML extends BaseExport {
         } else {
             $this->setFilter('waypoint = ?', $wpt);
         }
+        // Ensure "present in cache" filter
+        $this->setFilter('move_type IN ?', LogType::LOG_TYPES_THEORETICALLY_IN_CACHE);
     }
 
     protected function checkRequiredFilter() {

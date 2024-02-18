@@ -63,7 +63,7 @@ abstract class BaseExport extends BaseXML {
         }
 
         return [
-            implode('AND ', $this->filter[0]),
+            implode(' AND ', $this->filter[0]),
             ...$this->filter[1],
         ];
     }

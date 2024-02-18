@@ -95,6 +95,15 @@ Search By Waypoint
     Count GeoKrety Element                /export2.php?wpt=${MOVE_4.waypoint}   0
     Count GeoKrety Element                /export2.php?wpt=${MOVE_6.waypoint}   0
 
+    # Ensure dipped GeoKrety are not present (https://github.com/cgeo/cgeo/issues/15263)
+    Post Move                             ${MOVE_6}
+    Count GeoKrety Element                /export2.php?wpt=${MOVE_1.waypoint}   0
+    Count GeoKrety Element                /export2.php?wpt=${MOVE_4.waypoint}   0
+    Count GeoKrety Element                /export2.php?wpt=${MOVE_6.waypoint}   0
+
+    # Reset database
+    [Teardown]    Suite Setup
+
 Search By Coordinates
     Count GeoKrety Element                /export2.php?lonSW=6.9&latSW=43.5&lonNE=7.1&latNE=43.7    1
     Count GeoKrety Element                /export2.php?lonSW=8&latSW=43.5&lonNE=8.1&latNE=43.7      0
