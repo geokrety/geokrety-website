@@ -22,8 +22,15 @@ jobs:
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
+  integration-tests:
+    uses: ./.github/workflows/robot-framework.yml
+    needs: pre-commit
+
   build-release:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/semantic-release.yml@main
-    needs: docker
+    needs:
+      - docker
+      # # Uncomment to set mandatory
+      # - integration-tests
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}

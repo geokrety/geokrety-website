@@ -10,10 +10,12 @@ on:
       - l10n_new-theme
   push:
     branches-ignore:
+      - main
       - master
       - l10n_main
       - l10n_master
       - l10n_new-theme
+  workflow_call:
 
 env:
   PGUSER: geokrety
