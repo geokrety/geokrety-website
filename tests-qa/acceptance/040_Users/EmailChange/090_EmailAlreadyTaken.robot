@@ -34,7 +34,7 @@ Email address already PENDING by another user
     Email Change                            ${USER_3.email}    ${TRUE}
     Flash message shown                     Sorry but this mail address is already in use.
 
-*** Keyword ***
+*** Keywords ***
 
 Test Setup
     Clear Database And Seed ${2} users

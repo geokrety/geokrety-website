@@ -51,7 +51,7 @@ Token is then disabled for new email
     Click Link With Text                    Validate your new email address
     Flash message shown                     Sorry this token is not valid, already used or expired.
 
-*** Keyword ***
+*** Keywords ***
 
 Test Setup
     Clear Database And Seed ${1} users

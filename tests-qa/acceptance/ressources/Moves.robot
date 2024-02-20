@@ -27,8 +27,8 @@ ${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}             //button[@data-type="move-co
 *** Keywords ***
 
 Get Move ${id} XPath
-    [Return]    ${xpath}
     ${xpath} =    Replace Variables    ${GEOKRET_DETAILS_MOVE_X}
+    RETURN    ${xpath}
 
 Post Move
     [Arguments]    ${move}
