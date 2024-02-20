@@ -29,12 +29,13 @@ ${HEADLESS}              ${True}
     Log       Open Browser Firefox
 
     ${firefox_options} =     Evaluate    sys.modules['selenium.webdriver'].firefox.webdriver.Options()    sys, selenium.webdriver
+    Call Method    ${firefox_options}   set_preference    strictFileInteractability    ${FALSE}
+    Call Method    ${firefox_options}   set_preference    timezone    UTC-05:00
+
     Run Keyword If      ${HEADLESS}
     ...                 Call Method    ${firefox_options}   add_argument    -headless
-    ${dc}   Evaluate    sys.modules['selenium.webdriver'].DesiredCapabilities.FIREFOX  sys, selenium.webdriver
-    Set To Dictionary   ${dc}      strictFileInteractability=${FALSE}
-    Set To Dictionary   ${dc}      timezone=UTC-05:00
-    Create Webdriver    Firefox    options=${firefox options}    desired_capabilities=${dc}
+
+    Create Webdriver    Firefox    options=${firefox options}
 
 # !Open GeoKrety Browser Chrome
 #     [Tags]    robot:private
