@@ -222,8 +222,8 @@ jobs:
 
       - name: Deploy
         env:
-          super_secret: ${{ secrets.QA_TEST_DEPLOY_KEY }}
-        if: "${{ always() && env.QA_TEST_DEPLOY_KEY != '' }}"
+          QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY }}
+        if: always() && env.QA_TEST_DEPLOY_KEY != ''
         continue-on-error: true
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -240,8 +240,8 @@ jobs:
 
       - name: Show report URL
         env:
-          super_secret: ${{ secrets.QA_TEST_DEPLOY_KEY }}
-        if: "${{ always() && env.QA_TEST_DEPLOY_KEY != '' }}"
+          QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY }}
+        if: always() && env.QA_TEST_DEPLOY_KEY != ''
         continue-on-error: true
         run: |
           echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html
