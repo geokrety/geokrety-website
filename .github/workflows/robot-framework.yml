@@ -162,10 +162,6 @@ jobs:
 
       - name: Install Firefox
         run: |
-          if command -v firefox; then
-            echo "Already available. Skip install…"
-            exit 0
-          fi
           sudo tee -a "/etc/apt/preferences.d/mozilla-firefox" > /dev/null << EOF
           Package: *
           Pin: release o=LP-PPA-mozillateam
