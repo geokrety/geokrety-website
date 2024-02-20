@@ -133,9 +133,9 @@ Go To Url Fast
 
 Get Url With Param
     [Arguments]    ${url}    &{params}
-    [Return]    ${url_}
     ${url_} =                  Replace Variables    ${url}
     ${url_} =                  Requote Uri          ${url_}
+    RETURN    ${url_}
 
 Location Should Not Be
     [Arguments]    ${url}

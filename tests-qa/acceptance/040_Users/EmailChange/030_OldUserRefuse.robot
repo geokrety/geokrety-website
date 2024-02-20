@@ -32,14 +32,13 @@ Once decision taken, token is disabled - new user
     Click Link With Text                    Validate your new email address
     Flash message shown                     Sorry this token is not valid, already used or expired.
 
-*** Keyword ***
+*** Keywords ***
+
 Refuse change
     Email Change                            ${NEW_MAIL}    ${TRUE}
     Go To Url                               ${PAGE_DEV_MAILBOX_FIRST_MAIL_URL}
     Click Link With Text                    Do not change!
     Click Button                            ${USER_EMAIL_VALIDATION_REFUSE_BUTTON}
-
-*** Keywords ***
 
 Test Setup
     Clear Database And Seed ${1} users

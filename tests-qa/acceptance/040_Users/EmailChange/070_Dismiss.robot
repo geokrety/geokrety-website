@@ -25,14 +25,13 @@ Once decision taken, token is disabled - new user
     Click Link With Text                    Validate your new email address
     Page Should Not Contain                 Sorry this token is not valid, already used or expired.
 
-*** Keyword ***
+*** Keywords ***
+
 Dismiss Button
     Email Change                            ${NEW_MAIL}    ${TRUE}
     Go To Url                               ${PAGE_DEV_MAILBOX_SECOND_MAIL_URL}
     Click Link With Text                    Validate your new email address
     Click Link                              ${USER_EMAIL_VALIDATION_DISMISS_BUTTON}
-
-*** Keyword ***
 
 Test Setup
     Clear Database And Seed ${1} users

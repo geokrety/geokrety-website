@@ -23,7 +23,7 @@ Disable daily mails
     # Change daily mail preferences           ${FALSE}
     Flash message shown                     Your email preferences were saved.
 
-*** Keyword ***
+*** Keywords ***
 
 Test Setup
     Clear Database
