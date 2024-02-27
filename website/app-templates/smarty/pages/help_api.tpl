@@ -56,6 +56,7 @@
             <li><a href="#responses">responses</a></li>
             <li><a href="#application">Application name/version</a></li>
             <li><a href="#scriptsamples">Scripts samples</a></li>
+            <li><a href="#apiratelimit">Rate Limits</a></li>
         </ol>
     </li>
 </ol>
@@ -414,5 +415,41 @@ var_dump($gk);
             <li>phpGK (php)</li>
         </ul>
     </div>
+</div>
+
+<h3>Rate Limits</h3>
+<a class="anchor" id="apiratelimit"></a>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p>In order to protect our service from abuse/misbehaving client… We have rate limiting in place.</p>
+        <p>If you hit a rate limit, we wil respond with the usual http code <code>429</code>.</p>
+        <p>A first set of rule limit the request rate per minutes, for any pages.</p>
+        <p>A second set of rule limit the API calls over a period of time. We're using the <a href="https://en.wikipedia.org/wiki/Leaky_bucket" target="_blank">Leaky Bucket Algorithm</a>.</p>
+        <blockquote  cite="https://en.wikipedia.org/wiki/Leaky_bucket">
+            The leaky bucket analogy. Water can be added intermittently to the bucket, which leaks out at a constant
+            rate until empty, and will also overflow when full.
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Leaky_bucket_analogy.svg" class="img-responsive" width="170" height="240">
+        </blockquote>
+        <p>The limits are set per IP or per secid depending if the call is authenticated or not.</p>
+        <p>
+            Your current API usage is available in the headers of each API call. You can also get your current Rate Limit usage using this endpoint:
+        </p>
+        <ul>
+            <li>Anonymous: <a href="{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage">{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage</a></li>
+            <li>Authenticated: <a href="{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage?secid=&lt;secid_here&gt;">{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage?secid=&lt;secid_here&gt;</a></li>
+        </ul>
+        <pre><code class="language-xml">{$rate_limit_usage}</code></pre>
+    </div>
+    <p>Current API rate limits are:</p>
+    <ul>
+        {foreach GK_RATE_LIMITS as $limit => $values}
+            <li>{$limit}
+                <ul>
+                    <li>max requests: {$values[0]}</li>
+                    <li>period: {$values[1]}s</li>
+                </ul>
+            </li>
+        {/foreach}
+    </ul>
 </div>
 {/block}

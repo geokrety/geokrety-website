@@ -370,7 +370,7 @@ class Config extends \Prefab {
         define('GK_RATE_LIMITS', [
             'API_LEGACY_MOVE_POST' => [1500, 60 * 60 * 24], // 1500/day
             'API_LEGACY_PICTURE_PROXY' => [5000, 60 * 60 * 24], // 5000/day
-            'API_V1_CHECK_RATE_LIMIT' => [250, 60 * 60 * 24], // 25/day
+            'API_V1_CHECK_RATE_LIMIT' => [250, 60 * 60 * 24], // 250/day
             'API_V1_LOGIN_2_SECID' => [25, 60 * 60 * 24], // 25/day
             'API_V1_EXPORT2' => [1500, 60 * 60 * 24], // 1500/day
             'API_V1_EXPORT' => [12, 60], // 12/minute
