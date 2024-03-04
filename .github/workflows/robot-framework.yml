@@ -35,7 +35,7 @@ jobs:
 #        uses: raven-actions/debug@v1
 
   robot-framework:
-    if: "${{ (github.event_name == 'push' || github.event.pull_request.merged == true) && !contains(github.event.head_commit.message, 'skip tests-qa') }}"
+    if: "${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.pull_request.merged == true) && !contains(github.event.head_commit.message, 'skip tests-qa') }}"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
