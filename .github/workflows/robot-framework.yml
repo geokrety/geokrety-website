@@ -28,11 +28,11 @@ env:
   APT_INSTALL: sudo apt-get -qq install -qq -o=Dpkg::Use-Pty=0 -y
 
 jobs:
-#  debug:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Debug
-#        uses: raven-actions/debug@v1
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug
+        uses: raven-actions/debug@v1
 
   robot-framework:
     if: "${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.pull_request.merged == true) && !contains(github.event.head_commit.message, 'skip tests-qa') }}"
