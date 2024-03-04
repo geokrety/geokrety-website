@@ -16,6 +16,7 @@ on:
       - l10n_master
       - l10n_new-theme
   workflow_call:
+  workflow_dispatch:
 
 env:
   PGUSER: geokrety
