@@ -2053,16 +2053,16 @@
         },
         {
             "name": "league/geotools",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/geotools.git",
-                "reference": "489e9a1c7a3de8e1aed380ced90dde25c4ca12e5"
+                "reference": "96055a8a4ffb50f48f2ba159e3f00fd61c22e1a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/geotools/zipball/489e9a1c7a3de8e1aed380ced90dde25c4ca12e5",
-                "reference": "489e9a1c7a3de8e1aed380ced90dde25c4ca12e5",
+                "url": "https://api.github.com/repos/thephpleague/geotools/zipball/96055a8a4ffb50f48f2ba159e3f00fd61c22e1a5",
+                "reference": "96055a8a4ffb50f48f2ba159e3f00fd61c22e1a5",
                 "shasum": ""
             },
             "require": {
@@ -2074,9 +2074,9 @@
                 "psr/cache": "^1.0 || ^2.0 || ^3.0",
                 "react/event-loop": "^1.0",
                 "react/promise": "^2.8",
-                "symfony/console": "^4.4 || ^5.0 || ^6.0",
-                "symfony/property-access": "^4.4 || ^5.0 || ^6.0",
-                "symfony/serializer": "^4.4 || ^5.0 || ^6.0",
+                "symfony/console": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/property-access": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/serializer": "^4.4 || ^5.0 || ^6.0 || ^7.0",
                 "willdurand/geocoder": "^4.5"
             },
             "replace": {
@@ -2091,8 +2091,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "League\\Geotools\\": "src",
-                    "League\\Geotools\\Tests\\": "tests"
+                    "League\\Geotools\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2128,7 +2127,7 @@
                 "issues": "https://github.com/thephpleague/geotools/issues",
                 "source": "https://github.com/thephpleague/geotools"
             },
-            "time": "2022-10-26T19:43:53+00:00"
+            "time": "2024-03-14T22:24:18+00:00"
         },
         {
             "name": "matomo/matomo-php-tracker",
@@ -5664,16 +5663,16 @@
         },
         {
             "name": "symfony/serializer",
-            "version": "v5.4.35",
+            "version": "v5.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/serializer.git",
-                "reference": "02acd86290077dab2f12ae91b3e9f141c079d84c"
+                "reference": "05137a513f4c5a5e56ffbcf53847a93284b49f67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/serializer/zipball/02acd86290077dab2f12ae91b3e9f141c079d84c",
-                "reference": "02acd86290077dab2f12ae91b3e9f141c079d84c",
+                "url": "https://api.github.com/repos/symfony/serializer/zipball/05137a513f4c5a5e56ffbcf53847a93284b49f67",
+                "reference": "05137a513f4c5a5e56ffbcf53847a93284b49f67",
                 "shasum": ""
             },
             "require": {
@@ -5747,7 +5746,7 @@
             "description": "Handles serializing and deserializing data structures, including object graphs, into array structures or other formats like XML and JSON.",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/serializer/tree/v5.4.35"
+                "source": "https://github.com/symfony/serializer/tree/v5.4.36"
             },
             "funding": [
                 {
@@ -5763,7 +5762,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-30T08:00:51+00:00"
+            "time": "2024-02-22T18:40:43+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -7321,7 +7320,6 @@
     "stability-flags": {
         "benhall14/php-pagination": 20,
         "ikkez/f3-opauth": 20,
-        "league/geotools": 0,
         "s1lentium/iptools": 20
     },
     "prefer-stable": true,
