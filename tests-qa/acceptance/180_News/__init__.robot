@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     News
+Force Tags     News    Group6

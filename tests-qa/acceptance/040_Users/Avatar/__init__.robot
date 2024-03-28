@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      Pictures
+Force Tags      Pictures    Group4

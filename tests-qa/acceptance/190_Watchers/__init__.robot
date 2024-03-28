@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Watchers
+Force Tags     Watchers    Group7

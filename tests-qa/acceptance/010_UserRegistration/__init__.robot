@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     CreateAccount
+Force Tags     CreateAccount    Group2

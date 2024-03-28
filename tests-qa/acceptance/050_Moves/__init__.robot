@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Moves
+Force Tags     Moves    Group4

@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Gallery
+Force Tags     Gallery    Group9

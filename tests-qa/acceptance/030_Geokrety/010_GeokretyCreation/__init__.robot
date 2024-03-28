@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Create GeoKrety
+Force Tags     Create GeoKrety    Group1

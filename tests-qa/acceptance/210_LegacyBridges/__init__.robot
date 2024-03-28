@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Legacy Bridges
+Force Tags     Legacy Bridges    Group9

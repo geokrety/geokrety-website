@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Sign In
+Force Tags     Sign In    Group3

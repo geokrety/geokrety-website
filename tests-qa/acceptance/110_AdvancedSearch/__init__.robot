@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Search
+Force Tags     Search    Group10

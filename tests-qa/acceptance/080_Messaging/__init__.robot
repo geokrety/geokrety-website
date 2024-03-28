@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Messaging
+Force Tags     Messaging    Group7    Group8

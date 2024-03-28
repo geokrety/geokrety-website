@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      Email Change
+Force Tags      Email Change    Group6
