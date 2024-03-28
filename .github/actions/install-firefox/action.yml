@@ -1,0 +1,29 @@
+name: Install Firefox
+
+runs:
+  using: composite
+  steps:
+
+    - name: Configure ppa:mozillateam/ppa repository
+      shell: bash
+      run: |
+        sudo tee -a "/etc/apt/preferences.d/mozilla-firefox" > /dev/null << EOF
+        Package: *
+        Pin: release o=LP-PPA-mozillateam
+        Pin-Priority: 1001
+        EOF
+        sudo add-apt-repository -y ppa:mozillateam/ppa
+        sudo apt update
+
+    - name: Ensure available fonts on system for Robot Framework/Firefox
+      shell: bash
+      run: |
+        ${APT_INSTALL} firefox \
+          ttf-bitstream-vera \
+          fonts-urw-base35
+
+    - name: Install geckodriver
+      shell: bash
+      run: |
+        cd tests-qa
+        make download_geckodriver

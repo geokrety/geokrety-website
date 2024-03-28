@@ -1,5 +1,11 @@
 LOCAL_COMPOSE=docker-compose.local.yml
+GK_INSTANCE_ID ?= 0
+GK_INSTANCE_COUNT ?= 1
+CONTAINER ?=
+DOCKER_COMPOSE_PARAMS ?=
+DOCKER_COMPOSE_ACTION ?=
 PTY_PREFIX=
+SHELL=/bin/bash
 ifeq (Windows_NT, ${OS})
 	PTY_PREFIX=winpty
 endif
@@ -100,15 +106,45 @@ pictures-import-legacy-to-s3: ## Automatically fetch pictures from legacy urls
 #	mkdir -p ./website/templates
 build: ## build local docker compose
 	docker compose -f ${LOCAL_COMPOSE} build --build-arg GIT_COMMIT=local
-up: ## run local docker compose of geokrety containers
-	docker compose -f ${LOCAL_COMPOSE} -p gkdev up -d && echo "GeoKety is available at http://localhost:3001"
-down: ## stop local docker compose of geokrety containers
-	docker compose -f ${LOCAL_COMPOSE} -p gkdev down
-ps: ## list geokrety docker containers and names, status, and ids
-	docker compose -f ${LOCAL_COMPOSE} -p gkdev ps
-logs: ## get local webapp containers logs
-	docker logs gkdev-website-1
-tail: ## tail local webapp containers log
-	docker logs -f gkdev-website-1
-shell: ## sh webapp containers
-	${PTY_PREFIX} docker exec -ti gkdev-website-1 bash
+up-single: ## run local docker compose of geokrety containers
+	((GK_INSTANCE_ID = $(GK_INSTANCE_ID) + 10)) ; \
+	docker compose -f ${LOCAL_COMPOSE} -p gkdev$(GK_INSTANCE_ID) $(DOCKER_COMPOSE_PARAMS) up -d --no-build $(CONTAINER)
+down-single: ## stop local docker compose of geokrety containers
+	docker compose -f ${LOCAL_COMPOSE} -p gkdev$(GK_INSTANCE_ID) down $(DOCKER_COMPOSE_PARAMS)
+ps-single: ## list geokrety docker containers and names, status, and ids
+	docker compose -f ${LOCAL_COMPOSE} -p gkdev$(GK_INSTANCE_ID) ps $(DOCKER_COMPOSE_PARAMS)
+kill-single: ## send kill to local docker compose of geokrety containers
+	docker compose -f ${LOCAL_COMPOSE} -p gkdev$(GK_INSTANCE_ID) kill $(DOCKER_COMPOSE_PARAMS)
+logs-single: ## get local webapp containers logs
+	CONTAINER="$(CONTAINER)"; \
+	[ -n "${CONTAINER}" ] || CONTAINER=website; \
+	docker logs gkdev$(GK_INSTANCE_ID)-$${CONTAINER}-1
+tail-single: ## tail local webapp containers log
+	docker logs -f gkdev$(GK_INSTANCE_ID)-website-1
+shell-single: ## sh webapp containers
+	${PTY_PREFIX} docker exec -ti gkdev$(GK_INSTANCE_ID)-website-1 bash
+
+_compose_action:
+	for i in $(shell seq 1 $(GK_INSTANCE_COUNT)); do \
+		((j = $$i - 1)) ; \
+		make $(DOCKER_COMPOSE_ACTION) GK_INSTANCE_ID=$$j CONTAINER="$(CONTAINER)" DOCKER_COMPOSE_PARAMS="$(DOCKER_COMPOSE_PARAMS)"; \
+	done
+
+_compose_action_parallel:
+	for i in $(shell seq 1 $(GK_INSTANCE_COUNT)); do \
+		((j = $$i - 1)) ; \
+		echo make $(DOCKER_COMPOSE_ACTION) GK_INSTANCE_ID=$$j CONTAINER=\"$(CONTAINER)\" DOCKER_COMPOSE_PARAMS=\"$(DOCKER_COMPOSE_PARAMS)\"; \
+	done | parallel
+
+up: ## start <GK_INSTANCE_COUNT> of docker stack
+	make _compose_action_parallel DOCKER_COMPOSE_ACTION=up-single CONTAINER="$(CONTAINER)" DOCKER_COMPOSE_PARAMS="$(DOCKER_COMPOSE_PARAMS)"
+down: ## stop <GK_INSTANCE_COUNT> of docker stack
+	make _compose_action_parallel DOCKER_COMPOSE_ACTION=down-single CONTAINER="$(CONTAINER)" DOCKER_COMPOSE_PARAMS="$(DOCKER_COMPOSE_PARAMS)"
+kill: ## kill <GK_INSTANCE_COUNT> of docker stack
+	make _compose_action_parallel DOCKER_COMPOSE_ACTION=kill-single CONTAINER="$(CONTAINER)" DOCKER_COMPOSE_PARAMS="$(DOCKER_COMPOSE_PARAMS)"
+ps: ## stop <GK_INSTANCE_COUNT> of docker stack
+	make _compose_action DOCKER_COMPOSE_ACTION=ps-single CONTAINER="$(CONTAINER)" DOCKER_COMPOSE_PARAMS="$(DOCKER_COMPOSE_PARAMS)"
+logs: ## stop <GK_INSTANCE_COUNT> of docker stack
+	make _compose_action DOCKER_COMPOSE_ACTION=logs-single CONTAINER="$(CONTAINER)" DOCKER_COMPOSE_PARAMS="$(DOCKER_COMPOSE_PARAMS)"
+
+# ${DOCKER_COMPOSE} up -d --no-build postgres

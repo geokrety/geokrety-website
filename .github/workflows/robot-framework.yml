@@ -9,217 +9,235 @@ on:
   workflow_dispatch:
 
 env:
+  DOCKER_COMPOSE: docker compose -p gkdev0 -f docker-compose.local.yml --progress plain
+  APT_INSTALL: sudo apt-get -qq install -qq -o=Dpkg::Use-Pty=0 -y
+  GK_INSTANCE_COUNT: 3
+  SHARD_COUNT: 7
   PGUSER: geokrety
   PGPASSWORD: geokrety
   PGDATABASE: geokrety
   PGHOST: localhost
-  PGPORT: 5433
-  DOCKER_COMPOSE: docker compose -p gk -f docker-compose.local.yml --progress quiet
-  APT_INSTALL: sudo apt-get -qq install -qq -o=Dpkg::Use-Pty=0 -y
+  PGPORT: 5106
+  GK_FQDN: localhost
+  SHORT_REF: ${{ github.head_ref }}
 
 permissions:
   pull-requests: write
 
 jobs:
-  debug:
+  robot-framework:
+    if: "${{ ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        SHARD_ID: [1, 2, 3, 4, 5, 6, 7]
+
+    env:
+      SHARD_ID: ${{ matrix.SHARD_ID }}
+
     steps:
       - name: Debug
         uses: raven-actions/debug@v1
 
-  robot-framework:
-    if: "${{ ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set output
-        id: vars
+      - name: Find node IP
+        uses: ./.github/actions/find-node-ip/
+
+      - name: Start selenoid
+        uses: ./.github/actions/start-selenoid/
+
+      - name: Build website image
+        uses: ./.github/actions/build-website-image/
+        with:
+          prepare-only: true
+
+      - name: Pull docker images (background)
+        shell: bash
         run: |
-          echo "short_ref=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
-          git status
+          ${DOCKER_COMPOSE} pull --ignore-buildable &
+
+      - name: Install Robot Framework
+        run: |
+          echo "::group::Install RobotFramework"
+          pip3 install -r tests-qa/requirements.txt &
+          echo "::endgroup::"
 
       - name: Configure Sentry
+        shell: bash
         run: |
           echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
           echo "SENTRY_ENV=dev.githubaction" >> .env
 
-      - name: Install tools
+      - name: Set output
+        id: vars
         run: |
-          sudo apt-get update
-          ${APT_INSTALL} postgresql-client postgis httping
+          # github.head_ref=${{ github.head_ref }}
+          # github.ref=${{ github.ref }}
+          # short_ref="${{ github.head_ref || github.ref }}"
+          # echo "short_ref=${short_ref#refs/*/}" >> $GITHUB_OUTPUT
+          # echo "SHORT_REF=${short_ref#refs/*/}" >> $GITHUB_ENV
+          # git status
 
-      - name: Cache PUBLIC data
-        uses: actions/cache@v4
+      - name: Start Postgres
+        uses: ./.github/actions/start-postgres/
         with:
-          path: ./website/db/dumps/11_public-data.sql
-          key: public-data-cache
-          restore-keys: |
-            public-data-cache
+          wait-started: false
+          prepare-only: true
 
-      - name: Cache SRTM data
-        uses: actions/cache@v4
+      - name: Build website image
+        uses: ./.github/actions/build-website-image/
+
+      - name: Start Docker stack(s)
+        uses: ./.github/actions/docker-stack-start/
+
+      # - name: Install Firefox
+      #   uses: ./.github/actions/install-firefox/
+
+      # - name: Install Robot Framework
+      #   uses: ./.github/actions/install-robot-framework/
+
+      - name: Run Robot Framework
+        id: tests-qa
+        env:
+          AUTO_REMOTE_URL: true
+        uses: ./.github/actions/run-robot-framework/
+
+      - name: Kill the docker stack(s)
+        if: always()
+        continue-on-error: true
+        run: |
+          make kill DOCKER_COMPOSE_PARAMS="-s SIGKILL" &
+
+      - name: Upload results
+        if: ${{ always() && steps.tests-qa.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v4
         with:
-          path: ./website/db/srtm/*.zip
-          key: srtm-cache
-          restore-keys: |
-            srtm-cache
+          name: test-results-${{ env.SHARD_ID }}
+          path: |
+            tests-qa/docs/${{ env.SHORT_REF }}/
+            !tests-qa/docs/${{ env.SHORT_REF }}/pabot_results
 
-      - name: Pull/Start postgres
-        id: db-start
+
+  report-assemble:
+    needs: robot-framework
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: test-results-*
+          merge-multiple: true
+
+      - name: Checkout visual_images baseline
+        uses: actions/checkout@v4
+        with:
+          path: website
+          sparse-checkout: tests-qa/visual_images
+
+      - name: Move visual_images folder
+        continue-on-error: true
         run: |
-          ./website/db/get_huge_dump_files.sh
-          # Create srtm dir now, so it gets right permissions
-          mkdir ./website/db/srtm || ls -la ./website/db/srtm
-          echo "Getting postgres docker image…"
-          ${DOCKER_COMPOSE} pull -q postgres
-          echo "Starting postgres…"
-          ${DOCKER_COMPOSE} up -d --no-build postgres
-          echo "Wait postgres to become available…"
-          timeout 60s bash -c "while ! pg_isready; do sleep 1; done" || { docker ps -a;  ${DOCKER_COMPOSE} logs postgres; false; }
-
-      - name: Get postgres logs on failure
-        if: "${{ failure() && steps.db-start.outcome == 'failure' }}"
-        run: ${DOCKER_COMPOSE} logs postgres
-
-      - name: Prevent DNS issue with new GH Runner on Ubuntu 22.04
-        run: |
-          for i in $(seq 60); do
-            httping -sGc1 -o 200,302 https://srtm.geokrety.org/Eurasia/N52E021.hgt.zip && { echo OK; break; } || { sleep 1; }
-          done || exit 1
-
-      - name: Import SRTM data
-        run: |
-          ./website/db/tests-srtm-import.sh
-
-      - name: Test SRTM data
-        run: |
-          psql -c "SELECT count(*) FROM public.srtm"
-          psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
-          psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) LIMIT 2;"
-
-      - name: Check for existing website-base image for current branch
-        if: "${{ !startsWith(github.ref, 'refs/tags/v') }}"
-        id: existing-image
-        run: |
-          if docker pull geokrety/website-base:${{ github.ref_name }}; then
-            echo "exists=true" >>  $GITHUB_OUTPUT
-          else
-            echo "exists=false" >>  $GITHUB_OUTPUT
-          fi
-
-      - name: Override base image tag from branch name
-        if: "${{ !startsWith(github.ref, 'refs/tags/v') && steps.existing-image.outputs.exists == 'true' }}"
-        run: |
-          sed -i "s/^ARG BASE_TAG=.*$/ARG BASE_TAG=${{ github.ref_name }}/" Dockerfile
-
-      - name: Build images website
-        run: |
-          ${DOCKER_COMPOSE} build website --build-arg GIT_COMMIT=${{ steps.vars.outputs.short_ref }}
-
-      - name: Start the whole stack
-        run: |
-          ${DOCKER_COMPOSE} --env-file .env up -d --no-build
-
-      - name: Check the stack has started
-        id: start-stack
-        run: |
-          ${DOCKER_COMPOSE} ps -a
-          sleep 5
-          ${DOCKER_COMPOSE} logs website; ${DOCKER_COMPOSE} logs nginx;
-
-          for i in $(seq 60); do
-            httping -sGc1 -o 200,302 http://localhost:3001/health && { echo OK; break; } || { ${DOCKER_COMPOSE} ps; sleep 1; }
-          done || exit 1
-          ${DOCKER_COMPOSE} exec -T website make test-health
-
-      - name: Get nginx logs on failure
-        if: "${{ failure() && steps.start-stack.outcome == 'failure' }}"
-        run: ${DOCKER_COMPOSE} logs nginx
-
-      - name: Get php logs on failure
-        if: "${{ failure() && steps.start-stack.outcome == 'failure' }}"
-        run: ${DOCKER_COMPOSE} logs website
-
-      - name: Run database tests
-        id: db-unit-tests
-        run: |
-          # Tests need the website to be up, as it needs db migrations
-          env | grep PG
-          ${APT_INSTALL} libtap-parser-sourcehandler-pgtap-perl
-          PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -ot website/db/tests/test*.sql
-
-      - name: Get postgres logs on failure
-        if: "${{ failure() && steps.db-unit-tests.outcome == 'failure' }}"
-        run: ${DOCKER_COMPOSE} logs postgres
-
-      - name: Install Firefox
-        run: |
-          sudo tee -a "/etc/apt/preferences.d/mozilla-firefox" > /dev/null << EOF
-          Package: *
-          Pin: release o=LP-PPA-mozillateam
-          Pin-Priority: 1001
-          EOF
-          sudo add-apt-repository -y ppa:mozillateam/ppa
-          sudo apt update
-
-      - name: Ensure available fonts on system for Robot Framework/Firefox
-        run: |
-          ${APT_INSTALL} firefox ttf-bitstream-vera fonts-urw-base35
-
-      - name: Install geckodriver
-        run: |
-          (cd tests-qa && make download_geckodriver)
+          mkdir visual_images || true
+          mv website/tests-qa/visual_images visual_images/baseline
+          rm -fr website
 
       - name: Install Robot Framework
-        run: |
-          pip3 install -r tests-qa/requirements.txt
-
-      - name: Run Robot Framework tests
         env:
-          GEOKRETY_URL: http://localhost:3001/
-          GIT_BRANCH: ${{ steps.vars.outputs.short_ref }}
-          TZ: Africa/Nairobi
+          GH_TOKEN: ${{ github.token }}
         run: |
-          make test-qa-headless
+          echo "::group::Obtain requirements.txt"
+          gh api \
+            /repos/${GITHUB_REPOSITORY}/contents/tests-qa/requirements.txt \
+            --jq '.content' | base64 -d > /tmp/requirements.txt
+          echo "::endgroup::"
 
-#      - name: Get geckodriver.log
-#        if: failure()
-#        run: |
-#          cat tests-qa/geckodriver.log
-#
-#      - name: Get geckodriver.log
-#        if: failure()
-#        run: |
-#          cat tests-qa/docs/debugfile.log
-#
-#      - name: Get pictures-downloader logs
-#        if: failure()
-#        run: |
-#          ${DOCKER_COMPOSE} logs pictures-downloader
-#          echo "---------- /tmp/headers ------------"
-#          cat /tmp/headers || true
-#          echo "---------- /tmp/body ------------"
-#          cat /tmp/body || true
-#
-#      - name: Get pictures-uploader logs
-#        if: failure()
-#        run: ${DOCKER_COMPOSE} logs pictures-uploader
-#
-#      - name: Get svg-to-png logs
-#        if: failure()
-#        run: ${DOCKER_COMPOSE} logs svg-to-png
-#
-#      - name: Get minio logs
-#        if: failure()
-#        run: ${DOCKER_COMPOSE} logs minio
+          pip3 install -r /tmp/requirements.txt
 
-      - name: Deploy
+      - name: Assemble reports
+        run: |
+            echo "::group::list files before"
+            pwd
+            find . -type f
+            echo "::endgroup::"
+            echo
+
+            # Robot Framework report
+            echo "::group::Robot Framework report"
+            rebot --merge  output-*.xml
+            echo "::endgroup::"
+            echo
+
+            # merge xml files
+            echo "::group::merge xml files"
+            /usr/bin/env python3 - output-*.xml >> output.xml <<EOF
+            #!/usr/bin/env python3
+            import sys
+            from xml.etree import ElementTree
+
+            def run(files):
+                first = None
+                for filename in files:
+                    data = ElementTree.parse(filename).getroot()
+                    if first is None:
+                        first = data
+                    else:
+                        first.extend(data)
+                if first is not None:
+                    print(ElementTree.tostring(first, encoding='unicode'))
+
+            if __name__ == "__main__":
+                run(sys.argv[1:])
+            EOF
+            echo "::endgroup::"
+            echo
+
+            echo "::group::List all xml files"
+            ls -l *.xml
+            echo "::endgroup::"
+
+            # Robot Eyes report
+            echo "::group::Robot Eyes report"
+            reportgen \
+              --baseline=visual_images/baseline \
+              --results=.
+            echo "::endgroup::"
+            echo
+            echo "::group::Fix images path"
+            sed -i 's@\.\./@@g' visualReport.html
+            echo "::endgroup::"
+            echo
+
+            # Add visualReport.html link into report.html
+            echo "::group::Add visualReport.html link into report.html"
+            anchor='\(<td><a href="${$item.logURL}">${$item.logURL}\)</a></td>'
+            link='<tr><th>Visual Report:</th><td><a href="visualReport.html">visualReport.html</a></td></tr>'
+            sed -i "s@${anchor}@\1${link}@" report.html
+            echo "::endgroup::"
+            echo
+
+            echo
+            echo "::group::list files after"
+            pwd
+            find . -type f
+            echo "::endgroup::"
+
+      - name: Upload report to job artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: .
+
+      - name: Deploy GH pages
+        id: deploy-pages
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
-        if: always() && env.QA_TEST_DEPLOY_KEY != ''
-        continue-on-error: true
+        if: env.QA_TEST_DEPLOY_KEY != ''
         uses: peaceiris/actions-gh-pages@v3
         with:
 #          force_orphan: true  ## see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-keeping-existing-files-keep_files
@@ -227,8 +245,8 @@ jobs:
           deploy_key: ${{ secrets.QA_TEST_DEPLOY_KEY }}
           external_repository: geokrety/geokrety-website-qa
           publish_branch: gh-pages
-          publish_dir: ./tests-qa/docs/${{ steps.vars.outputs.short_ref }}
-          destination_dir: ${{ steps.vars.outputs.short_ref }}
+          publish_dir: .
+          destination_dir: ${{ env.SHORT_REF }}
           user_name: geokrety-bot
           user_email: geokrety-bot@geokrety.org
           commit_message: "docs: Update QA tests results"
@@ -236,31 +254,78 @@ jobs:
       - name: Show report URL
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
-        if: always() && env.QA_TEST_DEPLOY_KEY != ''
-        continue-on-error: true
         run: |
-          echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html
-          echo https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html
+          report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/report.html"
+          visual_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/visualReport.html"
+
+          echo "${report_url}"
+          echo "${visual_report_url}"
+
           echo '### Robot Framework reports' >> $GITHUB_STEP_SUMMARY
-          echo '* [report](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html)' >> $GITHUB_STEP_SUMMARY
-          echo '* [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html)' >> $GITHUB_STEP_SUMMARY
+          echo "* [report](${report_url})" >> $GITHUB_STEP_SUMMARY
+          echo "* [visualReport](${visual_report_url})" >> $GITHUB_STEP_SUMMARY
 
       - name: Post report URL in PR
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
-        if: always() && env.QA_TEST_DEPLOY_KEY != ''
+        if: env.QA_TEST_DEPLOY_KEY != '' && github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             ### Robot Framework reports
-            * [report](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html)
-            * [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html)
+            * [report](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/report.html)
+            * [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/visualReport.html)
           comment_tag: rbfr
           reactions: eyes, rocket
           mode: recreate
 
-      - name: Stop the docker stack
-        if: always()
-        continue-on-error: true
+
+  database-tests:
+    if: "${{ ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Find node IP
+        uses: ./.github/actions/find-node-ip/
+
+      - name: Pull docker images (background)
+        shell: bash
         run: |
-          ${DOCKER_COMPOSE} down
+          ${DOCKER_COMPOSE} pull --ignore-buildable &
+
+      - name: Set output
+        id: vars
+        run: |
+          echo "::group::debug"
+          # github.head_ref=${{ github.head_ref }}
+          # github.ref=${{ github.ref }}
+          echo "::endgroup::"
+
+          short_ref="${{ github.head_ref || github.ref }}"
+          echo "short_ref=${short_ref#refs/*/}" >> $GITHUB_OUTPUT
+          echo "SHORT_REF=${short_ref#refs/*/}" >> $GITHUB_ENV
+
+      - name: Start Postgres
+        uses: ./.github/actions/start-postgres/
+
+      - name: Install PostGis data
+        uses: ./.github/actions/install-postgis-data/
+
+      - name: Install tools
+        run: |
+          echo "::group::Install httping"
+          sudo apt-get update
+          ${APT_INSTALL} httping
+          echo "::endgroup::"
+
+      - name: Build website image
+        uses: ./.github/actions/build-website-image/
+
+      - name: Start Docker stack(s)
+        uses: ./.github/actions/docker-stack-start/
+
+      - name: Run database tests
+        uses: ./.github/actions/run-pgtap/

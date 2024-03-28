@@ -8,7 +8,8 @@ use function Sentry\captureMessage;
 
 class PictureUploadDrop extends Base {
     public function drop_s3_file_signature(\Base $f3) {
-        if ($f3->get('HEADERS.Host') !== 'nginx' || $f3->get('HEADERS.Authorization') !== sprintf('Bearer %s', GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST)) {
+        // Host must match the nginx container name
+        if (!preg_match('/^nginx(:\d+)?$/', $f3->get('HEADERS.Host')) || $f3->get('HEADERS.Authorization') !== sprintf('Bearer %s', GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST)) {
             http_response_code(400);
             captureMessage('GeokretAvatarUploadDrop: Unauthorized access attempt');
 

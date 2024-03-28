@@ -1,0 +1,37 @@
+name: Build website image
+
+inputs:
+  prepare-only:
+    default: false
+    type: boolean
+    description: Just pull the data, don't build the image
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check for existing website-base image for current branch
+      id: existing-image
+      if: ${{ ! startsWith(github.ref, 'refs/tags/v') }}
+      shell: bash
+      run: |
+        if docker pull geokrety/website-base:${{ env.SHORT_REF }} 2> /dev/null; then
+          echo "exists=true" | tee -a $GITHUB_OUTPUT
+          sed -i "s/^ARG BASE_TAG=.*$/ARG BASE_TAG=${{ env.SHORT_REF }}/" Dockerfile
+        else
+          echo "exists=false" | tee -a $GITHUB_OUTPUT
+        fi
+
+    - name: Pull base image
+      if: ${{ ! startsWith(github.ref, 'refs/tags/v') && steps.existing-image.outputs.exists == 'false' }}
+      shell: bash
+      run: |
+        base_tag="$(sed -n "s/^ARG BASE_TAG=\(.*\)$/\1/p" Dockerfile)"
+        docker pull geokrety/website-base:${base_tag} &
+
+    - name: Build website image
+      if: inputs.prepare-only == 'false'
+      shell: bash
+      run: |
+        ${DOCKER_COMPOSE} build \
+          website \
+          --build-arg GIT_COMMIT=${{ env.SHORT_REF }}

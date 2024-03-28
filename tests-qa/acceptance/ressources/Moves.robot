@@ -33,7 +33,10 @@ Get Move ${id} XPath
 Post Move
     [Arguments]    ${move}
     Create Session    gk        ${GK_URL}
-    ${resp}=          POST On Session    gk    url=/devel/db/geokrety/move/seed    data=${move}    headers=${CONTENT_TYPE_FORM_URLENCODED}
+    ${resp}=          POST On Session    gk
+    ...    url=/devel/db/geokrety/move/seed
+    ...    data=${move}
+    ...    headers=${CONTENT_TYPE_FORM_URLENCODED}
     Request Should Be Successful     ${resp}
 
 Post Move Fast

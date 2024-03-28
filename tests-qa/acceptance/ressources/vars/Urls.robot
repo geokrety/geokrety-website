@@ -7,7 +7,7 @@ Library           ../libraries/ReplaceVariablesAsUrl.py
 *** Variables ***
 ${NO_REDIRECT_CHECK}    NO_REDIRECT_CHECK
 
-${GK_URL}               http://localhost:3001
+${GK_URL}               http://${GK_FQDN}:3${${PABOTEXECUTIONPOOLID} + ${10}}1
 
 # LANGUAGE PAGES
 ${PAGE_HOME_URL}                            ${GK_URL}

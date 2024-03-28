@@ -1,43 +1,45 @@
 *** Settings ***
 Resource          BrowserStack.robot
 Library           Collections
+Variables         ../ressources/vars/browser_config.py
 
 *** Variables ***
-
-${HEADLESS}              ${True}
 
 *** Keywords ***
 
 !Open GeoKrety Browser
     [Documentation]    Main entry function to open the browser
-    [Arguments]        ${browser}
-#    Run Keyword If     ${BS_ENABLED}    !Open GeoKrety BrowserStack     ${browser}
-#    ...    ELSE                         !Open GeoKrety Browser Local    ${browser}
-    !Open GeoKrety Browser Local    ${browser}
+    Run Keyword If    "${BROWSER}" == "firefox"
+    ...        Open GeoKrety Browser Firefox    remote_url=${REMOTE_URL}
+    # ...    ELSE IF    "${BROWSER}" == "chrome"
+    # ...        Open GeoKrety Browser Chrome
+    ...    ELSE       Fatal Error    Invalid browser name "${BROWSER}"
     Set Window Size             1280    1024
 
-!Open GeoKrety Browser Local
-    [Tags]    robot:private
-    [Arguments]    ${browser}
-    Run Keyword If    "${browser}"=="Firefox"    !Open GeoKrety Browser Firefox
-#    ...    ELSE IF    "${browser}"=="Chrome"     !Open GeoKrety Browser Chrome
-    ...    ELSE       Fatal Error                Invalid browser name
-
 # See https://spage.fi/headless-selenium-rf
-!Open GeoKrety Browser Firefox
+Open GeoKrety Browser Firefox
     [Tags]    robot:private
+    [Arguments]    ${remote_url}=None
     Log       Open Browser Firefox
 
-    ${firefox_options} =     Evaluate    sys.modules['selenium.webdriver'].firefox.webdriver.Options()    sys, selenium.webdriver
+    # # This is the equivalent Python code
+    # from selenium import webdriver
+    # firefox_options = webdriver.firefox.options.Options()
+    ${firefox_options} =     Evaluate
+    ...    sys.modules['selenium.webdriver'].firefox.webdriver.Options()
+    ...    sys, selenium.webdriver
+
+    Call Method    ${firefox_options}   set_preference    timezone    Africa/Nairobi
     Call Method    ${firefox_options}   set_preference    strictFileInteractability    ${FALSE}
-    Call Method    ${firefox_options}   set_preference    timezone    UTC-05:00
+    Call Method    ${firefox_options}   set_capability    strictFileInteractability    ${FALSE}
 
     Run Keyword If      ${HEADLESS}
     ...                 Call Method    ${firefox_options}   add_argument    -headless
 
-    Create Webdriver    Firefox    options=${firefox options}
+    Open Browser    browser=Firefox    options=${firefox_options}
+    ...    remote_url=${remote_url}
 
-# !Open GeoKrety Browser Chrome
+# Open GeoKrety Browser Chrome
 #     [Tags]    robot:private
 #     Log    Open Browser Chrome
 #     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver

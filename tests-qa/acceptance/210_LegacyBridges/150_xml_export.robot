@@ -27,6 +27,9 @@ ModifiedSince Has Limit
     Page Should Contain                   The requested period exceeds the 10 days limit
 
 ModifiedSince Is Limited To Last 10 Days
+    Go To Url                               url=https://webbrowsertools.com/timezone/
+    Capture Page Screenshot
+
     ${date_10_days_old} = 	              Get Current Date 	increment=-9d 23h       result_format=%Y%m%d%H%M%d
     ${date_11_days_old} = 	              Get Current Date 	increment=-11d          result_format=%Y%m%d%H%M%d
     Go To Url                             url=${GK_URL}/export.php?modifiedsince=${date_10_days_old}    redirect=${NO_REDIRECT_CHECK}

@@ -250,7 +250,7 @@ class Move extends Base {
     public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
-            'geokret' => $this->geokret->id,
+            'geokret' => (is_null($this->geokret) ? null : $this->geokret->id),
              'lat' => $this->lat,
              'lon' => $this->lon,
              'elevation' => $this->elevation,

@@ -44,6 +44,7 @@ if [ "$1" = 'docker-php-entrypoint' ]; then
 
     echo "#############################"
     echo "###  GeoKrety.org is READY"
+    echo "###  http://${GK_WEBSITE_FQDN:-nginx}:${GK_WEBSITE_PORT:-80}"
     echo "#############################"
 
     wait

@@ -1,0 +1,14 @@
+name: Run Robot Framework tests
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run Robot Framework tests
+      working-directory: tests-qa
+      env:
+        TZ: ${{ env.TZ || 'Africa/Nairobi' }}
+        GIT_BRANCH: ${{ env.SHORT_REF }}
+        HEADLESS: 'true'
+      shell: bash
+      run: |
+        make test-pabot-shard || make rerun-failed-tests-shard

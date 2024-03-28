@@ -36,7 +36,7 @@ Before starting, you have to define testing URL Address.
 
 ```bash
 # Default value is
-$ export GEOKRETY_URL=http://localhost:3001/
+$ export GEOKRETY_URL=http://localhost:3101/
 ```
 
 Note: qa-tests depends on `GK_DEVEL` environment variable which activates some
