@@ -67,9 +67,6 @@ phinx-rollback: ## DB rollback migration
 phinx-status: ## DB migration status
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx status"
 
-db-migrator: ## import GKv1 database as GKv2 (destructive)
-	${PTY_PREFIX} bash -c "cd website/db && runuser -u www-data php database-migrator.php"
-
 compile-all-templates: ## compile all smarty templates
 	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/smarty/compile-all-templates"
 clear-all-templates: ## drop all generated smarty templates
