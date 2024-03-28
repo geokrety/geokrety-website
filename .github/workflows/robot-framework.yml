@@ -2,19 +2,9 @@ name: Integration tests on Robot Framework
 
 on:
   pull_request:
-    branches-ignore:
-      - main
-      - master
-      - l10n_main
-      - l10n_master
-      - l10n_new-theme
   push:
-    branches-ignore:
+    branches:
       - main
-      - master
-      - l10n_main
-      - l10n_master
-      - l10n_new-theme
   workflow_call:
   workflow_dispatch:
 
@@ -38,7 +28,7 @@ jobs:
         uses: raven-actions/debug@v1
 
   robot-framework:
-    if: "${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.pull_request.merged == true) && !contains(github.event.head_commit.message, 'skip tests-qa') }}"
+    if: "${{ ! contains(github.event.head_commit.message, 'skip tests-qa') }}"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -255,8 +245,10 @@ jobs:
           echo '* [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html)' >> $GITHUB_STEP_SUMMARY
 
       - name: Post report URL in PR
+        env:
+          QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
+        if: always() && env.QA_TEST_DEPLOY_KEY != ''
         uses: thollander/actions-comment-pull-request@v2
-        id: message
         with:
           message: |
             ### Robot Framework reports
