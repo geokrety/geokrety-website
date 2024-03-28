@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      Password
+Force Tags      Password    Group9

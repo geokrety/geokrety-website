@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      Username
+Force Tags      Username    Group

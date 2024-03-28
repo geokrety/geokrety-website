@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      GeoKrety Details    Pictures
+Force Tags      GeoKrety Details    Pictures    Group3

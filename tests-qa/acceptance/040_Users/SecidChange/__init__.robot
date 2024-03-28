@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      Secid
+Force Tags      Secid    Group10

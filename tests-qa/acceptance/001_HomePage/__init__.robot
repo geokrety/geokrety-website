@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Home    Languages
+Force Tags     Home    Languages    Group1

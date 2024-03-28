@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Authentication History
+Force Tags     Authentication History    Group10

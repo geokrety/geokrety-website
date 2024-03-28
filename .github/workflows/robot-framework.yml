@@ -30,6 +30,10 @@ jobs:
   robot-framework:
     if: "${{ ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        test-group: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -181,7 +185,21 @@ jobs:
           GEOKRETY_URL: http://localhost:3001/
           GIT_BRANCH: ${{ steps.vars.outputs.short_ref }}
         run: |
-          make test-qa-headless
+          # make test-qa-headless
+          cd tests-qa
+          time \
+            HEADLESS=True \
+            PATH=${PATH}:${PWD} \
+            robot \
+              --log log.html \
+              --output output.xml \
+              --include "group${{ matrix.test-group }}" \
+              --debugfile debugfile.log \
+              --report report.html \
+              -d "docs/${{ github.head_ref }}" \
+              -V acceptance/ressources/robot-vars.py \
+              acceptance
+
 
 #      - name: Get geckodriver.log
 #        if: failure()
@@ -247,7 +265,8 @@ jobs:
       - name: Post report URL in PR
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
-        if: always() && env.QA_TEST_DEPLOY_KEY != ''
+        if: always() && github.event_name == 'pull_request' && env.QA_TEST_DEPLOY_KEY != ''
+        continue-on-error: true
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |

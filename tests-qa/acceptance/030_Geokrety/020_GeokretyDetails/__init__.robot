@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      GeoKrety Details
+Force Tags      GeoKrety Details    Group2

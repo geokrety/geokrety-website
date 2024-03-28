@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags      Language
+Force Tags      Language    Group8

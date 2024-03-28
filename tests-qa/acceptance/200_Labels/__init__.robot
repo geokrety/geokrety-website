@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Labels
+Force Tags     Labels    Group8
