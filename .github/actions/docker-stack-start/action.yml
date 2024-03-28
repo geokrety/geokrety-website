@@ -1,0 +1,124 @@
+name: Build website image
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Install tools
+      shell: bash
+      run: |
+        echo "::group::Install tools"
+        sudo apt-get update
+        ${APT_INSTALL} httping &
+        echo "::endgroup::"
+
+    - name: Start the whole stack
+      shell: bash
+      run: |
+        echo "::group::docker compose up -d"
+        [ -f .env ] || touch .env
+        make up DOCKER_COMPOSE_PARAMS="--env-file .env" &
+        echo "::endgroup::"
+
+    # - name: "Show docker ps"
+    #   uses: ./.github/actions/docker-ps/
+    #   with:
+    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
+
+    # - name: "Show docker logs: website"
+    #   uses: ./.github/actions/docker-logs/
+    #   with:
+    #     CONTAINER: website
+    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
+
+    # - name: "Show docker logs: nginx"
+    #   uses: ./.github/actions/docker-logs/
+    #   with:
+    #     CONTAINER: nginx
+    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
+
+    # - name: Wait for stack to be started
+    #   shell: bash
+    #   run: |
+    #     declare f=0 g=0
+    #     for i in $(seq 60); do
+    #       echo "::group::httping: try:$i"
+    #       httping -sGc1 -o 200,302 http://${{ env.GK_FQDN }}:3101/health \
+    #         && { \
+    #           echo "::endgroup::"
+    #           echo OK;
+    #           break
+    #          } \
+    #         || { sleep 1; }
+    #       echo "::endgroup::"
+    #     done || exit 1
+
+    #     echo "::group::curl http://${{ env.GK_FQDN }}:3101"
+    #     curl -v http://${{ env.GK_FQDN }}:3101
+    #     echo "::endgroup::"
+
+    - name: Wait for stack(s) to be started
+      shell: bash
+      run: |
+        for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
+          declare f=0 g=0
+          for i in $(seq 60); do
+            ((f = $j - 1))
+            ((g = $j + 9))
+            echo "::group::httping: try:$i stack:$f"
+            httping -sGc1 -o 200,302 http://${{ env.GK_FQDN }}:3${g}1/health \
+              && { \
+                echo "::endgroup::"
+                echo OK;
+                break
+               } \
+              || { sleep 1; }
+            echo "::endgroup::"
+          done || exit 1
+          echo "::group::curl http://${{ env.GK_FQDN }}:3${g}1"
+          curl -v http://${{ env.GK_FQDN }}:3${g}1
+          echo "::endgroup::"
+        done
+
+    # - name: Wait for stack to be started
+    #   shell: bash
+    #   run: |
+    #     for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
+    #       declare f=0 g=0
+    #       for i in $(seq 60); do
+    #         ((f = $j - 1))
+    #         ((g = $j + 9))
+    #         echo "::group::httping: try:$i stack:$f"
+    #         httping -sGc1 -o 200,302 http://${{ env.GK_FQDN }}:3${g}1/health \
+    #           && { \
+    #             echo "::endgroup::"
+    #             echo OK;
+    #             break
+    #            } \
+    #           || { sleep 1; }
+    #         echo "::endgroup::"
+    #       done || exit 1
+    #         echo "::group::curl http://${{ env.GK_FQDN }}:3${g}1"
+    #         curl -v http://${{ env.GK_FQDN }}:3${g}1
+    #         echo "::endgroup::"
+    #     done
+
+    # - name: "Show docker ps"
+    #   if: failure()
+    #   uses: ./.github/actions/docker-ps/
+    #   with:
+    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
+
+    # - name: "Show docker logs: website"
+    #   if: failure()
+    #   uses: ./.github/actions/docker-logs/
+    #   with:
+    #     CONTAINER: website
+    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
+
+    # - name: "Show docker logs: nginx"
+    #   if: failure()
+    #   uses: ./.github/actions/docker-logs/
+    #   with:
+    #     CONTAINER: nginx
+    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}

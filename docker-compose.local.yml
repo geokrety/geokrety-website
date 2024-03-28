@@ -3,15 +3,21 @@ version: '2.4'
 
 x-variables: &variables
   environment:
-    TIMEZONE: "GMT"
-    GK_SITE_BASE_SERVER_FQDN: "localhost:3001"
-    GK_SITE_BASE_SERVER_URL: "http://localhost:3001"
-    GK_CDN_SERVER_URL: "http://localhost:3002"
+    TIMEZONE: "UTC"
+    # GK_WEBSITE_HOST must me the stack internal way off accessing the website
+    GK_WEBSITE_HOST: nginx
+    # GK_WEBSITE_FQDN How the webiste is reached externally
+    GK_WEBSITE_FQDN: "${GK_FQDN:-localhost}"
+    # GK_WEBSITE_PORT How the webiste is reached externally
+    GK_WEBSITE_PORT: "3${GK_INSTANCE_ID:-10}1"
+    GK_SITE_BASE_SERVER_FQDN: "${GK_FQDN:-localhost}:3${GK_INSTANCE_ID:-10}1"
+    GK_SITE_BASE_SERVER_URL: "http://${GK_FQDN:-localhost}:3${GK_INSTANCE_ID:-10}1"
+    GK_CDN_SERVER_URL: "http://${GK_FQDN:-localhost}:3${GK_INSTANCE_ID:-10}2"
 
-    GK_SENTRY_DSN: "${SENTRY_DSN}"
-    GK_SENTRY_ENV: "${SENTRY_ENV}"
+    GK_SENTRY_DSN: "${SENTRY_DSN:-}"
+    GK_SENTRY_ENV: "${SENTRY_ENV:-}"
 
-    GK_MINIO_SERVER_URL_EXTERNAL: "http://localhost:3003"
+    GK_MINIO_SERVER_URL_EXTERNAL: "http://${GK_FQDN:-localhost}:3${GK_INSTANCE_ID:-10}3"
     MINIO_ACCESS_KEY: "access_key"
     MINIO_SECRET_KEY: "secret_key"
     GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY: "pp_access_key"
@@ -52,7 +58,7 @@ services:
   adminer:
     image: adminer
     ports:
-      - 3005:8080
+      - 3${GK_INSTANCE_ID:-10}5:8080
     environment:
       ADMINER_DEFAULT_SERVER: postgres
 
@@ -64,7 +70,7 @@ services:
       - ./website/public:/var/www/html:ro
       - shared-assets-volume:/var/www/html/assets/compressed:ro
     ports:
-      - "3001:80"
+      - "3${GK_INSTANCE_ID:-10}1:3${GK_INSTANCE_ID:-10}1"
     depends_on:
       - website
     healthcheck:
@@ -94,13 +100,13 @@ services:
 
   cdn:
     image: geokrety/cdn:main
-    build: https://github.com/geokrety/GeoKrety-Static.git#main
+    # build: https://github.com/geokrety/GeoKrety-Static.git#main
     ports:
-      - "3002:80"
+      - "3${GK_INSTANCE_ID:-10}2:80"
 
   postgres:
     image: geokrety/postgres:main
-    build: https://github.com/geokrety/geokrety-postgres.git
+    # build: https://github.com/geokrety/geokrety-postgres.git
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./website/db/dumps/:/docker-entrypoint-initdb.d/
@@ -108,7 +114,7 @@ services:
     tmpfs:
       - /var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "5${GK_INSTANCE_ID:-10}6:5432"
     environment:
       TZ: GMT
       POSTGRES_DB: "geokrety"
@@ -131,57 +137,58 @@ services:
       MINIO_ROOT_USER: access_key
       MINIO_ROOT_PASSWORD: secret_key
       CONSOLE_SECURE_TLS_REDIRECT: "off"
-      MINIO_BROWSER_REDIRECT_URL: "http://localhost:3004"
+      MINIO_BROWSER_REDIRECT_URL: "http://${GK_FQDN:-localhost}:3004"
 #    # tmpfs is not working anymore on Minio :(
 #    tmpfs:
 #      - /data
     ports:
-      - "3003:9000"
-      - "3004:9001"
+      - "3${GK_INSTANCE_ID:-10}3:9000"
+      - "3${GK_INSTANCE_ID:-10}4:9001"
     depends_on:
       - pictures-uploader
 
-  # used to build image only
-  pictures-processor:
-    image: geokrety/pictures-processor-base:main
-    build:
-      context: https://github.com/geokrety/geokrety-pictures-processor.git
-      dockerfile: Dockerfile.base
-    command:
-      - "/bin/true"
+  # # used to build image only
+  # pictures-processor:
+  #   image: geokrety/pictures-processor-base:main
+  #   # build:
+  #   #   context: https://github.com/geokrety/geokrety-pictures-processor.git
+  #   #   dockerfile: Dockerfile.base
+  #   command:
+  #     - "/bin/true"
 
   pictures-downloader:
     image: geokrety/pictures-processor-downloader:main
-    build:
-      context: https://github.com/geokrety/geokrety-pictures-processor.git
-      dockerfile: Dockerfile.downloader
-      args:
-        BASE_TAG: main
+    # build:
+    #   context: https://github.com/geokrety/geokrety-pictures-processor.git
+    #   dockerfile: Dockerfile.downloader
+    #   args:
+    #     BASE_TAG: main
     environment:
+      GK_WEBSITE_PORT: 3${GK_INSTANCE_ID:-10}1
       GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY: pp_access_key
       GK_MINIO_PICTURES_PROCESSOR_MINIO_SECRET_KEY: pp_secret_key
       GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_DOWNLOADER: "token2"
       GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST: "token4"
-      SENTRY_DSN: "${SENTRY_DSN}"
-      SENTRY_ENV: "${SENTRY_ENV}"
+      SENTRY_DSN: "${SENTRY_DSN:-}"
+      SENTRY_ENV: "${SENTRY_ENV:-}"
 
   pictures-uploader:
     image: geokrety/pictures-processor-uploader:main
-    build:
-      context: https://github.com/geokrety/geokrety-pictures-processor.git
-      dockerfile: Dockerfile.uploader
-      args:
-        BASE_TAG: main
+    # build:
+    #   context: https://github.com/geokrety/geokrety-pictures-processor.git
+    #   dockerfile: Dockerfile.uploader
+    #   args:
+    #     BASE_TAG: main
     environment:
       MINIO_ACCESS_KEY: access_key
       MINIO_SECRET_KEY: secret_key
       GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_UPLOADER: token3
-      SENTRY_DSN: "${SENTRY_DSN}"
-      SENTRY_ENV: "${SENTRY_ENV}"
+      SENTRY_DSN: "${SENTRY_DSN:-}"
+      SENTRY_ENV: "${SENTRY_ENV:-}"
 
   svg-to-png:
     image: geokrety/svg-to-png:main
-    build: https://github.com/geokrety/geokrety-svg-to-png.git
+    # build: https://github.com/geokrety/geokrety-svg-to-png.git
 
 volumes:
   shared-assets-volume:

@@ -1,0 +1,12 @@
+name: Install Robot Framework
+
+runs:
+  using: composite
+  steps:
+
+    - name: Install Robot Framework
+      shell: bash
+      run: |
+        echo "::group::Install RobotFramework"
+        pip3 install -r tests-qa/requirements.txt
+        echo "::endgroup::"

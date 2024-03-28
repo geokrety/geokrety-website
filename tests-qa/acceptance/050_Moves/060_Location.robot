@@ -89,7 +89,6 @@ No Selection Should Show Error
     Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
 
 Start Typing A GC Waypoint Remove The OC Button
-    [Tags]    TODO
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
     Element Should Be Visible               ${MOVE_NEW_LOCATION_OC_BUTTON}

@@ -1,0 +1,30 @@
+name: Run database tests
+
+###############
+# !!!!!!! Tests need the website to be up, as it needs db migrations to be applied
+###############
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Install tools
+      shell: bash
+      run: |
+        echo "::group::Install pgtap"
+        command -v pg_prove || \
+          ${APT_INSTALL} libtap-parser-sourcehandler-pgtap-perl
+        echo "::endgroup::"
+
+    - name: Run database tests
+      shell: bash
+      env:
+        PGOPTIONS: --search_path=public,pgtap,geokrety
+      run: |
+         pg_prove -ot website/db/tests/test*.sql
+
+    - name: "Show docker logs: postgres"
+      if: failure()
+      uses: ./.github/actions/docker-logs/
+      with:
+        CONTAINER: postgres

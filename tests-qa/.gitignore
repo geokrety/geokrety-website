@@ -10,12 +10,19 @@ chromedriver.exe
 chromedriver*
 geckodriver.exe
 geckodriver*
+selenoid_*_*
+BrowserStackLocal
+
 acceptance/vars/__pycache__/
 
 # robotf results
 docs/*/
 previous_docs/
 
+# pabot
+.pabotsuitenames
+.pabotsuitenames.ordering
+
 # python virtual env
 venv/
-chromedriver
+Pipfile

@@ -1,0 +1,15 @@
+{
+  "firefox": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "env": [
+          "TZ=Africa/Nairobi"
+        ],
+        "image": "geokrety/selenoid-image-firefox:latest",
+        "path": "/wd/hub",
+        "port": "4444"
+      }
+    }
+  }
+}

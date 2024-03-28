@@ -31,6 +31,9 @@ Other Users Cannot Edit Others Moves
     Flash message shown                     This action is reserved to the author
 
 Information Should Be Loaded
+    Go To Url                               url=https://webbrowsertools.com/timezone/
+    Capture Page Screenshot
+
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
     Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT}                     ${GEOKRETY_1.tc}

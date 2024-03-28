@@ -1,0 +1,104 @@
+name: Start Postgres
+
+inputs:
+  wait-started:
+    default: true
+    type: boolean
+    description: Should we wait for postgres to be ready
+  prepare-only:
+    default: false
+    type: boolean
+    description: Just pull the data, don't start Postgres
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Cache PUBLIC data
+      uses: actions/cache@v4
+      with:
+        path: ./website/db/dumps/11_public-data.sql
+        key: public-data-cache
+        restore-keys: |
+          public-data-cache
+
+    - name: Pull huge data
+      shell: bash
+      run: |
+        # Pull huge data
+        echo "::group::get_huge_dump_files.sh"
+        ./website/db/get_huge_dump_files.sh
+        echo "::endgroup::"
+
+    - name: Create srtm direcotry
+      shell: bash
+      run: |
+        # Create srtm dir now, so it gets right permissions
+        echo "::group::SRTM content"
+        mkdir ./website/db/srtm || ls -la ./website/db/srtm
+        echo "::endgroup::"
+
+    - name: Pull postgres docker image…
+      shell: bash
+      if: inputs.prepare-only == 'false'
+      run: |
+        # Pull postgres docker image…
+        ${DOCKER_COMPOSE} pull -q postgres &
+
+    - name: Starting postgres…
+      shell: bash
+      if: inputs.prepare-only == 'false'
+      run: |
+        # Starting postgres…
+        echo "::group::docker compose up -d postgres"
+        make up CONTAINER=postgres
+        echo "::endgroup::"
+
+    # - name: Debug
+    #   shell: bash
+    #   run: |
+    #     for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
+    #       declare f=0
+    #       ((f = $j - 1))
+    #       echo "::group::docker-compose ps postgres - Instance:$f"
+    #       make ps-single \
+    #         GK_INSTANCE_ID=$j \
+    #         CONTAINER="postgres"
+    #       echo "::endgroup::"
+    #     done
+
+
+    - name: Wait for postgres(es) to be started
+      shell: bash
+      if: inputs.wait-started == 'true' && inputs.prepare-only == 'false'
+      run: |
+        # Wait for postgres(es) to be started
+
+        echo "::group::docker ps -a"
+        docker ps -a
+        echo "::endgroup::"
+
+        echo
+        for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
+          declare f=0 g=0
+          for i in $(seq 60); do
+            ((f = $j - 1))
+            ((g = $j + 9))
+            echo "::group::pg_isready --port=3${g}6 ; try:$i stack:$f"
+            pg_isready --port=5${g}6 \
+              && { \
+                echo "::endgroup::"
+                echo "Stack ${f} OK after ${i} attempts"
+                echo
+                break
+               } \
+              || { sleep 1; }
+            echo "::endgroup::"
+          done || exit 1
+        done
+
+    # - name: "Show docker logs: postgres"
+    #   if: failure()
+    #   uses: ./.github/actions/docker-logs/
+    #   with:
+    #     CONTAINER: postgres

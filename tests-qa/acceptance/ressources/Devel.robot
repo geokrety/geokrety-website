@@ -14,6 +14,8 @@ ${PAGE_SEED_NEWS}                       ${GK_URL}/devel/db/news/seed
 ${PAGE_SEED_PICTURE_AVATAR}             ${GK_URL}/devel/db/users/1/avatar/1
 ${PAGE_SEED_OWNERCODE}                  ${GK_URL}/devel/db/ownercode/geokrety/\${params.geokretid}/ownercode/\${params.ownercode}/seed
 
+${PAGE_CSS_ASSET_CLEAR_URL}             ${GK_URL}/devel/css/assets/clear
+
 ${PAGE_DEV_MAILBOX_URL}                 ${GK_URL}/devel/mail
 ${PAGE_DEV_MAILBOX_X_MAIL_URL}          ${PAGE_DEV_MAILBOX_URL}/\${params.number}
 ${PAGE_DEV_MAILBOX_FIRST_MAIL_URL}      ${PAGE_DEV_MAILBOX_URL}/0
@@ -44,6 +46,9 @@ ${DEV_MAILBOX_SECOND_MAIL_DELETE_LINK}      //*[@id="mailsTable"]/tbody/tr/td[@c
 
 
 # Shortcut to common pages
+
+Clear css assets
+    Go To Url Fast                      ${PAGE_CSS_ASSET_CLEAR_URL}
 
 Clear Database And Seed ${count} users
     Clear Database

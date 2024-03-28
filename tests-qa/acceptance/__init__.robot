@@ -9,13 +9,12 @@ Suite Teardown      Global TearDown
 
 *** Variables ***
 
-${browser}       Firefox
-
 *** Keywords ***
 
 Global Setup
+    Clear css assets
     Clear Database
-    !Open GeoKrety Browser  ${browser}    # which browser? the one that's the value of the variable
+    !Open GeoKrety Browser
 
 Global TearDown
     Close Browser

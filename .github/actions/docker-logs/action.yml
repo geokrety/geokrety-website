@@ -1,0 +1,21 @@
+name: Get container logs
+
+inputs:
+  CONTAINER:
+    default:
+    description: The container name
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get logs for container ${{ inputs.CONTAINER }}
+      shell: bash
+      run: |
+        for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
+          ((f = $j - 1))
+          echo "::group::docker-compose ps ${{ inputs.CONTAINER }} - Instance:$f"
+          make log-single \
+            GK_INSTANCE_ID=$j \
+            DOCKER_COMPOSE_PARAMS="${{ inputs.CONTAINER }}"
+          echo "::endgroup::"
+        done

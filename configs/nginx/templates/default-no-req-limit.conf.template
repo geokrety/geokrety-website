@@ -9,9 +9,9 @@ log_format timed_combined '$remote_addr - $http_x_forwarded_for - $remote_user [
 
 server {
 
-    listen 80 default_server;
+    listen ${GK_WEBSITE_PORT} default_server;
 
-    server_name ${GK_SITE_BASE_SERVER_FQDN};
+    server_name ${GK_WEBSITE_FQDN};
 
     root /var/www/html;
     index geokrety.php;
@@ -29,10 +29,10 @@ server {
     }
 
     location = /robots.txt {
-        rewrite ^ /robots-files/${GK_SITE_BASE_SERVER_FQDN}.txt last;
+        rewrite ^ /robots-files/${GK_WEBSITE_FQDN}.txt last;
     }
 
-    location = /robots-files/${GK_SITE_BASE_SERVER_FQDN}.txt {
+    location = /robots-files/${GK_WEBSITE_FQDN}.txt {
         try_files $uri /robots-files/default.txt;
         internal;
     }

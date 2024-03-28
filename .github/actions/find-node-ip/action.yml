@@ -1,0 +1,14 @@
+name: Find node IP
+
+runs:
+  using: composite
+  steps:
+
+    - name: Find node IP
+      shell: bash
+      run: |
+        echo "::group::ifconfig eth0"
+        ifconfig eth0
+        echo "::endgroup::"
+        ip=$(ip -o a l | grep eth0 | grep -v inet6 | sed -E 's@.*inet ([^/]+)/.. metric.*@\1@')
+        echo "GK_FQDN=$ip" | tee -a "${GITHUB_ENV}"

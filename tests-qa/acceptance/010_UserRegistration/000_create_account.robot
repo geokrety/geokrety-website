@@ -15,9 +15,7 @@ Link is present
     Location Should Be                  ${PAGE_REGISTER_URL}
 
 Create first account
-    ${passed} =    Run Keyword And Return Status
-    ...            Register User        ${USER_1}
-    Run Keyword If    not ${passed}     Fatal Error    Failed to create an initial user
+    Register User        ${USER_1}
     User Is Not Connected
     Mailbox Should Contain 1 Messages
 

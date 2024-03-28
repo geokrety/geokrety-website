@@ -1,0 +1,59 @@
+name: Install Firefox
+
+runs:
+  using: composite
+  steps:
+
+    - name: Pull selenoid images in background
+      shell: bash
+      run: |
+        cd tests-qa
+        make pull-selenoid-images &
+
+    - name: Install selenoid
+      shell: bash
+      run: |
+        cd tests-qa
+        make download_selenoid &
+
+    - uses: JarvusInnovations/background-action@v1
+      name: Start selenoid
+      with:
+        working-directory: tests-qa
+        # sets the working directory (cwd) for the shell running commands
+
+        run: |
+          make launch-selenoid &
+        # your step-level and job-level environment variables are available to your commands as-is
+        # npm install will count towards the wait-for timeout
+        # whenever possible, move unrelated scripts to a different step
+        # to background multiple processes: add & to the end of the command
+
+        wait-on: |
+          tcp:localhost:4444
+        # IMPORTANT: to use environment variables in wait-on, you must use this form: ${{ env.VAR }}
+        # See wait-on section below for all resource types and prefixes
+
+        tail: true # true = stderr,stdout
+        # This will allow you to monitor the progress live
+
+        log-output-resume: stderr
+        # Eliminates previously output stderr log entries from post-run output
+
+        wait-for: 5m
+
+        log-output: stderr,stdout # same as true
+
+        log-output-if: failure
+        # failure = exit-early or timeout
+
+    # - name: Collect logs
+    #   shell: bash
+    #   run:
+    #       echo "::group::tests-qa/xxx.out"
+    #       cat tests-qa/*.out
+    #       echo "::endgroup::"
+
+    #       echo "::group::tests-qa/xxx.err"
+    #       cat tests-qa/*.err
+    #       echo "::endgroup::"
