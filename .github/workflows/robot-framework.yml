@@ -27,6 +27,9 @@ env:
   DOCKER_COMPOSE: docker compose -p gk -f docker-compose.local.yml --progress quiet
   APT_INSTALL: sudo apt-get -qq install -qq -o=Dpkg::Use-Pty=0 -y
 
+permissions:
+  pull-requests: write
+
 jobs:
   debug:
     runs-on: ubuntu-latest
@@ -223,7 +226,7 @@ jobs:
 
       - name: Deploy
         env:
-          QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY }}
+          QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
         if: always() && env.QA_TEST_DEPLOY_KEY != ''
         continue-on-error: true
         uses: peaceiris/actions-gh-pages@v3
@@ -241,7 +244,7 @@ jobs:
 
       - name: Show report URL
         env:
-          QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY }}
+          QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
         if: always() && env.QA_TEST_DEPLOY_KEY != ''
         continue-on-error: true
         run: |
@@ -250,6 +253,18 @@ jobs:
           echo '### Robot Framework reports' >> $GITHUB_STEP_SUMMARY
           echo '* [report](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html)' >> $GITHUB_STEP_SUMMARY
           echo '* [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html)' >> $GITHUB_STEP_SUMMARY
+
+      - name: Post report URL in PR
+        uses: thollander/actions-comment-pull-request@v2
+        id: message
+        with:
+          message: |
+            ### Robot Framework reports
+            * [report](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/report.html)
+            * [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ steps.vars.outputs.short_ref }}/visualReport.html)
+          comment_tag: rbfr
+          reactions: eyes, rocket
+          mode: recreate
 
       - name: Stop the docker stack
         if: always()
