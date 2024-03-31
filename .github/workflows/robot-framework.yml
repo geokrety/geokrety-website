@@ -180,6 +180,7 @@ jobs:
         env:
           GEOKRETY_URL: http://localhost:3001/
           GIT_BRANCH: ${{ steps.vars.outputs.short_ref }}
+          TZ: Africa/Nairobi
         run: |
           make test-qa-headless
 
