@@ -29,7 +29,6 @@ jobs:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/semantic-release.yml@main
     needs:
       - docker
-      # # Uncomment to set mandatory
-      # - integration-tests
+      - integration-tests
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
