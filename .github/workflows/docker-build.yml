@@ -5,9 +5,7 @@ on:
     - cron: "0 10 * * *"
   push:
     branches:
-      - feature/new-theme
-    tags:
-      - "v2.*.*"
+      - main
   workflow_dispatch:
 
 jobs:

@@ -18,6 +18,7 @@ jobs:
     with:
       image_name: geokrety/website
       dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
+      build_only: true
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
