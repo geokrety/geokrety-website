@@ -76,7 +76,7 @@ runs:
             echo "::endgroup::"
           done || exit 1
           echo "::group::curl http://${{ env.GK_FQDN }}:3${g}1"
-          curl -v --fail-with-body http://${{ env.GK_FQDN }}:3${g}1
+          curl -v --connect-timeout 5 --fail-with-body http://${{ env.GK_FQDN }}:3${g}1
           echo "::endgroup::"
         done
 
