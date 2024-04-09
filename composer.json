@@ -49,7 +49,7 @@
     "robmorgan/phinx": "^0.14",
     "sentry/sentry": "^4.6",
     "symfony/http-client": "^5.4",
-    "smarty-gettext/smarty-gettext": "^1.6",
+    "smarty-gettext/smarty-gettext": "^1.7",
     "smarty/smarty": "^4.1",
     "tecnickcom/tcpdf": "^6.3",
     "torann/json-ld": "0.0.19",
@@ -80,5 +80,10 @@
     "fakerphp/faker": "^1.23"
   },
   "name": "geokrety/v2",
-  "description": "GKv2"
+  "description": "GKv2",
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": false
+    }
+  }
 }

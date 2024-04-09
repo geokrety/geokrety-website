@@ -11,11 +11,11 @@ on:
         type: boolean
         description: 'Push to crowdin?'
         required: true
-        default: 'true'
+        default: true
 
 jobs:
   crowdin:
-    if: "!contains(github.event.head_commit.message, 'skip translate')"
+    if: "${{ !contains(github.event.head_commit.message, 'skip translate') }}"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -49,11 +49,17 @@ jobs:
 
       - name: Extract strings from smarty templates
         run: |
-          ./vendor/bin/tsmarty2c.php -o ${{ steps.vars.outputs.tmp_dir }}/smarty.pot ./website/app-templates ./website/app-templates/smarty/js/*.js
+          ./vendor/smarty-gettext/smarty-gettext/tsmarty2c.php \
+            -o ${{ steps.vars.outputs.tmp_dir }}/smarty.pot \
+            ./website/app-templates \
+            ./website/app-templates/smarty/js/*.js
 
       - name: Concatenate po files
         run: |
-          msgcat -o website/app/languages/messages.po.txt ${{ steps.vars.outputs.tmp_dir }}/messages.pot ${{ steps.vars.outputs.tmp_dir }}/smarty.pot
+          msgcat \
+            -o website/app/languages/messages.po.txt \
+            ${{ steps.vars.outputs.tmp_dir }}/messages.pot \
+            ${{ steps.vars.outputs.tmp_dir }}/smarty.pot
 
       - name: crowdin action
         uses: crowdin/github-action@v1
