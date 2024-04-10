@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - v2.*
+    tags-ignore:
+      - test
 
   workflow_dispatch:
 

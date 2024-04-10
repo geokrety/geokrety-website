@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    branches-ignore:
+      - test
   workflow_call:
   workflow_dispatch:
 
