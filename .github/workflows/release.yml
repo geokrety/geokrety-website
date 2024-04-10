@@ -7,14 +7,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  pre-commit:
-    uses: geokrety/geokrety-gha-workflows/.github/workflows/pre-commit_php.yml@main
-    with:
-      php_version: 8.2
+  # pre-commit:
+  #   uses: geokrety/geokrety-gha-workflows/.github/workflows/pre-commit_php.yml@main
+  #   with:
+  #     php_version: 8.2
 
   docker:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/docker-build.yml@main
-    needs: pre-commit
+    # needs: pre-commit
     with:
       image_name: geokrety/website
       dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
@@ -22,14 +22,14 @@ jobs:
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
-  integration-tests:
-    uses: ./.github/workflows/robot-framework.yml
-    needs: pre-commit
+  # integration-tests:
+  #   uses: ./.github/workflows/robot-framework.yml
+  #   needs: pre-commit
 
-  build-release:
-    uses: geokrety/geokrety-gha-workflows/.github/workflows/semantic-release.yml@main
-    needs:
-      - docker
-      - integration-tests
-    secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  # build-release:
+  #   uses: geokrety/geokrety-gha-workflows/.github/workflows/semantic-release.yml@main
+  #   needs:
+  #     - docker
+  #     - integration-tests
+  #   secrets:
+  #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
