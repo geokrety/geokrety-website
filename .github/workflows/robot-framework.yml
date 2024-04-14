@@ -124,7 +124,7 @@ jobs:
 
   report-assemble:
     needs: robot-framework
-    if: always()
+    if: "${{ always() && ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
     runs-on: ubuntu-latest
 
     steps:
