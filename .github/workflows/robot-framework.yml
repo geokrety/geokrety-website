@@ -238,7 +238,7 @@ jobs:
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
         if: env.QA_TEST_DEPLOY_KEY != ''
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
 #          force_orphan: true  ## see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-keeping-existing-files-keep_files
           keep_files: true
