@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-09 19:15+0000\n"
-"PO-Revision-Date: 2024-04-09 20:00\n"
+"PO-Revision-Date: 2024-04-23 11:44\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -103,7 +103,7 @@ msgstr "W rękach właściciela"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:15
 msgid "Never Travelled"
-msgstr ""
+msgstr "Nigdy nie podróżował"
 
 #: website/app-templates/smarty/plugins/modifier.posicon.php:57
 msgid "status icon"
@@ -116,7 +116,7 @@ msgstr "Baner statystyk użytkownika: %s"
 
 #: website/app-templates/smarty/plugins/modifier.user_avatar.php:24
 msgid "Profile avatar"
-msgstr ""
+msgstr "avatar profilowy "
 
 #: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
 #, php-format
@@ -173,23 +173,23 @@ msgstr "Brak dostępnych kodów śledzenia przy użyciu tego wzorca."
 
 #: website/app/GeoKrety/Controller/Admin/NewsCreate.php:29
 msgid "Failed to create the News."
-msgstr ""
+msgstr "Nie udało się utworzyć"
 
 #: website/app/GeoKrety/Controller/Admin/NewsCreate.php:35
 msgid "Your News has been created."
-msgstr ""
+msgstr "Twoja wiadomość została utworzona."
 
 #: website/app/GeoKrety/Controller/Admin/NewsEdit.php:19
 msgid "Failed to update the News."
-msgstr ""
+msgstr "Nie udało się zaktualizować"
 
 #: website/app/GeoKrety/Controller/Admin/NewsEdit.php:25
 msgid "Your News has been updated."
-msgstr ""
+msgstr "Twoja wiadomość została zaktualizowana."
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:29
 msgid "Rate limit has been reset"
-msgstr ""
+msgstr "Limit stawek został zresetowany"
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:23
 #, php-format
@@ -199,15 +199,15 @@ msgstr "Skrypt \"%s\" został potwierdzony"
 #: website/app/GeoKrety/Controller/Admin/ScriptsUnlock.php:24
 #, php-format
 msgid "Script \"%s\" has been unlocked"
-msgstr ""
+msgstr "Skrypt \"%s\" został odblokowany"
 
 #: website/app/GeoKrety/Controller/Admin/Traits/ScriptLoader.php:20
 msgid "This script does not exist."
-msgstr ""
+msgstr "Ten skrypt nie istnieje."
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:35
 msgid "This award does not exist"
-msgstr ""
+msgstr "To osiągnięcie nie istnieje"
 
 #: website/app/GeoKrety/Controller/Admin/UserPrizeAwarderManual.php:44
 msgid "The prize has been awarded"
@@ -219,22 +219,22 @@ msgstr "reCaptcha nie powiodło się!"
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:108
 msgid "CSRF error, please try again."
-msgstr ""
+msgstr "Błąd CSRF, spróbuj ponownie."
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:42
 msgid "This query is invalid"
-msgstr ""
+msgstr "Zapytanie jest nieprawidłowe."
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:66
 #, php-format
 msgid "invalid value for \"%s\" parameter"
-msgstr ""
+msgstr "nieprawidłowa wartość dla \"%s\" parametr"
 
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:74
 #: website/app/GeoKrety/Controller/Pages/BaseDatatable.php:78
 #, php-format
 msgid "\"%s\" must be an array"
-msgstr ""
+msgstr "\"%s\" musi być tablicą"
 
 #: website/app/GeoKrety/Controller/Pages/BaseExportXML.php:57
 msgid "Parameter \"userid\" must be a valid number."
@@ -247,15 +247,15 @@ msgstr "Parametr \"gkid\" musi być poprawną liczbą lub GKid (GKXXXXX)."
 #: website/app/GeoKrety/Controller/Pages/BaseRegistration.php:24
 #, php-format
 msgid "Sorry but this mail address is already in use. Do you want to <a href=\"%s\">reset your password</a>?"
-msgstr ""
+msgstr "Przepraszamy, ale ten adres e-mail jest już w użyciu. Czy chcesz <a href=\"%s\">zresetować hasło</a>?"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretAvatarUpload.php:45
 msgid "You are not the GeoKret owner"
-msgstr ""
+msgstr "Nie jesteś właścicielem GeoKreta"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:26
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
-msgstr ""
+msgstr "Przepraszamy, podane kody właściciela i śledzenia nie są zgodne."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:32
 msgid "You are already the owner."
@@ -294,7 +294,7 @@ msgstr "Nie udało się utworzyć początkowego ruchu GeoKreta."
 #: website/app/GeoKrety/Controller/Pages/GeokretDetails.php:34
 #: website/app/GeoKrety/Controller/Pages/GeokretDetails.php:40
 msgid "Invalid log_id"
-msgstr ""
+msgstr "Nieprawidłowy log_id"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:12
 msgid "Only the owner can edit his GeoKrety."
@@ -311,7 +311,7 @@ msgstr "Błąd przy edycji GeoKreta."
 #: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:33
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
 msgid "This label template does not exist."
-msgstr ""
+msgstr "Ten szablon etykiety nie istnieje."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:21
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
@@ -331,7 +331,7 @@ msgstr "Wybierz typ eksportu."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
 msgid "You cannot archive someone else GeoKret."
-msgstr ""
+msgstr "Nie możesz zarchiwizować nie swojego GeoKreta!"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:26
 msgid "This GeoKret is already archived."
@@ -365,23 +365,23 @@ msgstr "Nie udało się utworzyć nowego Kodu Użytkownika."
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:18
 #: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:18
 msgid "You cannot watch your own GeoKrety."
-msgstr ""
+msgstr "Nie możesz oceniać własnych kretów."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:34
 msgid "This GeoKret is not your watch list."
-msgstr ""
+msgstr "Ten GeoKret nie jest na twojej liście obserwowanych"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretUnwatch.php:41
 msgid "This GeoKret has been removed from your watch list."
-msgstr ""
+msgstr "Ten GeoKret został usunięty z Twojej listy obserwowanych"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:34
 msgid "This GeoKret is already in your watch list."
-msgstr ""
+msgstr "Ten GeoKret jest już na Twojej liście obserwowanych"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretWatch.php:43
 msgid "This GeoKret has been added to your watch list."
-msgstr ""
+msgstr "Ten GeoKret został dodany do Twojej listy obserwowanych."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:35
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
