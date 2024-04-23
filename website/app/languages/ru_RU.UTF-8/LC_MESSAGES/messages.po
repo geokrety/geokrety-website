@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-09 19:15+0000\n"
-"PO-Revision-Date: 2024-04-23 07:53\n"
+"PO-Revision-Date: 2024-04-23 09:57\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -1017,16 +1017,16 @@ msgstr "<tspan font-weight=\"bold\">Руководство пользовате�
 
 #: website/app/GeoKrety/Service/Moves.php:64
 msgid "The date time could not be parsed."
-msgstr "Не удалось проанализировать время даты."
+msgstr "Не удалось проанализировать дату и время."
 
 #: website/app/GeoKrety/Service/RateLimit.php:37
 #: website/app/GeoKrety/Service/RateLimit.php:54
 msgid "Rate limit exceeded"
-msgstr "Превышен лимит скорости"
+msgstr "Ограничение скорости превышено"
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
-msgstr "Не удалось сгенерировать код отслеживания"
+msgstr "Не удалось сгенерировать Код отслеживания"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:22
 #, php-format
@@ -1041,7 +1041,7 @@ msgstr "Код отслеживания \"%s\" слишком длинный. Д
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:45
 #, php-format
 msgid "You seems to have used the GeoKret public identifier \"%s\". We need the private code (Tracking Code) here. Hint: it doesn't start with 'GK' 😉"
-msgstr "Похоже, вы использовали публичный идентификатор GeoKret \"%s\", а нам нужен код отслеживания. Подсказка: он не начинается с 'GK' 😉"
+msgstr "Похоже, вы использовали общедоступный Справочный номер ГеоКрота «%s». Здесь нужен конфиденциальный Код отслеживания. Подсказка: он не начинается с 'GK' 😉"
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:57
 #, php-format
@@ -1051,7 +1051,7 @@ msgstr "Код отслеживания \"%s\" содержит недопуст
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:67
 #, php-format
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
-msgstr "Извините, но код отслеживания \"%s\" не найден в нашей базе данных."
+msgstr "Извините, но Код отслеживания \"%s\" не найден в нашей базе данных."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:122
 msgid "No Tracking Code provided."
@@ -1059,12 +1059,12 @@ msgstr "Код отслеживания не указан."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:126
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
-msgstr "Анонимные пользователи не могут сразу проверить несколько кодов отслеживания. Пожалуйста, сначала авторизуйтесь."
+msgstr "Анонимные пользователи не могут проверять несколько Кодов отслеживания одновременно. Пожалуйста, сначала авторизуйтесь."
 
 #: website/app/GeoKrety/Service/Validation/TrackingCode.php:130
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
-msgstr "Только %d коды отслеживания могут быть заданы одновременно, отмечены %d."
+msgstr "Одновременно можно указать только %d Кодов отслеживания, выбрано %d."
 
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:33
@@ -1079,7 +1079,7 @@ msgstr "Если это ваша учетная запись, пожалуйст
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:67
 msgid "Waypoint contains invalid characters."
-msgstr "Точка содержит недопустимые символы."
+msgstr "Путевая точка содержит недопустимые символы."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:92
 #, php-format
@@ -1088,11 +1088,11 @@ msgstr "Посмотрите <a href=\"%s\" target=\"_blank\">страницу �
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
-msgstr "Это тайник с веб-сайта Geocaching.com, который еще не зарегистрирован на веб-сайте GeoKrety.org. Чтобы обеспечить правильное передвижение ГеоКрота, скопируйте и вставьте координаты тайника в поле \"Coordinates\" (Координаты)."
+msgstr "Это тайник Geocaching.com, который еще не зарегистрирован на GeoKrety.org. Чтобы обеспечить правильное перемещение ГеоКрота, скопируйте и вставьте координаты тайника в поле \"Координаты\"."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:99
 msgid "Sorry, but this waypoint is not (yet) in our database. Does it really exist?"
-msgstr "Извините, но этой точки еще нет (пока) в нашей базе данных. Действительно ли она существует?"
+msgstr "Извините, но этой путевой точки еще нет (пока) в нашей базе данных. Действительно ли она существует?"
 
 #: website/app/validators.php:13
 msgid "The {0} field cannot be empty"
@@ -1100,11 +1100,11 @@ msgstr "Поле {0} не может быть пустым"
 
 #: website/app/validators.php:17
 msgid "The {0} field must be a valid date time"
-msgstr "Поле {0} должно быть действительным датой времени"
+msgstr "Поле {0} должно содержать допустимую дату и время"
 
 #: website/app/validators.php:21
 msgid "The GeoKret type is invalid"
-msgstr "Недопустимый тип GeoKret"
+msgstr "Недопустимый тип ГеоКрота"
 
 #: website/app/validators.php:25
 msgid "The move type is invalid"
@@ -1124,7 +1124,7 @@ msgstr "Пароль должен быть зашифрован"
 
 #: website/app/validators.php:46
 msgid "This username is already used"
-msgstr "Это имя пользователя уже используется."
+msgstr "Это имя пользователя уже используется"
 
 #: website/app/validators.php:55
 msgid "Anonymous users must provide a value for {0}"
@@ -1140,7 +1140,7 @@ msgstr "Этот тип журнала требует правильных ко�
 
 #: website/app/validators.php:89
 msgid "Something already exists at the same datetime \"{0}\""
-msgstr "Что-то уже существует в том же временном промежутке\"{0}\""
+msgstr "Что-то уже существует в ту же дату и время \"{0}\""
 
 #: website/app/validators.php:97
 msgid "{0} cannot be in the future"
@@ -1148,7 +1148,7 @@ msgstr "{0} не может быть в будущем"
 
 #: website/app/validators.php:105
 msgid "{0} must be after GeoKret birth"
-msgstr "{0} должен быть после создания GeoKret"
+msgstr "Дата и время {0} должны быть после рождения ГеоКрота"
 
 #: website/public/geokrety.php:25
 msgid "Your request seems invalid."
@@ -1172,7 +1172,7 @@ msgstr "Способ недопустим."
 
 #: website/public/geokrety.php:46
 msgid "We are sorry, something unexpected happened."
-msgstr "К сожалению, произошло нечто неожиданное."
+msgstr "Сожалеем, произошло что-то неожиданное."
 
 #: website/app-templates/smarty/head.tpl:6
 #: website/app-templates/smarty/head.tpl:10
