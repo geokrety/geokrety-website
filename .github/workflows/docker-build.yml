@@ -38,7 +38,7 @@ jobs:
           image_name: geokrety/website
           dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
           dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-          build_only: false
+          push: true
 
   update-version-set:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/version-set.yml@main
