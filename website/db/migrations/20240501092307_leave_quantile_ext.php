@@ -6,7 +6,7 @@ use Phinx\Migration\AbstractMigration;
 
 final class LeaveQuantileExt extends AbstractMigration {
     public function up(): void {
-        $this->execute('DROP EXTENSION quantile;');
+        $this->execute('DROP EXTENSION IF EXISTS quantile;');
         $this->execute(<<<'EOL'
 CREATE OR REPLACE FUNCTION geokrety.moves_stats_updater()
     RETURNS void
