@@ -77,9 +77,8 @@ class AccountActivation extends TokenBase {
             ])
         );
         $this->message['msg'][] = sprintf('<strong>%s</strong>', _('You must click on the link provided in the email to activate your account before your can use it.'));
-        // $this->messageAddLinkExpirationTime($token);
+        $this->messageAddLinkExpirationTime($token);
         $this->flashMessage($token);
-        // $this->_sendActivation($token);
     }
 
     /**

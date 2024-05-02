@@ -31,7 +31,7 @@ class RegistrationActivate extends Base {
         $this->token->used = AccountActivationToken::TOKEN_VALIDATED;
         $this->token->touch('used_on_datetime');
         $this->token->validating_ip = \Base::instance()->get('IP');
-        $this->token->user->account_valid = User::USER_ACCOUNT_VALID;
+        $this->token->user->account_valid = User::USER_ACCOUNT_ACTIVATED;
         $this->token->user->email_invalid = User::USER_EMAIL_NO_ERROR;
         if (!$this->token->validate() || !$this->token->user->validate()) {
             $f3->get('DB')->rollback();

@@ -15,7 +15,7 @@ class RegistrationOAuth extends BaseRegistration {
 
         $user = $this->user;
         $user->username = $f3->get('POST.username');
-        $user->account_valid = User::USER_ACCOUNT_VALID;
+        $user->account_valid = User::USER_ACCOUNT_ACTIVATED;
 
         if (isset($social_data->info->email)) {
             $user->_email = $social_data->info->email;

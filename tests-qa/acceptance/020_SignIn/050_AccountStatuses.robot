@@ -13,6 +13,7 @@ ${USER_ACCOUNT_IMPORTED}    2;
 *** Test Cases ***
 
 Invalid accounts cannot login
+    [Tags]    sendActivationAgainOnLogin
     Seed 1 users with status ${USER_ACCOUNT_INVALID}
 
     Sign In User                        ${USER_1.name}

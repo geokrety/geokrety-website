@@ -91,7 +91,7 @@ class UserEmailChangeToken extends Base {
         // Save the new email
         $this->token->user->set_email($this->token->email);
         $this->token->user->email_invalid = User::USER_EMAIL_NO_ERROR; // mark valid as changing username require in the process
-        $this->token->user->account_valid = User::USER_ACCOUNT_VALID;
+        $this->token->user->account_valid = User::USER_ACCOUNT_ACTIVATED;
 
         if (!$this->token->user->validate()) {
             $this->get($f3);

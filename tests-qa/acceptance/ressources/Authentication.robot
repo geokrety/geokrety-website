@@ -15,7 +15,6 @@ ${PAGE_SIGN_OUT_URL}                    ${PAGE_HOME_URL_EN}/logout
 ${PAGE_LOGIN_USER}                      ${GK_URL}/devel/users/\${params.username}/login
 ${PAGE_LOGOUT_USER}                     ${GK_URL}/devel/users/logout
 
-${PAGE_REGISTER_URL}                    ${PAGE_HOME_URL_EN}/registration
 ${PAGE_REGISTER_ACTIVATION_URL}         ${GK_URL}\/en\/registration\/[^\/]+\/activate
 
 ################
