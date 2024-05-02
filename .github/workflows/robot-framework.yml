@@ -240,7 +240,6 @@ jobs:
         if: env.QA_TEST_DEPLOY_KEY != ''
         uses: peaceiris/actions-gh-pages@v4
         with:
-#          force_orphan: true  ## see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-keeping-existing-files-keep_files
           keep_files: true
           deploy_key: ${{ secrets.QA_TEST_DEPLOY_KEY }}
           external_repository: geokrety/geokrety-website-qa
