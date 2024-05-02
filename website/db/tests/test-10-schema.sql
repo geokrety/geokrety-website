@@ -1,24 +1,24 @@
 -- Start transaction and plan the tests.
 BEGIN;
-SELECT plan(48);
+SELECT plan(56);
 
 -- Run the tests.
+SELECT has_schema('amqp');
 SELECT has_schema('audit');
 SELECT has_schema('geokrety');
 SELECT has_schema('public');
 SELECT has_schema('secure');
-SELECT has_schema('amqp');
-SELECT schemas_are(ARRAY[ 'audit', 'geokrety', 'public', 'secure', 'notify_queues', 'amqp' ]);
+SELECT schemas_are(ARRAY[ 'audit', 'amqp', 'geokrety', 'public', 'secure', 'notify_queues', 'pgtap' ]);
 
-SELECT has_table( 'gk_moves' );
-SELECT has_table( 'gk_users' );
 SELECT has_table( 'gk_account_activation' );
 SELECT has_table( 'gk_awards' );
+SELECT has_table( 'gk_awards_group' );
 SELECT has_table( 'gk_awards_won' );
 SELECT has_table( 'gk_email_activation' );
 SELECT has_table( 'gk_email_revalidate' );
 SELECT has_table( 'gk_geokrety' );
 SELECT has_table( 'gk_geokrety_rating' );
+SELECT has_table( 'gk_labels' );
 SELECT has_table( 'gk_mails' );
 SELECT has_table( 'gk_moves' );
 SELECT has_table( 'gk_moves_comments' );
@@ -30,15 +30,23 @@ SELECT has_table( 'gk_password_tokens' );
 SELECT has_table( 'gk_pictures' );
 SELECT has_table( 'gk_races' );
 SELECT has_table( 'gk_races_participants' );
+SELECT has_table( 'gk_site_settings' );
+SELECT has_table( 'gk_site_settings_parameters' );
+SELECT has_table( 'gk_social_auth_providers' );
 SELECT has_table( 'gk_statistics_counters' );
 SELECT has_table( 'gk_statistics_daily_counters' );
 SELECT has_table( 'gk_users' );
+SELECT has_table( 'gk_users_authentication_history' );
+SELECT has_table( 'gk_users_settings_parameters' );
+SELECT has_table( 'gk_users_social_auth' );
+SELECT has_table( 'gk_users_username_history' );
 SELECT has_table( 'gk_watched' );
 SELECT has_table( 'gk_waypoints_country' );
 SELECT has_table( 'gk_waypoints_gc' );
 SELECT has_table( 'gk_waypoints_oc' );
 SELECT has_table( 'gk_waypoints_sync' );
 SELECT has_table( 'gk_waypoints_types' );
+SELECT has_table( 'gk_yearly_ranking' );
 SELECT has_table( 'phinxlog' );
 SELECT has_table( 'scripts' );
 SELECT has_table( 'sessions' );
