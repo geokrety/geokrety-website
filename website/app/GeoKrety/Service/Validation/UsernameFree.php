@@ -26,10 +26,23 @@ class UsernameFree {
         $f3 = \Base::instance();
         $user = new User();
         $username = trim(preg_replace('/(\pZ\pC)+/u', ' ', $username));
-        if ($user->count(['lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')', $username, $username], ttl: 0) > 0) {
-            if (is_null($email)) {
+        if (is_null($email)) {
+            if ($user->count([
+                'lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\')',
+                $username,
+                $username,
+            ], ttl: 0) > 0) {
                 array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.'), $username));
-            } else {
+            }
+        } else {
+            if ($user->count([
+                'NOT (\'\' != ? AND account_valid = ? AND _email_hash = public.digest(lower(?), \'sha256\')) AND (lower(username) = lower(?) OR _email_hash = public.digest(lower(?), \'sha256\'))',
+                $email,
+                User::USER_ACCOUNT_NON_ACTIVATED,
+                $email,
+                $username,
+                $username,
+            ], ttl: 0) > 0) {
                 array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.').' '._('If that\'s your account, please <a href="%s">login</a> first.'), $username, $f3->alias('login')));
             }
         }
