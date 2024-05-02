@@ -9,6 +9,12 @@ on:
     tags:
       - '*'
   workflow_dispatch:
+    inputs:
+      build_only:
+        type: boolean
+        description: 'Only build the image, no push'
+        required: false
+        default: false
 
 jobs:
   docker:
@@ -38,7 +44,7 @@ jobs:
           image_name: geokrety/website
           dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
           dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-          push: true
+          push: ${{ inputs.build_only == 'false' || true }}
 
   update-version-set:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/version-set.yml@main
