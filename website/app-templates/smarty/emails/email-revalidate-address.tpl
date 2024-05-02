@@ -14,7 +14,7 @@
     <a class="btn btn-success btn-lg" href="{'user_update_email_revalidate_token'|alias:sprintf('token=%s', $token->token)}">{t}Validate your email address{/t}</a>
   </div>
   <div class="s-3"></div>
-  <p>{t expire=$token->validate_expire_on_datetime|print_date_expiration:2}This link expires %1.{/t}</p>
+  <p>{t expire=$token->expire_on_datetime|print_date_expiration:2}This link expires %1.{/t}</p>
 {/block}
 
 {block name=reason}

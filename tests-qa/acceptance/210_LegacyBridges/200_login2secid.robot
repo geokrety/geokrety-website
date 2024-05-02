@@ -35,20 +35,20 @@ Test Form - invalid
     Page Should Contain                   Username and password doesn't match.
 
 Test Login - Invalid user
+    [Tags]    EmailTokenBase
     Clear Database
-    Seed 1 users with status 0
+    Seed 1 users with status ${USER_ACCOUNT_STATUS_INVALID}
     Go To Url                             ${GK_URL}/api-login2secid.php     redirect=${GK_URL}/api/v1/login/secid
     Input Text                            //input[@name="login"]            ${USER_1.name}
     Input Text                            //input[@name="password"]         password
     Click Button                          //button
     Page Should Not Contain               ${USER_1.secid}
     Page Should Contain                   Your account is not valid
-    Go To Url                             ${PAGE_HOME_URL_EN}
-    Mailbox Should Contain 1 Messages
+    Mailbox Should Contain ${0} Messages
 
 Test Login - Valid user
     Clear Database
-    Seed 1 users with status 1
+    Seed 1 users with status ${USER_ACCOUNT_STATUS_VALID}
     Go To Url                             ${GK_URL}/api-login2secid.php     redirect=${GK_URL}/api/v1/login/secid
     Input Text                            //input[@name="login"]            ${USER_1.name}
     Input Text                            //input[@name="password"]         password
@@ -56,8 +56,9 @@ Test Login - Valid user
     Page Should Contain                   ${USER_1.secid}
 
 Test Login - Imported user
+    [Tags]    EmailTokenBase
     Clear Database
-    Seed 1 users with status 2
+    Seed 1 users with status ${USER_ACCOUNT_STATUS_IMPORTED}
     Go To Url                             ${GK_URL}/api-login2secid.php     redirect=${GK_URL}/api/v1/login/secid
     Input Text                            //input[@name="login"]            ${USER_1.name}
     Input Text                            //input[@name="password"]         password

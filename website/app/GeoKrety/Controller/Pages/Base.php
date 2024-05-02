@@ -11,6 +11,8 @@ abstract class Base {
     public const NO_TERMS_OF_USE_REDIRECT_URLS = [
         'login',
         'logout',
+        'devel_login_user',
+        'devel_logout_user',
         'registration',
         'registration_social',
         'registration_activate',

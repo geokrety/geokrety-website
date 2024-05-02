@@ -7,6 +7,7 @@ Test Setup      Test Setup
 *** Test Cases ***
 
 Create an account
+    [Tags]    EmailTokenBase
     Go To Url                 ${PAGE_REGISTER_URL}
     Fill Registration Form    ${USER_2.name}
     ...                       email=${USER_2.email}

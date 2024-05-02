@@ -34,13 +34,12 @@ Changing username success
     Page Should Contain                     Someone, hopefully you, has requested a change on your GeoKrety username to: ${NEW_USERNAME}.
 
     # Old username cannot be used
-    Go To Home
     Sign In User                            ${USER_1.name}
     Flash message shown                     Username and password doesn't match.
 
     # New username is working
     Sign In User                            ${NEW_USERNAME}
-    Location Should Be                      ${PAGE_HOME_URL_EN}
+    User Is Connected
     Element Should Contain                  ${NAVBAR_PROFILE_LINK}    ${NEW_USERNAME}
     Flash message shown                     Welcome on board
 
@@ -59,6 +58,7 @@ Username already used
     Input validation has success            ${USER_CHANGE_USERNAME_INPUT}
 
 Cannot use a username in pending state
+    [Tags]    EmailTokenBase
     Seed ${1} users with status ${0}        start_at=3
     Sign In ${USER_1.name} Fast
     Change username                         ${USER_3.name}
@@ -66,6 +66,7 @@ Cannot use a username in pending state
     Input validation has error help         ${USER_CHANGE_USERNAME_INPUT}       Sorry, but username "${USER_3.name}" is already used.
 
 Invalid accounts cannot proceed to username change
+    [Tags]    EmailTokenBase
     Seed ${1} users with status ${2}        start_at=3
     Sign In ${USER_3.name} Fast
     Go To Url                               ${PAGE_USER_CHANGE_USERNAME_URL}    redirect=${PAGE_USER_3_PROFILE_URL}

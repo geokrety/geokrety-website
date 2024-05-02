@@ -16,6 +16,7 @@
 {include file='macros/recaptcha.tpl'}
 
 {block name=content}
+    {include file='banners/user_account_imported.tpl'}
     <div class="row">
         <div class="col-xs-12 col-md-9">
             <div id="userAvatar" class="{if $user->isCurrentUser()}dropzone{/if}">

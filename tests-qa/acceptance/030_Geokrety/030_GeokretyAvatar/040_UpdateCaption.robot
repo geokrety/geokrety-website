@@ -17,7 +17,7 @@ Define GeoKret avatar caption
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
     Page Should Contain                     Picture caption saved.
 
-    Open Eyes                               SeleniumLibrary  6
+    Open Eyes                               Browser  6
     Scroll Into View                        ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}
     Wait Until Element Is Visible           ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}
     Capture Element                         ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    name=img1

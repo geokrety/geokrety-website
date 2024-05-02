@@ -15,6 +15,7 @@ Link is present
     Location Should Be                  ${PAGE_REGISTER_URL}
 
 Create first account
+    [Tags]    EmailTokenBase
     Register User        ${USER_1}
     User Is Not Connected
     Mailbox Should Contain 1 Messages

@@ -1,6 +1,6 @@
 *** Settings ***
 Resource        Database.robot
-Library         SeleniumLibrary  timeout=10  implicit_wait=0
+Library         libraries/Browser.py  timeout=10  implicit_wait=0
 
 *** Variables ***
 
@@ -60,14 +60,19 @@ Empty Dev Mailbox
     Mailbox Should Contain 0 Messages
 
 Empty Dev Mailbox Fast
-    Go To Url                           ${PAGE_DEV_MAILBOX_CLEAR_URL}/fast
-    Page Should Contain                 OK
+    ${resp} =           Go To Url Fast With Current Session    ${PAGE_DEV_MAILBOX_CLEAR_URL}/fast
+    ${body} =           Convert To String     ${resp.content}
+    Should Contain      ${body}    OK
+
+    # Go To Url                           ${PAGE_DEV_MAILBOX_CLEAR_URL}/fast
+    # Page Should Contain                 OK
 
 Mailbox Should Contain ${count} Messages
-    Go To Url                               ${PAGE_DEV_MAILBOX_URL}
+    Go To Url In New Tab                    ${PAGE_DEV_MAILBOX_URL}
     Element Text Should Be                  ${NAVBAR_DEV_MAILBOX_COUNTER}     ${count}
     ${rowCount} =     Get Element Count     ${DEV_MAILBOX_MAILS_TABLE_ROWS}
     Should Be Equal As Integers             ${count}    ${rowCount}
+    Close Tab
 
 Mailbox Message ${number} Subject Should Contain ${message}
     Go To Url                           ${PAGE_DEV_MAILBOX_URL}

@@ -14,6 +14,9 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
     public array $recipients = [];
     private array $subject = [];
 
+    // Must be set before call to setTo() else default will apply
+    protected bool $allowSend;
+
     /**
      * myPHPMailer constructor.
      *
@@ -26,6 +29,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         $this->setFromDefault();
         $this->addCustomHeader('Errors-To', GK_SITE_EMAIL);
         $this->addCustomHeader('X-GKPHPMailer', 'true');
+        $this->addReplyTo(GK_SITE_EMAIL_NOREPLY);
         $this->isSMTP();
         $this->Host = GK_SMTP_URI;
         $this->SMTPAuth = (bool) GK_SMTP_USER;
@@ -34,13 +38,14 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         // $this->SMTPDebug = SMTP::DEBUG_SERVER;
         $this->CharSet = self::CHARSET_UTF8;
         $this->Body = $body;
+        // $this->allowSend = null;
     }
 
     /**
      * @throws \PHPMailer\PHPMailer\Exception
      */
     protected function setFromDefault() {
-        $this->setFrom(GK_SITE_EMAIL, 'Geokrety');
+        $this->setFrom(GK_SITE_EMAIL, 'GeoKrety');
     }
 
     /**
@@ -57,6 +62,17 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         throw new \Exception('addAddress(): Please use setTo() instead.');
     }
 
+    /**
+     * Send localized messages to all users from the recipients list.
+     *
+     * @param string $template_name the email template to use
+     *
+     * @return bool True on success
+     *
+     * @throws \PHPMailer\PHPMailer\Exception
+     * @throws \Prometheus\Exception\MetricsRegistrationException
+     * @throws \SmartyException
+     */
     protected function sendEmail(string $template_name): bool {
         if (sizeof($this->recipients) === 0) {
             return false;
@@ -65,18 +81,19 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         foreach ($this->recipients as $user) {
             Metrics::counter('mail', 'Total number of sent email');
             $this->isHTML(true);
-            $this->addReplyTo(GK_SITE_EMAIL_NOREPLY);
             Smarty::assign('user', $user);
             LanguageService::changeLanguageTo($user->preferred_language);
             $this->Subject = $this->getSubject();
             $this->msgHTML(Smarty::fetch($template_name));
             parent::clearAddresses();
             parent::addAddress($user->email, $user->username);
+            // Save the message in local session on dev instance
             if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
                 $this->store_in_local_session();
                 Event::instance()->emit('mail.sent', $this);
                 continue;
             }
+            // When an error occured
             if (!parent::send()) {
                 $return = false;
                 Event::instance()->emit('mail.error', $this);
@@ -85,6 +102,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
                 } else {
                     \Flash::instance()->addMessage(_('An error occurred while sending mail.'), 'danger');
                 }
+                continue;
             }
             Event::instance()->emit('mail.sent', $this);
         }
@@ -131,21 +149,30 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
 
             return;
         }
-        // if (!GK_IS_PRODUCTION) {
-        foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
-            $_admin = $user->findone(['id = ?', $admin_id], null, 60);
-            $_user = clone $user;
-            $_user->email = $_admin->email;
-            $_user->username .= ' (admin)';
-            $this->recipients[] = $_user;
+        if (!GK_IS_PRODUCTION) {
+            // Send copy to admins
+            foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
+                $_admin = $user->findone(['id = ?', $admin_id], null, 60);
+                $_user = clone $user;
+                $_user->email = $_admin->email;
+                $_user->username .= ' (admin)';
+                $this->recipients[] = $_user;
+            }
         }
-        // }
         if ($realRecipient or GK_IS_PRODUCTION) {
-            if (!$user->hasEmail() or (!$user->isEmailValid() and !$force)) {
+            if (!$user->hasEmail() or (!$this->allowSend($user) and !$force)) {
                 return;
             }
             $this->recipients[] = $user;
         }
+    }
+
+    private function allowSend(User $user): bool {
+        if (!isset($this->allowSend)) {
+            $this->allowSend = $user->isEmailValid();
+        }
+
+        return $this->allowSend;
     }
 
     protected function setToAdmins() {

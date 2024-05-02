@@ -12,6 +12,7 @@ class PasswordChange extends BasePHPMailer {
     }
 
     public function sendPasswordChangeToken(PasswordToken $token) {
+        $this->allowSend = $token->user->isEmailValidForAdmintask();
         $this->setTo($token->user);
         Smarty::assign('token', $token);
         $this->setSubject(_('Password reset request'), '🔑');

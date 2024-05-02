@@ -4,6 +4,7 @@ Resource        ../../ressources/Authentication.robot
 Resource        ../../ressources/Users.robot
 Variables       ../../ressources/vars/users.yml
 Test Setup      Test Setup
+Test Tags       EmailTokenBase
 
 *** Test Cases ***
 
