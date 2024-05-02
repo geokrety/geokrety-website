@@ -3,6 +3,7 @@ Library         RequestsLibrary
 Resource        ../../ressources/Authentication.robot
 Variables       ../../ressources/vars/users.yml
 Test Setup      Test Setup
+Task Tags       UsernameFree
 
 *** Variables ***
 

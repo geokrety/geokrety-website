@@ -52,7 +52,7 @@ class AccountActivation extends TokenBase {
         $this->message['msg'][] = sprintf('<strong>%s</strong>', _('You must click on the link provided in the email to activate your account before your can use it.'));
         $this->messageAddLinkExpirationTime($token);
         $this->flashMessage($token);
-        // $this->_sendActivation($token);
+        $this->_sendActivation($token->user);
     }
 
     /**
@@ -109,6 +109,9 @@ class AccountActivation extends TokenBase {
     }
 
     protected function afterEmailSentHook(): void {
-        \Base::instance()->clear(self::SESSION_SEND_ACTIVATION_AGAIN);
+        $f3 = \Base::instance();
+        if ($f3->exists(self::SESSION_SEND_ACTIVATION_AGAIN)) {
+            $f3->clear(self::SESSION_SEND_ACTIVATION_AGAIN);
+        }
     }
 }
