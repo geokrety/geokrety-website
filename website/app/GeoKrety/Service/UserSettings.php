@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Service;
 
+use GeoKrety\Model\CustomUsersSettings;
 use GeoKrety\Model\User;
-use GeoKrety\Model\UsersSettings;
 use GeoKrety\Model\UsersSettingsParameters;
 use Sugar\Event;
 
@@ -14,12 +14,12 @@ class UserSettings extends \Prefab {
     /**
      * Create or update a user personal setting.
      *
-     * @param \GeoKrety\Model\User|int $user
+     * @param User|int $user
      *
      * @throws \Exception
      */
     public function put($user, string $setting_name, $value): bool {
-        $setting = new UsersSettings();
+        $setting = new CustomUsersSettings();
         $setting->load(['user = ? AND name = ?', gettype($user) === 'GeoKrety\Model\User' ? $user->id : $user, $setting_name]);
         $setting->name = $setting_name;
         $setting->user = $user;
@@ -95,7 +95,7 @@ class UserSettings extends \Prefab {
     public function getDefault(string $setting_name) {
         $users_settings_parameters = new UsersSettingsParameters();
         if (!$users_settings_parameters->load(['name = ?', $setting_name], ttl: 0)) {
-            throw new \GeoKrety\Model\NoSuchSettingException("Setting '$setting_name' doesn't exist");
+            throw new \GeoKrety\Model\NoSuchSettingException("User setting '$setting_name' doesn't exist");
         }
 
         return $users_settings_parameters->default;
@@ -108,7 +108,7 @@ class UserSettings extends \Prefab {
         // Declare settings as loaded
         $f3 = \Base::instance();
         $f3->set('SESSION.SETTINGS', []);
-        $users_settings = new UsersSettings();
+        $users_settings = new CustomUsersSettings();
         $settings = $users_settings->find(['user = ?', gettype($user) === 'GeoKrety\Model\User' ? $user->id : $user]);
         if (!$settings) {
             return;

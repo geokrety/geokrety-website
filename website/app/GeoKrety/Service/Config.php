@@ -127,7 +127,7 @@ class Config extends \Prefab {
         define('GK_DB_NAME', getenv('GK_DB_NAME') ?: 'geokrety');
         define('GK_DB_USER', getenv('GK_DB_USER') ?: 'geokrety');
         define('GK_DB_SCHEMA', getenv('GK_DB_SCHEMA') ?: 'geokrety');
-        define('GK_DB_PASSWORD', getenv('GK_DB_PASSWORD') ?: 'geokrety');
+        define('GK_DB_PASSWORD', getsecret('GK_DB_PASSWORD') ?: 'geokrety');
         define('GK_DB_DSN', getenv('GK_DB_DSN') ?: sprintf('%s:host=%s;dbname=%s;user=%s;password=%s', GK_DB_ENGINE, GK_DB_HOST, GK_DB_NAME, GK_DB_USER, GK_DB_PASSWORD));
 
         define('GK_DB_DATETIME_FORMAT', 'Y-m-d H:i:sP');

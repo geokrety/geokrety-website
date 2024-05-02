@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Email;
 
-use Carbon\Carbon;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
@@ -11,10 +10,6 @@ class AccountActivation extends TokenBase {
     protected string $template = 'emails/account-activation.tpl';
     public const SESSION_SEND_ACTIVATION_AGAIN = 'SESSION.sendActivationAgainOnLoginCSRF';
 
-    /**
-     * @param bool|null $exceptions
-     * @param string $body
-     */
     public function __construct(?bool $exceptions = true, string $body = '') {
         parent::__construct($exceptions, $body);
         parent::setSubject(_('Welcome to GeoKrety.org'), '🎉');
@@ -51,7 +46,6 @@ class AccountActivation extends TokenBase {
      * @return void
      */
     public function sendActivationOnCreateAgain(AccountActivationToken $token) {
-        die(); // TODO No unit test for this?
         $this->message['status'] = 'danger';
         $this->message['msg'][] = _('Your account seems to already exist.');
         $this->message['msg'][] = _('The confirmation email was sent again to your mail address.');
@@ -111,12 +105,10 @@ class AccountActivation extends TokenBase {
             $token->user = $user;
             $token->save();
         }
+
         return $token;
     }
 
-    /**
-     * @return void
-     */
     protected function afterEmailSentHook(): void {
         \Base::instance()->clear(self::SESSION_SEND_ACTIVATION_AGAIN);
     }
