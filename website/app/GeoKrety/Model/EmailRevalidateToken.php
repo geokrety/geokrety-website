@@ -10,6 +10,13 @@ use Sugar\Event;
  * @property string token
  * @property User user
  * @property int used
+ * @property \DateTime created_on_datetime
+ * @property \DateTime updated_on_datetime
+ * @property \DateTime|null validated_on_datetime
+ * @property \DateTime|null expired_on_datetime
+ * @property \DateTime|null disabled_on_datetime
+ * @property string|null validating_ip
+ * @property \DateTime last_notification_datetime
  */
 class EmailRevalidateToken extends Base {
     use EmailField;
@@ -57,7 +64,7 @@ class EmailRevalidateToken extends Base {
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
+            // 'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],
@@ -81,6 +88,11 @@ class EmailRevalidateToken extends Base {
             'nullable' => true,
             'validate' => 'valid_ip',
         ],
+        'last_notification_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
+            'validate' => 'is_date',
+        ],
     ];
 
     public function get_created_on_datetime($value): ?\DateTime {
@@ -99,8 +111,23 @@ class EmailRevalidateToken extends Base {
         return self::get_date_object($value);
     }
 
+    public function get_expire_on_datetime($value): ?\DateTime {
+        return self::get_date_object($value);
+    }
+
     public function get_disabled_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
+    }
+
+    public function get_last_notification_datetime($value): ?\DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function sendIntervalValid(): bool {
+        $next = new \DateTime();
+        $next->sub(new \DateInterval(sprintf('PT%sM', GK_SITE_EMAIL_REVALIDATE_SEND_INTERVAL_MINUTES)));
+
+        return $next > $this->last_notification_datetime;
     }
 
     public function __construct() {
@@ -118,7 +145,7 @@ class EmailRevalidateToken extends Base {
             Event::instance()->emit('email-revalidation.token.generated', $self);
         });
 
-        $this->virtual('validate_expire_on_datetime', function ($self): \DateTime {
+        $this->virtual('expire_on_datetime', function ($self): \DateTime {
             $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
             return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVALIDATE_CODE_DAYS_VALIDITY)));

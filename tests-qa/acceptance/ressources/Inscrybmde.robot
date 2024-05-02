@@ -1,5 +1,5 @@
 *** Settings ***
-Library           SeleniumLibrary  timeout=10  implicit_wait=0
+Library            libraries/Browser.py  timeout=10  implicit_wait=0
 
 *** Variables ***
 

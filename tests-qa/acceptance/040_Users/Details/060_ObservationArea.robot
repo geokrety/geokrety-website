@@ -88,7 +88,7 @@ Save Observation Area Preferences
     Go To Url                               ${PAGE_USER_1_PROFILE_URL}
     Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30
 
-    Open Eyes                               SeleniumLibrary  6
+    Open Eyes                               Browser  6
     Scroll To Element                       ${USER_PROFILE_MINI_MAP_PANEL}
     Wait Until Element Is Visible           ${USER_PROFILE_MINI_MAP_PANEL}
     Capture Element                         ${USER_PROFILE_MINI_MAP_PANEL}
@@ -160,7 +160,7 @@ Check Map circle should reflect observation
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_1_OBSERVATION_AREA_URL}
     Fill form                               ${COORDS_NEW_YORK}    ${radius}
-    Open Eyes                               SeleniumLibrary  5     template_id=${radius}
+    Open Eyes                               Browser  5     template_id=${radius}
     Scroll To Element                       ${USER_OBSERVATION_AREA_MAP}
     Wait Until Element Is Visible           ${USER_OBSERVATION_AREA_MAP}
     Capture Element                         ${USER_OBSERVATION_AREA_MAP}

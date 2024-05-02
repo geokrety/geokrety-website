@@ -13,6 +13,7 @@ Seeded are fully valid
     Location Should Not Be              ${PAGE_TERMS_OF_USE_URL}
 
 Freshly created accounts are fully valid
+    [Tags]    EmailTokenBase
     [Documentation]                     No TermsOfUse question for fresh users
     Register User                       ${USER_1}
     Activate user account

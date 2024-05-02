@@ -6,7 +6,6 @@ use DateTime;
 use DB\CortexCollection;
 use DB\SQL\Schema;
 use GeoKrety\Email\AccountActivation;
-use GeoKrety\Email\EmailRevalidate;
 
 /**
  * @property int|null id
@@ -58,12 +57,25 @@ class User extends Base implements \JsonSerializable {
         self::USER_ACCOUNT_INVALID,
         self::USER_ACCOUNT_IMPORTED,
     ];
-    // TODO: there is more status: terms_of_use, `INVALID` is in fact `UNVALIDATED`…
 
     public const USER_EMAIL_NO_ERROR = 0;
-    public const USER_EMAIL_INVALID = 1;
+    public const USER_EMAIL_DOES_NOT_EXIST = 1;
     public const USER_EMAIL_UNCONFIRMED = 2;
     public const USER_EMAIL_MISSING = 3;
+    public const USER_EMAIL_MAILBOX_FULL = 4;
+
+    public const USER_EMAIL_TEXT = [
+        self::USER_EMAIL_NO_ERROR => 'Valid',
+        self::USER_EMAIL_DOES_NOT_EXIST => 'Mailbox doesn\'t exist',
+        self::USER_EMAIL_UNCONFIRMED => 'Unconfirmed',
+        self::USER_EMAIL_MISSING => 'No email defined',
+        self::USER_EMAIL_MAILBOX_FULL => 'Mailbox full',
+    ];
+
+    public const USER_EMAIL_STATUS_VALID_FOR_ADMIN = [
+        self::USER_EMAIL_DOES_NOT_EXIST,
+        self::USER_EMAIL_MISSING,
+    ];
 
     protected $db = 'DB';
     protected $table = 'gk_users';
@@ -321,6 +333,10 @@ class User extends Base implements \JsonSerializable {
         return $this->email_invalid === self::USER_EMAIL_NO_ERROR;
     }
 
+    public function isEmailValidForAdmintask(): bool {
+        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_VALID_FOR_ADMIN);
+    }
+
     public function hasPassword(): bool {
         return !is_null($this->password);
     }
@@ -352,11 +368,8 @@ class User extends Base implements \JsonSerializable {
             // skip sending mail
             return;
         }
-        $token = new AccountActivationToken();
-        $token->user = $this;
-        $token->save();
         $smtp = new AccountActivation();
-        $smtp->sendActivation($token);
+        $smtp->sendActivationOnCreate($this);
     }
 
     public function resendAccountActivationEmail(bool $notif_only = false): void {
@@ -365,26 +378,9 @@ class User extends Base implements \JsonSerializable {
             return;
         }
 
-        if ($this->isAccountImported()) {
-            $token = new EmailRevalidateToken();
-            $token->user = $this;
-            $token->set_email($this->get_email());
-            $token->save();
-            $smtp = new EmailRevalidate();
-            $smtp->sendRevalidation($token, $notif_only);
-
-            return;
-        }
-
-        if ($this->isAccountInvalid()) {
-            $token = new AccountActivationToken();
-            $token->loadUserActiveToken($this);
-            if ($token->dry()) {
-                $token->user = $this;
-                $token->save();
-            }
+        if ($this->isAccountInvalid() && !$this->isAccountImported()) {
             $smtp = new AccountActivation();
-            $smtp->sendActivationAgainOnLogin($token, $notif_only);
+            $smtp->sendActivationAgainOnLogin($this);
         }
     }
 

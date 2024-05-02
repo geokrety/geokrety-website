@@ -11,7 +11,7 @@ Test Setup      Test Setup
 *** Test Cases ***
 
 Set image as main geokret avatar
-    Open Eyes                               SeleniumLibrary  5
+    Open Eyes                               Browser  5
 
     Post GeoKret Avatar                     ${CURDIR}/../../ressources/pictures/sample-picture.png
     Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}

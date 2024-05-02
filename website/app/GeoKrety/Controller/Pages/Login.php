@@ -27,7 +27,7 @@ class Login extends Base {
     private const SECID_TOKEN_NOT_EXISTING_ERROR = 2;
     public const NO_GRAPHIC_LOGIN = [
         'secid',
-        ];
+    ];
 
     public function loginFormFragment() {
         Smarty::render('extends:base_modal.tpl|dialog/login.tpl');
@@ -177,10 +177,10 @@ class Login extends Base {
             echo $this->getApi2SecidLegacyError(self::API2SECID_EMPTY_CREDENTIALS_ERROR);
             echo _('Please provide \'login\' and \'password\' parameters.');
             Event::instance()->emit('user.login.api2secid-failure', [
-                    'username' => $f3->get('POST.login'),
-                    'error' => self::API2SECID_EMPTY_CREDENTIALS_ERROR,
-                    'error_message' => 'Please provide \'login\' and \'password\' parameters.',
-                    ]);
+                'username' => $f3->get('POST.login'),
+                'error' => self::API2SECID_EMPTY_CREDENTIALS_ERROR,
+                'error_message' => 'Please provide \'login\' and \'password\' parameters.',
+            ]);
             exit;
         }
         $auth = new Auth('password', ['id' => 'username', 'pw' => 'password']);
@@ -195,7 +195,7 @@ class Login extends Base {
                     'username' => $f3->get('POST.login'),
                     'error' => self::API2SECID_INVALID_ACCOUNT_ERROR,
                     'error_message' => 'Your account is not valid.',
-                    ]);
+                ]);
                 $user->resendAccountActivationEmail();
                 Login::disconnectUser($f3);
                 exit;
@@ -210,7 +210,7 @@ class Login extends Base {
             'username' => $f3->get('POST.login'),
             'error' => self::API2SECID_CREDENTIALS_FAILS_ERROR,
             'error_message' => 'Username and password doesn\'t match.',
-            ]);
+        ]);
         echo $this->getApi2SecidLegacyError(self::API2SECID_CREDENTIALS_FAILS_ERROR);
         echo _('Username and password doesn\'t match.');
     }
@@ -228,7 +228,7 @@ class Login extends Base {
                 'secid' => $secid,
                 'error' => self::SECID_TOKEN_INVALID_LENGTH_ERROR,
                 'error_message' => 'Invalid "secid" length',
-                ]);
+            ]);
             exit;
         }
         $auth = new Auth('secid');
@@ -239,7 +239,7 @@ class Login extends Base {
                 'secid' => $secid,
                 'error' => self::SECID_TOKEN_NOT_EXISTING_ERROR,
                 'error_message' => 'This "secid" does not exist',
-                ]);
+            ]);
             exit;
         }
         Event::instance()->emit('user.login.secid', $user);

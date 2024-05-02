@@ -5,6 +5,10 @@ Resource        vars/Urls.robot
 
 *** Variables ***
 
+${USER_ACCOUNT_STATUS_INVALID}          ${0}
+${USER_ACCOUNT_STATUS_VALID}            ${1}
+${USER_ACCOUNT_STATUS_IMPORTED}         ${2}
+
 ${PAGE_SIGN_IN_URL}                     ${PAGE_HOME_URL_EN}/login
 ${PAGE_SIGN_OUT_URL}                    ${PAGE_HOME_URL_EN}/logout
 
@@ -47,8 +51,9 @@ ${SIGN_IN_FORM_SIGN_IN_BUTTON}              //form//button[@type="submit" and co
 
 Sign In User
     [Arguments]     ${username}     ${password}=password    ${base}=${EMPTY}
-    Go To Home
-    Sign In User From Here              ${username}     ${password}    ${base}
+    Go To                               ${PAGE_SIGN_IN_URL}
+    Sign In Fill Form                   ${username}     ${password}    ${base}
+    Click Button                        ${base}${SIGN_IN_FORM_SIGN_IN_BUTTON}
 
 Sign In User From Here
     [Arguments]     ${username}     ${password}=password    ${base}=${MODAL_DIALOG}
@@ -96,7 +101,7 @@ Register User
     ELSE
         Page Should Contain             A confirmation email has been sent to your address
     END
-    Mailbox Should Contain 1 Messages
+    Mailbox Should Contain ${1} Messages
 
 Activate user account
     Mailbox Open Message ${1}
@@ -113,7 +118,7 @@ User Is Connected
 User Is Not Connected
     Page Should Contain Link            ${NAVBAR_REGISTER_LINK}
     Page Should Not Contain Link        ${NAVBAR_PROFILE_LINK}
-
+    Page Should Not Contain             Welcome on board
 
 Page Should Show Registration Form
     Wait Until Element Is Visible       ${REGISTRATION_REGISTER_BUTTON}
@@ -127,7 +132,6 @@ Page Should Show Registration Form
 
 
 Fill Registration Form
-    # [Arguments]    &{user}
     [Arguments]    ${username}  ${email}=${username}+qa@geokrety.org    ${password}=password
     ...            ${language}=en    ${daily_mail}=${FALSE}   ${terms_of_use}=${TRUE}
     Input Text                      ${REGISTRATION_USERNAME_INPUT}              ${username}

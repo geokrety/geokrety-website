@@ -6,6 +6,7 @@ Test Setup      Test Setup
 
 *** Test Cases ***
 Terms of use unchecked
+    [Tags]    EmailTokenBase
     [Documentation]               When unckecked form cannot be submitted
 
     Go To Url                     ${PAGE_REGISTER_URL}

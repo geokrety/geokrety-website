@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Website URLS
 Resource          ../CustomActions.robot
-Library           SeleniumLibrary  timeout=10  implicit_wait=0
+Library           ../libraries/Browser.py  timeout=10  implicit_wait=0
 Library           ../libraries/ReplaceVariablesAsUrl.py
 
 *** Variables ***
@@ -130,6 +130,21 @@ Go To Url Fast
     ${resp} =    GET                       ${url_}
     ${body} =    Convert To String         ${resp.content}
     Variable Without Warning Or Failure    ${body}
+    RETURN    ${resp}
+
+Go To Url Fast With Current Session
+    [Arguments]    ${url}    ${redirect}=${EMPTY}    &{params}
+    ${url_} =                  Replace Variables    ${url}
+    ${url_} =                  Requote Uri          ${url_}
+
+    ${cookies} = 	    Get Cookies           as_dict=True
+    Create Session      geokrety              ${GK_URL}         cookies=${cookies}
+    ${resp} =           GET On Session        geokrety
+    ...    ${url_}
+    ...    allow_redirects=${False}
+    ${body} =           Convert To String     ${resp.content}
+    Variable Without Warning Or Failure    ${body}
+    RETURN    ${resp}
 
 Get Url With Param
     [Arguments]    ${url}    &{params}
@@ -155,7 +170,8 @@ Location Should Match Regexp
 
 # Shortcut to common pages
 Go To Home
-    Go To Url                  ${GK_URL}    ${PAGE_HOME_URL_EN}
+    Go To Url                  ${PAGE_HOME_URL_EN}
+    # Go To Url                  ${GK_URL}    ${PAGE_HOME_URL_EN}
 
 Go To User ${userid}
     [Arguments]    ${redirect}=${EMPTY}

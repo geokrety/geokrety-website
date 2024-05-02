@@ -1,7 +1,7 @@
 *** Settings ***
 Resource          CustomActions.robot
 Resource          ComponentsLocator.robot
-Library           SeleniumLibrary  timeout=10  implicit_wait=0
+Library            libraries/Browser.py  timeout=10  implicit_wait=0
 Library           RobotEyes
 Library 	      OperatingSystem
 
@@ -43,7 +43,7 @@ ${USER_PROFILE_AVATAR_GALLERY}                  ${USER_PROFILE_DETAILS_PANEL}//d
 
 Check Image
     [Arguments]    ${element}    ${name}=img1
-    Open Eyes                               SeleniumLibrary  5
+    Open Eyes                               Browser  5
     Scroll Into View                        ${GK_LOGO_LINK}
     Scroll Into View                        ${element}
     Wait Until Element Is Visible           ${element}

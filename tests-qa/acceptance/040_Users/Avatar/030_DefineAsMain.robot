@@ -9,7 +9,7 @@ Test Setup      Test Setup
 *** Test Cases ***
 
 Set image as main avatar
-    Open Eyes                               SeleniumLibrary  5
+    Open Eyes                               Browser  5
 
     Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture.png
     Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}         ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}

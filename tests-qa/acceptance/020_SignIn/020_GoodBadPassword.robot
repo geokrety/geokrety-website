@@ -20,13 +20,13 @@ Wrong password
     Sign In User                        ${USER_1.name}    bad password
     Page Should Contain                 ${MSG_PASSWORD_DO_NOT_MATCH}
     User Is Not Connected
-    Location Should Contain             ${PAGE_SIGN_IN_URL}?goto=
+    Location Should Contain             ${PAGE_SIGN_IN_URL}?
 
 Non existent username
     Sign In User                        someone inexistent    password
     Page Should Contain                 ${MSG_PASSWORD_DO_NOT_MATCH}
     User Is Not Connected
-    Location Should Contain             ${PAGE_SIGN_IN_URL}?goto=
+    Location Should Contain             ${PAGE_SIGN_IN_URL}?
 
 *** Keywords ***
 

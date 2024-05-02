@@ -7,7 +7,7 @@ SELECT plan(6);
 
 -- const USER_EMAIL_NO_ERROR = 0;
 SELECT lives_ok($$INSERT INTO "gk_users" ("id", "username", "registration_ip", "email_invalid") VALUES (1, 'username1', '127.0.0.1', 0::smallint)$$);
--- const USER_EMAIL_INVALID = 1;
+-- const USER_EMAIL_DOES_NOT_EXIST = 1;
 SELECT lives_ok($$INSERT INTO "gk_users" ("id", "username", "registration_ip", "email_invalid") VALUES (2, 'username2', '127.0.0.1', 1::smallint)$$);
 -- const USER_EMAIL_UNCONFIRMED = 2;
 SELECT lives_ok($$INSERT INTO "gk_users" ("id", "username", "registration_ip", "email_invalid") VALUES (3, 'username3', '127.0.0.1', 2::smallint)$$);

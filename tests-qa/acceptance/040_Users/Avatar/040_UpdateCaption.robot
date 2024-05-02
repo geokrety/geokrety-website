@@ -14,7 +14,7 @@ Define User Avatar Caption
     Input Text                              ${CAPTION_INPUT}    Bonjour
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
 
-    Open Eyes                               SeleniumLibrary  6
+    Open Eyes                               Browser  6
     Page Should Contain                     Picture caption saved.
     Scroll Into View                        ${USER_PROFILE_FIRST_IMAGE}
     Wait Until Element Is Visible           ${USER_PROFILE_FIRST_IMAGE}

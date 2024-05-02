@@ -49,7 +49,7 @@ Select banner
     Click Button                            ${USER_BANER_TEMPLATE_CHOOSER_SUBMIT_BUTTON}
     Flash message shown                     Your user banner template preference has been successfully saved.
 
-    Open Eyes                               SeleniumLibrary  5       template_id=${templateId}
+    Open Eyes                               Browser  5       template_id=${templateId}
     Scroll To Element                       ${USER_PROFILE_STATPIC_IMAGE}
     Wait Until Element Is Visible           ${USER_PROFILE_STATPIC_IMAGE}
     Capture Element                         ${USER_PROFILE_STATPIC_IMAGE}

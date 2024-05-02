@@ -22,7 +22,7 @@ class Session extends SQL\Session {
 
             return '';
         }
-        if ($this->get('ip') != $this->_ip || $this->get('agent') != $this->_agent) {
+        if (!GK_DEVEL && ($this->get('ip') != $this->_ip || $this->get('agent') != $this->_agent)) {
             $fw = \Base::instance();
             if (!isset($this->onsuspect)
                 || $fw->call($this->onsuspect, [$this, $id]) === false) {
