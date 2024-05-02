@@ -7,7 +7,7 @@ use GeoKrety\Session;
  * @param JsonSerializable|array $newObjectModel
  */
 function audit(string $event, $newObjectModel) {
-    $log = new \GeoKrety\Model\AuditLog();
+    $log = new GeoKrety\Model\AuditLog();
     $log->event = $event;
     try {
         $log->context = json_encode($newObjectModel);
@@ -18,7 +18,7 @@ function audit(string $event, $newObjectModel) {
 }
 
 // Listen Events
-$events = \Sugar\Event::instance();
+$events = Sugar\Event::instance();
 $events->on('rate-limit.success', function (array $context) {
     // audit('rate-limit.exceeded', $context);
     header('X-GK-Rate-Limit-Exeeced: false');
@@ -63,14 +63,14 @@ $events->on('user.create-spam.gkv1', function (array $data) {
 });
 $events->on('user.created', function (GeoKrety\Model\User $user) {
     audit('user.created', $user);
-    \GeoKrety\Service\UserBanner::generate($user);
+    GeoKrety\Service\UserBanner::generate($user);
     Metrics::counter('users_total', 'Total number of accounts', ['verb'], ['created']);
 });
 $events->on('user.renamed', function (GeoKrety\Model\User $user, $context) {  // context => $oldUserName
     audit('user.renamed', array_merge($user->jsonSerialize(), $context));
-    \GeoKrety\Service\UserBanner::generate($user);
+    GeoKrety\Service\UserBanner::generate($user);
     Metrics::counter('users_renames', 'Total number of renamed accounts', ['verb'], ['renamed']);
-    $mail = new \GeoKrety\Email\UsernameChange();
+    $mail = new GeoKrety\Email\UsernameChange();
     $mail->sendUsernameChangedNotification($user);
 });
 $events->on('user.activated', function (GeoKrety\Model\User $user) {
@@ -91,9 +91,9 @@ $events->on('activation.token.used', function (GeoKrety\Model\AccountActivationT
 });
 $events->on('user.login.password', function (GeoKrety\Model\User $user) {
     audit('user.login.password', $user);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
         $user->username,
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_PASSWORD,
+        GeoKrety\Model\UsersAuthenticationHistory::METHOD_PASSWORD,
         $user,
     );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['password']);
@@ -105,9 +105,9 @@ $events->on('user.login.password-effective', function (GeoKrety\Model\User $user
 });
 $events->on('user.login.password-failure', function (array $context) {
     audit('user.login.password-failure', $context);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
         $context['username'],
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_PASSWORD,
+        GeoKrety\Model\UsersAuthenticationHistory::METHOD_PASSWORD,
         null,
         false,
         $context['error_message'],
@@ -116,9 +116,9 @@ $events->on('user.login.password-failure', function (array $context) {
 });
 $events->on('user.login.secid', function (GeoKrety\Model\User $user) {
     audit('user.login.secid', $user);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
         $user->username,
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_SECID,
+        GeoKrety\Model\UsersAuthenticationHistory::METHOD_SECID,
         $user,
     );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['secid']);
@@ -130,9 +130,9 @@ $events->on('user.login.secid-effective', function (GeoKrety\Model\User $user) {
 });
 $events->on('user.login.secid-failure', function (array $context) {
     audit('user.login.secid-failure', $context);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
         $context['secid'],
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_SECID,
+        GeoKrety\Model\UsersAuthenticationHistory::METHOD_SECID,
         null,
         false,
         $context['error_message'],
@@ -147,13 +147,13 @@ $events->on('user.login.api2secid-effective', function (GeoKrety\Model\User $use
     audit('user.login.api2secid-effective', $user);
     Session::setUserId($user);
     Metrics::counter('logged_in_users_effective_total', 'Total number of effective connections', ['type'], ['api2secid']);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history($user->username, \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID, $user);
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history($user->username, GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID, $user);
 });
 $events->on('user.login.api2secid-failure', function (array $context) {
     audit('user.login.api2secid-failure', $context);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
         $context['username'],
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID,
+        GeoKrety\Model\UsersAuthenticationHistory::METHOD_API2SECID,
         null,
         false,
         $context['error_message'],
@@ -163,9 +163,9 @@ $events->on('user.login.api2secid-failure', function (array $context) {
 $events->on('user.login.oauth-effective', function (GeoKrety\Model\User $user) {
     audit('user.login.oauth-effective', $user);
     Session::setUserId($user);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
         $user->username,
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_OAUTH,
+        GeoKrety\Model\UsersAuthenticationHistory::METHOD_OAUTH,
         $user,
     );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['oauth']);
@@ -173,9 +173,9 @@ $events->on('user.login.oauth-effective', function (GeoKrety\Model\User $user) {
 });
 $events->on('user.login.devel', function (GeoKrety\Model\User $user) {
     audit('user.login.devel', $user);
-    \GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
+    GeoKrety\Model\UsersAuthenticationHistory::save_authentication_history(
         $user->username,
-        \GeoKrety\Model\UsersAuthenticationHistory::METHOD_DEVEL,
+        GeoKrety\Model\UsersAuthenticationHistory::METHOD_DEVEL,
         $user,
     );
     Metrics::counter('logged_in_users_total', 'Total number of connections', ['type'], ['devel']);
@@ -250,13 +250,21 @@ $events->on('user.password.changed', function (GeoKrety\Model\User $user) {
     audit('user.password.changed', $user);
     Metrics::counter('user_password_changed_total', 'Total number of password changed');
 });
-$events->on('user.setting.save.success', function (GeoKrety\Model\UsersSettings $settings) {
+$events->on('user.setting.save.success', function (GeoKrety\Model\CustomUsersSettings $settings) {
     audit('user.setting.save.success', $settings);
-    Metrics::counter('user_settings_save_success_total', 'Total number of successfull saved settings');
+    Metrics::counter('user_settings_save_success_total', 'Total number of successfull saved User Settings');
 });
-$events->on('user.setting.save.failed', function (GeoKrety\Model\UsersSettings $user) {
+$events->on('user.setting.save.failed', function (GeoKrety\Model\CustomUsersSettings $user) {
     audit('user.setting.save.failed', $user);
-    Metrics::counter('user_settings_save_failed_total', 'Total number of failure saving settings');
+    Metrics::counter('user_settings_save_failed_total', 'Total number of failure saving User Settings');
+});
+$events->on('site.setting.save.success', function (GeoKrety\Model\CustomSiteSettings $settings) {
+    audit('site.setting.save.success', $settings);
+    Metrics::counter('site_settings_save_success_total', 'Total number of successfull saved Site Settings');
+});
+$events->on('site.setting.save.failed', function (GeoKrety\Model\CustomUsersSettings $user) {
+    audit('site.setting.save.failed', $user);
+    Metrics::counter('site_settings_save_failed_total', 'Total number of failure saving Site Settings');
 });
 $events->on('password.token.generated', function (GeoKrety\Model\PasswordToken $token) {
     audit('password.token.generated', $token);
@@ -284,30 +292,30 @@ $events->on('news-comment.deleted', function (GeoKrety\Model\NewsComment $commen
 });
 $events->on('move.created', function (GeoKrety\Model\Move $move) {
     if (!is_null($move->geokret->owner)) {
-        \GeoKrety\Service\UserBanner::generate($move->geokret->owner);
+        GeoKrety\Service\UserBanner::generate($move->geokret->owner);
     }
     if (!is_null($move->author) && !is_null($move->geokret->owner) && $move->geokret->owner === $move->author) {
-        \GeoKrety\Service\UserBanner::generate($move->author);
+        GeoKrety\Service\UserBanner::generate($move->author);
     }
     audit('move.created', $move);
     Metrics::counter('move_created_total', 'Total number of move created');
 });
 $events->on('move.updated', function (GeoKrety\Model\Move $move) {
     if (!is_null($move->geokret->owner)) {
-        \GeoKrety\Service\UserBanner::generate($move->geokret->owner);
+        GeoKrety\Service\UserBanner::generate($move->geokret->owner);
     }
     if (!is_null($move->author) && !is_null($move->geokret->owner) && $move->geokret->owner !== $move->author) {
-        \GeoKrety\Service\UserBanner::generate($move->author);
+        GeoKrety\Service\UserBanner::generate($move->author);
     }
     audit('move.updated', $move);
     Metrics::counter('move_updated_total', 'Total number of move updated');
 });
 $events->on('move.deleted', function (GeoKrety\Model\Move $move) {
     if (!is_null($move->geokret?->owner)) {
-        \GeoKrety\Service\UserBanner::generate($move->geokret->owner);
+        GeoKrety\Service\UserBanner::generate($move->geokret->owner);
     }
     if (!is_null($move->author) && !is_null($move->geokret->owner) && $move->geokret->owner !== $move->author) {
-        \GeoKrety\Service\UserBanner::generate($move->author);
+        GeoKrety\Service\UserBanner::generate($move->author);
     }
     audit('move.deleted', $move);
     Metrics::counter('move_deleted_total', 'Total number of move deleted');
@@ -346,21 +354,21 @@ $events->on('contact.new', function (GeoKrety\Model\Mail $mail) {
 });
 $events->on('geokret.created', function (GeoKrety\Model\Geokret $geokret) {
     if (!is_null($geokret->owner)) {
-        \GeoKrety\Service\UserBanner::generate($geokret->owner);
+        GeoKrety\Service\UserBanner::generate($geokret->owner);
     }
     audit('geokret.created', $geokret);
     Metrics::counter('geokrety_created_total', 'Total number of GeoKrety created');
 });
 $events->on('geokret.updated', function (GeoKrety\Model\Geokret $geokret) {
     if (!is_null($geokret->owner) && $geokret->changed('owner')) {
-        \GeoKrety\Service\UserBanner::generate($geokret->owner);
+        GeoKrety\Service\UserBanner::generate($geokret->owner);
     }
     audit('geokret.updated', $geokret);
     Metrics::counter('geokrety_updated_total', 'Total number of GeoKrety updated');
 });
 $events->on('geokret.deleted', function (GeoKrety\Model\Geokret $geokret) {
     if (!is_null($geokret->owner)) {
-        \GeoKrety\Service\UserBanner::generate($geokret->owner);
+        GeoKrety\Service\UserBanner::generate($geokret->owner);
     }
     audit('geokret.deleted', $geokret);
     Metrics::counter('geokrety_deleted_total', 'Total number of GeoKrety deleted');
@@ -370,9 +378,9 @@ $events->on('geokret.owner_code.created', function (GeoKrety\Model\OwnerCode $ow
     Metrics::counter('geokrety_owner_code_created_total', 'Total number of GeoKrety owner code created');
 });
 $events->on('geokret.claimed', function (GeoKrety\Model\Geokret $geokret, $context) {
-    \GeoKrety\Service\UserBanner::generate($context['newUser']);
+    GeoKrety\Service\UserBanner::generate($context['newUser']);
     if (!is_null($context['oldUser'])) {
-        \GeoKrety\Service\UserBanner::generate($context['oldUser']);
+        GeoKrety\Service\UserBanner::generate($context['oldUser']);
     }
     audit('geokret.claimed', array_merge($geokret->jsonSerialize(), $context));
     Metrics::counter('geokrety_claimed_total', 'Total number of GeoKrety claimed');
@@ -386,7 +394,7 @@ $events->on('geokret.watch.deleted', function (GeoKrety\Model\Watched $watched) 
     Metrics::counter('geokrety_watch_deleted_total', 'Total number of GeoKrety watch deleted');
 });
 $events->on('user.statpic.template.changed', function (GeoKrety\Model\User $user) {
-    \GeoKrety\Service\UserBanner::generate($user);
+    GeoKrety\Service\UserBanner::generate($user);
     audit('user.statpic.template.changed', $user);
     Metrics::counter('user_statpic_template_changed_total', 'Total number of user statpic selected template');
 });
@@ -425,7 +433,7 @@ $events->on('mail.sent', function (GeoKrety\Email\BasePHPMailer $email) {
 $events->on('awarded.created', function (GeoKrety\Model\AwardsWon $award) {
     audit('awarded.created', $award);
     Metrics::counter('award_awarded', 'Total number of awards awarded', ['award'], ['created']);
-    $mail = new \GeoKrety\Email\Awards();
+    $mail = new GeoKrety\Email\Awards();
     $mail->sendAwardReceived($award);
 });
 $events->on('awarded.updated', function (GeoKrety\Model\AwardsWon $award) {

@@ -6,6 +6,7 @@ use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Mask;
 use GeoKrety\Service\Metrics;
+use GeoKrety\Service\SiteSettings;
 use GeoKrety\Service\Smarty;
 use PHPMailer\PHPMailer\PHPMailer;
 use Sugar\Event;
@@ -149,7 +150,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
 
             return;
         }
-        if (!GK_IS_PRODUCTION) {
+        if (SiteSettings::instance()->get('ADMIN_EMAIL_BCC_ENABLED')) {
             // Send copy to admins
             foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
                 $_admin = $user->findone(['id = ?', $admin_id], null, 60);

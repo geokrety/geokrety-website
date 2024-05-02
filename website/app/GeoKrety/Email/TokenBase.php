@@ -3,7 +3,6 @@
 namespace GeoKrety\Email;
 
 use Carbon\Carbon;
-use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
@@ -14,7 +13,7 @@ class TokenBase extends BasePHPMailer {
     public function __construct(?bool $exceptions = true, string $body = '') {
         parent::__construct($exceptions, $body);
         if (!isset($this->template)) {
-            throw new \Exception("Email template undefined");
+            throw new \Exception('Email template undefined');
         }
     }
 
@@ -55,25 +54,22 @@ class TokenBase extends BasePHPMailer {
     }
 
     /**
-     * @param \GeoKrety\Model\User $user
-     * @return \GeoKrety\Model\TokenBase
      * @throws \Exception
      */
-    protected function getToken(User $user): \GeoKrety\Model\TokenBase {}
+    protected function getToken(User $user): \GeoKrety\Model\TokenBase {
+    }
 
-    protected function afterEmailSentHook(): void {}
+    protected function afterEmailSentHook(): void {
+    }
 
-
-    /**
-     * @return string
-     */
     protected function genTokenCsrf(): string {
         $f3 = \Base::instance();
-        $csrf = $f3->hash($f3->SEED .
+        $csrf = $f3->hash($f3->SEED.
         extension_loaded('openssl') ?
             implode(unpack('L', openssl_random_pseudo_bytes(4))) :
             mt_rand()
         );
+
         return $csrf;
     }
 }

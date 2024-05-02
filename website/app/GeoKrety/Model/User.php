@@ -268,7 +268,7 @@ class User extends Base implements \JsonSerializable {
             'validate_level' => 3,
         ],
         'settings' => [
-            'has-many' => ['\GeoKrety\Model\UsersSettings', 'user'],
+            'has-many' => ['\GeoKrety\Model\CustomUsersSettings', 'user'],
             'validate_level' => 3,
         ],
     ];

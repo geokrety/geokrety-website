@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Model\CustomUsersSettings;
 use GeoKrety\Model\User;
-use GeoKrety\Model\UsersSettings;
 use GeoKrety\Service\Smarty;
 
 class BaseRegistration extends Base {
@@ -31,7 +31,7 @@ class BaseRegistration extends Base {
     protected function saveTrackingSettings() {
         // Analytics
         if (GK_PIWIK_ENABLED && !filter_var(\Base::instance()->get('POST.tracking_opt_in'), FILTER_VALIDATE_BOOLEAN)) {
-            $trackingOptout = new UsersSettings();
+            $trackingOptout = new CustomUsersSettings();
             $trackingOptout->name = 'TRACKING_OPT_OUT';
             $trackingOptout->value = true;
             $trackingOptout->user = $this->user;

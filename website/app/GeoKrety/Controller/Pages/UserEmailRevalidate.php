@@ -5,10 +5,8 @@ namespace GeoKrety\Controller;
 use GeoKrety\Email\AccountActivation;
 use GeoKrety\Model\AccountActivationToken;
 use GeoKrety\Model\EmailRevalidateToken;
-use Sugar\Event;
 
 class UserEmailRevalidate extends Base {
-
     public function get(\Base $f3) {
         $csrf = $f3->get('PARAMS.csrf');
         $tokenid = $f3->get('PARAMS.tokenid');
