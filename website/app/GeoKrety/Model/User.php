@@ -43,18 +43,18 @@ use GeoKrety\Email\AccountActivation;
 class User extends Base implements \JsonSerializable {
     // Validation occurs in validate() for this class
 
-    public const USER_ACCOUNT_INVALID = 0;
-    public const USER_ACCOUNT_VALID = 1;
+    public const USER_ACCOUNT_NON_ACTIVATED = 0;
+    public const USER_ACCOUNT_ACTIVATED = 1;
     public const USER_ACCOUNT_IMPORTED = 2;
 
     public const ACCOUNT_STATUS_TEXT = [
-        self::USER_ACCOUNT_INVALID => 'Non-Activated',
-        self::USER_ACCOUNT_VALID => 'Fully activated',
+        self::USER_ACCOUNT_NON_ACTIVATED => 'Non-Activated',
+        self::USER_ACCOUNT_ACTIVATED => 'Fully activated',
         self::USER_ACCOUNT_IMPORTED => 'Imported',
     ];
 
     public const USER_ACCOUNT_STATUS_INVALID = [
-        self::USER_ACCOUNT_INVALID,
+        self::USER_ACCOUNT_NON_ACTIVATED,
         self::USER_ACCOUNT_IMPORTED,
     ];
 
@@ -209,7 +209,7 @@ class User extends Base implements \JsonSerializable {
         'account_valid' => [
             'type' => Schema::DT_INT1,
             'nullable' => false,
-            'default' => self::USER_ACCOUNT_INVALID,
+            'default' => self::USER_ACCOUNT_NON_ACTIVATED,
         ],
 
         'avatars' => [
@@ -314,7 +314,7 @@ class User extends Base implements \JsonSerializable {
     }
 
     public function isAccountValid(): bool {
-        return $this->account_valid === self::USER_ACCOUNT_VALID;
+        return $this->account_valid === self::USER_ACCOUNT_ACTIVATED;
     }
 
     public function isAccountImported(): bool {

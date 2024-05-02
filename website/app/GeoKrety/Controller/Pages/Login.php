@@ -273,7 +273,7 @@ class Login extends Base {
                 $user_social_auth->save();
 
                 // Set account as verified
-                $this->current_user->account_valid = User::USER_ACCOUNT_VALID;
+                $this->current_user->account_valid = User::USER_ACCOUNT_ACTIVATED;
 
                 // TODO a less intrusive way would be to offer user possibility to manually do this, instead of being automatic
                 if (!$this->current_user->hasEmail() && !empty($data['info']['email'])) {

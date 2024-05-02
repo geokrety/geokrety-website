@@ -20,7 +20,7 @@ class RegistrationEmail extends BaseRegistration {
         $user->daily_mails = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
         $user->password = $f3->get('POST.password');
         $user->email_invalid = User::USER_EMAIL_UNCONFIRMED;
-        $user->account_valid = User::USER_ACCOUNT_INVALID;
+        $user->account_valid = User::USER_ACCOUNT_NON_ACTIVATED;
 
         LanguageService::changeLanguageTo($user->preferred_language);
 

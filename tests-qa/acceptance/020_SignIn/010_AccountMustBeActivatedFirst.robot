@@ -3,7 +3,7 @@ Library         RequestsLibrary
 Resource        ../ressources/Authentication.robot
 Variables       ../ressources/vars/users.yml
 Test Setup      Test Setup
-Test Tags       EmailTokenBase
+Test Tags       EmailTokenBase    sendActivationAgainOnLogin
 
 *** Test Cases ***
 
