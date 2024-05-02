@@ -35,7 +35,7 @@ class RegistrationEmail extends BaseRegistration {
         $this->checkCsrf();
 
         // Check Js Content
-        if (empty($f3->get('POST.username2'))) {
+        if (empty($f3->get('POST.username2')) || !empty($f3->get('POST.username3'))) {
             $f3->get('DB')->rollback();
             $f3->get('DB')->begin();
             \Sugar\Event::instance()->emit('user.create-spam.js', $f3->get('POST'));
