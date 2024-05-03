@@ -12,7 +12,7 @@
     <a class="btn btn-success btn-lg" href="{'user_update_email_validate_token'|alias:sprintf('token=%s', $token->token)}">{t}Validate your new email address{/t}</a>
   </div>
   <div class="s-3"></div>
-  <p>{t expire=$token->update_expire_on_datetime|print_date_expiration}This link is valid for %1.{/t}</p>
+  <p>{t expire=$token->expire_on_datetime|print_date_expiration}This link is valid for %1.{/t}</p>
   <div class="s-3"></div>
   <p>{t}If you did not requested this and do not know what are GeoKrety, please ignore this email. You will never hear about us again!{/t}</p>
 {/block}

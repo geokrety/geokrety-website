@@ -7,7 +7,6 @@ use GeoKrety\Model\PasswordToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 use ReCaptcha\ReCaptcha;
-use Sugar\Event;
 
 class PasswordRecovery extends Base {
     private User $user;
@@ -47,8 +46,6 @@ class PasswordRecovery extends Base {
         }
 
         $token->save();
-
-        Event::instance()->emit('password.token.generated', $token);
 
         // Send email
         $smtp = new PasswordChangeEmail();

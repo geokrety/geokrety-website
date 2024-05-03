@@ -37,6 +37,7 @@ class TokenBase extends Base {
         ],
         'user' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
+            'validate' => 'required',
         ],
         'created_on_datetime' => [
             'type' => Schema::DT_DATETIME,
@@ -51,7 +52,7 @@ class TokenBase extends Base {
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
+            // 'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],
@@ -73,9 +74,9 @@ class TokenBase extends Base {
         parent::__construct();
 
         $this->virtual('expire_on_datetime', function ($self) {
-            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \Datetime();
+            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
 
-            return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY)));
+            return $expire->add(new \DateInterval(sprintf('P%dD', $self::TOKEN_DAYS_VALIDITY)));
         });
     }
 

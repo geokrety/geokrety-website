@@ -6,6 +6,7 @@ use DateTime;
 use DB\SQL\Schema;
 
 /**
+ * @property int|null id
  * @property \DateTime created_on_datetime
  * @property \DateTime updated_on_datetime
  */
