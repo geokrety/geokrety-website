@@ -14,7 +14,8 @@ class UserEmailRevalidate extends Base {
         if ($csrf !== $f3->get(AccountActivation::SESSION_SEND_ACTIVATION_AGAIN)) {
             \Flash::instance()->addMessage(_('Sorry this link is invalid.'), 'danger');
             http_response_code(400);
-            $f3->reroute('@home', $die = true);
+            $f3->reroute('@home');
+            // die
         }
 
         $token = new AccountActivationToken();
@@ -22,18 +23,21 @@ class UserEmailRevalidate extends Base {
         if ($token->dry()) {
             \Flash::instance()->addMessage(_('Sorry this link is invalid.'), 'danger');
             http_response_code(400);
-            $f3->reroute('@home', $die = true);
+            $f3->reroute('@home');
+            // die
         }
 
         $smtp = new AccountActivation();
         $smtp->_sendActivation($token->user);
-        $f3->reroute('@home', $die = true);
+        $f3->reroute('@home');
+        // die
     }
 
     public function get_account_imported(\Base $f3) {
         if (!$this->current_user->isAccountImported()) {
             \Flash::instance()->addMessage(_('Your account is already validated.'), 'success');
-            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
+            // die
         }
 
         $token = new EmailRevalidateToken();
@@ -53,11 +57,13 @@ class UserEmailRevalidate extends Base {
                 _('The last notification was sent less than %d minutes ago. Please try again later.'),
                 GK_SITE_EMAIL_REVALIDATE_SEND_INTERVAL_MINUTES
             ), 'warning');
-            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
+            // die
         }
 
         $smtp = new \GeoKrety\Email\EmailRevalidate();
         $smtp->sendRevalidation($token);
-        $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
+        $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id));
+        // die
     }
 }

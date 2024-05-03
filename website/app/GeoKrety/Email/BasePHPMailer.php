@@ -39,7 +39,6 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         // $this->SMTPDebug = SMTP::DEBUG_SERVER;
         $this->CharSet = self::CHARSET_UTF8;
         $this->Body = $body;
-        // $this->allowSend = null;
     }
 
     /**

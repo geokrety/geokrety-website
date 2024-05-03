@@ -152,7 +152,7 @@ jobs:
         run: |
           echo "::group::Obtain requirements.txt"
           gh api \
-            /repos/${GITHUB_REPOSITORY}/contents/tests-qa/requirements.txt \
+            /repos/${GITHUB_REPOSITORY}/contents/tests-qa/requirements.txt?ref=${{ github.ref }} \
             --jq '.content' | base64 -d > /tmp/requirements.txt
           echo "::endgroup::"
 

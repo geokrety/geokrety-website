@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
-class TokenBase extends BasePHPMailer {
+abstract class TokenBase extends BasePHPMailer {
     protected string $template;
     protected array $message = [];
 
@@ -35,7 +35,7 @@ class TokenBase extends BasePHPMailer {
         );
     }
 
-    public function flashMessage(\GeoKrety\Model\TokenBase $token) {
+    public function flashMessage() {
         \Flash::instance()->addMessage(join(' ', $this->message['msg']), $this->message['status']);
     }
 
@@ -56,8 +56,7 @@ class TokenBase extends BasePHPMailer {
     /**
      * @throws \Exception
      */
-    protected function getToken(User $user): \GeoKrety\Model\TokenBase {
-    }
+    abstract protected function getToken(User $user): \GeoKrety\Model\TokenBase;
 
     protected function afterEmailSentHook(): void {
     }
