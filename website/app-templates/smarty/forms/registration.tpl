@@ -1,4 +1,32 @@
+
+
+
+
 <form class="form-horizontal" action="" method="post" data-parsley-validate data-parsley-ui-enabled=true>
+
+{if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false or  GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Register using </label>
+        <div class="col-sm-8">
+            <div class="btn-group" role="group">
+                {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
+                    <a id="btn-facebookauth" href="/auth/facebook" class="btn btn-primary">
+                        {fa icon="facebook"}
+                    </a>
+                {/if}
+                {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
+                    <a id="btn-googleauth" href="/auth/google" class="btn btn-danger">
+                        {fa icon="google"}
+                    </a>
+                {/if}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="separator">Or</div>
+    </div>
+{/if}
 
     <div class="form-group">
         <label for="usernameInput" class="col-sm-2 control-label">{t}Username{/t}</label>
