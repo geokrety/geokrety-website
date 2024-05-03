@@ -2,6 +2,11 @@
 
 namespace GeoKrety\Service;
 
+define('SECRET_BASE_PATH', sprintf('/run/secrets/%s__', getenv('GK_INSTANCE_NAME')));
+
+function getsecret($name) {
+    return getenv($name) ?: rtrim(@file_get_contents(SECRET_BASE_PATH.$name));
+}
 class Config extends \Prefab {
     public function __construct() {
         // SITE CONFIG
@@ -13,7 +18,7 @@ class Config extends \Prefab {
         define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
         define('GK_SITE_SESSION_SHORT_LIVED_REMEMBER', getenv('GK_SITE_SESSION_SHORT_LIVED_REMEMBER') ?: 60 * 5); // 5 min
         define('GK_SITE_SESSION_NON_LIVED_REMEMBER', getenv('GK_SITE_SESSION_NON_LIVED_REMEMBER') ?: 0);
-        define('GK_SITE_SESSION_SHORT_LIVED_TOKEN', getenv('GK_SITE_SESSION_SHORT_LIVED_TOKEN') ?: substr(str_shuffle(md5(microtime())), 0, 10));
+        define('GK_SITE_SESSION_SHORT_LIVED_TOKEN', getsecret('GK_SITE_SESSION_SHORT_LIVED_TOKEN') ?: substr(str_shuffle(md5(microtime())), 0, 10));
         define('GK_SITE_TOKEN_DEFAULT_DAYS_VALIDITY', getenv('GK_SITE_TOKEN_DEFAULT_DAYS_VALIDITY') ?: 15);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_LENGTH') ?: 42);
         define('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY', getenv('GK_SITE_ACCOUNT_ACTIVATION_CODE_DAYS_VALIDITY') ?: 15);
@@ -55,14 +60,14 @@ class Config extends \Prefab {
         define('GK_BASEX_HOST', getenv('GK_BASEX_HOST') ?: null);
         define('GK_BASEX_PORT', getenv('GK_BASEX_PORT') ?: null);
         define('GK_BASEX_USER', getenv('GK_BASEX_USER') ?: null);
-        define('GK_BASEX_PASSWORD', getenv('GK_BASEX_PASSWORD') ?: null);
+        define('GK_BASEX_PASSWORD', getsecret('GK_BASEX_PASSWORD') ?: null);
         define('GK_BASEX_EXPORTS_PATH', getenv('GK_BASEX_EXPORTS_PATH') ?: '/srv/basex/exports/');
 
         // RabbitMQ
         define('GK_RABBITMQ_HOST', getenv('GK_RABBITMQ_HOST') ?: null);
         define('GK_RABBITMQ_PORT', getenv('GK_RABBITMQ_PORT') ?: null);
         define('GK_RABBITMQ_USER', getenv('GK_RABBITMQ_USER') ?: null);
-        define('GK_RABBITMQ_PASS', getenv('GK_RABBITMQ_PASSWORD') ?: null);
+        define('GK_RABBITMQ_PASS', getsecret('GK_RABBITMQ_PASSWORD') ?: null);
         define('GK_RABBITMQ_VHOST', getenv('GK_RABBITMQ_VHOST') ?: null);
 
         // Minio
@@ -71,7 +76,7 @@ class Config extends \Prefab {
         define('GK_MINIO_SERVER_URL', getenv('GK_MINIO_SERVER_URL') ?: sprintf('http://%s:%s', GK_MINIO_HOST, GK_MINIO_PORT));
         define('GK_MINIO_SERVER_URL_EXTERNAL', getenv('GK_MINIO_SERVER_URL_EXTERNAL') ?: GK_MINIO_SERVER_URL);
         define('MINIO_ACCESS_KEY', getenv('MINIO_ACCESS_KEY') ?: null);
-        define('MINIO_SECRET_KEY', getenv('MINIO_SECRET_KEY') ?: null);
+        define('MINIO_SECRET_KEY', getsecret('MINIO_SECRET_KEY') ?: null);
 
         define('GK_BUCKET_NAME_STATPIC', getenv('GK_BUCKET_NAME_STATPIC') ?: 'statpic');
         define('GK_BUCKET_NAME_GEOKRETY_AVATARS', getenv('GK_BUCKET_NAME_GEOKRETY_AVATARS') ?: 'gk-avatars');
@@ -81,9 +86,9 @@ class Config extends \Prefab {
         define('GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER', getenv('GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER') ?: 'pictures-processor-downloader');
         define('GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER', getenv('GK_BUCKET_NAME_PICTURES_PROCESSOR_UPLOADER') ?: 'pictures-processor-uploader');
 
-        define('GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED', getenv('GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED') ?: '');
+        define('GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED', getsecret('GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED') ?: '');
 
-        define('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST', getenv('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST') ?: '');
+        define('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST', getsecret('GK_AUTH_TOKEN_DROP_S3_FILE_UPLOAD_REQUEST') ?: '');
 
         // External services
         define('GK_CROWDIN_URL', getenv('GK_CROWDIN_URL') ?: 'https://crowdin.geokrety.org');
@@ -135,8 +140,8 @@ class Config extends \Prefab {
         define('GK_DB_DATETIME_FORMAT_WITHOUT_TZ', 'Y-m-d H:i:s');
         define('GK_DB_DATETIME_FORMAT_AS_INT', 'YmdHis');
 
-        define('GK_DB_GPG_PASSWORD', getenv('GK_DB_GPG_PASSWORD') ?: 'geokrety');
-        define('GK_DB_SECRET_KEY', getenv('GK_DB_SECRET_KEY') ?: 'secretkey');
+        define('GK_DB_GPG_PASSWORD', getsecret('GK_DB_GPG_PASSWORD') ?: 'geokrety');
+        define('GK_DB_SECRET_KEY', getsecret('GK_DB_SECRET_KEY') ?: 'secretkey');
 
         // SMTP config
         define('GK_SMTP_HOST', getenv('GK_SMTP_HOST') ?: 'smtp-relay');
@@ -144,14 +149,14 @@ class Config extends \Prefab {
         define('GK_SMTP_SCHEME', getenv('GK_SMTP_SCHEME') ?: '');
         define('GK_SMTP_URI', getenv('GK_SMTP_URI') ?: sprintf('%s:%d', GK_SMTP_HOST, GK_SMTP_PORT));
         define('GK_SMTP_USER', getenv('GK_SMTP_USER') ?: '');
-        define('GK_SMTP_PASSWORD', getenv('GK_SMTP_PASSWORD') ?: '');
+        define('GK_SMTP_PASSWORD', getsecret('GK_SMTP_PASSWORD') ?: '');
 
         // HASHING seeds
         define('GK_PASSWORD_MIN_HASH_ROTATION', 10);
         define('GK_PASSWORD_MAX_HASH_ROTATION', 99);
-        define('GK_PASSWORD_HASH_ROTATION', getenv('GK_PASSWORD_HASH_ROTATION') ?: 11);
-        define('GK_PASSWORD_HASH', getenv('GK_PASSWORD_HASH') ?: 'geokrety');
-        define('GK_PASSWORD_SEED', getenv('GK_PASSWORD_SEED') ?: 'rand_string');
+        define('GK_PASSWORD_HASH_ROTATION', getsecret('GK_PASSWORD_HASH_ROTATION') ?: 11);
+        define('GK_PASSWORD_HASH', getsecret('GK_PASSWORD_HASH') ?: 'geokrety');
+        define('GK_PASSWORD_SEED', getsecret('GK_PASSWORD_SEED') ?: 'rand_string');
 
         // F3
         define('GK_F3_UI', getenv('GK_F3_UI') ?: 'app-ui/');
@@ -193,7 +198,7 @@ class Config extends \Prefab {
         // Google Recaptcha
         if (!GK_DEVEL) {
             define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', getenv('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY') ?: false);
-            define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', getenv('GK_GOOGLE_RECAPTCHA_SECRET_KEY') ?: false);
+            define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', getsecret('GK_GOOGLE_RECAPTCHA_SECRET_KEY') ?: false);
             define('GK_GOOGLE_RECAPTCHA_JS_URL', getenv('GK_GOOGLE_RECAPTCHA_JS_URL') ?: 'https://www.google.com/recaptcha/api.js');
         } else {
             define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', false);
@@ -202,11 +207,11 @@ class Config extends \Prefab {
         }
 
         // OpAuth
-        define('GK_OPAUTH_SECURITY_SALT', getenv('GK_OPAUTH_SECURITY_SALT') ?: false);
+        define('GK_OPAUTH_SECURITY_SALT', getsecret('GK_OPAUTH_SECURITY_SALT') ?: false);
         define('GK_OPAUTH_GOOGLE_CLIENT_ID', getenv('GK_OPAUTH_GOOGLE_CLIENT_ID') ?: false);
-        define('GK_OPAUTH_GOOGLE_CLIENT_SECRET', getenv('GK_OPAUTH_GOOGLE_CLIENT_SECRET') ?: false);
+        define('GK_OPAUTH_GOOGLE_CLIENT_SECRET', getsecret('GK_OPAUTH_GOOGLE_CLIENT_SECRET') ?: false);
         define('GK_OPAUTH_FACEBOOK_CLIENT_ID', getenv('GK_OPAUTH_FACEBOOK_CLIENT_ID') ?: false);
-        define('GK_OPAUTH_FACEBOOK_CLIENT_SECRET', getenv('GK_OPAUTH_FACEBOOK_CLIENT_SECRET') ?: false);
+        define('GK_OPAUTH_FACEBOOK_CLIENT_SECRET', getsecret('GK_OPAUTH_FACEBOOK_CLIENT_SECRET') ?: false);
 
         // go2geo url
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
@@ -248,12 +253,12 @@ class Config extends \Prefab {
         define('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GC_HU', getenv('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_GC_HU') ?: 1440);
 
         // okapi services
-        define('GK_OKAPI_CONSUMER_KEY_OC_PL', getenv('GK_OKAPI_CONSUMER_KEY_OC_PL') ?: null);
-        define('GK_OKAPI_CONSUMER_KEY_OC_DE', getenv('GK_OKAPI_CONSUMER_KEY_OC_DE') ?: null);
-        define('GK_OKAPI_CONSUMER_KEY_OC_UK', getenv('GK_OKAPI_CONSUMER_KEY_OC_UK') ?: null);
-        define('GK_OKAPI_CONSUMER_KEY_OC_US', getenv('GK_OKAPI_CONSUMER_KEY_OC_US') ?: null);
-        define('GK_OKAPI_CONSUMER_KEY_OC_NL', getenv('GK_OKAPI_CONSUMER_KEY_OC_NL') ?: null);
-        define('GK_OKAPI_CONSUMER_KEY_OC_RO', getenv('GK_OKAPI_CONSUMER_KEY_OC_RO') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_PL', getsecret('GK_OKAPI_CONSUMER_KEY_OC_PL') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_DE', getsecret('GK_OKAPI_CONSUMER_KEY_OC_DE') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_UK', getsecret('GK_OKAPI_CONSUMER_KEY_OC_UK') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_US', getsecret('GK_OKAPI_CONSUMER_KEY_OC_US') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_NL', getsecret('GK_OKAPI_CONSUMER_KEY_OC_NL') ?: null);
+        define('GK_OKAPI_CONSUMER_KEY_OC_RO', getsecret('GK_OKAPI_CONSUMER_KEY_OC_RO') ?: null);
 
         define('GK_OKAPI_PARTNERS', [
             'OC_DE' => ['key' => GK_OKAPI_CONSUMER_KEY_OC_DE, 'url' => GK_WAYPOINT_SERVICE_URL_OC_DE],
@@ -271,7 +276,7 @@ class Config extends \Prefab {
         ]);
 
         // Audit logs
-        define('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS', !GK_IS_PRODUCTION && filter_var(getenv('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS'), FILTER_VALIDATE_BOOLEAN));
+        define('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS', !GK_IS_PRODUCTION && filter_var(getsecret('GK_AUDIT_LOGS_EXCLUDE_PATH_BYPASS'), FILTER_VALIDATE_BOOLEAN));
         define('GK_AUDIT_LOGS_EXCLUDE_PATH', [
             '/auth',
         ]);
@@ -332,7 +337,7 @@ class Config extends \Prefab {
         define('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT', getenv('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT') ?: (GK_DEVEL ? 2000 : 500));
 
         // API LIMITS
-        define('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT_DAYS', getenv('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT_DAYS') ?: 'geokrety');
+        define('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT_DAYS', getsecret('GK_API_EXPORT_PASSWORD_BYPASS_LIMIT_DAYS') ?: 'geokrety');
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);
         define('GK_API_EXPORT_SURFACE_LIMIT', getenv('GK_API_EXPORT_SURFACE_LIMIT') ?: 252000);
         define('GK_API_EXPORT_GEOKRET_DETAILS_MOVES_LIMIT', getenv('GK_GKT_SEARCH_DISTANCE_LIMITGK_API_EXPORT_GEOKRET_DETAILS_MOVES_LIMIT') ?: 10);
@@ -368,7 +373,7 @@ class Config extends \Prefab {
         define('GK_GENERATOR_CACHE_RESULT_TTL', getenv('GK_GENERATOR_CACHE_RESULT_TTL') ?: 60);
 
         // Rate Limits
-        define('GK_RATE_LIMITS_BYPASS', getenv('GK_RATE_LIMITS_BYPASS') ?: 'geokrety');
+        define('GK_RATE_LIMITS_BYPASS', getsecret('GK_RATE_LIMITS_BYPASS') ?: 'geokrety');
         define('GK_RATE_LIMITS', [
             'API_LEGACY_MOVE_POST' => [1500, 60 * 60 * 24], // 1500/day
             'API_LEGACY_PICTURE_PROXY' => [5000, 60 * 60 * 24], // 5000/day
@@ -386,7 +391,7 @@ class Config extends \Prefab {
         // PIWIK
         define('GK_PIWIK_URL', getenv('GK_PIWIK_URL') ?: null);
         define('GK_PIWIK_SITE_ID', (int) getenv('GK_PIWIK_SITE_ID') ?: null);
-        define('GK_PIWIK_TOKEN', getenv('GK_PIWIK_TOKEN') ?: null);
+        define('GK_PIWIK_TOKEN', getsecret('GK_PIWIK_TOKEN') ?: null);
         define('GK_PIWIK_CONNECT_TIMEOUT_MS', getenv('GK_PIWIK_CONNECT_TIMEOUT_MS') ?: 400);
         define('GK_PIWIK_ENABLED',
             !empty(GK_PIWIK_URL)
@@ -505,27 +510,26 @@ class Config extends \Prefab {
     }
 
     public function clearEnvironments() {
-        $f3 = \Base::instance();
-        if (preg_match('/^\/cron/', $f3->PATH)) {
+        if (preg_match('/^\/cron/', $_SERVER['REQUEST_URI'])) {
             // Skip cleaning env in cron context
             return;
         }
+
         foreach ($_ENV as $key => $value) {
             if (substr($key, 0, 3) !== 'GK_') {
                 continue;
             }
-            $this->_clearEnvironment($f3, $key);
+            $this->_clearEnvironment($key);
         }
         $to_clean = ['MINIO_ACCESS_KEY', 'MINIO_SECRET_KEY', 'GPG_KEYS'];
         foreach ($to_clean as $key) {
-            $this->_clearEnvironment($f3, $key);
+            $this->_clearEnvironment($key);
         }
-        $f3->sync('ENV');
     }
 
-    private function _clearEnvironment(\Base $f3, string $key) {
-        putenv($key);
-        $f3->clear('ENV.'.$key);
+    private function _clearEnvironment(string $key) {
+        unset($_SERVER[$key]);
+        unset($_ENV[$key]);
     }
 
     public function isValid() {

@@ -2,10 +2,10 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-$f3 = \Base::instance();
-
 // Create GK_* consts from environments
-\GeoKrety\Service\Config::instance();
+GeoKrety\Service\Config::instance();
+$f3 = Base::instance();
+
 // Our dynamic routes will use it
 $f3->route('POST @s3_file_uploaded: /s3/file-uploaded', '\GeoKrety\Controller\GeokretAvatarUploadWebhook->post');
 $f3->route('HEAD @s3_file_uploaded: /s3/file-uploaded', function () {});
@@ -48,7 +48,7 @@ if (!is_null(GK_SENTRY_DSN)) {
     \Sentry\init(['dsn' => GK_SENTRY_DSN, 'environment' => GK_SENTRY_ENV, 'release' => GK_APP_VERSION]);
 }
 
-\Prometheus\Storage\Redis::setDefaultOptions(
+Prometheus\Storage\Redis::setDefaultOptions(
     [
         'host' => GK_REDIS_HOST,
         'port' => GK_REDIS_PORT,
@@ -69,9 +69,9 @@ if (GK_F3_DEBUG) {
 }
 
 // Language
-$ml = \Multilang::instance();
-\Carbon\Carbon::setLocale($ml->current);
-\Carbon\CarbonInterval::setLocale($ml->current);
+$ml = Multilang::instance();
+Carbon\Carbon::setLocale($ml->current);
+Carbon\CarbonInterval::setLocale($ml->current);
 setlocale(LC_NUMERIC, 'en_US.UTF-8');
 bindtextdomain('messages', GK_GETTEXT_BINDTEXTDOMAIN_PATH);
 bind_textdomain_codeset('messages', 'UTF-8');
@@ -81,5 +81,5 @@ include __DIR__.'/app/validators.php';
 include __DIR__.'/app/events.php';
 
 if (!$f3->exists('DB')) {
-    $f3->set('DB', new \DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;', \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]));
+    $f3->set('DB', new DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;', PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]));
 }

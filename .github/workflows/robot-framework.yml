@@ -69,7 +69,7 @@ jobs:
       - name: Configure Sentry
         shell: bash
         run: |
-          echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
+          echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
           echo "SENTRY_ENV=dev.githubaction" >> .env
 
       - name: Set output
