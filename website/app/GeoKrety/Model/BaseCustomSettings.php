@@ -8,7 +8,7 @@ use DB\SQL\Schema;
  * @property string value
  */
 abstract class BaseCustomSettings extends BaseSettings {
-    protected const fieldConfCustomSettingsBase = [
+    protected const FIELDCONF_CUSTOM_SETTING_BASE = [
         'value' => [
             'type' => Schema::DT_VARCHAR256,
             'nullable' => true,
@@ -18,7 +18,7 @@ abstract class BaseCustomSettings extends BaseSettings {
 
     public function __construct() {
         parent::__construct();
-        $this->fieldConf = array_merge($this->fieldConf, self::fieldConfCustomSettingsBase);
+        $this->fieldConf = array_merge($this->fieldConf, self::FIELDCONF_CUSTOM_SETTING_BASE);
     }
 
     /**

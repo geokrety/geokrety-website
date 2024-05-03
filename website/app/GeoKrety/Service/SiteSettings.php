@@ -48,7 +48,6 @@ class SiteSettings extends \Prefab {
      * @return string|int|bool|null
      */
     public function get(string $setting_name) {
-        $f3 = \Base::instance();
         $this->setting->load(['name = ?', $setting_name], ttl: 60);
         if ($this->setting->dry()) {
             return $this->getDefault($setting_name);
@@ -63,11 +62,11 @@ class SiteSettings extends \Prefab {
      * @return string|int|bool|null
      */
     public function getDefault(string $setting_name) {
-        $site_settings_parameters = new SiteSettingsParameters();
-        if (!$site_settings_parameters->load(['name = ?', $setting_name], ttl: 600)) {
+        $ss_parameters = new SiteSettingsParameters();
+        if (!$ss_parameters->load(['name = ?', $setting_name], ttl: 600)) {
             throw new \GeoKrety\Model\NoSuchSettingException("Site setting '$setting_name' doesn't exist");
         }
 
-        return $site_settings_parameters->default;
+        return $ss_parameters->default;
     }
 }
