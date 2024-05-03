@@ -114,3 +114,26 @@ input.input-uc {
 .red {
   color: orangered;
 }
+
+// Hr line with centered text
+// https://stackoverflow.com/a/26634224/944936
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd; //@gray-lighter
+}
+
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}
