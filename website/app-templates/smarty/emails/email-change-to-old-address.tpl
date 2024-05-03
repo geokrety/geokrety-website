@@ -15,7 +15,7 @@
     <a class="btn btn-danger btn-lg" href="{'user_update_email_validate_token'|alias:sprintf('token=%s', $token->token)}">{t}Do not change!{/t}</a>
   </div>
   <div class="s-3"></div>
-  <p>{t expire=$token->update_expire_on_datetime|print_date_expiration}This link expires %1.{/t}</p>
+  <p>{t expire=$token->expire_on_datetime|print_date_expiration}This link expires %1.{/t}</p>
   <div class="s-3"></div>
   <p>{t}If you did not requested a password change, then you should also consider changing your password immediately.{/t}</p>
   <div class="align-center text-center">

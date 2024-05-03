@@ -7,19 +7,15 @@ use GeoKrety\Model\Traits\EmailField;
 use Sugar\Event;
 
 /**
- * @property string token
- * @property User user
- * @property int used
- * @property \DateTime created_on_datetime
- * @property \DateTime updated_on_datetime
  * @property \DateTime|null validated_on_datetime
  * @property \DateTime|null expired_on_datetime
  * @property \DateTime|null disabled_on_datetime
  * @property string|null validating_ip
- * @property \DateTime last_notification_datetime
+ * @property string|null email
  */
-class EmailRevalidateToken extends Base {
+class EmailRevalidateToken extends TokenBase {
     use EmailField;
+    public const TOKEN_DAYS_VALIDITY = GK_SITE_EMAIL_REVALIDATE_CODE_DAYS_VALIDITY;
 
     public const TOKEN_UNUSED = 0;
     public const TOKEN_VALIDATED = 1;
@@ -29,19 +25,7 @@ class EmailRevalidateToken extends Base {
     protected $db = 'DB';
     protected $table = 'gk_email_revalidate';
 
-    protected $fieldConf = [
-        'user' => [
-            'belongs-to-one' => '\GeoKrety\Model\User',
-        ],
-        'used' => [
-            'type' => Schema::DT_INT1,
-            'default' => self::TOKEN_UNUSED,
-            'nullable' => false,
-        ],
-        'token' => [
-            'type' => Schema::DT_VARCHAR128,
-            'nullable' => false,
-        ],
+    protected $fieldConfAppend = [
         'email' => [
             'type' => Schema::DT_VARCHAR128,
             // Validation occurs in validate() for this
@@ -55,18 +39,6 @@ class EmailRevalidateToken extends Base {
         '_email_hash' => [
             'type' => Schema::DT_VARCHAR256,
             'nullable' => true,
-        ],
-        'created_on_datetime' => [
-            'type' => Schema::DT_DATETIME,
-            'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => false,
-            'validate' => 'is_date',
-        ],
-        'updated_on_datetime' => [
-            'type' => Schema::DT_DATETIME,
-            // 'default' => 'CURRENT_TIMESTAMP',
-            'nullable' => true,
-            'validate' => 'is_date',
         ],
         'validated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
@@ -88,20 +60,7 @@ class EmailRevalidateToken extends Base {
             'nullable' => true,
             'validate' => 'valid_ip',
         ],
-        'last_notification_datetime' => [
-            'type' => Schema::DT_DATETIME,
-            'nullable' => true,
-            'validate' => 'is_date',
-        ],
     ];
-
-    public function get_created_on_datetime($value): ?\DateTime {
-        return self::get_date_object($value);
-    }
-
-    public function get_updated_on_datetime($value): ?\DateTime {
-        return self::get_date_object($value);
-    }
 
     public function get_validated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
@@ -111,15 +70,7 @@ class EmailRevalidateToken extends Base {
         return self::get_date_object($value);
     }
 
-    public function get_expire_on_datetime($value): ?\DateTime {
-        return self::get_date_object($value);
-    }
-
     public function get_disabled_on_datetime($value): ?\DateTime {
-        return self::get_date_object($value);
-    }
-
-    public function get_last_notification_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
@@ -144,18 +95,5 @@ class EmailRevalidateToken extends Base {
         $this->afterinsert(function ($self) {
             Event::instance()->emit('email-revalidation.token.generated', $self);
         });
-
-        $this->virtual('expire_on_datetime', function ($self): \DateTime {
-            $expire = $self->created_on_datetime ? clone $self->created_on_datetime : new \DateTime();
-
-            return $expire->add(new \DateInterval(sprintf('P%dD', GK_SITE_EMAIL_REVALIDATE_CODE_DAYS_VALIDITY)));
-        });
-    }
-
-    public function jsonSerialize(): mixed {
-        return [
-            'id' => $this->id,
-            'used' => $this->used,
-        ];
     }
 }

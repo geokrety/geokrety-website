@@ -47,7 +47,7 @@ class UserUpdateEmail extends Base {
             if ($token->valid()) {
                 $smtp->sendEmailChangeNotification($token);
                 \Flash::instance()->clearMessages(); // Reset previous messages
-                \Flash::instance()->addMessage(sprintf(_('The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->diffForHumans(['parts' => 3, 'join' => true])), 'success');
+                \Flash::instance()->addMessage(sprintf(_('The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->expire_on_datetime)->diffForHumans(['parts' => 3, 'join' => true])), 'success');
                 $f3->get('DB')->rollback();
                 $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
             }
@@ -75,7 +75,7 @@ class UserUpdateEmail extends Base {
                 exit;
             }
             $token->save();
-            \Flash::instance()->addMessage(sprintf(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->update_expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])), 'success');
+            \Flash::instance()->addMessage(sprintf(_('A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s.'), Carbon::instance($token->expire_on_datetime)->longAbsoluteDiffForHumans(['parts' => 3, 'join' => true])), 'success');
             Event::instance()->emit('user.email.change', $token->user);
             // Redirect before sending emails
             $f3->get('DB')->commit();

@@ -2,17 +2,13 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
 use DB\SQL\Schema;
 
 /**
- * @property int|null id
  * @property string name
  * @property string type
  * @property string default
  * @property string description
- * @property \DateTime created_on_datetime
- * @property \DateTime updated_on_datetime
  */
 abstract class BaseSettingsParameters extends BaseSettings {
     protected $fieldConf = [

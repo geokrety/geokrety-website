@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Move Pictures
+Force Tags     Move    Pictures

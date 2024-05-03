@@ -33,7 +33,10 @@ class AccountActivationToken extends TokenBase {
         parent::__construct();
         $this->beforeinsert(function ($self) {
             $self->requesting_ip = \Base::instance()->get('IP');
-            \Sugar\Event::instance()->emit('activation.token.created', $this);
+        });
+
+        $this->afterinsert(function ($self) {
+            \Sugar\Event::instance()->emit('activation.token.created', $self);
         });
     }
 }
