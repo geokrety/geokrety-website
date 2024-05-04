@@ -106,11 +106,28 @@ jobs:
           AUTO_REMOTE_URL: true
         uses: ./.github/actions/run-robot-framework/
 
+      - name: Save docker logs
+        if: always()
+        continue-on-error: true
+        run: |
+          mkdir docker-logs
+          for container in nginx website postgres minio pictures-uploader pictures-downloader; do
+            ${DOCKER_COMPOSE} logs ${container} > docker-logs/${container}.log
+          done
+
       - name: Kill the docker stack(s)
         if: always()
         continue-on-error: true
         run: |
           make kill DOCKER_COMPOSE_PARAMS="-s SIGKILL" &
+
+      - name: Upload docker logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-logs-${{ env.SHARD_ID }}
+          path: |
+            docker-logs/
 
       - name: Upload results
         if: ${{ always() && steps.tests-qa.outcome != 'skipped' }}
