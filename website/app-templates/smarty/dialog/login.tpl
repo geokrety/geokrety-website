@@ -9,6 +9,35 @@
 
 <div class="modal-body">
     <form action="{'login'|alias}{if $f3->exists('GET')}?{http_build_query($f3->get('GET')) nofilter}{/if}" method="post" class="form-horizontal" data-parsley-validate data-parsley-priority-enabled=false data-parsley-ui-enabled=true>
+    {if GK_OPAUTH_ACTIVE}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{t}Login using{/t}</label>
+            <div class="col-sm-8">
+                <div class="btn-group" role="group">
+                    {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
+                        <a id="btn-facebookauth" href="/auth/facebook" class="btn btn-primary">
+                            {fa icon="facebook"} facebook
+                        </a>
+                    {/if}
+                    {if GK_OPAUTH_GITHUB_CLIENT_ID !== false}
+                        <a id="btn-githubauth" href="/auth/github" class="btn btn-default btn-black">
+                            {fa icon="github"} github
+                        </a>
+                    {/if}
+                    {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
+                        <a id="btn-googleauth" href="/auth/google" class="btn btn-danger">
+                            {fa icon="google"} google
+                        </a>
+                    {/if}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="separator">{t}Or{/t}</div>
+        </div>
+    {/if}
+
         <div class="form-group">
             <label for="inputUsername" class="col-sm-2 control-label">{t}Username{/t}</label>
             <div class="col-sm-10">
@@ -34,15 +63,17 @@
 {*            </div>*}
 {*        </div>*}
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-2 col-sm-3">
                 {call csrf}
                 <button type="submit" id="signInButton" class="btn btn-primary">{t}Sign in{/t}</button>
+            </div>
+            <div class="col-sm-5">
                 <a href="{'registration'|alias}">{t}No account yet ? Register now!{/t}</a>
-                <div class="pull-right">
-                    <p>
-                        <a href="{'password_recovery'|alias}">{t}Forgot your password?{/t}</a>
-                    </p>
-                </div>
+            </div>
+            <div class="col-sm-2">
+                <p>
+                    <a href="{'password_recovery'|alias}">{t}Forgot your password?{/t}</a>
+                </p>
             </div>
         </div>
 
