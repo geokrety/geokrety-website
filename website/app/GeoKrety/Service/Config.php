@@ -213,6 +213,8 @@ class Config extends \Prefab {
         define('GK_OPAUTH_FACEBOOK_CLIENT_ID', getenv('GK_OPAUTH_FACEBOOK_CLIENT_ID') ?: false);
         define('GK_OPAUTH_FACEBOOK_CLIENT_SECRET', getsecret('GK_OPAUTH_FACEBOOK_CLIENT_SECRET') ?: false);
 
+        define('GK_OPAUTH_ACTIVE', GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false);
+
         // go2geo url
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
         define('GK_SERVICE_GC_SEARCH_NEAREST_URL', getenv('GK_SERVICE_GC_SEARCH_NEAREST_URL') ?: 'https://www.geocaching.com/seek/nearest.aspx?origin_lat=%f&origin_long=%f&dist=1');
