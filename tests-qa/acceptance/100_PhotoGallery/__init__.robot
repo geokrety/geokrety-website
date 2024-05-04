@@ -1,2 +1,2 @@
 *** Settings ***
-Force Tags     Gallery
+Force Tags     Pictures
