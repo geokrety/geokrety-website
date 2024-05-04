@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f4cdc4a44d74b990ae9fb4218dbeaea",
+    "content-hash": "662bcd138b102b255c60e64e57285439",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2348,6 +2348,54 @@
                 "source": "https://github.com/opauth/facebook/tree/0.4.5"
             },
             "time": "2023-08-22T01:52:49+00:00"
+        },
+        {
+            "name": "opauth/github",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opauth/github.git",
+                "reference": "9c4fe16dc6498b2c94f4c2a41ab93b0fe4b7fa73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opauth/github/zipball/9c4fe16dc6498b2c94f4c2a41ab93b0fe4b7fa73",
+                "reference": "9c4fe16dc6498b2c94f4c2a41ab93b0fe4b7fa73",
+                "shasum": ""
+            },
+            "require": {
+                "opauth/opauth": ">=0.4.0",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "U-Zyn Chua",
+                    "email": "chua@uzyn.com",
+                    "homepage": "http://uzyn.com"
+                }
+            ],
+            "description": "GitHub authentication strategy for Opauth",
+            "homepage": "http://opauth.org",
+            "keywords": [
+                "Authentication",
+                "auth",
+                "github"
+            ],
+            "support": {
+                "issues": "https://github.com/opauth/github/issues",
+                "source": "https://github.com/opauth/github/tree/0.1.0"
+            },
+            "time": "2012-07-23T06:13:59+00:00"
         },
         {
             "name": "opauth/google",
