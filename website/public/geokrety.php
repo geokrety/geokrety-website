@@ -96,7 +96,7 @@ foreach (GK_METRICS_EXCLUDE_PATH as $path) {
 include __DIR__.'/../app/shutdown.php';
 
 ini_set('session.gc_probability', 0);
-$session = new \GeoKrety\Session($f3->get('DB'));
+$session = new GeoKrety\Session($f3->get('DB_SESSION'));
 // Create a per session based CSRF token
 if (!$f3->exists('SESSION.csrf') or empty($f3->get('SESSION.csrf'))) {
     $f3->CSRF = $session->csrf();
@@ -105,8 +105,8 @@ if (!$f3->exists('SESSION.csrf') or empty($f3->get('SESSION.csrf'))) {
 $f3->set('CURRENT_USER', $f3->get('SESSION.CURRENT_USER'));
 
 // Assets building
-\Assets::instance();
-\Assets\Sass::instance()->init();
+Assets::instance();
+Assets\Sass::instance()->init();
 
 // Force HTTP_RETURN_CODE
 if ($f3->exists('SESSION.HTTP_RETURN_CODE')) {
