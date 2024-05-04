@@ -152,13 +152,13 @@ class Picture extends Base {
 
     public function isMainAvatar(): bool {
         if ($this->type->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
-            return $this->geokret->avatar && $this->geokret->avatar->id === $this->id;
+            return $this->geokret && $this->geokret->avatar && $this->geokret->avatar->id === $this->id;
         }
         if ($this->type->isType(PictureType::PICTURE_USER_AVATAR)) {
-            return $this->user->avatar && $this->user->avatar->id === $this->id;
+            return $this->user && $this->user->avatar && $this->user->avatar->id === $this->id;
         }
         if ($this->type->isType(PictureType::PICTURE_GEOKRET_MOVE)) {
-            return $this->move->geokret->avatar && $this->move->geokret->avatar->id === $this->id;
+            return $this->move && $this->move->geokret->avatar && $this->move->geokret->avatar->id === $this->id;
         }
 
         return false;
