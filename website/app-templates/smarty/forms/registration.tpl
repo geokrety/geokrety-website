@@ -4,14 +4,19 @@
 
 <form class="form-horizontal" action="" method="post" data-parsley-validate data-parsley-ui-enabled=true>
 
-{if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false or  GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
+{if GK_OPAUTH_ACTIVE}
     <div class="form-group">
-        <label class="col-sm-2 control-label">Register using </label>
+        <label class="col-sm-2 control-label">{t}Register using{/t}</label>
         <div class="col-sm-8">
             <div class="btn-group" role="group">
                 {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
                     <a id="btn-facebookauth" href="/auth/facebook" class="btn btn-primary">
                         {fa icon="facebook"} facebook
+                    </a>
+                {/if}
+                {if GK_OPAUTH_GITHUB_CLIENT_ID !== false}
+                    <a id="btn-githubauth" href="/auth/github" class="btn btn-default btn-black">
+                        {fa icon="github"} github
                     </a>
                 {/if}
                 {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
@@ -24,7 +29,7 @@
     </div>
 
     <div class="form-group">
-        <div class="separator">Or</div>
+        <div class="separator">{t}Or{/t}</div>
     </div>
 {/if}
 
