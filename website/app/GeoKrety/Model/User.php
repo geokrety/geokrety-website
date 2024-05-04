@@ -332,8 +332,12 @@ class User extends Base implements \JsonSerializable {
         return $this->account_valid === self::USER_ACCOUNT_IMPORTED;
     }
 
-    public function status_text(): string {
+    public function accountStatusText(): string {
         return self::ACCOUNT_STATUS_TEXT[$this->account_valid];
+    }
+
+    public function emailStatusText(): string {
+        return self::USER_EMAIL_TEXT[$this->email_invalid];
     }
 
     public function hasEmail(): bool {
