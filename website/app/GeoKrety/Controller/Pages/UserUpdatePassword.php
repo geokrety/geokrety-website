@@ -20,14 +20,19 @@ class UserUpdatePassword extends Base {
     }
 
     public function post(\Base $f3) {
+        // Load current user
+        $user = $this->current_user;
+
         $this->checkCsrf();
+        if (!$user->hasEmail()) {
+            \Flash::instance()->addMessage(_('Please add a valid email first.'), 'danger');
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
+            // die
+        }
+
         $password_old = $f3->get('POST.password_old');
         $password_new = $f3->get('POST.password_new');
         $password_new_confirm = $f3->get('POST.password_new_confirm');
-
-        // Load current user
-        $user = new User();
-        $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
 
         // Check old password needed?
         if ($user->hasPassword()) {
@@ -55,8 +60,6 @@ class UserUpdatePassword extends Base {
 
         // Save new password
         $user->password = $password_new;
-        $user->email_invalid = User::USER_EMAIL_NO_ERROR; // marking valid as changing password require email in the process
-        $user->account_valid = User::USER_ACCOUNT_ACTIVATED;
         if ($user->validate()) {
             $user->save();
 
