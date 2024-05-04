@@ -49,15 +49,11 @@ class RegistrationEmail extends BaseRegistration {
         $token->has('user', ['lower(username) = lower(?) AND _email_hash = public.digest(lower(?), \'sha256\')', $f3->get('POST.username'), $f3->get('POST.email')]);
         $token->load(['used = ? AND created_on_datetime + cast(? as interval) >= NOW()', AccountActivationModel::TOKEN_UNUSED, GK_SITE_EMAIL_ACTIVATION_CODE_DAYS_VALIDITY.' DAY']);
         if ($token->valid()) {
-            $f3->reroute(sprintf('@user_details(@userid=%d)', $token->user->id), false, false);
+            $f3->get('DB')->rollback();
             $smtp = new AccountActivation();
             $smtp->sendActivationOnCreateAgain($token);
-            if (!GK_DEVEL) {
-                // Let unit test run smoothly
-                $f3->abort();
-            }
-            $f3->get('DB')->rollback();
-            exit;
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $token->user->id));
+            // die
         }
 
         // Check email unicity over users table

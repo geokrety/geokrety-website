@@ -11,12 +11,12 @@
             <div class="btn-group" role="group">
                 {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
                     <a id="btn-facebookauth" href="/auth/facebook" class="btn btn-primary">
-                        {fa icon="facebook"}
+                        {fa icon="facebook"} facebook
                     </a>
                 {/if}
                 {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
                     <a id="btn-googleauth" href="/auth/google" class="btn btn-danger">
-                        {fa icon="google"}
+                        {fa icon="google"} google
                     </a>
                 {/if}
             </div>

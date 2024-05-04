@@ -17,8 +17,8 @@ abstract class BaseCustomSettings extends BaseSettings {
     ];
 
     public function __construct() {
-        parent::__construct();
         $this->fieldConf = array_merge($this->fieldConf, self::FIELDCONF_CUSTOM_SETTING_BASE);
+        parent::__construct();
     }
 
     /**

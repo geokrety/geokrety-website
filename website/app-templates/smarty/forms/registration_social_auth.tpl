@@ -9,7 +9,7 @@
     <div class="form-group">
         <label for="usernameInput" class="col-sm-2 control-label">{t}Username{/t}</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="usernameInput" name="username" placeholder="{t}Username{/t}" value="{$user->username}" required minlength="{GK_SITE_USERNAME_MIN_LENGTH}" maxlength="{GK_SITE_USERNAME_MAX_LENGTH}" data-parsley-trigger="focusout" data-parsley-remote data-parsley-remote-validator="usernameFreeValidator" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled>
+            <input type="text" class="form-control" id="usernameInput" name="username" placeholder="{t}Username{/t}" value="{$user->username}" required minlength="{GK_SITE_USERNAME_MIN_LENGTH}" maxlength="{GK_SITE_USERNAME_MAX_LENGTH}" data-parsley-trigger="focusout" data-parsley-remote data-parsley-remote-validator="usernameFreeValidator" data-parsley-remote-options='{ "type": "POST" }' data-parsley-errors-messages-disabled data-parsley-debounce="500">
         </div>
     </div>
 

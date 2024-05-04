@@ -30,8 +30,8 @@ abstract class BaseSettings extends Base {
     protected $fieldConfAppend = [];
 
     public function __construct() {
-        parent::__construct();
         $this->fieldConf = array_merge($this->fieldConf, $this->fieldConfAppend);
+        parent::__construct();
     }
 
     public function get_created_on_datetime($value): ?\DateTime {
