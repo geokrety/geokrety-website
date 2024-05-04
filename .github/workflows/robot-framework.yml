@@ -159,7 +159,11 @@ jobs:
           pip3 install -r /tmp/requirements.txt
 
       - name: Assemble reports
+        id: assemble-report
+        continue-on-error: true
         run: |
+            ret=0
+
             echo "::group::list files before"
             pwd
             find . -type f
@@ -168,7 +172,7 @@ jobs:
 
             # Robot Framework report
             echo "::group::Robot Framework report"
-            rebot --merge  output-*.xml
+            rebot --merge  output-*.xml --nostatusrc || ret=$?
             echo "::endgroup::"
             echo
 
@@ -204,11 +208,11 @@ jobs:
             echo "::group::Robot Eyes report"
             reportgen \
               --baseline=visual_images/baseline \
-              --results=.
+              --results=. || ret=$?
             echo "::endgroup::"
             echo
             echo "::group::Fix images path"
-            sed -i 's@\.\./@@g' visualReport.html
+            sed -i 's@\.\./@@g' visualReport.html || ret=$?
             echo "::endgroup::"
             echo
 
@@ -216,7 +220,7 @@ jobs:
             echo "::group::Add visualReport.html link into report.html"
             anchor='\(<td><a href="${$item.logURL}">${$item.logURL}\)</a></td>'
             link='<tr><th>Visual Report:</th><td><a href="visualReport.html">visualReport.html</a></td></tr>'
-            sed -i "s@${anchor}@\1${link}@" report.html
+            sed -i "s@${anchor}@\1${link}@" report.html || ret=$?
             echo "::endgroup::"
             echo
 
@@ -225,6 +229,8 @@ jobs:
             pwd
             find . -type f
             echo "::endgroup::"
+
+            exit "${ret}"
 
       - name: Upload report to job artifacts
         if: always()
@@ -237,7 +243,7 @@ jobs:
         id: deploy-pages
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
-        if: env.QA_TEST_DEPLOY_KEY != ''
+        if: always() && env.QA_TEST_DEPLOY_KEY != '' && steps.assemble-report.conclusion == 'success'
         uses: peaceiris/actions-gh-pages@v4
         with:
           keep_files: true
@@ -251,6 +257,7 @@ jobs:
           commit_message: "docs: Update QA tests results"
 
       - name: Show report URL
+        if: always() && env.QA_TEST_DEPLOY_KEY != '' && steps.deploy-pages.outcome == 'success'
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
         run: |
@@ -267,7 +274,7 @@ jobs:
       - name: Post report URL in PR
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
-        if: env.QA_TEST_DEPLOY_KEY != '' && github.event_name == 'pull_request'
+        if: env.QA_TEST_DEPLOY_KEY != '' && github.event_name == 'pull_request' && steps.deploy-pages.outcome == 'success'
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
