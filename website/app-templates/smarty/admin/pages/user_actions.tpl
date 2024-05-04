@@ -13,11 +13,9 @@
 
 {block user_actions}
 <div class="btn-group" role="group" aria-label="...">
-    {if !is_null($user->email) and !$user->email_invalid}
-    <button type="button" class="btn btn-warning btn-xs" title="{t}Invalidate user's email{/t}" data-toggle="modal" data-target="#modal" data-type="admin-users-email-invalidate" data-id="{$user->id}">
+    <button type="button" class="btn btn-warning btn-xs" title="{t}Change email status{/t}" data-toggle="modal" data-target="#modal" data-type="admin-users-email-invalidate" data-id="{$user->id}">
         {fa icon="envelope"}
     </button>
-    {/if}
     <button type="button" class="btn btn-success btn-xs" title="{t}Award prize{/t}" data-toggle="modal" data-target="#modal" data-type="admin-users-award-prize" data-user-id="{$user->id}">
         {fa icon="gavel"}
     </button>

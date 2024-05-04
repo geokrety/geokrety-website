@@ -22,7 +22,7 @@ class UserEmailInvalidate extends Base {
             $f3->reroute(sprintf('@admin_users_list?%s', http_build_query($params)));
         });
 
-        $this->user->email_invalid = true;
+        $this->user->email_invalid = (int) $f3->get('POST.email_status');
         $this->user->save();
         $f3->reroute(sprintf('@admin_users_list?%s', http_build_query($params)));
     }
