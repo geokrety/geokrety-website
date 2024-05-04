@@ -78,7 +78,6 @@ class Picture extends Base {
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],
@@ -122,7 +121,7 @@ class Picture extends Base {
     }
 
     public function get_type($value): PictureType {
-        return new \GeoKrety\PictureType($value);
+        return new PictureType($value);
     }
 
     public function get_created_on_datetime($value): ?\DateTime {
@@ -148,7 +147,7 @@ class Picture extends Base {
     public function isAuthor(): bool {
         $f3 = \Base::instance();
 
-        return $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
+        return $this->author && $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
 
     public function isMainAvatar(): bool {
