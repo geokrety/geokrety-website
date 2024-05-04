@@ -72,9 +72,20 @@ class User extends Base implements \JsonSerializable {
         self::USER_EMAIL_MAILBOX_FULL => 'Mailbox full',
     ];
 
-    public const USER_EMAIL_STATUS_VALID_FOR_ADMIN = [
+    public const USER_EMAIL_STATUS_INVALID_FOR_ADMIN = [
         self::USER_EMAIL_DOES_NOT_EXIST,
         self::USER_EMAIL_MISSING,
+    ];
+
+    public const USER_EMAIL_STATUS_INVALID_FOR_MAIL_ADMIN = [
+        self::USER_EMAIL_DOES_NOT_EXIST,
+        self::USER_EMAIL_MISSING,
+        self::USER_EMAIL_UNCONFIRMED,
+    ];
+
+    public const USER_EMAIL_STATUS_INVALID_FOR_MAIL = [
+        self::USER_EMAIL_DOES_NOT_EXIST,
+        self::USER_EMAIL_MAILBOX_FULL,
     ];
 
     protected $db = 'DB';
@@ -333,8 +344,16 @@ class User extends Base implements \JsonSerializable {
         return $this->email_invalid === self::USER_EMAIL_NO_ERROR;
     }
 
-    public function isEmailValidForAdmintask(): bool {
-        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_VALID_FOR_ADMIN);
+    public function isEmailValidForAdminTask(): bool {
+        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_ADMIN);
+    }
+
+    public function isEmailValidForEmailAdminTask(): bool {
+        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_MAIL_ADMIN);
+    }
+
+    public function isEmailValidForEmailTask(): bool {
+        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_MAIL);
     }
 
     public function hasPassword(): bool {
