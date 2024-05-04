@@ -174,13 +174,13 @@ class Picture extends Base {
 
     public function hasPermissionOnParent(): bool {
         if ($this->isType(PictureType::PICTURE_GEOKRET_AVATAR)) {
-            return $this->geokret->isOwner();
+            return $this->geokret && $this->geokret->isOwner();
         }
         if ($this->isType(PictureType::PICTURE_USER_AVATAR)) {
-            return $this->user->isCurrentUser();
+            return $this->user && $this->user->isCurrentUser();
         }
         if ($this->isType(PictureType::PICTURE_GEOKRET_MOVE)) {
-            return $this->move->geokret->isOwner();
+            return $this->move && $this->move->geokret->isOwner();
         }
 
         captureMessage('We should never reach there!');
