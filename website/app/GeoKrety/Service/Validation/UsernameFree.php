@@ -17,12 +17,10 @@ class UsernameFree {
     }
 
     public function validate($username, $email = null) {
-        $this->lookupUsername($username, $email);
-
-        return true;
+        return $this->lookupUsername($username, $email);
     }
 
-    private function lookupUsername($username, $email) {
+    private function lookupUsername($username, $email): bool {
         $f3 = \Base::instance();
         $user = new User();
         $username = trim(preg_replace('/(\pZ\pC)+/u', ' ', $username));
@@ -46,6 +44,8 @@ class UsernameFree {
                 array_push($this->errors, sprintf(_('Sorry, but username "%s" is already used.').' '._('If that\'s your account, please <a href="%s">login</a> first.'), $username, $f3->alias('login')));
             }
         }
+
+        return sizeof($this->errors);
     }
 
     public function render() {
