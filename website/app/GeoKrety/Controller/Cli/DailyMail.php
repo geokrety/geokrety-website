@@ -121,7 +121,7 @@ SQL;
 
     protected function send() {
         if (!$this->user->hasEmail()) {
-            $this->console_writer->print([$this->user->id, $this->user->username, '400 no email'], true);
+            $this->console_writer->print([$this->user->id, $this->user->username, '406 no email'], true);
             Event::instance()->emit('cron.dailymail.nomail', $this->user);
 
             return;
@@ -129,6 +129,12 @@ SQL;
         if (!$this->user->daily_mails) {
             $this->console_writer->print([$this->user->id, $this->user->username, '403 don\'t want'], true);
             Event::instance()->emit('cron.dailymail.deny', $this->user);
+
+            return;
+        }
+        if (!$this->user->isEmailValid()) {
+            $this->console_writer->print([$this->user->id, $this->user->username, sprintf('412 invalid email status (%d)', $this->user->email_invalid)], true);
+            Event::instance()->emit('cron.dailymail.invalid-mail', $this->user);
 
             return;
         }
@@ -224,7 +230,7 @@ SQL;
     }
 
     /**
-     * @throws \PHPMailer\PHPMailer\Exception
+     * @throws Exception
      */
     private function load_near_home_dropped_geokrety() {
         $this->console_writer->print([$this->user->id, $this->user->username, 'load dropped']);
