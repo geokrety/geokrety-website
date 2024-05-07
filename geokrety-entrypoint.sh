@@ -42,6 +42,13 @@ if [ "$1" = 'docker-php-entrypoint' ]; then
     # Create buckets
     make buckets
 
+    # build sitemap
+    if [ "${GK_ENVIRONMENT}" == 'prod' ]; then
+      runuser -u www-data make build-sitemap &
+    fi
+
+    set +x
+
     echo "#############################"
     echo "###  GeoKrety.org is READY"
     echo "###  http://${GK_WEBSITE_FQDN:-nginx}:${GK_WEBSITE_PORT:-80}"

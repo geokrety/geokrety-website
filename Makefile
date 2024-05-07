@@ -81,6 +81,8 @@ clear-all-templates: ## drop all generated smarty templates
 	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/smarty/clear-compiled-templates"
 build-translations: ## build translation files
 	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/gettext/build-translations"
+build-sitemap: ## build sitemap file
+	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/sitemap"
 clear-assets: ## clear generated assets
 	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/assets/clear"
 clean: clear-all-templates clear-assets build-translations compile-all-templates## Clean all
