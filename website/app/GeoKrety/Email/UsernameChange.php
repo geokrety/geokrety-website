@@ -10,6 +10,10 @@ class UsernameChange extends BasePHPMailer {
         $this->setFromNotif();
     }
 
+    protected function allowNonProdEnvSend(): bool {
+        return true;
+    }
+
     public function sendUsernameChangedNotification(User $user) {
         $this->setTo($user);
         $this->setSubject(_('Your username has been changed'), '👥');

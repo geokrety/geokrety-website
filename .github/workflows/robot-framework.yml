@@ -140,7 +140,7 @@ jobs:
 
 
   report-assemble:
-    needs: robot-framework
+    needs: [robot-framework, phpunit-tests]
     if: "${{ always() && ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
     runs-on: ubuntu-latest
 
@@ -149,6 +149,9 @@ jobs:
         with:
           pattern: test-results-*
           merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: test-unit
 
       - name: Checkout visual_images baseline
         uses: actions/checkout@v4
@@ -189,7 +192,7 @@ jobs:
 
             # Robot Framework report
             echo "::group::Robot Framework report"
-            rebot --merge  output-*.xml --nostatusrc || ret=$?
+            rebot --nostatusrc --merge  output-*.xml || ret=$?
             echo "::endgroup::"
             echo
 
@@ -280,13 +283,16 @@ jobs:
         run: |
           report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/report.html"
           visual_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/visualReport.html"
+          unit_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/test-unit/test-unit-report.html"
 
           echo "${report_url}"
           echo "${visual_report_url}"
+          echo "${unit_report_url}"
 
           echo '### Robot Framework reports' >> $GITHUB_STEP_SUMMARY
           echo "* [report](${report_url})" >> $GITHUB_STEP_SUMMARY
           echo "* [visualReport](${visual_report_url})" >> $GITHUB_STEP_SUMMARY
+          echo "* [PHPUnit](${unit_report_url})" >> $GITHUB_STEP_SUMMARY
 
       - name: Post report URL in PR
         env:
@@ -298,6 +304,7 @@ jobs:
             ### Robot Framework reports
             * [report](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/report.html)
             * [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/visualReport.html)
+            * [PHPUnit](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/test-unit/test-unit-report.html)
           comment_tag: rbfr
           reactions: eyes, rocket
 
@@ -305,6 +312,8 @@ jobs:
   database-tests:
     if: "${{ ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
     runs-on: ubuntu-latest
+    env:
+      GK_INSTANCE_COUNT: 1
 
     steps:
       - name: Checkout
@@ -351,3 +360,62 @@ jobs:
 
       - name: Run database tests
         uses: ./.github/actions/run-pgtap/
+
+
+  phpunit-tests:
+    if: "${{ ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
+    runs-on: ubuntu-latest
+    env:
+      GK_INSTANCE_COUNT: 1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pull docker images (background)
+        shell: bash
+        run: |
+          ${DOCKER_COMPOSE} pull --ignore-buildable &
+
+      - name: Set output
+        id: vars
+        run: |
+          echo "::group::debug"
+          # github.head_ref=${{ github.head_ref }}
+          # github.ref=${{ github.ref }}
+          echo "::endgroup::"
+
+          short_ref="${{ github.head_ref || github.ref }}"
+          echo "short_ref=${short_ref#refs/*/}" >> $GITHUB_OUTPUT
+          echo "SHORT_REF=${short_ref#refs/*/}" >> $GITHUB_ENV
+
+      - name: Start Postgres
+        uses: ./.github/actions/start-postgres/
+
+      - name: Install PostGis data
+        uses: ./.github/actions/install-postgis-data/
+
+      - name: Install tools
+        run: |
+          echo "::group::Install httping"
+          sudo apt-get update
+          ${APT_INSTALL} httping
+          echo "::endgroup::"
+
+      - name: Build website image
+        uses: ./.github/actions/build-website-image/
+
+      - name: Start Docker stack(s)
+        uses: ./.github/actions/docker-stack-start/
+
+      - name: Run PHPUnit tests
+        id: tests-unit
+        uses: ./.github/actions/run-phpunit/
+
+      - name: Upload results
+        if: ${{ always() && steps.tests-unit.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-unit
+          path: |
+            test-unit-report.html

@@ -71,10 +71,6 @@ class UserContact extends Base {
             Danger::message(_('Your email address must be validated before you can contact other players.'), _('Action is not possible'));
             exit;
         }
-        if (!$this->currentUser->isEmailValid()) {
-            \Flash::instance()->addMessage(_('Your email address must be validated before you can contact other players.'), 'danger');
-            $f3->reroute($this->getPostRedirectUrl(), die: true);
-        }
         $this->checkCsrf();
         $this->loadToUser($f3);
         $mail = $this->mail;

@@ -11,6 +11,10 @@ class CronError extends BasePHPMailer {
         $this->setToAdmins();
     }
 
+    protected function setFromDefault() {
+        $this->setFrom(GK_SITE_EMAIL_ADMIN, 'GeoKrety');
+    }
+
     public function sendPartnerFailure(array $errors) {
         Smarty::assign('errors', $errors);
         $this->setSubject(sprintf(_('Cron Failure: %s'), join(', ', array_keys($errors))), '❗');
@@ -35,9 +39,5 @@ class CronError extends BasePHPMailer {
         Smarty::assign('error', $error);
         $this->setSubject(sprintf(_('Cron fatal error: %s'), $service), '❗');
         $this->sendEmail('emails/cron-partner-fatal.tpl');
-    }
-
-    protected function setFromDefault() {
-        $this->setFrom(GK_SITE_EMAIL_ADMIN, 'GeoKrety');
     }
 }

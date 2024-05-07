@@ -12,6 +12,10 @@ class DailyMail extends BasePHPMailer {
         $this->since = $since;
     }
 
+    protected function allowSend(User $user): bool {
+        return $user->isEmailValid();
+    }
+
     public function __construct(?bool $exceptions = true) {
         parent::__construct($exceptions);
         $this->since = new \DateTime();
@@ -22,7 +26,7 @@ class DailyMail extends BasePHPMailer {
      */
     public function sendDailyMail(User $user) {
         $this->setSubject(sprintf(_('Watchlist for %s'), Carbon::instance($this->since)->isoFormat('LL')), '🛩️');
-        $this->setTo($user, false, false);
+        $this->setTo($user);
         if ($this->sendEmail('emails/daily-mail.tpl')) {
             $user->touch('last_mail_datetime');
             $user->save();

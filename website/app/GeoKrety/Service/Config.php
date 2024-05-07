@@ -105,6 +105,7 @@ class Config extends \Prefab {
         define('GK_ENVIRONMENT', getenv('GK_ENVIRONMENT') ?: 'dev');
         define('GK_DEPLOY_DATE', getenv('GK_DEPLOY_DATE') ?: 'unknown');
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
+        define('GK_IS_UNIT_TESTING', getenv('GK_IS_UNIT_TESTING') ? filter_var(getenv('GK_IS_UNIT_TESTING'), FILTER_VALIDATE_BOOLEAN) : false);
         if (GK_IS_PRODUCTION) {
             define('GK_DEBUG', false);
             define('GK_F3_DEBUG', false);
