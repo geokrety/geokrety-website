@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{\Multilang::instance()->current}">
 {include file='head.tpl'}
 {include file='macros/csrf.tpl'}
 <body>
