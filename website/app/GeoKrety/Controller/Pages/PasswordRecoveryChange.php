@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\PasswordToken;
+use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 use Sugar\Event;
 
@@ -63,6 +64,7 @@ class PasswordRecoveryChange extends Base {
 
         // Save new password
         $user->password = $password_new;
+        $user->email_invalid = User::USER_EMAIL_NO_ERROR;
         if (!$user->validate()) {
             $this->get($f3);
             exit;

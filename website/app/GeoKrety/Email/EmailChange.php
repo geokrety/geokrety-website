@@ -11,6 +11,14 @@ class EmailChange extends BasePHPMailer {
         $this->setFromNotif();
     }
 
+    protected function allowSend(User $user): bool {
+        return $user->isEmailValidForAdminTask();
+    }
+
+    protected function allowNonProdEnvSend(): bool {
+        return true;
+    }
+
     public function sendEmailChangeNotification(EmailActivationToken $token) {
         Smarty::assign('token', $token);
 
@@ -48,7 +56,7 @@ class EmailChange extends BasePHPMailer {
     protected function sendEmailChangeNotificationToNewEmail(EmailActivationToken $token) {
         $user = clone $token->user;
         $user->_email = $token->email;
-        $this->setTo($user, true);
+        $this->setTo($user);
         $this->setSubject(_('Changing your email address'), '✉️');
         $this->sendEmail('emails/email-change-to-new-address.tpl');
     }

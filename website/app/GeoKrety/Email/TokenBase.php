@@ -42,7 +42,7 @@ abstract class TokenBase extends BasePHPMailer {
     public function _sendActivation(User $user): \GeoKrety\Model\TokenBase {
         $token = $this->getToken($user);
         Smarty::assign('token', $token);
-        $this->setTo($token->user, true);
+        $this->setTo($token->user);
         if ($this->sendEmail($this->template)) {
             $token->touch('last_notification_datetime');
             $token->save();

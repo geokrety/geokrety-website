@@ -22,7 +22,7 @@ composer: ## run composer install locally
 	composer 2>/dev/null 1>&2 || { echo "composer is required : composer install guide at https://getcomposer.org"; exit 1; }
 	composer install
 composer-install-dev: ## run composer install locally
-	composer install --dev
+	composer install --dev --no-interaction
 composer-autoload: ## Generate and optimize autoloader
 	composer dump-autoload --optimize
 
@@ -36,6 +36,8 @@ utf8: ## run file check : utf8
 	bash ./scripts/check-utf8.sh .
 check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, utf8, test
 
+test-unit: ## Run phpunit tests
+	./vendor/bin/phpunit --testsuite unit --testdox-html="test-unit-report.html"
 test-db: ## run pgtap tests
 	PGPASSWORD=geokrety PGOPTIONS=--search_path=public,pgtap,geokrety pg_prove -d tests -U geokrety -h localhost -ot website/db/tests/test*.sql
 test-qa: ## run qa tests

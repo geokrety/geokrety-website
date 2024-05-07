@@ -13,7 +13,7 @@ require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
  * Purpose:  outputs a picture
  * -------------------------------------------------------------.
  *
- * @throws \SmartyException
+ * @throws SmartyException
  */
 function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true, ?bool $showItemLink = false, ?bool $showPictureType = false): string {
     if (is_null($picture)) {
@@ -38,11 +38,11 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
                 <div class="picture-is-main-avatar" data-toggle="tooltip" title="{t}This is the main avatar{/t}"></div>
             {/if}
             {if $showPictureType}
-                {if $picture->isType(\Geokrety\PictureType::PICTURE_USER_AVATAR)}
+                {if $picture->isType(Geokrety\PictureType::PICTURE_USER_AVATAR)}
                     <span class="type human"></span>
-                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
+                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
                     <span class="type move"></span>
-                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
+                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
                     <span class="type geokret"></span>
                 {/if}
             {/if}
@@ -51,11 +51,11 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
             <p class="text-center picture-caption" title="{$picture->caption}">{$picture->caption}</p>
             {if $showItemLink}
             <p class="text-center">
-                {if $picture->isType(\Geokrety\PictureType::PICTURE_USER_AVATAR)}
+                {if $picture->isType(Geokrety\PictureType::PICTURE_USER_AVATAR)}
                     {$picture->user|userlink nofilter}
-                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
+                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
                     {$picture->move|movelink nofilter}
-                {else if $picture->isType(\Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
+                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
                     {$picture->geokret|gklink nofilter}
                 {/if}
             </p>

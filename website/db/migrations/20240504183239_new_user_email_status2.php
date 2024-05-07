@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class NewuserStatus extends AbstractMigration {
+final class NewUserEmailStatus2 extends AbstractMigration {
     public function up(): void {
         $this->execute(<<<'EOL'
 ALTER TABLE geokrety.gk_users DROP CONSTRAINT validate_email_invalid;
-ALTER TABLE geokrety.gk_users ADD CONSTRAINT validate_email_invalid CHECK (email_invalid = ANY (ARRAY[0, 1, 2, 3, 4]));
+ALTER TABLE geokrety.gk_users ADD CONSTRAINT validate_email_invalid CHECK (email_invalid = ANY (ARRAY[0, 1, 2, 3, 4, 5]));
 EOL);
     }
 

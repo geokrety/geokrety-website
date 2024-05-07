@@ -4,9 +4,14 @@ namespace GeoKrety\Email;
 
 use DB\CortexCollection;
 use GeoKrety\Model\AccountActivationToken;
+use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
 
 class ExpiringAccounts extends BasePHPMailer {
+    protected function allowSend(User $user): bool {
+        return $user->isEmailUnconfirmed();
+    }
+
     public function sendExpiredAccountToAdmins(CortexCollection $expiringTokens) {
         $this->setToAdmins();
         $this->setFrom(GK_SITE_EMAIL_ADMIN, 'GeoKrety');
@@ -19,7 +24,7 @@ class ExpiringAccounts extends BasePHPMailer {
     public function sendAboutToExpireAgain(AccountActivationToken $token) {
         $token->touch('last_notification_datetime');
         $token->save();
-        $this->setTo($token->user, true);
+        $this->setTo($token->user);
         $this->setFrom(GK_SITE_EMAIL_REGISTRATION, 'GeoKrety');
         Smarty::assign('token', $token);
         $this->setSubject('Account not yet active', '❗');
@@ -27,7 +32,7 @@ class ExpiringAccounts extends BasePHPMailer {
     }
 
     public function sendAccountDeletionInfo(AccountActivationToken $token) {
-        $this->setTo($token->user, true);
+        $this->setTo($token->user);
         $this->setFrom(GK_SITE_EMAIL_REGISTRATION, 'GeoKrety');
         Smarty::assign('token', $token);
         $this->setSubject('Account has been permanently deleted', '🥺');

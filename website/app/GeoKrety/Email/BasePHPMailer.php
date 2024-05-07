@@ -94,7 +94,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
                 continue;
             }
             // When an error occured
-            if (!parent::send()) {
+            if (!$this->parentSend()) {
                 $return = false;
                 Event::instance()->emit('mail.error', $this);
                 if (PHP_SAPI === 'cli') {
@@ -134,45 +134,28 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         ]);
     }
 
-    /**
-     * @param bool $force         Force sending the mail, bypass user email validity check, useful on registration
-     * @param bool $realRecipient Deliver the mail to the real address. Useful to prevent crons to send unsolicited
-     *                            mails, but allow users to tests features on staging.
-     *                            (Only relevant when not production)
-     */
-    protected function setTo(?User $user, bool $force = false, bool $realRecipient = true) {
-        if (is_null($user)) {
+    public function setTo(?User $user) {
+        if (is_null($user) || !$this->allowSend($user)) {
             return;
         }
-        if (GK_DEVEL || is_null(GK_SMTP_HOST)) {
+        if ($this->isProduction() || $this->allowNonProdEnvSend()) {
             $this->recipients[] = $user;
-
-            return;
         }
         if (SiteSettings::instance()->get('ADMIN_EMAIL_BCC_ENABLED')) {
-            // Send copy to admins
-            foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
-                $_admin = $user->findone(['id = ?', $admin_id], null, 60);
-                $_user = clone $user;
-                $_user->email = $_admin->email;
-                $_user->username .= ' (admin)';
-                $this->recipients[] = $_user;
-            }
-        }
-        if ($realRecipient or GK_IS_PRODUCTION) {
-            if (!$user->hasEmail() or (!$this->allowSend($user) and !$force)) {
-                return;
-            }
-            $this->recipients[] = $user;
+            $this->sendCopyToAdmins();
         }
     }
 
-    private function allowSend(User $user): bool {
+    protected function allowSend(User $user): bool {
         if (!isset($this->allowSend)) {
             $this->allowSend = $user->isEmailValid();
         }
 
         return $this->allowSend;
+    }
+
+    protected function allowNonProdEnvSend(): bool {
+        return $this->isUnitTesting();
     }
 
     protected function setToAdmins() {
@@ -199,5 +182,36 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
             'to' => $to,
             'subject' => $this->getSubject(),
         ];
+    }
+
+    public function sendCopyToAdmins(): void {
+        $user = new User();
+        foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
+            $_admin = $user->findone(['id = ?', $admin_id], null, 60);
+            if ($_admin->dry()) {
+                continue;
+            }
+            $_user = clone $user;
+            $_user->email = $_admin->email;
+            $_user->username .= ' (admin)';
+            $this->recipients[] = $_user;
+        }
+    }
+
+    /**
+     * Extracted here so we can mock it during tests.
+     *
+     * @throws \PHPMailer\PHPMailer\Exception
+     */
+    public function parentSend(): bool {
+        return parent::send();
+    }
+
+    protected function isProduction(): bool {
+        return GK_IS_PRODUCTION;
+    }
+
+    public function isUnitTesting(): bool {
+        return GK_IS_UNIT_TESTING;
     }
 }

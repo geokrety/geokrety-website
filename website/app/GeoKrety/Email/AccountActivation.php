@@ -15,6 +15,14 @@ class AccountActivation extends TokenBase {
         parent::setSubject(_('Welcome to GeoKrety.org'), '🎉');
     }
 
+    protected function allowSend(User $user): bool {
+        return $user->isEmailValidForAdminTask();
+    }
+
+    protected function allowNonProdEnvSend(): bool {
+        return true;
+    }
+
     /**
      * Override mail From.
      *

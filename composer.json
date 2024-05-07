@@ -50,7 +50,7 @@
     "sentry/sentry": "^4.6",
     "symfony/http-client": "^5.4",
     "smarty-gettext/smarty-gettext": "^1.7",
-    "smarty/smarty": "^4.1",
+    "smarty/smarty": "<4.5",
     "tecnickcom/tcpdf": "^6.3",
     "torann/json-ld": "0.0.19",
     "xfra35/f3-access": "^1.2",
@@ -78,7 +78,9 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.22",
     "php-cs-fixer/diff": "^2.0",
-    "fakerphp/faker": "^1.23"
+    "fakerphp/faker": "^1.23",
+    "phpunit/phpunit": "^11",
+    "mockery/mockery": "^1.6"
   },
   "name": "geokrety/v2",
   "description": "GKv2",

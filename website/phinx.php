@@ -1,10 +1,12 @@
 <?php
 
-// Framework bootstrap code here
-require __DIR__.'/init-f3.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
-// Get PDO object
-$pdo = $f3->get('DB')->pdo();
+// Create GK_* consts from environments
+GeoKrety\Service\Config::instance();
+
+$db = new DB\SQL(GK_DB_DSN, GK_DB_USER, GK_DB_PASSWORD, [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4;', PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+$pdo = $db->pdo();
 
 return [
     'paths' => [
@@ -14,7 +16,7 @@ return [
     'foreign_keys' => true,
     'default_migration_prefix' => 'db_change_',
     'mark_generated_migration' => true,
-    'migration_base_class' => \Phinx\Migration\AbstractMigration::class,
+    'migration_base_class' => Phinx\Migration\AbstractMigration::class,
     'environments' => [
         'default_environment' => 'local',
         'local' => [
