@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-01 11:27+0000\n"
-"PO-Revision-Date: 2024-05-01 12:07\n"
+"POT-Creation-Date: 2024-05-11 11:54+0000\n"
+"PO-Revision-Date: 2024-05-11 13:17\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -213,11 +213,11 @@ msgstr "crwdns65094:0crwdne65094:0"
 msgid "The prize has been awarded"
 msgstr "crwdns65096:0crwdne65096:0"
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:84
+#: website/app/GeoKrety/Controller/Pages/Base.php:86
 msgid "reCaptcha failed!"
 msgstr "crwdns65098:0crwdne65098:0"
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:108
+#: website/app/GeoKrety/Controller/Pages/Base.php:110
 msgid "CSRF error, please try again."
 msgstr "crwdns65100:0crwdne65100:0"
 
@@ -526,16 +526,25 @@ msgstr "crwdns65238:0crwdne65238:0"
 msgid "Failed to update your subscriptions preferences."
 msgstr "crwdns65240:0crwdne65240:0"
 
-#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:34
+#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:35
+#, php-format
+msgid "You cannot detach from %s as you will not have any other valid authentication method."
+msgstr "crwdns67024:0%scrwdne67024:0"
+
+#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:36
+msgid "Please set a password or connect another provider first."
+msgstr "crwdns67026:0crwdne67026:0"
+
+#: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:43
 #, php-format
 msgid "Something went wrong while detaching from your %s account. Please contact us."
 msgstr "crwdns65242:0%scrwdne65242:0"
 
-#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:36
+#: website/app/GeoKrety/Controller/Pages/PasswordRecovery.php:35
 msgid "Sorry no account using that email address."
 msgstr "crwdns65244:0crwdne65244:0"
 
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:25
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:26
 #: website/app/GeoKrety/Controller/Pages/RegistrationActivate.php:21
 #: website/app/GeoKrety/Controller/Pages/UserEmailChange.php:24
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeRevertToken.php:22
@@ -544,17 +553,17 @@ msgstr "crwdns65244:0crwdne65244:0"
 msgid "Sorry this token is not valid, already used or expired."
 msgstr "crwdns65246:0crwdne65246:0"
 
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:57
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:51
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:58
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:56
 msgid "New passwords doesn't match."
 msgstr "crwdns65248:0crwdne65248:0"
 
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:84
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:86
 msgid "Unexpected error occurred."
 msgstr "crwdns65250:0crwdne65250:0"
 
-#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:89
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:64
+#: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:91
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:67
 msgid "Your password has been changed."
 msgstr "crwdns65252:0crwdne65252:0"
 
@@ -624,15 +633,14 @@ msgstr "crwdns65278:0crwdne65278:0"
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:54
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:62
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:71
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:75
 msgid "Your email address must be validated before you can contact other players."
 msgstr "crwdns65280:0crwdne65280:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:92
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:88
 msgid "Failed to save the mail."
 msgstr "crwdns65282:0crwdne65282:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:101
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:97
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "crwdns65284:0%scrwdne65284:0"
@@ -679,6 +687,20 @@ msgstr "crwdns65302:0crwdne65302:0"
 #: website/app/GeoKrety/Controller/Pages/UserEmailChangeToken.php:77
 msgid "No change has been processed. This token is now revoked."
 msgstr "crwdns65304:0crwdne65304:0"
+
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:15
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:24
+msgid "Sorry this link is invalid."
+msgstr "crwdns67028:0crwdne67028:0"
+
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:38
+msgid "Your account is already validated."
+msgstr "crwdns67030:0crwdne67030:0"
+
+#: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:57
+#, php-format
+msgid "The last notification was sent less than %d minutes ago. Please try again later."
+msgstr "crwdns67032:0%dcrwdne67032:0"
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:34
 msgid "You have successfully validated your email address."
@@ -736,11 +758,15 @@ msgstr "crwdns65328:0crwdne65328:0"
 msgid "Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails."
 msgstr "crwdns65330:0crwdne65330:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:35
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:28
+msgid "Please add a valid email first."
+msgstr "crwdns67034:0crwdne67034:0"
+
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:40
 msgid "Please enter your old password."
 msgstr "crwdns65332:0crwdne65332:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:43
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:48
 msgid "Your old password is invalid."
 msgstr "crwdns65334:0crwdne65334:0"
 
@@ -769,43 +795,38 @@ msgid "Waypoint length is invalid. It should be between %d and %d characters lon
 msgstr "crwdns65344:0%dcrwdnd65344:0%dcrwdne65344:0"
 
 #: website/app/GeoKrety/Email/AccountActivation.php:15
-#: website/app/GeoKrety/Email/EmailRevalidate.php:24
-msgid "A confirmation email has been sent to your address."
-msgstr "crwdns65346:0crwdne65346:0"
-
-#: website/app/GeoKrety/Email/AccountActivation.php:16
-#: website/app/GeoKrety/Email/AccountActivation.php:39
-#: website/app/GeoKrety/Email/AccountActivation.php:61
-msgid "<strong>You must click on the link provided in the email to activate your account before your can use it.</strong>"
-msgstr "crwdns65348:0crwdne65348:0"
-
-#: website/app/GeoKrety/Email/AccountActivation.php:17
-#: website/app/GeoKrety/Email/AccountActivation.php:40
-#: website/app/GeoKrety/Email/AccountActivation.php:62
-#: website/app/GeoKrety/Email/EmailRevalidate.php:26
-#, php-format
-msgid "The confirmation link expires in %s."
-msgstr "crwdns65350:0%scrwdne65350:0"
-
-#: website/app/GeoKrety/Email/AccountActivation.php:23
 #: website/app-templates/smarty/emails/account-activation.tpl:3
 msgid "Welcome to GeoKrety.org"
 msgstr "crwdns65352:0crwdne65352:0"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:37
+#: website/app/GeoKrety/Email/AccountActivation.php:44
+msgid "A confirmation email has been sent to your address."
+msgstr "crwdns65346:0crwdne65346:0"
+
+#: website/app/GeoKrety/Email/AccountActivation.php:45
+#: website/app/GeoKrety/Email/AccountActivation.php:60
+#: website/app/GeoKrety/Email/AccountActivation.php:87
+msgid "You must click on the link provided in the email to activate your account before your can use it."
+msgstr "crwdns67036:0crwdne67036:0"
+
+#: website/app/GeoKrety/Email/AccountActivation.php:58
 msgid "Your account seems to already exist."
 msgstr "crwdns65354:0crwdne65354:0"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:38
-#: website/app/GeoKrety/Email/AccountActivation.php:60
+#: website/app/GeoKrety/Email/AccountActivation.php:59
 msgid "The confirmation email was sent again to your mail address."
 msgstr "crwdns65356:0crwdne65356:0"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:59
-msgid "<strong>Your account is not yet active.</strong>"
-msgstr "crwdns65358:0crwdne65358:0"
+#: website/app/GeoKrety/Email/AccountActivation.php:79
+msgid "Your account is not yet active."
+msgstr "crwdns67038:0crwdne67038:0"
 
-#: website/app/GeoKrety/Email/AccountActivation.php:67
+#: website/app/GeoKrety/Email/AccountActivation.php:81
+#, php-format
+msgid "You can request a <a href=\"%s\">new confirmation mail</a>."
+msgstr "crwdns67040:0%scrwdne67040:0"
+
+#: website/app/GeoKrety/Email/AccountActivation.php:103
 msgid "Account activated"
 msgstr "crwdns65360:0crwdne65360:0"
 
@@ -814,56 +835,57 @@ msgstr "crwdns65360:0crwdne65360:0"
 msgid "You have received an Award"
 msgstr "crwdns65362:0crwdne65362:0"
 
-#: website/app/GeoKrety/Email/BasePHPMailer.php:86
+#: website/app/GeoKrety/Email/BasePHPMailer.php:103
 msgid "An error occurred while sending mail."
 msgstr "crwdns65364:0crwdne65364:0"
 
-#: website/app/GeoKrety/Email/CronError.php:16
+#: website/app/GeoKrety/Email/CronError.php:20
 #, php-format
 msgid "Cron Failure: %s"
 msgstr "crwdns65366:0%scrwdne65366:0"
 
-#: website/app/GeoKrety/Email/CronError.php:23
+#: website/app/GeoKrety/Email/CronError.php:27
 #, php-format
 msgid "Cron Exception: %s"
 msgstr "crwdns65368:0%scrwdne65368:0"
 
-#: website/app/GeoKrety/Email/CronError.php:29
+#: website/app/GeoKrety/Email/CronError.php:33
 #, php-format
 msgid "Cron is locked since a long time: %s"
 msgstr "crwdns65370:0%scrwdne65370:0"
 
-#: website/app/GeoKrety/Email/CronError.php:36
+#: website/app/GeoKrety/Email/CronError.php:40
 #, php-format
 msgid "Cron fatal error: %s"
 msgstr "crwdns65372:0%scrwdne65372:0"
 
-#: website/app/GeoKrety/Email/DailyMail.php:24
+#: website/app/GeoKrety/Email/DailyMail.php:28
 #, php-format
 msgid "Watchlist for %s"
 msgstr "crwdns65374:0%scrwdne65374:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:27
+#: website/app/GeoKrety/Email/EmailChange.php:35
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
 msgid "Revalidate your email address"
 msgstr "crwdns65376:0crwdne65376:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:31
+#: website/app/GeoKrety/Email/EmailChange.php:39
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
+#: website/app-templates/smarty/banners/user_account_imported.tpl:3
 msgid "Your account has been imported from GKv1."
 msgstr "crwdns65378:0crwdne65378:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:32
+#: website/app/GeoKrety/Email/EmailChange.php:40
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
 msgid "We would like to verify that your mail address is still valid."
 msgstr "crwdns65380:0crwdne65380:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:33
+#: website/app/GeoKrety/Email/EmailChange.php:41
 msgid "An email has been sent to your registered address, please click the included link."
 msgstr "crwdns65382:0crwdne65382:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:44
 #: website/app/GeoKrety/Email/EmailChange.php:52
+#: website/app/GeoKrety/Email/EmailChange.php:60
 #: website/app-templates/smarty/emails/email-change-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
 #: website/app-templates/smarty/pages/email_change.tpl:3
@@ -871,46 +893,52 @@ msgstr "crwdns65382:0crwdne65382:0"
 msgid "Changing your email address"
 msgstr "crwdns65384:0crwdne65384:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:70
 #: website/app/GeoKrety/Email/EmailChange.php:78
+#: website/app/GeoKrety/Email/EmailChange.php:86
 msgid "Email address changed"
 msgstr "crwdns65386:0crwdne65386:0"
 
-#: website/app/GeoKrety/Email/EmailChange.php:84
+#: website/app/GeoKrety/Email/EmailChange.php:92
 msgid "Email address reverted"
 msgstr "crwdns65388:0crwdne65388:0"
 
-#: website/app/GeoKrety/Email/EmailRevalidate.php:25
-msgid "Please click the included link to confirm it's validity."
-msgstr "crwdns65390:0crwdne65390:0"
-
-#: website/app/GeoKrety/Email/EmailRevalidate.php:31
+#: website/app/GeoKrety/Email/EmailRevalidate.php:39
 msgid "Account revalidation"
 msgstr "crwdns65392:0crwdne65392:0"
+
+#: website/app/GeoKrety/Email/EmailRevalidate.php:45
+#: website/app/GeoKrety/Email/TokenBase.php:50
+msgid "Mail sent."
+msgstr "crwdns67042:0crwdne67042:0"
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
 msgid "Your GeoKret '%s' has been adopted"
 msgstr "crwdns65394:0%scrwdne65394:0"
 
-#: website/app/GeoKrety/Email/PasswordChange.php:17
+#: website/app/GeoKrety/Email/PasswordChange.php:25
 msgid "Password reset request"
 msgstr "crwdns65396:0crwdne65396:0"
 
-#: website/app/GeoKrety/Email/PasswordChange.php:19
+#: website/app/GeoKrety/Email/PasswordChange.php:27
 msgid "An email containing a validation link has been sent to the provided email address."
 msgstr "crwdns65398:0crwdne65398:0"
 
-#: website/app/GeoKrety/Email/PasswordChange.php:25
+#: website/app/GeoKrety/Email/PasswordChange.php:33
 msgid "Your password has been changed"
 msgstr "crwdns65400:0crwdne65400:0"
+
+#: website/app/GeoKrety/Email/TokenBase.php:33
+#, php-format
+msgid "Link expires in %s."
+msgstr "crwdns67044:0%scrwdne67044:0"
 
 #: website/app/GeoKrety/Email/UserContact.php:14
 #, php-format
 msgid "Contact from user %s"
 msgstr "crwdns65402:0%scrwdne65402:0"
 
-#: website/app/GeoKrety/Email/UsernameChange.php:15
+#: website/app/GeoKrety/Email/UsernameChange.php:19
 msgid "Your username has been changed"
 msgstr "crwdns65404:0crwdne65404:0"
 
@@ -1066,13 +1094,13 @@ msgstr "crwdns65472:0crwdne65472:0"
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "crwdns65474:0%dcrwdnd65474:0%dcrwdne65474:0"
 
-#: website/app/GeoKrety/Service/Validation/UsernameFree.php:31
 #: website/app/GeoKrety/Service/Validation/UsernameFree.php:33
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:44
 #, php-format
 msgid "Sorry, but username \"%s\" is already used."
 msgstr "crwdns65476:0%scrwdne65476:0"
 
-#: website/app/GeoKrety/Service/Validation/UsernameFree.php:33
+#: website/app/GeoKrety/Service/Validation/UsernameFree.php:44
 #, php-format
 msgid "If that's your account, please <a href=\"%s\">login</a> first."
 msgstr "crwdns65478:0%scrwdne65478:0"
@@ -1150,27 +1178,27 @@ msgstr "crwdns65512:0{0}crwdne65512:0"
 msgid "{0} must be after GeoKret birth"
 msgstr "crwdns65514:0{0}crwdne65514:0"
 
-#: website/public/geokrety.php:25
+#: website/init-f3.php:113
 msgid "Your request seems invalid."
 msgstr "crwdns65516:0crwdne65516:0"
 
-#: website/public/geokrety.php:30
+#: website/init-f3.php:118
 msgid "Please login first."
 msgstr "crwdns65518:0crwdne65518:0"
 
-#: website/public/geokrety.php:34
+#: website/init-f3.php:122
 msgid "You are not allowed to access this page."
 msgstr "crwdns65520:0crwdne65520:0"
 
-#: website/public/geokrety.php:38
+#: website/init-f3.php:126
 msgid "This page doesn't exist."
 msgstr "crwdns65522:0crwdne65522:0"
 
-#: website/public/geokrety.php:42
+#: website/init-f3.php:130
 msgid "Method not allowed."
 msgstr "crwdns65524:0crwdne65524:0"
 
-#: website/public/geokrety.php:46
+#: website/init-f3.php:134
 msgid "We are sorry, something unexpected happened."
 msgstr "crwdns65526:0crwdne65526:0"
 
@@ -1185,10 +1213,10 @@ msgstr "crwdns66844:0crwdne66844:0"
 msgid "Log a GeoKret"
 msgstr "crwdns65842:0crwdne65842:0"
 
-#: website/app-templates/smarty/navbar.tpl:31
+#: website/app-templates/smarty/navbar.tpl:36
 #: website/app-templates/smarty/dialog/login_simple.tpl:17
-#: website/app-templates/smarty/dialog/login.tpl:39
-#: website/app-templates/smarty/navbar-profile.tpl:51
+#: website/app-templates/smarty/dialog/login.tpl:68
+#: website/app-templates/smarty/navbar-profile.tpl:56
 #: website/app-templates/smarty/pages/registration_validated.tpl:13
 msgid "Sign in"
 msgstr "crwdns65828:0crwdne65828:0"
@@ -1701,7 +1729,7 @@ msgstr "crwdns66818:0crwdne66818:0"
 #: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:55
 #: website/app-templates/smarty/dialog/user_update_password.tpl:53
-#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:12
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:22
 #: website/app-templates/smarty/dialog/admin_news_view.tpl:11
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:37
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
@@ -1951,15 +1979,15 @@ msgstr "crwdns66684:0crwdne66684:0"
 
 #: website/app-templates/smarty/dialog/login_simple.tpl:10
 #: website/app-templates/smarty/dialog/login_simple.tpl:11
-#: website/app-templates/smarty/dialog/login.tpl:13
-#: website/app-templates/smarty/dialog/login.tpl:15
+#: website/app-templates/smarty/dialog/login.tpl:42
+#: website/app-templates/smarty/dialog/login.tpl:44
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:10
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
 #: website/app-templates/smarty/forms/move.tpl:231
 #: website/app-templates/smarty/forms/advanced_search.tpl:17
 #: website/app-templates/smarty/forms/advanced_search.tpl:19
-#: website/app-templates/smarty/forms/registration.tpl:4
-#: website/app-templates/smarty/forms/registration.tpl:6
+#: website/app-templates/smarty/forms/registration.tpl:37
+#: website/app-templates/smarty/forms/registration.tpl:39
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:23
 #: website/app-templates/smarty/pages/geokret_watchers.tpl:19
 #: website/app-templates/smarty/pages/search_by_user.tpl:19
@@ -1968,10 +1996,10 @@ msgstr "crwdns65618:0crwdne65618:0"
 
 #: website/app-templates/smarty/dialog/login_simple.tpl:13
 #: website/app-templates/smarty/dialog/login_simple.tpl:14
-#: website/app-templates/smarty/dialog/login.tpl:19
-#: website/app-templates/smarty/dialog/login.tpl:21
-#: website/app-templates/smarty/forms/registration.tpl:19
-#: website/app-templates/smarty/forms/registration.tpl:21
+#: website/app-templates/smarty/dialog/login.tpl:48
+#: website/app-templates/smarty/dialog/login.tpl:50
+#: website/app-templates/smarty/forms/registration.tpl:52
+#: website/app-templates/smarty/forms/registration.tpl:54
 msgid "Password"
 msgstr "crwdns66534:0crwdne66534:0"
 
@@ -1998,8 +2026,8 @@ msgstr "crwdns65606:0crwdne65606:0"
 
 #: website/app-templates/smarty/dialog/user_update_password.tpl:31
 #: website/app-templates/smarty/dialog/user_update_password.tpl:33
-#: website/app-templates/smarty/forms/registration.tpl:26
-#: website/app-templates/smarty/forms/registration.tpl:28
+#: website/app-templates/smarty/forms/registration.tpl:59
+#: website/app-templates/smarty/forms/registration.tpl:61
 #: website/app-templates/smarty/pages/password_change.tpl:48
 #: website/app-templates/smarty/pages/password_change.tpl:50
 msgid "Confirm password"
@@ -2034,12 +2062,16 @@ msgid "Acknowledge"
 msgstr "crwdns66792:0crwdne66792:0"
 
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
-msgid "Do you really want to invalidate this user's email?"
-msgstr "crwdns66644:0crwdne66644:0"
+msgid "Select new email status"
+msgstr "crwdns67046:0crwdne67046:0"
 
-#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:13
-msgid "Invalidate"
-msgstr "crwdns66646:0crwdne66646:0"
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:10
+msgid "Email status"
+msgstr "crwdns67048:0crwdne67048:0"
+
+#: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:23
+msgid "Update"
+msgstr "crwdns67050:0crwdne67050:0"
 
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
 msgid "Award %1 with:"
@@ -2141,19 +2173,28 @@ msgstr "crwdns66798:0crwdne66798:0"
 msgid "Back to my profile"
 msgstr "crwdns66800:0crwdne66800:0"
 
-#: website/app-templates/smarty/dialog/login.tpl:28
+#: website/app-templates/smarty/dialog/login.tpl:14
+msgid "Login using"
+msgstr "crwdns67052:0crwdne67052:0"
+
+#: website/app-templates/smarty/dialog/login.tpl:37
+#: website/app-templates/smarty/forms/registration.tpl:32
+msgid "Or"
+msgstr "crwdns67054:0crwdne67054:0"
+
+#: website/app-templates/smarty/dialog/login.tpl:57
 msgid "Remember me"
 msgstr "crwdns66686:0crwdne66686:0"
 
-#: website/app-templates/smarty/dialog/login.tpl:31
+#: website/app-templates/smarty/dialog/login.tpl:60
 msgid "We are using cookies only to keep your session active. Read more about our <a href=\"%1\" target=\"_blank\">cookies policy</a>."
 msgstr "crwdns66688:0%1crwdne66688:0"
 
-#: website/app-templates/smarty/dialog/login.tpl:40
+#: website/app-templates/smarty/dialog/login.tpl:71
 msgid "No account yet ? Register now!"
 msgstr "crwdns66690:0crwdne66690:0"
 
-#: website/app-templates/smarty/dialog/login.tpl:43
+#: website/app-templates/smarty/dialog/login.tpl:75
 msgid "Forgot your password?"
 msgstr "crwdns66692:0crwdne66692:0"
 
@@ -2209,13 +2250,13 @@ msgid "Choose your preferred language"
 msgstr "crwdns66754:0crwdne66754:0"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:33
+#: website/app-templates/smarty/forms/registration.tpl:66
 #: website/app-templates/smarty/blocks/user/details.tpl:37
 msgid "Language"
 msgstr "crwdns66392:0crwdne66392:0"
 
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:21
-#: website/app-templates/smarty/forms/registration.tpl:40
+#: website/app-templates/smarty/forms/registration.tpl:73
 msgid "This will be the default language when you log in and the main language in the emails you may receive."
 msgstr "crwdns66536:0crwdne66536:0"
 
@@ -2263,8 +2304,8 @@ msgstr "crwdns66822:0crwdne66822:0"
 #: website/app-templates/smarty/dialog/user_update_email.tpl:12
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:18
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:20
-#: website/app-templates/smarty/forms/registration.tpl:11
-#: website/app-templates/smarty/forms/registration.tpl:13
+#: website/app-templates/smarty/forms/registration.tpl:44
+#: website/app-templates/smarty/forms/registration.tpl:46
 #: website/app-templates/smarty/pages/password_recovery.tpl:24
 #: website/app-templates/smarty/pages/password_recovery.tpl:26
 msgid "Email address"
@@ -2272,13 +2313,13 @@ msgstr "crwdns65984:0crwdne65984:0"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:17
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:31
-#: website/app-templates/smarty/forms/registration.tpl:48
+#: website/app-templates/smarty/forms/registration.tpl:81
 msgid "Yes, I want to receive email alerts (sent once a day)."
 msgstr "crwdns66538:0crwdne66538:0"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:23
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:21
-#: website/app-templates/smarty/forms/registration.tpl:14
+#: website/app-templates/smarty/forms/registration.tpl:47
 msgid "The main purpose of collecting email is to permit password recovery."
 msgstr "crwdns66532:0crwdne66532:0"
 
@@ -2592,7 +2633,7 @@ msgstr "crwdns66896:0crwdne66896:0"
 msgid "Sign out"
 msgstr "crwdns66898:0crwdne66898:0"
 
-#: website/app-templates/smarty/navbar-profile.tpl:56
+#: website/app-templates/smarty/navbar-profile.tpl:61
 msgid "Create account"
 msgstr "crwdns66900:0crwdne66900:0"
 
@@ -2601,28 +2642,28 @@ msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">logi
 msgstr "crwdns66630:0%2crwdnd66630:0%1crwdne66630:0"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:32
-#: website/app-templates/smarty/forms/registration.tpl:49
+#: website/app-templates/smarty/forms/registration.tpl:82
 msgid "Email alerts may contains, travel information about your GeoKrety, news, comments…"
 msgstr "crwdns66540:0crwdne66540:0"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:45
-#: website/app-templates/smarty/forms/registration.tpl:61
+#: website/app-templates/smarty/forms/registration.tpl:94
 msgid "Opt-in to site usage analytics."
 msgstr "crwdns66542:0crwdne66542:0"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:46
-#: website/app-templates/smarty/forms/registration.tpl:62
+#: website/app-templates/smarty/forms/registration.tpl:95
 #: website/app-templates/smarty/blocks/user/tracking.tpl:10
 msgid "We collect site usage analytics, this help us understanding how the site is used and how to enhance it."
 msgstr "crwdns66374:0crwdne66374:0"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:58
-#: website/app-templates/smarty/forms/registration.tpl:74
+#: website/app-templates/smarty/forms/registration.tpl:107
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
 msgstr "crwdns66544:0crwdne66544:0"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:69
-#: website/app-templates/smarty/forms/registration.tpl:87
+#: website/app-templates/smarty/forms/registration.tpl:120
 msgid "Register"
 msgstr "crwdns66546:0crwdne66546:0"
 
@@ -2884,6 +2925,10 @@ msgstr "crwdns66528:0crwdne66528:0"
 msgid "Save as Draft"
 msgstr "crwdns66530:0crwdne66530:0"
 
+#: website/app-templates/smarty/forms/registration.tpl:9
+msgid "Register using"
+msgstr "crwdns67056:0crwdne67056:0"
+
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:3
 msgid "Generate multiple GeoKrety labels"
 msgstr "crwdns66632:0crwdne66632:0"
@@ -2913,11 +2958,11 @@ msgstr "crwdns66516:0crwdne66516:0"
 msgid "Admin actions on users"
 msgstr "crwdns66486:0crwdne66486:0"
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:17
-msgid "Invalidate user's email"
-msgstr "crwdns66488:0crwdne66488:0"
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:16
+msgid "Change email status"
+msgstr "crwdns67058:0crwdne67058:0"
 
-#: website/app-templates/smarty/admin/pages/user_actions.tpl:21
+#: website/app-templates/smarty/admin/pages/user_actions.tpl:19
 msgid "Award prize"
 msgstr "crwdns66490:0crwdne66490:0"
 
@@ -3063,9 +3108,17 @@ msgstr "crwdns66986:0%1crwdnd66986:0%2crwdne66986:0"
 msgid "GeoKrety is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets or humans with us… <a href=\"%1\">read more</a>."
 msgstr "crwdns66972:0%1crwdne66972:0"
 
+#: website/app-templates/smarty/banners/user_account_imported.tpl:4
+msgid "Please validate your email address."
+msgstr "crwdns67060:0crwdne67060:0"
+
+#: website/app-templates/smarty/banners/user_account_imported.tpl:5
+msgid "You can request a <a href=\"%1\">new confirmation mail</a>."
+msgstr "crwdns67062:0%1crwdne67062:0"
+
 #: website/app-templates/smarty/banners/user_email_invalid.tpl:3
-msgid "Sorry, but we have troubles sending you email notifications. Is your email still valid?"
-msgstr "crwdns66982:0crwdne66982:0"
+msgid "Sorry, but we have troubles sending you email notifications."
+msgstr "crwdns67064:0crwdne67064:0"
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
@@ -3116,12 +3169,20 @@ msgid "You then will be able to manage your GeoKrety inventory, upload pictures,
 msgstr "crwdns66950:0crwdne66950:0"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
-msgid "Sorry, but your account has no email registered. You will not be able to recover from a password loss! Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "crwdns66988:0crwdne66988:0"
+msgid "Sorry, but your account has no email registered."
+msgstr "crwdns67066:0crwdne67066:0"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:4
-msgid "Please consider <a href=\"%1\">adding an email address</a> or <a href=\"%2\">link your account</a> with some OAuth provider."
-msgstr "crwdns66990:0%1crwdnd66990:0%2crwdne66990:0"
+msgid "You will not be able to recover from a password loss!"
+msgstr "crwdns67068:0crwdne67068:0"
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:5
+msgid "Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
+msgstr "crwdns67070:0crwdne67070:0"
+
+#: website/app-templates/smarty/banners/user_email_missing.tpl:6
+msgid "Please consider <a href=\"%1\">adding an email address</a>."
+msgstr "crwdns67072:0%1crwdne67072:0"
 
 #: website/app-templates/smarty/banners/is_not_prod.tpl:3
 msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
@@ -4514,14 +4575,6 @@ msgstr "crwdns66266:0crwdne66266:0"
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:77
 msgid "Transfer ownership"
 msgstr "crwdns66268:0crwdne66268:0"
-
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:28
-msgid "false"
-msgstr "crwdns66210:0crwdne66210:0"
-
-#: website/app-templates/smarty/blocks/user_finder_list.tpl:28
-msgid "true"
-msgstr "crwdns66212:0crwdne66212:0"
 
 #: website/app-templates/smarty/blocks/user_finder_list.tpl:39
 msgid "No users match the current request."
