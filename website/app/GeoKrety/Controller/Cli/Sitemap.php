@@ -54,9 +54,9 @@ class Sitemap {
             foreach ($aliases as $alias) {
                 $this->writeUrl($fp, $this->ml->alias($alias, [], $lang));
             }
-            $this->processModel($fp, $lang, $user, 'Users', [self::class, 'linkAliasUsers']);
-            $this->processModel($fp, $lang, $geokret, 'GeoKrety', [self::class, 'linkAliasGeoKrety']);
         }
+        $this->processModel($fp, 'en', $user, 'Users', [self::class, 'linkAliasUsers']);
+        $this->processModel($fp, 'en', $geokret, 'GeoKrety', [self::class, 'linkAliasGeoKrety']);
 
         fclose($fp);
         $this->script_end();
