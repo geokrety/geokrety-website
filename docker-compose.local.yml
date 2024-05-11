@@ -3,6 +3,7 @@
 x-variables: &variables
   environment:
     TIMEZONE: "UTC"
+    GK_IS_UNIT_TESTING: "true"
     # GK_WEBSITE_HOST must me the stack internal way off accessing the website
     GK_WEBSITE_HOST: nginx
     # GK_WEBSITE_FQDN How the webiste is reached externally

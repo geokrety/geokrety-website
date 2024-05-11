@@ -42,6 +42,11 @@
                 {fa icon="facebook"}
             </a>
             {/if}
+            {if GK_OPAUTH_GITHUB_CLIENT_ID !== false}
+            <a id="navbar-githubauth" href="/auth/github" class="btn btn-default btn-black">
+                {fa icon="github"}
+            </a>
+            {/if}
             {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
             <a id="navbar-googleauth" href="/auth/google" class="btn btn-danger">
                 {fa icon="google"}

@@ -105,6 +105,7 @@ class Config extends \Prefab {
         define('GK_ENVIRONMENT', getenv('GK_ENVIRONMENT') ?: 'dev');
         define('GK_DEPLOY_DATE', getenv('GK_DEPLOY_DATE') ?: 'unknown');
         define('GK_IS_PRODUCTION', GK_ENVIRONMENT === 'prod');
+        define('GK_IS_UNIT_TESTING', getenv('GK_IS_UNIT_TESTING') ? filter_var(getenv('GK_IS_UNIT_TESTING'), FILTER_VALIDATE_BOOLEAN) : false);
         if (GK_IS_PRODUCTION) {
             define('GK_DEBUG', false);
             define('GK_F3_DEBUG', false);
@@ -212,8 +213,10 @@ class Config extends \Prefab {
         define('GK_OPAUTH_GOOGLE_CLIENT_SECRET', getsecret('GK_OPAUTH_GOOGLE_CLIENT_SECRET') ?: false);
         define('GK_OPAUTH_FACEBOOK_CLIENT_ID', getenv('GK_OPAUTH_FACEBOOK_CLIENT_ID') ?: false);
         define('GK_OPAUTH_FACEBOOK_CLIENT_SECRET', getsecret('GK_OPAUTH_FACEBOOK_CLIENT_SECRET') ?: false);
+        define('GK_OPAUTH_GITHUB_CLIENT_ID', getenv('GK_OPAUTH_GITHUB_CLIENT_ID') ?: false);
+        define('GK_OPAUTH_GITHUB_CLIENT_SECRET', getsecret('GK_OPAUTH_GITHUB_CLIENT_SECRET') ?: false);
 
-        define('GK_OPAUTH_ACTIVE', GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false);
+        define('GK_OPAUTH_ACTIVE', GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false or GK_OPAUTH_GITHUB_CLIENT_ID !== false);
 
         // go2geo url
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');

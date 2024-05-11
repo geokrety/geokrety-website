@@ -29,6 +29,15 @@ class OAuthDetach extends Base {
     public function post($f3) {
         $this->checkCsrf();
         $userSocialAuth = new UserSocialAuth();
+        if (!$this->current_user->hasPassword()
+            && $userSocialAuth->count(['user = ?', $this->current_user->id], null, 0) <= 1) {
+            \Flash::instance()->addMessage(join(' ', [
+                sprintf(_('You cannot detach from %s as you will not have any other valid authentication method.'), $this->oauthProvider->name),
+                _('Please set a password or connect another provider first.'),
+            ]), 'danger');
+            $f3->reroute(sprintf('@user_details(@userid=%d)', $this->current_user->id), $die = true);
+        }
+
         $userSocialAuth->load(['user = ? AND provider = ?', $this->current_user->id,  $this->oauthProvider->id]);
         if ($userSocialAuth->dry() or !$userSocialAuth->erase()) {
             \Flash::instance()->addMessage(sprintf(_('Something went wrong while detaching from your %s account. Please contact us.'), $this->oauthProvider->name), 'danger');

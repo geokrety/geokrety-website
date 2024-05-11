@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/bash -x
 set -e
 
 cat <<'EOF'
@@ -41,6 +41,13 @@ if [ "$1" = 'docker-php-entrypoint' ]; then
 
     # Create buckets
     make buckets
+
+    # build sitemap
+    if [ "x${GK_ENVIRONMENT:-}" == 'xprod' ]; then
+      runuser -u www-data make build-sitemap &
+    fi
+
+    set +x
 
     echo "#############################"
     echo "###  GeoKrety.org is READY"

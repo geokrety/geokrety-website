@@ -63,6 +63,7 @@ class User extends Base implements \JsonSerializable {
     public const USER_EMAIL_UNCONFIRMED = 2;
     public const USER_EMAIL_MISSING = 3;
     public const USER_EMAIL_MAILBOX_FULL = 4;
+    public const USER_EMAIL_DETECTED_AS_SPAM = 5;
 
     public const USER_EMAIL_TEXT = [
         self::USER_EMAIL_NO_ERROR => 'Valid',
@@ -70,11 +71,25 @@ class User extends Base implements \JsonSerializable {
         self::USER_EMAIL_UNCONFIRMED => 'Unconfirmed',
         self::USER_EMAIL_MISSING => 'No email defined',
         self::USER_EMAIL_MAILBOX_FULL => 'Mailbox full',
+        self::USER_EMAIL_MAILBOX_FULL => 'Emails detected as spam',
     ];
 
-    public const USER_EMAIL_STATUS_VALID_FOR_ADMIN = [
+    public const USER_EMAIL_STATUS_INVALID_FOR_ADMIN = [
+        self::USER_EMAIL_MISSING,
+    ];
+
+    public const USER_EMAIL_STATUS_INVALID_FOR_MAIL_ADMIN = [
         self::USER_EMAIL_DOES_NOT_EXIST,
         self::USER_EMAIL_MISSING,
+        self::USER_EMAIL_UNCONFIRMED,
+    ];
+
+    public const USER_EMAIL_STATUS_INVALID_FOR_MAIL = [
+        self::USER_EMAIL_DOES_NOT_EXIST,
+        self::USER_EMAIL_UNCONFIRMED,
+        self::USER_EMAIL_MISSING,
+        self::USER_EMAIL_MAILBOX_FULL,
+        self::USER_EMAIL_DETECTED_AS_SPAM,
     ];
 
     protected $db = 'DB';
@@ -321,8 +336,12 @@ class User extends Base implements \JsonSerializable {
         return $this->account_valid === self::USER_ACCOUNT_IMPORTED;
     }
 
-    public function status_text(): string {
+    public function accountStatusText(): string {
         return self::ACCOUNT_STATUS_TEXT[$this->account_valid];
+    }
+
+    public function emailStatusText(): string {
+        return self::USER_EMAIL_TEXT[$this->email_invalid];
     }
 
     public function hasEmail(): bool {
@@ -333,8 +352,20 @@ class User extends Base implements \JsonSerializable {
         return $this->email_invalid === self::USER_EMAIL_NO_ERROR;
     }
 
-    public function isEmailValidForAdmintask(): bool {
-        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_VALID_FOR_ADMIN);
+    public function isEmailValidForAdminTask(): bool {
+        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_ADMIN);
+    }
+
+    public function isEmailValidForEmailAdminTask(): bool {
+        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_MAIL_ADMIN);
+    }
+
+    public function isEmailValidForEmailTask(): bool {
+        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_MAIL);
+    }
+
+    public function isEmailUnconfirmed(): bool {
+        return $this->email_invalid == User::USER_EMAIL_UNCONFIRMED;
     }
 
     public function hasPassword(): bool {

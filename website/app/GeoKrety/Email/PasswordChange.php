@@ -11,8 +11,15 @@ class PasswordChange extends BasePHPMailer {
         $this->setFromNotif();
     }
 
+    protected function allowSend(User $user): bool {
+        return $user->isEmailValidForAdminTask();
+    }
+
+    protected function allowNonProdEnvSend(): bool {
+        return true;
+    }
+
     public function sendPasswordChangeToken(PasswordToken $token) {
-        $this->allowSend = $token->user->isEmailValidForAdmintask();
         $this->setTo($token->user);
         Smarty::assign('token', $token);
         $this->setSubject(_('Password reset request'), '🔑');

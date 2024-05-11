@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
         colors="true"
-        convertErrorsToExceptions="true"
-        convertNoticesToExceptions="true"
-        convertWarningsToExceptions="true"
         processIsolation="false"
         stopOnFailure="false"
-        syntaxCheck="false"
-        verbose="true">
+        bootstrap="tests/bootstrap.php"
+        testdox="true">
     <testsuites>
-        <testsuite name="PHPOO Test Suite">
-            <directory>./tests/</directory>
+        <testsuite name="unit">
+            <directory>tests/unit</directory>
+        </testsuite>
+        <testsuite name="emails">
+            <directory>tests/unit/app/GeoKrety/Emails/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
