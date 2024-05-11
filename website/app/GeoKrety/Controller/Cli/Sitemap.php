@@ -55,8 +55,9 @@ class Sitemap {
                 $this->writeUrl($fp, $this->ml->alias($alias, [], $lang));
             }
         }
-        $this->processModel($fp, 'en', $user, 'Users', [self::class, 'linkAliasUsers']);
-        $this->processModel($fp, 'en', $geokret, 'GeoKrety', [self::class, 'linkAliasGeoKrety']);
+        // disabled until better implementation, as sitemaps are limited to 50000 lines
+        // $this->processModel($fp, 'en', $user, 'Users', [self::class, 'linkAliasUsers']);
+        // $this->processModel($fp, 'en', $geokret, 'GeoKrety', [self::class, 'linkAliasGeoKrety']);
 
         fclose($fp);
         $this->script_end();
