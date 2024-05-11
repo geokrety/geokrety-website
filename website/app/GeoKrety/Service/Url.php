@@ -21,11 +21,15 @@ class Url extends \Prefab {
     //    public static function getGoto(string $alias = 'home', string|array $params) { // php 8.0 will support `union-types`
     public static function serializeGoto(string $alias = 'home', $params = null): string {
         $f3 = \Base::instance();
-        $query = [
-            'goto' => base64_encode($f3->get('ALIAS')),
-            'params' => base64_encode($f3->serialize($f3->get('PARAMS'))),
-            'query' => base64_encode($f3->serialize($f3->get('GET'))),
-        ];
+        $goto = $f3->get('ALIAS');
+        $query = [];
+        if (!in_array($goto, self::NO_REDIRECT_URLS)) {
+            $query = [
+                'goto' => base64_encode($goto),
+                'params' => base64_encode($f3->serialize($f3->get('PARAMS'))),
+                'query' => base64_encode($f3->serialize($f3->get('GET'))),
+            ];
+        }
 
         return \Base::instance()->alias($alias, $params ?? [], $query);
     }
