@@ -322,7 +322,7 @@ var_dump($gk);
             <dt><code>secid</code></dt>
             <dd>authentication string - see <a href="#secid">above</a></dd>
 
-            <dt><code>nr</code></dt>
+            <dt><code>tracking_code</code></dt>
             <dd>GeoKret's Tracking Code (ex: <code>GH68MA</code>)</dd>
 
             <dt><code>formname</code></dt>
@@ -331,13 +331,13 @@ var_dump($gk);
             <dt><code>logtype</code></dt>
             <dd>the move logtype, see help on the <a href="#logtypes">top of this document</a> (ex: <code>0</code>)</dd>
 
-            <dt><code>data</code></dt>
+            <dt><code>date</code></dt>
             <dd>the log date YYYY-MM-DD (ex: <code>2012-12-15</code>)</dd>
 
-            <dt><code>godzina</code></dt>
+            <dt><code>hour</code></dt>
             <dd>hour HH (ex: <code>15</code>)</dd>
 
-            <dt><code>minuta</code></dt>
+            <dt><code>minute</code></dt>
             <dd>minutes MM (ex: <code>23</code>)</dd>
 
             <dt><code>tz</code></dt>
@@ -351,9 +351,6 @@ var_dump($gk);
 
             <dt><code>app_ver</code></dt>
             <dd>(<i>optional</i>) application version, <=16 chars (ex: <code>2019.06.06</code>)</dd>
-
-            <dt><code>mobile_lang</code></dt>
-            <dd><i>(optional)</i> error messages language (ex: <code>pl_PL.UTF-8</code>)</dd>
         </dl>
 
         <h4>Drop or dipped move types</h4>
@@ -364,10 +361,10 @@ var_dump($gk);
             <dt>variable</dt>
             <dd>description</dd>
 
-            <dt><code>latlon</code></dt>
+            <dt><code>coordinates</code></dt>
             <dd><a href="{'help'|alias}#acceptableformats">latitude and longitude</a> (ex: <code>52.1534 21.0539</code>)</dd>
 
-            <dt><code>wpt</code></dt>
+            <dt><code>waypoint</code></dt>
             <dd>the waypoint (ex: <code>OP05E5</code>)</dd>
         </dl>
 
