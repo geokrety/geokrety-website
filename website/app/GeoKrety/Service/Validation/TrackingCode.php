@@ -61,7 +61,7 @@ class TrackingCode {
 
     private function lookupTrackingCode($trackingCode) {
         $geokret = new Geokret();
-        $geokret->load(['tracking_code = ?', $trackingCode]);
+        $geokret->load(['tracking_code = ?', $trackingCode], ttl: 60);
 
         if ($geokret->dry()) {
             array_push($this->errors, sprintf(_('Sorry, but Tracking Code "%s" was not found in our database.'), $trackingCode));
@@ -114,6 +114,7 @@ class TrackingCode {
 
     public function validate($trackingCodeString) {
         $f3 = \Base::instance();
+        $trackingCodeString = strtoupper($trackingCodeString ?? '');
 
         $trackingCodeArray = self::split_tracking_codes($trackingCodeString);
 
