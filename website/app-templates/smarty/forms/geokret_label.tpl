@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputGeokretTrackingCode" class="col-sm-2 control-label">{t}Reference numbers{/t}</label>
+                <label for="inputGeokretTrackingCode" class="col-sm-2 control-label">{t}Tracking Code{/t}</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputGeokretTrackingCode" name="trackingCode" placeholder="{t}Tracking Code{/t}" required value="{if isset($geokret)}{$geokret->tracking_code}{/if}" readonly>
                 </div>

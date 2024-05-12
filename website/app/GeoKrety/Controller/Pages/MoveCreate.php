@@ -4,6 +4,7 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Model\GeokretWithDetails;
 use GeoKrety\Model\Move;
 use GeoKrety\Service\Moves as MovesService;
 use GeoKrety\Service\Smarty;
@@ -65,6 +66,10 @@ class MoveCreate extends Base {
                 $this->move->lon = $coordChecker->getLon();
             }
         }
+
+        $geokret = new GeokretWithDetails();
+        $geokret->load(['gkid = ?', GK_HELP_GEOKRETY_EXAMPLE_3]);
+        Smarty::assign('gk_example_3_tc', $geokret->tracking_code);
         Smarty::render('pages/geokret_move.tpl');
     }
 
