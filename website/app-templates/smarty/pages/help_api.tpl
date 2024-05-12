@@ -311,10 +311,7 @@ var_dump($gk);
         </p>
 
         <div class="alert alert-danger" role="alert">
-            <b>Important</b>: All date time need to be provided as UTC and not as user local time.
-            It's up to the poster to made the necessary conversion. As of today
-            we still don't have any way to pass timezone, but it'll change in
-            the future.
+            <b>Important</b>: for legacy reasons default timezone is <code>Europe/Paris</code>.
         </div>
 
         <h4>Base informations</h4>
@@ -342,6 +339,9 @@ var_dump($gk);
 
             <dt><code>minuta</code></dt>
             <dd>minutes MM (ex: <code>23</code>)</dd>
+
+            <dt><code>tz</code></dt>
+            <dd>timezone to use (default: <code>Europe/Paris</code>)</dd>
 
             <dt><code>comment</code></dt>
             <dd>(<i>optional</i>) comment to the log (ex: <code>It is a good place for this GeoKret!</code>)</dd>
