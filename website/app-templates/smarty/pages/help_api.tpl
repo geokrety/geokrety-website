@@ -1,6 +1,6 @@
 {function alertLimitDays}
 <div class="alert alert-info" role="alert">
-    <b>Note:</b> <code>export*.php</code> has a limit of retrieved data set at <code>{GK_API_EXPORT_LIMIT_DAYS} days</code>
+    <b>Note:</b> <code>export*</code> has a limit of retrieved data set at <code>{GK_API_EXPORT_LIMIT_DAYS} days</code>
     (ie you can download data changed in the past {GK_API_EXPORT_LIMIT_DAYS} days only). This should be
     enough to sync local OC nodes or other databases. To get older data use
     <a href="{GK_CDN_SERVER_URL}/exports/">static exports</a>.
@@ -36,14 +36,14 @@
             <li>
                 <a href="#synchronizing">Database synchronizing</a>
                 <ol>
-                    <li><a href="#syncmethod1">Method 1: <code>export.php</code> All GeoKrety & logs information</a></li>
-                    <li><a href="#syncmethod2">Method 2: <code>export_oc.php</code> Only GeoKrety information</a></li>
+                    <li><a href="#syncmethod1">Method 1: <code>export</code> All GeoKrety & logs information</a></li>
+                    <li><a href="#syncmethod2">Method 2: <code>export_oc</code> Only GeoKrety information</a></li>
                 </ol>
             </li>
             <li>
                 <a href="#retrieveinfo">Retrieving information</a>
                 <ol>
-                    <li><a href="#export2"><code>export2.php</code> Retrieve GeoKrety using some filters</a></li>
+                    <li><a href="#export2"><code>export2</code> Retrieve GeoKrety using some filters</a></li>
                 </ol>
             </li>
         </ol>
@@ -146,14 +146,14 @@ var_dump($gk);
 
 <a class="anchor" id="syncmethod1"></a>
 <div class="panel panel-default">
-    <div class="panel-heading">Method 1: <code>export.php</code> All GeoKrety & logs information (slow and large volume of data)</div>
+    <div class="panel-heading">Method 1: <code>export</code> All GeoKrety & logs information (slow and large volume of data)</div>
     <div class="panel-body">
         <p>
             To get list of created GeoKrety after the date and moves registered
             after the date.
         </p>
         <sample>
-            Example: <code>{GK_SITE_BASE_SERVER_URL}/export.php?modifiedsince={$modified_since}</code>
+            Example: <code>{'api_v1_export'|alias}?modifiedsince={$modified_since}</code>
         </sample>
         <h4>Sample output (without headers)</h4>
         <pre><code class="language-xml">{$gk_xml_export}</code></pre>
@@ -163,7 +163,7 @@ var_dump($gk);
 
 <a class="anchor" id="syncmethod2"></a>
 <div class="panel panel-default">
-    <div class="panel-heading">Method 2: <code>export_oc.php</code> Only GeoKrety information (fast, only most important data; designed for OC sites)</div>
+    <div class="panel-heading">Method 2: <code>export_oc</code> Only GeoKrety information (fast, only most important data; designed for OC sites)</div>
     <div class="panel-body">
         <p>
             To get list of GK that changed location during last hour.
@@ -177,7 +177,7 @@ var_dump($gk);
             (grabbed).
         </div>
         <sample>
-            Example: <code>{GK_SITE_BASE_SERVER_URL}/export_oc.php?modifiedsince={$modified_since}</code>
+            Example: <code>{'api_v1_export_oc'|alias}?modifiedsince={$modified_since}</code>
         </sample>
 
         <h4>Sample output (without headers)</h4>
@@ -192,7 +192,7 @@ var_dump($gk);
 {call alertLimitDays}
 <a class="anchor" id="export2"></a>
 <div class="panel panel-default">
-    <div class="panel-heading"><code>export2.php</code> Retrieve GeoKrety using some filters</div>
+    <div class="panel-heading"><code>export2</code> Retrieve GeoKrety using some filters</div>
     <div class="panel-body">
 
         <h4>Sample output (without headers)</h4>
@@ -206,7 +206,7 @@ var_dump($gk);
         </p>
 
         <h4>Sample output (with details)</h4>
-        <code>{GK_SITE_BASE_SERVER_URL}/export2.php?gkid={$gk_example_1}&details=1</code>
+        <code>{'api_v1_export2'|alias}?gkid={$gk_example_1}&details=1</code>
         <!-- HTML generated using hilite.me -->
         <pre><code class="language-xml">{$gk_xml_export2_details}</code></pre>
 
@@ -215,36 +215,36 @@ var_dump($gk);
             <li>
                 <code>modifiedsince</code> - list of GeoKrety with the timestamp
                 of the last move <code>> modifiedsince</code> (required for some queries)
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?modifiedsince={$modified_since}</pre>
+                <pre>{'api_v1_export2'|alias}?modifiedsince={$modified_since}</pre>
             </li>
             <li>
                 <code>lonSW</code> <code>latSW</code> <code>lonNE</code> <code>latNE</code> -
                 list of GeoKrety within the area (restricted to {GK_API_EXPORT_SURFACE_LIMIT}km²)
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?lonSW=0&latSW=45&lonNE=6&latNE=50</pre>
+                <pre>{'api_v1_export2'|alias}?lonSW=0&latSW=45&lonNE=6&latNE=50</pre>
             </li>
             <li>
-                <code>userid</code> - lists GeoKrety owned by userid
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?userid=1</pre>
+                <code>userid</code> - list GeoKrety owned by userid
+                <pre>{'api_v1_export2'|alias}?userid=1</pre>
             </li>
-            <li><code>gkid</code> - lists only one GeoKret
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?gkid=141</pre>
+            <li><code>gkid</code> - list only one GeoKret
+                <pre>{'api_v1_export2'|alias}?gkid=141</pre>
             </li>
-            <li><code>wpt</code> - lists GeoKrety which are in the cache with
+            <li><code>wpt</code> - list GeoKrety which are in the cache with
                 the specified waypoint<br />
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?wpt=OP05E5</pre>
+                <pre>{'api_v1_export2'|alias}?wpt=OP05E5</pre>
                 It can be used to show GeoKrety in caches with defined waypoint's prefix; eg
                 to show all GeoKrety in romanian caches (prefix GR), just enter:<br />
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?wpt=GR</pre>
+                <pre>{'api_v1_export2'|alias}?wpt=GR</pre>
             </li>
             <li><code>details</code> - show GeoKrety details, including moves and pictures. (compatible with GeoKretyMap)
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?gkid=141&details=1</pre>
+                <pre>{'api_v1_export2'|alias}?gkid=141&details=1</pre>
             </li>
         </ul>
 
         <p>
             Above swiches can be mixed. Eg to list my (<code>ownerid=1</code>) GeoKrety
             which are in <code>GC</code> caches, just enter:<br />
-            <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?userid=1&wpt=GC</pre>
+            <pre>{'api_v1_export2'|alias}?userid=1&wpt=GC</pre>
         </p>
 
         <h3>Retriving user's inventory</h3>
@@ -252,12 +252,12 @@ var_dump($gk);
             <li>
                 <code>userid</code> and <code>inventory=1</code> - list GeoKrety
                 in user's inventory
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?userid=1&inventory=1</pre>
+                <pre>{'api_v1_export2'|alias}?userid=1&inventory=1</pre>
             </li>
             <li>
                 The same but with <code>secid</code> secret user's identification<br />
 
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?secid=xxx&inventory=1</pre>
+                <pre>{'api_v1_export2'|alias}?secid=xxx&inventory=1</pre>
                 this request returns also the secret Tracking Codes
                 (the <b>nr</b> variable) for all GeoKrety in user's inventory.
             </li>
@@ -267,7 +267,7 @@ var_dump($gk);
         <ul>
             <li>adding <code>gzip=1</code> swich makes output compressed with
                 gzip
-                <pre>{GK_SITE_BASE_SERVER_URL}/export2.php?userid=1&inventory=1&gzip=1</pre>
+                <pre>{'api_v1_export2'|alias}?userid=1&inventory=1&gzip=1</pre>
             </li>
         </ul>
 
@@ -288,12 +288,12 @@ var_dump($gk);
             users (<b>it should be kept secret like a password</b>). The
             <code>secid</code> can be obtained by passing
             variables <code>login</code> and <code>password</code> to the script
-            <code>api-login2secid.php</code> via POST method. If correct login
+            <code>api-login2secid</code> via POST method. If correct login
             credentials are supplied, the <b>secid</b> is returned, else an
             HTTP 400 code is returned.
         </p>
         <sample>
-            Example: <code>$ curl -X POST {GK_SITE_BASE_SERVER_URL}/api-login2secid.php --data "login=someone&password=userpassword"</code>
+            Example: <code>$ curl -X POST {'api_v1_login2secid'|alias} --data "login=someone&password=userpassword"</code>
             <pre>26sOchw8re8RE8i7HPTXx50q8aXBUeGhD0QzwPHkmGmyz3fenI6Il1zEfyt9fdmbBBPbisk21xuyLoJQPGFLQDBp3L5IhFjxCFdmc30KyhYeH79GK6O4oDXnst84KYUp</pre>
         </sample>
     </div>
@@ -435,8 +435,8 @@ var_dump($gk);
             Your current API usage is available in the headers of each API call. You can also get your current Rate Limit usage using this endpoint:
         </p>
         <ul>
-            <li>Anonymous: <a href="{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage">{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage</a></li>
-            <li>Authenticated: <a href="{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage?secid=&lt;secid_here&gt;">{GK_SITE_BASE_SERVER_URL}/api/v1/rate-limit/usage?secid=&lt;secid_here&gt;</a></li>
+            <li>Anonymous: <a href="{'api_v1_rate_limit_usage'|alias}">{'api_v1_rate_limit_usage'|alias}</a></li>
+            <li>Authenticated: <a href="{'api_v1_rate_limit_usage'|alias}?secid=&lt;secid_here&gt;">{'api_v1_rate_limit_usage'|alias}?secid=&lt;secid_here&gt;</a></li>
         </ul>
         <pre><code class="language-xml">{$rate_limit_usage}</code></pre>
     </div>
