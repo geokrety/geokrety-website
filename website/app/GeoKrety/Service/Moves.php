@@ -25,7 +25,7 @@ class Moves {
             'hour' => $f3->get('POST.hour'),
             'logtype' => $f3->get('POST.logtype'),
             'minute' => $f3->get('POST.minute'),
-            'tracking_code' => $f3->get('POST.tracking_code'),
+            'tracking_code' => $f3->exists('POST.tracking_code') ? strtoupper($f3->get('POST.tracking_code')) : null,
             'tz' => $f3->get('POST.tz'),
             'username' => $f3->get('POST.username'),
             'waypoint' => $f3->get('POST.waypoint'),

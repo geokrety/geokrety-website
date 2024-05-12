@@ -112,6 +112,7 @@ class LegacyRoutes {
             'secid' => $f3->get('GET.secid'),
             'inventory' => $f3->get('GET.inventory'),
             'details' => $f3->get('GET.details'),
+            'tracking_code' => $f3->get('GET.tracking_code'),
         ];
         if ($f3->exists('GET.rate_limits_bypass')) {
             $others['rate_limits_bypass'] = $f3->get('GET.rate_limits_bypass');

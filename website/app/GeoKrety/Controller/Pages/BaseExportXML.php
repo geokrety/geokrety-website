@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Carbon\Exceptions\InvalidArgumentException;
 use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Service\Validation\TrackingCode as TrackingCodeValidation;
 
 class BaseExportXML extends BaseExport {
     protected \GeoKrety\Service\Xml\GeokretyBaseExport $xml;
@@ -82,6 +83,22 @@ class BaseExportXML extends BaseExport {
 
         $id = Geokret::gkid2id($gkid);
         $this->setFilter('gkid = ?', $id);
+    }
+
+    public function _check_tracking_code() {
+        if (!$this->f3->exists('GET.tracking_code')) {
+            return;
+        }
+        $tc = $this->f3->get('GET.tracking_code');
+
+        $checker = new TrackingCodeValidation();
+        if (!$checker->validate($this->f3->get('GET.tracking_code'))) {
+            $this->setFilter('id < 0');
+
+            return;
+        }
+
+        $this->setFilter('tracking_code = ?', strtoupper($tc));
     }
 
     protected function _check_wpt() {

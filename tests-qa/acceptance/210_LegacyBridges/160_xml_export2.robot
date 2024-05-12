@@ -93,6 +93,15 @@ Search By GKid
     Count GeoKrety Element                /export2.php?gkid=${GEOKRETY_2.id}    1
     Count GeoKrety Element                /export2.php?gkid=${GEOKRETY_3.id}    1
 
+Search By Tracking Code
+    Count GeoKrety Element                /api/v1/export2?tracking_code=${GEOKRETY_1.tc}    1
+    Count GeoKrety Element                /api/v1/export2?tracking_code=${GEOKRETY_2.tc}    1
+    Count GeoKrety Element                /api/v1/export2?tracking_code=${GEOKRETY_3.tc}    1
+
+    Count GeoKrety Element                /export2.php?tracking_code=${GEOKRETY_1.tc}    1
+    Count GeoKrety Element                /export2.php?tracking_code=${GEOKRETY_2.tc}    1
+    Count GeoKrety Element                /export2.php?tracking_code=${GEOKRETY_3.tc}    1
+
 Search By Waypoint
     Count GeoKrety Element                /export2.php?wpt=${MOVE_1.waypoint}   1
     Count GeoKrety Element                /export2.php?wpt=${MOVE_4.waypoint}   0

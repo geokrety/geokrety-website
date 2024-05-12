@@ -229,6 +229,9 @@ var_dump($gk);
             <li><code>gkid</code> - list only one GeoKret
                 <pre>{'api_v1_export2'|alias}?gkid=141</pre>
             </li>
+            <li><code>tracking_code</code> - list only one GeoKret, find by Tracking Code
+                <pre>{'api_v1_export2'|alias}?tracking_code={$gk_example_3_tc}</pre>
+            </li>
             <li><code>wpt</code> - list GeoKrety which are in the cache with
                 the specified waypoint<br />
                 <pre>{'api_v1_export2'|alias}?wpt=OP05E5</pre>

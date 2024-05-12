@@ -9,7 +9,7 @@ use GeoKrety\Service\Xml\GeokretyExport2Details;
 class Export2XML extends BaseExportXML {
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
-        $this->addOneOfRequiredFilter(['userid', 'gkid', 'wpt', 'coordinates']);
+        $this->addOneOfRequiredFilter(['userid', 'gkid', 'wpt', 'coordinates', 'tracking_code']);
         $this->checkRequiredFilter();
         $this->filtersHook();
         if (filter_var($f3->get('GET.details'), FILTER_VALIDATE_BOOLEAN)) {
