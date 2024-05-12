@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
+use GeoKrety\Model\GeokretWithDetails;
 use GeoKrety\Service\Labels\Pdf;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Validation\TrackingCode;
@@ -13,6 +14,9 @@ class GeokretyLabels extends Base {
     public array $languages = ['fr', 'de', 'pl', 'ru'];
 
     public function get(\Base $f3) {
+        $geokret = new GeokretWithDetails();
+        $geokret->load(['gkid = ?', GK_HELP_GEOKRETY_EXAMPLE_3]);
+        Smarty::assign('gk_example_3_tc', $geokret->tracking_code);
         Smarty::render('pages/geokrety_labels.tpl');
     }
 
