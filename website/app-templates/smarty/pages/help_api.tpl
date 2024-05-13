@@ -44,6 +44,13 @@
                 <a href="#retrieveinfo">Retrieving information</a>
                 <ol>
                     <li><a href="#export2"><code>export2</code> Retrieve GeoKrety using some filters</a></li>
+                    <ol>
+                        <li><a href="#sample_output_without_headers">Sample output (without headers)</a></li>
+                        <li><a href="#sample_output_with_details">Sample output (with details)</a></li>
+                        <li><a href="#general_purpose_switches">General purpose switches</a></li>
+                        <li><a href="#retriving_user_s_inventory">Retriving user's inventory</a></li>
+                        <li><a href="#compressing_output">Compressing output</a></li>
+                    </ol>
                 </ol>
             </li>
         </ol>
@@ -195,6 +202,7 @@ var_dump($gk);
     <div class="panel-heading"><code>export2</code> Retrieve GeoKrety using some filters</div>
     <div class="panel-body">
 
+        <a class="anchor" id="sample_output_without_headers"></a>
         <h4>Sample output (without headers)</h4>
         <!-- HTML generated using hilite.me -->
         <pre><code class="language-xml">{$gk_xml_export2}</code></pre>
@@ -205,12 +213,14 @@ var_dump($gk);
             </ul>
         </p>
 
+        <a class="anchor" id="sample_output_with_details"></a>
         <h4>Sample output (with details)</h4>
         <code>{'api_v1_export2'|alias}?gkid={$gk_example_1}&details=1</code>
         <!-- HTML generated using hilite.me -->
         <pre><code class="language-xml">{$gk_xml_export2_details}</code></pre>
 
-        <h3>General purpose swiches</h3>
+        <a class="anchor" id="general_purpose_switches"></a>
+        <h3>General purpose switches</h3>
         <ul>
             <li>
                 <code>modifiedsince</code> - list of GeoKrety with the timestamp
@@ -245,11 +255,12 @@ var_dump($gk);
         </ul>
 
         <p>
-            Above swiches can be mixed. Eg to list my (<code>ownerid=1</code>) GeoKrety
+            Above switches can be mixed. Eg to list my (<code>ownerid=1</code>) GeoKrety
             which are in <code>GC</code> caches, just enter:<br />
             <pre>{'api_v1_export2'|alias}?userid=1&wpt=GC</pre>
         </p>
 
+        <a class="anchor" id="retriving_user_s_inventory"></a>
         <h3>Retriving user's inventory</h3>
         <ul>
             <li>
@@ -266,6 +277,7 @@ var_dump($gk);
             </li>
         </ul>
 
+        <a class="anchor" id="compressing_output"></a>
         <h3>Compressing output</h3>
         <ul>
             <li>adding <code>gzip=1</code> swich makes output compressed with
