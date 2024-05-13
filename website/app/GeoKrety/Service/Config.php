@@ -112,7 +112,7 @@ class Config extends \Prefab {
             define('GK_DEVEL', false);
             define('GK_HELP_GEOKRETY_EXAMPLE_1', getenv('GK_HELP_GEOKRETY_EXAMPLE_1') ?: 46657);
             define('GK_HELP_GEOKRETY_EXAMPLE_2', getenv('GK_HELP_GEOKRETY_EXAMPLE_2') ?: 65509);
-            define('GK_HELP_GEOKRETY_EXAMPLE_3', getenv('GK_HELP_GEOKRETY_EXAMPLE_3') ?: 66184);
+            define('GK_HELP_GEOKRETY_EXAMPLE_3', getenv('GK_HELP_GEOKRETY_EXAMPLE_3') ?: 66148);
         } else {
             define('GK_DEBUG', getenv('GK_DEBUG') ? filter_var(getenv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN) : false);
             define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ? filter_var(getenv('GK_F3_DEBUG'), FILTER_VALIDATE_BOOLEAN) : true);
