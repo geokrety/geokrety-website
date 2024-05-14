@@ -142,7 +142,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
             $this->recipients[] = $user;
         }
         if (SiteSettings::instance()->get('ADMIN_EMAIL_BCC_ENABLED')) {
-            $this->sendCopyToAdmins();
+            $this->sendCopyToAdmins($user);
         }
     }
 
@@ -184,18 +184,23 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         ];
     }
 
-    public function sendCopyToAdmins(): void {
-        $user = new User();
+    public function sendCopyToAdmins(User $user): void {
         foreach (GK_SITE_ADMINISTRATORS as $admin_id) {
-            $_admin = $user->findone(['id = ?', $admin_id], null, 60);
-            if ($_admin->dry()) {
+            $admin = $this->getAdmin($admin_id);
+            if (is_null($admin)) {
                 continue;
             }
-            $_user = clone $user;
-            $_user->email = $_admin->email;
-            $_user->username .= ' (admin)';
-            $this->recipients[] = $_user;
+            $admin->email = $user->email;
+            $admin->username .= $user->username.' (admin)';
+            $this->recipients[] = $admin;
         }
+    }
+
+    protected function getAdmin(string $admin_id): ?User {
+        $admin = new User();
+        $admin->load(['id = ?', $admin_id], null, 60);
+
+        return $admin->dry() ? null : $admin;
     }
 
     /**

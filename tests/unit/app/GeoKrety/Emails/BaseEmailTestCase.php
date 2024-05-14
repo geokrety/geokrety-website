@@ -50,7 +50,7 @@ abstract class BaseEmailTestCase extends Mockery\Adapter\Phpunit\MockeryTestCase
     private function runTests(int $emailStatus, int $expected): void {
         $this->mailer->recipients = [];
 
-        $user = UserFixture::getUser1Fixture();
+        $user = UserFixture::getUserFixture();
         $user->email_invalid = $emailStatus;
 
         $this->assertNull($this->mailer->setTo($user));

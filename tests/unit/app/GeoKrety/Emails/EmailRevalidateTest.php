@@ -65,7 +65,7 @@ class EmailRevalidateTest extends Mockery\Adapter\Phpunit\MockeryTestCase {
     private function runTests(int $accountStatus, int $emailStatus, int $expected): void {
         $this->mailer->recipients = [];
 
-        $user = UserFixture::getUser1Fixture();
+        $user = UserFixture::getUserFixture();
         $user->account_valid = $accountStatus;
         $user->email_invalid = $emailStatus;
 
