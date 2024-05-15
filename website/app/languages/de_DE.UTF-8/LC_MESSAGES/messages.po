@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-11 11:54+0000\n"
-"PO-Revision-Date: 2024-05-11 13:17\n"
+"PO-Revision-Date: 2024-05-15 19:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -529,11 +529,11 @@ msgstr "Fehler beim Aktualisieren der Abo-Einstellungen."
 #: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:35
 #, php-format
 msgid "You cannot detach from %s as you will not have any other valid authentication method."
-msgstr ""
+msgstr "Du kannst %s nicht trennen, da du keine andere gültige Authentifizierungsmethode hast."
 
 #: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:36
 msgid "Please set a password or connect another provider first."
-msgstr ""
+msgstr "Bitte erstelle zuerst ein Passwort oder verbinde einen anderen Anbieter."
 
 #: website/app/GeoKrety/Controller/Pages/OAuthDetach.php:43
 #, php-format
@@ -691,16 +691,16 @@ msgstr "Keine Änderung wurde verarbeitet. Dieser Token wurde jetzt widerrufen."
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:15
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:24
 msgid "Sorry this link is invalid."
-msgstr ""
+msgstr "Dieser Link ist leider ungültig."
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:38
 msgid "Your account is already validated."
-msgstr ""
+msgstr "Dein Konto wurde bereits aktiviert."
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidate.php:57
 #, php-format
 msgid "The last notification was sent less than %d minutes ago. Please try again later."
-msgstr ""
+msgstr "Die letzte Benachrichtigung wurde vor weniger als %d Minuten gesendet. Bitte versuche es später erneut."
 
 #: website/app/GeoKrety/Controller/Pages/UserEmailRevalidateToken.php:34
 msgid "You have successfully validated your email address."
@@ -760,7 +760,7 @@ msgstr "Beobachtungsbereich ist deaktiviert; GeoKrety, die in deinem Umkreis abg
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:28
 msgid "Please add a valid email first."
-msgstr ""
+msgstr "Bitte vorher eine gültige E-Mail-Adresse eingeben."
 
 #: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:40
 msgid "Please enter your old password."
@@ -807,7 +807,7 @@ msgstr "Eine Bestätigungsmail ist an deine E-Mail-Adresse gesendet worden."
 #: website/app/GeoKrety/Email/AccountActivation.php:60
 #: website/app/GeoKrety/Email/AccountActivation.php:87
 msgid "You must click on the link provided in the email to activate your account before your can use it."
-msgstr ""
+msgstr "Du musst auf den Link in der E-Mail klicken, um dein Konto zu aktivieren, bevor du es nutzen kannst."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:58
 msgid "Your account seems to already exist."
@@ -819,12 +819,12 @@ msgstr "Eine Bestätigungsmail ist erneut an deine E-Mail-Adresse gesendet worde
 
 #: website/app/GeoKrety/Email/AccountActivation.php:79
 msgid "Your account is not yet active."
-msgstr ""
+msgstr "Dein Konto ist noch nicht aktiv."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:81
 #, php-format
 msgid "You can request a <a href=\"%s\">new confirmation mail</a>."
-msgstr ""
+msgstr "Du kannst eine <a href=\"%s\">neue Bestätigungsmail</a> anfordern."
 
 #: website/app/GeoKrety/Email/AccountActivation.php:103
 msgid "Account activated"
@@ -909,7 +909,7 @@ msgstr "Erneute Kontoüberprüfung"
 #: website/app/GeoKrety/Email/EmailRevalidate.php:45
 #: website/app/GeoKrety/Email/TokenBase.php:50
 msgid "Mail sent."
-msgstr ""
+msgstr "Mail gesendet."
 
 #: website/app/GeoKrety/Email/GeokretClaim.php:12
 #, php-format
@@ -931,7 +931,7 @@ msgstr "Dein Passwort wurde geändert"
 #: website/app/GeoKrety/Email/TokenBase.php:33
 #, php-format
 msgid "Link expires in %s."
-msgstr ""
+msgstr "Link läuft in %s ab."
 
 #: website/app/GeoKrety/Email/UserContact.php:14
 #, php-format
@@ -2063,15 +2063,15 @@ msgstr "Bestätigen"
 
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
 msgid "Select new email status"
-msgstr ""
+msgstr "Neuen E-Mail-Status auswählen"
 
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:10
 msgid "Email status"
-msgstr ""
+msgstr "E-Mail-Status"
 
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:23
 msgid "Update"
-msgstr ""
+msgstr "Aktualisierung"
 
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
 msgid "Award %1 with:"
@@ -2175,12 +2175,12 @@ msgstr "Zurück zu meinem Profil"
 
 #: website/app-templates/smarty/dialog/login.tpl:14
 msgid "Login using"
-msgstr ""
+msgstr "Anmelden mit"
 
 #: website/app-templates/smarty/dialog/login.tpl:37
 #: website/app-templates/smarty/forms/registration.tpl:32
 msgid "Or"
-msgstr ""
+msgstr "Oder"
 
 #: website/app-templates/smarty/dialog/login.tpl:57
 msgid "Remember me"
@@ -2927,7 +2927,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/registration.tpl:9
 msgid "Register using"
-msgstr ""
+msgstr "Registrieren mit"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:3
 msgid "Generate multiple GeoKrety labels"
@@ -2960,7 +2960,7 @@ msgstr "Admin-Aktionen bei Nutzern"
 
 #: website/app-templates/smarty/admin/pages/user_actions.tpl:16
 msgid "Change email status"
-msgstr ""
+msgstr "E-Mail-Status ändern"
 
 #: website/app-templates/smarty/admin/pages/user_actions.tpl:19
 msgid "Award prize"
@@ -3110,15 +3110,15 @@ msgstr "GeoKrety ist ein kostenloser Online-Dienst für Objektverfolgung in GPS-
 
 #: website/app-templates/smarty/banners/user_account_imported.tpl:4
 msgid "Please validate your email address."
-msgstr ""
+msgstr "Bitte bestätige deine E-Mail-Adresse."
 
 #: website/app-templates/smarty/banners/user_account_imported.tpl:5
 msgid "You can request a <a href=\"%1\">new confirmation mail</a>."
-msgstr ""
+msgstr "Du kannst eine <a href=\"%1\">neue Bestätigungsmail</a> anfordern."
 
 #: website/app-templates/smarty/banners/user_email_invalid.tpl:3
 msgid "Sorry, but we have troubles sending you email notifications."
-msgstr ""
+msgstr "Leider haben wir Probleme dir E-Mail-Benachrichtigungen zu senden."
 
 #: website/app-templates/smarty/banners/geokret_adopt.tpl:4
 msgid "You have set this GeoKret available for adoption. The Owner code is: <strong>%1</strong>. Give it along with the Tracking code <strong>%2</strong> to user which will adopt your GeoKret."
@@ -3171,19 +3171,19 @@ msgstr "Du bist dann in der Lage dein GeoKrety-Inventar zu verwalten, Bilder hoc
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered."
-msgstr ""
+msgstr "Leider hat dein Konto keine registrierte E-Mail-Adresse."
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:4
 msgid "You will not be able to recover from a password loss!"
-msgstr ""
+msgstr "Du wirst nicht in der Lage sein dein Konto nach einem Passwortverlust wiederherzustellen!"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:5
 msgid "Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr ""
+msgstr "Außerdem bekommst du keine täglichen Benachrichtigungen zu deinen oder deinen beobachteten GeoKrety."
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:6
 msgid "Please consider <a href=\"%1\">adding an email address</a>."
-msgstr ""
+msgstr "Bitte erwäge <a href=\"%1\">eine E-Mail-Adresse</a> hinzuzufügen."
 
 #: website/app-templates/smarty/banners/is_not_prod.tpl:3
 msgid "This is not the production instance. If you are not a tester, then you probably wish to go to our <a href=\"https://geokrety.org\">production website</a>."
