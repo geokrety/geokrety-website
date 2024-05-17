@@ -71,7 +71,7 @@ class User extends Base implements \JsonSerializable {
         self::USER_EMAIL_UNCONFIRMED => 'Unconfirmed',
         self::USER_EMAIL_MISSING => 'No email defined',
         self::USER_EMAIL_MAILBOX_FULL => 'Mailbox full',
-        self::USER_EMAIL_MAILBOX_FULL => 'Emails detected as spam',
+        self::USER_EMAIL_DETECTED_AS_SPAM => 'Emails detected as spam',
     ];
 
     public const USER_EMAIL_STATUS_INVALID_FOR_ADMIN = [
