@@ -2,8 +2,8 @@
 
 {block name=title}🧺 {t}Watched GeoKrety{/t}{/block}
 
-{\Assets::instance()->addCss(GK_CDN_DATATABLE_CSS) && ''}
-{\Assets::instance()->addJs(GK_CDN_DATATABLE_JS) && ''}
+{\GeoKrety\Assets::instance()->addCss(GK_CDN_DATATABLE_CSS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_DATATABLE_JS) && ''}
 
 {block name=content}
 <a class="anchor" id="watched"></a>

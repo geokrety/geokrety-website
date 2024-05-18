@@ -2,13 +2,13 @@
 
 {block name=title}{t}Interactive map{/t}{/block}
 
-{\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS) && ''}
-{\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_CSS) && ''}
-{\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS) && ''}
-{\Assets::instance()->addJs(GK_CDN_LEAFLET_JS) && ''}
-{\Assets::instance()->addJs(GK_CDN_LEAFLET_AJAX_JS) && ''}
-{\Assets::instance()->addJs(GK_CDN_LEAFLET_MARKERCLUSTER_JS) && ''}
-{\Assets::instance()->addJs(GK_CDN_LEAFLET_SPIN_JS) && ''}
+{\GeoKrety\Assets::instance()->addCss(GK_CDN_LEAFLET_CSS) && ''}
+{\GeoKrety\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_CSS) && ''}
+{\GeoKrety\Assets::instance()->addCss(GK_CDN_LEAFLET_MARKERCLUSTER_DEFAULT_CSS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_LEAFLET_JS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_LEAFLET_AJAX_JS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_LEAFLET_MARKERCLUSTER_JS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_LEAFLET_SPIN_JS) && ''}
 
 {block name=content}
     <div class="row">

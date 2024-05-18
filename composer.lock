@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "312246788a93f63a7d55e25b3a7c764a",
+    "content-hash": "f5758119964686a26a825a3db63d1155",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -904,6 +904,62 @@
                 "source": "https://github.com/caxy/basex-client-php/tree/v0.0.2"
             },
             "time": "2022-10-25T04:18:42+00:00"
+        },
+        {
+            "name": "delatbabel/apisecurity",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/delatbabel/apisecurity.git",
+                "reference": "bff1c18a24f48fa622dd22112ff34cf676a365a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/delatbabel/apisecurity/zipball/bff1c18a24f48fa622dd22112ff34cf676a365a0",
+                "reference": "bff1c18a24f48fa622dd22112ff34cf676a365a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "illuminate/cache": "Required to use the Laravel cache facade.",
+                "illuminate/support": "Required to use the Laravel cache facade."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Delatbabel\\ApiSecurity\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Del",
+                    "email": "del@babel.com.au"
+                }
+            ],
+            "description": "API Security Helpers.",
+            "keywords": [
+                "api",
+                "key",
+                "laravel",
+                "nonce",
+                "security",
+                "sign",
+                "signature"
+            ],
+            "support": {
+                "issues": "https://github.com/delatbabel/apisecurity/issues",
+                "source": "https://github.com/delatbabel/apisecurity/tree/master"
+            },
+            "time": "2016-01-27T05:05:48+00:00"
         },
         {
             "name": "erusev/parsedown",
