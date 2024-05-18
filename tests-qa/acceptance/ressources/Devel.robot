@@ -145,6 +145,9 @@ Seed ${count} geokrety
 Seed ${count} geokrety owned by ${userid}
     Go To Url Fast                      ${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}
 
+Seed ${count} geokrety owned by ${userid} with mission ${mission}
+    Go To Url Fast                      url=${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}?mission=${mission}
+
 Seed special geokrety with tracking code starting with GK owned by ${userid}
     Go To Url Fast                      ${GK_URL}/devel/db/users/${userid}/geokrety/tc-starting-with-gk
 

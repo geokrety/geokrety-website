@@ -76,6 +76,10 @@ class DatabaseSeed extends Base {
             if ($f3->exists('PARAMS.userid') && $f3->get('PARAMS.userid') > 0) {
                 $geokret->owner = $f3->get('PARAMS.userid');
             }
+            if ($f3->exists('GET.mission')) {
+                $geokret->mission = $f3->get('GET.mission');
+                $geokret->legacy_mission = 'legacy '.$f3->get('GET.mission');
+            }
             if ($geokret->validate()) {
                 $geokret->save();
                 // Change info after initial saving

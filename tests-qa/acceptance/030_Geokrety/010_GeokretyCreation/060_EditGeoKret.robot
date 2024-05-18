@@ -48,8 +48,16 @@ Edit A GeoKret
     Should Be Equal                     ${selected_template}                sansanchoz1
 
 
+Old Mission Visible When Edit A GeoKret
+    Sign In ${USER_1.name} Fast
+    Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
+    Click Element                       ${GEOKRET_CREATE_OLD_MISSION_BUTTON}
+    Wait Until Modal                    Here is the old mission content from GKv1
+    Page Should Contain                 legacy FOOBAR
+
+
 *** Keywords ***
 
 Test Setup
     Clear Database And Seed ${2} users
-    Seed ${1} geokrety owned by ${1}
+    Seed ${1} geokrety owned by ${1} with mission FOOBAR

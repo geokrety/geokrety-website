@@ -32,6 +32,7 @@ ${GEOKRET_CREATE_CREATE_BUTTON}             //*[@id="createOrUpdateSubmitButton"
 ${GEOKRET_CREATE_NAME_INPUT}                //*[@id="inputName"]
 ${GEOKRET_CREATE_TYPE_SELECT}               //*[@id="inputGeokretType"]
 ${GEOKRET_CREATE_MISSION_INPUT}             //*[@id="inputMission"]
+${GEOKRET_CREATE_OLD_MISSION_BUTTON}        //*[@data-type="geokret-legacy-mission"]
 ${GEOKRET_CREATE_LABEL_TEMPLATE_SELECT}     //*[@id="inputLabelTemplate"]
 
 
