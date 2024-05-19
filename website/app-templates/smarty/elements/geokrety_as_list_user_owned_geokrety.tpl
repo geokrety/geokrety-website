@@ -22,7 +22,7 @@
             <br />
             <small>{$geokret->last_position->author|userlink:$geokret->last_position->username nofilter}</small>
         {else}
-            {$geokret->created_on_datetime|print_date nofilter}
+            {$geokret->born_on_datetime|print_date nofilter}
         {/if}
     </td>
     <td class="text-right">

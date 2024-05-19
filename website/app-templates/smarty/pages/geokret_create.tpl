@@ -2,6 +2,8 @@
 
 {block name=title}{t}Create a new GeoKret{/t}{/block}
 
+{\GeoKrety\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS) && ''}
 {\GeoKrety\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL) && ''}
 
@@ -10,6 +12,28 @@
 {/block}
 
 {block name=javascript}
+{include 'js/parsley/datebeforenow.js'}
+
+{if isset($geokret) and $geokret->gkid()}
+// Bind datepicker
+moment.locale('{\Multilang::instance()->current}')
+$("#datetimepicker").datetimepicker({
+    collapse: true,
+    showTodayButton: true,
+    locale: moment.locale()
+});
+// bind datetimepicker
+$("#born_on_datetime_localized").click(function() {
+    $("#datetimepicker").data("DateTimePicker").show();
+});
+// Initialize date time
+$("#datetimepicker").data("DateTimePicker").date(moment.utc("{$geokret->born_on_datetime->format('Y-m-d H:i:s')}").local());
+$("#born_on_datetime").val($("#datetimepicker").data("DateTimePicker").viewDate().format());
+$("#born_on_datetime_localized").on("focusout", function(e) {
+    $("#born_on_datetime").val($("#datetimepicker").data("DateTimePicker").viewDate().format());
+});
+{/if}
+
 // Bind SimpleMDE editor
 var inscrybmde = new InscrybMDE({
     element: $("#inputMission")[0],

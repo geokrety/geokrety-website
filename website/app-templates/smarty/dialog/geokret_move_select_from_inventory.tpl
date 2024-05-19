@@ -46,7 +46,7 @@
                         {$geokret->last_move|logicon nofilter}
                         {$geokret->last_move->moved_on_datetime|print_date nofilter}
                         {else}
-                        {$geokret->created_on_datetime|print_date nofilter}
+                        {$geokret->born_on_datetime|print_date nofilter}
                         {/if}
                     </td>
                     <td>

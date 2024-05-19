@@ -89,9 +89,14 @@ class GeokretWithDetails extends Geokret {
             'nullable' => false,
             'validate' => 'is_date',
         ],
+        'born_on_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+            'validate' => 'is_date',
+        ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],

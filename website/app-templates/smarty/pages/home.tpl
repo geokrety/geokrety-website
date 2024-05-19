@@ -75,7 +75,7 @@
 <div class="row">
   <div class="col-md-12">
     <h2>🐥 {t}Recently created GeoKrety{/t}</h2>
-    <div class="table-responsive">
+    <div class="table-responsive" id="recentlyCreatedGeokrety">
       <table class="table table-striped">
         <thead>
           <tr>

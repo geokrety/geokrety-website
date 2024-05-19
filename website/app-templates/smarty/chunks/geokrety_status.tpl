@@ -2,7 +2,7 @@
 {if !is_null($geokret->last_log)}
 {$geokret->last_log->created_on_datetime|print_date nofilter}
 {else}
-{$geokret->created_on_datetime|print_date nofilter}
+{$geokret->born_on_datetime|print_date nofilter}
 {/if}
 {/function}
 <p>

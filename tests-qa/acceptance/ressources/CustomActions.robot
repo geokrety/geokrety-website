@@ -130,7 +130,7 @@ Element Count Should Be
 
 Element Attribute Should Be
     [Arguments]    ${element}    ${attribute}    ${expect}
-    ${attr} =    Get Element Attribute      ${element}      ${attribute}
+    ${attr} =    Browser.Get Element Attribute      ${element}      ${attribute}
     Should Be Equal As Strings              ${attr}         ${expect}
 
 Wait For Text To Not Appear

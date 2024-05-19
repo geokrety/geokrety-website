@@ -9,6 +9,7 @@ ${HOME_PICTURE_LIST_PICTURES}               ${HOME_PICTURE_LIST_GALERY}//div[con
 ${HOME_MOVES_PANEL}                         //*[@id="recentMovesPanel"]
 ${HOME_LATEST_MOVES_TABLE}                  ${HOME_MOVES_PANEL}/table
 ${HOME_NEWS_PANELS}                         //*[@data-gk-type="news"]
+${HOME_RECENTLY_CREATED_GK_TABLE}           //*[@id="recentlyCreatedGeokrety"]
 
 ${FOOTER_HOME}       //*[@id="footer-home"]
 ${FOOTER_HELP}       //*[@id="footer-help"]

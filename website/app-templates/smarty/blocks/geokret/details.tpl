@@ -54,7 +54,7 @@
                     <dt>{t}Places visited{/t}</dt>
                     <dd class="geokret-caches-count">{$geokret->caches_count}</dd>
                     <dt>{t}Born{/t}</dt>
-                    <dd class="geokret-created-on-datetime">{$geokret->created_on_datetime|print_date nofilter}</dd>
+                    <dd class="geokret-created-on-datetime">{$geokret->born_on_datetime|print_date nofilter}</dd>
                     {* TODO <dt>{t}Social share{/t}</dt>
                     <dd>
                         {fa icon="facebook" title="{t}Share on Facebook{/t}"}
