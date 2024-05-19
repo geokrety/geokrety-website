@@ -19,14 +19,13 @@ env:
   PGHOST: localhost
   PGPORT: 5106
   GK_FQDN: localhost
-  SHORT_REF: ${{ github.head_ref }}
+  GIT_BRANCH: ${{ github.head_ref || github.ref }}
 
 permissions:
   pull-requests: write
 
 jobs:
   robot-framework:
-    if: "${{ ! (contains(github.event.head_commit.message, 'skip tests-qa') || github.event.pull_request.title == 'translation: New Crowdin updates') }}"
     runs-on: ubuntu-latest
 
     strategy:
@@ -71,16 +70,6 @@ jobs:
         run: |
           echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
           echo "SENTRY_ENV=dev.githubaction" >> .env
-
-      - name: Set output
-        id: vars
-        run: |
-          # github.head_ref=${{ github.head_ref }}
-          # github.ref=${{ github.ref }}
-          # short_ref="${{ github.head_ref || github.ref }}"
-          # echo "short_ref=${short_ref#refs/*/}" >> $GITHUB_OUTPUT
-          # echo "SHORT_REF=${short_ref#refs/*/}" >> $GITHUB_ENV
-          # git status
 
       - name: Start Postgres
         uses: ./.github/actions/start-postgres/
@@ -135,8 +124,8 @@ jobs:
         with:
           name: test-results-${{ env.SHARD_ID }}
           path: |
-            tests-qa/docs/${{ env.SHORT_REF }}/
-            !tests-qa/docs/${{ env.SHORT_REF }}/pabot_results
+            tests-qa/docs/${{ env.GIT_BRANCH }}/
+            !tests-qa/docs/${{ env.GIT_BRANCH }}/pabot_results
 
 
   report-assemble:
@@ -271,7 +260,7 @@ jobs:
           external_repository: geokrety/geokrety-website-qa
           publish_branch: gh-pages
           publish_dir: .
-          destination_dir: ${{ env.SHORT_REF }}
+          destination_dir: ${{ env.GIT_BRANCH }}
           user_name: geokrety-bot
           user_email: geokrety-bot@geokrety.org
           commit_message: "docs: Update QA tests results"
@@ -281,9 +270,9 @@ jobs:
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
         run: |
-          report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/report.html"
-          visual_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/visualReport.html"
-          unit_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/test-unit/test-unit-report.html"
+          report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/report.html"
+          visual_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/visualReport.html"
+          unit_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/test-unit/test-unit-report.html"
 
           echo "${report_url}"
           echo "${visual_report_url}"
@@ -302,9 +291,9 @@ jobs:
         with:
           message: |
             ### Robot Framework reports
-            * [report](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/report.html)
-            * [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/visualReport.html)
-            * [PHPUnit](https://geokrety.github.io/geokrety-website-qa/${{ env.SHORT_REF }}/test-unit/test-unit-report.html)
+            * [report](https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/report.html)
+            * [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/visualReport.html)
+            * [PHPUnit](https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/test-unit/test-unit-report.html)
           comment_tag: rbfr
           reactions: eyes, rocket
 
@@ -326,18 +315,6 @@ jobs:
         shell: bash
         run: |
           ${DOCKER_COMPOSE} pull --ignore-buildable &
-
-      - name: Set output
-        id: vars
-        run: |
-          echo "::group::debug"
-          # github.head_ref=${{ github.head_ref }}
-          # github.ref=${{ github.ref }}
-          echo "::endgroup::"
-
-          short_ref="${{ github.head_ref || github.ref }}"
-          echo "short_ref=${short_ref#refs/*/}" >> $GITHUB_OUTPUT
-          echo "SHORT_REF=${short_ref#refs/*/}" >> $GITHUB_ENV
 
       - name: Start Postgres
         uses: ./.github/actions/start-postgres/
@@ -376,18 +353,6 @@ jobs:
         shell: bash
         run: |
           ${DOCKER_COMPOSE} pull --ignore-buildable &
-
-      - name: Set output
-        id: vars
-        run: |
-          echo "::group::debug"
-          # github.head_ref=${{ github.head_ref }}
-          # github.ref=${{ github.ref }}
-          echo "::endgroup::"
-
-          short_ref="${{ github.head_ref || github.ref }}"
-          echo "short_ref=${short_ref#refs/*/}" >> $GITHUB_OUTPUT
-          echo "SHORT_REF=${short_ref#refs/*/}" >> $GITHUB_ENV
 
       - name: Start Postgres
         uses: ./.github/actions/start-postgres/

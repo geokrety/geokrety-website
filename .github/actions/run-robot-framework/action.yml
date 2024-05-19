@@ -7,7 +7,6 @@ runs:
       working-directory: tests-qa
       env:
         TZ: ${{ env.TZ || 'Africa/Nairobi' }}
-        GIT_BRANCH: ${{ env.SHORT_REF }}
         HEADLESS: 'true'
       shell: bash
       run: |
