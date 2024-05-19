@@ -8,7 +8,7 @@
         {$geokret->owner|userlink nofilter}
     </td>
     <td class="text-center" nowrap>
-        {$geokret->created_on_datetime|print_date nofilter}
+        {$geokret->born_on_datetime|print_date nofilter}
         <br />
     </td>
     <td>

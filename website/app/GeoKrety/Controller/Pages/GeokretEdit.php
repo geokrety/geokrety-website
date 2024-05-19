@@ -15,6 +15,7 @@ class GeokretEdit extends GeokretFormBase {
     }
 
     public function post($f3) {
+        $this->checkCsrf();
         $geokret = $this->geokret;
         $geokret->copyFrom('POST');
         $this->loadSelectedTemplate($f3);
@@ -25,7 +26,11 @@ class GeokretEdit extends GeokretFormBase {
                 \Flash::instance()->addMessage(_('Your GeoKret has been updated.'), 'success');
                 $f3->reroute('@geokret_details(@gkid='.$geokret->gkid.')');
             } catch (\Exception $e) {
-                \Flash::instance()->addMessage(_('Failed to edit the GeoKret.'), 'danger');
+                \Flash::instance()->addMessage(
+                    sprintf('%s %s',
+                        _('Failed to edit the GeoKret.'),
+                        $e->getMessage()
+                    ), 'danger');
             }
         }
         $this->get($f3);

@@ -148,6 +148,9 @@ Seed ${count} geokrety owned by ${userid}
 Seed ${count} geokrety owned by ${userid} with mission ${mission}
     Go To Url Fast                      url=${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}?mission=${mission}
 
+Seed ${count} geokrety owned by ${userid} with birthdate ${birthdate}
+    Go To Url Fast                      url=${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}?birthdate=${birthdate}
+
 Seed special geokrety with tracking code starting with GK owned by ${userid}
     Go To Url Fast                      ${GK_URL}/devel/db/users/${userid}/geokrety/tc-starting-with-gk
 

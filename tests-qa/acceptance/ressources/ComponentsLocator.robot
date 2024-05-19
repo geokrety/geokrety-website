@@ -30,6 +30,8 @@ ${NAVBAR_ACTIONS_PHOTO_GALLERY_LINK}        //*[@id="navbar-actions-gallery"]
 
 ${GEOKRET_CREATE_CREATE_BUTTON}             //*[@id="createOrUpdateSubmitButton"]
 ${GEOKRET_CREATE_NAME_INPUT}                //*[@id="inputName"]
+${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}    //*[@id="born_on_datetime_localized"]
+${GEOKRET_CREATE_BORN_ON_DATETIME_HIDDEN_INPUT}    //*[@id="born_on_datetime"]
 ${GEOKRET_CREATE_TYPE_SELECT}               //*[@id="inputGeokretType"]
 ${GEOKRET_CREATE_MISSION_INPUT}             //*[@id="inputMission"]
 ${GEOKRET_CREATE_OLD_MISSION_BUTTON}        //*[@data-type="geokret-legacy-mission"]

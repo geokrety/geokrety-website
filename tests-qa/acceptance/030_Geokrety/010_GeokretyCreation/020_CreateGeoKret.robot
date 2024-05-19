@@ -10,6 +10,7 @@ Test Setup      Test Setup
 
 Create A GeoKret
     Go To Url                           ${PAGE_GEOKRETY_CREATE_URL}
+    Page Should Not Contain             Birth date
     Create GeoKret                      &{GEOKRETY_1}
     Element Should Contain              ${GEOKRET_DETAILS_NAME}         ${GEOKRETY_1.name}
 

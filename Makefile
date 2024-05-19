@@ -74,6 +74,8 @@ phinx-rollback: ## DB rollback migration
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx rollback"
 phinx-status: ## DB migration status
 	${PTY_PREFIX} bash -c "cd website && ../vendor/bin/phinx status"
+phinx-chown: ## Change file owner to userid 1000
+	${PTY_PREFIX} chown -R 1000.1000 website/db/migrations/
 
 compile-all-templates: ## compile all smarty templates
 	${PTY_PREFIX} bash -c "cd website/public && php geokrety.php /cli/smarty/compile-all-templates"

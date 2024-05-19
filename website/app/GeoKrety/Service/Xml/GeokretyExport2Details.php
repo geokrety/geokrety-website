@@ -34,7 +34,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
         }
 
         $xml->startElement('datecreated');
-        $xml->writeCData($geokret->created_on_datetime->format('Y-m-d H:i:s'));
+        $xml->writeCData($geokret->born_on_datetime->format('Y-m-d H:i:s'));
         $xml->endElement(); // datecreated
 
         $xml->startElement('datecreated_Iso8601');

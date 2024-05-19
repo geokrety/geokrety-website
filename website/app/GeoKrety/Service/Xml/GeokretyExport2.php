@@ -49,7 +49,7 @@ class GeokretyExport2 extends GeokretyBaseExport {
             $xml->writeAttribute('last_pos_id', $geokret->last_position);
             $xml->writeAttribute('last_log_id', $geokret->last_log);
         } else {
-            $xml->writeAttribute('date', $geokret->created_on_datetime->format('Y-m-d'));
+            $xml->writeAttribute('date', $geokret->born_on_datetime->format('Y-m-d'));
         }
         $xml->writeAttribute('places', $geokret->caches_count);
         if (!is_null($geokret->avatar_key)) {

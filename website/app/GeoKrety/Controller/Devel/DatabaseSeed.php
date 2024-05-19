@@ -93,6 +93,10 @@ class DatabaseSeed extends Base {
                     echo sprintf("Reason: %s\n\n", $msg['text']);
                 }
             }
+            if ($f3->exists('GET.birthdate')) {
+                $geokret->born_on_datetime = $f3->get('GET.birthdate');
+                $geokret->save();
+            }
         }
 
         echo 'OK';

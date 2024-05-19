@@ -27,6 +27,7 @@ use GeoKrety\LogType;
  * @property string|null holder_username
  * @property int|Picture|null avatar
  * @property \DateTime created_on_datetime
+ * @property \DateTime born_on_datetime
  * @property Picture[]|null avatars
  * @property \DateTime updated_on_datetime
  * @property bool missing
@@ -133,9 +134,14 @@ class Geokret extends Base {
             'nullable' => false,
             'validate' => 'is_date',
         ],
+        'born_on_datetime' => [
+            'type' => Schema::DT_DATETIME,
+            'default' => 'CURRENT_TIMESTAMP',
+            'nullable' => false,
+            'validate' => 'is_date',
+        ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],
@@ -218,10 +224,14 @@ class Geokret extends Base {
     }
 
     public function get_type($value): GeokretyType {
-        return new \GeoKrety\GeokretyType($value);
+        return new GeokretyType($value);
     }
 
     public function get_created_on_datetime($value): ?\DateTime {
+        return self::get_date_object($value);
+    }
+
+    public function get_born_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 

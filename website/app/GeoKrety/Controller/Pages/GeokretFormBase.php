@@ -27,7 +27,6 @@ class GeokretFormBase extends Base {
     protected function loadSelectedTemplate(\Base $f3): void {
         // Load the selected template
         $label = new Label();
-        echo $f3->get('POST.label_template');
         $label->load(['template = ?', $f3->get('POST.label_template')], null, GK_SITE_CACHE_TTL_LABELS_LOOKUP);
         if ($label->dry()) {
             \Flash::instance()->addMessage(_('This label template does not exist.'), 'danger');
