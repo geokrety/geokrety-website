@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-19 08:40+0000\n"
-"PO-Revision-Date: 2024-05-19 08:48\n"
+"POT-Creation-Date: 2024-05-20 10:18+0000\n"
+"PO-Revision-Date: 2024-05-20 10:46\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -300,15 +300,15 @@ msgstr "crwdns65134:0crwdne65134:0"
 msgid "Only the owner can edit his GeoKrety."
 msgstr "crwdns65136:0crwdne65136:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:26
 msgid "Your GeoKret has been updated."
 msgstr "crwdns65138:0crwdne65138:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:31
 msgid "Failed to edit the GeoKret."
 msgstr "crwdns65140:0crwdne65140:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:33
+#: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:32
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
 msgid "This label template does not exist."
 msgstr "crwdns65142:0crwdne65142:0"
@@ -1081,15 +1081,15 @@ msgstr "crwdns65466:0%scrwdne65466:0"
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
 msgstr "crwdns65468:0%scrwdne65468:0"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:123
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:124
 msgid "No Tracking Code provided."
 msgstr "crwdns65470:0crwdne65470:0"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:127
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:128
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
 msgstr "crwdns65472:0crwdne65472:0"
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:131
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:132
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "crwdns65474:0%dcrwdnd65474:0%dcrwdne65474:0"
@@ -2020,7 +2020,7 @@ msgstr "crwdns65736:0crwdne65736:0"
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
 #: website/app-templates/smarty/forms/admin_news.tpl:25
-#: website/app-templates/smarty/forms/geokret.tpl:70
+#: website/app-templates/smarty/forms/geokret.tpl:83
 msgid "Save"
 msgstr "crwdns65738:0crwdne65738:0"
 
@@ -3274,20 +3274,20 @@ msgid "Reference number"
 msgstr "crwdns66280:0crwdne66280:0"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:36
-#: website/app-templates/smarty/forms/geokret.tpl:37
+#: website/app-templates/smarty/forms/geokret.tpl:50
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:3
 msgid "Mission"
 msgstr "crwdns66300:0crwdne66300:0"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:38
-#: website/app-templates/smarty/forms/geokret.tpl:40
+#: website/app-templates/smarty/forms/geokret.tpl:53
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 msgid "What is this GeoKret mission?"
 msgstr "crwdns66458:0crwdne66458:0"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:43
-#: website/app-templates/smarty/forms/geokret.tpl:57
+#: website/app-templates/smarty/forms/geokret.tpl:70
 msgid "Label template"
 msgstr "crwdns66552:0crwdne66552:0"
 
@@ -3313,14 +3313,14 @@ msgid "Generate as .pdf"
 msgstr "crwdns66562:0crwdne66562:0"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:81
-#: website/app-templates/smarty/forms/geokret.tpl:79
+#: website/app-templates/smarty/forms/geokret.tpl:92
 msgid "Sample GeoKret label preview"
 msgstr "crwdns66564:0crwdne66564:0"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:84
 #: website/app-templates/smarty/forms/geokret_label.tpl:85
-#: website/app-templates/smarty/forms/geokret.tpl:82
-#: website/app-templates/smarty/forms/geokret.tpl:83
+#: website/app-templates/smarty/forms/geokret.tpl:95
+#: website/app-templates/smarty/forms/geokret.tpl:96
 msgid "GeoKret label preview"
 msgstr "crwdns66566:0crwdne66566:0"
 
@@ -3459,24 +3459,28 @@ msgstr "crwdns67056:0crwdne67056:0"
 msgid "Edit a GeoKret"
 msgstr "crwdns66620:0crwdne66620:0"
 
-#: website/app-templates/smarty/forms/geokret.tpl:20
+#: website/app-templates/smarty/forms/geokret.tpl:21
+msgid "Birth date"
+msgstr "crwdns67074:0crwdne67074:0"
+
+#: website/app-templates/smarty/forms/geokret.tpl:33
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:48
 msgid "GeoKret type"
 msgstr "crwdns66456:0crwdne66456:0"
 
-#: website/app-templates/smarty/forms/geokret.tpl:33
+#: website/app-templates/smarty/forms/geokret.tpl:46
 msgid "View legacy mission"
 msgstr "crwdns66622:0crwdne66622:0"
 
-#: website/app-templates/smarty/forms/geokret.tpl:48
+#: website/app-templates/smarty/forms/geokret.tpl:61
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
 msgstr "crwdns66624:0crwdne66624:0"
 
-#: website/app-templates/smarty/forms/geokret.tpl:49
+#: website/app-templates/smarty/forms/geokret.tpl:62
 msgid "Set my home coordinates as a starting point."
 msgstr "crwdns66626:0crwdne66626:0"
 
-#: website/app-templates/smarty/forms/geokret.tpl:70
+#: website/app-templates/smarty/forms/geokret.tpl:83
 msgid "Create"
 msgstr "crwdns66628:0crwdne66628:0"
 
