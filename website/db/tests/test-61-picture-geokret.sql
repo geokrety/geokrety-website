@@ -2,8 +2,8 @@
 
 BEGIN;
 
-SELECT * FROM no_plan();
--- SELECT plan(3);
+-- SELECT * FROM no_plan();
+SELECT plan(12);
 \set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (1, 'test', 0, '2020-04-07 00:00:00+00');
@@ -37,6 +37,17 @@ SELECT is(pictures_count, 1::smallint , 'GK2 has now 1 picture') from gk_geokret
 -- Update to another type
 UPDATE "gk_pictures" set move=1, geokret=2, type=1 WHERE id = 2::bigint;
 SELECT is(pictures_count, 0::smallint , 'GK2 has no pictures left') from gk_geokrety WHERE id = 2::bigint;
+
+-- set featured
+INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (4, 'test 4', '127.0.0.1');
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (4, 'test', 0, '2024-05-20 00:00:00+00');
+INSERT INTO "gk_pictures" ("id",  "author", "geokret", "type") VALUES (4, 4, 4, 0);
+SELECT is(avatar, NULL) from gk_geokrety WHERE id = 4::bigint;
+UPDATE "gk_pictures" set uploaded_on_datetime = NOW() WHERE id = 4::bigint;
+SELECT is(avatar, 4::bigint) from gk_geokrety WHERE id = 4::bigint;
+INSERT INTO "gk_pictures" ("id",  "author", "geokret", "type") VALUES (5, 4, 4, 0);
+UPDATE "gk_pictures" set uploaded_on_datetime = NOW() WHERE id = 5::bigint;
+SELECT is(avatar, 4::bigint) from gk_geokrety WHERE id = 4::bigint;
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(9);
+SELECT plan(12);
 
 INSERT INTO "gk_geokrety" ("id", "name", "type") VALUES (1, 'test', 0);
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
@@ -35,6 +35,16 @@ SELECT is(pictures_count, 1, 'User 2 has now 1 picture') from gk_users WHERE id 
 -- Update to another type
 UPDATE "gk_pictures" set geokret=1, "user"=NULL, type=0 WHERE id = 2::bigint;
 SELECT is(pictures_count, 0, 'User 2 has no pictures left') from gk_users WHERE id = 2::bigint;
+
+-- set featured
+INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (4, 'test 4', '127.0.0.1');
+INSERT INTO "gk_pictures" ("id",  "author", "user", "type") VALUES (4, 4, 4, 2);
+SELECT is(avatar, NULL) from gk_users WHERE id = 4::bigint;
+UPDATE "gk_pictures" set uploaded_on_datetime = NOW() WHERE id = 4::bigint;
+SELECT is(avatar, 4::bigint) from gk_users WHERE id = 4::bigint;
+INSERT INTO "gk_pictures" ("id",  "author", "user", "type") VALUES (5, 4, 4, 2);
+UPDATE "gk_pictures" set uploaded_on_datetime = NOW() WHERE id = 5::bigint;
+SELECT is(avatar, 4::bigint) from gk_users WHERE id = 4::bigint;
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();
