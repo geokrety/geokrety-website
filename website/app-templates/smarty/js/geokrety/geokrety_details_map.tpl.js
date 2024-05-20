@@ -76,11 +76,11 @@ var GKMapIcon = L.Icon.extend({
 });
 
 // start
-var redIcon = new GKMapIcon({ iconUrl: "https://cdn.geokrety.org/images/icons/pins/red.png" });
+var redIcon = new GKMapIcon({ iconUrl: "{GK_CDN_SERVER_URL}/images/icons/pins/red.png" });
 // trip points
-var yellowIcon = new GKMapIcon({ iconUrl: "https://cdn.geokrety.org/images/icons/pins/yellow.png" });
+var yellowIcon = new GKMapIcon({ iconUrl: "{GK_CDN_SERVER_URL}/images/icons/pins/yellow.png" });
 // recently seen
-var greenIcon = new GKMapIcon({ iconUrl: "https://cdn.geokrety.org/images/icons/pins/green.png" });
+var greenIcon = new GKMapIcon({ iconUrl: "{GK_CDN_SERVER_URL}/images/icons/pins/green.png" });
 
 // create marker
 function getPlotIcon(feature) {

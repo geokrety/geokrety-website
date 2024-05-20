@@ -190,7 +190,7 @@ class Picture extends Base {
 
     public function get_url(): string {
         if (is_null($this->bucket)) {
-            return sprintf('https://cdn.geokrety.org/images/obrazki/%s', $this->filename);
+            return sprintf('%s/images/obrazki/%s', GK_CDN_SERVER_URL, $this->filename);
         }
 
         return sprintf('%s/%s/%s', GK_MINIO_SERVER_URL_EXTERNAL, $this->type->getBucketName(), $this->key);
@@ -201,7 +201,7 @@ class Picture extends Base {
 
     public function get_thumbnail_url(): string {
         if (is_null($this->bucket)) {
-            return sprintf('https://cdn.geokrety.org/images/obrazki-male/%s', $this->filename);
+            return sprintf('%s/images/obrazki-male/%s', GK_CDN_SERVER_URL, $this->filename);
         }
 
         return sprintf('%s/%s-thumbnails/%s', GK_MINIO_SERVER_URL_EXTERNAL, $this->type->getBucketName(), $this->key);
