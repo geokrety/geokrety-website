@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-19 08:40+0000\n"
-"PO-Revision-Date: 2024-05-19 12:29\n"
+"POT-Creation-Date: 2024-05-20 10:18+0000\n"
+"PO-Revision-Date: 2024-05-20 10:46\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -300,15 +300,15 @@ msgstr "log_id invalide"
 msgid "Only the owner can edit his GeoKrety."
 msgstr "Seul le propriétaire peut modifier son GeoKret."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:25
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:26
 msgid "Your GeoKret has been updated."
 msgstr "Votre GeoKret a été mis à jour."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:31
 msgid "Failed to edit the GeoKret."
 msgstr "Impossible de modifier le GeoKret."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:33
+#: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:32
 #: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
 msgid "This label template does not exist."
 msgstr "Ce modèle d'étiquette n'existe pas."
@@ -1081,15 +1081,15 @@ msgstr "Le Tracking Code \"%s\" contient des caractères invalides."
 msgid "Sorry, but Tracking Code \"%s\" was not found in our database."
 msgstr "Désolé, mais le Tracking Code \"%s\" n'a pas été trouvé dans notre base de données."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:123
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:124
 msgid "No Tracking Code provided."
 msgstr "Aucun Tracking Code fourni."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:127
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:128
 msgid "Anonymous users cannot check multiple Tracking Codes at once. Please login first."
 msgstr "Les utilisateurs anonymes ne peuvent pas vérifier plusieurs Tracking Code à la fois. Veuillez vous connecter d'abord."
 
-#: website/app/GeoKrety/Service/Validation/TrackingCode.php:131
+#: website/app/GeoKrety/Service/Validation/TrackingCode.php:132
 #, php-format
 msgid "Only %d Tracking Codes may be specified at once, there are %d selected."
 msgstr "Seuls %d Tracking Code peuvent être spécifiés à la fois, il y en a %d de sélectionnés."
@@ -2035,7 +2035,7 @@ msgstr "Sélectionnez votre arrière-plan de bannière de statistiques"
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
 #: website/app-templates/smarty/forms/admin_news.tpl:25
-#: website/app-templates/smarty/forms/geokret.tpl:70
+#: website/app-templates/smarty/forms/geokret.tpl:83
 msgid "Save"
 msgstr "Sauver"
 
@@ -3296,20 +3296,20 @@ msgid "Reference number"
 msgstr "Numéro de référence"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:36
-#: website/app-templates/smarty/forms/geokret.tpl:37
+#: website/app-templates/smarty/forms/geokret.tpl:50
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:3
 msgid "Mission"
 msgstr "Mission"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:38
-#: website/app-templates/smarty/forms/geokret.tpl:40
+#: website/app-templates/smarty/forms/geokret.tpl:53
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 msgid "What is this GeoKret mission?"
 msgstr "Quelle est la mission de ce GeoKret ?"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:43
-#: website/app-templates/smarty/forms/geokret.tpl:57
+#: website/app-templates/smarty/forms/geokret.tpl:70
 msgid "Label template"
 msgstr "Modèle d'étiquette"
 
@@ -3335,14 +3335,14 @@ msgid "Generate as .pdf"
 msgstr "Générer un .pdf"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:81
-#: website/app-templates/smarty/forms/geokret.tpl:79
+#: website/app-templates/smarty/forms/geokret.tpl:92
 msgid "Sample GeoKret label preview"
 msgstr "Exemple d’étiquette"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:84
 #: website/app-templates/smarty/forms/geokret_label.tpl:85
-#: website/app-templates/smarty/forms/geokret.tpl:82
-#: website/app-templates/smarty/forms/geokret.tpl:83
+#: website/app-templates/smarty/forms/geokret.tpl:95
+#: website/app-templates/smarty/forms/geokret.tpl:96
 msgid "GeoKret label preview"
 msgstr "Aperçu de l'étiquette du GeoKret"
 
@@ -3481,24 +3481,28 @@ msgstr "S'inscrire en utilisant"
 msgid "Edit a GeoKret"
 msgstr "Modifier ce GeoKret"
 
-#: website/app-templates/smarty/forms/geokret.tpl:20
+#: website/app-templates/smarty/forms/geokret.tpl:21
+msgid "Birth date"
+msgstr "Date de naissance"
+
+#: website/app-templates/smarty/forms/geokret.tpl:33
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:48
 msgid "GeoKret type"
 msgstr "Type du GeoKret"
 
-#: website/app-templates/smarty/forms/geokret.tpl:33
+#: website/app-templates/smarty/forms/geokret.tpl:46
 msgid "View legacy mission"
 msgstr "Afficher l'ancienne version de la mission"
 
-#: website/app-templates/smarty/forms/geokret.tpl:48
+#: website/app-templates/smarty/forms/geokret.tpl:61
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
 msgstr "Cela créera un premier mouvement de type « à visité » pour votre GeoKret, marquant son point de départ."
 
-#: website/app-templates/smarty/forms/geokret.tpl:49
+#: website/app-templates/smarty/forms/geokret.tpl:62
 msgid "Set my home coordinates as a starting point."
 msgstr "Définir les coordonnées de mon domicile comme point de départ."
 
-#: website/app-templates/smarty/forms/geokret.tpl:70
+#: website/app-templates/smarty/forms/geokret.tpl:83
 msgid "Create"
 msgstr "Créer"
 
