@@ -8,11 +8,11 @@ var birthdate = null
 // Convert GeoKret date to moment object
 function geokretDateToMoment(data) {
     movedGeokret = data.map(function (geokret) {
-        geokret.createdOnDatetime = moment.utc(geokret.createdOnDatetime);
+        geokret.bornOnDatetime = moment.utc(geokret.bornOnDatetime);
 
         // Save youngest GeoKret
-        if (birthdate < geokret.createdOnDatetime || birthdate == null) {
-            birthdate = geokret.createdOnDatetime.startOf('minute');
+        if (birthdate < geokret.bornOnDatetime || birthdate == null) {
+            birthdate = geokret.bornOnDatetime.startOf('minute');
         }
         return geokret;
     });
@@ -121,7 +121,7 @@ window.Parsley.addValidator('dateaftergkbirth', {
             return;
         }
 
-        return birthdate <= date; // TODO: Born date include seconds, that may be a problem
+        return birthdate.isSameOrBefore(date);
     },
     messages: {
       en: 'The date cannot be before the GeoKret birthdate.',

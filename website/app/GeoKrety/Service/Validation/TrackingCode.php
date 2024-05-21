@@ -61,7 +61,7 @@ class TrackingCode {
 
     private function lookupTrackingCode($trackingCode) {
         $geokret = new Geokret();
-        $geokret->load(['tracking_code = ?', $trackingCode], ttl: 60);
+        $geokret->load(['tracking_code = ?', $trackingCode], ttl: GK_IS_UNIT_TESTING ? 0 : 60);
 
         if ($geokret->dry()) {
             array_push($this->errors, sprintf(_('Sorry, but Tracking Code "%s" was not found in our database.'), $trackingCode));
