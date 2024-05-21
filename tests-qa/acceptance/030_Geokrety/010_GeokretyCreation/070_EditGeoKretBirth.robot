@@ -9,6 +9,7 @@ Resource        ../../ressources/Moves.robot
 Resource        ../../ressources/vars/pages/Home.robot
 Variables       ../../ressources/vars/users.yml
 Variables       ../../ressources/vars/geokrety.yml
+Variables       ../../ressources/vars/waypoints.yml
 Test Setup      Test Setup
 
 *** Variables ***
@@ -56,6 +57,39 @@ Ensure date is parsed with right TZ format
     Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         29/12/2023 13:00
     Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
     Input validation has success        ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+
+
+New moves can be posted until the new GK birth
+    Sign In ${USER_1.name} Fast
+
+    Go To Move
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
+    Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_COMMENT_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
+    Set DateTime                            2024-05-20 18:32:21    +02:00
+    Input Inscrybmde                        \#comment                                   TEST
+    Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Change Born Date To Now
+
+    Go To Move
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
+    Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_COMMENT_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
+    Set DateTime                            2024-05-20 18:32:21    +02:00
+    Input Inscrybmde                        \#comment                                   TEST
+    Panel validation has error              ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc().add(1, 'minute').local());
+    Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
+    Panel validation has error              ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc().local());
+    Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
+    Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
 
 
 Not sooner than the oldest move
@@ -172,7 +206,7 @@ Change Born Date To Now
     [Arguments]    ${result_format}=${FIELD_RESULT_FORMAT}
     Sign In ${USER_1.name} Fast
     Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
-    Execute Javascript                  $("#datetimepicker").data("DateTimePicker").date(moment.utc().format('L'));
+    Execute Javascript                  $("#datetimepicker").data("DateTimePicker").date(moment.utc().local().format('L LT'));
     Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
     ${date} =     Browser.Get Element Attribute    ${GEOKRET_CREATE_BORN_ON_DATETIME_HIDDEN_INPUT}    value
     Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
@@ -191,3 +225,22 @@ Change Born Date To Now With Validation
 Open Inventory
     Click Button                            ${MOVE_TRACKING_CODE_INVENTORY_BUTTON}
     Wait Until Modal                        Select GeoKrety from inventory
+
+Set DateTime
+    [Arguments]    ${datetime}=2020-08-12 07:30:00    ${timezone}=+00:00
+    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc("${datetime}").zone("${timezone}"));
+    Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
+
+Click Button And Check Panel Validation Has Success
+    [Arguments]    ${button}    ${current_panel}    ${next_panel}
+    Panel validation has success            ${current_panel}
+    Click Button                            ${button}
+    Panel Is Collapsed                      ${current_panel}
+    Panel Is Open                           ${next_panel}
+
+Click LogType And Check Panel Validation Has Success
+    [Arguments]    ${radio_value}    ${current_panel}    ${next_panel}
+    Click Move Type    ${radio_value}
+    Panel validation has success            ${current_panel}
+    # Panel Is Collapsed                      ${current_panel}
+    Panel Is Open                           ${next_panel}

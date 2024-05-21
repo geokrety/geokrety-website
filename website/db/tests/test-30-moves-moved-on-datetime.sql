@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(16);
+SELECT plan(19);
 
 \set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set move_type_comment 2
@@ -53,10 +53,16 @@ INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_ty
 SELECT lives_ok($$UPDATE "gk_geokrety" set born_on_datetime = '2024-05-17 00:00:00+00'::timestamptz WHERE id = 10::bigint$$);
 SELECT throws_ok($$UPDATE "gk_geokrety" set born_on_datetime = '2024-05-19 00:00:00+00'::timestamptz WHERE id = 10::bigint$$);
 
--- GK birth date cannot be created than now
+-- GK birth date cannot be created after now
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (11, 'test', 0, '2024-05-19 00:00:00+00');
 SELECT lives_ok($$UPDATE "gk_geokrety" set born_on_datetime = NOW() WHERE id = 11::bigint$$);
 SELECT throws_ok($$UPDATE "gk_geokrety" set born_on_datetime = NOW() + INTERVAL '1 hour' WHERE id = 11::bigint$$);
+
+-- New moves can be posted until the new GK birth
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (12, 'test', 0, '2024-05-19 00:00:00+00');
+SELECT lives_ok($$UPDATE "gk_geokrety" set born_on_datetime = '2024-05-10 00:00:00+00' WHERE id = 12::bigint$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (12, 12, 1, '2024-05-10 00:00:00+00', 2)$$);
+SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (13, 12, 1, '2024-05-09 00:00:00+00', 2)$$);
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

@@ -9,7 +9,7 @@ window.Parsley.addValidator("datebeforenow", {
         if (! date.isValid()) {
             return false;
         }
-        return date.isBefore(moment());
+        return date.isSameOrBefore(moment());
     },
     messages: {
         en: "The date cannot be in the future.",
