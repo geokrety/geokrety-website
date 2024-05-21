@@ -26,6 +26,38 @@ Not in the future
     Input validation has error help     ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         The date cannot be in the future.
 
 
+Ensure date is parsed with right TZ format
+    # GH Issue #1015
+    ${date} =    Get Current Date    increment=3days    result_format=${FIELD_RESULT_FORMAT}
+    Sign In ${USER_1.name} Fast
+
+    Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
+
+    Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         29/12/2023 01:00 AM
+    Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
+    Input validation has error          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+    Input validation has error help     ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         The date cannot be in the future
+
+    Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         12/29/2023 01:00 AM
+    Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
+    Input validation has success        ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+
+    Go To Url                           ${PAGE_GEOKRETY_EDIT_URL_FR}
+
+    Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         12/29/2023 01:00
+    Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
+    Input validation has error          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+    Input validation has error help     ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         La date ne peut pas etre dans le futur
+
+    Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         29/12/2023 01:00
+    Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
+    Input validation has success        ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+
+    Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         29/12/2023 13:00
+    Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
+    Input validation has success        ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+
+
 Not sooner than the oldest move
     Post Move Fast          &{MOVE_1}
     ${expected} =     Change Born Date To Now

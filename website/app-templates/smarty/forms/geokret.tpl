@@ -21,7 +21,7 @@
                 <label for="born_on_datetime_localized" class="col-sm-2 control-label">{t}Birth date{/t}</label>
                 <div class="col-sm-6">
                     <div class="input-group date" id="datetimepicker">
-                        <input type="text" class="form-control" name="born_on_datetime_localized" id="born_on_datetime_localized" required data-parsley-datebeforenow="" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" />
+                        <input type="text" class="form-control" name="born_on_datetime_localized" id="born_on_datetime_localized" required data-parsley-datebeforenow="L LT" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="focusout" />
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
                     <input type="hidden" name="born_on_datetime" id="born_on_datetime" />
