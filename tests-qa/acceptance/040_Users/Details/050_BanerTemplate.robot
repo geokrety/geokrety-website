@@ -42,6 +42,7 @@ Suite Setup
     Clear Database And Seed ${2} users
 
 Select banner
+    [Tags]    OpenEyes
     [Arguments]    ${templateId}
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_1_BANER_TEMPLATE_URL}

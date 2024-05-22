@@ -8,19 +8,20 @@ Test Setup      Test Setup
 
 *** Test Cases ***
 
-Set image as main avatar
+First uploaded image is set as main avatar
+    [Tags]    OpenEyes
     Open Eyes                               Browser  5
 
-    Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture.png
-    Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}         ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
+    # Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture.png
+    Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture.png     position=1
+    Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture2.png    position=2
 
-    Wait Until Modal                        Do you want to set this picture as main avatar?
-    Capture Element                         ${MODAL_DIALOG}    name=img1
-    Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
-    Scroll Into View                        ${USER_PROFILE_AVATAR_GALLERY}
-    Capture Element                         ${USER_PROFILE_AVATAR_GALLERY}    name=img2
+    Wait Until Page Contains Element        ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}
+    Scroll Into View                        ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}
+    Mouse Over                              ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}
+    Page Should Not Contain Button          ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
 
-    Compare Images
+    Check Image                             ${USER_PROFILE_PICTURES_PANEL}//div[@class="gallery"]
 
 Set second image as main avatar
     Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture.png     position=1
@@ -29,7 +30,7 @@ Set second image as main avatar
     Click Picture Action                    ${USER_PROFILE_SECOND_IMAGE}        ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
     Wait Until Modal                        Do you want to set this picture as main avatar?
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
-    Check Image                             ${USER_PROFILE_PICTURES_PANEL}
+    Check Image                             ${USER_PROFILE_PICTURES_PANEL}//div[@class="gallery"]
 
 *** Keywords ***
 

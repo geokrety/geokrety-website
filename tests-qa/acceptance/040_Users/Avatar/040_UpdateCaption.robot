@@ -9,6 +9,7 @@ Test Setup      Test Setup
 *** Test Cases ***
 
 Define User Avatar Caption
+    [Tags]    OpenEyes
     Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_PULLER_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Input Text                              ${CAPTION_INPUT}    Bonjour

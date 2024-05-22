@@ -28,7 +28,7 @@ Delete 1 picture should leave other present
     Page Should Contain Element             ${USER_PROFILE_IMAGES}
 
     Element Count Should Be                 ${USER_PROFILE_IMAGES}                  1
-    Check Image                             ${USER_PROFILE_PICTURES_PANEL}
+    Check Image                             ${USER_PROFILE_PICTURES_PANEL}//div[@class="gallery"]
 
 *** Keywords ***
 

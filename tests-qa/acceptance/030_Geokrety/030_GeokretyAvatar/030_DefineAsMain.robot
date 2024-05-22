@@ -10,15 +10,17 @@ Test Setup      Test Setup
 
 *** Test Cases ***
 
-Set image as main geokret avatar
+First image is set as main geokret avatar
+    [Tags]    OpenEyes
     Open Eyes                               Browser  5
 
     Post GeoKret Avatar                     ${CURDIR}/../../ressources/pictures/sample-picture.png
-    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
 
-    Wait Until Modal                        Do you want to set this picture as main avatar?
-    Capture Element                         ${MODAL_DIALOG}    name=img1
-    Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
+    Wait Until Page Contains Element        ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}${PICTURE_PULLER}
+    Scroll Into View                        ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}${PICTURE_PULLER}
+    Mouse Over                              ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}${PICTURE_PULLER}
+
+    Page Should Not Contain Button          ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
     Capture Element                         ${GEOKRET_DETAILS_AVATAR_IMAGES}    name=img2
 
     Compare Images

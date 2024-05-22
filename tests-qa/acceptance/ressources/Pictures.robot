@@ -42,6 +42,7 @@ ${USER_PROFILE_AVATAR_GALLERY}                  ${USER_PROFILE_DETAILS_PANEL}//d
 *** Keywords ***
 
 Check Image
+    [Tags]    OpenEyes
     [Arguments]    ${element}    ${name}=img1
     Open Eyes                               Browser  5
     Scroll Into View                        ${GK_LOGO_LINK}

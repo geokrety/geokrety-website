@@ -78,6 +78,7 @@ Check invalid coordinates
     ${SPACE}
 
 Save Observation Area Preferences
+    [Tags]    OpenEyes
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_1_OBSERVATION_AREA_URL}
     Fill form                               ${COORDS_NEW_YORK}    10
@@ -156,6 +157,7 @@ Check valid radius
 
 
 Check Map circle should reflect observation
+    [Tags]    OpenEyes
     [Arguments]    ${radius}
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_USER_1_OBSERVATION_AREA_URL}

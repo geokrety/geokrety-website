@@ -11,6 +11,7 @@ Test Setup      Test Setup
 *** Test Cases ***
 
 Define GeoKret avatar caption
+    [Tags]    OpenEyes
     Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_PULLER_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Input Text                              ${CAPTION_INPUT}    Bonjour

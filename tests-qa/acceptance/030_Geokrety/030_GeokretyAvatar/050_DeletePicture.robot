@@ -30,7 +30,7 @@ Delete 1 GeoKret avatar should leave others present
     Page Should Contain Element             ${GEOKRET_DETAILS_AVATAR_IMAGES}
 
     Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES_ALL}    ${1}
-    Check Image                             ${GEOKRET_DETAILS_PICTURES_PANEL}
+    Check Image                             ${GEOKRET_DETAILS_PICTURES_PANEL}//div[@class="gallery"]
 
 *** Keywords ***
 
