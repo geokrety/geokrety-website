@@ -32,6 +32,11 @@
                             {fa icon="google"}
                         </a>
                     {/if}
+                    {if GK_OPAUTH_TWITTER_CLIENT_ID !== false}
+                        <a id="navbar-twitter-sm" href="/auth/twitter" class="btn btn-default btn-black">
+                            {fa icon="twitter"}
+                        </a>
+                    {/if}
                     <a id="navbar-profile-login-sm" href="{'login'|login_link}" class="btn btn-info" data-toggle="modal" data-target="#modal" data-type="form-login">
                         {fa icon="sign-in"} {t}Sign in{/t}
                     </a>

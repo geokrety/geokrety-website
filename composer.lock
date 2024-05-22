@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5758119964686a26a825a3db63d1155",
+    "content-hash": "4c603ebe4233904e839f9bb24fbfe244",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2562,6 +2562,54 @@
                 "source": "https://github.com/opauth/opauth/tree/master"
             },
             "time": "2018-02-25T03:18:21+00:00"
+        },
+        {
+            "name": "opauth/twitter",
+            "version": "0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opauth/twitter.git",
+                "reference": "9c09fb3d714b8bf7b35ebc235346cf2feced69e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opauth/twitter/zipball/9c09fb3d714b8bf7b35ebc235346cf2feced69e3",
+                "reference": "9c09fb3d714b8bf7b35ebc235346cf2feced69e3",
+                "shasum": ""
+            },
+            "require": {
+                "opauth/opauth": ">=0.2.0",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "U-Zyn Chua",
+                    "email": "chua@uzyn.com",
+                    "homepage": "http://uzyn.com"
+                }
+            ],
+            "description": "Twitter strategy for Opauth",
+            "homepage": "http://opauth.org",
+            "keywords": [
+                "Authentication",
+                "auth",
+                "twitter"
+            ],
+            "support": {
+                "issues": "https://github.com/opauth/twitter/issues",
+                "source": "https://github.com/opauth/twitter/tree/master"
+            },
+            "time": "2017-03-28T05:03:36+00:00"
         },
         {
             "name": "palepurple/rate-limit",

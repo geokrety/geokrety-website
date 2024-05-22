@@ -38,6 +38,9 @@ if (GK_OPAUTH_ACTIVE) {
     if (GK_OPAUTH_GITHUB_CLIENT_ID) {
         $f3->config(__DIR__.'/app/opauth.github.ini', true);
     }
+    if (GK_OPAUTH_TWITTER_CLIENT_ID) {
+        $f3->config(__DIR__.'/app/opauth.twitter.ini', true);
+    }
 
     $opAuth = OpauthBridge::instance($f3->opauth);
     $opAuth->onSuccess('\GeoKrety\Controller\Login->socialAuthSuccess');

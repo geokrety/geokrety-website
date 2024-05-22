@@ -24,6 +24,11 @@
                         {fa icon="google"} google
                     </a>
                 {/if}
+                {if GK_OPAUTH_TWITTER_CLIENT_ID !== false}
+                    <a id="btn-twitterauth" href="/auth/twitter" class="btn btn-default btn-black">
+                        {fa icon="twitter"} twitter
+                    </a>
+                {/if}
             </div>
         </div>
     </div>

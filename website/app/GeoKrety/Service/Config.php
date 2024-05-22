@@ -217,8 +217,10 @@ class Config extends \Prefab {
         define('GK_OPAUTH_FACEBOOK_CLIENT_SECRET', getsecret('GK_OPAUTH_FACEBOOK_CLIENT_SECRET') ?: false);
         define('GK_OPAUTH_GITHUB_CLIENT_ID', getenv('GK_OPAUTH_GITHUB_CLIENT_ID') ?: false);
         define('GK_OPAUTH_GITHUB_CLIENT_SECRET', getsecret('GK_OPAUTH_GITHUB_CLIENT_SECRET') ?: false);
+        define('GK_OPAUTH_TWITTER_CLIENT_ID', getenv('GK_OPAUTH_TWITTER_CLIENT_ID') ?: false);
+        define('GK_OPAUTH_TWITTER_CLIENT_SECRET', getsecret('GK_OPAUTH_TWITTER_CLIENT_SECRET') ?: false);
 
-        define('GK_OPAUTH_ACTIVE', GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false or GK_OPAUTH_GITHUB_CLIENT_ID !== false);
+        define('GK_OPAUTH_ACTIVE', GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false or GK_OPAUTH_GITHUB_CLIENT_ID !== false or GK_OPAUTH_TWITTER_CLIENT_ID !== false);
 
         // go2geo url
         define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
