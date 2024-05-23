@@ -101,7 +101,7 @@ $validator->addValidator('after_geokret_birth', function ($field, $input, $param
         return true;
     }
 
-    return $input[$field]->format('Y-m-d H:i') >= $input['geokret']->created_on_datetime->format('Y-m-d H:i');
+    return $input[$field]->format('Y-m-d H:i') >= $input['geokret']->born_on_datetime->format('Y-m-d H:i');
 }, _('{0} must be after GeoKret birth'));
 
 $validator->addValidator('email_activation_require_previous_email_field', function ($field, $input, $param = null) {
