@@ -16,7 +16,7 @@ class BasePHPMailerSendCopyToAdminTest extends Mockery\Adapter\Phpunit\MockeryTe
         $this->mailer->allows()->isUnitTesting()->andReturn(true);
     }
 
-    public function testNotFoundAdminsArenotAddedToTheList() {
+    public function testNotFoundAdminsAreNotAddedToTheList() {
         $user = UserFixture::getUserFixture();
 
         $this->mailer->shouldAllowMockingProtectedMethods();
@@ -29,11 +29,13 @@ class BasePHPMailerSendCopyToAdminTest extends Mockery\Adapter\Phpunit\MockeryTe
     public function testAdminsAreAddedToTheList() {
         $admin = UserFixture::getUserFixture(1);
         $user = UserFixture::getUserFixture(2);
+        $admin_email = $admin->email;
 
         $this->mailer->shouldAllowMockingProtectedMethods();
         $this->mailer->shouldReceive('getAdmin')->once()->andReturn($admin);
 
         $this->assertNull($this->mailer->sendCopyToAdmins($user));
         $this->assertCount(1, $this->mailer->recipients);
+        $this->assertEquals($this->mailer->recipients[0]->email, $admin_email);
     }
 }

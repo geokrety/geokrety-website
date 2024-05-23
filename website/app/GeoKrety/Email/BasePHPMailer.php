@@ -190,7 +190,6 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
             if (is_null($admin)) {
                 continue;
             }
-            $admin->email = $user->email;
             $admin->username .= $user->username.' (admin)';
             $this->recipients[] = $admin;
         }
