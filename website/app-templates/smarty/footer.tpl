@@ -4,8 +4,10 @@
         <li><a id="footer-help" href="{'help'|alias:null:null:'#about'}">{t}About{/t}</a></li>
         <li><a id="footer-news" href="{'news_list'|alias}">{t}News{/t}</a></li>
         <li><a id="footer-contact" href="{'contact_us'|alias}">{t}Contact{/t}</a></li>
+{if GK_UPTIMEROBOT_URL}
+        <li><a id="footer-uptimerobot" href="{GK_UPTIMEROBOT_URL}" target="_blank">Uptime Robot</a></li>
+{/if}
     </ul>
-
     <p class="text-center">
         {t escape=no url="https://github.com/geokrety/geokrety-website/blob/master/LICENSE"}Released under <a id="footer-license" href="%1">MIT license</a>{/t}
         |

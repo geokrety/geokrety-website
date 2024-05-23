@@ -92,6 +92,7 @@ class Config extends \Prefab {
 
         // External services
         define('GK_CROWDIN_URL', getenv('GK_CROWDIN_URL') ?: 'https://crowdin.geokrety.org');
+        define('GK_UPTIMEROBOT_URL', getenv('GK_UPTIMEROBOT_URL') ?: 'https://stats.uptimerobot.com/YnK8XSDwBw');
 
         // Admin services
         define('ADMIN_SERVICE_ADMINER_URL', getenv('ADMIN_SERVICE_ADMINER_URL') ?: GK_SITE_BASE_SERVER_URL.'/adminer');
