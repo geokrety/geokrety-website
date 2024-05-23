@@ -59,38 +59,52 @@ Ensure date is parsed with right TZ format
     Input validation has success        ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
 
 
-New moves can be posted until the new GK birth
+New move before GK birth
     Sign In ${USER_1.name} Fast
 
+    # birthdate is 2020-08-12 00:00:00+00 from test setup
+    # create date is 2020-08-22 15:30:42+00 from test setup
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_COMMENT_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
-    Set DateTime                            2024-05-20 18:32:21    +02:00
+
+    Set DateTime                            2020-08-10    00:00:00    +00:00
+    # Ensure the date was correctly parsed
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_DATE_HIDDEN_INPUT}        value    ${EMPTY}
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_HOUR_HIDDEN_INPUT}        value    ${EMPTY}
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_MINUTE_HIDDEN_INPUT}      value    ${EMPTY}
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_TIMEZONE_HIDDEN_INPUT}    value    ${EMPTY}
+
     Input Inscrybmde                        \#comment                                   TEST
-    Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
+    Input validation has error              ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}
+    Input validation has error help         ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}          The date cannot be before the GeoKret birthdate.
+    Panel validation has error              ${MOVE_ADDITIONAL_DATA_PANEL}
 
-    Change Born Date To Now
 
+New move between GK birth and GK create
+    Sign In ${USER_1.name} Fast
+
+    # birthdate is 2020-08-12 00:00:00+00 from test setup
+    # create date is 2020-08-22 15:30:42+00 from test setup
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_COMMENT_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
-    Set DateTime                            2024-05-20 18:32:21    +02:00
+
+    Set DateTime                            2020-08-20    18:32:00    +02:00
+    # Ensure the date was correctly parsed
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_DATE_HIDDEN_INPUT}        value    2020-08-20
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_HOUR_HIDDEN_INPUT}        value    19
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_MINUTE_HIDDEN_INPUT}      value    32
+    Element Attribute Should Be             ${MOVE_ADDITIONAL_DATA_TIMEZONE_HIDDEN_INPUT}    value    +03:00    # +03:00 is browser TZ in RobotFramwork context
+
     Input Inscrybmde                        \#comment                                   TEST
-    Panel validation has error              ${MOVE_ADDITIONAL_DATA_PANEL}
-
-    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc().add(1, 'minute').local());
-    Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
-    Panel validation has error              ${MOVE_ADDITIONAL_DATA_PANEL}
-
-    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc().local());
-    Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
     Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
 
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
+    Page Should Not Contain                 Moved_on_datetime must be after GeoKret birth
     Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
-
 
 Not sooner than the oldest move
     Post Move Fast          &{MOVE_1}
@@ -212,7 +226,6 @@ Change Born Date To Now
     Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
     RETURN    ${date}
 
-
 Change Born Date To Now With Validation
     [Arguments]    ${result_format}=${FIELD_RESULT_FORMAT}
     ${date} =    Change Born Date To Now    result_format=${result_format}
@@ -227,8 +240,8 @@ Open Inventory
     Wait Until Modal                        Select GeoKrety from inventory
 
 Set DateTime
-    [Arguments]    ${datetime}=2020-08-12 07:30:00    ${timezone}=+00:00
-    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc("${datetime}").zone("${timezone}"));
+    [Arguments]    ${date}=2020-08-12    ${time}=07:30:00    ${timezone}=+02:00
+    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment("${date}T${time}${timezone}"));
     Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
 
 Click Button And Check Panel Validation Has Success
