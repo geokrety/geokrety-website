@@ -1,15 +1,15 @@
 <?php
 
 // Initialize the validator with custom rules
-$validator = \Validation::instance();
+$validator = Validation::instance();
 
 $validator->onError(function ($text, $key) {
-    \Base::instance()->push('validation.error', $text);
-    \Flash::instance()->addMessage($text, 'danger');
+    Base::instance()->push('validation.error', $text);
+    Flash::instance()->addMessage($text, 'danger');
 });
 
 $validator->addValidator('not_empty', function ($field, $input, $param = null) {
-    return \GeoKrety\Validation\Base::isNotEmpty($input[$field]);
+    return GeoKrety\Validation\Base::isNotEmpty($input[$field]);
 }, _('The {0} field cannot be empty'));
 
 $validator->addValidator('is_date', function ($field, $input, $param = null) {
@@ -17,19 +17,19 @@ $validator->addValidator('is_date', function ($field, $input, $param = null) {
 }, _('The {0} field must be a valid date time'));
 
 $validator->addValidator('geokrety_type', function ($field, $input, $param = null) {
-    return \GeoKrety\GeokretyType::isValid($input[$field]->getTypeId());
+    return GeoKrety\GeokretyType::isValid($input[$field]->getTypeId());
 }, _('The GeoKret type is invalid'));
 
 $validator->addValidator('log_type', function ($field, $input, $param = null) {
-    return \GeoKrety\LogType::isValid($input[$field]->getLogTypeId());
+    return GeoKrety\LogType::isValid($input[$field]->getLogTypeId());
 }, _('The move type is invalid'));
 
 $validator->addValidator('picture_type', function ($field, $input, $param = null) {
-    return \GeoKrety\PictureType::isValid($input[$field]->getTypeId());
+    return GeoKrety\PictureType::isValid($input[$field]->getTypeId());
 }, _('The picture type is invalid'));
 
 $validator->addValidator('language_supported', function ($field, $input, $param = null) {
-    return \GeoKrety\Service\LanguageService::isLanguageSupported($input[$field]);
+    return GeoKrety\Service\LanguageService::isLanguageSupported($input[$field]);
 }, _('This language is not supported'));
 
 $validator->addValidator('ciphered_password', function ($field, $input, $param = null) {
@@ -39,15 +39,15 @@ $validator->addValidator('ciphered_password', function ($field, $input, $param =
 }, _('The password must be ciphered'));
 
 $validator->addValidator('username_unique', function ($field, $input, $param = null) {
-    $user = new \GeoKrety\Model\User();
+    $user = new GeoKrety\Model\User();
     $user->load([sprintf('lower(%s) = lower(?) AND id != ?', $field), $input[$field], $input['_id']]);
 
     return $user->dry();
 }, _('This username is already used'));
 
 $validator->addValidator('anonymous_only_required', function ($field, $input, $param = null) {
-    $f3 = \Base::instance();
-    if (!$f3->get('SESSION.CURRENT_USER') && \GeoKrety\Validation\Base::isEmpty($input[$field])) {
+    $f3 = Base::instance();
+    if (!$f3->get('SESSION.CURRENT_USER') && GeoKrety\Validation\Base::isEmpty($input[$field])) {
         return false;
     }
 
@@ -55,7 +55,7 @@ $validator->addValidator('anonymous_only_required', function ($field, $input, $p
 }, _('Anonymous users must provide a value for {0}'));
 
 $validator->addValidator('registered_only_required', function ($field, $input, $param = null) {
-    $f3 = \Base::instance();
+    $f3 = Base::instance();
     if ($f3->get('SESSION.CURRENT_USER') && !empty($input[$field])) {
         return true;
     }
@@ -82,7 +82,7 @@ $validator->addValidator('move_not_same_datetime', function ($field, $input, $pa
         return true;
     }
 
-    $move = new \GeoKrety\Model\Move();
+    $move = new GeoKrety\Model\Move();
     $move->load([$field.' = ? AND geokret = ? AND id != ?', $input[$field]->format(GK_DB_DATETIME_FORMAT), $input['geokret']->id, $input['_id']]);
 
     return $move->dry();
@@ -105,19 +105,19 @@ $validator->addValidator('after_geokret_birth', function ($field, $input, $param
 }, _('{0} must be after GeoKret birth'));
 
 $validator->addValidator('email_activation_require_previous_email_field', function ($field, $input, $param = null) {
-    return in_array($input['used'], \GeoKrety\Model\EmailActivationToken::TOKEN_NEED_PREVIOUS_EMAIL_FIELD, true);
+    return in_array($input['used'], GeoKrety\Model\EmailActivationToken::TOKEN_NEED_PREVIOUS_EMAIL_FIELD, true);
 }, '{0} require update fields');
 
 $validator->addValidator('email_activation_require_update', function ($field, $input, $param = null) {
-    return in_array($input['used'], \GeoKrety\Model\EmailActivationToken::TOKEN_NEED_UPDATE, true);
+    return in_array($input['used'], GeoKrety\Model\EmailActivationToken::TOKEN_NEED_UPDATE, true);
 }, '{0} require update fields');
 
 $validator->addValidator('email_activation_require_revert', function ($field, $input, $param = null) {
-    return in_array($input['used'], \GeoKrety\Model\EmailActivationToken::TOKEN_NEED_REVERT, true);
+    return in_array($input['used'], GeoKrety\Model\EmailActivationToken::TOKEN_NEED_REVERT, true);
 }, '{0} require revert fields');
 
 $validator->addValidator('account_activation_require_validate', function ($field, $input, $param = null) {
-    return in_array($input['used'], \GeoKrety\Model\AccountActivationToken::TOKEN_NEED_VALIDATE, true);
+    return in_array($input['used'], GeoKrety\Model\AccountActivationToken::TOKEN_NEED_VALIDATE, true);
 }, '{0} require validate fields');
 
 $validator->addValidator('is_not_false', function ($field, $input, $param = null) {
@@ -125,11 +125,11 @@ $validator->addValidator('is_not_false', function ($field, $input, $param = null
 }, 'Invalid value for {0}');
 
 $validator->addValidator('valid_authentication_method', function ($field, $input, $param = null) {
-    return \GeoKrety\Model\UsersAuthenticationHistory::is_valid_method($input[$field]);
+    return GeoKrety\Model\UsersAuthenticationHistory::is_valid_method($input[$field]);
 }, 'Invalid value for {0}');
 
 $validator->addFilter('HTMLPurifier', function ($value, $params = null) {
-    return \GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value);
+    return GeoKrety\Service\HTMLPurifier::getPurifier()->purify($value);
 });
 
 $validator->addFilter('EmptyString2Null', function ($value, $params = null) {
