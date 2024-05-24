@@ -50,7 +50,7 @@
     "sentry/sentry": "^4.6",
     "symfony/http-client": "^5.4",
     "smarty-gettext/smarty-gettext": "^1.7",
-    "smarty/smarty": "<4.5",
+    "smarty/smarty": "^5",
     "tecnickcom/tcpdf": "^6.3",
     "torann/json-ld": "0.0.19",
     "xfra35/f3-access": "^1.2",
@@ -73,7 +73,11 @@
   },
   "autoload": {
     "classmap": [
-      "website/app/"
+      "website/app/",
+      "website/app-templates/smarty/extension/"
+    ],
+    "files": [
+      "website/app-templates/smarty/plugins/tag.fa.php"
     ]
   },
   "require-dev": {
