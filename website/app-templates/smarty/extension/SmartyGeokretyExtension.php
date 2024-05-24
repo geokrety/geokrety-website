@@ -49,7 +49,7 @@ function getPosIcon($id): string {
     return '';
 }
 
-function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId, ?int $currentUser): int {
+function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId): int {
     if (is_null($locationType)) {
         return 9;
     }
@@ -66,9 +66,9 @@ function computeLocationType($logType): string {
 
 class SmartyGeokretyExtension extends Smarty\Extension\Base {
     public static function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $double_encode = true) {
-        $smarty_modifier_escape = GeoKrety\Service\Smarty::getSmarty()->getModifierCallback('escape');
+        $modifier = GeoKrety\Service\Smarty::getSmarty()->getModifierCallback('escape');
 
-        return call_user_func($smarty_modifier_escape, $string, $esc_type, $char_set, $double_encode);
+        return call_user_func($modifier, $string, $esc_type, $char_set, $double_encode);
     }
 
     public function getModifierCallback(string $modifierName) {
@@ -198,16 +198,15 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
      * @throws SmartyException
      */
     public function smarty_modifier_award($award, bool $ImageOnly = true): string {
-        if ($ImageOnly) {
-            $template_string = <<<'EOT'
-<img src="{$award->url}" title="{$award->description}" class="award-badge" />
-EOT;
-        } else {
-            $template_string = <<<'EOT'
+        $template_string = <<<'EOT'
 <figure>
     <img src="{$award->url}" alt="{$award->filename}" class="img-thumbnail award-badge">
     <figcaption>{$award->description}</figcaption>
 </figure>
+EOT;
+        if ($ImageOnly) {
+            $template_string = <<<'EOT'
+<img src="{$award->url}" title="{$award->description}" class="award-badge" />
 EOT;
         }
 
@@ -219,19 +218,16 @@ EOT;
         return $html;
     }
 
-    // require_once SMARTY_PLUGINS_DIR.'modifier.escape.php';
-
     /**
      * Purpose:  outputs a link to the award ranking.
      */
     public function smarty_modifier_awardlink(?GeoKrety\Model\Awards $award, ?string $alternative_name = null, ?string $target = null): string {
         if (is_null($award) || $award->type !== 'automatic') {
-            $username = _('Anonymous');
             if (!is_null($alternative_name)) {
-                $username = self::smarty_modifier_escape($alternative_name);
+                return self::smarty_modifier_escape($alternative_name);
             }
 
-            return $award->name;
+            return _('Unknown');
         }
         $target_html = is_null($target) ? '' : ' target="'.$target.'"';
 
@@ -334,7 +330,7 @@ EOT;
      * Purpose:  outputs a date time according to format.
      */
     public function smarty_modifier_date_format(DateTime $date, string $format = 'c'): string {
-        return $date->format('c');
+        return $date->format($format);
     }
 
     /**
@@ -630,7 +626,7 @@ EOT;
         $lastLocationType = $geokret->last_position ? $geokret->last_position->move_type->getLogTypeId() : null;
         $lastUserId = ($geokret->last_position && !is_null($geokret->last_position->author)) ? $geokret->last_position->author->id : null;
 
-        $iconClass = computelogtype($geokret, $lastLocationType, $lastUserId, Base::instance()->get('SESSION.CURRENT_USER'));
+        $iconClass = computelogtype($geokret, $lastLocationType, $lastUserId);
         $message = getPosIcon($iconClass);
 
         return sprintf(
