@@ -356,10 +356,6 @@ class User extends Base implements \JsonSerializable {
         return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_ADMIN);
     }
 
-    public function isEmailValidForEmailAdminTask(): bool {
-        return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_MAIL_ADMIN);
-    }
-
     public function isEmailValidForEmailTask(): bool {
         return !in_array($this->email_invalid, self::USER_EMAIL_STATUS_INVALID_FOR_MAIL);
     }

@@ -26,24 +26,6 @@ class EmailChange extends BasePHPMailer {
         $this->sendEmailChangeNotificationToNewEmail($token);
     }
 
-    public function sendEmailValidationImportedAccount(EmailActivationToken $token) {
-        if (is_null($token->user->email)) {
-            return;
-        }
-        Smarty::assign('token', $token);
-        $this->setTo($token->user);
-        $this->setSubject(_('Revalidate your email address'), '⁉️');
-        if ($this->sendEmail('emails/email-revalidate-address.tpl')) {
-            \Flash::instance()->addMessage(sprintf(
-                join(' ', [
-                    _('Your account has been imported from GKv1.'),
-                    _('We would like to verify that your mail address is still valid.'),
-                    _('An email has been sent to your registered address, please click the included link.'),
-                ]),
-            ), 'warning');
-        }
-    }
-
     protected function sendEmailChangeNotificationToOldEmail(EmailActivationToken $token) {
         if (is_null($token->user->email)) {
             return;
