@@ -1,5 +1,5 @@
 {* See doc at: https://support.crowdin.com/in-context-localization/ *}
-<script type="text/javascript">
+<script type="text/javascript" nonce="{$f3->get('NONCE')}">
     var _jipt = [];
     _jipt.push(['project', 'geokrety']);
     _jipt.push(['touch_optimized', true]);
@@ -7,4 +7,4 @@
         window.location.href = "{GK_SITE_BASE_SERVER_URL}";
     }]);
 </script>
-<script type="text/javascript" src="//cdn.crowdin.com/jipt/jipt.js"></script>
+{\GeoKrety\Assets::instance()->addJs('//cdn.crowdin.com/jipt/jipt.js') && ''}
