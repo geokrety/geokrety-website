@@ -96,6 +96,7 @@ class TrackingCode {
             'lastPositionId' => $geokret->last_position ? $geokret->last_position->id : null,
             'lastLogId' => $geokret->last_log ? $geokret->last_log->id : null,
             'missing' => $geokret->isMissing(),
+            'collectible' => $geokret->isCollectible(),
         ];
 
         return $response;
