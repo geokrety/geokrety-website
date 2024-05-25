@@ -33,6 +33,15 @@ $("#born_on_datetime_localized").on("focusout", function(e) {
 });
 {/if}
 
+
+{if isset($geokret) and $geokret->gkid() and $geokret->isHolder() and $geokret->isOwner()}
+$("#checkboxParked").on("change", function() {
+    $("#checkboxCollectible").prop('checked', !$(this).is(":checked"));
+    $("#checkboxCollectible").prop('disabled', $(this).is(":checked"));
+});
+{/if}
+
+
 // Bind SimpleMDE editor
 var inscrybmde = new InscrybMDE({
     element: $("#inputMission")[0],

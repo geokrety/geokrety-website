@@ -22,7 +22,9 @@
             - {t}archived{/t}
         {/if}
 
-        {if !$geokret->isCollectible()}
+        {if $geokret->isParked()}
+            <span id="parked" title="{$geokret->parked|print_date:'c':true}">({t}Parked{/t})</span>
+        {elseif !$geokret->isCollectible()}
             <span id="non-collectible" title="{$geokret->non_collectible|print_date:'c':true}">({t}Non-Collectible{/t})</span>
         {/if}
 

@@ -26,6 +26,10 @@ class GeokretyExport2 extends GeokretyBaseExport {
         if ($geokret->isMissing()) {
             $xml->writeAttribute('missing', $geokret->isMissing());
         }
+        $xml->writeAttribute('collectible', $geokret->isCollectible() ? 'true' : 'false');
+        if ($geokret->isParked()) {
+            $xml->writeAttribute('parked', $geokret->isParked() ? 'true' : 'false');
+        }
 
         if ($geokret->owner) {
             $xml->writeAttribute('owner_id', $geokret->owner);

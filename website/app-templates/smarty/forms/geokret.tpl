@@ -57,6 +57,23 @@
             </div>
         {/if}
 
+        {if isset($geokret) and $geokret->gkid() and $geokret->isHolder() and $geokret->isOwner()}
+            <div class="form-group">
+                <label for="checkboxParked" class="col-sm-2 control-label">{t}Parked{/t}</label>
+                <div class="col-sm-10">
+                  <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxParked" name="parked" {if $geokret->isParked()}checked{/if} aria-describedby="helpCheckboxParked">
+                    </label>
+                  </div>
+                <p id="helpCheckboxParked" class="help-block">
+                    {t}Parked GeoKrety will automatically imply non-collectible.{/t}
+                    {t}They will not appear in your inventory.{/t}
+                </p>
+                </div>
+            </div>
+        {/if}
+
             <div class="form-group">
                 <label for="inputMission" class="col-sm-2 control-label">
                     {if isset($geokret) and $geokret->gkid()}

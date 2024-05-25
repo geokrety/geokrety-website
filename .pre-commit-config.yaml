@@ -33,7 +33,7 @@ repos:
       - id: php-lint-all
       - id: php-cs-fixer
         files: \.(php)$
-        args: [ "--config=.php-cs-fixer.php", "-q" ]
+        args: [ "--config=.php-cs-fixer.php", "-q", "--diff" ]
 
   - repo: https://github.com/IamTheFij/docker-pre-commit.git
     rev: v2.0.0

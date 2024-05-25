@@ -100,6 +100,16 @@ class GeokretWithDetails extends Geokret {
             'nullable' => true,
             'validate' => 'is_date',
         ],
+        'non_collectible' => [
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
+            'validate' => 'is_date',
+        ],
+        'parked' => [
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
+            'validate' => 'is_date',
+        ],
     ];
 
     public function get_moved_on_datetime($value): ?\DateTime {
