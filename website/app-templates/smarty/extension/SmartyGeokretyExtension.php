@@ -40,6 +40,8 @@ function getPosIcon($id): string {
             return _('Probably lost');
         case 5:
             return _('Visiting');
+        case 7:
+            return _('Parked');
         case 8:
             return _('In the owner hands');
         case 9:
@@ -50,6 +52,9 @@ function getPosIcon($id): string {
 }
 
 function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId): int {
+    if ($geokret->isParked()) {
+        return 7;
+    }
     if (is_null($locationType)) {
         return 9;
     }

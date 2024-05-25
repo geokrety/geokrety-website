@@ -64,6 +64,11 @@ class BaseExportXML extends BaseExport {
         } else {
             $this->setFilter('owner = ?', $userid);
         }
+
+        // Filter by parked
+        if (!filter_var($this->f3->get('GET.parked'), FILTER_VALIDATE_BOOLEAN)) {
+            $this->setFilter('parked = ?', null);
+        }
     }
 
     protected function setFilter(string $query, ...$params) {

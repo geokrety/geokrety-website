@@ -17,8 +17,9 @@ class GeokretEdit extends GeokretFormBase {
     public function post($f3) {
         $this->checkCsrf();
         $geokret = $this->geokret;
-        $geokret->copyFrom('POST');
+        $geokret->copyFrom('POST', ['name', 'born_on_datetime', 'type', 'mission']);
         $this->manageCollectible($f3, $geokret);
+        $this->manageParked($f3, $geokret);
         $this->loadSelectedTemplate($f3);
 
         if ($geokret->validate()) {
@@ -48,6 +49,20 @@ class GeokretEdit extends GeokretFormBase {
 
         if (!is_null($geokret->non_collectible)) {
             $geokret->non_collectible = null;
+        }
+    }
+
+    private function manageParked($f3, \GeoKrety\Model\Geokret $geokret): void {
+        if (filter_var($f3->get('POST.parked'), FILTER_VALIDATE_BOOLEAN)) {
+            if (is_null($geokret->parked)) {
+                $geokret->touch('parked');
+            }
+
+            return;
+        }
+
+        if (!is_null($geokret->parked)) {
+            $geokret->parked = null;
         }
     }
 }

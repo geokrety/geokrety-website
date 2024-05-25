@@ -40,10 +40,10 @@ function manageLogTypeHide(data) {
     }
     let radioSelectors = ['#logType0', '#logType1', '#logType5'];
     let current_user = "{isset($current_user) ? $current_user->id : ''}"
-    if (data[0].holderId == current_user) {
+    if (data[0].ownerId == current_user) {
+        radioSelectors = ['#logType0', '#logType1', '#logType3'];
+    } else if (data[0].holderId == current_user) {
         radioSelectors = ['#logType0', '#logType1'];
-    } else if (data[0].ownerId == current_user) {
-        radioSelectors = ['#logType1', '#logType3'];
     }
     radioSelectors.forEach(radio => {
         $(radio).prop('disabled', true);

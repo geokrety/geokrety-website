@@ -158,6 +158,11 @@ class HallOfFame extends Base {
             'link' => 'https://fatfreeframework.com',
             'desc' => 'PHP micro-framework',
         ];
+        $credits[] = [
+            'name' => 'Google Noto Color Emoji',
+            'link' => 'https://github.com/googlefonts/noto-emoji',
+            'desc' => 'Noto Emoji fonts',
+        ];
         Smarty::assign('app_credits', $credits);
 
         Smarty::render('pages/hall_of_fame.tpl');
