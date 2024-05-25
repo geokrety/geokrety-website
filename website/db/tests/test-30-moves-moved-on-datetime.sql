@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(19);
+SELECT plan(23);
 
 \set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set move_type_comment 2
@@ -30,9 +30,9 @@ SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_
 -- same move on this GK at this datetime
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (5, 'test', 0, '2020-04-07 00:00:00+00');
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (6, 'test', 0, '2020-04-07 00:00:00+00');
-SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (3, 5, 1, '2020-04-08 00:00:00+00', 2)$$);
-SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (4, 5, 1, '2020-04-08 00:00:00+00', 2)$$);
-SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (5, 6, 1, '2020-04-08 00:00:00+00', 2)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (3, 5, 1, '2020-04-08 00:00:00+00', 1)$$);
+SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (4, 5, 1, '2020-04-08 00:00:00+00', 1)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (5, 6, 1, '2020-04-08 00:00:00+00', 1)$$);
 
 -- move in the right range
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (7, 'test', 0, '2020-04-07 00:00:00+00');
@@ -42,8 +42,8 @@ SELECT is(COUNT(*) > 0, TRUE, 'move in the right range') from gk_geokrety WHERE 
 -- update can reuse same date
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (8, 'test', 0, '2020-04-07 00:00:00+00');
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (9, 'test', 0, '2020-04-07 00:00:00+00');
-INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (7, 8, 1, '2020-04-08 00:00:00+00', 2);
-INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (8, 9, 1, '2020-04-08 00:00:00+00', 2);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (7, 8, 1, '2020-04-08 00:00:00+00', 1);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (8, 9, 1, '2020-04-08 00:00:00+00', 1);
 SELECT lives_ok($$UPDATE "gk_moves" set moved_on_datetime = '2020-04-08 00:00:00+00'::timestamptz WHERE id = 7::bigint$$);
 SELECT throws_ok($$UPDATE "gk_moves" set geokret=9, moved_on_datetime = '2020-04-08 00:00:00+00'::timestamptz WHERE id = 7::bigint$$);
 
@@ -63,6 +63,13 @@ INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (
 SELECT lives_ok($$UPDATE "gk_geokrety" set born_on_datetime = '2024-05-10 00:00:00+00' WHERE id = 12::bigint$$);
 SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (12, 12, 1, '2024-05-10 00:00:00+00', 2)$$);
 SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (13, 12, 1, '2024-05-09 00:00:00+00', 2)$$);
+
+-- Multiple comments can exists at this datetime
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (13, 'test', 0, '2020-04-07 00:00:00+00');
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (14, 13, 1, '2020-04-08 00:00:00+00', 2)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (15, 13, 1, '2020-04-08 00:00:00+00', 1)$$);
+SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (16, 13, 1, '2020-04-08 00:00:00+00', 1)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (17, 13, 1, '2020-04-08 00:00:00+00', 2)$$);
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

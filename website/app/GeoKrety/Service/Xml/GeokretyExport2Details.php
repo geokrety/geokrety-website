@@ -76,6 +76,9 @@ class GeokretyExport2Details extends GeokretyExport2 {
         $xml->writeCData((int) $geokret->isMissing());
         $xml->endElement(); // missing
 
+        $xml->writeElement('collectible', (int) $geokret->isCollectible() ? 'true' : 'false');
+        $xml->writeElement('parked', (int) $geokret->isParked() ? 'true' : 'false');
+
         if (!is_null($geokret->waypoint)) {
             $xml->startElement('position');
             $xml->writeAttribute('latitude', $geokret->lat ?? '');

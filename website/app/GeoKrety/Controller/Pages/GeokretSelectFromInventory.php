@@ -9,7 +9,7 @@ class GeokretSelectFromInventory extends Base {
     public function get($f3) {
         // Load owned GeoKrety
         $geokret = new Geokret();
-        $filter = ['holder = ?', $f3->get('SESSION.CURRENT_USER')];
+        $filter = ['holder = ? AND parked = ?', $f3->get('SESSION.CURRENT_USER'), null];
         $option = ['order' => 'name ASC'];
         $geokrety = $geokret->find($filter, $option);
         Smarty::assign('geokrety', $geokrety);

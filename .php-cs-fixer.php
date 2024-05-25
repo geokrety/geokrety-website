@@ -12,21 +12,21 @@ if (class_exists('PhpCsFixer\Finder')) {
     // doc position_after_functions_and_oop_constructs: https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/4e91f495a7ece1f2566feba2f07cc5824d68ec0b/README.rst
     $config = new PhpCsFixer\Config();
     $config->setRules([
-            '@Symfony' => true,
-            'no_closing_tag' => true,
-            'yoda_style' => false,
-            'curly_braces_position' => [
-                'allow_single_line_anonymous_functions' => true,
-                'functions_opening_brace' => 'same_line',
-                'anonymous_functions_opening_brace' => 'same_line',
-                'classes_opening_brace' => 'same_line',
-                'anonymous_classes_opening_brace' => 'same_line',
-            ],
-            // 'statement_indentation' => false,
-            'nullable_type_declaration_for_default_null_value' => [
-                'use_nullable_type_declaration' => true,
-            ],
-        ])
+        '@Symfony' => true,
+        'no_closing_tag' => true,
+        'yoda_style' => false,
+        'curly_braces_position' => [
+            'allow_single_line_anonymous_functions' => true,
+            'functions_opening_brace' => 'same_line',
+            'anonymous_functions_opening_brace' => 'same_line',
+            'classes_opening_brace' => 'same_line',
+            'anonymous_classes_opening_brace' => 'same_line',
+        ],
+        // 'statement_indentation' => false,
+        'nullable_type_declaration_for_default_null_value' => [
+            'use_nullable_type_declaration' => true,
+        ],
+    ])
         ->setFinder($finder);
 
     return $config;

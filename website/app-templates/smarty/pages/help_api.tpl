@@ -31,6 +31,7 @@
                     <li><a href="#logtypes">Logtypes</a></li>
                     <li><a href="#geokretytypes">GeoKrety Types</a></li>
                     <li><a href="#idconversion">Reference number and id conversion</a></li>
+                    <li><a href="#collectible_parked">Collectible and Parked</a></li>
                 </ol>
             </li>
             <li>
@@ -140,6 +141,26 @@ var_dump($gk);
     </div>
 </div>
 
+<a class="anchor" id="collectible_parked"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">Collectible and Parked</div>
+    <div class="panel-body">
+        <h4>Collectible</h4>
+        <p>
+            <i>Collectible</i> GeoKrety is the default status. When a Geokret is set to <i>non-collectible</i>, then only
+            a restricted number of move types are allowed. For every users, they can log:
+            <code>meet</code> and <code>comments</code>. While current <i>holder</i> will be allowed to: <code>dip</code>
+            and <code>comment</code>.
+        </p>
+
+        <h4>Parked</h4>
+        <p>
+            <i>Parked</i> GeoKrety automatically imply <i>Collectible</i> status. When a Geokret is set to <i>parked</i>,
+            in addition to <i>Collectible</i> restrictions, such GeoKrety will not appear in user inventory.
+        </p>
+    </div>
+</div>
+
 <a class="anchor" id="synchronizing"></a>
 <h2>Database synchronizing</h2>
 <p>
@@ -235,6 +256,10 @@ var_dump($gk);
             <li>
                 <code>userid</code> - list GeoKrety owned by userid
                 <pre>{'api_v1_export2'|alias}?userid=1</pre>
+            </li>
+            <li>
+                <code>parked</code> - Include parked GeoKrety (works only with <code>userid</code>)
+                <pre>{'api_v1_export2'|alias}?userid=1&parked=1</pre>
             </li>
             <li><code>gkid</code> - list only one GeoKret
                 <pre>{'api_v1_export2'|alias}?gkid=141</pre>

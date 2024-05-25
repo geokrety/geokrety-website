@@ -31,6 +31,7 @@ ${NAVBAR_ACTIONS_PHOTO_GALLERY_LINK}        //*[@id="navbar-actions-gallery"]
 ${GEOKRET_CREATE_CREATE_BUTTON}             //*[@id="createOrUpdateSubmitButton"]
 ${GEOKRET_CREATE_NAME_INPUT}                //*[@id="inputName"]
 ${GEOKRET_CREATE_COLLECTIBLE_CHECKBOX}      //*[@id="checkboxCollectible"]
+${GEOKRET_CREATE_PARKED_CHECKBOX}           //*[@id="checkboxParked"]
 ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}    //*[@id="born_on_datetime_localized"]
 ${GEOKRET_CREATE_BORN_ON_DATETIME_HIDDEN_INPUT}    //*[@id="born_on_datetime"]
 ${GEOKRET_CREATE_TYPE_SELECT}               //*[@id="inputGeokretType"]
@@ -52,6 +53,7 @@ ${GEOKRET_DETAILS_TYPE}                         ${GEOKRET_DETAILS_DETAILS_PANEL}
 ${GEOKRET_DETAILS_TYPE_IMG}                     ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/img
 ${GEOKRET_DETAILS_OWNER}                        ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="user"]
 ${GEOKRET_DETAILS_COLLECTIBLE}                  //span[@id="non-collectible"]
+${GEOKRET_DETAILS_PARKED}                       //span[@id="parked"]
 
 ${GEOKRET_DETAILS_TRACKING_CODE}                ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dd[@class="geokret-tracking-code"]
 ${GEOKRET_DETAILS_TRACKING_CODE_LABEL}          ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dt[text()="Tracking Code"]
