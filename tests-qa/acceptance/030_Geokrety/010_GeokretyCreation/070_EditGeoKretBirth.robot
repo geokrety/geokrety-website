@@ -18,7 +18,7 @@ ${FIELD_RESULT_FORMAT} =    %Y-%m-%dT%H:%M:%S+00:00
 *** Test Cases ***
 
 Not in the future
-    ${date} =    Get Current Date    increment=3days    result_format=${FIELD_RESULT_FORMAT}
+    # ${date} =    Get Current Date    increment=3days    result_format=${FIELD_RESULT_FORMAT}
     Sign In ${USER_1.name} Fast
     Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
     Execute Javascript                  $("#datetimepicker").data("DateTimePicker").date(moment.utc().add(7, 'days').format('L'));
@@ -29,7 +29,7 @@ Not in the future
 
 Ensure date is parsed with right TZ format
     # GH Issue #1015
-    ${date} =    Get Current Date    increment=3days    result_format=${FIELD_RESULT_FORMAT}
+    # ${date} =    Get Current Date    increment=3days    result_format=${FIELD_RESULT_FORMAT}
     Sign In ${USER_1.name} Fast
 
     Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
@@ -57,6 +57,25 @@ Ensure date is parsed with right TZ format
     Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         29/12/2023 13:00
     Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
     Input validation has success        ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+
+
+Edit GeoKret should keep the previous date
+    Sign In ${USER_1.name} Fast
+
+    # birthdate is 2020-08-12 00:00:00+00 from test setup
+    Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
+    ${datetime} =    Get DateTime
+    Should Be Equal   ${datetime}     2020-08-12T00:00:00Z
+    Input Text                          ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         12/29/2023 01:00 AM
+    Simulate Event                      ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}         blur
+    Input validation has success        ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}
+    Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
+    Location Should Be                  ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Element Attribute Should Be         ${GEOKRET_DETAILS_CREATED_ON_DATETIME}/span    data-datetime      2023-12-28T22:00:00+00:00
+
+    Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
+    ${datetime} =    Get DateTime
+    Should Be Equal   ${datetime}     2023-12-28T22:00:00Z
 
 
 New move before GK birth
@@ -243,6 +262,13 @@ Set DateTime
     [Arguments]    ${date}=2020-08-12    ${time}=07:30:00    ${timezone}=+02:00
     Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment("${date}T${time}${timezone}"));
     Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
+
+Get DateTime
+    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date();
+    ${result} =   Execute Async JavaScript
+    ...           var callback = arguments[arguments.length - 1];
+    ...           callback($("#datetimepicker").data("DateTimePicker").date().utc().format());
+    RETURN    ${result}
 
 Click Button And Check Panel Validation Has Success
     [Arguments]    ${button}    ${current_panel}    ${next_panel}

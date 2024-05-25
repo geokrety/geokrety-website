@@ -22,12 +22,11 @@ $("#datetimepicker").datetimepicker({
     showTodayButton: true,
     locale: moment.locale()
 });
-// bind datetimepicker
 $("#born_on_datetime_localized").click(function() {
     $("#datetimepicker").data("DateTimePicker").show();
 });
 // Initialize date time
-$("#datetimepicker").data("DateTimePicker").date(moment.utc("{$geokret->born_on_datetime->format('Y-m-d H:i:s')}").local());
+$("#datetimepicker").data("DateTimePicker").date(moment.utc("{$geokret->born_on_datetime->format('c')}"));
 $("#born_on_datetime").val($("#datetimepicker").data("DateTimePicker").viewDate().format());
 $("#born_on_datetime_localized").on("focusout", function(e) {
     $("#born_on_datetime").val($("#datetimepicker").data("DateTimePicker").viewDate().format());
