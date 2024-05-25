@@ -25,6 +25,32 @@ function revalidateMoveDate() {
     }
 }
 
+function logTypeShowAll() {
+    let radioSelectors = ['#logType0', '#logType1', '#logType3', '#logType5', '#logType2'];
+    radioSelectors.forEach(radio => {
+        $(radio).prop('disabled', false);
+    });
+    $("#infoLogtypeNotCollectible").hide();
+}
+
+function manageLogTypeHide(data) {
+    logTypeShowAll();
+    if (data[0].collectible) {
+        return;
+    }
+    let radioSelectors = ['#logType0', '#logType1', '#logType5'];
+    let current_user = "{isset($current_user) ? $current_user->id : ''}"
+    if (data[0].holderId == current_user) {
+        radioSelectors = ['#logType0', '#logType1'];
+    } else if (data[0].ownerId == current_user) {
+        radioSelectors = ['#logType1', '#logType3'];
+    }
+    radioSelectors.forEach(radio => {
+        $(radio).prop('disabled', true);
+    });
+    $("#infoLogtypeNotCollectible").show();
+}
+
 // Validate Tracking code
 window.Parsley.addAsyncValidator('checkNr', function(xhr) {
     var valid = 200 === xhr.status;
@@ -45,6 +71,7 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
         }
 
         geokretDateToMoment(data);
+        manageLogTypeHide(data);
     } else {
         data.forEach(error => {
             this.addError('errorNr', { message: error });
@@ -52,6 +79,7 @@ window.Parsley.addAsyncValidator('checkNr', function(xhr) {
         $("#nrResult").hide();
         $("#geokretHeader").html('');
         movedGeokret = null;
+        logTypeShowAll();
     }
     // Force revalidate date
     revalidateMoveDate();

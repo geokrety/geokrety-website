@@ -28,6 +28,7 @@ use GeoKrety\LogType;
  * @property int|Picture|null avatar
  * @property \DateTime created_on_datetime
  * @property \DateTime born_on_datetime
+ * @property \DateTime|null non_collectible
  * @property Picture[]|null avatars
  * @property \DateTime updated_on_datetime
  * @property bool missing
@@ -145,6 +146,11 @@ class Geokret extends Base {
             'nullable' => true,
             'validate' => 'is_date',
         ],
+        'non_collectible' => [
+            'type' => Schema::DT_DATETIME,
+            'nullable' => true,
+            'validate' => 'is_date',
+        ],
     ];
 
     public function __construct() {
@@ -239,6 +245,10 @@ class Geokret extends Base {
         return self::get_date_object($value);
     }
 
+    public function get_non_collectible($value): ?\DateTime {
+        return self::get_date_object($value);
+    }
+
     public function get_url(): string {
         return \Base::instance()->alias('geokret_details', '@gkid='.$this->gkid);
     }
@@ -297,6 +307,10 @@ class Geokret extends Base {
         return $this->missing;
     }
 
+    public function isCollectible(): bool {
+        return is_null($this->non_collectible);
+    }
+
     public function countryTrack(): array {
         $sql = <<<'SQL'
 SELECT geokret,
@@ -327,6 +341,7 @@ SQL;
         return [
             'id' => $this->id,
             'gkid' => $this->gkid,
+            'collectible' => $this->isCollectible(),
             // 'tracking_code' => $this->tracking_code,
             // 'name' => $this->name,
             // 'mission' => $this->mission,

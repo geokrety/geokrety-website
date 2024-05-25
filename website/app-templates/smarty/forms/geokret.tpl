@@ -40,6 +40,23 @@
                 </div>
             </div>
 
+        {if isset($geokret) and $geokret->gkid()}
+            <div class="form-group">
+                <label for="checkboxCollectible" class="col-sm-2 control-label">{t}Collectible{/t}</label>
+                <div class="col-sm-10">
+                  <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxCollectible" name="collectible" {if $geokret->isCollectible()}checked{/if} aria-describedby="helpCheckboxCollectible">
+                    </label>
+                  </div>
+                <p id="helpCheckboxCollectible" class="help-block">
+                    {t}Non-Collectible GeoKrety will only allow a limited kind of move types.{/t}
+                    {t}Other users will not be able to collect them.{/t}
+                </p>
+                </div>
+            </div>
+        {/if}
+
             <div class="form-group">
                 <label for="inputMission" class="col-sm-2 control-label">
                     {if isset($geokret) and $geokret->gkid()}
