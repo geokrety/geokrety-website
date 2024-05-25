@@ -642,7 +642,10 @@ EOT;
     /**
      * Purpose:  outputs a date time as relative.
      */
-    public function smarty_modifier_print_date(DateTime $date, string $format = 'c'): string {
+    public function smarty_modifier_print_date(DateTime $date, string $format = 'c', bool $raw = false): string {
+        if ($raw) {
+            return $date->format($format);
+        }
         if (GeoKrety\Service\UserSettings::getForCurrentUser('DISPLAY_ABSOLUTE_DATE')) {
             return sprintf(
                 '<span data-datetime="%s" title="%s">%s</span>',

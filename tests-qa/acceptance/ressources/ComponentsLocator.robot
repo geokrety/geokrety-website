@@ -30,6 +30,7 @@ ${NAVBAR_ACTIONS_PHOTO_GALLERY_LINK}        //*[@id="navbar-actions-gallery"]
 
 ${GEOKRET_CREATE_CREATE_BUTTON}             //*[@id="createOrUpdateSubmitButton"]
 ${GEOKRET_CREATE_NAME_INPUT}                //*[@id="inputName"]
+${GEOKRET_CREATE_COLLECTIBLE_CHECKBOX}      //*[@id="checkboxCollectible"]
 ${GEOKRET_CREATE_BORN_ON_DATETIME_INPUT}    //*[@id="born_on_datetime_localized"]
 ${GEOKRET_CREATE_BORN_ON_DATETIME_HIDDEN_INPUT}    //*[@id="born_on_datetime"]
 ${GEOKRET_CREATE_TYPE_SELECT}               //*[@id="inputGeokretType"]
@@ -50,6 +51,7 @@ ${GEOKRET_DETAILS_NAME}                         ${GEOKRET_DETAILS_DETAILS_PANEL}
 ${GEOKRET_DETAILS_TYPE}                         ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/small
 ${GEOKRET_DETAILS_TYPE_IMG}                     ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/img
 ${GEOKRET_DETAILS_OWNER}                        ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="user"]
+${GEOKRET_DETAILS_COLLECTIBLE}                  //span[@id="non-collectible"]
 
 ${GEOKRET_DETAILS_TRACKING_CODE}                ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dd[@class="geokret-tracking-code"]
 ${GEOKRET_DETAILS_TRACKING_CODE_LABEL}          ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}//dt[text()="Tracking Code"]
@@ -294,13 +296,14 @@ ${MOVE_LOG_TYPE_PANEL}                          //*[@id="panelMoveLogType"]
 ${MOVE_LOG_TYPE_PANEL_HEADER}                   //*[@id="headingLogtype"]
 ${MOVE_LOG_TYPE_PANEL_HEADER_TEXT}              //*[@id="logTypeHeader"]
 ${MOVE_LOG_TYPE_RADIO_GROUP}                    logtype
-${MOVE_LOG_TYPE_DROPPED_RADIO}                 //*[@id="logType0"]
-${MOVE_LOG_TYPE_GRABBED_RADIO}                 //*[@id="logType1"]
-${MOVE_LOG_TYPE_MEET_RADIO}                    //*[@id="logType3"]
-${MOVE_LOG_TYPE_DIPPED_RADIO}                  //*[@id="logType5"]
-${MOVE_LOG_TYPE_COMMENT_RADIO}                 //*[@id="logType2"]
-${MOVE_LOG_TYPE_ARCHIVE_RADIO}                 //*[@id="logType4"]
+${MOVE_LOG_TYPE_DROPPED_RADIO}                  //*[@id="logType0"]
+${MOVE_LOG_TYPE_GRABBED_RADIO}                  //*[@id="logType1"]
+${MOVE_LOG_TYPE_MEET_RADIO}                     //*[@id="logType3"]
+${MOVE_LOG_TYPE_DIPPED_RADIO}                   //*[@id="logType5"]
+${MOVE_LOG_TYPE_COMMENT_RADIO}                  //*[@id="logType2"]
+${MOVE_LOG_TYPE_ARCHIVE_RADIO}                  //*[@id="logType4"]
 ${MOVE_LOG_TYPE_NEXT_BUTTON}                    //*[@id="logtypeNextButton"]
+${MOVE_LOG_TYPE_NOT_COLLECTIBLE_INFO}           //*[@id="infoLogtypeNotCollectible"]
 
 
 ${MOVE_NEW_LOCATION_PANEL}                      //*[@id="panelLocation"]
