@@ -40,8 +40,11 @@ class GeokretyExport extends GeokretyBaseExport {
             $xml->endElement(); // owner
         }
 
-        $xml->writeElement('datecreated', $geokret->born_on_datetime->format('Y-m-d H:i:s'));
-        $xml->writeElement('datecreated_Iso8601', $geokret->born_on_datetime->format(\DateTime::ATOM));
+        $xml->writeElement('birthdate', $geokret->born_on_datetime->format('Y-m-d H:i:s'));
+        $xml->writeElement('birthdate_Iso8601', $geokret->born_on_datetime->format(\DateTime::ATOM));
+
+        $xml->writeElement('datecreated', $geokret->created_on_datetime->format('Y-m-d H:i:s'));
+        $xml->writeElement('datecreated_Iso8601', $geokret->created_on_datetime->format(\DateTime::ATOM));
 
         $xml->writeElement('distancetravelled', $geokret->distance);
         $xml->writeAttribute('note', 'legacy bug compatibility');

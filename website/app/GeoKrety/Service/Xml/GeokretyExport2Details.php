@@ -34,12 +34,20 @@ class GeokretyExport2Details extends GeokretyExport2 {
         }
 
         $xml->startElement('datecreated');
-        $xml->writeCData($geokret->born_on_datetime->format('Y-m-d H:i:s'));
+        $xml->writeCData($geokret->created_on_datetime->format('Y-m-d H:i:s'));
         $xml->endElement(); // datecreated
 
         $xml->startElement('datecreated_Iso8601');
         $xml->writeCData($geokret->created_on_datetime->format(\DateTimeInterface::ATOM));
         $xml->endElement(); // datecreated_Iso8601
+
+        $xml->startElement('birthdate');
+        $xml->writeCData($geokret->born_on_datetime->format('Y-m-d H:i:s'));
+        $xml->endElement(); // birthdate
+
+        $xml->startElement('birthdate_Iso8601');
+        $xml->writeCData($geokret->born_on_datetime->format(\DateTimeInterface::ATOM));
+        $xml->endElement(); // birthdate_Iso8601
 
         $xml->startElement('dateupdated');
         $xml->writeCData($geokret->updated_on_datetime->format('Y-m-d H:i:s'));

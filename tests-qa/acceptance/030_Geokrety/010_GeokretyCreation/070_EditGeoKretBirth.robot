@@ -195,8 +195,8 @@ Shown In Export
     Should Be Equal 	                  ${root.tag} 	              gkxml
 
     ${first_gk} =                         Get Element 	              ${root} 	      geokret
-    ${datecreated} =                      Get Element 	              ${first_gk} 	  datecreated
-    XML.Element Text Should Be            ${datecreated}              ${expected}
+    ${birthdate} =                        Get Element 	              ${first_gk} 	  birthdate
+    XML.Element Text Should Be            ${birthdate}                ${expected}
 
 
 Shown In Export2
@@ -225,8 +225,8 @@ Shown In Export2Details
 
     ${first_gk} =                         Get Element                 ${root}         geokrety/geokret
 
-    ${datecreated} =                      Get Element 	              ${first_gk} 	  datecreated
-    XML.Element Text Should Be            ${datecreated}              ${expected}
+    ${birthdate} =                        Get Element 	              ${first_gk} 	  birthdate
+    XML.Element Text Should Be            ${birthdate}                ${expected}
 
 
 *** Keywords ***
