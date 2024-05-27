@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-20 10:18+0000\n"
-"PO-Revision-Date: 2024-05-20 10:46\n"
+"POT-Creation-Date: 2024-05-27 17:44+0000\n"
+"PO-Revision-Date: 2024-05-27 17:55\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -18,107 +18,110 @@ msgstr ""
 "X-Crowdin-File: /main/messages.po\n"
 "X-Crowdin-File-ID: 137\n"
 
-#: website/app-templates/smarty/plugins/modifier.awardlink.php:16
-#: website/app-templates/smarty/plugins/modifier.userlink.php:17
-msgid "Anonymous"
-msgstr "Анонимный"
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:34
+msgid "Inside a cache"
+msgstr "В тайнике"
 
-#: website/app-templates/smarty/plugins/modifier.cachelink.php:29
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:36
+msgid "Travelling"
+msgstr "В пути"
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:38
+msgid "Still in a cache"
+msgstr "Все еще в тайнике"
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:40
+msgid "Probably lost"
+msgstr "Возможно утерян"
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:42
+msgid "Visiting"
+msgstr "Посещает"
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:44
+msgid "In the owner hands"
+msgstr "В руках владельца"
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:46
+msgid "Never Travelled"
+msgstr "Никогда не путешествовал"
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:230
+msgid "Unknown"
+msgstr ""
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:268
 msgid "Search on geocaching.com"
 msgstr "Поиск на geocaching.com"
 
-#: website/app-templates/smarty/plugins/modifier.cachelink.php:35
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:274
 #, php-format
 msgid "Location: %s Elevation: %dm"
 msgstr "Место: %s Высота: %dм"
 
-#: website/app-templates/smarty/plugins/modifier.cachelink.php:35
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:274
 #, php-format
 msgid "Location: %s"
 msgstr "Расположение: %s"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:20
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:356
 msgid "has avatar icon"
 msgstr "имеет значок аватара"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:21
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:357
 msgid "GeoKret has an avatar"
 msgstr "У ГеоКрота есть аватар"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:22
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:358
 msgid "nobody"
 msgstr "никого"
 
-#: website/app-templates/smarty/plugins/modifier.gkavatar.php:32
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:368
 #, php-format
 msgid "GeoKret \"%s\" by %s"
 msgstr "ГеоКрот \"%s\" от %s"
 
-#: website/app-templates/smarty/plugins/modifier.gkicon.php:17
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:380
 msgid "GK type icon"
 msgstr "Тип иконки ГеоКрота"
 
-#: website/app-templates/smarty/plugins/modifier.gklink.php:23
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:398
 #, php-format
 msgid "View %s's profile"
 msgstr "Просмотр профиля %s"
 
-#: website/app-templates/smarty/plugins/modifier.medal.php:14
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:493
 #, php-format
 msgid "Award for %s GeoKrety"
 msgstr "Награда за %s ГеоКротов"
 
-#: website/app-templates/smarty/plugins/modifier.movelink.php:22
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:509
 msgid "View move details"
 msgstr "Подробности перемещения"
 
-#: website/app-templates/smarty/plugins/modifier.newslink.php:19
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:525
 #: website/app-templates/smarty/pages/news_details.tpl:48
 msgid "Comments"
 msgstr "Комментарии"
 
-#: website/app-templates/smarty/plugins/modifier.posicon.php:9
-msgid "Inside a cache"
-msgstr "В тайнике"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:10
-msgid "Travelling"
-msgstr "В пути"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:11
-msgid "Still in a cache"
-msgstr "Все еще в тайнике"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:12
-msgid "Probably lost"
-msgstr "Возможно утерян"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:13
-msgid "Visiting"
-msgstr "Посещает"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:14
-msgid "In the owner hands"
-msgstr "В руках владельца"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:15
-msgid "Never Travelled"
-msgstr "Никогда не путешествовал"
-
-#: website/app-templates/smarty/plugins/modifier.posicon.php:57
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:637
 msgid "status icon"
 msgstr "иконка статуса"
 
-#: website/app-templates/smarty/plugins/modifier.statpictemplate.php:16
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:728
 #, php-format
 msgid "User statistics banner: %s"
 msgstr "Баннер статистики пользователя: %s"
 
-#: website/app-templates/smarty/plugins/modifier.user_avatar.php:24
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:782
 msgid "Profile avatar"
 msgstr "Аватар профиля"
 
-#: website/app-templates/smarty/plugins/modifier.userstatpic.php:20
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:794
+msgid "Anonymous"
+msgstr "Анонимный"
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:820
 #, php-format
 msgid "%s's statpic"
 msgstr "%s статистика"
@@ -864,28 +867,8 @@ msgstr "Критическая ошибка Cron: %s"
 msgid "Watchlist for %s"
 msgstr "Список наблюдения для %s"
 
-#: website/app/GeoKrety/Email/EmailChange.php:35
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
-msgid "Revalidate your email address"
-msgstr "Подтвердите еще раз ваш адрес электронной почты"
-
-#: website/app/GeoKrety/Email/EmailChange.php:39
-#: website/app-templates/smarty/banners/user_account_imported.tpl:3
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
-msgid "Your account has been imported from GKv1."
-msgstr "Ваша учетная запись импортирована из GKv1."
-
-#: website/app/GeoKrety/Email/EmailChange.php:40
-#: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
-msgid "We would like to verify that your mail address is still valid."
-msgstr "Мы хотели бы убедиться, что ваш адрес электронной почты еще действительный."
-
-#: website/app/GeoKrety/Email/EmailChange.php:41
-msgid "An email has been sent to your registered address, please click the included link."
-msgstr "Письмо отправлено на ваш зарегистрированный адрес электронной почты, пожалуйста, нажмите на  ссылку в письме."
-
-#: website/app/GeoKrety/Email/EmailChange.php:52
-#: website/app/GeoKrety/Email/EmailChange.php:60
+#: website/app/GeoKrety/Email/EmailChange.php:34
+#: website/app/GeoKrety/Email/EmailChange.php:42
 #: website/app-templates/smarty/pages/email_change.tpl:3
 #: website/app-templates/smarty/pages/email_revalidate.tpl:3
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:3
@@ -893,12 +876,12 @@ msgstr "Письмо отправлено на ваш зарегистриров
 msgid "Changing your email address"
 msgstr "Изменение адреса электронной почты"
 
-#: website/app/GeoKrety/Email/EmailChange.php:78
-#: website/app/GeoKrety/Email/EmailChange.php:86
+#: website/app/GeoKrety/Email/EmailChange.php:60
+#: website/app/GeoKrety/Email/EmailChange.php:68
 msgid "Email address changed"
 msgstr "Адрес электронной почты изменен"
 
-#: website/app/GeoKrety/Email/EmailChange.php:92
+#: website/app/GeoKrety/Email/EmailChange.php:74
 msgid "Email address reverted"
 msgstr "Адрес электронной почты возвращен"
 
@@ -2479,23 +2462,23 @@ msgstr "О проекте"
 msgid "Contact"
 msgstr "Контакты"
 
-#: website/app-templates/smarty/footer.tpl:10
+#: website/app-templates/smarty/footer.tpl:12
 msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
 msgstr "Выпущено под <a id=\"footer-license\" href=\"%1\">лицензией MIT</a>"
 
-#: website/app-templates/smarty/footer.tpl:12
+#: website/app-templates/smarty/footer.tpl:14
 msgid "Contribute to translation"
 msgstr "Внести свой вклад в перевод"
 
-#: website/app-templates/smarty/footer.tpl:15
+#: website/app-templates/smarty/footer.tpl:17
 msgid "Leave in-context translation"
 msgstr "Оставить в контекстном переводе"
 
-#: website/app-templates/smarty/footer.tpl:17
+#: website/app-templates/smarty/footer.tpl:19
 msgid "in-context translation"
 msgstr "Перевести в контексте"
 
-#: website/app-templates/smarty/footer.tpl:21
+#: website/app-templates/smarty/footer.tpl:23
 msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
 msgstr "Разработано с <abbr title=\"love\">💗</abbr>  <a id=\"footer-team\" href=\"%1\">командой GeoKrety Team</a>"
 
@@ -3579,6 +3562,11 @@ msgstr ""
 msgid "Sorry, but we have troubles sending you email notifications."
 msgstr ""
 
+#: website/app-templates/smarty/banners/user_account_imported.tpl:3
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:8
+msgid "Your account has been imported from GKv1."
+msgstr "Ваша учетная запись импортирована из GKv1."
+
 #: website/app-templates/smarty/banners/user_account_imported.tpl:4
 msgid "Please validate your email address."
 msgstr ""
@@ -4045,9 +4033,17 @@ msgstr "Ответ на %1"
 msgid "You're getting this email because one of GeoKrety.org users send you a message via your user profile."
 msgstr "Вы получаете это письмо, потому что один из пользователей GeoKrety.org отправил Вам сообщение через Ваш профиль пользователя."
 
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:3
+msgid "Revalidate your email address"
+msgstr "Подтвердите еще раз ваш адрес электронной почты"
+
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:4
 msgid "Is this address still valid?"
 msgstr "Этот адрес все еще действует?"
+
+#: website/app-templates/smarty/emails/email-revalidate-address.tpl:9
+msgid "We would like to verify that your mail address is still valid."
+msgstr "Мы хотели бы убедиться, что ваш адрес электронной почты еще действительный."
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:10
 msgid "This is important in case of password loss."
