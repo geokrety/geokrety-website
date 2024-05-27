@@ -103,8 +103,8 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
                 return [$this, 'smarty_modifier_gklink'];
             case 'language':
                 return [$this, 'smarty_modifier_language'];
-            case 'link':
-                return [$this, 'smarty_modifier_link'];
+            case 'extlink':
+                return [$this, 'smarty_modifier_extlink'];
             case 'logicon':
                 return [$this, 'smarty_modifier_logicon'];
             case 'login_link':
@@ -411,7 +411,7 @@ EOT;
     /**
      * Purpose:  outputs an html link.
      */
-    public function smarty_modifier_link(string $url, ?string $textString = null, ?string $target = null): string {
+    public function smarty_modifier_extlink(string $url, ?string $textString = null, ?string $target = null): string {
         $text = is_null($textString) ? $url : self::smarty_modifier_escape($textString);
         $target_html = is_null($target) ? '' : ' target="'.$target.'"';
 

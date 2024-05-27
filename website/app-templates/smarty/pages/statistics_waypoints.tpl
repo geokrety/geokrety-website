@@ -22,7 +22,7 @@
         <tbody>
         <tr>
             <td>GC</td>
-            <td>{{GK_WAYPOINT_SERVICE_URL_GC}|link:null:_blank nofilter}</td>
+            <td>{{GK_WAYPOINT_SERVICE_URL_GC}|extlink:null:"_blank" nofilter}</td>
             <td class="text-right">{$wpt_gc_count}</td>
             <td class="text-right"></td>
             <td class="text-right"></td>
@@ -33,7 +33,7 @@
         {foreach from=$wpt_oc item=item}
         <tr class="{if !is_null($item->last_success_datetime) and $item->last_error_time_diff < constant('GK_WAYPOINT_SERVICE_REFRESH_INTERVAL_'|cat:$item->service_id)}success{else}danger{/if}">
             <td>{$item->service_id}</td>
-            <td>{constant(sprintf('GK_WAYPOINT_SERVICE_URL_%s', $item->service_id))|link:null:_blank nofilter}</td>
+            <td>{constant(sprintf('GK_WAYPOINT_SERVICE_URL_%s', $item->service_id))|extlink:null:"_blank" nofilter}</td>
             <td class="text-right">{$item->wpt_count}</td>
             <td class="text-right">{if !is_null($item->last_success_datetime)}{$item->last_success_datetime|print_date_expiration:2}{/if}</td>
             <td class="text-right">{if is_null($item->revision)}{t}N/A{/t}{else}{$item->revision}{/if}</td>
