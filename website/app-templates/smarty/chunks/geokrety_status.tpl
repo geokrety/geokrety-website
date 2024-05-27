@@ -16,4 +16,8 @@
 {else}
 {t escape=no icon="{$geokret->last_log|logicon:true nofilter}" date="{actionDate geokret=$geokret}"}%1 %2{/t}
 {/if}
+{if !$geokret->isCollectible()}
+    <br>
+    ({t}Non-Collectible{/t})
+{/if}
 </p>
