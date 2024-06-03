@@ -62,7 +62,7 @@ jobs:
             ${{ steps.vars.outputs.tmp_dir }}/smarty.pot
 
       - name: crowdin action
-        uses: crowdin/github-action@v1
+        uses: crowdin/github-action@v2
         with:
           config: crowdin.yml
           project_id: 260106
