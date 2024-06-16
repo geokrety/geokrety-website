@@ -1,4 +1,4 @@
-{if $f3->get('SESSION.IS_LOGGED_IN')}
+{if $f3->get('SESSION.IS_LOGGED_IN') && !is_null($current_user)}
 {if $f3->get('SESSION.IS_ADMIN')}
 <li><a id="navbar-profile-admin" href="{'admin_home'|alias}">{fa icon="support"} {t}Admin{/t}</a></li>
 {/if}
