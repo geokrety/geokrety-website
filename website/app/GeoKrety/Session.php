@@ -18,7 +18,7 @@ class Session extends SQL\Session {
         $this->load(['session_id=? AND stamp >= ?', $this->sid = $id, time()]);
         if ($this->dry()) {
             $f3 = \Base::instance();
-            $f3->get('DB')->exec('DELETE FROM sessions WHERE session_id=? AND stamp < ?', [$this->sid, time()]);
+            $f3->get('DB')->exec('DELETE FROM sessions WHERE session_id=?', [$this->sid]);
 
             return '';
         }
@@ -48,6 +48,8 @@ class Session extends SQL\Session {
         if ($session_lifetime === 0) {
             return true;
         }
+        \Base::instance()->get('DB')->exec('DELETE FROM sessions WHERE session_id=? AND stamp < ?', [$id, time()]);
+        $this->load(['session_id=?', $id]);
         $this->set('session_id', $id);
         $this->set('data', $data);
         $this->set('ip', $this->_ip);
