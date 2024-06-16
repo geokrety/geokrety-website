@@ -92,7 +92,11 @@ class LanguageService extends \Prefab {
 
     public static function getLanguageByAlpha2($langAlpha2, $locale = false) {
         if ($locale) {
-            return self::SUPPORTED_LANGUAGES_LOCAL_NAME[$langAlpha2];
+            if (array_key_exists($langAlpha2, self::SUPPORTED_LANGUAGES_LOCAL_NAME)) {
+                return self::SUPPORTED_LANGUAGES_LOCAL_NAME[$langAlpha2];
+            }
+
+            return self::SUPPORTED_LANGUAGES_LOCAL_NAME[self::DEFAULT_LANGUAGE_CODE];
         }
         $isoCodes = self::instance()->isoCodesFactory;
         $languages = $isoCodes->getLanguages();
@@ -108,7 +112,12 @@ class LanguageService extends \Prefab {
             $langAlpha2 = 'da';
         }
 
-        return $languages->getByAlpha2($langAlpha2)->getLocalName();
+        $lang = $languages->getByAlpha2($langAlpha2);
+        if (!is_null($lang)) {
+            return $languages->getByAlpha2($langAlpha2)->getLocalName();
+        }
+
+        return $languages->getByAlpha2(self::DEFAULT_LANGUAGE_CODE)->getLocalName();
     }
 
     public static function translate(string $text, array $languages): array {
