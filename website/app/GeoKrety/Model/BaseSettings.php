@@ -11,6 +11,8 @@ use DB\SQL\Schema;
  * @property \DateTime updated_on_datetime
  */
 abstract class BaseSettings extends Base {
+    use \Validation\Traits\CortexTrait;
+
     protected $primary = 'name';
 
     protected $fieldConf = [
