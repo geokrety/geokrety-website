@@ -12,7 +12,7 @@ class Libravatar extends \Prefab {
             return GK_AVATAR_DEFAULT_URL;
         }
         try {
-            return self::instance()->libravatar->getUrl($identifier, $options);
+            return @self::instance()->libravatar->getUrl($identifier, $options);
         } catch (\Exception $e) {
             return GK_AVATAR_DEFAULT_URL;
         }
