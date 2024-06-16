@@ -35,7 +35,7 @@
 </li>
 {else}
 <li>
-    <p class="navbar-btn">
+    <div class="navbar-btn">
         <div class="btn-group" role="group">
             {if GK_OPAUTH_FACEBOOK_CLIENT_ID !== false}
             <a id="navbar-facebookauth" href="/auth/facebook" class="btn btn-primary">
@@ -56,7 +56,7 @@
                 {fa icon="sign-in"} {t}Sign in{/t}
             </a>
         </div>
-    </p>
+    </div>
 </li>
 <li><a id="navbar-profile-register" href="{'registration'|alias}">{fa icon="user-plus"} {t}Create account{/t}</a></li>
 {/if}
