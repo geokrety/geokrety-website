@@ -17,6 +17,6 @@ abstract class BaseDatatableMoves extends BaseDatatable {
      * @return string[]
      */
     protected function getSearchable(): array {
-        return ['gkid', 'name'];
+        return ['gkid', 'comment', 'waypoint'];
     }
 }

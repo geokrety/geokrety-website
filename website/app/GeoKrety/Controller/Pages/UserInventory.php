@@ -18,7 +18,15 @@ class UserInventory extends BaseDatatableGeokrety {
         return ['holder = ?', $this->user->id];
     }
 
+    protected function getHas(\GeoKrety\Model\Base $object): void {
+        $object->orHas('owner', ['0=1']); // Trick to create join on owner table
+    }
+
     protected function getTemplate(): string {
         return 'elements/geokrety_as_list_user_inventory.tpl';
+    }
+
+    protected function getSearchable(): array {
+        return ['gkid', 'name', 'gk_users__owner.username'];
     }
 }

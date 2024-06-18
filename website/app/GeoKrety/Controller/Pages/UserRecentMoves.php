@@ -18,6 +18,14 @@ class UserRecentMoves extends BaseDatatableMoves {
         return ['author = ?', $this->user->id];
     }
 
+    protected function getHas(\GeoKrety\Model\Base $object): void {
+        $object->orHas('geokret', ['0=1']); // Trick to create join on geokret table
+    }
+
+    protected function getSearchable(): array {
+        return ['gkid', 'comment', 'waypoint', 'gk_geokrety__geokret.name'];
+    }
+
     protected function getTemplate(): string {
         return 'elements/move_as_list.tpl';
     }
