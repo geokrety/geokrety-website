@@ -55,7 +55,11 @@ class Session extends SQL\Session {
         $this->set('ip', $this->_ip);
         $this->set('agent', $this->_agent);
         $this->set('stamp', time() + $session_lifetime);
-        $this->save();
+        if ($this->dry()) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
 
         return true;
     }

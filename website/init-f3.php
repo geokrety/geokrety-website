@@ -131,13 +131,13 @@ if (!$f3->get('CLI') and !$f3->get('AJAX')) {
             $f3->reroute($f3->get('ERROR_REDIRECT') ?: '@home');
         }
         if ($error['code'] === 500 && !GK_DEBUG) {
-            \Sentry\withScope(function (Sentry\State\Scope $scope) use ($error): void {
+            \Sentry\withScope(function (Sentry\State\Scope $scope) use ($error, $f3): void {
                 $scope->setContext('error_500', $error);
 
                 \Sentry\captureMessage($error['text']);
+                session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage(_('We are sorry, something unexpected happened.'), 'danger');
+                $f3->reroute('@home');
             });
-            session_status() == PHP_SESSION_ACTIVE && Flash::instance()->addMessage(_('We are sorry, something unexpected happened.'), 'danger');
-            $f3->reroute('@home');
         }
         $header = $f3->status($error['code']);
         $req = $f3->get('VERB').' '.$f3->get('PATH');
