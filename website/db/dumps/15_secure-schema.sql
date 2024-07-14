@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
--- Dumped by pg_dump version 12.2 (Ubuntu 12.2-4)
-
--- Started on 2020-08-03 13:47:46 CEST
+-- Dumped from database version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,8 +17,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 21 (class 2615 OID 514218)
--- Name: secure; Type: SCHEMA; Schema: -; Owner: geokrety
+-- Name: secure; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA IF NOT EXISTS secure;
@@ -31,8 +28,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 243 (class 1259 OID 511637)
--- Name: gpg_keys; Type: TABLE; Schema: secure; Owner: geokrety
+-- Name: gpg_keys; Type: TABLE; Schema: secure; Owner: -
 --
 
 CREATE TABLE secure.gpg_keys (
@@ -43,8 +39,7 @@ CREATE TABLE secure.gpg_keys (
 
 
 --
--- TOC entry 242 (class 1259 OID 511635)
--- Name: gpg_keys_id_seq; Type: SEQUENCE; Schema: secure; Owner: geokrety
+-- Name: gpg_keys_id_seq; Type: SEQUENCE; Schema: secure; Owner: -
 --
 
 CREATE SEQUENCE secure.gpg_keys_id_seq
@@ -57,24 +52,20 @@ CREATE SEQUENCE secure.gpg_keys_id_seq
 
 
 --
--- TOC entry 5673 (class 0 OID 0)
--- Dependencies: 242
--- Name: gpg_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: secure; Owner: geokrety
+-- Name: gpg_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: secure; Owner: -
 --
 
 ALTER SEQUENCE secure.gpg_keys_id_seq OWNED BY secure.gpg_keys.id;
 
 
 --
--- TOC entry 5528 (class 2604 OID 511640)
--- Name: gpg_keys id; Type: DEFAULT; Schema: secure; Owner: geokrety
+-- Name: gpg_keys id; Type: DEFAULT; Schema: secure; Owner: -
 --
 
 ALTER TABLE ONLY secure.gpg_keys ALTER COLUMN id SET DEFAULT nextval('secure.gpg_keys_id_seq'::regclass);
 
 
--- Completed on 2020-08-03 13:47:49 CEST
-
 --
 -- PostgreSQL database dump complete
 --
+
