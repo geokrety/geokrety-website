@@ -58,6 +58,7 @@ runs:
     #     echo "::endgroup::"
 
     - name: Wait for stack(s) to be started
+      id: wait-stack
       shell: bash
       run: |
         for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
@@ -80,45 +81,18 @@ runs:
           echo "::endgroup::"
         done
 
-    # - name: Wait for stack to be started
-    #   shell: bash
-    #   run: |
-    #     for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
-    #       declare f=0 g=0
-    #       for i in $(seq 60); do
-    #         ((f = $j - 1))
-    #         ((g = $j + 9))
-    #         echo "::group::httping: try:$i stack:$f"
-    #         httping -sGc1 -o 200,302 http://${{ env.GK_FQDN }}:3${g}1/health \
-    #           && { \
-    #             echo "::endgroup::"
-    #             echo OK;
-    #             break
-    #            } \
-    #           || { sleep 1; }
-    #         echo "::endgroup::"
-    #       done || exit 1
-    #         echo "::group::curl http://${{ env.GK_FQDN }}:3${g}1"
-    #         curl -v http://${{ env.GK_FQDN }}:3${g}1
-    #         echo "::endgroup::"
-    #     done
+    - name: "Show docker ps"
+      if: failure() && steps.wait-stack.outcome != 'success'
+      uses: ./.github/actions/docker-ps/
 
-    # - name: "Show docker ps"
-    #   if: failure()
-    #   uses: ./.github/actions/docker-ps/
-    #   with:
-    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
+    - name: "Show docker logs: website"
+      if: failure() && steps.wait-stack.outcome != 'success'
+      uses: ./.github/actions/docker-logs/
+      with:
+        CONTAINER: website
 
-    # - name: "Show docker logs: website"
-    #   if: failure()
-    #   uses: ./.github/actions/docker-logs/
-    #   with:
-    #     CONTAINER: website
-    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
-
-    # - name: "Show docker logs: nginx"
-    #   if: failure()
-    #   uses: ./.github/actions/docker-logs/
-    #   with:
-    #     CONTAINER: nginx
-    #     GK_INSTANCE_COUNT: ${{ env.GK_INSTANCE_COUNT }}
+    - name: "Show docker logs: nginx"
+      if: failure() && steps.wait-stack.outcome != 'success'
+      uses: ./.github/actions/docker-logs/
+      with:
+        CONTAINER: nginx
