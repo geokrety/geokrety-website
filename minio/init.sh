@@ -77,7 +77,7 @@ for i in $(seq 60); do httping -sc1 -o 200,302 http://${GK_PICTURES_UPLOADER_HOS
 echo "webserver pictures-processor-uploader"
 { mc admin config set minio notify_webhook:pictures-processor-uploader-uploaded queue_limit="0" endpoint="http://${GK_PICTURES_UPLOADER_HOST}:${GK_PICTURES_UPLOADER_PORT}/file-uploaded" queue_dir="" auth_token="${GK_MINIO_WEBHOOK_AUTH_TOKEN_PP_UPLOADER}" && MINIO_RESTART=true; }
 
-$MINIO_RESTART && mc admin service restart minio
+$MINIO_RESTART && mc admin service restart minio --json
 
 # DEBUG
 mc admin config get minio notify_webhook:picture-uploaded
