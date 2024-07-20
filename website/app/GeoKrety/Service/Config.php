@@ -430,7 +430,7 @@ class Config extends \Prefab {
         define('GK_CDN_LIBRARIES_URL', getenv('GK_CDN_LIBRARIES_URL') ?: GK_CDN_SERVER_URL.'/libraries');
 
         define('GK_CDN_LIBRARIES_PARSLEY_CSS_URL', getenv('GK_CDN_LIBRARIES_PARSLEY_CSS_URL') ?: GK_CDN_LIBRARIES_URL.'/parsley.js/2.9.1/parsley.css');
-        define('GK_CDN_LIBRARIES_PARSLEY_JS_URL', getenv('GK_CDN_LIBRARIES_PARSLEY_JS_URL') ?: GK_CDN_LIBRARIES_URL.'/parsley.js/2.9.1/parsley.js');
+        define('GK_CDN_LIBRARIES_PARSLEY_JS_URL', getenv('GK_CDN_LIBRARIES_PARSLEY_JS_URL') ?: GK_CDN_LIBRARIES_URL.'/parsley.js/2.9.1/parsley.min.js');
         define('GK_CDN_LIBRARIES_PARSLEY_JS_LANG_DIR_URL', getenv('GK_CDN_LIBRARIES_PARSLEY_JS_LANG_DIR_URL') ?: GK_CDN_LIBRARIES_URL.'/parsley.js/2.9.1/i18n');
         define('GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL', getenv('GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL') ?: GK_CDN_LIBRARIES_URL.'/parsley.js/parsleyjs-bootstrap3.js');
 
@@ -459,8 +459,8 @@ class Config extends \Prefab {
         define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js');
         define('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS', getenv('GK_CDN_BOOTSTRAP_DATETIMEPICKER_CSS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
 
-        define('GK_CDN_LEAFLET_JS', getenv('GK_CDN_LEAFLET_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.7.1/leaflet.js');
-        define('GK_CDN_LEAFLET_CSS', getenv('GK_CDN_LEAFLET_CSS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.7.1/leaflet.css');
+        define('GK_CDN_LEAFLET_JS', getenv('GK_CDN_LEAFLET_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.7.1/leaflet.min.js');
+        define('GK_CDN_LEAFLET_CSS', getenv('GK_CDN_LEAFLET_CSS') ?: GK_CDN_LIBRARIES_URL.'/leaflet/1.7.1/leaflet.min.css');
         define('GK_CDN_LEAFLET_CENTERCROSS_JS', getenv('GK_CDN_LEAFLET_CENTERCROSS_JS') ?: GK_CDN_LIBRARIES_URL.'/Leaflet.CenterCross/0.0.8/leaflet.CenterCross.js');
         define('GK_CDN_LEAFLET_AJAX_JS', getenv('GK_CDN_LEAFLET_AJAX_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet-ajax/2.1.0/leaflet.ajax.min.js');
         define('GK_CDN_LEAFLET_MARKERCLUSTER_JS', getenv('GK_CDN_LEAFLET_MARKERCLUSTER_JS') ?: GK_CDN_LIBRARIES_URL.'/Leaflet.markercluster/1.4.1/leaflet.markercluster.js');
@@ -474,13 +474,13 @@ class Config extends \Prefab {
         define('GK_CDN_LEAFLET_SPIN_JS', getenv('GK_CDN_LEAFLET_SPIN_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet.spin.js/leaflet.spin.js');
         define('GK_CDN_LEAFLET_FULLSCREEN_JS', getenv('GK_CDN_LEAFLET_FULLSCREEN_JS') ?: GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js');
         define('GK_CDN_LEAFLET_FULLSCREEN_CSS', getenv('GK_CDN_LEAFLET_FULLSCREEN_CSS') ?: GK_CDN_LIBRARIES_URL.'/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css');
-        define('GK_CDN_LEAFLET_HOTLINE_JS', getenv('GK_CDN_LEAFLET_HOTLINE_JS') ?: GK_CDN_LIBRARIES_URL.'/Leaflet.hotline/0.4.0/leaflet.hotline.js');
+        define('GK_CDN_LEAFLET_HOTLINE_JS', getenv('GK_CDN_LEAFLET_HOTLINE_JS') ?: GK_CDN_LIBRARIES_URL.'/Leaflet.hotline/0.4.0/leaflet.hotline.min.js');
 
         define('GK_CDN_SPIN_JS', getenv('GK_CDN_SPIN_JS') ?: GK_CDN_LIBRARIES_URL.'/spin.js/2.3.2/spin.min.js');
 
         define('GK_CDN_LATINIZE_JS', getenv('GK_CDN_LATINIZE_JS') ?: GK_CDN_LIBRARIES_URL.'/latinize/0.4.0/latinize.min.js');
 
-        define('GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS', getenv('GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js');
+        define('GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS', getenv('GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS') ?: GK_CDN_LIBRARIES_URL.'/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js');
 
         define('GK_CDN_ZXCVBN_JS', getenv('GK_CDN_ZXCVBN_JS') ?: GK_CDN_LIBRARIES_URL.'/zxcvbn/4.4.2/zxcvbn.min.js');
         define('GK_CDN_STRENGTHIFY_JS', getenv('GK_CDN_STRENGTHIFY_JS') ?: GK_CDN_LIBRARIES_URL.'/strengthify/0.5.8/jquery.strengthify.min.js');
@@ -490,7 +490,7 @@ class Config extends \Prefab {
         define('GK_CDN_DATATABLE_CSS', getenv('GK_CDN_DATATABLE_CSS') ?: GK_CDN_LIBRARIES_URL.'/datatables/1.12.1/datatables.css');
         define('GK_CDN_DATATABLE_I18N', getenv('GK_CDN_DATATABLE_I18N') ?: GK_CDN_LIBRARIES_URL.'/datatables/1.12.1/i18n/%s.json');
 
-        define('GK_CDN_DROPZONE_JS', getenv('GK_CDN_DROPZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/dropzone/5.9.3/dropzone.js');
+        define('GK_CDN_DROPZONE_JS', getenv('GK_CDN_DROPZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/dropzone/5.9.3/dropzone.min.js');
 
         define('GK_CDN_MAGNIFIC_POPUP_JS', getenv('GK_CDN_MAGNIFIC_POPUP_JS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/jquery.magnific-popup.min.js');
         define('GK_CDN_MAGNIFIC_POPUP_CSS', getenv('GK_CDN_MAGNIFIC_POPUP_CSS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/magnific-popup.css');
