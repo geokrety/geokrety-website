@@ -12,8 +12,6 @@
     <meta property="twitter:title" content="GeoKrety"/>
     <meta property="twitter:description" content="{t}Open source item tracking for all geocaching platforms{/t}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {\GeoKrety\Assets::instance()->addCss(GK_CDN_BOOTSTRAP_CSS) && ''}
-    {\GeoKrety\Assets::instance()->addCss(GK_CDN_FONT_AWESOME_CSS) && ''}
     {\GeoKrety\Assets::instance()->addCss(GK_CDN_FLAG_ICON_CSS) && ''}
     {\GeoKrety\Assets::instance()->addCss(GK_CDN_LIBRARIES_PARSLEY_CSS_URL) && ''}
     {\GeoKrety\Assets::instance()->addCss(GK_CDN_MAGNIFIC_POPUP_CSS) && ''}
@@ -32,4 +30,8 @@
 {if \Multilang::instance()->current === 'inline-translation'}
     {include file="js/_crowdin.tpl.html"}
 {/if}
+    <style>
+{include file="inline-Bootstrap-v3.3.7.css"}
+{include file="inline-Font-Awesome-v4.7.0.css"}
+    </style>
 </head>
