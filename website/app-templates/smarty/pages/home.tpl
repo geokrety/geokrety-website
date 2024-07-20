@@ -35,7 +35,7 @@
               <th>{t}Spotted in{/t}</th>
               <th>{t}Comment{/t}</th>
               <th class="text-center">{t}Last move{/t}</th>
-              <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/dist.gif" title="{t}Distance{/t}" /></th>
+              <th class="text-right"><img src="{GK_CDN_IMAGES_URL}/log-icons/dist.gif" title="{t}Distance{/t}" width="22px" height="22px" /></th>
             </tr>
           </thead>
           <tbody>
