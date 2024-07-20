@@ -29,7 +29,7 @@
 <ul class="nav navbar-nav">
     <li class="dropdown">
         <a id="navbar-lang" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <img src="{GK_CDN_ICONS_URL}/language.svg" width="14" /><span class="visible-xs-inline" title="{t}Currently selected language{/t}"> {\Multilang::instance()->current|language:true}</span>
+            <img src="{GK_CDN_ICONS_URL}/language.svg" width="14" height="14" /><span class="visible-xs-inline" title="{t}Currently selected language{/t}"> {\Multilang::instance()->current|language:true}</span>
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
