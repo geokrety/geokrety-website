@@ -2,8 +2,6 @@
 
 {block name=title}🎉 {t}Welcome to GeoKrety.org!{/t}{/block}
 
-{\GeoKrety\Assets::instance()->addCss(GK_CDN_ANIMATE_CSS) && ''}
-
 {block name=content}
 <h2>🎉 {t}Welcome to GeoKrety.org!{/t}</h2>
 

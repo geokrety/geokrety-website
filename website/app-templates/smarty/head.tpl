@@ -18,6 +18,7 @@
     {\GeoKrety\Assets::instance()->addCss(GK_CDN_LIBRARIES_PARSLEY_CSS_URL) && ''}
     {\GeoKrety\Assets::instance()->addCss(GK_CDN_MAGNIFIC_POPUP_CSS) && ''}
     {\GeoKrety\Assets::instance()->addCss('css/app.scss') && ''}
+{block name=head_css}{/block}
     {\Assets::instance()->renderGroup(\GeoKrety\Assets::instance()->getAssets('head')) nofilter}
 
     <link rel="apple-touch-icon" sizes="180x180" href="{GK_CDN_IMAGES_URL}/favicon/apple-touch-icon.png" />
