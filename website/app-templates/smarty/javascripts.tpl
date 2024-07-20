@@ -9,6 +9,7 @@
 {\GeoKrety\Assets::instance()->addJs(sprintf('%s/%s.js', GK_CDN_LIBRARIES_PARSLEY_JS_LANG_DIR_URL, \Multilang::instance()->current)) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_SPIN_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_DROPZONE_JS) && ''}
+{\GeoKrety\Assets::instance()->addJsAsync(GK_CDN_LAZYSIZES_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_MAGNIFIC_POPUP_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_JS) && ''}

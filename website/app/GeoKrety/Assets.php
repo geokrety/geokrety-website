@@ -39,11 +39,27 @@ class Assets extends \Assets {
         );
     }
 
-    public function addJs($path, $priority = 5, $group = 'footer', $slot = null) {
-        $this->add($path, 'js', $group, $priority, $slot, ['nonce' => $this->f3->get('NONCE')]);
+    public function addJsAsync($path, $priority = 5, $group = 'footer', $slot = null, $params = []) {
+        $params_ = ['async' => ''];
+        if (count($params) > 0) {
+            $params_ = array_merge($params_, $params);
+        }
+        $this->addJs($path, $priority, $group, $slot, $params_);
     }
 
-    public function addCss($path, $priority = 5, $group = 'head', $slot = null) {
-        $this->add($path, 'css', $group, $priority, $slot, ['nonce' => $this->f3->get('NONCE')]);
+    public function addJs($path, $priority = 5, $group = 'footer', $slot = null, $params = []) {
+        $params_ = ['nonce' => $this->f3->get('NONCE')];
+        if (count($params) > 0) {
+            $params_ = array_merge($params_, $params);
+        }
+        $this->add($path, 'js', $group, $priority, $slot, $params_);
+    }
+
+    public function addCss($path, $priority = 5, $group = 'head', $slot = null, $params = []) {
+        $params_ = ['nonce' => $this->f3->get('NONCE')];
+        if (count($params) > 0) {
+            $params_ = array_merge($params_, $params);
+        }
+        $this->add($path, 'css', $group, $priority, $slot, $params_);
     }
 }

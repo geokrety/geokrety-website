@@ -492,6 +492,8 @@ class Config extends \Prefab {
 
         define('GK_CDN_DROPZONE_JS', getenv('GK_CDN_DROPZONE_JS') ?: GK_CDN_LIBRARIES_URL.'/dropzone/5.9.3/dropzone.min.js');
 
+        define('GK_CDN_LAZYSIZES_JS', getenv('GK_CDN_LAZYSIZES_JS') ?: GK_CDN_LIBRARIES_URL.'/lazysizes/5.3.1/lazysizes.min.js');
+
         define('GK_CDN_MAGNIFIC_POPUP_JS', getenv('GK_CDN_MAGNIFIC_POPUP_JS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/jquery.magnific-popup.min.js');
         define('GK_CDN_MAGNIFIC_POPUP_CSS', getenv('GK_CDN_MAGNIFIC_POPUP_CSS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/magnific-popup.css');
 

@@ -551,7 +551,7 @@ EOT;
                     <span class="picture-message">{t}Picture is not yet ready{/t}</span>
                 {else}
                     <a class="picture-link" href="{$picture->url}">
-                        <img src="{$picture->thumbnail_url}">
+                        <img data-src="{$picture->thumbnail_url}" class="lazyload" alt="">
                     </a>
                 {/if}
             </div>
