@@ -55,9 +55,14 @@ class Session extends SQL\Session {
         $this->set('ip', $this->_ip);
         $this->set('agent', $this->_agent);
         $this->set('stamp', time() + $session_lifetime);
-        if ($this->dry()) {
+        if (!$this->dry()) {
+            $this->update();
+
+            return true;
+        }
+        try {
             $this->insert();
-        } else {
+        } catch (\PDOException) {
             $this->update();
         }
 
