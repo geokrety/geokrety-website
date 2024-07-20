@@ -379,7 +379,7 @@ EOT;
      */
     public function smarty_modifier_gkicon(Geokret $geokret): string {
         return sprintf(
-            '<img src="%s/log-icons/%s/icon_25.jpg" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s">',
+            '<img src="%s/log-icons/%s/icon_25.jpg" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s" width="25px" height="25px">',
             GK_CDN_IMAGES_URL,
             $geokret->type->getTypeId(),
             _('GK type icon'),
@@ -440,7 +440,7 @@ EOT;
 
         $url = GK_SITE_BASE_SERVER_URL.Base::instance()->alias('geokret_details', '@gkid='.$move->geokret->gkid);
         $img = sprintf(
-            '<img src="%s/log-icons/%s/%s%s.png" title="%s" data-gk-move-type="%s" data-gk-move-id="%s">',
+            '<img src="%s/log-icons/%s/%s%s.png" title="%s" data-gk-move-type="%s" data-gk-move-id="%s" width="37px" height="37px">',
             GK_CDN_IMAGES_URL,
             $gkType,
             $showSmall ? '2' : '',
