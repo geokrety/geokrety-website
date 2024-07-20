@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "899ec177fc9d0c46929b15f41d7a99bf",
+    "content-hash": "786bb64e362287686eb256c369e32924",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2623,20 +2623,14 @@
         },
         {
             "name": "pear/services_libravatar",
-            "version": "v0.2.4",
+            "version": "dev-bug-21095",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pear/Services_Libravatar.git",
-                "reference": "8b9fda8c896afb18fdedc60ead29ee305ea222e9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pear/Services_Libravatar/zipball/8b9fda8c896afb18fdedc60ead29ee305ea222e9",
-                "reference": "8b9fda8c896afb18fdedc60ead29ee305ea222e9",
-                "shasum": ""
+                "url": "https://github.com/geokrety/Services_Libravatar.git",
+                "reference": "422e152988e97561559d75ec069d678c05e546f3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7.0"
+                "phpunit/phpunit": "^11"
             },
             "type": "library",
             "autoload": {
@@ -2644,7 +2638,6 @@
                     "Services": "./Services/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 "./"
             ],
@@ -2653,14 +2646,14 @@
             ],
             "authors": [
                 {
-                    "name": "Christian Weiske",
-                    "email": "cweiske@php.net",
-                    "role": "Developer"
+                    "email": "melissa@meldraweb.com",
+                    "name": "Melissa Draper",
+                    "role": "Lead"
                 },
                 {
-                    "name": "Melissa Draper",
-                    "email": "melissa@meldraweb.com",
-                    "role": "Lead"
+                    "email": "cweiske@php.net",
+                    "name": "Christian Weiske",
+                    "role": "Developer"
                 }
             ],
             "description": "API interfacing class for libravatar.org",
@@ -2669,7 +2662,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Services_Libravatar",
                 "source": "https://github.com/pear/Services_Libravatar"
             },
-            "time": "2017-08-23T20:23:02+00:00"
+            "time": "2024-07-20T06:31:49+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -8623,6 +8616,7 @@
         "benhall14/php-pagination": 20,
         "ikkez/f3-opauth": 20,
         "league/geotools": 0,
+        "pear/services_libravatar": 20,
         "s1lentium/iptools": 20
     },
     "prefer-stable": true,
