@@ -18,7 +18,7 @@ class Assets extends \Assets {
                 'Content-Security-Policy: '
                 .sprintf('script-src \'nonce-%s\' \'strict-dynamic\'; ', $nonce)
                 .sprintf('img-src \'self\' data: %s %s https://www.gstatic.com/recaptcha/ https://tile.openstreetmap.org https://cdn.crowdin.com/jipt/images/ https://seccdn.libravatar.org/avatar/ https://crowdin-static.downloads.crowdin.com/avatar/ https://cdn.geokrety.org; ', GK_CDN_SERVER_URL, GK_MINIO_SERVER_URL_EXTERNAL)
-                .'frame-src https://www.google.com/ https://crowdin.com; '
+                .'frame-src https://www.google.com/ https://www.youtube.com/ https://crowdin.com/; '
                 .sprintf('style-src \'self\' \'nonce-%s\'; ', $nonce)
                 .sprintf('style-src-elem \'self\' \'unsafe-inline\' %s https://cdn.crowdin.com/jipt/jipt.css https://fonts.googleapis.com/css; ', GK_CDN_SERVER_URL)
                 .'style-src-attr \'self\' \'unsafe-inline\'; '
@@ -31,7 +31,7 @@ class Assets extends \Assets {
             'Content-Security-Policy: '
             .sprintf('script-src \'nonce-%s\' \'strict-dynamic\'; ', $nonce)
             .sprintf('img-src \'self\' data: %s %s https://www.gstatic.com/recaptcha/ https://tile.openstreetmap.org https://seccdn.libravatar.org/avatar/ https://cdn.geokrety.org; ', GK_CDN_SERVER_URL, GK_MINIO_SERVER_URL_EXTERNAL)
-            .'frame-src https://www.google.com/; '
+            .'frame-src https://www.google.com/ https://www.youtube.com/; '
             .sprintf('style-src \'self\' \'nonce-%s\'; ', $nonce)
             .sprintf('style-src-elem \'self\' \'unsafe-inline\' %s; ', GK_CDN_SERVER_URL)
             .'style-src-attr \'self\' \'unsafe-inline\'; '

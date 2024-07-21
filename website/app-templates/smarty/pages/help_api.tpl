@@ -99,10 +99,15 @@
         <p>GeoKrety Types are internaly stored using a <code>small integer</code>. The current mapping is as follow:</p>
         <ul>
             <li><code>0</code> = Traditional</li>
-            <li><code>1</code> = A book/CD/DVD…</li>
-            <li><code>2</code> = A human/pet</li>
+            <li><code>1</code> = A book</li>
+            <li><code>2</code> = A human</li>
             <li><code>3</code> = A coin</li>
             <li><code>4</code> = KretyPost</li>
+            <li><code>5</code> = Pebble</li>
+            <li><code>6</code> = Car</li>
+            <li><code>7</code> = Playing card</li>
+            <li><code>8</code> = Dog tag/pet</li>
+            <li><code>9</code> = Jigsaw part</li>
         </ul>
         <p>Please refer to the <a href="{'help'|alias}#GeoKretytypes">help page</a> for more details about each type.</p>
     </div>

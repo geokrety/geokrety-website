@@ -5,7 +5,7 @@
         {$geokret|posicon nofilter}
     </td>
     <td>
-        {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
+        {$geokret|gkicon nofilter}{$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
         <small>{$geokret->gkid}</small>
     </td>
     <td class="text-center">
