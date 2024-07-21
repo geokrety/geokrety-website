@@ -77,7 +77,6 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th></th>
             <th>{t}ID{/t}</th>
             <th class="text-center">{t}Owner{/t}</th>
             <th class="text-center">{t}Born{/t}</th>

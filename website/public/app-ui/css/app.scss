@@ -146,3 +146,19 @@ input.input-uc {
 .separator:not(:empty)::after {
   margin-left: .25em;
 }
+
+.row.same-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row.same-height > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+
+  .thumbnail {
+    height: 100%;
+  }
+}

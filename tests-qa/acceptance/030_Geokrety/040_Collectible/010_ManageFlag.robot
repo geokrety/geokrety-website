@@ -71,9 +71,53 @@ Can be enabled only if it has an holder
     Location Should Be                  ${PAGE_GEOKRETY_1_DETAILS_URL}
     Flash message shown                 has been updated
 
+Changing type to human should change the collectible date
+    Sign In ${USER_1.name} Fast
+
+    Go To Url                           ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Page Should Not Contain Element     ${GEOKRET_DETAILS_COLLECTIBLE}
+
+    Go To Url                           ${PAGE_GEOKRETY_2_DETAILS_URL}
+    Element Should Contain              ${GEOKRET_DETAILS_COLLECTIBLE}    Non-Collectible
+
+    Go To Url                           ${PAGE_GEOKRETY_2_EDIT_URL}
+    Select From List By Value           ${GEOKRET_CREATE_TYPE_SELECT}        ${2}
+    Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
+    Element Should Contain              ${GEOKRET_DETAILS_COLLECTIBLE}    Non-Collectible
+
+    Go To Url                           ${PAGE_GEOKRETY_2_EDIT_URL}
+    Select From List By Value           ${GEOKRET_CREATE_TYPE_SELECT}        ${6}
+    Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
+    Element Should Contain              ${GEOKRET_DETAILS_COLLECTIBLE}    Non-Collectible
+
+    Go To Url                           ${PAGE_GEOKRETY_2_EDIT_URL}
+    Select From List By Value           ${GEOKRET_CREATE_TYPE_SELECT}        ${8}
+    Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
+    Element Should Contain              ${GEOKRET_DETAILS_COLLECTIBLE}    Non-Collectible
+
+    Go To Url                           ${PAGE_GEOKRETY_2_EDIT_URL}
+    Select From List By Value           ${GEOKRET_CREATE_TYPE_SELECT}        ${9}
+    Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
+    Page Should Not Contain Element     ${GEOKRET_DETAILS_COLLECTIBLE}
+
+
+Changing type should fail if not holder
+    Sign In ${USER_1.name} Fast
+    Post Move Fast    &{MOVE_1}
+
+    Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}
+    Select From List By Value           ${GEOKRET_CREATE_TYPE_SELECT}        ${2}
+    Click Button                        ${GEOKRET_CREATE_CREATE_BUTTON}
+    Flash message shown                 You must hold the Geokrety to change to this type
+
+    Go To Url                           ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Page Should Not Contain Element     ${GEOKRET_DETAILS_COLLECTIBLE}
+
+
 
 *** Keywords ***
 
 Test Setup
     Clear Database And Seed ${2} users
     Seed ${1} geokrety owned by ${1}
+    Seed ${1} geokrety owned by ${1} with type ${2}

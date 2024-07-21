@@ -11,7 +11,7 @@ Test Setup      Test Setup
 Type valid
     [Template]          GeoKret is created
     0                   Traditional
-    1                   A book/CD/DVD…
+    1                   A book
     2                   A human
     3                   A coin
     4                   KretyPost

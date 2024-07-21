@@ -45,7 +45,7 @@ Edit A GeoKret
     Location Should Be                  ${PAGE_GEOKRETY_1_DETAILS_URL}
     Element Should Contain              ${GEOKRET_DETAILS_NAME}             GKNewName
     Element Attribute Should Be         ${GEOKRET_DETAILS_CREATED_ON_DATETIME}/span    data-datetime      2024-05-18T00:00:00+00:00
-    Element Should Contain              ${GEOKRET_DETAILS_TYPE}             A book/CD/DVD…
+    Element Should Contain              ${GEOKRET_DETAILS_TYPE}             A book
     Element Should Contain              ${GEOKRET_DETAILS_MISSION}          New mission
 
     Go To Url                           ${PAGE_GEOKRETY_EDIT_URL}

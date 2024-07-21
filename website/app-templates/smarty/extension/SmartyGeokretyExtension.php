@@ -58,7 +58,7 @@ function computeLogType(Geokret $geokret, ?int $locationType, ?int $lastUserId):
     if (is_null($locationType)) {
         return 9;
     }
-    if ((($locationType === LogType::LOG_TYPE_GRABBED or $locationType === LogType::LOG_TYPE_DIPPED) and $lastUserId === (is_null($geokret->owner) ? null : $geokret->owner->id)) and $locationType !== LogType::LOG_TYPE_ARCHIVED and !$geokret->type->isType(GeokretyType::GEOKRETY_TYPE_HUMAN)) {
+    if ((($locationType === LogType::LOG_TYPE_GRABBED or $locationType === LogType::LOG_TYPE_DIPPED) and $lastUserId === (is_null($geokret->owner) ? null : $geokret->owner->id)) and $locationType !== LogType::LOG_TYPE_ARCHIVED and !($geokret->type->isType(GeokretyType::GEOKRETY_TYPE_HUMAN) or $geokret->type->isType(GeokretyType::GEOKRETY_TYPE_CAR) or $geokret->type->isType(GeokretyType::GEOKRETY_TYPE_DOG_TAG))) {
         return 8;
     }
 
@@ -379,7 +379,7 @@ EOT;
      */
     public function smarty_modifier_gkicon(Geokret $geokret): string {
         return sprintf(
-            '<img src="%s/log-icons/%s/icon.svg" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s" width="25" height="25">',
+            '<img src="%s/log-icons/%s/icon.svg" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s" width="25px" height="25px">',
             GK_CDN_IMAGES_URL,
             $geokret->type->getTypeId(),
             _('GK type icon'),

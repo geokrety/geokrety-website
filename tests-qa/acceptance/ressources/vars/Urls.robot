@@ -74,6 +74,7 @@ ${PAGE_PICTURES_GALLERY_URL}                      ${GK_URL}/en/picture/gallery
 ${PAGE_GEOKRETY_CREATE_URL}                     ${PAGE_HOME_URL_EN}/geokrety/create
 ${PAGE_GEOKRETY_EDIT_URL}                       ${PAGE_HOME_URL_EN}/geokrety/1/edit
 ${PAGE_GEOKRETY_EDIT_URL_FR}                    ${PAGE_HOME_URL_FR}/geokrety/1/edit
+${PAGE_GEOKRETY_2_EDIT_URL}                     ${PAGE_HOME_URL_EN}/geokrety/2/edit
 ${PAGE_GEOKRETY_CLAIM_URL}                      ${PAGE_HOME_URL_EN}/geokrety/claim
 ${PAGE_GEOKRETY_WATCH_URL}                      ${PAGE_HOME_URL_EN}/geokrety/\${params.gkid}/watch
 ${PAGE_GEOKRETY_UNWATCH_URL}                    ${PAGE_HOME_URL_EN}/geokrety/\${params.gkid}/unwatch

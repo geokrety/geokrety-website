@@ -171,7 +171,7 @@ Shown On Home Page
     ${expected} =     Change Born Date To Now With Validation
 
     Go To Home
-    Element Attribute Should Be         ${HOME_RECENTLY_CREATED_GK_TABLE}//tr[1]/td[4]/span    data-datetime    ${expected}
+    Element Attribute Should Be         ${HOME_RECENTLY_CREATED_GK_TABLE}//tr[1]/td[3]/span    data-datetime    ${expected}
 
 
 Shown On Inventory Picker

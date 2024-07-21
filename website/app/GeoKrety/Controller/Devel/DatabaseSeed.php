@@ -97,6 +97,10 @@ class DatabaseSeed extends Base {
                 $geokret->born_on_datetime = $f3->get('GET.birthdate');
                 $geokret->save();
             }
+            if ($f3->exists('GET.type')) {
+                $geokret->type = $f3->get('GET.type');
+                $geokret->save();
+            }
         }
 
         echo 'OK';

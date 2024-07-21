@@ -1,6 +1,6 @@
 <div class="panel panel-default" id="userDetailsPanel">
     <div class="panel-heading">
-        <img id="userDetailsTypeIcon" src="{GK_CDN_IMAGES_URL}/log-icons/2/icon_25.jpg" width="25" height="25" data-gk-type="" />
+        <img id="userDetailsTypeIcon" src="{GK_CDN_IMAGES_URL}/log-icons/2/icon.svg" width="25px" height="25px" data-gk-type="" />
         {$user|userlink nofilter}
         <div class="btn-group pull-right" role="group">
             {if $f3->get('SESSION.CURRENT_USER') && !$user->isCurrentUser() && $user->email}
