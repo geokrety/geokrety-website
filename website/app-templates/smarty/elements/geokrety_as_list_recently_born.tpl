@@ -1,6 +1,6 @@
 <tr class="{if $geokret->isMissing()}danger{elseif $geokret->isArchived()}danger{elseif !$geokret->owner}info{/if}">
     <td>
-        {$geokret|gkicon nofilter}{$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
+        {$geokret|gkicon nofilter} {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
         <small>{$geokret->gkid}</small>
     </td>
     <td class="text-center">

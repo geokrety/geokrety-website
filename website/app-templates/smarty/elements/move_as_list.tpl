@@ -5,7 +5,7 @@
         {$move|logicon nofilter}
     </td>
     <td>
-        {$move->geokret|gklink nofilter} {$move->geokret|gkavatar nofilter}<br />
+        {$move->geokret|gkicon nofilter} {$move->geokret|gklink nofilter} {$move->geokret|gkavatar nofilter}<br />
         <small>{$move->geokret->gkid}</small>
     </td>
     <td>

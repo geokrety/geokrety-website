@@ -7,7 +7,7 @@
         {if $geokret->isMissing()}<span title="{t}Declared as missing{/t}"><i class="fa fa-exclamation-triangle"></i></span>{/if}
     </td>
     <td>
-        {$geokret|gkicon nofilter}{$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
+        {$geokret|gkicon nofilter} {$geokret|gklink nofilter} {$geokret|gkavatar nofilter}<br />
         <small>{$geokret->gkid}</small>
     </td>
     <td class="text-center">
