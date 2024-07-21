@@ -4,7 +4,13 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 tmp_dir=$(mktemp -d -p $DIR -t copy-schema-XXXXXXXXXX)
 
-pg_dump --file "$tmp_dir/public-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --encoding "UTF8" --schema "public" "geokrety"
+trap cleanup EXIT HUP INT QUIT TERM
+cleanup() {
+  echo "Removing temporary files…"
+  rm -rfv "$tmp_dir"
+  exit
+}
+pg_dump --file "$tmp_dir/public-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --exclude-table-data=public.srtm --encoding "UTF8" --schema "public" "geokrety"
 pg_dump --file "$tmp_dir/geokrety-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "geokrety" "geokrety"
 pg_dump --file "$tmp_dir/audit-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "audit" "geokrety"
 pg_dump --file "$tmp_dir/secure-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "secure" "geokrety"
@@ -30,9 +36,6 @@ CREATE SCHEMA pgtap;
 CREATE EXTENSION IF NOT EXISTS pgtap WITH SCHEMA pgtap;
 
 DROP SCHEMA IF EXISTS public CASCADE;
--- CREATE SCHEMA public;
--- CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
--- CREATE EXTENSION IF NOT EXISTS postgis_raster WITH SCHEMA public;
 \i $tmp_dir/public-schema.sql
 
 DROP SCHEMA IF EXISTS notify_queues CASCADE;
@@ -52,5 +55,8 @@ DROP SCHEMA IF EXISTS geokrety CASCADE;
 REFRESH MATERIALIZED VIEW "geokrety"."gk_geokrety_in_caches";
 END;
 EOF
+
+export DBNAME=tests
+"${DIR}"/tests-srtm-import.sh
 
 rm -rf $tmp_dir
