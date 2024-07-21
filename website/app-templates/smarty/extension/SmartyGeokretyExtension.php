@@ -440,14 +440,14 @@ EOT;
 
         $url = GK_SITE_BASE_SERVER_URL.Base::instance()->alias('geokret_details', '@gkid='.$move->geokret->gkid);
         $img = sprintf(
-            '<img src="%s/log-icons/%s/%s%s.png" title="%s" data-gk-move-type="%s" data-gk-move-id="%s" width="37px" height="37px">',
+            '<img src="%s/log-icons/0/%s.svg" title="%s" data-gk-move-type="%s" data-gk-move-id="%s" width="%dpx" height="%dpx">',
             GK_CDN_IMAGES_URL,
-            $gkType,
-            $showSmall ? '2' : '',
             $move->move_type->getLogTypeId(),
             sprintf('%d: %s', $move->id, $move->move_type->getLogTypeString()),
             $move->move_type->getLogTypeId(),
-            $move->id
+            $move->id,
+            $showSmall ? '16' : '37',
+            $showSmall ? '16' : '37',
         );
 
         return sprintf(
