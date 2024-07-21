@@ -23,4 +23,4 @@ echo "SET search_path = public;" > "$QUERIES_FILE"
 raster2pgsql "$SRTM_DIR"/*.zip -F -I -e public.srtm >> "$QUERIES_FILE"
 
 echo "Importing SQL import file…"
-psql -h 127.0.0.1 -U "${PGUSER:-geokrety}" -f "$QUERIES_FILE"
+psql -h 127.0.0.1 -U "${PGUSER:-geokrety}" "${DBNAME:-geokrety}" -f "$QUERIES_FILE"

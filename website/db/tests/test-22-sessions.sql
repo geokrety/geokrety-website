@@ -8,8 +8,8 @@ SELECT * FROM no_plan();
 SET CONSTRAINTS ALL IMMEDIATE;
 
 -- on_behalf automatically generated
-INSERT INTO "sessions" ("session_id") VALUES ('test 1');
-SELECT isnt(on_behalf, null ) FROM sessions WHERE session_id='test 1';
+INSERT INTO "geokrety"."sessions" ("session_id") VALUES ('test 1');
+SELECT isnt(on_behalf, null ) FROM geokrety.sessions WHERE session_id='test 1';
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();
