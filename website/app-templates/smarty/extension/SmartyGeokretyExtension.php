@@ -379,7 +379,7 @@ EOT;
      */
     public function smarty_modifier_gkicon(Geokret $geokret): string {
         return sprintf(
-            '<img src="%s/log-icons/%s/icon_25.jpg" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s" width="25px" height="25px">',
+            '<img src="%s/log-icons/%s/icon.svg" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s" width="25" height="25">',
             GK_CDN_IMAGES_URL,
             $geokret->type->getTypeId(),
             _('GK type icon'),
