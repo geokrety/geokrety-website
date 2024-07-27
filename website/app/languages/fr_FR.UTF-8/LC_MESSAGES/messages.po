@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-18 18:31+0000\n"
-"PO-Revision-Date: 2024-07-18 23:06\n"
+"POT-Creation-Date: 2024-07-20 12:30+0000\n"
+"PO-Revision-Date: 2024-07-21 22:32\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -42,7 +42,7 @@ msgstr "À Visité"
 #: website/app-templates/smarty/blocks/geokret/details.tpl:26
 #: website/app-templates/smarty/forms/geokret.tpl:62
 msgid "Parked"
-msgstr ""
+msgstr "Stationnė"
 
 #: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:46
 msgid "In the owner hands"
@@ -224,7 +224,7 @@ msgstr "Le prix a été attribué"
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:86
 msgid "reCaptcha failed!"
-msgstr "la validation du code reCaptcha a échoué!"
+msgstr "La validation du code reCaptcha a échoué !"
 
 #: website/app/GeoKrety/Controller/Pages/Base.php:110
 msgid "CSRF error, please try again."
@@ -976,7 +976,7 @@ msgid "dip"
 msgstr "transité"
 
 #: website/app/GeoKrety/LogType.php:123
-#: website/app-templates/smarty/pages/home.tpl:85
+#: website/app-templates/smarty/pages/home.tpl:83
 #: website/app-templates/smarty/blocks/geokret/details.tpl:62
 msgid "Born"
 msgstr "Né"
@@ -1101,7 +1101,7 @@ msgstr "Le waypoint contient des caractères invalides."
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:92
 #, php-format
 msgid "View the <a href=\"%s\" target=\"_blank\">cache page</a>."
-msgstr ""
+msgstr "Voir la <a href=\"%s\" target=\"_blank\">page de la cache</a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
@@ -1197,7 +1197,7 @@ msgid "Home"
 msgstr "Accueil"
 
 #: website/app-templates/smarty/navbar-left.tpl:3
-#: website/app-templates/smarty/pages/home.tpl:21
+#: website/app-templates/smarty/pages/home.tpl:19
 #: website/app-templates/smarty/pages/news_list.tpl:3
 #: website/app-templates/smarty/footer.tpl:5
 msgid "News"
@@ -1550,8 +1550,8 @@ msgstr "« Trous-de-taupes » actuels"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:38
 #: website/app-templates/smarty/pages/mole_hole.tpl:81
-#: website/app-templates/smarty/pages/home.tpl:36
-#: website/app-templates/smarty/pages/home.tpl:83
+#: website/app-templates/smarty/pages/home.tpl:34
+#: website/app-templates/smarty/pages/home.tpl:81
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:20
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:21
@@ -1604,15 +1604,15 @@ msgid "Status: Ready for search"
 msgstr "Statut : prêt à la recherche"
 
 #: website/app-templates/smarty/pages/home.tpl:3
-#: website/app-templates/smarty/pages/home.tpl:8
+#: website/app-templates/smarty/pages/home.tpl:6
 msgid "Welcome to GeoKrety.org!"
 msgstr "Bienvenue sur GeoKrety !"
 
-#: website/app-templates/smarty/pages/home.tpl:30
+#: website/app-templates/smarty/pages/home.tpl:28
 msgid "Latest moves"
 msgstr "Derniers mouvements"
 
-#: website/app-templates/smarty/pages/home.tpl:37
+#: website/app-templates/smarty/pages/home.tpl:35
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:23
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:23
 #: website/app-templates/smarty/pages/user_recent_moves.tpl:22
@@ -1620,7 +1620,7 @@ msgstr "Derniers mouvements"
 msgid "Spotted in"
 msgstr "Vu dans"
 
-#: website/app-templates/smarty/pages/home.tpl:38
+#: website/app-templates/smarty/pages/home.tpl:36
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:22
 #: website/app-templates/smarty/pages/news_details.tpl:20
 #: website/app-templates/smarty/pages/news_details.tpl:38
@@ -1637,12 +1637,12 @@ msgstr "Vu dans"
 msgid "Comment"
 msgstr "Commentaire"
 
-#: website/app-templates/smarty/pages/home.tpl:39
+#: website/app-templates/smarty/pages/home.tpl:37
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:23
 msgid "Last move"
 msgstr "Dernier mouvement"
 
-#: website/app-templates/smarty/pages/home.tpl:40
+#: website/app-templates/smarty/pages/home.tpl:38
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:25
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:24
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:24
@@ -1653,15 +1653,15 @@ msgstr "Dernier mouvement"
 msgid "Distance"
 msgstr "Distance"
 
-#: website/app-templates/smarty/pages/home.tpl:60
+#: website/app-templates/smarty/pages/home.tpl:58
 msgid "Recent pictures"
 msgstr "Photos récentes"
 
-#: website/app-templates/smarty/pages/home.tpl:77
+#: website/app-templates/smarty/pages/home.tpl:75
 msgid "Recently created GeoKrety"
 msgstr "GeoKrety créés récemment"
 
-#: website/app-templates/smarty/pages/home.tpl:84
+#: website/app-templates/smarty/pages/home.tpl:82
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:22
 #: website/app-templates/smarty/pages/user_inventory.tpl:23
@@ -3294,11 +3294,11 @@ msgstr "Médailles"
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
+msgstr "%1 a créé <strong>%2</strong> GeoKrety, qui ont voyagé <strong>%3</strong>."
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:17
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
+msgstr "%1 a déplacé <strong>%2</strong> GeoKrety sur une distance totale de <strong>%3</strong> km."
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:10
 msgid "No home coordinates have been defined."
@@ -3352,7 +3352,7 @@ msgstr "Loguer !"
 
 #: website/app-templates/smarty/blocks/news_list.tpl:33
 msgid "No news match the current request."
-msgstr ""
+msgstr "Aucune actualité ne correspond à la demande."
 
 #: website/app-templates/smarty/blocks/user_finder.tpl:5
 msgid "Start by finding users:"
@@ -3570,11 +3570,11 @@ msgstr "Et c'est grâce à vous ! Félicitations !"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered."
-msgstr ""
+msgstr "Désolé mais votre compte n'a pas d'adresse e-mail associée."
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:4
 msgid "You will not be able to recover from a password loss!"
-msgstr ""
+msgstr "Vous ne pourrez pas récupérer votre mot de passe !"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:5
 msgid "Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
@@ -3874,7 +3874,7 @@ msgstr "Type de signalement"
 
 #: website/app-templates/smarty/forms/move.tpl:64
 msgid "This GeoKret is not collectible, so some move types are not available."
-msgstr ""
+msgstr "Ce GeoKret n'est pas collectionable donc certains types de mouvements ne sont pas disponibles."
 
 #: website/app-templates/smarty/forms/move.tpl:73
 msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
@@ -4115,7 +4115,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/geokret.tpl:54
 msgid "Other users will not be able to collect them."
-msgstr ""
+msgstr "Les autres utilisateurs ne seront pas en mesure de les récupérer."
 
 #: website/app-templates/smarty/forms/geokret.tpl:70
 msgid "Parked GeoKrety will automatically imply non-collectible."
