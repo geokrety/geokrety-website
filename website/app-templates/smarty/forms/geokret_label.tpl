@@ -76,6 +76,11 @@
         </form>
     </div>
 </div>
+{if isset($geokret)}
+<div class="alert alert-info alert-dismissible" role="alert">
+    {t url={'move_create_short'|alias:sprintf('@tracking_code=%s', $geokret->tracking_code)}}Short tracking url: %1{/t}
+</div>
+{/if}
 <div class="panel panel-default">
     <div class="panel-heading">
          <h3 class="panel-title">{t}Sample GeoKret label preview{/t}</h3>

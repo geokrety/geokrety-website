@@ -73,6 +73,13 @@ class MoveCreate extends Base {
         Smarty::render('pages/geokret_move.tpl');
     }
 
+    // https://geokrety.org/m/XXXXX
+    public function get_short(\Base $f3) {
+        $params = $f3->get('GET');
+        $params['tracking_code'] = $f3->get('PARAMS.tracking_code');
+        $f3->reroute(sprintf('@move_create?%s', http_build_query($params)));
+    }
+
     public function post(\Base $f3) {
         $move_data = MovesService::postToArray($f3);
 
