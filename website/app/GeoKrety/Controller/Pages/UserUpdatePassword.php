@@ -24,11 +24,6 @@ class UserUpdatePassword extends Base {
         $user = $this->current_user;
 
         $this->checkCsrf();
-        if (!$user->hasEmail()) {
-            \Flash::instance()->addMessage(_('Please add a valid email first.'), 'danger');
-            $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
-            // die
-        }
 
         $password_old = $f3->get('POST.password_old');
         $password_new = $f3->get('POST.password_new');
