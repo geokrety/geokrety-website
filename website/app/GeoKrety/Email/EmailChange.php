@@ -12,7 +12,8 @@ class EmailChange extends BasePHPMailer {
     }
 
     protected function allowSend(User $user): bool {
-        return $user->isEmailValidForAdminTask();
+        // Allow user to change their mail address, whatever the status is
+        return true;
     }
 
     protected function allowNonProdEnvSend(): bool {

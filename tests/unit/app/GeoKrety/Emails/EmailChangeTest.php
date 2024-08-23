@@ -12,7 +12,7 @@ class EmailChangeTest extends BaseEmailTestCase {
             [User::USER_EMAIL_NO_ERROR, 1],
             [User::USER_EMAIL_DOES_NOT_EXIST, 1],
             [User::USER_EMAIL_UNCONFIRMED, 1],
-            [User::USER_EMAIL_MISSING, 0],
+            [User::USER_EMAIL_MISSING, 1],
             [User::USER_EMAIL_MAILBOX_FULL, 1],
             [User::USER_EMAIL_DETECTED_AS_SPAM, 1],
         ];
