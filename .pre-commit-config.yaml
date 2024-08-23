@@ -12,7 +12,7 @@ exclude: |
   )
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v4.6.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -22,10 +22,10 @@ repos:
       - id: pretty-format-json
         args: ["--autofix"]
 
-  - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.9
-    hooks:
-      - id: remove-crlf
+#  - repo: https://github.com/Lucas-C/pre-commit-hooks
+#    rev: v1.5.5
+#    hooks:
+#      - id: remove-crlf
 
   - repo: https://github.com/digitalpulp/pre-commit-php.git
     rev: 1.4.0
@@ -36,8 +36,12 @@ repos:
         args: [ "--config=.php-cs-fixer.php", "-q", "--diff" ]
 
   - repo: https://github.com/IamTheFij/docker-pre-commit.git
-    rev: v2.0.0
+    rev: v3.0.1
     hooks:
       - id: docker-compose-check
         files: docker-compose.*.ya?ml$
-      - id: hadolint-system
+
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint
