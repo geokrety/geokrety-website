@@ -104,7 +104,7 @@ install_robot-framework: ## Install robot framework
 	pip install -r requirements.txt
 
 download_geckodriver:  ## Download geckodriver
-	curl -L https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz | tar xzf -
+	curl -L https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz | tar xzf -
 
 download_selenoid:  ## Download selenoid
 	wget https://github.com/aerokube/selenoid/releases/download/1.11.2/selenoid_linux_amd64

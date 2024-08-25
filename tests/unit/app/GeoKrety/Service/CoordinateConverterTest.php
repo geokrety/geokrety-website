@@ -50,7 +50,7 @@ class CoordinateConverterTest extends Mockery\Adapter\Phpunit\MockeryTestCase {
             ['test' => 'N 52.205205 W 21.190891', 'result' => ['lat' => 52.205205, 'lon' => -21.190891, 'format' => 'fromHemisphereDegree']],
             ['test' => '+52.205205 -21.190891', 'result' => ['lat' => 52.205205, 'lon' => -21.190891, 'format' => 'fromDecimalDegree']],
 
-            // //["test" => "52 12.3123 21 11.45345", "result" => ["lat" => 52.205205, "lon" => 21.190891, "format" => 'fromDegreeMinute']],
+            ['test' => '52 12.3123 21 11.45345', 'result' => ['lat' => 52.205205, 'lon' => 21.190891, 'format' => 'fromHemisphereDegreeMinute']],
             ['test' => '52 12.3123 -21 11.45345', 'result' => ['lat' => 52.205205, 'lon' => -21.190891, 'format' => 'fromHemisphereDegreeMinute']],
             ['test' => '+52 12.3123 -21 11.45345', 'result' => ['lat' => 52.205205, 'lon' => -21.190891, 'format' => 'fromHemisphereDegreeMinute']],
             ['test' => '+52 12.3123 +21 11.45345', 'result' => ['lat' => 52.205205, 'lon' => 21.190891, 'format' => 'fromHemisphereDegreeMinute']],
@@ -67,7 +67,7 @@ class CoordinateConverterTest extends Mockery\Adapter\Phpunit\MockeryTestCase {
             ['test' => "N 52° 12' 18\", E 21° 11' 27\"", 'result' => ['lat' => 52.205000, 'lon' => 21.190833, 'format' => 'fromHemisphereDegreeMinuteSecond']],
             ['test' => 'N52 12.3123 E21 11.45345', 'result' => ['lat' => 52.205205, 'lon' => 21.190891, 'format' => 'fromHemisphereDegreeMinute']],
             ['test' => 'N 52 12.3123 E 21 11.45345', 'result' => ['lat' => 52.205205, 'lon' => 21.190891, 'format' => 'fromHemisphereDegreeMinute']],
-            // ["test" => "N 52° 10.369' - 021° 01.542'", "result" => ["lat" => 52.205205, "lon" => 21.190891, "format" => 'fromHemisphereDegreeMinute']],
+            ['test' => "N 52° 10.369' - 021° 01.542'", 'result' => ['lat' => 52.172817, 'lon' => -21.025700, 'format' => 'fromHemisphereDegreeMinute']],
             ['test' => 'S 52°36.002 E013°19.205', 'result' => ['lat' => -52.600033, 'lon' => 13.320083, 'format' => 'fromHemisphereDegreeMinute']],
             ['test' => "S 52°36.002' E013°19.205'", 'result' => ['lat' => -52.600033, 'lon' => 13.320083, 'format' => 'fromHemisphereDegreeMinute']],
             ['test' => 'N 49°49.59 W 09°52.2', 'result' => ['lat' => 49.826500, 'lon' => -9.870000, 'format' => 'fromHemisphereDegreeMinute']],

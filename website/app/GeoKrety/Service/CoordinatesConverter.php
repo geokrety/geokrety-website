@@ -10,7 +10,6 @@ use PHPCoord\UnitOfMeasure\Length\Metre;
 
 class CoordinatesConverter {
     // N 57° 27.758 E 022° 50.999
-    // North.: 6189860 East.: 544201 (UTM32) ... lol
     // N 047° 20,363' O 015° 02,705'
     // N52°47.862 O008°.23.786
     // 50.260147°N, 21.970291°E
