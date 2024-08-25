@@ -131,6 +131,7 @@ window.Parsley.addAsyncValidator('checkCoordinates', function(xhr) {
     this.removeError('errorLatlon');
     if (valid) {
         positionUpdate([data.lat, data.lon]);
+        showMarker([data.lat, data.lon]);
     } else {
         this.addError('errorLatlon', { message: data.error })
     }

@@ -75,7 +75,7 @@ Fill Coordinates With Invalid Coordinates
     [Template]    Fill Coordinates Validate The Form As Error
     ${INVALID_GC_WPT}    A
     ${INVALID_GC_WPT}    1
-    ${INVALID_GC_WPT}    1111111111 222222222
+    ${INVALID_GC_WPT}    N43.2 R6.4
 
 Fill Coordinates Show Map Centered
     Fill Coordinates                        ${INVALID_GC_WPT}                   ${WPT_GC_1.coords}
