@@ -40,6 +40,7 @@ class CoordinateConverterTest extends Mockery\Adapter\Phpunit\MockeryTestCase {
             ['test' => '46° 44′ 0″ N, 12° 11′ 0″ E', 'result' => ['lat' => 46.733333, 'lon' => 12.183333, 'format' => 'fromDegreeMinuteSecondHemisphere']],
             ['test' => '55° 3′ 23.96″ N, 9° 44′ 32.71″ E', 'result' => ['lat' => 55.056656, 'lon' => 9.742419, 'format' => 'fromDegreeMinuteSecondHemisphere']],
             ['test' => 'N55° 3′ 23.96″ E9° 44′ 32.71″', 'result' => ['lat' => 55.056656, 'lon' => 9.742419, 'format' => 'fromHemisphereDegreeMinuteSecond']],
+            ['test' => 'N 53° 28,704\' · E 014° 47,064\'', 'result' => ['lat' => 53.478400, 'lon' => 14.784400, 'format' => 'fromHemisphereDegreeMinute']],
 
             // Examples from the help page
             ['test' => '52.205205 21.190891', 'result' => ['lat' => 52.205205, 'lon' => 21.190891, 'format' => 'fromDecimalDegree']],

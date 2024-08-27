@@ -110,6 +110,7 @@ class CoordinatesConverter {
         $input = str_replace(' ', '', $coords);
         $input = str_replace('O', 'W', $input);
         $input = str_replace('+', '', $input);
+        $input = str_replace('·', '', $input);
         $input = preg_replace('/[″"],/', '"', $input);
         $input = str_replace(',', '.', $input);
         $input = preg_replace('/([°º])[,\.]/', '${1}', $input);
