@@ -28,6 +28,7 @@
 
 {block name=javascript}
 {include 'js/registration/registration.validation.tpl.js'}
+{include 'js/registration/registration.events.tpl.js'}
 {include 'js/dialogs/dialog_terms_of_use.tpl.js'}
 {include 'js/registration/username2.tpl.js'}
 {/block}
