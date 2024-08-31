@@ -5,6 +5,8 @@ Variables         ../ressources/vars/browser_config.py
 
 *** Variables ***
 
+&{SELENOID_OPTIONS}    enableVideo=${TRUE}
+
 *** Keywords ***
 
 !Open GeoKrety Browser
@@ -32,6 +34,10 @@ Open GeoKrety Browser Firefox
     Call Method    ${firefox_options}   set_preference    timezone    Africa/Nairobi
     Call Method    ${firefox_options}   set_preference    strictFileInteractability    ${FALSE}
     Call Method    ${firefox_options}   set_capability    strictFileInteractability    ${FALSE}
+
+    # Enable video recording when using selenoid
+    Run Keyword If      ${RECORDING_ENABLED}
+    ...                 Call Method    ${firefox_options}   set_capability    selenoid:options    ${SELENOID_OPTIONS}
 
     Run Keyword If      ${HEADLESS}
     ...                 Call Method    ${firefox_options}   add_argument    -headless

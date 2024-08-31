@@ -94,6 +94,7 @@ jobs:
         id: tests-qa
         env:
           AUTO_REMOTE_URL: true
+          RECORDING_ENABLED: false
         uses: ./.github/actions/run-robot-framework/
 
       - name: Save docker logs
@@ -118,6 +119,23 @@ jobs:
           name: docker-logs-${{ env.SHARD_ID }}
           path: |
             docker-logs/
+
+      - name: Ensure access to recordings
+        if: always()
+        id: recordings
+        run: |
+          chmod +x tests-qa/video
+          has_recordings=false
+          [ "$(ls -A tests-qa/video)" ] && has_recordings=true
+          echo "has_recordings=${has_recordings}" | tee -a $GITHUB_OUTPUT
+
+      - name: Upload recordings
+        if: ${{ always() && steps.tests-qa.outcome != 'skipped' && steps.recordings.outputs.has_recordings == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-recording-${{ env.SHARD_ID }}
+          path: |
+            tests-qa/video/
 
       - name: Upload results
         if: ${{ always() && steps.tests-qa.outcome != 'skipped' }}

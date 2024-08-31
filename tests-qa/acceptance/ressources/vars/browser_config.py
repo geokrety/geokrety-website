@@ -10,6 +10,7 @@ BROWSER = os.getenv("BROWSER", "Firefox").lower()
 HEADLESS = env2bool("HEADLESS", False)
 REMOTE_URL = os.getenv("REMOTE_URL")
 AUTO_REMOTE_URL = env2bool("AUTO_REMOTE_URL", False)
+RECORDING_ENABLED = env2bool("RECORDING_ENABLED", False)
 
 # ###################
 # ## REMOTE_URL    ##
