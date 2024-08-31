@@ -345,7 +345,7 @@ class User extends Base implements \JsonSerializable {
     }
 
     public function hasEmail(): bool {
-        return !is_null($this->_email_hash);
+        return !is_null($this->_email_hash) || !is_null($this->_email);
     }
 
     public function isEmailValid(): bool {
