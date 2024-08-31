@@ -178,7 +178,14 @@ class HallOfFame extends Base {
             'icon' => GK_CDN_LOGOS_URL.'/jetbrains.svg',
             'icon_width' => '70px',
             'link' => 'https://www.jetbrains.com/',
-            'desc' => 'A rich suite of tools that provide an exceptional developer experience',
+            'desc' => '"A rich suite of tools that provide an exceptional developer experience"',
+        ];
+        $credits[] = [
+            'name' => 'UptimeRobot',
+            'icon' => GK_CDN_LOGOS_URL.'/uptimerobot-logo-dark.svg',
+            'icon_width' => '100px',
+            'link' => 'https://uptimerobot.com/',
+            'desc' => '"The world\'s leading uptime monitoring service"',
         ];
         Smarty::assign('app_credits', $credits);
 
