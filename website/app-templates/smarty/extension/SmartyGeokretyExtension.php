@@ -69,6 +69,17 @@ function computeLocationType($logType): string {
     return $logType == '' ? '9' : $logType;
 }
 
+/**
+ * Return '.png' suffix to be added to an svg image url if the output type is set to html_email.
+ *
+ * @param string $output The output type
+ *
+ * @return string The suffix to add, can be '.png' or empty string
+ */
+function svg2png(string $output): string {
+    return $output === 'html_email' ? '.png' : '';
+}
+
 class SmartyGeokretyExtension extends Smarty\Extension\Base {
     public static function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $double_encode = true) {
         $modifier = GeoKrety\Service\Smarty::getSmarty()->getModifierCallback('escape');
@@ -299,10 +310,11 @@ EOT;
         }
         $countryCode = self::smarty_modifier_escape($countryCode);
         // TODO localize country name in title
-        if ($output === 'css') {
-            return sprintf('<span class="flag-icon flag-icon-%s" title="%s"></span>', $countryCode, $countryCode);
-        } elseif ($output === 'html') {
-            return sprintf('<img src="%s/flags/4x3/%s.svg" class="w-4 d-inline-block" width="16" title="%s">', GK_CDN_SERVER_URL, $countryCode, $countryCode);
+        switch ($output) {
+            case 'css':
+                return sprintf('<span class="flag-icon flag-icon-%s" title="%s"></span>', $countryCode, $countryCode);
+            default:
+                return sprintf('<img src="%s/flags/4x3/%s.svg%s" class="w-4 d-inline-block" width="16" title="%s">', GK_CDN_SERVER_URL, $countryCode, svg2png($output), $countryCode);
         }
         throw new Exception('smarty_modifier_country(): Unsupported output mode');
     }
@@ -377,11 +389,12 @@ EOT;
     /**
      * Purpose:  outputs a geokrety icon based on gk type.
      */
-    public function smarty_modifier_gkicon(Geokret $geokret): string {
+    public function smarty_modifier_gkicon(Geokret $geokret, string $output = 'html'): string {
         return sprintf(
-            '<img src="%s/log-icons/%s/icon.svg" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s" width="25px" height="25px">',
+            '<img src="%s/log-icons/%s/icon.svg%s" class="img-fluid w-3" alt="%s" title="%s" data-gk-type="%s" width="25px" height="25px">',
             GK_CDN_IMAGES_URL,
             $geokret->type->getTypeId(),
+            svg2png($output),
             _('GK type icon'),
             $geokret->type->getTypeString(),
             $geokret->type->getTypeId()
@@ -432,7 +445,7 @@ EOT;
     /**
      * Purpose:  outputs a position icon.
      */
-    public function smarty_modifier_logicon(?GeoKrety\Model\Move $move, bool $showSmall = false): string {
+    public function smarty_modifier_logicon(?GeoKrety\Model\Move $move, bool $showSmall = false, string $output = 'html'): string {
         if (is_null($move)) {
             return '';
         }
@@ -440,9 +453,10 @@ EOT;
 
         $url = GK_SITE_BASE_SERVER_URL.Base::instance()->alias('geokret_details', '@gkid='.$move->geokret->gkid);
         $img = sprintf(
-            '<img src="%s/log-icons/0/%s.svg" title="%s" data-gk-move-type="%s" data-gk-move-id="%s" width="%dpx" height="%dpx">',
+            '<img src="%s/log-icons/0/%s.svg%s" title="%s" data-gk-move-type="%s" data-gk-move-id="%s" width="%dpx" height="%dpx">',
             GK_CDN_IMAGES_URL,
             $move->move_type->getLogTypeId(),
+            svg2png($output),
             sprintf('%d: %s', $move->id, $move->move_type->getLogTypeString()),
             $move->move_type->getLogTypeId(),
             $move->id,
