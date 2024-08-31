@@ -48,7 +48,7 @@
                     <small>{$geokret->gkid}</small>
                 </td>
                 <td nowrap>
-                    {if !is_null($geokret->lat) and !is_null($geokret->lon)}{$geokret->country|country:'html' nofilter}{/if}
+                    {if !is_null($geokret->lat) and !is_null($geokret->lon)}{$geokret->country|country:'html_email' nofilter}{/if}
                     {$geokret->last_position|cachelink nofilter}
                 </td>
                 <td>
@@ -87,14 +87,14 @@
         {foreach from=$moves item=move}
             <tr>
                 <td>
-                    {$move|logicon nofilter}
+                    {$move|logicon:false:'html_email' nofilter}
                 </td>
                 <td>
                     {$move->geokret|gklink nofilter}<br>
                     <small>{$move->geokret->gkid}</small>
                 </td>
                 <td nowrap>
-                    {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country:'html' nofilter}{/if}
+                    {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country:'html_email' nofilter}{/if}
                     {$move|cachelink nofilter}
                 </td>
                 <td>
@@ -133,14 +133,14 @@
         {foreach from=$watched item=move}
             <tr>
                 <td>
-                    {$move|logicon nofilter}
+                    {$move|logicon:false:'html_email' nofilter}
                 </td>
                 <td>
                     {$move->geokret|gklink nofilter}<br>
                     <small>{$move->geokret->gkid}</small>
                 </td>
                 <td nowrap>
-                    {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country:'html' nofilter}{/if}
+                    {if !is_null($move->lat) and !is_null($move->lon)}{$move->country|country:'html_email' nofilter}{/if}
                     <small>{$move|cachelink nofilter}</small>
                 </td>
                 <td>
