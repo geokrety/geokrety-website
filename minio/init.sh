@@ -69,15 +69,18 @@ echo "webserver up"
 
 echo "Wait for pictures-processor-downloader to be up"
 for i in $(seq 60); do httping -sc1 -o 200,302 http://${GK_PICTURES_DOWNLOADER_HOST}:${GK_PICTURES_DOWNLOADER_PORT}/file-uploaded && echo OK && break ; sleep 1 ; done
-echo "webserver pictures-processor-downloader"
+echo "webserver pictures-processor-downloader up"
 { mc admin config set minio notify_webhook:pictures-processor-downloader-uploaded queue_limit="0" endpoint="http://${GK_PICTURES_DOWNLOADER_HOST}:${GK_PICTURES_DOWNLOADER_PORT}/file-uploaded" queue_dir="" auth_token="${GK_MINIO_WEBHOOK_AUTH_TOKEN_PP_DOWNLOADER}" && MINIO_RESTART=true; }
 
 echo "Wait for pictures-processor-uploader to be up"
 for i in $(seq 60); do httping -sc1 -o 200,302 http://${GK_PICTURES_UPLOADER_HOST}:${GK_PICTURES_UPLOADER_PORT}/file-uploaded && echo OK && break ; sleep 1 ; done
-echo "webserver pictures-processor-uploader"
+echo "webserver pictures-processor-uploader up"
 { mc admin config set minio notify_webhook:pictures-processor-uploader-uploaded queue_limit="0" endpoint="http://${GK_PICTURES_UPLOADER_HOST}:${GK_PICTURES_UPLOADER_PORT}/file-uploaded" queue_dir="" auth_token="${GK_MINIO_WEBHOOK_AUTH_TOKEN_PP_UPLOADER}" && MINIO_RESTART=true; }
 
 $MINIO_RESTART && mc admin service restart minio --json
+echo "Wait for minio to be up"
+for i in $(seq 60); do mc ready minio --json && echo OK && break ; sleep 1 ; done
+echo "minio up"
 
 # DEBUG
 mc admin config get minio notify_webhook:picture-uploaded
