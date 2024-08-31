@@ -99,6 +99,7 @@ launch-selenoid: ## Launch Selenoid agent
 
 pull-selenoid-images: ## Pull Selenoid images
 	while read i; do docker pull "$$i"; done < <(cat selenoid-browsers.json |jq -r '. | to_entries[] | .value | .versions | to_entries[] | .value | .image')
+	docker pull selenoid/video-recorder:latest-release
 
 install_robot-framework: ## Install robot framework
 	pip install -r requirements.txt
@@ -107,7 +108,7 @@ download_geckodriver:  ## Download geckodriver
 	curl -L https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz | tar xzf -
 
 download_selenoid:  ## Download selenoid
-	wget https://github.com/aerokube/selenoid/releases/download/1.11.2/selenoid_linux_amd64
+	wget https://github.com/aerokube/selenoid/releases/download/1.11.3/selenoid_linux_amd64
 	chmod +x selenoid_linux_amd64
 
 download_bslocal:  ## Download BrowserStack Local agent
