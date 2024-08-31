@@ -37,6 +37,7 @@ ${REGISTRATION_PASSWORD_CONFIRM_INPUT}      //*[@id="passwordConfirmInput"]
 ${REGISTRATION_PREFERRED_LANGUAGE_SELECT}   //*[@id="preferredLanguageInput"]
 ${REGISTRATION_DAILY_MAIL_CHECKBOX}         //*[@id="dailyMailsInput"]
 ${REGISTRATION_TERMS_OF_USE_CHECKBOX}       //*[@id="termsOfUseInput"]
+${REGISTRATION_BANNER_AGRESSIVE_SPAM_RULES}    //*[@id="banner-registration-spam-filter"]
 
 ################
 # SIGN IN FORM

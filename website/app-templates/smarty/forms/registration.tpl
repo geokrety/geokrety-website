@@ -48,6 +48,8 @@
         </div>
     </div>
 
+    {include file='banners/registration_spam_filter.tpl'}
+
     <div class="form-group">
         <label for="passwordInput" class="col-sm-2 control-label">{t}Password{/t}</label>
         <div class="col-sm-8">
