@@ -32,6 +32,6 @@ runs:
       if: inputs.prepare-only == 'false'
       shell: bash
       run: |
-        ${DOCKER_COMPOSE} build \
+        ${DOCKER_COMPOSE} -p gkdev0 build \
           website \
           --build-arg GIT_COMMIT=${{ env.SHORT_REF }}

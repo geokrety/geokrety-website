@@ -7,15 +7,15 @@ runs:
       shell: bash
       run: |
         echo "::group::make composer-install-dev"
-        ${DOCKER_COMPOSE} exec -i website make composer-install-dev
+        ${DOCKER_COMPOSE} -p gkdev0 exec -i website make composer-install-dev
         echo "::endgroup::"
 
     - name: Run PHPUnit tests
       shell: bash
       run: |
-        ${DOCKER_COMPOSE} exec -i website make test-unit
+        ${DOCKER_COMPOSE} -p gkdev0 exec -i website make test-unit
 
     - name: Copy PHPUnit tests report from docker container
       shell: bash
       run: |
-        ${DOCKER_COMPOSE} cp website:/var/www/geokrety/test-unit-report.html test-unit-report.html
+        ${DOCKER_COMPOSE} -p gkdev0 cp website:/var/www/geokrety/test-unit-report.html test-unit-report.html

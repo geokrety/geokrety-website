@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_COMPOSE: docker compose -p gkdev0 -f docker-compose.local.yml --progress plain
+  DOCKER_COMPOSE: docker compose -f docker-compose.local.yml --progress plain
   APT_INSTALL: sudo apt-get -qq install -qq -o=Dpkg::Use-Pty=0 -y
   GK_INSTANCE_COUNT: 3
   SHARD_COUNT: 7
@@ -58,7 +58,7 @@ jobs:
       - name: Pull docker images (background)
         shell: bash
         run: |
-          ${DOCKER_COMPOSE} pull --ignore-buildable &
+          ${DOCKER_COMPOSE} -p gkdev0 pull --ignore-buildable &
 
       - name: Install Robot Framework
         run: |
@@ -102,8 +102,13 @@ jobs:
         continue-on-error: true
         run: |
           mkdir docker-logs
-          for container in nginx website postgres minio pictures-uploader pictures-downloader; do
-            ${DOCKER_COMPOSE} logs ${container} > docker-logs/${container}.log
+          docker ps -a > docker-logs/docker-ps.log
+          for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
+            declare f=0
+            f=$((j - 1))
+            for container in nginx website postgres minio pictures-uploader pictures-downloader; do
+              ${DOCKER_COMPOSE} -p gkdev${f} logs ${container} > docker-logs/${container}-${f}.log
+            done
           done
 
       - name: Kill the docker stack(s)
@@ -333,7 +338,7 @@ jobs:
       - name: Pull docker images (background)
         shell: bash
         run: |
-          ${DOCKER_COMPOSE} pull --ignore-buildable &
+          ${DOCKER_COMPOSE} -p gkdev0 pull --ignore-buildable &
 
       - name: Start Postgres
         uses: ./.github/actions/start-postgres/
@@ -371,7 +376,7 @@ jobs:
       - name: Pull docker images (background)
         shell: bash
         run: |
-          ${DOCKER_COMPOSE} pull --ignore-buildable &
+          ${DOCKER_COMPOSE} -p gkdev0 pull --ignore-buildable &
 
       - name: Start Postgres
         uses: ./.github/actions/start-postgres/

@@ -43,7 +43,7 @@ runs:
       if: inputs.prepare-only == 'false'
       run: |
         # Pull postgres docker image…
-        ${DOCKER_COMPOSE} pull -q postgres &
+        ${DOCKER_COMPOSE} -p gkdev0 pull -q postgres &
 
     - name: Starting postgres…
       shell: bash
