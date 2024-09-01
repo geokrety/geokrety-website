@@ -78,6 +78,9 @@ class Login extends Base {
      * @param bool        $redirect Redirect to GOTO url
      */
     public static function connectUser(\Base $f3, User $user, ?string $method = null, bool $redirect = true) {
+        $user->touch('last_login_datetime');
+        $user->save();
+
         $f3->set('CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USERNAME', $user->username);
