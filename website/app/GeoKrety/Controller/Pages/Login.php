@@ -78,6 +78,9 @@ class Login extends Base {
      * @param bool        $redirect Redirect to GOTO url
      */
     public static function connectUser(\Base $f3, User $user, ?string $method = null, bool $redirect = true) {
+        $user->touch('last_login_datetime');
+        $user->save();
+
         $f3->set('CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USERNAME', $user->username);
@@ -85,9 +88,11 @@ class Login extends Base {
         if (in_array($user->id, GK_SITE_ADMINISTRATORS)) {
             $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_ADMINISTRATORS);
             $f3->set('SESSION.IS_ADMIN', true);
+            $f3->set('SESSION.ADMIN_ID', $user->id);
         } else {
             $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
             $f3->set('SESSION.IS_ADMIN', false);
+            $f3->clear('SESSION.ADMIN_ID');
         }
         Smarty::assign('current_user', $user);
         Event::instance()->emit("user.login.$method-effective", $user);

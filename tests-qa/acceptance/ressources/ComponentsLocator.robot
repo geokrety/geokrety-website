@@ -22,6 +22,8 @@ ${NAVBAR_ACTIONS_CREATE_GEOKRET_LINK}       //*[@id="navbar-actions-create"]
 ${NAVBAR_ACTIONS_CLAIM_GEOKRET_LINK}        //*[@id="navbar-actions-claim"]
 ${NAVBAR_ACTIONS_SEARCH_LINK}               //*[@id="navbar-actions-search"]
 ${NAVBAR_ACTIONS_PHOTO_GALLERY_LINK}        //*[@id="navbar-actions-gallery"]
+${NAVBAR_ACTIONS_IMPERSONATE_USER_START_LINK}    //*[@id="navbar-impersonate-start"]
+${NAVBAR_ACTIONS_IMPERSONATE_USER_STOP_LINK}     //*[@id="navbar-impersonate-stop"]
 
 
 ################
