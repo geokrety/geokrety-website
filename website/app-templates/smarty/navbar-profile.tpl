@@ -1,6 +1,15 @@
 {if $f3->get('SESSION.IS_LOGGED_IN') && !is_null($current_user)}
+
 {if $f3->get('SESSION.IS_ADMIN')}
-<li><a id="navbar-profile-admin" href="{'admin_home'|alias}">{fa icon="support"} {t}Admin{/t}</a></li>
+<li><a id="navbar-profile-admin" href="{'admin_home'|alias}" class="navbar-admin">{fa icon="support"} {t}Admin{/t}</a></li>
+    {if $f3->get('SESSION.ADMIN_ID') }
+        {if isset($user) && $user->id !== $f3->get('SESSION.CURRENT_USER')}
+            <li><a id="navbar-impersonate-start" href="{'admin_impersonate_user'|alias:sprintf('userid=%d', $user->id)}" title="Impersonate {$user->username} account" class="navbar-admin">{fa icon="user-secret"}</a></li>
+        {/if}
+        {if $f3->get('SESSION.ADMIN_IMPERSONATING') === true}
+            <li><a id="navbar-impersonate-stop" href="{'admin_impersonate_user_stop'|alias}" title="Stop impersonating {$f3->get('SESSION.CURRENT_USERNAME')} account" class="navbar-admin">{fa icon="user-times"}</a></li>
+        {/if}
+    {/if}
 {/if}
 <li>
     <a id="navbar-profile-profile" href="{'user_details'|alias:sprintf('userid=%d', $f3->get('SESSION.CURRENT_USER'))}">

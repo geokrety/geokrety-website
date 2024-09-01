@@ -88,9 +88,11 @@ class Login extends Base {
         if (in_array($user->id, GK_SITE_ADMINISTRATORS)) {
             $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_ADMINISTRATORS);
             $f3->set('SESSION.IS_ADMIN', true);
+            $f3->set('SESSION.ADMIN_ID', $user->id);
         } else {
             $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_AUTHENTICATED);
             $f3->set('SESSION.IS_ADMIN', false);
+            $f3->clear('SESSION.ADMIN_ID');
         }
         Smarty::assign('current_user', $user);
         Event::instance()->emit("user.login.$method-effective", $user);

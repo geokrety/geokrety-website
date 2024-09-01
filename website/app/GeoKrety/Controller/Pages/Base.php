@@ -22,6 +22,7 @@ abstract class Base {
         'devel_mail',
         'devel_mail_delete',
         'devel_mail_delete_all',
+        'admin_impersonate_user_stop',
     ];
 
     protected ?User $current_user = null;
