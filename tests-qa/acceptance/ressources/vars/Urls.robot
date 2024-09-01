@@ -107,6 +107,13 @@ ${PAGE_LEGACY_API_EXPORT_URL}           ${GK_URL}/api/v1/export
 ${PAGE_LEGACY_API_EXPORT2_URL}          ${GK_URL}/api/v1/export2
 ${PAGE_LEGACY_API_EXPORT_OC_URL}        ${GK_URL}/api/v1/export_oc
 
+# ADMIN
+${PAGE_ADMIN_HOME}                      ${PAGE_HOME_URL}/admin
+
+# IMPERSONATION
+${PAGE_ADMIN_IMPERSONATE_USER_START}    ${PAGE_ADMIN_HOME}/impersonate/\${params.userid}/start
+${PAGE_ADMIN_IMPERSONATE_USER_STOP}     ${PAGE_ADMIN_HOME}/impersonate/stop
+
 *** Keywords ***
 
 Go To Url
