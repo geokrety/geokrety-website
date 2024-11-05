@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-31 16:07+0000\n"
-"PO-Revision-Date: 2024-08-31 16:20\n"
+"PO-Revision-Date: 2024-11-05 02:11\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -1400,7 +1400,8 @@ msgstr "Zgoda na zbieranie statystyk użycia strony"
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:46
 #: website/app-templates/smarty/blocks/user/tracking.tpl:10
 msgid "We collect site usage analytics, this help us understanding how the site is used and how to enhance it."
-msgstr "Zbieramy analizy użytkowania witryny, pomagamy nam to zrozumieć, w jaki sposób strona jest używana i jak ją ulepszyć."
+msgstr "Zbieramy informacje o tym, w jaki sposób używasz witryny. Dzięki temu możemy stale ją ulepszać.\n"
+"W każdej chwili możesz wyłączyć śledzenie."
 
 #: website/app-templates/smarty/forms/registration.tpl:109
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:58
@@ -2481,7 +2482,7 @@ msgstr ""
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:40
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
 msgid "Delete my account"
-msgstr ""
+msgstr "Usuń moje konto"
 
 #: website/app-templates/smarty/dialog/admin_users_prize_awarder_manual.tpl:4
 msgid "Award %1 with:"
@@ -2560,7 +2561,7 @@ msgstr "Inwentarz"
 
 #: website/app-templates/smarty/navbar-profile.tpl:19
 msgid "My GeoKrety"
-msgstr "Moje geokrety"
+msgstr "Moje GeoKrety"
 
 #: website/app-templates/smarty/navbar-profile.tpl:20
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:3
@@ -2582,11 +2583,11 @@ msgstr "Moje fotki"
 
 #: website/app-templates/smarty/navbar-profile.tpl:26
 msgid "Photos of my GeoKrety"
-msgstr "Fotki moich geokretów"
+msgstr "Zdjęcia moich GeoKretów"
 
 #: website/app-templates/smarty/navbar-profile.tpl:28
 msgid "Where are my GeoKrety?"
-msgstr "Gdzie są moje GeoKrety?"
+msgstr "Mapa moich GeoKretów"
 
 #: website/app-templates/smarty/navbar-profile.tpl:30
 #: website/app-templates/smarty/navbar-profile.tpl:34
@@ -2599,7 +2600,7 @@ msgstr "Rejestracja"
 
 #: website/app-templates/smarty/navbar-right.tpl:5
 msgid "Search…"
-msgstr ""
+msgstr "Szukaj..."
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:3
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:9
@@ -4424,15 +4425,15 @@ msgstr "Wybierz obrazek statystyk"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:5
 msgid "Danger zone"
-msgstr ""
+msgstr "Usuwanie konta"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:8
 msgid "Be careful, actions in this section are irreversible."
-msgstr ""
+msgstr "Bądź ostrożny, usunięcia konta nie można cofnąć!"
 
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:11
 msgid "Delete your account"
-msgstr ""
+msgstr "Usuń konto"
 
 #: website/app-templates/smarty/blocks/user/details.tpl:11
 msgid "Subscribe to RSS channel"
@@ -4488,7 +4489,7 @@ msgstr "Wygeneruj nowy secid"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:4
 msgid "Awards"
-msgstr "Nagrody"
+msgstr "Odznaki"
 
 #: website/app-templates/smarty/blocks/user/awards.tpl:10
 msgid "No award received yet."
@@ -4508,11 +4509,11 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/tracking.tpl:26
 msgid "Opt-out from usage analytics"
-msgstr "Niezgoda na zbieranie statystyk użycia strony"
+msgstr "Nie zbieraj informacji o mnie."
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:16
 msgid "Own GeoKrety"
-msgstr "Posiadane GeoKrety"
+msgstr "Moje GeoKrety"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:16
 msgid "Geokrety owned by %1"
@@ -4520,7 +4521,7 @@ msgstr "Geokrety należące do %1"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:20
 msgid "My watched GeoKrety"
-msgstr "Moje obserwowane GeoKrety"
+msgstr "Obserwowane GeoKrety"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:20
 msgid "Geokrety watched by %1"
@@ -4528,7 +4529,7 @@ msgstr "Geokrety obserwowane przez %1"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:24
 msgid "My moves"
-msgstr "Moje przeniesienia"
+msgstr "Moje logi"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:24
 msgid "%1's moves"
@@ -4536,7 +4537,7 @@ msgstr "%1 przeniesień"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:28
 msgid "Moves of my GeoKrety"
-msgstr "Przeniesienia moich GeoKretów"
+msgstr "Ruchy moich geokretów"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:28
 msgid "Moves of %1's GeoKrety"
@@ -4544,7 +4545,7 @@ msgstr "Przeniesienia %1 GeoKretów"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:32
 msgid "My posted pictures"
-msgstr "Dodane zdjęcia"
+msgstr "Moje zdjęcia"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:32
 msgid "Pictures posted by %1"
@@ -4552,7 +4553,7 @@ msgstr "Obrazy opublikowane przez %1"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:36
 msgid "Pictures of my GeoKrety"
-msgstr "Fotki moich GeoKretów"
+msgstr "Zdjęcia moich GeoKretów"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:40
 msgid "Map of my GeoKrety"
@@ -4604,7 +4605,7 @@ msgstr ""
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:17
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
+msgstr "%1 przeniósł <strong>%2</strong> GeoKretów, na odległość <strong>%3</strong> km."
 
 #: website/app-templates/smarty/blocks/user/map_home.tpl:10
 msgid "No home coordinates have been defined."
