@@ -36,15 +36,6 @@
         </div>
 
         <div class="row">
-            <label class="col-sm-2 control-label">
-                <div data-toggle="tooltip" title="International Relay Chat">{t}IRC{/t}</div>
-            </label>
-            <div class="col-sm-6">
-                <a href="https://webchat.freenode.net/?channels=geokrety">Freenode - #GeoKrety</a>
-            </div>
-        </div>
-
-        <div class="row">
             <label class="col-sm-2 control-label">{t}Twitter{/t}</label>
             <div class="col-sm-6">
                 <a href="https://twitter.com/geokrety">@GeoKrety</a>
