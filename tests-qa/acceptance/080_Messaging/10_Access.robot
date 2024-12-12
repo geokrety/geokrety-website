@@ -65,6 +65,14 @@ Users Without A Validated Email Cannot Be Contacted
     Go To Url                                       ${PAGE_USER_3_CONTACT_URL}    redirect=${PAGE_USER_3_PROFILE_URL}
     Page Should Contain                             This user has no valid email
 
+New Users Cannot Contact
+    Sign In ${USER_4.name} Fast
+    Go To Url                                       ${PAGE_USER_1_PROFILE_URL}
+    Page Should Not Contain Element                 ${USER_PROFILE_CONTACT_BUTTON}
+
+    Go To Url                                       ${PAGE_GEOKRETY_1_DETAILS_URL}
+    Page Should Not Contain Element                 ${GEOKRET_DETAILS_CONTACT_BUTTON}
+
 Access By Not An Id
     Sign In ${USER_1.name} Fast
     Go To Url                                       ${PAGE_USER_CONTACT_URL}    userid=FOOBAR    redirect=${PAGE_HOME_URL_EN}
@@ -81,6 +89,7 @@ Access By GeoKrety Not An Id
 Test Setup
     Clear Database And Seed ${2} users
     Seed ${1} users with email status ${1}    start_at=3
+    Seed ${1} users with joined_days_ago ${1}     start_at=4
     Seed ${1} geokrety owned by ${1}
     Sign Out Fast
 

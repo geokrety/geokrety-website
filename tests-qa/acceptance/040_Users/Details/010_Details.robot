@@ -58,7 +58,7 @@ Has Public Information
     Go To Url                           ${url}
     Element Should Contain              ${USER_PROFILE_USERNAME}                ${user.name}
     Page Should Contain Element         ${USER_PROFILE_JOIN_TIME_LABEL}
-    Element Should Contain              ${USER_PROFILE_JOIN_TIME}               second
+    Element Should Contain              ${USER_PROFILE_JOIN_TIME}               1 week ago
     Page Should Contain Element         ${USER_PROFILE_LANGUAGE_LABEL}
     Element Should Contain              ${USER_PROFILE_LANGUAGE}                English
 

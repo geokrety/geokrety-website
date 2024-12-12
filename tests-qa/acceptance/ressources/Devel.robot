@@ -127,6 +127,11 @@ Seed ${count} users with email status ${email_status}
     Go To Url Fast                      ${PAGE_SEED_USER}?email_invalid\=${email_status}&i\=${start_at}    count=${count}
     Empty Dev Mailbox Fast
 
+Seed ${count} users with joined_days_ago ${joined_days_ago}
+    [Arguments]    ${start_at}=1
+    Go To Url Fast                      ${PAGE_SEED_USER}?joined_days_ago\=${joined_days_ago}&i\=${start_at}    count=${count}
+    Empty Dev Mailbox Fast
+
 Seed ${count} users without terms of use with status ${status}
     Go To Url Fast                      ${PAGE_SEED_USER}/status/${status}/no-terms-of-use    count=${count}
     Empty Dev Mailbox Fast

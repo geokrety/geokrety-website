@@ -42,6 +42,11 @@ class DatabaseSeed extends Base {
             if ($terms_of_use) {
                 $user->touch('terms_of_use_datetime');
             }
+            $joined_days = GK_USERS_CONTACT_WAITING_DAYS + 1;
+            if ($f3->exists('GET.joined_days_ago')) {
+                $joined_days = $f3->get('GET.joined_days_ago');
+            }
+            $user->joined_on_datetime = (new \DateTime())->sub(\DateInterval::createFromDateString(sprintf('%s day', $joined_days)))->format(GK_DB_DATETIME_FORMAT);
             if ($user->validate()) {
                 $user->save();
                 echo sprintf("Create user: %s\n", $user->username);
