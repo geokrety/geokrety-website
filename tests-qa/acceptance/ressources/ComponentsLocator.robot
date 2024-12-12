@@ -47,6 +47,7 @@ ${GEOKRET_CREATE_LABEL_TEMPLATE_SELECT}     //*[@id="inputLabelTemplate"]
 ${GEOKRET_DETAILS_DETAILS_PANEL}                //*[@id="geokretyDetailsPanel"]
 ${GEOKRET_DETAILS_DETAILS_PANEL_HEADING}        ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-heading")]
 ${GEOKRET_DETAILS_DETAILS_PANEL_BODY}           ${GEOKRET_DETAILS_DETAILS_PANEL}/div[contains(@class, "panel-body")]
+${GEOKRET_DETAILS_CONTACT_BUTTON}               //*[@id="userContactButton"]
 
 ${GEOKRET_DETAILS_NAME}                         ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/a[@data-gk-link="geokret"]
 ${GEOKRET_DETAILS_TYPE}                         ${GEOKRET_DETAILS_DETAILS_PANEL}/div[@class="panel-heading"]/small

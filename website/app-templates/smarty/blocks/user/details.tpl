@@ -3,7 +3,7 @@
         <img id="userDetailsTypeIcon" src="{GK_CDN_IMAGES_URL}/log-icons/2/icon.svg" width="25px" height="25px" data-gk-type="" />
         {$user|userlink nofilter}
         <div class="btn-group pull-right" role="group">
-            {if $f3->get('SESSION.CURRENT_USER') && !$user->isCurrentUser() && $user->email}
+            {if $f3->get('SESSION.CURRENT_USER') && !$user->isCurrentUser() && $current_user->canSendMail() && $user->email}
             <button id="userContactButton" class="btn btn-primary btn-xs" title="{t user=$user->username}Send a message to %1{/t}" data-toggle="modal" data-target="#modal" data-type="user-contact" data-id="{$user->id}">
                 {fa icon="envelope"}
             </button>
