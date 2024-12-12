@@ -50,6 +50,9 @@ class UserContact extends Base {
     }
 
     public function get(\Base $f3) {
+        if (!$this->currentUser->canSendMail()) {
+            $f3->reroute('@home');
+        }
         if (!$this->currentUser->isEmailValid()) {
             Danger::message_full_screen(_('Your email address must be validated before you can contact other players.'), _('Action is not possible'));
         }
@@ -58,6 +61,9 @@ class UserContact extends Base {
     }
 
     public function get_ajax(\Base $f3) {
+        if (!$this->currentUser->canSendMail()) {
+            $f3->reroute('@home');
+        }
         if (!$this->currentUser->isEmailValid()) {
             Danger::message(_('Your email address must be validated before you can contact other players.'), _('Action is not possible'));
             exit;
@@ -67,11 +73,15 @@ class UserContact extends Base {
     }
 
     public function post(\Base $f3) {
+        if (!$this->currentUser->canSendMail()) {
+            $f3->reroute('@home');
+        }
+        // TODO count move number
+        $this->checkCsrf();
         if (!$this->currentUser->isEmailValid()) {
             Danger::message(_('Your email address must be validated before you can contact other players.'), _('Action is not possible'));
             exit;
         }
-        $this->checkCsrf();
         $this->loadToUser($f3);
         $mail = $this->mail;
         $mail->subject = $f3->get('POST.subject');

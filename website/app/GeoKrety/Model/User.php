@@ -340,6 +340,14 @@ class User extends Base implements \JsonSerializable {
         return self::ACCOUNT_STATUS_TEXT[$this->account_valid];
     }
 
+    public function isFreshUser(): bool {
+        return (new \DateTime())->diff($this->joined_on_datetime)->d <= GK_USERS_CONTACT_WAITING_DAYS;
+    }
+
+    public function canSendMail(): bool {
+        return !$this->isFreshUser();
+    }
+
     public function emailStatusText(): string {
         return self::USER_EMAIL_TEXT[$this->email_invalid];
     }

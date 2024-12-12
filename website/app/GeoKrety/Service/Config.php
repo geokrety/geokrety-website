@@ -370,6 +370,9 @@ class Config extends \Prefab {
         define('GK_PICTURE_CAPTION_MAX_LENGTH', getenv('GK_PICTURE_CAPTION_MAX_LENGTH') ?: 50);
         define('GK_MOVE_COMMENT_MAX_LENGTH', getenv('GK_MOVE_COMMENT_MAX_LENGTH') ?: 5120);
 
+        // USERS
+        define('GK_USERS_CONTACT_WAITING_DAYS', (int) getenv('GK_USERS_CONTACT_WAITING_DAYS') ?: 7);
+
         // GeoKrety generator
         define('GK_GENERATOR_MAX_COUNT', getenv('GK_GENERATOR_MAX_COUNT') ?: 100);
         define('GK_GENERATOR_TRACKING_CODE_ALPHABET', getenv('GK_GENERATOR_TRACKING_CODE_ALPHABET') ?: 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789');
