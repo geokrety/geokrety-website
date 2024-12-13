@@ -1,0 +1,12 @@
+name: Install ImageMagick
+
+runs:
+  using: composite
+  steps:
+
+    - name: Install ImageMagick
+      shell: bash
+      run: |
+        echo "::group::Install ImageMagick"
+        sudo apt-get install -y  imagemagick
+        echo "::endgroup::"
