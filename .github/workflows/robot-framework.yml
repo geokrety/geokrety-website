@@ -66,6 +66,9 @@ jobs:
           pip3 install -r tests-qa/requirements.txt &
           echo "::endgroup::"
 
+      - name: Install ImageMagick
+        uses: ./.github/actions/install-imagemagick/
+
       - name: Configure Sentry
         shell: bash
         run: |
