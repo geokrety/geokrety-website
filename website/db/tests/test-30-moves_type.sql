@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(87);
+SELECT plan(88);
 
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (2, 'test 2', '127.0.0.1');
@@ -15,8 +15,9 @@ SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetim
 SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:02+00', 1, NULL)$$);
 SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:03+00', 2, NULL)$$);
 SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:04+00', 3, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540')$$);
-SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:05+00', 4, NULL)$$);
-SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:06+00', 5, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540')$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:05+00', 3, NULL)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:06+00', 4, NULL)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type", "position") VALUES (1, 1, '2024-07-21 12:15:07+00', 5, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540')$$);
 
 -- Book
 SELECT lives_ok($$INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "holder", "created_on_datetime") VALUES (2, 'test', 1, 1, 1, '2024-07-21 12:15:00+00')$$);

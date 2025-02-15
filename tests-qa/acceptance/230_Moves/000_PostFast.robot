@@ -11,6 +11,7 @@ Predefined Moves
     ${MOVE_2}    # Grab
     ${MOVE_3}    # Comment
     ${MOVE_4}    # Seen
+    ${MOVE_4_NO_LOCATION}    # Seen without location
     ${MOVE_5}    # Archive
     ${MOVE_6}    # Dip
 

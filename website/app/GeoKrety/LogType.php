@@ -32,6 +32,10 @@ class LogType {
         self::LOG_TYPE_DIPPED,
     ];
 
+    public const LOG_TYPES_OPTIONAL_COORDINATES = [
+        self::LOG_TYPE_SEEN,
+    ];
+
     public const LOG_TYPES_COUNT_KILOMETERS = [
         self::LOG_TYPE_DROPPED,
         self::LOG_TYPE_SEEN,
@@ -98,6 +102,10 @@ class LogType {
 
     public function isCoordinatesRequired() {
         return in_array($this->logtype, self::LOG_TYPES_REQUIRING_COORDINATES, true);
+    }
+
+    public function isCoordinatesOptional() {
+        return in_array($this->logtype, self::LOG_TYPES_OPTIONAL_COORDINATES, true);
     }
 
     public function isCountingKilometers() {

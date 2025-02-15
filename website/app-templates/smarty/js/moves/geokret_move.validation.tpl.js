@@ -127,12 +127,14 @@ window.Parsley.addAsyncValidator('checkWpt', function(xhr) {
 window.Parsley.addAsyncValidator('checkCoordinates', function(xhr) {
     var valid = 200 === xhr.status;
     var data = $.parseJSON(xhr.responseText);
-    var latlon = $('#latlon').parsley();
     this.removeError('errorLatlon');
     if (valid) {
         positionUpdate([data.lat, data.lon]);
         showMarker([data.lat, data.lon]);
     } else {
+        if ($("#wpt").val() === "" && isLocationOptional()) {
+            return true
+        }
         this.addError('errorLatlon', { message: data.error })
     }
     return valid;
@@ -212,7 +214,10 @@ $('#wpt').parsley().on('field:success', function() {
 });
 
 // Events for LATLON
-$('#latlon').parsley().on('field:success', function() {
+$('#latlon').parsley().on('field:ajaxoptions', function(field, options) {
+    options.data["logtype"] = $("input[type=radio][name='logtype']:checked", '#moveForm').val()
+    options.data["waypoint"] = $("#wpt").val()
+}).on('field:success', function() {
     isValidLatlon = true;
     showMarker($("#latlon").val().split(' '));
     colorizeParentPanel($('#wpt'), true);

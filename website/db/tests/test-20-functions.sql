@@ -7,7 +7,7 @@ SELECT plan(86);
 -- Run the tests.
 SELECT is(valid_move_types(), '{0,1,2,3,4,5}'::smallint[], 'Check valid_move_types()');
 SELECT is(move_counting_kilometers(), '{0,3,5}'::smallint[], 'Check move_counting_kilometers()');
-SELECT is(move_requiring_coordinates(), '{0,3,5}'::smallint[], 'Check move_requiring_coordinates()');
+SELECT is(move_requiring_coordinates(), '{0,5}'::smallint[], 'Check move_requiring_coordinates()');
 SELECT is(valid_moves_comments_types(), '{0,1}'::smallint[], 'Check valid_moves_comments_types()');
 SELECT is(moves_types_markable_as_missing(), '{0,3}'::smallint[], 'Check moves_types_markable_as_missing()');
 SELECT is(moves_type_last_position(), '{0,1,3,4,5}'::smallint[], 'Check moves_type_last_position()');

@@ -67,7 +67,9 @@ class Moves {
             }
         }
 
-        if ($move->move_type->isCoordinatesRequired()) {
+        if ($move->move_type->isCoordinatesRequired() && !$move->move_type->isCoordinatesOptional()
+            || $move->move_type->isCoordinatesOptional() && $move_data['waypoint'] != ''
+        ) {
             // Waypoint validation
             $waypointChecker = new WaypointValidation();
             if ($waypointChecker->validate($move_data['waypoint'], $move_data['coordinates'])) {

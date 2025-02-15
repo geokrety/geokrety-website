@@ -35,6 +35,54 @@ Fill Form Naturally Require Coordinates
     Should be True    ${after} - ${before} < 1     msg=The total page load time was more than 1s!
 
 
+Seen Accept Coordinates If Given
+    Sign Out Fast
+    Go To Move
+
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
+
+    Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_MEET_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_NEW_LOCATION_PANEL}
+
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${WPT_OC_1.id}
+    Simulate Event                          ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         blur
+    Click Button And Check Panel Validation Has Success    ${MOVE_NEW_LOCATION_NEXT_BUTTON}    ${MOVE_NEW_LOCATION_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Input Text                              ${MOVE_ADDITIONAL_DATA_USERNAME_INPUT}      ${USER_1.name}
+    Input Inscrybmde                        \#comment                                   TEST
+    Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    ${before}=    Get Current Date    result_format=epoch
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
+    ${after}=       Get Current Date    result_format=epoch
+    Should be True    ${after} - ${before} < 1     msg=The total page load time was more than 1s!
+
+
+Seen Accept No Coordinates
+    Sign Out Fast
+    Go To Move
+
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
+
+    Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_MEET_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_NEW_LOCATION_PANEL}
+
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${EMPTY}  # EMPTY LOCATION
+    Simulate Event                          ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         blur
+    Click Button And Check Panel Validation Has Success    ${MOVE_NEW_LOCATION_NEXT_BUTTON}    ${MOVE_NEW_LOCATION_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Input Text                              ${MOVE_ADDITIONAL_DATA_USERNAME_INPUT}      ${USER_1.name}
+    Input Inscrybmde                        \#comment                                   TEST
+    Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    ${before}=    Get Current Date    result_format=epoch
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
+    ${after}=       Get Current Date    result_format=epoch
+    Should be True    ${after} - ${before} < 1     msg=The total page load time was more than 1s!
+
+
 Fill Form Naturally Doesn t Require Coordinates
     Sign Out Fast
     Go To Home
