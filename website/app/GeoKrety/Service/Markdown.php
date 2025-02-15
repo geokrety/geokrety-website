@@ -26,6 +26,9 @@ class Markdown extends \Prefab {
     }
 
     public static function toHtml($string) {
+        // Fix OTF import issue from GKv1 #1081
+        $string = preg_replace('/\[link\]\((.*?)\)/', '$1', $string);
+
         $html = self::getParser()->toHtml($string);
 
         return HTMLPurifierSafe::getPurifier()->purify($html);
@@ -36,6 +39,9 @@ class Markdown extends \Prefab {
         $string = str_replace('<br />', '  ', $string);
         $string = str_replace('[<a href=\'', '[link](', $string);
         $string = str_replace('\' rel=nofollow>Link</a>]', ')', $string);
+
+        // Fix OTF import issue from GKv1 #1081
+        $string = preg_replace('/\[link\]\((.*?)\)/', '$1', $string);
 
         return HTMLPurifier::getPurifier()->purify($string);
     }
