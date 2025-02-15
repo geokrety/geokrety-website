@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(10);
+SELECT plan(12);
 \set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set move_type_dropped 0
 \set move_type_grabbed 1
@@ -35,6 +35,10 @@ SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_d
 -- waypoint will be saved uppercase
 SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type", "waypoint") VALUES (9, 1, 1, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540', '2020-04-07 09:00:00+00', 0, 'gc5brqk')$$);
 SELECT is(waypoint, 'GC5BRQK', 'will be saved uppercase') from gk_moves WHERE id = 9::bigint;
+
+-- Move type 3 (seen) optionally accept coordinates
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type", "waypoint", "position") VALUES (10, 1, 1, '2020-04-07 10:00:00+00', 3, 'GC5BRQK', '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540')$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (11, 1, 1, '2020-04-07 11:00:00+00', 3)$$);
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

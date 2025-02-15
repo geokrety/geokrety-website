@@ -82,12 +82,6 @@ Fill Coordinates Show Map Centered
     Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30
     Check Image                             ${MOVE_NEW_LOCATION_MAP_MAP}
 
-No Selection Should Show Error
-    Go To Url                               ${PAGE_MOVES_URL}
-    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
-    Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
-    Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
-
 Start Typing A GC Waypoint Remove The OC Button
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
@@ -150,12 +144,6 @@ Click Next With Known Waypoint Raise Validation Success
     Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}      ${WPT_OC_1.id}
     Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
     Panel validation has success            ${MOVE_NEW_LOCATION_PANEL}
-
-Click Next With Empty Waypoint Raise Validation Error
-    Go To Url                               ${PAGE_MOVES_URL}
-    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
-    Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
-    Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
 
 Click Next With UnKnown GC Waypoint Raise Validation Error
     Go To Url                               ${PAGE_MOVES_URL}

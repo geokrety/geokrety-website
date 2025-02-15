@@ -113,12 +113,16 @@ function positionClear() {
 
 // Display the marker on map
 function showMarker(coordinates) {
-    // var latlng = L.latLng(coordinates);
+    if (map === undefined) {
+        return
+    }
     if (cacheMarker === undefined) {
         cacheMarker = L.marker([0, 0]).addTo(map);
     }
-    cacheMarker.setLatLng(coordinates);
-    map.setView(coordinates, 6);
+    if (coordinates.length > 1) {
+        cacheMarker.setLatLng(coordinates);
+        map.setView(coordinates, 6);
+    }
 }
 
 // Remove the marker from map
@@ -216,6 +220,12 @@ function isLocationNeeded() {
     return logtype === undefined ? true : ['0', '3', '5'].includes(logtype);
 }
 
+// Check if a move type optionally require coordinates
+function isLocationOptional() {
+    var logtype = $("input[type=radio][name='logtype']:checked", '#moveForm').val();
+    return logtype === undefined ? false : ['3'].includes(logtype);
+}
+
 function logTypeToText(logtype) {
     var selectedLogTypeText = null;
     switch (logtype) {
@@ -239,6 +249,7 @@ function logTypeToText(logtype) {
 }
 // Toggle location panel based on move type requirement
 function toggleLocationSubfrom() {
+    toggleRequiredCoordinates()
     if (isLocationNeeded()) {
         $('#additionalDataNumber').html('4');
         $("#panelLocation").show();
@@ -248,6 +259,12 @@ function toggleLocationSubfrom() {
             })
         }
         $('#collapseLocation').collapse('show');
+        // Allow empty waypoint
+        if (isLocationOptional()) {
+            $('#wpt').removeAttr('data-parsley-validate-if-empty');
+        } else {
+            $('#wpt').attr('data-parsley-validate-if-empty', '')
+        }
     } else {
         $("#panelLocation").hide();
         $('#additionalDataNumber').html('3');
@@ -276,6 +293,23 @@ function toggleHomeCoordinatesButton() {
     }
 }
 
+// Toggle required coordinates
+function toggleRequiredCoordinates() {
+    if (!isLocationNeeded()) {
+        $("#latlon").removeAttr("required");
+        return;
+    }
+    if (!isLocationOptional()) {
+        $("#latlon").attr("required", "");
+        return
+    }
+    if ($("#wpt").val() !== "") {
+        $("#latlon").attr("required", "");
+        return
+    }
+    $("#latlon").removeAttr("required");
+}
+
 // bind on submit
 $("#submitButton").on('click', function() {
     $("#moveForm").submit();
@@ -299,6 +333,7 @@ $("#wptSearchButton").bind("click", function() {
 $("#wpt").on('input', function() {
     toggleSearchByNameButton()
     toggleHomeCoordinatesButton()
+    toggleRequiredCoordinates()
 });
 
 // bind wptSearchByNameButton

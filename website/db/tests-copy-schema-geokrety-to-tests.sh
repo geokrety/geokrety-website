@@ -16,6 +16,12 @@ pg_dump --file "$tmp_dir/audit-schema.sql" --host "localhost" --port "5432" --us
 pg_dump --file "$tmp_dir/secure-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "secure" "geokrety"
 pg_dump --file "$tmp_dir/notify_queues-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "notify_queues" "geokrety"
 
+sed -i "/transaction_timeout/d" "$tmp_dir/public-schema.sql"
+sed -i "/transaction_timeout/d" "$tmp_dir/geokrety-schema.sql"
+sed -i "/transaction_timeout/d" "$tmp_dir/audit-schema.sql"
+sed -i "/transaction_timeout/d" "$tmp_dir/secure-schema.sql"
+sed -i "/transaction_timeout/d" "$tmp_dir/notify_queues-schema.sql"
+
 sed -i "/CREATE SCHEMA public;/a \
  CREATE EXTENSION postgis WITH SCHEMA public;\
  CREATE EXTENSION postgis_raster WITH SCHEMA public;" "$tmp_dir/public-schema.sql"
@@ -58,5 +64,3 @@ EOF
 
 export DBNAME=tests
 "${DIR}"/tests-srtm-import.sh
-
-rm -rf $tmp_dir
