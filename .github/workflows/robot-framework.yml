@@ -314,7 +314,7 @@ jobs:
         env:
           QA_TEST_DEPLOY_KEY: ${{ secrets.QA_TEST_DEPLOY_KEY || '' }}
         if: env.QA_TEST_DEPLOY_KEY != '' && github.event_name == 'pull_request' && steps.deploy-pages.outcome == 'success'
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
             ### Robot Framework reports
