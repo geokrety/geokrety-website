@@ -13,22 +13,18 @@ class MarkdownTest extends Mockery\Adapter\Phpunit\MockeryTestCase {
         $this->assertEquals('<p>FOO</p>', $res);
 
         $res = $md->toHtml('page Profil [ici]([link](https://coord.info/PRCJYJB).)');
-        $this->assertEquals('<p>page Profil <a href="https://coord.info/PRCJYJB.">ici</a></p>', $res);
-    }
+        $this->assertEquals('<p>page Profil <a href="https://coord.info/PRCJYJB">ici</a></p>', $res);
 
-    public function testToFormattedMarkdown() {
-        $md = new Markdown();
+        $res = $md->toHtml('page Profil <a href="https://coord.info/PRCJYJB">ici</a>');
+        $this->assertEquals('<p>page Profil <a href="https://coord.info/PRCJYJB">ici</a></p>', $res);
 
-        $res = $md->toFormattedMarkdown('[ici](https://coord.info/PRCJYJB)');
-        $this->assertEquals('[ici](https://coord.info/PRCJYJB)', $res);
+        $res = $md->toHtml('Geloggt mit [c:geo - Android]([link](https://play.google.com/store/apps/details?id=cgeo.geocaching))');
+        $this->assertEquals('<p>Geloggt mit <a href="https://play.google.com/store/apps/details?id=cgeo.geocaching">c:geo - Android</a></p>', $res);
 
-        $res = $md->toFormattedMarkdown('page Profil <a href="https://coord.info/PRCJYJB">ici</a>');
-        $this->assertEquals('page Profil ici', $res);
+        $res = $md->toHtml('[Geocaching Loisir]([link](http://geocaching-loisir.fr).)');
+        $this->assertEquals('<p><a href="http://geocaching-loisir.fr">Geocaching Loisir</a></p>', $res);
 
-        $res = $md->toFormattedMarkdown('Geloggt mit [c:geo - Android]([link](https://play.google.com/store/apps/details?id=cgeo.geocaching))');
-        $this->assertEquals('Geloggt mit [c:geo - Android](https://play.google.com/store/apps/details?id=cgeo.geocaching)', $res);
-
-        $res = $md->toFormattedMarkdown('[Geocaching Loisir]([link](http://geocaching-loisir.fr).)');
-        $this->assertEquals('[Geocaching Loisir](http://geocaching-loisir.fr)', $res);
+        $res = $md->toHtml('[Geocaching Loisir]([link](http://geocaching-loisir.fr)foobar)');
+        $this->assertEquals('<p><a href="http://geocaching-loisir.fr">Geocaching Loisir</a></p>', $res);
     }
 }
