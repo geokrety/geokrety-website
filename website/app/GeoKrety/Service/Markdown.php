@@ -41,7 +41,7 @@ class Markdown extends \Prefab {
         $string = str_replace('\' rel=nofollow>Link</a>]', ')', $string);
 
         // Fix OTF import issue from GKv1 #1081
-        $string = preg_replace('/\[link\]\((.*?)\)/', '$1', $string);
+        $string = preg_replace('/\[(.*?)\]\(\[link\]\((https?:\/\/[^\)]+)\)[^\)]?\)/', '[$1]($2)', $string);
 
         return HTMLPurifier::getPurifier()->purify($string);
     }

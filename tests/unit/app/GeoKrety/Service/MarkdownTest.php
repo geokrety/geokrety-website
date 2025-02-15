@@ -27,5 +27,8 @@ class MarkdownTest extends Mockery\Adapter\Phpunit\MockeryTestCase {
 
         $res = $md->toFormattedMarkdown('Geloggt mit [c:geo - Android]([link](https://play.google.com/store/apps/details?id=cgeo.geocaching))');
         $this->assertEquals('Geloggt mit [c:geo - Android](https://play.google.com/store/apps/details?id=cgeo.geocaching)', $res);
+
+        $res = $md->toFormattedMarkdown('[Geocaching Loisir]([link](http://geocaching-loisir.fr).)');
+        $this->assertEquals('[Geocaching Loisir](http://geocaching-loisir.fr)', $res);
     }
 }
