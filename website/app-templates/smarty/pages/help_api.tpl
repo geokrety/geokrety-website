@@ -206,8 +206,8 @@ var_dump($gk);
             <code>state</code> field may have different value than in other
             versions of export scripts. This is because OC sites only need to
             know if a GeoKret is in a cache or in the hands of some geocacher.
-            So, if someone dips a GeoKret, its state will be <code>1</code>
-            (grabbed).
+            So, if someone drop/meet, its state will be <code>1</code>,
+            and grab/dip will be <code>0</code>.
         </div>
         <sample>
             Example: <code>{'api_v1_export_oc'|alias}?modifiedsince={$modified_since}</code>
