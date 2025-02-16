@@ -81,12 +81,12 @@
     <div class="panel-body">
         <p>Logtypes are internaly stored using a <code>small integer</code>. The current mapping is as follow:</p>
         <ul>
-            <li><code>0</code> = Dropped to</li>
-            <li><code>1</code> = Grabbed from</li>
-            <li><code>2</code> = A comment</li>
-            <li><code>3</code> = Seen in</li>
-            <li><code>4</code> = Archived</li>
-            <li><code>5</code> = Visiting</li>
+            <li><code>0</code> = Dropped to (location mandatory)</li>
+            <li><code>1</code> = Grabbed from (no location)</li>
+            <li><code>2</code> = A comment (no location)</li>
+            <li><code>3</code> = Seen in (location optional)</li>
+            <li><code>4</code> = Archived (no location ; limited to owner)</li>
+            <li><code>5</code> = Visiting (location mandatory)</li>
         </ul>
         <p>Please refer to the <a href="{'help'|alias}#Chooselogtype">help page</a> for more details about each logtype.</p>
     </div>
