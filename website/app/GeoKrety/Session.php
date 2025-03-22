@@ -40,7 +40,7 @@ class Session extends SQL\Session {
     /*
      * Prevent writing a session to database if it's 'deleted'
      */
-    public function write($id, $data) {
+    public function write(string $id, string $data): bool {
         if ($id === 'deleted' || empty($this->_agent)) {
             return true;
         }
