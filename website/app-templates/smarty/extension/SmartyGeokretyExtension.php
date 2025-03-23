@@ -312,7 +312,7 @@ EOT;
         // TODO localize country name in title
         switch ($output) {
             case 'css':
-                return sprintf('<span class="flag-icon flag-icon-%s" title="%s"></span>', $countryCode, $countryCode);
+                return sprintf('<span class="flag-icon flag-icon-%s" title="%s"></span>', strtolower($countryCode), $countryCode);
             default:
                 return sprintf('<img src="%s/flags/4x3/%s.svg%s" class="w-4 d-inline-block" width="16" title="%s">', GK_CDN_SERVER_URL, $countryCode, svg2png($output), $countryCode);
         }
