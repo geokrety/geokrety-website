@@ -187,6 +187,18 @@ class HallOfFame extends Base {
             'link' => 'https://uptimerobot.com/',
             'desc' => '"The world\'s leading uptime monitoring service"',
         ];
+        $credits[] = [
+            'name' => 'Country codes',
+            'link' => 'https://gist.github.com/cristiangraz/fd5846e7aa8a2f06abed',
+            'desc' => 'SQL dump of countries, ISO 3166-1 (alpha 1, 2, and 3) codes',
+        ];
+        $credits[] = [
+            'name' => 'GeoBoundaries',
+            'icon' => GK_CDN_LOGOS_URL.'/geolab.png',
+            'icon_width' => '70px',
+            'link' => 'https://www.geoboundaries.org/',
+            'desc' => 'An open database of political administrative boundaries',
+        ];
         Smarty::assign('app_credits', $credits);
 
         Smarty::render('pages/hall_of_fame.tpl');
