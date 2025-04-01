@@ -8,5 +8,6 @@ runs:
       shell: bash
       run: |
         echo "::group::Install ImageMagick"
+        sudo apt-get update
         sudo apt-get install -y  imagemagick
         echo "::endgroup::"
