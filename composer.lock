@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae64fb6e7f8b2beed8423b714e3ab9ed",
+    "content-hash": "f2480571b919a2fcb219e2d45c8975d7",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2961,28 +2961,29 @@
         },
         {
             "name": "php-coord/php-coord",
-            "version": "v5.7.0",
+            "version": "v5.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dvdoug/PHPCoord.git",
-                "reference": "478a8dcfa0a15ee076984c7b41eda9985989ab0d"
+                "reference": "e190e3ad5b35b2549d2e9bcc037aacd9c7503e6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dvdoug/PHPCoord/zipball/478a8dcfa0a15ee076984c7b41eda9985989ab0d",
-                "reference": "478a8dcfa0a15ee076984c7b41eda9985989ab0d",
+                "url": "https://api.github.com/repos/dvdoug/PHPCoord/zipball/e190e3ad5b35b2549d2e9bcc037aacd9c7503e6d",
+                "reference": "e190e3ad5b35b2549d2e9bcc037aacd9c7503e6d",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.1",
                 "composer/pcre": "^3.1",
+                "ext-zip": "*",
                 "opis/json-schema": "^2.3",
-                "php": "^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
                 "ext-json": "*",
                 "ext-sqlite3": "*",
-                "friendsofphp/php-cs-fixer": "^3.41",
+                "friendsofphp/php-cs-fixer": "^3.65",
                 "nikic/php-parser": "^5.0",
                 "php-coord/datapack-africa": "dev-master",
                 "php-coord/datapack-antarctic": "dev-master",
@@ -2993,7 +2994,7 @@
                 "php-coord/datapack-oceania": "dev-master",
                 "php-coord/datapack-southamerica": "dev-master",
                 "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.6||^10.0"
+                "phpunit/phpunit": "^10.5||^11.0"
             },
             "suggest": {
                 "php-coord/datapack-africa": "High-accuracy addon datapack for Africa",
@@ -3051,7 +3052,7 @@
             ],
             "support": {
                 "issues": "https://github.com/dvdoug/PHPCoord/issues",
-                "source": "https://github.com/dvdoug/PHPCoord/tree/v5.7.0"
+                "source": "https://github.com/dvdoug/PHPCoord/tree/v5.10.3"
             },
             "funding": [
                 {
@@ -3059,7 +3060,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-26T23:28:58+00:00"
+            "time": "2025-01-31T21:38:58+00:00"
         },
         {
             "name": "php-http/discovery",
