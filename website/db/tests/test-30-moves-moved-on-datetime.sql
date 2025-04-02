@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(23);
+SELECT plan(29);
 
 \set nice '\'0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540\''
 \set move_type_comment 2
@@ -70,6 +70,17 @@ SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_d
 SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (15, 13, 1, '2020-04-08 00:00:00+00', 1)$$);
 SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (16, 13, 1, '2020-04-08 00:00:00+00', 1)$$);
 SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (17, 13, 1, '2020-04-08 00:00:00+00', 2)$$);
+
+-- Multiple "met" can exists at this datetime - only if GK isn't collectible
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (14, 'test', 0, '2025-04-02 13:02:00+00');
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (22, 14, 1, '2025-04-02 13:03:00+00', 1)$$);
+SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (23, 14, 1, '2025-04-02 13:03:00+00', 3)$$); -- GK is collectible
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (24, 14, 1, '2025-04-02 13:03:00+00', 2)$$);
+SELECT lives_ok($$UPDATE gk_geokrety SET non_collectible=NOW() WHERE id = 14::bigint$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (25, 14, 1, '2025-04-02 13:03:00+00', 3)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (26, 14, 1, '2025-04-02 13:03:00+00', 3)$$);
+
+
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();
