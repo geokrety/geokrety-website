@@ -230,6 +230,10 @@ $events->on('email.token.used', function (GeoKrety\Model\EmailActivationToken $t
     audit('email.token.used', $token);
     Metrics::counter('email_validation_token_total', 'Total number of email validation token used', ['verb'], ['used']);
 });
+$events->on('email.list-unsubscribe.token', function (string $token) {
+    audit('email.list-unsubscribe.token', $token);
+    Metrics::counter('email_list_unsubscribe_token_total', 'Total number of daily mail unsubscription', ['method'], ['token']);
+});
 $events->on('email-revalidation.token.generated', function (GeoKrety\Model\EmailRevalidateToken $token) {
     audit('email-revalidation.token.generated', $token);
     Metrics::counter('email_revalidation_token_total', 'Total number of email re-validation token created', ['verb'], ['generated']);
