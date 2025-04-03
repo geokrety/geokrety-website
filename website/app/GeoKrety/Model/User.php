@@ -39,6 +39,7 @@ use GeoKrety\Email\AccountActivation;
  * @property CortexCollection geokrety_held
  * @property CortexCollection yearly_ranks
  * @property CortexCollection settings
+ * @property string list_unsubscribe_token
  */
 class User extends Base implements \JsonSerializable {
     // Validation occurs in validate() for this class
