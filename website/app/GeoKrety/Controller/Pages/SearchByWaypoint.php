@@ -13,7 +13,7 @@ class SearchByWaypoint extends Base {
     }
 
     public function get(\Base $f3) {
-        $waypoint = strtoupper($f3->get('PARAMS.waypoint'));
+        $waypoint = strtoupper($f3->get('PARAMS.waypoint') ?? '');
         Smarty::assign('waypoint', $waypoint);
 
         $move = new Move();

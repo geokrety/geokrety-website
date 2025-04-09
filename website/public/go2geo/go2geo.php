@@ -83,7 +83,7 @@ function go2geo($waypoint) {
 
     // -------------------------------------------------- START ------------------------------------- //
 
-    $waypoint = strtoupper($waypoint);
+    $waypoint = strtoupper($waypoint ?? '');
 
     foreach ($check_order as $cut) {
         $prefiks = substr($waypoint, 0, $cut);
