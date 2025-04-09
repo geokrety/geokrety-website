@@ -110,7 +110,7 @@ class BaseExportXML extends BaseExport {
         if (!$this->f3->exists('GET.wpt')) {
             return;
         }
-        $wpt = strtoupper($this->f3->get('GET.wpt'));
+        $wpt = strtoupper($this->f3->get('GET.wpt') ?? '');
         if (strlen($wpt) < 7) {
             $this->setFilter('substr(waypoint, 1, ?) = ?', strlen($wpt), $wpt);
         } else {

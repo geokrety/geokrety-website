@@ -10,7 +10,7 @@ class SearchAdvanced extends Base {
     }
 
     public function post($f3) {
-        $search = strtoupper($f3->get('POST.inputSearch'));
+        $search = strtoupper($f3->get('POST.inputSearch') ?? '');
         Smarty::assign('search', $search);
 
         $this->get($f3);
