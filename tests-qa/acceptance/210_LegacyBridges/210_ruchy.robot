@@ -46,12 +46,14 @@ Suite Setup     Suite Setup
 &{move_36}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc},${GEOKRETY_12.tc}                                     logtype=0    data=2020-12-09    godzina=22    minuta=13    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
 &{move_37}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc},${GEOKRETY_12.tc},${GEOKRETY_13.tc}                   logtype=0    data=2020-12-09    godzina=22    minuta=13    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
 
-# Timezone (generator create GK at 2020-08-22 15:30:42)
-&{move_41}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30                                    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
-&{move_42}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=31                 tz=Europe/Paris    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
-&{move_43}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30    second=42    tz=UTC             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
-&{move_44}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=32                                    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
-&{move_45}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30    second=41    tz=UTC             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+# Timezone (generator create GK at 2020-08-23T23:35:42+00:00)
+&{move_41}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-23    godzina=23    minuta=35                                          wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_42}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-24    godzina=03    minuta=31                 tz=Europe/Paris          wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_43}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-23    godzina=23    minuta=35    second=43    tz=UTC                   wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_44}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-23    godzina=23    minuta=36                 tz=UTC                   wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_45}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-23    godzina=15    minuta=30    second=41    tz=UTC                   wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_46}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-23    godzina=18    minuta=35    second=42    tz=Etc/GMT+5             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_47}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-23    godzina=18    minuta=34    second=42    tz=Etc/GMT+5             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
 
 *** Test Cases ***
 
@@ -78,6 +80,7 @@ Test Invalid Cases
     ${move_2}     This "secid" does not exist
     ${move_41}    Moved_on_datetime must be after GeoKret birth
     ${move_45}    Moved_on_datetime must be after GeoKret birth
+    ${move_47}    Moved_on_datetime must be after GeoKret birth
 
 
 Test Valid Cases
@@ -96,12 +99,13 @@ Test Valid Cases
     ${move_42}    ${GEOKRETY_1}
     ${move_43}    ${GEOKRETY_1}
     ${move_44}    ${GEOKRETY_1}
+    ${move_46}    ${GEOKRETY_1}
 
 *** Keywords ***
 
 Suite Setup
     Clear Database And Seed ${1} users
-    Seed ${11} geokrety owned by ${1}
+    Seed ${11} geokrety owned by ${1} with birthdate 2020-08-23T23:35:42%2B00:00
     Sign Out Fast
 
 

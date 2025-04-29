@@ -1,6 +1,8 @@
 // ----------------------------------- JQUERY - RUCHY - BEGIN
 
 moment.locale('{\Multilang::instance()->current}')
+moment.tz.setDefault(moment.tz.guess());
+console.log("Detected Timezone:", moment().tz());
 
 // Bind tooltip on NR field: Display label example
 $(".tooltip_large").tooltip({
