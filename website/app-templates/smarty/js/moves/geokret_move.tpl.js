@@ -390,6 +390,7 @@ function dateToLegacyFormat() {
     $("#inputHiddenDate").val(date.format('YYYY-MM-DD'));
     $("#inputHiddenHour").val(date.hour());
     $("#inputHiddenMinute").val(date.minute());
+    $("#inputHiddenSecond").val(date.second());
     $("#inputHiddenTimezone").val(date.format('Z'));
 }
 
