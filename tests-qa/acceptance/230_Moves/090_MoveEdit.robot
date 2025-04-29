@@ -87,7 +87,7 @@ Change Date
     Set DateTime                            2020-08-23 07:30:22    +00:00
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
     Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
-    Page Should Contain Element             ${GEOKRET_DETAILS_MOVES}\[${1}]//span[@data-datetime="2020-08-23T07:30:00+00:00"]
+    Page Should Contain Element             ${GEOKRET_DETAILS_MOVES}\[${1}]//span[@data-datetime="2020-08-23T07:30:22+00:00"]
 
 Change Comment
     Sign In ${USER_1.name} Fast

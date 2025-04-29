@@ -25,6 +25,7 @@ class Moves {
             'hour' => $f3->get('POST.hour'),
             'logtype' => $f3->get('POST.logtype'),
             'minute' => $f3->get('POST.minute'),
+            'second' => $f3->get('POST.second'),
             'tracking_code' => $f3->exists('POST.tracking_code') ? strtoupper($f3->get('POST.tracking_code')) : null,
             'tz' => $f3->get('POST.tz'),
             'username' => $f3->get('POST.username'),
@@ -54,10 +55,11 @@ class Moves {
         } else {
             // Datetime parser
             $date = \DateTime::createFromFormat('Y-m-d H:i:s T', sprintf(
-                '%s %s:%s:00 %s',
+                '%s %s:%s:%s %s',
                 $move_data['date'],
                 str_pad($move_data['hour'], 2, '0', STR_PAD_LEFT),
                 str_pad($move_data['minute'], 2, '0', STR_PAD_LEFT),
+                str_pad($move_data['second'] ?? '00', 2, '0', STR_PAD_LEFT),
                 $move_data['tz'] ?? 'UTC'
             ));
             if ($date === false) {

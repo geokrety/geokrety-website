@@ -47,10 +47,11 @@ Suite Setup     Suite Setup
 &{move_37}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc},${GEOKRETY_12.tc},${GEOKRETY_13.tc}                   logtype=0    data=2020-12-09    godzina=22    minuta=13    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
 
 # Timezone (generator create GK at 2020-08-22 15:30:42)
-&{move_41}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30                       wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
-&{move_42}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=31    tz=Europe/Paris    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
-&{move_43}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30    tz=UTC             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
-&{move_44}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=32                       wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_41}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30                                    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_42}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=31                 tz=Europe/Paris    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_43}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30    second=42    tz=UTC             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_44}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=17    minuta=32                                    wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
+&{move_45}   secid=${USER_1.secid}    nr=${GEOKRETY_1.tc}    logtype=0    data=2020-08-22    godzina=15    minuta=30    second=41    tz=UTC             wpt=${WPT_GC_1.id}    latlon=${WPT_GC_1.coords}
 
 *** Test Cases ***
 
@@ -75,7 +76,8 @@ Test Invalid Cases
     [Template]    Post Return Error
     ${move_1}     Invalid "secid" length
     ${move_2}     This "secid" does not exist
-    ${move_41}    Move date (2020-08-22 13:30:00+00) time can not be before GeoKret birth (2020-08-22 15:30:00+00)
+    ${move_41}    Moved_on_datetime must be after GeoKret birth
+    ${move_45}    Moved_on_datetime must be after GeoKret birth
 
 
 Test Valid Cases
