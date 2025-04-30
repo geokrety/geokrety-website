@@ -30,7 +30,7 @@ abstract class BasePHPMailer extends PHPMailer implements \JsonSerializable {
         $this->setFromDefault();
         $this->addCustomHeader('Errors-To', GK_SITE_EMAIL);
         // $this->addCustomHeader('X-GKPHPMailer', 'true');
-        $this->addReplyTo(GK_SITE_EMAIL_NOREPLY);
+        // $this->addReplyTo(GK_SITE_EMAIL_NOREPLY);
         $this->XMailer = null;
         $this->isSMTP();
         $this->Host = GK_SMTP_URI;

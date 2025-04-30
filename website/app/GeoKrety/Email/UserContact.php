@@ -5,8 +5,15 @@ namespace GeoKrety\Email;
 use GeoKrety\Model\Mail;
 
 class UserContact extends BasePHPMailer {
+    /**
+     * Override mail From.
+     *
+     * @return void
+     *
+     * @throws \PHPMailer\PHPMailer\Exception
+     */
     protected function setFromDefault() {
-        $this->setFromNotif();
+        $this->setFrom(GK_SITE_EMAIL_NOREPLY, 'GeoKrety');
     }
 
     public function sendUserMessage(Mail $mail) {
