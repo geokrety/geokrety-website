@@ -20,7 +20,7 @@
         <tbody>
         {foreach from=$users.subset item=user}
             <tr class="">
-                <td>{$user->id}</td>
+                <td>{$user->id} {$user->home_country|country nofilter}</td>
                 <td>{$user|userlink:null:'_blank' nofilter}</td>
                 <td>{$user->email}</td>
                 <td class="text-right">{if !is_null($user->joined_on_datetime)}{$user->joined_on_datetime|print_date nofilter}{/if}</td>
