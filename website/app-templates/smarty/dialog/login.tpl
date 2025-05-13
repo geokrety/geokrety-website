@@ -20,12 +20,12 @@
                         </a>
                     {/if}
                     {if GK_OPAUTH_GITHUB_CLIENT_ID !== false}
-                        <a id="btn-githubauth" href="/auth/github" class="btn btn-default btn-black">
+                        <a id="btn-githubauth" href="/auth/github" class="btn btn-black btn-github">
                             {fa icon="github"} github
                         </a>
                     {/if}
                     {if GK_OPAUTH_GOOGLE_CLIENT_ID !== false}
-                        <a id="btn-googleauth" href="/auth/google" class="btn btn-danger">
+                        <a id="btn-googleauth" href="/auth/google" class="btn btn-danger btn-google">
                             {fa icon="google"} google
                         </a>
                     {/if}
