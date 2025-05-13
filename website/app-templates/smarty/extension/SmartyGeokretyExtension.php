@@ -451,7 +451,7 @@ EOT;
         }
         $gkType = $move->geokret->type->getTypeId();
 
-        $url = GK_SITE_BASE_SERVER_URL.Base::instance()->alias('geokret_details', '@gkid='.$move->geokret->gkid);
+        $url = GK_SITE_BASE_SERVER_URL.Base::instance()->alias('geokret_details_by_move_id', sprintf('gkid=%s,moveid=%d', $move->geokret->gkid, $move->id));
         $img = sprintf(
             '<img src="%s/log-icons/0/%s.svg%s" title="%s" data-gk-move-type="%s" data-gk-move-id="%s" width="%dpx" height="%dpx">',
             GK_CDN_IMAGES_URL,
@@ -465,9 +465,8 @@ EOT;
         );
 
         return sprintf(
-            '<a href="%s#log%s">%s</a>',
+            '<a href="%s">%s</a>',
             $url,
-            $move->id,
             $img
         );
     }
