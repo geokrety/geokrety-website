@@ -81,6 +81,9 @@ jobs:
           wait-started: false
           prepare-only: true
 
+      - name: Install PostGis data
+        uses: ./.github/actions/install-postgis-data/
+
       - name: Build website image
         uses: ./.github/actions/build-website-image/
 
