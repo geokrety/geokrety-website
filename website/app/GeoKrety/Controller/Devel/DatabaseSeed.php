@@ -170,7 +170,7 @@ class DatabaseSeed extends Base {
             $wpt = new WaypointOC();
             $wpt->waypoint = 'OC%04d';
             $wpt->lat = 43.69365;
-            $wpt->lon = 6.86097 + $i / 100;
+            $wpt->lon = 6.86097 + ($i - 1) / 100;
             if ($wpt->validate()) {
                 $wpt->save();
                 $wpt->waypoint = sprintf('OC%04d', $wpt->id);
