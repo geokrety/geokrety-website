@@ -122,7 +122,7 @@ services:
       POSTGRES_DB: "geokrety"
       POSTGRES_USER: "geokrety"
       POSTGRES_PASSWORD: "geokrety"
-      # POSTGIS_ENABLE_OUTDB_RASTERS: 1
+      POSTGIS_ENABLE_OUTDB_RASTERS: 1
       POSTGIS_GDAL_ENABLED_DRIVERS: ENABLE_ALL
 
   redis:
