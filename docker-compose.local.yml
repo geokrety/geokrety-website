@@ -4,7 +4,7 @@ x-variables: &variables
   environment:
     TIMEZONE: "UTC"
     GK_IS_UNIT_TESTING: "true"
-    # GK_WEBSITE_HOST must me the stack internal way off accessing the website
+    # GK_WEBSITE_HOST must be the stack internal way off accessing the website
     GK_WEBSITE_HOST: nginx
     # GK_WEBSITE_FQDN How the webiste is reached externally
     GK_WEBSITE_FQDN: "${GK_FQDN:-localhost}"
@@ -112,7 +112,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./website/db/dumps/:/docker-entrypoint-initdb.d/
-      - ./website/db/srtm/:/srtm/
+      - ./website/db/srtm/:/srv/srtm/
     tmpfs:
       - /var/lib/postgresql/data
     ports:
@@ -122,7 +122,7 @@ services:
       POSTGRES_DB: "geokrety"
       POSTGRES_USER: "geokrety"
       POSTGRES_PASSWORD: "geokrety"
-      # POSTGIS_ENABLE_OUTDB_RASTERS: 1
+      POSTGIS_ENABLE_OUTDB_RASTERS: 1
       POSTGIS_GDAL_ENABLED_DRIVERS: ENABLE_ALL
 
   redis:

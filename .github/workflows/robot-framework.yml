@@ -77,9 +77,6 @@ jobs:
 
       - name: Start Postgres
         uses: ./.github/actions/start-postgres/
-        with:
-          wait-started: false
-          prepare-only: true
 
       - name: Install PostGis data
         uses: ./.github/actions/install-postgis-data/
