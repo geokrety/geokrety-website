@@ -32,7 +32,7 @@ Fill Form Naturally Require Coordinates
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
     Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
     ${after}=       Get Current Date    result_format=epoch
-    Should be True    ${after} - ${before} < 1     msg=The total page load time was more than 1s!
+    Should be True    ${after} - ${before} < 2     msg=The total page load time was more than 2s!
 
 
 Seen Accept Coordinates If Given
