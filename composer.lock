@@ -2961,16 +2961,16 @@
         },
         {
             "name": "php-coord/php-coord",
-            "version": "v5.10.3",
+            "version": "v5.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dvdoug/PHPCoord.git",
-                "reference": "e190e3ad5b35b2549d2e9bcc037aacd9c7503e6d"
+                "reference": "d9b9677a79570c6facff981ecc324e4e215ef6b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dvdoug/PHPCoord/zipball/e190e3ad5b35b2549d2e9bcc037aacd9c7503e6d",
-                "reference": "e190e3ad5b35b2549d2e9bcc037aacd9c7503e6d",
+                "url": "https://api.github.com/repos/dvdoug/PHPCoord/zipball/d9b9677a79570c6facff981ecc324e4e215ef6b9",
+                "reference": "d9b9677a79570c6facff981ecc324e4e215ef6b9",
                 "shasum": ""
             },
             "require": {
@@ -2983,7 +2983,7 @@
             "require-dev": {
                 "ext-json": "*",
                 "ext-sqlite3": "*",
-                "friendsofphp/php-cs-fixer": "^3.65",
+                "friendsofphp/php-cs-fixer": "^3.84",
                 "nikic/php-parser": "^5.0",
                 "php-coord/datapack-africa": "dev-master",
                 "php-coord/datapack-antarctic": "dev-master",
@@ -2993,8 +2993,8 @@
                 "php-coord/datapack-northamerica": "dev-master",
                 "php-coord/datapack-oceania": "dev-master",
                 "php-coord/datapack-southamerica": "dev-master",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^10.5||^11.0"
+                "phpstan/phpstan": "^1.12",
+                "phpunit/phpunit": "^10.5||^11.5"
             },
             "suggest": {
                 "php-coord/datapack-africa": "High-accuracy addon datapack for Africa",
@@ -3052,7 +3052,7 @@
             ],
             "support": {
                 "issues": "https://github.com/dvdoug/PHPCoord/issues",
-                "source": "https://github.com/dvdoug/PHPCoord/tree/v5.10.3"
+                "source": "https://github.com/dvdoug/PHPCoord/tree/v5.11.1"
             },
             "funding": [
                 {
@@ -3060,7 +3060,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-31T21:38:58+00:00"
+            "time": "2025-08-13T23:10:47+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -9755,6 +9755,6 @@
         "ext-simplexml": "*",
         "ext-zip": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }
