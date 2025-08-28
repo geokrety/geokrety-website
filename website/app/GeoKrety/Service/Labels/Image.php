@@ -22,6 +22,13 @@ class Image {
     private function fetch(Geokret $geokret, string $type = 'svg') {
         Smarty::assign('geokret', $geokret);
 
+        // Localized Help for next commit
+        _('User\'s manual:');
+        _('Take this GeoKret.');
+        _('Please note down his Tracking Code.');
+        _('Hide in another cache.');
+        _('Register the trip at %s');
+
         $url = \Base::instance()->alias('move_create_short', '@tracking_code='.$geokret->tracking_code);
         // Localized Help
         // Both strings are necessary here as gettext cannot work with variable
