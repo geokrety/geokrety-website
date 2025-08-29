@@ -67,6 +67,27 @@ class MoveCreate extends Base {
             }
         }
 
+        if (!$this->move->id && !empty($_COOKIE['rememberMoveData'])) {
+            $cookieData = json_decode($_COOKIE['rememberMoveData'], true);
+            if (is_array($cookieData)) {
+                // hydrate your move object
+                $this->move->comment = $cookieData['comment'] ?? null;
+
+                if (!empty($cookieData['date'])) {
+                    $this->move->moved_on_datetime = sprintf(
+                        '%s %02d:%02d:%02d%s',
+                        $cookieData['date'],
+                        $cookieData['hour'] ?? 0,
+                        $cookieData['minute'] ?? 0,
+                        $cookieData['second'] ?? 0,
+                        $cookieData['tz'] ?? ''
+                    );
+                }
+
+                Smarty::assign('rememberData', true);
+            }
+        }
+
         $geokret = new GeokretWithDetails();
         $geokret->load(['gkid = ?', GK_HELP_GEOKRETY_EXAMPLE_3]);
         Smarty::assign('gk_example_3_tc', $geokret->tracking_code);
@@ -111,6 +132,27 @@ class MoveCreate extends Base {
         } catch (\Exception $e) {
             $this->renderErrors($moves, [$e->getMessage()]);
         }
+
+        $shouldRemember = (
+            !$this->move->id
+            && filter_var($f3->get('POST.remember_data'), FILTER_VALIDATE_BOOLEAN)
+        );
+        $cookieValue = '';
+        $cookieExpiry = time() - 3600; // default: clear cookie
+
+        if ($shouldRemember) {
+            $rememberData = [
+                'comment' => $move_data['comment'] ?? null,
+                'date' => $move_data['date'] ?? null,
+                'hour' => $move_data['hour'] ?? null,
+                'minute' => $move_data['minute'] ?? null,
+                'second' => $move_data['second'] ?? null,
+                'tz' => $move_data['tz'] ?? null,
+            ];
+            $cookieValue = json_encode($rememberData);
+            $cookieExpiry = time() + (86400 * 30); // 30 days
+        }
+        setcookie('rememberMoveData', $cookieValue, $cookieExpiry, '/');
 
         \Flash::instance()->addMessage(_('Your move has been saved.'), 'success');
         $this->f3->reroute($moves[0]->reroute_url);

@@ -9,6 +9,9 @@ Variables       ../ressources/vars/geokrety.yml
 Variables       ../ressources/vars/waypoints.yml
 Test Setup      Test Setup
 
+*** Variables ***
+${REMEMBER_CHECKBOX}                 css:input#checkboxRememberData
+
 *** Test Cases ***
 
 Fill Form Naturally Require Coordinates
@@ -127,7 +130,55 @@ Check csrf
     Should Contain                          ${body}    CSRF error, please try again.
     Delete All Sessions
 
+Remember Saves Then Clears Prefill
+    Sign In ${USER_1.name} Fast
+    Go To Move
 
+    # --- First submission with Remember checked ---
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                     ${GEOKRETY_1.tc}
+    Click Button And Check Panel Validation Has Success     ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
+    Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_GRABBED_RADIO}       ${MOVE_LOG_TYPE_PANEL}         ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Input Inscrybmde                        \#comment                                       REMEMBERED_COMMENT
+    Set DateTime                            2025-08-28 10:05:00    +00:00
+    Click Element                           ${REMEMBER_CHECKBOX}
+    Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
+
+    # --- Reopen form: should be prefilled ---
+    Go To Move
+    Open Panel                              ${MOVE_ADDITIONAL_DATA_PANEL}
+    Textarea Value Should Be                ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}           REMEMBERED_COMMENT
+    Input Value Should Be                   ${MOVE_ADDITIONAL_DATA_DATE_HIDDEN_INPUT}       2025-08-28
+    Input Value Should Be                   ${MOVE_ADDITIONAL_DATA_HOUR_HIDDEN_INPUT}       13
+    Input Value Should Be                   ${MOVE_ADDITIONAL_DATA_MINUTE_HIDDEN_INPUT}     5
+    Input Value Should Be                   ${MOVE_ADDITIONAL_DATA_SECOND_HIDDEN_INPUT}     0
+    Input Value Should Be                   ${MOVE_ADDITIONAL_DATA_TIMEZONE_HIDDEN_INPUT}   +03:00
+    Checkbox Should Be Selected             ${REMEMBER_CHECKBOX}
+
+    # --- Second submission with Remember unchecked ---
+    Open Panel                              ${MOVE_TRACKING_CODE_PANEL}
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                     ${GEOKRETY_1.tc}
+    Click Button And Check Panel Validation Has Success     ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
+    Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_GRABBED_RADIO}       ${MOVE_LOG_TYPE_PANEL}
+
+    Open Panel                              ${MOVE_ADDITIONAL_DATA_PANEL}
+    Input Inscrybmde                        \#comment                                       ANOTHER_COMMENT
+    Set DateTime                            2025-08-28 10:06:00    +00:00
+    Run Keyword And Return Status           Checkbox Should Be Selected                     ${REMEMBER_CHECKBOX}
+    Click Element                           ${REMEMBER_CHECKBOX}
+    Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
+
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log2
+
+    # --- Reopen form: should NOT be prefilled anymore ---
+    Go To Move
+    Open Panel                              ${MOVE_ADDITIONAL_DATA_PANEL}
+    Textarea Value Should Be                ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}           ${EMPTY}
+    Checkbox Should Not Be Selected         ${REMEMBER_CHECKBOX}
 
 *** Keywords ***
 
@@ -149,8 +200,8 @@ Click Button And Check Panel Validation Has Success
     Panel Is Open                           ${next_panel}
 
 Click LogType And Check Panel Validation Has Success
-    [Arguments]    ${radio_value}    ${current_panel}    ${next_panel}
-    Click Move Type    ${radio_value}
-    Panel validation has success            ${current_panel}
-    # Panel Is Collapsed                      ${current_panel}
-    Panel Is Open                           ${next_panel}
+    [Arguments]    ${radio_value}    ${current_panel}    ${next_panel}=None
+    Click Move Type                  ${radio_value}
+    Panel validation has success     ${current_panel}
+    Run Keyword If                   '${next_panel}' != 'None'
+    ...    Panel Is Open             ${next_panel}

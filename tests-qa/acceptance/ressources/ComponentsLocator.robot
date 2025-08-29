@@ -341,6 +341,7 @@ ${MOVE_ADDITIONAL_DATA_DATE_TIME_PICKER_WIDGET_HOUR_PLUS}     ${MOVE_ADDITIONAL_
 ${MOVE_ADDITIONAL_DATA_DATE_HIDDEN_INPUT}           //*[@id="inputHiddenDate"]
 ${MOVE_ADDITIONAL_DATA_HOUR_HIDDEN_INPUT}           //*[@id="inputHiddenHour"]
 ${MOVE_ADDITIONAL_DATA_MINUTE_HIDDEN_INPUT}         //*[@id="inputHiddenMinute"]
+${MOVE_ADDITIONAL_DATA_SECOND_HIDDEN_INPUT}         //*[@id="inputHiddenSecond"]
 ${MOVE_ADDITIONAL_DATA_TIMEZONE_HIDDEN_INPUT}       //*[@id="inputHiddenTimezone"]
 ${MOVE_ADDITIONAL_DATA_USERNAME_INPUT}              //*[@id="username"]
 ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}               //*[@id="comment"]
