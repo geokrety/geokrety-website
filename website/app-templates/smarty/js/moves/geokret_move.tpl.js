@@ -404,7 +404,7 @@ function clearLegacyFormat() {
 }
 
 // Initialize date time
-$("#datetimepicker").data("DateTimePicker").date({if $move->id}moment.utc("{$move->moved_on_datetime->format('Y-m-d H:i:s')}"){else}moment(){/if}.local());
+$("#datetimepicker").data("DateTimePicker").date({if !is_null($move->moved_on_datetime)}moment("{$move->moved_on_datetime->format('c')}"){else}moment(){/if});
 dateToLegacyFormat();
 
 // Initialize tracking code

@@ -83,10 +83,11 @@ Panel Is Open
 
 Open Panel
     [Arguments]                     ${element}
-    ${status}    ${value} =         Run Keyword And Ignore Error    Panel Is Collapsed    ${element}     timeout=1
-    Run Keyword If                  '${status}' == 'PASS'
-    ...                             Click Element                   ${element}/div[contains(@class, "panel-heading")]
-    Panel Is Open                   ${element}
+    ${collapsed} =    Run Keyword And Return Status    Panel Is Collapsed    ${element}
+    Run Keyword If    ${collapsed}    Run Keywords
+    ...    Scroll Into View    ${element}
+    ...    AND    Click Element    ${element}/div[contains(@class,"panel-heading")]
+    Panel Is Open    ${element}
 
 Flash message shown
     [Arguments]  ${message}

@@ -260,6 +260,19 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <label for="checkboxRememberData" class="col-sm-2 control-label"></label>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember_data" id="checkboxRememberData" {if $rememberData}checked{/if} />
+                                    {t}Remember date and comment{/t}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
