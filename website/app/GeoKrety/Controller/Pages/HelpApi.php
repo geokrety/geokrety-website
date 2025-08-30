@@ -15,6 +15,7 @@ class HelpApi extends Base {
         [$geokret, $geokret2, $geokret3] = $this->loadGK(GK_HELP_GEOKRETY_EXAMPLE_LIST);
         Smarty::assign('gk_example_1', $geokret->gkid());
         Smarty::assign('gk_example_2', $geokret2->gkid());
+        Smarty::assign('gk_example_2_tc', $geokret2->tracking_code);
         Smarty::assign('gk_example_3_tc', $geokret3->tracking_code);
 
         // Render ruchy saved
@@ -84,7 +85,7 @@ class HelpApi extends Base {
         $geokrety = [];
         foreach ($gkIds as $gkid) {
             $geokret = new GeokretWithDetails();
-            $geokret->load(['gkid = ?', $gkid]);
+            $geokret->load(['gkid = ?', $gkid], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
             $this->checkGK($geokret);
             $geokrety[] = $geokret;
         }

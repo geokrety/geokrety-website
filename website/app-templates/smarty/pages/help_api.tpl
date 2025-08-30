@@ -368,7 +368,7 @@ var_dump($gk);
             <dd>authentication string - see <a href="#secid">above</a></dd>
 
             <dt><code>tracking_code</code></dt>
-            <dd>GeoKret's Tracking Code (ex: <code>DQ9H4B</code> or multiple (limit {GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS}) separated by comma <code>DQ9H4B,Q44F19</code>)</dd>
+            <dd>GeoKret's Tracking Code (ex: <code>{$gk_example_3_tc}</code> or multiple (limit {GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS}) separated by comma <code>{$gk_example_3_tc},{$gk_example_2_tc}</code>)</dd>
 
             <dt><code>formname</code></dt>
             <dd><b>must</b> have value of <code>ruchy</code></dd>

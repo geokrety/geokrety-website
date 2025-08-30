@@ -129,6 +129,7 @@ class Config extends \Prefab {
         define('GK_SITE_USER_AGENT', getenv('GK_SITE_USER_AGENT') ?: sprintf('GeoKrety/%s (%s)', GK_APP_VERSION, GK_ENVIRONMENT));
 
         define('GK_HELP_GEOKRETY_EXAMPLE_LIST', [GK_HELP_GEOKRETY_EXAMPLE_1, GK_HELP_GEOKRETY_EXAMPLE_2, GK_HELP_GEOKRETY_EXAMPLE_3]);
+        define('GK_HELP_GEOKRETY_EXAMPLE_TTL', getenv('GK_HELP_GEOKRETY_EXAMPLE_TTL') ?: 600);
 
         // DATABASE config
         define('GK_DB_ENGINE', getenv('GK_DB_ENGINE') ?: 'pgsql');

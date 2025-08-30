@@ -22,7 +22,14 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="tracking_code" id="nr" value="{if !is_null($move->geokret)}{$move->geokret->tracking_code}{elseif $f3->exists('GET.tracking_code')}{$f3->get('GET.tracking_code')}{/if}" minlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="{GK_SITE_TRACKING_CODE_MAX_LENGTH}"{/if} required class="form-control" placeholder="eg. {$gk_example_3_tc}" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_MIN_LENGTH -1}" data-parsley-debounce="500" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
+                                        <input type="text" name="tracking_code" id="nr" value="{if !is_null($move->geokret)}{$move->geokret->tracking_code}{elseif $f3->exists('GET.tracking_code')}{$f3->get('GET.tracking_code')}{/if}"
+                                               minlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="{GK_SITE_TRACKING_CODE_MAX_LENGTH}"{/if}
+                                               required class="form-control"
+                                               placeholder="{t tc1=$gk_example_3_tc}eg. %1{/t}" aria-describedby="helpBlockTrackingCode"
+                                               data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_MIN_LENGTH -1}"
+                                               data-parsley-debounce="500" data-parsley-remote data-parsley-remote-validator="checkNr"
+                                               data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode"
+                                               data-parsley-remote-options='{ "type": "POST" }' />
                                         <span class="input-group-btn">
                                             {if $f3->get('SESSION.CURRENT_USER')}
                                             <button class="btn btn-default" type="button" id="nrInventorySelectButton" title="{t}Select GeoKrety from inventory{/t}" data-toggle="modal" data-target="#modal" data-type="select-from-inventory">{fa icon="briefcase"}</button>
@@ -35,7 +42,7 @@
                                         {t escape=no}<u>Do not use the code starting with 'GK' here</u>.{/t}
                                         <br>
                                         {if $f3->get('SESSION.CURRENT_USER')}
-                                        {t escape=no}ex: <code>DQ9H4B</code> or multiple (limit {GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS}) separated by comma <code>DQ9H4B,Q44F19</code>.{/t}
+                                        {t escape=no tc1=$gk_example_3_tc tc2=$gk_example_2_tc count={GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS}}ex: <code>%1</code> or multiple (limit %3) separated by comma <code>%1,%2</code>.{/t}
                                         {/if}
                                     </p>
                                 </div>
