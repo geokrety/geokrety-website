@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 18:38+0000\n"
-"PO-Revision-Date: 2025-08-28 20:06\n"
+"POT-Creation-Date: 2025-08-30 07:23+0000\n"
+"PO-Revision-Date: 2025-08-30 07:37\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "Language: nb_NO\n"
@@ -406,11 +406,11 @@ msgstr ""
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:59
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
 msgid "Wrong secid"
 msgstr "Feil hemmelig"
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:61
 msgid "Wrong date or time"
 msgstr "Feil dato eller tid"
 
@@ -506,7 +506,7 @@ msgstr ""
 msgid "This move is not editable."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:115
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:159
 msgid "Your move has been saved."
 msgstr "Ditt trekk har blitt lagret."
 
@@ -1246,7 +1246,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:17
 #: website/app-templates/smarty/forms/advanced_search.tpl:19
-#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/forms/move.tpl:253
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:10
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
 #: website/app-templates/smarty/forms/registration.tpl:37
@@ -1263,7 +1263,7 @@ msgstr "Brukernavn"
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:138
+#: website/app-templates/smarty/forms/move.tpl:152
 msgid "Waypoint"
 msgstr "Veipunkt"
 
@@ -1283,76 +1283,87 @@ msgid "Tracking Code"
 msgstr "Sporingskode for sporing"
 
 #: website/app-templates/smarty/forms/move.tpl:28
+msgid "eg. %1"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:35
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:29
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:4
 msgid "Select GeoKrety from inventory"
 msgstr "Velg GeoKrety fra inventaret"
 
-#: website/app-templates/smarty/forms/move.tpl:30
+#: website/app-templates/smarty/forms/move.tpl:37
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:31
 msgid "Verify Tracking Code"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:33
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "%1 tegn fra <em>GeoKret etikett</em>. <u>Ikke bruk koden som starter med 'GK' her</u>"
+#: website/app-templates/smarty/forms/move.tpl:41
+msgid "%1 characters from <em>GeoKret label</em>."
+msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:43
-#: website/app-templates/smarty/forms/move.tpl:204
+#: website/app-templates/smarty/forms/move.tpl:42
+msgid "<u>Do not use the code starting with 'GK' here</u>."
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:45
+msgid "ex: <code>%1</code> or multiple (limit %3) separated by comma <code>%1,%2</code>."
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:57
+#: website/app-templates/smarty/forms/move.tpl:218
 msgid "Validate"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:54
+#: website/app-templates/smarty/forms/move.tpl:68
 msgid "Log type"
 msgstr "Logg type"
 
-#: website/app-templates/smarty/forms/move.tpl:64
+#: website/app-templates/smarty/forms/move.tpl:78
 msgid "This GeoKret is not collectible, so some move types are not available."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:73
+#: website/app-templates/smarty/forms/move.tpl:87
 msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
 msgstr "Velg handlingstypen du har gjort på GeoKret. For mer informasjon se hjelpesiden."
 
-#: website/app-templates/smarty/forms/move.tpl:84
+#: website/app-templates/smarty/forms/move.tpl:98
 msgid "When you've left a GeoKret in a cache"
 msgstr "Når du har forlatt en GeoKret i en cache"
 
-#: website/app-templates/smarty/forms/move.tpl:85
+#: website/app-templates/smarty/forms/move.tpl:99
 msgid "I've dropped GeoKret"
 msgstr "Jeg har mistet GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:91
+#: website/app-templates/smarty/forms/move.tpl:105
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr "Når du har tatt et GeoKret fra en cache og kommer ikke til å legge det på en annen cache <i>snart</i>"
 
-#: website/app-templates/smarty/forms/move.tpl:92
+#: website/app-templates/smarty/forms/move.tpl:106
 msgid "I've grabbed GeoKret"
 msgstr "Jeg har fanget GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:98
+#: website/app-templates/smarty/forms/move.tpl:112
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr "Når du har møtt en GeoKret i en cache men ikke tatt den med deg"
 
-#: website/app-templates/smarty/forms/move.tpl:99
+#: website/app-templates/smarty/forms/move.tpl:113
 msgid "I've met GeoKret"
 msgstr "Jeg har møtt GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:105
+#: website/app-templates/smarty/forms/move.tpl:119
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr "Når du tar en GeoKret for en cache-tur; dette er det samme som å gjøre en dråpe og deretter ta - den besøkte plasseringen er logget, men GeoKret er fortsatt i inventaret"
 
-#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:120
 msgid "I've dipped a GeoKret"
 msgstr "Jeg har spilt en GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:112
+#: website/app-templates/smarty/forms/move.tpl:126
 msgid "When you want to write a comment :)"
 msgstr "Når du vil skrive en kommentar :)"
 
-#: website/app-templates/smarty/forms/move.tpl:113
-#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/forms/move.tpl:127
+#: website/app-templates/smarty/forms/move.tpl:261
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:22
 #: website/app-templates/smarty/pages/home.tpl:36
@@ -1368,35 +1379,35 @@ msgstr "Når du vil skrive en kommentar :)"
 msgid "Comment"
 msgstr "Kommentar"
 
-#: website/app-templates/smarty/forms/move.tpl:128
+#: website/app-templates/smarty/forms/move.tpl:142
 msgid "New location"
 msgstr "Ny posisjon"
 
-#: website/app-templates/smarty/forms/move.tpl:141
+#: website/app-templates/smarty/forms/move.tpl:155
 msgid "eg. GC1AQ2N"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:146
+#: website/app-templates/smarty/forms/move.tpl:160
 msgid "Lookup opencaching cache by name"
 msgstr "Søk opp buffer for opencaching etter navn"
 
-#: website/app-templates/smarty/forms/move.tpl:151
+#: website/app-templates/smarty/forms/move.tpl:165
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/app-templates/smarty/forms/move.tpl:163
+#: website/app-templates/smarty/forms/move.tpl:177
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
 msgstr "Angi cachenavn. <strong>Virker ikke for GC-cacher</strong>"
 
-#: website/app-templates/smarty/forms/move.tpl:177
+#: website/app-templates/smarty/forms/move.tpl:191
 msgid "Coordinates"
 msgstr "Koordinater"
 
-#: website/app-templates/smarty/forms/move.tpl:215
+#: website/app-templates/smarty/forms/move.tpl:229
 msgid "Additional data"
 msgstr "Ytterligere data"
 
-#: website/app-templates/smarty/forms/move.tpl:223
+#: website/app-templates/smarty/forms/move.tpl:237
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:26
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
@@ -1404,15 +1415,19 @@ msgstr "Ytterligere data"
 msgid "Date"
 msgstr "Dato"
 
-#: website/app-templates/smarty/forms/move.tpl:241
+#: website/app-templates/smarty/forms/move.tpl:255
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "Dette kan være ditt:<br />- geocaching/opencaching brukernavn<br />- kallenavn<br />- navn, osv."
 
-#: website/app-templates/smarty/forms/move.tpl:251
+#: website/app-templates/smarty/forms/move.tpl:265
 msgid "It is always nice to receive a little message ;)"
 msgstr "Det er alltid fint å få en liten beskjed ;)"
 
-#: website/app-templates/smarty/forms/move.tpl:274
+#: website/app-templates/smarty/forms/move.tpl:277
+msgid "Remember date and comment"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:301
 msgid "Post your log"
 msgstr "Skriv loggen din"
 
@@ -1698,6 +1713,10 @@ msgstr ""
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:14
 msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
 msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "%1 tegn fra <em>GeoKret etikett</em>. <u>Ikke bruk koden som starter med 'GK' her</u>"
 
 #: website/app-templates/smarty/footer.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:2
