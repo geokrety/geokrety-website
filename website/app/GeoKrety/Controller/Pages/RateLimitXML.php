@@ -2,8 +2,8 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\User;
 use GeoKrety\Service\RateLimit;
+use GeoKrety\Service\RateLimitPolicy;
 use GeoKrety\Service\StorageException;
 use GeoKrety\Service\Xml\RateLimits;
 
@@ -15,42 +15,49 @@ class RateLimitXML extends BaseXML {
         $this->xml = new RateLimits(true, $f3->get('GET.compress'));
     }
 
-    public function authenticate(): ?User {
-        if ($this->f3->exists('GET.secid')) {
-            $login = new Login();
-
-            return $login->secidAuth($this->f3, $this->f3->get('GET.secid'), false);
-        }
-
-        return null;
-    }
-
     public function get(\Base $f3) {
-        RateLimit::check_rate_limit_xml('API_V1_CHECK_RATE_LIMIT', $this->f3->get('GET.secid'));
+        // Pass secid if present; otherwise null and RateLimit will fallback to IP internally
+        $secid = $f3->exists('GET.secid') ? (string) $f3->get('GET.secid') : null;
+        RateLimit::check_rate_limit_xml('API_V1_CHECK_RATE_LIMIT', $secid);
+
         $xml = $this->xml;
         try {
-            $keys = [\Base::instance()->get('IP')];
-            $user = $this->authenticate();
-            if (!is_null($user)) {
-                $keys[] = $user->secid;
+            $identities = [];
+            if ($secid !== null && !empty($secid)) {
+                $identities[] = $secid;
             }
-            Login::disconnectUser($f3);
+            $ip = \Base::instance()->get('IP');
+            if ($ip) {
+                $identities[] = $ip;
+            }
 
-            $usages = [];
-            foreach ($keys as $key) {
-                $usages = array_merge_recursive($usages, RateLimit::get_rates_limits_usage(sprintf('*__:%s:allow', $key)));
+            $usages = RateLimit::get_usage_for_identities($identities);
+            $originalByNorm = [];
+            foreach ($identities as $id) {
+                $originalByNorm[RateLimit::normalizeKey($id)] = $id;
             }
-            foreach (GK_RATE_LIMITS as $name => $values) {
-                $this->xml->addLimit($name, $values[0], $values[1]);
-                if (!array_key_exists($name, $usages)) {
-                    foreach ($keys as $key) {
-                        $this->xml->addUsage($key, 0);
+
+            // if secid resolves to a user, override the display label for that secid
+            $userIdForPlan = $secid ? RateLimit::inferUserId($secid) : null;
+            if ($secid && $userIdForPlan !== null) {
+                $originalByNorm[RateLimit::normalizeKey($secid)] = (string) $userIdForPlan;
+            }
+
+            foreach (array_keys(GK_RATE_LIMITS_DEFAULT) as $limitName) {
+                [$effLimit, $effPeriod] = RateLimitPolicy::resolve($limitName, $userIdForPlan);
+                $this->xml->addLimit($limitName, $effLimit, $effPeriod);
+
+                if (!isset($usages[$limitName])) {
+                    foreach ($identities as $id) {
+                        $this->xml->addUsage($id, 0);
                     }
                     $this->xml->endElement();
                     continue;
                 }
-                foreach ($usages[$name] as $id => $count) {
-                    $this->xml->addUsage($id, $count);
+
+                foreach ($usages[$limitName] as $normKey => $count) {
+                    $displayId = $originalByNorm[$normKey] ?? $normKey;
+                    $this->xml->addUsage($displayId, $count);
                 }
                 $this->xml->endElement();
             }

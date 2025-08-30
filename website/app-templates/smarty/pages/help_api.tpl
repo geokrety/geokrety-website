@@ -484,7 +484,7 @@ var_dump($gk);
     </div>
     <p>Current API rate limits are:</p>
     <ul>
-        {foreach GK_RATE_LIMITS as $limit => $values}
+        {foreach GK_RATE_LIMITS_DEFAULT as $limit => $values}
             <li>{$limit}
                 <ul>
                     <li>max requests: {$values[0]}</li>

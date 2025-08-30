@@ -386,18 +386,42 @@ class Config extends \Prefab {
 
         // Rate Limits
         define('GK_RATE_LIMITS_BYPASS', getsecret('GK_RATE_LIMITS_BYPASS') ?: 'geokrety');
-        define('GK_RATE_LIMITS', [
-            'API_LEGACY_MOVE_POST' => [1500, 60 * 60 * 24], // 1500/day
-            'API_LEGACY_PICTURE_PROXY' => [5000, 60 * 60 * 24], // 5000/day
-            'API_V1_CHECK_RATE_LIMIT' => [250, 60 * 60 * 24], // 250/day
-            'API_V1_LOGIN_2_SECID' => [25, 60 * 60 * 24], // 25/day
-            'API_V1_EXPORT2' => [1500, 60 * 60 * 24], // 1500/day
-            'API_V1_EXPORT' => [12, 60], // 12/minute
-            'API_V1_EXPORT_OC' => [12, 60], // 12/minute
-            'API_V1_REQUEST_S3_FILE_SIGNATURE' => [50, 60 * 60 * 24], // 50/day
-            'API_GKT_V3_SEARCH' => [10000, 60 * 60 * 24], // 10000/day
-            'API_GKT_V3_INVENTORY' => [1500, 60 * 60 * 24], // 1500/day
-            'USERNAME_CHANGE' => [3, 60 * 60 * 24 * 28], // 3/month
+        define('GK_RATE_LIMITS_DEFAULT', [
+            'API_LEGACY_MOVE_POST' => [1500, 86400],         // 1500/day
+            'API_LEGACY_PICTURE_PROXY' => [5000, 86400],         // 5000/day
+            'API_V1_CHECK_RATE_LIMIT' => [250,  86400],         // 250/day
+            'API_V1_LOGIN_2_SECID' => [25,   86400],         // 25/day
+            'API_V1_EXPORT2' => [1500, 86400],         // 1500/day
+            'API_V1_EXPORT' => [12,   60],            // 12/minute
+            'API_V1_EXPORT_OC' => [12,   60],            // 12/minute
+            'API_V1_REQUEST_S3_FILE_SIGNATURE' => [50,   86400],         // 50/day
+            'API_GKT_V3_SEARCH' => [10000, 86400],         // 10000/day
+            'API_GKT_V3_INVENTORY' => [1500, 86400],         // 1500/day
+            'USERNAME_CHANGE' => [3,    2419200],       // 3/28 days
+        ]);
+        // Back-compat alias (keep until callers are updated)
+        define('GK_RATE_LIMITS', GK_RATE_LIMITS_DEFAULT);
+
+        /** scale helper: multiply only the token budget, keep the period */
+        function rate_limit_scale(array $pair, int|float $factor): array {
+            return [(int) round($pair[0] * $factor), $pair[1]];
+        }
+
+        define('GK_RATE_LIMITS_LEVELS', [
+            GK_RATE_LIMITS_DEFAULT,
+            [
+                'API_LEGACY_MOVE_POST' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_LEGACY_MOVE_POST'], 3),
+                'API_LEGACY_PICTURE_PROXY' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_LEGACY_PICTURE_PROXY'], 1),
+                'API_V1_CHECK_RATE_LIMIT' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_V1_CHECK_RATE_LIMIT'], 3),
+                'API_V1_LOGIN_2_SECID' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_V1_LOGIN_2_SECID'], 2),
+                'API_V1_EXPORT2' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_V1_EXPORT2'], 3),
+                'API_V1_EXPORT' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_V1_EXPORT'], 1),
+                'API_V1_EXPORT_OC' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_V1_EXPORT_OC'], 1),
+                'API_V1_REQUEST_S3_FILE_SIGNATURE' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_V1_REQUEST_S3_FILE_SIGNATURE'], 2),
+                'API_GKT_V3_SEARCH' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_GKT_V3_SEARCH'], 2),
+                'API_GKT_V3_INVENTORY' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['API_GKT_V3_INVENTORY'], 5),
+                'USERNAME_CHANGE' => rate_limit_scale(GK_RATE_LIMITS_DEFAULT['USERNAME_CHANGE'], 5),
+            ],
         ]);
 
         // PIWIK
