@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 16:53+0000\n"
-"PO-Revision-Date: 2025-08-28 17:06\n"
+"POT-Creation-Date: 2025-08-30 07:23+0000\n"
+"PO-Revision-Date: 2025-08-30 07:37\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "Language: fi_FI\n"
@@ -406,11 +406,11 @@ msgstr ""
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:59
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
 msgid "Wrong secid"
 msgstr "Väärä secid"
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:61
 msgid "Wrong date or time"
 msgstr "Väärä päivämäärä tai aika"
 
@@ -506,7 +506,7 @@ msgstr ""
 msgid "This move is not editable."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:115
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:159
 msgid "Your move has been saved."
 msgstr "Sinun siirtosi on tallennettu."
 
@@ -1046,29 +1046,25 @@ msgstr ""
 msgid "Invalid unit specified: %s"
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:26
+#: website/app/GeoKrety/Service/Labels/Image.php:63
 msgid "User's manual:"
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:27
+#: website/app/GeoKrety/Service/Labels/Image.php:64
 msgid "Take this GeoKret."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:28
+#: website/app/GeoKrety/Service/Labels/Image.php:65
 msgid "Please note down his Tracking Code."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:29
+#: website/app/GeoKrety/Service/Labels/Image.php:66
 msgid "Hide in another cache."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:30
+#: website/app/GeoKrety/Service/Labels/Image.php:67
 #, php-format
 msgid "Register the trip at %s"
-msgstr ""
-
-#: website/app/GeoKrety/Service/Labels/Image.php:35
-msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 msgstr ""
 
 #: website/app/GeoKrety/Service/Moves.php:66
@@ -1250,7 +1246,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:17
 #: website/app-templates/smarty/forms/advanced_search.tpl:19
-#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/forms/move.tpl:253
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:10
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
 #: website/app-templates/smarty/forms/registration.tpl:37
@@ -1267,7 +1263,7 @@ msgstr "Käyttäjätunnus"
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:138
+#: website/app-templates/smarty/forms/move.tpl:152
 msgid "Waypoint"
 msgstr "Reittipiste"
 
@@ -1287,76 +1283,87 @@ msgid "Tracking Code"
 msgstr "Seurantakoodi"
 
 #: website/app-templates/smarty/forms/move.tpl:28
+msgid "eg. %1"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:35
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:29
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:4
 msgid "Select GeoKrety from inventory"
 msgstr "Valitse GeoKrety tavaraluettelosta"
 
-#: website/app-templates/smarty/forms/move.tpl:30
+#: website/app-templates/smarty/forms/move.tpl:37
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:31
 msgid "Verify Tracking Code"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:33
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "%1 merkkiä <em>GeoKretin etiketistä</em>. <u>Älä käytä koodia, joka alkaa 'GK' tästä</u>"
+#: website/app-templates/smarty/forms/move.tpl:41
+msgid "%1 characters from <em>GeoKret label</em>."
+msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:43
-#: website/app-templates/smarty/forms/move.tpl:204
+#: website/app-templates/smarty/forms/move.tpl:42
+msgid "<u>Do not use the code starting with 'GK' here</u>."
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:45
+msgid "ex: <code>%1</code> or multiple (limit %3) separated by comma <code>%1,%2</code>."
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:57
+#: website/app-templates/smarty/forms/move.tpl:218
 msgid "Validate"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:54
+#: website/app-templates/smarty/forms/move.tpl:68
 msgid "Log type"
 msgstr "Lokin tyyppi"
 
-#: website/app-templates/smarty/forms/move.tpl:64
+#: website/app-templates/smarty/forms/move.tpl:78
 msgid "This GeoKret is not collectible, so some move types are not available."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:73
+#: website/app-templates/smarty/forms/move.tpl:87
 msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
 msgstr "Valitse toimintotyyppi, jonka olet tehnyt GeoKretissä. Lisätietoja saat ohjesivulta."
 
-#: website/app-templates/smarty/forms/move.tpl:84
+#: website/app-templates/smarty/forms/move.tpl:98
 msgid "When you've left a GeoKret in a cache"
 msgstr "Kun olet jättänyt GeoKretin kätköön"
 
-#: website/app-templates/smarty/forms/move.tpl:85
+#: website/app-templates/smarty/forms/move.tpl:99
 msgid "I've dropped GeoKret"
 msgstr "Olen pudottanut GeoKretyn"
 
-#: website/app-templates/smarty/forms/move.tpl:91
+#: website/app-templates/smarty/forms/move.tpl:105
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr "Kun olet ottanut GeoKretin kätköstä ja et aio laittaa sitä toiseen kätköön <i>pian</i>"
 
-#: website/app-templates/smarty/forms/move.tpl:92
+#: website/app-templates/smarty/forms/move.tpl:106
 msgid "I've grabbed GeoKret"
 msgstr "Olen noutanut GeoKretyn"
 
-#: website/app-templates/smarty/forms/move.tpl:98
+#: website/app-templates/smarty/forms/move.tpl:112
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr "Kun olet tavannut GeoKretin kätkössä, mutta et ole ottanut sitä mukaasi"
 
-#: website/app-templates/smarty/forms/move.tpl:99
+#: website/app-templates/smarty/forms/move.tpl:113
 msgid "I've met GeoKret"
 msgstr "Olen nähnyt GeoKretyn"
 
-#: website/app-templates/smarty/forms/move.tpl:105
+#: website/app-templates/smarty/forms/move.tpl:119
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr "Kun otat GeoKretin kätköä varten; Tämä on sama kuin tekee pudotus ja sitten napata - vieraili sijainti on kirjautunut mutta GeoKret on edelleen tavaraluettelossa"
 
-#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:120
 msgid "I've dipped a GeoKret"
 msgstr "Olen kastanut GeoKretin"
 
-#: website/app-templates/smarty/forms/move.tpl:112
+#: website/app-templates/smarty/forms/move.tpl:126
 msgid "When you want to write a comment :)"
 msgstr "Kun haluat kirjoittaa kommentin :)"
 
-#: website/app-templates/smarty/forms/move.tpl:113
-#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/forms/move.tpl:127
+#: website/app-templates/smarty/forms/move.tpl:261
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:22
 #: website/app-templates/smarty/pages/home.tpl:36
@@ -1372,35 +1379,35 @@ msgstr "Kun haluat kirjoittaa kommentin :)"
 msgid "Comment"
 msgstr "Kommentti"
 
-#: website/app-templates/smarty/forms/move.tpl:128
+#: website/app-templates/smarty/forms/move.tpl:142
 msgid "New location"
 msgstr "Uusi sijainti"
 
-#: website/app-templates/smarty/forms/move.tpl:141
+#: website/app-templates/smarty/forms/move.tpl:155
 msgid "eg. GC1AQ2N"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:146
+#: website/app-templates/smarty/forms/move.tpl:160
 msgid "Lookup opencaching cache by name"
 msgstr "Hae välimuistin suojaus nimen mukaan"
 
-#: website/app-templates/smarty/forms/move.tpl:151
+#: website/app-templates/smarty/forms/move.tpl:165
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/app-templates/smarty/forms/move.tpl:163
+#: website/app-templates/smarty/forms/move.tpl:177
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
 msgstr "Anna kätkön nimi. <strong>Ei toimi GC kätköille</strong>"
 
-#: website/app-templates/smarty/forms/move.tpl:177
+#: website/app-templates/smarty/forms/move.tpl:191
 msgid "Coordinates"
 msgstr "Koordinaatit"
 
-#: website/app-templates/smarty/forms/move.tpl:215
+#: website/app-templates/smarty/forms/move.tpl:229
 msgid "Additional data"
 msgstr "Lisätiedot"
 
-#: website/app-templates/smarty/forms/move.tpl:223
+#: website/app-templates/smarty/forms/move.tpl:237
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:26
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
@@ -1408,15 +1415,19 @@ msgstr "Lisätiedot"
 msgid "Date"
 msgstr "Päiväys"
 
-#: website/app-templates/smarty/forms/move.tpl:241
+#: website/app-templates/smarty/forms/move.tpl:255
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "Tämä voi olla sinun:<br />- geokätköily/opencaching käyttäjänimi<br />- lempinimi<br />- nimi jne."
 
-#: website/app-templates/smarty/forms/move.tpl:251
+#: website/app-templates/smarty/forms/move.tpl:265
 msgid "It is always nice to receive a little message ;)"
 msgstr "On aina mukava saada pieni viesti ;)"
 
-#: website/app-templates/smarty/forms/move.tpl:274
+#: website/app-templates/smarty/forms/move.tpl:277
+msgid "Remember date and comment"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:301
 msgid "Post your log"
 msgstr "Lähetä loki"
 
@@ -1702,6 +1713,10 @@ msgstr ""
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:14
 msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
 msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "%1 merkkiä <em>GeoKretin etiketistä</em>. <u>Älä käytä koodia, joka alkaa 'GK' tästä</u>"
 
 #: website/app-templates/smarty/footer.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:2

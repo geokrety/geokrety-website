@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 16:53+0000\n"
-"PO-Revision-Date: 2025-08-28 17:07\n"
+"POT-Creation-Date: 2025-08-30 07:23+0000\n"
+"PO-Revision-Date: 2025-08-30 07:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -406,11 +406,11 @@ msgstr ""
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:59
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
 msgid "Wrong secid"
 msgstr "错误的secid"
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:61
 msgid "Wrong date or time"
 msgstr "错误的日期或时间"
 
@@ -506,7 +506,7 @@ msgstr ""
 msgid "This move is not editable."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:115
+#: website/app/GeoKrety/Controller/Pages/MoveCreate.php:159
 msgid "Your move has been saved."
 msgstr "您的移动已保存。"
 
@@ -1046,29 +1046,25 @@ msgstr ""
 msgid "Invalid unit specified: %s"
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:26
+#: website/app/GeoKrety/Service/Labels/Image.php:63
 msgid "User's manual:"
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:27
+#: website/app/GeoKrety/Service/Labels/Image.php:64
 msgid "Take this GeoKret."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:28
+#: website/app/GeoKrety/Service/Labels/Image.php:65
 msgid "Please note down his Tracking Code."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:29
+#: website/app/GeoKrety/Service/Labels/Image.php:66
 msgid "Hide in another cache."
 msgstr ""
 
-#: website/app/GeoKrety/Service/Labels/Image.php:30
+#: website/app/GeoKrety/Service/Labels/Image.php:67
 #, php-format
 msgid "Register the trip at %s"
-msgstr ""
-
-#: website/app/GeoKrety/Service/Labels/Image.php:35
-msgid "<tspan font-weight=\"bold\">User's manual:</tspan> <tspan font-weight=\"bold\">1.</tspan> Take this GeoKret. <tspan font-weight=\"bold\">Please note down his Tracking Code.</tspan> <tspan font-weight=\"bold\">2.</tspan> Hide in another cache. <tspan font-weight=\"bold\">3.</tspan> Register the trip at <tspan font-weight=\"bold\">https://geokrety.org</tspan>"
 msgstr ""
 
 #: website/app/GeoKrety/Service/Moves.php:66
@@ -1250,7 +1246,7 @@ msgstr ""
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:17
 #: website/app-templates/smarty/forms/advanced_search.tpl:19
-#: website/app-templates/smarty/forms/move.tpl:239
+#: website/app-templates/smarty/forms/move.tpl:253
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:10
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
 #: website/app-templates/smarty/forms/registration.tpl:37
@@ -1267,7 +1263,7 @@ msgstr "用户名"
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:138
+#: website/app-templates/smarty/forms/move.tpl:152
 msgid "Waypoint"
 msgstr "航点"
 
@@ -1287,76 +1283,87 @@ msgid "Tracking Code"
 msgstr "跟踪代码"
 
 #: website/app-templates/smarty/forms/move.tpl:28
+msgid "eg. %1"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:35
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:29
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:4
 msgid "Select GeoKrety from inventory"
 msgstr "从背包中选择 GeoKrety"
 
-#: website/app-templates/smarty/forms/move.tpl:30
+#: website/app-templates/smarty/forms/move.tpl:37
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:31
 msgid "Verify Tracking Code"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:33
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
-msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
-msgstr "来自 <em>GeoKret 标签</em>的%1 个字符。 <u>不要在此使用以 'GK ' 开头的代码</u>"
+#: website/app-templates/smarty/forms/move.tpl:41
+msgid "%1 characters from <em>GeoKret label</em>."
+msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:43
-#: website/app-templates/smarty/forms/move.tpl:204
+#: website/app-templates/smarty/forms/move.tpl:42
+msgid "<u>Do not use the code starting with 'GK' here</u>."
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:45
+msgid "ex: <code>%1</code> or multiple (limit %3) separated by comma <code>%1,%2</code>."
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:57
+#: website/app-templates/smarty/forms/move.tpl:218
 msgid "Validate"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:54
+#: website/app-templates/smarty/forms/move.tpl:68
 msgid "Log type"
 msgstr "日志类型"
 
-#: website/app-templates/smarty/forms/move.tpl:64
+#: website/app-templates/smarty/forms/move.tpl:78
 msgid "This GeoKret is not collectible, so some move types are not available."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:73
+#: website/app-templates/smarty/forms/move.tpl:87
 msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
 msgstr "选择您在 GeoKret上做出的操作类型。欲了解更多信息，请查看帮助页面。"
 
-#: website/app-templates/smarty/forms/move.tpl:84
+#: website/app-templates/smarty/forms/move.tpl:98
 msgid "When you've left a GeoKret in a cache"
 msgstr "当你在缓存中离开GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:85
+#: website/app-templates/smarty/forms/move.tpl:99
 msgid "I've dropped GeoKret"
 msgstr "我放下了GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:91
+#: website/app-templates/smarty/forms/move.tpl:105
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr "当你从缓存中拿走GeoKret 并且不会把它放到另一个缓存 <i>很快</i>"
 
-#: website/app-templates/smarty/forms/move.tpl:92
+#: website/app-templates/smarty/forms/move.tpl:106
 msgid "I've grabbed GeoKret"
 msgstr "我拿到了GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:98
+#: website/app-templates/smarty/forms/move.tpl:112
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr "当你在缓存中遇到GeoKret 但你没有拿起它"
 
-#: website/app-templates/smarty/forms/move.tpl:99
+#: website/app-templates/smarty/forms/move.tpl:113
 msgid "I've met GeoKret"
 msgstr "我见到了GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:105
+#: website/app-templates/smarty/forms/move.tpl:119
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr "当您使用 GeoKret 进行缓存巡回时； 这与进行丢弃然后抓取 — — 访问的位置被记录, 但GeoKret 仍然在您的背包中"
 
-#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:120
 msgid "I've dipped a GeoKret"
 msgstr "我蘸GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:112
+#: website/app-templates/smarty/forms/move.tpl:126
 msgid "When you want to write a comment :)"
 msgstr "当你想写一个评论 :)"
 
-#: website/app-templates/smarty/forms/move.tpl:113
-#: website/app-templates/smarty/forms/move.tpl:247
+#: website/app-templates/smarty/forms/move.tpl:127
+#: website/app-templates/smarty/forms/move.tpl:261
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:19
 #: website/app-templates/smarty/dialog/move_comment_create.tpl:22
 #: website/app-templates/smarty/pages/home.tpl:36
@@ -1372,35 +1379,35 @@ msgstr "当你想写一个评论 :)"
 msgid "Comment"
 msgstr "评论"
 
-#: website/app-templates/smarty/forms/move.tpl:128
+#: website/app-templates/smarty/forms/move.tpl:142
 msgid "New location"
 msgstr "新的地点"
 
-#: website/app-templates/smarty/forms/move.tpl:141
+#: website/app-templates/smarty/forms/move.tpl:155
 msgid "eg. GC1AQ2N"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:146
+#: website/app-templates/smarty/forms/move.tpl:160
 msgid "Lookup opencaching cache by name"
 msgstr "按名称查找opencaching 缓存"
 
-#: website/app-templates/smarty/forms/move.tpl:151
+#: website/app-templates/smarty/forms/move.tpl:165
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
 
-#: website/app-templates/smarty/forms/move.tpl:163
+#: website/app-templates/smarty/forms/move.tpl:177
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
 msgstr "输入缓存名称。 <strong>不适用于 GC 缓存</strong>"
 
-#: website/app-templates/smarty/forms/move.tpl:177
+#: website/app-templates/smarty/forms/move.tpl:191
 msgid "Coordinates"
 msgstr "坐标系"
 
-#: website/app-templates/smarty/forms/move.tpl:215
+#: website/app-templates/smarty/forms/move.tpl:229
 msgid "Additional data"
 msgstr "附加数据"
 
-#: website/app-templates/smarty/forms/move.tpl:223
+#: website/app-templates/smarty/forms/move.tpl:237
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:26
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
@@ -1408,15 +1415,19 @@ msgstr "附加数据"
 msgid "Date"
 msgstr "日期"
 
-#: website/app-templates/smarty/forms/move.tpl:241
+#: website/app-templates/smarty/forms/move.tpl:255
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "“”这可能是你的： <br /> - 寻宝/ opencaching用户名<br /> - 昵称<br /> - 姓名等"
 
-#: website/app-templates/smarty/forms/move.tpl:251
+#: website/app-templates/smarty/forms/move.tpl:265
 msgid "It is always nice to receive a little message ;)"
 msgstr "收到一点消息总是很好的；)"
 
-#: website/app-templates/smarty/forms/move.tpl:274
+#: website/app-templates/smarty/forms/move.tpl:277
+msgid "Remember date and comment"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:301
 msgid "Post your log"
 msgstr "发布您的日志"
 
@@ -1702,6 +1713,10 @@ msgstr ""
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:14
 msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
 msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:34
+msgid "%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>"
+msgstr "来自 <em>GeoKret 标签</em>的%1 个字符。 <u>不要在此使用以 'GK ' 开头的代码</u>"
 
 #: website/app-templates/smarty/footer.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:2
