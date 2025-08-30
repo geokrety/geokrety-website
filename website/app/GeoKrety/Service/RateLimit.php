@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Service;
 
-use Exception;
 use GeoKrety\Service\Xml\Error;
 use PalePurple\RateLimit\Adapter\Redis as RedisAdapter;
 use PalePurple\RateLimit\RateLimit as RateLimiter;
@@ -27,10 +26,8 @@ class RateLimit {
      *
      * @param string      $name Limit name
      * @param string|null $key  User identifier
-     *
-     * @return void
      */
-    public static function check_rate_limit_raw(string $name, ?string $key = null) {
+    public static function check_rate_limit_raw(string $name, ?string $key = null): void {
         try {
             self::incr($name, $key);
         } catch (RateLimitExceeded $e) {
@@ -44,10 +41,8 @@ class RateLimit {
      *
      * @param string      $name Limit name
      * @param string|null $key  User identifier
-     *
-     * @return void
      */
-    public static function check_rate_limit_xml(string $name, ?string $key = null) {
+    public static function check_rate_limit_xml(string $name, ?string $key = null): void {
         try {
             self::incr($name, $key);
         } catch (RateLimitExceeded $e) {
@@ -60,9 +55,9 @@ class RateLimit {
      * @param string      $name Limit name
      * @param string|null $key  User identifier
      *
-     * @throws \GeoKrety\Service\RateLimitExceeded
+     * @throws RateLimitExceeded
      */
-    public static function incr(string $name, ?string $key = null) {
+    public static function incr(string $name, ?string $key = null): void {
         // Allow bypass the rate limiter
         if (self::allow_bypass()) {
             return;
@@ -71,12 +66,11 @@ class RateLimit {
         // Skip rate limit if Redis is not available
         try {
             $rateLimit = new RateLimit($name, $key);
-        } catch (\GeoKrety\Service\StorageException $e) {
-            // TODO raise a Sentry alert?
+        } catch (StorageException $e) {
             Event::instance()->emit('rate-limit.skip', [
                 'name' => $name,
-                'limit' => self::get_max_requests($name),
-                'period' => self::get_period($name),
+                'limit' => null,
+                'period' => null,
             ]);
 
             return;
@@ -86,7 +80,7 @@ class RateLimit {
     }
 
     /**
-     * @throws \GeoKrety\Service\StorageException
+     * @throws StorageException
      */
     public function __construct(string $name, ?string $key = null) {
         $this->name = $name;
@@ -95,16 +89,16 @@ class RateLimit {
         $adapter = new RedisAdapter(Redis::instance()->getRedis());
 
         $this->rate_limiter = new RateLimiter(
-            $this->get_rate_limit_key_base($name),
-            $this->get_max_requests($name),
-            $this->get_period($name),
+            $this->get_rate_limit_key_base(),
+            $this->get_max_requests(),
+            $this->get_period(),
             $adapter);
     }
 
     /**
-     * @throws \GeoKrety\Service\RateLimitExceeded
+     * @throws RateLimitExceeded
      */
-    public function check() {
+    public function check(): void {
         if (!$this->rate_limiter->check($this->key)) {
             Event::instance()->emit('rate-limit.exceeded', $this->get_context());
             register_shutdown_function('GeoKrety\Model\AuditPost::AmendAuditPostWithErrors', 'Rate limit exceeded');
@@ -117,18 +111,18 @@ class RateLimit {
     private function get_context(): array {
         return [
             'name' => $this->name,
-            'total_user_calls' => $this->get_max_requests($this->name) - $this->rate_limiter->getAllowance($this->key),
+            'total_user_calls' => $this->get_max_requests() - $this->rate_limiter->getAllowance($this->key),
             'remaining_attempts' => $this->rate_limiter->getAllowance($this->key),
-            'limit' => $this->get_max_requests($this->name),
-            'period' => $this->get_period($this->name),
+            'limit' => $this->get_max_requests(),
+            'period' => $this->get_period(),
         ];
     }
 
-    private function get_rate_limit_key_base() {
+    private function get_rate_limit_key_base(): string {
         return sprintf(self::RATE_KEY_PATTERN, self::RATE_KEY, $this->name);
     }
 
-    private function get_rate_limit_key($key) {
+    private function get_rate_limit_key($key): string {
         if (is_null($key)) {
             return \Base::instance()->get('IP');
         }
@@ -136,15 +130,15 @@ class RateLimit {
         return $key;
     }
 
-    private function get_max_requests() {
+    private function get_max_requests(): int {
         return GK_RATE_LIMITS[$this->name][0];
     }
 
-    private function get_period() {
+    private function get_period(): int {
         return GK_RATE_LIMITS[$this->name][1];
     }
 
-    private static function allow_bypass() {
+    private static function allow_bypass(): bool {
         $f3 = \Base::instance();
 
         return $f3->exists('GET.rate_limits_bypass')
@@ -152,10 +146,10 @@ class RateLimit {
     }
 
     /**
-     * @throws \GeoKrety\Service\StorageException
+     * @throws StorageException
      */
     public static function get_rates_limits_usage(string $query = '*'): array {
-        /** @var \GeoKrety\Service\Redis $redis */
+        /** @var Redis $redis */
         $redis = Redis::instance();
         $redis->ensureOpenConnection();
         $allKeys = $redis->keys(sprintf('%s__%s', self::RATE_KEY, $query));
@@ -173,11 +167,11 @@ class RateLimit {
         return $response;
     }
 
-    public function reset() {
+    public function reset(): void {
         $this->rate_limiter->purge($this->key);
     }
 
-    public static function resetAll() {
+    public static function resetAll(): void {
         $redis = Redis::instance();
         $redis->ensureOpenConnection();
         $allKeys = $redis->keys(sprintf('%s__*', self::RATE_KEY));
@@ -187,15 +181,14 @@ class RateLimit {
     }
 
     /**
-     * @throws \GeoKrety\Service\StorageException
+     * @throws StorageException
      */
-    public static function purge(): array {
+    public static function purge(): void {
         $query = '*';
-        /** @var \GeoKrety\Service\Redis $redis */
+        /** @var Redis $redis */
         $redis = Redis::instance();
         $redis->ensureOpenConnection();
         $allKeys = $redis->keys(sprintf('%s__%s', self::RATE_KEY, $query));
-        $response = [];
         foreach ($allKeys as $key) {
             if (preg_match('/^'.self::RATE_KEY.'__(.*)__:(.*):allow$/', $key, $matches) === 0) {
                 continue;
@@ -207,7 +200,5 @@ class RateLimit {
                 $rateLimit->purge($matches[2]);
             }
         }
-
-        return $response;
     }
 }
