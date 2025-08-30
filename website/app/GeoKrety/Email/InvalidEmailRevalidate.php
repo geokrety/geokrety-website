@@ -1,0 +1,96 @@
+<?php
+
+namespace GeoKrety\Email;
+
+use GeoKrety\Model\AccountActivationToken;
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
+
+class InvalidEmailRevalidate extends TokenBase {
+    protected string $template = 'emails/account-activation.tpl';
+    public const SESSION_VARIABLE_NAME = 'SESSION.invalidEmailRevalidate';
+
+    public function __construct(?bool $exceptions = true, string $body = '') {
+        parent::__construct($exceptions, $body);
+        parent::setSubject(_('Email validation'), '✉️');
+    }
+
+    protected function allowSend(User $user): bool {
+        return $user->email_invalid !== User::USER_EMAIL_NO_ERROR;
+    }
+
+    protected function allowNonProdEnvSend(): bool {
+        return true;
+    }
+
+    /**
+     * Override mail From.
+     *
+     * @return void
+     *
+     * @throws \PHPMailer\PHPMailer\Exception
+     */
+    protected function setFromDefault() {
+        $this->setFrom(GK_SITE_EMAIL_REGISTRATION, 'GeoKrety');
+    }
+
+    /**
+     * When user try to login, but the account has not yet been activated.
+     *
+     * @return void
+     */
+    public function sendActivationAgainOnLogin(User $user) {
+        $token = $this->getToken($user);
+
+        $f3 = \Base::instance();
+        $csrf = $this->genTokenCsrf();
+        $f3->set(self::SESSION_SEND_ACTIVATION_AGAIN, $csrf);
+
+        $this->message['status'] = 'danger';
+        $this->message['msg'][] = sprintf('<strong>%s</strong>', _('Your account is not yet active.'));
+        $this->message['msg'][] = sprintf(
+            _('You can request a <a href="%s">new confirmation mail</a>.'),
+            $f3->alias('user_account_revalidation_send_mail', [
+                'tokenid' => $token->id,
+                'csrf' => $csrf,
+            ])
+        );
+        $this->message['msg'][] = sprintf('<strong>%s</strong>', _('You must click on the link provided in the email to activate your account before your can use it.'));
+        $this->messageAddLinkExpirationTime($token);
+        $this->flashMessage($token);
+    }
+
+    /**
+     * When the account has been activated.
+     *
+     * @return void
+     *
+     * @throws \PHPMailer\PHPMailer\Exception
+     * @throws \Prometheus\Exception\MetricsRegistrationException
+     * @throws \SmartyException
+     */
+    public function sendActivationConfirm(AccountActivationToken $token) {
+        Smarty::assign('token', $token);
+        $this->setSubject(_('Account activated'), '🎉');
+        $this->setTo($token->user);
+        $this->sendEmail('emails/account-activated.tpl');
+    }
+
+    protected function getToken(User $user): \GeoKrety\Model\TokenBase {
+        $token = new AccountActivationToken();
+        $token->loadUserActiveToken($user);
+        if ($token->dry()) {
+            $token->user = $user;
+            $token->save();
+        }
+
+        return $token;
+    }
+
+    protected function afterEmailSentHook(): void {
+        $f3 = \Base::instance();
+        if ($f3->exists(self::SESSION_SEND_ACTIVATION_AGAIN)) {
+            $f3->clear(self::SESSION_SEND_ACTIVATION_AGAIN);
+        }
+    }
+}

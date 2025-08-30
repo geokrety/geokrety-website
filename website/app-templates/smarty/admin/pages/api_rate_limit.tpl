@@ -2,7 +2,7 @@
 
 {block name=title}{t}Api Rate Limits{/t}{/block}
 
-{assign var=RATES_LIMITS value=constant('GK_RATE_LIMITS')}
+{assign var=RATES_LIMITS value=constant('GK_RATE_LIMITS_DEFAULT')}
 {block name=content}
     <h1>
         {t}Api Rate Limits{/t}

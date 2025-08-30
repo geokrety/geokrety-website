@@ -65,7 +65,7 @@ class HelpApi extends Base {
         Smarty::assign('modified_since', date('YmdHis', time() - (1 * 60 * 60)));
 
         $xml = new Xml\RateLimits(false);
-        foreach (GK_RATE_LIMITS as $name => $values) {
+        foreach (GK_RATE_LIMITS_DEFAULT as $name => $values) {
             $xml->addLimit($name, $values[0], $values[1]);
             $xml->addUsage('xxx', 0);
             $xml->endElement();
