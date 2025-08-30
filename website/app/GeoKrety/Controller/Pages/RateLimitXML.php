@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\User;
 use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\StorageException;
 use GeoKrety\Service\Xml\RateLimits;
@@ -15,42 +14,50 @@ class RateLimitXML extends BaseXML {
         $this->xml = new RateLimits(true, $f3->get('GET.compress'));
     }
 
-    public function authenticate(): ?User {
+    public function authenticate(): array {
+        $keys = [];
         if ($this->f3->exists('GET.secid')) {
             $login = new Login();
 
-            return $login->secidAuth($this->f3, $this->f3->get('GET.secid'), false);
+            // TODO can we use that to load user limits?
+            $user = $login->secidAuth($this->f3, $this->f3->get('GET.secid'), false);
+            if (!is_null($user)) {
+                $keys[] = $user->secid;
+                Login::disconnectUser($this->f3);
+                // return $keys;
+            }
         }
 
-        return null;
+        $keys[] = \Base::instance()->get('IP');
+
+        return $keys;
     }
 
     public function get(\Base $f3) {
-        RateLimit::check_rate_limit_xml('API_V1_CHECK_RATE_LIMIT', $this->f3->get('GET.secid'));
+        $id = $this->f3->exists('GET.secid') ? $this->f3->get('GET.secid') : \Base::instance()->get('IP');
+        RateLimit::check_rate_limit_xml('API_V1_CHECK_RATE_LIMIT', $id);
+
         $xml = $this->xml;
         try {
-            $keys = [\Base::instance()->get('IP')];
-            $user = $this->authenticate();
-            if (!is_null($user)) {
-                $keys[] = $user->secid;
-            }
-            Login::disconnectUser($f3);
+            $keys = $this->authenticate();
 
-            $usages = [];
-            foreach ($keys as $key) {
-                $usages = array_merge_recursive($usages, RateLimit::get_rates_limits_usage(sprintf('*__:%s:allow', $key)));
+            $usages = RateLimit::get_usage_for_identities($keys);
+            $originalByNorm = [];
+            foreach ($keys as $k) {
+                $originalByNorm[strtr($k, [':' => '_'])] = $k;
             }
             foreach (GK_RATE_LIMITS as $name => $values) {
                 $this->xml->addLimit($name, $values[0], $values[1]);
-                if (!array_key_exists($name, $usages)) {
-                    foreach ($keys as $key) {
-                        $this->xml->addUsage($key, 0);
+                if (!isset($usages[$name])) {
+                    foreach ($keys as $k) {
+                        $this->xml->addUsage($k, 0);
                     }
                     $this->xml->endElement();
                     continue;
                 }
-                foreach ($usages[$name] as $id => $count) {
-                    $this->xml->addUsage($id, $count);
+                foreach ($usages[$name] as $normKey => $count) {
+                    $displayId = $originalByNorm[$normKey] ?? $normKey;
+                    $this->xml->addUsage($displayId, $count);
                 }
                 $this->xml->endElement();
             }

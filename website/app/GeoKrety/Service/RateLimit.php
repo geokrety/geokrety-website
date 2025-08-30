@@ -69,8 +69,8 @@ class RateLimit {
         } catch (StorageException $e) {
             Event::instance()->emit('rate-limit.skip', [
                 'name' => $name,
-                'limit' => null,
-                'period' => null,
+                'limit' => GK_RATE_LIMITS[$name][0] ?? null,
+                'period' => GK_RATE_LIMITS[$name][1] ?? null,
             ]);
 
             return;
@@ -122,12 +122,12 @@ class RateLimit {
         return sprintf(self::RATE_KEY_PATTERN, self::RATE_KEY, $this->name);
     }
 
-    private function get_rate_limit_key($key): string {
+    private function get_rate_limit_key(?string $key): string {
         if (is_null($key)) {
-            return \Base::instance()->get('IP');
+            $key = \Base::instance()->get('IP');
         }
 
-        return $key;
+        return strtr($key, [':' => '_']);
     }
 
     private function get_max_requests(): int {
@@ -146,25 +146,96 @@ class RateLimit {
     }
 
     /**
+     * Return usage (tokens consumed) for one or more identities across all (or some) limits.
+     * Never scans Redis; directly asks the limiter for allowance.
+     *
+     * @param string[]      $rawKeys    e.g. ['192.168.0.10', 'secid123']
+     * @param string[]|null $limitNames null => all limits in GK_RATE_LIMITS
+     *
+     * @return array{string: array{string:int}} [limitName => [normKey => used]]
+     *
+     * @throws StorageException
+     */
+    public static function get_usage_for_identities(array $rawKeys, ?array $limitNames = null): array {
+        if (empty($rawKeys)) {
+            return [];
+        }
+
+        // normalize once (same rule as check())
+        $normKeys = [];
+        foreach ($rawKeys as $k) {
+            $normKeys[] = strtr($k, [':' => '_']);
+        }
+
+        $redis = Redis::instance();
+        $redis->ensureOpenConnection();
+        $adapter = new RedisAdapter($redis->getRedis());
+
+        $names = $limitNames ?? array_keys(GK_RATE_LIMITS);
+        $resp = [];
+
+        foreach ($names as $name) {
+            $cfg = GK_RATE_LIMITS[$name] ?? null;
+            if (!is_array($cfg) || count($cfg) < 2) {
+                continue;
+            }
+            [$limit, $period] = $cfg;
+
+            $base = sprintf('%s__%s__', self::RATE_KEY, $name);
+            $rl = new RateLimiter($base, (int) $limit, (int) $period, $adapter);
+
+            foreach ($normKeys as $nk) {
+                $allow = (int) $rl->getAllowance($nk);
+                $resp[$name][$nk] = max(0, (int) $limit - $allow);
+            }
+        }
+
+        return $resp;
+    }
+
+    /**
      * @throws StorageException
      */
     public static function get_rates_limits_usage(string $query = '*'): array {
-        /** @var Redis $redis */
         $redis = Redis::instance();
         $redis->ensureOpenConnection();
-        $allKeys = $redis->keys(sprintf('%s__%s', self::RATE_KEY, $query));
-        $response = [];
-        foreach ($allKeys as $key) {
-            if (preg_match('/^'.self::RATE_KEY.'__(.*)__:(.*):allow$/', $key, $matches) === 0) {
+
+        $client = $redis->getRedis();
+        $pattern = sprintf('%s__%s', self::RATE_KEY, $query);
+        $adapter = new RedisAdapter($client);
+        $limiters = [];
+        $resp = [];
+        $it = null;
+
+        do {
+            $keys = $client->scan($it, $pattern, 1000);
+            if ($keys === false) {
                 continue;
             }
-            $adapter = new RedisAdapter($redis->getRedis());
-            $key = self::RATE_KEY."__{$matches[1]}__";
-            $rateLimit = new RateLimiter($key, GK_RATE_LIMITS[$matches[1]][0], GK_RATE_LIMITS[$matches[1]][1], $adapter);
-            $response[$matches[1]][$matches[2]] = GK_RATE_LIMITS[$matches[1]][0] - $rateLimit->getAllowance($matches[2]);
-        }
 
-        return $response;
+            foreach ($keys as $full) {
+                if (!preg_match('/^'.preg_quote(self::RATE_KEY, '/').'__(.+?)___(.*)_allow$/', $full, $m)) {
+                    continue;
+                }
+                [, $limitName, $userKey] = $m;
+
+                $cfg = GK_RATE_LIMITS[$limitName] ?? null;
+                if (!is_array($cfg) || count($cfg) < 2) {
+                    continue;
+                }
+                [$limit, $period] = $cfg;
+
+                if (!isset($limiters[$limitName])) {
+                    $base = self::RATE_KEY."__{$limitName}__";
+                    $limiters[$limitName] = new RateLimiter($base, (int) $limit, (int) $period, $adapter);
+                }
+
+                $allow = (int) $limiters[$limitName]->getAllowance($userKey);
+                $resp[$limitName][$userKey] = max(0, (int) $limit - $allow);
+            }
+        } while ($it !== 0);
+
+        return $resp;
     }
 
     public function reset(): void {
@@ -181,24 +252,49 @@ class RateLimit {
     }
 
     /**
+     * Purge idle rate-limit keys (those with full allowance).
+     *
      * @throws StorageException
      */
     public static function purge(): void {
-        $query = '*';
-        /** @var Redis $redis */
         $redis = Redis::instance();
         $redis->ensureOpenConnection();
-        $allKeys = $redis->keys(sprintf('%s__%s', self::RATE_KEY, $query));
-        foreach ($allKeys as $key) {
-            if (preg_match('/^'.self::RATE_KEY.'__(.*)__:(.*):allow$/', $key, $matches) === 0) {
+        $client = $redis->getRedis();
+        $adapter = new RedisAdapter($client);
+
+        $iterator = null;
+        $pattern = sprintf('%s__*', self::RATE_KEY);
+        $regex = '/^'.preg_quote(self::RATE_KEY, '/').'__(.+?)___(.*)_allow$/';
+        $limitersByName = [];
+
+        do {
+            $keys = $client->scan($iterator, $pattern, 1000);
+            if ($keys === false) {
                 continue;
             }
-            $adapter = new RedisAdapter($redis->getRedis());
-            $key = self::RATE_KEY."__{$matches[1]}__";
-            $rateLimit = new RateLimiter($key, GK_RATE_LIMITS[$matches[1]][0], GK_RATE_LIMITS[$matches[1]][1], $adapter);
-            if (GK_RATE_LIMITS[$matches[1]][0] <= $rateLimit->getAllowance($matches[2])) {
-                $rateLimit->purge($matches[2]);
+
+            foreach ($keys as $key) {
+                if (!preg_match($regex, $key, $matches)) {
+                    continue;
+                }
+                [, $limitName, $userKey] = $matches;
+
+                $config = GK_RATE_LIMITS[$limitName] ?? null;
+                if (!is_array($config) || count($config) < 2) {
+                    continue;
+                }
+                [$limit, $period] = $config;
+
+                if (!isset($limitersByName[$limitName])) {
+                    $baseKey = sprintf('%s__%s__', self::RATE_KEY, $limitName);
+                    $limitersByName[$limitName] = new RateLimiter($baseKey, (int) $limit, (int) $period, $adapter);
+                }
+
+                $rateLimiter = $limitersByName[$limitName];
+                if ($rateLimiter->getAllowance($userKey) >= (int) $limit) {
+                    $rateLimiter->purge($userKey);
+                }
             }
-        }
+        } while ($iterator !== 0);
     }
 }
