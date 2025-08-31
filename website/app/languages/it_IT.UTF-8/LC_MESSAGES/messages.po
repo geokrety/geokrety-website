@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-30 07:51+0000\n"
-"PO-Revision-Date: 2025-08-30 07:52\n"
+"POT-Creation-Date: 2025-08-31 13:30+0000\n"
+"PO-Revision-Date: 2025-08-31 14:13\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -414,6 +414,12 @@ msgstr "Secid errato"
 msgid "Wrong date or time"
 msgstr "Data o ora errata"
 
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:78
+#: website/app/GeoKrety/Service/RateLimit.php:40
+#: website/app/GeoKrety/Service/RateLimit.php:55
+msgid "Rate limit exceeded"
+msgstr "Limite di velocità superato"
+
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:295
 msgid "Waypoint parameter must be provided."
 msgstr "È necessario fornire il parametro waypoint."
@@ -777,16 +783,16 @@ msgstr "Inserire la vecchia password."
 msgid "Your old password is invalid."
 msgstr "La vecchia password non è valida."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
 #, php-format
 msgid "You can only change your username %d times per month"
 msgstr "Puoi cambiare il tuo nome utente al massimo %d volte al mese"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:49
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:50
 msgid "Username changed. Please login again."
 msgstr "Nome utente cambiato. Effettua nuovamente il login."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:61
 msgid "Sorry, to use this feature, you must have a valid registered email address."
 msgstr "Siamo spiacenti, per usare questa funzione, devi avere un indirizzo email registrato valido."
 
@@ -1070,11 +1076,6 @@ msgstr "Registra lo spostamento su %s"
 #: website/app/GeoKrety/Service/Moves.php:66
 msgid "The date time could not be parsed."
 msgstr "L'ora della data non può essere analizzata."
-
-#: website/app/GeoKrety/Service/RateLimit.php:37
-#: website/app/GeoKrety/Service/RateLimit.php:54
-msgid "Rate limit exceeded"
-msgstr "Limite di velocità superato"
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
@@ -2024,7 +2025,7 @@ msgid "Scripts management"
 msgstr "Gestione script"
 
 #: website/app-templates/smarty/admin/pages/scripts.tpl:8
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:9
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:18
 msgid "Refresh"
 msgstr "Aggiorna"
@@ -2053,12 +2054,12 @@ msgid "Edit"
 msgstr "Modifica"
 
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:7
 msgid "Api Rate Limits"
 msgstr "Tasso Limite Api"
 
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:49
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:16
 msgid "Reset"
 msgstr "Resetta"
 
@@ -2336,7 +2337,7 @@ msgstr "Ecco il contenuto della vecchia missione di GKv1"
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:16
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:15
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:39
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:22
@@ -2485,8 +2486,8 @@ msgid "Do you really want to reset this rate-limit?"
 msgstr "Vuoi davvero resettare questo limite?"
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
-msgid "Name=%1 ID=%2"
-msgstr "Nome=%1 ID=%2"
+msgid "Name=%1 KEY=%2"
+msgstr ""
 
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
 msgid "Do you really want to delete this news comment?"
