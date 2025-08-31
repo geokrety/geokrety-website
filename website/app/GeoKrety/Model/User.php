@@ -476,6 +476,13 @@ EOT;
         return $value;
     }
 
+    public static function get_user_by_secid(string $secid): ?User {
+        $userModel = new User();
+        $userModel->load(['_secid_hash = public.digest(?, \'sha256\')', $secid], ttl: GK_SECID_UID_CACHE_TTL);
+
+        return $userModel->dry() ? null : $userModel;
+    }
+
     public function __construct() {
         parent::__construct();
         $this->beforeinsert(function ($self) {

@@ -65,13 +65,19 @@ class HelpApi extends Base {
         Smarty::assign('modified_since', date('YmdHis', time() - (1 * 60 * 60)));
 
         $xml = new Xml\RateLimits(false);
-        foreach (GK_RATE_LIMITS as $name => $values) {
-            $xml->addLimit($name, $values[0], $values[1]);
-            $xml->addUsage('xxx', 0);
+        foreach (GK_RATE_LIMITS_DEFAULT as $name => $values) {
+            $xml->addLimit($name, $values[1]);
+            $xml->addUsage('xxx', 0, $values[0], RATE_LIMIT_LEVEL_ANONYMOUS);
             $xml->endElement();
         }
         $xml->end();
         Smarty::assign('rate_limit_usage', $xml->asXMLPretty());
+
+        // Render ratelimit error
+        $xml = new Xml\Error();
+        $xml->addError(_('Rate limit exceeded'));
+        $xml->end();
+        Smarty::assign('gk_xml_rate_limit_error', $xml->asXMLPretty());
 
         Smarty::render('pages/help_api.tpl');
     }

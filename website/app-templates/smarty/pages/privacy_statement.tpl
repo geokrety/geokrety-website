@@ -110,7 +110,7 @@
             <li>
                 <p>
                     {t}Rate limit counters are used to prevent service usage abuse. Activity is kept for:{/t}<br>
-                    {foreach from=GK_RATE_LIMITS key=key item=value}
+                    {foreach from=GK_RATE_LIMITS_DEFAULT key=key item=value}
                         {$key} => {'seconds'|print_interval_for_humans:$value[1]}
                         <br>
                     {/foreach}

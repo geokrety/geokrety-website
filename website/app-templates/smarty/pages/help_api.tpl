@@ -459,39 +459,151 @@ var_dump($gk);
     </div>
 </div>
 
-<h3>Rate Limits</h3>
+<h3>Rate limits</h3>
 <a class="anchor" id="apiratelimit"></a>
+
 <div class="panel panel-default">
     <div class="panel-body">
-        <p>In order to protect our service from abuse/misbehaving client… We have rate limiting in place.</p>
-        <p>If you hit a rate limit, we wil respond with the usual http code <code>429</code>.</p>
-        <p>A first set of rule limit the request rate per minutes, for any pages.</p>
-        <p>A second set of rule limit the API calls over a period of time. We're using the <a href="https://en.wikipedia.org/wiki/Leaky_bucket" target="_blank">Leaky Bucket Algorithm</a>.</p>
-        <blockquote  cite="https://en.wikipedia.org/wiki/Leaky_bucket">
-            The leaky bucket analogy. Water can be added intermittently to the bucket, which leaks out at a constant
-            rate until empty, and will also overflow when full.
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Leaky_bucket_analogy.svg" class="img-responsive" width="170" height="240">
+
+        <div class="alert alert-info" role="alert" style="margin-bottom:16px">
+            <b>Quick summary</b>
+            <ul style="margin-bottom:0">
+                <li><b>Two layers:</b> (1) a global <i>burst</i> limit per minute across endpoints; (2) per-endpoint <i>quota</i> over a longer period (leaky bucket).</li>
+                <li><b>Who’s counted:</b> anonymous traffic is counted per <b>IP address</b>; authenticated traffic is counted per <b>account</b>.</li>
+                <li><b>Exceeding a limit:</b> we return <code>HTTP 429</code> and standard rate-limit headers.</li>
+            </ul>
+        </div>
+
+        <p>To keep the service reliable and abuse-resistant, we apply rate limiting.</p>
+        <p>If you hit a limit, we respond with <code>429 Too Many Requests</code>.</p>
+
+        <h4>How it works</h4>
+        <ul>
+            <li><b>Layer 1 – Burst (RPM):</b> caps short spikes across all endpoints per minute.</li>
+            <li><b>Layer 2 – Endpoint quota:</b> each API endpoint also has a longer-period allowance enforced with the
+                <a href="https://en.wikipedia.org/wiki/Leaky_bucket" target="_blank" rel="noopener">Leaky Bucket algorithm</a>.
+            </li>
+        </ul>
+
+        <blockquote cite="https://en.wikipedia.org/wiki/Leaky_bucket">
+            The leaky bucket analogy: water can be added intermittently, leaks at a constant rate, and overflows when full.
+            <img src="{GK_CDN_IMAGES_URL}/help/Leaky_bucket_analogy.svg" class="img-responsive" width="170" height="240" alt="Leaky bucket analogy">
         </blockquote>
-        <p>The limits are set per IP or per secid depending if the call is authenticated or not.</p>
+
+        <h5>Check usage</h5>
         <p>
-            Your current API usage is available in the headers of each API call. You can also get your current Rate Limit usage using this endpoint:
+            Your current usage is exposed in the API response headers and via a dedicated endpoint:
         </p>
         <ul>
             <li>Anonymous: <a href="{'api_v1_rate_limit_usage'|alias}">{'api_v1_rate_limit_usage'|alias}</a></li>
             <li>Authenticated: <a href="{'api_v1_rate_limit_usage'|alias}?secid=&lt;secid_here&gt;">{'api_v1_rate_limit_usage'|alias}?secid=&lt;secid_here&gt;</a></li>
         </ul>
+
         <pre><code class="language-xml">{$rate_limit_usage}</code></pre>
+
+        <h5>Example: 429 response</h5>
+        <pre><code>HTTP/1.1 429 Too Many Requests
+Ratelimit-Limit: 750
+Ratelimit-Remaining: 0
+X-RateLimit-Limit: 750
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1725100800
+X-Ratelimit-Resource: API_V1_EXPORT2
+X-GK-Rate-Limit: API_V1_EXPORT2 0/750 (86400)
+X-GK-Rate-Limit-Exceeded: true
+Content-Type: application/xml</code></pre>
+         <pre><code class="language-xml">{$gk_xml_rate_limit_error}</code></pre>
+
+        <h4>Current API rate limits</h4>
+        <p>
+            Your effective limit is the base multiplied by your tier multiplier (the <b>period</b> does not change):
+            <code>effective_limit = floor(base_limit × tier_multiplier)</code>
+        </p>
+
+        <table class="table table-striped table-sm">
+            <caption class="text-muted" style="caption-side: bottom">
+                Endpoint quotas per tier (leaky bucket).
+            </caption>
+            <thead>
+            <tr>
+                <th>endpoint</th>
+                <th>period_s</th>
+                <th>base_limit</th>
+                {foreach from=$smarty.const.RATE_LIMIT_LEVEL_MULTIPLIER key=tier item=mult}
+                    <th>{$tier} (×{$mult})</th>
+                {/foreach}
+            </tr>
+            </thead>
+            <tbody>
+            {foreach GK_RATE_LIMITS_DEFAULT as $limit => $values}
+                {assign var=base value=$values[0]}
+                {assign var=period value=$values[1]}
+                <tr>
+                    <td>{$limit}</td>
+                    <td>{$period}</td>
+                    <td>{$base}</td>
+                    {foreach from=$smarty.const.RATE_LIMIT_LEVEL_MULTIPLIER key=tier item=mult}
+                        <td>{math equation="floor(x*y)" x=$base y=$mult}</td>
+                    {/foreach}
+                </tr>
+            {/foreach}
+            </tbody>
+        </table>
+
+        <p class="text-muted">
+            <em>Note: some endpoints (e.g. username changes) are account-only; anonymous rows are kept for consistency.</em>
+        </p>
+
+        <h4>Tiers and multipliers</h4>
+        <ul>
+            <li><b>Anonymous</b> — requests without an account or secure identifier; <b>counted by IP address</b> (×0.5).</li>
+            <li><b>User</b> — any logged-in account (×1).</li>
+            <li><b>Contributor</b> — merged code, documentation, translations, or issue triage (×2).</li>
+            <li><b>Donor</b> — active project sponsor (×2).</li>
+            <li><b>Recurring donor</b> — regular project sponsor (×3).</li>
+            <li><b>Maintainer</b> — core team and operational tasks (×3).</li>
+        </ul>
+
+        <h4>Tips to avoid 429s</h4>
+        <ul>
+            <li>Authenticate when possible to avoid sharing anonymous (IP-based) limits behind NAT.</li>
+            <li>Batch and paginate requests; add small client-side delays or jitter.</li>
+            <li>Honor <code>Retry-After</code> and <code>X-RateLimit-*</code> headers when present.</li>
+        </ul>
+
+        <h4>How to earn higher limits</h4>
+        <ul>
+            <li><b>Code &amp; QA:</b> bug fixes, features, security reports.</li>
+            <li><b>Community:</b> translations, documentation, user support, issue triage.</li>
+            <li><b>Sponsorship:</b> optional donations help cover hosting and maintenance.</li>
+        </ul>
+        <p>Once confirmed, your tier updates automatically (a short cache delay may apply). Non-financial contributions are valued equally.</p>
+
+        <h4>Transparency</h4>
+        <ul>
+            <li>The table lists <b>base limits</b> per endpoint and <b>multipliers</b> per tier.</li>
+            <li>Endpoints may expose your current allowance and tier so you can monitor usage.</li>
+        </ul>
+
+        <h4>Abuse &amp; fairness</h4>
+        <ul>
+            <li>Automated abuse, credential sharing, or bypass attempts may lead to temporary or permanent restrictions.</li>
+            <li>We aim to notify and work with users to resolve accidental overuse.</li>
+        </ul>
+
+        <h4>Privacy</h4>
+        <ul>
+            <li>We store minimal counters in Redis keyed to anonymized identifiers.</li>
+            <li>Anonymous usage is keyed by IP; authenticated usage is keyed to your account.</li>
+            <li>Short-lived caches keep the service responsive.</li>
+        </ul>
+
+        <h4>Change management</h4>
+        <ul>
+            <li>Base limits or multipliers may be adjusted to keep the service healthy; material changes are announced in the changelog/release notes.</li>
+            <li>If you believe your tier is incorrect, please contact us for a review.</li>
+        </ul>
+
     </div>
-    <p>Current API rate limits are:</p>
-    <ul>
-        {foreach GK_RATE_LIMITS as $limit => $values}
-            <li>{$limit}
-                <ul>
-                    <li>max requests: {$values[0]}</li>
-                    <li>period: {$values[1]}s</li>
-                </ul>
-            </li>
-        {/foreach}
-    </ul>
 </div>
 {/block}
