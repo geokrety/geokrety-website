@@ -556,19 +556,20 @@ Content-Type: application/xml</code></pre>
 
         <h4>Tiers and multipliers</h4>
         <ul>
-            <li><b>Anonymous</b> — requests without an account or secure identifier; <b>counted by IP address</b> (×0.5).</li>
-            <li><b>User</b> — any logged-in account (×1).</li>
-            <li><b>Contributor</b> — merged code, documentation, translations, or issue triage (×2).</li>
-            <li><b>Donor</b> — active project sponsor (×2).</li>
-            <li><b>Recurring donor</b> — regular project sponsor (×3).</li>
-            <li><b>Maintainer</b> — core team and operational tasks (×3).</li>
+            <li><b>Anonymous</b> — requests without an account or secure identifier; counted by IP address (×{$rate_limit_multipliers[$smarty.const.RATE_LIMIT_LEVEL_ANONYMOUS]}).</li>
+            <li><b>User</b> — any logged-in account (×{$rate_limit_multipliers[$smarty.const.RATE_LIMIT_LEVEL_USER]}).</li>
+            <li><b>Bronze</b> — small donation or occasional support (×{$rate_limit_multipliers[$smarty.const.RATE_LIMIT_LEVEL_BRONZE]}).</li>
+            <li><b>Silver</b> — regular donation or ongoing support (×{$rate_limit_multipliers[$smarty.const.RATE_LIMIT_LEVEL_SILVER]}).</li>
+            <li><b>Gold</b> — significant financial support for the project (×{$rate_limit_multipliers[$smarty.const.RATE_LIMIT_LEVEL_GOLD]}).</li>
+            <li><b>Platinum</b> — exceptional or sustaining sponsorship (×{$rate_limit_multipliers[$smarty.const.RATE_LIMIT_LEVEL_PLATINUM]}).</li>
+            <li><b>Maintainer</b> — core team and operational tasks (×{$rate_limit_multipliers[$smarty.const.RATE_LIMIT_LEVEL_MAINTAINER]}).</li>
         </ul>
 
         <h4>Tips to avoid 429s</h4>
         <ul>
             <li>Authenticate when possible to avoid sharing anonymous (IP-based) limits behind NAT.</li>
             <li>Batch and paginate requests; add small client-side delays or jitter.</li>
-            <li>Honor <code>Retry-After</code> and <code>X-RateLimit-*</code> headers when present.</li>
+            <li>Honor <code>X-RateLimit-*</code> headers when present.</li>
         </ul>
 
         <h4>How to earn higher limits</h4>

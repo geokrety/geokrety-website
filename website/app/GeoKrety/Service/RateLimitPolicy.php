@@ -11,15 +11,6 @@ final class RateLimitPolicy {
     private const USER_LEVEL_CACHE_TTL = 300; // seconds
     private const USER_LEVEL_CACHE_KEY = 'rl:user-level:%d';
 
-    private const LEVEL_TO_TIER = [
-        0 => RATE_LIMIT_LEVEL_ANONYMOUS,
-        1 => RATE_LIMIT_LEVEL_USER,
-        2 => RATE_LIMIT_LEVEL_CONTRIBUTOR,
-        3 => RATE_LIMIT_LEVEL_DONOR,
-        4 => RATE_LIMIT_LEVEL_RECURRING_DONOR,
-        5 => RATE_LIMIT_LEVEL_MAINTAINER,
-    ];
-
     /**
      * Return [limit, period] for a limiter and a (possibly null) user id.
      *
@@ -44,7 +35,7 @@ final class RateLimitPolicy {
     public static function getUserTier(?int $userId): string {
         $level = self::getUserLevel($userId);
 
-        return self::LEVEL_TO_TIER[$level] ?? RATE_LIMIT_LEVEL_ANONYMOUS;
+        return RATE_LIMIT_LEVEL_TO_TIER[$level] ?? RATE_LIMIT_LEVEL_ANONYMOUS;
     }
 
     /**

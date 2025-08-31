@@ -410,17 +410,28 @@ class Config extends \Prefab {
 
         define('RATE_LIMIT_LEVEL_ANONYMOUS', 'ANONYMOUS');
         define('RATE_LIMIT_LEVEL_USER', 'USER');
-        define('RATE_LIMIT_LEVEL_CONTRIBUTOR', 'CONTRIBUTOR');
-        define('RATE_LIMIT_LEVEL_DONOR', 'DONOR');
-        define('RATE_LIMIT_LEVEL_RECURRING_DONOR', 'RECURRING_DONOR');
+        define('RATE_LIMIT_LEVEL_BRONZE', 'BRONZE');
+        define('RATE_LIMIT_LEVEL_SILVER', 'SILVER');
+        define('RATE_LIMIT_LEVEL_GOLD', 'GOLD');
+        define('RATE_LIMIT_LEVEL_PLATINUM', 'PLATINUM');
         define('RATE_LIMIT_LEVEL_MAINTAINER', 'MAINTAINER');
         define('RATE_LIMIT_LEVEL_MULTIPLIER', [
             RATE_LIMIT_LEVEL_ANONYMOUS => 0.5,
             RATE_LIMIT_LEVEL_USER => 1,
-            RATE_LIMIT_LEVEL_CONTRIBUTOR => 2,
-            RATE_LIMIT_LEVEL_DONOR => 2,
-            RATE_LIMIT_LEVEL_RECURRING_DONOR => 3,
+            RATE_LIMIT_LEVEL_BRONZE => 1.5,
+            RATE_LIMIT_LEVEL_SILVER => 2,
             RATE_LIMIT_LEVEL_MAINTAINER => 3,
+            RATE_LIMIT_LEVEL_GOLD => 4,
+            RATE_LIMIT_LEVEL_PLATINUM => 5,
+        ]);
+        define('RATE_LIMIT_LEVEL_TO_TIER', [
+            RATE_LIMIT_LEVEL_ANONYMOUS,
+            RATE_LIMIT_LEVEL_USER,
+            RATE_LIMIT_LEVEL_BRONZE,
+            RATE_LIMIT_LEVEL_SILVER,
+            RATE_LIMIT_LEVEL_MAINTAINER,
+            RATE_LIMIT_LEVEL_GOLD,
+            RATE_LIMIT_LEVEL_PLATINUM,
         ]);
 
         // PIWIK

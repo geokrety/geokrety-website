@@ -78,6 +78,7 @@ class HelpApi extends Base {
         $xml->addError(_('Rate limit exceeded'));
         $xml->end();
         Smarty::assign('gk_xml_rate_limit_error', $xml->asXMLPretty());
+        Smarty::assign('rate_limit_multipliers', RATE_LIMIT_LEVEL_MULTIPLIER);
 
         Smarty::render('pages/help_api.tpl');
     }
