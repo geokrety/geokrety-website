@@ -65,6 +65,9 @@
             <li><a href="#application">Application name/version</a></li>
             <li><a href="#scriptsamples">Scripts samples</a></li>
             <li><a href="#apiratelimit">Rate Limits</a></li>
+            <ol>
+                <li><a href="#apiratelimit_currentlimits">Current API rate limits</a></li>
+            </ol>
         </ol>
     </li>
 </ol>
@@ -515,6 +518,7 @@ Content-Type: application/xml</code></pre>
          <pre><code class="language-xml">{$gk_xml_rate_limit_error}</code></pre>
 
         <h4>Current API rate limits</h4>
+        <a class="anchor" id="apiratelimit_currentlimits"></a>
         <p>
             Your effective limit is the base multiplied by your tier multiplier (the <b>period</b> does not change):
             <code>effective_limit = floor(base_limit × tier_multiplier)</code>
