@@ -28,7 +28,7 @@
                 <tr>
                     <td>{$group} ({$row.period})</td>
                     <td>{$wire_key}</td>
-                    <td class="text-center">{$row.tier|default:'-'}</td>
+                    <td class="text-center">{if $row.tier == "ANONYMOUS"}-{else}{$row.tier}{/if}</td>
                     <td class="text-right">{$row.used}</td>
                     <td>/{$row.limit}</td>
                     <td class="text-right">{$row.left}</td>

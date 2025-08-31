@@ -66,7 +66,7 @@ class RateLimitOverride extends Base {
             $userId, null, $now, null, $now,
         ]);
 
-        return $self->dry() ? 0 : (int) $self->level;
+        return $self->dry() ? 1 : (int) $self->level;
     }
 
     public function jsonSerialize(): mixed {

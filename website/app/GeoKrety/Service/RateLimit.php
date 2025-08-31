@@ -157,6 +157,9 @@ class RateLimit {
      * - int userId  => "uid_<id>" (distinct namespace).
      */
     private static function deriveCountingKey(int|string|null $user_id): string {
+        if (!is_null($user_id) && \preg_match(self::KEY_REGEX, $user_id ?? '')) {
+            return $user_id;
+        }
         $prefix = self::PREFIX_IP;
         $key = \Base::instance()->get('IP') ?: 'cli';
         if (!is_null($user_id) && is_int($user_id)) {
@@ -275,6 +278,8 @@ class RateLimit {
                 $used = \max(0, $limit - $allowance);
                 if ($used === 0) {
                     $rateLimiter->purge($userKey);
+                }
+                if ($used < 2) {
                     continue;
                 }
 
@@ -330,7 +335,7 @@ class RateLimit {
                 $period,
                 $adapter);
 
-            $counting_key = self::deriveCountingKey($userId);
+            $counting_key = self::deriveCountingKey($userKey);
             if ($rateLimiter->getAllowance($counting_key) >= $limit) {
                 $rateLimiter->purge($userKey);
             }
