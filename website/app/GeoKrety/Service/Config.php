@@ -386,18 +386,41 @@ class Config extends \Prefab {
 
         // Rate Limits
         define('GK_RATE_LIMITS_BYPASS', getsecret('GK_RATE_LIMITS_BYPASS') ?: 'geokrety');
-        define('GK_RATE_LIMITS', [
-            'API_LEGACY_MOVE_POST' => [1500, 60 * 60 * 24], // 1500/day
-            'API_LEGACY_PICTURE_PROXY' => [5000, 60 * 60 * 24], // 5000/day
-            'API_V1_CHECK_RATE_LIMIT' => [250, 60 * 60 * 24], // 250/day
-            'API_V1_LOGIN_2_SECID' => [25, 60 * 60 * 24], // 25/day
-            'API_V1_EXPORT2' => [1500, 60 * 60 * 24], // 1500/day
-            'API_V1_EXPORT' => [12, 60], // 12/minute
-            'API_V1_EXPORT_OC' => [12, 60], // 12/minute
-            'API_V1_REQUEST_S3_FILE_SIGNATURE' => [50, 60 * 60 * 24], // 50/day
-            'API_GKT_V3_SEARCH' => [10000, 60 * 60 * 24], // 10000/day
-            'API_GKT_V3_INVENTORY' => [1500, 60 * 60 * 24], // 1500/day
-            'USERNAME_CHANGE' => [3, 60 * 60 * 24 * 28], // 3/month
+        define('GK_RATE_LIMITS_DEFAULT', [
+            'API_LEGACY_MOVE_POST' => [1500, 86400],         // 1500/day
+            'API_LEGACY_PICTURE_PROXY' => [5000, 86400],         // 5000/day
+            'API_V1_CHECK_RATE_LIMIT' => [250,  86400],         // 250/day
+            'API_V1_LOGIN_2_SECID' => [25,   86400],         // 25/day
+            'API_V1_EXPORT2' => [1500, 86400],         // 1500/day
+            'API_V1_EXPORT' => [12,   60],            // 12/minute
+            'API_V1_EXPORT_OC' => [12,   60],            // 12/minute
+            'API_V1_REQUEST_S3_FILE_SIGNATURE' => [50,   86400],         // 50/day
+            'API_GKT_V3_SEARCH' => [10000, 86400],         // 10000/day
+            'API_GKT_V3_INVENTORY' => [1500, 86400],         // 1500/day
+            'USERNAME_CHANGE' => [3,    2419200],       // 3/28 days
+        ]);
+
+        /** scale helper: multiply only the token budget, keep the period */
+        function rate_limit_scale(array $pair, int|float $factor): array {
+            return [(int) round($pair[0] * $factor), $pair[1]];
+        }
+
+        define('GK_RATE_LIMIT_UID_CACHE_TTL', getenv('GK_RATE_LIMIT_UID_CACHE_TTL') ?: 300);
+        define('GK_SECID_UID_CACHE_TTL', getenv('GK_SECID_UID_CACHE_TTL') ?: 300);
+
+        define('RATE_LIMIT_LEVEL_ANONYMOUS', 'ANONYMOUS');
+        define('RATE_LIMIT_LEVEL_USER', 'USER');
+        define('RATE_LIMIT_LEVEL_CONTRIBUTOR', 'CONTRIBUTOR');
+        define('RATE_LIMIT_LEVEL_DONOR', 'DONOR');
+        define('RATE_LIMIT_LEVEL_RECURRING_DONOR', 'RECURRING_DONOR');
+        define('RATE_LIMIT_LEVEL_MAINTAINER', 'MAINTAINER');
+        define('RATE_LIMIT_LEVEL_MULTIPLIER', [
+            RATE_LIMIT_LEVEL_ANONYMOUS => 0.5,
+            RATE_LIMIT_LEVEL_USER => 1,
+            RATE_LIMIT_LEVEL_CONTRIBUTOR => 2,
+            RATE_LIMIT_LEVEL_DONOR => 2,
+            RATE_LIMIT_LEVEL_RECURRING_DONOR => 3,
+            RATE_LIMIT_LEVEL_MAINTAINER => 3,
         ]);
 
         // PIWIK

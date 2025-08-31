@@ -4,9 +4,11 @@
     <h4 class="modal-title" id="modalLabel">{t}Do you really want to reset this rate-limit?{/t}</h4>
 </div>
 
-<form name="ResetRateLimitForm" action="{'admin_rate_limit_reset'|alias:sprintf('name=%s,key=%s', $name, $key)}" method="post">
+<form name="ResetRateLimitForm" action="{'admin_rate_limit_reset'|alias}" method="post">
     <div class="modal-body">
-        {t escape=no name=$name key=$key}Name=%1 ID=%2{/t}
+        {t escape=no name=$name key=$key}Name=%1 KEY=%2{/t}
+        <input type="hidden" name="name" value="{$name|escape}">
+        <input type="hidden" name="key" value="{$key|escape}">
     </div>
     <div class="modal-footer">
         {call csrf}

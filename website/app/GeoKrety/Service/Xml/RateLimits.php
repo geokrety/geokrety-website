@@ -14,22 +14,22 @@ class RateLimits extends Base {
     }
 
     /**
-     * @param string $name        Limit name
-     * @param int    $usage_limit Limit usage count
-     * @param int    $ttl         TTL for this limit
+     * @param string $name Limit name
+     * @param int    $ttl  TTL for this limit
      *
      * @return void
      */
-    public function addLimit(string $name, int $usage_limit, int $ttl) {
+    public function addLimit(string $name, int $ttl) {
         $this->xml->startElement('limit');
         $this->xml->writeAttribute('name', $name);
-        $this->xml->writeAttribute('usage-limit', $usage_limit);
         $this->xml->writeAttribute('ttl', $ttl);
     }
 
-    public function addUsage(string $id, int $current) {
+    public function addUsage(string $id, int $current, int $limit, string $tier) {
         $this->xml->startElement('usage');
         $this->xml->writeAttribute('id', $id);
+        $this->xml->writeAttribute('limit', $limit);
+        $this->xml->writeAttribute('tier', $tier);
         $this->xml->writeCdata($current);
         $this->xml->endElement();
     }

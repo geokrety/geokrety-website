@@ -34,7 +34,8 @@ class UserUpdateUsername extends Base {
             RateLimit::incr('USERNAME_CHANGE', $this->currentUser->id);
         } catch (RateLimitExceeded $e) {
             register_shutdown_function('GeoKrety\Model\AuditPost::AmendAuditPostWithErrors', 'Rate limit exceeded');
-            \Flash::instance()->addMessage(sprintf(_('You can only change your username %d times per month'), GK_RATE_LIMITS['USERNAME_CHANGE'][0]), 'danger');
+            [$limit] = RateLimitPolicy::resolve('USERNAME_CHANGE', $this->currentUser->id);
+            \Flash::instance()->addMessage(sprintf(_('You can only change your username %d times per month'), (int) $limit), 'danger');
             $f3->get('DB')->rollback();
             $this->get($f3);
             exit;

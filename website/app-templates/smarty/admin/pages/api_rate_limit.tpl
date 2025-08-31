@@ -2,7 +2,6 @@
 
 {block name=title}{t}Api Rate Limits{/t}{/block}
 
-{assign var=RATES_LIMITS value=constant('GK_RATE_LIMITS')}
 {block name=content}
     <h1>
         {t}Api Rate Limits{/t}
@@ -15,20 +14,24 @@
         <thead>
         <tr>
             <th>Group</th>
-            <th>ID</th>
-            <th class="text-right">Count</th>
+            <th>Key</th>
+            <th class="text-center">Tier</th>
+            <th class="text-right">Used</th>
             <th>Limit</th>
+            <th class="text-right">Left</th>
             <th class="text-right">Actions</th>
         </tr>
         </thead>
         <tbody>
-            {foreach from=$current key=group item=item}
-            {foreach from=$item key=key item=value}
+            {foreach from=$current key=group item=rows}
+            {foreach from=$rows key=wire_key item=row}
                 <tr>
-                    <td>{$group} ({$RATES_LIMITS[$group][1]})</td>
-                    <td>{$key}</td>
-                    <td class="text-right">{$value}</td>
-                    <td>/{$RATES_LIMITS[$group][0]}</td>
+                    <td>{$group} ({$row.period})</td>
+                    <td>{$wire_key}</td>
+                    <td class="text-center">{$row.tier|default:'-'}</td>
+                    <td class="text-right">{$row.used}</td>
+                    <td>/{$row.limit}</td>
+                    <td class="text-right">{$row.left}</td>
                     <td class="text-right">
                         {block user_actions}{/block}
                     </td>
@@ -41,7 +44,14 @@
 
 {block user_actions}
 <div class="btn-group" role="group" aria-label="...">
-    <button type="button" class="btn btn-warning btn-xs" title="{t}Reset{/t}" data-toggle="modal" data-target="#modal" data-type="admin-rate-limit-reset" data-key="{$key}" data-NAME="{$group}">
+    <button type="button"
+            class="btn btn-warning btn-xs"
+            title="{t}Reset{/t}"
+            data-toggle="modal"
+            data-target="#modal"
+            data-type="admin-rate-limit-reset"
+            data-key="{$wire_key}"
+            data-name="{$group}">
         {fa icon="refresh"}
     </button>
 </div>
