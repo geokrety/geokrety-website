@@ -27,23 +27,33 @@ class GeokretyType {
         self::GEOKRETY_TYPE_JIGSAW,
     ];
 
-    private $type;
+    public const LOG_TYPES_SUPPORT_MISSING = [
+        self::GEOKRETY_TYPE_TRADITIONAL,
+        self::GEOKRETY_TYPE_BOOK_CD_DVD,
+        self::GEOKRETY_TYPE_COIN,
+        self::GEOKRETY_TYPE_KRETYPOST,
+        self::GEOKRETY_TYPE_PEBBLE,
+        self::GEOKRETY_TYPE_PLAYING_CARD,
+        self::GEOKRETY_TYPE_JIGSAW,
+    ];
 
-    public function __construct($type = null) {
+    private ?int $type;
+
+    public function __construct(?int $type = null) {
         $this->type = $type;
     }
 
-    public function __toString() {
+    public function __toString(): string {
         $types = self::getTypes();
 
         return $types[$this->type];
     }
 
-    public function getTypeId() {
+    public function getTypeId(): ?int {
         return $this->type;
     }
 
-    public function isType($type) {
+    public function isType($type): bool {
         if (is_null($this->type)) {
             return false;
         }
@@ -51,17 +61,21 @@ class GeokretyType {
         return $type == $this->type;
     }
 
-    public static function isValid($type) {
-        return in_array((int) $type, self::GEOKRETY_TYPES, true);
+    public static function isValid(?int $type): bool {
+        return in_array($type, self::GEOKRETY_TYPES, true);
     }
 
-    public function getTypeString() {
+    public function isSupportingMissing(): bool {
+        return in_array($this->type, self::LOG_TYPES_SUPPORT_MISSING, true);
+    }
+
+    public function getTypeString(): string {
         $types = self::getTypes();
 
         return $types[$this->type];
     }
 
-    public static function getTypes() {
+    public static function getTypes(): array {
         return [
             self::GEOKRETY_TYPE_TRADITIONAL => _('Traditional'),
             self::GEOKRETY_TYPE_BOOK_CD_DVD => _('A book'),

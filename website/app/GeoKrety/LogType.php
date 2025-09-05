@@ -25,6 +25,7 @@ class LogType {
         self::LOG_TYPE_SEEN,
         self::LOG_TYPE_DIPPED,
     ];
+    public const LOG_TYPES_SUPPORT_MISSING = self::LOG_TYPES_ALIVE;
 
     public const LOG_TYPES_REQUIRING_COORDINATES = [
         self::LOG_TYPE_DROPPED,
@@ -94,6 +95,10 @@ class LogType {
 
     public static function isValid($logtype) {
         return in_array($logtype, self::LOG_TYPES, true);
+    }
+
+    public function isSupportingMissing() {
+        return in_array($this->logtype, self::LOG_TYPES_SUPPORT_MISSING, true);
     }
 
     public function isAlive() {

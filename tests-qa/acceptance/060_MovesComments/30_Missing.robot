@@ -24,7 +24,7 @@ Missing Button Only For Some Types - Grab
     Post Move                               ${MOVE_2}    # GRAB
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
-    Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_3}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     0
+    Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_3}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     1
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     0
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     0
 
@@ -56,14 +56,15 @@ Missing Button Only For Some Types - Dip
     Post Move                               ${MOVE_6}    # DIP
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
-    Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_3}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     0
+    Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_3}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     1
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_2}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     0
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}     0
 
-Direct Link To Not Last Position Is Forbidden
+Direct Link To Not Supported Missing Status Is Forbidden
     Sign In ${USER_1.name} Fast
-    Go To Url                               ${PAGE_MOVES_COMMENT_MISSING_URL}           moveid=1    redirect=${PAGE_GEOKRETY_1_DETAILS_URL}
-    Page Should Contain                     Missing status can only be added to current GeoKret position
+    Post Move                               ${MOVE_3}    # COMMENT
+    Go To Url                               ${PAGE_MOVES_COMMENT_MISSING_URL}           moveid=3    redirect=${PAGE_GEOKRETY_1_DETAILS_URL}
+    Page Should Contain                     Missing status can only be added to some GeoKret position
 
 Multiple Missing Report Allowed
     Sign In ${USER_1.name} Fast

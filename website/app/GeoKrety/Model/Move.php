@@ -202,6 +202,20 @@ class Move extends Base {
         return $this->geokret->last_position->id === $this->id;
     }
 
+    public function canBeMarkedAsMissing(): bool {
+        if (!$this->move_type->isSupportingMissing()) {
+            return false;
+        }
+        if (!$this->geokret->type->isSupportingMissing()) {
+            return false;
+        }
+        if (!$this->isGeoKretLastPosition()) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function getMoveOnPage(): int {
         $page = \Base::instance()->get('DB')->exec(
             'SELECT moves_get_on_page(?, ?, ?) AS page',

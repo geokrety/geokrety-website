@@ -18,9 +18,9 @@ class MoveCommentCreate extends Base {
     }
 
     private function _get_missing(\Base $f3) {
-        if (!$this->move->isGeoKretLastPosition()) {
+        if (!$this->move->move_type->isSupportingMissing()) {
             $f3->set('ERROR_REDIRECT', $this->move->geokret->url);
-            $f3->error(400, _('Missing status can only be added to current GeoKret position.'));
+            $f3->error(400, _('Missing status can only be added to some GeoKret position.'));
         }
     }
 
