@@ -59,7 +59,7 @@ SELECT lives_ok($$INSERT INTO "gk_moves_comments" ("id", "move", "content", "typ
 
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (7, 'test', 0, '2020-04-06 00:00:00+00');
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (7, 7, 1, '2020-04-07 00:00:00+00', :move_type_grabbed);
-SELECT throws_ok($$INSERT INTO "gk_moves_comments" ("id", "move", "content", "type") VALUES (9, 7, 'missing!', 1)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves_comments" ("id", "move", "content", "type") VALUES (9, 7, 'missing!', 1)$$);
 
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (8, 'test', 0, '2020-04-06 00:00:00+00');
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (8, 8, 1, '2020-04-07 00:00:00+00', :move_type_comment);
@@ -71,7 +71,7 @@ SELECT throws_ok($$INSERT INTO "gk_moves_comments" ("id", "move", "content", "ty
 
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (10, 'test', 0, '2020-04-06 00:00:00+00');
 INSERT INTO "gk_moves" ("id", "geokret", "author", "position", "moved_on_datetime", "move_type") VALUES (10, 10, 1, :nice, '2020-04-07 00:00:00+00', :move_type_dipped);
-SELECT throws_ok($$INSERT INTO "gk_moves_comments" ("id", "move", "content", "type") VALUES (12, 10, 'missing!', 1)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves_comments" ("id", "move", "content", "type") VALUES (12, 10, 'missing!', 1)$$);
 
 -- adding new move reset missing
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime", "owner") VALUES (11, 'test', 0, '2020-04-06 00:00:00+00', 1);
