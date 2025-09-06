@@ -167,7 +167,11 @@ class GeokretLabel extends Base {
     private function sendRevalidateHeaders(string $etag): void {
         header('ETag: "'.$etag.'"');
         header('Cache-Control: private, no-cache'); // cached, but must revalidate
-        $inm = $_SERVER['HTTP_IF_NONE_MATCH'] ?? null;
+        $f3 = \Base::instance();
+        $inm = $f3->get('HEADERS.If-None-Match');
+        if ($inm === null) {
+            $inm = $f3->get('SERVER.HTTP_IF_NONE_MATCH') ?? null;
+        }
         if ($inm && trim($inm) === '"'.$etag.'"') {
             http_response_code(304);
             exit;
