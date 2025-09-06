@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\GeokretWithDetails;
 use GeoKrety\Service\Labels\Pdf;
+use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Validation\TrackingCode;
 
@@ -39,6 +40,8 @@ class GeokretyLabels extends Base {
             \Flash::instance()->addMessage(_('The list contains only unknown Tracking Codes or never touched GeoKrety'), 'danger');
             $f3->reroute('@geokrety_labels');
         }
+
+        RateLimit::check_rate_limit_image('MASS_LABEL_GENERATOR', $this->current_user->id);
 
         $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->addGeokrety(...(array) $geokrety);
