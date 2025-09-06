@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-06 07:03+0000\n"
-"PO-Revision-Date: 2025-09-06 07:49\n"
+"POT-Creation-Date: 2025-09-06 16:46+0000\n"
+"PO-Revision-Date: 2025-09-06 17:32\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -293,20 +293,20 @@ msgstr "Поздравляем! Теперь Вы являетесь владе�
 msgid "Something went wrong while registering the adoption."
 msgstr "Что-то пошло не так при регистрации принятия."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:35
 msgid "Failed to create the GeoKret."
 msgstr "Не удалось создать ГеоКрота."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:48
 msgid "Born here"
 msgstr "Родился здесь"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:61
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:62
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "Ваш ГеоКрот был создан.Теперь вы можете <a href=\"%s\">распечатать</a> отличную этикетку..."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:69
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:70
 msgid "Failed to create the GeoKret initial move."
 msgstr "Не удалось создать начальный ход ГеоКрота."
 
@@ -328,25 +328,25 @@ msgid "Failed to edit the GeoKret."
 msgstr "Не удалось изменить ГеоКрота."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:32
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:123
 msgid "This label template does not exist."
 msgstr "Этот шаблон этикетки не существует."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:21
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:45
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
 msgstr "Извините, у вас нет разрешения на печать этикетки для этого ГеоКрота, так как вы никогда его не обнаружили!"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:49
-msgid "Something went wrong while saving the GeoKret preferred label template."
-msgstr "Что-то пошло не так при сохранении выбранного шаблона этикетки ГеоКрота."
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:67
+msgid "Please select an export type."
+msgstr "Пожалуйста, выберите тип экспорта."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:64
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:131
 msgid "Some chosen languages are invalid."
 msgstr "Некоторые выбранные языки являются недопустимыми."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:82
-msgid "Please select an export type."
-msgstr "Пожалуйста, выберите тип экспорта."
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:148
+msgid "Something went wrong while saving the GeoKret preferred label template."
+msgstr "Что-то пошло не так при сохранении выбранного шаблона этикетки ГеоКрота."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
 msgid "You cannot archive someone else GeoKret."
@@ -402,7 +402,7 @@ msgstr "Этот ГеоКрот уже есть в вашем списке от�
 msgid "This GeoKret has been added to your watch list."
 msgstr "Этот ГеоКрот добавлен в ваш список отслеживания."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:39
+#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:40
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
 msgstr "Список содержит только неизвестные коды отслеживания или ГеоКротов, к которым никто не прикасался."
 
@@ -1052,23 +1052,23 @@ msgstr "Предупреждение"
 msgid "Invalid unit specified: %s"
 msgstr "Указана недопустимая единица: %s"
 
-#: website/app/GeoKrety/Service/Labels/Image.php:63
+#: website/app/GeoKrety/Service/Labels/Image.php:33
 msgid "User's manual:"
 msgstr "Руководство пользователя:"
 
-#: website/app/GeoKrety/Service/Labels/Image.php:64
+#: website/app/GeoKrety/Service/Labels/Image.php:34
 msgid "Take this GeoKret."
 msgstr "Возьмите этого GeoKret."
 
-#: website/app/GeoKrety/Service/Labels/Image.php:65
+#: website/app/GeoKrety/Service/Labels/Image.php:35
 msgid "Please note down his Tracking Code."
 msgstr "Запишите его код отслеживания."
 
-#: website/app/GeoKrety/Service/Labels/Image.php:66
+#: website/app/GeoKrety/Service/Labels/Image.php:36
 msgid "Hide in another cache."
 msgstr "Спрячьте его в другом тайнике."
 
-#: website/app/GeoKrety/Service/Labels/Image.php:67
+#: website/app/GeoKrety/Service/Labels/Image.php:37
 #, php-format
 msgid "Register the trip at %s"
 msgstr "Зарегистрируйте перемещение на %s"
@@ -1076,6 +1076,32 @@ msgstr "Зарегистрируйте перемещение на %s"
 #: website/app/GeoKrety/Service/Moves.php:66
 msgid "The date time could not be parsed."
 msgstr "Не удалось проанализировать дату и время."
+
+#: website/app/GeoKrety/Service/RateLimit.php:372
+msgid "Rate limit exceeded (HTTP 429)"
+msgstr ""
+
+#: website/app/GeoKrety/Service/RateLimit.php:375
+msgid "You sent too many requests in a short time."
+msgstr ""
+
+#: website/app/GeoKrety/Service/RateLimit.php:376
+msgid "To protect the service for everyone, requests are temporarily limited."
+msgstr ""
+
+#: website/app/GeoKrety/Service/RateLimit.php:377
+msgid "Please slow down and try again shortly."
+msgstr ""
+
+#: website/app/GeoKrety/Service/RateLimit.php:378
+#, php-format
+msgid "More info: %s"
+msgstr ""
+
+#: website/app/GeoKrety/Service/RateLimit.php:379
+#, php-format
+msgid "Enjoying GeoKrety? Consider supporting us %s"
+msgstr ""
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
@@ -1278,7 +1304,7 @@ msgstr "Выберите ГеоКрота"
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:22
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:77
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
 #: website/app-templates/smarty/blocks/geokret/details.tpl:55
 msgid "Tracking Code"
 msgstr "Код отслеживания"
@@ -1454,8 +1480,8 @@ msgid "Write the News here"
 msgstr "Напишите сообщение здесь"
 
 #: website/app-templates/smarty/forms/admin_news.tpl:25
-#: website/app-templates/smarty/forms/geokret.tpl:117
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
+#: website/app-templates/smarty/pages/geokret_create.tpl:14
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 msgid "Save"
 msgstr "Сохранить"
@@ -1507,48 +1533,6 @@ msgstr "Миссия"
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 msgid "What is this GeoKret mission?"
 msgstr "Какая миссия у GeoKret?"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:43
-#: website/app-templates/smarty/forms/geokret.tpl:104
-msgid "Label template"
-msgstr "Шаблон этикетки"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:54
-msgid "Label help languages"
-msgstr "Ярлыки языков подсказки"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:62
-msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr "Примечание1: не все шаблоны ярлыков поддерживают эту функцию и когда поддерживается английский всегда присутствует."
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:70
-msgid "Generate as .png"
-msgstr "Создать как .png"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:71
-msgid "Generate as .svg"
-msgstr "Создать как .svg"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:72
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:47
-msgid "Generate as .pdf"
-msgstr "Создать как .pdf"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:81
-msgid "Short tracking url: %1"
-msgstr ""
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:86
-#: website/app-templates/smarty/forms/geokret.tpl:126
-msgid "Sample GeoKret label preview"
-msgstr "Пример предварительного просмотра этикетки ГеоКрота"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:89
-#: website/app-templates/smarty/forms/geokret_label.tpl:90
-#: website/app-templates/smarty/forms/geokret.tpl:129
-#: website/app-templates/smarty/forms/geokret.tpl:130
-msgid "GeoKret label preview"
-msgstr "Просмотр метки ГеоКрота"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
@@ -1693,10 +1677,6 @@ msgstr "Это создаст первый ход для вашего GeoKret, �
 msgid "Set my home coordinates as a starting point."
 msgstr "Установить мои домашние координаты в качестве отправной точки."
 
-#: website/app-templates/smarty/forms/geokret.tpl:117
-msgid "Create"
-msgstr "Создать"
-
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:3
 msgid "Generate multiple GeoKrety labels"
 msgstr "Сгенерировать несколько меток для ГеоКротов"
@@ -1716,6 +1696,11 @@ msgstr "Используется предпочтительный шаблон �
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:14
 msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
 msgstr "Миссия ГеоКрота будет использоваться, как есть. Не вмещающийся текст обычно удаляется."
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:47
+#: website/app-templates/smarty/pages/geokret_label.tpl:13
+msgid "Generate as .pdf"
+msgstr "Создать как .pdf"
 
 #: website/app-templates/smarty/footer.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:2
@@ -1969,6 +1954,32 @@ msgstr "Успех"
 #: website/app-templates/smarty/elements/user_authentication_history_as_list.tpl:5
 msgid "Failure"
 msgstr "Ошибка"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:3
+msgid "Label template"
+msgstr "Шаблон этикетки"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:14
+msgid "Label help languages"
+msgstr "Ярлыки языков подсказки"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:22
+msgid "Note: not all label templates support this feature and when supported, english is always present."
+msgstr ""
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:30
+msgid "Refresh preview"
+msgstr ""
+
+#: website/app-templates/smarty/elements/label_preview.tpl:4
+msgid "Short tracking url: %1"
+msgstr ""
+
+#: website/app-templates/smarty/elements/label_preview.tpl:9
+#: website/app-templates/smarty/elements/label_preview.tpl:12
+#: website/app-templates/smarty/elements/label_preview.tpl:13
+msgid "GeoKret label preview"
+msgstr "Просмотр метки ГеоКрота"
 
 #: website/app-templates/smarty/elements/move.tpl:7
 msgid "Show move on map"
@@ -3377,6 +3388,10 @@ msgstr "С 2024 года значок \"top droppers\" был переимено
 msgid "Since 2024, new \"top spreads\" badge appeared. It only counts \"drop\" movements."
 msgstr "С 2024 года появился новый значок \"top spreads\". Он учитывает только \"заселения\" (\"drop\") геокротов."
 
+#: website/app-templates/smarty/pages/geokret_create.tpl:14
+msgid "Create"
+msgstr "Создать"
+
 #: website/app-templates/smarty/pages/password_recovery.tpl:3
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
@@ -3596,9 +3611,17 @@ msgid "Note: the \"Drop a GK in this cache\" feature will probably require you t
 msgstr "Примечание: функция \"Поместить геокрота в тайник\" может потребовать отключения защиты от отслеживания файлов cookie, иначе расширение не определит вашу аутентификацию на GeoKrety.org"
 
 #: website/app-templates/smarty/pages/geokret_label.tpl:3
-#: website/app-templates/smarty/pages/geokret_label.tpl:6
+#: website/app-templates/smarty/pages/geokret_label.tpl:17
 msgid "Label generator"
 msgstr "Генератор меток"
+
+#: website/app-templates/smarty/pages/geokret_label.tpl:11
+msgid "Generate as .png"
+msgstr "Создать как .png"
+
+#: website/app-templates/smarty/pages/geokret_label.tpl:12
+msgid "Generate as .svg"
+msgstr "Создать как .svg"
 
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:3
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:12
@@ -4285,11 +4308,15 @@ msgstr "Нет новостей, соответствующих текущему
 msgid "Found it? Log it!"
 msgstr "Нашли крота? Отметьте!"
 
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+msgid "Short tracking url:"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:16
 msgid "Please enter the Tracking Code here"
 msgstr "Пожалуйста, введите код отслеживания"
 
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:19
 #: website/app-templates/smarty/blocks/found_geokret.tpl:15
 msgid "Log it!"
 msgstr "Запиши!"
@@ -4709,6 +4736,10 @@ msgstr "Ваша загрузка не соответствует минимал
 #: website/app-templates/smarty/js/_dropzone-local.inc.tpl.js:14
 msgid "Invalid according to Policy: Policy Condition failed."
 msgstr "Недопустимо в соответствии с Политикой: условие Политики не выполнено."
+
+#: website/app-templates/smarty/js/_label_preview.js:97
+msgid "Refreshing…"
+msgstr ""
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
