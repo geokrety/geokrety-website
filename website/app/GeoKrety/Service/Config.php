@@ -387,17 +387,18 @@ class Config extends \Prefab {
         // Rate Limits
         define('GK_RATE_LIMITS_BYPASS', getsecret('GK_RATE_LIMITS_BYPASS') ?: 'geokrety');
         define('GK_RATE_LIMITS_DEFAULT', [
-            'API_LEGACY_MOVE_POST' => [1500, 86400],         // 1500/day
-            'API_LEGACY_PICTURE_PROXY' => [5000, 86400],         // 5000/day
-            'API_V1_CHECK_RATE_LIMIT' => [250,  86400],         // 250/day
-            'API_V1_LOGIN_2_SECID' => [25,   86400],         // 25/day
-            'API_V1_EXPORT2' => [1500, 86400],         // 1500/day
-            'API_V1_EXPORT' => [12,   60],            // 12/minute
-            'API_V1_EXPORT_OC' => [12,   60],            // 12/minute
-            'API_V1_REQUEST_S3_FILE_SIGNATURE' => [50,   86400],         // 50/day
-            'API_GKT_V3_SEARCH' => [10000, 86400],         // 10000/day
-            'API_GKT_V3_INVENTORY' => [1500, 86400],         // 1500/day
-            'USERNAME_CHANGE' => [3,    2419200],       // 3/28 days
+            'API_LEGACY_MOVE_POST' => [1500, 86400],            // 1500/day
+            'API_LEGACY_PICTURE_PROXY' => [5000, 86400],        // 5000/day
+            'API_V1_CHECK_RATE_LIMIT' => [250, 86400],          // 250/day
+            'API_V1_LOGIN_2_SECID' => [25, 86400],              // 25/day
+            'API_V1_EXPORT2' => [1500, 86400],                  // 1500/day
+            'API_V1_EXPORT' => [12, 60],                        // 12/minute
+            'API_V1_EXPORT_OC' => [12, 60],                     // 12/minute
+            'API_V1_REQUEST_S3_FILE_SIGNATURE' => [50, 86400],  // 50/day
+            'API_GKT_V3_SEARCH' => [10000, 86400],              // 10000/day
+            'API_GKT_V3_INVENTORY' => [1500, 86400],            // 1500/day
+            'USERNAME_CHANGE' => [3, 2419200],                  // 3/28 days
+            'LABEL_GENERATOR' => [150, 86400],                  // 150/day
         ]);
 
         /** scale helper: multiply only the token budget, keep the period */
@@ -539,6 +540,9 @@ class Config extends \Prefab {
 
         define('GK_CDN_SELECT2_JS', getenv('GK_CDN_SELECT2_JS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/js/select2.min.js');
         define('GK_CDN_SELECT2_CSS', getenv('GK_CDN_SELECT2_CSS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/css/select2.min.css');
+
+        define('GK_CDN_TOM_SELECT_JS', getenv('GK_CDN_TOM_SELECT_JS') ?: GK_CDN_LIBRARIES_URL.'/tom-select/v2.4.3/js/tom-select.complete.min.js');
+        define('GK_CDN_TOM_SELECT_CSS', getenv('GK_CDN_TOM_SELECT_CSS') ?: GK_CDN_LIBRARIES_URL.'/tom-select/v2.4.3/css/tom-select.bootstrap4.min.css');
 
         define('GK_CDN_D3_JS', getenv('GK_CDN_D3_JS') ?: GK_CDN_LIBRARIES_URL.'/d3/v7.4.3/d3.min.js');
         define('GK_CDN_D3_QUEUE_JS', getenv('GK_CDN_D3_QUEUE_JS') ?: GK_CDN_LIBRARIES_URL.'/d3-queue/v3.0.7/d3-queue.min.js');

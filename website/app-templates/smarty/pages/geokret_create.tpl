@@ -6,6 +6,13 @@
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_DATETIMEPICKER_JS) && ''}
 {\GeoKrety\Assets::instance()->addCss(GK_CDN_LIBRARIES_INSCRYBMDE_CSS_URL) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_LIBRARIES_INSCRYBMDE_JS_URL) && ''}
+{\GeoKrety\Assets::instance()->addCss(GK_CDN_TOM_SELECT_CSS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_TOM_SELECT_JS) && ''}
+
+
+{block name=label_custom_buttons}
+    <button type="submit" id="createOrUpdateSubmitButton" class="btn btn-primary">{if isset($geokret) and $geokret->gkid()}{t}Save{/t}{else}{t}Create{/t}{/if}</button>
+{/block}
 
 {block name=content}
 {include 'forms/geokret.tpl'}
@@ -61,34 +68,10 @@ var inscrybmde = new InscrybMDE({
 $("#inputMission").data({ editor: inscrybmde });
 {/if}
 
-    let preview = $('#geokretLabelPreview');
-    let previewLink = $('#geokretLabelPreviewLink');
-    let template = $("#inputLabelTemplate").val();
+// Bind label preview
+{include 'js/_label_preview.js'}
 
-    // Load on page load
-    labelPreview();
-
-    $('#inputLabelTemplate').on('change', function(){
-        labelPreview();
-    });
-
-    $('#geokretLabelPreviewLink').magnificPopup({
-		type: 'image',
-		closeOnContentClick: true,
-		zoom: {
-			enabled: true,
-			duration: 300
-		}
-	});
-
-    function labelPreview() {
-        let template = $("#inputLabelTemplate").val();
-        let url = "{GK_CDN_LABELS_SCREENSHOTS_URL}/"+template+".png";
-        preview.attr("src", url);
-        previewLink.attr("href", url);
-    }
-
-    // Bind modal
-    {include 'js/dialogs/dialog_view_geokrety_legacy_mission.tpl.js'}
+// Bind modal
+{include 'js/dialogs/dialog_view_geokrety_legacy_mission.tpl.js'}
 
 {/block}
