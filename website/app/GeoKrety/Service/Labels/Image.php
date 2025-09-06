@@ -27,7 +27,7 @@ class Image {
         Smarty::assign('geokret', $geokret);
 
         $url = \Base::instance()->alias('move_create_short', '@tracking_code='.$geokret->tracking_code);
-        $languages = array_diff($this->getLanguages(), ['en']);
+        $languages = array_diff($geokret->label_languages ?: $this->getLanguages(), ['en']);
 
         // Mark strings for gettext extraction
         _('User\'s manual:');

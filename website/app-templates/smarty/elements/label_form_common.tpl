@@ -13,9 +13,9 @@
 <div class="form-group">
     <label for="inputLabelHelpLanguages" class="col-sm-2 control-label">{t}Label help languages{/t}</label>
     <div class="col-sm-10">
-        <select class="form-control" id="inputLabelHelpLanguages" name="helpLanguages[]" autocomplete="off" multiple>
+        <select class="form-control" id="inputLabelHelpLanguages" name="label_languages[]" autocomplete="off" multiple>
             {foreach $languages as $code => $lang}
-                {if $code != 'en'}<option value="{$code}"{if !is_null($selectedLanguages) && in_array($code, $selectedLanguages)} selected{/if}>{$lang}</option>{/if}
+                {if $code != 'en'}<option value="{$code}"{if isset($geokret) and !is_null($geokret->label_languages) && in_array($code, $geokret->label_languages)} selected{/if}>{$lang}</option>{/if}
             {/foreach}
         </select>
         <span class="help-block">

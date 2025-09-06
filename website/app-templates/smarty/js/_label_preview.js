@@ -50,7 +50,7 @@ function buildQuery() {
     const langs = Array.isArray(v.helpLangs)
         ? Array.from(new Set(v.helpLangs.map(s => String(s).toLowerCase().trim())))
         : [];
-    langs.forEach(l => p.append('helpLanguages[]', l));
+    langs.forEach(l => p.append('label_languages[]', l));
     return p;
 }
 

@@ -73,14 +73,16 @@ class GeokretLabel extends Base {
         $templates = $label->find(null, ['order' => 'title'], GK_SITE_CACHE_TTL_LABELS_LIST);
         Smarty::assign('templates', $templates);
 
-        $selectedLanguages = [];
-        if ($f3->exists('COOKIE.helpLanguages')) {
-            $selectedLanguages = json_decode($f3->get('COOKIE.helpLanguages'), true) ?: [];
-        } elseif ($f3->exists('REQUEST.helpLanguages')) {
-            $selectedLanguages = $this->normLangs($this->in('helpLanguages')) ?: [];
+        $selectedLanguages = $this->geokret->label_languages;
+        if (empty($selectedLanguages) && $f3->exists('REQUEST.label_languages')) {
+            $selectedLanguages = $this->normLangs($this->in('label_languages')) ?: [];
         }
-        Smarty::assign('selectedLanguages', $selectedLanguages);
+        if (empty($selectedLanguages) && $f3->exists('COOKIE.label_languages')) {
+            $decoded = json_decode((string) $f3->get('COOKIE.label_languages'), true);
+            $selectedLanguages = is_array($decoded) ? $decoded : [];
+        }
 
+        Smarty::assign('selectedLanguages', $selectedLanguages);
         Smarty::render('pages/geokret_label.tpl');
     }
 
@@ -124,8 +126,18 @@ class GeokretLabel extends Base {
         }
         $this->geokret->label_template = $label;
 
-        // only persist preferred template on POST
-        if ($this->geokret->isOwner() && $f3->get('VERB') === 'POST') {
+        $langs = $this->normLangs($this->in('label_languages'));
+        if (!empty($langs) && !LanguageService::areLanguageSupported($langs)) {
+            \Flash::instance()->addMessage(_('Some chosen languages are invalid.'), 'danger');
+            $this->get($f3);
+            exit;
+        }
+        $this->langs = $langs ?: [];
+        $f3->set('COOKIE.label_languages', json_encode($langs));
+        $this->geokret->label_languages = $this->langs;
+
+        // persist only on POST by owner (template + label_languages)
+        if ($this->geokret->isOwner()) {
             try {
                 if (!$this->geokret->validate()) {
                     $f3->get('DB')->rollback();
@@ -147,15 +159,7 @@ class GeokretLabel extends Base {
         $this->geokret->name = $this->in('name') ?: $this->geokret->name;
         $this->geokret->mission = $this->in('mission') ?: $this->geokret->mission;
 
-        $langs = $this->normLangs($this->in('helpLanguages'));
-        if (!empty($langs) && !LanguageService::areLanguageSupported($langs)) {
-            \Flash::instance()->addMessage(_('Some chosen languages are invalid.'), 'danger');
-            $this->get($f3);
-            exit;
-        }
-        $this->langs = $langs ?: [];
-        $f3->set('COOKIE.helpLanguages', json_encode($langs));
-        $this->sendRevalidateHeaders($this->geokret->etag($langs));
+        $this->sendRevalidateHeaders($this->geokret->etag());
 
         RateLimit::check_rate_limit_image('LABEL_GENERATOR', $this->current_user->id);
     }

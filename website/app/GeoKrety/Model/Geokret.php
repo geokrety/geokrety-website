@@ -93,6 +93,10 @@ class Geokret extends Base {
             'nullable' => true,
             'validate' => 'is_not_false',
         ],
+        'label_languages' => [
+            'type' => Schema::DT_VARCHAR128,
+            'nullable' => true,
+        ],
         'owner' => [
             'belongs-to-one' => '\GeoKrety\Model\User',
             'validate_level' => 3,
@@ -263,6 +267,14 @@ class Geokret extends Base {
         return \Base::instance()->alias('geokret_details', '@gkid='.$this->gkid);
     }
 
+    public function set_label_languages(?array $v): ?string {
+        return $v ? implode(',', $v) : null;
+    }
+
+    public function get_label_languages(?string $v): array {
+        return $v ? explode(',', $v) : [];
+    }
+
     public function hasTouchedInThePast(): bool {
         $f3 = \Base::instance();
         if (!$f3->get('CURRENT_USER')) {
@@ -351,11 +363,11 @@ SQL;
         return \Base::instance()->get('DB')->exec($sql, [$this->id]);
     }
 
-    public function etag(?array $langs = null, string $version = 'v1'): string {
+    public function etag(string $version = 'v1'): string {
         $tpl = $this->label_template->template ?? 'default';
         $name = (string) ($this->name ?? '');
         $mission = (string) ($this->mission ?? '');
-        $langs = $langs ?: [];
+        $langs = $this->label_languages;
         $langs = array_values(array_unique(array_map(fn ($s) => strtolower(trim((string) $s)), $langs), SORT_STRING));
         $fingerprint = $version.'|'.$this->gkid.'|'.$tpl.'|'.$name.'|'.$mission.'|'.implode(',', $langs);
 

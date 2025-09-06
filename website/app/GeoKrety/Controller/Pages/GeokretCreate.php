@@ -22,6 +22,7 @@ class GeokretCreate extends GeokretFormBase {
         $this->geokret->mission = $f3->get('POST.mission');
         $this->geokret->owner = $this->currentUser;
         $this->geokret->holder = $this->currentUser;
+        $this->geokret->label_languages = $f3->get('POST.label_languages');
         $this->geokret->touch('created_on_datetime');
 
         $this->checkCsrf();
