@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-06 07:03+0000\n"
-"PO-Revision-Date: 2025-09-06 07:49\n"
+"POT-Creation-Date: 2025-09-06 16:46+0000\n"
+"PO-Revision-Date: 2025-09-06 17:33\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -293,20 +293,20 @@ msgstr "crwdns65122:0%scrwdne65122:0"
 msgid "Something went wrong while registering the adoption."
 msgstr "crwdns65124:0crwdne65124:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:35
 msgid "Failed to create the GeoKret."
 msgstr "crwdns65126:0crwdne65126:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:47
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:48
 msgid "Born here"
 msgstr "crwdns65128:0crwdne65128:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:61
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:62
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "crwdns65130:0%scrwdne65130:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:69
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:70
 msgid "Failed to create the GeoKret initial move."
 msgstr "crwdns65132:0crwdne65132:0"
 
@@ -328,25 +328,25 @@ msgid "Failed to edit the GeoKret."
 msgstr "crwdns65140:0crwdne65140:0"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:32
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:34
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:123
 msgid "This label template does not exist."
 msgstr "crwdns65142:0crwdne65142:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:21
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:45
 msgid "Sorry you don't have the permission to print a label for this GeoKret as you never discovered it!"
 msgstr "crwdns65144:0crwdne65144:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:49
-msgid "Something went wrong while saving the GeoKret preferred label template."
-msgstr "crwdns65146:0crwdne65146:0"
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:67
+msgid "Please select an export type."
+msgstr "crwdns65150:0crwdne65150:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:64
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:131
 msgid "Some chosen languages are invalid."
 msgstr "crwdns65148:0crwdne65148:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:82
-msgid "Please select an export type."
-msgstr "crwdns65150:0crwdne65150:0"
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:148
+msgid "Something went wrong while saving the GeoKret preferred label template."
+msgstr "crwdns65146:0crwdne65146:0"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
 msgid "You cannot archive someone else GeoKret."
@@ -402,7 +402,7 @@ msgstr "crwdns65174:0crwdne65174:0"
 msgid "This GeoKret has been added to your watch list."
 msgstr "crwdns65176:0crwdne65176:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:39
+#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:40
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
 msgstr "crwdns65178:0crwdne65178:0"
 
@@ -1052,23 +1052,23 @@ msgstr "crwdns65448:0crwdne65448:0"
 msgid "Invalid unit specified: %s"
 msgstr "crwdns65450:0%scrwdne65450:0"
 
-#: website/app/GeoKrety/Service/Labels/Image.php:63
+#: website/app/GeoKrety/Service/Labels/Image.php:33
 msgid "User's manual:"
 msgstr "crwdns67180:0crwdne67180:0"
 
-#: website/app/GeoKrety/Service/Labels/Image.php:64
+#: website/app/GeoKrety/Service/Labels/Image.php:34
 msgid "Take this GeoKret."
 msgstr "crwdns67182:0crwdne67182:0"
 
-#: website/app/GeoKrety/Service/Labels/Image.php:65
+#: website/app/GeoKrety/Service/Labels/Image.php:35
 msgid "Please note down his Tracking Code."
 msgstr "crwdns67184:0crwdne67184:0"
 
-#: website/app/GeoKrety/Service/Labels/Image.php:66
+#: website/app/GeoKrety/Service/Labels/Image.php:36
 msgid "Hide in another cache."
 msgstr "crwdns67186:0crwdne67186:0"
 
-#: website/app/GeoKrety/Service/Labels/Image.php:67
+#: website/app/GeoKrety/Service/Labels/Image.php:37
 #, php-format
 msgid "Register the trip at %s"
 msgstr "crwdns67188:0%scrwdne67188:0"
@@ -1076,6 +1076,32 @@ msgstr "crwdns67188:0%scrwdne67188:0"
 #: website/app/GeoKrety/Service/Moves.php:66
 msgid "The date time could not be parsed."
 msgstr "crwdns65454:0crwdne65454:0"
+
+#: website/app/GeoKrety/Service/RateLimit.php:372
+msgid "Rate limit exceeded (HTTP 429)"
+msgstr "crwdns67204:0crwdne67204:0"
+
+#: website/app/GeoKrety/Service/RateLimit.php:375
+msgid "You sent too many requests in a short time."
+msgstr "crwdns67206:0crwdne67206:0"
+
+#: website/app/GeoKrety/Service/RateLimit.php:376
+msgid "To protect the service for everyone, requests are temporarily limited."
+msgstr "crwdns67208:0crwdne67208:0"
+
+#: website/app/GeoKrety/Service/RateLimit.php:377
+msgid "Please slow down and try again shortly."
+msgstr "crwdns67210:0crwdne67210:0"
+
+#: website/app/GeoKrety/Service/RateLimit.php:378
+#, php-format
+msgid "More info: %s"
+msgstr "crwdns67212:0%scrwdne67212:0"
+
+#: website/app/GeoKrety/Service/RateLimit.php:379
+#, php-format
+msgid "Enjoying GeoKrety? Consider supporting us %s"
+msgstr "crwdns67214:0%scrwdne67214:0"
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
@@ -1278,7 +1304,7 @@ msgstr "crwdns66568:0crwdne66568:0"
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:22
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:77
 #: website/app-templates/smarty/pages/geokret_claim.tpl:15
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
 #: website/app-templates/smarty/blocks/geokret/details.tpl:55
 msgid "Tracking Code"
 msgstr "crwdns65546:0crwdne65546:0"
@@ -1454,8 +1480,8 @@ msgid "Write the News here"
 msgstr "crwdns66528:0crwdne66528:0"
 
 #: website/app-templates/smarty/forms/admin_news.tpl:25
-#: website/app-templates/smarty/forms/geokret.tpl:117
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
+#: website/app-templates/smarty/pages/geokret_create.tpl:14
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 msgid "Save"
 msgstr "crwdns65738:0crwdne65738:0"
@@ -1507,48 +1533,6 @@ msgstr "crwdns66300:0crwdne66300:0"
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 msgid "What is this GeoKret mission?"
 msgstr "crwdns66458:0crwdne66458:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:43
-#: website/app-templates/smarty/forms/geokret.tpl:104
-msgid "Label template"
-msgstr "crwdns66552:0crwdne66552:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:54
-msgid "Label help languages"
-msgstr "crwdns66554:0crwdne66554:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:62
-msgid "Note1: not all label templates support this feature and when supported, english is always present."
-msgstr "crwdns66556:0crwdne66556:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:70
-msgid "Generate as .png"
-msgstr "crwdns66558:0crwdne66558:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:71
-msgid "Generate as .svg"
-msgstr "crwdns66560:0crwdne66560:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:72
-#: website/app-templates/smarty/forms/geokrety_labels.tpl:47
-msgid "Generate as .pdf"
-msgstr "crwdns66562:0crwdne66562:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:81
-msgid "Short tracking url: %1"
-msgstr "crwdns67172:0%1crwdne67172:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:86
-#: website/app-templates/smarty/forms/geokret.tpl:126
-msgid "Sample GeoKret label preview"
-msgstr "crwdns66564:0crwdne66564:0"
-
-#: website/app-templates/smarty/forms/geokret_label.tpl:89
-#: website/app-templates/smarty/forms/geokret_label.tpl:90
-#: website/app-templates/smarty/forms/geokret.tpl:129
-#: website/app-templates/smarty/forms/geokret.tpl:130
-msgid "GeoKret label preview"
-msgstr "crwdns66566:0crwdne66566:0"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:5
 msgid "If you already own an account on Geokrety.org, please <a href=\"%2\">login</a> first, then associate your account with %1 from the user settings page. Else please choose a username to proceed."
@@ -1693,10 +1677,6 @@ msgstr "crwdns66624:0crwdne66624:0"
 msgid "Set my home coordinates as a starting point."
 msgstr "crwdns66626:0crwdne66626:0"
 
-#: website/app-templates/smarty/forms/geokret.tpl:117
-msgid "Create"
-msgstr "crwdns66628:0crwdne66628:0"
-
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:3
 msgid "Generate multiple GeoKrety labels"
 msgstr "crwdns66632:0crwdne66632:0"
@@ -1716,6 +1696,11 @@ msgstr "crwdns66638:0crwdne66638:0"
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:14
 msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
 msgstr "crwdns66640:0crwdne66640:0"
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:47
+#: website/app-templates/smarty/pages/geokret_label.tpl:13
+msgid "Generate as .pdf"
+msgstr "crwdns66562:0crwdne66562:0"
 
 #: website/app-templates/smarty/footer.tpl:3
 #: website/app-templates/smarty/navbar-left.tpl:2
@@ -1969,6 +1954,32 @@ msgstr "crwdns66846:0crwdne66846:0"
 #: website/app-templates/smarty/elements/user_authentication_history_as_list.tpl:5
 msgid "Failure"
 msgstr "crwdns66848:0crwdne66848:0"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:3
+msgid "Label template"
+msgstr "crwdns66552:0crwdne66552:0"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:14
+msgid "Label help languages"
+msgstr "crwdns66554:0crwdne66554:0"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:22
+msgid "Note: not all label templates support this feature and when supported, english is always present."
+msgstr "crwdns67216:0crwdne67216:0"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:30
+msgid "Refresh preview"
+msgstr "crwdns67218:0crwdne67218:0"
+
+#: website/app-templates/smarty/elements/label_preview.tpl:4
+msgid "Short tracking url: %1"
+msgstr "crwdns67172:0%1crwdne67172:0"
+
+#: website/app-templates/smarty/elements/label_preview.tpl:9
+#: website/app-templates/smarty/elements/label_preview.tpl:12
+#: website/app-templates/smarty/elements/label_preview.tpl:13
+msgid "GeoKret label preview"
+msgstr "crwdns66566:0crwdne66566:0"
 
 #: website/app-templates/smarty/elements/move.tpl:7
 msgid "Show move on map"
@@ -3351,6 +3362,10 @@ msgstr "crwdns65704:0crwdne65704:0"
 msgid "Since 2024, new \"top spreads\" badge appeared. It only counts \"drop\" movements."
 msgstr "crwdns65706:0crwdne65706:0"
 
+#: website/app-templates/smarty/pages/geokret_create.tpl:14
+msgid "Create"
+msgstr "crwdns66628:0crwdne66628:0"
+
 #: website/app-templates/smarty/pages/password_recovery.tpl:3
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
@@ -3570,9 +3585,17 @@ msgid "Note: the \"Drop a GK in this cache\" feature will probably require you t
 msgstr "crwdns65646:0crwdne65646:0"
 
 #: website/app-templates/smarty/pages/geokret_label.tpl:3
-#: website/app-templates/smarty/pages/geokret_label.tpl:6
+#: website/app-templates/smarty/pages/geokret_label.tpl:17
 msgid "Label generator"
 msgstr "crwdns65786:0crwdne65786:0"
+
+#: website/app-templates/smarty/pages/geokret_label.tpl:11
+msgid "Generate as .png"
+msgstr "crwdns66558:0crwdne66558:0"
+
+#: website/app-templates/smarty/pages/geokret_label.tpl:12
+msgid "Generate as .svg"
+msgstr "crwdns66560:0crwdne66560:0"
 
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:3
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:12
@@ -4259,11 +4282,15 @@ msgstr "crwdns66428:0crwdne66428:0"
 msgid "Found it? Log it!"
 msgstr "crwdns66228:0crwdne66228:0"
 
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:11
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:9
+msgid "Short tracking url:"
+msgstr "crwdns67220:0crwdne67220:0"
+
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:16
 msgid "Please enter the Tracking Code here"
 msgstr "crwdns66230:0crwdne66230:0"
 
-#: website/app-templates/smarty/blocks/geokret/found_it.tpl:14
+#: website/app-templates/smarty/blocks/geokret/found_it.tpl:19
 #: website/app-templates/smarty/blocks/found_geokret.tpl:15
 msgid "Log it!"
 msgstr "crwdns66232:0crwdne66232:0"
@@ -4683,6 +4710,10 @@ msgstr "crwdns66994:0crwdne66994:0"
 #: website/app-templates/smarty/js/_dropzone-local.inc.tpl.js:14
 msgid "Invalid according to Policy: Policy Condition failed."
 msgstr "crwdns66996:0crwdne66996:0"
+
+#: website/app-templates/smarty/js/_label_preview.js:97
+msgid "Refreshing…"
+msgstr "crwdns67222:0crwdne67222:0"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
