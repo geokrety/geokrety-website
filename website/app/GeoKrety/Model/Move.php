@@ -6,6 +6,7 @@ use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\LogType;
 use GeoKrety\Service\HTMLPurifier;
+use GeoKrety\Service\WaypointInfo;
 
 /**
  * @property int|null id
@@ -182,6 +183,19 @@ class Move extends Base {
 
     public function get_updated_on_datetime($value): ?\DateTime {
         return self::get_date_object($value);
+    }
+
+    public function getWaypoint(): ?BaseWaypoint {
+        if (is_null($this->waypoint) || !WaypointInfo::isImportedWaypoint($this->waypoint)) {
+            return null;
+        }
+        $wpt = new WaypointOC();
+        $wpt->load(['waypoint = ?', $this->waypoint], ttl: GK_SITE_CACHE_TTL_WAYPOINT_DETAIL);
+        if ($wpt->dry()) {
+            return null;
+        }
+
+        return $wpt;
     }
 
     public function get_reroute_url($value): ?string {
