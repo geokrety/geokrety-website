@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-30 07:51+0000\n"
-"PO-Revision-Date: 2025-08-30 07:52\n"
+"POT-Creation-Date: 2025-08-31 13:30+0000\n"
+"PO-Revision-Date: 2025-09-01 00:20\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -414,6 +414,12 @@ msgstr "secid errado"
 msgid "Wrong date or time"
 msgstr "Data ou hora errada"
 
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:78
+#: website/app/GeoKrety/Service/RateLimit.php:40
+#: website/app/GeoKrety/Service/RateLimit.php:55
+msgid "Rate limit exceeded"
+msgstr ""
+
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:295
 msgid "Waypoint parameter must be provided."
 msgstr "Deve fornecer um Ponto Adicional"
@@ -472,7 +478,7 @@ msgstr "Não tem permissão de escrita neste movimento"
 
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:23
 msgid "Missing status can only be added to current GeoKret position."
-msgstr "O estado \"ausente\" só pode ser adicionado à posição actual do GeoKret."
+msgstr "O estado \"desaparecido\" só pode ser adicionado à posição actual do GeoKret."
 
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:50
 #: website/app/GeoKrety/Controller/Pages/MoveCommentCreate.php:73
@@ -777,16 +783,16 @@ msgstr "Por favor, introduza a sua palavra-passe antiga"
 msgid "Your old password is invalid."
 msgstr "A sua antiga palavra-passe é inválida."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
 #, php-format
 msgid "You can only change your username %d times per month"
 msgstr "Só pode alterar o seu nome de utilizador %d vezes por mês"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:49
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:50
 msgid "Username changed. Please login again."
 msgstr "Nome de utilizador alterado. Por favor, inicie sessão novamente."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:61
 msgid "Sorry, to use this feature, you must have a valid registered email address."
 msgstr "Desculpe, para usar este recurso, deve ter um endereço de e-mail válido registado."
 
@@ -1048,33 +1054,28 @@ msgstr "Unidade especificada inválida: %s"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:63
 msgid "User's manual:"
-msgstr ""
+msgstr "Manual do utilizador:"
 
 #: website/app/GeoKrety/Service/Labels/Image.php:64
 msgid "Take this GeoKret."
-msgstr ""
+msgstr "Pegar este GeoKret."
 
 #: website/app/GeoKrety/Service/Labels/Image.php:65
 msgid "Please note down his Tracking Code."
-msgstr ""
+msgstr "Por favor, anote o seu código de seguimento."
 
 #: website/app/GeoKrety/Service/Labels/Image.php:66
 msgid "Hide in another cache."
-msgstr ""
+msgstr "Esconder noutra cache."
 
 #: website/app/GeoKrety/Service/Labels/Image.php:67
 #, php-format
 msgid "Register the trip at %s"
-msgstr ""
+msgstr "Registe a viagem em %s"
 
 #: website/app/GeoKrety/Service/Moves.php:66
 msgid "The date time could not be parsed."
 msgstr "A data/hora não pôde ser analisada."
-
-#: website/app/GeoKrety/Service/RateLimit.php:37
-#: website/app/GeoKrety/Service/RateLimit.php:54
-msgid "Rate limit exceeded"
-msgstr ""
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
@@ -1284,7 +1285,7 @@ msgstr "Código de Seguimento"
 
 #: website/app-templates/smarty/forms/move.tpl:28
 msgid "eg. %1"
-msgstr ""
+msgstr "ex. %1"
 
 #: website/app-templates/smarty/forms/move.tpl:35
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:29
@@ -1300,16 +1301,16 @@ msgstr "Verificar Código de Seguimento"
 #: website/app-templates/smarty/forms/move.tpl:41
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:35
 msgid "%1 characters from <em>GeoKret label</em>."
-msgstr ""
+msgstr "%1 caracteres da <em>etiqueta do GeoKret</em>."
 
 #: website/app-templates/smarty/forms/move.tpl:42
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:36
 msgid "<u>Do not use the code starting with 'GK' here</u>."
-msgstr ""
+msgstr "<u>Não utilize o código que começa por 'GK' aqui</u>."
 
 #: website/app-templates/smarty/forms/move.tpl:45
 msgid "ex: <code>%1</code> or multiple (limit %3) separated by comma <code>%1,%2</code>."
-msgstr ""
+msgstr "ex: <code>%1</code> ou múltiplos (limite %3) separados por vírgula <code>%1,%2</code>."
 
 #: website/app-templates/smarty/forms/move.tpl:57
 #: website/app-templates/smarty/forms/move.tpl:218
@@ -1427,7 +1428,7 @@ msgstr "É sempre bom receber uma pequena mensagem ;)"
 
 #: website/app-templates/smarty/forms/move.tpl:277
 msgid "Remember date and comment"
-msgstr ""
+msgstr "Lembrar data e comentário"
 
 #: website/app-templates/smarty/forms/move.tpl:301
 msgid "Post your log"
@@ -1505,12 +1506,12 @@ msgstr "Missão"
 #: website/app-templates/smarty/forms/geokret.tpl:87
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 msgid "What is this GeoKret mission?"
-msgstr "O que é essa missão GeoKret?"
+msgstr "Qual é a missão deste GeoKret?"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:43
 #: website/app-templates/smarty/forms/geokret.tpl:104
 msgid "Label template"
-msgstr "Etiqueta modelo"
+msgstr "Modelo de Etiqueta"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:54
 msgid "Label help languages"
@@ -2008,7 +2009,7 @@ msgstr "Remover este geokret de sua lista de observação"
 
 #: website/app-templates/smarty/elements/geokrety_as_list_user_inventory.tpl:7
 msgid "Declared as missing"
-msgstr "Declarado como em falta"
+msgstr "Declarado como desaparecido"
 
 #: website/app-templates/smarty/elements/news.tpl:7
 msgid "Unsubscribe from news"
@@ -2024,7 +2025,7 @@ msgid "Scripts management"
 msgstr "Gestor de scripts"
 
 #: website/app-templates/smarty/admin/pages/scripts.tpl:8
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:9
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:18
 msgid "Refresh"
 msgstr "Actualizar"
@@ -2053,12 +2054,12 @@ msgid "Edit"
 msgstr "Editar"
 
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:7
 msgid "Api Rate Limits"
 msgstr ""
 
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:49
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:16
 msgid "Reset"
 msgstr "Restabelecer"
 
@@ -2260,7 +2261,7 @@ msgstr "Não poderá recuperar se perder a palavra passe!"
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:5
 msgid "Also, you will not receive daily notifications of your GeoKrety or watched GeoKrety."
-msgstr "Além disso, não receberá notificações diárias da sua GeoKrety ou GeoKrety em observação."
+msgstr "Além disso, não receberá notificações diárias dos seus GeoKrety ou GeoKrety em observação."
 
 #: website/app-templates/smarty/banners/user_email_missing.tpl:6
 msgid "Please consider <a href=\"%1\">adding an email address</a>."
@@ -2336,7 +2337,7 @@ msgstr "Aqui está o antigo conteúdo da missão do GKv1"
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:16
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:15
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:39
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:22
@@ -2478,15 +2479,15 @@ msgstr "O seu comentário"
 
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:22
 msgid "Declare missing"
-msgstr "Declare em falta"
+msgstr "Declarar como desaparecido"
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:4
 msgid "Do you really want to reset this rate-limit?"
 msgstr ""
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
-msgid "Name=%1 ID=%2"
-msgstr "Nome=%1 ID=%2"
+msgid "Name=%1 KEY=%2"
+msgstr "Nome=%1 CHAVE=%2"
 
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
 msgid "Do you really want to delete this news comment?"
@@ -3150,7 +3151,7 @@ msgstr "Aqui"
 
 #: website/app-templates/smarty/pages/downloads.tpl:37
 msgid "Sample GeoKrety labels"
-msgstr "Amostra de rótulos GeoKrety"
+msgstr "Amostra de etiquetas GeoKrety"
 
 #: website/app-templates/smarty/pages/downloads.tpl:38
 msgid "Please note, that you can create a label for your GeoKrety automatically, by clicking on the appropriate link on the GeoKret's page."
@@ -3161,11 +3162,11 @@ msgstr "Por favor, note que pode criar uma etiqueta para o seu GeoKrety automati
 #: website/app-templates/smarty/pages/downloads.tpl:42
 #: website/app-templates/smarty/pages/downloads.tpl:43
 msgid "Sample label #%1: "
-msgstr "Rótulo de amostra #%1: "
+msgstr "Amostra de etiqueta #%1: "
 
 #: website/app-templates/smarty/pages/downloads.tpl:45
 msgid "Old label design: "
-msgstr "Design antigo da etiqueta: "
+msgstr "Antigo desenho da etiqueta: "
 
 #: website/app-templates/smarty/pages/user_pictures.tpl:3
 #: website/app-templates/smarty/pages/user_pictures.tpl:9
@@ -4157,11 +4158,11 @@ msgstr "Distância desde o último movimento"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:119
 msgid "Watched GeoKrety latest moves"
-msgstr "Os últimos movimentos do GeoKrety"
+msgstr "Os últimos movimentos do GeoKrety observados"
 
 #: website/app-templates/smarty/emails/daily-mail.tpl:165
 msgid "Latest move comments"
-msgstr "Comentários mais recentes dos movimentos"
+msgstr "Comentários dos movimentos mais recentes"
 
 #: website/app-templates/smarty/emails/cron-partner-failure.tpl:4
 #: website/app-templates/smarty/emails/cron-partner-fatal.tpl:4
@@ -4170,11 +4171,11 @@ msgstr "Algo errado aconteceu ao sincronizar dados do parceiro"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:8
 msgid "Someone, hopefully you, has requested to change it's GeoKrety contact email address to yours."
-msgstr "Alguém - esperamos que você - pediu para mudar seu endereço de e-mail de contato GeoKrety para o seu."
+msgstr "Alguém - esperamos que você - pediu para mudar o seu endereço de e-mail de contacto do GeoKrety para o seu."
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:12
 msgid "Validate your new email address"
-msgstr "Validar seu novo endereço de e-mail"
+msgstr "Validar o seu novo endereço de e-mail"
 
 #: website/app-templates/smarty/emails/email-change-to-new-address.tpl:15
 msgid "This link is valid for %1."
@@ -4215,20 +4216,20 @@ msgstr "Administrador"
 #: website/app-templates/smarty/navbar-profile.tpl:16
 #: website/app-templates/smarty/navbar-profile.tpl:25
 msgid "My profile"
-msgstr "Meu perfil"
+msgstr "O meu perfil"
 
 #: website/app-templates/smarty/navbar-profile.tpl:27
 #: website/app-templates/smarty/blocks/user/actions.tpl:12
 msgid "My inventory"
-msgstr "Meu inventário"
+msgstr "O meu inventário"
 
 #: website/app-templates/smarty/navbar-profile.tpl:28
 msgid "My GeoKrety"
-msgstr "Meu GeoKrety"
+msgstr "Os meus GeoKrety"
 
 #: website/app-templates/smarty/navbar-profile.tpl:31
 msgid "My recent moves"
-msgstr "Meus lances recentes"
+msgstr "Os meus movimentos recentes"
 
 #: website/app-templates/smarty/navbar-profile.tpl:32
 msgid "Recent moves of my GeoKrety"
@@ -4286,7 +4287,7 @@ msgstr "Encontrou este GeoKret? Registe-o!"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:20
 msgid "missing"
-msgstr "em falta"
+msgstr "desaparecido"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:22
 msgid "archived"
@@ -4594,7 +4595,7 @@ msgstr "Faça a gestão das contas que associou à sua conta GeoKrety."
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:11
 msgid "These connections give you an opportunity to log in to our service with only one click."
-msgstr "Essas ligações dão-lhe a oportunidade de entrar no nosso serviço com apenas um clique."
+msgstr "Estas ligações dão-lhe a oportunidade de entrar no nosso serviço com apenas um clique."
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:19
 msgid "Disconnect from %1"
@@ -4658,7 +4659,7 @@ msgstr "Código de Seguimento"
 
 #: website/app-templates/smarty/blocks/user_finder_list.tpl:39
 msgid "No users match the current request."
-msgstr "Nenhum utilizador corresponde ao pedido actual"
+msgstr "Nenhum utilizador corresponde ao pedido actual."
 
 #: website/app-templates/smarty/chunks/geokrety_status.tpl:9
 msgid "Remove this GeoKret from the selection"
@@ -4686,7 +4687,7 @@ msgstr "O seu carregamento excede o tamanho máximo permitido."
 
 #: website/app-templates/smarty/js/_dropzone-local.inc.tpl.js:9
 msgid "Your upload does not meet the minimum allowed size."
-msgstr "O seu carregamento não cumpre com o tamanho máximo permitido."
+msgstr "O seu carregamento não cumpre com o tamanho mínimo permitido."
 
 #: website/app-templates/smarty/js/_dropzone-local.inc.tpl.js:14
 msgid "Invalid according to Policy: Policy Condition failed."

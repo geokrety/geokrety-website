@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-30 07:51+0000\n"
-"PO-Revision-Date: 2025-08-30 07:53\n"
+"POT-Creation-Date: 2025-08-31 13:30+0000\n"
+"PO-Revision-Date: 2025-08-31 14:14\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -414,6 +414,12 @@ msgstr "crwdns65180:0crwdne65180:0"
 msgid "Wrong date or time"
 msgstr "crwdns65182:0crwdne65182:0"
 
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:78
+#: website/app/GeoKrety/Service/RateLimit.php:40
+#: website/app/GeoKrety/Service/RateLimit.php:55
+msgid "Rate limit exceeded"
+msgstr "crwdns65456:0crwdne65456:0"
+
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:295
 msgid "Waypoint parameter must be provided."
 msgstr "crwdns65184:0crwdne65184:0"
@@ -777,16 +783,16 @@ msgstr "crwdns65332:0crwdne65332:0"
 msgid "Your old password is invalid."
 msgstr "crwdns65334:0crwdne65334:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:37
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
 #, php-format
 msgid "You can only change your username %d times per month"
 msgstr "crwdns65336:0%dcrwdne65336:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:49
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:50
 msgid "Username changed. Please login again."
 msgstr "crwdns65338:0crwdne65338:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:60
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:61
 msgid "Sorry, to use this feature, you must have a valid registered email address."
 msgstr "crwdns65340:0crwdne65340:0"
 
@@ -1070,11 +1076,6 @@ msgstr "crwdns67188:0%scrwdne67188:0"
 #: website/app/GeoKrety/Service/Moves.php:66
 msgid "The date time could not be parsed."
 msgstr "crwdns65454:0crwdne65454:0"
-
-#: website/app/GeoKrety/Service/RateLimit.php:37
-#: website/app/GeoKrety/Service/RateLimit.php:54
-msgid "Rate limit exceeded"
-msgstr "crwdns65456:0crwdne65456:0"
 
 #: website/app/GeoKrety/Service/SecretCode.php:33
 msgid "Failed to generate the Tracking Code"
@@ -2024,7 +2025,7 @@ msgid "Scripts management"
 msgstr "crwdns66500:0crwdne66500:0"
 
 #: website/app-templates/smarty/admin/pages/scripts.tpl:8
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:9
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:18
 msgid "Refresh"
 msgstr "crwdns66432:0crwdne66432:0"
@@ -2053,12 +2054,12 @@ msgid "Edit"
 msgstr "crwdns66498:0crwdne66498:0"
 
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:8
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:7
 msgid "Api Rate Limits"
 msgstr "crwdns66430:0crwdne66430:0"
 
-#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:44
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:14
+#: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:49
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:16
 msgid "Reset"
 msgstr "crwdns66434:0crwdne66434:0"
 
@@ -2336,7 +2337,7 @@ msgstr "crwdns66642:0crwdne66642:0"
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:16
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:26
 #: website/app-templates/smarty/dialog/move_comment_create_missing.tpl:21
-#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:13
+#: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:15
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:14
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:39
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:22
@@ -2485,8 +2486,8 @@ msgid "Do you really want to reset this rate-limit?"
 msgstr "crwdns66764:0crwdne66764:0"
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
-msgid "Name=%1 ID=%2"
-msgstr "crwdns66766:0%1crwdnd66766:0%2crwdne66766:0"
+msgid "Name=%1 KEY=%2"
+msgstr "crwdns67200:0%1crwdnd67200:0%2crwdne67200:0"
 
 #: website/app-templates/smarty/dialog/news_comment_delete.tpl:4
 msgid "Do you really want to delete this news comment?"
