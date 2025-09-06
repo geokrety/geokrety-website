@@ -299,7 +299,7 @@ jobs:
         run: |
           report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/report.html"
           visual_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/visualReport.html"
-          unit_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/test-unit/test-unit-report.html"
+          unit_report_url="https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/test-unit-report.html"
 
           echo "${report_url}"
           echo "${visual_report_url}"
@@ -320,7 +320,7 @@ jobs:
             ### Robot Framework reports
             * [report](https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/report.html)
             * [visualReport](https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/visualReport.html)
-            * [PHPUnit](https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/test-unit/test-unit-report.html)
+            * [PHPUnit](https://geokrety.github.io/geokrety-website-qa/${{ env.GIT_BRANCH }}/test-unit-report.html)
           comment_tag: rbfr
           reactions: eyes, rocket
 
