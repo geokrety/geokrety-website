@@ -13,7 +13,7 @@ runs:
       run: |
         echo "::group::Install pgtap"
         command -v pg_prove || \
-          ${APT_INSTALL} libtap-parser-sourcehandler-pgtap-perl
+          ${APT_INSTALL} libtap-parser-sourcehandler-pgtap-perl libtap-formatter-html-perl
         echo "::endgroup::"
 
     - name: Run database tests
@@ -21,7 +21,11 @@ runs:
       env:
         PGOPTIONS: --search_path=public,pgtap,geokrety
       run: |
-         pg_prove -ot website/db/tests/test*.sql
+        pg_prove -ot website/db/tests/test*.sql
+
+        # Run a second time to generate an html output
+        pg_prove -ot website/db/tests/test*.sql \
+          -Q --formatter TAP::Formatter::HTML > database-test-result.html
 
     - name: "Show docker logs: postgres"
       if: failure()
