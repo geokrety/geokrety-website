@@ -35,59 +35,14 @@
             <div class="form-group">
                 <label for="inputMission" class="col-sm-2 control-label">{t}Mission{/t}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control maxl" rows="5" id="inputMission" name="mission" placeholder="{t}What is this GeoKret mission?{/t}" maxlength="5120">{if isset($geokret)}{$geokret->mission|markdown:text}{/if}</textarea>
+                    <textarea class="form-control maxl" rows="5" id="inputMission" name="mission" placeholder="{t}What is this GeoKret mission?{/t}" maxlength="5120">{if isset($geokret)}{$geokret->mission}{/if}</textarea>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="inputLabelTemplate" class="col-sm-2 control-label">{t}Label template{/t}</label>
-                <div class="col-sm-10">
-                    <select class="form-control" id="inputLabelTemplate" name="label_template">
-                        {foreach $templates as $template}
-                        <option value="{$template->template}" {if $geokret->label_template && $geokret->label_template->id === $template->id} selected{/if}>{$template->title}</option>
-                        {/foreach}
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="inputLabelHelpLanguages" class="col-sm-2 control-label">{t}Label help languages{/t}</label>
-                <div class="col-sm-10">
-                    <select class="form-control" id="inputLabelHelpLanguages" name="helpLanguages[]" multiple>
-                        {foreach $languages as $code => $lang}
-                            {if $code != 'en'}<option value="{$code}"{if !is_null($selectedLanguages) && in_array($code, $selectedLanguages)} selected{/if}>{$lang}</option>{/if}
-                        {/foreach}
-                    </select>
-                    <span class="help-block">
-                        {t}Note1: not all label templates support this feature and when supported, english is always present.{/t}
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    {call csrf}
-                    <button type="submit" class="btn btn-primary" id="generateAsPng" name="generateAsPng">{t}Generate as .png{/t}</button>
-                    <button type="submit" class="btn btn-primary" id="generateAsSvg" name="generateAsSvg">{t}Generate as .svg{/t}</button>
-                    <button type="submit" class="btn btn-primary" id="generateAsPdf" name="generateAsPdf">{t}Generate as .pdf{/t}</button>
-                </div>
-            </div>
+            {include file='elements/label_form_common.tpl'}
 
         </form>
     </div>
 </div>
-{if isset($geokret)}
-<div class="alert alert-info alert-dismissible" role="alert">
-    {t url={'move_create_short'|alias:sprintf('@tracking_code=%s', $geokret->tracking_code)}}Short tracking url: %1{/t}
-</div>
-{/if}
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <h3 class="panel-title">{t}Sample GeoKret label preview{/t}</h3>
-    </div>
-    <div class="panel-body">
-        <a id="geokretLabelPreviewLink" href="" class="picture-link" title="{t}GeoKret label preview{/t}">
-            <img id="geokretLabelPreview" class="img-responsive center-block" alt="{t}GeoKret label preview{/t}">
-        </a>
-    </div>
-</div>
+
+{include file='elements/label_preview.tpl'}

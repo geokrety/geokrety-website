@@ -58,6 +58,22 @@ class RateLimit {
     }
 
     /**
+     * Count requests and, on limit, emit an image error (PNG|SVG) with 429.
+     *
+     * @param string          $name Limit name
+     * @param int|string|null $key  Identifier (userId|secid|IP|null)
+     */
+    public static function check_rate_limit_image(string $name, int|string|null $key = null): void {
+        try {
+            self::incr($name, $key);
+        } catch (RateLimitExceeded $e) {
+            header('Content-Type: image/png');
+            echo self::renderRateLimitImage();
+            exit;
+        }
+    }
+
+    /**
      * @param string          $name Limit name
      * @param int|string|null $key  User identifier (userId|secid|IP|null)
      *
@@ -101,6 +117,7 @@ class RateLimit {
             Event::instance()->emit('rate-limit.exceeded', $this->get_context());
             register_shutdown_function('GeoKrety\Model\AuditPost::AmendAuditPostWithErrors', 'Rate limit exceeded');
             http_response_code(429);
+            header('Cache-Control: private, no-store, must-revalidate');
             throw new RateLimitExceeded();
         }
         Event::instance()->emit('rate-limit.success', $this->get_context());
@@ -342,5 +359,71 @@ class RateLimit {
         }
 
         return $response;
+    }
+
+    /**
+     * Render a "rate limit exceeded" image (PNG or SVG).
+     *
+     * @return string Binary image (PNG) or UTF-8 string (SVG)
+     */
+    private static function renderRateLimitImage(): string {
+        $docUrl = GK_SITE_BASE_SERVER_URL.'/help/api#apiratelimit';
+
+        $title = _('Rate limit exceeded (HTTP 429)');
+
+        $lines = [];
+        $lines[] = _('You sent too many requests in a short time.');
+        $lines[] = _('To protect the service for everyone, requests are temporarily limited.');
+        $lines[] = _('Please slow down and try again shortly.');
+        $lines[] = sprintf(_('More info: %s'), $docUrl);
+        $lines[] = sprintf(_('Enjoying GeoKrety? Consider supporting us %s'), 'geokrety.org');
+
+        $wrap = function (string $text, int $width) {
+            // crude wrap for bitmap font (width≈8 px per char for font 3)
+            $maxChars = max(10, (int) floor($width / 8));
+            $out = [];
+            foreach (explode("\n", $text) as $line) {
+                $out = array_merge($out, explode("\n", wordwrap($line, $maxChars, "\n", true)));
+            }
+
+            return $out;
+        };
+
+        $w = 920;
+        $pad = 16;
+        $titleFont = 5;  // built-in GD font
+        $bodyFont = 3;
+        $lineH = 18;
+
+        // Wrap body lines
+        $wrapped = [];
+        foreach ($lines as $line) {
+            $wrapped = array_merge($wrapped, $wrap($line, $w - 2 * $pad));
+        }
+
+        $h = $pad + imagefontheight($titleFont) + $pad + (count($wrapped) * $lineH) + $pad;
+        $im = imagecreatetruecolor($w, $h);
+        $bg = imagecolorallocate($im, 247, 247, 247);
+        $fg = imagecolorallocate($im, 51, 51, 51);
+        $hi = imagecolorallocate($im, 176, 0, 32); // title red
+        imagefilledrectangle($im, 0, 0, $w, $h, $bg);
+
+        // Title
+        $tx = $pad;
+        $ty = $pad;
+        imagestring($im, $titleFont, $tx, $ty, $title, $hi);
+
+        // Body
+        $y = $ty + imagefontheight($titleFont) + $pad;
+        foreach ($wrapped as $line) {
+            imagestring($im, $bodyFont, $pad, $y, $line, $fg);
+            $y += $lineH;
+        }
+
+        ob_start();
+        imagepng($im);
+        imagedestroy($im);
+
+        return (string) ob_get_clean();
     }
 }

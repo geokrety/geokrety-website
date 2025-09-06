@@ -351,6 +351,17 @@ SQL;
         return \Base::instance()->get('DB')->exec($sql, [$this->id]);
     }
 
+    public function etag(?array $langs = null, string $version = 'v1'): string {
+        $tpl = $this->label_template->template ?? 'default';
+        $name = (string) ($this->name ?? '');
+        $mission = (string) ($this->mission ?? '');
+        $langs = $langs ?: [];
+        $langs = array_values(array_unique(array_map(fn ($s) => strtolower(trim((string) $s)), $langs), SORT_STRING));
+        $fingerprint = $version.'|'.$this->gkid.'|'.$tpl.'|'.$name.'|'.$mission.'|'.implode(',', $langs);
+
+        return sha1($fingerprint);
+    }
+
     public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
