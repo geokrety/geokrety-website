@@ -3,8 +3,13 @@
         {t}Found it? Log it!{/t}
     </div>
     <div class="panel-body">
+        {if isset($geokret) && $geokret->id}
+            <div class="alert alert-info alert-dismissible" role="alert">
+                {assign var="url" value={'move_create_short'|alias:sprintf('@tracking_code=%s', $geokret->tracking_code)}}
+                {t}Short tracking url:{/t}<a href="{$url}" class="alert-link">{$url}</a>
+            </div>
+        {/if}
         <form class="form form-horizontal" action="{'move_create'|alias}" method="get">
-
             <div class="form-group">
                 <label for="tracking_code" class="col-sm-2 control-label">{t}Tracking Code{/t}</label>
                 <div class="col-sm-8">
