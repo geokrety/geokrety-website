@@ -17,7 +17,7 @@ class GeokretEdit extends GeokretFormBase {
     public function post($f3) {
         $this->checkCsrf();
         $geokret = $this->geokret;
-        $geokret->copyFrom('POST', ['name', 'born_on_datetime', 'type', 'mission']);
+        $geokret->copyFrom('POST', ['name', 'born_on_datetime', 'type', 'mission', 'label_template', 'label_languages']);
         $this->manageCollectible($f3, $geokret);
         $this->manageParked($f3, $geokret);
         $this->loadSelectedTemplate($f3);
