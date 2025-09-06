@@ -399,6 +399,7 @@ class Config extends \Prefab {
             'API_GKT_V3_INVENTORY' => [1500, 86400],            // 1500/day
             'USERNAME_CHANGE' => [3, 2419200],                  // 3/28 days
             'LABEL_GENERATOR' => [150, 86400],                  // 150/day
+            'MASS_LABEL_GENERATOR' => [15, 86400],              // 15/day
         ]);
 
         /** scale helper: multiply only the token budget, keep the period */
