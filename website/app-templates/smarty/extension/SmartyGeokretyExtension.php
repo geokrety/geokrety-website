@@ -274,10 +274,13 @@ EOT;
         }
 
         $target = sprintf(' target="%s"', $target);
-        if (!is_null($alternative_name)) {
-            $alternative_name = self::smarty_modifier_escape($alternative_name);
-        }
+
+        // No waypoint → fallback to coordinates as link text
         if (empty($move->waypoint)) {
+            if (!is_null($alternative_name)) {
+                $alternative_name = self::smarty_modifier_escape($alternative_name);
+            }
+
             return sprintf(
                 '<a href="%s" title="%s"%s>%s</a>',
                 WaypointInfo::getLinkPosition($move->lat, $move->lon),
@@ -287,14 +290,22 @@ EOT;
             );
         }
 
-        $title = $move->elevation > -2000 ? _('Location: %s Elevation: %dm') : _('Location: %s');
+        // Waypoint present → fetch cache name and build "ID — Name"
+        $cacheId = self::smarty_modifier_escape($move->waypoint);
+        $cacheName = $move->getWaypoint()?->name;
+        $cacheName = $cacheName !== null ? self::smarty_modifier_escape($cacheName) : null;
+
+        $linkText = $cacheName ? sprintf('%s — %s', $cacheId, $cacheName) : $cacheId;
+
+        $titleTpl = $move->elevation > -2000 ? _('Location: %s Elevation: %dm') : _('Location: %s');
+        $fullTitle = sprintf($titleTpl, $move->get_coordinates('/'), $move->elevation);
 
         return sprintf(
             '<a href="%s" title="%s"%s>%s</a>',
             WaypointInfo::getLink($move->waypoint),
-            sprintf($title, $move->get_coordinates('/'), $move->elevation),
+            $fullTitle,
             $target,
-            $alternative_name ?? $move->waypoint,
+            $linkText,
         );
     }
 
