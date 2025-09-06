@@ -1,5 +1,5 @@
 
-{if isset($geokret)}
+{if isset($geokret) && $geokret->id}
     <div class="alert alert-info alert-dismissible" role="alert">
         {t url={'move_create_short'|alias:sprintf('@tracking_code=%s', $geokret->tracking_code)}}Short tracking url: %1{/t}
     </div>
