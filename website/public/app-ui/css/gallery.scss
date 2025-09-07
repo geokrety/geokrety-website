@@ -1,144 +1,154 @@
-/* div.gallery */
-div.justify {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-
+/* ========== Responsive gallery ========== */
 div.gallery {
+  --card-min: 150px;   /* smaller than 210px, more compact */
+  --gap: 6px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
+  gap: var(--gap);
+  align-items: start;
+  transition: all .2s ease-in-out;
+
+  figure {
+    border: 1px solid silver;
+    border-radius: 6px;
+    background: #fff;
+    overflow: hidden;                 /* clip images by default */
+    display: flex;
+    flex-direction: column;
+    min-width: var(--card-min);
+    position: relative;               /* overlay anchor */
+  }
+
+  /* allow charts to show axis labels */
+  figure.alt-profile { overflow: visible; }
+
+  /* media area */
+  .parent {
     position: relative;
-    z-index: 2;
-    // padding: 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: inline-block;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+    padding: 8px;
+  }
 
-    figure.alt-profile {
-        min-width: 212px;
-        div.parent {
-            min-width: 210px;
-            .image-container {
-                min-width: 200px;
-            }
-        }
+  .image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* default: pictures fill square */
+    img,
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;      /* crop to fill */
+      border-radius: 12px;
     }
 
-    figure {
-        border: 1px solid silver;
-        width: 112px;
-        height: 163px;
-        margin: 3px;
-        float: left;
-
-        div.parent {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            padding: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-
-        .image-container {
-            border: 1px solid #eee;
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-
-            .picture-message {
-                position: absolute;
-                top: 20px;
-                left: 0;
-                text-align: center;
-                margin: 5px;
-                padding: 10px 5px;
-                background-color: #FFFFFF88;
-            }
-        }
-
-        div.is-avatar {
-            border: 2px solid #2ab2c2;
-        }
+    /* for charts, don’t crop — show entire SVG */
+    &.is-chart img,
+    &.is-chart svg {
+      object-fit: contain;
     }
 
-    figcaption {
-        border-top: 1px solid silver;
-        background-color: #eee;
-        height: 51px;
-        padding-left: 5px;
-        padding-right: 5px;
-        text-align: center;
+    .picture-message {
+      position: absolute;
+      left: 6px; right: 6px; bottom: 6px;
+      text-align: center;
+      padding: 6px 4px;
+      background-color: #FFFFFFC0;
+      border-radius: 4px;
     }
+  }
 
-    figcaption > p {
-        display: block;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        margin-bottom: 3px;
-    }
+  .image-container.is-chart {
+    overflow: visible;                 /* show d3 labels */
+    border-color: #e6f2ef;
+  }
+  .image-container.is-chart > svg { overflow: visible; }
 
-    .overlay {
-        position: absolute;
-        color: white;
-        width: 18px;
-        height: 14px;
-    }
+  /* ===== Actions overlay ===== */
+  .pictures-actions {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity .15s ease, transform .15s ease;
+    pointer-events: none;
+    display: flex;
 
-    .flag-icon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        border: 1px solid #eee;
-        width: 18px;
-        height: 14px;
+    /* pull-tab background */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12);
+      z-index: -1;
     }
+  }
 
-    span.geokret {
-        content: " ";
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-image: url("/assets/images/the-mole-grey.svg");
-        width: 22px;
-        height: 22px;
-    }
+  .pictures-actions .btn-group,
+  .pictures-actions .btn-group > .btn { pointer-events: auto; }
 
-    span.move:before {
-        content: "\2708";
-    }
+  figure:hover .pictures-actions,
+  figure:focus-within .pictures-actions {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    span.human {
-        content: " ";
-        background-size: 15px 15px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-image: url("/assets/images/human-bust.svg");
-        width: 20px;
-        height: 20px;
-        max-width:100%;
-    }
+  .pictures-actions-buttons {
+    display: flex;
+    gap: 4px;
+  }
 
-    span.type {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding-left: 3px;
-        padding-right: 3px;
-        border: 1px solid #eee;
-        background-color: white;
-    }
+  /* ===== Main avatar badge ===== */
+  div.picture-is-main-avatar {
+    z-index: 21;                       /* above actions tab */
+    position: absolute;
+    top: 0;
+    left: 20px;
+    border-radius: 0 0 6px 6px;
+    padding: 4px 1px 1px 1px;
+    background: #e31818;
+    border: 3px double white;
+    border-top: 0;
+    color: white;
+
+    &::before { content: "\2605"; }
+  }
+
+  /* Avatar highlight */
+  .is-avatar { border: 2px solid #2ab2c2; }
+
+  /* caption */
+  figcaption {
+    border-top: 1px solid silver;
+    background-color: #eee;
+    padding: 6px 8px;
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  figcaption > p {
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  figure:hover { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 }
