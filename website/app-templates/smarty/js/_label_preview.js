@@ -21,14 +21,8 @@ function getFormValues() {
 }
 
 if ($helpLangs.length) {
-    var _ = new TomSelect($helpLangs, { maxItems: 4, plugins: ["remove_button"] });
+    const tomSelect = new TomSelect($helpLangs, { maxItems: 4, plugins: ["remove_button"] });
 }
-
-$previewLink.magnificPopup({
-    type: "image",
-    closeOnContentClick: true,
-    zoom: { enabled: true, duration: 300 }
-});
 
 function buildQuery() {
     const v = getFormValues();

@@ -10,7 +10,7 @@ use GeoKrety\Traits\GeokretLoader;
 class Statistics extends BaseJson {
     use GeokretLoader;
 
-    public function altitude_profile(\Base $f3) {
+    public function elevation_profile(\Base $f3) {
         $movesLoader = new Move();
         $options = ['order' => 'moved_on_datetime'];
         $move_type = LogType::LOG_TYPES_REQUIRING_COORDINATES;

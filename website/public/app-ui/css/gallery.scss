@@ -1,13 +1,30 @@
 /* ========== Responsive gallery ========== */
 div.gallery {
-  --card-min: 150px;   /* smaller than 210px, more compact */
+  /* grid knobs */
+  --card-min: 150px;            /* compact photo cards */
   --gap: 6px;
+
+  /* chart knobs */
+  --chart-ar-mobile: 4 / 3;     /* width : height under ~768px */
+  --chart-ar-desktop: 16 / 9;   /* width : height from ~768px+ */
+  --chart-min-h: 140px;         /* safety so axes stay readable */
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
   gap: var(--gap);
   align-items: start;
   transition: all .2s ease-in-out;
+
+  /* each card wrapper is the grid item */
+  > [data-gk-type="picture"] {
+    min-width: var(--card-min);
+  }
+
+  /* ==== make chart cards span more columns (wider) ==== */
+  > [data-gk-type="picture"].elevation-profile { grid-column: span 2; }
+  @media (min-width: 900px) {
+    > [data-gk-type="picture"].elevation-profile { grid-column: span 3; }
+  }
 
   figure {
     border: 1px solid silver;
@@ -16,12 +33,11 @@ div.gallery {
     overflow: hidden;                 /* clip images by default */
     display: flex;
     flex-direction: column;
-    min-width: var(--card-min);
     position: relative;               /* overlay anchor */
   }
 
-  /* allow charts to show axis labels */
-  figure.alt-profile { overflow: visible; }
+  /* allow charts to show axis labels (figure-specific visuals) */
+  figure.elevation-profile { overflow: visible; }
 
   /* media area */
   .parent {
@@ -47,7 +63,7 @@ div.gallery {
       max-height: 100%;
       width: auto;
       height: auto;
-      object-fit: cover;      /* crop to fill */
+      object-fit: cover;
       border-radius: 12px;
     }
 
@@ -67,11 +83,24 @@ div.gallery {
     }
   }
 
+  /* chart container sizing */
   .image-container.is-chart {
     overflow: visible;                 /* show d3 labels */
     border-color: #e6f2ef;
+    aspect-ratio: var(--chart-ar-mobile);
+    min-height: var(--chart-min-h);
   }
-  .image-container.is-chart > svg { overflow: visible; }
+  @media (min-width: 768px) {
+    .image-container.is-chart { aspect-ratio: var(--chart-ar-desktop); }
+  }
+
+  /* ensure the SVG actually fills the box the JS measures */
+  .image-container.is-chart > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+  }
 
   /* ===== Actions overlay ===== */
   .pictures-actions {
@@ -85,7 +114,6 @@ div.gallery {
     pointer-events: none;
     display: flex;
 
-    /* pull-tab background */
     &::before {
       content: '';
       position: absolute;
@@ -114,7 +142,7 @@ div.gallery {
 
   /* ===== Main avatar badge ===== */
   div.picture-is-main-avatar {
-    z-index: 21;                       /* above actions tab */
+    z-index: 21;
     position: absolute;
     top: 0;
     left: 20px;

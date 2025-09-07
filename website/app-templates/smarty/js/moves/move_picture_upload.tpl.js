@@ -81,19 +81,19 @@ $('div.enable-dropzone').each(function() {
                     $(baseSelector + " .move-pictures div.row > div.gallery").append(data);
 
                     // Refresh img
-                    refresh(file.s3Key);
+                    refresh();
                 });
 
-                function refresh(fileKey) {
-                    if ($("#"+fileKey+" div span.picture-message").length === 0) {
+                function refresh() {
+                    if ($("#"+file.s3Key+" div span.picture-message").length === 0) {
                         return;
                     }
                     $.get("{'picture_html_template'|alias:'key=%KEY%'}".replace('%KEY%', file.s3Key), function (data) {
-                        $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
+                        $("#"+file.s3Key+" div span.picture-message").closest("div[data-gk-type='picture']").remove();
                         $(baseSelector + " .move-pictures div.row > div.gallery").append(data);
-                        setTimeout(function(){ refresh(fileKey) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
+                        setTimeout(function(){ refresh(file.s3Key) }, {GK_PICTURE_UPLOAD_REFRESH_TIMEOUT});
                     }).fail(function() {
-                        $("#"+file.s3Key+" div span.picture-message").closest("div.gallery").remove();
+                        $("#"+file.s3Key+" div span.picture-message").closest("div[data-gk-type='picture']").remove();
                         alert("{t}Image processing failed. This image type is probably not supported{/t}");
                     });
                 }

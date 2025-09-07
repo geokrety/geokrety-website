@@ -10,7 +10,7 @@
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_SPIN_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_DROPZONE_JS) && ''}
 {\GeoKrety\Assets::instance()->addJsAsync(GK_CDN_LAZYSIZES_JS) && ''}
-{\GeoKrety\Assets::instance()->addJs(GK_CDN_MAGNIFIC_POPUP_JS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_LIGHTBOX_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_BOOTSTRAP_3_TYPEAHEAD_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_JS) && ''}
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_QUEUE_JS) && ''}*}
@@ -27,7 +27,7 @@
 {include file='js/modal.tpl.js'}
 {include file='js/maxlenght.tpl.js'}
 {include file='js/tooltips.tpl.js'}
-{include file='js/magnificPopup.tpl.js'}
+{include file='js/lightbox2.tpl.js'}
 {include file='js/dialogs/dialog_login.tpl.js'}{*load js/dialogs/dialog_login all the time as it may be necessary when user leave it's session open too long*}
 {include file='js/search_advanced.tpl.js'}
 
