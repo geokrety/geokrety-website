@@ -151,8 +151,6 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
                 return [$this, 'smarty_modifier_print_interval_for_humans'];
             case 'statpictemplate':
                 return [$this, 'smarty_modifier_statpictemplate'];
-            case 'url_picture':
-                return [$this, 'smarty_modifier_url_picture'];
             case 'user_avatar':
                 return [$this, 'smarty_modifier_user_avatar'];
             case 'userlink':
@@ -162,6 +160,37 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
         }
 
         return null;
+    }
+
+    public function getFunctionHandler(string $functionName): ?Smarty\FunctionHandler\FunctionHandlerInterface {
+        if ($functionName !== 'chart') {
+            return null;
+        }
+
+        // Return a handler object that delegates to smarty_modifier_picture()
+        return new class($this) implements Smarty\FunctionHandler\FunctionHandlerInterface {
+            private SmartyGeokretyExtension $ext;
+
+            public function __construct(SmartyGeokretyExtension $ext) {
+                $this->ext = $ext;
+            }
+
+            public function handle(array $params, Smarty\Template $template): string {
+                $caption = $params['caption'] ?? '';
+                $id = $params['id'] ?? ('chart-'.uniqid());
+                $class = $params['class'] ?? 'alt-profile';
+
+                // delegate to the unified picture renderer (chart path)
+                return $this->ext->smarty_modifier_picture(
+                    picture: null,
+                    caption: $caption,
+                    class: $class,
+                    pictureUrl: null,
+                    thumbnailUrl: null,
+                    canvasDivId: $id
+                );
+            }
+        };
     }
 
     /**
@@ -556,94 +585,147 @@ EOT;
     }
 
     /**
-     * Purpose:  outputs a picture.
+     * Purpose: outputs a picture card (image OR chart).
      *
      * @throws SmartyException
      */
-    public function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = false, ?bool $showMainAvatarMedal = true, ?bool $allowSetAsMainAvatar = true, ?bool $showItemLink = false, ?bool $showPictureType = false): string {
-        if (is_null($picture)) {
-            return '';
+    public function smarty_modifier_picture(
+        ?Picture $picture = null,
+        ?bool $showActionsButtons = false,
+        ?bool $showMainAvatarMedal = true,
+        ?bool $allowSetAsMainAvatar = true,
+        ?bool $showItemLink = false,
+        ?bool $showPictureType = false,
+        ?string $caption = null,
+        ?string $class = null,
+        ?string $pictureUrl = null,
+        ?string $thumbnailUrl = null,
+        ?string $canvasDivId = null,
+    ): string {
+        $smarty = GeoKrety\Service\Smarty::getSmarty();
+
+        $isChart = !empty($canvasDivId);
+
+        if ($picture instanceof Picture && $caption === null) {
+            $caption = $picture->caption;
+        }
+        $caption = $caption ?? '';
+
+        if ($isChart && !$canvasDivId) {
+            $canvasDivId = 'chart-'.($picture->key ?? uniqid('chart-'));
         }
 
         $template_string = <<<'EOT'
-<div class="gallery" data-gk-type="picture" data-picture-type="{$picture->type->getTypeId()}" data-id="{$picture->id}">
-    <figure>
-        <div id="{$picture->key}" class="parent">
-            <div class="image-container">
-                {if !$picture->isUploaded()}
-                    <img src="/assets/images/the-mole-grey.svg">
-                    <span class="picture-message">{t}Picture is not yet ready{/t}</span>
-                {else}
-                    <a class="picture-link" href="{$picture->url}">
-                        <img data-src="{$picture->thumbnail_url}" class="lazyload" alt="">
-                    </a>
-                {/if}
-            </div>
-            {if $showMainAvatarMedal && $picture->isMainAvatar()}
-                <div class="picture-is-main-avatar" data-toggle="tooltip" title="{t}This is the main avatar{/t}"></div>
-            {/if}
-            {if $showPictureType}
-                {if $picture->isType(Geokrety\PictureType::PICTURE_USER_AVATAR)}
-                    <span class="type human"></span>
-                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
-                    <span class="type move"></span>
-                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
-                    <span class="type geokret"></span>
-                {/if}
-            {/if}
-        </div>
-        <figcaption>
-            <p class="text-center picture-caption" title="{$picture->caption}">{$picture->caption}</p>
-            {if $showItemLink}
-            <p class="text-center">
-                {if $picture->isType(Geokrety\PictureType::PICTURE_USER_AVATAR)}
-                    {$picture->user|userlink nofilter}
-                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
-                    {$picture->move|movelink nofilter}
-                {else if $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
-                    {$picture->geokret|gklink nofilter}
-                {/if}
-            </p>
-            {/if}
-        </figcaption>
-        {if $showActionsButtons && ($picture->isAuthor() || $allowSetAsMainAvatar && $picture->hasPermissionOnParent() && !$picture->isMainAvatar()) && $picture->key}
-            <div class="pull-right">
-                <div class="pictures-actions pictures-actions-pull">
-                    <div class="btn-group pictures-actions-buttons" role="group">
-                        {if $allowSetAsMainAvatar && !$picture->isMainAvatar() && $picture->hasPermissionOnParent()}
-                            <button class="btn btn-primary btn-xs" title="{t}Define as main avatar{/t}"
-                                    data-toggle="modal" data-target="#modal" data-type="define-as-main-avatar"
-                                    data-id="{$picture->key}">
-                                ★
-                            </button>
-                        {/if}
-                        {if $picture->isAuthor()}
-                        <button class="btn btn-warning btn-xs" title="{t}Edit picture details{/t}"
-                                data-toggle="modal" data-target="#modal" data-type="picture-edit" data-id="{$picture->key}">
-                            {fa icon="pencil"}
-                        </button>
-                        <button class="btn btn-danger btn-xs" title="{t}Delete picture{/t}"
-                                data-toggle="modal" data-target="#modal" data-type="picture-delete" data-id="{$picture->key}">
-                            {fa icon="trash"}
-                        </button>
-                        {/if}
-                    </div>
-                </div>
-            </div>
+<div class="gallery" data-gk-type="picture"
+     {if $picture}data-picture-type="{$picture->type->getTypeId()}" data-id="{$picture->id}"{/if}>
+  <figure{if $class} class="{$class}"{/if}>
+    <div class="parent">
+      <div class="image-container{if $isChart} is-chart{/if}">
+        {if $isChart}
+          <svg id="{$canvasDivId}"></svg>
+        {elseif $picture && !$picture->isUploaded()}
+          <img src="/assets/images/the-mole-grey.svg" alt="">
+          <span class="picture-message">{t}Picture is not yet ready{/t}</span>
+        {elseif $thumbnailUrl}
+          <a class="picture-link" href="{$pictureUrl}">
+            <img src="{$thumbnailUrl}" alt="{$caption|escape}">
+          </a>
+        {elseif $pictureUrl}
+          <img src="{$pictureUrl}" alt="{$caption|escape}">
+        {elseif $picture}
+          <a class="picture-link" href="{$picture->url}">
+            <img src="{$picture->thumbnail_url}" alt="{$caption|escape}">
+          </a>
+        {else}
+          <img src="/assets/images/the-mole-grey.svg" alt="">
         {/if}
-    </figure>
+
+        {if $showActionsButtons && $picture && ($picture->isAuthor()
+            || ($allowSetAsMainAvatar && $picture->hasPermissionOnParent() && !$picture->isMainAvatar())) && $picture->key}
+          <div class="pictures-actions" aria-label="picture actions">
+            <div class="btn-group pictures-actions-buttons" role="group">
+              {if $allowSetAsMainAvatar && !$picture->isMainAvatar() && $picture->hasPermissionOnParent()}
+                <button class="btn btn-primary btn-xs"
+                        title="{t}Define as main avatar{/t}"
+                        data-toggle="modal" data-target="#modal"
+                        data-type="define-as-main-avatar"
+                        data-id="{$picture->key}">★</button>
+              {/if}
+              {if $picture->isAuthor()}
+                <button class="btn btn-warning btn-xs"
+                        title="{t}Edit picture details{/t}"
+                        data-toggle="modal" data-target="#modal"
+                        data-type="picture-edit" data-id="{$picture->key}">
+                  {fa icon="pencil"}
+                </button>
+                <button class="btn btn-danger btn-xs"
+                        title="{t}Delete picture{/t}"
+                        data-toggle="modal" data-target="#modal"
+                        data-type="picture-delete" data-id="{$picture->key}">
+                  {fa icon="trash"}
+                </button>
+              {/if}
+            </div>
+          </div>
+        {/if}
+      </div>
+
+      {if $showMainAvatarMedal && $picture && $picture->isMainAvatar()}
+        <div class="picture-is-main-avatar" data-toggle="tooltip"
+             title="{t}This is the main avatar{/t}"></div>
+      {/if}
+
+      {if $showPictureType && $picture}
+        {if $picture->isType(Geokrety\PictureType::PICTURE_USER_AVATAR)}
+          <span class="type human"></span>
+        {elseif $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
+          <span class="type move"></span>
+        {elseif $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
+          <span class="type geokret"></span>
+        {/if}
+      {/if}
+    </div>
+
+    <figcaption>
+      <p class="text-center picture-caption" title="{$caption}">{$caption}</p>
+      {if $showItemLink && $picture}
+        <p class="text-center">
+          {if $picture->isType(Geokrety\PictureType::PICTURE_USER_AVATAR)}
+            {$picture->user|userlink nofilter}
+          {elseif $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_MOVE)}
+            {$picture->move|movelink nofilter}
+          {elseif $picture->isType(Geokrety\PictureType::PICTURE_GEOKRET_AVATAR)}
+            {$picture->geokret|gklink nofilter}
+          {/if}
+        </p>
+      {/if}
+    </figcaption>
+  </figure>
 </div>
 EOT;
 
-        $smarty = GeoKrety\Service\Smarty::getSmarty();
-        $smarty->assign('picture', $picture);
-        $smarty->assign('showMainAvatarMedal', $showMainAvatarMedal);
-        $smarty->assign('showActionsButtons', $showActionsButtons);
-        $smarty->assign('allowSetAsMainAvatar', $allowSetAsMainAvatar);
-        $smarty->assign('showPictureType', $showPictureType);
-        $smarty->assign('showItemLink', $showItemLink);
+        $smarty->assign([
+            'picture' => $picture,
+            'pictureUrl' => $pictureUrl,
+            'thumbnailUrl' => $thumbnailUrl,
+            'canvasDivId' => $canvasDivId,
+            'caption' => $caption,
+            'class' => $class ?? '',
+            'isChart' => $isChart,
+            'showMainAvatarMedal' => $showMainAvatarMedal,
+            'showActionsButtons' => $showActionsButtons,
+            'allowSetAsMainAvatar' => $allowSetAsMainAvatar,
+            'showPictureType' => $showPictureType,
+            'showItemLink' => $showItemLink,
+        ]);
+
         $html = $smarty->fetch('string:'.$template_string);
-        $smarty->clearAssign(['picture', 'showMainAvatarMedal']);
+        $smarty->clearAssign([
+            'picture', 'pictureUrl', 'thumbnailUrl', 'canvasDivId',
+            'caption', 'class', 'isChart',
+            'showMainAvatarMedal', 'showActionsButtons',
+            'allowSetAsMainAvatar', 'showPictureType', 'showItemLink',
+        ]);
 
         return $html;
     }
@@ -759,47 +841,6 @@ EOT;
             $statpic_template,
             sprintf(_('User statistics banner: %s'), $statpic_template)
         );
-    }
-
-    /**
-     * Purpose:  outputs a picture from an url string.
-     *
-     * @throws SmartyException
-     */
-    public function smarty_modifier_url_picture(?string $pictureUrl, ?string $thumbnailUrl = null, ?string $canvasDivId = null, ?string $caption = null, ?string $class = null): string {
-        $template_string = <<<'EOT'
-<div class="gallery">
-    <figure class="{$class}">
-        <div class="parent">
-            <div class="image-container">
-                {if !is_null($pictureUrl)}
-                    {if !is_null($thumbnailUrl)}
-                        <a class="picture-link" href="{$pictureUrl}">
-                            <img src="{$thumbnailUrl}">
-                        </a>
-                    {else}
-                        <img src="{$pictureUrl}">
-                    {/if}
-                {else if}
-                    <svg class="picture-link" id="{$canvasDivId}"></svg>
-                {/if}
-            </div>
-        </div>
-        <figcaption>{$caption}</figcaption>
-    </figure>
-</div>
-EOT;
-
-        $smarty = GeoKrety\Service\Smarty::getSmarty();
-        $smarty->assign('pictureUrl', $pictureUrl);
-        $smarty->assign('thumbnailUrl', $thumbnailUrl);
-        $smarty->assign('canvasDivId', $canvasDivId);
-        $smarty->assign('caption', $caption);
-        $smarty->assign('class', $class);
-        $html = $smarty->fetch('string:'.$template_string);
-        $smarty->clearAssign(['pictureUrl', 'thumbnailUrl', 'canvasDivId', 'caption', 'class']);
-
-        return $html;
     }
 
     /**
