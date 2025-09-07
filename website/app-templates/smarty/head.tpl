@@ -12,6 +12,7 @@
     <meta property="twitter:title" content="GeoKrety"/>
     <meta property="twitter:description" content="{t}Open source item tracking for all geocaching platforms{/t}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+{\GeoKrety\Assets::instance()->addCss(GK_CDN_LIGHTBOX_CSS) && ''}
 {if (!preg_match('/^\/..$/', \Base::instance()->PATH))}
     {\GeoKrety\Assets::instance()->addCss(GK_CDN_LIBRARIES_PARSLEY_CSS_URL) && ''}
 {/if}

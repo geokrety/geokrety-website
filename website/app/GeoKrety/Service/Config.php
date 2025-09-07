@@ -535,11 +535,20 @@ class Config extends \Prefab {
 
         define('GK_CDN_LAZYSIZES_JS', getenv('GK_CDN_LAZYSIZES_JS') ?: GK_CDN_LIBRARIES_URL.'/lazysizes/5.3.1/lazysizes.min.js');
 
+        // TODO drop Magnific popup
         define('GK_CDN_MAGNIFIC_POPUP_JS', getenv('GK_CDN_MAGNIFIC_POPUP_JS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/jquery.magnific-popup.min.js');
         define('GK_CDN_MAGNIFIC_POPUP_CSS', getenv('GK_CDN_MAGNIFIC_POPUP_CSS') ?: GK_CDN_LIBRARIES_URL.'/magnific-popup/1.1.0/magnific-popup.css');
 
+        define('GK_CDN_PHOTOSWIPE_JS', getenv('GK_CDN_PHOTOSWIPE_JS') ?: GK_CDN_LIBRARIES_URL.'/PhotoSwipe/v5.4.4/photoswipe.umd.min.js');
+        define('GK_CDN_PHOTOSWIPE_LIGHTBOX_JS', getenv('GK_CDN_PHOTOSWIPE_LIGHTBOX_JS') ?: GK_CDN_LIBRARIES_URL.'/PhotoSwipe/v5.4.4/photoswipe-lightbox.umd.min.js');
+        define('GK_CDN_PHOTOSWIPE_CSS', getenv('GK_CDN_PHOTOSWIPE_CSS') ?: GK_CDN_LIBRARIES_URL.'/PhotoSwipe/v5.4.4/photoswipe.css');
+
+        define('GK_CDN_LIGHTBOX_JS', getenv('GK_CDN_LIGHTBOX_JS') ?: GK_CDN_LIBRARIES_URL.'/lightbox2/v2.11.5/js/lightbox.min.js');
+        define('GK_CDN_LIGHTBOX_CSS', getenv('GK_CDN_LIGHTBOX_CSS') ?: GK_CDN_LIBRARIES_URL.'/lightbox2/v2.11.5/css/lightbox.min.css');
+
         define('GK_CDN_ANIMATE_CSS', getenv('GK_CDN_ANIMATE_CSS') ?: GK_CDN_LIBRARIES_URL.'/animate.css/4.1.1/animate.min.css');
 
+        // TODO drop Select2
         define('GK_CDN_SELECT2_JS', getenv('GK_CDN_SELECT2_JS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/js/select2.min.js');
         define('GK_CDN_SELECT2_CSS', getenv('GK_CDN_SELECT2_CSS') ?: GK_CDN_LIBRARIES_URL.'/select2/4.1.0-rc.0/css/select2.min.css');
 

@@ -77,10 +77,12 @@
             </div>
             <div class="col-xs-12 col-md-4">
                 <div class="pull-right picturesList">
-                    {if $geokret->avatar}
-                        {$geokret->avatar|picture:true:false:false nofilter}
-                    {/if}
-                    {chart caption=_('Altitude profile') id="altitude-chart" class="alt-profile"}
+                    <div class="gallery">
+                        {if $geokret->avatar}
+                            {$geokret->avatar|picture:true:false:false nofilter}
+                        {/if}
+                        {chart caption=_('Elevation profile') id="elevation-profile-chart" class="elevation-profile"}
+                    </div>
                 </div>
             </div>
         </div>

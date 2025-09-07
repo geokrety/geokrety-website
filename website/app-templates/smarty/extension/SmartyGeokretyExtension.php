@@ -175,10 +175,14 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
                 $this->ext = $ext;
             }
 
-            public function handle(array $params, Smarty\Template $template): string {
+            public function isCacheable(): bool {
+                return false;
+            }
+
+            public function handle($params, Smarty\Template $template) {
                 $caption = $params['caption'] ?? '';
                 $id = $params['id'] ?? ('chart-'.uniqid());
-                $class = $params['class'] ?? 'alt-profile';
+                $class = $params['class'] ?? 'alt-elevation-profile';
 
                 // delegate to the unified picture renderer (chart path)
                 return $this->ext->smarty_modifier_picture(
@@ -616,10 +620,11 @@ EOT;
         }
 
         $template_string = <<<'EOT'
-<div class="gallery" data-gk-type="picture"
+<div data-gk-type="picture"
+     class="{if $isChart}elevation-profile{/if}"
      {if $picture}data-picture-type="{$picture->type->getTypeId()}" data-id="{$picture->id}"{/if}>
-  <figure{if $class} class="{$class}"{/if}>
-    <div class="parent">
+  <figure{if $class or $isChart} class="{if $class}{$class}{/if}{if $isChart} elevation-profile{/if}"{/if}>
+    <div{if $picture} id="{$picture->key}"{/if} class="parent">
       <div class="image-container{if $isChart} is-chart{/if}">
         {if $isChart}
           <svg id="{$canvasDivId}"></svg>
@@ -627,13 +632,13 @@ EOT;
           <img src="/assets/images/the-mole-grey.svg" alt="">
           <span class="picture-message">{t}Picture is not yet ready{/t}</span>
         {elseif $thumbnailUrl}
-          <a class="picture-link" href="{$pictureUrl}">
+          <a class="picture-link" href="{$pictureUrl}" data-title="{$caption|escape}">
             <img src="{$thumbnailUrl}" alt="{$caption|escape}">
           </a>
         {elseif $pictureUrl}
           <img src="{$pictureUrl}" alt="{$caption|escape}">
         {elseif $picture}
-          <a class="picture-link" href="{$picture->url}">
+          <a class="picture-link" href="{$picture->url}" data-title="{$caption|escape}">
             <img src="{$picture->thumbnail_url}" alt="{$caption|escape}">
           </a>
         {else}
@@ -852,7 +857,7 @@ EOT;
         if (!$user->avatar) {
             $url = Base::instance()->alias('user_avatar');
 
-            return $this->smarty_modifier_url_picture($url, null, null, _('Profile avatar'));
+            return $this->smarty_modifier_picture(pictureUrl: $url, caption: _('Profile avatar'));
         }
 
         return $this->smarty_modifier_picture($user->avatar, true);
