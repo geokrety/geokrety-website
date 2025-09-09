@@ -14,27 +14,27 @@ ${CAPTION} =    Bonjour!
 Picture Owner Can Set Caption
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
-    Click Picture Action                            ${GEOKRET_MOVE_FIRST_IMAGE}                             ${PICTURE_PULLER_EDIT_BUTTON}
+    Click Picture Action                            ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_FIRST_IMAGE}                             ${PICTURE_ACTIONS_EDIT_BUTTON}
     Wait Until Modal                                Manage picture
     Input Text                                      ${CAPTION_INPUT}                                        ${CAPTION}
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
     Location Should Be                              ${PAGE_GEOKRETY_1_DETAILS_URL}?#log1
-    Element Text Should Be                          ${GEOKRET_MOVE_FIRST_IMAGE}/figure/figcaption/p         ${CAPTION}
+    Element Text Should Be                          ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_FIRST_IMAGE}/figure/figcaption/p         ${CAPTION}
 
 Picture Owner Can Edit Caption
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
-    Click Picture Action                            ${GEOKRET_MOVE_FIRST_IMAGE}                             ${PICTURE_PULLER_EDIT_BUTTON}
+    Click Picture Action                            ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_FIRST_IMAGE}                             ${PICTURE_ACTIONS_EDIT_BUTTON}
     Wait Until Modal                                Manage picture
     Input Text                                      ${CAPTION_INPUT}                                        ${CAPTION}
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
 
-    Click Picture Action                            ${GEOKRET_MOVE_FIRST_IMAGE}                             ${PICTURE_PULLER_EDIT_BUTTON}
+    Click Picture Action                            ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_FIRST_IMAGE}                             ${PICTURE_ACTIONS_EDIT_BUTTON}
     Wait Until Modal                                Manage picture
     Input Text                                      ${CAPTION_INPUT}                                        ${EMPTY}
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
     Location Should Be                              ${PAGE_GEOKRETY_1_DETAILS_URL}?#log1
-    Element Text Should Be                          ${GEOKRET_MOVE_FIRST_IMAGE}/figure/figcaption/p         ${EMPTY}
+    Element Text Should Be                          ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_FIRST_IMAGE}/figure/figcaption/p         ${EMPTY}
 
 *** Keywords ***
 

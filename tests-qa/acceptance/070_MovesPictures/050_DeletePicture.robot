@@ -12,11 +12,11 @@ Test Setup      Test Setup
 Picture Owner Can Delete Picture
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
-    Click Picture Action                            ${GEOKRET_MOVE_FIRST_IMAGE}             ${PICTURE_PULLER_DELETE_BUTTON}
+    Click Picture Action                            ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_FIRST_IMAGE}             ${PICTURE_ACTIONS_DELETE_BUTTON}
     Wait Until Modal                                Do you really want to delete this picture?
     Check Image                                     ${MODAL_DIALOG}${GEOKRET_MOVE_FIRST_IMAGE}
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
-    Element Should Not Be Visible                   ${GEOKRET_MOVE_FIRST_IMAGE}
+    Element Should Not Be Visible                   //div[@id="move-1"]${GEOKRET_MOVE_FIRST_IMAGE}
 
 *** Keywords ***
 

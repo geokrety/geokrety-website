@@ -352,7 +352,7 @@ ${MOVE_ADDITIONAL_DATA_COMMENT_CODEMIRROR}          ${MOVE_ADDITIONAL_DATA_PANEL
 # GALLERY
 ################
 
-${GALLERY_IMAGES}                                   //div[@class="gallery"]/div[@class="gallery"]
+${GALLERY_IMAGES}                                   //div[@class="gallery"]/div
 ${GALLERY_FIRST_IMAGE}                              ${GALLERY_IMAGES}\[1]
 ${GALLERY_SECOND_IMAGE}                             ${GALLERY_IMAGES}\[2]
 ${GALLERY_THIRD_IMAGE}                              ${GALLERY_IMAGES}\[3]

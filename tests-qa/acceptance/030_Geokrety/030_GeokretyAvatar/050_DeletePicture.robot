@@ -11,25 +11,25 @@ Test Setup      Test Setup
 *** Test Cases ***
 
 Delete GeoKret avatar picture
-    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES_ALL}    ${1}
-    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_PULLER_DELETE_BUTTON}
+    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES}    ${1}
+    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_ACTIONS_DELETE_BUTTON}
     Wait Until Modal                        Do you really want to delete this picture?
     Check Image                             ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
     Element Should Not Be Visible           ${GEOKRET_DETAILS_PICTURES_PANEL}
 
 Delete 1 GeoKret avatar should leave others present
-    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES_ALL}    ${1}
+    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES}    ${1}
     Post GeoKret avatar                     ${CURDIR}/../../ressources/pictures/sample-picture2.png            position=2
-    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES_ALL}    ${2}
+    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES}    ${2}
 
-    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_PULLER_DELETE_BUTTON}
+    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_ACTIONS_DELETE_BUTTON}
     Wait Until Modal                        Do you really want to delete this picture?
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
     Element Should Be Visible               ${GEOKRET_DETAILS_PICTURES_PANEL}
     Page Should Contain Element             ${GEOKRET_DETAILS_AVATAR_IMAGES}
 
-    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES_ALL}    ${1}
+    Element Count Should Be                 ${GEOKRET_DETAILS_AVATAR_IMAGES}    ${1}
     Check Image                             ${GEOKRET_DETAILS_PICTURES_PANEL}//div[@class="gallery"]
 
 *** Keywords ***

@@ -5,7 +5,7 @@ ${HOME_FOUND_GK_TRACKING_CODE_INPUT}        //*[@id="tracking_code"]
 ${HOME_FOUND_GK_TRACKING_CODE_BUTTON}       //*[@id="found-geokret-submit"]
 ${HOME_PICTURE_LIST_PANEL}                  //*[@id="recentPicturesPanel"]
 ${HOME_PICTURE_LIST_GALERY}                 ${HOME_PICTURE_LIST_PANEL}//div[contains(@class, "gallery")]
-${HOME_PICTURE_LIST_PICTURES}               ${HOME_PICTURE_LIST_GALERY}//div[contains(@class, "gallery")]
+${HOME_PICTURE_LIST_PICTURES}               ${HOME_PICTURE_LIST_GALERY}/div
 ${HOME_MOVES_PANEL}                         //*[@id="recentMovesPanel"]
 ${HOME_LATEST_MOVES_TABLE}                  ${HOME_MOVES_PANEL}/table
 ${HOME_NEWS_PANELS}                         //*[@data-gk-type="news"]

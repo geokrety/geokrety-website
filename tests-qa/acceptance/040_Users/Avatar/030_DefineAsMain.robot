@@ -16,10 +16,10 @@ First uploaded image is set as main avatar
     Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture.png     position=1
     Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture2.png    position=2
 
-    Wait Until Page Contains Element        ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}
-    Scroll Into View                        ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}
-    Mouse Over                              ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}
-    Page Should Not Contain Button          ${USER_PROFILE_FIRST_IMAGE}${PICTURE_PULLER}${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
+    Wait Until Page Contains Element        ${USER_PROFILE_FIRST_IMAGE}${PICTURE_ACTIONS}
+    Scroll Into View                        ${USER_PROFILE_FIRST_IMAGE}${PICTURE_ACTIONS}
+    Mouse Over                              ${USER_PROFILE_FIRST_IMAGE}${PICTURE_ACTIONS}
+    Page Should Not Contain Button          ${USER_PROFILE_FIRST_IMAGE}${PICTURE_ACTIONS}${PICTURE_ACTIONS_SET_AS_AVATAR_BUTTON}
 
     Check Image                             ${USER_PROFILE_PICTURES_PANEL}//div[@class="gallery"]
 
@@ -27,7 +27,7 @@ Set second image as main avatar
     Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture.png     position=1
     Post User Avatar                        ${CURDIR}/../../ressources/pictures/sample-picture2.png    position=2
 
-    Click Picture Action                    ${USER_PROFILE_SECOND_IMAGE}        ${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
+    Click Picture Action                    ${USER_PROFILE_SECOND_IMAGE}        ${PICTURE_ACTIONS_SET_AS_AVATAR_BUTTON}
     Wait Until Modal                        Do you want to set this picture as main avatar?
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
     Check Image                             ${USER_PROFILE_PICTURES_PANEL}//div[@class="gallery"]

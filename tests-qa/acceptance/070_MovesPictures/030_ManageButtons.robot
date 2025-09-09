@@ -13,31 +13,31 @@ Anonymous Don't Have Manage Buttons
     Sign Out Fast
     Go To GeoKrety ${1}
     Scroll Into View                                ${GEOKRET_DETAILS_MOVE_1}
-    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER}
+    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS}
 
 Picture Owner Has Manage Buttons
     Sign In ${USER_1.name} Fast
     Go To GeoKrety ${1}
     Scroll Into View                                ${GEOKRET_DETAILS_MOVE_1}
-    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER}
-    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER_EDIT_BUTTON}
-    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER_DELETE_BUTTON}
-    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
+    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS}
+    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS_EDIT_BUTTON}
+    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS_DELETE_BUTTON}
+    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS_SET_AS_AVATAR_BUTTON}
 
 GeoKret Owner Has Manage Buttons
     Sign In ${USER_2.name} Fast
     Go To GeoKrety ${1}
     Scroll Into View                                ${GEOKRET_DETAILS_MOVE_1}
-    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER}
-    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER_EDIT_BUTTON}
-    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER_DELETE_BUTTON}
-    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}
+    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS}
+    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS_EDIT_BUTTON}
+    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS_DELETE_BUTTON}
+    Page Should Contain Element                     ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS_SET_AS_AVATAR_BUTTON}
 
 Other Users Don't Have Manage Buttons
     Sign In ${USER_3.name} Fast
     Go To GeoKrety ${1}
     Scroll Into View                                ${GEOKRET_DETAILS_MOVE_1}
-    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_PULLER}
+    Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}${GEOKRET_MOVE_IMAGES}\[1]${PICTURE_ACTIONS}
 
 
 *** Keywords ***
