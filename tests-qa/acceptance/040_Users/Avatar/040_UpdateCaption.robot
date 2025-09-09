@@ -10,7 +10,7 @@ Test Setup      Test Setup
 
 Define User Avatar Caption
     [Tags]    OpenEyes
-    Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_PULLER_EDIT_BUTTON}
+    Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_ACTIONS_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Input Text                              ${CAPTION_INPUT}    Bonjour
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
@@ -21,7 +21,7 @@ Define User Avatar Caption
     Wait Until Element Is Visible           ${USER_PROFILE_FIRST_IMAGE}
     Capture Element                         ${USER_PROFILE_FIRST_IMAGE}             name=img1
 
-    Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_PULLER_EDIT_BUTTON}
+    Click Picture Action                    ${USER_PROFILE_FIRST_IMAGE}             ${PICTURE_ACTIONS_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Scroll Into View                        ${MODAL_DIALOG}
     Wait Until Element Is Visible           ${MODAL_DIALOG}

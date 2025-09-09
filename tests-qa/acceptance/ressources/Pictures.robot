@@ -10,34 +10,33 @@ Library 	      OperatingSystem
 ${PICTURES_DIR}      ${CURDIR}/pictures
 ${CAPTION_INPUT}     //*[@id="caption"]
 
-${PICTURE_PULLER}    //div[contains(@class, "pictures-actions-pull")]
-${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}      //button[@data-type="define-as-main-avatar"]
-${PICTURE_PULLER_EDIT_BUTTON}               //button[@data-type="picture-edit"]
-${PICTURE_PULLER_DELETE_BUTTON}             //button[@data-type="picture-delete"]
+${PICTURE_ACTIONS}    //div[contains(concat(" ", normalize-space(@class), " "), " pictures-actions ")]
+${PICTURE_ACTIONS_SET_AS_AVATAR_BUTTON}      //button[@data-type="define-as-main-avatar"]
+${PICTURE_ACTIONS_EDIT_BUTTON}               //button[@data-type="picture-edit"]
+${PICTURE_ACTIONS_DELETE_BUTTON}             //button[@data-type="picture-delete"]
 
 ${DROPZONE_PROCESSING_SUFFIX}               //span[@class="picture-message"]
 ${DROPZONE_PROCESSED_SUFFIX}                //a[@class="picture-link"]
 
 ${GEOKRET_DETAILS_AVATAR_DROPZONE}                            //div[contains(@class, "dropzone")]
 ${GEOKRET_DETAILS_AVATAR_DROPZONE_PICTURE_UPLOAD_BUTTON}      //button[@id="geokretAvatarUploadButton" and contains(@class, "dz-clickable")]
-${GEOKRET_DETAILS_AVATAR_IMAGES}                              //*[@id="geokretPicturesList"]//div[contains(@class, "gallery")]
-${GEOKRET_DETAILS_AVATAR_IMAGES_ALL}                          ${GEOKRET_DETAILS_AVATAR_IMAGES}//div[contains(@class, "gallery")]
+${GEOKRET_DETAILS_AVATAR_IMAGES}                              //*[@id="geokretPicturesList"]//div[contains(@class, "gallery")]/div
 ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}                         ${GEOKRET_DETAILS_AVATAR_IMAGES}\[1]
 ${GEOKRET_DETAILS_AVATAR_SECOND_IMAGE}                        ${GEOKRET_DETAILS_AVATAR_IMAGES}\[2]
 
 ${GEOKRET_MOVE_DROPZONE}                            //div[contains(@class, "dropzone")]
 ${GEOKRET_MOVE_DROPZONE_PICTURE_UPLOAD_BUTTON}      //button[contains(@class, "movePictureUploadButton") and contains(@class, "dz-clickable")]
-${GEOKRET_MOVE_IMAGES}                              //div[contains(@class, "gallery")]/div[contains(@class, "gallery")]
+${GEOKRET_MOVE_IMAGES}                              //div[contains(@class, "gallery")]/div
 ${GEOKRET_MOVE_FIRST_IMAGE}                         ${GEOKRET_MOVE_IMAGES}\[1]
 ${GEOKRET_MOVE_SECOND_IMAGE}                        ${GEOKRET_MOVE_IMAGES}\[2]
 
 ${USER_PROFILE_DROPZONE}                        //*[@id="userAvatar" and contains(@class, "dropzone")]
-${USER_PROFILE_DROPZONE_IMAGE}                  //*[@id="userPicturesList"]//div[@class="gallery"]/div[@class="gallery"]
+${USER_PROFILE_DROPZONE_IMAGE}                  //*[@id="userPicturesList"]//div[@class="gallery"]/div
 ${USER_PROFILE_DROPZONE_PICTURE_UPLOAD_BUTTON}  //*[@id="userAvatarUploadButton" and contains(@class, "dz-clickable")]
-${USER_PROFILE_IMAGES}                          ${USER_PROFILE_PICTURES_PANEL}//div[contains(@class, "gallery")]//div[contains(@class, "gallery")]
-${USER_PROFILE_FIRST_IMAGE}                     //*[@id="userPicturesList"]//div[@class="gallery"]/div[@class="gallery"][1]
-${USER_PROFILE_SECOND_IMAGE}                    //*[@id="userPicturesList"]//div[@class="gallery"]/div[@class="gallery"][2]
-${USER_PROFILE_AVATAR_GALLERY}                  ${USER_PROFILE_DETAILS_PANEL}//div[contains(@class, "gallery")]
+${USER_PROFILE_IMAGES}                          ${USER_PROFILE_PICTURES_PANEL}//div[contains(@class, "gallery")]/div
+${USER_PROFILE_FIRST_IMAGE}                     //*[@id="userPicturesList"]//div[@class="gallery"]/div[1]
+${USER_PROFILE_SECOND_IMAGE}                    //*[@id="userPicturesList"]//div[@class="gallery"]/div[2]
+${USER_PROFILE_AVATAR_GALLERY}                  ${USER_PROFILE_DETAILS_PANEL}//div[contains(@class, "gallery")]/div
 
 *** Keywords ***
 
@@ -135,8 +134,9 @@ Drag And Drop
 
 Click Picture Action
     [Arguments]    ${image}    ${button}
-    Wait Until Page Contains Element        ${image}${PICTURE_PULLER}
-    Scroll Into View                        ${image}${PICTURE_PULLER}
-    Mouse Over                              ${image}${PICTURE_PULLER}
+    Wait Until Page Contains Element        ${image}${PICTURE_ACTIONS}
+    Scroll Into View                        ${image}${button}
+    # Execute Manual Step        ttt
+    Mouse Over                              ${image}
     Mouse Over                              ${image}${button}
     Click Button                            ${image}${button}

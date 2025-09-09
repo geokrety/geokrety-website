@@ -18,7 +18,8 @@ Users avatars should be shown on Homepage
 
     Go To Home
     Page Should Contain Element             ${HOME_PICTURE_LIST_PANEL}
-    Element Count Should Be                 ${HOME_PICTURE_LIST_PICTURES}     2
+    # Execute Manual Step    message
+    Element Count Should Be                 ${HOME_PICTURE_LIST_PICTURES}     ${2}
     Check Image                             ${HOME_PICTURE_LIST_GALERY}
 
 

@@ -12,7 +12,7 @@ Test Setup      Test Setup
 
 Define GeoKret avatar caption
     [Tags]    OpenEyes
-    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_PULLER_EDIT_BUTTON}
+    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_ACTIONS_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Input Text                              ${CAPTION_INPUT}    Bonjour
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
@@ -23,7 +23,7 @@ Define GeoKret avatar caption
     Wait Until Element Is Visible           ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}
     Capture Element                         ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    name=img1
 
-    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_PULLER_EDIT_BUTTON}
+    Click Picture Action                    ${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}    ${PICTURE_ACTIONS_EDIT_BUTTON}
     Wait Until Modal                        Manage picture
     Capture Element                         ${MODAL_DIALOG}    name=img2
 
