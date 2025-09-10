@@ -621,12 +621,17 @@ EOT;
 
         $template_string = <<<'EOT'
 <div data-gk-type="picture"
+     {if $isChart} id="{$canvasDivId}-card"{/if}
      class="{if $isChart}elevation-profile{/if}"
      {if $picture}data-picture-type="{$picture->type->getTypeId()}" data-id="{$picture->id}"{/if}>
   <figure{if $class or $isChart} class="{if $class}{$class}{/if}{if $isChart} elevation-profile{/if}"{/if}>
     <div{if $picture} id="{$picture->key}"{/if} class="parent">
       <div class="image-container{if $isChart} is-chart{/if}">
         {if $isChart}
+          <a class="zoom-trigger"
+             href="#{$canvasDivId}-card"
+             aria-label="{t}Expand chart{/t}"
+             title="{t}Expand chart{/t}">🔍</a>
           <svg id="{$canvasDivId}"></svg>
         {elseif $picture && !$picture->isUploaded()}
           <img src="/assets/images/the-mole-grey.svg" alt="">
@@ -705,6 +710,10 @@ EOT;
         </p>
       {/if}
     </figcaption>
+
+    {if $isChart}
+      <a class="zoom-close" href="#" aria-label="{t}Close{/t}" title="{t}Close{/t}">✕</a>
+    {/if}
   </figure>
 </div>
 EOT;
