@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-10 17:02+0000\n"
-"PO-Revision-Date: 2025-09-10 17:56\n"
+"PO-Revision-Date: 2025-09-10 22:22\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -208,7 +208,7 @@ msgstr "A sua página de Notícias foi actualizada."
 
 #: website/app/GeoKrety/Controller/Admin/RateLimitsReset.php:29
 msgid "Rate limit has been reset"
-msgstr ""
+msgstr "O limite de taxa foi redefinido"
 
 #: website/app/GeoKrety/Controller/Admin/ScriptsAck.php:23
 #, php-format
@@ -418,7 +418,7 @@ msgstr "Data ou hora errada"
 #: website/app/GeoKrety/Service/RateLimit.php:40
 #: website/app/GeoKrety/Service/RateLimit.php:55
 msgid "Rate limit exceeded"
-msgstr ""
+msgstr "Limite de taxa excedido"
 
 #: website/app/GeoKrety/Controller/Pages/LegacyRoutes.php:295
 msgid "Waypoint parameter must be provided."
@@ -1008,12 +1008,12 @@ msgstr "Nascido"
 #: website/app/GeoKrety/Model/UserSocialAuth.php:43
 #, php-format
 msgid "Your may now use your %s account to authenticate on GeoKrety."
-msgstr "Agora você pode usar sua conta %s para autenticar no GeoKrety."
+msgstr "Agora pode usar a sua conta %s para autenticar no GeoKrety."
 
 #: website/app/GeoKrety/Model/UserSocialAuth.php:47
 #, php-format
 msgid "Your account has been detached from %s."
-msgstr "Sua conta foi desconectada de %s."
+msgstr "A sua conta foi desvinculada de %s."
 
 #: website/app/GeoKrety/PictureType.php:58
 msgid "GeoKret avatar"
@@ -1163,7 +1163,7 @@ msgstr "O Ponto adicional contém caracteres inválidos."
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:92
 #, php-format
 msgid "View the <a href=\"%s\" target=\"_blank\">cache page</a>."
-msgstr ""
+msgstr "Ver a página de cache <a href=\"%s\" target=\"_blank\"></a>."
 
 #: website/app/GeoKrety/Service/Validation/Waypoint.php:95
 msgid "This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the \"Coordinates\" field."
@@ -1292,7 +1292,7 @@ msgstr "Utilizador"
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
 #: website/app-templates/smarty/forms/move.tpl:152
 msgid "Waypoint"
-msgstr "Ponto"
+msgstr "Ponto de referência"
 
 #: website/app-templates/smarty/forms/move.tpl:11
 msgid "Identify GeoKret"
@@ -1345,7 +1345,7 @@ msgstr "Validar"
 
 #: website/app-templates/smarty/forms/move.tpl:68
 msgid "Log type"
-msgstr "Tipo de log"
+msgstr "Tipo de registo"
 
 #: website/app-templates/smarty/forms/move.tpl:78
 msgid "This GeoKret is not collectible, so some move types are not available."
@@ -1357,7 +1357,7 @@ msgstr "Selecione o tipo de acção que fez no GeoKret. Para mais informações 
 
 #: website/app-templates/smarty/forms/move.tpl:98
 msgid "When you've left a GeoKret in a cache"
-msgstr "Quando você sair de um GeoKret em um cache"
+msgstr "Quando deixar um GeoKret numa cache"
 
 #: website/app-templates/smarty/forms/move.tpl:99
 msgid "I've dropped GeoKret"
@@ -1369,15 +1369,15 @@ msgstr "Quando tirar um GeoKret de uma cache e não vai colocá-lo <i>logo</i> n
 
 #: website/app-templates/smarty/forms/move.tpl:106
 msgid "I've grabbed GeoKret"
-msgstr "Apanhou um GeoKret"
+msgstr "Apanhei um GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:112
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
-msgstr "Quando você encontrou um GeoKret em um cache, mas não o levou com você"
+msgstr "Quando encontrou um GeoKret numa cache, mas não o levou consigo"
 
 #: website/app-templates/smarty/forms/move.tpl:113
 msgid "I've met GeoKret"
-msgstr "Conheceu um GeoKret"
+msgstr "Vi um GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:119
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
@@ -1385,11 +1385,11 @@ msgstr "Quando leva um GeoKret para um passeio de caches; isto é o mesmo que la
 
 #: website/app-templates/smarty/forms/move.tpl:120
 msgid "I've dipped a GeoKret"
-msgstr "Cruzou-se com um GeoKret"
+msgstr "Visita de um GeoKret"
 
 #: website/app-templates/smarty/forms/move.tpl:126
 msgid "When you want to write a comment :)"
-msgstr "Quando você quiser escrever um comentário :)"
+msgstr "Quando quiser escrever um comentário :)"
 
 #: website/app-templates/smarty/forms/move.tpl:127
 #: website/app-templates/smarty/forms/move.tpl:261
@@ -1414,7 +1414,7 @@ msgstr "Nova localização"
 
 #: website/app-templates/smarty/forms/move.tpl:155
 msgid "eg. GC1AQ2N"
-msgstr ""
+msgstr "Ex. GC1AQ2N"
 
 #: website/app-templates/smarty/forms/move.tpl:160
 msgid "Lookup opencaching cache by name"
@@ -1422,7 +1422,7 @@ msgstr "Pesquisar cache de opencaching por nome"
 
 #: website/app-templates/smarty/forms/move.tpl:165
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
-msgstr "eg.: GC1AQ2N, OP069B, OC033A…"
+msgstr "ex.: GC1AQ2N, OP069B, OC033A…"
 
 #: website/app-templates/smarty/forms/move.tpl:177
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
@@ -1446,7 +1446,7 @@ msgstr "Data"
 
 #: website/app-templates/smarty/forms/move.tpl:255
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
-msgstr "Este pode ser o seu:<br />- geocaching/opencaching username<br />- nickname<br />- nome, etc."
+msgstr "Este pode ser o seu:<br />- geocaching/opencaching nome de utilizador<br />- nickname<br />- nome, etc."
 
 #: website/app-templates/smarty/forms/move.tpl:265
 msgid "It is always nice to receive a little message ;)"
@@ -1580,7 +1580,7 @@ msgstr "Nós recolhemos análises de uso do sítio “web”, isso ajuda-nos a e
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:58
 #: website/app-templates/smarty/forms/registration.tpl:109
 msgid "Yes, I accept the <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">terms of use</a>."
-msgstr ""
+msgstr "Sim, eu aceito os <a href=\"#\" data-toggle=\"modal\" data-target=\"#modal\" data-type=\"terms-of-use\">termos de uso</a>."
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:69
 #: website/app-templates/smarty/forms/registration.tpl:122
@@ -1683,19 +1683,19 @@ msgstr "Gerar várias etiquetas GeoKrety"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:11
 msgid "The current number of labels to be created at once: %1."
-msgstr ""
+msgstr "O número actual de etiquetas a serem criadas de uma vez: %1."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:12
 msgid "Only your own GeoKrety of the ones you already touched can be used here."
-msgstr ""
+msgstr "Apenas os seus próprios GeoKrety, dos que já tocou, podem ser usados aqui."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:13
 msgid "Label preferred template is used if defined."
-msgstr ""
+msgstr "O modelo preferido de etiqueta é usado, se definido."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:14
 msgid "The GeoKret mission will be used as is. Text overflow are generally removed."
-msgstr ""
+msgstr "A missão do GeoKret será usada como está. O excesso de texto é geralmente removido."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:47
 #: website/app-templates/smarty/pages/geokret_label.tpl:13
@@ -1724,7 +1724,7 @@ msgstr "Contacto"
 
 #: website/app-templates/smarty/footer.tpl:12
 msgid "Released under <a id=\"footer-license\" href=\"%1\">MIT license</a>"
-msgstr ""
+msgstr "Lançado sob <a id=\"footer-license\" href=\"%1\">licença MIT</a>"
 
 #: website/app-templates/smarty/footer.tpl:14
 msgid "Contribute to translation"
@@ -1740,7 +1740,7 @@ msgstr "tradução no contexto"
 
 #: website/app-templates/smarty/footer.tpl:23
 msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
-msgstr ""
+msgstr "Desenhado com <abbr title=\"amor\">💗</abbr> pela <a id=\"footer-team\" href=\"%1\">Equipa GeoKrety</a>"
 
 #: website/app-templates/smarty/navbar-right.tpl:5
 msgid "Search…"
@@ -1751,7 +1751,7 @@ msgstr "Procurar…"
 #: website/app-templates/smarty/pages/geokret_move.tpl:3
 #: website/app-templates/smarty/navbar.tpl:16
 msgid "Log a GeoKret"
-msgstr "Registrar um GeoKret"
+msgstr "Registar um GeoKret"
 
 #: website/app-templates/smarty/navbar-left.tpl:11
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
@@ -1767,7 +1767,7 @@ msgstr "Acções"
 #: website/app-templates/smarty/pages/geokret_claim.tpl:3
 #: website/app-templates/smarty/pages/geokret_claim.tpl:8
 msgid "Claim a GeoKret"
-msgstr "Claim a GeoKret"
+msgstr "Reclamar um GeoKret"
 
 #: website/app-templates/smarty/navbar-left.tpl:19
 #: website/app-templates/smarty/pages/advanced_search.tpl:3
@@ -1781,7 +1781,7 @@ msgstr "Galeria de fotos"
 
 #: website/app-templates/smarty/navbar-left.tpl:22
 msgid "Mass labelling"
-msgstr ""
+msgstr "Etiquetagem em massa"
 
 #: website/app-templates/smarty/navbar-left.tpl:26
 msgid "GeoKrety Map"
@@ -1800,7 +1800,7 @@ msgstr "Ajuda"
 
 #: website/app-templates/smarty/navbar-left.tpl:48
 msgid "Moleholes and GK hotels"
-msgstr ""
+msgstr "Moleholes e hotéis GK"
 
 #: website/app-templates/smarty/navbar-left.tpl:49
 #: website/app-templates/smarty/dialog/terms_of_use.tpl:26
@@ -2028,7 +2028,7 @@ msgstr "Cancelar assinatura das notícias"
 
 #: website/app-templates/smarty/elements/news.tpl:11
 msgid "Subscribe to news"
-msgstr "Assine as novidades"
+msgstr "Inscrever-se para receber Notícias"
 
 #: website/app-templates/smarty/admin/pages/scripts.tpl:3
 #: website/app-templates/smarty/admin/pages/scripts.tpl:7
@@ -2067,7 +2067,7 @@ msgstr "Editar"
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:3
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:7
 msgid "Api Rate Limits"
-msgstr ""
+msgstr "Limites da Taxa API"
 
 #: website/app-templates/smarty/admin/pages/api_rate_limit.tpl:49
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:16
@@ -2126,7 +2126,7 @@ msgstr "Modelo de nome do GeoKrety"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:38
 msgid "Use php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> format specifiers to replace the increment. ex: \"%02d\""
-msgstr ""
+msgstr "Use os especificadores de formato php <a href=\"%1\" target=\"_blank\">`sprintf()`</a> para substituir o incremento. ex: \"%02d\""
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:41
 msgid "Start at"
@@ -2167,7 +2167,7 @@ msgstr "Comprimento do Código do Proprietário"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:133
 msgid "Owner Code Alphabet"
-msgstr "Alfabeto do Nome do Proprietário"
+msgstr "Alfabeto do Código do Proprietário"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:140
 msgid "Owner Code suffix"
@@ -2183,11 +2183,11 @@ msgstr "Algumas estatísticas"
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:6
 msgid "<strong>%1</strong> registered GeoKrety, <strong>%2</strong> GeoKrety hidden by <strong>%3</strong> users."
-msgstr ""
+msgstr "<strong>%1</strong> GeoKrety registados, <strong>%2</strong> GeoKrety escondidos por <strong>%3</strong> utilizadores."
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:13
 msgid "<strong>%1</strong> done by all GeoKrety (it is <strong>%2</strong> x distance from the Earth to the Moon 🌛, <strong>%3</strong> x the Earth equatorial circumference 🌍 and <strong>%4</strong> x the distance from the Earth to the Sun 🌞)."
-msgstr "<strong>%1</strong> feitos por todos os GeoKrety (é <strong>%2</strong> x distância da Terra à Lua 🌛, <strong>%3</strong> x a circunferência do equador da Terra :globe_showing_Europe-África: e <strong>%4</strong> x a distância da Terra ao Sol 🌞)."
+msgstr "<strong>%1</strong> feitos por todos os GeoKrety (é <strong>%2</strong> x distância da Terra à Lua 🌛, <strong>%3</strong> x a circunferência do equador da Terra🌍e <strong>%4</strong> x a distância da Terra ao Sol 🌞)."
 
 #: website/app-templates/smarty/banners/intro_stats.tpl:21
 msgid "And that's thanks to you! Congratulation!"
@@ -2431,7 +2431,7 @@ msgstr "O seu inventário está vazio."
 
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:68
 msgid "Select <span class=\"badge\">%1</span>"
-msgstr ""
+msgstr "Seleccionar <span class=\"badge\">%1</span>"
 
 #: website/app-templates/smarty/dialog/geokret_offer_for_adoption.tpl:4
 msgid "Offer this GeoKret for adoption?"
@@ -2494,7 +2494,7 @@ msgstr "Declarar como desaparecido"
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:4
 msgid "Do you really want to reset this rate-limit?"
-msgstr ""
+msgstr "Deseja realmente redefinir este limite de taxa?"
 
 #: website/app-templates/smarty/dialog/admin_dialog_rate_limit_reset.tpl:9
 msgid "Name=%1 KEY=%2"
@@ -2513,31 +2513,31 @@ msgstr "Apagar"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:7
 msgid "Do you really want to delete your account?"
-msgstr ""
+msgstr "Tem a certeza de que pretende eliminar a sua conta?"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:13
 msgid "All your logs and comments will appear posted from \"%1\""
-msgstr ""
+msgstr "Todos os seus registos e comentários aparecerão publicados de \"%1\""
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:14
 msgid "All your GeoKrety will be automatically archived"
-msgstr ""
+msgstr "Todos os seus GeoKrety serão arquivados automaticamente"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:15
 msgid "Your avatar pictures will be deleted"
-msgstr ""
+msgstr "As suas fotos de avatar serão apagadas"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:17
 msgid "Warning!!! This will permanently delete your account."
-msgstr ""
+msgstr "Atenção!!! Isto irá apagar permanentemente a sua conta."
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:19
 msgid "Please solve this operation: %1 + %2 = ?"
-msgstr ""
+msgstr "Por favor, resolva esta operação: %1 + %2 = ?"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:28
 msgid "Also remove all my comments content"
-msgstr ""
+msgstr "Remover também todos os meus comentários"
 
 #: website/app-templates/smarty/dialog/user_delete_account.tpl:40
 #: website/app-templates/smarty/blocks/user/danger_zone.tpl:12
@@ -2733,7 +2733,7 @@ msgstr "Está prestes a desconectar a sua conta GeoKrety da sua conta %1 . Não 
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:17
 #: website/app-templates/smarty/dialog/oauth_disconnect.tpl:36
 msgid "Detach"
-msgstr ""
+msgstr "Destacar"
 
 #: website/app-templates/smarty/dialog/picture_edit.tpl:6
 msgid "Manage picture"
@@ -3134,7 +3134,7 @@ msgstr "Como temos vindo a reunir um conjunto de pontos de um número significat
 
 #: website/app-templates/smarty/pages/downloads.tpl:21
 msgid "Read more and <a href=\"%1\">get the map</a>."
-msgstr ""
+msgstr "Leia mais e <a href=\"%1\">obtenha o mapa</a>."
 
 #: website/app-templates/smarty/pages/downloads.tpl:27
 msgid "Design resources"
@@ -3312,7 +3312,7 @@ msgstr "Provavelmente, a informação pormenorizada sobre o biótipo e a vizinha
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:30
 msgid "By <cite title=\"Original source\">%1</cite>"
-msgstr ""
+msgstr "Por <cite title=\"Original source\">%1</cite>"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:33
 msgid "Current mole-holes"
@@ -3740,7 +3740,7 @@ msgstr "API de ajuda"
 #: website/app-templates/smarty/pages/geokrety_labels.tpl:3
 #: website/app-templates/smarty/pages/geokrety_labels.tpl:6
 msgid "Mass label generator"
-msgstr ""
+msgstr "Gerador de etiquetas em massa"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:3
 #: website/app-templates/smarty/pages/registration_validated.tpl:8
@@ -3749,7 +3749,7 @@ msgstr "Bem-vindo(a) à comunidade GeoKrety.org!"
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:10
 msgid "You are now able to <a href=\"%1\">post move</a> and <a href=\"%2\">create your own GeoKrety</a>."
-msgstr ""
+msgstr "Agora pode <a href=\"%1\">publicar o movimento</a> e <a href=\"%2\">criar o seu próprio GeoKrety</a>."
 
 #: website/app-templates/smarty/pages/registration_validated.tpl:12
 msgid "You just finish your registration. You may now wish to login and move your first GeoKret."
@@ -4043,7 +4043,7 @@ msgstr "Um script está bloqueado"
 
 #: website/app-templates/smarty/emails/cron-locked.tpl:7
 msgid "Cron <strong>%1</strong> is locked since <strong>%2</strong>!"
-msgstr ""
+msgstr "O trabalho Cron <strong>%1</strong> está bloqueado desde <strong>%2</strong>!"
 
 #: website/app-templates/smarty/emails/username-changed.tpl:3
 msgid "Username changed"
@@ -4222,7 +4222,7 @@ msgstr "Olá %1,"
 
 #: website/app-templates/smarty/emails/base.tpl:37
 msgid "Sincerely,<br>The GeoKrety Team"
-msgstr "Atenciosamente,<br>A equipe GeoKrety"
+msgstr "Atenciosamente,<br>A equipa GeoKrety"
 
 #: website/app-templates/smarty/emails/base.tpl:46
 msgid "If you never created an account on GeoKrety.org, please <a href=\"mailto:%1?subject=%2\">contact us</a>."
@@ -4256,7 +4256,7 @@ msgstr "Os meus movimentos recentes"
 
 #: website/app-templates/smarty/navbar-profile.tpl:32
 msgid "Recent moves of my GeoKrety"
-msgstr "Movimentos recentes de minha GeoKrety"
+msgstr "Movimentos recentes dos meus GeoKrety"
 
 #: website/app-templates/smarty/navbar-profile.tpl:34
 msgid "My photos"
@@ -4264,7 +4264,7 @@ msgstr "As minhas fotos"
 
 #: website/app-templates/smarty/navbar-profile.tpl:35
 msgid "Photos of my GeoKrety"
-msgstr "Fotos da minha GeoKrety"
+msgstr "Fotos dos meus GeoKrety"
 
 #: website/app-templates/smarty/navbar-profile.tpl:37
 msgid "Where are my GeoKrety?"
@@ -4273,7 +4273,7 @@ msgstr "Onde estão os meus GeoKrety?"
 #: website/app-templates/smarty/navbar-profile.tpl:39
 #: website/app-templates/smarty/navbar-profile.tpl:43
 msgid "Sign out"
-msgstr "Encerrar sessão"
+msgstr "Terminar sessão"
 
 #: website/app-templates/smarty/navbar-profile.tpl:70
 msgid "Create account"
@@ -4328,7 +4328,7 @@ msgstr "Não Colecionável"
 #: website/app-templates/smarty/blocks/geokret/details.tpl:33
 #: website/app-templates/smarty/blocks/user/details.tpl:7
 msgid "Send a message to %1"
-msgstr "Enviar uma mensagem para %1"
+msgstr "Enviar uma mensagem a %1"
 
 #: website/app-templates/smarty/blocks/geokret/details.tpl:38
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:6
@@ -4373,7 +4373,7 @@ msgstr "Rastreio do país"
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:17
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:29
 msgid "Who is watching this Geokret?"
-msgstr "Quem está a seguir este Geokret?"
+msgstr "Quem está a observar este Geokret?"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:5
 msgid "Watchers"
@@ -4610,7 +4610,7 @@ msgstr "GeoKrety de %1 no mapa"
 
 #: website/app-templates/smarty/blocks/user/actions.tpl:45
 msgid "User stats"
-msgstr "Estatísticas do usuário"
+msgstr "Estatísticas do utilizador"
 
 #: website/app-templates/smarty/blocks/user/oauth.tpl:4
 msgid "OAuth Connections"
@@ -4646,11 +4646,11 @@ msgstr "Medalhas"
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:8
 msgid "%1 has created <strong>%2</strong> GeoKrety, which travelled <strong>%3</strong>."
-msgstr ""
+msgstr "%1 criou <strong>%2</strong> GeoKrety, que circularam <strong>%3</strong>."
 
 #: website/app-templates/smarty/blocks/user/medals.tpl:17
 msgid "%1 has moved <strong>%2</strong> GeoKrety on a total distance of <strong>%3</strong>."
-msgstr ""
+msgstr "%1 moveu <strong>%2</strong> GeoKrety numa distância total de <strong>%3</strong>."
 
 #: website/app-templates/smarty/blocks/user/tracking.tpl:4
 msgid "Tracking"
@@ -4726,7 +4726,7 @@ msgstr "A actualizar…"
 
 #: website/app-templates/smarty/js/lightbox2.tpl.js:7
 msgid "Image %1 of %2"
-msgstr ""
+msgstr "Imagem %1 de %2"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:92
 msgid "Informations:"
@@ -4750,7 +4750,7 @@ msgstr "Posição actual:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:100
 msgid "Waypoint:"
-msgstr "Ponto de referência"
+msgstr "Ponto de referência:"
 
 #: website/app-templates/smarty/js/map_geojson_loader.tpl.js:101
 msgid "Author:"
@@ -4778,5 +4778,5 @@ msgstr "Utilizadores"
 
 #: website/app-templates/smarty/js/search_advanced.tpl.js:4
 msgid "Waypoints"
-msgstr "Pontos adicionais"
+msgstr "Pontos de referência"
 
