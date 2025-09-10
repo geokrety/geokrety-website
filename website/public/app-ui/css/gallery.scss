@@ -1,26 +1,31 @@
 /* ========== Responsive gallery ========== */
 div.gallery {
   /* grid knobs */
-  --card-min: 150px;            /* compact photo cards */
+  --card-min: 150px;
   --gap: 6px;
 
   /* chart knobs */
-  --chart-ar-mobile: 4 / 3;     /* width : height under ~768px */
-  --chart-ar-desktop: 16 / 9;   /* width : height from ~768px+ */
-  --chart-min-h: 140px;         /* safety so axes stay readable */
+  --chart-ar-mobile: 4 / 3;
+  --chart-ar-desktop: 16 / 9;
+  --chart-min-h: 140px;
+
+  /* zoom controls */
+  --zoom-size: 30px;
+  --zoom-gap: 10px;
+  --zoom-radius: 6px;
+  --zoom-bg: #ffffffd9;
+  --zoom-border: #cfcfcf;
+  --zoom-shadow: 0 1px 3px rgba(0,0,0,.12);
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
   gap: var(--gap);
   align-items: start;
-  transition: all .2s ease-in-out;
 
-  /* each card wrapper is the grid item */
-  > [data-gk-type="picture"] {
-    min-width: var(--card-min);
-  }
+  /* each card wrapper = grid item */
+  > [data-gk-type="picture"] { min-width: var(--card-min); }
 
-  /* ==== make chart cards span more columns (wider) ==== */
+  /* charts span wider */
   > [data-gk-type="picture"].elevation-profile { grid-column: span 2; }
   @media (min-width: 900px) {
     > [data-gk-type="picture"].elevation-profile { grid-column: span 3; }
@@ -30,20 +35,15 @@ div.gallery {
     border: 1px solid silver;
     border-radius: 6px;
     background: #fff;
-    overflow: hidden;                 /* clip images by default */
+    overflow: hidden; /* clip images by default */
     display: flex;
     flex-direction: column;
-    position: relative;               /* overlay anchor */
+    position: relative; /* overlay anchor */
   }
-
-  /* allow charts to show axis labels (figure-specific visuals) */
-  figure.elevation-profile { overflow: visible; }
+  figure.elevation-profile { overflow: visible; } /* let chart labels show */
 
   /* media area */
-  .parent {
-    position: relative;
-    padding: 8px;
-  }
+  .parent { position: relative; padding: 8px; }
 
   .image-container {
     position: relative;
@@ -52,131 +52,141 @@ div.gallery {
     border: 1px solid #eee;
     border-radius: 12px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
 
-    /* default: pictures fill square */
-    img,
-    svg {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
+    img, svg {
+      max-width: 100%; max-height: 100%;
+      width: auto; height: auto;
       object-fit: cover;
       border-radius: 12px;
+      display: block;
     }
 
-    /* for charts, don’t crop — show entire SVG */
-    &.is-chart img,
-    &.is-chart svg {
-      object-fit: contain;
-    }
+    &.is-chart img, &.is-chart svg { object-fit: contain; }
 
     .picture-message {
-      position: absolute;
-      left: 6px; right: 6px; bottom: 6px;
-      text-align: center;
-      padding: 6px 4px;
-      background-color: #FFFFFFC0;
-      border-radius: 4px;
+      position: absolute; left: 6px; right: 6px; bottom: 6px;
+      text-align: center; padding: 6px 4px;
+      background-color: #FFFFFFC0; border-radius: 4px;
     }
   }
 
-  /* chart container sizing */
+  /* chart sizing */
   .image-container.is-chart {
-    overflow: visible;                 /* show d3 labels */
+    overflow: visible;
     border-color: #e6f2ef;
     aspect-ratio: var(--chart-ar-mobile);
     min-height: var(--chart-min-h);
+    z-index: 0; /* stacking context */
   }
   @media (min-width: 768px) {
     .image-container.is-chart { aspect-ratio: var(--chart-ar-desktop); }
   }
-
-  /* ensure the SVG actually fills the box the JS measures */
   .image-container.is-chart > svg {
-    width: 100%;
-    height: 100%;
-    display: block;
+    width: 100%; height: 100%;
     overflow: visible;
+    position: relative; z-index: 1; /* under the controls */
   }
 
-  /* ===== Actions overlay ===== */
+  /* ===== Picture actions (unchanged) ===== */
   .pictures-actions {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    z-index: 20;
-    opacity: 0;
-    transform: translateY(-4px);
+    position: absolute; top: 6px; right: 6px; z-index: 20;
+    opacity: 0; transform: translateY(-4px);
     transition: opacity .15s ease, transform .15s ease;
-    pointer-events: none;
-    display: flex;
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      background: #f9f9f9;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0,0,0,.12);
-      z-index: -1;
-    }
+    pointer-events: none; display: flex;
   }
-
   .pictures-actions .btn-group,
   .pictures-actions .btn-group > .btn { pointer-events: auto; }
-
   figure:hover .pictures-actions,
-  figure:focus-within .pictures-actions {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .pictures-actions-buttons {
-    display: flex;
-    gap: 4px;
-  }
+  figure:focus-within .pictures-actions { opacity: 1; transform: translateY(0); }
 
   /* ===== Main avatar badge ===== */
-  div.picture-is-main-avatar {
-    z-index: 21;
-    position: absolute;
-    top: 0;
-    left: 20px;
-    border-radius: 0 0 6px 6px;
-    padding: 4px 1px 1px 1px;
-    background: #e31818;
-    border: 3px double white;
-    border-top: 0;
-    color: white;
-
+  .picture-is-main-avatar {
+    z-index: 21; position: absolute; top: 0; left: 20px;
+    border-radius: 0 0 6px 6px; padding: 4px 1px 1px;
+    background: #e31818; border: 3px double white; border-top: 0; color: white;
     &::before { content: "\2605"; }
   }
 
-  /* Avatar highlight */
-  .is-avatar { border: 2px solid #2ab2c2; }
-
   /* caption */
   figcaption {
-    border-top: 1px solid silver;
-    background-color: #eee;
-    padding: 6px 8px;
-    text-align: center;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-top: 1px solid silver; background-color: #eee;
+    padding: 6px 8px; text-align: center; min-height: 48px;
+    display: flex; align-items: center; justify-content: center;
   }
   figcaption > p {
-    margin: 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 100%;
+    margin: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%;
   }
 
   figure:hover { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+
+  /* ===== Zoom controls (one style, top-right) ===== */
+  .zoom-trigger,
+  .zoom-close {
+    position: absolute;
+    top: var(--zoom-gap);
+    right: var(--zoom-gap);
+    width: var(--zoom-size);
+    height: var(--zoom-size);
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; line-height: 1; font-size: 18px; text-decoration: none;
+    background: var(--zoom-bg);
+    border: 1px solid var(--zoom-border);
+    border-radius: var(--zoom-radius);
+    box-shadow: var(--zoom-shadow);
+    z-index: 26; cursor: pointer; user-select: none;
+  }
+  .zoom-trigger:hover, .zoom-close:hover,
+  .zoom-trigger:focus, .zoom-close:focus {
+    outline: none; filter: saturate(1.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+  }
+
+  /* show 🔍 on hover/focus (card view only) */
+  .zoom-trigger {
+    opacity: 0; transform: translateY(-4px);
+    transition: opacity .15s ease, transform .15s ease;
+  }
+  figure:hover .zoom-trigger,
+  figure:focus-within .zoom-trigger,
+  .zoom-trigger:focus {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* default: ✕ hidden */
+  .zoom-close { display: none; }
 }
+
+/* ===== Fullscreen via :target (no JS) ===== */
+[data-gk-type="picture"]:target {
+  position: fixed; inset: 0; z-index: 9999;
+  /* nicer responsive margins around the modal */
+  --pad: clamp(12px, 2vw, 24px);
+  padding: var(--pad);
+  background: rgba(0,0,0,.6);
+  display: grid; place-items: center;
+  margin: 0 !important;
+}
+[data-gk-type="picture"]:target > figure {
+  width: calc(100vw - 2 * var(--pad));
+  height: calc(100vh - 2 * var(--pad));
+  max-width: 1200px; max-height: 900px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  background: #fff; border-radius: 8px;
+  display: flex; flex-direction: column;
+}
+[data-gk-type="picture"]:target .parent {
+  flex: 1 1 auto; padding: 12px;
+}
+[data-gk-type="picture"]:target .image-container.is-chart {
+  aspect-ratio: auto; min-height: 0; height: 100%;
+  overflow: visible; border-color: #dfe9f0;
+}
+[data-gk-type="picture"]:target .image-container.is-chart > svg {
+  width: 100%; height: 100%;
+}
+[data-gk-type="picture"]:target figcaption { flex: 0 0 auto; }
+
+/* swap controls in fullscreen */
+[data-gk-type="picture"]:target .zoom-close { display: flex; }
+[data-gk-type="picture"]:target .zoom-trigger { display: none; }
