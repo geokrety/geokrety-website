@@ -3,7 +3,7 @@
         {t}Found it? Log it!{/t}
     </div>
     <div class="panel-body">
-        {if isset($geokret) && $geokret->id}
+        {if isset($geokret) && $geokret->id && $geokret->hasTouchedInThePast()}
             <div class="alert alert-info alert-dismissible" role="alert">
                 {assign var="url" value={'move_create_short'|alias:sprintf('@tracking_code=%s', $geokret->tracking_code)}}
                 {t}Short tracking url:{/t}<a href="{$url}" class="alert-link">{$url}</a>
