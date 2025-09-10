@@ -14,9 +14,9 @@ $(".gallery").each(function (idx) {
     });
 });
 
-function bind_gk_avatars_buttons() {
+function bindGKAvatarsButtons() {
     $("a.has-gk-avatar").each(function(idx) {
         $(this).attr("data-lightbox", "gk-avatar-" + idx);
     });
 }
-bind_gk_avatars_buttons()
+bindGKAvatarsButtons();

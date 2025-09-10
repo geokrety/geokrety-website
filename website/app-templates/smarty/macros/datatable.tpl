@@ -24,6 +24,6 @@
         }
     },
     "drawCallback" : function(settings) {
-        bind_gk_avatars_buttons()
+        bindGKAvatarsButtons()
     },
 {/function}
