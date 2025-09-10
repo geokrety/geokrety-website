@@ -102,9 +102,17 @@ div.gallery {
 
   /* ===== Main avatar badge ===== */
   .picture-is-main-avatar {
-    z-index: 21; position: absolute; top: 0; left: 20px;
-    border-radius: 0 0 6px 6px; padding: 4px 1px 1px;
-    background: #e31818; border: 3px double white; border-top: 0; color: white;
+    z-index: 21;
+    position: absolute;
+    top: 0;
+    left: 34px;              /* was 20px — shift right to clear the type chip */
+    border-radius: 0 0 6px 6px;
+    padding: 4px 1px 1px;
+    background: #e31818;
+    border: 3px double white;
+    border-top: 0;
+    color: white;
+
     &::before { content: "\2605"; }
   }
 
@@ -190,3 +198,75 @@ div.gallery {
 /* swap controls in fullscreen */
 [data-gk-type="picture"]:target .zoom-close { display: flex; }
 [data-gk-type="picture"]:target .zoom-trigger { display: none; }
+
+/* ===== Picture type badges (uniform, no overlap) ===== */
+div.gallery {
+  --type-chip: 22px;        /* square chip size */
+  --type-icon: 14px;        /* inner glyph size */
+  --type-gap: 6px;          /* distance from edges */
+  --type-bg: #fff;
+  --type-border: #cfcfcf;
+  --type-shadow: 0 1px 2px rgba(0,0,0,.12);
+  --type-color: #111;       /* glyph color when using mask */
+}
+
+/* chip box (always same size) */
+div.gallery .parent .type {
+  position: absolute;
+  top: var(--type-gap);
+  left: var(--type-gap);
+  z-index: 20;                           /* below the red ribbon (z=21) */
+  width: var(--type-chip);
+  height: var(--type-chip);
+  border-radius: 4px;
+  background: var(--type-bg);
+  border: 1px solid var(--type-border);
+  box-shadow: var(--type-shadow);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* inner glyph, normalized sizing */
+div.gallery .parent .type::before {
+  content: "";
+  width: var(--type-icon);
+  height: var(--type-icon);
+  display: block;
+  background: var(--type-color);
+
+  /* use CSS mask so any SVG becomes a crisp monochrome glyph */
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* map types to icons (updated paths) */
+div.gallery .parent .type.human::before   {
+  -webkit-mask-image: url("/assets/images/human-bust.svg");
+  mask-image: url("/assets/images/human-bust.svg");
+}
+div.gallery .parent .type.geokret::before {
+  -webkit-mask-image: url("/assets/images/the-mole-grey.svg");
+  mask-image: url("/assets/images/the-mole-grey.svg");
+  background: var(--type-color);
+
+  /* keep the same box as the other icons */
+  width: var(--type-icon);
+  height: var(--type-icon);
+
+  /* scale the mole a bit larger and center it */
+  -webkit-mask-size: 130% auto;
+  mask-size: 180% auto;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+div.gallery .parent .type.move::before {
+  -webkit-mask-image: url("/assets/images/plane.svg");
+  mask-image: url("/assets/images/plane.svg");
+}
