@@ -34,7 +34,7 @@ class Redis extends \Prefab {
     }
 
     /**
-     * @throws \GeoKrety\Service\StorageException
+     * @throws StorageException
      */
     public function getRedis(): \Redis {
         $this->ensureOpenConnection();
@@ -43,7 +43,7 @@ class Redis extends \Prefab {
     }
 
     /**
-     * @throws \GeoKrety\Service\StorageException
+     * @throws StorageException
      */
     public function ensureOpenConnection(): void {
         if ($this->connectionInitialized === true) {

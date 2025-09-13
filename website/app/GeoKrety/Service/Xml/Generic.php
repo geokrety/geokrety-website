@@ -27,7 +27,7 @@ class Generic extends Base {
      */
     public static function buildGeneric(bool $stream, string $root, array|string $data) {
         $data = gettype($data) === 'string' ? [$data] : $data;
-        $xml = new \GeoKrety\Service\Xml\Generic($root, $stream);
+        $xml = new Generic($root, $stream);
 
         foreach ($data as $key => $value) {
             if (gettype($value) === 'array') {

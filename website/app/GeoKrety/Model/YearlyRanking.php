@@ -9,15 +9,15 @@ use Validation\Traits\CortexTrait;
 /**
  * @property int|null id
  * @property int year
- * @property int|\GeoKrety\Model\User|null user
+ * @property int|User|null user
  * @property int rank
  * @property string type
  * @property int|null distance
  * @property int count
- * @property int|\GeoKrety\Model\Awards award
+ * @property int|Awards award
  * @property \DateTime awarded_on_datetime
  * @property \DateTime updated_on_datetime
- * @property int|\GeoKrety\Model\AwardsGroup|null group;
+ * @property int|AwardsGroup|null group;
  */
 class YearlyRanking extends Base {
     use CortexTrait;
@@ -61,7 +61,7 @@ class YearlyRanking extends Base {
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
+            // 'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],

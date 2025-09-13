@@ -13,7 +13,7 @@ use Validation\Traits\CortexTrait;
  * @property \DateTime awarded_on_datetime
  * @property \DateTime updated_on_datetime
  * @property string description
- * @property int|\GeoKrety\Model\Awards award
+ * @property int|Awards award
  * @property string url
  */
 class AwardsWon extends Base {
@@ -34,7 +34,7 @@ class AwardsWon extends Base {
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
+            // 'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],

@@ -16,7 +16,7 @@ use DB\SQL\Schema;
  * @property string filename
  * @property string type
  * @property string url
- * @property int|\GeoKrety\Model\AwardsGroup|null group;
+ * @property int|AwardsGroup|null group;
  */
 class Awards extends Base {
     use \Validation\Traits\CortexTrait;
@@ -38,7 +38,7 @@ class Awards extends Base {
         ],
         'updated_on_datetime' => [
             'type' => Schema::DT_DATETIME,
-//            'default' => 'CURRENT_TIMESTAMP',
+            // 'default' => 'CURRENT_TIMESTAMP',
             'nullable' => true,
             'validate' => 'is_date',
         ],

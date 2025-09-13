@@ -20,19 +20,19 @@ function addCorsAllowcredentialHeaders(Base $f3) {
 }
 
 // enable the CORS settings only for your API routes:
-\Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /api/*', function (Base $f3) {
+Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /api/*', function (Base $f3) {
     addCorsHeaders($f3);
 });
-\Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /gkt/*', function (Base $f3) {
+Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /gkt/*', function (Base $f3) {
     addCorsHeaders($f3);
 });
-\Middleware::instance()->before('GET /gkt/inventory_v3.php', function (Base $f3) {
+Middleware::instance()->before('GET /gkt/inventory_v3.php', function (Base $f3) {
     addCorsHeaders($f3);
     addCorsAllowcredentialHeaders($f3);
 });
-\Middleware::instance()->before('GET /gkt/v3/inventory', function (Base $f3) {
+Middleware::instance()->before('GET /gkt/v3/inventory', function (Base $f3) {
     addCorsHeaders($f3);
     addCorsAllowcredentialHeaders($f3);
 });
 
-\Middleware::instance()->run();
+Middleware::instance()->run();

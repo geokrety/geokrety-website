@@ -78,7 +78,7 @@ class AuditPost extends Base {
     public static function AmendAuditPostWithErrors($data) {
         $f3 = \Base::instance();
         if ($f3->exists('AUDIT_POST_ID')) {
-            $audit = new \GeoKrety\Model\AuditPost();
+            $audit = new AuditPost();
             $audit->load(['id = ?', $f3->get('AUDIT_POST_ID')]);
             if (!$audit->dry()) {
                 $audit->errors = json_encode($data);
