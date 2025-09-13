@@ -12,11 +12,11 @@ class HelpApi extends Base {
         $this->f3 = $f3;
 
         // Load specified GeoKrety on production else first two created
-        [$geokret, $geokret2, $geokret3] = $this->loadGK(GK_HELP_GEOKRETY_EXAMPLE_LIST);
+        [$geokret, $geokret2, $geokret3, $geokret4] = $this->loadGK(GK_HELP_GEOKRETY_EXAMPLE_LIST);
         Smarty::assign('gk_example_1', $geokret->gkid());
         Smarty::assign('gk_example_2', $geokret2->gkid());
-        Smarty::assign('gk_example_2_tc', $geokret2->tracking_code);
         Smarty::assign('gk_example_3_tc', $geokret3->tracking_code);
+        Smarty::assign('gk_example_4_tc', $geokret4->tracking_code);
 
         // Render ruchy saved
         $xml = new Xml\GeokretyRuchy();
