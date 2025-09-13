@@ -71,16 +71,10 @@ class WaypointSync extends BaseWaypoint {
         return \DateTime::createFromFormat(GK_DB_DATETIME_FORMAT_AS_INT, $this->revision, new \DateTimeZone('UTC'));
     }
 
-    /**
-     * @return \DateTime
-     */
     public function get_last_success_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }
 
-    /**
-     * @return \DateTime
-     */
     public function get_last_error_datetime($value): ?\DateTime {
         return self::get_date_object($value);
     }

@@ -16,7 +16,7 @@ class DistanceFormatter {
      * @throws \Exception On invalid requested unit
      */
     public static function format(float $distance): string {
-        $out_unit = \GeoKrety\Service\UserSettings::getForCurrentUser('DISTANCE_UNIT');
+        $out_unit = UserSettings::getForCurrentUser('DISTANCE_UNIT');
 
         if (!array_key_exists($out_unit, self::SUPPORTED_UNITS)) {
             throw new \Exception(sprintf(_('Invalid unit specified: %s'), $out_unit));
