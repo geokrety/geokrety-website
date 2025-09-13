@@ -121,7 +121,7 @@ class UsersAuthenticationHistory extends Base {
         if (!self::is_valid_method($method)) {
             throw new Exception('Invalid Authentication Method');
         }
-        $history = new \GeoKrety\Model\UsersAuthenticationHistory();
+        $history = new UsersAuthenticationHistory();
         $history->username = $username;
         $history->method = $method;
         $history->user = $user;

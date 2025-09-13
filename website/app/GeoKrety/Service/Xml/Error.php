@@ -29,7 +29,7 @@ class Error extends Base {
         // public static function buildError(bool $stream, array|string $errors) { // need php 8.0
         $errors = gettype($errors) === 'string' ? [$errors] : $errors;
         register_shutdown_function('GeoKrety\Model\AuditPost::AmendAuditPostWithErrors', $errors);
-        $xml = new \GeoKrety\Service\Xml\Error($stream);
+        $xml = new Error($stream);
         foreach ($errors as $err) {
             $xml->addError($err);
         }

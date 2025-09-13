@@ -17,7 +17,7 @@ class UserContributorsSeeder extends AbstractSeed {
         foreach (GeoKrety\Controller\HallOfFame::CONTRIBUTORS_IDS as $username) {
             $data[] = [
                 'username' => $username,
-                'password' => \GeoKrety\Auth::hash_password($username),
+                'password' => GeoKrety\Auth::hash_password($username),
                 'registration_ip' => '127.0.0.1',
             ];
         }
