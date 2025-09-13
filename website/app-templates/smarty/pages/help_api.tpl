@@ -273,7 +273,7 @@ var_dump($gk);
                 <pre>{'api_v1_export2'|alias}?gkid=141</pre>
             </li>
             <li><code>tracking_code</code> - list only one GeoKret, find by Tracking Code
-                <pre>{'api_v1_export2'|alias}?tracking_code={$gk_example_3_tc}</pre>
+                <pre>{'api_v1_export2'|alias}?tracking_code={$gk_example_4_tc}</pre>
             </li>
             <li><code>wpt</code> - list GeoKrety which are in the cache with
                 the specified waypoint<br />
@@ -371,7 +371,7 @@ var_dump($gk);
             <dd>authentication string - see <a href="#secid">above</a></dd>
 
             <dt><code>tracking_code</code></dt>
-            <dd>GeoKret's Tracking Code (ex: <code>{$gk_example_3_tc}</code> or multiple (limit {GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS}) separated by comma <code>{$gk_example_3_tc},{$gk_example_2_tc}</code>)</dd>
+            <dd>GeoKret's Tracking Code (ex: <code>{$gk_example_4_tc}</code> or multiple (limit {GK_CHECK_TRACKING_CODE_MAX_PROCESSED_ITEMS}) separated by comma <code>{$gk_example_4_tc},{$gk_example_3_tc}</code>)</dd>
 
             <dt><code>formname</code></dt>
             <dd><b>must</b> have value of <code>ruchy</code></dd>
