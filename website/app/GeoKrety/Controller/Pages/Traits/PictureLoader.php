@@ -25,7 +25,7 @@ trait PictureLoader {
 
     protected function checkAuthor(Picture $picture) {
         if (!$picture->isAuthor()) {
-            \Base::instance()->error(403, _('This action is reserved to the author.'));
+            Base::instance()->error(403, _('This action is reserved to the author.'));
         }
     }
 }

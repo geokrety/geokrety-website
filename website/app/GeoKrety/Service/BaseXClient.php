@@ -5,7 +5,7 @@ namespace GeoKrety\Service;
 use Caxy\BaseX\Session;
 
 class BaseXClient extends \Prefab {
-    private \Caxy\BaseX\Session $basex_session;
+    private Session $basex_session;
 
     public function getSession(): Session {
         return $this->basex_session;

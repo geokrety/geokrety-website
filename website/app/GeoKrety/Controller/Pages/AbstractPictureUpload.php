@@ -37,6 +37,7 @@ abstract class AbstractPictureUpload extends Base {
         if ($this->wanted_response_content_type($f3) === self::CONTENT_TYPE_XML) {
             return Generic::buildGeneric(true, 'image-upload', $response);
         }
+
         // Default is Json
         return json_encode($response);
     }
@@ -95,7 +96,7 @@ abstract class AbstractPictureUpload extends Base {
             ['bucket' => GK_BUCKET_NAME_PICTURES_PROCESSOR_DOWNLOADER],
             ['eq', '$key', $this->getFullImgKey()],
             ['content-length-range', 1024, 1024 * 1024 * GK_SITE_PICTURE_UPLOAD_MAX_FILESIZE],
-//            ['starts-with', '$Content-Type', 'image/jpeg'], // TODO: This should work, but seems buggy in minio right now?
+            // ['starts-with', '$Content-Type', 'image/jpeg'], // TODO: This should work, but seems buggy in minio right now?
         ];
         $expires = sprintf('+%d minutes', GK_SITE_PICTURE_UPLOAD_DELAY_MINUTES);
         $postObject = new PostObjectV4(
