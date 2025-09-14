@@ -6,10 +6,11 @@ use Carbon\Carbon;
 use GeoKrety\Email\EmailChange;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 use Sugar\Event;
 
 class UserUpdateEmail extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function get_ajax(\Base $f3) {
         // Reset eventual transaction

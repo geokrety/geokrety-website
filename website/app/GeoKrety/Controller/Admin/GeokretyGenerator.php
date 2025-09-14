@@ -8,9 +8,10 @@ use GeoKrety\Model\OwnerCode;
 use GeoKrety\Model\User;
 use GeoKrety\Service\SecretCode;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class GeokretyGenerator extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     private SecretCode $secretCodeGenerator;
 

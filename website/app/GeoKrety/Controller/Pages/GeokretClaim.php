@@ -7,10 +7,11 @@ use GeoKrety\LogType;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\OwnerCode;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 use Sugar\Event;
 
 class GeokretClaim extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function get() {
         Smarty::render('pages/geokret_claim.tpl');

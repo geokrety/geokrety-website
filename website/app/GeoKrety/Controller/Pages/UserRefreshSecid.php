@@ -3,9 +3,10 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class UserRefreshSecid extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function get() {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_refresh_secid.tpl');

@@ -3,9 +3,10 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\Geokret;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class UserGeokretyNearHomeGeojson extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function get($f3) {
         header('Content-Type: application/json; charset=utf-8');

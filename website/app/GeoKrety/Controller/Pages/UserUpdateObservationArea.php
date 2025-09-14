@@ -3,11 +3,12 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 use League\Geotools\Coordinate\Coordinate;
 use Sugar\Event;
 
 class UserUpdateObservationArea extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function post(\Base $f3) {
         $user = $this->currentUser;

@@ -3,9 +3,10 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class UserTemplateChooser extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function get(\Base $f3) {
         Smarty::assign('statpic_template_count', GK_USER_STATPIC_TEMPLATE_COUNT);

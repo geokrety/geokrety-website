@@ -8,9 +8,10 @@ use GeoKrety\Service\Labels\Pdf;
 use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Validation\TrackingCode;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class GeokretyLabels extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public array $languages = ['fr', 'de', 'pl', 'ru'];
 

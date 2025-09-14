@@ -6,10 +6,11 @@ use GeoKrety\Auth;
 use GeoKrety\Email\PasswordChange as PasswordChangeEmail;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 use Sugar\Event;
 
 class UserUpdatePassword extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function get() {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_password.tpl');

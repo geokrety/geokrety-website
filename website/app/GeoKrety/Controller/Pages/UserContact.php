@@ -7,9 +7,10 @@ use GeoKrety\Model\Mail;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Dialog\Danger;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class UserContact extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     protected Mail $mail;
 

@@ -4,10 +4,11 @@ namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
 use GeoKrety\Session;
+use GeoKrety\Traits\CurrentUserLoader;
 use Sugar\Event;
 
 class UserDelete extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function post(\Base $f3) {
         $operation_result = array_sum($f3->get('SESSION.delete_account_operation_numbers'));

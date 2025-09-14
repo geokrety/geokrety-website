@@ -3,10 +3,11 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 use Sugar\Event;
 
 class UserChoosePreferedLanguage extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function get(\Base $f3) {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_choose_preferred_language.tpl');
