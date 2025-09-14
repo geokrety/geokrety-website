@@ -75,6 +75,7 @@
                     </dd>
                 </dl>
                 <div class="clearfix"></div>
+                {if $geokret->type->getTypeId() == \GeoKrety\GeokretyType::GEOKRETY_TYPE_EASTER_EGG}
                 <div class="alert alert-info">
                     <h4>{t}A special GeoKret!{/t}</h4>
                     <p>
@@ -87,6 +88,7 @@
                         {t}Finding one is a reward in itself — a wink, a mystery, a little treasure of the GeoKrety world. Collect them all if you can!{/t}
                     </p>
                 </div>
+                {/if}
             </div>
             <div class="col-xs-12 col-md-4">
                 <div class="pull-right picturesList">
