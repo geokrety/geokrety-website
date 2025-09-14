@@ -85,7 +85,7 @@ class Login extends Base {
         $f3->set('SESSION.CURRENT_USER', $user->id);
         $f3->set('SESSION.CURRENT_USERNAME', $user->username);
         $f3->set('SESSION.IS_LOGGED_IN', true);
-        if (in_array($user->id, GK_SITE_ADMINISTRATORS)) {
+        if ($user->isAdmin()) {
             $f3->set('SESSION.user.group', AuthGroup::AUTH_LEVEL_ADMINISTRATORS);
             $f3->set('SESSION.IS_ADMIN', true);
             $f3->set('SESSION.ADMIN_ID', $user->id);

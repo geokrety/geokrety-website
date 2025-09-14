@@ -345,6 +345,10 @@ class User extends Base implements \JsonSerializable {
         return (new \DateTime())->diff($this->joined_on_datetime)->d <= GK_USERS_CONTACT_WAITING_DAYS;
     }
 
+    public function isAdmin(): bool {
+        return in_array($this->id, GK_SITE_ADMINISTRATORS);
+    }
+
     public function canSendMail(): bool {
         return !$this->isFreshUser();
     }
