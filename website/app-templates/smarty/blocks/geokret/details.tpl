@@ -48,7 +48,7 @@
     <div class="panel-body {if $geokret->isMissing()}panel-body-danger{elseif $geokret->isArchived()}panel-body-default{/if}">
         <div class="row">
             <div class="col-xs-12 col-md-8">
-                <dl class="dl-horizontal pull-left">
+                <dl class="dl-horizontal">
                     <dt>{t}Reference number{/t}</dt>
                     <dd title="id:{$geokret->id} gkid{$geokret->gkid()}" class="geokret-id">{$geokret->gkid}</dd>
                     {if $geokret->hasTouchedInThePast()}
@@ -74,6 +74,19 @@
                         {$geokret|country_track nofilter}
                     </dd>
                 </dl>
+                <div class="clearfix"></div>
+                <div class="alert alert-info">
+                    <h4>{t}A special GeoKret!{/t}</h4>
+                    <p>
+                        {t escape=false}This GeoKret is not like the others. It belongs to a secret family called <strong>Hidden GeoKrety</strong>.{/t}
+                    </p>
+                    <p>
+                        {t}They are scattered all around the website and resources. Some appear in plain sight, waiting to be noticed. Others are deeply buried and only the most curious explorers will ever find them.{/t}
+                    </p>
+                    <p>
+                        {t}Finding one is a reward in itself — a wink, a mystery, a little treasure of the GeoKrety world. Collect them all if you can!{/t}
+                    </p>
+                </div>
             </div>
             <div class="col-xs-12 col-md-4">
                 <div class="pull-right picturesList">

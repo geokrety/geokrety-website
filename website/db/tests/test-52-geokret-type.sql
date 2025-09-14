@@ -3,7 +3,7 @@
 BEGIN;
 
 -- SELECT * FROM no_plan();
-SELECT plan(24);
+SELECT plan(26);
 
 INSERT INTO "gk_users" ("id", "username", "registration_ip") VALUES (1, 'test 1', '127.0.0.1');
 
@@ -42,7 +42,10 @@ SELECT isnt(non_collectible, NULL) FROM "gk_geokrety" WHERE id=9;
 SELECT lives_ok($$INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "holder") VALUES (10, 'test', 9, 1, 1)$$);
 SELECT is(non_collectible, NULL) FROM "gk_geokrety" WHERE id=8;
 
-SELECT throws_ok($$INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "holder") VALUES (11, 'test', 10, 1, 1)$$);
+SELECT lives_ok($$INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "holder") VALUES (11, 'test', 10, 1, 1)$$);
+SELECT is(non_collectible, NULL) FROM "gk_geokrety" WHERE id=8;
+
+SELECT throws_ok($$INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "holder") VALUES (12, 'test', 11, 1, 1)$$);
 
 
 -- Finish the tests and clean up.

@@ -34,7 +34,9 @@
                 <div class="col-sm-10">
                     <select class="form-control" id="inputGeokretType" name="type">
                         {foreach \GeoKrety\GeokretyType::getTypes() as $key => $gktype}
+                            {if !\GeoKrety\GeokretyType::typeIsAdminOnly($key) || $currentUser->isAdmin() }
                             <option value="{$key}" {if isset($geokret) and $geokret->type->isType($key)} selected{/if} required>{$gktype}</option>
+                            {/if}
                         {/foreach}
                     </select>
                 </div>

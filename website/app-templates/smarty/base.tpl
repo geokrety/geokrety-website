@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!--
+// 🕷️ You discovered The Source Dweller
+// 👁️ A quiet crawler hidden in the HTML depths. It does not walk the trails nor show in the UI —
+// it weaves its web between the tags and comments.
+// 🔎 Only those who inspect the code itself will ever notice it — and now, you've found it!
+// ✨ Log your discovery: https://geokrety.org/m/TAGSGK
+-->
 <html lang="{\Multilang::instance()->current}">
 {include file='head.tpl'}
 {include file='macros/csrf.tpl'}

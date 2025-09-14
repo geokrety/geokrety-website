@@ -20,6 +20,10 @@ $validator->addValidator('geokrety_type', function ($field, $input, $param = nul
     return GeoKrety\GeokretyType::isValid($input[$field]->getTypeId());
 }, _('The GeoKret type is invalid'));
 
+$validator->addValidator('geokrety_type_admin_only', function ($field, $input, $param = null) {
+    return Base::instance()->get('SESSION.IS_ADMIN') || !$input[$field]->isAdminOnly();
+}, _('The GeoKret type is reserved to administrators'));
+
 $validator->addValidator('log_type', function ($field, $input, $param = null) {
     return GeoKrety\LogType::isValid($input[$field]->getLogTypeId());
 }, _('The move type is invalid'));

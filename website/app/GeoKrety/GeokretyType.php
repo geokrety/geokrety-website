@@ -13,6 +13,7 @@ class GeokretyType {
     public const GEOKRETY_TYPE_PLAYING_CARD = 7;
     public const GEOKRETY_TYPE_DOG_TAG = 8;
     public const GEOKRETY_TYPE_JIGSAW = 9;
+    public const GEOKRETY_TYPE_EASTER_EGG = 10;
 
     public const GEOKRETY_TYPES = [
         self::GEOKRETY_TYPE_TRADITIONAL,
@@ -25,6 +26,11 @@ class GeokretyType {
         self::GEOKRETY_TYPE_PLAYING_CARD,
         self::GEOKRETY_TYPE_DOG_TAG,
         self::GEOKRETY_TYPE_JIGSAW,
+        self::GEOKRETY_TYPE_EASTER_EGG,
+    ];
+
+    public const GEOKRETY_TYPES_ADMIN_ONLY = [
+        self::GEOKRETY_TYPE_EASTER_EGG,
     ];
 
     public const LOG_TYPES_SUPPORT_MISSING = [
@@ -65,6 +71,14 @@ class GeokretyType {
         return in_array($type, self::GEOKRETY_TYPES, true);
     }
 
+    public function isAdminOnly(): bool {
+        return in_array($this->type, self::GEOKRETY_TYPES_ADMIN_ONLY, true);
+    }
+
+    public static function typeIsAdminOnly($type): bool {
+        return in_array($type, self::GEOKRETY_TYPES_ADMIN_ONLY, true);
+    }
+
     public function isSupportingMissing(): bool {
         return in_array($this->type, self::LOG_TYPES_SUPPORT_MISSING, true);
     }
@@ -87,6 +101,7 @@ class GeokretyType {
             self::GEOKRETY_TYPE_PLAYING_CARD => _('A Playing Card'),
             self::GEOKRETY_TYPE_DOG_TAG => _('A dog'),
             self::GEOKRETY_TYPE_JIGSAW => _('Jigsaw part'),
+            self::GEOKRETY_TYPE_EASTER_EGG => _('Easter Egg'),
         ];
     }
 }

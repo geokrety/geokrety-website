@@ -61,7 +61,7 @@ class Geokret extends Base {
         ],
         'type' => [
             'type' => Schema::DT_VARCHAR128,
-            'validate' => 'geokrety_type',
+            'validate' => 'geokrety_type|geokrety_type_admin_only',
         ],
         'mission' => [
             'type' => Schema::DT_TEXT,

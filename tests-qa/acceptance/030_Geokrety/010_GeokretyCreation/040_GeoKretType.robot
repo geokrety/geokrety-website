@@ -15,17 +15,32 @@ Type valid
     2                   A human
     3                   A coin
     4                   KretyPost
+    5                   A Pebble
+    6                   A car
+    7                   A Playing Card
+    8                   A dog
+    9                   Jigsaw part
+    10                  Easter Egg
 
+Admin see the Easter Egg type
+    Sign In ${USER_1.name} Fast
+    Go To Url                           ${PAGE_GEOKRETY_CREATE_URL}
+    Page Should Contain Element         ${GEOKRET_CREATE_TYPE_SELECT}/option[@value='10']
+
+Users won't see the Easter Egg type
+    Sign In ${USER_2.name} Fast
+    Go To Url                           ${PAGE_GEOKRETY_CREATE_URL}
+    Page Should Not Contain Element     ${GEOKRET_CREATE_TYPE_SELECT}/option[@value='10']
 
 
 *** Keywords ***
 
 Test Setup
-    Clear Database And Seed ${1} users
-    Sign In ${USER_1.name} Fast
+    Clear Database And Seed ${2} users
 
 GeoKret is created
     [Arguments]    ${type}      ${type_name}
+    Sign In ${USER_1.name} Fast
     Go To Url                           ${PAGE_GEOKRETY_CREATE_URL}
     &{gk} =    Create Dictionary        name=geokret    type=${type}    mission=${EMPTY}
     Fill Creation Form                  &{gk}
