@@ -1,5 +1,11 @@
 <?php
 
+// 🎉 You discovered The Code Guardian 👨‍💻
+// 💻 A silent watcher hidden deep in the source. It does not roam the maps nor appear in logs —
+// it guards the code that shapes GeoKrety.
+// 🔐 Only those who dare to peek behind the curtain will ever meet it — and now, you've found it!
+// ✨ Log your discovery: https://geokrety.org/m/CODEGK
+
 namespace GeoKrety\Service;
 
 define('SECRET_BASE_PATH', sprintf('/run/secrets/%s__', getenv('GK_INSTANCE_NAME')));
