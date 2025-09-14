@@ -6,10 +6,11 @@ use GeoKrety\Service\RateLimit;
 use GeoKrety\Service\RateLimitExceeded;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Session;
+use GeoKrety\Traits\CurrentUserLoader;
 use Sugar\Event;
 
 class UserUpdateUsername extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function post(\Base $f3) {
         $this->check_account_status($f3);

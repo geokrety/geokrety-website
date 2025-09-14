@@ -2,8 +2,10 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Traits\CurrentUserLoader;
+
 class UserSettings extends Base {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function post(\Base $f3) {
         if (!$f3->exists('POST')) {

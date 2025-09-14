@@ -39,7 +39,7 @@ class RegistrationActivate extends Base {
         }
         $this->token->user->save();
         Login::connectUser($f3, $this->token->user, 'registration.activate', false);
-        $this->loadCurrentUser();
+        $this->loadCurrentUser($f3);
         $this->token->save();
         $f3->get('DB')->commit();
 

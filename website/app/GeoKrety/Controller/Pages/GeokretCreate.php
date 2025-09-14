@@ -6,9 +6,10 @@ use GeoKrety\LogType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class GeokretCreate extends GeokretFormBase {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function _beforeRoute(\Base $f3) {
         $this->geokret = new Geokret();

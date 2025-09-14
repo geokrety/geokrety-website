@@ -4,9 +4,10 @@ namespace GeoKrety\Controller\Admin;
 
 use GeoKrety\Model\News;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Traits\CurrentUserLoader;
 
 class NewsCreate extends NewsFormBase {
-    use \CurrentUserLoader;
+    use CurrentUserLoader;
 
     public function _beforeRoute(\Base $f3) {
         $this->news = new News();

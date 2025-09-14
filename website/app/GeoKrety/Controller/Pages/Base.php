@@ -44,7 +44,7 @@ abstract class Base {
         Smarty::assign('datatable_language_url', LanguageService::getDatatableCurrentLanguageUrl());
 
         // Load current user
-        $this->loadCurrentUser();
+        $this->loadCurrentUser($f3);
 
         // Check term of use acceptation
         if (is_a($this->current_user, '\GeoKrety\Model\User') && !in_array($f3->get('ALIAS'), self::NO_TERMS_OF_USE_REDIRECT_URLS) && $this->isLoggedIn() && !$this->current_user->hasAcceptedTheTermsOfUse()) {
@@ -52,7 +52,7 @@ abstract class Base {
         }
     }
 
-    public function loadCurrentUser() {
+    public function loadCurrentUser(\Base $f3) {
         if ($this->f3->exists('SESSION.CURRENT_USER')) {
             $user = new User();
             // TODO What the purpose of this filter?
