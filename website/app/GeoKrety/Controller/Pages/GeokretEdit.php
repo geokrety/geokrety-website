@@ -2,6 +2,8 @@
 
 namespace GeoKrety\Controller;
 
+use GeoKrety\Model\User;
+use GeoKrety\Service\Smarty;
 use GeoKrety\Traits\GeokretLoader;
 
 class GeokretEdit extends GeokretFormBase {
@@ -11,6 +13,12 @@ class GeokretEdit extends GeokretFormBase {
         if (!$this->geokret->isOwner()) {
             \Flash::instance()->addMessage(_('Only the owner can edit his GeoKrety.'), 'danger');
             $f3->reroute(sprintf('@geokret_details(@gkid=%s)', $this->geokret->gkid));
+        }
+
+        $user = new User();
+        $user->load(['id = ?', $f3->get('CURRENT_USER')]);
+        if (!$user->dry()) {
+            Smarty::assign('currentUser', $user);
         }
     }
 
