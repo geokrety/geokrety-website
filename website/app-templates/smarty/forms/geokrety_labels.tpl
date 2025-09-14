@@ -23,7 +23,7 @@
                         <div class="col-sm-10">
 
                             <div class="input-group">
-                                <input type="text" name="tracking_code" id="nr" value="" minlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" tcminlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" maxlength="{GK_SITE_TRACKING_CODE_MAX_LENGTH * 10 + 9}" required class="form-control" placeholder="eg. {$gk_example_3_tc}" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_MIN_LENGTH -1}" data-parsley-debounce="500" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
+                                <input type="text" name="tracking_code" id="nr" value="" minlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" tcminlength="{GK_SITE_TRACKING_CODE_MIN_LENGTH}" maxlength="{GK_SITE_TRACKING_CODE_MAX_LENGTH * 10 + 9}" required class="form-control" placeholder="eg. {$gk_example_5_tc}" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_MIN_LENGTH -1}" data-parsley-debounce="500" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
                                 <span class="input-group-btn">
                                     {if $f3->get('SESSION.CURRENT_USER')}
                                         <button class="btn btn-default" type="button" id="nrInventorySelectButton" title="{t}Select GeoKrety from inventory{/t}" data-toggle="modal" data-target="#modal" data-type="select-from-inventory">{fa icon="briefcase"}</button>
@@ -31,7 +31,7 @@
                                     <button class="btn btn-default" type="button" id="nrSearchButton" title="{t}Verify Tracking Code{/t}">{fa icon="search"}</button>
                                 </span>
                             </div>
-                            <p id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{GK_CDN_IMAGES_URL}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">
+                            <p id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="{t}Enter tracking codes, separated by commas{/t}">
                                 {t escape=no count={GK_SITE_TRACKING_CODE_MIN_LENGTH}}%1 characters from <em>GeoKret label</em>.{/t}
                                 {t escape=no}<u>Do not use the code starting with 'GK' here</u>.{/t}
                             </p>
