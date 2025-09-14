@@ -697,7 +697,6 @@ EOT;
     </div>
 
     <figcaption>
-      <p class="text-center picture-caption" title="{$caption}">{$caption}</p>
       {if $showItemLink && $picture}
         <p class="text-center">
           {if $picture->isType(Geokrety\PictureType::PICTURE_USER_AVATAR)}
@@ -708,6 +707,8 @@ EOT;
             {$picture->geokret|gklink nofilter}
           {/if}
         </p>
+      {else}
+        <p class="text-center picture-caption" title="{$caption}">{$caption}</p>
       {/if}
     </figcaption>
 
