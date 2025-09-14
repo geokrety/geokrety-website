@@ -118,12 +118,24 @@ div.gallery {
 
   /* caption */
   figcaption {
-    border-top: 1px solid silver; background-color: #eee;
-    padding: 6px 8px; text-align: center; min-height: 48px;
-    display: flex; align-items: center; justify-content: center;
+    border-top: 1px solid silver;
+    background-color: #eee;
+    padding: 6px 8px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   figcaption > p {
-    margin: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-align: left; /* or center - your choice */
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   figure:hover { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
