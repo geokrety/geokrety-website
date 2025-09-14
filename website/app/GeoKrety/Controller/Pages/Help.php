@@ -6,6 +6,8 @@ use GeoKrety\Service\Smarty;
 
 class Help extends Base {
     public function get($f3) {
+        [$geokret] = $this->loadGK([GK_HELP_GEOKRETY_EXAMPLE_6]);
+        Smarty::assign('gk_example_1', $geokret->tracking_code);
         $social_groups = [];
         $social_groups[] = [
             'link' => 'https://www.facebook.com/groups/1624761011150615/about/',

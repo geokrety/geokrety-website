@@ -31,7 +31,7 @@
                                     <button class="btn btn-default" type="button" id="nrSearchButton" title="{t}Verify Tracking Code{/t}">{fa icon="search"}</button>
                                 </span>
                             </div>
-                            <p id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="{t}Enter tracking codes, separated by commas{/t}">
+                            <p id="helpBlockTrackingCode" class="help-block " data-toggle="tooltip" title="{t}Enter tracking codes, separated by commas{/t}">
                                 {t escape=no count={GK_SITE_TRACKING_CODE_MIN_LENGTH}}%1 characters from <em>GeoKret label</em>.{/t}
                                 {t escape=no}<u>Do not use the code starting with 'GK' here</u>.{/t}
                             </p>

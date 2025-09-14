@@ -15,6 +15,6 @@
     // Bind tooltip on NR field: Display label example
     $(".tooltip_large").tooltip({
         placement: "top",
-        template: '<div class="tooltip" role="tooltip" style="width:200px; height:148px;"><div class="tooltip-arrow"></div><div class="tooltip-inner large"></div></div>'
+        template: '<div class="tooltip" role="tooltip" style="width:200px; height:148px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
     });
 {/block}
