@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Controller;
 
-use GeoKrety\Model\GeokretWithDetails;
 use GeoKrety\Model\Move;
 use GeoKrety\Service\Smarty;
 use GeoKrety\Service\Xml;
@@ -81,38 +80,5 @@ class HelpApi extends Base {
         Smarty::assign('rate_limit_multipliers', RATE_LIMIT_LEVEL_MULTIPLIER);
 
         Smarty::render('pages/help_api.tpl');
-    }
-
-    /**
-     * @param int[] $gkIds
-     *
-     * @return \GeoKrety\Model\Geokret[]
-     */
-    private function loadGK(array $gkIds): array {
-        $geokrety = [];
-        foreach ($gkIds as $gkid) {
-            $geokret = new GeokretWithDetails();
-            $geokret->load(['gkid = ?', $gkid], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
-            $this->checkGK($geokret);
-            $geokrety[] = $geokret;
-        }
-
-        return $geokrety;
-    }
-
-    private function checkGK($geokret) {
-        if ($geokret->dry()) {
-            if (GK_IS_PRODUCTION) {
-                \Flash::instance()->addMessage('This page could not be loaded.', 'danger');
-                $this->f3->reroute('@home');
-            }
-            \Flash::instance()->addMessage('This page could not be loaded as there is not enough existing GeoKrety in database.', 'danger');
-            $this->f3->reroute('@home');
-        }
-
-        if (\is_null($geokret->last_log)) {
-            \Flash::instance()->addMessage('GeoKrety for help page must have already moved.', 'danger');
-            $this->f3->reroute('@home');
-        }
     }
 }
