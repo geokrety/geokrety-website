@@ -140,7 +140,7 @@ abstract class Base {
         $geokrety = [];
         foreach ($gkIds as $gkid) {
             $geokret = new GeokretWithDetails();
-            $geokret->load(['gkid = ?', $gkid], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
+            $geokret->load(['id = ?', $gkid], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
             $this->checkGK($geokret);
             $geokrety[] = $geokret;
         }

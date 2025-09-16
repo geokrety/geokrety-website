@@ -123,6 +123,7 @@ class Config extends \Prefab {
             define('GK_HELP_GEOKRETY_EXAMPLE_4', getenv('GK_HELP_GEOKRETY_EXAMPLE_4') ?: 74526);
             define('GK_HELP_GEOKRETY_EXAMPLE_5', getenv('GK_HELP_GEOKRETY_EXAMPLE_5') ?: 106724);
             define('GK_HELP_GEOKRETY_EXAMPLE_6', getenv('GK_HELP_GEOKRETY_EXAMPLE_6') ?: 106727);
+            define('GK_HELP_GEOKRETY_EXAMPLE_7', getenv('GK_HELP_GEOKRETY_EXAMPLE_7') ?: 106753);
         } else {
             define('GK_DEBUG', getenv('GK_DEBUG') ? filter_var(getenv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN) : false);
             define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ? filter_var(getenv('GK_F3_DEBUG'), FILTER_VALIDATE_BOOLEAN) : true);
@@ -133,6 +134,7 @@ class Config extends \Prefab {
             define('GK_HELP_GEOKRETY_EXAMPLE_4', getenv('GK_HELP_GEOKRETY_EXAMPLE_4') ?: GK_HELP_GEOKRETY_EXAMPLE_2);
             define('GK_HELP_GEOKRETY_EXAMPLE_5', getenv('GK_HELP_GEOKRETY_EXAMPLE_5') ?: GK_HELP_GEOKRETY_EXAMPLE_2);
             define('GK_HELP_GEOKRETY_EXAMPLE_6', getenv('GK_HELP_GEOKRETY_EXAMPLE_6') ?: GK_HELP_GEOKRETY_EXAMPLE_2);
+            define('GK_HELP_GEOKRETY_EXAMPLE_7', getenv('GK_HELP_GEOKRETY_EXAMPLE_7') ?: GK_HELP_GEOKRETY_EXAMPLE_2);
         }
         define('GK_APP_NAME', getenv('GK_APP_NAME') ?: 'www');
         define('GK_APP_VERSION', getenv('GIT_COMMIT') ?: 'undef');
