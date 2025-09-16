@@ -323,7 +323,7 @@ class Config extends \Prefab {
         define('GK_HOME_COUNT_NEWS', getenv('GK_HOME_COUNT_NEWS') ?: 3);
         define('GK_HOME_COUNT_MOVES', getenv('GK_HOME_COUNT_MOVES') ?: 10);
         define('GK_HOME_COUNT_RECENT_GEOKRETY', getenv('GK_HOME_COUNT_RECENT_GEOKRETY') ?: 10);
-        define('GK_HOME_COUNT_RECENT_PICTURES', getenv('GK_HOME_COUNT_RECENT_PICTURES') ?: 18);
+        define('GK_HOME_COUNT_RECENT_PICTURES', getenv('GK_HOME_COUNT_RECENT_PICTURES') ?: 21);
 
         // PAGINATION LIMITS
         define('GK_PAGINATION_NEWS', getenv('GK_PAGINATION_NEWS') ?: 10);
