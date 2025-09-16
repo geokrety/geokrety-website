@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-14 10:28+0000\n"
-"PO-Revision-Date: 2025-09-14 10:34\n"
+"POT-Creation-Date: 2025-09-14 16:40+0000\n"
+"PO-Revision-Date: 2025-09-14 16:44\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -39,7 +39,7 @@ msgid "Visiting"
 msgstr "Посещает"
 
 #: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:44
-#: website/app-templates/smarty/forms/geokret.tpl:62
+#: website/app-templates/smarty/forms/geokret.tpl:64
 #: website/app-templates/smarty/blocks/geokret/details.tpl:26
 msgid "Parked"
 msgstr ""
@@ -110,24 +110,24 @@ msgstr "Подробности перемещения"
 msgid "Comments"
 msgstr "Комментарии"
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:762
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:763
 msgid "status icon"
 msgstr "иконка статуса"
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:856
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:857
 #, php-format
 msgid "User statistics banner: %s"
 msgstr "Баннер статистики пользователя: %s"
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:869
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:870
 msgid "Profile avatar"
 msgstr "Аватар профиля"
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:881
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:882
 msgid "Anonymous"
 msgstr "Анонимный"
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:907
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:908
 #, php-format
 msgid "%s's statpic"
 msgstr "%s статистика"
@@ -137,64 +137,64 @@ msgstr "%s статистика"
 msgid "Multiple accounts share the same email address. Please <a href=\"%s\">contact us</a>."
 msgstr "Несколько учетных записей имеют одинаковый адрес электронной почты. Пожалуйста, <a href=\"%s\">свяжитесь с нами</a>."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:40
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:41
 msgid "Something went wrong while generating GeoKrety."
 msgstr "Что-то пошло не так при создании ГеоКрота."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:40
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:46
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:141
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:41
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:47
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:142
 msgid "Transaction aborted."
 msgstr "Транзакция отклонена."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:46
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:47
 msgid "There are duplicated tracking codes."
 msgstr "Имеются дубликаты кодов отслеживания."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:81
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:82
 msgid "The number of instances to be created is invalid."
 msgstr "Недопустимое количество создаваемых экземпляров."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:92
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:93
 msgid "No such user found."
 msgstr "Пользователь не найден."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:100
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:101
 msgid "The \"start at\" value is invalid."
 msgstr "Недопустимое значение параметра \"start at\"."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:107
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:108
 msgid "The \"TCPrefix\" value is invalid."
 msgstr "Недопустимое значение параметра \"TCPrefix\"."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:107
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:108
 #, php-format
 msgid "It must not be in list \"%s\"."
 msgstr "Он не должен находиться в списке \"%s\"."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:115
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:116
 msgid "The \"TCPrefix\" + \"TCSuffix\" length is greater than \"TCLength\"."
 msgstr "Длина \"TCPrefix\" + \"TCSuffix\" превышает длину \"TCLength\"."
 
-#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:141
+#: website/app/GeoKrety/Controller/Admin/GeokretyGenerator.php:142
 msgid "No more Tracking Code available using this pattern."
 msgstr "Код отслеживания, использующий этот шаблон, больше не существует."
 
 #: website/app/GeoKrety/Controller/Admin/Impersonate.php:16
 #: website/app/GeoKrety/Controller/Admin/Traits/CurrentAdminLoader.php:24
-#: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:22
+#: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:24
 #: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:20
 #: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:30
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:33
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:38
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:34
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:39
 msgid "This user does not exist."
 msgstr "Этого пользователя не существует."
 
-#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:29
+#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:30
 msgid "Failed to create the News."
 msgstr "Не удалось создать Новость."
 
-#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:35
+#: website/app/GeoKrety/Controller/Admin/NewsCreate.php:36
 msgid "Your News has been created."
 msgstr "Ваша Новость создана."
 
@@ -232,11 +232,11 @@ msgstr "Награда не существует"
 msgid "The prize has been awarded"
 msgstr "Приз вручен"
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:87
+#: website/app/GeoKrety/Controller/Pages/Base.php:88
 msgid "reCaptcha failed!"
 msgstr "reCaptcha не удалась!"
 
-#: website/app/GeoKrety/Controller/Pages/Base.php:111
+#: website/app/GeoKrety/Controller/Pages/Base.php:112
 msgid "CSRF error, please try again."
 msgstr "Ошибка CSRF, попробуйте еще раз."
 
@@ -272,41 +272,41 @@ msgstr "К сожалению, этот адрес электронной поч
 msgid "You are not the GeoKret owner"
 msgstr "Вы не являетесь владельцем этого ГеоКрота"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:26
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:27
 msgid "Sorry, the provided Owner Code and Tracking Code doesn't match."
 msgstr "К сожалению, указанный код владельца и код отслеживания не совпадают."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:32
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:33
 msgid "You are already the owner."
 msgstr "Вы уже являетесь владельцем."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:38
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:39
 msgid "Sorry, this owner code has already been used."
 msgstr "К сожалению, этот код владельца уже был использован."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:74
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:75
 #, php-format
 msgid "Congratulation! You are now the owner of %s."
 msgstr "Поздравляем! Теперь Вы являетесь владельцем %s."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:93
+#: website/app/GeoKrety/Controller/Pages/GeokretClaim.php:94
 msgid "Something went wrong while registering the adoption."
 msgstr "Что-то пошло не так при регистрации принятия."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:35
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:36
 msgid "Failed to create the GeoKret."
 msgstr "Не удалось создать ГеоКрота."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:48
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:49
 msgid "Born here"
 msgstr "Родился здесь"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:62
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:63
 #, php-format
 msgid "Your GeoKret has been created. You may now wish to <a href=\"%s\">print</a> it a great label…"
 msgstr "Ваш ГеоКрот был создан.Теперь вы можете <a href=\"%s\">распечатать</a> отличную этикетку..."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:70
+#: website/app/GeoKrety/Controller/Pages/GeokretCreate.php:71
 msgid "Failed to create the GeoKret initial move."
 msgstr "Не удалось создать начальный ход ГеоКрота."
 
@@ -315,15 +315,15 @@ msgstr "Не удалось создать начальный ход ГеоКр�
 msgid "Invalid log_id"
 msgstr "Неверный lod_id"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:12
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:14
 msgid "Only the owner can edit his GeoKrety."
 msgstr "Только владелец может редактировать своих ГеоКротов."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:28
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:36
 msgid "Your GeoKret has been updated."
 msgstr "Ваш ГеоКрот был обновлен."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:33
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:41
 msgid "Failed to edit the GeoKret."
 msgstr "Не удалось изменить ГеоКрота."
 
@@ -402,19 +402,19 @@ msgstr "Этот ГеоКрот уже есть в вашем списке от�
 msgid "This GeoKret has been added to your watch list."
 msgstr "Этот ГеоКрот добавлен в ваш список отслеживания."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:40
+#: website/app/GeoKrety/Controller/Pages/GeokretyLabels.php:41
 msgid "The list contains only unknown Tracking Codes or never touched GeoKrety"
 msgstr "Список содержит только неизвестные коды отслеживания или ГеоКротов, к которым никто не прикасался."
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:59
 msgid "Wrong secid"
 msgstr "Неправильный secid"
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:61
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:60
 msgid "Wrong date or time"
 msgstr "Неверная дата или время"
 
-#: website/app/GeoKrety/Controller/Pages/HelpApi.php:78
+#: website/app/GeoKrety/Controller/Pages/HelpApi.php:77
 #: website/app/GeoKrety/Service/RateLimit.php:40
 #: website/app/GeoKrety/Service/RateLimit.php:55
 msgid "Rate limit exceeded"
@@ -579,7 +579,7 @@ msgid "Sorry this token is not valid, already used or expired."
 msgstr "Извините, этот токен недействителен, уже использован или истек."
 
 #: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:58
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:51
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:52
 msgid "New passwords doesn't match."
 msgstr "Новые пароли не совпадают."
 
@@ -588,7 +588,7 @@ msgid "Unexpected error occurred."
 msgstr "Произошла непредвиденная ошибка."
 
 #: website/app/GeoKrety/Controller/Pages/PasswordRecoveryChange.php:91
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:62
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:63
 msgid "Your password has been changed."
 msgstr "Ваш пароль был изменен."
 
@@ -632,32 +632,32 @@ msgstr "Это изображение не существует."
 msgid "This is not your profile"
 msgstr "Это не ваш профиль"
 
-#: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:33
+#: website/app/GeoKrety/Controller/Pages/UserChoosePreferedLanguage.php:34
 msgid "Language preferences updated."
 msgstr "Настройки языка обновлены."
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:41
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:42
 msgid "This user has no valid email"
 msgstr "У этого пользователя нет допустимого email"
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:41
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:57
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:68
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:82
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:42
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:58
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:69
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:83
 msgid "Action is not possible"
 msgstr "Действие не возможно"
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:57
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:68
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:82
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:58
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:69
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:83
 msgid "Your email address must be validated before you can contact other players."
 msgstr "Ваш адрес электронной почты должен быть подтвержден, прежде чем вы сможете общаться с другими игроками."
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:98
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:99
 msgid "Failed to save the mail."
 msgstr "Не удалось сохранить адрес электронной почты."
 
-#: website/app/GeoKrety/Controller/Pages/UserContact.php:107
+#: website/app/GeoKrety/Controller/Pages/UserContact.php:108
 #, php-format
 msgid "Your message to %s has been sent."
 msgstr "Ваше сообщение %s было отправлено."
@@ -667,15 +667,15 @@ msgstr "Ваше сообщение %s было отправлено."
 msgid "GeoKret: %s (%s)"
 msgstr "ГеоКрот: %s (%s)"
 
-#: website/app/GeoKrety/Controller/Pages/UserDelete.php:15
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:16
 msgid "Wrong operation result."
 msgstr "Неверный результат операции."
 
-#: website/app/GeoKrety/Controller/Pages/UserDelete.php:30
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:31
 msgid "Something went wrong. If the problem persists, please contact us."
 msgstr "Что-то пошло не так. Свяжитесь с нами, если ошибка повторится."
 
-#: website/app/GeoKrety/Controller/Pages/UserDelete.php:39
+#: website/app/GeoKrety/Controller/Pages/UserDelete.php:40
 msgid "Your account is now deleted. Thanks for playing with us."
 msgstr "Ваша учетная запись удалена. Спасибо, что играли с нами."
 
@@ -723,76 +723,76 @@ msgstr ""
 msgid "You have successfully validated your email address."
 msgstr "Ваш адрес электронной почты успешно подтвержден."
 
-#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:27
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:28
 msgid "Failed to refresh your secid."
 msgstr "Не удалось обновить ваш secid."
 
-#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:30
+#: website/app/GeoKrety/Controller/Pages/UserRefreshSecid.php:31
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "Ваш secid был обновлен. Не забудьте повторно аутентифицировать любое другое приложение, подключенное к вашей учетной записи GeoKrety."
 
-#: website/app/GeoKrety/Controller/Pages/UserSettings.php:16
+#: website/app/GeoKrety/Controller/Pages/UserSettings.php:18
 #, php-format
 msgid "Failed to save setting \"%s\""
 msgstr "Не удалось сохранить настройку \"%s\""
 
-#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:24
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:25
 msgid "Failed to save your preferred user banner template."
 msgstr "Не удалось сохранить предпочитаемый шаблон баннера пользователя."
 
-#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:27
+#: website/app/GeoKrety/Controller/Pages/UserTemplateChooser.php:28
 msgid "Your user banner template preference has been successfully saved."
 msgstr "Настройки шаблона баннера пользователя успешно сохранены."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:36
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:37
 msgid "Your email preferences were saved."
 msgstr "Настройки электронной почты сохранены."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:50
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:51
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Письмо с подтверждением было отправлено еще раз на ваш новый адрес электронной почты. Вам нужно еще раз нажать на указанную в письме ссылку, чтобы подтвердить изменение адреса вашей электронной почты. Ссылка подтверждения истекает через %s."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:58
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:65
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:59
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:66
 msgid "Sorry but this mail address is already in use."
 msgstr "Извините, но этот адрес электронной почты уже используется."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:78
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:79
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Письмо с подтверждением было отправлено на Ваш новый электронный адрес. Вы должны нажать на ссылку, указанную в письме, чтобы подтвердить изменение Вашего адреса электронной почты. Ссылка подтверждения истекает через %s."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:29
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:30
 msgid "Failed to save your home coordinates."
 msgstr "Не удалось сохранить ваши домашние координаты."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:32
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:33
 msgid "Your home coordinates were successfully saved."
 msgstr "Ваши домашние координаты были успешно сохранены."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:34
+#: website/app/GeoKrety/Controller/Pages/UserUpdateObservationArea.php:35
 msgid "Observation area is disabled, GeoKrety dropped around you will not be included in your daily mails."
 msgstr "Область наблюдения отключена, оставленные рядом с вами ГеоКроты не будут включены в вашу ежедневную рассылку."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:35
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:36
 msgid "Please enter your old password."
 msgstr "Пожалуйста, введите старый пароль."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:43
+#: website/app/GeoKrety/Controller/Pages/UserUpdatePassword.php:44
 msgid "Your old password is invalid."
 msgstr "Ваш старый пароль недействителен."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:38
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:39
 #, php-format
 msgid "You can only change your username %d times per month"
 msgstr "Вы можете изменить имя пользователя только %d раз в месяц"
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:50
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:51
 msgid "Username changed. Please login again."
 msgstr "Имя пользователя изменено. Пожалуйста, войдите снова."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:61
+#: website/app/GeoKrety/Controller/Pages/UserUpdateUsername.php:62
 msgid "Sorry, to use this feature, you must have a valid registered email address."
 msgstr "К сожалению, чтобы использовать эту функцию, вы должны иметь действительный зарегистрированный адрес электронной почты."
 
@@ -935,44 +935,48 @@ msgstr "Контакт от пользователя %s"
 msgid "Your username has been changed"
 msgstr "Ваше имя пользователя было изменено"
 
-#: website/app/GeoKrety/GeokretyType.php:80
+#: website/app/GeoKrety/GeokretyType.php:94
 msgid "Traditional"
 msgstr "Традиционный"
 
-#: website/app/GeoKrety/GeokretyType.php:81
+#: website/app/GeoKrety/GeokretyType.php:95
 msgid "A book"
 msgstr ""
 
-#: website/app/GeoKrety/GeokretyType.php:82
+#: website/app/GeoKrety/GeokretyType.php:96
 msgid "A human"
 msgstr "Человек"
 
-#: website/app/GeoKrety/GeokretyType.php:83
+#: website/app/GeoKrety/GeokretyType.php:97
 msgid "A coin"
 msgstr "Монета"
 
-#: website/app/GeoKrety/GeokretyType.php:84
+#: website/app/GeoKrety/GeokretyType.php:98
 msgid "KretyPost"
 msgstr "КротоПочта"
 
-#: website/app/GeoKrety/GeokretyType.php:85
+#: website/app/GeoKrety/GeokretyType.php:99
 msgid "A Pebble"
 msgstr ""
 
-#: website/app/GeoKrety/GeokretyType.php:86
+#: website/app/GeoKrety/GeokretyType.php:100
 msgid "A car"
 msgstr ""
 
-#: website/app/GeoKrety/GeokretyType.php:87
+#: website/app/GeoKrety/GeokretyType.php:101
 msgid "A Playing Card"
 msgstr ""
 
-#: website/app/GeoKrety/GeokretyType.php:88
+#: website/app/GeoKrety/GeokretyType.php:102
 msgid "A dog"
 msgstr ""
 
-#: website/app/GeoKrety/GeokretyType.php:89
+#: website/app/GeoKrety/GeokretyType.php:103
 msgid "Jigsaw part"
+msgstr ""
+
+#: website/app/GeoKrety/GeokretyType.php:104
+msgid "Easter Egg"
 msgstr ""
 
 #: website/app/GeoKrety/LogType.php:130
@@ -1186,46 +1190,50 @@ msgid "The GeoKret type is invalid"
 msgstr "Недопустимый тип ГеоКрота"
 
 #: website/app/validators.php:25
+msgid "The GeoKret type is reserved to administrators"
+msgstr ""
+
+#: website/app/validators.php:29
 msgid "The move type is invalid"
 msgstr "Недопустимый тип перемещения"
 
-#: website/app/validators.php:29
+#: website/app/validators.php:33
 msgid "The picture type is invalid"
 msgstr "Недопустимый тип изображения"
 
-#: website/app/validators.php:33
+#: website/app/validators.php:37
 msgid "This language is not supported"
 msgstr "Этот язык не поддерживается"
 
-#: website/app/validators.php:39
+#: website/app/validators.php:43
 msgid "The password must be ciphered"
 msgstr "Пароль должен быть зашифрован"
 
-#: website/app/validators.php:46
+#: website/app/validators.php:50
 msgid "This username is already used"
 msgstr "Это имя пользователя уже используется"
 
-#: website/app/validators.php:55
+#: website/app/validators.php:59
 msgid "Anonymous users must provide a value for {0}"
 msgstr "Анонимные пользователи должны указать значение для {0}"
 
-#: website/app/validators.php:67
+#: website/app/validators.php:71
 msgid "Registered users must provide a value for {0}"
 msgstr "Зарегистрированные пользователи должны указать значение для {0}"
 
-#: website/app/validators.php:78
+#: website/app/validators.php:82
 msgid "This logtype require valid {0} coordinates"
 msgstr "Этот тип журнала требует правильных координат {0}"
 
-#: website/app/validators.php:92
+#: website/app/validators.php:96
 msgid "Something already exists at the same datetime \"{0}\""
 msgstr "Что-то уже существует в ту же дату и время \"{0}\""
 
-#: website/app/validators.php:100
+#: website/app/validators.php:104
 msgid "{0} cannot be in the future"
 msgstr "{0} не может быть в будущем"
 
-#: website/app/validators.php:108
+#: website/app/validators.php:112
 msgid "{0} must be after GeoKret birth"
 msgstr "Дата и время {0} должны быть после рождения ГеоКрота"
 
@@ -1522,14 +1530,14 @@ msgid "Reference number"
 msgstr "Номер"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:36
-#: website/app-templates/smarty/forms/geokret.tpl:84
+#: website/app-templates/smarty/forms/geokret.tpl:86
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:3
 msgid "Mission"
 msgstr "Миссия"
 
 #: website/app-templates/smarty/forms/geokret_label.tpl:38
-#: website/app-templates/smarty/forms/geokret.tpl:87
+#: website/app-templates/smarty/forms/geokret.tpl:89
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 msgid "What is this GeoKret mission?"
 msgstr "Какая миссия у GeoKret?"
@@ -1645,35 +1653,35 @@ msgstr ""
 msgid "GeoKret type"
 msgstr "Тип ГеоКрота"
 
-#: website/app-templates/smarty/forms/geokret.tpl:45
+#: website/app-templates/smarty/forms/geokret.tpl:47
 msgid "Collectible"
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:53
+#: website/app-templates/smarty/forms/geokret.tpl:55
 msgid "Non-Collectible GeoKrety will only allow a limited kind of move types."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:54
+#: website/app-templates/smarty/forms/geokret.tpl:56
 msgid "Other users will not be able to collect them."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:70
+#: website/app-templates/smarty/forms/geokret.tpl:72
 msgid "Parked GeoKrety will automatically imply non-collectible."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:71
+#: website/app-templates/smarty/forms/geokret.tpl:73
 msgid "They will not appear in your inventory."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:80
+#: website/app-templates/smarty/forms/geokret.tpl:82
 msgid "View legacy mission"
 msgstr "Посмотреть предыдущую миссию"
 
-#: website/app-templates/smarty/forms/geokret.tpl:95
+#: website/app-templates/smarty/forms/geokret.tpl:97
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
 msgstr "Это создаст первый ход для вашего GeoKret, указав его стартовую точку."
 
-#: website/app-templates/smarty/forms/geokret.tpl:96
+#: website/app-templates/smarty/forms/geokret.tpl:98
 msgid "Set my home coordinates as a starting point."
 msgstr "Установить мои домашние координаты в качестве отправной точки."
 
@@ -4389,6 +4397,22 @@ msgstr "Скопировать на страницу как bbcode"
 #: website/app-templates/smarty/blocks/geokret/details.tpl:72
 msgid "Country track"
 msgstr "Посещенные страны"
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:79
+msgid "A special GeoKret!"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:81
+msgid "This GeoKret is not like the others. It belongs to a secret family called <strong>Hidden GeoKrety</strong>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:84
+msgid "They are scattered all around the website and resources. Some appear in plain sight, waiting to be noticed. Others are deeply buried and only the most curious explorers will ever find them."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/geokret/details.tpl:87
+msgid "Finding one is a reward in itself — a wink, a mystery, a little treasure of the GeoKrety world. Collect them all if you can!"
+msgstr ""
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:4
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:17
