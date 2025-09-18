@@ -26,6 +26,10 @@ WITH NO DATA;
 
 REFRESH MATERIALIZED VIEW geokrety.gk_geokrety_in_caches;
 
+CREATE UNIQUE INDEX idx_gk_geokrety_in_caches_id ON geokrety.gk_geokrety_in_caches USING btree (id);
+CREATE INDEX gk_geokrety_in_caches_position ON geokrety.gk_geokrety_in_caches USING gist ("position");
+CREATE INDEX idx_gk_geokrety_in_caches_moved_on_datetime ON geokrety.gk_geokrety_in_caches USING btree (moved_on_datetime);
+
 CREATE VIEW geokrety.gk_geokrety_near_users_homes
     AS SELECT c_user.id AS c_user_id,
         c_user.username AS c_username,
@@ -87,6 +91,10 @@ WHERE (move_type = ANY (geokrety.moves_types_markable_as_missing()))
 WITH NO DATA;
 
 REFRESH MATERIALIZED VIEW geokrety.gk_geokrety_in_caches;
+
+CREATE UNIQUE INDEX idx_gk_geokrety_in_caches_id ON geokrety.gk_geokrety_in_caches USING btree (id);
+CREATE INDEX gk_geokrety_in_caches_position ON geokrety.gk_geokrety_in_caches USING gist ("position");
+CREATE INDEX idx_gk_geokrety_in_caches_moved_on_datetime ON geokrety.gk_geokrety_in_caches USING btree (moved_on_datetime);
 
 CREATE VIEW geokrety.gk_geokrety_near_users_homes
     AS SELECT c_user.id AS c_user_id,
