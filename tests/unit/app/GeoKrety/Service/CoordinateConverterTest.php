@@ -78,6 +78,9 @@ class CoordinateConverterTest extends Mockery\Adapter\Phpunit\MockeryTestCase {
             ['test' => '52.205205\\21.190891', 'result' => ['lat' => 52.205205, 'lon' => 21.190891, 'format' => 'fromDecimalDegree']],
             ['test' => 'N 52.205205 W 21.190891', 'result' => ['lat' => 52.205205, 'lon' => -21.190891, 'format' => 'fromHemisphereDegree']],
             ['test' => '-52.205205 +21.190891', 'result' => ['lat' => -52.205205, 'lon' => 21.190891, 'format' => 'fromDecimalDegree']],
+
+            // New cases
+            ['test' => 'N 47° 13.624\' E 5° 34.542\'', 'result' => ['lat' => 47.227067, 'lon' => 5.575700, 'format' => 'fromHemisphereDegreeMinute']],
         ];
         $cases_error = [
             'North.: 6189860 East.: 544201',
