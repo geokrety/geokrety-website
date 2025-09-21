@@ -204,6 +204,17 @@
                                                     <a href="{'help'|alias:null:null:'#acceptableformats'}" target="_blank" class="btn btn-default" type="button" title="Acceptable geographic coordinates formats" id="geolocationButton">{fa icon="question-circle"}</a>
                                                 </span>
                                             </div>
+                                            <span id="helpBlockCoordinates" class="help-block"></span>
+                                            {include file="js/bookmarklet-copy-coords.js" assign="bookmarklet"}
+                                            <div class="alert alert-info" role="alert" style="margin-top:10px;">
+                                              {t escape=no bkm={$bookmarklet} }<strong>Pro tip:</strong> Use this tiny "<a href="%1">bookmarklet</a>" to copy cache coordinates directly from most cache pages.{/t}
+                                              <ol class="small" style="margin:5px 0 0 15px; padding-left:15px;">
+                                                <li>{t escape=no bkm={$bookmarklet} }Drag this link: "<a href="%1">Copy coords</a>" to your bookmarks bar (only once).{/t}</li>
+                                                <li>{t}Open the cache page.{/t}</li>
+                                                <li>{t}Click your new <em>Copy coords</em> bookmark → you'll see "Copied: …".{/t}</li>
+                                                <li>{t}Paste into the Coordinates box above.{/t}</li>
+                                              </ol>
+                                            </div>
                                         </div>
                                     </div>
                                     <div id="mapid" class="leaflet-container-200"></div>
