@@ -163,7 +163,7 @@
                                     </div>
                                     <p id="helpBlockWaypoint" class="help-block">
                                         {t}eg.: GC1AQ2N, OP069B, OC033A…{/t}
-                                        <a href="{'help'|alias:null:null:'#fullysupportedwaypoints'}" target="_blank">
+                                        <a href="{'help'|alias:null:null:'#locationdlagc'}" target="_blank">
                                             {fa icon="question-circle"}
                                         </a>
                                     </p>
@@ -211,7 +211,7 @@
                                               <ol class="small" style="margin:5px 0 0 15px; padding-left:15px;">
                                                 <li>{t escape=no bkm={$bookmarklet} }Drag this link: "<a href="%1">Copy coords</a>" to your bookmarks bar (only once).{/t}</li>
                                                 <li>{t}Open the cache page.{/t}</li>
-                                                <li>{t}Click your new <em>Copy coords</em> bookmark → you'll see "Copied: …".{/t}</li>
+                                                <li>{t escape=no}Click your new <em>Copy coords</em> bookmark → you'll see "Copied: …".{/t}</li>
                                                 <li>{t}Paste into the Coordinates box above.{/t}</li>
                                               </ol>
                                             </div>
