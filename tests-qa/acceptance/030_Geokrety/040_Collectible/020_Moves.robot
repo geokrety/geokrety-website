@@ -17,6 +17,7 @@ Ensure initial state: everything is shown
 
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Element Should Be Enabled               ${MOVE_LOG_TYPE_DROPPED_RADIO}
     Element Should Be Enabled               ${MOVE_LOG_TYPE_GRABBED_RADIO}
@@ -40,6 +41,7 @@ Some logtype should be hidden for non-owner and non-holder
     Sign In ${USER_2.name} Fast
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Element Should Be Disabled              ${MOVE_LOG_TYPE_DROPPED_RADIO}
     Element Should Be Disabled              ${MOVE_LOG_TYPE_GRABBED_RADIO}
@@ -63,6 +65,7 @@ Some logtype should be hidden for holder
     Sign In ${USER_2.name} Fast
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Element Should Be Disabled              ${MOVE_LOG_TYPE_DROPPED_RADIO}
     Element Should Be Disabled              ${MOVE_LOG_TYPE_GRABBED_RADIO}
@@ -86,6 +89,7 @@ Some logtype should be hidden for owner
     Sign In ${USER_1.name} Fast
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Element Should Be Disabled              ${MOVE_LOG_TYPE_DROPPED_RADIO}
     Element Should Be Disabled              ${MOVE_LOG_TYPE_GRABBED_RADIO}

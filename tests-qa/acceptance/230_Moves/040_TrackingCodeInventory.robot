@@ -77,7 +77,7 @@ Select Button Should Close Inventory And Fill TC
     Open Inventory
     Click Choose Button 1
     Wait Until Modal Close
-    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT}     ${GEOKRETY_1.tc}
+    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT_BASE}     ${GEOKRETY_1.tc}
 
 Select Another Button Should Close Inventory And Append TC
     Sign In ${USER_1.name} Fast
@@ -85,11 +85,11 @@ Select Another Button Should Close Inventory And Append TC
 
     Open Inventory
     Click Choose Button 1
-    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT}     ${GEOKRETY_1.tc}
+    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT_BASE}     ${GEOKRETY_1.tc}
 
     Open Inventory
     Click Choose Button 2
-    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT}     ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
+    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT_BASE}     ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
 
 # Multiple Append Should Be Deduplicated
 #     [Tags]    TODO
@@ -115,7 +115,7 @@ Select Via CheckBoxes
     Open Inventory
     Select Checkbox                         ${MOVE_INVENTORY_SELECT_ALL_CHECKBOX}
     Click Button                            ${MOVE_INVENTORY_SELECT_BUTTON}
-    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT}     ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
+    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT_BASE}     ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
 
 *** Keywords ***
 

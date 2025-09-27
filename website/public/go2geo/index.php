@@ -2,7 +2,7 @@
 
 require __DIR__.'/../../../vendor/autoload.php';
 
-if (!is_null(getenv('GK_SENTRY_DSN'))) {
+if (getenv('GK_SENTRY_DSN')) {
     \Sentry\init(['dsn' => getenv('GK_SENTRY_DSN'), 'environment' => getenv('GK_SENTRY_ENV'), 'release' => getenv('GIT_COMMIT')]);
 }
 
@@ -43,6 +43,7 @@ if (isset($_GET['wpt']) and strlen($_GET['wpt'])) {
     include_once 'go2geo.php';
     $link = go2geo($wpt);
     if (!is_null($link)) {
+        header('Referrer-Policy: no-referrer');
         header("Location: $link");
         exit;
     }

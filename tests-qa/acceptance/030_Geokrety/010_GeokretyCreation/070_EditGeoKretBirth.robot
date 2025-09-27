@@ -80,11 +80,11 @@ Edit GeoKret should keep the previous date
 
 New move before GK birth
     Sign In ${USER_1.name} Fast
-
     # birthdate is 2020-08-12 00:00:00+00 from test setup
     # create date is 2020-08-22 15:30:42+00 from test setup
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_COMMENT_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
 
@@ -108,6 +108,7 @@ New move between GK birth and GK create
     # create date is 2020-08-22 15:30:42+00 from test setup
     Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_COMMENT_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_ADDITIONAL_DATA_PANEL}
 

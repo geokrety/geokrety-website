@@ -136,7 +136,6 @@ Click Picture Action
     [Arguments]    ${image}    ${button}
     Wait Until Page Contains Element        ${image}${PICTURE_ACTIONS}
     Scroll Into View                        ${image}${button}
-    # Execute Manual Step        ttt
     Mouse Over                              ${image}
     Mouse Over                              ${image}${button}
     Click Button                            ${image}${button}

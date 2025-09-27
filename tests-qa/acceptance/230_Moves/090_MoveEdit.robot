@@ -36,7 +36,7 @@ Information Should Be Loaded
 
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
-    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT}                     ${GEOKRETY_1.tc}
+    Textfield Value Should Be               ${MOVE_TRACKING_CODE_INPUT_BASE}                ${GEOKRETY_1.tc}
     Radio Button Should Be Set To           ${MOVE_LOG_TYPE_RADIO_GROUP}                    ${MOVE_1.move_type}
     Textfield Value Should Be               ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}             ${MOVE_1.waypoint}
     Textfield Value Should Be               ${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}      ${MOVE_1.lat} ${MOVE_1.lon}
@@ -50,6 +50,9 @@ Information Should Be Loaded
 Change Tracking Code
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_MOVES_EDIT_URL}    moveid=1
+    Panel validation has success            ${MOVE_TRACKING_CODE_PANEL}
+    Open Panel                              ${MOVE_TRACKING_CODE_PANEL}
+    Click Element                           //div[contains(@class, "ts-control")]/div[contains(@class, "item")]/a
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                     ${GEOKRETY_2.tc}
     Open Panel                              ${MOVE_ADDITIONAL_DATA_PANEL}
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
