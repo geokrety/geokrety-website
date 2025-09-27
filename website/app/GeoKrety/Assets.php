@@ -13,6 +13,7 @@ class Assets extends \Assets {
         $nonce = new \Delatbabel\ApiSecurity\Generators\Nonce();
         $nonce = $nonce->getNonce();
         $this->f3->set('NONCE', $nonce);
+        $recaptchaHosts = 'https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/';
         if (\Multilang::instance()->current === 'inline-translation') {
             header(
                 'Content-Security-Policy: '
@@ -23,6 +24,8 @@ class Assets extends \Assets {
                 .sprintf('style-src-elem \'self\' \'unsafe-inline\' %s https://cdn.crowdin.com/jipt/jipt.css https://fonts.googleapis.com/css; ', GK_CDN_SERVER_URL)
                 .'style-src-attr \'self\' \'unsafe-inline\'; '
                 .sprintf('connect-src \'self\' %s https://crowdin.com/api/v2/jipt/cookie https://crowdin.com/api/v2/jipt/project/geokrety https://crowdin.com/api/v2/jipt/project/geokrety/strings; ', GK_MINIO_SERVER_URL_EXTERNAL)
+                ."worker-src 'self' blob: $recaptchaHosts; "
+                ."child-src 'self' blob: $recaptchaHosts; "
             );
 
             return;
@@ -36,6 +39,8 @@ class Assets extends \Assets {
             .sprintf('style-src-elem \'self\' \'unsafe-inline\' %s; ', GK_CDN_SERVER_URL)
             .'style-src-attr \'self\' \'unsafe-inline\'; '
             .sprintf('connect-src \'self\' %s; ', GK_MINIO_SERVER_URL_EXTERNAL)
+            ."worker-src 'self' blob: $recaptchaHosts; "
+            ."child-src 'self' blob: $recaptchaHosts; "
         );
     }
 
