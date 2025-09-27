@@ -1,6 +1,6 @@
 *** Settings ***
 Resource        FunctionsGlobal.robot
-Library          libraries/Browser.py  timeout=10  implicit_wait=0
+Library         libraries/Browser.py  timeout=10  implicit_wait=0
 
 *** Variables ***
 
@@ -15,6 +15,9 @@ ${MODAL_PANEL}                      //div[contains(@class, "panel")]
 ${MODAL_PANEL_TITLE}                ${MODAL_PANEL}//*[@id="modalLabel"]
 ${MODAL_PANEL_SUBMIT_BUTTON}        ${MODAL_PANEL}//div[contains(@class, "modal-footer")]/button[@type="submit"]
 ${MODAL_PANEL_DISMISS_BUTTON}       ${MODAL_PANEL}//div[contains(@class, "modal-footer")]/button[@data-dismiss="modal"]
+
+${CLS}                               contains(concat(' ', normalize-space(@class), ' '), ' panel-heading ')
+${CLS_COLLAPSED}                     contains(concat(' ', normalize-space(@class), ' '), ' collapsed ')
 
 *** Keywords ***
 
@@ -70,30 +73,39 @@ Panel validation has success
 
 Panel validation has error
     [Arguments]  ${element}     ${timeout}=3
-    Wait until page contains element    ${element}\[contains(@class, "panel-danger")]    timeout=${timeout}
+    Wait until page contains element    xpath=${element}\[contains(@class, "panel-danger")]    timeout=${timeout}
     # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-danger")]    timeout=2
 
 Panel Is Collapsed
-    [Arguments]  ${element}     ${timeout}=3
-    Wait until page contains element    ${element}/div[contains(@class, "panel-heading") and contains(@class, "collapsed")]    timeout=${timeout}
+    [Arguments]    ${element}    ${timeout}=1s
+    Wait Until Page Contains Element
+    ...    ${element}/div[${CLS} and ${CLS_COLLAPSED}]
+    ...    timeout=${timeout}
 
 Panel Is Open
-    [Arguments]  ${element}     ${timeout}=3
-    Wait until page contains element    ${element}/div[contains(@class, "panel-heading") and not(contains(@class, "collapsed"))]    timeout=${timeout}
+    [Arguments]    ${element}    ${timeout}=1s
+    Wait Until Page Contains Element
+    ...    ${element}/div[${CLS} and not(${CLS_COLLAPSED})]
+    ...    timeout=${timeout}
+
+Panel Is Open?    [Arguments]    ${element}
+    ${open}=    Run Keyword And Return Status    Page Should Contain Element
+    ...    ${element}/div[${CLS} and not(${CLS_COLLAPSED})]
+    RETURN    ${open}
 
 Open Panel
-    [Arguments]                     ${element}
-    ${collapsed} =    Run Keyword And Return Status    Panel Is Collapsed    ${element}
-    Run Keyword If    ${collapsed}    Run Keywords
-    ...    Scroll Into View    ${element}
-    ...    AND    Click Element    ${element}/div[contains(@class,"panel-heading")]
-    Panel Is Open    ${element}
+    [Arguments]    ${element}    ${timeout}=5s
+    ${already_open}=    Panel Is Open?    ${element}
+    Return From Keyword If    ${already_open}
+
+    Scroll Into View    ${element}
+    Click Element       ${element}/div[${CLS}]
+    Run Keyword And Ignore Error    Panel Is Open    ${element}    ${timeout}
 
 Flash message shown
     [Arguments]  ${message}
     Page WithoutWarningOrFailure
     Wait until page contains element    //div[contains(@class, "flash-message") and text()[contains(., "${message}")]]
-
 
 Scroll Into View
     [Arguments]    ${element}

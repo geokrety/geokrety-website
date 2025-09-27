@@ -54,7 +54,9 @@ Test Setup
 
 Button Trigger Validation With Wrong TC
     [Arguments]    ${tc}
+    Go To Move
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
     Panel validation has error              ${MOVE_TRACKING_CODE_PANEL}
 
