@@ -19,6 +19,7 @@ Fill Form Naturally Require Coordinates
     Go To Move
 
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
 
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_DIPPED_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_NEW_LOCATION_PANEL}
@@ -43,6 +44,7 @@ Seen Accept Coordinates If Given
     Go To Move
 
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
 
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_MEET_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_NEW_LOCATION_PANEL}
@@ -67,6 +69,7 @@ Seen Accept No Coordinates
     Go To Move
 
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur
     Click Button And Check Panel Validation Has Success    ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
 
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_MEET_RADIO}    ${MOVE_LOG_TYPE_PANEL}    ${MOVE_NEW_LOCATION_PANEL}
@@ -109,7 +112,7 @@ Found It Log It From Home Page
     Input Text                              ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}   ${GEOKRETY_1.tc}
     Click Button                            ${HOME_FOUND_GK_TRACKING_CODE_BUTTON}
     Location Should Be                      ${PAGE_MOVES_URL}?tracking_code=${GEOKRETY_1.tc}
-    Input Value Should Be                   ${MOVE_TRACKING_CODE_INPUT}   ${GEOKRETY_1.tc}
+    Input Value Should Be                   ${MOVE_TRACKING_CODE_INPUT_BASE}   ${GEOKRETY_1.tc}
 
 Found It Log It From GeoKret Page
     Sign Out Fast
@@ -118,7 +121,7 @@ Found It Log It From GeoKret Page
     Input Text                              ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}   ${GEOKRETY_1.tc}
     Click Button                            ${GEOKRET_DETAILS_FOUND_IT_BUTTON}
     Location Should Be                      ${PAGE_MOVES_URL}?tracking_code=${GEOKRETY_1.tc}
-    Input Value Should Be                   ${MOVE_TRACKING_CODE_INPUT}   ${GEOKRETY_1.tc}
+    Input Value Should Be                   ${MOVE_TRACKING_CODE_INPUT_BASE}   ${GEOKRETY_1.tc}
 
 
 Check csrf
@@ -132,10 +135,10 @@ Check csrf
 
 Remember Saves Then Clears Prefill
     Sign In ${USER_1.name} Fast
-    Go To Move
 
     # --- First submission with Remember checked ---
-    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                     ${GEOKRETY_1.tc}
+    Go To Move
+    Fill Tracking Code                      ${GEOKRETY_1.tc}
     Click Button And Check Panel Validation Has Success     ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_GRABBED_RADIO}       ${MOVE_LOG_TYPE_PANEL}         ${MOVE_ADDITIONAL_DATA_PANEL}
 
@@ -145,7 +148,7 @@ Remember Saves Then Clears Prefill
     Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
 
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
-    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1#log1
 
     # --- Reopen form: should be prefilled ---
     Go To Move
@@ -159,8 +162,8 @@ Remember Saves Then Clears Prefill
     Checkbox Should Be Selected             ${REMEMBER_CHECKBOX}
 
     # --- Second submission with Remember unchecked ---
-    Open Panel                              ${MOVE_TRACKING_CODE_PANEL}
-    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                     ${GEOKRETY_1.tc}
+    Go To Move
+    Fill Tracking Code                      ${GEOKRETY_1.tc}
     Click Button And Check Panel Validation Has Success     ${MOVE_TRACKING_CODE_NEXT_BUTTON}    ${MOVE_TRACKING_CODE_PANEL}    ${MOVE_LOG_TYPE_PANEL}
     Click LogType And Check Panel Validation Has Success    ${MOVE_LOG_TYPE_GRABBED_RADIO}       ${MOVE_LOG_TYPE_PANEL}
 
@@ -172,7 +175,7 @@ Remember Saves Then Clears Prefill
     Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
 
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
-    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log2
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1#log2
 
     # --- Reopen form: should NOT be prefilled anymore ---
     Go To Move
@@ -205,3 +208,9 @@ Click LogType And Check Panel Validation Has Success
     Panel validation has success     ${current_panel}
     Run Keyword If                   '${next_panel}' != 'None'
     ...    Panel Is Open             ${next_panel}
+
+Fill Tracking Code
+    [Documentation]    Fill tracking code input and trigger blur event
+    [Arguments]    ${tracking_code}
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${tracking_code}
+    Simulate Event                          ${MOVE_TRACKING_CODE_INPUT}                 blur

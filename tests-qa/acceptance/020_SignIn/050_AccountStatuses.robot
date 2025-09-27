@@ -67,8 +67,6 @@ Imported accounts mail notification
     Page Should Contain                 Mail sent
     Mailbox Should Contain ${1} Messages
 
-    # Execute Manual Step    foo
-
     # Mail can't be sent too quickly
     Click Link With Text                new confirmation mail
     Page Should Contain                 You can request a new confirmation mail
