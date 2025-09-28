@@ -19,7 +19,7 @@
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_SHAPE_JS) && ''}*}
 
 {\Assets::instance()->renderGroup(\GeoKrety\Assets::instance()->getAssets('footer')) nofilter}
-<script type="text/javascript" nonce="{$f3->get('NONCE')}">
+<script type="text/javascript" nonce="{\GeoKrety\Service\SecurityHeaders::instance()->getNonce()}">
     Dropzone.autoDiscover = false;
     (function($) {
         $(document).ready(function() {
