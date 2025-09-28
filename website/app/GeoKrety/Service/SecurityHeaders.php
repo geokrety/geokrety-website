@@ -3,7 +3,7 @@
 namespace GeoKrety\Service;
 
 /**
- * Comprehensive Security Headers Service
+ * Comprehensive Security Headers Service.
  *
  * Handles ALL security headers in one clean place:
  * - CSP with nonce support (moved from Assets)
@@ -12,7 +12,6 @@ namespace GeoKrety\Service;
  * - Owns and generates nonce internally
  */
 class SecurityHeaders extends \Prefab {
-
     private string $nonce;
 
     // CORS allowed origins
@@ -27,7 +26,7 @@ class SecurityHeaders extends \Prefab {
     }
 
     /**
-     * Apply all security headers globally
+     * Apply all security headers globally.
      */
     public function applyAll(): void {
         $this->applyCSP();
@@ -35,7 +34,7 @@ class SecurityHeaders extends \Prefab {
     }
 
     /**
-     * Get the nonce for use by Assets and templates
+     * Get the nonce for use by Assets and templates.
      */
     public function getNonce(): string {
         return $this->nonce;
@@ -43,7 +42,7 @@ class SecurityHeaders extends \Prefab {
 
     /**
      * Content Security Policy with nonce support
-     * Simplified and unified (removed unnecessary inline-translation complexity)
+     * Simplified and unified (removed unnecessary inline-translation complexity).
      */
     private function applyCSP(): void {
         $isInlineTranslation = \Multilang::instance()->current === 'inline-translation';
@@ -57,7 +56,7 @@ class SecurityHeaders extends \Prefab {
                 GK_MINIO_SERVER_URL_EXTERNAL,
                 $isInlineTranslation ? ' https://cdn.crowdin.com/jipt/images/ https://crowdin-static.downloads.crowdin.com/avatar/ https://crowdin-static.cf-downloads.crowdin.com/avatar/' : ''
             ),
-            'frame-src https://www.google.com/ https://www.youtube.com/' . ($isInlineTranslation ? ' https://crowdin.com/' : ''),
+            'frame-src https://www.google.com/ https://www.youtube.com/'.($isInlineTranslation ? ' https://crowdin.com/' : ''),
             sprintf('style-src \'self\' \'nonce-%s\'', $this->nonce),
             sprintf(
                 'style-src-elem \'self\' \'unsafe-inline\' %s%s',
@@ -69,12 +68,12 @@ class SecurityHeaders extends \Prefab {
                 'connect-src \'self\' %s%s',
                 GK_MINIO_SERVER_URL_EXTERNAL,
                 $isInlineTranslation ? ' https://crowdin.com/api/v2/jipt/cookie https://crowdin.com/api/v2/jipt/project/geokrety https://crowdin.com/api/v2/jipt/project/geokrety/strings' : ''
-            )
+            ),
         ];
 
         // Add script-src-attr for inline translation event handlers
         if ($isInlineTranslation) {
-            $csp[] = "script-src-attr 'unsafe-hashes'";
+            $csp[] = "script-src-attr 'unsafe-inline' 'unsafe-hashes' 'sha256-47mKTaMaEn1L3m5DAz9muidMqw636xxw7EFAK/YnPdg='";
         }
 
         // Add reCAPTCHA support
@@ -102,11 +101,11 @@ class SecurityHeaders extends \Prefab {
             $csp[] = 'upgrade-insecure-requests';
         }
 
-        header('Content-Security-Policy: ' . implode('; ', $csp));
+        header('Content-Security-Policy: '.implode('; ', $csp));
     }
 
     /**
-     * Apply all other security headers
+     * Apply all other security headers.
      */
     private function applySecurityHeaders(): void {
         $f3 = \Base::instance();
@@ -145,12 +144,12 @@ class SecurityHeaders extends \Prefab {
         }
 
         foreach ($headers as $name => $value) {
-            header($name . ': ' . $value);
+            header($name.': '.$value);
         }
     }
 
     /**
-     * Permissions Policy - restrict powerful browser features
+     * Permissions Policy - restrict powerful browser features.
      */
     private function buildPermissionsPolicy(): string {
         return implode(', ', [
@@ -173,12 +172,12 @@ class SecurityHeaders extends \Prefab {
             'screen-wake-lock=()',
             'usb=()',
             'web-share=(self)',
-            'xr-spatial-tracking=()'
+            'xr-spatial-tracking=()',
         ]);
     }
 
     /**
-     * Check if path is static asset
+     * Check if path is static asset.
      */
     private function isStaticAsset(string $path): bool {
         $staticPaths = ['/assets/', '/app-ui/', '/gkt/', '/errors/'];
@@ -200,7 +199,7 @@ class SecurityHeaders extends \Prefab {
     }
 
     /**
-     * Apply strict headers for sensitive pages (auth, admin)
+     * Apply strict headers for sensitive pages (auth, admin).
      */
     public function applyStrictHeaders(): void {
         header('X-Frame-Options: DENY');
@@ -211,7 +210,7 @@ class SecurityHeaders extends \Prefab {
     }
 
     /**
-     * Apply CORS headers for allowed origins
+     * Apply CORS headers for allowed origins.
      */
     public function applyCorsHeaders(): void {
         $f3 = \Base::instance();
@@ -222,7 +221,7 @@ class SecurityHeaders extends \Prefab {
     }
 
     /**
-     * Apply CORS credentials headers for allowed origins
+     * Apply CORS credentials headers for allowed origins.
      */
     public function applyCorsCredentialsHeaders(): void {
         $f3 = \Base::instance();
