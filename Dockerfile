@@ -11,6 +11,7 @@ CMD ["docker-php-entrypoint"]
 COPY --chown=www-data:www-data composer.json /var/www/geokrety/composer.json
 COPY --chown=www-data:www-data composer.lock /var/www/geokrety/composer.lock
 RUN composer install --no-scripts --no-dev --no-autoloader --no-interaction
+RUN git config --global --add safe.directory /var/www/geokrety
 
 COPY --chown=www-data:www-data . /var/www/geokrety/
 
