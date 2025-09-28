@@ -16,6 +16,16 @@ EOF
 
 # first arg is `-f` or `--some-option`
 if [ "$1" = 'docker-php-entrypoint' ]; then
+    # Install dependencies if vendor/ doesn't exist (dev environment with volume mount)
+    if [ ! -d "vendor" ]; then
+        echo "Installing Composer dependencies for development..."
+        if [ "${GK_DEVEL:-false}" = "true" ]; then
+            composer install --no-scripts --no-interaction
+        else
+            composer install --no-scripts --no-dev --no-interaction
+        fi
+    fi
+
     # Generate and optimize autoloader
     make composer-autoload
 
