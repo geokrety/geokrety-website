@@ -576,17 +576,72 @@
             <h3>2. Manualmente, usando copiar e colar</h4>
             <p>
                 Ir para a página <a href="{'move_create'|alias}">Registar um GeoKret</a>.
-                Preencha o Código de Seguimento do GeoKret que pretende registar, e na secção <strong>Nova localização</strong> insira o seguinte:
-
+                Fill in the Tracking Code of the GeoKret you wish to log,
+                and under the section <strong>New location</strong> enter the
+                following:
             </p>
-            <ol>
-                <li>No campo do ponto de passagem, digite o Código GC da cache (ex. GC2586K).</li>
-                <li>Opcionalmente, altere as Coordenadas se diferirem das que estão na cache.
-                    Veja <a href="#acceptableformats">aqui</a> para formatos aceitáveis.</li>
-            </ol>
-            <p>Aqui está um exemplo:</p>
-            <p><img src="{GK_CDN_IMAGES_URL}/help/Manual_copy_paste.png" alt="como registrar GK para Caches do GC" class="center-block img-responsive" /></p>
 
+  <p>
+    <span class="badge">1</span>
+    <strong>Enter the GC code</strong> of the cache in the <strong>Waypoint</strong> field (e.g. <code>GC25XXX</code>).
+  </p>
+
+  <div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>
+          If the field turns <strong>green</strong>, the location is ready — you can proceed to validation.
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="alert alert-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+          If it turns <strong>red</strong>, continue with steps 2-5 below.
+        </div>
+
+        <ol class="list-unstyled">
+          <li>
+            <span class="badge">2</span>
+            Click <strong>View the cache page</strong> to open the cache listing.
+          </li>
+
+          <li>
+            <span class="badge">3</span>
+            On the cache page, <strong>copy the UTM coordinates</strong> line.
+          </li>
+
+          <li>
+            <span class="badge">4</span>
+            Back on GeoKrety, <strong>paste</strong> the copied value into the <strong>Coordinates</strong> field.
+          </li>
+
+          <li>
+            <span class="badge">5</span>
+            When the waypoint/coordinates turn <strong>green</strong>, click <strong>Validate</strong>.
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-sm-12">
+        {include file="js/bookmarklet-copy-coords.js" assign="bookmarklet"}
+        <div class="alert alert-info" role="alert" style="margin-top:10px;">
+          <strong>Pro tip:</strong> Use this tiny "<a href="{$bookmarklet}">bookmarklet</a>" to copy cache coordinates directly from most cache pages.
+          <ol class="small" style="margin:5px 0 0 15px; padding-left:15px;">
+            <li>Drag this link: "<a href="{$bookmarklet}">Copy coords</a>" to your bookmarks bar (only once).</li>
+            <li>Open the cache page.</li>
+            <li>Click your new <em>Copy coords</em> bookmark → you'll see "Copied: …".</li>
+            <li>Paste into the Coordinates box above.</li>
+          </ol>
+        </div>
+    </div>
+  </div>
+            <p>
+                <img src="{GK_CDN_IMAGES_URL}/help/Manual_copy_paste.png" alt="como registrar GK para Caches do GC" class="center-block img-responsive" />
+            </p>
             <p>
                 <b>Nota:</b> <a href="https://forums.groundspeak.com/GC/index.php?s=8154d8ac03f5b64142fb5d1587b53c11&showtopic=232614&view=findpost&p=4083361">de acordo com a fundspeak</a>,
                 geocaching. usuários do om podem usar e registrar geokrety ;<br />
@@ -758,7 +813,7 @@ N52° 12' 18.74", W21° 11' 27.21"
                     <td><em>nome único</em></td>
                     <td>geopeitus.ee</td>
                     <td><a href="http://www.geopeitus.ee/">Base de dados da Estónia</a></td>
-                    <td>Actualizado diariamente (lat, lon, nome da cache, ligação).</td>
+                    <td>Updated daily (lat, lon, cache name, link).</td>
                 </tr>
                 <tr>
                     <td>CCG</td>
