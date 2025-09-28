@@ -36,6 +36,7 @@ jobs:
       - name: Installing package dependencies
         run: |
           composer install --ignore-platform-reqs --no-interaction
+          sudo apt-get update
           sudo apt-get install -y gettext moreutils
 
       - name: Build file list to proceed
