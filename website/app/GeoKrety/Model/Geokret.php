@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\GeokretyType;
 use GeoKrety\LogType;

@@ -2,8 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
-
 abstract class Base extends \DB\Cortex implements \JsonSerializable {
     protected $db = 'DB';
 
