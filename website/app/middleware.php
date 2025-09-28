@@ -35,4 +35,9 @@ Middleware::instance()->before('GET /gkt/v3/inventory', function (Base $f3) {
     addCorsAllowcredentialHeaders($f3);
 });
 
+// Apply security headers globally to all requests
+Middleware::instance()->before('*', function (Base $f3) {
+    \GeoKrety\Service\SecurityHeaders::instance()->applyAll($f3);
+});
+
 Middleware::instance()->run();
