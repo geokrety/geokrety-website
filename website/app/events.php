@@ -305,6 +305,10 @@ $events->on('move.created', function (GeoKrety\Model\Move $move) {
     if (!is_null($move->author) && !is_null($move->geokret->owner) && $move->geokret->owner === $move->author) {
         GeoKrety\Service\UserBanner::generate($move->author);
     }
+
+    // Process automatic awards
+    GeoKrety\Service\Award\AutomaticPrizeAwarder::processMove($move);
+
     audit('move.created', $move);
     Metrics::counter('move_created_total', 'Total number of move created');
 });
@@ -327,6 +331,11 @@ $events->on('move.deleted', function (GeoKrety\Model\Move $move) {
     }
     audit('move.deleted', $move);
     Metrics::counter('move_deleted_total', 'Total number of move deleted');
+});
+
+// Award events
+$events->on('award.given', function (array $context) {
+    audit('award.given', $context);
 });
 $events->on('move-comment.created', function (GeoKrety\Model\MoveComment $comment) {
     audit('move-comment.created', $comment);
