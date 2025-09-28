@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
 use DB\CortexCollection;
 use DB\SQL\Schema;
 use GeoKrety\Email\AccountActivation;

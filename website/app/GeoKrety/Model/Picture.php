@@ -2,7 +2,6 @@
 
 namespace GeoKrety\Model;
 
-use DateTime;
 use DB\SQL\Schema;
 use GeoKrety\PictureType;
 use GeoKrety\Service\S3Client;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 // ini_set('error_log','./phpunit/error.log');
 
 /**
- * @var $loader \Composer\Autoload\ClassLoader
+ * @var Composer\Autoload\ClassLoader $loader
  */
 $loader = require 'vendor/autoload.php';
 $loader->addClassMap(['fixtures\UserFixture' => 'tests/fixtures/UserFixture.php']);
