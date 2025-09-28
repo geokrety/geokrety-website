@@ -50,12 +50,12 @@ class SecurityHeaders extends \Prefab {
 
         // Base CSP directives
         $csp = [
-            sprintf('script-src \'nonce-%s\' \'strict-dynamic\'', $this->nonce),
+            sprintf('script-src \'nonce-%s\' \'strict-dynamic\'%s', $this->nonce, $isInlineTranslation ? ' \'unsafe-hashes\'' : ''),
             sprintf(
                 'img-src \'self\' data: blob: %s %s https://www.gstatic.com/recaptcha/ https://tile.openstreetmap.org https://seccdn.libravatar.org/avatar/ https://cdn.geokrety.org%s',
                 GK_CDN_SERVER_URL,
                 GK_MINIO_SERVER_URL_EXTERNAL,
-                $isInlineTranslation ? ' https://cdn.crowdin.com/jipt/images/ https://crowdin-static.downloads.crowdin.com/avatar/' : ''
+                $isInlineTranslation ? ' https://cdn.crowdin.com/jipt/images/ https://crowdin-static.downloads.crowdin.com/avatar/ https://crowdin-static.cf-downloads.crowdin.com/avatar/' : ''
             ),
             'frame-src https://www.google.com/ https://www.youtube.com/' . ($isInlineTranslation ? ' https://crowdin.com/' : ''),
             sprintf('style-src \'self\' \'nonce-%s\'', $this->nonce),
@@ -72,10 +72,24 @@ class SecurityHeaders extends \Prefab {
             )
         ];
 
+        // Add script-src-attr for inline translation event handlers
+        if ($isInlineTranslation) {
+            $csp[] = "script-src-attr 'unsafe-hashes'";
+        }
+
         // Add reCAPTCHA support
         $recaptchaHosts = 'https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/';
-        $csp[] = "worker-src 'self' blob: $recaptchaHosts";
-        $csp[] = "child-src 'self' blob: $recaptchaHosts";
+        $workerSrc = "'self' blob: $recaptchaHosts";
+        $childSrc = "'self' blob: $recaptchaHosts";
+
+        // Add Crowdin worker support for inline translation
+        if ($isInlineTranslation) {
+            $workerSrc .= ' https://crowdin.com';
+            $childSrc .= ' https://crowdin.com';
+        }
+
+        $csp[] = "worker-src $workerSrc";
+        $csp[] = "child-src $childSrc";
 
         // Additional security directives
         $csp[] = "object-src 'none'";
