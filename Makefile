@@ -27,14 +27,17 @@ composer-autoload: ## Generate and optimize autoloader
 	composer dump-autoload --optimize
 
 phpcs: ## run php check style fixer
-	php ./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
+	PHP_CS_FIXER_IGNORE_ENV=1 php ./vendor/bin/php-cs-fixer --no-interaction fix --diff -v
 crlf: ## run file checks : check CR/LF
 	bash ./scripts/check-crlf.sh
 trailing: ## run file check : check trailing spaces
 	bash ./scripts/check-trailing-spaces.sh .
 utf8: ## run file check : utf8
 	bash ./scripts/check-utf8.sh .
-check: phpcs crlf trailing utf8 test ## run all checks : phpcs, crlf, trailing, utf8, test
+pre-commit: ## run pre-commit checks on all files
+	PHP_CS_FIXER_IGNORE_ENV=1 pre-commit run --all-files
+test: test-unit ## run tests
+check: pre-commit test ## run all checks : pre-commit, test
 
 test-unit: ## Run phpunit tests
 	./vendor/bin/phpunit --testsuite unit --testdox-html="test-unit-report.html"
