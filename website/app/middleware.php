@@ -1,43 +1,53 @@
 <?php
 
-const ALLOWED_ORIGINS = [
-    'http://www.geocaching.com',
-    'https://www.geocaching.com',
-];
+use GeoKrety\Service\SecurityHeaders;
 
-function addCorsHeaders(Base $f3) {
-    $origin = $f3->get('HEADERS.Origin');
-    if (in_array($origin, ALLOWED_ORIGINS)) {
-        $f3->copy('HEADERS.Origin', 'CORS.origin');
+/**
+ * Helper function for common security + CORS operations
+ * Reduces code duplication across middleware handlers
+ */
+function applySecurityWithCors(bool $withCredentials = false): void {
+    SecurityHeaders::instance()->applyAll();
+    SecurityHeaders::instance()->applyCorsHeaders();
+    if ($withCredentials) {
+        SecurityHeaders::instance()->applyCorsCredentialsHeaders();
     }
 }
 
-function addCorsAllowcredentialHeaders(Base $f3) {
-    $origin = $f3->get('HEADERS.Origin');
-    if (in_array($origin, ALLOWED_ORIGINS)) {
-        $f3->set('CORS.credentials', true);
-    }
-}
+// =================================================================
+// API Routes with CORS Support
+// =================================================================
 
-// enable the CORS settings only for your API routes:
-Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /api/*', function (Base $f3) {
-    addCorsHeaders($f3);
-});
-Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /gkt/*', function (Base $f3) {
-    addCorsHeaders($f3);
-});
-Middleware::instance()->before('GET /gkt/inventory_v3.php', function (Base $f3) {
-    addCorsHeaders($f3);
-    addCorsAllowcredentialHeaders($f3);
-});
-Middleware::instance()->before('GET /gkt/v3/inventory', function (Base $f3) {
-    addCorsHeaders($f3);
-    addCorsAllowcredentialHeaders($f3);
+// General API routes - basic CORS support
+Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /api/*', function () {
+    applySecurityWithCors();
 });
 
-// Apply security headers globally to all requests
-Middleware::instance()->before('*', function (Base $f3) {
-    \GeoKrety\Service\SecurityHeaders::instance()->applyAll($f3);
+// GKT API routes - basic CORS support
+Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /gkt/*', function () {
+    applySecurityWithCors();
+});
+
+// =================================================================
+// Specific Endpoints Requiring CORS Credentials
+// =================================================================
+
+// GKT inventory endpoints - require credentials for geocaching.com integration
+Middleware::instance()->before('GET /gkt/v3/inventory', function () {
+    applySecurityWithCors(true);
+});
+
+Middleware::instance()->before('GET /gkt/inventory_v3.php', function () {
+    applySecurityWithCors(true);
+});
+
+// =================================================================
+// Global Security Headers Fallback
+// =================================================================
+
+// Apply security headers to all other requests (non-API routes)
+Middleware::instance()->before('GET|HEAD|POST|PUT|OPTIONS /*', function () {
+    SecurityHeaders::instance()->applyAll();
 });
 
 Middleware::instance()->run();
