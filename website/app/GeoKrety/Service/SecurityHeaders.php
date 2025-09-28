@@ -15,6 +15,12 @@ class SecurityHeaders extends \Prefab {
 
     private string $nonce;
 
+    // CORS allowed origins
+    private const ALLOWED_ORIGINS = [
+        'http://www.geocaching.com',
+        'https://www.geocaching.com',
+    ];
+
     public function __construct() {
         // SecurityHeaders owns nonce generation - single source of truth
         $this->nonce = (new \Delatbabel\ApiSecurity\Generators\Nonce())->getNonce();
@@ -187,5 +193,25 @@ class SecurityHeaders extends \Prefab {
         header('Pragma: no-cache');
         header('Expires: 0');
         header('Cross-Origin-Opener-Policy: same-origin');
+    }
+
+    /**
+     * Apply CORS headers for allowed origins
+     */
+    public function applyCorsHeaders(\Base $f3): void {
+        $origin = $f3->get('HEADERS.Origin');
+        if (in_array($origin, self::ALLOWED_ORIGINS)) {
+            $f3->copy('HEADERS.Origin', 'CORS.origin');
+        }
+    }
+
+    /**
+     * Apply CORS credentials headers for allowed origins
+     */
+    public function applyCorsCredentialsHeaders(\Base $f3): void {
+        $origin = $f3->get('HEADERS.Origin');
+        if (in_array($origin, self::ALLOWED_ORIGINS)) {
+            $f3->set('CORS.credentials', true);
+        }
     }
 }
