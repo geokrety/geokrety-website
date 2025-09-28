@@ -6,7 +6,10 @@
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_PREVIEW_IMAGE_JQUERY_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_LIBRARIES_PARSLEY_BOOTSTRAP3_JS_URL)}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_LIBRARIES_PARSLEY_JS_URL) && ''}
+{* Load Parsley i18n - skip for inline-translation mode since it's not a real language *}
+{if \Multilang::instance()->current !== 'inline-translation'}
 {\GeoKrety\Assets::instance()->addJs(sprintf('%s/%s.js', GK_CDN_LIBRARIES_PARSLEY_JS_LANG_DIR_URL, \Multilang::instance()->current)) && ''}
+{/if}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_SPIN_JS) && ''}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_DROPZONE_JS) && ''}
 {\GeoKrety\Assets::instance()->addJsAsync(GK_CDN_LAZYSIZES_JS) && ''}
