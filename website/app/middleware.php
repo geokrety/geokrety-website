@@ -4,7 +4,7 @@ use GeoKrety\Service\SecurityHeaders;
 
 /**
  * Helper function for common security + CORS operations
- * Reduces code duplication across middleware handlers
+ * Reduces code duplication across middleware handlers.
  */
 function applySecurityWithCors(bool $withCredentials = false): void {
     SecurityHeaders::instance()->applyAll();
