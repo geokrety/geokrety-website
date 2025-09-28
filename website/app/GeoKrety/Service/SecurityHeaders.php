@@ -29,9 +29,9 @@ class SecurityHeaders extends \Prefab {
     /**
      * Apply all security headers globally
      */
-    public function applyAll(\Base $f3): void {
-        $this->applyCSP($f3);
-        $this->applySecurityHeaders($f3);
+    public function applyAll(): void {
+        $this->applyCSP();
+        $this->applySecurityHeaders();
     }
 
     /**
@@ -45,7 +45,7 @@ class SecurityHeaders extends \Prefab {
      * Content Security Policy with nonce support
      * Simplified and unified (removed unnecessary inline-translation complexity)
      */
-    private function applyCSP(\Base $f3): void {
+    private function applyCSP(): void {
         $isInlineTranslation = \Multilang::instance()->current === 'inline-translation';
 
         // Base CSP directives
@@ -94,7 +94,8 @@ class SecurityHeaders extends \Prefab {
     /**
      * Apply all other security headers
      */
-    private function applySecurityHeaders(\Base $f3): void {
+    private function applySecurityHeaders(): void {
+        $f3 = \Base::instance();
         $headers = [
             // Prevent MIME type sniffing
             'X-Content-Type-Options' => 'nosniff',
@@ -187,7 +188,8 @@ class SecurityHeaders extends \Prefab {
     /**
      * Apply strict headers for sensitive pages (auth, admin)
      */
-    public function applyStrictHeaders(\Base $f3): void {
+    public function applyStrictHeaders(): void {
+        $f3 = \Base::instance();
         header('X-Frame-Options: DENY');
         header('Cache-Control: no-cache, no-store, must-revalidate, private');
         header('Pragma: no-cache');
@@ -198,7 +200,8 @@ class SecurityHeaders extends \Prefab {
     /**
      * Apply CORS headers for allowed origins
      */
-    public function applyCorsHeaders(\Base $f3): void {
+    public function applyCorsHeaders(): void {
+        $f3 = \Base::instance();
         $origin = $f3->get('HEADERS.Origin');
         if (in_array($origin, self::ALLOWED_ORIGINS)) {
             $f3->copy('HEADERS.Origin', 'CORS.origin');
@@ -208,7 +211,8 @@ class SecurityHeaders extends \Prefab {
     /**
      * Apply CORS credentials headers for allowed origins
      */
-    public function applyCorsCredentialsHeaders(\Base $f3): void {
+    public function applyCorsCredentialsHeaders(): void {
+        $f3 = \Base::instance();
         $origin = $f3->get('HEADERS.Origin');
         if (in_array($origin, self::ALLOWED_ORIGINS)) {
             $f3->set('CORS.credentials', true);
