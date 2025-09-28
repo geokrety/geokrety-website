@@ -202,7 +202,6 @@ class SecurityHeaders extends \Prefab {
      * Apply strict headers for sensitive pages (auth, admin).
      */
     public function applyStrictHeaders(): void {
-        $f3 = \Base::instance();
         header('X-Frame-Options: DENY');
         header('Cache-Control: no-cache, no-store, must-revalidate, private');
         header('Pragma: no-cache');
