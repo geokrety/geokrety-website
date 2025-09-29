@@ -11,7 +11,12 @@ interface AwardServiceInterface {
     public function shouldAward(Move $move): bool;
 
     /**
-     * Award the user for this move.
+     * Get the award name for this service.
      */
-    public function awardUser(Move $move): void;
+    public function getAwardName(): string;
+
+    /**
+     * Get the award description for this move.
+     */
+    public function getAwardDescription(Move $move): string;
 }
