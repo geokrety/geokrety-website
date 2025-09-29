@@ -4,8 +4,6 @@ namespace GeoKrety\Service\Award;
 
 use GeoKrety\GeokretyType;
 use GeoKrety\LogType;
-use GeoKrety\Model\Awards;
-use GeoKrety\Model\AwardsWon;
 use GeoKrety\Model\Move;
 
 class EasterEggAwardService implements AwardServiceInterface {
@@ -22,43 +20,16 @@ class EasterEggAwardService implements AwardServiceInterface {
     }
 
     /**
-     * Award the Hidden GeoKrety Finder award to the user.
+     * Get the award name for this service.
      */
-    public function awardUser(Move $move): void {
-        // Load award with cache (1 hour TTL)
-        $award = new Awards();
-        $award->load(['name = ?', self::AWARD_NAME], ttl: 3600);
+    public function getAwardName(): string {
+        return self::AWARD_NAME;
+    }
 
-        if ($award->dry()) {
-            // Award doesn't exist - log and return
-            error_log("Award '{self::AWARD_NAME}' not found in database");
-
-            return;
-        }
-
-        // Create award assignment
-        $awardWon = new AwardsWon();
-        $awardWon->holder = $move->author->id;
-        $awardWon->award = $award->id;
-        $awardWon->description = 'Automatically awarded for discovering a Hidden GeoKrety';
-
-        try {
-            $awardWon->save();
-
-            // Fire event for audit trail
-            $events = \Sugar\Event::instance();
-            $events->emit('award.given', [
-                'award_id' => $award->id,
-                'award_name' => self::AWARD_NAME,
-                'user_id' => $move->author->id,
-                'move_id' => $move->id,
-                'geokret_id' => $move->geokret->id,
-                'automatic' => true,
-            ]);
-        } catch (\Exception $e) {
-            // Database constraint violation (duplicate award) - silently ignore
-            // Other errors are also ignored to not break move processing
-            // This is logged in AutomaticPrizeAwarder
-        }
+    /**
+     * Get the award description for this move.
+     */
+    public function getAwardDescription(Move $move): string {
+        return 'Automatically awarded for discovering a Hidden GeoKrety';
     }
 }
