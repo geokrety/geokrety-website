@@ -4,7 +4,7 @@
 
 # GeoKrety.org
 
-GeoKrety.org is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets, or humans with us.
+GeoKrety.org is a free online service for object tracking in GPS games like geocaching or opencaching. You can track small items, books, coins, pets, or even humans with us.
 
 This repository contains the source code running behind [GeoKrety.org](https://geokrety.org/). If you encounter any security issues, please contact us directly at [contact@geokretymap.org](mailto:contact@geokretymap.org).
 
