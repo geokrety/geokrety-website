@@ -49,6 +49,7 @@
   <div class="col-md-3">
     {include file='blocks/donate.tpl'}
     {include file='blocks/found_geokret.tpl'}
+    {include file='blocks/go_social.tpl'}
   </div>
 </div>
 
