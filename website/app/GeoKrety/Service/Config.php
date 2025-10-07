@@ -18,6 +18,7 @@ class Config extends \Prefab {
         // SITE CONFIG
         define('HOSTNAME', getenv('HOSTNAME') ?: 'localhost');
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
+        define('GK_SITE_FEDIVERSE_URL', getenv('GK_SITE_FEDIVERSE_URL') ?: 'https://social.opencaching.earth/@geokrety');
         define('GK_SITE_BASE_SERVER_FQDN', getenv('GK_SITE_BASE_SERVER_FQDN') ?: 'geokrety.org');
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '26422'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
