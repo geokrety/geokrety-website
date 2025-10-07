@@ -25,6 +25,7 @@ class Config extends \Prefab {
         }
         define('GK_SITE_BASE_SERVER_SCHEME', key_exists('HTTP_X_FORWARDED_PROTO', $_SERVER) ? $_SERVER['HTTP_X_FORWARDED_PROTO'] : 'https');
         define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: sprintf('%s://%s', GK_SITE_BASE_SERVER_SCHEME, GK_SITE_BASE_SERVER_FQDN));
+        define('GK_SITE_FEDIVERSE_URL', getenv('GK_SITE_FEDIVERSE_URL') ?: 'https://social.opencaching.earth/@geokrety');
 
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '26422'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
