@@ -61,6 +61,15 @@
             <li><a id="navbar-resolver" href="/go2geo/">{fa icon="map-pin"} {t}Waypoint resolver{/t}</a></li>
         </ul>
     </li>
+
+    <li>
+        <a id="navbar-fediverse-rss" href="{GK_SITE_FEDIVERSE_URL}/feed.rss" target="_blank" rel="noopener"
+           title="{t}Subscribe to GeoKrety Fediverse RSS{/t}">
+            <i class="fa fa-rss" style="color:#f26522;"></i>
+            <span class="sr-only">{t}Subscribe to GeoKrety Fediverse RSS{/t}</span>
+        </a>
+    </li>
+
     {if GK_DEVEL}
         <li>
             <div class="navbar-btn">
