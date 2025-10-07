@@ -23,9 +23,30 @@
         {t escape=no url={'hall_of_fame'|alias}}Designed with <abbr title="love">💗</abbr> by <a id="footer-team" href="%1">The GeoKrety Team</a>{/t}
     </p>
     <ul class="social_footer_ul text-center">
-        <li><a id="footer-facebook" href="https://www.facebook.com/groups/1624761011150615/about/">{fa icon="facebook"}</a></li>
-        <li><a id="footer-twitter" href="https://twitter.com/geokrety">{fa icon="twitter"}</a></li>
-        <li><a id="footer-instagram" href="https://www.instagram.com/explore/tags/geokrety/">{fa icon="instagram"}</a></li>
+        <li>
+            <a id="footer-facebook" href="https://www.facebook.com/groups/1624761011150615/about/" target="_blank" rel="noopener" title="{t}Join the GeoKrety community on Facebook{/t}">
+                {fa icon="facebook"}
+                <span class="sr-only">{t}Facebook{/t}</span>
+            </a>
+        </li>
+        <li>
+            <a id="footer-twitter" href="https://twitter.com/geokrety" target="_blank" rel="noopener" title="{t}Follow GeoKrety on X (Twitter){/t}">
+                {fa icon="twitter"}
+                <span class="sr-only">{t}X (Twitter){/t}</span>
+            </a>
+        </li>
+        <li>
+            <a id="footer-instagram" href="https://www.instagram.com/explore/tags/geokrety/" target="_blank" rel="noopener" title="{t}Explore GeoKrety on Instagram{/t}">
+                {fa icon="instagram"}
+                <span class="sr-only">{t}Instagram{/t}</span>
+            </a>
+        </li>
+        <li>
+            <a id="footer-fediverse" href="{GK_SITE_FEDIVERSE_URL}" rel="me noopener" target="_blank" title="{t}Join us on the Fediverse{/t}">
+                {fa icon="rss"}
+                <span class="sr-only">{t}Fediverse{/t}</span>
+            </a>
+        </li>
     </ul>
     <small class="pull-right">
         {include file='elements/version.tpl'}
