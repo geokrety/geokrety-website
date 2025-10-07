@@ -47,7 +47,7 @@
     {/if}
   </div>
   <div class="col-md-3">
-    {include file='banners/donate.tpl'}
+    {include file='blocks/donate.tpl'}
     {include file='blocks/found_geokret.tpl'}
   </div>
 </div>
