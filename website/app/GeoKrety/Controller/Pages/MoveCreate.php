@@ -89,9 +89,9 @@ class MoveCreate extends Base {
         }
 
         $geokret = new GeokretWithDetails();
-        $geokret->load(['gkid = ?', GK_HELP_GEOKRETY_EXAMPLE_2], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
+        $geokret->load(['id = ?', GK_HELP_GEOKRETY_EXAMPLE_2], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
         Smarty::assign('gk_example_2_tc', $geokret->tracking_code);
-        $geokret->load(['gkid = ?', GK_HELP_GEOKRETY_EXAMPLE_3], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
+        $geokret->load(['id = ?', GK_HELP_GEOKRETY_EXAMPLE_3], ttl: GK_HELP_GEOKRETY_EXAMPLE_TTL);
         Smarty::assign('gk_example_3_tc', $geokret->tracking_code);
         Smarty::render('pages/geokret_move.tpl');
     }

@@ -17,7 +17,7 @@ class GeokretyLabels extends Base {
 
     public function get(\Base $f3) {
         $geokret = new GeokretWithDetails();
-        $geokret->load(['gkid = ?', GK_HELP_GEOKRETY_EXAMPLE_5]);
+        $geokret->load(['id = ?', GK_HELP_GEOKRETY_EXAMPLE_5]);
         Smarty::assign('gk_example_5_tc', $geokret->tracking_code);
         Smarty::render('pages/geokrety_labels.tpl');
     }

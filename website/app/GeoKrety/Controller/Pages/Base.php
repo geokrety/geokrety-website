@@ -157,10 +157,5 @@ abstract class Base {
             \Flash::instance()->addMessage('This page could not be loaded as there is not enough existing GeoKrety in database.', 'danger');
             $this->f3->reroute('@home');
         }
-
-        if (\is_null($geokret->last_log)) {
-            \Flash::instance()->addMessage('GeoKrety for help page must have already moved.', 'danger');
-            $this->f3->reroute('@home');
-        }
     }
 }

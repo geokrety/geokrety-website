@@ -118,7 +118,7 @@ class Config extends \Prefab {
             define('GK_F3_DEBUG', false);
             define('GK_DEVEL', false);
             define('GK_HELP_GEOKRETY_EXAMPLE_1', getenv('GK_HELP_GEOKRETY_EXAMPLE_1') ?: 46657);
-            define('GK_HELP_GEOKRETY_EXAMPLE_2', getenv('GK_HELP_GEOKRETY_EXAMPLE_2') ?: 65509);
+            define('GK_HELP_GEOKRETY_EXAMPLE_2', getenv('GK_HELP_GEOKRETY_EXAMPLE_2') ?: 65508);
             define('GK_HELP_GEOKRETY_EXAMPLE_3', getenv('GK_HELP_GEOKRETY_EXAMPLE_3') ?: 66148);
             define('GK_HELP_GEOKRETY_EXAMPLE_4', getenv('GK_HELP_GEOKRETY_EXAMPLE_4') ?: 74526);
             define('GK_HELP_GEOKRETY_EXAMPLE_5', getenv('GK_HELP_GEOKRETY_EXAMPLE_5') ?: 106724);
