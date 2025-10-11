@@ -20,6 +20,7 @@
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_PLOT_JS) && ''}*}
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_PATH_JS) && ''}*}
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_SHAPE_JS) && ''}*}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_HTML5_QRCODE_JS) && ''}
 
 {\Assets::instance()->renderGroup(\GeoKrety\Assets::instance()->getAssets('footer')) nofilter}
 <script type="text/javascript" nonce="{\GeoKrety\Service\SecurityHeaders::instance()->getNonce()}">

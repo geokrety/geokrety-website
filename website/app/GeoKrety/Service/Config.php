@@ -575,6 +575,8 @@ class Config extends \Prefab {
         define('GK_CDN_D3_PATH_JS', getenv('GK_CDN_D3_PATH_JS') ?: GK_CDN_LIBRARIES_URL.'/d3-path/v3.0.1/d3-path.js');
         define('GK_CDN_D3_SHAPE_JS', getenv('GK_CDN_D3_SHAPE_JS') ?: GK_CDN_LIBRARIES_URL.'/d3-shape/v3.1.0/d3-shape.js');
 
+        define('GK_CDN_HTML5_QRCODE_JS', getenv('GK_CDN_HTML5_QRCODE_JS') ?: GK_CDN_LIBRARIES_URL.'/html5-qrcode/v2.3.8/html5-qrcode.min.js');
+
         $this->clearEnvironments();
     }
 
