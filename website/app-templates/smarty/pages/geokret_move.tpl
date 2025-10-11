@@ -27,6 +27,7 @@
 {include file="js/dialogs/dialog_geokret_move_select_from_inventory.tpl.js"}
 {/if}
 {include file="js/moves/tomselect-inventory.tpl.js"}
+{include file="js/moves/qrcode-scanner.tpl.js"}
 {if GK_DEVEL}
 {* used by Tests-qa in Robot  Framework *}
 $("#mapid").data({ map: map });

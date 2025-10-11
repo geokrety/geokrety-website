@@ -34,6 +34,7 @@
                                             {if $f3->get('SESSION.CURRENT_USER')}
                                             <button class="btn btn-default" type="button" id="nrInventorySelectButton" title="{t}Select GeoKrety from inventory{/t}" data-toggle="modal" data-target="#modal" data-type="select-from-inventory">{fa icon="briefcase"}</button>
                                             {/if}
+                                            <button class="btn btn-default" type="button" id="nrQrScanButton" title="{t}Scan QR Code{/t}" style="display:none;">{fa icon="qrcode"}</button>
                                             <button class="btn btn-default" type="button" id="nrSearchButton" title="{t}Verify Tracking Code{/t}">{fa icon="search"}</button>
                                         </span>
                                     </div>
