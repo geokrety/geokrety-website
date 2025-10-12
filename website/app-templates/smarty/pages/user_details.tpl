@@ -25,6 +25,7 @@
                 {include file='blocks/user/pictures.tpl'}
                 <div class="dz-message"></div>
             </div>
+            {include file='blocks/user/statistics.tpl'}
             {include file='blocks/user/medals.tpl'}
             {include file='blocks/user/awards.tpl'}
         </div>
@@ -66,6 +67,15 @@
     {include 'js/dialogs/dialog_picture_actions.tpl.js'}
     {include 'js/dialogs/dialog_oauth_disconnect.tpl.js'}
     {include 'js/users/settings_tracking.tpl.js'}
+    {include 'js/d3/countries_heatmap.js'}
+
+// Initialize countries heatmap for User
+initCountriesHeatmap({
+    anchor: "#user-countries-map-chart",
+    dataUrl: "{'api_v1_user_stats_countries'|alias:['userid'=>$user->id]}",
+    worldUrl: "{constant('GK_CDN_LIBRARIES_WORLD_ATLAS_URL')}",
+    topojsonUrl: "{constant('GK_CDN_LIBRARIES_TOPOJSON_CLIENT_URL')}"
+});
 
 $('#modal').on('hide.bs.modal', function(event) {
     $('#recaptcha_wrapper').empty();

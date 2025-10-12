@@ -96,7 +96,6 @@
                         {if $geokret->avatar}
                             {$geokret->avatar|picture:true:false:false nofilter}
                         {/if}
-                        {chart caption=_('Elevation profile') id="elevation-profile-chart" class="elevation-profile"}
                     </div>
                 </div>
             </div>
