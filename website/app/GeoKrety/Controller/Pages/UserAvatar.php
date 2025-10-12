@@ -5,7 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Service\Libravatar;
 
 class UserAvatar extends Base {
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     public function get() {
         if ($this->user->avatar) {

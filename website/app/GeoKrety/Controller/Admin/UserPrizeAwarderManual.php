@@ -8,7 +8,7 @@ use GeoKrety\Service\Smarty;
 
 class UserPrizeAwarderManual extends Base {
     use \AwardLoader;
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);

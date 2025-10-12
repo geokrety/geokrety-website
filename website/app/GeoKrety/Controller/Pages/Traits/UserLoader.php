@@ -1,5 +1,7 @@
 <?php
 
+namespace GeoKrety\Traits;
+
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
@@ -10,12 +12,12 @@ use GeoKrety\Service\Smarty;
 trait UserLoader {
     protected User $user;
 
-    public function beforeRoute(Base $f3) {
+    public function beforeRoute(\Base $f3) {
         parent::beforeRoute($f3);
         $this->loadUser($f3);
     }
 
-    public function loadUser(Base $f3) {
+    public function loadUser(\Base $f3) {
         if (!is_numeric($f3->get('PARAMS.userid'))) {
             $f3->error(404, _('This user does not exist.'));
         }

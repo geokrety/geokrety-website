@@ -6,7 +6,7 @@ use GeoKrety\Model\Geokret;
 use GeoKrety\Service\Smarty;
 
 class UserWatchedGeokrety extends BaseDatatableGeokrety {
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     public function get() {
         $geokret = new Geokret();

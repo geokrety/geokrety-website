@@ -8,7 +8,7 @@ use GeoKrety\Service\MedalsGenerator;
 use GeoKrety\Service\Smarty;
 
 class UserDetails extends Base {
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     public function get(\Base $f3) {
         // GeoKrety owned stats

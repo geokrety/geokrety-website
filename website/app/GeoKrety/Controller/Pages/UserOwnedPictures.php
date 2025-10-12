@@ -7,7 +7,7 @@ use GeoKrety\Pagination;
 use GeoKrety\Service\Smarty;
 
 class UserOwnedPictures extends Base {
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     public function get($f3) {
         // Load Pictures
