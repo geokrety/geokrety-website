@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-30 16:30+0000\n"
-"PO-Revision-Date: 2025-09-30 16:50\n"
+"POT-Creation-Date: 2025-10-12 13:44+0000\n"
+"PO-Revision-Date: 2025-10-12 14:29\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -1515,7 +1515,7 @@ msgstr "Trouver"
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:12
 #: website/app-templates/smarty/forms/registration.tpl:37
 #: website/app-templates/smarty/forms/registration.tpl:39
-#: website/app-templates/smarty/forms/move.tpl:264
+#: website/app-templates/smarty/forms/move.tpl:265
 #: website/app-templates/smarty/pages/search_by_user.tpl:19
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:23
 #: website/app-templates/smarty/pages/geokret_watchers.tpl:19
@@ -1528,7 +1528,7 @@ msgstr "Nom d’utilisateur"
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:152
+#: website/app-templates/smarty/forms/move.tpl:153
 msgid "Waypoint"
 msgstr "Waypoint"
 
@@ -1721,7 +1721,7 @@ msgid "Select GeoKrety from inventory"
 msgstr "Sélectionnez des GeoKrety depuis votre inventaire"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:31
-#: website/app-templates/smarty/forms/move.tpl:37
+#: website/app-templates/smarty/forms/move.tpl:38
 msgid "Verify Tracking Code"
 msgstr "Vérifier le code de suivi"
 
@@ -1730,12 +1730,12 @@ msgid "Enter tracking codes, separated by commas"
 msgstr ""
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:35
-#: website/app-templates/smarty/forms/move.tpl:41
+#: website/app-templates/smarty/forms/move.tpl:42
 msgid "%1 characters from <em>GeoKret label</em>."
 msgstr "%1 caractères de <em>l'étiquette du GeoKret</em>."
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:36
-#: website/app-templates/smarty/forms/move.tpl:42
+#: website/app-templates/smarty/forms/move.tpl:43
 msgid "<u>Do not use the code starting with 'GK' here</u>."
 msgstr "<u>N'utilisez pas le code commençant par 'GK' ici</u>."
 
@@ -1752,65 +1752,69 @@ msgstr "Objet voyageur (GeoKret)"
 msgid "eg. %1"
 msgstr "eg. %1"
 
-#: website/app-templates/smarty/forms/move.tpl:45
+#: website/app-templates/smarty/forms/move.tpl:37
+msgid "Scan QR Code"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:46
 msgid "ex: <code>%1</code> or multiple (limit %3) separated by comma <code>%1,%2</code>."
 msgstr "ex: <code>%1</code> ou multiple (limite %3) séparés par une virgule <code>%1,%2</code>."
 
-#: website/app-templates/smarty/forms/move.tpl:57
-#: website/app-templates/smarty/forms/move.tpl:229
+#: website/app-templates/smarty/forms/move.tpl:58
+#: website/app-templates/smarty/forms/move.tpl:230
 msgid "Validate"
 msgstr "Valider"
 
-#: website/app-templates/smarty/forms/move.tpl:68
+#: website/app-templates/smarty/forms/move.tpl:69
 msgid "Log type"
 msgstr "Type de signalement"
 
-#: website/app-templates/smarty/forms/move.tpl:78
+#: website/app-templates/smarty/forms/move.tpl:79
 msgid "This GeoKret is not collectible, so some move types are not available."
 msgstr "Ce GeoKret n'est pas collectionable donc certains types de mouvements ne sont pas disponibles."
 
-#: website/app-templates/smarty/forms/move.tpl:87
+#: website/app-templates/smarty/forms/move.tpl:88
 msgid "Select the action type you've made on the GeoKret. For more information consult the help page."
 msgstr "Sélectionnez le type d'action que vous avez réalisé sur ce GeoKret. Pour plus d'informations, consultez la page d'aide."
 
-#: website/app-templates/smarty/forms/move.tpl:98
+#: website/app-templates/smarty/forms/move.tpl:99
 msgid "When you've left a GeoKret in a cache"
 msgstr "Quand vous avez déposé un GeoKret dans une cache"
 
-#: website/app-templates/smarty/forms/move.tpl:99
+#: website/app-templates/smarty/forms/move.tpl:100
 msgid "I've dropped GeoKret"
 msgstr "J'ai déposé un GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:105
+#: website/app-templates/smarty/forms/move.tpl:106
 msgid "When you've taken a GeoKret from a cache and are not going to put it to another cache <i>soon</i>"
 msgstr "Lorsque vous avez pris un GeoKret dans une cache et que vous ne le déposerez pas <i>bientôt</i> dans une autre cache"
 
-#: website/app-templates/smarty/forms/move.tpl:106
+#: website/app-templates/smarty/forms/move.tpl:107
 msgid "I've grabbed GeoKret"
 msgstr "J'ai pris un GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:112
+#: website/app-templates/smarty/forms/move.tpl:113
 msgid "When you've met a GeoKret in a cache but haven't taken it with you"
 msgstr "Lorsque vous découvrez un GeoKret et que vous le laissez dans la cache"
 
-#: website/app-templates/smarty/forms/move.tpl:113
+#: website/app-templates/smarty/forms/move.tpl:114
 msgid "I've met GeoKret"
 msgstr "J'ai vu un GeoKret"
 
-#: website/app-templates/smarty/forms/move.tpl:119
+#: website/app-templates/smarty/forms/move.tpl:120
 msgid "When you take a GeoKret for a cache-tour; this is the same as doing a drop and then grab - the visited location is logged but GeoKret is still in your inventory"
 msgstr "Lorsqu'un GeoKret est en votre possession ; que vous trouvez une cache mais que vous n'y déposez pas le GeoKret. Ce type de signalement permet de faire voyager un GeoKret sans s'en séparer"
 
-#: website/app-templates/smarty/forms/move.tpl:120
+#: website/app-templates/smarty/forms/move.tpl:121
 msgid "I've dipped a GeoKret"
 msgstr "Un GeoKret a visité la cache"
 
-#: website/app-templates/smarty/forms/move.tpl:126
+#: website/app-templates/smarty/forms/move.tpl:127
 msgid "When you want to write a comment :)"
 msgstr "Lorsque vous souhaitez laisser un commentaire sur un GeoKret :)"
 
-#: website/app-templates/smarty/forms/move.tpl:127
-#: website/app-templates/smarty/forms/move.tpl:272
+#: website/app-templates/smarty/forms/move.tpl:128
+#: website/app-templates/smarty/forms/move.tpl:273
 #: website/app-templates/smarty/emails/daily-mail.tpl:38
 #: website/app-templates/smarty/emails/daily-mail.tpl:81
 #: website/app-templates/smarty/emails/daily-mail.tpl:127
@@ -1826,55 +1830,55 @@ msgstr "Lorsque vous souhaitez laisser un commentaire sur un GeoKret :)"
 msgid "Comment"
 msgstr "Commentaire"
 
-#: website/app-templates/smarty/forms/move.tpl:142
+#: website/app-templates/smarty/forms/move.tpl:143
 msgid "New location"
 msgstr "Nouvel emplacement"
 
-#: website/app-templates/smarty/forms/move.tpl:155
+#: website/app-templates/smarty/forms/move.tpl:156
 msgid "eg. GC1AQ2N"
 msgstr "ex. GC1AQ2N"
 
-#: website/app-templates/smarty/forms/move.tpl:160
+#: website/app-templates/smarty/forms/move.tpl:161
 msgid "Lookup opencaching cache by name"
 msgstr "Recherche par nom de cache OpenCaching"
 
-#: website/app-templates/smarty/forms/move.tpl:165
+#: website/app-templates/smarty/forms/move.tpl:166
 msgid "eg.: GC1AQ2N, OP069B, OC033A…"
 msgstr "ex : GC1AQ2N, OP069B, OC033A…"
 
-#: website/app-templates/smarty/forms/move.tpl:177
+#: website/app-templates/smarty/forms/move.tpl:178
 msgid "Enter cache name. <strong>Does not work for GC caches</strong>"
 msgstr "Entrez le nom de la cache. <strong>Ne fonctionne pas pour les caches GC</strong>"
 
-#: website/app-templates/smarty/forms/move.tpl:191
+#: website/app-templates/smarty/forms/move.tpl:192
 msgid "Coordinates"
 msgstr "Coordonnées"
 
-#: website/app-templates/smarty/forms/move.tpl:210
+#: website/app-templates/smarty/forms/move.tpl:211
 msgid " }<strong>Pro tip:</strong> Use this tiny \"<a href=\"%1\">bookmarklet</a>\" to copy cache coordinates directly from most cache pages."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:212
+#: website/app-templates/smarty/forms/move.tpl:213
 msgid " }Drag this link: \"<a href=\"%1\">Copy coords</a>\" to your bookmarks bar (only once)."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:213
+#: website/app-templates/smarty/forms/move.tpl:214
 msgid "Open the cache page."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:214
+#: website/app-templates/smarty/forms/move.tpl:215
 msgid "Click your new <em>Copy coords</em> bookmark → you'll see \"Copied: …\"."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:215
+#: website/app-templates/smarty/forms/move.tpl:216
 msgid "Paste into the Coordinates box above."
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:240
+#: website/app-templates/smarty/forms/move.tpl:241
 msgid "Additional data"
 msgstr "Données supplémentaires"
 
-#: website/app-templates/smarty/forms/move.tpl:248
+#: website/app-templates/smarty/forms/move.tpl:249
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:26
@@ -1882,19 +1886,19 @@ msgstr "Données supplémentaires"
 msgid "Date"
 msgstr "Date"
 
-#: website/app-templates/smarty/forms/move.tpl:266
+#: website/app-templates/smarty/forms/move.tpl:267
 msgid "This may be your:<br />- geocaching/opencaching username<br />- nickname<br />- name, etc."
 msgstr "Cela peut être : <br />- votre nom d'utilisateur sur les sites Geocaching/Opencaching<br />- un pseudo <br />- votre nom, etc."
 
-#: website/app-templates/smarty/forms/move.tpl:276
+#: website/app-templates/smarty/forms/move.tpl:277
 msgid "It is always nice to receive a little message ;)"
 msgstr "Il est toujours agréable de recevoir un petit message  ;)"
 
-#: website/app-templates/smarty/forms/move.tpl:288
+#: website/app-templates/smarty/forms/move.tpl:289
 msgid "Remember date and comment"
 msgstr "Se souvenir de la date et du commentaire"
 
-#: website/app-templates/smarty/forms/move.tpl:312
+#: website/app-templates/smarty/forms/move.tpl:313
 msgid "Post your log"
 msgstr "Poster votre mouvement"
 
