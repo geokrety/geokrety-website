@@ -14,6 +14,7 @@
     <div id="geokretAvatar" class="{if $geokret->isOwner()}dropzone{/if}">
 {include file='blocks/geokret/details.tpl'}
 {include file='blocks/geokret/pictures.tpl'}
+{include file='blocks/geokret/statistics.tpl'}
 <div class="dz-message"></div>
     </div>
 {include file='blocks/geokret/mission.tpl'}
@@ -51,4 +52,13 @@ $("#mapid").data({ map: map });
 {/if}
 {include 'js/moves/move_picture_upload.tpl.js'}
 {include 'js/d3/elevation_profile.js'}
+{include 'js/d3/countries_heatmap.js'}
+
+// Initialize countries heatmap for GeoKret
+initCountriesHeatmap({
+    anchor: "#countries-map-chart",
+    dataUrl: "{'api_v1_geokret_stats_countries'|alias:['gkid'=>$geokret->gkid]}",
+    worldUrl: "{constant('GK_CDN_LIBRARIES_WORLD_ATLAS_URL')}",
+    topojsonUrl: "{constant('GK_CDN_LIBRARIES_TOPOJSON_CLIENT_URL')}"
+});
 {/block}
