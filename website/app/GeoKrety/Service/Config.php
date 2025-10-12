@@ -577,6 +577,9 @@ class Config extends \Prefab {
 
         define('GK_CDN_HTML5_QRCODE_JS', getenv('GK_CDN_HTML5_QRCODE_JS') ?: GK_CDN_LIBRARIES_URL.'/html5-qrcode/v2.3.8/html5-qrcode.min.js');
 
+        define('GK_CDN_LIBRARIES_WORLD_ATLAS_URL', getenv('GK_CDN_LIBRARIES_WORLD_ATLAS_URL') ?: GK_CDN_LIBRARIES_URL.'/world-atlas/2.0.2/countries-110m.json');
+        define('GK_CDN_LIBRARIES_TOPOJSON_CLIENT_URL', getenv('GK_CDN_LIBRARIES_TOPOJSON_CLIENT_URL') ?: GK_CDN_LIBRARIES_URL.'/topojson-client/3.1.0/topojson-client.min.js');
+
         $this->clearEnvironments();
     }
 

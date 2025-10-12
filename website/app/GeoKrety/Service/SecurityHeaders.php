@@ -49,7 +49,12 @@ class SecurityHeaders extends \Prefab {
 
         // Base CSP directives
         $csp = [
-            sprintf('script-src \'nonce-%s\' \'strict-dynamic\'%s', $this->nonce, $isInlineTranslation ? ' \'unsafe-hashes\'' : ''),
+            sprintf(
+                'script-src \'nonce-%s\' \'strict-dynamic\' %s%s',
+                $this->nonce,
+                GK_CDN_SERVER_URL,
+                $isInlineTranslation ? ' \'unsafe-hashes\'' : ''
+            ),
             sprintf(
                 'img-src \'self\' data: blob: %s %s https://www.gstatic.com/recaptcha/ https://tile.openstreetmap.org https://seccdn.libravatar.org/avatar/ https://cdn.geokrety.org%s',
                 GK_CDN_SERVER_URL,
@@ -65,8 +70,9 @@ class SecurityHeaders extends \Prefab {
             ),
             'style-src-attr \'self\' \'unsafe-inline\'',
             sprintf(
-                'connect-src \'self\' %s%s',
+                'connect-src \'self\' %s %s%s',
                 GK_MINIO_SERVER_URL_EXTERNAL,
+                GK_CDN_SERVER_URL,
                 $isInlineTranslation ? ' https://crowdin.com/api/v2/jipt/cookie https://crowdin.com/api/v2/jipt/project/geokrety https://crowdin.com/api/v2/jipt/project/geokrety/strings' : ''
             ),
         ];
