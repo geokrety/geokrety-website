@@ -16,7 +16,7 @@ Variables         ../ressources/vars/browser_config.py
     # ...    ELSE IF    "${BROWSER}" == "chrome"
     # ...        Open GeoKrety Browser Chrome
     ...    ELSE       Fatal Error    Invalid browser name "${BROWSER}"
-    Set Window Size             1280    1024
+    Set Window Size             1900    1280
 
 # See https://spage.fi/headless-selenium-rf
 Open GeoKrety Browser Firefox
