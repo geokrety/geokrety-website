@@ -6,7 +6,7 @@ use GeoKrety\Controller\Base;
 use GeoKrety\Service\Smarty;
 
 class UserEmailInvalidate extends Base {
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     public function get() {
         Smarty::render('extends:base_modal.tpl|dialog/admin_users_email_invalidate.tpl');

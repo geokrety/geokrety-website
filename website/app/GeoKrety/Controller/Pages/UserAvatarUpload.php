@@ -6,7 +6,7 @@ use GeoKrety\Model\Picture;
 use GeoKrety\PictureType;
 
 class UserAvatarUpload extends AbstractPictureUpload {
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     protected function _generateKey(): string {
         return self::generateKey($this->user->id);

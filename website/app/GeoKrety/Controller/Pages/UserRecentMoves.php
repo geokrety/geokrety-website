@@ -6,7 +6,7 @@ use GeoKrety\Model\Move;
 use GeoKrety\Service\Smarty;
 
 class UserRecentMoves extends BaseDatatableMoves {
-    use \UserLoader;
+    use \GeoKrety\Traits\UserLoader;
 
     public function get($f3) {
         $move = new Move();
