@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 13:44+0000\n"
-"PO-Revision-Date: 2025-10-12 14:29\n"
+"POT-Creation-Date: 2025-10-12 18:29+0000\n"
+"PO-Revision-Date: 2025-10-12 21:59\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -183,8 +183,8 @@ msgstr "Não há mais Códigos de Seguimento disponíveis usando este padrão."
 #: website/app/GeoKrety/Controller/Admin/Impersonate.php:16
 #: website/app/GeoKrety/Controller/Admin/Traits/CurrentAdminLoader.php:24
 #: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:24
-#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:20
-#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:30
+#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:22
+#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:32
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:34
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:39
 msgid "This user does not exist."
@@ -1754,7 +1754,7 @@ msgstr "ex. %1"
 
 #: website/app-templates/smarty/forms/move.tpl:37
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Ler código QR"
 
 #: website/app-templates/smarty/forms/move.tpl:46
 msgid "ex: <code>%1</code> or multiple (limit %3) separated by comma <code>%1,%2</code>."
@@ -3628,6 +3628,8 @@ msgid "Print a label for this GeoKret"
 msgstr "Imprimir uma etiqueta para este GeoKret"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:48
+#: website/app-templates/smarty/blocks/geokret/statistics.tpl:4
+#: website/app-templates/smarty/blocks/user/statistics.tpl:4
 msgid "Statistics"
 msgstr "Estatísticas"
 
