@@ -39,6 +39,12 @@
                 {fa icon="map"}
                 <a href="{'user_owned_map'|alias}">{if $user->isCurrentUser()}{t}Map of my GeoKrety{/t}{else}{t username=$user->username}Map of %1's GeoKrety{/t}{/if}</a>
             </li>
+            {if $user->isCurrentUser()}
+            <li>
+                {fa icon="cog"}
+                <a href="{'user_settings'|alias}">{t}My Settings{/t}</a>
+            </li>
+            {/if}
             {* TODO
             <li>
                 {fa icon="bar-chart-o"}
