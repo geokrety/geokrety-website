@@ -18,7 +18,7 @@ $("#modal").on("show.bs.modal", function(event) {
             if (settingType === "bool" || settingType === "boolean") {
                 const trueSelected = (settingCurrent === "true" || settingCurrent === true) ? " selected" : "";
                 const falseSelected = (settingCurrent === "false" || settingCurrent === false) ? " selected" : "";
-                inputField = "<select id=\"userSettingValue\" class=\"form-control\"><option value=\"true\"" + trueSelected + ">✓ True</option><option value=\"false\"" + falseSelected + ">✗ False</option></select>";
+                inputField = "<select id=\"userSettingValue\" class=\"form-control\"><option value=\"true\"" + trueSelected + ">✓ " + i18nUserCustomSettings.boolTrue + "</option><option value=\"false\"" + falseSelected + ">✗ " + i18nUserCustomSettings.boolFalse + "</option></select>";
             } else if (settingType && settingType.indexOf("enum:") === 0) {
                 const enumValues = settingType.substring(5).split("|");
                 let options = "";

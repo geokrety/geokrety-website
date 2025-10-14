@@ -11,7 +11,9 @@ const i18nUserCustomSettings = {
     confirmReset: "{t}Are you sure you want to reset this setting to its default value?{/t}",
     editSetting: "{t}Edit Setting{/t}",
     currentValue: "{t}Current Value{/t}",
-    closeButton: "{t}Close{/t}"
+    closeButton: "{t}Close{/t}",
+    boolTrue: "{t}True{/t}",
+    boolFalse: "{t}False{/t}"
 };
 
 //{literal}
@@ -99,8 +101,8 @@ function resetUserSetting(name) {
     });
 }
 
-// Initialize DataTable
-const userCustomSettingsTable = new DataTable("#userCustomSettingsTable", {
+// Initialize DataTable (using jQuery plugin syntax for DataTables 1.12.1)
+const userCustomSettingsTable = $("#userCustomSettingsTable").DataTable({
     data: userCustomSettingsData,
     columns: [
         {
