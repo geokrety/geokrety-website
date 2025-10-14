@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 13:44+0000\n"
-"PO-Revision-Date: 2025-10-12 14:29\n"
+"POT-Creation-Date: 2025-10-14 20:42+0000\n"
+"PO-Revision-Date: 2025-10-14 21:38\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -183,8 +183,8 @@ msgstr "Код отслеживания, использующий этот ша�
 #: website/app/GeoKrety/Controller/Admin/Impersonate.php:16
 #: website/app/GeoKrety/Controller/Admin/Traits/CurrentAdminLoader.php:24
 #: website/app/GeoKrety/Controller/Pages/Traits/CurrentUserLoader.php:24
-#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:20
-#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:30
+#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:22
+#: website/app/GeoKrety/Controller/Pages/Traits/UserLoader.php:32
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:34
 #: website/app/GeoKrety/Controller/Pages/UserContact.php:39
 msgid "This user does not exist."
@@ -731,7 +731,8 @@ msgstr "Не удалось обновить ваш secid."
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "Ваш secid был обновлен. Не забудьте повторно аутентифицировать любое другое приложение, подключенное к вашей учетной записи GeoKrety."
 
-#: website/app/GeoKrety/Controller/Pages/UserSettings.php:18
+#: website/app/GeoKrety/Controller/Pages/UserSettings.php:99
+#: website/app/GeoKrety/Controller/Pages/UserSettings.php:103
 #, php-format
 msgid "Failed to save setting \"%s\""
 msgstr "Не удалось сохранить настройку \"%s\""
@@ -1549,6 +1550,7 @@ msgstr "Напишите сообщение здесь"
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 #: website/app-templates/smarty/pages/geokret_create.tpl:14
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:21
 msgid "Save"
 msgstr "Сохранить"
 
@@ -1924,6 +1926,7 @@ msgstr "Отметить ГеоКрота"
 #: website/app-templates/smarty/navbar-left.tpl:11
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:27
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:26
+#: website/app-templates/smarty/pages/user_settings.tpl:27
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:27
 #: website/app-templates/smarty/pages/user_inventory.tpl:27
@@ -3049,6 +3052,44 @@ msgstr "Нет, прервать этот запрос"
 msgid "Create"
 msgstr "Создать"
 
+#: website/app-templates/smarty/pages/user_settings.tpl:3
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "My Settings"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:14
+msgid "Personal Settings"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:17
+msgid "Here you can customize your personal preferences. Any setting you change will override the default site value."
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:18
+msgid "Settings marked with a badge have been customized by you."
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:23
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:8
+msgid "Setting"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:24
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:9
+msgid "Description"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:25
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:11
+msgid "Default Value"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:26
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:12
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:12
+msgid "Current Value"
+msgstr ""
+
 #: website/app-templates/smarty/pages/password_recovery.tpl:3
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
@@ -3645,6 +3686,8 @@ msgid "Print a label for this GeoKret"
 msgstr "Распечатать метку для этого ГеоКрота"
 
 #: website/app-templates/smarty/blocks/geokret/actions.tpl:48
+#: website/app-templates/smarty/blocks/geokret/statistics.tpl:4
+#: website/app-templates/smarty/blocks/user/statistics.tpl:4
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -3897,7 +3940,7 @@ msgstr "Карта моих ГеоКротов"
 msgid "Map of %1's GeoKrety"
 msgstr "Карта ГеоКротов %1"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:45
+#: website/app-templates/smarty/blocks/user/actions.tpl:51
 msgid "User stats"
 msgstr "Статистика пользователя"
 
@@ -4255,6 +4298,8 @@ msgstr "И спасибо Вам! Поздравляем!"
 
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
 #: website/app-templates/smarty/banners/contribute.tpl:3
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:3
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:3
 msgid "Close"
 msgstr "Закрыть"
 
@@ -4558,6 +4603,15 @@ msgstr "Наградить %1 в размере:"
 msgid "Award"
 msgstr "Награда"
 
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:4
+msgid "Edit Setting"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:20
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:21
+msgid "Cancel"
+msgstr ""
+
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
 msgid "Select new email status"
 msgstr ""
@@ -4724,6 +4778,18 @@ msgstr "Как написать хорошие пароли"
 #: website/app-templates/smarty/dialog/user_update_password.tpl:43
 msgid "Password strength"
 msgstr "Надёжность пароля"
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:4
+msgid "Reset Setting to Default"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:16
+msgid "Are you sure you want to reset this setting to its default value? This action cannot be undone."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:22
+msgid "Reset to Default"
+msgstr ""
 
 #: website/app-templates/smarty/dialog/login.tpl:14
 msgid "Login using"
