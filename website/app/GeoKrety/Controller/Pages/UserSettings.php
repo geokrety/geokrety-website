@@ -48,19 +48,19 @@ class UserSettings extends \GeoKrety\Controller\Base {
         Smarty::render('pages/user_settings.tpl');
     }
 
-    public function dialog_edit_get(\Base $f3) {
+    public function dialog_edit_get() {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_setting_edit.tpl');
     }
 
-    public function dialog_edit_get_ajax(\Base $f3) {
+    public function dialog_edit_get_ajax() {
         Smarty::render('extends:base_modal.tpl|dialog/user_setting_edit.tpl');
     }
 
-    public function dialog_reset_get(\Base $f3) {
+    public function dialog_reset_get() {
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_setting_reset.tpl');
     }
 
-    public function dialog_reset_get_ajax(\Base $f3) {
+    public function dialog_reset_get_ajax() {
         Smarty::render('extends:base_modal.tpl|dialog/user_setting_reset.tpl');
     }
 
