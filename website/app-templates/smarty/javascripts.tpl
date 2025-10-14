@@ -28,6 +28,7 @@
     (function($) {
         $(document).ready(function() {
 
+{include file='js/flash_messages.tpl.js'}
 {include file='js/modal.tpl.js'}
 {include file='js/maxlenght.tpl.js'}
 {include file='js/tooltips.tpl.js'}
