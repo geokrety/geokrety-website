@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 18:29+0000\n"
-"PO-Revision-Date: 2025-10-12 19:19\n"
+"POT-Creation-Date: 2025-10-14 20:42+0000\n"
+"PO-Revision-Date: 2025-10-14 21:39\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -731,7 +731,8 @@ msgstr "crwdns65308:0crwdne65308:0"
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "crwdns65310:0crwdne65310:0"
 
-#: website/app/GeoKrety/Controller/Pages/UserSettings.php:18
+#: website/app/GeoKrety/Controller/Pages/UserSettings.php:99
+#: website/app/GeoKrety/Controller/Pages/UserSettings.php:103
 #, php-format
 msgid "Failed to save setting \"%s\""
 msgstr "crwdns65312:0%scrwdne65312:0"
@@ -1549,6 +1550,7 @@ msgstr "crwdns66528:0crwdne66528:0"
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 #: website/app-templates/smarty/pages/geokret_create.tpl:14
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:21
 msgid "Save"
 msgstr "crwdns65738:0crwdne65738:0"
 
@@ -1924,6 +1926,7 @@ msgstr "crwdns65842:0crwdne65842:0"
 #: website/app-templates/smarty/navbar-left.tpl:11
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:27
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:26
+#: website/app-templates/smarty/pages/user_settings.tpl:27
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:27
 #: website/app-templates/smarty/pages/user_inventory.tpl:27
@@ -3049,6 +3052,44 @@ msgstr "crwdns65542:0crwdne65542:0"
 msgid "Create"
 msgstr "crwdns66628:0crwdne66628:0"
 
+#: website/app-templates/smarty/pages/user_settings.tpl:3
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "My Settings"
+msgstr "crwdns67542:0crwdne67542:0"
+
+#: website/app-templates/smarty/pages/user_settings.tpl:14
+msgid "Personal Settings"
+msgstr "crwdns67544:0crwdne67544:0"
+
+#: website/app-templates/smarty/pages/user_settings.tpl:17
+msgid "Here you can customize your personal preferences. Any setting you change will override the default site value."
+msgstr "crwdns67546:0crwdne67546:0"
+
+#: website/app-templates/smarty/pages/user_settings.tpl:18
+msgid "Settings marked with a badge have been customized by you."
+msgstr "crwdns67548:0crwdne67548:0"
+
+#: website/app-templates/smarty/pages/user_settings.tpl:23
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:8
+msgid "Setting"
+msgstr "crwdns67550:0crwdne67550:0"
+
+#: website/app-templates/smarty/pages/user_settings.tpl:24
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:9
+msgid "Description"
+msgstr "crwdns67552:0crwdne67552:0"
+
+#: website/app-templates/smarty/pages/user_settings.tpl:25
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:11
+msgid "Default Value"
+msgstr "crwdns67554:0crwdne67554:0"
+
+#: website/app-templates/smarty/pages/user_settings.tpl:26
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:12
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:12
+msgid "Current Value"
+msgstr "crwdns67556:0crwdne67556:0"
+
 #: website/app-templates/smarty/pages/password_recovery.tpl:3
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
@@ -3873,7 +3914,7 @@ msgstr "crwdns66366:0crwdne66366:0"
 msgid "Map of %1's GeoKrety"
 msgstr "crwdns66368:0%1crwdne66368:0"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:45
+#: website/app-templates/smarty/blocks/user/actions.tpl:51
 msgid "User stats"
 msgstr "crwdns66370:0crwdne66370:0"
 
@@ -4231,6 +4272,8 @@ msgstr "crwdns66980:0crwdne66980:0"
 
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
 #: website/app-templates/smarty/banners/contribute.tpl:3
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:3
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:3
 msgid "Close"
 msgstr "crwdns66952:0crwdne66952:0"
 
@@ -4534,6 +4577,15 @@ msgstr "crwdns66806:0%1crwdne66806:0"
 msgid "Award"
 msgstr "crwdns66808:0crwdne66808:0"
 
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:4
+msgid "Edit Setting"
+msgstr "crwdns67558:0crwdne67558:0"
+
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:20
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:21
+msgid "Cancel"
+msgstr "crwdns67560:0crwdne67560:0"
+
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
 msgid "Select new email status"
 msgstr "crwdns67046:0crwdne67046:0"
@@ -4700,6 +4752,18 @@ msgstr "crwdns66732:0crwdne66732:0"
 #: website/app-templates/smarty/dialog/user_update_password.tpl:43
 msgid "Password strength"
 msgstr "crwdns66734:0crwdne66734:0"
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:4
+msgid "Reset Setting to Default"
+msgstr "crwdns67562:0crwdne67562:0"
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:16
+msgid "Are you sure you want to reset this setting to its default value? This action cannot be undone."
+msgstr "crwdns67564:0crwdne67564:0"
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:22
+msgid "Reset to Default"
+msgstr "crwdns67566:0crwdne67566:0"
 
 #: website/app-templates/smarty/dialog/login.tpl:14
 msgid "Login using"

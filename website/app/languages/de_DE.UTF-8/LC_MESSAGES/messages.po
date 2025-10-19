@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 18:29+0000\n"
-"PO-Revision-Date: 2025-10-14 20:31\n"
+"POT-Creation-Date: 2025-10-14 20:42+0000\n"
+"PO-Revision-Date: 2025-10-14 21:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -731,7 +731,8 @@ msgstr "Fehler beim Aktualisieren der SecID."
 msgid "Your secid has been refreshed. Don't forget to re-authenticate any other application connected to your GeoKrety account."
 msgstr "Deine SecID wurde erneuert. Vergiss nicht alle anderen Anwendungen, die mit deinem GeoKrety-Konto verknüpft sind, neu zu autorisieren."
 
-#: website/app/GeoKrety/Controller/Pages/UserSettings.php:18
+#: website/app/GeoKrety/Controller/Pages/UserSettings.php:99
+#: website/app/GeoKrety/Controller/Pages/UserSettings.php:103
 #, php-format
 msgid "Failed to save setting \"%s\""
 msgstr "Speichern der Einstellungen \"%s\" fehlgeschlagen"
@@ -1549,6 +1550,7 @@ msgstr "Hier die Neuigkeiten schreiben"
 #: website/app-templates/smarty/pages/user_template_chooser.tpl:28
 #: website/app-templates/smarty/pages/geokret_create.tpl:14
 #: website/app-templates/smarty/dialog/picture_edit.tpl:47
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:21
 msgid "Save"
 msgstr "Speichern"
 
@@ -1924,6 +1926,7 @@ msgstr "Einen GeoKret loggen"
 #: website/app-templates/smarty/navbar-left.tpl:11
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:27
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:26
+#: website/app-templates/smarty/pages/user_settings.tpl:27
 #: website/app-templates/smarty/pages/statistics_waypoints.tpl:18
 #: website/app-templates/smarty/pages/user_owned_geokrety.tpl:27
 #: website/app-templates/smarty/pages/user_inventory.tpl:27
@@ -3049,6 +3052,44 @@ msgstr "Nein, diese Anfrage abbrechen"
 msgid "Create"
 msgstr "Erstellen"
 
+#: website/app-templates/smarty/pages/user_settings.tpl:3
+#: website/app-templates/smarty/blocks/user/actions.tpl:45
+msgid "My Settings"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:14
+msgid "Personal Settings"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:17
+msgid "Here you can customize your personal preferences. Any setting you change will override the default site value."
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:18
+msgid "Settings marked with a badge have been customized by you."
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:23
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:8
+msgid "Setting"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:24
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:9
+msgid "Description"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:25
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:11
+msgid "Default Value"
+msgstr ""
+
+#: website/app-templates/smarty/pages/user_settings.tpl:26
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:12
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:12
+msgid "Current Value"
+msgstr ""
+
 #: website/app-templates/smarty/pages/password_recovery.tpl:3
 #: website/app-templates/smarty/pages/password_recovery.tpl:10
 msgid "Password recovery"
@@ -3873,7 +3914,7 @@ msgstr "Karte meiner GeoKrety"
 msgid "Map of %1's GeoKrety"
 msgstr "Karte der GeoKrety von %1"
 
-#: website/app-templates/smarty/blocks/user/actions.tpl:45
+#: website/app-templates/smarty/blocks/user/actions.tpl:51
 msgid "User stats"
 msgstr "Nutzerstatistik"
 
@@ -4231,6 +4272,8 @@ msgstr "Und das dank dir! Gratulation!"
 
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
 #: website/app-templates/smarty/banners/contribute.tpl:3
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:3
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:3
 msgid "Close"
 msgstr "Schließen"
 
@@ -4534,6 +4577,15 @@ msgstr "Auszeichnung %1 mit:"
 msgid "Award"
 msgstr "Auszeichnung"
 
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:4
+msgid "Edit Setting"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_setting_edit.tpl:20
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:21
+msgid "Cancel"
+msgstr ""
+
 #: website/app-templates/smarty/dialog/admin_users_email_invalidate.tpl:4
 msgid "Select new email status"
 msgstr "Neuen E-Mail-Status auswählen"
@@ -4700,6 +4752,18 @@ msgstr "Wie man gute Passwörter schreibt"
 #: website/app-templates/smarty/dialog/user_update_password.tpl:43
 msgid "Password strength"
 msgstr "Passwortstärke"
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:4
+msgid "Reset Setting to Default"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:16
+msgid "Are you sure you want to reset this setting to its default value? This action cannot be undone."
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_setting_reset.tpl:22
+msgid "Reset to Default"
+msgstr ""
 
 #: website/app-templates/smarty/dialog/login.tpl:14
 msgid "Login using"
