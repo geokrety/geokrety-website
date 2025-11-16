@@ -13,14 +13,13 @@ use Sugar\Event;
 class UserSettings extends \Prefab {
     /**
      * Create or update a user personal setting.
-     *
-     * @param User|int $user
+     * If the value matches the default, the database row is deleted for efficiency.
      *
      * @throws \Exception
      */
-    public function put($user, string $setting_name, $value): bool {
+    public function put(User|int $user, string $setting_name, $value): bool {
         $setting = new CustomUsersSettings();
-        $setting->load(['user = ? AND name = ?', gettype($user) === 'GeoKrety\Model\User' ? $user->id : $user, $setting_name]);
+        $setting->load(['user = ? AND name = ?', $user instanceof User ? $user->id : $user, $setting_name]);
         $setting->name = $setting_name;
         $setting->user = $user;
         try {
@@ -40,7 +39,10 @@ class UserSettings extends \Prefab {
         }
 
         Event::instance()->emit('user.setting.save.success', $setting);
-        \Base::instance()->set('SESSION.SETTINGS.'.$setting->getRaw('name'), $setting->value);
+
+        // Update session with the value (trigger handles DB cleanup if matches default)
+        // Use getRaw to avoid triggering the getter which requires name relationship
+        \Base::instance()->set('SESSION.SETTINGS.'.$setting_name, $setting->getRaw('value'));
 
         return true;
     }

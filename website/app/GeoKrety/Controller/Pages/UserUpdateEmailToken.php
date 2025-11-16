@@ -3,6 +3,7 @@
 namespace GeoKrety\Controller;
 
 use GeoKrety\Model\User;
+use GeoKrety\Service\UserSettings;
 use Sugar\Event;
 
 class UserUpdateEmailToken extends Base {
@@ -23,8 +24,10 @@ class UserUpdateEmailToken extends Base {
             return;
         }
 
-        $user->daily_mails = false;
-        $user->save();
+        // Unsubscribe from all email notifications using UserSettings
+        $userSettings = UserSettings::instance();
+        $userSettings->put($user, 'DAILY_DIGEST', 'false');
+        $userSettings->put($user, 'INSTANT_NOTIFICATIONS', 'false');
         echo 'Unsubscribed';
         Event::instance()->emit('email.list-unsubscribe.token', $user->list_unsubscribe_token);
     }

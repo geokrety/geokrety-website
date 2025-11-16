@@ -12,6 +12,7 @@ use GeoKrety\Model\News;
 use GeoKrety\Model\User;
 use GeoKrety\Service\File;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\UserSettings;
 use PHPMailer\PHPMailer\Exception;
 use Sugar\Event;
 
@@ -126,12 +127,17 @@ SQL;
 
             return;
         }
-        if (!$this->user->daily_mails) {
+
+        $userSettings = UserSettings::instance();
+        $daily_digest_enabled = $userSettings->get($this->user, 'DAILY_DIGEST');
+
+        if (!$daily_digest_enabled) {
             $this->console_writer->print([$this->user->id, $this->user->username, '403 don\'t want'], true);
             Event::instance()->emit('cron.dailymail.deny', $this->user);
 
             return;
         }
+
         if (!$this->user->isEmailValid()) {
             $this->console_writer->print([$this->user->id, $this->user->username, sprintf('412 invalid email status (%d)', $this->user->email_invalid)], true);
             Event::instance()->emit('cron.dailymail.invalid-mail', $this->user);

@@ -45,10 +45,13 @@ abstract class BaseCustomSettings extends BaseSettings {
     }
 
     public function jsonSerialize(): mixed {
+        // Handle case where name relationship might not be loaded (e.g., after trigger deletion)
+        $name_value = is_object($this->name) ? $this->name->name : $this->getRaw('name');
+
         return [
-            'name' => $this->name->name,
-            'type' => $this->name->type,
-            'default' => $this->name->default,
+            'name' => $name_value,
+            'type' => is_object($this->name) ? $this->name->type : null,
+            'default' => is_object($this->name) ? $this->name->default : null,
             'value' => $this->value,
         ];
     }

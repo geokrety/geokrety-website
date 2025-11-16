@@ -135,6 +135,8 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
                 return [$this, 'smarty_modifier_movelink'];
             case 'movemsg':
                 return [$this, 'smarty_modifier_movemsg'];
+            case 'move_direct_link':
+                return [$this, 'smarty_modifier_move_direct_link'];
             case 'newslink':
                 return [$this, 'smarty_modifier_newslink'];
             case 'picture':
@@ -603,6 +605,17 @@ EOT;
         $data[] = '</div>';
 
         return implode('', $data);
+    }
+
+    /**
+     * Purpose:  outputs a direct link to move details page (bypasses pagination).
+     */
+    public function smarty_modifier_move_direct_link(GeoKrety\Model\Move $move): string {
+        return sprintf(
+            '%s%s',
+            GK_SITE_BASE_SERVER_URL,
+            Base::instance()->alias('geokret_details_by_move_id', sprintf('gkid=%s,moveid=%d', $move->geokret->gkid(), $move->id))
+        );
     }
 
     /**

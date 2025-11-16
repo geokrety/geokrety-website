@@ -80,8 +80,14 @@
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="dailyMailsInput" name="daily_mails" aria-describedby="dailyMailsHelpBlock" {if $user->daily_mails} checked{/if}>{t}Yes, I want to receive email alerts (sent once a day).{/t}
-                    <span id="dailyMailsHelpBlock" class="help-block">{t}Email alerts may contain travel information about your GeoKrety, news, comments…{/t}</span>
+                    <input type="checkbox" id="dailyDigestInput" name="daily_digest" aria-describedby="dailyDigestHelpBlock" {if $f3->get('POST.daily_digest')} checked{/if}>{t}Yes, I want to receive daily digest email (sent once a day).{/t}
+                    <span id="dailyDigestHelpBlock" class="help-block">{t}Daily digest may contain travel information about your GeoKrety, news, comments…{/t}</span>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="instantNotificationsInput" name="instant_notifications" aria-describedby="instantNotificationsHelpBlock" {if $f3->get('POST.instant_notifications')} checked{/if}>{t}Yes, I want to receive instant email notifications.{/t}
+                    <span id="instantNotificationsHelpBlock" class="help-block">{t}Instant notifications are sent immediately when activities occur on your GeoKrety.{/t}</span>
                 </label>
             </div>
         </div>
