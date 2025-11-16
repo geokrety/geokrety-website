@@ -5,6 +5,7 @@ namespace GeoKrety\Controller;
 use GeoKrety\Model\SocialAuthProvider;
 use GeoKrety\Model\User;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\UserSettings;
 
 class RegistrationOAuth extends BaseRegistration {
     public function post(\Base $f3) {
@@ -29,7 +30,6 @@ class RegistrationOAuth extends BaseRegistration {
             $this->user->preferred_language = $social_data->raw->locale;
         }
 
-        $user->daily_mails = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN);
         if (filter_var($f3->get('POST.terms_of_use'), FILTER_VALIDATE_BOOLEAN)) {
             $user->touch('terms_of_use_datetime');
         }
@@ -58,6 +58,18 @@ class RegistrationOAuth extends BaseRegistration {
         $social_auth->save();
 
         $this->saveTrackingSettings();
+
+        // Save notification preferences using UserSettings service
+        $daily_digest = filter_var($f3->get('POST.daily_digest'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications = filter_var($f3->get('POST.instant_notifications'), FILTER_VALIDATE_BOOLEAN);
+
+        $userSettings = UserSettings::instance();
+        if ($daily_digest) {
+            $userSettings->put($user, 'DAILY_DIGEST', 'true');
+        }
+        if ($instant_notifications) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS', 'true');
+        }
 
         Login::connectUser($f3, $user, 'registration.oauth');
     }

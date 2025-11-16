@@ -7,6 +7,7 @@ use GeoKrety\Model\AccountActivationToken as AccountActivationModel;
 use GeoKrety\Model\User;
 use GeoKrety\Service\LanguageService;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\UserSettings;
 
 class RegistrationEmail extends BaseRegistration {
     public function post(\Base $f3) {
@@ -17,7 +18,6 @@ class RegistrationEmail extends BaseRegistration {
         $user->username = $f3->get('POST.username');
         $user->_email = $f3->get('POST.email');
         $user->preferred_language = $f3->get('POST.preferred_language');
-        $user->daily_mails = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
         $user->password = $f3->get('POST.password');
         $user->email_invalid = User::USER_EMAIL_UNCONFIRMED;
         $user->account_valid = User::USER_ACCOUNT_NON_ACTIVATED;
@@ -67,6 +67,18 @@ class RegistrationEmail extends BaseRegistration {
         }
         $user->save();
         $this->saveTrackingSettings();
+
+        // Save notification preferences using UserSettings service
+        $daily_digest = filter_var($f3->get('POST.daily_digest'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications = filter_var($f3->get('POST.instant_notifications'), FILTER_VALIDATE_BOOLEAN);
+
+        $userSettings = UserSettings::instance();
+        if ($daily_digest) {
+            $userSettings->put($user, 'DAILY_DIGEST', 'true');
+        }
+        if ($instant_notifications) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS', 'true');
+        }
 
         $f3->get('DB')->commit();
         $f3->reroute(\Multilang::instance()->alias('user_details', ['userid' => $user->id], $user->preferred_language));

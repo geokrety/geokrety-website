@@ -13,7 +13,6 @@ use GeoKrety\Email\AccountActivation;
  * @property string|null email
  * @property \DateTime joined_on_datetime
  * @property \DateTime updated_on_datetime
- * @property bool daily_mails
  * @property string registration_ip
  * @property string|null preferred_language
  * @property float|null home_latitude
@@ -133,11 +132,6 @@ class User extends Base implements \JsonSerializable {
             'default' => 'CURRENT_TIMESTAMP',
             'nullable' => false,
             // ON UPDATE
-        ],
-        'daily_mails' => [
-            'type' => Schema::DT_BOOLEAN,
-            'default' => true,
-            'nullable' => false,
         ],
         'registration_ip' => [
             'type' => Schema::DT_VARCHAR128,

@@ -55,7 +55,7 @@
                     <span title="{$geokret->last_position->comment|markdown:'text'}">{$geokret->last_position->comment|markdown:'text'|truncate:80:"(…)" nofilter}</span>
                 </td>
                 <td class="text-center text-sm" nowrap>
-                    {$geokret->moved_on_datetime|print_date nofilter}
+                    {$geokret->moved_on_datetime|print_date_iso_format nofilter}
                     <br/>
                     <span class="text-center">{$geokret->author|userlink:$geokret->author_username nofilter}</span>
                 </td>
@@ -101,7 +101,7 @@
                     <span title="{$move->comment|markdown:'text'}">{$move->comment|markdown:'text'|truncate:80:"(…)" nofilter}</span>
                 </td>
                 <td class="text-center text-sm" nowrap>
-                    {$move->moved_on_datetime|print_date nofilter}
+                    {$move->moved_on_datetime|print_date_iso_format nofilter}
                     <br/>
                     <span class="text-center">{$move->author|userlink:$move->username nofilter}</span>
                 </td>
@@ -126,7 +126,7 @@
             <th>{t}Position{/t}</th>
             <th>{t}Comment{/t}</th>
             <th>{t}Author{/t}</th>
-            <th>{t}Distance{/t}</th>
+            <th>{t}Distance since last move{/t}</th>
         </tr>
         </thead>
         <tbody>
@@ -147,7 +147,7 @@
                     <span title="{$move->comment|markdown:'text'}">{$move->comment|markdown:'text'|truncate:80:"(…)" nofilter}</span>
                 </td>
                 <td class="text-center text-sm" nowrap>
-                    {$move->moved_on_datetime|print_date nofilter}
+                    {$move->moved_on_datetime|print_date_iso_format nofilter}
                     <br/>
                     <span class="text-center">{$move->author|userlink:$move->username nofilter}</span>
                 </td>
@@ -184,7 +184,7 @@
                     <span title="{$comment->content|markdown:'text'}">{$comment->content|markdown:'text'|truncate:80:"(…)" nofilter}</span>
                 </td>
                 <td class="text-center" nowrap>
-                    {$comment->created_on_datetime|print_date nofilter}
+                    {$comment->created_on_datetime|print_date_iso_format nofilter}
                     <br/>
                     <span class="text-center">{$comment->author|userlink nofilter}</span>
                 </td>

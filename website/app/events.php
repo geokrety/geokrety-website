@@ -4,7 +4,7 @@ use GeoKrety\Service\Metrics;
 use GeoKrety\Session;
 
 /**
- * @param JsonSerializable|array $newObjectModel
+ * @param JsonSerializable|array|string $newObjectModel
  */
 function audit(string $event, $newObjectModel) {
     $log = new GeoKrety\Model\AuditLog();

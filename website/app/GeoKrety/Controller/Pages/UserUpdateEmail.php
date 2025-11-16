@@ -6,17 +6,30 @@ use Carbon\Carbon;
 use GeoKrety\Email\EmailChange;
 use GeoKrety\Model\EmailActivationToken;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\UserSettings;
 use GeoKrety\Traits\CurrentUserLoader;
 use Sugar\Event;
 
 class UserUpdateEmail extends Base {
     use CurrentUserLoader;
 
+    public function get(\Base $f3) {
+        // Reset eventual transaction
+        if ($f3->get('DB')->trans()) {
+            $f3->get('DB')->rollback();
+        }
+        Smarty::assign('daily_digest', UserSettings::getForCurrentUser('DAILY_DIGEST'));
+        Smarty::assign('instant_notifications', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS'));
+        Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_email.tpl');
+    }
+
     public function get_ajax(\Base $f3) {
         // Reset eventual transaction
         if ($f3->get('DB')->trans()) {
             $f3->get('DB')->rollback();
         }
+        Smarty::assign('daily_digest', UserSettings::getForCurrentUser('DAILY_DIGEST'));
+        Smarty::assign('instant_notifications', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS'));
         Smarty::render('extends:base_modal.tpl|dialog/user_update_email.tpl');
     }
 
@@ -24,16 +37,26 @@ class UserUpdateEmail extends Base {
         $this->checkCsrf();
         $f3->get('DB')->begin();
         $user = $this->currentUser;
-        $daily_mail = filter_var($f3->get('POST.daily_mails'), FILTER_VALIDATE_BOOLEAN);
 
-        // Save user preferences
-        if ($user->daily_mails !== $daily_mail) { // If preferences changed
-            $user->daily_mails = $daily_mail;
-            if (!$user->validate()) {
-                $this->get($f3);
-                exit;
-            }
-            $user->save();
+        // Get values from POST
+        $daily_digest = filter_var($f3->get('POST.daily_digest'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications = filter_var($f3->get('POST.instant_notifications'), FILTER_VALIDATE_BOOLEAN);
+
+        // Save user preferences using UserSettings service
+        $userSettings = UserSettings::instance();
+        $changed = false;
+
+        if (UserSettings::getForCurrentUser('DAILY_DIGEST') !== $daily_digest) {
+            $userSettings->put($user, 'DAILY_DIGEST', $daily_digest ? 'true' : 'false');
+            $changed = true;
+        }
+
+        if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS') !== $instant_notifications) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS', $instant_notifications ? 'true' : 'false');
+            $changed = true;
+        }
+
+        if ($changed) {
             \Flash::instance()->addMessage(_('Your email preferences were saved.'), 'success');
         }
 
@@ -90,13 +113,5 @@ class UserUpdateEmail extends Base {
 
         $f3->get('DB')->commit();
         $f3->reroute(sprintf('@user_details(@userid=%d)', $user->id));
-    }
-
-    public function get(\Base $f3) {
-        // Reset eventual transaction
-        if ($f3->get('DB')->trans()) {
-            $f3->get('DB')->rollback();
-        }
-        Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_email.tpl');
     }
 }
