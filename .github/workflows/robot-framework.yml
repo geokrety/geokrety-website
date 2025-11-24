@@ -42,7 +42,7 @@ jobs:
         uses: raven-actions/debug@v1
 
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Find node IP
         uses: ./.github/actions/find-node-ip/
@@ -173,7 +173,7 @@ jobs:
           pattern: database-test-result
 
       - name: Checkout visual_images baseline
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: website
           sparse-checkout: tests-qa/visual_images
@@ -340,7 +340,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Find node IP
         uses: ./.github/actions/find-node-ip/
@@ -389,7 +389,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Pull docker images (background)
         shell: bash
