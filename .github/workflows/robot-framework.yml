@@ -122,7 +122,7 @@ jobs:
 
       - name: Upload docker logs
         if: ${{ always() }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: docker-logs-${{ env.SHARD_ID }}
           path: |
@@ -139,7 +139,7 @@ jobs:
 
       - name: Upload recordings
         if: ${{ always() && steps.tests-qa.outcome != 'skipped' && steps.recordings.outputs.has_recordings == 'true' }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: test-recording-${{ env.SHARD_ID }}
           path: |
@@ -147,7 +147,7 @@ jobs:
 
       - name: Upload results
         if: ${{ always() && steps.tests-qa.outcome != 'skipped' }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: test-results-${{ env.SHARD_ID }}
           path: |
@@ -273,7 +273,7 @@ jobs:
 
       - name: Upload report to job artifacts
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: test-report
           path: .
@@ -374,7 +374,7 @@ jobs:
 
       - name: Upload results
         if: ${{ always() && steps.tests-unit.outcome != 'skipped' }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: database-test-result
           path: |
@@ -421,7 +421,7 @@ jobs:
 
       - name: Upload results
         if: ${{ always() && steps.tests-unit.outcome != 'skipped' }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: test-unit
           path: |
