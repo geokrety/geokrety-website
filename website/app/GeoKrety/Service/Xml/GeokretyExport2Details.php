@@ -116,6 +116,7 @@ class GeokretyExport2Details extends GeokretyExport2 {
         $xml->writeAttribute('only_last', GK_API_EXPORT_GEOKRET_DETAILS_MOVES_LIMIT);
         foreach ($geokret->moves ?: [] as $move) {
             $xml->startElement('move');
+            $xml->writeAttribute('hidden', $move->comment_hidden ? 'true' : 'false');
 
             $xml->startElement('id');
             $xml->writeCdata($move->id);

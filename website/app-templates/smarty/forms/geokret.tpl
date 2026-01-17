@@ -74,6 +74,21 @@
                 </p>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="checkboxCommentsHidden" class="col-sm-2 control-label">{t}Hide comments{/t}</label>
+                <div class="col-sm-10">
+                  <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxCommentsHidden" name="comments_hidden" {if $geokret->areCommentsHidden()}checked{/if} aria-describedby="helpCheckboxCommentsHidden">
+                    </label>
+                  </div>
+                <p id="helpCheckboxCommentsHidden" class="help-block">
+                    {t}All move comments will be hidden by default.{/t}
+                    {t}Users will not see them unless they choose to.{/t}
+                </p>
+                </div>
+            </div>
         {/if}
 
             <div class="form-group">

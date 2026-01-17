@@ -133,6 +133,8 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
                 return [$this, 'smarty_modifier_medal'];
             case 'movelink':
                 return [$this, 'smarty_modifier_movelink'];
+            case 'movemsg':
+                return [$this, 'smarty_modifier_movemsg'];
             case 'newslink':
                 return [$this, 'smarty_modifier_newslink'];
             case 'picture':
@@ -572,6 +574,35 @@ EOT;
             $target_html,
             self::smarty_modifier_escape($text),
         );
+    }
+
+    /**
+     * Purpose:  outputs a move link.
+     */
+    public function smarty_modifier_movemsg(GeoKrety\Model\Move $move, ?string $mode = 'html', ?int $truncate = null): string {
+        if (!is_null($truncate) && is_numeric($truncate)) {
+            $move->comment = mb_strimwidth($move->comment, 0, $truncate, '(…)');
+        }
+        $html = $this->smarty_modifier_markdown($move->comment, $mode);
+        if (!$move->isCommentHidden() or empty($move->comment)) {
+            return $html;
+        }
+        $data = [];
+        $data[] = sprintf(
+            _('<i class="text-muted move-comment-hidden" data-comment-id="%s" data-type="reveal-comment">%s %s</i>'),
+            $move->id,
+            _('This comment may contain spoilers and is hidden.'),
+            _('Click to toggle visibility.')
+        );
+        // Its safe to use rot13 here as it's not sensible data just a opt-in display.
+        $data[] = '<div class="comment-hidden">';
+        $data[] = str_rot13($this->smarty_modifier_markdown($move->comment, 'text'));
+        $data[] = '</div>';
+        $data[] = '<div class="comment-hidden hidden">';
+        $data[] = $html;
+        $data[] = '</div>';
+
+        return implode('', $data);
     }
 
     /**

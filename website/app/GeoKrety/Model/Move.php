@@ -5,6 +5,7 @@ namespace GeoKrety\Model;
 use DB\SQL\Schema;
 use GeoKrety\LogType;
 use GeoKrety\Service\HTMLPurifier;
+use GeoKrety\Service\UserSettings;
 use GeoKrety\Service\WaypointInfo;
 
 /**
@@ -29,6 +30,7 @@ use GeoKrety\Service\WaypointInfo;
  * @property int|LogType move_type
  * @property string|null position
  * @property string|null reroute_url
+ * @property bool comment_hidden
  */
 class Move extends Base {
     use \Validation\Traits\CortexTrait;
@@ -138,10 +140,18 @@ class Move extends Base {
             'nullable' => true,
             'validate' => 'log_type',
         ],
+        'comment_hidden' => [
+            'type' => Schema::DT_BOOLEAN,
+            'default' => false,
+        ],
     ];
 
     public function set_comment($value): string {
         return HTMLPurifier::getPurifier()->purify($value);
+    }
+
+    public function get_comment_hidden($value): bool {
+        return (bool) $value;
     }
 
     public function get_move_type($value): LogType {
@@ -213,6 +223,29 @@ class Move extends Base {
 
     public function isGeoKretLastPosition(): bool {
         return $this->geokret->last_position->id === $this->id;
+    }
+
+    /**
+     * Determine whether the move's comment should be hidden for the current viewer.
+     *
+     * Hidden comments remain hidden unless the viewer is the GeoKret owner or the comment author.
+     *
+     * @return bool true if the comment should stay hidden for the current viewer
+     */
+    public function isCommentHidden(): bool {
+        if (!$this->comment_hidden && !$this->geokret->comments_hidden) {
+            return false;
+        }
+
+        if ($this->isAuthor()) {
+            return false;
+        }
+
+        if ($this->geokret->isOwner()) {
+            return !UserSettings::getForCurrentUser('HIDDEN_COMMENTS_REVEAL_OWNED_GEOKRETY');
+        }
+
+        return !UserSettings::getForCurrentUser('HIDDEN_COMMENTS_REVEAL_ALL');
     }
 
     public function canBeMarkedAsMissing(): bool {

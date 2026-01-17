@@ -28,6 +28,7 @@ class GeokretEdit extends GeokretFormBase {
         $geokret->copyFrom('POST', ['name', 'born_on_datetime', 'type', 'mission', 'label_template', 'label_languages']);
         $this->manageCollectible($f3, $geokret);
         $this->manageParked($f3, $geokret);
+        $this->manageCommentsHidden($f3, $geokret);
         $this->loadSelectedTemplate($f3);
 
         if ($geokret->validate()) {
@@ -72,5 +73,9 @@ class GeokretEdit extends GeokretFormBase {
         if (!is_null($geokret->parked)) {
             $geokret->parked = null;
         }
+    }
+
+    private function manageCommentsHidden($f3, \GeoKrety\Model\Geokret $geokret): void {
+        $geokret->comments_hidden = filter_var($f3->get('POST.comments_hidden'), FILTER_VALIDATE_BOOLEAN);
     }
 }
