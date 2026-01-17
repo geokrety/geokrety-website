@@ -34,6 +34,7 @@ use GeoKrety\LogType;
  * @property bool missing
  * @property int|GeokretyType type
  * @property int|Label label_template
+ * @property bool comments_hidden
  */
 class Geokret extends Base {
     use \Validation\Traits\CortexTrait;
@@ -159,6 +160,10 @@ class Geokret extends Base {
             'type' => Schema::DT_DATETIME,
             'nullable' => true,
             'validate' => 'is_date',
+        ],
+        'comments_hidden' => [
+            'type' => Schema::DT_BOOLEAN,
+            'default' => false,
         ],
     ];
 
@@ -336,6 +341,10 @@ class Geokret extends Base {
         return !is_null($this->parked);
     }
 
+    public function areCommentsHidden(): bool {
+        return $this->comments_hidden;
+    }
+
     public function countryTrack(): array {
         $sql = <<<'SQL'
 SELECT geokret,
@@ -379,6 +388,7 @@ SQL;
             'gkid' => $this->gkid,
             'collectible' => $this->isCollectible(),
             'parked' => $this->isParked(),
+            'comments_hidden' => $this->comments_hidden,
             // 'tracking_code' => $this->tracking_code,
             // 'name' => $this->name,
             // 'mission' => $this->mission,

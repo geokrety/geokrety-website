@@ -82,6 +82,7 @@ class GeokretyExport extends GeokretyBaseExport {
 
         $xml->startElement('moves');
         $xml->writeAttribute('id', $move->id);
+        $xml->writeAttribute('hidden', $move->comment_hidden ? 'true' : 'false');
 
         $xml->startElement('geokret');
         // Not following relation prevent a memory leak bug
@@ -126,11 +127,11 @@ class GeokretyExport extends GeokretyBaseExport {
 
         $xml->startElement('comment_html');
         $xml->writeCdata(Markdown::toHtml($move->comment));
-        $xml->endElement(); // comment
+        $xml->endElement(); // comment_html
 
         $xml->startElement('comment_markdown');
         $xml->writeCdata($move->comment);
-        $xml->endElement(); // comment
+        $xml->endElement(); // comment_markdown
 
         $xml->startElement('logtype');
         $xml->writeAttribute('id', $move->move_type->getLogTypeId());

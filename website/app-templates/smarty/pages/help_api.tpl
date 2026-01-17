@@ -394,6 +394,9 @@ var_dump($gk);
             <dt><code>comment</code></dt>
             <dd>(<i>optional</i>) comment to the log (ex: <code>It is a good place for this GeoKret!</code>)</dd>
 
+            <dt><code>comment_hidden</code></dt>
+            <dd>(<i>optional</i>) whether the comment is hidden (ex: <code>true</code> or <code>false</code>, default: <code>false</code>)</dd>
+
             <dt><code>app</code></dt>
             <dd>(<i>optional</i>) application name, <=16 chars (ex: <code>c:geo</code>)</dd>
 

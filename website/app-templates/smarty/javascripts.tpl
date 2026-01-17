@@ -35,6 +35,7 @@
 {include file='js/lightbox2.tpl.js'}
 {include file='js/dialogs/dialog_login.tpl.js'}{*load js/dialogs/dialog_login all the time as it may be necessary when user leave it's session open too long*}
 {include file='js/search_advanced.tpl.js'}
+{include file='js/comments_hidden.tpl.js'}
 
 {block name=javascript_modal}{/block}
 {block name=javascript}{/block}

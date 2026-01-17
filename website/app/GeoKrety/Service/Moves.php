@@ -20,6 +20,7 @@ class Moves {
             'app' => $f3->get('POST.app'),
             'app_ver' => $f3->get('POST.app_ver'),
             'comment' => $f3->get('POST.comment'),
+            'comment_hidden' => $f3->exists('POST.comment_hidden') ? filter_var($f3->get('POST.comment_hidden'), FILTER_VALIDATE_BOOLEAN) : false,
             'coordinates' => $f3->get('POST.coordinates'),
             'date' => $f3->get('POST.date'),
             'hour' => $f3->get('POST.hour'),
@@ -46,6 +47,7 @@ class Moves {
             $move->username = $move_data['username'];
         }
         $move->comment = $move_data['comment'];
+        $move->comment_hidden = $move_data['comment_hidden'];
         $move->app = $move_data['app'];
         $move->app_ver = $move_data['app_ver'];
 

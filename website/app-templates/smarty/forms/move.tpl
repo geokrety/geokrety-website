@@ -292,6 +292,19 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <label for="checkboxCommentHidden" class="col-sm-2 control-label"></label>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="comment_hidden" id="checkboxCommentHidden" {if $move->comment_hidden}checked{/if} />
+                                    {t}Hide comment{/t}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
