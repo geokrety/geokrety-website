@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1b438edfb6a8aab573c6f7817844c7a",
+    "content-hash": "b9480d22fa5f6f3ee133c5f7e0d5e81a",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -702,17 +702,11 @@
         },
         {
             "name": "caxy/basex-client-php",
-            "version": "v0.0.2",
+            "version": "dev-php8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/caxy/basex-client-php.git",
-                "reference": "e060fd414b7b27cce5e2f524cf7ac347e4ee547e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/caxy/basex-client-php/zipball/e060fd414b7b27cce5e2f524cf7ac347e4ee547e",
-                "reference": "e060fd414b7b27cce5e2f524cf7ac347e4ee547e",
-                "shasum": ""
+                "url": "https://github.com/kumy/basex-client-php.git",
+                "reference": "e43b6b9943315ac6932442137f0c3f993a9a388a"
             },
             "type": "library",
             "extra": {
@@ -725,7 +719,6 @@
                     "Caxy\\BaseX\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -742,11 +735,7 @@
                 "database",
                 "xml"
             ],
-            "support": {
-                "issues": "https://github.com/caxy/basex-client-php/issues",
-                "source": "https://github.com/caxy/basex-client-php/tree/v0.0.2"
-            },
-            "time": "2022-10-25T04:18:42+00:00"
+            "time": "2025-11-16T18:26:46+00:00"
         },
         {
             "name": "composer/pcre",
@@ -10051,6 +10040,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "benhall14/php-pagination": 20,
+        "caxy/basex-client-php": 20,
         "ikkez/f3-assets": 20,
         "ikkez/f3-opauth": 20,
         "league/geotools": 0,
