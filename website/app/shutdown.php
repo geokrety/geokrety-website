@@ -16,7 +16,16 @@ function shutdown_force_send_response_to_client(Base $f3) {
 }
 
 function shutdown_piwik(Base $f3) {
-    if (!GeoKrety\Service\UserSettings::getForCurrentUser('TRACKING_OPT_OUT')) {
+    $ip = $f3->get('IP');
+    $ip_excluded = false;
+    foreach (GK_SYSTEM_PATH_ALLOWED_IPS as $range) {
+        if (empty($ip) || IPTools\Range::parse($range)->contains(new IPTools\IP($ip))) {
+            $ip_excluded = true;
+            break;
+        }
+    }
+
+    if (!GeoKrety\Service\UserSettings::getForCurrentUser('TRACKING_OPT_OUT') && !$ip_excluded) {
         try {
             $matomoTracker = new GeoKrety\Service\MatomoTracker(GK_PIWIK_SITE_ID, GK_PIWIK_URL);
             $matomoTracker->setTokenAuth(GK_PIWIK_TOKEN);
