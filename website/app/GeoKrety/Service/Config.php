@@ -17,8 +17,13 @@ class Config extends \Prefab {
     public function __construct() {
         // SITE CONFIG
         define('HOSTNAME', getenv('HOSTNAME') ?: 'localhost');
-        define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: 'https://geokrety.org');
-        define('GK_SITE_BASE_SERVER_FQDN', getenv('GK_SITE_BASE_SERVER_FQDN') ?: 'geokrety.org');
+        if (key_exists('HTTP_X_FORWARDED_HOST', $_SERVER) && !empty($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+            define('GK_SITE_BASE_SERVER_FQDN', $_SERVER['HTTP_X_FORWARDED_HOST']);
+        } else {
+            define('GK_SITE_BASE_SERVER_FQDN', getenv('GK_SITE_BASE_SERVER_FQDN') ?: 'geokrety.org');
+        }
+        define('GK_SITE_BASE_SERVER_SCHEME', key_exists('HTTP_X_FORWARDED_PROTO', $_SERVER) ? $_SERVER['HTTP_X_FORWARDED_PROTO'] : 'https');
+        define('GK_SITE_BASE_SERVER_URL', getenv('GK_SITE_BASE_SERVER_URL') ?: sprintf('%s://%s', GK_SITE_BASE_SERVER_SCHEME, GK_SITE_BASE_SERVER_FQDN));
         define('GK_SITE_ADMINISTRATORS', explode(',', getenv('GK_SITE_ADMINISTRATORS') ?: '26422'));
         define('GK_SITE_SESSION_REMEMBER', getenv('GK_SITE_SESSION_REMEMBER') ?: 60 * 60 * 24); // 24 hours
         define('GK_SITE_SESSION_LIFETIME_REMEMBER', getenv('GK_SITE_SESSION_LIFETIME_REMEMBER') ?: 60 * 60 * 24 * 30); // 30 days
@@ -80,7 +85,7 @@ class Config extends \Prefab {
         define('GK_MINIO_HOST', getenv('GK_MINIO_HOST') ?: 'minio');
         define('GK_MINIO_PORT', getenv('GK_MINIO_PORT') ?: '9000');
         define('GK_MINIO_SERVER_URL', getenv('GK_MINIO_SERVER_URL') ?: sprintf('http://%s:%s', GK_MINIO_HOST, GK_MINIO_PORT));
-        define('GK_MINIO_SERVER_URL_EXTERNAL', getenv('GK_MINIO_SERVER_URL_EXTERNAL') ?: GK_MINIO_SERVER_URL);
+        define('GK_MINIO_SERVER_URL_EXTERNAL', getenv('GK_MINIO_SERVER_URL_EXTERNAL') ?: sprintf('%s://minio.%s', GK_SITE_BASE_SERVER_SCHEME, GK_SITE_BASE_SERVER_FQDN));
         define('MINIO_ACCESS_KEY', getenv('MINIO_ACCESS_KEY') ?: null);
         define('MINIO_SECRET_KEY', getsecret('MINIO_SECRET_KEY') ?: null);
 
@@ -105,7 +110,7 @@ class Config extends \Prefab {
         define('ADMIN_SERVICE_PGADMIN_URL', getenv('ADMIN_SERVICE_PGADMIN_URL') ?: GK_SITE_BASE_SERVER_URL.'/pgadmin');
         define('ADMIN_SERVICE_GRAFANA_URL', getenv('ADMIN_SERVICE_GRAFANA_URL') ?: GK_SITE_BASE_SERVER_URL.'/grafana');
         define('ADMIN_SERVICE_PROMETHEUS_URL', getenv('ADMIN_SERVICE_PROMETHEUS_URL') ?: GK_SITE_BASE_SERVER_URL.'/prometheus');
-        define('ADMIN_SERVICE_RABBIT_MQ_URL', getenv('ADMIN_SERVICE_RABBIT_MQ_URL') ?: 'https://rabbitmq.'.GK_SITE_BASE_SERVER_FQDN);
+        define('ADMIN_SERVICE_RABBIT_MQ_URL', getenv('ADMIN_SERVICE_RABBIT_MQ_URL') ?: sprintf('%s://rabbitmq.%s', GK_SITE_BASE_SERVER_SCHEME, GK_SITE_BASE_SERVER_FQDN));
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
@@ -237,7 +242,7 @@ class Config extends \Prefab {
         define('GK_OPAUTH_ACTIVE', GK_OPAUTH_GOOGLE_CLIENT_ID !== false or GK_OPAUTH_FACEBOOK_CLIENT_ID !== false or GK_OPAUTH_GITHUB_CLIENT_ID !== false);
 
         // go2geo url
-        define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: 'https://geokrety.org/go2geo/?wpt=%s');
+        define('GK_SERVICE_GO2GEO_URL', getenv('GK_SERVICE_GO2GEO_URL') ?: GK_SITE_BASE_SERVER_URL.'/go2geo/?wpt=%s');
         define('GK_SERVICE_GC_SEARCH_NEAREST_URL', getenv('GK_SERVICE_GC_SEARCH_NEAREST_URL') ?: 'https://www.geocaching.com/seek/nearest.aspx?origin_lat=%f&origin_long=%f&dist=1');
 
         // // Waypoint services
@@ -311,7 +316,6 @@ class Config extends \Prefab {
         define('GK_USER_DELETED_USERNAME', getenv('GK_USER_DELETED_USERNAME') ?: 'Deleted user');
 
         // map api url
-        define('GK_MAP_URL', getenv('GK_MAP_URL') ?: 'https://api.geokretymap.org');
         define('GK_MAP_DEFAULT_ZOOM', getenv('GK_MAP_DEFAULT_ZOOM') ?: 4);
         define('GK_MAP_DEFAULT_ZOOM_USER_HOME', getenv('GK_MAP_DEFAULT_ZOOM_USER_HOME') ?: 8);
         define('GK_MAP_DEFAULT_LAT', getenv('GK_MAP_DEFAULT_LAT') ?: 42.941);
@@ -468,7 +472,7 @@ class Config extends \Prefab {
         );
 
         // CDN
-        define('GK_CDN_SERVER_URL', getenv('GK_CDN_SERVER_URL') ?: 'https://cdn.geokrety.org');
+        define('GK_CDN_SERVER_URL', getenv('GK_CDN_SERVER_URL') ?: sprintf('%s://cdn.%s', GK_SITE_BASE_SERVER_SCHEME, GK_SITE_BASE_SERVER_FQDN));
 
         define('GK_CDN_GPGKEY_URL', getenv('GK_CDN_GPGKEY_URL') ?: GK_CDN_SERVER_URL.'/geokrety.org.pub');
         define('GK_CDN_GPGKEY_ID', getenv('GK_CDN_GPGKEY_ID') ?: '76B00039');
