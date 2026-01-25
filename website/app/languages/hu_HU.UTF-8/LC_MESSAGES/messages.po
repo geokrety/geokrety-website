@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-14 20:42+0000\n"
-"PO-Revision-Date: 2025-10-14 21:38\n"
+"POT-Creation-Date: 2026-01-17 14:20+0000\n"
+"PO-Revision-Date: 2026-01-17 14:51\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
@@ -52,82 +52,95 @@ msgstr ""
 msgid "Never Travelled"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:279
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:281
 msgid "Unknown"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:320
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:322
 msgid "Search on geocaching.com"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:333
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:335
 #, php-format
 msgid "Location: %s Elevation: %dm"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:333
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:335
 #, php-format
 msgid "Location: %s"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:417
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:419
 msgid "has avatar icon"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:418
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:420
 msgid "GeoKret has an avatar"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:419
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:421
 msgid "nobody"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:429
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:431
 #, php-format
 msgid "GeoKret \"%s\" by %s"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:442
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:444
 msgid "GK type icon"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:460
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:462
 #, php-format
 msgid "View %s's profile"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:555
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:557
 #, php-format
 msgid "Award for %s GeoKrety"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:571
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:573
 msgid "View move details"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:587
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:592
+#, php-format
+msgid "<i class=\"text-muted move-comment-hidden\" data-comment-id=\"%s\" data-type=\"reveal-comment\">%s %s</i>"
+msgstr ""
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:594
+msgid "This comment may contain spoilers and is hidden."
+msgstr ""
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:595
+msgid "Click to toggle visibility."
+msgstr ""
+
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:618
 #: website/app-templates/smarty/pages/news_details.tpl:48
 msgid "Comments"
 msgstr "Hozzászólások"
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:763
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:794
 msgid "status icon"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:857
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:888
 #, php-format
 msgid "User statistics banner: %s"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:870
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:901
 msgid "Profile avatar"
 msgstr ""
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:882
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:913
 msgid "Anonymous"
 msgstr "Anonymous"
 
-#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:908
+#: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:939
 #, php-format
 msgid "%s's statpic"
 msgstr ""
@@ -319,11 +332,11 @@ msgstr ""
 msgid "Only the owner can edit his GeoKrety."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:36
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:37
 msgid "Your GeoKret has been updated."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:41
+#: website/app/GeoKrety/Controller/Pages/GeokretEdit.php:42
 msgid "Failed to edit the GeoKret."
 msgstr ""
 
@@ -1078,7 +1091,7 @@ msgstr ""
 msgid "Register the trip at %s"
 msgstr ""
 
-#: website/app/GeoKrety/Service/Moves.php:66
+#: website/app/GeoKrety/Service/Moves.php:68
 msgid "The date time could not be parsed."
 msgstr ""
 
@@ -1377,14 +1390,14 @@ msgstr "GeoKret típusa"
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:59
 #: website/app-templates/smarty/forms/geokret_label.tpl:36
-#: website/app-templates/smarty/forms/geokret.tpl:86
+#: website/app-templates/smarty/forms/geokret.tpl:101
 #: website/app-templates/smarty/blocks/geokret/mission.tpl:3
 msgid "Mission"
 msgstr ""
 
 #: website/app-templates/smarty/admin/pages/geokrety_generator.tpl:61
 #: website/app-templates/smarty/forms/geokret_label.tpl:38
-#: website/app-templates/smarty/forms/geokret.tpl:89
+#: website/app-templates/smarty/forms/geokret.tpl:104
 msgid "What is this GeoKret mission?"
 msgstr ""
 
@@ -1593,15 +1606,27 @@ msgstr ""
 msgid "They will not appear in your inventory."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:82
-msgid "View legacy mission"
+#: website/app-templates/smarty/forms/geokret.tpl:79
+msgid "Hide comments"
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokret.tpl:87
+msgid "All move comments will be hidden by default."
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokret.tpl:88
+msgid "Users will not see them unless they choose to."
 msgstr ""
 
 #: website/app-templates/smarty/forms/geokret.tpl:97
+msgid "View legacy mission"
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokret.tpl:112
 msgid "This will create a first \"dipped\" move for your GeoKret, marking it's starting point."
 msgstr ""
 
-#: website/app-templates/smarty/forms/geokret.tpl:98
+#: website/app-templates/smarty/forms/geokret.tpl:113
 msgid "Set my home coordinates as a starting point."
 msgstr ""
 
@@ -1900,7 +1925,11 @@ msgstr ""
 msgid "Remember date and comment"
 msgstr ""
 
-#: website/app-templates/smarty/forms/move.tpl:313
+#: website/app-templates/smarty/forms/move.tpl:302
+msgid "Hide comment"
+msgstr ""
+
+#: website/app-templates/smarty/forms/move.tpl:326
 msgid "Post your log"
 msgstr ""
 
