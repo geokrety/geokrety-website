@@ -1,6 +1,5 @@
 *** Settings ***
 Library         RequestsLibrary
-Library         Dialogs
 Resource        ../ressources/TomSelect.robot
 Resource        ../ressources/Authentication.robot
 Variables       ../ressources/vars/users.yml
