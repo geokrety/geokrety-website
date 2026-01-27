@@ -50,7 +50,7 @@ class SecurityHeaders extends \Prefab {
         // Base CSP directives
         $csp = [
             sprintf(
-                'script-src \'nonce-%s\' \'strict-dynamic\' %s%s',
+                'script-src \'nonce-%s\' \'strict-dynamic\' \'wasm-unsafe-eval\' %s%s',
                 $this->nonce,
                 GK_CDN_SERVER_URL,
                 $isInlineTranslation ? ' \'unsafe-hashes\'' : ''

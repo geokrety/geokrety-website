@@ -21,6 +21,7 @@
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_PATH_JS) && ''}*}
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_SHAPE_JS) && ''}*}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_HTML5_QRCODE_JS) && ''}
+{\GeoKrety\Assets::instance()->addJs(GK_CDN_CAPJS_JS) && ''}
 
 {\Assets::instance()->renderGroup(\GeoKrety\Assets::instance()->getAssets('footer')) nofilter}
 <script type="text/javascript" nonce="{\GeoKrety\Service\SecurityHeaders::instance()->getNonce()}">
@@ -36,6 +37,7 @@
 {include file='js/dialogs/dialog_login.tpl.js'}{*load js/dialogs/dialog_login all the time as it may be necessary when user leave it's session open too long*}
 {include file='js/search_advanced.tpl.js'}
 {include file='js/comments_hidden.tpl.js'}
+{if GK_CAP_SITE_ID neq ''}{include file='js/cap.tpl.js'}{/if}
 
 {block name=javascript_modal}{/block}
 {block name=javascript}{/block}
