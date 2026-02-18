@@ -108,7 +108,7 @@ download_geckodriver:  ## Download geckodriver
 	curl -L https://github.com/mozilla/geckodriver/releases/download/v0.36.0/geckodriver-v0.36.0-linux64.tar.gz | tar xzf -
 
 download_selenoid:  ## Download selenoid
-	wget https://github.com/aerokube/selenoid/releases/download/1.11.3/selenoid_linux_amd64
+	wget https://github.com/adtech-qa-tools/selenoid/releases/download/1.24/selenoid_linux_amd64
 	chmod +x selenoid_linux_amd64
 
 download_bslocal:  ## Download BrowserStack Local agent
