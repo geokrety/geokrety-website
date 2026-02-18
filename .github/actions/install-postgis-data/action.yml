@@ -13,7 +13,7 @@ runs:
         echo "::endgroup::"
 
     - name: Cache SRTM data
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ./website/db/srtm/*.zip
         key: srtm-cache
@@ -23,15 +23,17 @@ runs:
     - name: Import SRTM data
       shell: bash
       run: |
-        echo "::group::Import SRTM data into Postgres"
         ./website/db/tests-srtm-import.sh
-        echo "::endgroup::"
 
     - name: Test SRTM data
       shell: bash
       run: |
-        echo "::group::Run basic SRTM tests"
-        psql -c "SELECT count(*) FROM public.srtm"
-        psql -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
-        psql -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) LIMIT 2;"
-        echo "::endgroup::"
+        for j in $(seq ${{ env.GK_INSTANCE_COUNT }}); do
+          f=$(($j - 1))
+          g=$(($j + 9))
+          echo "::group::Run basic SRTM tests (5${g}6) ; stack:$f"
+          psql --port=5${g}6 -c "SELECT count(*) FROM public.srtm"
+          psql --port=5${g}6 -c "SELECT iso_a2 FROM public.countries WHERE public.ST_Intersects(geom::public.geometry, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry);"
+          psql --port=5${g}6 -c "SELECT public.ST_Value(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) As elevation FROM public.srtm WHERE public.ST_Intersects(rast, '0101000020E6100000F6285C8FC2F51C405C8FC2F528DC4540'::public.geometry) LIMIT 2;"
+          echo "::endgroup::"
+        done
