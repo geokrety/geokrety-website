@@ -81,7 +81,7 @@
             <div class="checkbox">
                 <label>
                     <input type="checkbox" id="dailyMailsInput" name="daily_mails" aria-describedby="dailyMailsHelpBlock" {if $user->daily_mails} checked{/if}>{t}Yes, I want to receive email alerts (sent once a day).{/t}
-                    <span id="dailyMailsHelpBlock" class="help-block">{t}Email alerts may contains, travel information about your GeoKrety, news, comments…{/t}</span>
+                    <span id="dailyMailsHelpBlock" class="help-block">{t}Email alerts may contain travel information about your GeoKrety, news, comments…{/t}</span>
                 </label>
             </div>
         </div>
