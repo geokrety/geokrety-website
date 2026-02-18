@@ -62,8 +62,8 @@ Required Parameters
     ${move_11}    Waypoint seems empty.    Missing or invalid coordinates.    No Tracking Code provided.
     ${move_12}    No Tracking Code provided.
     ${move_13}    Waypoint seems empty.    Missing or invalid coordinates.
-    ${move_14}    Missing or invalid coordinates.    View the <a href="https://geokrety.org/go2geo/?wpt=${move_14.wpt}" target="_blank">cache page</a>.     This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the "Coordinates" field.
-    ${move_15}    Missing or invalid coordinates.    View the <a href="https://geokrety.org/go2geo/?wpt=${move_15.wpt}" target="_blank">cache page</a>.     Sorry, but this waypoint is not (yet) in our database. Does it really exist?
+    ${move_14}    Missing or invalid coordinates.    View the <a href="${GK_URL}/go2geo/?wpt=${move_14.wpt}" target="_blank">cache page</a>.     This is a Geocaching.com cache that no one logged yet on GeoKrety.org. To ensure correct travel of this GeoKret, please copy/paste cache coordinates in the "Coordinates" field.
+    ${move_15}    Missing or invalid coordinates.    View the <a href="${GK_URL}/go2geo/?wpt=${move_15.wpt}" target="_blank">cache page</a>.     Sorry, but this waypoint is not (yet) in our database. Does it really exist?
     ${move_16}    Moved_on_datetime cannot be in the future
     ${move_17}    Moved_on_datetime must be after GeoKret birth
     ${move_18}    Tracking Code "${move_18.nr}" seems too short. We expect at least 6 characters here.
