@@ -145,14 +145,6 @@ jobs:
           path: |
             tests-qa/video/
 
-      - name: Upload traces
-        if: ${{ always() && steps.tests-qa.outcome != 'skipped' }}
-        uses: actions/upload-artifact@v6
-        with:
-          name: test-traces-${{ env.SHARD_ID }}
-          path: |
-            tests-qa/traces/
-
       - name: Upload results
         if: ${{ always() && steps.tests-qa.outcome != 'skipped' }}
         uses: actions/upload-artifact@v6
