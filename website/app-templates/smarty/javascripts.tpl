@@ -21,7 +21,7 @@
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_PATH_JS) && ''}*}
 {*{\GeoKrety\Assets::instance()->addJs(GK_CDN_D3_SHAPE_JS) && ''}*}
 {\GeoKrety\Assets::instance()->addJs(GK_CDN_HTML5_QRCODE_JS) && ''}
-{\GeoKrety\Assets::instance()->addJs(GK_CDN_CAPJS_JS) && ''}
+{if GK_CAP_SITE_ID neq ''}{\GeoKrety\Assets::instance()->addJs(GK_CDN_CAPJS_JS) && ''}{/if}
 
 {\Assets::instance()->renderGroup(\GeoKrety\Assets::instance()->getAssets('footer')) nofilter}
 <script type="text/javascript" nonce="{\GeoKrety\Service\SecurityHeaders::instance()->getNonce()}">
