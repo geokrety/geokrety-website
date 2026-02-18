@@ -12,3 +12,8 @@ runs:
         echo "::endgroup::"
         ip=$(ip -o a l | grep eth0 | grep -v inet6 | sed -E 's@.*inet ([^/]+)/.. metric.*@\1@')
         echo "GK_FQDN=$ip" | tee -a "${GITHUB_ENV}"
+
+    - name: Find public node IP
+      shell: bash
+      run: |
+        curl -s https://ipinfo.io/ip || true
