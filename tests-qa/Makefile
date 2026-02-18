@@ -9,7 +9,7 @@ ifeq (Windows_NT, ${OS})
 endif
 
 GIT_BRANCH ?= local
-ROBOT_PARAMS := -d docs/$(GIT_BRANCH) -V acceptance/ressources/vars/robot-vars.py acceptance
+ROBOT_PARAMS := -d docs/$(GIT_BRANCH) --listener trace_viewer.TraceListener:output_dir=./traces -V acceptance/ressources/vars/robot-vars.py acceptance
 # ROBOT_PARAMS := -t 'Information Should Be Loaded' --debugfile debugfile.log --report report.html -d docs/$(GIT_BRANCH) -V acceptance/ressources/robot-vars.py acceptance
 # ROBOT_PARAMS := -s "170 Xml Export Oc" --debugfile debugfile.log --report report.html -d docs/$(GIT_BRANCH) -V acceptance/ressources/robot-vars.py acceptance
 # ROBOT_PARAMS := -s "170 Xml Export Oc" -t 'ModifiedSince Is Limited To Last 10 Days' --debugfile debugfile.log --report report.html -d docs/$(GIT_BRANCH) -V acceptance/ressources/robot-vars.py acceptance
