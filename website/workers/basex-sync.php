@@ -9,21 +9,15 @@ declare(strict_types=1);
  * exports database using a XQuery script when GeoKret related entities change.
  */
 require_once __DIR__.'/../init-f3.php';
+require_once __DIR__.'/WorkerBase.php';
 
 use Caxy\BaseX\Session as BaseXSession;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
-use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Exception\AMQPConnectionException;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class BaseXSyncWorker {
-    private $connection;
-    private $channel;
-    private $retryDelay = 1;
-    private $maxRetryDelay = 60;
-    private $logLevel;
+class BaseXSyncWorker extends WorkerBase {
     private $basexSession;
     private $queryScript;
     private $gkApiBaseUrl;
@@ -32,96 +26,27 @@ class BaseXSyncWorker {
     private $processedCache = [];
     private $cacheTtl = 1; // seconds
 
-    public const LOG_DEBUG = 100;
-    public const LOG_INFO = 200;
-    public const LOG_WARNING = 300;
-    public const LOG_ERROR = 400;
-    public const LOG_CRITICAL = 500;
-
     public function __construct() {
-        $this->logLevel = $this->getLogLevelFromEnv(getenv('GK_NOTIFICATION_LOG_LEVEL') ?: 'INFO');
-        $this->log(self::LOG_INFO, 'BaseX Sync Worker starting...');
+        parent::__construct();
         $queryPath = __DIR__.'/xquery/update.xq';
         if (!file_exists($queryPath)) {
             $this->log(self::LOG_CRITICAL, 'BaseX XQuery script not found', ['path' => $queryPath]);
             throw new RuntimeException('BaseX XQuery script not found: '.$queryPath);
         }
         $this->queryScript = file_get_contents($queryPath);
-        $this->gkApiBaseUrl = GK_SITE_API_SERVER_FQDN;
         $this->rateLimitsBypass = GK_RATE_LIMITS_BYPASS;
         $this->shortLivedSessionToken = GK_SITE_SESSION_SHORT_LIVED_TOKEN;
     }
 
-    private function getLogLevelFromEnv(string $level): int {
-        $levels = [
-            'DEBUG' => self::LOG_DEBUG,
-            'INFO' => self::LOG_INFO,
-            'WARNING' => self::LOG_WARNING,
-            'ERROR' => self::LOG_ERROR,
-            'CRITICAL' => self::LOG_CRITICAL,
-        ];
-
-        return $levels[strtoupper($level)] ?? self::LOG_INFO;
+    protected function getWorkerName(): string {
+        return 'BaseX Sync Worker';
     }
 
-    private function log(int $level, string $message, array $context = []): void {
-        if ($level < $this->logLevel) {
-            return;
-        }
-
-        $levelNames = [
-            self::LOG_DEBUG => 'DEBUG',
-            self::LOG_INFO => 'INFO',
-            self::LOG_WARNING => 'WARNING',
-            self::LOG_ERROR => 'ERROR',
-            self::LOG_CRITICAL => 'CRITICAL',
-        ];
-
-        $timestamp = date('Y-m-d H:i:s');
-        $levelName = $levelNames[$level] ?? 'UNKNOWN';
-        $contextStr = !empty($context) ? ' '.json_encode($context) : '';
-
-        echo "[{$timestamp}] [{$levelName}] {$message}{$contextStr}\n";
-        flush();
+    protected function getQueueName(): string {
+        return 'basex_sync_worker_queue';
     }
 
-    private function connect(): void {
-        if (!GK_RABBITMQ_HOST || !GK_RABBITMQ_PORT) {
-            throw new RuntimeException('RabbitMQ configuration not found. Check GK_RABBITMQ_* environment variables.');
-        }
-
-        $this->connection = new AMQPStreamConnection(
-            GK_RABBITMQ_HOST,
-            (int) GK_RABBITMQ_PORT,
-            GK_RABBITMQ_USER,
-            GK_RABBITMQ_PASS,
-            GK_RABBITMQ_VHOST ?: '/'
-        );
-
-        $this->channel = $this->connection->channel();
-
-        // Declare exchange idempotent
-        $this->channel->exchange_declare('geokrety', 'fanout', false, true, false);
-
-        // Declare durable queue for workers
-        $queueName = 'basex_sync_worker_queue';
-        $this->channel->queue_declare(
-            $queueName,
-            false,
-            true,
-            false,
-            false
-        );
-        $this->channel->queue_bind($queueName, 'geokrety');
-
-        // Prefetch and consume
-        $this->channel->basic_qos(0, 1, false);
-        $this->channel->basic_consume($queueName, '', false, false, false, false, [$this, 'processMessage']);
-
-        $this->log(self::LOG_INFO, 'Connected to RabbitMQ', ['host' => GK_RABBITMQ_HOST, 'port' => GK_RABBITMQ_PORT, 'queue' => $queueName]);
-    }
-
-    public function processMessage(AMQPMessage $msg): void {
+    protected function processMessage(AMQPMessage $msg): void {
         try {
             $data = json_decode($msg->body, true);
             if (!$data || !isset($data['id'], $data['op'], $data['kind'])) {
@@ -131,23 +56,19 @@ class BaseXSyncWorker {
                 return;
             }
             $this->log(self::LOG_DEBUG, 'Message received', $data);
-            if ($data['op'] !== 'INSERT') {
-                $this->log(self::LOG_DEBUG, 'Ignoring non-INSERT operation', ['op' => $data['op']]);
-                $msg->ack();
-
-                return;
-            }
 
             switch ($data['kind']) {
+                // TODO?
                 // case 'gk_geokrety':
                 //     $this->handleGeokret((int) $data['id']);
+                //     break;
+                // TODO?
+                // case 'gk_moves_comments':
+                //     $this->handleMoveComment((int) $data['id']);
                 //     break;
                 case 'gk_moves':
                     $this->handleMove((int) $data['id']);
                     break;
-                    // case 'gk_moves_comments':
-                    //     $this->handleMoveComment((int) $data['id']);
-                    //     break;
                 default:
                     $this->log(self::LOG_DEBUG, 'Unhandled entity kind', ['kind' => $data['kind']]);
             }
@@ -238,7 +159,6 @@ class BaseXSyncWorker {
         }
 
         $q = $this->basexSession->query($this->queryScript);
-        $q->bind('gk_api_base_url', $this->gkApiBaseUrl);
         $q->bind('rate_limits_bypass', $this->rateLimitsBypass);
         $q->bind('short_lived_session_token', $this->shortLivedSessionToken);
         $q->bind('gkid', (string) $gkid);
@@ -246,40 +166,9 @@ class BaseXSyncWorker {
         $q->close();
     }
 
-    public function run(): void {
-        $this->log(self::LOG_INFO, 'Starting BaseX consumer loop...');
-        while (true) {
-            try {
-                $this->connect();
-                $this->retryDelay = 1;
-                $this->log(self::LOG_INFO, 'loop A');
-                while ($this->channel->is_consuming()) {
-                    $this->channel->wait(timeout: 10);
-                    $this->log(self::LOG_INFO, 'loop 1');
-                }
-            } catch (AMQPConnectionException $e) {
-                $this->log(self::LOG_ERROR, 'Connection lost: '.$e->getMessage());
-                $this->cleanup();
-                $this->log(self::LOG_INFO, "Reconnecting in {$this->retryDelay}s...");
-                sleep($this->retryDelay);
-                $this->retryDelay = min($this->retryDelay * 2, $this->maxRetryDelay);
-            } catch (Exception $e) {
-                $this->log(self::LOG_CRITICAL, 'Unexpected error: '.$e->getMessage(), ['exception' => get_class($e), 'file' => $e->getFile(), 'line' => $e->getLine(), 'trace' => $e->getTraceAsString()]);
-                $this->cleanup();
-                sleep($this->retryDelay);
-                $this->retryDelay = min($this->retryDelay * 2, $this->maxRetryDelay);
-            }
-        }
-    }
-
-    private function cleanup(): void {
+    protected function cleanup(): void {
+        parent::cleanup();
         try {
-            if ($this->channel) {
-                $this->channel->close();
-            }
-            if ($this->connection) {
-                $this->connection->close();
-            }
             if ($this->basexSession) {
                 $this->basexSession->close();
             }
@@ -287,22 +176,10 @@ class BaseXSyncWorker {
             $this->log(self::LOG_WARNING, 'Error during cleanup: '.$e->getMessage());
         }
     }
-
-    public function __destruct() {
-        $this->cleanup();
-    }
 }
 
 // Graceful shutdown handlers
-pcntl_async_signals(true);
-pcntl_signal(SIGTERM, function () {
-    echo "Received SIGTERM, shutting down gracefully...\n";
-    exit(0);
-});
-pcntl_signal(SIGINT, function () {
-    echo "Received SIGINT, shutting down gracefully...\n";
-    exit(0);
-});
+WorkerBase::registerSignalHandlers();
 
 try {
     $worker = new BaseXSyncWorker();

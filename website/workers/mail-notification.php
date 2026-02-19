@@ -10,129 +10,28 @@ declare(strict_types=1);
  * for GeoKret activities (moves, comments) based on user preferences.
  */
 require_once __DIR__.'/../init-f3.php';
+require_once __DIR__.'/WorkerBase.php';
 
 use GeoKrety\Email\InstantNotification;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
 use GeoKrety\Model\User;
-use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Exception\AMQPConnectionException;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class MailNotificationWorker {
-    private $connection;
-    private $channel;
-    private $retryDelay = 1;
-    private $maxRetryDelay = 60;
-    private $logLevel;
-
-    // PSR-3 log levels
-    public const LOG_DEBUG = 100;
-    public const LOG_INFO = 200;
-    public const LOG_WARNING = 300;
-    public const LOG_ERROR = 400;
-    public const LOG_CRITICAL = 500;
-
-    public function __construct() {
-        $this->logLevel = $this->getLogLevelFromEnv(getenv('GK_NOTIFICATION_LOG_LEVEL') ?: 'INFO');
-        $this->log(self::LOG_INFO, 'Mail Notification Worker starting...');
+class MailNotificationWorker extends WorkerBase {
+    protected function getWorkerName(): string {
+        return 'Mail Notification Worker';
     }
 
-    private function getLogLevelFromEnv(string $level): int {
-        $levels = [
-            'DEBUG' => self::LOG_DEBUG,
-            'INFO' => self::LOG_INFO,
-            'WARNING' => self::LOG_WARNING,
-            'ERROR' => self::LOG_ERROR,
-            'CRITICAL' => self::LOG_CRITICAL,
-        ];
-
-        return $levels[strtoupper($level)] ?? self::LOG_INFO;
+    protected function getQueueName(): string {
+        return 'mail_notification_worker_queue';
     }
 
-    private function log(int $level, string $message, array $context = []): void {
-        if ($level < $this->logLevel) {
-            return;
-        }
-
-        $levelNames = [
-            self::LOG_DEBUG => 'DEBUG',
-            self::LOG_INFO => 'INFO',
-            self::LOG_WARNING => 'WARNING',
-            self::LOG_ERROR => 'ERROR',
-            self::LOG_CRITICAL => 'CRITICAL',
-        ];
-
-        $timestamp = date('Y-m-d H:i:s');
-        $levelName = $levelNames[$level] ?? 'UNKNOWN';
-        $contextStr = !empty($context) ? ' '.json_encode($context) : '';
-
-        echo "[{$timestamp}] [{$levelName}] {$message}{$contextStr}\n";
-        flush();
+    protected function getQueueArguments(): array {
+        return ['x-message-ttl' => ['I', 10800000]];
     }
 
-    private function connect(): void {
-        if (!GK_RABBITMQ_HOST || !GK_RABBITMQ_PORT) {
-            throw new RuntimeException('RabbitMQ configuration not found. Check GK_RABBITMQ_* environment variables.');
-        }
-
-        $this->connection = new AMQPStreamConnection(
-            GK_RABBITMQ_HOST,
-            GK_RABBITMQ_PORT,
-            GK_RABBITMQ_USER,
-            GK_RABBITMQ_PASS,
-            GK_RABBITMQ_VHOST ?: '/'
-        );
-
-        $this->channel = $this->connection->channel();
-
-        // Declare exchange (idempotent - won't recreate if exists)
-        $this->channel->exchange_declare('geokrety', 'fanout', false, true, false);
-
-        // Declare named durable queue for multiple replicas
-        // Queue flags: durable=true, exclusive=false, auto_delete=false
-        // Message TTL: 3 hours (10,800,000 ms)
-        $queueName = 'mail_notification_worker_queue';
-        $this->channel->queue_declare(
-            $queueName,
-            false,        // passive
-            true,         // durable - survive broker restart
-            false,        // exclusive - allow multiple replicas
-            false,        // auto_delete - persist even if container restarts
-            false,        // nowait
-            ['x-message-ttl' => ['I', 10800000]] // 3 hours TTL
-        );
-
-        // Bind queue to exchange
-        $this->channel->queue_bind($queueName, 'geokrety');
-
-        $this->log(self::LOG_INFO, 'Connected to RabbitMQ', [
-            'host' => GK_RABBITMQ_HOST,
-            'port' => GK_RABBITMQ_PORT,
-            'queue' => $queueName,
-        ]);
-
-        // Set QoS: prefetch_count=1 ensures fair distribution among replicas
-        // Each replica gets one message at a time (competing consumers pattern)
-        $this->channel->basic_qos(
-            0,     // prefetch_size - 0 means no limit
-            1,     // prefetch_count - process one message at a time
-            false  // global - apply per-consumer
-        );
-
-        // Setup consumer
-        $this->channel->basic_consume(
-            $queueName,
-            '',
-            false,
-            false,
-            false,
-            false,
-            [$this, 'processMessage']
-        );
-    }
-
-    public function processMessage(AMQPMessage $msg): void {
+    protected function processMessage(AMQPMessage $msg): void {
         try {
             $data = json_decode($msg->body, true);
 
@@ -385,15 +284,14 @@ SQL;
             'comment_id' => $comment->id,
         ]);
 
-        $email = new InstantNotification();
-        $email->sendCommentNotification($user, $comment);
-
-        $this->log(self::LOG_INFO, 'Comment notification sent successfully', [
-            'user_id' => $userId,
-            'comment_id' => $comment->id,
-        ]);
-
         try {
+            $email = new InstantNotification();
+            $email->sendCommentNotification($user, $comment);
+
+            $this->log(self::LOG_INFO, 'Comment notification sent successfully', [
+                'user_id' => $userId,
+                'comment_id' => $comment->id,
+            ]);
         } catch (Exception $e) {
             $this->log(self::LOG_ERROR, 'Failed to send comment notification: '.$e->getMessage(), [
                 'user_id' => $userId,
@@ -402,71 +300,10 @@ SQL;
             ]);
         }
     }
-
-    public function run(): void {
-        $this->log(self::LOG_INFO, 'Starting consumer loop...');
-
-        while (true) {
-            try {
-                $this->connect();
-                $this->retryDelay = 1; // Reset on successful connection
-
-                // Process messages
-                while ($this->channel->is_consuming()) {
-                    $this->channel->wait();
-                }
-            } catch (AMQPConnectionException $e) {
-                $this->log(self::LOG_ERROR, 'Connection lost: '.$e->getMessage());
-                $this->cleanup();
-
-                $this->log(self::LOG_INFO, "Reconnecting in {$this->retryDelay}s...");
-                sleep($this->retryDelay);
-
-                // Exponential backoff
-                $this->retryDelay = min($this->retryDelay * 2, $this->maxRetryDelay);
-            } catch (Exception $e) {
-                $this->log(self::LOG_CRITICAL, 'Unexpected error: '.$e->getMessage(), [
-                    'exception' => get_class($e),
-                    'file' => $e->getFile(),
-                    'line' => $e->getLine(),
-                    'trace' => $e->getTraceAsString(),
-                ]);
-                $this->cleanup();
-
-                sleep($this->retryDelay);
-                $this->retryDelay = min($this->retryDelay * 2, $this->maxRetryDelay);
-            }
-        }
-    }
-
-    private function cleanup(): void {
-        try {
-            if ($this->channel) {
-                $this->channel->close();
-            }
-            if ($this->connection) {
-                $this->connection->close();
-            }
-        } catch (Exception $e) {
-            $this->log(self::LOG_WARNING, 'Error during cleanup: '.$e->getMessage());
-        }
-    }
-
-    public function __destruct() {
-        $this->cleanup();
-    }
 }
 
 // Handle graceful shutdown
-pcntl_async_signals(true);
-pcntl_signal(SIGTERM, function () {
-    echo "Received SIGTERM, shutting down gracefully...\n";
-    exit(0);
-});
-pcntl_signal(SIGINT, function () {
-    echo "Received SIGINT, shutting down gracefully...\n";
-    exit(0);
-});
+WorkerBase::registerSignalHandlers();
 
 // Run the worker
 try {
