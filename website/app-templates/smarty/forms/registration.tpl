@@ -98,7 +98,7 @@
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="trackingOptInInput" name="tracking_opt_in" aria-describedby="trackingOptInHelpBlock">
+                    <input type="checkbox" id="trackingOptInInput" name="tracking_opt_in" aria-describedby="trackingOptInHelpBlock" {if $f3->get('POST.tracking_opt_in')} checked{/if}>
                     {t}Opt-in to site usage analytics.{/t}
                     <span id="trackingOptInHelpBlock" class="help-block">{t}We collect site usage analytics, this help us understanding how the site is used and how to enhance it.{/t}</span>
                 </label>
