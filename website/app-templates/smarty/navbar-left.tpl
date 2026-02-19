@@ -52,6 +52,7 @@
             <li role="separator" class="divider"></li>
             <li><a id="navbar-help-api" href="{'help_api'|alias}">{fa icon="cog"} {t}GK interface / API{/t}</a></li>
             <li role="separator" class="divider"></li>
+            <li><a id="navbar-site-stats" href="{'statistics_site'|alias}">{fa icon="area-chart"} {t}Site Statistics{/t}</a></li>
             <li><a id="navbar-stats" href="{'statistics_waypoints'|alias}">{fa icon="bar-chart"} {t}Waypoints synchronization status{/t}</a></li>
             <li><a id="navbar-ranking" href="{'statistics_awards_ranking_index'|alias}">{fa icon="line-chart"} {t}Yearly rankings{/t}</a></li>
             <li role="separator" class="divider"></li>

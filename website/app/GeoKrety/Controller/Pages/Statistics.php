@@ -7,7 +7,11 @@ use GeoKrety\Model\WaypointSync;
 use GeoKrety\Service\Smarty;
 
 class Statistics extends Base {
-    public function waypoints(\Base $f3) {
+    public function site() {
+        Smarty::render('pages/statistics_site.tpl');
+    }
+
+    public function waypoints() {
         $wptOc = new WaypointSync();
         $wptOc->last_error_time_diff = <<<'SQL'
 EXTRACT(EPOCH FROM (DATE_TRUNC('MINUTE', NOW()) - DATE_TRUNC('MINUTE', last_success_datetime)))::integer/60
