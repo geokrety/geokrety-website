@@ -73,9 +73,8 @@ class UserEmailChangeToken extends Base {
             $smtp = new EmailChange();
             $smtp->sendEmailChangedNotification($this->token);
             exit;
-        } else {
-            \Flash::instance()->addMessage(_('No change has been processed. This token is now revoked.'), 'warning');
         }
+        \Flash::instance()->addMessage(_('No change has been processed. This token is now revoked.'), 'warning');
 
         $f3->reroute(sprintf('@user_details(@userid=%d)', $this->token->user->id));
     }

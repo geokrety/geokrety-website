@@ -99,11 +99,10 @@ class Waypoint {
                 $this->errors[] = _('Sorry, but this waypoint is not (yet) in our database. Does it really exist?');
 
                 return false;
-            } else {
-                $wpt->waypoint = $waypoint;
-                $wpt->lat = $coordinates[0];
-                $wpt->lon = $coordinates[1];
             }
+            $wpt->waypoint = $waypoint;
+            $wpt->lat = $coordinates[0];
+            $wpt->lon = $coordinates[1];
         }
 
         return true;
