@@ -114,6 +114,7 @@ class Config extends \Prefab {
         define('ADMIN_SERVICE_GRAFANA_URL', getenv('ADMIN_SERVICE_GRAFANA_URL') ?: GK_SITE_BASE_SERVER_URL.'/grafana');
         define('ADMIN_SERVICE_PROMETHEUS_URL', getenv('ADMIN_SERVICE_PROMETHEUS_URL') ?: GK_SITE_BASE_SERVER_URL.'/prometheus');
         define('ADMIN_SERVICE_RABBIT_MQ_URL', getenv('ADMIN_SERVICE_RABBIT_MQ_URL') ?: sprintf('%s://rabbitmq.%s', GK_SITE_BASE_SERVER_SCHEME, GK_SITE_BASE_SERVER_FQDN));
+        define('ADMIN_SERVICE_MAILCATCHER_URL', getenv('ADMIN_SERVICE_MAILCATCHER_URL') ?: sprintf('%s://mailcatcher.%s', GK_SITE_BASE_SERVER_SCHEME, GK_SITE_BASE_SERVER_FQDN));
 
         // Environment
         define('GK_INSTANCE_NAME', getenv('GK_INSTANCE_NAME') ?: 'dev');
