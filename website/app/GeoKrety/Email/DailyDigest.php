@@ -5,7 +5,7 @@ namespace GeoKrety\Email;
 use Carbon\Carbon;
 use GeoKrety\Model\User;
 
-class DailyMail extends BasePHPMailer {
+class DailyDigest extends BasePHPMailer {
     private \DateTime $since;
 
     public function setSince(\DateTime $since): void {
@@ -24,13 +24,13 @@ class DailyMail extends BasePHPMailer {
     /**
      * @throws \PHPMailer\PHPMailer\Exception
      */
-    public function sendDailyMail(User $user) {
+    public function sendDailyDigest(User $user) {
         $this->setSubject(sprintf(_('Watchlist for %s'), Carbon::instance($this->since)->isoFormat('LL')), '🛩️');
         $this->setTo($user);
         $this->addCustomHeader('List-Unsubscribe-Post', 'List-Unsubscribe=One-Click');
         $unsubscribe_url = GK_SITE_BASE_SERVER_URL.\Base::instance()->alias('user_update_email_token', '@token='.$user->list_unsubscribe_token);
         $this->addCustomHeader('List-Unsubscribe', "<$unsubscribe_url>");
-        if ($this->sendEmail('emails/daily-mail.tpl')) {
+        if ($this->sendEmail('emails/daily-digest.tpl')) {
             $user->touch('last_mail_datetime');
             $user->save();
         }

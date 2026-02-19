@@ -419,25 +419,25 @@ $events->on('user.statpic.generated', function (GeoKrety\Model\User $user) {
     audit('user.statpic.generated', $user);
     Metrics::counter('user_statpic_generated_total', 'Total number of user statpic generation');
 });
-$events->on('cron.dailymail.nomail', function (GeoKrety\Model\User $user) {
-    audit('cron.dailymail.nomail', $user);
-    Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['nomail']);
+$events->on('cron.dailydigest.nomail', function (GeoKrety\Model\User $user) {
+    audit('cron.dailydigest.nomail', $user);
+    Metrics::counter('cron_dailydigest', 'Total number of dailydigest notification', ['status'], ['nomail']);
 });
-$events->on('cron.dailymail.deny', function (GeoKrety\Model\User $user) {
-    audit('cron.dailymail.deny', $user);
-    Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['deny']);
+$events->on('cron.dailydigest.deny', function (GeoKrety\Model\User $user) {
+    audit('cron.dailydigest.deny', $user);
+    Metrics::counter('cron_dailydigest', 'Total number of dailydigest notification', ['status'], ['deny']);
 });
-$events->on('cron.dailymail.empty', function (GeoKrety\Model\User $user) {
-    audit('cron.dailymail.empty', $user);
-    Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['empty']);
+$events->on('cron.dailydigest.empty', function (GeoKrety\Model\User $user) {
+    audit('cron.dailydigest.empty', $user);
+    Metrics::counter('cron_dailydigest', 'Total number of dailydigest notification', ['status'], ['empty']);
 });
-$events->on('cron.dailymail.error', function (GeoKrety\Email\DailyMail $email) {
-    audit('cron.dailymail.error', $email);
-    Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['error']);
+$events->on('cron.dailydigest.error', function (GeoKrety\Email\DailyDigest $email) {
+    audit('cron.dailydigest.error', $email);
+    Metrics::counter('cron_dailydigest', 'Total number of dailydigest notification', ['status'], ['error']);
 });
-$events->on('cron.dailymail.sent', function (GeoKrety\Email\DailyMail $email) {
-    audit('cron.dailymail.sent', $email);
-    Metrics::counter('cron_dailymail', 'Total number of dailymail notification', ['status'], ['sent']);
+$events->on('cron.dailydigest.sent', function (GeoKrety\Email\DailyDigest $email) {
+    audit('cron.dailydigest.sent', $email);
+    Metrics::counter('cron_dailydigest', 'Total number of dailydigest notification', ['status'], ['sent']);
 });
 $events->on('mail.error', function (GeoKrety\Email\BasePHPMailer $email) {
     audit('mail.error', $email);
