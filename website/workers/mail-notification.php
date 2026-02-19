@@ -13,9 +13,11 @@ require_once __DIR__.'/../init-f3.php';
 require_once __DIR__.'/WorkerBase.php';
 
 use GeoKrety\Email\InstantNotification;
+use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
 use GeoKrety\Model\User;
+use GeoKrety\Service\StaticMapImage;
 use PhpAmqpLib\Message\AMQPMessage;
 
 class MailNotificationWorker extends WorkerBase {
@@ -107,8 +109,8 @@ class MailNotificationWorker extends WorkerBase {
         // Find users who should be notified about this move
         $notifyUsers = $this->getUsersToNotifyForMove($move);
 
-        foreach ($notifyUsers as $userId) {
-            $this->sendMoveNotification($userId, $move);
+        foreach ($notifyUsers as $userId => $isHomeLocationNotification) {
+            $this->sendMoveNotification($userId, $move, $isHomeLocationNotification);
         }
     }
 
@@ -154,19 +156,34 @@ class MailNotificationWorker extends WorkerBase {
         $f3 = Base::instance();
         $db = $f3->get('DB');
 
-        $sql = <<<'SQL'
+        // Get GeoKret owner who wants notifications about their own GeoKret
+        // Note: INSTANT_NOTIFICATIONS defaults to false (check EXISTS true), granular settings default to true (check NOT EXISTS false)
+        $ownerSql = <<<'SQL'
+SELECT DISTINCT u.id
+FROM geokrety.gk_users u
+WHERE u.id = ?
+AND u.email_invalid = 0
+AND EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS'
+    AND s.value = 'true'
+)
+AND NOT EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS_MOVES_OWN_GK'
+    AND s.value = 'false'
+)
+SQL;
+
+        // Get watchers who want notifications about watched GeoKret
+        $watchersSql = <<<'SQL'
 SELECT DISTINCT u.id
 FROM geokrety.gk_users u
 WHERE u.id IN (
-    -- GeoKret owner
-    SELECT gk.owner
-    FROM geokrety.gk_geokrety gk
-    WHERE gk.id = ?
-    AND gk.owner IS NOT NULL
-
-    UNION
-
-    -- Watchers
     SELECT w.user
     FROM geokrety.gk_watched w
     WHERE w.geokret = ?
@@ -179,19 +196,76 @@ AND EXISTS (
     AND s.name = 'INSTANT_NOTIFICATIONS'
     AND s.value = 'true'
 )
-AND u.id != ?  -- Don't notify the move author
+AND NOT EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS_MOVES_WATCHED_GK'
+    AND s.value = 'false'
+)
 SQL;
 
-        $result = $db->exec($sql, [$move->geokret->id, $move->geokret->id, $move->author->id]);
+        // Get users with home location near the move who want notifications
+        $homeLocationSql = <<<'SQL'
+SELECT DISTINCT u.id
+FROM geokrety.gk_users u
+WHERE u.email_invalid = 0
+AND u.home_latitude IS NOT NULL
+AND u.home_longitude IS NOT NULL
+AND u.observation_area > 0
+AND public.st_dwithin(
+    public.st_setsrid(public.st_makepoint(?, ?), 4326),
+    public.st_setsrid(public.st_makepoint(u.home_longitude, u.home_latitude), 4326),
+    (u.observation_area * 1000)::double precision
+)
+AND EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS'
+    AND s.value = 'true'
+)
+AND NOT EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME'
+    AND s.value = 'false'
+)
+SQL;
 
-        return array_column($result, 'id');
+        $ownerResult = $db->exec($ownerSql, [$move->geokret->id]);
+        $watchersResult = $db->exec($watchersSql, [$move->geokret->id]);
+        $homeLocationResult = $db->exec($homeLocationSql, [$move->lon, $move->lat]);
+
+        // Build array with user IDs and a flag indicating if it's a home-location notification
+        $users = [];
+
+        // Add owners and watchers (not home-location notifications)
+        foreach (array_column($ownerResult, 'id') as $userId) {
+            $users[$userId] = false;
+        }
+        foreach (array_column($watchersResult, 'id') as $userId) {
+            $users[$userId] = false;
+        }
+
+        // Add home-location users (with flag set to true)
+        foreach (array_column($homeLocationResult, 'id') as $userId) {
+            $users[$userId] = true;
+        }
+
+        // Remove duplicates and exclude the move author
+        $users = array_unique($users, SORT_REGULAR);
+
+        return array_filter($users, fn ($userId) => $userId != $move->author->id, ARRAY_FILTER_USE_KEY);
     }
 
     private function getUsersToNotifyForComment(MoveComment $comment): array {
-        // Find move author and GeoKret owner/watchers who have instant notifications enabled
+        // Find move author and GeoKret owner/watchers who want comment notifications
         $f3 = Base::instance();
         $db = $f3->get('DB');
 
+        // Note: INSTANT_NOTIFICATIONS defaults to false (check EXISTS true), granular settings default to true (check NOT EXISTS false)
         $sql = <<<'SQL'
 SELECT DISTINCT u.id
 FROM geokrety.gk_users u
@@ -227,15 +301,22 @@ AND EXISTS (
     AND s.name = 'INSTANT_NOTIFICATIONS'
     AND s.value = 'true'
 )
-AND u.id != ?  -- Don't notify the comment author
+AND NOT EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS_MOVE_COMMENTS'
+    AND s.value = 'false'
+)
 SQL;
 
-        $result = $db->exec($sql, [$comment->move->id, $comment->move->id, $comment->move->id, $comment->author->id]);
+        $result = $db->exec($sql, [$comment->move->id, $comment->move->id, $comment->move->id]);
 
-        return array_column($result, 'id');
+        // Return user IDs excluding the comment author
+        return array_filter(array_column($result, 'id'), fn ($userId) => $userId != $comment->author->id);
     }
 
-    private function sendMoveNotification(int $userId, Move $move): void {
+    private function sendMoveNotification(int $userId, Move $move, bool $isHomeLocationNotification = false): void {
         try {
             $user = new User();
             $user->load(['id = ?', $userId]);
@@ -253,6 +334,12 @@ SQL;
             ]);
 
             $email = new InstantNotification();
+
+            // Generate and embed map only for "moves around home" notifications
+            if ($isHomeLocationNotification && $user->hasHomeCoordinates()) {
+                $this->attachNotificationMapToEmail($email, $user, (float) $move->lon, (float) $move->lat);
+            }
+
             $email->sendMoveNotification($user, $move);
 
             $this->log(self::LOG_INFO, 'Move notification sent successfully', [
@@ -286,6 +373,7 @@ SQL;
 
         try {
             $email = new InstantNotification();
+
             $email->sendCommentNotification($user, $comment);
 
             $this->log(self::LOG_INFO, 'Comment notification sent successfully', [
@@ -296,6 +384,51 @@ SQL;
             $this->log(self::LOG_ERROR, 'Failed to send comment notification: '.$e->getMessage(), [
                 'user_id' => $userId,
                 'comment_id' => $comment->id,
+                'exception' => get_class($e),
+            ]);
+        }
+    }
+
+    /**
+     * Attach a map image with the notification-triggering GeoKret and user's home to the email.
+     *
+     * @param InstantNotification $email Email instance to attach map to
+     * @param User                $user  User with home coordinates
+     * @param float               $lon   Longitude of the GeoKret that triggered the notification
+     * @param float               $lat   Latitude of the GeoKret that triggered the notification
+     */
+    private function attachNotificationMapToEmail(InstantNotification $email, User $user, float $lon, float $lat): void {
+        try {
+            // Build GeoJSON with only the triggered GeoKret location + home marker
+            $geojson = (object) [
+                'type' => 'FeatureCollection',
+                'features' => [
+                    [
+                        'type' => 'Feature',
+                        'geometry' => [
+                            'type' => 'Point',
+                            'coordinates' => [$lon, $lat],
+                        ],
+                    ],
+                ],
+            ];
+
+            // Convert to array format expected by StaticMapImage
+            $result = [['geojson' => json_encode($geojson)]];
+
+            $imgCid = 'NOTIFICATION_HOME_MAP';
+            if (StaticMapImage::generateHomeMapWithMarkers($email, $user, $result, $imgCid)) {
+                // Assign to Smarty so templates can reference the image
+                GeoKrety\Service\Smarty::assign('notification_home_map_cid', $imgCid);
+                $this->log(self::LOG_DEBUG, 'Home-location map embedded in notification', [
+                    'user_id' => $user->id,
+                    'geokrety_lat' => $lat,
+                    'geokrety_lon' => $lon,
+                ]);
+            }
+        } catch (Exception $e) {
+            $this->log(self::LOG_WARNING, 'Failed to attach notification map: '.$e->getMessage(), [
+                'user_id' => $user->id,
                 'exception' => get_class($e),
             ]);
         }

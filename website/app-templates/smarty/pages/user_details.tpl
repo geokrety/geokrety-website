@@ -63,6 +63,7 @@
 
     // Bind modal
     {include 'js/dialogs/dialog_user_details.tpl.js'}
+    {include 'js/dialogs/dialog_user_update_email.tpl.js'}
     {include 'js/dialogs/dialog_contact_user.tpl.js'}
     {include 'js/dialogs/dialog_picture_actions.tpl.js'}
     {include 'js/dialogs/dialog_oauth_disconnect.tpl.js'}

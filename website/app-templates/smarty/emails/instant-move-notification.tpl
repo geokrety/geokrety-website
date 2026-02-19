@@ -52,6 +52,11 @@
         </tbody>
     </table>
 
+    {if isset($notification_home_map_cid)}{* Map for moves around home notifications *}
+    <div class="s-3"></div>
+    <a href="{'geokrety_map'|alias}" title="{t}Open interactive map{/t}"><img src="cid:{$notification_home_map_cid}" alt="{t}Move location map{/t}" class="img-fluid max-w-150 align-center text-center"></a>
+    {/if}
+
     {if $comments}
     <table class="table table-striped thead-default table-bordered">
         <thead>
