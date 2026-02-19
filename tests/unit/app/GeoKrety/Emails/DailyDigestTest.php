@@ -4,8 +4,8 @@ namespace unit\app\GeoKrety\Emails;
 
 use GeoKrety\Model\User;
 
-class DailyMailTest extends BaseEmailTestCase {
-    protected $tested_class = \GeoKrety\Email\DailyMail::class;
+class DailyDigestTest extends BaseEmailTestCase {
+    protected $tested_class = \GeoKrety\Email\DailyDigest::class;
 
     public static function emailStatusProvider(): array {
         return [

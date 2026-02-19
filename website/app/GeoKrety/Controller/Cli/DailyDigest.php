@@ -3,7 +3,7 @@
 namespace GeoKrety\Controller\Cli;
 
 use GeoKrety\Controller\Cli\Traits\Script;
-use GeoKrety\Email\DailyMail as EmailDailyMail;
+use GeoKrety\Email\DailyDigest as EmailDailyDigest;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\GeokretNearHome;
 use GeoKrety\Model\Move;
@@ -16,11 +16,11 @@ use GeoKrety\Service\UserSettings;
 use PHPMailer\PHPMailer\Exception;
 use Sugar\Event;
 
-class DailyMail {
+class DailyDigest {
     use Script;
 
     private ?\DateTime $since;
-    private EmailDailyMail $email;
+    private EmailDailyDigest $email;
     private User $user;
     private int $updates_count = 0;
 
@@ -123,7 +123,7 @@ SQL;
     protected function send() {
         if (!$this->user->hasEmail()) {
             $this->console_writer->print([$this->user->id, $this->user->username, '406 no email'], true);
-            Event::instance()->emit('cron.dailymail.nomail', $this->user);
+            Event::instance()->emit('cron.dailydigest.nomail', $this->user);
 
             return;
         }
@@ -133,19 +133,19 @@ SQL;
 
         if (!$daily_digest_enabled) {
             $this->console_writer->print([$this->user->id, $this->user->username, '403 don\'t want'], true);
-            Event::instance()->emit('cron.dailymail.deny', $this->user);
+            Event::instance()->emit('cron.dailydigest.deny', $this->user);
 
             return;
         }
 
         if (!$this->user->isEmailValid()) {
             $this->console_writer->print([$this->user->id, $this->user->username, sprintf('412 invalid email status (%d)', $this->user->email_invalid)], true);
-            Event::instance()->emit('cron.dailymail.invalid-mail', $this->user);
+            Event::instance()->emit('cron.dailydigest.invalid-mail', $this->user);
 
             return;
         }
 
-        $this->email = new EmailDailyMail();
+        $this->email = new EmailDailyDigest();
 
         try {
             $this->compute_since();
@@ -157,22 +157,22 @@ SQL;
 
             if (!$this->updates_count) {
                 $this->console_writer->print([$this->user->id, $this->user->username, '204 empty'], true);
-                Event::instance()->emit('cron.dailymail.empty', $this->user);
+                Event::instance()->emit('cron.dailydigest.empty', $this->user);
 
                 return;
             }
 
             $this->updates_count = 0;
             $this->console_writer->print([$this->user->id, $this->user->username, 'sending']);
-            $this->email->sendDailyMail($this->user);
+            $this->email->sendDailyDigest($this->user);
         } catch (Exception $e) {
             $this->console_writer->print([$this->user->id, $this->user->username, sprintf('500 error: %s', $e->getMessage())], true);
-            Event::instance()->emit('cron.dailymail.error', $this->email);
+            Event::instance()->emit('cron.dailydigest.error', $this->email);
 
             return;
         }
         $this->console_writer->print([$this->user->id, $this->user->username, '200 sent'], true);
-        Event::instance()->emit('cron.dailymail.sent', $this->email);
+        Event::instance()->emit('cron.dailydigest.sent', $this->email);
     }
 
     private function compute_since() {
