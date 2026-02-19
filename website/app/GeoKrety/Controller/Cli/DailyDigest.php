@@ -10,8 +10,8 @@ use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
 use GeoKrety\Model\News;
 use GeoKrety\Model\User;
-use GeoKrety\Service\File;
 use GeoKrety\Service\Smarty;
+use GeoKrety\Service\StaticMapImage;
 use GeoKrety\Service\UserSettings;
 use PHPMailer\PHPMailer\Exception;
 use Sugar\Event;
@@ -269,52 +269,12 @@ FROM (
 SQL;
         $this->console_writer->print([$this->user->id, $this->user->username, 'load dropped - geojson']);
         $result = \Base::instance()->get('DB')->exec($sql, [$this->user->id, $this->since->format(GK_DB_DATETIME_FORMAT), Geokret::GEOKRETY_PRESENT_IN_CACHE]);
-        $geojson = $result[0]['geojson'];
+        $positions = $result;
 
-        $home = <<<'GEOJSON'
-{
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [ %s, %s]
-  },
-  "markerIconOptions": {
-    "iconUrl": "%s/home48.png",
-    "iconAnchor": [24, 24]
-  }
-}
-GEOJSON;
-        $home = sprintf($home, $this->user->home_longitude, $this->user->home_latitude, GK_CDN_ICONS_URL);
-
-        $geojson = json_decode($geojson);
-        array_unshift($geojson->features, json_decode($home, true));
-
-        $img_url_params = http_build_query([
-            // 'center' => sprintf('%s,%s', $this->user->home_longitude, $this->user->home_latitude),
-            'arrows' => true,
-            'geojson' => json_encode($geojson),
-            'width' => 640,
-            'height' => 480,
-            'oxipng' => true,
-            'maxZoom' => 13,
-            // 'zoom' => 11,
-            'markerIconOptions' => sprintf('{"iconUrl": "%s/pins/green.png", iconAnchor: [6, 20]}', GK_CDN_ICONS_URL),
-        ]);
         $this->console_writer->print([$this->user->id, $this->user->username, 'load dropped - image']);
-        try {
-            $fp = fopen('php://memory', 'w');
-            File::download(sprintf('%s?%s', GK_OSM_STATIC_MAPS_URI, $img_url_params), $fp);
-            rewind($fp);
-            $img_string = stream_get_contents($fp);
-            fclose($fp);
-        } catch (\Exception $e) {
-            echo $this->console_writer->sprintf('E: Download static maps image failed: %s', $e->getMessage());
-
-            return;
+        $imgCid = 'GK_NEAR_HOME_IMG';
+        if (StaticMapImage::generateHomeMapWithMarkers($this->email, $this->user, $positions, $imgCid)) {
+            Smarty::assign('gk_near_home_img', $imgCid);
         }
-
-        $img_cid = 'GK_NEAR_HOME_IMG';
-        Smarty::assign('gk_near_home_img', $img_cid);
-        $this->email->addStringEmbeddedImage($img_string, $img_cid, 'gk_near_home.png');
     }
 }

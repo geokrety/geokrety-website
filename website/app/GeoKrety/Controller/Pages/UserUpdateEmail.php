@@ -20,6 +20,10 @@ class UserUpdateEmail extends Base {
         }
         Smarty::assign('daily_digest', UserSettings::getForCurrentUser('DAILY_DIGEST'));
         Smarty::assign('instant_notifications', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS'));
+        Smarty::assign('instant_notifications_moves_own_gk', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_OWN_GK'));
+        Smarty::assign('instant_notifications_moves_watched_gk', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_WATCHED_GK'));
+        Smarty::assign('instant_notifications_moves_around_home', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME'));
+        Smarty::assign('instant_notifications_move_comments', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVE_COMMENTS'));
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_email.tpl');
     }
 
@@ -30,6 +34,10 @@ class UserUpdateEmail extends Base {
         }
         Smarty::assign('daily_digest', UserSettings::getForCurrentUser('DAILY_DIGEST'));
         Smarty::assign('instant_notifications', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS'));
+        Smarty::assign('instant_notifications_moves_own_gk', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_OWN_GK'));
+        Smarty::assign('instant_notifications_moves_watched_gk', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_WATCHED_GK'));
+        Smarty::assign('instant_notifications_moves_around_home', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME'));
+        Smarty::assign('instant_notifications_move_comments', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVE_COMMENTS'));
         Smarty::render('extends:base_modal.tpl|dialog/user_update_email.tpl');
     }
 
@@ -41,6 +49,18 @@ class UserUpdateEmail extends Base {
         // Get values from POST
         $daily_digest = filter_var($f3->get('POST.daily_digest'), FILTER_VALIDATE_BOOLEAN);
         $instant_notifications = filter_var($f3->get('POST.instant_notifications'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications_moves_own_gk = filter_var($f3->get('POST.instant_notifications_moves_own_gk'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications_moves_watched_gk = filter_var($f3->get('POST.instant_notifications_moves_watched_gk'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications_moves_around_home = filter_var($f3->get('POST.instant_notifications_moves_around_home'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications_move_comments = filter_var($f3->get('POST.instant_notifications_move_comments'), FILTER_VALIDATE_BOOLEAN);
+
+        // If instant_notifications is enabled, default all granular settings to true if not explicitly set
+        if ($instant_notifications) {
+            $instant_notifications_moves_own_gk = $instant_notifications_moves_own_gk ?? true;
+            $instant_notifications_moves_watched_gk = $instant_notifications_moves_watched_gk ?? true;
+            $instant_notifications_moves_around_home = $instant_notifications_moves_around_home ?? true;
+            $instant_notifications_move_comments = $instant_notifications_move_comments ?? true;
+        }
 
         // Save user preferences using UserSettings service
         $userSettings = UserSettings::instance();
@@ -53,6 +73,26 @@ class UserUpdateEmail extends Base {
 
         if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS') !== $instant_notifications) {
             $userSettings->put($user, 'INSTANT_NOTIFICATIONS', $instant_notifications ? 'true' : 'false');
+            $changed = true;
+        }
+
+        if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_OWN_GK') !== $instant_notifications_moves_own_gk) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS_MOVES_OWN_GK', $instant_notifications_moves_own_gk ? 'true' : 'false');
+            $changed = true;
+        }
+
+        if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_WATCHED_GK') !== $instant_notifications_moves_watched_gk) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS_MOVES_WATCHED_GK', $instant_notifications_moves_watched_gk ? 'true' : 'false');
+            $changed = true;
+        }
+
+        if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME') !== $instant_notifications_moves_around_home) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME', $instant_notifications_moves_around_home ? 'true' : 'false');
+            $changed = true;
+        }
+
+        if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVE_COMMENTS') !== $instant_notifications_move_comments) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS_MOVE_COMMENTS', $instant_notifications_move_comments ? 'true' : 'false');
             $changed = true;
         }
 

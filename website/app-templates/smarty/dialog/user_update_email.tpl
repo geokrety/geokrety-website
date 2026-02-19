@@ -24,6 +24,30 @@
             </label>
         </div>
 
+        <div id="instantNotificationsOptions" class="alert alert-info {if !$instant_notifications}hidden{/if}">
+            <strong>{t}Instant notification types:{/t}</strong>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="instant_notifications_moves_own_gk" class="instant-notif-checkbox" {if $instant_notifications_moves_own_gk}checked{/if}>{t}Moves of my GeoKrety{/t}
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="instant_notifications_moves_watched_gk" class="instant-notif-checkbox" {if $instant_notifications_moves_watched_gk}checked{/if}>{t}Moves of GeoKrety I watch{/t}
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="instant_notifications_moves_around_home" class="instant-notif-checkbox" {if $instant_notifications_moves_around_home}checked{/if}>{t}Moves around my home location{/t}
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="instant_notifications_move_comments" class="instant-notif-checkbox" {if $instant_notifications_move_comments}checked{/if}>{t}Comments on moves{/t}
+                </label>
+            </div>
+        </div>
+
         <hr />
         <p>
             <strong>{t}The main purpose of collecting email is to permit password recovery.{/t}</strong>

@@ -158,11 +158,11 @@ class Move extends Base {
         return new LogType($value);
     }
 
-    public function get_lat($value) {
+    public function get_lat($value): mixed {
         return $value ? number_format(floatval($value), 5, '.', '') : $value;
     }
 
-    public function get_lon($value) {
+    public function get_lon($value): mixed {
         return $value ? number_format(floatval($value), 5, '.', '') : $value;
     }
 

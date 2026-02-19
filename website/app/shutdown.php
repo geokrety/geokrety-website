@@ -16,6 +16,11 @@ function shutdown_force_send_response_to_client(Base $f3) {
 }
 
 function shutdown_piwik(Base $f3) {
+    // Skip in worker/CLI context where there's no current user/session
+    if (!$f3->exists('SESSION.CURRENT_USER')) {
+        return;
+    }
+
     $ip = $f3->get('IP');
     $ip_excluded = false;
     foreach (GK_SYSTEM_PATH_ALLOWED_IPS as $range) {
