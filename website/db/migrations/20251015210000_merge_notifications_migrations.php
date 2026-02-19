@@ -99,6 +99,10 @@ EOL
 
         // 6. Add AMQP triggers for instant notifications
         $this->execute('
+            CREATE TRIGGER after_99_notify_amqp_geokrety
+            AFTER INSERT ON geokrety.gk_geokrety
+            FOR EACH ROW EXECUTE FUNCTION notify_queues.amqp_notify_id();
+
             CREATE TRIGGER after_99_notify_amqp_moves
             AFTER INSERT ON geokrety.gk_moves
             FOR EACH ROW EXECUTE FUNCTION notify_queues.amqp_notify_id();
@@ -112,6 +116,7 @@ EOL
     public function down(): void {
         // 1. Remove AMQP triggers
         $this->execute('
+            DROP TRIGGER IF EXISTS after_99_notify_amqp_geokrety ON geokrety.gk_geokrety;
             DROP TRIGGER IF EXISTS after_99_notify_amqp_moves ON geokrety.gk_moves;
             DROP TRIGGER IF EXISTS after_99_notify_amqp_moves_comments ON geokrety.gk_moves_comments;
         ');

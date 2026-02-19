@@ -58,14 +58,12 @@ class BaseXSyncWorker extends WorkerBase {
             $this->log(self::LOG_DEBUG, 'Message received', $data);
 
             switch ($data['kind']) {
-                // TODO?
-                // case 'gk_geokrety':
-                //     $this->handleGeokret((int) $data['id']);
-                //     break;
-                // TODO?
-                // case 'gk_moves_comments':
-                //     $this->handleMoveComment((int) $data['id']);
-                //     break;
+                case 'gk_geokrety':
+                    $this->handleGeokret((int) $data['id']);
+                    break;
+                case 'gk_moves_comments':
+                    $this->handleMoveComment((int) $data['id']);
+                    break;
                 case 'gk_moves':
                     $this->handleMove((int) $data['id']);
                     break;
