@@ -34,11 +34,14 @@ window.initCountriesHeatmap = function(config) {
     const {
         anchor = "#countries-map-chart",
         dataUrl,
+        data, // Optional: pass data directly instead of fetching
         worldUrl,
-        topojsonUrl
+        topojsonUrl,
+        legendTitle = i18nCountries.legendTitle,
+        onDataLoaded // Optional: callback when data is loaded
     } = config;
 
-    if (!dataUrl || !worldUrl || !topojsonUrl) {
+    if ((!dataUrl && !data) || !worldUrl || !topojsonUrl) {
         console.error(i18nCountries.missingConfig, config);
         return;
     }
@@ -67,7 +70,9 @@ window.initCountriesHeatmap = function(config) {
             .style("overflow", "visible")
             .style("width", "100%")
             .style("height", "100%")
-            .style("display", "block");
+            .style("display", "block")
+            .selectAll("*")
+            .remove(); // Clear any previous content before reinitializing
 
         const defs = container.append("defs");
         const root = container.append("g").attr("class", "countries-map-root");
@@ -278,7 +283,7 @@ window.initCountriesHeatmap = function(config) {
                 .attr("text-anchor", "middle")
                 .attr("fill", "#516373")
                 .attr("font-size", 11)
-                .text(i18nCountries.legendTitle);
+                .text(legendTitle);
         }
 
         function render() {
@@ -393,7 +398,6 @@ window.initCountriesHeatmap = function(config) {
             }, 150);
         }
 
-
         function ensureResizeObserver() {
             // Only use window resize, not ResizeObserver
             // ResizeObserver causes infinite loops when SVG changes trigger parent resize
@@ -412,9 +416,9 @@ window.initCountriesHeatmap = function(config) {
                 const code = String(entry.country).toUpperCase();
                 dataByCode.set(code, {
                     country: code,
-                    move_count: Number(entry.move_count) || 0,
+                    move_count: Number(entry.move_count || entry.count) || 0,
                     mover_count: Number(entry.mover_count) || 0,
-                    last_moved_on_datetime: entry.last_moved_on_datetime || null,
+                    last_moved_on_datetime: entry.last_moved_on_datetime || entry.last_activity || null,
                 });
             });
 
@@ -434,11 +438,24 @@ window.initCountriesHeatmap = function(config) {
 
         showPlaceholder(i18nCountries.placeholderLoading);
 
+        // Fetch or use provided data
+        const dataPromise = data
+            ? Promise.resolve(data)
+            : d3.json(dataUrl).catch(() => null);
+
         Promise.all([
-            d3.json(dataUrl).catch(() => null),
+            dataPromise,
             d3.json(worldUrl).catch(() => null),
         ]).then(async ([statsRaw, worldRaw]) => {
-            const stats = Array.isArray(statsRaw) ? statsRaw : [];
+            // Handle new API response structure (data might be in response.data)
+            const statsResponse = statsRaw && statsRaw.data ? statsRaw.data : statsRaw;
+            const stats = Array.isArray(statsResponse) ? statsResponse : [];
+
+            // Call onDataLoaded callback with the full response
+            if (onDataLoaded && typeof onDataLoaded === "function") {
+                onDataLoaded(statsRaw);
+            }
+
             if (!normaliseData(stats)) {
                 return;
             }

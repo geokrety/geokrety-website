@@ -49,8 +49,26 @@ SQL;
 
     public function refreshMaterializedView(\Base $f3) {
         $this->script_start(__METHOD__);
+        $db = $f3->get('DB');
+
+        // Refresh existing materialized view (runs every 5 minutes)
         $sql = 'REFRESH MATERIALIZED VIEW CONCURRENTLY gk_geokrety_in_caches;';
-        $f3->get('DB')->exec($sql);
+        $db->exec($sql);
+
+        $this->script_end();
+    }
+
+    public function refreshStatisticsCountryTrends(\Base $f3) {
+        $this->script_start(__METHOD__);
+        $db = $f3->get('DB');
+
+        // Refresh statistics country trends view (runs daily at 3:00 AM)
+        // Note: This takes ~225 seconds to complete
+
+        // Refresh existing materialized view (runs every 5 minutes)
+        $sql = 'REFRESH MATERIALIZED VIEW CONCURRENTLY gk_statistics_country_trends;';
+        $db->exec($sql);
+
         $this->script_end();
     }
 
