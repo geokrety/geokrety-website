@@ -35,7 +35,8 @@ ${REGISTRATION_EMAIL_INPUT}                 //*[@id="emailInput"]
 ${REGISTRATION_PASSWORD_INPUT}              //*[@id="passwordInput"]
 ${REGISTRATION_PASSWORD_CONFIRM_INPUT}      //*[@id="passwordConfirmInput"]
 ${REGISTRATION_PREFERRED_LANGUAGE_SELECT}   //*[@id="preferredLanguageInput"]
-${REGISTRATION_DAILY_MAIL_CHECKBOX}         //*[@id="dailyMailsInput"]
+${REGISTRATION_DAILY_DIGEST_CHECKBOX}         //*[@id="dailyDigestInput"]
+${REGISTRATION_INSTANT_NOTIFICATIONS_CHECKBOX}    //*[@id="instantNotificationsInput"]
 ${REGISTRATION_TERMS_OF_USE_CHECKBOX}       //*[@id="termsOfUseInput"]
 ${REGISTRATION_BANNER_AGRESSIVE_SPAM_RULES}    //*[@id="banner-registration-spam-filter"]
 
@@ -91,7 +92,7 @@ Register User
     ...                                 email=${user.email}
     ...                                 password=${user.password}
     ...                                 language=${user.language}
-    ...                                 daily_mail=${user.daily_mail}
+    ...                                 daily_digest=${user.daily_digest}
     ...                                 terms_of_use=${user.terms_of_use}
     Click Button                        ${REGISTRATION_REGISTER_BUTTON}
 
@@ -127,17 +128,17 @@ Page Should Show Registration Form
     Wait Until Page Contains Element    ${REGISTRATION_PASSWORD_INPUT}
     Wait Until Page Contains Element    ${REGISTRATION_PASSWORD_CONFIRM_INPUT}
     Wait Until Page Contains Element    ${REGISTRATION_PREFERRED_LANGUAGE_SELECT}
-    Wait Until Page Contains Element    ${REGISTRATION_DAILY_MAIL_CHECKBOX}
+    Wait Until Page Contains Element    ${REGISTRATION_DAILY_DIGEST_CHECKBOX}
     Wait Until Page Contains Element    ${REGISTRATION_TERMS_OF_USE_CHECKBOX}
 
 
 Fill Registration Form
     [Arguments]    ${username}  ${email}=${username}+qa@geokrety.org    ${password}=password
-    ...            ${language}=en    ${daily_mail}=${FALSE}   ${terms_of_use}=${TRUE}
+    ...            ${language}=en    ${daily_digest}=${FALSE}   ${terms_of_use}=${TRUE}
     Input Text                      ${REGISTRATION_USERNAME_INPUT}              ${username}
     Input Text                      ${REGISTRATION_EMAIL_INPUT}                 ${email}
     Input Text                      ${REGISTRATION_PASSWORD_INPUT}              ${password}
     Input Text                      ${REGISTRATION_PASSWORD_CONFIRM_INPUT}      ${password}
     Select From List By Value       ${REGISTRATION_PREFERRED_LANGUAGE_SELECT}   ${language}
-    Run Keyword If  ${daily_mail}     Select Checkbox    ${REGISTRATION_DAILY_MAIL_CHECKBOX}
+    Run Keyword If  ${daily_digest}     Select Checkbox    ${REGISTRATION_DAILY_DIGEST_CHECKBOX}
     Run Keyword If  ${terms_of_use}   Select Checkbox    ${REGISTRATION_TERMS_OF_USE_CHECKBOX}

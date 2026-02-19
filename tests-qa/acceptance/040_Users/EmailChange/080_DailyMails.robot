@@ -12,7 +12,7 @@ Enable daily mails
     Register User    ${USER_1}
     Activate user account
     Email Change                            ${FALSE}    ${TRUE}
-    # Create User                             ${USER_1.name}    daily_mail=${FALSE}
+    # Create User                             ${USER_1.name}    daily_digest=${FALSE}
     # Change daily mail preferences           ${TRUE}
     Flash message shown                     Your email preferences were saved.
 
@@ -20,12 +20,13 @@ Disable daily mails
     Register User    ${USER_5}
     Activate user account
     Email Change                            ${FALSE}    ${FALSE}
-    # Create User                             ${USER_1.name}    daily_mail=${TRUE}
+    # Create User                             ${USER_1.name}    daily_digest=${TRUE}
     # Change daily mail preferences           ${FALSE}
     Flash message shown                     Your email preferences were saved.
 
 *** Keywords ***
 
 Test Setup
+    Empty Dev Mailbox Fast
     Clear Database
     Sign Out Fast

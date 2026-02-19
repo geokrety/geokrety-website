@@ -34,7 +34,7 @@ Re-create same account
     ...                                 email=${USER_1.email}
     ...                                 password=${USER_1.password}
     ...                                 language=${USER_1.language}
-    ...                                 daily_mail=${USER_1.daily_mail}
+    ...                                 daily_digest=${USER_1.daily_digest}
     ...                                 terms_of_use=${USER_1.terms_of_use}
     Click Button                        ${REGISTRATION_REGISTER_BUTTON}
 

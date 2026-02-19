@@ -38,18 +38,18 @@ Fill Password Change Form
 
 
 Email Change Via Modal
-    [Arguments]    ${email}    ${daily_mail}
+    [Arguments]    ${email}    ${daily_digest}
     Location Should Contain                 ${PAGE_USER_PROFILE_BASE_URL}
     Click Button                            ${USER_PROFILE_EMAIL_EDIT_BUTTON}
     Wait Until Modal                        Update your email address
-    Fill Email Change Form                  ${email}    ${daily_mail}
+    Fill Email Change Form                  ${email}    ${daily_digest}
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
 
 Email Change
-    [Arguments]    ${email}    ${daily_mail}
+    [Arguments]    ${email}    ${daily_digest}
     Go To Url                               ${PAGE_USER_CHANGE_EMAIL_URL}
     Wait Until Panel                        Update your email address
-    Fill Email Change Form                  ${email}    ${daily_mail}
+    Fill Email Change Form                  ${email}    ${daily_digest}
     Click Button                            ${MODAL_PANEL_SUBMIT_BUTTON}
 
 Accept change
@@ -79,11 +79,11 @@ Refuse change
     Element Should Contain                  ${USER_PROFILE_EMAIL}    ${old_email}
 
 Daily Mail Change Preferences
-    [Arguments]    ${daily_mail}
-    Email Change                            ${EMPTY}    ${daily_mail}
+    [Arguments]    ${daily_digest}
+    Email Change                            ${EMPTY}    ${daily_digest}
 
 Fill Email Change Form
-    [Arguments]    ${email}    ${daily_mail}
+    [Arguments]    ${email}    ${daily_digest}
     Run Keyword If    "${email}" != "${FALSE}"          Input Text           ${USER_EMAIL_EMAIL_INPUT}    ${email}
-    Run Keyword If    ${daily_mail} == ${TRUE}      Select Checkbox      ${USER_EMAIL_DAILY_MAIL_CHECKBOX}
-    Run Keyword If    ${daily_mail} == ${FALSE}     Unselect Checkbox    ${USER_EMAIL_DAILY_MAIL_CHECKBOX}
+    Run Keyword If    ${daily_digest} == ${TRUE}      Select Checkbox      ${USER_EMAIL_DAILY_DIGEST_CHECKBOX}
+    Run Keyword If    ${daily_digest} == ${FALSE}     Unselect Checkbox    ${USER_EMAIL_DAILY_DIGEST_CHECKBOX}

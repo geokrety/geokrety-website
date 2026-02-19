@@ -210,7 +210,8 @@ ${USER_LANGUAGE_LANGUAGE_SELECT}                //*[@id="inputLanguage"]
 ################
 
 ${USER_EMAIL_EMAIL_INPUT}                       //*[@id="inputEmail"]
-${USER_EMAIL_DAILY_MAIL_CHECKBOX}               //*[@id="dailyMailsCheckbox"]
+${USER_EMAIL_DAILY_DIGEST_CHECKBOX}             //*[@id="dailyDigestCheckbox"]
+${USER_EMAIL_INSTANT_NOTIFICATIONS_CHECKBOX}    //*[@id="instantNotificationsCheckbox"]
 ${USER_EMAIL_VALIDATION_REFUSE_BUTTON}          //*[@id="emailChangeRefuseButton"]
 ${USER_EMAIL_VALIDATION_ACCEPT_BUTTON}          //*[@id="emailChangeAcceptButton"]
 ${USER_EMAIL_VALIDATION_DISMISS_BUTTON}         //*[@id="emailChangeDismissButton"]
