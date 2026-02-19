@@ -244,11 +244,11 @@ class SmartyGeokretyExtension extends Smarty\Extension\Base {
     }
 
     /**
-     * Purpose:  outputs a award image.
+     * Purpose:  outputs an award image.
      *
      * @param GeoKrety\Model\Awards|GeoKrety\Model\AwardsWon $award
      *
-     * @throws SmartyException
+     * @throws Smarty\Exception
      */
     public function smarty_modifier_award($award, bool $ImageOnly = true): string {
         $template_string = <<<'EOT'
@@ -370,7 +370,7 @@ EOT;
     /**
      * Purpose:  outputs a GeoKret country track.
      *
-     * @throws SmartyException
+     * @throws Smarty\Exception
      */
     public function smarty_modifier_country_track(?Geokret $geokret): string {
         if (is_null($geokret)) {
@@ -635,7 +635,7 @@ EOT;
     /**
      * Purpose: outputs a picture card (image OR chart).
      *
-     * @throws SmartyException
+     * @throws Smarty\Exception
      */
     public function smarty_modifier_picture(
         ?Picture $picture = null,
@@ -905,7 +905,7 @@ EOT;
     /**
      * Purpose:  outputs a user_avatar image via libravatar service.
      *
-     * @throws SmartyException
+     * @throws Smarty\Exception
      */
     public function smarty_modifier_user_avatar(User $user): string {
         if (!$user->avatar) {
