@@ -12,7 +12,7 @@ Email is already taken
     Fill Registration Form    ${USER_2.name}
     ...                       email=${USER_1.email}
     ...                       language=${USER_2.language}
-    ...                       daily_mail=${USER_2.daily_mail}
+    ...                       daily_digest=${USER_2.daily_digest}
     Click Button              ${REGISTRATION_REGISTER_BUTTON}
 
     Location Should Be        ${PAGE_REGISTER_URL}
@@ -25,7 +25,7 @@ Email is already taken
     Textfield Value Should Be    ${REGISTRATION_PASSWORD_CONFIRM_INPUT}    ${EMPTY}
     ${language}=    Get Selected List Value    ${REGISTRATION_PREFERRED_LANGUAGE_SELECT}
     Should Be Equal As Strings     ${LANGUAGE}    ${USER_2.language}
-    Checkbox Should Be Selected    ${REGISTRATION_DAILY_MAIL_CHECKBOX}
+    Checkbox Should Be Selected    ${REGISTRATION_DAILY_DIGEST_CHECKBOX}
     Checkbox Should Be Selected    ${REGISTRATION_TERMS_OF_USE_CHECKBOX}
 
 *** Keywords ***

@@ -12,7 +12,7 @@ Create an account
     Fill Registration Form    ${USER_2.name}
     ...                       email=${USER_2.email}
     ...                       language=${USER_2.language}
-    ...                       daily_mail=${USER_2.daily_mail}
+    ...                       daily_digest=${USER_2.daily_digest}
     Click Button              ${REGISTRATION_REGISTER_BUTTON}
 
     Go To Url                 ${PAGE_DEV_MAILBOX_URL}
