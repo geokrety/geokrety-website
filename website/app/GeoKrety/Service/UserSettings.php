@@ -40,9 +40,13 @@ class UserSettings extends \Prefab {
 
         Event::instance()->emit('user.setting.save.success', $setting);
 
-        // Update session with the value (trigger handles DB cleanup if matches default)
-        // Use getRaw to avoid triggering the getter which requires name relationship
-        \Base::instance()->set('SESSION.SETTINGS.'.$setting_name, $setting->getRaw('value'));
+        // Update session with a typed value so templates/controllers get correct booleans/ints
+        $setting_param = new UsersSettingsParameters();
+        $session_value = $setting->getRaw('value');
+        if ($setting_param->load(['name = ?', $setting_name], ttl: 0)) {
+            $session_value = $setting_param->convertValueToSettingType($session_value);
+        }
+        \Base::instance()->set('SESSION.SETTINGS.'.$setting_name, $session_value);
 
         return true;
     }
