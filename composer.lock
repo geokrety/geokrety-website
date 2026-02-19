@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9480d22fa5f6f3ee133c5f7e0d5e81a",
+    "content-hash": "f7221ee6b8b5cd4deef1e898c9c03356",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -874,17 +874,11 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "v2.0.0-beta-1",
+            "version": "dev-patch-1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/erusev/parsedown.git",
-                "reference": "32278afaf36c758de026b66661d3afd6dfbea743"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/32278afaf36c758de026b66661d3afd6dfbea743",
-                "reference": "32278afaf36c758de026b66661d3afd6dfbea743",
-                "shasum": ""
+                "url": "https://github.com/kumy/parsedown.git",
+                "reference": "5e0075078ad4598defc43aa3df390c8108590e81"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -903,7 +897,40 @@
                     "Erusev\\Parsedown\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Erusev\\Parsedown\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "@test-static",
+                    "@test-formatting",
+                    "@test-dead-code",
+                    "@test-units"
+                ],
+                "test-static": [
+                    "vendor/bin/psalm"
+                ],
+                "test-dead-code": [
+                    "vendor/bin/psalm --find-dead-code"
+                ],
+                "test-units": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-commonmark": [
+                    "vendor/bin/phpunit tests/CommonMarkTestStrict.php"
+                ],
+                "test-commonmark-weak": [
+                    "vendor/bin/phpunit tests/CommonMarkTestWeak.php"
+                ],
+                "test-formatting": [
+                    "@composer fix -- --dry-run"
+                ],
+                "fix": [
+                    "vendor/bin/php-cs-fixer fix --verbose --show-progress=dots --diff"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -920,11 +947,7 @@
                 "markdown",
                 "parser"
             ],
-            "support": {
-                "issues": "https://github.com/erusev/parsedown/issues",
-                "source": "https://github.com/erusev/parsedown/tree/v2.0.0-beta-1"
-            },
-            "time": "2022-05-21T21:40:24+00:00"
+            "time": "2026-02-19T07:59:24+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -10031,6 +10054,12 @@
     ],
     "aliases": [
         {
+            "package": "erusev/parsedown",
+            "version": "dev-patch-1",
+            "alias": "v2.0.0-beta-2",
+            "alias_normalized": "2.0.0.0-beta2"
+        },
+        {
             "package": "ikkez/f3-assets",
             "version": "9999999-dev",
             "alias": "1.2.4",
@@ -10041,6 +10070,7 @@
     "stability-flags": {
         "benhall14/php-pagination": 20,
         "caxy/basex-client-php": 20,
+        "erusev/parsedown": 20,
         "ikkez/f3-assets": 20,
         "ikkez/f3-opauth": 20,
         "league/geotools": 0,
