@@ -12,10 +12,6 @@ on:
       - l10n_master
       - l10n_new-theme
 
-concurrency:
-  group: ${{ github.head_ref || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   lint:
     uses: geokrety/geokrety-gha-workflows/.github/workflows/pre-commit_php.yml@main
