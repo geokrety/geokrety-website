@@ -153,6 +153,7 @@ SQL;
             $this->load_last_moves_owned_geokrety();
             $this->load_last_moves_watched_geokrety();
             $this->load_moves_comments();
+            $this->load_loves();
             $this->load_near_home_dropped_geokrety();
 
             if (!$this->updates_count) {
@@ -233,6 +234,34 @@ SQL;
         $comments = $comment->findByRawSQL($sql, [$this->since->format(GK_DB_DATETIME_FORMAT), $this->user->id, $this->user->id, $this->user->id]);
         $this->updates_count += sizeof($comments) ? 1 : 0;
         Smarty::assign('comments', sizeof($comments) ? $comments : false);
+    }
+
+    private function load_loves() {
+        $this->console_writer->print([$this->user->id, $this->user->username, 'load loves']);
+        $sql = <<<'SQL'
+SELECT gl.*, gk.id as geokret_id, gk.gkid, gk.name as geokret_name, u.id as lover_id, u.username as lover_username
+FROM gk_loves gl
+INNER JOIN gk_geokrety gk ON gl.geokret = gk.id
+INNER JOIN gk_users u ON gl.user = u.id
+WHERE (
+    -- Loves on user's own GeoKrety
+    gk.owner = ?
+    OR
+    -- Loves on user's watched GeoKrety
+    gk.id IN (
+        SELECT geokret
+        FROM gk_watched
+        WHERE "user" = ?
+    )
+)
+AND gl.created_on_datetime >= ?
+ORDER BY gl.created_on_datetime DESC
+LIMIT 100
+SQL;
+        $lovesDb = new \GeoKrety\Model\GeokretLove();
+        $loves = $lovesDb->findByRawSQL($sql, [$this->user->id, $this->user->id, $this->since->format(GK_DB_DATETIME_FORMAT)]);
+        $this->updates_count += $loves ? 1 : 0;
+        Smarty::assign('loves', $loves ? $loves : false);
     }
 
     /**

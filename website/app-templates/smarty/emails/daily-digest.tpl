@@ -193,4 +193,44 @@
         </tbody>
     </table>
     {/if}
+
+    {if $loves}
+    <div class="s-6"></div>
+    <h5>{t}GeoKrety loves ❤️{/t}</h5>
+    <div class="s-3"></div>
+    <table class="table table-striped thead-default table-bordered">
+        <thead>
+        <tr>
+            <th>{t}GeoKret{/t}</th>
+            <th>{t}Current position{/t}</th>
+            <th>{t}Type{/t}</th>
+            <th>{t}Loved by{/t}</th>
+            <th>{t}Date{/t}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach from=$loves item=love}
+            <tr>
+                <td>
+                    {$love->geokret|gklink nofilter}<br>
+                    <small>{$love->geokret->gkid}</small>
+                </td>
+                <td nowrap>
+                    {if !is_null($love->geokret->lat) and !is_null($love->geokret->lon)}{$love->geokret->country|country:'html_email' nofilter}{/if}
+                    <small>{$love->geokret->last_position|cachelink nofilter}</small>
+                </td>
+                <td>
+                    {$love->geokret->type}
+                </td>
+                <td class="text-center text-sm" nowrap>
+                    {$love->user|userlink nofilter}
+                </td>
+                <td class="text-center text-sm" nowrap>
+                    {$love->created_on_datetime|print_date_iso_format nofilter}
+                </td>
+            </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {/if}
 {/block}

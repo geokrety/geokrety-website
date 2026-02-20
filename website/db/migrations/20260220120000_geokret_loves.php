@@ -13,7 +13,7 @@ final class GeokretLoves extends AbstractMigration {
             ->addColumn('created_on_datetime', 'datetime', [
                 'null' => false,
                 'default' => 'CURRENT_TIMESTAMP',
-                'timezone' => false,
+                'timezone' => true,
             ])
             ->addIndex(['user', 'geokret'], ['unique' => true, 'name' => 'idx_gk_loves_user_geokret'])
             ->addIndex(['geokret'], ['name' => 'idx_gk_loves_geokret'])
