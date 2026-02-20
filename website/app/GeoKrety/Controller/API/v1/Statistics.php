@@ -145,6 +145,85 @@ SQL;
     }
 
     /**
+     * Get activity snapshot for KPI tiles.
+     * Optional query parameter: min_moves (default 10) for active countries.
+     */
+    public function activity_snapshot() {
+        $db = \Base::instance()->get('DB');
+        $ttl = GK_SITE_CACHE_TTL_STATISTICS_COUNTRIES;
+        $minMoves = (int) \Base::instance()->get('REQUEST.min_moves');
+        if ($minMoves <= 0) {
+            $minMoves = 10;
+        }
+
+        $sql = <<<SQL
+SELECT json_build_object(
+    'data', json_build_object(
+        'active_users', json_build_object(
+            'days_30', (SELECT COUNT(DISTINCT author)
+                FROM gk_moves
+                WHERE author IS NOT NULL
+                AND moved_on_datetime >= NOW() - INTERVAL '30 days'
+                AND move_type IN (0, 1, 3, 5)
+            ),
+            'days_90', (SELECT COUNT(DISTINCT author)
+                FROM gk_moves
+                WHERE author IS NOT NULL
+                AND moved_on_datetime >= NOW() - INTERVAL '90 days'
+                AND move_type IN (0, 1, 3, 5)
+            ),
+            'days_365', (SELECT COUNT(DISTINCT author)
+                FROM gk_moves
+                WHERE author IS NOT NULL
+                AND moved_on_datetime >= NOW() - INTERVAL '365 days'
+                AND move_type IN (0, 1, 3, 5)
+            )
+        ),
+        'active_geokrety', json_build_object(
+            'days_30', (SELECT COUNT(DISTINCT geokret)
+                FROM gk_moves
+                WHERE geokret IS NOT NULL
+                AND moved_on_datetime >= NOW() - INTERVAL '30 days'
+                AND move_type IN (0, 1, 3, 5)
+            ),
+            'days_90', (SELECT COUNT(DISTINCT geokret)
+                FROM gk_moves
+                WHERE geokret IS NOT NULL
+                AND moved_on_datetime >= NOW() - INTERVAL '90 days'
+                AND move_type IN (0, 1, 3, 5)
+            ),
+            'days_365', (SELECT COUNT(DISTINCT geokret)
+                FROM gk_moves
+                WHERE geokret IS NOT NULL
+                AND moved_on_datetime >= NOW() - INTERVAL '365 days'
+                AND move_type IN (0, 1, 3, 5)
+            )
+        ),
+        'countries_active_30', json_build_object(
+            'count', (SELECT COUNT(*)
+                FROM (
+                    SELECT lower(country) AS country
+                    FROM gk_moves
+                    WHERE country IS NOT NULL
+                    AND moved_on_datetime >= NOW() - INTERVAL '30 days'
+                    AND move_type IN (0, 1, 3, 5)
+                    GROUP BY lower(country)
+                    HAVING COUNT(*) >= {$minMoves}
+                ) active_countries
+            ),
+            'min_moves', {$minMoves}
+        )
+    ),
+    'ttl', {$ttl}
+)::text AS response
+SQL;
+
+        $result = $db->exec($sql, null, $ttl);
+
+        echo $result[0]['response'] ?? '{"data":{},"ttl":0}';
+    }
+
+    /**
      * Get move type distribution
      * Optional query parameter: year (filters to specific year, or 'all' for all time).
      */
