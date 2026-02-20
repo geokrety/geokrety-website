@@ -252,23 +252,7 @@ SQL;
     public function top_waypoints() {
         $db = \Base::instance()->get('DB');
         $sql = <<<'SQL'
-WITH waypoint_trends AS (
-    SELECT
-        waypoint,
-        ARRAY_AGG(visit_count ORDER BY year) AS trend
-    FROM (
-        SELECT
-            waypoint,
-            EXTRACT(YEAR FROM moved_on_datetime)::integer AS year,
-            COUNT(DISTINCT geokret) AS visit_count
-        FROM gk_moves
-        WHERE waypoint IS NOT NULL
-        AND move_type IN (0, 3, 5)
-        GROUP BY waypoint, EXTRACT(YEAR FROM moved_on_datetime)
-    ) yearly_data
-    GROUP BY waypoint
-),
-waypoint_stats AS (
+WITH waypoint_stats AS (
     SELECT
         waypoint,
         COUNT(*) AS visit_count,
@@ -278,17 +262,51 @@ waypoint_stats AS (
     WHERE waypoint IS NOT NULL
     AND move_type IN (0, 3, 5)
     GROUP BY waypoint
+),
+top_waypoints AS (
+    SELECT
+        waypoint,
+        visit_count,
+        unique_geokrety,
+        last_visit
+    FROM waypoint_stats
+    ORDER BY unique_geokrety DESC
+    LIMIT 50
+),
+year_range AS (
+    SELECT generate_series(2007, EXTRACT(YEAR FROM CURRENT_DATE)::integer) AS year
+),
+waypoint_yearly_counts AS (
+    SELECT
+        waypoint,
+        EXTRACT(YEAR FROM moved_on_datetime)::integer AS year,
+        COUNT(DISTINCT geokret) AS visit_count
+    FROM gk_moves
+    WHERE waypoint IS NOT NULL
+    AND move_type IN (0, 3, 5)
+    AND waypoint IN (SELECT waypoint FROM top_waypoints)
+    GROUP BY waypoint, EXTRACT(YEAR FROM moved_on_datetime)
+),
+waypoint_trends AS (
+    SELECT
+        tw.waypoint,
+        ARRAY_AGG(COALESCE(wyc.visit_count, 0) ORDER BY yr.year) AS trend
+    FROM top_waypoints tw
+    CROSS JOIN year_range yr
+    LEFT JOIN waypoint_yearly_counts wyc
+        ON wyc.waypoint = tw.waypoint
+        AND wyc.year = yr.year
+    GROUP BY tw.waypoint
 )
 SELECT
-    ws.waypoint,
-    ws.visit_count,
-    ws.unique_geokrety,
-    TO_CHAR(ws.last_visit, 'YYYY-MM-DD"T"HH24:MI:SS"Z"') AS last_visit,
+    tw.waypoint,
+    tw.visit_count,
+    tw.unique_geokrety,
+    TO_CHAR(tw.last_visit, 'YYYY-MM-DD"T"HH24:MI:SS"Z"') AS last_visit,
     COALESCE(wt.trend, '{}'::integer[]) AS trend
-FROM waypoint_stats ws
-LEFT JOIN waypoint_trends wt ON ws.waypoint = wt.waypoint
-ORDER BY ws.unique_geokrety DESC
-LIMIT 50
+FROM top_waypoints tw
+LEFT JOIN waypoint_trends wt ON tw.waypoint = wt.waypoint
+ORDER BY tw.unique_geokrety DESC
 SQL;
 
         $rows = $db->exec($sql, null, GK_SITE_CACHE_TTL_STATISTICS_COUNTRIES) ?: [];
@@ -350,6 +368,7 @@ SELECT
     COUNT(*) AS count
 FROM gk_pictures
 WHERE uploaded_on_datetime IS NOT NULL
+AND uploaded_on_datetime >= DATE '2023-10-01'
 GROUP BY DATE_TRUNC('month', uploaded_on_datetime), type
 ORDER BY DATE_TRUNC('month', uploaded_on_datetime), type
 SQL;
