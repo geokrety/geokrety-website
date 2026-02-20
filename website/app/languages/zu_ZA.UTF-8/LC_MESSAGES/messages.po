@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 07:42+0000\n"
-"PO-Revision-Date: 2026-02-20 07:47\n"
+"POT-Creation-Date: 2026-02-20 08:32+0000\n"
+"PO-Revision-Date: 2026-02-20 08:33\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -1030,7 +1030,7 @@ msgid "dip"
 msgstr "crwdns65426:0crwdne65426:0"
 
 #: website/app/GeoKrety/LogType.php:136
-#: website/app-templates/smarty/pages/home.tpl:82
+#: website/app-templates/smarty/pages/home.tpl:83
 #: website/app-templates/smarty/blocks/geokret/details.tpl:62
 msgid "Born"
 msgstr "crwdns65428:0crwdne65428:0"
@@ -1502,7 +1502,7 @@ msgstr "crwdns66548:0crwdne66548:0"
 #: website/app-templates/smarty/forms/geokret_label.tpl:17
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:22
-#: website/app-templates/smarty/pages/home.tpl:81
+#: website/app-templates/smarty/pages/home.tpl:82
 #: website/app-templates/smarty/pages/user_inventory.tpl:23
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
 msgid "Owner"
@@ -2075,6 +2075,11 @@ msgstr "crwdns66932:0crwdne66932:0"
 msgid "Waypoint resolver"
 msgstr "crwdns66934:0crwdne66934:0"
 
+#: website/app-templates/smarty/navbar-left.tpl:67
+#: website/app-templates/smarty/navbar-left.tpl:69
+msgid "Subscribe to GeoKrety Fediverse RSS"
+msgstr "crwdns67770:0crwdne67770:0"
+
 #: website/app-templates/smarty/emails/password-changed.tpl:3
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
@@ -2620,7 +2625,7 @@ msgstr "crwdns66008:0crwdne66008:0"
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:20
 #: website/app-templates/smarty/pages/home.tpl:34
-#: website/app-templates/smarty/pages/home.tpl:80
+#: website/app-templates/smarty/pages/home.tpl:81
 #: website/app-templates/smarty/pages/mole_hole.tpl:38
 #: website/app-templates/smarty/pages/mole_hole.tpl:81
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
@@ -2751,11 +2756,11 @@ msgstr "crwdns65712:0crwdne65712:0"
 msgid "Latest moves"
 msgstr "crwdns65716:0crwdne65716:0"
 
-#: website/app-templates/smarty/pages/home.tpl:58
+#: website/app-templates/smarty/pages/home.tpl:59
 msgid "Recent pictures"
 msgstr "crwdns65722:0crwdne65722:0"
 
-#: website/app-templates/smarty/pages/home.tpl:75
+#: website/app-templates/smarty/pages/home.tpl:76
 msgid "Recently created GeoKrety"
 msgstr "crwdns65724:0crwdne65724:0"
 
@@ -4279,6 +4284,18 @@ msgstr "crwdns66310:0crwdne66310:0"
 msgid "No news match the current request."
 msgstr "crwdns66428:0crwdne66428:0"
 
+#: website/app-templates/smarty/blocks/donate.tpl:2
+msgid "Enjoying GeoKrety.org?"
+msgstr "crwdns66954:0crwdne66954:0"
+
+#: website/app-templates/smarty/blocks/donate.tpl:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr "crwdns66956:0crwdne66956:0"
+
+#: website/app-templates/smarty/blocks/donate.tpl:8
+msgid "Donate"
+msgstr "crwdns66958:0crwdne66958:0"
+
 #: website/app-templates/smarty/blocks/user_finder.tpl:5
 msgid "Start by finding users:"
 msgstr "crwdns66312:0crwdne66312:0"
@@ -4290,6 +4307,22 @@ msgstr "crwdns66314:0crwdne66314:0"
 #: website/app-templates/smarty/blocks/user_finder.tpl:11
 msgid "Search"
 msgstr "crwdns66316:0crwdne66316:0"
+
+#: website/app-templates/smarty/blocks/go_social.tpl:2
+msgid "Join the GeoKrety community"
+msgstr "crwdns67772:0crwdne67772:0"
+
+#: website/app-templates/smarty/blocks/go_social.tpl:8
+msgid "We are now sharing updates, tips, and release news across the Fediverse."
+msgstr "crwdns67774:0crwdne67774:0"
+
+#: website/app-templates/smarty/blocks/go_social.tpl:15
+msgid "@GeoKrety on social.opencaching.earth"
+msgstr "crwdns67776:0crwdne67776:0"
+
+#: website/app-templates/smarty/blocks/go_social.tpl:20
+msgid "Follow us from any Mastodon or Fediverse client and never miss an adventure!"
+msgstr "crwdns67778:0crwdne67778:0"
 
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
@@ -4652,18 +4685,6 @@ msgstr "crwdns66968:0%1crwdne66968:0"
 msgid "Sorry, but we have troubles sending you email notifications."
 msgstr "crwdns67064:0crwdne67064:0"
 
-#: website/app-templates/smarty/banners/donate.tpl:2
-msgid "Enjoying GeoKrety.org?"
-msgstr "crwdns66954:0crwdne66954:0"
-
-#: website/app-templates/smarty/banners/donate.tpl:4
-msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr "crwdns66956:0crwdne66956:0"
-
-#: website/app-templates/smarty/banners/donate.tpl:8
-msgid "Donate"
-msgstr "crwdns66958:0crwdne66958:0"
-
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered."
 msgstr "crwdns67066:0crwdne67066:0"
@@ -4775,6 +4796,38 @@ msgstr "crwdns66914:0crwdne66914:0"
 #: website/app-templates/smarty/footer.tpl:23
 msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
 msgstr "crwdns66916:0%1crwdne66916:0"
+
+#: website/app-templates/smarty/footer.tpl:27
+msgid "Join the GeoKrety community on Facebook"
+msgstr "crwdns67780:0crwdne67780:0"
+
+#: website/app-templates/smarty/footer.tpl:29
+msgid "Facebook"
+msgstr "crwdns67782:0crwdne67782:0"
+
+#: website/app-templates/smarty/footer.tpl:33
+msgid "Follow GeoKrety on X (Twitter)"
+msgstr "crwdns67784:0crwdne67784:0"
+
+#: website/app-templates/smarty/footer.tpl:35
+msgid "X (Twitter)"
+msgstr "crwdns67786:0crwdne67786:0"
+
+#: website/app-templates/smarty/footer.tpl:39
+msgid "Explore GeoKrety on Instagram"
+msgstr "crwdns67788:0crwdne67788:0"
+
+#: website/app-templates/smarty/footer.tpl:41
+msgid "Instagram"
+msgstr "crwdns67790:0crwdne67790:0"
+
+#: website/app-templates/smarty/footer.tpl:45
+msgid "Join us on the Fediverse"
+msgstr "crwdns67792:0crwdne67792:0"
+
+#: website/app-templates/smarty/footer.tpl:47
+msgid "Fediverse"
+msgstr "crwdns67794:0crwdne67794:0"
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
 msgid "Mark this GeoKret as archived?"
