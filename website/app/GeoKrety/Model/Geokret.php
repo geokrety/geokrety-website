@@ -35,6 +35,7 @@ use GeoKrety\LogType;
  * @property int|GeokretyType type
  * @property int|Label label_template
  * @property bool comments_hidden
+ * @property int loves_count
  */
 class Geokret extends Base {
     use \Validation\Traits\CortexTrait;
@@ -164,6 +165,14 @@ class Geokret extends Base {
         'comments_hidden' => [
             'type' => Schema::DT_BOOLEAN,
             'default' => false,
+        ],
+        'loves_count' => [
+            'type' => Schema::DT_INT,
+            'default' => 0,
+        ],
+        'loves' => [
+            'has-many' => ['\GeoKrety\Model\GeokretLove', 'geokret'],
+            'validate_level' => 3,
         ],
     ];
 
@@ -307,6 +316,16 @@ class Geokret extends Base {
         $f3 = \Base::instance();
 
         return $f3->get('CURRENT_USER') && !is_null($this->owner) && $f3->get('CURRENT_USER') === $this->owner->id;
+    }
+
+    /**
+     * Check if the current logged in user has loved this GeoKret.
+     */
+    public function isLovedByCurrentUser(): bool {
+        $f3 = \Base::instance();
+        $love = new GeokretLove();
+
+        return $love->count(['user = ? AND geokret = ?', $f3->get('CURRENT_USER'), $this->id], ttl: 0) > 0;
     }
 
     /**

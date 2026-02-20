@@ -313,6 +313,77 @@
         </div>
     </section>
 
+    <!-- Most Loved GeoKrety -->
+    <section class="statistics-section">
+        <h2>❤️ {t}Most Loved GeoKrety{/t}</h2>
+        <p class="help-block">{t}The top 10 GeoKrety that received the most love from the community.{/t}</p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">❤️ {t}Top 10 Most Loved GeoKrety{/t}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {if $top_loved_geokrety}
+                        <div style="max-height: 600px; overflow-y: auto;">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-right">#</th>
+                                        <th>{t}GeoKret{/t}</th>
+                                        <th>{t}Owner{/t}</th>
+                                        <th class="text-right">❤️ {t}Loves{/t}</th>
+                                        <th class="text-center">{t}Trend{/t}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {foreach from=$top_loved_geokrety item=gk name=loves_rank}
+                                    <tr>
+                                        <td class="text-right">{$smarty.foreach.loves_rank.iteration}</td>
+                                        <td>
+                                            <a href="{'geokret_details'|alias:sprintf('@gkid=%s', $gk.gkid_formatted)}">
+                                                {$gk.gkid_formatted} - {$gk.name|escape}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {if $gk.owner_username}
+                                                <a href="{'user_details'|alias:sprintf('@userid=%d', $gk.owner)}">{$gk.owner_username|escape}</a>
+                                            {else}
+                                                <em>{t}Abandoned{/t}</em>
+                                            {/if}
+                                        </td>
+                                        <td class="text-right"><strong>{$gk.loves_count}</strong></td>
+                                        <td class="text-center loves-trend-col" data-gkid="{$gk.id}"><span class="text-muted">-</span></td>
+                                    </tr>
+                                    {/foreach}
+                                </tbody>
+                            </table>
+                        </div>
+                        {else}
+                        <p class="text-muted text-center"><em>{t}No loved GeoKrety yet. Be the first to show some love!{/t}</em></p>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">❤️ {t}Love Trend{/t}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p class="help-block">{t}Monthly love activity on the platform.{/t}</p>
+                        <div id="loves-chart-container" style="width: 100%; height: 350px;">
+                            <svg id="loves-chart" style="width: 100%; height: 100%;"></svg>
+                        </div>
+                        <div id="loves-cache-info" class="text-muted small text-center" style="margin-top: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Media & Engagement -->
     <section class="statistics-section">
         <h2>{t}Media & Engagement{/t}</h2>
@@ -819,7 +890,14 @@ $(document).ready(function() {
         formatCacheDuration: formatCacheDuration
     });
 
-    // Time series mode switcher
+    initTimeSeriesChart({
+        anchor: "#loves-chart",
+        dataUrl: "{/literal}{'api_v1_stats_loves_registrations'|alias}{literal}",
+        title: "{/literal}{t}Love Votes{/t}{literal}",
+        color: "#d9534f",
+        cacheInfoElement: "#loves-cache-info",
+        formatCacheDuration: formatCacheDuration
+    });
     $(document).on("click", ".time-series-mode button", function() {
         const $button = $(this);
         const mode = $button.data("mode");
@@ -881,6 +959,30 @@ $(document).ready(function() {
             $("#waypoints-table tbody").html(
                 "<tr><td colspan=\"6\" class=\"text-center text-danger\"><em>{/literal}{t}Error loading data{/t}{literal}</em></td></tr>"
             );
+        }
+    });
+
+    // Load love trends for Most Loved GeoKrety table
+    $.ajax({
+        url: "{/literal}{'api_v1_stats_loves_registrations'|alias}{literal}",
+        method: "GET",
+        dataType: "json",
+        success: function(response) {
+            const data = response.data || response;
+            if (data && data.length > 0) {
+                // Build a map of love counts by month
+                const lovesTrend = data.map(item => item.count);
+
+                // Populate all trend cells with the same sparkline
+                $(".loves-trend-col").each(function() {
+                    const $cell = $(this);
+                    const sparkline = createSparkline(lovesTrend, 80, 25, "loves");
+                    $cell.html(sparkline);
+                });
+            }
+        },
+        error: function() {
+            // Silently fail - trend is optional
         }
     });
 

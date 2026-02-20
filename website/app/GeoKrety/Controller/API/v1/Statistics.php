@@ -145,6 +145,42 @@ SQL;
     }
 
     /**
+     * Get loves (votes) over time (monthly aggregation).
+     */
+    public function loves_registrations() {
+        $db = \Base::instance()->get('DB');
+        $ttl = GK_SITE_CACHE_TTL_STATISTICS_REGISTRATIONS;
+
+        $sql = <<<SQL
+SELECT json_build_object(
+    'data', COALESCE(json_agg(
+        json_build_object(
+            'date', date,
+            'count', count,
+            'cumulative', cumulative
+        )
+        ORDER BY month
+    ), '[]'::json),
+    'ttl', {$ttl}
+)::text AS response
+FROM (
+    SELECT
+        DATE_TRUNC('month', created_on_datetime) AS month,
+        TO_CHAR(DATE_TRUNC('month', created_on_datetime), 'YYYY-MM-DD') AS date,
+        COUNT(*) AS count,
+        SUM(COUNT(*)) OVER (ORDER BY DATE_TRUNC('month', created_on_datetime)) AS cumulative
+    FROM gk_loves
+    WHERE created_on_datetime IS NOT NULL
+    GROUP BY DATE_TRUNC('month', created_on_datetime)
+) stats
+SQL;
+
+        $result = $db->exec($sql, null, $ttl);
+
+        echo $result[0]['response'] ?? '{"data":[],"ttl":0}';
+    }
+
+    /**
      * Get activity snapshot for KPI tiles.
      * Optional query parameter: min_moves (default 10) for active countries.
      */
