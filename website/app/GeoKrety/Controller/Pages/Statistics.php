@@ -8,6 +8,22 @@ use GeoKrety\Service\Smarty;
 
 class Statistics extends Base {
     public function site() {
+        $db = \Base::instance()->get('DB');
+        $top_loved_raw = $db->exec(<<<'SQL'
+SELECT g.id, g.gkid, g.name, g.loves_count, g.owner, u.username AS owner_username
+FROM geokrety.gk_geokrety g
+LEFT JOIN geokrety.gk_users u ON g.owner = u.id
+WHERE g.loves_count > 0
+ORDER BY g.loves_count DESC, g.id ASC
+LIMIT 10
+SQL);
+        // Pre-format gkid for display in template
+        $top_loved = array_map(function ($row) {
+            $row['gkid_formatted'] = \GeoKrety\Model\Geokret::id2gkid((int) $row['gkid']);
+
+            return $row;
+        }, $top_loved_raw);
+        Smarty::assign('top_loved_geokrety', $top_loved);
         Smarty::render('pages/statistics_site.tpl');
     }
 

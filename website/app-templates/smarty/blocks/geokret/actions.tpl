@@ -32,6 +32,32 @@
 </div>
 {/function}
 
+{function love}
+<div class="col-md-4">
+    <button class="btn btn-link toggle-love" data-gkid="{$geokret->gkid}" data-liked="0" title="{t}Love this GeoKret{/t}">
+        ❤️ {t}Love{/t}
+    </button>
+    <span class="badge loves-count">{$geokret->loves_count|default:0}</span>
+</div>
+{/function}
+
+{function unlove}
+<div class="col-md-4">
+    <button class="btn btn-link toggle-love" data-gkid="{$geokret->gkid}" data-liked="1" title="{t}Remove your love for this GeoKret{/t}" style="color: #d9534f;">
+        ❤️ {t}Unlove{/t}
+    </button>
+    <span class="badge loves-count">{$geokret->loves_count|default:0}</span>
+</div>
+{/function}
+
+{function lovecount}
+<div class="col-md-4">
+    ❤️
+    <span title="{t}Hearts received{/t}">{t}Loves{/t}</span>
+    <span class="badge">{$geokret->loves_count|default:0}</span>
+</div>
+{/function}
+
 {function log}
 <div class="col-md-4">{fa icon="pencil"} <a id="geokretDetailsLogThisGeokretLink" href="{'move_create'|alias}?tracking_code={$geokret->tracking_code}">{t}Log this GeoKret{/t}</a></div>
 {/function}
@@ -97,7 +123,7 @@
         </div>
         <div class="row">
             {statistics}
-            {empty}
+            {lovecount}
             {transfer}
         </div>
         <div class="row">
@@ -116,10 +142,18 @@
             {adopt}
             {label}
         </div>
+        <div class="row">
+            {if $geokret->isLovedByCurrentUser()}{unlove}{else}{love}{/if}
+            {empty}
+            {empty}
+        </div>
         {/if}
         {else}
         <div class="row">
             {statistics}
+        </div>
+        <div class="row">
+            {lovecount}
         </div>
         {/if}
     </div>

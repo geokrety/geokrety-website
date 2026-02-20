@@ -32,6 +32,9 @@
         {$geokret->caches_count}
     </td>
     <td class="text-right">
+        ❤️ {$geokret->loves_count|default:0}
+    </td>
+    <td class="text-right">
         {if $geokret->isHolder()}
         <a class="btn btn-default btn-xs" href="{'move_create'|alias}?tracking_code={$geokret->tracking_code}" title="{t}Move this GeoKret{/t}">🛩️</a>
         {/if}
