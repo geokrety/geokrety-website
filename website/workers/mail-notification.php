@@ -14,6 +14,7 @@ require_once __DIR__.'/WorkerBase.php';
 
 use GeoKrety\Email\InstantNotification;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Model\GeokretLove;
 use GeoKrety\Model\Move;
 use GeoKrety\Model\MoveComment;
 use GeoKrety\Model\User;
@@ -61,6 +62,9 @@ class MailNotificationWorker extends WorkerBase {
                     break;
                 case 'gk_moves_comments':
                     $this->handleMoveComment((int) $data['id']);
+                    break;
+                case 'gk_loves':
+                    $this->handleLove((int) $data['id']);
                     break;
                 default:
                     $this->log(self::LOG_DEBUG, 'Unhandled entity kind', ['kind' => $data['kind']]);
@@ -148,6 +152,43 @@ class MailNotificationWorker extends WorkerBase {
 
         foreach ($notifyUsers as $userId) {
             $this->sendCommentNotification($userId, $comment);
+        }
+    }
+
+    private function handleLove(int $loveId): void {
+        $this->log(self::LOG_DEBUG, 'Querying database for love', ['love_id' => $loveId]);
+
+        $love = new GeokretLove();
+        $love->load(['id = ?', $loveId]);
+
+        if ($love->dry()) {
+            $this->log(self::LOG_WARNING, 'Love not found', ['love_id' => $loveId]);
+
+            return;
+        }
+
+        $this->log(self::LOG_DEBUG, 'Love loaded', [
+            'love_id' => $loveId,
+            'geokret_id' => $love->geokret,
+            'user_id' => $love->user,
+        ]);
+
+        // Validate required relations
+        if (!$love->geokret || !$love->user) {
+            $this->log(self::LOG_WARNING, 'Love missing required relations', [
+                'love_id' => $loveId,
+                'has_geokret' => $love->geokret !== null,
+                'has_user' => $love->user !== null,
+            ]);
+
+            return;
+        }
+
+        // Find users who should be notified about this love
+        $notifyUsers = $this->getUsersToNotifyForLove($love);
+
+        foreach ($notifyUsers as $userId) {
+            $this->sendLoveNotification($userId, $love);
         }
     }
 
@@ -311,6 +352,54 @@ SQL;
         return array_filter(array_column($result, 'id'), fn ($userId) => $userId != $comment->author->id);
     }
 
+    private function getUsersToNotifyForLove(GeokretLove $love): array {
+        // Find GeoKret owner and watchers who have instant notifications for loves enabled
+        $f3 = Base::instance();
+        $db = $f3->get('DB');
+
+        // Note: INSTANT_NOTIFICATIONS defaults to false (check EXISTS true), granular settings default to true (check NOT EXISTS false)
+        $sql = <<<'SQL'
+SELECT DISTINCT u.id
+FROM geokrety.gk_users u
+WHERE u.id IN (
+    -- GeoKret owner
+    SELECT gk.owner
+    FROM geokrety.gk_geokrety gk
+    INNER JOIN geokrety.gk_loves gl ON gl.geokret = gk.id
+    WHERE gl.id = ?
+    AND gk.owner IS NOT NULL
+
+    UNION
+
+    -- Watchers
+    SELECT w.user
+    FROM geokrety.gk_watched w
+    INNER JOIN geokrety.gk_loves gl ON gl.geokret = w.geokret
+    WHERE gl.id = ?
+)
+AND u.email_invalid = 0
+AND EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS'
+    AND s.value = 'true'
+)
+AND NOT EXISTS (
+    SELECT 1
+    FROM geokrety.gk_users_settings s
+    WHERE s.user = u.id
+    AND s.name = 'INSTANT_NOTIFICATIONS_LOVES'
+    AND s.value = 'false'
+)
+SQL;
+
+        $result = $db->exec($sql, [$love->id, $love->id]);
+
+        // Return user IDs excluding the user who made the love action
+        return array_filter(array_column($result, 'id'), fn ($userId) => $userId != $love->user->id);
+    }
+
     private function sendMoveNotification(int $userId, Move $move, bool $isHomeLocationNotification = false): void {
         try {
             $user = new User();
@@ -379,6 +468,40 @@ SQL;
             $this->log(self::LOG_ERROR, 'Failed to send comment notification: '.$e->getMessage(), [
                 'user_id' => $userId,
                 'comment_id' => $comment->id,
+                'exception' => get_class($e),
+            ]);
+        }
+    }
+
+    private function sendLoveNotification(int $userId, GeokretLove $love): void {
+        $user = new User();
+        $user->load(['id = ?', $userId]);
+
+        if ($user->dry()) {
+            $this->log(self::LOG_WARNING, 'User not found', ['user_id' => $userId]);
+
+            return;
+        }
+
+        $this->log(self::LOG_INFO, 'Sending love notification', [
+            'user_id' => $userId,
+            'email' => $user->email,
+            'love_id' => $love->id,
+        ]);
+
+        try {
+            $email = new InstantNotification();
+
+            $email->sendLoveNotification($user, $love);
+
+            $this->log(self::LOG_INFO, 'Love notification sent successfully', [
+                'user_id' => $userId,
+                'love_id' => $love->id,
+            ]);
+        } catch (Exception $e) {
+            $this->log(self::LOG_ERROR, 'Failed to send love notification: '.$e->getMessage(), [
+                'user_id' => $userId,
+                'love_id' => $love->id,
                 'exception' => get_class($e),
             ]);
         }

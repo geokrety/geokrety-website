@@ -46,6 +46,11 @@
                     <input type="checkbox" name="instant_notifications_move_comments" class="instant-notif-checkbox" {if $instant_notifications_move_comments}checked{/if}>{t}Comments on moves{/t}
                 </label>
             </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="instant_notifications_loves" class="instant-notif-checkbox" {if $instant_notifications_loves}checked{/if}>{t}Loves on my GeoKrety{/t}
+                </label>
+            </div>
         </div>
 
         <hr />

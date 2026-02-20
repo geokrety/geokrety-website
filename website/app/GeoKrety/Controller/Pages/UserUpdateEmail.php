@@ -24,6 +24,7 @@ class UserUpdateEmail extends Base {
         Smarty::assign('instant_notifications_moves_watched_gk', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_WATCHED_GK'));
         Smarty::assign('instant_notifications_moves_around_home', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME'));
         Smarty::assign('instant_notifications_move_comments', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVE_COMMENTS'));
+        Smarty::assign('instant_notifications_loves', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_LOVES'));
         Smarty::render('extends:full_screen_modal.tpl|dialog/user_update_email.tpl');
     }
 
@@ -38,6 +39,7 @@ class UserUpdateEmail extends Base {
         Smarty::assign('instant_notifications_moves_watched_gk', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_WATCHED_GK'));
         Smarty::assign('instant_notifications_moves_around_home', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME'));
         Smarty::assign('instant_notifications_move_comments', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVE_COMMENTS'));
+        Smarty::assign('instant_notifications_loves', UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_LOVES'));
         Smarty::render('extends:base_modal.tpl|dialog/user_update_email.tpl');
     }
 
@@ -53,6 +55,7 @@ class UserUpdateEmail extends Base {
         $instant_notifications_moves_watched_gk = filter_var($f3->get('POST.instant_notifications_moves_watched_gk'), FILTER_VALIDATE_BOOLEAN);
         $instant_notifications_moves_around_home = filter_var($f3->get('POST.instant_notifications_moves_around_home'), FILTER_VALIDATE_BOOLEAN);
         $instant_notifications_move_comments = filter_var($f3->get('POST.instant_notifications_move_comments'), FILTER_VALIDATE_BOOLEAN);
+        $instant_notifications_loves = filter_var($f3->get('POST.instant_notifications_loves'), FILTER_VALIDATE_BOOLEAN);
 
         // If instant_notifications is enabled, default all granular settings to true if not explicitly set
         if ($instant_notifications) {
@@ -93,6 +96,11 @@ class UserUpdateEmail extends Base {
 
         if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_MOVE_COMMENTS') !== $instant_notifications_move_comments) {
             $userSettings->put($user, 'INSTANT_NOTIFICATIONS_MOVE_COMMENTS', $instant_notifications_move_comments ? 'true' : 'false');
+            $changed = true;
+        }
+
+        if (UserSettings::getForCurrentUser('INSTANT_NOTIFICATIONS_LOVES') !== $instant_notifications_loves) {
+            $userSettings->put($user, 'INSTANT_NOTIFICATIONS_LOVES', $instant_notifications_loves ? 'true' : 'false');
             $changed = true;
         }
 
