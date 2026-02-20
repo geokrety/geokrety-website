@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 08:32+0000\n"
-"PO-Revision-Date: 2026-02-20 08:32\n"
+"POT-Creation-Date: 2026-02-20 09:57+0000\n"
+"PO-Revision-Date: 2026-02-20 10:57\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -343,7 +343,7 @@ msgid "Failed to edit the GeoKret."
 msgstr "GeoKret konnte nicht bearbeitet werden."
 
 #: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:32
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:123
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:129
 msgid "This label template does not exist."
 msgstr "Diese Etikett-Vorlage existiert nicht."
 
@@ -355,11 +355,11 @@ msgstr "Leider hast du nicht die Berechtigung ein Etikett für diesen GeoKret zu
 msgid "Please select an export type."
 msgstr "Bitte wähle einen Exporttyp aus."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:131
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:137
 msgid "Some chosen languages are invalid."
 msgstr "Einige ausgewählte Sprachen sind ungültig."
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:148
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:154
 msgid "Something went wrong while saving the GeoKret preferred label template."
 msgstr "Beim Speichern der bevorzugten GeoKret Etikett-Vorlage ist ein Fehler aufgetreten."
 
@@ -1793,6 +1793,19 @@ msgid "<u>Do not use the code starting with 'GK' here</u>."
 msgstr ""
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:47
+#: website/app-templates/smarty/elements/label_form_common.tpl:28
+msgid "Label Size"
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:52
+msgid "Fit each label to page width (100%)"
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:55
+msgid "If checked, each label will be scaled to fit 100% of the page width. If unchecked, labels will be printed at their default size."
+msgstr ""
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:64
 #: website/app-templates/smarty/pages/geokret_label.tpl:13
 msgid "Generate as .pdf"
 msgstr "Als .pdf erstellen"
@@ -3627,7 +3640,7 @@ msgid "%1 doesn't own any GeoKrety yet."
 msgstr "%1 besitzt noch keine GeoKrety."
 
 #: website/app-templates/smarty/pages/geokrety_labels.tpl:3
-#: website/app-templates/smarty/pages/geokrety_labels.tpl:6
+#: website/app-templates/smarty/pages/geokrety_labels.tpl:9
 msgid "Mass label generator"
 msgstr "Massengenerator für Etiketten"
 
@@ -4637,7 +4650,15 @@ msgstr "Sprache der Hilfe auf Etiketten"
 msgid "Note: not all label templates support this feature and when supported, english is always present."
 msgstr ""
 
-#: website/app-templates/smarty/elements/label_form_common.tpl:30
+#: website/app-templates/smarty/elements/label_form_common.tpl:33
+msgid "Fit label to page width (100%)"
+msgstr ""
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:36
+msgid "If checked, the label will be scaled to fit 100% of the page width. If unchecked, the label will be printed at its default size."
+msgstr ""
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:43
 msgid "Refresh preview"
 msgstr ""
 
