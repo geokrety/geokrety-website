@@ -206,29 +206,24 @@ AND NOT EXISTS (
 SQL;
 
         // Get users with home location near the move who want notifications
+        // Use the same pre-computed gk_geokrety_near_users_homes table that DailyDigest uses
+        // This avoids distance calculation bugs with st_dwithin and coordinate units
         $homeLocationSql = <<<'SQL'
-SELECT DISTINCT u.id
-FROM geokrety.gk_users u
-WHERE u.email_invalid = 0
-AND u.home_latitude IS NOT NULL
-AND u.home_longitude IS NOT NULL
-AND u.observation_area > 0
-AND public.st_dwithin(
-    public.st_setsrid(public.st_makepoint(?, ?), 4326),
-    public.st_setsrid(public.st_makepoint(u.home_longitude, u.home_latitude), 4326),
-    (u.observation_area * 1000)::double precision
-)
+SELECT DISTINCT c_user_id AS id
+FROM geokrety.gk_geokrety_near_users_homes
+WHERE geokret = ?
+AND missing = ?
 AND EXISTS (
     SELECT 1
     FROM geokrety.gk_users_settings s
-    WHERE s.user = u.id
+    WHERE s.user = c_user_id
     AND s.name = 'INSTANT_NOTIFICATIONS'
     AND s.value = 'true'
 )
 AND NOT EXISTS (
     SELECT 1
     FROM geokrety.gk_users_settings s
-    WHERE s.user = u.id
+    WHERE s.user = c_user_id
     AND s.name = 'INSTANT_NOTIFICATIONS_MOVES_AROUND_HOME'
     AND s.value = 'false'
 )
@@ -236,7 +231,7 @@ SQL;
 
         $ownerResult = $db->exec($ownerSql, [$move->geokret->id]);
         $watchersResult = $db->exec($watchersSql, [$move->geokret->id]);
-        $homeLocationResult = $db->exec($homeLocationSql, [$move->lon, $move->lat]);
+        $homeLocationResult = $db->exec($homeLocationSql, [$move->geokret->id, Geokret::GEOKRETY_PRESENT_IN_CACHE]);
 
         // Build array with user IDs and a flag indicating if it's a home-location notification
         $users = [];
