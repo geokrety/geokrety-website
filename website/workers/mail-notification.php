@@ -211,7 +211,7 @@ SQL;
         $homeLocationSql = <<<'SQL'
 SELECT DISTINCT c_user_id AS id
 FROM geokrety.gk_geokrety_near_users_homes
-WHERE geokret = ?
+WHERE id = ?
 AND missing = ?
 AND EXISTS (
     SELECT 1
