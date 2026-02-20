@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 08:32+0000\n"
-"PO-Revision-Date: 2026-02-20 08:33\n"
+"POT-Creation-Date: 2026-02-20 09:57+0000\n"
+"PO-Revision-Date: 2026-02-20 10:58\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -343,7 +343,7 @@ msgid "Failed to edit the GeoKret."
 msgstr "crwdns65140:0crwdne65140:0"
 
 #: website/app/GeoKrety/Controller/Pages/GeokretFormBase.php:32
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:123
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:129
 msgid "This label template does not exist."
 msgstr "crwdns65142:0crwdne65142:0"
 
@@ -355,11 +355,11 @@ msgstr "crwdns65144:0crwdne65144:0"
 msgid "Please select an export type."
 msgstr "crwdns65150:0crwdne65150:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:131
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:137
 msgid "Some chosen languages are invalid."
 msgstr "crwdns65148:0crwdne65148:0"
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:148
+#: website/app/GeoKrety/Controller/Pages/GeokretLabel.php:154
 msgid "Something went wrong while saving the GeoKret preferred label template."
 msgstr "crwdns65146:0crwdne65146:0"
 
@@ -1793,6 +1793,19 @@ msgid "<u>Do not use the code starting with 'GK' here</u>."
 msgstr "crwdns67192:0crwdne67192:0"
 
 #: website/app-templates/smarty/forms/geokrety_labels.tpl:47
+#: website/app-templates/smarty/elements/label_form_common.tpl:28
+msgid "Label Size"
+msgstr "crwdns67834:0crwdne67834:0"
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:52
+msgid "Fit each label to page width (100%)"
+msgstr "crwdns67836:0crwdne67836:0"
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:55
+msgid "If checked, each label will be scaled to fit 100% of the page width. If unchecked, labels will be printed at their default size."
+msgstr "crwdns67838:0crwdne67838:0"
+
+#: website/app-templates/smarty/forms/geokrety_labels.tpl:64
 #: website/app-templates/smarty/pages/geokret_label.tpl:13
 msgid "Generate as .pdf"
 msgstr "crwdns66562:0crwdne66562:0"
@@ -3627,7 +3640,7 @@ msgid "%1 doesn't own any GeoKrety yet."
 msgstr "crwdns65684:0%1crwdne65684:0"
 
 #: website/app-templates/smarty/pages/geokrety_labels.tpl:3
-#: website/app-templates/smarty/pages/geokrety_labels.tpl:6
+#: website/app-templates/smarty/pages/geokrety_labels.tpl:9
 msgid "Mass label generator"
 msgstr "crwdns66000:0crwdne66000:0"
 
@@ -4637,7 +4650,15 @@ msgstr "crwdns66554:0crwdne66554:0"
 msgid "Note: not all label templates support this feature and when supported, english is always present."
 msgstr "crwdns67216:0crwdne67216:0"
 
-#: website/app-templates/smarty/elements/label_form_common.tpl:30
+#: website/app-templates/smarty/elements/label_form_common.tpl:33
+msgid "Fit label to page width (100%)"
+msgstr "crwdns67840:0crwdne67840:0"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:36
+msgid "If checked, the label will be scaled to fit 100% of the page width. If unchecked, the label will be printed at its default size."
+msgstr "crwdns67842:0crwdne67842:0"
+
+#: website/app-templates/smarty/elements/label_form_common.tpl:43
 msgid "Refresh preview"
 msgstr "crwdns67218:0crwdne67218:0"
 
