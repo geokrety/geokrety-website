@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 11:50+0000\n"
-"PO-Revision-Date: 2026-02-20 12:25\n"
+"POT-Creation-Date: 2026-02-20 14:21+0000\n"
+"PO-Revision-Date: 2026-02-20 15:26\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
@@ -53,7 +53,7 @@ msgid "Never Travelled"
 msgstr ""
 
 #: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:283
-#: website/app-templates/smarty/pages/statistics_site.tpl:552
+#: website/app-templates/smarty/pages/statistics_site.tpl:598
 msgid "Unknown"
 msgstr ""
 
@@ -780,21 +780,21 @@ msgstr "Det gick inte att spara din önskade bannermall."
 msgid "Your user banner template preference has been successfully saved."
 msgstr "Din annonsmall har sparats."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:100
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:108
 msgid "Your email preferences were saved."
 msgstr "Dina e-postinställningar har sparats."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:114
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:122
 #, php-format
 msgid "The confirmation email was sent again to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Bekräftelsemailet skickades igen till din nya adress. Du måste klicka på länken i e-postmeddelandet för att bekräfta ändringen till din e-postadress. Bekräftelselänken löper ut om %s."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:122
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:129
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:130
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:137
 msgid "Sorry but this mail address is already in use."
 msgstr "Tyvärr men denna e-postadress används redan."
 
-#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:142
+#: website/app/GeoKrety/Controller/Pages/UserUpdateEmail.php:150
 #, php-format
 msgid "A confirmation email was sent to your new address. You must click on the link provided in the email to confirm the change to your email address. The confirmation link expires in %s."
 msgstr "Ett bekräftelsemail har skickats till din nya adress. Du måste klicka på länken i e-postmeddelandet för att bekräfta ändringen till din e-postadress. Bekräftelselänken löper ut om %s."
@@ -945,14 +945,19 @@ msgstr ""
 msgid "Your GeoKret '%s' has been adopted"
 msgstr "Din GeoKret '%s' har adopterats"
 
-#: website/app/GeoKrety/Email/InstantNotification.php:32
+#: website/app/GeoKrety/Email/InstantNotification.php:33
 #, php-format
 msgid "New move for %s"
 msgstr ""
 
-#: website/app/GeoKrety/Email/InstantNotification.php:65
+#: website/app/GeoKrety/Email/InstantNotification.php:66
 #, php-format
 msgid "New comment on %s"
+msgstr ""
+
+#: website/app/GeoKrety/Email/InstantNotification.php:98
+#, php-format
+msgid "Someone loved your %s! ❤️"
 msgstr ""
 
 #: website/app/GeoKrety/Email/PasswordChange.php:25
@@ -1540,11 +1545,13 @@ msgstr "Referensnummer"
 
 #: website/app-templates/smarty/forms/advanced_search.tpl:5
 #: website/app-templates/smarty/emails/instant-comment-notification.tpl:20
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:18
 #: website/app-templates/smarty/emails/instant-move-notification.tpl:20
 #: website/app-templates/smarty/emails/daily-digest.tpl:36
 #: website/app-templates/smarty/emails/daily-digest.tpl:79
 #: website/app-templates/smarty/emails/daily-digest.tpl:125
 #: website/app-templates/smarty/emails/daily-digest.tpl:170
+#: website/app-templates/smarty/emails/daily-digest.tpl:204
 #: website/app-templates/smarty/pages/statistics_site.tpl:333
 msgid "GeoKret"
 msgstr ""
@@ -1684,7 +1691,7 @@ msgstr "E-postadress"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:21
 #: website/app-templates/smarty/forms/registration.tpl:47
-#: website/app-templates/smarty/dialog/user_update_email.tpl:53
+#: website/app-templates/smarty/dialog/user_update_email.tpl:58
 msgid "The main purpose of collecting email is to permit password recovery."
 msgstr "Främsta orsaken bakom insamlande av e-post är för att tillåta lösenordsåterställning."
 
@@ -1971,6 +1978,8 @@ msgid "Additional data"
 msgstr "Kompletterande uppgifter"
 
 #: website/app-templates/smarty/forms/move.tpl:249
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:22
+#: website/app-templates/smarty/emails/daily-digest.tpl:208
 #: website/app-templates/smarty/pages/search_by_waypoint.tpl:23
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:24
 #: website/app-templates/smarty/pages/user_authentication_history.tpl:26
@@ -2158,6 +2167,7 @@ msgid "You're getting this email because you've enabled instant notifications fo
 msgstr ""
 
 #: website/app-templates/smarty/emails/instant-comment-notification.tpl:10
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:9
 #: website/app-templates/smarty/emails/instant-move-notification.tpl:10
 #: website/app-templates/smarty/emails/daily-digest.tpl:9
 msgid "You can disable this by <a href=\"%1\">changing your personal mail preferences</a>."
@@ -2253,6 +2263,34 @@ msgstr "Denna länk går ut %1."
 
 #: website/app-templates/smarty/emails/email-revalidate-address.tpl:21
 msgid "You're getting this email because we need to verify that your email registered on our website is still valid."
+msgstr ""
+
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:5
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:13
+msgid "Someone loved your %1! ❤️"
+msgstr ""
+
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:8
+msgid "You're getting this email because you've enabled instant notifications for loves."
+msgstr ""
+
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:19
+#: website/app-templates/smarty/emails/daily-digest.tpl:205
+msgid "Current position"
+msgstr ""
+
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:20
+#: website/app-templates/smarty/emails/daily-digest.tpl:206
+msgid "Type"
+msgstr ""
+
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:21
+#: website/app-templates/smarty/emails/daily-digest.tpl:207
+msgid "Loved by"
+msgstr ""
+
+#: website/app-templates/smarty/emails/instant-love-notification.tpl:52
+msgid "View GeoKret details"
 msgstr ""
 
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:4
@@ -2422,6 +2460,10 @@ msgstr ""
 
 #: website/app-templates/smarty/emails/daily-digest.tpl:165
 msgid "Latest move comments"
+msgstr ""
+
+#: website/app-templates/smarty/emails/daily-digest.tpl:199
+msgid "GeoKrety loves ❤️"
 msgstr ""
 
 #: website/app-templates/smarty/emails/base.tpl:20
@@ -2821,7 +2863,7 @@ msgstr ""
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:29
 #: website/app-templates/smarty/pages/user_update_observation_area.tpl:74
-#: website/app-templates/smarty/dialog/user_update_email.tpl:81
+#: website/app-templates/smarty/dialog/user_update_email.tpl:86
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:26
 #: website/app-templates/smarty/dialog/user_refresh_secid.tpl:15
 #: website/app-templates/smarty/dialog/user_contact.tpl:41
@@ -2847,7 +2889,7 @@ msgstr "Tillbaka till användarsida"
 #: website/app-templates/smarty/dialog/geokret_unwatch.tpl:13
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:14
 #: website/app-templates/smarty/dialog/admin_dialog_script_unlock.tpl:23
-#: website/app-templates/smarty/dialog/user_update_email.tpl:82
+#: website/app-templates/smarty/dialog/user_update_email.tpl:87
 #: website/app-templates/smarty/dialog/picture_define_as_main_avatar.tpl:15
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:14
 #: website/app-templates/smarty/dialog/admin_dialog_script_ack.tpl:23
@@ -2876,7 +2918,7 @@ msgstr "Avfärda"
 
 #: website/app-templates/smarty/pages/user_update_username.tpl:32
 #: website/app-templates/smarty/pages/password_change.tpl:57
-#: website/app-templates/smarty/dialog/user_update_email.tpl:84
+#: website/app-templates/smarty/dialog/user_update_email.tpl:89
 #: website/app-templates/smarty/dialog/user_choose_preferred_language.tpl:29
 #: website/app-templates/smarty/dialog/user_update_password.tpl:55
 msgid "Change"
@@ -3242,12 +3284,12 @@ msgid "Last 365 days"
 msgstr ""
 
 #: website/app-templates/smarty/pages/statistics_site.tpl:50
-#: website/app-templates/smarty/pages/statistics_site.tpl:677
+#: website/app-templates/smarty/pages/statistics_site.tpl:723
 msgid "Active GeoKrety"
 msgstr ""
 
 #: website/app-templates/smarty/pages/statistics_site.tpl:75
-#: website/app-templates/smarty/pages/statistics_site.tpl:678
+#: website/app-templates/smarty/pages/statistics_site.tpl:724
 msgid "Countries Active"
 msgstr ""
 
@@ -3332,7 +3374,7 @@ msgid "These charts track the growth of the GeoKrety community. The graphs show 
 msgstr ""
 
 #: website/app-templates/smarty/pages/statistics_site.tpl:174
-#: website/app-templates/smarty/pages/statistics_site.tpl:878
+#: website/app-templates/smarty/pages/statistics_site.tpl:991
 msgid "User Registrations"
 msgstr ""
 
@@ -3351,7 +3393,7 @@ msgid "Monthly"
 msgstr ""
 
 #: website/app-templates/smarty/pages/statistics_site.tpl:194
-#: website/app-templates/smarty/pages/statistics_site.tpl:887
+#: website/app-templates/smarty/pages/statistics_site.tpl:1000
 msgid "GeoKrety Registrations"
 msgstr ""
 
@@ -3372,7 +3414,7 @@ msgid "Filter by year:"
 msgstr ""
 
 #: website/app-templates/smarty/pages/statistics_site.tpl:227
-#: website/app-templates/smarty/pages/statistics_site.tpl:1005
+#: website/app-templates/smarty/pages/statistics_site.tpl:1115
 msgid "All Time"
 msgstr ""
 
@@ -3495,67 +3537,76 @@ msgid "Close"
 msgstr "Stäng"
 
 #: website/app-templates/smarty/pages/statistics_site.tpl:505
+#: website/app-templates/smarty/pages/statistics_site.tpl:550
 msgid "Click to view details"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:530
+#: website/app-templates/smarty/pages/statistics_site.tpl:561
+msgid "loves"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:576
 msgid "minutes"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:534
+#: website/app-templates/smarty/pages/statistics_site.tpl:580
 msgid "hour"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:536
+#: website/app-templates/smarty/pages/statistics_site.tpl:582
 msgid "hours"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:539
+#: website/app-templates/smarty/pages/statistics_site.tpl:585
 msgid "cache duration:"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:580
-#: website/app-templates/smarty/pages/statistics_site.tpl:955
+#: website/app-templates/smarty/pages/statistics_site.tpl:626
+#: website/app-templates/smarty/pages/statistics_site.tpl:1068
 msgid "No data available"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:587
+#: website/app-templates/smarty/pages/statistics_site.tpl:633
 msgid "GeoKrety in cache per country"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:588
+#: website/app-templates/smarty/pages/statistics_site.tpl:634
 msgid "Total moves per country"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:676
+#: website/app-templates/smarty/pages/statistics_site.tpl:722
 msgid "Active User"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:676
+#: website/app-templates/smarty/pages/statistics_site.tpl:722
 msgid "count of distinct users who logged moves"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:677
+#: website/app-templates/smarty/pages/statistics_site.tpl:723
 msgid "count of distinct GeoKrety that had moves logged"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:678
+#: website/app-templates/smarty/pages/statistics_site.tpl:724
 msgid "countries with at least the specified number of moves"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:863
+#: website/app-templates/smarty/pages/statistics_site.tpl:976
+msgid "Month"
+msgstr ""
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:976
 msgid "Year"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:871
+#: website/app-templates/smarty/pages/statistics_site.tpl:984
 msgid "Number of GeoKrety"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:896
+#: website/app-templates/smarty/pages/statistics_site.tpl:1009
 msgid "Love Votes"
 msgstr ""
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:960
+#: website/app-templates/smarty/pages/statistics_site.tpl:1073
 msgid "Error loading data"
 msgstr ""
 
@@ -5087,45 +5138,49 @@ msgstr ""
 msgid "Comments on moves"
 msgstr ""
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:57
+#: website/app-templates/smarty/dialog/user_update_email.tpl:51
+msgid "Loves on my GeoKrety"
+msgstr ""
+
+#: website/app-templates/smarty/dialog/user_update_email.tpl:62
 msgid "Email alerts may contain any of the following:"
 msgstr "E-postaviseringar kan innehålla något av följande:"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:59
+#: website/app-templates/smarty/dialog/user_update_email.tpl:64
 msgid "GeoKrety.org news"
 msgstr "GeoKrety.org nyheter"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:60
+#: website/app-templates/smarty/dialog/user_update_email.tpl:65
 msgid "Recent logs on:"
 msgstr "Senaste loggar på:"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:62
-#: website/app-templates/smarty/dialog/user_update_email.tpl:68
+#: website/app-templates/smarty/dialog/user_update_email.tpl:67
+#: website/app-templates/smarty/dialog/user_update_email.tpl:73
 msgid "your own GeoKrety"
 msgstr "din egen GeoKrety"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:63
-#: website/app-templates/smarty/dialog/user_update_email.tpl:69
+#: website/app-templates/smarty/dialog/user_update_email.tpl:68
+#: website/app-templates/smarty/dialog/user_update_email.tpl:74
 msgid "GeoKrety that you watch"
 msgstr "GeoKrety som du bevakar"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:64
+#: website/app-templates/smarty/dialog/user_update_email.tpl:69
 msgid "any GeoKrety logged near your home location"
 msgstr "någon GeoKrety loggade nära din hemplats"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:66
+#: website/app-templates/smarty/dialog/user_update_email.tpl:71
 msgid "Comments posted to any of the following:"
 msgstr "Kommentarer postade till någon av följande:"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:70
+#: website/app-templates/smarty/dialog/user_update_email.tpl:75
 msgid "your logs"
 msgstr "dina loggar"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:71
+#: website/app-templates/smarty/dialog/user_update_email.tpl:76
 msgid "your comments"
 msgstr "dina kommentarer"
 
-#: website/app-templates/smarty/dialog/user_update_email.tpl:72
+#: website/app-templates/smarty/dialog/user_update_email.tpl:77
 msgid "news posts you have are subscribed to"
 msgstr "nyhetsinlägg som du prenumererar på"
 
