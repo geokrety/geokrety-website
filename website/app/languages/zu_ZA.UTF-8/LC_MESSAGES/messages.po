@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-19 20:01+0000\n"
-"PO-Revision-Date: 2026-02-19 20:18\n"
+"POT-Creation-Date: 2026-02-20 07:42+0000\n"
+"PO-Revision-Date: 2026-02-20 07:47\n"
 "Last-Translator: \n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
@@ -53,7 +53,7 @@ msgid "Never Travelled"
 msgstr "crwdns65046:0crwdne65046:0"
 
 #: website/app-templates/smarty/extension/SmartyGeokretyExtension.php:283
-#: website/app-templates/smarty/pages/statistics_site.tpl:378
+#: website/app-templates/smarty/pages/statistics_site.tpl:481
 msgid "Unknown"
 msgstr "crwdns67076:0crwdne67076:0"
 
@@ -1557,7 +1557,7 @@ msgstr "crwdns65618:0crwdne65618:0"
 #: website/app-templates/smarty/forms/advanced_search.tpl:29
 #: website/app-templates/smarty/forms/advanced_search.tpl:31
 #: website/app-templates/smarty/forms/move.tpl:153
-#: website/app-templates/smarty/pages/statistics_site.tpl:190
+#: website/app-templates/smarty/pages/statistics_site.tpl:288
 msgid "Waypoint"
 msgstr "crwdns66522:0crwdne66522:0"
 
@@ -2918,7 +2918,7 @@ msgstr "crwdns65882:0crwdne65882:0"
 
 #: website/app-templates/smarty/pages/mole_hole.tpl:41
 #: website/app-templates/smarty/pages/mole_hole.tpl:84
-#: website/app-templates/smarty/pages/statistics_site.tpl:57
+#: website/app-templates/smarty/pages/statistics_site.tpl:138
 msgid "Country"
 msgstr "crwdns65884:0crwdne65884:0"
 
@@ -3169,175 +3169,250 @@ msgstr "crwdns67622:0crwdne67622:0"
 msgid "This page shows global statistics about GeoKrety activity across the world."
 msgstr "crwdns67624:0crwdne67624:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:16
+#: website/app-templates/smarty/pages/statistics_site.tpl:17
+msgid "Snapshot"
+msgstr "crwdns67730:0crwdne67730:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:18
+msgid "Snapshot Definitions"
+msgstr "crwdns67732:0crwdne67732:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:20
+msgid "Quick activity metrics for the last 30, 90, and 365 days."
+msgstr "crwdns67734:0crwdne67734:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:25
+msgid "Active Users"
+msgstr "crwdns67736:0crwdne67736:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:31
+#: website/app-templates/smarty/pages/statistics_site.tpl:56
+#: website/app-templates/smarty/pages/statistics_site.tpl:82
+msgid "Last 30 days"
+msgstr "crwdns67738:0crwdne67738:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:35
+#: website/app-templates/smarty/pages/statistics_site.tpl:60
+msgid "Last 90 days"
+msgstr "crwdns67740:0crwdne67740:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:39
+#: website/app-templates/smarty/pages/statistics_site.tpl:64
+msgid "Last 365 days"
+msgstr "crwdns67742:0crwdne67742:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:50
+#: website/app-templates/smarty/pages/statistics_site.tpl:606
+msgid "Active GeoKrety"
+msgstr "crwdns67744:0crwdne67744:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:75
+#: website/app-templates/smarty/pages/statistics_site.tpl:607
+msgid "Countries Active"
+msgstr "crwdns67746:0crwdne67746:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:83
+msgid "At least"
+msgstr "crwdns67748:0crwdne67748:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:83
+msgid "moves"
+msgstr "crwdns67750:0crwdne67750:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:97
 msgid "Geographic Distribution"
 msgstr "crwdns67626:0crwdne67626:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:17
+#: website/app-templates/smarty/pages/statistics_site.tpl:98
 msgid "This map displays the geographic distribution of GeoKrety activity. Toggle between viewing the number of GeoKrety currently in cache per country, or the total number of moves logged in each country."
 msgstr "crwdns67628:0crwdne67628:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:22
+#: website/app-templates/smarty/pages/statistics_site.tpl:103
 msgid "World Map"
 msgstr "crwdns67630:0crwdne67630:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:28
+#: website/app-templates/smarty/pages/statistics_site.tpl:109
 msgid "GeoKrety in Cache"
 msgstr "crwdns67632:0crwdne67632:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:31
+#: website/app-templates/smarty/pages/statistics_site.tpl:112
 msgid "Total Moves"
 msgstr "crwdns67634:0crwdne67634:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:48
+#: website/app-templates/smarty/pages/statistics_site.tpl:129
 msgid "GeoKrety per Country"
 msgstr "crwdns67636:0crwdne67636:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:51
+#: website/app-templates/smarty/pages/statistics_site.tpl:132
 msgid "This table shows the number of GeoKrety currently in cache in each country, along with the percentage of total GeoKrety. The trend sparklines are color-coded: green indicates increasing activity, red indicates decreasing activity, and gray indicates stable activity."
 msgstr "crwdns67638:0crwdne67638:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:58
+#: website/app-templates/smarty/pages/statistics_site.tpl:139
 msgid "All GeoKrety in cache"
 msgstr "crwdns67640:0crwdne67640:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:59
+#: website/app-templates/smarty/pages/statistics_site.tpl:140
 msgid "Percentage"
 msgstr "crwdns67642:0crwdne67642:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:60
+#: website/app-templates/smarty/pages/statistics_site.tpl:141
 msgid "Drop Trend"
 msgstr "crwdns67644:0crwdne67644:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:61
+#: website/app-templates/smarty/pages/statistics_site.tpl:142
 msgid "Dip Trend"
 msgstr "crwdns67646:0crwdne67646:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:67
-#: website/app-templates/smarty/pages/statistics_site.tpl:200
+#: website/app-templates/smarty/pages/statistics_site.tpl:148
+#: website/app-templates/smarty/pages/statistics_site.tpl:298
 msgid "Loading..."
 msgstr "crwdns67648:0crwdne67648:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:82
+#: website/app-templates/smarty/pages/statistics_site.tpl:156
+#: website/app-templates/smarty/pages/statistics_site.tpl:306
+msgid "Up"
+msgstr "crwdns67752:0crwdne67752:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:157
+#: website/app-templates/smarty/pages/statistics_site.tpl:307
+msgid "Down"
+msgstr "crwdns67754:0crwdne67754:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:158
+#: website/app-templates/smarty/pages/statistics_site.tpl:308
+msgid "Stable"
+msgstr "crwdns67756:0crwdne67756:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:168
 msgid "Growth Over Time"
 msgstr "crwdns67650:0crwdne67650:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:83
+#: website/app-templates/smarty/pages/statistics_site.tpl:169
 msgid "These charts track the growth of the GeoKrety community. The graphs show monthly registration counts and cumulative totals over time for both users and GeoKrety."
 msgstr "crwdns67652:0crwdne67652:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:88
-#: website/app-templates/smarty/pages/statistics_site.tpl:648
+#: website/app-templates/smarty/pages/statistics_site.tpl:174
+#: website/app-templates/smarty/pages/statistics_site.tpl:807
 msgid "User Registrations"
 msgstr "crwdns67654:0crwdne67654:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:91
+#: website/app-templates/smarty/pages/statistics_site.tpl:177
 msgid "This chart shows how many new users joined the GeoKrety community each month, along with the cumulative total of registered users."
 msgstr "crwdns67656:0crwdne67656:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:102
-#: website/app-templates/smarty/pages/statistics_site.tpl:657
+#: website/app-templates/smarty/pages/statistics_site.tpl:180
+#: website/app-templates/smarty/pages/statistics_site.tpl:200
+msgid "Cumulative"
+msgstr "crwdns67758:0crwdne67758:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:181
+#: website/app-templates/smarty/pages/statistics_site.tpl:201
+msgid "Monthly"
+msgstr "crwdns67760:0crwdne67760:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:194
+#: website/app-templates/smarty/pages/statistics_site.tpl:816
 msgid "GeoKrety Registrations"
 msgstr "crwdns67658:0crwdne67658:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:105
+#: website/app-templates/smarty/pages/statistics_site.tpl:197
 msgid "This chart shows how many new GeoKrety were registered each month, along with the cumulative total of registered GeoKrety."
 msgstr "crwdns67660:0crwdne67660:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:118
+#: website/app-templates/smarty/pages/statistics_site.tpl:216
 msgid "Activity Distribution"
 msgstr "crwdns67662:0crwdne67662:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:119
+#: website/app-templates/smarty/pages/statistics_site.tpl:217
 msgid "These charts show the distribution of different types of activities in the GeoKrety community."
 msgstr "crwdns67664:0crwdne67664:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:127
+#: website/app-templates/smarty/pages/statistics_site.tpl:225
 msgid "Filter by year:"
 msgstr "crwdns67666:0crwdne67666:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:129
-#: website/app-templates/smarty/pages/statistics_site.tpl:726
+#: website/app-templates/smarty/pages/statistics_site.tpl:227
+#: website/app-templates/smarty/pages/statistics_site.tpl:903
 msgid "All Time"
 msgstr "crwdns67668:0crwdne67668:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:145
+#: website/app-templates/smarty/pages/statistics_site.tpl:243
 msgid "Move Type Distribution"
 msgstr "crwdns67670:0crwdne67670:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:148
+#: website/app-templates/smarty/pages/statistics_site.tpl:246
 msgid "Distribution of move types: Drop, Grab, Comment, Met, Archived, Dip, and Seen."
 msgstr "crwdns67672:0crwdne67672:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:159
+#: website/app-templates/smarty/pages/statistics_site.tpl:257
 msgid "GeoKret Type Distribution"
 msgstr "crwdns67674:0crwdne67674:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:162
+#: website/app-templates/smarty/pages/statistics_site.tpl:260
 msgid "Distribution of GeoKret types: Traditional, Book/CD/DVD, Human, Coin, and KretyPost."
 msgstr "crwdns67676:0crwdne67676:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:175
+#: website/app-templates/smarty/pages/statistics_site.tpl:273
 msgid "Leaderboards"
 msgstr "crwdns67678:0crwdne67678:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:176
+#: website/app-templates/smarty/pages/statistics_site.tpl:274
 msgid "Top performers and most active locations in the GeoKrety network."
 msgstr "crwdns67680:0crwdne67680:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:181
+#: website/app-templates/smarty/pages/statistics_site.tpl:279
 msgid "Top 50 Waypoints"
 msgstr "crwdns67682:0crwdne67682:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:184
+#: website/app-templates/smarty/pages/statistics_site.tpl:282
 msgid "Most visited caches/waypoints sorted by number of unique GeoKrety."
 msgstr "crwdns67684:0crwdne67684:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:191
+#: website/app-templates/smarty/pages/statistics_site.tpl:289
 msgid "Unique GeoKrety"
 msgstr "crwdns67686:0crwdne67686:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:192
+#: website/app-templates/smarty/pages/statistics_site.tpl:290
 msgid "Visits"
 msgstr "crwdns67688:0crwdne67688:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:193
+#: website/app-templates/smarty/pages/statistics_site.tpl:291
 msgid "Trend"
 msgstr "crwdns67690:0crwdne67690:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:194
+#: website/app-templates/smarty/pages/statistics_site.tpl:292
 msgid "Last Visit"
 msgstr "crwdns67692:0crwdne67692:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:215
+#: website/app-templates/smarty/pages/statistics_site.tpl:318
 msgid "Media & Engagement"
 msgstr "crwdns67694:0crwdne67694:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:216
+#: website/app-templates/smarty/pages/statistics_site.tpl:319
 msgid "Community engagement through pictures and comments over time."
 msgstr "crwdns67696:0crwdne67696:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:221
+#: website/app-templates/smarty/pages/statistics_site.tpl:324
 msgid "Picture Uploads"
 msgstr "crwdns67698:0crwdne67698:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:224
+#: website/app-templates/smarty/pages/statistics_site.tpl:327
 msgid "Monthly picture uploads by type (GeoKret avatars, move pictures, user avatars)."
 msgstr "crwdns67700:0crwdne67700:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:235
+#: website/app-templates/smarty/pages/statistics_site.tpl:338
 msgid "Comments & Reports"
 msgstr "crwdns67702:0crwdne67702:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:238
+#: website/app-templates/smarty/pages/statistics_site.tpl:341
 msgid "Monthly comments and missing reports showing community engagement."
 msgstr "crwdns67704:0crwdne67704:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:257
+#: website/app-templates/smarty/pages/statistics_site.tpl:360
 msgid "Trend Detail"
 msgstr "crwdns67706:0crwdne67706:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:265
+#: website/app-templates/smarty/pages/statistics_site.tpl:368
 #: website/app-templates/smarty/banners/flash_messages.tpl:3
 #: website/app-templates/smarty/banners/contribute.tpl:3
 #: website/app-templates/smarty/dialog/user_setting_edit.tpl:3
@@ -3345,48 +3420,64 @@ msgstr "crwdns67706:0crwdne67706:0"
 msgid "Close"
 msgstr "crwdns66952:0crwdne66952:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:331
+#: website/app-templates/smarty/pages/statistics_site.tpl:434
 msgid "Click to view details"
 msgstr "crwdns67708:0crwdne67708:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:356
+#: website/app-templates/smarty/pages/statistics_site.tpl:459
 msgid "minutes"
 msgstr "crwdns67710:0crwdne67710:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:360
+#: website/app-templates/smarty/pages/statistics_site.tpl:463
 msgid "hour"
 msgstr "crwdns67712:0crwdne67712:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:362
+#: website/app-templates/smarty/pages/statistics_site.tpl:465
 msgid "hours"
 msgstr "crwdns67714:0crwdne67714:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:365
+#: website/app-templates/smarty/pages/statistics_site.tpl:468
 msgid "cache duration:"
 msgstr "crwdns67716:0crwdne67716:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:406
-#: website/app-templates/smarty/pages/statistics_site.tpl:700
+#: website/app-templates/smarty/pages/statistics_site.tpl:509
+#: website/app-templates/smarty/pages/statistics_site.tpl:877
 msgid "No data available"
 msgstr "crwdns67718:0crwdne67718:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:413
+#: website/app-templates/smarty/pages/statistics_site.tpl:516
 msgid "GeoKrety in cache per country"
 msgstr "crwdns67720:0crwdne67720:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:414
+#: website/app-templates/smarty/pages/statistics_site.tpl:517
 msgid "Total moves per country"
 msgstr "crwdns67722:0crwdne67722:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:633
+#: website/app-templates/smarty/pages/statistics_site.tpl:605
+msgid "Active User"
+msgstr "crwdns67762:0crwdne67762:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:605
+msgid "count of distinct users who logged moves"
+msgstr "crwdns67764:0crwdne67764:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:606
+msgid "count of distinct GeoKrety that had moves logged"
+msgstr "crwdns67766:0crwdne67766:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:607
+msgid "countries with at least the specified number of moves"
+msgstr "crwdns67768:0crwdne67768:0"
+
+#: website/app-templates/smarty/pages/statistics_site.tpl:792
 msgid "Year"
 msgstr "crwdns67724:0crwdne67724:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:641
+#: website/app-templates/smarty/pages/statistics_site.tpl:800
 msgid "Number of GeoKrety"
 msgstr "crwdns67726:0crwdne67726:0"
 
-#: website/app-templates/smarty/pages/statistics_site.tpl:705
+#: website/app-templates/smarty/pages/statistics_site.tpl:882
 msgid "Error loading data"
 msgstr "crwdns67728:0crwdne67728:0"
 
