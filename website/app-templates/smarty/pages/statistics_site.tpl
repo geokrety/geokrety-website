@@ -11,6 +11,87 @@
         {t}This page shows global statistics about GeoKrety activity across the world.{/t}
     </div>
 
+    <!-- KPI Snapshot -->
+    <section class="statistics-section">
+        <h2>
+            {t}Snapshot{/t}
+            <i class="fa fa-info-circle" id="kpi-definitions-tooltip" style="font-size: 0.8em; margin-left: 8px; color: #999; cursor: help; vertical-align: middle;" data-toggle="popover" data-trigger="hover" data-placement="right" title="{t}Snapshot Definitions{/t}"></i>
+        </h2>
+        <p class="help-block">{t}Quick activity metrics for the last 30, 90, and 365 days.{/t}</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{t}Active Users{/t}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-condensed" style="margin-bottom: 0;">
+                            <tbody>
+                                <tr>
+                                    <th>{t}Last 30 days{/t}</th>
+                                    <td class="text-right"><span id="kpi-active-users-30">-</span></td>
+                                </tr>
+                                <tr>
+                                    <th>{t}Last 90 days{/t}</th>
+                                    <td class="text-right"><span id="kpi-active-users-90">-</span></td>
+                                </tr>
+                                <tr>
+                                    <th>{t}Last 365 days{/t}</th>
+                                    <td class="text-right"><span id="kpi-active-users-365">-</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{t}Active GeoKrety{/t}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-condensed" style="margin-bottom: 0;">
+                            <tbody>
+                                <tr>
+                                    <th>{t}Last 30 days{/t}</th>
+                                    <td class="text-right"><span id="kpi-active-geokrety-30">-</span></td>
+                                </tr>
+                                <tr>
+                                    <th>{t}Last 90 days{/t}</th>
+                                    <td class="text-right"><span id="kpi-active-geokrety-90">-</span></td>
+                                </tr>
+                                <tr>
+                                    <th>{t}Last 365 days{/t}</th>
+                                    <td class="text-right"><span id="kpi-active-geokrety-365">-</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{t}Countries Active{/t}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-condensed" style="margin-bottom: 0;">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        {t}Last 30 days{/t}<br/>
+                                        <small class="text-muted">{t}At least{/t} <span id="kpi-countries-active-min">10</span> {t}moves{/t}</small>
+                                    </th>
+                                    <td class="text-right"><span id="kpi-countries-active-30">-</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Map Section -->
     <section class="statistics-section">
         <h2>{t}Geographic Distribution{/t}</h2>
@@ -71,6 +152,11 @@
                             </table>
                         </div>
                         <div id="country-table-cache-info" class="text-muted small text-center" style="margin-top: 10px;"></div>
+                        <div class="text-muted small text-center" style="margin-top: 4px;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #5cb85c; border-radius: 50%; margin-right: 4px;"></span>{t}Up{/t}
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #d9534f; border-radius: 50%; margin: 0 4px 0 12px;"></span>{t}Down{/t}
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #999; border-radius: 50%; margin: 0 4px 0 12px;"></span>{t}Stable{/t}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,6 +302,11 @@
                             </table>
                         </div>
                         <div id="waypoints-cache-info" class="text-muted small text-center" style="margin-top: 10px;"></div>
+                        <div class="text-muted small text-center" style="margin-top: 4px;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #5cb85c; border-radius: 50%; margin-right: 4px;"></span>{t}Up{/t}
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #d9534f; border-radius: 50%; margin: 0 4px 0 12px;"></span>{t}Down{/t}
+                            <span style="display: inline-block; width: 8px; height: 8px; background: #999; border-radius: 50%; margin: 0 4px 0 12px;"></span>{t}Stable{/t}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -464,6 +555,62 @@ $(document).ready(function() {
 
     // Initialize with default mode
     initMap(currentMapMode);
+
+    function formatSnapshotValue(value) {
+        if (value === null || value === undefined) {
+            return "-";
+        }
+        return Number(value).toLocaleString();
+    }
+
+    function loadActivitySnapshot() {
+        $.ajax({
+            url: "{/literal}{'api_v1_stats_activity_snapshot'|alias}{literal}",
+            method: "GET",
+            dataType: "json",
+            success: function(response) {
+                const data = response.data || response;
+
+                if (data.active_users) {
+                    $("#kpi-active-users-30").text(formatSnapshotValue(data.active_users.days_30));
+                    $("#kpi-active-users-90").text(formatSnapshotValue(data.active_users.days_90));
+                    $("#kpi-active-users-365").text(formatSnapshotValue(data.active_users.days_365));
+                }
+
+                if (data.active_geokrety) {
+                    $("#kpi-active-geokrety-30").text(formatSnapshotValue(data.active_geokrety.days_30));
+                    $("#kpi-active-geokrety-90").text(formatSnapshotValue(data.active_geokrety.days_90));
+                    $("#kpi-active-geokrety-365").text(formatSnapshotValue(data.active_geokrety.days_365));
+                }
+
+                if (data.countries_active_30) {
+                    $("#kpi-countries-active-30").text(formatSnapshotValue(data.countries_active_30.count));
+                    $("#kpi-countries-active-min").text(formatSnapshotValue(data.countries_active_30.min_moves));
+                }
+            },
+            error: function() {
+                $("#kpi-active-users-30, #kpi-active-users-90, #kpi-active-users-365").text("-");
+                $("#kpi-active-geokrety-30, #kpi-active-geokrety-90, #kpi-active-geokrety-365").text("-");
+                $("#kpi-countries-active-30").text("-");
+            }
+        });
+    }
+
+    loadActivitySnapshot();
+
+    // Initialize KPI definitions tooltip
+    $("#kpi-definitions-tooltip").popover({
+        content: function() {
+            return "<div style=\"font-size: 12px; line-height: 1.6;\">" +
+                   "<strong>{/literal}{t}Active User{/t}{literal}</strong>: {/literal}{t}count of distinct users who logged moves{/t}{literal}<br/>" +
+                   "<strong>{/literal}{t}Active GeoKrety{/t}{literal}</strong>: {/literal}{t}count of distinct GeoKrety that had moves logged{/t}{literal}<br/>" +
+                   "<strong>{/literal}{t}Countries Active{/t}{literal}</strong>: {/literal}{t}countries with at least the specified number of moves{/t}{literal}" +
+                   "</div>";
+        },
+        html: true,
+        placement: "right",
+        trigger: "hover focus"
+    });
 
     // Map mode switcher
     $("#map-mode-switcher button").click(function() {
