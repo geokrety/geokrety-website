@@ -31,7 +31,8 @@ window.initTimeSeriesChart = function(config) {
         title = "",
         color = "#337ab7",
         cacheInfoElement = null,
-        formatCacheDuration = null
+        formatCacheDuration = null,
+        defaultMode = "cumulative"
     } = config;
 
     if (!anchor || !dataUrl) {
@@ -64,6 +65,8 @@ window.initTimeSeriesChart = function(config) {
         const placeholderLayer = container.append("g").attr("class", "time-series-placeholder");
 
         let isRendering = false;
+        let cachedData = null;
+        let currentMode = defaultMode;
 
         function computeSize() {
             const node = container.node();
@@ -142,7 +145,8 @@ window.initTimeSeriesChart = function(config) {
                 .domain(d3.extent(data, d => d.parsedDate))
                 .range([0, width]);
 
-            const yMax = d3.max(data, d => d.cumulative);
+            const valueKey = currentMode === "monthly" ? "count" : "cumulative";
+            const yMax = d3.max(data, d => d[valueKey]);
             const y = d3.scaleLinear()
                 .domain([0, yMax])
                 .nice()
@@ -181,17 +185,17 @@ window.initTimeSeriesChart = function(config) {
                     .tickFormat("")
                 );
 
-            // Create area generator for cumulative
+            // Create area generator for series
             const area = d3.area()
                 .x(d => x(d.parsedDate))
                 .y0(height)
-                .y1(d => y(d.cumulative))
+                .y1(d => y(d[valueKey]))
                 .curve(d3.curveMonotoneX);
 
-            // Create line generator for cumulative
+            // Create line generator for series
             const line = d3.line()
                 .x(d => x(d.parsedDate))
-                .y(d => y(d.cumulative))
+                .y(d => y(d[valueKey]))
                 .curve(d3.curveMonotoneX);
 
             // Add gradient
@@ -278,7 +282,7 @@ window.initTimeSeriesChart = function(config) {
                 const d = d1 && x0 - d0.parsedDate > d1.parsedDate - x0 ? d1 : d0;
 
                 if (d) {
-                    focus.attr("transform", `translate(${x(d.parsedDate)},${y(d.cumulative)})`);
+                    focus.attr("transform", `translate(${x(d.parsedDate)},${y(d[valueKey])})`);
 
                     tooltip
                         .style("opacity", 1)
@@ -307,6 +311,7 @@ window.initTimeSeriesChart = function(config) {
             })
             .then(responseData => {
                 const data = responseData.data || responseData;
+                cachedData = data;
                 render(data);
 
                 // Display cache info if available
@@ -328,15 +333,35 @@ window.initTimeSeriesChart = function(config) {
         window.addEventListener("resize", function() {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(function() {
+                if (cachedData) {
+                    render(cachedData);
+                    return;
+                }
                 fetch(dataUrl)
                     .then(response => response.json())
                     .then(responseData => {
                         const data = responseData.data || responseData;
+                        cachedData = data;
                         render(data);
                     })
                     .catch(error => console.error("Error on resize:", error));
             }, 250);
         });
+
+        function setMode(mode) {
+            if (!mode || mode === currentMode) {
+                return;
+            }
+            currentMode = mode;
+            if (cachedData) {
+                render(cachedData);
+            }
+        }
+
+        window.timeSeriesCharts = window.timeSeriesCharts || {};
+        window.timeSeriesCharts[anchor] = {
+            setMode: setMode
+        };
     }
 
     // Initialize when DOM is ready
@@ -345,5 +370,11 @@ window.initTimeSeriesChart = function(config) {
     } else {
         init();
     }
+};
+window.updateTimeSeriesChartMode = function(anchor, mode) {
+    if (!window.timeSeriesCharts || !window.timeSeriesCharts[anchor]) {
+        return;
+    }
+    window.timeSeriesCharts[anchor].setMode(mode);
 };
 //{/literal}

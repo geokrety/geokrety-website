@@ -89,6 +89,12 @@
                     </div>
                     <div class="panel-body">
                         <p class="help-block"><small>{t}This chart shows how many new users joined the GeoKrety community each month, along with the cumulative total of registered users.{/t}</small></p>
+                        <div class="text-center" style="margin-bottom: 10px;">
+                            <div class="btn-group btn-group-xs time-series-mode" role="group" data-target="#users-chart">
+                                <button type="button" class="btn btn-primary active" data-mode="cumulative">{t}Cumulative{/t}</button>
+                                <button type="button" class="btn btn-default" data-mode="monthly">{t}Monthly{/t}</button>
+                            </div>
+                        </div>
                         <div id="users-chart-container" style="width: 100%; height: 350px;">
                             <svg id="users-chart" style="width: 100%; height: 100%;"></svg>
                         </div>
@@ -103,6 +109,12 @@
                     </div>
                     <div class="panel-body">
                         <p class="help-block"><small>{t}This chart shows how many new GeoKrety were registered each month, along with the cumulative total of registered GeoKrety.{/t}</small></p>
+                        <div class="text-center" style="margin-bottom: 10px;">
+                            <div class="btn-group btn-group-xs time-series-mode" role="group" data-target="#geokrety-chart">
+                                <button type="button" class="btn btn-primary active" data-mode="cumulative">{t}Cumulative{/t}</button>
+                                <button type="button" class="btn btn-default" data-mode="monthly">{t}Monthly{/t}</button>
+                            </div>
+                        </div>
                         <div id="geokrety-chart-container" style="width: 100%; height: 350px;">
                             <svg id="geokrety-chart" style="width: 100%; height: 100%;"></svg>
                         </div>
@@ -658,6 +670,24 @@ $(document).ready(function() {
         color: "#337ab7",
         cacheInfoElement: "#geokrety-chart-cache-info",
         formatCacheDuration: formatCacheDuration
+    });
+
+    // Time series mode switcher
+    $(document).on("click", ".time-series-mode button", function() {
+        const $button = $(this);
+        const mode = $button.data("mode");
+        const target = $button.closest(".time-series-mode").data("target");
+
+        if (!target || !mode) {
+            return;
+        }
+
+        $button.siblings("button").removeClass("active btn-primary").addClass("btn-default");
+        $button.removeClass("btn-default").addClass("active btn-primary");
+
+        if (window.updateTimeSeriesChartMode) {
+            window.updateTimeSeriesChartMode(target, mode);
+        }
     });
 
     // Load top waypoints table
