@@ -106,6 +106,12 @@ class GeokretLabel extends Base {
         $this->prepare_values();
         $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->addGeokrety($this->geokret);
+
+        // Apply fit to page width if requested
+        $f3 = \Base::instance();
+        $fitToPageWidth = !empty($f3->get('POST.fit_to_page_width'));
+        $pdf->setFitToPageWidth($fitToPageWidth);
+
         $pdf->setLanguages($this->langs);
         $pdf->render();
     }

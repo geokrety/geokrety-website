@@ -41,6 +41,23 @@
                 <ul class="col-sm-4 alert alert-success hidden list-unstyled" id="nrResult"></ul>
             </div>
 
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="fit_to_page_width" class="col-sm-2 control-label">{t}Label Size{/t}</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="fit_to_page_width" id="fit_to_page_width" value="1" />
+                                    {t}Fit each label to page width (100%){/t}
+                                </label>
+                            </div>
+                            <p class="help-block">{t}If checked, each label will be scaled to fit 100% of the page width. If unchecked, labels will be printed at their default size.{/t}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     {call csrf}

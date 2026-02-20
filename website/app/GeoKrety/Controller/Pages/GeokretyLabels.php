@@ -46,6 +46,11 @@ class GeokretyLabels extends Base {
 
         $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->addGeokrety(...(array) $geokrety);
+
+        // Apply fit to page width if requested
+        $fitToPageWidth = !empty($f3->get('POST.fit_to_page_width'));
+        $pdf->setFitToPageWidth($fitToPageWidth);
+
         $pdf->setLanguages($this->languages);
         $pdf->render();
     }

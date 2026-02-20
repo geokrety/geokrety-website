@@ -10,6 +10,7 @@ class Pdf extends \TCPDF {
     public const LABEL_OUTPUT_DPI = 300;
 
     private array $geokrety = [];
+    private bool $fitToPageWidth = false;
 
     public function __construct($orientation = 'P', $unit = 'mm', $format = 'A4', $unicode = true, $encoding = 'UTF-8', $diskcache = false, $pdfa = false) {
         parent::__construct($orientation, $unit, $format, $unicode, $encoding, $diskcache, $pdfa);
@@ -96,11 +97,18 @@ class Pdf extends \TCPDF {
         $this->geokrety = array_merge($this->geokrety, $geokrety);
     }
 
+    public function setFitToPageWidth(bool $fitToPageWidth) {
+        $this->fitToPageWidth = $fitToPageWidth;
+    }
+
     public function render() {
         $startLeft = $posX = PDF_MARGIN_LEFT;
         $startTop = $posY = 13;
         $image = new Image();
         $image->setLanguages($this->languages);
+
+        // Calculate available page width
+        $availablePageWidth = $this->getPageWidth() - PDF_MARGIN_LEFT - PDF_MARGIN_RIGHT;
 
         $imgPrevH = 0;
         for ($i = 0; $i < sizeof($this->geokrety); ++$i) {
@@ -111,13 +119,22 @@ class Pdf extends \TCPDF {
             $imgW = $imageSize[0] * 25.4 / self::LABEL_OUTPUT_DPI;
             $imgH = $imageSize[1] * 25.4 / self::LABEL_OUTPUT_DPI;
 
+            // Apply fit to page width scaling if enabled
+            if ($this->fitToPageWidth) {
+                $scaleFactor = $availablePageWidth / $imgW;
+                $imgW *= $scaleFactor;
+                $imgH *= $scaleFactor;
+            }
+
             if ($posX + $imgW > $this->getPageWidth() - $startLeft) {
                 $posX = $startLeft;
                 $posY += $imgPrevH;
+                $imgPrevH = 0; // Reset row height for new row
             }
 
             if ($posY + $imgH > $this->getPageHeight() - $startTop) {
                 $posY = $startTop;
+                $imgPrevH = 0; // Reset row height for new page
                 $this->AddPage();
             }
 
