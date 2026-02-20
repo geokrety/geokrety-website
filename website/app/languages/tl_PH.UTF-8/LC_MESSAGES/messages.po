@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 07:42+0000\n"
-"PO-Revision-Date: 2026-02-20 07:47\n"
+"POT-Creation-Date: 2026-02-20 08:32+0000\n"
+"PO-Revision-Date: 2026-02-20 08:33\n"
 "Last-Translator: \n"
 "Language-Team: Tagalog\n"
 "Language: tl_PH\n"
@@ -1030,7 +1030,7 @@ msgid "dip"
 msgstr ""
 
 #: website/app/GeoKrety/LogType.php:136
-#: website/app-templates/smarty/pages/home.tpl:82
+#: website/app-templates/smarty/pages/home.tpl:83
 #: website/app-templates/smarty/blocks/geokret/details.tpl:62
 msgid "Born"
 msgstr ""
@@ -1502,7 +1502,7 @@ msgstr ""
 #: website/app-templates/smarty/forms/geokret_label.tpl:17
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:22
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:22
-#: website/app-templates/smarty/pages/home.tpl:81
+#: website/app-templates/smarty/pages/home.tpl:82
 #: website/app-templates/smarty/pages/user_inventory.tpl:23
 #: website/app-templates/smarty/dialog/geokret_move_select_from_inventory.tpl:28
 msgid "Owner"
@@ -2075,6 +2075,11 @@ msgstr ""
 msgid "Waypoint resolver"
 msgstr ""
 
+#: website/app-templates/smarty/navbar-left.tpl:67
+#: website/app-templates/smarty/navbar-left.tpl:69
+msgid "Subscribe to GeoKrety Fediverse RSS"
+msgstr ""
+
 #: website/app-templates/smarty/emails/password-changed.tpl:3
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:3
 #: website/app-templates/smarty/emails/account-activated.tpl:3
@@ -2620,7 +2625,7 @@ msgstr ""
 #: website/app-templates/smarty/pages/user_watched_geokrety.tpl:20
 #: website/app-templates/smarty/pages/search_by_geokret.tpl:20
 #: website/app-templates/smarty/pages/home.tpl:34
-#: website/app-templates/smarty/pages/home.tpl:80
+#: website/app-templates/smarty/pages/home.tpl:81
 #: website/app-templates/smarty/pages/mole_hole.tpl:38
 #: website/app-templates/smarty/pages/mole_hole.tpl:81
 #: website/app-templates/smarty/pages/user_owned_geokrety_moves.tpl:21
@@ -2751,11 +2756,11 @@ msgstr ""
 msgid "Latest moves"
 msgstr ""
 
-#: website/app-templates/smarty/pages/home.tpl:58
+#: website/app-templates/smarty/pages/home.tpl:59
 msgid "Recent pictures"
 msgstr ""
 
-#: website/app-templates/smarty/pages/home.tpl:75
+#: website/app-templates/smarty/pages/home.tpl:76
 msgid "Recently created GeoKrety"
 msgstr ""
 
@@ -4279,6 +4284,18 @@ msgstr ""
 msgid "No news match the current request."
 msgstr ""
 
+#: website/app-templates/smarty/blocks/donate.tpl:2
+msgid "Enjoying GeoKrety.org?"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/donate.tpl:4
+msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/donate.tpl:8
+msgid "Donate"
+msgstr ""
+
 #: website/app-templates/smarty/blocks/user_finder.tpl:5
 msgid "Start by finding users:"
 msgstr ""
@@ -4290,6 +4307,22 @@ msgstr ""
 #: website/app-templates/smarty/blocks/user_finder.tpl:11
 msgid "Search"
 msgstr "Maghanap"
+
+#: website/app-templates/smarty/blocks/go_social.tpl:2
+msgid "Join the GeoKrety community"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/go_social.tpl:8
+msgid "We are now sharing updates, tips, and release news across the Fediverse."
+msgstr ""
+
+#: website/app-templates/smarty/blocks/go_social.tpl:15
+msgid "@GeoKrety on social.opencaching.earth"
+msgstr ""
+
+#: website/app-templates/smarty/blocks/go_social.tpl:20
+msgid "Follow us from any Mastodon or Fediverse client and never miss an adventure!"
+msgstr ""
 
 #: website/app-templates/smarty/blocks/pictures_gallery.tpl:10
 msgid "There is no pictures yet."
@@ -4652,18 +4685,6 @@ msgstr ""
 msgid "Sorry, but we have troubles sending you email notifications."
 msgstr ""
 
-#: website/app-templates/smarty/banners/donate.tpl:2
-msgid "Enjoying GeoKrety.org?"
-msgstr ""
-
-#: website/app-templates/smarty/banners/donate.tpl:4
-msgid "Your donations help fund the continued development and growth of <b>GeoKrety.org</b>."
-msgstr ""
-
-#: website/app-templates/smarty/banners/donate.tpl:8
-msgid "Donate"
-msgstr ""
-
 #: website/app-templates/smarty/banners/user_email_missing.tpl:3
 msgid "Sorry, but your account has no email registered."
 msgstr ""
@@ -4774,6 +4795,38 @@ msgstr ""
 
 #: website/app-templates/smarty/footer.tpl:23
 msgid "Designed with <abbr title=\"love\">💗</abbr> by <a id=\"footer-team\" href=\"%1\">The GeoKrety Team</a>"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:27
+msgid "Join the GeoKrety community on Facebook"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:29
+msgid "Facebook"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:33
+msgid "Follow GeoKrety on X (Twitter)"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:35
+msgid "X (Twitter)"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:39
+msgid "Explore GeoKrety on Instagram"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:41
+msgid "Instagram"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:45
+msgid "Join us on the Fediverse"
+msgstr ""
+
+#: website/app-templates/smarty/footer.tpl:47
+msgid "Fediverse"
 msgstr ""
 
 #: website/app-templates/smarty/dialog/geokret_mark_as_archived.tpl:4
