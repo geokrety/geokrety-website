@@ -132,8 +132,9 @@ class BaseXSyncWorker extends WorkerBase {
 
             return;
         }
+        $moveId = is_object($comment->move) ? $comment->move->id : (int) $comment->move;
         $move = new Move();
-        $move->load(['id = ?', $comment->move]);
+        $move->load(['id = ?', $moveId]);
         if ($move->dry()) {
             $this->log(self::LOG_WARNING, 'Move for comment not found', ['comment_id' => $commentId]);
 
