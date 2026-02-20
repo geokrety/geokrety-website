@@ -49,7 +49,7 @@ abstract class BaseSettingsParameters extends BaseSettings {
         return $this->convertValueToString($value);
     }
 
-    public function convertValueToSettingType(string $value) {
+    public function convertValueToSettingType(?string $value) {
         switch ($this->type) {
             case 'bool':
             case 'boolean':
