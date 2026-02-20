@@ -520,6 +520,52 @@ $(document).ready(function() {
         return svg;
     }
 
+    // Helper function to create sparkline from monthly data with dates
+    function createSparklineFromMonths(monthlyData, width, height, country) {
+        // Ensure data is an array
+        if (!monthlyData || !Array.isArray(monthlyData) || monthlyData.length === 0) {
+            return "<span class=\"text-muted\">-</span>";
+        }
+
+        // Extract counts and dates
+        const data = monthlyData.map(item => item.count || 0);
+        const dates = monthlyData.map(item => item.date); // dates are YYYY-MM-DD
+
+        const max = Math.max(...data, 1);
+        const min = Math.min(...data, 0);
+        const range = max - min || 1;
+        const step = width / (data.length - 1 || 1);
+
+        const points = data.map(function(value, index) {
+            const x = index * step;
+            const y = height - ((value - min) / range) * height;
+            return x + "," + y;
+        }).join(" ");
+
+        const lastValue = data[data.length - 1];
+        const prevValue = data[data.length - 2] || lastValue;
+        const trendColor = lastValue > prevValue ? "#5cb85c" : (lastValue < prevValue ? "#d9534f" : "#999");
+
+        // Build SVG with line and dots
+        let svg = "<svg class=\"sparkline-svg\" data-country=\"" + (country || "") + "\" data-dates='" + JSON.stringify(dates) + "' data-values='" + JSON.stringify(data) + "' width=\"" + width + "\" height=\"" + height + "\" style=\"vertical-align: middle; cursor: pointer;\" title=\"{/literal}{t}Click to view details{/t}{literal}\">" +
+               "<polyline fill=\"none\" stroke=\"" + trendColor + "\" stroke-width=\"1.5\" points=\"" + points + "\"/>";
+
+        // Add dots at each data point
+        data.forEach(function(value, index) {
+            const x = index * step;
+            const y = height - ((value - min) / range) * height;
+            const r = index === data.length - 1 ? 2.5 : 1.5;
+            const dateStr = dates[index];
+            const yearMonth = dateStr ? dateStr.substring(0, 7) : ""; // YYYY-MM format
+            svg += "<circle class=\"sparkline-dot\" cx=\"" + x + "\" cy=\"" + y + "\" r=\"" + r + "\" fill=\"" + trendColor + "\" opacity=\"0.7\" style=\"cursor: pointer;\" data-date=\"" + dateStr + "\" data-value=\"" + value + "\">" +
+                   "<title>" + yearMonth + ": " + value.toLocaleString() + " {/literal}{t}loves{/t}{literal}</title>" +
+                   "</circle>";
+        });
+
+        svg += "</svg>";
+        return svg;
+    }
+
     // Helper function to format cache duration
     function formatCacheDuration(ttl) {
         if (!ttl || ttl <= 0) return "";
@@ -700,10 +746,17 @@ $(document).ready(function() {
     $(document).on("click", ".sparkline-svg", function() {
         const $svg = $(this);
         const country = $svg.data("country");
-        const years = $svg.data("years");
         const values = $svg.data("values");
 
-        if (!years || !values || years.length === 0 || values.length === 0) {
+        // Try to read dates first (from newer sparklines), fall back to years for older ones
+        let dates = $svg.data("dates");
+        let years = $svg.data("years");
+
+        // Determine which data format we have
+        let hasDateData = dates && dates.length > 0;
+        let hasYearData = years && years.length > 0;
+
+        if (!values || values.length === 0 || (!hasDateData && !hasYearData)) {
             return;
         }
 
@@ -716,19 +769,28 @@ $(document).ready(function() {
         $("#sparklineCountryName").text(country);
 
         // Prepare data for D3 line chart
-        const chartData = years.map(function(year, i) {
-            return { year: year, count: values[i] || 0 };
-        });
+        let chartData;
+        if (hasDateData) {
+            // New format: dates are YYYY-MM-DD strings
+            chartData = dates.map(function(dateStr, i) {
+                return { date: dateStr, count: values[i] || 0 };
+            });
+        } else {
+            // Old format: years are numbers
+            chartData = years.map(function(year, i) {
+                return { year: year, count: values[i] || 0 };
+            });
+        }
 
         // Render detailed chart
-        renderSparklineDetail(chartData);
+        renderSparklineDetail(chartData, hasDateData);
 
         // Show modal
         $("#sparklineModal").modal("show");
     });
 
     // Function to render detailed sparkline chart using D3
-    function renderSparklineDetail(data) {
+    function renderSparklineDetail(data, isDateData) {
         const container = d3.select("#sparkline-detail-chart svg");
         container.selectAll("*").remove();
 
@@ -741,10 +803,21 @@ $(document).ready(function() {
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        // Scales
-        const x = d3.scaleLinear()
-            .domain(d3.extent(data, d => d.year))
-            .range([0, width]);
+        // Determine the key to use for x-axis (date or year)
+        const xKey = isDateData ? 'date' : 'year';
+
+        // Create index domain for dates or numeric domain for years
+        let xScale;
+        if (isDateData) {
+            // For dates, use ordinal scale with index
+            xScale = d3.scaleLinear()
+                .domain([0, data.length - 1])
+                .range([0, width]);
+        } else {
+            xScale = d3.scaleLinear()
+                .domain(d3.extent(data, d => d.year))
+                .range([0, width]);
+        }
 
         const y = d3.scaleLinear()
             .domain([0, d3.max(data, d => d.count) || 1])
@@ -753,7 +826,7 @@ $(document).ready(function() {
 
         // Line generator
         const line = d3.line()
-            .x(d => x(d.year))
+            .x((d, i) => isDateData ? xScale(i) : xScale(d.year))
             .y(d => y(d.count));
 
         // Add grid lines
@@ -765,9 +838,26 @@ $(document).ready(function() {
                 .tickFormat(""));
 
         // Add axes
-        svg.append("g")
-            .attr("transform", `translate(0,${height})`)
-            .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+        const xAxis = svg.append("g")
+            .attr("transform", `translate(0,${height})`);
+
+        if (isDateData) {
+            // For date data, show every Nth month label to avoid crowding
+            const tickIndices = [];
+            const step = Math.max(1, Math.floor(data.length / 6)); // Aim for ~6 ticks
+            for (let i = 0; i < data.length; i += step) {
+                tickIndices.push(i);
+            }
+            if (data.length - 1 !== tickIndices[tickIndices.length - 1]) {
+                tickIndices.push(data.length - 1);
+            }
+
+            xAxis.call(d3.axisBottom(xScale)
+                .tickValues(tickIndices)
+                .tickFormat(i => data[i].date.substring(0, 7))); // Show YYYY-MM
+        } else {
+            xAxis.call(d3.axisBottom(xScale).tickFormat(d3.format("d")));
+        }
 
         svg.append("g")
             .call(d3.axisLeft(y).tickFormat(d3.format(",")).ticks(5));
@@ -786,7 +876,7 @@ $(document).ready(function() {
             .enter()
             .append("circle")
             .attr("class", "dot")
-            .attr("cx", d => x(d.year))
+            .attr("cx", (d, i) => isDateData ? xScale(i) : xScale(d.year))
             .attr("cy", d => y(d.count))
             .attr("r", 4)
             .attr("fill", "#337ab7");
@@ -835,24 +925,47 @@ $(document).ready(function() {
 
         function mousemove(event) {
             const [mx] = d3.pointer(event);
-            const x0 = x.invert(mx);
-            const bisect = d3.bisector(d => d.year).left;
-            const i = bisect(data, x0, 1);
-            const d0 = data[i - 1];
-            const d1 = data[i];
-            const d = d1 && x0 - d0.year > d1.year - x0 ? d1 : d0;
 
-            if (d) {
-                focus.attr("transform", `translate(${x(d.year)},${y(d.count)})`);
+            if (isDateData) {
+                // For date data, find closest index
+                const x0 = xScale.invert(mx);
+                const i = Math.round(x0);
+                const clampedIndex = Math.min(Math.max(i, 0), data.length - 1);
+                const d = data[clampedIndex];
 
-                tooltip
-                    .style("opacity", 1)
-                    .html(`
-                        <strong>${d.year}</strong><br/>
-                        ${d.count.toLocaleString()} GeoKrety
-                    `)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                if (d) {
+                    focus.attr("transform", `translate(${xScale(clampedIndex)},${y(d.count)})`);
+
+                    tooltip
+                        .style("opacity", 1)
+                        .html(`
+                            <strong>${d.date.substring(0, 7)}</strong><br/>
+                            ${d.count.toLocaleString()} GeoKrety
+                        `)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                }
+            } else {
+                // Original year-based logic
+                const x0 = xScale.invert(mx);
+                const bisect = d3.bisector(d => d.year).left;
+                const i = bisect(data, x0, 1);
+                const d0 = data[i - 1];
+                const d1 = data[i];
+                const d = d1 && x0 - d0.year > d1.year - x0 ? d1 : d0;
+
+                if (d) {
+                    focus.attr("transform", `translate(${xScale(d.year)},${y(d.count)})`);
+
+                    tooltip
+                        .style("opacity", 1)
+                        .html(`
+                            <strong>${d.year}</strong><br/>
+                            ${d.count.toLocaleString()} GeoKrety
+                        `)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                }
             }
         }
 
@@ -860,7 +973,7 @@ $(document).ready(function() {
         svg.append("text")
             .attr("transform", `translate(${width / 2},${height + 35})`)
             .style("text-anchor", "middle")
-            .text("{/literal}{t}Year{/t}{literal}");
+            .text(isDateData ? "{/literal}{t}Month{/t}{literal}" : "{/literal}{t}Year{/t}{literal}");
 
         svg.append("text")
             .attr("transform", "rotate(-90)")
@@ -970,13 +1083,10 @@ $(document).ready(function() {
         success: function(response) {
             const data = response.data || response;
             if (data && data.length > 0) {
-                // Build a map of love counts by month
-                const lovesTrend = data.map(item => item.count);
-
-                // Populate all trend cells with the same sparkline
+                // Populate all trend cells with the same sparkline, passing full data with dates
                 $(".loves-trend-col").each(function() {
                     const $cell = $(this);
-                    const sparkline = createSparkline(lovesTrend, 80, 25, "loves");
+                    const sparkline = createSparklineFromMonths(data, 80, 25, "loves");
                     $cell.html(sparkline);
                 });
             }
