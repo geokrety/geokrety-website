@@ -115,7 +115,7 @@ class UserSettings extends \Prefab {
         $f3 = \Base::instance();
         $f3->set('SESSION.SETTINGS', []);
         $users_settings = new CustomUsersSettings();
-        $settings = $users_settings->find(['user = ?', gettype($user) === 'GeoKrety\Model\User' ? $user->id : $user]);
+        $settings = $users_settings->find(['user = ?', $user instanceof User ? $user->id : $user]);
         if (!$settings) {
             return;
         }
