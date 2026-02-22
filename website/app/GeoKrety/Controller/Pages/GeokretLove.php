@@ -18,34 +18,34 @@ class GeokretLove extends Base {
                 'message' => _('You cannot love your own GeoKret.'),
                 'loves_count' => $this->geokret->loves_count,
             ]);
-            exit;
+
+            return;
         }
 
         $love = new GeokretLoveModel();
-        $love->load(['user = ? AND geokret = ?', $this->current_user->id, $this->geokret->id]);
+        $love->geokret = $this->geokret;
+        $love->user = $this->current_user;
 
-        if (!$love->dry()) {
-            // Already loved, return current state
-            echo json_encode([
-                'success' => false,
-                'message' => _('You have already loved this GeoKret.'),
-                'loves_count' => $this->geokret->loves_count,
-            ]);
-            exit;
+        try {
+            $love->save();
+            $success = true;
+            $message = _('You have loved this GeoKret! ❤️');
+        } catch (\PDOException $e) {
+            if ($e->getCode() === '23505') { // unique_violation
+                $success = false;
+                $message = _('You have already loved this GeoKret.');
+            } else {
+                throw $e;
+            }
         }
 
-        $love->geokret = $this->geokret->id;
-        $love->user = $this->current_user;
-        $love->save();
-
-        // Reload geokret to get the trigger-updated loves_count
+        // Reload once (trigger updates loves_count)
         $this->geokret->load(['id = ?', $this->geokret->id]);
 
         echo json_encode([
-            'success' => true,
-            'message' => _('You have loved this GeoKret! ❤️'),
+            'success' => $success,
+            'message' => $message,
             'loves_count' => $this->geokret->loves_count,
         ]);
-        exit;
     }
 }
