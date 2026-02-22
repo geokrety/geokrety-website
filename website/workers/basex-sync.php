@@ -153,16 +153,44 @@ class BaseXSyncWorker extends WorkerBase {
         if (!GK_BASEX_HOST || !GK_BASEX_PORT) {
             throw new RuntimeException('BaseX configuration not found (GK_BASEX_*)');
         }
+
+        $createSession = function (): BaseXSession {
+            return new BaseXSession(GK_BASEX_HOST, (int) GK_BASEX_PORT, GK_BASEX_USER, GK_BASEX_PASSWORD);
+        };
+
         if (!is_object($this->basexSession)) {
-            $this->basexSession = new BaseXSession(GK_BASEX_HOST, (int) GK_BASEX_PORT, GK_BASEX_USER, GK_BASEX_PASSWORD);
+            $this->basexSession = $createSession();
         }
 
-        $q = $this->basexSession->query($this->queryScript);
-        $q->bind('rate_limits_bypass', $this->rateLimitsBypass);
-        $q->bind('short_lived_session_token', $this->shortLivedSessionToken);
-        $q->bind('gkid', (string) $gkid);
-        $q->execute();
-        $q->close();
+        $attempt = 0;
+        do {
+            try {
+                $q = $this->basexSession->query($this->queryScript);
+                $q->bind('rate_limits_bypass', $this->rateLimitsBypass);
+                $q->bind('short_lived_session_token', $this->shortLivedSessionToken);
+                $q->bind('gkid', (string) $gkid);
+                $q->execute();
+                $q->close();
+
+                break;
+            } catch (Throwable $e) {
+                ++$attempt;
+                $this->log(self::LOG_WARNING, 'BaseX query failed (attempt '.$attempt.'): '.$e->getMessage());
+
+                try {
+                    $this->basexSession->close();
+                } catch (Throwable $closeEx) {
+                    $this->log(self::LOG_DEBUG, 'Failed to close broken session: '.$closeEx->getMessage());
+                }
+                $this->basexSession = null;
+
+                if ($attempt >= 2) {
+                    throw $e;
+                }
+
+                $this->basexSession = $createSession();
+            }
+        } while ($attempt < 2);
     }
 
     protected function cleanup(): void {
@@ -171,8 +199,10 @@ class BaseXSyncWorker extends WorkerBase {
             if ($this->basexSession) {
                 $this->basexSession->close();
             }
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->log(self::LOG_WARNING, 'Error during cleanup: '.$e->getMessage());
+        } finally {
+            $this->basexSession = null;
         }
     }
 }
