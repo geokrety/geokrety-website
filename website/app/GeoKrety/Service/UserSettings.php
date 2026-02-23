@@ -66,12 +66,12 @@ class UserSettings extends \Prefab {
      *
      * @return string|int|bool|null
      */
-    public function get(User|int|null $user, string $setting_name) {
+    public function get(User|int|null $user, string $setting_name, bool $force_reload = false) {
         if (is_null($user)) {
             return $this->getDefault($setting_name);
         }
         $f3 = \Base::instance();
-        if (!$f3->exists('SESSION.SETTINGS')) {
+        if (!$f3->exists('SESSION.SETTINGS') || $force_reload) {
             $this->loadUserSettings($user);
         }
         if ($f3->exists('SESSION.SETTINGS.'.$setting_name)) {

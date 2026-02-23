@@ -129,7 +129,7 @@ SQL;
         }
 
         $userSettings = UserSettings::instance();
-        $daily_digest_enabled = $userSettings->get($this->user, 'DAILY_DIGEST');
+        $daily_digest_enabled = $userSettings->get($this->user, 'DAILY_DIGEST', true);
 
         if (!$daily_digest_enabled) {
             $this->console_writer->print([$this->user->id, $this->user->username, '403 don\'t want'], true);
@@ -260,8 +260,8 @@ LIMIT 100
 SQL;
         $lovesDb = new \GeoKrety\Model\GeokretLove();
         $loves = $lovesDb->findByRawSQL($sql, [$this->user->id, $this->user->id, $this->since->format(GK_DB_DATETIME_FORMAT)]);
-        $this->updates_count += $loves ? 1 : 0;
-        Smarty::assign('loves', $loves ? $loves : false);
+        $this->updates_count += sizeof($loves) ? 1 : 0;
+        Smarty::assign('loves', sizeof($loves) ? $loves : false);
     }
 
     /**
