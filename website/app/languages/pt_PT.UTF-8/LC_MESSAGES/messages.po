@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geokrety\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 14:21+0000\n"
-"PO-Revision-Date: 2026-02-20 15:26\n"
+"POT-Creation-Date: 2026-02-22 17:20+0000\n"
+"PO-Revision-Date: 2026-02-24 10:47\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -367,12 +367,12 @@ msgstr "Algo não correu bem ao guardar o modelo de etiqueta preferencial GeoKre
 msgid "You cannot love your own GeoKret."
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLove.php:31
-msgid "You have already loved this GeoKret."
+#: website/app/GeoKrety/Controller/Pages/GeokretLove.php:32
+msgid "You have loved this GeoKret! ❤️"
 msgstr ""
 
-#: website/app/GeoKrety/Controller/Pages/GeokretLove.php:46
-msgid "You have loved this GeoKret! ❤️"
+#: website/app/GeoKrety/Controller/Pages/GeokretLove.php:36
+msgid "You have already loved this GeoKret."
 msgstr ""
 
 #: website/app/GeoKrety/Controller/Pages/GeokretMarkAsArchived.php:21
@@ -948,12 +948,12 @@ msgstr "O seu GeoKret '%s' foi adoptado"
 #: website/app/GeoKrety/Email/InstantNotification.php:33
 #, php-format
 msgid "New move for %s"
-msgstr ""
+msgstr "Novo movimento para %s"
 
 #: website/app/GeoKrety/Email/InstantNotification.php:66
 #, php-format
 msgid "New comment on %s"
-msgstr ""
+msgstr "Novo comentário em %s"
 
 #: website/app/GeoKrety/Email/InstantNotification.php:98
 #, php-format
@@ -1699,23 +1699,23 @@ msgstr "O objectivo principal da recolha do e-mail é permitir a recuperação d
 #: website/app-templates/smarty/forms/registration.tpl:83
 #: website/app-templates/smarty/dialog/user_update_email.tpl:17
 msgid "Yes, I want to receive daily digest email (sent once a day)."
-msgstr ""
+msgstr "Sim, eu quero receber um resumo de e-mail diário (enviado uma vez por dia)."
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:32
 #: website/app-templates/smarty/forms/registration.tpl:84
 msgid "Daily digest may contain travel information about your GeoKrety, news, comments…"
-msgstr ""
+msgstr "Resumo diário pode conter informações de movimentos sobre os seus GeoKrety, notícias, comentários…"
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:37
 #: website/app-templates/smarty/forms/registration.tpl:89
 #: website/app-templates/smarty/dialog/user_update_email.tpl:23
 msgid "Yes, I want to receive instant email notifications."
-msgstr ""
+msgstr "Sim, quero receber notificações instantâneas por e-mail."
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:38
 #: website/app-templates/smarty/forms/registration.tpl:90
 msgid "Instant notifications are sent immediately when activities occur on your GeoKrety."
-msgstr ""
+msgstr "Notificações instantâneas são enviadas imediatamente quando ocorrem actividades com os seus GeoKrety."
 
 #: website/app-templates/smarty/forms/registration_social_auth.tpl:51
 #: website/app-templates/smarty/forms/registration.tpl:102
@@ -2159,12 +2159,12 @@ msgstr "Está a receber este e-mail porque alterou a sua palavra-passe no nosso 
 #: website/app-templates/smarty/emails/instant-comment-notification.tpl:5
 #: website/app-templates/smarty/emails/instant-comment-notification.tpl:14
 msgid "New comment on %1"
-msgstr ""
+msgstr "Novo comentário em %1"
 
 #: website/app-templates/smarty/emails/instant-comment-notification.tpl:8
 #: website/app-templates/smarty/emails/instant-move-notification.tpl:8
 msgid "You're getting this email because you've enabled instant notifications for GeoKret activities."
-msgstr ""
+msgstr "Está a receber este e-mail porque activou as notificações instantâneas para as atividades GeoKret."
 
 #: website/app-templates/smarty/emails/instant-comment-notification.tpl:10
 #: website/app-templates/smarty/emails/instant-love-notification.tpl:9
@@ -2208,7 +2208,7 @@ msgstr "Distância desde o último movimento"
 
 #: website/app-templates/smarty/emails/instant-comment-notification.tpl:82
 msgid "View comment"
-msgstr ""
+msgstr "Ver comentário"
 
 #: website/app-templates/smarty/emails/geokret-adopted.tpl:3
 #: website/app-templates/smarty/emails/email-address-reverted.tpl:3
@@ -2345,7 +2345,7 @@ msgstr "Está a receber este e-mail porque solicitou uma alteração de endereç
 #: website/app-templates/smarty/emails/instant-move-notification.tpl:5
 #: website/app-templates/smarty/emails/instant-move-notification.tpl:14
 msgid "New move for %1"
-msgstr ""
+msgstr "Novo movimento para %1"
 
 #: website/app-templates/smarty/emails/instant-move-notification.tpl:57
 #: website/app-templates/smarty/emails/daily-digest.tpl:30
@@ -2354,7 +2354,7 @@ msgstr "Abrir mapa interactivo"
 
 #: website/app-templates/smarty/emails/instant-move-notification.tpl:57
 msgid "Move location map"
-msgstr ""
+msgstr "Mover mapa de localização"
 
 #: website/app-templates/smarty/emails/email-address-changed-to-old-address.tpl:4
 #: website/app-templates/smarty/emails/email-address-changed-to-new-address.tpl:4
@@ -5133,7 +5133,7 @@ msgstr "Actualize o seu endereço de e-mail"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:28
 msgid "Instant notification types:"
-msgstr ""
+msgstr "Tipos de notificação instantâneos:"
 
 #: website/app-templates/smarty/dialog/user_update_email.tpl:36
 msgid "Moves of GeoKrety I watch"
