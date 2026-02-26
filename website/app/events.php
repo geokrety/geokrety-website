@@ -10,9 +10,14 @@ function audit(string $event, $newObjectModel) {
     $log = new GeoKrety\Model\AuditLog();
     $log->event = $event;
     try {
-        $log->context = json_encode($newObjectModel);
+        $encoded = json_encode($newObjectModel);
+        if ($encoded === false) {
+            $log->context = json_encode(['error' => 'json_encode failed', 'reason' => json_last_error_msg()]);
+        } else {
+            $log->context = $encoded;
+        }
     } catch (Exception $e) {
-        $log->context = 'json_encode failed';
+        $log->context = json_encode(['error' => 'exception during json_encode', 'message' => $e->getMessage()]);
     }
     $log->save();
 }
