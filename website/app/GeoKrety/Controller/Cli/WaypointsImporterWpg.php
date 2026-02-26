@@ -52,6 +52,6 @@ class WaypointsImporterWpg extends WaypointsImporterBaseTopografix {
         File::download($url, $path);
         $xml_raw = strtr(file_get_contents($path), ['&' => '+']);
 
-        return simplexml_load_string($xml_raw, 'SimpleXMLElement', LIBXML_NOENT | LIBXML_NOCDATA);
+        return simplexml_load_string($xml_raw, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NONET);
     }
 }
