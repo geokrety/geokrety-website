@@ -258,21 +258,21 @@ $events->on('user.password.changed', function (GeoKrety\Model\User $user) {
     audit('user.password.changed', $user);
     Metrics::counter('user_password_changed_total', 'Total number of password changed');
 });
-$events->on('user.setting.save.success', function (GeoKrety\Model\CustomUsersSettings $settings) {
-    audit('user.setting.save.success', $settings);
-    Metrics::counter('user_settings_save_success_total', 'Total number of successfull saved User Settings');
+$events->on('user.setting.save.success', function (GeoKrety\Model\CustomUsersSettings $setting) {
+    audit('user.setting.save.success', $setting);
+    Metrics::counter('user_settings_save_success_total', 'Total number of successfully saved User Settings');
 });
-$events->on('user.setting.save.failed', function (GeoKrety\Model\CustomUsersSettings $user) {
-    audit('user.setting.save.failed', $user);
-    Metrics::counter('user_settings_save_failed_total', 'Total number of failure saving User Settings');
+$events->on('user.setting.save.failed', function (GeoKrety\Model\CustomUsersSettings $setting) {
+    audit('user.setting.save.failed', $setting);
+    Metrics::counter('user_settings_save_failed_total', 'Total number of failed attempts to save User Settings');
 });
-$events->on('site.setting.save.success', function (GeoKrety\Model\CustomSiteSettings $settings) {
-    audit('site.setting.save.success', $settings);
-    Metrics::counter('site_settings_save_success_total', 'Total number of successfull saved Site Settings');
+$events->on('site.setting.save.success', function (GeoKrety\Model\CustomSiteSettings $setting) {
+    audit('site.setting.save.success', $setting);
+    Metrics::counter('site_settings_save_success_total', 'Total number of successfully saved Site Settings');
 });
-$events->on('site.setting.save.failed', function (GeoKrety\Model\CustomUsersSettings $user) {
-    audit('site.setting.save.failed', $user);
-    Metrics::counter('site_settings_save_failed_total', 'Total number of failure saving Site Settings');
+$events->on('site.setting.save.failed', function (GeoKrety\Model\CustomSiteSettings $setting) {
+    audit('site.setting.save.failed', $setting);
+    Metrics::counter('site_settings_save_failed_total', 'Total number of failed attempts to save Site Settings');
 });
 $events->on('password.token.generated', function (GeoKrety\Model\PasswordToken $token) {
     audit('password.token.generated', $token);
