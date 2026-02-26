@@ -178,7 +178,7 @@ class BaseXSyncWorker extends WorkerBase {
                 $this->log(self::LOG_WARNING, 'BaseX query failed (attempt '.$attempt.'): '.$e->getMessage());
 
                 try {
-                    $this->basexSession->close();
+                    @$this->basexSession->close();
                 } catch (Throwable $closeEx) {
                     $this->log(self::LOG_DEBUG, 'Failed to close broken session: '.$closeEx->getMessage());
                 }
