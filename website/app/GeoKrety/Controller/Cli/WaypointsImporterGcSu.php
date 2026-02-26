@@ -48,8 +48,13 @@ class WaypointsImporterGcSu extends WaypointsImporterBase {
             'changed' => 1,
             'interval' => $since,
         ]);
-        File::download(sprintf('%s?%s', self::GC_SU_API_ENDPOINT, $url_params), $path);
-        $xml = simplexml_load_file($path, 'SimpleXMLElement', LIBXML_NOENT | LIBXML_NOCDATA);
+        // Prevent cron lock caused by network instabilities
+        try {
+            File::download(sprintf('%s?%s', self::GC_SU_API_ENDPOINT, $url_params), $path);
+            $xml = @simplexml_load_file($path, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NONET);
+        } catch (\Exception $e) {
+            $this->script_end(1);
+        }
 
         $caches_count = sizeof($xml->cache);
         if ($caches_count) {

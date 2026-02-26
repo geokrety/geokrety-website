@@ -146,6 +146,6 @@ abstract class WaypointsImporterBase {
         $path = stream_get_meta_data($tmp_file)['uri'];
         File::download($url, $path);
 
-        return simplexml_load_file($path, 'SimpleXMLElement', LIBXML_NOENT | LIBXML_NOCDATA);
+        return simplexml_load_file($path, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NONET);
     }
 }
