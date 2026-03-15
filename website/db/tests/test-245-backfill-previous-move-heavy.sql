@@ -43,7 +43,16 @@ SELECT is((SELECT previous_move_id FROM gk_moves WHERE id = 24522), NULL::bigint
 SELECT ok(position('completed:' IN stats.fn_backfill_heavy_previous_move_id_all(5000, NULL)) > 0, 'unlimited heavy previous-move backfill completes the remaining months');
 SELECT is((SELECT previous_move_id FROM gk_moves WHERE id = 24522), 24523::bigint, 'unlimited heavy backfill restores previous_move_id from the event chain');
 SELECT is((SELECT previous_position_id FROM gk_moves WHERE id = 24522), 24521::bigint, 'unlimited heavy backfill restores previous_position_id from the positioned chain');
-SELECT ok((SELECT km_distance IS NOT NULL FROM gk_moves WHERE id = 24522), 'unlimited heavy backfill restores km_distance from the MV');
+SELECT is(
+	(SELECT km_distance FROM gk_moves WHERE id = 24522),
+	(
+		SELECT (public.ST_Distance(a.position, b.position) / 1000.0)::numeric(8,3)
+		FROM gk_moves a
+		JOIN gk_moves b ON b.id = 24522
+		WHERE a.id = 24521
+	),
+	'unlimited heavy backfill restores the exact km_distance from previous_position_id via the MV'
+);
 
 SELECT ok(position('nothing to backfill' IN stats.fn_backfill_heavy_previous_move_id_all(5000)) > 0, 'legacy one-argument heavy previous-move call exits early when data is already filled');
 SELECT ok((SELECT status = 'ok' FROM stats.job_log WHERE job_name = 'fn_backfill_heavy_previous_move_id_all' ORDER BY id DESC LIMIT 1), 'heavy previous-move backfill logs ok status');
