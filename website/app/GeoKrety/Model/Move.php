@@ -31,6 +31,9 @@ use GeoKrety\Service\WaypointInfo;
  * @property string|null position
  * @property string|null reroute_url
  * @property bool comment_hidden
+ * @property int|Move|null previous_move_id
+ * @property int|Move|null previous_position_id
+ * @property float|null km_distance
  */
 class Move extends Base {
     use \Validation\Traits\CortexTrait;
@@ -143,6 +146,18 @@ class Move extends Base {
         'comment_hidden' => [
             'type' => Schema::DT_BOOLEAN,
             'default' => false,
+        ],
+        'previous_move_id' => [
+            'type' => Schema::DT_BIGINT,
+            'nullable' => true,
+        ],
+        'previous_position_id' => [
+            'type' => Schema::DT_BIGINT,
+            'nullable' => true,
+        ],
+        'km_distance' => [
+            'type' => Schema::DT_DOUBLE,
+            'nullable' => true,
         ],
     ];
 
