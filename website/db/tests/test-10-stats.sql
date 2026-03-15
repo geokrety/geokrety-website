@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(47);
+SELECT plan(50);
 
 SELECT has_schema('stats', 'stats schema exists');
 SELECT has_table('stats', 'backfill_progress', 'stats.backfill_progress exists');
@@ -48,6 +48,9 @@ SELECT has_function('stats', 'fn_reconcile_stats', ARRAY['text[]', 'tstzrange'],
 SELECT has_view('stats', 'v_uc1_country_activity', 'stats.v_uc1_country_activity exists');
 SELECT has_view('stats', 'v_uc10_cache_popularity', 'stats.v_uc10_cache_popularity exists');
 SELECT has_view('stats', 'v_uc15_distance_records', 'stats.v_uc15_distance_records exists');
+SELECT ok((SELECT COUNT(*) = 1 FROM pg_matviews WHERE schemaname = 'stats' AND matviewname = 'mv_country_month_rollup'), 'stats.mv_country_month_rollup exists');
+SELECT ok((SELECT COUNT(*) = 1 FROM pg_matviews WHERE schemaname = 'stats' AND matviewname = 'mv_top_caches_global'), 'stats.mv_top_caches_global exists');
+SELECT ok((SELECT COUNT(*) = 1 FROM pg_matviews WHERE schemaname = 'stats' AND matviewname = 'mv_global_kpi'), 'stats.mv_global_kpi exists');
 
 SELECT * FROM finish();
 ROLLBACK;
