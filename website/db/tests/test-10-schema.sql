@@ -1,6 +1,6 @@
 -- Start transaction and plan the tests.
 BEGIN;
-SELECT plan(56);
+SELECT plan(57);
 
 -- Run the tests.
 SELECT has_schema('amqp');
@@ -8,7 +8,8 @@ SELECT has_schema('audit');
 SELECT has_schema('geokrety');
 SELECT has_schema('public');
 SELECT has_schema('secure');
-SELECT schemas_are(ARRAY[ 'audit', 'amqp', 'geokrety', 'public', 'secure', 'notify_queues' ]);
+SELECT has_schema('stats');
+SELECT schemas_are(ARRAY[ 'audit', 'amqp', 'geokrety', 'pgtap', 'public', 'secure', 'notify_queues', 'stats' ]);
 
 SELECT has_table( 'gk_account_activation' );
 SELECT has_table( 'gk_awards' );
