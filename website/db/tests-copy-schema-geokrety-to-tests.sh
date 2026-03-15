@@ -16,6 +16,7 @@ pg_dump --file "$tmp_dir/audit-schema.sql" --host "localhost" --port "5432" --us
 pg_dump --file "$tmp_dir/secure-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "secure" "geokrety"
 pg_dump --file "$tmp_dir/notify_queues-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "notify_queues" "geokrety"
 pg_dump --file "$tmp_dir/stats-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "stats" "geokrety"
+pg_dump --file "$tmp_dir/stats-continent-reference.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --data-only --encoding "UTF8" --table "stats.continent_reference" "geokrety"
 
 sed -i "/transaction_timeout/d" "$tmp_dir/public-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/geokrety-schema.sql"
@@ -23,6 +24,7 @@ sed -i "/transaction_timeout/d" "$tmp_dir/audit-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/secure-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/notify_queues-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/stats-schema.sql"
+sed -i "/transaction_timeout/d" "$tmp_dir/stats-continent-reference.sql"
 
 sed -i "/CREATE SCHEMA public;/a \
  CREATE EXTENSION postgis WITH SCHEMA public;\
@@ -63,6 +65,25 @@ DROP SCHEMA IF EXISTS geokrety CASCADE;
 
 DROP SCHEMA IF EXISTS stats CASCADE;
 \i $tmp_dir/stats-schema.sql
+
+TRUNCATE TABLE stats.continent_reference;
+\i $tmp_dir/stats-continent-reference.sql
+
+TRUNCATE TABLE stats.entity_counters_shard;
+INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+SELECT entities.entity, shards.shard, 0
+FROM (
+  VALUES
+    ('gk_moves'), ('gk_moves_type_0'), ('gk_moves_type_1'), ('gk_moves_type_2'),
+    ('gk_moves_type_3'), ('gk_moves_type_4'), ('gk_moves_type_5'),
+    ('gk_geokrety'), ('gk_geokrety_type_0'), ('gk_geokrety_type_1'),
+    ('gk_geokrety_type_2'), ('gk_geokrety_type_3'), ('gk_geokrety_type_4'),
+    ('gk_geokrety_type_5'), ('gk_geokrety_type_6'), ('gk_geokrety_type_7'),
+    ('gk_geokrety_type_8'), ('gk_geokrety_type_9'), ('gk_geokrety_type_10'),
+    ('gk_pictures'), ('gk_pictures_type_0'), ('gk_pictures_type_1'),
+    ('gk_pictures_type_2'), ('gk_users'), ('gk_loves')
+) AS entities(entity)
+CROSS JOIN generate_series(0, 15) AS shards(shard);
 
 REFRESH MATERIALIZED VIEW "geokrety"."gk_geokrety_in_caches";
 END;
