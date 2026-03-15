@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(40);
+SELECT plan(47);
 
 SELECT has_schema('stats', 'stats schema exists');
 SELECT has_table('stats', 'backfill_progress', 'stats.backfill_progress exists');
@@ -41,6 +41,13 @@ SELECT has_function('geokrety', 'fn_gk_moves_milestones', ARRAY[]::text[], 'geok
 SELECT has_function('stats', 'fn_detect_first_finder', ARRAY['bigint', 'bigint', 'bigint', 'smallint', 'timestamp with time zone'], 'stats.fn_detect_first_finder exists');
 SELECT has_function('geokrety', 'fn_gk_moves_first_finder', ARRAY[]::text[], 'geokrety.fn_gk_moves_first_finder exists');
 SELECT has_trigger('geokrety', 'gk_moves', 'tr_gk_moves_after_first_finder', 'tr_gk_moves_after_first_finder exists');
+SELECT has_function('stats', 'fn_run_all_snapshots', ARRAY[]::text[], 'stats.fn_run_all_snapshots exists');
+SELECT has_function('stats', 'fn_run_all_snapshots', ARRAY['text[]', 'tstzrange', 'integer'], 'scoped stats.fn_run_all_snapshots exists');
+SELECT has_function('stats', 'fn_reconcile_stats', ARRAY[]::text[], 'stats.fn_reconcile_stats exists');
+SELECT has_function('stats', 'fn_reconcile_stats', ARRAY['text[]', 'tstzrange'], 'scoped stats.fn_reconcile_stats exists');
+SELECT has_view('stats', 'v_uc1_country_activity', 'stats.v_uc1_country_activity exists');
+SELECT has_view('stats', 'v_uc10_cache_popularity', 'stats.v_uc10_cache_popularity exists');
+SELECT has_view('stats', 'v_uc15_distance_records', 'stats.v_uc15_distance_records exists');
 
 SELECT * FROM finish();
 ROLLBACK;
