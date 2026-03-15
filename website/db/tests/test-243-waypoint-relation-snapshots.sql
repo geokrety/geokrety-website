@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(19);
+SELECT plan(22);
 
 DELETE FROM stats.user_related_users;
 DELETE FROM stats.gk_related_users;
@@ -14,13 +14,13 @@ WHERE job_name IN (
   'fn_snapshot_relationship_tables'
 );
 
-SELECT has_function('stats', 'fn_snapshot_waypoints', ARRAY[]::text[], 'fn_snapshot_waypoints function exists');
-SELECT has_function('stats', 'fn_snapshot_cache_visits', ARRAY[]::text[], 'fn_snapshot_cache_visits function exists');
-SELECT has_function('stats', 'fn_snapshot_relations', ARRAY[]::text[], 'fn_snapshot_relations function exists');
+SELECT has_function('stats', 'fn_snapshot_waypoints', ARRAY['daterange'], 'fn_snapshot_waypoints function exists');
+SELECT has_function('stats', 'fn_snapshot_cache_visits', ARRAY['daterange'], 'fn_snapshot_cache_visits function exists');
+SELECT has_function('stats', 'fn_snapshot_relations', ARRAY['daterange'], 'fn_snapshot_relations function exists');
 SELECT has_function('stats', 'fn_snapshot_relationship_tables', ARRAY['daterange'], 'fn_snapshot_relationship_tables function exists');
-SELECT function_returns('stats', 'fn_snapshot_waypoints', ARRAY[]::text[], 'bigint', 'fn_snapshot_waypoints returns bigint');
-SELECT function_returns('stats', 'fn_snapshot_cache_visits', ARRAY[]::text[], 'bigint', 'fn_snapshot_cache_visits returns bigint');
-SELECT function_returns('stats', 'fn_snapshot_relations', ARRAY[]::text[], 'bigint', 'fn_snapshot_relations returns bigint');
+SELECT function_returns('stats', 'fn_snapshot_waypoints', ARRAY['daterange'], 'bigint', 'fn_snapshot_waypoints returns bigint');
+SELECT function_returns('stats', 'fn_snapshot_cache_visits', ARRAY['daterange'], 'bigint', 'fn_snapshot_cache_visits returns bigint');
+SELECT function_returns('stats', 'fn_snapshot_relations', ARRAY['daterange'], 'bigint', 'fn_snapshot_relations returns bigint');
 SELECT function_returns('stats', 'fn_snapshot_relationship_tables', ARRAY['daterange'], 'bigint', 'fn_snapshot_relationship_tables returns bigint');
 
 INSERT INTO gk_users (id, username, registration_ip) VALUES (24301, 'snapshot-rel-user-1', '127.0.0.1');
@@ -51,12 +51,35 @@ SELECT ok((SELECT COUNT(*) = 0 FROM stats.user_related_users a WHERE NOT EXISTS 
 
 INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
 VALUES (24319, 24310, 24301, 'GC243X', 'cz', coords2position(50.07550, 14.43780), '2019-12-31 23:00:00+00', 0);
+INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
+VALUES (24325, 24310, 24301, 'GC243X', 'pl', coords2position(52.22968, 21.01223), '2020-02-02 10:00:00+00', 0);
 
 SELECT lives_ok($$SELECT stats.fn_snapshot_waypoints();$$, 'fn_snapshot_waypoints remains safe when an earlier move arrives later');
 SELECT results_eq(
   $$SELECT waypoint_code, country::text, first_seen_at::text FROM stats.waypoints WHERE waypoint_code = 'GC243X'$$,
   $$VALUES ('GC243X'::varchar, 'CZ'::text, '2019-12-31 23:00:00+00'::text)$$,
   'rerunning fn_snapshot_waypoints refreshes earliest-move facts consistently for UK-sourced waypoints'
+);
+
+SELECT lives_ok(
+  $$SELECT stats.fn_snapshot_relationship_tables(daterange('2020-02-01', '2020-03-01', '[)'));$$,
+  'scoped fn_snapshot_relationship_tables executes successfully for a touched period'
+);
+SELECT is(
+  (SELECT visit_count FROM stats.gk_cache_visits WHERE gk_id = 24310 AND waypoint_id = (SELECT id FROM stats.waypoints WHERE waypoint_code = 'GC243X')),
+  4::bigint,
+  'scoped cache visit refresh recomputes the touched waypoint from full history'
+);
+SELECT ok(
+  (
+    SELECT metadata ? 'timing_ms'
+    FROM stats.job_log
+    WHERE job_name = 'fn_snapshot_relationship_tables'
+      AND status = 'ok'
+    ORDER BY id DESC
+    LIMIT 1
+  ),
+  'scoped relationship wrapper logs timing metadata'
 );
 
 CREATE TEMP TABLE snapshot_rel_counts AS
@@ -79,7 +102,7 @@ SELECT results_eq(
   're-running the snapshot wrapper is idempotent'
 );
 
-SELECT ok((SELECT COUNT(*) = 2 FROM stats.job_log WHERE job_name = 'fn_snapshot_relationship_tables' AND status = 'ok'), 'wrapper writes one canonical job_log row per execution');
+SELECT ok((SELECT COUNT(*) = 3 FROM stats.job_log WHERE job_name = 'fn_snapshot_relationship_tables' AND status = 'ok'), 'wrapper writes one canonical job_log row per execution');
 
 SELECT * FROM finish();
 ROLLBACK;

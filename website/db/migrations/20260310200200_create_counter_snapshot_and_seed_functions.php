@@ -11,6 +11,10 @@ CREATE OR REPLACE FUNCTION stats.fn_snapshot_entity_counters()
 RETURNS VOID
 LANGUAGE plpgsql
 AS $$
+DECLARE
+  v_started_at TIMESTAMPTZ := clock_timestamp();
+  v_completed_at TIMESTAMPTZ;
+  v_elapsed_ms BIGINT := 0;
 BEGIN
   DELETE FROM stats.entity_counters_shard;
 
@@ -67,7 +71,51 @@ BEGIN
     GROUP BY (id % 16)
   ) AS entity_totals USING (entity, shard);
 
-  RAISE NOTICE 'Entity counter snapshot completed - all 25 entities refreshed';
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
+
+  INSERT INTO stats.job_log (
+    job_name,
+    status,
+    metadata,
+    started_at,
+    completed_at
+  )
+  VALUES (
+    'fn_snapshot_entity_counters',
+    'ok',
+    jsonb_build_object(
+      'entities_refreshed', 25,
+      'rows_affected', (SELECT COUNT(*)::BIGINT FROM stats.entity_counters_shard),
+      'timing_ms', v_elapsed_ms
+    ),
+    v_started_at,
+    v_completed_at
+  );
+
+  RAISE INFO 'fn_snapshot_entity_counters completed in % ms', v_elapsed_ms;
+EXCEPTION WHEN OTHERS THEN
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
+
+  INSERT INTO stats.job_log (
+    job_name,
+    status,
+    metadata,
+    started_at,
+    completed_at
+  )
+  VALUES (
+    'fn_snapshot_entity_counters',
+    'error',
+    jsonb_build_object('error', SQLERRM, 'timing_ms', v_elapsed_ms),
+    v_started_at,
+    v_completed_at
+  );
+
+  RAISE INFO 'fn_snapshot_entity_counters failed after % ms: %', v_elapsed_ms, SQLERRM;
+
+  RAISE;
 END;
 $$;
 
@@ -81,6 +129,11 @@ LANGUAGE plpgsql
 AS $$
 DECLARE
   v_rows BIGINT := 0;
+  v_started_at TIMESTAMPTZ := clock_timestamp();
+  v_completed_at TIMESTAMPTZ;
+  v_elapsed_ms BIGINT := 0;
+  v_period_start TIMESTAMPTZ;
+  v_period_end TIMESTAMPTZ;
 BEGIN
   IF p_period IS NOT NULL AND (
     lower_inc(p_period) IS DISTINCT FROM TRUE
@@ -91,6 +144,9 @@ BEGIN
     RAISE EXCEPTION 'p_period must use whole-day [) bounds'
       USING ERRCODE = '22023';
   END IF;
+
+  v_period_start := CASE WHEN p_period IS NULL THEN NULL ELSE lower(p_period) END;
+  v_period_end := CASE WHEN p_period IS NULL THEN NULL ELSE upper(p_period) END;
 
   IF p_period IS NULL THEN
     DELETE FROM stats.daily_active_users;
@@ -132,20 +188,20 @@ BEGIN
     UNION
     SELECT moved_on_datetime::date AS activity_date
     FROM geokrety.gk_moves
-    WHERE p_period IS NULL OR moved_on_datetime <@ p_period
+    WHERE p_period IS NULL OR (moved_on_datetime >= v_period_start AND moved_on_datetime < v_period_end)
     UNION
     SELECT created_on_datetime::date
     FROM geokrety.gk_geokrety
-    WHERE p_period IS NULL OR created_on_datetime <@ p_period
+    WHERE p_period IS NULL OR (created_on_datetime >= v_period_start AND created_on_datetime < v_period_end)
     UNION
     SELECT uploaded_on_datetime::date
     FROM geokrety.gk_pictures
     WHERE uploaded_on_datetime IS NOT NULL
-      AND (p_period IS NULL OR uploaded_on_datetime <@ p_period)
+      AND (p_period IS NULL OR (uploaded_on_datetime >= v_period_start AND uploaded_on_datetime < v_period_end))
     UNION
     SELECT joined_on_datetime::date
     FROM geokrety.gk_users
-    WHERE p_period IS NULL OR joined_on_datetime <@ p_period
+    WHERE p_period IS NULL OR (joined_on_datetime >= v_period_start AND joined_on_datetime < v_period_end)
   ),
   moves_daily AS (
     SELECT
@@ -159,7 +215,7 @@ BEGIN
       COUNT(*) FILTER (WHERE move_type = 5)::BIGINT AS dips,
       COALESCE(SUM(km_distance), 0)::NUMERIC(14,3) AS km_contributed
     FROM geokrety.gk_moves
-    WHERE p_period IS NULL OR moved_on_datetime <@ p_period
+    WHERE p_period IS NULL OR (moved_on_datetime >= v_period_start AND moved_on_datetime < v_period_end)
     GROUP BY moved_on_datetime::date
   ),
   geokrety_daily AS (
@@ -167,7 +223,7 @@ BEGIN
       created_on_datetime::date AS activity_date,
       COUNT(*)::BIGINT AS gk_created
     FROM geokrety.gk_geokrety
-    WHERE p_period IS NULL OR created_on_datetime <@ p_period
+    WHERE p_period IS NULL OR (created_on_datetime >= v_period_start AND created_on_datetime < v_period_end)
     GROUP BY created_on_datetime::date
   ),
   pictures_daily AS (
@@ -179,7 +235,7 @@ BEGIN
       COUNT(*) FILTER (WHERE type = 2)::BIGINT AS pictures_uploaded_user
     FROM geokrety.gk_pictures
     WHERE uploaded_on_datetime IS NOT NULL
-      AND (p_period IS NULL OR uploaded_on_datetime <@ p_period)
+      AND (p_period IS NULL OR (uploaded_on_datetime >= v_period_start AND uploaded_on_datetime < v_period_end))
     GROUP BY uploaded_on_datetime::date
   ),
   users_daily AS (
@@ -187,7 +243,7 @@ BEGIN
       joined_on_datetime::date AS activity_date,
       COUNT(*)::BIGINT AS users_registered
     FROM geokrety.gk_users
-    WHERE p_period IS NULL OR joined_on_datetime <@ p_period
+    WHERE p_period IS NULL OR (joined_on_datetime >= v_period_start AND joined_on_datetime < v_period_end)
     GROUP BY joined_on_datetime::date
   )
   SELECT
@@ -236,7 +292,7 @@ BEGIN
     author
   FROM geokrety.gk_moves
   WHERE author IS NOT NULL
-    AND (p_period IS NULL OR moved_on_datetime <@ p_period)
+    AND (p_period IS NULL OR (moved_on_datetime >= v_period_start AND moved_on_datetime < v_period_end))
   ON CONFLICT (activity_date, user_id) DO NOTHING;
 
   DELETE FROM stats.daily_activity AS activity
@@ -262,8 +318,52 @@ BEGIN
     AND COALESCE(activity.points_contributed, 0) = 0
     AND COALESCE(activity.loves_count, 0) = 0;
 
-  RAISE NOTICE 'Daily activity seed completed: % rows in daily_activity affected', v_rows;
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
+
+  INSERT INTO stats.job_log (
+    job_name,
+    status,
+    metadata,
+    started_at,
+    completed_at
+  )
+  VALUES (
+    'fn_seed_daily_activity',
+    'ok',
+    jsonb_build_object(
+      'rows_affected', v_rows,
+      'requested_period', p_period,
+      'timing_ms', v_elapsed_ms
+    ),
+    v_started_at,
+    v_completed_at
+  );
+
+  RAISE INFO 'fn_seed_daily_activity completed in % ms (requested_period=% rows=%)', v_elapsed_ms, p_period, v_rows;
   RETURN v_rows;
+EXCEPTION WHEN OTHERS THEN
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
+
+  INSERT INTO stats.job_log (
+    job_name,
+    status,
+    metadata,
+    started_at,
+    completed_at
+  )
+  VALUES (
+    'fn_seed_daily_activity',
+    'error',
+    jsonb_build_object('error', SQLERRM, 'requested_period', p_period, 'timing_ms', v_elapsed_ms),
+    v_started_at,
+    v_completed_at
+  );
+
+  RAISE INFO 'fn_seed_daily_activity failed after % ms (requested_period=%): %', v_elapsed_ms, p_period, SQLERRM;
+
+  RAISE;
 END;
 $$;
 
