@@ -76,9 +76,10 @@ INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (
 SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (22, 14, 1, '2025-04-02 13:03:00+00', 1)$$);
 SELECT throws_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (23, 14, 1, '2025-04-02 13:03:00+00', 3)$$); -- GK is collectible
 SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (24, 14, 1, '2025-04-02 13:03:00+00', 2)$$);
+SELECT setval('geokrety.moves_id_seq', (SELECT max(id) FROM geokrety.gk_moves));
 SELECT lives_ok($$UPDATE gk_geokrety SET non_collectible=NOW() WHERE id = 14::bigint$$);
-SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (25, 14, 1, '2025-04-02 13:03:00+00', 3)$$);
-SELECT lives_ok($$INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (26, 14, 1, '2025-04-02 13:03:00+00', 3)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type") VALUES (14, 1, '2025-04-02 13:03:00+00', 3)$$);
+SELECT lives_ok($$INSERT INTO "gk_moves" ("geokret", "author", "moved_on_datetime", "move_type") VALUES (14, 1, '2025-04-02 13:03:00+00', 3)$$);
 
 
 
