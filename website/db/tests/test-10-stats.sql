@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(23);
+SELECT plan(25);
 
 SELECT has_schema('stats', 'stats schema exists');
 SELECT has_table('stats', 'backfill_progress', 'stats.backfill_progress exists');
@@ -20,6 +20,8 @@ SELECT has_table('stats', 'gk_related_users', 'stats.gk_related_users exists');
 SELECT has_table('stats', 'user_related_users', 'stats.user_related_users exists');
 SELECT has_view('stats', 'v_waypoints_source_union', 'stats.v_waypoints_source_union exists');
 SELECT has_function('stats', 'fn_seed_waypoints', ARRAY[]::text[], 'stats.fn_seed_waypoints exists');
+SELECT has_function('stats', 'fn_snapshot_entity_counters', ARRAY[]::text[], 'stats.fn_snapshot_entity_counters exists');
+SELECT has_function('stats', 'fn_seed_daily_activity', ARRAY['tstzrange'], 'stats.fn_seed_daily_activity exists');
 SELECT has_function('stats', 'fn_snapshot_waypoints', ARRAY[]::text[], 'stats.fn_snapshot_waypoints exists');
 SELECT has_function('stats', 'fn_snapshot_cache_visits', ARRAY[]::text[], 'stats.fn_snapshot_cache_visits exists');
 SELECT has_function('stats', 'fn_snapshot_relations', ARRAY[]::text[], 'stats.fn_snapshot_relations exists');
