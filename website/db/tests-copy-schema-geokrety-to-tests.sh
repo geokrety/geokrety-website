@@ -15,12 +15,14 @@ pg_dump --file "$tmp_dir/geokrety-schema.sql" --host "localhost" --port "5432" -
 pg_dump --file "$tmp_dir/audit-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "audit" "geokrety"
 pg_dump --file "$tmp_dir/secure-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "secure" "geokrety"
 pg_dump --file "$tmp_dir/notify_queues-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "notify_queues" "geokrety"
+pg_dump --file "$tmp_dir/stats-schema.sql" --host "localhost" --port "5432" --username "geokrety" --format=p --schema-only --encoding "UTF8" --schema "stats" "geokrety"
 
 sed -i "/transaction_timeout/d" "$tmp_dir/public-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/geokrety-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/audit-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/secure-schema.sql"
 sed -i "/transaction_timeout/d" "$tmp_dir/notify_queues-schema.sql"
+sed -i "/transaction_timeout/d" "$tmp_dir/stats-schema.sql"
 
 sed -i "/CREATE SCHEMA public;/a \
  CREATE EXTENSION postgis WITH SCHEMA public;\
@@ -51,12 +53,16 @@ DROP SCHEMA IF EXISTS audit CASCADE;
 \i $tmp_dir/audit-schema.sql
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
+CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA public;
 DROP SCHEMA IF EXISTS secure CASCADE;
 \i $tmp_dir/secure-schema.sql
 \i $tmp_dir/../dumps/16_demo-keys.sql
 
 DROP SCHEMA IF EXISTS geokrety CASCADE;
 \i $tmp_dir/geokrety-schema.sql
+
+DROP SCHEMA IF EXISTS stats CASCADE;
+\i $tmp_dir/stats-schema.sql
 
 REFRESH MATERIALIZED VIEW "geokrety"."gk_geokrety_in_caches";
 END;
