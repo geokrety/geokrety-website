@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(12);
+SELECT plan(18);
 
 DELETE FROM stats.hourly_activity;
 DELETE FROM stats.country_pair_flows;
@@ -10,6 +10,8 @@ SELECT has_function('stats', 'fn_snapshot_hourly_activity', ARRAY[]::text[], 'fn
 SELECT function_returns('stats', 'fn_snapshot_hourly_activity', ARRAY[]::text[], 'bigint', 'fn_snapshot_hourly_activity returns bigint');
 SELECT has_function('stats', 'fn_snapshot_country_pair_flows', ARRAY[]::text[], 'fn_snapshot_country_pair_flows function exists');
 SELECT function_returns('stats', 'fn_snapshot_country_pair_flows', ARRAY[]::text[], 'bigint', 'fn_snapshot_country_pair_flows returns bigint');
+SELECT has_function('stats', 'fn_snapshot_hourly_activity', ARRAY['tstzrange'], 'scoped fn_snapshot_hourly_activity overload exists');
+SELECT has_function('stats', 'fn_snapshot_country_pair_flows', ARRAY['tstzrange'], 'scoped fn_snapshot_country_pair_flows overload exists');
 
 INSERT INTO gk_users (id, username, registration_ip) VALUES (24101, 'snapshot-batch-user-1', '127.0.0.1');
 INSERT INTO gk_users (id, username, registration_ip) VALUES (24102, 'snapshot-batch-user-2', '127.0.0.1');
@@ -84,23 +86,31 @@ SELECT year_month, from_country::text AS from_country, to_country::text AS to_co
 FROM stats.country_pair_flows
 ORDER BY year_month, from_country, to_country;
 
-SELECT stats.fn_snapshot_hourly_activity();
-SELECT stats.fn_snapshot_country_pair_flows();
+SELECT lives_ok(
+  $$SELECT stats.fn_snapshot_hourly_activity(tstzrange('2020-11-01 10:00:00+00', '2020-11-01 11:00:00+00', '[)'));$$,
+  'partial scoped hourly snapshot executes successfully'
+);
+SELECT lives_ok(
+  $$SELECT stats.fn_snapshot_country_pair_flows(tstzrange('2020-11-01 00:00:00+00', '2020-11-02 00:00:00+00', '[)'));$$,
+  'partial scoped country flow snapshot executes successfully'
+);
 
 SELECT results_eq(
   $$SELECT activity_date, hour_utc, move_type, move_count FROM stats.hourly_activity ORDER BY activity_date, hour_utc, move_type$$,
   $$SELECT activity_date, hour_utc, move_type, move_count FROM hourly_snapshot_first ORDER BY activity_date, hour_utc, move_type$$,
-  're-running fn_snapshot_hourly_activity is idempotent'
+  'partial scoped fn_snapshot_hourly_activity preserves full touched-day aggregates'
 );
 
 SELECT results_eq(
   $$SELECT year_month, from_country::text, to_country::text, move_count, unique_gk_count FROM stats.country_pair_flows ORDER BY year_month, from_country, to_country$$,
   $$SELECT year_month, from_country, to_country, move_count, unique_gk_count FROM country_pair_snapshot_first ORDER BY year_month, from_country, to_country$$,
-  're-running fn_snapshot_country_pair_flows is idempotent'
+  'partial scoped fn_snapshot_country_pair_flows preserves full touched-month aggregates'
 );
 
 SELECT ok((SELECT COUNT(*) = 2 FROM stats.job_log WHERE job_name = 'fn_snapshot_hourly_activity' AND status = 'completed'), 'fn_snapshot_hourly_activity writes one completed job_log row per execution');
 SELECT ok((SELECT COUNT(*) = 2 FROM stats.job_log WHERE job_name = 'fn_snapshot_country_pair_flows' AND status = 'completed'), 'fn_snapshot_country_pair_flows writes one completed job_log row per execution');
+SELECT ok((SELECT metadata ? 'timing_ms' FROM stats.job_log WHERE job_name = 'fn_snapshot_hourly_activity' ORDER BY id DESC LIMIT 1), 'fn_snapshot_hourly_activity logs timing metadata');
+SELECT ok((SELECT metadata ? 'timing_ms' FROM stats.job_log WHERE job_name = 'fn_snapshot_country_pair_flows' ORDER BY id DESC LIMIT 1), 'fn_snapshot_country_pair_flows logs timing metadata');
 
 SELECT * FROM finish();
 ROLLBACK;

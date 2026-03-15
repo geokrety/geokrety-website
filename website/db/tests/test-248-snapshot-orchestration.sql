@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(19);
+SELECT plan(21);
 
 DELETE FROM stats.hourly_activity;
 DELETE FROM stats.country_pair_flows;
@@ -96,6 +96,8 @@ SELECT ok((SELECT COUNT(*) > 0 FROM stats.country_pair_flows), 'fn_run_all_snaps
 SELECT ok((SELECT COUNT(*) = 0 FROM stats.fn_reconcile_stats() WHERE status <> 'OK'), 'fn_reconcile_stats reports zero mismatches on the canonical snapshot state');
 SELECT ok((SELECT status = 'ok' FROM stats.job_log WHERE job_name = 'fn_run_all_snapshots' ORDER BY id DESC LIMIT 1), 'fn_run_all_snapshots logs ok status');
 SELECT ok((SELECT jsonb_array_length(metadata->'phases') = 9 FROM stats.job_log WHERE job_name = 'fn_run_all_snapshots' ORDER BY id DESC LIMIT 1), 'fn_run_all_snapshots logs the canonical 9-phase list');
+SELECT ok((SELECT metadata ? 'total_timing_ms' FROM stats.job_log WHERE job_name = 'fn_run_all_snapshots' ORDER BY id DESC LIMIT 1), 'fn_run_all_snapshots logs total timing metadata');
+SELECT ok((SELECT (metadata->'results'->'fn_snapshot_hourly_activity') ? 'timing_ms' FROM stats.job_log WHERE job_name = 'fn_run_all_snapshots' ORDER BY id DESC LIMIT 1), 'fn_run_all_snapshots embeds per-phase timing metadata');
 SELECT ok((SELECT status = 'ok' FROM stats.job_log WHERE job_name = 'fn_reconcile_stats' ORDER BY id DESC LIMIT 1), 'fn_reconcile_stats logs ok status');
 SELECT ok((SELECT metadata->>'policy' = 'exact-zero-delta' FROM stats.job_log WHERE job_name = 'fn_reconcile_stats' ORDER BY id DESC LIMIT 1), 'fn_reconcile_stats logs the canonical zero-delta policy');
 

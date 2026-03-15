@@ -16,15 +16,31 @@ SECURITY DEFINER
 AS $$
 DECLARE
   v_started_at TIMESTAMPTZ := clock_timestamp();
+  v_completed_at TIMESTAMPTZ;
   v_upserted_rows BIGINT := 0;
   v_deleted_rows BIGINT := 0;
   v_total_rows BIGINT := 0;
+  v_elapsed_ms BIGINT := 0;
+  v_period_start TIMESTAMPTZ;
+  v_period_end TIMESTAMPTZ;
 BEGIN
   IF p_period IS NULL THEN
     RETURN stats.fn_snapshot_hourly_activity();
   END IF;
 
+  v_period_start := lower(p_period);
+  v_period_end := upper(p_period);
+
+  DROP TABLE IF EXISTS tmp_hourly_activity_days;
   DROP TABLE IF EXISTS tmp_hourly_activity_snapshot;
+
+  CREATE TEMP TABLE tmp_hourly_activity_days ON COMMIT DROP AS
+  SELECT DISTINCT
+    (timezone('UTC', m.moved_on_datetime))::DATE AS activity_date
+  FROM geokrety.gk_moves m
+  WHERE m.move_type BETWEEN 0 AND 5
+    AND m.moved_on_datetime >= v_period_start
+    AND m.moved_on_datetime < v_period_end;
 
   CREATE TEMP TABLE tmp_hourly_activity_snapshot ON COMMIT DROP AS
   SELECT
@@ -33,8 +49,9 @@ BEGIN
     m.move_type::SMALLINT AS move_type,
     COUNT(*)::BIGINT AS move_count
   FROM geokrety.gk_moves m
+  JOIN tmp_hourly_activity_days touched_days
+    ON touched_days.activity_date = (timezone('UTC', m.moved_on_datetime))::DATE
   WHERE m.move_type BETWEEN 0 AND 5
-    AND m.moved_on_datetime <@ p_period
   GROUP BY 1, 2, 3;
 
   INSERT INTO stats.hourly_activity (
@@ -55,7 +72,11 @@ BEGIN
   GET DIAGNOSTICS v_upserted_rows = ROW_COUNT;
 
   DELETE FROM stats.hourly_activity target
-  WHERE tstzrange(target.activity_date::TIMESTAMPTZ, (target.activity_date + 1)::TIMESTAMPTZ, '[)') && p_period
+  WHERE EXISTS (
+      SELECT 1
+      FROM tmp_hourly_activity_days touched_days
+      WHERE touched_days.activity_date = target.activity_date
+    )
     AND NOT EXISTS (
       SELECT 1
       FROM tmp_hourly_activity_snapshot snapshot
@@ -66,6 +87,8 @@ BEGIN
 
   GET DIAGNOSTICS v_deleted_rows = ROW_COUNT;
   v_total_rows := v_upserted_rows + v_deleted_rows;
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
 
   INSERT INTO stats.job_log (
     job_name,
@@ -81,14 +104,20 @@ BEGIN
       'requested_period', p_period,
       'upserted_rows', v_upserted_rows,
       'deleted_rows', v_deleted_rows,
-      'snapshot_rows', (SELECT COUNT(*)::BIGINT FROM tmp_hourly_activity_snapshot)
+      'snapshot_rows', (SELECT COUNT(*)::BIGINT FROM tmp_hourly_activity_snapshot),
+      'timing_ms', v_elapsed_ms
     ),
     v_started_at,
-    clock_timestamp()
+    v_completed_at
   );
+
+  RAISE INFO 'fn_snapshot_hourly_activity completed in % ms (requested_period=% rows=%)', v_elapsed_ms, p_period, v_total_rows;
 
   RETURN v_total_rows;
 EXCEPTION WHEN OTHERS THEN
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
+
   INSERT INTO stats.job_log (
     job_name,
     status,
@@ -99,10 +128,12 @@ EXCEPTION WHEN OTHERS THEN
   VALUES (
     'fn_snapshot_hourly_activity',
     'failed',
-    jsonb_build_object('requested_period', p_period, 'error', SQLERRM),
+    jsonb_build_object('requested_period', p_period, 'error', SQLERRM, 'timing_ms', v_elapsed_ms),
     v_started_at,
-    clock_timestamp()
+    v_completed_at
   );
+
+  RAISE INFO 'fn_snapshot_hourly_activity failed after % ms (requested_period=%): %', v_elapsed_ms, p_period, SQLERRM;
 
   RAISE;
 END;
@@ -117,15 +148,32 @@ SECURITY DEFINER
 AS $$
 DECLARE
   v_started_at TIMESTAMPTZ := clock_timestamp();
+  v_completed_at TIMESTAMPTZ;
   v_upserted_rows BIGINT := 0;
   v_deleted_rows BIGINT := 0;
   v_total_rows BIGINT := 0;
+  v_elapsed_ms BIGINT := 0;
+  v_period_start TIMESTAMPTZ;
+  v_period_end TIMESTAMPTZ;
 BEGIN
   IF p_period IS NULL THEN
     RETURN stats.fn_snapshot_country_pair_flows();
   END IF;
 
+  v_period_start := lower(p_period);
+  v_period_end := upper(p_period);
+
+  DROP TABLE IF EXISTS tmp_country_pair_flow_months;
   DROP TABLE IF EXISTS tmp_country_pair_flow_snapshot;
+
+  CREATE TEMP TABLE tmp_country_pair_flow_months ON COMMIT DROP AS
+  SELECT DISTINCT
+    date_trunc('month', timezone('UTC', current_move.moved_on_datetime))::DATE AS year_month
+  FROM geokrety.gk_moves current_move
+  WHERE current_move.previous_move_id IS NOT NULL
+    AND current_move.move_type IN (0, 1, 3, 5)
+    AND current_move.moved_on_datetime >= v_period_start
+    AND current_move.moved_on_datetime < v_period_end;
 
   CREATE TEMP TABLE tmp_country_pair_flow_snapshot ON COMMIT DROP AS
   SELECT
@@ -137,6 +185,8 @@ BEGIN
   FROM geokrety.gk_moves current_move
   JOIN geokrety.gk_moves previous_move
     ON previous_move.id = current_move.previous_move_id
+  JOIN tmp_country_pair_flow_months touched_months
+    ON touched_months.year_month = date_trunc('month', timezone('UTC', current_move.moved_on_datetime))::DATE
   WHERE current_move.previous_move_id IS NOT NULL
     AND current_move.move_type IN (0, 1, 3, 5)
     AND previous_move.move_type IN (0, 1, 3, 5)
@@ -145,7 +195,6 @@ BEGIN
     AND BTRIM(previous_move.country) <> ''
     AND BTRIM(current_move.country) <> ''
     AND UPPER(BTRIM(previous_move.country)) <> UPPER(BTRIM(current_move.country))
-    AND current_move.moved_on_datetime <@ p_period
   GROUP BY 1, 2, 3;
 
   INSERT INTO stats.country_pair_flows (
@@ -169,7 +218,11 @@ BEGIN
   GET DIAGNOSTICS v_upserted_rows = ROW_COUNT;
 
   DELETE FROM stats.country_pair_flows target
-  WHERE tstzrange(target.year_month::TIMESTAMPTZ, (target.year_month + INTERVAL '1 month')::TIMESTAMPTZ, '[)') && p_period
+  WHERE EXISTS (
+      SELECT 1
+      FROM tmp_country_pair_flow_months touched_months
+      WHERE touched_months.year_month = target.year_month
+    )
     AND NOT EXISTS (
       SELECT 1
       FROM tmp_country_pair_flow_snapshot snapshot
@@ -180,6 +233,8 @@ BEGIN
 
   GET DIAGNOSTICS v_deleted_rows = ROW_COUNT;
   v_total_rows := v_upserted_rows + v_deleted_rows;
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
 
   INSERT INTO stats.job_log (
     job_name,
@@ -195,14 +250,20 @@ BEGIN
       'requested_period', p_period,
       'upserted_rows', v_upserted_rows,
       'deleted_rows', v_deleted_rows,
-      'snapshot_rows', (SELECT COUNT(*)::BIGINT FROM tmp_country_pair_flow_snapshot)
+      'snapshot_rows', (SELECT COUNT(*)::BIGINT FROM tmp_country_pair_flow_snapshot),
+      'timing_ms', v_elapsed_ms
     ),
     v_started_at,
-    clock_timestamp()
+    v_completed_at
   );
+
+  RAISE INFO 'fn_snapshot_country_pair_flows completed in % ms (requested_period=% rows=%)', v_elapsed_ms, p_period, v_total_rows;
 
   RETURN v_total_rows;
 EXCEPTION WHEN OTHERS THEN
+  v_completed_at := clock_timestamp();
+  v_elapsed_ms := (EXTRACT(EPOCH FROM (v_completed_at - v_started_at)) * 1000)::BIGINT;
+
   INSERT INTO stats.job_log (
     job_name,
     status,
@@ -213,10 +274,12 @@ EXCEPTION WHEN OTHERS THEN
   VALUES (
     'fn_snapshot_country_pair_flows',
     'failed',
-    jsonb_build_object('requested_period', p_period, 'error', SQLERRM),
+    jsonb_build_object('requested_period', p_period, 'error', SQLERRM, 'timing_ms', v_elapsed_ms),
     v_started_at,
-    clock_timestamp()
+    v_completed_at
   );
+
+  RAISE INFO 'fn_snapshot_country_pair_flows failed after % ms (requested_period=%): %', v_elapsed_ms, p_period, SQLERRM;
 
   RAISE;
 END;
@@ -238,6 +301,24 @@ DECLARE
 BEGIN
   IF p_batch_size IS NULL OR p_batch_size < 1 THEN
     RAISE EXCEPTION 'p_batch_size must be >= 1'
+      USING ERRCODE = '22023';
+  END IF;
+
+  IF p_period IS NOT NULL
+    AND p_phase IN (
+      'fn_seed_daily_activity',
+      'fn_snapshot_daily_country_stats',
+      'fn_snapshot_user_country_stats',
+      'fn_snapshot_gk_country_stats',
+      'fn_snapshot_relationship_tables'
+    )
+    AND (
+      lower_inc(p_period) IS DISTINCT FROM TRUE
+      OR upper_inc(p_period) IS DISTINCT FROM FALSE
+      OR lower(p_period) IS DISTINCT FROM date_trunc('day', lower(p_period))
+      OR upper(p_period) IS DISTINCT FROM date_trunc('day', upper(p_period))
+    ) THEN
+    RAISE EXCEPTION 'p_period must use whole-day [) bounds for phase %', p_phase
       USING ERRCODE = '22023';
   END IF;
 
@@ -266,13 +347,13 @@ BEGIN
       RETURN jsonb_build_object('phase', p_phase, 'requested_period', p_period, 'rows_affected', v_rows);
     WHEN 'fn_snapshot_user_country_stats' THEN
       v_rows := stats.fn_snapshot_user_country_stats(v_period_date);
-      RETURN jsonb_build_object('phase', p_phase, 'requested_period', p_period, 'mode', CASE WHEN p_period IS NULL THEN 'full' ELSE 'full-source' END, 'rows_affected', v_rows);
+      RETURN jsonb_build_object('phase', p_phase, 'requested_period', p_period, 'mode', CASE WHEN p_period IS NULL THEN 'full' ELSE 'scoped' END, 'rows_affected', v_rows);
     WHEN 'fn_snapshot_gk_country_stats' THEN
       v_rows := stats.fn_snapshot_gk_country_stats(v_period_date);
-      RETURN jsonb_build_object('phase', p_phase, 'requested_period', p_period, 'mode', CASE WHEN p_period IS NULL THEN 'full' ELSE 'full-source' END, 'rows_affected', v_rows);
+      RETURN jsonb_build_object('phase', p_phase, 'requested_period', p_period, 'mode', CASE WHEN p_period IS NULL THEN 'full' ELSE 'scoped' END, 'rows_affected', v_rows);
     WHEN 'fn_snapshot_relationship_tables' THEN
       v_rows := stats.fn_snapshot_relationship_tables(v_period_date);
-      RETURN jsonb_build_object('phase', p_phase, 'requested_period', p_period, 'mode', CASE WHEN p_period IS NULL THEN 'full' ELSE 'full-source' END, 'rows_affected', v_rows);
+      RETURN jsonb_build_object('phase', p_phase, 'requested_period', p_period, 'mode', CASE WHEN p_period IS NULL THEN 'full' ELSE 'scoped' END, 'rows_affected', v_rows);
     WHEN 'fn_snapshot_hourly_activity' THEN
       IF p_period IS NULL THEN
         v_rows := stats.fn_snapshot_hourly_activity();
@@ -307,6 +388,9 @@ SECURITY DEFINER
 AS $$
 DECLARE
   v_started_at TIMESTAMPTZ := clock_timestamp();
+  v_phase_started_at TIMESTAMPTZ;
+  v_phase_completed_at TIMESTAMPTZ;
+  v_total_ms BIGINT := 0;
   v_requested_phases TEXT[] := CASE
     WHEN p_phases IS NULL OR array_length(p_phases, 1) IS NULL THEN ARRAY[
       'fn_backfill_heavy_previous_move_id_all',
@@ -323,6 +407,7 @@ DECLARE
   END;
   v_phase TEXT;
   v_results JSONB := '{}'::JSONB;
+  v_timing_ms BIGINT;
 BEGIN
   IF p_batch_size IS NULL OR p_batch_size < 1 THEN
     RAISE EXCEPTION 'p_batch_size must be >= 1'
@@ -330,10 +415,22 @@ BEGIN
   END IF;
 
   FOREACH v_phase IN ARRAY v_requested_phases LOOP
+    v_phase_started_at := clock_timestamp();
     v_results := v_results || jsonb_build_object(
       v_phase,
       stats.fn_run_snapshot_phase(v_phase, p_period, p_batch_size)
     );
+    v_phase_completed_at := clock_timestamp();
+    v_timing_ms := (EXTRACT(EPOCH FROM (v_phase_completed_at - v_phase_started_at)) * 1000)::BIGINT;
+    v_total_ms := v_total_ms + v_timing_ms;
+
+    v_results := jsonb_set(
+      v_results,
+      ARRAY[v_phase],
+      COALESCE(v_results -> v_phase, '{}'::JSONB) || jsonb_build_object('timing_ms', v_timing_ms),
+      true
+    );
+    RAISE INFO 'Completed snapshot phase % in % ms', v_phase, v_timing_ms;
   END LOOP;
 
   INSERT INTO stats.job_log (
@@ -351,6 +448,7 @@ BEGIN
       'requested_period', p_period,
       'batch_size', p_batch_size,
       'phases', to_jsonb(v_requested_phases),
+      'total_timing_ms', v_total_ms,
       'results', v_results
     ),
     v_started_at,
@@ -412,7 +510,12 @@ DECLARE
   v_started_at TIMESTAMPTZ := clock_timestamp();
   v_failures BIGINT := 0;
   v_run_all_checks BOOLEAN := p_checks IS NULL OR array_length(p_checks, 1) IS NULL;
+  v_period_start TIMESTAMPTZ;
+  v_period_end TIMESTAMPTZ;
 BEGIN
+  v_period_start := CASE WHEN p_period IS NULL THEN NULL ELSE lower(p_period) END;
+  v_period_end := CASE WHEN p_period IS NULL THEN NULL ELSE upper(p_period) END;
+
   DROP TABLE IF EXISTS tmp_reconcile_results;
 
   CREATE TEMP TABLE tmp_reconcile_results (
@@ -501,21 +604,21 @@ BEGIN
     WITH activity_days AS (
       SELECT moved_on_datetime::date AS activity_date
       FROM geokrety.gk_moves
-      WHERE p_period IS NULL OR moved_on_datetime <@ p_period
+      WHERE p_period IS NULL OR (moved_on_datetime >= v_period_start AND moved_on_datetime < v_period_end)
       UNION
       SELECT created_on_datetime::date FROM geokrety.gk_geokrety
-      WHERE p_period IS NULL OR created_on_datetime <@ p_period
+      WHERE p_period IS NULL OR (created_on_datetime >= v_period_start AND created_on_datetime < v_period_end)
       UNION
       SELECT uploaded_on_datetime::date
       FROM geokrety.gk_pictures
       WHERE uploaded_on_datetime IS NOT NULL
-        AND (p_period IS NULL OR uploaded_on_datetime <@ p_period)
+        AND (p_period IS NULL OR (uploaded_on_datetime >= v_period_start AND uploaded_on_datetime < v_period_end))
       UNION
       SELECT joined_on_datetime::date FROM geokrety.gk_users
-      WHERE p_period IS NULL OR joined_on_datetime <@ p_period
+      WHERE p_period IS NULL OR (joined_on_datetime >= v_period_start AND joined_on_datetime < v_period_end)
       UNION
       SELECT created_on_datetime::date FROM geokrety.gk_loves
-      WHERE p_period IS NULL OR created_on_datetime <@ p_period
+      WHERE p_period IS NULL OR (created_on_datetime >= v_period_start AND created_on_datetime < v_period_end)
     ), expected AS (
       SELECT
         activity_days.activity_date,
@@ -547,13 +650,13 @@ BEGIN
           COUNT(*) FILTER (WHERE move_type = 5)::BIGINT AS dips,
           COALESCE(SUM(km_distance), 0)::NUMERIC(14,3) AS km_contributed
         FROM geokrety.gk_moves
-        WHERE p_period IS NULL OR moved_on_datetime <@ p_period
+        WHERE p_period IS NULL OR (moved_on_datetime >= v_period_start AND moved_on_datetime < v_period_end)
         GROUP BY moved_on_datetime::date
       ) AS moves_daily USING (activity_date)
       LEFT JOIN (
         SELECT created_on_datetime::date AS activity_date, COUNT(*)::BIGINT AS gk_created
         FROM geokrety.gk_geokrety
-        WHERE p_period IS NULL OR created_on_datetime <@ p_period
+        WHERE p_period IS NULL OR (created_on_datetime >= v_period_start AND created_on_datetime < v_period_end)
         GROUP BY created_on_datetime::date
       ) AS geokrety_daily USING (activity_date)
       LEFT JOIN (
@@ -565,19 +668,19 @@ BEGIN
           COUNT(*) FILTER (WHERE type = 2)::BIGINT AS pictures_uploaded_user
         FROM geokrety.gk_pictures
         WHERE uploaded_on_datetime IS NOT NULL
-          AND (p_period IS NULL OR uploaded_on_datetime <@ p_period)
+          AND (p_period IS NULL OR (uploaded_on_datetime >= v_period_start AND uploaded_on_datetime < v_period_end))
         GROUP BY uploaded_on_datetime::date
       ) AS pictures_daily USING (activity_date)
       LEFT JOIN (
         SELECT created_on_datetime::date AS activity_date, COUNT(*)::BIGINT AS loves_count
         FROM geokrety.gk_loves
-        WHERE p_period IS NULL OR created_on_datetime <@ p_period
+        WHERE p_period IS NULL OR (created_on_datetime >= v_period_start AND created_on_datetime < v_period_end)
         GROUP BY created_on_datetime::date
       ) AS loves_daily USING (activity_date)
       LEFT JOIN (
         SELECT joined_on_datetime::date AS activity_date, COUNT(*)::BIGINT AS users_registered
         FROM geokrety.gk_users
-        WHERE p_period IS NULL OR joined_on_datetime <@ p_period
+        WHERE p_period IS NULL OR (joined_on_datetime >= v_period_start AND joined_on_datetime < v_period_end)
         GROUP BY joined_on_datetime::date
       ) AS users_daily USING (activity_date)
     ), mismatches AS (
@@ -620,7 +723,7 @@ BEGIN
     WITH move_expected AS (
       SELECT
         m.moved_on_datetime::date AS stats_date,
-        LOWER(m.country) AS country_code,
+        geokrety.fn_normalize_country_code(m.country)::TEXT AS country_code,
         COUNT(*)::BIGINT AS moves_count,
         COUNT(*) FILTER (WHERE m.move_type = 0)::BIGINT AS drops,
         COUNT(*) FILTER (WHERE m.move_type = 1)::BIGINT AS grabs,
@@ -633,8 +736,8 @@ BEGIN
         COALESCE(SUM(m.km_distance), 0)::NUMERIC(14,3) AS km_contributed
       FROM geokrety.gk_moves m
       WHERE m.country IS NOT NULL
-        AND (p_period IS NULL OR m.moved_on_datetime <@ p_period)
-      GROUP BY m.moved_on_datetime::date, LOWER(m.country)
+        AND (p_period IS NULL OR (m.moved_on_datetime >= v_period_start AND m.moved_on_datetime < v_period_end))
+      GROUP BY m.moved_on_datetime::date, geokrety.fn_normalize_country_code(m.country)
     ), expected AS (
       SELECT *
       FROM move_expected
@@ -709,7 +812,7 @@ BEGIN
         COUNT(*)::BIGINT AS move_count
       FROM geokrety.gk_moves m
       WHERE m.move_type BETWEEN 0 AND 5
-        AND (p_period IS NULL OR m.moved_on_datetime <@ p_period)
+        AND (p_period IS NULL OR (m.moved_on_datetime >= v_period_start AND m.moved_on_datetime < v_period_end))
       GROUP BY 1, 2, 3
     ), mismatches AS (
       SELECT COUNT(*)::BIGINT AS mismatch_count
@@ -754,7 +857,7 @@ BEGIN
         AND BTRIM(previous_move.country) <> ''
         AND BTRIM(current_move.country) <> ''
         AND UPPER(BTRIM(previous_move.country)) <> UPPER(BTRIM(current_move.country))
-        AND (p_period IS NULL OR current_move.moved_on_datetime <@ p_period)
+        AND (p_period IS NULL OR (current_move.moved_on_datetime >= v_period_start AND current_move.moved_on_datetime < v_period_end))
       GROUP BY 1, 2, 3
     ), mismatches AS (
       SELECT COUNT(*)::BIGINT AS mismatch_count
